@@ -1085,7 +1085,12 @@ name|showConfirmDialog
 argument_list|(
 name|diag
 argument_list|,
-literal|"Are you sure you want to remove the already\nexistent SQL DBs?"
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Are you sure you want to remove the already existent SQL DBs?"
+argument_list|)
 argument_list|)
 decl_stmt|;
 if|if

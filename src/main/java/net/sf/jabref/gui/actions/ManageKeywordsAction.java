@@ -810,7 +810,12 @@ operator|=
 operator|new
 name|JRadioButton
 argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Display keywords appearing in ALL entries"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|mergeKeywords
@@ -818,7 +823,12 @@ operator|=
 operator|new
 name|JRadioButton
 argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Display keywords appearing in ANY entry"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|ButtonGroup

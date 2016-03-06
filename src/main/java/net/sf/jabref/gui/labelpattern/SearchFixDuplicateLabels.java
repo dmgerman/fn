@@ -574,7 +574,12 @@ init|=
 operator|new
 name|NamedCompound
 argument_list|(
-literal|"resolve duplicate keys"
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Resolve duplicate keys"
+argument_list|)
 argument_list|)
 decl_stmt|;
 for|for

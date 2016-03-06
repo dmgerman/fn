@@ -4586,7 +4586,12 @@ operator|)
 block|{
 name|output
 argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"None of the selected entries have BibTeX keys."
+argument_list|)
 argument_list|)
 block|;
 return|return;
@@ -4833,7 +4838,12 @@ condition|)
 block|{
 name|output
 argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"None of the selected entries have BibTeX keys."
+argument_list|)
 argument_list|)
 expr_stmt|;
 return|return;
@@ -5131,7 +5141,12 @@ condition|)
 block|{
 name|output
 argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"None of the selected entries have BibTeX keys."
+argument_list|)
 argument_list|)
 expr_stmt|;
 return|return;

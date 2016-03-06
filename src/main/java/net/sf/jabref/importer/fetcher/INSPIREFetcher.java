@@ -586,7 +586,12 @@ name|frame
 operator|.
 name|setStatus
 argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Fetching entries from Inspire"
+argument_list|)
 argument_list|)
 expr_stmt|;
 comment|/* query the archive and load the results into the BibEntry */
@@ -604,7 +609,12 @@ name|frame
 operator|.
 name|setStatus
 argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Adding fetched entries"
+argument_list|)
 argument_list|)
 expr_stmt|;
 comment|/* add the entry to the inspection dialog */
