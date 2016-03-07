@@ -169,6 +169,7 @@ class|class
 name|EndnoteImporterTest
 block|{
 DECL|field|importer
+specifier|private
 name|EndnoteImporter
 name|importer
 decl_stmt|;

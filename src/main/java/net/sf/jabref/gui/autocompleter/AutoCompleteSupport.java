@@ -246,6 +246,8 @@ name|E
 parameter_list|>
 block|{
 DECL|field|renderer
+specifier|private
+specifier|final
 name|AutoCompleteRenderer
 argument_list|<
 name|E
@@ -261,10 +263,14 @@ argument_list|>
 name|autoCompleter
 decl_stmt|;
 DECL|field|textComp
+specifier|private
+specifier|final
 name|JTextComponent
 name|textComp
 decl_stmt|;
 DECL|field|popup
+specifier|private
+specifier|final
 name|JPopupMenu
 name|popup
 init|=
