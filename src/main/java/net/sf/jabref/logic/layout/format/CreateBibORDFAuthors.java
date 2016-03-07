@@ -152,11 +152,11 @@ comment|//<bibo:contributor><foaf:Person foaf:name="Ola Spjuth"/></bibo:contribu
 comment|//<bibo:position>1</bibo:position>
 comment|//</bibo:Contribution>
 comment|//</bibo:contribution>
-name|StringBuffer
+name|StringBuilder
 name|sb
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|(
 literal|100
 argument_list|)
@@ -257,13 +257,13 @@ argument_list|()
 return|;
 block|}
 comment|/**      * @param sb      * @param author      * @param position      */
-DECL|method|singleAuthor (StringBuffer sb, String author, int position)
+DECL|method|singleAuthor (StringBuilder sb, String author, int position)
 specifier|private
 specifier|static
 name|void
 name|singleAuthor
 parameter_list|(
-name|StringBuffer
+name|StringBuilder
 name|sb
 parameter_list|,
 name|String
