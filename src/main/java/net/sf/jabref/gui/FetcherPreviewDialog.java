@@ -94,6 +94,16 @@ name|javax
 operator|.
 name|swing
 operator|.
+name|Action
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
 name|ActionMap
 import|;
 end_import
@@ -859,7 +869,7 @@ name|SOUTH
 argument_list|)
 expr_stmt|;
 comment|// Key bindings:
-name|AbstractAction
+name|Action
 name|closeAction
 init|=
 operator|new

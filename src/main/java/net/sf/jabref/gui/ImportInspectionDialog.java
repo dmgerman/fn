@@ -2262,7 +2262,7 @@ block|}
 argument_list|)
 expr_stmt|;
 comment|// Key bindings:
-name|AbstractAction
+name|Action
 name|closeAction
 init|=
 operator|new

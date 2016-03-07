@@ -1698,7 +1698,7 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
-name|AbstractAction
+name|Action
 name|cancelAction
 init|=
 operator|new

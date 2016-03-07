@@ -847,7 +847,7 @@ expr_stmt|;
 block|}
 argument_list|)
 expr_stmt|;
-name|AbstractAction
+name|Action
 name|closeAction
 init|=
 operator|new
