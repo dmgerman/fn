@@ -239,6 +239,23 @@ name|toString
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
+DECL|method|getDescription ()
+specifier|public
+name|String
+name|getDescription
+parameter_list|()
+block|{
+return|return
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Converts all words in %s to upper case, but converts articles, prepositions, and conjunctions to lower case."
+argument_list|)
+return|;
+block|}
 block|}
 end_class
 

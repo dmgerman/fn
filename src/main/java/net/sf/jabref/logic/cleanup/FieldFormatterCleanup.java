@@ -497,6 +497,27 @@ name|getKey
 argument_list|()
 return|;
 block|}
+comment|/**      * Returns a description of what this cleanup operation does.      *      * @return the description of this cleanup      */
+DECL|method|getDescription ()
+specifier|public
+name|String
+name|getDescription
+parameter_list|()
+block|{
+return|return
+name|String
+operator|.
+name|format
+argument_list|(
+name|formatter
+operator|.
+name|getDescription
+argument_list|()
+argument_list|,
+name|field
+argument_list|)
+return|;
+block|}
 block|}
 end_class
 

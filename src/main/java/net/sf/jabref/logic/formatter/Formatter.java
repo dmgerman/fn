@@ -45,6 +45,12 @@ name|String
 name|value
 parameter_list|)
 function_decl|;
+comment|/**      * Returns a description of the formatter.      * The string "%s" serves as a placeholder for the field name, see java.util.Formatter.      *      * @return the description string, always non empty      */
+DECL|method|getDescription ()
+name|String
+name|getDescription
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

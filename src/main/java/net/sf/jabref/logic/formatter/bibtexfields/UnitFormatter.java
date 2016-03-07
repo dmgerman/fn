@@ -569,6 +569,23 @@ return|;
 block|}
 annotation|@
 name|Override
+DECL|method|getDescription ()
+specifier|public
+name|String
+name|getDescription
+parameter_list|()
+block|{
+return|return
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Converts units in %s to LaTeX code."
+argument_list|)
+return|;
+block|}
+annotation|@
+name|Override
 DECL|method|getName ()
 specifier|public
 name|String
