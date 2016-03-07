@@ -34,6 +34,18 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|prefs
+operator|.
+name|Preferences
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|swing
@@ -99,6 +111,18 @@ operator|.
 name|jabref
 operator|.
 name|Globals
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|JabRefPreferences
 import|;
 end_import
 
@@ -392,6 +416,13 @@ name|lang
 argument_list|(
 literal|"Run field formatter:"
 argument_list|)
+argument_list|,
+name|JabRefPreferences
+operator|.
+name|CLEANUP_DEFAULT_PRESET
+operator|.
+name|getFormatterCleanups
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|updateDisplay

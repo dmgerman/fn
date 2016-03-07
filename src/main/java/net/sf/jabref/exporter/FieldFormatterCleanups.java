@@ -191,12 +191,12 @@ specifier|private
 name|boolean
 name|enabled
 decl_stmt|;
-DECL|field|DEFAULT_ACTIONS
+DECL|field|DEFAULT_SAVE_ACTIONS
 specifier|public
 specifier|static
 specifier|final
 name|FieldFormatterCleanups
-name|DEFAULT_ACTIONS
+name|DEFAULT_SAVE_ACTIONS
 decl_stmt|;
 static|static
 block|{
@@ -230,7 +230,7 @@ name|defaultFormatterString
 init|=
 literal|"pages[PageNumbersFormatter]month[MonthFormatter]booktitle[SuperscriptFormatter]"
 decl_stmt|;
-name|DEFAULT_ACTIONS
+name|DEFAULT_SAVE_ACTIONS
 operator|=
 operator|new
 name|FieldFormatterCleanups
@@ -1164,7 +1164,7 @@ comment|// return default actions
 return|return
 name|FieldFormatterCleanups
 operator|.
-name|DEFAULT_ACTIONS
+name|DEFAULT_SAVE_ACTIONS
 return|;
 block|}
 block|}

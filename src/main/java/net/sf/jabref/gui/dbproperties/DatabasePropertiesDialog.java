@@ -232,6 +232,20 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|exporter
+operator|.
+name|FieldFormatterCleanups
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|gui
 operator|.
 name|BasePanel
@@ -1029,6 +1043,10 @@ name|lang
 argument_list|(
 literal|"Enable save actions"
 argument_list|)
+argument_list|,
+name|FieldFormatterCleanups
+operator|.
+name|DEFAULT_SAVE_ACTIONS
 argument_list|)
 expr_stmt|;
 name|builder
