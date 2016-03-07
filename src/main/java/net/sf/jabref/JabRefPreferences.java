@@ -8521,25 +8521,6 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Determines whether the given field should be written without any sort of wrapping.      *      * @param fieldName The field name.      * @return true if the field should not be wrapped.      */
-DECL|method|isNonWrappableField (String fieldName)
-specifier|public
-name|boolean
-name|isNonWrappableField
-parameter_list|(
-name|String
-name|fieldName
-parameter_list|)
-block|{
-return|return
-name|nonWrappableFields
-operator|.
-name|contains
-argument_list|(
-name|fieldName
-argument_list|)
-return|;
-block|}
 comment|/**      * ONLY FOR TESTING!      *      * Do not use in production code. Otherwise the singleton pattern is broken and preferences might get lost.      *      * @param owPrefs      */
 DECL|method|overwritePreferences (JabRefPreferences owPrefs)
 specifier|public
