@@ -391,7 +391,8 @@ control|)
 block|{
 name|result
 operator|.
-name|uniqueKeys
+name|getUniqueKeys
+argument_list|()
 operator|.
 name|add
 argument_list|(
@@ -491,8 +492,8 @@ argument_list|)
 expr_stmt|;
 name|result
 operator|.
-name|nestedAuxCount
-operator|++
+name|countNestedAuxFile
+argument_list|()
 expr_stmt|;
 block|}
 block|}
@@ -560,7 +561,8 @@ name|key
 range|:
 name|result
 operator|.
-name|uniqueKeys
+name|getUniqueKeys
+argument_list|()
 control|)
 block|{
 name|BibEntry
@@ -582,7 +584,8 @@ condition|)
 block|{
 name|result
 operator|.
-name|unresolvedKeys
+name|getUnresolvedKeys
+argument_list|()
 operator|.
 name|add
 argument_list|(
@@ -613,7 +616,8 @@ if|if
 condition|(
 name|result
 operator|.
-name|auxDatabase
+name|getGeneratedBibDatabase
+argument_list|()
 operator|.
 name|getEntryCount
 argument_list|()
@@ -623,7 +627,8 @@ condition|)
 block|{
 name|result
 operator|.
-name|auxDatabase
+name|getGeneratedBibDatabase
+argument_list|()
 operator|.
 name|copyPreamble
 argument_list|(
@@ -632,7 +637,8 @@ argument_list|)
 expr_stmt|;
 name|result
 operator|.
-name|auxDatabase
+name|getGeneratedBibDatabase
+argument_list|()
 operator|.
 name|copyStrings
 argument_list|(
@@ -671,7 +677,8 @@ condition|(
 operator|!
 name|result
 operator|.
-name|uniqueKeys
+name|getUniqueKeys
+argument_list|()
 operator|.
 name|contains
 argument_list|(
@@ -698,7 +705,8 @@ condition|)
 block|{
 name|result
 operator|.
-name|unresolvedKeys
+name|getUnresolvedKeys
+argument_list|()
 operator|.
 name|add
 argument_list|(
@@ -717,8 +725,8 @@ argument_list|)
 expr_stmt|;
 name|result
 operator|.
-name|crossRefEntriesCount
-operator|++
+name|countCrossRefEntry
+argument_list|()
 expr_stmt|;
 block|}
 block|}
@@ -762,7 +770,8 @@ argument_list|)
 expr_stmt|;
 name|result
 operator|.
-name|auxDatabase
+name|getGeneratedBibDatabase
+argument_list|()
 operator|.
 name|insertEntry
 argument_list|(
