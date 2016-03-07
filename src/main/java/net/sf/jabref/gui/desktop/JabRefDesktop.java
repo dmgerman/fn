@@ -236,6 +236,34 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|awt
@@ -336,6 +364,22 @@ specifier|public
 class|class
 name|JabRefDesktop
 block|{
+DECL|field|LOGGER
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOGGER
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|JabRefDesktop
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 DECL|field|REMOTE_LINK_PATTERN
 specifier|private
 specifier|static
@@ -351,7 +395,7 @@ literal|"[a-z]+://.*"
 argument_list|)
 decl_stmt|;
 comment|/**      * Open a http/pdf/ps viewer for the given link string.      */
-DECL|method|openExternalViewer (MetaData metaData, String link, String fieldName)
+DECL|method|openExternalViewer (MetaData metaData, String initialLink, String initialFieldName)
 specifier|public
 specifier|static
 name|void
@@ -361,14 +405,24 @@ name|MetaData
 name|metaData
 parameter_list|,
 name|String
-name|link
+name|initialLink
 parameter_list|,
 name|String
-name|fieldName
+name|initialFieldName
 parameter_list|)
 throws|throws
 name|IOException
 block|{
+name|String
+name|link
+init|=
+name|initialLink
+decl_stmt|;
+name|String
+name|fieldName
+init|=
+name|initialFieldName
+decl_stmt|;
 if|if
 condition|(
 literal|"ps"
@@ -669,26 +723,18 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|System
+name|LOGGER
 operator|.
-name|err
-operator|.
-name|println
+name|error
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Error_opening_file_'%0'."
-argument_list|,
+literal|"Error opening file '"
+operator|+
 name|link
-argument_list|)
-argument_list|)
-expr_stmt|;
+operator|+
+literal|"'"
+argument_list|,
 name|e
-operator|.
-name|printStackTrace
-argument_list|()
+argument_list|)
 expr_stmt|;
 comment|// TODO: should we rethrow the exception?
 comment|// In BasePanel.java, the exception is catched and a text output to the frame
@@ -732,14 +778,9 @@ name|String
 name|viewer
 init|=
 name|type
-operator|!=
+operator|==
 literal|null
 condition|?
-name|type
-operator|.
-name|getOpenWith
-argument_list|()
-else|:
 name|Globals
 operator|.
 name|prefs
@@ -750,6 +791,11 @@ name|JabRefPreferences
 operator|.
 name|PSVIEWER
 argument_list|)
+else|:
+name|type
+operator|.
+name|getOpenWith
+argument_list|()
 decl_stmt|;
 name|String
 index|[]
@@ -810,15 +856,15 @@ name|String
 name|viewer
 init|=
 name|type
-operator|!=
+operator|==
 literal|null
 condition|?
+literal|"xdg-open"
+else|:
 name|type
 operator|.
 name|getOpenWith
 argument_list|()
-else|:
-literal|"xdg-open"
 decl_stmt|;
 name|String
 index|[]
@@ -862,11 +908,9 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|System
+name|LOGGER
 operator|.
-name|err
-operator|.
-name|println
+name|error
 argument_list|(
 literal|"An error occured on the command: "
 operator|+
@@ -878,12 +922,14 @@ name|get
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|PSVIEWER
+name|PDFVIEWER
 argument_list|)
 operator|+
-literal|" "
+literal|" #"
 operator|+
 name|link
+argument_list|,
+name|e
 argument_list|)
 expr_stmt|;
 block|}
@@ -925,14 +971,9 @@ name|String
 name|viewer
 init|=
 name|type
-operator|!=
+operator|==
 literal|null
 condition|?
-name|type
-operator|.
-name|getOpenWith
-argument_list|()
-else|:
 name|Globals
 operator|.
 name|prefs
@@ -943,6 +984,11 @@ name|JabRefPreferences
 operator|.
 name|PSVIEWER
 argument_list|)
+else|:
+name|type
+operator|.
+name|getOpenWith
+argument_list|()
 decl_stmt|;
 name|String
 index|[]
@@ -1003,14 +1049,9 @@ name|String
 name|viewer
 init|=
 name|type
-operator|!=
+operator|==
 literal|null
 condition|?
-name|type
-operator|.
-name|getOpenWith
-argument_list|()
-else|:
 name|Globals
 operator|.
 name|prefs
@@ -1021,6 +1062,11 @@ name|JabRefPreferences
 operator|.
 name|PSVIEWER
 argument_list|)
+else|:
+name|type
+operator|.
+name|getOpenWith
+argument_list|()
 decl_stmt|;
 name|String
 index|[]
@@ -1066,16 +1112,9 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|e
+name|LOGGER
 operator|.
-name|printStackTrace
-argument_list|()
-expr_stmt|;
-name|System
-operator|.
-name|err
-operator|.
-name|println
+name|error
 argument_list|(
 literal|"An error occured on the command: "
 operator|+
@@ -1093,29 +1132,17 @@ operator|+
 literal|" #"
 operator|+
 name|link
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|err
-operator|.
-name|println
-argument_list|(
+argument_list|,
 name|e
-operator|.
-name|getMessage
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
 block|}
 else|else
 block|{
-name|System
+name|LOGGER
 operator|.
-name|err
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Message: currently only PDF, PS and HTML files can be opened by double clicking"
 argument_list|)
@@ -1179,8 +1206,9 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|link
-operator|=
+name|String
+name|escapedLink
+init|=
 name|link
 operator|.
 name|replaceAll
@@ -1196,7 +1224,7 @@ literal|" "
 argument_list|,
 literal|"\" \""
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|Runtime
 operator|.
 name|getRuntime
@@ -1208,7 +1236,7 @@ name|application
 operator|+
 literal|" "
 operator|+
-name|link
+name|escapedLink
 argument_list|)
 expr_stmt|;
 block|}
@@ -1649,11 +1677,9 @@ operator|.
 name|deleteOnExit
 argument_list|()
 expr_stmt|;
-name|System
+name|LOGGER
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Downloading to '"
 operator|+
@@ -1680,11 +1706,9 @@ argument_list|(
 name|temp
 argument_list|)
 expr_stmt|;
-name|System
+name|LOGGER
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Done"
 argument_list|)
@@ -1696,10 +1720,14 @@ name|IOException
 name|ex
 parameter_list|)
 block|{
-name|ex
+name|LOGGER
 operator|.
-name|printStackTrace
-argument_list|()
+name|warn
+argument_list|(
+literal|"Problem downloading"
+argument_list|,
+name|ex
+argument_list|)
 expr_stmt|;
 block|}
 if|if
@@ -1722,16 +1750,8 @@ name|SwingUtilities
 operator|.
 name|invokeLater
 argument_list|(
-operator|new
-name|Runnable
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|run
 parameter_list|()
+lambda|->
 block|{
 try|try
 block|{
@@ -1751,12 +1771,15 @@ name|IOException
 name|ex
 parameter_list|)
 block|{
-name|ex
+name|LOGGER
 operator|.
-name|printStackTrace
-argument_list|()
+name|error
+argument_list|(
+literal|"Cannot open external file"
+argument_list|,
+name|ex
+argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 argument_list|)
@@ -2461,8 +2484,9 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|link
-operator|=
+name|String
+name|escapedLink
+init|=
 name|link
 operator|.
 name|replace
@@ -2471,13 +2495,13 @@ literal|"&"
 argument_list|,
 literal|"\"&\""
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|String
 name|cmd
 init|=
 literal|"explorer.exe /select,\""
 operator|+
-name|link
+name|escapedLink
 operator|+
 literal|"\""
 decl_stmt|;

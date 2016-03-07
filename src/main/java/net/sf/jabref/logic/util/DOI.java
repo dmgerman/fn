@@ -285,13 +285,14 @@ name|doi
 argument_list|)
 expr_stmt|;
 comment|// Remove whitespace
-name|doi
-operator|=
+name|String
+name|trimmedDoi
+init|=
 name|doi
 operator|.
 name|trim
 argument_list|()
-expr_stmt|;
+decl_stmt|;
 comment|// HTTP URL decoding
 if|if
 condition|(
@@ -312,10 +313,10 @@ init|=
 operator|new
 name|URI
 argument_list|(
-name|doi
+name|trimmedDoi
 argument_list|)
 decl_stmt|;
-name|doi
+name|trimmedDoi
 operator|=
 name|url
 operator|.
@@ -360,7 +361,7 @@ name|DOI_PATT
 operator|.
 name|matcher
 argument_list|(
-name|doi
+name|trimmedDoi
 argument_list|)
 decl_stmt|;
 if|if
@@ -390,7 +391,7 @@ throw|throw
 operator|new
 name|IllegalArgumentException
 argument_list|(
-name|doi
+name|trimmedDoi
 operator|+
 literal|" is not a valid DOI."
 argument_list|)
