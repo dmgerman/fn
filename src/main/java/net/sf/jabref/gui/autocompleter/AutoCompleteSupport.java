@@ -58,6 +58,18 @@ name|awt
 operator|.
 name|event
 operator|.
+name|ActionListener
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|awt
+operator|.
+name|event
+operator|.
 name|FocusAdapter
 import|;
 end_import
@@ -103,16 +115,6 @@ operator|.
 name|swing
 operator|.
 name|AbstractAction
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|Action
 import|;
 end_import
 
@@ -382,9 +384,9 @@ name|void
 name|install
 parameter_list|()
 block|{
-comment|// Actions for navigating the suggested autocomplete items with the arrow keys
+comment|// ActionListeners for navigating the suggested autocomplete items with the arrow keys
 specifier|final
-name|Action
+name|ActionListener
 name|upAction
 init|=
 operator|new
@@ -395,7 +397,7 @@ literal|1
 argument_list|)
 decl_stmt|;
 specifier|final
-name|Action
+name|ActionListener
 name|downAction
 init|=
 operator|new
@@ -404,53 +406,27 @@ argument_list|(
 literal|1
 argument_list|)
 decl_stmt|;
-comment|// Action hiding the autocomplete popup
+comment|// ActionListener hiding the autocomplete popup
 specifier|final
-name|Action
+name|ActionListener
 name|hidePopupAction
 init|=
-operator|new
-name|AbstractAction
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|actionPerformed
-parameter_list|(
-name|ActionEvent
 name|e
-parameter_list|)
-block|{
+lambda|->
 name|popup
 operator|.
 name|setVisible
 argument_list|(
 literal|false
 argument_list|)
-expr_stmt|;
-block|}
-block|}
 decl_stmt|;
-comment|// Action accepting the currently selected item as the autocompletion
+comment|// ActionListener accepting the currently selected item as the autocompletion
 specifier|final
-name|Action
+name|ActionListener
 name|acceptAction
 init|=
-operator|new
-name|AbstractAction
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|actionPerformed
-parameter_list|(
-name|ActionEvent
 name|e
-parameter_list|)
+lambda|->
 block|{
 name|E
 name|itemToInsert
@@ -604,7 +580,6 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 decl_stmt|;
 comment|// Create popup

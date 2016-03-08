@@ -92,7 +92,7 @@ specifier|public
 name|PersonName
 parameter_list|()
 block|{
-comment|// Empty constuctor
+comment|// Empty constructor
 block|}
 DECL|method|PersonName (String name)
 specifier|public

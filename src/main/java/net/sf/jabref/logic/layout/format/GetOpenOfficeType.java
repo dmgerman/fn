@@ -121,7 +121,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Change type of record to match the one used by OpenOffice formatter.  *   * Based on the RemoveBrackets.java class (Revision 1.2) by mortenalver  * @author $author$  * @version $Revision$  */
+comment|/**  * Change type of record to match the one used by OpenOffice formatter.  *  * Based on the RemoveBrackets.java class (Revision 1.2) by mortenalver  * @author $author$  * @version $Revision$  */
 end_comment
 
 begin_class
