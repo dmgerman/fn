@@ -74,6 +74,16 @@ name|Comparator
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Objects
+import|;
+end_import
+
 begin_comment
 comment|/**  * This implementation of Comparator takes care of most of the details of sorting BibTeX entries in JabRef. It is  * structured as a node in a linked list of comparators, where each node can contain a link to a new comparator that  * decides the ordering (by recursion) if this one can't find a difference. The next node, if any, is given at  * construction time, and an arbitrary number of nodes can be included. If the entries are equal by this comparator, and  * there is no next entry, the entries' unique IDs will decide the ordering. Consequently, this comparator can never  * return 0 unless the entries are the same object.  */
 end_comment
@@ -244,9 +254,14 @@ parameter_list|)
 block|{
 if|if
 condition|(
+name|Objects
+operator|.
+name|equals
+argument_list|(
 name|e1
-operator|==
+argument_list|,
 name|e2
+argument_list|)
 condition|)
 block|{
 return|return

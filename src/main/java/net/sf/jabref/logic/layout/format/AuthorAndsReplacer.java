@@ -37,7 +37,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Replaces and's for& (in case of two authors) and ; (in case  * of more than two authors).  *   * @author Carlos Silla  */
+comment|/**  * Replaces and's for& (in case of two authors) and ; (in case  * of more than two authors).  *  * @author Carlos Silla  */
 end_comment
 
 begin_class
@@ -133,11 +133,11 @@ name|authors
 operator|.
 name|length
 decl_stmt|;
-name|StringBuffer
+name|StringBuilder
 name|sb
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 for|for
@@ -148,9 +148,11 @@ literal|0
 init|;
 name|i
 operator|<
+operator|(
 name|x
 operator|-
 literal|2
+operator|)
 condition|;
 name|i
 operator|++
@@ -199,11 +201,10 @@ argument_list|)
 expr_stmt|;
 name|s
 operator|=
-operator|new
-name|String
-argument_list|(
 name|sb
-argument_list|)
+operator|.
+name|toString
+argument_list|()
 expr_stmt|;
 break|break;
 block|}

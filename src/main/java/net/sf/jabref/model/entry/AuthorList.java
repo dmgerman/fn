@@ -3319,7 +3319,7 @@ operator|)
 name|o
 decl_stmt|;
 return|return
-name|EntryUtil
+name|Objects
 operator|.
 name|equals
 argument_list|(
@@ -3330,7 +3330,7 @@ operator|.
 name|firstPart
 argument_list|)
 operator|&&
-name|EntryUtil
+name|Objects
 operator|.
 name|equals
 argument_list|(
@@ -3341,7 +3341,7 @@ operator|.
 name|firstAbbr
 argument_list|)
 operator|&&
-name|EntryUtil
+name|Objects
 operator|.
 name|equals
 argument_list|(
@@ -3352,7 +3352,7 @@ operator|.
 name|vonPart
 argument_list|)
 operator|&&
-name|EntryUtil
+name|Objects
 operator|.
 name|equals
 argument_list|(
@@ -3363,7 +3363,7 @@ operator|.
 name|lastPart
 argument_list|)
 operator|&&
-name|EntryUtil
+name|Objects
 operator|.
 name|equals
 argument_list|(

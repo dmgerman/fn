@@ -433,11 +433,11 @@ name|String
 name|bibtexDescriptions
 parameter_list|)
 block|{
-name|StringBuffer
+name|StringBuilder
 name|xmp
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 name|xmp
@@ -970,7 +970,7 @@ name|setField
 argument_list|(
 literal|"keywords"
 argument_list|,
-literal|"peanut,butter,jelly"
+literal|"peanut, butter, jelly"
 argument_list|)
 expr_stmt|;
 name|e
@@ -1061,7 +1061,7 @@ literal|"<bibtex:booktitle>Catch-22</bibtex:booktitle>"
 operator|+
 literal|"<bibtex:pdf>YeKis03 - Towards.pdf</bibtex:pdf>"
 operator|+
-literal|"<bibtex:keywords>peanut,butter,jelly</bibtex:keywords>"
+literal|"<bibtex:keywords>peanut, butter, jelly</bibtex:keywords>"
 operator|+
 literal|"<bibtex:entrytype>Inproceedings</bibtex:entrytype>"
 operator|+
@@ -5202,7 +5202,7 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-literal|"peanut,butter,jelly"
+literal|"peanut, butter, jelly"
 argument_list|,
 name|document
 operator|.
@@ -5727,7 +5727,7 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-literal|"peanut,butter,jelly"
+literal|"peanut, butter, jelly"
 argument_list|,
 name|document
 operator|.

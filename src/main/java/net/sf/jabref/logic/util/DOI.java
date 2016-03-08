@@ -223,51 +223,6 @@ operator|.
 name|CASE_INSENSITIVE
 argument_list|)
 decl_stmt|;
-comment|/**      * Creates an Optional<DOI> from various schemes including URL, URN, and plain DOIs.      *      * Useful for suppressing the<c>IllegalArgumentException</c> of the Constructor      * and checking for Optional.isPresent() instead.      *      * @param doi the DOI string      * @return an Optional containing the DOI or an empty Optional      */
-DECL|method|build (String doi)
-specifier|public
-specifier|static
-name|Optional
-argument_list|<
-name|DOI
-argument_list|>
-name|build
-parameter_list|(
-name|String
-name|doi
-parameter_list|)
-block|{
-try|try
-block|{
-return|return
-name|Optional
-operator|.
-name|ofNullable
-argument_list|(
-operator|new
-name|DOI
-argument_list|(
-name|doi
-argument_list|)
-argument_list|)
-return|;
-block|}
-catch|catch
-parameter_list|(
-name|IllegalArgumentException
-decl||
-name|NullPointerException
-name|e
-parameter_list|)
-block|{
-return|return
-name|Optional
-operator|.
-name|empty
-argument_list|()
-return|;
-block|}
-block|}
 comment|/**      * Creates a DOI from various schemes including URL, URN, and plain DOIs.      *      * @param doi the DOI string      * @throws NullPointerException if DOI is null      * @throws IllegalArgumentException if doi does not include a valid DOI      * @return an instance of the DOI class      */
 DECL|method|DOI (String doi)
 specifier|public
@@ -396,6 +351,51 @@ operator|+
 literal|" is not a valid DOI."
 argument_list|)
 throw|;
+block|}
+block|}
+comment|/**      * Creates an Optional<DOI> from various schemes including URL, URN, and plain DOIs.      *      * Useful for suppressing the<c>IllegalArgumentException</c> of the Constructor      * and checking for Optional.isPresent() instead.      *      * @param doi the DOI string      * @return an Optional containing the DOI or an empty Optional      */
+DECL|method|build (String doi)
+specifier|public
+specifier|static
+name|Optional
+argument_list|<
+name|DOI
+argument_list|>
+name|build
+parameter_list|(
+name|String
+name|doi
+parameter_list|)
+block|{
+try|try
+block|{
+return|return
+name|Optional
+operator|.
+name|ofNullable
+argument_list|(
+operator|new
+name|DOI
+argument_list|(
+name|doi
+argument_list|)
+argument_list|)
+return|;
+block|}
+catch|catch
+parameter_list|(
+name|IllegalArgumentException
+decl||
+name|NullPointerException
+name|e
+parameter_list|)
+block|{
+return|return
+name|Optional
+operator|.
+name|empty
+argument_list|()
+return|;
 block|}
 block|}
 comment|/**      * Return the plain DOI      *      * @return the plain DOI value.      */

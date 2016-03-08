@@ -893,8 +893,8 @@ argument_list|)
 expr_stmt|;
 comment|// Set headings
 name|JLabel
-name|headingLabels
 index|[]
+name|headingLabels
 init|=
 operator|new
 name|JLabel
@@ -2029,8 +2029,8 @@ argument_list|)
 expr_stmt|;
 comment|// Synchronize column widths
 name|String
-name|rbAlign
 index|[]
+name|rbAlign
 init|=
 block|{
 literal|"right"

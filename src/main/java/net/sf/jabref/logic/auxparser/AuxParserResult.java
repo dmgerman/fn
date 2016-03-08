@@ -93,13 +93,13 @@ class|class
 name|AuxParserResult
 block|{
 DECL|field|masterDatabase
-specifier|public
+specifier|private
 specifier|final
 name|BibDatabase
 name|masterDatabase
 decl_stmt|;
 DECL|field|uniqueKeys
-specifier|public
+specifier|private
 specifier|final
 name|Set
 argument_list|<
@@ -113,7 +113,7 @@ argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|field|unresolvedKeys
-specifier|public
+specifier|private
 specifier|final
 name|List
 argument_list|<
@@ -127,7 +127,8 @@ argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|field|auxDatabase
-specifier|public
+specifier|private
+specifier|final
 name|BibDatabase
 name|auxDatabase
 init|=
@@ -136,12 +137,12 @@ name|BibDatabase
 argument_list|()
 decl_stmt|;
 DECL|field|nestedAuxCount
-specifier|public
+specifier|private
 name|int
 name|nestedAuxCount
 decl_stmt|;
 DECL|field|crossRefEntriesCount
-specifier|public
+specifier|private
 name|int
 name|crossRefEntriesCount
 decl_stmt|;
@@ -234,6 +235,26 @@ block|{
 return|return
 name|crossRefEntriesCount
 return|;
+block|}
+DECL|method|increaseCrossRefEntiresCounter ()
+specifier|public
+name|void
+name|increaseCrossRefEntiresCounter
+parameter_list|()
+block|{
+name|crossRefEntriesCount
+operator|++
+expr_stmt|;
+block|}
+DECL|method|increaseNestedAuxFilesCounter ()
+specifier|public
+name|void
+name|increaseNestedAuxFilesCounter
+parameter_list|()
+block|{
+name|nestedAuxCount
+operator|++
+expr_stmt|;
 block|}
 comment|/**      * Prints parsing statistics      *      * @param includeMissingEntries      * @return      */
 DECL|method|getInformation (boolean includeMissingEntries)
@@ -377,8 +398,7 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-name|getCrossRefEntriesCount
-argument_list|()
+name|crossRefEntriesCount
 argument_list|)
 operator|.
 name|append
@@ -455,6 +475,19 @@ name|result
 operator|.
 name|toString
 argument_list|()
+return|;
+block|}
+DECL|method|getUniqueKeys ()
+specifier|public
+name|Set
+argument_list|<
+name|String
+argument_list|>
+name|getUniqueKeys
+parameter_list|()
+block|{
+return|return
+name|uniqueKeys
 return|;
 block|}
 block|}

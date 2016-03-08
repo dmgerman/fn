@@ -13697,9 +13697,15 @@ argument_list|()
 expr_stmt|;
 if|if
 condition|(
+operator|!
+name|Objects
+operator|.
+name|equals
+argument_list|(
 name|entry
-operator|!=
+argument_list|,
 name|showing
+argument_list|)
 condition|)
 block|{
 comment|// Add the entry we are leaving to the history:
