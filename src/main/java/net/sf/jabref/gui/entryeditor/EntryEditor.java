@@ -4122,11 +4122,14 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-operator|(
+name|Objects
+operator|.
+name|equals
+argument_list|(
 name|comp
-operator|==
+argument_list|,
 name|source
-operator|)
+argument_list|)
 operator|||
 operator|(
 operator|(

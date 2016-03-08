@@ -1262,14 +1262,11 @@ if|if
 condition|(
 literal|"etal"
 operator|.
-name|equals
+name|equalsIgnoreCase
 argument_list|(
 name|key
 operator|.
 name|trim
-argument_list|()
-operator|.
-name|toLowerCase
 argument_list|()
 argument_list|)
 operator|&&

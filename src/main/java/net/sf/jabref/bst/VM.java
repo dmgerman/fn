@@ -4627,16 +4627,6 @@ specifier|final
 name|Tree
 name|localTree
 decl_stmt|;
-DECL|method|getTree ()
-specifier|public
-name|Tree
-name|getTree
-parameter_list|()
-block|{
-return|return
-name|localTree
-return|;
-block|}
 DECL|method|StackFunction (Tree stack)
 specifier|public
 name|StackFunction
@@ -4649,6 +4639,16 @@ name|localTree
 operator|=
 name|stack
 expr_stmt|;
+block|}
+DECL|method|getTree ()
+specifier|public
+name|Tree
+name|getTree
+parameter_list|()
+block|{
+return|return
+name|localTree
+return|;
 block|}
 annotation|@
 name|Override

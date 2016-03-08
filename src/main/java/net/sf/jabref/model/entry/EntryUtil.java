@@ -39,37 +39,6 @@ name|SEPARATING_CHARS_NOSPACE
 init|=
 literal|";,\n"
 decl_stmt|;
-comment|/**      * Static equals that can also return the right result when one of the objects is null.      *      * @param one The object whose equals method is called if the first is not null.      * @param two The object passed to the first one if the first is not null.      * @return<code>one == null ? two == null : one.equals(two);</code>      */
-DECL|method|equals (Object one, Object two)
-specifier|public
-specifier|static
-name|boolean
-name|equals
-parameter_list|(
-name|Object
-name|one
-parameter_list|,
-name|Object
-name|two
-parameter_list|)
-block|{
-return|return
-name|one
-operator|==
-literal|null
-condition|?
-name|two
-operator|==
-literal|null
-else|:
-name|one
-operator|.
-name|equals
-argument_list|(
-name|two
-argument_list|)
-return|;
-block|}
 comment|/**      * Make first character of String uppercase, and the      * rest lowercase.      */
 DECL|method|capitalizeFirst (String toCapitalize)
 specifier|public

@@ -904,6 +904,16 @@ name|List
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Objects
+import|;
+end_import
+
 begin_comment
 comment|/**  * The main window of the application.  */
 end_comment
@@ -13328,9 +13338,15 @@ control|)
 block|{
 if|if
 condition|(
+operator|!
+name|Objects
+operator|.
+name|equals
+argument_list|(
 name|p
-operator|!=
+argument_list|,
 name|active
+argument_list|)
 condition|)
 block|{
 name|closeTab

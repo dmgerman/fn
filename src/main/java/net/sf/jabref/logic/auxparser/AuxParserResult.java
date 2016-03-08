@@ -236,20 +236,20 @@ return|return
 name|crossRefEntriesCount
 return|;
 block|}
-DECL|method|countCrossRefEntry ()
+DECL|method|increaseCrossRefEntiresCounter ()
 specifier|public
 name|void
-name|countCrossRefEntry
+name|increaseCrossRefEntiresCounter
 parameter_list|()
 block|{
 name|crossRefEntriesCount
 operator|++
 expr_stmt|;
 block|}
-DECL|method|countNestedAuxFile ()
+DECL|method|increaseNestedAuxFilesCounter ()
 specifier|public
 name|void
-name|countNestedAuxFile
+name|increaseNestedAuxFilesCounter
 parameter_list|()
 block|{
 name|nestedAuxCount
