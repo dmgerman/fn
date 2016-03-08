@@ -739,12 +739,11 @@ literal|"unused"
 argument_list|)
 annotation|@
 name|Test
-DECL|method|testFixAuthorLastNameFirstCommas ()
+DECL|method|testFixAuthorLastNameFirstCommasNoComma ()
 specifier|public
 name|void
-name|testFixAuthorLastNameFirstCommas
+name|testFixAuthorLastNameFirstCommasNoComma
 parameter_list|()
-block|{
 block|{
 comment|// No commas before and
 name|Assert
@@ -972,6 +971,19 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
+annotation|@
+name|Test
+DECL|method|testFixAuthorLastNameFirstCommasOxfordComma ()
+specifier|public
+name|void
+name|testFixAuthorLastNameFirstCommasOxfordComma
+parameter_list|()
+block|{
 comment|// Oxford Commas
 name|Assert
 operator|.
@@ -2803,12 +2815,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testGetAuthorsLastFirst ()
+DECL|method|testGetAuthorsLastFirstNoComma ()
 specifier|public
 name|void
-name|testGetAuthorsLastFirst
+name|testGetAuthorsLastFirstNoComma
 parameter_list|()
-block|{
 block|{
 comment|// No commas before and
 name|AuthorList
@@ -3006,6 +3017,14 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+DECL|method|testGetAuthorsLastFirstOxfordComma ()
+specifier|public
+name|void
+name|testGetAuthorsLastFirstOxfordComma
+parameter_list|()
+block|{
 comment|// Oxford comma
 name|AuthorList
 name|al

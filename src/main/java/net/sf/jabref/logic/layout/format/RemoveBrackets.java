@@ -80,13 +80,17 @@ control|)
 block|{
 if|if
 condition|(
+operator|(
 name|c
 operator|!=
 literal|'{'
+operator|)
 operator|&&
+operator|(
 name|c
 operator|!=
 literal|'}'
+operator|)
 condition|)
 block|{
 name|builder

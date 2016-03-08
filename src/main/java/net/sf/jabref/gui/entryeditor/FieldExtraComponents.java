@@ -1540,8 +1540,8 @@ argument_list|()
 operator|==
 literal|2
 condition|)
-comment|// double click
 block|{
+comment|// double click
 name|String
 name|date
 init|=
