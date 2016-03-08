@@ -1563,20 +1563,22 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|!
 name|importRes
 operator|.
-name|noPdfFiles
+name|getNoPdfFiles
+argument_list|()
 operator|.
-name|length
-operator|>
-literal|0
+name|isEmpty
+argument_list|()
 condition|)
 block|{
 name|loadOrImportFiles
 argument_list|(
 name|importRes
 operator|.
-name|noPdfFiles
+name|getNoPdfFiles
+argument_list|()
 argument_list|,
 name|dropRow
 argument_list|)
@@ -1591,13 +1593,15 @@ literal|true
 return|;
 block|}
 comment|/**      * Take a set of filenames. Those with names indicating bib files are opened as such if possible. All other files we      * will attempt to import into the current database.      *      * @param fileNames The names of the files to open.      * @param dropRow success status for the operation      */
-DECL|method|loadOrImportFiles (String[] fileNames, int dropRow)
+DECL|method|loadOrImportFiles (List<String> fileNames, int dropRow)
 specifier|private
 name|void
 name|loadOrImportFiles
 parameter_list|(
+name|List
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|fileNames
 parameter_list|,
 name|int

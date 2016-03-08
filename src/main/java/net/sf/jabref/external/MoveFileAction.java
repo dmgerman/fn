@@ -395,14 +395,12 @@ name|httpLink
 init|=
 name|ln
 operator|.
-name|toLowerCase
-argument_list|()
-operator|.
-name|startsWith
+name|matches
 argument_list|(
-literal|"http"
+literal|"^[Hh][Tt][Tt][Pp].*"
 argument_list|)
 decl_stmt|;
+comment|// Starts with http, case insensitive and locale independent
 if|if
 condition|(
 name|httpLink

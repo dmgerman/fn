@@ -676,15 +676,13 @@ if|if
 condition|(
 name|resultingKey
 operator|.
-name|toLowerCase
-argument_list|()
-operator|.
-name|startsWith
+name|matches
 argument_list|(
-literal|"arxiv:"
+literal|"^[Aa][Rr][Xx][Ii][Vv]:.*"
 argument_list|)
 condition|)
 block|{
+comment|// Starts with arxiv:, case and locale independent
 name|resultingKey
 operator|=
 name|resultingKey
