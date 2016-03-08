@@ -557,7 +557,12 @@ operator|.
 name|getName
 argument_list|()
 argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Error"
+argument_list|)
 argument_list|,
 name|JOptionPane
 operator|.
