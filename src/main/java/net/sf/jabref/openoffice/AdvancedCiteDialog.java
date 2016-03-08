@@ -148,6 +148,18 @@ name|ActionEvent
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|awt
+operator|.
+name|event
+operator|.
+name|ActionListener
+import|;
+end_import
+
 begin_comment
 comment|/**  * Dialog for adding citation with page number info.  */
 end_comment
@@ -503,22 +515,11 @@ operator|.
 name|pack
 argument_list|()
 expr_stmt|;
-name|Action
+name|ActionListener
 name|okAction
 init|=
-operator|new
-name|AbstractAction
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|actionPerformed
-parameter_list|(
-name|ActionEvent
 name|actionEvent
-parameter_list|)
+lambda|->
 block|{
 name|okPressed
 operator|=
@@ -529,7 +530,6 @@ operator|.
 name|dispose
 argument_list|()
 expr_stmt|;
-block|}
 block|}
 decl_stmt|;
 name|ok
