@@ -1117,6 +1117,32 @@ argument_list|(
 name|comment
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|typ
+operator|==
+literal|null
+condition|)
+block|{
+name|parserResult
+operator|.
+name|addWarning
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Ill-formed entrytype comment in bib file"
+argument_list|)
+operator|+
+literal|": "
+operator|+
+name|comment
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
 name|entryTypes
 operator|.
 name|put
@@ -1129,6 +1155,7 @@ argument_list|,
 name|typ
 argument_list|)
 expr_stmt|;
+block|}
 comment|// custom entry types are always re-written by JabRef and not stored in the file
 name|dumpTextReadSoFarToString
 argument_list|()
