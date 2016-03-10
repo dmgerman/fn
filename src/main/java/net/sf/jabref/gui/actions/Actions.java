@@ -303,6 +303,15 @@ name|MOVE_TO_GROUP
 init|=
 literal|"moveToGroup"
 decl_stmt|;
+DECL|field|OPEN_CONSOLE
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|OPEN_CONSOLE
+init|=
+literal|"openConsole"
+decl_stmt|;
 DECL|field|OPEN_EXTERNAL_FILE
 specifier|public
 specifier|static

@@ -1922,6 +1922,11 @@ block|{
 name|runCommand
 argument_list|()
 expr_stmt|;
+name|frame
+operator|.
+name|updateEnabledState
+argument_list|()
+expr_stmt|;
 block|}
 comment|/**      * Run the "Save as" operation. This method offloads the actual save operation to a background thread, but      * still runs synchronously using Spin (the method returns only after completing the operation).      */
 DECL|method|saveAs ()
@@ -2190,6 +2195,11 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+name|frame
+operator|.
+name|updateEnabledState
+argument_list|()
+expr_stmt|;
 block|}
 comment|/**      * Query whether the last operation was successful.      *      * @return true if the last Save/SaveAs operation completed successfully, false otherwise.      */
 DECL|method|isSuccess ()
