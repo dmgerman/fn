@@ -944,6 +944,15 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+DECL|field|ELLIPSES
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|ELLIPSES
+init|=
+literal|"..."
+decl_stmt|;
 DECL|field|contentPane
 specifier|final
 name|JSplitPane
@@ -1036,6 +1045,8 @@ name|menuTitle
 argument_list|(
 literal|"Check integrity"
 argument_list|)
+operator|+
+name|ELLIPSES
 argument_list|)
 block|{
 annotation|@
@@ -3028,6 +3039,8 @@ name|menuTitle
 argument_list|(
 literal|"Replace string"
 argument_list|)
+operator|+
+name|ELLIPSES
 argument_list|,
 name|Globals
 operator|.
@@ -3285,6 +3298,8 @@ name|lang
 argument_list|(
 literal|"Add to group"
 argument_list|)
+operator|+
+name|ELLIPSES
 argument_list|)
 decl_stmt|;
 DECL|field|removeFromGroup
@@ -3306,6 +3321,8 @@ name|lang
 argument_list|(
 literal|"Remove from group"
 argument_list|)
+operator|+
+name|ELLIPSES
 argument_list|)
 decl_stmt|;
 DECL|field|moveToGroup
@@ -3327,6 +3344,8 @@ name|lang
 argument_list|(
 literal|"Move to group"
 argument_list|)
+operator|+
+name|ELLIPSES
 argument_list|)
 decl_stmt|;
 DECL|field|togglePreview
@@ -3743,6 +3762,8 @@ name|menuTitle
 argument_list|(
 literal|"New entry from plain text"
 argument_list|)
+operator|+
+name|ELLIPSES
 argument_list|,
 name|Globals
 operator|.
@@ -3839,6 +3860,8 @@ name|lang
 argument_list|(
 literal|"Synchronize file links"
 argument_list|)
+operator|+
+name|ELLIPSES
 argument_list|,
 name|Globals
 operator|.
@@ -4088,6 +4111,8 @@ name|menuTitle
 argument_list|(
 literal|"Cleanup entries"
 argument_list|)
+operator|+
+name|ELLIPSES
 argument_list|,
 name|Localization
 operator|.
@@ -4137,6 +4162,8 @@ name|menuTitle
 argument_list|(
 literal|"Merge entries"
 argument_list|)
+operator|+
+name|ELLIPSES
 argument_list|,
 name|Localization
 operator|.

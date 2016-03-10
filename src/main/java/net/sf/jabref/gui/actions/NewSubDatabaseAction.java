@@ -218,6 +218,8 @@ name|menuTitle
 argument_list|(
 literal|"New subdatabase based on AUX file"
 argument_list|)
+operator|+
+literal|"..."
 argument_list|)
 expr_stmt|;
 name|putValue

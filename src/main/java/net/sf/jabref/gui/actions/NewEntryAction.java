@@ -234,6 +234,8 @@ name|menuTitle
 argument_list|(
 literal|"New entry"
 argument_list|)
+operator|+
+literal|"..."
 argument_list|)
 expr_stmt|;
 name|putValue

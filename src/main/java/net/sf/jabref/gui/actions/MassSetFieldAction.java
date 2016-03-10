@@ -368,6 +368,8 @@ name|menuTitle
 argument_list|(
 literal|"Set/clear/rename fields"
 argument_list|)
+operator|+
+literal|"..."
 argument_list|)
 expr_stmt|;
 name|this
