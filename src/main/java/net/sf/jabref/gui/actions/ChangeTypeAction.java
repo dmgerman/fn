@@ -132,7 +132,7 @@ parameter_list|)
 block|{
 name|panel
 operator|.
-name|changeType
+name|changeTypeOfSelectedEntries
 argument_list|(
 name|type
 argument_list|)

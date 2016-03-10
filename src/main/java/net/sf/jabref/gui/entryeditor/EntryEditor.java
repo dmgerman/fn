@@ -836,6 +836,13 @@ specifier|private
 name|BibEntry
 name|entry
 decl_stmt|;
+comment|// The currently displayed type
+DECL|field|displayedBibEntryType
+specifier|private
+specifier|final
+name|String
+name|displayedBibEntryType
+decl_stmt|;
 comment|// The action concerned with closing the window.
 DECL|field|closeAction
 specifier|private
@@ -1141,6 +1148,13 @@ operator|.
 name|getInstance
 argument_list|()
 argument_list|)
+expr_stmt|;
+name|displayedBibEntryType
+operator|=
+name|entry
+operator|.
+name|getType
+argument_list|()
 expr_stmt|;
 name|helpAction
 operator|=
@@ -2236,17 +2250,14 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|getType ()
+DECL|method|getDisplayedBibEntryType ()
 specifier|public
 name|String
-name|getType
+name|getDisplayedBibEntryType
 parameter_list|()
 block|{
 return|return
-name|entry
-operator|.
-name|getType
-argument_list|()
+name|displayedBibEntryType
 return|;
 block|}
 comment|/**      * @return reference to the currently edited entry      */
