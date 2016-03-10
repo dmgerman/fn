@@ -24,20 +24,6 @@ name|jabref
 operator|.
 name|importer
 operator|.
-name|ImportInspector
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|importer
-operator|.
 name|OutputPrinter
 import|;
 end_import
@@ -55,38 +41,6 @@ operator|.
 name|fetcher
 operator|.
 name|DOItoBibTeXFetcher
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
-name|l10n
-operator|.
-name|Localization
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
-name|util
-operator|.
-name|DOI
 import|;
 end_import
 
@@ -250,16 +204,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Optional
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|regex
 operator|.
 name|Matcher
@@ -331,21 +275,21 @@ operator|new
 name|DOItoBibTeXFetcher
 argument_list|()
 decl_stmt|;
-comment|// input split into several lines
-DECL|field|split
+comment|// input paragraphs into several lines
+DECL|field|paragraphs
 specifier|private
 name|String
 index|[]
-name|split
+name|paragraphs
 decl_stmt|;
-comment|// current index in split
+comment|// current index in paragraphs
 DECL|field|i
 specifier|private
 name|int
 name|i
 decl_stmt|;
-comment|// curent "line" in split.
-comment|// sometimes, a "line" is several lines in split
+comment|// curent "line" in paragraphs.
+comment|// sometimes, a "line" is several lines in paragraphs
 DECL|field|curString
 specifier|private
 name|String
@@ -1074,7 +1018,15 @@ argument_list|(
 name|document
 argument_list|)
 decl_stmt|;
-name|split
+comment|// idea: paragraphs[] contains the different lines
+comment|// blocks are separated by empty lines
+comment|// treat each block
+comment|//   or do special treatment at authors (which are not broken)
+comment|//   therefore, we do a line-based and not a block-based splitting
+comment|// i points to the current line
+comment|// curString (mostly) contains the current block
+comment|//   the different lines are joined into one and thereby separated by " "
+name|paragraphs
 operator|=
 name|firstPageContents
 operator|.
@@ -1086,14 +1038,6 @@ name|lineSeparator
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// idea: split[] contains the different lines
-comment|// blocks are separated by empty lines
-comment|// treat each block
-comment|//   or do special treatment at authors (which are not broken)
-comment|//   therefore, we do a line-based and not a block-based splitting
-comment|// i points to the current line
-comment|// curString (mostly) contains the current block
-comment|//   the different lines are joined into one and thereby separated by " "
 name|proceedToNextNonEmptyLine
 argument_list|()
 expr_stmt|;
@@ -1101,7 +1045,7 @@ if|if
 condition|(
 name|i
 operator|>=
-name|split
+name|paragraphs
 operator|.
 name|length
 condition|)
@@ -1114,7 +1058,7 @@ return|;
 block|}
 name|curString
 operator|=
-name|split
+name|paragraphs
 index|[
 name|i
 index|]
@@ -1130,11 +1074,6 @@ name|author
 decl_stmt|;
 name|String
 name|editor
-init|=
-literal|null
-decl_stmt|;
-name|String
-name|institution
 init|=
 literal|null
 decl_stmt|;
@@ -1292,7 +1231,7 @@ condition|(
 operator|(
 name|i
 operator|<
-name|split
+name|paragraphs
 operator|.
 name|length
 operator|)
@@ -1302,20 +1241,20 @@ literal|""
 operator|.
 name|equals
 argument_list|(
-name|split
+name|paragraphs
 index|[
 name|i
 index|]
 argument_list|)
 condition|)
 block|{
-comment|// author names are unlikely to be split among different lines
+comment|// author names are unlikely to be paragraphs among different lines
 comment|// treat them line by line
 name|curString
 operator|=
 name|streamlineNames
 argument_list|(
-name|split
+name|paragraphs
 index|[
 name|i
 index|]
@@ -1345,7 +1284,7 @@ name|curString
 argument_list|)
 condition|)
 block|{
-comment|// if split[i] is "and" then "" is returned by streamlineNames -> do nothing
+comment|// if paragraphs[i] is "and" then "" is returned by streamlineNames -> do nothing
 block|}
 else|else
 block|{
@@ -1381,14 +1320,14 @@ while|while
 condition|(
 name|i
 operator|<
-name|split
+name|paragraphs
 operator|.
 name|length
 condition|)
 block|{
 name|curString
 operator|=
-name|split
+name|paragraphs
 index|[
 name|i
 index|]
@@ -1482,7 +1421,7 @@ condition|(
 operator|(
 name|i
 operator|<
-name|split
+name|paragraphs
 operator|.
 name|length
 operator|)
@@ -1492,7 +1431,7 @@ literal|""
 operator|.
 name|equals
 argument_list|(
-name|split
+name|paragraphs
 index|[
 name|i
 index|]
@@ -1505,7 +1444,7 @@ name|curString
 operator|.
 name|concat
 argument_list|(
-name|split
+name|paragraphs
 index|[
 name|i
 index|]
@@ -1694,7 +1633,7 @@ block|}
 block|}
 name|i
 operator|=
-name|split
+name|paragraphs
 operator|.
 name|length
 operator|-
@@ -2114,10 +2053,6 @@ block|}
 block|}
 block|}
 block|}
-comment|//					String lower = curString.toLowerCase();
-comment|//					if (institution == null) {
-comment|//
-comment|//					}
 block|}
 block|}
 name|BibEntry
@@ -2165,24 +2100,6 @@ argument_list|(
 literal|"editor"
 argument_list|,
 name|editor
-argument_list|)
-expr_stmt|;
-block|}
-comment|// TODO: Set the institution field during parsing
-if|if
-condition|(
-name|institution
-operator|!=
-literal|null
-condition|)
-block|{
-name|entry
-operator|.
-name|setField
-argument_list|(
-literal|"institution"
-argument_list|,
-name|institution
 argument_list|)
 expr_stmt|;
 block|}
@@ -2392,51 +2309,6 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|NoClassDefFoundError
-name|e
-parameter_list|)
-block|{
-if|if
-condition|(
-literal|"org/bouncycastle/jce/provider/BouncyCastleProvider"
-operator|.
-name|equals
-argument_list|(
-name|e
-operator|.
-name|getMessage
-argument_list|()
-argument_list|)
-condition|)
-block|{
-name|status
-operator|.
-name|showMessage
-argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Java Bouncy Castle library not found. Please download and install it. For more information see http://www.bouncycastle.org/."
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-name|LOGGER
-operator|.
-name|error
-argument_list|(
-literal|"Could not find class"
-argument_list|,
-name|e
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-catch|catch
-parameter_list|(
 name|IOException
 name|e
 parameter_list|)
@@ -2592,7 +2464,7 @@ condition|(
 operator|(
 name|i
 operator|<
-name|split
+name|paragraphs
 operator|.
 name|length
 operator|)
@@ -2601,7 +2473,7 @@ literal|""
 operator|.
 name|equals
 argument_list|(
-name|split
+name|paragraphs
 index|[
 name|i
 index|]
@@ -2616,7 +2488,7 @@ operator|++
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Fill curString with lines until "" is found      * No trailing space is added      * i is advanced to the next non-empty line (ignoring white space)      *<p>      * Lines containing only white spaces are ignored,      * but NOT considered as ""      *<p>      * Uses GLOBAL variables split, curLine, i      */
+comment|/**      * Fill curString with lines until "" is found      * No trailing space is added      * i is advanced to the next non-empty line (ignoring white space)      *<p>      * Lines containing only white spaces are ignored,      * but NOT considered as ""      *<p>      * Uses GLOBAL variables paragraphs, curLine, i      */
 DECL|method|fillCurStringWithNonEmptyLines ()
 specifier|private
 name|void
@@ -2636,7 +2508,7 @@ condition|(
 operator|(
 name|i
 operator|<
-name|split
+name|paragraphs
 operator|.
 name|length
 operator|)
@@ -2646,7 +2518,7 @@ literal|""
 operator|.
 name|equals
 argument_list|(
-name|split
+name|paragraphs
 index|[
 name|i
 index|]
@@ -2656,7 +2528,7 @@ block|{
 name|String
 name|curLine
 init|=
-name|split
+name|paragraphs
 index|[
 name|i
 index|]
@@ -2701,7 +2573,7 @@ name|curString
 operator|.
 name|concat
 argument_list|(
-name|split
+name|paragraphs
 index|[
 name|i
 index|]
@@ -2735,7 +2607,7 @@ literal|""
 operator|.
 name|equals
 argument_list|(
-name|split
+name|paragraphs
 index|[
 name|i
 index|]
@@ -2769,7 +2641,7 @@ literal|""
 operator|.
 name|equals
 argument_list|(
-name|split
+name|paragraphs
 index|[
 name|i
 index|]
@@ -2809,7 +2681,7 @@ name|curString
 operator|.
 name|concat
 argument_list|(
-name|split
+name|paragraphs
 index|[
 name|j
 index|]
