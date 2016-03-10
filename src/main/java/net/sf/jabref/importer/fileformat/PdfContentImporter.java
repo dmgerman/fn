@@ -315,21 +315,21 @@ operator|new
 name|DOItoBibTeXFetcher
 argument_list|()
 decl_stmt|;
-comment|// input paragraphs into several lines
-DECL|field|paragraphs
+comment|// input lines into several lines
+DECL|field|lines
 specifier|private
 name|String
 index|[]
-name|paragraphs
+name|lines
 decl_stmt|;
-comment|// current index in paragraphs
+comment|// current index in lines
 DECL|field|i
 specifier|private
 name|int
 name|i
 decl_stmt|;
-comment|// curent "line" in paragraphs.
-comment|// sometimes, a "line" is several lines in paragraphs
+comment|// curent "line" in lines.
+comment|// sometimes, a "line" is several lines in lines
 DECL|field|curString
 specifier|private
 name|String
@@ -1170,7 +1170,7 @@ comment|//   therefore, we do a line-based and not a block-based splitting
 comment|// i points to the current line
 comment|// curString (mostly) contains the current block
 comment|//   the different lines are joined into one and thereby separated by " "
-name|paragraphs
+name|lines
 operator|=
 name|firstPageContents
 operator|.
@@ -1189,7 +1189,7 @@ if|if
 condition|(
 name|i
 operator|>=
-name|paragraphs
+name|lines
 operator|.
 name|length
 condition|)
@@ -1202,7 +1202,7 @@ return|;
 block|}
 name|curString
 operator|=
-name|paragraphs
+name|lines
 index|[
 name|i
 index|]
@@ -1375,7 +1375,7 @@ condition|(
 operator|(
 name|i
 operator|<
-name|paragraphs
+name|lines
 operator|.
 name|length
 operator|)
@@ -1385,20 +1385,20 @@ literal|""
 operator|.
 name|equals
 argument_list|(
-name|paragraphs
+name|lines
 index|[
 name|i
 index|]
 argument_list|)
 condition|)
 block|{
-comment|// author names are unlikely to be paragraphs among different lines
+comment|// author names are unlikely to be lines among different lines
 comment|// treat them line by line
 name|curString
 operator|=
 name|streamlineNames
 argument_list|(
-name|paragraphs
+name|lines
 index|[
 name|i
 index|]
@@ -1428,7 +1428,7 @@ name|curString
 argument_list|)
 condition|)
 block|{
-comment|// if paragraphs[i] is "and" then "" is returned by streamlineNames -> do nothing
+comment|// if lines[i] is "and" then "" is returned by streamlineNames -> do nothing
 block|}
 else|else
 block|{
@@ -1464,14 +1464,14 @@ while|while
 condition|(
 name|i
 operator|<
-name|paragraphs
+name|lines
 operator|.
 name|length
 condition|)
 block|{
 name|curString
 operator|=
-name|paragraphs
+name|lines
 index|[
 name|i
 index|]
@@ -1565,7 +1565,7 @@ condition|(
 operator|(
 name|i
 operator|<
-name|paragraphs
+name|lines
 operator|.
 name|length
 operator|)
@@ -1575,7 +1575,7 @@ literal|""
 operator|.
 name|equals
 argument_list|(
-name|paragraphs
+name|lines
 index|[
 name|i
 index|]
@@ -1588,7 +1588,7 @@ name|curString
 operator|.
 name|concat
 argument_list|(
-name|paragraphs
+name|lines
 index|[
 name|i
 index|]
@@ -1777,7 +1777,7 @@ block|}
 block|}
 name|i
 operator|=
-name|paragraphs
+name|lines
 operator|.
 name|length
 operator|-
@@ -2608,7 +2608,7 @@ condition|(
 operator|(
 name|i
 operator|<
-name|paragraphs
+name|lines
 operator|.
 name|length
 operator|)
@@ -2617,7 +2617,7 @@ literal|""
 operator|.
 name|equals
 argument_list|(
-name|paragraphs
+name|lines
 index|[
 name|i
 index|]
@@ -2632,7 +2632,7 @@ operator|++
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Fill curString with lines until "" is found      * No trailing space is added      * i is advanced to the next non-empty line (ignoring white space)      *<p>      * Lines containing only white spaces are ignored,      * but NOT considered as ""      *<p>      * Uses GLOBAL variables paragraphs, curLine, i      */
+comment|/**      * Fill curString with lines until "" is found      * No trailing space is added      * i is advanced to the next non-empty line (ignoring white space)      *<p>      * Lines containing only white spaces are ignored,      * but NOT considered as ""      *<p>      * Uses GLOBAL variables lines, curLine, i      */
 DECL|method|fillCurStringWithNonEmptyLines ()
 specifier|private
 name|void
@@ -2652,7 +2652,7 @@ condition|(
 operator|(
 name|i
 operator|<
-name|paragraphs
+name|lines
 operator|.
 name|length
 operator|)
@@ -2662,7 +2662,7 @@ literal|""
 operator|.
 name|equals
 argument_list|(
-name|paragraphs
+name|lines
 index|[
 name|i
 index|]
@@ -2672,7 +2672,7 @@ block|{
 name|String
 name|curLine
 init|=
-name|paragraphs
+name|lines
 index|[
 name|i
 index|]
@@ -2717,7 +2717,7 @@ name|curString
 operator|.
 name|concat
 argument_list|(
-name|paragraphs
+name|lines
 index|[
 name|i
 index|]
@@ -2751,7 +2751,7 @@ literal|""
 operator|.
 name|equals
 argument_list|(
-name|paragraphs
+name|lines
 index|[
 name|i
 index|]
@@ -2785,7 +2785,7 @@ literal|""
 operator|.
 name|equals
 argument_list|(
-name|paragraphs
+name|lines
 index|[
 name|i
 index|]
@@ -2825,7 +2825,7 @@ name|curString
 operator|.
 name|concat
 argument_list|(
-name|paragraphs
+name|lines
 index|[
 name|j
 index|]
