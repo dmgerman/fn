@@ -11298,7 +11298,7 @@ if|if
 condition|(
 name|currentEditor
 operator|.
-name|getType
+name|getDisplayedBibEntryType
 argument_list|()
 operator|.
 name|equals
@@ -11989,41 +11989,13 @@ block|}
 end_function
 
 begin_function
-DECL|method|changeType (BibEntry bes, String type)
+DECL|method|changeTypeOfSelectedEntries (String newType)
 specifier|public
 name|void
-name|changeType
-parameter_list|(
-name|BibEntry
-name|bes
-parameter_list|,
-name|String
-name|type
-parameter_list|)
-block|{
-name|changeType
-argument_list|(
-name|Arrays
-operator|.
-name|asList
-argument_list|(
-name|bes
-argument_list|)
-argument_list|,
-name|type
-argument_list|)
-expr_stmt|;
-block|}
-end_function
-
-begin_function
-DECL|method|changeType (String type)
-specifier|public
-name|void
-name|changeType
+name|changeTypeOfSelectedEntries
 parameter_list|(
 name|String
-name|type
+name|newType
 parameter_list|)
 block|{
 name|List
@@ -12041,14 +12013,14 @@ name|changeType
 argument_list|(
 name|bes
 argument_list|,
-name|type
+name|newType
 argument_list|)
 expr_stmt|;
 block|}
 end_function
 
 begin_function
-DECL|method|changeType (List<BibEntry> bes, String type)
+DECL|method|changeType (List<BibEntry> entries, String newType)
 specifier|private
 name|void
 name|changeType
@@ -12057,22 +12029,22 @@ name|List
 argument_list|<
 name|BibEntry
 argument_list|>
-name|bes
+name|entries
 parameter_list|,
 name|String
-name|type
+name|newType
 parameter_list|)
 block|{
 if|if
 condition|(
 operator|(
-name|bes
+name|entries
 operator|==
 literal|null
 operator|)
 operator|||
 operator|(
-name|bes
+name|entries
 operator|.
 name|isEmpty
 argument_list|()
@@ -12090,7 +12062,7 @@ return|return;
 block|}
 if|if
 condition|(
-name|bes
+name|entries
 operator|.
 name|size
 argument_list|()
@@ -12113,7 +12085,7 @@ name|lang
 argument_list|(
 literal|"Multiple entries selected. Do you want to change the type of all these to '%0'?"
 argument_list|,
-name|type
+name|newType
 argument_list|)
 argument_list|,
 name|Localization
@@ -12145,7 +12117,7 @@ return|return;
 block|}
 block|}
 name|NamedCompound
-name|ce
+name|compound
 init|=
 operator|new
 name|NamedCompound
@@ -12161,34 +12133,34 @@ decl_stmt|;
 for|for
 control|(
 name|BibEntry
-name|be
+name|entry
 range|:
-name|bes
+name|entries
 control|)
 block|{
-name|ce
+name|compound
 operator|.
 name|addEdit
 argument_list|(
 operator|new
 name|UndoableChangeType
 argument_list|(
-name|be
+name|entry
 argument_list|,
-name|be
+name|entry
 operator|.
 name|getType
 argument_list|()
 argument_list|,
-name|type
+name|newType
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|be
+name|entry
 operator|.
 name|setType
 argument_list|(
-name|type
+name|newType
 argument_list|)
 expr_stmt|;
 block|}
@@ -12202,17 +12174,17 @@ name|lang
 argument_list|(
 literal|"Changed type to '%0' for"
 argument_list|,
-name|type
+name|newType
 argument_list|)
 argument_list|,
-name|bes
+name|entries
 operator|.
 name|size
 argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|ce
+name|compound
 operator|.
 name|end
 argument_list|()
@@ -12221,7 +12193,7 @@ name|undoManager
 operator|.
 name|addEdit
 argument_list|(
-name|ce
+name|compound
 argument_list|)
 expr_stmt|;
 name|markBaseChanged
