@@ -74,6 +74,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|regex
 operator|.
 name|Matcher
@@ -1020,7 +1030,7 @@ name|ArrayList
 argument_list|<
 name|BibEntry
 argument_list|>
-name|res
+name|result
 init|=
 operator|new
 name|ArrayList
@@ -1057,7 +1067,6 @@ argument_list|(
 literal|"Encrypted documents are not supported"
 argument_list|)
 expr_stmt|;
-comment|//return res;
 block|}
 name|PDFTextStripper
 name|stripper
@@ -1121,35 +1130,29 @@ operator|.
 name|toString
 argument_list|()
 decl_stmt|;
-name|String
+name|Optional
+argument_list|<
+name|DOI
+argument_list|>
 name|doi
 init|=
-operator|new
 name|DOI
+operator|.
+name|build
 argument_list|(
 name|textResult
 argument_list|)
-operator|.
-name|getDOI
-argument_list|()
 decl_stmt|;
 if|if
 condition|(
 name|doi
 operator|.
-name|length
-argument_list|()
-operator|<
-name|textResult
-operator|.
-name|length
+name|isPresent
 argument_list|()
 condition|)
 block|{
-comment|// A Doi was found in the text
-comment|// We do NO parsing of the text, but use the Doi fetcher
 name|ImportInspector
-name|iI
+name|inspector
 init|=
 operator|new
 name|ImportInspector
@@ -1190,7 +1193,7 @@ name|entry
 parameter_list|)
 block|{
 comment|// add the entry to the result object
-name|res
+name|result
 operator|.
 name|add
 argument_list|(
@@ -1200,15 +1203,19 @@ expr_stmt|;
 block|}
 block|}
 decl_stmt|;
-name|PdfContentImporter
-operator|.
 name|doiToBibTeXFetcher
 operator|.
 name|processQuery
 argument_list|(
 name|doi
+operator|.
+name|get
+argument_list|()
+operator|.
+name|getDOI
+argument_list|()
 argument_list|,
-name|iI
+name|inspector
 argument_list|,
 name|status
 argument_list|)
@@ -1216,20 +1223,15 @@ expr_stmt|;
 if|if
 condition|(
 operator|!
-name|res
+name|result
 operator|.
 name|isEmpty
 argument_list|()
 condition|)
 block|{
-comment|// if something has been found, return the result
 return|return
-name|res
+name|result
 return|;
-block|}
-else|else
-block|{
-comment|// otherwise, we just parse the PDF
 block|}
 block|}
 specifier|final
@@ -1273,7 +1275,7 @@ block|{
 comment|// PDF could not be parsed or is empty
 comment|// return empty list
 return|return
-name|res
+name|result
 return|;
 block|}
 name|curString
@@ -2540,7 +2542,7 @@ argument_list|,
 name|textResult
 argument_list|)
 expr_stmt|;
-name|res
+name|result
 operator|.
 name|add
 argument_list|(
@@ -2610,7 +2612,7 @@ argument_list|)
 expr_stmt|;
 block|}
 return|return
-name|res
+name|result
 return|;
 block|}
 comment|/**      * Extract the year out of curString (if it is not yet defined)      */
