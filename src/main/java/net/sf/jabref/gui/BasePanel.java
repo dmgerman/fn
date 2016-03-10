@@ -12009,7 +12009,7 @@ operator|.
 name|getSelectedEntries
 argument_list|()
 decl_stmt|;
-name|changeTypeOfSelectedEntries
+name|changeType
 argument_list|(
 name|bes
 argument_list|,
@@ -12020,10 +12020,10 @@ block|}
 end_function
 
 begin_function
-DECL|method|changeTypeOfSelectedEntries (List<BibEntry> entries, String newType)
+DECL|method|changeType (List<BibEntry> entries, String newType)
 specifier|private
 name|void
-name|changeTypeOfSelectedEntries
+name|changeType
 parameter_list|(
 name|List
 argument_list|<
