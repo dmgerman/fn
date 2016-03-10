@@ -189,6 +189,39 @@ operator|+
 literal|")"
 decl_stmt|;
 comment|// end group \1
+DECL|field|FIND_DOI_EXP
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|FIND_DOI_EXP
+init|=
+literal|""
+operator|+
+literal|"(?:urn:)?"
+comment|// optional urn
+operator|+
+literal|"(?:doi:)?"
+comment|// optional doi
+operator|+
+literal|"("
+comment|// begin group \1
+operator|+
+literal|"10"
+comment|// directory indicator
+operator|+
+literal|"(?:\\.[0-9]+)+"
+comment|// registrant codes
+operator|+
+literal|"[/:]"
+comment|// divider
+operator|+
+literal|"(?:[^\\s]+)"
+comment|// suffix alphanumeric without space
+operator|+
+literal|")"
+decl_stmt|;
+comment|// end group \1
 DECL|field|HTTP_EXP
 specifier|private
 specifier|static
@@ -201,6 +234,28 @@ operator|+
 name|DOI_EXP
 decl_stmt|;
 comment|// Pattern
+DECL|field|EXACT_DOI_PATT
+specifier|private
+specifier|static
+specifier|final
+name|Pattern
+name|EXACT_DOI_PATT
+init|=
+name|Pattern
+operator|.
+name|compile
+argument_list|(
+literal|"^(?:https?://[^\\s]+?)?"
+operator|+
+name|DOI_EXP
+operator|+
+literal|"$"
+argument_list|,
+name|Pattern
+operator|.
+name|CASE_INSENSITIVE
+argument_list|)
+decl_stmt|;
 DECL|field|DOI_PATT
 specifier|private
 specifier|static
@@ -212,11 +267,9 @@ name|Pattern
 operator|.
 name|compile
 argument_list|(
-literal|"^(?:https?://[^\\s]+?)?"
+literal|"(?:https?://[^\\s]+?)?"
 operator|+
-name|DOI_EXP
-operator|+
-literal|"$"
+name|FIND_DOI_EXP
 argument_list|,
 name|Pattern
 operator|.
@@ -312,7 +365,7 @@ comment|// Extract DOI
 name|Matcher
 name|matcher
 init|=
-name|DOI_PATT
+name|EXACT_DOI_PATT
 operator|.
 name|matcher
 argument_list|(
@@ -397,6 +450,73 @@ name|empty
 argument_list|()
 return|;
 block|}
+block|}
+comment|/**      * Tries to find a DOI inside the given text.      *      * @param text the Text which might contain a DOI      * @return an Optional containing the DOI or an empty Optional      */
+DECL|method|findInText (String text)
+specifier|public
+specifier|static
+name|Optional
+argument_list|<
+name|DOI
+argument_list|>
+name|findInText
+parameter_list|(
+name|String
+name|text
+parameter_list|)
+block|{
+name|Optional
+argument_list|<
+name|DOI
+argument_list|>
+name|result
+init|=
+name|Optional
+operator|.
+name|empty
+argument_list|()
+decl_stmt|;
+name|Matcher
+name|matcher
+init|=
+name|DOI_PATT
+operator|.
+name|matcher
+argument_list|(
+name|text
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|matcher
+operator|.
+name|find
+argument_list|()
+condition|)
+block|{
+comment|// match only group \1
+name|result
+operator|=
+name|Optional
+operator|.
+name|of
+argument_list|(
+operator|new
+name|DOI
+argument_list|(
+name|matcher
+operator|.
+name|group
+argument_list|(
+literal|1
+argument_list|)
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+return|return
+name|result
+return|;
 block|}
 comment|/**      * Return the plain DOI      *      * @return the plain DOI value.      */
 DECL|method|getDOI ()
