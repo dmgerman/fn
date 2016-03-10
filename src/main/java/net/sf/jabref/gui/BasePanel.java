@@ -11989,34 +11989,6 @@ block|}
 end_function
 
 begin_function
-DECL|method|changeType (BibEntry bes, String type)
-specifier|public
-name|void
-name|changeType
-parameter_list|(
-name|BibEntry
-name|bes
-parameter_list|,
-name|String
-name|type
-parameter_list|)
-block|{
-name|changeType
-argument_list|(
-name|Arrays
-operator|.
-name|asList
-argument_list|(
-name|bes
-argument_list|)
-argument_list|,
-name|type
-argument_list|)
-expr_stmt|;
-block|}
-end_function
-
-begin_function
 DECL|method|changeType (String type)
 specifier|public
 name|void
