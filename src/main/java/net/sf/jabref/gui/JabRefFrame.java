@@ -3487,14 +3487,14 @@ name|Localization
 operator|.
 name|menuTitle
 argument_list|(
-literal|"Disable Highlight groups matching entries"
+literal|"Disable highlight groups matching entries"
 argument_list|)
 argument_list|,
 name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Disable Highlight groups matching entries"
+literal|"Disable highlight groups matching entries"
 argument_list|)
 argument_list|)
 argument_list|)
