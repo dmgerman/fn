@@ -354,23 +354,6 @@ specifier|private
 name|String
 name|year
 decl_stmt|;
-annotation|@
-name|Override
-DECL|method|isRecognizedFormat (InputStream in)
-specifier|public
-name|boolean
-name|isRecognizedFormat
-parameter_list|(
-name|InputStream
-name|in
-parameter_list|)
-throws|throws
-name|IOException
-block|{
-return|return
-literal|false
-return|;
-block|}
 comment|/**      * Removes all non-letter characters at the end      *<p>      * EXCEPTION: a closing bracket is NOT removed      *</p>      *<p>      * TODO: Additionally replace multiple subsequent spaces by one space, which will cause a rename of this method      *</p>      */
 DECL|method|removeNonLettersAtEnd (String input)
 specifier|private
@@ -1001,6 +984,23 @@ return|;
 block|}
 annotation|@
 name|Override
+DECL|method|isRecognizedFormat (InputStream in)
+specifier|public
+name|boolean
+name|isRecognizedFormat
+parameter_list|(
+name|InputStream
+name|in
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+return|return
+literal|false
+return|;
+block|}
+annotation|@
+name|Override
 DECL|method|importEntries (InputStream in, OutputPrinter status)
 specifier|public
 name|List
@@ -1055,7 +1055,7 @@ condition|)
 block|{
 name|LOGGER
 operator|.
-name|error
+name|info
 argument_list|(
 literal|"Encrypted documents are not supported"
 argument_list|)
@@ -2468,56 +2468,6 @@ name|entry
 argument_list|)
 expr_stmt|;
 block|}
-catch|catch
-parameter_list|(
-name|NoClassDefFoundError
-name|e
-parameter_list|)
-block|{
-comment|// FIXME: The following statement has to be proven.
-comment|// This catch has to be here as this exception might be risen when an encrypted PDF is found, but no appropriate cipher suite.
-comment|// See https://sourceforge.net/p/jabref/bugs/1257/
-comment|// More background is provided at http://stackoverflow.com/a/2929228/873282
-if|if
-condition|(
-literal|"org/bouncycastle/jce/provider/BouncyCastleProvider"
-operator|.
-name|equals
-argument_list|(
-name|e
-operator|.
-name|getMessage
-argument_list|()
-argument_list|)
-condition|)
-block|{
-name|status
-operator|.
-name|showMessage
-argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Java Bouncy Castle library not found. Please download and install it. For more information see http://www.bouncycastle.org/."
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-name|LOGGER
-operator|.
-name|error
-argument_list|(
-literal|"Could not find class"
-argument_list|,
-name|e
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-comment|// IOException doesn't need to be catched as this method throws this exception
 return|return
 name|result
 return|;
