@@ -2453,6 +2453,10 @@ argument_list|;
 name|markBaseChanged
 argument_list|()
 argument_list|;
+comment|//no entry is selected anymore, thus hide the preview panel
+name|hideBottomComponent
+argument_list|()
+argument_list|;
 end_expr_stmt
 
 begin_empty_stmt
@@ -2626,8 +2630,20 @@ argument_list|)
 argument_list|;
 end_expr_stmt
 
+begin_comment
+unit|}
+comment|//no entry is selected anymore, thus hide the preview panel
+end_comment
+
+begin_expr_stmt
+unit|hideBottomComponent
+operator|(
+operator|)
+expr_stmt|;
+end_expr_stmt
+
 begin_empty_stmt
-unit|}             }         })
+unit|}         })
 empty_stmt|;
 end_empty_stmt
 
