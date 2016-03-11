@@ -647,7 +647,7 @@ init|=
 operator|new
 name|HelpAction
 argument_list|(
-literal|"OpenOfficeIntegration.html"
+literal|"OpenOfficeIntegration"
 argument_list|)
 operator|.
 name|getHelpButton
