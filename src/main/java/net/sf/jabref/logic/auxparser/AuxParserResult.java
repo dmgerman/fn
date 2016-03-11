@@ -236,10 +236,10 @@ return|return
 name|crossRefEntriesCount
 return|;
 block|}
-DECL|method|increaseCrossRefEntiresCounter ()
+DECL|method|increaseCrossRefEntriesCounter ()
 specifier|public
 name|void
-name|increaseCrossRefEntiresCounter
+name|increaseCrossRefEntriesCounter
 parameter_list|()
 block|{
 name|crossRefEntriesCount

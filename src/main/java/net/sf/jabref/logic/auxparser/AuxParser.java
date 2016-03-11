@@ -725,7 +725,7 @@ argument_list|)
 expr_stmt|;
 name|result
 operator|.
-name|increaseCrossRefEntiresCounter
+name|increaseCrossRefEntriesCounter
 argument_list|()
 expr_stmt|;
 block|}
