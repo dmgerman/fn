@@ -459,7 +459,7 @@ block|}
 block|}
 comment|/**      * Compares to BibTeX entries using their canonical representation      */
 DECL|method|assertEquals (BibEntry shouldBeEntry, BibEntry entry)
-specifier|private
+specifier|public
 specifier|static
 name|void
 name|assertEquals
