@@ -474,6 +474,15 @@ name|TOGGLE_HIGHLIGHTS_GROUPS_MATCHING_ANY
 init|=
 literal|"toggleHighlightGroupsMatchingAny"
 decl_stmt|;
+DECL|field|TOGGLE_HIGHLIGHTS_GROUPS_MATCHING_DISABLE
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|TOGGLE_HIGHLIGHTS_GROUPS_MATCHING_DISABLE
+init|=
+literal|"toggleHighlightGroupsMatchingDisable"
+decl_stmt|;
 DECL|field|TOGGLE_GROUPS
 specifier|public
 specifier|static
