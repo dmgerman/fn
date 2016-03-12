@@ -544,12 +544,7 @@ name|getTitle
 parameter_list|()
 block|{
 return|return
-name|Localization
-operator|.
-name|menuTitle
-argument_list|(
-literal|"Fetch INSPIRE"
-argument_list|)
+literal|"INSPIRE"
 return|;
 block|}
 annotation|@
