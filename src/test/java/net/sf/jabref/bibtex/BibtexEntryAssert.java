@@ -118,22 +118,6 @@ name|jabref
 operator|.
 name|importer
 operator|.
-name|fetcher
-operator|.
-name|GVKParser
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|importer
-operator|.
 name|fileformat
 operator|.
 name|BibtexParser
@@ -179,7 +163,7 @@ class|class
 name|BibtexEntryAssert
 block|{
 comment|/**      * Reads a single entry from the resource using `getResourceAsStream` from the given class. The resource has to      * contain a single entry      *      * @param clazz the class where to call `getResourceAsStream`      * @param resourceName the resource to read      * @param entry the entry to compare with      */
-DECL|method|assertEquals (Class<GVKParser> clazz, String resourceName, BibEntry entry)
+DECL|method|assertEquals (Class<? extends Object> clazz, String resourceName, BibEntry entry)
 specifier|public
 specifier|static
 name|void
@@ -187,7 +171,9 @@ name|assertEquals
 parameter_list|(
 name|Class
 argument_list|<
-name|GVKParser
+name|?
+extends|extends
+name|Object
 argument_list|>
 name|clazz
 parameter_list|,
