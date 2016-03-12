@@ -574,17 +574,12 @@ name|isEncrypted
 argument_list|()
 condition|)
 block|{
-name|LOGGER
-operator|.
-name|error
-argument_list|(
-literal|"Cannot add metadata to encrypted document."
-argument_list|)
-expr_stmt|;
 name|Assert
 operator|.
 name|fail
-argument_list|()
+argument_list|(
+literal|"Cannot add metadata to encrypted document."
+argument_list|)
 expr_stmt|;
 block|}
 name|PDDocumentCatalog
@@ -5238,17 +5233,12 @@ name|isEncrypted
 argument_list|()
 condition|)
 block|{
-name|LOGGER
-operator|.
-name|error
-argument_list|(
-literal|"Cannot add metadata to encrypted document."
-argument_list|)
-expr_stmt|;
 name|Assert
 operator|.
 name|fail
-argument_list|()
+argument_list|(
+literal|"Cannot add metadata to encrypted document."
+argument_list|)
 expr_stmt|;
 block|}
 name|Assert
@@ -5768,17 +5758,12 @@ name|isEncrypted
 argument_list|()
 condition|)
 block|{
-name|LOGGER
-operator|.
-name|error
-argument_list|(
-literal|"Cannot add metadata to encrypted document."
-argument_list|)
-expr_stmt|;
 name|Assert
 operator|.
 name|fail
-argument_list|()
+argument_list|(
+literal|"Cannot add metadata to encrypted document."
+argument_list|)
 expr_stmt|;
 block|}
 name|Assert
