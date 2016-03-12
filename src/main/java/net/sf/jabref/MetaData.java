@@ -2268,6 +2268,8 @@ name|VersionHandling
 operator|.
 name|CURRENT_VERSION
 argument_list|)
+operator|+
+literal|";"
 argument_list|)
 expr_stmt|;
 comment|// now write actual groups

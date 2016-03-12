@@ -1335,16 +1335,6 @@ name|Globals
 operator|.
 name|NEWLINE
 operator|+
-literal|"@Comment{jabref-meta: groupsversion:3;}"
-operator|+
-name|Globals
-operator|.
-name|NEWLINE
-operator|+
-name|Globals
-operator|.
-name|NEWLINE
-operator|+
 literal|"@Comment{jabref-meta: groupstree:"
 operator|+
 name|Globals
@@ -1364,6 +1354,16 @@ operator|.
 name|NEWLINE
 operator|+
 literal|"}"
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
+operator|+
+literal|"@Comment{jabref-meta: groupsversion:3;}"
 operator|+
 name|Globals
 operator|.
@@ -1469,16 +1469,6 @@ name|Globals
 operator|.
 name|NEWLINE
 operator|+
-literal|"@Comment{jabref-meta: groupsversion:3;}"
-operator|+
-name|Globals
-operator|.
-name|NEWLINE
-operator|+
-name|Globals
-operator|.
-name|NEWLINE
-operator|+
 literal|"@Comment{jabref-meta: groupstree:"
 operator|+
 name|Globals
@@ -1498,6 +1488,16 @@ operator|.
 name|NEWLINE
 operator|+
 literal|"}"
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
+operator|+
+literal|"@Comment{jabref-meta: groupsversion:3;}"
 operator|+
 name|Globals
 operator|.
