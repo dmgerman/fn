@@ -170,6 +170,34 @@ name|org
 operator|.
 name|apache
 operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
 name|jempbox
 operator|.
 name|xmp
@@ -316,6 +344,34 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Charsets
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|io
+operator|.
+name|CharStreams
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|xml
@@ -359,7 +415,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Limitations: The test suite only handles UTF8. Not UTF16.  *  * @author Christopher Oezbek<oezi@oezi.de>  */
+comment|/**  * Limitations: The test suite only handles UTF8. Not UTF16.  */
 end_comment
 
 begin_class
@@ -368,14 +424,21 @@ specifier|public
 class|class
 name|XMPUtilTest
 block|{
-DECL|field|SRC_TEST_RESOURCES_ENCRYPTED_PDF
-specifier|public
+DECL|field|LOGGER
+specifier|private
 specifier|static
 specifier|final
-name|String
-name|SRC_TEST_RESOURCES_ENCRYPTED_PDF
+name|Log
+name|LOGGER
 init|=
-literal|"src/test/resources/encrypted.pdf"
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|XMPUtilTest
+operator|.
+name|class
+argument_list|)
 decl_stmt|;
 comment|/**      * The PDF file that basically all operations are done upon.      */
 DECL|field|pdfFile
@@ -511,16 +574,18 @@ name|isEncrypted
 argument_list|()
 condition|)
 block|{
-name|System
+name|LOGGER
 operator|.
-name|err
-operator|.
-name|println
+name|error
 argument_list|(
-literal|"Error: Cannot add metadata to encrypted document."
+literal|"Cannot add metadata to encrypted document."
 argument_list|)
 expr_stmt|;
-comment|//System.exit(1);
+name|Assert
+operator|.
+name|fail
+argument_list|()
+expr_stmt|;
 block|}
 name|PDDocumentCatalog
 name|catalog
@@ -718,7 +783,6 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/* TEST DATA */
 DECL|method|t1BibtexString ()
 specifier|public
 name|String
@@ -1205,11 +1269,9 @@ name|delete
 argument_list|()
 condition|)
 block|{
-name|System
+name|LOGGER
 operator|.
-name|err
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Note: Cannot delete temporary file (already deleted so the corresponding test passed)."
 argument_list|)
@@ -1236,7 +1298,7 @@ name|privacyFilters
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Most basic test for reading.      *      * @throws Exception      */
+comment|/**      * Most basic test for reading.      */
 annotation|@
 name|Test
 DECL|method|testReadXMPSimple ()
@@ -2074,16 +2136,13 @@ name|isEncrypted
 argument_list|()
 condition|)
 block|{
-name|System
+name|Assert
 operator|.
-name|err
-operator|.
-name|println
+name|fail
 argument_list|(
-literal|"Error: Cannot add metadata to encrypted document."
+literal|"Cannot add metadata to encrypted document."
 argument_list|)
 expr_stmt|;
-comment|//System.exit(1);
 block|}
 name|PDDocumentCatalog
 name|catalog
@@ -2114,44 +2173,43 @@ return|;
 block|}
 else|else
 block|{
-comment|// PDMetadata.getInputStreamAsString() does not work
-comment|// Convert to UTF8 and make available for metadata.
 try|try
 init|(
-name|InputStreamReader
+name|InputStream
 name|is
 init|=
-operator|new
-name|InputStreamReader
-argument_list|(
 name|meta
 operator|.
 name|createInputStream
 argument_list|()
-argument_list|,
-name|StandardCharsets
-operator|.
-name|UTF_8
-argument_list|)
-init|)
+init|;                         InputStreamReader reader = new InputStreamReader(is
+operator|,
+init|Charsets.UTF_8)
+block|)
 block|{
+comment|// trim() for killing padding end-newline
 return|return
-name|XMPUtilTest
+name|CharStreams
 operator|.
-name|slurp
+name|toString
 argument_list|(
-name|is
+name|reader
 argument_list|)
 operator|.
 name|trim
 argument_list|()
 return|;
-comment|// Trim to kill padding end-newline.
 block|}
 block|}
 block|}
 block|}
+end_class
+
+begin_comment
 comment|/**      * Test whether the helper function work correctly.      *      * @throws Exception      */
+end_comment
+
+begin_function
 annotation|@
 name|Test
 DECL|method|testWriteReadManually ()
@@ -2276,7 +2334,13 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Test that readXMP and writeXMP work together.      *      * @throws Exception      */
+end_comment
+
+begin_function
 annotation|@
 name|Test
 DECL|method|testReadWriteXMP ()
@@ -2425,7 +2489,13 @@ name|x
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Are newlines in the XML processed correctly?      *      * @throws Exception      */
+end_comment
+
+begin_function
 annotation|@
 name|Test
 DECL|method|testNewlineHandling ()
@@ -2550,7 +2620,13 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Test whether XMP.readFile can deal with text-properties that are not element-nodes, but attribute-nodes      *      * @throws Exception      */
+end_comment
+
+begin_function
 annotation|@
 name|Test
 DECL|method|testAttributeRead ()
@@ -2627,6 +2703,9 @@ name|e
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Test
 DECL|method|testEmpty ()
@@ -2655,7 +2734,13 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Tests whether writing BibTex.xmp will preserve existing XMP-descriptions.      *      * @throws Exception (indicating an failure)      */
+end_comment
+
+begin_function
 annotation|@
 name|Test
 DECL|method|testSimpleUpdate ()
@@ -4066,7 +4151,13 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_comment
 comment|/**      * Is XML in text properties properly escaped?      *      * @throws Exception      */
+end_comment
+
+begin_function
 annotation|@
 name|Test
 DECL|method|testXMLEscape ()
@@ -4215,6 +4306,9 @@ name|x
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 DECL|method|assertEqualsBibtexEntry (BibEntry expected, BibEntry actual)
 specifier|public
 name|void
@@ -4388,7 +4482,13 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * @depends XMPUtilTest.testReadMultiple()      */
+end_comment
+
+begin_function
 annotation|@
 name|Test
 DECL|method|testXMPreadString ()
@@ -4795,7 +4895,13 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Tests whether it is possible to read several BibtexEntries      *      * @throws Exception      */
+end_comment
+
+begin_function
 annotation|@
 name|Test
 DECL|method|testReadMultiple ()
@@ -4917,7 +5023,13 @@ name|b
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Tests whether it is possible to write several Bibtexentries      *      * @throws TransformerException      * @throws IOException      */
+end_comment
+
+begin_function
 annotation|@
 name|Test
 DECL|method|testWriteMultiple ()
@@ -5055,6 +5167,9 @@ name|b
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Test
 DECL|method|testReadWriteDC ()
@@ -5123,16 +5238,18 @@ name|isEncrypted
 argument_list|()
 condition|)
 block|{
-name|System
+name|LOGGER
 operator|.
-name|err
-operator|.
-name|println
+name|error
 argument_list|(
-literal|"Error: Cannot add metadata to encrypted document."
+literal|"Cannot add metadata to encrypted document."
 argument_list|)
 expr_stmt|;
-comment|//System.exit(1);
+name|Assert
+operator|.
+name|fail
+argument_list|()
+expr_stmt|;
 block|}
 name|Assert
 operator|.
@@ -5580,6 +5697,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Test
 DECL|method|testWriteSingleUpdatesDCAndInfo ()
@@ -5648,16 +5768,18 @@ name|isEncrypted
 argument_list|()
 condition|)
 block|{
-name|System
+name|LOGGER
 operator|.
-name|err
-operator|.
-name|println
+name|error
 argument_list|(
-literal|"Error: Cannot add metadata to encrypted document."
+literal|"Cannot add metadata to encrypted document."
 argument_list|)
 expr_stmt|;
-comment|//System.exit(1);
+name|Assert
+operator|.
+name|fail
+argument_list|()
+expr_stmt|;
 block|}
 name|Assert
 operator|.
@@ -6104,6 +6226,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Test
 DECL|method|testReadRawXMP ()
@@ -6432,7 +6557,13 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Test whether the command-line client works correctly with writing a single entry      *      * @throws Exception      */
+end_comment
+
+begin_function
 annotation|@
 name|Test
 DECL|method|testCommandLineSingleBib ()
@@ -6609,7 +6740,13 @@ expr_stmt|;
 block|}
 block|}
 block|}
+end_function
+
+begin_comment
 comment|/**      * @depends XMPUtil.writeXMP      */
+end_comment
+
+begin_function
 annotation|@
 name|Test
 DECL|method|testCommandLineSinglePdf ()
@@ -7053,7 +7190,13 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_comment
 comment|/**      * Test whether the command-line client can pick one of several entries from a bibtex file      *      * @throws Exception      */
+end_comment
+
+begin_function
 annotation|@
 name|Test
 annotation|@
@@ -7337,7 +7480,13 @@ expr_stmt|;
 block|}
 block|}
 block|}
+end_function
+
+begin_comment
 comment|/**      * Test whether the command-line client can deal with several bibtex entries.      */
+end_comment
+
+begin_function
 annotation|@
 name|Test
 annotation|@
@@ -7583,7 +7732,13 @@ expr_stmt|;
 block|}
 block|}
 block|}
+end_function
+
+begin_comment
 comment|/**      * Test that readXMP and writeXMP work together.      *      * @throws Exception      */
+end_comment
+
+begin_function
 annotation|@
 name|Test
 DECL|method|testResolveStrings ()
@@ -7760,64 +7915,77 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Test that we cannot use encrypted PDFs.      */
+end_function
+
+begin_function
 annotation|@
 name|Test
-DECL|method|testEncryption ()
+argument_list|(
+name|expected
+operator|=
+name|EncryptionNotSupportedException
+operator|.
+name|class
+argument_list|)
+DECL|method|expectedEncryptionNotSupportedExceptionAtRead ()
 specifier|public
 name|void
-name|testEncryption
+name|expectedEncryptionNotSupportedExceptionAtRead
 parameter_list|()
 throws|throws
-name|Exception
+name|IOException
 block|{
-comment|// // PDF was created using:
-comment|//
-comment|// PDDocument pdf = null;
-comment|// try {
-comment|// pdf = new PDDocument();
-comment|// pdf.addPage(new PDPage()); // Need page to open in Acrobat
-comment|// pdf.encrypt("hello", "world");
-comment|// pdf.save("d:/download/encrypted.pdf");
-comment|// } finally {
-comment|// if (pdf != null)
-comment|// pdf.close();
-comment|// }
-comment|//
 try|try
+init|(
+name|InputStream
+name|is
+init|=
+name|XMPUtilTest
+operator|.
+name|class
+operator|.
+name|getResourceAsStream
+argument_list|(
+literal|"/pdfs/encrypted.pdf"
+argument_list|)
+init|)
 block|{
 name|XMPUtil
 operator|.
 name|readXMP
 argument_list|(
-name|XMPUtilTest
-operator|.
-name|SRC_TEST_RESOURCES_ENCRYPTED_PDF
+name|is
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
-name|fail
-argument_list|()
-expr_stmt|;
 block|}
-catch|catch
-parameter_list|(
+block|}
+end_function
+
+begin_function
+annotation|@
+name|Test
+argument_list|(
+name|expected
+operator|=
 name|EncryptionNotSupportedException
-name|ignored
-parameter_list|)
-block|{
-comment|// Ignored
-block|}
-try|try
+operator|.
+name|class
+argument_list|)
+DECL|method|expectedEncryptionNotSupportedExceptionAtWrite ()
+specifier|public
+name|void
+name|expectedEncryptionNotSupportedExceptionAtWrite
+parameter_list|()
+throws|throws
+name|IOException
+throws|,
+name|TransformerException
 block|{
 name|XMPUtil
 operator|.
 name|writeXMP
 argument_list|(
-name|XMPUtilTest
-operator|.
-name|SRC_TEST_RESOURCES_ENCRYPTED_PDF
+literal|"src/test/resources/pdfs/encrypted.pdf"
 argument_list|,
 name|t1BibtexEntry
 argument_list|()
@@ -7825,22 +7993,14 @@ argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
-name|fail
-argument_list|()
-expr_stmt|;
 block|}
-catch|catch
-parameter_list|(
-name|EncryptionNotSupportedException
-name|ignored
-parameter_list|)
-block|{
-comment|// Ignored
-block|}
-block|}
+end_function
+
+begin_comment
 comment|/**      * A better testcase for resolveStrings. Makes sure that also the document information and dublin core are written      * correctly.      *<p/>      * Data was contributed by Philip K.F. HÃ¶lzenspies (p.k.f.holzenspies [at] utwente.nl).      *      * @throws IOException      * @throws TransformerException      */
+end_comment
+
+begin_function
 annotation|@
 name|Test
 DECL|method|testResolveStrings2 ()
@@ -8260,99 +8420,8 @@ block|}
 block|}
 block|}
 block|}
-comment|/**      * Read the contents of a reader as one string      *      * @param reader      * @return      * @throws IOException      */
-DECL|method|slurp (Reader reader)
-specifier|public
-specifier|static
-name|String
-name|slurp
-parameter_list|(
-name|Reader
-name|reader
-parameter_list|)
-throws|throws
-name|IOException
-block|{
-name|char
-index|[]
-name|chars
-init|=
-operator|new
-name|char
-index|[
-literal|4092
-index|]
-decl_stmt|;
-name|StringBuilder
-name|totalBuffer
-init|=
-operator|new
-name|StringBuilder
-argument_list|()
-decl_stmt|;
-name|int
-name|bytesRead
-decl_stmt|;
-while|while
-condition|(
-operator|(
-name|bytesRead
-operator|=
-name|reader
-operator|.
-name|read
-argument_list|(
-name|chars
-argument_list|)
-operator|)
-operator|!=
-operator|-
-literal|1
-condition|)
-block|{
-if|if
-condition|(
-name|bytesRead
-operator|==
-literal|4092
-condition|)
-block|{
-name|totalBuffer
-operator|.
-name|append
-argument_list|(
-name|chars
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-name|totalBuffer
-operator|.
-name|append
-argument_list|(
-operator|new
-name|String
-argument_list|(
-name|chars
-argument_list|,
-literal|0
-argument_list|,
-name|bytesRead
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-return|return
-name|totalBuffer
-operator|.
-name|toString
-argument_list|()
-return|;
-block|}
-block|}
-end_class
+end_function
 
+unit|}
 end_unit
 
