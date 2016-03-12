@@ -342,12 +342,9 @@ name|getTitle
 parameter_list|()
 block|{
 return|return
-name|Localization
-operator|.
-name|menuTitle
-argument_list|(
-literal|"Search ScienceDirect"
-argument_list|)
+operator|(
+literal|"ScienceDirect"
+operator|)
 return|;
 block|}
 annotation|@
@@ -433,7 +430,9 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Search ScienceDirect"
+literal|"Search %0"
+argument_list|,
+literal|"ScienceDirect"
 argument_list|)
 argument_list|,
 name|JOptionPane

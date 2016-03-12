@@ -411,7 +411,9 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Search JSTOR"
+literal|"Search %0"
+argument_list|,
+literal|"JSTOR"
 argument_list|)
 argument_list|,
 name|JOptionPane
