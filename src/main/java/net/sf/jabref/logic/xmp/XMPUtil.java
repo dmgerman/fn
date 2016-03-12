@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
+comment|/*  Copyright (C) 2003-2016 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
 end_comment
 
 begin_package
@@ -37,6 +37,42 @@ operator|.
 name|charset
 operator|.
 name|StandardCharsets
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|file
+operator|.
+name|Files
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|file
+operator|.
+name|Path
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|file
+operator|.
+name|StandardOpenOption
 import|;
 end_import
 
@@ -177,6 +213,34 @@ operator|.
 name|database
 operator|.
 name|BibDatabase
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
 import|;
 end_import
 
@@ -364,8 +428,20 @@ name|PDMetadata
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|w3c
+operator|.
+name|dom
+operator|.
+name|Document
+import|;
+end_import
+
 begin_comment
-comment|/**  * XMPUtils provide support for reading and writing BibTex data as XMP-Metadata  * in PDF-documents.  *  * @author Christopher Oezbek<oezi@oezi.de>  */
+comment|/**  * XMPUtils provide support for reading and writing BibTex data as XMP-Metadata  * in PDF-documents.  */
 end_comment
 
 begin_class
@@ -374,6 +450,22 @@ specifier|public
 class|class
 name|XMPUtil
 block|{
+DECL|field|LOGGER
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOGGER
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|XMPUtil
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 comment|/**      * Convenience method for readXMP(File).      *      * @param filename      *            The filename from which to open the file.      * @return BibtexEntryies found in the PDF or an empty list      * @throws IOException      */
 DECL|method|readXMP (String filename)
 specifier|public
@@ -456,6 +548,16 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+name|List
+argument_list|<
+name|BibEntry
+argument_list|>
+name|res
+init|=
+name|Collections
+operator|.
+name|EMPTY_LIST
+decl_stmt|;
 try|try
 init|(
 name|FileInputStream
@@ -468,17 +570,21 @@ name|file
 argument_list|)
 init|)
 block|{
-return|return
+name|res
+operator|=
 name|XMPUtil
 operator|.
 name|readXMP
 argument_list|(
 name|is
 argument_list|)
+expr_stmt|;
+block|}
+return|return
+name|res
 return|;
 block|}
-block|}
-comment|/**      * Try to read the given BibTexEntry from the XMP-stream of the given      * inputstream containing a PDF-file.      *      * @param inputStream      *            The inputstream to read from.      *      * @throws IOException      *             Throws an IOException if the file cannot be read, so the user      *             than remove a lock or cancel the operation.      */
+comment|/**      * Try to read the given BibTexEntry from the XMP-stream of the given      * inputstream containing a PDF-file.      *      * @param inputStream      *            The inputstream to read from.      *      * @throws IOException      *             Throws an IOException if the file cannot be read, so the user      *             than remove a lock or cancel the operation.      *      * @return list of BibEntries retrieved from the stream. May be empty, but never null      */
 DECL|method|readXMP (InputStream inputStream)
 specifier|public
 specifier|static
@@ -720,6 +826,14 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
+name|PDDocumentInformation
+name|documentInformation
+init|=
+name|document
+operator|.
+name|getDocumentInformation
+argument_list|()
+decl_stmt|;
 name|Optional
 argument_list|<
 name|BibEntry
@@ -730,10 +844,7 @@ name|XMPUtil
 operator|.
 name|getBibtexEntryFromDocumentInformation
 argument_list|(
-name|document
-operator|.
-name|getDocumentInformation
-argument_list|()
+name|documentInformation
 argument_list|)
 decl_stmt|;
 if|if
@@ -744,30 +855,6 @@ name|isPresent
 argument_list|()
 condition|)
 block|{
-if|if
-condition|(
-name|entry
-operator|.
-name|get
-argument_list|()
-operator|.
-name|getType
-argument_list|()
-operator|==
-literal|null
-condition|)
-block|{
-name|entry
-operator|.
-name|get
-argument_list|()
-operator|.
-name|setType
-argument_list|(
-literal|"misc"
-argument_list|)
-expr_stmt|;
-block|}
 name|result
 operator|.
 name|add
@@ -781,7 +868,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|// return null, if no metadata was found
+comment|// return empty list, if no metadata was found
 if|if
 condition|(
 name|result
@@ -1924,6 +2011,7 @@ argument_list|)
 return|;
 block|}
 block|}
+comment|/**      * @return null if no metadata has been found      */
 DECL|method|getXMPMetadata (PDDocument document)
 specifier|private
 specifier|static
@@ -1963,21 +2051,37 @@ return|return
 literal|null
 return|;
 block|}
+name|Document
+name|parseResult
+decl_stmt|;
+try|try
+init|(
+name|InputStream
+name|is
+init|=
+name|metaRaw
+operator|.
+name|createInputStream
+argument_list|()
+init|)
+block|{
+name|parseResult
+operator|=
+name|XMLUtil
+operator|.
+name|parse
+argument_list|(
+name|is
+argument_list|)
+expr_stmt|;
+block|}
 name|XMPMetadata
 name|meta
 init|=
 operator|new
 name|XMPMetadata
 argument_list|(
-name|XMLUtil
-operator|.
-name|parse
-argument_list|(
-name|metaRaw
-operator|.
-name|createInputStream
-argument_list|()
-argument_list|)
+name|parseResult
 argument_list|)
 decl_stmt|;
 name|meta
@@ -4312,6 +4416,61 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+comment|/**      * see XMPUtil.hasMetadata(InputStream is)      */
+DECL|method|hasMetadata (Path p)
+specifier|public
+specifier|static
+name|boolean
+name|hasMetadata
+parameter_list|(
+name|Path
+name|p
+parameter_list|)
+block|{
+try|try
+init|(
+name|InputStream
+name|is
+init|=
+name|Files
+operator|.
+name|newInputStream
+argument_list|(
+name|p
+argument_list|,
+name|StandardOpenOption
+operator|.
+name|READ
+argument_list|)
+init|)
+block|{
+return|return
+name|hasMetadata
+argument_list|(
+name|is
+argument_list|)
+return|;
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|e
+parameter_list|)
+block|{
+name|LOGGER
+operator|.
+name|error
+argument_list|(
+literal|"XMP reading failed"
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+return|return
+literal|false
+return|;
+block|}
+block|}
 comment|/**      * Will try to read XMP metadata from the given file, returning whether      * metadata was found.      *      * Caution: This method is as expensive as it is reading the actual metadata      * itself from the PDF.      *      * @param is      *            The inputstream to read the PDF from.      * @return whether a BibEntry was found in the given PDF.      */
 DECL|method|hasMetadata (InputStream is)
 specifier|public
@@ -4348,10 +4507,36 @@ return|;
 block|}
 catch|catch
 parameter_list|(
+name|EncryptionNotSupportedException
+name|ex
+parameter_list|)
+block|{
+name|LOGGER
+operator|.
+name|info
+argument_list|(
+literal|"Encryption not supported by XMPUtil"
+argument_list|)
+expr_stmt|;
+return|return
+literal|false
+return|;
+block|}
+catch|catch
+parameter_list|(
 name|IOException
 name|e
 parameter_list|)
 block|{
+name|LOGGER
+operator|.
+name|error
+argument_list|(
+literal|"XMP reading failed"
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
 return|return
 literal|false
 return|;
