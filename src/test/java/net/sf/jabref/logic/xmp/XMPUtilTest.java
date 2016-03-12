@@ -1156,6 +1156,12 @@ argument_list|,
 literal|".pdf"
 argument_list|)
 expr_stmt|;
+comment|// ensure that the file will be deleted upon exit
+name|pdfFile
+operator|.
+name|deleteOnExit
+argument_list|()
+expr_stmt|;
 try|try
 init|(
 name|PDDocument
@@ -1221,7 +1227,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"useXmpPrivacyFilter"
+name|JabRefPreferences
+operator|.
+name|USE_XMP_PRIVACY_FILTER
 argument_list|)
 expr_stmt|;
 name|privacyFilters
@@ -1246,7 +1254,6 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Delete the temporary file.      */
 annotation|@
 name|After
 DECL|method|tearDown ()
@@ -1255,28 +1262,13 @@ name|void
 name|tearDown
 parameter_list|()
 block|{
-if|if
-condition|(
-operator|!
-name|pdfFile
-operator|.
-name|delete
-argument_list|()
-condition|)
-block|{
-name|LOGGER
-operator|.
-name|info
-argument_list|(
-literal|"Note: Cannot delete temporary file (already deleted so the corresponding test passed)."
-argument_list|)
-expr_stmt|;
-block|}
 name|prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"useXmpPrivacyFilter"
+name|JabRefPreferences
+operator|.
+name|USE_XMP_PRIVACY_FILTER
 argument_list|,
 name|use
 argument_list|)
