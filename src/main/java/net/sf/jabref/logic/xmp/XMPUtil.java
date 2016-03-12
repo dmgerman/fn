@@ -640,7 +640,10 @@ literal|"Error: Cannot read metadata from encrypted document."
 argument_list|)
 throw|;
 block|}
+name|Optional
+argument_list|<
 name|XMPMetadata
+argument_list|>
 name|meta
 init|=
 name|XMPUtil
@@ -650,12 +653,12 @@ argument_list|(
 name|document
 argument_list|)
 decl_stmt|;
-comment|// If we did not find any XMP metadata, search for non XMP metadata
 if|if
 condition|(
 name|meta
-operator|!=
-literal|null
+operator|.
+name|isPresent
+argument_list|()
 condition|)
 block|{
 name|List
@@ -665,6 +668,9 @@ argument_list|>
 name|schemas
 init|=
 name|meta
+operator|.
+name|get
+argument_list|()
 operator|.
 name|getSchemasByNamespaceURI
 argument_list|(
@@ -735,6 +741,9 @@ block|{
 name|schemas
 operator|=
 name|meta
+operator|.
+name|get
+argument_list|()
 operator|.
 name|getSchemasByNamespaceURI
 argument_list|(
@@ -826,6 +835,7 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
+comment|// If we did not find any XMP metadata, search for non XMP metadata
 name|PDDocumentInformation
 name|documentInformation
 init|=
@@ -1114,7 +1124,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|// Return null if no values were found
+comment|// Return empty Optional if no values were found
 return|return
 name|entry
 operator|.
@@ -1959,11 +1969,14 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Will read the XMPMetadata from the given pdf file, closing the file      * afterwards.      *      * @param inputStream      *            The inputStream representing a PDF-file to read the      *            XMPMetadata from.      * @return The XMPMetadata object found in the file or null if none is      *         found.      * @throws IOException      */
+comment|/**      * Will read the XMPMetadata from the given pdf file, closing the file      * afterwards.      *      * @param inputStream      *            The inputStream representing a PDF-file to read the      *            XMPMetadata from.      * @return The XMPMetadata object found in the file      */
 DECL|method|readRawXMP (InputStream inputStream)
 specifier|private
 specifier|static
+name|Optional
+argument_list|<
 name|XMPMetadata
+argument_list|>
 name|readRawXMP
 parameter_list|(
 name|InputStream
@@ -2011,11 +2024,14 @@ argument_list|)
 return|;
 block|}
 block|}
-comment|/**      * @return null if no metadata has been found      */
+comment|/**      * @return empty Optional if no metadata has been found      */
 DECL|method|getXMPMetadata (PDDocument document)
 specifier|private
 specifier|static
+name|Optional
+argument_list|<
 name|XMPMetadata
+argument_list|>
 name|getXMPMetadata
 parameter_list|(
 name|PDDocument
@@ -2048,7 +2064,10 @@ literal|null
 condition|)
 block|{
 return|return
-literal|null
+name|Optional
+operator|.
+name|empty
+argument_list|()
 return|;
 block|}
 name|Document
@@ -2098,14 +2117,22 @@ name|class
 argument_list|)
 expr_stmt|;
 return|return
+name|Optional
+operator|.
+name|of
+argument_list|(
 name|meta
+argument_list|)
 return|;
 block|}
-comment|/**      * Will read the XMPMetadata from the given pdf file, closing the file      * afterwards.      *      * @param file      *            The file to read the XMPMetadata from.      * @return The XMPMetadata object found in the file or null if none is      *         found.      * @throws IOException      */
+comment|/**      * Will read the XMPMetadata from the given pdf file, closing the file      * afterwards.      *      * @param file      *            The file to read the XMPMetadata from.      * @return The XMPMetadata object found in the file      */
 DECL|method|readRawXMP (File file)
 specifier|public
 specifier|static
+name|Optional
+argument_list|<
 name|XMPMetadata
+argument_list|>
 name|readRawXMP
 parameter_list|(
 name|File
@@ -4097,7 +4124,10 @@ argument_list|)
 condition|)
 block|{
 comment|// Read from pdf and write as BibTex
+name|Optional
+argument_list|<
 name|XMPMetadata
+argument_list|>
 name|meta
 init|=
 name|XMPUtil
@@ -4117,27 +4147,19 @@ decl_stmt|;
 if|if
 condition|(
 name|meta
-operator|==
-literal|null
+operator|.
+name|isPresent
+argument_list|()
 condition|)
-block|{
-name|System
-operator|.
-name|err
-operator|.
-name|println
-argument_list|(
-literal|"The given pdf does not contain any XMP-metadata."
-argument_list|)
-expr_stmt|;
-block|}
-else|else
 block|{
 name|XMLUtil
 operator|.
 name|save
 argument_list|(
 name|meta
+operator|.
+name|get
+argument_list|()
 operator|.
 name|getXMPDocument
 argument_list|()
@@ -4152,6 +4174,18 @@ name|UTF_8
 operator|.
 name|name
 argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|System
+operator|.
+name|err
+operator|.
+name|println
+argument_list|(
+literal|"The given pdf does not contain any XMP-metadata."
 argument_list|)
 expr_stmt|;
 block|}

@@ -6315,7 +6315,10 @@ argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
+name|Optional
+argument_list|<
 name|XMPMetadata
+argument_list|>
 name|metadata
 init|=
 name|XMPUtil
@@ -6327,9 +6330,12 @@ argument_list|)
 decl_stmt|;
 name|Assert
 operator|.
-name|assertNotNull
+name|assertTrue
 argument_list|(
 name|metadata
+operator|.
+name|isPresent
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|List
@@ -6339,6 +6345,9 @@ argument_list|>
 name|schemas
 init|=
 name|metadata
+operator|.
+name|get
+argument_list|()
 operator|.
 name|getSchemas
 argument_list|()
@@ -6358,6 +6367,9 @@ expr_stmt|;
 name|schemas
 operator|=
 name|metadata
+operator|.
+name|get
+argument_list|()
 operator|.
 name|getSchemasByNamespaceURI
 argument_list|(
