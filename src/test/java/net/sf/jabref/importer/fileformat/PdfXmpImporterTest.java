@@ -268,7 +268,7 @@ name|thrown
 operator|.
 name|expectMessage
 argument_list|(
-literal|"Stream closed"
+literal|"Error: Cannot read metadata from encrypted document."
 argument_list|)
 expr_stmt|;
 name|importer
