@@ -552,7 +552,7 @@ name|List
 argument_list|<
 name|BibEntry
 argument_list|>
-name|res
+name|result
 init|=
 name|Collections
 operator|.
@@ -561,7 +561,7 @@ decl_stmt|;
 try|try
 init|(
 name|FileInputStream
-name|is
+name|inputStream
 init|=
 operator|new
 name|FileInputStream
@@ -570,18 +570,18 @@ name|file
 argument_list|)
 init|)
 block|{
-name|res
+name|result
 operator|=
 name|XMPUtil
 operator|.
 name|readXMP
 argument_list|(
-name|is
+name|inputStream
 argument_list|)
 expr_stmt|;
 block|}
 return|return
-name|res
+name|result
 return|;
 block|}
 comment|/**      * Try to read the given BibTexEntry from the XMP-stream of the given      * inputstream containing a PDF-file.      *      * @param inputStream      *            The inputstream to read from.      *      * @throws IOException      *             Throws an IOException if the file cannot be read, so the user      *             than remove a lock or cancel the operation.      *      * @return list of BibEntries retrieved from the stream. May be empty, but never null      */
@@ -2117,7 +2117,7 @@ block|{
 try|try
 init|(
 name|FileInputStream
-name|is
+name|inputStream
 init|=
 operator|new
 name|FileInputStream
@@ -2131,7 +2131,7 @@ name|XMPUtil
 operator|.
 name|readRawXMP
 argument_list|(
-name|is
+name|inputStream
 argument_list|)
 return|;
 block|}
@@ -4330,7 +4330,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 name|BibEntry
-name|e
+name|bibEntry
 init|=
 name|result
 operator|.
@@ -4347,7 +4347,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|e
+name|bibEntry
 operator|==
 literal|null
 condition|)
@@ -4389,7 +4389,7 @@ literal|2
 index|]
 argument_list|)
 argument_list|,
-name|e
+name|bibEntry
 argument_list|,
 name|result
 operator|.
@@ -4416,27 +4416,27 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * see XMPUtil.hasMetadata(InputStream is)      */
-DECL|method|hasMetadata (Path p)
+comment|/**      * see XMPUtil.hasMetadata(InputStream)      */
+DECL|method|hasMetadata (Path path)
 specifier|public
 specifier|static
 name|boolean
 name|hasMetadata
 parameter_list|(
 name|Path
-name|p
+name|path
 parameter_list|)
 block|{
 try|try
 init|(
 name|InputStream
-name|is
+name|inputStream
 init|=
 name|Files
 operator|.
 name|newInputStream
 argument_list|(
-name|p
+name|path
 argument_list|,
 name|StandardOpenOption
 operator|.
@@ -4447,7 +4447,7 @@ block|{
 return|return
 name|hasMetadata
 argument_list|(
-name|is
+name|inputStream
 argument_list|)
 return|;
 block|}
@@ -4471,15 +4471,15 @@ literal|false
 return|;
 block|}
 block|}
-comment|/**      * Will try to read XMP metadata from the given file, returning whether      * metadata was found.      *      * Caution: This method is as expensive as it is reading the actual metadata      * itself from the PDF.      *      * @param is      *            The inputstream to read the PDF from.      * @return whether a BibEntry was found in the given PDF.      */
-DECL|method|hasMetadata (InputStream is)
+comment|/**      * Will try to read XMP metadata from the given file, returning whether      * metadata was found.      *      * Caution: This method is as expensive as it is reading the actual metadata      * itself from the PDF.      *      * @param inputsStream      *            The inputStream to read the PDF from.      * @return whether a BibEntry was found in the given PDF.      */
+DECL|method|hasMetadata (InputStream inputsStream)
 specifier|public
 specifier|static
 name|boolean
 name|hasMetadata
 parameter_list|(
 name|InputStream
-name|is
+name|inputsStream
 parameter_list|)
 block|{
 try|try
@@ -4488,18 +4488,18 @@ name|List
 argument_list|<
 name|BibEntry
 argument_list|>
-name|l
+name|bibEntries
 init|=
 name|XMPUtil
 operator|.
 name|readXMP
 argument_list|(
-name|is
+name|inputsStream
 argument_list|)
 decl_stmt|;
 return|return
 operator|!
-name|l
+name|bibEntries
 operator|.
 name|isEmpty
 argument_list|()
