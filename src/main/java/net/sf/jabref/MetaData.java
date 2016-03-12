@@ -2215,6 +2215,32 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+name|String
+name|serializedItem
+init|=
+name|stringBuilder
+operator|.
+name|toString
+argument_list|()
+decl_stmt|;
+comment|// Only add non-empty values
+if|if
+condition|(
+operator|!
+name|serializedItem
+operator|.
+name|isEmpty
+argument_list|()
+operator|&&
+operator|!
+name|serializedItem
+operator|.
+name|equals
+argument_list|(
+literal|";"
+argument_list|)
+condition|)
+block|{
 name|serializedMetaData
 operator|.
 name|put
@@ -2224,12 +2250,10 @@ operator|.
 name|getKey
 argument_list|()
 argument_list|,
-name|stringBuilder
-operator|.
-name|toString
-argument_list|()
+name|serializedItem
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|// write groups if present. skip this if only the root node exists
 comment|// (which is always the AllEntriesGroup).
