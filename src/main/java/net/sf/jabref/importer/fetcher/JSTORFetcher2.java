@@ -602,7 +602,9 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Error while fetching from JSTOR"
+literal|"Error while fetching from %0"
+argument_list|,
+literal|"JSTOR"
 argument_list|)
 operator|+
 literal|": "

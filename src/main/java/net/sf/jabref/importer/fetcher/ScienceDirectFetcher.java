@@ -519,7 +519,9 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Error while fetching from ScienceDirect"
+literal|"Error while fetching from %0"
+argument_list|,
+literal|"ScienceDirect"
 argument_list|)
 operator|+
 literal|": "

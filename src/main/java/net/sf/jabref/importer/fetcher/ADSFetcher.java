@@ -444,7 +444,9 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Error while fetching from ADS"
+literal|"Error while fetching from %0"
+argument_list|,
+literal|"ADS"
 argument_list|)
 operator|+
 literal|": "
