@@ -66,6 +66,22 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -972,6 +988,23 @@ name|result
 operator|.
 name|trim
 argument_list|()
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|getDescription ()
+specifier|public
+name|String
+name|getDescription
+parameter_list|()
+block|{
+return|return
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Changes HTML expressions in %s to their LaTeX equivalent."
+argument_list|)
 return|;
 block|}
 DECL|method|readTag (String text, int position)

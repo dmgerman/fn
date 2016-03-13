@@ -234,7 +234,7 @@ name|jabref
 operator|.
 name|exporter
 operator|.
-name|SaveActions
+name|FieldFormatterCleanups
 import|;
 end_import
 
@@ -553,10 +553,10 @@ specifier|private
 name|SaveOrderConfigDisplay
 name|saveOrderPanel
 decl_stmt|;
-DECL|field|saveActionsPanel
+DECL|field|fieldFormatterCleanupsPanel
 specifier|private
-name|SaveActionsPanel
-name|saveActionsPanel
+name|FieldFormatterCleanupsPanel
+name|fieldFormatterCleanupsPanel
 decl_stmt|;
 DECL|method|DatabasePropertiesDialog (JFrame parent)
 specifier|public
@@ -1032,11 +1032,22 @@ argument_list|,
 literal|5
 argument_list|)
 expr_stmt|;
-name|saveActionsPanel
+name|fieldFormatterCleanupsPanel
 operator|=
 operator|new
-name|SaveActionsPanel
-argument_list|()
+name|FieldFormatterCleanupsPanel
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Enable save actions"
+argument_list|)
+argument_list|,
+name|FieldFormatterCleanups
+operator|.
+name|DEFAULT_SAVE_ACTIONS
+argument_list|)
 expr_stmt|;
 name|builder
 operator|.
@@ -1063,7 +1074,7 @@ name|builder
 operator|.
 name|add
 argument_list|(
-name|saveActionsPanel
+name|fieldFormatterCleanupsPanel
 argument_list|)
 operator|.
 name|xyw
@@ -1797,7 +1808,7 @@ name|isSelected
 argument_list|()
 expr_stmt|;
 comment|//set save actions
-name|saveActionsPanel
+name|fieldFormatterCleanupsPanel
 operator|.
 name|setValues
 argument_list|(
@@ -2108,7 +2119,7 @@ block|}
 name|boolean
 name|saveActionsChanged
 init|=
-name|saveActionsPanel
+name|fieldFormatterCleanupsPanel
 operator|.
 name|hasChanged
 argument_list|()
@@ -2120,7 +2131,7 @@ condition|)
 block|{
 if|if
 condition|(
-name|saveActionsPanel
+name|fieldFormatterCleanupsPanel
 operator|.
 name|isDefaultSaveActions
 argument_list|()
@@ -2130,15 +2141,15 @@ name|metaData
 operator|.
 name|remove
 argument_list|(
-name|SaveActions
+name|MetaData
 operator|.
-name|META_KEY
+name|SAVE_ACTIONS
 argument_list|)
 expr_stmt|;
 block|}
 else|else
 block|{
-name|saveActionsPanel
+name|fieldFormatterCleanupsPanel
 operator|.
 name|storeSettings
 argument_list|(

@@ -179,6 +179,17 @@ operator|new
 name|UnicodeToLatexFormatter
 argument_list|()
 decl_stmt|;
+DECL|field|ERASE
+specifier|public
+specifier|static
+specifier|final
+name|EraseFormatter
+name|ERASE
+init|=
+operator|new
+name|EraseFormatter
+argument_list|()
+decl_stmt|;
 DECL|field|ALL
 specifier|public
 specifier|static
@@ -214,6 +225,8 @@ argument_list|,
 name|HTML_TO_LATEX
 argument_list|,
 name|UNICODE_TO_LATEX
+argument_list|,
+name|ERASE
 argument_list|)
 decl_stmt|;
 block|}

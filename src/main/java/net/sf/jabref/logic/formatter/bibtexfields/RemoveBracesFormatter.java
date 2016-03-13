@@ -34,6 +34,22 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -41,6 +57,10 @@ operator|.
 name|Objects
 import|;
 end_import
+
+begin_comment
+comment|/**  * Removes all matching braces around the string.  */
+end_comment
 
 begin_class
 DECL|class|RemoveBracesFormatter
@@ -172,6 +192,23 @@ block|}
 block|}
 return|return
 name|formatted
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|getDescription ()
+specifier|public
+name|String
+name|getDescription
+parameter_list|()
+block|{
+return|return
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Removes all matching braces around the contents of %s."
+argument_list|)
 return|;
 block|}
 comment|/**      * Check if a string at any point has had more ending } braces than opening { ones.      * Will e.g. return true for the string "DNA} blahblal {EPA"      *      * @param value The string to check.      * @return true if at any index the brace count is negative.      */

@@ -20,7 +20,7 @@ name|jabref
 operator|.
 name|exporter
 operator|.
-name|SaveActions
+name|FieldFormatterCleanups
 import|;
 end_import
 
@@ -41,16 +41,6 @@ operator|.
 name|junit
 operator|.
 name|Test
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Arrays
 import|;
 end_import
 
@@ -92,7 +82,7 @@ name|junit
 operator|.
 name|Assert
 operator|.
-name|*
+name|assertEquals
 import|;
 end_import
 
@@ -156,11 +146,11 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|SaveActions
+name|FieldFormatterCleanups
 name|saveActions
 init|=
 operator|new
-name|SaveActions
+name|FieldFormatterCleanups
 argument_list|(
 literal|true
 argument_list|,

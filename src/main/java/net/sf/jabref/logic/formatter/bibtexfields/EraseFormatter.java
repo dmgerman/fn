@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|net.sf.jabref.logic.formatter.casechanger
+DECL|package|net.sf.jabref.logic.formatter.bibtexfields
 package|package
 name|net
 operator|.
@@ -12,25 +12,9 @@ name|logic
 operator|.
 name|formatter
 operator|.
-name|casechanger
+name|bibtexfields
 package|;
 end_package
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
-name|formatter
-operator|.
-name|CaseChangers
-import|;
-end_import
 
 begin_import
 import|import
@@ -64,11 +48,21 @@ name|Localization
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Objects
+import|;
+end_import
+
 begin_class
-DECL|class|UpperFirstCaseChanger
+DECL|class|EraseFormatter
 specifier|public
 class|class
-name|UpperFirstCaseChanger
+name|EraseFormatter
 implements|implements
 name|Formatter
 block|{
@@ -81,12 +75,7 @@ name|getName
 parameter_list|()
 block|{
 return|return
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Upper first"
-argument_list|)
+literal|"Erase all"
 return|;
 block|}
 annotation|@
@@ -98,60 +87,29 @@ name|getKey
 parameter_list|()
 block|{
 return|return
-literal|"UpperFirstCaseChanger"
+literal|"EraseFormatter"
 return|;
 block|}
-comment|/**      * Converts the first character of the first word of the given string to upper case (and the remaining characters of the first word to lower case), but does not change anything if word starts with "{"      */
 annotation|@
 name|Override
-DECL|method|format (String input)
+DECL|method|format (String oldString)
 specifier|public
 name|String
 name|format
 parameter_list|(
 name|String
-name|input
+name|oldString
 parameter_list|)
 block|{
-name|Title
-name|title
-init|=
-operator|new
-name|Title
+name|Objects
+operator|.
+name|requireNonNull
 argument_list|(
-name|CaseChangers
-operator|.
-name|LOWER
-operator|.
-name|format
-argument_list|(
-name|input
-argument_list|)
-argument_list|)
-decl_stmt|;
-name|title
-operator|.
-name|getWords
-argument_list|()
-operator|.
-name|stream
-argument_list|()
-operator|.
-name|findFirst
-argument_list|()
-operator|.
-name|ifPresent
-argument_list|(
-name|Word
-operator|::
-name|toUpperFirst
+name|oldString
 argument_list|)
 expr_stmt|;
 return|return
-name|title
-operator|.
-name|toString
-argument_list|()
+literal|""
 return|;
 block|}
 annotation|@
@@ -167,7 +125,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Converts the first character of the first word in %s to upper case (and the remaining characters of the first word to lower case), but does not change anything if word starts with \"{\"."
+literal|"Completely erases %s."
 argument_list|)
 return|;
 block|}

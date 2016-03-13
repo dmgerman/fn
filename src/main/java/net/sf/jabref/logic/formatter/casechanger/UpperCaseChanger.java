@@ -128,6 +128,23 @@ name|toString
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
+DECL|method|getDescription ()
+specifier|public
+name|String
+name|getDescription
+parameter_list|()
+block|{
+return|return
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Converts all characters in %s to upper case, but does not change words starting with \"{\"."
+argument_list|)
+return|;
+block|}
 block|}
 end_class
 

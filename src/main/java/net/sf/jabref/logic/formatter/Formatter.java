@@ -36,7 +36,7 @@ name|String
 name|getKey
 parameter_list|()
 function_decl|;
-comment|/**      * Formats a field value by with a particular formatter transformation.      *      * Calling this method with a null argument results in a NullPointerException.      *      * @param value the input String      * @return the formatted output String, always not null      */
+comment|/**      * Formats a field value by with a particular formatter transformation.      *      * Calling this method with a null argument results in a NullPointerException.      *      * @param value the input String      * @return the formatted output String      */
 DECL|method|format (String value)
 name|String
 name|format
@@ -44,6 +44,12 @@ parameter_list|(
 name|String
 name|value
 parameter_list|)
+function_decl|;
+comment|/**      * Returns a description of the formatter.      * The string "%s" serves as a placeholder for the field name, see java.util.Formatter.      *      * @return the description string, always non empty      */
+DECL|method|getDescription ()
+name|String
+name|getDescription
+parameter_list|()
 function_decl|;
 block|}
 end_interface

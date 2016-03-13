@@ -2270,11 +2270,11 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|SaveActions
+name|FieldFormatterCleanups
 name|saveActions
 init|=
 operator|new
-name|SaveActions
+name|FieldFormatterCleanups
 argument_list|(
 literal|true
 argument_list|,
@@ -2777,9 +2777,9 @@ name|setContentSelectors
 argument_list|(
 literal|"title"
 argument_list|,
-name|Arrays
+name|Collections
 operator|.
-name|asList
+name|singletonList
 argument_list|(
 literal|""
 argument_list|)
