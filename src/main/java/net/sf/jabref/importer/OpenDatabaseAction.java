@@ -762,20 +762,11 @@ specifier|final
 name|boolean
 name|raisePanel
 decl_stmt|;
-DECL|field|file
-specifier|private
-specifier|final
-name|File
-name|file
-decl_stmt|;
-DECL|method|OpenItSwingHelper (BasePanel basePanel, File file, boolean raisePanel)
+DECL|method|OpenItSwingHelper (BasePanel basePanel, boolean raisePanel)
 name|OpenItSwingHelper
 parameter_list|(
 name|BasePanel
 name|basePanel
-parameter_list|,
-name|File
-name|file
 parameter_list|,
 name|boolean
 name|raisePanel
@@ -793,12 +784,6 @@ name|raisePanel
 operator|=
 name|raisePanel
 expr_stmt|;
-name|this
-operator|.
-name|file
-operator|=
-name|file
-expr_stmt|;
 block|}
 annotation|@
 name|Override
@@ -813,8 +798,6 @@ operator|.
 name|addTab
 argument_list|(
 name|basePanel
-argument_list|,
-name|file
 argument_list|,
 name|raisePanel
 argument_list|)
@@ -2044,8 +2027,6 @@ operator|new
 name|OpenItSwingHelper
 argument_list|(
 name|basePanel
-argument_list|,
-name|file
 argument_list|,
 name|raisePanel
 argument_list|)

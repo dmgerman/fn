@@ -271,7 +271,8 @@ expr_stmt|;
 comment|/*          * Change by Morten Alver 2005.12.04: By postponing the updating of the          * side pane components, we get rid of the annoying latency when          * switching tabs:          */
 name|frame
 operator|.
-name|tabbedPane
+name|getTabbedPane
+argument_list|()
 operator|.
 name|addChangeListener
 argument_list|(
@@ -285,18 +286,13 @@ parameter_list|()
 lambda|->
 name|setActiveBasePanel
 argument_list|(
-operator|(
-name|BasePanel
-operator|)
 name|SidePaneManager
 operator|.
 name|this
 operator|.
 name|frame
 operator|.
-name|tabbedPane
-operator|.
-name|getSelectedComponent
+name|getCurrentBasePanel
 argument_list|()
 argument_list|)
 argument_list|)

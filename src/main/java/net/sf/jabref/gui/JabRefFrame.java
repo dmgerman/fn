@@ -992,7 +992,7 @@ name|SidePaneManager
 name|sidePaneManager
 decl_stmt|;
 DECL|field|tabbedPane
-specifier|public
+specifier|private
 name|JTabbedPane
 name|tabbedPane
 decl_stmt|;
@@ -7025,7 +7025,7 @@ name|i
 argument_list|)
 return|;
 block|}
-comment|/**      * Returns a list of BasePanel.      *      * @param i Index of base      */
+comment|/**      * Returns a list of BasePanel.      *      */
 DECL|method|getBasePanelList ()
 specifier|public
 name|List
@@ -10793,8 +10793,6 @@ name|addTab
 argument_list|(
 name|bp
 argument_list|,
-name|file
-argument_list|,
 name|raisePanel
 argument_list|)
 expr_stmt|;
@@ -11080,18 +11078,33 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+name|tabbedPane
+operator|.
+name|setToolTipTextAt
+argument_list|(
+name|i
+argument_list|,
+name|file
+operator|==
+literal|null
+condition|?
+literal|null
+else|:
+name|file
+operator|.
+name|getAbsolutePath
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 block|}
-DECL|method|addTab (BasePanel bp, File file, boolean raisePanel)
+DECL|method|addTab (BasePanel bp, boolean raisePanel)
 specifier|public
 name|void
 name|addTab
 parameter_list|(
 name|BasePanel
 name|bp
-parameter_list|,
-name|File
-name|file
 parameter_list|,
 name|boolean
 name|raisePanel
@@ -11108,29 +11121,6 @@ name|getTabTitle
 argument_list|()
 argument_list|,
 name|bp
-argument_list|)
-expr_stmt|;
-name|tabbedPane
-operator|.
-name|setToolTipTextAt
-argument_list|(
-name|tabbedPane
-operator|.
-name|getTabCount
-argument_list|()
-operator|-
-literal|1
-argument_list|,
-name|file
-operator|==
-literal|null
-condition|?
-literal|null
-else|:
-name|file
-operator|.
-name|getAbsolutePath
-argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// update all tab titles
