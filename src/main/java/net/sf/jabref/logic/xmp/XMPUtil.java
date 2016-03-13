@@ -556,7 +556,8 @@ name|result
 init|=
 name|Collections
 operator|.
-name|EMPTY_LIST
+name|emptyList
+argument_list|()
 decl_stmt|;
 try|try
 init|(
@@ -4505,15 +4506,15 @@ literal|false
 return|;
 block|}
 block|}
-comment|/**      * Will try to read XMP metadata from the given file, returning whether      * metadata was found.      *      * Caution: This method is as expensive as it is reading the actual metadata      * itself from the PDF.      *      * @param inputsStream      *            The inputStream to read the PDF from.      * @return whether a BibEntry was found in the given PDF.      */
-DECL|method|hasMetadata (InputStream inputsStream)
+comment|/**      * Will try to read XMP metadata from the given file, returning whether      * metadata was found.      *      * Caution: This method is as expensive as it is reading the actual metadata      * itself from the PDF.      *      * @param inputStream      *            The inputStream to read the PDF from.      * @return whether a BibEntry was found in the given PDF.      */
+DECL|method|hasMetadata (InputStream inputStream)
 specifier|public
 specifier|static
 name|boolean
 name|hasMetadata
 parameter_list|(
 name|InputStream
-name|inputsStream
+name|inputStream
 parameter_list|)
 block|{
 try|try
@@ -4528,7 +4529,7 @@ name|XMPUtil
 operator|.
 name|readXMP
 argument_list|(
-name|inputsStream
+name|inputStream
 argument_list|)
 decl_stmt|;
 return|return
