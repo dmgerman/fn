@@ -519,7 +519,7 @@ name|getHelpPage
 parameter_list|()
 block|{
 return|return
-literal|"Spires"
+literal|"INSPIRE"
 return|;
 block|}
 annotation|@

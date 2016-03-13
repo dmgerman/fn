@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/* Copyright (C) 2003-2015 JabRef Contributors  * Copyright (c) 2009, Ryo IGARASHI<rigarash@gmail.com>  * All rights reserved.  * Redistribution and use in source and binary forms, with or without  * modification, are permitted provided that the following conditions are met:  *  *     * Redistributions of source code must retain the above copyright  *       notice, this list of conditions and the following disclaimer.  *     * Redistributions in binary form must reproduce the above copyright  *        notice, this list of conditions and the following disclaimer in the  *       documentation and/or other materials provided with the distribution.  *  * THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS "AS IS" AND ANY  * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED  * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE  * DISCLAIMED. IN NO EVENT SHALL THE REGENTS AND CONTRIBUTORS BE LIABLE FOR ANY  * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES  * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;  * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND  * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.  */
+comment|/* Copyright (C) 2003-2016 JabRef Contributors  * Copyright (c) 2009, Ryo IGARASHI<rigarash@gmail.com>  * All rights reserved.  * Redistribution and use in source and binary forms, with or without  * modification, are permitted provided that the following conditions are met:  *  *     * Redistributions of source code must retain the above copyright  *       notice, this list of conditions and the following disclaimer.  *     * Redistributions in binary form must reproduce the above copyright  *        notice, this list of conditions and the following disclaimer in the  *       documentation and/or other materials provided with the distribution.  *  * THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS "AS IS" AND ANY  * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED  * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE  * DISCLAIMED. IN NO EVENT SHALL THE REGENTS AND CONTRIBUTORS BE LIABLE FOR ANY  * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES  * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;  * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND  * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.  */
 end_comment
 
 begin_package
@@ -276,7 +276,6 @@ name|JPanel
 name|getOptionsPanel
 parameter_list|()
 block|{
-comment|// No option panel
 return|return
 literal|null
 return|;
@@ -289,7 +288,6 @@ name|String
 name|getHelpPage
 parameter_list|()
 block|{
-comment|// TODO: No help page
 return|return
 literal|null
 return|;
@@ -303,12 +301,7 @@ name|getTitle
 parameter_list|()
 block|{
 return|return
-name|Localization
-operator|.
-name|lang
-argument_list|(
 literal|"ADS from ADS-DOI"
-argument_list|)
 return|;
 block|}
 annotation|@
@@ -357,12 +350,10 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Processing"
-argument_list|)
-operator|+
-literal|" "
-operator|+
+literal|"Processing %0"
+argument_list|,
 name|key
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|BibDatabase
