@@ -9044,10 +9044,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|integrationTestFileDirectory ()
+DECL|method|integrationTestFileDirectories ()
 specifier|public
 name|void
-name|integrationTestFileDirectory
+name|integrationTestFileDirectories
 parameter_list|()
 throws|throws
 name|IOException
