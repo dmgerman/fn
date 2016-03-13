@@ -1122,9 +1122,13 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"An Error occurred while fetching from OAI2 source (%0):"
+literal|"Error while fetching from %0"
 argument_list|,
+literal|"OAI2 source ("
+operator|+
 name|url
+operator|+
+literal|"):"
 argument_list|)
 operator|+
 literal|"\n\n"
@@ -1358,12 +1362,10 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Processing"
-argument_list|)
-operator|+
-literal|" "
-operator|+
+literal|"Processing %0"
+argument_list|,
 name|key
+argument_list|)
 argument_list|)
 expr_stmt|;
 comment|/* the cancel button has been hit */

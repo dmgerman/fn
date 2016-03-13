@@ -991,7 +991,9 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Error occured parsing BibTeX returned from IEEEXplore"
+literal|"Error while fetching from %0"
+argument_list|,
+literal|"IEEEXplore"
 argument_list|)
 argument_list|,
 name|DIALOG_TITLE
