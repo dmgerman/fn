@@ -987,6 +987,13 @@ literal|"\uf451"
 argument_list|)
 block|,
 comment|/*css: mdi-regex */
+DECL|enumConstant|CONSOLE
+name|CONSOLE
+argument_list|(
+literal|"\uf18d"
+argument_list|)
+block|,
+comment|/*css: console */
 comment|// STILL MISSING:
 DECL|enumConstant|GROUP_REGULAR
 name|GROUP_REGULAR
