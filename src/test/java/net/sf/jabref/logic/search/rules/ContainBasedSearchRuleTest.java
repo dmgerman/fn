@@ -222,7 +222,7 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-literal|true
+literal|false
 argument_list|,
 name|bsCaseInsensitiveRegexp
 operator|.
@@ -304,7 +304,7 @@ argument_list|)
 expr_stmt|;
 name|query
 operator|=
-literal|"\"marine [A-Za-z]* larviculture\""
+literal|"marine [A-Za-z]* larviculture"
 expr_stmt|;
 name|Assert
 operator|.
