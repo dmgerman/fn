@@ -177,11 +177,6 @@ specifier|private
 name|int
 name|databases
 decl_stmt|;
-DECL|field|saved
-specifier|private
-name|int
-name|saved
-decl_stmt|;
 comment|/** Creates a new instance of SaveAllAction */
 DECL|method|SaveAllAction (JabRefFrame frame)
 specifier|public
@@ -272,15 +267,8 @@ name|databases
 operator|=
 name|frame
 operator|.
-name|getTabbedPane
+name|getBasePanelCount
 argument_list|()
-operator|.
-name|getTabCount
-argument_list|()
-expr_stmt|;
-name|saved
-operator|=
-literal|0
 expr_stmt|;
 name|frame
 operator|.
@@ -346,10 +334,7 @@ name|i
 operator|<
 name|frame
 operator|.
-name|getTabbedPane
-argument_list|()
-operator|.
-name|getTabCount
+name|getBasePanelCount
 argument_list|()
 condition|)
 block|{
@@ -394,9 +379,6 @@ name|SAVE
 argument_list|)
 expr_stmt|;
 comment|// TODO: can we find out whether the save was actually done or not?
-name|saved
-operator|++
-expr_stmt|;
 block|}
 block|}
 block|}

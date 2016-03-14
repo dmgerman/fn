@@ -263,7 +263,8 @@ literal|true
 argument_list|,
 name|jabRefFrame
 operator|.
-name|tabbedPane
+name|getTabbedPane
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|PositionWindow
@@ -343,24 +344,11 @@ decl_stmt|;
 comment|// meta data
 name|jabRefFrame
 operator|.
-name|tabbedPane
-operator|.
-name|add
+name|addTab
 argument_list|(
-name|GUIGlobals
-operator|.
-name|untitledTitle
+name|bp
 argument_list|,
-name|bp
-argument_list|)
-expr_stmt|;
-name|jabRefFrame
-operator|.
-name|tabbedPane
-operator|.
-name|setSelectedComponent
-argument_list|(
-name|bp
+literal|true
 argument_list|)
 expr_stmt|;
 name|jabRefFrame
