@@ -973,6 +973,20 @@ literal|"\uf3cc"
 argument_list|)
 block|,
 comment|/*css: open-in-new */
+DECL|enumConstant|CASE_SENSITIVE
+name|CASE_SENSITIVE
+argument_list|(
+literal|"\uf02c"
+argument_list|)
+block|,
+comment|/* css: mdi-alphabetical */
+DECL|enumConstant|REG_EX
+name|REG_EX
+argument_list|(
+literal|"\uf451"
+argument_list|)
+block|,
+comment|/*css: mdi-regex */
 comment|// STILL MISSING:
 DECL|enumConstant|GROUP_REGULAR
 name|GROUP_REGULAR
