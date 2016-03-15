@@ -79,6 +79,17 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
+DECL|method|detectProgramPath (String programName, String directoryName)
+name|String
+name|detectProgramPath
+parameter_list|(
+name|String
+name|programName
+parameter_list|,
+name|String
+name|directoryName
+parameter_list|)
+function_decl|;
 block|}
 end_interface
 

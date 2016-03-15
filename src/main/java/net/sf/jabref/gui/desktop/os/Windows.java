@@ -18,22 +18,6 @@ end_package
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
-name|util
-operator|.
-name|OS
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -60,9 +44,10 @@ name|Windows
 implements|implements
 name|NativeDesktop
 block|{
+annotation|@
+name|Override
 DECL|method|detectProgramPath (String programName, String directoryName)
 specifier|public
-specifier|static
 name|String
 name|detectProgramPath
 parameter_list|(

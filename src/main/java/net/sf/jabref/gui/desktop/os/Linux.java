@@ -575,6 +575,24 @@ expr_stmt|;
 block|}
 block|}
 block|}
+annotation|@
+name|Override
+DECL|method|detectProgramPath (String programName, String directoryName)
+specifier|public
+name|String
+name|detectProgramPath
+parameter_list|(
+name|String
+name|programName
+parameter_list|,
+name|String
+name|directoryName
+parameter_list|)
+block|{
+return|return
+name|programName
+return|;
+block|}
 block|}
 end_class
 
