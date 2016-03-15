@@ -41,16 +41,21 @@ DECL|class|Windows
 specifier|public
 class|class
 name|Windows
+implements|implements
+name|NativeDesktop
 block|{
-comment|/**      * Opens a file on a Windows system, using its default viewer.      *      * @param link      *            The filename.      * @throws IOException      */
-DECL|method|openFile (String link)
+annotation|@
+name|Override
+DECL|method|openFile (String filePath, String fileType)
 specifier|public
-specifier|static
 name|void
 name|openFile
 parameter_list|(
 name|String
-name|link
+name|filePath
+parameter_list|,
+name|String
+name|fileType
 parameter_list|)
 throws|throws
 name|IOException
@@ -65,7 +70,7 @@ name|exec
 argument_list|(
 literal|"cmd.exe /c start "
 operator|+
-name|link
+name|filePath
 operator|.
 name|replaceAll
 argument_list|(
@@ -83,15 +88,15 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Opens a file on a Windows system, using the given application.      *      * @param link The filename.      * @param application Link to the app that opens the file.      * @throws IOException      */
-DECL|method|openFileWithApplication (String link, String application)
+annotation|@
+name|Override
+DECL|method|openFileWithApplication (String filePath, String application)
 specifier|public
-specifier|static
 name|void
 name|openFileWithApplication
 parameter_list|(
 name|String
-name|link
+name|filePath
 parameter_list|,
 name|String
 name|application
@@ -102,7 +107,7 @@ block|{
 name|String
 name|escapedLink
 init|=
-name|link
+name|filePath
 operator|.
 name|replaceAll
 argument_list|(
@@ -133,14 +138,15 @@ name|escapedLink
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|openFolderAndSelectFile (String link)
+annotation|@
+name|Override
+DECL|method|openFolderAndSelectFile (String filePath)
 specifier|public
-specifier|static
 name|void
 name|openFolderAndSelectFile
 parameter_list|(
 name|String
-name|link
+name|filePath
 parameter_list|)
 throws|throws
 name|IOException
@@ -148,7 +154,7 @@ block|{
 name|String
 name|escapedLink
 init|=
-name|link
+name|filePath
 operator|.
 name|replace
 argument_list|(
@@ -177,9 +183,10 @@ name|cmd
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|openConsole (String absolutePath)
 specifier|public
-specifier|static
 name|void
 name|openConsole
 parameter_list|(
