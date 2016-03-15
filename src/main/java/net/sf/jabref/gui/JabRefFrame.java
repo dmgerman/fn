@@ -5793,21 +5793,6 @@ name|void
 name|preferences
 parameter_list|()
 block|{
-comment|//PrefsDialog.showPrefsDialog(JabRefFrame.this, prefs);
-name|AbstractWorker
-name|worker
-init|=
-operator|new
-name|AbstractWorker
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|run
-parameter_list|()
-block|{
 name|output
 argument_list|(
 name|Localization
@@ -5857,14 +5842,6 @@ name|setValues
 argument_list|()
 expr_stmt|;
 block|}
-block|}
-annotation|@
-name|Override
-specifier|public
-name|void
-name|update
-parameter_list|()
-block|{
 name|prefsDialog
 operator|.
 name|setVisible
@@ -5876,25 +5853,6 @@ name|output
 argument_list|(
 literal|""
 argument_list|)
-expr_stmt|;
-block|}
-block|}
-decl_stmt|;
-name|worker
-operator|.
-name|getWorker
-argument_list|()
-operator|.
-name|run
-argument_list|()
-expr_stmt|;
-name|worker
-operator|.
-name|getCallBack
-argument_list|()
-operator|.
-name|update
-argument_list|()
 expr_stmt|;
 block|}
 DECL|method|prefs ()
@@ -7991,7 +7949,7 @@ name|Localization
 operator|.
 name|menuTitle
 argument_list|(
-literal|"New entry..."
+literal|"New entry by type..."
 argument_list|)
 argument_list|)
 decl_stmt|;
