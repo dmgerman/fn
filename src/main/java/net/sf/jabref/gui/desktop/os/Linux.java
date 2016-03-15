@@ -145,6 +145,7 @@ argument_list|(
 name|fileType
 argument_list|)
 decl_stmt|;
+comment|// TODO: use "xdg-open" instead?
 name|String
 name|viewer
 init|=
