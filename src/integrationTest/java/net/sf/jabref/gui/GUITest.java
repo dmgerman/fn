@@ -446,7 +446,7 @@ name|menuItemWithPath
 argument_list|(
 literal|"BibTeX"
 argument_list|,
-literal|"New entry"
+literal|"New entry..."
 argument_list|)
 operator|.
 name|click

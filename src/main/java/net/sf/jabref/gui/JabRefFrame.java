@@ -7949,7 +7949,7 @@ name|Localization
 operator|.
 name|menuTitle
 argument_list|(
-literal|"New entry..."
+literal|"New entry by type..."
 argument_list|)
 argument_list|)
 decl_stmt|;
