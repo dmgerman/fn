@@ -251,7 +251,7 @@ specifier|final
 name|String
 name|DATABASE_TYPE
 init|=
-literal|"DATABASE_TYPE"
+literal|"databaseType"
 decl_stmt|;
 DECL|field|GROUPSVERSION
 specifier|public
