@@ -522,15 +522,6 @@ name|Object
 index|[]
 block|{
 operator|new
-name|TrimFormatter
-argument_list|()
-block|}
-argument_list|,
-operator|new
-name|Object
-index|[]
-block|{
-operator|new
 name|HTMLToLatexFormatter
 argument_list|()
 block|}
