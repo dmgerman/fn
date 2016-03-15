@@ -132,11 +132,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|wizard
+name|gui
 operator|.
 name|auximport
-operator|.
-name|gui
 operator|.
 name|FromAuxDialog
 import|;
@@ -220,6 +218,8 @@ name|menuTitle
 argument_list|(
 literal|"New subdatabase based on AUX file"
 argument_list|)
+operator|+
+literal|"..."
 argument_list|)
 expr_stmt|;
 name|putValue
@@ -263,7 +263,8 @@ literal|true
 argument_list|,
 name|jabRefFrame
 operator|.
-name|tabbedPane
+name|getTabbedPane
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|PositionWindow
@@ -343,24 +344,11 @@ decl_stmt|;
 comment|// meta data
 name|jabRefFrame
 operator|.
-name|tabbedPane
-operator|.
-name|add
+name|addTab
 argument_list|(
-name|GUIGlobals
-operator|.
-name|untitledTitle
+name|bp
 argument_list|,
-name|bp
-argument_list|)
-expr_stmt|;
-name|jabRefFrame
-operator|.
-name|tabbedPane
-operator|.
-name|setSelectedComponent
-argument_list|(
-name|bp
+literal|true
 argument_list|)
 expr_stmt|;
 name|jabRefFrame

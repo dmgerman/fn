@@ -471,6 +471,8 @@ name|start
 argument_list|()
 expr_stmt|;
 break|break;
+default|default:
+break|break;
 block|}
 comment|// select first match (i.e., row) if there is any
 name|int

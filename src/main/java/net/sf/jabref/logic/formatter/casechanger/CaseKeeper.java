@@ -26,7 +26,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Arrays
+name|List
 import|;
 end_import
 
@@ -98,7 +98,7 @@ name|CaseKeeper
 implements|implements
 name|Formatter
 block|{
-DECL|method|format (String text, String[] listOfWords)
+DECL|method|format (String text, List<String> listOfWords)
 specifier|private
 name|String
 name|format
@@ -106,17 +106,22 @@ parameter_list|(
 name|String
 name|text
 parameter_list|,
+name|List
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|listOfWords
 parameter_list|)
 block|{
-name|Arrays
+name|String
+name|result
+init|=
+name|text
+decl_stmt|;
+name|listOfWords
 operator|.
 name|sort
 argument_list|(
-name|listOfWords
-argument_list|,
 operator|new
 name|StringLengthComparator
 argument_list|()
@@ -132,9 +137,9 @@ name|listOfWords
 control|)
 block|{
 comment|// Add {} if the character before is a space, -, /, (, [, ", or } or if it is at the start of the string but not if it is followed by a }
-name|text
+name|result
 operator|=
-name|text
+name|result
 operator|.
 name|replaceAll
 argument_list|(
@@ -153,7 +158,7 @@ argument_list|)
 expr_stmt|;
 block|}
 return|return
-name|text
+name|result
 return|;
 block|}
 annotation|@
@@ -186,14 +191,6 @@ return|return
 name|text
 return|;
 block|}
-specifier|final
-name|CaseKeeperList
-name|list
-init|=
-operator|new
-name|CaseKeeperList
-argument_list|()
-decl_stmt|;
 return|return
 name|this
 operator|.
@@ -201,10 +198,27 @@ name|format
 argument_list|(
 name|text
 argument_list|,
-name|list
+name|CaseKeeperList
 operator|.
 name|getAll
 argument_list|()
+argument_list|)
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|getDescription ()
+specifier|public
+name|String
+name|getDescription
+parameter_list|()
+block|{
+return|return
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Adds {} brackets around acronyms, month names and countries in %s to preserve their case."
 argument_list|)
 return|;
 block|}

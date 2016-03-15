@@ -439,8 +439,9 @@ argument_list|)
 expr_stmt|;
 comment|// LengthComparator from CaseKeeper.java
 comment|// Replace the hyphen in 12-bit etc with a non-breaking hyphen, will also avoid bad casing of 12-Bit
-name|text
-operator|=
+name|String
+name|result
+init|=
 name|text
 operator|.
 name|replaceAll
@@ -449,11 +450,11 @@ literal|"([0-9,\\.]+)-([Bb][Ii][Tt])"
 argument_list|,
 literal|"$1\\\\mbox\\{-\\}$2"
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 comment|// Replace the space in 12 bit etc with a non-breaking space, will also avoid bad casing of 12 Bit
-name|text
+name|result
 operator|=
-name|text
+name|result
 operator|.
 name|replaceAll
 argument_list|(
@@ -472,9 +473,9 @@ name|listOfWords
 control|)
 block|{
 comment|// Add {} if the character before is a space, -, /, (, [, or } or if it is at the start of the string but not if it is followed by a }
-name|text
+name|result
 operator|=
-name|text
+name|result
 operator|.
 name|replaceAll
 argument_list|(
@@ -488,9 +489,9 @@ literal|"$1\\{$2\\}"
 argument_list|)
 expr_stmt|;
 comment|// Only add brackets to keep case
-name|text
+name|result
 operator|=
-name|text
+name|result
 operator|.
 name|replaceAll
 argument_list|(
@@ -504,9 +505,9 @@ literal|"$1\\\\mbox\\{-\\}\\{$2\\}"
 argument_list|)
 expr_stmt|;
 comment|// Replace hyphen with non-break hyphen
-name|text
+name|result
 operator|=
-name|text
+name|result
 operator|.
 name|replaceAll
 argument_list|(
@@ -522,7 +523,7 @@ expr_stmt|;
 comment|// Replace space with a hard space
 block|}
 return|return
-name|text
+name|result
 return|;
 block|}
 annotation|@
@@ -563,6 +564,23 @@ argument_list|,
 name|UnitFormatter
 operator|.
 name|UNIT_COMBINATIONS
+argument_list|)
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|getDescription ()
+specifier|public
+name|String
+name|getDescription
+parameter_list|()
+block|{
+return|return
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Converts units in %s to LaTeX code."
 argument_list|)
 return|;
 block|}

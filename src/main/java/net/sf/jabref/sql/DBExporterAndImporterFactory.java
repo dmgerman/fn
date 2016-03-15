@@ -18,6 +18,34 @@ end_package
 
 begin_import
 import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -113,7 +141,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Created by ifsteinm  *   * Jan 20th 	This class is a factory that creates DBImporter and DBExporters  * 				when the user wishes to import or export a bib file to DBMS  *   */
+comment|/**  * Created by ifsteinm  *  * Jan 20th 	This class is a factory that creates DBImporter and DBExporters  * 				when the user wishes to import or export a bib file to DBMS  *  */
 end_comment
 
 begin_class
@@ -122,7 +150,23 @@ specifier|public
 class|class
 name|DBExporterAndImporterFactory
 block|{
-comment|/**      * All DBTypes must appear here. The enum items must be the      * names that appear in the combobox used to select the DB,      * because this text is used to choose which DBImporter/Exporter      * will be sent back to the requester      *       */
+DECL|field|LOGGER
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOGGER
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|DBExporterAndImporterFactory
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
+comment|/**      * All DBTypes must appear here. The enum items must be the      * names that appear in the combobox used to select the DB,      * because this text is used to choose which DBImporter/Exporter      * will be sent back to the requester      *      */
 DECL|enum|DBType
 specifier|public
 enum|enum
@@ -140,11 +184,11 @@ argument_list|(
 literal|"POSTGRESQL"
 argument_list|)
 block|;
-DECL|field|dbType
+DECL|field|dataBaseType
 specifier|private
 specifier|final
 name|String
-name|dbType
+name|dataBaseType
 decl_stmt|;
 DECL|method|DBType (String dbType)
 name|DBType
@@ -155,7 +199,7 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|dbType
+name|dataBaseType
 operator|=
 name|dbType
 expr_stmt|;
@@ -167,11 +211,11 @@ name|getDBType
 parameter_list|()
 block|{
 return|return
-name|dbType
+name|dataBaseType
 return|;
 block|}
 block|}
-comment|/**      * Returns a DBExporter object according to a given DBType      *       * @param type      * 		The type of the database selected      * @return The DBExporter object instance      */
+comment|/**      * Returns a DBExporter object according to a given DBType      *      * @param type      * 		The type of the database selected      * @return The DBExporter object instance      */
 DECL|method|getExporter (DBType type)
 specifier|private
 name|DBExporter
@@ -213,12 +257,21 @@ name|getInstance
 argument_list|()
 expr_stmt|;
 break|break;
+default|default:
+name|LOGGER
+operator|.
+name|warn
+argument_list|(
+literal|"Unkown database type"
+argument_list|)
+expr_stmt|;
+break|break;
 block|}
 return|return
 name|exporter
 return|;
 block|}
-comment|/**      * Returns a DBExporter object according the type given as a String      *       * @param type      * 		The type of the DB as a String. (e.g. Postgresql, MySQL)      * @return The DBExporter object instance      */
+comment|/**      * Returns a DBExporter object according the type given as a String      *      * @param type      * 		The type of the DB as a String. (e.g. Postgresql, MySQL)      * @return The DBExporter object instance      */
 DECL|method|getExporter (String type)
 specifier|public
 name|DBExporter
@@ -245,7 +298,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**      * Returns a DBImporter object according to a given DBType      *       * @param type      * 		The type of the database selected      * @return The DBImporter object instance      */
+comment|/**      * Returns a DBImporter object according to a given DBType      *      * @param type      * 		The type of the database selected      * @return The DBImporter object instance      */
 DECL|method|getImporter (DBType type)
 specifier|private
 name|DBImporter
@@ -287,12 +340,21 @@ name|getInstance
 argument_list|()
 expr_stmt|;
 break|break;
+default|default:
+name|LOGGER
+operator|.
+name|warn
+argument_list|(
+literal|"Unknown database type"
+argument_list|)
+expr_stmt|;
+break|break;
 block|}
 return|return
 name|importer
 return|;
 block|}
-comment|/**      * Returns a DBImporter object according the type given as a String      *       * @param type      * 		The type of the DB as a String. (e.g. Postgresql, MySQL)      * @return The DBImporter object instance      */
+comment|/**      * Returns a DBImporter object according the type given as a String      *      * @param type      * 		The type of the DB as a String. (e.g. Postgresql, MySQL)      * @return The DBImporter object instance      */
 DECL|method|getImporter (String type)
 specifier|public
 name|DBImporter

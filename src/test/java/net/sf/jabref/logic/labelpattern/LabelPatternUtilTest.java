@@ -104,22 +104,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
-operator|.
-name|labelpattern
-operator|.
-name|LabelPatternUtil
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|model
 operator|.
 name|database
@@ -1696,10 +1680,10 @@ block|}
 comment|/**      * Test the [authN_M] pattern      */
 annotation|@
 name|Test
-DECL|method|authN_M ()
+DECL|method|authNM ()
 specifier|public
 name|void
-name|authN_M
+name|authNM
 parameter_list|()
 block|{
 name|assertEquals
@@ -1708,7 +1692,7 @@ literal|"N"
 argument_list|,
 name|LabelPatternUtil
 operator|.
-name|authN_M
+name|authNofMth
 argument_list|(
 name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_1
 argument_list|,
@@ -1724,7 +1708,7 @@ literal|"Max"
 argument_list|,
 name|LabelPatternUtil
 operator|.
-name|authN_M
+name|authNofMth
 argument_list|(
 name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_2
 argument_list|,
@@ -1740,7 +1724,7 @@ literal|"New"
 argument_list|,
 name|LabelPatternUtil
 operator|.
-name|authN_M
+name|authNofMth
 argument_list|(
 name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_3
 argument_list|,
@@ -1756,7 +1740,7 @@ literal|"Bo"
 argument_list|,
 name|LabelPatternUtil
 operator|.
-name|authN_M
+name|authNofMth
 argument_list|(
 name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_4
 argument_list|,
@@ -1772,7 +1756,7 @@ literal|"Bohr"
 argument_list|,
 name|LabelPatternUtil
 operator|.
-name|authN_M
+name|authNofMth
 argument_list|(
 name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_5
 argument_list|,
@@ -1788,7 +1772,7 @@ literal|"Aal"
 argument_list|,
 name|LabelPatternUtil
 operator|.
-name|authN_M
+name|authNofMth
 argument_list|(
 name|AUTHOR_STRING_FIRSTNAME_FULL_LASTNAME_FULL_WITH_VAN_COUNT_1
 argument_list|,
@@ -1804,7 +1788,7 @@ literal|"Less"
 argument_list|,
 name|LabelPatternUtil
 operator|.
-name|authN_M
+name|authNofMth
 argument_list|(
 name|AUTHOR_STRING_FIRSTNAME_FULL_LASTNAME_FULL_WITH_VAN_COUNT_2
 argument_list|,
@@ -1820,7 +1804,7 @@ literal|""
 argument_list|,
 name|LabelPatternUtil
 operator|.
-name|authN_M
+name|authNofMth
 argument_list|(
 literal|""
 argument_list|,
@@ -1840,15 +1824,15 @@ name|NullPointerException
 operator|.
 name|class
 argument_list|)
-DECL|method|authN_MThrowsNPE ()
+DECL|method|authNMThrowsNPE ()
 specifier|public
 name|void
-name|authN_MThrowsNPE
+name|authNMThrowsNPE
 parameter_list|()
 block|{
 name|LabelPatternUtil
 operator|.
-name|authN_M
+name|authNofMth
 argument_list|(
 literal|null
 argument_list|,
@@ -2387,7 +2371,7 @@ literal|"Newton"
 argument_list|,
 name|LabelPatternUtil
 operator|.
-name|NAuthors
+name|nAuthors
 argument_list|(
 name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_1
 argument_list|,
@@ -2401,7 +2385,7 @@ literal|"NewtonEtAl"
 argument_list|,
 name|LabelPatternUtil
 operator|.
-name|NAuthors
+name|nAuthors
 argument_list|(
 name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_2
 argument_list|,
@@ -2415,7 +2399,7 @@ literal|"NewtonEtAl"
 argument_list|,
 name|LabelPatternUtil
 operator|.
-name|NAuthors
+name|nAuthors
 argument_list|(
 name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_3
 argument_list|,
@@ -2429,7 +2413,7 @@ literal|"NewtonEtAl"
 argument_list|,
 name|LabelPatternUtil
 operator|.
-name|NAuthors
+name|nAuthors
 argument_list|(
 name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_4
 argument_list|,
@@ -2453,7 +2437,7 @@ literal|"Newton"
 argument_list|,
 name|LabelPatternUtil
 operator|.
-name|NAuthors
+name|nAuthors
 argument_list|(
 name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_1
 argument_list|,
@@ -2467,7 +2451,7 @@ literal|"NewtonMaxwell"
 argument_list|,
 name|LabelPatternUtil
 operator|.
-name|NAuthors
+name|nAuthors
 argument_list|(
 name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_2
 argument_list|,
@@ -2481,7 +2465,7 @@ literal|"NewtonMaxwellEinstein"
 argument_list|,
 name|LabelPatternUtil
 operator|.
-name|NAuthors
+name|nAuthors
 argument_list|(
 name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_3
 argument_list|,
@@ -2495,7 +2479,7 @@ literal|"NewtonMaxwellEinsteinEtAl"
 argument_list|,
 name|LabelPatternUtil
 operator|.
-name|NAuthors
+name|nAuthors
 argument_list|(
 name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_4
 argument_list|,
@@ -2746,7 +2730,6 @@ name|veryShortTitle
 parameter_list|()
 block|{
 comment|// veryShortTitle is getTitleWords with "1" as count
-specifier|final
 name|int
 name|count
 init|=
@@ -2875,7 +2858,6 @@ name|shortTitle
 parameter_list|()
 block|{
 comment|// veryShortTitle is getTitleWords with "3" as count
-specifier|final
 name|int
 name|count
 init|=
@@ -2996,10 +2978,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|keywordN_keywordsSeparatedBySpace ()
+DECL|method|keywordNKeywordsSeparatedBySpace ()
 specifier|public
 name|void
-name|keywordN_keywordsSeparatedBySpace
+name|keywordNKeywordsSeparatedBySpace
 parameter_list|()
 block|{
 name|BibEntry
@@ -3078,10 +3060,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|keywordsN_keywordsSeparatedBySpace ()
+DECL|method|keywordsNKeywordsSeparatedBySpace ()
 specifier|public
 name|void
-name|keywordsN_keywordsSeparatedBySpace
+name|keywordsNKeywordsSeparatedBySpace
 parameter_list|()
 block|{
 name|BibEntry

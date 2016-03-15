@@ -835,7 +835,6 @@ block|{
 comment|// Do nothing
 block|}
 decl_stmt|;
-comment|//StringSelection ss = new StringSelection(sw.toString());
 name|RtfSelection
 name|rs
 init|=
@@ -911,13 +910,12 @@ block|{
 comment|// Clean up:
 if|if
 condition|(
+operator|(
 name|tmp
 operator|!=
 literal|null
-condition|)
-block|{
-if|if
-condition|(
+operator|)
+operator|&&
 operator|!
 name|tmp
 operator|.
@@ -932,7 +930,6 @@ argument_list|(
 literal|"Cannot delete temporary clipboard file"
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 block|}

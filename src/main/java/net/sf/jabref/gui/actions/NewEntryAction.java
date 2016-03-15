@@ -234,6 +234,8 @@ name|menuTitle
 argument_list|(
 literal|"New entry"
 argument_list|)
+operator|+
+literal|"..."
 argument_list|)
 expr_stmt|;
 name|putValue
@@ -427,25 +429,16 @@ if|if
 condition|(
 name|jabRefFrame
 operator|.
-name|tabbedPane
-operator|.
-name|getTabCount
+name|getBasePanelCount
 argument_list|()
 operator|>
 literal|0
 condition|)
 block|{
-operator|(
-operator|(
-name|BasePanel
-operator|)
 name|jabRefFrame
 operator|.
-name|tabbedPane
-operator|.
-name|getSelectedComponent
+name|getCurrentBasePanel
 argument_list|()
-operator|)
 operator|.
 name|newEntry
 argument_list|(

@@ -501,13 +501,6 @@ name|this
 operator|.
 name|type
 decl_stmt|;
-name|type
-operator|=
-name|type
-operator|.
-name|toLowerCase
-argument_list|()
-expr_stmt|;
 try|try
 block|{
 comment|// We set the type before throwing the changeEvent, to enable
@@ -518,6 +511,9 @@ operator|.
 name|type
 operator|=
 name|type
+operator|.
+name|toLowerCase
+argument_list|()
 expr_stmt|;
 name|changed
 operator|=

@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2015 JabRef contributors.     Copyright (C) 2015 Oscar Gustafsson.      This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2015-2016 JabRef contributors.     Copyright (C) 2015-2016 Oscar Gustafsson.      This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -86,30 +86,6 @@ name|JTextComponent
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|awt
-operator|.
-name|event
-operator|.
-name|ActionEvent
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|awt
-operator|.
-name|event
-operator|.
-name|ActionListener
-import|;
-end_import
-
 begin_comment
 comment|/**  * @author Oscar Gustafsson  *  * Menu to show up on right-click in a text field for converting text formats  */
 end_comment
@@ -122,12 +98,6 @@ name|ConversionMenu
 extends|extends
 name|JMenu
 block|{
-DECL|field|parent
-specifier|private
-specifier|final
-name|JTextComponent
-name|parent
-decl_stmt|;
 DECL|method|ConversionMenu (JTextComponent opener)
 specifier|public
 name|ConversionMenu
@@ -145,10 +115,6 @@ argument_list|(
 literal|"Convert"
 argument_list|)
 argument_list|)
-expr_stmt|;
-name|parent
-operator|=
-name|opener
 expr_stmt|;
 comment|// create menu items, one for each case changer
 for|for
@@ -180,21 +146,9 @@ name|menuItem
 operator|.
 name|addActionListener
 argument_list|(
-operator|new
-name|ActionListener
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|actionPerformed
-parameter_list|(
-name|ActionEvent
 name|e
-parameter_list|)
-block|{
-name|parent
+lambda|->
+name|opener
 operator|.
 name|setText
 argument_list|(
@@ -202,15 +156,12 @@ name|converter
 operator|.
 name|convert
 argument_list|(
-name|parent
+name|opener
 operator|.
 name|getText
 argument_list|()
 argument_list|)
 argument_list|)
-expr_stmt|;
-block|}
-block|}
 argument_list|)
 expr_stmt|;
 name|this

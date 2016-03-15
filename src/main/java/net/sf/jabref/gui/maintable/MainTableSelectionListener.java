@@ -190,6 +190,22 @@ name|jabref
 operator|.
 name|gui
 operator|.
+name|menus
+operator|.
+name|RightClickMenu
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
 name|util
 operator|.
 name|FocusRequester
@@ -361,6 +377,16 @@ operator|.
 name|util
 operator|.
 name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Objects
 import|;
 end_import
 
@@ -546,7 +572,6 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|//private int lastCharPressed = -1;
 DECL|method|MainTableSelectionListener (BasePanel panel, MainTable table)
 specifier|public
 name|MainTableSelectionListener
@@ -956,11 +981,15 @@ block|}
 comment|// Show the new editor unless it was already visible:
 if|if
 condition|(
-operator|(
+operator|!
+name|Objects
+operator|.
+name|equals
+argument_list|(
 name|newEditor
-operator|!=
+argument_list|,
 name|oldEditor
-operator|)
+argument_list|)
 operator|||
 operator|(
 name|mode
@@ -2133,7 +2162,6 @@ operator|-
 literal|1
 operator|)
 operator|||
-comment|// (getSelectedRowCount() == 0))
 operator|!
 name|table
 operator|.
@@ -2160,7 +2188,6 @@ argument_list|,
 name|row
 argument_list|)
 expr_stmt|;
-comment|//panel.updateViewToSelected();
 block|}
 name|RightClickMenu
 name|rightClickMenu
@@ -2168,6 +2195,10 @@ init|=
 operator|new
 name|RightClickMenu
 argument_list|(
+name|JabRef
+operator|.
+name|jrf
+argument_list|,
 name|panel
 argument_list|)
 decl_stmt|;

@@ -126,6 +126,19 @@ specifier|final
 name|Defaults
 name|defaults
 decl_stmt|;
+DECL|method|BibDatabaseContext ()
+specifier|public
+name|BibDatabaseContext
+parameter_list|()
+block|{
+name|this
+argument_list|(
+operator|new
+name|Defaults
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|BibDatabaseContext (Defaults defaults)
 specifier|public
 name|BibDatabaseContext
@@ -277,6 +290,11 @@ condition|(
 name|data
 operator|==
 literal|null
+operator|||
+name|data
+operator|.
+name|isEmpty
+argument_list|()
 condition|)
 block|{
 name|BibDatabaseMode
@@ -349,21 +367,9 @@ parameter_list|)
 block|{
 name|metaData
 operator|.
-name|putData
-argument_list|(
-name|MetaData
-operator|.
-name|DATABASE_TYPE
-argument_list|,
-name|Collections
-operator|.
-name|singletonList
+name|setMode
 argument_list|(
 name|bibDatabaseMode
-operator|.
-name|getFormattedName
-argument_list|()
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

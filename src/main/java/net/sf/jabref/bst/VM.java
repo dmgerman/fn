@@ -450,7 +450,7 @@ name|tree
 decl_stmt|;
 DECL|field|bbl
 specifier|private
-name|StringBuffer
+name|StringBuilder
 name|bbl
 decl_stmt|;
 DECL|field|preamble
@@ -548,6 +548,8 @@ name|name
 return|;
 block|}
 block|}
+annotation|@
+name|FunctionalInterface
 DECL|interface|BstFunction
 specifier|public
 interface|interface
@@ -659,26 +661,15 @@ argument_list|(
 literal|37
 argument_list|)
 expr_stmt|;
+comment|/**          * Pops the top two (integer) literals, compares them, and pushes          * the integer 1 if the second is greater than the first, 0          * otherwise.          */
 name|buildInFunctions
 operator|.
 name|put
 argument_list|(
 literal|">"
 argument_list|,
-operator|new
-name|BstFunction
-argument_list|()
-block|{
-comment|/**              * Pops the top two (integer) literals, compares them, and pushes              * the integer 1 if the second is greater than the first, 0              * otherwise.              */
-annotation|@
-name|Override
-specifier|public
-name|void
-name|execute
-parameter_list|(
-name|BstEntry
 name|context
-parameter_list|)
+lambda|->
 block|{
 if|if
 condition|(
@@ -771,29 +762,17 @@ name|FALSE
 argument_list|)
 expr_stmt|;
 block|}
-block|}
 argument_list|)
 expr_stmt|;
+comment|/** Analogous. */
 name|buildInFunctions
 operator|.
 name|put
 argument_list|(
 literal|"<"
 argument_list|,
-operator|new
-name|BstFunction
-argument_list|()
-block|{
-comment|/** Analogous. */
-annotation|@
-name|Override
-specifier|public
-name|void
-name|execute
-parameter_list|(
-name|BstEntry
 name|context
-parameter_list|)
+lambda|->
 block|{
 if|if
 condition|(
@@ -886,29 +865,17 @@ name|FALSE
 argument_list|)
 expr_stmt|;
 block|}
-block|}
 argument_list|)
 expr_stmt|;
+comment|/**          * Pops the top two (both integer or both string) literals, compares          * them, and pushes the integer 1 if they're equal, 0 otherwise.          */
 name|buildInFunctions
 operator|.
 name|put
 argument_list|(
 literal|"="
 argument_list|,
-operator|new
-name|BstFunction
-argument_list|()
-block|{
-comment|/**              * Pops the top two (both integer or both string) literals, compares              * them, and pushes the integer 1 if they're equal, 0 otherwise.              */
-annotation|@
-name|Override
-specifier|public
-name|void
-name|execute
-parameter_list|(
-name|BstEntry
 name|context
-parameter_list|)
+lambda|->
 block|{
 if|if
 condition|(
@@ -1017,29 +984,17 @@ name|FALSE
 argument_list|)
 expr_stmt|;
 block|}
-block|}
 argument_list|)
 expr_stmt|;
+comment|/** Pops the top two (integer) literals and pushes their sum. */
 name|buildInFunctions
 operator|.
 name|put
 argument_list|(
 literal|"+"
 argument_list|,
-operator|new
-name|BstFunction
-argument_list|()
-block|{
-comment|/** Pops the top two (integer) literals and pushes their sum. */
-annotation|@
-name|Override
-specifier|public
-name|void
-name|execute
-parameter_list|(
-name|BstEntry
 name|context
-parameter_list|)
+lambda|->
 block|{
 if|if
 condition|(
@@ -1117,29 +1072,17 @@ name|o2
 argument_list|)
 expr_stmt|;
 block|}
-block|}
 argument_list|)
 expr_stmt|;
+comment|/**          * Pops the top two (integer) literals and pushes their difference          * (the first subtracted from the second).          */
 name|buildInFunctions
 operator|.
 name|put
 argument_list|(
 literal|"-"
 argument_list|,
-operator|new
-name|BstFunction
-argument_list|()
-block|{
-comment|/**              * Pops the top two (integer) literals and pushes their difference              * (the first subtracted from the second).              */
-annotation|@
-name|Override
-specifier|public
-name|void
-name|execute
-parameter_list|(
-name|BstEntry
 name|context
-parameter_list|)
+lambda|->
 block|{
 if|if
 condition|(
@@ -1217,29 +1160,17 @@ name|o2
 argument_list|)
 expr_stmt|;
 block|}
-block|}
 argument_list|)
 expr_stmt|;
+comment|/**          * Pops the top two (string) literals, concatenates them (in reverse          * order, that is, the order in which pushed), and pushes the          * resulting string.          */
 name|buildInFunctions
 operator|.
 name|put
 argument_list|(
 literal|"*"
 argument_list|,
-operator|new
-name|BstFunction
-argument_list|()
-block|{
-comment|/**              * Pops the top two (string) literals, concatenates them (in reverse              * order, that is, the order in which pushed), and pushes the              * resulting string.              */
-annotation|@
-name|Override
-specifier|public
-name|void
-name|execute
-parameter_list|(
-name|BstEntry
 name|context
-parameter_list|)
+lambda|->
 block|{
 if|if
 condition|(
@@ -1314,29 +1245,17 @@ name|o2
 argument_list|)
 expr_stmt|;
 block|}
-block|}
 argument_list|)
 expr_stmt|;
+comment|/**          * Pops the top two literals and assigns to the first (which must be          * a global or entry variable) the value of the second.          */
 name|buildInFunctions
 operator|.
 name|put
 argument_list|(
 literal|":="
 argument_list|,
-operator|new
-name|BstFunction
-argument_list|()
-block|{
-comment|/**              * Pops the top two literals and assigns to the first (which must be              * a global or entry variable) the value of the second.              */
-annotation|@
-name|Override
-specifier|public
-name|void
-name|execute
-parameter_list|(
-name|BstEntry
 name|context
-parameter_list|)
+lambda|->
 block|{
 if|if
 condition|(
@@ -1382,29 +1301,17 @@ name|o2
 argument_list|)
 expr_stmt|;
 block|}
-block|}
 argument_list|)
 expr_stmt|;
+comment|/**          * Pops the top (string) literal, adds a `.' to it if the last non          * '}' character isn't a `.', `?', or `!', and pushes this resulting          * string.          */
 name|buildInFunctions
 operator|.
 name|put
 argument_list|(
 literal|"add.period$"
 argument_list|,
-operator|new
-name|BstFunction
-argument_list|()
-block|{
-comment|/**              * Pops the top (string) literal, adds a `.' to it if the last non              * '}' character isn't a `.', `?', or `!', and pushes this resulting              * string.              */
-annotation|@
-name|Override
-specifier|public
-name|void
-name|execute
-parameter_list|(
-name|BstEntry
 name|context
-parameter_list|)
+lambda|->
 block|{
 if|if
 condition|(
@@ -1554,29 +1461,17 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-block|}
 argument_list|)
 expr_stmt|;
+comment|/**          * Executes the function whose name is the entry type of an entry.          * For example if an entry is of type book, this function executes          * the book function. When given as an argument to the ITERATE          * command, call.type$ actually produces the output for the entries.          * For an entry with an unknown type, it executes the function          * default.type. Thus you should define (before the READ command)          * one function for each standard entry type as well as a          * default.type function.          */
 name|buildInFunctions
 operator|.
 name|put
 argument_list|(
 literal|"call.type$"
 argument_list|,
-operator|new
-name|BstFunction
-argument_list|()
-block|{
-comment|/**              * Executes the function whose name is the entry type of an entry.              * For example if an entry is of type book, this function executes              * the book function. When given as an argument to the ITERATE              * command, call.type$ actually produces the output for the entries.              * For an entry with an unknown type, it executes the function              * default.type. Thus you should define (before the READ command)              * one function for each standard entry type as well as a              * default.type function.              */
-annotation|@
-name|Override
-specifier|public
-name|void
-name|execute
-parameter_list|(
-name|BstEntry
 name|context
-parameter_list|)
+lambda|->
 block|{
 if|if
 condition|(
@@ -1611,7 +1506,6 @@ name|context
 argument_list|)
 expr_stmt|;
 block|}
-block|}
 argument_list|)
 expr_stmt|;
 name|buildInFunctions
@@ -1627,26 +1521,15 @@ name|this
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|/**          * Pops the top (string) literal, makes sure it's a single          * character, converts it to the corresponding ASCII integer, and          * pushes this integer.          */
 name|buildInFunctions
 operator|.
 name|put
 argument_list|(
 literal|"chr.to.int$"
 argument_list|,
-operator|new
-name|BstFunction
-argument_list|()
-block|{
-comment|/**              * Pops the top (string) literal, makes sure it's a single              * character, converts it to the corresponding ASCII integer, and              * pushes this integer.              */
-annotation|@
-name|Override
-specifier|public
-name|void
-name|execute
-parameter_list|(
-name|BstEntry
 name|context
-parameter_list|)
+lambda|->
 block|{
 if|if
 condition|(
@@ -1730,29 +1613,17 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-block|}
 argument_list|)
 expr_stmt|;
+comment|/**          * Pushes the string that was the \cite-command argument for this          * entry.          */
 name|buildInFunctions
 operator|.
 name|put
 argument_list|(
 literal|"cite$"
 argument_list|,
-operator|new
-name|BstFunction
-argument_list|()
-block|{
-comment|/**              * Pushes the string that was the \cite-command argument for this              * entry.              */
-annotation|@
-name|Override
-specifier|public
-name|void
-name|execute
-parameter_list|(
-name|BstEntry
 name|context
-parameter_list|)
+lambda|->
 block|{
 if|if
 condition|(
@@ -1783,29 +1654,17 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-block|}
 argument_list|)
 expr_stmt|;
+comment|/**          * Pops the top literal from the stack and pushes two copies of it.          */
 name|buildInFunctions
 operator|.
 name|put
 argument_list|(
 literal|"duplicate$"
 argument_list|,
-operator|new
-name|BstFunction
-argument_list|()
-block|{
-comment|/**              * Pops the top literal from the stack and pushes two copies of it.              */
-annotation|@
-name|Override
-specifier|public
-name|void
-name|execute
-parameter_list|(
-name|BstEntry
 name|context
-parameter_list|)
+lambda|->
 block|{
 if|if
 condition|(
@@ -1846,29 +1705,17 @@ name|o1
 argument_list|)
 expr_stmt|;
 block|}
-block|}
 argument_list|)
 expr_stmt|;
+comment|/**          * Pops the top literal and pushes the integer 1 if it's a missing          * field or a string having no non-white-space characters, 0          * otherwise.          */
 name|buildInFunctions
 operator|.
 name|put
 argument_list|(
 literal|"empty$"
 argument_list|,
-operator|new
-name|BstFunction
-argument_list|()
-block|{
-comment|/**              * Pops the top literal and pushes the integer 1 if it's a missing              * field or a string having no non-white-space characters, 0              * otherwise.              */
-annotation|@
-name|Override
-specifier|public
-name|void
-name|execute
-parameter_list|(
-name|BstEntry
 name|context
-parameter_list|)
+lambda|->
 block|{
 if|if
 condition|(
@@ -1962,7 +1809,6 @@ name|FALSE
 argument_list|)
 expr_stmt|;
 block|}
-block|}
 argument_list|)
 expr_stmt|;
 name|buildInFunctions
@@ -1978,26 +1824,15 @@ name|this
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|/**          * Pops the top three literals (they are two function literals and          * an integer literal, in that order); if the integer is greater          * than 0, it executes the second literal, else it executes the          * first.          */
 name|buildInFunctions
 operator|.
 name|put
 argument_list|(
 literal|"if$"
 argument_list|,
-operator|new
-name|BstFunction
-argument_list|()
-block|{
-comment|/**              * Pops the top three literals (they are two function literals and              * an integer literal, in that order); if the integer is greater              * than 0, it executes the second literal, else it executes the              * first.              */
-annotation|@
-name|Override
-specifier|public
-name|void
-name|execute
-parameter_list|(
-name|BstEntry
 name|context
-parameter_list|)
+lambda|->
 block|{
 if|if
 condition|(
@@ -2087,9 +1922,6 @@ literal|"Expecting two functions and an integer for if$."
 argument_list|)
 throw|;
 block|}
-name|Object
-name|toExe
-decl_stmt|;
 if|if
 condition|(
 operator|(
@@ -2100,25 +1932,27 @@ operator|>
 literal|0
 condition|)
 block|{
-name|toExe
-operator|=
-name|f2
-expr_stmt|;
-block|}
-else|else
-block|{
-name|toExe
-operator|=
-name|f1
-expr_stmt|;
-block|}
 name|VM
 operator|.
 name|this
 operator|.
 name|executeInContext
 argument_list|(
-name|toExe
+name|f2
+argument_list|,
+name|context
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|VM
+operator|.
+name|this
+operator|.
+name|executeInContext
+argument_list|(
+name|f1
 argument_list|,
 name|context
 argument_list|)
@@ -2127,26 +1961,15 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+comment|/**          * Pops the top (integer) literal, interpreted as the ASCII integer          * value of a single character, converts it to the corresponding          * single-character string, and pushes this string.          */
 name|buildInFunctions
 operator|.
 name|put
 argument_list|(
 literal|"int.to.chr$"
 argument_list|,
-operator|new
-name|BstFunction
-argument_list|()
-block|{
-comment|/**              * Pops the top (integer) literal, interpreted as the ASCII integer              * value of a single character, converts it to the corresponding              * single-character string, and pushes this string.              */
-annotation|@
-name|Override
-specifier|public
-name|void
-name|execute
-parameter_list|(
-name|BstEntry
 name|context
-parameter_list|)
+lambda|->
 block|{
 if|if
 condition|(
@@ -2217,29 +2040,17 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-block|}
 argument_list|)
 expr_stmt|;
+comment|/**          * Pops the top (integer) literal, converts it to its (unique)          * string equivalent, and pushes this string.          */
 name|buildInFunctions
 operator|.
 name|put
 argument_list|(
 literal|"int.to.str$"
 argument_list|,
-operator|new
-name|BstFunction
-argument_list|()
-block|{
-comment|/**              * Pops the top (integer) literal, converts it to its (unique)              * string equivalent, and pushes this string.              */
-annotation|@
-name|Override
-specifier|public
-name|void
-name|execute
-parameter_list|(
-name|BstEntry
 name|context
-parameter_list|)
+lambda|->
 block|{
 if|if
 condition|(
@@ -2294,29 +2105,17 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-block|}
 argument_list|)
 expr_stmt|;
+comment|/**          * Pops the top literal and pushes the integer 1 if it's a missing          * field, 0 otherwise.          */
 name|buildInFunctions
 operator|.
 name|put
 argument_list|(
 literal|"missing$"
 argument_list|,
-operator|new
-name|BstFunction
-argument_list|()
-block|{
-comment|/**              * Pops the top literal and pushes the integer 1 if it's a missing              * field, 0 otherwise.              */
-annotation|@
-name|Override
-specifier|public
-name|void
-name|execute
-parameter_list|(
-name|BstEntry
 name|context
-parameter_list|)
+lambda|->
 block|{
 if|if
 condition|(
@@ -2396,30 +2195,17 @@ name|FALSE
 argument_list|)
 expr_stmt|;
 block|}
-block|}
 argument_list|)
 expr_stmt|;
+comment|/**          * Writes onto the bbl file what's accumulated in the output buffer.          * It writes a blank line if and only if the output buffer is empty.          * Since write$ does reasonable line breaking, you should use this          * function only when you want a blank line or an explicit line          * break.          */
 name|buildInFunctions
 operator|.
 name|put
 argument_list|(
 literal|"newline$"
 argument_list|,
-operator|new
-name|BstFunction
-argument_list|()
-block|{
-comment|/**              * Writes onto the bbl file what's accumulated in the output buffer.              * It writes a blank line if and only if the output buffer is empty.              * Since write$ does reasonable line breaking, you should use this              * function only when you want a blank line or an explicit line              * break.              */
-annotation|@
-name|Override
-specifier|public
-name|void
-name|execute
-parameter_list|(
-name|BstEntry
 name|context
-parameter_list|)
-block|{
+lambda|->
 name|VM
 operator|.
 name|this
@@ -2430,31 +2216,17 @@ name|append
 argument_list|(
 literal|'\n'
 argument_list|)
-expr_stmt|;
-block|}
-block|}
 argument_list|)
 expr_stmt|;
+comment|/**          * Pops the top (string) literal and pushes the number of names the          * string represents one plus the number of occurrences of the          * substring "and" (ignoring case differences) surrounded by          * non-null white-space at the top brace level.          */
 name|buildInFunctions
 operator|.
 name|put
 argument_list|(
 literal|"num.names$"
 argument_list|,
-operator|new
-name|BstFunction
-argument_list|()
-block|{
-comment|/**              * Pops the top (string) literal and pushes the number of names the              * string represents one plus the number of occurrences of the              * substring "and" (ignoring case differences) surrounded by              * non-null white-space at the top brace level.              */
-annotation|@
-name|Override
-specifier|public
-name|void
-name|execute
-parameter_list|(
-name|BstEntry
 name|context
-parameter_list|)
+lambda|->
 block|{
 if|if
 condition|(
@@ -2522,59 +2294,32 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-block|}
 argument_list|)
 expr_stmt|;
+comment|/**          * Pops the top of the stack but doesn't print it; this gets rid of          * an unwanted stack literal.          */
 name|buildInFunctions
 operator|.
 name|put
 argument_list|(
 literal|"pop$"
 argument_list|,
-operator|new
-name|BstFunction
-argument_list|()
-block|{
-comment|/**              * Pops the top of the stack but doesn't print it; this gets rid of              * an unwanted stack literal.              */
-annotation|@
-name|Override
-specifier|public
-name|void
-name|execute
-parameter_list|(
-name|BstEntry
 name|context
-parameter_list|)
-block|{
+lambda|->
 name|stack
 operator|.
 name|pop
 argument_list|()
-expr_stmt|;
-block|}
-block|}
 argument_list|)
 expr_stmt|;
+comment|/**          * The |built_in| function {\.{preamble\$}} pushes onto the stack          * the concatenation of all the \.{preamble} strings read from the          * database files. (or the empty string if there where none)          *          * @PREAMBLE strings read from the database files.          */
 name|buildInFunctions
 operator|.
 name|put
 argument_list|(
 literal|"preamble$"
 argument_list|,
-operator|new
-name|BstFunction
-argument_list|()
-block|{
-comment|/**              * The |built_in| function {\.{preamble\$}} pushes onto the stack              * the concatenation of all the \.{preamble} strings read from the              * database files. (or the empty string if there where none)              *              * @PREAMBLE strings read from the database files.              */
-annotation|@
-name|Override
-specifier|public
-name|void
-name|execute
-parameter_list|(
-name|BstEntry
 name|context
-parameter_list|)
+lambda|->
 block|{
 if|if
 condition|(
@@ -2602,7 +2347,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-block|}
 argument_list|)
 expr_stmt|;
 comment|/**          * Pops the top (string) literal, removes nonalphanumeric characters          * except for white-space characters and hyphens and ties (these all get          * converted to a space), removes certain alphabetic characters          * contained in the control sequences associated with a \special          * character", and pushes the resulting string.          */
@@ -2619,84 +2363,46 @@ name|this
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|/**          * Pushes the string consisting of the double-quote character.          */
 name|buildInFunctions
 operator|.
 name|put
 argument_list|(
 literal|"quote$"
 argument_list|,
-operator|new
-name|BstFunction
-argument_list|()
-block|{
-comment|/**              * Pushes the string consisting of the double-quote character.              */
-annotation|@
-name|Override
-specifier|public
-name|void
-name|execute
-parameter_list|(
-name|BstEntry
 name|context
-parameter_list|)
-block|{
+lambda|->
 name|stack
 operator|.
 name|push
 argument_list|(
 literal|"\""
 argument_list|)
-expr_stmt|;
-block|}
-block|}
 argument_list|)
 expr_stmt|;
+comment|/**          * Is a no-op.          */
 name|buildInFunctions
 operator|.
 name|put
 argument_list|(
 literal|"skip$"
 argument_list|,
-operator|new
-name|BstFunction
-argument_list|()
-block|{
-comment|/**              * Is a no-op.              */
-annotation|@
-name|Override
-specifier|public
-name|void
-name|execute
-parameter_list|(
-name|BstEntry
 name|context
-parameter_list|)
+lambda|->
 block|{
 comment|// Nothing to do! Yeah!
 block|}
-block|}
 argument_list|)
 expr_stmt|;
+comment|/**          * Pops and prints the whole stack; it's meant to be used for style          * designers while debugging.          */
 name|buildInFunctions
 operator|.
 name|put
 argument_list|(
 literal|"stack$"
 argument_list|,
-operator|new
-name|BstFunction
-argument_list|()
-block|{
-comment|/**              * Pops and prints the whole stack; it's meant to be used for style              * designers while debugging.              */
-annotation|@
-name|Override
-specifier|public
-name|void
-name|execute
-parameter_list|(
-name|BstEntry
 name|context
-parameter_list|)
+lambda|->
 block|{
 while|while
 condition|(
@@ -2717,7 +2423,6 @@ name|pop
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 argument_list|)
@@ -2988,26 +2693,15 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+comment|/**          * Swaps the top two literals on the stack. text.length$ Pops the          * top (string) literal, and pushes the number of text char- acters          * it contains, where an accented character (more precisely, a          * \special character", defined in Section 4) counts as a single          * text character, even if it's missing its matching right brace,          * and where braces don't count as text characters.          */
 name|buildInFunctions
 operator|.
 name|put
 argument_list|(
 literal|"swap$"
 argument_list|,
-operator|new
-name|BstFunction
-argument_list|()
-block|{
-comment|/**              * Swaps the top two literals on the stack. text.length$ Pops the              * top (string) literal, and pushes the number of text char- acters              * it contains, where an accented character (more precisely, a              * \special character", defined in Section 4) counts as a single              * text character, even if it's missing its matching right brace,              * and where braces don't count as text characters.              */
-annotation|@
-name|Override
-specifier|public
-name|void
-name|execute
-parameter_list|(
-name|BstEntry
 name|context
-parameter_list|)
+lambda|->
 block|{
 if|if
 condition|(
@@ -3057,7 +2751,6 @@ argument_list|(
 name|f2
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 argument_list|)
 expr_stmt|;
@@ -3325,9 +3018,9 @@ expr_stmt|;
 comment|// end
 block|}
 block|}
-comment|// else
 else|else
 block|{
+comment|// else
 comment|// incr(num_text_chars);
 name|result
 operator|++
@@ -3359,27 +3052,15 @@ name|this
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|/**          * Pops and prints the top of the stack to the log file. It's useful for debugging.          */
 name|buildInFunctions
 operator|.
 name|put
 argument_list|(
 literal|"top$"
 argument_list|,
-operator|new
-name|BstFunction
-argument_list|()
-block|{
-comment|/**              * Pops and prints the top of the stack to the log file. It's useful for debugging.              */
-annotation|@
-name|Override
-specifier|public
-name|void
-name|execute
-parameter_list|(
-name|BstEntry
 name|context
-parameter_list|)
-block|{
+lambda|->
 name|LOGGER
 operator|.
 name|debug
@@ -3389,31 +3070,17 @@ operator|.
 name|pop
 argument_list|()
 argument_list|)
-expr_stmt|;
-block|}
-block|}
 argument_list|)
 expr_stmt|;
+comment|/**          * Pushes the current entry's type (book, article, etc.), but pushes          * the null string if the type is either unknown or undefined.          */
 name|buildInFunctions
 operator|.
 name|put
 argument_list|(
 literal|"type$"
 argument_list|,
-operator|new
-name|BstFunction
-argument_list|()
-block|{
-comment|/**              * Pushes the current entry's type (book, article, etc.), but pushes              * the null string if the type is either unknown or undefined.              */
-annotation|@
-name|Override
-specifier|public
-name|void
-name|execute
-parameter_list|(
-name|BstEntry
 name|context
-parameter_list|)
+lambda|->
 block|{
 if|if
 condition|(
@@ -3444,9 +3111,9 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-block|}
 argument_list|)
 expr_stmt|;
+comment|/**          * Pops the top (string) literal and prints it following a warning          * message. This also increments a count of the number of warning          * messages issued.          */
 name|buildInFunctions
 operator|.
 name|put
@@ -3457,7 +3124,6 @@ operator|new
 name|BstFunction
 argument_list|()
 block|{
-comment|/**              * Pops the top (string) literal and prints it following a warning              * message. This also increments a count of the number of warning              * messages issued.              */
 name|int
 name|warning
 init|=
@@ -3496,26 +3162,15 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+comment|/**          * Pops the top two (function) literals, and keeps executing the          * second as long as the (integer) literal left on the stack by          * executing the first is greater than 0.          */
 name|buildInFunctions
 operator|.
 name|put
 argument_list|(
 literal|"while$"
 argument_list|,
-operator|new
-name|BstFunction
-argument_list|()
-block|{
-comment|/**              * Pops the top two (function) literals, and keeps executing the              * second as long as the (integer) literal left on the stack by              * executing the first is greater than 0.              */
-annotation|@
-name|Override
-specifier|public
-name|void
-name|execute
-parameter_list|(
-name|BstEntry
 name|context
-parameter_list|)
+lambda|->
 block|{
 if|if
 condition|(
@@ -3662,7 +3317,6 @@ literal|true
 condition|)
 do|;
 block|}
-block|}
 argument_list|)
 expr_stmt|;
 name|buildInFunctions
@@ -3678,26 +3332,15 @@ name|this
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|/**          * Pops the top (string) literal and writes it on the output buffer          * (which will result in stuff being written onto the bbl file when          * the buffer fills up).          */
 name|buildInFunctions
 operator|.
 name|put
 argument_list|(
 literal|"write$"
 argument_list|,
-operator|new
-name|BstFunction
-argument_list|()
-block|{
-comment|/**              * Pops the top (string) literal and writes it on the output buffer              * (which will result in stuff being written onto the bbl file when              * the buffer fills up).              */
-annotation|@
-name|Override
-specifier|public
-name|void
-name|execute
-parameter_list|(
-name|BstEntry
 name|context
-parameter_list|)
+lambda|->
 block|{
 name|String
 name|s
@@ -3721,7 +3364,6 @@ argument_list|(
 name|s
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 argument_list|)
 expr_stmt|;
@@ -4027,7 +3669,7 @@ comment|// Reset
 name|bbl
 operator|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 expr_stmt|;
 name|strings
@@ -4087,7 +3729,6 @@ name|Stack
 argument_list|<>
 argument_list|()
 expr_stmt|;
-block|{
 comment|// Create entries
 name|entries
 operator|=
@@ -4105,7 +3746,7 @@ name|ListIterator
 argument_list|<
 name|BstEntry
 argument_list|>
-name|i
+name|listIter
 init|=
 name|entries
 operator|.
@@ -4120,7 +3761,7 @@ range|:
 name|bibtex
 control|)
 block|{
-name|i
+name|listIter
 operator|.
 name|add
 argument_list|(
@@ -4131,7 +3772,6 @@ name|entry
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 comment|// Go
 for|for
@@ -4987,16 +4627,6 @@ specifier|final
 name|Tree
 name|localTree
 decl_stmt|;
-DECL|method|getTree ()
-specifier|public
-name|Tree
-name|getTree
-parameter_list|()
-block|{
-return|return
-name|localTree
-return|;
-block|}
 DECL|method|StackFunction (Tree stack)
 specifier|public
 name|StackFunction
@@ -5009,6 +4639,16 @@ name|localTree
 operator|=
 name|stack
 expr_stmt|;
+block|}
+DECL|method|getTree ()
+specifier|public
+name|Tree
+name|getTree
+parameter_list|()
+block|{
+return|return
+name|localTree
+return|;
 block|}
 annotation|@
 name|Override
@@ -5163,6 +4803,7 @@ argument_list|,
 name|context
 argument_list|)
 expr_stmt|;
+break|break;
 block|}
 block|}
 catch|catch

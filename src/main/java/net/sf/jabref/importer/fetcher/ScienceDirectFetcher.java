@@ -342,12 +342,9 @@ name|getTitle
 parameter_list|()
 block|{
 return|return
-name|Localization
-operator|.
-name|menuTitle
-argument_list|(
-literal|"Search ScienceDirect"
-argument_list|)
+operator|(
+literal|"ScienceDirect"
+operator|)
 return|;
 block|}
 annotation|@
@@ -433,7 +430,9 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Search ScienceDirect"
+literal|"Search %0"
+argument_list|,
+literal|"ScienceDirect"
 argument_list|)
 argument_list|,
 name|JOptionPane
@@ -474,14 +473,9 @@ argument_list|)
 operator|.
 name|ifPresent
 argument_list|(
-name|entry
-lambda|->
 name|dialog
-operator|.
+operator|::
 name|addEntry
-argument_list|(
-name|entry
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|dialog
@@ -525,7 +519,9 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Error while fetching from ScienceDirect"
+literal|"Error while fetching from %0"
+argument_list|,
+literal|"ScienceDirect"
 argument_list|)
 operator|+
 literal|": "

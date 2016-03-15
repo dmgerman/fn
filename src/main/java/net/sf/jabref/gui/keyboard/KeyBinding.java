@@ -801,6 +801,21 @@ argument_list|,
 literal|"ctrl PAGE_DOWN"
 argument_list|)
 block|,
+DECL|enumConstant|OPEN_CONSOLE
+name|OPEN_CONSOLE
+argument_list|(
+literal|"Open terminal here"
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Open terminal here"
+argument_list|)
+argument_list|,
+literal|"ctrl shift J"
+argument_list|)
+block|,
 DECL|enumConstant|OPEN_DATABASE
 name|OPEN_DATABASE
 argument_list|(

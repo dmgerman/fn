@@ -562,7 +562,7 @@ literal|"author"
 argument_list|,
 name|AuthorList
 operator|.
-name|fixAuthor_lastNameFirst
+name|fixAuthorLastNameFirst
 argument_list|(
 name|frest
 operator|.

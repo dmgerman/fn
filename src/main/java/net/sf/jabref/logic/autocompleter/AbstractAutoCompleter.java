@@ -119,26 +119,6 @@ specifier|final
 name|AutoCompletePreferences
 name|preferences
 decl_stmt|;
-DECL|method|AbstractAutoCompleter (AutoCompletePreferences preferences)
-specifier|public
-name|AbstractAutoCompleter
-parameter_list|(
-name|AutoCompletePreferences
-name|preferences
-parameter_list|)
-block|{
-name|this
-operator|.
-name|preferences
-operator|=
-name|Objects
-operator|.
-name|requireNonNull
-argument_list|(
-name|preferences
-argument_list|)
-expr_stmt|;
-block|}
 comment|/**      * Stores the strings as is.      */
 DECL|field|indexCaseSensitive
 specifier|private
@@ -189,6 +169,26 @@ name|HashMap
 argument_list|<>
 argument_list|()
 decl_stmt|;
+DECL|method|AbstractAutoCompleter (AutoCompletePreferences preferences)
+specifier|public
+name|AbstractAutoCompleter
+parameter_list|(
+name|AutoCompletePreferences
+name|preferences
+parameter_list|)
+block|{
+name|this
+operator|.
+name|preferences
+operator|=
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|preferences
+argument_list|)
+expr_stmt|;
+block|}
 comment|/**      * {@inheritDoc}      * The completion is case sensitive if the string contains upper case letters.      * Otherwise the completion is case insensitive.      */
 annotation|@
 name|Override

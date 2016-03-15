@@ -355,22 +355,23 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|addField (String s)
+DECL|method|addField (String str)
 specifier|protected
 name|void
 name|addField
 parameter_list|(
 name|String
-name|s
+name|str
 parameter_list|)
 block|{
+name|String
 name|s
-operator|=
-name|s
+init|=
+name|str
 operator|.
 name|trim
 argument_list|()
-expr_stmt|;
+decl_stmt|;
 if|if
 condition|(
 name|forceLowerCase
@@ -731,12 +732,14 @@ operator|.
 name|isPresent
 argument_list|()
 operator|&&
+operator|(
 name|entryType
 operator|.
 name|get
 argument_list|()
 operator|instanceof
 name|CustomEntryType
+operator|)
 operator|)
 condition|)
 block|{

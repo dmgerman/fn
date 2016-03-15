@@ -621,7 +621,9 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Error fetching from Google Scholar"
+literal|"Error while fetching from %0"
+argument_list|,
+literal|"Google Scholar"
 argument_list|)
 argument_list|)
 expr_stmt|;

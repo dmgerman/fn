@@ -2900,9 +2900,19 @@ operator|.
 name|getDiag
 argument_list|()
 argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Please enter the desired name:"
+argument_list|)
 argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"SQL Export"
+argument_list|)
 argument_list|,
 name|JOptionPane
 operator|.
@@ -2964,9 +2974,28 @@ operator|.
 name|getDiag
 argument_list|()
 argument_list|,
-literal|"You have entered an invalid or already existent DB name.\n Please enter the desired name:"
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"You have entered an invalid or already existent DB name."
+argument_list|)
+operator|+
+literal|'\n'
+operator|+
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Please enter the desired name:"
+argument_list|)
 argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"SQL Export"
+argument_list|)
 argument_list|,
 name|JOptionPane
 operator|.
@@ -2988,9 +3017,19 @@ name|showInputDialog
 argument_list|(
 name|frame
 argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Please enter the desired name:"
+argument_list|)
 argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"SQL Export"
+argument_list|)
 argument_list|,
 name|JOptionPane
 operator|.

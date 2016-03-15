@@ -34,6 +34,22 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -78,7 +94,7 @@ return|return
 literal|"MinifyAuthors"
 return|;
 block|}
-comment|/**      * Replaces three or more authors with and others.      *      *<example> Stefan Kolb -> Stefan Kolb Stefan Kolb and Simon Harrer -> Stefan Kolb and Simon Harrer Stefan Kolb and      * Simon Harrer and JÃ¶rg Lenhard -> Stefan Kolb and others</example>      */
+comment|/**      * Replaces three or more authors with and others.      *      *<example>      *     Stefan Kolb -> Stefan Kolb      *     Stefan Kolb and Simon Harrer -> Stefan Kolb and Simon Harrer      *     Stefan Kolb and Simon Harrer and JÃ¶rg Lenhard -> Stefan Kolb and others      *</example>      */
 annotation|@
 name|Override
 DECL|method|format (String value)
@@ -114,6 +130,23 @@ return|return
 name|abbreviateAuthor
 argument_list|(
 name|value
+argument_list|)
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|getDescription ()
+specifier|public
+name|String
+name|getDescription
+parameter_list|()
+block|{
+return|return
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Replaces three or more authors with \"and others\"."
 argument_list|)
 return|;
 block|}

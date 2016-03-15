@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2016 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -667,9 +667,14 @@ name|String
 name|key
 parameter_list|)
 block|{
+name|String
+name|resultingKey
+init|=
+name|key
+decl_stmt|;
 if|if
 condition|(
-name|key
+name|resultingKey
 operator|.
 name|toLowerCase
 argument_list|()
@@ -680,9 +685,9 @@ literal|"arxiv:"
 argument_list|)
 condition|)
 block|{
-name|key
+name|resultingKey
 operator|=
-name|key
+name|resultingKey
 operator|.
 name|substring
 argument_list|(
@@ -693,7 +698,7 @@ block|}
 name|int
 name|dot
 init|=
-name|key
+name|resultingKey
 operator|.
 name|indexOf
 argument_list|(
@@ -703,7 +708,7 @@ decl_stmt|;
 name|int
 name|slash
 init|=
-name|key
+name|resultingKey
 operator|.
 name|indexOf
 argument_list|(
@@ -726,9 +731,9 @@ name|slash
 operator|)
 condition|)
 block|{
-name|key
+name|resultingKey
 operator|=
-name|key
+name|resultingKey
 operator|.
 name|substring
 argument_list|(
@@ -737,13 +742,13 @@ argument_list|,
 name|dot
 argument_list|)
 operator|+
-name|key
+name|resultingKey
 operator|.
 name|substring
 argument_list|(
 name|slash
 argument_list|,
-name|key
+name|resultingKey
 operator|.
 name|length
 argument_list|()
@@ -751,7 +756,7 @@ argument_list|)
 expr_stmt|;
 block|}
 return|return
-name|key
+name|resultingKey
 return|;
 block|}
 DECL|method|correctLineBreaks (String s)
@@ -764,8 +769,9 @@ name|String
 name|s
 parameter_list|)
 block|{
-name|s
-operator|=
+name|String
+name|result
+init|=
 name|s
 operator|.
 name|replaceAll
@@ -774,10 +780,10 @@ literal|"\\n(?!\\s*\\n)"
 argument_list|,
 literal|" "
 argument_list|)
-expr_stmt|;
-name|s
+decl_stmt|;
+name|result
 operator|=
-name|s
+name|result
 operator|.
 name|replaceAll
 argument_list|(
@@ -787,7 +793,7 @@ literal|"\n"
 argument_list|)
 expr_stmt|;
 return|return
-name|s
+name|result
 operator|.
 name|replaceAll
 argument_list|(
@@ -815,21 +821,22 @@ name|key
 parameter_list|)
 block|{
 comment|/**          * Fix for problem reported in mailing-list:          *   https://sourceforge.net/forum/message.php?msg_id=4087158          */
-name|key
-operator|=
+name|String
+name|fixedKey
+init|=
 name|OAI2Fetcher
 operator|.
 name|fixKey
 argument_list|(
 name|key
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|String
 name|url
 init|=
 name|constructUrl
 argument_list|(
-name|key
+name|fixedKey
 argument_list|)
 decl_stmt|;
 try|try
@@ -886,7 +893,7 @@ name|OAI2Fetcher
 operator|.
 name|OAI2_IDENTIFIER_FIELD
 argument_list|,
-name|key
+name|fixedKey
 argument_list|)
 expr_stmt|;
 name|DefaultHandler
@@ -953,7 +960,7 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-name|key
+name|fixedKey
 operator|.
 name|matches
 argument_list|(
@@ -969,7 +976,7 @@ literal|"year"
 argument_list|,
 literal|"20"
 operator|+
-name|key
+name|fixedKey
 operator|.
 name|substring
 argument_list|(
@@ -986,7 +993,7 @@ name|Integer
 operator|.
 name|parseInt
 argument_list|(
-name|key
+name|fixedKey
 operator|.
 name|substring
 argument_list|(
@@ -1115,9 +1122,13 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"An Error occurred while fetching from OAI2 source (%0):"
+literal|"Error while fetching from %0"
 argument_list|,
+literal|"OAI2 source ("
+operator|+
 name|url
+operator|+
+literal|"):"
 argument_list|)
 operator|+
 literal|"\n\n"
@@ -1187,12 +1198,7 @@ name|getTitle
 parameter_list|()
 block|{
 return|return
-name|Localization
-operator|.
-name|menuTitle
-argument_list|(
-literal|"Fetch ArXiv.org"
-argument_list|)
+literal|"ArXiv.org"
 return|;
 block|}
 annotation|@
@@ -1223,8 +1229,10 @@ operator|=
 literal|true
 expr_stmt|;
 comment|/* multiple keys can be delimited by ; or space */
-name|query
-operator|=
+name|String
+index|[]
+name|keys
+init|=
 name|query
 operator|.
 name|replace
@@ -1233,12 +1241,6 @@ literal|" "
 argument_list|,
 literal|";"
 argument_list|)
-expr_stmt|;
-name|String
-index|[]
-name|keys
-init|=
-name|query
 operator|.
 name|split
 argument_list|(
@@ -1360,12 +1362,10 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Processing"
-argument_list|)
-operator|+
-literal|" "
-operator|+
+literal|"Processing %0"
+argument_list|,
 name|key
+argument_list|)
 argument_list|)
 expr_stmt|;
 comment|/* the cancel button has been hit */
@@ -1448,7 +1448,9 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Error while fetching from OAI2"
+literal|"Error while fetching from %0"
+argument_list|,
+literal|"OAI2"
 argument_list|)
 argument_list|)
 expr_stmt|;

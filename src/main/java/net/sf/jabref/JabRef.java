@@ -494,9 +494,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|wizard
-operator|.
-name|auximport
+name|cli
 operator|.
 name|AuxCommandLine
 import|;
@@ -1763,7 +1761,12 @@ argument_list|)
 operator|.
 name|concat
 argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Usage"
+argument_list|)
 argument_list|)
 operator|.
 name|concat

@@ -975,16 +975,21 @@ name|int
 name|intendation
 parameter_list|)
 block|{
+name|String
+name|actualField
+init|=
+name|field
+decl_stmt|;
 if|if
 condition|(
-name|field
+name|actualField
 operator|.
 name|isEmpty
 argument_list|()
 condition|)
 block|{
 comment|// hard coded "UNKNOWN" is assigned to a field without any name
-name|field
+name|actualField
 operator|=
 literal|"UNKNOWN"
 expr_stmt|;
@@ -1004,7 +1009,7 @@ init|=
 operator|(
 name|intendation
 operator|-
-name|field
+name|actualField
 operator|.
 name|length
 argument_list|()
@@ -1034,12 +1039,8 @@ operator|.
 name|toString
 argument_list|()
 decl_stmt|;
-name|String
-name|result
-decl_stmt|;
-name|result
-operator|=
-name|field
+return|return
+name|actualField
 operator|.
 name|toLowerCase
 argument_list|()
@@ -1047,9 +1048,6 @@ operator|+
 literal|" = "
 operator|+
 name|suffix
-expr_stmt|;
-return|return
-name|result
 return|;
 block|}
 block|}

@@ -101,7 +101,7 @@ return|return
 literal|"UpperFirstCaseChanger"
 return|;
 block|}
-comment|/**      * Converts the first character of the first word of the given string to a upper case (and the remaining characters of the first word to lower case), but does not change anything if word starts with "{"      */
+comment|/**      * Converts the first character of the first word of the given string to upper case (and the remaining characters of the first word to lower case), but does not change anything if word starts with "{"      */
 annotation|@
 name|Override
 DECL|method|format (String input)
@@ -152,6 +152,23 @@ name|title
 operator|.
 name|toString
 argument_list|()
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|getDescription ()
+specifier|public
+name|String
+name|getDescription
+parameter_list|()
+block|{
+return|return
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Converts the first character of the first word in %s to upper case (and the remaining characters of the first word to lower case), but does not change anything if word starts with \"{\"."
+argument_list|)
 return|;
 block|}
 block|}

@@ -87,6 +87,7 @@ class|class
 name|FieldContentParserTest
 block|{
 DECL|field|parser
+specifier|private
 name|FieldContentParser
 name|parser
 decl_stmt|;
@@ -163,7 +164,7 @@ operator|.
 name|format
 argument_list|(
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|(
 name|original
 argument_list|)
@@ -219,7 +220,7 @@ operator|.
 name|format
 argument_list|(
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|(
 name|original
 argument_list|)
@@ -238,7 +239,7 @@ operator|.
 name|format
 argument_list|(
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|(
 name|original
 argument_list|)
@@ -292,7 +293,7 @@ operator|.
 name|format
 argument_list|(
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|(
 name|original
 argument_list|)
@@ -311,7 +312,7 @@ operator|.
 name|format
 argument_list|(
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|(
 name|original
 argument_list|)

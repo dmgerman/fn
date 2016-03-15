@@ -1626,7 +1626,7 @@ name|author
 operator|=
 name|AuthorList
 operator|.
-name|fixAuthor_lastNameFirst
+name|fixAuthorLastNameFirst
 argument_list|(
 name|author
 argument_list|)
@@ -1654,7 +1654,7 @@ name|editor
 operator|=
 name|AuthorList
 operator|.
-name|fixAuthor_lastNameFirst
+name|fixAuthorLastNameFirst
 argument_list|(
 name|editor
 argument_list|)

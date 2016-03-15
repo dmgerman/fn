@@ -38,6 +38,22 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -184,8 +200,9 @@ init|=
 literal|false
 decl_stmt|;
 comment|// String can contain newlines. Convert each to a space
-name|value
-operator|=
+name|String
+name|noNewlineValue
+init|=
 name|value
 operator|.
 name|replace
@@ -194,12 +211,12 @@ literal|"\n"
 argument_list|,
 literal|" "
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|String
 index|[]
 name|authors
 init|=
-name|value
+name|noNewlineValue
 operator|.
 name|split
 argument_list|(
@@ -230,7 +247,7 @@ name|String
 index|[]
 name|authors2
 init|=
-name|value
+name|noNewlineValue
 operator|.
 name|split
 argument_list|(
@@ -255,7 +272,7 @@ else|else
 block|{
 name|authors2
 operator|=
-name|value
+name|noNewlineValue
 operator|.
 name|split
 argument_list|(
@@ -466,8 +483,8 @@ name|indexOf
 argument_list|(
 literal|','
 argument_list|)
-operator|>
-literal|0
+operator|>=
+literal|1
 decl_stmt|;
 if|if
 condition|(
@@ -639,16 +656,38 @@ name|toString
 argument_list|()
 return|;
 block|}
-DECL|method|normalizeName (String name)
+annotation|@
+name|Override
+DECL|method|getDescription ()
+specifier|public
+name|String
+name|getDescription
+parameter_list|()
+block|{
+return|return
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Normalizes lists of persons in %s to the BibTeX standard."
+argument_list|)
+return|;
+block|}
+DECL|method|normalizeName (String oldName)
 specifier|private
 specifier|static
 name|String
 name|normalizeName
 parameter_list|(
 name|String
-name|name
+name|oldName
 parameter_list|)
 block|{
+name|String
+name|name
+init|=
+name|oldName
+decl_stmt|;
 name|Matcher
 name|matcher
 init|=

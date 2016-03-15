@@ -328,22 +328,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
-operator|.
-name|journals
-operator|.
-name|JournalAbbreviationRepository
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|gui
 operator|.
 name|net
@@ -733,7 +717,6 @@ literal|"Add"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//addExtPan.setBorder(BorderFactory.createMatteBorder(1,1,1,1,Color.red));
 name|FormLayout
 name|layout
 init|=
@@ -742,11 +725,9 @@ name|FormLayout
 argument_list|(
 literal|"1dlu, 8dlu, left:pref, 4dlu, fill:200dlu:grow, 4dlu, fill:pref"
 argument_list|,
-comment|// 4dlu, left:pref, 4dlu",
 literal|"pref, pref, pref, 20dlu, 20dlu, fill:200dlu, 4dlu, pref"
 argument_list|)
 decl_stmt|;
-comment|//150dlu");
 name|FormBuilder
 name|builder
 init|=
@@ -760,7 +741,6 @@ argument_list|(
 name|layout
 argument_list|)
 decl_stmt|;
-comment|/*JLabel description = new JLabel("<HTML>"+Glbals.lang("JabRef can switch journal names between "             +"abbreviated and full form. Since it knows only a limited number of journal names, "             +"you may need to add your own definitions.")+"</HTML>");*/
 name|builder
 operator|.
 name|addSeparator
@@ -894,7 +874,6 @@ argument_list|,
 literal|6
 argument_list|)
 expr_stmt|;
-comment|//builder.add(description).xyw(2,1,6));
 name|builder
 operator|.
 name|add
@@ -979,9 +958,6 @@ argument_list|,
 literal|5
 argument_list|)
 expr_stmt|;
-comment|//BrowseAction action = new BrowseAction(personalFile, false);
-comment|//JButton browse = new JButton(Globals.lang("Browse"));
-comment|//browse.addActionListener(action);
 name|JButton
 name|browseOld
 init|=
@@ -1019,7 +995,6 @@ name|BorderLayout
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|//builtInTable = new JTable(Globals.journalAbbrev.getTableModel());
 name|builder
 operator|.
 name|add
@@ -1109,7 +1084,6 @@ name|BorderLayout
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|//builder.add(/*new JScrollPane(*/externalFilesPanel/*)*/).xyw(2,8,6);
 name|setLayout
 argument_list|(
 operator|new
@@ -1138,7 +1112,6 @@ literal|5
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//createMatteBorder(1,1,1,1,Color.green));
 name|add
 argument_list|(
 name|builder
@@ -1314,7 +1287,6 @@ operator|.
 name|SOUTH
 argument_list|)
 expr_stmt|;
-comment|//add(new JScrollPane(builtInTable), BorderLayout.CENTER);
 comment|// Set up panel for editing a single journal, to be used in a dialog box:
 name|FormLayout
 name|layout2
@@ -1478,19 +1450,8 @@ name|browseNew
 operator|.
 name|addActionListener
 argument_list|(
-operator|new
-name|ActionListener
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|actionPerformed
-parameter_list|(
-name|ActionEvent
 name|e
-parameter_list|)
+lambda|->
 block|{
 name|File
 name|old
@@ -1566,26 +1527,14 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-block|}
 argument_list|)
 expr_stmt|;
 name|browseOld
 operator|.
 name|addActionListener
 argument_list|(
-operator|new
-name|ActionListener
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|actionPerformed
-parameter_list|(
-name|ActionEvent
 name|e
-parameter_list|)
+lambda|->
 block|{
 name|File
 name|old
@@ -1671,7 +1620,6 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-block|}
 argument_list|)
 expr_stmt|;
 name|ok
@@ -1736,12 +1684,21 @@ operator|.
 name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
+name|LOGGER
+operator|.
+name|debug
+argument_list|(
+literal|"Cannot find abbreviation file"
+argument_list|,
+name|ex
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 block|}
 argument_list|)
 expr_stmt|;
-name|AbstractAction
+name|Action
 name|cancelAction
 init|=
 operator|new
@@ -1791,19 +1748,8 @@ name|addExt
 operator|.
 name|addActionListener
 argument_list|(
-operator|new
-name|ActionListener
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|actionPerformed
-parameter_list|(
-name|ActionEvent
 name|e
-parameter_list|)
+lambda|->
 block|{
 name|externals
 operator|.
@@ -1817,7 +1763,6 @@ expr_stmt|;
 name|buildExternalsPanel
 argument_list|()
 expr_stmt|;
-block|}
 block|}
 argument_list|)
 expr_stmt|;
@@ -1866,7 +1811,6 @@ argument_list|,
 name|cancelAction
 argument_list|)
 expr_stmt|;
-comment|//dialog.pack();
 name|int
 name|xSize
 init|=
@@ -2586,9 +2530,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|// else {
-comment|//    return; // Nothing to do.
-comment|//}
 block|}
 else|else
 block|{
@@ -2662,7 +2603,8 @@ name|write
 argument_list|(
 name|entry
 operator|.
-name|name
+name|getName
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|fw
@@ -2678,7 +2620,8 @@ name|write
 argument_list|(
 name|entry
 operator|.
-name|abbreviation
+name|getAbbreviation
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|fw
@@ -3022,6 +2965,15 @@ operator|.
 name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
+name|LOGGER
+operator|.
+name|debug
+argument_list|(
+literal|"Error downloading file"
+argument_list|,
+name|ex
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 block|}
@@ -3225,11 +3177,6 @@ name|JournalEntry
 argument_list|>
 name|journals
 decl_stmt|;
-DECL|method|AbbreviationsTableModel ()
-specifier|public
-name|AbbreviationsTableModel
-parameter_list|()
-block|{          }
 DECL|method|setJournals (List<Abbreviation> abbreviations)
 specifier|public
 name|void
@@ -3354,7 +3301,8 @@ argument_list|(
 name|row
 argument_list|)
 operator|.
-name|name
+name|getName
+argument_list|()
 return|;
 block|}
 else|else
@@ -3367,7 +3315,8 @@ argument_list|(
 name|row
 argument_list|)
 operator|.
-name|abbreviation
+name|getAbbreviation
+argument_list|()
 return|;
 block|}
 block|}
@@ -3407,24 +3356,26 @@ condition|)
 block|{
 name|entry
 operator|.
-name|name
-operator|=
+name|setName
+argument_list|(
 operator|(
 name|String
 operator|)
 name|object
+argument_list|)
 expr_stmt|;
 block|}
 else|else
 block|{
 name|entry
 operator|.
-name|abbreviation
-operator|=
+name|setAbbreviation
+argument_list|(
 operator|(
 name|String
 operator|)
 name|object
+argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -3637,9 +3588,6 @@ operator|==
 name|add
 condition|)
 block|{
-comment|//int sel = userTable.getSelectedRow();
-comment|//if (sel< 0)
-comment|//    sel = 0;
 name|nameTf
 operator|.
 name|setText
@@ -3700,8 +3648,6 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//setValueAt(nameTf.getText(), sel, 0);
-comment|//setValueAt(abbrTf.getText(), sel, 1);
 name|Collections
 operator|.
 name|sort
@@ -4052,13 +3998,6 @@ lambda|->
 block|{
 try|try
 block|{
-name|JournalAbbreviationRepository
-name|abbr
-init|=
-operator|new
-name|JournalAbbreviationRepository
-argument_list|()
-decl_stmt|;
 name|List
 argument_list|<
 name|Abbreviation
@@ -4159,6 +4098,15 @@ operator|.
 name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
+name|LOGGER
+operator|.
+name|debug
+argument_list|(
+literal|"File not found"
+argument_list|,
+name|ex
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 argument_list|)
@@ -4233,10 +4181,12 @@ name|JournalEntry
 argument_list|>
 block|{
 DECL|field|name
+specifier|private
 name|String
 name|name
 decl_stmt|;
 DECL|field|abbreviation
+specifier|private
 name|String
 name|abbreviation
 decl_stmt|;
@@ -4287,6 +4237,126 @@ operator|.
 name|name
 argument_list|)
 return|;
+block|}
+annotation|@
+name|Override
+DECL|method|equals (Object o)
+specifier|public
+name|boolean
+name|equals
+parameter_list|(
+name|Object
+name|o
+parameter_list|)
+block|{
+if|if
+condition|(
+name|this
+operator|==
+name|o
+condition|)
+block|{
+return|return
+literal|true
+return|;
+block|}
+if|if
+condition|(
+name|o
+operator|instanceof
+name|JournalEntry
+condition|)
+block|{
+return|return
+name|this
+operator|.
+name|name
+operator|.
+name|equals
+argument_list|(
+operator|(
+operator|(
+name|JournalEntry
+operator|)
+name|o
+operator|)
+operator|.
+name|name
+argument_list|)
+return|;
+block|}
+return|return
+literal|false
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|hashCode ()
+specifier|public
+name|int
+name|hashCode
+parameter_list|()
+block|{
+return|return
+name|this
+operator|.
+name|name
+operator|.
+name|hashCode
+argument_list|()
+return|;
+block|}
+DECL|method|getName ()
+specifier|public
+name|String
+name|getName
+parameter_list|()
+block|{
+return|return
+name|name
+return|;
+block|}
+DECL|method|setName (String name)
+specifier|public
+name|void
+name|setName
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+block|{
+name|this
+operator|.
+name|name
+operator|=
+name|name
+expr_stmt|;
+block|}
+DECL|method|getAbbreviation ()
+specifier|public
+name|String
+name|getAbbreviation
+parameter_list|()
+block|{
+return|return
+name|abbreviation
+return|;
+block|}
+DECL|method|setAbbreviation (String abbreviation)
+specifier|public
+name|void
+name|setAbbreviation
+parameter_list|(
+name|String
+name|abbreviation
+parameter_list|)
+block|{
+name|this
+operator|.
+name|abbreviation
+operator|=
+name|abbreviation
+expr_stmt|;
 block|}
 block|}
 block|}

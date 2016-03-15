@@ -72,6 +72,24 @@ name|jabref
 operator|.
 name|logic
 operator|.
+name|formatter
+operator|.
+name|bibtexfields
+operator|.
+name|EraseFormatter
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
 name|util
 operator|.
 name|DOI
@@ -107,12 +125,13 @@ implements|implements
 name|CleanupJob
 block|{
 comment|/**      * Fields to check for DOIs.      */
-DECL|field|fields
+DECL|field|FIELDS
 specifier|private
+specifier|static
 specifier|final
 name|String
 index|[]
-name|fields
+name|FIELDS
 init|=
 block|{
 literal|"note"
@@ -122,11 +141,6 @@ block|,
 literal|"ee"
 block|}
 decl_stmt|;
-DECL|method|DoiCleanup ()
-specifier|public
-name|DoiCleanup
-parameter_list|()
-block|{      }
 annotation|@
 name|Override
 DECL|method|cleanup (BibEntry entry)
@@ -254,7 +268,7 @@ control|(
 name|String
 name|field
 range|:
-name|fields
+name|FIELDS
 control|)
 block|{
 name|DOI
@@ -296,7 +310,7 @@ control|(
 name|String
 name|field
 range|:
-name|fields
+name|FIELDS
 control|)
 block|{
 name|Optional
@@ -412,20 +426,24 @@ argument_list|>
 name|changes
 parameter_list|)
 block|{
-name|RemoveFieldCleanup
-name|cleaner
+name|CleanupJob
+name|eraser
 init|=
 operator|new
-name|RemoveFieldCleanup
+name|FieldFormatterCleanup
 argument_list|(
 name|field
+argument_list|,
+operator|new
+name|EraseFormatter
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|changes
 operator|.
 name|addAll
 argument_list|(
-name|cleaner
+name|eraser
 operator|.
 name|cleanup
 argument_list|(

@@ -1,8 +1,4 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
-begin_comment
-comment|/* Copyright (C) 2011 Oliver Kopp    Copyright (C) 2015 JabRef contributors. PdfContentImporter is part of JabRef.  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.  This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.  You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA or see http://www.gnu.org/licenses/gpl-2.0.html */
-end_comment
-
 begin_package
 DECL|package|net.sf.jabref.importer.fileformat
 package|package
@@ -17,80 +13,6 @@ operator|.
 name|fileformat
 package|;
 end_package
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|InputStream
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|StringWriter
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|ArrayList
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|regex
-operator|.
-name|Matcher
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|regex
-operator|.
-name|Pattern
-import|;
-end_import
 
 begin_import
 import|import
@@ -146,9 +68,9 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|l10n
+name|util
 operator|.
-name|Localization
+name|DOI
 import|;
 end_import
 
@@ -181,22 +103,6 @@ operator|.
 name|entry
 operator|.
 name|BibtexEntryTypes
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
-name|util
-operator|.
-name|DOI
 import|;
 end_import
 
@@ -272,8 +178,106 @@ name|PDFTextStripper
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Strings
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|InputStream
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|StringWriter
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|regex
+operator|.
+name|Matcher
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|regex
+operator|.
+name|Pattern
+import|;
+end_import
+
 begin_comment
-comment|/**  * PdfContentImporter parses data of the first page of the PDF and creates a BibTeX entry.  *  * Currently, Springer and IEEE formats are supported.  *  * Integrating XMP support is future work  *  * @author koppor  *  */
+comment|/**  * PdfContentImporter parses data of the first page of the PDF and creates a BibTeX entry.  *<p>  * Currently, Springer and IEEE formats are supported.  *<p>  * Integrating XMP support is future work  */
 end_comment
 
 begin_class
@@ -300,44 +304,6 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|// we can store the DOItoBibTeXFetcher as single reference as the fetcher doesn't hold internal state
-DECL|field|doiToBibTeXFetcher
-specifier|private
-specifier|static
-specifier|final
-name|DOItoBibTeXFetcher
-name|doiToBibTeXFetcher
-init|=
-operator|new
-name|DOItoBibTeXFetcher
-argument_list|()
-decl_stmt|;
-comment|/* global variables holding the state of the current parse run      * needed to be able to generate methods such as "fillCurStringWithNonEmptyLines"      */
-comment|// input split into several lines
-DECL|field|split
-specifier|private
-name|String
-index|[]
-name|split
-decl_stmt|;
-comment|// current index in split
-DECL|field|i
-specifier|private
-name|int
-name|i
-decl_stmt|;
-comment|// curent "line" in split.
-comment|// sometimes, a "line" is several lines in split
-DECL|field|curString
-specifier|private
-name|String
-name|curString
-decl_stmt|;
-DECL|field|year
-specifier|private
-name|String
-name|year
-decl_stmt|;
 DECL|field|YEAR_EXTRACT_PATTERN
 specifier|private
 specifier|static
@@ -349,27 +315,44 @@ name|Pattern
 operator|.
 name|compile
 argument_list|(
-literal|"\\d\\d\\d\\d"
+literal|"\\d{4}"
 argument_list|)
 decl_stmt|;
-annotation|@
-name|Override
-DECL|method|isRecognizedFormat (InputStream in)
-specifier|public
-name|boolean
-name|isRecognizedFormat
-parameter_list|(
-name|InputStream
-name|in
-parameter_list|)
-throws|throws
-name|IOException
-block|{
-return|return
-literal|false
-return|;
-block|}
-comment|/**      * Removes all non-letter characters at the end      *      * EXCEPTION: a closing bracket is NOT removed      *      * @param input      * @return      * TODO Additionally replace multiple subsequent spaces by one space      */
+DECL|field|doiToBibTeXFetcher
+specifier|private
+specifier|static
+specifier|final
+name|DOItoBibTeXFetcher
+name|doiToBibTeXFetcher
+init|=
+operator|new
+name|DOItoBibTeXFetcher
+argument_list|()
+decl_stmt|;
+comment|// input lines into several lines
+DECL|field|lines
+specifier|private
+name|String
+index|[]
+name|lines
+decl_stmt|;
+comment|// current index in lines
+DECL|field|i
+specifier|private
+name|int
+name|i
+decl_stmt|;
+DECL|field|curString
+specifier|private
+name|String
+name|curString
+decl_stmt|;
+DECL|field|year
+specifier|private
+name|String
+name|year
+decl_stmt|;
+comment|/**      * Removes all non-letter characters at the end      *<p>      * EXCEPTION: a closing bracket is NOT removed      *</p>      *<p>      * TODO: Additionally replace multiple subsequent spaces by one space, which will cause a rename of this method      *</p>      */
 DECL|method|removeNonLettersAtEnd (String input)
 specifier|private
 specifier|static
@@ -490,6 +473,7 @@ name|String
 name|names
 parameter_list|)
 block|{
+comment|// TODO: replace with AuthorsFormatter?!
 name|String
 name|res
 decl_stmt|;
@@ -998,6 +982,23 @@ return|;
 block|}
 annotation|@
 name|Override
+DECL|method|isRecognizedFormat (InputStream in)
+specifier|public
+name|boolean
+name|isRecognizedFormat
+parameter_list|(
+name|InputStream
+name|in
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+return|return
+literal|false
+return|;
+block|}
+annotation|@
+name|Override
 DECL|method|importEntries (InputStream in, OutputPrinter status)
 specifier|public
 name|List
@@ -1020,7 +1021,7 @@ name|ArrayList
 argument_list|<
 name|BibEntry
 argument_list|>
-name|res
+name|result
 init|=
 operator|new
 name|ArrayList
@@ -1052,104 +1053,46 @@ condition|)
 block|{
 name|LOGGER
 operator|.
-name|error
+name|info
 argument_list|(
 literal|"Encrypted documents are not supported"
 argument_list|)
 expr_stmt|;
-comment|//return res;
+return|return
+name|result
+return|;
 block|}
-name|PDFTextStripper
-name|stripper
+name|String
+name|firstPageContents
 init|=
-operator|new
-name|PDFTextStripper
-argument_list|()
-decl_stmt|;
-name|stripper
-operator|.
-name|setStartPage
-argument_list|(
-literal|1
-argument_list|)
-expr_stmt|;
-name|stripper
-operator|.
-name|setEndPage
-argument_list|(
-literal|1
-argument_list|)
-expr_stmt|;
-name|stripper
-operator|.
-name|setSortByPosition
-argument_list|(
-literal|true
-argument_list|)
-expr_stmt|;
-name|stripper
-operator|.
-name|setParagraphEnd
-argument_list|(
-name|System
-operator|.
-name|lineSeparator
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|StringWriter
-name|writer
-init|=
-operator|new
-name|StringWriter
-argument_list|()
-decl_stmt|;
-name|stripper
-operator|.
-name|writeText
+name|getFirstPageContents
 argument_list|(
 name|document
-argument_list|,
-name|writer
 argument_list|)
-expr_stmt|;
-name|String
-name|textResult
-init|=
-name|writer
-operator|.
-name|toString
-argument_list|()
 decl_stmt|;
-name|String
+name|Optional
+argument_list|<
+name|DOI
+argument_list|>
 name|doi
 init|=
-operator|new
 name|DOI
-argument_list|(
-name|textResult
-argument_list|)
 operator|.
-name|getDOI
-argument_list|()
+name|findInText
+argument_list|(
+name|firstPageContents
+argument_list|)
 decl_stmt|;
 if|if
 condition|(
 name|doi
 operator|.
-name|length
-argument_list|()
-operator|<
-name|textResult
-operator|.
-name|length
+name|isPresent
 argument_list|()
 condition|)
 block|{
-comment|// A Doi was found in the text
-comment|// We do NO parsing of the text, but use the Doi fetcher
 name|ImportInspector
-name|iI
+name|inspector
 init|=
 operator|new
 name|ImportInspector
@@ -1190,7 +1133,7 @@ name|entry
 parameter_list|)
 block|{
 comment|// add the entry to the result object
-name|res
+name|result
 operator|.
 name|add
 argument_list|(
@@ -1200,15 +1143,19 @@ expr_stmt|;
 block|}
 block|}
 decl_stmt|;
-name|PdfContentImporter
-operator|.
 name|doiToBibTeXFetcher
 operator|.
 name|processQuery
 argument_list|(
 name|doi
+operator|.
+name|get
+argument_list|()
+operator|.
+name|getDOI
+argument_list|()
 argument_list|,
-name|iI
+name|inspector
 argument_list|,
 name|status
 argument_list|)
@@ -1216,40 +1163,17 @@ expr_stmt|;
 if|if
 condition|(
 operator|!
-name|res
+name|result
 operator|.
 name|isEmpty
 argument_list|()
 condition|)
 block|{
-comment|// if something has been found, return the result
 return|return
-name|res
+name|result
 return|;
 block|}
-else|else
-block|{
-comment|// otherwise, we just parse the PDF
 block|}
-block|}
-specifier|final
-name|String
-name|lineBreak
-init|=
-name|System
-operator|.
-name|lineSeparator
-argument_list|()
-decl_stmt|;
-name|split
-operator|=
-name|textResult
-operator|.
-name|split
-argument_list|(
-name|lineBreak
-argument_list|)
-expr_stmt|;
 comment|// idea: split[] contains the different lines
 comment|// blocks are separated by empty lines
 comment|// treat each block
@@ -1258,6 +1182,18 @@ comment|//   therefore, we do a line-based and not a block-based splitting
 comment|// i points to the current line
 comment|// curString (mostly) contains the current block
 comment|//   the different lines are joined into one and thereby separated by " "
+name|lines
+operator|=
+name|firstPageContents
+operator|.
+name|split
+argument_list|(
+name|System
+operator|.
+name|lineSeparator
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|proceedToNextNonEmptyLine
 argument_list|()
 expr_stmt|;
@@ -1265,7 +1201,7 @@ if|if
 condition|(
 name|i
 operator|>=
-name|split
+name|lines
 operator|.
 name|length
 condition|)
@@ -1273,16 +1209,18 @@ block|{
 comment|// PDF could not be parsed or is empty
 comment|// return empty list
 return|return
-name|res
+name|result
 return|;
 block|}
+comment|// we start at the current line
 name|curString
 operator|=
-name|split
+name|lines
 index|[
 name|i
 index|]
 expr_stmt|;
+comment|// i might get incremented later and curString modified, too
 name|i
 operator|=
 name|i
@@ -1294,11 +1232,6 @@ name|author
 decl_stmt|;
 name|String
 name|editor
-init|=
-literal|null
-decl_stmt|;
-name|String
-name|institution
 init|=
 literal|null
 decl_stmt|;
@@ -1456,7 +1389,7 @@ condition|(
 operator|(
 name|i
 operator|<
-name|split
+name|lines
 operator|.
 name|length
 operator|)
@@ -1466,20 +1399,20 @@ literal|""
 operator|.
 name|equals
 argument_list|(
-name|split
+name|lines
 index|[
 name|i
 index|]
 argument_list|)
 condition|)
 block|{
-comment|// author names are unlikely to be split among different lines
+comment|// author names are unlikely to be lines among different lines
 comment|// treat them line by line
 name|curString
 operator|=
 name|streamlineNames
 argument_list|(
-name|split
+name|lines
 index|[
 name|i
 index|]
@@ -1509,7 +1442,7 @@ name|curString
 argument_list|)
 condition|)
 block|{
-comment|// if split[i] is "and" then "" is returned by streamlineNames -> do nothing
+comment|// if lines[i] is "and" then "" is returned by streamlineNames -> do nothing
 block|}
 else|else
 block|{
@@ -1545,14 +1478,14 @@ while|while
 condition|(
 name|i
 operator|<
-name|split
+name|lines
 operator|.
 name|length
 condition|)
 block|{
 name|curString
 operator|=
-name|split
+name|lines
 index|[
 name|i
 index|]
@@ -1629,7 +1562,10 @@ argument_list|()
 operator|.
 name|concat
 argument_list|(
-name|lineBreak
+name|System
+operator|.
+name|lineSeparator
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -1643,7 +1579,7 @@ condition|(
 operator|(
 name|i
 operator|<
-name|split
+name|lines
 operator|.
 name|length
 operator|)
@@ -1653,7 +1589,7 @@ literal|""
 operator|.
 name|equals
 argument_list|(
-name|split
+name|lines
 index|[
 name|i
 index|]
@@ -1666,7 +1602,7 @@ name|curString
 operator|.
 name|concat
 argument_list|(
-name|split
+name|lines
 index|[
 name|i
 index|]
@@ -1674,7 +1610,10 @@ argument_list|)
 operator|.
 name|concat
 argument_list|(
-name|lineBreak
+name|System
+operator|.
+name|lineSeparator
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|i
@@ -1684,6 +1623,9 @@ block|}
 name|abstractT
 operator|=
 name|curString
+operator|.
+name|trim
+argument_list|()
 expr_stmt|;
 name|i
 operator|++
@@ -1852,7 +1794,7 @@ block|}
 block|}
 name|i
 operator|=
-name|split
+name|lines
 operator|.
 name|length
 operator|-
@@ -2272,10 +2214,6 @@ block|}
 block|}
 block|}
 block|}
-comment|//					String lower = curString.toLowerCase();
-comment|//					if (institution == null) {
-comment|//
-comment|//					}
 block|}
 block|}
 name|BibEntry
@@ -2292,6 +2230,7 @@ argument_list|(
 name|type
 argument_list|)
 expr_stmt|;
+comment|// TODO: institution parsing missing
 if|if
 condition|(
 name|author
@@ -2326,24 +2265,6 @@ name|editor
 argument_list|)
 expr_stmt|;
 block|}
-comment|// TODO: Set the institution field during parsing
-if|if
-condition|(
-name|institution
-operator|!=
-literal|null
-condition|)
-block|{
-name|entry
-operator|.
-name|setField
-argument_list|(
-literal|"institution"
-argument_list|,
-name|institution
-argument_list|)
-expr_stmt|;
-block|}
 if|if
 condition|(
 name|abstractT
@@ -2363,9 +2284,13 @@ expr_stmt|;
 block|}
 if|if
 condition|(
+operator|!
+name|Strings
+operator|.
+name|isNullOrEmpty
+argument_list|(
 name|keywords
-operator|!=
-literal|null
+argument_list|)
 condition|)
 block|{
 name|entry
@@ -2531,16 +2456,7 @@ name|publisher
 argument_list|)
 expr_stmt|;
 block|}
-name|entry
-operator|.
-name|setField
-argument_list|(
-literal|"review"
-argument_list|,
-name|textResult
-argument_list|)
-expr_stmt|;
-name|res
+name|result
 operator|.
 name|add
 argument_list|(
@@ -2548,69 +2464,80 @@ name|entry
 argument_list|)
 expr_stmt|;
 block|}
-catch|catch
+return|return
+name|result
+return|;
+block|}
+DECL|method|getFirstPageContents (PDDocument document)
+specifier|private
+name|String
+name|getFirstPageContents
 parameter_list|(
-name|NoClassDefFoundError
-name|e
+name|PDDocument
+name|document
 parameter_list|)
+throws|throws
+name|IOException
 block|{
-if|if
-condition|(
-literal|"org/bouncycastle/jce/provider/BouncyCastleProvider"
+name|PDFTextStripper
+name|stripper
+init|=
+operator|new
+name|PDFTextStripper
+argument_list|()
+decl_stmt|;
+name|stripper
 operator|.
-name|equals
+name|setStartPage
 argument_list|(
-name|e
+literal|1
+argument_list|)
+expr_stmt|;
+name|stripper
 operator|.
-name|getMessage
+name|setEndPage
+argument_list|(
+literal|1
+argument_list|)
+expr_stmt|;
+name|stripper
+operator|.
+name|setSortByPosition
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|stripper
+operator|.
+name|setParagraphEnd
+argument_list|(
+name|System
+operator|.
+name|lineSeparator
 argument_list|()
 argument_list|)
-condition|)
-block|{
-name|status
-operator|.
-name|showMessage
-argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Java Bouncy Castle library not found. Please download and install it. For more information see http://www.bouncycastle.org/."
-argument_list|)
-argument_list|)
 expr_stmt|;
-block|}
-else|else
-block|{
-name|LOGGER
+name|StringWriter
+name|writer
+init|=
+operator|new
+name|StringWriter
+argument_list|()
+decl_stmt|;
+name|stripper
 operator|.
-name|error
+name|writeText
 argument_list|(
-literal|"Could not find class"
+name|document
 argument_list|,
-name|e
+name|writer
 argument_list|)
 expr_stmt|;
-block|}
-block|}
-catch|catch
-parameter_list|(
-name|IOException
-name|e
-parameter_list|)
-block|{
-name|LOGGER
-operator|.
-name|error
-argument_list|(
-literal|"Could not load document"
-argument_list|,
-name|e
-argument_list|)
-expr_stmt|;
-block|}
 return|return
-name|res
+name|writer
+operator|.
+name|toString
+argument_list|()
 return|;
 block|}
 comment|/**      * Extract the year out of curString (if it is not yet defined)      */
@@ -2678,7 +2605,7 @@ condition|(
 operator|(
 name|i
 operator|<
-name|split
+name|lines
 operator|.
 name|length
 operator|)
@@ -2687,7 +2614,7 @@ literal|""
 operator|.
 name|equals
 argument_list|(
-name|split
+name|lines
 index|[
 name|i
 index|]
@@ -2702,7 +2629,7 @@ operator|++
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Fill curString with lines until "" is found      * No trailing space is added      * i is advanced to the next non-empty line (ignoring white space)      *      * Lines containing only white spaces are ignored,      * but NOT considered as ""      *      * Uses GLOBAL variables split, curLine, i      */
+comment|/**      * Fill curString with lines until "" is found      * No trailing space is added      * i is advanced to the next non-empty line (ignoring white space)      *<p>      * Lines containing only white spaces are ignored,      * but NOT considered as ""      *<p>      * Uses GLOBAL variables lines, curLine, i      */
 DECL|method|fillCurStringWithNonEmptyLines ()
 specifier|private
 name|void
@@ -2722,7 +2649,7 @@ condition|(
 operator|(
 name|i
 operator|<
-name|split
+name|lines
 operator|.
 name|length
 operator|)
@@ -2732,7 +2659,7 @@ literal|""
 operator|.
 name|equals
 argument_list|(
-name|split
+name|lines
 index|[
 name|i
 index|]
@@ -2742,7 +2669,7 @@ block|{
 name|String
 name|curLine
 init|=
-name|split
+name|lines
 index|[
 name|i
 index|]
@@ -2787,7 +2714,7 @@ name|curString
 operator|.
 name|concat
 argument_list|(
-name|split
+name|lines
 index|[
 name|i
 index|]
@@ -2802,7 +2729,7 @@ name|proceedToNextNonEmptyLine
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * resets curString      * curString now contains the last block (until "" reached)      * Trailing space is added      *      * invariant before/after: i points to line before the last handled block      */
+comment|/**      * resets curString      * curString now contains the last block (until "" reached)      * Trailing space is added      *<p>      * invariant before/after: i points to line before the last handled block      */
 DECL|method|readLastBlock ()
 specifier|private
 name|void
@@ -2821,7 +2748,7 @@ literal|""
 operator|.
 name|equals
 argument_list|(
-name|split
+name|lines
 index|[
 name|i
 index|]
@@ -2855,7 +2782,7 @@ literal|""
 operator|.
 name|equals
 argument_list|(
-name|split
+name|lines
 index|[
 name|i
 index|]
@@ -2895,7 +2822,7 @@ name|curString
 operator|.
 name|concat
 argument_list|(
-name|split
+name|lines
 index|[
 name|j
 index|]

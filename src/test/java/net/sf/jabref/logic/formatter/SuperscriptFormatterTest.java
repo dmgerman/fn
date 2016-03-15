@@ -100,10 +100,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|After
-DECL|method|teardown ()
+DECL|method|tearDown ()
 specifier|public
 name|void
-name|teardown
+name|tearDown
 parameter_list|()
 block|{
 name|formatter

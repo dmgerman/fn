@@ -32,6 +32,22 @@ name|Formatter
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
+import|;
+end_import
+
 begin_class
 DECL|class|LatexFormatter
 specifier|public
@@ -197,6 +213,23 @@ argument_list|)
 expr_stmt|;
 return|return
 name|newValue
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|getDescription ()
+specifier|public
+name|String
+name|getDescription
+parameter_list|()
+block|{
+return|return
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Cleans latex code in %s."
+argument_list|)
 return|;
 block|}
 block|}

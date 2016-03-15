@@ -704,7 +704,6 @@ parameter_list|()
 throws|throws
 name|RecognitionException
 block|{
-block|{
 name|VM
 name|vm
 init|=
@@ -759,6 +758,16 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+DECL|method|testVMExecuteSimple2 ()
+specifier|public
+name|void
+name|testVMExecuteSimple2
+parameter_list|()
+throws|throws
+name|RecognitionException
+block|{
 name|VM
 name|vm
 init|=
@@ -1239,7 +1248,6 @@ parameter_list|()
 throws|throws
 name|RecognitionException
 block|{
-block|{
 name|VM
 name|vm
 init|=
@@ -1317,6 +1325,16 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+DECL|method|testVMArithmetic2 ()
+specifier|public
+name|void
+name|testVMArithmetic2
+parameter_list|()
+throws|throws
+name|RecognitionException
+block|{
 name|VM
 name|vm
 init|=
@@ -1374,7 +1392,6 @@ name|testNumNames
 parameter_list|()
 throws|throws
 name|RecognitionException
-block|{
 block|{
 name|VM
 name|vm
@@ -1436,6 +1453,16 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+DECL|method|testNumNames2 ()
+specifier|public
+name|void
+name|testNumNames2
+parameter_list|()
+throws|throws
+name|RecognitionException
+block|{
 name|VM
 name|vm
 init|=
@@ -2605,7 +2632,6 @@ parameter_list|()
 throws|throws
 name|RecognitionException
 block|{
-block|{
 name|VM
 name|vm
 init|=
@@ -2666,6 +2692,16 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+DECL|method|testVMChrToIntIntToChr ()
+specifier|public
+name|void
+name|testVMChrToIntIntToChr
+parameter_list|()
+throws|throws
+name|RecognitionException
+block|{
 name|VM
 name|vm
 init|=
@@ -3480,7 +3516,6 @@ name|RecognitionException
 throws|,
 name|IOException
 block|{
-block|{
 name|VM
 name|vm
 init|=
@@ -3541,6 +3576,18 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+DECL|method|testFormatName2 ()
+specifier|public
+name|void
+name|testFormatName2
+parameter_list|()
+throws|throws
+name|RecognitionException
+throws|,
+name|IOException
+block|{
 name|VM
 name|vm
 init|=

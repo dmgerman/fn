@@ -36,30 +36,6 @@ name|awt
 operator|.
 name|event
 operator|.
-name|ActionEvent
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|awt
-operator|.
-name|event
-operator|.
-name|ActionListener
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|awt
-operator|.
-name|event
-operator|.
 name|MouseEvent
 import|;
 end_import
@@ -352,6 +328,8 @@ name|gui
 operator|.
 name|util
 operator|.
+name|comparator
+operator|.
 name|FirstColumnComparator
 import|;
 end_import
@@ -367,6 +345,8 @@ operator|.
 name|gui
 operator|.
 name|util
+operator|.
+name|comparator
 operator|.
 name|IconComparator
 import|;
@@ -384,6 +364,8 @@ name|gui
 operator|.
 name|util
 operator|.
+name|comparator
+operator|.
 name|IsMarkedComparator
 import|;
 end_import
@@ -399,6 +381,8 @@ operator|.
 name|gui
 operator|.
 name|util
+operator|.
+name|comparator
 operator|.
 name|RankingFieldComparator
 import|;
@@ -1283,6 +1267,27 @@ operator|new
 name|PersistenceTableColumnListener
 argument_list|(
 name|this
+argument_list|)
+expr_stmt|;
+comment|// set table header render AFTER creation of comparatorChooser (this enables sort arrow rendering)
+name|this
+operator|.
+name|getTableHeader
+argument_list|()
+operator|.
+name|setDefaultRenderer
+argument_list|(
+operator|new
+name|MainTableHeaderRenderer
+argument_list|(
+name|this
+operator|.
+name|getTableHeader
+argument_list|()
+operator|.
+name|getDefaultRenderer
+argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// TODO: Figure out, whether this call is needed.
@@ -3078,19 +3083,8 @@ name|comparatorChooser
 operator|.
 name|addSortActionListener
 argument_list|(
-operator|new
-name|ActionListener
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|actionPerformed
-parameter_list|(
-name|ActionEvent
-name|actionEvent
-parameter_list|)
+name|e
+lambda|->
 block|{
 comment|// Get the information about the current sort order:
 name|List
@@ -3319,7 +3313,6 @@ argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 argument_list|)
@@ -4530,19 +4523,16 @@ argument_list|,
 name|sortingStrategy
 argument_list|)
 decl_stmt|;
+comment|// We need to reset the stack of sorted list each time sorting order
+comment|// changes, or the sorting breaks down:
 name|result
 operator|.
 name|addSortActionListener
 argument_list|(
 name|e
 lambda|->
-block|{
-comment|// We need to reset the stack of sorted list each time sorting order
-comment|// changes, or the sorting breaks down:
 name|refreshSorting
 argument_list|()
-expr_stmt|;
-block|}
 argument_list|)
 expr_stmt|;
 return|return
