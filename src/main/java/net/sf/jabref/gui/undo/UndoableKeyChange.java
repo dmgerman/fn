@@ -62,6 +62,22 @@ name|Localization
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|BibEntry
+import|;
+end_import
+
 begin_comment
 comment|/**  * This class represents a change in any field value. The relevant  * information is the BibEntry, the field name, the old and the  * new value. Old/new values can be null.  */
 end_comment
@@ -74,11 +90,11 @@ name|UndoableKeyChange
 extends|extends
 name|AbstractUndoableEdit
 block|{
-DECL|field|entryId
+DECL|field|entry
 specifier|private
 specifier|final
-name|String
-name|entryId
+name|BibEntry
+name|entry
 decl_stmt|;
 DECL|field|base
 specifier|private
@@ -98,15 +114,15 @@ specifier|final
 name|String
 name|newValue
 decl_stmt|;
-DECL|method|UndoableKeyChange (BibDatabase base, String entryId, String oldValue, String newValue)
+DECL|method|UndoableKeyChange (BibDatabase base, BibEntry entry, String oldValue, String newValue)
 specifier|public
 name|UndoableKeyChange
 parameter_list|(
 name|BibDatabase
 name|base
 parameter_list|,
-name|String
-name|entryId
+name|BibEntry
+name|entry
 parameter_list|,
 name|String
 name|oldValue
@@ -123,9 +139,9 @@ name|base
 expr_stmt|;
 name|this
 operator|.
-name|entryId
+name|entry
 operator|=
-name|entryId
+name|entry
 expr_stmt|;
 name|this
 operator|.
@@ -262,7 +278,7 @@ name|base
 operator|.
 name|setCiteKeyForEntry
 argument_list|(
-name|entryId
+name|entry
 argument_list|,
 name|to
 argument_list|)

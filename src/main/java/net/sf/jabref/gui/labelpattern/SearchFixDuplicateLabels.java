@@ -631,9 +631,6 @@ name|database
 argument_list|()
 argument_list|,
 name|entry
-operator|.
-name|getId
-argument_list|()
 argument_list|,
 name|oldKey
 argument_list|,

@@ -588,7 +588,7 @@ name|comparators
 return|;
 block|}
 comment|/*      * We have begun to use getSortedEntries() for both database save operations      * and non-database save operations.  In a non-database save operation      * (such as the exportDatabase call), we do not wish to use the      * global preference of saving in standard order.      */
-DECL|method|getSortedEntries (BibDatabaseContext bibDatabaseContext, Set<String> keySet, SavePreferences preferences)
+DECL|method|getSortedEntries (BibDatabaseContext bibDatabaseContext, List<BibEntry> entriesToSort, SavePreferences preferences)
 specifier|public
 specifier|static
 name|List
@@ -600,11 +600,11 @@ parameter_list|(
 name|BibDatabaseContext
 name|bibDatabaseContext
 parameter_list|,
-name|Set
+name|List
 argument_list|<
-name|String
+name|BibEntry
 argument_list|>
-name|keySet
+name|entriesToSort
 parameter_list|,
 name|SavePreferences
 name|preferences
@@ -694,48 +694,13 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
-if|if
-condition|(
-name|keySet
-operator|==
-literal|null
-condition|)
-block|{
-name|keySet
-operator|=
-name|bibDatabaseContext
-operator|.
-name|getDatabase
-argument_list|()
-operator|.
-name|getKeySet
-argument_list|()
-expr_stmt|;
-block|}
-for|for
-control|(
-name|String
-name|id
-range|:
-name|keySet
-control|)
-block|{
 name|sorted
 operator|.
-name|add
+name|addAll
 argument_list|(
-name|bibDatabaseContext
-operator|.
-name|getDatabase
-argument_list|()
-operator|.
-name|getEntryById
-argument_list|(
-name|id
-argument_list|)
+name|entriesToSort
 argument_list|)
 expr_stmt|;
-block|}
 name|Collections
 operator|.
 name|sort
@@ -840,7 +805,7 @@ name|preferences
 argument_list|)
 return|;
 block|}
-DECL|method|savePartOfDatabase (BibDatabaseContext bibDatabaseContext, Collection<BibEntry> entries, SavePreferences preferences)
+DECL|method|savePartOfDatabase (BibDatabaseContext bibDatabaseContext, List<BibEntry> entries, SavePreferences preferences)
 specifier|public
 name|SaveSession
 name|savePartOfDatabase
@@ -848,7 +813,7 @@ parameter_list|(
 name|BibDatabaseContext
 name|bibDatabaseContext
 parameter_list|,
-name|Collection
+name|List
 argument_list|<
 name|BibEntry
 argument_list|>
@@ -987,7 +952,7 @@ return|return
 name|session
 return|;
 block|}
-DECL|method|writePartOfDatabase (Writer writer, BibDatabaseContext bibDatabaseContext, Collection<BibEntry> entries, SavePreferences preferences)
+DECL|method|writePartOfDatabase (Writer writer, BibDatabaseContext bibDatabaseContext, List<BibEntry> entries, SavePreferences preferences)
 specifier|public
 name|List
 argument_list|<
@@ -1001,7 +966,7 @@ parameter_list|,
 name|BibDatabaseContext
 name|bibDatabaseContext
 parameter_list|,
-name|Collection
+name|List
 argument_list|<
 name|BibEntry
 argument_list|>
@@ -1104,24 +1069,6 @@ argument_list|(
 name|bibDatabaseContext
 argument_list|,
 name|entries
-operator|.
-name|stream
-argument_list|()
-operator|.
-name|map
-argument_list|(
-name|BibEntry
-operator|::
-name|getId
-argument_list|)
-operator|.
-name|collect
-argument_list|(
-name|Collectors
-operator|.
-name|toSet
-argument_list|()
-argument_list|)
 argument_list|,
 name|preferences
 argument_list|)
@@ -1299,7 +1246,7 @@ name|saveActionChanges
 return|;
 block|}
 comment|/**      * Saves the database to file, including only the entries included in the      * supplied input array bes.      */
-DECL|method|savePartOfDatabase (BibDatabaseContext bibDatabaseContext, SavePreferences preferences, Collection<BibEntry> entries)
+DECL|method|savePartOfDatabase (BibDatabaseContext bibDatabaseContext, SavePreferences preferences, List<BibEntry> entries)
 specifier|public
 name|SaveSession
 name|savePartOfDatabase
@@ -1310,7 +1257,7 @@ parameter_list|,
 name|SavePreferences
 name|preferences
 parameter_list|,
-name|Collection
+name|List
 argument_list|<
 name|BibEntry
 argument_list|>
