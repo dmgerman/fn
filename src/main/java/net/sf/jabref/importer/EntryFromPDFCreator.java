@@ -435,7 +435,8 @@ decl_stmt|;
 assert|assert
 name|res
 operator|.
-name|entries
+name|getEntries
+argument_list|()
 operator|.
 name|size
 argument_list|()
@@ -449,7 +450,8 @@ name|of
 argument_list|(
 name|res
 operator|.
-name|entries
+name|getEntries
+argument_list|()
 operator|.
 name|get
 argument_list|(

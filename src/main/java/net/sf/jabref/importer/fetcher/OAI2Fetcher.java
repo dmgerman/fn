@@ -306,6 +306,16 @@ name|Date
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Locale
+import|;
+end_import
+
 begin_comment
 comment|/**  *  * This class can be used to access any archive offering an OAI2 interface. By  * default it will access ArXiv.org  *  * @author Ulrich St&auml;rk  * @author Christian Kopf  */
 end_comment
@@ -677,7 +687,11 @@ condition|(
 name|resultingKey
 operator|.
 name|toLowerCase
-argument_list|()
+argument_list|(
+name|Locale
+operator|.
+name|ENGLISH
+argument_list|)
 operator|.
 name|startsWith
 argument_list|(
