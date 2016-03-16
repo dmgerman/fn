@@ -244,7 +244,9 @@ name|notReturnAnythingWhenMultipleLinksAreFound
 parameter_list|()
 throws|throws
 name|IOException
-block|{     }
+block|{
+comment|// To be implemented
+block|}
 annotation|@
 name|Test
 DECL|method|notFoundByDOI ()

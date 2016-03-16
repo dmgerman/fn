@@ -965,11 +965,9 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|(
 name|oldEditor
 operator|!=
 literal|null
-operator|)
 condition|)
 block|{
 name|oldEditor
@@ -1699,16 +1697,11 @@ name|INSTANCE
 operator|.
 name|execute
 argument_list|(
-operator|new
+call|(
 name|Runnable
+call|)
 argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|run
-parameter_list|()
+operator|->
 block|{
 name|panel
 operator|.
@@ -1723,7 +1716,7 @@ argument_list|)
 operator|+
 literal|'.'
 argument_list|)
-expr_stmt|;
+block|;
 comment|// check for all field names whether a link is present
 comment|// (is relevant for combinations such as "url/doi")
 for|for
@@ -1734,9 +1727,9 @@ range|:
 name|fieldNames
 control|)
 block|{
+comment|// Check if field is present, if not skip this field
 if|if
 condition|(
-operator|!
 name|entry
 operator|.
 name|hasField
@@ -1745,9 +1738,6 @@ name|fieldName
 argument_list|)
 condition|)
 block|{
-continue|continue;
-comment|// There is no content for this field continue with the next one
-block|}
 name|String
 name|link
 init|=
@@ -1992,6 +1982,15 @@ literal|"Unable to open link."
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|LOGGER
+operator|.
+name|info
+argument_list|(
+literal|"Unable to open link"
+argument_list|,
+name|ex
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 break|break;
@@ -1999,13 +1998,19 @@ comment|// only open the first link
 block|}
 block|}
 block|}
-argument_list|)
-expr_stmt|;
+block|)
+function|;
 block|}
-block|}
+end_class
+
+begin_comment
+unit|}
 comment|/**      * Method to handle a single left click on one the special fields (e.g., ranking, quality, ...)      * Shows either a popup to select/clear a value or simply toggles the functionality to set/unset the special field      *      * @param e MouseEvent used to determine the position of the popups      * @param columnName the name of the specialfield column      */
+end_comment
+
+begin_function
 DECL|method|handleSpecialFieldLeftClick (MouseEvent e, String columnName)
-specifier|private
+unit|private
 name|void
 name|handleSpecialFieldLeftClick
 parameter_list|(
@@ -2132,7 +2137,13 @@ expr_stmt|;
 block|}
 block|}
 block|}
+end_function
+
+begin_comment
 comment|/**      * Process general right-click events on the table. Show the table context menu at      * the position where the user right-clicked.      * @param e The mouse event defining the popup trigger.      * @param row The row where the event occurred.      */
+end_comment
+
+begin_function
 DECL|method|processPopupTrigger (MouseEvent e, int row)
 specifier|private
 name|void
@@ -2220,7 +2231,13 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Process popup trigger events occurring on an icon cell in the table. Show a menu where the user can choose which      * external resource to open for the entry. If no relevant external resources exist, let the normal popup trigger      * handler do its thing instead.      *      * @param e The mouse event defining this popup trigger.      * @param row The row where the event occurred.      * @param column the MainTableColumn associated with this table cell.      */
+end_comment
+
+begin_function
 DECL|method|showIconRightClickMenu (MouseEvent e, int row, MainTableColumn column)
 specifier|private
 name|void
@@ -2614,6 +2631,9 @@ expr_stmt|;
 block|}
 block|}
 block|}
+end_function
+
+begin_function
 DECL|method|entryEditorClosing (EntryEditor editor)
 specifier|public
 name|void
@@ -2666,6 +2686,9 @@ name|table
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Override
 DECL|method|mouseEntered (MouseEvent e)
@@ -2679,6 +2702,9 @@ parameter_list|)
 block|{
 comment|// Do nothing
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Override
 DECL|method|mouseExited (MouseEvent e)
@@ -2692,6 +2718,9 @@ parameter_list|)
 block|{
 comment|// Do nothing
 block|}
+end_function
+
+begin_function
 DECL|method|setPreviewActive (boolean enabled)
 specifier|public
 name|void
@@ -2748,6 +2777,9 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_function
 DECL|method|switchPreview ()
 specifier|public
 name|void
@@ -2835,7 +2867,13 @@ expr_stmt|;
 block|}
 block|}
 block|}
+end_function
+
+begin_comment
 comment|/**      * Receive key event on the main table. If the key is a letter or a digit,      * we should select the first entry in the table which starts with the given      * letter in the column by which the table is sorted.      * @param e The KeyEvent      */
+end_comment
+
+begin_function
 annotation|@
 name|Override
 DECL|method|keyTyped (KeyEvent e)
@@ -3113,6 +3151,9 @@ literal|0
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Override
 DECL|method|keyReleased (KeyEvent e)
@@ -3126,6 +3167,9 @@ parameter_list|)
 block|{
 comment|// Do nothing
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Override
 DECL|method|keyPressed (KeyEvent e)
@@ -3139,6 +3183,9 @@ parameter_list|)
 block|{
 comment|// Do nothing
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Override
 DECL|method|focusGained (FocusEvent e)
@@ -3152,6 +3199,9 @@ parameter_list|)
 block|{
 comment|// Do nothing
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Override
 DECL|method|focusLost (FocusEvent e)
@@ -3169,8 +3219,8 @@ literal|0
 expr_stmt|;
 comment|// Reset quick jump when focus is lost.
 block|}
-block|}
-end_class
+end_function
 
+unit|}
 end_unit
 

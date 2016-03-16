@@ -458,19 +458,6 @@ specifier|private
 name|Date
 name|lastCall
 decl_stmt|;
-comment|/**      * some archives - like ArXiv.org - might expect of you to wait some time      */
-DECL|method|shouldWait ()
-specifier|private
-name|boolean
-name|shouldWait
-parameter_list|()
-block|{
-return|return
-name|waitTime
-operator|>
-literal|0
-return|;
-block|}
 comment|/**      *      *      * @param oai2Host      *            the host to query without leading http:// and without trailing /      * @param oai2Script      *            the relative location of the oai2 interface without leading      *            and trailing /      * @param oai2Metadataprefix      *            the urlencoded metadataprefix      * @param oai2Prefixidentifier      *            the urlencoded prefix identifier      * @param waitTimeMs      *            Time to wait in milliseconds between query-requests.      */
 DECL|method|OAI2Fetcher (String oai2Host, String oai2Script, String oai2Metadataprefix, String oai2Prefixidentifier, String oai2ArchiveName, long waitTimeMs)
 specifier|public
@@ -664,6 +651,19 @@ operator|+
 literal|"&metadataPrefix="
 operator|+
 name|oai2MetaDataPrefix
+return|;
+block|}
+comment|/**      * some archives - like ArXiv.org - might expect of you to wait some time      */
+DECL|method|shouldWait ()
+specifier|private
+name|boolean
+name|shouldWait
+parameter_list|()
+block|{
+return|return
+name|waitTime
+operator|>
+literal|0
 return|;
 block|}
 comment|/**      * Strip subcategories from ArXiv key.      *      * @param key The key to fix.      * @return Fixed key.      */

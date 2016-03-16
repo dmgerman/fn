@@ -34,18 +34,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|prefs
-operator|.
-name|Preferences
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|swing

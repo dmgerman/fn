@@ -2660,19 +2660,17 @@ decl_stmt|;
 comment|// write an output, if something could be resolved
 if|if
 condition|(
+operator|(
 name|newBase
 operator|!=
 literal|null
-condition|)
-block|{
-if|if
-condition|(
+operator|)
+operator|&&
+operator|!
 name|newBase
 operator|.
-name|getEntryCount
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 condition|)
 block|{
 name|String
@@ -2869,7 +2867,6 @@ name|notSavedMsg
 operator|=
 literal|true
 expr_stmt|;
-block|}
 block|}
 if|if
 condition|(
