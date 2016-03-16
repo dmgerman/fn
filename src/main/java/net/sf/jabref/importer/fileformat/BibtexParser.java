@@ -376,7 +376,7 @@ comment|/**      * Parses BibtexEntries from the given string and returns the co
 DECL|method|fromString (String bibtexString)
 specifier|public
 specifier|static
-name|Collection
+name|List
 argument_list|<
 name|BibEntry
 argument_list|>
