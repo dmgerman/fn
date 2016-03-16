@@ -74,6 +74,16 @@ name|Objects
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
+import|;
+end_import
+
 begin_class
 DECL|class|CleanupPreset
 specifier|public
@@ -83,7 +93,7 @@ block|{
 DECL|field|activeJobs
 specifier|private
 specifier|final
-name|EnumSet
+name|Set
 argument_list|<
 name|CleanupStep
 argument_list|>
@@ -95,11 +105,11 @@ specifier|final
 name|FieldFormatterCleanups
 name|formatterCleanups
 decl_stmt|;
-DECL|method|CleanupPreset (EnumSet<CleanupStep> activeJobs)
+DECL|method|CleanupPreset (Set<CleanupStep> activeJobs)
 specifier|public
 name|CleanupPreset
 parameter_list|(
-name|EnumSet
+name|Set
 argument_list|<
 name|CleanupStep
 argument_list|>
@@ -165,11 +175,11 @@ name|formatterCleanups
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|CleanupPreset (EnumSet<CleanupStep> activeJobs, FieldFormatterCleanups formatterCleanups)
+DECL|method|CleanupPreset (Set<CleanupStep> activeJobs, FieldFormatterCleanups formatterCleanups)
 specifier|public
 name|CleanupPreset
 parameter_list|(
-name|EnumSet
+name|Set
 argument_list|<
 name|CleanupStep
 argument_list|>

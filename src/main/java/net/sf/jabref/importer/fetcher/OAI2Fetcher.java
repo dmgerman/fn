@@ -306,6 +306,16 @@ name|Date
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Locale
+import|;
+end_import
+
 begin_comment
 comment|/**  *  * This class can be used to access any archive offering an OAI2 interface. By  * default it will access ArXiv.org  *  * @author Ulrich St&auml;rk  * @author Christian Kopf  */
 end_comment
@@ -676,13 +686,19 @@ if|if
 condition|(
 name|resultingKey
 operator|.
-name|matches
+name|toLowerCase
 argument_list|(
-literal|"^[Aa][Rr][Xx][Ii][Vv]:.*"
+name|Locale
+operator|.
+name|ENGLISH
+argument_list|)
+operator|.
+name|startsWith
+argument_list|(
+literal|"arxiv:"
 argument_list|)
 condition|)
 block|{
-comment|// Starts with arxiv:, case and locale independent
 name|resultingKey
 operator|=
 name|resultingKey

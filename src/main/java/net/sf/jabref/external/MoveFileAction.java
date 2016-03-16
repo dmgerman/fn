@@ -232,6 +232,16 @@ name|List
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Locale
+import|;
+end_import
+
 begin_comment
 comment|/**  * Action for moving or renaming a file that is linked to from an entry in JabRef.  */
 end_comment
@@ -395,12 +405,18 @@ name|httpLink
 init|=
 name|ln
 operator|.
-name|matches
+name|toLowerCase
 argument_list|(
-literal|"^[Hh][Tt][Tt][Pp].*"
+name|Locale
+operator|.
+name|ENGLISH
+argument_list|)
+operator|.
+name|startsWith
+argument_list|(
+literal|"http"
 argument_list|)
 decl_stmt|;
-comment|// Starts with http, case insensitive and locale independent
 if|if
 condition|(
 name|httpLink
