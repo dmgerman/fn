@@ -1141,10 +1141,14 @@ literal|"Unable to clear preferences."
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|e
+name|LOGGER
 operator|.
-name|printStackTrace
-argument_list|()
+name|error
+argument_list|(
+literal|"Unable to clear preferences"
+argument_list|,
+name|e
+argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -5088,10 +5092,14 @@ name|getMessage
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|ex
+name|LOGGER
 operator|.
-name|printStackTrace
-argument_list|()
+name|info
+argument_list|(
+literal|"Problem opening .bib-file"
+argument_list|,
+name|ex
+argument_list|)
 expr_stmt|;
 return|return
 name|pr
