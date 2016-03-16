@@ -135,17 +135,6 @@ operator|new
 name|UnitFormatter
 argument_list|()
 decl_stmt|;
-DECL|field|TRIM_FORMATTER
-specifier|public
-specifier|static
-specifier|final
-name|TrimFormatter
-name|TRIM_FORMATTER
-init|=
-operator|new
-name|TrimFormatter
-argument_list|()
-decl_stmt|;
 DECL|field|REMOVE_BRACES_FORMATTER
 specifier|public
 specifier|static
@@ -217,8 +206,6 @@ argument_list|,
 name|MONTH_FORMATTER
 argument_list|,
 name|UNIT_FORMATTER
-argument_list|,
-name|TRIM_FORMATTER
 argument_list|,
 name|REMOVE_BRACES_FORMATTER
 argument_list|,

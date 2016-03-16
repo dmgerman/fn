@@ -411,6 +411,14 @@ name|fieldName
 argument_list|)
 return|;
 block|}
+comment|// Trim whitespace
+name|result
+operator|=
+name|result
+operator|.
+name|trim
+argument_list|()
+expr_stmt|;
 return|return
 name|formatAndResolveStrings
 argument_list|(
