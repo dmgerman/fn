@@ -1177,7 +1177,9 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Connection to ACM Portal failed"
+literal|"Could not connect to %0"
+argument_list|,
+literal|"ACM Portal"
 argument_list|)
 argument_list|,
 name|Localization
