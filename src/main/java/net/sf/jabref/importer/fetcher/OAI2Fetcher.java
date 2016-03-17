@@ -1472,7 +1472,7 @@ name|LOGGER
 operator|.
 name|error
 argument_list|(
-literal|"Error whil fetching from OAI2"
+literal|"Error while fetching from OAI2"
 argument_list|,
 name|e
 argument_list|)
