@@ -2462,7 +2462,7 @@ literal|"pages"
 argument_list|,
 name|pages
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
 literal|"-"
 argument_list|,

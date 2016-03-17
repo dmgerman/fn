@@ -441,7 +441,7 @@ name|StringReader
 argument_list|(
 name|layoutFile
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
 literal|"__NEWLINE__"
 argument_list|,

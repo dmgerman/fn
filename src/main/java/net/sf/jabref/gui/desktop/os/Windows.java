@@ -152,14 +152,14 @@ literal|"cmd.exe /c start "
 operator|+
 name|filePath
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
 literal|"&"
 argument_list|,
 literal|"\"&\""
 argument_list|)
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
 literal|" "
 argument_list|,
@@ -189,14 +189,14 @@ name|escapedLink
 init|=
 name|filePath
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
 literal|"&"
 argument_list|,
 literal|"\"&\""
 argument_list|)
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
 literal|" "
 argument_list|,

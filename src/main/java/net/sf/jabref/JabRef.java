@@ -3270,7 +3270,7 @@ operator|.
 name|getSimpleName
 argument_list|()
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
 literal|"Fetcher"
 argument_list|,
@@ -3349,7 +3349,7 @@ operator|.
 name|getSimpleName
 argument_list|()
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
 literal|"Fetcher"
 argument_list|,
@@ -3357,7 +3357,11 @@ literal|""
 argument_list|)
 operator|.
 name|toLowerCase
-argument_list|()
+argument_list|(
+name|Locale
+operator|.
+name|ENGLISH
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -5230,7 +5234,7 @@ index|[
 literal|0
 index|]
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
 literal|"~"
 argument_list|,
@@ -5362,7 +5366,7 @@ index|[
 literal|0
 index|]
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
 literal|"~"
 argument_list|,

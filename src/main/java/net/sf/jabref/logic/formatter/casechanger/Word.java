@@ -474,9 +474,9 @@ operator|.
 name|toString
 argument_list|()
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
-literal|"[:]"
+literal|":"
 argument_list|,
 literal|""
 argument_list|)
