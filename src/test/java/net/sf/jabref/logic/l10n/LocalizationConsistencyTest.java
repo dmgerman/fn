@@ -206,6 +206,26 @@ argument_list|(
 name|nonEnglishKeys
 argument_list|)
 expr_stmt|;
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|obsolete
+init|=
+operator|new
+name|LinkedList
+argument_list|<>
+argument_list|(
+name|nonEnglishKeys
+argument_list|)
+decl_stmt|;
+name|obsolete
+operator|.
+name|removeAll
+argument_list|(
+name|englishKeys
+argument_list|)
+expr_stmt|;
 name|assertEquals
 argument_list|(
 literal|"Missing keys of "
@@ -218,6 +238,20 @@ name|emptyList
 argument_list|()
 argument_list|,
 name|missing
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Obsolete keys of "
+operator|+
+name|lang
+argument_list|,
+name|Collections
+operator|.
+name|emptyList
+argument_list|()
+argument_list|,
+name|obsolete
 argument_list|)
 expr_stmt|;
 block|}
@@ -761,6 +795,33 @@ expr_stmt|;
 name|fail
 argument_list|(
 literal|"Obsolete keys found in menu properties file which should be removed"
+argument_list|)
+expr_stmt|;
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+literal|"1. REMOVE THESE FROM THE ENGLISH LANGUAGE FILE"
+argument_list|)
+expr_stmt|;
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+literal|"2. EXECUTE gradlew -b localization.gradle compareAndUpdateTranslationsWithEnglishTranslation TO"
+argument_list|)
+expr_stmt|;
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+literal|"REMOVE THESE FROM THE NON-ENGLISH LANGUAGE FILES"
 argument_list|)
 expr_stmt|;
 block|}
