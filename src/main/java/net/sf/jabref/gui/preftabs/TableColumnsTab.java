@@ -80,6 +80,20 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|bibtex
+operator|.
+name|BibtexSingleField
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|external
 operator|.
 name|ExternalFileType
@@ -533,6 +547,22 @@ specifier|private
 name|int
 name|length
 decl_stmt|;
+DECL|method|TableRow ()
+specifier|public
+name|TableRow
+parameter_list|()
+block|{
+name|name
+operator|=
+literal|""
+expr_stmt|;
+name|length
+operator|=
+name|BibtexSingleField
+operator|.
+name|DEFAULT_FIELD_LENGTH
+expr_stmt|;
+block|}
 DECL|method|TableRow (String name)
 specifier|public
 name|TableRow
@@ -549,28 +579,9 @@ name|name
 expr_stmt|;
 name|length
 operator|=
-name|GUIGlobals
+name|BibtexSingleField
 operator|.
 name|DEFAULT_FIELD_LENGTH
-expr_stmt|;
-block|}
-DECL|method|TableRow (int length)
-specifier|public
-name|TableRow
-parameter_list|(
-name|int
-name|length
-parameter_list|)
-block|{
-name|this
-operator|.
-name|length
-operator|=
-name|length
-expr_stmt|;
-name|name
-operator|=
-literal|""
 expr_stmt|;
 block|}
 DECL|method|TableRow (String name, int length)
@@ -1054,7 +1065,7 @@ name|String
 operator|.
 name|valueOf
 argument_list|(
-name|GUIGlobals
+name|BibtexSingleField
 operator|.
 name|DEFAULT_FIELD_LENGTH
 argument_list|)
@@ -3167,11 +3178,7 @@ argument_list|)
 argument_list|,
 operator|new
 name|TableRow
-argument_list|(
-name|GUIGlobals
-operator|.
-name|DEFAULT_FIELD_LENGTH
-argument_list|)
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
