@@ -1322,10 +1322,7 @@ name|entry
 range|:
 name|database
 operator|.
-name|getEntryMap
-argument_list|()
-operator|.
-name|values
+name|getEntries
 argument_list|()
 control|)
 block|{

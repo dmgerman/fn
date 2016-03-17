@@ -668,17 +668,16 @@ block|}
 comment|/*                  * TODO: database.insertEntry(BibEntry) is not sensible. Why                  * does 'true' mean "There were duplicates", while 'false' means                  * "Everything alright"?                  */
 if|if
 condition|(
+operator|!
 name|database
 operator|.
-name|getEntryById
+name|containsEntryWithId
 argument_list|(
 name|entry
 operator|.
 name|getId
 argument_list|()
 argument_list|)
-operator|==
-literal|null
 condition|)
 block|{
 comment|// Work around SIDE EFFECT of creator.createEntry. The EntryFromPDFCreator also creates the entry in the table

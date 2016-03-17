@@ -66,6 +66,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Set
 import|;
 end_import
@@ -218,6 +228,22 @@ name|MSBibDatabase
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|BibEntry
+import|;
+end_import
+
 begin_comment
 comment|/**  * ExportFormat for exporting in MSBIB XML format.  */
 end_comment
@@ -255,7 +281,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|performExport (final BibDatabase database, final MetaData metaData, final String file, final Charset encoding, Set<String> keySet)
+DECL|method|performExport (final BibDatabase database, final MetaData metaData, final String file, final Charset encoding, List<BibEntry> entries)
 specifier|public
 name|void
 name|performExport
@@ -276,11 +302,11 @@ specifier|final
 name|Charset
 name|encoding
 parameter_list|,
-name|Set
+name|List
 argument_list|<
-name|String
+name|BibEntry
 argument_list|>
-name|keySet
+name|entries
 parameter_list|)
 throws|throws
 name|IOException
@@ -308,7 +334,7 @@ name|MSBibDatabase
 argument_list|(
 name|database
 argument_list|,
-name|keySet
+name|entries
 argument_list|)
 decl_stmt|;
 try|try

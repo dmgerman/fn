@@ -32,6 +32,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Map
 import|;
 end_import
@@ -141,14 +151,12 @@ name|BibEntry
 argument_list|>
 name|list
 decl_stmt|;
-DECL|method|GlazedEntrySorter (Map<String, BibEntry> entries)
+DECL|method|GlazedEntrySorter (List<BibEntry> entries)
 specifier|public
 name|GlazedEntrySorter
 parameter_list|(
-name|Map
+name|List
 argument_list|<
-name|String
-argument_list|,
 name|BibEntry
 argument_list|>
 name|entries
@@ -172,35 +180,13 @@ operator|.
 name|lock
 argument_list|()
 expr_stmt|;
-for|for
-control|(
-name|Map
-operator|.
-name|Entry
-argument_list|<
-name|String
-argument_list|,
-name|BibEntry
-argument_list|>
-name|entry
-range|:
-name|entries
-operator|.
-name|entrySet
-argument_list|()
-control|)
-block|{
 name|list
 operator|.
-name|add
+name|addAll
 argument_list|(
-name|entry
-operator|.
-name|getValue
-argument_list|()
+name|entries
 argument_list|)
 expr_stmt|;
-block|}
 comment|// Sort the list so it is ordered according to creation (or read) order
 comment|// when the table is unsorted.
 name|Collections

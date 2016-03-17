@@ -297,7 +297,7 @@ init|=
 literal|"bibtexkey"
 decl_stmt|;
 DECL|field|ID_FIELD
-specifier|public
+specifier|protected
 specifier|static
 specifier|final
 name|String
@@ -1225,6 +1225,23 @@ argument_list|(
 name|KEY_FIELD
 argument_list|)
 return|;
+block|}
+DECL|method|setCiteKey (String newCiteKey)
+specifier|public
+name|void
+name|setCiteKey
+parameter_list|(
+name|String
+name|newCiteKey
+parameter_list|)
+block|{
+name|setField
+argument_list|(
+name|KEY_FIELD
+argument_list|,
+name|newCiteKey
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|hasCiteKey ()
 specifier|public

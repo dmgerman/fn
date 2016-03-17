@@ -284,7 +284,7 @@ block|{
 DECL|field|entries
 specifier|private
 specifier|final
-name|Collection
+name|List
 argument_list|<
 name|BibEntry
 argument_list|>
@@ -306,18 +306,18 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|method|OOCalcDatabase (BibDatabase bibtex, Set<String> keySet)
+DECL|method|OOCalcDatabase (BibDatabase bibtex, List<BibEntry> entries)
 specifier|public
 name|OOCalcDatabase
 parameter_list|(
 name|BibDatabase
 name|bibtex
 parameter_list|,
-name|Set
+name|List
 argument_list|<
-name|String
+name|BibEntry
 argument_list|>
-name|keySet
+name|entries
 parameter_list|)
 block|{
 comment|// Make a list of comparators for sorting the entries:
@@ -383,7 +383,7 @@ comment|// Set up a list of all entries, if keySet==null, or the entries whose
 comment|// ids are in keySet, otherwise:
 if|if
 condition|(
-name|keySet
+name|entries
 operator|==
 literal|null
 condition|)
@@ -401,27 +401,13 @@ expr_stmt|;
 block|}
 else|else
 block|{
-for|for
-control|(
-name|String
-name|key
-range|:
-name|keySet
-control|)
-block|{
 name|entryList
 operator|.
-name|add
+name|addAll
 argument_list|(
-name|bibtex
-operator|.
-name|getEntryById
-argument_list|(
-name|key
-argument_list|)
+name|entries
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 name|Collections
 operator|.
@@ -437,6 +423,8 @@ name|comparators
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|this
+operator|.
 name|entries
 operator|=
 name|entryList

@@ -485,8 +485,8 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|/**      * Method for the exportDatabase methods.      *      * @param database The DBTYPE of the database      * @param database The BibDatabase to export      * @param metaData The MetaData object containing the groups information      * @param keySet   The set of IDs of the entries to export.      * @param out      The output (PrintStream or Connection) object to which the DML should be written.      */
-DECL|method|performExport (final BibDatabase database, final MetaData metaData, Set<String> keySet, Object out, String dbName)
+comment|/**      * Method for the exportDatabase methods.      *      * @param database The DBTYPE of the database      * @param database The BibDatabase to export      * @param metaData The MetaData object containing the groups information      * @param entriesToExport   The list of the entries to export.      * @param out      The output (PrintStream or Connection) object to which the DML should be written.      */
+DECL|method|performExport (final BibDatabase database, final MetaData metaData, List<BibEntry> entriesToExport, Object out, String dbName)
 specifier|private
 name|void
 name|performExport
@@ -499,11 +499,11 @@ specifier|final
 name|MetaData
 name|metaData
 parameter_list|,
-name|Set
+name|List
 argument_list|<
-name|String
+name|BibEntry
 argument_list|>
-name|keySet
+name|entriesToExport
 parameter_list|,
 name|Object
 name|out
@@ -574,7 +574,7 @@ name|getSortedEntries
 argument_list|(
 name|bibDatabaseContext
 argument_list|,
-name|keySet
+name|entriesToExport
 argument_list|,
 name|savePrefs
 argument_list|)
@@ -2453,11 +2453,11 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/**      * Accepts the BibDatabase and MetaData, generates the DML required to create and populate SQL database tables,      * and writes this DML to the specified output file.      *      * @param database The BibDatabase to export      * @param metaData The MetaData object containing the groups information      * @param keySet   The set of IDs of the entries to export.      * @param file     The name of the file to which the DML should be written      * @param encoding The encoding to be used      */
+comment|/**      * Accepts the BibDatabase and MetaData, generates the DML required to create and populate SQL database tables,      * and writes this DML to the specified output file.      *      * @param database The BibDatabase to export      * @param metaData The MetaData object containing the groups information      * @param entriesToExport   The list of the entries to export.      * @param file     The name of the file to which the DML should be written      * @param encoding The encoding to be used      */
 end_comment
 
 begin_function
-DECL|method|exportDatabaseAsFile (final BibDatabase database, final MetaData metaData, Set<String> keySet, String file, Charset encoding)
+DECL|method|exportDatabaseAsFile (final BibDatabase database, final MetaData metaData, List<BibEntry> entriesToExport, String file, Charset encoding)
 specifier|public
 name|void
 name|exportDatabaseAsFile
@@ -2470,11 +2470,11 @@ specifier|final
 name|MetaData
 name|metaData
 parameter_list|,
-name|Set
+name|List
 argument_list|<
-name|String
+name|BibEntry
 argument_list|>
-name|keySet
+name|entriesToExport
 parameter_list|,
 name|String
 name|file
@@ -2549,7 +2549,7 @@ name|database
 argument_list|,
 name|metaData
 argument_list|,
-name|keySet
+name|entriesToExport
 argument_list|,
 name|fout
 argument_list|,
@@ -2561,11 +2561,11 @@ block|}
 end_function
 
 begin_comment
-comment|/**      * Accepts the BibDatabase and MetaData, generates the DML required to create and populate SQL database tables,      * and writes this DML to the specified SQL database.      *      * @param database        The BibDatabase to export      * @param metaData        The MetaData object containing the groups information      * @param keySet          The set of IDs of the entries to export.      * @param databaseStrings The necessary database connection information      */
+comment|/**      * Accepts the BibDatabase and MetaData, generates the DML required to create and populate SQL database tables,      * and writes this DML to the specified SQL database.      *      * @param database        The BibDatabase to export      * @param metaData        The MetaData object containing the groups information      * @param entriesToExport The list of the entries to export.      * @param databaseStrings The necessary database connection information      */
 end_comment
 
 begin_function
-DECL|method|exportDatabaseToDBMS (final BibDatabase database, final MetaData metaData, Set<String> keySet, DBStrings databaseStrings, JabRefFrame frame)
+DECL|method|exportDatabaseToDBMS (final BibDatabase database, final MetaData metaData, List<BibEntry> entriesToExport, DBStrings databaseStrings, JabRefFrame frame)
 specifier|public
 name|void
 name|exportDatabaseToDBMS
@@ -2578,11 +2578,11 @@ specifier|final
 name|MetaData
 name|metaData
 parameter_list|,
-name|Set
+name|List
 argument_list|<
-name|String
+name|BibEntry
 argument_list|>
-name|keySet
+name|entriesToExport
 parameter_list|,
 name|DBStrings
 name|databaseStrings
@@ -2716,7 +2716,7 @@ name|database
 argument_list|,
 name|metaData
 argument_list|,
-name|keySet
+name|entriesToExport
 argument_list|,
 name|conn
 argument_list|,
@@ -2757,7 +2757,7 @@ name|database
 argument_list|,
 name|metaData
 argument_list|,
-name|keySet
+name|entriesToExport
 argument_list|,
 name|databaseStrings
 argument_list|,

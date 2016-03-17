@@ -314,13 +314,10 @@ name|entry
 operator|=
 name|database
 operator|.
-name|getEntriesByKey
+name|getEntryByKey
 argument_list|(
 literal|"HipKro03"
 argument_list|)
-index|[
-literal|0
-index|]
 expr_stmt|;
 name|Assert
 operator|.

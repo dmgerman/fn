@@ -114,13 +114,10 @@ decl_stmt|;
 return|return
 name|database
 operator|.
-name|getEntriesByKey
+name|getEntryByKey
 argument_list|(
 literal|"HipKro03"
 argument_list|)
-index|[
-literal|0
-index|]
 return|;
 block|}
 DECL|method|getBibtexDatabase ()

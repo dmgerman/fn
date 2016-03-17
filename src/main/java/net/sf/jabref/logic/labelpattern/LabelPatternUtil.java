@@ -922,7 +922,7 @@ name|author
 argument_list|)
 return|;
 block|}
-comment|/**      *<p>      * An author or editor may be and institution not a person. In that case the      * key generator builds very long keys, e.g.: for&ldquo;The Attributed      * Graph Grammar System (AGG)&rdquo; ->      *&ldquo;TheAttributedGraphGrammarSystemAGG&rdquo;.      *</p>      *      *<p>      * An institution name should be inside<code>{}</code> brackets. If the      * institution name also includes its abbreviation this abbreviation should      * be also in<code>{}</code> brackets. For the previous example the value      * should look like:      *<code>{The Attributed Graph Grammar System ({AGG})}</code>.      *</p>      *      *<p>      * If an institution includes its abbreviation, i.e. "...({XYZ})", first      * such abbreviation should be used as the key value part of such author.      *</p>      *      *<p>      * If an institution does not include its abbreviation the key should be      * generated form its name in the following way:      *</p>      *      *<p>      * The institution value can contain: institution name, part of the      * institution, address, etc. Those information should be separated by      * comma. Name of the institution and possible part of the institution      * should be on the beginning, while address and secondary information      * should be on the end.      *</p>      *      * Each part is examined separately:      *<ol>      *<li>We remove all tokens of a part which are one of the defined ignore      * words (the, press), which end with a dot (ltd., co., ...) and which first      * character is lowercase (of, on, di, ...).</li>      *<li>We detect a type of the part: university, technology institute,      * department, school, rest      *<ul>      *<li>University:<code>"Uni[NameOfTheUniversity]"</code></li>      *<li>Department: will be an abbreviation of all words beginning with the      * uppercase letter except of words:<code>d[ei]p.*</code>, school,      * faculty</li>      *<li>School: same as department</li>      *<li>Rest: If there are less than 3 tokens in such part than the result      * will be by concatenating those tokens, otherwise the result will be build      * from the first letters of words starting with and uppercase letter.</li>      *</ul>      *</ol>      *      * Parts are concatenated together in the following way:      *<ul>      *<li>If there is a university part use it otherwise use the rest part.</li>      *<li>If there is a school part append it.</li>      *<li>If there is a department part and it is not same as school part      * append it.</li>      *</ul>      *      * Rest part is only the first part which do not match any other type. All      * other parts (address, ...) are ignored.      *      * @param result the institution to generate a Bibtex key for      * @return<ul>      *<li>the institution key</li>      *<li>"" in the case of a failure</li>      *<li>null if content is null</li>      *</ul>      */
+comment|/**      *<p>      * An author or editor may be and institution not a person. In that case the      * key generator builds very long keys, e.g.: for&ldquo;The Attributed      * Graph Grammar System (AGG)&rdquo; ->      *&ldquo;TheAttributedGraphGrammarSystemAGG&rdquo;.      *</p>      *      *<p>      * An institution name should be inside<code>{}</code> brackets. If the      * institution name also includes its abbreviation this abbreviation should      * be also in<code>{}</code> brackets. For the previous example the value      * should look like:      *<code>{The Attributed Graph Grammar System ({AGG})}</code>.      *</p>      *      *<p>      * If an institution includes its abbreviation, i.e. "...({XYZ})", first      * such abbreviation should be used as the key value part of such author.      *</p>      *      *<p>      * If an institution does not include its abbreviation the key should be      * generated form its name in the following way:      *</p>      *      *<p>      * The institution value can contain: institution name, part of the      * institution, address, etc. Those information should be separated by      * comma. Name of the institution and possible part of the institution      * should be on the beginning, while address and secondary information      * should be on the end.      *</p>      *      * Each part is examined separately:      *<ol>      *<li>We remove all tokens of a part which are one of the defined ignore      * words (the, press), which end with a dot (ltd., co., ...) and which first      * character is lowercase (of, on, di, ...).</li>      *<li>We detect a type of the part: university, technology institute,      * department, school, rest      *<ul>      *<li>University:<code>"Uni[NameOfTheUniversity]"</code></li>      *<li>Department: will be an abbreviation of all words beginning with the      * uppercase letter except of words:<code>d[ei]p.*</code>, school,      * faculty</li>      *<li>School: same as department</li>      *<li>Rest: If there are less than 3 tokens in such part than the result      * will be by concatenating those tokens, otherwise the result will be build      * from the first letters of words starting with and uppercase letter.</li>      *</ul>      *</ol>      *      * Parts are concatenated together in the following way:      *<ul>      *<li>If there is a university part use it otherwise use the rest part.</li>      *<li>If there is a school part append it.</li>      *<li>If there is a department part and it is not same as school part      * append it.</li>      *</ul>      *      * Rest part is only the first part which do not match any other type. All      * other parts (address, ...) are ignored.      *      * @param content the institution to generate a Bibtex key for      * @return<ul>      *<li>the institution key</li>      *<li>"" in the case of a failure</li>      *<li>null if content is null</li>      *</ul>      */
 DECL|method|generateInstitutionKey (String content)
 specifier|private
 specifier|static
@@ -2176,17 +2176,16 @@ condition|)
 block|{
 if|if
 condition|(
+operator|!
 name|database
 operator|.
-name|getEntryById
+name|containsEntryWithId
 argument_list|(
 name|entry
 operator|.
 name|getId
 argument_list|()
 argument_list|)
-operator|==
-literal|null
 condition|)
 block|{
 comment|// entry does not (yet) exist in the database, just update the entry
@@ -2209,9 +2208,6 @@ operator|.
 name|setCiteKeyForEntry
 argument_list|(
 name|entry
-operator|.
-name|getId
-argument_list|()
 argument_list|,
 name|key
 argument_list|)
@@ -2342,17 +2338,16 @@ condition|)
 block|{
 if|if
 condition|(
+operator|!
 name|database
 operator|.
-name|getEntryById
+name|containsEntryWithId
 argument_list|(
 name|entry
 operator|.
 name|getId
 argument_list|()
 argument_list|)
-operator|==
-literal|null
 condition|)
 block|{
 comment|// entry does not (yet) exist in the database, just update the entry
@@ -2375,9 +2370,6 @@ operator|.
 name|setCiteKeyForEntry
 argument_list|(
 name|entry
-operator|.
-name|getId
-argument_list|()
 argument_list|,
 name|moddedKey
 argument_list|)
@@ -2386,7 +2378,7 @@ block|}
 block|}
 block|}
 block|}
-comment|/**      * Applies modifiers to a label generated based on a field marker.      * @param resultingLabel The generated label.      * @param parts String array containing the modifiers.      * @param offset The number of initial items in the modifiers array to skip.      * @return The modified label.      */
+comment|/**      * Applies modifiers to a label generated based on a field marker.      * @param label The generated label.      * @param parts String array containing the modifiers.      * @param offset The number of initial items in the modifiers array to skip.      * @return The modified label.      */
 DECL|method|applyModifiers (String label, String[] parts, int offset)
 specifier|public
 specifier|static

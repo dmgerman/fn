@@ -34,6 +34,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Set
 import|;
 end_import
@@ -90,6 +100,22 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|BibEntry
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|sql
 operator|.
 name|DBExporterAndImporterFactory
@@ -132,10 +158,10 @@ literal|".sql"
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * First method called when user starts the export.      *      * @param database The bibtex database from which to export.      * @param file The filename to which the export should be writtten.      * @param encodingToUse The encoding to use.      * @param keySet The set of IDs of the entries to export.      * @throws java.lang.Exception If something goes wrong, feel free to throw an exception. The error message is shown      *             to the user.      */
+comment|/**      * First method called when user starts the export.      *      * @param database The bibtex database from which to export.      * @param file The filename to which the export should be writtten.      * @param encodingToUse The encoding to use.      * @param entries The entries to export.      * @throws java.lang.Exception If something goes wrong, feel free to throw an exception. The error message is shown      *             to the user.      */
 annotation|@
 name|Override
-DECL|method|performExport (final BibDatabase database, final MetaData metaData, final String file, final Charset encodingToUse, Set<String> keySet)
+DECL|method|performExport (final BibDatabase database, final MetaData metaData, final String file, final Charset encodingToUse, List<BibEntry> entries)
 specifier|public
 name|void
 name|performExport
@@ -156,11 +182,11 @@ specifier|final
 name|Charset
 name|encodingToUse
 parameter_list|,
-name|Set
+name|List
 argument_list|<
-name|String
+name|BibEntry
 argument_list|>
-name|keySet
+name|entries
 parameter_list|)
 throws|throws
 name|Exception
@@ -180,7 +206,7 @@ name|database
 argument_list|,
 name|metaData
 argument_list|,
-name|keySet
+name|entries
 argument_list|,
 name|file
 argument_list|,

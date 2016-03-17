@@ -126,6 +126,22 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|BibEntry
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -193,6 +209,16 @@ operator|.
 name|charset
 operator|.
 name|StandardCharsets
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
 import|;
 end_import
 
@@ -297,7 +323,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|performExport (final BibDatabase database, final MetaData metaData, final String file, final Charset encoding, Set<String> keySet)
+DECL|method|performExport (final BibDatabase database, final MetaData metaData, final String file, final Charset encoding, List<BibEntry> entries)
 specifier|public
 name|void
 name|performExport
@@ -318,11 +344,11 @@ specifier|final
 name|Charset
 name|encoding
 parameter_list|,
-name|Set
+name|List
 argument_list|<
-name|String
+name|BibEntry
 argument_list|>
-name|keySet
+name|entries
 parameter_list|)
 throws|throws
 name|Exception
@@ -339,7 +365,7 @@ argument_list|)
 argument_list|,
 name|database
 argument_list|,
-name|keySet
+name|entries
 argument_list|)
 expr_stmt|;
 block|}
@@ -555,7 +581,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|exportOpenDocumentSpreadsheet (File file, BibDatabase database, Set<String> keySet)
+DECL|method|exportOpenDocumentSpreadsheet (File file, BibDatabase database, List<BibEntry> entries)
 specifier|private
 specifier|static
 name|void
@@ -567,11 +593,11 @@ parameter_list|,
 name|BibDatabase
 name|database
 parameter_list|,
-name|Set
+name|List
 argument_list|<
-name|String
+name|BibEntry
 argument_list|>
-name|keySet
+name|entries
 parameter_list|)
 throws|throws
 name|Exception
@@ -597,7 +623,7 @@ name|tmpFile
 argument_list|,
 name|database
 argument_list|,
-name|keySet
+name|entries
 argument_list|)
 expr_stmt|;
 comment|// Then add the content to the zip file:
@@ -646,7 +672,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|exportOpenDocumentSpreadsheetXML (File tmpFile, BibDatabase database, Set<String> keySet)
+DECL|method|exportOpenDocumentSpreadsheetXML (File tmpFile, BibDatabase database, List<BibEntry> entries)
 specifier|private
 specifier|static
 name|void
@@ -658,11 +684,11 @@ parameter_list|,
 name|BibDatabase
 name|database
 parameter_list|,
-name|Set
+name|List
 argument_list|<
-name|String
+name|BibEntry
 argument_list|>
-name|keySet
+name|entries
 parameter_list|)
 block|{
 name|OpenDocumentRepresentation
@@ -673,7 +699,7 @@ name|OpenDocumentRepresentation
 argument_list|(
 name|database
 argument_list|,
-name|keySet
+name|entries
 argument_list|)
 decl_stmt|;
 try|try

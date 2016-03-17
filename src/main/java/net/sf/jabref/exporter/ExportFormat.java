@@ -574,10 +574,10 @@ return|return
 name|reader
 return|;
 block|}
-comment|/**      * Perform the export of {@code database}.      *      * @param database   The database to export from.      * @param metaData   The database's meta data.      * @param file       the file to write the resulting export to      * @param encoding   The encoding of the database      * @param entryIds   Contains the IDs of all entries that should be exported. If      *<code>null</code>, all entries will be exported.      * @throws IOException if a problem occurred while trying to write to {@code writer}      *                     or read from required resources.      * @throws Exception   if any other error occurred during export.      * @see net.sf.jabref.exporter.IExportFormat#performExport(BibDatabase, MetaData, String, Charset, Set)      */
+comment|/**      * Perform the export of {@code database}.      *      * @param database   The database to export from.      * @param metaData   The database's meta data.      * @param file       the file to write the resulting export to      * @param encoding   The encoding of the database      * @param entries    Contains all entries that should be exported. If      *<code>null</code>, all entries will be exported.      * @throws IOException if a problem occurred while trying to write to {@code writer}      *                     or read from required resources.      * @throws Exception   if any other error occurred during export.      * @see net.sf.jabref.exporter.IExportFormat#performExport(BibDatabase, MetaData, String, Charset, List)      */
 annotation|@
 name|Override
-DECL|method|performExport (final BibDatabase database, final MetaData metaData, final String file, final Charset encoding, Set<String> entryIds)
+DECL|method|performExport (final BibDatabase database, final MetaData metaData, final String file, final Charset encoding, List<BibEntry> entries)
 specifier|public
 name|void
 name|performExport
@@ -598,11 +598,11 @@ specifier|final
 name|Charset
 name|encoding
 parameter_list|,
-name|Set
+name|List
 argument_list|<
-name|String
+name|BibEntry
 argument_list|>
-name|entryIds
+name|entries
 parameter_list|)
 throws|throws
 name|Exception
@@ -860,7 +860,7 @@ argument_list|,
 name|defaults
 argument_list|)
 argument_list|,
-name|entryIds
+name|entries
 argument_list|,
 name|savePrefs
 argument_list|)
