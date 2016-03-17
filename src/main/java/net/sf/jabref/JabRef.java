@@ -2672,7 +2672,7 @@ operator|&&
 operator|!
 name|newBase
 operator|.
-name|isEmpty
+name|hasNoEntries
 argument_list|()
 condition|)
 block|{
