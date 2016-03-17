@@ -32,30 +32,8 @@ name|Set
 import|;
 end_import
 
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|GUIGlobals
-import|;
-end_import
-
 begin_comment
-comment|// --------------------------------------------------------------------------
-end_comment
-
-begin_comment
-comment|// a container class for all properties of a bibtex-field
-end_comment
-
-begin_comment
-comment|// --------------------------------------------------------------------------
+comment|/**  *  * Class for keeping properties of a single BibTeX/BibLatex field  *  */
 end_comment
 
 begin_class
@@ -64,7 +42,7 @@ specifier|public
 class|class
 name|BibtexSingleField
 block|{
-comment|// some fieldname constants
+comment|// some field constants
 DECL|field|DEFAULT_FIELD_WEIGHT
 specifier|public
 specifier|static
@@ -110,6 +88,15 @@ name|LARGE_W
 init|=
 literal|1.5
 decl_stmt|;
+DECL|field|DEFAULT_FIELD_LENGTH
+specifier|public
+specifier|static
+specifier|final
+name|int
+name|DEFAULT_FIELD_LENGTH
+init|=
+literal|100
+decl_stmt|;
 DECL|enum|Flag
 specifier|private
 enum|enum
@@ -136,14 +123,14 @@ name|name
 decl_stmt|;
 comment|// contains the standard, private, displayable, writable infos
 comment|// default is: not standard, public, displayable and writable
-DECL|field|flag
+DECL|field|flags
 specifier|private
 specifier|final
 name|Set
 argument_list|<
 name|Flag
 argument_list|>
-name|flag
+name|flags
 init|=
 name|EnumSet
 operator|.
@@ -163,8 +150,6 @@ specifier|private
 name|int
 name|length
 init|=
-name|GUIGlobals
-operator|.
 name|DEFAULT_FIELD_LENGTH
 decl_stmt|;
 DECL|field|weight
@@ -197,9 +182,6 @@ decl_stmt|;
 comment|// a comma separated list of alternative bibtex-fieldnames, e.g.
 comment|// "LCCN" is the same like "lib-congress"
 comment|// private String otherNames = null ;
-comment|// a Hashmap for a lot of additional "not standard" properties
-comment|// todo: add the handling in a key=value manner
-comment|// private HashMap props = new HashMap() ;
 DECL|method|BibtexSingleField (String fieldName, boolean pStandard)
 specifier|public
 name|BibtexSingleField
@@ -328,8 +310,6 @@ operator|=
 name|pLength
 expr_stmt|;
 block|}
-comment|// -----------------------------------------------------------------------
-comment|// -----------------------------------------------------------------------
 comment|/**      * Sets or onsets the given flag      * @param setToOn if true, set the flag; if false, unset the flat      * @param flagID, the id of the flag      */
 DECL|method|setFlag (boolean setToOn, Flag flagID)
 specifier|private
@@ -349,7 +329,7 @@ name|setToOn
 condition|)
 block|{
 comment|// set the flag
-name|flag
+name|flags
 operator|.
 name|add
 argument_list|(
@@ -360,7 +340,7 @@ block|}
 else|else
 block|{
 comment|// unset the flag
-name|flag
+name|flags
 operator|.
 name|remove
 argument_list|(
@@ -369,7 +349,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|// -----------------------------------------------------------------------
 DECL|method|isStandard ()
 specifier|public
 name|boolean
@@ -377,7 +356,7 @@ name|isStandard
 parameter_list|()
 block|{
 return|return
-name|flag
+name|flags
 operator|.
 name|contains
 argument_list|(
@@ -393,7 +372,7 @@ name|void
 name|setPrivate
 parameter_list|()
 block|{
-name|flag
+name|flags
 operator|.
 name|add
 argument_list|(
@@ -410,7 +389,7 @@ name|isPrivate
 parameter_list|()
 block|{
 return|return
-name|flag
+name|flags
 operator|.
 name|contains
 argument_list|(
@@ -446,7 +425,7 @@ name|isDisplayable
 parameter_list|()
 block|{
 return|return
-name|flag
+name|flags
 operator|.
 name|contains
 argument_list|(
@@ -482,7 +461,7 @@ name|isWriteable
 parameter_list|()
 block|{
 return|return
-name|flag
+name|flags
 operator|.
 name|contains
 argument_list|(
@@ -492,7 +471,6 @@ name|WRITEABLE
 argument_list|)
 return|;
 block|}
-comment|// -----------------------------------------------------------------------
 DECL|method|setExtras (Set<BibtexSingleFieldProperties> pExtras)
 specifier|public
 name|void
@@ -525,7 +503,6 @@ return|return
 name|extras
 return|;
 block|}
-comment|// -----------------------------------------------------------------------
 DECL|method|setWeight (double value)
 specifier|public
 name|void
@@ -567,7 +544,6 @@ operator|.
 name|length
 return|;
 block|}
-comment|// -----------------------------------------------------------------------
 DECL|method|getFieldName ()
 specifier|public
 name|String

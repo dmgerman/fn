@@ -731,15 +731,6 @@ init|=
 literal|65
 decl_stmt|;
 comment|// Maximum
-DECL|field|DEFAULT_FIELD_LENGTH
-specifier|public
-specifier|static
-specifier|final
-name|int
-name|DEFAULT_FIELD_LENGTH
-init|=
-literal|100
-decl_stmt|;
 DECL|field|NUMBER_COL_LENGTH
 specifier|public
 specifier|static
