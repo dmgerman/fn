@@ -212,22 +212,6 @@ name|logic
 operator|.
 name|xmp
 operator|.
-name|EncryptionNotSupportedException
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
-name|xmp
-operator|.
 name|XMPUtil
 import|;
 end_import
@@ -459,7 +443,7 @@ literal|0
 argument_list|)
 argument_list|)
 return|;
-comment|/*addEntryDataFromPDDocumentInformation(pdfFile, entry);         addEntyDataFromXMP(pdfFile, entry);          if (entry.getField("title") == null) {         	entry.setField("title", pdfFile.getName());         }          return entry;*/
+comment|/*addEntryDataFromPDDocumentInformation(pdfFile, entry);         addEntryDataFromXMP(pdfFile, entry);                  if (entry.getField("title") == null) {         	entry.setField("title", pdfFile.getName());         }                  return entry;*/
 block|}
 comment|/** Adds entry data read from the PDDocument information of the file.      * @param pdfFile      * @param entry      */
 DECL|method|addEntryDataFromPDDocumentInformation (File pdfFile, BibEntry entry)
@@ -620,10 +604,10 @@ comment|// no canceling here, just no data added.
 block|}
 block|}
 comment|/**      * Adds all data Found in all the entrys of this XMP file to the given      * entry. This was implemented without having much knowledge of the XMP      * format.      *      * @param aFile      * @param entry      */
-DECL|method|addEntyDataFromXMP (File aFile, BibEntry entry)
+DECL|method|addEntryDataFromXMP (File aFile, BibEntry entry)
 specifier|private
 name|void
-name|addEntyDataFromXMP
+name|addEntryDataFromXMP
 parameter_list|(
 name|File
 name|aFile
@@ -657,14 +641,6 @@ argument_list|,
 name|entrys
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|EncryptionNotSupportedException
-name|e
-parameter_list|)
-block|{
-comment|// no canceling here, just no data added.
 block|}
 catch|catch
 parameter_list|(

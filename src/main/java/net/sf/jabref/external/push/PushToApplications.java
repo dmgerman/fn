@@ -45,7 +45,7 @@ class|class
 name|PushToApplications
 block|{
 DECL|field|APPLICATIONS
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|List
@@ -141,6 +141,20 @@ name|PushToWinEdt
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
+DECL|method|getApplications ()
+specifier|public
+specifier|static
+name|List
+argument_list|<
+name|PushToApplication
+argument_list|>
+name|getApplications
+parameter_list|()
+block|{
+return|return
+name|APPLICATIONS
+return|;
 block|}
 block|}
 end_class

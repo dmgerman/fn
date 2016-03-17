@@ -644,7 +644,9 @@ DECL|method|MetaData ()
 specifier|public
 name|MetaData
 parameter_list|()
-block|{     }
+block|{
+comment|// No data
+block|}
 DECL|method|getSaveOrderConfig ()
 specifier|public
 name|Optional
@@ -1861,9 +1863,11 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|data
 operator|==
 literal|null
+operator|)
 operator|||
 name|data
 operator|.
@@ -1921,9 +1925,11 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|data
 operator|==
 literal|null
+operator|)
 operator|||
 name|data
 operator|.
@@ -1997,9 +2003,11 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|fileDirectory
 operator|==
 literal|null
+operator|)
 operator|||
 name|fileDirectory
 operator|.
@@ -2063,9 +2071,11 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|fileDirectory
 operator|==
 literal|null
+operator|)
 operator|||
 name|fileDirectory
 operator|.

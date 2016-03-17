@@ -222,22 +222,6 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|worker
-operator|.
-name|AbstractWorker
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
 name|FileDialogs
 import|;
 end_import
@@ -1669,11 +1653,6 @@ name|ActionEvent
 name|e
 parameter_list|)
 block|{
-name|boolean
-name|ready
-init|=
-literal|true
-decl_stmt|;
 comment|// First check that all tabs are ready to close:
 name|int
 name|count
@@ -1724,10 +1703,6 @@ name|validateSettings
 argument_list|()
 condition|)
 block|{
-name|ready
-operator|=
-literal|false
-expr_stmt|;
 return|return;
 comment|// If not, break off.
 block|}
@@ -1769,14 +1744,6 @@ operator|.
 name|flush
 argument_list|()
 expr_stmt|;
-if|if
-condition|(
-operator|!
-name|ready
-condition|)
-block|{
-return|return;
-block|}
 name|setVisible
 argument_list|(
 literal|false

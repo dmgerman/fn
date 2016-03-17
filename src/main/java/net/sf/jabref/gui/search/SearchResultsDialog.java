@@ -821,12 +821,13 @@ specifier|private
 name|JDialog
 name|diag
 decl_stmt|;
-DECL|field|fields
+DECL|field|FIELDS
 specifier|private
+specifier|static
 specifier|final
 name|String
 index|[]
-name|fields
+name|FIELDS
 init|=
 operator|new
 name|String
@@ -843,8 +844,8 @@ block|}
 decl_stmt|;
 DECL|field|FILE_COL
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|int
 name|FILE_COL
 init|=
@@ -852,8 +853,8 @@ literal|0
 decl_stmt|;
 DECL|field|URL_COL
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|int
 name|URL_COL
 init|=
@@ -861,8 +862,8 @@ literal|1
 decl_stmt|;
 DECL|field|PAD
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|int
 name|PAD
 init|=
@@ -1809,7 +1810,7 @@ operator|<
 operator|(
 name|PAD
 operator|+
-name|fields
+name|FIELDS
 operator|.
 name|length
 operator|)
@@ -1839,7 +1840,7 @@ argument_list|(
 operator|new
 name|FieldComparator
 argument_list|(
-name|fields
+name|FIELDS
 index|[
 name|i
 operator|-
@@ -1965,7 +1966,7 @@ literal|0
 init|;
 name|i
 operator|<
-name|fields
+name|FIELDS
 operator|.
 name|length
 condition|;
@@ -1980,7 +1981,7 @@ name|InternalBibtexFields
 operator|.
 name|getFieldLength
 argument_list|(
-name|fields
+name|FIELDS
 index|[
 name|i
 index|]
@@ -2789,7 +2790,7 @@ block|{
 return|return
 name|PAD
 operator|+
-name|fields
+name|FIELDS
 operator|.
 name|length
 return|;
@@ -2817,7 +2818,7 @@ name|EntryUtil
 operator|.
 name|capitalizeFirst
 argument_list|(
-name|fields
+name|FIELDS
 index|[
 name|column
 operator|-
@@ -3021,7 +3022,7 @@ block|{
 name|String
 name|field
 init|=
-name|fields
+name|FIELDS
 index|[
 name|column
 operator|-

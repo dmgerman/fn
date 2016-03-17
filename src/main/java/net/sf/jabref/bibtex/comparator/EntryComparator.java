@@ -573,19 +573,12 @@ return|;
 block|}
 if|if
 condition|(
-operator|(
 name|f1
 operator|==
 literal|null
-operator|)
-operator|&&
-operator|(
-name|f2
-operator|!=
-literal|null
-operator|)
 condition|)
 block|{
+comment|// f2 != null here automatically
 return|return
 literal|1
 return|;

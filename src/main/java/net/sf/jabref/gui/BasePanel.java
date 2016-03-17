@@ -1525,17 +1525,6 @@ specifier|private
 name|ContentAutoCompleters
 name|autoCompleters
 decl_stmt|;
-comment|// Returns a collection of AutoCompleters, which are populated from the current database
-DECL|method|getAutoCompleters ()
-specifier|public
-name|ContentAutoCompleters
-name|getAutoCompleters
-parameter_list|()
-block|{
-return|return
-name|autoCompleters
-return|;
-block|}
 DECL|method|BasePanel (JabRefFrame frame, BibDatabaseContext bibDatabaseContext, Charset encoding)
 specifier|public
 name|BasePanel
@@ -1740,6 +1729,17 @@ operator|.
 name|INSTANCE
 argument_list|)
 expr_stmt|;
+block|}
+comment|// Returns a collection of AutoCompleters, which are populated from the current database
+DECL|method|getAutoCompleters ()
+specifier|public
+name|ContentAutoCompleters
+name|getAutoCompleters
+parameter_list|()
+block|{
+return|return
+name|autoCompleters
+return|;
 block|}
 DECL|method|getTabTitle ()
 specifier|public
@@ -5349,7 +5349,6 @@ name|BaseAction
 call|)
 argument_list|()
 operator|->
-block|{
 name|JabRefExecutorService
 operator|.
 name|INSTANCE
@@ -5435,13 +5434,19 @@ argument_list|()
 block|;
 return|return;
 block|}
+end_expr_stmt
+
+begin_decl_stmt
 name|FileListTableModel
 name|tableModel
-operator|=
+init|=
 operator|new
 name|FileListTableModel
 argument_list|()
-argument_list|;
+decl_stmt|;
+end_decl_stmt
+
+begin_expr_stmt
 name|tableModel
 operator|.
 name|setContent
@@ -5455,15 +5460,19 @@ operator|.
 name|FILE_FIELD
 argument_list|)
 argument_list|)
-argument_list|;                 if
-operator|(
+expr_stmt|;
+end_expr_stmt
+
+begin_if
+if|if
+condition|(
 name|tableModel
 operator|.
 name|getRowCount
 argument_list|()
 operator|==
 literal|0
-operator|)
+condition|)
 block|{
 comment|// content in bibtex field is not readable
 operator|new
@@ -5478,10 +5487,10 @@ argument_list|)
 operator|.
 name|searchAndOpen
 argument_list|()
-block|;
+expr_stmt|;
 return|return;
 block|}
-end_expr_stmt
+end_if
 
 begin_decl_stmt
 name|FileListEntry
@@ -5542,12 +5551,7 @@ expr_stmt|;
 end_expr_stmt
 
 begin_empty_stmt
-unit|})
-empty_stmt|;
-end_empty_stmt
-
-begin_empty_stmt
-unit|})
+unit|}))
 empty_stmt|;
 end_empty_stmt
 
@@ -5677,7 +5681,6 @@ name|BaseAction
 call|)
 argument_list|()
 operator|->
-block|{
 name|JabRefDesktop
 operator|.
 name|openConsole
@@ -5693,7 +5696,6 @@ operator|.
 name|getDatabaseFile
 argument_list|()
 argument_list|)
-block|;         }
 argument_list|)
 expr_stmt|;
 end_expr_stmt
@@ -5884,31 +5886,25 @@ if|if
 condition|(
 name|URL_FIELD
 operator|.
-name|equals
+name|equalsIgnoreCase
 argument_list|(
 name|flEntry
 operator|.
 name|type
 operator|.
 name|getName
-argument_list|()
-operator|.
-name|toLowerCase
 argument_list|()
 argument_list|)
 operator|||
 name|PS_FIELD
 operator|.
-name|equals
+name|equalsIgnoreCase
 argument_list|(
 name|flEntry
 operator|.
 name|type
 operator|.
 name|getName
-argument_list|()
-operator|.
-name|toLowerCase
 argument_list|()
 argument_list|)
 condition|)

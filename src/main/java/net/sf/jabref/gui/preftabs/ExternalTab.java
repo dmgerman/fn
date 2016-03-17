@@ -1074,7 +1074,8 @@ name|pushToApplication
 range|:
 name|PushToApplications
 operator|.
-name|APPLICATIONS
+name|getApplications
+argument_list|()
 control|)
 block|{
 name|addSettingsButton
