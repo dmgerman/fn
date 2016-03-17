@@ -147,7 +147,7 @@ name|expected
 init|=
 literal|"I\nunify\nline\nbreaks."
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
 literal|"\n"
 argument_list|,
@@ -203,7 +203,7 @@ name|formatted
 init|=
 name|original
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
 literal|"\n"
 argument_list|,

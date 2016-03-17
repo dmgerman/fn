@@ -1255,7 +1255,7 @@ name|lines
 init|=
 name|s
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
 literal|"\r"
 argument_list|,

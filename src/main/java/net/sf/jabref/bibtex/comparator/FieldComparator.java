@@ -241,7 +241,7 @@ operator|.
 name|getRules
 argument_list|()
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
 literal|"<'\u005f'"
 argument_list|,

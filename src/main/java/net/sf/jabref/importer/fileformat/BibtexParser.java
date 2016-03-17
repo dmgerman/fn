@@ -3480,7 +3480,7 @@ name|whitespacesReduced
 operator|=
 name|whitespacesReduced
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
 literal|"\t"
 argument_list|,

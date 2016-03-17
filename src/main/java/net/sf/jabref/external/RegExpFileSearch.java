@@ -1153,9 +1153,9 @@ operator|-
 literal|1
 index|]
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
-literal|"\\[extension\\]"
+literal|"[extension]"
 argument_list|,
 name|RegExpFileSearch
 operator|.

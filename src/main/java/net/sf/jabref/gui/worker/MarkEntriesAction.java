@@ -268,7 +268,7 @@ name|level
 operator|=
 name|level
 expr_stmt|;
-comment|//menuItem = new JMenuItem(Globals.menuTitle("Mark entries").replaceAll("&",""));
+comment|//menuItem = new JMenuItem(Globals.menuTitle("Mark entries").replace("&",""));
 name|menuItem
 operator|=
 operator|new
