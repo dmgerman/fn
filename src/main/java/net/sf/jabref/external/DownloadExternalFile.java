@@ -1823,6 +1823,8 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Callback interface that users of this class must implement in order to receive      * notification when download is complete.      */
+annotation|@
+name|FunctionalInterface
 DECL|interface|DownloadCallback
 specifier|public
 interface|interface

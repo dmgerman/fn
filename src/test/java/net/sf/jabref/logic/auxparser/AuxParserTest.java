@@ -275,7 +275,7 @@ operator|.
 name|getGeneratedBibDatabase
 argument_list|()
 operator|.
-name|isEmpty
+name|hasNoEntries
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -465,7 +465,7 @@ operator|.
 name|getGeneratedBibDatabase
 argument_list|()
 operator|.
-name|isEmpty
+name|hasNoEntries
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -783,7 +783,7 @@ operator|.
 name|getGeneratedBibDatabase
 argument_list|()
 operator|.
-name|isEmpty
+name|hasNoEntries
 argument_list|()
 argument_list|)
 expr_stmt|;

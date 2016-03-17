@@ -273,14 +273,9 @@ argument_list|)
 operator|.
 name|ifPresent
 argument_list|(
-name|file
-lambda|->
 name|tm
-operator|.
+operator|::
 name|setContent
-argument_list|(
-name|file
-argument_list|)
 argument_list|)
 expr_stmt|;
 if|if

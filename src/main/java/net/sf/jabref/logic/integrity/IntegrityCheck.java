@@ -455,6 +455,8 @@ return|return
 name|result
 return|;
 block|}
+annotation|@
+name|FunctionalInterface
 DECL|interface|Checker
 specifier|public
 interface|interface

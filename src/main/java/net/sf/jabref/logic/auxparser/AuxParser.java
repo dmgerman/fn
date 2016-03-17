@@ -614,15 +614,14 @@ block|}
 comment|// Copy database definitions
 if|if
 condition|(
+operator|!
 name|result
 operator|.
 name|getGeneratedBibDatabase
 argument_list|()
 operator|.
-name|getEntryCount
+name|hasNoEntries
 argument_list|()
-operator|>
-literal|0
 condition|)
 block|{
 name|result

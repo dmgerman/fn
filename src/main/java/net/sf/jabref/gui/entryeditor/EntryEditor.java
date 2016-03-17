@@ -4616,10 +4616,8 @@ if|if
 condition|(
 name|database
 operator|.
-name|getEntryCount
+name|hasNoEntries
 argument_list|()
-operator|<
-literal|1
 condition|)
 block|{
 if|if

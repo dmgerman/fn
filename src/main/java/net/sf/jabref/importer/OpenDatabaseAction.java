@@ -1077,16 +1077,11 @@ name|INSTANCE
 operator|.
 name|execute
 argument_list|(
-operator|new
+call|(
 name|Runnable
+call|)
 argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|run
-parameter_list|()
+operator|->
 block|{
 for|for
 control|(
@@ -1105,9 +1100,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-block|}
-argument_list|)
-expr_stmt|;
+block|)
+empty_stmt|;
 for|for
 control|(
 name|File
@@ -1197,7 +1191,13 @@ operator|)
 argument_list|)
 expr_stmt|;
 block|}
+end_class
+
+begin_comment
 comment|/**      * @param file the file, may be null or not existing      */
+end_comment
+
+begin_function
 DECL|method|openTheFile (File file, boolean raisePanel)
 specifier|private
 name|void
@@ -1834,7 +1834,13 @@ expr_stmt|;
 block|}
 block|}
 block|}
+end_function
+
+begin_comment
 comment|/**      * Go through the list of post open actions, and perform those that need to be performed.      *      * @param panel  The BasePanel where the database is shown.      * @param result The result of the bib file parse operation.      */
+end_comment
+
+begin_function
 DECL|method|performPostOpenActions (BasePanel panel, ParserResult result, boolean mustRaisePanel)
 specifier|public
 specifier|static
@@ -1902,6 +1908,9 @@ expr_stmt|;
 block|}
 block|}
 block|}
+end_function
+
+begin_function
 DECL|method|addNewDatabase (ParserResult result, final File file, boolean raisePanel)
 specifier|public
 name|BasePanel
@@ -2079,7 +2088,13 @@ return|return
 name|basePanel
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Opens a new database.      */
+end_comment
+
+begin_function
 DECL|method|loadDatabase (File fileToOpen, Charset defaultEncoding)
 specifier|public
 specifier|static
@@ -2293,7 +2308,13 @@ name|result
 return|;
 block|}
 block|}
+end_function
+
+begin_comment
 comment|/**      * Opens the file with the provided encoding. If this fails (or no encoding is provided), then the fallback encoding      * will be used.      */
+end_comment
+
+begin_function
 DECL|method|openFile (File fileToOpen, Optional<Charset> encoding, Charset defaultEncoding)
 specifier|private
 specifier|static
@@ -2382,7 +2403,13 @@ argument_list|)
 return|;
 block|}
 block|}
+end_function
+
+begin_comment
 comment|/**      * Searches the file for "Encoding: myEncoding" and returns the found supplied encoding.      */
+end_comment
+
+begin_function
 DECL|method|getSuppliedEncoding (Reader reader)
 specifier|private
 specifier|static
@@ -2587,8 +2614,8 @@ name|empty
 argument_list|()
 return|;
 block|}
-block|}
-end_class
+end_function
 
+unit|}
 end_unit
 

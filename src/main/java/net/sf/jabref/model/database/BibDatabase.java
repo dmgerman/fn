@@ -294,19 +294,17 @@ argument_list|()
 return|;
 block|}
 comment|/**      * Checks if the database contains no entries.      */
-DECL|method|isEmpty ()
+DECL|method|hasNoEntries ()
 specifier|public
 name|boolean
-name|isEmpty
+name|hasNoEntries
 parameter_list|()
 block|{
 return|return
 name|entries
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|==
-literal|0
 return|;
 block|}
 comment|/**      * Returns a Set containing the keys to all entries.      * Use getKeySet().iterator() to iterate over all entries.      */
@@ -1084,6 +1082,20 @@ return|return
 name|bibtexStrings
 operator|.
 name|size
+argument_list|()
+return|;
+block|}
+comment|/**      * Check if there are strings.      */
+DECL|method|hasNoStrings ()
+specifier|public
+name|boolean
+name|hasNoStrings
+parameter_list|()
+block|{
+return|return
+name|bibtexStrings
+operator|.
+name|isEmpty
 argument_list|()
 return|;
 block|}

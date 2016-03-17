@@ -1496,7 +1496,7 @@ operator|.
 name|getGeneratedBibDatabase
 argument_list|()
 operator|.
-name|isEmpty
+name|hasNoEntries
 argument_list|()
 condition|)
 block|{

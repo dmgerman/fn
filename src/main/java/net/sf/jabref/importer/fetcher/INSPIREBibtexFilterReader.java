@@ -116,17 +116,17 @@ argument_list|(
 literal|"@Article\\{.*,"
 argument_list|)
 decl_stmt|;
-DECL|method|INSPIREBibtexFilterReader (final Reader _in)
+DECL|method|INSPIREBibtexFilterReader (final Reader initialReader)
 name|INSPIREBibtexFilterReader
 parameter_list|(
 specifier|final
 name|Reader
-name|_in
+name|initialReader
 parameter_list|)
 block|{
 name|super
 argument_list|(
-name|_in
+name|initialReader
 argument_list|)
 expr_stmt|;
 name|inReader
@@ -134,7 +134,7 @@ operator|=
 operator|new
 name|BufferedReader
 argument_list|(
-name|_in
+name|initialReader
 argument_list|)
 expr_stmt|;
 name|pos
