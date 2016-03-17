@@ -375,12 +375,11 @@ literal|null
 operator|)
 operator|&&
 operator|(
+operator|!
 name|bd
 operator|.
-name|getEntryCount
+name|hasNoEntries
 argument_list|()
-operator|>
-literal|0
 operator|)
 condition|)
 block|{

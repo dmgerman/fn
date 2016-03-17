@@ -1704,12 +1704,11 @@ literal|null
 operator|)
 operator|&&
 operator|(
+operator|!
 name|newBase
 operator|.
-name|getEntryCount
+name|hasNoEntries
 argument_list|()
-operator|>
-literal|0
 operator|)
 condition|)
 block|{

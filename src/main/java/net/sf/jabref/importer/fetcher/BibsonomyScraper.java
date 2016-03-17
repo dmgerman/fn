@@ -330,15 +330,14 @@ literal|null
 operator|)
 operator|&&
 operator|(
+operator|!
 name|pr
 operator|.
 name|getDatabase
 argument_list|()
 operator|.
-name|getEntryCount
+name|hasNoEntries
 argument_list|()
-operator|>
-literal|0
 operator|)
 condition|)
 block|{

@@ -511,16 +511,11 @@ name|INSTANCE
 operator|.
 name|executeAndWait
 argument_list|(
-operator|new
+call|(
 name|Runnable
+call|)
 argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|run
-parameter_list|()
+operator|->
 block|{
 try|try
 init|(
@@ -584,13 +579,15 @@ literal|true
 expr_stmt|;
 block|}
 block|}
-block|}
-argument_list|)
-expr_stmt|;
-block|}
-comment|/*class Timeout extends javax.swing.Timer     {       public Timeout(int timeout, final Thread toStop, final String message) {         super(timeout, new ActionListener() {           public void actionPerformed(ActionEvent e) {             toStop.stop();         // !!!<- deprecated             // toStop.interrupt(); // better ?, interrupts wait and IO             //stop();             //output(message);           }         });       }     } */
-block|}
+block|)
+class|;
 end_class
 
+begin_comment
+unit|}
+comment|/*class Timeout extends javax.swing.Timer     {       public Timeout(int timeout, final Thread toStop, final String message) {         super(timeout, new ActionListener() {           public void actionPerformed(ActionEvent e) {             toStop.stop();         // !!!<- deprecated             // toStop.interrupt(); // better ?, interrupts wait and IO             //stop();             //output(message);           }         });       }     } */
+end_comment
+
+unit|}
 end_unit
 

@@ -2858,12 +2858,11 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|!
 name|db
 operator|.
-name|getEntryCount
+name|hasNoEntries
 argument_list|()
-operator|>
-literal|0
 condition|)
 block|{
 name|bes
