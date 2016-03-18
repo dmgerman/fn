@@ -561,7 +561,6 @@ parameter_list|()
 block|{
 try|try
 block|{
-comment|//long startTime = System.currentTimeMillis();
 comment|// Parse the temporary file.
 name|File
 name|tempFile
@@ -1832,14 +1831,6 @@ argument_list|(
 name|ec
 argument_list|)
 expr_stmt|;
-comment|// Create an undo edit to represent this change:
-comment|//NamedCompound ce = new NamedCompound("Modified entry");
-comment|//ce.addEdit(new UndoableRemoveEntry(inMem, disk.getEntryAt(bestMatchI), panel));
-comment|//ce.addEdit(new UndoableInsertEntry(inMem, tmp.getEntryAt(piv1), panel));
-comment|//ce.end();
-comment|//changes.add(ce);
-comment|//System.out.println("Possible match for entry:");
-comment|//System.out.println("----------------------------------------------");
 block|}
 else|else
 block|{
@@ -1873,7 +1864,6 @@ argument_list|(
 name|ec
 argument_list|)
 expr_stmt|;
-comment|/*NamedCompound ce = new NamedCompound("Removed entry");                     ce.addEdit(new UndoableInsertEntry(inMem, tmp.getEntryAt(piv1), panel));                     ce.end();                     changes.add(ce);*/
 block|}
 block|}
 block|}
@@ -2009,10 +1999,8 @@ name|ec
 argument_list|)
 expr_stmt|;
 block|}
-comment|/*NamedCompound ce = new NamedCompound("Added entry");                     ce.addEdit(new UndoableRemoveEntry(inMem, disk.getEntryAt(i), panel));                     ce.end();                     changes.add(ce);*/
 block|}
 block|}
-comment|//System.out.println("Suspected new entries in file: "+(disk.getEntryCount()-used.size()));
 block|}
 block|}
 end_function
