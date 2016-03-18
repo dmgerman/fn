@@ -62,7 +62,7 @@ name|String
 name|getPropertiesKeyUnescaped
 parameter_list|()
 block|{
-comment|// space, = and : are not allowed in properties file keys
+comment|// space, #, !, = and : are not allowed in properties file keys
 return|return
 name|this
 operator|.
@@ -82,7 +82,7 @@ name|String
 name|getPropertiesKey
 parameter_list|()
 block|{
-comment|// space, = and : are not allowed in properties file keys
+comment|// space, #, !, = and : are not allowed in properties file keys (# and ! only at the beginning of the key but easier to escape every instance
 return|return
 name|this
 operator|.
@@ -93,6 +93,20 @@ argument_list|(
 literal|" "
 argument_list|,
 literal|"_"
+argument_list|)
+operator|.
+name|replace
+argument_list|(
+literal|"#"
+argument_list|,
+literal|"\\#"
+argument_list|)
+operator|.
+name|replace
+argument_list|(
+literal|"!"
+argument_list|,
+literal|"\\!"
 argument_list|)
 operator|.
 name|replace
@@ -135,16 +149,30 @@ argument_list|,
 literal|" "
 argument_list|)
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
-literal|"\\\\="
+literal|"\\#"
+argument_list|,
+literal|"#"
+argument_list|)
+operator|.
+name|replace
+argument_list|(
+literal|"\\!"
+argument_list|,
+literal|"!"
+argument_list|)
+operator|.
+name|replace
+argument_list|(
+literal|"\\="
 argument_list|,
 literal|"="
 argument_list|)
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
-literal|"\\\\:"
+literal|"\\:"
 argument_list|,
 literal|":"
 argument_list|)
