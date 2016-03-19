@@ -28,6 +28,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|swing
@@ -493,14 +503,41 @@ return|return
 name|extension
 return|;
 block|}
-DECL|method|getOpenWith ()
+DECL|method|getOpenWithApplication ()
 specifier|public
+name|Optional
+argument_list|<
 name|String
-name|getOpenWith
+argument_list|>
+name|getOpenWithApplication
 parameter_list|()
 block|{
-return|return
+if|if
+condition|(
 name|openWith
+operator|==
+literal|null
+operator|||
+name|openWith
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+return|return
+name|Optional
+operator|.
+name|empty
+argument_list|()
+return|;
+block|}
+return|return
+name|Optional
+operator|.
+name|of
+argument_list|(
+name|openWith
+argument_list|)
 return|;
 block|}
 DECL|method|setOpenWith (String openWith)

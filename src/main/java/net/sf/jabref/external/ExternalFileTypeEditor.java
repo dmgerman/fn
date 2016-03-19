@@ -1729,7 +1729,7 @@ comment|// Five columns
 return|return
 name|type
 operator|.
-name|getOpenWith
+name|getOpenWithApplication
 argument_list|()
 return|;
 block|}

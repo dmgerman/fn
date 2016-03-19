@@ -1323,8 +1323,13 @@ name|setText
 argument_list|(
 name|entry
 operator|.
-name|getOpenWith
+name|getOpenWithApplication
 argument_list|()
+operator|.
+name|orElse
+argument_list|(
+literal|""
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|icon
