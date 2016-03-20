@@ -457,7 +457,7 @@ name|setFont
 argument_list|(
 name|GUIGlobals
 operator|.
-name|CURRENTFONT
+name|currentFont
 argument_list|)
 expr_stmt|;
 block|}

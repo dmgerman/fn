@@ -445,6 +445,20 @@ operator|new
 name|CloseAction
 argument_list|()
 decl_stmt|;
+DECL|field|STRINGS_TITLE
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|STRINGS_TITLE
+init|=
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Strings for database"
+argument_list|)
+decl_stmt|;
 DECL|method|StringDialog (JabRefFrame frame, BasePanel panel, BibDatabase base)
 specifier|public
 name|StringDialog
@@ -991,15 +1005,13 @@ condition|)
 block|{
 name|setTitle
 argument_list|(
-name|GUIGlobals
-operator|.
-name|stringsTitle
+name|STRINGS_TITLE
 operator|+
 literal|": "
 operator|+
 name|GUIGlobals
 operator|.
-name|untitledTitle
+name|UNTITLED_TITLE
 argument_list|)
 expr_stmt|;
 block|}
@@ -1007,9 +1019,7 @@ else|else
 block|{
 name|setTitle
 argument_list|(
-name|GUIGlobals
-operator|.
-name|stringsTitle
+name|STRINGS_TITLE
 operator|+
 literal|": "
 operator|+

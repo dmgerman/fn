@@ -479,7 +479,7 @@ name|name
 operator|+
 name|GUIGlobals
 operator|.
-name|backupExt
+name|BACKUP_EXTENSION
 argument_list|)
 decl_stmt|;
 try|try

@@ -5570,7 +5570,7 @@ name|setForeground
 argument_list|(
 name|GUIGlobals
 operator|.
-name|entryEditorLabelColor
+name|ENTRY_EDITOR_LABEL_COLOR
 argument_list|)
 expr_stmt|;
 name|setHorizontalAlignment
@@ -6833,7 +6833,7 @@ name|setBackground
 argument_list|(
 name|GUIGlobals
 operator|.
-name|activeEditor
+name|ACTIVE_EDITOR_COLOR
 argument_list|)
 expr_stmt|;
 block|}
