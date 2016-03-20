@@ -129,7 +129,7 @@ condition|(
 name|type
 operator|==
 literal|null
-operator|&&
+operator|||
 operator|!
 name|type
 operator|.
