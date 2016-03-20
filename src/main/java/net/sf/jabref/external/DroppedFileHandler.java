@@ -700,7 +700,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Offer copy/move/linking options for a dragged external file. Perform the      * chosen operation, if any.      *      * @param fileName  The name of the dragged file.      * @param fileType  The FileType associated with the file.      * @param localFile Indicate whether this is a local file, or a remote file copied      *                  to a local temporary file.      * @param mainTable The MainTable the file was dragged to.      * @param dropRow   The row where the file was dropped.      */
-DECL|method|handleDroppedfile (String fileName, ExternalFileType fileType, MainTable mainTable, int dropRow)
+DECL|method|handleDroppedfile (String fileName, Optional<ExternalFileType> fileType, MainTable mainTable, int dropRow)
 specifier|public
 name|void
 name|handleDroppedfile
@@ -708,7 +708,10 @@ parameter_list|(
 name|String
 name|fileName
 parameter_list|,
+name|Optional
+argument_list|<
 name|ExternalFileType
+argument_list|>
 name|fileType
 parameter_list|,
 name|MainTable
@@ -738,8 +741,8 @@ name|entry
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * @param fileName  The name of the dragged file.      * @param fileType  The FileType associated with the file.      * @param localFile Indicate whether this is a local file, or a remote file copied      *                  to a local temporary file.      * @param entry     The target entry for the drop.      */
-DECL|method|handleDroppedfile (String fileName, ExternalFileType fileType, BibEntry entry)
+comment|/**      * @param fileName  The name of the dragged file.      * @param fileType  The FileType associated with the file.      * @param entry     The target entry for the drop.      */
+DECL|method|handleDroppedfile (String fileName, Optional<ExternalFileType> fileType, BibEntry entry)
 specifier|public
 name|void
 name|handleDroppedfile
@@ -747,7 +750,10 @@ parameter_list|(
 name|String
 name|fileName
 parameter_list|,
+name|Optional
+argument_list|<
 name|ExternalFileType
+argument_list|>
 name|fileType
 parameter_list|,
 name|BibEntry
@@ -767,6 +773,9 @@ argument_list|(
 literal|"Drop %0"
 argument_list|,
 name|fileType
+operator|.
+name|get
+argument_list|()
 operator|.
 name|getExtension
 argument_list|()
@@ -1026,7 +1035,10 @@ name|BibEntry
 name|entry
 parameter_list|)
 block|{
+name|Optional
+argument_list|<
 name|ExternalFileType
+argument_list|>
 name|fileType
 init|=
 name|ExternalFileTypes
@@ -1082,6 +1094,9 @@ argument_list|(
 literal|"Drop %0"
 argument_list|,
 name|fileType
+operator|.
+name|get
+argument_list|()
 operator|.
 name|getExtension
 argument_list|()
@@ -1233,7 +1248,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// Done by MrDlib
-DECL|method|tryXmpImport (String fileName, ExternalFileType fileType, NamedCompound edits)
+DECL|method|tryXmpImport (String fileName, Optional<ExternalFileType> fileType, NamedCompound edits)
 specifier|private
 name|boolean
 name|tryXmpImport
@@ -1241,7 +1256,10 @@ parameter_list|(
 name|String
 name|fileName
 parameter_list|,
+name|Optional
+argument_list|<
 name|ExternalFileType
+argument_list|>
 name|fileType
 parameter_list|,
 name|NamedCompound
@@ -1256,6 +1274,9 @@ operator|.
 name|equals
 argument_list|(
 name|fileType
+operator|.
+name|get
+argument_list|()
 operator|.
 name|getExtension
 argument_list|()
@@ -1502,6 +1523,9 @@ literal|"."
 operator|+
 name|fileType
 operator|.
+name|get
+argument_list|()
+operator|.
 name|getExtension
 argument_list|()
 expr_stmt|;
@@ -1631,7 +1655,7 @@ block|}
 comment|//
 comment|// @return true if user pushed "OK", false otherwise
 comment|//
-DECL|method|showLinkMoveCopyRenameDialog (String linkFileName, ExternalFileType fileType, BibEntry entry, BibDatabase database)
+DECL|method|showLinkMoveCopyRenameDialog (String linkFileName, Optional<ExternalFileType> fileType, BibEntry entry, BibDatabase database)
 specifier|private
 name|boolean
 name|showLinkMoveCopyRenameDialog
@@ -1639,7 +1663,10 @@ parameter_list|(
 name|String
 name|linkFileName
 parameter_list|,
+name|Optional
+argument_list|<
 name|ExternalFileType
+argument_list|>
 name|fileType
 parameter_list|,
 name|BibEntry
@@ -1965,6 +1992,9 @@ name|concat
 argument_list|(
 name|fileType
 operator|.
+name|get
+argument_list|()
+operator|.
 name|getExtension
 argument_list|()
 argument_list|)
@@ -2197,8 +2227,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Make a extension to the file.      *      * @param entry    The entry to extension from.      * @param fileType The FileType associated with the file.      * @param filename The path to the file.      * @param edits    An NamedCompound action this action is to be added to. If none      *                 is given, the edit is added to the panel's undoManager.      */
-DECL|method|doLink (BibEntry entry, ExternalFileType fileType, String filename, boolean avoidDuplicate, NamedCompound edits)
+comment|/**      * Make a extension to the file.      *      * @param entry    The entry to extension from.      * @param fileType The Optional<FileType> associated with the file.      * @param filename The path to the file.      * @param edits    An NamedCompound action this action is to be added to. If none      *                 is given, the edit is added to the panel's undoManager.      */
+DECL|method|doLink (BibEntry entry, Optional<ExternalFileType> fileType, String filename, boolean avoidDuplicate, NamedCompound edits)
 specifier|private
 name|void
 name|doLink
@@ -2206,7 +2236,10 @@ parameter_list|(
 name|BibEntry
 name|entry
 parameter_list|,
+name|Optional
+argument_list|<
 name|ExternalFileType
+argument_list|>
 name|fileType
 parameter_list|,
 name|String

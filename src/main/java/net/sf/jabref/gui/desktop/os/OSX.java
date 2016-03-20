@@ -74,6 +74,16 @@ name|IOException
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
 begin_class
 DECL|class|OSX
 specifier|public
@@ -98,7 +108,10 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+name|Optional
+argument_list|<
 name|ExternalFileType
+argument_list|>
 name|type
 init|=
 name|ExternalFileTypes
@@ -114,11 +127,14 @@ decl_stmt|;
 if|if
 condition|(
 name|type
-operator|!=
-literal|null
+operator|.
+name|isPresent
+argument_list|()
 operator|&&
-operator|!
 name|type
+operator|.
+name|get
+argument_list|()
 operator|.
 name|getOpenWithApplication
 argument_list|()
@@ -132,6 +148,9 @@ argument_list|(
 name|filePath
 argument_list|,
 name|type
+operator|.
+name|get
+argument_list|()
 operator|.
 name|getOpenWithApplication
 argument_list|()

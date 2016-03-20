@@ -5280,6 +5280,9 @@ name|flEntry
 operator|.
 name|type
 operator|.
+name|get
+argument_list|()
+operator|.
 name|getIcon
 argument_list|()
 argument_list|,
@@ -6850,8 +6853,6 @@ argument_list|(
 literal|""
 argument_list|,
 literal|""
-argument_list|,
-literal|null
 argument_list|)
 decl_stmt|;
 name|FileListEntryEditor
@@ -7716,6 +7717,9 @@ literal|0
 argument_list|)
 operator|.
 name|type
+operator|.
+name|get
+argument_list|()
 operator|.
 name|getIcon
 argument_list|()

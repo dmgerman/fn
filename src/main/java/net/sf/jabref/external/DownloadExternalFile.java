@@ -240,6 +240,16 @@ name|List
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
 begin_comment
 comment|/**  * This class handles the download of an external file. Typically called when the user clicks  * the "Download" button in a FileListEditor shown in an EntryEditor.  *<p/>  * The FileListEditor constructs the DownloadExternalFile instance, then calls the download()  * method passing a reference to itself as a callback. The download() method asks for the URL,  * then starts the download. When the download is completed, it calls the downloadCompleted()  * method on the callback FileListEditor, which then needs to take care of linking to the file.  * The local filename is passed as an argument to the downloadCompleted() method.  *<p/>  * If the download is cancelled, or failed, the user is informed. The callback is never called.  */
 end_comment
@@ -585,16 +595,11 @@ name|INSTANCE
 operator|.
 name|execute
 argument_list|(
-operator|new
+call|(
 name|Runnable
+call|)
 argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|run
-parameter_list|()
+operator|->
 block|{
 try|try
 block|{
@@ -702,14 +707,25 @@ name|downloadFinished
 argument_list|)
 expr_stmt|;
 block|}
-block|}
-argument_list|)
-expr_stmt|;
+block|)
+class|;
+end_class
+
+begin_decl_stmt
+name|Optional
+argument_list|<
 name|ExternalFileType
+argument_list|>
 name|suggestedType
 init|=
-literal|null
+name|Optional
+operator|.
+name|empty
+argument_list|()
 decl_stmt|;
+end_decl_stmt
+
+begin_if
 if|if
 condition|(
 name|mimeType
@@ -739,16 +755,51 @@ name|mimeType
 argument_list|)
 expr_stmt|;
 block|}
+end_if
+
+begin_comment
 comment|// Then, while the download is proceeding, let the user choose the details of the file:
+end_comment
+
+begin_decl_stmt
 name|String
 name|suffix
 decl_stmt|;
+end_decl_stmt
+
+begin_if
 if|if
 condition|(
 name|suggestedType
+operator|.
+name|isPresent
+argument_list|()
+condition|)
+block|{
+name|suffix
+operator|=
+name|suggestedType
+operator|.
+name|get
+argument_list|()
+operator|.
+name|getExtension
+argument_list|()
+expr_stmt|;
+if|if
+condition|(
+name|suffix
 operator|==
 literal|null
 condition|)
+block|{
+name|suffix
+operator|=
+literal|""
+expr_stmt|;
+block|}
+block|}
+else|else
 block|{
 comment|// If we didn't find a file type from the MIME type, try based on extension:
 name|suffix
@@ -783,28 +834,9 @@ name|suffix
 argument_list|)
 expr_stmt|;
 block|}
-else|else
-block|{
-name|suffix
-operator|=
-name|suggestedType
-operator|.
-name|getExtension
-argument_list|()
-expr_stmt|;
-if|if
-condition|(
-name|suffix
-operator|==
-literal|null
-condition|)
-block|{
-name|suffix
-operator|=
-literal|""
-expr_stmt|;
-block|}
-block|}
+end_if
+
+begin_decl_stmt
 name|String
 name|suggestedName
 init|=
@@ -813,6 +845,9 @@ argument_list|(
 name|suffix
 argument_list|)
 decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 name|List
 argument_list|<
 name|String
@@ -822,9 +857,15 @@ init|=
 name|getFileDirectory
 argument_list|()
 decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 name|String
 name|directory
 decl_stmt|;
+end_decl_stmt
+
+begin_if
 if|if
 condition|(
 name|fDirectory
@@ -850,6 +891,9 @@ literal|0
 argument_list|)
 expr_stmt|;
 block|}
+end_if
+
+begin_decl_stmt
 specifier|final
 name|String
 name|suggestDir
@@ -867,6 +911,9 @@ argument_list|)
 else|:
 name|directory
 decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 name|File
 name|file
 init|=
@@ -882,6 +929,9 @@ argument_list|,
 name|suggestedName
 argument_list|)
 decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 name|FileListEntry
 name|entry
 init|=
@@ -898,6 +948,9 @@ argument_list|,
 name|suggestedType
 argument_list|)
 decl_stmt|;
+end_decl_stmt
+
+begin_expr_stmt
 name|editor
 operator|=
 operator|new
@@ -914,6 +967,9 @@ argument_list|,
 name|metaData
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
 name|editor
 operator|.
 name|getProgressBar
@@ -924,6 +980,9 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
 name|editor
 operator|.
 name|setOkEnabled
@@ -931,6 +990,9 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
 name|editor
 operator|.
 name|setExternalConfirm
@@ -1064,6 +1126,9 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_if
 if|if
 condition|(
 name|dontShowDialog
@@ -1083,7 +1148,13 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
+end_if
+
+begin_comment
 comment|// Editor closed. Go on:
+end_comment
+
+begin_if
 if|if
 condition|(
 name|editor
@@ -1325,10 +1396,16 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-block|}
+end_if
+
+begin_comment
+unit|}
 comment|/**      * Construct a File object pointing to the file linked, whether the link is      * absolute or relative to the main directory.      *      * @param directory The main directory.      * @param link      The absolute or relative link.      * @return The expanded File.      */
+end_comment
+
+begin_function
 DECL|method|expandFilename (String directory, String link)
-specifier|private
+unit|private
 name|File
 name|expandFilename
 parameter_list|(
@@ -1385,7 +1462,13 @@ return|return
 name|toFile
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * This is called by the download thread when download is completed.      */
+end_comment
+
+begin_function
 DECL|method|downloadFinished ()
 specifier|private
 name|void
@@ -1440,7 +1523,13 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_comment
 comment|// FIXME: will break download if no bibtexkey is present!
+end_comment
+
+begin_function
 DECL|method|getSuggestedFileName (String suffix)
 specifier|private
 name|String
@@ -1521,7 +1610,13 @@ return|return
 name|plannedName
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Look for the last '.' in the link, and return the following characters.      * This gives the extension for most reasonably named links.      *      * @param link The link      * @return The suffix, excluding the dot (e.g. "pdf")      */
+end_comment
+
+begin_function
 DECL|method|getSuffix (final String link)
 specifier|private
 name|String
@@ -1672,6 +1767,7 @@ expr_stmt|;
 block|}
 if|if
 condition|(
+operator|!
 name|ExternalFileTypes
 operator|.
 name|getInstance
@@ -1681,8 +1777,9 @@ name|getExternalFileTypeByExt
 argument_list|(
 name|suffix
 argument_list|)
-operator|==
-literal|null
+operator|.
+name|isPresent
+argument_list|()
 condition|)
 block|{
 comment|// If the suffix doesn't seem to give any reasonable file type, try
@@ -1802,6 +1899,9 @@ name|suffix
 return|;
 block|}
 block|}
+end_function
+
+begin_function
 DECL|method|getFileDirectory ()
 specifier|private
 name|List
@@ -1822,7 +1922,13 @@ name|FILE_FIELD
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Callback interface that users of this class must implement in order to receive      * notification when download is complete.      */
+end_comment
+
+begin_interface
 annotation|@
 name|FunctionalInterface
 DECL|interface|DownloadCallback
@@ -1839,8 +1945,8 @@ name|file
 parameter_list|)
 function_decl|;
 block|}
-block|}
-end_class
+end_interface
 
+unit|}
 end_unit
 

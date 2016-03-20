@@ -691,8 +691,9 @@ operator|(
 name|flEntry
 operator|.
 name|type
-operator|!=
-literal|null
+operator|.
+name|isPresent
+argument_list|()
 operator|)
 operator|&&
 literal|"pdf"
@@ -702,6 +703,9 @@ argument_list|(
 name|flEntry
 operator|.
 name|type
+operator|.
+name|get
+argument_list|()
 operator|.
 name|getName
 argument_list|()
