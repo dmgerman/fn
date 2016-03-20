@@ -236,7 +236,7 @@ name|font
 init|=
 name|GUIGlobals
 operator|.
-name|CURRENTFONT
+name|currentFont
 decl_stmt|;
 DECL|field|oldMenuFontSize
 specifier|private
@@ -659,7 +659,7 @@ literal|null
 argument_list|,
 name|GUIGlobals
 operator|.
-name|CURRENTFONT
+name|currentFont
 argument_list|)
 operator|.
 name|getSelectedFont
@@ -914,7 +914,7 @@ argument_list|)
 expr_stmt|;
 name|GUIGlobals
 operator|.
-name|CURRENTFONT
+name|currentFont
 operator|=
 name|font
 expr_stmt|;

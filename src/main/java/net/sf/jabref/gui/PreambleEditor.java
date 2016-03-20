@@ -980,7 +980,7 @@ name|setLabelColor
 argument_list|(
 name|GUIGlobals
 operator|.
-name|nullFieldColor
+name|NULL_FIELD_COLOR
 argument_list|)
 expr_stmt|;
 block|}
@@ -992,7 +992,7 @@ name|setLabelColor
 argument_list|(
 name|GUIGlobals
 operator|.
-name|entryEditorLabelColor
+name|ENTRY_EDITOR_LABEL_COLOR
 argument_list|)
 expr_stmt|;
 block|}

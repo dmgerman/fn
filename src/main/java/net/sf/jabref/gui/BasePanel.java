@@ -1576,7 +1576,7 @@ name|this
 operator|.
 name|sidePaneManager
 operator|=
-name|GUIGlobals
+name|frame
 operator|.
 name|sidePaneManager
 expr_stmt|;
@@ -1771,7 +1771,7 @@ name|append
 argument_list|(
 name|GUIGlobals
 operator|.
-name|untitledTitle
+name|UNTITLED_TITLE
 argument_list|)
 expr_stmt|;
 if|if
@@ -11616,7 +11616,7 @@ name|this
 argument_list|,
 name|GUIGlobals
 operator|.
-name|untitledTitle
+name|UNTITLED_TITLE
 argument_list|,
 literal|null
 argument_list|)

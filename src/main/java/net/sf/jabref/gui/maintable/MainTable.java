@@ -3768,7 +3768,7 @@ name|setFont
 argument_list|(
 name|GUIGlobals
 operator|.
-name|CURRENTFONT
+name|currentFont
 argument_list|)
 expr_stmt|;
 name|setRowHeight
@@ -3786,7 +3786,7 @@ argument_list|)
 operator|+
 name|GUIGlobals
 operator|.
-name|CURRENTFONT
+name|currentFont
 operator|.
 name|getSize
 argument_list|()

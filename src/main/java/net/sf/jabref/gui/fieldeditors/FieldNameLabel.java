@@ -129,7 +129,7 @@ name|setForeground
 argument_list|(
 name|GUIGlobals
 operator|.
-name|entryEditorLabelColor
+name|ENTRY_EDITOR_LABEL_COLOR
 argument_list|)
 expr_stmt|;
 comment|//  setBorder(BorderFactory.createMatteBorder(1,0,0,0, Color.GRAY));

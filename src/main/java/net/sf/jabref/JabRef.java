@@ -4152,7 +4152,7 @@ argument_list|()
 expr_stmt|;
 name|GUIGlobals
 operator|.
-name|CURRENTFONT
+name|currentFont
 operator|=
 operator|new
 name|Font
