@@ -895,7 +895,7 @@ operator|)
 name|newSelected
 decl_stmt|;
 specifier|final
-name|int
+name|BasePanelMode
 name|mode
 init|=
 name|panel
@@ -909,7 +909,7 @@ condition|(
 operator|(
 name|mode
 operator|==
-name|BasePanel
+name|BasePanelMode
 operator|.
 name|WILL_SHOW_EDITOR
 operator|)
@@ -917,7 +917,7 @@ operator|||
 operator|(
 name|mode
 operator|==
-name|BasePanel
+name|BasePanelMode
 operator|.
 name|SHOWING_EDITOR
 operator|)
@@ -992,7 +992,7 @@ operator|||
 operator|(
 name|mode
 operator|!=
-name|BasePanel
+name|BasePanelMode
 operator|.
 name|SHOWING_EDITOR
 operator|)
@@ -1186,7 +1186,7 @@ block|{
 return|return;
 block|}
 specifier|final
-name|int
+name|BasePanelMode
 name|mode
 init|=
 name|panel
@@ -1220,7 +1220,7 @@ operator|||
 operator|(
 name|mode
 operator|==
-name|BasePanel
+name|BasePanelMode
 operator|.
 name|SHOWING_NOTHING
 operator|)
@@ -1291,7 +1291,7 @@ name|entry
 parameter_list|)
 block|{
 specifier|final
-name|int
+name|BasePanelMode
 name|mode
 init|=
 name|panel
@@ -1313,7 +1313,7 @@ if|if
 condition|(
 name|mode
 operator|!=
-name|BasePanel
+name|BasePanelMode
 operator|.
 name|SHOWING_EDITOR
 condition|)
