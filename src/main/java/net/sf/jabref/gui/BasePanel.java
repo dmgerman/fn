@@ -3167,10 +3167,6 @@ operator|.
 name|this
 argument_list|,
 name|database
-argument_list|,
-name|Globals
-operator|.
-name|prefs
 argument_list|)
 decl_stmt|;
 name|PositionWindow
