@@ -318,6 +318,22 @@ name|jabref
 operator|.
 name|gui
 operator|.
+name|DuplicateResolverDialog
+operator|.
+name|DuplicateResolverResult
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
 name|desktop
 operator|.
 name|JabRefDesktop
@@ -5518,6 +5534,8 @@ name|first
 argument_list|,
 name|DuplicateResolverDialog
 operator|.
+name|DuplicateResolverType
+operator|.
 name|INSPECTION
 argument_list|)
 decl_stmt|;
@@ -5553,7 +5571,7 @@ operator|.
 name|getSelected
 argument_list|()
 operator|==
-name|DuplicateResolverDialog
+name|DuplicateResolverResult
 operator|.
 name|KEEP_UPPER
 condition|)
@@ -5612,7 +5630,7 @@ operator|.
 name|getSelected
 argument_list|()
 operator|==
-name|DuplicateResolverDialog
+name|DuplicateResolverResult
 operator|.
 name|KEEP_LOWER
 condition|)
@@ -5656,7 +5674,7 @@ operator|.
 name|getSelected
 argument_list|()
 operator|==
-name|DuplicateResolverDialog
+name|DuplicateResolverResult
 operator|.
 name|KEEP_BOTH
 condition|)
@@ -5700,7 +5718,7 @@ operator|.
 name|getSelected
 argument_list|()
 operator|==
-name|DuplicateResolverDialog
+name|DuplicateResolverResult
 operator|.
 name|KEEP_MERGE
 condition|)
@@ -5827,6 +5845,8 @@ argument_list|()
 argument_list|,
 name|DuplicateResolverDialog
 operator|.
+name|DuplicateResolverType
+operator|.
 name|DUPLICATE_SEARCH
 argument_list|)
 decl_stmt|;
@@ -5855,7 +5875,7 @@ operator|.
 name|toFront
 argument_list|()
 expr_stmt|;
-name|int
+name|DuplicateResolverResult
 name|answer
 init|=
 name|diag
@@ -5867,7 +5887,7 @@ if|if
 condition|(
 name|answer
 operator|==
-name|DuplicateResolverDialog
+name|DuplicateResolverResult
 operator|.
 name|KEEP_UPPER
 condition|)
@@ -5895,7 +5915,7 @@ if|if
 condition|(
 name|answer
 operator|==
-name|DuplicateResolverDialog
+name|DuplicateResolverResult
 operator|.
 name|KEEP_LOWER
 condition|)
@@ -5913,7 +5933,7 @@ if|if
 condition|(
 name|answer
 operator|==
-name|DuplicateResolverDialog
+name|DuplicateResolverResult
 operator|.
 name|KEEP_BOTH
 condition|)
@@ -5931,7 +5951,7 @@ if|if
 condition|(
 name|answer
 operator|==
-name|DuplicateResolverDialog
+name|DuplicateResolverResult
 operator|.
 name|KEEP_MERGE
 condition|)

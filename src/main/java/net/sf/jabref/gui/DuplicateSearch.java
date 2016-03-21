@@ -88,6 +88,38 @@ name|jabref
 operator|.
 name|gui
 operator|.
+name|DuplicateResolverDialog
+operator|.
+name|DuplicateResolverResult
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|DuplicateResolverDialog
+operator|.
+name|DuplicateResolverType
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
 name|undo
 operator|.
 name|NamedCompound
@@ -512,11 +544,11 @@ index|]
 argument_list|,
 name|askAboutExact
 condition|?
-name|DuplicateResolverDialog
+name|DuplicateResolverType
 operator|.
 name|DUPLICATE_SEARCH_WITH_EXACT
 else|:
-name|DuplicateResolverDialog
+name|DuplicateResolverType
 operator|.
 name|DUPLICATE_SEARCH
 argument_list|)
@@ -539,7 +571,7 @@ expr_stmt|;
 name|duplicateCounter
 operator|++
 expr_stmt|;
-name|int
+name|DuplicateResolverResult
 name|answer
 init|=
 name|cb
@@ -552,7 +584,7 @@ condition|(
 operator|(
 name|answer
 operator|==
-name|DuplicateResolverDialog
+name|DuplicateResolverResult
 operator|.
 name|KEEP_UPPER
 operator|)
@@ -560,7 +592,7 @@ operator|||
 operator|(
 name|answer
 operator|==
-name|DuplicateResolverDialog
+name|DuplicateResolverResult
 operator|.
 name|AUTOREMOVE_EXACT
 operator|)
@@ -580,7 +612,7 @@ if|if
 condition|(
 name|answer
 operator|==
-name|DuplicateResolverDialog
+name|DuplicateResolverResult
 operator|.
 name|AUTOREMOVE_EXACT
 condition|)
@@ -597,7 +629,7 @@ if|if
 condition|(
 name|answer
 operator|==
-name|DuplicateResolverDialog
+name|DuplicateResolverResult
 operator|.
 name|KEEP_LOWER
 condition|)
@@ -618,7 +650,7 @@ if|if
 condition|(
 name|answer
 operator|==
-name|DuplicateResolverDialog
+name|DuplicateResolverResult
 operator|.
 name|BREAK
 condition|)
@@ -645,7 +677,7 @@ if|if
 condition|(
 name|answer
 operator|==
-name|DuplicateResolverDialog
+name|DuplicateResolverResult
 operator|.
 name|KEEP_MERGE
 condition|)
@@ -1081,11 +1113,12 @@ name|CallBack
 block|{
 DECL|field|reply
 specifier|private
-name|int
+name|DuplicateResolverResult
 name|reply
 init|=
-operator|-
-literal|1
+name|DuplicateResolverResult
+operator|.
+name|NOT_CHOSEN
 decl_stmt|;
 DECL|field|frame
 specifier|private
@@ -1108,7 +1141,7 @@ decl_stmt|;
 DECL|field|dialogType
 specifier|private
 specifier|final
-name|int
+name|DuplicateResolverType
 name|dialogType
 decl_stmt|;
 DECL|field|merged
@@ -1116,7 +1149,7 @@ specifier|private
 name|BibEntry
 name|merged
 decl_stmt|;
-DECL|method|DuplicateCallBack (JabRefFrame frame, BibEntry one, BibEntry two, int dialogType)
+DECL|method|DuplicateCallBack (JabRefFrame frame, BibEntry one, BibEntry two, DuplicateResolverType dialogType)
 specifier|public
 name|DuplicateCallBack
 parameter_list|(
@@ -1129,7 +1162,7 @@ parameter_list|,
 name|BibEntry
 name|two
 parameter_list|,
-name|int
+name|DuplicateResolverType
 name|dialogType
 parameter_list|)
 block|{
@@ -1160,7 +1193,7 @@ expr_stmt|;
 block|}
 DECL|method|getSelected ()
 specifier|public
-name|int
+name|DuplicateResolverResult
 name|getSelected
 parameter_list|()
 block|{
