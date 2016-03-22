@@ -545,14 +545,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Synchronizing %0 links..."
-argument_list|,
-name|Globals
-operator|.
-name|FILE_FIELD
-operator|.
-name|toUpperCase
-argument_list|()
+literal|"Synchronizing file links..."
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -668,11 +661,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Autoset %0 field"
-argument_list|,
-name|Globals
-operator|.
-name|FILE_FIELD
+literal|"Autoset file links."
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -1614,14 +1603,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Finished synchronizing %0 links. Entries changed: %1."
-argument_list|,
-name|Globals
-operator|.
-name|FILE_FIELD
-operator|.
-name|toUpperCase
-argument_list|()
+literal|"Finished synchronizing file links. Entries changed: %0."
 argument_list|,
 name|String
 operator|.
@@ -1710,19 +1692,6 @@ specifier|final
 name|MetaData
 name|metaData
 decl_stmt|;
-DECL|field|fn
-specifier|private
-specifier|final
-name|String
-name|fn
-init|=
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"file"
-argument_list|)
-decl_stmt|;
 DECL|field|autoSetUnset
 specifier|private
 specifier|final
@@ -1736,9 +1705,16 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Autoset %0 links. Do not overwrite existing links."
-argument_list|,
-name|fn
+literal|"Autoset file links."
+argument_list|)
+operator|+
+literal|' '
+operator|+
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Do not overwrite existing links."
 argument_list|)
 argument_list|,
 literal|true
@@ -1757,9 +1733,16 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Autoset %0 links. Allow overwriting existing links."
-argument_list|,
-name|fn
+literal|"Autoset file links."
+argument_list|)
+operator|+
+literal|' '
+operator|+
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Allow overwriting existing links."
 argument_list|)
 argument_list|,
 literal|false
@@ -1797,9 +1780,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Check existing %0 links"
-argument_list|,
-name|fn
+literal|"Check existing file links"
 argument_list|)
 argument_list|,
 literal|true
@@ -1824,14 +1805,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Synchronize %0 links"
-argument_list|,
-name|Globals
-operator|.
-name|FILE_FIELD
-operator|.
-name|toUpperCase
-argument_list|()
+literal|"Synchronize file links"
 argument_list|)
 argument_list|,
 literal|true
@@ -2002,11 +1976,9 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Attempt to autoset %0 links for your entries. Autoset works if "
+literal|"Attempt to autoset file links for your entries. Autoset works if "
 operator|+
-literal|"a %0 file in your %0 directory or a subdirectory<BR>is named identically to an entry's BibTeX key, plus extension."
-argument_list|,
-name|fn
+literal|"a file in your file directory or a subdirectory<BR>is named identically to an entry's BibTeX key, plus extension."
 argument_list|)
 operator|+
 literal|"</HTML>"
@@ -2117,9 +2089,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"This makes JabRef look up each %0 link and check if the file exists. If not, you will be given options<BR>to resolve the problem."
-argument_list|,
-name|fn
+literal|"This makes JabRef look up each file link and check if the file exists. If not, you will be given options<BR>to resolve the problem."
 argument_list|)
 operator|+
 literal|"</HTML>"
