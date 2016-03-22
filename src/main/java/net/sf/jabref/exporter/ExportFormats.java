@@ -1235,6 +1235,7 @@ condition|(
 name|selectedOnly
 condition|)
 block|{
+comment|// Selected entries
 name|entries
 operator|=
 name|frame
@@ -1243,6 +1244,23 @@ name|getCurrentBasePanel
 argument_list|()
 operator|.
 name|getSelectedEntries
+argument_list|()
+expr_stmt|;
+block|}
+else|else
+block|{
+comment|// All entries
+name|entries
+operator|=
+name|frame
+operator|.
+name|getCurrentBasePanel
+argument_list|()
+operator|.
+name|getDatabase
+argument_list|()
+operator|.
+name|getEntries
 argument_list|()
 expr_stmt|;
 block|}
