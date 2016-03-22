@@ -104,43 +104,6 @@ specifier|public
 class|class
 name|CrossRefTest
 block|{
-DECL|field|fetcher
-specifier|private
-name|CrossRef
-name|fetcher
-decl_stmt|;
-annotation|@
-name|Before
-DECL|method|setUp ()
-specifier|public
-name|void
-name|setUp
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-name|fetcher
-operator|=
-operator|new
-name|CrossRef
-argument_list|()
-expr_stmt|;
-block|}
-annotation|@
-name|After
-DECL|method|tearDown ()
-specifier|public
-name|void
-name|tearDown
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-name|fetcher
-operator|=
-literal|null
-expr_stmt|;
-block|}
 annotation|@
 name|Test
 DECL|method|findExactData ()
@@ -189,7 +152,7 @@ name|assertEquals
 argument_list|(
 literal|"10.1007/11538394_20"
 argument_list|,
-name|fetcher
+name|CrossRef
 operator|.
 name|findDOI
 argument_list|(
@@ -250,7 +213,7 @@ name|assertEquals
 argument_list|(
 literal|"10.1109/sose.2014.26"
 argument_list|,
-name|fetcher
+name|CrossRef
 operator|.
 name|findDOI
 argument_list|(
@@ -302,7 +265,7 @@ name|assertEquals
 argument_list|(
 literal|"10.1109/sose.2014.26"
 argument_list|,
-name|fetcher
+name|CrossRef
 operator|.
 name|findDOI
 argument_list|(
@@ -363,7 +326,7 @@ name|assertEquals
 argument_list|(
 literal|"10.1109/sose.2014.26"
 argument_list|,
-name|fetcher
+name|CrossRef
 operator|.
 name|findDOI
 argument_list|(
@@ -424,7 +387,7 @@ name|assertEquals
 argument_list|(
 literal|"10.1109/sose.2014.26"
 argument_list|,
-name|fetcher
+name|CrossRef
 operator|.
 name|findDOI
 argument_list|(
