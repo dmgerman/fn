@@ -204,6 +204,16 @@ name|java
 operator|.
 name|io
 operator|.
+name|StringReader
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
 name|StringWriter
 import|;
 end_import
@@ -4572,7 +4582,6 @@ name|boolean
 name|storeSource
 parameter_list|()
 block|{
-comment|// Store edited bibtex code.
 name|BibtexParser
 name|bibtexParser
 init|=
@@ -4580,10 +4589,6 @@ operator|new
 name|BibtexParser
 argument_list|(
 operator|new
-name|java
-operator|.
-name|io
-operator|.
 name|StringReader
 argument_list|(
 name|source
@@ -4695,11 +4700,10 @@ operator|.
 name|getEntries
 argument_list|()
 operator|.
-name|iterator
-argument_list|()
-operator|.
-name|next
-argument_list|()
+name|get
+argument_list|(
+literal|0
+argument_list|)
 decl_stmt|;
 name|String
 name|newKey
@@ -5037,20 +5041,11 @@ operator|.
 name|getText
 argument_list|()
 expr_stmt|;
-if|if
-condition|(
-name|changedType
-condition|)
-block|{
+comment|// Update UI
+comment|// TODO: we need to repaint if fields that are not displayed have been added
 name|panel
 operator|.
 name|updateEntryEditorIfShowing
-argument_list|()
-expr_stmt|;
-block|}
-else|else
-block|{
-name|updateAllFields
 argument_list|()
 expr_stmt|;
 name|lastSourceAccepted
@@ -5061,7 +5056,6 @@ name|updateSource
 operator|=
 literal|true
 expr_stmt|;
-block|}
 comment|// TODO: does updating work properly after source stored?
 name|panel
 operator|.
