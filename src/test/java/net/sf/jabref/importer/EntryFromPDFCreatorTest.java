@@ -1,4 +1,8 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
+begin_comment
+comment|/*  Copyright (C) 2003-2016 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
+end_comment
+
 begin_package
 DECL|package|net.sf.jabref.importer
 package|package
@@ -102,10 +106,6 @@ name|File
 import|;
 end_import
 
-begin_comment
-comment|/**  * @version 11.11.2008 | 22:16  */
-end_comment
-
 begin_class
 DECL|class|EntryFromPDFCreatorTest
 specifier|public
@@ -114,13 +114,8 @@ name|EntryFromPDFCreatorTest
 block|{
 DECL|field|entryCreator
 specifier|private
-specifier|final
 name|EntryFromPDFCreator
 name|entryCreator
-init|=
-operator|new
-name|EntryFromPDFCreator
-argument_list|()
 decl_stmt|;
 annotation|@
 name|Before
@@ -129,8 +124,6 @@ specifier|public
 name|void
 name|setUp
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|Globals
 operator|.
@@ -139,6 +132,13 @@ operator|=
 name|JabRefPreferences
 operator|.
 name|getInstance
+argument_list|()
+expr_stmt|;
+comment|// Needed to initialize ExternalFileTypes
+name|entryCreator
+operator|=
+operator|new
+name|EntryFromPDFCreator
 argument_list|()
 expr_stmt|;
 block|}

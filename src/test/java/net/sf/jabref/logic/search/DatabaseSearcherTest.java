@@ -98,8 +98,6 @@ specifier|public
 name|void
 name|testGetDatabaseFromMatchesEmptyDatabase
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|BibDatabase
 name|database
@@ -149,8 +147,6 @@ specifier|public
 name|void
 name|testGetDatabaseFromMatchesEmptyDatabaseInvalidSearchExpression
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|BibDatabase
 name|database
@@ -192,8 +188,6 @@ specifier|public
 name|void
 name|testGetDatabaseFromMatchesDatabaseWithEmptyEntries
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|BibDatabase
 name|database
@@ -252,8 +246,6 @@ specifier|public
 name|void
 name|testGetDatabaseFromMatchesDatabaseWithEntries
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|BibDatabase
 name|database
@@ -333,8 +325,6 @@ specifier|public
 name|void
 name|testGetDatabaseFromMatchesDatabaseWithEntriesWithCorrectMatch
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|BibDatabase
 name|database

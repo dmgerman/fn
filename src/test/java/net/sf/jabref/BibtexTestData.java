@@ -74,11 +74,11 @@ end_import
 
 begin_import
 import|import
-name|org
+name|java
 operator|.
-name|junit
+name|io
 operator|.
-name|Assert
+name|IOException
 import|;
 end_import
 
@@ -104,6 +104,8 @@ specifier|static
 name|BibEntry
 name|getBibtexEntry
 parameter_list|()
+throws|throws
+name|IOException
 block|{
 name|BibDatabase
 name|database
@@ -126,6 +128,8 @@ specifier|static
 name|BibDatabase
 name|getBibtexDatabase
 parameter_list|()
+throws|throws
+name|IOException
 block|{
 name|StringReader
 name|reader
@@ -176,30 +180,11 @@ decl_stmt|;
 name|ParserResult
 name|result
 init|=
-literal|null
-decl_stmt|;
-try|try
-block|{
-name|result
-operator|=
 name|parser
 operator|.
 name|parse
 argument_list|()
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|Exception
-name|e
-parameter_list|)
-block|{
-name|Assert
-operator|.
-name|fail
-argument_list|()
-expr_stmt|;
-block|}
+decl_stmt|;
 return|return
 name|result
 operator|.

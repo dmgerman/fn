@@ -162,6 +162,16 @@ name|java
 operator|.
 name|io
 operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
 name|StringReader
 import|;
 end_import
@@ -199,6 +209,8 @@ specifier|public
 name|void
 name|setUp
 parameter_list|()
+throws|throws
+name|IOException
 block|{
 comment|// Required by BibtexParser -> FieldContentParser
 name|Globals
@@ -281,8 +293,6 @@ name|result
 init|=
 literal|null
 decl_stmt|;
-try|try
-block|{
 name|result
 operator|=
 name|parser
@@ -290,19 +300,6 @@ operator|.
 name|parse
 argument_list|()
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|Exception
-name|e
-parameter_list|)
-block|{
-name|Assert
-operator|.
-name|fail
-argument_list|()
-expr_stmt|;
-block|}
 name|database
 operator|=
 name|result

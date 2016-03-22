@@ -120,7 +120,27 @@ name|java
 operator|.
 name|io
 operator|.
+name|FileNotFoundException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
 name|FileReader
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
 import|;
 end_import
 
@@ -175,7 +195,9 @@ name|void
 name|setUp
 parameter_list|()
 throws|throws
-name|Exception
+name|FileNotFoundException
+throws|,
+name|IOException
 block|{
 name|Globals
 operator|.
@@ -252,8 +274,6 @@ specifier|public
 name|void
 name|testTestDatabase
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|Assert
 operator|.

@@ -82,6 +82,16 @@ name|File
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
 begin_comment
 comment|/**  * A base class for Testing in JabRef that comes along with some useful  * functions.  */
 end_comment
@@ -130,7 +140,7 @@ name|void
 name|setUp
 parameter_list|()
 throws|throws
-name|Exception
+name|IOException
 block|{
 name|Globals
 operator|.
@@ -224,9 +234,6 @@ operator|.
 name|next
 argument_list|()
 expr_stmt|;
-comment|// Create file structure
-try|try
-block|{
 name|root
 operator|=
 name|FileBasedTestHelper
@@ -656,19 +663,6 @@ name|createNewFile
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|Exception
-name|e
-parameter_list|)
-block|{
-throw|throw
-operator|new
-name|RuntimeException
-argument_list|()
-throw|;
-block|}
 block|}
 annotation|@
 name|After

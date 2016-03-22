@@ -196,8 +196,6 @@ specifier|public
 name|void
 name|setUp
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 if|if
 condition|(
@@ -330,7 +328,7 @@ name|String
 name|entry
 parameter_list|)
 throws|throws
-name|Exception
+name|IOException
 block|{
 name|BibEntry
 name|be
@@ -396,7 +394,7 @@ name|void
 name|testLayoutBibtextype
 parameter_list|()
 throws|throws
-name|Exception
+name|IOException
 block|{
 name|Assert
 operator|.
@@ -451,7 +449,7 @@ name|void
 name|testHTMLChar
 parameter_list|()
 throws|throws
-name|Exception
+name|IOException
 block|{
 name|String
 name|layoutText
@@ -517,7 +515,7 @@ name|void
 name|testPluginLoading
 parameter_list|()
 throws|throws
-name|Exception
+name|IOException
 block|{
 name|String
 name|layoutText
@@ -550,7 +548,7 @@ name|void
 name|testLayout
 parameter_list|()
 throws|throws
-name|Exception
+name|IOException
 block|{
 name|String
 name|layoutText

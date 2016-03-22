@@ -170,8 +170,6 @@ specifier|public
 name|void
 name|testHighlightWords
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|assertEquals
 argument_list|(
@@ -292,8 +290,6 @@ specifier|public
 name|void
 name|testNoWords
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|assertEquals
 argument_list|(
@@ -325,8 +321,6 @@ specifier|public
 name|void
 name|testPatternCaseInsensitive
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|Predicate
 argument_list|<
@@ -404,8 +398,6 @@ specifier|public
 name|void
 name|testPatternCaseSensitive
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|Predicate
 argument_list|<

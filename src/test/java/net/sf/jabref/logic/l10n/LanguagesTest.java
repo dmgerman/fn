@@ -59,8 +59,6 @@ specifier|public
 name|void
 name|testConvertToKnownLocale
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|assertEquals
 argument_list|(

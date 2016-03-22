@@ -199,7 +199,6 @@ operator|.
 name|getInstance
 argument_list|()
 expr_stmt|;
-comment|// set preferences for this test
 block|}
 annotation|@
 name|After

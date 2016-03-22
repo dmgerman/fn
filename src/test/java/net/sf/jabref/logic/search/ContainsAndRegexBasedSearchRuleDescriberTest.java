@@ -69,8 +69,6 @@ specifier|public
 name|void
 name|testNoAst
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|String
 name|query

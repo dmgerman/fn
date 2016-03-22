@@ -87,8 +87,6 @@ specifier|public
 name|void
 name|testSimpleQuery
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|String
 name|query
@@ -163,8 +161,6 @@ specifier|public
 name|void
 name|testComplexQuery
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|String
 name|query
