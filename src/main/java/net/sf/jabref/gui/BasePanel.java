@@ -2722,6 +2722,8 @@ block|}
 catch|catch
 parameter_list|(
 name|UnsupportedFlavorException
+decl||
+name|ClassCastException
 name|ex
 parameter_list|)
 block|{
