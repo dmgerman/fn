@@ -32,35 +32,11 @@ end_import
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|support
-operator|.
-name|DevEnvironment
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|junit
 operator|.
 name|Assert
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|Assume
 import|;
 end_import
 
@@ -219,17 +195,6 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
-comment|// CI server is unreliable
-name|Assume
-operator|.
-name|assumeFalse
-argument_list|(
-name|DevEnvironment
-operator|.
-name|isCIServer
-argument_list|()
-argument_list|)
-expr_stmt|;
 name|entry
 operator|.
 name|setField
@@ -239,7 +204,6 @@ argument_list|,
 literal|"10.1109/ACCESS.2016.2535486"
 argument_list|)
 expr_stmt|;
-comment|// Open access paper
 name|Assert
 operator|.
 name|assertEquals
@@ -274,17 +238,6 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
-comment|// CI server is unreliable
-name|Assume
-operator|.
-name|assumeFalse
-argument_list|(
-name|DevEnvironment
-operator|.
-name|isCIServer
-argument_list|()
-argument_list|)
-expr_stmt|;
 name|entry
 operator|.
 name|setField
@@ -294,7 +247,6 @@ argument_list|,
 literal|"10.1021/bk-2006-WWW.ch014"
 argument_list|)
 expr_stmt|;
-comment|// Arbitrary non-IEEE DOI
 name|Assert
 operator|.
 name|assertEquals
