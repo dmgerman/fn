@@ -802,11 +802,6 @@ expr_stmt|;
 return|return;
 block|}
 comment|// Show dialog
-name|boolean
-name|newEntry
-init|=
-literal|false
-decl_stmt|;
 if|if
 condition|(
 operator|!
@@ -817,10 +812,6 @@ argument_list|,
 name|fileType
 argument_list|,
 name|entry
-argument_list|,
-name|newEntry
-argument_list|,
-literal|false
 argument_list|,
 name|panel
 operator|.
@@ -1049,11 +1040,6 @@ literal|"pdf"
 argument_list|)
 decl_stmt|;
 comment|// Show dialog
-name|boolean
-name|newEntry
-init|=
-literal|false
-decl_stmt|;
 if|if
 condition|(
 operator|!
@@ -1064,10 +1050,6 @@ argument_list|,
 name|fileType
 argument_list|,
 name|entry
-argument_list|,
-name|newEntry
-argument_list|,
-literal|false
 argument_list|,
 name|panel
 operator|.
@@ -1649,7 +1631,7 @@ block|}
 comment|//
 comment|// @return true if user pushed "OK", false otherwise
 comment|//
-DECL|method|showLinkMoveCopyRenameDialog (String linkFileName, ExternalFileType fileType, BibEntry entry, boolean newEntry, final boolean multipleEntries, BibDatabase database)
+DECL|method|showLinkMoveCopyRenameDialog (String linkFileName, ExternalFileType fileType, BibEntry entry, BibDatabase database)
 specifier|private
 name|boolean
 name|showLinkMoveCopyRenameDialog
@@ -1662,13 +1644,6 @@ name|fileType
 parameter_list|,
 name|BibEntry
 name|entry
-parameter_list|,
-name|boolean
-name|newEntry
-parameter_list|,
-specifier|final
-name|boolean
-name|multipleEntries
 parameter_list|,
 name|BibDatabase
 name|database
@@ -1886,9 +1861,6 @@ name|linkInPlace
 operator|.
 name|isSelected
 argument_list|()
-operator|&&
-operator|!
-name|multipleEntries
 argument_list|)
 expr_stmt|;
 name|renameToTextBox
@@ -1900,76 +1872,11 @@ name|linkInPlace
 operator|.
 name|isSelected
 argument_list|()
-operator|&&
-operator|!
-name|multipleEntries
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|multipleEntries
-condition|)
-block|{
-name|renameToTextBox
-operator|.
-name|setText
-argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Multiple entries"
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
 block|}
 block|}
 decl_stmt|;
-if|if
-condition|(
-name|multipleEntries
-condition|)
-block|{
-name|linkInPlace
-operator|.
-name|setText
-argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Leave files in their current directory."
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|copyRadioButton
-operator|.
-name|setText
-argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Copy files to file directory."
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|moveRadioButton
-operator|.
-name|setText
-argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Move files to file directory."
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
 name|linkInPlace
 operator|.
 name|setText
@@ -2006,7 +1913,6 @@ literal|"Move file to file directory."
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
 name|renameCheckBox
 operator|.
 name|setText
