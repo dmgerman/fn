@@ -204,6 +204,13 @@ class|class
 name|PdfContentImporterTestFiles
 block|{
 annotation|@
+name|Parameter
+DECL|field|fileName
+specifier|public
+name|String
+name|fileName
+decl_stmt|;
+annotation|@
 name|BeforeClass
 DECL|method|setUp ()
 specifier|public
@@ -266,13 +273,6 @@ name|data
 argument_list|)
 return|;
 block|}
-annotation|@
-name|Parameter
-DECL|field|fileName
-specifier|public
-name|String
-name|fileName
-decl_stmt|;
 annotation|@
 name|Test
 DECL|method|correctContent ()

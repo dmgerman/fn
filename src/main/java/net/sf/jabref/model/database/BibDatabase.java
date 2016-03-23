@@ -1153,7 +1153,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**      * Take the given collection of BibEntry and resolve any string      * references.      *      * @param entries A collection of BibtexEntries in which all strings of the form      *                #xxx# will be resolved against the hash map of string      *                references stored in the databasee.      * @param inPlace If inPlace is true then the given BibtexEntries will be modified, if false then copies of the BibtexEntries are made before resolving the strings.      * @return a list of bibtexentries, with all strings resolved. It is dependent on the value of inPlace whether copies are made or the given BibtexEntries are modified.      */
+comment|/**      * Take the given collection of BibEntry and resolve any string      * references.      *      * @param entries A collection of BibtexEntries in which all strings of the form      *                #xxx# will be resolved against the hash map of string      *                references stored in the database.      * @param inPlace If inPlace is true then the given BibtexEntries will be modified, if false then copies of the BibtexEntries are made before resolving the strings.      * @return a list of bibtexentries, with all strings resolved. It is dependent on the value of inPlace whether copies are made or the given BibtexEntries are modified.      */
 DECL|method|resolveForStrings (Collection<BibEntry> entries, boolean inPlace)
 specifier|public
 name|List
@@ -1230,7 +1230,7 @@ return|return
 name|results
 return|;
 block|}
-comment|/**      * Take the given BibEntry and resolve any string references.      *      * @param entry   A BibEntry in which all strings of the form #xxx# will be      *                resolved against the hash map of string references stored in      *                the databasee.      * @param inPlace If inPlace is true then the given BibEntry will be      *                modified, if false then a copy is made using close made before      *                resolving the strings.      * @return a BibEntry with all string references resolved. It is      * dependent on the value of inPlace whether a copy is made or the      * given BibtexEntries is modified.      */
+comment|/**      * Take the given BibEntry and resolve any string references.      *      * @param entry   A BibEntry in which all strings of the form #xxx# will be      *                resolved against the hash map of string references stored in      *                the database.      * @param inPlace If inPlace is true then the given BibEntry will be      *                modified, if false then a copy is made using close made before      *                resolving the strings.      * @return a BibEntry with all string references resolved. It is      * dependent on the value of inPlace whether a copy is made or the      * given BibtexEntries is modified.      */
 DECL|method|resolveForStrings (BibEntry entry, boolean inPlace)
 specifier|public
 name|BibEntry
@@ -1243,13 +1243,22 @@ name|boolean
 name|inPlace
 parameter_list|)
 block|{
+name|BibEntry
+name|resultingEntry
+decl_stmt|;
 if|if
 condition|(
-operator|!
 name|inPlace
 condition|)
 block|{
+name|resultingEntry
+operator|=
 name|entry
+expr_stmt|;
+block|}
+else|else
+block|{
+name|resultingEntry
 operator|=
 operator|(
 name|BibEntry
@@ -1265,13 +1274,13 @@ control|(
 name|String
 name|field
 range|:
-name|entry
+name|resultingEntry
 operator|.
 name|getFieldNames
 argument_list|()
 control|)
 block|{
-name|entry
+name|resultingEntry
 operator|.
 name|setField
 argument_list|(
@@ -1281,7 +1290,7 @@ name|this
 operator|.
 name|resolveForStrings
 argument_list|(
-name|entry
+name|resultingEntry
 operator|.
 name|getField
 argument_list|(
@@ -1292,7 +1301,7 @@ argument_list|)
 expr_stmt|;
 block|}
 return|return
-name|entry
+name|resultingEntry
 return|;
 block|}
 comment|/**      * If the label represents a string contained in this database, returns      * that string's content. Resolves references to other strings, taking      * care not to follow a circular reference pattern.      * If the string is undefined, returns null.      */
@@ -1447,13 +1456,13 @@ literal|null
 return|;
 block|}
 block|}
-DECL|method|resolveContent (String res, Set<String> usedIds)
+DECL|method|resolveContent (String result, Set<String> usedIds)
 specifier|private
 name|String
 name|resolveContent
 parameter_list|(
 name|String
-name|res
+name|result
 parameter_list|,
 name|Set
 argument_list|<
@@ -1462,6 +1471,11 @@ argument_list|>
 name|usedIds
 parameter_list|)
 block|{
+name|String
+name|res
+init|=
+name|result
+decl_stmt|;
 if|if
 condition|(
 name|res
