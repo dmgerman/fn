@@ -128,6 +128,7 @@ name|saveActions
 decl_stmt|;
 DECL|field|listeners
 specifier|private
+specifier|final
 name|List
 argument_list|<
 name|ListDataListener
@@ -240,35 +241,22 @@ parameter_list|)
 block|{
 if|if
 condition|(
+operator|(
 name|index
-argument_list|<
+operator|>=
 literal|0
-operator|||
+operator|)
+operator|&&
+operator|(
 name|index
-argument_list|>
+operator|<
 name|saveActions
 operator|.
 name|size
 argument_list|()
+operator|)
 condition|)
 block|{
-throw|throw
-operator|new
-name|IndexOutOfBoundsException
-argument_list|(
-literal|"Index must be within 0 and "
-operator|+
-name|saveActions
-operator|.
-name|size
-argument_list|()
-operator|+
-literal|" but was "
-operator|+
-name|index
-argument_list|)
-throw|;
-block|}
 name|FieldFormatterCleanup
 name|action
 init|=
@@ -289,7 +277,7 @@ control|)
 block|{
 name|listener
 operator|.
-name|intervalAdded
+name|intervalRemoved
 argument_list|(
 operator|new
 name|ListDataEvent
@@ -306,6 +294,7 @@ name|index
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 DECL|method|getAllActions ()
