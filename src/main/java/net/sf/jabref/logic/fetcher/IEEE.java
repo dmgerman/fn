@@ -118,6 +118,20 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Charsets
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -345,7 +359,11 @@ argument_list|()
 argument_list|)
 operator|.
 name|downloadToString
-argument_list|()
+argument_list|(
+name|Charsets
+operator|.
+name|UTF_8
+argument_list|)
 decl_stmt|;
 name|Matcher
 name|matcher
@@ -386,7 +404,11 @@ argument_list|)
 argument_list|)
 operator|.
 name|downloadToString
-argument_list|()
+argument_list|(
+name|Charsets
+operator|.
+name|UTF_8
+argument_list|)
 decl_stmt|;
 name|matcher
 operator|=
