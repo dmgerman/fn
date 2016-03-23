@@ -350,24 +350,14 @@ throws|throws
 name|IOException
 block|{
 name|assertIndependenceOfPackages
-argument_list|(
-name|firstPackage
-argument_list|,
-name|secondPackage
-argument_list|)
+argument_list|()
 expr_stmt|;
 block|}
-DECL|method|assertIndependenceOfPackages (String firstPackage, String secondPackage)
+DECL|method|assertIndependenceOfPackages ()
 specifier|private
 name|void
 name|assertIndependenceOfPackages
-parameter_list|(
-name|String
-name|firstPackage
-parameter_list|,
-name|String
-name|secondPackage
-parameter_list|)
+parameter_list|()
 throws|throws
 name|IOException
 block|{
