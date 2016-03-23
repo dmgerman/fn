@@ -16,20 +16,6 @@ end_package
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Charsets
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -45,6 +31,18 @@ operator|.
 name|io
 operator|.
 name|InputStream
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
 import|;
 end_import
 
@@ -527,7 +525,7 @@ name|readAllLines
 argument_list|(
 name|path
 argument_list|,
-name|Charsets
+name|StandardCharsets
 operator|.
 name|UTF_8
 argument_list|)
@@ -889,13 +887,17 @@ control|)
 block|{
 if|if
 condition|(
+operator|(
 name|c
 operator|==
 literal|'"'
+operator|)
 operator|&&
+operator|(
 name|quotations
 operator|>
 literal|0
+operator|)
 condition|)
 block|{
 name|quotations

@@ -322,20 +322,6 @@ name|google
 operator|.
 name|common
 operator|.
-name|base
-operator|.
-name|Charsets
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
 name|io
 operator|.
 name|CharStreams
@@ -2137,7 +2123,7 @@ name|createInputStream
 argument_list|()
 init|;                         InputStreamReader reader = new InputStreamReader(is
 operator|,
-init|Charsets.UTF_8)
+init|StandardCharsets.UTF_8)
 block|)
 block|{
 comment|// trim() for killing padding end-newline
