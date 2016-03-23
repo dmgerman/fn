@@ -1875,7 +1875,10 @@ operator|.
 name|getEncoding
 argument_list|()
 argument_list|,
-literal|null
+name|newBase
+operator|.
+name|getEntries
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

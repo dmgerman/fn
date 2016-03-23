@@ -44,7 +44,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Set
+name|Objects
 import|;
 end_import
 
@@ -191,6 +191,30 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|database
+argument_list|)
+expr_stmt|;
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|entries
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|entries
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+comment|// Only export if entries exist
 operator|new
 name|DBExporterAndImporterFactory
 argument_list|()
@@ -213,6 +237,7 @@ argument_list|,
 name|encoding
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 end_class

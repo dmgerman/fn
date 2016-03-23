@@ -574,7 +574,7 @@ return|return
 name|reader
 return|;
 block|}
-comment|/**      * Perform the export of {@code database}.      *      * @param database   The database to export from.      * @param metaData   The database's meta data.      * @param file       the file to write the resulting export to      * @param encoding   The encoding of the database      * @param entries    Contains all entries that should be exported. If      *<code>null</code>, all entries will be exported.      * @throws IOException if a problem occurred while trying to write to {@code writer}      *                     or read from required resources.      * @throws Exception   if any other error occurred during export.      * @see net.sf.jabref.exporter.IExportFormat#performExport(BibDatabase, MetaData, String, Charset, List)      */
+comment|/**      * Perform the export of {@code database}.      *      * @param database   The database to export from.      * @param metaData   The database's meta data.      * @param file       the file to write the resulting export to      * @param encoding   The encoding of the database      * @param entries    Contains all entries that should be exported.      * @throws IOException if a problem occurred while trying to write to {@code writer}      *                     or read from required resources.      * @throws Exception   if any other error occurred during export.      * @see net.sf.jabref.exporter.IExportFormat#performExport(BibDatabase, MetaData, String, Charset, List)      */
 annotation|@
 name|Override
 DECL|method|performExport (final BibDatabase database, final MetaData metaData, final String file, final Charset encoding, List<BibEntry> entries)
@@ -607,6 +607,31 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|database
+argument_list|)
+expr_stmt|;
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|entries
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|entries
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+comment|// Do not export if no entries to export -- avoids exports with only template text
+return|return;
+block|}
 name|File
 name|outFile
 init|=

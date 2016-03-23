@@ -76,7 +76,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Set
+name|Objects
 import|;
 end_import
 
@@ -311,6 +311,31 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|database
+argument_list|)
+expr_stmt|;
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|entries
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|entries
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+comment|// Only export if entries exist
+return|return;
+block|}
 comment|// forcing to use UTF8 output format for some problems with
 comment|// xml export in other encodings
 name|SaveSession
