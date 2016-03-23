@@ -216,8 +216,6 @@ specifier|public
 name|void
 name|testGetFormatName
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|assertEquals
 argument_list|(
@@ -292,7 +290,7 @@ name|void
 name|testImportEntries
 parameter_list|()
 throws|throws
-name|Exception
+name|IOException
 block|{
 try|try
 init|(
@@ -404,7 +402,7 @@ name|void
 name|testIsRecognizedFormat
 parameter_list|()
 throws|throws
-name|Exception
+name|IOException
 block|{
 try|try
 init|(
@@ -441,7 +439,7 @@ name|void
 name|testIsRecognizedFormatReject
 parameter_list|()
 throws|throws
-name|Exception
+name|IOException
 block|{
 name|List
 argument_list|<
@@ -511,8 +509,6 @@ specifier|public
 name|void
 name|testGetCommandLineId
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|assertEquals
 argument_list|(

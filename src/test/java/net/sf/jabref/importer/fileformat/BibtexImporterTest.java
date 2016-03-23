@@ -164,8 +164,6 @@ specifier|public
 name|void
 name|setUp
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|Globals
 operator|.
@@ -228,7 +226,7 @@ name|void
 name|testImportEntries
 parameter_list|()
 throws|throws
-name|Exception
+name|IOException
 block|{
 try|try
 init|(
@@ -673,8 +671,6 @@ specifier|public
 name|void
 name|testGetFormatName
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|assertEquals
 argument_list|(
@@ -694,8 +690,6 @@ specifier|public
 name|void
 name|testGetExtensions
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|assertEquals
 argument_list|(

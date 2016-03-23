@@ -252,8 +252,6 @@ specifier|public
 name|void
 name|testUnifyLineBreaks
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 comment|// Mac< v9
 name|String

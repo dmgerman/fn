@@ -191,8 +191,6 @@ specifier|public
 name|void
 name|setUp
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|Globals
 operator|.
@@ -213,6 +211,8 @@ name|testNormal
 parameter_list|()
 throws|throws
 name|URISyntaxException
+throws|,
+name|IOException
 block|{
 name|InputStream
 name|originalStream
@@ -387,18 +387,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-catch|catch
-parameter_list|(
-name|IOException
-name|ex
-parameter_list|)
-block|{
-name|fail
-argument_list|(
-literal|"Cannot open file"
-argument_list|)
-expr_stmt|;
-block|}
 block|}
 annotation|@
 name|Test
@@ -409,6 +397,8 @@ name|testNotAllFound
 parameter_list|()
 throws|throws
 name|URISyntaxException
+throws|,
+name|IOException
 block|{
 name|InputStream
 name|originalStream
@@ -583,18 +573,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-catch|catch
-parameter_list|(
-name|IOException
-name|ex
-parameter_list|)
-block|{
-name|fail
-argument_list|(
-literal|"Cannot open file"
-argument_list|)
-expr_stmt|;
-block|}
 block|}
 annotation|@
 name|Test
@@ -605,6 +583,8 @@ name|duplicateBibDatabaseConfiguration
 parameter_list|()
 throws|throws
 name|URISyntaxException
+throws|,
+name|IOException
 block|{
 name|InputStream
 name|originalStream
@@ -717,18 +697,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-catch|catch
-parameter_list|(
-name|IOException
-name|ex
-parameter_list|)
-block|{
-name|fail
-argument_list|(
-literal|"Cannot open file"
-argument_list|)
-expr_stmt|;
-block|}
 block|}
 annotation|@
 name|Test
@@ -739,6 +707,8 @@ name|testNestedAux
 parameter_list|()
 throws|throws
 name|URISyntaxException
+throws|,
+name|IOException
 block|{
 name|InputStream
 name|originalStream
@@ -910,18 +880,6 @@ name|auxResult
 operator|.
 name|getCrossRefEntriesCount
 argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|IOException
-name|ex
-parameter_list|)
-block|{
-name|fail
-argument_list|(
-literal|"Cannot open file"
 argument_list|)
 expr_stmt|;
 block|}

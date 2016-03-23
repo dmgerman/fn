@@ -62,8 +62,6 @@ specifier|public
 name|void
 name|setUp
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|entry
 operator|=
@@ -79,8 +77,6 @@ specifier|public
 name|void
 name|tearDown
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|entry
 operator|=
@@ -101,8 +97,6 @@ specifier|public
 name|void
 name|notOverrideReservedFields
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|entry
 operator|.
@@ -130,8 +124,6 @@ specifier|public
 name|void
 name|notClearReservedFields
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|entry
 operator|.

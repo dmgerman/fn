@@ -187,8 +187,6 @@ specifier|public
 name|void
 name|setUp
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|Globals
 operator|.
@@ -209,6 +207,8 @@ name|test
 parameter_list|()
 throws|throws
 name|URISyntaxException
+throws|,
+name|IOException
 block|{
 name|InputStream
 name|originalStream
@@ -312,20 +312,6 @@ argument_list|()
 operator|.
 name|size
 argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|IOException
-name|ex
-parameter_list|)
-block|{
-name|Assert
-operator|.
-name|fail
-argument_list|(
-literal|"Cannot open file"
 argument_list|)
 expr_stmt|;
 block|}

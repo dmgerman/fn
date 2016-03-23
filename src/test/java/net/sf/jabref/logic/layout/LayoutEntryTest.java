@@ -116,6 +116,16 @@ name|java
 operator|.
 name|io
 operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
 name|StringReader
 import|;
 end_import
@@ -177,8 +187,6 @@ specifier|public
 name|void
 name|setUp
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 if|if
 condition|(
@@ -431,7 +439,7 @@ argument_list|>
 name|highlightPattern
 parameter_list|)
 throws|throws
-name|Exception
+name|IOException
 block|{
 name|StringReader
 name|sr
@@ -495,7 +503,7 @@ name|void
 name|testNoHighlighting
 parameter_list|()
 throws|throws
-name|Exception
+name|IOException
 block|{
 comment|// say that this bibtex object was found
 name|mBTE
@@ -546,7 +554,7 @@ name|void
 name|testHighlightingOneWordCaseInsesitive
 parameter_list|()
 throws|throws
-name|Exception
+name|IOException
 block|{
 comment|// say that this bibtex object was found
 name|mBTE
@@ -624,7 +632,7 @@ name|void
 name|testHighlightingTwoWordsCaseInsesitive
 parameter_list|()
 throws|throws
-name|Exception
+name|IOException
 block|{
 comment|// say that this bibtex object was found
 name|mBTE
@@ -715,7 +723,7 @@ name|void
 name|testHighlightingOneWordCaseSesitive
 parameter_list|()
 throws|throws
-name|Exception
+name|IOException
 block|{
 comment|// say that this bibtex object was found
 name|mBTE
@@ -782,7 +790,7 @@ name|void
 name|testHighlightingMoreWordsCaseSesitive
 parameter_list|()
 throws|throws
-name|Exception
+name|IOException
 block|{
 comment|// say that this bibtex object was found
 name|mBTE

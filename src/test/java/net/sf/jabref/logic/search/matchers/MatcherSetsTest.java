@@ -97,8 +97,6 @@ specifier|public
 name|void
 name|testBuildAnd
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|MatcherSet
 name|matcherSet
@@ -180,8 +178,6 @@ specifier|public
 name|void
 name|testBuildOr
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|MatcherSet
 name|matcherSet

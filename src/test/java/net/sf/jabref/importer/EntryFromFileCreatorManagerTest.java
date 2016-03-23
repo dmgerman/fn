@@ -144,7 +144,27 @@ name|java
 operator|.
 name|io
 operator|.
+name|FileNotFoundException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
 name|FileReader
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
 import|;
 end_import
 
@@ -204,8 +224,6 @@ specifier|public
 name|void
 name|testGetCreator
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|EntryFromFileCreatorManager
 name|manager
@@ -276,7 +294,9 @@ name|void
 name|testAddEntrysFromFiles
 parameter_list|()
 throws|throws
-name|Exception
+name|FileNotFoundException
+throws|,
+name|IOException
 block|{
 try|try
 init|(

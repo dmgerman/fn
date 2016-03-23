@@ -180,8 +180,6 @@ specifier|public
 name|void
 name|setUp
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|Globals
 operator|.
@@ -1089,7 +1087,7 @@ name|void
 name|testImportSingleEntries
 parameter_list|()
 throws|throws
-name|Exception
+name|IOException
 block|{
 for|for
 control|(

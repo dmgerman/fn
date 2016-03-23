@@ -153,8 +153,6 @@ specifier|public
 name|void
 name|testLastFocusedTab
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|LastFocusedTabPreferences
 name|prefs
@@ -202,8 +200,6 @@ specifier|public
 name|void
 name|testLastFocusedTabNull
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|LastFocusedTabPreferences
 name|prefs

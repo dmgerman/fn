@@ -252,10 +252,13 @@ parameter_list|()
 block|{
 comment|// threads can only be started when in state NEW
 return|return
+operator|(
 name|remoteListenerServerThread
 operator|==
 literal|null
+operator|)
 operator|||
+operator|(
 name|remoteListenerServerThread
 operator|.
 name|getState
@@ -266,6 +269,7 @@ operator|.
 name|State
 operator|.
 name|NEW
+operator|)
 return|;
 block|}
 DECL|method|openAndStart (MessageHandler messageHandler, int port)
@@ -298,8 +302,6 @@ specifier|public
 name|void
 name|close
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|stop
 argument_list|()

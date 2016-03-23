@@ -134,16 +134,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|List
@@ -362,8 +352,6 @@ specifier|public
 name|void
 name|checkSimpleUseCase
 parameter_list|()
-throws|throws
-name|IOException
 block|{
 name|FieldFormatterCleanups
 name|actions
@@ -403,8 +391,6 @@ specifier|public
 name|void
 name|invalidSaveActionSting
 parameter_list|()
-throws|throws
-name|IOException
 block|{
 name|FieldFormatterCleanups
 name|actions
@@ -444,8 +430,6 @@ specifier|public
 name|void
 name|checkLowerCaseSaveAction
 parameter_list|()
-throws|throws
-name|IOException
 block|{
 name|FieldFormatterCleanups
 name|actions
@@ -485,8 +469,6 @@ specifier|public
 name|void
 name|checkTwoSaveActionsForOneField
 parameter_list|()
-throws|throws
-name|IOException
 block|{
 name|FieldFormatterCleanups
 name|actions
@@ -539,8 +521,6 @@ specifier|public
 name|void
 name|checkThreeSaveActionsForOneField
 parameter_list|()
-throws|throws
-name|IOException
 block|{
 name|FieldFormatterCleanups
 name|actions
@@ -593,8 +573,6 @@ specifier|public
 name|void
 name|checkMultipleSaveActions
 parameter_list|()
-throws|throws
-name|IOException
 block|{
 name|FieldFormatterCleanups
 name|actions
@@ -731,8 +709,6 @@ specifier|public
 name|void
 name|checkMultipleSaveActionsWithMultipleFormatters
 parameter_list|()
-throws|throws
-name|IOException
 block|{
 name|FieldFormatterCleanups
 name|actions

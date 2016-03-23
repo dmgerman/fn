@@ -170,34 +170,6 @@ name|org
 operator|.
 name|apache
 operator|.
-name|commons
-operator|.
-name|logging
-operator|.
-name|Log
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|commons
-operator|.
-name|logging
-operator|.
-name|LogFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
 name|jempbox
 operator|.
 name|xmp
@@ -424,22 +396,6 @@ specifier|public
 class|class
 name|XMPUtilTest
 block|{
-DECL|field|LOGGER
-specifier|private
-specifier|static
-specifier|final
-name|Log
-name|LOGGER
-init|=
-name|LogFactory
-operator|.
-name|getLog
-argument_list|(
-name|XMPUtilTest
-operator|.
-name|class
-argument_list|)
-decl_stmt|;
 comment|/**      * The PDF file that basically all operations are done upon.      */
 DECL|field|pdfFile
 specifier|private
@@ -535,7 +491,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * Write a manually constructed xmp-string to file      *      * @param xmpString      * @throws Exception      */
+comment|/**      * Write a manually constructed xmp-string to file      *      * @param xmpString      * @throws IOException      * @throws COSVisitorException      */
 DECL|method|writeManually (File tempFile, String xmpString)
 specifier|public
 name|void
@@ -548,7 +504,9 @@ name|String
 name|xmpString
 parameter_list|)
 throws|throws
-name|Exception
+name|IOException
+throws|,
+name|COSVisitorException
 block|{
 try|try
 init|(
@@ -1285,7 +1243,7 @@ name|privacyFilters
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Most basic test for reading.      */
+comment|/**      * Most basic test for reading.      * @throws IOException      * @throws COSVisitorException      */
 annotation|@
 name|Test
 DECL|method|testReadXMPSimple ()
@@ -1294,7 +1252,9 @@ name|void
 name|testReadXMPSimple
 parameter_list|()
 throws|throws
-name|Exception
+name|COSVisitorException
+throws|,
+name|IOException
 block|{
 name|String
 name|bibtex
@@ -1420,7 +1380,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Is UTF8 handling working? This is because Java by default uses the platform encoding or a special UTF-kind.      *      * @throws Exception      */
+comment|/**      * Is UTF8 handling working? This is because Java by default uses the platform encoding or a special UTF-kind.      * @throws IOException      * @throws COSVisitorException      */
 annotation|@
 name|Test
 DECL|method|testReadXMPUTF8 ()
@@ -1429,7 +1389,9 @@ name|void
 name|testReadXMPUTF8
 parameter_list|()
 throws|throws
-name|Exception
+name|COSVisitorException
+throws|,
+name|IOException
 block|{
 name|String
 name|bibtex
@@ -1847,7 +1809,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Are authors and editors correctly read?      *      * @throws Exception      */
+comment|/**      * Are authors and editors correctly read?      * @throws IOException      * @throws COSVisitorException      */
 annotation|@
 name|Test
 DECL|method|testReadXMPSeq ()
@@ -1856,7 +1818,9 @@ name|void
 name|testReadXMPSeq
 parameter_list|()
 throws|throws
-name|Exception
+name|COSVisitorException
+throws|,
+name|IOException
 block|{
 name|String
 name|bibtex
@@ -1996,7 +1960,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Is the XMPEntryType correctly set?      *      * @throws Exception      */
+comment|/**      * Is the XMPEntryType correctly set?      * @throws IOException      * @throws COSVisitorException      *      */
 annotation|@
 name|Test
 DECL|method|testReadXMPEntryType ()
@@ -2005,7 +1969,9 @@ name|void
 name|testReadXMPEntryType
 parameter_list|()
 throws|throws
-name|Exception
+name|COSVisitorException
+throws|,
+name|IOException
 block|{
 name|String
 name|bibtex
@@ -2193,7 +2159,7 @@ block|}
 end_class
 
 begin_comment
-comment|/**      * Test whether the helper function work correctly.      *      * @throws Exception      */
+comment|/**      * Test whether the helper function work correctly.      * @throws IOException      * @throws COSVisitorException      */
 end_comment
 
 begin_function
@@ -2205,7 +2171,9 @@ name|void
 name|testWriteReadManually
 parameter_list|()
 throws|throws
-name|Exception
+name|COSVisitorException
+throws|,
+name|IOException
 block|{
 name|String
 name|bibtex
@@ -2324,7 +2292,7 @@ block|}
 end_function
 
 begin_comment
-comment|/**      * Test that readXMP and writeXMP work together.      *      * @throws Exception      */
+comment|/**      * Test that readXMP and writeXMP work together.      * @throws IOException      * @throws TransformerException      *      */
 end_comment
 
 begin_function
@@ -2336,7 +2304,9 @@ name|void
 name|testReadWriteXMP
 parameter_list|()
 throws|throws
-name|Exception
+name|IOException
+throws|,
+name|TransformerException
 block|{
 name|ParserResult
 name|result
@@ -2479,7 +2449,7 @@ block|}
 end_function
 
 begin_comment
-comment|/**      * Are newlines in the XML processed correctly?      *      * @throws Exception      */
+comment|/**      * Are newlines in the XML processed correctly?      * @throws IOException      * @throws COSVisitorException      *      */
 end_comment
 
 begin_function
@@ -2491,7 +2461,9 @@ name|void
 name|testNewlineHandling
 parameter_list|()
 throws|throws
-name|Exception
+name|COSVisitorException
+throws|,
+name|IOException
 block|{
 name|String
 name|bibtex
@@ -2610,7 +2582,7 @@ block|}
 end_function
 
 begin_comment
-comment|/**      * Test whether XMP.readFile can deal with text-properties that are not element-nodes, but attribute-nodes      *      * @throws Exception      */
+comment|/**      * Test whether XMP.readFile can deal with text-properties that are not element-nodes, but attribute-nodes      * @throws IOException      * @throws COSVisitorException      *      */
 end_comment
 
 begin_function
@@ -2622,7 +2594,9 @@ name|void
 name|testAttributeRead
 parameter_list|()
 throws|throws
-name|Exception
+name|COSVisitorException
+throws|,
+name|IOException
 block|{
 comment|// test 1 has attributes
 name|String
@@ -6214,7 +6188,9 @@ name|void
 name|testReadRawXMP
 parameter_list|()
 throws|throws
-name|Exception
+name|IOException
+throws|,
+name|TransformerException
 block|{
 name|ParserResult
 name|result
@@ -6549,7 +6525,7 @@ block|}
 end_function
 
 begin_comment
-comment|/**      * Test whether the command-line client works correctly with writing a single entry      *      * @throws Exception      */
+comment|/**      * Test whether the command-line client works correctly with writing a single entry      * @throws IOException      * @throws TransformerException      * @throws COSVisitorException      *       */
 end_comment
 
 begin_function
@@ -6561,7 +6537,11 @@ name|void
 name|testCommandLineSingleBib
 parameter_list|()
 throws|throws
-name|Exception
+name|IOException
+throws|,
+name|TransformerException
+throws|,
+name|COSVisitorException
 block|{
 comment|// First check conversion from .bib to .xmp
 name|File
@@ -6732,7 +6712,7 @@ block|}
 end_function
 
 begin_comment
-comment|/**      * @depends XMPUtil.writeXMP      */
+comment|/**      * @throws IOException      * @throws TransformerException      * @throws COSVisitorException      * @depends XMPUtil.writeXMP      */
 end_comment
 
 begin_function
@@ -6744,7 +6724,11 @@ name|void
 name|testCommandLineSinglePdf
 parameter_list|()
 throws|throws
-name|Exception
+name|IOException
+throws|,
+name|TransformerException
+throws|,
+name|COSVisitorException
 block|{
 block|{
 comment|// Write XMP to file
@@ -7182,7 +7166,7 @@ block|}
 end_function
 
 begin_comment
-comment|/**      * Test whether the command-line client can pick one of several entries from a bibtex file      *      * @throws Exception      */
+comment|/**      * Test whether the command-line client can pick one of several entries from a bibtex file      * @throws IOException      * @throws TransformerException      *      */
 end_comment
 
 begin_function
@@ -7196,7 +7180,9 @@ name|void
 name|testCommandLineByKey
 parameter_list|()
 throws|throws
-name|Exception
+name|IOException
+throws|,
+name|TransformerException
 block|{
 name|File
 name|tempBib
@@ -7472,7 +7458,7 @@ block|}
 end_function
 
 begin_comment
-comment|/**      * Test whether the command-line client can deal with several bibtex entries.      */
+comment|/**      * Test whether the command-line client can deal with several bibtex entries.      * @throws IOException      * @throws TransformerException      */
 end_comment
 
 begin_function
@@ -7486,7 +7472,9 @@ name|void
 name|testCommandLineSeveral
 parameter_list|()
 throws|throws
-name|Exception
+name|IOException
+throws|,
+name|TransformerException
 block|{
 name|File
 name|tempBib
@@ -7724,7 +7712,7 @@ block|}
 end_function
 
 begin_comment
-comment|/**      * Test that readXMP and writeXMP work together.      *      * @throws Exception      */
+comment|/**      * Test that readXMP and writeXMP work together.      * @throws IOException      * @throws TransformerException      *      * @throws Exception      */
 end_comment
 
 begin_function
@@ -7736,7 +7724,9 @@ name|void
 name|testResolveStrings
 parameter_list|()
 throws|throws
-name|Exception
+name|IOException
+throws|,
+name|TransformerException
 block|{
 name|ParserResult
 name|original

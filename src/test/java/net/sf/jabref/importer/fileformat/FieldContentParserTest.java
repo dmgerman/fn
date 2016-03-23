@@ -134,8 +134,6 @@ specifier|public
 name|void
 name|unifiesLineBreaks
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|String
 name|original
@@ -190,8 +188,6 @@ specifier|public
 name|void
 name|retainsWhitespaceForMultiLineFields
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|String
 name|original
@@ -272,8 +268,6 @@ specifier|public
 name|void
 name|removeWhitespaceFromNonMultiLineFields
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|String
 name|original

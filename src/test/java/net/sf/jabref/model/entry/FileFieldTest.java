@@ -69,8 +69,6 @@ specifier|public
 name|void
 name|emptyListForEmptyInput
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|String
 name|emptyInput
@@ -120,8 +118,6 @@ specifier|public
 name|void
 name|parseCorrectInput
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|String
 name|input
@@ -163,8 +159,6 @@ specifier|public
 name|void
 name|ingoreMissingDescription
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|String
 name|input
@@ -206,8 +200,6 @@ specifier|public
 name|void
 name|interpreteLinkAsOnlyMandatoryField
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|String
 name|single
@@ -293,8 +285,6 @@ specifier|public
 name|void
 name|escapedCharactersInDescription
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|String
 name|input
@@ -336,8 +326,6 @@ specifier|public
 name|void
 name|handleXmlCharacters
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|String
 name|input
@@ -379,8 +367,6 @@ specifier|public
 name|void
 name|handleEscapedFilePath
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|String
 name|input
@@ -422,8 +408,6 @@ specifier|public
 name|void
 name|subsetOfFieldsResultsInFileLink
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|String
 name|descOnly
@@ -529,8 +513,6 @@ specifier|public
 name|void
 name|tooManySeparators
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|String
 name|input

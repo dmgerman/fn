@@ -49,8 +49,6 @@ specifier|public
 name|void
 name|testCleanFileName
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|Assert
 operator|.

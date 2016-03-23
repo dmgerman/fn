@@ -76,6 +76,16 @@ name|java
 operator|.
 name|net
 operator|.
+name|MalformedURLException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|net
+operator|.
 name|URL
 import|;
 end_import
@@ -161,7 +171,7 @@ name|void
 name|acceptPdfUrls
 parameter_list|()
 throws|throws
-name|Exception
+name|MalformedURLException
 block|{
 name|URL
 name|pdfUrl
@@ -226,7 +236,7 @@ name|void
 name|rejectNonPdfUrls
 parameter_list|()
 throws|throws
-name|Exception
+name|MalformedURLException
 block|{
 name|URL
 name|pdfUrl
