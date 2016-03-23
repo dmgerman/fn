@@ -168,6 +168,10 @@ name|BibEntry
 import|;
 end_import
 
+begin_comment
+comment|/**  * Class for finding PDF URLs for entries on IEEE  * Will first look for URLs of the type http://ieeexplore.ieee.org/stamp/stamp.jsp?[tp=&]arnumber=...  * If not found, will resolve the DOI, if it starts with 10.1109, and try to find a similar link on the HTML page  */
+end_comment
+
 begin_class
 DECL|class|IEEE
 specifier|public
@@ -203,7 +207,7 @@ name|Pattern
 operator|.
 name|compile
 argument_list|(
-literal|"(/stamp/stamp.jsp\\?tp=&arnumber=[0-9]+)"
+literal|"(/stamp/stamp.jsp\\?t?p?=?&?arnumber=[0-9]+)"
 argument_list|)
 decl_stmt|;
 DECL|field|PDF_PATTERN
@@ -261,6 +265,67 @@ argument_list|(
 name|entry
 argument_list|)
 expr_stmt|;
+name|String
+name|stampString
+init|=
+literal|""
+decl_stmt|;
+comment|// Try URL first -- will primarily work for entries from the old IEEE search
+if|if
+condition|(
+name|entry
+operator|.
+name|hasField
+argument_list|(
+literal|"url"
+argument_list|)
+condition|)
+block|{
+comment|// Is the URL a direct link to IEEE?
+name|Matcher
+name|matcher
+init|=
+name|STAMP_PATTERN
+operator|.
+name|matcher
+argument_list|(
+name|entry
+operator|.
+name|getField
+argument_list|(
+literal|"url"
+argument_list|)
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|matcher
+operator|.
+name|find
+argument_list|()
+condition|)
+block|{
+comment|// Found it
+name|stampString
+operator|=
+name|matcher
+operator|.
+name|group
+argument_list|(
+literal|1
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+comment|// If not, try DOI
+if|if
+condition|(
+name|stampString
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
 name|Optional
 argument_list|<
 name|DOI
@@ -281,13 +346,11 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|!
 name|doi
 operator|.
 name|isPresent
 argument_list|()
-operator|||
-operator|!
+operator|&&
 name|doi
 operator|.
 name|get
@@ -300,8 +363,7 @@ name|startsWith
 argument_list|(
 name|IEEE_DOI
 argument_list|)
-operator|||
-operator|!
+operator|&&
 name|doi
 operator|.
 name|get
@@ -314,13 +376,7 @@ name|isPresent
 argument_list|()
 condition|)
 block|{
-return|return
-name|Optional
-operator|.
-name|empty
-argument_list|()
-return|;
-block|}
+comment|// Download the HTML page from IEEE
 name|String
 name|resolvedDOIPage
 init|=
@@ -349,6 +405,7 @@ operator|.
 name|UTF_8
 argument_list|)
 decl_stmt|;
+comment|// Try to find the link
 name|Matcher
 name|matcher
 init|=
@@ -367,6 +424,36 @@ name|find
 argument_list|()
 condition|)
 block|{
+comment|// Found it
+name|stampString
+operator|=
+name|matcher
+operator|.
+name|group
+argument_list|(
+literal|1
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+block|}
+comment|// Any success?
+if|if
+condition|(
+name|stampString
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+return|return
+name|Optional
+operator|.
+name|empty
+argument_list|()
+return|;
+block|}
+comment|// Download the HTML page containing a frame with the PDF
 name|String
 name|framePage
 init|=
@@ -378,12 +465,7 @@ name|URL
 argument_list|(
 name|BASE_URL
 operator|+
-name|matcher
-operator|.
-name|group
-argument_list|(
-literal|1
-argument_list|)
+name|stampString
 argument_list|)
 argument_list|)
 operator|.
@@ -394,15 +476,17 @@ operator|.
 name|UTF_8
 argument_list|)
 decl_stmt|;
+comment|// Try to find the direct PDF link
+name|Matcher
 name|matcher
-operator|=
+init|=
 name|PDF_PATTERN
 operator|.
 name|matcher
 argument_list|(
 name|framePage
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 if|if
 condition|(
 name|matcher
@@ -411,6 +495,7 @@ name|find
 argument_list|()
 condition|)
 block|{
+comment|// The PDF was found
 name|LOGGER
 operator|.
 name|debug
@@ -435,7 +520,6 @@ argument_list|)
 argument_list|)
 argument_list|)
 return|;
-block|}
 block|}
 return|return
 name|Optional
