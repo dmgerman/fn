@@ -57,6 +57,9 @@ name|FILE_EDITOR
 block|,
 DECL|enumConstant|NUMERIC
 name|NUMERIC
+block|,
+DECL|enumConstant|PERSON_NAMES
+name|PERSON_NAMES
 block|;
 DECL|field|ALL_OPTS
 specifier|public
