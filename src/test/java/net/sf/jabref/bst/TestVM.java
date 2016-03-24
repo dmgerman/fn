@@ -3513,8 +3513,6 @@ name|testFormatName
 parameter_list|()
 throws|throws
 name|RecognitionException
-throws|,
-name|IOException
 block|{
 name|VM
 name|vm
