@@ -306,16 +306,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|BeforeClass
 import|;
 end_import
@@ -378,19 +368,7 @@ name|junit
 operator|.
 name|Assert
 operator|.
-name|assertEquals
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertTrue
+name|*
 import|;
 end_import
 
@@ -537,8 +515,6 @@ argument_list|(
 literal|""
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertNotNull
 argument_list|(
 name|parsed
@@ -576,8 +552,6 @@ argument_list|(
 literal|"@@article@@{{{{{{}"
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertNotNull
 argument_list|(
 name|parsed
@@ -691,8 +665,6 @@ operator|+
 literal|"  author={Norton Bar}}"
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|parsed
@@ -735,8 +707,6 @@ argument_list|(
 literal|""
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertNull
 argument_list|(
 name|parsed
@@ -761,8 +731,6 @@ argument_list|(
 literal|"@@article@@{{{{{{}"
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertNull
 argument_list|(
 name|parsed
@@ -2800,8 +2768,6 @@ literal|"}))"
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertNull
 argument_list|(
 name|result
@@ -3916,8 +3882,6 @@ literal|"@article{,author={Ed von Test}}"
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|result
@@ -4031,8 +3995,6 @@ literal|"@article{test,author={author missing bracket}"
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|result
@@ -4091,8 +4053,6 @@ literal|"@article{test,review={escaped \\{ bracket}}"
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertFalse
 argument_list|(
 name|result
@@ -4193,8 +4153,6 @@ literal|"@article{test,review={escaped \\} bracket}}"
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertFalse
 argument_list|(
 name|result
@@ -4295,8 +4253,6 @@ literal|"@article{test,author=\"author {missing bracket\"}"
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|result
@@ -4425,8 +4381,6 @@ literal|"@article{test,author={author bracket }, too much}"
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 literal|"There should be warnings"
@@ -4498,8 +4452,6 @@ literal|"@article{test,author={author bracket } too much}"
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 literal|"There should be warnings"
@@ -4968,8 +4920,6 @@ literal|"@article{test,author={Ed von Test} year=2005}"
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|result
@@ -5029,8 +4979,6 @@ literal|"@article{test,author={Ed von Test}}"
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|result
@@ -6122,8 +6070,6 @@ literal|"@string{bourdieu = {Other}}"
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|result
@@ -7225,8 +7171,6 @@ literal|"@article{test,author = {H\'{e}lne Fiaux}}"
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertFalse
 argument_list|(
 name|result
@@ -7328,8 +7272,6 @@ literal|"@preamble{some text and \\latex}@article{test,author = {H\'{e}lne Fiaux
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertFalse
 argument_list|(
 name|result
@@ -7444,8 +7386,6 @@ literal|"% Encoding: US-ASCII@preamble{some text and \\latex}"
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertFalse
 argument_list|(
 name|result

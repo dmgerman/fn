@@ -12,20 +12,6 @@ end_package
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Charsets
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|junit
@@ -75,6 +61,18 @@ operator|.
 name|io
 operator|.
 name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
 import|;
 end_import
 
@@ -350,24 +348,14 @@ throws|throws
 name|IOException
 block|{
 name|assertIndependenceOfPackages
-argument_list|(
-name|firstPackage
-argument_list|,
-name|secondPackage
-argument_list|)
+argument_list|()
 expr_stmt|;
 block|}
-DECL|method|assertIndependenceOfPackages (String firstPackage, String secondPackage)
+DECL|method|assertIndependenceOfPackages ()
 specifier|private
 name|void
 name|assertIndependenceOfPackages
-parameter_list|(
-name|String
-name|firstPackage
-parameter_list|,
-name|String
-name|secondPackage
-parameter_list|)
+parameter_list|()
 throws|throws
 name|IOException
 block|{
@@ -418,7 +406,7 @@ name|readAllLines
 argument_list|(
 name|p
 argument_list|,
-name|Charsets
+name|StandardCharsets
 operator|.
 name|UTF_8
 argument_list|)
@@ -474,7 +462,7 @@ name|readAllLines
 argument_list|(
 name|p
 argument_list|,
-name|Charsets
+name|StandardCharsets
 operator|.
 name|UTF_8
 argument_list|)

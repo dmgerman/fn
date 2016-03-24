@@ -228,16 +228,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Before
 import|;
 end_import
@@ -648,8 +638,6 @@ argument_list|,
 name|preferences
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"% Encoding: US-ASCII"
@@ -700,8 +688,6 @@ name|SavePreferences
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Globals
@@ -768,8 +754,6 @@ argument_list|,
 name|preferences
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"% Encoding: US-ASCII"
@@ -848,8 +832,6 @@ name|SavePreferences
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Globals
@@ -940,8 +922,6 @@ argument_list|,
 name|preferences
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"% Encoding: US-ASCII"
@@ -1008,8 +988,6 @@ name|SavePreferences
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Globals
@@ -1076,8 +1054,6 @@ argument_list|,
 name|preferences
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"% Encoding: US-ASCII"
@@ -1152,8 +1128,6 @@ name|SavePreferences
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Globals
@@ -1234,8 +1208,6 @@ argument_list|,
 name|preferences
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"% Encoding: US-ASCII"
@@ -1327,8 +1299,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// @formatter:off
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Globals
@@ -1455,8 +1425,6 @@ name|preferences
 argument_list|)
 expr_stmt|;
 comment|// @formatter:off
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"% Encoding: US-ASCII"
@@ -1554,8 +1522,6 @@ name|SavePreferences
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Globals
@@ -1630,8 +1596,6 @@ argument_list|,
 name|preferences
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"% Encoding: US-ASCII"
@@ -1723,8 +1687,6 @@ name|SavePreferences
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Globals
@@ -1876,8 +1838,6 @@ name|testBibtexFile
 argument_list|)
 init|)
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|scanner
@@ -1974,8 +1934,6 @@ name|SavePreferences
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"presaved serialization"
@@ -2073,8 +2031,6 @@ argument_list|,
 name|preferences
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Globals
@@ -2161,8 +2117,6 @@ name|SavePreferences
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"serialization"
@@ -2239,8 +2193,6 @@ argument_list|,
 name|preferences
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Globals

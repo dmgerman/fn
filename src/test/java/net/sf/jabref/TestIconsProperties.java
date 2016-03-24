@@ -136,6 +136,18 @@ name|junit
 operator|.
 name|Assert
 operator|.
+name|assertFalse
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
 name|assertTrue
 import|;
 end_import
@@ -207,13 +219,12 @@ name|reader
 argument_list|)
 expr_stmt|;
 block|}
-name|assertTrue
+name|assertFalse
 argument_list|(
 literal|"There must be loaded properties after loading "
 operator|+
 name|iconsPropertiesPath
 argument_list|,
-operator|!
 name|properties
 operator|.
 name|entrySet

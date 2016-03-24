@@ -850,7 +850,7 @@ return|return
 name|undoableFieldChanges
 return|;
 block|}
-DECL|method|addFieldChanges (List<FieldChange> undoableFieldChanges)
+DECL|method|addFieldChanges (List<FieldChange> newUndoableFieldChanges)
 specifier|public
 name|void
 name|addFieldChanges
@@ -859,7 +859,7 @@ name|List
 argument_list|<
 name|FieldChange
 argument_list|>
-name|undoableFieldChanges
+name|newUndoableFieldChanges
 parameter_list|)
 block|{
 name|this
@@ -868,7 +868,7 @@ name|undoableFieldChanges
 operator|.
 name|addAll
 argument_list|(
-name|undoableFieldChanges
+name|newUndoableFieldChanges
 argument_list|)
 expr_stmt|;
 block|}

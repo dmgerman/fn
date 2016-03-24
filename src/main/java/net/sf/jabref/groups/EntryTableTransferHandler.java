@@ -811,6 +811,8 @@ block|}
 catch|catch
 parameter_list|(
 name|UnsupportedFlavorException
+decl||
+name|ClassCastException
 name|ufe
 parameter_list|)
 block|{

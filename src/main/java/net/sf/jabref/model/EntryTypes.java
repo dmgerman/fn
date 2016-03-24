@@ -250,21 +250,6 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|addOrModifyCustomEntryType (CustomEntryType type)
-specifier|public
-name|void
-name|addOrModifyCustomEntryType
-parameter_list|(
-name|CustomEntryType
-name|type
-parameter_list|)
-block|{
-name|addOrModifyEntryType
-argument_list|(
-name|type
-argument_list|)
-expr_stmt|;
-block|}
 DECL|method|addOrModifyEntryType (EntryType type)
 specifier|private
 name|void

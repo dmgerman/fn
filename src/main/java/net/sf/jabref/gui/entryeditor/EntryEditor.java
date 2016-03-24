@@ -4923,15 +4923,21 @@ block|}
 comment|// See if the user has changed the entry type:
 if|if
 condition|(
+operator|!
+name|Objects
+operator|.
+name|equals
+argument_list|(
 name|newEntry
 operator|.
 name|getType
 argument_list|()
-operator|!=
+argument_list|,
 name|entry
 operator|.
 name|getType
 argument_list|()
+argument_list|)
 condition|)
 block|{
 name|compound

@@ -195,8 +195,8 @@ argument_list|)
 return|;
 block|}
 block|}
-comment|/**      * Runs the formatter on the specified field in the given entry.      *      * If the formatter returns an empty string, then the field is removed.      * @param field the field on which to run the formatter      * @param entry the entry to be cleaned up      * @return a list of changes of the entry      */
-DECL|method|cleanupSingleField (String field, BibEntry entry)
+comment|/**      * Runs the formatter on the specified field in the given entry.      *      * If the formatter returns an empty string, then the field is removed.      * @param fieldKey the field on which to run the formatter      * @param entry the entry to be cleaned up      * @return a list of changes of the entry      */
+DECL|method|cleanupSingleField (String fieldKey, BibEntry entry)
 specifier|private
 name|List
 argument_list|<
@@ -205,7 +205,7 @@ argument_list|>
 name|cleanupSingleField
 parameter_list|(
 name|String
-name|field
+name|fieldKey
 parameter_list|,
 name|BibEntry
 name|entry
@@ -218,7 +218,7 @@ name|entry
 operator|.
 name|hasField
 argument_list|(
-name|field
+name|fieldKey
 argument_list|)
 condition|)
 block|{
@@ -237,7 +237,7 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-name|field
+name|fieldKey
 argument_list|)
 decl_stmt|;
 comment|// Run formatter
@@ -282,7 +282,7 @@ name|entry
 operator|.
 name|clearField
 argument_list|(
-name|field
+name|fieldKey
 argument_list|)
 expr_stmt|;
 block|}
@@ -292,7 +292,7 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|field
+name|fieldKey
 argument_list|,
 name|newValue
 argument_list|)
@@ -306,7 +306,7 @@ name|FieldChange
 argument_list|(
 name|entry
 argument_list|,
-name|field
+name|fieldKey
 argument_list|,
 name|oldValue
 argument_list|,
