@@ -540,13 +540,6 @@ name|status
 argument_list|)
 decl_stmt|;
 comment|// Remove all empty entries
-if|if
-condition|(
-name|res
-operator|!=
-literal|null
-condition|)
-block|{
 name|BibDatabases
 operator|.
 name|purgeEmptyEntries
@@ -554,7 +547,6 @@ argument_list|(
 name|res
 argument_list|)
 expr_stmt|;
-block|}
 return|return
 name|res
 return|;
@@ -1826,20 +1818,6 @@ decl_stmt|;
 name|int
 name|entryCount
 decl_stmt|;
-if|if
-condition|(
-name|entries
-operator|==
-literal|null
-condition|)
-block|{
-name|entryCount
-operator|=
-literal|0
-expr_stmt|;
-block|}
-else|else
-block|{
 name|BibDatabases
 operator|.
 name|purgeEmptyEntries
@@ -1854,7 +1832,6 @@ operator|.
 name|size
 argument_list|()
 expr_stmt|;
-block|}
 if|if
 condition|(
 name|entryCount

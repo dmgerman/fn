@@ -238,11 +238,6 @@ name|preLine
 init|=
 literal|""
 decl_stmt|;
-DECL|field|in
-specifier|private
-name|BufferedReader
-name|in
-decl_stmt|;
 DECL|field|inOverviewSection
 specifier|private
 name|boolean
@@ -325,6 +320,8 @@ block|{
 comment|// read the first couple of lines
 comment|// NEP message usually contain the String 'NEP: New Economics Papers'
 comment|// or, they are from nep.repec.org
+try|try
+init|(
 name|BufferedReader
 name|inBR
 init|=
@@ -338,12 +335,13 @@ argument_list|(
 name|stream
 argument_list|)
 argument_list|)
-decl_stmt|;
-name|StringBuffer
+init|)
+block|{
+name|StringBuilder
 name|startOfMessage
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 name|String
@@ -414,6 +412,7 @@ literal|"nep.repec.org"
 argument_list|)
 return|;
 block|}
+block|}
 DECL|method|startsWithKeyword (Collection<String> keywords)
 specifier|private
 name|boolean
@@ -437,8 +436,8 @@ name|indexOf
 argument_list|(
 literal|':'
 argument_list|)
-operator|>
-literal|0
+operator|>=
+literal|1
 decl_stmt|;
 if|if
 condition|(
@@ -480,11 +479,14 @@ return|return
 name|result
 return|;
 block|}
-DECL|method|readLine ()
+DECL|method|readLine (BufferedReader in)
 specifier|private
 name|void
 name|readLine
-parameter_list|()
+parameter_list|(
+name|BufferedReader
+name|in
+parameter_list|)
 throws|throws
 name|IOException
 block|{
@@ -505,8 +507,6 @@ name|this
 operator|.
 name|lastLine
 operator|=
-name|this
-operator|.
 name|in
 operator|.
 name|readLine
@@ -514,19 +514,22 @@ argument_list|()
 expr_stmt|;
 block|}
 comment|/**      * Read multiple lines.      *      *<p>Reads multiple lines until either      *<ul>      *<li>an empty line</li>      *<li>the end of file</li>      *<li>the next working paper or</li>      *<li>a keyword</li>      *</ul>      * is found. Whitespace at start or end of lines is trimmed except for one blank character.</p>      *      * @return  result      */
-DECL|method|readMultipleLines ()
+DECL|method|readMultipleLines (BufferedReader in)
 specifier|private
 name|String
 name|readMultipleLines
-parameter_list|()
+parameter_list|(
+name|BufferedReader
+name|in
+parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|StringBuffer
+name|StringBuilder
 name|result
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|(
 name|this
 operator|.
@@ -537,7 +540,9 @@ argument_list|()
 argument_list|)
 decl_stmt|;
 name|readLine
-argument_list|()
+argument_list|(
+name|in
+argument_list|)
 expr_stmt|;
 while|while
 condition|(
@@ -604,7 +609,9 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 name|readLine
-argument_list|()
+argument_list|(
+name|in
+argument_list|)
 expr_stmt|;
 block|}
 return|return
@@ -615,13 +622,16 @@ argument_list|()
 return|;
 block|}
 comment|/**      * Implements grammar rule "TitleString".      *      * @param be      * @throws IOException      */
-DECL|method|parseTitleString (BibEntry be)
+DECL|method|parseTitleString (BibEntry be, BufferedReader in)
 specifier|private
 name|void
 name|parseTitleString
 parameter_list|(
 name|BibEntry
 name|be
+parameter_list|,
+name|BufferedReader
+name|in
 parameter_list|)
 throws|throws
 name|IOException
@@ -663,18 +673,23 @@ argument_list|(
 literal|"title"
 argument_list|,
 name|readMultipleLines
-argument_list|()
+argument_list|(
+name|in
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Implements grammer rule "Authors"      *      * @param be      * @throws IOException      */
-DECL|method|parseAuthors (BibEntry be)
+comment|/**      * Implements grammar rule "Authors"      *      * @param be      * @throws IOException      */
+DECL|method|parseAuthors (BibEntry be, BufferedReader in)
 specifier|private
 name|void
 name|parseAuthors
 parameter_list|(
 name|BibEntry
 name|be
+parameter_list|,
+name|BufferedReader
+name|in
 parameter_list|)
 throws|throws
 name|IOException
@@ -691,11 +706,11 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
-name|StringBuffer
+name|StringBuilder
 name|institutions
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 while|while
@@ -731,11 +746,11 @@ comment|// read single author
 name|String
 name|author
 decl_stmt|;
-name|StringBuffer
+name|StringBuilder
 name|institution
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 name|boolean
@@ -788,8 +803,8 @@ name|indexOf
 argument_list|(
 literal|')'
 argument_list|)
-operator|>
-literal|0
+operator|>=
+literal|1
 expr_stmt|;
 name|institution
 operator|.
@@ -889,7 +904,9 @@ literal|true
 expr_stmt|;
 block|}
 name|readLine
-argument_list|()
+argument_list|(
+name|in
+argument_list|)
 expr_stmt|;
 while|while
 condition|(
@@ -915,8 +932,8 @@ name|indexOf
 argument_list|(
 literal|')'
 argument_list|)
-operator|>
-literal|0
+operator|>=
+literal|1
 expr_stmt|;
 name|institution
 operator|.
@@ -954,7 +971,9 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 name|readLine
-argument_list|()
+argument_list|(
+name|in
+argument_list|)
 expr_stmt|;
 block|}
 name|authors
@@ -1053,13 +1072,16 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * Implements grammar rule "Abstract".      *      * @param be      * @throws IOException      */
-DECL|method|parseAbstract (BibEntry be)
+DECL|method|parseAbstract (BibEntry be, BufferedReader in)
 specifier|private
 name|void
 name|parseAbstract
 parameter_list|(
 name|BibEntry
 name|be
+parameter_list|,
+name|BufferedReader
+name|in
 parameter_list|)
 throws|throws
 name|IOException
@@ -1068,7 +1090,9 @@ name|String
 name|theabstract
 init|=
 name|readMultipleLines
-argument_list|()
+argument_list|(
+name|in
+argument_list|)
 decl_stmt|;
 if|if
 condition|(
@@ -1093,7 +1117,7 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * Implements grammar rule "AdditionalFields".      *      * @param be      * @throws IOException      */
-DECL|method|parseAdditionalFields (BibEntry be, boolean multilineUrlFieldAllowed)
+DECL|method|parseAdditionalFields (BibEntry be, boolean multilineUrlFieldAllowed, BufferedReader in)
 specifier|private
 name|void
 name|parseAdditionalFields
@@ -1103,6 +1127,9 @@ name|be
 parameter_list|,
 name|boolean
 name|multilineUrlFieldAllowed
+parameter_list|,
+name|BufferedReader
+name|in
 parameter_list|)
 throws|throws
 name|IOException
@@ -1132,7 +1159,9 @@ argument_list|)
 condition|)
 block|{
 name|readLine
-argument_list|()
+argument_list|(
+name|in
+argument_list|)
 expr_stmt|;
 block|}
 comment|// read other fields
@@ -1264,7 +1293,9 @@ name|String
 name|content
 init|=
 name|readMultipleLines
-argument_list|()
+argument_list|(
+name|in
+argument_list|)
 decl_stmt|;
 name|String
 index|[]
@@ -1309,7 +1340,9 @@ argument_list|(
 literal|"jel"
 argument_list|,
 name|readMultipleLines
-argument_list|()
+argument_list|(
+name|in
+argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// parse date field
@@ -1334,7 +1367,9 @@ name|String
 name|content
 init|=
 name|readMultipleLines
-argument_list|()
+argument_list|(
+name|in
+argument_list|)
 decl_stmt|;
 name|String
 index|[]
@@ -1560,7 +1595,9 @@ block|{
 name|content
 operator|=
 name|readMultipleLines
-argument_list|()
+argument_list|(
+name|in
+argument_list|)
 expr_stmt|;
 block|}
 else|else
@@ -1572,7 +1609,9 @@ operator|.
 name|lastLine
 expr_stmt|;
 name|readLine
-argument_list|()
+argument_list|(
+name|in
+argument_list|)
 expr_stmt|;
 block|}
 name|be
@@ -1601,13 +1640,17 @@ comment|// parse authors
 name|parseAuthors
 argument_list|(
 name|be
+argument_list|,
+name|in
 argument_list|)
 expr_stmt|;
 block|}
 else|else
 block|{
 name|readLine
-argument_list|()
+argument_list|(
+name|in
+argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -1667,7 +1710,7 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|ArrayList
+name|List
 argument_list|<
 name|BibEntry
 argument_list|>
@@ -1690,11 +1733,10 @@ operator|=
 literal|0
 expr_stmt|;
 try|try
-block|{
-name|this
-operator|.
+init|(
+name|BufferedReader
 name|in
-operator|=
+init|=
 operator|new
 name|BufferedReader
 argument_list|(
@@ -1705,9 +1747,12 @@ argument_list|(
 name|stream
 argument_list|)
 argument_list|)
-expr_stmt|;
+init|)
+block|{
 name|readLine
-argument_list|()
+argument_list|(
+name|in
+argument_list|)
 expr_stmt|;
 comment|// skip header and editor information
 while|while
@@ -1793,6 +1838,8 @@ expr_stmt|;
 name|parseTitleString
 argument_list|(
 name|be
+argument_list|,
+name|in
 argument_list|)
 expr_stmt|;
 if|if
@@ -1810,22 +1857,30 @@ argument_list|(
 name|be
 argument_list|,
 literal|false
+argument_list|,
+name|in
 argument_list|)
 expr_stmt|;
 block|}
 else|else
 block|{
 name|readLine
-argument_list|()
+argument_list|(
+name|in
+argument_list|)
 expr_stmt|;
 comment|// skip empty line
 name|parseAuthors
 argument_list|(
 name|be
+argument_list|,
+name|in
 argument_list|)
 expr_stmt|;
 name|readLine
-argument_list|()
+argument_list|(
+name|in
+argument_list|)
 expr_stmt|;
 comment|// skip empty line
 block|}
@@ -1843,6 +1898,8 @@ block|{
 name|parseAbstract
 argument_list|(
 name|be
+argument_list|,
+name|in
 argument_list|)
 expr_stmt|;
 block|}
@@ -1851,6 +1908,8 @@ argument_list|(
 name|be
 argument_list|,
 literal|true
+argument_list|,
+name|in
 argument_list|)
 expr_stmt|;
 name|bibitems
@@ -1876,7 +1935,9 @@ operator|.
 name|lastLine
 expr_stmt|;
 name|readLine
-argument_list|()
+argument_list|(
+name|in
+argument_list|)
 expr_stmt|;
 block|}
 block|}

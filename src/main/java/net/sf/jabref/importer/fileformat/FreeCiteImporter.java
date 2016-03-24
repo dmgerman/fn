@@ -126,6 +126,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|List
 import|;
 end_import
@@ -532,7 +542,10 @@ name|e
 argument_list|)
 expr_stmt|;
 return|return
-literal|null
+name|Collections
+operator|.
+name|emptyList
+argument_list|()
 return|;
 block|}
 catch|catch
@@ -551,7 +564,10 @@ name|e
 argument_list|)
 expr_stmt|;
 return|return
-literal|null
+name|Collections
+operator|.
+name|emptyList
+argument_list|()
 return|;
 block|}
 try|try
@@ -648,9 +664,11 @@ argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
-return|return
-literal|null
-return|;
+name|Collections
+operator|.
+name|emptyList
+argument_list|()
+expr_stmt|;
 block|}
 comment|// output is in conn.getInputStream();
 comment|// new InputStreamReader(conn.getInputStream())
@@ -1333,7 +1351,10 @@ name|ex
 argument_list|)
 expr_stmt|;
 return|return
-literal|null
+name|Collections
+operator|.
+name|emptyList
+argument_list|()
 return|;
 block|}
 return|return

@@ -88,6 +88,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|ArrayList
 import|;
 end_import
@@ -372,10 +382,10 @@ name|i
 operator|++
 expr_stmt|;
 block|}
+block|}
 return|return
 literal|false
 return|;
-block|}
 block|}
 comment|/**      * Parse the entries in the source, and return a List of BibEntry      * objects.      */
 annotation|@
@@ -397,7 +407,7 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|ArrayList
+name|List
 argument_list|<
 name|BibEntry
 argument_list|>
@@ -415,6 +425,8 @@ operator|new
 name|StringBuilder
 argument_list|()
 decl_stmt|;
+try|try
+init|(
 name|BufferedReader
 name|in
 init|=
@@ -428,7 +440,8 @@ argument_list|(
 name|stream
 argument_list|)
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|String
 name|line
 decl_stmt|;
@@ -489,6 +502,7 @@ literal|'\n'
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 name|String
 index|[]
 name|items
@@ -520,7 +534,7 @@ name|i
 operator|++
 control|)
 block|{
-name|HashMap
+name|Map
 argument_list|<
 name|String
 argument_list|,

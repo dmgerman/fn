@@ -267,12 +267,10 @@ name|getTabbedPane
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|PositionWindow
-operator|.
-name|placeDialog
-argument_list|(
 name|dialog
-argument_list|,
+operator|.
+name|setLocationRelativeTo
+argument_list|(
 name|jabRefFrame
 argument_list|)
 expr_stmt|;

@@ -397,11 +397,14 @@ argument_list|)
 expr_stmt|;
 comment|// When you're done, report the results stored by your handler object
 name|bibItems
-operator|=
+operator|.
+name|addAll
+argument_list|(
 name|handler
 operator|.
 name|getItems
 argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 catch|catch

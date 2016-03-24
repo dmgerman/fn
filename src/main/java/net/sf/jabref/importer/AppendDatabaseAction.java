@@ -504,12 +504,10 @@ argument_list|,
 literal|true
 argument_list|)
 decl_stmt|;
-name|PositionWindow
-operator|.
-name|placeDialog
-argument_list|(
 name|md
-argument_list|,
+operator|.
+name|setLocationRelativeTo
+argument_list|(
 name|panel
 argument_list|)
 expr_stmt|;

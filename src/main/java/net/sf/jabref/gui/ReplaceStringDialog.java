@@ -1141,12 +1141,10 @@ name|pack
 argument_list|()
 expr_stmt|;
 comment|//setSize(400, 170);
-name|PositionWindow
-operator|.
-name|placeDialog
-argument_list|(
 name|this
-argument_list|,
+operator|.
+name|setLocationRelativeTo
+argument_list|(
 name|parent
 argument_list|)
 expr_stmt|;

@@ -581,12 +581,10 @@ argument_list|,
 name|dbs
 argument_list|)
 expr_stmt|;
-name|PositionWindow
-operator|.
-name|placeDialog
-argument_list|(
 name|dbd
-argument_list|,
+operator|.
+name|setLocationRelativeTo
+argument_list|(
 name|frame
 argument_list|)
 expr_stmt|;
