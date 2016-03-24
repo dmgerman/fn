@@ -144,6 +144,7 @@ operator|.
 name|isPresent
 argument_list|()
 operator|&&
+operator|!
 name|type
 operator|.
 name|get

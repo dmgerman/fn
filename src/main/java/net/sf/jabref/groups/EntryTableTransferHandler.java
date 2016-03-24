@@ -1751,6 +1751,9 @@ argument_list|(
 name|fileName
 argument_list|,
 name|fileType
+operator|.
+name|get
+argument_list|()
 argument_list|,
 name|entryTable
 argument_list|,

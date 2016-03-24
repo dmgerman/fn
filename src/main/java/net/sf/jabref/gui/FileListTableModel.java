@@ -780,9 +780,11 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|!
 name|type
-operator|==
-literal|null
+operator|.
+name|isPresent
+argument_list|()
 condition|)
 block|{
 comment|// No type could be found from mime type on the extension:

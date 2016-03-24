@@ -786,18 +786,6 @@ operator|.
 name|getExtension
 argument_list|()
 expr_stmt|;
-if|if
-condition|(
-name|suffix
-operator|==
-literal|null
-condition|)
-block|{
-name|suffix
-operator|=
-literal|""
-expr_stmt|;
-block|}
 block|}
 else|else
 block|{
@@ -1773,13 +1761,10 @@ operator|.
 name|getInstance
 argument_list|()
 operator|.
-name|getExternalFileTypeByExt
+name|isExternalFileTypeByExt
 argument_list|(
 name|suffix
 argument_list|)
-operator|.
-name|isPresent
-argument_list|()
 condition|)
 block|{
 comment|// If the suffix doesn't seem to give any reasonable file type, try
