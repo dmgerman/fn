@@ -194,9 +194,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
-operator|.
-name|InternalBibtexFields
+name|JabRefPreferences
 import|;
 end_import
 
@@ -208,7 +206,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|JabRefPreferences
+name|bibtex
+operator|.
+name|InternalBibtexFields
 import|;
 end_import
 

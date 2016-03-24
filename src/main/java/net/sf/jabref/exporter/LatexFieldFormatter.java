@@ -36,7 +36,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
+name|bibtex
 operator|.
 name|InternalBibtexFields
 import|;

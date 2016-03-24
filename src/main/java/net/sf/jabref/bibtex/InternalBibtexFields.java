@@ -60,7 +60,7 @@ comment|//            export/import of some definition from/to a xml file
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref.gui
+DECL|package|net.sf.jabref.bibtex
 package|package
 name|net
 operator|.
@@ -68,7 +68,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
+name|bibtex
 package|;
 end_package
 
@@ -204,34 +204,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|bibtex
-operator|.
-name|BibtexSingleField
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|bibtex
-operator|.
-name|BibtexSingleFieldProperties
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|model
 operator|.
 name|entry
@@ -330,6 +302,15 @@ name|String
 name|ENTRYTYPE
 init|=
 literal|"entrytype"
+decl_stmt|;
+DECL|field|NUMBER_COL
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|NUMBER_COL
+init|=
+literal|"#"
 decl_stmt|;
 DECL|field|DEFAULT_INSPECTION_FIELDS
 specifier|public
@@ -1479,7 +1460,7 @@ operator|=
 operator|new
 name|BibtexSingleField
 argument_list|(
-name|GUIGlobals
+name|InternalBibtexFields
 operator|.
 name|NUMBER_COL
 argument_list|,
