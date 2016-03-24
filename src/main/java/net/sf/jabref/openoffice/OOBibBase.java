@@ -1702,7 +1702,10 @@ block|}
 block|}
 DECL|method|getCustomProperty (String property)
 specifier|public
+name|Optional
+argument_list|<
 name|String
+argument_list|>
 name|getCustomProperty
 parameter_list|(
 name|String
@@ -1727,6 +1730,10 @@ argument_list|)
 condition|)
 block|{
 return|return
+name|Optional
+operator|.
+name|ofNullable
+argument_list|(
 name|propertySet
 operator|.
 name|getPropertyValue
@@ -1736,14 +1743,15 @@ argument_list|)
 operator|.
 name|toString
 argument_list|()
+argument_list|)
 return|;
 block|}
-else|else
-block|{
 return|return
-literal|null
+name|Optional
+operator|.
+name|empty
+argument_list|()
 return|;
-block|}
 block|}
 DECL|method|updateSortedReferenceMarks ()
 specifier|public
@@ -6832,7 +6840,10 @@ name|Exception
 block|{
 comment|// Check if there is "page info" stored for this citation. If so, insert it into
 comment|// the citation text before inserting the citation:
+name|Optional
+argument_list|<
 name|String
+argument_list|>
 name|pageInfo
 init|=
 name|getCustomProperty
@@ -6847,12 +6858,16 @@ if|if
 condition|(
 operator|(
 name|pageInfo
-operator|!=
-literal|null
+operator|.
+name|isPresent
+argument_list|()
 operator|)
 operator|&&
 operator|!
 name|pageInfo
+operator|.
+name|get
+argument_list|()
 operator|.
 name|isEmpty
 argument_list|()
@@ -6867,6 +6882,9 @@ argument_list|(
 name|citationText
 argument_list|,
 name|pageInfo
+operator|.
+name|get
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

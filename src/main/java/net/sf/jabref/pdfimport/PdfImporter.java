@@ -408,20 +408,6 @@ name|jabref
 operator|.
 name|importer
 operator|.
-name|OutputPrinter
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|importer
-operator|.
 name|fileformat
 operator|.
 name|PdfContentImporter
@@ -740,7 +726,7 @@ return|;
 block|}
 block|}
 comment|/**      *      * Imports the PDF files given by fileNames      *      * @param fileNames states the names of the files to import      * @return list of successful created BibTeX entries and list of non-PDF files      */
-DECL|method|importPdfFiles (String[] fileNames, OutputPrinter status)
+DECL|method|importPdfFiles (String[] fileNames)
 specifier|public
 name|ImportPdfFilesResult
 name|importPdfFiles
@@ -748,9 +734,6 @@ parameter_list|(
 name|String
 index|[]
 name|fileNames
-parameter_list|,
-name|OutputPrinter
-name|status
 parameter_list|)
 block|{
 comment|// sort fileNames in PDFfiles to import and other files
@@ -838,8 +821,6 @@ init|=
 name|importPdfFiles
 argument_list|(
 name|files
-argument_list|,
-name|status
 argument_list|)
 decl_stmt|;
 return|return
@@ -853,7 +834,7 @@ argument_list|)
 return|;
 block|}
 comment|/**      * @param fileNames - PDF files to import      * @return true if the import succeeded, false otherwise      */
-DECL|method|importPdfFiles (List<String> fileNames, OutputPrinter status)
+DECL|method|importPdfFiles (List<String> fileNames)
 specifier|private
 name|List
 argument_list|<
@@ -866,9 +847,6 @@ argument_list|<
 name|String
 argument_list|>
 name|fileNames
-parameter_list|,
-name|OutputPrinter
-name|status
 parameter_list|)
 block|{
 if|if
@@ -1061,8 +1039,6 @@ argument_list|(
 name|fileName
 argument_list|,
 name|res
-argument_list|,
-name|status
 argument_list|)
 expr_stmt|;
 break|break;
@@ -1406,7 +1382,7 @@ return|return
 name|newEntry
 return|;
 block|}
-DECL|method|doContentImport (String fileName, List<BibEntry> res, OutputPrinter status)
+DECL|method|doContentImport (String fileName, List<BibEntry> res)
 specifier|private
 name|void
 name|doContentImport
@@ -1419,9 +1395,6 @@ argument_list|<
 name|BibEntry
 argument_list|>
 name|res
-parameter_list|,
-name|OutputPrinter
-name|status
 parameter_list|)
 block|{
 name|File
@@ -1471,7 +1444,7 @@ name|importEntries
 argument_list|(
 name|in
 argument_list|,
-name|status
+name|frame
 argument_list|)
 expr_stmt|;
 if|if
