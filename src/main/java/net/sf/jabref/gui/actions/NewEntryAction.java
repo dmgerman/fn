@@ -384,12 +384,10 @@ argument_list|(
 name|jabRefFrame
 argument_list|)
 decl_stmt|;
-name|PositionWindow
-operator|.
-name|placeDialog
-argument_list|(
 name|etd
-argument_list|,
+operator|.
+name|setLocationRelativeTo
+argument_list|(
 name|jabRefFrame
 argument_list|)
 expr_stmt|;
