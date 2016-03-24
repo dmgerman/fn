@@ -114,9 +114,10 @@ decl_stmt|;
 if|if
 condition|(
 name|type
-operator|==
+operator|!=
 literal|null
 operator|&&
+operator|!
 name|type
 operator|.
 name|getOpenWithApplication
