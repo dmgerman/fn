@@ -36,6 +36,18 @@ name|IOException
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|file
+operator|.
+name|Paths
+import|;
+end_import
+
 begin_class
 DECL|class|Windows
 specifier|public
@@ -184,25 +196,6 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|String
-name|escapedLink
-init|=
-name|filePath
-operator|.
-name|replace
-argument_list|(
-literal|"&"
-argument_list|,
-literal|"\"&\""
-argument_list|)
-operator|.
-name|replace
-argument_list|(
-literal|" "
-argument_list|,
-literal|"\" \""
-argument_list|)
-decl_stmt|;
 name|Runtime
 operator|.
 name|getRuntime
@@ -210,11 +203,21 @@ argument_list|()
 operator|.
 name|exec
 argument_list|(
+name|Paths
+operator|.
+name|get
+argument_list|(
 name|application
+argument_list|)
 operator|+
 literal|" "
 operator|+
-name|escapedLink
+name|Paths
+operator|.
+name|get
+argument_list|(
+name|filePath
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
