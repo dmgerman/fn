@@ -1015,7 +1015,62 @@ name|String
 argument_list|>
 name|origPageInfo
 decl_stmt|;
-DECL|method|CitEntry (String refMarkName, String context, Optional<String> optional)
+comment|// Only used for testing...
+DECL|method|CitEntry (String refMarkName, String context)
+specifier|public
+name|CitEntry
+parameter_list|(
+name|String
+name|refMarkName
+parameter_list|,
+name|String
+name|context
+parameter_list|)
+block|{
+name|this
+argument_list|(
+name|refMarkName
+argument_list|,
+name|context
+argument_list|,
+name|Optional
+operator|.
+name|empty
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+comment|// Only used for testing...
+DECL|method|CitEntry (String refMarkName, String context, String pageInfo)
+specifier|public
+name|CitEntry
+parameter_list|(
+name|String
+name|refMarkName
+parameter_list|,
+name|String
+name|context
+parameter_list|,
+name|String
+name|pageInfo
+parameter_list|)
+block|{
+name|this
+argument_list|(
+name|refMarkName
+argument_list|,
+name|context
+argument_list|,
+name|Optional
+operator|.
+name|ofNullable
+argument_list|(
+name|pageInfo
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|CitEntry (String refMarkName, String context, Optional<String> pageInfo)
 specifier|public
 name|CitEntry
 parameter_list|(
@@ -1029,7 +1084,7 @@ name|Optional
 argument_list|<
 name|String
 argument_list|>
-name|optional
+name|pageInfo
 parameter_list|)
 block|{
 name|this
@@ -1048,13 +1103,13 @@ name|this
 operator|.
 name|pageInfo
 operator|=
-name|optional
+name|pageInfo
 expr_stmt|;
 name|this
 operator|.
 name|origPageInfo
 operator|=
-name|optional
+name|pageInfo
 expr_stmt|;
 block|}
 DECL|method|getPageInfo ()
@@ -1232,21 +1287,23 @@ return|return
 name|context
 return|;
 block|}
-DECL|method|setPageInfo (Optional<String> trim)
+DECL|method|setPageInfo (String trim)
 specifier|public
 name|void
 name|setPageInfo
 parameter_list|(
-name|Optional
-argument_list|<
 name|String
-argument_list|>
 name|trim
 parameter_list|)
 block|{
 name|pageInfo
 operator|=
+name|Optional
+operator|.
+name|ofNullable
+argument_list|(
 name|trim
+argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -1746,10 +1803,7 @@ name|entry
 operator|.
 name|setPageInfo
 argument_list|(
-name|Optional
-operator|.
-name|empty
-argument_list|()
+literal|null
 argument_list|)
 expr_stmt|;
 block|}
@@ -1759,10 +1813,6 @@ name|entry
 operator|.
 name|setPageInfo
 argument_list|(
-name|Optional
-operator|.
-name|of
-argument_list|(
 name|pageInfo
 operator|.
 name|getText
@@ -1770,7 +1820,6 @@ argument_list|()
 operator|.
 name|trim
 argument_list|()
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

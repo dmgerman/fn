@@ -410,10 +410,6 @@ operator|.
 name|importPdfFiles
 argument_list|(
 name|fileNames
-argument_list|,
-name|JabRef
-operator|.
-name|jrf
 argument_list|)
 decl_stmt|;
 assert|assert
@@ -443,7 +439,7 @@ literal|0
 argument_list|)
 argument_list|)
 return|;
-comment|/*addEntryDataFromPDDocumentInformation(pdfFile, entry);         addEntryDataFromXMP(pdfFile, entry);                  if (entry.getField("title") == null) {         	entry.setField("title", pdfFile.getName());         }                  return entry;*/
+comment|/*addEntryDataFromPDDocumentInformation(pdfFile, entry);         addEntryDataFromXMP(pdfFile, entry);          if (entry.getField("title") == null) {         	entry.setField("title", pdfFile.getName());         }          return entry;*/
 block|}
 comment|/** Adds entry data read from the PDDocument information of the file.      * @param pdfFile      * @param entry      */
 DECL|method|addEntryDataFromPDDocumentInformation (File pdfFile, BibEntry entry)

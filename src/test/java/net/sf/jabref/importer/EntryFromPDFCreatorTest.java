@@ -36,7 +36,33 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|JabRef
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|JabRefPreferences
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|JabRefFrame
 import|;
 end_import
 
@@ -97,6 +123,18 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|org
+operator|.
+name|mockito
+operator|.
+name|Mockito
+operator|.
+name|mock
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -150,6 +188,18 @@ operator|=
 operator|new
 name|EntryFromPDFCreator
 argument_list|()
+expr_stmt|;
+comment|// Needed for PdfImporter - still not enough
+name|JabRef
+operator|.
+name|jrf
+operator|=
+name|mock
+argument_list|(
+name|JabRefFrame
+operator|.
+name|class
+argument_list|)
 expr_stmt|;
 block|}
 annotation|@
@@ -211,12 +261,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-DECL|method|testCreationOfEntry ()
+DECL|method|testCreationOfEntryNoPDF ()
 specifier|public
 name|void
-name|testCreationOfEntry
+name|testCreationOfEntryNoPDF
 parameter_list|()
 block|{
 name|Optional
@@ -246,8 +294,23 @@ name|isPresent
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
+annotation|@
+name|Test
+annotation|@
+name|Ignore
+DECL|method|testCreationOfEntryNotInDatabase ()
+specifier|public
+name|void
+name|testCreationOfEntryNotInDatabase
+parameter_list|()
+block|{
+name|Optional
+argument_list|<
+name|BibEntry
+argument_list|>
 name|entry
-operator|=
+init|=
 name|entryCreator
 operator|.
 name|createEntry
@@ -258,7 +321,7 @@ name|FILE_NOT_IN_DATABASE
 argument_list|,
 literal|false
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|Assert
 operator|.
 name|assertTrue
