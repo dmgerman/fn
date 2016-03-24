@@ -1325,11 +1325,6 @@ name|entry
 operator|.
 name|getOpenWithApplication
 argument_list|()
-operator|.
-name|orElse
-argument_list|(
-literal|""
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|icon

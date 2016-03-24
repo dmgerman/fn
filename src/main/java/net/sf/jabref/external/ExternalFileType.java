@@ -505,10 +505,7 @@ return|;
 block|}
 DECL|method|getOpenWithApplication ()
 specifier|public
-name|Optional
-argument_list|<
 name|String
-argument_list|>
 name|getOpenWithApplication
 parameter_list|()
 block|{
@@ -525,19 +522,11 @@ argument_list|()
 condition|)
 block|{
 return|return
-name|Optional
-operator|.
-name|empty
-argument_list|()
+literal|""
 return|;
 block|}
 return|return
-name|Optional
-operator|.
-name|of
-argument_list|(
 name|openWith
-argument_list|)
 return|;
 block|}
 DECL|method|setOpenWith (String openWith)

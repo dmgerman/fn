@@ -1033,10 +1033,7 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|Optional
-argument_list|<
 name|String
-argument_list|>
 name|application
 init|=
 name|fileType
@@ -1046,10 +1043,9 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-operator|!
 name|application
 operator|.
-name|isPresent
+name|isEmpty
 argument_list|()
 condition|)
 block|{
@@ -1075,9 +1071,6 @@ argument_list|(
 name|filePath
 argument_list|,
 name|application
-operator|.
-name|get
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

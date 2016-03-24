@@ -130,13 +130,12 @@ name|type
 operator|==
 literal|null
 operator|||
-operator|!
 name|type
 operator|.
 name|getOpenWithApplication
 argument_list|()
 operator|.
-name|isPresent
+name|isEmpty
 argument_list|()
 condition|)
 block|{
@@ -152,9 +151,6 @@ operator|=
 name|type
 operator|.
 name|getOpenWithApplication
-argument_list|()
-operator|.
-name|get
 argument_list|()
 expr_stmt|;
 block|}

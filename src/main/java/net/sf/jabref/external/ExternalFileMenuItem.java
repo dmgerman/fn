@@ -614,15 +614,14 @@ operator|!=
 literal|null
 operator|)
 operator|&&
-operator|(
+operator|!
 name|fileType
 operator|.
 name|getOpenWithApplication
 argument_list|()
 operator|.
-name|isPresent
+name|isEmpty
 argument_list|()
-operator|)
 operator|&&
 name|e1
 operator|.
@@ -634,9 +633,6 @@ argument_list|(
 name|fileType
 operator|.
 name|getOpenWithApplication
-argument_list|()
-operator|.
-name|get
 argument_list|()
 argument_list|)
 condition|)
@@ -658,9 +654,6 @@ argument_list|,
 name|fileType
 operator|.
 name|getOpenWithApplication
-argument_list|()
-operator|.
-name|get
 argument_list|()
 argument_list|,
 name|fileType
