@@ -106,6 +106,16 @@ name|File
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
 begin_class
 DECL|class|EntryFromPDFCreatorTest
 specifier|public
@@ -209,7 +219,10 @@ name|void
 name|testCreationOfEntry
 parameter_list|()
 block|{
+name|Optional
+argument_list|<
 name|BibEntry
+argument_list|>
 name|entry
 init|=
 name|entryCreator
@@ -225,9 +238,12 @@ argument_list|)
 decl_stmt|;
 name|Assert
 operator|.
-name|assertNull
+name|assertFalse
 argument_list|(
 name|entry
+operator|.
+name|isPresent
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|entry
@@ -245,9 +261,12 @@ argument_list|)
 expr_stmt|;
 name|Assert
 operator|.
-name|assertNotNull
+name|assertTrue
 argument_list|(
 name|entry
+operator|.
+name|isPresent
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|Assert
@@ -255,6 +274,9 @@ operator|.
 name|assertTrue
 argument_list|(
 name|entry
+operator|.
+name|get
+argument_list|()
 operator|.
 name|getField
 argument_list|(
@@ -279,6 +301,9 @@ name|getName
 argument_list|()
 argument_list|,
 name|entry
+operator|.
+name|get
+argument_list|()
 operator|.
 name|getField
 argument_list|(

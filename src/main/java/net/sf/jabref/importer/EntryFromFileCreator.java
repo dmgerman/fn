@@ -260,7 +260,10 @@ function_decl|;
 comment|/**      * Create one BibEntry containing information regarding the given File.      *      * @param f      * @param addPathTokensAsKeywords      * @return      */
 DECL|method|createEntry (File f, boolean addPathTokensAsKeywords)
 specifier|public
+name|Optional
+argument_list|<
 name|BibEntry
+argument_list|>
 name|createEntry
 parameter_list|(
 name|File
@@ -286,7 +289,10 @@ argument_list|()
 condition|)
 block|{
 return|return
-literal|null
+name|Optional
+operator|.
+name|empty
+argument_list|()
 return|;
 block|}
 name|Optional
@@ -312,7 +318,7 @@ operator|)
 condition|)
 block|{
 return|return
-literal|null
+name|newEntry
 return|;
 block|}
 if|if
@@ -381,9 +387,6 @@ argument_list|)
 expr_stmt|;
 return|return
 name|newEntry
-operator|.
-name|get
-argument_list|()
 return|;
 block|}
 comment|/** Returns the ExternalFileType that is imported here */

@@ -78,6 +78,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|swing
@@ -594,7 +604,10 @@ expr_stmt|;
 block|}
 else|else
 block|{
+name|Optional
+argument_list|<
 name|BibEntry
+argument_list|>
 name|entry
 init|=
 name|creator
@@ -609,8 +622,9 @@ decl_stmt|;
 if|if
 condition|(
 name|entry
-operator|==
-literal|null
+operator|.
+name|isPresent
+argument_list|()
 condition|)
 block|{
 name|importGUIMessages
@@ -638,6 +652,9 @@ condition|)
 block|{
 name|entry
 operator|.
+name|get
+argument_list|()
+operator|.
 name|setType
 argument_list|(
 name|entryType
@@ -648,6 +665,9 @@ if|if
 condition|(
 name|entry
 operator|.
+name|get
+argument_list|()
+operator|.
 name|getId
 argument_list|()
 operator|==
@@ -655,6 +675,9 @@ literal|null
 condition|)
 block|{
 name|entry
+operator|.
+name|get
+argument_list|()
 operator|.
 name|setId
 argument_list|(
@@ -675,6 +698,9 @@ name|containsEntryWithId
 argument_list|(
 name|entry
 operator|.
+name|get
+argument_list|()
+operator|.
 name|getId
 argument_list|()
 argument_list|)
@@ -689,6 +715,9 @@ operator|.
 name|insertEntry
 argument_list|(
 name|entry
+operator|.
+name|get
+argument_list|()
 argument_list|)
 condition|)
 block|{
@@ -729,6 +758,9 @@ argument_list|(
 name|database
 argument_list|,
 name|entry
+operator|.
+name|get
+argument_list|()
 argument_list|,
 name|panel
 argument_list|)

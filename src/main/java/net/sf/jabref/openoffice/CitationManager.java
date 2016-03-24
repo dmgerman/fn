@@ -994,7 +994,10 @@ name|refMarkName
 decl_stmt|;
 DECL|field|pageInfo
 specifier|private
+name|Optional
+argument_list|<
 name|String
+argument_list|>
 name|pageInfo
 decl_stmt|;
 DECL|field|context
@@ -1006,10 +1009,13 @@ decl_stmt|;
 DECL|field|origPageInfo
 specifier|private
 specifier|final
+name|Optional
+argument_list|<
 name|String
+argument_list|>
 name|origPageInfo
 decl_stmt|;
-DECL|method|CitEntry (String refMarkName, String context, String pageInfo)
+DECL|method|CitEntry (String refMarkName, String context, Optional<String> optional)
 specifier|public
 name|CitEntry
 parameter_list|(
@@ -1019,8 +1025,11 @@ parameter_list|,
 name|String
 name|context
 parameter_list|,
+name|Optional
+argument_list|<
 name|String
-name|pageInfo
+argument_list|>
+name|optional
 parameter_list|)
 block|{
 name|this
@@ -1039,13 +1048,13 @@ name|this
 operator|.
 name|pageInfo
 operator|=
-name|pageInfo
+name|optional
 expr_stmt|;
 name|this
 operator|.
 name|origPageInfo
 operator|=
-name|pageInfo
+name|optional
 expr_stmt|;
 block|}
 DECL|method|getPageInfo ()
@@ -1058,12 +1067,7 @@ name|getPageInfo
 parameter_list|()
 block|{
 return|return
-name|Optional
-operator|.
-name|ofNullable
-argument_list|(
 name|pageInfo
-argument_list|)
 return|;
 block|}
 DECL|method|getRefMarkName ()
@@ -1084,33 +1088,15 @@ parameter_list|()
 block|{
 if|if
 condition|(
-operator|(
-operator|(
 name|pageInfo
-operator|!=
-literal|null
-operator|)
-operator|&&
-operator|(
+operator|.
+name|isPresent
+argument_list|()
+operator|^
 name|origPageInfo
-operator|==
-literal|null
-operator|)
-operator|)
-operator|||
-operator|(
-operator|(
-name|pageInfo
-operator|==
-literal|null
-operator|)
-operator|&&
-operator|(
-name|origPageInfo
-operator|!=
-literal|null
-operator|)
-operator|)
+operator|.
+name|isPresent
+argument_list|()
 condition|)
 block|{
 return|return
@@ -1119,23 +1105,33 @@ return|;
 block|}
 if|if
 condition|(
+operator|!
 name|pageInfo
-operator|==
-literal|null
+operator|.
+name|isPresent
+argument_list|()
 condition|)
 block|{
+comment|// This means that origPageInfo.isPresent is also false
 return|return
 literal|false
 return|;
 block|}
 else|else
 block|{
+comment|// So origPageInfo.isPresent is true here
 return|return
 name|pageInfo
+operator|.
+name|get
+argument_list|()
 operator|.
 name|compareTo
 argument_list|(
 name|origPageInfo
+operator|.
+name|get
+argument_list|()
 argument_list|)
 operator|!=
 literal|0
@@ -1236,12 +1232,15 @@ return|return
 name|context
 return|;
 block|}
-DECL|method|setPageInfo (String trim)
+DECL|method|setPageInfo (Optional<String> trim)
 specifier|public
 name|void
 name|setPageInfo
 parameter_list|(
+name|Optional
+argument_list|<
 name|String
+argument_list|>
 name|trim
 parameter_list|)
 block|{
@@ -1747,7 +1746,10 @@ name|entry
 operator|.
 name|setPageInfo
 argument_list|(
-literal|null
+name|Optional
+operator|.
+name|empty
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -1757,6 +1759,10 @@ name|entry
 operator|.
 name|setPageInfo
 argument_list|(
+name|Optional
+operator|.
+name|of
+argument_list|(
 name|pageInfo
 operator|.
 name|getText
@@ -1764,6 +1770,7 @@ argument_list|()
 operator|.
 name|trim
 argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

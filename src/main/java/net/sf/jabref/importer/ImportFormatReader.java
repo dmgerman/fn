@@ -423,7 +423,10 @@ block|}
 comment|/**      * Format for a given CLI-ID.      *<p>      *<p>Will return the first format according to the default-order of      * format that matches the given ID.</p>      *      * @param cliId CLI-Id      * @return Import Format or<code>null</code> if none matches      */
 DECL|method|getByCliId (String cliId)
 specifier|private
+name|Optional
+argument_list|<
 name|ImportFormat
+argument_list|>
 name|getByCliId
 parameter_list|(
 name|String
@@ -452,12 +455,20 @@ argument_list|)
 condition|)
 block|{
 return|return
+name|Optional
+operator|.
+name|of
+argument_list|(
 name|format
+argument_list|)
 return|;
 block|}
 block|}
 return|return
-literal|null
+name|Optional
+operator|.
+name|empty
+argument_list|()
 return|;
 block|}
 DECL|method|importFromStream (String format, InputStream in, OutputPrinter status)
@@ -480,7 +491,10 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+name|Optional
+argument_list|<
 name|ImportFormat
+argument_list|>
 name|importer
 init|=
 name|getByCliId
@@ -490,9 +504,11 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|!
 name|importer
-operator|==
-literal|null
+operator|.
+name|isPresent
+argument_list|()
 condition|)
 block|{
 throw|throw
@@ -512,6 +528,9 @@ argument_list|>
 name|res
 init|=
 name|importer
+operator|.
+name|get
+argument_list|()
 operator|.
 name|importEntries
 argument_list|(
@@ -560,7 +579,10 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+name|Optional
+argument_list|<
 name|ImportFormat
+argument_list|>
 name|importer
 init|=
 name|getByCliId
@@ -570,9 +592,11 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|!
 name|importer
-operator|==
-literal|null
+operator|.
+name|isPresent
+argument_list|()
 condition|)
 block|{
 throw|throw
@@ -589,6 +613,9 @@ return|return
 name|importFromFile
 argument_list|(
 name|importer
+operator|.
+name|get
+argument_list|()
 argument_list|,
 name|filename
 argument_list|,
