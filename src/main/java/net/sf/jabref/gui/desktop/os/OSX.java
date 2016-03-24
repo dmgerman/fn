@@ -117,6 +117,7 @@ name|type
 operator|==
 literal|null
 operator|&&
+operator|!
 name|type
 operator|.
 name|getOpenWithApplication
