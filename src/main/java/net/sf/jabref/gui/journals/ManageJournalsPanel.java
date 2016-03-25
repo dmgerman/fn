@@ -76,7 +76,7 @@ name|java
 operator|.
 name|io
 operator|.
-name|FileWriter
+name|FileOutputStream
 import|;
 end_import
 
@@ -87,6 +87,16 @@ operator|.
 name|io
 operator|.
 name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|OutputStreamWriter
 import|;
 end_import
 
@@ -2288,6 +2298,13 @@ name|File
 argument_list|(
 name|filename
 argument_list|)
+argument_list|,
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getDefaultEncoding
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -2574,17 +2591,21 @@ throw|;
 block|}
 try|try
 init|(
-name|FileWriter
-name|fw
+name|FileOutputStream
+name|stream
 init|=
 operator|new
-name|FileWriter
+name|FileOutputStream
 argument_list|(
 name|f
 argument_list|,
 literal|false
 argument_list|)
-init|)
+init|;                     OutputStreamWriter writer = new OutputStreamWriter(stream
+operator|,
+init|Globals.prefs.getDefaultEncoding()
+block|)
+block|)
 block|{
 for|for
 control|(
@@ -2597,7 +2618,7 @@ name|getJournals
 argument_list|()
 control|)
 block|{
-name|fw
+name|writer
 operator|.
 name|write
 argument_list|(
@@ -2607,14 +2628,14 @@ name|getName
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|fw
+name|writer
 operator|.
 name|write
 argument_list|(
 literal|" = "
 argument_list|)
 expr_stmt|;
-name|fw
+name|writer
 operator|.
 name|write
 argument_list|(
@@ -2624,7 +2645,7 @@ name|getAbbreviation
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|fw
+name|writer
 operator|.
 name|write
 argument_list|(
@@ -2679,16 +2700,22 @@ operator|.
 name|prefs
 operator|.
 name|put
-argument_list|(
+parameter_list|(
 name|JabRefPreferences
 operator|.
 name|PERSONAL_JOURNAL_LIST
-argument_list|,
+parameter_list|,
 name|filename
-argument_list|)
-expr_stmt|;
+parameter_list|)
+constructor_decl|;
 block|}
+end_class
+
+begin_comment
 comment|// Store the list of external files set up:
+end_comment
+
+begin_decl_stmt
 name|List
 argument_list|<
 name|String
@@ -2700,6 +2727,9 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
+end_decl_stmt
+
+begin_for
 for|for
 control|(
 name|ExternalFileEntry
@@ -2734,6 +2764,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+end_for
+
+begin_expr_stmt
 name|Globals
 operator|.
 name|prefs
@@ -2747,8 +2780,17 @@ argument_list|,
 name|extFiles
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_comment
 comment|// Update the autocompleter for the "journal" field in all base panels,
+end_comment
+
+begin_comment
 comment|// so added journal names are available:
+end_comment
+
+begin_for
 for|for
 control|(
 name|BasePanel
@@ -2769,26 +2811,28 @@ name|addJournalListToAutoCompleter
 argument_list|()
 expr_stmt|;
 block|}
-block|}
+end_for
+
+begin_expr_stmt
+unit|}       class
 DECL|class|DownloadAction
-class|class
 name|DownloadAction
-extends|extends
+expr|extends
 name|AbstractAction
 block|{
 DECL|field|comp
 specifier|private
-specifier|final
+name|final
 name|JTextField
 name|comp
-decl_stmt|;
+block|;
 DECL|method|DownloadAction (JTextField tc)
 specifier|public
 name|DownloadAction
-parameter_list|(
+argument_list|(
 name|JTextField
 name|tc
-parameter_list|)
+argument_list|)
 block|{
 name|super
 argument_list|(
@@ -2799,26 +2843,25 @@ argument_list|(
 literal|"Download"
 argument_list|)
 argument_list|)
-expr_stmt|;
+block|;
 name|comp
 operator|=
 name|tc
-expr_stmt|;
-block|}
-annotation|@
+block|;         }
+expr|@
 name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
 name|actionPerformed
-parameter_list|(
+argument_list|(
 name|ActionEvent
 name|e
-parameter_list|)
+argument_list|)
 block|{
 name|String
 name|chosen
-decl_stmt|;
+block|;
 name|chosen
 operator|=
 name|JOptionPane
@@ -2834,7 +2877,7 @@ argument_list|)
 argument_list|,
 literal|""
 argument_list|)
-expr_stmt|;
+block|;
 if|if
 condition|(
 name|chosen
@@ -2846,7 +2889,7 @@ return|return;
 block|}
 name|File
 name|toFile
-decl_stmt|;
+block|;
 try|try
 block|{
 name|String
@@ -2887,6 +2930,9 @@ condition|)
 block|{
 return|return;
 block|}
+end_expr_stmt
+
+begin_else
 else|else
 block|{
 name|toFile
@@ -2898,6 +2944,9 @@ name|toName
 argument_list|)
 expr_stmt|;
 block|}
+end_else
+
+begin_decl_stmt
 name|URL
 name|url
 init|=
@@ -2907,6 +2956,9 @@ argument_list|(
 name|chosen
 argument_list|)
 decl_stmt|;
+end_decl_stmt
+
+begin_expr_stmt
 name|MonitoredURLDownload
 operator|.
 name|buildMonitoredDownload
@@ -2921,6 +2973,9 @@ argument_list|(
 name|toFile
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
 name|comp
 operator|.
 name|setText
@@ -2931,12 +2986,14 @@ name|getPath
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
+end_expr_stmt
+
+begin_expr_stmt
+unit|} catch
+operator|(
 name|IOException
 name|ex
-parameter_list|)
+operator|)
 block|{
 name|JOptionPane
 operator|.
@@ -2964,7 +3021,7 @@ name|JOptionPane
 operator|.
 name|ERROR_MESSAGE
 argument_list|)
-expr_stmt|;
+block|;
 name|LOGGER
 operator|.
 name|debug
@@ -2973,10 +3030,11 @@ literal|"Error downloading file"
 argument_list|,
 name|ex
 argument_list|)
-expr_stmt|;
-block|}
-block|}
-block|}
+block|;             }
+end_expr_stmt
+
+begin_class
+unit|}     }
 DECL|class|BrowseAction
 class|class
 name|BrowseAction
@@ -3135,6 +3193,9 @@ expr_stmt|;
 block|}
 block|}
 block|}
+end_class
+
+begin_class
 DECL|class|AbbreviationsTableModel
 class|class
 name|AbbreviationsTableModel
@@ -3726,6 +3787,9 @@ block|}
 block|}
 block|}
 block|}
+end_class
+
+begin_class
 DECL|class|ExternalFileEntry
 class|class
 name|ExternalFileEntry
@@ -4170,6 +4234,9 @@ argument_list|()
 return|;
 block|}
 block|}
+end_class
+
+begin_class
 DECL|class|JournalEntry
 specifier|static
 class|class
@@ -4359,8 +4426,8 @@ name|abbreviation
 expr_stmt|;
 block|}
 block|}
-block|}
 end_class
 
+unit|}
 end_unit
 
