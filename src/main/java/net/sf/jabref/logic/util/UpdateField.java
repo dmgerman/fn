@@ -335,6 +335,16 @@ name|newValue
 argument_list|)
 expr_stmt|;
 block|}
+else|else
+block|{
+comment|// Values are the same, do nothing
+return|return
+name|Optional
+operator|.
+name|empty
+argument_list|()
+return|;
+block|}
 block|}
 else|else
 block|{
