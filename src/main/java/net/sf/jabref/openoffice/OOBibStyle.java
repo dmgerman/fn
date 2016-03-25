@@ -2350,6 +2350,12 @@ operator|+
 literal|1
 operator|)
 operator|)
+operator|&&
+operator|(
+name|i1
+operator|>
+literal|0
+operator|)
 condition|)
 block|{
 name|combineFrom
@@ -3874,13 +3880,6 @@ condition|)
 block|{
 if|if
 condition|(
-name|fieldFormatter
-operator|!=
-literal|null
-condition|)
-block|{
-if|if
-condition|(
 name|field
 operator|.
 name|equals
@@ -3916,10 +3915,6 @@ name|format
 argument_list|(
 name|content
 argument_list|)
-return|;
-block|}
-return|return
-name|content
 return|;
 block|}
 block|}
