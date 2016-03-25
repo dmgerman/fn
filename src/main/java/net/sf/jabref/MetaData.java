@@ -407,6 +407,13 @@ name|BibDatabase
 name|db
 parameter_list|)
 block|{
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|inData
+argument_list|)
+expr_stmt|;
 name|boolean
 name|groupsTreePresent
 init|=
@@ -435,13 +442,6 @@ name|groupsVersionOnDisk
 init|=
 literal|0
 decl_stmt|;
-if|if
-condition|(
-name|inData
-operator|!=
-literal|null
-condition|)
-block|{
 for|for
 control|(
 name|Map
@@ -623,7 +623,6 @@ argument_list|,
 name|orderedData
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 comment|// this possibly handles import of a previous groups version
@@ -1840,6 +1839,10 @@ block|{
 name|boolean
 name|enablementStatus
 init|=
+literal|"enabled"
+operator|.
+name|equals
+argument_list|(
 name|this
 operator|.
 name|getData
@@ -1851,10 +1854,6 @@ name|get
 argument_list|(
 literal|0
 argument_list|)
-operator|.
-name|equals
-argument_list|(
-literal|"enabled"
 argument_list|)
 decl_stmt|;
 name|String
@@ -2290,11 +2289,11 @@ name|isEmpty
 argument_list|()
 operator|&&
 operator|!
-name|serializedItem
+literal|";"
 operator|.
 name|equals
 argument_list|(
-literal|";"
+name|serializedItem
 argument_list|)
 condition|)
 block|{

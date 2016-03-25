@@ -1709,9 +1709,7 @@ argument_list|()
 expr_stmt|;
 name|frame
 operator|.
-name|fetcherToggle
-operator|.
-name|setSelected
+name|setFetcherToggle
 argument_list|(
 literal|false
 argument_list|)

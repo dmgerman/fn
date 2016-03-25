@@ -592,7 +592,7 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
-name|HashMap
+name|Map
 argument_list|<
 name|String
 argument_list|,
