@@ -2531,6 +2531,9 @@ name|mode
 operator|.
 name|getFormattedName
 argument_list|()
+operator|.
+name|toLowerCase
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;

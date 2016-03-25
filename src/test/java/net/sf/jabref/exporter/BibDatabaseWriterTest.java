@@ -2512,7 +2512,7 @@ name|Globals
 operator|.
 name|NEWLINE
 operator|+
-literal|"@Comment{jabref-meta: databaseType:BibLaTeX;}"
+literal|"@Comment{jabref-meta: databaseType:biblatex;}"
 operator|+
 name|Globals
 operator|.
