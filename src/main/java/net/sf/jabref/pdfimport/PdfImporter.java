@@ -470,6 +470,22 @@ name|logic
 operator|.
 name|util
 operator|.
+name|UpdateField
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|util
+operator|.
 name|io
 operator|.
 name|FileUtil
@@ -521,20 +537,6 @@ operator|.
 name|entry
 operator|.
 name|BibEntry
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|util
-operator|.
-name|Util
 import|;
 end_import
 
@@ -1700,7 +1702,7 @@ argument_list|(
 name|be
 argument_list|)
 expr_stmt|;
-name|Util
+name|UpdateField
 operator|.
 name|setAutomaticFields
 argument_list|(
@@ -1709,8 +1711,6 @@ argument_list|,
 literal|true
 argument_list|,
 literal|true
-argument_list|,
-literal|false
 argument_list|)
 expr_stmt|;
 comment|// Create an UndoableInsertEntry object.

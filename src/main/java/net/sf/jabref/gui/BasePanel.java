@@ -796,6 +796,22 @@ name|logic
 operator|.
 name|util
 operator|.
+name|UpdateField
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|util
+operator|.
 name|io
 operator|.
 name|FileBasedLock
@@ -943,20 +959,6 @@ operator|.
 name|exporter
 operator|.
 name|DBExporter
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|util
-operator|.
-name|Util
 import|;
 end_import
 
@@ -2972,7 +2974,7 @@ operator|=
 name|be
 expr_stmt|;
 block|}
-name|Util
+name|UpdateField
 operator|.
 name|setAutomaticFields
 argument_list|(
@@ -6402,7 +6404,7 @@ name|okPressed
 argument_list|()
 operator|)
 block|{
-name|Util
+name|UpdateField
 operator|.
 name|setAutomaticFields
 argument_list|(
@@ -6412,8 +6414,6 @@ name|singletonList
 argument_list|(
 name|bibEntry
 argument_list|)
-argument_list|,
-literal|false
 argument_list|,
 literal|false
 argument_list|,
@@ -8512,7 +8512,7 @@ argument_list|(
 name|be
 argument_list|)
 expr_stmt|;
-name|Util
+name|UpdateField
 operator|.
 name|setAutomaticFields
 argument_list|(
@@ -8521,8 +8521,6 @@ argument_list|,
 literal|true
 argument_list|,
 literal|true
-argument_list|,
-literal|false
 argument_list|)
 expr_stmt|;
 comment|// Create an UndoableInsertEntry object.
@@ -8994,7 +8992,7 @@ argument_list|)
 condition|)
 block|{
 comment|// Set owner field to default value
-name|Util
+name|UpdateField
 operator|.
 name|setAutomaticFields
 argument_list|(
