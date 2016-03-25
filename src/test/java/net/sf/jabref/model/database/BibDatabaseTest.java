@@ -340,7 +340,7 @@ name|stream
 argument_list|,
 name|StandardCharsets
 operator|.
-name|ISO_8859_1
+name|UTF_8
 argument_list|)
 init|)
 block|{
@@ -554,6 +554,13 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+argument_list|(
+name|expected
+operator|=
+name|KeyCollisionException
+operator|.
+name|class
+argument_list|)
 DECL|method|insertEntryWithSameIdThrowsException ()
 specifier|public
 name|void
@@ -593,21 +600,15 @@ name|getId
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|thrown
-operator|.
-name|expect
-argument_list|(
-name|KeyCollisionException
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
 name|database
 operator|.
 name|insertEntry
 argument_list|(
 name|entry1
 argument_list|)
+expr_stmt|;
+name|fail
+argument_list|()
 expr_stmt|;
 block|}
 annotation|@
@@ -675,6 +676,13 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+argument_list|(
+name|expected
+operator|=
+name|NullPointerException
+operator|.
+name|class
+argument_list|)
 DECL|method|insertNullEntryThrowsException ()
 specifier|public
 name|void
@@ -688,15 +696,6 @@ operator|new
 name|BibDatabase
 argument_list|()
 decl_stmt|;
-name|thrown
-operator|.
-name|expect
-argument_list|(
-name|NullPointerException
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
 name|database
 operator|.
 name|insertEntry
@@ -704,9 +703,19 @@ argument_list|(
 literal|null
 argument_list|)
 expr_stmt|;
+name|fail
+argument_list|()
+expr_stmt|;
 block|}
 annotation|@
 name|Test
+argument_list|(
+name|expected
+operator|=
+name|NullPointerException
+operator|.
+name|class
+argument_list|)
 DECL|method|removeNullEntryThrowsException ()
 specifier|public
 name|void
@@ -720,15 +729,6 @@ operator|new
 name|BibDatabase
 argument_list|()
 decl_stmt|;
-name|thrown
-operator|.
-name|expect
-argument_list|(
-name|NullPointerException
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
 name|database
 operator|.
 name|removeEntry
@@ -736,13 +736,16 @@ argument_list|(
 literal|null
 argument_list|)
 expr_stmt|;
+name|fail
+argument_list|()
+expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|insertString ()
+DECL|method|emptyDatabaseHasNoStrings ()
 specifier|public
 name|void
-name|insertString
+name|emptyDatabaseHasNoStrings
 parameter_list|()
 block|{
 name|BibDatabase
@@ -773,6 +776,22 @@ name|hasNoStrings
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|insertString ()
+specifier|public
+name|void
+name|insertString
+parameter_list|()
+block|{
+name|BibDatabase
+name|database
+init|=
+operator|new
+name|BibDatabase
+argument_list|()
+decl_stmt|;
 name|BibtexString
 name|string
 init|=
@@ -1062,10 +1081,10 @@ name|KeyCollisionException
 operator|.
 name|class
 argument_list|)
-DECL|method|addSameStringLabelTwice ()
+DECL|method|addSameStringLabelTwiceThrowsKeyCollisionException ()
 specifier|public
 name|void
-name|addSameStringLabelTwice
+name|addSameStringLabelTwiceThrowsKeyCollisionException
 parameter_list|()
 block|{
 name|BibDatabase
@@ -1133,10 +1152,10 @@ name|KeyCollisionException
 operator|.
 name|class
 argument_list|)
-DECL|method|addSameStringIdTwice ()
+DECL|method|addSameStringIdTwiceThrowsKeyCollisionException ()
 specifier|public
 name|void
-name|addSameStringIdTwice
+name|addSameStringIdTwiceThrowsKeyCollisionException
 parameter_list|()
 block|{
 name|BibDatabase
