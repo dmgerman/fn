@@ -3234,6 +3234,15 @@ name|OO_STYLE_DIRECTORY
 init|=
 literal|"ooStyleDirectory"
 decl_stmt|;
+DECL|field|OO_EXTERNAL_STYLE_FILES
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|OO_EXTERNAL_STYLE_FILES
+init|=
+literal|"ooExternalStyleFiles"
+decl_stmt|;
 comment|//non-default preferences
 DECL|field|CUSTOM_TYPE_NAME
 specifier|private

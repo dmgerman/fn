@@ -389,7 +389,7 @@ init|=
 operator|new
 name|OOBibStyle
 argument_list|(
-name|OpenOfficePanel
+name|StyleLoader
 operator|.
 name|DEFAULT_AUTHORYEAR_STYLE_PATH
 argument_list|,
@@ -483,7 +483,7 @@ name|class
 operator|.
 name|getResource
 argument_list|(
-name|OpenOfficePanel
+name|StyleLoader
 operator|.
 name|DEFAULT_AUTHORYEAR_STYLE_PATH
 argument_list|)
@@ -591,7 +591,7 @@ init|=
 operator|new
 name|OOBibStyle
 argument_list|(
-name|OpenOfficePanel
+name|StyleLoader
 operator|.
 name|DEFAULT_NUMERICAL_STYLE_PATH
 argument_list|,
@@ -676,7 +676,7 @@ init|=
 operator|new
 name|OOBibStyle
 argument_list|(
-name|OpenOfficePanel
+name|StyleLoader
 operator|.
 name|DEFAULT_NUMERICAL_STYLE_PATH
 argument_list|,
@@ -938,7 +938,7 @@ init|=
 operator|new
 name|OOBibStyle
 argument_list|(
-name|OpenOfficePanel
+name|StyleLoader
 operator|.
 name|DEFAULT_NUMERICAL_STYLE_PATH
 argument_list|,
@@ -1103,7 +1103,7 @@ init|=
 operator|new
 name|OOBibStyle
 argument_list|(
-name|OpenOfficePanel
+name|StyleLoader
 operator|.
 name|DEFAULT_NUMERICAL_STYLE_PATH
 argument_list|,
@@ -1237,7 +1237,7 @@ init|=
 operator|new
 name|OOBibStyle
 argument_list|(
-name|OpenOfficePanel
+name|StyleLoader
 operator|.
 name|DEFAULT_NUMERICAL_STYLE_PATH
 argument_list|,
@@ -1431,7 +1431,7 @@ init|=
 operator|new
 name|OOBibStyle
 argument_list|(
-name|OpenOfficePanel
+name|StyleLoader
 operator|.
 name|DEFAULT_NUMERICAL_STYLE_PATH
 argument_list|,
@@ -1543,7 +1543,7 @@ init|=
 operator|new
 name|OOBibStyle
 argument_list|(
-name|OpenOfficePanel
+name|StyleLoader
 operator|.
 name|DEFAULT_NUMERICAL_STYLE_PATH
 argument_list|,
@@ -1660,7 +1660,7 @@ init|=
 operator|new
 name|OOBibStyle
 argument_list|(
-name|OpenOfficePanel
+name|StyleLoader
 operator|.
 name|DEFAULT_NUMERICAL_STYLE_PATH
 argument_list|,
@@ -1804,7 +1804,7 @@ init|=
 operator|new
 name|OOBibStyle
 argument_list|(
-name|OpenOfficePanel
+name|StyleLoader
 operator|.
 name|DEFAULT_NUMERICAL_STYLE_PATH
 argument_list|,
@@ -1921,7 +1921,7 @@ init|=
 operator|new
 name|OOBibStyle
 argument_list|(
-name|OpenOfficePanel
+name|StyleLoader
 operator|.
 name|DEFAULT_NUMERICAL_STYLE_PATH
 argument_list|,
@@ -2195,7 +2195,7 @@ init|=
 operator|new
 name|OOBibStyle
 argument_list|(
-name|OpenOfficePanel
+name|StyleLoader
 operator|.
 name|DEFAULT_NUMERICAL_STYLE_PATH
 argument_list|,
@@ -2469,7 +2469,7 @@ init|=
 operator|new
 name|OOBibStyle
 argument_list|(
-name|OpenOfficePanel
+name|StyleLoader
 operator|.
 name|DEFAULT_NUMERICAL_STYLE_PATH
 argument_list|,
@@ -2732,7 +2732,7 @@ init|=
 operator|new
 name|OOBibStyle
 argument_list|(
-name|OpenOfficePanel
+name|StyleLoader
 operator|.
 name|DEFAULT_NUMERICAL_STYLE_PATH
 argument_list|,
@@ -2998,7 +2998,7 @@ init|=
 operator|new
 name|OOBibStyle
 argument_list|(
-name|OpenOfficePanel
+name|StyleLoader
 operator|.
 name|DEFAULT_NUMERICAL_STYLE_PATH
 argument_list|,
@@ -3016,7 +3016,7 @@ init|=
 operator|new
 name|OOBibStyle
 argument_list|(
-name|OpenOfficePanel
+name|StyleLoader
 operator|.
 name|DEFAULT_NUMERICAL_STYLE_PATH
 argument_list|,
@@ -3055,7 +3055,7 @@ init|=
 operator|new
 name|OOBibStyle
 argument_list|(
-name|OpenOfficePanel
+name|StyleLoader
 operator|.
 name|DEFAULT_NUMERICAL_STYLE_PATH
 argument_list|,
@@ -3073,7 +3073,7 @@ init|=
 operator|new
 name|OOBibStyle
 argument_list|(
-name|OpenOfficePanel
+name|StyleLoader
 operator|.
 name|DEFAULT_AUTHORYEAR_STYLE_PATH
 argument_list|,
@@ -3109,7 +3109,7 @@ init|=
 operator|new
 name|OOBibStyle
 argument_list|(
-name|OpenOfficePanel
+name|StyleLoader
 operator|.
 name|DEFAULT_NUMERICAL_STYLE_PATH
 argument_list|,
@@ -3127,7 +3127,7 @@ init|=
 operator|new
 name|OOBibStyle
 argument_list|(
-name|OpenOfficePanel
+name|StyleLoader
 operator|.
 name|DEFAULT_NUMERICAL_STYLE_PATH
 argument_list|,
@@ -3168,7 +3168,7 @@ init|=
 operator|new
 name|OOBibStyle
 argument_list|(
-name|OpenOfficePanel
+name|StyleLoader
 operator|.
 name|DEFAULT_NUMERICAL_STYLE_PATH
 argument_list|,
@@ -3186,7 +3186,7 @@ init|=
 operator|new
 name|OOBibStyle
 argument_list|(
-name|OpenOfficePanel
+name|StyleLoader
 operator|.
 name|DEFAULT_AUTHORYEAR_STYLE_PATH
 argument_list|,
