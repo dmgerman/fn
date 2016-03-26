@@ -66,8 +66,6 @@ name|model
 operator|.
 name|entry
 operator|.
-name|AuthorList
-operator|.
 name|Author
 import|;
 end_import
@@ -106,7 +104,7 @@ name|al
 init|=
 name|AuthorList
 operator|.
-name|getAuthorList
+name|parse
 argument_list|(
 name|authorsNameList
 argument_list|)
@@ -124,7 +122,7 @@ name|whichName
 operator|>
 name|al
 operator|.
-name|size
+name|getNumberOfAuthors
 argument_list|()
 operator|)
 condition|)

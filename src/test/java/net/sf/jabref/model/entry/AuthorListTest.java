@@ -163,7 +163,7 @@ name|al
 init|=
 name|AuthorList
 operator|.
-name|getAuthorList
+name|parse
 argument_list|(
 literal|"John Smith"
 argument_list|)
@@ -176,7 +176,7 @@ name|al
 operator|==
 name|AuthorList
 operator|.
-name|getAuthorList
+name|parse
 argument_list|(
 literal|"John Smith"
 argument_list|)
@@ -190,7 +190,7 @@ name|al
 operator|==
 name|AuthorList
 operator|.
-name|getAuthorList
+name|parse
 argument_list|(
 literal|"Smith"
 argument_list|)
@@ -1819,12 +1819,12 @@ block|{
 return|return
 name|AuthorList
 operator|.
-name|getAuthorList
+name|parse
 argument_list|(
 name|bibtex
 argument_list|)
 operator|.
-name|size
+name|getNumberOfAuthors
 argument_list|()
 return|;
 block|}
@@ -2056,7 +2056,7 @@ name|assertTrue
 argument_list|(
 name|AuthorList
 operator|.
-name|getAuthorList
+name|parse
 argument_list|(
 literal|""
 argument_list|)
@@ -2071,7 +2071,7 @@ name|assertFalse
 argument_list|(
 name|AuthorList
 operator|.
-name|getAuthorList
+name|parse
 argument_list|(
 literal|"Bar"
 argument_list|)
@@ -2098,7 +2098,7 @@ parameter_list|()
 block|{
 name|AuthorList
 operator|.
-name|getAuthorList
+name|parse
 argument_list|(
 literal|""
 argument_list|)
@@ -2122,14 +2122,12 @@ name|void
 name|testGetAuthor
 parameter_list|()
 block|{
-name|AuthorList
-operator|.
 name|Author
 name|author
 init|=
 name|AuthorList
 operator|.
-name|getAuthorList
+name|parse
 argument_list|(
 literal|"John Smith and von Neumann, Jr, John"
 argument_list|)
@@ -2283,7 +2281,7 @@ name|author
 operator|=
 name|AuthorList
 operator|.
-name|getAuthorList
+name|parse
 argument_list|(
 literal|"Peter Black Brown"
 argument_list|)
@@ -2373,7 +2371,7 @@ name|author
 operator|=
 name|AuthorList
 operator|.
-name|getAuthorList
+name|parse
 argument_list|(
 literal|"John Smith and von Neumann, Jr, John"
 argument_list|)
@@ -2540,12 +2538,12 @@ literal|""
 argument_list|,
 name|AuthorList
 operator|.
-name|getAuthorList
+name|parse
 argument_list|(
 literal|""
 argument_list|)
 operator|.
-name|getAuthorsNatbib
+name|getAsNatbib
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2557,12 +2555,12 @@ literal|"Smith"
 argument_list|,
 name|AuthorList
 operator|.
-name|getAuthorList
+name|parse
 argument_list|(
 literal|"John Smith"
 argument_list|)
 operator|.
-name|getAuthorsNatbib
+name|getAsNatbib
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2574,12 +2572,12 @@ literal|"Smith and Black Brown"
 argument_list|,
 name|AuthorList
 operator|.
-name|getAuthorList
+name|parse
 argument_list|(
 literal|"John Smith and Black Brown, Peter"
 argument_list|)
 operator|.
-name|getAuthorsNatbib
+name|getAsNatbib
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2591,12 +2589,12 @@ literal|"von Neumann et al."
 argument_list|,
 name|AuthorList
 operator|.
-name|getAuthorList
+name|parse
 argument_list|(
 literal|"John von Neumann and John Smith and Black Brown, Peter"
 argument_list|)
 operator|.
-name|getAuthorsNatbib
+name|getAsNatbib
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2609,14 +2607,14 @@ literal|"Last-Name et al."
 argument_list|,
 name|AuthorList
 operator|.
-name|getAuthorList
+name|parse
 argument_list|(
 literal|"First Second Last-Name"
 operator|+
 literal|" and John Smith and Black Brown, Peter"
 argument_list|)
 operator|.
-name|getAuthorsNatbib
+name|getAsNatbib
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2626,7 +2624,7 @@ name|al
 init|=
 name|AuthorList
 operator|.
-name|getAuthorList
+name|parse
 argument_list|(
 literal|"John von Neumann and John Smith and Black Brown, Peter"
 argument_list|)
@@ -2637,14 +2635,14 @@ name|assertTrue
 argument_list|(
 name|al
 operator|.
-name|getAuthorsNatbib
+name|getAsNatbib
 argument_list|()
 operator|.
 name|equals
 argument_list|(
 name|al
 operator|.
-name|getAuthorsNatbib
+name|getAsNatbib
 argument_list|()
 argument_list|)
 argument_list|)
@@ -2667,12 +2665,12 @@ literal|""
 argument_list|,
 name|AuthorList
 operator|.
-name|getAuthorList
+name|parse
 argument_list|(
 literal|""
 argument_list|)
 operator|.
-name|getAuthorsLastOnly
+name|getAsLastNames
 argument_list|(
 literal|false
 argument_list|)
@@ -2686,12 +2684,12 @@ literal|"Smith"
 argument_list|,
 name|AuthorList
 operator|.
-name|getAuthorList
+name|parse
 argument_list|(
 literal|"John Smith"
 argument_list|)
 operator|.
-name|getAuthorsLastOnly
+name|getAsLastNames
 argument_list|(
 literal|false
 argument_list|)
@@ -2705,12 +2703,12 @@ literal|"Smith"
 argument_list|,
 name|AuthorList
 operator|.
-name|getAuthorList
+name|parse
 argument_list|(
 literal|"Smith, Jr, John"
 argument_list|)
 operator|.
-name|getAuthorsLastOnly
+name|getAsLastNames
 argument_list|(
 literal|false
 argument_list|)
@@ -2724,12 +2722,12 @@ literal|"von Neumann, Smith and Black Brown"
 argument_list|,
 name|AuthorList
 operator|.
-name|getAuthorList
+name|parse
 argument_list|(
 literal|"John von Neumann and John Smith and Black Brown, Peter"
 argument_list|)
 operator|.
-name|getAuthorsLastOnly
+name|getAsLastNames
 argument_list|(
 literal|false
 argument_list|)
@@ -2744,12 +2742,12 @@ literal|""
 argument_list|,
 name|AuthorList
 operator|.
-name|getAuthorList
+name|parse
 argument_list|(
 literal|""
 argument_list|)
 operator|.
-name|getAuthorsLastOnly
+name|getAsLastNames
 argument_list|(
 literal|true
 argument_list|)
@@ -2763,12 +2761,12 @@ literal|"Smith"
 argument_list|,
 name|AuthorList
 operator|.
-name|getAuthorList
+name|parse
 argument_list|(
 literal|"John Smith"
 argument_list|)
 operator|.
-name|getAuthorsLastOnly
+name|getAsLastNames
 argument_list|(
 literal|true
 argument_list|)
@@ -2782,12 +2780,12 @@ literal|"Smith"
 argument_list|,
 name|AuthorList
 operator|.
-name|getAuthorList
+name|parse
 argument_list|(
 literal|"Smith, Jr, John"
 argument_list|)
 operator|.
-name|getAuthorsLastOnly
+name|getAsLastNames
 argument_list|(
 literal|true
 argument_list|)
@@ -2801,14 +2799,33 @@ literal|"von Neumann, Smith, and Black Brown"
 argument_list|,
 name|AuthorList
 operator|.
-name|getAuthorList
+name|parse
 argument_list|(
 literal|"John von Neumann and John Smith and Black Brown, Peter"
 argument_list|)
 operator|.
-name|getAuthorsLastOnly
+name|getAsLastNames
 argument_list|(
 literal|true
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|Assert
+operator|.
+name|assertEquals
+argument_list|(
+literal|"von Neumann and Smith"
+argument_list|,
+name|AuthorList
+operator|.
+name|parse
+argument_list|(
+literal|"John von Neumann and John Smith"
+argument_list|)
+operator|.
+name|getAsLastNames
+argument_list|(
+literal|false
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2829,7 +2846,7 @@ name|al
 operator|=
 name|AuthorList
 operator|.
-name|getAuthorList
+name|parse
 argument_list|(
 literal|""
 argument_list|)
@@ -2842,7 +2859,7 @@ literal|""
 argument_list|,
 name|al
 operator|.
-name|getAuthorsLastFirst
+name|getAsLastFirstNames
 argument_list|(
 literal|true
 argument_list|,
@@ -2858,7 +2875,7 @@ literal|""
 argument_list|,
 name|al
 operator|.
-name|getAuthorsLastFirst
+name|getAsLastFirstNames
 argument_list|(
 literal|false
 argument_list|,
@@ -2870,7 +2887,7 @@ name|al
 operator|=
 name|AuthorList
 operator|.
-name|getAuthorList
+name|parse
 argument_list|(
 literal|"John Smith"
 argument_list|)
@@ -2883,7 +2900,7 @@ literal|"Smith, John"
 argument_list|,
 name|al
 operator|.
-name|getAuthorsLastFirst
+name|getAsLastFirstNames
 argument_list|(
 literal|false
 argument_list|,
@@ -2899,7 +2916,7 @@ literal|"Smith, J."
 argument_list|,
 name|al
 operator|.
-name|getAuthorsLastFirst
+name|getAsLastFirstNames
 argument_list|(
 literal|true
 argument_list|,
@@ -2911,7 +2928,7 @@ name|al
 operator|=
 name|AuthorList
 operator|.
-name|getAuthorList
+name|parse
 argument_list|(
 literal|"John Smith and Black Brown, Peter"
 argument_list|)
@@ -2924,7 +2941,7 @@ literal|"Smith, John and Black Brown, Peter"
 argument_list|,
 name|al
 operator|.
-name|getAuthorsLastFirst
+name|getAsLastFirstNames
 argument_list|(
 literal|false
 argument_list|,
@@ -2940,7 +2957,7 @@ literal|"Smith, J. and Black Brown, P."
 argument_list|,
 name|al
 operator|.
-name|getAuthorsLastFirst
+name|getAsLastFirstNames
 argument_list|(
 literal|true
 argument_list|,
@@ -2952,7 +2969,7 @@ name|al
 operator|=
 name|AuthorList
 operator|.
-name|getAuthorList
+name|parse
 argument_list|(
 literal|"John von Neumann and John Smith and Black Brown, Peter"
 argument_list|)
@@ -2967,7 +2984,7 @@ literal|"von Neumann, John, Smith, John and Black Brown, Peter"
 argument_list|,
 name|al
 operator|.
-name|getAuthorsLastFirst
+name|getAsLastFirstNames
 argument_list|(
 literal|false
 argument_list|,
@@ -2983,7 +3000,7 @@ literal|"von Neumann, J., Smith, J. and Black Brown, P."
 argument_list|,
 name|al
 operator|.
-name|getAuthorsLastFirst
+name|getAsLastFirstNames
 argument_list|(
 literal|true
 argument_list|,
@@ -2995,7 +3012,7 @@ name|al
 operator|=
 name|AuthorList
 operator|.
-name|getAuthorList
+name|parse
 argument_list|(
 literal|"John Peter von Neumann"
 argument_list|)
@@ -3008,7 +3025,7 @@ literal|"von Neumann, J. P."
 argument_list|,
 name|al
 operator|.
-name|getAuthorsLastFirst
+name|getAsLastFirstNames
 argument_list|(
 literal|true
 argument_list|,
@@ -3033,7 +3050,7 @@ name|al
 operator|=
 name|AuthorList
 operator|.
-name|getAuthorList
+name|parse
 argument_list|(
 literal|""
 argument_list|)
@@ -3046,7 +3063,7 @@ literal|""
 argument_list|,
 name|al
 operator|.
-name|getAuthorsLastFirst
+name|getAsLastFirstNames
 argument_list|(
 literal|true
 argument_list|,
@@ -3062,7 +3079,7 @@ literal|""
 argument_list|,
 name|al
 operator|.
-name|getAuthorsLastFirst
+name|getAsLastFirstNames
 argument_list|(
 literal|false
 argument_list|,
@@ -3074,7 +3091,7 @@ name|al
 operator|=
 name|AuthorList
 operator|.
-name|getAuthorList
+name|parse
 argument_list|(
 literal|"John Smith"
 argument_list|)
@@ -3087,7 +3104,7 @@ literal|"Smith, John"
 argument_list|,
 name|al
 operator|.
-name|getAuthorsLastFirst
+name|getAsLastFirstNames
 argument_list|(
 literal|false
 argument_list|,
@@ -3103,7 +3120,7 @@ literal|"Smith, J."
 argument_list|,
 name|al
 operator|.
-name|getAuthorsLastFirst
+name|getAsLastFirstNames
 argument_list|(
 literal|true
 argument_list|,
@@ -3115,7 +3132,7 @@ name|al
 operator|=
 name|AuthorList
 operator|.
-name|getAuthorList
+name|parse
 argument_list|(
 literal|"John Smith and Black Brown, Peter"
 argument_list|)
@@ -3128,7 +3145,7 @@ literal|"Smith, John and Black Brown, Peter"
 argument_list|,
 name|al
 operator|.
-name|getAuthorsLastFirst
+name|getAsLastFirstNames
 argument_list|(
 literal|false
 argument_list|,
@@ -3144,7 +3161,7 @@ literal|"Smith, J. and Black Brown, P."
 argument_list|,
 name|al
 operator|.
-name|getAuthorsLastFirst
+name|getAsLastFirstNames
 argument_list|(
 literal|true
 argument_list|,
@@ -3156,7 +3173,7 @@ name|al
 operator|=
 name|AuthorList
 operator|.
-name|getAuthorList
+name|parse
 argument_list|(
 literal|"John von Neumann and John Smith and Black Brown, Peter"
 argument_list|)
@@ -3169,7 +3186,7 @@ literal|"von Neumann, John, Smith, John, and Black Brown, Peter"
 argument_list|,
 name|al
 operator|.
-name|getAuthorsLastFirst
+name|getAsLastFirstNames
 argument_list|(
 literal|false
 argument_list|,
@@ -3185,7 +3202,7 @@ literal|"von Neumann, J., Smith, J., and Black Brown, P."
 argument_list|,
 name|al
 operator|.
-name|getAuthorsLastFirst
+name|getAsLastFirstNames
 argument_list|(
 literal|true
 argument_list|,
@@ -3197,7 +3214,7 @@ name|al
 operator|=
 name|AuthorList
 operator|.
-name|getAuthorList
+name|parse
 argument_list|(
 literal|"John Peter von Neumann"
 argument_list|)
@@ -3210,7 +3227,7 @@ literal|"von Neumann, J. P."
 argument_list|,
 name|al
 operator|.
-name|getAuthorsLastFirst
+name|getAsLastFirstNames
 argument_list|(
 literal|true
 argument_list|,
@@ -3235,12 +3252,12 @@ literal|"Smith, John"
 argument_list|,
 name|AuthorList
 operator|.
-name|getAuthorList
+name|parse
 argument_list|(
 literal|"John Smith"
 argument_list|)
 operator|.
-name|getAuthorsLastFirstAnds
+name|getAsLastFirstNamesWithAnd
 argument_list|(
 literal|false
 argument_list|)
@@ -3254,12 +3271,12 @@ literal|"Smith, John and Black Brown, Peter"
 argument_list|,
 name|AuthorList
 operator|.
-name|getAuthorList
+name|parse
 argument_list|(
 literal|"John Smith and Black Brown, Peter"
 argument_list|)
 operator|.
-name|getAuthorsLastFirstAnds
+name|getAsLastFirstNamesWithAnd
 argument_list|(
 literal|false
 argument_list|)
@@ -3273,12 +3290,12 @@ literal|"von Neumann, John and Smith, John and Black Brown, Peter"
 argument_list|,
 name|AuthorList
 operator|.
-name|getAuthorList
+name|parse
 argument_list|(
 literal|"John von Neumann and John Smith and Black Brown, Peter"
 argument_list|)
 operator|.
-name|getAuthorsLastFirstAnds
+name|getAsLastFirstNamesWithAnd
 argument_list|(
 literal|false
 argument_list|)
@@ -3292,12 +3309,12 @@ literal|"von Last, Jr, First"
 argument_list|,
 name|AuthorList
 operator|.
-name|getAuthorList
+name|parse
 argument_list|(
 literal|"von Last, Jr ,First"
 argument_list|)
 operator|.
-name|getAuthorsLastFirstAnds
+name|getAsLastFirstNamesWithAnd
 argument_list|(
 literal|false
 argument_list|)
@@ -3311,12 +3328,12 @@ literal|"Smith, J."
 argument_list|,
 name|AuthorList
 operator|.
-name|getAuthorList
+name|parse
 argument_list|(
 literal|"John Smith"
 argument_list|)
 operator|.
-name|getAuthorsLastFirstAnds
+name|getAsLastFirstNamesWithAnd
 argument_list|(
 literal|true
 argument_list|)
@@ -3330,12 +3347,12 @@ literal|"Smith, J. and Black Brown, P."
 argument_list|,
 name|AuthorList
 operator|.
-name|getAuthorList
+name|parse
 argument_list|(
 literal|"John Smith and Black Brown, Peter"
 argument_list|)
 operator|.
-name|getAuthorsLastFirstAnds
+name|getAsLastFirstNamesWithAnd
 argument_list|(
 literal|true
 argument_list|)
@@ -3349,12 +3366,12 @@ literal|"von Neumann, J. and Smith, J. and Black Brown, P."
 argument_list|,
 name|AuthorList
 operator|.
-name|getAuthorList
+name|parse
 argument_list|(
 literal|"John von Neumann and John Smith and Black Brown, Peter"
 argument_list|)
 operator|.
-name|getAuthorsLastFirstAnds
+name|getAsLastFirstNamesWithAnd
 argument_list|(
 literal|true
 argument_list|)
@@ -3368,12 +3385,12 @@ literal|"von Last, Jr, F."
 argument_list|,
 name|AuthorList
 operator|.
-name|getAuthorList
+name|parse
 argument_list|(
 literal|"von Last, Jr ,First"
 argument_list|)
 operator|.
-name|getAuthorsLastFirstAnds
+name|getAsLastFirstNamesWithAnd
 argument_list|(
 literal|true
 argument_list|)
@@ -3395,7 +3412,7 @@ name|al
 operator|=
 name|AuthorList
 operator|.
-name|getAuthorList
+name|parse
 argument_list|(
 literal|""
 argument_list|)
@@ -3408,7 +3425,7 @@ literal|""
 argument_list|,
 name|al
 operator|.
-name|getAuthorsFirstFirst
+name|getAsFirstLastNames
 argument_list|(
 literal|true
 argument_list|,
@@ -3424,7 +3441,7 @@ literal|""
 argument_list|,
 name|al
 operator|.
-name|getAuthorsFirstFirst
+name|getAsFirstLastNames
 argument_list|(
 literal|false
 argument_list|,
@@ -3440,7 +3457,7 @@ literal|""
 argument_list|,
 name|al
 operator|.
-name|getAuthorsFirstFirst
+name|getAsFirstLastNames
 argument_list|(
 literal|true
 argument_list|,
@@ -3456,7 +3473,7 @@ literal|""
 argument_list|,
 name|al
 operator|.
-name|getAuthorsFirstFirst
+name|getAsFirstLastNames
 argument_list|(
 literal|false
 argument_list|,
@@ -3468,7 +3485,7 @@ name|al
 operator|=
 name|AuthorList
 operator|.
-name|getAuthorList
+name|parse
 argument_list|(
 literal|"John Smith"
 argument_list|)
@@ -3481,7 +3498,7 @@ literal|"John Smith"
 argument_list|,
 name|al
 operator|.
-name|getAuthorsFirstFirst
+name|getAsFirstLastNames
 argument_list|(
 literal|false
 argument_list|,
@@ -3497,7 +3514,7 @@ literal|"J. Smith"
 argument_list|,
 name|al
 operator|.
-name|getAuthorsFirstFirst
+name|getAsFirstLastNames
 argument_list|(
 literal|true
 argument_list|,
@@ -3513,7 +3530,7 @@ literal|"John Smith"
 argument_list|,
 name|al
 operator|.
-name|getAuthorsFirstFirst
+name|getAsFirstLastNames
 argument_list|(
 literal|false
 argument_list|,
@@ -3529,7 +3546,7 @@ literal|"J. Smith"
 argument_list|,
 name|al
 operator|.
-name|getAuthorsFirstFirst
+name|getAsFirstLastNames
 argument_list|(
 literal|true
 argument_list|,
@@ -3541,7 +3558,7 @@ name|al
 operator|=
 name|AuthorList
 operator|.
-name|getAuthorList
+name|parse
 argument_list|(
 literal|"John Smith and Black Brown, Peter"
 argument_list|)
@@ -3554,7 +3571,7 @@ literal|"John Smith and Peter Black Brown"
 argument_list|,
 name|al
 operator|.
-name|getAuthorsFirstFirst
+name|getAsFirstLastNames
 argument_list|(
 literal|false
 argument_list|,
@@ -3570,7 +3587,7 @@ literal|"J. Smith and P. Black Brown"
 argument_list|,
 name|al
 operator|.
-name|getAuthorsFirstFirst
+name|getAsFirstLastNames
 argument_list|(
 literal|true
 argument_list|,
@@ -3586,7 +3603,7 @@ literal|"John Smith and Peter Black Brown"
 argument_list|,
 name|al
 operator|.
-name|getAuthorsFirstFirst
+name|getAsFirstLastNames
 argument_list|(
 literal|false
 argument_list|,
@@ -3602,7 +3619,7 @@ literal|"J. Smith and P. Black Brown"
 argument_list|,
 name|al
 operator|.
-name|getAuthorsFirstFirst
+name|getAsFirstLastNames
 argument_list|(
 literal|true
 argument_list|,
@@ -3614,7 +3631,7 @@ name|al
 operator|=
 name|AuthorList
 operator|.
-name|getAuthorList
+name|parse
 argument_list|(
 literal|"John von Neumann and John Smith and Black Brown, Peter"
 argument_list|)
@@ -3627,7 +3644,7 @@ literal|"John von Neumann, John Smith and Peter Black Brown"
 argument_list|,
 name|al
 operator|.
-name|getAuthorsFirstFirst
+name|getAsFirstLastNames
 argument_list|(
 literal|false
 argument_list|,
@@ -3643,7 +3660,7 @@ literal|"J. von Neumann, J. Smith and P. Black Brown"
 argument_list|,
 name|al
 operator|.
-name|getAuthorsFirstFirst
+name|getAsFirstLastNames
 argument_list|(
 literal|true
 argument_list|,
@@ -3659,7 +3676,7 @@ literal|"John von Neumann, John Smith, and Peter Black Brown"
 argument_list|,
 name|al
 operator|.
-name|getAuthorsFirstFirst
+name|getAsFirstLastNames
 argument_list|(
 literal|false
 argument_list|,
@@ -3675,7 +3692,7 @@ literal|"J. von Neumann, J. Smith, and P. Black Brown"
 argument_list|,
 name|al
 operator|.
-name|getAuthorsFirstFirst
+name|getAsFirstLastNames
 argument_list|(
 literal|true
 argument_list|,
@@ -3687,7 +3704,7 @@ name|al
 operator|=
 name|AuthorList
 operator|.
-name|getAuthorList
+name|parse
 argument_list|(
 literal|"John Peter von Neumann"
 argument_list|)
@@ -3700,7 +3717,7 @@ literal|"John Peter von Neumann"
 argument_list|,
 name|al
 operator|.
-name|getAuthorsFirstFirst
+name|getAsFirstLastNames
 argument_list|(
 literal|false
 argument_list|,
@@ -3716,7 +3733,7 @@ literal|"John Peter von Neumann"
 argument_list|,
 name|al
 operator|.
-name|getAuthorsFirstFirst
+name|getAsFirstLastNames
 argument_list|(
 literal|false
 argument_list|,
@@ -3732,7 +3749,7 @@ literal|"J. P. von Neumann"
 argument_list|,
 name|al
 operator|.
-name|getAuthorsFirstFirst
+name|getAsFirstLastNames
 argument_list|(
 literal|true
 argument_list|,
@@ -3748,7 +3765,7 @@ literal|"J. P. von Neumann"
 argument_list|,
 name|al
 operator|.
-name|getAuthorsFirstFirst
+name|getAsFirstLastNames
 argument_list|(
 literal|true
 argument_list|,
@@ -3773,12 +3790,12 @@ literal|"John Smith"
 argument_list|,
 name|AuthorList
 operator|.
-name|getAuthorList
+name|parse
 argument_list|(
 literal|"John Smith"
 argument_list|)
 operator|.
-name|getAuthorsFirstFirstAnds
+name|getAsFirstLastNamesWithAnd
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -3790,12 +3807,12 @@ literal|"John Smith and Peter Black Brown"
 argument_list|,
 name|AuthorList
 operator|.
-name|getAuthorList
+name|parse
 argument_list|(
 literal|"John Smith and Black Brown, Peter"
 argument_list|)
 operator|.
-name|getAuthorsFirstFirstAnds
+name|getAsFirstLastNamesWithAnd
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -3807,12 +3824,12 @@ literal|"John von Neumann and John Smith and Peter Black Brown"
 argument_list|,
 name|AuthorList
 operator|.
-name|getAuthorList
+name|parse
 argument_list|(
 literal|"John von Neumann and John Smith and Black Brown, Peter"
 argument_list|)
 operator|.
-name|getAuthorsFirstFirstAnds
+name|getAsFirstLastNamesWithAnd
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -3824,12 +3841,12 @@ literal|"First von Last, Jr. III"
 argument_list|,
 name|AuthorList
 operator|.
-name|getAuthorList
+name|parse
 argument_list|(
 literal|"von Last, Jr. III, First"
 argument_list|)
 operator|.
-name|getAuthorsFirstFirstAnds
+name|getAsFirstLastNamesWithAnd
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -3850,12 +3867,12 @@ literal|"Smith, J."
 argument_list|,
 name|AuthorList
 operator|.
-name|getAuthorList
+name|parse
 argument_list|(
 literal|"John Smith"
 argument_list|)
 operator|.
-name|getAuthorsForAlphabetization
+name|getForAlphabetization
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -3867,12 +3884,12 @@ literal|"Neumann, J."
 argument_list|,
 name|AuthorList
 operator|.
-name|getAuthorList
+name|parse
 argument_list|(
 literal|"John von Neumann"
 argument_list|)
 operator|.
-name|getAuthorsForAlphabetization
+name|getForAlphabetization
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -3884,12 +3901,12 @@ literal|"Neumann, J."
 argument_list|,
 name|AuthorList
 operator|.
-name|getAuthorList
+name|parse
 argument_list|(
 literal|"J. von Neumann"
 argument_list|)
 operator|.
-name|getAuthorsForAlphabetization
+name|getForAlphabetization
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -3901,12 +3918,12 @@ literal|"Neumann, J. and Smith, J. and Black Brown, Jr., P."
 argument_list|,
 name|AuthorList
 operator|.
-name|getAuthorList
+name|parse
 argument_list|(
 literal|"John von Neumann and John Smith and de Black Brown, Jr., Peter"
 argument_list|)
 operator|.
-name|getAuthorsForAlphabetization
+name|getForAlphabetization
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -3927,12 +3944,12 @@ literal|"{A}bbb{c}"
 argument_list|,
 name|AuthorList
 operator|.
-name|getAuthorList
+name|parse
 argument_list|(
 literal|"{A}bbb{c}"
 argument_list|)
 operator|.
-name|getAuthorsLastOnly
+name|getAsLastNames
 argument_list|(
 literal|false
 argument_list|)
@@ -3946,12 +3963,12 @@ literal|"Vall{\\'e}e Poussin"
 argument_list|,
 name|AuthorList
 operator|.
-name|getAuthorList
+name|parse
 argument_list|(
 literal|"{Vall{\\'e}e Poussin}"
 argument_list|)
 operator|.
-name|getAuthorsLastOnly
+name|getAsLastNames
 argument_list|(
 literal|false
 argument_list|)
@@ -3965,12 +3982,12 @@ literal|"Poussin"
 argument_list|,
 name|AuthorList
 operator|.
-name|getAuthorList
+name|parse
 argument_list|(
 literal|"{Vall{\\'e}e} {Poussin}"
 argument_list|)
 operator|.
-name|getAuthorsLastOnly
+name|getAsLastNames
 argument_list|(
 literal|false
 argument_list|)
@@ -3984,12 +4001,12 @@ literal|"Poussin"
 argument_list|,
 name|AuthorList
 operator|.
-name|getAuthorList
+name|parse
 argument_list|(
 literal|"Vall{\\'e}e Poussin"
 argument_list|)
 operator|.
-name|getAuthorsLastOnly
+name|getAsLastNames
 argument_list|(
 literal|false
 argument_list|)
@@ -4003,12 +4020,12 @@ literal|"Lastname"
 argument_list|,
 name|AuthorList
 operator|.
-name|getAuthorList
+name|parse
 argument_list|(
 literal|"Firstname {Lastname}"
 argument_list|)
 operator|.
-name|getAuthorsLastOnly
+name|getAsLastNames
 argument_list|(
 literal|false
 argument_list|)
@@ -4022,15 +4039,46 @@ literal|"Firstname Lastname"
 argument_list|,
 name|AuthorList
 operator|.
-name|getAuthorList
+name|parse
 argument_list|(
 literal|"{Firstname Lastname}"
 argument_list|)
 operator|.
-name|getAuthorsLastOnly
+name|getAsLastNames
 argument_list|(
 literal|false
 argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|createCorrectInitials ()
+specifier|public
+name|void
+name|createCorrectInitials
+parameter_list|()
+block|{
+name|Assert
+operator|.
+name|assertEquals
+argument_list|(
+literal|"J. G."
+argument_list|,
+name|AuthorList
+operator|.
+name|parse
+argument_list|(
+literal|"Hornberg, Johann Gottfried"
+argument_list|)
+operator|.
+name|getAuthor
+argument_list|(
+literal|0
+argument_list|)
+operator|.
+name|getFirstAbbr
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

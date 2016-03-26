@@ -2284,12 +2284,12 @@ name|push
 argument_list|(
 name|AuthorList
 operator|.
-name|getAuthorList
+name|parse
 argument_list|(
 name|s
 argument_list|)
 operator|.
-name|size
+name|getNumberOfAuthors
 argument_list|()
 argument_list|)
 expr_stmt|;
