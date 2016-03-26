@@ -2655,8 +2655,6 @@ operator|.
 name|getText
 argument_list|()
 argument_list|,
-literal|true
-argument_list|,
 name|Globals
 operator|.
 name|prefs

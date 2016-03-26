@@ -332,17 +332,14 @@ return|return
 name|dirList
 return|;
 block|}
-comment|/**      * If the string dir indicates a file, parse it and add it to the list of styles if      * successful. If the string dir indicates a directory, parse all files looking like      * style files, and add them. The parameter recurse determines whether we should      * recurse into subdirectories.      * @param dir the directory or file to handle.      * @param recurse true indicates that we should recurse into subdirectories.      * @param encoding      */
-DECL|method|addStyles (String dir, boolean recurse, Charset encoding, List<OOBibStyle> styles)
+comment|/**      * If the string dir indicates a file, parse it and add it to the list of styles if      * successful. If the string dir indicates a directory, parse all files looking like      * style files, and add them. The parameter recurse determines whether we should      * recurse into subdirectories.      * @param dir the directory or file to handle.      * @param encoding      * @param styles List that will be filled with the found styles      */
+DECL|method|addStyles (String dir, Charset encoding, List<OOBibStyle> styles)
 specifier|public
 name|void
 name|addStyles
 parameter_list|(
 name|String
 name|dir
-parameter_list|,
-name|boolean
-name|recurse
 parameter_list|,
 name|Charset
 name|encoding
@@ -460,8 +457,6 @@ name|file
 operator|.
 name|isDirectory
 argument_list|()
-operator|&&
-name|recurse
 condition|)
 block|{
 comment|// If the file is a directory, and we should recurse, do:
@@ -471,8 +466,6 @@ name|file
 operator|.
 name|getPath
 argument_list|()
-argument_list|,
-name|recurse
 argument_list|,
 name|encoding
 argument_list|,

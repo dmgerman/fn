@@ -207,21 +207,13 @@ return|;
 block|}
 if|if
 condition|(
-operator|!
 name|pageInfo
 operator|.
 name|isPresent
 argument_list|()
 condition|)
 block|{
-comment|// This means that origPageInfo.isPresent is also false
-return|return
-literal|false
-return|;
-block|}
-else|else
-block|{
-comment|// So origPageInfo.isPresent is true here
+comment|// This means that origPageInfo.isPresent is also true here
 return|return
 name|pageInfo
 operator|.
@@ -237,6 +229,13 @@ argument_list|()
 argument_list|)
 operator|!=
 literal|0
+return|;
+block|}
+else|else
+block|{
+comment|// So origPageInfo.isPresent is false here
+return|return
+literal|false
 return|;
 block|}
 block|}

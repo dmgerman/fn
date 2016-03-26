@@ -240,6 +240,12 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+DECL|field|preferences
+specifier|private
+specifier|final
+name|OpenOfficePreferences
+name|preferences
+decl_stmt|;
 DECL|field|foundPaths
 specifier|private
 name|boolean
@@ -275,6 +281,16 @@ name|parent
 operator|=
 name|parent
 expr_stmt|;
+name|preferences
+operator|=
+operator|new
+name|OpenOfficePreferences
+argument_list|(
+name|Globals
+operator|.
+name|prefs
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|runAutodetection ()
 specifier|public
@@ -286,7 +302,7 @@ try|try
 block|{
 if|if
 condition|(
-name|OpenOfficePreferences
+name|preferences
 operator|.
 name|checkAutoDetectedPaths
 argument_list|()
@@ -1430,16 +1446,10 @@ return|;
 block|}
 else|else
 block|{
-name|Globals
+name|preferences
 operator|.
-name|prefs
-operator|.
-name|put
+name|setJarsPath
 argument_list|(
-name|JabRefPreferences
-operator|.
-name|OO_JARS_PATH
-argument_list|,
 name|jurt
 operator|.
 name|getPath

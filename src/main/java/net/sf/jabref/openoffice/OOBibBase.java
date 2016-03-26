@@ -418,30 +418,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|JabRefPreferences
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|bibtex
 operator|.
 name|comparator
@@ -1818,7 +1794,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * This method inserts a cite marker in the text for the given BibEntry,      * and may refresh the bibliography.      * @param entries The entries to cite.      * @param database The database the entry belongs to.      * @param style The bibliography style we are using.      * @param inParenthesis Indicates whether it is an in-text citation or a citation in parenthesis.      *   This is not relevant if numbered citations are used.      * @param withText Indicates whether this should be a normal citation (true) or an empty      *   (invisible) citation (false).      * @throws Exception      */
-DECL|method|insertEntry (List<BibEntry> entries, BibDatabase database, List<BibDatabase> allBases, OOBibStyle style, boolean inParenthesis, boolean withText, String pageInfo)
+DECL|method|insertEntry (List<BibEntry> entries, BibDatabase database, List<BibDatabase> allBases, OOBibStyle style, boolean inParenthesis, boolean withText, String pageInfo, boolean sync)
 specifier|public
 name|void
 name|insertEntry
@@ -1849,6 +1825,9 @@ name|withText
 parameter_list|,
 name|String
 name|pageInfo
+parameter_list|,
+name|boolean
+name|sync
 parameter_list|)
 throws|throws
 name|Exception
@@ -2194,16 +2173,7 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getBoolean
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|SYNC_OO_WHEN_CITING
-argument_list|)
+name|sync
 condition|)
 block|{
 comment|// To account for numbering and for uniqiefiers, we must refresh the cite markers:
