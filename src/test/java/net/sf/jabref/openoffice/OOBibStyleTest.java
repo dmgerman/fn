@@ -1163,7 +1163,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"Example style file for JabRef-OO connection. [number]"
+literal|"Default [number] style file."
 argument_list|,
 name|style
 operator|.

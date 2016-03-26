@@ -3234,6 +3234,18 @@ case|:
 return|return
 name|style
 operator|.
+name|isFromResource
+argument_list|()
+condition|?
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Internal style file"
+argument_list|)
+else|:
+name|style
+operator|.
 name|getFile
 argument_list|()
 operator|.

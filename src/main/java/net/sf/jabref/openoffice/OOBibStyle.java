@@ -384,6 +384,12 @@ specifier|private
 name|boolean
 name|valid
 decl_stmt|;
+DECL|field|fromResource
+specifier|private
+specifier|final
+name|boolean
+name|fromResource
+decl_stmt|;
 DECL|enum|BibStyleMode
 enum|enum
 name|BibStyleMode
@@ -877,6 +883,10 @@ expr_stmt|;
 name|reload
 argument_list|()
 expr_stmt|;
+name|fromResource
+operator|=
+literal|false
+expr_stmt|;
 block|}
 DECL|method|OOBibStyle (String resourcePath, JournalAbbreviationRepository repository)
 specifier|public
@@ -927,6 +937,10 @@ operator|.
 name|openStream
 argument_list|()
 argument_list|)
+expr_stmt|;
+name|fromResource
+operator|=
+literal|true
 expr_stmt|;
 block|}
 DECL|method|setDefaultProperties ()
@@ -4321,6 +4335,16 @@ name|get
 argument_list|(
 name|propName
 argument_list|)
+return|;
+block|}
+DECL|method|isFromResource ()
+specifier|public
+name|boolean
+name|isFromResource
+parameter_list|()
+block|{
+return|return
+name|fromResource
 return|;
 block|}
 annotation|@

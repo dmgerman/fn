@@ -52,14 +52,14 @@ name|CitationEntryTest
 block|{
 annotation|@
 name|Test
-DECL|method|testCitEntryInitalPageInfo ()
+DECL|method|testCitationEntryInitalPageInfo ()
 specifier|public
 name|void
-name|testCitEntryInitalPageInfo
+name|testCitationEntryInitalPageInfo
 parameter_list|()
 block|{
 name|CitationEntry
-name|citEntry
+name|citationEntry
 init|=
 operator|new
 name|CitationEntry
@@ -73,7 +73,7 @@ argument_list|)
 decl_stmt|;
 name|assertFalse
 argument_list|(
-name|citEntry
+name|citationEntry
 operator|.
 name|pageInfoChanged
 argument_list|()
@@ -81,7 +81,7 @@ argument_list|)
 expr_stmt|;
 name|assertTrue
 argument_list|(
-name|citEntry
+name|citationEntry
 operator|.
 name|getPageInfo
 argument_list|()
@@ -94,7 +94,7 @@ name|assertEquals
 argument_list|(
 literal|"Info"
 argument_list|,
-name|citEntry
+name|citationEntry
 operator|.
 name|getPageInfo
 argument_list|()
@@ -107,7 +107,7 @@ name|assertEquals
 argument_list|(
 literal|"RefMark"
 argument_list|,
-name|citEntry
+name|citationEntry
 operator|.
 name|getRefMarkName
 argument_list|()
@@ -117,7 +117,7 @@ name|assertEquals
 argument_list|(
 literal|"Context"
 argument_list|,
-name|citEntry
+name|citationEntry
 operator|.
 name|getContext
 argument_list|()
@@ -126,14 +126,14 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testCitEntryOptionalInitalPageInfo ()
+DECL|method|testCitationEntryOptionalInitalPageInfo ()
 specifier|public
 name|void
-name|testCitEntryOptionalInitalPageInfo
+name|testCitationEntryOptionalInitalPageInfo
 parameter_list|()
 block|{
 name|CitationEntry
-name|citEntry
+name|citationEntry
 init|=
 operator|new
 name|CitationEntry
@@ -152,7 +152,7 @@ argument_list|)
 decl_stmt|;
 name|assertFalse
 argument_list|(
-name|citEntry
+name|citationEntry
 operator|.
 name|pageInfoChanged
 argument_list|()
@@ -160,7 +160,7 @@ argument_list|)
 expr_stmt|;
 name|assertTrue
 argument_list|(
-name|citEntry
+name|citationEntry
 operator|.
 name|getPageInfo
 argument_list|()
@@ -173,7 +173,7 @@ name|assertEquals
 argument_list|(
 literal|"Info"
 argument_list|,
-name|citEntry
+name|citationEntry
 operator|.
 name|getPageInfo
 argument_list|()
@@ -186,7 +186,7 @@ name|assertEquals
 argument_list|(
 literal|"RefMark"
 argument_list|,
-name|citEntry
+name|citationEntry
 operator|.
 name|getRefMarkName
 argument_list|()
@@ -196,7 +196,7 @@ name|assertEquals
 argument_list|(
 literal|"Context"
 argument_list|,
-name|citEntry
+name|citationEntry
 operator|.
 name|getContext
 argument_list|()
@@ -205,14 +205,14 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testCitEntryInitalPageInfoChanged ()
+DECL|method|testCitationEntryInitalPageInfoChanged ()
 specifier|public
 name|void
-name|testCitEntryInitalPageInfoChanged
+name|testCitationEntryInitalPageInfoChanged
 parameter_list|()
 block|{
 name|CitationEntry
-name|citEntry
+name|citationEntry
 init|=
 operator|new
 name|CitationEntry
@@ -224,7 +224,7 @@ argument_list|,
 literal|"Info"
 argument_list|)
 decl_stmt|;
-name|citEntry
+name|citationEntry
 operator|.
 name|setPageInfo
 argument_list|(
@@ -233,7 +233,7 @@ argument_list|)
 expr_stmt|;
 name|assertTrue
 argument_list|(
-name|citEntry
+name|citationEntry
 operator|.
 name|pageInfoChanged
 argument_list|()
@@ -241,7 +241,7 @@ argument_list|)
 expr_stmt|;
 name|assertTrue
 argument_list|(
-name|citEntry
+name|citationEntry
 operator|.
 name|getPageInfo
 argument_list|()
@@ -254,7 +254,7 @@ name|assertEquals
 argument_list|(
 literal|"Other info"
 argument_list|,
-name|citEntry
+name|citationEntry
 operator|.
 name|getPageInfo
 argument_list|()
@@ -266,14 +266,14 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testCitEntryInitalPageInfoRemoved ()
+DECL|method|testCitationEntryInitalPageInfoRemoved ()
 specifier|public
 name|void
-name|testCitEntryInitalPageInfoRemoved
+name|testCitationEntryInitalPageInfoRemoved
 parameter_list|()
 block|{
 name|CitationEntry
-name|citEntry
+name|citationEntry
 init|=
 operator|new
 name|CitationEntry
@@ -285,7 +285,7 @@ argument_list|,
 literal|"Info"
 argument_list|)
 decl_stmt|;
-name|citEntry
+name|citationEntry
 operator|.
 name|setPageInfo
 argument_list|(
@@ -294,7 +294,7 @@ argument_list|)
 expr_stmt|;
 name|assertTrue
 argument_list|(
-name|citEntry
+name|citationEntry
 operator|.
 name|pageInfoChanged
 argument_list|()
@@ -302,7 +302,7 @@ argument_list|)
 expr_stmt|;
 name|assertFalse
 argument_list|(
-name|citEntry
+name|citationEntry
 operator|.
 name|getPageInfo
 argument_list|()
@@ -314,14 +314,14 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testCitEntryNoInitalPageInfo ()
+DECL|method|testCitationEntryNoInitalPageInfo ()
 specifier|public
 name|void
-name|testCitEntryNoInitalPageInfo
+name|testCitationEntryNoInitalPageInfo
 parameter_list|()
 block|{
 name|CitationEntry
-name|citEntry
+name|citationEntry
 init|=
 operator|new
 name|CitationEntry
@@ -333,7 +333,7 @@ argument_list|)
 decl_stmt|;
 name|assertFalse
 argument_list|(
-name|citEntry
+name|citationEntry
 operator|.
 name|pageInfoChanged
 argument_list|()
@@ -341,7 +341,7 @@ argument_list|)
 expr_stmt|;
 name|assertFalse
 argument_list|(
-name|citEntry
+name|citationEntry
 operator|.
 name|getPageInfo
 argument_list|()
@@ -353,14 +353,14 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testCitEntryNoInitalPageInfoChanged ()
+DECL|method|testCitationEntryNoInitalPageInfoChanged ()
 specifier|public
 name|void
-name|testCitEntryNoInitalPageInfoChanged
+name|testCitationEntryNoInitalPageInfoChanged
 parameter_list|()
 block|{
 name|CitationEntry
-name|citEntry
+name|citationEntry
 init|=
 operator|new
 name|CitationEntry
@@ -370,7 +370,7 @@ argument_list|,
 literal|"Context"
 argument_list|)
 decl_stmt|;
-name|citEntry
+name|citationEntry
 operator|.
 name|setPageInfo
 argument_list|(
@@ -379,7 +379,7 @@ argument_list|)
 expr_stmt|;
 name|assertTrue
 argument_list|(
-name|citEntry
+name|citationEntry
 operator|.
 name|pageInfoChanged
 argument_list|()
@@ -387,7 +387,7 @@ argument_list|)
 expr_stmt|;
 name|assertTrue
 argument_list|(
-name|citEntry
+name|citationEntry
 operator|.
 name|getPageInfo
 argument_list|()
@@ -400,7 +400,7 @@ name|assertEquals
 argument_list|(
 literal|"Other info"
 argument_list|,
-name|citEntry
+name|citationEntry
 operator|.
 name|getPageInfo
 argument_list|()
@@ -412,14 +412,14 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testCitEntryEquals ()
+DECL|method|testCitationEntryEquals ()
 specifier|public
 name|void
-name|testCitEntryEquals
+name|testCitationEntryEquals
 parameter_list|()
 block|{
 name|CitationEntry
-name|citEntry1
+name|citationEntry1
 init|=
 operator|new
 name|CitationEntry
@@ -432,7 +432,7 @@ literal|"Info"
 argument_list|)
 decl_stmt|;
 name|CitationEntry
-name|citEntry2
+name|citationEntry2
 init|=
 operator|new
 name|CitationEntry
@@ -445,7 +445,7 @@ literal|"Info"
 argument_list|)
 decl_stmt|;
 name|CitationEntry
-name|citEntry3
+name|citationEntry3
 init|=
 operator|new
 name|CitationEntry
@@ -459,28 +459,28 @@ argument_list|)
 decl_stmt|;
 name|assertEquals
 argument_list|(
-name|citEntry1
+name|citationEntry1
 argument_list|,
-name|citEntry1
+name|citationEntry1
 argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-name|citEntry1
+name|citationEntry1
 argument_list|,
-name|citEntry3
+name|citationEntry3
 argument_list|)
 expr_stmt|;
 name|assertNotEquals
 argument_list|(
-name|citEntry1
+name|citationEntry1
 argument_list|,
-name|citEntry2
+name|citationEntry2
 argument_list|)
 expr_stmt|;
 name|assertNotEquals
 argument_list|(
-name|citEntry1
+name|citationEntry1
 argument_list|,
 literal|"Random String"
 argument_list|)
@@ -488,14 +488,14 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testCitEntryCompareTo ()
+DECL|method|testCitationEntryCompareTo ()
 specifier|public
 name|void
-name|testCitEntryCompareTo
+name|testCitationEntryCompareTo
 parameter_list|()
 block|{
 name|CitationEntry
-name|citEntry1
+name|citationEntry1
 init|=
 operator|new
 name|CitationEntry
@@ -508,7 +508,7 @@ literal|"Info"
 argument_list|)
 decl_stmt|;
 name|CitationEntry
-name|citEntry2
+name|citationEntry2
 init|=
 operator|new
 name|CitationEntry
@@ -521,7 +521,7 @@ literal|"Info"
 argument_list|)
 decl_stmt|;
 name|CitationEntry
-name|citEntry3
+name|citationEntry3
 init|=
 operator|new
 name|CitationEntry
@@ -537,11 +537,11 @@ name|assertEquals
 argument_list|(
 literal|0
 argument_list|,
-name|citEntry1
+name|citationEntry1
 operator|.
 name|compareTo
 argument_list|(
-name|citEntry1
+name|citationEntry1
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -549,11 +549,11 @@ name|assertEquals
 argument_list|(
 literal|0
 argument_list|,
-name|citEntry1
+name|citationEntry1
 operator|.
 name|compareTo
 argument_list|(
-name|citEntry3
+name|citationEntry3
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -562,11 +562,11 @@ argument_list|(
 operator|-
 literal|1
 argument_list|,
-name|citEntry1
+name|citationEntry1
 operator|.
 name|compareTo
 argument_list|(
-name|citEntry2
+name|citationEntry2
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -574,11 +574,11 @@ name|assertEquals
 argument_list|(
 literal|1
 argument_list|,
-name|citEntry2
+name|citationEntry2
 operator|.
 name|compareTo
 argument_list|(
-name|citEntry1
+name|citationEntry1
 argument_list|)
 argument_list|)
 expr_stmt|;
