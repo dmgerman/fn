@@ -4345,7 +4345,7 @@ name|expectedAuthors
 init|=
 name|AuthorList
 operator|.
-name|getAuthors
+name|parse
 argument_list|(
 name|expected
 operator|.
@@ -4360,7 +4360,7 @@ name|actualAuthors
 init|=
 name|AuthorList
 operator|.
-name|getAuthors
+name|parse
 argument_list|(
 name|actual
 operator|.
@@ -7861,14 +7861,14 @@ name|assertEquals
 argument_list|(
 name|AuthorList
 operator|.
-name|getAuthors
+name|parse
 argument_list|(
 literal|"Crowston, K. and Annabi, H. and Howison, J. and Masango, C."
 argument_list|)
 argument_list|,
 name|AuthorList
 operator|.
-name|getAuthors
+name|parse
 argument_list|(
 name|x
 operator|.
@@ -8022,7 +8022,7 @@ name|originalAuthors
 init|=
 name|AuthorList
 operator|.
-name|getAuthors
+name|parse
 argument_list|(
 literal|"Patterson, David and Arvind and Asanov\\'\\i{}c, Krste and Chiou, Derek and Hoe, James and Kozyrakis, Christos and Lu, S{hih-Lien} and Oskin, Mark and Rabaey, Jan and Wawrzynek, John"
 argument_list|)
@@ -8082,7 +8082,7 @@ name|originalAuthors
 argument_list|,
 name|AuthorList
 operator|.
-name|getAuthors
+name|parse
 argument_list|(
 name|b
 operator|.
@@ -8118,7 +8118,7 @@ name|originalAuthors
 argument_list|,
 name|AuthorList
 operator|.
-name|getAuthors
+name|parse
 argument_list|(
 name|document
 operator|.
@@ -8153,7 +8153,7 @@ name|originalAuthors
 argument_list|,
 name|AuthorList
 operator|.
-name|getAuthors
+name|parse
 argument_list|(
 name|b
 operator|.
@@ -8348,7 +8348,7 @@ name|originalAuthors
 argument_list|,
 name|AuthorList
 operator|.
-name|getAuthors
+name|parse
 argument_list|(
 name|b
 operator|.

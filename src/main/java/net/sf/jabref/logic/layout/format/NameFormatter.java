@@ -451,7 +451,7 @@ name|al
 init|=
 name|AuthorList
 operator|.
-name|getAuthors
+name|parse
 argument_list|(
 name|toFormat
 argument_list|)

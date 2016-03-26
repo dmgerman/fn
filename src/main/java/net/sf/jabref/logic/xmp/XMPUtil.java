@@ -2303,7 +2303,7 @@ name|list
 init|=
 name|AuthorList
 operator|.
-name|getAuthors
+name|parse
 argument_list|(
 name|authors
 argument_list|)
@@ -2361,7 +2361,7 @@ name|list
 init|=
 name|AuthorList
 operator|.
-name|getAuthors
+name|parse
 argument_list|(
 name|authors
 argument_list|)

@@ -96,7 +96,7 @@ name|a
 init|=
 name|AuthorList
 operator|.
-name|getAuthors
+name|parse
 argument_list|(
 name|fieldText
 argument_list|)

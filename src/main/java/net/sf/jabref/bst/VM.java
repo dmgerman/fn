@@ -2284,7 +2284,7 @@ name|push
 argument_list|(
 name|AuthorList
 operator|.
-name|getAuthors
+name|parse
 argument_list|(
 name|s
 argument_list|)

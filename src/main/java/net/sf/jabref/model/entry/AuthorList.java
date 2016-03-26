@@ -182,11 +182,11 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Retrieve an AuthorList for the given string of authors or editors.      *<p>      * This function tries to cache the parsed AuthorLists by the string passed in.      *      * @param authors The string of authors or editors in bibtex format to parse.      * @return An AuthorList object representing the given authors.      */
-DECL|method|getAuthors (String authors)
+DECL|method|parse (String authors)
 specifier|public
 specifier|static
 name|AuthorList
-name|getAuthors
+name|parse
 parameter_list|(
 name|String
 name|authors
@@ -266,7 +266,7 @@ block|{
 return|return
 name|AuthorList
 operator|.
-name|getAuthors
+name|parse
 argument_list|(
 name|authors
 argument_list|)
@@ -293,7 +293,7 @@ block|{
 return|return
 name|AuthorList
 operator|.
-name|getAuthors
+name|parse
 argument_list|(
 name|authors
 argument_list|)
@@ -322,7 +322,7 @@ block|{
 return|return
 name|AuthorList
 operator|.
-name|getAuthors
+name|parse
 argument_list|(
 name|authors
 argument_list|)
@@ -349,7 +349,7 @@ block|{
 return|return
 name|AuthorList
 operator|.
-name|getAuthors
+name|parse
 argument_list|(
 name|authors
 argument_list|)
@@ -377,7 +377,7 @@ block|{
 return|return
 name|AuthorList
 operator|.
-name|getAuthors
+name|parse
 argument_list|(
 name|authors
 argument_list|)
@@ -405,7 +405,7 @@ block|{
 return|return
 name|AuthorList
 operator|.
-name|getAuthors
+name|parse
 argument_list|(
 name|authors
 argument_list|)
@@ -430,7 +430,7 @@ block|{
 return|return
 name|AuthorList
 operator|.
-name|getAuthors
+name|parse
 argument_list|(
 name|authors
 argument_list|)
@@ -453,7 +453,7 @@ block|{
 return|return
 name|AuthorList
 operator|.
-name|getAuthors
+name|parse
 argument_list|(
 name|authors
 argument_list|)

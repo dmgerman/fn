@@ -345,7 +345,7 @@ name|list
 init|=
 name|AuthorList
 operator|.
-name|getAuthors
+name|parse
 argument_list|(
 name|value
 argument_list|)

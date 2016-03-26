@@ -163,7 +163,7 @@ name|al
 init|=
 name|AuthorList
 operator|.
-name|getAuthors
+name|parse
 argument_list|(
 literal|"John Smith"
 argument_list|)
@@ -176,7 +176,7 @@ name|al
 operator|==
 name|AuthorList
 operator|.
-name|getAuthors
+name|parse
 argument_list|(
 literal|"John Smith"
 argument_list|)
@@ -190,7 +190,7 @@ name|al
 operator|==
 name|AuthorList
 operator|.
-name|getAuthors
+name|parse
 argument_list|(
 literal|"Smith"
 argument_list|)
@@ -1819,7 +1819,7 @@ block|{
 return|return
 name|AuthorList
 operator|.
-name|getAuthors
+name|parse
 argument_list|(
 name|bibtex
 argument_list|)
@@ -2056,7 +2056,7 @@ name|assertTrue
 argument_list|(
 name|AuthorList
 operator|.
-name|getAuthors
+name|parse
 argument_list|(
 literal|""
 argument_list|)
@@ -2071,7 +2071,7 @@ name|assertFalse
 argument_list|(
 name|AuthorList
 operator|.
-name|getAuthors
+name|parse
 argument_list|(
 literal|"Bar"
 argument_list|)
@@ -2098,7 +2098,7 @@ parameter_list|()
 block|{
 name|AuthorList
 operator|.
-name|getAuthors
+name|parse
 argument_list|(
 literal|""
 argument_list|)
@@ -2127,7 +2127,7 @@ name|author
 init|=
 name|AuthorList
 operator|.
-name|getAuthors
+name|parse
 argument_list|(
 literal|"John Smith and von Neumann, Jr, John"
 argument_list|)
@@ -2281,7 +2281,7 @@ name|author
 operator|=
 name|AuthorList
 operator|.
-name|getAuthors
+name|parse
 argument_list|(
 literal|"Peter Black Brown"
 argument_list|)
@@ -2371,7 +2371,7 @@ name|author
 operator|=
 name|AuthorList
 operator|.
-name|getAuthors
+name|parse
 argument_list|(
 literal|"John Smith and von Neumann, Jr, John"
 argument_list|)
@@ -2538,7 +2538,7 @@ literal|""
 argument_list|,
 name|AuthorList
 operator|.
-name|getAuthors
+name|parse
 argument_list|(
 literal|""
 argument_list|)
@@ -2555,7 +2555,7 @@ literal|"Smith"
 argument_list|,
 name|AuthorList
 operator|.
-name|getAuthors
+name|parse
 argument_list|(
 literal|"John Smith"
 argument_list|)
@@ -2572,7 +2572,7 @@ literal|"Smith and Black Brown"
 argument_list|,
 name|AuthorList
 operator|.
-name|getAuthors
+name|parse
 argument_list|(
 literal|"John Smith and Black Brown, Peter"
 argument_list|)
@@ -2589,7 +2589,7 @@ literal|"von Neumann et al."
 argument_list|,
 name|AuthorList
 operator|.
-name|getAuthors
+name|parse
 argument_list|(
 literal|"John von Neumann and John Smith and Black Brown, Peter"
 argument_list|)
@@ -2607,7 +2607,7 @@ literal|"Last-Name et al."
 argument_list|,
 name|AuthorList
 operator|.
-name|getAuthors
+name|parse
 argument_list|(
 literal|"First Second Last-Name"
 operator|+
@@ -2624,7 +2624,7 @@ name|al
 init|=
 name|AuthorList
 operator|.
-name|getAuthors
+name|parse
 argument_list|(
 literal|"John von Neumann and John Smith and Black Brown, Peter"
 argument_list|)
@@ -2665,7 +2665,7 @@ literal|""
 argument_list|,
 name|AuthorList
 operator|.
-name|getAuthors
+name|parse
 argument_list|(
 literal|""
 argument_list|)
@@ -2684,7 +2684,7 @@ literal|"Smith"
 argument_list|,
 name|AuthorList
 operator|.
-name|getAuthors
+name|parse
 argument_list|(
 literal|"John Smith"
 argument_list|)
@@ -2703,7 +2703,7 @@ literal|"Smith"
 argument_list|,
 name|AuthorList
 operator|.
-name|getAuthors
+name|parse
 argument_list|(
 literal|"Smith, Jr, John"
 argument_list|)
@@ -2722,7 +2722,7 @@ literal|"von Neumann, Smith and Black Brown"
 argument_list|,
 name|AuthorList
 operator|.
-name|getAuthors
+name|parse
 argument_list|(
 literal|"John von Neumann and John Smith and Black Brown, Peter"
 argument_list|)
@@ -2742,7 +2742,7 @@ literal|""
 argument_list|,
 name|AuthorList
 operator|.
-name|getAuthors
+name|parse
 argument_list|(
 literal|""
 argument_list|)
@@ -2761,7 +2761,7 @@ literal|"Smith"
 argument_list|,
 name|AuthorList
 operator|.
-name|getAuthors
+name|parse
 argument_list|(
 literal|"John Smith"
 argument_list|)
@@ -2780,7 +2780,7 @@ literal|"Smith"
 argument_list|,
 name|AuthorList
 operator|.
-name|getAuthors
+name|parse
 argument_list|(
 literal|"Smith, Jr, John"
 argument_list|)
@@ -2799,7 +2799,7 @@ literal|"von Neumann, Smith, and Black Brown"
 argument_list|,
 name|AuthorList
 operator|.
-name|getAuthors
+name|parse
 argument_list|(
 literal|"John von Neumann and John Smith and Black Brown, Peter"
 argument_list|)
@@ -2818,7 +2818,7 @@ literal|"von Neumann and Smith"
 argument_list|,
 name|AuthorList
 operator|.
-name|getAuthors
+name|parse
 argument_list|(
 literal|"John von Neumann and John Smith"
 argument_list|)
@@ -2846,7 +2846,7 @@ name|al
 operator|=
 name|AuthorList
 operator|.
-name|getAuthors
+name|parse
 argument_list|(
 literal|""
 argument_list|)
@@ -2887,7 +2887,7 @@ name|al
 operator|=
 name|AuthorList
 operator|.
-name|getAuthors
+name|parse
 argument_list|(
 literal|"John Smith"
 argument_list|)
@@ -2928,7 +2928,7 @@ name|al
 operator|=
 name|AuthorList
 operator|.
-name|getAuthors
+name|parse
 argument_list|(
 literal|"John Smith and Black Brown, Peter"
 argument_list|)
@@ -2969,7 +2969,7 @@ name|al
 operator|=
 name|AuthorList
 operator|.
-name|getAuthors
+name|parse
 argument_list|(
 literal|"John von Neumann and John Smith and Black Brown, Peter"
 argument_list|)
@@ -3012,7 +3012,7 @@ name|al
 operator|=
 name|AuthorList
 operator|.
-name|getAuthors
+name|parse
 argument_list|(
 literal|"John Peter von Neumann"
 argument_list|)
@@ -3050,7 +3050,7 @@ name|al
 operator|=
 name|AuthorList
 operator|.
-name|getAuthors
+name|parse
 argument_list|(
 literal|""
 argument_list|)
@@ -3091,7 +3091,7 @@ name|al
 operator|=
 name|AuthorList
 operator|.
-name|getAuthors
+name|parse
 argument_list|(
 literal|"John Smith"
 argument_list|)
@@ -3132,7 +3132,7 @@ name|al
 operator|=
 name|AuthorList
 operator|.
-name|getAuthors
+name|parse
 argument_list|(
 literal|"John Smith and Black Brown, Peter"
 argument_list|)
@@ -3173,7 +3173,7 @@ name|al
 operator|=
 name|AuthorList
 operator|.
-name|getAuthors
+name|parse
 argument_list|(
 literal|"John von Neumann and John Smith and Black Brown, Peter"
 argument_list|)
@@ -3214,7 +3214,7 @@ name|al
 operator|=
 name|AuthorList
 operator|.
-name|getAuthors
+name|parse
 argument_list|(
 literal|"John Peter von Neumann"
 argument_list|)
@@ -3252,7 +3252,7 @@ literal|"Smith, John"
 argument_list|,
 name|AuthorList
 operator|.
-name|getAuthors
+name|parse
 argument_list|(
 literal|"John Smith"
 argument_list|)
@@ -3271,7 +3271,7 @@ literal|"Smith, John and Black Brown, Peter"
 argument_list|,
 name|AuthorList
 operator|.
-name|getAuthors
+name|parse
 argument_list|(
 literal|"John Smith and Black Brown, Peter"
 argument_list|)
@@ -3290,7 +3290,7 @@ literal|"von Neumann, John and Smith, John and Black Brown, Peter"
 argument_list|,
 name|AuthorList
 operator|.
-name|getAuthors
+name|parse
 argument_list|(
 literal|"John von Neumann and John Smith and Black Brown, Peter"
 argument_list|)
@@ -3309,7 +3309,7 @@ literal|"von Last, Jr, First"
 argument_list|,
 name|AuthorList
 operator|.
-name|getAuthors
+name|parse
 argument_list|(
 literal|"von Last, Jr ,First"
 argument_list|)
@@ -3328,7 +3328,7 @@ literal|"Smith, J."
 argument_list|,
 name|AuthorList
 operator|.
-name|getAuthors
+name|parse
 argument_list|(
 literal|"John Smith"
 argument_list|)
@@ -3347,7 +3347,7 @@ literal|"Smith, J. and Black Brown, P."
 argument_list|,
 name|AuthorList
 operator|.
-name|getAuthors
+name|parse
 argument_list|(
 literal|"John Smith and Black Brown, Peter"
 argument_list|)
@@ -3366,7 +3366,7 @@ literal|"von Neumann, J. and Smith, J. and Black Brown, P."
 argument_list|,
 name|AuthorList
 operator|.
-name|getAuthors
+name|parse
 argument_list|(
 literal|"John von Neumann and John Smith and Black Brown, Peter"
 argument_list|)
@@ -3385,7 +3385,7 @@ literal|"von Last, Jr, F."
 argument_list|,
 name|AuthorList
 operator|.
-name|getAuthors
+name|parse
 argument_list|(
 literal|"von Last, Jr ,First"
 argument_list|)
@@ -3412,7 +3412,7 @@ name|al
 operator|=
 name|AuthorList
 operator|.
-name|getAuthors
+name|parse
 argument_list|(
 literal|""
 argument_list|)
@@ -3485,7 +3485,7 @@ name|al
 operator|=
 name|AuthorList
 operator|.
-name|getAuthors
+name|parse
 argument_list|(
 literal|"John Smith"
 argument_list|)
@@ -3558,7 +3558,7 @@ name|al
 operator|=
 name|AuthorList
 operator|.
-name|getAuthors
+name|parse
 argument_list|(
 literal|"John Smith and Black Brown, Peter"
 argument_list|)
@@ -3631,7 +3631,7 @@ name|al
 operator|=
 name|AuthorList
 operator|.
-name|getAuthors
+name|parse
 argument_list|(
 literal|"John von Neumann and John Smith and Black Brown, Peter"
 argument_list|)
@@ -3704,7 +3704,7 @@ name|al
 operator|=
 name|AuthorList
 operator|.
-name|getAuthors
+name|parse
 argument_list|(
 literal|"John Peter von Neumann"
 argument_list|)
@@ -3790,7 +3790,7 @@ literal|"John Smith"
 argument_list|,
 name|AuthorList
 operator|.
-name|getAuthors
+name|parse
 argument_list|(
 literal|"John Smith"
 argument_list|)
@@ -3807,7 +3807,7 @@ literal|"John Smith and Peter Black Brown"
 argument_list|,
 name|AuthorList
 operator|.
-name|getAuthors
+name|parse
 argument_list|(
 literal|"John Smith and Black Brown, Peter"
 argument_list|)
@@ -3824,7 +3824,7 @@ literal|"John von Neumann and John Smith and Peter Black Brown"
 argument_list|,
 name|AuthorList
 operator|.
-name|getAuthors
+name|parse
 argument_list|(
 literal|"John von Neumann and John Smith and Black Brown, Peter"
 argument_list|)
@@ -3841,7 +3841,7 @@ literal|"First von Last, Jr. III"
 argument_list|,
 name|AuthorList
 operator|.
-name|getAuthors
+name|parse
 argument_list|(
 literal|"von Last, Jr. III, First"
 argument_list|)
@@ -3867,7 +3867,7 @@ literal|"Smith, J."
 argument_list|,
 name|AuthorList
 operator|.
-name|getAuthors
+name|parse
 argument_list|(
 literal|"John Smith"
 argument_list|)
@@ -3884,7 +3884,7 @@ literal|"Neumann, J."
 argument_list|,
 name|AuthorList
 operator|.
-name|getAuthors
+name|parse
 argument_list|(
 literal|"John von Neumann"
 argument_list|)
@@ -3901,7 +3901,7 @@ literal|"Neumann, J."
 argument_list|,
 name|AuthorList
 operator|.
-name|getAuthors
+name|parse
 argument_list|(
 literal|"J. von Neumann"
 argument_list|)
@@ -3918,7 +3918,7 @@ literal|"Neumann, J. and Smith, J. and Black Brown, Jr., P."
 argument_list|,
 name|AuthorList
 operator|.
-name|getAuthors
+name|parse
 argument_list|(
 literal|"John von Neumann and John Smith and de Black Brown, Jr., Peter"
 argument_list|)
@@ -3944,7 +3944,7 @@ literal|"{A}bbb{c}"
 argument_list|,
 name|AuthorList
 operator|.
-name|getAuthors
+name|parse
 argument_list|(
 literal|"{A}bbb{c}"
 argument_list|)
@@ -3963,7 +3963,7 @@ literal|"Vall{\\'e}e Poussin"
 argument_list|,
 name|AuthorList
 operator|.
-name|getAuthors
+name|parse
 argument_list|(
 literal|"{Vall{\\'e}e Poussin}"
 argument_list|)
@@ -3982,7 +3982,7 @@ literal|"Poussin"
 argument_list|,
 name|AuthorList
 operator|.
-name|getAuthors
+name|parse
 argument_list|(
 literal|"{Vall{\\'e}e} {Poussin}"
 argument_list|)
@@ -4001,7 +4001,7 @@ literal|"Poussin"
 argument_list|,
 name|AuthorList
 operator|.
-name|getAuthors
+name|parse
 argument_list|(
 literal|"Vall{\\'e}e Poussin"
 argument_list|)
@@ -4020,7 +4020,7 @@ literal|"Lastname"
 argument_list|,
 name|AuthorList
 operator|.
-name|getAuthors
+name|parse
 argument_list|(
 literal|"Firstname {Lastname}"
 argument_list|)
@@ -4039,7 +4039,7 @@ literal|"Firstname Lastname"
 argument_list|,
 name|AuthorList
 operator|.
-name|getAuthors
+name|parse
 argument_list|(
 literal|"{Firstname Lastname}"
 argument_list|)
@@ -4067,7 +4067,7 @@ literal|"J. G."
 argument_list|,
 name|AuthorList
 operator|.
-name|getAuthors
+name|parse
 argument_list|(
 literal|"Hornberg, Johann Gottfried"
 argument_list|)

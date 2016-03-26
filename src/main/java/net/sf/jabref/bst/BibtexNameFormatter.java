@@ -104,7 +104,7 @@ name|al
 init|=
 name|AuthorList
 operator|.
-name|getAuthors
+name|parse
 argument_list|(
 name|authorsNameList
 argument_list|)

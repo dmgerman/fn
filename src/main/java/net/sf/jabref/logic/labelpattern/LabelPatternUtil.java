@@ -4546,7 +4546,7 @@ name|authorList
 init|=
 name|AuthorList
 operator|.
-name|getAuthors
+name|parse
 argument_list|(
 name|authorField
 argument_list|)
@@ -4602,7 +4602,7 @@ name|authorList
 init|=
 name|AuthorList
 operator|.
-name|getAuthors
+name|parse
 argument_list|(
 name|authorField
 argument_list|)
@@ -4665,7 +4665,7 @@ name|authorList
 init|=
 name|AuthorList
 operator|.
-name|getAuthors
+name|parse
 argument_list|(
 name|authorField
 argument_list|)
@@ -4843,7 +4843,7 @@ name|authorList
 init|=
 name|AuthorList
 operator|.
-name|getAuthors
+name|parse
 argument_list|(
 name|authorField
 argument_list|)
