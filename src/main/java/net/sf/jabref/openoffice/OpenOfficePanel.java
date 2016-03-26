@@ -4044,17 +4044,6 @@ argument_list|,
 name|withText
 argument_list|,
 name|pageInfo
-argument_list|,
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getBoolean
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|SYNC_OO_WHEN_CITING
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
