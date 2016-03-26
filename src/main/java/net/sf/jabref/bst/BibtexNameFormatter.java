@@ -104,7 +104,7 @@ name|al
 init|=
 name|AuthorList
 operator|.
-name|getAuthorList
+name|getAuthors
 argument_list|(
 name|authorsNameList
 argument_list|)
@@ -122,7 +122,7 @@ name|whichName
 operator|>
 name|al
 operator|.
-name|size
+name|getNumberOfAuthors
 argument_list|()
 operator|)
 condition|)

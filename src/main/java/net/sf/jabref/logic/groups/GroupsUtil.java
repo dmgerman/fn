@@ -433,7 +433,7 @@ name|al
 init|=
 name|AuthorList
 operator|.
-name|getAuthorList
+name|getAuthors
 argument_list|(
 name|val
 argument_list|)
@@ -444,7 +444,7 @@ name|addAll
 argument_list|(
 name|al
 operator|.
-name|getAuthorList
+name|getAuthors
 argument_list|()
 operator|.
 name|stream

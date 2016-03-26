@@ -369,7 +369,7 @@ name|authorList
 init|=
 name|AuthorList
 operator|.
-name|getAuthorList
+name|getAuthors
 argument_list|(
 name|fieldValue
 argument_list|)
@@ -381,7 +381,7 @@ name|author
 range|:
 name|authorList
 operator|.
-name|getAuthorList
+name|getAuthors
 argument_list|()
 control|)
 block|{

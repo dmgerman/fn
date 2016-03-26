@@ -158,7 +158,7 @@ name|al
 init|=
 name|AuthorList
 operator|.
-name|getAuthorList
+name|getAuthors
 argument_list|(
 name|fieldText
 argument_list|)

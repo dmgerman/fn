@@ -1414,7 +1414,7 @@ name|al
 init|=
 name|AuthorList
 operator|.
-name|getAuthorList
+name|getAuthors
 argument_list|(
 name|fieldText
 argument_list|)
@@ -1430,7 +1430,7 @@ operator|||
 operator|(
 name|al
 operator|.
-name|size
+name|getNumberOfAuthors
 argument_list|()
 operator|<=
 name|maxAuthors
@@ -1448,7 +1448,7 @@ name|i
 operator|<
 name|al
 operator|.
-name|size
+name|getNumberOfAuthors
 argument_list|()
 condition|;
 name|i
@@ -1503,7 +1503,7 @@ operator|<
 operator|(
 name|al
 operator|.
-name|size
+name|getNumberOfAuthors
 argument_list|()
 operator|-
 literal|2
@@ -1526,7 +1526,7 @@ operator|<
 operator|(
 name|al
 operator|.
-name|size
+name|getNumberOfAuthors
 argument_list|()
 operator|-
 literal|1
@@ -1560,7 +1560,7 @@ name|min
 argument_list|(
 name|al
 operator|.
-name|size
+name|getNumberOfAuthors
 argument_list|()
 operator|-
 literal|1

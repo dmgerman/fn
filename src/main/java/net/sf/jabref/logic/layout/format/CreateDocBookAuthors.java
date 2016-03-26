@@ -200,7 +200,7 @@ name|al
 init|=
 name|AuthorList
 operator|.
-name|getAuthorList
+name|getAuthors
 argument_list|(
 name|fieldText
 argument_list|)
@@ -247,7 +247,7 @@ name|i
 operator|<
 name|al
 operator|.
-name|size
+name|getNumberOfAuthors
 argument_list|()
 condition|;
 name|i
@@ -481,7 +481,7 @@ operator|<
 operator|(
 name|al
 operator|.
-name|size
+name|getNumberOfAuthors
 argument_list|()
 operator|-
 literal|1

@@ -2877,7 +2877,7 @@ name|al
 init|=
 name|AuthorList
 operator|.
-name|getAuthorList
+name|getAuthors
 argument_list|(
 name|author
 argument_list|)
@@ -2907,7 +2907,7 @@ operator|(
 operator|(
 name|al
 operator|.
-name|size
+name|getNumberOfAuthors
 argument_list|()
 operator|>
 name|maxAuthors
@@ -3963,7 +3963,7 @@ if|if
 condition|(
 name|al
 operator|.
-name|size
+name|getNumberOfAuthors
 argument_list|()
 operator|>
 name|number
@@ -4446,7 +4446,7 @@ name|al
 init|=
 name|AuthorList
 operator|.
-name|getAuthorList
+name|getAuthors
 argument_list|(
 name|author
 argument_list|)
@@ -4478,7 +4478,7 @@ condition|(
 operator|(
 name|al
 operator|.
-name|size
+name|getNumberOfAuthors
 argument_list|()
 operator|>
 literal|1
@@ -4488,7 +4488,7 @@ operator|(
 operator|(
 name|al
 operator|.
-name|size
+name|getNumberOfAuthors
 argument_list|()
 operator|<=
 name|maxAuthors
@@ -4514,7 +4514,7 @@ operator|<
 operator|(
 name|al
 operator|.
-name|size
+name|getNumberOfAuthors
 argument_list|()
 operator|-
 literal|1
@@ -4561,7 +4561,7 @@ name|al
 argument_list|,
 name|al
 operator|.
-name|size
+name|getNumberOfAuthors
 argument_list|()
 operator|-
 literal|1
@@ -4574,7 +4574,7 @@ if|if
 condition|(
 name|al
 operator|.
-name|size
+name|getNumberOfAuthors
 argument_list|()
 operator|>
 name|maxAuthors

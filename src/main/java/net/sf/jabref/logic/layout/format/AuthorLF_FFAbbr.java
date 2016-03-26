@@ -80,7 +80,7 @@ name|al
 init|=
 name|AuthorList
 operator|.
-name|getAuthorList
+name|getAuthors
 argument_list|(
 name|fieldText
 argument_list|)
@@ -88,7 +88,7 @@ decl_stmt|;
 return|return
 name|al
 operator|.
-name|getAuthorsLastFirstFirstLastAnds
+name|getAsLastFirstFirstLastNamesWithAnd
 argument_list|(
 literal|true
 argument_list|)

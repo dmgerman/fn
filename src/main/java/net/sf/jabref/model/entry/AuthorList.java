@@ -59,8 +59,7 @@ name|Author
 argument_list|>
 name|authors
 decl_stmt|;
-comment|// Variables for storing computed strings, so they only need be created
-comment|// once:
+comment|// Variables for storing computed strings, so they only need to be created once:
 DECL|field|authorsNatbib
 specifier|private
 name|String
@@ -160,7 +159,7 @@ argument_list|()
 decl_stmt|;
 comment|/**      * Creates a new list of authors.      *<p>      * Don't call this constructor directly but rather use the getAuthorList()      * method which caches its results.      *      * @param authors the list of authors which should underlie this instance      */
 DECL|method|AuthorList (List<Author> authors)
-specifier|private
+specifier|protected
 name|AuthorList
 parameter_list|(
 name|List
@@ -182,12 +181,12 @@ name|authors
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Retrieve an AuthorList for the given string of authors or editors.      *<p>      * This function tries to cache AuthorLists by string passed in.      *      * @param authors The string of authors or editors in bibtex format to parse.      * @return An AuthorList object representing the given authors.      */
-DECL|method|getAuthorList (String authors)
+comment|/**      * Retrieve an AuthorList for the given string of authors or editors.      *<p>      * This function tries to cache the parsed AuthorLists by the string passed in.      *      * @param authors The string of authors or editors in bibtex format to parse.      * @return An AuthorList object representing the given authors.      */
+DECL|method|getAuthors (String authors)
 specifier|public
 specifier|static
 name|AuthorList
-name|getAuthorList
+name|getAuthors
 parameter_list|(
 name|String
 name|authors
@@ -226,15 +225,11 @@ argument_list|()
 decl_stmt|;
 name|authorList
 operator|=
-operator|new
-name|AuthorList
-argument_list|(
 name|parser
 operator|.
 name|parse
 argument_list|(
 name|authors
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|AUTHOR_CACHE
@@ -251,7 +246,7 @@ return|return
 name|authorList
 return|;
 block|}
-comment|/**      * This is a convenience method for getAuthorsFirstFirst()      *      * @see AuthorList#getAuthorsFirstFirst      */
+comment|/**      * This is a convenience method for getAuthorsFirstFirst()      *      * @see AuthorList#getAsFirstLastNames      */
 DECL|method|fixAuthorFirstNameFirstCommas (String authors, boolean abbr, boolean oxfordComma)
 specifier|public
 specifier|static
@@ -271,12 +266,12 @@ block|{
 return|return
 name|AuthorList
 operator|.
-name|getAuthorList
+name|getAuthors
 argument_list|(
 name|authors
 argument_list|)
 operator|.
-name|getAuthorsFirstFirst
+name|getAsFirstLastNames
 argument_list|(
 name|abbr
 argument_list|,
@@ -284,7 +279,7 @@ name|oxfordComma
 argument_list|)
 return|;
 block|}
-comment|/**      * This is a convenience method for getAuthorsFirstFirstAnds()      *      * @see AuthorList#getAuthorsFirstFirstAnds      */
+comment|/**      * This is a convenience method for getAuthorsFirstFirstAnds()      *      * @see AuthorList#getAsFirstLastNamesWithAnd      */
 DECL|method|fixAuthorFirstNameFirst (String authors)
 specifier|public
 specifier|static
@@ -298,16 +293,16 @@ block|{
 return|return
 name|AuthorList
 operator|.
-name|getAuthorList
+name|getAuthors
 argument_list|(
 name|authors
 argument_list|)
 operator|.
-name|getAuthorsFirstFirstAnds
+name|getAsFirstLastNamesWithAnd
 argument_list|()
 return|;
 block|}
-comment|/**      * This is a convenience method for getAuthorsLastFirst()      *      * @see AuthorList#getAuthorsLastFirst      */
+comment|/**      * This is a convenience method for getAuthorsLastFirst()      *      * @see AuthorList#getAsLastFirstNames      */
 DECL|method|fixAuthorLastNameFirstCommas (String authors, boolean abbr, boolean oxfordComma)
 specifier|public
 specifier|static
@@ -327,12 +322,12 @@ block|{
 return|return
 name|AuthorList
 operator|.
-name|getAuthorList
+name|getAuthors
 argument_list|(
 name|authors
 argument_list|)
 operator|.
-name|getAuthorsLastFirst
+name|getAsLastFirstNames
 argument_list|(
 name|abbr
 argument_list|,
@@ -340,7 +335,7 @@ name|oxfordComma
 argument_list|)
 return|;
 block|}
-comment|/**      * This is a convenience method for getAuthorsLastFirstAnds(true)      *      * @see AuthorList#getAuthorsLastFirstAnds      */
+comment|/**      * This is a convenience method for getAuthorsLastFirstAnds(true)      *      * @see AuthorList#getAsLastFirstNamesWithAnd      */
 DECL|method|fixAuthorLastNameFirst (String authors)
 specifier|public
 specifier|static
@@ -354,18 +349,18 @@ block|{
 return|return
 name|AuthorList
 operator|.
-name|getAuthorList
+name|getAuthors
 argument_list|(
 name|authors
 argument_list|)
 operator|.
-name|getAuthorsLastFirstAnds
+name|getAsLastFirstNamesWithAnd
 argument_list|(
 literal|false
 argument_list|)
 return|;
 block|}
-comment|/**      * This is a convenience method for getAuthorsLastFirstAnds()      *      * @see AuthorList#getAuthorsLastFirstAnds      */
+comment|/**      * This is a convenience method for getAuthorsLastFirstAnds()      *      * @see AuthorList#getAsLastFirstNamesWithAnd      */
 DECL|method|fixAuthorLastNameFirst (String authors, boolean abbreviate)
 specifier|public
 specifier|static
@@ -382,18 +377,18 @@ block|{
 return|return
 name|AuthorList
 operator|.
-name|getAuthorList
+name|getAuthors
 argument_list|(
 name|authors
 argument_list|)
 operator|.
-name|getAuthorsLastFirstAnds
+name|getAsLastFirstNamesWithAnd
 argument_list|(
 name|abbreviate
 argument_list|)
 return|;
 block|}
-comment|/**      * This is a convenience method for getAuthorsLastOnly()      *      * @see AuthorList#getAuthorsLastOnly      */
+comment|/**      * This is a convenience method for getAuthorsLastOnly()      *      * @see AuthorList#getAsLastNames      */
 DECL|method|fixAuthorLastNameOnlyCommas (String authors, boolean oxfordComma)
 specifier|public
 specifier|static
@@ -410,18 +405,18 @@ block|{
 return|return
 name|AuthorList
 operator|.
-name|getAuthorList
+name|getAuthors
 argument_list|(
 name|authors
 argument_list|)
 operator|.
-name|getAuthorsLastOnly
+name|getAsLastNames
 argument_list|(
 name|oxfordComma
 argument_list|)
 return|;
 block|}
-comment|/**      * This is a convenience method for getAuthorsForAlphabetization()      *      * @see AuthorList#getAuthorsForAlphabetization      */
+comment|/**      * This is a convenience method for getAuthorsForAlphabetization()      *      * @see AuthorList#getForAlphabetization      */
 DECL|method|fixAuthorForAlphabetization (String authors)
 specifier|public
 specifier|static
@@ -435,16 +430,16 @@ block|{
 return|return
 name|AuthorList
 operator|.
-name|getAuthorList
+name|getAuthors
 argument_list|(
 name|authors
 argument_list|)
 operator|.
-name|getAuthorsForAlphabetization
+name|getForAlphabetization
 argument_list|()
 return|;
 block|}
-comment|/**      * This is a convenience method for getAuthorsNatbib()      *      * @see AuthorList#getAuthorsNatbib      */
+comment|/**      * This is a convenience method for getAuthorsNatbib()      *      * @see AuthorList#getAsNatbib      */
 DECL|method|fixAuthorNatbib (String authors)
 specifier|public
 specifier|static
@@ -458,20 +453,20 @@ block|{
 return|return
 name|AuthorList
 operator|.
-name|getAuthorList
+name|getAuthors
 argument_list|(
 name|authors
 argument_list|)
 operator|.
-name|getAuthorsNatbib
+name|getAsNatbib
 argument_list|()
 return|;
 block|}
 comment|/**      * Returns the number of author names in this object.      *      * @return the number of author names in this object.      */
-DECL|method|size ()
+DECL|method|getNumberOfAuthors ()
 specifier|public
 name|int
-name|size
+name|getNumberOfAuthors
 parameter_list|()
 block|{
 return|return
@@ -515,13 +510,13 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Returns the a list of<CODE>Author</CODE> objects.      *      * @return the<CODE>List<Author></CODE> object.      */
-DECL|method|getAuthorList ()
+DECL|method|getAuthors ()
 specifier|public
 name|List
 argument_list|<
 name|Author
 argument_list|>
-name|getAuthorList
+name|getAuthors
 parameter_list|()
 block|{
 return|return
@@ -529,10 +524,10 @@ name|authors
 return|;
 block|}
 comment|/**      * Returns the list of authors in "natbib" format.      *<p>      *<ul>      *<li>"John Smith" -> "Smith"</li>      *<li>"John Smith and Black Brown, Peter" ==> "Smith and Black Brown"</li>      *<li>"John von Neumann and John Smith and Black Brown, Peter" ==> "von      * Neumann et al."</li>      *</ul>      *      * @return formatted list of authors.      */
-DECL|method|getAuthorsNatbib ()
+DECL|method|getAsNatbib ()
 specifier|public
 name|String
-name|getAuthorsNatbib
+name|getAsNatbib
 parameter_list|()
 block|{
 comment|// Check if we've computed this before:
@@ -556,7 +551,7 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-name|size
+name|getNumberOfAuthors
 argument_list|()
 operator|>
 literal|0
@@ -577,7 +572,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|size
+name|getNumberOfAuthors
 argument_list|()
 operator|==
 literal|2
@@ -607,7 +602,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|size
+name|getNumberOfAuthors
 argument_list|()
 operator|>
 literal|2
@@ -633,11 +628,11 @@ return|return
 name|authorsNatbib
 return|;
 block|}
-comment|/**      * Returns the list of authors separated by commas with last name only; If      * the list consists of three or more authors, "and" is inserted before the      * last author's name.      *<p>      *<p>      *<ul>      *<li> "John Smith" ==> "Smith"</li>      *<li> "John Smith and Black Brown, Peter" ==> "Smith and Black Brown"</li>      *<li> "John von Neumann and John Smith and Black Brown, Peter" ==> "von      * Neumann, Smith and Black Brown".</li>      *</ul>      *      * @param oxfordComma Whether to put a comma before the and at the end.      * @return formatted list of authors.      * @see<a href="http://en.wikipedia.org/wiki/Serial_comma">serial comma for an detailed explaination about the Oxford comma.</a>      */
-DECL|method|getAuthorsLastOnly (boolean oxfordComma)
+comment|/**      * Returns the list of authors separated by commas with last name only; If      * the list consists of two or more authors, "and" is inserted before the      * last author's name.      *<p>      *<p>      *<ul>      *<li> "John Smith" ==> "Smith"</li>      *<li> "John Smith and Black Brown, Peter" ==> "Smith and Black Brown"</li>      *<li> "John von Neumann and John Smith and Black Brown, Peter" ==> "von      * Neumann, Smith and Black Brown".</li>      *</ul>      *      * @param oxfordComma Whether to put a comma before the and at the end.      * @return formatted list of authors.      * @see<a href="http://en.wikipedia.org/wiki/Serial_comma">serial comma for an detailed explaination about the Oxford comma.</a>      */
+DECL|method|getAsLastNames (boolean oxfordComma)
 specifier|public
 name|String
-name|getAuthorsLastOnly
+name|getAsLastNames
 parameter_list|(
 name|boolean
 name|oxfordComma
@@ -679,7 +674,7 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-name|size
+name|getNumberOfAuthors
 argument_list|()
 operator|>
 literal|0
@@ -708,7 +703,7 @@ condition|(
 name|i
 operator|<
 operator|(
-name|size
+name|getNumberOfAuthors
 argument_list|()
 operator|-
 literal|1
@@ -742,7 +737,7 @@ block|}
 if|if
 condition|(
 operator|(
-name|size
+name|getNumberOfAuthors
 argument_list|()
 operator|>
 literal|2
@@ -761,7 +756,7 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-name|size
+name|getNumberOfAuthors
 argument_list|()
 operator|>
 literal|1
@@ -807,10 +802,10 @@ index|]
 return|;
 block|}
 comment|/**      * Returns the list of authors separated by commas with first names after      * last name; first names are abbreviated or not depending on parameter. If      * the list consists of three or more authors, "and" is inserted before the      * last author's name.      *<p>      *<p>      *<ul>      *<li> "John Smith" ==> "Smith, John" or "Smith, J."</li>      *<li> "John Smith and Black Brown, Peter" ==> "Smith, John and Black      * Brown, Peter" or "Smith, J. and Black Brown, P."</li>      *<li> "John von Neumann and John Smith and Black Brown, Peter" ==> "von      * Neumann, John, Smith, John and Black Brown, Peter" or "von Neumann, J.,      * Smith, J. and Black Brown, P.".</li>      *</ul>      *      * @param abbreviate  whether to abbreivate first names.      * @param oxfordComma Whether to put a comma before the and at the end.      * @return formatted list of authors.      * @see<a href="http://en.wikipedia.org/wiki/Serial_comma">serial comma for an detailed explaination about the Oxford comma.</a>      */
-DECL|method|getAuthorsLastFirst (boolean abbreviate, boolean oxfordComma)
+DECL|method|getAsLastFirstNames (boolean abbreviate, boolean oxfordComma)
 specifier|public
 name|String
-name|getAuthorsLastFirst
+name|getAsLastFirstNames
 parameter_list|(
 name|boolean
 name|abbreviate
@@ -863,7 +858,7 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-name|size
+name|getNumberOfAuthors
 argument_list|()
 operator|>
 literal|0
@@ -894,7 +889,7 @@ condition|(
 name|i
 operator|<
 operator|(
-name|size
+name|getNumberOfAuthors
 argument_list|()
 operator|-
 literal|1
@@ -930,7 +925,7 @@ block|}
 if|if
 condition|(
 operator|(
-name|size
+name|getNumberOfAuthors
 argument_list|()
 operator|>
 literal|2
@@ -949,7 +944,7 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-name|size
+name|getNumberOfAuthors
 argument_list|()
 operator|>
 literal|1
@@ -1005,17 +1000,17 @@ name|toString
 parameter_list|()
 block|{
 return|return
-name|getAuthorsLastFirstAnds
+name|getAsLastFirstNamesWithAnd
 argument_list|(
 literal|false
 argument_list|)
 return|;
 block|}
 comment|/**      * Returns the list of authors separated by "and"s with first names after      * last name; first names are not abbreviated.      *<p>      *<ul>      *<li>"John Smith" ==> "Smith, John"</li>      *<li>"John Smith and Black Brown, Peter" ==> "Smith, John and Black      * Brown, Peter"</li>      *<li>"John von Neumann and John Smith and Black Brown, Peter" ==> "von      * Neumann, John and Smith, John and Black Brown, Peter".</li>      *</ul>      *      * @return formatted list of authors.      */
-DECL|method|getAuthorsLastFirstAnds (boolean abbreviate)
+DECL|method|getAsLastFirstNamesWithAnd (boolean abbreviate)
 specifier|public
 name|String
-name|getAuthorsLastFirstAnds
+name|getAsLastFirstNamesWithAnd
 parameter_list|(
 name|boolean
 name|abbreviate
@@ -1053,7 +1048,7 @@ index|[
 name|abbrInt
 index|]
 operator|=
-name|getAuthorList
+name|getAuthors
 argument_list|()
 operator|.
 name|stream
@@ -1088,10 +1083,10 @@ name|abbrInt
 index|]
 return|;
 block|}
-DECL|method|getAuthorsLastFirstFirstLastAnds (boolean abbreviate)
+DECL|method|getAsLastFirstFirstLastNamesWithAnd (boolean abbreviate)
 specifier|public
 name|String
-name|getAuthorsLastFirstFirstLastAnds
+name|getAsLastFirstFirstLastNamesWithAnd
 parameter_list|(
 name|boolean
 name|abbreviate
@@ -1162,7 +1157,7 @@ literal|1
 init|;
 name|i
 operator|<
-name|size
+name|getNumberOfAuthors
 argument_list|()
 condition|;
 name|i
@@ -1211,10 +1206,10 @@ index|]
 return|;
 block|}
 comment|/**      * Returns the list of authors separated by commas with first names before      * last name; first names are abbreviated or not depending on parameter. If      * the list consists of three or more authors, "and" is inserted before the      * last author's name.      *<p>      *<ul>      *<li>"John Smith" ==> "John Smith" or "J. Smith"</li>      *<li>"John Smith and Black Brown, Peter" ==> "John Smith and Peter Black      * Brown" or "J. Smith and P. Black Brown"</li>      *<li> "John von Neumann and John Smith and Black Brown, Peter" ==> "John      * von Neumann, John Smith and Peter Black Brown" or "J. von Neumann, J.      * Smith and P. Black Brown"</li>      *</ul>      *      * @param abbr        whether to abbreivate first names.      * @param oxfordComma Whether to put a comma before the and at the end.      * @return formatted list of authors.      * @see<a href="http://en.wikipedia.org/wiki/Serial_comma">serial comma for an detailed explaination about the Oxford comma.</a>      */
-DECL|method|getAuthorsFirstFirst (boolean abbr, boolean oxfordComma)
+DECL|method|getAsFirstLastNames (boolean abbr, boolean oxfordComma)
 specifier|public
 name|String
-name|getAuthorsFirstFirst
+name|getAsFirstLastNames
 parameter_list|(
 name|boolean
 name|abbr
@@ -1267,7 +1262,7 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-name|size
+name|getNumberOfAuthors
 argument_list|()
 operator|>
 literal|0
@@ -1298,7 +1293,7 @@ condition|(
 name|i
 operator|<
 operator|(
-name|size
+name|getNumberOfAuthors
 argument_list|()
 operator|-
 literal|1
@@ -1334,7 +1329,7 @@ block|}
 if|if
 condition|(
 operator|(
-name|size
+name|getNumberOfAuthors
 argument_list|()
 operator|>
 literal|2
@@ -1353,7 +1348,7 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-name|size
+name|getNumberOfAuthors
 argument_list|()
 operator|>
 literal|1
@@ -1465,10 +1460,10 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Returns the list of authors separated by "and"s with first names before      * last name; first names are not abbreviated.      *<p>      *<ul>      *<li>"John Smith" ==> "John Smith"</li>      *<li>"John Smith and Black Brown, Peter" ==> "John Smith and Peter Black      * Brown"</li>      *<li>"John von Neumann and John Smith and Black Brown, Peter" ==> "John      * von Neumann and John Smith and Peter Black Brown"</li>      *</li>      *      * @return formatted list of authors.      */
-DECL|method|getAuthorsFirstFirstAnds ()
+DECL|method|getAsFirstLastNamesWithAnd ()
 specifier|public
 name|String
-name|getAuthorsFirstFirstAnds
+name|getAsFirstLastNamesWithAnd
 parameter_list|()
 block|{
 comment|// Check if we've computed this before:
@@ -1485,7 +1480,7 @@ return|;
 block|}
 name|authorsFirstFirstAnds
 operator|=
-name|getAuthorList
+name|getAuthors
 argument_list|()
 operator|.
 name|stream
@@ -1518,10 +1513,10 @@ name|authorsFirstFirstAnds
 return|;
 block|}
 comment|/**      * Returns the list of authors in a form suitable for alphabetization. This      * means that last names come first, never preceded by "von" particles, and      * that any braces are removed. First names are abbreviated so the same name      * is treated similarly if abbreviated in one case and not in another. This      * form is not intended to be suitable for presentation, only for sorting.      *<p>      *<p>      *<ul>      *<li>"John Smith" ==> "Smith, J.";</li>      *      * @return formatted list of authors      */
-DECL|method|getAuthorsForAlphabetization ()
+DECL|method|getForAlphabetization ()
 specifier|public
 name|String
-name|getAuthorsForAlphabetization
+name|getForAlphabetization
 parameter_list|()
 block|{
 if|if
@@ -1537,7 +1532,7 @@ return|;
 block|}
 name|authorsAlph
 operator|=
-name|getAuthorList
+name|getAuthors
 argument_list|()
 operator|.
 name|stream

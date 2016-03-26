@@ -185,7 +185,7 @@ name|n
 init|=
 name|al
 operator|.
-name|size
+name|getNumberOfAuthors
 argument_list|()
 decl_stmt|;
 for|for
@@ -199,7 +199,7 @@ name|i
 operator|<=
 name|al
 operator|.
-name|size
+name|getNumberOfAuthors
 argument_list|()
 condition|;
 name|i
@@ -451,7 +451,7 @@ name|al
 init|=
 name|AuthorList
 operator|.
-name|getAuthorList
+name|getAuthors
 argument_list|(
 name|toFormat
 argument_list|)
@@ -559,7 +559,7 @@ if|if
 condition|(
 name|al
 operator|.
-name|size
+name|getNumberOfAuthors
 argument_list|()
 operator|<=
 name|Integer

@@ -20,37 +20,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|ArrayList
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|HashSet
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Set
+name|*
 import|;
 end_import
 
@@ -283,16 +253,20 @@ decl_stmt|;
 comment|/**      * Parses the String containing person names and returns a list of person information.      *      * @param listOfNames the String containing the person names to be parsed      * @return a parsed list of persons      */
 DECL|method|parse (String listOfNames)
 specifier|public
-name|List
-argument_list|<
-name|Author
-argument_list|>
+name|AuthorList
 name|parse
 parameter_list|(
 name|String
 name|listOfNames
 parameter_list|)
 block|{
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|listOfNames
+argument_list|)
+expr_stmt|;
 comment|// initialization of parser
 name|original
 operator|=
@@ -354,7 +328,11 @@ expr_stmt|;
 block|}
 block|}
 return|return
+operator|new
+name|AuthorList
+argument_list|(
 name|authors
+argument_list|)
 return|;
 block|}
 comment|/**      * Parses one author name and returns preformatted information.      *      * @return Preformatted author name;<CODE>null</CODE> if author name is      * empty.      */

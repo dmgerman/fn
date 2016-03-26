@@ -267,7 +267,7 @@ name|a
 init|=
 name|AuthorList
 operator|.
-name|getAuthorList
+name|getAuthors
 argument_list|(
 name|names
 argument_list|)
@@ -278,7 +278,7 @@ name|name
 operator|>
 name|a
 operator|.
-name|size
+name|getNumberOfAuthors
 argument_list|()
 condition|)
 block|{

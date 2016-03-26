@@ -345,7 +345,7 @@ name|list
 init|=
 name|AuthorList
 operator|.
-name|getAuthorList
+name|getAuthors
 argument_list|(
 name|value
 argument_list|)
@@ -357,7 +357,7 @@ name|author
 range|:
 name|list
 operator|.
-name|getAuthorList
+name|getAuthors
 argument_list|()
 control|)
 block|{
