@@ -70,6 +70,22 @@ name|model
 operator|.
 name|entry
 operator|.
+name|Author
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
 name|AuthorList
 import|;
 end_import
@@ -360,8 +376,6 @@ argument_list|)
 decl_stmt|;
 for|for
 control|(
-name|AuthorList
-operator|.
 name|Author
 name|author
 range|:
@@ -460,13 +474,11 @@ return|return
 name|result
 return|;
 block|}
-DECL|method|handleAuthor (AuthorList.Author author)
+DECL|method|handleAuthor (Author author)
 specifier|private
 name|void
 name|handleAuthor
 parameter_list|(
-name|AuthorList
-operator|.
 name|Author
 name|author
 parameter_list|)

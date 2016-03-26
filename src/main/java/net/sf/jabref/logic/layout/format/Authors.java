@@ -48,6 +48,22 @@ name|model
 operator|.
 name|entry
 operator|.
+name|Author
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
 name|AuthorList
 import|;
 end_import
@@ -1439,8 +1455,6 @@ name|i
 operator|++
 control|)
 block|{
-name|AuthorList
-operator|.
 name|Author
 name|a
 init|=
@@ -1607,7 +1621,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-DECL|method|addSingleName (StringBuilder sb, AuthorList.Author a, boolean firstFirst)
+DECL|method|addSingleName (StringBuilder sb, Author a, boolean firstFirst)
 specifier|private
 name|void
 name|addSingleName
@@ -1615,8 +1629,6 @@ parameter_list|(
 name|StringBuilder
 name|sb
 parameter_list|,
-name|AuthorList
-operator|.
 name|Author
 name|a
 parameter_list|,

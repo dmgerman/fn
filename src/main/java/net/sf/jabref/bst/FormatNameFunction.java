@@ -54,8 +54,6 @@ name|model
 operator|.
 name|entry
 operator|.
-name|AuthorList
-operator|.
 name|Author
 import|;
 end_import

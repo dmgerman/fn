@@ -2122,8 +2122,6 @@ name|void
 name|testGetAuthor
 parameter_list|()
 block|{
-name|AuthorList
-operator|.
 name|Author
 name|author
 init|=

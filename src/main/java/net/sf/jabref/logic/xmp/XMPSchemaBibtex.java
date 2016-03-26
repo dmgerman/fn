@@ -352,8 +352,6 @@ argument_list|)
 decl_stmt|;
 for|for
 control|(
-name|AuthorList
-operator|.
 name|Author
 name|author
 range|:
