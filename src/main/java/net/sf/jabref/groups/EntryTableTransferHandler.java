@@ -1663,7 +1663,10 @@ argument_list|(
 name|fileName
 argument_list|)
 decl_stmt|;
+name|Optional
+argument_list|<
 name|ExternalFileType
+argument_list|>
 name|fileType
 decl_stmt|;
 if|if
@@ -1717,8 +1720,9 @@ if|if
 condition|(
 operator|(
 name|fileType
-operator|!=
-literal|null
+operator|.
+name|isPresent
+argument_list|()
 operator|)
 operator|&&
 operator|(
@@ -1747,6 +1751,9 @@ argument_list|(
 name|fileName
 argument_list|,
 name|fileType
+operator|.
+name|get
+argument_list|()
 argument_list|,
 name|entryTable
 argument_list|,

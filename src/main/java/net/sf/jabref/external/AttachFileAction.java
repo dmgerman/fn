@@ -165,8 +165,6 @@ argument_list|(
 literal|""
 argument_list|,
 literal|""
-argument_list|,
-literal|null
 argument_list|)
 decl_stmt|;
 name|FileListEntryEditor

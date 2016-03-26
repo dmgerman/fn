@@ -873,7 +873,7 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * Open an external file, attempting to use the correct viewer for it.      *      * @param metaData      *            The MetaData for the database this file belongs to.      * @param link      *            The filename.      * @return false if the link couldn't be resolved, true otherwise.      */
-DECL|method|openExternalFileAnyFormat (final MetaData metaData, String link, final ExternalFileType fileType)
+DECL|method|openExternalFileAnyFormat (final MetaData metaData, String link, final Optional<ExternalFileType> type)
 specifier|public
 specifier|static
 name|boolean
@@ -887,8 +887,11 @@ name|String
 name|link
 parameter_list|,
 specifier|final
+name|Optional
+argument_list|<
 name|ExternalFileType
-name|fileType
+argument_list|>
+name|type
 parameter_list|)
 throws|throws
 name|IOException
@@ -980,9 +983,10 @@ argument_list|()
 operator|)
 operator|&&
 operator|(
-name|fileType
-operator|!=
-literal|null
+name|type
+operator|.
+name|isPresent
+argument_list|()
 operator|)
 condition|)
 block|{
@@ -1001,7 +1005,7 @@ argument_list|()
 decl_stmt|;
 name|openExternalFilePlatformIndependent
 argument_list|(
-name|fileType
+name|type
 argument_list|,
 name|filePath
 argument_list|)
@@ -1018,13 +1022,16 @@ literal|false
 return|;
 block|}
 block|}
-DECL|method|openExternalFilePlatformIndependent (ExternalFileType fileType, String filePath)
+DECL|method|openExternalFilePlatformIndependent (Optional<ExternalFileType> fileType, String filePath)
 specifier|private
 specifier|static
 name|void
 name|openExternalFilePlatformIndependent
 parameter_list|(
+name|Optional
+argument_list|<
 name|ExternalFileType
+argument_list|>
 name|fileType
 parameter_list|,
 name|String
@@ -1033,10 +1040,21 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+if|if
+condition|(
+name|fileType
+operator|.
+name|isPresent
+argument_list|()
+condition|)
+block|{
 name|String
 name|application
 init|=
 name|fileType
+operator|.
+name|get
+argument_list|()
 operator|.
 name|getOpenWithApplication
 argument_list|()
@@ -1057,6 +1075,9 @@ name|filePath
 argument_list|,
 name|fileType
 operator|.
+name|get
+argument_list|()
+operator|.
 name|getExtension
 argument_list|()
 argument_list|)
@@ -1073,6 +1094,7 @@ argument_list|,
 name|application
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 DECL|method|openExternalFileUnknown (JabRefFrame frame, BibEntry entry, MetaData metaData, String link, UnknownExternalFileType fileType)
@@ -1333,7 +1355,12 @@ name|metaData
 argument_list|,
 name|link
 argument_list|,
+name|Optional
+operator|.
+name|of
+argument_list|(
 name|newType
+argument_list|)
 argument_list|)
 return|;
 block|}
@@ -1614,7 +1641,10 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+name|Optional
+argument_list|<
 name|ExternalFileType
+argument_list|>
 name|fileType
 init|=
 name|ExternalFileTypes

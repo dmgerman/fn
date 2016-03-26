@@ -738,7 +738,7 @@ name|entry
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * @param fileName  The name of the dragged file.      * @param fileType  The FileType associated with the file.      * @param localFile Indicate whether this is a local file, or a remote file copied      *                  to a local temporary file.      * @param entry     The target entry for the drop.      */
+comment|/**      * @param fileName  The name of the dragged file.      * @param fileType  The FileType associated with the file.      * @param entry     The target entry for the drop.      */
 DECL|method|handleDroppedfile (String fileName, ExternalFileType fileType, BibEntry entry)
 specifier|public
 name|void
@@ -1026,8 +1026,11 @@ name|BibEntry
 name|entry
 parameter_list|)
 block|{
+name|Optional
+argument_list|<
 name|ExternalFileType
-name|fileType
+argument_list|>
+name|optFileType
 init|=
 name|ExternalFileTypes
 operator|.
@@ -1038,6 +1041,32 @@ name|getExternalFileTypeByExt
 argument_list|(
 literal|"pdf"
 argument_list|)
+decl_stmt|;
+if|if
+condition|(
+operator|!
+name|optFileType
+operator|.
+name|isPresent
+argument_list|()
+condition|)
+block|{
+name|LOGGER
+operator|.
+name|warn
+argument_list|(
+literal|"No file type with extension 'pdf' registered."
+argument_list|)
+expr_stmt|;
+return|return;
+block|}
+name|ExternalFileType
+name|fileType
+init|=
+name|optFileType
+operator|.
+name|get
+argument_list|()
 decl_stmt|;
 comment|// Show dialog
 if|if

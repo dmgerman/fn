@@ -1888,7 +1888,10 @@ name|foundAny
 operator|=
 literal|true
 expr_stmt|;
+name|Optional
+argument_list|<
 name|ExternalFileType
+argument_list|>
 name|type
 decl_stmt|;
 name|Optional
@@ -1932,10 +1935,15 @@ else|else
 block|{
 name|type
 operator|=
+name|Optional
+operator|.
+name|of
+argument_list|(
 operator|new
 name|UnknownExternalFileType
 argument_list|(
 literal|""
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

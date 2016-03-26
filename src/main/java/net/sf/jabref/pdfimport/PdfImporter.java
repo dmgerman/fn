@@ -1274,7 +1274,7 @@ argument_list|()
 operator|.
 name|getExternalFileTypeByName
 argument_list|(
-literal|"pdf"
+literal|"PDF"
 argument_list|)
 argument_list|)
 argument_list|)
