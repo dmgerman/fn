@@ -1766,7 +1766,8 @@ argument_list|()
 expr_stmt|;
 name|frame
 operator|.
-name|groupSelector
+name|getGroupSelector
+argument_list|()
 operator|.
 name|revalidateGroups
 argument_list|()

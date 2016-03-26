@@ -1346,7 +1346,8 @@ name|SIDE_PANE_WIDTH
 argument_list|,
 name|frame
 operator|.
-name|contentPane
+name|getSplitPane
+argument_list|()
 operator|.
 name|getDividerLocation
 argument_list|()
@@ -1407,7 +1408,8 @@ condition|)
 block|{
 name|frame
 operator|.
-name|contentPane
+name|getSplitPane
+argument_list|()
 operator|.
 name|setDividerLocation
 argument_list|(
@@ -1419,7 +1421,8 @@ else|else
 block|{
 name|frame
 operator|.
-name|contentPane
+name|getSplitPane
+argument_list|()
 operator|.
 name|setDividerLocation
 argument_list|(

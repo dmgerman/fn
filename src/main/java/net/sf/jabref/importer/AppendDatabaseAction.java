@@ -308,22 +308,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
-operator|.
-name|util
-operator|.
-name|PositionWindow
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|logic
 operator|.
 name|l10n
@@ -1132,7 +1116,8 @@ comment|// have been defined. therefore, no check for null is
 comment|// required here
 name|frame
 operator|.
-name|groupSelector
+name|getGroupSelector
+argument_list|()
 operator|.
 name|addGroups
 argument_list|(
@@ -1266,7 +1251,8 @@ block|}
 block|}
 name|frame
 operator|.
-name|groupSelector
+name|getGroupSelector
+argument_list|()
 operator|.
 name|revalidateGroups
 argument_list|()

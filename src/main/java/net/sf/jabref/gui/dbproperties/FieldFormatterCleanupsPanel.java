@@ -308,11 +308,11 @@ argument_list|)
 operator|+
 literal|": "
 decl_stmt|;
-DECL|field|enabled
+DECL|field|cleanupEnabled
 specifier|private
 specifier|final
 name|JCheckBox
-name|enabled
+name|cleanupEnabled
 decl_stmt|;
 DECL|field|fieldFormatterCleanups
 specifier|private
@@ -391,7 +391,7 @@ argument_list|(
 name|defaultFormatters
 argument_list|)
 expr_stmt|;
-name|enabled
+name|cleanupEnabled
 operator|=
 operator|new
 name|JCheckBox
@@ -527,7 +527,7 @@ name|builder
 operator|.
 name|add
 argument_list|(
-name|enabled
+name|cleanupEnabled
 argument_list|)
 operator|.
 name|xyw
@@ -768,7 +768,7 @@ name|WEST
 argument_list|)
 expr_stmt|;
 comment|// make sure the layout is set according to the checkbox
-name|enabled
+name|cleanupEnabled
 operator|.
 name|addActionListener
 argument_list|(
@@ -782,7 +782,7 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|enabled
+name|cleanupEnabled
 operator|.
 name|setSelected
 argument_list|(
@@ -1408,7 +1408,7 @@ return|return
 operator|new
 name|FieldFormatterCleanups
 argument_list|(
-name|enabled
+name|cleanupEnabled
 operator|.
 name|isSelected
 argument_list|()
@@ -1576,7 +1576,7 @@ block|{
 name|boolean
 name|enablementStatus
 init|=
-name|enabled
+name|cleanupEnabled
 operator|.
 name|isSelected
 argument_list|()
