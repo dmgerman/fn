@@ -390,6 +390,12 @@ specifier|final
 name|boolean
 name|fromResource
 decl_stmt|;
+DECL|field|path
+specifier|private
+specifier|final
+name|String
+name|path
+decl_stmt|;
 DECL|enum|BibStyleMode
 enum|enum
 name|BibStyleMode
@@ -485,6 +491,11 @@ init|=
 name|Long
 operator|.
 name|MIN_VALUE
+decl_stmt|;
+DECL|field|localCopy
+specifier|private
+name|String
+name|localCopy
 decl_stmt|;
 DECL|field|BRACKET_AFTER_IN_LIST
 specifier|private
@@ -887,6 +898,13 @@ name|fromResource
 operator|=
 literal|false
 expr_stmt|;
+name|path
+operator|=
+name|styleFile
+operator|.
+name|getPath
+argument_list|()
+expr_stmt|;
 block|}
 DECL|method|OOBibStyle (String resourcePath, JournalAbbreviationRepository repository)
 specifier|public
@@ -941,6 +959,10 @@ expr_stmt|;
 name|fromResource
 operator|=
 literal|true
+expr_stmt|;
+name|path
+operator|=
+name|resourcePath
 expr_stmt|;
 block|}
 DECL|method|setDefaultProperties ()
@@ -1280,6 +1302,16 @@ return|return
 name|name
 return|;
 block|}
+DECL|method|getPath ()
+specifier|public
+name|String
+name|getPath
+parameter_list|()
+block|{
+return|return
+name|path
+return|;
+block|}
 DECL|method|getFile ()
 specifier|public
 name|File
@@ -1490,6 +1522,14 @@ name|c
 argument_list|)
 expr_stmt|;
 block|}
+comment|// Store a local copy for viewing
+name|localCopy
+operator|=
+name|sb
+operator|.
+name|toString
+argument_list|()
+expr_stmt|;
 comment|// Break into separate lines:
 name|String
 index|[]
@@ -4345,6 +4385,16 @@ parameter_list|()
 block|{
 return|return
 name|fromResource
+return|;
+block|}
+DECL|method|getLocalCopy ()
+specifier|public
+name|String
+name|getLocalCopy
+parameter_list|()
+block|{
+return|return
+name|localCopy
 return|;
 block|}
 annotation|@
