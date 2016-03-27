@@ -66,6 +66,18 @@ name|awt
 operator|.
 name|event
 operator|.
+name|ActionListener
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|awt
+operator|.
+name|event
+operator|.
 name|MouseAdapter
 import|;
 end_import
@@ -807,6 +819,23 @@ literal|"View"
 argument_list|)
 argument_list|)
 decl_stmt|;
+DECL|field|remove
+specifier|private
+specifier|final
+name|JMenuItem
+name|remove
+init|=
+operator|new
+name|JMenuItem
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Remove"
+argument_list|)
+argument_list|)
+decl_stmt|;
 DECL|field|addButton
 specifier|private
 specifier|final
@@ -970,6 +999,13 @@ name|journalAbbreviationLoader
 operator|.
 name|getRepository
 argument_list|()
+argument_list|,
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getDefaultEncoding
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|setupPrevEntry
@@ -997,6 +1033,13 @@ operator|.
 name|add
 argument_list|(
 name|show
+argument_list|)
+expr_stmt|;
+name|popup
+operator|.
+name|add
+argument_list|(
+name|remove
 argument_list|)
 expr_stmt|;
 comment|// Add action listener to "Edit" menu item, which is supposed to open the style file in an external editor:
@@ -1163,7 +1206,7 @@ name|ifPresent
 argument_list|(
 name|loader
 operator|::
-name|addStyleFile
+name|addStyle
 argument_list|)
 expr_stmt|;
 name|updateStyles
@@ -1184,13 +1227,11 @@ literal|"Add style file"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|removeButton
-operator|.
-name|addActionListener
-argument_list|(
+name|ActionListener
+name|removeAction
+init|=
 name|actionEvent
 lambda|->
-block|{
 name|getSelectedStyle
 argument_list|()
 operator|.
@@ -1198,6 +1239,10 @@ name|ifPresent
 argument_list|(
 name|style
 lambda|->
+block|{
+block|if (!style.isFromResource(
+init|)
+decl_stmt|)
 block|{
 if|if
 condition|(
@@ -1211,14 +1256,14 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Are you sure you want to remove the style file?"
+literal|"Are you sure you want to remove the style?"
 argument_list|)
 argument_list|,
 name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Remove style file"
+literal|"Remove style"
 argument_list|)
 argument_list|,
 name|JOptionPane
@@ -1236,7 +1281,7 @@ condition|(
 operator|!
 name|loader
 operator|.
-name|removeStyleFile
+name|removeStyle
 argument_list|(
 name|style
 argument_list|)
@@ -1246,7 +1291,7 @@ name|LOGGER
 operator|.
 name|info
 argument_list|(
-literal|"Problem removing style file"
+literal|"Problem removing style"
 argument_list|)
 expr_stmt|;
 block|}
@@ -1255,11 +1300,32 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-argument_list|)
-expr_stmt|;
 block|}
+block|)
+class|;
+end_class
+
+begin_expr_stmt
+name|remove
+operator|.
+name|addActionListener
+argument_list|(
+name|removeAction
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
+name|removeButton
+operator|.
+name|addActionListener
+argument_list|(
+name|removeAction
+argument_list|)
+expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
 name|removeButton
 operator|.
 name|setToolTipText
@@ -1268,10 +1334,13 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Remove style file"
+literal|"Remove style"
 argument_list|)
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
 name|diag
 operator|=
 operator|new
@@ -1289,6 +1358,9 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
 name|styles
 operator|=
 operator|new
@@ -1296,6 +1368,9 @@ name|BasicEventList
 argument_list|<>
 argument_list|()
 expr_stmt|;
+end_expr_stmt
+
+begin_decl_stmt
 name|EventList
 argument_list|<
 name|OOBibStyle
@@ -1309,7 +1384,13 @@ argument_list|(
 name|styles
 argument_list|)
 decl_stmt|;
+end_decl_stmt
+
+begin_comment
 comment|// Create a preview panel for previewing styles:
+end_comment
+
+begin_expr_stmt
 name|preview
 operator|=
 operator|new
@@ -1324,7 +1405,13 @@ argument_list|,
 literal|""
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_comment
 comment|// Use the test entry from the Preview settings tab in Preferences:
+end_comment
+
+begin_expr_stmt
 name|preview
 operator|.
 name|setEntry
@@ -1332,6 +1419,9 @@ argument_list|(
 name|prevEntry
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
 name|tableModel
 operator|=
 operator|(
@@ -1351,6 +1441,9 @@ name|StyleTableFormat
 argument_list|()
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
 name|table
 operator|=
 operator|new
@@ -1359,6 +1452,9 @@ argument_list|(
 name|tableModel
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_decl_stmt
 name|TableColumnModel
 name|cm
 init|=
@@ -1367,6 +1463,9 @@ operator|.
 name|getColumnModel
 argument_list|()
 decl_stmt|;
+end_decl_stmt
+
+begin_expr_stmt
 name|cm
 operator|.
 name|getColumn
@@ -1379,6 +1478,9 @@ argument_list|(
 literal|100
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
 name|cm
 operator|.
 name|getColumn
@@ -1391,6 +1493,9 @@ argument_list|(
 literal|200
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
 name|cm
 operator|.
 name|getColumn
@@ -1403,6 +1508,9 @@ argument_list|(
 literal|80
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
 name|selectionModel
 operator|=
 operator|(
@@ -1418,6 +1526,9 @@ argument_list|(
 name|sortedStyles
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
 name|table
 operator|.
 name|setSelectionModel
@@ -1425,6 +1536,9 @@ argument_list|(
 name|selectionModel
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
 name|table
 operator|.
 name|getSelectionModel
@@ -1437,6 +1551,9 @@ operator|.
 name|SINGLE_SELECTION
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
 name|table
 operator|.
 name|addMouseListener
@@ -1498,6 +1615,9 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
 name|selectionModel
 operator|.
 name|getSelected
@@ -1510,9 +1630,15 @@ name|EntrySelectionListener
 argument_list|()
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
 name|updateStyles
 argument_list|()
 expr_stmt|;
+end_expr_stmt
+
+begin_decl_stmt
 name|FormBuilder
 name|builder
 init|=
@@ -1521,6 +1647,9 @@ operator|.
 name|create
 argument_list|()
 decl_stmt|;
+end_decl_stmt
+
+begin_expr_stmt
 name|builder
 operator|.
 name|layout
@@ -1534,6 +1663,9 @@ literal|"pref, 4dlu, 100dlu:grow, 4dlu, pref, 4dlu, fill:100dlu"
 argument_list|)
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
 name|builder
 operator|.
 name|add
@@ -1542,7 +1674,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Select one of the available style files"
+literal|"Select one of the available styles or add a style file from disk."
 argument_list|)
 argument_list|)
 operator|.
@@ -1555,6 +1687,9 @@ argument_list|,
 literal|5
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
 name|builder
 operator|.
 name|add
@@ -1575,6 +1710,9 @@ argument_list|,
 literal|5
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
 name|builder
 operator|.
 name|add
@@ -1589,6 +1727,9 @@ argument_list|,
 literal|5
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
 name|builder
 operator|.
 name|add
@@ -1603,6 +1744,9 @@ argument_list|,
 literal|5
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
 name|builder
 operator|.
 name|add
@@ -1619,6 +1763,9 @@ argument_list|,
 literal|5
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
 name|builder
 operator|.
 name|padding
@@ -1626,6 +1773,9 @@ argument_list|(
 literal|"5dlu, 5dlu, 5dlu, 5dlu"
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
 name|diag
 operator|.
 name|add
@@ -1640,6 +1790,9 @@ operator|.
 name|CENTER
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_decl_stmt
 name|AbstractAction
 name|okListener
 init|=
@@ -1720,6 +1873,9 @@ expr_stmt|;
 block|}
 block|}
 decl_stmt|;
+end_decl_stmt
+
+begin_expr_stmt
 name|ok
 operator|.
 name|addActionListener
@@ -1727,6 +1883,9 @@ argument_list|(
 name|okListener
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_decl_stmt
 name|Action
 name|cancelListener
 init|=
@@ -1752,6 +1911,9 @@ expr_stmt|;
 block|}
 block|}
 decl_stmt|;
+end_decl_stmt
+
+begin_expr_stmt
 name|cancel
 operator|.
 name|addActionListener
@@ -1759,6 +1921,9 @@ argument_list|(
 name|cancelListener
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_decl_stmt
 name|ButtonBarBuilder
 name|bb
 init|=
@@ -1766,11 +1931,17 @@ operator|new
 name|ButtonBarBuilder
 argument_list|()
 decl_stmt|;
+end_decl_stmt
+
+begin_expr_stmt
 name|bb
 operator|.
 name|addGlue
 argument_list|()
 expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
 name|bb
 operator|.
 name|addButton
@@ -1778,6 +1949,9 @@ argument_list|(
 name|ok
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
 name|bb
 operator|.
 name|addButton
@@ -1785,11 +1959,17 @@ argument_list|(
 name|cancel
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
 name|bb
 operator|.
 name|addGlue
 argument_list|()
 expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
 name|bb
 operator|.
 name|getPanel
@@ -1811,6 +1991,9 @@ literal|5
 argument_list|)
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
 name|diag
 operator|.
 name|add
@@ -1825,6 +2008,9 @@ operator|.
 name|SOUTH
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_decl_stmt
 name|ActionMap
 name|am
 init|=
@@ -1836,6 +2022,9 @@ operator|.
 name|getActionMap
 argument_list|()
 decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 name|InputMap
 name|im
 init|=
@@ -1851,6 +2040,9 @@ operator|.
 name|WHEN_IN_FOCUSED_WINDOW
 argument_list|)
 decl_stmt|;
+end_decl_stmt
+
+begin_expr_stmt
 name|im
 operator|.
 name|put
@@ -1870,6 +2062,9 @@ argument_list|,
 literal|"close"
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
 name|am
 operator|.
 name|put
@@ -1879,6 +2074,9 @@ argument_list|,
 name|cancelListener
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
 name|im
 operator|.
 name|put
@@ -1893,6 +2091,9 @@ argument_list|,
 literal|"enterOk"
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
 name|am
 operator|.
 name|put
@@ -1902,11 +2103,17 @@ argument_list|,
 name|okListener
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
 name|diag
 operator|.
 name|pack
 argument_list|()
 expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
 name|diag
 operator|.
 name|setLocationRelativeTo
@@ -1914,9 +2121,11 @@ argument_list|(
 name|frame
 argument_list|)
 expr_stmt|;
-block|}
+end_expr_stmt
+
+begin_function
+unit|}      public
 DECL|method|setVisible (boolean visible)
-specifier|public
 name|void
 name|setVisible
 parameter_list|(
@@ -1936,7 +2145,13 @@ name|visible
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Read all style files or directories of style files indicated by the current      * settings, and add the styles to the list of styles.      */
+end_comment
+
+begin_function
 DECL|method|updateStyles ()
 specifier|private
 name|void
@@ -1984,7 +2199,13 @@ name|selectLastUsed
 argument_list|()
 expr_stmt|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * This method scans the current list of styles, and looks for the styles      * that was last used. If found, that style is selected. If not found,      * the first style is selected provided there are>0 styles.      */
+end_comment
+
+begin_function
 DECL|method|selectLastUsed ()
 specifier|private
 name|void
@@ -1996,7 +2217,7 @@ name|usedStyleFile
 init|=
 name|preferences
 operator|.
-name|getUsedStyleFile
+name|getCurrentStyle
 argument_list|()
 decl_stmt|;
 comment|// Set the initial selection of the table:
@@ -2114,6 +2335,9 @@ expr_stmt|;
 block|}
 block|}
 block|}
+end_function
+
+begin_function
 DECL|method|storeSettings ()
 specifier|private
 name|void
@@ -2129,7 +2353,7 @@ name|style
 lambda|->
 name|preferences
 operator|.
-name|setUsedStyleFile
+name|setCurrentStyle
 argument_list|(
 name|style
 operator|.
@@ -2139,6 +2363,9 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 DECL|method|getStyle ()
 specifier|public
 name|Optional
@@ -2165,7 +2392,13 @@ name|empty
 argument_list|()
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Get the currently selected style.      * @return the selected style, or empty if no style is selected.      */
+end_comment
+
+begin_function
 DECL|method|getSelectedStyle ()
 specifier|private
 name|Optional
@@ -2211,6 +2444,9 @@ name|empty
 argument_list|()
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|setupPrevEntry ()
 specifier|private
 name|void
@@ -2299,6 +2535,9 @@ literal|"https://github.com/JabRef"
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_class
 DECL|class|StyleTableFormat
 specifier|static
 class|class
@@ -2433,7 +2672,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Internal style file"
+literal|"Internal style"
 argument_list|)
 else|:
 name|style
@@ -2451,6 +2690,9 @@ return|;
 block|}
 block|}
 block|}
+end_class
+
+begin_function
 DECL|method|isOkPressed ()
 specifier|public
 name|boolean
@@ -2461,6 +2703,9 @@ return|return
 name|okPressed
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|tablePopup (MouseEvent e)
 specifier|private
 name|void
@@ -2486,6 +2731,13 @@ name|isFromResource
 argument_list|()
 condition|)
 block|{
+name|remove
+operator|.
+name|setEnabled
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 name|edit
 operator|.
 name|setEnabled
@@ -2496,6 +2748,13 @@ expr_stmt|;
 block|}
 else|else
 block|{
+name|remove
+operator|.
+name|setEnabled
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 name|edit
 operator|.
 name|setEnabled
@@ -2528,6 +2787,9 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 DECL|method|displayStyle (OOBibStyle style)
 specifier|private
 name|void
@@ -2718,7 +2980,13 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * The listener for the Glazed list monitoring the current selection.      * When selection changes, we need to update the preview panel.      */
+end_comment
+
+begin_class
 DECL|class|EntrySelectionListener
 specifier|private
 class|class
@@ -2808,12 +3076,12 @@ block|}
 block|)
 function|;
 block|}
-block|}
 end_class
 
 begin_class
-unit|}      private
+unit|}     }
 DECL|class|AddFileDialog
+specifier|private
 class|class
 name|AddFileDialog
 extends|extends

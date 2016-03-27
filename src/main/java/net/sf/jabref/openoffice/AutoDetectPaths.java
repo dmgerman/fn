@@ -267,12 +267,15 @@ specifier|final
 name|JDialog
 name|parent
 decl_stmt|;
-DECL|method|AutoDetectPaths (JDialog parent)
+DECL|method|AutoDetectPaths (JDialog parent, OpenOfficePreferences preferences)
 specifier|public
 name|AutoDetectPaths
 parameter_list|(
 name|JDialog
 name|parent
+parameter_list|,
+name|OpenOfficePreferences
+name|preferences
 parameter_list|)
 block|{
 name|this
@@ -281,15 +284,11 @@ name|parent
 operator|=
 name|parent
 expr_stmt|;
+name|this
+operator|.
 name|preferences
 operator|=
-operator|new
-name|OpenOfficePreferences
-argument_list|(
-name|Globals
-operator|.
-name|prefs
-argument_list|)
+name|preferences
 expr_stmt|;
 block|}
 DECL|method|runAutodetection ()
@@ -441,14 +440,7 @@ name|progFiles
 init|=
 operator|new
 name|OpenOfficeFileSearch
-argument_list|(
-name|Globals
-operator|.
-name|journalAbbreviationLoader
-operator|.
-name|getRepository
 argument_list|()
-argument_list|)
 operator|.
 name|findWindowsProgramFilesDir
 argument_list|()

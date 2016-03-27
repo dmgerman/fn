@@ -46,6 +46,18 @@ begin_import
 import|import
 name|java
 operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|Charset
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|ArrayList
@@ -97,18 +109,6 @@ operator|.
 name|logging
 operator|.
 name|LogFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|Globals
 import|;
 end_import
 
@@ -168,18 +168,6 @@ name|DEFAULT_NUMERICAL_STYLE_PATH
 init|=
 literal|"/resource/openoffice/default_numerical.jstyle"
 decl_stmt|;
-DECL|field|repository
-specifier|private
-specifier|final
-name|JournalAbbreviationRepository
-name|repository
-decl_stmt|;
-DECL|field|preferences
-specifier|private
-specifier|final
-name|OpenOfficePreferences
-name|preferences
-decl_stmt|;
 DECL|field|internalStyleFiles
 specifier|private
 specifier|final
@@ -197,6 +185,24 @@ name|DEFAULT_AUTHORYEAR_STYLE_PATH
 argument_list|,
 name|DEFAULT_NUMERICAL_STYLE_PATH
 argument_list|)
+decl_stmt|;
+DECL|field|repository
+specifier|private
+specifier|final
+name|JournalAbbreviationRepository
+name|repository
+decl_stmt|;
+DECL|field|preferences
+specifier|private
+specifier|final
+name|OpenOfficePreferences
+name|preferences
+decl_stmt|;
+DECL|field|encoding
+specifier|private
+specifier|final
+name|Charset
+name|encoding
 decl_stmt|;
 DECL|field|internalStyles
 specifier|private
@@ -226,7 +232,7 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
-DECL|method|StyleLoader (OpenOfficePreferences preferences, JournalAbbreviationRepository repository)
+DECL|method|StyleLoader (OpenOfficePreferences preferences, JournalAbbreviationRepository repository, Charset encoding)
 specifier|public
 name|StyleLoader
 parameter_list|(
@@ -235,6 +241,9 @@ name|preferences
 parameter_list|,
 name|JournalAbbreviationRepository
 name|repository
+parameter_list|,
+name|Charset
+name|encoding
 parameter_list|)
 block|{
 name|this
@@ -248,83 +257,16 @@ operator|.
 name|preferences
 operator|=
 name|preferences
+expr_stmt|;
+name|this
+operator|.
+name|encoding
+operator|=
+name|encoding
 expr_stmt|;
 name|update
 argument_list|()
 expr_stmt|;
-block|}
-comment|/**      * Read the style file. Record the last modified time of the file.      * @throws Exception      */
-DECL|method|readStyleFile (boolean useDefaultAuthoryearStyle, boolean useDefaultNumericalStyle, String styleFile)
-specifier|public
-name|OOBibStyle
-name|readStyleFile
-parameter_list|(
-name|boolean
-name|useDefaultAuthoryearStyle
-parameter_list|,
-name|boolean
-name|useDefaultNumericalStyle
-parameter_list|,
-name|String
-name|styleFile
-parameter_list|)
-throws|throws
-name|IOException
-block|{
-if|if
-condition|(
-name|useDefaultAuthoryearStyle
-condition|)
-block|{
-return|return
-operator|new
-name|OOBibStyle
-argument_list|(
-name|DEFAULT_AUTHORYEAR_STYLE_PATH
-argument_list|,
-name|repository
-argument_list|)
-return|;
-block|}
-elseif|else
-if|if
-condition|(
-name|useDefaultNumericalStyle
-condition|)
-block|{
-return|return
-operator|new
-name|OOBibStyle
-argument_list|(
-name|DEFAULT_NUMERICAL_STYLE_PATH
-argument_list|,
-name|repository
-argument_list|)
-return|;
-block|}
-else|else
-block|{
-return|return
-operator|new
-name|OOBibStyle
-argument_list|(
-operator|new
-name|File
-argument_list|(
-name|styleFile
-argument_list|)
-argument_list|,
-name|repository
-argument_list|,
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getDefaultEncoding
-argument_list|()
-argument_list|)
-return|;
-block|}
 block|}
 DECL|method|update ()
 specifier|public
@@ -332,10 +274,10 @@ name|void
 name|update
 parameter_list|()
 block|{
-name|readInternalStyleFiles
+name|loadInternalStyles
 argument_list|()
 expr_stmt|;
-name|readExternalStyleFiles
+name|loadExternalStyles
 argument_list|()
 expr_stmt|;
 block|}
@@ -372,10 +314,10 @@ return|return
 name|result
 return|;
 block|}
-DECL|method|addStyleFile (String filename)
+DECL|method|addStyle (String filename)
 specifier|public
 name|void
-name|addStyleFile
+name|addStyle
 parameter_list|(
 name|String
 name|filename
@@ -397,12 +339,7 @@ argument_list|)
 argument_list|,
 name|repository
 argument_list|,
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getDefaultEncoding
-argument_list|()
+name|encoding
 argument_list|)
 decl_stmt|;
 if|if
@@ -436,7 +373,7 @@ argument_list|(
 name|newStyle
 argument_list|)
 expr_stmt|;
-name|storeExternalStyleFiles
+name|storeExternalStyles
 argument_list|()
 expr_stmt|;
 block|}
@@ -479,10 +416,10 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|readExternalStyleFiles ()
+DECL|method|loadExternalStyles ()
 specifier|private
 name|void
-name|readExternalStyleFiles
+name|loadExternalStyles
 parameter_list|()
 block|{
 name|externalStyles
@@ -499,7 +436,7 @@ name|lists
 init|=
 name|preferences
 operator|.
-name|getExternalStyleFiles
+name|getExternalStyles
 argument_list|()
 decl_stmt|;
 for|for
@@ -527,12 +464,7 @@ argument_list|)
 argument_list|,
 name|repository
 argument_list|,
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getDefaultEncoding
-argument_list|()
+name|encoding
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -576,10 +508,10 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|readInternalStyleFiles ()
+DECL|method|loadInternalStyles ()
 specifier|private
 name|void
-name|readInternalStyleFiles
+name|loadInternalStyles
 parameter_list|()
 block|{
 name|internalStyles
@@ -631,10 +563,10 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|storeExternalStyleFiles ()
+DECL|method|storeExternalStyles ()
 specifier|private
 name|void
-name|storeExternalStyleFiles
+name|storeExternalStyles
 parameter_list|()
 block|{
 name|List
@@ -677,20 +609,29 @@ expr_stmt|;
 block|}
 name|preferences
 operator|.
-name|setExternalStyleFiles
+name|setExternalStyles
 argument_list|(
 name|filenames
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|removeStyleFile (OOBibStyle style)
+DECL|method|removeStyle (OOBibStyle style)
 specifier|public
 name|boolean
-name|removeStyleFile
+name|removeStyle
 parameter_list|(
 name|OOBibStyle
 name|style
 parameter_list|)
+block|{
+if|if
+condition|(
+operator|!
+name|style
+operator|.
+name|isFromResource
+argument_list|()
+condition|)
 block|{
 name|boolean
 name|result
@@ -702,11 +643,15 @@ argument_list|(
 name|style
 argument_list|)
 decl_stmt|;
-name|storeExternalStyleFiles
+name|storeExternalStyles
 argument_list|()
 expr_stmt|;
 return|return
 name|result
+return|;
+block|}
+return|return
+literal|false
 return|;
 block|}
 DECL|method|getUsedStyle ()
@@ -720,7 +665,7 @@ name|filename
 init|=
 name|preferences
 operator|.
-name|getUsedStyleFile
+name|getCurrentStyle
 argument_list|()
 decl_stmt|;
 if|if
@@ -761,7 +706,7 @@ block|}
 comment|// Pick the first internal
 name|preferences
 operator|.
-name|setUsedStyleFile
+name|setCurrentStyle
 argument_list|(
 name|internalStyles
 operator|.
