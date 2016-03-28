@@ -1143,7 +1143,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Styles"
+literal|"Select style"
 argument_list|)
 argument_list|,
 literal|true
