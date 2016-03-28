@@ -3519,7 +3519,11 @@ operator|.
 name|getMetaData
 argument_list|()
 argument_list|,
-literal|null
+name|getDatabase
+argument_list|()
+operator|.
+name|getEntries
+argument_list|()
 argument_list|,
 name|dbs
 argument_list|,
@@ -3635,6 +3639,18 @@ condition|(
 name|connectedToDB
 condition|)
 block|{
+specifier|final
+name|DBStrings
+name|dbs
+init|=
+name|bibDatabaseContext
+operator|.
+name|getMetaData
+argument_list|()
+operator|.
+name|getDBStrings
+argument_list|()
+decl_stmt|;
 name|frame
 operator|.
 name|output
@@ -3644,6 +3660,11 @@ operator|.
 name|lang
 argument_list|(
 literal|"%0 export successful"
+argument_list|,
+name|dbs
+operator|.
+name|getServerType
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -5292,7 +5313,7 @@ name|get
 argument_list|(
 literal|0
 argument_list|)
-argument_list|;                 if
+argument_list|;                     if
 operator|(
 operator|!
 name|entry
