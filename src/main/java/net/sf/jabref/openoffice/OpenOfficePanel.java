@@ -2264,6 +2264,21 @@ name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
 block|}
+else|else
+block|{
+name|frame
+operator|.
+name|setStatus
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Operation canceled."
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 if|if
 condition|(
 operator|!
