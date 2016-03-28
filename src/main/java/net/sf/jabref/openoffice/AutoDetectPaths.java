@@ -455,7 +455,7 @@ argument_list|<>
 argument_list|(
 name|fileSearch
 operator|.
-name|findFileDir
+name|findFileInDirs
 argument_list|(
 name|progFiles
 argument_list|,
@@ -696,7 +696,7 @@ argument_list|<>
 argument_list|(
 name|fileSearch
 operator|.
-name|findFileDir
+name|findFileInDirs
 argument_list|(
 name|dirList
 argument_list|,
@@ -774,16 +774,10 @@ argument_list|)
 return|;
 block|}
 block|}
+block|}
 return|return
 literal|false
 return|;
-block|}
-else|else
-block|{
-return|return
-literal|false
-return|;
-block|}
 block|}
 else|else
 block|{

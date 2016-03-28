@@ -339,13 +339,13 @@ operator|=
 literal|true
 expr_stmt|;
 block|}
-DECL|method|findFileDir (List<File> dirList, String filename)
+DECL|method|findFileInDirs (List<File> dirList, String filename)
 specifier|public
 name|List
 argument_list|<
 name|File
 argument_list|>
-name|findFileDir
+name|findFileInDirs
 parameter_list|(
 name|List
 argument_list|<

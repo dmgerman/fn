@@ -2045,6 +2045,11 @@ name|void
 name|updateStyles
 parameter_list|()
 block|{
+name|table
+operator|.
+name|clearSelection
+argument_list|()
+expr_stmt|;
 name|styles
 operator|.
 name|getReadWriteLock

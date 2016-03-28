@@ -7610,7 +7610,7 @@ argument_list|)
 expr_stmt|;
 block|}
 name|String
-name|text
+name|cursorText
 init|=
 name|mxDocCursor
 operator|.
@@ -7621,7 +7621,7 @@ comment|// Check if the string contains no line breaks and only whitespace:
 if|if
 condition|(
 operator|(
-name|text
+name|cursorText
 operator|.
 name|indexOf
 argument_list|(
@@ -7632,7 +7632,7 @@ operator|-
 literal|1
 operator|)
 operator|&&
-name|text
+name|cursorText
 operator|.
 name|trim
 argument_list|()
