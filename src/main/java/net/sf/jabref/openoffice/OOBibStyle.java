@@ -758,6 +758,15 @@ name|SORT_ALGORITHM
 init|=
 literal|"SortAlgorithm"
 decl_stmt|;
+DECL|field|OXFORD_COMMA
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|OXFORD_COMMA
+init|=
+literal|"OxfordComma"
+decl_stmt|;
 DECL|field|TITLE
 specifier|public
 specifier|static
@@ -1291,6 +1300,15 @@ operator|.
 name|FALSE
 argument_list|)
 expr_stmt|;
+name|citProperties
+operator|.
+name|put
+argument_list|(
+name|OXFORD_COMMA
+argument_list|,
+literal|""
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|getName ()
 specifier|public
@@ -1691,7 +1709,6 @@ continue|continue;
 default|default:
 break|break;
 block|}
-comment|// Handle line depending on mode
 switch|switch
 condition|(
 name|mode
@@ -3211,15 +3228,6 @@ decl_stmt|;
 comment|// The maximum number of authors to write out in full without using etal. Set to
 comment|// -1 to always write out all authors.
 name|String
-name|etAlString
-init|=
-name|getStringCitProperty
-argument_list|(
-name|ET_AL_STRING
-argument_list|)
-decl_stmt|;
-comment|//  The String to represent authors that are not mentioned, e.g. " et al."
-name|String
 name|yearSep
 init|=
 name|getStringCitProperty
@@ -3264,15 +3272,6 @@ name|YEAR_FIELD
 argument_list|)
 decl_stmt|;
 comment|// The bibtex field providing the year, e.g. "year".
-name|String
-name|authorSep
-init|=
-name|getStringCitProperty
-argument_list|(
-name|AUTHOR_SEPARATOR
-argument_list|)
-decl_stmt|;
-comment|// The String to add between author names except the last two, e.g. ", ".
 name|String
 name|andString
 init|=
@@ -3401,11 +3400,7 @@ name|author
 argument_list|,
 name|maxAuthors
 argument_list|,
-name|authorSep
-argument_list|,
 name|andString
-argument_list|,
-name|etAlString
 argument_list|,
 name|yearSep
 argument_list|)
@@ -3537,15 +3532,6 @@ decl_stmt|;
 comment|// The maximum number of authors to write out in full without using etal. Set to
 comment|// -1 to always write out all authors.
 name|String
-name|etAlString
-init|=
-name|getStringCitProperty
-argument_list|(
-name|ET_AL_STRING
-argument_list|)
-decl_stmt|;
-comment|//  The String to represent authors that are not mentioned, e.g. " et al."
-name|String
 name|yearSep
 init|=
 name|getStringCitProperty
@@ -3590,15 +3576,6 @@ name|YEAR_FIELD
 argument_list|)
 decl_stmt|;
 comment|// The bibtex field providing the year, e.g. "year".
-name|String
-name|authorSep
-init|=
-name|getStringCitProperty
-argument_list|(
-name|AUTHOR_SEPARATOR
-argument_list|)
-decl_stmt|;
-comment|// The String to add between author names except the last two, e.g. ", ".
 name|String
 name|andString
 init|=
@@ -3741,11 +3718,7 @@ name|author
 argument_list|,
 name|maxAuthors
 argument_list|,
-name|authorSep
-argument_list|,
 name|andString
-argument_list|,
-name|etAlString
 argument_list|,
 name|yearSep
 argument_list|)
@@ -4439,7 +4412,7 @@ name|styleFile
 argument_list|)
 return|;
 block|}
-DECL|method|createAuthorList (String author, int maxAuthors, String authorSep, String andString, String etAlString, String yearSep)
+DECL|method|createAuthorList (String author, int maxAuthors, String andString, String yearSep)
 specifier|private
 name|String
 name|createAuthorList
@@ -4451,18 +4424,39 @@ name|int
 name|maxAuthors
 parameter_list|,
 name|String
-name|authorSep
-parameter_list|,
-name|String
 name|andString
-parameter_list|,
-name|String
-name|etAlString
 parameter_list|,
 name|String
 name|yearSep
 parameter_list|)
 block|{
+name|String
+name|etAlString
+init|=
+name|getStringCitProperty
+argument_list|(
+name|ET_AL_STRING
+argument_list|)
+decl_stmt|;
+comment|//  The String to represent authors that are not mentioned, e.g. " et al."
+name|String
+name|authorSep
+init|=
+name|getStringCitProperty
+argument_list|(
+name|AUTHOR_SEPARATOR
+argument_list|)
+decl_stmt|;
+comment|// The String to add between author names except the last two, e.g. ", ".
+name|String
+name|oxfordComma
+init|=
+name|getStringCitProperty
+argument_list|(
+name|OXFORD_COMMA
+argument_list|)
+decl_stmt|;
+comment|// The String to put after the second to last author in case of three or more authors
 name|StringBuilder
 name|sb
 init|=
@@ -4578,6 +4572,24 @@ argument_list|)
 expr_stmt|;
 name|j
 operator|++
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|al
+operator|.
+name|getNumberOfAuthors
+argument_list|()
+operator|>
+literal|2
+condition|)
+block|{
+name|sb
+operator|.
+name|append
+argument_list|(
+name|oxfordComma
+argument_list|)
 expr_stmt|;
 block|}
 name|sb
