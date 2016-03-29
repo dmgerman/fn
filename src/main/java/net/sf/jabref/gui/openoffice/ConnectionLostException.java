@@ -4,7 +4,7 @@ comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is fre
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref.openoffice
+DECL|package|net.sf.jabref.gui.openoffice
 package|package
 name|net
 operator|.
@@ -12,54 +12,36 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
 name|openoffice
 package|;
 end_package
 
 begin_comment
-comment|/**  * Exception used to indicate that the plugin attempted to set a paragraph format that is  * not defined in the current OpenOffice document.  */
+comment|/**  * This exception is used to indicate that connection to OpenOffice has been lost.  */
 end_comment
 
 begin_class
-DECL|class|UndefinedParagraphFormatException
+DECL|class|ConnectionLostException
 class|class
-name|UndefinedParagraphFormatException
+name|ConnectionLostException
 extends|extends
-name|Exception
+name|RuntimeException
 block|{
-DECL|field|formatName
-specifier|private
-specifier|final
-name|String
-name|formatName
-decl_stmt|;
-DECL|method|UndefinedParagraphFormatException (String formatName)
+DECL|method|ConnectionLostException (String s)
 specifier|public
-name|UndefinedParagraphFormatException
+name|ConnectionLostException
 parameter_list|(
 name|String
-name|formatName
+name|s
 parameter_list|)
 block|{
 name|super
-argument_list|()
+argument_list|(
+name|s
+argument_list|)
 expr_stmt|;
-name|this
-operator|.
-name|formatName
-operator|=
-name|formatName
-expr_stmt|;
-block|}
-DECL|method|getFormatName ()
-specifier|public
-name|String
-name|getFormatName
-parameter_list|()
-block|{
-return|return
-name|formatName
-return|;
 block|}
 block|}
 end_class

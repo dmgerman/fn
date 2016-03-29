@@ -1,12 +1,14 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|net.sf.jabref.openoffice
+DECL|package|net.sf.jabref.logic.openoffice
 package|package
 name|net
 operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|logic
 operator|.
 name|openoffice
 package|;
@@ -217,6 +219,11 @@ name|numberOfInternalStyles
 init|=
 literal|2
 decl_stmt|;
+DECL|field|loader
+specifier|private
+name|StyleLoader
+name|loader
+decl_stmt|;
 DECL|field|preferences
 specifier|private
 name|OpenOfficePreferences
@@ -323,9 +330,8 @@ name|void
 name|throwNPEWithNullPreferences
 parameter_list|()
 block|{
-name|StyleLoader
 name|loader
-init|=
+operator|=
 operator|new
 name|StyleLoader
 argument_list|(
@@ -345,7 +351,7 @@ operator|.
 name|class
 argument_list|)
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|fail
 argument_list|()
 expr_stmt|;
@@ -365,9 +371,8 @@ name|void
 name|throwNPEWithNullRepository
 parameter_list|()
 block|{
-name|StyleLoader
 name|loader
-init|=
+operator|=
 operator|new
 name|StyleLoader
 argument_list|(
@@ -387,7 +392,7 @@ operator|.
 name|class
 argument_list|)
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|fail
 argument_list|()
 expr_stmt|;
@@ -407,9 +412,8 @@ name|void
 name|throwNPEWithNullCharset
 parameter_list|()
 block|{
-name|StyleLoader
 name|loader
-init|=
+operator|=
 operator|new
 name|StyleLoader
 argument_list|(
@@ -429,7 +433,7 @@ argument_list|)
 argument_list|,
 literal|null
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|fail
 argument_list|()
 expr_stmt|;
@@ -452,9 +456,8 @@ name|emptyList
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|StyleLoader
 name|loader
-init|=
+operator|=
 operator|new
 name|StyleLoader
 argument_list|(
@@ -474,7 +477,7 @@ operator|.
 name|getDefaultEncoding
 argument_list|()
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|assertEquals
 argument_list|(
 literal|2
@@ -509,9 +512,8 @@ name|emptyList
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|StyleLoader
 name|loader
-init|=
+operator|=
 operator|new
 name|StyleLoader
 argument_list|(
@@ -531,7 +533,7 @@ operator|.
 name|getDefaultEncoding
 argument_list|()
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|String
 name|filename
 init|=
@@ -617,9 +619,8 @@ name|emptyList
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|StyleLoader
 name|loader
-init|=
+operator|=
 operator|new
 name|StyleLoader
 argument_list|(
@@ -639,7 +640,7 @@ operator|.
 name|getDefaultEncoding
 argument_list|()
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|int
 name|beforeAdding
 init|=
@@ -722,9 +723,8 @@ name|filename
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|StyleLoader
 name|loader
-init|=
+operator|=
 operator|new
 name|StyleLoader
 argument_list|(
@@ -744,7 +744,7 @@ operator|.
 name|getDefaultEncoding
 argument_list|()
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|assertEquals
 argument_list|(
 name|numberOfInternalStyles
@@ -781,9 +781,8 @@ literal|"DefinitelyNotAValidFileNameOrWeAreExtremelyUnlucky"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|StyleLoader
 name|loader
-init|=
+operator|=
 operator|new
 name|StyleLoader
 argument_list|(
@@ -809,7 +808,7 @@ operator|.
 name|getDefaultEncoding
 argument_list|()
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|assertEquals
 argument_list|(
 name|numberOfInternalStyles
@@ -874,9 +873,8 @@ name|filename
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|StyleLoader
 name|loader
-init|=
+operator|=
 operator|new
 name|StyleLoader
 argument_list|(
@@ -902,7 +900,7 @@ operator|.
 name|getDefaultEncoding
 argument_list|()
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|List
 argument_list|<
 name|OOBibStyle
@@ -1039,9 +1037,8 @@ name|filename
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|StyleLoader
 name|loader
-init|=
+operator|=
 operator|new
 name|StyleLoader
 argument_list|(
@@ -1061,7 +1058,7 @@ operator|.
 name|getDefaultEncoding
 argument_list|()
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|List
 argument_list|<
 name|OOBibStyle
@@ -1153,9 +1150,8 @@ name|emptyList
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|StyleLoader
 name|loader
-init|=
+operator|=
 operator|new
 name|StyleLoader
 argument_list|(
@@ -1181,7 +1177,7 @@ operator|.
 name|getDefaultEncoding
 argument_list|()
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|int
 name|beforeAdding
 init|=
@@ -1266,9 +1262,8 @@ name|void
 name|testAddNullStyleThrowsNPE
 parameter_list|()
 block|{
-name|StyleLoader
 name|loader
-init|=
+operator|=
 operator|new
 name|StyleLoader
 argument_list|(
@@ -1294,7 +1289,7 @@ operator|.
 name|getDefaultEncoding
 argument_list|()
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|loader
 operator|.
 name|addStyle
@@ -1325,9 +1320,8 @@ operator|.
 name|OO_BIBLIOGRAPHY_STYLE_FILE
 argument_list|)
 expr_stmt|;
-name|StyleLoader
 name|loader
-init|=
+operator|=
 operator|new
 name|StyleLoader
 argument_list|(
@@ -1353,7 +1347,7 @@ operator|.
 name|getDefaultEncoding
 argument_list|()
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|OOBibStyle
 name|style
 init|=
@@ -1412,9 +1406,8 @@ operator|.
 name|DEFAULT_NUMERICAL_STYLE_PATH
 argument_list|)
 expr_stmt|;
-name|StyleLoader
 name|loader
-init|=
+operator|=
 operator|new
 name|StyleLoader
 argument_list|(
@@ -1440,7 +1433,7 @@ operator|.
 name|getDefaultEncoding
 argument_list|()
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|OOBibStyle
 name|style
 init|=
@@ -1497,9 +1490,8 @@ argument_list|(
 literal|"ljlkjlkjnljnvdlsjniuhwelfhuewfhlkuewhfuwhelu"
 argument_list|)
 expr_stmt|;
-name|StyleLoader
 name|loader
-init|=
+operator|=
 operator|new
 name|StyleLoader
 argument_list|(
@@ -1525,7 +1517,7 @@ operator|.
 name|getDefaultEncoding
 argument_list|()
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|OOBibStyle
 name|style
 init|=
@@ -1585,9 +1577,8 @@ name|emptyList
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|StyleLoader
 name|loader
-init|=
+operator|=
 operator|new
 name|StyleLoader
 argument_list|(
@@ -1607,7 +1598,7 @@ operator|.
 name|getDefaultEncoding
 argument_list|()
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|List
 argument_list|<
 name|OOBibStyle

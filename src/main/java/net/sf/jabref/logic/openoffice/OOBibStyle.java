@@ -4,13 +4,15 @@ comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is fre
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref.openoffice
+DECL|package|net.sf.jabref.logic.openoffice
 package|package
 name|net
 operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|logic
 operator|.
 name|openoffice
 package|;
@@ -264,6 +266,7 @@ end_comment
 
 begin_class
 DECL|class|OOBibStyle
+specifier|public
 class|class
 name|OOBibStyle
 implements|implements

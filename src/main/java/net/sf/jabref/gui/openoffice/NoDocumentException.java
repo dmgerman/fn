@@ -4,13 +4,15 @@ comment|/*  Copyright (C) 2016 JabRef contributors.     This program is free sof
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref.openoffice
+DECL|package|net.sf.jabref.gui.openoffice
 package|package
 name|net
 operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|gui
 operator|.
 name|openoffice
 package|;
