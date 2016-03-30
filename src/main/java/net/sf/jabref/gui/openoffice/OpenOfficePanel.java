@@ -873,11 +873,6 @@ operator|.
 name|prefs
 argument_list|)
 expr_stmt|;
-name|preferences
-operator|.
-name|putDefaultPreferences
-argument_list|()
-expr_stmt|;
 name|loader
 operator|=
 operator|new
