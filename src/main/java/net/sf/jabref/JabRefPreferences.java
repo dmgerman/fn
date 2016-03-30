@@ -5543,7 +5543,7 @@ name|put
 argument_list|(
 name|PREVIEW_0
 argument_list|,
-literal|"<font face=\"arial\">"
+literal|"<font face=\"helvetica\">"
 operator|+
 literal|"<b><i>\\bibtextype</i><a name=\"\\bibtexkey\">\\begin{bibtexkey} (\\bibtexkey)</a>"
 operator|+
@@ -5587,7 +5587,7 @@ name|put
 argument_list|(
 name|PREVIEW_1
 argument_list|,
-literal|"<font face=\"arial\">"
+literal|"<font face=\"helvetica\">"
 operator|+
 literal|"<b><i>\\bibtextype</i><a name=\"\\bibtexkey\">\\begin{bibtexkey} (\\bibtexkey)</a>"
 operator|+
