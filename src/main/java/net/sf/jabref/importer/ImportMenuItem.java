@@ -702,7 +702,7 @@ name|add
 argument_list|(
 name|Globals
 operator|.
-name|importFormatReader
+name|IMPORT_FORMAT_READER
 operator|.
 name|importUnknownFormat
 argument_list|(
@@ -722,7 +722,7 @@ name|ParserResult
 argument_list|(
 name|Globals
 operator|.
-name|importFormatReader
+name|IMPORT_FORMAT_READER
 operator|.
 name|importFromFile
 argument_list|(

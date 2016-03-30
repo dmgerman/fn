@@ -166,34 +166,6 @@ name|BuildInfo
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|commons
-operator|.
-name|logging
-operator|.
-name|Log
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|commons
-operator|.
-name|logging
-operator|.
-name|LogFactory
-import|;
-end_import
-
 begin_class
 DECL|class|Globals
 specifier|public
@@ -227,22 +199,6 @@ name|DIR_SUFFIX
 init|=
 literal|"Directory"
 decl_stmt|;
-DECL|field|LOGGER
-specifier|private
-specifier|static
-specifier|final
-name|Log
-name|LOGGER
-init|=
-name|LogFactory
-operator|.
-name|getLog
-argument_list|(
-name|Globals
-operator|.
-name|class
-argument_list|)
-decl_stmt|;
 comment|// JabRef version info
 DECL|field|BUILD_INFO
 specifier|public
@@ -265,12 +221,12 @@ name|SIGNATURE
 init|=
 literal|"This file was created with JabRef"
 decl_stmt|;
-DECL|field|encPrefix
+DECL|field|ENCODING_PREFIX
 specifier|public
 specifier|static
 specifier|final
 name|String
-name|encPrefix
+name|ENCODING_PREFIX
 init|=
 literal|"Encoding: "
 decl_stmt|;
@@ -288,22 +244,23 @@ name|lineSeparator
 argument_list|()
 decl_stmt|;
 comment|// Remote listener
-DECL|field|remoteListener
+DECL|field|REMOTE_LISTENER
 specifier|public
 specifier|static
+specifier|final
 name|RemoteListenerServerLifecycle
-name|remoteListener
+name|REMOTE_LISTENER
 init|=
 operator|new
 name|RemoteListenerServerLifecycle
 argument_list|()
 decl_stmt|;
-DECL|field|importFormatReader
+DECL|field|IMPORT_FORMAT_READER
 specifier|public
 specifier|static
 specifier|final
 name|ImportFormatReader
-name|importFormatReader
+name|IMPORT_FORMAT_READER
 init|=
 operator|new
 name|ImportFormatReader
@@ -344,6 +301,15 @@ name|String
 name|NONE
 init|=
 literal|"_non__"
+decl_stmt|;
+DECL|field|SPECIAL_COMMAND_CHARS
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|SPECIAL_COMMAND_CHARS
+init|=
+literal|"\"`^~'c="
 decl_stmt|;
 comment|// In the main program, this field is initialized in JabRef.java
 comment|// Each test case initializes this field if required
@@ -393,15 +359,6 @@ return|return
 name|keyPrefs
 return|;
 block|}
-DECL|field|SPECIAL_COMMAND_CHARS
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|SPECIAL_COMMAND_CHARS
-init|=
-literal|"\"`^~'c="
-decl_stmt|;
 comment|// Background tasks
 DECL|field|focusListener
 specifier|public

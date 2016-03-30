@@ -784,7 +784,7 @@ expr_stmt|;
 comment|/* Build list of Import and Export formats */
 name|Globals
 operator|.
-name|importFormatReader
+name|IMPORT_FORMAT_READER
 operator|.
 name|resetImportFormats
 argument_list|()
@@ -836,7 +836,7 @@ condition|)
 block|{
 name|Globals
 operator|.
-name|remoteListener
+name|REMOTE_LISTENER
 operator|.
 name|open
 argument_list|(
@@ -856,7 +856,7 @@ if|if
 condition|(
 name|Globals
 operator|.
-name|remoteListener
+name|REMOTE_LISTENER
 operator|.
 name|isOpen
 argument_list|()
@@ -864,7 +864,7 @@ condition|)
 block|{
 name|Globals
 operator|.
-name|remoteListener
+name|REMOTE_LISTENER
 operator|.
 name|start
 argument_list|()
@@ -5211,7 +5211,7 @@ name|entries
 operator|=
 name|Globals
 operator|.
-name|importFormatReader
+name|IMPORT_FORMAT_READER
 operator|.
 name|importFromFile
 argument_list|(
@@ -5237,7 +5237,7 @@ name|entries
 operator|=
 name|Globals
 operator|.
-name|importFormatReader
+name|IMPORT_FORMAT_READER
 operator|.
 name|importFromFile
 argument_list|(
@@ -5357,7 +5357,7 @@ name|importResult
 operator|=
 name|Globals
 operator|.
-name|importFormatReader
+name|IMPORT_FORMAT_READER
 operator|.
 name|importUnknownFormat
 argument_list|(
@@ -5374,7 +5374,7 @@ name|importResult
 operator|=
 name|Globals
 operator|.
-name|importFormatReader
+name|IMPORT_FORMAT_READER
 operator|.
 name|importUnknownFormat
 argument_list|(

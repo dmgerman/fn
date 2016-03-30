@@ -1230,7 +1230,7 @@ argument_list|)
 expr_stmt|;
 name|Globals
 operator|.
-name|importFormatReader
+name|IMPORT_FORMAT_READER
 operator|.
 name|resetImportFormats
 argument_list|()
@@ -1693,7 +1693,7 @@ argument_list|)
 expr_stmt|;
 name|Globals
 operator|.
-name|importFormatReader
+name|IMPORT_FORMAT_READER
 operator|.
 name|resetImportFormats
 argument_list|()

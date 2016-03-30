@@ -294,7 +294,7 @@ name|importers
 init|=
 name|Globals
 operator|.
-name|importFormatReader
+name|IMPORT_FORMAT_READER
 operator|.
 name|getImportFormats
 argument_list|()

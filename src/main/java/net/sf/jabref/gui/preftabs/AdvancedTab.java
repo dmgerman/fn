@@ -1568,7 +1568,7 @@ condition|)
 block|{
 name|Globals
 operator|.
-name|remoteListener
+name|REMOTE_LISTENER
 operator|.
 name|openAndStart
 argument_list|(
@@ -1589,7 +1589,7 @@ else|else
 block|{
 name|Globals
 operator|.
-name|remoteListener
+name|REMOTE_LISTENER
 operator|.
 name|stop
 argument_list|()

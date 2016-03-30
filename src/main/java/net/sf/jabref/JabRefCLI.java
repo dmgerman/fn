@@ -1167,7 +1167,7 @@ name|importFormats
 init|=
 name|Globals
 operator|.
-name|importFormatReader
+name|IMPORT_FORMAT_READER
 operator|.
 name|getImportFormatList
 argument_list|()

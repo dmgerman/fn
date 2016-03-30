@@ -664,11 +664,12 @@ argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
+return|return
 name|Collections
 operator|.
 name|emptyList
 argument_list|()
-expr_stmt|;
+return|;
 block|}
 comment|// output is in conn.getInputStream();
 comment|// new InputStreamReader(conn.getInputStream())
