@@ -7966,12 +7966,7 @@ name|JabRefFrame
 operator|.
 name|subMenu
 argument_list|(
-name|Localization
-operator|.
-name|menuTitle
-argument_list|(
-literal|"BibTeX"
-argument_list|)
+literal|"&BibTeX"
 argument_list|)
 decl_stmt|;
 name|JMenu
