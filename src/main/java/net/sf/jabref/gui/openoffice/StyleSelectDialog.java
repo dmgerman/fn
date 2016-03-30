@@ -2015,9 +2015,6 @@ name|link
 init|=
 name|style
 operator|.
-name|getFile
-argument_list|()
-operator|.
 name|getPath
 argument_list|()
 decl_stmt|;
