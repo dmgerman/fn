@@ -83,7 +83,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * The JabRef preferences are:  * OO_PATH main directory for OO/LO installation, used to detect location on Win/OS X when using manual connect  * OO_EXECUTABLE_PATH path to soffice-file  * OO_JARS_PATH directory that contains juh.jar, jurt.jar, ridl.jar, unoil.jar  * OO_SYNC_WHEN_CITING true if the reference list is updated when adding a new citation  * OO_SHOW_PANEL true if the OO panel is shown on startup  * OO_USE_ALL_OPEN_DATABASES true if all databases should be used when citing  * OO_BIBLIOGRAPHY_STYLE_FILE path to the used style file  * OO_EXTERNAL_STYLE_FILES list with paths to external style files  *  */
+comment|/**  * The OpenOffice connection preferences are:  * OO_PATH main directory for OO/LO installation, used to detect location on Win/OS X when using manual connect  * OO_EXECUTABLE_PATH path to soffice-file  * OO_JARS_PATH directory that contains juh.jar, jurt.jar, ridl.jar, unoil.jar  * OO_SYNC_WHEN_CITING true if the reference list is updated when adding a new citation  * OO_SHOW_PANEL true if the OO panel is shown on startup  * OO_USE_ALL_OPEN_DATABASES true if all databases should be used when citing  * OO_BIBLIOGRAPHY_STYLE_FILE path to the used style file  * OO_EXTERNAL_STYLE_FILES list with paths to external style files  *  */
 end_comment
 
 begin_class
@@ -97,6 +97,78 @@ specifier|private
 specifier|final
 name|JabRefPreferences
 name|preferences
+decl_stmt|;
+DECL|field|DEFAULT_WINDOWS_PATH
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|DEFAULT_WINDOWS_PATH
+init|=
+literal|"C:\\Program Files\\OpenOffice.org 4"
+decl_stmt|;
+DECL|field|WINDOWS_EXECUTABLE_SUBPATH
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|WINDOWS_EXECUTABLE_SUBPATH
+init|=
+literal|"\\program\\"
+decl_stmt|;
+DECL|field|WINDOWS_EXECUTABLE
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|WINDOWS_EXECUTABLE
+init|=
+literal|"soffice.exe"
+decl_stmt|;
+DECL|field|WINDOWS_JARS_SUBPATH
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|WINDOWS_JARS_SUBPATH
+init|=
+literal|"\\program\\classes"
+decl_stmt|;
+DECL|field|DEFAULT_OSX_PATH
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|DEFAULT_OSX_PATH
+init|=
+literal|"/Applications/OpenOffice.org.app"
+decl_stmt|;
+DECL|field|OSX_EXECUTABLE_SUBPATH
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|OSX_EXECUTABLE_SUBPATH
+init|=
+literal|"/Contents/MacOS/"
+decl_stmt|;
+DECL|field|OSX_EXECUTABLE
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|OSX_EXECUTABLE
+init|=
+literal|"soffice.bin"
+decl_stmt|;
+DECL|field|OSX_JARS_SUBPATH
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|OSX_JARS_SUBPATH
+init|=
+literal|"/Contents/Resources/java"
 decl_stmt|;
 DECL|method|OpenOfficePreferences (JabRefPreferences preferences)
 specifier|public
@@ -134,7 +206,7 @@ name|JabRefPreferences
 operator|.
 name|OO_PATH
 argument_list|,
-literal|"C:\\Program Files\\OpenOffice.org 4"
+name|DEFAULT_WINDOWS_PATH
 argument_list|)
 expr_stmt|;
 name|preferences
@@ -145,7 +217,11 @@ name|JabRefPreferences
 operator|.
 name|OO_EXECUTABLE_PATH
 argument_list|,
-literal|"C:\\Program Files\\OpenOffice.org 4\\program\\soffice.exe"
+name|DEFAULT_WINDOWS_PATH
+operator|+
+name|WINDOWS_EXECUTABLE_SUBPATH
+operator|+
+name|WINDOWS_EXECUTABLE
 argument_list|)
 expr_stmt|;
 name|preferences
@@ -156,7 +232,9 @@ name|JabRefPreferences
 operator|.
 name|OO_JARS_PATH
 argument_list|,
-literal|"C:\\Program Files\\OpenOffice.org 4\\program\\classes"
+name|DEFAULT_WINDOWS_PATH
+operator|+
+name|WINDOWS_JARS_SUBPATH
 argument_list|)
 expr_stmt|;
 block|}
@@ -174,9 +252,9 @@ name|putDefaultValue
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|OO_EXECUTABLE_PATH
+name|OO_PATH
 argument_list|,
-literal|"/Applications/OpenOffice.org.app/Contents/MacOS/soffice.bin"
+name|DEFAULT_OSX_PATH
 argument_list|)
 expr_stmt|;
 name|preferences
@@ -185,9 +263,13 @@ name|putDefaultValue
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|OO_PATH
+name|OO_EXECUTABLE_PATH
 argument_list|,
-literal|"/Applications/OpenOffice.org.app"
+name|DEFAULT_OSX_PATH
+operator|+
+name|OSX_EXECUTABLE_SUBPATH
+operator|+
+name|OSX_EXECUTABLE
 argument_list|)
 expr_stmt|;
 name|preferences
@@ -198,7 +280,9 @@ name|JabRefPreferences
 operator|.
 name|OO_JARS_PATH
 argument_list|,
-literal|"/Applications/OpenOffice.org.app/Contents/Resources/java"
+name|DEFAULT_OSX_PATH
+operator|+
+name|OSX_JARS_SUBPATH
 argument_list|)
 expr_stmt|;
 block|}
