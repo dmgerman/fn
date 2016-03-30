@@ -347,13 +347,6 @@ name|void
 name|defaultType
 parameter_list|()
 block|{
-name|EntryTypes
-name|types
-init|=
-operator|new
-name|EntryTypes
-argument_list|()
-decl_stmt|;
 name|assertEquals
 argument_list|(
 name|BibLatexEntryTypes

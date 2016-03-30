@@ -135,15 +135,6 @@ DECL|class|DatabaseFileLookup
 class|class
 name|DatabaseFileLookup
 block|{
-DECL|field|KEY_FILE_FIELD
-specifier|private
-specifier|static
-specifier|final
-name|String
-name|KEY_FILE_FIELD
-init|=
-literal|"file"
-decl_stmt|;
 DECL|field|fileCache
 specifier|private
 specifier|final
@@ -286,9 +277,9 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-name|DatabaseFileLookup
+name|Globals
 operator|.
-name|KEY_FILE_FIELD
+name|FILE_FIELD
 argument_list|)
 decl_stmt|;
 name|List

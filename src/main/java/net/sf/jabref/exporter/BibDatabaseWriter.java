@@ -1355,7 +1355,7 @@ name|write
 argument_list|(
 name|Globals
 operator|.
-name|encPrefix
+name|ENCODING_PREFIX
 operator|+
 name|encoding
 argument_list|)

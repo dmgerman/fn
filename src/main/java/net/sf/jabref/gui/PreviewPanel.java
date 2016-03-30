@@ -312,18 +312,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|event
-operator|.
-name|HyperlinkListener
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|awt
@@ -525,14 +513,14 @@ specifier|private
 name|String
 name|layoutFile
 decl_stmt|;
-DECL|field|panel
+DECL|field|basePanel
 specifier|private
 specifier|final
 name|Optional
 argument_list|<
 name|BasePanel
 argument_list|>
-name|panel
+name|basePanel
 decl_stmt|;
 DECL|field|previewPane
 specifier|private
@@ -698,7 +686,7 @@ argument_list|()
 expr_stmt|;
 name|this
 operator|.
-name|panel
+name|basePanel
 operator|=
 name|Optional
 operator|.
@@ -774,7 +762,7 @@ if|if
 condition|(
 name|this
 operator|.
-name|panel
+name|basePanel
 operator|.
 name|isPresent
 argument_list|()
@@ -986,7 +974,7 @@ argument_list|)
 expr_stmt|;
 name|this
 operator|.
-name|panel
+name|basePanel
 operator|.
 name|ifPresent
 argument_list|(
@@ -1200,19 +1188,8 @@ name|previewPane
 operator|.
 name|addHyperlinkListener
 argument_list|(
-operator|new
-name|HyperlinkListener
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|hyperlinkUpdate
-parameter_list|(
-name|HyperlinkEvent
 name|hyperlinkEvent
-parameter_list|)
+lambda|->
 block|{
 if|if
 condition|(
@@ -1272,7 +1249,6 @@ argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 block|}
@@ -1614,7 +1590,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|highlightPattern (Optional<Pattern> highlightPattern)
+DECL|method|highlightPattern (Optional<Pattern> newPattern)
 specifier|public
 name|void
 name|highlightPattern
@@ -1623,14 +1599,14 @@ name|Optional
 argument_list|<
 name|Pattern
 argument_list|>
-name|highlightPattern
+name|newPattern
 parameter_list|)
 block|{
 name|this
 operator|.
 name|highlightPattern
 operator|=
-name|highlightPattern
+name|newPattern
 expr_stmt|;
 name|update
 argument_list|()
@@ -1814,6 +1790,15 @@ operator|.
 name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
+name|LOGGER
+operator|.
+name|info
+argument_list|(
+literal|"Could not print preview"
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 argument_list|)
@@ -1876,7 +1861,7 @@ name|ActionEvent
 name|e
 parameter_list|)
 block|{
-name|panel
+name|basePanel
 operator|.
 name|ifPresent
 argument_list|(

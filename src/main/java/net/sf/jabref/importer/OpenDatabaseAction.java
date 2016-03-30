@@ -2538,7 +2538,7 @@ name|startsWith
 argument_list|(
 name|Globals
 operator|.
-name|encPrefix
+name|ENCODING_PREFIX
 argument_list|)
 condition|)
 block|{
@@ -2572,7 +2572,7 @@ name|substring
 argument_list|(
 name|Globals
 operator|.
-name|encPrefix
+name|ENCODING_PREFIX
 operator|.
 name|length
 argument_list|()
@@ -2591,7 +2591,7 @@ name|substring
 argument_list|(
 name|Globals
 operator|.
-name|encPrefix
+name|ENCODING_PREFIX
 operator|.
 name|length
 argument_list|()
