@@ -8625,7 +8625,8 @@ block|{
 comment|// hide groups
 name|frame
 operator|.
-name|sidePaneManager
+name|getSidePaneManager
+argument_list|()
 operator|.
 name|hide
 argument_list|(
@@ -8714,7 +8715,8 @@ block|{
 comment|// groups were defined
 name|frame
 operator|.
-name|sidePaneManager
+name|getSidePaneManager
+argument_list|()
 operator|.
 name|show
 argument_list|(
@@ -8754,7 +8756,8 @@ block|{
 comment|// groups were not defined
 name|frame
 operator|.
-name|sidePaneManager
+name|getSidePaneManager
+argument_list|()
 operator|.
 name|hide
 argument_list|(

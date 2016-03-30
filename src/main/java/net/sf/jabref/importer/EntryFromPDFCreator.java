@@ -249,7 +249,10 @@ name|ExternalFileType
 name|getPDFExternalFileType
 parameter_list|()
 block|{
+name|Optional
+argument_list|<
 name|ExternalFileType
+argument_list|>
 name|pdfFileType
 init|=
 name|ExternalFileTypes
@@ -264,9 +267,11 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|!
 name|pdfFileType
-operator|==
-literal|null
+operator|.
+name|isPresent
+argument_list|()
 condition|)
 block|{
 return|return
@@ -296,6 +301,9 @@ return|;
 block|}
 return|return
 name|pdfFileType
+operator|.
+name|get
+argument_list|()
 return|;
 block|}
 comment|/*      * (non-Javadoc)      *      * @see net.sf.jabref.imports.EntryFromFileCreator#accept(java.io.File)      *      * Accepts all Files having as suffix ".PDF" (in ignore case mode).      */

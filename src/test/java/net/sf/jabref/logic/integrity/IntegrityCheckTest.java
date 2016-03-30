@@ -177,6 +177,16 @@ import|;
 end_import
 
 begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
 import|import static
 name|org
 operator|.
@@ -356,10 +366,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testBraketChecks ()
+DECL|method|testBracketChecks ()
 specifier|public
 name|void
-name|testBraketChecks
+name|testBracketChecks
 parameter_list|()
 block|{
 name|assertCorrect
@@ -869,6 +879,29 @@ operator|.
 name|singletonList
 argument_list|(
 literal|"."
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|// FIXME: must be set as checkBibtexDatabase only activates title checker based on database mode
+name|Mockito
+operator|.
+name|when
+argument_list|(
+name|metaData
+operator|.
+name|getMode
+argument_list|()
+argument_list|)
+operator|.
+name|thenReturn
+argument_list|(
+name|Optional
+operator|.
+name|of
+argument_list|(
+name|BibDatabaseMode
+operator|.
+name|BIBTEX
 argument_list|)
 argument_list|)
 expr_stmt|;

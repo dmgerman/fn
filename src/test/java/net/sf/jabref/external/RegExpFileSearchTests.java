@@ -177,7 +177,7 @@ specifier|final
 name|String
 name|filesDirectory
 init|=
-literal|"/src/test/resources/net/sf/jabref/imports/unlinkedFilesTestFolder"
+literal|"src/test/resources/net/sf/jabref/imports/unlinkedFilesTestFolder"
 decl_stmt|;
 annotation|@
 name|Before

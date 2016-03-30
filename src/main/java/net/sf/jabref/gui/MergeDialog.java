@@ -758,16 +758,6 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|okPressed ()
-specifier|public
-name|boolean
-name|okPressed
-parameter_list|()
-block|{
-return|return
-name|okPressed
-return|;
-block|}
 DECL|method|importEntries ()
 specifier|public
 name|boolean

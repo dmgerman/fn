@@ -200,6 +200,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|swing
@@ -1553,7 +1563,10 @@ condition|)
 block|{
 return|return;
 block|}
+name|Optional
+argument_list|<
 name|ExternalFileType
+argument_list|>
 name|type
 init|=
 name|ExternalFileTypes
@@ -1587,9 +1600,26 @@ block|{
 if|if
 condition|(
 name|type
-operator|==
-literal|null
+operator|.
+name|isPresent
+argument_list|()
 condition|)
+block|{
+name|JabRefDesktop
+operator|.
+name|openExternalFileAnyFormat
+argument_list|(
+operator|new
+name|MetaData
+argument_list|()
+argument_list|,
+name|link
+argument_list|,
+name|type
+argument_list|)
+expr_stmt|;
+block|}
+else|else
 block|{
 name|JabRefDesktop
 operator|.
@@ -1612,22 +1642,6 @@ name|UnknownExternalFileType
 argument_list|(
 literal|"jstyle"
 argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-name|JabRefDesktop
-operator|.
-name|openExternalFileAnyFormat
-argument_list|(
-operator|new
-name|MetaData
-argument_list|()
-argument_list|,
-name|link
-argument_list|,
-name|type
 argument_list|)
 expr_stmt|;
 block|}
@@ -2740,6 +2754,13 @@ name|getText
 argument_list|()
 argument_list|,
 literal|true
+argument_list|,
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getDefaultEncoding
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -2883,8 +2904,8 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * If the string dir indicates a file, parse it and add it to the list of styles if      * successful. If the string dir indicates a directory, parse all files looking like      * style files, and add them. The parameter recurse determines whether we should      * recurse into subdirectories.      * @param dir the directory or file to handle.      * @param recurse true indicates that we should recurse into subdirectories.      */
-DECL|method|addStyles (String dir, boolean recurse)
+comment|/**      * If the string dir indicates a file, parse it and add it to the list of styles if      * successful. If the string dir indicates a directory, parse all files looking like      * style files, and add them. The parameter recurse determines whether we should      * recurse into subdirectories.      * @param dir the directory or file to handle.      * @param recurse true indicates that we should recurse into subdirectories.      * @param encoding      */
+DECL|method|addStyles (String dir, boolean recurse, Charset encoding)
 specifier|private
 name|void
 name|addStyles
@@ -2894,6 +2915,9 @@ name|dir
 parameter_list|,
 name|boolean
 name|recurse
+parameter_list|,
+name|Charset
+name|encoding
 parameter_list|)
 block|{
 name|File
@@ -2991,12 +3015,7 @@ name|addSingleFile
 argument_list|(
 name|file
 argument_list|,
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getDefaultEncoding
-argument_list|()
+name|encoding
 argument_list|)
 expr_stmt|;
 block|}
@@ -3020,6 +3039,8 @@ name|getPath
 argument_list|()
 argument_list|,
 name|recurse
+argument_list|,
+name|encoding
 argument_list|)
 expr_stmt|;
 block|}
@@ -3032,12 +3053,7 @@ name|addSingleFile
 argument_list|(
 name|dirF
 argument_list|,
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getDefaultEncoding
-argument_list|()
+name|encoding
 argument_list|)
 expr_stmt|;
 block|}

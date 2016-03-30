@@ -48,6 +48,22 @@ name|model
 operator|.
 name|entry
 operator|.
+name|Author
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
 name|AuthorList
 import|;
 end_import
@@ -1398,7 +1414,7 @@ name|al
 init|=
 name|AuthorList
 operator|.
-name|getAuthorList
+name|parse
 argument_list|(
 name|fieldText
 argument_list|)
@@ -1414,7 +1430,7 @@ operator|||
 operator|(
 name|al
 operator|.
-name|size
+name|getNumberOfAuthors
 argument_list|()
 operator|<=
 name|maxAuthors
@@ -1432,15 +1448,13 @@ name|i
 operator|<
 name|al
 operator|.
-name|size
+name|getNumberOfAuthors
 argument_list|()
 condition|;
 name|i
 operator|++
 control|)
 block|{
-name|AuthorList
-operator|.
 name|Author
 name|a
 init|=
@@ -1489,7 +1503,7 @@ operator|<
 operator|(
 name|al
 operator|.
-name|size
+name|getNumberOfAuthors
 argument_list|()
 operator|-
 literal|2
@@ -1512,7 +1526,7 @@ operator|<
 operator|(
 name|al
 operator|.
-name|size
+name|getNumberOfAuthors
 argument_list|()
 operator|-
 literal|1
@@ -1546,7 +1560,7 @@ name|min
 argument_list|(
 name|al
 operator|.
-name|size
+name|getNumberOfAuthors
 argument_list|()
 operator|-
 literal|1
@@ -1607,7 +1621,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-DECL|method|addSingleName (StringBuilder sb, AuthorList.Author a, boolean firstFirst)
+DECL|method|addSingleName (StringBuilder sb, Author a, boolean firstFirst)
 specifier|private
 name|void
 name|addSingleName
@@ -1615,8 +1629,6 @@ parameter_list|(
 name|StringBuilder
 name|sb
 parameter_list|,
-name|AuthorList
-operator|.
 name|Author
 name|a
 parameter_list|,

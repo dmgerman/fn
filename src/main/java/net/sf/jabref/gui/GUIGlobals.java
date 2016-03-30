@@ -326,15 +326,6 @@ argument_list|(
 literal|"untitled"
 argument_list|)
 decl_stmt|;
-DECL|field|NUMBER_COL
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|NUMBER_COL
-init|=
-literal|"#"
-decl_stmt|;
 DECL|field|currentFont
 specifier|public
 specifier|static

@@ -378,7 +378,8 @@ name|GeneralFetcherTest
 operator|.
 name|jrf
 operator|.
-name|sidePaneManager
+name|getSidePaneManager
+argument_list|()
 expr_stmt|;
 name|GeneralFetcherTest
 operator|.

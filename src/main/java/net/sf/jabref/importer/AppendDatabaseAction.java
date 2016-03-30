@@ -308,11 +308,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
+name|logic
 operator|.
-name|util
+name|l10n
 operator|.
-name|PositionWindow
+name|Localization
 import|;
 end_import
 
@@ -326,9 +326,9 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|l10n
+name|util
 operator|.
-name|Localization
+name|UpdateField
 import|;
 end_import
 
@@ -377,20 +377,6 @@ operator|.
 name|entry
 operator|.
 name|BibtexString
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|util
-operator|.
-name|Util
 import|;
 end_import
 
@@ -956,7 +942,7 @@ name|next
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Util
+name|UpdateField
 operator|.
 name|setAutomaticFields
 argument_list|(
@@ -1130,7 +1116,8 @@ comment|// have been defined. therefore, no check for null is
 comment|// required here
 name|frame
 operator|.
-name|groupSelector
+name|getGroupSelector
+argument_list|()
 operator|.
 name|addGroups
 argument_list|(
@@ -1264,7 +1251,8 @@ block|}
 block|}
 name|frame
 operator|.
-name|groupSelector
+name|getGroupSelector
+argument_list|()
 operator|.
 name|revalidateGroups
 argument_list|()

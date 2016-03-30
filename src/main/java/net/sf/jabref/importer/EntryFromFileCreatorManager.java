@@ -370,8 +370,9 @@ argument_list|()
 operator|.
 name|getExtension
 argument_list|()
-operator|==
-literal|null
+operator|.
+name|isEmpty
+argument_list|()
 operator|)
 condition|)
 block|{
