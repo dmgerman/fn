@@ -1177,7 +1177,6 @@ operator|.
 name|downloadToString
 argument_list|()
 decl_stmt|;
-comment|//save("query.html", cont);
 name|Matcher
 name|m
 init|=
@@ -1223,7 +1222,6 @@ decl_stmt|;
 name|String
 name|pText
 decl_stmt|;
-comment|//System.out.println("regionStart: "+m.start());
 name|String
 name|part
 init|=
@@ -1279,8 +1277,6 @@ operator|.
 name|find
 argument_list|()
 decl_stmt|;
-comment|//System.out.println("fs = "+fS+", fE = "+fE);
-comment|//System.out.println(titleS.end()+" : "+titleE.start());
 if|if
 condition|(
 name|fS
