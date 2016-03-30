@@ -10844,8 +10844,6 @@ argument_list|(
 name|entry
 argument_list|)
 expr_stmt|;
-comment|//if (visName != null)
-comment|//    form.setVisiblePanel(visName);
 block|}
 else|else
 block|{
@@ -10869,8 +10867,6 @@ argument_list|,
 name|entry
 argument_list|)
 expr_stmt|;
-comment|//if (visName != null)
-comment|//    form.setVisiblePanel(visName);
 name|entryEditors
 operator|.
 name|put

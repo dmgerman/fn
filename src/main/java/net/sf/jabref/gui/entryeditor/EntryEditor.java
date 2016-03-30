@@ -4331,36 +4331,6 @@ name|getName
 argument_list|()
 return|;
 block|}
-comment|/**      * Sets the panel with the given index visible.      *      * @param i an<code>int</code> value      */
-DECL|method|setVisiblePanel (int i)
-specifier|public
-name|void
-name|setVisiblePanel
-parameter_list|(
-name|int
-name|i
-parameter_list|)
-block|{
-name|tabbed
-operator|.
-name|setSelectedIndex
-argument_list|(
-name|Math
-operator|.
-name|min
-argument_list|(
-name|i
-argument_list|,
-name|tabbed
-operator|.
-name|getTabCount
-argument_list|()
-operator|-
-literal|1
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
 DECL|method|setVisiblePanel (String name)
 specifier|public
 name|void
@@ -4714,12 +4684,7 @@ name|getCiteKey
 argument_list|()
 decl_stmt|;
 name|boolean
-name|anyChanged
-init|=
-literal|false
-decl_stmt|;
-name|boolean
-name|changedType
+name|entryChanged
 init|=
 literal|false
 decl_stmt|;
@@ -4761,8 +4726,8 @@ name|duplicateWarning
 operator|=
 literal|true
 expr_stmt|;
-comment|// First, remove fields that the user have removed.
 block|}
+comment|// First, remove fields that the user has removed.
 for|for
 control|(
 name|String
@@ -4821,7 +4786,7 @@ argument_list|(
 name|field
 argument_list|)
 expr_stmt|;
-name|anyChanged
+name|entryChanged
 operator|=
 literal|true
 expr_stmt|;
@@ -4914,7 +4879,7 @@ argument_list|,
 name|newValue
 argument_list|)
 expr_stmt|;
-name|anyChanged
+name|entryChanged
 operator|=
 literal|true
 expr_stmt|;
@@ -4971,11 +4936,7 @@ name|getType
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|anyChanged
-operator|=
-literal|true
-expr_stmt|;
-name|changedType
+name|entryChanged
 operator|=
 literal|true
 expr_stmt|;
@@ -4988,7 +4949,7 @@ expr_stmt|;
 if|if
 condition|(
 operator|!
-name|anyChanged
+name|entryChanged
 condition|)
 block|{
 return|return
@@ -5048,7 +5009,7 @@ name|getText
 argument_list|()
 expr_stmt|;
 comment|// Update UI
-comment|// TODO: we need to repaint if fields that are not displayed have been added
+comment|// TODO: we need to repaint the entryeditor if fields that are not displayed have been added
 name|panel
 operator|.
 name|updateEntryEditorIfShowing
