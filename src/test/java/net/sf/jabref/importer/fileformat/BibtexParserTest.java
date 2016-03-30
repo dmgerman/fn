@@ -8651,7 +8651,7 @@ argument_list|(
 operator|new
 name|StringReader
 argument_list|(
-literal|"@comment{jabref-meta: databaseType:BibLaTeX;}"
+literal|"@comment{jabref-meta: databaseType:biblatex;}"
 argument_list|)
 argument_list|)
 decl_stmt|;
