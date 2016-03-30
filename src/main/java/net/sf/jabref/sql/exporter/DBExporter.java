@@ -941,6 +941,7 @@ argument_list|(
 literal|"');"
 argument_list|)
 expr_stmt|;
+block|}
 name|SQLUtil
 operator|.
 name|processQuery
@@ -953,7 +954,6 @@ name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 comment|/**      * Recursive method to include a tree of groups.      *      * @param cursor      The current GroupTreeNode in the GroupsTree      * @param parentID    The integer ID associated with the cursors's parent node      * @param currentID   The integer value to associate with the cursor      * @param out         The output (PrintStream or Connection) object to which the DML should be written.      * @param database_id Id of jabref database to which the group is part of      */
 DECL|method|populateEntryGroupsTable (GroupTreeNode cursor, int parentID, int currentID, Object out, final int database_id)
@@ -1283,7 +1283,7 @@ name|out
 argument_list|,
 literal|"SELECT label FROM entry_types"
 argument_list|)
-init|;                  ResultSet rs = sm.getResultSet()
+init|;                     ResultSet rs = sm.getResultSet()
 block|)
 block|{
 while|while
