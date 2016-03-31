@@ -4,7 +4,7 @@ comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is fre
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref.openoffice
+DECL|package|net.sf.jabref.logic.openoffice
 package|package
 name|net
 operator|.
@@ -12,18 +12,21 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
 name|openoffice
 package|;
 end_package
 
 begin_comment
-comment|/**  * Exception used to indicate that the plugin attempted to set a character format that is  * not defined in the current OpenOffice document.  */
+comment|/**  * Exception used to indicate that the plugin attempted to set a paragraph format that is  * not defined in the current OpenOffice document.  */
 end_comment
 
 begin_class
-DECL|class|UndefinedCharacterFormatException
+DECL|class|UndefinedParagraphFormatException
+specifier|public
 class|class
-name|UndefinedCharacterFormatException
+name|UndefinedParagraphFormatException
 extends|extends
 name|Exception
 block|{
@@ -33,9 +36,9 @@ specifier|final
 name|String
 name|formatName
 decl_stmt|;
-DECL|method|UndefinedCharacterFormatException (String formatName)
+DECL|method|UndefinedParagraphFormatException (String formatName)
 specifier|public
-name|UndefinedCharacterFormatException
+name|UndefinedParagraphFormatException
 parameter_list|(
 name|String
 name|formatName

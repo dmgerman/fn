@@ -4,13 +4,15 @@ comment|/*  * Copyright (C) 2016 Jabref-Team  *  * All programs in this director
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref.openoffice
+DECL|package|net.sf.jabref.logic.openoffice
 package|package
 name|net
 operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|logic
 operator|.
 name|openoffice
 package|;

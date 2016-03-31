@@ -276,7 +276,7 @@ parameter_list|()
 block|{
 name|super
 argument_list|(
-literal|"OpenOffice Calc"
+literal|"OpenOffice/LibreOffice Calc"
 argument_list|,
 literal|"oocalc"
 argument_list|,

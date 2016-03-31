@@ -583,7 +583,7 @@ argument_list|(
 operator|new
 name|ExportFormat
 argument_list|(
-literal|"OpenOffice CSV"
+literal|"OpenOffice/LibreOffice CSV"
 argument_list|,
 literal|"oocsv"
 argument_list|,
