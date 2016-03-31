@@ -859,7 +859,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Sync OO bibliography"
+literal|"Sync OpenOffice/LibreOffice bibliography"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1513,7 +1513,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Your OpenOffice document references the BibTeX key '%0', which could not be found in your current database."
+literal|"Your OpenOffice/LibreOffice document references the BibTeX key '%0', which could not be found in your current database."
 argument_list|,
 name|unresolvedKeys
 operator|.
@@ -1629,7 +1629,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Your OpenOffice document references the BibTeX key '%0', which could not be found in your current database."
+literal|"Your OpenOffice/LibreOffice document references the BibTeX key '%0', which could not be found in your current database."
 argument_list|,
 name|ex
 operator|.
@@ -1873,7 +1873,7 @@ name|JFrame
 operator|)
 literal|null
 argument_list|,
-literal|"OpenOffice panel"
+literal|"OpenOffice/LibreOffice panel"
 argument_list|,
 literal|false
 argument_list|)
@@ -2326,7 +2326,7 @@ condition|(
 operator|!
 name|adp
 operator|.
-name|cancelled
+name|canceled
 argument_list|()
 condition|)
 block|{
@@ -2820,7 +2820,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Could not connect to running OpenOffice."
+literal|"Could not connect to running OpenOffice/LibreOffice."
 argument_list|)
 operator|+
 literal|"\n"
@@ -2829,7 +2829,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Make sure you have installed OpenOffice with Java support."
+literal|"Make sure you have installed OpenOffice/LibreOffice with Java support."
 argument_list|)
 operator|+
 literal|"\n"
@@ -3242,7 +3242,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Path to OpenOffice directory"
+literal|"Path to OpenOffice/LibreOffice directory"
 argument_list|)
 argument_list|)
 operator|.
@@ -3292,7 +3292,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Path to OpenOffice executable"
+literal|"Path to OpenOffice/LibreOffice executable"
 argument_list|)
 argument_list|)
 operator|.
@@ -3346,7 +3346,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Path to OpenOffice library dir"
+literal|"Path to OpenOffice/LibreOffice library dir"
 argument_list|)
 argument_list|)
 operator|.
@@ -3942,9 +3942,9 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Connection to OpenOffice has been lost. "
+literal|"Connection to OpenOffice/LibreOffice has been lost. "
 operator|+
-literal|"Please make sure OpenOffice is running, and try to reconnect."
+literal|"Please make sure OpenOffice/LibreOffice is running, and try to reconnect."
 argument_list|)
 argument_list|,
 name|Localization
@@ -3983,7 +3983,7 @@ name|lang
 argument_list|(
 literal|"Your style file specifies the paragraph format '%0', "
 operator|+
-literal|"which is undefined in your current OpenOffice document."
+literal|"which is undefined in your current OpenOffice/LibreOffice document."
 argument_list|,
 name|ex
 operator|.
@@ -4033,7 +4033,7 @@ name|lang
 argument_list|(
 literal|"Your style file specifies the character format '%0', "
 operator|+
-literal|"which is undefined in your current OpenOffice document."
+literal|"which is undefined in your current OpenOffice/LibreOffice document."
 argument_list|,
 name|ex
 operator|.
@@ -4314,7 +4314,7 @@ name|getName
 parameter_list|()
 block|{
 return|return
-literal|"OpenOffice"
+literal|"OpenOffice/LibreOffice"
 return|;
 block|}
 DECL|class|OOPanel

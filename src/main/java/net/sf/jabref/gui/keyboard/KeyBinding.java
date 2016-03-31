@@ -945,7 +945,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Refresh OO"
+literal|"Refresh OpenOffice/LibreOffice"
 argument_list|)
 argument_list|,
 literal|"ctrl alt O"
