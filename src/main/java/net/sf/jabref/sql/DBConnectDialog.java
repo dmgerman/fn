@@ -437,9 +437,9 @@ operator|.
 name|lang
 argument_list|(
 literal|"Server type"
+argument_list|)
 operator|+
 literal|':'
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|lblServerHostname
@@ -451,9 +451,9 @@ operator|.
 name|lang
 argument_list|(
 literal|"Server hostname"
+argument_list|)
 operator|+
 literal|':'
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|lblDatabase

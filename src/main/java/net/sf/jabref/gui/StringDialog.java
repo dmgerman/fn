@@ -2513,15 +2513,6 @@ expr_stmt|;
 name|String
 name|msg
 init|=
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Really delete the selected"
-argument_list|)
-operator|+
-literal|' '
-operator|+
 operator|(
 name|sel
 operator|.
@@ -2529,28 +2520,29 @@ name|length
 operator|>
 literal|1
 condition|?
-name|sel
-operator|.
-name|length
-operator|+
-literal|" "
-operator|+
 name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"entries"
+literal|"Really delete the selected %0 entries?"
+argument_list|,
+name|Integer
+operator|.
+name|toString
+argument_list|(
+name|sel
+operator|.
+name|length
+argument_list|)
 argument_list|)
 else|:
 name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"entry"
+literal|"Really delete the selected entry?"
 argument_list|)
 operator|)
-operator|+
-literal|'?'
 decl_stmt|;
 name|int
 name|answer

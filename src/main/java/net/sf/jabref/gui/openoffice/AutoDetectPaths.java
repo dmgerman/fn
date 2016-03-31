@@ -974,7 +974,16 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Found more than one OpenOffice/LibreOffice executable. Please choose which one to connect to:"
+literal|"Found more than one OpenOffice/LibreOffice executable."
+argument_list|)
+operator|+
+literal|" "
+operator|+
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Please choose which one to connect to:"
 argument_list|)
 argument_list|)
 operator|.

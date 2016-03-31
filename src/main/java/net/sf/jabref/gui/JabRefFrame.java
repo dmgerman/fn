@@ -1890,14 +1890,14 @@ name|Localization
 operator|.
 name|menuTitle
 argument_list|(
-literal|"Save database as ..."
+literal|"Save database as..."
 argument_list|)
 argument_list|,
 name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Save database as ..."
+literal|"Save database as..."
 argument_list|)
 argument_list|,
 name|Globals
@@ -1944,14 +1944,14 @@ name|Localization
 operator|.
 name|menuTitle
 argument_list|(
-literal|"Save selected as ..."
+literal|"Save selected as..."
 argument_list|)
 argument_list|,
 name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Save selected as ..."
+literal|"Save selected as..."
 argument_list|)
 argument_list|)
 decl_stmt|;
