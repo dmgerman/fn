@@ -1360,7 +1360,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"The PDF contains one or several bibtex-records."
+literal|"The PDF contains one or several BibTeX-records."
 argument_list|)
 operator|+
 literal|"\n"

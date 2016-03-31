@@ -1474,7 +1474,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Append_the_selected_text_to_bibtex_key"
+literal|"Append_the_selected_text_to_BibTeX_key"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1502,7 +1502,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Override_the_bibtex_key_by_the_selected_text"
+literal|"Override_the_BibTeX_key_by_the_selected_text"
 argument_list|)
 argument_list|)
 expr_stmt|;

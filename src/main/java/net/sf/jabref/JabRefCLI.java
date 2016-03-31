@@ -1092,7 +1092,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Regenerate all keys for the entries in a bibtex file"
+literal|"Regenerate all keys for the entries in a BibTeX file"
 argument_list|)
 argument_list|)
 operator|.

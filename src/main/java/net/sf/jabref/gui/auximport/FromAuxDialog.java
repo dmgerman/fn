@@ -1287,7 +1287,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Unknown bibtex entries"
+literal|"Unknown BibTeX entries"
 argument_list|)
 operator|+
 literal|":"
