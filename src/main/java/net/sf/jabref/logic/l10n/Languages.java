@@ -173,6 +173,15 @@ name|LANGUAGES
 operator|.
 name|put
 argument_list|(
+literal|"Svenska"
+argument_list|,
+literal|"sv"
+argument_list|)
+expr_stmt|;
+name|LANGUAGES
+operator|.
+name|put
+argument_list|(
 literal|"Turkish"
 argument_list|,
 literal|"tr"
