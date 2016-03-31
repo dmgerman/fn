@@ -1151,12 +1151,7 @@ argument_list|(
 literal|"openoffice"
 argument_list|)
 argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"OpenOffice"
-argument_list|)
+literal|"OpenOffice/LibreOffice"
 argument_list|,
 name|this
 argument_list|)

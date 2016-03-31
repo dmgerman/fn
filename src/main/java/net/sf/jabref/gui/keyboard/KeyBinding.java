@@ -651,21 +651,6 @@ argument_list|,
 literal|"ctrl N"
 argument_list|)
 block|,
-DECL|enumConstant|NEW_FILE_LINK
-name|NEW_FILE_LINK
-argument_list|(
-literal|"New file link"
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"New file link"
-argument_list|)
-argument_list|,
-literal|"ctrl N"
-argument_list|)
-block|,
 DECL|enumConstant|NEW_FROM_PLAIN_TEXT
 name|NEW_FROM_PLAIN_TEXT
 argument_list|(
