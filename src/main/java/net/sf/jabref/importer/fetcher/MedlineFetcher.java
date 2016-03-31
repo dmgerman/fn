@@ -1031,7 +1031,9 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Medline import canceled"
+literal|"%0 import canceled"
+argument_list|,
+literal|"Medline"
 argument_list|)
 argument_list|)
 expr_stmt|;

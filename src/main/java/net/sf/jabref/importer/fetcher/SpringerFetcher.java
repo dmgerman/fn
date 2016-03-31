@@ -494,7 +494,9 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Search canceled"
+literal|"%0 import canceled"
+argument_list|,
+literal|"Springer"
 argument_list|)
 argument_list|)
 expr_stmt|;
