@@ -96,21 +96,6 @@ argument_list|,
 literal|"alt LEFT"
 argument_list|)
 block|,
-DECL|enumConstant|BACK_HELP_DIALOG
-name|BACK_HELP_DIALOG
-argument_list|(
-literal|"Back, help dialog"
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Back, help dialog"
-argument_list|)
-argument_list|,
-literal|"LEFT"
-argument_list|)
-block|,
 DECL|enumConstant|CLEANUP
 name|CLEANUP
 argument_list|(
@@ -531,21 +516,6 @@ argument_list|,
 literal|"alt RIGHT"
 argument_list|)
 block|,
-DECL|enumConstant|FORWARD_HELP_DIALOG
-name|FORWARD_HELP_DIALOG
-argument_list|(
-literal|"Forward, help dialog"
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Forward, help dialog"
-argument_list|)
-argument_list|,
-literal|"RIGHT"
-argument_list|)
-block|,
 DECL|enumConstant|HELP
 name|HELP
 argument_list|(
@@ -676,21 +646,6 @@ operator|.
 name|lang
 argument_list|(
 literal|"New entry"
-argument_list|)
-argument_list|,
-literal|"ctrl N"
-argument_list|)
-block|,
-DECL|enumConstant|NEW_FILE_LINK
-name|NEW_FILE_LINK
-argument_list|(
-literal|"New file link"
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"New file link"
 argument_list|)
 argument_list|,
 literal|"ctrl N"

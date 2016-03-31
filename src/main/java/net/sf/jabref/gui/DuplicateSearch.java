@@ -872,7 +872,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Duplicate pairs found"
+literal|"Duplicates found"
 argument_list|)
 operator|+
 literal|": "

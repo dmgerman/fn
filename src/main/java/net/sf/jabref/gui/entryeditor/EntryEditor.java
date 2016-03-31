@@ -7951,10 +7951,10 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Duplicate BibTeX key."
+literal|"Duplicate BibTeX key"
 argument_list|)
 operator|+
-literal|" "
+literal|". "
 operator|+
 name|Localization
 operator|.

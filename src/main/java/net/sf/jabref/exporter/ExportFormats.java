@@ -302,12 +302,7 @@ argument_list|(
 operator|new
 name|ExportFormat
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
 literal|"HTML"
-argument_list|)
 argument_list|,
 literal|"html"
 argument_list|,
@@ -350,17 +345,7 @@ argument_list|(
 operator|new
 name|ExportFormat
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"DocBook"
-argument_list|)
-operator|.
-name|concat
-argument_list|(
-literal|" 4.4"
-argument_list|)
+literal|"DocBook 4.4"
 argument_list|,
 literal|"docbook"
 argument_list|,
@@ -379,12 +364,7 @@ argument_list|(
 operator|new
 name|ExportFormat
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
 literal|"DIN 1505"
-argument_list|)
 argument_list|,
 literal|"din1505"
 argument_list|,
@@ -403,12 +383,7 @@ argument_list|(
 operator|new
 name|ExportFormat
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
 literal|"BibTeXML"
-argument_list|)
 argument_list|,
 literal|"bibtexml"
 argument_list|,
@@ -427,12 +402,7 @@ argument_list|(
 operator|new
 name|ExportFormat
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
 literal|"BibO RDF"
-argument_list|)
 argument_list|,
 literal|"bibordf"
 argument_list|,
@@ -556,12 +526,7 @@ argument_list|(
 operator|new
 name|ExportFormat
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
 literal|"ISO 690"
-argument_list|)
 argument_list|,
 literal|"iso690rtf"
 argument_list|,
@@ -580,12 +545,7 @@ argument_list|(
 operator|new
 name|ExportFormat
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
 literal|"ISO 690"
-argument_list|)
 argument_list|,
 literal|"iso690txt"
 argument_list|,
@@ -604,12 +564,7 @@ argument_list|(
 operator|new
 name|ExportFormat
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
 literal|"Endnote"
-argument_list|)
 argument_list|,
 literal|"endnote"
 argument_list|,
@@ -628,12 +583,7 @@ argument_list|(
 operator|new
 name|ExportFormat
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
 literal|"OpenOffice CSV"
-argument_list|)
 argument_list|,
 literal|"oocsv"
 argument_list|,
@@ -651,12 +601,7 @@ init|=
 operator|new
 name|ExportFormat
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
 literal|"RIS"
-argument_list|)
 argument_list|,
 literal|"ris"
 argument_list|,
@@ -690,12 +635,7 @@ argument_list|(
 operator|new
 name|ExportFormat
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
 literal|"MIS Quarterly"
-argument_list|)
 argument_list|,
 literal|"misq"
 argument_list|,

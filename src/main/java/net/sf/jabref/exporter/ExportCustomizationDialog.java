@@ -1184,7 +1184,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"File extension"
+literal|"Extension"
 argument_list|)
 return|;
 block|}
