@@ -43,9 +43,6 @@ block|,
 DECL|enumConstant|EXTERNAL
 name|EXTERNAL
 block|,
-DECL|enumConstant|BROWSE
-name|BROWSE
-block|,
 DECL|enumConstant|SET_OWNER
 name|SET_OWNER
 block|,
