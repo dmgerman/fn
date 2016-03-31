@@ -416,7 +416,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Merge entry from DOI"
+literal|"Merge entry with DOI information"
 argument_list|)
 argument_list|,
 name|JOptionPane
@@ -522,7 +522,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Merge entry from DOI"
+literal|"Merge entry with DOI information"
 argument_list|)
 argument_list|,
 name|JOptionPane
@@ -607,7 +607,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Merge from DOI"
+literal|"Merge entry with DOI information"
 argument_list|)
 argument_list|)
 expr_stmt|;

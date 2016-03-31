@@ -1826,7 +1826,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Select Directory"
+literal|"Select directory"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -3244,7 +3244,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Browse..."
+literal|"Browse"
 argument_list|)
 argument_list|)
 expr_stmt|;

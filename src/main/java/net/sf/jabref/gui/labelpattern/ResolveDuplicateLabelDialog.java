@@ -332,7 +332,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Duplicate key"
+literal|"Duplicate BibTeX key"
 argument_list|)
 operator|+
 literal|": "
@@ -399,7 +399,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Generate key"
+literal|"Generate BibTeX key"
 argument_list|)
 argument_list|,
 operator|!

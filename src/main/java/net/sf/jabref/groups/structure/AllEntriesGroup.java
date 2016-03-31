@@ -48,22 +48,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
-operator|.
-name|search
-operator|.
-name|SearchMatcher
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|model
 operator|.
 name|database
@@ -136,7 +120,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"All Entries"
+literal|"All entries"
 argument_list|)
 argument_list|,
 name|GroupHierarchyType
