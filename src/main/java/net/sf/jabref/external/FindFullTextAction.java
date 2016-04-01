@@ -98,7 +98,7 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|fetcher
+name|fulltext
 operator|.
 name|FindFullText
 import|;

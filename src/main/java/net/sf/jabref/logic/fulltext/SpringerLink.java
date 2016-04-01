@@ -4,7 +4,7 @@ comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is fre
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref.logic.fetcher
+DECL|package|net.sf.jabref.logic.fulltext
 package|package
 name|net
 operator|.
@@ -14,7 +14,7 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|fetcher
+name|fulltext
 package|;
 end_package
 
