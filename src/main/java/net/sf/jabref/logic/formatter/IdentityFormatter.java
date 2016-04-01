@@ -61,7 +61,12 @@ name|getName
 parameter_list|()
 block|{
 return|return
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Identity"
+argument_list|)
 return|;
 block|}
 annotation|@
