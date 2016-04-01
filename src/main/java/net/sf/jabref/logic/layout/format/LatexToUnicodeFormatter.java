@@ -42,6 +42,38 @@ name|jabref
 operator|.
 name|logic
 operator|.
+name|formatter
+operator|.
+name|Formatter
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
 name|util
 operator|.
 name|strings
@@ -99,12 +131,14 @@ comment|/**  * This formatter converts LaTeX character sequences their equivalen
 end_comment
 
 begin_class
-DECL|class|FormatChars
+DECL|class|LatexToUnicodeFormatter
 specifier|public
 class|class
-name|FormatChars
+name|LatexToUnicodeFormatter
 implements|implements
 name|LayoutFormatter
+implements|,
+name|Formatter
 block|{
 DECL|field|CHARS
 specifier|private
@@ -122,6 +156,35 @@ name|HTMLUnicodeConversionMaps
 operator|.
 name|LATEX_UNICODE_CONVERSION_MAP
 decl_stmt|;
+annotation|@
+name|Override
+DECL|method|getName ()
+specifier|public
+name|String
+name|getName
+parameter_list|()
+block|{
+return|return
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"LaTeX to Unicode"
+argument_list|)
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|getKey ()
+specifier|public
+name|String
+name|getKey
+parameter_list|()
+block|{
+return|return
+literal|"latex_to_unicode"
+return|;
+block|}
 annotation|@
 name|Override
 DECL|method|format (String inField)
@@ -281,7 +344,7 @@ decl_stmt|;
 name|Object
 name|result
 init|=
-name|FormatChars
+name|LatexToUnicodeFormatter
 operator|.
 name|CHARS
 operator|.
@@ -536,7 +599,7 @@ block|}
 name|Object
 name|result
 init|=
-name|FormatChars
+name|LatexToUnicodeFormatter
 operator|.
 name|CHARS
 operator|.
@@ -602,7 +665,7 @@ decl_stmt|;
 name|Object
 name|result
 init|=
-name|FormatChars
+name|LatexToUnicodeFormatter
 operator|.
 name|CHARS
 operator|.
@@ -740,7 +803,7 @@ comment|// handle common case of general latex command
 name|Object
 name|result
 init|=
-name|FormatChars
+name|LatexToUnicodeFormatter
 operator|.
 name|CHARS
 operator|.
@@ -798,7 +861,7 @@ comment|// substitute the evaluated command and swallow the brace:
 name|Object
 name|result
 init|=
-name|FormatChars
+name|LatexToUnicodeFormatter
 operator|.
 name|CHARS
 operator|.
@@ -842,7 +905,7 @@ block|{
 name|Object
 name|result
 init|=
-name|FormatChars
+name|LatexToUnicodeFormatter
 operator|.
 name|CHARS
 operator|.
@@ -937,6 +1000,23 @@ argument_list|(
 literal|"~"
 argument_list|,
 literal|"\u00A0"
+argument_list|)
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|getDescription ()
+specifier|public
+name|String
+name|getDescription
+parameter_list|()
+block|{
+return|return
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Converts LaTeX encoding to Unicode characters."
 argument_list|)
 return|;
 block|}

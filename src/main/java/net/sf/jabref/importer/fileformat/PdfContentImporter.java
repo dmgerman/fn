@@ -475,7 +475,7 @@ name|String
 name|names
 parameter_list|)
 block|{
-comment|// TODO: replace with AuthorsFormatter?!
+comment|// TODO: replace with NormalizeNamesFormatter?!
 name|String
 name|res
 decl_stmt|;

@@ -79,7 +79,12 @@ name|getName
 parameter_list|()
 block|{
 return|return
-literal|"Remove enclosing double braces"
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Remove enclosing braces"
+argument_list|)
 return|;
 block|}
 annotation|@
@@ -91,7 +96,7 @@ name|getKey
 parameter_list|()
 block|{
 return|return
-literal|"RemoveBracesFormatter"
+literal|"remove_braces"
 return|;
 block|}
 annotation|@
@@ -207,7 +212,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Removes all matching braces around the contents of %s."
+literal|"Removes braces encapsulating the complete field content."
 argument_list|)
 return|;
 block|}

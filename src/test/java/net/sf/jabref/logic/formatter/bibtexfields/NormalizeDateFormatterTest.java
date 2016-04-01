@@ -37,10 +37,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|DateFormatterTest
+DECL|class|NormalizeDateFormatterTest
 specifier|public
 class|class
-name|DateFormatterTest
+name|NormalizeDateFormatterTest
 block|{
 annotation|@
 name|Test
@@ -54,7 +54,7 @@ name|String
 name|formatted
 init|=
 operator|new
-name|DateFormatter
+name|NormalizeDateFormatter
 argument_list|()
 operator|.
 name|format
@@ -84,7 +84,7 @@ name|String
 name|formatted
 init|=
 operator|new
-name|DateFormatter
+name|NormalizeDateFormatter
 argument_list|()
 operator|.
 name|format
@@ -114,7 +114,7 @@ name|String
 name|formatted
 init|=
 operator|new
-name|DateFormatter
+name|NormalizeDateFormatter
 argument_list|()
 operator|.
 name|format
@@ -144,7 +144,7 @@ name|String
 name|formatted
 init|=
 operator|new
-name|DateFormatter
+name|NormalizeDateFormatter
 argument_list|()
 operator|.
 name|format
@@ -174,7 +174,7 @@ name|String
 name|formatted
 init|=
 operator|new
-name|DateFormatter
+name|NormalizeDateFormatter
 argument_list|()
 operator|.
 name|format
@@ -204,7 +204,7 @@ name|String
 name|formatted
 init|=
 operator|new
-name|DateFormatter
+name|NormalizeDateFormatter
 argument_list|()
 operator|.
 name|format
@@ -234,7 +234,7 @@ name|String
 name|formatted
 init|=
 operator|new
-name|DateFormatter
+name|NormalizeDateFormatter
 argument_list|()
 operator|.
 name|format
@@ -264,7 +264,7 @@ name|String
 name|formatted
 init|=
 operator|new
-name|DateFormatter
+name|NormalizeDateFormatter
 argument_list|()
 operator|.
 name|format
@@ -294,7 +294,7 @@ name|String
 name|formatted
 init|=
 operator|new
-name|DateFormatter
+name|NormalizeDateFormatter
 argument_list|()
 operator|.
 name|format
@@ -324,7 +324,7 @@ name|String
 name|formatted
 init|=
 operator|new
-name|DateFormatter
+name|NormalizeDateFormatter
 argument_list|()
 operator|.
 name|format
@@ -354,7 +354,7 @@ name|String
 name|formatted
 init|=
 operator|new
-name|DateFormatter
+name|NormalizeDateFormatter
 argument_list|()
 operator|.
 name|format
@@ -384,7 +384,7 @@ name|String
 name|formatted
 init|=
 operator|new
-name|DateFormatter
+name|NormalizeDateFormatter
 argument_list|()
 operator|.
 name|format
@@ -414,7 +414,7 @@ name|String
 name|formatted
 init|=
 operator|new
-name|DateFormatter
+name|NormalizeDateFormatter
 argument_list|()
 operator|.
 name|format
@@ -444,7 +444,7 @@ name|String
 name|formatted
 init|=
 operator|new
-name|DateFormatter
+name|NormalizeDateFormatter
 argument_list|()
 operator|.
 name|format
@@ -474,7 +474,7 @@ name|String
 name|formatted
 init|=
 operator|new
-name|DateFormatter
+name|NormalizeDateFormatter
 argument_list|()
 operator|.
 name|format
@@ -504,7 +504,7 @@ name|String
 name|formatted
 init|=
 operator|new
-name|DateFormatter
+name|NormalizeDateFormatter
 argument_list|()
 operator|.
 name|format
@@ -534,7 +534,7 @@ name|String
 name|formatted
 init|=
 operator|new
-name|DateFormatter
+name|NormalizeDateFormatter
 argument_list|()
 operator|.
 name|format
@@ -564,7 +564,7 @@ name|String
 name|formatted
 init|=
 operator|new
-name|DateFormatter
+name|NormalizeDateFormatter
 argument_list|()
 operator|.
 name|format
@@ -594,7 +594,7 @@ name|String
 name|formatted
 init|=
 operator|new
-name|DateFormatter
+name|NormalizeDateFormatter
 argument_list|()
 operator|.
 name|format
@@ -624,7 +624,7 @@ name|String
 name|formatted
 init|=
 operator|new
-name|DateFormatter
+name|NormalizeDateFormatter
 argument_list|()
 operator|.
 name|format
@@ -654,7 +654,7 @@ name|String
 name|formatted
 init|=
 operator|new
-name|DateFormatter
+name|NormalizeDateFormatter
 argument_list|()
 operator|.
 name|format
@@ -684,7 +684,7 @@ name|String
 name|formatted
 init|=
 operator|new
-name|DateFormatter
+name|NormalizeDateFormatter
 argument_list|()
 operator|.
 name|format
@@ -714,7 +714,7 @@ name|String
 name|formatted
 init|=
 operator|new
-name|DateFormatter
+name|NormalizeDateFormatter
 argument_list|()
 operator|.
 name|format

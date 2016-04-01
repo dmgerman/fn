@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|net.sf.jabref.logic.formatter.casechanger
+DECL|package|net.sf.jabref.logic.formatter.bibtexfields
 package|package
 name|net
 operator|.
@@ -12,7 +12,7 @@ name|logic
 operator|.
 name|formatter
 operator|.
-name|casechanger
+name|bibtexfields
 package|;
 end_package
 
@@ -39,10 +39,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|CaseKeeperTest
+DECL|class|UnitsToLatexFormatterTest
 specifier|public
 class|class
-name|CaseKeeperTest
+name|UnitsToLatexFormatterTest
 block|{
 annotation|@
 name|Test
@@ -52,58 +52,34 @@ name|void
 name|test
 parameter_list|()
 block|{
-name|CaseKeeper
-name|ck
+name|UnitsToLatexFormatter
+name|uf
 init|=
 operator|new
-name|CaseKeeper
+name|UnitsToLatexFormatter
 argument_list|()
 decl_stmt|;
 name|assertEquals
 argument_list|(
-literal|"{VLSI}"
+literal|"1~{A}"
 argument_list|,
-name|ck
+name|uf
 operator|.
 name|format
 argument_list|(
-literal|"VLSI"
+literal|"1 A"
 argument_list|)
 argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"{VLSI}"
+literal|"1\\mbox{-}{mA}"
 argument_list|,
-name|ck
+name|uf
 operator|.
 name|format
 argument_list|(
-literal|"{VLSI}"
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"VLsI"
-argument_list|,
-name|ck
-operator|.
-name|format
-argument_list|(
-literal|"VLsI"
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"{VLSI} {VLSI}"
-argument_list|,
-name|ck
-operator|.
-name|format
-argument_list|(
-literal|"VLSI {VLSI}"
+literal|"1-mA"
 argument_list|)
 argument_list|)
 expr_stmt|;

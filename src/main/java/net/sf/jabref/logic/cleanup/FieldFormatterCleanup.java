@@ -493,7 +493,7 @@ literal|": "
 operator|+
 name|formatter
 operator|.
-name|getKey
+name|getName
 argument_list|()
 return|;
 block|}

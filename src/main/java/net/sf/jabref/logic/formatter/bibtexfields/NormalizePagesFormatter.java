@@ -87,10 +87,10 @@ comment|/**  * This class includes sensible defaults for consistent formatting o
 end_comment
 
 begin_class
-DECL|class|PageNumbersFormatter
+DECL|class|NormalizePagesFormatter
 specifier|public
 class|class
-name|PageNumbersFormatter
+name|NormalizePagesFormatter
 implements|implements
 name|Formatter
 block|{
@@ -135,7 +135,12 @@ name|getName
 parameter_list|()
 block|{
 return|return
-literal|"Page numbers"
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Normalize page numbers"
+argument_list|)
 return|;
 block|}
 annotation|@
@@ -147,7 +152,7 @@ name|getKey
 parameter_list|()
 block|{
 return|return
-literal|"PageNumbersFormatter"
+literal|"normalize_page_numbers"
 return|;
 block|}
 comment|/**      * Format page numbers, separated either by commas or double-hyphens.      * Converts the range number format of the<code>pages</code> field to page_number--page_number.      * Removes all literals except [0-9,-+].      * Keeps the existing String if the resulting field does not match the expected Regex.      *      *<example>      *     1-2 -> 1--2      *     1,2,3 -> 1,2,3      *     {1}-{2} -> 1--2      *     43+ -> 43+      *     Invalid -> Invalid      *</example>      */
@@ -251,7 +256,38 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Ensures that pages numbers in %s are of the form num--num."
+literal|"Normalize pages to BibTeX standard."
+argument_list|)
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|hashCode ()
+specifier|public
+name|int
+name|hashCode
+parameter_list|()
+block|{
+return|return
+name|defaultHashCode
+argument_list|()
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|equals (Object obj)
+specifier|public
+name|boolean
+name|equals
+parameter_list|(
+name|Object
+name|obj
+parameter_list|)
+block|{
+return|return
+name|defaultEquals
+argument_list|(
+name|obj
 argument_list|)
 return|;
 block|}

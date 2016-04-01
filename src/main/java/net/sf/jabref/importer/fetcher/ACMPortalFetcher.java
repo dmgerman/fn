@@ -114,7 +114,7 @@ name|formatter
 operator|.
 name|bibtexfields
 operator|.
-name|HTMLToLatexFormatter
+name|HtmlToLatexFormatter
 import|;
 end_import
 
@@ -132,7 +132,7 @@ name|formatter
 operator|.
 name|bibtexfields
 operator|.
-name|UnitFormatter
+name|UnitsToLatexFormatter
 import|;
 end_import
 
@@ -150,7 +150,7 @@ name|formatter
 operator|.
 name|casechanger
 operator|.
-name|CaseKeeper
+name|ProtectTermsFormatter
 import|;
 end_import
 
@@ -430,34 +430,34 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|field|htmlConverter
+DECL|field|htmlToLatexFormatter
 specifier|private
 specifier|final
-name|HTMLToLatexFormatter
-name|htmlConverter
+name|HtmlToLatexFormatter
+name|htmlToLatexFormatter
 init|=
 operator|new
-name|HTMLToLatexFormatter
+name|HtmlToLatexFormatter
 argument_list|()
 decl_stmt|;
-DECL|field|caseKeeper
+DECL|field|protectTermsFormatter
 specifier|private
 specifier|final
-name|CaseKeeper
-name|caseKeeper
+name|ProtectTermsFormatter
+name|protectTermsFormatter
 init|=
 operator|new
-name|CaseKeeper
+name|ProtectTermsFormatter
 argument_list|()
 decl_stmt|;
-DECL|field|unitFormatter
+DECL|field|unitsToLatexFormatter
 specifier|private
 specifier|final
-name|UnitFormatter
-name|unitFormatter
+name|UnitsToLatexFormatter
+name|unitsToLatexFormatter
 init|=
 operator|new
-name|UnitFormatter
+name|UnitsToLatexFormatter
 argument_list|()
 decl_stmt|;
 DECL|field|terms
@@ -1372,7 +1372,7 @@ condition|)
 block|{
 name|title
 operator|=
-name|unitFormatter
+name|unitsToLatexFormatter
 operator|.
 name|format
 argument_list|(
@@ -1397,7 +1397,7 @@ condition|)
 block|{
 name|title
 operator|=
-name|caseKeeper
+name|protectTermsFormatter
 operator|.
 name|format
 argument_list|(
@@ -2430,7 +2430,7 @@ name|text
 parameter_list|)
 block|{
 return|return
-name|htmlConverter
+name|htmlToLatexFormatter
 operator|.
 name|format
 argument_list|(

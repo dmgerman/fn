@@ -59,10 +59,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|FormatCharsTest
+DECL|class|LatexToUnicodeFormatterTest
 specifier|public
 class|class
-name|FormatCharsTest
+name|LatexToUnicodeFormatterTest
 block|{
 annotation|@
 name|Test
@@ -77,7 +77,7 @@ argument_list|(
 literal|"aaa"
 argument_list|,
 operator|new
-name|FormatChars
+name|LatexToUnicodeFormatter
 argument_list|()
 operator|.
 name|format
@@ -100,7 +100,7 @@ argument_list|(
 literal|"Ã¤"
 argument_list|,
 operator|new
-name|FormatChars
+name|LatexToUnicodeFormatter
 argument_list|()
 operator|.
 name|format
@@ -114,7 +114,7 @@ argument_list|(
 literal|"Ã"
 argument_list|,
 operator|new
-name|FormatChars
+name|LatexToUnicodeFormatter
 argument_list|()
 operator|.
 name|format
@@ -137,7 +137,7 @@ argument_list|(
 literal|"-"
 argument_list|,
 operator|new
-name|FormatChars
+name|LatexToUnicodeFormatter
 argument_list|()
 operator|.
 name|format
@@ -159,7 +159,7 @@ name|LayoutFormatter
 name|layout
 init|=
 operator|new
-name|FormatChars
+name|LatexToUnicodeFormatter
 argument_list|()
 decl_stmt|;
 name|assertEquals

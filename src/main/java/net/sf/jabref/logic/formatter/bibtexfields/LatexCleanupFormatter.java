@@ -49,10 +49,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|LatexFormatter
+DECL|class|LatexCleanupFormatter
 specifier|public
 class|class
-name|LatexFormatter
+name|LatexCleanupFormatter
 implements|implements
 name|Formatter
 block|{
@@ -65,7 +65,12 @@ name|getName
 parameter_list|()
 block|{
 return|return
-literal|"Latex"
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"LaTeX cleanup"
+argument_list|)
 return|;
 block|}
 annotation|@
@@ -77,7 +82,7 @@ name|getKey
 parameter_list|()
 block|{
 return|return
-literal|"LatexFormatter"
+literal|"latex_cleanup"
 return|;
 block|}
 annotation|@
@@ -228,7 +233,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Cleans latex code in %s."
+literal|"Cleans up LaTeX code."
 argument_list|)
 return|;
 block|}
