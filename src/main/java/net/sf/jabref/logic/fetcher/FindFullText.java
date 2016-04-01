@@ -216,6 +216,15 @@ name|ArXiv
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|finders
+operator|.
+name|add
+argument_list|(
+operator|new
+name|IEEE
+argument_list|()
+argument_list|)
+expr_stmt|;
 comment|// Meta search
 name|finders
 operator|.
