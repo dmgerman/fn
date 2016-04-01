@@ -634,7 +634,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"No entry found for IBSN %0 at www.ebook.de"
+literal|"No entry found for ISBN %0 at www.ebook.de"
 argument_list|,
 name|query
 argument_list|)
