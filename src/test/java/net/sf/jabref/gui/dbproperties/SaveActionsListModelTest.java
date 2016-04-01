@@ -58,7 +58,7 @@ name|formatter
 operator|.
 name|bibtexfields
 operator|.
-name|EraseFormatter
+name|ClearFormatter
 import|;
 end_import
 
@@ -338,7 +338,7 @@ argument_list|(
 literal|"test"
 argument_list|,
 operator|new
-name|EraseFormatter
+name|ClearFormatter
 argument_list|()
 argument_list|)
 argument_list|)

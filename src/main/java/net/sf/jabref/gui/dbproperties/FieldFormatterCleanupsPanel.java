@@ -1007,7 +1007,7 @@ name|formatter
 lambda|->
 name|formatter
 operator|.
-name|getKey
+name|getName
 argument_list|()
 argument_list|)
 operator|.
@@ -1497,7 +1497,7 @@ init|=
 literal|null
 decl_stmt|;
 name|String
-name|selectedFormatterKey
+name|selectedFormatterName
 init|=
 name|formattersCombobox
 operator|.
@@ -1522,12 +1522,12 @@ if|if
 condition|(
 name|formatter
 operator|.
-name|getKey
+name|getName
 argument_list|()
 operator|.
 name|equals
 argument_list|(
-name|selectedFormatterKey
+name|selectedFormatterName
 argument_list|)
 condition|)
 block|{

@@ -30,9 +30,9 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|l10n
+name|formatter
 operator|.
-name|Localization
+name|BibtexFieldFormatters
 import|;
 end_import
 
@@ -46,11 +46,25 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|util
+name|formatter
 operator|.
-name|strings
+name|Formatter
+import|;
+end_import
+
+begin_import
+import|import
+name|net
 operator|.
-name|Converters
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
 import|;
 end_import
 
@@ -119,15 +133,12 @@ expr_stmt|;
 comment|// create menu items, one for each case changer
 for|for
 control|(
-specifier|final
-name|Converters
-operator|.
-name|Converter
+name|Formatter
 name|converter
 range|:
-name|Converters
+name|BibtexFieldFormatters
 operator|.
-name|ALL
+name|CONVERTERS
 control|)
 block|{
 name|JMenuItem
@@ -154,7 +165,7 @@ name|setText
 argument_list|(
 name|converter
 operator|.
-name|convert
+name|format
 argument_list|(
 name|opener
 operator|.

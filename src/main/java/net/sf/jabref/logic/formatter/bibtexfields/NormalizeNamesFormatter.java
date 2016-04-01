@@ -77,14 +77,14 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Class for normalizing author lists to BibTeX format.  */
+comment|/**  * Formatter normalizing a list of person names to the BibTeX format.  */
 end_comment
 
 begin_class
-DECL|class|AuthorsFormatter
+DECL|class|NormalizeNamesFormatter
 specifier|public
 class|class
-name|AuthorsFormatter
+name|NormalizeNamesFormatter
 implements|implements
 name|Formatter
 block|{
@@ -167,7 +167,12 @@ name|getName
 parameter_list|()
 block|{
 return|return
-literal|"BibTex authors format"
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Normalize names of persons"
+argument_list|)
 return|;
 block|}
 annotation|@
@@ -179,10 +184,9 @@ name|getKey
 parameter_list|()
 block|{
 return|return
-literal|"AuthorsFormatter"
+literal|"normalize_names"
 return|;
 block|}
-comment|/**      *      */
 annotation|@
 name|Override
 DECL|method|format (String value)
@@ -610,7 +614,7 @@ block|{
 name|String
 name|norm
 init|=
-name|AuthorsFormatter
+name|NormalizeNamesFormatter
 operator|.
 name|normalizeName
 argument_list|(
@@ -669,7 +673,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Normalizes lists of persons in %s to the BibTeX standard."
+literal|"Normalizes lists of persons to the BibTeX standard."
 argument_list|)
 return|;
 block|}
@@ -691,7 +695,7 @@ decl_stmt|;
 name|Matcher
 name|matcher
 init|=
-name|AuthorsFormatter
+name|NormalizeNamesFormatter
 operator|.
 name|LAST_F_F
 operator|.
@@ -755,7 +759,7 @@ return|;
 block|}
 name|matcher
 operator|=
-name|AuthorsFormatter
+name|NormalizeNamesFormatter
 operator|.
 name|LAST_FDOT_F
 operator|.
@@ -826,7 +830,7 @@ return|;
 block|}
 name|matcher
 operator|=
-name|AuthorsFormatter
+name|NormalizeNamesFormatter
 operator|.
 name|F_F_LAST
 operator|.
@@ -890,7 +894,7 @@ return|;
 block|}
 name|matcher
 operator|=
-name|AuthorsFormatter
+name|NormalizeNamesFormatter
 operator|.
 name|FDOT_F_LAST
 operator|.
@@ -1162,7 +1166,7 @@ comment|// Only a single part. Check if it looks like a name or initials:
 name|Matcher
 name|nameMatcher
 init|=
-name|AuthorsFormatter
+name|NormalizeNamesFormatter
 operator|.
 name|SINGLE_NAME
 operator|.
@@ -1256,7 +1260,7 @@ control|)
 block|{
 name|matcher
 operator|=
-name|AuthorsFormatter
+name|NormalizeNamesFormatter
 operator|.
 name|SINGLE_NAME
 operator|.

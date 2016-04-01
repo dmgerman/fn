@@ -183,10 +183,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|HTMLToLatexFormatter
+DECL|class|HtmlToLatexFormatter
 specifier|public
 class|class
-name|HTMLToLatexFormatter
+name|HtmlToLatexFormatter
 implements|implements
 name|LayoutFormatter
 implements|,
@@ -203,7 +203,7 @@ name|LogFactory
 operator|.
 name|getLog
 argument_list|(
-name|HTMLToLatexFormatter
+name|HtmlToLatexFormatter
 operator|.
 name|class
 argument_list|)
@@ -1003,7 +1003,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Changes HTML expressions in %s to their LaTeX equivalent."
+literal|"Converts HTML code to LaTeX code."
 argument_list|)
 return|;
 block|}
@@ -1073,7 +1073,12 @@ name|getName
 parameter_list|()
 block|{
 return|return
-literal|"HTMLConverter"
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"HTML to LaTeX"
+argument_list|)
 return|;
 block|}
 annotation|@
@@ -1085,7 +1090,7 @@ name|getKey
 parameter_list|()
 block|{
 return|return
-literal|"HtmlConverter"
+literal|"html_to_latex"
 return|;
 block|}
 block|}

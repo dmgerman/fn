@@ -420,7 +420,7 @@ name|formatter
 operator|.
 name|casechanger
 operator|.
-name|CaseKeeper
+name|ProtectTermsFormatter
 import|;
 end_import
 
@@ -3027,7 +3027,7 @@ literal|"pages"
 argument_list|,
 name|BibtexFieldFormatters
 operator|.
-name|PAGE_NUMBERS
+name|NORMALIZE_PAGES
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -3042,7 +3042,7 @@ literal|"date"
 argument_list|,
 name|BibtexFieldFormatters
 operator|.
-name|DATE
+name|NORMALIZE_DATE
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -3056,7 +3056,7 @@ argument_list|(
 literal|"month"
 argument_list|,
 operator|new
-name|MonthFormatter
+name|NormalizeMonthFormatter
 argument_list|()
 argument_list|)
 argument_list|)
@@ -3071,7 +3071,7 @@ argument_list|(
 literal|"title"
 argument_list|,
 operator|new
-name|CaseKeeper
+name|ProtectTermsFormatter
 argument_list|()
 argument_list|)
 argument_list|)
@@ -3086,7 +3086,7 @@ argument_list|(
 literal|"title"
 argument_list|,
 operator|new
-name|UnitFormatter
+name|UnitsToLatexFormatter
 argument_list|()
 argument_list|)
 argument_list|)
@@ -3101,7 +3101,7 @@ argument_list|(
 literal|"title"
 argument_list|,
 operator|new
-name|LatexFormatter
+name|LatexCleanupFormatter
 argument_list|()
 argument_list|)
 argument_list|)
@@ -3116,7 +3116,7 @@ argument_list|(
 literal|"title"
 argument_list|,
 operator|new
-name|HTMLToLatexFormatter
+name|HtmlToLatexFormatter
 argument_list|()
 argument_list|)
 argument_list|)

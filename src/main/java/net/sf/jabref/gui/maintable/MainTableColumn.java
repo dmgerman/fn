@@ -72,7 +72,7 @@ name|layout
 operator|.
 name|format
 operator|.
-name|FormatChars
+name|LatexToUnicodeFormatter
 import|;
 end_import
 
@@ -196,7 +196,7 @@ name|LayoutFormatter
 name|toUnicode
 init|=
 operator|new
-name|FormatChars
+name|LatexToUnicodeFormatter
 argument_list|()
 decl_stmt|;
 DECL|method|MainTableColumn (String columnName)

@@ -1332,7 +1332,7 @@ name|JLabel
 argument_list|(
 name|CaseChangers
 operator|.
-name|UPPER_FIRST
+name|TO_SENTENCE_CASE
 operator|.
 name|format
 argument_list|(

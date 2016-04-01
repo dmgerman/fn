@@ -422,7 +422,7 @@ name|FormatterCleanup
 argument_list|(
 name|BibtexFieldFormatters
 operator|.
-name|SUPERSCRIPTS
+name|ORDINALS_TO_LATEX_SUPERSCRIPT
 argument_list|)
 argument_list|)
 expr_stmt|;

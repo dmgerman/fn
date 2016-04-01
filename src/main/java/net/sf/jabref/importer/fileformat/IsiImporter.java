@@ -608,7 +608,7 @@ name|s
 operator|=
 name|CaseChangers
 operator|.
-name|TITLE
+name|TO_TITLE_CASE
 operator|.
 name|format
 argument_list|(

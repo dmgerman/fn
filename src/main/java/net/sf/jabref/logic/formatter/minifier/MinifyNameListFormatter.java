@@ -63,10 +63,10 @@ comment|/**  * Replaces three or more authors with and others  */
 end_comment
 
 begin_class
-DECL|class|AuthorsMinifier
+DECL|class|MinifyNameListFormatter
 specifier|public
 class|class
-name|AuthorsMinifier
+name|MinifyNameListFormatter
 implements|implements
 name|Formatter
 block|{
@@ -79,7 +79,12 @@ name|getName
 parameter_list|()
 block|{
 return|return
-literal|"Minify authors"
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Minify list of person names"
+argument_list|)
 return|;
 block|}
 annotation|@
@@ -91,7 +96,7 @@ name|getKey
 parameter_list|()
 block|{
 return|return
-literal|"MinifyAuthors"
+literal|"minify_name_list"
 return|;
 block|}
 comment|/**      * Replaces three or more authors with and others.      *      *<example>      *     Stefan Kolb -> Stefan Kolb      *     Stefan Kolb and Simon Harrer -> Stefan Kolb and Simon Harrer      *     Stefan Kolb and Simon Harrer and JÃ¶rg Lenhard -> Stefan Kolb and others      *</example>      */
@@ -146,7 +151,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Replaces three or more authors with \"and others\"."
+literal|"Shortens lists of persons if there are more than 2 persons to \"et al.\"."
 argument_list|)
 return|;
 block|}

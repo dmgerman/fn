@@ -91,10 +91,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|UnitFormatter
+DECL|class|UnitsToLatexFormatter
 specifier|public
 class|class
-name|UnitFormatter
+name|UnitsToLatexFormatter
 implements|implements
 name|Formatter
 block|{
@@ -322,7 +322,7 @@ block|{
 name|int
 name|uLLength
 init|=
-name|UnitFormatter
+name|UnitsToLatexFormatter
 operator|.
 name|UNIT_LIST
 operator|.
@@ -331,7 +331,7 @@ decl_stmt|;
 name|int
 name|uPLLength
 init|=
-name|UnitFormatter
+name|UnitsToLatexFormatter
 operator|.
 name|UNIT_PREFIX_LIST
 operator|.
@@ -382,7 +382,7 @@ name|j
 operator|++
 control|)
 block|{
-name|UnitFormatter
+name|UnitsToLatexFormatter
 operator|.
 name|UNIT_COMBINATIONS
 index|[
@@ -395,14 +395,14 @@ operator|+
 name|j
 index|]
 operator|=
-name|UnitFormatter
+name|UnitsToLatexFormatter
 operator|.
 name|UNIT_PREFIX_LIST
 index|[
 name|j
 index|]
 operator|+
-name|UnitFormatter
+name|UnitsToLatexFormatter
 operator|.
 name|UNIT_LIST
 index|[
@@ -437,7 +437,7 @@ name|StringLengthComparator
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// LengthComparator from CaseKeeper.java
+comment|// LengthComparator from ProtectTermsFormatter.java
 comment|// Replace the hyphen in 12-bit etc with a non-breaking hyphen, will also avoid bad casing of 12-Bit
 name|String
 name|result
@@ -561,7 +561,7 @@ name|format
 argument_list|(
 name|text
 argument_list|,
-name|UnitFormatter
+name|UnitsToLatexFormatter
 operator|.
 name|UNIT_COMBINATIONS
 argument_list|)
@@ -597,7 +597,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"UnitFormatter"
+literal|"Units to LaTeX"
 argument_list|)
 return|;
 block|}
@@ -610,7 +610,7 @@ name|getKey
 parameter_list|()
 block|{
 return|return
-literal|"UnitFormatter"
+literal|"units_to_latex"
 return|;
 block|}
 block|}

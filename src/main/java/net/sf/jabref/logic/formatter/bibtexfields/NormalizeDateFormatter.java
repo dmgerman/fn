@@ -99,10 +99,10 @@ comment|/**  * This class transforms date to the format yyyy-mm-dd or yyyy-mm.. 
 end_comment
 
 begin_class
-DECL|class|DateFormatter
+DECL|class|NormalizeDateFormatter
 specifier|public
 class|class
-name|DateFormatter
+name|NormalizeDateFormatter
 implements|implements
 name|Formatter
 block|{
@@ -115,7 +115,12 @@ name|getName
 parameter_list|()
 block|{
 return|return
-literal|"Date"
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Normalize date"
+argument_list|)
 return|;
 block|}
 annotation|@
@@ -127,7 +132,7 @@ name|getKey
 parameter_list|()
 block|{
 return|return
-literal|"DateFormatter"
+literal|"normalize_date"
 return|;
 block|}
 comment|/**      * Format date string to yyyy-mm-dd or yyyy-mm. Keeps the existing String if it does not match one of the following      * formats:      *  "M/y" (covers 9/15, 9/2015, and 09/2015)      *  "MMMM (dd), yyyy" (covers September 1, 2015 and September, 2015)      *  "yyyy-MM-dd" (covers 2009-1-15)      *  "d.M.uuuu" (covers 15.1.2015)      */
@@ -201,7 +206,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Normalizes dates in %s to the BibLaTeX standard yyyy-mm-dd or yyyy-mm."
+literal|"Normalizes the date to ISO date format."
 argument_list|)
 return|;
 block|}
@@ -281,6 +286,37 @@ name|Optional
 operator|.
 name|empty
 argument_list|()
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|hashCode ()
+specifier|public
+name|int
+name|hashCode
+parameter_list|()
+block|{
+return|return
+name|defaultHashCode
+argument_list|()
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|equals (Object obj)
+specifier|public
+name|boolean
+name|equals
+parameter_list|(
+name|Object
+name|obj
+parameter_list|)
+block|{
+return|return
+name|defaultEquals
+argument_list|(
+name|obj
+argument_list|)
 return|;
 block|}
 block|}

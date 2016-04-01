@@ -200,7 +200,7 @@ name|formatter
 operator|.
 name|casechanger
 operator|.
-name|LowerCaseChanger
+name|LowerCaseFormatter
 import|;
 end_import
 
@@ -8229,7 +8229,7 @@ literal|"}\n"
 operator|+
 literal|"\n"
 operator|+
-literal|"@comment{jabref-meta: saveActions:enabled;title[LowerCaseChanger]}"
+literal|"@comment{jabref-meta: saveActions:enabled;title[lower_case]}"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -8273,7 +8273,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"title[LowerCaseChanger]"
+literal|"title[lower_case]"
 argument_list|,
 name|saveActions
 operator|.
@@ -8303,7 +8303,7 @@ argument_list|(
 operator|new
 name|StringReader
 argument_list|(
-literal|"@comment{jabref-meta: saveActions:enabled;title[LowerCaseChanger]}"
+literal|"@comment{jabref-meta: saveActions:enabled;title[lower_case]}"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -8346,7 +8346,7 @@ argument_list|(
 literal|"title"
 argument_list|,
 operator|new
-name|LowerCaseChanger
+name|LowerCaseFormatter
 argument_list|()
 argument_list|)
 argument_list|)
