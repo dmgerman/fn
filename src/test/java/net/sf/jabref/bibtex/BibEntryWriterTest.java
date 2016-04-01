@@ -415,7 +415,7 @@ name|Globals
 operator|.
 name|NEWLINE
 operator|+
-literal|"  note =    {some note}"
+literal|"  note =    {some note},"
 operator|+
 name|Globals
 operator|.
@@ -858,7 +858,7 @@ name|Globals
 operator|.
 name|NEWLINE
 operator|+
-literal|"  Number                   = {1}"
+literal|"  Number                   = {1},"
 operator|+
 name|Globals
 operator|.
@@ -1044,7 +1044,7 @@ name|Globals
 operator|.
 name|NEWLINE
 operator|+
-literal|"  note =    {some note}"
+literal|"  note =    {some note},"
 operator|+
 name|Globals
 operator|.
@@ -1113,7 +1113,7 @@ name|Globals
 operator|.
 name|NEWLINE
 operator|+
-literal|"  HowPublished             = {asdf}"
+literal|"  HowPublished             = {asdf},"
 operator|+
 name|Globals
 operator|.
@@ -1305,7 +1305,7 @@ name|Globals
 operator|.
 name|NEWLINE
 operator|+
-literal|"  howpublished = {asdf}"
+literal|"  howpublished = {asdf},"
 operator|+
 name|Globals
 operator|.
@@ -1993,7 +1993,7 @@ name|Globals
 operator|.
 name|NEWLINE
 operator|+
-literal|"  note =    {some note}"
+literal|"  note =    {some note},"
 operator|+
 name|Globals
 operator|.
@@ -2119,7 +2119,7 @@ name|Globals
 operator|.
 name|NEWLINE
 operator|+
-literal|"  howpublished = {asdf}"
+literal|"  howpublished = {asdf},"
 operator|+
 name|Globals
 operator|.
@@ -2220,7 +2220,7 @@ name|Globals
 operator|.
 name|NEWLINE
 operator|+
-literal|"  note =   {some note}"
+literal|"  note =   {some note},"
 operator|+
 name|Globals
 operator|.
@@ -2311,7 +2311,7 @@ name|Globals
 operator|.
 name|NEWLINE
 operator|+
-literal|"  note = {some note}"
+literal|"  note = {some note},"
 operator|+
 name|Globals
 operator|.
