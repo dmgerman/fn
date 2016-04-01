@@ -91,10 +91,10 @@ comment|/**  * This class transforms ordinal numbers into LaTex superscripts.  *
 end_comment
 
 begin_class
-DECL|class|SuperscriptFormatter
+DECL|class|OrdinalsToSuperscriptFormatter
 specifier|public
 class|class
-name|SuperscriptFormatter
+name|OrdinalsToSuperscriptFormatter
 implements|implements
 name|Formatter
 block|{
@@ -139,7 +139,12 @@ name|getName
 parameter_list|()
 block|{
 return|return
-literal|"Superscripts"
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Ordinals to LaTeX superscript"
+argument_list|)
 return|;
 block|}
 annotation|@
@@ -151,7 +156,7 @@ name|getKey
 parameter_list|()
 block|{
 return|return
-literal|"SuperscriptFormatter"
+literal|"ordinals_to_superscript"
 return|;
 block|}
 comment|/**      * Converts ordinal numbers to superscripts, e.g. 1st, 2nd or 3rd.      * Will replace ordinal numbers even if they are semantically wrong, e.g. 21rd      *      *<example>      * 1st Conf. Cloud Computing -> 1\textsuperscript{st} Conf. Cloud Computing      *</example>      */
@@ -220,7 +225,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Transforms ordinal numbers in %s into LaTex superscripts."
+literal|"Converts ordinals to LaTeX superscripts."
 argument_list|)
 return|;
 block|}

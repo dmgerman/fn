@@ -17,6 +17,16 @@ package|;
 end_package
 
 begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Test
+import|;
+end_import
+
+begin_import
 import|import static
 name|org
 operator|.
@@ -28,82 +38,54 @@ name|*
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|Test
-import|;
-end_import
-
 begin_class
-DECL|class|LatexFormatterTest
+DECL|class|UnicodeToLatexFormatterTest
 specifier|public
 class|class
-name|LatexFormatterTest
+name|UnicodeToLatexFormatterTest
 block|{
 annotation|@
 name|Test
-DECL|method|test ()
+DECL|method|formatWithoutUnicodeCharactersReturnsSameString ()
 specifier|public
 name|void
-name|test
+name|formatWithoutUnicodeCharactersReturnsSameString
 parameter_list|()
 block|{
-name|LatexFormatter
-name|lf
-init|=
+name|assertEquals
+argument_list|(
+literal|"abc"
+argument_list|,
 operator|new
-name|LatexFormatter
+name|UnicodeToLatexFormatter
 argument_list|()
-decl_stmt|;
-name|assertEquals
-argument_list|(
-literal|"$\\alpha\\beta$"
-argument_list|,
-name|lf
 operator|.
 name|format
 argument_list|(
-literal|"$\\alpha$$\\beta$"
+literal|"abc"
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|formatMultipleUnicodeCharacters ()
+specifier|public
+name|void
+name|formatMultipleUnicodeCharacters
+parameter_list|()
+block|{
 name|assertEquals
 argument_list|(
-literal|"{VLSI DSP}"
+literal|"{{\\aa}}{\\\"{a}}{\\\"{o}}"
 argument_list|,
-name|lf
+operator|new
+name|UnicodeToLatexFormatter
+argument_list|()
 operator|.
 name|format
 argument_list|(
-literal|"{VLSI} {DSP}"
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"\\textbf{VLSI} {DSP}"
-argument_list|,
-name|lf
-operator|.
-name|format
-argument_list|(
-literal|"\\textbf{VLSI} {DSP}"
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"A ${\\Delta\\Sigma}$ modulator for {FPGA DSP}"
-argument_list|,
-name|lf
-operator|.
-name|format
-argument_list|(
-literal|"A ${\\Delta}$${\\Sigma}$ modulator for {FPGA} {DSP}"
+literal|"\u00E5\u00E4\u00F6"
 argument_list|)
 argument_list|)
 expr_stmt|;

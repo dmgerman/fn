@@ -479,7 +479,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Converts unicode characters in %s to their LaTeX equivalent."
+literal|"Converts Unicode characters to LaTeX encoding."
 argument_list|)
 return|;
 block|}
@@ -492,7 +492,12 @@ name|getName
 parameter_list|()
 block|{
 return|return
-literal|"UnicodeConverter"
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Unicode to LaTeX"
+argument_list|)
 return|;
 block|}
 annotation|@
@@ -504,7 +509,7 @@ name|getKey
 parameter_list|()
 block|{
 return|return
-literal|"UnicodeConverter"
+literal|"unicode_to_latex"
 return|;
 block|}
 block|}

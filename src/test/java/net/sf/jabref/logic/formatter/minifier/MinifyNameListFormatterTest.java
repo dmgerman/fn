@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|net.sf.jabref.logic.formatter
+DECL|package|net.sf.jabref.logic.formatter.minifier
 package|package
 name|net
 operator|.
@@ -11,26 +11,10 @@ operator|.
 name|logic
 operator|.
 name|formatter
+operator|.
+name|minifier
 package|;
 end_package
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
-name|formatter
-operator|.
-name|bibtexfields
-operator|.
-name|SuperscriptFormatter
-import|;
-end_import
 
 begin_import
 import|import
@@ -73,14 +57,14 @@ import|;
 end_import
 
 begin_class
-DECL|class|SuperscriptFormatterTest
+DECL|class|MinifyNameListFormatterTest
 specifier|public
 class|class
-name|SuperscriptFormatterTest
+name|MinifyNameListFormatterTest
 block|{
 DECL|field|formatter
 specifier|private
-name|SuperscriptFormatter
+name|MinifyNameListFormatter
 name|formatter
 decl_stmt|;
 annotation|@
@@ -94,7 +78,7 @@ block|{
 name|formatter
 operator|=
 operator|new
-name|SuperscriptFormatter
+name|MinifyNameListFormatter
 argument_list|()
 expr_stmt|;
 block|}
@@ -144,54 +128,54 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|replacesSuperscript ()
+DECL|method|minifyAuthorNames ()
 specifier|public
 name|void
-name|replacesSuperscript
+name|minifyAuthorNames
 parameter_list|()
 block|{
 name|expectCorrect
 argument_list|(
-literal|"1st"
+literal|"Simon Harrer"
 argument_list|,
-literal|"1\\textsuperscript{st}"
+literal|"Simon Harrer"
 argument_list|)
 expr_stmt|;
 name|expectCorrect
 argument_list|(
-literal|"2nd"
+literal|"Simon Harrer and others"
 argument_list|,
-literal|"2\\textsuperscript{nd}"
+literal|"Simon Harrer and others"
 argument_list|)
 expr_stmt|;
 name|expectCorrect
 argument_list|(
-literal|"3rd"
+literal|"Simon Harrer and JÃ¶rg Lenhard"
 argument_list|,
-literal|"3\\textsuperscript{rd}"
+literal|"Simon Harrer and JÃ¶rg Lenhard"
 argument_list|)
 expr_stmt|;
 name|expectCorrect
 argument_list|(
-literal|"4th"
+literal|"Simon Harrer and JÃ¶rg Lenhard and Guido Wirtz"
 argument_list|,
-literal|"4\\textsuperscript{th}"
+literal|"Simon Harrer and others"
 argument_list|)
 expr_stmt|;
 name|expectCorrect
 argument_list|(
-literal|"21th"
+literal|"Simon Harrer and JÃ¶rg Lenhard and Guido Wirtz and others"
 argument_list|,
-literal|"21\\textsuperscript{th}"
+literal|"Simon Harrer and others"
 argument_list|)
 expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|replaceSuperscriptsEmptyFields ()
+DECL|method|formatEmptyFields ()
 specifier|public
 name|void
-name|replaceSuperscriptsEmptyFields
+name|formatEmptyFields
 parameter_list|()
 block|{
 name|expectCorrect
@@ -199,84 +183,6 @@ argument_list|(
 literal|""
 argument_list|,
 literal|""
-argument_list|)
-expr_stmt|;
-block|}
-annotation|@
-name|Test
-DECL|method|replaceSuperscriptsIgnoresCase ()
-specifier|public
-name|void
-name|replaceSuperscriptsIgnoresCase
-parameter_list|()
-block|{
-name|expectCorrect
-argument_list|(
-literal|"1st"
-argument_list|,
-literal|"1\\textsuperscript{st}"
-argument_list|)
-expr_stmt|;
-name|expectCorrect
-argument_list|(
-literal|"1ST"
-argument_list|,
-literal|"1\\textsuperscript{ST}"
-argument_list|)
-expr_stmt|;
-name|expectCorrect
-argument_list|(
-literal|"1sT"
-argument_list|,
-literal|"1\\textsuperscript{sT}"
-argument_list|)
-expr_stmt|;
-block|}
-annotation|@
-name|Test
-DECL|method|replaceSuperscriptsInMultilineStrings ()
-specifier|public
-name|void
-name|replaceSuperscriptsInMultilineStrings
-parameter_list|()
-block|{
-name|expectCorrect
-argument_list|(
-literal|"replace on 1st line\nand on 2nd line."
-argument_list|,
-literal|"replace on 1\\textsuperscript{st} line\nand on 2\\textsuperscript{nd} line."
-argument_list|)
-expr_stmt|;
-block|}
-annotation|@
-name|Test
-DECL|method|replaceAllSuperscripts ()
-specifier|public
-name|void
-name|replaceAllSuperscripts
-parameter_list|()
-block|{
-name|expectCorrect
-argument_list|(
-literal|"1st 2nd 3rd 4th"
-argument_list|,
-literal|"1\\textsuperscript{st} 2\\textsuperscript{nd} 3\\textsuperscript{rd} 4\\textsuperscript{th}"
-argument_list|)
-expr_stmt|;
-block|}
-annotation|@
-name|Test
-DECL|method|ignoreSuperscriptsInsideWords ()
-specifier|public
-name|void
-name|ignoreSuperscriptsInsideWords
-parameter_list|()
-block|{
-name|expectCorrect
-argument_list|(
-literal|"1st 1stword words1st inside1stwords"
-argument_list|,
-literal|"1\\textsuperscript{st} 1stword words1st inside1stwords"
 argument_list|)
 expr_stmt|;
 block|}

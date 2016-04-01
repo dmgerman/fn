@@ -49,10 +49,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|LowerCaseChanger
+DECL|class|UpperCaseFormatter
 specifier|public
 class|class
-name|LowerCaseChanger
+name|UpperCaseFormatter
 implements|implements
 name|Formatter
 block|{
@@ -69,7 +69,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"lower"
+literal|"Upper case"
 argument_list|)
 return|;
 block|}
@@ -82,10 +82,10 @@ name|getKey
 parameter_list|()
 block|{
 return|return
-literal|"LowerCaseChanger"
+literal|"upper_case"
 return|;
 block|}
-comment|/**      * Converts all characters of the string to lower case, but does not change words starting with "{"      */
+comment|/**      * Converts all characters of the given string to upper case, but does not change words starting with "{"      */
 annotation|@
 name|Override
 DECL|method|format (String input)
@@ -118,7 +118,7 @@ name|forEach
 argument_list|(
 name|Word
 operator|::
-name|toLowerCase
+name|toUpperCase
 argument_list|)
 expr_stmt|;
 return|return
@@ -127,65 +127,6 @@ operator|.
 name|toString
 argument_list|()
 return|;
-block|}
-annotation|@
-name|Override
-DECL|method|hashCode ()
-specifier|public
-name|int
-name|hashCode
-parameter_list|()
-block|{
-return|return
-name|getKey
-argument_list|()
-operator|.
-name|hashCode
-argument_list|()
-return|;
-block|}
-annotation|@
-name|Override
-DECL|method|equals (Object obj)
-specifier|public
-name|boolean
-name|equals
-parameter_list|(
-name|Object
-name|obj
-parameter_list|)
-block|{
-if|if
-condition|(
-name|obj
-operator|instanceof
-name|Formatter
-condition|)
-block|{
-return|return
-name|getKey
-argument_list|()
-operator|.
-name|equals
-argument_list|(
-operator|(
-operator|(
-name|Formatter
-operator|)
-name|obj
-operator|)
-operator|.
-name|getKey
-argument_list|()
-argument_list|)
-return|;
-block|}
-else|else
-block|{
-return|return
-literal|false
-return|;
-block|}
 block|}
 annotation|@
 name|Override
@@ -200,7 +141,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Converts all characters in %s to lower case, but does not change words starting with \"{\""
+literal|"Changes all letters to upper case."
 argument_list|)
 return|;
 block|}

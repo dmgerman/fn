@@ -17,16 +17,6 @@ package|;
 end_package
 
 begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|Test
-import|;
-end_import
-
-begin_import
 import|import static
 name|org
 operator|.
@@ -38,58 +28,82 @@ name|*
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Test
+import|;
+end_import
+
 begin_class
-DECL|class|EraseFormatterTest
+DECL|class|LatexCleanupFormatterTest
 specifier|public
 class|class
-name|EraseFormatterTest
+name|LatexCleanupFormatterTest
 block|{
 annotation|@
 name|Test
-DECL|method|formatReturnsEmptyForEmptyString ()
+DECL|method|test ()
 specifier|public
 name|void
-name|formatReturnsEmptyForEmptyString
+name|test
 parameter_list|()
-throws|throws
-name|Exception
 block|{
+name|LatexCleanupFormatter
+name|lf
+init|=
+operator|new
+name|LatexCleanupFormatter
+argument_list|()
+decl_stmt|;
 name|assertEquals
 argument_list|(
-literal|""
+literal|"$\\alpha\\beta$"
 argument_list|,
-operator|new
-name|EraseFormatter
-argument_list|()
+name|lf
 operator|.
 name|format
 argument_list|(
-literal|""
+literal|"$\\alpha$$\\beta$"
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
-annotation|@
-name|Test
-DECL|method|formatReturnsEmptyForSomeString ()
-specifier|public
-name|void
-name|formatReturnsEmptyForSomeString
-parameter_list|()
-throws|throws
-name|Exception
-block|{
 name|assertEquals
 argument_list|(
-literal|""
+literal|"{VLSI DSP}"
 argument_list|,
-operator|new
-name|EraseFormatter
-argument_list|()
+name|lf
 operator|.
 name|format
 argument_list|(
-literal|"test"
+literal|"{VLSI} {DSP}"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"\\textbf{VLSI} {DSP}"
+argument_list|,
+name|lf
+operator|.
+name|format
+argument_list|(
+literal|"\\textbf{VLSI} {DSP}"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"A ${\\Delta\\Sigma}$ modulator for {FPGA DSP}"
+argument_list|,
+name|lf
+operator|.
+name|format
+argument_list|(
+literal|"A ${\\Delta}$${\\Sigma}$ modulator for {FPGA} {DSP}"
 argument_list|)
 argument_list|)
 expr_stmt|;

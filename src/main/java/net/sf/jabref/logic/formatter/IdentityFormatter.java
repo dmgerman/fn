@@ -61,7 +61,7 @@ name|getName
 parameter_list|()
 block|{
 return|return
-literal|"IdentityFormatter"
+literal|"Identity"
 return|;
 block|}
 annotation|@
@@ -73,8 +73,7 @@ name|getKey
 parameter_list|()
 block|{
 return|return
-name|getName
-argument_list|()
+literal|"identity"
 return|;
 block|}
 annotation|@
@@ -113,6 +112,37 @@ operator|.
 name|lang
 argument_list|(
 literal|"Does nothing."
+argument_list|)
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|hashCode ()
+specifier|public
+name|int
+name|hashCode
+parameter_list|()
+block|{
+return|return
+name|defaultHashCode
+argument_list|()
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|equals (Object obj)
+specifier|public
+name|boolean
+name|equals
+parameter_list|(
+name|Object
+name|obj
+parameter_list|)
+block|{
+return|return
+name|defaultEquals
+argument_list|(
+name|obj
 argument_list|)
 return|;
 block|}

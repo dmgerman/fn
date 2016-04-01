@@ -91,10 +91,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|CaseKeeper
+DECL|class|ProtectTermsFormatter
 specifier|public
 class|class
-name|CaseKeeper
+name|ProtectTermsFormatter
 implements|implements
 name|Formatter
 block|{
@@ -235,7 +235,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"CaseKeeper"
+literal|"Protect terms"
 argument_list|)
 return|;
 block|}
@@ -248,7 +248,7 @@ name|getKey
 parameter_list|()
 block|{
 return|return
-literal|"CaseKeeper"
+literal|"protect_terms"
 return|;
 block|}
 block|}

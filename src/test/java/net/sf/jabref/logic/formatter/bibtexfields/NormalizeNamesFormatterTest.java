@@ -1,21 +1,7 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|net.sf.jabref.logic.formatter
+DECL|package|net.sf.jabref.logic.formatter.bibtexfields
 package|package
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
-name|formatter
-package|;
-end_package
-
-begin_import
-import|import
 name|net
 operator|.
 name|sf
@@ -27,10 +13,8 @@ operator|.
 name|formatter
 operator|.
 name|bibtexfields
-operator|.
-name|PageNumbersFormatter
-import|;
-end_import
+package|;
+end_package
 
 begin_import
 import|import
@@ -73,14 +57,14 @@ import|;
 end_import
 
 begin_class
-DECL|class|PageNumbersFormatterTest
+DECL|class|NormalizeNamesFormatterTest
 specifier|public
 class|class
-name|PageNumbersFormatterTest
+name|NormalizeNamesFormatterTest
 block|{
 DECL|field|formatter
 specifier|private
-name|PageNumbersFormatter
+name|NormalizeNamesFormatter
 name|formatter
 decl_stmt|;
 annotation|@
@@ -94,7 +78,7 @@ block|{
 name|formatter
 operator|=
 operator|new
-name|PageNumbersFormatter
+name|NormalizeNamesFormatter
 argument_list|()
 expr_stmt|;
 block|}
@@ -144,131 +128,70 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|formatPageNumbers ()
+DECL|method|testNormalizeAuthorList ()
 specifier|public
 name|void
-name|formatPageNumbers
+name|testNormalizeAuthorList
 parameter_list|()
 block|{
 name|expectCorrect
 argument_list|(
-literal|"1-2"
+literal|"Staci D Bilbo"
 argument_list|,
-literal|"1--2"
+literal|"Bilbo, Staci D."
 argument_list|)
 expr_stmt|;
-block|}
-annotation|@
-name|Test
-DECL|method|formatPageNumbersCommaSeparated ()
-specifier|public
-name|void
-name|formatPageNumbersCommaSeparated
-parameter_list|()
-block|{
 name|expectCorrect
 argument_list|(
-literal|"1,2,3"
+literal|"Staci D. Bilbo"
 argument_list|,
-literal|"1,2,3"
+literal|"Staci D. Bilbo"
 argument_list|)
 expr_stmt|;
-block|}
-annotation|@
-name|Test
-DECL|method|formatPageNumbersPlusRange ()
-specifier|public
-name|void
-name|formatPageNumbersPlusRange
-parameter_list|()
-block|{
+comment|// TODO strange behaviour
 name|expectCorrect
 argument_list|(
-literal|"43+"
+literal|"Staci D Bilbo and Smith SH and Jaclyn M Schwarz"
 argument_list|,
-literal|"43+"
+literal|"Bilbo, Staci D. and Smith, S. H. and Schwarz, Jaclyn M."
 argument_list|)
 expr_stmt|;
-block|}
-annotation|@
-name|Test
-DECL|method|ignoreWhitespaceInPageNumbers ()
-specifier|public
-name|void
-name|ignoreWhitespaceInPageNumbers
-parameter_list|()
-block|{
 name|expectCorrect
 argument_list|(
-literal|"   1  - 2 "
+literal|"Ãlver MA"
 argument_list|,
-literal|"1--2"
+literal|"Ãlver, M. A."
 argument_list|)
 expr_stmt|;
-block|}
-annotation|@
-name|Test
-DECL|method|keepCorrectlyFormattedPageNumbers ()
-specifier|public
-name|void
-name|keepCorrectlyFormattedPageNumbers
-parameter_list|()
-block|{
 name|expectCorrect
 argument_list|(
-literal|"1--2"
+literal|"Ãlver MA, GG Ãie, Ãie GG, Alfredsen JÃÃ, Jo Alfredsen, Olsen Y.Y. and Olsen Y. Y."
 argument_list|,
-literal|"1--2"
+literal|"Ãlver, M. A. and Ãie, G. G. and Ãie, G. G. and Alfredsen, J. Ã. Ã. and Alfredsen, Jo and Olsen, Y. Y. and Olsen, Y. Y."
 argument_list|)
 expr_stmt|;
-block|}
-annotation|@
-name|Test
-DECL|method|formatPageNumbersEmptyFields ()
-specifier|public
-name|void
-name|formatPageNumbersEmptyFields
-parameter_list|()
-block|{
 name|expectCorrect
 argument_list|(
-literal|""
+literal|"Ãlver MA, GG Ãie, Ãie GG, Alfredsen JÃÃ, Jo Alfredsen, Olsen Y.Y., Olsen Y. Y."
 argument_list|,
-literal|""
+literal|"Ãlver, M. A. and Ãie, G. G. and Ãie, G. G. and Alfredsen, J. Ã. Ã. and Alfredsen, Jo and Olsen, Y. Y. and Olsen, Y. Y."
 argument_list|)
 expr_stmt|;
-block|}
-annotation|@
-name|Test
-DECL|method|formatPageNumbersRemoveUnexpectedLiterals ()
-specifier|public
-name|void
-name|formatPageNumbersRemoveUnexpectedLiterals
-parameter_list|()
-block|{
 name|expectCorrect
 argument_list|(
-literal|"{1}-{2}"
+literal|"Alver, Morten and Alver, Morten O and Alfredsen, JA and Olsen, Y.Y."
 argument_list|,
-literal|"1--2"
+literal|"Alver, Morten and Alver, Morten O. and Alfredsen, J. A. and Olsen, Y. Y."
 argument_list|)
 expr_stmt|;
-block|}
-annotation|@
-name|Test
-DECL|method|formatPageNumbersRegexNotMatching ()
-specifier|public
-name|void
-name|formatPageNumbersRegexNotMatching
-parameter_list|()
-block|{
 name|expectCorrect
 argument_list|(
-literal|"12"
+literal|"Alver, MA; Alfredsen, JA; Olsen Y.Y."
 argument_list|,
-literal|"12"
+literal|"Alver, M. A. and Alfredsen, J. A. and Olsen, Y. Y."
 argument_list|)
 expr_stmt|;
+comment|// TODO: expectCorrect("Kolb, Stefan and J{\\\"o}rg Lenhard and Wirtz, Guido", "Kolb, Stefan and Lenhard, J{\\\"o}rg and Wirtz, Guido");
 block|}
 DECL|method|expectCorrect (String input, String expected)
 specifier|private
