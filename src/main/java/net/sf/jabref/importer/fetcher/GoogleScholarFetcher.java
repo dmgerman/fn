@@ -1042,8 +1042,6 @@ name|LinkedHashMap
 argument_list|<>
 argument_list|()
 decl_stmt|;
-try|try
-block|{
 name|urlQuery
 operator|=
 name|GoogleScholarFetcher
@@ -1121,21 +1119,6 @@ block|}
 return|return
 name|res
 return|;
-block|}
-catch|catch
-parameter_list|(
-name|UnsupportedEncodingException
-name|e
-parameter_list|)
-block|{
-throw|throw
-operator|new
-name|RuntimeException
-argument_list|(
-name|e
-argument_list|)
-throw|;
-block|}
 block|}
 DECL|method|getCitationsFromUrl (String urlQuery, Map<String, JLabel> ids)
 specifier|private

@@ -130,16 +130,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
-operator|.
-name|UnsupportedEncodingException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|net
 operator|.
 name|URL
@@ -556,7 +546,7 @@ block|{
 name|String
 name|urlQuery
 decl_stmt|;
-name|ArrayList
+name|List
 argument_list|<
 name|String
 argument_list|>
@@ -567,8 +557,6 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
-try|try
-block|{
 name|urlQuery
 operator|=
 name|ScienceDirectFetcher
@@ -634,21 +622,6 @@ block|}
 return|return
 name|ids
 return|;
-block|}
-catch|catch
-parameter_list|(
-name|UnsupportedEncodingException
-name|e
-parameter_list|)
-block|{
-throw|throw
-operator|new
-name|RuntimeException
-argument_list|(
-name|e
-argument_list|)
-throw|;
-block|}
 block|}
 DECL|method|getCitationsFromUrl (String urlQuery, List<String> ids)
 specifier|private

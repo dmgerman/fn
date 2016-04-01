@@ -361,7 +361,9 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|Throwable
+name|AWTError
+decl||
+name|HeadlessException
 name|ignored
 parameter_list|)
 block|{
