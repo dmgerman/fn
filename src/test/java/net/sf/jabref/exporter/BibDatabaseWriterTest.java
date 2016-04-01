@@ -3079,7 +3079,7 @@ name|Globals
 operator|.
 name|NEWLINE
 operator|+
-literal|"  year =   {2000},"
+literal|"  year   = {2000},"
 operator|+
 name|Globals
 operator|.
@@ -3107,7 +3107,7 @@ name|Globals
 operator|.
 name|NEWLINE
 operator|+
-literal|"  year =   {2010},"
+literal|"  year   = {2010},"
 operator|+
 name|Globals
 operator|.
@@ -3135,7 +3135,7 @@ name|Globals
 operator|.
 name|NEWLINE
 operator|+
-literal|"  year =   {2000},"
+literal|"  year   = {2000},"
 operator|+
 name|Globals
 operator|.
@@ -3358,7 +3358,7 @@ name|Globals
 operator|.
 name|NEWLINE
 operator|+
-literal|"  year =   {2010},"
+literal|"  year   = {2010},"
 operator|+
 name|Globals
 operator|.
@@ -3386,7 +3386,7 @@ name|Globals
 operator|.
 name|NEWLINE
 operator|+
-literal|"  year =   {2000},"
+literal|"  year   = {2000},"
 operator|+
 name|Globals
 operator|.
@@ -3414,7 +3414,7 @@ name|Globals
 operator|.
 name|NEWLINE
 operator|+
-literal|"  year =   {2000},"
+literal|"  year   = {2000},"
 operator|+
 name|Globals
 operator|.

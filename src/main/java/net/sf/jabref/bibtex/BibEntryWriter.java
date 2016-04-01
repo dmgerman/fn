@@ -1033,9 +1033,9 @@ operator|.
 name|toLowerCase
 argument_list|()
 operator|+
-literal|" = "
-operator|+
 name|suffix
+operator|+
+literal|" = "
 return|;
 block|}
 block|}

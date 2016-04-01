@@ -397,7 +397,7 @@ name|Globals
 operator|.
 name|NEWLINE
 operator|+
-literal|"  author =  {Foo Bar},"
+literal|"  author  = {Foo Bar},"
 operator|+
 name|Globals
 operator|.
@@ -409,13 +409,13 @@ name|Globals
 operator|.
 name|NEWLINE
 operator|+
-literal|"  number =  {1},"
+literal|"  number  = {1},"
 operator|+
 name|Globals
 operator|.
 name|NEWLINE
 operator|+
-literal|"  note =    {some note},"
+literal|"  note    = {some note},"
 operator|+
 name|Globals
 operator|.
@@ -1026,7 +1026,7 @@ name|Globals
 operator|.
 name|NEWLINE
 operator|+
-literal|"  author =  {BlaBla},"
+literal|"  author  = {BlaBla},"
 operator|+
 name|Globals
 operator|.
@@ -1038,13 +1038,13 @@ name|Globals
 operator|.
 name|NEWLINE
 operator|+
-literal|"  number =  {1},"
+literal|"  number  = {1},"
 operator|+
 name|Globals
 operator|.
 name|NEWLINE
 operator|+
-literal|"  note =    {some note},"
+literal|"  note    = {some note},"
 operator|+
 name|Globals
 operator|.
@@ -1281,25 +1281,25 @@ name|Globals
 operator|.
 name|NEWLINE
 operator|+
-literal|"  author =       {BlaBla},"
+literal|"  author       = {BlaBla},"
 operator|+
 name|Globals
 operator|.
 name|NEWLINE
 operator|+
-literal|"  journal =      {International Journal of Something},"
+literal|"  journal      = {International Journal of Something},"
 operator|+
 name|Globals
 operator|.
 name|NEWLINE
 operator|+
-literal|"  number =       {1},"
+literal|"  number       = {1},"
 operator|+
 name|Globals
 operator|.
 name|NEWLINE
 operator|+
-literal|"  note =         {some note},"
+literal|"  note         = {some note},"
 operator|+
 name|Globals
 operator|.
@@ -2095,25 +2095,25 @@ name|Globals
 operator|.
 name|NEWLINE
 operator|+
-literal|"  author =       {BlaBla},"
+literal|"  author       = {BlaBla},"
 operator|+
 name|Globals
 operator|.
 name|NEWLINE
 operator|+
-literal|"  journal =      {International Journal of Something},"
+literal|"  journal      = {International Journal of Something},"
 operator|+
 name|Globals
 operator|.
 name|NEWLINE
 operator|+
-literal|"  number =       {1},"
+literal|"  number       = {1},"
 operator|+
 name|Globals
 operator|.
 name|NEWLINE
 operator|+
-literal|"  note =         {some note},"
+literal|"  note         = {some note},"
 operator|+
 name|Globals
 operator|.
@@ -2220,7 +2220,7 @@ name|Globals
 operator|.
 name|NEWLINE
 operator|+
-literal|"  note =   {some note},"
+literal|"  note   = {some note},"
 operator|+
 name|Globals
 operator|.
