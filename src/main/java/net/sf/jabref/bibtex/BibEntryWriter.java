@@ -463,11 +463,6 @@ operator|.
 name|KEY_FIELD
 argument_list|)
 expr_stmt|;
-name|boolean
-name|hasWritten
-init|=
-literal|false
-decl_stmt|;
 name|int
 name|indentation
 init|=
@@ -518,10 +513,6 @@ range|:
 name|fields
 control|)
 block|{
-name|hasWritten
-operator|=
-name|hasWritten
-operator||
 name|writeField
 argument_list|(
 name|entry
@@ -529,8 +520,6 @@ argument_list|,
 name|out
 argument_list|,
 name|value
-argument_list|,
-name|hasWritten
 argument_list|,
 name|indentation
 argument_list|)
@@ -579,10 +568,6 @@ argument_list|)
 condition|)
 block|{
 comment|// If field appears both in req. and opt. don't repeat.
-name|hasWritten
-operator|=
-name|hasWritten
-operator||
 name|writeField
 argument_list|(
 name|entry
@@ -590,8 +575,6 @@ argument_list|,
 name|out
 argument_list|,
 name|value
-argument_list|,
-name|hasWritten
 argument_list|,
 name|indentation
 argument_list|)
@@ -678,10 +661,6 @@ range|:
 name|remainingFields
 control|)
 block|{
-name|hasWritten
-operator|=
-name|hasWritten
-operator||
 name|writeField
 argument_list|(
 name|entry
@@ -689,8 +668,6 @@ argument_list|,
 name|out
 argument_list|,
 name|field
-argument_list|,
-name|hasWritten
 argument_list|,
 name|indentation
 argument_list|)
@@ -701,18 +678,6 @@ name|out
 operator|.
 name|write
 argument_list|(
-operator|(
-name|hasWritten
-condition|?
-literal|","
-operator|+
-name|Globals
-operator|.
-name|NEWLINE
-else|:
-literal|""
-operator|)
-operator|+
 literal|'}'
 argument_list|)
 expr_stmt|;
@@ -758,10 +723,10 @@ name|NEWLINE
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Write a single field, if it has any content.      *      * @param entry             the entry to write      * @param out               the target of the write      * @param name              The field name      * @param prependWhiteSpace Indicates whether this is the first field written for      *                          this entry - if not, start by writing a comma and newline   @return true if this field was written, false if it was skipped because      *                          it was not set      * @throws IOException In case of an IO error      */
-DECL|method|writeField (BibEntry entry, Writer out, String name, boolean prependWhiteSpace, int indentation)
+comment|/**      * Write a single field, if it has any content.      *      * @param entry             the entry to write      * @param out               the target of the write      * @param name              The field name      * @throws IOException In case of an IO error      */
+DECL|method|writeField (BibEntry entry, Writer out, String name, int indentation)
 specifier|private
-name|boolean
+name|void
 name|writeField
 parameter_list|(
 name|BibEntry
@@ -772,9 +737,6 @@ name|out
 parameter_list|,
 name|String
 name|name
-parameter_list|,
-name|boolean
-name|prependWhiteSpace
 parameter_list|,
 name|int
 name|indentation
@@ -810,29 +772,10 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-return|return
-literal|false
-return|;
+return|return;
 block|}
 else|else
 block|{
-if|if
-condition|(
-name|prependWhiteSpace
-condition|)
-block|{
-name|out
-operator|.
-name|write
-argument_list|(
-literal|','
-operator|+
-name|Globals
-operator|.
-name|NEWLINE
-argument_list|)
-expr_stmt|;
-block|}
 name|out
 operator|.
 name|write
@@ -863,6 +806,17 @@ name|name
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|out
+operator|.
+name|write
+argument_list|(
+literal|','
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
+argument_list|)
+expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
@@ -887,9 +841,6 @@ argument_list|()
 argument_list|)
 throw|;
 block|}
-return|return
-literal|true
-return|;
 block|}
 block|}
 DECL|method|getLengthOfLongestFieldName (BibEntry entry)
