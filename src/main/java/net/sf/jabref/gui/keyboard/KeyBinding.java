@@ -1014,13 +1014,13 @@ block|,
 DECL|enumConstant|SAVE_DATABASE_AS
 name|SAVE_DATABASE_AS
 argument_list|(
-literal|"Save database as ..."
+literal|"Save database as..."
 argument_list|,
 name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Save database as ..."
+literal|"Save database as..."
 argument_list|)
 argument_list|,
 literal|"ctrl shift S"
