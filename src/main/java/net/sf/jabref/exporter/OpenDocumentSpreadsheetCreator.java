@@ -308,7 +308,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"OpenDocument Spreadsheet"
+literal|"OpenDocument spreadsheet"
 argument_list|)
 argument_list|,
 literal|"ods"

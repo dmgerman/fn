@@ -4147,7 +4147,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"autogenerate keys"
+literal|"Autogenerate BibTeX keys"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -11937,7 +11937,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"autogenerate keys"
+literal|"Autogenerate BibTeX keys"
 argument_list|)
 argument_list|)
 decl_stmt|;

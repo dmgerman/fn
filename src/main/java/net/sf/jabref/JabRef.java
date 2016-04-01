@@ -3103,7 +3103,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Regenerating bibtex keys according to metadata"
+literal|"Regenerating BibTeX keys according to metadata"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -3142,7 +3142,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"No meta data present in bibfile. Cannot regenerate bibtex keys"
+literal|"No meta data present in bibfile. Cannot regenerate BibTeX keys"
 argument_list|)
 argument_list|)
 expr_stmt|;

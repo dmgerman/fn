@@ -587,7 +587,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Resolve duplicate keys"
+literal|"Resolve duplicate BibTeX keys"
 argument_list|)
 argument_list|)
 decl_stmt|;

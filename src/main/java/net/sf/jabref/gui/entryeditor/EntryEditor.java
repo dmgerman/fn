@@ -1769,7 +1769,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Show deprecated bibtex fields"
+literal|"Show deprecated BibTeX fields"
 argument_list|)
 argument_list|)
 expr_stmt|;
