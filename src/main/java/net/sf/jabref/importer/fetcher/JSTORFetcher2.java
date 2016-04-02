@@ -692,7 +692,7 @@ block|{
 name|String
 name|urlQuery
 decl_stmt|;
-name|ArrayList
+name|List
 argument_list|<
 name|String
 argument_list|>
@@ -703,8 +703,6 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
-try|try
-block|{
 name|urlQuery
 operator|=
 name|JSTORFetcher2
@@ -821,8 +819,6 @@ return|return
 literal|null
 return|;
 block|}
-comment|//System.out.println("JSTORFetcher2 getCitations numberofrefs=" + numberOfRefs[0]);
-comment|//System.out.println("JSTORFetcher2 getCitations numberofrefs=" + " refsRequested=" + numberOfRefs[1]);
 name|refsRequested
 operator|=
 name|Integer
@@ -835,7 +831,6 @@ literal|1
 index|]
 argument_list|)
 expr_stmt|;
-comment|//System.out.println("JSTORFetcher2 getCitations refsRequested=" + Integer.valueOf(refsRequested));
 name|numberOfPagesRequested
 operator|=
 operator|(
@@ -864,12 +859,10 @@ operator|)
 operator|+
 literal|1
 expr_stmt|;
-comment|//System.out.println("JSTORFetcher2 getCitations numberOfPagesRequested=" + Integer.valueOf(numberOfPagesRequested));
 name|urlQuery
 operator|=
 name|nextPage
 expr_stmt|;
-comment|//System.out.println("JSTORFetcher2 getcitations count=" + Integer.valueOf(count) + " ids=" + ids);
 name|count
 operator|++
 expr_stmt|;
@@ -877,21 +870,6 @@ block|}
 return|return
 name|ids
 return|;
-block|}
-catch|catch
-parameter_list|(
-name|UnsupportedEncodingException
-name|e
-parameter_list|)
-block|{
-throw|throw
-operator|new
-name|RuntimeException
-argument_list|(
-name|e
-argument_list|)
-throw|;
-block|}
 block|}
 DECL|method|getCitationsFromUrl (String urlQuery, List<String> ids, int count, String[] numberOfRefs, ImportInspector dialog, OutputPrinter status)
 specifier|private
@@ -995,7 +973,6 @@ name|find
 argument_list|()
 condition|)
 block|{
-comment|//System.out.println("JSTORFetcher2 getCitationsFromUrl numberofhits=" + mn.group(1));
 name|numberOfRefs
 index|[
 literal|0
@@ -1020,11 +997,9 @@ literal|0
 index|]
 argument_list|)
 expr_stmt|;
-comment|//System.out.println("JSTORFetcher2 getCitationsFromUrl numberofrefs[0]=" + Integer.valueOf(numberOfRefs[0]));
 block|}
 else|else
 block|{
-comment|//System.out.println("JSTORFetcher2 getCitationsFromUrl cant find numberofhits=");
 name|numberOfRefs
 index|[
 literal|0

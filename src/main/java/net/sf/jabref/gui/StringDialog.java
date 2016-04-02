@@ -1890,7 +1890,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Name"
+literal|"Label"
 argument_list|)
 else|:
 name|Localization
@@ -2738,8 +2738,6 @@ name|ActionEvent
 name|e
 parameter_list|)
 block|{
-try|try
-block|{
 name|panel
 operator|.
 name|runCommand
@@ -2749,15 +2747,6 @@ operator|.
 name|UNDO
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|Throwable
-name|ignored
-parameter_list|)
-block|{
-comment|// Ignore
-block|}
 block|}
 block|}
 DECL|class|RedoAction
@@ -2811,8 +2800,6 @@ name|ActionEvent
 name|e
 parameter_list|)
 block|{
-try|try
-block|{
 name|panel
 operator|.
 name|runCommand
@@ -2822,15 +2809,6 @@ operator|.
 name|REDO
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|Throwable
-name|ignored
-parameter_list|)
-block|{
-comment|// Ignore
-block|}
 block|}
 block|}
 block|}
