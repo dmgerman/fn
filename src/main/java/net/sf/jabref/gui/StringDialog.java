@@ -1890,7 +1890,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Name"
+literal|"Label"
 argument_list|)
 else|:
 name|Localization

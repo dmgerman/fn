@@ -210,6 +210,15 @@ name|ScienceDirectFetcher
 implements|implements
 name|EntryFetcher
 block|{
+DECL|field|SCIENCE_DIRECT
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|SCIENCE_DIRECT
+init|=
+literal|"ScienceDirect"
+decl_stmt|;
 DECL|field|LOGGER
 specifier|private
 specifier|static
@@ -307,7 +316,7 @@ name|getHelpPage
 parameter_list|()
 block|{
 return|return
-literal|"ScienceDirect"
+name|SCIENCE_DIRECT
 return|;
 block|}
 annotation|@
@@ -332,9 +341,7 @@ name|getTitle
 parameter_list|()
 block|{
 return|return
-operator|(
-literal|"ScienceDirect"
-operator|)
+name|SCIENCE_DIRECT
 return|;
 block|}
 annotation|@
@@ -422,7 +429,7 @@ name|lang
 argument_list|(
 literal|"Search %0"
 argument_list|,
-literal|"ScienceDirect"
+name|SCIENCE_DIRECT
 argument_list|)
 argument_list|,
 name|JOptionPane
@@ -511,7 +518,7 @@ name|lang
 argument_list|(
 literal|"Error while fetching from %0"
 argument_list|,
-literal|"ScienceDirect"
+name|SCIENCE_DIRECT
 argument_list|)
 operator|+
 literal|": "
