@@ -78,6 +78,22 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|model
 operator|.
 name|entry
@@ -140,8 +156,19 @@ operator|!=
 literal|1
 condition|)
 block|{
+name|panel
+operator|.
+name|output
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"No entries or multiple entries selected."
+argument_list|)
+argument_list|)
+expr_stmt|;
 return|return;
-comment|// TODO: display error message?
 block|}
 name|BibEntry
 name|entry
