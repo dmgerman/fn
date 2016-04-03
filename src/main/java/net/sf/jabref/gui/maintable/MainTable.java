@@ -1396,16 +1396,6 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-DECL|method|isFloatGroupingActive ()
-specifier|public
-name|boolean
-name|isFloatGroupingActive
-parameter_list|()
-block|{
-return|return
-name|isFloatGroupingActive
-return|;
-block|}
 DECL|method|getTableRows ()
 specifier|public
 name|EventList
@@ -3258,28 +3248,6 @@ name|row
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Adds the given row to the selection      * @param row the row to add to the selection      */
-DECL|method|addSelection (int row)
-specifier|public
-name|void
-name|addSelection
-parameter_list|(
-name|int
-name|row
-parameter_list|)
-block|{
-name|this
-operator|.
-name|localSelectionModel
-operator|.
-name|addSelectionInterval
-argument_list|(
-name|row
-argument_list|,
-name|row
-argument_list|)
-expr_stmt|;
-block|}
 DECL|method|findEntry (BibEntry entry)
 specifier|public
 name|int
@@ -3610,7 +3578,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|method|scrollToCenter (int rowIndex, int vColIndex)
-specifier|public
+specifier|private
 name|void
 name|scrollToCenter
 parameter_list|(
@@ -4385,30 +4353,6 @@ name|number
 argument_list|)
 return|;
 block|}
-block|}
-DECL|method|getTableColumnListener ()
-specifier|public
-name|PersistenceTableColumnListener
-name|getTableColumnListener
-parameter_list|()
-block|{
-return|return
-name|tableColumnListener
-return|;
-block|}
-comment|/**      * Returns the List of entries sorted by a user-selected term. This is the      * sorting before marking, search etc. applies.      *      * Note: The returned List must not be modified from the outside      * @return The sorted list of entries.      */
-DECL|method|getSortedForTable ()
-specifier|public
-name|SortedList
-argument_list|<
-name|BibEntry
-argument_list|>
-name|getSortedForTable
-parameter_list|()
-block|{
-return|return
-name|sortedForTable
-return|;
 block|}
 DECL|method|getMainTableColumn (int modelIndex)
 specifier|public
