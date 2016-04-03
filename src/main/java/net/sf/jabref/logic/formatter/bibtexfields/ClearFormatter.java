@@ -130,7 +130,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Completely the field."
+literal|"Clears the field completely."
 argument_list|)
 return|;
 block|}
