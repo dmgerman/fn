@@ -1190,7 +1190,7 @@ expr_stmt|;
 comment|// insert entry to database and link file
 name|panel
 operator|.
-name|database
+name|getDatabase
 argument_list|()
 operator|.
 name|insertEntry
@@ -1480,7 +1480,7 @@ block|}
 comment|// insert entry to database and link file
 name|panel
 operator|.
-name|database
+name|getDatabase
 argument_list|()
 operator|.
 name|insertEntry
@@ -1507,7 +1507,7 @@ argument_list|()
 argument_list|,
 name|panel
 operator|.
-name|database
+name|getDatabase
 argument_list|()
 argument_list|,
 name|entry
@@ -1659,7 +1659,7 @@ try|try
 block|{
 name|panel
 operator|.
-name|database
+name|getDatabase
 argument_list|()
 operator|.
 name|insertEntry
@@ -1709,7 +1709,7 @@ name|UndoableInsertEntry
 argument_list|(
 name|panel
 operator|.
-name|database
+name|getDatabase
 argument_list|()
 argument_list|,
 name|be
