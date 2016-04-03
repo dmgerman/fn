@@ -2494,7 +2494,7 @@ name|containsDuplicate
 argument_list|(
 name|panel
 operator|.
-name|database
+name|getDatabase
 argument_list|()
 argument_list|,
 name|entry
@@ -2831,7 +2831,7 @@ name|database
 operator|=
 name|panel
 operator|.
-name|database
+name|getDatabase
 argument_list|()
 expr_stmt|;
 name|localMetaData
@@ -2953,7 +2953,7 @@ name|database
 operator|=
 name|panel
 operator|.
-name|database
+name|getDatabase
 argument_list|()
 expr_stmt|;
 name|localMetaData
@@ -3673,7 +3673,7 @@ name|UndoableRemoveEntry
 argument_list|(
 name|panel
 operator|.
-name|database
+name|getDatabase
 argument_list|()
 argument_list|,
 name|entry
@@ -3684,7 +3684,7 @@ argument_list|)
 expr_stmt|;
 name|panel
 operator|.
-name|database
+name|getDatabase
 argument_list|()
 operator|.
 name|removeEntry
@@ -3893,7 +3893,7 @@ name|entry
 range|:
 name|panel
 operator|.
-name|database
+name|getDatabase
 argument_list|()
 operator|.
 name|getEntries
@@ -3910,7 +3910,7 @@ literal|true
 argument_list|,
 name|panel
 operator|.
-name|database
+name|getDatabase
 argument_list|()
 argument_list|,
 name|ce
@@ -4126,7 +4126,7 @@ argument_list|)
 expr_stmt|;
 name|panel
 operator|.
-name|database
+name|getDatabase
 argument_list|()
 operator|.
 name|insertEntry
@@ -4143,7 +4143,7 @@ name|UndoableInsertEntry
 argument_list|(
 name|panel
 operator|.
-name|database
+name|getDatabase
 argument_list|()
 argument_list|,
 name|entry
@@ -5527,7 +5527,7 @@ name|containsDuplicate
 argument_list|(
 name|panel
 operator|.
-name|database
+name|getDatabase
 argument_list|()
 argument_list|,
 name|first
