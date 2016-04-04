@@ -175,7 +175,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Normalize month to BibTex standard abbreviation."
+literal|"Normalize month to BibTeX standard abbreviation."
 argument_list|)
 return|;
 block|}

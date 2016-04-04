@@ -374,7 +374,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"This operation requires all selected entries to have BibTex keys defined."
+literal|"This operation requires all selected entries to have BibTeX keys defined."
 argument_list|)
 argument_list|,
 operator|(
