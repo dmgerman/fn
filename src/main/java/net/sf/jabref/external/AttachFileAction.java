@@ -164,7 +164,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"No entries or multiple entries selected."
+literal|"This operation requires exactly one item to be selected."
 argument_list|)
 argument_list|)
 expr_stmt|;
