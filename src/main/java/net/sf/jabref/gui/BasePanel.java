@@ -9455,8 +9455,14 @@ name|this
 operator|.
 name|tableModel
 operator|.
-name|isFloatSearchActive
+name|getSearchState
 argument_list|()
+operator|==
+name|MainTableDataModel
+operator|.
+name|DisplayOption
+operator|.
+name|FLOAT
 decl_stmt|;
 name|createMainTable
 argument_list|()
@@ -9709,7 +9715,7 @@ condition|(
 name|floatSearchActive
 condition|)
 block|{
-name|tableModel
+name|mainTable
 operator|.
 name|showFloatSearch
 argument_list|()
