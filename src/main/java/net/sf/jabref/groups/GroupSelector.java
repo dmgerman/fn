@@ -5122,6 +5122,11 @@ condition|)
 block|{
 name|panel
 operator|.
+name|mainTable
+operator|.
+name|getTableModel
+argument_list|()
+operator|.
 name|getFilterGroupToggle
 argument_list|()
 operator|.
@@ -5131,6 +5136,9 @@ expr_stmt|;
 name|panel
 operator|.
 name|mainTable
+operator|.
+name|getTableModel
+argument_list|()
 operator|.
 name|stopShowingFloatGrouping
 argument_list|()
@@ -5442,11 +5450,19 @@ name|panel
 operator|.
 name|mainTable
 operator|.
+name|getTableModel
+argument_list|()
+operator|.
 name|stopShowingFloatGrouping
 argument_list|()
 expr_stmt|;
 comment|// Turn off shading, if active.
 name|panel
+operator|.
+name|mainTable
+operator|.
+name|getTableModel
+argument_list|()
 operator|.
 name|getFilterGroupToggle
 argument_list|()
@@ -5467,6 +5483,11 @@ condition|)
 block|{
 name|panel
 operator|.
+name|mainTable
+operator|.
+name|getTableModel
+argument_list|()
+operator|.
 name|getFilterGroupToggle
 argument_list|()
 operator|.
@@ -5477,6 +5498,9 @@ comment|// Turn off filtering, if active.
 name|panel
 operator|.
 name|mainTable
+operator|.
+name|getTableModel
+argument_list|()
 operator|.
 name|showFloatGrouping
 argument_list|()
@@ -5958,6 +5982,11 @@ block|{
 comment|// panel may be null if no file is open any more
 name|panel
 operator|.
+name|mainTable
+operator|.
+name|getTableModel
+argument_list|()
+operator|.
 name|getFilterGroupToggle
 argument_list|()
 operator|.
@@ -5967,6 +5996,9 @@ expr_stmt|;
 name|panel
 operator|.
 name|mainTable
+operator|.
+name|getTableModel
+argument_list|()
 operator|.
 name|stopShowingFloatGrouping
 argument_list|()

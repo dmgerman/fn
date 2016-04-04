@@ -159,6 +159,8 @@ name|BasicEventList
 argument_list|<>
 argument_list|()
 expr_stmt|;
+try|try
+block|{
 name|list
 operator|.
 name|getReadWriteLock
@@ -190,6 +192,9 @@ name|IdComparator
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
+finally|finally
+block|{
 name|list
 operator|.
 name|getReadWriteLock
@@ -201,6 +206,7 @@ operator|.
 name|unlock
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 DECL|method|getTheList ()
 specifier|public
@@ -237,6 +243,8 @@ operator|.
 name|lock
 argument_list|()
 expr_stmt|;
+try|try
+block|{
 if|if
 condition|(
 name|e
@@ -341,6 +349,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
+finally|finally
+block|{
 name|list
 operator|.
 name|getReadWriteLock
@@ -352,6 +363,7 @@ operator|.
 name|unlock
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 block|}
 end_class

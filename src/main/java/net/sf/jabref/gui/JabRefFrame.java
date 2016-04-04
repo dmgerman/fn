@@ -10321,6 +10321,11 @@ argument_list|(
 name|i
 argument_list|)
 operator|.
+name|mainTable
+operator|.
+name|getTableModel
+argument_list|()
+operator|.
 name|getFilterSearchToggle
 argument_list|()
 operator|.

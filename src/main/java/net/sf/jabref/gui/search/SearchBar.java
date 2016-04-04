@@ -409,7 +409,7 @@ name|class
 argument_list|)
 decl_stmt|;
 DECL|field|NO_RESULTS_COLOR
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|Color
@@ -426,7 +426,7 @@ literal|202
 argument_list|)
 decl_stmt|;
 DECL|field|RESULTS_FOUND_COLOR
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|Color
@@ -443,7 +443,7 @@ literal|202
 argument_list|)
 decl_stmt|;
 DECL|field|ADVANCED_SEARCH_COLOR
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|Color
@@ -1459,7 +1459,7 @@ expr_stmt|;
 block|}
 comment|/**      * Save current settings.      */
 DECL|method|updatePreferences ()
-specifier|public
+specifier|private
 name|void
 name|updatePreferences
 parameter_list|()
@@ -1593,10 +1593,20 @@ argument_list|)
 expr_stmt|;
 name|basePanel
 operator|.
+name|mainTable
+operator|.
+name|getTableModel
+argument_list|()
+operator|.
 name|stopShowingFloatSearch
 argument_list|()
 expr_stmt|;
 name|basePanel
+operator|.
+name|mainTable
+operator|.
+name|getTableModel
+argument_list|()
 operator|.
 name|getFilterSearchToggle
 argument_list|()
@@ -1633,6 +1643,11 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+DECL|field|worker
+specifier|private
+name|SearchWorker
+name|worker
+decl_stmt|;
 comment|/**      * Performs a new search based on the current search query.      */
 DECL|method|performSearch ()
 specifier|private
@@ -1640,6 +1655,21 @@ name|void
 name|performSearch
 parameter_list|()
 block|{
+if|if
+condition|(
+name|worker
+operator|!=
+literal|null
+condition|)
+block|{
+name|worker
+operator|.
+name|cancel
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+block|}
 comment|// An empty search field should cause the search to be cleared.
 if|if
 condition|(
@@ -1693,9 +1723,8 @@ argument_list|()
 expr_stmt|;
 return|return;
 block|}
-name|SearchWorker
 name|worker
-init|=
+operator|=
 operator|new
 name|SearchWorker
 argument_list|(
@@ -1705,21 +1734,10 @@ name|searchQuery
 argument_list|,
 name|searchMode
 argument_list|)
-decl_stmt|;
-name|worker
-operator|.
-name|getWorker
-argument_list|()
-operator|.
-name|run
-argument_list|()
 expr_stmt|;
 name|worker
 operator|.
-name|getCallBack
-argument_list|()
-operator|.
-name|update
+name|execute
 argument_list|()
 expr_stmt|;
 block|}
@@ -1757,10 +1775,20 @@ argument_list|)
 expr_stmt|;
 name|basePanel
 operator|.
+name|mainTable
+operator|.
+name|getTableModel
+argument_list|()
+operator|.
 name|stopShowingFloatSearch
 argument_list|()
 expr_stmt|;
 name|basePanel
+operator|.
+name|mainTable
+operator|.
+name|getTableModel
+argument_list|()
 operator|.
 name|getFilterSearchToggle
 argument_list|()
@@ -1846,7 +1874,6 @@ name|searchQueryHighlightObservable
 return|;
 block|}
 DECL|method|isStillValidQuery (SearchQuery query)
-specifier|public
 name|boolean
 name|isStillValidQuery
 parameter_list|(
@@ -1929,7 +1956,6 @@ argument_list|)
 return|;
 block|}
 DECL|method|updateResults (int matched, String description, boolean grammarBasedSearch)
-specifier|public
 name|void
 name|updateResults
 parameter_list|(

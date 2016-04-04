@@ -1633,6 +1633,9 @@ name|panel
 operator|.
 name|mainTable
 operator|.
+name|getTableModel
+argument_list|()
+operator|.
 name|refreshSorting
 argument_list|()
 expr_stmt|;
