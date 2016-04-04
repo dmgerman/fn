@@ -547,6 +547,20 @@ name|markingComparator
 operator|=
 literal|null
 expr_stmt|;
+name|updateSearchState
+argument_list|(
+name|DisplayOption
+operator|.
+name|DISABLED
+argument_list|)
+expr_stmt|;
+name|updateGroupingState
+argument_list|(
+name|DisplayOption
+operator|.
+name|DISABLED
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|updateSearchState (DisplayOption searchState)
 specifier|public
