@@ -43,6 +43,9 @@ block|,
 DECL|enumConstant|EXTERNAL
 name|EXTERNAL
 block|,
+DECL|enumConstant|DOI
+name|DOI
+block|,
 DECL|enumConstant|SET_OWNER
 name|SET_OWNER
 block|,
