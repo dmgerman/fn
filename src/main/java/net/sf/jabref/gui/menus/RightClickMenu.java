@@ -560,8 +560,10 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Copy special"
+literal|"Copy"
 argument_list|)
+operator|+
+literal|"..."
 argument_list|)
 decl_stmt|;
 name|copySpecialMenu
