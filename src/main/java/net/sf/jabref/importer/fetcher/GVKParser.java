@@ -481,7 +481,7 @@ init|=
 literal|null
 decl_stmt|;
 name|String
-name|date
+name|year
 init|=
 literal|null
 decl_stmt|;
@@ -938,7 +938,7 @@ name|datafield
 argument_list|)
 expr_stmt|;
 block|}
-comment|//date
+comment|//year
 if|if
 condition|(
 literal|"011@"
@@ -949,7 +949,7 @@ name|tag
 argument_list|)
 condition|)
 block|{
-name|date
+name|year
 operator|=
 name|getSubfield
 argument_list|(
@@ -959,7 +959,7 @@ name|datafield
 argument_list|)
 expr_stmt|;
 block|}
-comment|//date, volume, number, pages (year bei Zeitschriften (evtl. redundant mit 011@))
+comment|//year, volume, number, pages (year bei Zeitschriften (evtl. redundant mit 011@))
 if|if
 condition|(
 literal|"031A"
@@ -970,7 +970,7 @@ name|tag
 argument_list|)
 condition|)
 block|{
-name|date
+name|year
 operator|=
 name|getSubfield
 argument_list|(
@@ -1914,7 +1914,7 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-name|date
+name|year
 operator|!=
 literal|null
 condition|)
@@ -1923,9 +1923,9 @@ name|result
 operator|.
 name|setField
 argument_list|(
-literal|"date"
+literal|"year"
 argument_list|,
-name|date
+name|year
 argument_list|)
 expr_stmt|;
 block|}
