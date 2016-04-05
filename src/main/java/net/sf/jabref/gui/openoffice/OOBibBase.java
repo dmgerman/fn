@@ -8379,7 +8379,6 @@ name|int
 name|hashCode
 parameter_list|()
 block|{
-comment|// TODO Auto-generated method stub
 return|return
 name|Objects
 operator|.

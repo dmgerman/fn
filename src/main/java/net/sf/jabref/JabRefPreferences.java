@@ -6293,14 +6293,18 @@ operator|.
 name|FALSE
 argument_list|)
 expr_stmt|;
-comment|// TODO l10n issue
 name|defaults
 operator|.
 name|put
 argument_list|(
 name|EMAIL_SUBJECT
 argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"References"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|defaults

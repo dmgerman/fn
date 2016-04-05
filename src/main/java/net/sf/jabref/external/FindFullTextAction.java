@@ -382,7 +382,6 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-comment|// FIXME: Localization
 name|JOptionPane
 operator|.
 name|showMessageDialog
@@ -392,9 +391,37 @@ operator|.
 name|frame
 argument_list|()
 argument_list|,
-literal|"Main file directory not set! Preferences -> External programs"
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Main file directory not set!"
+argument_list|)
+operator|+
+literal|" "
+operator|+
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Preferences"
+argument_list|)
+operator|+
+literal|" -> "
+operator|+
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"External programs"
+argument_list|)
 argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Directory not found"
+argument_list|)
 argument_list|,
 name|JOptionPane
 operator|.
@@ -578,7 +605,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Full text article download failed"
+literal|"Full text document download failed"
 argument_list|)
 decl_stmt|;
 name|basePanel
