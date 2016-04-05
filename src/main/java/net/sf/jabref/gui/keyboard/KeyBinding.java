@@ -45,7 +45,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Abbreviate"
+literal|"Abbreviate journal names"
 argument_list|)
 argument_list|,
 literal|"ctrl alt A"
@@ -75,7 +75,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Automatically link files"
+literal|"Automatically set file links"
 argument_list|)
 argument_list|,
 literal|"alt F"
@@ -105,7 +105,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Cleanup"
+literal|"Cleanup entries"
 argument_list|)
 argument_list|,
 literal|"ctrl shift F7"
@@ -1014,7 +1014,7 @@ block|,
 DECL|enumConstant|SAVE_DATABASE_AS
 name|SAVE_DATABASE_AS
 argument_list|(
-literal|"Save database as..."
+literal|"Save database as ..."
 argument_list|,
 name|Localization
 operator|.

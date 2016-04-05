@@ -420,7 +420,8 @@ argument_list|(
 name|fileNames
 argument_list|)
 decl_stmt|;
-assert|assert
+if|if
+condition|(
 name|res
 operator|.
 name|getEntries
@@ -430,7 +431,8 @@ name|size
 argument_list|()
 operator|==
 literal|1
-assert|;
+condition|)
+block|{
 return|return
 name|Optional
 operator|.
@@ -447,6 +449,16 @@ literal|0
 argument_list|)
 argument_list|)
 return|;
+block|}
+else|else
+block|{
+return|return
+name|Optional
+operator|.
+name|empty
+argument_list|()
+return|;
+block|}
 comment|/*addEntryDataFromPDDocumentInformation(pdfFile, entry);         addEntryDataFromXMP(pdfFile, entry);          if (entry.getField("title") == null) {         	entry.setField("title", pdfFile.getName());         }          return entry;*/
 block|}
 comment|/** Adds entry data read from the PDDocument information of the file.      * @param pdfFile      * @param entry      */

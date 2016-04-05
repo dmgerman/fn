@@ -488,6 +488,22 @@ name|jabref
 operator|.
 name|gui
 operator|.
+name|plaintextimport
+operator|.
+name|TextInputDialog
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
 name|search
 operator|.
 name|SearchBar
@@ -959,24 +975,6 @@ operator|.
 name|exporter
 operator|.
 name|DBExporter
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|wizard
-operator|.
-name|text
-operator|.
-name|gui
-operator|.
-name|TextInputDialog
 import|;
 end_import
 
@@ -3820,7 +3818,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Autogenerate BibTeX key"
+literal|"Autogenerate BibTeX keys"
 argument_list|)
 argument_list|,
 name|JOptionPane
@@ -5262,7 +5260,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"No entries or multiple entries selected."
+literal|"This operation requires exactly one item to be selected."
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -5924,10 +5922,6 @@ name|TextInputDialog
 argument_list|(
 name|frame
 argument_list|,
-literal|"import"
-argument_list|,
-literal|true
-argument_list|,
 name|bibEntry
 argument_list|)
 argument_list|;
@@ -6044,7 +6038,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"No entries selected."
+literal|"This operation requires one or more entries to be selected."
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -6388,7 +6382,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Toggle quality"
+literal|"Toggle quality assured"
 argument_list|)
 argument_list|,
 name|Localization
@@ -12357,7 +12351,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"No entries or multiple entries selected."
+literal|"This operation requires exactly one item to be selected."
 argument_list|)
 argument_list|)
 expr_stmt|;

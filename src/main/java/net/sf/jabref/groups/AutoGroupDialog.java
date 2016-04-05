@@ -832,7 +832,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Autogenerate groups"
+literal|"Automatically create groups"
 argument_list|)
 argument_list|)
 decl_stmt|;

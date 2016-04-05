@@ -114,7 +114,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Toogle quality assured"
+literal|"Toggle quality assured"
 argument_list|)
 argument_list|,
 name|IconTheme
@@ -130,7 +130,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Toogle quality assured"
+literal|"Toggle quality assured"
 argument_list|)
 argument_list|)
 argument_list|)

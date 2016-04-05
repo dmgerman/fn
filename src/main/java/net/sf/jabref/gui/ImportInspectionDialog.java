@@ -3836,40 +3836,10 @@ expr_stmt|;
 comment|// Mark entries if we should
 if|if
 condition|(
-name|Globals
+name|EntryMarker
 operator|.
-name|prefs
-operator|.
-name|getBoolean
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|MARK_IMPORTED_ENTRIES
-argument_list|)
-operator|&&
-operator|(
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getBoolean
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|USE_OWNER
-argument_list|)
-operator|||
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getBoolean
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|USE_TIME_STAMP
-argument_list|)
-operator|)
+name|shouldMarkEntries
+argument_list|()
 condition|)
 block|{
 for|for
@@ -6530,7 +6500,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Autoset external links"
+literal|"Automatically set file links"
 argument_list|)
 argument_list|)
 expr_stmt|;

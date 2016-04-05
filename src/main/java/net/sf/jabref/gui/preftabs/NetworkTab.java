@@ -600,7 +600,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Host"
+literal|"Hostname"
 argument_list|)
 operator|+
 literal|':'

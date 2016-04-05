@@ -502,12 +502,7 @@ argument_list|(
 operator|new
 name|ExportFormat
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
 literal|"Harvard RTF"
-argument_list|)
 argument_list|,
 literal|"harvard"
 argument_list|,
