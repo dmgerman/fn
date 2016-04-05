@@ -40,18 +40,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|xml
-operator|.
-name|transform
-operator|.
-name|TransformerException
-import|;
-end_import
-
-begin_import
-import|import
 name|net
 operator|.
 name|sf
