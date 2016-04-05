@@ -274,7 +274,7 @@ name|db
 init|=
 name|panel
 operator|.
-name|database
+name|getDatabase
 argument_list|()
 decl_stmt|;
 for|for
@@ -621,7 +621,7 @@ argument_list|()
 argument_list|,
 name|panel
 operator|.
-name|database
+name|getDatabase
 argument_list|()
 argument_list|,
 name|entry
@@ -636,7 +636,7 @@ name|UndoableKeyChange
 argument_list|(
 name|panel
 operator|.
-name|database
+name|getDatabase
 argument_list|()
 argument_list|,
 name|entry

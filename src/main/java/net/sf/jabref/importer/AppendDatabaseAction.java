@@ -851,7 +851,7 @@ name|database
 init|=
 name|panel
 operator|.
-name|database
+name|getDatabase
 argument_list|()
 decl_stmt|;
 name|NamedCompound

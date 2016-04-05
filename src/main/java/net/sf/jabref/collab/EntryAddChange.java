@@ -18,6 +18,16 @@ end_package
 
 begin_import
 import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|*
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -176,16 +186,6 @@ name|IdGenerator
 import|;
 end_import
 
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|*
-import|;
-end_import
-
 begin_class
 DECL|class|EntryAddChange
 class|class
@@ -295,7 +295,7 @@ argument_list|)
 expr_stmt|;
 name|panel
 operator|.
-name|database
+name|getDatabase
 argument_list|()
 operator|.
 name|insertEntry
@@ -319,7 +319,7 @@ name|UndoableInsertEntry
 argument_list|(
 name|panel
 operator|.
-name|database
+name|getDatabase
 argument_list|()
 argument_list|,
 name|diskEntry

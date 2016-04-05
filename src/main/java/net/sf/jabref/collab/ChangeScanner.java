@@ -513,7 +513,7 @@ name|inMem
 operator|=
 name|bp
 operator|.
-name|database
+name|getDatabase
 argument_list|()
 expr_stmt|;
 name|this

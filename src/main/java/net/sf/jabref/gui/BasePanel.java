@@ -26,20 +26,6 @@ name|glazedlists
 operator|.
 name|event
 operator|.
-name|ListEvent
-import|;
-end_import
-
-begin_import
-import|import
-name|ca
-operator|.
-name|odell
-operator|.
-name|glazedlists
-operator|.
-name|event
-operator|.
 name|ListEventListener
 import|;
 end_import
@@ -387,22 +373,6 @@ operator|.
 name|maintable
 operator|.
 name|MainTableSelectionListener
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|menus
-operator|.
-name|RightClickMenu
 import|;
 end_import
 
@@ -1353,11 +1323,6 @@ specifier|public
 name|MainTableFormat
 name|tableFormat
 decl_stmt|;
-DECL|field|rcm
-specifier|public
-name|RightClickMenu
-name|rcm
-decl_stmt|;
 DECL|field|showing
 specifier|private
 name|BibEntry
@@ -1558,13 +1523,9 @@ condition|)
 block|{
 if|if
 condition|(
-operator|!
 name|database
 operator|.
-name|getEntries
-argument_list|()
-operator|.
-name|isEmpty
+name|hasEntries
 argument_list|()
 condition|)
 block|{
@@ -1662,14 +1623,10 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-operator|!
-name|database
+name|getDatabase
 argument_list|()
 operator|.
-name|getEntries
-argument_list|()
-operator|.
-name|isEmpty
+name|hasEntries
 argument_list|()
 condition|)
 block|{
@@ -1761,16 +1718,6 @@ name|mode
 operator|=
 name|mode
 expr_stmt|;
-block|}
-DECL|method|database ()
-specifier|public
-name|BibDatabase
-name|database
-parameter_list|()
-block|{
-return|return
-name|database
-return|;
 block|}
 DECL|method|frame ()
 specifier|public
@@ -2720,10 +2667,9 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-operator|!
 name|db
 operator|.
-name|hasNoEntries
+name|hasEntries
 argument_list|()
 condition|)
 block|{
@@ -2949,8 +2895,6 @@ argument_list|(
 name|ce
 argument_list|)
 expr_stmt|;
-comment|//entryTable.clearSelection();
-comment|//entryTable.revalidate();
 name|output
 argument_list|(
 name|formatOutputMessage
@@ -3731,7 +3675,6 @@ operator|new
 name|AbstractWorker
 argument_list|()
 block|{
-comment|//int[] rows;
 name|List
 argument_list|<
 name|BibEntry
@@ -5198,24 +5141,21 @@ name|INSTANCE
 operator|.
 name|execute
 argument_list|(
-call|(
-name|Runnable
-call|)
-argument_list|()
-operator|->
+parameter_list|()
+lambda|->
 block|{
-name|final
+specifier|final
 name|List
 argument_list|<
 name|BibEntry
 argument_list|>
 name|bes
-operator|=
+init|=
 name|mainTable
 operator|.
 name|getSelectedEntries
 argument_list|()
-block|;
+decl_stmt|;
 if|if
 condition|(
 name|bes
@@ -5238,18 +5178,19 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
-name|final
+specifier|final
 name|BibEntry
 name|entry
-operator|=
+init|=
 name|bes
 operator|.
 name|get
 argument_list|(
 literal|0
 argument_list|)
-argument_list|;                     if
-operator|(
+decl_stmt|;
+if|if
+condition|(
 operator|!
 name|entry
 operator|.
@@ -5259,7 +5200,7 @@ name|Globals
 operator|.
 name|FILE_FIELD
 argument_list|)
-operator|)
+condition|)
 block|{
 comment|// no bibtex field
 operator|new
@@ -5274,12 +5215,9 @@ argument_list|)
 operator|.
 name|searchAndOpen
 argument_list|()
-block|;
+expr_stmt|;
 return|return;
 block|}
-end_expr_stmt
-
-begin_decl_stmt
 name|FileListTableModel
 name|tableModel
 init|=
@@ -5287,9 +5225,6 @@ operator|new
 name|FileListTableModel
 argument_list|()
 decl_stmt|;
-end_decl_stmt
-
-begin_expr_stmt
 name|tableModel
 operator|.
 name|setContent
@@ -5304,9 +5239,6 @@ name|FILE_FIELD
 argument_list|)
 argument_list|)
 expr_stmt|;
-end_expr_stmt
-
-begin_if
 if|if
 condition|(
 name|tableModel
@@ -5333,9 +5265,6 @@ argument_list|()
 expr_stmt|;
 return|return;
 block|}
-end_if
-
-begin_decl_stmt
 name|FileListEntry
 name|flEntry
 init|=
@@ -5346,9 +5275,6 @@ argument_list|(
 literal|0
 argument_list|)
 decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
 name|ExternalFileMenuItem
 name|item
 init|=
@@ -5386,20 +5312,16 @@ operator|.
 name|type
 argument_list|)
 decl_stmt|;
-end_decl_stmt
-
-begin_expr_stmt
 name|item
 operator|.
 name|openLink
 argument_list|()
 expr_stmt|;
+block|}
+argument_list|)
+argument_list|)
+expr_stmt|;
 end_expr_stmt
-
-begin_empty_stmt
-unit|}))
-empty_stmt|;
-end_empty_stmt
 
 begin_expr_stmt
 name|actions
@@ -6592,9 +6514,7 @@ argument_list|,
 name|enabled
 argument_list|)
 block|;
-name|frame
-operator|.
-name|setPreviewActive
+name|setPreviewActiveBasePanels
 argument_list|(
 name|enabled
 argument_list|)
@@ -6814,7 +6734,7 @@ name|ExportToClipboardAction
 argument_list|(
 name|frame
 argument_list|,
-name|database
+name|getDatabase
 argument_list|()
 argument_list|)
 argument_list|)
@@ -8311,7 +8231,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|//BasePanel.this.updateEntryEditorIfShowing(); // doesn't seem to be necessary
 name|SwingUtilities
 operator|.
 name|invokeLater
@@ -8821,25 +8740,8 @@ expr_stmt|;
 comment|// Add the listener that will take care of highlighting groups as the selection changes:
 name|groupsHighlightListener
 operator|=
-operator|new
-name|ListEventListener
-argument_list|<
-name|BibEntry
-argument_list|>
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|listChanged
-parameter_list|(
-name|ListEvent
-argument_list|<
-name|BibEntry
-argument_list|>
 name|listEvent
-parameter_list|)
+lambda|->
 block|{
 name|HighlightMatchingGroupPreferences
 name|highlightMatchingGroupPreferences
@@ -8910,7 +8812,6 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 expr_stmt|;
@@ -9383,7 +9284,6 @@ name|void
 name|setupMainPanel
 parameter_list|()
 block|{
-comment|//splitPane = new com.jgoodies.uif_lite.component.UIFSplitPane(JSplitPane.VERTICAL_SPLIT);
 name|splitPane
 operator|=
 operator|new
@@ -9403,10 +9303,6 @@ operator|.
 name|SPLIT_PANE_DIVIDER_SIZE
 argument_list|)
 expr_stmt|;
-comment|// We replace the default FocusTraversalPolicy with a subclass
-comment|// that only allows FieldEditor components to gain keyboard focus,
-comment|// if there is an entry editor open.
-comment|/*splitPane.setFocusTraversalPolicy(new LayoutFocusTraversalPolicy() {                 protected boolean accept(Component c) {                     if (showing == null)                         return super.accept(c);                     else                         return (super.accept(c)&&                                 (c instanceof FieldEditor));                 }                 });*/
 comment|// check whether a mainTable already existed and a floatSearch was active
 name|boolean
 name|floatSearchActive
@@ -9479,7 +9375,6 @@ name|createEmptyBorder
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|//setupTable();
 comment|// If an entry is currently being shown, make sure it stays shown,
 comment|// otherwise set the bottom component to null.
 if|if
@@ -9584,7 +9479,6 @@ name|CENTER
 argument_list|)
 expr_stmt|;
 comment|// Set up name autocompleter for search:
-comment|//if (!Globals.prefs.getBoolean("searchAutoComplete")) {
 name|instantiateSearchAutoCompleter
 argument_list|()
 expr_stmt|;
@@ -10116,7 +10010,6 @@ argument_list|(
 name|form
 argument_list|)
 expr_stmt|;
-comment|//highlightEntry(be);
 block|}
 else|else
 block|{
@@ -10157,7 +10050,6 @@ argument_list|(
 name|form
 argument_list|)
 expr_stmt|;
-comment|//highlightEntry(be);
 name|entryEditors
 operator|.
 name|put
@@ -10586,7 +10478,6 @@ argument_list|,
 name|row
 argument_list|)
 expr_stmt|;
-comment|//entryTable.setActiveRow(row);
 name|mainTable
 operator|.
 name|ensureVisible
@@ -11660,7 +11551,7 @@ end_comment
 
 begin_function
 DECL|method|setPreviewActive (boolean enabled)
-specifier|public
+specifier|private
 name|void
 name|setPreviewActive
 parameter_list|(
@@ -11671,26 +11562,6 @@ block|{
 name|selectionListener
 operator|.
 name|setPreviewActive
-argument_list|(
-name|enabled
-argument_list|)
-expr_stmt|;
-block|}
-end_function
-
-begin_function
-DECL|method|setSelectionListenerEnabled (boolean enabled)
-specifier|public
-name|void
-name|setSelectionListenerEnabled
-parameter_list|(
-name|boolean
-name|enabled
-parameter_list|)
-block|{
-name|selectionListener
-operator|.
-name|setEnabled
 argument_list|(
 name|enabled
 argument_list|)
@@ -11910,10 +11781,6 @@ literal|'.'
 argument_list|)
 expr_stmt|;
 block|}
-comment|// After everything, enable/disable the undo/redo actions
-comment|// appropriately.
-comment|//updateUndoState();
-comment|//redoAction.updateRedoState();
 name|markChangedOrUnChanged
 argument_list|()
 expr_stmt|;
@@ -12430,10 +12297,6 @@ literal|'.'
 argument_list|)
 expr_stmt|;
 block|}
-comment|// After everything, enable/disable the undo/redo actions
-comment|// appropriately.
-comment|//updateRedoState();
-comment|//undoAction.updateUndoState();
 name|markChangedOrUnChanged
 argument_list|()
 expr_stmt|;
@@ -12553,14 +12416,10 @@ condition|(
 name|saving
 condition|)
 block|{
+comment|// We are just saving the file, so this message is most likely due to bad timing.
+comment|// If not, we'll handle it on the next polling.
 return|return;
-comment|// We are just saving the file, so this message is most likely due
 block|}
-comment|//if (updatedExternally) {
-comment|//  return;
-comment|//}
-comment|// to bad timing. If not, we'll handle it on the next polling.
-comment|//LOGGER.debug("File '"+file.getPath()+"' has been modified.");
 name|updatedExternally
 operator|=
 literal|true
@@ -12648,16 +12507,8 @@ comment|// thread:
 name|Runnable
 name|t
 init|=
-operator|new
-name|Runnable
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|run
 parameter_list|()
+lambda|->
 block|{
 comment|// Check if there is already a notification about external
 comment|// changes:
@@ -12738,9 +12589,6 @@ operator|.
 name|NAME
 argument_list|)
 expr_stmt|;
-comment|//setUpdatedExternally(false);
-comment|//scanner.displayResult();
-block|}
 block|}
 decl_stmt|;
 if|if
@@ -12766,7 +12614,6 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
-comment|//System.out.println("No changes found.");
 block|}
 block|}
 end_function
@@ -12927,110 +12774,6 @@ return|return
 name|this
 operator|.
 name|bibDatabaseContext
-return|;
-block|}
-end_function
-
-begin_comment
-comment|/**      * Get a String containing a comma-separated list of the bibtex keys of the selected entries.      *      * @return A comma-separated list of the keys of the selected entries.      */
-end_comment
-
-begin_function
-DECL|method|getKeysForSelection ()
-specifier|public
-name|String
-name|getKeysForSelection
-parameter_list|()
-block|{
-name|StringBuilder
-name|result
-init|=
-operator|new
-name|StringBuilder
-argument_list|()
-decl_stmt|;
-name|String
-name|citeKey
-decl_stmt|;
-comment|//, message = "";
-name|boolean
-name|first
-init|=
-literal|true
-decl_stmt|;
-for|for
-control|(
-name|BibEntry
-name|bes
-range|:
-name|mainTable
-operator|.
-name|getSelected
-argument_list|()
-control|)
-block|{
-name|citeKey
-operator|=
-name|bes
-operator|.
-name|getCiteKey
-argument_list|()
-expr_stmt|;
-comment|// if the key is empty we give a warning and ignore this entry
-if|if
-condition|(
-operator|(
-name|citeKey
-operator|==
-literal|null
-operator|)
-operator|||
-name|citeKey
-operator|.
-name|isEmpty
-argument_list|()
-condition|)
-block|{
-continue|continue;
-block|}
-if|if
-condition|(
-name|first
-condition|)
-block|{
-name|result
-operator|.
-name|append
-argument_list|(
-name|citeKey
-argument_list|)
-expr_stmt|;
-name|first
-operator|=
-literal|false
-expr_stmt|;
-block|}
-else|else
-block|{
-name|result
-operator|.
-name|append
-argument_list|(
-literal|','
-argument_list|)
-operator|.
-name|append
-argument_list|(
-name|citeKey
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-return|return
-name|result
-operator|.
-name|toString
-argument_list|()
 return|;
 block|}
 end_function
@@ -14186,6 +13929,57 @@ return|;
 block|}
 block|}
 end_class
+
+begin_comment
+comment|/**      * Set the preview active state for all BasePanel instances.      *      * @param enabled      */
+end_comment
+
+begin_function
+DECL|method|setPreviewActiveBasePanels (boolean enabled)
+specifier|private
+name|void
+name|setPreviewActiveBasePanels
+parameter_list|(
+name|boolean
+name|enabled
+parameter_list|)
+block|{
+for|for
+control|(
+name|int
+name|i
+init|=
+literal|0
+init|;
+name|i
+operator|<
+name|frame
+operator|.
+name|getTabbedPane
+argument_list|()
+operator|.
+name|getTabCount
+argument_list|()
+condition|;
+name|i
+operator|++
+control|)
+block|{
+name|frame
+operator|.
+name|getBasePanelAt
+argument_list|(
+name|i
+argument_list|)
+operator|.
+name|setPreviewActive
+argument_list|(
+name|enabled
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+end_function
 
 unit|}
 end_unit

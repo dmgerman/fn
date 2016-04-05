@@ -196,22 +196,6 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|desktop
-operator|.
-name|JabRefDesktop
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
 name|help
 operator|.
 name|AboutAction
@@ -327,22 +311,6 @@ operator|.
 name|keyboard
 operator|.
 name|KeyBindingsDialog
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|maintable
-operator|.
-name|MainTableDataModel
 import|;
 end_import
 
@@ -886,27 +854,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|ArrayList
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Arrays
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|LinkedList
+name|*
 import|;
 end_import
 
@@ -917,16 +865,6 @@ operator|.
 name|util
 operator|.
 name|List
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Objects
 import|;
 end_import
 
@@ -4505,20 +4443,6 @@ specifier|private
 name|GeneralFetcher
 name|generalFetcher
 decl_stmt|;
-DECL|field|fetcherActions
-specifier|private
-specifier|final
-name|List
-argument_list|<
-name|Action
-argument_list|>
-name|fetcherActions
-init|=
-operator|new
-name|LinkedList
-argument_list|<>
-argument_list|()
-decl_stmt|;
 DECL|field|groupSelector
 specifier|private
 name|GroupSelector
@@ -5590,74 +5514,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Tries to open a browser with the given URL      *<p>      * All errors are logged      *      * @param url the url to open      */
-DECL|method|openBrowser (String url)
-specifier|public
-name|void
-name|openBrowser
-parameter_list|(
-name|String
-name|url
-parameter_list|)
-block|{
-try|try
-block|{
-name|JabRefDesktop
-operator|.
-name|openBrowser
-argument_list|(
-name|url
-argument_list|)
-expr_stmt|;
-name|output
-argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"External viewer called"
-argument_list|)
-operator|+
-literal|'.'
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|IOException
-name|ex
-parameter_list|)
-block|{
-name|output
-argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Error"
-argument_list|)
-operator|+
-literal|": "
-operator|+
-name|ex
-operator|.
-name|getMessage
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|LOGGER
-operator|.
-name|debug
-argument_list|(
-literal|"Cannot open browser."
-argument_list|,
-name|ex
-argument_list|)
-expr_stmt|;
-block|}
-block|}
 DECL|method|refreshTitleAndTabs ()
-specifier|public
+specifier|private
 name|void
 name|refreshTitleAndTabs
 parameter_list|()
@@ -7285,7 +7143,7 @@ return|;
 block|}
 comment|/**      * handle the color of active and inactive JTabbedPane tabs      */
 DECL|method|markActiveBasePanel ()
-specifier|public
+specifier|private
 name|void
 name|markActiveBasePanel
 parameter_list|()
@@ -7522,6 +7380,7 @@ argument_list|)
 return|;
 block|}
 DECL|class|GeneralAction
+specifier|private
 class|class
 name|GeneralAction
 extends|extends
@@ -8099,7 +7958,6 @@ name|getOpenDatabaseAction
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|//opendatabaseaction
 name|file
 operator|.
 name|add
@@ -10303,51 +10161,6 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|stopShowingSearchResults ()
-specifier|public
-name|void
-name|stopShowingSearchResults
-parameter_list|()
-block|{
-for|for
-control|(
-name|int
-name|i
-init|=
-literal|0
-init|;
-name|i
-operator|<
-name|tabbedPane
-operator|.
-name|getTabCount
-argument_list|()
-condition|;
-name|i
-operator|++
-control|)
-block|{
-name|getBasePanelAt
-argument_list|(
-name|i
-argument_list|)
-operator|.
-name|mainTable
-operator|.
-name|getTableModel
-argument_list|()
-operator|.
-name|updateSearchState
-argument_list|(
-name|MainTableDataModel
-operator|.
-name|DisplayOption
-operator|.
-name|DISABLED
-argument_list|)
-expr_stmt|;
-block|}
-block|}
 DECL|method|initActions ()
 specifier|private
 name|void
@@ -10518,13 +10331,6 @@ operator|.
 name|getComponent
 argument_list|()
 argument_list|)
-argument_list|)
-expr_stmt|;
-name|openDatabaseOnlyActions
-operator|.
-name|addAll
-argument_list|(
-name|fetcherActions
 argument_list|)
 expr_stmt|;
 name|openDatabaseOnlyActions
@@ -11366,6 +11172,7 @@ block|}
 block|}
 block|}
 DECL|class|SelectKeysAction
+specifier|private
 class|class
 name|SelectKeysAction
 extends|extends
@@ -11470,6 +11277,7 @@ block|}
 block|}
 comment|/**      * The action concerned with closing the window.      */
 DECL|class|CloseAction
+specifier|private
 class|class
 name|CloseAction
 extends|extends
@@ -11545,6 +11353,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|class|ShowPrefsAction
+specifier|private
 class|class
 name|ShowPrefsAction
 extends|extends
@@ -11713,46 +11522,6 @@ block|{
 return|return
 name|fileHistory
 return|;
-block|}
-comment|/**      * Set the preview active state for all BasePanel instances.      *      * @param enabled      */
-DECL|method|setPreviewActive (boolean enabled)
-specifier|public
-name|void
-name|setPreviewActive
-parameter_list|(
-name|boolean
-name|enabled
-parameter_list|)
-block|{
-for|for
-control|(
-name|int
-name|i
-init|=
-literal|0
-init|;
-name|i
-operator|<
-name|tabbedPane
-operator|.
-name|getTabCount
-argument_list|()
-condition|;
-name|i
-operator|++
-control|)
-block|{
-name|getBasePanelAt
-argument_list|(
-name|i
-argument_list|)
-operator|.
-name|setPreviewActive
-argument_list|(
-name|enabled
-argument_list|)
-expr_stmt|;
-block|}
 block|}
 DECL|method|removeCachedEntryEditors ()
 specifier|public
@@ -12013,6 +11782,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|class|ChangeTabAction
+specifier|private
 class|class
 name|ChangeTabAction
 extends|extends
@@ -12170,6 +11940,7 @@ block|}
 block|}
 comment|/**      * Class for handling general actions; cut, copy and paste. The focused component is      * kept track of by Globals.focusListener, and we call the action stored under the      * relevant name in its action map.      */
 DECL|class|EditAction
+specifier|private
 class|class
 name|EditAction
 extends|extends
@@ -12315,6 +12086,7 @@ block|}
 block|}
 block|}
 DECL|class|CustomizeExportsAction
+specifier|private
 class|class
 name|CustomizeExportsAction
 extends|extends
@@ -12372,6 +12144,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|class|CustomizeImportsAction
+specifier|private
 class|class
 name|CustomizeImportsAction
 extends|extends
@@ -12429,6 +12202,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|class|CustomizeEntryTypeAction
+specifier|private
 class|class
 name|CustomizeEntryTypeAction
 extends|extends
@@ -12495,6 +12269,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|class|GenFieldsCustomizationAction
+specifier|private
 class|class
 name|GenFieldsCustomizationAction
 extends|extends
@@ -12561,6 +12336,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|class|DatabasePropertiesAction
+specifier|private
 class|class
 name|DatabasePropertiesAction
 extends|extends
@@ -12647,6 +12423,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|class|BibtexKeyPatternAction
+specifier|private
 class|class
 name|BibtexKeyPatternAction
 extends|extends
@@ -12746,6 +12523,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|class|IncreaseTableFontSizeAction
+specifier|private
 class|class
 name|IncreaseTableFontSizeAction
 extends|extends
@@ -12892,6 +12670,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|class|DecreaseTableFontSizeAction
+specifier|private
 class|class
 name|DecreaseTableFontSizeAction
 extends|extends
@@ -13179,7 +12958,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|showSaveDialog (String filename)
-specifier|public
+specifier|private
 name|int
 name|showSaveDialog
 parameter_list|(
@@ -13536,7 +13315,7 @@ name|open
 return|;
 block|}
 DECL|class|CloseDatabaseAction
-specifier|public
+specifier|private
 class|class
 name|CloseDatabaseAction
 extends|extends
@@ -13627,7 +13406,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|class|CloseAllDatabasesAction
-specifier|public
+specifier|private
 class|class
 name|CloseAllDatabasesAction
 extends|extends
@@ -13674,7 +13453,7 @@ block|}
 block|}
 block|}
 DECL|class|CloseOtherDatabasesAction
-specifier|public
+specifier|private
 class|class
 name|CloseOtherDatabasesAction
 extends|extends

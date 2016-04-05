@@ -4615,9 +4615,10 @@ throw|;
 block|}
 if|if
 condition|(
+operator|!
 name|database
 operator|.
-name|hasNoEntries
+name|hasEntries
 argument_list|()
 condition|)
 block|{
