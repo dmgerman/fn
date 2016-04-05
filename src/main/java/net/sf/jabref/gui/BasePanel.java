@@ -2910,8 +2910,6 @@ argument_list|(
 name|ce
 argument_list|)
 expr_stmt|;
-comment|//entryTable.clearSelection();
-comment|//entryTable.revalidate();
 name|output
 argument_list|(
 name|formatOutputMessage
@@ -3692,7 +3690,6 @@ operator|new
 name|AbstractWorker
 argument_list|()
 block|{
-comment|//int[] rows;
 name|List
 argument_list|<
 name|BibEntry
@@ -8249,7 +8246,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|//BasePanel.this.updateEntryEditorIfShowing(); // doesn't seem to be necessary
 name|SwingUtilities
 operator|.
 name|invokeLater
@@ -8666,7 +8662,6 @@ name|void
 name|createMainTable
 parameter_list|()
 block|{
-comment|//Comparator comp = new FieldComparator("author");
 specifier|final
 name|GlazedEntrySorter
 name|eventList
@@ -9374,7 +9369,6 @@ name|void
 name|setupMainPanel
 parameter_list|()
 block|{
-comment|//splitPane = new com.jgoodies.uif_lite.component.UIFSplitPane(JSplitPane.VERTICAL_SPLIT);
 name|splitPane
 operator|=
 operator|new
@@ -9394,10 +9388,6 @@ operator|.
 name|SPLIT_PANE_DIVIDER_SIZE
 argument_list|)
 expr_stmt|;
-comment|// We replace the default FocusTraversalPolicy with a subclass
-comment|// that only allows FieldEditor components to gain keyboard focus,
-comment|// if there is an entry editor open.
-comment|/*splitPane.setFocusTraversalPolicy(new LayoutFocusTraversalPolicy() {                 protected boolean accept(Component c) {                     if (showing == null)                         return super.accept(c);                     else                         return (super.accept(c)&&                                 (c instanceof FieldEditor));                 }                 });*/
 comment|// check whether a mainTable already existed and a floatSearch was active
 name|boolean
 name|floatSearchActive
@@ -9460,7 +9450,6 @@ name|createEmptyBorder
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|//setupTable();
 comment|// If an entry is currently being shown, make sure it stays shown,
 comment|// otherwise set the bottom component to null.
 if|if
@@ -9565,7 +9554,6 @@ name|CENTER
 argument_list|)
 expr_stmt|;
 comment|// Set up name autocompleter for search:
-comment|//if (!Globals.prefs.getBoolean("searchAutoComplete")) {
 name|instantiateSearchAutoCompleter
 argument_list|()
 expr_stmt|;
@@ -10095,7 +10083,6 @@ argument_list|(
 name|form
 argument_list|)
 expr_stmt|;
-comment|//highlightEntry(be);
 block|}
 else|else
 block|{
@@ -10136,7 +10123,6 @@ argument_list|(
 name|form
 argument_list|)
 expr_stmt|;
-comment|//highlightEntry(be);
 name|entryEditors
 operator|.
 name|put
@@ -10565,7 +10551,6 @@ argument_list|,
 name|row
 argument_list|)
 expr_stmt|;
-comment|//entryTable.setActiveRow(row);
 name|mainTable
 operator|.
 name|ensureVisible
@@ -12089,10 +12074,6 @@ literal|'.'
 argument_list|)
 expr_stmt|;
 block|}
-comment|// After everything, enable/disable the undo/redo actions
-comment|// appropriately.
-comment|//updateUndoState();
-comment|//redoAction.updateRedoState();
 name|markChangedOrUnChanged
 argument_list|()
 expr_stmt|;
@@ -12609,10 +12590,6 @@ literal|'.'
 argument_list|)
 expr_stmt|;
 block|}
-comment|// After everything, enable/disable the undo/redo actions
-comment|// appropriately.
-comment|//updateRedoState();
-comment|//undoAction.updateUndoState();
 name|markChangedOrUnChanged
 argument_list|()
 expr_stmt|;
@@ -12732,14 +12709,10 @@ condition|(
 name|saving
 condition|)
 block|{
+comment|// We are just saving the file, so this message is most likely due to bad timing.
+comment|// If not, we'll handle it on the next polling.
 return|return;
-comment|// We are just saving the file, so this message is most likely due
 block|}
-comment|//if (updatedExternally) {
-comment|//  return;
-comment|//}
-comment|// to bad timing. If not, we'll handle it on the next polling.
-comment|//LOGGER.debug("File '"+file.getPath()+"' has been modified.");
 name|updatedExternally
 operator|=
 literal|true
@@ -12909,8 +12882,6 @@ operator|.
 name|NAME
 argument_list|)
 expr_stmt|;
-comment|//setUpdatedExternally(false);
-comment|//scanner.displayResult();
 block|}
 decl_stmt|;
 if|if
@@ -12936,7 +12907,6 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
-comment|//System.out.println("No changes found.");
 block|}
 block|}
 end_function
