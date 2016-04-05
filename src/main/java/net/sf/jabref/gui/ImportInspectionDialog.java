@@ -6530,7 +6530,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Autoset external links"
+literal|"Automatically set file links"
 argument_list|)
 argument_list|)
 expr_stmt|;

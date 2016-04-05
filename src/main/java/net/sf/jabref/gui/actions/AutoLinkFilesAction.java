@@ -449,7 +449,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Finished autosetting external links."
+literal|"Finished automatically setting external links."
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -466,7 +466,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Finished autosetting external links."
+literal|"Finished automatically setting external links."
 argument_list|)
 operator|+
 literal|" "

@@ -3855,7 +3855,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Autogenerate BibTeX key"
+literal|"Autogenerate BibTeX keys"
 argument_list|)
 argument_list|,
 name|JOptionPane
@@ -6423,7 +6423,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Toggle quality"
+literal|"Toggle quality assured"
 argument_list|)
 argument_list|,
 name|Localization

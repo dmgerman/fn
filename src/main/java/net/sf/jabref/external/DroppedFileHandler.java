@@ -1914,7 +1914,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Leave file in its current directory."
+literal|"Leave file in its current directory"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1926,7 +1926,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Copy file to file directory."
+literal|"Copy file to file directory"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1938,7 +1938,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Move file to file directory."
+literal|"Move file to file directory"
 argument_list|)
 argument_list|)
 expr_stmt|;

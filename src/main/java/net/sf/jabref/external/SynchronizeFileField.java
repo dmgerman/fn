@@ -643,7 +643,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Autoset file links."
+literal|"Automatically set file links"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -677,7 +677,7 @@ argument_list|(
 name|sel
 argument_list|)
 decl_stmt|;
-comment|// Start the autosetting process:
+comment|// Start the automatically setting process:
 name|Runnable
 name|r
 init|=
@@ -1706,10 +1706,10 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Autoset file links."
+literal|"Automatically set file links"
 argument_list|)
 operator|+
-literal|' '
+literal|". "
 operator|+
 name|Localization
 operator|.
@@ -1734,10 +1734,10 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Autoset file links."
+literal|"Automatically set file links"
 argument_list|)
 operator|+
-literal|' '
+literal|". "
 operator|+
 name|Localization
 operator|.
@@ -1762,7 +1762,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Do not autoset"
+literal|"Do not automatically set"
 argument_list|)
 argument_list|,
 literal|false
@@ -1977,9 +1977,9 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Attempt to autoset file links for your entries. Autoset works if "
+literal|"Attempt to automatically set file links for your entries. Automatically setting works if "
 operator|+
-literal|"a file in your file directory or a subdirectory<BR>is named identically to an entry's BibTeX key, plus extension."
+literal|"a file in your file directory<BR>or a subdirectory is named identically to an entry's BibTeX key, plus extension."
 argument_list|)
 operator|+
 literal|"</HTML>"
@@ -1993,7 +1993,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Autoset"
+literal|"Automatically set file links"
 argument_list|)
 argument_list|)
 operator|.
