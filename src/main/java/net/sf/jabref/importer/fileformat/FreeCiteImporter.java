@@ -1308,7 +1308,7 @@ operator|.
 name|getCurrentBasePanel
 argument_list|()
 operator|.
-name|database
+name|getDatabase
 argument_list|()
 argument_list|,
 name|e

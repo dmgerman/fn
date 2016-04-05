@@ -343,7 +343,7 @@ try|try
 block|{
 name|panel
 operator|.
-name|database
+name|getDatabase
 argument_list|()
 operator|.
 name|removeString
@@ -365,7 +365,7 @@ name|panel
 argument_list|,
 name|panel
 operator|.
-name|database
+name|getDatabase
 argument_list|()
 argument_list|,
 name|string

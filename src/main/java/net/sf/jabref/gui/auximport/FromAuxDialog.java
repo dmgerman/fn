@@ -1491,12 +1491,13 @@ expr_stmt|;
 comment|// the generated database contains no entries -> no active generate-button
 if|if
 condition|(
+operator|!
 name|result
 operator|.
 name|getGeneratedBibDatabase
 argument_list|()
 operator|.
-name|hasNoEntries
+name|hasEntries
 argument_list|()
 condition|)
 block|{

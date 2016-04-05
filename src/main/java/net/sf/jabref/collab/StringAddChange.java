@@ -344,7 +344,7 @@ if|if
 condition|(
 name|panel
 operator|.
-name|database
+name|getDatabase
 argument_list|()
 operator|.
 name|hasStringLabel
@@ -378,7 +378,7 @@ try|try
 block|{
 name|panel
 operator|.
-name|database
+name|getDatabase
 argument_list|()
 operator|.
 name|addString
@@ -397,7 +397,7 @@ name|panel
 argument_list|,
 name|panel
 operator|.
-name|database
+name|getDatabase
 argument_list|()
 argument_list|,
 name|string
