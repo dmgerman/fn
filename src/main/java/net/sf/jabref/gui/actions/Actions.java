@@ -285,6 +285,15 @@ name|MERGE_ENTRIES
 init|=
 literal|"mergeEntries"
 decl_stmt|;
+DECL|field|MERGE_DOI
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|MERGE_DOI
+init|=
+literal|"mergeWithDOI"
+decl_stmt|;
 DECL|field|MOVE_TO_GROUP
 specifier|public
 specifier|static
