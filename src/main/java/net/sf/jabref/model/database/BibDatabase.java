@@ -603,7 +603,7 @@ return|return
 name|result
 return|;
 block|}
-comment|/**      * Inserts the entry, given that its ID is not already in use.      * use Util.createId(...) to make up a unique ID for an entry.      */
+comment|/**      * Inserts the entry, given that its ID is not already in use.      * use Util.createId(...) to make up a unique ID for an entry.      *      * @return false if the insert was done without a duplicate warning      */
 DECL|method|insertEntry (BibEntry entry)
 specifier|public
 specifier|synchronized

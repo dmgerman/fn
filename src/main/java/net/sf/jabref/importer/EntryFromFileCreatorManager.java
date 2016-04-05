@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
+comment|/*  Copyright (C) 2003-2016 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
 end_comment
 
 begin_package
@@ -287,7 +287,7 @@ name|EntryFromPDFCreator
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// add a creator for each ExternalFileType if there is no specialised
+comment|// add a creator for each ExternalFileType if there is no specialized
 comment|// creator existing.
 name|Collection
 argument_list|<
@@ -462,7 +462,7 @@ return|return
 literal|null
 return|;
 block|}
-comment|/**      * Trys to add a entry for each file in the List.      *      * @param files      * @param database      * @param entryType      * @return List of unexcpected import event messages including failures.      */
+comment|/**      * Tries to add a entry for each file in the List.      *      * @param files      * @param database      * @param entryType      * @return List of unexpected import event messages including failures.      */
 DECL|method|addEntrysFromFiles (List<File> files, BibDatabase database, EntryType entryType, boolean generateKeywordsFromPathToFile)
 specifier|public
 name|List
@@ -622,6 +622,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|!
 name|entry
 operator|.
 name|isPresent
@@ -791,17 +792,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"count = "
-operator|+
-name|count
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 operator|(
@@ -817,15 +807,6 @@ literal|null
 operator|)
 condition|)
 block|{
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"adding edit"
-argument_list|)
-expr_stmt|;
 name|ce
 operator|.
 name|end
