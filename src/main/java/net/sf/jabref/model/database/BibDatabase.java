@@ -208,21 +208,6 @@ name|HashSet
 argument_list|<>
 argument_list|()
 decl_stmt|;
-DECL|method|getBibType ()
-specifier|public
-name|BibDatabaseMode
-name|getBibType
-parameter_list|()
-block|{
-return|return
-name|BibDatabaseModeDetection
-operator|.
-name|inferMode
-argument_list|(
-name|this
-argument_list|)
-return|;
-block|}
 comment|/**      * Returns the number of entries.      */
 DECL|method|getEntryCount ()
 specifier|public
