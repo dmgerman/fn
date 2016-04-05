@@ -1708,13 +1708,12 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|!
 name|pr
 operator|.
 name|getDatabase
 argument_list|()
 operator|.
-name|hasNoEntries
+name|hasEntries
 argument_list|()
 operator|||
 operator|!

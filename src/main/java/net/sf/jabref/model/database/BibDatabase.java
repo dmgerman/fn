@@ -20,17 +20,23 @@ end_package
 
 begin_import
 import|import
-name|net
+name|java
 operator|.
-name|sf
+name|util
 operator|.
-name|jabref
+name|*
+import|;
+end_import
+
+begin_import
+import|import
+name|java
 operator|.
-name|model
+name|util
 operator|.
-name|entry
+name|concurrent
 operator|.
-name|BibEntry
+name|ConcurrentHashMap
 import|;
 end_import
 
@@ -46,39 +52,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexString
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|entry
-operator|.
-name|EntryUtil
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|entry
-operator|.
-name|MonthUtil
+name|*
 import|;
 end_import
 
@@ -107,28 +81,6 @@ operator|.
 name|logging
 operator|.
 name|LogFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|*
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|ConcurrentHashMap
 import|;
 end_import
 
@@ -285,14 +237,15 @@ name|size
 argument_list|()
 return|;
 block|}
-comment|/**      * Checks if the database contains no entries.      */
-DECL|method|hasNoEntries ()
+comment|/**      * Checks if the database contains entries.      */
+DECL|method|hasEntries ()
 specifier|public
 name|boolean
-name|hasNoEntries
+name|hasEntries
 parameter_list|()
 block|{
 return|return
+operator|!
 name|entries
 operator|.
 name|isEmpty

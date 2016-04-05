@@ -1161,16 +1161,13 @@ name|anythingUseful
 operator|=
 name|anythingUseful
 operator|||
-operator|(
-operator|!
 name|pr
 operator|.
 name|getDatabase
 argument_list|()
 operator|.
-name|hasNoEntries
+name|hasEntries
 argument_list|()
-operator|)
 operator|||
 operator|(
 operator|!
