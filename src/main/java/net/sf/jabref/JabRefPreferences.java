@@ -3974,7 +3974,7 @@ name|put
 argument_list|(
 name|SIZE_X
 argument_list|,
-literal|840
+literal|1024
 argument_list|)
 expr_stmt|;
 name|defaults
@@ -3983,7 +3983,7 @@ name|put
 argument_list|(
 name|SIZE_Y
 argument_list|,
-literal|680
+literal|768
 argument_list|)
 expr_stmt|;
 name|defaults
