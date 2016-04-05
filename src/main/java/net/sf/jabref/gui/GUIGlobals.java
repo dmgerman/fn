@@ -1362,7 +1362,7 @@ name|label
 operator|.
 name|setToolTipText
 argument_list|(
-name|Rank
+name|Priority
 operator|.
 name|getInstance
 argument_list|()

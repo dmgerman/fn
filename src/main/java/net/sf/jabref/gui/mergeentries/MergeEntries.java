@@ -325,7 +325,7 @@ name|LogFactory
 operator|.
 name|getLog
 argument_list|(
-name|Globals
+name|MergeEntries
 operator|.
 name|class
 argument_list|)
