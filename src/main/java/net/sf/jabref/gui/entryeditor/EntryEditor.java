@@ -3125,7 +3125,6 @@ name|EXTERNAL
 argument_list|)
 condition|)
 block|{
-comment|// Add external viewer listener for "pdf" and "url" fields.
 return|return
 name|FieldExtraComponents
 operator|.
