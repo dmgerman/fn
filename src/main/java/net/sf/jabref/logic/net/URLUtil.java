@@ -275,6 +275,26 @@ name|url
 return|;
 block|}
 block|}
+comment|/**      * Checks whether the given String is a URL.      * Currently only checks for a protocol String.      *      * @param url the String to check for a URL      * @return true if<c>url</c> contains a valid URL      */
+DECL|method|isURL (String url)
+specifier|public
+specifier|static
+name|boolean
+name|isURL
+parameter_list|(
+name|String
+name|url
+parameter_list|)
+block|{
+return|return
+name|url
+operator|.
+name|contains
+argument_list|(
+literal|"://"
+argument_list|)
+return|;
+block|}
 block|}
 end_class
 
