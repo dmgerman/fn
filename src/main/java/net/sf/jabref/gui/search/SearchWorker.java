@@ -411,15 +411,6 @@ name|isCancelled
 argument_list|()
 condition|)
 block|{
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"CANCELED"
-argument_list|)
-expr_stmt|;
 return|return;
 block|}
 try|try
