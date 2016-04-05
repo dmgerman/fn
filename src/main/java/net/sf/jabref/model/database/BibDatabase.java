@@ -132,6 +132,18 @@ name|ConcurrentHashMap
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|regex
+operator|.
+name|Pattern
+import|;
+end_import
+
 begin_comment
 comment|/**  * A bibliography database.  */
 end_comment
@@ -1493,6 +1505,20 @@ literal|null
 return|;
 block|}
 block|}
+DECL|field|RESOLVE_CONTENT_PATTERN
+specifier|private
+specifier|static
+specifier|final
+name|Pattern
+name|RESOLVE_CONTENT_PATTERN
+init|=
+name|Pattern
+operator|.
+name|compile
+argument_list|(
+literal|".*#[^#]+#.*"
+argument_list|)
+decl_stmt|;
 DECL|method|resolveContent (String result, Set<String> usedIds)
 specifier|private
 name|String
@@ -1515,12 +1541,15 @@ name|result
 decl_stmt|;
 if|if
 condition|(
+name|RESOLVE_CONTENT_PATTERN
+operator|.
+name|matcher
+argument_list|(
 name|res
+argument_list|)
 operator|.
 name|matches
-argument_list|(
-literal|".*#[^#]+#.*"
-argument_list|)
+argument_list|()
 condition|)
 block|{
 name|StringBuilder
