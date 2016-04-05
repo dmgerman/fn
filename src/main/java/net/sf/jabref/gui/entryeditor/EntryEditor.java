@@ -5553,9 +5553,21 @@ argument_list|)
 expr_stmt|;
 name|setFont
 argument_list|(
-name|GUIGlobals
+operator|new
+name|Font
+argument_list|(
+literal|"dialog"
+argument_list|,
+name|Font
 operator|.
-name|typeNameFont
+name|ITALIC
+operator|+
+name|Font
+operator|.
+name|BOLD
+argument_list|,
+literal|18
+argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Add a mouse listener so the user can right-click the type label to change the entry type:
