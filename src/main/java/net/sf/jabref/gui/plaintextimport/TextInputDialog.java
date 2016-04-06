@@ -1671,10 +1671,18 @@ block|}
 catch|catch
 parameter_list|(
 name|BadLocationException
-name|ignored
+name|ex
 parameter_list|)
 block|{
-comment|// Ignored
+name|LOGGER
+operator|.
+name|warn
+argument_list|(
+literal|"Problem setting style"
+argument_list|,
+name|ex
+argument_list|)
+expr_stmt|;
 block|}
 name|OverlayPanel
 name|testPanel
@@ -4379,10 +4387,14 @@ extends|extends
 name|AbstractAction
 block|{
 DECL|field|field
+specifier|private
+specifier|final
 name|String
 name|field
 decl_stmt|;
 DECL|field|overrideField
+specifier|private
+specifier|final
 name|Boolean
 name|overrideField
 decl_stmt|;
