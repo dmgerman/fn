@@ -71,6 +71,19 @@ argument_list|<
 name|BibEntry
 argument_list|>
 block|{
+DECL|field|INSTANCE
+specifier|public
+specifier|static
+name|Comparator
+argument_list|<
+name|BibEntry
+argument_list|>
+name|INSTANCE
+init|=
+operator|new
+name|IsMarkedComparator
+argument_list|()
+decl_stmt|;
 annotation|@
 name|Override
 DECL|method|compare (BibEntry e1, BibEntry e2)

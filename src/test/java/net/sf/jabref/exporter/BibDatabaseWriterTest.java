@@ -1057,6 +1057,16 @@ operator|+
 name|Globals
 operator|.
 name|NEWLINE
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
+operator|+
+literal|"@Comment{jabref-meta: databaseType:bibtex;}"
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
 argument_list|,
 name|stringWriter
 operator|.
@@ -1149,6 +1159,16 @@ operator|.
 name|NEWLINE
 operator|+
 literal|"}"
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
+operator|+
+literal|"@Comment{jabref-meta: databaseType:bibtex;}"
 operator|+
 name|Globals
 operator|.
@@ -1917,6 +1937,16 @@ name|Globals
 operator|.
 name|NEWLINE
 operator|+
+literal|"@Comment{jabref-meta: databaseType:bibtex;}"
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
+operator|+
 literal|"@Comment{jabref-entrytype: Customizedtype: req[required] opt[optional]}"
 operator|+
 name|Globals
@@ -2150,6 +2180,16 @@ expr_stmt|;
 name|assertEquals
 argument_list|(
 literal|"presaved serialization"
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
+operator|+
+literal|"@Comment{jabref-meta: databaseType:bibtex;}"
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
 argument_list|,
 name|stringWriter
 operator|.
@@ -2263,6 +2303,16 @@ operator|.
 name|NEWLINE
 operator|+
 literal|"}"
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
+operator|+
+literal|"@Comment{jabref-meta: databaseType:bibtex;}"
 operator|+
 name|Globals
 operator|.
@@ -3330,6 +3380,16 @@ name|Globals
 operator|.
 name|NEWLINE
 operator|+
+literal|"@Comment{jabref-meta: databaseType:bibtex;}"
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
+operator|+
 literal|"@Comment{jabref-meta: saveOrderConfig:specified;author;false;year;true;abstract;false;}"
 operator|+
 name|Globals
@@ -3600,6 +3660,16 @@ operator|.
 name|NEWLINE
 operator|+
 literal|"}"
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
+operator|+
+literal|"@Comment{jabref-meta: databaseType:bibtex;}"
 operator|+
 name|Globals
 operator|.

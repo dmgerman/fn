@@ -501,6 +501,9 @@ name|tableRows
 operator|=
 name|table
 operator|.
+name|getTableModel
+argument_list|()
+operator|.
 name|getTableRows
 argument_list|()
 expr_stmt|;
