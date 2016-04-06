@@ -20,6 +20,38 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|HashSet
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|regex
+operator|.
+name|Pattern
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -60,26 +92,6 @@ name|StringUtil
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|ArrayList
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
 begin_comment
 comment|/**  * This class provides the reformatting needed when reading BibTeX fields formatted  * in JabRef style. The reformatting must undo all formatting done by JabRef when  * writing the same fields.  */
 end_comment
@@ -93,11 +105,26 @@ block|{
 DECL|field|multiLineFields
 specifier|private
 specifier|final
-name|List
+name|HashSet
 argument_list|<
 name|String
 argument_list|>
 name|multiLineFields
+decl_stmt|;
+comment|// 's' matches a space, tab, new line, carriage return.
+DECL|field|WHITESPACE
+specifier|private
+specifier|static
+specifier|final
+name|Pattern
+name|WHITESPACE
+init|=
+name|Pattern
+operator|.
+name|compile
+argument_list|(
+literal|"\\s+"
+argument_list|)
 decl_stmt|;
 DECL|method|FieldContentParser ()
 specifier|public
@@ -107,7 +134,7 @@ block|{
 name|multiLineFields
 operator|=
 operator|new
-name|ArrayList
+name|HashSet
 argument_list|<>
 argument_list|()
 expr_stmt|;
@@ -152,34 +179,19 @@ name|nonWrappableFields
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Performs the reformatting      *      * @param text2     StringBuffer containing the field to format. bibtexField contains field name according to field      * @param bibtexField      * @return The formatted field content. The StringBuffer returned may or may not be the same as the argument given.      */
-DECL|method|format (StringBuilder text2, String bibtexField)
+comment|/**      * Performs the reformatting      *      * @param fieldContent the content to format      * @param bibtexField the name of the bibtex field      * @return the formatted field content.      */
+DECL|method|format (String fieldContent, String bibtexField)
 specifier|public
-name|StringBuilder
+name|String
 name|format
 parameter_list|(
-name|StringBuilder
-name|text2
+name|String
+name|fieldContent
 parameter_list|,
 name|String
 name|bibtexField
 parameter_list|)
 block|{
-comment|// Unify line breaks
-name|String
-name|text
-init|=
-name|StringUtil
-operator|.
-name|unifyLineBreaksToConfiguredLineBreaks
-argument_list|(
-name|text2
-operator|.
-name|toString
-argument_list|()
-argument_list|)
-decl_stmt|;
-comment|// Do not format multiline fields
 if|if
 condition|(
 name|multiLineFields
@@ -190,41 +202,37 @@ name|bibtexField
 argument_list|)
 condition|)
 block|{
+comment|// Unify line breaks
 return|return
-operator|new
-name|StringBuilder
+name|StringUtil
+operator|.
+name|unifyLineBreaksToConfiguredLineBreaks
 argument_list|(
-name|text
+name|fieldContent
 argument_list|)
 return|;
 block|}
-comment|// 's' matches a space, tab, new line, carriage return.
-name|text
-operator|=
-name|text
+return|return
+name|WHITESPACE
+operator|.
+name|matcher
+argument_list|(
+name|fieldContent
+argument_list|)
 operator|.
 name|replaceAll
 argument_list|(
-literal|"\\s+"
-argument_list|,
 literal|" "
-argument_list|)
-expr_stmt|;
-return|return
-operator|new
-name|StringBuilder
-argument_list|(
-name|text
 argument_list|)
 return|;
 block|}
-DECL|method|format (String content, String bibtexField)
+DECL|method|format (StringBuilder fieldContent, String bibtexField)
 specifier|public
 name|String
 name|format
 parameter_list|(
-name|String
-name|content
+name|StringBuilder
+name|fieldContent
 parameter_list|,
 name|String
 name|bibtexField
@@ -233,17 +241,13 @@ block|{
 return|return
 name|format
 argument_list|(
-operator|new
-name|StringBuilder
-argument_list|(
-name|content
-argument_list|)
-argument_list|,
-name|bibtexField
-argument_list|)
+name|fieldContent
 operator|.
 name|toString
 argument_list|()
+argument_list|,
+name|bibtexField
+argument_list|)
 return|;
 block|}
 block|}
