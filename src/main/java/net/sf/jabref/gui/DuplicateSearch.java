@@ -530,7 +530,7 @@ name|DuplicateCallBack
 argument_list|(
 name|JabRef
 operator|.
-name|jrf
+name|mainFrame
 argument_list|,
 name|be
 index|[

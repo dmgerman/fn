@@ -3625,9 +3625,6 @@ operator|.
 name|OS_X
 condition|)
 block|{
-comment|//defaults.put(JabRefPreferences.PDFVIEWER, "/Applications/Preview.app");
-comment|//defaults.put(JabRefPreferences.PSVIEWER, "/Applications/Preview.app");
-comment|//defaults.put("htmlviewer", "/Applications/Safari.app");
 name|defaults
 operator|.
 name|put
@@ -3685,9 +3682,6 @@ operator|.
 name|WINDOWS
 condition|)
 block|{
-comment|//defaults.put(JabRefPreferences.PDFVIEWER, "cmd.exe /c start /b");
-comment|//defaults.put(JabRefPreferences.PSVIEWER, "cmd.exe /c start /b");
-comment|//defaults.put("htmlviewer", "cmd.exe /c start /b");
 name|defaults
 operator|.
 name|put
@@ -3736,9 +3730,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-comment|//defaults.put(JabRefPreferences.PDFVIEWER, "evince");
-comment|//defaults.put(JabRefPreferences.PSVIEWER, "gv");
-comment|//defaults.put("htmlviewer", "firefox");
+comment|// Linux
 name|defaults
 operator|.
 name|put
@@ -3757,7 +3749,6 @@ argument_list|,
 literal|"SansSerif"
 argument_list|)
 expr_stmt|;
-comment|// linux
 name|defaults
 operator|.
 name|put

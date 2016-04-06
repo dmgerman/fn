@@ -664,11 +664,11 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|field|jrf
+DECL|field|mainFrame
 specifier|public
 specifier|static
 name|JabRefFrame
-name|jrf
+name|mainFrame
 decl_stmt|;
 DECL|field|cli
 specifier|private
@@ -844,6 +844,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|!
 name|Globals
 operator|.
 name|REMOTE_LISTENER
@@ -851,17 +852,6 @@ operator|.
 name|isOpen
 argument_list|()
 condition|)
-block|{
-name|Globals
-operator|.
-name|REMOTE_LISTENER
-operator|.
-name|start
-argument_list|()
-expr_stmt|;
-comment|// we are alone, we start the server
-block|}
-else|else
 block|{
 comment|// we are not alone, there is already a server out there, try to contact already running JabRef:
 if|if
@@ -879,7 +869,8 @@ argument_list|()
 argument_list|)
 condition|)
 block|{
-comment|/*                      * We have successfully sent our command line options                      * through the socket to another JabRef instance. So we                      * assume it's all taken care of, and quit.                      */
+comment|// We have successfully sent our command line options through the socket to another JabRef instance.
+comment|// So we assume it's all taken care of, and quit.
 name|System
 operator|.
 name|out
@@ -904,6 +895,14 @@ expr_stmt|;
 return|return;
 block|}
 block|}
+comment|// we are alone, we start the server
+name|Globals
+operator|.
+name|REMOTE_LISTENER
+operator|.
+name|start
+argument_list|()
+expr_stmt|;
 block|}
 comment|// override used newline character with the one stored in the preferences
 comment|// The preferences return the system newline character sequence as default
@@ -1791,7 +1790,6 @@ name|empty
 argument_list|()
 return|;
 block|}
-comment|//end switch
 comment|//export new database
 name|IExportFormat
 name|format
@@ -1920,7 +1918,6 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/*end if newBase != null*/
 else|else
 block|{
 name|System
@@ -1956,7 +1953,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|//end if(loaded.size> 0)
 block|}
 if|if
 condition|(
@@ -2601,7 +2597,6 @@ operator|.
 name|isEmpty
 argument_list|()
 condition|)
-comment|// bibtex file loaded
 block|{
 name|String
 index|[]
@@ -3491,7 +3486,7 @@ name|String
 name|lookFeel
 decl_stmt|;
 name|String
-name|systemLnF
+name|systemLookFeel
 init|=
 name|UIManager
 operator|.
@@ -3512,10 +3507,9 @@ name|USE_DEFAULT_LOOK_AND_FEEL
 argument_list|)
 condition|)
 block|{
-comment|// Use system Look& Feel by default
 name|lookFeel
 operator|=
-name|systemLnF
+name|systemLookFeel
 expr_stmt|;
 block|}
 else|else
@@ -3534,10 +3528,12 @@ name|WIN_LOOK_AND_FEEL
 argument_list|)
 expr_stmt|;
 block|}
-comment|// At all cost, avoid ending up with the Metal look and feel:
 if|if
 condition|(
-literal|"javax.swing.plaf.metal.MetalLookAndFeel"
+name|UIManager
+operator|.
+name|getCrossPlatformLookAndFeelClassName
+argument_list|()
 operator|.
 name|equals
 argument_list|(
@@ -3545,6 +3541,7 @@ name|lookFeel
 argument_list|)
 condition|)
 block|{
+comment|// try to avoid ending up with the ugly Metal L&F
 name|Plastic3DLookAndFeel
 name|lnf
 init|=
@@ -3611,7 +3608,7 @@ name|UIManager
 operator|.
 name|setLookAndFeel
 argument_list|(
-name|systemLnF
+name|systemLookFeel
 argument_list|)
 expr_stmt|;
 comment|// also set system l&f as default
@@ -3625,7 +3622,7 @@ name|JabRefPreferences
 operator|.
 name|WIN_LOOK_AND_FEEL
 argument_list|,
-name|systemLnF
+name|systemLookFeel
 argument_list|)
 expr_stmt|;
 comment|// notify the user
@@ -3635,7 +3632,7 @@ name|showMessageDialog
 argument_list|(
 name|JabRef
 operator|.
-name|jrf
+name|mainFrame
 argument_list|,
 name|Localization
 operator|.
@@ -3818,8 +3815,7 @@ argument_list|>
 name|loaded
 parameter_list|)
 block|{
-comment|// Perform checks and changes for users with a preference set from an older
-comment|// JabRef version.
+comment|// Perform checks and changes for users with a preference set from an older JabRef version.
 name|PreferencesMigrations
 operator|.
 name|replaceAbstractField
@@ -3835,8 +3831,6 @@ operator|.
 name|upgradeFaultyEncodingStrings
 argument_list|()
 expr_stmt|;
-comment|// Set up custom or default icon theme:
-comment|// This is now done at processArguments
 comment|// This property is set to make the Mac OSX Java VM move the menu bar to
 comment|// the top of the screen, where Mac users expect it to be.
 name|System
@@ -3872,29 +3866,10 @@ argument_list|,
 literal|"lcd"
 argument_list|)
 expr_stmt|;
-comment|// Set the Look& Feel for Swing.
-try|try
-block|{
+comment|// Look& Feel. This MUST be the first thing to do before loading any Swing-specific code!
 name|setLookAndFeel
 argument_list|()
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|Throwable
-name|e
-parameter_list|)
-block|{
-name|LOGGER
-operator|.
-name|error
-argument_list|(
-literal|"Swing look and feel could not be loaded."
-argument_list|,
-name|e
-argument_list|)
-expr_stmt|;
-block|}
 comment|// If the option is enabled, open the last edited databases, if any.
 if|if
 condition|(
@@ -4160,7 +4135,7 @@ argument_list|)
 expr_stmt|;
 name|JabRef
 operator|.
-name|jrf
+name|mainFrame
 operator|=
 operator|new
 name|JabRefFrame
@@ -4321,7 +4296,7 @@ else|else
 block|{
 name|JabRef
 operator|.
-name|jrf
+name|mainFrame
 operator|.
 name|addParserResult
 argument_list|(
@@ -4367,7 +4342,7 @@ control|)
 block|{
 name|JabRef
 operator|.
-name|jrf
+name|mainFrame
 operator|.
 name|addParserResult
 argument_list|(
@@ -4402,7 +4377,7 @@ name|startAutoSaveManager
 argument_list|(
 name|JabRef
 operator|.
-name|jrf
+name|mainFrame
 argument_list|)
 expr_stmt|;
 block|}
@@ -4425,7 +4400,7 @@ condition|)
 block|{
 name|JabRef
 operator|.
-name|jrf
+name|mainFrame
 operator|.
 name|setExtendedState
 argument_list|(
@@ -4437,7 +4412,7 @@ expr_stmt|;
 block|}
 name|JabRef
 operator|.
-name|jrf
+name|mainFrame
 operator|.
 name|setVisible
 argument_list|(
@@ -4460,7 +4435,7 @@ condition|)
 block|{
 name|JabRef
 operator|.
-name|jrf
+name|mainFrame
 operator|.
 name|setExtendedState
 argument_list|(
@@ -4513,7 +4488,7 @@ name|showMessageDialog
 argument_list|(
 name|JabRef
 operator|.
-name|jrf
+name|mainFrame
 argument_list|,
 name|message
 argument_list|,
@@ -4573,9 +4548,7 @@ argument_list|(
 name|i
 argument_list|)
 argument_list|,
-name|JabRef
-operator|.
-name|jrf
+name|mainFrame
 argument_list|,
 name|i
 argument_list|)
@@ -4611,7 +4584,7 @@ name|i
 operator|<
 name|JabRef
 operator|.
-name|jrf
+name|mainFrame
 operator|.
 name|getBasePanelCount
 argument_list|()
@@ -4636,7 +4609,7 @@ name|panel
 init|=
 name|JabRef
 operator|.
-name|jrf
+name|mainFrame
 operator|.
 name|getBasePanelAt
 argument_list|(
@@ -4681,7 +4654,7 @@ name|AutosaveStartupPrompter
 argument_list|(
 name|JabRef
 operator|.
-name|jrf
+name|mainFrame
 argument_list|,
 name|postponed
 argument_list|)
@@ -4708,7 +4681,7 @@ name|FocusRequester
 argument_list|(
 name|JabRef
 operator|.
-name|jrf
+name|mainFrame
 operator|.
 name|getCurrentBasePanel
 argument_list|()
@@ -5170,7 +5143,7 @@ index|]
 argument_list|,
 name|JabRef
 operator|.
-name|jrf
+name|mainFrame
 argument_list|)
 expr_stmt|;
 block|}
@@ -5208,7 +5181,7 @@ argument_list|)
 argument_list|,
 name|JabRef
 operator|.
-name|jrf
+name|mainFrame
 argument_list|)
 expr_stmt|;
 block|}

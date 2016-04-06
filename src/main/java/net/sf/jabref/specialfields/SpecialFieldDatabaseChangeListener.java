@@ -188,7 +188,7 @@ argument_list|()
 expr_stmt|;
 name|JabRef
 operator|.
-name|jrf
+name|mainFrame
 operator|.
 name|getCurrentBasePanel
 argument_list|()

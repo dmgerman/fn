@@ -368,7 +368,7 @@ name|jrf
 operator|=
 name|JabRef
 operator|.
-name|jrf
+name|mainFrame
 expr_stmt|;
 name|GeneralFetcherTest
 operator|.

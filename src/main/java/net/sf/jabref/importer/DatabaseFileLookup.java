@@ -182,7 +182,7 @@ name|ofNullable
 argument_list|(
 name|JabRef
 operator|.
-name|jrf
+name|mainFrame
 operator|.
 name|getCurrentBasePanel
 argument_list|()

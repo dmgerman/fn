@@ -199,7 +199,7 @@ parameter_list|()
 lambda|->
 name|JabRef
 operator|.
-name|jrf
+name|mainFrame
 operator|.
 name|getCurrentBasePanel
 argument_list|()
@@ -238,7 +238,7 @@ parameter_list|()
 lambda|->
 name|JabRef
 operator|.
-name|jrf
+name|mainFrame
 operator|.
 name|getCurrentBasePanel
 argument_list|()

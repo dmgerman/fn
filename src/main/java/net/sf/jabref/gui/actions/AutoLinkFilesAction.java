@@ -296,7 +296,7 @@ name|entries
 init|=
 name|JabRef
 operator|.
-name|jrf
+name|mainFrame
 operator|.
 name|getCurrentBasePanel
 argument_list|()
@@ -314,7 +314,7 @@ condition|)
 block|{
 name|JabRef
 operator|.
-name|jrf
+name|mainFrame
 operator|.
 name|getCurrentBasePanel
 argument_list|()
@@ -339,7 +339,7 @@ name|JDialog
 argument_list|(
 name|JabRef
 operator|.
-name|jrf
+name|mainFrame
 argument_list|,
 literal|true
 argument_list|)
@@ -376,7 +376,7 @@ literal|null
 argument_list|,
 name|JabRef
 operator|.
-name|jrf
+name|mainFrame
 operator|.
 name|getCurrentBasePanel
 argument_list|()
@@ -416,7 +416,7 @@ argument_list|()
 expr_stmt|;
 name|JabRef
 operator|.
-name|jrf
+name|mainFrame
 operator|.
 name|getCurrentBasePanel
 argument_list|()
@@ -430,7 +430,7 @@ argument_list|)
 expr_stmt|;
 name|JabRef
 operator|.
-name|jrf
+name|mainFrame
 operator|.
 name|getCurrentBasePanel
 argument_list|()
@@ -441,7 +441,7 @@ expr_stmt|;
 block|}
 name|JabRef
 operator|.
-name|jrf
+name|mainFrame
 operator|.
 name|output
 argument_list|(
@@ -458,7 +458,7 @@ else|else
 block|{
 name|JabRef
 operator|.
-name|jrf
+name|mainFrame
 operator|.
 name|output
 argument_list|(

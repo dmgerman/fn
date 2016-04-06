@@ -108,7 +108,7 @@ argument_list|,
 literal|"HTML Format"
 argument_list|)
 decl_stmt|;
-comment|// charset could be read via JabRef.jrf.getCurrentBasePanel().getEncoding()
+comment|// charset could be read via JabRef.frame.getCurrentBasePanel().getEncoding()
 DECL|field|FLAVORS
 specifier|private
 specifier|static

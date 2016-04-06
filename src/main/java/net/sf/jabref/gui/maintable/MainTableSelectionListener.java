@@ -2114,7 +2114,7 @@ name|RightClickMenu
 argument_list|(
 name|JabRef
 operator|.
-name|jrf
+name|mainFrame
 argument_list|,
 name|panel
 argument_list|)

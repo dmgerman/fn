@@ -192,7 +192,7 @@ expr_stmt|;
 comment|// Needed for PdfImporter - still not enough
 name|JabRef
 operator|.
-name|jrf
+name|mainFrame
 operator|=
 name|mock
 argument_list|(
