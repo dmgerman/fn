@@ -3560,7 +3560,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"There are possible duplicates (marked with a 'D' icon) that haven't been resolved. Continue?"
+literal|"There are possible duplicates (marked with an icon) that haven't been resolved. Continue?"
 argument_list|)
 argument_list|,
 name|Localization
