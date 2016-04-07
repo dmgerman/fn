@@ -298,14 +298,9 @@ throws|throws
 name|IOException
 block|{
 name|Runtime
-name|runtime
-init|=
-name|Runtime
 operator|.
 name|getRuntime
 argument_list|()
-decl_stmt|;
-name|runtime
 operator|.
 name|exec
 argument_list|(
