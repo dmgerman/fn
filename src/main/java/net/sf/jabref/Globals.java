@@ -266,15 +266,6 @@ operator|new
 name|ImportFormatReader
 argument_list|()
 decl_stmt|;
-DECL|field|FILETYPE_PREFS_EXT
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|FILETYPE_PREFS_EXT
-init|=
-literal|"_dir"
-decl_stmt|;
 DECL|field|SELECTOR_META_PREFIX
 specifier|public
 specifier|static

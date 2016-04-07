@@ -465,14 +465,6 @@ name|repository
 expr_stmt|;
 name|List
 argument_list|<
-name|StringInt
-argument_list|>
-name|blockEntries
-init|=
-literal|null
-decl_stmt|;
-name|List
-argument_list|<
 name|LayoutEntry
 argument_list|>
 name|tmpEntries
@@ -481,9 +473,6 @@ operator|new
 name|ArrayList
 argument_list|<>
 argument_list|()
-decl_stmt|;
-name|LayoutEntry
-name|le
 decl_stmt|;
 name|String
 name|blockStart
@@ -541,6 +530,14 @@ name|text
 operator|=
 name|blockEnd
 expr_stmt|;
+name|List
+argument_list|<
+name|StringInt
+argument_list|>
+name|blockEntries
+init|=
+literal|null
+decl_stmt|;
 for|for
 control|(
 name|StringInt
@@ -621,13 +618,9 @@ argument_list|(
 name|parsedEntry
 argument_list|)
 expr_stmt|;
-name|le
-operator|=
-operator|new
-name|LayoutEntry
-argument_list|(
-name|blockEntries
-argument_list|,
+name|int
+name|groupType
+init|=
 name|parsedEntry
 operator|.
 name|i
@@ -643,10 +636,20 @@ else|:
 name|LayoutHelper
 operator|.
 name|IS_FIELD_START
+decl_stmt|;
+name|LayoutEntry
+name|le
+init|=
+operator|new
+name|LayoutEntry
+argument_list|(
+name|blockEntries
+argument_list|,
+name|groupType
 argument_list|,
 name|repository
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|tmpEntries
 operator|.
 name|add
@@ -1747,8 +1750,6 @@ argument_list|()
 expr_stmt|;
 name|option
 operator|=
-name|LayoutEntry
-operator|.
 name|getOptionalLayout
 argument_list|(
 name|v
@@ -1757,8 +1758,6 @@ name|get
 argument_list|(
 literal|1
 argument_list|)
-argument_list|,
-name|repository
 argument_list|)
 expr_stmt|;
 comment|// See if there was an undefined formatter:
@@ -1801,33 +1800,17 @@ block|}
 block|}
 block|}
 block|}
-DECL|method|getLayoutFormatterByName (String name, JournalAbbreviationRepository repository)
+DECL|method|getLayoutFormatterByName (String name)
 specifier|private
-specifier|static
 name|LayoutFormatter
 name|getLayoutFormatterByName
 parameter_list|(
 name|String
 name|name
-parameter_list|,
-name|JournalAbbreviationRepository
-name|repository
 parameter_list|)
 throws|throws
 name|Exception
 block|{
-if|if
-condition|(
-name|name
-operator|.
-name|isEmpty
-argument_list|()
-condition|)
-block|{
-return|return
-literal|null
-return|;
-block|}
 switch|switch
 condition|(
 name|name
@@ -2353,10 +2336,9 @@ argument_list|)
 return|;
 block|}
 block|}
-comment|/**      * Return an array of LayoutFormatters found in the given formatterName      * string (in order of appearance).      * @param repository      *      */
-DECL|method|getOptionalLayout (String formatterName, JournalAbbreviationRepository repository)
+comment|/**      * Return an array of LayoutFormatters found in the given formatterName      * string (in order of appearance).      *      */
+DECL|method|getOptionalLayout (String formatterName)
 specifier|private
-specifier|static
 name|List
 argument_list|<
 name|LayoutFormatter
@@ -2365,9 +2347,6 @@ name|getOptionalLayout
 parameter_list|(
 name|String
 name|formatterName
-parameter_list|,
-name|JournalAbbreviationRepository
-name|repository
 parameter_list|)
 block|{
 name|List
@@ -2500,13 +2479,9 @@ block|{
 name|LayoutFormatter
 name|f
 init|=
-name|LayoutEntry
-operator|.
 name|getLayoutFormatterByName
 argument_list|(
 name|className
-argument_list|,
-name|repository
 argument_list|)
 decl_stmt|;
 comment|// If this formatter accepts an argument, check if we have one, and
