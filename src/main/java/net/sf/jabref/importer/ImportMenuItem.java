@@ -713,6 +713,25 @@ expr_stmt|;
 block|}
 else|else
 block|{
+name|frame
+operator|.
+name|output
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Importing in %0 format"
+argument_list|,
+name|importer
+operator|.
+name|getFormatName
+argument_list|()
+argument_list|)
+operator|+
+literal|"..."
+argument_list|)
+expr_stmt|;
 comment|// Specific importer:
 name|ParserResult
 name|pr
