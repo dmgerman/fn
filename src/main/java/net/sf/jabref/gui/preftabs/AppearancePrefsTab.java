@@ -601,7 +601,7 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// TODO: Why not on OSX?
+comment|// only the default L&F shows the the OSX specific first dropdownmenu
 if|if
 condition|(
 operator|!
