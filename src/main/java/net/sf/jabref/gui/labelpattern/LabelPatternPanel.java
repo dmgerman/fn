@@ -742,6 +742,14 @@ argument_list|(
 name|btnDefault
 argument_list|)
 expr_stmt|;
+comment|// check if DB is open
+if|if
+condition|(
+name|panel
+operator|!=
+literal|null
+condition|)
+block|{
 for|for
 control|(
 name|EntryType
@@ -786,6 +794,7 @@ expr_stmt|;
 name|y
 operator|++
 expr_stmt|;
+block|}
 block|}
 name|con
 operator|.
