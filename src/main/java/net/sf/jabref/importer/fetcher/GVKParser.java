@@ -102,9 +102,13 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|importer
+name|logic
 operator|.
-name|ImportFormatReader
+name|util
+operator|.
+name|strings
+operator|.
+name|StringUtil
 import|;
 end_import
 
@@ -1773,7 +1777,7 @@ name|setField
 argument_list|(
 literal|"author"
 argument_list|,
-name|ImportFormatReader
+name|StringUtil
 operator|.
 name|expandAuthorInitials
 argument_list|(
@@ -1795,7 +1799,7 @@ name|setField
 argument_list|(
 literal|"editor"
 argument_list|,
-name|ImportFormatReader
+name|StringUtil
 operator|.
 name|expandAuthorInitials
 argument_list|(
