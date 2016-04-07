@@ -347,7 +347,7 @@ class|class
 name|JabRefDesktop
 block|{
 DECL|field|ND_LINUX
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|NativeDesktop
@@ -358,7 +358,7 @@ name|Linux
 argument_list|()
 decl_stmt|;
 DECL|field|ND_WINDOWS
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|NativeDesktop
@@ -369,7 +369,7 @@ name|Windows
 argument_list|()
 decl_stmt|;
 DECL|field|ND_MAC
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|NativeDesktop
@@ -380,7 +380,7 @@ name|OSX
 argument_list|()
 decl_stmt|;
 DECL|field|ND_DEFAULT
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|NativeDesktop
@@ -431,14 +431,14 @@ literal|"[a-z]+://.*"
 argument_list|)
 decl_stmt|;
 comment|/**      * Open a http/pdf/ps viewer for the given link string.      */
-DECL|method|openExternalViewer (MetaData metaData, String initialLink, String initialFieldName)
+DECL|method|openExternalViewer (BibDatabaseContext databaseContext, String initialLink, String initialFieldName)
 specifier|public
 specifier|static
 name|void
 name|openExternalViewer
 parameter_list|(
-name|MetaData
-name|metaData
+name|BibDatabaseContext
+name|databaseContext
 parameter_list|,
 name|String
 name|initialLink
@@ -483,7 +483,7 @@ name|String
 argument_list|>
 name|dir
 init|=
-name|metaData
+name|databaseContext
 operator|.
 name|getFileDirectory
 argument_list|(
@@ -872,16 +872,16 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Open an external file, attempting to use the correct viewer for it.      *      * @param metaData      *            The MetaData for the database this file belongs to.      * @param link      *            The filename.      * @return false if the link couldn't be resolved, true otherwise.      */
-DECL|method|openExternalFileAnyFormat (final MetaData metaData, String link, final Optional<ExternalFileType> type)
+comment|/**      * Open an external file, attempting to use the correct viewer for it.      *      * @param databaseContext      *            The database this file belongs to.      * @param link      *            The filename.      * @return false if the link couldn't be resolved, true otherwise.      */
+DECL|method|openExternalFileAnyFormat (final BibDatabaseContext databaseContext, String link, final Optional<ExternalFileType> type)
 specifier|public
 specifier|static
 name|boolean
 name|openExternalFileAnyFormat
 parameter_list|(
 specifier|final
-name|MetaData
-name|metaData
+name|BibDatabaseContext
+name|databaseContext
 parameter_list|,
 name|String
 name|link
@@ -948,7 +948,7 @@ name|FileUtil
 operator|.
 name|expandFilename
 argument_list|(
-name|metaData
+name|databaseContext
 argument_list|,
 name|link
 argument_list|)
@@ -1097,7 +1097,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|openExternalFileUnknown (JabRefFrame frame, BibEntry entry, MetaData metaData, String link, UnknownExternalFileType fileType)
+DECL|method|openExternalFileUnknown (JabRefFrame frame, BibEntry entry, BibDatabaseContext databaseContext, String link, UnknownExternalFileType fileType)
 specifier|public
 specifier|static
 name|boolean
@@ -1109,8 +1109,8 @@ parameter_list|,
 name|BibEntry
 name|entry
 parameter_list|,
-name|MetaData
-name|metaData
+name|BibDatabaseContext
+name|databaseContext
 parameter_list|,
 name|String
 name|link
@@ -1351,7 +1351,7 @@ comment|// Finally, open the file:
 return|return
 name|openExternalFileAnyFormat
 argument_list|(
-name|metaData
+name|databaseContext
 argument_list|,
 name|link
 argument_list|,
@@ -1498,7 +1498,7 @@ literal|false
 argument_list|,
 literal|true
 argument_list|,
-name|metaData
+name|databaseContext
 argument_list|)
 decl_stmt|;
 name|editor
@@ -1579,7 +1579,7 @@ comment|// Finally, open the link:
 return|return
 name|openExternalFileAnyFormat
 argument_list|(
-name|metaData
+name|databaseContext
 argument_list|,
 name|flEntry
 operator|.

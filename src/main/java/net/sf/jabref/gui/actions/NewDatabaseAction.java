@@ -269,16 +269,6 @@ operator|.
 name|addTab
 argument_list|(
 name|bibDatabaseContext
-operator|.
-name|getDatabase
-argument_list|()
-argument_list|,
-literal|null
-argument_list|,
-name|bibDatabaseContext
-operator|.
-name|getMetaData
-argument_list|()
 argument_list|,
 name|Globals
 operator|.

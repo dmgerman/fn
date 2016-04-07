@@ -26,6 +26,18 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|BibDatabaseContext
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|MetaData
 import|;
 end_import
@@ -52,17 +64,11 @@ specifier|public
 class|class
 name|DBImporterResult
 block|{
-DECL|field|database
+DECL|field|databaseContext
 specifier|private
 specifier|final
-name|BibDatabase
-name|database
-decl_stmt|;
-DECL|field|metaData
-specifier|private
-specifier|final
-name|MetaData
-name|metaData
+name|BibDatabaseContext
+name|databaseContext
 decl_stmt|;
 DECL|field|name
 specifier|private
@@ -89,15 +95,15 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|database
+name|databaseContext
 operator|=
+operator|new
+name|BibDatabaseContext
+argument_list|(
 name|database
-expr_stmt|;
-name|this
-operator|.
+argument_list|,
 name|metaData
-operator|=
-name|metaData
+argument_list|)
 expr_stmt|;
 name|this
 operator|.
@@ -105,16 +111,6 @@ name|name
 operator|=
 name|name
 expr_stmt|;
-block|}
-DECL|method|getMetaData ()
-specifier|public
-name|MetaData
-name|getMetaData
-parameter_list|()
-block|{
-return|return
-name|metaData
-return|;
 block|}
 DECL|method|getName ()
 specifier|public
@@ -126,14 +122,14 @@ return|return
 name|name
 return|;
 block|}
-DECL|method|getDatabase ()
+DECL|method|getDatabaseContext ()
 specifier|public
-name|BibDatabase
-name|getDatabase
+name|BibDatabaseContext
+name|getDatabaseContext
 parameter_list|()
 block|{
 return|return
-name|database
+name|databaseContext
 return|;
 block|}
 block|}

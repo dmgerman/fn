@@ -1076,10 +1076,6 @@ name|entry
 argument_list|,
 literal|null
 argument_list|,
-operator|new
-name|MetaData
-argument_list|()
-argument_list|,
 name|layout1
 operator|.
 name|getText
@@ -1207,10 +1203,6 @@ operator|.
 name|entry
 argument_list|,
 literal|null
-argument_list|,
-operator|new
-name|MetaData
-argument_list|()
 argument_list|,
 name|layout2
 operator|.

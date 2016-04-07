@@ -2238,10 +2238,6 @@ name|mergedEntry
 argument_list|,
 literal|null
 argument_list|,
-operator|new
-name|MetaData
-argument_list|()
-argument_list|,
 name|layoutString
 argument_list|)
 expr_stmt|;

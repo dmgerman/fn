@@ -2805,15 +2805,6 @@ name|USER_FILE_DIR_IND_LEGACY
 init|=
 literal|"userFileDirInd_Legacy"
 decl_stmt|;
-DECL|field|USER_FILE_DIR
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|USER_FILE_DIR
-init|=
-literal|"userFileDir"
-decl_stmt|;
 DECL|field|USE_UNIT_FORMATTER_ON_SEARCH
 specifier|public
 specifier|static
@@ -3413,14 +3404,6 @@ specifier|public
 name|String
 index|[]
 name|fileDirForDatabase
-decl_stmt|;
-comment|// Similarly to the previous variable, this is a global that can be used during
-comment|// the export of a database if the database filename should be output. If a database
-comment|// is tied to a file on disk, this variable is set to that file before export starts:
-DECL|field|databaseFile
-specifier|public
-name|File
-name|databaseFile
 decl_stmt|;
 comment|// The following field is used as a global variable during the export of a database.
 comment|// It is used to hold custom name formatters defined by a custom export filter.
@@ -6646,21 +6629,6 @@ argument_list|,
 name|Boolean
 operator|.
 name|TRUE
-argument_list|)
-expr_stmt|;
-name|defaults
-operator|.
-name|put
-argument_list|(
-name|USER_FILE_DIR
-argument_list|,
-name|Globals
-operator|.
-name|FILE_FIELD
-operator|+
-name|Globals
-operator|.
-name|DIR_SUFFIX
 argument_list|)
 expr_stmt|;
 try|try

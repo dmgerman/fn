@@ -224,11 +224,11 @@ specifier|final
 name|String
 name|link
 decl_stmt|;
-DECL|field|metaData
+DECL|field|databaseContext
 specifier|private
 specifier|final
-name|MetaData
-name|metaData
+name|BibDatabaseContext
+name|databaseContext
 decl_stmt|;
 DECL|field|fileType
 specifier|private
@@ -249,7 +249,7 @@ specifier|private
 name|String
 name|fieldName
 decl_stmt|;
-DECL|method|ExternalFileMenuItem (JabRefFrame frame, BibEntry entry, String name, String link, Icon icon, MetaData metaData, Optional<ExternalFileType> fileType)
+DECL|method|ExternalFileMenuItem (JabRefFrame frame, BibEntry entry, String name, String link, Icon icon, BibDatabaseContext databaseContext, Optional<ExternalFileType> fileType)
 specifier|public
 name|ExternalFileMenuItem
 parameter_list|(
@@ -268,8 +268,8 @@ parameter_list|,
 name|Icon
 name|icon
 parameter_list|,
-name|MetaData
-name|metaData
+name|BibDatabaseContext
+name|databaseContext
 parameter_list|,
 name|Optional
 argument_list|<
@@ -305,9 +305,9 @@ name|link
 expr_stmt|;
 name|this
 operator|.
-name|metaData
+name|databaseContext
 operator|=
-name|metaData
+name|databaseContext
 expr_stmt|;
 name|this
 operator|.
@@ -321,7 +321,7 @@ name|this
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|ExternalFileMenuItem (JabRefFrame frame, BibEntry entry, String name, String link, Icon icon, MetaData metaData, String fieldName)
+DECL|method|ExternalFileMenuItem (JabRefFrame frame, BibEntry entry, String name, String link, Icon icon, BibDatabaseContext databaseContext, String fieldName)
 specifier|public
 name|ExternalFileMenuItem
 parameter_list|(
@@ -340,8 +340,8 @@ parameter_list|,
 name|Icon
 name|icon
 parameter_list|,
-name|MetaData
-name|metaData
+name|BibDatabaseContext
+name|databaseContext
 parameter_list|,
 name|String
 name|fieldName
@@ -359,7 +359,7 @@ name|link
 argument_list|,
 name|icon
 argument_list|,
-name|metaData
+name|databaseContext
 argument_list|,
 name|Optional
 operator|.
@@ -553,16 +553,7 @@ name|JabRefDesktop
 operator|.
 name|openExternalViewer
 argument_list|(
-name|frame
-operator|.
-name|getCurrentBasePanel
-argument_list|()
-operator|.
-name|getBibDatabaseContext
-argument_list|()
-operator|.
-name|getMetaData
-argument_list|()
+name|databaseContext
 argument_list|,
 name|link
 argument_list|,
@@ -600,7 +591,7 @@ name|frame
 argument_list|,
 name|entry
 argument_list|,
-name|metaData
+name|databaseContext
 argument_list|,
 name|link
 argument_list|,
@@ -621,7 +612,7 @@ name|JabRefDesktop
 operator|.
 name|openExternalFileAnyFormat
 argument_list|(
-name|metaData
+name|databaseContext
 argument_list|,
 name|link
 argument_list|,

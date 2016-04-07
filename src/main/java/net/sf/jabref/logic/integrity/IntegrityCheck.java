@@ -831,9 +831,6 @@ operator|.
 name|expandFilename
 argument_list|(
 name|context
-operator|.
-name|getMetaData
-argument_list|()
 argument_list|,
 name|p
 operator|.

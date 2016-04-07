@@ -24,23 +24,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|MetaData
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|database
-operator|.
-name|BibDatabase
+name|BibDatabaseContext
 import|;
 end_import
 
@@ -118,16 +102,13 @@ name|FileFilter
 name|getFileFilter
 parameter_list|()
 function_decl|;
-comment|/**      * Perform the export.      *      * @param database      *            The database to export from.      * @param metaData      *            The database's metadata.      * @param file      *            The filename to write to.      * @param encoding      *            The encoding to use.      * @param entries      *            (may be null) A list containing all entries that      *            should be exported. If null, all entries will be exported.      * @throws Exception      */
-DECL|method|performExport (BibDatabase database, MetaData metaData, String file, Charset encoding, List<BibEntry> entries)
+comment|/**      * Perform the export.      *      * @param databaseContext the database to export from.      * @param file      *            The filename to write to.      * @param encoding      *            The encoding to use.      * @param entries      *            (may be null) A list containing all entries that      *            should be exported. If null, all entries will be exported.      * @throws Exception      */
+DECL|method|performExport (BibDatabaseContext databaseContext, String file, Charset encoding, List<BibEntry> entries)
 name|void
 name|performExport
 parameter_list|(
-name|BibDatabase
-name|database
-parameter_list|,
-name|MetaData
-name|metaData
+name|BibDatabaseContext
+name|databaseContext
 parameter_list|,
 name|String
 name|file

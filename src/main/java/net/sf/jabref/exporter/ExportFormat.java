@@ -574,21 +574,17 @@ return|return
 name|reader
 return|;
 block|}
-comment|/**      * Perform the export of {@code database}.      *      * @param database   The database to export from.      * @param metaData   The database's meta data.      * @param file       the file to write the resulting export to      * @param encoding   The encoding of the database      * @param entries    Contains all entries that should be exported.      * @throws IOException if a problem occurred while trying to write to {@code writer}      *                     or read from required resources.      * @throws Exception   if any other error occurred during export.      * @see net.sf.jabref.exporter.IExportFormat#performExport(BibDatabase, MetaData, String, Charset, List)      */
+comment|/**      * Perform the export of {@code database}.      *      * @param databaseContext the database to export from.      * @param file       the file to write the resulting export to      * @param encoding   The encoding of the database      * @param entries    Contains all entries that should be exported.      * @throws IOException if a problem occurred while trying to write to {@code writer}      *                     or read from required resources.      * @throws Exception   if any other error occurred during export.      * @see net.sf.jabref.exporter.IExportFormat#performExport(BibDatabaseContext, String, Charset, List)      */
 annotation|@
 name|Override
-DECL|method|performExport (final BibDatabase database, final MetaData metaData, final String file, final Charset encoding, List<BibEntry> entries)
+DECL|method|performExport (final BibDatabaseContext databaseContext, final String file, final Charset encoding, List<BibEntry> entries)
 specifier|public
 name|void
 name|performExport
 parameter_list|(
 specifier|final
-name|BibDatabase
-name|database
-parameter_list|,
-specifier|final
-name|MetaData
-name|metaData
+name|BibDatabaseContext
+name|databaseContext
 parameter_list|,
 specifier|final
 name|String
@@ -611,7 +607,7 @@ name|Objects
 operator|.
 name|requireNonNull
 argument_list|(
-name|database
+name|databaseContext
 argument_list|)
 expr_stmt|;
 name|Objects
@@ -812,7 +808,7 @@ name|beginLayout
 operator|.
 name|doLayout
 argument_list|(
-name|database
+name|databaseContext
 argument_list|,
 name|encoding
 argument_list|)
@@ -830,29 +826,6 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/*              * Write database entries; entries will be sorted as they appear on the              * screen, or sorted by author, depending on Preferences. We also supply              * the Set entries - if we are to export only certain entries, it will              * be non-null, and be used to choose entries. Otherwise, it will be              * null, and be ignored.              */
-name|Defaults
-name|defaults
-init|=
-operator|new
-name|Defaults
-argument_list|(
-name|BibDatabaseMode
-operator|.
-name|fromPreference
-argument_list|(
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getBoolean
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|BIBLATEX_DEFAULT_MODE
-argument_list|)
-argument_list|)
-argument_list|)
-decl_stmt|;
 name|SavePreferences
 name|savePrefs
 init|=
@@ -875,15 +848,7 @@ name|BibDatabaseWriter
 operator|.
 name|getSortedEntries
 argument_list|(
-operator|new
-name|BibDatabaseContext
-argument_list|(
-name|database
-argument_list|,
-name|metaData
-argument_list|,
-name|defaults
-argument_list|)
+name|databaseContext
 argument_list|,
 name|entries
 argument_list|,
@@ -1129,7 +1094,10 @@ name|doLayout
 argument_list|(
 name|entry
 argument_list|,
-name|database
+name|databaseContext
+operator|.
+name|getDatabase
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1212,7 +1180,7 @@ name|endLayout
 operator|.
 name|doLayout
 argument_list|(
-name|database
+name|databaseContext
 argument_list|,
 name|this
 operator|.

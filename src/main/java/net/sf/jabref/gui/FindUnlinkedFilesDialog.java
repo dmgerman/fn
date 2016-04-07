@@ -5254,9 +5254,6 @@ argument_list|()
 operator|.
 name|getBibDatabaseContext
 argument_list|()
-operator|.
-name|getMetaData
-argument_list|()
 argument_list|,
 name|fnw
 operator|.

@@ -70,6 +70,18 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|BibDatabaseContext
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|logic
 operator|.
 name|journals
@@ -1435,14 +1447,14 @@ return|;
 block|}
 block|}
 comment|// added section - begin (arudert)
-comment|/**      * Do layout for general formatters (no bibtex-entry fields).      *      * @param database      *            Bibtex Database      * @return      */
-DECL|method|doLayout (BibDatabase database, Charset encoding)
+comment|/**      * Do layout for general formatters (no bibtex-entry fields).      *      * @param databaseContext      *            Bibtex Database      * @return      */
+DECL|method|doLayout (BibDatabaseContext databaseContext, Charset encoding)
 specifier|public
 name|String
 name|doLayout
 parameter_list|(
-name|BibDatabase
-name|database
+name|BibDatabaseContext
+name|databaseContext
 parameter_list|,
 name|Charset
 name|encoding
@@ -1521,7 +1533,10 @@ name|getText
 argument_list|(
 name|text
 argument_list|,
-name|database
+name|databaseContext
+operator|.
+name|getDatabase
+argument_list|()
 argument_list|)
 decl_stmt|;
 if|if
@@ -1590,11 +1605,10 @@ case|:
 name|File
 name|f
 init|=
-name|Globals
+name|databaseContext
 operator|.
-name|prefs
-operator|.
-name|databaseFile
+name|getDatabaseFile
+argument_list|()
 decl_stmt|;
 return|return
 name|f
@@ -1616,11 +1630,10 @@ case|:
 name|File
 name|f2
 init|=
-name|Globals
+name|databaseContext
 operator|.
-name|prefs
-operator|.
-name|databaseFile
+name|getDatabaseFile
+argument_list|()
 decl_stmt|;
 return|return
 name|f2

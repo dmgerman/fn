@@ -1099,9 +1099,7 @@ name|PreviewPanel
 argument_list|(
 literal|null
 argument_list|,
-operator|new
-name|MetaData
-argument_list|()
+literal|null
 argument_list|,
 name|layoutFile
 argument_list|)
@@ -2356,9 +2354,6 @@ name|p
 operator|.
 name|getBibDatabaseContext
 argument_list|()
-operator|.
-name|getMetaData
-argument_list|()
 argument_list|,
 name|fl
 operator|.
@@ -2397,9 +2392,6 @@ argument_list|(
 name|p
 operator|.
 name|getBibDatabaseContext
-argument_list|()
-operator|.
-name|getMetaData
 argument_list|()
 argument_list|,
 name|link
@@ -2621,9 +2613,6 @@ name|p
 operator|.
 name|getBibDatabaseContext
 argument_list|()
-operator|.
-name|getMetaData
-argument_list|()
 argument_list|,
 name|flEntry
 operator|.
@@ -2725,17 +2714,14 @@ argument_list|(
 name|entry
 argument_list|)
 decl_stmt|;
-comment|// Update the preview's metadata reference:
+comment|// Update the preview's database context:
 name|preview
 operator|.
-name|setMetaData
+name|setDatabaseContext
 argument_list|(
 name|p
 operator|.
 name|getBibDatabaseContext
-argument_list|()
-operator|.
-name|getMetaData
 argument_list|()
 argument_list|)
 expr_stmt|;

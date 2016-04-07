@@ -344,6 +344,18 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|BibDatabaseContext
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -1229,9 +1241,7 @@ name|PreviewPanel
 argument_list|(
 literal|null
 argument_list|,
-operator|new
-name|MetaData
-argument_list|()
+literal|null
 argument_list|,
 literal|""
 argument_list|)
@@ -2033,7 +2043,7 @@ operator|.
 name|openExternalFileAnyFormat
 argument_list|(
 operator|new
-name|MetaData
+name|BibDatabaseContext
 argument_list|()
 argument_list|,
 name|link
@@ -2055,7 +2065,7 @@ name|BibEntry
 argument_list|()
 argument_list|,
 operator|new
-name|MetaData
+name|BibDatabaseContext
 argument_list|()
 argument_list|,
 name|link

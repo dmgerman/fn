@@ -30,6 +30,18 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|BibDatabaseContext
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -609,13 +621,13 @@ argument_list|()
 return|;
 block|}
 comment|/**      * Returns the processed text. If the database argument is      * null, no string references will be resolved. Otherwise all valid      * string references will be replaced by the strings' contents. Even      * recursive string references are resolved.      */
-DECL|method|doLayout (BibDatabase database, Charset encoding)
+DECL|method|doLayout (BibDatabaseContext databaseContext, Charset encoding)
 specifier|public
 name|String
 name|doLayout
 parameter_list|(
-name|BibDatabase
-name|database
+name|BibDatabaseContext
+name|databaseContext
 parameter_list|,
 name|Charset
 name|encoding
@@ -647,7 +659,7 @@ name|layoutEntry
 operator|.
 name|doLayout
 argument_list|(
-name|database
+name|databaseContext
 argument_list|,
 name|encoding
 argument_list|)

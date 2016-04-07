@@ -1216,15 +1216,8 @@ operator|.
 name|getBibDatabaseContext
 argument_list|()
 operator|.
-name|getMetaData
-argument_list|()
-operator|.
 name|getFileDirectory
-argument_list|(
-name|Globals
-operator|.
-name|FILE_FIELD
-argument_list|)
+argument_list|()
 operator|.
 name|toArray
 argument_list|(
@@ -1234,24 +1227,6 @@ index|[
 literal|0
 index|]
 argument_list|)
-expr_stmt|;
-comment|// Also store the database's file in a global variable:
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|databaseFile
-operator|=
-name|frame
-operator|.
-name|getCurrentBasePanel
-argument_list|()
-operator|.
-name|getBibDatabaseContext
-argument_list|()
-operator|.
-name|getDatabaseFile
-argument_list|()
 expr_stmt|;
 comment|// Make sure we remember which filter was used, to set
 comment|// the default for next time:
@@ -1330,18 +1305,7 @@ operator|.
 name|getCurrentBasePanel
 argument_list|()
 operator|.
-name|getDatabase
-argument_list|()
-argument_list|,
-name|frame
-operator|.
-name|getCurrentBasePanel
-argument_list|()
-operator|.
 name|getBibDatabaseContext
-argument_list|()
-operator|.
-name|getMetaData
 argument_list|()
 argument_list|,
 name|finFile

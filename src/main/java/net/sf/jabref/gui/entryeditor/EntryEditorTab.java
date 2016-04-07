@@ -892,9 +892,6 @@ name|bPanel
 operator|.
 name|getBibDatabaseContext
 argument_list|()
-operator|.
-name|getMetaData
-argument_list|()
 argument_list|,
 name|field
 argument_list|,

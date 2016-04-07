@@ -699,7 +699,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Offer copy/move/linking options for a dragged external file. Perform the      * chosen operation, if any.      *      * @param fileName  The name of the dragged file.      * @param fileType  The FileType associated with the file.      * @param localFile Indicate whether this is a local file, or a remote file copied      *                  to a local temporary file.      * @param mainTable The MainTable the file was dragged to.      * @param dropRow   The row where the file was dropped.      */
+comment|/**      * Offer copy/move/linking options for a dragged external file. Perform the      * chosen operation, if any.      *      * @param fileName  The name of the dragged file.      * @param fileType  The FileType associated with the file.      * @param mainTable The MainTable the file was dragged to.      * @param dropRow   The row where the file was dropped.      */
 DECL|method|handleDroppedfile (String fileName, ExternalFileType fileType, MainTable mainTable, int dropRow)
 specifier|public
 name|void
@@ -856,15 +856,8 @@ operator|.
 name|getBibDatabaseContext
 argument_list|()
 operator|.
-name|getMetaData
-argument_list|()
-operator|.
 name|getFileDirectory
-argument_list|(
-name|Globals
-operator|.
-name|FILE_FIELD
-argument_list|)
+argument_list|()
 argument_list|)
 operator|.
 name|toString
@@ -1142,15 +1135,8 @@ operator|.
 name|getBibDatabaseContext
 argument_list|()
 operator|.
-name|getMetaData
-argument_list|()
-operator|.
 name|getFileDirectory
-argument_list|(
-name|Globals
-operator|.
-name|FILE_FIELD
-argument_list|)
+argument_list|()
 argument_list|)
 operator|.
 name|toString
@@ -1488,15 +1474,8 @@ operator|.
 name|getBibDatabaseContext
 argument_list|()
 operator|.
-name|getMetaData
-argument_list|()
-operator|.
 name|getFileDirectory
-argument_list|(
-name|Globals
-operator|.
-name|FILE_FIELD
-argument_list|)
+argument_list|()
 argument_list|)
 operator|.
 name|toString
@@ -1701,15 +1680,8 @@ operator|.
 name|getBibDatabaseContext
 argument_list|()
 operator|.
-name|getMetaData
-argument_list|()
-operator|.
 name|getFileDirectory
-argument_list|(
-name|Globals
-operator|.
-name|FILE_FIELD
-argument_list|)
+argument_list|()
 decl_stmt|;
 name|int
 name|found
@@ -2297,15 +2269,8 @@ operator|.
 name|getBibDatabaseContext
 argument_list|()
 operator|.
-name|getMetaData
-argument_list|()
-operator|.
 name|getFileDirectory
-argument_list|(
-name|Globals
-operator|.
-name|FILE_FIELD
-argument_list|)
+argument_list|()
 decl_stmt|;
 name|String
 name|absFilename
@@ -2630,15 +2595,8 @@ operator|.
 name|getBibDatabaseContext
 argument_list|()
 operator|.
-name|getMetaData
-argument_list|()
-operator|.
 name|getFileDirectory
-argument_list|(
-name|Globals
-operator|.
-name|FILE_FIELD
-argument_list|)
+argument_list|()
 decl_stmt|;
 name|int
 name|found
@@ -2854,7 +2812,7 @@ literal|false
 return|;
 block|}
 block|}
-comment|/**      * Copy the given file to the base directory for its file type, and give it      * the given name.      *      * @param fileName The name of the source file.      * @param fileType The FileType associated with the file.      * @param toFile   The destination filename. An existing path-component will be removed.      * @param edits    TODO we should be able to undo this!      * @return      */
+comment|/**      * Copy the given file to the base directory for its file type, and give it      * the given name.      *      * @param fileName The name of the source file.      * @param toFile   The destination filename. An existing path-component will be removed.      * @param edits    TODO we should be able to undo this!      * @return      */
 DECL|method|doCopy (String fileName, String toFile, NamedCompound edits)
 specifier|private
 name|boolean
@@ -2881,15 +2839,8 @@ operator|.
 name|getBibDatabaseContext
 argument_list|()
 operator|.
-name|getMetaData
-argument_list|()
-operator|.
 name|getFileDirectory
-argument_list|(
-name|Globals
-operator|.
-name|FILE_FIELD
-argument_list|)
+argument_list|()
 decl_stmt|;
 name|int
 name|found

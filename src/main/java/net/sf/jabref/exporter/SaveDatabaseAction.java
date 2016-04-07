@@ -2083,10 +2083,7 @@ operator|.
 name|getBibDatabaseContext
 argument_list|()
 operator|.
-name|getMetaData
-argument_list|()
-operator|.
-name|setFile
+name|setDatabaseFile
 argument_list|(
 name|f
 argument_list|)
@@ -2122,10 +2119,7 @@ operator|.
 name|getBibDatabaseContext
 argument_list|()
 operator|.
-name|getMetaData
-argument_list|()
-operator|.
-name|setFile
+name|setDatabaseFile
 argument_list|(
 name|oldFile
 argument_list|)

@@ -282,11 +282,11 @@ specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
-DECL|field|metaData
+DECL|field|databaseContext
 specifier|private
 specifier|final
-name|MetaData
-name|metaData
+name|BibDatabaseContext
+name|databaseContext
 decl_stmt|;
 DECL|field|bibtexKey
 specifier|private
@@ -309,15 +309,15 @@ specifier|private
 name|boolean
 name|dontShowDialog
 decl_stmt|;
-DECL|method|DownloadExternalFile (JabRefFrame frame, MetaData metaData, String bibtexKey)
+DECL|method|DownloadExternalFile (JabRefFrame frame, BibDatabaseContext databaseContext, String bibtexKey)
 specifier|public
 name|DownloadExternalFile
 parameter_list|(
 name|JabRefFrame
 name|frame
 parameter_list|,
-name|MetaData
-name|metaData
+name|BibDatabaseContext
+name|databaseContext
 parameter_list|,
 name|String
 name|bibtexKey
@@ -331,9 +331,9 @@ name|frame
 expr_stmt|;
 name|this
 operator|.
-name|metaData
+name|databaseContext
 operator|=
-name|metaData
+name|databaseContext
 expr_stmt|;
 name|this
 operator|.
@@ -842,6 +842,8 @@ name|String
 argument_list|>
 name|fDirectory
 init|=
+name|databaseContext
+operator|.
 name|getFileDirectory
 argument_list|()
 decl_stmt|;
@@ -952,7 +954,7 @@ literal|true
 argument_list|,
 literal|false
 argument_list|,
-name|metaData
+name|databaseContext
 argument_list|)
 expr_stmt|;
 end_expr_stmt
@@ -1883,29 +1885,6 @@ return|return
 name|suffix
 return|;
 block|}
-block|}
-end_function
-
-begin_function
-DECL|method|getFileDirectory ()
-specifier|private
-name|List
-argument_list|<
-name|String
-argument_list|>
-name|getFileDirectory
-parameter_list|()
-block|{
-return|return
-name|metaData
-operator|.
-name|getFileDirectory
-argument_list|(
-name|Globals
-operator|.
-name|FILE_FIELD
-argument_list|)
-return|;
 block|}
 end_function
 

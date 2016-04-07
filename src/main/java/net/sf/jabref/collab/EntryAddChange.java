@@ -241,10 +241,6 @@ name|diskEntry
 argument_list|,
 literal|null
 argument_list|,
-operator|new
-name|MetaData
-argument_list|()
-argument_list|,
 name|Globals
 operator|.
 name|prefs

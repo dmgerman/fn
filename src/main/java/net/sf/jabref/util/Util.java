@@ -28,6 +28,18 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|BibDatabaseContext
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|Globals
 import|;
 end_import
@@ -1245,8 +1257,8 @@ comment|// }
 comment|// }
 comment|// return true; // found no side effects
 block|}
-comment|/**      * Shortcut method if links are set without using the GUI      *      * @param entries  the entries for which links should be set      * @param metaData the meta data for the BibDatabase for which links are set      */
-DECL|method|autoSetLinks (Collection<BibEntry> entries, MetaData metaData)
+comment|/**      * Shortcut method if links are set without using the GUI      *      * @param entries  the entries for which links should be set      * @param databaseContext the database for which links are set      */
+DECL|method|autoSetLinks (Collection<BibEntry> entries, BibDatabaseContext databaseContext)
 specifier|public
 specifier|static
 name|void
@@ -1258,8 +1270,8 @@ name|BibEntry
 argument_list|>
 name|entries
 parameter_list|,
-name|MetaData
-name|metaData
+name|BibDatabaseContext
+name|databaseContext
 parameter_list|)
 block|{
 name|autoSetLinks
@@ -1272,7 +1284,7 @@ literal|null
 argument_list|,
 literal|null
 argument_list|,
-name|metaData
+name|databaseContext
 argument_list|,
 literal|null
 argument_list|,
@@ -1280,8 +1292,8 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Shortcut method for setting a single entry      *      * @param entry      * @param ce      * @param changedEntries      * @param singleTableModel      * @param metaData      * @param callback      * @param diag      * @return      */
-DECL|method|autoSetLinks (BibEntry entry, final NamedCompound ce, final Set<BibEntry> changedEntries, final FileListTableModel singleTableModel, final MetaData metaData, final ActionListener callback, final JDialog diag)
+comment|/**      * Shortcut method for setting a single entry      *      * @param entry      * @param ce      * @param changedEntries      * @param singleTableModel      * @param databaseContext      * @param callback      * @param diag      * @return      */
+DECL|method|autoSetLinks (BibEntry entry, final NamedCompound ce, final Set<BibEntry> changedEntries, final FileListTableModel singleTableModel, final BibDatabaseContext databaseContext, final ActionListener callback, final JDialog diag)
 specifier|public
 specifier|static
 name|Runnable
@@ -1306,8 +1318,8 @@ name|FileListTableModel
 name|singleTableModel
 parameter_list|,
 specifier|final
-name|MetaData
-name|metaData
+name|BibDatabaseContext
+name|databaseContext
 parameter_list|,
 specifier|final
 name|ActionListener
@@ -1349,7 +1361,7 @@ name|changedEntries
 argument_list|,
 name|singleTableModel
 argument_list|,
-name|metaData
+name|databaseContext
 argument_list|,
 name|callback
 argument_list|,
@@ -1357,8 +1369,8 @@ name|diag
 argument_list|)
 return|;
 block|}
-comment|/**      * Automatically add links for this set of entries, based on the globally stored list of external file types. The      * entries are modified, and corresponding UndoEdit elements added to the NamedCompound given as argument.      * Furthermore, all entries which are modified are added to the Set of entries given as an argument.      *<p>      * The entries' bibtex keys must have been set - entries lacking key are ignored. The operation is done in a new      * thread, which is returned for the caller to wait for if needed.      *      * @param entries          A collection of BibEntry objects to find links for.      * @param ce               A NamedCompound to add UndoEdit elements to.      * @param changedEntries   MODIFIED, optional. A Set of BibEntry objects to which all modified entries is added.      *                         This is used for status output and debugging      * @param singleTableModel UGLY HACK. The table model to insert links into. Already existing links are not      *                         duplicated or removed. This parameter has to be null if entries.count() != 1. The hack has been      *                         introduced as a bibtexentry does not (yet) support the function getListTableModel() and the      *                         FileListEntryEditor editor holds an instance of that table model and does not reconstruct it after the      *                         search has succeeded.      * @param metaData         The MetaData providing the relevant file directory, if any.      * @param callback         An ActionListener that is notified (on the event dispatch thread) when the search is finished.      *                         The ActionEvent has id=0 if no new links were added, and id=1 if one or more links were added. This      *                         parameter can be null, which means that no callback will be notified.      * @param diag             An instantiated modal JDialog which will be used to display the progress of the automatically setting. This      *                         parameter can be null, which means that no progress update will be shown.      * @return the thread performing the automatically setting      */
-DECL|method|autoSetLinks (final Collection<BibEntry> entries, final NamedCompound ce, final Set<BibEntry> changedEntries, final FileListTableModel singleTableModel, final MetaData metaData, final ActionListener callback, final JDialog diag)
+comment|/**      * Automatically add links for this set of entries, based on the globally stored list of external file types. The      * entries are modified, and corresponding UndoEdit elements added to the NamedCompound given as argument.      * Furthermore, all entries which are modified are added to the Set of entries given as an argument.      *<p>      * The entries' bibtex keys must have been set - entries lacking key are ignored. The operation is done in a new      * thread, which is returned for the caller to wait for if needed.      *      * @param entries          A collection of BibEntry objects to find links for.      * @param ce               A NamedCompound to add UndoEdit elements to.      * @param changedEntries   MODIFIED, optional. A Set of BibEntry objects to which all modified entries is added.      *                         This is used for status output and debugging      * @param singleTableModel UGLY HACK. The table model to insert links into. Already existing links are not      *                         duplicated or removed. This parameter has to be null if entries.count() != 1. The hack has been      *                         introduced as a bibtexentry does not (yet) support the function getListTableModel() and the      *                         FileListEntryEditor editor holds an instance of that table model and does not reconstruct it after the      *                         search has succeeded.      * @param databaseContext  The database providing the relevant file directory, if any.      * @param callback         An ActionListener that is notified (on the event dispatch thread) when the search is finished.      *                         The ActionEvent has id=0 if no new links were added, and id=1 if one or more links were added. This      *                         parameter can be null, which means that no callback will be notified.      * @param diag             An instantiated modal JDialog which will be used to display the progress of the automatically setting. This      *                         parameter can be null, which means that no progress update will be shown.      * @return the thread performing the automatically setting      */
+DECL|method|autoSetLinks (final Collection<BibEntry> entries, final NamedCompound ce, final Set<BibEntry> changedEntries, final FileListTableModel singleTableModel, final BibDatabaseContext databaseContext, final ActionListener callback, final JDialog diag)
 specifier|public
 specifier|static
 name|Runnable
@@ -1387,8 +1399,8 @@ name|FileListTableModel
 name|singleTableModel
 parameter_list|,
 specifier|final
-name|MetaData
-name|metaData
+name|BibDatabaseContext
+name|databaseContext
 parameter_list|,
 specifier|final
 name|ActionListener
@@ -1570,14 +1582,10 @@ name|String
 argument_list|>
 name|dirsS
 init|=
-name|metaData
+name|databaseContext
 operator|.
 name|getFileDirectory
-argument_list|(
-name|Globals
-operator|.
-name|FILE_FIELD
-argument_list|)
+argument_list|()
 decl_stmt|;
 for|for
 control|(
@@ -2188,8 +2196,8 @@ return|return
 name|r
 return|;
 block|}
-comment|/**      * Automatically add links for this entry to the table model given as an argument, based on the globally stored list      * of external file types. The entry itself is not modified. The entry's bibtex key must have been set.      *      * @param entry            The BibEntry to find links for.      * @param singleTableModel The table model to insert links into. Already existing links are not duplicated or      *                         removed.      * @param metaData         The MetaData providing the relevant file directory, if any.      * @param callback         An ActionListener that is notified (on the event dispatch thread) when the search is finished.      *                         The ActionEvent has id=0 if no new links were added, and id=1 if one or more links were added. This      *                         parameter can be null, which means that no callback will be notified. The passed ActionEvent is      *                         constructed with (this, id, ""), where id is 1 if something has been done and 0 if nothing has been      *                         done.      * @param diag             An instantiated modal JDialog which will be used to display the progress of the automatically setting. This      *                         parameter can be null, which means that no progress update will be shown.      * @return the runnable able to perform the automatically setting      */
-DECL|method|autoSetLinks (final BibEntry entry, final FileListTableModel singleTableModel, final MetaData metaData, final ActionListener callback, final JDialog diag)
+comment|/**      * Automatically add links for this entry to the table model given as an argument, based on the globally stored list      * of external file types. The entry itself is not modified. The entry's bibtex key must have been set.      *      * @param entry            The BibEntry to find links for.      * @param singleTableModel The table model to insert links into. Already existing links are not duplicated or      *                         removed.      * @param databaseContext  The database providing the relevant file directory, if any.      * @param callback         An ActionListener that is notified (on the event dispatch thread) when the search is finished.      *                         The ActionEvent has id=0 if no new links were added, and id=1 if one or more links were added. This      *                         parameter can be null, which means that no callback will be notified. The passed ActionEvent is      *                         constructed with (this, id, ""), where id is 1 if something has been done and 0 if nothing has been      *                         done.      * @param diag             An instantiated modal JDialog which will be used to display the progress of the automatically setting. This      *                         parameter can be null, which means that no progress update will be shown.      * @return the runnable able to perform the automatically setting      */
+DECL|method|autoSetLinks (final BibEntry entry, final FileListTableModel singleTableModel, final BibDatabaseContext databaseContext, final ActionListener callback, final JDialog diag)
 specifier|public
 specifier|static
 name|Runnable
@@ -2204,8 +2212,8 @@ name|FileListTableModel
 name|singleTableModel
 parameter_list|,
 specifier|final
-name|MetaData
-name|metaData
+name|BibDatabaseContext
+name|databaseContext
 parameter_list|,
 specifier|final
 name|ActionListener
@@ -2246,7 +2254,7 @@ literal|null
 argument_list|,
 name|singleTableModel
 argument_list|,
-name|metaData
+name|databaseContext
 argument_list|,
 name|callback
 argument_list|,

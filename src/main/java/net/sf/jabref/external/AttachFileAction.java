@@ -215,9 +215,6 @@ name|panel
 operator|.
 name|getBibDatabaseContext
 argument_list|()
-operator|.
-name|getMetaData
-argument_list|()
 argument_list|)
 decl_stmt|;
 name|editor

@@ -70,7 +70,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|MetaData
+name|BibDatabaseContext
 import|;
 end_import
 
@@ -80,7 +80,7 @@ specifier|public
 class|class
 name|DBImporterExporter
 block|{
-DECL|method|removeDB (DBImportExportDialog dialogo, String dbName, Connection conn, MetaData metadata)
+DECL|method|removeDB (DBImportExportDialog dialogo, String dbName, Connection conn, BibDatabaseContext databaseContext)
 specifier|public
 name|void
 name|removeDB
@@ -94,8 +94,8 @@ parameter_list|,
 name|Connection
 name|conn
 parameter_list|,
-name|MetaData
-name|metadata
+name|BibDatabaseContext
+name|databaseContext
 parameter_list|)
 throws|throws
 name|SQLException
@@ -150,7 +150,7 @@ name|conn
 argument_list|,
 name|getDatabaseIDByName
 argument_list|(
-name|metadata
+name|databaseContext
 argument_list|,
 name|conn
 argument_list|,
@@ -161,14 +161,14 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * Returns a Jabref Database ID from the database in case the DB is already exported. In case the bib was already      * exported before, the method returns the id, otherwise it calls the method that inserts a new row and returns the      * ID for this new database      *      * @param metaData The MetaData object containing the database information      * @param out The output (PrintStream or Connection) object to which the DML should be written.      * @return The ID of database row of the jabref database being exported      * @throws SQLException      */
-DECL|method|getDatabaseIDByName (MetaData metaData, Object out, String dbName)
+comment|/**      * Returns a Jabref Database ID from the database in case the DB is already exported. In case the bib was already      * exported before, the method returns the id, otherwise it calls the method that inserts a new row and returns the      * ID for this new database      *      * @param databaseContext the database      * @param out The output (PrintStream or Connection) object to which the DML should be written.      * @return The ID of database row of the jabref database being exported      * @throws SQLException      */
+DECL|method|getDatabaseIDByName (BibDatabaseContext databaseContext, Object out, String dbName)
 specifier|protected
 name|int
 name|getDatabaseIDByName
 parameter_list|(
-name|MetaData
-name|metaData
+name|BibDatabaseContext
+name|databaseContext
 parameter_list|,
 name|Object
 name|out
@@ -230,7 +230,7 @@ else|else
 block|{
 name|insertJabRefDatabase
 argument_list|(
-name|metaData
+name|databaseContext
 argument_list|,
 name|out
 argument_list|,
@@ -240,7 +240,7 @@ expr_stmt|;
 return|return
 name|getDatabaseIDByName
 argument_list|(
-name|metaData
+name|databaseContext
 argument_list|,
 name|out
 argument_list|,
@@ -255,7 +255,7 @@ else|else
 block|{
 name|insertJabRefDatabase
 argument_list|(
-name|metaData
+name|databaseContext
 argument_list|,
 name|out
 argument_list|,
@@ -371,18 +371,18 @@ block|}
 end_function
 
 begin_comment
-comment|/**      * This method creates a new row into jabref_database table enabling to export more than one .bib      *      * @param metaData The MetaData object containing the groups information      * @param out The output (PrintStream or Connection) object to which the DML should be written.      *      * @throws SQLException      */
+comment|/**      * This method creates a new row into jabref_database table enabling to export more than one .bib      *      * @param databaseContext the database      * @param out The output (PrintStream or Connection) object to which the DML should be written.      *      * @throws SQLException      */
 end_comment
 
 begin_function
-DECL|method|insertJabRefDatabase (final MetaData metaData, Object out, String dbName)
+DECL|method|insertJabRefDatabase (final BibDatabaseContext databaseContext, Object out, String dbName)
 specifier|private
 name|void
 name|insertJabRefDatabase
 parameter_list|(
 specifier|final
-name|MetaData
-name|metaData
+name|BibDatabaseContext
+name|databaseContext
 parameter_list|,
 name|Object
 name|out
@@ -398,9 +398,9 @@ name|path
 decl_stmt|;
 if|if
 condition|(
-name|metaData
+name|databaseContext
 operator|.
-name|getFile
+name|getDatabaseFile
 argument_list|()
 operator|==
 literal|null
@@ -415,9 +415,9 @@ else|else
 block|{
 name|path
 operator|=
-name|metaData
+name|databaseContext
 operator|.
-name|getFile
+name|getDatabaseFile
 argument_list|()
 operator|.
 name|getAbsolutePath

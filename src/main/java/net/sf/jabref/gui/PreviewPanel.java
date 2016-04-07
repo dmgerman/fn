@@ -24,43 +24,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|JabRefExecutorService
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|JabRefPreferences
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|MetaData
+name|*
 import|;
 end_import
 
@@ -475,13 +439,13 @@ name|empty
 argument_list|()
 decl_stmt|;
 comment|/**      * If a database is set, the preview will attempt to resolve strings in the      * previewed entry using that database.      */
-DECL|field|database
+DECL|field|databaseContext
 specifier|private
 name|Optional
 argument_list|<
-name|BibDatabase
+name|BibDatabaseContext
 argument_list|>
-name|database
+name|databaseContext
 init|=
 name|Optional
 operator|.
@@ -500,12 +464,6 @@ name|Optional
 operator|.
 name|empty
 argument_list|()
-decl_stmt|;
-comment|/**      * must not be null, must always be set during constructor, but can change over time      */
-DECL|field|metaData
-specifier|private
-name|MetaData
-name|metaData
 decl_stmt|;
 comment|/**      * must not be null, must always be set during constructor, but can change over time      */
 DECL|field|layoutFile
@@ -564,22 +522,19 @@ operator|.
 name|empty
 argument_list|()
 decl_stmt|;
-comment|/**      * @param database      *            (may be null) Optionally used to resolve strings.      * @param entry      *            (may be null) If given this entry is shown otherwise you have      *            to call setEntry to make something visible.      * @param panel      *            (may be null) If not given no toolbar is shown on the right      *            hand side.      * @param metaData      *            (must be given) Used for resolving pdf directories for links.      * @param layoutFile      *            (must be given) Used for layout      */
-DECL|method|PreviewPanel (BibDatabase database, BibEntry entry, BasePanel panel, MetaData metaData, String layoutFile)
+comment|/**      * @param databaseContext      *            (may be null) Optionally used to resolve strings and for resolving pdf directories for links.      * @param entry      *            (may be null) If given this entry is shown otherwise you have      *            to call setEntry to make something visible.      * @param panel      *            (may be null) If not given no toolbar is shown on the right      *            hand side.      * @param layoutFile      *            (must be given) Used for layout      */
+DECL|method|PreviewPanel (BibDatabaseContext databaseContext, BibEntry entry, BasePanel panel, String layoutFile)
 specifier|public
 name|PreviewPanel
 parameter_list|(
-name|BibDatabase
-name|database
+name|BibDatabaseContext
+name|databaseContext
 parameter_list|,
 name|BibEntry
 name|entry
 parameter_list|,
 name|BasePanel
 name|panel
-parameter_list|,
-name|MetaData
-name|metaData
 parameter_list|,
 name|String
 name|layoutFile
@@ -589,20 +544,9 @@ name|this
 argument_list|(
 name|panel
 argument_list|,
-name|metaData
+name|databaseContext
 argument_list|,
 name|layoutFile
-argument_list|)
-expr_stmt|;
-name|this
-operator|.
-name|database
-operator|=
-name|Optional
-operator|.
-name|ofNullable
-argument_list|(
-name|database
 argument_list|)
 expr_stmt|;
 name|setEntry
@@ -611,16 +555,16 @@ name|entry
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      *      * @param panel      *            (may be null) If not given no toolbar is shown on the right      *            hand side.      * @param metaData      *            (must be given) Used for resolving pdf directories for links.      * @param layoutFile      *            (must be given) Used for layout      */
-DECL|method|PreviewPanel (BasePanel panel, MetaData metaData, String layoutFile)
+comment|/**      *      * @param panel      *            (may be null) If not given no toolbar is shown on the right      *            hand side.      * @param databaseContext      *            (may be null) Used for resolving pdf directories for links.      * @param layoutFile      *            (must be given) Used for layout      */
+DECL|method|PreviewPanel (BasePanel panel, BibDatabaseContext databaseContext, String layoutFile)
 specifier|public
 name|PreviewPanel
 parameter_list|(
 name|BasePanel
 name|panel
 parameter_list|,
-name|MetaData
-name|metaData
+name|BibDatabaseContext
+name|databaseContext
 parameter_list|,
 name|String
 name|layoutFile
@@ -637,13 +581,13 @@ argument_list|)
 expr_stmt|;
 name|this
 operator|.
-name|metaData
+name|databaseContext
 operator|=
-name|Objects
+name|Optional
 operator|.
-name|requireNonNull
+name|ofNullable
 argument_list|(
-name|metaData
+name|databaseContext
 argument_list|)
 expr_stmt|;
 name|this
@@ -1203,6 +1147,15 @@ operator|.
 name|EventType
 operator|.
 name|ACTIVATED
+operator|&&
+name|PreviewPanel
+operator|.
+name|this
+operator|.
+name|databaseContext
+operator|.
+name|isPresent
+argument_list|()
 condition|)
 block|{
 try|try
@@ -1226,7 +1179,10 @@ name|PreviewPanel
 operator|.
 name|this
 operator|.
-name|metaData
+name|databaseContext
+operator|.
+name|get
+argument_list|()
 argument_list|,
 name|address
 argument_list|,
@@ -1255,20 +1211,25 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|setMetaData (MetaData metaData)
+DECL|method|setDatabaseContext (BibDatabaseContext databaseContext)
 specifier|public
 name|void
-name|setMetaData
+name|setDatabaseContext
 parameter_list|(
-name|MetaData
-name|metaData
+name|BibDatabaseContext
+name|databaseContext
 parameter_list|)
 block|{
 name|this
 operator|.
-name|metaData
+name|databaseContext
 operator|=
-name|metaData
+name|Optional
+operator|.
+name|ofNullable
+argument_list|(
+name|databaseContext
+argument_list|)
 expr_stmt|;
 block|}
 DECL|method|updateLayout (String layoutFormat)
@@ -1506,7 +1467,14 @@ name|doLayout
 argument_list|(
 name|entry
 argument_list|,
-name|database
+name|databaseContext
+operator|.
+name|map
+argument_list|(
+name|BibDatabaseContext
+operator|::
+name|getDatabase
+argument_list|)
 operator|.
 name|orElse
 argument_list|(

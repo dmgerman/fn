@@ -24,6 +24,18 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|BibDatabaseContext
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|model
 operator|.
 name|database
@@ -290,18 +302,14 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|performExport (final BibDatabase database, final MetaData metaData, final String file, final Charset encoding, List<BibEntry> entries)
+DECL|method|performExport (final BibDatabaseContext databaseContext, final String file, final Charset encoding, List<BibEntry> entries)
 specifier|public
 name|void
 name|performExport
 parameter_list|(
 specifier|final
-name|BibDatabase
-name|database
-parameter_list|,
-specifier|final
-name|MetaData
-name|metaData
+name|BibDatabaseContext
+name|databaseContext
 parameter_list|,
 specifier|final
 name|String
@@ -324,7 +332,7 @@ name|Objects
 operator|.
 name|requireNonNull
 argument_list|(
-name|database
+name|databaseContext
 argument_list|)
 expr_stmt|;
 name|Objects
@@ -354,7 +362,10 @@ argument_list|(
 name|file
 argument_list|)
 argument_list|,
-name|database
+name|databaseContext
+operator|.
+name|getDatabase
+argument_list|()
 argument_list|,
 name|entries
 argument_list|)

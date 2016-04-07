@@ -591,11 +591,11 @@ specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
-DECL|field|metaData
+DECL|field|databaseContext
 specifier|private
 specifier|final
-name|MetaData
-name|metaData
+name|BibDatabaseContext
+name|databaseContext
 decl_stmt|;
 DECL|field|fieldName
 specifier|private
@@ -637,15 +637,15 @@ operator|new
 name|JPopupMenu
 argument_list|()
 decl_stmt|;
-DECL|method|FileListEditor (JabRefFrame frame, MetaData metaData, String fieldName, String content, EntryEditor entryEditor)
+DECL|method|FileListEditor (JabRefFrame frame, BibDatabaseContext databaseContext, String fieldName, String content, EntryEditor entryEditor)
 specifier|public
 name|FileListEditor
 parameter_list|(
 name|JabRefFrame
 name|frame
 parameter_list|,
-name|MetaData
-name|metaData
+name|BibDatabaseContext
+name|databaseContext
 parameter_list|,
 name|String
 name|fieldName
@@ -665,9 +665,9 @@ name|frame
 expr_stmt|;
 name|this
 operator|.
-name|metaData
+name|databaseContext
 operator|=
-name|metaData
+name|databaseContext
 expr_stmt|;
 name|this
 operator|.
@@ -1631,7 +1631,7 @@ name|FileUtil
 operator|.
 name|expandFilename
 argument_list|(
-name|metaData
+name|databaseContext
 argument_list|,
 name|entry
 operator|.
@@ -1776,7 +1776,7 @@ name|JabRefDesktop
 operator|.
 name|openExternalFileAnyFormat
 argument_list|(
-name|metaData
+name|databaseContext
 argument_list|,
 name|entry
 operator|.
@@ -2053,14 +2053,10 @@ name|String
 argument_list|>
 name|defaultDirectory
 init|=
-name|metaData
+name|databaseContext
 operator|.
 name|getFileDirectory
-argument_list|(
-name|Globals
-operator|.
-name|FILE_FIELD
-argument_list|)
+argument_list|()
 decl_stmt|;
 if|if
 condition|(
@@ -2321,7 +2317,7 @@ literal|false
 argument_list|,
 literal|true
 argument_list|,
-name|metaData
+name|databaseContext
 argument_list|)
 expr_stmt|;
 block|}
@@ -2447,7 +2443,7 @@ literal|null
 argument_list|,
 name|tableModel
 argument_list|,
-name|metaData
+name|databaseContext
 argument_list|,
 operator|new
 name|ActionListener
@@ -2662,9 +2658,6 @@ name|getCurrentBasePanel
 argument_list|()
 operator|.
 name|getBibDatabaseContext
-argument_list|()
-operator|.
-name|getMetaData
 argument_list|()
 argument_list|,
 name|bibtexKey

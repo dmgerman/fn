@@ -28,6 +28,18 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|BibDatabaseContext
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|Globals
 import|;
 end_import
@@ -779,8 +791,8 @@ name|toFile
 argument_list|)
 return|;
 block|}
-comment|/**      * Converts a relative filename to an absolute one, if necessary. Returns      * null if the file does not exist.<br/>      *<p>      * Uses<ul>      *<li>the default directory associated with the extension of the file</li>      *<li>the standard file directory</li>      *<li>the directory of the bib file</li>      *</ul>      *      * @param metaData The MetaData for the database this file belongs to.      * @param name     The filename, may also be a relative path to the file      */
-DECL|method|expandFilename (final MetaData metaData, String name)
+comment|/**      * Converts a relative filename to an absolute one, if necessary. Returns      * null if the file does not exist.<br/>      *<p>      * Uses<ul>      *<li>the default directory associated with the extension of the file</li>      *<li>the standard file directory</li>      *<li>the directory of the bib file</li>      *</ul>      *      * @param databaseContext The database this file belongs to.      * @param name     The filename, may also be a relative path to the file      */
+DECL|method|expandFilename (final BibDatabaseContext databaseContext, String name)
 specifier|public
 specifier|static
 name|Optional
@@ -790,8 +802,8 @@ argument_list|>
 name|expandFilename
 parameter_list|(
 specifier|final
-name|MetaData
-name|metaData
+name|BibDatabaseContext
+name|databaseContext
 parameter_list|,
 name|String
 name|name
@@ -815,7 +827,7 @@ name|String
 argument_list|>
 name|directories
 init|=
-name|metaData
+name|databaseContext
 operator|.
 name|getFileDirectory
 argument_list|(
@@ -834,14 +846,10 @@ name|String
 argument_list|>
 name|fileDir
 init|=
-name|metaData
+name|databaseContext
 operator|.
 name|getFileDirectory
-argument_list|(
-name|Globals
-operator|.
-name|FILE_FIELD
-argument_list|)
+argument_list|()
 decl_stmt|;
 comment|// Include the directory of the bib file:
 name|ArrayList

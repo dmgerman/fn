@@ -56,6 +56,18 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|BibDatabaseContext
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|model
 operator|.
 name|database
@@ -158,21 +170,17 @@ literal|".sql"
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * First method called when user starts the export.      *      * @param database The bibtex database from which to export.      * @param file The filename to which the export should be writtten.      * @param encodingToUse The encoding to use.      * @param entries The entries to export.      * @throws java.lang.Exception If something goes wrong, feel free to throw an exception. The error message is shown      *             to the user.      */
+comment|/**      * First method called when user starts the export.      *      * @param databaseContext The bibtex database from which to export.      * @param file The filename to which the export should be writtten.      * @param encodingToUse The encoding to use.      * @param entries The entries to export.      * @throws java.lang.Exception If something goes wrong, feel free to throw an exception. The error message is shown      *             to the user.      */
 annotation|@
 name|Override
-DECL|method|performExport (final BibDatabase database, final MetaData metaData, final String file, final Charset encodingToUse, List<BibEntry> entries)
+DECL|method|performExport (final BibDatabaseContext databaseContext, final String file, final Charset encodingToUse, List<BibEntry> entries)
 specifier|public
 name|void
 name|performExport
 parameter_list|(
 specifier|final
-name|BibDatabase
-name|database
-parameter_list|,
-specifier|final
-name|MetaData
-name|metaData
+name|BibDatabaseContext
+name|databaseContext
 parameter_list|,
 specifier|final
 name|String
@@ -195,7 +203,7 @@ name|Objects
 operator|.
 name|requireNonNull
 argument_list|(
-name|database
+name|databaseContext
 argument_list|)
 expr_stmt|;
 name|Objects
@@ -226,9 +234,7 @@ argument_list|)
 operator|.
 name|exportDatabaseAsFile
 argument_list|(
-name|database
-argument_list|,
-name|metaData
+name|databaseContext
 argument_list|,
 name|entries
 argument_list|,
