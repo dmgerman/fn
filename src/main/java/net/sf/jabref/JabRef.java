@@ -3483,10 +3483,46 @@ name|USE_DEFAULT_LOOK_AND_FEEL
 argument_list|)
 condition|)
 block|{
+comment|// FIXME: Problems with OpenJDK and GTK L&F
+comment|// See https://github.com/JabRef/jabref/issues/393, https://github.com/JabRef/jabref/issues/638
+if|if
+condition|(
+name|System
+operator|.
+name|getProperty
+argument_list|(
+literal|"java.runtime.name"
+argument_list|)
+operator|.
+name|contains
+argument_list|(
+literal|"OpenJDK"
+argument_list|)
+condition|)
+block|{
+comment|// Metal L&F
+name|lookFeel
+operator|=
+name|UIManager
+operator|.
+name|getCrossPlatformLookAndFeelClassName
+argument_list|()
+expr_stmt|;
+name|LOGGER
+operator|.
+name|warn
+argument_list|(
+literal|"There seem to be problems with OpenJDK and the default GTK Look&Feel. Using Metal L&F instead. Change to another L&F with caution."
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
 name|lookFeel
 operator|=
 name|systemLookFeel
 expr_stmt|;
+block|}
 block|}
 else|else
 block|{
@@ -3504,6 +3540,7 @@ name|WIN_LOOK_AND_FEEL
 argument_list|)
 expr_stmt|;
 block|}
+comment|// FIXME: Open JDK problem
 if|if
 condition|(
 name|UIManager
@@ -3514,6 +3551,19 @@ operator|.
 name|equals
 argument_list|(
 name|lookFeel
+argument_list|)
+operator|&&
+operator|!
+name|System
+operator|.
+name|getProperty
+argument_list|(
+literal|"java.runtime.name"
+argument_list|)
+operator|.
+name|contains
+argument_list|(
+literal|"OpenJDK"
 argument_list|)
 condition|)
 block|{
