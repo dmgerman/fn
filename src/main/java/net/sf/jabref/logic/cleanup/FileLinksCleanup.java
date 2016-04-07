@@ -116,6 +116,22 @@ name|FileField
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|ParsedFileField
+import|;
+end_import
+
 begin_comment
 comment|/**  * Fixes the format of the file field. For example, if the file link is empty but the description wrongly contains the path.  */
 end_comment
@@ -175,8 +191,6 @@ return|;
 block|}
 name|List
 argument_list|<
-name|FileField
-operator|.
 name|ParsedFileField
 argument_list|>
 name|fileList

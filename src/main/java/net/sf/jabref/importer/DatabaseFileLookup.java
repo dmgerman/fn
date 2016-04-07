@@ -126,6 +126,22 @@ name|FileField
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|ParsedFileField
+import|;
+end_import
+
 begin_comment
 comment|/**  * Search class for files.<br>  *<br>  * This class provides some functionality to search in a {@link BibDatabase} for  * files.<br>   * @author Nosh&Dan  */
 end_comment
@@ -277,8 +293,6 @@ argument_list|)
 decl_stmt|;
 name|List
 argument_list|<
-name|FileField
-operator|.
 name|ParsedFileField
 argument_list|>
 name|entries
@@ -303,8 +317,6 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-name|FileField
-operator|.
 name|ParsedFileField
 name|field
 range|:
@@ -316,7 +328,8 @@ name|link
 init|=
 name|field
 operator|.
-name|link
+name|getLink
+argument_list|()
 decl_stmt|;
 comment|// Do not query external file links (huge performance leak)
 if|if

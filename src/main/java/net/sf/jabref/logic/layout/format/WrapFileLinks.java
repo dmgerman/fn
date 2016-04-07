@@ -94,6 +94,22 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|ParsedFileField
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -506,8 +522,6 @@ decl_stmt|;
 comment|// Build the list containing the links:
 name|List
 argument_list|<
-name|FileField
-operator|.
 name|ParsedFileField
 argument_list|>
 name|fileList
@@ -527,8 +541,6 @@ decl_stmt|;
 comment|// counter for relevant iterations
 for|for
 control|(
-name|FileField
-operator|.
 name|ParsedFileField
 name|flEntry
 range|:
@@ -546,7 +558,8 @@ operator|)
 operator|||
 name|flEntry
 operator|.
-name|fileType
+name|getFileType
+argument_list|()
 operator|.
 name|equalsIgnoreCase
 argument_list|(
@@ -663,7 +676,8 @@ name|expandFilename
 argument_list|(
 name|flEntry
 operator|.
-name|link
+name|getLink
+argument_list|()
 argument_list|,
 name|Arrays
 operator|.
@@ -744,7 +758,8 @@ name|replaceStrings
 argument_list|(
 name|flEntry
 operator|.
-name|link
+name|getLink
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -762,7 +777,8 @@ name|replaceStrings
 argument_list|(
 name|flEntry
 operator|.
-name|link
+name|getLink
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -777,7 +793,8 @@ name|getFileExtension
 argument_list|(
 name|flEntry
 operator|.
-name|link
+name|getLink
+argument_list|()
 argument_list|)
 operator|.
 name|ifPresent
@@ -807,7 +824,8 @@ name|replaceStrings
 argument_list|(
 name|flEntry
 operator|.
-name|fileType
+name|getFileType
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -823,7 +841,8 @@ name|replaceStrings
 argument_list|(
 name|flEntry
 operator|.
-name|description
+name|getDescription
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;

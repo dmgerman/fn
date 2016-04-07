@@ -56,9 +56,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|model
-operator|.
-name|entry
+name|logic
 operator|.
 name|TypedBibEntry
 import|;

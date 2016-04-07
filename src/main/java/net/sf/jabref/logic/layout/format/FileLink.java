@@ -104,8 +104,6 @@ name|model
 operator|.
 name|entry
 operator|.
-name|FileField
-operator|.
 name|ParsedFileField
 import|;
 end_import
@@ -279,7 +277,8 @@ argument_list|(
 literal|0
 argument_list|)
 operator|.
-name|link
+name|getLink
+argument_list|()
 expr_stmt|;
 block|}
 block|}
@@ -298,7 +297,8 @@ if|if
 condition|(
 name|flEntry
 operator|.
-name|fileType
+name|getFileType
+argument_list|()
 operator|.
 name|equalsIgnoreCase
 argument_list|(
@@ -310,7 +310,8 @@ name|link
 operator|=
 name|flEntry
 operator|.
-name|link
+name|getLink
+argument_list|()
 expr_stmt|;
 break|break;
 block|}

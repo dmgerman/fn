@@ -118,6 +118,22 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|ParsedFileField
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -1741,8 +1757,6 @@ control|)
 block|{
 name|List
 argument_list|<
-name|FileField
-operator|.
 name|ParsedFileField
 argument_list|>
 name|fileList
@@ -1763,8 +1777,6 @@ argument_list|)
 decl_stmt|;
 for|for
 control|(
-name|FileField
-operator|.
 name|ParsedFileField
 name|file
 range|:
@@ -1775,7 +1787,8 @@ name|expandFilename
 argument_list|(
 name|file
 operator|.
-name|link
+name|getLink
+argument_list|()
 argument_list|,
 name|fileDirs
 argument_list|)

@@ -146,6 +146,22 @@ name|FileField
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|ParsedFileField
+import|;
+end_import
+
 begin_comment
 comment|/**  * Data structure to contain a list of file links, parseable from a coded string.  * Doubles as a table model for the file list editor.  */
 end_comment
@@ -544,8 +560,6 @@ expr_stmt|;
 block|}
 name|List
 argument_list|<
-name|FileField
-operator|.
 name|ParsedFileField
 argument_list|>
 name|fields
@@ -570,8 +584,6 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-name|FileField
-operator|.
 name|ParsedFileField
 name|entry
 range|:
@@ -716,13 +728,11 @@ name|getIconLabel
 argument_list|()
 return|;
 block|}
-DECL|method|decodeEntry (FileField.ParsedFileField entry, boolean deduceUnknownType)
+DECL|method|decodeEntry (ParsedFileField entry, boolean deduceUnknownType)
 specifier|private
 name|FileListEntry
 name|decodeEntry
 parameter_list|(
-name|FileField
-operator|.
 name|ParsedFileField
 name|entry
 parameter_list|,
@@ -745,7 +755,8 @@ name|getExternalFileTypeByName
 argument_list|(
 name|entry
 operator|.
-name|fileType
+name|getFileType
+argument_list|()
 argument_list|)
 decl_stmt|;
 if|if
@@ -775,7 +786,8 @@ name|getExternalFileTypeByMimeType
 argument_list|(
 name|entry
 operator|.
-name|fileType
+name|getFileType
+argument_list|()
 argument_list|)
 expr_stmt|;
 if|if
@@ -800,7 +812,8 @@ name|getFileExtension
 argument_list|(
 name|entry
 operator|.
-name|link
+name|getLink
+argument_list|()
 argument_list|)
 decl_stmt|;
 if|if
@@ -852,11 +865,13 @@ name|FileListEntry
 argument_list|(
 name|entry
 operator|.
-name|description
+name|getDescription
+argument_list|()
 argument_list|,
 name|entry
 operator|.
-name|link
+name|getLink
+argument_list|()
 argument_list|,
 name|type
 argument_list|)
