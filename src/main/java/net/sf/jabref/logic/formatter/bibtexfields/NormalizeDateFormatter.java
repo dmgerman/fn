@@ -210,7 +210,7 @@ literal|"Normalizes the date to ISO date format."
 argument_list|)
 return|;
 block|}
-comment|/*      * Try to parse the following formats      *  "M/y" (covers 9/15, 9/2015, and 09/2015)      *  "MMMM (dd), yyyy" (covers September 1, 2015 and September, 2015)      *  "yyyy-MM-dd" (covers 2009-1-15)      *  "d.M.uuuu" (covers 15.1.2015)      * The code is essentially taken from http://stackoverflow.com/questions/4024544/how-to-parse-dates-in-multiple-formats-using-simpledateformat.      */
+comment|/*      * Try to parse the following formats      *  "M/y" (covers 9/15, 9/2015, and 09/2015)      *  "MMMM (dd), yyyy" (covers September 1, 2015 and September, 2015)      *  "yyyy-MM-dd" (covers 2009-1-15)      *  "d.M.uuuu" (covers 15.1.2015)      *  "uuuu.M.d" (covers 2015.1.15)      * The code is essentially taken from http://stackoverflow.com/questions/4024544/how-to-parse-dates-in-multiple-formats-using-simpledateformat.      */
 DECL|method|tryParseDate (String dateString)
 specifier|private
 name|Optional
@@ -241,6 +241,8 @@ block|,
 literal|"MMMM, uuuu"
 block|,
 literal|"d.M.uuuu"
+block|,
+literal|"uuuu.M.d"
 block|}
 decl_stmt|;
 for|for

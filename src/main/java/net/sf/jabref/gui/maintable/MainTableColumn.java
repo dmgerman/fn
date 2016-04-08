@@ -24,7 +24,7 @@ name|jabref
 operator|.
 name|bibtex
 operator|.
-name|BibtexSingleFieldProperties
+name|FieldProperties
 import|;
 end_import
 
@@ -448,7 +448,7 @@ argument_list|)
 operator|.
 name|contains
 argument_list|(
-name|BibtexSingleFieldProperties
+name|FieldProperties
 operator|.
 name|PERSON_NAMES
 argument_list|)
