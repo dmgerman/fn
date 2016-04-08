@@ -70,30 +70,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|nio
-operator|.
-name|file
-operator|.
-name|Files
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|nio
-operator|.
-name|file
-operator|.
-name|Paths
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|*
@@ -381,6 +357,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**          * Overriding the HashTable put() so we can check for duplicates          */
+annotation|@
+name|Override
 DECL|method|put (Object key, Object value)
 specifier|public
 specifier|synchronized
@@ -397,12 +375,10 @@ block|{
 comment|// Have we seen this key before?
 if|if
 condition|(
-name|get
+name|containsKey
 argument_list|(
 name|key
 argument_list|)
-operator|!=
-literal|null
 condition|)
 block|{
 name|duplicates
@@ -450,8 +426,6 @@ specifier|public
 name|void
 name|ensureNoDuplicates
 parameter_list|()
-throws|throws
-name|IOException
 block|{
 for|for
 control|(

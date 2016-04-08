@@ -24,16 +24,6 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|*
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
 name|text
 operator|.
 name|JTextComponent
