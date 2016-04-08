@@ -3167,7 +3167,7 @@ argument_list|()
 return|;
 block|}
 DECL|method|expandAll (String s)
-specifier|public
+specifier|private
 specifier|static
 name|String
 name|expandAll
@@ -3176,7 +3176,6 @@ name|String
 name|s
 parameter_list|)
 block|{
-comment|//System.out.println("'"+s+"'");
 comment|// Avoid arrayindexoutof.... :
 if|if
 condition|(
@@ -3313,6 +3312,7 @@ name|d
 argument_list|)
 condition|)
 block|{
+comment|// AA -> A. A.
 name|sb
 operator|.
 name|append
@@ -3320,6 +3320,79 @@ argument_list|(
 name|c
 argument_list|)
 expr_stmt|;
+name|sb
+operator|.
+name|append
+argument_list|(
+literal|". "
+argument_list|)
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|Character
+operator|.
+name|isLetter
+argument_list|(
+name|c
+argument_list|)
+operator|&&
+name|Character
+operator|.
+name|isUpperCase
+argument_list|(
+name|c
+argument_list|)
+operator|&&
+operator|(
+literal|'-'
+operator|==
+name|d
+operator|)
+condition|)
+block|{
+comment|// A-A -> A.-A.
+name|sb
+operator|.
+name|append
+argument_list|(
+name|c
+argument_list|)
+expr_stmt|;
+name|sb
+operator|.
+name|append
+argument_list|(
+literal|"."
+argument_list|)
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+operator|(
+name|c
+operator|==
+literal|'.'
+operator|)
+operator|&&
+name|Character
+operator|.
+name|isLetter
+argument_list|(
+name|d
+argument_list|)
+operator|&&
+name|Character
+operator|.
+name|isUpperCase
+argument_list|(
+name|d
+argument_list|)
+condition|)
+block|{
+comment|// A.A. -> A. A.
 name|sb
 operator|.
 name|append
