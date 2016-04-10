@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|net.sf.jabref.logic.formatter
+DECL|package|net.sf.jabref.logic.formatter.bibtexfields
 package|package
 name|net
 operator|.
@@ -11,6 +11,8 @@ operator|.
 name|logic
 operator|.
 name|formatter
+operator|.
+name|bibtexfields
 package|;
 end_package
 
