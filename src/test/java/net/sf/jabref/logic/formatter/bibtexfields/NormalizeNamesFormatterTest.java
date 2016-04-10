@@ -145,10 +145,9 @@ name|expectCorrect
 argument_list|(
 literal|"Staci D. Bilbo"
 argument_list|,
-literal|"Staci D. Bilbo"
+literal|"Bilbo, Staci D."
 argument_list|)
 expr_stmt|;
-comment|// TODO strange behaviour
 name|expectCorrect
 argument_list|(
 literal|"Staci D Bilbo and Smith SH and Jaclyn M Schwarz"
@@ -165,14 +164,14 @@ argument_list|)
 expr_stmt|;
 name|expectCorrect
 argument_list|(
-literal|"Ãlver MA, GG Ãie, Ãie GG, Alfredsen JÃÃ, Jo Alfredsen, Olsen Y.Y. and Olsen Y. Y."
+literal|"Ãlver MA; GG Ãie; Ãie GG; Alfredsen JÃÃ; Jo Alfredsen; Olsen Y.Y. and Olsen YY."
 argument_list|,
 literal|"Ãlver, M. A. and Ãie, G. G. and Ãie, G. G. and Alfredsen, J. Ã. Ã. and Alfredsen, Jo and Olsen, Y. Y. and Olsen, Y. Y."
 argument_list|)
 expr_stmt|;
 name|expectCorrect
 argument_list|(
-literal|"Ãlver MA, GG Ãie, Ãie GG, Alfredsen JÃÃ, Jo Alfredsen, Olsen Y.Y., Olsen Y. Y."
+literal|"Ãlver MA; GG Ãie; Ãie GG; Alfredsen JÃÃ; Jo Alfredsen; Olsen Y.Y.; Olsen YY."
 argument_list|,
 literal|"Ãlver, M. A. and Ãie, G. G. and Ãie, G. G. and Alfredsen, J. Ã. Ã. and Alfredsen, Jo and Olsen, Y. Y. and Olsen, Y. Y."
 argument_list|)
@@ -191,7 +190,192 @@ argument_list|,
 literal|"Alver, M. A. and Alfredsen, J. A. and Olsen, Y. Y."
 argument_list|)
 expr_stmt|;
-comment|// TODO: expectCorrect("Kolb, Stefan and J{\\\"o}rg Lenhard and Wirtz, Guido", "Kolb, Stefan and Lenhard, J{\\\"o}rg and Wirtz, Guido");
+name|expectCorrect
+argument_list|(
+literal|"Kolb, Stefan and J{\\\"o}rg Lenhard and Wirtz, Guido"
+argument_list|,
+literal|"Kolb, Stefan and Lenhard, J{\\\"o}rg and Wirtz, Guido"
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|twoAuthorsSeperatedByColon ()
+specifier|public
+name|void
+name|twoAuthorsSeperatedByColon
+parameter_list|()
+block|{
+name|expectCorrect
+argument_list|(
+literal|"Staci Bilbo; Morten Alver"
+argument_list|,
+literal|"Bilbo, Staci and Alver, Morten"
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|threeAuthorsSeperatedByColon ()
+specifier|public
+name|void
+name|threeAuthorsSeperatedByColon
+parameter_list|()
+block|{
+name|expectCorrect
+argument_list|(
+literal|"Staci Bilbo; Morten Alver; Test Name"
+argument_list|,
+literal|"Bilbo, Staci and Alver, Morten and Name, Test"
+argument_list|)
+expr_stmt|;
+block|}
+comment|// Test for https://github.com/JabRef/jabref/issues/318
+annotation|@
+name|Test
+DECL|method|threeAuthorsSeperatedByAnd ()
+specifier|public
+name|void
+name|threeAuthorsSeperatedByAnd
+parameter_list|()
+block|{
+name|expectCorrect
+argument_list|(
+literal|"Stefan Kolb and J{\\\"o}rg Lenhard and Guido Wirtz"
+argument_list|,
+literal|"Kolb, Stefan and Lenhard, J{\\\"o}rg and Wirtz, Guido"
+argument_list|)
+expr_stmt|;
+block|}
+comment|// Test for https://github.com/JabRef/jabref/issues/318
+annotation|@
+name|Test
+DECL|method|threeAuthorsSeperatedByAndWithDash ()
+specifier|public
+name|void
+name|threeAuthorsSeperatedByAndWithDash
+parameter_list|()
+block|{
+name|expectCorrect
+argument_list|(
+literal|"Heng-Yu Jian and Xu, Z. and Chang, M.-C.F."
+argument_list|,
+literal|"Jian, Heng-Yu and Xu, Z. and Chang, M.-C. F."
+argument_list|)
+expr_stmt|;
+block|}
+comment|// Test for https://github.com/JabRef/jabref/issues/318
+annotation|@
+name|Test
+DECL|method|threeAuthorsSeperatedByAndWithLatex ()
+specifier|public
+name|void
+name|threeAuthorsSeperatedByAndWithLatex
+parameter_list|()
+block|{
+name|expectCorrect
+argument_list|(
+literal|"Oscar Gustafsson and Linda S. DeBrunner and Victor DeBrunner and H{\\aa}kan Johansson"
+argument_list|,
+literal|"Gustafsson, Oscar and DeBrunner, Linda S. and DeBrunner, Victor and Johansson, H{\\aa}kan"
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|lastThenInitial ()
+specifier|public
+name|void
+name|lastThenInitial
+parameter_list|()
+block|{
+name|expectCorrect
+argument_list|(
+literal|"Smith S"
+argument_list|,
+literal|"Smith, S."
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|lastThenInitials ()
+specifier|public
+name|void
+name|lastThenInitials
+parameter_list|()
+block|{
+name|expectCorrect
+argument_list|(
+literal|"Smith SH"
+argument_list|,
+literal|"Smith, S. H."
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|initialThenLast ()
+specifier|public
+name|void
+name|initialThenLast
+parameter_list|()
+block|{
+name|expectCorrect
+argument_list|(
+literal|"S Smith"
+argument_list|,
+literal|"Smith, S."
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|initialDotThenLast ()
+specifier|public
+name|void
+name|initialDotThenLast
+parameter_list|()
+block|{
+name|expectCorrect
+argument_list|(
+literal|"S. Smith"
+argument_list|,
+literal|"Smith, S."
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|initialsThenLast ()
+specifier|public
+name|void
+name|initialsThenLast
+parameter_list|()
+block|{
+name|expectCorrect
+argument_list|(
+literal|"SH Smith"
+argument_list|,
+literal|"Smith, S. H."
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|lastThenJuniorThenFirst ()
+specifier|public
+name|void
+name|lastThenJuniorThenFirst
+parameter_list|()
+block|{
+name|expectCorrect
+argument_list|(
+literal|"Name, della, first"
+argument_list|,
+literal|"Name, della, first"
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|expectCorrect (String input, String expected)
 specifier|private
