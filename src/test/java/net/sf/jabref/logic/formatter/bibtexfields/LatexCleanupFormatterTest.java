@@ -38,12 +38,26 @@ name|Test
 import|;
 end_import
 
+begin_comment
+comment|/**  * Tests in addition to the general tests from {@link net.sf.jabref.logic.formatter.FormatterTest}  */
+end_comment
+
 begin_class
 DECL|class|LatexCleanupFormatterTest
 specifier|public
 class|class
 name|LatexCleanupFormatterTest
 block|{
+DECL|field|formatter
+specifier|private
+specifier|final
+name|LatexCleanupFormatter
+name|formatter
+init|=
+operator|new
+name|LatexCleanupFormatter
+argument_list|()
+decl_stmt|;
 annotation|@
 name|Test
 DECL|method|test ()
@@ -52,18 +66,11 @@ name|void
 name|test
 parameter_list|()
 block|{
-name|LatexCleanupFormatter
-name|lf
-init|=
-operator|new
-name|LatexCleanupFormatter
-argument_list|()
-decl_stmt|;
 name|assertEquals
 argument_list|(
 literal|"$\\alpha\\beta$"
 argument_list|,
-name|lf
+name|formatter
 operator|.
 name|format
 argument_list|(
@@ -75,7 +82,7 @@ name|assertEquals
 argument_list|(
 literal|"{VLSI DSP}"
 argument_list|,
-name|lf
+name|formatter
 operator|.
 name|format
 argument_list|(
@@ -87,7 +94,7 @@ name|assertEquals
 argument_list|(
 literal|"\\textbf{VLSI} {DSP}"
 argument_list|,
-name|lf
+name|formatter
 operator|.
 name|format
 argument_list|(
@@ -99,7 +106,7 @@ name|assertEquals
 argument_list|(
 literal|"A ${\\Delta\\Sigma}$ modulator for {FPGA DSP}"
 argument_list|,
-name|lf
+name|formatter
 operator|.
 name|format
 argument_list|(

@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|net.sf.jabref.logic.formatter.bibtexfields
+DECL|package|net.sf.jabref.logic.formatter.casechanger
 package|package
 name|net
 operator|.
@@ -12,21 +12,9 @@ name|logic
 operator|.
 name|formatter
 operator|.
-name|bibtexfields
+name|casechanger
 package|;
 end_package
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|*
-import|;
-end_import
 
 begin_import
 import|import
@@ -34,7 +22,7 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Before
+name|Assert
 import|;
 end_import
 
@@ -45,30 +33,6 @@ operator|.
 name|junit
 operator|.
 name|Test
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|Globals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|JabRefPreferences
 import|;
 end_import
 
@@ -77,143 +41,110 @@ comment|/**  * Tests in addition to the general tests from {@link net.sf.jabref.
 end_comment
 
 begin_class
-DECL|class|UnicodeConverterTest
+DECL|class|TitleCaseFormatterTest
 specifier|public
 class|class
-name|UnicodeConverterTest
+name|TitleCaseFormatterTest
 block|{
 DECL|field|formatter
 specifier|private
 specifier|final
-name|UnicodeToLatexFormatter
+name|TitleCaseFormatter
 name|formatter
 init|=
 operator|new
-name|UnicodeToLatexFormatter
+name|TitleCaseFormatter
 argument_list|()
 decl_stmt|;
 annotation|@
-name|Before
-DECL|method|setUp ()
-specifier|public
-name|void
-name|setUp
-parameter_list|()
-block|{
-name|Globals
-operator|.
-name|prefs
-operator|=
-name|JabRefPreferences
-operator|.
-name|getInstance
-argument_list|()
-expr_stmt|;
-block|}
-annotation|@
 name|Test
-DECL|method|testBasic ()
+DECL|method|test ()
 specifier|public
 name|void
-name|testBasic
+name|test
 parameter_list|()
 block|{
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
-literal|"aaa"
+literal|"Upper Each First"
 argument_list|,
 name|formatter
 operator|.
 name|format
 argument_list|(
-literal|"aaa"
+literal|"upper each first"
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
-annotation|@
-name|Test
-DECL|method|testUnicodeCombiningAccents ()
-specifier|public
-name|void
-name|testUnicodeCombiningAccents
-parameter_list|()
-block|{
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
-literal|"{\\\"{a}}"
+literal|"An Upper Each First And"
 argument_list|,
 name|formatter
 operator|.
 name|format
 argument_list|(
-literal|"a\u0308"
+literal|"an upper each first and"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
-literal|"{\\\"{a}}b"
+literal|"An Upper Each of the and First And"
 argument_list|,
 name|formatter
 operator|.
 name|format
 argument_list|(
-literal|"a\u0308b"
+literal|"an upper each of the and first and"
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
-annotation|@
-name|Test
-DECL|method|testUnicode ()
-specifier|public
-name|void
-name|testUnicode
-parameter_list|()
-block|{
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
-literal|"{\\\"{a}}"
+literal|"An Upper Each of: The and First And"
 argument_list|,
 name|formatter
 operator|.
 name|format
 argument_list|(
-literal|"Ã¤"
+literal|"an upper each of: the and first and"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
-literal|"{$\\Epsilon$}"
+literal|"An Upper First with and without {CURLY} {brackets}"
 argument_list|,
 name|formatter
 operator|.
 name|format
 argument_list|(
-literal|"\u0395"
+literal|"AN UPPER FIRST WITH AND WITHOUT {CURLY} {brackets}"
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
-annotation|@
-name|Test
-DECL|method|testUnicodeSingle ()
-specifier|public
-name|void
-name|testUnicodeSingle
-parameter_list|()
-block|{
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
-literal|"a"
+literal|"An Upper First with {A}nd without {C}urly {b}rackets"
 argument_list|,
 name|formatter
 operator|.
 name|format
 argument_list|(
-literal|"a"
+literal|"AN UPPER FIRST WITH {A}ND WITHOUT {C}URLY {b}rackets"
 argument_list|)
 argument_list|)
 expr_stmt|;

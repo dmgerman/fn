@@ -16,6 +16,10 @@ name|bibtexfields
 package|;
 end_package
 
+begin_comment
+comment|/**  * Tests in addition to the general tests from {@link net.sf.jabref.logic.formatter.FormatterTest}  */
+end_comment
+
 begin_import
 import|import
 name|org
@@ -44,6 +48,7 @@ specifier|public
 class|class
 name|ClearFormatterTest
 block|{
+comment|/**      * Check whether the clear formatter really returns the empty string for the empty string      */
 annotation|@
 name|Test
 DECL|method|formatReturnsEmptyForEmptyString ()
@@ -69,6 +74,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Check whether the clear formatter really returns the empty string for some string      */
 annotation|@
 name|Test
 DECL|method|formatReturnsEmptyForSomeString ()
