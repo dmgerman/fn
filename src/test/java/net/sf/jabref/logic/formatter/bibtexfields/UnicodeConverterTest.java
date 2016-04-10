@@ -82,11 +82,11 @@ specifier|public
 class|class
 name|UnicodeConverterTest
 block|{
-DECL|field|conv
+DECL|field|formatter
 specifier|private
 specifier|final
 name|UnicodeToLatexFormatter
-name|conv
+name|formatter
 init|=
 operator|new
 name|UnicodeToLatexFormatter
@@ -122,7 +122,7 @@ name|assertEquals
 argument_list|(
 literal|"aaa"
 argument_list|,
-name|conv
+name|formatter
 operator|.
 name|format
 argument_list|(
@@ -143,7 +143,7 @@ name|assertEquals
 argument_list|(
 literal|"{\\\"{a}}"
 argument_list|,
-name|conv
+name|formatter
 operator|.
 name|format
 argument_list|(
@@ -155,7 +155,7 @@ name|assertEquals
 argument_list|(
 literal|"{\\\"{a}}b"
 argument_list|,
-name|conv
+name|formatter
 operator|.
 name|format
 argument_list|(
@@ -176,7 +176,7 @@ name|assertEquals
 argument_list|(
 literal|"{\\\"{a}}"
 argument_list|,
-name|conv
+name|formatter
 operator|.
 name|format
 argument_list|(
@@ -188,7 +188,7 @@ name|assertEquals
 argument_list|(
 literal|"{$\\Epsilon$}"
 argument_list|,
-name|conv
+name|formatter
 operator|.
 name|format
 argument_list|(
@@ -209,7 +209,7 @@ name|assertEquals
 argument_list|(
 literal|"a"
 argument_list|,
-name|conv
+name|formatter
 operator|.
 name|format
 argument_list|(

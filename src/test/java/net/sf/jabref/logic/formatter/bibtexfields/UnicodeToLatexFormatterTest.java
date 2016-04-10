@@ -48,6 +48,16 @@ specifier|public
 class|class
 name|UnicodeToLatexFormatterTest
 block|{
+DECL|field|formatter
+specifier|private
+specifier|final
+name|UnicodeToLatexFormatter
+name|formatter
+init|=
+operator|new
+name|UnicodeToLatexFormatter
+argument_list|()
+decl_stmt|;
 annotation|@
 name|Test
 DECL|method|formatWithoutUnicodeCharactersReturnsSameString ()
@@ -60,9 +70,7 @@ name|assertEquals
 argument_list|(
 literal|"abc"
 argument_list|,
-operator|new
-name|UnicodeToLatexFormatter
-argument_list|()
+name|formatter
 operator|.
 name|format
 argument_list|(
@@ -83,9 +91,7 @@ name|assertEquals
 argument_list|(
 literal|"{{\\aa}}{\\\"{a}}{\\\"{o}}"
 argument_list|,
-operator|new
-name|UnicodeToLatexFormatter
-argument_list|()
+name|formatter
 operator|.
 name|format
 argument_list|(

@@ -48,6 +48,16 @@ specifier|public
 class|class
 name|UnitsToLatexFormatterTest
 block|{
+DECL|field|formatter
+specifier|private
+specifier|final
+name|UnitsToLatexFormatter
+name|formatter
+init|=
+operator|new
+name|UnitsToLatexFormatter
+argument_list|()
+decl_stmt|;
 annotation|@
 name|Test
 DECL|method|test ()
@@ -56,18 +66,11 @@ name|void
 name|test
 parameter_list|()
 block|{
-name|UnitsToLatexFormatter
-name|uf
-init|=
-operator|new
-name|UnitsToLatexFormatter
-argument_list|()
-decl_stmt|;
 name|assertEquals
 argument_list|(
 literal|"1~{A}"
 argument_list|,
-name|uf
+name|formatter
 operator|.
 name|format
 argument_list|(
@@ -79,7 +82,7 @@ name|assertEquals
 argument_list|(
 literal|"1\\mbox{-}{mA}"
 argument_list|,
-name|uf
+name|formatter
 operator|.
 name|format
 argument_list|(

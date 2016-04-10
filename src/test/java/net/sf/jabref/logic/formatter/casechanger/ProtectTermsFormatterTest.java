@@ -48,6 +48,16 @@ specifier|public
 class|class
 name|ProtectTermsFormatterTest
 block|{
+DECL|field|formatter
+specifier|private
+specifier|final
+name|ProtectTermsFormatter
+name|formatter
+init|=
+operator|new
+name|ProtectTermsFormatter
+argument_list|()
+decl_stmt|;
 annotation|@
 name|Test
 DECL|method|test ()
@@ -56,18 +66,11 @@ name|void
 name|test
 parameter_list|()
 block|{
-name|ProtectTermsFormatter
-name|ck
-init|=
-operator|new
-name|ProtectTermsFormatter
-argument_list|()
-decl_stmt|;
 name|assertEquals
 argument_list|(
 literal|"{VLSI}"
 argument_list|,
-name|ck
+name|formatter
 operator|.
 name|format
 argument_list|(
@@ -79,7 +82,7 @@ name|assertEquals
 argument_list|(
 literal|"{VLSI}"
 argument_list|,
-name|ck
+name|formatter
 operator|.
 name|format
 argument_list|(
@@ -91,7 +94,7 @@ name|assertEquals
 argument_list|(
 literal|"VLsI"
 argument_list|,
-name|ck
+name|formatter
 operator|.
 name|format
 argument_list|(
@@ -103,7 +106,7 @@ name|assertEquals
 argument_list|(
 literal|"{VLSI} {VLSI}"
 argument_list|,
-name|ck
+name|formatter
 operator|.
 name|format
 argument_list|(
