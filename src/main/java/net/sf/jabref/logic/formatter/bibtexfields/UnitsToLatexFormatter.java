@@ -580,7 +580,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Converts units in %s to LaTeX code."
+literal|"Converts units to LaTeX formatting."
 argument_list|)
 return|;
 block|}
