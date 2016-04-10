@@ -458,12 +458,10 @@ if|if
 condition|(
 name|encodingMap
 operator|.
-name|get
+name|containsKey
 argument_list|(
 name|defaultEncoding
 argument_list|)
-operator|!=
-literal|null
 condition|)
 block|{
 name|prefs

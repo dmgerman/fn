@@ -335,12 +335,10 @@ block|{
 return|return
 name|components
 operator|.
-name|get
+name|containsKey
 argument_list|(
 name|name
 argument_list|)
-operator|!=
-literal|null
 return|;
 block|}
 DECL|method|isComponentVisible (String name)

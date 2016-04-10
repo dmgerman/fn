@@ -357,12 +357,10 @@ if|if
 condition|(
 name|STANDARD_TYPES
 operator|.
-name|get
+name|containsKey
 argument_list|(
 name|toLowerCase
 argument_list|)
-operator|!=
-literal|null
 condition|)
 block|{
 comment|// In this case the user has removed a customized version
