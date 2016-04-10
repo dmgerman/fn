@@ -145,6 +145,18 @@ literal|"Changes all letters to upper case."
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
+DECL|method|getExampleInput ()
+specifier|public
+name|String
+name|getExampleInput
+parameter_list|()
+block|{
+return|return
+literal|"Kde {Amarok}"
+return|;
+block|}
 block|}
 end_class
 

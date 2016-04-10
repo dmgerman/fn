@@ -22,19 +22,17 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Test
+name|Assert
 import|;
 end_import
 
 begin_import
-import|import static
+import|import
 name|org
 operator|.
 name|junit
 operator|.
-name|Assert
-operator|.
-name|*
+name|Test
 import|;
 end_import
 
@@ -43,63 +41,21 @@ comment|/**  * Tests in addition to the general tests from {@link net.sf.jabref.
 end_comment
 
 begin_class
-DECL|class|UnicodeToLatexFormatterTest
+DECL|class|NormalizeMonthFormatterTest
 specifier|public
 class|class
-name|UnicodeToLatexFormatterTest
+name|NormalizeMonthFormatterTest
 block|{
 DECL|field|formatter
 specifier|private
 specifier|final
-name|UnicodeToLatexFormatter
+name|NormalizeMonthFormatter
 name|formatter
 init|=
 operator|new
-name|UnicodeToLatexFormatter
+name|NormalizeMonthFormatter
 argument_list|()
 decl_stmt|;
-annotation|@
-name|Test
-DECL|method|formatWithoutUnicodeCharactersReturnsSameString ()
-specifier|public
-name|void
-name|formatWithoutUnicodeCharactersReturnsSameString
-parameter_list|()
-block|{
-name|assertEquals
-argument_list|(
-literal|"abc"
-argument_list|,
-name|formatter
-operator|.
-name|format
-argument_list|(
-literal|"abc"
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-annotation|@
-name|Test
-DECL|method|formatMultipleUnicodeCharacters ()
-specifier|public
-name|void
-name|formatMultipleUnicodeCharacters
-parameter_list|()
-block|{
-name|assertEquals
-argument_list|(
-literal|"{{\\aa}}{\\\"{a}}{\\\"{o}}"
-argument_list|,
-name|formatter
-operator|.
-name|format
-argument_list|(
-literal|"\u00E5\u00E4\u00F6"
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
 annotation|@
 name|Test
 DECL|method|formatExample ()
@@ -108,9 +64,11 @@ name|void
 name|formatExample
 parameter_list|()
 block|{
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
-literal|"M{\\\"{o}}nch"
+literal|"#dec#"
 argument_list|,
 name|formatter
 operator|.

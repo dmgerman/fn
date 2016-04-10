@@ -156,6 +156,18 @@ literal|"Normalizes lists of persons to the BibTeX standard."
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
+DECL|method|getExampleInput ()
+specifier|public
+name|String
+name|getExampleInput
+parameter_list|()
+block|{
+return|return
+literal|"Albert Einstein and Alan Turing"
+return|;
+block|}
 block|}
 end_class
 

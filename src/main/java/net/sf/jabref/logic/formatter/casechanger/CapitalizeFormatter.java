@@ -145,6 +145,18 @@ literal|"Changes the first letter of all words to capital case and the remaining
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
+DECL|method|getExampleInput ()
+specifier|public
+name|String
+name|getExampleInput
+parameter_list|()
+block|{
+return|return
+literal|"I have {a} DREAM"
+return|;
+block|}
 block|}
 end_class
 

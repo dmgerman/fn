@@ -224,6 +224,18 @@ return|;
 block|}
 annotation|@
 name|Override
+DECL|method|getExampleInput ()
+specifier|public
+name|String
+name|getExampleInput
+parameter_list|()
+block|{
+return|return
+literal|"In CDMA"
+return|;
+block|}
+annotation|@
+name|Override
 DECL|method|getName ()
 specifier|public
 name|String

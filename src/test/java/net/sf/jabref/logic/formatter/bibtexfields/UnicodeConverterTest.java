@@ -133,6 +133,27 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+DECL|method|testEmpty ()
+specifier|public
+name|void
+name|testEmpty
+parameter_list|()
+block|{
+name|assertEquals
+argument_list|(
+literal|""
+argument_list|,
+name|formatter
+operator|.
+name|format
+argument_list|(
+literal|""
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
 DECL|method|testUnicodeCombiningAccents ()
 specifier|public
 name|void

@@ -171,6 +171,18 @@ literal|"Capitalize the first word, changes other words to lower case."
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
+DECL|method|getExampleInput ()
+specifier|public
+name|String
+name|getExampleInput
+parameter_list|()
+block|{
+return|return
+literal|"i have {Aa} DREAM"
+return|;
+block|}
 block|}
 end_class
 

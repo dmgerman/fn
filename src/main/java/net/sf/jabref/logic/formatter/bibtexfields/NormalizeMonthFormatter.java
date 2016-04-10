@@ -179,6 +179,18 @@ literal|"Normalize month to BibTeX standard abbreviation."
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
+DECL|method|getExampleInput ()
+specifier|public
+name|String
+name|getExampleInput
+parameter_list|()
+block|{
+return|return
+literal|"December"
+return|;
+block|}
 block|}
 end_class
 
