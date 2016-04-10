@@ -72,6 +72,10 @@ name|Test
 import|;
 end_import
 
+begin_comment
+comment|/**  * Tests in addition to the general tests from {@link net.sf.jabref.logic.formatter.FormatterTest}  */
+end_comment
+
 begin_class
 DECL|class|OrdinalsToSuperscriptFormatterTest
 specifier|public
@@ -109,37 +113,6 @@ block|{
 name|formatter
 operator|=
 literal|null
-expr_stmt|;
-block|}
-annotation|@
-name|Test
-DECL|method|returnsFormatterName ()
-specifier|public
-name|void
-name|returnsFormatterName
-parameter_list|()
-block|{
-name|Assert
-operator|.
-name|assertNotNull
-argument_list|(
-name|formatter
-operator|.
-name|getName
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|Assert
-operator|.
-name|assertNotEquals
-argument_list|(
-literal|""
-argument_list|,
-name|formatter
-operator|.
-name|getName
-argument_list|()
-argument_list|)
 expr_stmt|;
 block|}
 annotation|@
@@ -183,22 +156,6 @@ argument_list|(
 literal|"21th"
 argument_list|,
 literal|"21\\textsuperscript{th}"
-argument_list|)
-expr_stmt|;
-block|}
-annotation|@
-name|Test
-DECL|method|replaceSuperscriptsEmptyFields ()
-specifier|public
-name|void
-name|replaceSuperscriptsEmptyFields
-parameter_list|()
-block|{
-name|expectCorrect
-argument_list|(
-literal|""
-argument_list|,
-literal|""
 argument_list|)
 expr_stmt|;
 block|}

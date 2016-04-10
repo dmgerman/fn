@@ -38,16 +38,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|After
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Assert
 import|;
 end_import
@@ -71,6 +61,10 @@ operator|.
 name|Test
 import|;
 end_import
+
+begin_comment
+comment|/**  * Tests in addition to the general tests from {@link net.sf.jabref.logic.formatter.FormatterTest}  */
+end_comment
 
 begin_class
 DECL|class|NormalizePagesFormatterTest
@@ -96,19 +90,6 @@ operator|=
 operator|new
 name|NormalizePagesFormatter
 argument_list|()
-expr_stmt|;
-block|}
-annotation|@
-name|After
-DECL|method|tearDown ()
-specifier|public
-name|void
-name|tearDown
-parameter_list|()
-block|{
-name|formatter
-operator|=
-literal|null
 expr_stmt|;
 block|}
 annotation|@
@@ -204,22 +185,6 @@ argument_list|(
 literal|"1--2"
 argument_list|,
 literal|"1--2"
-argument_list|)
-expr_stmt|;
-block|}
-annotation|@
-name|Test
-DECL|method|formatPageNumbersEmptyFields ()
-specifier|public
-name|void
-name|formatPageNumbersEmptyFields
-parameter_list|()
-block|{
-name|expectCorrect
-argument_list|(
-literal|""
-argument_list|,
-literal|""
 argument_list|)
 expr_stmt|;
 block|}

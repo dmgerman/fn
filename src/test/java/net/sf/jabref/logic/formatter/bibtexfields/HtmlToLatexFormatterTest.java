@@ -72,6 +72,10 @@ name|*
 import|;
 end_import
 
+begin_comment
+comment|/**  * Tests in addition to the general tests from {@link net.sf.jabref.logic.formatter.FormatterTest}  */
+end_comment
+
 begin_class
 DECL|class|HtmlToLatexFormatterTest
 specifier|public
@@ -189,27 +193,6 @@ operator|.
 name|format
 argument_list|(
 literal|"aaa"
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-annotation|@
-name|Test
-DECL|method|testHTMLEmpty ()
-specifier|public
-name|void
-name|testHTMLEmpty
-parameter_list|()
-block|{
-name|assertEquals
-argument_list|(
-literal|""
-argument_list|,
-name|htmlToLatexFormatter
-operator|.
-name|format
-argument_list|(
-literal|""
 argument_list|)
 argument_list|)
 expr_stmt|;

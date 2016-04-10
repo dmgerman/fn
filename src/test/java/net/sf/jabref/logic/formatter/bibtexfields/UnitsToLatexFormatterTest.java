@@ -38,6 +38,10 @@ name|Test
 import|;
 end_import
 
+begin_comment
+comment|/**  * Tests in addition to the general tests from {@link net.sf.jabref.logic.formatter.FormatterTest}  */
+end_comment
+
 begin_class
 DECL|class|UnitsToLatexFormatterTest
 specifier|public
