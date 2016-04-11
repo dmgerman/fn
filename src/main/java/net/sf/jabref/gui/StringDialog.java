@@ -416,12 +416,6 @@ specifier|final
 name|HelpAction
 name|helpAction
 decl_stmt|;
-DECL|field|pw
-specifier|private
-specifier|final
-name|PositionWindow
-name|pw
-decl_stmt|;
 DECL|field|saveAction
 specifier|private
 specifier|final
@@ -1036,8 +1030,9 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+name|PositionWindow
 name|pw
-operator|=
+init|=
 operator|new
 name|PositionWindow
 argument_list|(
@@ -1059,7 +1054,7 @@ name|JabRefPreferences
 operator|.
 name|STRINGS_SIZE_Y
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|pw
 operator|.
 name|setWindowPosition

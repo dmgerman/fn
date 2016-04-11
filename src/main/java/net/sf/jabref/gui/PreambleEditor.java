@@ -279,12 +279,6 @@ operator|new
 name|CloseAction
 argument_list|()
 decl_stmt|;
-DECL|field|pw
-specifier|private
-specifier|final
-name|PositionWindow
-name|pw
-decl_stmt|;
 DECL|method|PreambleEditor (JabRefFrame baseFrame, BasePanel panel, BibDatabase base)
 specifier|public
 name|PreambleEditor
@@ -565,8 +559,9 @@ literal|"Edit preamble"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|PositionWindow
 name|pw
-operator|=
+init|=
 operator|new
 name|PositionWindow
 argument_list|(
@@ -588,7 +583,7 @@ name|JabRefPreferences
 operator|.
 name|PREAMBLE_SIZE_Y
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|pw
 operator|.
 name|setWindowPosition
