@@ -760,66 +760,6 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
-DECL|class|OpenItSwingHelper
-class|class
-name|OpenItSwingHelper
-implements|implements
-name|Runnable
-block|{
-DECL|field|basePanel
-specifier|private
-specifier|final
-name|BasePanel
-name|basePanel
-decl_stmt|;
-DECL|field|raisePanel
-specifier|private
-specifier|final
-name|boolean
-name|raisePanel
-decl_stmt|;
-DECL|method|OpenItSwingHelper (BasePanel basePanel, boolean raisePanel)
-name|OpenItSwingHelper
-parameter_list|(
-name|BasePanel
-name|basePanel
-parameter_list|,
-name|boolean
-name|raisePanel
-parameter_list|)
-block|{
-name|this
-operator|.
-name|basePanel
-operator|=
-name|basePanel
-expr_stmt|;
-name|this
-operator|.
-name|raisePanel
-operator|=
-name|raisePanel
-expr_stmt|;
-block|}
-annotation|@
-name|Override
-DECL|method|run ()
-specifier|public
-name|void
-name|run
-parameter_list|()
-block|{
-name|frame
-operator|.
-name|addTab
-argument_list|(
-name|basePanel
-argument_list|,
-name|raisePanel
-argument_list|)
-expr_stmt|;
-block|}
-block|}
 comment|/**      * Opens the given file. If null or 404, nothing happens      *      * @param file the file, may be null or not existing      */
 DECL|method|openFile (File file, boolean raisePanel)
 specifier|public
@@ -1093,11 +1033,8 @@ name|INSTANCE
 operator|.
 name|execute
 argument_list|(
-call|(
-name|Runnable
-call|)
-argument_list|()
-operator|->
+parameter_list|()
+lambda|->
 block|{
 for|for
 control|(
@@ -1116,8 +1053,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-block|)
-empty_stmt|;
+argument_list|)
+expr_stmt|;
 for|for
 control|(
 name|File
@@ -1207,13 +1144,7 @@ operator|)
 argument_list|)
 expr_stmt|;
 block|}
-end_class
-
-begin_comment
 comment|/**      * @param file the file, may be null or not existing      */
-end_comment
-
-begin_function
 DECL|method|openTheFile (File file, boolean raisePanel)
 specifier|private
 name|void
@@ -1821,17 +1752,8 @@ name|SwingUtilities
 operator|.
 name|invokeLater
 argument_list|(
-operator|new
-name|Runnable
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|run
 parameter_list|()
-block|{
+lambda|->
 name|OpenDatabaseAction
 operator|.
 name|performPostOpenActions
@@ -1842,21 +1764,12 @@ name|finalReferenceToResult
 argument_list|,
 literal|true
 argument_list|)
-expr_stmt|;
-block|}
-block|}
 argument_list|)
 expr_stmt|;
 block|}
 block|}
 block|}
-end_function
-
-begin_comment
 comment|/**      * Go through the list of post open actions, and perform those that need to be performed.      *      * @param panel  The BasePanel where the database is shown.      * @param result The result of the bib file parse operation.      */
-end_comment
-
-begin_function
 DECL|method|performPostOpenActions (BasePanel panel, ParserResult result, boolean mustRaisePanel)
 specifier|public
 specifier|static
@@ -1924,9 +1837,6 @@ expr_stmt|;
 block|}
 block|}
 block|}
-end_function
-
-begin_function
 DECL|method|addNewDatabase (ParserResult result, final File file, boolean raisePanel)
 specifier|public
 name|BasePanel
@@ -2048,8 +1958,11 @@ name|SwingUtilities
 operator|.
 name|invokeLater
 argument_list|(
-operator|new
-name|OpenItSwingHelper
+parameter_list|()
+lambda|->
+name|frame
+operator|.
+name|addTab
 argument_list|(
 name|basePanel
 argument_list|,
@@ -2104,13 +2017,7 @@ return|return
 name|basePanel
 return|;
 block|}
-end_function
-
-begin_comment
 comment|/**      * Opens a new database.      */
-end_comment
-
-begin_function
 DECL|method|loadDatabase (File fileToOpen, Charset defaultEncoding)
 specifier|public
 specifier|static
@@ -2136,11 +2043,6 @@ argument_list|<
 name|Charset
 argument_list|>
 name|suppliedEncoding
-init|=
-name|Optional
-operator|.
-name|empty
-argument_list|()
 decl_stmt|;
 try|try
 init|(
@@ -2333,13 +2235,7 @@ name|result
 return|;
 block|}
 block|}
-end_function
-
-begin_comment
 comment|/**      * Opens the file with the provided encoding. If this fails (or no encoding is provided), then the fallback encoding      * will be used.      */
-end_comment
-
-begin_function
 DECL|method|openFile (File fileToOpen, Optional<Charset> encoding, Charset defaultEncoding)
 specifier|private
 specifier|static
@@ -2428,13 +2324,7 @@ argument_list|)
 return|;
 block|}
 block|}
-end_function
-
-begin_comment
 comment|/**      * Searches the file for "Encoding: myEncoding" and returns the found supplied encoding.      */
-end_comment
-
-begin_function
 DECL|method|getSuppliedEncoding (Reader reader)
 specifier|private
 specifier|static
@@ -2639,8 +2529,8 @@ name|empty
 argument_list|()
 return|;
 block|}
-end_function
+block|}
+end_class
 
-unit|}
 end_unit
 
