@@ -821,7 +821,7 @@ name|BibtexParser
 operator|.
 name|singleFromString
 argument_list|(
-literal|"@ARTICLE{HipKro03, year = {03}, month = #DEC# }"
+literal|"@ARTICLE{HipKro03, year = {2003}, month = #DEC# }"
 argument_list|)
 operator|)
 operator|.
