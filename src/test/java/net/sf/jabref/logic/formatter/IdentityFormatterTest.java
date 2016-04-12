@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|net.sf.jabref.logic.formatter.casechanger
+DECL|package|net.sf.jabref.logic.formatter
 package|package
 name|net
 operator|.
@@ -11,8 +11,6 @@ operator|.
 name|logic
 operator|.
 name|formatter
-operator|.
-name|casechanger
 package|;
 end_package
 
@@ -24,7 +22,7 @@ name|junit
 operator|.
 name|Assert
 operator|.
-name|*
+name|assertEquals
 import|;
 end_import
 
@@ -43,78 +41,21 @@ comment|/**  * Tests in addition to the general tests from {@link net.sf.jabref.
 end_comment
 
 begin_class
-DECL|class|ProtectTermsFormatterTest
+DECL|class|IdentityFormatterTest
 specifier|public
 class|class
-name|ProtectTermsFormatterTest
+name|IdentityFormatterTest
 block|{
 DECL|field|formatter
 specifier|private
 specifier|final
-name|ProtectTermsFormatter
+name|IdentityFormatter
 name|formatter
 init|=
 operator|new
-name|ProtectTermsFormatter
+name|IdentityFormatter
 argument_list|()
 decl_stmt|;
-annotation|@
-name|Test
-DECL|method|test ()
-specifier|public
-name|void
-name|test
-parameter_list|()
-block|{
-name|assertEquals
-argument_list|(
-literal|"{VLSI}"
-argument_list|,
-name|formatter
-operator|.
-name|format
-argument_list|(
-literal|"VLSI"
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"{VLSI}"
-argument_list|,
-name|formatter
-operator|.
-name|format
-argument_list|(
-literal|"{VLSI}"
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"VLsI"
-argument_list|,
-name|formatter
-operator|.
-name|format
-argument_list|(
-literal|"VLsI"
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"{VLSI} {VLSI}"
-argument_list|,
-name|formatter
-operator|.
-name|format
-argument_list|(
-literal|"VLSI {VLSI}"
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
 annotation|@
 name|Test
 DECL|method|formatExample ()
@@ -125,7 +66,7 @@ parameter_list|()
 block|{
 name|assertEquals
 argument_list|(
-literal|"In {CDMA}"
+literal|"JabRef"
 argument_list|,
 name|formatter
 operator|.

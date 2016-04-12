@@ -124,13 +124,16 @@ name|value
 decl_stmt|;
 while|while
 condition|(
+operator|(
 name|formatted
 operator|.
 name|length
 argument_list|()
 operator|>=
 literal|2
+operator|)
 operator|&&
+operator|(
 name|formatted
 operator|.
 name|charAt
@@ -139,7 +142,9 @@ literal|0
 argument_list|)
 operator|==
 literal|'{'
+operator|)
 operator|&&
+operator|(
 name|formatted
 operator|.
 name|charAt
@@ -153,6 +158,7 @@ literal|1
 argument_list|)
 operator|==
 literal|'}'
+operator|)
 condition|)
 block|{
 name|String
@@ -214,6 +220,18 @@ name|lang
 argument_list|(
 literal|"Removes braces encapsulating the complete field content."
 argument_list|)
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|getExampleInput ()
+specifier|public
+name|String
+name|getExampleInput
+parameter_list|()
+block|{
+return|return
+literal|"{In CDMA}"
 return|;
 block|}
 comment|/**      * Check if a string at any point has had more ending } braces than opening { ones.      * Will e.g. return true for the string "DNA} blahblal {EPA"      *      * @param value The string to check.      * @return true if at any index the brace count is negative.      */

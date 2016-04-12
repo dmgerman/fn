@@ -33,6 +33,18 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
 import|import
 name|org
 operator|.
@@ -191,6 +203,30 @@ argument_list|(
 literal|"1st 1stword words1st inside1stwords"
 argument_list|,
 literal|"1\\textsuperscript{st} 1stword words1st inside1stwords"
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|formatExample ()
+specifier|public
+name|void
+name|formatExample
+parameter_list|()
+block|{
+name|assertEquals
+argument_list|(
+literal|"11\\textsuperscript{th}"
+argument_list|,
+name|formatter
+operator|.
+name|format
+argument_list|(
+name|formatter
+operator|.
+name|getExampleInput
+argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

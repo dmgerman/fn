@@ -237,6 +237,18 @@ literal|"Cleans up LaTeX code."
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
+DECL|method|getExampleInput ()
+specifier|public
+name|String
+name|getExampleInput
+parameter_list|()
+block|{
+return|return
+literal|"{VLSI} {DSP}"
+return|;
+block|}
 block|}
 end_class
 

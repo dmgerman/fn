@@ -107,6 +107,32 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+DECL|method|formatExample ()
+specifier|public
+name|void
+name|formatExample
+parameter_list|()
+block|{
+name|Assert
+operator|.
+name|assertEquals
+argument_list|(
+literal|"kde {Amarok}"
+argument_list|,
+name|formatter
+operator|.
+name|format
+argument_list|(
+name|formatter
+operator|.
+name|getExampleInput
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_class
 

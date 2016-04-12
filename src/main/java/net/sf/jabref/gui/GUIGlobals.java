@@ -536,15 +536,6 @@ init|=
 literal|10
 decl_stmt|;
 comment|// The maximum number of "Back" operations stored.
-DECL|field|PE_HEIGHT
-specifier|public
-specifier|static
-specifier|final
-name|double
-name|PE_HEIGHT
-init|=
-literal|2
-decl_stmt|;
 comment|//	Constants controlling formatted bibtex output.
 DECL|field|INDENT
 specifier|public

@@ -1007,6 +1007,18 @@ literal|"Converts HTML code to LaTeX code."
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
+DECL|method|getExampleInput ()
+specifier|public
+name|String
+name|getExampleInput
+parameter_list|()
+block|{
+return|return
+literal|"<strong>JabRef</strong>"
+return|;
+block|}
 DECL|method|readTag (String text, int position)
 specifier|private
 name|int
