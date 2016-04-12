@@ -394,6 +394,26 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
+name|Test
+DECL|method|getExampleInputAlwaysNonEmpty ()
+specifier|public
+name|void
+name|getExampleInputAlwaysNonEmpty
+parameter_list|()
+block|{
+name|assertFalse
+argument_list|(
+name|formatter
+operator|.
+name|getExampleInput
+argument_list|()
+operator|.
+name|isEmpty
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
 name|Parameterized
 operator|.
 name|Parameters
