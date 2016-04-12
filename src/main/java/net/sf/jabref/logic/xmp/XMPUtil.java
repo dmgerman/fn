@@ -723,54 +723,6 @@ name|EncryptedPdfsNotSupportedException
 argument_list|()
 throw|;
 block|}
-catch|catch
-parameter_list|(
-name|NoClassDefFoundError
-name|e
-parameter_list|)
-block|{
-comment|// This is to avoid following exception:
-comment|// Exception in thread "JabRef CachedThreadPool" java.lang.NoClassDefFoundError: org/bouncycastle/jce/provider/BouncyCastleProvider
-comment|// at org.apache.pdfbox.pdmodel.PDDocument.openProtection(PDDocument.java:1611)
-comment|// at net.sf.jabref.logic.xmp.XMPUtil.loadWithAutomaticDecryption(XMPUtil.java:133)
-comment|// This exception occurs if JabRef is compiled without 'org.bouncycastle:bcprov-jdk15on' (meaning, without the BouncyCastle library), which may happen in some countries not allowing cryptography.
-comment|// See for instance http://www.bouncycastle.org/wiki/display/JA1/Frequently+Asked+Questions#FrequentlyAskedQuestions-11.WhatisBouncyCastle%27sexportclassificationintheUnitedStatesofAmerica?
-comment|// See also https://sourceforge.net/p/jabref/bugs/1257/ and http://stackoverflow.com/a/2929228/873282
-if|if
-condition|(
-name|e
-operator|.
-name|getMessage
-argument_list|()
-operator|.
-name|equals
-argument_list|(
-literal|"org/bouncycastle/jce/provider/BouncyCastleProvider"
-argument_list|)
-condition|)
-block|{
-name|LOGGER
-operator|.
-name|warn
-argument_list|(
-literal|"Java Bouncy Castle library not found. This might have been removed due redistribution restrictions. Please download and install it. For more information see http://www.bouncycastle.org/."
-argument_list|)
-expr_stmt|;
-comment|// We convert it to a EncryptionNotSupportedException as this is handled properly by the caller
-throw|throw
-operator|new
-name|EncryptedPdfsNotSupportedException
-argument_list|()
-throw|;
-block|}
-else|else
-block|{
-comment|// we really cannot deal with it
-throw|throw
-name|e
-throw|;
-block|}
-block|}
 block|}
 return|return
 name|doc
