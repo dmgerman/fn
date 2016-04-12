@@ -262,6 +262,18 @@ return|;
 block|}
 annotation|@
 name|Override
+DECL|method|getExampleInput ()
+specifier|public
+name|String
+name|getExampleInput
+parameter_list|()
+block|{
+return|return
+literal|"1 - 2"
+return|;
+block|}
+annotation|@
+name|Override
 DECL|method|hashCode ()
 specifier|public
 name|int

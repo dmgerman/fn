@@ -1020,6 +1020,18 @@ literal|"Converts LaTeX encoding to Unicode characters."
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
+DECL|method|getExampleInput ()
+specifier|public
+name|String
+name|getExampleInput
+parameter_list|()
+block|{
+return|return
+literal|"M{\\\"{o}}nch"
+return|;
+block|}
 block|}
 end_class
 

@@ -134,6 +134,18 @@ literal|"Clears the field completely."
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
+DECL|method|getExampleInput ()
+specifier|public
+name|String
+name|getExampleInput
+parameter_list|()
+block|{
+return|return
+literal|"Obsolete text"
+return|;
+block|}
 block|}
 end_class
 

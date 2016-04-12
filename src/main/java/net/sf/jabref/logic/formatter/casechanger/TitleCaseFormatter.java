@@ -256,6 +256,18 @@ literal|"Capitalize all words, but converts articles, prepositions, and conjunct
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
+DECL|method|getExampleInput ()
+specifier|public
+name|String
+name|getExampleInput
+parameter_list|()
+block|{
+return|return
+literal|"{BPMN} conformance In open source Engines"
+return|;
+block|}
 block|}
 end_class
 

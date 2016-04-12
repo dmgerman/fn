@@ -100,6 +100,25 @@ literal|"Simon Harrer and others"
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+DECL|method|formatExample ()
+specifier|public
+name|void
+name|formatExample
+parameter_list|()
+block|{
+name|expectCorrect
+argument_list|(
+name|formatter
+operator|.
+name|getExampleInput
+argument_list|()
+argument_list|,
+literal|"Stefan Kolb and others"
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|expectCorrect (String input, String expected)
 specifier|private
 name|void

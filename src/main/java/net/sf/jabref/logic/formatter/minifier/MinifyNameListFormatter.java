@@ -155,6 +155,18 @@ literal|"Shortens lists of persons if there are more than 2 persons to \"et al.\
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
+DECL|method|getExampleInput ()
+specifier|public
+name|String
+name|getExampleInput
+parameter_list|()
+block|{
+return|return
+literal|"Stefan Kolb and Simon Harrer and Oliver Kopp"
+return|;
+block|}
 DECL|method|abbreviateAuthor (String authorField)
 specifier|private
 name|String
