@@ -279,12 +279,6 @@ operator|new
 name|CloseAction
 argument_list|()
 decl_stmt|;
-DECL|field|pw
-specifier|private
-specifier|final
-name|PositionWindow
-name|pw
-decl_stmt|;
 DECL|method|PreambleEditor (JabRefFrame baseFrame, BasePanel panel, BibDatabase base)
 specifier|public
 name|PreambleEditor
@@ -565,8 +559,9 @@ literal|"Edit preamble"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|PositionWindow
 name|pw
-operator|=
+init|=
 operator|new
 name|PositionWindow
 argument_list|(
@@ -588,55 +583,11 @@ name|JabRefPreferences
 operator|.
 name|PREAMBLE_SIZE_Y
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|pw
 operator|.
 name|setWindowPosition
 argument_list|()
-expr_stmt|;
-comment|// Set up a ComponentListener that saves the last size and position of the dialog
-name|addComponentListener
-argument_list|(
-operator|new
-name|ComponentAdapter
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|componentResized
-parameter_list|(
-name|ComponentEvent
-name|e
-parameter_list|)
-block|{
-comment|// Save dialog position
-name|pw
-operator|.
-name|storeWindowPosition
-argument_list|()
-expr_stmt|;
-block|}
-annotation|@
-name|Override
-specifier|public
-name|void
-name|componentMoved
-parameter_list|(
-name|ComponentEvent
-name|e
-parameter_list|)
-block|{
-comment|// Save dialog position
-name|pw
-operator|.
-name|storeWindowPosition
-argument_list|()
-expr_stmt|;
-block|}
-block|}
-argument_list|)
 expr_stmt|;
 block|}
 DECL|method|setupJTextComponent (JTextComponent ta)

@@ -218,7 +218,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Adds {} brackets around acronyms, month names and countries in %s to preserve their case."
+literal|"Adds {} brackets around acronyms, month names and countries to preserve their case."
 argument_list|)
 return|;
 block|}

@@ -17,38 +17,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|*
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|BeforeClass
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|Test
-import|;
-end_import
-
-begin_import
 import|import
 name|net
 operator|.
@@ -85,6 +53,38 @@ operator|.
 name|entry
 operator|.
 name|FileField
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|BeforeClass
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Test
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|*
 import|;
 end_import
 
@@ -1979,6 +1979,324 @@ operator|.
 name|replaceSpecialCharacters
 argument_list|(
 literal|"Ã¥ÃÃ¶Ã©Ã¨Ã«"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|testExpandAuthorInitialsAddDot ()
+specifier|public
+name|void
+name|testExpandAuthorInitialsAddDot
+parameter_list|()
+block|{
+name|assertEquals
+argument_list|(
+literal|"O."
+argument_list|,
+name|StringUtil
+operator|.
+name|expandAuthorInitials
+argument_list|(
+literal|"O"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"A. O."
+argument_list|,
+name|StringUtil
+operator|.
+name|expandAuthorInitials
+argument_list|(
+literal|"AO"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"A. O."
+argument_list|,
+name|StringUtil
+operator|.
+name|expandAuthorInitials
+argument_list|(
+literal|"AO."
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"A. O."
+argument_list|,
+name|StringUtil
+operator|.
+name|expandAuthorInitials
+argument_list|(
+literal|"A.O."
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"A.-O."
+argument_list|,
+name|StringUtil
+operator|.
+name|expandAuthorInitials
+argument_list|(
+literal|"A-O"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"O. Moore"
+argument_list|,
+name|StringUtil
+operator|.
+name|expandAuthorInitials
+argument_list|(
+literal|"O Moore"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"A. O. Moore"
+argument_list|,
+name|StringUtil
+operator|.
+name|expandAuthorInitials
+argument_list|(
+literal|"AO Moore"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"O. von Moore"
+argument_list|,
+name|StringUtil
+operator|.
+name|expandAuthorInitials
+argument_list|(
+literal|"O von Moore"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"A.-O. Moore"
+argument_list|,
+name|StringUtil
+operator|.
+name|expandAuthorInitials
+argument_list|(
+literal|"A-O Moore"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Moore, O."
+argument_list|,
+name|StringUtil
+operator|.
+name|expandAuthorInitials
+argument_list|(
+literal|"Moore, O"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Moore, A. O."
+argument_list|,
+name|StringUtil
+operator|.
+name|expandAuthorInitials
+argument_list|(
+literal|"Moore, AO"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Moore, A.-O."
+argument_list|,
+name|StringUtil
+operator|.
+name|expandAuthorInitials
+argument_list|(
+literal|"Moore, A-O"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|testExpandAuthorInitialsDoNotAddDot ()
+specifier|public
+name|void
+name|testExpandAuthorInitialsDoNotAddDot
+parameter_list|()
+block|{
+name|assertEquals
+argument_list|(
+literal|"O."
+argument_list|,
+name|StringUtil
+operator|.
+name|expandAuthorInitials
+argument_list|(
+literal|"O."
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"A. O."
+argument_list|,
+name|StringUtil
+operator|.
+name|expandAuthorInitials
+argument_list|(
+literal|"A. O."
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"A.-O."
+argument_list|,
+name|StringUtil
+operator|.
+name|expandAuthorInitials
+argument_list|(
+literal|"A.-O."
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"O. Moore"
+argument_list|,
+name|StringUtil
+operator|.
+name|expandAuthorInitials
+argument_list|(
+literal|"O. Moore"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"A. O. Moore"
+argument_list|,
+name|StringUtil
+operator|.
+name|expandAuthorInitials
+argument_list|(
+literal|"A. O. Moore"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"O. von Moore"
+argument_list|,
+name|StringUtil
+operator|.
+name|expandAuthorInitials
+argument_list|(
+literal|"O. von Moore"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"A.-O. Moore"
+argument_list|,
+name|StringUtil
+operator|.
+name|expandAuthorInitials
+argument_list|(
+literal|"A.-O. Moore"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Moore, O."
+argument_list|,
+name|StringUtil
+operator|.
+name|expandAuthorInitials
+argument_list|(
+literal|"Moore, O."
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Moore, A. O."
+argument_list|,
+name|StringUtil
+operator|.
+name|expandAuthorInitials
+argument_list|(
+literal|"Moore, A. O."
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Moore, A.-O."
+argument_list|,
+name|StringUtil
+operator|.
+name|expandAuthorInitials
+argument_list|(
+literal|"Moore, A.-O."
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"MEmre"
+argument_list|,
+name|StringUtil
+operator|.
+name|expandAuthorInitials
+argument_list|(
+literal|"MEmre"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"{\\'{E}}douard"
+argument_list|,
+name|StringUtil
+operator|.
+name|expandAuthorInitials
+argument_list|(
+literal|"{\\'{E}}douard"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"J{\\\"o}rg"
+argument_list|,
+name|StringUtil
+operator|.
+name|expandAuthorInitials
+argument_list|(
+literal|"J{\\\"o}rg"
 argument_list|)
 argument_list|)
 expr_stmt|;

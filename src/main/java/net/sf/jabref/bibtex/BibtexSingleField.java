@@ -166,7 +166,7 @@ DECL|field|extras
 specifier|private
 name|Set
 argument_list|<
-name|BibtexSingleFieldProperties
+name|FieldProperties
 argument_list|>
 name|extras
 init|=
@@ -174,7 +174,7 @@ name|EnumSet
 operator|.
 name|noneOf
 argument_list|(
-name|BibtexSingleFieldProperties
+name|FieldProperties
 operator|.
 name|class
 argument_list|)
@@ -471,14 +471,14 @@ name|WRITEABLE
 argument_list|)
 return|;
 block|}
-DECL|method|setExtras (Set<BibtexSingleFieldProperties> pExtras)
+DECL|method|setExtras (Set<FieldProperties> pExtras)
 specifier|public
 name|void
 name|setExtras
 parameter_list|(
 name|Set
 argument_list|<
-name|BibtexSingleFieldProperties
+name|FieldProperties
 argument_list|>
 name|pExtras
 parameter_list|)
@@ -494,7 +494,7 @@ DECL|method|getExtras ()
 specifier|public
 name|Set
 argument_list|<
-name|BibtexSingleFieldProperties
+name|FieldProperties
 argument_list|>
 name|getExtras
 parameter_list|()
@@ -573,7 +573,7 @@ name|extras
 operator|.
 name|add
 argument_list|(
-name|BibtexSingleFieldProperties
+name|FieldProperties
 operator|.
 name|NUMERIC
 argument_list|)
@@ -585,7 +585,7 @@ name|extras
 operator|.
 name|remove
 argument_list|(
-name|BibtexSingleFieldProperties
+name|FieldProperties
 operator|.
 name|NUMERIC
 argument_list|)
@@ -606,7 +606,7 @@ name|extras
 operator|.
 name|contains
 argument_list|(
-name|BibtexSingleFieldProperties
+name|FieldProperties
 operator|.
 name|NUMERIC
 argument_list|)

@@ -1938,14 +1938,9 @@ block|}
 name|String
 name|year
 init|=
-name|YearUtil
-operator|.
-name|toFourDigitYear
-argument_list|(
 name|getField
 argument_list|(
 literal|"year"
-argument_list|)
 argument_list|)
 decl_stmt|;
 if|if

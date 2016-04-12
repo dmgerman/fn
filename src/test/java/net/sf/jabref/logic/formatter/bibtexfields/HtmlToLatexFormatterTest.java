@@ -72,16 +72,25 @@ name|*
 import|;
 end_import
 
+begin_comment
+comment|/**  * Tests in addition to the general tests from {@link net.sf.jabref.logic.formatter.FormatterTest}  */
+end_comment
+
 begin_class
 DECL|class|HtmlToLatexFormatterTest
 specifier|public
 class|class
 name|HtmlToLatexFormatterTest
 block|{
-DECL|field|htmlToLatexFormatter
+DECL|field|formatter
 specifier|private
+specifier|final
 name|HtmlToLatexFormatter
-name|htmlToLatexFormatter
+name|formatter
+init|=
+operator|new
+name|HtmlToLatexFormatter
+argument_list|()
 decl_stmt|;
 annotation|@
 name|Before
@@ -102,12 +111,6 @@ operator|.
 name|getInstance
 argument_list|()
 expr_stmt|;
-name|htmlToLatexFormatter
-operator|=
-operator|new
-name|HtmlToLatexFormatter
-argument_list|()
-expr_stmt|;
 block|}
 annotation|@
 name|Test
@@ -121,7 +124,7 @@ name|assertEquals
 argument_list|(
 literal|"abc"
 argument_list|,
-name|htmlToLatexFormatter
+name|formatter
 operator|.
 name|format
 argument_list|(
@@ -142,7 +145,7 @@ name|assertEquals
 argument_list|(
 literal|"{{\\aa}}{\\\"{a}}{\\\"{o}}"
 argument_list|,
-name|htmlToLatexFormatter
+name|formatter
 operator|.
 name|format
 argument_list|(
@@ -163,7 +166,7 @@ name|assertEquals
 argument_list|(
 literal|"{\\'{\\i}}"
 argument_list|,
-name|htmlToLatexFormatter
+name|formatter
 operator|.
 name|format
 argument_list|(
@@ -184,32 +187,11 @@ name|assertEquals
 argument_list|(
 literal|"aaa"
 argument_list|,
-name|htmlToLatexFormatter
+name|formatter
 operator|.
 name|format
 argument_list|(
 literal|"aaa"
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-annotation|@
-name|Test
-DECL|method|testHTMLEmpty ()
-specifier|public
-name|void
-name|testHTMLEmpty
-parameter_list|()
-block|{
-name|assertEquals
-argument_list|(
-literal|""
-argument_list|,
-name|htmlToLatexFormatter
-operator|.
-name|format
-argument_list|(
-literal|""
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -226,7 +208,7 @@ name|assertEquals
 argument_list|(
 literal|"{\\\"{a}}"
 argument_list|,
-name|htmlToLatexFormatter
+name|formatter
 operator|.
 name|format
 argument_list|(
@@ -238,7 +220,7 @@ name|assertEquals
 argument_list|(
 literal|"{\\\"{a}}"
 argument_list|,
-name|htmlToLatexFormatter
+name|formatter
 operator|.
 name|format
 argument_list|(
@@ -250,7 +232,7 @@ name|assertEquals
 argument_list|(
 literal|"{\\\"{a}}"
 argument_list|,
-name|htmlToLatexFormatter
+name|formatter
 operator|.
 name|format
 argument_list|(
@@ -262,7 +244,7 @@ name|assertEquals
 argument_list|(
 literal|"{$\\Epsilon$}"
 argument_list|,
-name|htmlToLatexFormatter
+name|formatter
 operator|.
 name|format
 argument_list|(
@@ -283,7 +265,7 @@ name|assertEquals
 argument_list|(
 literal|"aaa"
 argument_list|,
-name|htmlToLatexFormatter
+name|formatter
 operator|.
 name|format
 argument_list|(
@@ -304,7 +286,7 @@ name|assertEquals
 argument_list|(
 literal|"{\\\"{a}}"
 argument_list|,
-name|htmlToLatexFormatter
+name|formatter
 operator|.
 name|format
 argument_list|(
@@ -316,7 +298,7 @@ name|assertEquals
 argument_list|(
 literal|"{\\\"{a}}"
 argument_list|,
-name|htmlToLatexFormatter
+name|formatter
 operator|.
 name|format
 argument_list|(
@@ -328,7 +310,7 @@ name|assertEquals
 argument_list|(
 literal|"{\\\"{a}}b"
 argument_list|,
-name|htmlToLatexFormatter
+name|formatter
 operator|.
 name|format
 argument_list|(
@@ -340,7 +322,7 @@ name|assertEquals
 argument_list|(
 literal|"{\\\"{a}}b"
 argument_list|,
-name|htmlToLatexFormatter
+name|formatter
 operator|.
 name|format
 argument_list|(

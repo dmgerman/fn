@@ -2289,12 +2289,10 @@ operator|&&
 operator|(
 name|citProperties
 operator|.
-name|get
+name|containsKey
 argument_list|(
 name|BRACKET_BEFORE_IN_LIST
 argument_list|)
-operator|!=
-literal|null
 operator|)
 condition|)
 block|{
@@ -2321,12 +2319,10 @@ operator|&&
 operator|(
 name|citProperties
 operator|.
-name|get
+name|containsKey
 argument_list|(
 name|BRACKET_AFTER_IN_LIST
 argument_list|)
-operator|!=
-literal|null
 operator|)
 condition|)
 block|{

@@ -22,27 +22,7 @@ name|org
 operator|.
 name|junit
 operator|.
-name|After
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Assert
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|Before
 import|;
 end_import
 
@@ -55,6 +35,10 @@ operator|.
 name|Test
 import|;
 end_import
+
+begin_comment
+comment|/**  * Tests in addition to the general tests from {@link net.sf.jabref.logic.formatter.FormatterTest}  */
+end_comment
 
 begin_class
 DECL|class|MinifyNameListFormatterTest
@@ -64,68 +48,14 @@ name|MinifyNameListFormatterTest
 block|{
 DECL|field|formatter
 specifier|private
+specifier|final
 name|MinifyNameListFormatter
 name|formatter
-decl_stmt|;
-annotation|@
-name|Before
-DECL|method|setUp ()
-specifier|public
-name|void
-name|setUp
-parameter_list|()
-block|{
-name|formatter
-operator|=
+init|=
 operator|new
 name|MinifyNameListFormatter
 argument_list|()
-expr_stmt|;
-block|}
-annotation|@
-name|After
-DECL|method|tearDown ()
-specifier|public
-name|void
-name|tearDown
-parameter_list|()
-block|{
-name|formatter
-operator|=
-literal|null
-expr_stmt|;
-block|}
-annotation|@
-name|Test
-DECL|method|returnsFormatterName ()
-specifier|public
-name|void
-name|returnsFormatterName
-parameter_list|()
-block|{
-name|Assert
-operator|.
-name|assertNotNull
-argument_list|(
-name|formatter
-operator|.
-name|getName
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|Assert
-operator|.
-name|assertNotEquals
-argument_list|(
-literal|""
-argument_list|,
-name|formatter
-operator|.
-name|getName
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
+decl_stmt|;
 annotation|@
 name|Test
 DECL|method|minifyAuthorNames ()
@@ -167,22 +97,6 @@ argument_list|(
 literal|"Simon Harrer and JÃ¶rg Lenhard and Guido Wirtz and others"
 argument_list|,
 literal|"Simon Harrer and others"
-argument_list|)
-expr_stmt|;
-block|}
-annotation|@
-name|Test
-DECL|method|formatEmptyFields ()
-specifier|public
-name|void
-name|formatEmptyFields
-parameter_list|()
-block|{
-name|expectCorrect
-argument_list|(
-literal|""
-argument_list|,
-literal|""
 argument_list|)
 expr_stmt|;
 block|}

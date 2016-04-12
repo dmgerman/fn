@@ -175,8 +175,6 @@ name|ISBNtoBibTeXFetcher
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|//entryFetchers.add(new JSTORFetcher()); // currently not working - why are there 2 different versions?
-comment|//entryFetchers.add(new JSTORFetcher2()); // see also https://github.com/koppor/jabref/issues/66
 name|entryFetchers
 operator|.
 name|add

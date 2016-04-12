@@ -1061,6 +1061,55 @@ argument_list|,
 literal|false
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|firstPart
+operator|!=
+literal|null
+operator|&&
+name|lastPart
+operator|!=
+literal|null
+operator|&&
+name|lastPart
+operator|.
+name|equals
+argument_list|(
+name|lastPart
+operator|.
+name|toUpperCase
+argument_list|()
+argument_list|)
+operator|&&
+name|lastPart
+operator|.
+name|length
+argument_list|()
+operator|<
+literal|5
+condition|)
+block|{
+comment|// The last part is a small string in complete upper case, so interpret it as initial of the first name
+comment|// This is the case for example in "Smith SH" which we think of as lastname=Smith and firstname=SH
+comment|// The length< 5 constraint should allow for "Smith S.H." as input
+return|return
+operator|new
+name|Author
+argument_list|(
+name|lastPart
+argument_list|,
+name|lastPart
+argument_list|,
+name|vonPart
+argument_list|,
+name|firstPart
+argument_list|,
+name|jrPart
+argument_list|)
+return|;
+block|}
+else|else
+block|{
 return|return
 operator|new
 name|Author
@@ -1076,6 +1125,7 @@ argument_list|,
 name|jrPart
 argument_list|)
 return|;
+block|}
 block|}
 comment|/**      * Concatenates list of tokens from 'tokens' Vector. Tokens are separated by      * spaces or dashes, depending on stored in 'tokens'. Callers always ensure      * that start< end; thus, there exists at least one token to be      * concatenated.      *      * @param start     index of the first token to be concatenated in 'tokens' Vector      *                  (always divisible by TOKEN_GROUP_LENGTH).      * @param end       index of the first token not to be concatenated in 'tokens'      *                  Vector (always divisible by TOKEN_GROUP_LENGTH).      * @param offset    offset within token group (used to request concatenation of      *                  either full tokens or abbreviation).      * @param dotAfter<CODE>true</CODE> -- add period after each token,<CODE>false</CODE> --      *                  do not add.      * @return the result of concatenation.      */
 DECL|method|concatTokens (List<Object> tokens, int start, int end, int offset, boolean dotAfter)
@@ -1214,7 +1264,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * Parses the next token.      *<p>      * The string being parsed is stored in global variable<CODE>orig</CODE>,      * and position which parsing has to start from is stored in global variable      *<CODE>token_end</CODE>; thus,<CODE>token_end</CODE> has to be set      * to 0 before the first invocation. Procedure updates<CODE>token_end</CODE>;      * thus, subsequent invocations do not require any additional variable      * settings.      *<p>      * The type of the token is returned; if it is<CODE>TOKEN_WORD</CODE>,      * additional information is given in global variables<CODE>token_start</CODE>,      *<CODE>token_end</CODE>,<CODE>token_abbr</CODE>,<CODE>token_term</CODE>,      * and<CODE>token_case</CODE>; namely:<CODE>orig.substring(token_start,token_end)</CODE>      * is the thext of the token,<CODE>orig.substring(token_start,token_abbr)</CODE>      * is the token abbreviation,<CODE>token_term</CODE> contains token      * terminator (space or dash), and<CODE>token_case</CODE> is<CODE>true</CODE>,      * if token is upper-case and<CODE>false</CODE> if token is lower-case.      *      * @return<CODE>TOKEN_EOF</CODE> -- no more tokens,<CODE>TOKEN_COMMA</CODE> --      * token is comma,<CODE>TOKEN_AND</CODE> -- token is the word      * "and" (or "And", or "aND", etc.),<CODE>TOKEN_WORD</CODE> --      * token is a word; additional information is given in global      * variables<CODE>token_start</CODE>,<CODE>token_end</CODE>,      *<CODE>token_abbr</CODE>,<CODE>token_term</CODE>, and      *<CODE>token_case</CODE>.      */
+comment|/**      * Parses the next token.      *<p>      * The string being parsed is stored in global variable<CODE>orig</CODE>,      * and position which parsing has to start from is stored in global variable      *<CODE>token_end</CODE>; thus,<CODE>token_end</CODE> has to be set      * to 0 before the first invocation. Procedure updates<CODE>token_end</CODE>;      * thus, subsequent invocations do not require any additional variable      * settings.      *<p>      * The type of the token is returned; if it is<CODE>TOKEN_WORD</CODE>,      * additional information is given in global variables<CODE>token_start</CODE>,      *<CODE>token_end</CODE>,<CODE>token_abbr</CODE>,<CODE>token_term</CODE>,      * and<CODE>token_case</CODE>; namely:<CODE>orig.substring(token_start,token_end)</CODE>      * is the thext of the token,<CODE>orig.substring(token_start,token_abbr)</CODE>      * is the token abbreviation,<CODE>token_term</CODE> contains token      * terminator (space or dash), and<CODE>token_case</CODE> is<CODE>true</CODE>,      * if token is upper-case and<CODE>false</CODE> if token is lower-case.      *      * @return<CODE>TOKEN_EOF</CODE> -- no more tokens,<CODE>TOKEN_COMMA</CODE> --      * token is comma,<CODE>TOKEN_AND</CODE> -- token is the word      * "and" (or "And", or "aND", etc.) or a colon,<CODE>TOKEN_WORD</CODE> --      * token is a word; additional information is given in global      * variables<CODE>token_start</CODE>,<CODE>token_end</CODE>,      *<CODE>token_abbr</CODE>,<CODE>token_term</CODE>, and      *<CODE>token_case</CODE>.      */
 DECL|method|getToken ()
 specifier|private
 name|int
@@ -1311,6 +1361,26 @@ operator|++
 expr_stmt|;
 return|return
 name|TOKEN_COMMA
+return|;
+block|}
+comment|// Colon is considered to separate names like "and"
+if|if
+condition|(
+name|original
+operator|.
+name|charAt
+argument_list|(
+name|tokenStart
+argument_list|)
+operator|==
+literal|';'
+condition|)
+block|{
+name|tokenEnd
+operator|++
+expr_stmt|;
+return|return
+name|TOKEN_AND
 return|;
 block|}
 name|tokenAbbr
@@ -1560,7 +1630,7 @@ operator|)
 operator|&&
 operator|(
 operator|(
-literal|",~-"
+literal|",;~-"
 operator|.
 name|indexOf
 argument_list|(

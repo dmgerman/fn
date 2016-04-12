@@ -76,9 +76,13 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|importer
+name|logic
 operator|.
-name|ImportFormatReader
+name|formatter
+operator|.
+name|bibtexfields
+operator|.
+name|UnicodeToLatexFormatter
 import|;
 end_import
 
@@ -92,11 +96,11 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|formatter
+name|util
 operator|.
-name|bibtexfields
+name|strings
 operator|.
-name|UnicodeToLatexFormatter
+name|StringUtil
 import|;
 end_import
 
@@ -1431,7 +1435,7 @@ name|UNICODE_CONVERTER
 operator|.
 name|format
 argument_list|(
-name|ImportFormatReader
+name|StringUtil
 operator|.
 name|expandAuthorInitials
 argument_list|(
