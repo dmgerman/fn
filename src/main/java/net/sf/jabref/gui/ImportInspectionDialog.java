@@ -841,7 +841,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Dialog to allow the selection of entries as part of an Import.  *<p>  * The usual way to use this class is to pass it to an Importer which will do  * the following:  *<ul>  *<li>Register itself as a callback to get notified if the user wants to stop  * the import.</li>  *<li>Call setVisible(true) to display the dialog</li>  *<li>For each entry that has been found call addEntry(...)</li>  *<li>Call entryListComplete() after all entries have been fetched</li>  *</ul>  *<p>  * If the importer wants to cancel the import, it should call the dispose()  * method.  *<p>  * If the importer receives the stopFetching-call, it should stop fetching as  * soon as possible (it is not really critical, but good style to not contribute  * any more results via addEntry, call entryListComplete() or dispose(), after  * receiving this call).  *  * @author alver  */
+comment|/**  * Dialog to allow the selection of entries as part of an Import.  *<p>  * The usual way to use this class is to pass it to an Importer which will do  * the following:  *<ul>  *<li>Register itself as a callback to get notified if the user wants to stop  * the import.</li>  *<li>Call setVisible(true) to display the dialog</li>  *<li>For each entry that has been found call addEntry(...)</li>  *<li>Call entryListComplete() after all entries have been fetched</li>  *</ul>  *<p>  * If the importer wants to cancel the import, it should call the dispose()  * method.  *<p>  * If the importer receives the stopFetching-call, it should stop fetching as  * soon as possible (it is not really critical, but good style to not contribute  * any more results via addEntry, call entryListComplete() or dispose(), after  * receiving this call).  */
 end_comment
 
 begin_class
@@ -871,13 +871,6 @@ name|ImportInspectionDialog
 operator|.
 name|class
 argument_list|)
-decl_stmt|;
-DECL|field|ths
-specifier|protected
-name|ImportInspectionDialog
-name|ths
-init|=
-name|this
 decl_stmt|;
 DECL|field|panel
 specifier|private
@@ -1101,9 +1094,7 @@ specifier|private
 name|boolean
 name|generatedKeys
 decl_stmt|;
-comment|// Set to true after keys have
-comment|// been
-comment|// generated.
+comment|// Set to true after keys have been generated.
 DECL|field|defaultSelected
 specifier|private
 name|boolean
@@ -1361,6 +1352,23 @@ operator|.
 name|newDatabase
 operator|=
 name|newDatabase
+expr_stmt|;
+name|setIconImage
+argument_list|(
+operator|new
+name|ImageIcon
+argument_list|(
+name|IconTheme
+operator|.
+name|getIconUrl
+argument_list|(
+literal|"jabrefIcon48"
+argument_list|)
+argument_list|)
+operator|.
+name|getImage
+argument_list|()
+argument_list|)
 expr_stmt|;
 name|preview
 operator|=
@@ -1702,8 +1710,7 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
-comment|// Will get enabled if there are
-comment|// groups that can be added to.
+comment|// Will get enabled if there are groups that can be added to.
 name|insertNodes
 argument_list|(
 name|groupsAdd

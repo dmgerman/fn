@@ -250,10 +250,6 @@ name|Localization
 import|;
 end_import
 
-begin_comment
-comment|/**  * Created by IntelliJ IDEA.  * User: alver  * Date: Oct 22, 2006  * Time: 12:06:09 PM  * To change this template use File | Settings | File Templates.  */
-end_comment
-
 begin_class
 DECL|class|ImportFormats
 specifier|public
