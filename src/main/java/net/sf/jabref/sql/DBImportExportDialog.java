@@ -924,7 +924,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Remove Selected"
+literal|"Remove selected"
 argument_list|)
 argument_list|)
 decl_stmt|;

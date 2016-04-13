@@ -496,7 +496,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Run listed field formatters:"
+literal|"Run field formatter:"
 argument_list|)
 argument_list|,
 name|JabRefPreferences
