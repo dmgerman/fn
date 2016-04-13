@@ -230,7 +230,7 @@ literal|"refer"
 argument_list|,
 name|importer
 operator|.
-name|getCLIId
+name|getId
 argument_list|()
 argument_list|)
 expr_stmt|;

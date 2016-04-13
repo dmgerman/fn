@@ -3121,9 +3121,10 @@ name|getText
 argument_list|()
 argument_list|)
 argument_list|,
-name|Globals
+name|Collections
 operator|.
-name|NONE
+name|emptyList
+argument_list|()
 argument_list|,
 name|JFileChooser
 operator|.
@@ -3152,9 +3153,10 @@ name|getText
 argument_list|()
 argument_list|)
 argument_list|,
-name|Globals
+name|Collections
 operator|.
-name|NONE
+name|emptyList
+argument_list|()
 argument_list|,
 name|JFileChooser
 operator|.

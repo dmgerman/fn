@@ -74,6 +74,26 @@ name|java
 operator|.
 name|util
 operator|.
+name|Arrays
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|zip
 operator|.
 name|ZipFile
@@ -340,7 +360,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|/**      *      * @param frame_      * @throws HeadlessException      */
+comment|/**      *      * @param frame      */
 DECL|method|ImportCustomizationDialog (final JabRefFrame frame)
 specifier|public
 name|ImportCustomizationDialog
@@ -518,11 +538,6 @@ argument_list|(
 name|e
 lambda|->
 block|{
-name|String
-name|chosenFileStr
-init|=
-literal|null
-decl_stmt|;
 name|CustomImporter
 name|importer
 init|=
@@ -555,7 +570,10 @@ name|WORKING_DIRECTORY
 argument_list|)
 argument_list|)
 argument_list|,
-literal|""
+name|Collections
+operator|.
+name|emptyList
+argument_list|()
 argument_list|,
 name|Localization
 operator|.
@@ -572,6 +590,11 @@ literal|false
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|String
+name|chosenFileStr
+init|=
+literal|null
+decl_stmt|;
 if|if
 condition|(
 name|importer
@@ -595,7 +618,12 @@ operator|.
 name|getFileFromBasePath
 argument_list|()
 argument_list|,
+name|Collections
+operator|.
+name|singletonList
+argument_list|(
 literal|".class"
+argument_list|)
 argument_list|,
 name|Localization
 operator|.
@@ -662,7 +690,7 @@ operator|.
 name|getInstance
 argument_list|()
 operator|.
-name|getCLIId
+name|getId
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -798,7 +826,14 @@ name|WORKING_DIRECTORY
 argument_list|)
 argument_list|)
 argument_list|,
-literal|".zip,.jar"
+name|Arrays
+operator|.
+name|asList
+argument_list|(
+literal|".zip"
+argument_list|,
+literal|".jar"
+argument_list|)
 argument_list|,
 name|Localization
 operator|.

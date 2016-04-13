@@ -146,7 +146,7 @@ name|assertEquals
 argument_list|(
 name|risImporter
 operator|.
-name|getCLIId
+name|getId
 argument_list|()
 argument_list|,
 literal|"ris"

@@ -72,6 +72,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|swing
@@ -1626,9 +1636,10 @@ literal|null
 argument_list|,
 name|initial
 argument_list|,
-name|Globals
+name|Collections
 operator|.
-name|NONE
+name|emptyList
+argument_list|()
 argument_list|,
 name|JFileChooser
 operator|.

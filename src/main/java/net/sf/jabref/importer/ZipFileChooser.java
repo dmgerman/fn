@@ -673,7 +673,7 @@ name|setCliId
 argument_list|(
 name|importFormat
 operator|.
-name|getCLIId
+name|getId
 argument_list|()
 argument_list|)
 expr_stmt|;

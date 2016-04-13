@@ -102,23 +102,7 @@ name|jabref
 operator|.
 name|importer
 operator|.
-name|OutputPrinter
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|entry
-operator|.
-name|IdGenerator
+name|ParserResult
 import|;
 end_import
 
@@ -135,6 +119,22 @@ operator|.
 name|entry
 operator|.
 name|BibEntry
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|IdGenerator
 import|;
 end_import
 
@@ -243,7 +243,6 @@ specifier|private
 name|boolean
 name|inOverviewSection
 decl_stmt|;
-comment|/**      * Return the name of this import format.      */
 annotation|@
 name|Override
 DECL|method|getFormatName ()
@@ -256,33 +255,38 @@ return|return
 literal|"REPEC New Economic Papers (NEP)"
 return|;
 block|}
-comment|/*      *  (non-Javadoc)      * @see net.sf.jabref.imports.ImportFormat#getCLIId()      */
 annotation|@
 name|Override
-DECL|method|getCLIId ()
+DECL|method|getId ()
 specifier|public
 name|String
-name|getCLIId
+name|getId
 parameter_list|()
 block|{
 return|return
 literal|"repecnep"
 return|;
 block|}
-comment|/*      *  (non-Javadoc)      * @see net.sf.jabref.imports.ImportFormat#getExtensions()      */
 annotation|@
 name|Override
 DECL|method|getExtensions ()
 specifier|public
+name|List
+argument_list|<
 name|String
+argument_list|>
 name|getExtensions
 parameter_list|()
 block|{
 return|return
+name|Collections
+operator|.
+name|singletonList
+argument_list|(
 literal|".txt"
+argument_list|)
 return|;
 block|}
-comment|/*      *  (non-Javadoc)      * @see net.sf.jabref.imports.ImportFormat#getDescription()      */
 annotation|@
 name|Override
 DECL|method|getDescription ()
@@ -303,7 +307,6 @@ operator|+
 literal|"contains the line \"nep.repec.org\"."
 return|;
 block|}
-comment|/*      *  (non-Javadoc)      * @see net.sf.jabref.imports.ImportFormat#isRecognizedFormat(java.io.InputStream)      */
 annotation|@
 name|Override
 DECL|method|isRecognizedFormat (InputStream stream)
@@ -1690,26 +1693,26 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/*      *  (non-Javadoc)      * @see net.sf.jabref.imports.ImportFormat#importEntries(java.io.InputStream)      */
 annotation|@
 name|Override
-DECL|method|importEntries (InputStream stream, OutputPrinter status)
+DECL|method|importDatabase (InputStream stream)
 specifier|public
-name|List
-argument_list|<
-name|BibEntry
-argument_list|>
-name|importEntries
+name|ParserResult
+name|importDatabase
 parameter_list|(
 name|InputStream
 name|stream
-parameter_list|,
-name|OutputPrinter
-name|status
 parameter_list|)
 throws|throws
 name|IOException
 block|{
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|stream
+argument_list|)
+expr_stmt|;
 name|List
 argument_list|<
 name|BibEntry
@@ -1977,7 +1980,7 @@ name|message
 operator|+=
 name|e
 operator|.
-name|getMessage
+name|getLocalizedMessage
 argument_list|()
 expr_stmt|;
 name|LOGGER
@@ -1989,34 +1992,21 @@ argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-operator|!
-operator|(
-name|e
-operator|instanceof
-name|IOException
-operator|)
-condition|)
-block|{
-name|e
-operator|=
-operator|new
-name|IOException
+return|return
+name|ParserResult
+operator|.
+name|fromErrorMessage
 argument_list|(
 name|message
 argument_list|)
-expr_stmt|;
-block|}
-throw|throw
-operator|(
-name|IOException
-operator|)
-name|e
-throw|;
+return|;
 block|}
 return|return
+operator|new
+name|ParserResult
+argument_list|(
 name|bibitems
+argument_list|)
 return|;
 block|}
 block|}

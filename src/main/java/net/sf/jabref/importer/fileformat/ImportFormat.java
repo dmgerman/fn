@@ -24,6 +24,26 @@ name|java
 operator|.
 name|io
 operator|.
+name|BufferedInputStream
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|FileInputStream
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
 name|IOException
 import|;
 end_import
@@ -42,9 +62,31 @@ begin_import
 import|import
 name|java
 operator|.
+name|nio
+operator|.
+name|file
+operator|.
+name|Path
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Objects
 import|;
 end_import
 
@@ -70,6 +112,20 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|importer
+operator|.
+name|ParserResult
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|model
 operator|.
 name|entry
@@ -79,7 +135,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Role of an importer for JabRef.  *  *<p>Importers are sorted according to following criteria  *<ol><li>  *   custom importers come first, then importers shipped with JabRef  *</li><li>  *   then importers are sorted by name.  *</li></ol>  *</p>  */
+comment|/**  * Role of an importer for JabRef.  */
 end_comment
 
 begin_class
@@ -94,7 +150,7 @@ argument_list|<
 name|ImportFormat
 argument_list|>
 block|{
-comment|/**      * Using this when I have no database open or when I read      * non bibtex file formats (used by the ImportFormatReader.java)      */
+comment|/**      * Using this when I have no database open or when I read      * non bibtex file formats (used by the ImportFormatReader.java)      *      * TODO: Is this field really needed or would calling IdGenerator.next() suffice?      */
 DECL|field|DEFAULT_BIBTEXENTRY_ID
 specifier|public
 specifier|static
@@ -104,25 +160,7 @@ name|DEFAULT_BIBTEXENTRY_ID
 init|=
 literal|"__ID"
 decl_stmt|;
-DECL|field|isCustomImporter
-specifier|private
-name|boolean
-name|isCustomImporter
-decl_stmt|;
-comment|/**      * Constructor for custom importers.      */
-DECL|method|ImportFormat ()
-specifier|public
-name|ImportFormat
-parameter_list|()
-block|{
-name|this
-operator|.
-name|isCustomImporter
-operator|=
-literal|false
-expr_stmt|;
-block|}
-comment|/**      * Check whether the source is in the correct format for this importer.      */
+comment|/**      * Check whether the source is in the correct format for this importer.      *      * The effect of this method is primarily to avoid unnecessary processing of      * files when searching for a suitable import format. If this method returns      * false, the import routine will move on to the next import format.      *      * Thus the correct behaviour is to return false if it is certain that the file is      * not of the suitable type, and true otherwise. Returning true is the safe choice if not certain.      */
 DECL|method|isRecognizedFormat (InputStream in)
 specifier|public
 specifier|abstract
@@ -135,10 +173,118 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * Parse the entries in the source, and return a List of BibEntry      * objects.      *      * This method can be called in two different contexts - either when importing in      * a specified format, or when importing in unknown format. In the latter case,      * JabRef cycles through all available import formats. No error messages or feedback      * is displayed from individual import formats in this case.      *      * If importing in a specified format, and an empty list is returned, JabRef reports      * that no entries were found. If an IOException is thrown, JabRef displays the exception's      * message in unmodified form.      *      * This method should never return null. Return an empty list instead.      *      * TODO the return type should be changed to "ParseResult" as the parser could use a different encoding than the default encoding      */
-DECL|method|importEntries (InputStream in, OutputPrinter status)
+DECL|method|isRecognizedFormat (Path filePath)
+specifier|public
+name|boolean
+name|isRecognizedFormat
+parameter_list|(
+name|Path
+name|filePath
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+try|try
+init|(
+name|InputStream
+name|stream
+init|=
+operator|new
+name|FileInputStream
+argument_list|(
+name|filePath
+operator|.
+name|toFile
+argument_list|()
+argument_list|)
+init|;
+name|BufferedInputStream
+name|bufferedStream
+operator|=
+operator|new
+name|BufferedInputStream
+argument_list|(
+name|stream
+argument_list|)
+init|)
+block|{
+name|bufferedStream
+operator|.
+name|mark
+argument_list|(
+name|Integer
+operator|.
+name|MAX_VALUE
+argument_list|)
+expr_stmt|;
+return|return
+name|isRecognizedFormat
+argument_list|(
+name|bufferedStream
+argument_list|)
+return|;
+block|}
+block|}
+comment|/**      * Parse the database in the source.      *      * This method can be called in two different contexts - either when importing in      * a specified format, or when importing in unknown format. In the latter case,      * JabRef cycles through all available import formats. No error messages or feedback      * is displayed from individual import formats in this case.      *      * If importing in a specified format and an empty database is returned, JabRef reports      * that no entries were found.      *      * This method should never return null.      *      * @param in the input stream to read from      */
+DECL|method|importDatabase (InputStream in)
 specifier|public
 specifier|abstract
+name|ParserResult
+name|importDatabase
+parameter_list|(
+name|InputStream
+name|in
+parameter_list|)
+throws|throws
+name|IOException
+function_decl|;
+DECL|method|importDatabase (Path filePath)
+specifier|public
+name|ParserResult
+name|importDatabase
+parameter_list|(
+name|Path
+name|filePath
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+try|try
+init|(
+name|InputStream
+name|stream
+init|=
+operator|new
+name|FileInputStream
+argument_list|(
+name|filePath
+operator|.
+name|toFile
+argument_list|()
+argument_list|)
+init|;
+name|BufferedInputStream
+name|bufferedStream
+operator|=
+operator|new
+name|BufferedInputStream
+argument_list|(
+name|stream
+argument_list|)
+init|)
+block|{
+return|return
+name|importDatabase
+argument_list|(
+name|bufferedStream
+argument_list|)
+return|;
+block|}
+block|}
+annotation|@
+name|Deprecated
+DECL|method|importEntries (InputStream in, OutputPrinter printer)
+specifier|public
 name|List
 argument_list|<
 name|BibEntry
@@ -149,12 +295,25 @@ name|InputStream
 name|in
 parameter_list|,
 name|OutputPrinter
-name|status
+name|printer
 parameter_list|)
 throws|throws
 name|IOException
-function_decl|;
-comment|/**      * Name of this import format.      *      *<p>The name must be unique.</p>      *      * @return format name, must be unique and not<code>null</code>      */
+block|{
+return|return
+name|importDatabase
+argument_list|(
+name|in
+argument_list|)
+operator|.
+name|getDatabase
+argument_list|()
+operator|.
+name|getEntries
+argument_list|()
+return|;
+block|}
+comment|/**      * Returns the name of this import format.      *      *<p>The name must be unique.</p>      *      * @return format name, must be unique and not<code>null</code>      */
 DECL|method|getFormatName ()
 specifier|public
 specifier|abstract
@@ -162,22 +321,22 @@ name|String
 name|getFormatName
 parameter_list|()
 function_decl|;
-comment|/**      * Extensions that this importer can read.      *      * @return comma separated list of extensions or<code>null</code> for the default      */
+comment|/**      * Returns the file extensions that this importer can read.      * The extension should contain the leading dot, so for example ".bib"      *      * @return list of supported file extensions (not null but may be empty)      */
 DECL|method|getExtensions ()
 specifier|public
+specifier|abstract
+name|List
+argument_list|<
 name|String
+argument_list|>
 name|getExtensions
 parameter_list|()
-block|{
-return|return
-literal|null
-return|;
-block|}
-comment|/**      * Short, one token ID to identify the format from the command line.      *      * @return command line ID      */
-DECL|method|getCLIId ()
+function_decl|;
+comment|/**      * Returns a one-word ID which identifies this import format.      * Used for example, to identify the format when used from the command line.      *      * @return ID, must be unique and not<code>null</code>      */
+DECL|method|getId ()
 specifier|public
 name|String
-name|getCLIId
+name|getId
 parameter_list|()
 block|{
 name|String
@@ -257,55 +416,14 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * Description  of the ImportFormat.      *      *<p>Implementors of ImportFormats should override this. Ideally, it should specify      *<ul><li>      *   what kind of entries from what sources and based on what specification it is able to import      *</li><li>      *   by what criteria it {@link #isRecognizedFormat(InputStream) recognizes} an import format      *</li></ul>      *      * @return description of the import format      */
+comment|/**      * Returns the description of the import format.      *      * The description should specify      *<ul><li>      *   what kind of entries from what sources and based on what specification it is able to import      *</li><li>      *   by what criteria it {@link #isRecognizedFormat(InputStream) recognizes} an import format      *</li></ul>      *      * @return description of the import format      */
 DECL|method|getDescription ()
 specifier|public
+specifier|abstract
 name|String
 name|getDescription
 parameter_list|()
-block|{
-return|return
-literal|"No description available for "
-operator|+
-name|getFormatName
-argument_list|()
-operator|+
-literal|"."
-return|;
-block|}
-comment|/**      * Sets if this is a custom importer.      *      *<p>For custom importers added dynamically to JabRef, this will be      * set automatically by JabRef.</p>      *      * @param isCustomImporter if this is a custom importer      */
-DECL|method|setIsCustomImporter (boolean isCustomImporter)
-specifier|public
-specifier|final
-name|void
-name|setIsCustomImporter
-parameter_list|(
-name|boolean
-name|isCustomImporter
-parameter_list|)
-block|{
-name|this
-operator|.
-name|isCustomImporter
-operator|=
-name|isCustomImporter
-expr_stmt|;
-block|}
-comment|/**      * Wether this importer is a custom importer.      *      *<p>Custom importers will have precedence over built-in importers.</p>      *      * @return  wether this is a custom importer      */
-DECL|method|isCustomImporter ()
-specifier|public
-specifier|final
-name|boolean
-name|isCustomImporter
-parameter_list|()
-block|{
-return|return
-name|this
-operator|.
-name|isCustomImporter
-return|;
-block|}
-comment|/*      *  (non-Javadoc)      * @see java.lang.Object#hashCode()      */
+function_decl|;
 annotation|@
 name|Override
 DECL|method|hashCode ()
@@ -322,72 +440,67 @@ name|hashCode
 argument_list|()
 return|;
 block|}
-comment|/*      *  (non-Javadoc)      * @see java.lang.Object#equals(java.lang.Object)      */
 annotation|@
 name|Override
-DECL|method|equals (Object o)
+DECL|method|equals (Object obj)
 specifier|public
 name|boolean
 name|equals
 parameter_list|(
 name|Object
-name|o
+name|obj
 parameter_list|)
 block|{
 if|if
 condition|(
-name|this
+name|obj
 operator|==
-name|o
+literal|null
 condition|)
 block|{
 return|return
-literal|true
+literal|false
 return|;
 block|}
 if|if
 condition|(
-name|o
+operator|!
+operator|(
+name|obj
 operator|instanceof
 name|ImportFormat
+operator|)
 condition|)
 block|{
+return|return
+literal|false
+return|;
+block|}
 name|ImportFormat
-name|format
+name|other
 init|=
 operator|(
 name|ImportFormat
 operator|)
-name|o
+name|obj
 decl_stmt|;
 return|return
-operator|(
-name|format
-operator|.
-name|isCustomImporter
-argument_list|()
-operator|==
-name|isCustomImporter
-argument_list|()
-operator|)
-operator|&&
-name|format
-operator|.
-name|getFormatName
-argument_list|()
+name|Objects
 operator|.
 name|equals
 argument_list|(
+name|this
+operator|.
+name|getFormatName
+argument_list|()
+argument_list|,
+name|other
+operator|.
 name|getFormatName
 argument_list|()
 argument_list|)
 return|;
 block|}
-return|return
-literal|false
-return|;
-block|}
-comment|/*      *  (non-Javadoc)      * @see java.lang.Object#toString()      */
 annotation|@
 name|Override
 DECL|method|toString ()
@@ -401,61 +514,28 @@ name|getFormatName
 argument_list|()
 return|;
 block|}
-comment|/*      *  (non-Javadoc)      * @see java.lang.Comparable#compareTo(java.lang.Object)      */
 annotation|@
 name|Override
-DECL|method|compareTo (ImportFormat importer)
+DECL|method|compareTo (ImportFormat o)
 specifier|public
 name|int
 name|compareTo
 parameter_list|(
 name|ImportFormat
-name|importer
+name|o
 parameter_list|)
 block|{
-name|int
-name|result
-decl_stmt|;
-if|if
-condition|(
-name|isCustomImporter
-argument_list|()
-operator|==
-name|importer
-operator|.
-name|isCustomImporter
-argument_list|()
-condition|)
-block|{
-name|result
-operator|=
+return|return
 name|getFormatName
 argument_list|()
 operator|.
 name|compareTo
 argument_list|(
-name|importer
+name|o
 operator|.
 name|getFormatName
 argument_list|()
 argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-name|result
-operator|=
-name|isCustomImporter
-argument_list|()
-condition|?
-literal|1
-else|:
-operator|-
-literal|1
-expr_stmt|;
-block|}
-return|return
-name|result
 return|;
 block|}
 block|}

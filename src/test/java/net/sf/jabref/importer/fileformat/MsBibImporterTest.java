@@ -414,7 +414,7 @@ literal|"msbib"
 argument_list|,
 name|testImporter
 operator|.
-name|getCommandLineId
+name|getId
 argument_list|()
 argument_list|)
 expr_stmt|;

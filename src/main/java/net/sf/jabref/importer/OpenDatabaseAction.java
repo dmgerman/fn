@@ -678,7 +678,12 @@ name|WORKING_DIRECTORY
 argument_list|)
 argument_list|)
 argument_list|,
+name|Collections
+operator|.
+name|singletonList
+argument_list|(
 literal|".bib"
+argument_list|)
 argument_list|,
 literal|true
 argument_list|)

@@ -74,6 +74,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Objects
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|regex
 operator|.
 name|Pattern
@@ -128,7 +138,7 @@ name|jabref
 operator|.
 name|importer
 operator|.
-name|OutputPrinter
+name|ParserResult
 import|;
 end_import
 
@@ -218,7 +228,6 @@ argument_list|(
 literal|"<bibtex:file .*"
 argument_list|)
 decl_stmt|;
-comment|/**      * Return the name of this import format.      */
 annotation|@
 name|Override
 DECL|method|getFormatName ()
@@ -231,20 +240,33 @@ return|return
 literal|"BibTeXML"
 return|;
 block|}
-comment|/*      *  (non-Javadoc)      * @see net.sf.jabref.imports.ImportFormat#getCLIId()      */
 annotation|@
 name|Override
-DECL|method|getCLIId ()
+DECL|method|getExtensions ()
 specifier|public
+name|List
+argument_list|<
 name|String
-name|getCLIId
+argument_list|>
+name|getExtensions
 parameter_list|()
 block|{
 return|return
-literal|"bibtexml"
+literal|null
 return|;
 block|}
-comment|/**      * Check whether the source is in the correct format for this importer.      */
+annotation|@
+name|Override
+DECL|method|getDescription ()
+specifier|public
+name|String
+name|getDescription
+parameter_list|()
+block|{
+return|return
+literal|null
+return|;
+block|}
 annotation|@
 name|Override
 DECL|method|isRecognizedFormat (InputStream stream)
@@ -316,26 +338,26 @@ literal|false
 return|;
 block|}
 block|}
-comment|/**      * Parse the entries in the source, and return a List of BibEntry      * objects.      */
 annotation|@
 name|Override
-DECL|method|importEntries (InputStream stream, OutputPrinter status)
+DECL|method|importDatabase (InputStream stream)
 specifier|public
-name|List
-argument_list|<
-name|BibEntry
-argument_list|>
-name|importEntries
+name|ParserResult
+name|importDatabase
 parameter_list|(
 name|InputStream
 name|stream
-parameter_list|,
-name|OutputPrinter
-name|status
 parameter_list|)
 throws|throws
 name|IOException
 block|{
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|stream
+argument_list|)
+expr_stmt|;
 name|List
 argument_list|<
 name|BibEntry
@@ -428,16 +450,17 @@ argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
-name|status
+return|return
+name|ParserResult
 operator|.
-name|showMessage
+name|fromErrorMessage
 argument_list|(
 name|e
 operator|.
 name|getLocalizedMessage
 argument_list|()
 argument_list|)
-expr_stmt|;
+return|;
 block|}
 catch|catch
 parameter_list|(
@@ -460,16 +483,17 @@ argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
-name|status
+return|return
+name|ParserResult
 operator|.
-name|showMessage
+name|fromErrorMessage
 argument_list|(
 name|e
 operator|.
 name|getLocalizedMessage
 argument_list|()
 argument_list|)
-expr_stmt|;
+return|;
 block|}
 catch|catch
 parameter_list|(
@@ -486,19 +510,24 @@ argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
-name|status
+return|return
+name|ParserResult
 operator|.
-name|showMessage
+name|fromErrorMessage
 argument_list|(
 name|e
 operator|.
 name|getLocalizedMessage
 argument_list|()
 argument_list|)
-expr_stmt|;
+return|;
 block|}
 return|return
+operator|new
+name|ParserResult
+argument_list|(
 name|bibItems
+argument_list|)
 return|;
 block|}
 block|}

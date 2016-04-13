@@ -22,11 +22,19 @@ begin_import
 import|import
 name|java
 operator|.
-name|util
+name|io
 operator|.
-name|regex
+name|BufferedReader
+import|;
+end_import
+
+begin_import
+import|import
+name|java
 operator|.
-name|Pattern
+name|io
+operator|.
+name|IOException
 import|;
 end_import
 
@@ -44,9 +52,9 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
+name|util
 operator|.
-name|BufferedReader
+name|ArrayList
 import|;
 end_import
 
@@ -54,9 +62,9 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
+name|util
 operator|.
-name|IOException
+name|HashMap
 import|;
 end_import
 
@@ -86,17 +94,9 @@ name|java
 operator|.
 name|util
 operator|.
-name|ArrayList
-import|;
-end_import
-
-begin_import
-import|import
-name|java
+name|regex
 operator|.
-name|util
-operator|.
-name|HashMap
+name|Pattern
 import|;
 end_import
 
@@ -124,7 +124,7 @@ name|jabref
 operator|.
 name|importer
 operator|.
-name|OutputPrinter
+name|ParserResult
 import|;
 end_import
 
@@ -140,7 +140,39 @@ name|model
 operator|.
 name|entry
 operator|.
-name|*
+name|AuthorList
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|BibEntry
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|MonthUtil
 import|;
 end_import
 
@@ -170,7 +202,6 @@ argument_list|(
 literal|"TY  - .*"
 argument_list|)
 decl_stmt|;
-comment|/**      * Return the name of this import format.      */
 annotation|@
 name|Override
 DECL|method|getFormatName ()
@@ -183,20 +214,33 @@ return|return
 literal|"RIS"
 return|;
 block|}
-comment|/*      *  (non-Javadoc)      * @see net.sf.jabref.imports.ImportFormat#getCLIId()      */
 annotation|@
 name|Override
-DECL|method|getCLIId ()
+DECL|method|getExtensions ()
 specifier|public
+name|List
+argument_list|<
 name|String
-name|getCLIId
+argument_list|>
+name|getExtensions
 parameter_list|()
 block|{
 return|return
-literal|"ris"
+literal|null
 return|;
 block|}
-comment|/**      * Check whether the source is in the correct format for this importer.      */
+annotation|@
+name|Override
+DECL|method|getDescription ()
+specifier|public
+name|String
+name|getDescription
+parameter_list|()
+block|{
+return|return
+literal|null
+return|;
+block|}
 annotation|@
 name|Override
 DECL|method|isRecognizedFormat (InputStream stream)
@@ -268,22 +312,15 @@ return|return
 literal|false
 return|;
 block|}
-comment|/**      * Parse the entries in the source, and return a List of BibEntry      * objects.      */
 annotation|@
 name|Override
-DECL|method|importEntries (InputStream stream, OutputPrinter status)
+DECL|method|importDatabase (InputStream stream)
 specifier|public
-name|List
-argument_list|<
-name|BibEntry
-argument_list|>
-name|importEntries
+name|ParserResult
+name|importDatabase
 parameter_list|(
 name|InputStream
 name|stream
-parameter_list|,
-name|OutputPrinter
-name|status
 parameter_list|)
 throws|throws
 name|IOException
@@ -1893,7 +1930,11 @@ argument_list|)
 expr_stmt|;
 block|}
 return|return
+operator|new
+name|ParserResult
+argument_list|(
 name|bibitems
+argument_list|)
 return|;
 block|}
 block|}

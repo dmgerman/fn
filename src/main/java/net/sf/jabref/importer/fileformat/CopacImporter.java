@@ -74,6 +74,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Objects
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|regex
 operator|.
 name|Pattern
@@ -104,7 +114,7 @@ name|jabref
 operator|.
 name|importer
 operator|.
-name|OutputPrinter
+name|ParserResult
 import|;
 end_import
 
@@ -150,7 +160,6 @@ argument_list|(
 literal|"^\\s*TI- "
 argument_list|)
 decl_stmt|;
-comment|/**      * Return the name of this import format.      */
 annotation|@
 name|Override
 DECL|method|getFormatName ()
@@ -163,20 +172,45 @@ return|return
 literal|"Copac"
 return|;
 block|}
-comment|/*      * (non-Javadoc)      *      * @see net.sf.jabref.imports.ImportFormat#getCLIId()      */
 annotation|@
 name|Override
-DECL|method|getCLIId ()
+DECL|method|getExtensions ()
+specifier|public
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|getExtensions
+parameter_list|()
+block|{
+return|return
+literal|null
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|getId ()
 specifier|public
 name|String
-name|getCLIId
+name|getId
 parameter_list|()
 block|{
 return|return
 literal|"cpc"
 return|;
 block|}
-comment|/**      * Check whether the source is in the correct format for this importer.      */
+annotation|@
+name|Override
+DECL|method|getDescription ()
+specifier|public
+name|String
+name|getDescription
+parameter_list|()
+block|{
+return|return
+literal|null
+return|;
+block|}
 annotation|@
 name|Override
 DECL|method|isRecognizedFormat (InputStream stream)
@@ -245,41 +279,26 @@ return|return
 literal|false
 return|;
 block|}
-comment|/**      * Parse the entries in the source, and return a List of BibEntry      * objects.      */
 annotation|@
 name|Override
-DECL|method|importEntries (InputStream stream, OutputPrinter status)
+DECL|method|importDatabase (InputStream stream)
 specifier|public
-name|List
-argument_list|<
-name|BibEntry
-argument_list|>
-name|importEntries
+name|ParserResult
+name|importDatabase
 parameter_list|(
 name|InputStream
 name|stream
-parameter_list|,
-name|OutputPrinter
-name|status
 parameter_list|)
 throws|throws
 name|IOException
 block|{
-if|if
-condition|(
-name|stream
-operator|==
-literal|null
-condition|)
-block|{
-throw|throw
-operator|new
-name|IOException
+name|Objects
+operator|.
+name|requireNonNull
 argument_list|(
-literal|"No stream given."
+name|stream
 argument_list|)
-throw|;
-block|}
+expr_stmt|;
 name|List
 argument_list|<
 name|String
@@ -898,7 +917,11 @@ argument_list|)
 expr_stmt|;
 block|}
 return|return
+operator|new
+name|ParserResult
+argument_list|(
 name|results
+argument_list|)
 return|;
 block|}
 DECL|method|setOrAppend (BibEntry b, String field, String value, String separator)

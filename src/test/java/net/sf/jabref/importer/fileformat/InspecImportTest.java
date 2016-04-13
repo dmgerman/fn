@@ -15,18 +15,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|*
-import|;
-end_import
-
-begin_import
 import|import
 name|java
 operator|.
@@ -84,6 +72,30 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|Globals
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|JabRefPreferences
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|bibtex
 operator|.
 name|BibtexEntryAssert
@@ -122,30 +134,6 @@ end_import
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|Globals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|JabRefPreferences
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|junit
@@ -161,6 +149,42 @@ operator|.
 name|junit
 operator|.
 name|Test
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertFalse
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
 import|;
 end_import
 
@@ -515,7 +539,9 @@ literal|"Record.*INSPEC.*\n"
 operator|+
 literal|"\n"
 operator|+
-literal|"RT ~ Conference-Paper"
+literal|"RT ~ Conference-Paper\n"
+operator|+
+literal|"AU ~ Prechelt, Lutz"
 decl_stmt|;
 name|BibEntry
 name|shouldBeEntry
@@ -529,6 +555,15 @@ operator|.
 name|setType
 argument_list|(
 literal|"Inproceedings"
+argument_list|)
+expr_stmt|;
+name|shouldBeEntry
+operator|.
+name|setField
+argument_list|(
+literal|"author"
+argument_list|,
+literal|"Prechelt, Lutz"
 argument_list|)
 expr_stmt|;
 try|try
@@ -611,6 +646,8 @@ literal|"Record.*INSPEC.*\n"
 operator|+
 literal|"\n"
 operator|+
+literal|"AU ~ Prechelt, Lutz \n"
+operator|+
 literal|"RT ~ Misc"
 decl_stmt|;
 name|BibEntry
@@ -625,6 +662,15 @@ operator|.
 name|setType
 argument_list|(
 literal|"Misc"
+argument_list|)
+expr_stmt|;
+name|shouldBeEntry
+operator|.
+name|setField
+argument_list|(
+literal|"author"
+argument_list|,
+literal|"Prechelt, Lutz"
 argument_list|)
 expr_stmt|;
 try|try
@@ -723,7 +769,7 @@ literal|"inspec"
 argument_list|,
 name|inspecImp
 operator|.
-name|getCLIId
+name|getId
 argument_list|()
 argument_list|)
 expr_stmt|;

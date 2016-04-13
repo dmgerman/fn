@@ -50,15 +50,11 @@ end_import
 
 begin_import
 import|import
-name|net
+name|java
 operator|.
-name|sf
+name|util
 operator|.
-name|jabref
-operator|.
-name|importer
-operator|.
-name|OutputPrinter
+name|Objects
 import|;
 end_import
 
@@ -70,11 +66,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|model
+name|importer
 operator|.
-name|entry
-operator|.
-name|BibEntry
+name|ParserResult
 import|;
 end_import
 
@@ -139,34 +133,74 @@ literal|"XMP-annotated PDF"
 argument_list|)
 return|;
 block|}
-comment|/**      * Returns a list of all BibtexEntries found in the inputstream.      */
 annotation|@
 name|Override
-DECL|method|importEntries (InputStream in, OutputPrinter status)
+DECL|method|getExtensions ()
 specifier|public
 name|List
 argument_list|<
-name|BibEntry
+name|String
 argument_list|>
-name|importEntries
+name|getExtensions
+parameter_list|()
+block|{
+return|return
+literal|null
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|importDatabase (InputStream in)
+specifier|public
+name|ParserResult
+name|importDatabase
 parameter_list|(
 name|InputStream
 name|in
-parameter_list|,
-name|OutputPrinter
-name|status
 parameter_list|)
 throws|throws
 name|IOException
 block|{
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|in
+argument_list|)
+expr_stmt|;
+try|try
+block|{
 return|return
+operator|new
+name|ParserResult
+argument_list|(
 name|XMPUtil
 operator|.
 name|readXMP
 argument_list|(
 name|in
 argument_list|)
+argument_list|)
 return|;
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|exception
+parameter_list|)
+block|{
+return|return
+name|ParserResult
+operator|.
+name|fromErrorMessage
+argument_list|(
+name|exception
+operator|.
+name|getLocalizedMessage
+argument_list|()
+argument_list|)
+return|;
+block|}
 block|}
 comment|/**      * Returns whether the given stream contains data that is a.) a pdf and b.)      * contains at least one BibEntry.      */
 annotation|@
@@ -182,6 +216,13 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|in
+argument_list|)
+expr_stmt|;
 return|return
 name|XMPUtil
 operator|.
@@ -191,15 +232,28 @@ name|in
 argument_list|)
 return|;
 block|}
-comment|/**      * String used to identify this import filter on the command line.      *       * @return "xmp"      */
-DECL|method|getCommandLineId ()
+annotation|@
+name|Override
+DECL|method|getId ()
 specifier|public
 name|String
-name|getCommandLineId
+name|getId
 parameter_list|()
 block|{
 return|return
 literal|"xmp"
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|getDescription ()
+specifier|public
+name|String
+name|getDescription
+parameter_list|()
+block|{
+return|return
+literal|null
 return|;
 block|}
 block|}
