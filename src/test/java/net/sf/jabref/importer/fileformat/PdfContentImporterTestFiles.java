@@ -259,8 +259,14 @@ name|Object
 index|[]
 index|[]
 block|{
+comment|// minimal PDF, not encrypted
 block|{
 literal|"LNCS-minimal"
+block|}
+block|,
+comment|// minimal PDF, write-protected, thus encrypted
+block|{
+literal|"LNCS-minimal-protected"
 block|}
 block|}
 decl_stmt|;

@@ -5190,8 +5190,6 @@ operator|!
 name|editModeIndicator
 condition|)
 block|{
-comment|//            annotationEvent();
-comment|//        } else {
 name|updateSelections
 argument_list|()
 expr_stmt|;
@@ -5498,6 +5496,16 @@ name|FLOAT
 argument_list|)
 expr_stmt|;
 block|}
+name|panel
+operator|.
+name|mainTable
+operator|.
+name|getTableModel
+argument_list|()
+operator|.
+name|updateSortOrder
+argument_list|()
+expr_stmt|;
 if|if
 condition|(
 name|showOverlappingGroupsP
