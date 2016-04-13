@@ -302,6 +302,22 @@ name|jabref
 operator|.
 name|gui
 operator|.
+name|cleanup
+operator|.
+name|FieldFormatterCleanupsPanel
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
 name|keyboard
 operator|.
 name|KeyBinding
@@ -747,7 +763,7 @@ name|FormLayout
 argument_list|(
 literal|"left:pref, 4dlu, pref:grow, 4dlu, pref:grow, 4dlu, pref"
 argument_list|,
-literal|"pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 160dlu, pref,"
+literal|"pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, fill:pref:grow, 180dlu, fill:pref:grow,"
 argument_list|)
 decl_stmt|;
 name|FormBuilder

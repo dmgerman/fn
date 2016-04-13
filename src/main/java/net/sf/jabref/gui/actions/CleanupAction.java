@@ -108,7 +108,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|CleanupPresetPanel
+name|JabRefFrame
 import|;
 end_import
 
@@ -122,7 +122,9 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|JabRefFrame
+name|cleanup
+operator|.
+name|CleanupPresetPanel
 import|;
 end_import
 

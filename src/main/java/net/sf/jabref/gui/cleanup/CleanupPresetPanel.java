@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|net.sf.jabref.gui
+DECL|package|net.sf.jabref.gui.cleanup
 package|package
 name|net
 operator|.
@@ -9,6 +9,8 @@ operator|.
 name|jabref
 operator|.
 name|gui
+operator|.
+name|cleanup
 package|;
 end_package
 
@@ -123,22 +125,6 @@ operator|.
 name|jabref
 operator|.
 name|JabRefPreferences
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|dbproperties
-operator|.
-name|FieldFormatterCleanupsPanel
 import|;
 end_import
 
@@ -275,24 +261,24 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|databaseContext
+name|cleanupPreset
 operator|=
 name|Objects
 operator|.
 name|requireNonNull
 argument_list|(
-name|databaseContext
+name|cleanupPreset
 argument_list|)
 expr_stmt|;
 name|this
 operator|.
-name|cleanupPreset
+name|databaseContext
 operator|=
 name|Objects
 operator|.
 name|requireNonNull
 argument_list|(
-name|cleanupPreset
+name|databaseContext
 argument_list|)
 expr_stmt|;
 name|init
@@ -510,7 +496,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Run field formatter:"
+literal|"Run listed field formatters:"
 argument_list|)
 argument_list|,
 name|JabRefPreferences
@@ -532,9 +518,9 @@ init|=
 operator|new
 name|FormLayout
 argument_list|(
-literal|"left:15dlu,pref:grow"
+literal|"left:15dlu, pref:grow"
 argument_list|,
-literal|"pref, pref, pref, pref, pref, pref, pref, pref, pref, pref, pref"
+literal|"pref, pref, pref, pref, pref, pref, pref, pref, pref,pref, 190dlu, fill:pref:grow,"
 argument_list|)
 decl_stmt|;
 name|FormBuilder
@@ -964,26 +950,6 @@ operator|.
 name|CleanupStep
 operator|.
 name|CLEAN_UP_DOI
-argument_list|)
-expr_stmt|;
-block|}
-if|if
-condition|(
-name|cleanUpMovePDF
-operator|.
-name|isSelected
-argument_list|()
-condition|)
-block|{
-name|activeJobs
-operator|.
-name|add
-argument_list|(
-name|CleanupPreset
-operator|.
-name|CleanupStep
-operator|.
-name|MOVE_PDF
 argument_list|)
 expr_stmt|;
 block|}

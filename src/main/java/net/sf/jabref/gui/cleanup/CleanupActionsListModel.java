@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|net.sf.jabref.gui.dbproperties
+DECL|package|net.sf.jabref.gui.cleanup
 package|package
 name|net
 operator|.
@@ -10,7 +10,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|dbproperties
+name|cleanup
 package|;
 end_package
 
@@ -109,22 +109,23 @@ import|;
 end_import
 
 begin_class
-DECL|class|SaveActionsListModel
+DECL|class|CleanupActionsListModel
+specifier|public
 class|class
-name|SaveActionsListModel
+name|CleanupActionsListModel
 implements|implements
 name|ListModel
 argument_list|<
 name|FieldFormatterCleanup
 argument_list|>
 block|{
-DECL|field|saveActions
+DECL|field|cleanupActions
 specifier|private
 name|List
 argument_list|<
 name|FieldFormatterCleanup
 argument_list|>
-name|saveActions
+name|cleanupActions
 decl_stmt|;
 DECL|field|listeners
 specifier|private
@@ -134,43 +135,41 @@ argument_list|<
 name|ListDataListener
 argument_list|>
 name|listeners
+init|=
+operator|new
+name|ArrayList
+argument_list|<>
+argument_list|()
 decl_stmt|;
-DECL|method|SaveActionsListModel (List<FieldFormatterCleanup> saveActions)
+DECL|method|CleanupActionsListModel (List<FieldFormatterCleanup> cleanupAction)
 specifier|public
-name|SaveActionsListModel
+name|CleanupActionsListModel
 parameter_list|(
 name|List
 argument_list|<
 name|FieldFormatterCleanup
 argument_list|>
-name|saveActions
+name|cleanupAction
 parameter_list|)
 block|{
 name|Objects
 operator|.
 name|requireNonNull
 argument_list|(
-name|saveActions
+name|cleanupAction
 argument_list|)
 expr_stmt|;
 name|this
 operator|.
-name|saveActions
+name|cleanupActions
 operator|=
-name|saveActions
-expr_stmt|;
-name|listeners
-operator|=
-operator|new
-name|ArrayList
-argument_list|<>
-argument_list|()
+name|cleanupAction
 expr_stmt|;
 block|}
-DECL|method|addSaveAction (FieldFormatterCleanup action)
+DECL|method|addCleanupAction (FieldFormatterCleanup action)
 specifier|public
 name|void
-name|addSaveAction
+name|addCleanupAction
 parameter_list|(
 name|FieldFormatterCleanup
 name|action
@@ -179,7 +178,7 @@ block|{
 if|if
 condition|(
 operator|!
-name|saveActions
+name|cleanupActions
 operator|.
 name|contains
 argument_list|(
@@ -187,7 +186,7 @@ name|action
 argument_list|)
 condition|)
 block|{
-name|saveActions
+name|cleanupActions
 operator|.
 name|add
 argument_list|(
@@ -215,12 +214,12 @@ name|ListDataEvent
 operator|.
 name|INTERVAL_ADDED
 argument_list|,
-name|saveActions
+name|cleanupActions
 operator|.
 name|size
 argument_list|()
 argument_list|,
-name|saveActions
+name|cleanupActions
 operator|.
 name|size
 argument_list|()
@@ -230,6 +229,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
+comment|/**      * Removes the action at the specified index from the list.      * Removal is only done when index {@code>=0} and index {@code<=} list size      * @param index The index to remove      */
 DECL|method|removeAtIndex (int index)
 specifier|public
 name|void
@@ -250,7 +250,7 @@ operator|&&
 operator|(
 name|index
 operator|<
-name|saveActions
+name|cleanupActions
 operator|.
 name|size
 argument_list|()
@@ -260,7 +260,7 @@ block|{
 name|FieldFormatterCleanup
 name|action
 init|=
-name|saveActions
+name|cleanupActions
 operator|.
 name|remove
 argument_list|(
@@ -307,7 +307,7 @@ name|getAllActions
 parameter_list|()
 block|{
 return|return
-name|saveActions
+name|cleanupActions
 return|;
 block|}
 annotation|@
@@ -319,7 +319,7 @@ name|getSize
 parameter_list|()
 block|{
 return|return
-name|saveActions
+name|cleanupActions
 operator|.
 name|size
 argument_list|()
@@ -337,7 +337,7 @@ name|index
 parameter_list|)
 block|{
 return|return
-name|saveActions
+name|cleanupActions
 operator|.
 name|get
 argument_list|(
@@ -392,7 +392,7 @@ name|FieldFormatterCleanups
 name|defaultFormatters
 parameter_list|)
 block|{
-name|saveActions
+name|cleanupActions
 operator|=
 operator|new
 name|ArrayList
@@ -427,7 +427,7 @@ name|CONTENTS_CHANGED
 argument_list|,
 literal|0
 argument_list|,
-name|saveActions
+name|cleanupActions
 operator|.
 name|size
 argument_list|()
