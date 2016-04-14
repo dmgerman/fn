@@ -365,7 +365,7 @@ literal|"DOI "
 operator|+
 name|dataDOI
 operator|+
-literal|"for "
+literal|" for "
 operator|+
 name|title
 operator|+

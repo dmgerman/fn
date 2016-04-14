@@ -3684,6 +3684,8 @@ name|getDoiExtraComponent
 argument_list|(
 name|panel
 argument_list|,
+name|this
+argument_list|,
 name|editor
 argument_list|)
 return|;
