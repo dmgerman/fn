@@ -155,7 +155,7 @@ name|LANGUAGES
 operator|.
 name|put
 argument_list|(
-literal|"Brazilian Portugese"
+literal|"Brazilian Portuguese"
 argument_list|,
 literal|"pt_BR"
 argument_list|)
