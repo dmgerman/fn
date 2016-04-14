@@ -42,16 +42,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
-operator|.
-name|InputStream
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|ArrayList
@@ -124,20 +114,6 @@ name|jabref
 operator|.
 name|importer
 operator|.
-name|ImportFormatReader
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|importer
-operator|.
 name|ParserResult
 import|;
 end_import
@@ -183,6 +159,18 @@ operator|.
 name|logging
 operator|.
 name|LogFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|xml
+operator|.
+name|sax
+operator|.
+name|InputSource
 import|;
 end_import
 
@@ -269,35 +257,18 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|isRecognizedFormat (InputStream stream)
+DECL|method|isRecognizedFormat (BufferedReader reader)
 specifier|public
 name|boolean
 name|isRecognizedFormat
 parameter_list|(
-name|InputStream
-name|stream
+name|BufferedReader
+name|reader
 parameter_list|)
 throws|throws
 name|IOException
 block|{
 comment|// Our strategy is to look for the "<bibtex:file *" line.
-try|try
-init|(
-name|BufferedReader
-name|in
-init|=
-operator|new
-name|BufferedReader
-argument_list|(
-name|ImportFormatReader
-operator|.
-name|getReaderDefaultEncoding
-argument_list|(
-name|stream
-argument_list|)
-argument_list|)
-init|)
-block|{
 name|String
 name|str
 decl_stmt|;
@@ -306,7 +277,7 @@ condition|(
 operator|(
 name|str
 operator|=
-name|in
+name|reader
 operator|.
 name|readLine
 argument_list|()
@@ -337,16 +308,15 @@ return|return
 literal|false
 return|;
 block|}
-block|}
 annotation|@
 name|Override
-DECL|method|importDatabase (InputStream stream)
+DECL|method|importDatabase (BufferedReader reader)
 specifier|public
 name|ParserResult
 name|importDatabase
 parameter_list|(
-name|InputStream
-name|stream
+name|BufferedReader
+name|reader
 parameter_list|)
 throws|throws
 name|IOException
@@ -355,7 +325,7 @@ name|Objects
 operator|.
 name|requireNonNull
 argument_list|(
-name|stream
+name|reader
 argument_list|)
 expr_stmt|;
 name|List
@@ -412,7 +382,11 @@ name|parser
 operator|.
 name|parse
 argument_list|(
-name|stream
+operator|new
+name|InputSource
+argument_list|(
+name|reader
+argument_list|)
 argument_list|,
 name|handler
 argument_list|)

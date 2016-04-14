@@ -42,9 +42,9 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
+name|util
 operator|.
-name|InputStream
+name|ArrayList
 import|;
 end_import
 
@@ -54,21 +54,37 @@ name|java
 operator|.
 name|util
 operator|.
-name|*
+name|HashMap
 import|;
 end_import
 
 begin_import
 import|import
-name|net
+name|java
 operator|.
-name|sf
+name|util
 operator|.
-name|jabref
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
 operator|.
-name|importer
+name|util
 operator|.
-name|ImportFormatReader
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Objects
 import|;
 end_import
 
@@ -155,20 +171,20 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|isRecognizedFormat (InputStream in)
+DECL|method|isRecognizedFormat (BufferedReader reader)
 specifier|public
 name|boolean
 name|isRecognizedFormat
 parameter_list|(
-name|InputStream
-name|in
+name|BufferedReader
+name|reader
 parameter_list|)
 block|{
 name|Objects
 operator|.
 name|requireNonNull
 argument_list|(
-name|in
+name|reader
 argument_list|)
 expr_stmt|;
 return|return
@@ -177,13 +193,13 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|importDatabase (InputStream stream)
+DECL|method|importDatabase (BufferedReader reader)
 specifier|public
 name|ParserResult
 name|importDatabase
 parameter_list|(
-name|InputStream
-name|stream
+name|BufferedReader
+name|reader
 parameter_list|)
 throws|throws
 name|IOException
@@ -198,20 +214,6 @@ operator|new
 name|ArrayList
 argument_list|<>
 argument_list|()
-decl_stmt|;
-name|BufferedReader
-name|in
-init|=
-operator|new
-name|BufferedReader
-argument_list|(
-name|ImportFormatReader
-operator|.
-name|getReaderDefaultEncoding
-argument_list|(
-name|stream
-argument_list|)
-argument_list|)
 decl_stmt|;
 name|String
 name|line
@@ -252,7 +254,7 @@ condition|(
 operator|(
 name|line
 operator|=
-name|in
+name|reader
 operator|.
 name|readLine
 argument_list|()

@@ -42,16 +42,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
-operator|.
-name|InputStream
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|ArrayList
@@ -87,20 +77,6 @@ operator|.
 name|regex
 operator|.
 name|Pattern
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|importer
-operator|.
-name|ImportFormatReader
 import|;
 end_import
 
@@ -217,33 +193,16 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|isRecognizedFormat (InputStream stream)
+DECL|method|isRecognizedFormat (BufferedReader reader)
 specifier|public
 name|boolean
 name|isRecognizedFormat
 parameter_list|(
-name|InputStream
-name|stream
+name|BufferedReader
+name|reader
 parameter_list|)
 throws|throws
 name|IOException
-block|{
-try|try
-init|(
-name|BufferedReader
-name|in
-init|=
-operator|new
-name|BufferedReader
-argument_list|(
-name|ImportFormatReader
-operator|.
-name|getReaderDefaultEncoding
-argument_list|(
-name|stream
-argument_list|)
-argument_list|)
-init|)
 block|{
 comment|// This format is very similar to Inspec, so we have a two-fold strategy:
 comment|// If we see the flag signaling that it is an Inspec file, return false.
@@ -257,7 +216,7 @@ condition|(
 operator|(
 name|str
 operator|=
-name|in
+name|reader
 operator|.
 name|readLine
 argument_list|()
@@ -315,20 +274,19 @@ literal|true
 return|;
 block|}
 block|}
-block|}
 return|return
 literal|false
 return|;
 block|}
 annotation|@
 name|Override
-DECL|method|importDatabase (InputStream stream)
+DECL|method|importDatabase (BufferedReader reader)
 specifier|public
 name|ParserResult
 name|importDatabase
 parameter_list|(
-name|InputStream
-name|stream
+name|BufferedReader
+name|reader
 parameter_list|)
 throws|throws
 name|IOException
@@ -344,23 +302,6 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
-try|try
-init|(
-name|BufferedReader
-name|in
-init|=
-operator|new
-name|BufferedReader
-argument_list|(
-name|ImportFormatReader
-operator|.
-name|getReaderDefaultEncoding
-argument_list|(
-name|stream
-argument_list|)
-argument_list|)
-init|)
-block|{
 name|boolean
 name|isChapter
 init|=
@@ -381,7 +322,7 @@ condition|(
 operator|(
 name|str
 operator|=
-name|in
+name|reader
 operator|.
 name|readLine
 argument_list|()
@@ -1332,7 +1273,6 @@ argument_list|(
 name|b
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 return|return
 operator|new

@@ -42,16 +42,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
-operator|.
-name|InputStream
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|ArrayList
@@ -119,20 +109,6 @@ operator|.
 name|regex
 operator|.
 name|Pattern
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|importer
-operator|.
-name|ImportFormatReader
 import|;
 end_import
 
@@ -293,33 +269,16 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|isRecognizedFormat (InputStream stream)
+DECL|method|isRecognizedFormat (BufferedReader reader)
 specifier|public
 name|boolean
 name|isRecognizedFormat
 parameter_list|(
-name|InputStream
-name|stream
+name|BufferedReader
+name|reader
 parameter_list|)
 throws|throws
 name|IOException
-block|{
-try|try
-init|(
-name|BufferedReader
-name|in
-init|=
-operator|new
-name|BufferedReader
-argument_list|(
-name|ImportFormatReader
-operator|.
-name|getReaderDefaultEncoding
-argument_list|(
-name|stream
-argument_list|)
-argument_list|)
-init|)
 block|{
 name|String
 name|str
@@ -335,7 +294,7 @@ operator|(
 operator|(
 name|str
 operator|=
-name|in
+name|reader
 operator|.
 name|readLine
 argument_list|()
@@ -351,7 +310,7 @@ literal|50
 operator|)
 condition|)
 block|{
-comment|/**                  * The following line gives false positives for RIS files, so it                  * should not be uncommented. The hypen is a characteristic of the                  * RIS format.                  *                  * str = str.replace(" - ", "")                  */
+comment|/**              * The following line gives false positives for RIS files, so it              * should not be uncommented. The hypen is a characteristic of the              * RIS format.              *              * str = str.replace(" - ", "")              */
 if|if
 condition|(
 name|IsiImporter
@@ -374,7 +333,6 @@ block|}
 name|i
 operator|++
 expr_stmt|;
-block|}
 block|}
 return|return
 literal|false
@@ -664,13 +622,13 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|importDatabase (InputStream stream)
+DECL|method|importDatabase (BufferedReader reader)
 specifier|public
 name|ParserResult
 name|importDatabase
 parameter_list|(
-name|InputStream
-name|stream
+name|BufferedReader
+name|reader
 parameter_list|)
 throws|throws
 name|IOException
@@ -679,7 +637,7 @@ name|Objects
 operator|.
 name|requireNonNull
 argument_list|(
-name|stream
+name|reader
 argument_list|)
 expr_stmt|;
 name|List
@@ -700,23 +658,6 @@ operator|new
 name|StringBuilder
 argument_list|()
 decl_stmt|;
-try|try
-init|(
-name|BufferedReader
-name|in
-init|=
-operator|new
-name|BufferedReader
-argument_list|(
-name|ImportFormatReader
-operator|.
-name|getReaderDefaultEncoding
-argument_list|(
-name|stream
-argument_list|)
-argument_list|)
-init|)
-block|{
 comment|// Pattern fieldPattern = Pattern.compile("^AU |^TI |^SO |^DT |^C1 |^AB
 comment|// |^ID |^BP |^PY |^SE |^PY |^VL |^IS ");
 name|String
@@ -727,7 +668,7 @@ condition|(
 operator|(
 name|str
 operator|=
-name|in
+name|reader
 operator|.
 name|readLine
 argument_list|()
@@ -846,7 +787,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// remove the initial spaces
-block|}
 block|}
 block|}
 block|}

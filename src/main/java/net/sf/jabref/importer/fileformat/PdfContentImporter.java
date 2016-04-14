@@ -20,6 +20,16 @@ name|java
 operator|.
 name|io
 operator|.
+name|BufferedReader
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
 name|IOException
 import|;
 end_import
@@ -30,7 +40,7 @@ name|java
 operator|.
 name|io
 operator|.
-name|InputStream
+name|StringWriter
 import|;
 end_import
 
@@ -38,9 +48,23 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
+name|nio
 operator|.
-name|StringWriter
+name|charset
+operator|.
+name|Charset
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|file
+operator|.
+name|Path
 import|;
 end_import
 
@@ -984,13 +1008,13 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|isRecognizedFormat (InputStream in)
+DECL|method|isRecognizedFormat (BufferedReader reader)
 specifier|public
 name|boolean
 name|isRecognizedFormat
 parameter_list|(
-name|InputStream
-name|in
+name|BufferedReader
+name|reader
 parameter_list|)
 throws|throws
 name|IOException
@@ -999,7 +1023,7 @@ name|Objects
 operator|.
 name|requireNonNull
 argument_list|(
-name|in
+name|reader
 argument_list|)
 expr_stmt|;
 return|return
@@ -1008,13 +1032,13 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|importDatabase (InputStream in)
+DECL|method|importDatabase (BufferedReader reader)
 specifier|public
 name|ParserResult
 name|importDatabase
 parameter_list|(
-name|InputStream
-name|in
+name|BufferedReader
+name|reader
 parameter_list|)
 throws|throws
 name|IOException
@@ -1023,9 +1047,33 @@ name|Objects
 operator|.
 name|requireNonNull
 argument_list|(
-name|in
+name|reader
 argument_list|)
 expr_stmt|;
+throw|throw
+operator|new
+name|UnsupportedOperationException
+argument_list|(
+literal|"PdfContentImporter does not support importDatabase(BufferedReader reader)."
+operator|+
+literal|"Instead use importDatabase(Path filePath, Charset defaultEncoding)."
+argument_list|)
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|importDatabase (Path filePath, Charset defaultEncoding)
+specifier|public
+name|ParserResult
+name|importDatabase
+parameter_list|(
+name|Path
+name|filePath
+parameter_list|,
+name|Charset
+name|defaultEncoding
+parameter_list|)
+block|{
 specifier|final
 name|ArrayList
 argument_list|<
@@ -1049,7 +1097,7 @@ name|XMPUtil
 operator|.
 name|loadWithAutomaticDecryption
 argument_list|(
-name|in
+name|filePath
 argument_list|)
 init|)
 block|{

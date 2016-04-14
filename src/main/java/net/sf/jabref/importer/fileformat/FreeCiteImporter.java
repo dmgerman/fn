@@ -24,7 +24,7 @@ name|java
 operator|.
 name|io
 operator|.
-name|IOException
+name|BufferedReader
 import|;
 end_import
 
@@ -34,7 +34,7 @@ name|java
 operator|.
 name|io
 operator|.
-name|InputStream
+name|IOException
 import|;
 end_import
 
@@ -374,13 +374,13 @@ argument_list|)
 decl_stmt|;
 annotation|@
 name|Override
-DECL|method|isRecognizedFormat (InputStream in)
+DECL|method|isRecognizedFormat (BufferedReader reader)
 specifier|public
 name|boolean
 name|isRecognizedFormat
 parameter_list|(
-name|InputStream
-name|in
+name|BufferedReader
+name|reader
 parameter_list|)
 throws|throws
 name|IOException
@@ -389,7 +389,7 @@ name|Objects
 operator|.
 name|requireNonNull
 argument_list|(
-name|in
+name|reader
 argument_list|)
 expr_stmt|;
 comment|// TODO: We don't know how to recognize text files, therefore we return "false"
@@ -399,13 +399,13 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|importDatabase (InputStream in)
+DECL|method|importDatabase (BufferedReader reader)
 specifier|public
 name|ParserResult
 name|importDatabase
 parameter_list|(
-name|InputStream
-name|in
+name|BufferedReader
+name|reader
 parameter_list|)
 throws|throws
 name|IOException
@@ -418,7 +418,7 @@ init|=
 operator|new
 name|Scanner
 argument_list|(
-name|in
+name|reader
 argument_list|)
 init|)
 block|{

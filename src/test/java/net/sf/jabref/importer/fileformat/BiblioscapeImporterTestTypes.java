@@ -20,7 +20,7 @@ name|java
 operator|.
 name|io
 operator|.
-name|ByteArrayInputStream
+name|BufferedReader
 import|;
 end_import
 
@@ -38,11 +38,9 @@ begin_import
 import|import
 name|java
 operator|.
-name|nio
+name|io
 operator|.
-name|charset
-operator|.
-name|StandardCharsets
+name|StringReader
 import|;
 end_import
 
@@ -400,15 +398,12 @@ operator|.
 name|importDatabase
 argument_list|(
 operator|new
-name|ByteArrayInputStream
+name|BufferedReader
+argument_list|(
+operator|new
+name|StringReader
 argument_list|(
 name|bsInput
-operator|.
-name|getBytes
-argument_list|(
-name|StandardCharsets
-operator|.
-name|UTF_8
 argument_list|)
 argument_list|)
 argument_list|)

@@ -24,7 +24,7 @@ name|java
 operator|.
 name|io
 operator|.
-name|BufferedInputStream
+name|BufferedReader
 import|;
 end_import
 
@@ -55,6 +55,28 @@ operator|.
 name|io
 operator|.
 name|InputStream
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|InputStreamReader
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|Charset
 import|;
 end_import
 
@@ -104,22 +126,6 @@ name|ParserResult
 import|;
 end_import
 
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|entry
-operator|.
-name|BibEntry
-import|;
-end_import
-
 begin_comment
 comment|/**  * Role of an importer for JabRef.  */
 end_comment
@@ -147,25 +153,28 @@ init|=
 literal|"__ID"
 decl_stmt|;
 comment|/**      * Check whether the source is in the correct format for this importer.      *      * The effect of this method is primarily to avoid unnecessary processing of      * files when searching for a suitable import format. If this method returns      * false, the import routine will move on to the next import format.      *      * Thus the correct behaviour is to return false if it is certain that the file is      * not of the suitable type, and true otherwise. Returning true is the safe choice if not certain.      */
-DECL|method|isRecognizedFormat (InputStream in)
-specifier|public
+DECL|method|isRecognizedFormat (BufferedReader input)
+specifier|protected
 specifier|abstract
 name|boolean
 name|isRecognizedFormat
 parameter_list|(
-name|InputStream
-name|in
+name|BufferedReader
+name|input
 parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-DECL|method|isRecognizedFormat (Path filePath)
+DECL|method|isRecognizedFormat (Path filePath, Charset defaultEncoding)
 specifier|public
 name|boolean
 name|isRecognizedFormat
 parameter_list|(
 name|Path
 name|filePath
+parameter_list|,
+name|Charset
+name|defaultEncoding
 parameter_list|)
 throws|throws
 name|IOException
@@ -184,53 +193,54 @@ name|toFile
 argument_list|()
 argument_list|)
 init|;
-name|BufferedInputStream
-name|bufferedStream
+name|BufferedReader
+name|bufferedReader
 operator|=
 operator|new
-name|BufferedInputStream
+name|BufferedReader
+argument_list|(
+operator|new
+name|InputStreamReader
 argument_list|(
 name|stream
+argument_list|,
+name|defaultEncoding
+argument_list|)
 argument_list|)
 init|)
 block|{
-name|bufferedStream
-operator|.
-name|mark
-argument_list|(
-name|Integer
-operator|.
-name|MAX_VALUE
-argument_list|)
-expr_stmt|;
 return|return
 name|isRecognizedFormat
 argument_list|(
-name|bufferedStream
+name|bufferedReader
 argument_list|)
 return|;
 block|}
 block|}
-comment|/**      * Parse the database in the source.      *      * This method can be called in two different contexts - either when importing in      * a specified format, or when importing in unknown format. In the latter case,      * JabRef cycles through all available import formats. No error messages or feedback      * is displayed from individual import formats in this case.      *      * If importing in a specified format and an empty database is returned, JabRef reports      * that no entries were found.      *      * This method should never return null.      *      * @param in the input stream to read from      */
-DECL|method|importDatabase (InputStream in)
-specifier|public
+comment|/**      * Parse the database in the source.      *      * This method can be called in two different contexts - either when importing in      * a specified format, or when importing in unknown format. In the latter case,      * JabRef cycles through all available import formats. No error messages or feedback      * is displayed from individual import formats in this case.      *      * If importing in a specified format and an empty database is returned, JabRef reports      * that no entries were found.      *      * This method should never return null.      *      * @param input the input to read from      */
+DECL|method|importDatabase (BufferedReader input)
+specifier|protected
 specifier|abstract
 name|ParserResult
 name|importDatabase
 parameter_list|(
-name|InputStream
-name|in
+name|BufferedReader
+name|input
 parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-DECL|method|importDatabase (Path filePath)
+comment|/**      * Parse the database in the specified file.      *      * Importer having the facilities to detect the correct encoding of a file should overwrite this method,      * determine the encoding and then call {@link #importDatabase(BufferedReader)}.      *      * @param filePath the path to the file which should be imported      * @param defaultEncoding the encoding used by default to decode the file      */
+DECL|method|importDatabase (Path filePath, Charset defaultEncoding)
 specifier|public
 name|ParserResult
 name|importDatabase
 parameter_list|(
 name|Path
 name|filePath
+parameter_list|,
+name|Charset
+name|defaultEncoding
 parameter_list|)
 throws|throws
 name|IOException
@@ -249,20 +259,26 @@ name|toFile
 argument_list|()
 argument_list|)
 init|;
-name|BufferedInputStream
-name|bufferedStream
+name|BufferedReader
+name|bufferedReader
 operator|=
 operator|new
-name|BufferedInputStream
+name|BufferedReader
+argument_list|(
+operator|new
+name|InputStreamReader
 argument_list|(
 name|stream
+argument_list|,
+name|defaultEncoding
+argument_list|)
 argument_list|)
 init|)
 block|{
 return|return
 name|importDatabase
 argument_list|(
-name|bufferedStream
+name|bufferedReader
 argument_list|)
 return|;
 block|}
@@ -370,7 +386,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * Returns the description of the import format.      *      * The description should specify      *<ul><li>      *   what kind of entries from what sources and based on what specification it is able to import      *</li><li>      *   by what criteria it {@link #isRecognizedFormat(InputStream) recognizes} an import format      *</li></ul>      *      * @return description of the import format      */
+comment|/**      * Returns the description of the import format.      *      * The description should specify      *<ul><li>      *   what kind of entries from what sources and based on what specification it is able to import      *</li><li>      *   by what criteria it {@link #isRecognizedFormat(BufferedReader) recognizes} an import format      *</li></ul>      *      * @return description of the import format      */
 DECL|method|getDescription ()
 specifier|public
 specifier|abstract

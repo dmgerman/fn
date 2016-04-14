@@ -24,7 +24,7 @@ name|java
 operator|.
 name|io
 operator|.
-name|IOException
+name|BufferedReader
 import|;
 end_import
 
@@ -34,7 +34,7 @@ name|java
 operator|.
 name|io
 operator|.
-name|InputStream
+name|IOException
 import|;
 end_import
 
@@ -78,20 +78,6 @@ name|jabref
 operator|.
 name|importer
 operator|.
-name|ImportFormatReader
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|importer
-operator|.
 name|ParserResult
 import|;
 end_import
@@ -111,20 +97,20 @@ block|{
 comment|/**      * @return true as we have no effective way to decide whether a file is in bibtex format or not. See      *         https://github.com/JabRef/jabref/pull/379#issuecomment-158685726 for more details.      */
 annotation|@
 name|Override
-DECL|method|isRecognizedFormat (InputStream in)
+DECL|method|isRecognizedFormat (BufferedReader reader)
 specifier|public
 name|boolean
 name|isRecognizedFormat
 parameter_list|(
-name|InputStream
-name|in
+name|BufferedReader
+name|reader
 parameter_list|)
 block|{
 name|Objects
 operator|.
 name|requireNonNull
 argument_list|(
-name|in
+name|reader
 argument_list|)
 expr_stmt|;
 return|return
@@ -133,13 +119,13 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|importDatabase (InputStream in)
+DECL|method|importDatabase (BufferedReader reader)
 specifier|public
 name|ParserResult
 name|importDatabase
 parameter_list|(
-name|InputStream
-name|in
+name|BufferedReader
+name|reader
 parameter_list|)
 throws|throws
 name|IOException
@@ -149,12 +135,7 @@ name|BibtexParser
 operator|.
 name|parse
 argument_list|(
-name|ImportFormatReader
-operator|.
-name|getReaderDefaultEncoding
-argument_list|(
-name|in
-argument_list|)
+name|reader
 argument_list|)
 return|;
 block|}

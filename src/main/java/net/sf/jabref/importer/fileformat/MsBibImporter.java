@@ -24,7 +24,7 @@ name|java
 operator|.
 name|io
 operator|.
-name|IOException
+name|BufferedReader
 import|;
 end_import
 
@@ -34,7 +34,7 @@ name|java
 operator|.
 name|io
 operator|.
-name|InputStream
+name|IOException
 import|;
 end_import
 
@@ -124,6 +124,18 @@ name|Document
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|xml
+operator|.
+name|sax
+operator|.
+name|InputSource
+import|;
+end_import
+
 begin_comment
 comment|/**  * Importer for the MS Office 2007 XML bibliography format  * By S. M. Mahbub Murshed  *  * ...  */
 end_comment
@@ -138,13 +150,13 @@ name|ImportFormat
 block|{
 annotation|@
 name|Override
-DECL|method|isRecognizedFormat (InputStream in)
+DECL|method|isRecognizedFormat (BufferedReader reader)
 specifier|public
 name|boolean
 name|isRecognizedFormat
 parameter_list|(
-name|InputStream
-name|in
+name|BufferedReader
+name|reader
 parameter_list|)
 throws|throws
 name|IOException
@@ -153,7 +165,7 @@ name|Objects
 operator|.
 name|requireNonNull
 argument_list|(
-name|in
+name|reader
 argument_list|)
 expr_stmt|;
 comment|/*             The correct behaviour is to return false if it is certain that the file is             not of the MsBib type, and true otherwise. Returning true is the safe choice             if not certain.          */
@@ -179,7 +191,11 @@ name|dbuild
 operator|.
 name|parse
 argument_list|(
-name|in
+operator|new
+name|InputSource
+argument_list|(
+name|reader
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -216,13 +232,13 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|importDatabase (InputStream in)
+DECL|method|importDatabase (BufferedReader reader)
 specifier|public
 name|ParserResult
 name|importDatabase
 parameter_list|(
-name|InputStream
-name|in
+name|BufferedReader
+name|reader
 parameter_list|)
 throws|throws
 name|IOException
@@ -231,7 +247,7 @@ name|Objects
 operator|.
 name|requireNonNull
 argument_list|(
-name|in
+name|reader
 argument_list|)
 expr_stmt|;
 name|MSBibDatabase
@@ -249,7 +265,7 @@ name|dbase
 operator|.
 name|importEntries
 argument_list|(
-name|in
+name|reader
 argument_list|)
 argument_list|)
 return|;
