@@ -16,13 +16,9 @@ end_package
 
 begin_import
 import|import
-name|com
+name|java
 operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
+name|util
 operator|.
 name|Objects
 import|;
@@ -333,7 +329,7 @@ decl_stmt|;
 return|return
 name|Objects
 operator|.
-name|equal
+name|equals
 argument_list|(
 name|name
 argument_list|,
