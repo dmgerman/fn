@@ -5025,7 +5025,7 @@ parameter_list|)
 block|{
 name|LOGGER
 operator|.
-name|info
+name|debug
 argument_list|(
 literal|"Performing annotation "
 operator|+
@@ -5505,6 +5505,25 @@ argument_list|()
 operator|.
 name|updateSortOrder
 argument_list|()
+expr_stmt|;
+name|panel
+operator|.
+name|mainTable
+operator|.
+name|getTableModel
+argument_list|()
+operator|.
+name|updateGroupFilter
+argument_list|()
+expr_stmt|;
+name|panel
+operator|.
+name|mainTable
+operator|.
+name|scrollTo
+argument_list|(
+literal|0
+argument_list|)
 expr_stmt|;
 if|if
 condition|(
