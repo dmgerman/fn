@@ -2113,6 +2113,18 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
+literal|"Moore, O., Jr."
+argument_list|,
+name|StringUtil
+operator|.
+name|expandAuthorInitials
+argument_list|(
+literal|"Moore, O, Jr."
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
 literal|"Moore, A. O."
 argument_list|,
 name|StringUtil
@@ -2132,6 +2144,30 @@ operator|.
 name|expandAuthorInitials
 argument_list|(
 literal|"Moore, A-O"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Moore, O. and O. Moore"
+argument_list|,
+name|StringUtil
+operator|.
+name|expandAuthorInitials
+argument_list|(
+literal|"Moore, O and O Moore"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Moore, O. and O. Moore and Moore, O. O."
+argument_list|,
+name|StringUtil
+operator|.
+name|expandAuthorInitials
+argument_list|(
+literal|"Moore, O and O Moore and Moore, OO"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2242,6 +2278,18 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
+literal|"Moore, O., Jr."
+argument_list|,
+name|StringUtil
+operator|.
+name|expandAuthorInitials
+argument_list|(
+literal|"Moore, O., Jr."
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
 literal|"Moore, A. O."
 argument_list|,
 name|StringUtil
@@ -2297,6 +2345,126 @@ operator|.
 name|expandAuthorInitials
 argument_list|(
 literal|"J{\\\"o}rg"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Moore, O. and O. Moore"
+argument_list|,
+name|StringUtil
+operator|.
+name|expandAuthorInitials
+argument_list|(
+literal|"Moore, O. and O. Moore"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Moore, O. and O. Moore and Moore, O. O."
+argument_list|,
+name|StringUtil
+operator|.
+name|expandAuthorInitials
+argument_list|(
+literal|"Moore, O. and O. Moore and Moore, O. O."
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|testRepeatSpaces ()
+specifier|public
+name|void
+name|testRepeatSpaces
+parameter_list|()
+block|{
+name|assertEquals
+argument_list|(
+literal|""
+argument_list|,
+name|StringUtil
+operator|.
+name|repeatSpaces
+argument_list|(
+literal|0
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|" "
+argument_list|,
+name|StringUtil
+operator|.
+name|repeatSpaces
+argument_list|(
+literal|1
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"       "
+argument_list|,
+name|StringUtil
+operator|.
+name|repeatSpaces
+argument_list|(
+literal|7
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|testRepeat ()
+specifier|public
+name|void
+name|testRepeat
+parameter_list|()
+block|{
+name|assertEquals
+argument_list|(
+literal|""
+argument_list|,
+name|StringUtil
+operator|.
+name|repeat
+argument_list|(
+literal|0
+argument_list|,
+literal|'a'
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"a"
+argument_list|,
+name|StringUtil
+operator|.
+name|repeat
+argument_list|(
+literal|1
+argument_list|,
+literal|'a'
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"aaaaaaa"
+argument_list|,
+name|StringUtil
+operator|.
+name|repeat
+argument_list|(
+literal|7
+argument_list|,
+literal|'a'
 argument_list|)
 argument_list|)
 expr_stmt|;
