@@ -2297,7 +2297,7 @@ expr_stmt|;
 block|}
 name|LOGGER
 operator|.
-name|info
+name|debug
 argument_list|(
 literal|"Synchronized special fields based on keywords"
 argument_list|)
