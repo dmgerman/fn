@@ -219,7 +219,7 @@ name|result
 operator|=
 name|result
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
 name|character
 operator|.

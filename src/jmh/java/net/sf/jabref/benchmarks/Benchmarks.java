@@ -464,10 +464,13 @@ class|class
 name|Benchmarks
 block|{
 DECL|field|bibtexString
+specifier|private
 name|String
 name|bibtexString
 decl_stmt|;
 DECL|field|database
+specifier|private
+specifier|final
 name|BibDatabase
 name|database
 init|=
@@ -476,6 +479,8 @@ name|BibDatabase
 argument_list|()
 decl_stmt|;
 DECL|field|latexConversionStrings
+specifier|private
+specifier|final
 name|List
 argument_list|<
 name|String
@@ -488,6 +493,8 @@ argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|field|htmlConversionStrings
+specifier|private
+specifier|final
 name|List
 argument_list|<
 name|String
@@ -731,9 +738,9 @@ name|randomizer
 operator|.
 name|nextInt
 argument_list|()
-argument_list|)
 operator|%
 name|symbolcount
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -760,9 +767,9 @@ name|randomizer
 operator|.
 name|nextInt
 argument_list|()
-argument_list|)
 operator|%
 name|symbolcount
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -782,9 +789,9 @@ name|randomizer
 operator|.
 name|nextInt
 argument_list|()
-argument_list|)
 operator|%
 name|symbolcount
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -859,9 +866,9 @@ name|randomizer
 operator|.
 name|nextInt
 argument_list|()
-argument_list|)
 operator|%
 name|symbolcount
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -888,9 +895,9 @@ name|randomizer
 operator|.
 name|nextInt
 argument_list|()
-argument_list|)
 operator|%
 name|symbolcount
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -910,9 +917,9 @@ name|randomizer
 operator|.
 name|nextInt
 argument_list|()
-argument_list|)
 operator|%
 name|symbolcount
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
