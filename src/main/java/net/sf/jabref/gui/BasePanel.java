@@ -1937,10 +1937,15 @@ name|MainTableDataModel
 name|tableModel
 decl_stmt|;
 comment|// To contain instantiated entry editors. This is to save time
+comment|// As most enums, this must not be null
 DECL|field|mode
 specifier|private
 name|BasePanelMode
 name|mode
+init|=
+name|BasePanelMode
+operator|.
+name|SHOWING_NOTHING
 decl_stmt|;
 DECL|field|currentEditor
 specifier|private
