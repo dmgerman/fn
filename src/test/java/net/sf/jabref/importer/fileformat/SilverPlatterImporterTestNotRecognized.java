@@ -160,11 +160,11 @@ literal|"emptyFile.xml"
 argument_list|,
 literal|"IsiImporterTest1.isi"
 argument_list|,
-literal|"InspecSilverPlatterImporterTest.txt"
-argument_list|,
 literal|"oai2.xml"
 argument_list|,
 literal|"RisImporterTest1.ris"
+argument_list|,
+literal|"InspecImportTest2.txt"
 argument_list|)
 decl_stmt|;
 for|for
