@@ -246,7 +246,7 @@ operator|.
 name|add
 argument_list|(
 operator|new
-name|BibteXMLImporter
+name|BibTeXMLImporter
 argument_list|()
 argument_list|)
 expr_stmt|;

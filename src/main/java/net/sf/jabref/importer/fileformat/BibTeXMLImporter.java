@@ -181,10 +181,10 @@ comment|/**  * Importer for the Refer/Endnote format.  *  * check here for detai
 end_comment
 
 begin_class
-DECL|class|BibteXMLImporter
+DECL|class|BibTeXMLImporter
 specifier|public
 class|class
-name|BibteXMLImporter
+name|BibTeXMLImporter
 extends|extends
 name|ImportFormat
 block|{
@@ -199,7 +199,7 @@ name|LogFactory
 operator|.
 name|getLog
 argument_list|(
-name|BibteXMLImporter
+name|BibTeXMLImporter
 operator|.
 name|class
 argument_list|)
@@ -215,7 +215,7 @@ name|Pattern
 operator|.
 name|compile
 argument_list|(
-literal|"<bibtex:file .*"
+literal|"<(bibtex:)?file .*"
 argument_list|)
 decl_stmt|;
 comment|/**      * Return the name of this import format.      */
