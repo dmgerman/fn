@@ -864,22 +864,6 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntryType
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|entry
-operator|.
 name|EntryType
 import|;
 end_import
@@ -1244,11 +1228,18 @@ name|boolean
 name|checkBoxWhyIsThereNoGetSelectedStupidSwing
 decl_stmt|;
 comment|/**      * For Unit-testing only.<i>Don't remove!</i><br>      * Used via reflection in {@link net.sf.jabref.importer.DatabaseFileLookup} to construct this      * class.      */
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 DECL|method|FindUnlinkedFilesDialog ()
 specifier|private
 name|FindUnlinkedFilesDialog
 parameter_list|()
-block|{     }
+block|{
+comment|//intended
+block|}
 DECL|method|FindUnlinkedFilesDialog (Frame owner, JabRefFrame frame, BasePanel panel)
 specifier|public
 name|FindUnlinkedFilesDialog
@@ -1496,16 +1487,16 @@ block|}
 catch|catch
 parameter_list|(
 name|NumberFormatException
-name|ignored
+name|ignoredEx
 parameter_list|)
 block|{
 name|LOGGER
 operator|.
 name|debug
 argument_list|(
-literal|"RestoreSizeDialog Ecxception "
+literal|"RestoreSizeDialog Exception "
 argument_list|,
-name|ignored
+name|ignoredEx
 argument_list|)
 expr_stmt|;
 block|}
@@ -2353,6 +2344,25 @@ argument_list|(
 literal|"user.dir"
 argument_list|)
 argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
+operator|!
+name|Files
+operator|.
+name|isDirectory
+argument_list|(
+name|directory
+argument_list|)
+condition|)
+block|{
+name|directory
+operator|=
+name|directory
+operator|.
+name|getParent
+argument_list|()
 expr_stmt|;
 block|}
 comment|//this addtional statement is needed because for the lamdba the variable must be effetively final
