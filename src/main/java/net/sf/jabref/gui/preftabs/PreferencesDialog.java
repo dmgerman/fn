@@ -1772,8 +1772,7 @@ operator|.
 name|revalidateGroups
 argument_list|()
 expr_stmt|;
-comment|// icons may have
-comment|// changed
+comment|// icons may have changed
 name|frame
 operator|.
 name|output
