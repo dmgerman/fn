@@ -2090,9 +2090,10 @@ init|=
 operator|new
 name|RightClickMenu
 argument_list|(
-name|JabRef
+name|JabRefGUI
 operator|.
-name|mainFrame
+name|getMainFrame
+argument_list|()
 argument_list|,
 name|panel
 argument_list|)

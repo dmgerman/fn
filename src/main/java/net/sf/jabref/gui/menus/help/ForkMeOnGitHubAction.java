@@ -98,7 +98,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|JabRef
+name|JabRefGUI
 import|;
 end_import
 
@@ -268,9 +268,10 @@ argument_list|,
 name|ex
 argument_list|)
 expr_stmt|;
-name|JabRef
+name|JabRefGUI
 operator|.
-name|mainFrame
+name|getMainFrame
+argument_list|()
 operator|.
 name|getCurrentBasePanel
 argument_list|()

@@ -204,7 +204,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|JabRef
+name|JabRefGUI
 import|;
 end_import
 
@@ -1179,9 +1179,10 @@ decl_stmt|;
 name|BasePanel
 name|currentBasePanel
 init|=
-name|JabRef
+name|JabRefGUI
 operator|.
-name|mainFrame
+name|getMainFrame
+argument_list|()
 operator|.
 name|getCurrentBasePanel
 argument_list|()
@@ -1499,10 +1500,13 @@ return|;
 block|}
 if|if
 condition|(
+operator|(
 name|o
 operator|==
 literal|null
+operator|)
 operator|||
+operator|(
 name|getClass
 argument_list|()
 operator|!=
@@ -1510,6 +1514,7 @@ name|o
 operator|.
 name|getClass
 argument_list|()
+operator|)
 condition|)
 block|{
 return|return
@@ -1892,9 +1897,11 @@ operator|.
 name|isPresent
 argument_list|()
 operator|&&
+operator|(
 name|undoRemove
 operator|!=
 literal|null
+operator|)
 condition|)
 block|{
 comment|// we removed and added entries

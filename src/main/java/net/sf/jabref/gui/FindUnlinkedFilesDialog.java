@@ -706,7 +706,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|JabRef
+name|JabRefExecutorService
 import|;
 end_import
 
@@ -718,7 +718,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|JabRefExecutorService
+name|JabRefGUI
 import|;
 end_import
 
@@ -5419,9 +5419,10 @@ name|JabRefDesktop
 operator|.
 name|openExternalViewer
 argument_list|(
-name|JabRef
+name|JabRefGUI
 operator|.
-name|mainFrame
+name|getMainFrame
+argument_list|()
 operator|.
 name|getCurrentBasePanel
 argument_list|()

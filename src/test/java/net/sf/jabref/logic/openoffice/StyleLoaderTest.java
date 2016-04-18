@@ -152,7 +152,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|JabRef
+name|JabRefMain
 import|;
 end_import
 
@@ -541,7 +541,7 @@ name|Paths
 operator|.
 name|get
 argument_list|(
-name|JabRef
+name|JabRefMain
 operator|.
 name|class
 operator|.
@@ -690,7 +690,7 @@ name|Paths
 operator|.
 name|get
 argument_list|(
-name|JabRef
+name|JabRefMain
 operator|.
 name|class
 operator|.
@@ -840,7 +840,7 @@ name|Paths
 operator|.
 name|get
 argument_list|(
-name|JabRef
+name|JabRefMain
 operator|.
 name|class
 operator|.
@@ -1004,7 +1004,7 @@ name|Paths
 operator|.
 name|get
 argument_list|(
-name|JabRef
+name|JabRefMain
 operator|.
 name|class
 operator|.
@@ -1196,7 +1196,7 @@ name|Paths
 operator|.
 name|get
 argument_list|(
-name|JabRef
+name|JabRefMain
 operator|.
 name|class
 operator|.

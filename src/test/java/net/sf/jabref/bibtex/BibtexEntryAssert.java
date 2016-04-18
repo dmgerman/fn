@@ -568,13 +568,12 @@ argument_list|)
 expr_stmt|;
 name|Assert
 operator|.
-name|assertNotEquals
+name|assertFalse
 argument_list|(
-name|ParserResult
-operator|.
-name|INVALID_FORMAT
-argument_list|,
 name|result
+operator|.
+name|isNullResult
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|Assert

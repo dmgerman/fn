@@ -20,7 +20,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|JabRef
+name|gui
+operator|.
+name|JabRefFrame
 import|;
 end_import
 
@@ -32,9 +34,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
-operator|.
-name|JabRefFrame
+name|JabRefGUI
 import|;
 end_import
 
@@ -366,9 +366,10 @@ name|GeneralFetcherTest
 operator|.
 name|jrf
 operator|=
-name|JabRef
+name|JabRefGUI
 operator|.
-name|mainFrame
+name|getMainFrame
+argument_list|()
 expr_stmt|;
 name|GeneralFetcherTest
 operator|.

@@ -3522,7 +3522,7 @@ name|Preferences
 operator|.
 name|userNodeForPackage
 argument_list|(
-name|JabRef
+name|JabRefMain
 operator|.
 name|class
 argument_list|)

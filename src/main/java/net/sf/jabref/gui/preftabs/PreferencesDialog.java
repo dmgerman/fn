@@ -436,15 +436,12 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|method|PreferencesDialog (JabRefFrame parent, JabRef jabRef)
+DECL|method|PreferencesDialog (JabRefFrame parent)
 specifier|public
 name|PreferencesDialog
 parameter_list|(
 name|JabRefFrame
 name|parent
-parameter_list|,
-name|JabRef
-name|jabRef
 parameter_list|)
 block|{
 name|super
@@ -735,8 +732,6 @@ operator|new
 name|AdvancedTab
 argument_list|(
 name|prefs
-argument_list|,
-name|jabRef
 argument_list|)
 argument_list|)
 expr_stmt|;

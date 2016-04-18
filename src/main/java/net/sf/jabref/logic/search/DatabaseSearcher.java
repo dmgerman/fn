@@ -188,6 +188,7 @@ name|database
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      *      * @return BibDatabase, never null      */
 DECL|method|getDatabaseFromMatches ()
 specifier|public
 name|BibDatabase

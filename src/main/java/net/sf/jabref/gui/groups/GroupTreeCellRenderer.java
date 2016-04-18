@@ -136,9 +136,11 @@ comment|// show as selected
 name|selected
 operator|=
 operator|(
+operator|(
 name|highlight1Cell
 operator|!=
 literal|null
+operator|)
 operator|&&
 name|highlight1Cell
 operator|.

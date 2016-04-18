@@ -64,6 +64,18 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|JabRefMain
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|gui
 operator|.
 name|net
@@ -97,18 +109,6 @@ operator|.
 name|logging
 operator|.
 name|LogFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|JabRef
 import|;
 end_import
 
@@ -209,7 +209,7 @@ parameter_list|)
 block|{
 name|resource
 operator|=
-name|JabRef
+name|JabRefMain
 operator|.
 name|class
 operator|.

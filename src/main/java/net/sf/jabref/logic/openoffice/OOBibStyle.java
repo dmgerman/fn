@@ -90,7 +90,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|JabRef
+name|JabRefMain
 import|;
 end_import
 
@@ -955,7 +955,7 @@ argument_list|()
 expr_stmt|;
 name|initialize
 argument_list|(
-name|JabRef
+name|JabRefMain
 operator|.
 name|class
 operator|.

@@ -36,7 +36,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|JabRef
+name|JabRefGUI
 import|;
 end_import
 
@@ -190,15 +190,16 @@ name|EntryFromPDFCreator
 argument_list|()
 expr_stmt|;
 comment|// Needed for PdfImporter - still not enough
-name|JabRef
+name|JabRefGUI
 operator|.
-name|mainFrame
-operator|=
+name|setMainFrame
+argument_list|(
 name|mock
 argument_list|(
 name|JabRefFrame
 operator|.
 name|class
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

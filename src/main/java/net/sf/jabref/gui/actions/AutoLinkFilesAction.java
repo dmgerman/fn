@@ -132,7 +132,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|JabRef
+name|JabRefExecutorService
 import|;
 end_import
 
@@ -144,7 +144,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|JabRefExecutorService
+name|JabRefGUI
 import|;
 end_import
 
@@ -294,9 +294,10 @@ name|BibEntry
 argument_list|>
 name|entries
 init|=
-name|JabRef
+name|JabRefGUI
 operator|.
-name|mainFrame
+name|getMainFrame
+argument_list|()
 operator|.
 name|getCurrentBasePanel
 argument_list|()
@@ -312,9 +313,10 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-name|JabRef
+name|JabRefGUI
 operator|.
-name|mainFrame
+name|getMainFrame
+argument_list|()
 operator|.
 name|getCurrentBasePanel
 argument_list|()
@@ -337,9 +339,10 @@ init|=
 operator|new
 name|JDialog
 argument_list|(
-name|JabRef
+name|JabRefGUI
 operator|.
-name|mainFrame
+name|getMainFrame
+argument_list|()
 argument_list|,
 literal|true
 argument_list|)
@@ -374,9 +377,10 @@ literal|null
 argument_list|,
 literal|null
 argument_list|,
-name|JabRef
+name|JabRefGUI
 operator|.
-name|mainFrame
+name|getMainFrame
+argument_list|()
 operator|.
 name|getCurrentBasePanel
 argument_list|()
@@ -411,9 +415,10 @@ operator|.
 name|end
 argument_list|()
 expr_stmt|;
-name|JabRef
+name|JabRefGUI
 operator|.
-name|mainFrame
+name|getMainFrame
+argument_list|()
 operator|.
 name|getCurrentBasePanel
 argument_list|()
@@ -425,9 +430,10 @@ argument_list|(
 name|nc
 argument_list|)
 expr_stmt|;
-name|JabRef
+name|JabRefGUI
 operator|.
-name|mainFrame
+name|getMainFrame
+argument_list|()
 operator|.
 name|getCurrentBasePanel
 argument_list|()
@@ -436,9 +442,10 @@ name|markBaseChanged
 argument_list|()
 expr_stmt|;
 block|}
-name|JabRef
+name|JabRefGUI
 operator|.
-name|mainFrame
+name|getMainFrame
+argument_list|()
 operator|.
 name|output
 argument_list|(
@@ -453,9 +460,10 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|JabRef
+name|JabRefGUI
 operator|.
-name|mainFrame
+name|getMainFrame
+argument_list|()
 operator|.
 name|output
 argument_list|(
