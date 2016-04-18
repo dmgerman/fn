@@ -109,12 +109,6 @@ name|UndoableMoveGroup
 extends|extends
 name|AbstractUndoableEdit
 block|{
-DECL|field|groupSelector
-specifier|private
-specifier|final
-name|GroupSelector
-name|groupSelector
-decl_stmt|;
 DECL|field|root
 specifier|private
 specifier|final
@@ -151,12 +145,12 @@ specifier|final
 name|int
 name|oldChildIndex
 decl_stmt|;
-DECL|method|UndoableMoveGroup (GroupSelector groupSelector, MoveGroupChange moveChange)
+DECL|method|UndoableMoveGroup (GroupTreeNodeViewModel root, MoveGroupChange moveChange)
 specifier|public
 name|UndoableMoveGroup
 parameter_list|(
-name|GroupSelector
-name|groupSelector
+name|GroupTreeNodeViewModel
+name|root
 parameter_list|,
 name|MoveGroupChange
 name|moveChange
@@ -164,13 +158,13 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|groupSelector
+name|root
 operator|=
 name|Objects
 operator|.
 name|requireNonNull
 argument_list|(
-name|groupSelector
+name|root
 argument_list|)
 expr_stmt|;
 name|Objects
@@ -179,13 +173,6 @@ name|requireNonNull
 argument_list|(
 name|moveChange
 argument_list|)
-expr_stmt|;
-name|root
-operator|=
-name|groupSelector
-operator|.
-name|getGroupTreeRoot
-argument_list|()
 expr_stmt|;
 name|pathToOldParent
 operator|=

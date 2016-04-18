@@ -414,14 +414,8 @@ specifier|final
 name|BasePanel
 name|panel
 decl_stmt|;
-DECL|field|gs
-specifier|private
-specifier|final
-name|GroupSelector
-name|gs
-decl_stmt|;
 comment|/**      * @param groupsRoot The original set of groups, which is required as undo information when all groups are cleared.      */
-DECL|method|AutoGroupDialog (JabRefFrame jabrefFrame, BasePanel basePanel, GroupSelector groupSelector, GroupTreeNodeViewModel groupsRoot, String defaultField, String defaultRemove, String defaultDeliminator)
+DECL|method|AutoGroupDialog (JabRefFrame jabrefFrame, BasePanel basePanel, GroupTreeNodeViewModel groupsRoot, String defaultField, String defaultRemove, String defaultDeliminator)
 specifier|public
 name|AutoGroupDialog
 parameter_list|(
@@ -430,9 +424,6 @@ name|jabrefFrame
 parameter_list|,
 name|BasePanel
 name|basePanel
-parameter_list|,
-name|GroupSelector
-name|groupSelector
 parameter_list|,
 name|GroupTreeNodeViewModel
 name|groupsRoot
@@ -464,10 +455,6 @@ expr_stmt|;
 name|frame
 operator|=
 name|jabrefFrame
-expr_stmt|;
-name|gs
-operator|=
-name|groupSelector
 expr_stmt|;
 name|panel
 operator|=
@@ -799,8 +786,6 @@ init|=
 operator|new
 name|UndoableAddOrRemoveGroup
 argument_list|(
-name|gs
-argument_list|,
 name|m_groupsRoot
 argument_list|,
 operator|new

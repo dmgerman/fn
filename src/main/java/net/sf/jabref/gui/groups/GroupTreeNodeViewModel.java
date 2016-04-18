@@ -860,6 +860,9 @@ decl_stmt|;
 return|return
 operator|new
 name|Enumeration
+argument_list|<
+name|GroupTreeNodeViewModel
+argument_list|>
 argument_list|()
 block|{
 annotation|@
@@ -882,7 +885,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|Object
+name|GroupTreeNodeViewModel
 name|nextElement
 parameter_list|()
 block|{
@@ -1974,7 +1977,7 @@ operator|instanceof
 name|AllEntriesGroup
 return|;
 block|}
-DECL|method|addNewGroup (AbstractGroup newGroup, CountingUndoManager undoManager, GroupSelector groupSelector)
+DECL|method|addNewGroup (AbstractGroup newGroup, CountingUndoManager undoManager)
 specifier|public
 name|void
 name|addNewGroup
@@ -1984,9 +1987,6 @@ name|newGroup
 parameter_list|,
 name|CountingUndoManager
 name|undoManager
-parameter_list|,
-name|GroupSelector
-name|groupSelector
 parameter_list|)
 block|{
 name|GroupTreeNode
@@ -2014,8 +2014,6 @@ init|=
 operator|new
 name|UndoableAddOrRemoveGroup
 argument_list|(
-name|groupSelector
-argument_list|,
 name|this
 argument_list|,
 operator|new
