@@ -41,16 +41,18 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Every Listener that wants to receive events from a search needs to  * implement this interface  *   * @author Ben  *   */
+comment|/**  * Every Listener that wants to receive events from a search needs to  * implement this interface  *  * @author Ben  *  */
 end_comment
 
 begin_interface
+annotation|@
+name|FunctionalInterface
 DECL|interface|SearchQueryHighlightListener
 specifier|public
 interface|interface
 name|SearchQueryHighlightListener
 block|{
-comment|/**      * Pattern with which one can determine what to highlight      *       * @param words null if nothing is searched for      */
+comment|/**      * Pattern with which one can determine what to highlight      *      * @param words null if nothing is searched for      */
 DECL|method|highlightPattern (Optional<Pattern> highlightPattern)
 name|void
 name|highlightPattern

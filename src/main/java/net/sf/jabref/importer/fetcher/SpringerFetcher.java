@@ -496,7 +496,8 @@ name|lang
 argument_list|(
 literal|"%0 import canceled"
 argument_list|,
-literal|"Springer"
+name|getTitle
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -740,7 +741,8 @@ name|lang
 argument_list|(
 literal|"Search %0"
 argument_list|,
-literal|"Springer"
+name|getTitle
+argument_list|()
 argument_list|)
 argument_list|,
 name|JOptionPane

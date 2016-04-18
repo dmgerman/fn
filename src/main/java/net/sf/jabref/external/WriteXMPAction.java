@@ -519,7 +519,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Writing XMP metadata..."
+literal|"Writing XMP-metadata..."
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1112,7 +1112,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Writing XMP metadata for selected entries..."
+literal|"Writing XMP-metadata for selected entries..."
 argument_list|)
 argument_list|,
 literal|false

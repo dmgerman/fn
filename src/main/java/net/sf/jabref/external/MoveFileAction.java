@@ -894,7 +894,7 @@ literal|null
 condition|)
 block|{
 return|return;
-comment|// cancelled
+comment|// canceled
 block|}
 name|newFile
 operator|=

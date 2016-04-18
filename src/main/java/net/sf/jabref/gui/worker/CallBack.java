@@ -23,6 +23,8 @@ comment|/**  * Represents a task that is to be executed on the GUI thread  */
 end_comment
 
 begin_interface
+annotation|@
+name|FunctionalInterface
 DECL|interface|CallBack
 specifier|public
 interface|interface

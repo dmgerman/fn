@@ -1162,8 +1162,6 @@ argument_list|<
 name|BibEntry
 argument_list|>
 name|entries
-init|=
-literal|null
 decl_stmt|;
 if|if
 condition|(

@@ -320,10 +320,10 @@ specifier|private
 name|JTextField
 name|renameTo
 decl_stmt|;
-DECL|field|cancelled
+DECL|field|canceled
 specifier|private
 name|boolean
-name|cancelled
+name|canceled
 init|=
 literal|true
 decl_stmt|;
@@ -1095,7 +1095,7 @@ return|return;
 comment|// Do not close the dialog.
 block|}
 block|}
-name|cancelled
+name|canceled
 operator|=
 literal|false
 expr_stmt|;
@@ -1124,7 +1124,7 @@ name|ActionEvent
 name|e
 parameter_list|)
 block|{
-name|cancelled
+name|canceled
 operator|=
 literal|true
 expr_stmt|;
@@ -1320,7 +1320,7 @@ name|createDialog
 argument_list|()
 expr_stmt|;
 block|}
-name|cancelled
+name|canceled
 operator|=
 literal|true
 expr_stmt|;
@@ -1357,7 +1357,7 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-name|cancelled
+name|canceled
 condition|)
 block|{
 return|return;

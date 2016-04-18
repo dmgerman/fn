@@ -548,7 +548,7 @@ name|BailErrorStrategy
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// ParseCancellationException on parse errors
+comment|// ParseCancelationException on parse errors
 name|tree
 operator|=
 name|parser

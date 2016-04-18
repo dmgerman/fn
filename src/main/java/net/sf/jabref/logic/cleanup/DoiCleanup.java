@@ -279,9 +279,7 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-operator|(
 name|field
-operator|)
 argument_list|)
 argument_list|)
 operator|.

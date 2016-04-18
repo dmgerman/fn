@@ -874,7 +874,7 @@ name|button
 argument_list|)
 condition|)
 block|{
-comment|// Cancelled, throw it away
+comment|// Canceled, throw it away
 name|panel
 operator|.
 name|output
@@ -883,7 +883,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Cancelled merging entries"
+literal|"Canceled merging entries"
 argument_list|)
 argument_list|)
 expr_stmt|;

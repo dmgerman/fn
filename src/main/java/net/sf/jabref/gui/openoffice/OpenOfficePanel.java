@@ -3403,7 +3403,6 @@ decl_stmt|;
 name|ActionListener
 name|tfListener
 init|=
-operator|(
 name|e
 lambda|->
 block|{
@@ -3433,7 +3432,6 @@ name|dispose
 argument_list|()
 expr_stmt|;
 block|}
-operator|)
 decl_stmt|;
 name|ooPath
 operator|.
@@ -3683,7 +3681,7 @@ if|if
 condition|(
 name|acd
 operator|.
-name|cancelled
+name|canceled
 argument_list|()
 condition|)
 block|{

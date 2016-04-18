@@ -620,10 +620,10 @@ specifier|private
 name|JRadioButton
 name|mergeKeywords
 decl_stmt|;
-DECL|field|cancelled
+DECL|field|canceled
 specifier|private
 name|boolean
-name|cancelled
+name|canceled
 decl_stmt|;
 DECL|field|sortedKeywordsOfAllEntriesBeforeUpdateByUser
 specifier|private
@@ -1095,7 +1095,7 @@ argument_list|(
 name|e
 lambda|->
 block|{
-name|cancelled
+name|canceled
 operator|=
 literal|false
 expr_stmt|;
@@ -1124,7 +1124,7 @@ name|ActionEvent
 name|e
 parameter_list|)
 block|{
-name|cancelled
+name|canceled
 operator|=
 literal|true
 expr_stmt|;
@@ -1679,7 +1679,7 @@ comment|// Lazy creation of the dialog:
 name|createDialog
 argument_list|()
 expr_stmt|;
-name|cancelled
+name|canceled
 operator|=
 literal|true
 expr_stmt|;
@@ -1707,7 +1707,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|cancelled
+name|canceled
 condition|)
 block|{
 return|return;

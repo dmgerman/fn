@@ -62,11 +62,11 @@ name|GeneralRenderer
 extends|extends
 name|DefaultTableCellRenderer
 block|{
-DECL|field|background
+DECL|field|rendererBackground
 specifier|private
 specifier|final
 name|Color
-name|background
+name|rendererBackground
 decl_stmt|;
 DECL|field|selBackground
 specifier|private
@@ -86,7 +86,7 @@ argument_list|()
 expr_stmt|;
 name|this
 operator|.
-name|background
+name|rendererBackground
 operator|=
 name|c
 expr_stmt|;
@@ -241,7 +241,7 @@ name|c
 operator|.
 name|setBackground
 argument_list|(
-name|background
+name|rendererBackground
 argument_list|)
 expr_stmt|;
 block|}

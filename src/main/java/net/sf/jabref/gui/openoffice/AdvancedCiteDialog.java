@@ -661,10 +661,10 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|cancelled ()
+DECL|method|canceled ()
 specifier|public
 name|boolean
-name|cancelled
+name|canceled
 parameter_list|()
 block|{
 return|return

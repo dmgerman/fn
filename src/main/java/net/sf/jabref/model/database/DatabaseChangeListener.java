@@ -19,6 +19,8 @@ package|;
 end_package
 
 begin_interface
+annotation|@
+name|FunctionalInterface
 DECL|interface|DatabaseChangeListener
 specifier|public
 interface|interface

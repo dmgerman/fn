@@ -669,7 +669,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"No_Internet_Connection."
+literal|"No_internet_connection."
 argument_list|)
 argument_list|)
 expr_stmt|;

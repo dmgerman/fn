@@ -1020,7 +1020,8 @@ name|lang
 argument_list|(
 literal|"Search %0"
 argument_list|,
-literal|"ACM Portal"
+name|getTitle
+argument_list|()
 argument_list|)
 argument_list|,
 name|JOptionPane
@@ -1071,7 +1072,8 @@ name|lang
 argument_list|(
 literal|"Search %0"
 argument_list|,
-literal|"ACM Portal"
+name|getTitle
+argument_list|()
 argument_list|)
 argument_list|,
 name|JOptionPane
@@ -1179,7 +1181,8 @@ name|lang
 argument_list|(
 literal|"Could not connect to %0"
 argument_list|,
-literal|"ACM Portal"
+name|getTitle
+argument_list|()
 argument_list|)
 argument_list|,
 name|Localization
@@ -1188,7 +1191,8 @@ name|lang
 argument_list|(
 literal|"Search %0"
 argument_list|,
-literal|"ACM Portal"
+name|getTitle
+argument_list|()
 argument_list|)
 argument_list|,
 name|JOptionPane
@@ -1227,7 +1231,8 @@ name|lang
 argument_list|(
 literal|"Search %0"
 argument_list|,
-literal|"ACM Portal"
+name|getTitle
+argument_list|()
 argument_list|)
 argument_list|,
 name|JOptionPane
@@ -2609,7 +2614,7 @@ return|return
 literal|"ACMPortalHelp"
 return|;
 block|}
-comment|// This method is called by the dialog when the user has cancelled or
+comment|// This method is called by the dialog when the user has canceled or
 comment|//signaled a stop. It is expected that any long-running fetch operations
 comment|//will stop after this method is called.
 annotation|@

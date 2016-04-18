@@ -6179,7 +6179,7 @@ if|if
 condition|(
 name|saveAction
 operator|.
-name|isCancelled
+name|isCanceled
 argument_list|()
 operator|||
 operator|!
@@ -6189,7 +6189,7 @@ name|isSuccess
 argument_list|()
 condition|)
 block|{
-comment|// The action was either cancelled or unsuccessful.
+comment|// The action was either canceled or unsuccessful.
 comment|// Break!
 name|output
 argument_list|(
@@ -6310,12 +6310,12 @@ operator|.
 name|show
 argument_list|()
 expr_stmt|;
-comment|// This method won't return until cancelled or the save operation is done.
+comment|// This method won't return until canceled or the save operation is done.
 if|if
 condition|(
 name|w
 operator|.
-name|cancelled
+name|canceled
 argument_list|()
 condition|)
 block|{

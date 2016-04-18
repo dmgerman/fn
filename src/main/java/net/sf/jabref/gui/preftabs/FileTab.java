@@ -501,7 +501,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Use Regular Expression Search"
+literal|"Use regular expression search"
 argument_list|)
 argument_list|)
 expr_stmt|;

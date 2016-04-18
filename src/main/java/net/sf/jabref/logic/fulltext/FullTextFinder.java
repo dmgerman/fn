@@ -65,6 +65,8 @@ comment|/**  * This interface is used for classes that try to resolve a full-tex
 end_comment
 
 begin_interface
+annotation|@
+name|FunctionalInterface
 DECL|interface|FullTextFinder
 specifier|public
 interface|interface

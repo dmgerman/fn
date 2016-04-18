@@ -1099,7 +1099,8 @@ name|lang
 argument_list|(
 literal|"Error while fetching from %0"
 argument_list|,
-literal|"IEEEXplore"
+name|getTitle
+argument_list|()
 argument_list|)
 argument_list|,
 name|DIALOG_TITLE
@@ -1206,7 +1207,8 @@ name|lang
 argument_list|(
 literal|"Could not connect to %0"
 argument_list|,
-literal|"IEEEXplore"
+name|getTitle
+argument_list|()
 argument_list|)
 argument_list|,
 name|DIALOG_TITLE
@@ -1284,7 +1286,7 @@ return|return
 literal|"IEEEXploreHelp"
 return|;
 block|}
-comment|/**      * This method is called by the dialog when the user has cancelled the import.      */
+comment|/**      * This method is called by the dialog when the user has canceled the import.      */
 annotation|@
 name|Override
 DECL|method|stopFetching ()

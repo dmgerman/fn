@@ -1608,7 +1608,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-comment|// Only if the dialog was not cancelled.
+comment|// Only if the dialog was not canceled.
 name|String
 name|id
 init|=

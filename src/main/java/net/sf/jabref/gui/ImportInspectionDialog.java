@@ -7776,7 +7776,7 @@ specifier|public
 interface|interface
 name|CallBack
 block|{
-comment|/**          * This method is called by the dialog when the user has cancelled or          * signaled a stop. It is expected that any long-running fetch          * operations will stop after this method is called.          */
+comment|/**          * This method is called by the dialog when the user has canceled or          * signaled a stop. It is expected that any long-running fetch          * operations will stop after this method is called.          */
 DECL|method|stopFetching ()
 name|void
 name|stopFetching

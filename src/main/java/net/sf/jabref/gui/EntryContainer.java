@@ -33,10 +33,12 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Entry containers work on a single entry, which can be asked for   */
+comment|/**  * Entry containers work on a single entry, which can be asked for  */
 end_comment
 
 begin_interface
+annotation|@
+name|FunctionalInterface
 DECL|interface|EntryContainer
 specifier|public
 interface|interface

@@ -1411,7 +1411,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"unexpected closing curly braket"
+literal|"unexpected closing curly bracket"
 argument_list|)
 argument_list|,
 name|entry
@@ -1448,7 +1448,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"unexpected opening curly braket"
+literal|"unexpected opening curly bracket"
 argument_list|)
 argument_list|,
 name|entry

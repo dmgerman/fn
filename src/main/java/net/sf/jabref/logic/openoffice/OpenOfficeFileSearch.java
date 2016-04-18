@@ -64,10 +64,10 @@ specifier|public
 class|class
 name|OpenOfficeFileSearch
 block|{
-DECL|field|fileSearchCancelled
+DECL|field|fileSearchCanceled
 specifier|private
 name|boolean
-name|fileSearchCancelled
+name|fileSearchCanceled
 decl_stmt|;
 comment|/**      * Search for Program files directory.      * @return the File pointing to the Program files directory, or null if not found.      *   Since we are not including a library for Windows integration, this method can't      *   find the Program files dir in localized Windows installations.      */
 DECL|method|findWindowsProgramFilesDir ()
@@ -339,7 +339,7 @@ name|void
 name|resetFileSearch
 parameter_list|()
 block|{
-name|fileSearchCancelled
+name|fileSearchCanceled
 operator|=
 literal|false
 expr_stmt|;
@@ -350,7 +350,7 @@ name|void
 name|cancelFileSearch
 parameter_list|()
 block|{
-name|fileSearchCancelled
+name|fileSearchCanceled
 operator|=
 literal|true
 expr_stmt|;
@@ -394,7 +394,7 @@ control|)
 block|{
 if|if
 condition|(
-name|fileSearchCancelled
+name|fileSearchCanceled
 condition|)
 block|{
 break|break;
@@ -436,7 +436,7 @@ parameter_list|)
 block|{
 if|if
 condition|(
-name|fileSearchCancelled
+name|fileSearchCanceled
 condition|)
 block|{
 return|return
@@ -490,7 +490,7 @@ control|)
 block|{
 if|if
 condition|(
-name|fileSearchCancelled
+name|fileSearchCanceled
 condition|)
 block|{
 return|return

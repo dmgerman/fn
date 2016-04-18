@@ -161,8 +161,8 @@ block|{
 comment|/**      * File filter, that accepts directories only.      */
 DECL|field|DIRECTORY_FILTER
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|FileFilter
 name|DIRECTORY_FILTER
 init|=
@@ -259,7 +259,7 @@ name|ChangeListener
 name|changeListener
 parameter_list|)
 block|{
-comment|/* Cancellation of the search from outside! */
+comment|/* Cancelation of the search from outside! */
 if|if
 condition|(
 operator|(

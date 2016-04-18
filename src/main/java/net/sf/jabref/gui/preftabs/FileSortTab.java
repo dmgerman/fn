@@ -672,7 +672,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Export Sorting"
+literal|"Export sorting"
 argument_list|)
 return|;
 block|}

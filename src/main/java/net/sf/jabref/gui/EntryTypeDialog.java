@@ -221,7 +221,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Dialog that prompts the user to choose a type for an entry.  * Returns null if cancelled.  */
+comment|/**  * Dialog that prompts the user to choose a type for an entry.  * Returns null if canceled.  */
 end_comment
 
 begin_class

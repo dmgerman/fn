@@ -648,8 +648,8 @@ return|;
 block|}
 comment|/**      * Function to initialize parameters. Currently it is expected that commandPathPreferenceKey is set to the path of      * the application.      */
 DECL|method|initParameters ()
-specifier|abstract
 specifier|protected
+specifier|abstract
 name|void
 name|initParameters
 parameter_list|()

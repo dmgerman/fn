@@ -1360,7 +1360,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"XMP metadata found in PDF: %0"
+literal|"XMP-metadata found in PDF: %0"
 argument_list|,
 name|fileName
 argument_list|)

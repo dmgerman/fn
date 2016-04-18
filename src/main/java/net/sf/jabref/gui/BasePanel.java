@@ -4247,7 +4247,7 @@ name|int
 name|numSelected
 decl_stmt|;
 name|boolean
-name|cancelled
+name|canceled
 decl_stmt|;
 comment|// Run first, in EDT:
 annotation|@
@@ -4494,7 +4494,7 @@ name|NO_OPTION
 condition|)
 block|{
 comment|// Ok, break off the operation.
-name|cancelled
+name|canceled
 operator|=
 literal|true
 expr_stmt|;
@@ -4681,7 +4681,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|cancelled
+name|canceled
 condition|)
 block|{
 name|frame
@@ -5896,7 +5896,6 @@ name|BaseAction
 call|)
 argument_list|()
 operator|->
-block|{
 name|JabRefExecutorService
 operator|.
 name|INSTANCE
@@ -5966,17 +5965,12 @@ name|e
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+block|}
+argument_list|)
+argument_list|)
+expr_stmt|;
 end_expr_stmt
-
-begin_empty_stmt
-unit|}             })
-empty_stmt|;
-end_empty_stmt
-
-begin_empty_stmt
-unit|})
-empty_stmt|;
-end_empty_stmt
 
 begin_expr_stmt
 name|actions
@@ -8447,7 +8441,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-comment|// Only if the dialog was not cancelled.
+comment|// Only if the dialog was not canceled.
 name|String
 name|id
 init|=
@@ -12619,7 +12613,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"No url defined"
+literal|"No URL defined"
 argument_list|)
 operator|+
 literal|'.'
@@ -14142,6 +14136,7 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+operator|!
 name|basePanel
 operator|.
 name|getBibDatabaseContext
@@ -14150,10 +14145,8 @@ operator|.
 name|getFileDirectory
 argument_list|()
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 condition|)
 block|{
 specifier|final

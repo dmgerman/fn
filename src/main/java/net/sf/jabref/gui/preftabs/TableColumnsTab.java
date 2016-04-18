@@ -1567,7 +1567,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Show Extra columns"
+literal|"Show extra columns"
 argument_list|)
 argument_list|)
 expr_stmt|;

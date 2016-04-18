@@ -673,7 +673,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"XMP Export Privacy Settings"
+literal|"XMP export privacy settings"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1352,7 +1352,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"XMP metadata"
+literal|"XMP-metadata"
 argument_list|)
 return|;
 block|}

@@ -1913,7 +1913,6 @@ name|addActionListener
 argument_list|(
 name|actionEvent
 lambda|->
-block|{
 name|getSelectedStyle
 argument_list|()
 operator|.
@@ -1927,7 +1926,7 @@ argument_list|<
 name|ExternalFileType
 argument_list|>
 name|type
-init|=
+operator|=
 name|ExternalFileTypes
 operator|.
 name|getInstance
@@ -1937,16 +1936,15 @@ name|getExternalFileTypeByExt
 argument_list|(
 literal|"jstyle"
 argument_list|)
-decl_stmt|;
+argument_list|;
 name|String
 name|link
-init|=
+operator|=
 name|style
 operator|.
 name|getPath
 argument_list|()
-decl_stmt|;
-try|try
+argument_list|;             try
 block|{
 if|if
 condition|(
@@ -2014,12 +2012,19 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-argument_list|)
-expr_stmt|;
-block|}
-argument_list|)
-expr_stmt|;
+block|)
+end_class
+
+begin_empty_stmt
+unit|)
+empty_stmt|;
+end_empty_stmt
+
+begin_comment
 comment|// Add action listener to "Show" menu item, which is supposed to open the style file in a dialog:
+end_comment
+
+begin_expr_stmt
 name|show
 operator|.
 name|addActionListener
@@ -2037,7 +2042,13 @@ name|displayStyle
 argument_list|)
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_comment
 comment|// Create action listener for removing a style, also used for the remove button
+end_comment
+
+begin_expr_stmt
 name|removeAction
 operator|=
 name|actionEvent
@@ -2051,40 +2062,45 @@ name|style
 lambda|->
 block|{
 block|if (!style.isFromResource(
-block|)
-function|&&
-parameter_list|(
-function|JOptionPane.showConfirmDialog
-parameter_list|(
+end_expr_stmt
+
+begin_expr_stmt
+unit|)
+operator|&&
+operator|(
+name|JOptionPane
+operator|.
+name|showConfirmDialog
+argument_list|(
 name|diag
-parameter_list|,
-function|Localization.lang
-parameter_list|(
-function|"Are you sure you want to remove the style?"
-block|)
-operator|,
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Are you sure you want to remove the style?"
+argument_list|)
+argument_list|,
 name|Localization
 operator|.
 name|lang
 argument_list|(
 literal|"Remove style"
 argument_list|)
-operator|,
+argument_list|,
 name|JOptionPane
 operator|.
 name|YES_NO_OPTION
-end_class
-
-begin_expr_stmt
-unit|)
+argument_list|)
 operator|==
 name|JOptionPane
 operator|.
 name|YES_OPTION
+operator|)
 end_expr_stmt
 
 begin_block
-unit|))
+unit|)
 block|{
 if|if
 condition|(

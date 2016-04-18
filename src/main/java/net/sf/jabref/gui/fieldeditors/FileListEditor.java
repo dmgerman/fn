@@ -2560,7 +2560,7 @@ name|adjustColumnWidth
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Open an editor for this entry.      *      * @param entry      The entry to edit.      * @param openBrowse True to indicate that a Browse dialog should be immediately opened.      * @return true if the edit was accepted, false if it was cancelled.      */
+comment|/**      * Open an editor for this entry.      *      * @param entry      The entry to edit.      * @param openBrowse True to indicate that a Browse dialog should be immediately opened.      * @return true if the edit was accepted, false if it was canceled.      */
 DECL|method|editListEntry (FileListEntry entry, boolean openBrowse)
 specifier|private
 name|boolean
@@ -2952,7 +2952,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * This is the callback method that the DownloadExternalFile class uses to report the result      * of a download operation. This call may never come, if the user cancelled the operation.      *      * @param file The FileListEntry linking to the resulting local file.      */
+comment|/**      * This is the callback method that the DownloadExternalFile class uses to report the result      * of a download operation. This call may never come, if the user canceled the operation.      *      * @param file The FileListEntry linking to the resulting local file.      */
 annotation|@
 name|Override
 DECL|method|downloadComplete (FileListEntry file)

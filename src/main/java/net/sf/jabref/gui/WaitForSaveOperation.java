@@ -128,10 +128,10 @@ argument_list|,
 name|this
 argument_list|)
 decl_stmt|;
-DECL|field|cancelled
+DECL|field|canceled
 specifier|private
 name|boolean
-name|cancelled
+name|canceled
 decl_stmt|;
 DECL|method|WaitForSaveOperation (JabRefFrame frame)
 specifier|public
@@ -243,7 +243,7 @@ argument_list|(
 name|e
 lambda|->
 block|{
-name|cancelled
+name|canceled
 operator|=
 literal|true
 expr_stmt|;
@@ -371,14 +371,14 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|cancelled ()
+DECL|method|canceled ()
 specifier|public
 name|boolean
-name|cancelled
+name|canceled
 parameter_list|()
 block|{
 return|return
-name|cancelled
+name|canceled
 return|;
 block|}
 annotation|@

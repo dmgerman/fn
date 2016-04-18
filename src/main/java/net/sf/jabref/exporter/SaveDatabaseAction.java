@@ -303,7 +303,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Action for the "Save" and "Save as" operations called from BasePanel. This class is also used for  * save operations when closing a database or quitting the applications.  *  * The operations run synchronously, but offload the save operation from the event thread using Spin.  * Callers can query whether the operation was cancelled, or whether it was successful.  */
+comment|/**  * Action for the "Save" and "Save as" operations called from BasePanel. This class is also used for  * save operations when closing a database or quitting the applications.  *  * The operations run synchronously, but offload the save operation from the event thread using Spin.  * Callers can query whether the operation was canceled, or whether it was successful.  */
 end_comment
 
 begin_class
@@ -331,10 +331,10 @@ specifier|private
 name|boolean
 name|success
 decl_stmt|;
-DECL|field|cancelled
+DECL|field|canceled
 specifier|private
 name|boolean
-name|cancelled
+name|canceled
 decl_stmt|;
 DECL|field|fileLockedError
 specifier|private
@@ -395,7 +395,7 @@ name|success
 operator|=
 literal|false
 expr_stmt|;
-name|cancelled
+name|canceled
 operator|=
 literal|false
 expr_stmt|;
@@ -528,7 +528,7 @@ operator|.
 name|CANCEL_OPTION
 condition|)
 block|{
-name|cancelled
+name|canceled
 operator|=
 literal|true
 expr_stmt|;
@@ -544,7 +544,7 @@ operator|.
 name|YES_OPTION
 condition|)
 block|{
-name|cancelled
+name|canceled
 operator|=
 literal|true
 expr_stmt|;
@@ -674,7 +674,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|cancelled
+name|canceled
 operator|=
 literal|true
 expr_stmt|;
@@ -764,7 +764,7 @@ operator|.
 name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
-name|cancelled
+name|canceled
 operator|=
 literal|true
 expr_stmt|;
@@ -898,7 +898,7 @@ elseif|else
 if|if
 condition|(
 operator|!
-name|cancelled
+name|canceled
 condition|)
 block|{
 if|if
@@ -950,7 +950,7 @@ parameter_list|()
 block|{
 if|if
 condition|(
-name|cancelled
+name|canceled
 operator|||
 operator|(
 name|panel
@@ -1938,8 +1938,6 @@ name|Throwable
 block|{
 name|String
 name|chosenFile
-init|=
-literal|null
 decl_stmt|;
 name|File
 name|f
@@ -1994,12 +1992,12 @@ operator|==
 literal|null
 condition|)
 block|{
-name|cancelled
+name|canceled
 operator|=
 literal|true
 expr_stmt|;
 return|return;
-comment|// cancelled
+comment|// canceled
 block|}
 name|f
 operator|=
@@ -2214,18 +2212,18 @@ block|}
 end_function
 
 begin_comment
-comment|/**      * Query whether the last operation was cancelled.      *      * @return true if the last Save/SaveAs operation was cancelled from the file dialog or from another      * query dialog, false otherwise.      */
+comment|/**      * Query whether the last operation was canceled.      *      * @return true if the last Save/SaveAs operation was canceled from the file dialog or from another      * query dialog, false otherwise.      */
 end_comment
 
 begin_function
-DECL|method|isCancelled ()
+DECL|method|isCanceled ()
 specifier|public
 name|boolean
-name|isCancelled
+name|isCanceled
 parameter_list|()
 block|{
 return|return
-name|cancelled
+name|canceled
 return|;
 block|}
 end_function

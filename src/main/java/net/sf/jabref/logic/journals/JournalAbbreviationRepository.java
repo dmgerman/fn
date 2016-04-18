@@ -524,12 +524,9 @@ name|abbreviationsToAdd
 operator|.
 name|forEach
 argument_list|(
-name|abbreviation
-lambda|->
+name|this
+operator|::
 name|addEntry
-argument_list|(
-name|abbreviation
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

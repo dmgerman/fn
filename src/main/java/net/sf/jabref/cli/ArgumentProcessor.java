@@ -3217,12 +3217,6 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|(
-name|result
-operator|==
-literal|null
-operator|)
-operator|||
 name|result
 operator|.
 name|isEmpty

@@ -37,8 +37,8 @@ argument_list|>
 block|{
 DECL|field|SPLITTER
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|SPLITTER
 init|=

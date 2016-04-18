@@ -298,10 +298,10 @@ specifier|private
 name|int
 name|unsuccessfulRenames
 decl_stmt|;
-DECL|field|cancelled
+DECL|field|canceled
 specifier|private
 name|boolean
-name|cancelled
+name|canceled
 decl_stmt|;
 DECL|field|modifiedEntriesCount
 specifier|private
@@ -386,7 +386,7 @@ name|void
 name|init
 parameter_list|()
 block|{
-name|cancelled
+name|canceled
 operator|=
 literal|false
 expr_stmt|;
@@ -431,7 +431,7 @@ operator|.
 name|INFORMATION_MESSAGE
 argument_list|)
 expr_stmt|;
-name|cancelled
+name|canceled
 operator|=
 literal|true
 expr_stmt|;
@@ -478,7 +478,7 @@ parameter_list|()
 block|{
 if|if
 condition|(
-name|cancelled
+name|canceled
 condition|)
 block|{
 return|return;
@@ -498,7 +498,7 @@ operator|.
 name|OK_OPTION
 condition|)
 block|{
-name|cancelled
+name|canceled
 operator|=
 literal|true
 expr_stmt|;
@@ -615,7 +615,7 @@ operator|.
 name|NO_OPTION
 condition|)
 block|{
-name|cancelled
+name|canceled
 operator|=
 literal|true
 expr_stmt|;
@@ -695,7 +695,7 @@ parameter_list|()
 block|{
 if|if
 condition|(
-name|cancelled
+name|canceled
 condition|)
 block|{
 name|frame

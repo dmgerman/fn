@@ -937,7 +937,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Importing cancelled"
+literal|"Importing canceled"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1018,7 +1018,7 @@ name|LOGGER
 operator|.
 name|error
 argument_list|(
-literal|"Error importing from databae"
+literal|"Error importing from database"
 argument_list|,
 name|ex
 argument_list|)

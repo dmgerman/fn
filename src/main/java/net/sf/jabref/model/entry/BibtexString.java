@@ -102,6 +102,8 @@ return|return
 name|OTHER
 return|;
 block|}
+comment|// TODO: Figure out what the next check actually does and replace it with something more sensible
+comment|// Second character is not upper case? What about non-letters?
 if|if
 condition|(
 operator|!

@@ -334,7 +334,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Vim Server Name"
+literal|"Vim server name"
 argument_list|)
 operator|+
 literal|":"

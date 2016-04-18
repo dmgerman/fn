@@ -251,7 +251,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This class handles the download of an external file. Typically called when the user clicks  * the "Download" button in a FileListEditor shown in an EntryEditor.  *<p/>  * The FileListEditor constructs the DownloadExternalFile instance, then calls the download()  * method passing a reference to itself as a callback. The download() method asks for the URL,  * then starts the download. When the download is completed, it calls the downloadCompleted()  * method on the callback FileListEditor, which then needs to take care of linking to the file.  * The local filename is passed as an argument to the downloadCompleted() method.  *<p/>  * If the download is cancelled, or failed, the user is informed. The callback is never called.  */
+comment|/**  * This class handles the download of an external file. Typically called when the user clicks  * the "Download" button in a FileListEditor shown in an EntryEditor.  *<p/>  * The FileListEditor constructs the DownloadExternalFile instance, then calls the download()  * method passing a reference to itself as a callback. The download() method asks for the URL,  * then starts the download. When the download is completed, it calls the downloadCompleted()  * method on the callback FileListEditor, which then needs to take care of linking to the file.  * The local filename is passed as an argument to the downloadCompleted() method.  *<p/>  * If the download is canceled, or failed, the user is informed. The callback is never called.  */
 end_comment
 
 begin_class
@@ -1353,7 +1353,7 @@ block|}
 block|}
 else|else
 block|{
-comment|// Cancelled. Just delete the temp file:
+comment|// Canceled. Just delete the temp file:
 if|if
 condition|(
 name|downloadFinished

@@ -635,7 +635,6 @@ name|ifPresent
 argument_list|(
 name|extension
 lambda|->
-block|{
 name|ExternalFileTypes
 operator|.
 name|getInstance
@@ -651,12 +650,8 @@ argument_list|(
 name|fileType
 lambda|->
 block|{
-if|if
-condition|(
-name|droppedFileHandler
-operator|==
-literal|null
-condition|)
+block|if (droppedFileHandler == null
+argument_list|)
 block|{
 name|droppedFileHandler
 operator|=
@@ -670,8 +665,7 @@ operator|.
 name|getCurrentBasePanel
 argument_list|()
 argument_list|)
-expr_stmt|;
-block|}
+block|;                                 }
 name|droppedFileHandler
 operator|.
 name|handleDroppedfile
@@ -685,20 +679,17 @@ operator|.
 name|getEntry
 argument_list|()
 argument_list|)
-argument_list|;
+expr_stmt|;
 block|}
+argument_list|)
 block|)
-function|;
+empty_stmt|;
+block|}
 block|}
 end_class
 
 begin_empty_stmt
 unit|)
-empty_stmt|;
-end_empty_stmt
-
-begin_empty_stmt
-unit|}             })
 empty_stmt|;
 end_empty_stmt
 

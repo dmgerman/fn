@@ -1315,7 +1315,7 @@ return|;
 block|}
 else|else
 block|{
-comment|// Cancelled:
+comment|// Canceled:
 name|frame
 operator|.
 name|output
@@ -1542,7 +1542,7 @@ return|;
 block|}
 else|else
 block|{
-comment|// Cancelled:
+comment|// Canceled:
 name|frame
 operator|.
 name|output
