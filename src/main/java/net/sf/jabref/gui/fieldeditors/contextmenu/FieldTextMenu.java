@@ -442,9 +442,9 @@ expr_stmt|;
 name|String
 name|data
 init|=
+operator|new
 name|ClipBoardManager
-operator|.
-name|CLIPBOARD
+argument_list|()
 operator|.
 name|getClipboardContents
 argument_list|()
