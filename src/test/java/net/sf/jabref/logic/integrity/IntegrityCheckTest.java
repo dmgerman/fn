@@ -1121,6 +1121,65 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+DECL|method|testBibStringChecks ()
+specifier|public
+name|void
+name|testBibStringChecks
+parameter_list|()
+block|{
+name|assertCorrect
+argument_list|(
+name|createContext
+argument_list|(
+literal|"title"
+argument_list|,
+literal|"Not a single hash mark"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertCorrect
+argument_list|(
+name|createContext
+argument_list|(
+literal|"month"
+argument_list|,
+literal|"#jan#"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertCorrect
+argument_list|(
+name|createContext
+argument_list|(
+literal|"author"
+argument_list|,
+literal|"#einstein# and #newton#"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertWrong
+argument_list|(
+name|createContext
+argument_list|(
+literal|"month"
+argument_list|,
+literal|"#jan"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertWrong
+argument_list|(
+name|createContext
+argument_list|(
+literal|"author"
+argument_list|,
+literal|"#einstein# #amp; #newton#"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|createContext (String field, String value, String type)
 specifier|private
 name|BibDatabaseContext

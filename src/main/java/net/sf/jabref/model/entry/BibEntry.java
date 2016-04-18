@@ -2343,6 +2343,22 @@ name|values
 argument_list|()
 return|;
 block|}
+DECL|method|getFieldMap ()
+specifier|public
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
+name|getFieldMap
+parameter_list|()
+block|{
+comment|// TODO Auto-generated method stub
+return|return
+name|fields
+return|;
+block|}
 block|}
 end_class
 
