@@ -736,19 +736,14 @@ argument_list|(
 name|com
 argument_list|)
 decl_stmt|;
-name|Runnable
-name|errorListener
-init|=
-operator|new
-name|Runnable
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|run
+name|JabRefExecutorService
+operator|.
+name|INSTANCE
+operator|.
+name|executeAndWait
+argument_list|(
 parameter_list|()
+lambda|->
 block|{
 try|try
 init|(
@@ -761,11 +756,6 @@ name|getErrorStream
 argument_list|()
 init|)
 block|{
-comment|//                    try {
-comment|//                    	if (out.available()<= 0)
-comment|//                    		out = p.getInputStream();
-comment|//                    } catch (Exception e) {
-comment|//                    }
 name|int
 name|c
 decl_stmt|;
@@ -869,15 +859,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-block|}
-decl_stmt|;
-name|JabRefExecutorService
-operator|.
-name|INSTANCE
-operator|.
-name|executeAndWait
-argument_list|(
-name|errorListener
 argument_list|)
 expr_stmt|;
 block|}
@@ -890,6 +871,15 @@ block|{
 name|couldNotCall
 operator|=
 literal|true
+expr_stmt|;
+name|LOGGER
+operator|.
+name|warn
+argument_list|(
+literal|"Problem pushing to Emacs."
+argument_list|,
+name|excep
+argument_list|)
 expr_stmt|;
 block|}
 block|}

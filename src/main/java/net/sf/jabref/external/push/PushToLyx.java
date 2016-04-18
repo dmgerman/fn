@@ -80,6 +80,34 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -176,6 +204,22 @@ name|AbstractPushToApplication
 implements|implements
 name|PushToApplication
 block|{
+DECL|field|LOGGER
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOGGER
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|PushToLyx
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 annotation|@
 name|Override
 DECL|method|getApplicationName ()
@@ -345,7 +389,7 @@ name|settings
 operator|.
 name|add
 argument_list|(
-name|Path
+name|path
 argument_list|)
 expr_stmt|;
 block|}
@@ -529,7 +573,7 @@ name|lyxpipe
 argument_list|)
 init|;
 name|BufferedWriter
-name|lyx_out
+name|lyxOut
 operator|=
 operator|new
 name|BufferedWriter
@@ -547,7 +591,7 @@ literal|"LYXCMD:sampleclient:citation-insert:"
 operator|+
 name|keyString
 expr_stmt|;
-name|lyx_out
+name|lyxOut
 operator|.
 name|write
 argument_list|(
@@ -556,7 +600,7 @@ operator|+
 literal|"\n"
 argument_list|)
 expr_stmt|;
-name|lyx_out
+name|lyxOut
 operator|.
 name|close
 argument_list|()
@@ -577,17 +621,21 @@ name|couldNotCall
 operator|=
 literal|true
 expr_stmt|;
+name|LOGGER
+operator|.
+name|warn
+argument_list|(
+literal|"Problem pushing to LyX/Kile."
+argument_list|,
+name|excep
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 block|)
 class|;
 end_class
 
-begin_comment
-unit|}
-comment|/*class Timeout extends javax.swing.Timer     {       public Timeout(int timeout, final Thread toStop, final String message) {         super(timeout, new ActionListener() {           public void actionPerformed(ActionEvent e) {             toStop.stop();         // !!!<- deprecated             // toStop.interrupt(); // better ?, interrupts wait and IO             //stop();             //output(message);           }         });       }     } */
-end_comment
-
-unit|}
+unit|} }
 end_unit
 

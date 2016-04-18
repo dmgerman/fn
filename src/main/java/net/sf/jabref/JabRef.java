@@ -2355,15 +2355,6 @@ name|databaseContext
 operator|.
 name|getFileDirectory
 argument_list|()
-operator|.
-name|toArray
-argument_list|(
-operator|new
-name|String
-index|[
-literal|0
-index|]
-argument_list|)
 expr_stmt|;
 name|System
 operator|.

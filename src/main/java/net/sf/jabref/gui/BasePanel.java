@@ -7504,9 +7504,6 @@ operator|new
 name|ExportToClipboardAction
 argument_list|(
 name|frame
-argument_list|,
-name|getDatabase
-argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;

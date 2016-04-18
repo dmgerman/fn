@@ -1011,6 +1011,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|class|BooleanHolder
+specifier|private
 specifier|static
 class|class
 name|BooleanHolder

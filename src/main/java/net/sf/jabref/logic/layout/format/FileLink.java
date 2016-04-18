@@ -328,8 +328,10 @@ return|return
 literal|""
 return|;
 block|}
+name|List
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|dirs
 decl_stmt|;
 comment|// We need to resolve the file directory from the database's metadata,
@@ -349,10 +351,10 @@ condition|)
 block|{
 name|dirs
 operator|=
-operator|new
-name|String
-index|[]
-block|{
+name|Arrays
+operator|.
+name|asList
+argument_list|(
 name|Globals
 operator|.
 name|prefs
@@ -367,7 +369,7 @@ name|Globals
 operator|.
 name|DIR_SUFFIX
 argument_list|)
-block|}
+argument_list|)
 expr_stmt|;
 block|}
 else|else
@@ -393,12 +395,7 @@ name|expandFilename
 argument_list|(
 name|link
 argument_list|,
-name|Arrays
-operator|.
-name|asList
-argument_list|(
 name|dirs
-argument_list|)
 argument_list|)
 decl_stmt|;
 comment|/*          * Stumbled over this while investigating          *          * https://sourceforge.net/tracker/index.php?func=detail&aid=1469903&group_id=92314&atid=600306          */

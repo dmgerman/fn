@@ -527,7 +527,7 @@ name|lang
 argument_list|(
 literal|"Search %0"
 argument_list|,
-literal|"IEEEXplorer"
+literal|"IEEEXplore"
 argument_list|)
 argument_list|)
 expr_stmt|;

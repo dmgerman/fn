@@ -3410,8 +3410,10 @@ comment|// to solve the problem of formatters not having access to any context e
 comment|// string to be formatted and possible formatter arguments.
 DECL|field|fileDirForDatabase
 specifier|public
+name|List
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|fileDirForDatabase
 decl_stmt|;
 comment|// The following field is used as a global variable during the export of a database.

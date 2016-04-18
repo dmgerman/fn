@@ -1218,15 +1218,6 @@ argument_list|()
 operator|.
 name|getFileDirectory
 argument_list|()
-operator|.
-name|toArray
-argument_list|(
-operator|new
-name|String
-index|[
-literal|0
-index|]
-argument_list|)
 expr_stmt|;
 comment|// Make sure we remember which filter was used, to set
 comment|// the default for next time:

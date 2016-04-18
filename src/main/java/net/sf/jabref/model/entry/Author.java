@@ -137,9 +137,11 @@ block|{
 comment|// Avoid arrayindexoutof.... :
 if|if
 condition|(
+operator|(
 name|name
 operator|==
 literal|null
+operator|)
 operator|||
 name|name
 operator|.
@@ -275,14 +277,18 @@ block|{
 comment|// A.A. -> A. A.
 if|if
 condition|(
+operator|(
+operator|(
 name|i
 operator|+
 literal|1
+operator|)
 operator|<
 name|name
 operator|.
 name|length
 argument_list|()
+operator|)
 operator|&&
 name|Character
 operator|.
@@ -361,9 +367,11 @@ continue|continue;
 block|}
 if|if
 condition|(
+operator|(
 name|i
 operator|+
 literal|1
+operator|)
 operator|>=
 name|name
 operator|.
@@ -466,17 +474,23 @@ argument_list|(
 name|furtherChar
 argument_list|)
 operator|||
+operator|(
 name|furtherChar
 operator|==
 literal|'-'
+operator|)
 operator|||
+operator|(
 name|furtherChar
 operator|==
 literal|'~'
+operator|)
 operator|||
+operator|(
 name|furtherChar
 operator|==
 literal|'.'
+operator|)
 condition|)
 block|{
 comment|// end of word
@@ -711,8 +725,6 @@ name|level
 init|=
 literal|0
 decl_stmt|;
-name|loop
-label|:
 while|while
 condition|(
 name|i
@@ -759,10 +771,10 @@ operator|-
 literal|1
 condition|)
 block|{
-comment|// the improper nesting
-break|break
-name|loop
-break|;
+comment|// improper nesting
+return|return
+literal|false
+return|;
 block|}
 break|break;
 default|default:

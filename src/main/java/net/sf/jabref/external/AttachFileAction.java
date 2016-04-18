@@ -252,14 +252,9 @@ argument_list|)
 operator|.
 name|ifPresent
 argument_list|(
-name|oldVal
-lambda|->
 name|model
-operator|.
+operator|::
 name|setContent
-argument_list|(
-name|oldVal
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|model
