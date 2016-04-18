@@ -75,6 +75,15 @@ name|LANG_ID
 block|,
 DECL|enumConstant|DOI
 name|DOI
+block|,
+DECL|enumConstant|EDITOR_TYPE
+name|EDITOR_TYPE
+block|,
+DECL|enumConstant|PAGINATION
+name|PAGINATION
+block|,
+DECL|enumConstant|TYPE
+name|TYPE
 block|;
 DECL|field|ALL_OPTS
 specifier|public
