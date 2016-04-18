@@ -75,13 +75,14 @@ import|;
 end_import
 
 begin_class
-DECL|class|DBImporterExporter
+DECL|class|DatabaseUtil
 specifier|public
 class|class
-name|DBImporterExporter
+name|DatabaseUtil
 block|{
 DECL|method|removeDB (DBImportExportDialog dialogo, String dbName, Connection conn, BibDatabaseContext databaseContext)
 specifier|public
+specifier|static
 name|void
 name|removeDB
 parameter_list|(
@@ -144,6 +145,36 @@ expr_stmt|;
 block|}
 else|else
 block|{
+name|removeDB
+argument_list|(
+name|dbName
+argument_list|,
+name|conn
+argument_list|,
+name|databaseContext
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+block|}
+DECL|method|removeDB (String dbName, Connection conn, BibDatabaseContext databaseContext)
+specifier|public
+specifier|static
+name|void
+name|removeDB
+parameter_list|(
+name|String
+name|dbName
+parameter_list|,
+name|Connection
+name|conn
+parameter_list|,
+name|BibDatabaseContext
+name|databaseContext
+parameter_list|)
+throws|throws
+name|SQLException
+block|{
 name|removeAGivenDB
 argument_list|(
 name|conn
@@ -159,11 +190,10 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-block|}
-block|}
 comment|/**      * Returns a Jabref Database ID from the database in case the DB is already exported. In case the bib was already      * exported before, the method returns the id, otherwise it calls the method that inserts a new row and returns the      * ID for this new database      *      * @param databaseContext the database      * @param out The output (PrintStream or Connection) object to which the DML should be written.      * @return The ID of database row of the jabref database being exported      * @throws SQLException      */
 DECL|method|getDatabaseIDByName (BibDatabaseContext databaseContext, Object out, String dbName)
-specifier|protected
+specifier|public
+specifier|static
 name|int
 name|getDatabaseIDByName
 parameter_list|(
@@ -186,27 +216,33 @@ operator|instanceof
 name|Connection
 condition|)
 block|{
-try|try
-init|(
-name|Statement
-name|response
+name|String
+name|query
 init|=
-operator|(
-name|Statement
-operator|)
-name|SQLUtil
-operator|.
-name|processQueryWithResults
-argument_list|(
-name|out
-argument_list|,
 literal|"SELECT database_id FROM jabref_database WHERE database_name='"
 operator|+
 name|dbName
 operator|+
 literal|"';"
+decl_stmt|;
+try|try
+init|(
+name|Statement
+name|statement
+init|=
+call|(
+name|Statement
+call|)
+argument_list|(
+operator|(
+name|Connection
+operator|)
+name|out
 argument_list|)
-init|;                     ResultSet rs = response.getResultSet()
+operator|.
+name|createStatement
+argument_list|()
+init|;                  ResultSet rs = statement.executeQuery(query)
 block|)
 block|{
 if|if
@@ -250,9 +286,9 @@ return|;
 block|}
 block|}
 block|}
-comment|// in case of text export there will be only 1 bib exported
 else|else
 block|{
+comment|// in case of text export there will be only 1 bib exported
 name|insertJabRefDatabase
 argument_list|(
 name|databaseContext
@@ -272,6 +308,7 @@ end_class
 begin_function
 DECL|method|removeAGivenDB (Object out, final int database_id)
 specifier|private
+specifier|static
 name|void
 name|removeAGivenDB
 parameter_list|(
@@ -314,7 +351,8 @@ end_comment
 
 begin_function
 DECL|method|removeAllRecordsForAGivenDB (Object out, final int database_id)
-specifier|protected
+specifier|public
+specifier|static
 name|void
 name|removeAllRecordsForAGivenDB
 parameter_list|(
@@ -377,6 +415,7 @@ end_comment
 begin_function
 DECL|method|insertJabRefDatabase (final BibDatabaseContext databaseContext, Object out, String dbName)
 specifier|private
+specifier|static
 name|void
 name|insertJabRefDatabase
 parameter_list|(

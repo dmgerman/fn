@@ -143,6 +143,24 @@ name|defaults
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|BibDatabaseContext (BibDatabase database)
+specifier|public
+name|BibDatabaseContext
+parameter_list|(
+name|BibDatabase
+name|database
+parameter_list|)
+block|{
+name|this
+argument_list|(
+name|database
+argument_list|,
+operator|new
+name|Defaults
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|BibDatabaseContext (BibDatabase database, Defaults defaults)
 specifier|public
 name|BibDatabaseContext

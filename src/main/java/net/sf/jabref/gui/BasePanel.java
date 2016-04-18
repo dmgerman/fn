@@ -1776,7 +1776,7 @@ name|sql
 operator|.
 name|exporter
 operator|.
-name|DBExporter
+name|DatabaseExporter
 import|;
 end_import
 
@@ -3872,9 +3872,12 @@ parameter_list|()
 block|{
 if|if
 condition|(
+operator|!
 name|connectedToDB
 condition|)
 block|{
+return|return;
+block|}
 specifier|final
 name|DBStrings
 name|dbs
@@ -3910,7 +3913,7 @@ name|DBExporterAndImporterFactory
 argument_list|()
 decl_stmt|;
 specifier|final
-name|DBExporter
+name|DatabaseExporter
 name|exporter
 init|=
 name|factory
@@ -3918,6 +3921,9 @@ operator|.
 name|getExporter
 argument_list|(
 name|dbs
+operator|.
+name|getDbPreferences
+argument_list|()
 operator|.
 name|getServerType
 argument_list|()
@@ -4026,7 +4032,6 @@ name|dbs
 argument_list|)
 expr_stmt|;
 block|}
-block|}
 comment|// run third, on EDT:
 annotation|@
 name|Override
@@ -4073,7 +4078,13 @@ literal|"%0 export successful"
 argument_list|,
 name|dbs
 operator|.
+name|getDbPreferences
+argument_list|()
+operator|.
 name|getServerType
+argument_list|()
+operator|.
+name|getFormattedName
 argument_list|()
 argument_list|)
 argument_list|)
