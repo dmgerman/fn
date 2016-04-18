@@ -62,20 +62,6 @@ end_import
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|util
-operator|.
-name|Util
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|awt
@@ -455,7 +441,7 @@ comment|//setTop();
 name|activateListeners
 argument_list|()
 expr_stmt|;
-name|Util
+name|KeyBinder
 operator|.
 name|bindCloseDialogKeyToCancelAction
 argument_list|(

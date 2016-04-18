@@ -144,20 +144,6 @@ name|ParsedFileField
 import|;
 end_import
 
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|util
-operator|.
-name|Util
-import|;
-end_import
-
 begin_class
 DECL|class|RenamePdfCleanup
 specifier|public
@@ -319,7 +305,7 @@ init|=
 operator|new
 name|StringBuilder
 argument_list|(
-name|Util
+name|FileUtil
 operator|.
 name|getLinkedFileName
 argument_list|(

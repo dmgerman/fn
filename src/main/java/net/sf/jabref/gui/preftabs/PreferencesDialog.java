@@ -222,6 +222,22 @@ name|jabref
 operator|.
 name|gui
 operator|.
+name|keyboard
+operator|.
+name|KeyBinder
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
 name|FileDialogs
 import|;
 end_import
@@ -283,20 +299,6 @@ operator|.
 name|l10n
 operator|.
 name|Localization
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|util
-operator|.
-name|Util
 import|;
 end_import
 
@@ -1106,7 +1108,7 @@ name|addGlue
 argument_list|()
 expr_stmt|;
 comment|// Key bindings:
-name|Util
+name|KeyBinder
 operator|.
 name|bindCloseDialogKeyToCancelAction
 argument_list|(

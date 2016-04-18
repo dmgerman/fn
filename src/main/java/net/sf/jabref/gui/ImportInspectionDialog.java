@@ -7184,9 +7184,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|util
+name|external
 operator|.
-name|Util
+name|AutoSetLinks
 operator|.
 name|autoSetLinks
 argument_list|(

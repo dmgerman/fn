@@ -78,11 +78,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
-operator|.
-name|preftabs
-operator|.
-name|ImportSettingsTab
+name|JabRefPreferences
 import|;
 end_import
 
@@ -1006,7 +1002,7 @@ name|prefs
 operator|.
 name|getInt
 argument_list|(
-name|ImportSettingsTab
+name|JabRefPreferences
 operator|.
 name|PREF_IMPORT_DEFAULT_PDF_IMPORT_STYLE
 argument_list|)
@@ -1097,7 +1093,7 @@ name|prefs
 operator|.
 name|putInt
 argument_list|(
-name|ImportSettingsTab
+name|JabRefPreferences
 operator|.
 name|PREF_IMPORT_DEFAULT_PDF_IMPORT_STYLE
 argument_list|,
@@ -1121,7 +1117,7 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
-name|ImportSettingsTab
+name|JabRefPreferences
 operator|.
 name|PREF_IMPORT_ALWAYSUSE
 argument_list|,

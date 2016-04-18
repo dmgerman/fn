@@ -290,20 +290,6 @@ name|BibEntry
 import|;
 end_import
 
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|util
-operator|.
-name|Util
-import|;
-end_import
-
 begin_comment
 comment|/**  * This action goes through all selected entries in the BasePanel, and attempts to autoset the  * given external file (pdf, ps, ...) based on the same algorithm used for the "Auto" button in  * EntryEditor.  */
 end_comment
@@ -692,7 +678,7 @@ comment|// Start the automatically setting process:
 name|Runnable
 name|r
 init|=
-name|Util
+name|AutoSetLinks
 operator|.
 name|autoSetLinks
 argument_list|(

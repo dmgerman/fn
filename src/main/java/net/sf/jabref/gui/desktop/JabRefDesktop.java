@@ -214,20 +214,6 @@ end_import
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|util
-operator|.
-name|Util
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|swing
@@ -385,6 +371,15 @@ name|compile
 argument_list|(
 literal|"[a-z]+://.*"
 argument_list|)
+decl_stmt|;
+DECL|field|ARXIV_LOOKUP_PREFIX
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|ARXIV_LOOKUP_PREFIX
+init|=
+literal|"http://arxiv.org/abs/"
 decl_stmt|;
 comment|/**      * Open a http/pdf/ps viewer for the given link string.      */
 DECL|method|openExternalViewer (BibDatabaseContext databaseContext, String initialLink, String initialFieldName)
@@ -682,8 +677,6 @@ condition|)
 block|{
 name|link
 operator|=
-name|Util
-operator|.
 name|ARXIV_LOOKUP_PREFIX
 operator|+
 name|link
