@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
+comment|/*  Copyright (C) 2003-2016 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
 end_comment
 
 begin_package
@@ -213,10 +213,6 @@ name|Map
 argument_list|<
 name|BibEntry
 argument_list|,
-name|java
-operator|.
-name|util
-operator|.
 name|List
 argument_list|<
 name|File
@@ -250,10 +246,6 @@ name|Map
 argument_list|<
 name|BibEntry
 argument_list|,
-name|java
-operator|.
-name|util
-operator|.
 name|List
 argument_list|<
 name|File
@@ -359,7 +351,7 @@ name|extensionRegExp
 argument_list|)
 return|;
 block|}
-comment|/**      * Searches the given directory and filename pattern for a file for the      * bibtexentry.      *      * Used to fix:      *      * http://sourceforge.net/tracker/index.php?func=detail&aid=1503410&group_id=92314&atid=600309      *      * Requirements:      *  - Be able to find the associated PDF in a set of given directories.      *  - Be able to return a relative path or absolute path.      *  - Be fast.      *  - Allow for flexible naming schemes in the PDFs.      *      * Syntax scheme for file:      *<ul>      *<li>* Any subDir</li>      *<li>** Any subDir (recursiv)</li>      *<li>[key] Key from bibtex file and database</li>      *<li>.* Anything else is taken to be a Regular expression.</li>      *</ul>      *      * @param entry      *            non-null      * @param dirs      *            A set of root directories to start the search from. Paths are      *            returned relative to these directories if relative is set to      *            true. These directories will not be expanded or anything. Use      *            the file attribute for this.      * @param file      *            non-null      *      * @param relative      *            whether to return relative file paths or absolute ones      *      * @return Will return the first file found to match the given criteria or      *         null if none was found.      */
+comment|/**      * Searches the given directory and filename pattern for a file for the      * BibTeX entry.      *      * Used to fix:      *      * http://sourceforge.net/tracker/index.php?func=detail&aid=1503410&group_id=92314&atid=600309      *      * Requirements:      *  - Be able to find the associated PDF in a set of given directories.      *  - Be able to return a relative path or absolute path.      *  - Be fast.      *  - Allow for flexible naming schemes in the PDFs.      *      * Syntax scheme for file:      *<ul>      *<li>* Any subDir</li>      *<li>** Any subDir (recursive)</li>      *<li>[key] Key from BibTeX file and database</li>      *<li>.* Anything else is taken to be a Regular expression.</li>      *</ul>      *      * @param entry      *            non-null      * @param dirs      *            A set of root directories to start the search from. Paths are      *            returned relative to these directories if relative is set to      *            true. These directories will not be expanded or anything. Use      *            the file attribute for this.      * @param file      *            non-null      *      * @param relative      *            whether to return relative file paths or absolute ones      *      * @return Will return the first file found to match the given criteria or      *         null if none was found.      */
 DECL|method|findFile (BibEntry entry, Collection<File> dirs, String file, String extensionRegExp)
 specifier|private
 specifier|static
@@ -385,7 +377,7 @@ name|String
 name|extensionRegExp
 parameter_list|)
 block|{
-name|ArrayList
+name|List
 argument_list|<
 name|File
 argument_list|>
@@ -404,12 +396,10 @@ range|:
 name|dirs
 control|)
 block|{
-name|List
-argument_list|<
-name|File
-argument_list|>
-name|tmp
-init|=
+name|res
+operator|.
+name|addAll
+argument_list|(
 name|RegExpFileSearch
 operator|.
 name|findFile
@@ -425,22 +415,8 @@ name|file
 argument_list|,
 name|extensionRegExp
 argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|tmp
-operator|!=
-literal|null
-condition|)
-block|{
-name|res
-operator|.
-name|addAll
-argument_list|(
-name|tmp
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 return|return
 name|res
@@ -509,7 +485,10 @@ argument_list|()
 condition|)
 block|{
 return|return
-literal|null
+name|Collections
+operator|.
+name|emptyList
+argument_list|()
 return|;
 block|}
 name|List
@@ -681,7 +660,7 @@ name|String
 name|extensionRegExp
 parameter_list|)
 block|{
-name|ArrayList
+name|List
 argument_list|<
 name|File
 argument_list|>
@@ -691,6 +670,9 @@ operator|new
 name|ArrayList
 argument_list|<>
 argument_list|()
+decl_stmt|;
+name|File
+name|actualDirectory
 decl_stmt|;
 if|if
 condition|(
@@ -702,7 +684,7 @@ literal|"/"
 argument_list|)
 condition|)
 block|{
-name|directory
+name|actualDirectory
 operator|=
 operator|new
 name|File
@@ -718,6 +700,13 @@ name|substring
 argument_list|(
 literal|1
 argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|actualDirectory
+operator|=
+name|directory
 expr_stmt|;
 block|}
 comment|// Escape handling...
@@ -870,7 +859,7 @@ argument_list|)
 condition|)
 block|{
 comment|// Windows Drive Letter
-name|directory
+name|actualDirectory
 operator|=
 operator|new
 name|File
@@ -905,12 +894,12 @@ name|dirToProcess
 argument_list|)
 condition|)
 block|{
-name|directory
+name|actualDirectory
 operator|=
 operator|new
 name|File
 argument_list|(
-name|directory
+name|actualDirectory
 operator|.
 name|getParent
 argument_list|()
@@ -933,7 +922,7 @@ name|File
 index|[]
 name|subDirs
 init|=
-name|directory
+name|actualDirectory
 operator|.
 name|listFiles
 argument_list|()
@@ -1029,7 +1018,7 @@ name|toDo
 operator|.
 name|add
 argument_list|(
-name|directory
+name|actualDirectory
 argument_list|)
 expr_stmt|;
 name|String
@@ -1153,9 +1142,9 @@ operator|-
 literal|1
 index|]
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
-literal|"\\[extension\\]"
+literal|"[extension]"
 argument_list|,
 name|RegExpFileSearch
 operator|.
@@ -1215,7 +1204,7 @@ name|File
 index|[]
 name|matches
 init|=
-name|directory
+name|actualDirectory
 operator|.
 name|listFiles
 argument_list|(

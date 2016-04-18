@@ -38,12 +38,26 @@ name|*
 import|;
 end_import
 
+begin_comment
+comment|/**  * Tests in addition to the general tests from {@link net.sf.jabref.logic.formatter.FormatterTest}  */
+end_comment
+
 begin_class
 DECL|class|RemoveBracesFormatterTest
 specifier|public
 class|class
 name|RemoveBracesFormatterTest
 block|{
+DECL|field|formatter
+specifier|private
+specifier|final
+name|RemoveBracesFormatter
+name|formatter
+init|=
+operator|new
+name|RemoveBracesFormatter
+argument_list|()
+decl_stmt|;
 annotation|@
 name|Test
 DECL|method|formatRemovesSingleEnclosingBraces ()
@@ -52,13 +66,6 @@ name|void
 name|formatRemovesSingleEnclosingBraces
 parameter_list|()
 block|{
-name|RemoveBracesFormatter
-name|formatter
-init|=
-operator|new
-name|RemoveBracesFormatter
-argument_list|()
-decl_stmt|;
 name|assertEquals
 argument_list|(
 literal|"test"
@@ -80,13 +87,6 @@ name|void
 name|formatKeepsUnmatchedBracesAtBeginning
 parameter_list|()
 block|{
-name|RemoveBracesFormatter
-name|formatter
-init|=
-operator|new
-name|RemoveBracesFormatter
-argument_list|()
-decl_stmt|;
 name|assertEquals
 argument_list|(
 literal|"{test"
@@ -108,13 +108,6 @@ name|void
 name|formatKeepsUnmatchedBracesAtEnd
 parameter_list|()
 block|{
-name|RemoveBracesFormatter
-name|formatter
-init|=
-operator|new
-name|RemoveBracesFormatter
-argument_list|()
-decl_stmt|;
 name|assertEquals
 argument_list|(
 literal|"test}"
@@ -136,13 +129,6 @@ name|void
 name|formatKeepsShortString
 parameter_list|()
 block|{
-name|RemoveBracesFormatter
-name|formatter
-init|=
-operator|new
-name|RemoveBracesFormatter
-argument_list|()
-decl_stmt|;
 name|assertEquals
 argument_list|(
 literal|"t"
@@ -164,13 +150,6 @@ name|void
 name|formatKeepsEmptyString
 parameter_list|()
 block|{
-name|RemoveBracesFormatter
-name|formatter
-init|=
-operator|new
-name|RemoveBracesFormatter
-argument_list|()
-decl_stmt|;
 name|assertEquals
 argument_list|(
 literal|""
@@ -192,13 +171,6 @@ name|void
 name|formatRemovesDoubleEnclosingBraces
 parameter_list|()
 block|{
-name|RemoveBracesFormatter
-name|formatter
-init|=
-operator|new
-name|RemoveBracesFormatter
-argument_list|()
-decl_stmt|;
 name|assertEquals
 argument_list|(
 literal|"test"
@@ -220,13 +192,6 @@ name|void
 name|formatRemovesTripleEnclosingBraces
 parameter_list|()
 block|{
-name|RemoveBracesFormatter
-name|formatter
-init|=
-operator|new
-name|RemoveBracesFormatter
-argument_list|()
-decl_stmt|;
 name|assertEquals
 argument_list|(
 literal|"test"
@@ -248,13 +213,6 @@ name|void
 name|formatKeepsNonMatchingBraces
 parameter_list|()
 block|{
-name|RemoveBracesFormatter
-name|formatter
-init|=
-operator|new
-name|RemoveBracesFormatter
-argument_list|()
-decl_stmt|;
 name|assertEquals
 argument_list|(
 literal|"{A} and {B}"
@@ -276,13 +234,6 @@ name|void
 name|formatRemovesOnlyMatchingBraces
 parameter_list|()
 block|{
-name|RemoveBracesFormatter
-name|formatter
-init|=
-operator|new
-name|RemoveBracesFormatter
-argument_list|()
-decl_stmt|;
 name|assertEquals
 argument_list|(
 literal|"{A} and {B}"
@@ -304,13 +255,6 @@ name|void
 name|formatDoesNotRemoveBracesInBrokenString
 parameter_list|()
 block|{
-name|RemoveBracesFormatter
-name|formatter
-init|=
-operator|new
-name|RemoveBracesFormatter
-argument_list|()
-decl_stmt|;
 comment|// We opt here for a conservative approach although one could argue that "A} and {B}" is also a valid return
 name|assertEquals
 argument_list|(
@@ -321,6 +265,30 @@ operator|.
 name|format
 argument_list|(
 literal|"{A} and {B}}"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|formatExample ()
+specifier|public
+name|void
+name|formatExample
+parameter_list|()
+block|{
+name|assertEquals
+argument_list|(
+literal|"In CDMA"
+argument_list|,
+name|formatter
+operator|.
+name|format
+argument_list|(
+name|formatter
+operator|.
+name|getExampleInput
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;

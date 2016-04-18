@@ -28,6 +28,18 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|BibDatabaseContext
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|Globals
 import|;
 end_import
@@ -41,18 +53,6 @@ operator|.
 name|jabref
 operator|.
 name|JabRefPreferences
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|MetaData
 import|;
 end_import
 
@@ -106,29 +106,17 @@ end_import
 
 begin_import
 import|import
-name|org
+name|net
 operator|.
-name|apache
+name|sf
 operator|.
-name|commons
+name|jabref
 operator|.
-name|logging
+name|model
 operator|.
-name|Log
-import|;
-end_import
-
-begin_import
-import|import
-name|org
+name|entry
 operator|.
-name|apache
-operator|.
-name|commons
-operator|.
-name|logging
-operator|.
-name|LogFactory
+name|ParsedFileField
 import|;
 end_import
 
@@ -220,22 +208,6 @@ specifier|public
 class|class
 name|FileUtil
 block|{
-DECL|field|LOGGER
-specifier|private
-specifier|static
-specifier|final
-name|Log
-name|LOGGER
-init|=
-name|LogFactory
-operator|.
-name|getLog
-argument_list|(
-name|FileUtil
-operator|.
-name|class
-argument_list|)
-decl_stmt|;
 DECL|field|FILE_SEPARATOR
 specifier|private
 specifier|static
@@ -476,39 +448,27 @@ name|stack
 argument_list|)
 expr_stmt|;
 block|}
-name|String
-index|[]
-name|arr
-init|=
-operator|new
-name|String
-index|[
-name|paths
-operator|.
-name|size
-argument_list|()
-index|]
-decl_stmt|;
-name|Arrays
-operator|.
-name|fill
-argument_list|(
-name|arr
-argument_list|,
-literal|""
-argument_list|)
-expr_stmt|;
 name|List
 argument_list|<
 name|String
 argument_list|>
 name|pathSubstrings
 init|=
-name|Arrays
-operator|.
-name|asList
+operator|new
+name|ArrayList
+argument_list|<>
 argument_list|(
-name|arr
+name|Collections
+operator|.
+name|nCopies
+argument_list|(
+name|paths
+operator|.
+name|size
+argument_list|()
+argument_list|,
+literal|""
+argument_list|)
 argument_list|)
 decl_stmt|;
 comment|// compute shortest folder substrings
@@ -593,8 +553,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-else|else
-block|{
+elseif|else
 if|if
 condition|(
 operator|!
@@ -632,7 +591,6 @@ operator|+
 name|tempString
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 for|for
@@ -837,8 +795,8 @@ name|toFile
 argument_list|)
 return|;
 block|}
-comment|/**      * Converts a relative filename to an absolute one, if necessary. Returns      * null if the file does not exist.<br/>      *<p>      * Uses<ul>      *<li>the default directory associated with the extension of the file</li>      *<li>the standard file directory</li>      *<li>the directory of the bib file</li>      *</ul>      *      * @param metaData The MetaData for the database this file belongs to.      * @param name     The filename, may also be a relative path to the file      */
-DECL|method|expandFilename (final MetaData metaData, String name)
+comment|/**      * Converts a relative filename to an absolute one, if necessary. Returns      * null if the file does not exist.<br/>      *<p>      * Uses<ul>      *<li>the default directory associated with the extension of the file</li>      *<li>the standard file directory</li>      *<li>the directory of the bib file</li>      *</ul>      *      * @param databaseContext The database this file belongs to.      * @param name     The filename, may also be a relative path to the file      */
+DECL|method|expandFilename (final BibDatabaseContext databaseContext, String name)
 specifier|public
 specifier|static
 name|Optional
@@ -848,8 +806,8 @@ argument_list|>
 name|expandFilename
 parameter_list|(
 specifier|final
-name|MetaData
-name|metaData
+name|BibDatabaseContext
+name|databaseContext
 parameter_list|,
 name|String
 name|name
@@ -873,7 +831,7 @@ name|String
 argument_list|>
 name|directories
 init|=
-name|metaData
+name|databaseContext
 operator|.
 name|getFileDirectory
 argument_list|(
@@ -892,17 +850,13 @@ name|String
 argument_list|>
 name|fileDir
 init|=
-name|metaData
+name|databaseContext
 operator|.
 name|getFileDirectory
-argument_list|(
-name|Globals
-operator|.
-name|FILE_FIELD
-argument_list|)
+argument_list|()
 decl_stmt|;
 comment|// Include the directory of the bib file:
-name|ArrayList
+name|List
 argument_list|<
 name|String
 argument_list|>
@@ -1048,8 +1002,8 @@ argument_list|()
 return|;
 block|}
 comment|/**      * Converts a relative filename to an absolute one, if necessary. Returns      * null if the file does not exist.      */
-DECL|method|expandFilename (String name, String dir)
-specifier|public
+DECL|method|expandFilename (String filename, String dir)
+specifier|private
 specifier|static
 name|Optional
 argument_list|<
@@ -1058,7 +1012,7 @@ argument_list|>
 name|expandFilename
 parameter_list|(
 name|String
-name|name
+name|filename
 parameter_list|,
 name|String
 name|dir
@@ -1067,12 +1021,12 @@ block|{
 if|if
 condition|(
 operator|(
-name|name
+name|filename
 operator|==
 literal|null
 operator|)
 operator|||
-name|name
+name|filename
 operator|.
 name|isEmpty
 argument_list|()
@@ -1085,6 +1039,11 @@ name|empty
 argument_list|()
 return|;
 block|}
+name|String
+name|name
+init|=
+name|filename
+decl_stmt|;
 name|File
 name|file
 init|=
@@ -1315,7 +1274,7 @@ return|return
 name|fileName
 return|;
 block|}
-DECL|method|shortenFileName (File fileName, String dir)
+DECL|method|shortenFileName (File fileName, String directory)
 specifier|private
 specifier|static
 name|File
@@ -1325,7 +1284,7 @@ name|File
 name|fileName
 parameter_list|,
 name|String
-name|dir
+name|directory
 parameter_list|)
 block|{
 if|if
@@ -1343,7 +1302,7 @@ name|isAbsolute
 argument_list|()
 operator|||
 operator|(
-name|dir
+name|directory
 operator|==
 literal|null
 operator|)
@@ -1353,6 +1312,11 @@ return|return
 name|fileName
 return|;
 block|}
+name|String
+name|dir
+init|=
+name|directory
+decl_stmt|;
 name|String
 name|longName
 decl_stmt|;
@@ -1488,7 +1452,7 @@ argument_list|>
 name|directories
 parameter_list|)
 block|{
-name|HashMap
+name|Map
 argument_list|<
 name|BibEntry
 argument_list|,
@@ -1615,17 +1579,13 @@ name|citeKey
 operator|.
 name|isEmpty
 argument_list|()
-condition|)
-block|{
-if|if
-condition|(
+operator|&&
+operator|(
 name|dot
 operator|>
 literal|0
-condition|)
-block|{
-if|if
-condition|(
+operator|)
+operator|&&
 name|name
 operator|.
 name|substring
@@ -1656,8 +1616,6 @@ expr_stmt|;
 continue|continue
 name|nextFile
 continue|;
-block|}
-block|}
 block|}
 block|}
 comment|// If we get here, we didn't find any exact matches. If non-exact
@@ -1697,10 +1655,7 @@ name|citeKey
 operator|.
 name|isEmpty
 argument_list|()
-condition|)
-block|{
-if|if
-condition|(
+operator|&&
 name|name
 operator|.
 name|startsWith
@@ -1724,7 +1679,6 @@ expr_stmt|;
 continue|continue
 name|nextFile
 continue|;
-block|}
 block|}
 block|}
 block|}
@@ -1791,8 +1745,6 @@ control|)
 block|{
 name|List
 argument_list|<
-name|FileField
-operator|.
 name|ParsedFileField
 argument_list|>
 name|fileList
@@ -1813,8 +1765,6 @@ argument_list|)
 decl_stmt|;
 for|for
 control|(
-name|FileField
-operator|.
 name|ParsedFileField
 name|file
 range|:
@@ -1825,21 +1775,17 @@ name|expandFilename
 argument_list|(
 name|file
 operator|.
-name|link
+name|getLink
+argument_list|()
 argument_list|,
 name|fileDirs
 argument_list|)
 operator|.
 name|ifPresent
 argument_list|(
-name|f
-lambda|->
 name|result
-operator|.
+operator|::
 name|add
-argument_list|(
-name|f
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

@@ -699,7 +699,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Offer copy/move/linking options for a dragged external file. Perform the      * chosen operation, if any.      *      * @param fileName  The name of the dragged file.      * @param fileType  The FileType associated with the file.      * @param localFile Indicate whether this is a local file, or a remote file copied      *                  to a local temporary file.      * @param mainTable The MainTable the file was dragged to.      * @param dropRow   The row where the file was dropped.      */
+comment|/**      * Offer copy/move/linking options for a dragged external file. Perform the      * chosen operation, if any.      *      * @param fileName  The name of the dragged file.      * @param fileType  The FileType associated with the file.      * @param mainTable The MainTable the file was dragged to.      * @param dropRow   The row where the file was dropped.      */
 DECL|method|handleDroppedfile (String fileName, ExternalFileType fileType, MainTable mainTable, int dropRow)
 specifier|public
 name|void
@@ -738,7 +738,7 @@ name|entry
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * @param fileName  The name of the dragged file.      * @param fileType  The FileType associated with the file.      * @param localFile Indicate whether this is a local file, or a remote file copied      *                  to a local temporary file.      * @param entry     The target entry for the drop.      */
+comment|/**      * @param fileName  The name of the dragged file.      * @param fileType  The FileType associated with the file.      * @param entry     The target entry for the drop.      */
 DECL|method|handleDroppedfile (String fileName, ExternalFileType fileType, BibEntry entry)
 specifier|public
 name|void
@@ -802,11 +802,6 @@ expr_stmt|;
 return|return;
 block|}
 comment|// Show dialog
-name|boolean
-name|newEntry
-init|=
-literal|false
-decl_stmt|;
 if|if
 condition|(
 operator|!
@@ -818,13 +813,9 @@ name|fileType
 argument_list|,
 name|entry
 argument_list|,
-name|newEntry
-argument_list|,
-literal|false
-argument_list|,
 name|panel
 operator|.
-name|database
+name|getDatabase
 argument_list|()
 argument_list|)
 condition|)
@@ -865,15 +856,8 @@ operator|.
 name|getBibDatabaseContext
 argument_list|()
 operator|.
-name|getMetaData
-argument_list|()
-operator|.
 name|getFileDirectory
-argument_list|(
-name|Globals
-operator|.
-name|FILE_FIELD
-argument_list|)
+argument_list|()
 argument_list|)
 operator|.
 name|toString
@@ -1035,8 +1019,11 @@ name|BibEntry
 name|entry
 parameter_list|)
 block|{
+name|Optional
+argument_list|<
 name|ExternalFileType
-name|fileType
+argument_list|>
+name|optFileType
 init|=
 name|ExternalFileTypes
 operator|.
@@ -1048,12 +1035,33 @@ argument_list|(
 literal|"pdf"
 argument_list|)
 decl_stmt|;
-comment|// Show dialog
-name|boolean
-name|newEntry
+if|if
+condition|(
+operator|!
+name|optFileType
+operator|.
+name|isPresent
+argument_list|()
+condition|)
+block|{
+name|LOGGER
+operator|.
+name|warn
+argument_list|(
+literal|"No file type with extension 'pdf' registered."
+argument_list|)
+expr_stmt|;
+return|return;
+block|}
+name|ExternalFileType
+name|fileType
 init|=
-literal|false
+name|optFileType
+operator|.
+name|get
+argument_list|()
 decl_stmt|;
+comment|// Show dialog
 if|if
 condition|(
 operator|!
@@ -1065,13 +1073,9 @@ name|fileType
 argument_list|,
 name|entry
 argument_list|,
-name|newEntry
-argument_list|,
-literal|false
-argument_list|,
 name|panel
 operator|.
-name|database
+name|getDatabase
 argument_list|()
 argument_list|)
 condition|)
@@ -1131,15 +1135,8 @@ operator|.
 name|getBibDatabaseContext
 argument_list|()
 operator|.
-name|getMetaData
-argument_list|()
-operator|.
 name|getFileDirectory
-argument_list|(
-name|Globals
-operator|.
-name|FILE_FIELD
-argument_list|)
+argument_list|()
 argument_list|)
 operator|.
 name|toString
@@ -1349,7 +1346,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"The PDF contains one or several bibtex-records."
+literal|"The PDF contains one or several BibTeX-records."
 argument_list|)
 operator|+
 literal|"\n"
@@ -1477,15 +1474,8 @@ operator|.
 name|getBibDatabaseContext
 argument_list|()
 operator|.
-name|getMetaData
-argument_list|()
-operator|.
 name|getFileDirectory
-argument_list|(
-name|Globals
-operator|.
-name|FILE_FIELD
-argument_list|)
+argument_list|()
 argument_list|)
 operator|.
 name|toString
@@ -1649,7 +1639,7 @@ block|}
 comment|//
 comment|// @return true if user pushed "OK", false otherwise
 comment|//
-DECL|method|showLinkMoveCopyRenameDialog (String linkFileName, ExternalFileType fileType, BibEntry entry, boolean newEntry, final boolean multipleEntries, BibDatabase database)
+DECL|method|showLinkMoveCopyRenameDialog (String linkFileName, ExternalFileType fileType, BibEntry entry, BibDatabase database)
 specifier|private
 name|boolean
 name|showLinkMoveCopyRenameDialog
@@ -1662,13 +1652,6 @@ name|fileType
 parameter_list|,
 name|BibEntry
 name|entry
-parameter_list|,
-name|boolean
-name|newEntry
-parameter_list|,
-specifier|final
-name|boolean
-name|multipleEntries
 parameter_list|,
 name|BibDatabase
 name|database
@@ -1697,15 +1680,8 @@ operator|.
 name|getBibDatabaseContext
 argument_list|()
 operator|.
-name|getMetaData
-argument_list|()
-operator|.
 name|getFileDirectory
-argument_list|(
-name|Globals
-operator|.
-name|FILE_FIELD
-argument_list|)
+argument_list|()
 decl_stmt|;
 name|int
 name|found
@@ -1886,9 +1862,6 @@ name|linkInPlace
 operator|.
 name|isSelected
 argument_list|()
-operator|&&
-operator|!
-name|multipleEntries
 argument_list|)
 expr_stmt|;
 name|renameToTextBox
@@ -1900,32 +1873,11 @@ name|linkInPlace
 operator|.
 name|isSelected
 argument_list|()
-operator|&&
-operator|!
-name|multipleEntries
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|multipleEntries
-condition|)
-block|{
-name|renameToTextBox
-operator|.
-name|setText
-argument_list|(
-literal|"Multiple entries"
-argument_list|)
-expr_stmt|;
-block|}
 block|}
 block|}
 decl_stmt|;
-if|if
-condition|(
-name|multipleEntries
-condition|)
-block|{
 name|linkInPlace
 operator|.
 name|setText
@@ -1934,7 +1886,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Leave files in their current directory."
+literal|"Leave file in its current directory"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1946,7 +1898,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Copy files to file directory."
+literal|"Copy file to file directory"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1958,50 +1910,10 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Move files to file directory."
+literal|"Move file to file directory"
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
-else|else
-block|{
-name|linkInPlace
-operator|.
-name|setText
-argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Leave file in its current directory."
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|copyRadioButton
-operator|.
-name|setText
-argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Copy file to file directory."
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|moveRadioButton
-operator|.
-name|setText
-argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Move file to file directory."
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
 name|renameCheckBox
 operator|.
 name|setText
@@ -2030,6 +1942,13 @@ argument_list|(
 name|database
 argument_list|,
 name|entry
+argument_list|,
+name|Globals
+operator|.
+name|journalAbbreviationLoader
+operator|.
+name|getRepository
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|renameToTextBox
@@ -2350,15 +2269,8 @@ operator|.
 name|getBibDatabaseContext
 argument_list|()
 operator|.
-name|getMetaData
-argument_list|()
-operator|.
 name|getFileDirectory
-argument_list|(
-name|Globals
-operator|.
-name|FILE_FIELD
-argument_list|)
+argument_list|()
 decl_stmt|;
 name|String
 name|absFilename
@@ -2683,15 +2595,8 @@ operator|.
 name|getBibDatabaseContext
 argument_list|()
 operator|.
-name|getMetaData
-argument_list|()
-operator|.
 name|getFileDirectory
-argument_list|(
-name|Globals
-operator|.
-name|FILE_FIELD
-argument_list|)
+argument_list|()
 decl_stmt|;
 name|int
 name|found
@@ -2907,7 +2812,7 @@ literal|false
 return|;
 block|}
 block|}
-comment|/**      * Copy the given file to the base directory for its file type, and give it      * the given name.      *      * @param fileName The name of the source file.      * @param fileType The FileType associated with the file.      * @param toFile   The destination filename. An existing path-component will be removed.      * @param edits    TODO we should be able to undo this!      * @return      */
+comment|/**      * Copy the given file to the base directory for its file type, and give it      * the given name.      *      * @param fileName The name of the source file.      * @param toFile   The destination filename. An existing path-component will be removed.      * @param edits    TODO we should be able to undo this!      * @return      */
 DECL|method|doCopy (String fileName, String toFile, NamedCompound edits)
 specifier|private
 name|boolean
@@ -2934,15 +2839,8 @@ operator|.
 name|getBibDatabaseContext
 argument_list|()
 operator|.
-name|getMetaData
-argument_list|()
-operator|.
 name|getFileDirectory
-argument_list|(
-name|Globals
-operator|.
-name|FILE_FIELD
-argument_list|)
+argument_list|()
 decl_stmt|;
 name|int
 name|found
@@ -3013,8 +2911,9 @@ return|return
 literal|false
 return|;
 block|}
-name|toFile
-operator|=
+name|String
+name|destinationFileName
+init|=
 operator|new
 name|File
 argument_list|(
@@ -3023,7 +2922,7 @@ argument_list|)
 operator|.
 name|getName
 argument_list|()
-expr_stmt|;
+decl_stmt|;
 name|File
 name|destFile
 init|=
@@ -3044,7 +2943,7 @@ argument_list|(
 literal|"file.separator"
 argument_list|)
 operator|+
-name|toFile
+name|destinationFileName
 argument_list|)
 decl_stmt|;
 if|if

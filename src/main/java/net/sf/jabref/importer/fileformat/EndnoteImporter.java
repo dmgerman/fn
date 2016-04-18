@@ -84,6 +84,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|regex
 operator|.
 name|Pattern
@@ -126,6 +136,22 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
+name|labelpattern
+operator|.
+name|LabelPatternUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|model
 operator|.
 name|entry
@@ -147,20 +173,6 @@ operator|.
 name|entry
 operator|.
 name|BibEntry
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|util
-operator|.
-name|Util
 import|;
 end_import
 
@@ -254,6 +266,8 @@ throws|throws
 name|IOException
 block|{
 comment|// Our strategy is to look for the "%A *" line.
+try|try
+init|(
 name|BufferedReader
 name|in
 init|=
@@ -267,7 +281,8 @@ argument_list|(
 name|stream
 argument_list|)
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|String
 name|str
 decl_stmt|;
@@ -313,6 +328,7 @@ literal|true
 return|;
 block|}
 block|}
+block|}
 return|return
 literal|false
 return|;
@@ -337,7 +353,7 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|ArrayList
+name|List
 argument_list|<
 name|BibEntry
 argument_list|>
@@ -355,6 +371,8 @@ operator|new
 name|StringBuilder
 argument_list|()
 decl_stmt|;
+try|try
+init|(
 name|BufferedReader
 name|in
 init|=
@@ -368,7 +386,8 @@ argument_list|(
 name|stream
 argument_list|)
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|String
 name|str
 decl_stmt|;
@@ -398,7 +417,6 @@ operator|.
 name|trim
 argument_list|()
 expr_stmt|;
-comment|// if(str.equals("")) continue;
 if|if
 condition|(
 name|str
@@ -457,6 +475,7 @@ literal|'\n'
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 name|String
 index|[]
 name|entries
@@ -471,7 +490,7 @@ argument_list|(
 name|ENDOFRECORD
 argument_list|)
 decl_stmt|;
-name|HashMap
+name|Map
 argument_list|<
 name|String
 argument_list|,
@@ -549,7 +568,6 @@ argument_list|(
 literal|"\n%"
 argument_list|)
 decl_stmt|;
-comment|//String lastPrefix = "";
 for|for
 control|(
 name|String
@@ -1035,7 +1053,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-comment|/* if (Type.equals("inproceedings")) */
+comment|/* type = inproceedings */
 name|hm
 operator|.
 name|put
@@ -1336,7 +1354,6 @@ name|prefix
 argument_list|)
 condition|)
 block|{
-comment|//Util.pr(val);
 if|if
 condition|(
 name|val
@@ -1391,7 +1408,7 @@ name|BibEntry
 operator|.
 name|KEY_FIELD
 argument_list|,
-name|Util
+name|LabelPatternUtil
 operator|.
 name|checkLegalKey
 argument_list|(
@@ -1540,7 +1557,6 @@ argument_list|(
 name|hm
 argument_list|)
 expr_stmt|;
-comment|//if (hm.isEmpty())
 if|if
 condition|(
 operator|!
@@ -1597,7 +1613,7 @@ block|{
 return|return
 name|AuthorList
 operator|.
-name|fixAuthor_lastNameFirst
+name|fixAuthorLastNameFirst
 argument_list|(
 name|s
 argument_list|)
@@ -1654,7 +1670,7 @@ decl_stmt|;
 return|return
 name|AuthorList
 operator|.
-name|fixAuthor_lastNameFirst
+name|fixAuthorLastNameFirst
 argument_list|(
 name|mod
 argument_list|)
@@ -1665,7 +1681,7 @@ block|{
 return|return
 name|AuthorList
 operator|.
-name|fixAuthor_lastNameFirst
+name|fixAuthorLastNameFirst
 argument_list|(
 name|s
 argument_list|)

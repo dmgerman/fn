@@ -277,15 +277,6 @@ operator|new
 name|JSONEntryParser
 argument_list|()
 decl_stmt|;
-DECL|method|DOAJFetcher ()
-specifier|public
-name|DOAJFetcher
-parameter_list|()
-block|{
-name|super
-argument_list|()
-expr_stmt|;
-block|}
 annotation|@
 name|Override
 DECL|method|stopFetching ()
@@ -458,7 +449,9 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Search canceled"
+literal|"%0 import canceled"
+argument_list|,
+literal|"DOAJ"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -666,7 +659,7 @@ name|entry
 init|=
 name|jsonConverter
 operator|.
-name|BibJSONtoBibtex
+name|parseBibJSONtoBibtex
 argument_list|(
 name|bibJsonEntry
 argument_list|)
@@ -754,7 +747,9 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Search canceled"
+literal|"%0 import canceled"
+argument_list|,
+literal|"DOAJ"
 argument_list|)
 argument_list|)
 expr_stmt|;

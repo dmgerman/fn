@@ -32,16 +32,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
-begin_import
-import|import
 name|net
 operator|.
 name|sf
@@ -118,6 +108,16 @@ name|BibEntry
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
 begin_comment
 comment|/**  * Converts journal abbreviations back to full name for all selected entries.  */
 end_comment
@@ -170,7 +170,12 @@ name|panel
 operator|.
 name|output
 argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Unabbreviating..."
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -222,7 +227,12 @@ init|=
 operator|new
 name|NamedCompound
 argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Unabbreviate journal names"
+argument_list|)
 argument_list|)
 decl_stmt|;
 name|int
@@ -246,7 +256,7 @@ name|unabbreviate
 argument_list|(
 name|panel
 operator|.
-name|database
+name|getDatabase
 argument_list|()
 argument_list|,
 name|entry
@@ -269,7 +279,7 @@ name|unabbreviate
 argument_list|(
 name|panel
 operator|.
-name|database
+name|getDatabase
 argument_list|()
 argument_list|,
 name|entry

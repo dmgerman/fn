@@ -24,7 +24,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|MetaData
+name|BibDatabaseContext
 import|;
 end_import
 
@@ -38,9 +38,9 @@ name|jabref
 operator|.
 name|model
 operator|.
-name|database
+name|entry
 operator|.
-name|BibDatabase
+name|BibEntry
 import|;
 end_import
 
@@ -74,7 +74,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Set
+name|List
 import|;
 end_import
 
@@ -102,16 +102,13 @@ name|FileFilter
 name|getFileFilter
 parameter_list|()
 function_decl|;
-comment|/**      * Perform the export.      *      * @param database      *            The database to export from.      * @param metaData      *            The database's metadata.      * @param file      *            The filename to write to.      * @param encoding      *            The encoding to use.      * @param entryIds      *            (may be null) A Set containing the IDs of all entries that      *            should be exported. If null, all entries will be exported.      * @throws Exception      */
-DECL|method|performExport (BibDatabase database, MetaData metaData, String file, Charset encoding, Set<String> entryIds)
+comment|/**      * Perform the export.      *      * @param databaseContext the database to export from.      * @param file      *            The filename to write to.      * @param encoding      *            The encoding to use.      * @param entries      *            (may be null) A list containing all entries that      *            should be exported. If null, all entries will be exported.      * @throws Exception      */
+DECL|method|performExport (BibDatabaseContext databaseContext, String file, Charset encoding, List<BibEntry> entries)
 name|void
 name|performExport
 parameter_list|(
-name|BibDatabase
-name|database
-parameter_list|,
-name|MetaData
-name|metaData
+name|BibDatabaseContext
+name|databaseContext
 parameter_list|,
 name|String
 name|file
@@ -119,11 +116,11 @@ parameter_list|,
 name|Charset
 name|encoding
 parameter_list|,
-name|Set
+name|List
 argument_list|<
-name|String
+name|BibEntry
 argument_list|>
-name|entryIds
+name|entries
 parameter_list|)
 throws|throws
 name|Exception

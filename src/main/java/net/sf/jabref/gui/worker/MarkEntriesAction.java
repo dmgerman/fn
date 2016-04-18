@@ -132,6 +132,34 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|awt
@@ -201,6 +229,22 @@ specifier|private
 name|int
 name|besLength
 decl_stmt|;
+DECL|field|LOGGER
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOGGER
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|MarkEntriesAction
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 DECL|method|MarkEntriesAction (JabRefFrame frame, int level)
 specifier|public
 name|MarkEntriesAction
@@ -224,7 +268,7 @@ name|level
 operator|=
 name|level
 expr_stmt|;
-comment|//menuItem = new JMenuItem(Globals.menuTitle("Mark entries").replaceAll("&",""));
+comment|//menuItem = new JMenuItem(Globals.menuTitle("Mark entries").replace("&",""));
 name|menuItem
 operator|=
 operator|new
@@ -334,10 +378,14 @@ name|Throwable
 name|t
 parameter_list|)
 block|{
-name|t
+name|LOGGER
 operator|.
-name|printStackTrace
-argument_list|()
+name|warn
+argument_list|(
+literal|"Problem marking entries"
+argument_list|,
+name|t
+argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -464,7 +512,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"No entries selected."
+literal|"This operation requires one or more entries to be selected."
 argument_list|)
 expr_stmt|;
 break|break;

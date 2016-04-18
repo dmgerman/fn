@@ -74,20 +74,6 @@ end_import
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|IconTheme
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -111,52 +97,6 @@ operator|.
 name|pdmodel
 operator|.
 name|PDDocumentInformation
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|entry
-operator|.
-name|BibEntry
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|pdfimport
-operator|.
-name|PdfImporter
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|pdfimport
-operator|.
-name|PdfImporter
-operator|.
-name|ImportPdfFilesResult
 import|;
 end_import
 
@@ -208,11 +148,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|gui
 operator|.
-name|xmp
-operator|.
-name|EncryptionNotSupportedException
+name|IconTheme
 import|;
 end_import
 
@@ -229,6 +167,52 @@ operator|.
 name|xmp
 operator|.
 name|XMPUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|BibEntry
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|pdfimport
+operator|.
+name|PdfImporter
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|pdfimport
+operator|.
+name|PdfImporter
+operator|.
+name|ImportPdfFilesResult
 import|;
 end_import
 
@@ -265,7 +249,10 @@ name|ExternalFileType
 name|getPDFExternalFileType
 parameter_list|()
 block|{
+name|Optional
+argument_list|<
 name|ExternalFileType
+argument_list|>
 name|pdfFileType
 init|=
 name|ExternalFileTypes
@@ -280,9 +267,11 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|!
 name|pdfFileType
-operator|==
-literal|null
+operator|.
+name|isPresent
+argument_list|()
 condition|)
 block|{
 return|return
@@ -312,9 +301,12 @@ return|;
 block|}
 return|return
 name|pdfFileType
+operator|.
+name|get
+argument_list|()
 return|;
 block|}
-comment|/*      * (non-Javadoc)      *      * @see net.sf.jabref.imports.EntryFromFileCreator#accept(java.io.File)      *      * Accepts all Files having as suffix ".PDF" (in ignore case mode).      */
+comment|/**      * Accepts all Files having as suffix ".PDF" (in ignore case mode).      */
 annotation|@
 name|Override
 DECL|method|accept (File f)
@@ -385,18 +377,18 @@ name|PdfImporter
 argument_list|(
 name|JabRef
 operator|.
-name|jrf
+name|mainFrame
 argument_list|,
 name|JabRef
 operator|.
-name|jrf
+name|mainFrame
 operator|.
 name|getCurrentBasePanel
 argument_list|()
 argument_list|,
 name|JabRef
 operator|.
-name|jrf
+name|mainFrame
 operator|.
 name|getCurrentBasePanel
 argument_list|()
@@ -426,22 +418,21 @@ operator|.
 name|importPdfFiles
 argument_list|(
 name|fileNames
-argument_list|,
-name|JabRef
-operator|.
-name|jrf
 argument_list|)
 decl_stmt|;
-assert|assert
+if|if
+condition|(
 name|res
 operator|.
-name|entries
+name|getEntries
+argument_list|()
 operator|.
 name|size
 argument_list|()
 operator|==
 literal|1
-assert|;
+condition|)
+block|{
 return|return
 name|Optional
 operator|.
@@ -449,7 +440,8 @@ name|of
 argument_list|(
 name|res
 operator|.
-name|entries
+name|getEntries
+argument_list|()
 operator|.
 name|get
 argument_list|(
@@ -457,7 +449,17 @@ literal|0
 argument_list|)
 argument_list|)
 return|;
-comment|/*addEntryDataFromPDDocumentInformation(pdfFile, entry);         addEntyDataFromXMP(pdfFile, entry);          if (entry.getField("title") == null) {         	entry.setField("title", pdfFile.getName());         }          return entry;*/
+block|}
+else|else
+block|{
+return|return
+name|Optional
+operator|.
+name|empty
+argument_list|()
+return|;
+block|}
+comment|/*addEntryDataFromPDDocumentInformation(pdfFile, entry);         addEntryDataFromXMP(pdfFile, entry);          if (entry.getField("title") == null) {         	entry.setField("title", pdfFile.getName());         }          return entry;*/
 block|}
 comment|/** Adds entry data read from the PDDocument information of the file.      * @param pdfFile      * @param entry      */
 DECL|method|addEntryDataFromPDDocumentInformation (File pdfFile, BibEntry entry)
@@ -617,11 +619,11 @@ block|{
 comment|// no canceling here, just no data added.
 block|}
 block|}
-comment|/**      * Adds all data Found in all the entrys of this XMP file to the given      * entry. This was implemented without having much knowledge of the XMP      * format.      *      * @param aFile      * @param entry      */
-DECL|method|addEntyDataFromXMP (File aFile, BibEntry entry)
+comment|/**      * Adds all data Found in all the entries of this XMP file to the given      * entry. This was implemented without having much knowledge of the XMP      * format.      *      * @param aFile      * @param entry      */
+DECL|method|addEntryDataFromXMP (File aFile, BibEntry entry)
 specifier|private
 name|void
-name|addEntyDataFromXMP
+name|addEntryDataFromXMP
 parameter_list|(
 name|File
 name|aFile
@@ -655,14 +657,6 @@ argument_list|,
 name|entrys
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|EncryptionNotSupportedException
-name|e
-parameter_list|)
-block|{
-comment|// no canceling here, just no data added.
 block|}
 catch|catch
 parameter_list|(

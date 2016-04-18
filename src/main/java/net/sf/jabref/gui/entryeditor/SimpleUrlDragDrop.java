@@ -256,7 +256,9 @@ parameter_list|(
 name|DropTargetDragEvent
 name|dtde
 parameter_list|)
-block|{     }
+block|{
+comment|// Ignored
+block|}
 comment|/*      * (non-Javadoc)      *      * @see java.awt.dnd.DropTargetListener#dragOver(java.awt.dnd.DropTargetDragEvent)      */
 annotation|@
 name|Override
@@ -268,7 +270,9 @@ parameter_list|(
 name|DropTargetDragEvent
 name|dtde
 parameter_list|)
-block|{     }
+block|{
+comment|// Ignored
+block|}
 comment|/*      * (non-Javadoc)      *      * @see java.awt.dnd.DropTargetListener#dropActionChanged(java.awt.dnd.DropTargetDragEvent)      */
 annotation|@
 name|Override
@@ -280,7 +284,9 @@ parameter_list|(
 name|DropTargetDragEvent
 name|dtde
 parameter_list|)
-block|{     }
+block|{
+comment|// Ignored
+block|}
 comment|/*      * (non-Javadoc)      *      * @see java.awt.dnd.DropTargetListener#dragExit(java.awt.dnd.DropTargetEvent)      */
 annotation|@
 name|Override
@@ -292,7 +298,9 @@ parameter_list|(
 name|DropTargetEvent
 name|dte
 parameter_list|)
-block|{     }
+block|{
+comment|// Ignored
+block|}
 comment|/*      * (non-Javadoc)      *      * @see java.awt.dnd.DropTargetListener#drop(java.awt.dnd.DropTargetDropEvent)      */
 annotation|@
 name|Override

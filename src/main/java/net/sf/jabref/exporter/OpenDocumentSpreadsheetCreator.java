@@ -24,11 +24,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|model
-operator|.
-name|database
-operator|.
-name|BibDatabase
+name|BibDatabaseContext
 import|;
 end_import
 
@@ -40,7 +36,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|MetaData
+name|model
+operator|.
+name|database
+operator|.
+name|BibDatabase
 import|;
 end_import
 
@@ -126,6 +126,22 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|BibEntry
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -202,7 +218,17 @@ name|java
 operator|.
 name|util
 operator|.
-name|Set
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Objects
 import|;
 end_import
 
@@ -282,7 +308,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"OpenDocument Spreadsheet"
+literal|"OpenDocument spreadsheet"
 argument_list|)
 argument_list|,
 literal|"ods"
@@ -297,18 +323,14 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|performExport (final BibDatabase database, final MetaData metaData, final String file, final Charset encoding, Set<String> keySet)
+DECL|method|performExport (final BibDatabaseContext databaseContext, final String file, final Charset encoding, List<BibEntry> entries)
 specifier|public
 name|void
 name|performExport
 parameter_list|(
 specifier|final
-name|BibDatabase
-name|database
-parameter_list|,
-specifier|final
-name|MetaData
-name|metaData
+name|BibDatabaseContext
+name|databaseContext
 parameter_list|,
 specifier|final
 name|String
@@ -318,15 +340,39 @@ specifier|final
 name|Charset
 name|encoding
 parameter_list|,
-name|Set
+name|List
 argument_list|<
-name|String
+name|BibEntry
 argument_list|>
-name|keySet
+name|entries
 parameter_list|)
 throws|throws
 name|Exception
 block|{
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|databaseContext
+argument_list|)
+expr_stmt|;
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|entries
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|entries
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+comment|// Only export if entries exists
 name|OpenDocumentSpreadsheetCreator
 operator|.
 name|exportOpenDocumentSpreadsheet
@@ -337,11 +383,15 @@ argument_list|(
 name|file
 argument_list|)
 argument_list|,
-name|database
+name|databaseContext
+operator|.
+name|getDatabase
+argument_list|()
 argument_list|,
-name|keySet
+name|entries
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 DECL|method|storeOpenDocumentSpreadsheetFile (File file, InputStream source)
 specifier|private
@@ -555,7 +605,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|exportOpenDocumentSpreadsheet (File file, BibDatabase database, Set<String> keySet)
+DECL|method|exportOpenDocumentSpreadsheet (File file, BibDatabase database, List<BibEntry> entries)
 specifier|private
 specifier|static
 name|void
@@ -567,11 +617,11 @@ parameter_list|,
 name|BibDatabase
 name|database
 parameter_list|,
-name|Set
+name|List
 argument_list|<
-name|String
+name|BibEntry
 argument_list|>
-name|keySet
+name|entries
 parameter_list|)
 throws|throws
 name|Exception
@@ -597,7 +647,7 @@ name|tmpFile
 argument_list|,
 name|database
 argument_list|,
-name|keySet
+name|entries
 argument_list|)
 expr_stmt|;
 comment|// Then add the content to the zip file:
@@ -646,7 +696,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|exportOpenDocumentSpreadsheetXML (File tmpFile, BibDatabase database, Set<String> keySet)
+DECL|method|exportOpenDocumentSpreadsheetXML (File tmpFile, BibDatabase database, List<BibEntry> entries)
 specifier|private
 specifier|static
 name|void
@@ -658,11 +708,11 @@ parameter_list|,
 name|BibDatabase
 name|database
 parameter_list|,
-name|Set
+name|List
 argument_list|<
-name|String
+name|BibEntry
 argument_list|>
-name|keySet
+name|entries
 parameter_list|)
 block|{
 name|OpenDocumentRepresentation
@@ -673,7 +723,7 @@ name|OpenDocumentRepresentation
 argument_list|(
 name|database
 argument_list|,
-name|keySet
+name|entries
 argument_list|)
 decl_stmt|;
 try|try

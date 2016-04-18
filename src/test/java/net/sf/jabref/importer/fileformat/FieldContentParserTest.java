@@ -87,6 +87,7 @@ class|class
 name|FieldContentParserTest
 block|{
 DECL|field|parser
+specifier|private
 name|FieldContentParser
 name|parser
 decl_stmt|;
@@ -133,8 +134,6 @@ specifier|public
 name|void
 name|unifiesLineBreaks
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|String
 name|original
@@ -146,7 +145,7 @@ name|expected
 init|=
 literal|"I\nunify\nline\nbreaks."
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
 literal|"\n"
 argument_list|,
@@ -163,7 +162,7 @@ operator|.
 name|format
 argument_list|(
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|(
 name|original
 argument_list|)
@@ -189,8 +188,6 @@ specifier|public
 name|void
 name|retainsWhitespaceForMultiLineFields
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|String
 name|original
@@ -202,7 +199,7 @@ name|formatted
 init|=
 name|original
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
 literal|"\n"
 argument_list|,
@@ -219,7 +216,7 @@ operator|.
 name|format
 argument_list|(
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|(
 name|original
 argument_list|)
@@ -238,7 +235,7 @@ operator|.
 name|format
 argument_list|(
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|(
 name|original
 argument_list|)
@@ -271,8 +268,6 @@ specifier|public
 name|void
 name|removeWhitespaceFromNonMultiLineFields
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|String
 name|original
@@ -292,7 +287,7 @@ operator|.
 name|format
 argument_list|(
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|(
 name|original
 argument_list|)
@@ -311,7 +306,7 @@ operator|.
 name|format
 argument_list|(
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|(
 name|original
 argument_list|)

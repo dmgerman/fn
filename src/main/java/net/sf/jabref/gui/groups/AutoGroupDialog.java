@@ -222,22 +222,6 @@ end_import
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|util
-operator|.
-name|PositionWindow
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|jgoodies
@@ -805,7 +789,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Autogenerate groups"
+literal|"Automatically create groups"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -1346,12 +1330,8 @@ expr_stmt|;
 name|pack
 argument_list|()
 expr_stmt|;
-name|PositionWindow
-operator|.
-name|placeDialog
+name|setLocationRelativeTo
 argument_list|(
-name|this
-argument_list|,
 name|frame
 argument_list|)
 expr_stmt|;

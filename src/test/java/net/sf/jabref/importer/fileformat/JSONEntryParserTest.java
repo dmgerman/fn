@@ -123,7 +123,7 @@ name|be
 init|=
 name|jc
 operator|.
-name|BibJSONtoBibtex
+name|parseBibJSONtoBibtex
 argument_list|(
 name|jo
 argument_list|)
@@ -264,7 +264,7 @@ name|be
 init|=
 name|JSONEntryParser
 operator|.
-name|SpringerJSONtoBibtex
+name|parseSpringerJSONtoBibtex
 argument_list|(
 name|jo
 argument_list|)

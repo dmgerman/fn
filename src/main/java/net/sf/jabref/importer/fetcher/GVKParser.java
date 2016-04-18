@@ -102,9 +102,13 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|importer
+name|logic
 operator|.
-name|ImportFormatReader
+name|util
+operator|.
+name|strings
+operator|.
+name|StringUtil
 import|;
 end_import
 
@@ -481,7 +485,7 @@ init|=
 literal|null
 decl_stmt|;
 name|String
-name|date
+name|year
 init|=
 literal|null
 decl_stmt|;
@@ -938,7 +942,7 @@ name|datafield
 argument_list|)
 expr_stmt|;
 block|}
-comment|//date
+comment|//year
 if|if
 condition|(
 literal|"011@"
@@ -949,7 +953,7 @@ name|tag
 argument_list|)
 condition|)
 block|{
-name|date
+name|year
 operator|=
 name|getSubfield
 argument_list|(
@@ -959,7 +963,7 @@ name|datafield
 argument_list|)
 expr_stmt|;
 block|}
-comment|//date, volume, number, pages (year bei Zeitschriften (evtl. redundant mit 011@))
+comment|//year, volume, number, pages (year bei Zeitschriften (evtl. redundant mit 011@))
 if|if
 condition|(
 literal|"031A"
@@ -970,7 +974,7 @@ name|tag
 argument_list|)
 condition|)
 block|{
-name|date
+name|year
 operator|=
 name|getSubfield
 argument_list|(
@@ -1199,7 +1203,7 @@ condition|)
 block|{
 specifier|final
 name|String
-name|isbn_10
+name|isbn10
 init|=
 name|getSubfield
 argument_list|(
@@ -1210,7 +1214,7 @@ argument_list|)
 decl_stmt|;
 specifier|final
 name|String
-name|isbn_13
+name|isbn13
 init|=
 name|getSubfield
 argument_list|(
@@ -1221,26 +1225,26 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|isbn_10
+name|isbn10
 operator|!=
 literal|null
 condition|)
 block|{
 name|isbn
 operator|=
-name|isbn_10
+name|isbn10
 expr_stmt|;
 block|}
 if|if
 condition|(
-name|isbn_13
+name|isbn13
 operator|!=
 literal|null
 condition|)
 block|{
 name|isbn
 operator|=
-name|isbn_13
+name|isbn13
 expr_stmt|;
 block|}
 block|}
@@ -1300,13 +1304,12 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|st
 operator|!=
 literal|null
-condition|)
-block|{
-if|if
-condition|(
+operator|)
+operator|&&
 name|st
 operator|.
 name|contains
@@ -1319,7 +1322,6 @@ name|entryType
 operator|=
 literal|"phdthesis"
 expr_stmt|;
-block|}
 block|}
 block|}
 comment|//journal oder booktitle
@@ -1467,20 +1469,18 @@ name|equals
 argument_list|(
 name|entryType
 argument_list|)
-condition|)
-block|{
-if|if
-condition|(
+operator|&&
+operator|(
 name|isbn
 operator|!=
 literal|null
+operator|)
 condition|)
 block|{
 name|entryType
 operator|=
 literal|"book"
 expr_stmt|;
-block|}
 block|}
 comment|//Hilfskategorien zur Entscheidung @article
 comment|//oder @incollection; hier kÃ¶nnte man auch die
@@ -1517,10 +1517,8 @@ name|equals
 argument_list|(
 name|tag
 argument_list|)
-condition|)
-block|{
-if|if
-condition|(
+operator|&&
+operator|(
 operator|(
 name|quelle
 operator|==
@@ -1531,6 +1529,7 @@ name|quelle
 operator|.
 name|isEmpty
 argument_list|()
+operator|)
 condition|)
 block|{
 name|quelle
@@ -1543,7 +1542,6 @@ name|datafield
 argument_list|)
 expr_stmt|;
 block|}
-block|}
 comment|// URLs behandeln
 if|if
 condition|(
@@ -1553,10 +1551,8 @@ name|equals
 argument_list|(
 name|tag
 argument_list|)
-condition|)
-block|{
-if|if
-condition|(
+operator|&&
+operator|(
 literal|"03"
 operator|.
 name|equals
@@ -1580,13 +1576,13 @@ argument_list|(
 literal|"occurrence"
 argument_list|)
 argument_list|)
-condition|)
-block|{
-if|if
-condition|(
+operator|)
+operator|&&
+operator|(
 name|url
 operator|==
 literal|null
+operator|)
 condition|)
 block|{
 name|url
@@ -1598,8 +1594,6 @@ argument_list|,
 name|datafield
 argument_list|)
 expr_stmt|;
-block|}
-block|}
 block|}
 block|}
 comment|// Abfangen von Nulleintraegen
@@ -1783,7 +1777,7 @@ name|setField
 argument_list|(
 literal|"author"
 argument_list|,
-name|ImportFormatReader
+name|StringUtil
 operator|.
 name|expandAuthorInitials
 argument_list|(
@@ -1805,7 +1799,7 @@ name|setField
 argument_list|(
 literal|"editor"
 argument_list|,
-name|ImportFormatReader
+name|StringUtil
 operator|.
 name|expandAuthorInitials
 argument_list|(
@@ -1844,10 +1838,13 @@ condition|)
 block|{
 comment|// ensure that first letter is an upper case letter
 comment|// there could be the edge case that the string is only one character long, therefore, this special treatment
-comment|// this is apache commons lang StringUtils.capitalize (https://commons.apache.org/proper/commons-lang/javadocs/api-release/org/apache/commons/lang3/StringUtils.html#capitalize%28java.lang.String%29), but we don't want to add an additional dependency  ('org.apache.commons:commons-lang3:3.4')
-name|String
+comment|// this is Apache commons lang StringUtils.capitalize (https://commons.apache.org/proper/commons-lang/javadocs/api-release/org/apache/commons/lang3/StringUtils.html#capitalize%28java.lang.String%29), but we don't want to add an additional dependency  ('org.apache.commons:commons-lang3:3.4')
+name|StringBuilder
 name|newSubtitle
 init|=
+operator|new
+name|StringBuilder
+argument_list|(
 name|Character
 operator|.
 name|toString
@@ -1864,6 +1861,7 @@ literal|0
 argument_list|)
 argument_list|)
 argument_list|)
+argument_list|)
 decl_stmt|;
 if|if
 condition|(
@@ -1876,12 +1874,15 @@ literal|1
 condition|)
 block|{
 name|newSubtitle
-operator|+=
+operator|.
+name|append
+argument_list|(
 name|subtitle
 operator|.
 name|substring
 argument_list|(
 literal|1
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -1892,6 +1893,9 @@ argument_list|(
 literal|"subtitle"
 argument_list|,
 name|newSubtitle
+operator|.
+name|toString
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -1914,7 +1918,7 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-name|date
+name|year
 operator|!=
 literal|null
 condition|)
@@ -1923,9 +1927,9 @@ name|result
 operator|.
 name|setField
 argument_list|(
-literal|"date"
+literal|"year"
 argument_list|,
-name|date
+name|year
 argument_list|)
 expr_stmt|;
 block|}
@@ -2158,13 +2162,12 @@ name|equals
 argument_list|(
 name|entryType
 argument_list|)
-condition|)
-block|{
-if|if
-condition|(
+operator|&&
+operator|(
 name|journal
 operator|!=
 literal|null
+operator|)
 condition|)
 block|{
 name|result
@@ -2177,7 +2180,6 @@ name|journal
 argument_list|)
 expr_stmt|;
 block|}
-block|}
 elseif|else
 if|if
 condition|(
@@ -2187,13 +2189,12 @@ name|equals
 argument_list|(
 name|entryType
 argument_list|)
-condition|)
-block|{
-if|if
-condition|(
+operator|&&
+operator|(
 name|booktitle
 operator|!=
 literal|null
+operator|)
 condition|)
 block|{
 name|result
@@ -2205,7 +2206,6 @@ argument_list|,
 name|booktitle
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 return|return
 name|result
@@ -2492,8 +2492,7 @@ name|String
 name|input
 parameter_list|)
 block|{
-name|input
-operator|=
+return|return
 name|input
 operator|.
 name|replaceAll
@@ -2502,9 +2501,6 @@ literal|"\\@"
 argument_list|,
 literal|""
 argument_list|)
-expr_stmt|;
-return|return
-name|input
 return|;
 block|}
 block|}

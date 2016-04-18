@@ -126,6 +126,22 @@ name|FileField
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|ParsedFileField
+import|;
+end_import
+
 begin_comment
 comment|/**  * Search class for files.<br>  *<br>  * This class provides some functionality to search in a {@link BibDatabase} for  * files.<br>   * @author Nosh&Dan  */
 end_comment
@@ -135,15 +151,6 @@ DECL|class|DatabaseFileLookup
 class|class
 name|DatabaseFileLookup
 block|{
-DECL|field|KEY_FILE_FIELD
-specifier|private
-specifier|static
-specifier|final
-name|String
-name|KEY_FILE_FIELD
-init|=
-literal|"file"
-decl_stmt|;
 DECL|field|fileCache
 specifier|private
 specifier|final
@@ -191,7 +198,7 @@ name|ofNullable
 argument_list|(
 name|JabRef
 operator|.
-name|jrf
+name|mainFrame
 operator|.
 name|getCurrentBasePanel
 argument_list|()
@@ -199,15 +206,8 @@ operator|.
 name|getBibDatabaseContext
 argument_list|()
 operator|.
-name|getMetaData
-argument_list|()
-operator|.
 name|getFileDirectory
-argument_list|(
-name|Globals
-operator|.
-name|FILE_FIELD
-argument_list|)
+argument_list|()
 argument_list|)
 operator|.
 name|orElse
@@ -286,15 +286,13 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-name|DatabaseFileLookup
+name|Globals
 operator|.
-name|KEY_FILE_FIELD
+name|FILE_FIELD
 argument_list|)
 decl_stmt|;
 name|List
 argument_list|<
-name|FileField
-operator|.
 name|ParsedFileField
 argument_list|>
 name|entries
@@ -319,8 +317,6 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-name|FileField
-operator|.
 name|ParsedFileField
 name|field
 range|:
@@ -332,7 +328,8 @@ name|link
 init|=
 name|field
 operator|.
-name|link
+name|getLink
+argument_list|()
 decl_stmt|;
 comment|// Do not query external file links (huge performance leak)
 if|if

@@ -237,8 +237,6 @@ specifier|public
 name|void
 name|setUp
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|Globals
 operator|.
@@ -264,7 +262,7 @@ name|void
 name|testIsRecognizedFormat
 parameter_list|()
 throws|throws
-name|Exception
+name|IOException
 block|{
 name|List
 argument_list|<
@@ -406,7 +404,7 @@ name|void
 name|testIsNotEmptyFileRecognizedFormat
 parameter_list|()
 throws|throws
-name|Exception
+name|IOException
 block|{
 name|Assert
 operator|.
@@ -429,7 +427,7 @@ name|void
 name|testImportMultipleEntriesInSingleFile
 parameter_list|()
 throws|throws
-name|Exception
+name|IOException
 block|{
 try|try
 init|(
@@ -751,7 +749,7 @@ name|void
 name|testEmptyFileImport
 parameter_list|()
 throws|throws
-name|Exception
+name|IOException
 block|{
 name|List
 argument_list|<

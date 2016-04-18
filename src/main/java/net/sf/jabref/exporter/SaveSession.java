@@ -52,6 +52,20 @@ name|jabref
 operator|.
 name|logic
 operator|.
+name|FieldChange
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
 name|l10n
 operator|.
 name|Localization
@@ -150,6 +164,26 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -177,7 +211,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Class used to handle safe storage to disk.  *  * Usage: create a SaveSession giving the file to save to, the encoding, and whether to make a backup. The SaveSession  * will provide a Writer to store to, which actually goes to a temporary file. The Writer keeps track of whether all  * characters could be saved, and if not, which characters were not encodable.  *  * After saving is finished, the client should close the Writer. If the save should be put into effect, call commit(),  * otherwise call cancel(). When cancelling, the temporary file is simply deleted and the target file remains unchanged.  * When committing, the temporary file is copied to the target file after making a backup if requested and if the target  * file already existed, and finally the temporary file is deleted.  *  * If committing fails, the temporary file will not be deleted.  */
+comment|/**  * Class used to handle safe storage to disk.  *<p>  * Usage: create a SaveSession giving the file to save to, the encoding, and whether to make a backup. The SaveSession  * will provide a Writer to store to, which actually goes to a temporary file. The Writer keeps track of whether all  * characters could be saved, and if not, which characters were not encodable.  *<p>  * After saving is finished, the client should close the Writer. If the save should be put into effect, call commit(),  * otherwise call cancel(). When cancelling, the temporary file is simply deleted and the target file remains unchanged.  * When committing, the temporary file is copied to the target file after making a backup if requested and if the target  * file already existed, and finally the temporary file is deleted.  *<p>  * If committing fails, the temporary file will not be deleted.  */
 end_comment
 
 begin_class
@@ -267,6 +301,20 @@ specifier|private
 specifier|final
 name|VerifyingWriter
 name|writer
+decl_stmt|;
+DECL|field|undoableFieldChanges
+specifier|private
+specifier|final
+name|List
+argument_list|<
+name|FieldChange
+argument_list|>
+name|undoableFieldChanges
+init|=
+operator|new
+name|ArrayList
+argument_list|<>
+argument_list|()
 decl_stmt|;
 DECL|method|SaveSession (Charset encoding, boolean backup)
 specifier|public
@@ -431,7 +479,7 @@ name|name
 operator|+
 name|GUIGlobals
 operator|.
-name|backupExt
+name|BACKUP_EXTENSION
 argument_list|)
 decl_stmt|;
 try|try
@@ -788,6 +836,41 @@ block|{
 return|return
 name|tmp
 return|;
+block|}
+DECL|method|getFieldChanges ()
+specifier|public
+name|List
+argument_list|<
+name|FieldChange
+argument_list|>
+name|getFieldChanges
+parameter_list|()
+block|{
+return|return
+name|undoableFieldChanges
+return|;
+block|}
+DECL|method|addFieldChanges (List<FieldChange> newUndoableFieldChanges)
+specifier|public
+name|void
+name|addFieldChanges
+parameter_list|(
+name|List
+argument_list|<
+name|FieldChange
+argument_list|>
+name|newUndoableFieldChanges
+parameter_list|)
+block|{
+name|this
+operator|.
+name|undoableFieldChanges
+operator|.
+name|addAll
+argument_list|(
+name|newUndoableFieldChanges
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 end_class

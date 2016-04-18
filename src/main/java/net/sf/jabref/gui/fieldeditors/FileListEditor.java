@@ -44,6 +44,16 @@ name|java
 operator|.
 name|awt
 operator|.
+name|Component
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|awt
+operator|.
 name|Insets
 import|;
 end_import
@@ -300,13 +310,49 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|table
+operator|.
+name|TableCellRenderer
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
 operator|.
 name|jabref
 operator|.
-name|*
+name|BibDatabaseContext
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|Globals
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|JabRefExecutorService
 import|;
 end_import
 
@@ -320,35 +366,49 @@ name|jabref
 operator|.
 name|external
 operator|.
-name|*
+name|DownloadExternalFile
 import|;
 end_import
 
 begin_import
 import|import
-name|com
+name|net
 operator|.
-name|jgoodies
+name|sf
 operator|.
-name|forms
+name|jabref
 operator|.
-name|builder
+name|external
 operator|.
-name|FormBuilder
+name|ExternalFileType
 import|;
 end_import
 
 begin_import
 import|import
-name|com
+name|net
 operator|.
-name|jgoodies
+name|sf
 operator|.
-name|forms
+name|jabref
 operator|.
-name|layout
+name|external
 operator|.
-name|FormLayout
+name|ExternalFileTypes
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|external
+operator|.
+name|MoveFileAction
 import|;
 end_import
 
@@ -362,7 +422,79 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|*
+name|FileListEntry
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|FileListEntryEditor
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|FileListTableModel
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|IconTheme
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|JabRefFrame
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|actions
+operator|.
+name|Actions
 import|;
 end_import
 
@@ -392,9 +524,9 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|actions
+name|desktop
 operator|.
-name|Actions
+name|JabRefDesktop
 import|;
 end_import
 
@@ -488,27 +620,39 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
-operator|.
-name|desktop
-operator|.
-name|JabRefDesktop
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|model
 operator|.
 name|entry
 operator|.
 name|EntryUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|jgoodies
+operator|.
+name|forms
+operator|.
+name|builder
+operator|.
+name|FormBuilder
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|jgoodies
+operator|.
+name|forms
+operator|.
+name|layout
+operator|.
+name|FormLayout
 import|;
 end_import
 
@@ -591,11 +735,11 @@ specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
-DECL|field|metaData
+DECL|field|databaseContext
 specifier|private
 specifier|final
-name|MetaData
-name|metaData
+name|BibDatabaseContext
+name|databaseContext
 decl_stmt|;
 DECL|field|fieldName
 specifier|private
@@ -637,15 +781,15 @@ operator|new
 name|JPopupMenu
 argument_list|()
 decl_stmt|;
-DECL|method|FileListEditor (JabRefFrame frame, MetaData metaData, String fieldName, String content, EntryEditor entryEditor)
+DECL|method|FileListEditor (JabRefFrame frame, BibDatabaseContext databaseContext, String fieldName, String content, EntryEditor entryEditor)
 specifier|public
 name|FileListEditor
 parameter_list|(
 name|JabRefFrame
 name|frame
 parameter_list|,
-name|MetaData
-name|metaData
+name|BibDatabaseContext
+name|databaseContext
 parameter_list|,
 name|String
 name|fieldName
@@ -665,9 +809,9 @@ name|frame
 expr_stmt|;
 name|this
 operator|.
-name|metaData
+name|databaseContext
 operator|=
-name|metaData
+name|databaseContext
 expr_stmt|;
 name|this
 operator|.
@@ -922,155 +1066,65 @@ name|add
 operator|.
 name|addActionListener
 argument_list|(
-operator|new
-name|ActionListener
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|actionPerformed
-parameter_list|(
-name|ActionEvent
 name|e
-parameter_list|)
-block|{
+lambda|->
 name|addEntry
 argument_list|()
-expr_stmt|;
-block|}
-block|}
 argument_list|)
 expr_stmt|;
 name|remove
 operator|.
 name|addActionListener
 argument_list|(
-operator|new
-name|ActionListener
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|actionPerformed
-parameter_list|(
-name|ActionEvent
 name|e
-parameter_list|)
-block|{
+lambda|->
 name|removeEntries
 argument_list|()
-expr_stmt|;
-block|}
-block|}
 argument_list|)
 expr_stmt|;
 name|up
 operator|.
 name|addActionListener
 argument_list|(
-operator|new
-name|ActionListener
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|actionPerformed
-parameter_list|(
-name|ActionEvent
 name|e
-parameter_list|)
-block|{
+lambda|->
 name|moveEntry
 argument_list|(
 operator|-
 literal|1
 argument_list|)
-expr_stmt|;
-block|}
-block|}
 argument_list|)
 expr_stmt|;
 name|down
 operator|.
 name|addActionListener
 argument_list|(
-operator|new
-name|ActionListener
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|actionPerformed
-parameter_list|(
-name|ActionEvent
 name|e
-parameter_list|)
-block|{
+lambda|->
 name|moveEntry
 argument_list|(
 literal|1
 argument_list|)
-expr_stmt|;
-block|}
-block|}
 argument_list|)
 expr_stmt|;
 name|auto
 operator|.
 name|addActionListener
 argument_list|(
-operator|new
-name|ActionListener
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|actionPerformed
-parameter_list|(
-name|ActionEvent
 name|e
-parameter_list|)
-block|{
+lambda|->
 name|autoSetLinks
 argument_list|()
-expr_stmt|;
-block|}
-block|}
 argument_list|)
 expr_stmt|;
 name|download
 operator|.
 name|addActionListener
 argument_list|(
-operator|new
-name|ActionListener
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|actionPerformed
-parameter_list|(
-name|ActionEvent
 name|e
-parameter_list|)
-block|{
+lambda|->
 name|downloadFile
 argument_list|()
-expr_stmt|;
-block|}
-block|}
 argument_list|)
 expr_stmt|;
 name|FormBuilder
@@ -1492,25 +1546,10 @@ name|openLink
 operator|.
 name|addActionListener
 argument_list|(
-operator|new
-name|ActionListener
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|actionPerformed
-parameter_list|(
-name|ActionEvent
-name|actionEvent
-parameter_list|)
-block|{
+name|e
+lambda|->
 name|openSelectedFile
 argument_list|()
-expr_stmt|;
-block|}
-block|}
 argument_list|)
 expr_stmt|;
 name|JMenuItem
@@ -1538,19 +1577,8 @@ name|openFolder
 operator|.
 name|addActionListener
 argument_list|(
-operator|new
-name|ActionListener
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|actionPerformed
-parameter_list|(
-name|ActionEvent
 name|e
-parameter_list|)
+lambda|->
 block|{
 name|int
 name|row
@@ -1605,7 +1633,6 @@ expr_stmt|;
 block|}
 block|}
 block|}
-block|}
 argument_list|)
 expr_stmt|;
 name|JMenuItem
@@ -1656,7 +1683,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Move to file directory"
+literal|"Move file to file directory"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -1709,19 +1736,8 @@ name|deleteFile
 operator|.
 name|addActionListener
 argument_list|(
-operator|new
-name|ActionListener
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|actionPerformed
-parameter_list|(
-name|ActionEvent
 name|e
-parameter_list|)
+lambda|->
 block|{
 name|int
 name|row
@@ -1733,13 +1749,11 @@ comment|// no selection
 if|if
 condition|(
 name|row
-operator|==
+operator|!=
 operator|-
 literal|1
 condition|)
 block|{
-return|return;
-block|}
 name|FileListEntry
 name|entry
 init|=
@@ -1761,7 +1775,7 @@ name|FileUtil
 operator|.
 name|expandFilename
 argument_list|(
-name|metaData
+name|databaseContext
 argument_list|,
 name|entry
 operator|.
@@ -1846,6 +1860,115 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+name|adjustColumnWidth
+argument_list|()
+expr_stmt|;
+block|}
+DECL|method|adjustColumnWidth ()
+specifier|public
+name|void
+name|adjustColumnWidth
+parameter_list|()
+block|{
+for|for
+control|(
+name|int
+name|column
+init|=
+literal|0
+init|;
+name|column
+operator|<
+name|this
+operator|.
+name|getColumnCount
+argument_list|()
+condition|;
+name|column
+operator|++
+control|)
+block|{
+name|int
+name|width
+init|=
+literal|0
+decl_stmt|;
+for|for
+control|(
+name|int
+name|row
+init|=
+literal|0
+init|;
+name|row
+operator|<
+name|this
+operator|.
+name|getRowCount
+argument_list|()
+condition|;
+name|row
+operator|++
+control|)
+block|{
+name|TableCellRenderer
+name|renderer
+init|=
+name|this
+operator|.
+name|getCellRenderer
+argument_list|(
+name|row
+argument_list|,
+name|column
+argument_list|)
+decl_stmt|;
+name|Component
+name|comp
+init|=
+name|this
+operator|.
+name|prepareRenderer
+argument_list|(
+name|renderer
+argument_list|,
+name|row
+argument_list|,
+name|column
+argument_list|)
+decl_stmt|;
+name|width
+operator|=
+name|Math
+operator|.
+name|max
+argument_list|(
+name|comp
+operator|.
+name|getPreferredSize
+argument_list|()
+operator|.
+name|width
+argument_list|,
+name|width
+argument_list|)
+expr_stmt|;
+block|}
+name|this
+operator|.
+name|columnModel
+operator|.
+name|getColumn
+argument_list|(
+name|column
+argument_list|)
+operator|.
+name|setPreferredWidth
+argument_list|(
+name|width
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 DECL|method|openSelectedFile ()
 specifier|private
@@ -1878,7 +2001,10 @@ argument_list|)
 decl_stmt|;
 try|try
 block|{
+name|Optional
+argument_list|<
 name|ExternalFileType
+argument_list|>
 name|type
 init|=
 name|ExternalFileTypes
@@ -1892,6 +2018,9 @@ name|entry
 operator|.
 name|type
 operator|.
+name|get
+argument_list|()
+operator|.
 name|getName
 argument_list|()
 argument_list|)
@@ -1900,20 +2029,21 @@ name|JabRefDesktop
 operator|.
 name|openExternalFileAnyFormat
 argument_list|(
-name|metaData
+name|databaseContext
 argument_list|,
 name|entry
 operator|.
 name|link
 argument_list|,
 name|type
-operator|==
-literal|null
-condition|?
-name|entry
 operator|.
+name|isPresent
+argument_list|()
+condition|?
 name|type
 else|:
+name|entry
+operator|.
 name|type
 argument_list|)
 expr_stmt|;
@@ -2059,7 +2189,9 @@ parameter_list|(
 name|String
 name|text
 parameter_list|)
-block|{      }
+block|{
+comment|// Do nothing
+block|}
 annotation|@
 name|Override
 DECL|method|updateFont ()
@@ -2067,7 +2199,9 @@ specifier|public
 name|void
 name|updateFont
 parameter_list|()
-block|{      }
+block|{
+comment|// Do nothing
+block|}
 annotation|@
 name|Override
 DECL|method|paste (String textToInsert)
@@ -2078,7 +2212,9 @@ parameter_list|(
 name|String
 name|textToInsert
 parameter_list|)
-block|{      }
+block|{
+comment|// Do nothing
+block|}
 annotation|@
 name|Override
 DECL|method|getSelectedText ()
@@ -2128,8 +2264,6 @@ argument_list|(
 literal|""
 argument_list|,
 name|initialLink
-argument_list|,
-literal|null
 argument_list|)
 decl_stmt|;
 if|if
@@ -2159,6 +2293,9 @@ argument_list|(
 name|this
 argument_list|)
 expr_stmt|;
+name|adjustColumnWidth
+argument_list|()
+expr_stmt|;
 block|}
 DECL|method|addEntry ()
 specifier|private
@@ -2172,14 +2309,10 @@ name|String
 argument_list|>
 name|defaultDirectory
 init|=
-name|metaData
+name|databaseContext
 operator|.
 name|getFileDirectory
-argument_list|(
-name|Globals
-operator|.
-name|FILE_FIELD
-argument_list|)
+argument_list|()
 decl_stmt|;
 if|if
 condition|(
@@ -2277,6 +2410,9 @@ name|updateField
 argument_list|(
 name|this
 argument_list|)
+expr_stmt|;
+name|adjustColumnWidth
+argument_list|()
 expr_stmt|;
 block|}
 DECL|method|moveEntry (int i)
@@ -2406,6 +2542,9 @@ argument_list|,
 name|toIdx
 argument_list|)
 expr_stmt|;
+name|adjustColumnWidth
+argument_list|()
+expr_stmt|;
 block|}
 comment|/**      * Open an editor for this entry.      *      * @param entry      The entry to edit.      * @param openBrowse True to indicate that a Browse dialog should be immediately opened.      * @return true if the edit was accepted, false if it was cancelled.      */
 DECL|method|editListEntry (FileListEntry entry, boolean openBrowse)
@@ -2440,7 +2579,7 @@ literal|false
 argument_list|,
 literal|true
 argument_list|,
-name|metaData
+name|databaseContext
 argument_list|)
 expr_stmt|;
 block|}
@@ -2483,6 +2622,9 @@ name|updateField
 argument_list|(
 name|this
 argument_list|)
+expr_stmt|;
+name|adjustColumnWidth
+argument_list|()
 expr_stmt|;
 return|return
 name|editor
@@ -2566,7 +2708,7 @@ literal|null
 argument_list|,
 name|tableModel
 argument_list|,
-name|metaData
+name|databaseContext
 argument_list|,
 operator|new
 name|ActionListener
@@ -2608,6 +2750,9 @@ operator|.
 name|this
 argument_list|)
 expr_stmt|;
+name|adjustColumnWidth
+argument_list|()
+expr_stmt|;
 name|frame
 operator|.
 name|output
@@ -2616,7 +2761,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Finished autosetting external links."
+literal|"Finished automatically setting external links."
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2631,7 +2776,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Finished autosetting external links."
+literal|"Finished automatically setting external links."
 argument_list|)
 operator|+
 literal|" "
@@ -2745,7 +2890,8 @@ name|l
 init|=
 name|entryEditor
 operator|.
-name|generateKeyAction
+name|getGenerateKeyAction
+argument_list|()
 decl_stmt|;
 name|l
 operator|.
@@ -2780,9 +2926,6 @@ name|getCurrentBasePanel
 argument_list|()
 operator|.
 name|getBibDatabaseContext
-argument_list|()
-operator|.
-name|getMetaData
 argument_list|()
 argument_list|,
 name|bibtexKey
@@ -2845,6 +2988,9 @@ name|updateField
 argument_list|(
 name|this
 argument_list|)
+expr_stmt|;
+name|adjustColumnWidth
+argument_list|()
 expr_stmt|;
 block|}
 DECL|class|TableClickListener
@@ -3055,7 +3201,9 @@ specifier|public
 name|void
 name|undo
 parameter_list|()
-block|{     }
+block|{
+comment|// Do nothing
+block|}
 annotation|@
 name|Override
 DECL|method|redo ()
@@ -3063,7 +3211,9 @@ specifier|public
 name|void
 name|redo
 parameter_list|()
-block|{     }
+block|{
+comment|// Do nothing
+block|}
 annotation|@
 name|Override
 DECL|method|setAutoCompleteListener (AutoCompleteListener listener)
@@ -3074,7 +3224,9 @@ parameter_list|(
 name|AutoCompleteListener
 name|listener
 parameter_list|)
-block|{     }
+block|{
+comment|// Do nothing
+block|}
 annotation|@
 name|Override
 DECL|method|clearAutoCompleteSuggestion ()
@@ -3082,7 +3234,9 @@ specifier|public
 name|void
 name|clearAutoCompleteSuggestion
 parameter_list|()
-block|{     }
+block|{
+comment|// Do nothing
+block|}
 annotation|@
 name|Override
 DECL|method|setActiveBackgroundColor ()
@@ -3090,7 +3244,9 @@ specifier|public
 name|void
 name|setActiveBackgroundColor
 parameter_list|()
-block|{     }
+block|{
+comment|// Do nothing
+block|}
 annotation|@
 name|Override
 DECL|method|setValidBackgroundColor ()
@@ -3098,7 +3254,9 @@ specifier|public
 name|void
 name|setValidBackgroundColor
 parameter_list|()
-block|{     }
+block|{
+comment|// Do nothing
+block|}
 annotation|@
 name|Override
 DECL|method|setInvalidBackgroundColor ()
@@ -3106,7 +3264,9 @@ specifier|public
 name|void
 name|setInvalidBackgroundColor
 parameter_list|()
-block|{     }
+block|{
+comment|// Do nothing
+block|}
 annotation|@
 name|Override
 DECL|method|updateFontColor ()
@@ -3114,7 +3274,9 @@ specifier|public
 name|void
 name|updateFontColor
 parameter_list|()
-block|{     }
+block|{
+comment|// Do nothing
+block|}
 block|}
 end_class
 

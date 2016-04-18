@@ -300,11 +300,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
+name|logic
 operator|.
-name|util
+name|l10n
 operator|.
-name|PositionWindow
+name|Localization
 import|;
 end_import
 
@@ -318,9 +318,9 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|l10n
+name|util
 operator|.
-name|Localization
+name|UpdateField
 import|;
 end_import
 
@@ -369,20 +369,6 @@ operator|.
 name|entry
 operator|.
 name|BibtexString
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|util
-operator|.
-name|Util
 import|;
 end_import
 
@@ -496,12 +482,10 @@ argument_list|,
 literal|true
 argument_list|)
 decl_stmt|;
-name|PositionWindow
-operator|.
-name|placeDialog
-argument_list|(
 name|md
-argument_list|,
+operator|.
+name|setLocationRelativeTo
+argument_list|(
 name|panel
 argument_list|)
 expr_stmt|;
@@ -832,7 +816,7 @@ operator|.
 name|getDatabase
 argument_list|()
 decl_stmt|;
-name|ArrayList
+name|List
 argument_list|<
 name|BibEntry
 argument_list|>
@@ -843,7 +827,7 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
-name|ArrayList
+name|List
 argument_list|<
 name|BibEntry
 argument_list|>
@@ -859,11 +843,8 @@ name|database
 init|=
 name|panel
 operator|.
-name|database
+name|getDatabase
 argument_list|()
-decl_stmt|;
-name|BibEntry
-name|originalEntry
 decl_stmt|;
 name|NamedCompound
 name|ce
@@ -923,24 +904,15 @@ argument_list|)
 decl_stmt|;
 for|for
 control|(
-name|String
-name|key
+name|BibEntry
+name|originalEntry
 range|:
 name|fromDatabase
 operator|.
-name|getKeySet
+name|getEntries
 argument_list|()
 control|)
 block|{
-name|originalEntry
-operator|=
-name|fromDatabase
-operator|.
-name|getEntryById
-argument_list|(
-name|key
-argument_list|)
-expr_stmt|;
 name|BibEntry
 name|be
 init|=
@@ -962,7 +934,7 @@ name|next
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Util
+name|UpdateField
 operator|.
 name|setAutomaticFields
 argument_list|(
@@ -1136,7 +1108,8 @@ comment|// have been defined. therefore, no check for null is
 comment|// required here
 name|frame
 operator|.
-name|groupSelector
+name|getGroupSelector
+argument_list|()
 operator|.
 name|addGroups
 argument_list|(

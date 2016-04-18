@@ -118,9 +118,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
+name|bibtex
 operator|.
-name|GUIGlobals
+name|InternalBibtexFields
 import|;
 end_import
 
@@ -297,7 +297,7 @@ condition|)
 block|{
 if|if
 condition|(
-name|GUIGlobals
+name|InternalBibtexFields
 operator|.
 name|NUMBER_COL
 operator|.

@@ -126,6 +126,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|List
 import|;
 end_import
@@ -481,7 +491,15 @@ name|UnsupportedEncodingException
 name|e
 parameter_list|)
 block|{
-comment|// e.printStackTrace();
+name|LOGGER
+operator|.
+name|warn
+argument_list|(
+literal|"Unsupported encoding"
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
 block|}
 comment|// Send the request
 name|URL
@@ -524,7 +542,10 @@ name|e
 argument_list|)
 expr_stmt|;
 return|return
-literal|null
+name|Collections
+operator|.
+name|emptyList
+argument_list|()
 return|;
 block|}
 catch|catch
@@ -543,7 +564,10 @@ name|e
 argument_list|)
 expr_stmt|;
 return|return
-literal|null
+name|Collections
+operator|.
+name|emptyList
+argument_list|()
 return|;
 block|}
 try|try
@@ -641,7 +665,10 @@ name|e
 argument_list|)
 expr_stmt|;
 return|return
-literal|null
+name|Collections
+operator|.
+name|emptyList
+argument_list|()
 return|;
 block|}
 comment|// output is in conn.getInputStream();
@@ -1263,7 +1290,7 @@ name|makeLabel
 argument_list|(
 name|JabRef
 operator|.
-name|jrf
+name|mainFrame
 operator|.
 name|getCurrentBasePanel
 argument_list|()
@@ -1276,12 +1303,12 @@ argument_list|()
 argument_list|,
 name|JabRef
 operator|.
-name|jrf
+name|mainFrame
 operator|.
 name|getCurrentBasePanel
 argument_list|()
 operator|.
-name|database
+name|getDatabase
 argument_list|()
 argument_list|,
 name|e
@@ -1325,7 +1352,10 @@ name|ex
 argument_list|)
 expr_stmt|;
 return|return
-literal|null
+name|Collections
+operator|.
+name|emptyList
+argument_list|()
 return|;
 block|}
 return|return

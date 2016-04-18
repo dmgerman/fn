@@ -26,67 +26,7 @@ name|awt
 operator|.
 name|event
 operator|.
-name|FocusEvent
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|awt
-operator|.
-name|event
-operator|.
-name|FocusListener
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|awt
-operator|.
-name|event
-operator|.
-name|KeyEvent
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|awt
-operator|.
-name|event
-operator|.
-name|KeyListener
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|awt
-operator|.
-name|event
-operator|.
-name|MouseEvent
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|awt
-operator|.
-name|event
-operator|.
-name|MouseListener
+name|*
 import|;
 end_import
 
@@ -102,11 +42,21 @@ end_import
 
 begin_import
 import|import
-name|javax
+name|java
 operator|.
-name|swing
+name|util
 operator|.
-name|Icon
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Objects
 import|;
 end_import
 
@@ -116,37 +66,73 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|JLabel
+name|*
 import|;
 end_import
 
 begin_import
 import|import
-name|javax
+name|ca
 operator|.
-name|swing
+name|odell
 operator|.
-name|JPopupMenu
+name|glazedlists
+operator|.
+name|EventList
 import|;
 end_import
 
 begin_import
 import|import
-name|javax
+name|ca
 operator|.
-name|swing
+name|odell
 operator|.
-name|SwingUtilities
+name|glazedlists
+operator|.
+name|event
+operator|.
+name|ListEvent
 import|;
 end_import
 
 begin_import
 import|import
-name|javax
+name|ca
 operator|.
-name|swing
+name|odell
 operator|.
-name|Timer
+name|glazedlists
+operator|.
+name|event
+operator|.
+name|ListEventListener
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|*
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|external
+operator|.
+name|ExternalFileMenuItem
 import|;
 end_import
 
@@ -174,9 +160,41 @@ name|jabref
 operator|.
 name|gui
 operator|.
+name|desktop
+operator|.
+name|JabRefDesktop
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
 name|entryeditor
 operator|.
 name|EntryEditor
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|menus
+operator|.
+name|RightClickMenu
 import|;
 end_import
 
@@ -252,126 +270,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
-operator|.
-name|desktop
-operator|.
-name|JabRefDesktop
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|commons
-operator|.
-name|logging
-operator|.
-name|Log
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|commons
-operator|.
-name|logging
-operator|.
-name|LogFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|*
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|external
-operator|.
-name|ExternalFileMenuItem
-import|;
-end_import
-
-begin_import
-import|import
-name|ca
-operator|.
-name|odell
-operator|.
-name|glazedlists
-operator|.
-name|EventList
-import|;
-end_import
-
-begin_import
-import|import
-name|ca
-operator|.
-name|odell
-operator|.
-name|glazedlists
-operator|.
-name|event
-operator|.
-name|ListEvent
-import|;
-end_import
-
-begin_import
-import|import
-name|ca
-operator|.
-name|odell
-operator|.
-name|glazedlists
-operator|.
-name|event
-operator|.
-name|ListEventListener
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|specialfields
 operator|.
 name|SpecialField
@@ -403,6 +301,34 @@ operator|.
 name|specialfields
 operator|.
 name|SpecialFieldsUtils
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
 import|;
 end_import
 
@@ -546,7 +472,6 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|//private int lastCharPressed = -1;
 DECL|method|MainTableSelectionListener (BasePanel panel, MainTable table)
 specifier|public
 name|MainTableSelectionListener
@@ -576,6 +501,9 @@ name|tableRows
 operator|=
 name|table
 operator|.
+name|getTableModel
+argument_list|()
+operator|.
 name|getTableRows
 argument_list|()
 expr_stmt|;
@@ -590,20 +518,12 @@ name|PreviewPanel
 argument_list|(
 name|panel
 operator|.
-name|database
+name|getBibDatabaseContext
 argument_list|()
 argument_list|,
 literal|null
 argument_list|,
 name|panel
-argument_list|,
-name|panel
-operator|.
-name|getBibDatabaseContext
-argument_list|()
-operator|.
-name|getMetaData
-argument_list|()
 argument_list|,
 name|Globals
 operator|.
@@ -622,20 +542,12 @@ name|PreviewPanel
 argument_list|(
 name|panel
 operator|.
-name|database
+name|getBibDatabaseContext
 argument_list|()
 argument_list|,
 literal|null
 argument_list|,
 name|panel
-argument_list|,
-name|panel
-operator|.
-name|getBibDatabaseContext
-argument_list|()
-operator|.
-name|getMetaData
-argument_list|()
 argument_list|,
 name|Globals
 operator|.
@@ -870,7 +782,7 @@ operator|)
 name|newSelected
 decl_stmt|;
 specifier|final
-name|int
+name|BasePanelMode
 name|mode
 init|=
 name|panel
@@ -884,7 +796,7 @@ condition|(
 operator|(
 name|mode
 operator|==
-name|BasePanel
+name|BasePanelMode
 operator|.
 name|WILL_SHOW_EDITOR
 operator|)
@@ -892,7 +804,7 @@ operator|||
 operator|(
 name|mode
 operator|==
-name|BasePanel
+name|BasePanelMode
 operator|.
 name|SHOWING_EDITOR
 operator|)
@@ -940,11 +852,9 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|(
 name|oldEditor
 operator|!=
 literal|null
-operator|)
 condition|)
 block|{
 name|oldEditor
@@ -956,16 +866,20 @@ block|}
 comment|// Show the new editor unless it was already visible:
 if|if
 condition|(
-operator|(
+operator|!
+name|Objects
+operator|.
+name|equals
+argument_list|(
 name|newEditor
-operator|!=
+argument_list|,
 name|oldEditor
-operator|)
+argument_list|)
 operator|||
 operator|(
 name|mode
 operator|!=
-name|BasePanel
+name|BasePanelMode
 operator|.
 name|SHOWING_EDITOR
 operator|)
@@ -1159,7 +1073,7 @@ block|{
 return|return;
 block|}
 specifier|final
-name|int
+name|BasePanelMode
 name|mode
 init|=
 name|panel
@@ -1193,7 +1107,7 @@ operator|||
 operator|(
 name|mode
 operator|==
-name|BasePanel
+name|BasePanelMode
 operator|.
 name|SHOWING_NOTHING
 operator|)
@@ -1264,7 +1178,7 @@ name|entry
 parameter_list|)
 block|{
 specifier|final
-name|int
+name|BasePanelMode
 name|mode
 init|=
 name|panel
@@ -1286,7 +1200,7 @@ if|if
 condition|(
 name|mode
 operator|!=
-name|BasePanel
+name|BasePanelMode
 operator|.
 name|SHOWING_EDITOR
 condition|)
@@ -1670,16 +1584,11 @@ name|INSTANCE
 operator|.
 name|execute
 argument_list|(
-operator|new
+call|(
 name|Runnable
+call|)
 argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|run
-parameter_list|()
+operator|->
 block|{
 name|panel
 operator|.
@@ -1694,7 +1603,7 @@ argument_list|)
 operator|+
 literal|'.'
 argument_list|)
-expr_stmt|;
+block|;
 comment|// check for all field names whether a link is present
 comment|// (is relevant for combinations such as "url/doi")
 for|for
@@ -1705,9 +1614,9 @@ range|:
 name|fieldNames
 control|)
 block|{
+comment|// Check if field is present, if not skip this field
 if|if
 condition|(
-operator|!
 name|entry
 operator|.
 name|hasField
@@ -1716,9 +1625,6 @@ name|fieldName
 argument_list|)
 condition|)
 block|{
-continue|continue;
-comment|// There is no content for this field continue with the next one
-block|}
 name|String
 name|link
 init|=
@@ -1878,15 +1784,15 @@ name|flEntry
 operator|.
 name|type
 operator|.
+name|get
+argument_list|()
+operator|.
 name|getIcon
 argument_list|()
 argument_list|,
 name|panel
 operator|.
 name|getBibDatabaseContext
-argument_list|()
-operator|.
-name|getMetaData
 argument_list|()
 argument_list|,
 name|flEntry
@@ -1935,9 +1841,6 @@ name|panel
 operator|.
 name|getBibDatabaseContext
 argument_list|()
-operator|.
-name|getMetaData
-argument_list|()
 argument_list|,
 name|link
 argument_list|,
@@ -1963,6 +1866,15 @@ literal|"Unable to open link."
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|LOGGER
+operator|.
+name|info
+argument_list|(
+literal|"Unable to open link"
+argument_list|,
+name|ex
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 break|break;
@@ -1970,13 +1882,19 @@ comment|// only open the first link
 block|}
 block|}
 block|}
-argument_list|)
-expr_stmt|;
+block|)
+function|;
 block|}
-block|}
+end_class
+
+begin_comment
+unit|}
 comment|/**      * Method to handle a single left click on one the special fields (e.g., ranking, quality, ...)      * Shows either a popup to select/clear a value or simply toggles the functionality to set/unset the special field      *      * @param e MouseEvent used to determine the position of the popups      * @param columnName the name of the specialfield column      */
+end_comment
+
+begin_function
 DECL|method|handleSpecialFieldLeftClick (MouseEvent e, String columnName)
-specifier|private
+unit|private
 name|void
 name|handleSpecialFieldLeftClick
 parameter_list|(
@@ -2103,7 +2021,13 @@ expr_stmt|;
 block|}
 block|}
 block|}
+end_function
+
+begin_comment
 comment|/**      * Process general right-click events on the table. Show the table context menu at      * the position where the user right-clicked.      * @param e The mouse event defining the popup trigger.      * @param row The row where the event occurred.      */
+end_comment
+
+begin_function
 DECL|method|processPopupTrigger (MouseEvent e, int row)
 specifier|private
 name|void
@@ -2133,7 +2057,6 @@ operator|-
 literal|1
 operator|)
 operator|||
-comment|// (getSelectedRowCount() == 0))
 operator|!
 name|table
 operator|.
@@ -2160,7 +2083,6 @@ argument_list|,
 name|row
 argument_list|)
 expr_stmt|;
-comment|//panel.updateViewToSelected();
 block|}
 name|RightClickMenu
 name|rightClickMenu
@@ -2168,6 +2090,10 @@ init|=
 operator|new
 name|RightClickMenu
 argument_list|(
+name|JabRef
+operator|.
+name|mainFrame
+argument_list|,
 name|panel
 argument_list|)
 decl_stmt|;
@@ -2189,7 +2115,13 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Process popup trigger events occurring on an icon cell in the table. Show a menu where the user can choose which      * external resource to open for the entry. If no relevant external resources exist, let the normal popup trigger      * handler do its thing instead.      *      * @param e The mouse event defining this popup trigger.      * @param row The row where the event occurred.      * @param column the MainTableColumn associated with this table cell.      */
+end_comment
+
+begin_function
 DECL|method|showIconRightClickMenu (MouseEvent e, int row, MainTableColumn column)
 specifier|private
 name|void
@@ -2324,21 +2256,26 @@ operator|.
 name|isFileFilter
 argument_list|()
 operator|&&
+operator|(
 operator|!
 name|flEntry
 operator|.
 name|type
 operator|.
-name|toString
+name|get
 argument_list|()
 operator|.
-name|equals
+name|getName
+argument_list|()
+operator|.
+name|equalsIgnoreCase
 argument_list|(
 name|column
 operator|.
 name|getColumnName
 argument_list|()
 argument_list|)
+operator|)
 condition|)
 block|{
 continue|continue;
@@ -2400,15 +2337,15 @@ name|flEntry
 operator|.
 name|type
 operator|.
+name|get
+argument_list|()
+operator|.
 name|getIcon
 argument_list|()
 argument_list|,
 name|panel
 operator|.
 name|getBibDatabaseContext
-argument_list|()
-operator|.
-name|getMetaData
 argument_list|()
 argument_list|,
 name|flEntry
@@ -2532,9 +2469,6 @@ name|panel
 operator|.
 name|getBibDatabaseContext
 argument_list|()
-operator|.
-name|getMetaData
-argument_list|()
 argument_list|,
 name|field
 argument_list|)
@@ -2583,6 +2517,9 @@ expr_stmt|;
 block|}
 block|}
 block|}
+end_function
+
+begin_function
 DECL|method|entryEditorClosing (EntryEditor editor)
 specifier|public
 name|void
@@ -2635,6 +2572,9 @@ name|table
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Override
 DECL|method|mouseEntered (MouseEvent e)
@@ -2648,6 +2588,9 @@ parameter_list|)
 block|{
 comment|// Do nothing
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Override
 DECL|method|mouseExited (MouseEvent e)
@@ -2661,6 +2604,9 @@ parameter_list|)
 block|{
 comment|// Do nothing
 block|}
+end_function
+
+begin_function
 DECL|method|setPreviewActive (boolean enabled)
 specifier|public
 name|void
@@ -2717,6 +2663,9 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_function
 DECL|method|switchPreview ()
 specifier|public
 name|void
@@ -2804,7 +2753,13 @@ expr_stmt|;
 block|}
 block|}
 block|}
+end_function
+
+begin_comment
 comment|/**      * Receive key event on the main table. If the key is a letter or a digit,      * we should select the first entry in the table which starts with the given      * letter in the column by which the table is sorted.      * @param e The KeyEvent      */
+end_comment
+
+begin_function
 annotation|@
 name|Override
 DECL|method|keyTyped (KeyEvent e)
@@ -3082,6 +3037,9 @@ literal|0
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Override
 DECL|method|keyReleased (KeyEvent e)
@@ -3095,6 +3053,9 @@ parameter_list|)
 block|{
 comment|// Do nothing
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Override
 DECL|method|keyPressed (KeyEvent e)
@@ -3108,6 +3069,9 @@ parameter_list|)
 block|{
 comment|// Do nothing
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Override
 DECL|method|focusGained (FocusEvent e)
@@ -3121,6 +3085,9 @@ parameter_list|)
 block|{
 comment|// Do nothing
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Override
 DECL|method|focusLost (FocusEvent e)
@@ -3138,8 +3105,8 @@ literal|0
 expr_stmt|;
 comment|// Reset quick jump when focus is lost.
 block|}
-block|}
-end_class
+end_function
 
+unit|}
 end_unit
 

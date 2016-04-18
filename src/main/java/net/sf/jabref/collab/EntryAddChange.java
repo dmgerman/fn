@@ -18,6 +18,16 @@ end_package
 
 begin_import
 import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|*
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -37,18 +47,6 @@ operator|.
 name|jabref
 operator|.
 name|JabRefPreferences
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|MetaData
 import|;
 end_import
 
@@ -176,16 +174,6 @@ name|IdGenerator
 import|;
 end_import
 
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|*
-import|;
-end_import
-
 begin_class
 DECL|class|EntryAddChange
 class|class
@@ -241,10 +229,6 @@ name|diskEntry
 argument_list|,
 literal|null
 argument_list|,
-operator|new
-name|MetaData
-argument_list|()
-argument_list|,
 name|Globals
 operator|.
 name|prefs
@@ -295,7 +279,7 @@ argument_list|)
 expr_stmt|;
 name|panel
 operator|.
-name|database
+name|getDatabase
 argument_list|()
 operator|.
 name|insertEntry
@@ -319,7 +303,7 @@ name|UndoableInsertEntry
 argument_list|(
 name|panel
 operator|.
-name|database
+name|getDatabase
 argument_list|()
 argument_list|,
 name|diskEntry

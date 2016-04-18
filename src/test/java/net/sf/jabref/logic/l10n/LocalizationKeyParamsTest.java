@@ -49,8 +49,6 @@ specifier|public
 name|void
 name|testReplacePlaceholders
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|assertEquals
 argument_list|(

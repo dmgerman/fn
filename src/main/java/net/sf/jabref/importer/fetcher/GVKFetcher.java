@@ -858,9 +858,7 @@ expr_stmt|;
 block|}
 block|}
 return|return
-operator|(
 name|result
-operator|)
 return|;
 block|}
 DECL|method|fetchGVK (String query)
@@ -894,13 +892,11 @@ decl_stmt|;
 name|String
 name|searchstring
 init|=
-operator|(
 name|urlPrefix
 operator|+
 name|query
 operator|+
 name|urlSuffix
-operator|)
 decl_stmt|;
 name|LOGGER
 operator|.
@@ -913,40 +909,13 @@ try|try
 block|{
 name|URI
 name|uri
-decl_stmt|;
-try|try
-block|{
-name|uri
-operator|=
+init|=
 operator|new
 name|URI
 argument_list|(
 name|searchstring
 argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|URISyntaxException
-name|e
-parameter_list|)
-block|{
-name|LOGGER
-operator|.
-name|error
-argument_list|(
-literal|"URI malformed error"
-argument_list|,
-name|e
-argument_list|)
-expr_stmt|;
-return|return
-name|Collections
-operator|.
-name|emptyList
-argument_list|()
-return|;
-block|}
+decl_stmt|;
 name|URL
 name|url
 init|=
@@ -983,6 +952,28 @@ block|}
 block|}
 catch|catch
 parameter_list|(
+name|URISyntaxException
+name|e
+parameter_list|)
+block|{
+name|LOGGER
+operator|.
+name|error
+argument_list|(
+literal|"URI malformed error"
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+return|return
+name|Collections
+operator|.
+name|emptyList
+argument_list|()
+return|;
+block|}
+catch|catch
+parameter_list|(
 name|IOException
 name|e
 parameter_list|)
@@ -991,7 +982,7 @@ name|LOGGER
 operator|.
 name|error
 argument_list|(
-literal|"GVK plugin: An I/O exception occurred"
+literal|"GVK: An I/O exception occurred"
 argument_list|,
 name|e
 argument_list|)
@@ -1013,7 +1004,7 @@ name|LOGGER
 operator|.
 name|error
 argument_list|(
-literal|"GVK plugin: An internal parser error occurred"
+literal|"GVK: An internal parser error occurred"
 argument_list|,
 name|e
 argument_list|)

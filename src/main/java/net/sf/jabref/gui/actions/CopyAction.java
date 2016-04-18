@@ -199,6 +199,13 @@ operator|!=
 literal|null
 condition|)
 block|{
+name|ClipBoardManager
+name|clipboard
+init|=
+operator|new
+name|ClipBoardManager
+argument_list|()
+decl_stmt|;
 name|String
 name|selectedText
 init|=
@@ -230,9 +237,7 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-name|ClipBoardManager
-operator|.
-name|CLIPBOARD
+name|clipboard
 operator|.
 name|setClipboardContents
 argument_list|(
@@ -256,9 +261,7 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-name|ClipBoardManager
-operator|.
-name|CLIPBOARD
+name|clipboard
 operator|.
 name|setClipboardContents
 argument_list|(

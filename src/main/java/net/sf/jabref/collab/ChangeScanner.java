@@ -242,22 +242,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
-operator|.
-name|util
-operator|.
-name|PositionWindow
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|importer
 operator|.
 name|OpenDatabaseAction
@@ -531,7 +515,7 @@ name|inMem
 operator|=
 name|bp
 operator|.
-name|database
+name|getDatabase
 argument_list|()
 expr_stmt|;
 name|this
@@ -563,7 +547,6 @@ parameter_list|()
 block|{
 try|try
 block|{
-comment|//long startTime = System.currentTimeMillis();
 comment|// Parse the temporary file.
 name|File
 name|tempFile
@@ -924,20 +907,15 @@ name|SwingUtilities
 operator|.
 name|invokeLater
 argument_list|(
-operator|new
+call|(
 name|Runnable
+call|)
 argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|run
-parameter_list|()
+operator|->
 block|{
 name|ChangeDisplayDialog
 name|dial
-init|=
+operator|=
 operator|new
 name|ChangeDisplayDialog
 argument_list|(
@@ -949,16 +927,14 @@ name|inTemp
 argument_list|,
 name|changes
 argument_list|)
-decl_stmt|;
-name|PositionWindow
-operator|.
-name|placeDialog
-argument_list|(
+block|;
 name|dial
-argument_list|,
+operator|.
+name|setLocationRelativeTo
+argument_list|(
 name|frame
 argument_list|)
-expr_stmt|;
+argument_list|;
 name|dial
 operator|.
 name|setVisible
@@ -966,7 +942,6 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
-comment|// dial.show(); -> deprecated since 1.5
 name|fup
 operator|.
 name|scanResultsResolved
@@ -991,10 +966,12 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+block|)
+function|;
 block|}
-argument_list|)
-expr_stmt|;
-block|}
+end_class
+
+begin_else
 else|else
 block|{
 name|JOptionPane
@@ -1030,9 +1007,11 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
-block|}
+end_else
+
+begin_function
+unit|}      private
 DECL|method|storeTempDatabase ()
-specifier|private
 name|void
 name|storeTempDatabase
 parameter_list|()
@@ -1043,16 +1022,11 @@ name|INSTANCE
 operator|.
 name|execute
 argument_list|(
-operator|new
+call|(
 name|Runnable
+call|)
 argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|run
-parameter_list|()
+operator|->
 block|{
 try|try
 block|{
@@ -1166,12 +1140,16 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-block|}
-argument_list|)
-expr_stmt|;
-block|}
+end_function
+
+begin_empty_stmt
+unit|)
+empty_stmt|;
+end_empty_stmt
+
+begin_function
+unit|}      private
 DECL|method|scanMetaData (MetaData inMem1, MetaData inTemp1, MetaData onDisk)
-specifier|private
 name|void
 name|scanMetaData
 parameter_list|(
@@ -1196,7 +1174,7 @@ argument_list|,
 name|inTemp1
 argument_list|)
 decl_stmt|;
-name|ArrayList
+name|List
 argument_list|<
 name|String
 argument_list|>
@@ -1348,6 +1326,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_function
 DECL|method|scanEntries (EntrySorter mem, EntrySorter tmp, EntrySorter disk)
 specifier|private
 name|void
@@ -1376,7 +1357,7 @@ literal|0
 decl_stmt|;
 comment|// Create a HashSet where we can put references to entry numbers in the "disk"
 comment|// database that we have matched. This is to avoid matching them twice.
-name|HashSet
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -1392,7 +1373,7 @@ name|getEntryCount
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|HashSet
+name|Set
 argument_list|<
 name|Integer
 argument_list|>
@@ -1834,14 +1815,6 @@ argument_list|(
 name|ec
 argument_list|)
 expr_stmt|;
-comment|// Create an undo edit to represent this change:
-comment|//NamedCompound ce = new NamedCompound("Modified entry");
-comment|//ce.addEdit(new UndoableRemoveEntry(inMem, disk.getEntryAt(bestMatchI), panel));
-comment|//ce.addEdit(new UndoableInsertEntry(inMem, tmp.getEntryAt(piv1), panel));
-comment|//ce.end();
-comment|//changes.add(ce);
-comment|//System.out.println("Possible match for entry:");
-comment|//System.out.println("----------------------------------------------");
 block|}
 else|else
 block|{
@@ -1875,7 +1848,6 @@ argument_list|(
 name|ec
 argument_list|)
 expr_stmt|;
-comment|/*NamedCompound ce = new NamedCompound("Removed entry");                     ce.addEdit(new UndoableInsertEntry(inMem, tmp.getEntryAt(piv1), panel));                     ce.end();                     changes.add(ce);*/
 block|}
 block|}
 block|}
@@ -2011,13 +1983,17 @@ name|ec
 argument_list|)
 expr_stmt|;
 block|}
-comment|/*NamedCompound ce = new NamedCompound("Added entry");                     ce.addEdit(new UndoableRemoveEntry(inMem, disk.getEntryAt(i), panel));                     ce.end();                     changes.add(ce);*/
 block|}
 block|}
-comment|//System.out.println("Suspected new entries in file: "+(disk.getEntryCount()-used.size()));
 block|}
 block|}
+end_function
+
+begin_comment
 comment|/**      * Finds the entry in neu best fitting the specified entry in old. If no entries get a score      * above zero, an entry is still returned.      *      * @param old   EntrySorter      * @param neu   EntrySorter      * @param index int      * @return BibEntry      */
+end_comment
+
+begin_function
 DECL|method|bestFit (EntrySorter old, EntrySorter neu, int index)
 specifier|private
 specifier|static
@@ -2120,6 +2096,9 @@ name|found
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|scanPreamble (BibDatabase inMem1, BibDatabase onTmp, BibDatabase onDisk)
 specifier|private
 name|void
@@ -2231,6 +2210,9 @@ expr_stmt|;
 block|}
 block|}
 block|}
+end_function
+
+begin_function
 DECL|method|scanStrings (BibDatabase inMem1, BibDatabase onTmp, BibDatabase onDisk)
 specifier|private
 name|void
@@ -2246,40 +2228,22 @@ name|BibDatabase
 name|onDisk
 parameter_list|)
 block|{
-name|int
-name|nTmp
-init|=
-name|onTmp
-operator|.
-name|getStringCount
-argument_list|()
-decl_stmt|;
-name|int
-name|nDisk
-init|=
-name|onDisk
-operator|.
-name|getStringCount
-argument_list|()
-decl_stmt|;
 if|if
 condition|(
-operator|(
-name|nTmp
-operator|==
-literal|0
-operator|)
+name|onTmp
+operator|.
+name|hasNoStrings
+argument_list|()
 operator|&&
-operator|(
-name|nDisk
-operator|==
-literal|0
-operator|)
+name|onDisk
+operator|.
+name|hasNoStrings
+argument_list|()
 condition|)
 block|{
 return|return;
 block|}
-name|HashSet
+name|Set
 argument_list|<
 name|Object
 argument_list|>
@@ -2290,7 +2254,7 @@ name|HashSet
 argument_list|<>
 argument_list|()
 decl_stmt|;
-name|HashSet
+name|Set
 argument_list|<
 name|Object
 argument_list|>
@@ -2301,7 +2265,7 @@ name|HashSet
 argument_list|<>
 argument_list|()
 decl_stmt|;
-name|HashSet
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -2868,6 +2832,9 @@ expr_stmt|;
 block|}
 block|}
 block|}
+end_function
+
+begin_function
 DECL|method|findString (BibDatabase base, String name, Set<Object> used)
 specifier|private
 specifier|static
@@ -2974,7 +2941,13 @@ name|empty
 argument_list|()
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * This method only detects whether a change took place or not. It does not determine the type of change. This would      * be possible, but difficult to do properly, so I rather only report the change.      */
+end_comment
+
+begin_function
 DECL|method|scanGroups (MetaData onTmp, MetaData onDisk)
 specifier|private
 name|void
@@ -3086,6 +3059,11 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_interface
+annotation|@
+name|FunctionalInterface
 DECL|interface|DisplayResultCallback
 specifier|public
 interface|interface
@@ -3100,8 +3078,8 @@ name|resolved
 parameter_list|)
 function_decl|;
 block|}
-block|}
-end_class
+end_interface
 
+unit|}
 end_unit
 

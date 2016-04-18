@@ -189,6 +189,39 @@ operator|+
 literal|")"
 decl_stmt|;
 comment|// end group \1
+DECL|field|FIND_DOI_EXP
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|FIND_DOI_EXP
+init|=
+literal|""
+operator|+
+literal|"(?:urn:)?"
+comment|// optional urn
+operator|+
+literal|"(?:doi:)?"
+comment|// optional doi
+operator|+
+literal|"("
+comment|// begin group \1
+operator|+
+literal|"10"
+comment|// directory indicator
+operator|+
+literal|"(?:\\.[0-9]+)+"
+comment|// registrant codes
+operator|+
+literal|"[/:]"
+comment|// divider
+operator|+
+literal|"(?:[^\\s]+)"
+comment|// suffix alphanumeric without space
+operator|+
+literal|")"
+decl_stmt|;
+comment|// end group \1
 DECL|field|HTTP_EXP
 specifier|private
 specifier|static
@@ -201,12 +234,12 @@ operator|+
 name|DOI_EXP
 decl_stmt|;
 comment|// Pattern
-DECL|field|DOI_PATT
+DECL|field|EXACT_DOI_PATT
 specifier|private
 specifier|static
 specifier|final
 name|Pattern
-name|DOI_PATT
+name|EXACT_DOI_PATT
 init|=
 name|Pattern
 operator|.
@@ -223,6 +256,156 @@ operator|.
 name|CASE_INSENSITIVE
 argument_list|)
 decl_stmt|;
+DECL|field|DOI_PATT
+specifier|private
+specifier|static
+specifier|final
+name|Pattern
+name|DOI_PATT
+init|=
+name|Pattern
+operator|.
+name|compile
+argument_list|(
+literal|"(?:https?://[^\\s]+?)?"
+operator|+
+name|FIND_DOI_EXP
+argument_list|,
+name|Pattern
+operator|.
+name|CASE_INSENSITIVE
+argument_list|)
+decl_stmt|;
+comment|/**      * Creates a DOI from various schemes including URL, URN, and plain DOIs.      *      * @param doi the DOI string      * @throws NullPointerException if DOI is null      * @throws IllegalArgumentException if doi does not include a valid DOI      * @return an instance of the DOI class      */
+DECL|method|DOI (String doi)
+specifier|public
+name|DOI
+parameter_list|(
+name|String
+name|doi
+parameter_list|)
+block|{
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|doi
+argument_list|)
+expr_stmt|;
+comment|// Remove whitespace
+name|String
+name|trimmedDoi
+init|=
+name|doi
+operator|.
+name|trim
+argument_list|()
+decl_stmt|;
+comment|// HTTP URL decoding
+if|if
+condition|(
+name|doi
+operator|.
+name|matches
+argument_list|(
+name|HTTP_EXP
+argument_list|)
+condition|)
+block|{
+try|try
+block|{
+comment|// decodes path segment
+name|URI
+name|url
+init|=
+operator|new
+name|URI
+argument_list|(
+name|trimmedDoi
+argument_list|)
+decl_stmt|;
+name|trimmedDoi
+operator|=
+name|url
+operator|.
+name|getScheme
+argument_list|()
+operator|+
+literal|"://"
+operator|+
+name|url
+operator|.
+name|getHost
+argument_list|()
+operator|+
+name|url
+operator|.
+name|getPath
+argument_list|()
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|URISyntaxException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|IllegalArgumentException
+argument_list|(
+name|doi
+operator|+
+literal|" is not a valid HTTP DOI."
+argument_list|)
+throw|;
+block|}
+block|}
+comment|// Extract DOI
+name|Matcher
+name|matcher
+init|=
+name|EXACT_DOI_PATT
+operator|.
+name|matcher
+argument_list|(
+name|trimmedDoi
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|matcher
+operator|.
+name|find
+argument_list|()
+condition|)
+block|{
+comment|// match only group \1
+name|this
+operator|.
+name|doi
+operator|=
+name|matcher
+operator|.
+name|group
+argument_list|(
+literal|1
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+throw|throw
+operator|new
+name|IllegalArgumentException
+argument_list|(
+name|trimmedDoi
+operator|+
+literal|" is not a valid DOI."
+argument_list|)
+throw|;
+block|}
+block|}
 comment|/**      * Creates an Optional<DOI> from various schemes including URL, URN, and plain DOIs.      *      * Useful for suppressing the<c>IllegalArgumentException</c> of the Constructor      * and checking for Optional.isPresent() instead.      *      * @param doi the DOI string      * @return an Optional containing the DOI or an empty Optional      */
 DECL|method|build (String doi)
 specifier|public
@@ -268,91 +451,31 @@ argument_list|()
 return|;
 block|}
 block|}
-comment|/**      * Creates a DOI from various schemes including URL, URN, and plain DOIs.      *      * @param doi the DOI string      * @throws NullPointerException if DOI is null      * @throws IllegalArgumentException if doi does not include a valid DOI      * @return an instance of the DOI class      */
-DECL|method|DOI (String doi)
+comment|/**      * Tries to find a DOI inside the given text.      *      * @param text the Text which might contain a DOI      * @return an Optional containing the DOI or an empty Optional      */
+DECL|method|findInText (String text)
 specifier|public
+specifier|static
+name|Optional
+argument_list|<
 name|DOI
+argument_list|>
+name|findInText
 parameter_list|(
 name|String
-name|doi
+name|text
 parameter_list|)
 block|{
-name|Objects
-operator|.
-name|requireNonNull
-argument_list|(
-name|doi
-argument_list|)
-expr_stmt|;
-comment|// Remove whitespace
-name|doi
-operator|=
-name|doi
-operator|.
-name|trim
-argument_list|()
-expr_stmt|;
-comment|// HTTP URL decoding
-if|if
-condition|(
-name|doi
-operator|.
-name|matches
-argument_list|(
-name|HTTP_EXP
-argument_list|)
-condition|)
-block|{
-try|try
-block|{
-comment|// decodes path segment
-name|URI
-name|url
+name|Optional
+argument_list|<
+name|DOI
+argument_list|>
+name|result
 init|=
-operator|new
-name|URI
-argument_list|(
-name|doi
-argument_list|)
+name|Optional
+operator|.
+name|empty
+argument_list|()
 decl_stmt|;
-name|doi
-operator|=
-name|url
-operator|.
-name|getScheme
-argument_list|()
-operator|+
-literal|"://"
-operator|+
-name|url
-operator|.
-name|getHost
-argument_list|()
-operator|+
-name|url
-operator|.
-name|getPath
-argument_list|()
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|URISyntaxException
-name|e
-parameter_list|)
-block|{
-throw|throw
-operator|new
-name|IllegalArgumentException
-argument_list|(
-name|doi
-operator|+
-literal|" is not a valid HTTP DOI."
-argument_list|)
-throw|;
-block|}
-block|}
-comment|// Extract DOI
 name|Matcher
 name|matcher
 init|=
@@ -360,7 +483,7 @@ name|DOI_PATT
 operator|.
 name|matcher
 argument_list|(
-name|doi
+name|text
 argument_list|)
 decl_stmt|;
 if|if
@@ -372,30 +495,28 @@ argument_list|()
 condition|)
 block|{
 comment|// match only group \1
-name|this
-operator|.
-name|doi
+name|result
 operator|=
+name|Optional
+operator|.
+name|of
+argument_list|(
+operator|new
+name|DOI
+argument_list|(
 name|matcher
 operator|.
 name|group
 argument_list|(
 literal|1
 argument_list|)
+argument_list|)
+argument_list|)
 expr_stmt|;
 block|}
-else|else
-block|{
-throw|throw
-operator|new
-name|IllegalArgumentException
-argument_list|(
-name|doi
-operator|+
-literal|" is not a valid DOI."
-argument_list|)
-throw|;
-block|}
+return|return
+name|result
+return|;
 block|}
 comment|/**      * Return the plain DOI      *      * @return the plain DOI value.      */
 DECL|method|getDOI ()

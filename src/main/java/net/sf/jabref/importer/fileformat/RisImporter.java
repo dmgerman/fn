@@ -211,6 +211,8 @@ throws|throws
 name|IOException
 block|{
 comment|// Our strategy is to look for the "AU  - *" line.
+try|try
+init|(
 name|BufferedReader
 name|in
 init|=
@@ -224,7 +226,8 @@ argument_list|(
 name|stream
 argument_list|)
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|String
 name|str
 decl_stmt|;
@@ -260,6 +263,7 @@ literal|true
 return|;
 block|}
 block|}
+block|}
 return|return
 literal|false
 return|;
@@ -284,7 +288,7 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|ArrayList
+name|List
 argument_list|<
 name|BibEntry
 argument_list|>
@@ -302,6 +306,8 @@ operator|new
 name|StringBuilder
 argument_list|()
 decl_stmt|;
+try|try
+init|(
 name|BufferedReader
 name|in
 init|=
@@ -315,7 +321,8 @@ argument_list|(
 name|stream
 argument_list|)
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|String
 name|str
 decl_stmt|;
@@ -347,6 +354,7 @@ argument_list|(
 literal|'\n'
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|String
 index|[]
@@ -391,19 +399,6 @@ range|:
 name|entries
 control|)
 block|{
-if|if
-condition|(
-name|entry1
-operator|.
-name|trim
-argument_list|()
-operator|.
-name|isEmpty
-argument_list|()
-condition|)
-block|{
-continue|continue;
-block|}
 name|String
 name|type
 init|=
@@ -434,7 +429,7 @@ name|comment
 init|=
 literal|""
 decl_stmt|;
-name|HashMap
+name|Map
 argument_list|<
 name|String
 argument_list|,
@@ -913,20 +908,33 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+name|hm
+operator|.
+name|put
+argument_list|(
+literal|"title"
+argument_list|,
+name|hm
+operator|.
+name|get
+argument_list|(
+literal|"title"
+argument_list|)
+operator|.
+name|replaceAll
+argument_list|(
+literal|"\\s+"
+argument_list|,
+literal|" "
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|// Normalize whitespaces
 block|}
-comment|// =
-comment|// val;
 elseif|else
 if|if
 condition|(
 literal|"T2"
-operator|.
-name|equals
-argument_list|(
-name|lab
-argument_list|)
-operator|||
-literal|"T3"
 operator|.
 name|equals
 argument_list|(
@@ -946,6 +954,27 @@ operator|.
 name|put
 argument_list|(
 literal|"booktitle"
+argument_list|,
+name|val
+argument_list|)
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+literal|"T3"
+operator|.
+name|equals
+argument_list|(
+name|lab
+argument_list|)
+condition|)
+block|{
+name|hm
+operator|.
+name|put
+argument_list|(
+literal|"series"
 argument_list|,
 name|val
 argument_list|)
@@ -1191,6 +1220,22 @@ name|endPage
 operator|=
 name|val
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|endPage
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+name|endPage
+operator|=
+literal|"--"
+operator|+
+name|endPage
+expr_stmt|;
+block|}
 block|}
 elseif|else
 if|if
@@ -1564,7 +1609,7 @@ name|comment
 operator|=
 name|comment
 operator|+
-literal|"\n"
+literal|" "
 expr_stmt|;
 block|}
 name|comment
@@ -1662,7 +1707,7 @@ name|author
 operator|=
 name|AuthorList
 operator|.
-name|fixAuthor_lastNameFirst
+name|fixAuthorLastNameFirst
 argument_list|(
 name|author
 argument_list|)
@@ -1690,7 +1735,7 @@ name|editor
 operator|=
 name|AuthorList
 operator|.
-name|fixAuthor_lastNameFirst
+name|fixAuthorLastNameFirst
 argument_list|(
 name|editor
 argument_list|)
@@ -1732,8 +1777,6 @@ literal|"pages"
 argument_list|,
 name|startPage
 operator|+
-literal|"--"
-operator|+
 name|endPage
 argument_list|)
 expr_stmt|;
@@ -1751,7 +1794,7 @@ argument_list|)
 decl_stmt|;
 comment|// id assumes an existing database so don't
 comment|// Remove empty fields:
-name|ArrayList
+name|List
 argument_list|<
 name|Object
 argument_list|>

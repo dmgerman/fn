@@ -68,7 +68,7 @@ name|al
 init|=
 name|AuthorList
 operator|.
-name|getAuthorList
+name|parse
 argument_list|(
 literal|"Charles Louis Xavier Joseph de la Vall{\\'e}e Poussin"
 argument_list|)
@@ -105,7 +105,7 @@ name|al
 init|=
 name|AuthorList
 operator|.
-name|getAuthorList
+name|parse
 argument_list|(
 literal|"Charles Louis Xavier Joseph de la Vall{\\'e}e Poussin"
 argument_list|)
@@ -142,7 +142,7 @@ name|al
 init|=
 name|AuthorList
 operator|.
-name|getAuthorList
+name|parse
 argument_list|(
 literal|"Charles Louis Xavier Joseph de la Vall{\\'e}e Poussin"
 argument_list|)
@@ -178,7 +178,7 @@ name|al
 init|=
 name|AuthorList
 operator|.
-name|getAuthorList
+name|parse
 argument_list|(
 literal|"Charles Louis Xavier Joseph de la Vall{\\'e}e Poussin"
 argument_list|)

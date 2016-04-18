@@ -185,8 +185,6 @@ specifier|public
 name|void
 name|setUp
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|Globals
 operator|.
@@ -363,10 +361,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|GMP ()
+DECL|method|testGMP ()
 specifier|public
 name|void
-name|GMP
+name|testGMP
 parameter_list|()
 throws|throws
 name|Exception
@@ -396,7 +394,11 @@ name|void
 name|subTitleTest
 parameter_list|()
 throws|throws
-name|Exception
+name|IOException
+throws|,
+name|ParserConfigurationException
+throws|,
+name|SAXException
 block|{
 try|try
 init|(

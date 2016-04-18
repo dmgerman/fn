@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/* Copyright (C) 2003-2015 JabRef Contributors  * Copyright (c) 2009, Ryo IGARASHI<rigarash@gmail.com>  * All rights reserved.  * Redistribution and use in source and binary forms, with or without  * modification, are permitted provided that the following conditions are met:  *  *     * Redistributions of source code must retain the above copyright  *       notice, this list of conditions and the following disclaimer.  *     * Redistributions in binary form must reproduce the above copyright  *        notice, this list of conditions and the following disclaimer in the  *       documentation and/or other materials provided with the distribution.  *  * THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS "AS IS" AND ANY  * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED  * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE  * DISCLAIMED. IN NO EVENT SHALL THE REGENTS AND CONTRIBUTORS BE LIABLE FOR ANY  * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES  * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;  * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND  * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.  */
+comment|/* Copyright (C) 2003-2016 JabRef Contributors  * Copyright (c) 2009, Ryo IGARASHI<rigarash@gmail.com>  * All rights reserved.  * Redistribution and use in source and binary forms, with or without  * modification, are permitted provided that the following conditions are met:  *  *     * Redistributions of source code must retain the above copyright  *       notice, this list of conditions and the following disclaimer.  *     * Redistributions in binary form must reproduce the above copyright  *        notice, this list of conditions and the following disclaimer in the  *       documentation and/or other materials provided with the distribution.  *  * THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS "AS IS" AND ANY  * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED  * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE  * DISCLAIMED. IN NO EVENT SHALL THE REGENTS AND CONTRIBUTORS BE LIABLE FOR ANY  * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES  * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;  * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND  * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.  */
 end_comment
 
 begin_package
@@ -17,6 +17,94 @@ operator|.
 name|fetcher
 package|;
 end_package
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|*
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|net
+operator|.
+name|HttpURLConnection
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|net
+operator|.
+name|URL
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|Charset
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|*
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|xml
+operator|.
+name|stream
+operator|.
+name|XMLInputFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|xml
+operator|.
+name|stream
+operator|.
+name|XMLStreamException
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|xml
+operator|.
+name|stream
+operator|.
+name|XMLStreamReader
+import|;
+end_import
 
 begin_import
 import|import
@@ -126,89 +214,29 @@ end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|swing
+name|apache
 operator|.
-name|*
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
 import|;
 end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|xml
+name|apache
 operator|.
-name|stream
+name|commons
 operator|.
-name|XMLInputFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
+name|logging
 operator|.
-name|xml
-operator|.
-name|stream
-operator|.
-name|XMLStreamException
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|xml
-operator|.
-name|stream
-operator|.
-name|XMLStreamReader
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|*
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|net
-operator|.
-name|HttpURLConnection
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|net
-operator|.
-name|URL
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|nio
-operator|.
-name|charset
-operator|.
-name|Charset
+name|LogFactory
 import|;
 end_import
 
@@ -224,6 +252,22 @@ name|ADSFetcher
 implements|implements
 name|EntryFetcher
 block|{
+DECL|field|LOGGER
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOGGER
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|ADSFetcher
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 annotation|@
 name|Override
 DECL|method|getOptionsPanel ()
@@ -232,7 +276,6 @@ name|JPanel
 name|getOptionsPanel
 parameter_list|()
 block|{
-comment|// No option panel
 return|return
 literal|null
 return|;
@@ -245,7 +288,6 @@ name|String
 name|getHelpPage
 parameter_list|()
 block|{
-comment|// TODO: No help page
 return|return
 literal|null
 return|;
@@ -259,12 +301,7 @@ name|getTitle
 parameter_list|()
 block|{
 return|return
-name|Localization
-operator|.
-name|lang
-argument_list|(
 literal|"ADS from ADS-DOI"
-argument_list|)
 return|;
 block|}
 annotation|@
@@ -287,8 +324,10 @@ block|{
 try|try
 block|{
 comment|/* Remove "doi:" scheme identifier */
-name|query
-operator|=
+comment|/* Allow fetching only 1 key */
+name|String
+name|key
+init|=
 name|query
 operator|.
 name|replaceAll
@@ -297,12 +336,6 @@ literal|"^(doi:|DOI:)"
 argument_list|,
 literal|""
 argument_list|)
-expr_stmt|;
-comment|/* Allow fetching only 1 key */
-name|String
-name|key
-init|=
-name|query
 decl_stmt|;
 comment|/* Query ADS and load the results into the BibDatabase */
 name|status
@@ -313,12 +346,10 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Processing"
-argument_list|)
-operator|+
-literal|" "
-operator|+
+literal|"Processing %0"
+argument_list|,
 name|key
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|BibDatabase
@@ -339,14 +370,10 @@ operator|!=
 literal|null
 operator|)
 operator|&&
-operator|(
 name|bd
 operator|.
-name|getEntryCount
+name|hasEntries
 argument_list|()
-operator|>
-literal|0
-operator|)
 condition|)
 block|{
 comment|/* Add the entry to the inspection dialog */
@@ -400,7 +427,9 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Error while fetching from ADS"
+literal|"Error while fetching from %0"
+argument_list|,
+literal|"ADS"
 argument_list|)
 operator|+
 literal|": "
@@ -411,10 +440,14 @@ name|getMessage
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|e
+name|LOGGER
 operator|.
-name|printStackTrace
-argument_list|()
+name|warn
+argument_list|(
+literal|"Error while fetching from ADS"
+argument_list|,
+name|e
+argument_list|)
 expr_stmt|;
 block|}
 return|return
@@ -567,6 +600,15 @@ operator|.
 name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
+name|LOGGER
+operator|.
+name|debug
+argument_list|(
+literal|"File not found"
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
@@ -597,6 +639,15 @@ argument_list|,
 name|JOptionPane
 operator|.
 name|ERROR_MESSAGE
+argument_list|)
+expr_stmt|;
+name|LOGGER
+operator|.
+name|debug
+argument_list|(
+literal|"Problem accessing URL"
+argument_list|,
+name|e
 argument_list|)
 expr_stmt|;
 block|}
@@ -632,6 +683,15 @@ argument_list|,
 name|JOptionPane
 operator|.
 name|ERROR_MESSAGE
+argument_list|)
+expr_stmt|;
+name|LOGGER
+operator|.
+name|warn
+argument_list|(
+literal|"Problem fetching from ADS"
+argument_list|,
+name|e
 argument_list|)
 expr_stmt|;
 block|}

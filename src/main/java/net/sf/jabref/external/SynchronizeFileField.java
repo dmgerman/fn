@@ -18,6 +18,58 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|awt
+operator|.
+name|BorderLayout
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|awt
+operator|.
+name|event
+operator|.
+name|ActionEvent
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|File
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|*
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|*
+import|;
+end_import
+
+begin_import
+import|import
 name|com
 operator|.
 name|jgoodies
@@ -66,7 +118,31 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|*
+name|BibDatabaseContext
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|Globals
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|JabRefExecutorService
 import|;
 end_import
 
@@ -158,22 +234,6 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|util
-operator|.
-name|PositionWindow
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
 name|worker
 operator|.
 name|AbstractWorker
@@ -204,22 +264,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|model
-operator|.
-name|entry
-operator|.
-name|BibEntry
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|logic
 operator|.
 name|util
@@ -238,71 +282,25 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|BibEntry
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|util
 operator|.
 name|Util
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|*
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|awt
-operator|.
-name|*
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|awt
-operator|.
-name|event
-operator|.
-name|ActionEvent
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|File
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|*
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
 import|;
 end_import
 
@@ -440,7 +438,7 @@ name|col
 init|=
 name|panel
 operator|.
-name|database
+name|getDatabase
 argument_list|()
 operator|.
 name|getEntries
@@ -483,18 +481,13 @@ name|panel
 operator|.
 name|getBibDatabaseContext
 argument_list|()
-operator|.
-name|getMetaData
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-name|PositionWindow
-operator|.
-name|placeDialog
-argument_list|(
 name|optDiag
-argument_list|,
+operator|.
+name|setLocationRelativeTo
+argument_list|(
 name|panel
 operator|.
 name|frame
@@ -545,14 +538,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Synchronizing %0 links..."
-argument_list|,
-name|Globals
-operator|.
-name|FILE_FIELD
-operator|.
-name|toUpperCase
-argument_list|()
+literal|"Synchronizing file links..."
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -579,7 +565,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"No entries selected."
+literal|"This operation requires one or more entries to be selected."
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -668,11 +654,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Autoset %0 field"
-argument_list|,
-name|Globals
-operator|.
-name|FILE_FIELD
+literal|"Automatically set file links"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -706,7 +688,7 @@ argument_list|(
 name|sel
 argument_list|)
 decl_stmt|;
-comment|// Start the autosetting process:
+comment|// Start the automatically setting process:
 name|Runnable
 name|r
 init|=
@@ -725,9 +707,6 @@ argument_list|,
 name|panel
 operator|.
 name|getBibDatabaseContext
-argument_list|()
-operator|.
-name|getMetaData
 argument_list|()
 argument_list|,
 literal|null
@@ -853,15 +832,8 @@ operator|.
 name|getBibDatabaseContext
 argument_list|()
 operator|.
-name|getMetaData
-argument_list|()
-operator|.
 name|getFileDirectory
-argument_list|(
-name|Globals
-operator|.
-name|FILE_FIELD
-argument_list|)
+argument_list|()
 decl_stmt|;
 name|List
 argument_list|<
@@ -931,7 +903,11 @@ operator|.
 name|link
 operator|.
 name|toLowerCase
-argument_list|()
+argument_list|(
+name|Locale
+operator|.
+name|ENGLISH
+argument_list|)
 operator|.
 name|startsWith
 argument_list|(
@@ -1090,9 +1066,6 @@ name|panel
 operator|.
 name|getBibDatabaseContext
 argument_list|()
-operator|.
-name|getMetaData
-argument_list|()
 argument_list|)
 decl_stmt|;
 name|flEditor
@@ -1165,10 +1138,20 @@ condition|(
 operator|!
 name|deleted
 operator|&&
+name|flEntry
+operator|.
+name|type
+operator|.
+name|isPresent
+argument_list|()
+operator|&&
 operator|(
 name|flEntry
 operator|.
 name|type
+operator|.
+name|get
+argument_list|()
 operator|instanceof
 name|UnknownExternalFileType
 operator|)
@@ -1191,6 +1174,9 @@ argument_list|,
 name|flEntry
 operator|.
 name|type
+operator|.
+name|get
+argument_list|()
 operator|.
 name|getName
 argument_list|()
@@ -1240,6 +1226,9 @@ argument_list|,
 name|flEntry
 operator|.
 name|type
+operator|.
+name|get
+argument_list|()
 operator|.
 name|getName
 argument_list|()
@@ -1298,6 +1287,9 @@ argument_list|(
 name|flEntry
 operator|.
 name|type
+operator|.
+name|get
+argument_list|()
 operator|.
 name|getName
 argument_list|()
@@ -1426,9 +1418,6 @@ argument_list|,
 name|panel
 operator|.
 name|getBibDatabaseContext
-argument_list|()
-operator|.
-name|getMetaData
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -1610,14 +1599,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Finished synchronizing %0 links. Entries changed: %1."
-argument_list|,
-name|Globals
-operator|.
-name|FILE_FIELD
-operator|.
-name|toUpperCase
-argument_list|()
+literal|"Finished synchronizing file links. Entries changed: %0."
 argument_list|,
 name|String
 operator|.
@@ -1700,24 +1682,11 @@ name|canceled
 init|=
 literal|true
 decl_stmt|;
-DECL|field|metaData
+DECL|field|databaseContext
 specifier|private
 specifier|final
-name|MetaData
-name|metaData
-decl_stmt|;
-DECL|field|fn
-specifier|private
-specifier|final
-name|String
-name|fn
-init|=
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"file"
-argument_list|)
+name|BibDatabaseContext
+name|databaseContext
 decl_stmt|;
 DECL|field|autoSetUnset
 specifier|private
@@ -1732,9 +1701,16 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Autoset %0 links. Do not overwrite existing links."
-argument_list|,
-name|fn
+literal|"Automatically set file links"
+argument_list|)
+operator|+
+literal|". "
+operator|+
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Do not overwrite existing links."
 argument_list|)
 argument_list|,
 literal|true
@@ -1753,9 +1729,16 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Autoset %0 links. Allow overwriting existing links."
-argument_list|,
-name|fn
+literal|"Automatically set file links"
+argument_list|)
+operator|+
+literal|". "
+operator|+
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Allow overwriting existing links."
 argument_list|)
 argument_list|,
 literal|false
@@ -1774,7 +1757,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Do not autoset"
+literal|"Do not automatically set"
 argument_list|)
 argument_list|,
 literal|false
@@ -1793,23 +1776,21 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Check existing %0 links"
-argument_list|,
-name|fn
+literal|"Check existing file links"
 argument_list|)
 argument_list|,
 literal|true
 argument_list|)
 decl_stmt|;
-DECL|method|OptionsDialog (JFrame parent, MetaData metaData)
+DECL|method|OptionsDialog (JFrame parent, BibDatabaseContext databaseContext)
 specifier|public
 name|OptionsDialog
 parameter_list|(
 name|JFrame
 name|parent
 parameter_list|,
-name|MetaData
-name|metaData
+name|BibDatabaseContext
+name|databaseContext
 parameter_list|)
 block|{
 name|super
@@ -1820,14 +1801,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Synchronize %0 links"
-argument_list|,
-name|Globals
-operator|.
-name|FILE_FIELD
-operator|.
-name|toUpperCase
-argument_list|()
+literal|"Synchronize file links"
 argument_list|)
 argument_list|,
 literal|true
@@ -1835,9 +1809,9 @@ argument_list|)
 expr_stmt|;
 name|this
 operator|.
-name|metaData
+name|databaseContext
 operator|=
-name|metaData
+name|databaseContext
 expr_stmt|;
 name|ok
 operator|.
@@ -1998,11 +1972,9 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Attempt to autoset %0 links for your entries. Autoset works if "
+literal|"Attempt to automatically set file links for your entries. Automatically setting works if "
 operator|+
-literal|"a %0 file in your %0 directory or a subdirectory<BR>is named identically to an entry's BibTeX key, plus extension."
-argument_list|,
-name|fn
+literal|"a file in your file directory<BR>or a subdirectory is named identically to an entry's BibTeX key, plus extension."
 argument_list|)
 operator|+
 literal|"</HTML>"
@@ -2016,7 +1988,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Autoset"
+literal|"Automatically set file links"
 argument_list|)
 argument_list|)
 operator|.
@@ -2113,9 +2085,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"This makes JabRef look up each %0 link and check if the file exists. If not, you will be given options<BR>to resolve the problem."
-argument_list|,
-name|fn
+literal|"This makes JabRef look up each file link and check if the file exists. If not, you will be given options<BR>to resolve the problem."
 argument_list|)
 operator|+
 literal|"</HTML>"
@@ -2278,14 +2248,10 @@ name|String
 argument_list|>
 name|dirs
 init|=
-name|metaData
+name|databaseContext
 operator|.
 name|getFileDirectory
-argument_list|(
-name|Globals
-operator|.
-name|FILE_FIELD
-argument_list|)
+argument_list|()
 decl_stmt|;
 if|if
 condition|(

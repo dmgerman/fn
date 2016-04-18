@@ -374,7 +374,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"This operation requires all selected entries to have BibTex keys defined."
+literal|"This operation requires all selected entries to have BibTeX keys defined."
 argument_list|)
 argument_list|,
 operator|(
@@ -422,7 +422,7 @@ name|pushEntries
 argument_list|(
 name|panel
 operator|.
-name|database
+name|getDatabase
 argument_list|()
 argument_list|,
 name|entries
@@ -446,26 +446,14 @@ name|SwingUtilities
 operator|.
 name|invokeLater
 argument_list|(
-operator|new
-name|Runnable
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|run
 parameter_list|()
-block|{
+lambda|->
 name|operation
 operator|.
 name|operationCompleted
 argument_list|(
 name|panel
 argument_list|)
-expr_stmt|;
-block|}
-block|}
 argument_list|)
 expr_stmt|;
 block|}

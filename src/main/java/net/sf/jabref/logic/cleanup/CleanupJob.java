@@ -59,6 +59,8 @@ import|;
 end_import
 
 begin_interface
+annotation|@
+name|FunctionalInterface
 DECL|interface|CleanupJob
 specifier|public
 interface|interface

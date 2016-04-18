@@ -130,16 +130,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
-operator|.
-name|UnsupportedEncodingException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|net
 operator|.
 name|URL
@@ -220,6 +210,15 @@ name|ScienceDirectFetcher
 implements|implements
 name|EntryFetcher
 block|{
+DECL|field|SCIENCE_DIRECT
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|SCIENCE_DIRECT
+init|=
+literal|"ScienceDirect"
+decl_stmt|;
 DECL|field|LOGGER
 specifier|private
 specifier|static
@@ -317,7 +316,7 @@ name|getHelpPage
 parameter_list|()
 block|{
 return|return
-literal|"ScienceDirect"
+name|SCIENCE_DIRECT
 return|;
 block|}
 annotation|@
@@ -342,12 +341,7 @@ name|getTitle
 parameter_list|()
 block|{
 return|return
-name|Localization
-operator|.
-name|menuTitle
-argument_list|(
-literal|"Search ScienceDirect"
-argument_list|)
+name|SCIENCE_DIRECT
 return|;
 block|}
 annotation|@
@@ -433,7 +427,9 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Search ScienceDirect"
+literal|"Search %0"
+argument_list|,
+name|SCIENCE_DIRECT
 argument_list|)
 argument_list|,
 name|JOptionPane
@@ -474,14 +470,9 @@ argument_list|)
 operator|.
 name|ifPresent
 argument_list|(
-name|entry
-lambda|->
 name|dialog
-operator|.
+operator|::
 name|addEntry
-argument_list|(
-name|entry
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|dialog
@@ -525,7 +516,9 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Error while fetching from ScienceDirect"
+literal|"Error while fetching from %0"
+argument_list|,
+name|SCIENCE_DIRECT
 argument_list|)
 operator|+
 literal|": "
@@ -560,7 +553,7 @@ block|{
 name|String
 name|urlQuery
 decl_stmt|;
-name|ArrayList
+name|List
 argument_list|<
 name|String
 argument_list|>
@@ -571,8 +564,6 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
-try|try
-block|{
 name|urlQuery
 operator|=
 name|ScienceDirectFetcher
@@ -638,21 +629,6 @@ block|}
 return|return
 name|ids
 return|;
-block|}
-catch|catch
-parameter_list|(
-name|UnsupportedEncodingException
-name|e
-parameter_list|)
-block|{
-throw|throw
-operator|new
-name|RuntimeException
-argument_list|(
-name|e
-argument_list|)
-throw|;
-block|}
 block|}
 DECL|method|getCitationsFromUrl (String urlQuery, List<String> ids)
 specifier|private

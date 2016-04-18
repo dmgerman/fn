@@ -97,14 +97,14 @@ if|if
 condition|(
 name|JabRef
 operator|.
-name|jrf
+name|mainFrame
 operator|!=
 literal|null
 condition|)
 block|{
 name|JabRef
 operator|.
-name|jrf
+name|mainFrame
 operator|.
 name|dispose
 argument_list|()

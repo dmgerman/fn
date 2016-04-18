@@ -66,6 +66,16 @@ name|ArrayList
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
 begin_class
 DECL|class|Rank
 specifier|public
@@ -89,7 +99,7 @@ name|TEXT_DONE_PATTERN
 operator|=
 literal|"Set rank to '%0' for %1 entries"
 expr_stmt|;
-name|ArrayList
+name|List
 argument_list|<
 name|SpecialFieldValue
 argument_list|>

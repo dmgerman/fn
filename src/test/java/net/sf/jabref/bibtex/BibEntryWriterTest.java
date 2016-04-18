@@ -397,7 +397,7 @@ name|Globals
 operator|.
 name|NEWLINE
 operator|+
-literal|"  author =  {Foo Bar},"
+literal|"  author  = {Foo Bar},"
 operator|+
 name|Globals
 operator|.
@@ -409,13 +409,13 @@ name|Globals
 operator|.
 name|NEWLINE
 operator|+
-literal|"  number =  {1},"
+literal|"  number  = {1},"
 operator|+
 name|Globals
 operator|.
 name|NEWLINE
 operator|+
-literal|"  note =    {some note}"
+literal|"  note    = {some note},"
 operator|+
 name|Globals
 operator|.
@@ -858,7 +858,7 @@ name|Globals
 operator|.
 name|NEWLINE
 operator|+
-literal|"  Number                   = {1}"
+literal|"  Number                   = {1},"
 operator|+
 name|Globals
 operator|.
@@ -1026,7 +1026,7 @@ name|Globals
 operator|.
 name|NEWLINE
 operator|+
-literal|"  author =  {BlaBla},"
+literal|"  author  = {BlaBla},"
 operator|+
 name|Globals
 operator|.
@@ -1038,13 +1038,13 @@ name|Globals
 operator|.
 name|NEWLINE
 operator|+
-literal|"  number =  {1},"
+literal|"  number  = {1},"
 operator|+
 name|Globals
 operator|.
 name|NEWLINE
 operator|+
-literal|"  note =    {some note}"
+literal|"  note    = {some note},"
 operator|+
 name|Globals
 operator|.
@@ -1113,7 +1113,7 @@ name|Globals
 operator|.
 name|NEWLINE
 operator|+
-literal|"  HowPublished             = {asdf}"
+literal|"  HowPublished             = {asdf},"
 operator|+
 name|Globals
 operator|.
@@ -1281,31 +1281,31 @@ name|Globals
 operator|.
 name|NEWLINE
 operator|+
-literal|"  author =       {BlaBla},"
+literal|"  author       = {BlaBla},"
 operator|+
 name|Globals
 operator|.
 name|NEWLINE
 operator|+
-literal|"  journal =      {International Journal of Something},"
+literal|"  journal      = {International Journal of Something},"
 operator|+
 name|Globals
 operator|.
 name|NEWLINE
 operator|+
-literal|"  number =       {1},"
+literal|"  number       = {1},"
 operator|+
 name|Globals
 operator|.
 name|NEWLINE
 operator|+
-literal|"  note =         {some note},"
+literal|"  note         = {some note},"
 operator|+
 name|Globals
 operator|.
 name|NEWLINE
 operator|+
-literal|"  howpublished = {asdf}"
+literal|"  howpublished = {asdf},"
 operator|+
 name|Globals
 operator|.
@@ -1993,7 +1993,7 @@ name|Globals
 operator|.
 name|NEWLINE
 operator|+
-literal|"  note =    {some note}"
+literal|"  note =    {some note},"
 operator|+
 name|Globals
 operator|.
@@ -2095,31 +2095,31 @@ name|Globals
 operator|.
 name|NEWLINE
 operator|+
-literal|"  author =       {BlaBla},"
+literal|"  author       = {BlaBla},"
 operator|+
 name|Globals
 operator|.
 name|NEWLINE
 operator|+
-literal|"  journal =      {International Journal of Something},"
+literal|"  journal      = {International Journal of Something},"
 operator|+
 name|Globals
 operator|.
 name|NEWLINE
 operator|+
-literal|"  number =       {1},"
+literal|"  number       = {1},"
 operator|+
 name|Globals
 operator|.
 name|NEWLINE
 operator|+
-literal|"  note =         {some note},"
+literal|"  note         = {some note},"
 operator|+
 name|Globals
 operator|.
 name|NEWLINE
 operator|+
-literal|"  howpublished = {asdf}"
+literal|"  howpublished = {asdf},"
 operator|+
 name|Globals
 operator|.
@@ -2132,6 +2132,197 @@ operator|.
 name|NEWLINE
 decl_stmt|;
 comment|// @formatter:on
+name|assertEquals
+argument_list|(
+name|expected
+argument_list|,
+name|actual
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|doNotWriteEmptyFields ()
+specifier|public
+name|void
+name|doNotWriteEmptyFields
+parameter_list|()
+throws|throws
+name|IOException
+block|{
+name|StringWriter
+name|stringWriter
+init|=
+operator|new
+name|StringWriter
+argument_list|()
+decl_stmt|;
+name|BibEntry
+name|entry
+init|=
+operator|new
+name|BibEntry
+argument_list|(
+literal|"1234"
+argument_list|,
+literal|"article"
+argument_list|)
+decl_stmt|;
+name|entry
+operator|.
+name|setField
+argument_list|(
+literal|"author"
+argument_list|,
+literal|"  "
+argument_list|)
+expr_stmt|;
+name|entry
+operator|.
+name|setField
+argument_list|(
+literal|"note"
+argument_list|,
+literal|"some note"
+argument_list|)
+expr_stmt|;
+name|writer
+operator|.
+name|write
+argument_list|(
+name|entry
+argument_list|,
+name|stringWriter
+argument_list|,
+name|BibDatabaseMode
+operator|.
+name|BIBTEX
+argument_list|)
+expr_stmt|;
+name|String
+name|actual
+init|=
+name|stringWriter
+operator|.
+name|toString
+argument_list|()
+decl_stmt|;
+name|String
+name|expected
+init|=
+name|Globals
+operator|.
+name|NEWLINE
+operator|+
+literal|"@Article{,"
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
+operator|+
+literal|"  note   = {some note},"
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
+operator|+
+literal|"}"
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
+decl_stmt|;
+name|assertEquals
+argument_list|(
+name|expected
+argument_list|,
+name|actual
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|trimFieldContents ()
+specifier|public
+name|void
+name|trimFieldContents
+parameter_list|()
+throws|throws
+name|IOException
+block|{
+name|StringWriter
+name|stringWriter
+init|=
+operator|new
+name|StringWriter
+argument_list|()
+decl_stmt|;
+name|BibEntry
+name|entry
+init|=
+operator|new
+name|BibEntry
+argument_list|(
+literal|"1234"
+argument_list|,
+literal|"article"
+argument_list|)
+decl_stmt|;
+name|entry
+operator|.
+name|setField
+argument_list|(
+literal|"note"
+argument_list|,
+literal|"        some note    \t"
+argument_list|)
+expr_stmt|;
+name|writer
+operator|.
+name|write
+argument_list|(
+name|entry
+argument_list|,
+name|stringWriter
+argument_list|,
+name|BibDatabaseMode
+operator|.
+name|BIBTEX
+argument_list|)
+expr_stmt|;
+name|String
+name|actual
+init|=
+name|stringWriter
+operator|.
+name|toString
+argument_list|()
+decl_stmt|;
+name|String
+name|expected
+init|=
+name|Globals
+operator|.
+name|NEWLINE
+operator|+
+literal|"@Article{,"
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
+operator|+
+literal|"  note = {some note},"
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
+operator|+
+literal|"}"
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
+decl_stmt|;
 name|assertEquals
 argument_list|(
 name|expected

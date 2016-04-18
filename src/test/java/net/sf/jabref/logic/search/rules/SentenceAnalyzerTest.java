@@ -71,8 +71,6 @@ specifier|public
 name|void
 name|testGetWords
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|assertEquals
 argument_list|(

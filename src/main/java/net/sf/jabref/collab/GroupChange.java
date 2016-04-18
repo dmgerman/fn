@@ -361,7 +361,7 @@ name|refreshGroupsForNewDatabase
 argument_list|(
 name|panel
 operator|.
-name|database
+name|getDatabase
 argument_list|()
 argument_list|)
 expr_stmt|;

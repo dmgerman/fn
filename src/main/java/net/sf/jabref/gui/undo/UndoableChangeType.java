@@ -70,18 +70,18 @@ specifier|final
 name|String
 name|newType
 decl_stmt|;
-DECL|field|be
+DECL|field|entry
 specifier|private
 specifier|final
 name|BibEntry
-name|be
+name|entry
 decl_stmt|;
-DECL|method|UndoableChangeType (BibEntry be, String oldType, String newType)
+DECL|method|UndoableChangeType (BibEntry entry, String oldType, String newType)
 specifier|public
 name|UndoableChangeType
 parameter_list|(
 name|BibEntry
-name|be
+name|entry
 parameter_list|,
 name|String
 name|oldType
@@ -104,9 +104,9 @@ name|newType
 expr_stmt|;
 name|this
 operator|.
-name|be
+name|entry
 operator|=
-name|be
+name|entry
 expr_stmt|;
 block|}
 annotation|@
@@ -146,7 +146,7 @@ operator|.
 name|undo
 argument_list|()
 expr_stmt|;
-name|be
+name|entry
 operator|.
 name|setType
 argument_list|(
@@ -167,7 +167,7 @@ operator|.
 name|redo
 argument_list|()
 expr_stmt|;
-name|be
+name|entry
 operator|.
 name|setType
 argument_list|(

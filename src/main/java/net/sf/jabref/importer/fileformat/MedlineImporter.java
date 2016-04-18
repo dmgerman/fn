@@ -231,6 +231,8 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+try|try
+init|(
 name|BufferedReader
 name|in
 init|=
@@ -244,7 +246,8 @@ argument_list|(
 name|stream
 argument_list|)
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|String
 name|str
 decl_stmt|;
@@ -295,6 +298,7 @@ block|}
 name|i
 operator|++
 expr_stmt|;
+block|}
 block|}
 return|return
 literal|false

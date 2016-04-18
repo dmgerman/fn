@@ -124,6 +124,34 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -226,6 +254,22 @@ name|MedlineFetcher
 implements|implements
 name|EntryFetcher
 block|{
+DECL|field|LOGGER
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOGGER
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|MedlineFetcher
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 DECL|field|PART1_PATTERN
 specifier|private
 specifier|static
@@ -252,20 +296,6 @@ operator|.
 name|compile
 argument_list|(
 literal|","
-argument_list|)
-decl_stmt|;
-DECL|field|PART3_PATTERN
-specifier|private
-specifier|static
-specifier|final
-name|Pattern
-name|PART3_PATTERN
-init|=
-name|Pattern
-operator|.
-name|compile
-argument_list|(
-literal|" "
 argument_list|)
 decl_stmt|;
 DECL|field|ID_PATTERN
@@ -339,14 +369,6 @@ specifier|private
 name|boolean
 name|shouldContinue
 decl_stmt|;
-DECL|field|frame
-name|OutputPrinter
-name|frame
-decl_stmt|;
-DECL|field|dialog
-name|ImportInspector
-name|dialog
-decl_stmt|;
 DECL|method|toSearchTerm (String in)
 specifier|private
 specifier|static
@@ -358,6 +380,11 @@ name|in
 parameter_list|)
 block|{
 comment|// This can probably be simplified using simple String.replace()...
+name|String
+name|result
+init|=
+name|in
+decl_stmt|;
 name|Matcher
 name|matcher
 decl_stmt|;
@@ -367,10 +394,10 @@ name|PART1_PATTERN
 operator|.
 name|matcher
 argument_list|(
-name|in
+name|result
 argument_list|)
 expr_stmt|;
-name|in
+name|result
 operator|=
 name|matcher
 operator|.
@@ -385,10 +412,10 @@ name|PART2_PATTERN
 operator|.
 name|matcher
 argument_list|(
-name|in
+name|result
 argument_list|)
 expr_stmt|;
-name|in
+name|result
 operator|=
 name|matcher
 operator|.
@@ -397,26 +424,19 @@ argument_list|(
 literal|"\\+AND\\+"
 argument_list|)
 expr_stmt|;
-name|matcher
+name|result
 operator|=
-name|PART3_PATTERN
+name|result
 operator|.
-name|matcher
+name|replace
 argument_list|(
-name|in
-argument_list|)
-expr_stmt|;
-name|in
-operator|=
-name|matcher
-operator|.
-name|replaceAll
-argument_list|(
+literal|" "
+argument_list|,
 literal|"+"
 argument_list|)
 expr_stmt|;
 return|return
-name|in
+name|result
 return|;
 block|}
 comment|/**      * Gets the initial list of ids      */
@@ -676,19 +696,14 @@ name|e
 parameter_list|)
 block|{
 comment|// new URL() failed
-name|System
+name|LOGGER
 operator|.
-name|out
-operator|.
-name|println
+name|warn
 argument_list|(
-literal|"bad url"
-argument_list|)
-expr_stmt|;
+literal|"Bad url"
+argument_list|,
 name|e
-operator|.
-name|printStackTrace
-argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 catch|catch
@@ -698,19 +713,14 @@ name|e
 parameter_list|)
 block|{
 comment|// openConnection() failed
-name|System
+name|LOGGER
 operator|.
-name|out
-operator|.
-name|println
+name|warn
 argument_list|(
-literal|"connection failed"
-argument_list|)
-expr_stmt|;
+literal|"Connection failed"
+argument_list|,
 name|e
-operator|.
-name|printStackTrace
-argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 return|return
@@ -790,8 +800,9 @@ name|shouldContinue
 operator|=
 literal|true
 expr_stmt|;
-name|query
-operator|=
+name|String
+name|cleanQuery
+init|=
 name|query
 operator|.
 name|trim
@@ -803,10 +814,10 @@ literal|';'
 argument_list|,
 literal|','
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 if|if
 condition|(
-name|query
+name|cleanQuery
 operator|.
 name|matches
 argument_list|(
@@ -836,7 +847,7 @@ name|MedlineImporter
 operator|.
 name|fetchMedline
 argument_list|(
-name|query
+name|cleanQuery
 argument_list|,
 name|frameOP
 argument_list|)
@@ -1020,7 +1031,9 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Medline import canceled"
+literal|"%0 import canceled"
+argument_list|,
+literal|"Medline"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1046,7 +1059,7 @@ break|break;
 block|}
 catch|catch
 parameter_list|(
-name|RuntimeException
+name|NumberFormatException
 name|ex
 parameter_list|)
 block|{

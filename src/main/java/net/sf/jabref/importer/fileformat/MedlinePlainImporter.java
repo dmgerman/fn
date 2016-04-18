@@ -256,6 +256,8 @@ name|IOException
 block|{
 comment|// Our strategy is to look for the "PMID  - *", "PMC.*-.*", or "PMCR.*-.*" line
 comment|// (i.e., PubMed Unique Identifier, PubMed Central Identifier, PubMed Central Release)
+try|try
+init|(
 name|BufferedReader
 name|in
 init|=
@@ -269,7 +271,8 @@ argument_list|(
 name|stream
 argument_list|)
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|String
 name|str
 decl_stmt|;
@@ -325,6 +328,7 @@ literal|true
 return|;
 block|}
 block|}
+block|}
 return|return
 literal|false
 return|;
@@ -349,7 +353,7 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|ArrayList
+name|List
 argument_list|<
 name|BibEntry
 argument_list|>
@@ -367,6 +371,8 @@ operator|new
 name|StringBuilder
 argument_list|()
 decl_stmt|;
+try|try
+init|(
 name|BufferedReader
 name|in
 init|=
@@ -380,7 +386,8 @@ argument_list|(
 name|stream
 argument_list|)
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|String
 name|str
 decl_stmt|;
@@ -412,6 +419,7 @@ argument_list|(
 literal|'\n'
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|String
 index|[]
@@ -497,7 +505,7 @@ name|comment
 init|=
 literal|""
 decl_stmt|;
-name|HashMap
+name|Map
 argument_list|<
 name|String
 argument_list|,
@@ -1626,7 +1634,7 @@ name|author
 operator|=
 name|AuthorList
 operator|.
-name|fixAuthor_lastNameFirst
+name|fixAuthorLastNameFirst
 argument_list|(
 name|author
 argument_list|)
@@ -1654,7 +1662,7 @@ name|editor
 operator|=
 name|AuthorList
 operator|.
-name|fixAuthor_lastNameFirst
+name|fixAuthorLastNameFirst
 argument_list|(
 name|editor
 argument_list|)
@@ -1701,7 +1709,7 @@ argument_list|)
 decl_stmt|;
 comment|// id assumes an existing database so don't
 comment|// Remove empty fields:
-name|ArrayList
+name|List
 argument_list|<
 name|Object
 argument_list|>

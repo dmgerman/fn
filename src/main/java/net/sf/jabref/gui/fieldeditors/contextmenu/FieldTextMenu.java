@@ -146,6 +146,24 @@ name|jabref
 operator|.
 name|logic
 operator|.
+name|formatter
+operator|.
+name|bibtexfields
+operator|.
+name|NormalizeNamesFormatter
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
 name|l10n
 operator|.
 name|Localization
@@ -167,24 +185,6 @@ operator|.
 name|strings
 operator|.
 name|StringUtil
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
-name|formatter
-operator|.
-name|bibtexfields
-operator|.
-name|AuthorsFormatter
 import|;
 end_import
 
@@ -281,7 +281,9 @@ parameter_list|(
 name|MouseEvent
 name|e
 parameter_list|)
-block|{     }
+block|{
+comment|// Do nothing
+block|}
 annotation|@
 name|Override
 DECL|method|mouseEntered (MouseEvent e)
@@ -292,7 +294,9 @@ parameter_list|(
 name|MouseEvent
 name|e
 parameter_list|)
-block|{     }
+block|{
+comment|// Do nothing
+block|}
 annotation|@
 name|Override
 DECL|method|mouseExited (MouseEvent e)
@@ -303,7 +307,9 @@ parameter_list|(
 name|MouseEvent
 name|e
 parameter_list|)
-block|{     }
+block|{
+comment|// Do nothing
+block|}
 annotation|@
 name|Override
 DECL|method|mousePressed (MouseEvent e)
@@ -353,13 +359,12 @@ name|e
 operator|.
 name|isPopupTrigger
 argument_list|()
-condition|)
-block|{
-if|if
-condition|(
+operator|&&
+operator|(
 name|field
 operator|!=
 literal|null
+operator|)
 condition|)
 block|{
 name|field
@@ -437,9 +442,9 @@ expr_stmt|;
 name|String
 name|data
 init|=
+operator|new
 name|ClipBoardManager
-operator|.
-name|CLIPBOARD
+argument_list|()
 operator|.
 name|getClipboardContents
 argument_list|()
@@ -536,7 +541,6 @@ name|getY
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 DECL|method|initMenu ()
@@ -701,7 +705,7 @@ operator|.
 name|setText
 argument_list|(
 operator|new
-name|AuthorsFormatter
+name|NormalizeNamesFormatter
 argument_list|()
 operator|.
 name|format

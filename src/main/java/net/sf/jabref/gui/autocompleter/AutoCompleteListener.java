@@ -722,6 +722,70 @@ literal|"'"
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|atEndOfWord (JTextComponent textField)
+specifier|private
+name|boolean
+name|atEndOfWord
+parameter_list|(
+name|JTextComponent
+name|textField
+parameter_list|)
+block|{
+name|int
+name|nextCharPosition
+init|=
+name|textField
+operator|.
+name|getCaretPosition
+argument_list|()
+decl_stmt|;
+comment|// position not at the end of input
+if|if
+condition|(
+name|nextCharPosition
+operator|<
+name|textField
+operator|.
+name|getText
+argument_list|()
+operator|.
+name|length
+argument_list|()
+condition|)
+block|{
+name|char
+name|nextChar
+init|=
+name|textField
+operator|.
+name|getText
+argument_list|()
+operator|.
+name|charAt
+argument_list|(
+name|nextCharPosition
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+operator|!
+name|Character
+operator|.
+name|isWhitespace
+argument_list|(
+name|nextChar
+argument_list|)
+condition|)
+block|{
+return|return
+literal|false
+return|;
+block|}
+block|}
+return|return
+literal|true
+return|;
+block|}
 comment|/**      * If user cancels autocompletion by a) entering another letter than the completed word (and there is no other auto      * completion) b) space the casing of the letters has to be kept      *      * Global variable "lastBeginning" keeps track of typed letters. We rely on this variable to reconstruct the text      *      * @param wordSeperatorTyped indicates whether the user has typed a white space character or a      */
 DECL|method|setUnmodifiedTypedLetters (JTextComponent comp, boolean lastBeginningContainsTypedCharacter, boolean wordSeperatorTyped)
 specifier|private
@@ -1277,6 +1341,24 @@ block|{
 comment|// this case is handled at keyPressed(e)
 return|return;
 block|}
+comment|// don't do auto completion inside words
+if|if
+condition|(
+operator|!
+name|atEndOfWord
+argument_list|(
+operator|(
+name|JTextComponent
+operator|)
+name|e
+operator|.
+name|getSource
+argument_list|()
+argument_list|)
+condition|)
+block|{
+return|return;
+block|}
 if|if
 condition|(
 operator|(
@@ -1434,7 +1516,6 @@ name|getCaretPosition
 argument_list|()
 decl_stmt|;
 comment|//comp.setCaretPosition(cp+1-toSetIn.);
-comment|//System.out.println(cp-toSetIn.length()+" - "+cp);
 name|comp
 operator|.
 name|select
@@ -1471,8 +1552,6 @@ operator|.
 name|getCaretPosition
 argument_list|()
 expr_stmt|;
-comment|//System.out.println("Added char: '"+toSetIn+"'");
-comment|//System.out.println("LastBeginning: '"+lastBeginning+"'");
 name|lastCompletions
 operator|=
 name|findCompletions
@@ -1512,7 +1591,6 @@ argument_list|(
 name|i
 argument_list|)
 decl_stmt|;
-comment|//System.out.println("Completion["+i+"] = "+lastCompletion);
 if|if
 condition|(
 name|lastCompletion
@@ -1530,7 +1608,6 @@ expr_stmt|;
 break|break;
 block|}
 block|}
-comment|//System.out.println("Index now: "+lastShownCompletion);
 if|if
 condition|(
 name|toSetIn

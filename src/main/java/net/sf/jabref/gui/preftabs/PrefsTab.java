@@ -33,7 +33,7 @@ name|void
 name|setValues
 parameter_list|()
 function_decl|;
-comment|/**      * This method is called when the user presses OK in the      * Preferences dialog. Implementing classes must make sure all      * settings presented get stored in JabRefPreferences.      *      */
+comment|/**      * This method is called when the user presses OK in the      * Preferences dialog. Implementing classes must make sure all      * settings presented get stored in JabRefPreferences.      */
 DECL|method|storeSettings ()
 name|void
 name|storeSettings

@@ -22,30 +22,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|awt
-operator|.
-name|event
-operator|.
-name|ComponentAdapter
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|awt
-operator|.
-name|event
-operator|.
-name|ComponentEvent
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|Set
@@ -69,6 +45,22 @@ operator|.
 name|swing
 operator|.
 name|*
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|undo
+operator|.
+name|UndoableChangeType
 import|;
 end_import
 
@@ -312,11 +304,6 @@ specifier|private
 name|MergeEntries
 name|mergeEntries
 decl_stmt|;
-DECL|field|pw
-specifier|private
-name|PositionWindow
-name|pw
-decl_stmt|;
 DECL|field|doiFetcher
 specifier|private
 specifier|final
@@ -400,7 +387,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Merge entry from DOI"
+literal|"Merge entry with DOI information"
 argument_list|)
 argument_list|,
 name|JOptionPane
@@ -506,7 +493,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Merge entry from DOI"
+literal|"Merge entry with DOI information"
 argument_list|)
 argument_list|,
 name|JOptionPane
@@ -591,7 +578,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Merge from DOI"
+literal|"Merge entry with DOI information"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -822,8 +809,9 @@ name|MARGIN
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|PositionWindow
 name|pw
-operator|=
+init|=
 operator|new
 name|PositionWindow
 argument_list|(
@@ -845,55 +833,11 @@ name|JabRefPreferences
 operator|.
 name|MERGEENTRIES_SIZE_Y
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|pw
 operator|.
 name|setWindowPosition
 argument_list|()
-expr_stmt|;
-comment|// Set up a ComponentListener that saves the last size and position of the dialog
-name|addComponentListener
-argument_list|(
-operator|new
-name|ComponentAdapter
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|componentResized
-parameter_list|(
-name|ComponentEvent
-name|e
-parameter_list|)
-block|{
-comment|// Save dialog position
-name|pw
-operator|.
-name|storeWindowPosition
-argument_list|()
-expr_stmt|;
-block|}
-annotation|@
-name|Override
-specifier|public
-name|void
-name|componentMoved
-parameter_list|(
-name|ComponentEvent
-name|e
-parameter_list|)
-block|{
-comment|// Save dialog position
-name|pw
-operator|.
-name|storeWindowPosition
-argument_list|()
-expr_stmt|;
-block|}
-block|}
-argument_list|)
 expr_stmt|;
 comment|// Show what we've got
 name|setVisible
@@ -988,11 +932,67 @@ name|getFieldNames
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|Boolean
+name|boolean
 name|edited
 init|=
 literal|false
 decl_stmt|;
+comment|// entry type
+name|String
+name|oldType
+init|=
+name|originalEntry
+operator|.
+name|getType
+argument_list|()
+decl_stmt|;
+name|String
+name|newType
+init|=
+name|mergedEntry
+operator|.
+name|getType
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+operator|!
+name|oldType
+operator|.
+name|equalsIgnoreCase
+argument_list|(
+name|newType
+argument_list|)
+condition|)
+block|{
+name|originalEntry
+operator|.
+name|setType
+argument_list|(
+name|newType
+argument_list|)
+expr_stmt|;
+name|ce
+operator|.
+name|addEdit
+argument_list|(
+operator|new
+name|UndoableChangeType
+argument_list|(
+name|originalEntry
+argument_list|,
+name|oldType
+argument_list|,
+name|newType
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|edited
+operator|=
+literal|true
+expr_stmt|;
+block|}
+comment|// fields
 for|for
 control|(
 name|String
@@ -1135,7 +1135,6 @@ literal|true
 expr_stmt|;
 block|}
 block|}
-comment|//
 if|if
 condition|(
 name|edited
@@ -1166,6 +1165,11 @@ argument_list|(
 literal|"Updated entry with info from DOI"
 argument_list|)
 argument_list|)
+expr_stmt|;
+name|panel
+operator|.
+name|updateEntryEditorIfShowing
+argument_list|()
 expr_stmt|;
 name|panel
 operator|.

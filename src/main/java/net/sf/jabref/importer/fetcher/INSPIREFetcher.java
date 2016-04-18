@@ -110,22 +110,6 @@ end_import
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|entry
-operator|.
-name|BibEntry
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -372,7 +356,6 @@ argument_list|(
 literal|"&action_search=Search&sf=&so=d&rm=&rg=1000&sc=0&of=hx"
 argument_list|)
 decl_stmt|;
-comment|//sb.append("&FORMAT=WWWBRIEFBIBTEX&SEQUENCE=");
 name|LOGGER
 operator|.
 name|debug
@@ -526,17 +509,6 @@ return|return
 literal|null
 return|;
 block|}
-comment|// public void addSpiresURL(BibEntry entry) {
-comment|// String url = "http://"+spiresHost+"/spires/find/hep/www?texkey+";
-comment|// url = url+entry.getCiteKey();
-comment|// entry.setField("url", url);
-comment|// }
-comment|//
-comment|// public void addSpiresURLtoDatabase(BibDatabase db) {
-comment|// Iterator<BibEntry> iter = db.getEntries().iterator();
-comment|// while (iter.hasNext())
-comment|// addSpiresURL(iter.next());
-comment|// }
 comment|/*      * @see net.sf.jabref.imports.fetcher.EntryFetcher      */
 annotation|@
 name|Override
@@ -547,7 +519,7 @@ name|getHelpPage
 parameter_list|()
 block|{
 return|return
-literal|"Spires"
+literal|"INSPIRE"
 return|;
 block|}
 annotation|@
@@ -572,12 +544,7 @@ name|getTitle
 parameter_list|()
 block|{
 return|return
-name|Localization
-operator|.
-name|menuTitle
-argument_list|(
-literal|"Fetch INSPIRE"
-argument_list|)
+literal|"INSPIRE"
 return|;
 block|}
 annotation|@
@@ -614,7 +581,12 @@ name|frame
 operator|.
 name|setStatus
 argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Fetching entries from Inspire"
+argument_list|)
 argument_list|)
 expr_stmt|;
 comment|/* query the archive and load the results into the BibEntry */
@@ -628,54 +600,25 @@ argument_list|,
 name|frame
 argument_list|)
 decl_stmt|;
-comment|/* addSpiresURLtoDatabase(bd); */
 name|frame
 operator|.
 name|setStatus
 argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Adding fetched entries"
+argument_list|)
 argument_list|)
 expr_stmt|;
 comment|/* add the entry to the inspection dialog */
 if|if
 condition|(
 name|bd
-operator|!=
+operator|==
 literal|null
 condition|)
-block|{
-if|if
-condition|(
-name|bd
-operator|.
-name|getEntryCount
-argument_list|()
-operator|>
-literal|0
-condition|)
-block|{
-for|for
-control|(
-name|BibEntry
-name|entry
-range|:
-name|bd
-operator|.
-name|getEntries
-argument_list|()
-control|)
-block|{
-name|dialog
-operator|.
-name|addEntry
-argument_list|(
-name|entry
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-block|}
-else|else
 block|{
 name|LOGGER
 operator|.
@@ -685,8 +628,21 @@ literal|"Error while fetching from Inspire"
 argument_list|)
 expr_stmt|;
 block|}
-comment|/* update the dialogs progress bar */
-comment|// dialog.setProgress(i + 1, keys.length);
+else|else
+block|{
+name|bd
+operator|.
+name|getEntries
+argument_list|()
+operator|.
+name|forEach
+argument_list|(
+name|dialog
+operator|::
+name|addEntry
+argument_list|)
+expr_stmt|;
+block|}
 comment|/* inform the inspection dialog, that we're done */
 block|}
 catch|catch
@@ -703,10 +659,12 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Error while fetching from Inspire:"
+literal|"Error while fetching from %0"
+argument_list|,
+literal|"Inspire"
 argument_list|)
 operator|+
-literal|" "
+literal|": "
 operator|+
 name|e
 operator|.

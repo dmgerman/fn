@@ -64,6 +64,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|ArrayList
 import|;
 end_import
@@ -217,6 +227,8 @@ throws|throws
 name|IOException
 block|{
 comment|// Our strategy is to look for the "PY<year>" line.
+try|try
+init|(
 name|BufferedReader
 name|in
 init|=
@@ -230,9 +242,8 @@ argument_list|(
 name|stream
 argument_list|)
 argument_list|)
-decl_stmt|;
-comment|//Pattern pat1 = Pattern.compile("PY:  \\d{4}");
-comment|//was PY \\\\d{4}? before
+init|)
+block|{
 name|String
 name|str
 decl_stmt|;
@@ -250,9 +261,6 @@ operator|!=
 literal|null
 condition|)
 block|{
-comment|//Inspec and IEEE seem to have these strange " - " between key and value
-comment|//str = str.replace(" - ", "");
-comment|//System.out.println(str);
 if|if
 condition|(
 name|INSPEC_PATTERN
@@ -269,6 +277,7 @@ block|{
 return|return
 literal|true
 return|;
+block|}
 block|}
 block|}
 return|return
@@ -295,7 +304,7 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|ArrayList
+name|List
 argument_list|<
 name|BibEntry
 argument_list|>
@@ -420,7 +429,7 @@ name|type
 init|=
 literal|""
 decl_stmt|;
-name|HashMap
+name|Map
 argument_list|<
 name|String
 argument_list|,
@@ -479,7 +488,6 @@ range|:
 name|fields
 control|)
 block|{
-comment|//System.out.println(fields[j]);
 name|String
 name|f3
 init|=
@@ -562,7 +570,7 @@ literal|"author"
 argument_list|,
 name|AuthorList
 operator|.
-name|fixAuthor_lastNameFirst
+name|fixAuthorLastNameFirst
 argument_list|(
 name|frest
 operator|.
@@ -719,6 +727,9 @@ literal|5
 argument_list|,
 name|m
 argument_list|)
+operator|.
+name|trim
+argument_list|()
 decl_stmt|;
 name|h
 operator|.
@@ -778,12 +789,9 @@ argument_list|,
 name|pg
 argument_list|)
 expr_stmt|;
-name|h
-operator|.
-name|put
-argument_list|(
-literal|"volume"
-argument_list|,
+name|String
+name|vol
+init|=
 name|frest
 operator|.
 name|substring
@@ -792,6 +800,17 @@ literal|1
 argument_list|,
 name|m
 argument_list|)
+operator|.
+name|trim
+argument_list|()
+decl_stmt|;
+name|h
+operator|.
+name|put
+argument_list|(
+literal|"volume"
+argument_list|,
+name|vol
 argument_list|)
 expr_stmt|;
 block|}

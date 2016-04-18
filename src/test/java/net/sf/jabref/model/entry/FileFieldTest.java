@@ -69,8 +69,6 @@ specifier|public
 name|void
 name|emptyListForEmptyInput
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|String
 name|emptyInput
@@ -120,8 +118,6 @@ specifier|public
 name|void
 name|parseCorrectInput
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|String
 name|input
@@ -135,8 +131,6 @@ operator|.
 name|singletonList
 argument_list|(
 operator|new
-name|FileField
-operator|.
 name|ParsedFileField
 argument_list|(
 literal|"Desc"
@@ -163,8 +157,6 @@ specifier|public
 name|void
 name|ingoreMissingDescription
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|String
 name|input
@@ -178,8 +170,6 @@ operator|.
 name|singletonList
 argument_list|(
 operator|new
-name|FileField
-operator|.
 name|ParsedFileField
 argument_list|(
 literal|""
@@ -206,8 +196,6 @@ specifier|public
 name|void
 name|interpreteLinkAsOnlyMandatoryField
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|String
 name|single
@@ -226,8 +214,6 @@ operator|.
 name|singletonList
 argument_list|(
 operator|new
-name|FileField
-operator|.
 name|ParsedFileField
 argument_list|(
 literal|""
@@ -253,8 +239,6 @@ operator|.
 name|asList
 argument_list|(
 operator|new
-name|FileField
-operator|.
 name|ParsedFileField
 argument_list|(
 literal|""
@@ -265,8 +249,6 @@ literal|""
 argument_list|)
 argument_list|,
 operator|new
-name|FileField
-operator|.
 name|ParsedFileField
 argument_list|(
 literal|""
@@ -293,8 +275,6 @@ specifier|public
 name|void
 name|escapedCharactersInDescription
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|String
 name|input
@@ -308,8 +288,6 @@ operator|.
 name|singletonList
 argument_list|(
 operator|new
-name|FileField
-operator|.
 name|ParsedFileField
 argument_list|(
 literal|"test:;"
@@ -336,8 +314,6 @@ specifier|public
 name|void
 name|handleXmlCharacters
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|String
 name|input
@@ -351,8 +327,6 @@ operator|.
 name|singletonList
 argument_list|(
 operator|new
-name|FileField
-operator|.
 name|ParsedFileField
 argument_list|(
 literal|"test&#44;st:;"
@@ -379,8 +353,6 @@ specifier|public
 name|void
 name|handleEscapedFilePath
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|String
 name|input
@@ -394,8 +366,6 @@ operator|.
 name|singletonList
 argument_list|(
 operator|new
-name|FileField
-operator|.
 name|ParsedFileField
 argument_list|(
 literal|"desc"
@@ -422,8 +392,6 @@ specifier|public
 name|void
 name|subsetOfFieldsResultsInFileLink
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|String
 name|descOnly
@@ -447,8 +415,6 @@ operator|.
 name|singletonList
 argument_list|(
 operator|new
-name|FileField
-operator|.
 name|ParsedFileField
 argument_list|(
 literal|""
@@ -474,8 +440,6 @@ operator|.
 name|singletonList
 argument_list|(
 operator|new
-name|FileField
-operator|.
 name|ParsedFileField
 argument_list|(
 literal|""
@@ -501,8 +465,6 @@ operator|.
 name|singletonList
 argument_list|(
 operator|new
-name|FileField
-operator|.
 name|ParsedFileField
 argument_list|(
 literal|""
@@ -529,8 +491,6 @@ specifier|public
 name|void
 name|tooManySeparators
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|String
 name|input
@@ -544,8 +504,6 @@ operator|.
 name|singletonList
 argument_list|(
 operator|new
-name|FileField
-operator|.
 name|ParsedFileField
 argument_list|(
 literal|"desc"

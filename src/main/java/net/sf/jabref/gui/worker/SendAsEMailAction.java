@@ -26,18 +26,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|JabRefPreferences
 import|;
 end_import
@@ -388,7 +376,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"No entries selected."
+literal|"This operation requires one or more entries to be selected."
 argument_list|)
 expr_stmt|;
 return|return;
@@ -470,7 +458,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-name|ArrayList
+name|List
 argument_list|<
 name|String
 argument_list|>
@@ -518,15 +506,8 @@ operator|.
 name|getBibDatabaseContext
 argument_list|()
 operator|.
-name|getMetaData
-argument_list|()
-operator|.
 name|getFileDirectory
-argument_list|(
-name|Globals
-operator|.
-name|FILE_FIELD
-argument_list|)
+argument_list|()
 argument_list|)
 decl_stmt|;
 for|for

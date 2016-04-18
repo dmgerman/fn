@@ -56,12 +56,12 @@ init|=
 operator|new
 name|LocalizationKey
 argument_list|(
-literal|"test : ="
+literal|"#test! : ="
 argument_list|)
 decl_stmt|;
 name|assertEquals
 argument_list|(
-literal|"test_\\:_\\="
+literal|"\\#test\\!_\\:_\\="
 argument_list|,
 name|localizationKey
 operator|.
@@ -71,7 +71,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"test_:_="
+literal|"#test!_:_="
 argument_list|,
 name|localizationKey
 operator|.
@@ -81,7 +81,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"test : ="
+literal|"#test! : ="
 argument_list|,
 name|localizationKey
 operator|.

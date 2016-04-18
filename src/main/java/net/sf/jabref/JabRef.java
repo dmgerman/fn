@@ -16,6 +16,102 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|awt
+operator|.
+name|Font
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|File
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|net
+operator|.
+name|Authenticator
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|Charset
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|*
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|prefs
+operator|.
+name|BackingStoreException
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|*
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|plaf
+operator|.
+name|FontUIResource
+import|;
+end_import
+
+begin_import
+import|import
 name|com
 operator|.
 name|jgoodies
@@ -41,6 +137,34 @@ operator|.
 name|theme
 operator|.
 name|SkyBluer
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|bibtex
+operator|.
+name|InternalBibtexFields
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|cli
+operator|.
+name|AuxCommandLine
 import|;
 end_import
 
@@ -488,22 +612,6 @@ end_import
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|wizard
-operator|.
-name|auximport
-operator|.
-name|AuxCommandLine
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -527,112 +635,6 @@ operator|.
 name|logging
 operator|.
 name|LogFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|*
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|plaf
-operator|.
-name|FontUIResource
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|awt
-operator|.
-name|*
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|File
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|net
-operator|.
-name|Authenticator
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|nio
-operator|.
-name|charset
-operator|.
-name|Charset
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|*
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|prefs
-operator|.
-name|BackingStoreException
 import|;
 end_import
 
@@ -662,11 +664,11 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|field|jrf
+DECL|field|mainFrame
 specifier|public
 specifier|static
 name|JabRefFrame
-name|jrf
+name|mainFrame
 decl_stmt|;
 DECL|field|cli
 specifier|private
@@ -772,7 +774,7 @@ expr_stmt|;
 comment|/* Build list of Import and Export formats */
 name|Globals
 operator|.
-name|importFormatReader
+name|IMPORT_FORMAT_READER
 operator|.
 name|resetImportFormats
 argument_list|()
@@ -824,7 +826,7 @@ condition|)
 block|{
 name|Globals
 operator|.
-name|remoteListener
+name|REMOTE_LISTENER
 operator|.
 name|open
 argument_list|(
@@ -842,24 +844,14 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|!
 name|Globals
 operator|.
-name|remoteListener
+name|REMOTE_LISTENER
 operator|.
 name|isOpen
 argument_list|()
 condition|)
-block|{
-name|Globals
-operator|.
-name|remoteListener
-operator|.
-name|start
-argument_list|()
-expr_stmt|;
-comment|// we are alone, we start the server
-block|}
-else|else
 block|{
 comment|// we are not alone, there is already a server out there, try to contact already running JabRef:
 if|if
@@ -877,7 +869,8 @@ argument_list|()
 argument_list|)
 condition|)
 block|{
-comment|/*                      * We have successfully sent our command line options                      * through the socket to another JabRef instance. So we                      * assume it's all taken care of, and quit.                      */
+comment|// We have successfully sent our command line options through the socket to another JabRef instance.
+comment|// So we assume it's all taken care of, and quit.
 name|System
 operator|.
 name|out
@@ -902,6 +895,14 @@ expr_stmt|;
 return|return;
 block|}
 block|}
+comment|// we are alone, we start the server
+name|Globals
+operator|.
+name|REMOTE_LISTENER
+operator|.
+name|start
+argument_list|()
+expr_stmt|;
 block|}
 comment|// override used newline character with the one stored in the preferences
 comment|// The preferences return the system newline character sequence as default
@@ -1143,10 +1144,14 @@ literal|"Unable to clear preferences."
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|e
+name|LOGGER
 operator|.
-name|printStackTrace
-argument_list|()
+name|error
+argument_list|(
+literal|"Unable to clear preferences"
+argument_list|,
+name|e
+argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -1701,14 +1706,10 @@ operator|!=
 literal|null
 operator|)
 operator|&&
-operator|(
 name|newBase
 operator|.
-name|getEntryCount
+name|hasEntries
 argument_list|()
-operator|>
-literal|0
-operator|)
 condition|)
 block|{
 name|String
@@ -1763,7 +1764,12 @@ argument_list|)
 operator|.
 name|concat
 argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Usage"
+argument_list|)
 argument_list|)
 operator|.
 name|concat
@@ -1784,7 +1790,6 @@ name|empty
 argument_list|()
 return|;
 block|}
-comment|//end switch
 comment|//export new database
 name|IExportFormat
 name|format
@@ -1848,9 +1853,11 @@ literal|1
 index|]
 argument_list|)
 expr_stmt|;
-name|format
-operator|.
-name|performExport
+name|BibDatabaseContext
+name|databaseContext
+init|=
+operator|new
+name|BibDatabaseContext
 argument_list|(
 name|newBase
 argument_list|,
@@ -1858,6 +1865,13 @@ name|pr
 operator|.
 name|getMetaData
 argument_list|()
+argument_list|)
+decl_stmt|;
+name|format
+operator|.
+name|performExport
+argument_list|(
+name|databaseContext
 argument_list|,
 name|data
 index|[
@@ -1869,7 +1883,10 @@ operator|.
 name|getEncoding
 argument_list|()
 argument_list|,
-literal|null
+name|newBase
+operator|.
+name|getEntries
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -1910,7 +1927,6 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/*end if newBase != null*/
 else|else
 block|{
 name|System
@@ -1946,7 +1962,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|//end if(loaded.size> 0)
 block|}
 if|if
 condition|(
@@ -2315,17 +2330,17 @@ name|getAbsoluteFile
 argument_list|()
 expr_stmt|;
 block|}
-name|MetaData
-name|metaData
+name|BibDatabaseContext
+name|databaseContext
 init|=
 name|pr
 operator|.
-name|getMetaData
+name|getDatabaseContext
 argument_list|()
 decl_stmt|;
-name|metaData
+name|databaseContext
 operator|.
-name|setFile
+name|setDatabaseFile
 argument_list|(
 name|theFile
 argument_list|)
@@ -2336,33 +2351,9 @@ name|prefs
 operator|.
 name|fileDirForDatabase
 operator|=
-name|metaData
+name|databaseContext
 operator|.
 name|getFileDirectory
-argument_list|(
-name|Globals
-operator|.
-name|FILE_FIELD
-argument_list|)
-operator|.
-name|toArray
-argument_list|(
-operator|new
-name|String
-index|[
-literal|0
-index|]
-argument_list|)
-expr_stmt|;
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|databaseFile
-operator|=
-name|metaData
-operator|.
-name|getFile
 argument_list|()
 expr_stmt|;
 name|System
@@ -2439,12 +2430,7 @@ name|performExport
 argument_list|(
 name|pr
 operator|.
-name|getDatabase
-argument_list|()
-argument_list|,
-name|pr
-operator|.
-name|getMetaData
+name|getDatabaseContext
 argument_list|()
 argument_list|,
 name|data
@@ -2591,7 +2577,6 @@ operator|.
 name|isEmpty
 argument_list|()
 condition|)
-comment|// bibtex file loaded
 block|{
 name|String
 index|[]
@@ -2657,19 +2642,16 @@ decl_stmt|;
 comment|// write an output, if something could be resolved
 if|if
 condition|(
+operator|(
 name|newBase
 operator|!=
 literal|null
-condition|)
-block|{
-if|if
-condition|(
+operator|)
+operator|&&
 name|newBase
 operator|.
-name|getEntryCount
+name|hasEntries
 argument_list|()
-operator|>
-literal|0
 condition|)
 block|{
 name|String
@@ -2867,7 +2849,6 @@ operator|=
 literal|true
 expr_stmt|;
 block|}
-block|}
 if|if
 condition|(
 operator|!
@@ -2990,21 +2971,6 @@ operator|.
 name|getDatabase
 argument_list|()
 decl_stmt|;
-name|MetaData
-name|metaData
-init|=
-name|parserResult
-operator|.
-name|getMetaData
-argument_list|()
-decl_stmt|;
-if|if
-condition|(
-name|metaData
-operator|!=
-literal|null
-condition|)
-block|{
 name|LOGGER
 operator|.
 name|info
@@ -3026,10 +2992,12 @@ operator|.
 name|getEntries
 argument_list|()
 argument_list|,
-name|metaData
+name|parserResult
+operator|.
+name|getDatabaseContext
+argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 DECL|method|regenerateBibtexKeys (List<ParserResult> loaded)
@@ -3083,7 +3051,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Regenerating bibtex keys according to metadata"
+literal|"Regenerating BibTeX keys according to metadata"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -3122,7 +3090,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"No meta data present in bibfile. Cannot regenerate bibtex keys"
+literal|"No meta data present in bibfile. Cannot regenerate BibTeX keys"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -3267,7 +3235,7 @@ operator|.
 name|getSimpleName
 argument_list|()
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
 literal|"Fetcher"
 argument_list|,
@@ -3346,7 +3314,7 @@ operator|.
 name|getSimpleName
 argument_list|()
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
 literal|"Fetcher"
 argument_list|,
@@ -3354,7 +3322,11 @@ literal|""
 argument_list|)
 operator|.
 name|toLowerCase
-argument_list|()
+argument_list|(
+name|Locale
+operator|.
+name|ENGLISH
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -3481,7 +3453,7 @@ name|String
 name|lookFeel
 decl_stmt|;
 name|String
-name|systemLnF
+name|systemLookFeel
 init|=
 name|UIManager
 operator|.
@@ -3502,11 +3474,46 @@ name|USE_DEFAULT_LOOK_AND_FEEL
 argument_list|)
 condition|)
 block|{
-comment|// Use system Look& Feel by default
+comment|// FIXME: Problems with OpenJDK and GTK L&F
+comment|// See https://github.com/JabRef/jabref/issues/393, https://github.com/JabRef/jabref/issues/638
+if|if
+condition|(
+name|System
+operator|.
+name|getProperty
+argument_list|(
+literal|"java.runtime.name"
+argument_list|)
+operator|.
+name|contains
+argument_list|(
+literal|"OpenJDK"
+argument_list|)
+condition|)
+block|{
+comment|// Metal L&F
 name|lookFeel
 operator|=
-name|systemLnF
+name|UIManager
+operator|.
+name|getCrossPlatformLookAndFeelClassName
+argument_list|()
 expr_stmt|;
+name|LOGGER
+operator|.
+name|warn
+argument_list|(
+literal|"There seem to be problems with OpenJDK and the default GTK Look&Feel. Using Metal L&F instead. Change to another L&F with caution."
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|lookFeel
+operator|=
+name|systemLookFeel
+expr_stmt|;
+block|}
 block|}
 else|else
 block|{
@@ -3524,17 +3531,34 @@ name|WIN_LOOK_AND_FEEL
 argument_list|)
 expr_stmt|;
 block|}
-comment|// At all cost, avoid ending up with the Metal look and feel:
+comment|// FIXME: Open JDK problem
 if|if
 condition|(
-literal|"javax.swing.plaf.metal.MetalLookAndFeel"
+name|UIManager
+operator|.
+name|getCrossPlatformLookAndFeelClassName
+argument_list|()
 operator|.
 name|equals
 argument_list|(
 name|lookFeel
 argument_list|)
+operator|&&
+operator|!
+name|System
+operator|.
+name|getProperty
+argument_list|(
+literal|"java.runtime.name"
+argument_list|)
+operator|.
+name|contains
+argument_list|(
+literal|"OpenJDK"
+argument_list|)
 condition|)
 block|{
+comment|// try to avoid ending up with the ugly Metal L&F
 name|Plastic3DLookAndFeel
 name|lnf
 init|=
@@ -3601,7 +3625,7 @@ name|UIManager
 operator|.
 name|setLookAndFeel
 argument_list|(
-name|systemLnF
+name|systemLookFeel
 argument_list|)
 expr_stmt|;
 comment|// also set system l&f as default
@@ -3615,7 +3639,7 @@ name|JabRefPreferences
 operator|.
 name|WIN_LOOK_AND_FEEL
 argument_list|,
-name|systemLnF
+name|systemLookFeel
 argument_list|)
 expr_stmt|;
 comment|// notify the user
@@ -3625,7 +3649,7 @@ name|showMessageDialog
 argument_list|(
 name|JabRef
 operator|.
-name|jrf
+name|mainFrame
 argument_list|,
 name|Localization
 operator|.
@@ -3718,11 +3742,6 @@ operator|.
 name|keys
 argument_list|()
 decl_stmt|;
-name|Double
-name|zoomLevel
-init|=
-literal|null
-decl_stmt|;
 for|for
 control|(
 name|Object
@@ -3770,30 +3789,6 @@ argument_list|(
 name|key
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
-name|zoomLevel
-operator|==
-literal|null
-condition|)
-block|{
-comment|// zoomLevel not yet set, calculate it based on the first found font
-name|zoomLevel
-operator|=
-operator|(
-name|double
-operator|)
-name|fontSize
-operator|/
-operator|(
-name|double
-operator|)
-name|font
-operator|.
-name|getSize
-argument_list|()
-expr_stmt|;
-block|}
 name|font
 operator|=
 operator|new
@@ -3823,20 +3818,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-if|if
-condition|(
-name|zoomLevel
-operator|!=
-literal|null
-condition|)
-block|{
-name|GUIGlobals
-operator|.
-name|zoomLevel
-operator|=
-name|zoomLevel
-expr_stmt|;
-block|}
 block|}
 block|}
 DECL|method|openWindow (List<ParserResult> loaded)
@@ -3851,8 +3832,7 @@ argument_list|>
 name|loaded
 parameter_list|)
 block|{
-comment|// Perform checks and changes for users with a preference set from an older
-comment|// JabRef version.
+comment|// Perform checks and changes for users with a preference set from an older JabRef version.
 name|PreferencesMigrations
 operator|.
 name|replaceAbstractField
@@ -3868,8 +3848,6 @@ operator|.
 name|upgradeFaultyEncodingStrings
 argument_list|()
 expr_stmt|;
-comment|// Set up custom or default icon theme:
-comment|// This is now done at processArguments
 comment|// This property is set to make the Mac OSX Java VM move the menu bar to
 comment|// the top of the screen, where Mac users expect it to be.
 name|System
@@ -3905,29 +3883,10 @@ argument_list|,
 literal|"lcd"
 argument_list|)
 expr_stmt|;
-comment|// Set the Look& Feel for Swing.
-try|try
-block|{
+comment|// Look& Feel. This MUST be the first thing to do before loading any Swing-specific code!
 name|setLookAndFeel
 argument_list|()
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|Throwable
-name|e
-parameter_list|)
-block|{
-name|LOGGER
-operator|.
-name|error
-argument_list|(
-literal|"Swing look and feel could not be loaded."
-argument_list|,
-name|e
-argument_list|)
-expr_stmt|;
-block|}
 comment|// If the option is enabled, open the last edited databases, if any.
 if|if
 condition|(
@@ -4145,7 +4104,7 @@ argument_list|()
 expr_stmt|;
 name|GUIGlobals
 operator|.
-name|CURRENTFONT
+name|currentFont
 operator|=
 operator|new
 name|Font
@@ -4193,7 +4152,7 @@ argument_list|)
 expr_stmt|;
 name|JabRef
 operator|.
-name|jrf
+name|mainFrame
 operator|=
 operator|new
 name|JabRefFrame
@@ -4354,7 +4313,7 @@ else|else
 block|{
 name|JabRef
 operator|.
-name|jrf
+name|mainFrame
 operator|.
 name|addParserResult
 argument_list|(
@@ -4400,7 +4359,7 @@ control|)
 block|{
 name|JabRef
 operator|.
-name|jrf
+name|mainFrame
 operator|.
 name|addParserResult
 argument_list|(
@@ -4435,7 +4394,7 @@ name|startAutoSaveManager
 argument_list|(
 name|JabRef
 operator|.
-name|jrf
+name|mainFrame
 argument_list|)
 expr_stmt|;
 block|}
@@ -4458,7 +4417,7 @@ condition|)
 block|{
 name|JabRef
 operator|.
-name|jrf
+name|mainFrame
 operator|.
 name|setExtendedState
 argument_list|(
@@ -4470,7 +4429,7 @@ expr_stmt|;
 block|}
 name|JabRef
 operator|.
-name|jrf
+name|mainFrame
 operator|.
 name|setVisible
 argument_list|(
@@ -4493,7 +4452,7 @@ condition|)
 block|{
 name|JabRef
 operator|.
-name|jrf
+name|mainFrame
 operator|.
 name|setExtendedState
 argument_list|(
@@ -4546,7 +4505,7 @@ name|showMessageDialog
 argument_list|(
 name|JabRef
 operator|.
-name|jrf
+name|mainFrame
 argument_list|,
 name|message
 argument_list|,
@@ -4606,9 +4565,7 @@ argument_list|(
 name|i
 argument_list|)
 argument_list|,
-name|JabRef
-operator|.
-name|jrf
+name|mainFrame
 argument_list|,
 name|i
 argument_list|)
@@ -4644,7 +4601,7 @@ name|i
 operator|<
 name|JabRef
 operator|.
-name|jrf
+name|mainFrame
 operator|.
 name|getBasePanelCount
 argument_list|()
@@ -4669,7 +4626,7 @@ name|panel
 init|=
 name|JabRef
 operator|.
-name|jrf
+name|mainFrame
 operator|.
 name|getBasePanelAt
 argument_list|(
@@ -4714,7 +4671,7 @@ name|AutosaveStartupPrompter
 argument_list|(
 name|JabRef
 operator|.
-name|jrf
+name|mainFrame
 argument_list|,
 name|postponed
 argument_list|)
@@ -4741,7 +4698,7 @@ name|FocusRequester
 argument_list|(
 name|JabRef
 operator|.
-name|jrf
+name|mainFrame
 operator|.
 name|getCurrentBasePanel
 argument_list|()
@@ -5085,10 +5042,14 @@ name|getMessage
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|ex
+name|LOGGER
 operator|.
-name|printStackTrace
-argument_list|()
+name|info
+argument_list|(
+literal|"Problem opening .bib-file"
+argument_list|,
+name|ex
+argument_list|)
 expr_stmt|;
 return|return
 name|pr
@@ -5183,7 +5144,7 @@ name|entries
 operator|=
 name|Globals
 operator|.
-name|importFormatReader
+name|IMPORT_FORMAT_READER
 operator|.
 name|importFromFile
 argument_list|(
@@ -5199,7 +5160,7 @@ index|]
 argument_list|,
 name|JabRef
 operator|.
-name|jrf
+name|mainFrame
 argument_list|)
 expr_stmt|;
 block|}
@@ -5209,7 +5170,7 @@ name|entries
 operator|=
 name|Globals
 operator|.
-name|importFormatReader
+name|IMPORT_FORMAT_READER
 operator|.
 name|importFromFile
 argument_list|(
@@ -5223,7 +5184,7 @@ index|[
 literal|0
 index|]
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
 literal|"~"
 argument_list|,
@@ -5237,7 +5198,7 @@ argument_list|)
 argument_list|,
 name|JabRef
 operator|.
-name|jrf
+name|mainFrame
 argument_list|)
 expr_stmt|;
 block|}
@@ -5329,7 +5290,7 @@ name|importResult
 operator|=
 name|Globals
 operator|.
-name|importFormatReader
+name|IMPORT_FORMAT_READER
 operator|.
 name|importUnknownFormat
 argument_list|(
@@ -5346,7 +5307,7 @@ name|importResult
 operator|=
 name|Globals
 operator|.
-name|importFormatReader
+name|IMPORT_FORMAT_READER
 operator|.
 name|importUnknownFormat
 argument_list|(
@@ -5355,7 +5316,7 @@ index|[
 literal|0
 index|]
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
 literal|"~"
 argument_list|,

@@ -84,20 +84,6 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|FileListEntry
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
 name|FileListTableModel
 import|;
 end_import
@@ -112,7 +98,7 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|fetcher
+name|fulltext
 operator|.
 name|FindFullText
 import|;
@@ -378,15 +364,8 @@ operator|.
 name|getBibDatabaseContext
 argument_list|()
 operator|.
-name|getMetaData
-argument_list|()
-operator|.
 name|getFileDirectory
-argument_list|(
-name|Globals
-operator|.
-name|FILE_FIELD
-argument_list|)
+argument_list|()
 decl_stmt|;
 if|if
 condition|(
@@ -396,7 +375,6 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-comment|// FIXME: Localization
 name|JOptionPane
 operator|.
 name|showMessageDialog
@@ -406,9 +384,37 @@ operator|.
 name|frame
 argument_list|()
 argument_list|,
-literal|"Main file directory not set! Preferences -> External programs"
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Main file directory not set!"
+argument_list|)
+operator|+
+literal|" "
+operator|+
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Preferences"
+argument_list|)
+operator|+
+literal|" -> "
+operator|+
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"External programs"
+argument_list|)
 argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Directory not found"
+argument_list|)
 argument_list|,
 name|JOptionPane
 operator|.
@@ -441,9 +447,6 @@ name|basePanel
 operator|.
 name|getBibDatabaseContext
 argument_list|()
-operator|.
-name|getMetaData
-argument_list|()
 argument_list|,
 name|bibtexKey
 argument_list|)
@@ -459,21 +462,8 @@ operator|.
 name|get
 argument_list|()
 argument_list|,
-operator|new
-name|DownloadExternalFile
-operator|.
-name|DownloadCallback
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|downloadComplete
-parameter_list|(
-name|FileListEntry
 name|file
-parameter_list|)
+lambda|->
 block|{
 name|FileListTableModel
 name|tm
@@ -564,7 +554,6 @@ name|markBaseChanged
 argument_list|()
 expr_stmt|;
 block|}
-block|}
 argument_list|)
 expr_stmt|;
 block|}
@@ -606,7 +595,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Full text article download failed"
+literal|"Full text document download failed"
 argument_list|)
 decl_stmt|;
 name|basePanel

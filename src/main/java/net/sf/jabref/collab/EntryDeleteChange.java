@@ -18,6 +18,16 @@ end_package
 
 begin_import
 import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|*
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -37,18 +47,6 @@ operator|.
 name|jabref
 operator|.
 name|JabRefPreferences
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|MetaData
 import|;
 end_import
 
@@ -202,16 +200,6 @@ name|LogFactory
 import|;
 end_import
 
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|*
-import|;
-end_import
-
 begin_class
 DECL|class|EntryDeleteChange
 class|class
@@ -338,10 +326,6 @@ name|memEntry
 argument_list|,
 literal|null
 argument_list|,
-operator|new
-name|MetaData
-argument_list|()
-argument_list|,
 name|Globals
 operator|.
 name|prefs
@@ -382,7 +366,7 @@ parameter_list|)
 block|{
 name|panel
 operator|.
-name|database
+name|getDatabase
 argument_list|()
 operator|.
 name|removeEntry
@@ -399,7 +383,7 @@ name|UndoableRemoveEntry
 argument_list|(
 name|panel
 operator|.
-name|database
+name|getDatabase
 argument_list|()
 argument_list|,
 name|memEntry

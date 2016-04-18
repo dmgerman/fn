@@ -416,12 +416,6 @@ specifier|final
 name|HelpAction
 name|helpAction
 decl_stmt|;
-DECL|field|pw
-specifier|private
-specifier|final
-name|PositionWindow
-name|pw
-decl_stmt|;
 DECL|field|saveAction
 specifier|private
 specifier|final
@@ -444,6 +438,20 @@ init|=
 operator|new
 name|CloseAction
 argument_list|()
+decl_stmt|;
+DECL|field|STRINGS_TITLE
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|STRINGS_TITLE
+init|=
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Strings for database"
+argument_list|)
 decl_stmt|;
 DECL|method|StringDialog (JabRefFrame frame, BasePanel panel, BibDatabase base)
 specifier|public
@@ -628,12 +636,11 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|!
 name|base
 operator|.
-name|getStringCount
+name|hasNoStrings
 argument_list|()
-operator|>
-literal|0
 condition|)
 block|{
 name|table
@@ -992,15 +999,13 @@ condition|)
 block|{
 name|setTitle
 argument_list|(
-name|GUIGlobals
-operator|.
-name|stringsTitle
+name|STRINGS_TITLE
 operator|+
 literal|": "
 operator|+
 name|GUIGlobals
 operator|.
-name|untitledTitle
+name|UNTITLED_TITLE
 argument_list|)
 expr_stmt|;
 block|}
@@ -1008,9 +1013,7 @@ else|else
 block|{
 name|setTitle
 argument_list|(
-name|GUIGlobals
-operator|.
-name|stringsTitle
+name|STRINGS_TITLE
 operator|+
 literal|": "
 operator|+
@@ -1027,8 +1030,9 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+name|PositionWindow
 name|pw
-operator|=
+init|=
 operator|new
 name|PositionWindow
 argument_list|(
@@ -1050,55 +1054,11 @@ name|JabRefPreferences
 operator|.
 name|STRINGS_SIZE_Y
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|pw
 operator|.
 name|setWindowPosition
 argument_list|()
-expr_stmt|;
-comment|// Set up a ComponentListener that saves the last size and position of the dialog
-name|addComponentListener
-argument_list|(
-operator|new
-name|ComponentAdapter
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|componentResized
-parameter_list|(
-name|ComponentEvent
-name|e
-parameter_list|)
-block|{
-comment|// Save dialog position
-name|pw
-operator|.
-name|storeWindowPosition
-argument_list|()
-expr_stmt|;
-block|}
-annotation|@
-name|Override
-specifier|public
-name|void
-name|componentMoved
-parameter_list|(
-name|ComponentEvent
-name|e
-parameter_list|)
-block|{
-comment|// Save dialog position
-name|pw
-operator|.
-name|storeWindowPosition
-argument_list|()
-expr_stmt|;
-block|}
-block|}
-argument_list|)
 expr_stmt|;
 block|}
 DECL|class|StringTable
@@ -1881,7 +1841,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Name"
+literal|"Label"
 argument_list|)
 else|:
 name|Localization
@@ -2504,15 +2464,6 @@ expr_stmt|;
 name|String
 name|msg
 init|=
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Really delete the selected"
-argument_list|)
-operator|+
-literal|' '
-operator|+
 operator|(
 name|sel
 operator|.
@@ -2520,28 +2471,29 @@ name|length
 operator|>
 literal|1
 condition|?
-name|sel
-operator|.
-name|length
-operator|+
-literal|" "
-operator|+
 name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"entries"
+literal|"Really delete the selected %0 entries?"
+argument_list|,
+name|Integer
+operator|.
+name|toString
+argument_list|(
+name|sel
+operator|.
+name|length
+argument_list|)
 argument_list|)
 else|:
 name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"entry"
+literal|"Really delete the selected entry?"
 argument_list|)
 operator|)
-operator|+
-literal|'?'
 decl_stmt|;
 name|int
 name|answer
@@ -2665,12 +2617,11 @@ argument_list|()
 expr_stmt|;
 if|if
 condition|(
+operator|!
 name|base
 operator|.
-name|getStringCount
+name|hasNoStrings
 argument_list|()
-operator|>
-literal|0
 condition|)
 block|{
 name|table
@@ -2738,8 +2689,6 @@ name|ActionEvent
 name|e
 parameter_list|)
 block|{
-try|try
-block|{
 name|panel
 operator|.
 name|runCommand
@@ -2749,15 +2698,6 @@ operator|.
 name|UNDO
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|Throwable
-name|ignored
-parameter_list|)
-block|{
-comment|// Ignore
-block|}
 block|}
 block|}
 DECL|class|RedoAction
@@ -2811,8 +2751,6 @@ name|ActionEvent
 name|e
 parameter_list|)
 block|{
-try|try
-block|{
 name|panel
 operator|.
 name|runCommand
@@ -2822,15 +2760,6 @@ operator|.
 name|REDO
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|Throwable
-name|ignored
-parameter_list|)
-block|{
-comment|// Ignore
-block|}
 block|}
 block|}
 block|}

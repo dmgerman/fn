@@ -196,22 +196,6 @@ name|jabref
 operator|.
 name|model
 operator|.
-name|database
-operator|.
-name|BibDatabase
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
 name|entry
 operator|.
 name|BibEntry
@@ -294,27 +278,18 @@ specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
-DECL|field|database
-specifier|private
-specifier|final
-name|BibDatabase
-name|database
-decl_stmt|;
 comment|/**      * written by run() and read by update()      */
 DECL|field|message
 specifier|private
 name|String
 name|message
 decl_stmt|;
-DECL|method|ExportToClipboardAction (JabRefFrame frame, BibDatabase database)
+DECL|method|ExportToClipboardAction (JabRefFrame frame)
 specifier|public
 name|ExportToClipboardAction
 parameter_list|(
 name|JabRefFrame
 name|frame
-parameter_list|,
-name|BibDatabase
-name|database
 parameter_list|)
 block|{
 name|this
@@ -326,17 +301,6 @@ operator|.
 name|requireNonNull
 argument_list|(
 name|frame
-argument_list|)
-expr_stmt|;
-name|this
-operator|.
-name|database
-operator|=
-name|Objects
-operator|.
-name|requireNonNull
-argument_list|(
-name|database
 argument_list|)
 expr_stmt|;
 block|}
@@ -382,7 +346,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"No entries selected."
+literal|"This operation requires one or more entries to be selected."
 argument_list|)
 expr_stmt|;
 name|getCallBack
@@ -627,41 +591,7 @@ operator|.
 name|getBibDatabaseContext
 argument_list|()
 operator|.
-name|getMetaData
-argument_list|()
-operator|.
 name|getFileDirectory
-argument_list|(
-name|Globals
-operator|.
-name|FILE_FIELD
-argument_list|)
-operator|.
-name|toArray
-argument_list|(
-operator|new
-name|String
-index|[
-literal|0
-index|]
-argument_list|)
-expr_stmt|;
-comment|// Also store the database's file in a global variable:
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|databaseFile
-operator|=
-name|frame
-operator|.
-name|getCurrentBasePanel
-argument_list|()
-operator|.
-name|getBibDatabaseContext
-argument_list|()
-operator|.
-name|getDatabaseFile
 argument_list|()
 expr_stmt|;
 name|File
@@ -693,61 +623,21 @@ name|List
 argument_list|<
 name|BibEntry
 argument_list|>
-name|bes
+name|entries
 init|=
 name|panel
 operator|.
 name|getSelectedEntries
 argument_list|()
 decl_stmt|;
-name|Set
-argument_list|<
-name|String
-argument_list|>
-name|entries
-init|=
-operator|new
-name|HashSet
-argument_list|<>
-argument_list|(
-name|bes
-operator|.
-name|size
-argument_list|()
-argument_list|)
-decl_stmt|;
-for|for
-control|(
-name|BibEntry
-name|be
-range|:
-name|bes
-control|)
-block|{
-name|entries
-operator|.
-name|add
-argument_list|(
-name|be
-operator|.
-name|getId
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
 comment|// Write to file:
 name|format
 operator|.
 name|performExport
 argument_list|(
-name|database
-argument_list|,
 name|panel
 operator|.
 name|getBibDatabaseContext
-argument_list|()
-operator|.
-name|getMetaData
 argument_list|()
 argument_list|,
 name|tmp
@@ -835,7 +725,6 @@ block|{
 comment|// Do nothing
 block|}
 decl_stmt|;
-comment|//StringSelection ss = new StringSelection(sw.toString());
 name|RtfSelection
 name|rs
 init|=
@@ -874,7 +763,7 @@ argument_list|)
 operator|+
 literal|": "
 operator|+
-name|bes
+name|entries
 operator|.
 name|size
 argument_list|()
@@ -911,13 +800,12 @@ block|{
 comment|// Clean up:
 if|if
 condition|(
+operator|(
 name|tmp
 operator|!=
 literal|null
-condition|)
-block|{
-if|if
-condition|(
+operator|)
+operator|&&
 operator|!
 name|tmp
 operator|.
@@ -932,7 +820,6 @@ argument_list|(
 literal|"Cannot delete temporary clipboard file"
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 block|}

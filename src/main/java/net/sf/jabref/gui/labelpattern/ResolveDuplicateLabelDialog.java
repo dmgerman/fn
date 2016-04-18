@@ -184,18 +184,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|awt
-operator|.
-name|event
-operator|.
-name|ActionListener
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|ArrayList
@@ -344,7 +332,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Duplicate key"
+literal|"Duplicate BibTeX key"
 argument_list|)
 operator|+
 literal|": "
@@ -411,7 +399,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Generate key"
+literal|"Generate BibTeX key"
 argument_list|)
 argument_list|,
 operator|!
@@ -454,10 +442,6 @@ argument_list|,
 name|entry
 argument_list|,
 literal|null
-argument_list|,
-operator|new
-name|MetaData
-argument_list|()
 argument_list|,
 name|ResolveDuplicateLabelDialog
 operator|.
@@ -635,19 +619,8 @@ name|ok
 operator|.
 name|addActionListener
 argument_list|(
-operator|new
-name|ActionListener
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|actionPerformed
-parameter_list|(
-name|ActionEvent
-name|actionEvent
-parameter_list|)
+name|e
+lambda|->
 block|{
 name|okPressed
 operator|=
@@ -658,34 +631,6 @@ operator|.
 name|dispose
 argument_list|()
 expr_stmt|;
-block|}
-block|}
-argument_list|)
-expr_stmt|;
-name|cancel
-operator|.
-name|addActionListener
-argument_list|(
-operator|new
-name|ActionListener
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|actionPerformed
-parameter_list|(
-name|ActionEvent
-name|actionEvent
-parameter_list|)
-block|{
-name|diag
-operator|.
-name|dispose
-argument_list|()
-expr_stmt|;
-block|}
 block|}
 argument_list|)
 expr_stmt|;
@@ -714,6 +659,13 @@ expr_stmt|;
 block|}
 block|}
 decl_stmt|;
+name|cancel
+operator|.
+name|addActionListener
+argument_list|(
+name|closeAction
+argument_list|)
+expr_stmt|;
 name|ActionMap
 name|am
 init|=

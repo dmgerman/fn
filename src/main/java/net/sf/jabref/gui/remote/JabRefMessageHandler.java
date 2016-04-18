@@ -202,7 +202,7 @@ argument_list|)
 decl_stmt|;
 name|JabRef
 operator|.
-name|jrf
+name|mainFrame
 operator|.
 name|addParserResult
 argument_list|(

@@ -621,7 +621,9 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Error fetching from Google Scholar"
+literal|"Error while fetching from %0"
+argument_list|,
+literal|"Google Scholar"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1040,8 +1042,6 @@ name|LinkedHashMap
 argument_list|<>
 argument_list|()
 decl_stmt|;
-try|try
-block|{
 name|urlQuery
 operator|=
 name|GoogleScholarFetcher
@@ -1120,21 +1120,6 @@ return|return
 name|res
 return|;
 block|}
-catch|catch
-parameter_list|(
-name|UnsupportedEncodingException
-name|e
-parameter_list|)
-block|{
-throw|throw
-operator|new
-name|RuntimeException
-argument_list|(
-name|e
-argument_list|)
-throw|;
-block|}
-block|}
 DECL|method|getCitationsFromUrl (String urlQuery, Map<String, JLabel> ids)
 specifier|private
 name|String
@@ -1175,7 +1160,6 @@ operator|.
 name|downloadToString
 argument_list|()
 decl_stmt|;
-comment|//save("query.html", cont);
 name|Matcher
 name|m
 init|=
@@ -1221,7 +1205,6 @@ decl_stmt|;
 name|String
 name|pText
 decl_stmt|;
-comment|//System.out.println("regionStart: "+m.start());
 name|String
 name|part
 init|=
@@ -1277,8 +1260,6 @@ operator|.
 name|find
 argument_list|()
 decl_stmt|;
-comment|//System.out.println("fs = "+fS+", fE = "+fE);
-comment|//System.out.println(titleS.end()+" : "+titleE.start());
 if|if
 condition|(
 name|fS
@@ -1410,7 +1391,7 @@ name|end
 argument_list|()
 expr_stmt|;
 block|}
-comment|/*m = NEXT_PAGE_PATTERN.matcher(cont);         if (m.find()) {             System.out.println("NEXT: "+URL_START+m.group(1).replaceAll("&amp;", "&"));             return URL_START+m.group(1).replaceAll("&amp;", "&");         }         else*/
+comment|/*m = NEXT_PAGE_PATTERN.matcher(cont);         if (m.find()) {             System.out.println("NEXT: "+URL_START+m.group(1).replace("&amp;", "&"));             return URL_START+m.group(1).replace("&amp;", "&");         }         else*/
 return|return
 literal|null
 return|;
@@ -1744,7 +1725,7 @@ argument_list|(
 name|page
 argument_list|)
 decl_stmt|;
-name|HashMap
+name|Map
 argument_list|<
 name|String
 argument_list|,

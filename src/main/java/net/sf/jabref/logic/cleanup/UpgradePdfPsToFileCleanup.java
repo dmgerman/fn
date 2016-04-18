@@ -130,6 +130,22 @@ name|FileField
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|ParsedFileField
+import|;
+end_import
+
 begin_comment
 comment|/**  * Collects file links from the given set of fields, and add them to the list contained in the file field.  */
 end_comment
@@ -214,8 +230,6 @@ argument_list|)
 decl_stmt|;
 name|List
 argument_list|<
-name|FileField
-operator|.
 name|ParsedFileField
 argument_list|>
 name|fileList
@@ -282,14 +296,10 @@ argument_list|(
 name|o
 argument_list|)
 decl_stmt|;
-name|FileField
-operator|.
 name|ParsedFileField
 name|flEntry
 init|=
 operator|new
-name|FileField
-operator|.
 name|ParsedFileField
 argument_list|(
 name|f

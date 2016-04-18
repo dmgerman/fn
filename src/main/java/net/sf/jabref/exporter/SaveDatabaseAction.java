@@ -554,16 +554,11 @@ name|INSTANCE
 operator|.
 name|execute
 argument_list|(
-operator|new
+call|(
 name|Runnable
+call|)
 argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|run
-parameter_list|()
+operator|->
 block|{
 if|if
 condition|(
@@ -595,7 +590,7 @@ expr_stmt|;
 block|}
 name|ChangeScanner
 name|scanner
-init|=
+operator|=
 operator|new
 name|ChangeScanner
 argument_list|(
@@ -614,7 +609,7 @@ operator|.
 name|getDatabaseFile
 argument_list|()
 argument_list|)
-decl_stmt|;
+argument_list|;
 name|JabRefExecutorService
 operator|.
 name|INSTANCE
@@ -636,21 +631,13 @@ name|scanner
 operator|.
 name|displayResult
 argument_list|(
-operator|new
+operator|(
 name|ChangeScanner
 operator|.
 name|DisplayResultCallback
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|scanResultsResolved
-parameter_list|(
-name|boolean
+operator|)
 name|resolved
-parameter_list|)
+lambda|->
 block|{
 if|if
 condition|(
@@ -668,17 +655,11 @@ name|SwingUtilities
 operator|.
 name|invokeLater
 argument_list|(
-operator|new
+call|(
 name|Runnable
+call|)
 argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|run
-parameter_list|()
-block|{
+operator|->
 name|panel
 operator|.
 name|getSidePaneManager
@@ -688,9 +669,6 @@ name|hide
 argument_list|(
 literal|"fileUpdate"
 argument_list|)
-expr_stmt|;
-block|}
-block|}
 argument_list|)
 expr_stmt|;
 block|}
@@ -702,14 +680,12 @@ literal|true
 expr_stmt|;
 block|}
 block|}
-block|}
 argument_list|)
 expr_stmt|;
 block|}
 block|}
-block|}
-argument_list|)
-expr_stmt|;
+block|)
+empty_stmt|;
 return|return;
 block|}
 else|else
@@ -840,8 +816,10 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
-block|}
-annotation|@
+end_class
+
+begin_function
+unit|}      @
 name|Override
 DECL|method|update ()
 specifier|public
@@ -959,6 +937,9 @@ expr_stmt|;
 block|}
 block|}
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Override
 DECL|method|run ()
@@ -1160,6 +1141,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_function
 DECL|method|saveDatabase (File file, boolean selectedOnly, Charset encoding)
 specifier|private
 name|boolean
@@ -1253,6 +1237,13 @@ name|prefs
 argument_list|)
 expr_stmt|;
 block|}
+name|panel
+operator|.
+name|registerUndoableChanges
+argument_list|(
+name|session
+argument_list|)
+expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
@@ -1856,7 +1847,13 @@ return|return
 name|commit
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Run the "Save" operation. This method offloads the actual save operation to a background thread, but      * still runs synchronously using Spin (the method returns only after completing the operation).      */
+end_comment
+
+begin_function
 DECL|method|runCommand ()
 specifier|public
 name|void
@@ -1904,6 +1901,9 @@ argument_list|()
 expr_stmt|;
 comment|// Runs the update() method on the EDT.
 block|}
+end_function
+
+begin_function
 DECL|method|save ()
 specifier|public
 name|void
@@ -1915,8 +1915,19 @@ block|{
 name|runCommand
 argument_list|()
 expr_stmt|;
+name|frame
+operator|.
+name|updateEnabledState
+argument_list|()
+expr_stmt|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Run the "Save as" operation. This method offloads the actual save operation to a background thread, but      * still runs synchronously using Spin (the method returns only after completing the operation).      */
+end_comment
+
+begin_function
 DECL|method|saveAs ()
 specifier|public
 name|void
@@ -2051,7 +2062,7 @@ block|}
 block|}
 if|if
 condition|(
-name|chosenFile
+name|f
 operator|!=
 literal|null
 condition|)
@@ -2072,10 +2083,7 @@ operator|.
 name|getBibDatabaseContext
 argument_list|()
 operator|.
-name|getMetaData
-argument_list|()
-operator|.
-name|setFile
+name|setDatabaseFile
 argument_list|(
 name|f
 argument_list|)
@@ -2111,10 +2119,7 @@ operator|.
 name|getBibDatabaseContext
 argument_list|()
 operator|.
-name|getMetaData
-argument_list|()
-operator|.
-name|setFile
+name|setDatabaseFile
 argument_list|(
 name|oldFile
 argument_list|)
@@ -2183,8 +2188,19 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+name|frame
+operator|.
+name|updateEnabledState
+argument_list|()
+expr_stmt|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Query whether the last operation was successful.      *      * @return true if the last Save/SaveAs operation completed successfully, false otherwise.      */
+end_comment
+
+begin_function
 DECL|method|isSuccess ()
 specifier|public
 name|boolean
@@ -2195,7 +2211,13 @@ return|return
 name|success
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Query whether the last operation was cancelled.      *      * @return true if the last Save/SaveAs operation was cancelled from the file dialog or from another      * query dialog, false otherwise.      */
+end_comment
+
+begin_function
 DECL|method|isCancelled ()
 specifier|public
 name|boolean
@@ -2206,8 +2228,8 @@ return|return
 name|cancelled
 return|;
 block|}
-block|}
-end_class
+end_function
 
+unit|}
 end_unit
 

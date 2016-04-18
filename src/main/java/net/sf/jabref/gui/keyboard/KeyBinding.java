@@ -45,7 +45,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Abbreviate"
+literal|"Abbreviate journal names"
 argument_list|)
 argument_list|,
 literal|"ctrl alt A"
@@ -75,7 +75,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Automatically link files"
+literal|"Automatically set file links"
 argument_list|)
 argument_list|,
 literal|"alt F"
@@ -96,21 +96,6 @@ argument_list|,
 literal|"alt LEFT"
 argument_list|)
 block|,
-DECL|enumConstant|BACK_HELP_DIALOG
-name|BACK_HELP_DIALOG
-argument_list|(
-literal|"Back, help dialog"
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Back, help dialog"
-argument_list|)
-argument_list|,
-literal|"LEFT"
-argument_list|)
-block|,
 DECL|enumConstant|CLEANUP
 name|CLEANUP
 argument_list|(
@@ -120,7 +105,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Cleanup"
+literal|"Cleanup entries"
 argument_list|)
 argument_list|,
 literal|"ctrl shift F7"
@@ -531,21 +516,6 @@ argument_list|,
 literal|"alt RIGHT"
 argument_list|)
 block|,
-DECL|enumConstant|FORWARD_HELP_DIALOG
-name|FORWARD_HELP_DIALOG
-argument_list|(
-literal|"Forward, help dialog"
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Forward, help dialog"
-argument_list|)
-argument_list|,
-literal|"RIGHT"
-argument_list|)
-block|,
 DECL|enumConstant|HELP
 name|HELP
 argument_list|(
@@ -681,21 +651,6 @@ argument_list|,
 literal|"ctrl N"
 argument_list|)
 block|,
-DECL|enumConstant|NEW_FILE_LINK
-name|NEW_FILE_LINK
-argument_list|(
-literal|"New file link"
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"New file link"
-argument_list|)
-argument_list|,
-literal|"ctrl N"
-argument_list|)
-block|,
 DECL|enumConstant|NEW_FROM_PLAIN_TEXT
 name|NEW_FROM_PLAIN_TEXT
 argument_list|(
@@ -799,6 +754,21 @@ literal|"Next tab"
 argument_list|)
 argument_list|,
 literal|"ctrl PAGE_DOWN"
+argument_list|)
+block|,
+DECL|enumConstant|OPEN_CONSOLE
+name|OPEN_CONSOLE
+argument_list|(
+literal|"Open terminal here"
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Open terminal here"
+argument_list|)
+argument_list|,
+literal|"ctrl shift J"
 argument_list|)
 block|,
 DECL|enumConstant|OPEN_DATABASE
@@ -975,7 +945,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Refresh OO"
+literal|"Refresh OpenOffice/LibreOffice"
 argument_list|)
 argument_list|,
 literal|"ctrl alt O"
@@ -1050,7 +1020,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Save database as ..."
+literal|"Save database as..."
 argument_list|)
 argument_list|,
 literal|"ctrl shift S"

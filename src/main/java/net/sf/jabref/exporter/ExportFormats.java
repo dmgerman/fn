@@ -302,12 +302,7 @@ argument_list|(
 operator|new
 name|ExportFormat
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
 literal|"HTML"
-argument_list|)
 argument_list|,
 literal|"html"
 argument_list|,
@@ -350,17 +345,7 @@ argument_list|(
 operator|new
 name|ExportFormat
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"DocBook"
-argument_list|)
-operator|.
-name|concat
-argument_list|(
-literal|" 4.4"
-argument_list|)
+literal|"DocBook 4.4"
 argument_list|,
 literal|"docbook"
 argument_list|,
@@ -379,12 +364,7 @@ argument_list|(
 operator|new
 name|ExportFormat
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
 literal|"DIN 1505"
-argument_list|)
 argument_list|,
 literal|"din1505"
 argument_list|,
@@ -403,12 +383,7 @@ argument_list|(
 operator|new
 name|ExportFormat
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
 literal|"BibTeXML"
-argument_list|)
 argument_list|,
 literal|"bibtexml"
 argument_list|,
@@ -427,12 +402,7 @@ argument_list|(
 operator|new
 name|ExportFormat
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
 literal|"BibO RDF"
-argument_list|)
 argument_list|,
 literal|"bibordf"
 argument_list|,
@@ -532,12 +502,7 @@ argument_list|(
 operator|new
 name|ExportFormat
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
 literal|"Harvard RTF"
-argument_list|)
 argument_list|,
 literal|"harvard"
 argument_list|,
@@ -556,12 +521,7 @@ argument_list|(
 operator|new
 name|ExportFormat
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
 literal|"ISO 690"
-argument_list|)
 argument_list|,
 literal|"iso690rtf"
 argument_list|,
@@ -580,12 +540,7 @@ argument_list|(
 operator|new
 name|ExportFormat
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
 literal|"ISO 690"
-argument_list|)
 argument_list|,
 literal|"iso690txt"
 argument_list|,
@@ -604,12 +559,7 @@ argument_list|(
 operator|new
 name|ExportFormat
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
 literal|"Endnote"
-argument_list|)
 argument_list|,
 literal|"endnote"
 argument_list|,
@@ -628,12 +578,7 @@ argument_list|(
 operator|new
 name|ExportFormat
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"OpenOffice CSV"
-argument_list|)
+literal|"OpenOffice/LibreOffice CSV"
 argument_list|,
 literal|"oocsv"
 argument_list|,
@@ -651,12 +596,7 @@ init|=
 operator|new
 name|ExportFormat
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
 literal|"RIS"
-argument_list|)
 argument_list|,
 literal|"ris"
 argument_list|,
@@ -690,12 +630,7 @@ argument_list|(
 operator|new
 name|ExportFormat
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
 literal|"MIS Quarterly"
-argument_list|)
 argument_list|,
 literal|"misq"
 argument_list|,
@@ -1222,11 +1157,11 @@ operator|.
 name|getExportFormat
 argument_list|()
 decl_stmt|;
-name|Set
+name|List
 argument_list|<
-name|String
+name|BibEntry
 argument_list|>
-name|entryIds
+name|entries
 init|=
 literal|null
 decl_stmt|;
@@ -1235,12 +1170,9 @@ condition|(
 name|selectedOnly
 condition|)
 block|{
-name|List
-argument_list|<
-name|BibEntry
-argument_list|>
-name|selected
-init|=
+comment|// Selected entries
+name|entries
+operator|=
 name|frame
 operator|.
 name|getCurrentBasePanel
@@ -1248,33 +1180,24 @@ argument_list|()
 operator|.
 name|getSelectedEntries
 argument_list|()
-decl_stmt|;
-name|entryIds
-operator|=
-operator|new
-name|HashSet
-argument_list|<>
-argument_list|()
-expr_stmt|;
-for|for
-control|(
-name|BibEntry
-name|bibtexEntry
-range|:
-name|selected
-control|)
-block|{
-name|entryIds
-operator|.
-name|add
-argument_list|(
-name|bibtexEntry
-operator|.
-name|getId
-argument_list|()
-argument_list|)
 expr_stmt|;
 block|}
+else|else
+block|{
+comment|// All entries
+name|entries
+operator|=
+name|frame
+operator|.
+name|getCurrentBasePanel
+argument_list|()
+operator|.
+name|getDatabase
+argument_list|()
+operator|.
+name|getEntries
+argument_list|()
+expr_stmt|;
 block|}
 comment|// Set the global variable for this database's file directory before exporting,
 comment|// so formatters can resolve linked files correctly.
@@ -1293,41 +1216,7 @@ operator|.
 name|getBibDatabaseContext
 argument_list|()
 operator|.
-name|getMetaData
-argument_list|()
-operator|.
 name|getFileDirectory
-argument_list|(
-name|Globals
-operator|.
-name|FILE_FIELD
-argument_list|)
-operator|.
-name|toArray
-argument_list|(
-operator|new
-name|String
-index|[
-literal|0
-index|]
-argument_list|)
-expr_stmt|;
-comment|// Also store the database's file in a global variable:
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|databaseFile
-operator|=
-name|frame
-operator|.
-name|getCurrentBasePanel
-argument_list|()
-operator|.
-name|getBibDatabaseContext
-argument_list|()
-operator|.
-name|getDatabaseFile
 argument_list|()
 expr_stmt|;
 comment|// Make sure we remember which filter was used, to set
@@ -1371,13 +1260,13 @@ init|=
 name|file
 decl_stmt|;
 specifier|final
-name|Set
+name|List
 argument_list|<
-name|String
+name|BibEntry
 argument_list|>
-name|finEntryIDs
+name|finEntries
 init|=
-name|entryIds
+name|entries
 decl_stmt|;
 name|AbstractWorker
 name|exportWorker
@@ -1407,18 +1296,7 @@ operator|.
 name|getCurrentBasePanel
 argument_list|()
 operator|.
-name|database
-argument_list|()
-argument_list|,
-name|frame
-operator|.
-name|getCurrentBasePanel
-argument_list|()
-operator|.
 name|getBibDatabaseContext
-argument_list|()
-operator|.
-name|getMetaData
 argument_list|()
 argument_list|,
 name|finFile
@@ -1434,7 +1312,7 @@ operator|.
 name|getEncoding
 argument_list|()
 argument_list|,
-name|finEntryIDs
+name|finEntries
 argument_list|)
 expr_stmt|;
 block|}
@@ -1635,7 +1513,7 @@ argument_list|(
 name|currentDir
 argument_list|)
 decl_stmt|;
-name|TreeSet
+name|Set
 argument_list|<
 name|FileFilter
 argument_list|>

@@ -40,6 +40,34 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|undo
+operator|.
+name|AbstractUndoableEdit
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|database
+operator|.
+name|BibDatabase
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -102,7 +130,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"All Entries"
+literal|"All entries"
 argument_list|)
 argument_list|,
 name|GroupHierarchyType

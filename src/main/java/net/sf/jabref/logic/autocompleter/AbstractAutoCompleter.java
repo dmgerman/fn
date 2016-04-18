@@ -74,6 +74,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Set
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|SortedSet
 import|;
 end_import
@@ -119,26 +129,6 @@ specifier|final
 name|AutoCompletePreferences
 name|preferences
 decl_stmt|;
-DECL|method|AbstractAutoCompleter (AutoCompletePreferences preferences)
-specifier|public
-name|AbstractAutoCompleter
-parameter_list|(
-name|AutoCompletePreferences
-name|preferences
-parameter_list|)
-block|{
-name|this
-operator|.
-name|preferences
-operator|=
-name|Objects
-operator|.
-name|requireNonNull
-argument_list|(
-name|preferences
-argument_list|)
-expr_stmt|;
-block|}
 comment|/**      * Stores the strings as is.      */
 DECL|field|indexCaseSensitive
 specifier|private
@@ -177,7 +167,7 @@ name|Map
 argument_list|<
 name|String
 argument_list|,
-name|TreeSet
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -189,6 +179,26 @@ name|HashMap
 argument_list|<>
 argument_list|()
 decl_stmt|;
+DECL|method|AbstractAutoCompleter (AutoCompletePreferences preferences)
+specifier|public
+name|AbstractAutoCompleter
+parameter_list|(
+name|AutoCompletePreferences
+name|preferences
+parameter_list|)
+block|{
+name|this
+operator|.
+name|preferences
+operator|=
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|preferences
+argument_list|)
+expr_stmt|;
+block|}
 comment|/**      * {@inheritDoc}      * The completion is case sensitive if the string contains upper case letters.      * Otherwise the completion is case insensitive.      */
 annotation|@
 name|Override
@@ -279,7 +289,7 @@ argument_list|)
 decl_stmt|;
 comment|// As subset only contains lower case strings,
 comment|// we have to to determine possible strings for each hit
-name|ArrayList
+name|List
 argument_list|<
 name|String
 argument_list|>
@@ -493,7 +503,7 @@ argument_list|(
 name|lowerCase
 argument_list|)
 expr_stmt|;
-name|TreeSet
+name|Set
 argument_list|<
 name|String
 argument_list|>

@@ -91,7 +91,9 @@ DECL|method|PersonName ()
 specifier|public
 name|PersonName
 parameter_list|()
-block|{     }
+block|{
+comment|// Empty constructor
+block|}
 DECL|method|PersonName (String name)
 specifier|public
 name|PersonName
@@ -149,7 +151,7 @@ name|authorMod
 init|=
 name|AuthorList
 operator|.
-name|fixAuthor_lastNameFirst
+name|fixAuthorLastNameFirst
 argument_list|(
 name|author
 argument_list|,
@@ -342,11 +344,11 @@ name|String
 name|getGivenNames
 parameter_list|()
 block|{
-name|StringBuffer
+name|StringBuilder
 name|result
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 if|if
@@ -471,11 +473,11 @@ name|String
 name|getFullname
 parameter_list|()
 block|{
-name|StringBuffer
+name|StringBuilder
 name|fullName
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 if|if

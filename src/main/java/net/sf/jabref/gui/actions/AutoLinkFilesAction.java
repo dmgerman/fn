@@ -30,18 +30,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|awt
-operator|.
-name|event
-operator|.
-name|ActionListener
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|List
@@ -308,7 +296,7 @@ name|entries
 init|=
 name|JabRef
 operator|.
-name|jrf
+name|mainFrame
 operator|.
 name|getCurrentBasePanel
 argument_list|()
@@ -326,7 +314,7 @@ condition|)
 block|{
 name|JabRef
 operator|.
-name|jrf
+name|mainFrame
 operator|.
 name|getCurrentBasePanel
 argument_list|()
@@ -337,7 +325,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"No entries selected."
+literal|"This operation requires one or more entries to be selected."
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -351,7 +339,7 @@ name|JDialog
 argument_list|(
 name|JabRef
 operator|.
-name|jrf
+name|mainFrame
 argument_list|,
 literal|true
 argument_list|)
@@ -388,30 +376,16 @@ literal|null
 argument_list|,
 name|JabRef
 operator|.
-name|jrf
+name|mainFrame
 operator|.
 name|getCurrentBasePanel
 argument_list|()
 operator|.
 name|getBibDatabaseContext
 argument_list|()
-operator|.
-name|getMetaData
-argument_list|()
 argument_list|,
-operator|new
-name|ActionListener
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|actionPerformed
-parameter_list|(
-name|ActionEvent
 name|e
-parameter_list|)
+lambda|->
 block|{
 if|if
 condition|(
@@ -439,7 +413,7 @@ argument_list|()
 expr_stmt|;
 name|JabRef
 operator|.
-name|jrf
+name|mainFrame
 operator|.
 name|getCurrentBasePanel
 argument_list|()
@@ -453,7 +427,7 @@ argument_list|)
 expr_stmt|;
 name|JabRef
 operator|.
-name|jrf
+name|mainFrame
 operator|.
 name|getCurrentBasePanel
 argument_list|()
@@ -464,7 +438,7 @@ expr_stmt|;
 block|}
 name|JabRef
 operator|.
-name|jrf
+name|mainFrame
 operator|.
 name|output
 argument_list|(
@@ -472,7 +446,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Finished autosetting external links."
+literal|"Finished automatically setting external links."
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -481,7 +455,7 @@ else|else
 block|{
 name|JabRef
 operator|.
-name|jrf
+name|mainFrame
 operator|.
 name|output
 argument_list|(
@@ -489,7 +463,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Finished autosetting external links."
+literal|"Finished automatically setting external links."
 argument_list|)
 operator|+
 literal|" "
@@ -502,7 +476,6 @@ literal|"No files found."
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 argument_list|,

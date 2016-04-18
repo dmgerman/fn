@@ -350,8 +350,9 @@ name|JsonNode
 argument_list|>
 name|jsonResponse
 decl_stmt|;
-name|query
-operator|=
+name|String
+name|encodedQuery
+init|=
 name|URLEncoder
 operator|.
 name|encode
@@ -360,7 +361,7 @@ name|query
 argument_list|,
 literal|"UTF-8"
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|jsonResponse
 operator|=
 name|Unirest
@@ -369,7 +370,7 @@ name|get
 argument_list|(
 name|API_URL
 operator|+
-name|query
+name|encodedQuery
 operator|+
 literal|"&api_key="
 operator|+
@@ -493,7 +494,9 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Search canceled"
+literal|"%0 import canceled"
+argument_list|,
+literal|"Springer"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -597,7 +600,7 @@ name|get
 argument_list|(
 name|API_URL
 operator|+
-name|query
+name|encodedQuery
 operator|+
 literal|"&api_key="
 operator|+
@@ -685,7 +688,7 @@ name|entry
 init|=
 name|JSONEntryParser
 operator|.
-name|SpringerJSONtoBibtex
+name|parseSpringerJSONtoBibtex
 argument_list|(
 name|springerJsonEntry
 argument_list|)
@@ -728,7 +731,7 @@ name|lang
 argument_list|(
 literal|"No entries found for the search string '%0'"
 argument_list|,
-name|query
+name|encodedQuery
 argument_list|)
 argument_list|,
 name|Localization
@@ -822,15 +825,6 @@ comment|// No additional options available
 return|return
 literal|null
 return|;
-block|}
-DECL|method|SpringerFetcher ()
-specifier|public
-name|SpringerFetcher
-parameter_list|()
-block|{
-name|super
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 end_class

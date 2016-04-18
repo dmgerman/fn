@@ -123,8 +123,6 @@ specifier|public
 name|void
 name|testGoodCase
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 specifier|final
 name|int
@@ -229,8 +227,6 @@ specifier|public
 name|void
 name|testGoodCaseWithAllLifecycleMethods
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 specifier|final
 name|int

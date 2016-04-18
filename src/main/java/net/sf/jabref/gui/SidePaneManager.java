@@ -120,30 +120,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|event
-operator|.
-name|ChangeEvent
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|event
-operator|.
-name|ChangeListener
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -295,62 +271,31 @@ expr_stmt|;
 comment|/*          * Change by Morten Alver 2005.12.04: By postponing the updating of the          * side pane components, we get rid of the annoying latency when          * switching tabs:          */
 name|frame
 operator|.
-name|tabbedPane
+name|getTabbedPane
+argument_list|()
 operator|.
 name|addChangeListener
 argument_list|(
-operator|new
-name|ChangeListener
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|stateChanged
-parameter_list|(
-name|ChangeEvent
 name|event
-parameter_list|)
-block|{
+lambda|->
 name|SwingUtilities
 operator|.
 name|invokeLater
 argument_list|(
-operator|new
-name|Runnable
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|run
 parameter_list|()
-block|{
+lambda|->
 name|setActiveBasePanel
 argument_list|(
-operator|(
-name|BasePanel
-operator|)
 name|SidePaneManager
 operator|.
 name|this
 operator|.
 name|frame
 operator|.
-name|tabbedPane
-operator|.
-name|getSelectedComponent
+name|getCurrentBasePanel
 argument_list|()
 argument_list|)
-expr_stmt|;
-block|}
-block|}
 argument_list|)
-expr_stmt|;
-block|}
-block|}
 argument_list|)
 expr_stmt|;
 name|sidep
@@ -390,12 +335,10 @@ block|{
 return|return
 name|components
 operator|.
-name|get
+name|containsKey
 argument_list|(
 name|name
 argument_list|)
-operator|!=
-literal|null
 return|;
 block|}
 DECL|method|isComponentVisible (String name)
@@ -476,6 +419,7 @@ block|}
 block|}
 DECL|method|show (String name)
 specifier|public
+specifier|synchronized
 name|void
 name|show
 parameter_list|(
@@ -526,6 +470,7 @@ block|}
 block|}
 DECL|method|hide (String name)
 specifier|public
+specifier|synchronized
 name|void
 name|hide
 parameter_list|(
@@ -1319,6 +1264,7 @@ block|}
 comment|/**      * Update all side pane components to show information from the given      * BasePanel.      *      * @param panel      */
 DECL|method|setActiveBasePanel (BasePanel panel)
 specifier|private
+specifier|synchronized
 name|void
 name|setActiveBasePanel
 parameter_list|(
@@ -1398,7 +1344,8 @@ name|SIDE_PANE_WIDTH
 argument_list|,
 name|frame
 operator|.
-name|contentPane
+name|getSplitPane
+argument_list|()
 operator|.
 name|getDividerLocation
 argument_list|()
@@ -1459,7 +1406,8 @@ condition|)
 block|{
 name|frame
 operator|.
-name|contentPane
+name|getSplitPane
+argument_list|()
 operator|.
 name|setDividerLocation
 argument_list|(
@@ -1471,7 +1419,8 @@ else|else
 block|{
 name|frame
 operator|.
-name|contentPane
+name|getSplitPane
+argument_list|()
 operator|.
 name|setDividerLocation
 argument_list|(

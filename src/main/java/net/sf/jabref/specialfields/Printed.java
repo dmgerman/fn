@@ -28,6 +28,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|swing
@@ -85,7 +95,7 @@ specifier|private
 name|Printed
 parameter_list|()
 block|{
-name|ArrayList
+name|List
 argument_list|<
 name|SpecialFieldValue
 argument_list|>

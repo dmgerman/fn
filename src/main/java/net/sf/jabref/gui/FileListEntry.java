@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2016 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -40,6 +40,16 @@ name|Objects
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
 begin_comment
 comment|/**  * This class represents a file link for a Bibtex entry.  */
 end_comment
@@ -62,7 +72,10 @@ name|link
 decl_stmt|;
 DECL|field|type
 specifier|public
+name|Optional
+argument_list|<
 name|ExternalFileType
+argument_list|>
 name|type
 decl_stmt|;
 DECL|method|FileListEntry (String description, String link)
@@ -82,7 +95,10 @@ name|description
 argument_list|,
 name|link
 argument_list|,
-literal|null
+name|Optional
+operator|.
+name|empty
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -126,9 +142,69 @@ name|this
 operator|.
 name|type
 operator|=
+name|Optional
+operator|.
+name|of
+argument_list|(
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
 name|type
+argument_list|)
+argument_list|)
 expr_stmt|;
-comment|// may be null
+block|}
+DECL|method|FileListEntry (String description, String link, Optional<ExternalFileType> type)
+specifier|public
+name|FileListEntry
+parameter_list|(
+name|String
+name|description
+parameter_list|,
+name|String
+name|link
+parameter_list|,
+name|Optional
+argument_list|<
+name|ExternalFileType
+argument_list|>
+name|type
+parameter_list|)
+block|{
+name|this
+operator|.
+name|description
+operator|=
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|description
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|link
+operator|=
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|link
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|type
+operator|=
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|type
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|getStringArrayRepresentation ()
 specifier|public
@@ -161,17 +237,21 @@ return|return
 name|this
 operator|.
 name|type
-operator|==
-literal|null
+operator|.
+name|isPresent
+argument_list|()
 condition|?
-literal|""
-else|:
 name|this
 operator|.
 name|type
 operator|.
+name|get
+argument_list|()
+operator|.
 name|getName
 argument_list|()
+else|:
+literal|""
 return|;
 block|}
 annotation|@
@@ -192,6 +272,11 @@ operator|+
 literal|" : "
 operator|+
 name|type
+operator|.
+name|orElse
+argument_list|(
+literal|null
+argument_list|)
 return|;
 block|}
 block|}

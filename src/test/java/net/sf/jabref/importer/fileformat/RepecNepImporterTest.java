@@ -159,6 +159,7 @@ class|class
 name|RepecNepImporterTest
 block|{
 DECL|field|testImporter
+specifier|private
 name|RepecNepImporter
 name|testImporter
 decl_stmt|;
@@ -169,8 +170,6 @@ specifier|public
 name|void
 name|setUp
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|Globals
 operator|.

@@ -96,6 +96,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Objects
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Set
 import|;
 end_import
@@ -268,9 +278,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|util
+name|logic
 operator|.
-name|Util
+name|labelpattern
+operator|.
+name|LabelPatternUtil
 import|;
 end_import
 
@@ -1333,22 +1345,23 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * This method is called when a new field should be added to the list. Performs validation of the      * field.      */
-DECL|method|addField (String s)
+DECL|method|addField (String str)
 specifier|protected
 name|void
 name|addField
 parameter_list|(
 name|String
-name|s
+name|str
 parameter_list|)
 block|{
+name|String
 name|s
-operator|=
-name|s
+init|=
+name|str
 operator|.
 name|trim
 argument_list|()
-expr_stmt|;
+decl_stmt|;
 if|if
 condition|(
 name|forceLowerCase
@@ -1384,7 +1397,7 @@ block|}
 name|String
 name|testString
 init|=
-name|Util
+name|LabelPatternUtil
 operator|.
 name|checkLegalKey
 argument_list|(
@@ -1571,7 +1584,7 @@ argument_list|>
 name|getFields
 parameter_list|()
 block|{
-name|ArrayList
+name|List
 argument_list|<
 name|String
 argument_list|>
@@ -1790,9 +1803,14 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+name|Objects
+operator|.
+name|equals
+argument_list|(
 name|src
-operator|==
+argument_list|,
 name|add
+argument_list|)
 condition|)
 block|{
 comment|// Selection has been made, or add button pressed:
@@ -1865,9 +1883,14 @@ block|}
 elseif|else
 if|if
 condition|(
+name|Objects
+operator|.
+name|equals
+argument_list|(
 name|src
-operator|==
+argument_list|,
 name|input
+argument_list|)
 condition|)
 block|{
 name|addField
@@ -1882,9 +1905,14 @@ block|}
 elseif|else
 if|if
 condition|(
+name|Objects
+operator|.
+name|equals
+argument_list|(
 name|src
-operator|==
+argument_list|,
 name|remove
+argument_list|)
 condition|)
 block|{
 comment|// Remove button pressed:
@@ -1895,9 +1923,14 @@ block|}
 elseif|else
 if|if
 condition|(
+name|Objects
+operator|.
+name|equals
+argument_list|(
 name|src
-operator|==
+argument_list|,
 name|sel
+argument_list|)
 condition|)
 block|{
 if|if
@@ -1955,9 +1988,14 @@ block|}
 elseif|else
 if|if
 condition|(
+name|Objects
+operator|.
+name|equals
+argument_list|(
 name|src
-operator|==
+argument_list|,
 name|up
+argument_list|)
 condition|)
 block|{
 name|move
@@ -1970,9 +2008,14 @@ block|}
 elseif|else
 if|if
 condition|(
+name|Objects
+operator|.
+name|equals
+argument_list|(
 name|src
-operator|==
+argument_list|,
 name|down
+argument_list|)
 condition|)
 block|{
 name|move

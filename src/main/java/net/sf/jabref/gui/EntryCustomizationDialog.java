@@ -118,13 +118,15 @@ end_import
 
 begin_import
 import|import
-name|net
+name|com
 operator|.
-name|sf
+name|jgoodies
 operator|.
-name|jabref
+name|forms
 operator|.
-name|*
+name|builder
+operator|.
+name|ButtonBarBuilder
 import|;
 end_import
 
@@ -136,9 +138,33 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|model
+name|BibDatabaseContext
+import|;
+end_import
+
+begin_import
+import|import
+name|net
 operator|.
-name|EntryTypes
+name|sf
+operator|.
+name|jabref
+operator|.
+name|Globals
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|bibtex
+operator|.
+name|InternalBibtexFields
 import|;
 end_import
 
@@ -176,20 +202,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|jgoodies
-operator|.
-name|forms
-operator|.
-name|builder
-operator|.
-name|ButtonBarBuilder
-import|;
-end_import
-
-begin_import
-import|import
 name|net
 operator|.
 name|sf
@@ -201,6 +213,20 @@ operator|.
 name|l10n
 operator|.
 name|Localization
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|EntryTypes
 import|;
 end_import
 
@@ -2383,7 +2409,7 @@ name|entry
 range|:
 name|bp
 operator|.
-name|database
+name|getDatabase
 argument_list|()
 operator|.
 name|getEntries

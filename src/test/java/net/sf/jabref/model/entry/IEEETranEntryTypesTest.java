@@ -36,11 +36,15 @@ end_import
 
 begin_import
 import|import
-name|java
+name|net
 operator|.
-name|util
+name|sf
 operator|.
-name|Arrays
+name|jabref
+operator|.
+name|bibtex
+operator|.
+name|InternalBibtexFields
 import|;
 end_import
 
@@ -87,14 +91,9 @@ name|String
 argument_list|>
 name|ynFields
 init|=
-name|Arrays
-operator|.
-name|asList
-argument_list|(
-name|IEEETranEntryTypes
+name|InternalBibtexFields
 operator|.
 name|IEEETRANBSTCTL_YES_NO_FIELDS
-argument_list|)
 decl_stmt|;
 name|Assert
 operator|.
@@ -136,14 +135,9 @@ name|String
 argument_list|>
 name|numericFields
 init|=
-name|Arrays
-operator|.
-name|asList
-argument_list|(
-name|IEEETranEntryTypes
+name|InternalBibtexFields
 operator|.
 name|IEEETRANBSTCTL_NUMERIC_FIELDS
-argument_list|)
 decl_stmt|;
 name|Assert
 operator|.

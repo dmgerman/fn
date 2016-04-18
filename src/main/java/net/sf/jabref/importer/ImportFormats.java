@@ -54,6 +54,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Set
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|SortedSet
 import|;
 end_import
@@ -250,10 +260,6 @@ name|Localization
 import|;
 end_import
 
-begin_comment
-comment|/**  * Created by IntelliJ IDEA.  * User: alver  * Date: Oct 22, 2006  * Time: 12:06:09 PM  * To change this template use File | Settings | File Templates.  */
-end_comment
-
 begin_class
 DECL|class|ImportFormats
 specifier|public
@@ -294,7 +300,7 @@ name|importers
 init|=
 name|Globals
 operator|.
-name|importFormatReader
+name|IMPORT_FORMAT_READER
 operator|.
 name|getImportFormats
 argument_list|()
@@ -327,7 +333,7 @@ argument_list|(
 name|currentDir
 argument_list|)
 decl_stmt|;
-name|TreeSet
+name|Set
 argument_list|<
 name|ImportFileFilter
 argument_list|>

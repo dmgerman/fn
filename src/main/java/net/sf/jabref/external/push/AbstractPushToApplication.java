@@ -246,11 +246,11 @@ specifier|protected
 name|JPanel
 name|settings
 decl_stmt|;
-DECL|field|Path
+DECL|field|path
 specifier|protected
 specifier|final
 name|JTextField
-name|Path
+name|path
 init|=
 operator|new
 name|JTextField
@@ -635,7 +635,7 @@ name|initSettingsPanel
 argument_list|()
 expr_stmt|;
 block|}
-name|Path
+name|path
 operator|.
 name|setText
 argument_list|(
@@ -681,11 +681,11 @@ literal|"p"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|StringBuffer
+name|StringBuilder
 name|label
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|(
 name|Localization
 operator|.
@@ -757,7 +757,7 @@ name|builder
 operator|.
 name|add
 argument_list|(
-name|Path
+name|path
 argument_list|)
 operator|.
 name|xy
@@ -774,7 +774,7 @@ name|BrowseAction
 operator|.
 name|buildForFile
 argument_list|(
-name|Path
+name|path
 argument_list|)
 decl_stmt|;
 name|JButton
@@ -836,7 +836,7 @@ name|put
 argument_list|(
 name|commandPathPreferenceKey
 argument_list|,
-name|Path
+name|path
 operator|.
 name|getText
 argument_list|()

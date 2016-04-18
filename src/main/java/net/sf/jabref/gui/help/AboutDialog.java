@@ -174,7 +174,7 @@ argument_list|)
 expr_stmt|;
 name|setLocationRelativeTo
 argument_list|(
-literal|null
+name|bf
 argument_list|)
 expr_stmt|;
 name|JPanel

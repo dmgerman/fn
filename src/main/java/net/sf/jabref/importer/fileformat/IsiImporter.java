@@ -270,6 +270,8 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+try|try
+init|(
 name|BufferedReader
 name|in
 init|=
@@ -283,7 +285,8 @@ argument_list|(
 name|stream
 argument_list|)
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|String
 name|str
 decl_stmt|;
@@ -314,7 +317,7 @@ literal|50
 operator|)
 condition|)
 block|{
-comment|/**              * The following line gives false positives for RIS files, so it              * should not be uncommented. The hypen is a characteristic of the              * RIS format.              *              * str = str.replace(" - ", "")              */
+comment|/**                  * The following line gives false positives for RIS files, so it                  * should not be uncommented. The hypen is a characteristic of the                  * RIS format.                  *                  * str = str.replace(" - ", "")                  */
 if|if
 condition|(
 name|IsiImporter
@@ -337,6 +340,7 @@ block|}
 name|i
 operator|++
 expr_stmt|;
+block|}
 block|}
 return|return
 literal|false
@@ -604,7 +608,7 @@ name|s
 operator|=
 name|CaseChangers
 operator|.
-name|TITLE
+name|TO_TITLE_CASE
 operator|.
 name|format
 argument_list|(
@@ -659,7 +663,7 @@ literal|"No stream given."
 argument_list|)
 throw|;
 block|}
-name|ArrayList
+name|List
 argument_list|<
 name|BibEntry
 argument_list|>
@@ -677,6 +681,8 @@ operator|new
 name|StringBuilder
 argument_list|()
 decl_stmt|;
+try|try
+init|(
 name|BufferedReader
 name|in
 init|=
@@ -690,7 +696,8 @@ argument_list|(
 name|stream
 argument_list|)
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 comment|// Pattern fieldPattern = Pattern.compile("^AU |^TI |^SO |^DT |^C1 |^AB
 comment|// |^ID |^BP |^PY |^SE |^PY |^VL |^IS ");
 name|String
@@ -722,7 +729,7 @@ condition|)
 block|{
 continue|continue;
 block|}
-comment|// begining of a new item
+comment|// beginning of a new item
 if|if
 condition|(
 literal|"PT "
@@ -790,7 +797,7 @@ argument_list|(
 literal|" ## "
 argument_list|)
 expr_stmt|;
-comment|// mark the begining of each field
+comment|// mark the beginning of each field
 name|sb
 operator|.
 name|append
@@ -823,6 +830,7 @@ comment|// remove the initial spaces
 block|}
 block|}
 block|}
+block|}
 name|String
 index|[]
 name|entries
@@ -837,7 +845,7 @@ argument_list|(
 literal|"::"
 argument_list|)
 decl_stmt|;
-name|HashMap
+name|Map
 argument_list|<
 name|String
 argument_list|,
@@ -1200,7 +1208,7 @@ literal|"journal"
 argument_list|,
 name|value
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
 literal|"EOLEOL"
 argument_list|,

@@ -1,4 +1,8 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
+begin_comment
+comment|/*  Copyright (C) 2003-2016 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
+end_comment
+
 begin_package
 DECL|package|net.sf.jabref.importer
 package|package
@@ -32,7 +36,33 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|JabRef
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|JabRefPreferences
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|JabRefFrame
 import|;
 end_import
 
@@ -93,6 +123,18 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|org
+operator|.
+name|mockito
+operator|.
+name|Mockito
+operator|.
+name|mock
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -102,9 +144,15 @@ name|File
 import|;
 end_import
 
-begin_comment
-comment|/**  * @version 11.11.2008 | 22:16  */
-end_comment
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
 
 begin_class
 DECL|class|EntryFromPDFCreatorTest
@@ -114,13 +162,8 @@ name|EntryFromPDFCreatorTest
 block|{
 DECL|field|entryCreator
 specifier|private
-specifier|final
 name|EntryFromPDFCreator
 name|entryCreator
-init|=
-operator|new
-name|EntryFromPDFCreator
-argument_list|()
 decl_stmt|;
 annotation|@
 name|Before
@@ -129,8 +172,6 @@ specifier|public
 name|void
 name|setUp
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|Globals
 operator|.
@@ -140,6 +181,25 @@ name|JabRefPreferences
 operator|.
 name|getInstance
 argument_list|()
+expr_stmt|;
+comment|// Needed to initialize ExternalFileTypes
+name|entryCreator
+operator|=
+operator|new
+name|EntryFromPDFCreator
+argument_list|()
+expr_stmt|;
+comment|// Needed for PdfImporter - still not enough
+name|JabRef
+operator|.
+name|mainFrame
+operator|=
+name|mock
+argument_list|(
+name|JabRefFrame
+operator|.
+name|class
+argument_list|)
 expr_stmt|;
 block|}
 annotation|@
@@ -201,15 +261,16 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-DECL|method|testCreationOfEntry ()
+DECL|method|testCreationOfEntryNoPDF ()
 specifier|public
 name|void
-name|testCreationOfEntry
+name|testCreationOfEntryNoPDF
 parameter_list|()
 block|{
+name|Optional
+argument_list|<
 name|BibEntry
+argument_list|>
 name|entry
 init|=
 name|entryCreator
@@ -225,13 +286,31 @@ argument_list|)
 decl_stmt|;
 name|Assert
 operator|.
-name|assertNull
+name|assertFalse
 argument_list|(
 name|entry
+operator|.
+name|isPresent
+argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
+annotation|@
+name|Test
+annotation|@
+name|Ignore
+DECL|method|testCreationOfEntryNotInDatabase ()
+specifier|public
+name|void
+name|testCreationOfEntryNotInDatabase
+parameter_list|()
+block|{
+name|Optional
+argument_list|<
+name|BibEntry
+argument_list|>
 name|entry
-operator|=
+init|=
 name|entryCreator
 operator|.
 name|createEntry
@@ -242,12 +321,15 @@ name|FILE_NOT_IN_DATABASE
 argument_list|,
 literal|false
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|Assert
 operator|.
-name|assertNotNull
+name|assertTrue
 argument_list|(
 name|entry
+operator|.
+name|isPresent
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|Assert
@@ -255,6 +337,9 @@ operator|.
 name|assertTrue
 argument_list|(
 name|entry
+operator|.
+name|get
+argument_list|()
 operator|.
 name|getField
 argument_list|(
@@ -279,6 +364,9 @@ name|getName
 argument_list|()
 argument_list|,
 name|entry
+operator|.
+name|get
+argument_list|()
 operator|.
 name|getField
 argument_list|(

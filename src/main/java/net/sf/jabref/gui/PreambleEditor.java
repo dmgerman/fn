@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
+comment|/*  Copyright (C) 2003-2016 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
 end_comment
 
 begin_package
@@ -45,6 +45,18 @@ operator|.
 name|swing
 operator|.
 name|*
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|text
+operator|.
+name|JTextComponent
 import|;
 end_import
 
@@ -176,6 +188,22 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
+name|util
+operator|.
+name|PositionWindow
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|logic
 operator|.
 name|l10n
@@ -251,7 +279,7 @@ operator|new
 name|CloseAction
 argument_list|()
 decl_stmt|;
-DECL|method|PreambleEditor (JabRefFrame baseFrame, BasePanel panel, BibDatabase base, JabRefPreferences prefs)
+DECL|method|PreambleEditor (JabRefFrame baseFrame, BasePanel panel, BibDatabase base)
 specifier|public
 name|PreambleEditor
 parameter_list|(
@@ -263,9 +291,6 @@ name|panel
 parameter_list|,
 name|BibDatabase
 name|base
-parameter_list|,
-name|JabRefPreferences
-name|prefs
 parameter_list|)
 block|{
 name|super
@@ -362,51 +387,6 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
-name|int
-name|prefHeight
-init|=
-call|(
-name|int
-call|)
-argument_list|(
-name|GUIGlobals
-operator|.
-name|PE_HEIGHT
-operator|*
-name|GUIGlobals
-operator|.
-name|FORM_HEIGHT
-index|[
-name|prefs
-operator|.
-name|getInt
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|ENTRY_TYPE_FORM_HEIGHT_FACTOR
-argument_list|)
-index|]
-argument_list|)
-decl_stmt|;
-name|setSize
-argument_list|(
-name|GUIGlobals
-operator|.
-name|FORM_WIDTH
-index|[
-name|prefs
-operator|.
-name|getInt
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|ENTRY_TYPE_FORM_WIDTH
-argument_list|)
-index|]
-argument_list|,
-name|prefHeight
-argument_list|)
-expr_stmt|;
 name|JPanel
 name|pan
 init|=
@@ -494,7 +474,6 @@ else|:
 name|content
 argument_list|)
 expr_stmt|;
-comment|//ed.addUndoableEditListener(panel.undoListener);
 name|setupJTextComponent
 argument_list|(
 operator|(
@@ -553,8 +532,6 @@ name|getPane
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|//tlb.add(closeAction);
-comment|//conPane.add(tlb, BorderLayout.NORTH);
 name|Container
 name|conPane
 init|=
@@ -582,18 +559,42 @@ literal|"Edit preamble"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|PositionWindow
+name|pw
+init|=
+operator|new
+name|PositionWindow
+argument_list|(
+name|this
+argument_list|,
+name|JabRefPreferences
+operator|.
+name|PREAMBLE_POS_X
+argument_list|,
+name|JabRefPreferences
+operator|.
+name|PREAMBLE_POS_Y
+argument_list|,
+name|JabRefPreferences
+operator|.
+name|PREAMBLE_SIZE_X
+argument_list|,
+name|JabRefPreferences
+operator|.
+name|PREAMBLE_SIZE_Y
+argument_list|)
+decl_stmt|;
+name|pw
+operator|.
+name|setWindowPosition
+argument_list|()
+expr_stmt|;
 block|}
-DECL|method|setupJTextComponent (javax.swing.text.JTextComponent ta)
+DECL|method|setupJTextComponent (JTextComponent ta)
 specifier|private
 name|void
 name|setupJTextComponent
 parameter_list|(
-name|javax
-operator|.
-name|swing
-operator|.
-name|text
-operator|.
 name|JTextComponent
 name|ta
 parameter_list|)
@@ -980,7 +981,7 @@ name|setLabelColor
 argument_list|(
 name|GUIGlobals
 operator|.
-name|nullFieldColor
+name|NULL_FIELD_COLOR
 argument_list|)
 expr_stmt|;
 block|}
@@ -992,7 +993,7 @@ name|setLabelColor
 argument_list|(
 name|GUIGlobals
 operator|.
-name|entryEditorLabelColor
+name|ENTRY_EDITOR_LABEL_COLOR
 argument_list|)
 expr_stmt|;
 block|}
@@ -1072,8 +1073,6 @@ name|ActionEvent
 name|e
 parameter_list|)
 block|{
-try|try
-block|{
 name|panel
 operator|.
 name|runCommand
@@ -1083,15 +1082,6 @@ operator|.
 name|UNDO
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|Throwable
-name|ignored
-parameter_list|)
-block|{
-comment|// Ignored
-block|}
 block|}
 block|}
 DECL|class|RedoAction
@@ -1140,8 +1130,6 @@ name|ActionEvent
 name|e
 parameter_list|)
 block|{
-try|try
-block|{
 name|panel
 operator|.
 name|runCommand
@@ -1151,15 +1139,6 @@ operator|.
 name|REDO
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|Throwable
-name|ignored
-parameter_list|)
-block|{
-comment|// Ignored
-block|}
 block|}
 block|}
 DECL|class|CloseAction
@@ -1183,8 +1162,6 @@ literal|"Close window"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//, new ImageIcon(GUIGlobals.closeIconFile));
-comment|//putValue(SHORT_DESCRIPTION, "Close window (Ctrl-Q)");
 block|}
 annotation|@
 name|Override

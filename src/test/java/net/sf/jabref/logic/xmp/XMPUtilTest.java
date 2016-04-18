@@ -124,6 +124,20 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|bibtex
+operator|.
+name|BibtexEntryAssert
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|model
 operator|.
 name|entry
@@ -316,6 +330,20 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|io
+operator|.
+name|CharStreams
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|xml
@@ -359,7 +387,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Limitations: The test suite only handles UTF8. Not UTF16.  *  * @author Christopher Oezbek<oezi@oezi.de>  */
+comment|/**  * Limitations: The test suite only handles UTF8. Not UTF16.  */
 end_comment
 
 begin_class
@@ -368,15 +396,6 @@ specifier|public
 class|class
 name|XMPUtilTest
 block|{
-DECL|field|SRC_TEST_RESOURCES_ENCRYPTED_PDF
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|SRC_TEST_RESOURCES_ENCRYPTED_PDF
-init|=
-literal|"src/test/resources/encrypted.pdf"
-decl_stmt|;
 comment|/**      * The PDF file that basically all operations are done upon.      */
 DECL|field|pdfFile
 specifier|private
@@ -433,11 +452,11 @@ name|String
 name|bibtexDescriptions
 parameter_list|)
 block|{
-name|StringBuffer
+name|StringBuilder
 name|xmp
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 name|xmp
@@ -472,7 +491,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * Write a manually constructed xmp-string to file      *      * @param xmpString      * @throws Exception      */
+comment|/**      * Write a manually constructed xmp-string to file      *      * @param xmpString      * @throws IOException      * @throws COSVisitorException      */
 DECL|method|writeManually (File tempFile, String xmpString)
 specifier|public
 name|void
@@ -485,7 +504,9 @@ name|String
 name|xmpString
 parameter_list|)
 throws|throws
-name|Exception
+name|IOException
+throws|,
+name|COSVisitorException
 block|{
 try|try
 init|(
@@ -511,16 +532,13 @@ name|isEncrypted
 argument_list|()
 condition|)
 block|{
-name|System
+name|Assert
 operator|.
-name|err
-operator|.
-name|println
+name|fail
 argument_list|(
-literal|"Error: Cannot add metadata to encrypted document."
+literal|"Cannot add metadata to encrypted document."
 argument_list|)
 expr_stmt|;
-comment|//System.exit(1);
 block|}
 name|PDDocumentCatalog
 name|catalog
@@ -718,7 +736,6 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/* TEST DATA */
 DECL|method|t1BibtexString ()
 specifier|public
 name|String
@@ -970,7 +987,7 @@ name|setField
 argument_list|(
 literal|"keywords"
 argument_list|,
-literal|"peanut,butter,jelly"
+literal|"peanut, butter, jelly"
 argument_list|)
 expr_stmt|;
 name|e
@@ -1061,7 +1078,7 @@ literal|"<bibtex:booktitle>Catch-22</bibtex:booktitle>"
 operator|+
 literal|"<bibtex:pdf>YeKis03 - Towards.pdf</bibtex:pdf>"
 operator|+
-literal|"<bibtex:keywords>peanut,butter,jelly</bibtex:keywords>"
+literal|"<bibtex:keywords>peanut, butter, jelly</bibtex:keywords>"
 operator|+
 literal|"<bibtex:entrytype>Inproceedings</bibtex:entrytype>"
 operator|+
@@ -1096,6 +1113,12 @@ literal|"JabRef"
 argument_list|,
 literal|".pdf"
 argument_list|)
+expr_stmt|;
+comment|// ensure that the file will be deleted upon exit
+name|pdfFile
+operator|.
+name|deleteOnExit
+argument_list|()
 expr_stmt|;
 try|try
 init|(
@@ -1162,7 +1185,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"useXmpPrivacyFilter"
+name|JabRefPreferences
+operator|.
+name|USE_XMP_PRIVACY_FILTER
 argument_list|)
 expr_stmt|;
 name|privacyFilters
@@ -1187,7 +1212,6 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Delete the temporary file.      */
 annotation|@
 name|After
 DECL|method|tearDown ()
@@ -1196,30 +1220,13 @@ name|void
 name|tearDown
 parameter_list|()
 block|{
-if|if
-condition|(
-operator|!
-name|pdfFile
-operator|.
-name|delete
-argument_list|()
-condition|)
-block|{
-name|System
-operator|.
-name|err
-operator|.
-name|println
-argument_list|(
-literal|"Note: Cannot delete temporary file (already deleted so the corresponding test passed)."
-argument_list|)
-expr_stmt|;
-block|}
 name|prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"useXmpPrivacyFilter"
+name|JabRefPreferences
+operator|.
+name|USE_XMP_PRIVACY_FILTER
 argument_list|,
 name|use
 argument_list|)
@@ -1236,7 +1243,7 @@ name|privacyFilters
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Most basic test for reading.      *      * @throws Exception      */
+comment|/**      * Most basic test for reading.      * @throws IOException      * @throws COSVisitorException      */
 annotation|@
 name|Test
 DECL|method|testReadXMPSimple ()
@@ -1245,7 +1252,9 @@ name|void
 name|testReadXMPSimple
 parameter_list|()
 throws|throws
-name|Exception
+name|COSVisitorException
+throws|,
+name|IOException
 block|{
 name|String
 name|bibtex
@@ -1371,7 +1380,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Is UTF8 handling working? This is because Java by default uses the platform encoding or a special UTF-kind.      *      * @throws Exception      */
+comment|/**      * Is UTF8 handling working? This is because Java by default uses the platform encoding or a special UTF-kind.      * @throws IOException      * @throws COSVisitorException      */
 annotation|@
 name|Test
 DECL|method|testReadXMPUTF8 ()
@@ -1380,7 +1389,9 @@ name|void
 name|testReadXMPUTF8
 parameter_list|()
 throws|throws
-name|Exception
+name|COSVisitorException
+throws|,
+name|IOException
 block|{
 name|String
 name|bibtex
@@ -1798,7 +1809,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Are authors and editors correctly read?      *      * @throws Exception      */
+comment|/**      * Are authors and editors correctly read?      * @throws IOException      * @throws COSVisitorException      */
 annotation|@
 name|Test
 DECL|method|testReadXMPSeq ()
@@ -1807,7 +1818,9 @@ name|void
 name|testReadXMPSeq
 parameter_list|()
 throws|throws
-name|Exception
+name|COSVisitorException
+throws|,
+name|IOException
 block|{
 name|String
 name|bibtex
@@ -1947,7 +1960,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Is the XMPEntryType correctly set?      *      * @throws Exception      */
+comment|/**      * Is the XMPEntryType correctly set?      * @throws IOException      * @throws COSVisitorException      *      */
 annotation|@
 name|Test
 DECL|method|testReadXMPEntryType ()
@@ -1956,7 +1969,9 @@ name|void
 name|testReadXMPEntryType
 parameter_list|()
 throws|throws
-name|Exception
+name|COSVisitorException
+throws|,
+name|IOException
 block|{
 name|String
 name|bibtex
@@ -2074,16 +2089,13 @@ name|isEncrypted
 argument_list|()
 condition|)
 block|{
-name|System
+name|Assert
 operator|.
-name|err
-operator|.
-name|println
+name|fail
 argument_list|(
-literal|"Error: Cannot add metadata to encrypted document."
+literal|"Cannot add metadata to encrypted document."
 argument_list|)
 expr_stmt|;
-comment|//System.exit(1);
 block|}
 name|PDDocumentCatalog
 name|catalog
@@ -2114,44 +2126,43 @@ return|;
 block|}
 else|else
 block|{
-comment|// PDMetadata.getInputStreamAsString() does not work
-comment|// Convert to UTF8 and make available for metadata.
 try|try
 init|(
-name|InputStreamReader
+name|InputStream
 name|is
 init|=
-operator|new
-name|InputStreamReader
-argument_list|(
 name|meta
 operator|.
 name|createInputStream
 argument_list|()
-argument_list|,
-name|StandardCharsets
-operator|.
-name|UTF_8
-argument_list|)
-init|)
+init|;                         InputStreamReader reader = new InputStreamReader(is
+operator|,
+init|StandardCharsets.UTF_8)
+block|)
 block|{
+comment|// trim() for killing padding end-newline
 return|return
-name|XMPUtilTest
+name|CharStreams
 operator|.
-name|slurp
+name|toString
 argument_list|(
-name|is
+name|reader
 argument_list|)
 operator|.
 name|trim
 argument_list|()
 return|;
-comment|// Trim to kill padding end-newline.
 block|}
 block|}
 block|}
 block|}
-comment|/**      * Test whether the helper function work correctly.      *      * @throws Exception      */
+end_class
+
+begin_comment
+comment|/**      * Test whether the helper function work correctly.      * @throws IOException      * @throws COSVisitorException      */
+end_comment
+
+begin_function
 annotation|@
 name|Test
 DECL|method|testWriteReadManually ()
@@ -2160,7 +2171,9 @@ name|void
 name|testWriteReadManually
 parameter_list|()
 throws|throws
-name|Exception
+name|COSVisitorException
+throws|,
+name|IOException
 block|{
 name|String
 name|bibtex
@@ -2276,7 +2289,13 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Test that readXMP and writeXMP work together.      *      * @throws Exception      */
+end_function
+
+begin_comment
+comment|/**      * Test that readXMP and writeXMP work together.      * @throws IOException      * @throws TransformerException      *      */
+end_comment
+
+begin_function
 annotation|@
 name|Test
 DECL|method|testReadWriteXMP ()
@@ -2285,7 +2304,9 @@ name|void
 name|testReadWriteXMP
 parameter_list|()
 throws|throws
-name|Exception
+name|IOException
+throws|,
+name|TransformerException
 block|{
 name|ParserResult
 name|result
@@ -2425,7 +2446,13 @@ name|x
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Are newlines in the XML processed correctly?      *      * @throws Exception      */
+end_function
+
+begin_comment
+comment|/**      * Are newlines in the XML processed correctly?      * @throws IOException      * @throws COSVisitorException      *      */
+end_comment
+
+begin_function
 annotation|@
 name|Test
 DECL|method|testNewlineHandling ()
@@ -2434,7 +2461,9 @@ name|void
 name|testNewlineHandling
 parameter_list|()
 throws|throws
-name|Exception
+name|COSVisitorException
+throws|,
+name|IOException
 block|{
 name|String
 name|bibtex
@@ -2550,7 +2579,13 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Test whether XMP.readFile can deal with text-properties that are not element-nodes, but attribute-nodes      *      * @throws Exception      */
+end_function
+
+begin_comment
+comment|/**      * Test whether XMP.readFile can deal with text-properties that are not element-nodes, but attribute-nodes      * @throws IOException      * @throws COSVisitorException      *      */
+end_comment
+
+begin_function
 annotation|@
 name|Test
 DECL|method|testAttributeRead ()
@@ -2559,7 +2594,9 @@ name|void
 name|testAttributeRead
 parameter_list|()
 throws|throws
-name|Exception
+name|COSVisitorException
+throws|,
+name|IOException
 block|{
 comment|// test 1 has attributes
 name|String
@@ -2627,6 +2664,9 @@ name|e
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Test
 DECL|method|testEmpty ()
@@ -2655,7 +2695,13 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Tests whether writing BibTex.xmp will preserve existing XMP-descriptions.      *      * @throws Exception (indicating an failure)      */
+end_comment
+
+begin_function
 annotation|@
 name|Test
 DECL|method|testSimpleUpdate ()
@@ -4066,7 +4112,13 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_comment
 comment|/**      * Is XML in text properties properly escaped?      *      * @throws Exception      */
+end_comment
+
+begin_function
 annotation|@
 name|Test
 DECL|method|testXMLEscape ()
@@ -4215,6 +4267,9 @@ name|x
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 DECL|method|assertEqualsBibtexEntry (BibEntry expected, BibEntry actual)
 specifier|public
 name|void
@@ -4304,7 +4359,7 @@ name|expectedAuthors
 init|=
 name|AuthorList
 operator|.
-name|getAuthorList
+name|parse
 argument_list|(
 name|expected
 operator|.
@@ -4319,7 +4374,7 @@ name|actualAuthors
 init|=
 name|AuthorList
 operator|.
-name|getAuthorList
+name|parse
 argument_list|(
 name|actual
 operator|.
@@ -4388,7 +4443,13 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * @depends XMPUtilTest.testReadMultiple()      */
+end_comment
+
+begin_function
 annotation|@
 name|Test
 DECL|method|testXMPreadString ()
@@ -4795,7 +4856,13 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Tests whether it is possible to read several BibtexEntries      *      * @throws Exception      */
+end_comment
+
+begin_function
 annotation|@
 name|Test
 DECL|method|testReadMultiple ()
@@ -4917,7 +4984,13 @@ name|b
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Tests whether it is possible to write several Bibtexentries      *      * @throws TransformerException      * @throws IOException      */
+end_comment
+
+begin_function
 annotation|@
 name|Test
 DECL|method|testWriteMultiple ()
@@ -5055,6 +5128,147 @@ name|b
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_comment
+comment|/**      * Tests whether a edit-protected PDF can be read      */
+end_comment
+
+begin_function
+annotation|@
+name|Test
+DECL|method|testReadProtectedPDFHasMetaData ()
+specifier|public
+name|void
+name|testReadProtectedPDFHasMetaData
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+try|try
+init|(
+name|InputStream
+name|is
+init|=
+name|XMPUtilTest
+operator|.
+name|class
+operator|.
+name|getResourceAsStream
+argument_list|(
+literal|"/pdfs/write-protected.pdf"
+argument_list|)
+init|)
+block|{
+name|Assert
+operator|.
+name|assertTrue
+argument_list|(
+name|XMPUtil
+operator|.
+name|hasMetadata
+argument_list|(
+name|is
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+end_function
+
+begin_comment
+comment|/**      * Tests whether a edit-protected PDF can be read      */
+end_comment
+
+begin_function
+annotation|@
+name|Test
+DECL|method|testReadProtectedPDFHasCorrectMetaData ()
+specifier|public
+name|void
+name|testReadProtectedPDFHasCorrectMetaData
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+try|try
+init|(
+name|InputStream
+name|is
+init|=
+name|XMPUtilTest
+operator|.
+name|class
+operator|.
+name|getResourceAsStream
+argument_list|(
+literal|"/pdfs/write-protected.pdf"
+argument_list|)
+init|)
+block|{
+name|List
+argument_list|<
+name|BibEntry
+argument_list|>
+name|readEntries
+init|=
+name|XMPUtil
+operator|.
+name|readXMP
+argument_list|(
+name|is
+argument_list|)
+decl_stmt|;
+name|BibEntry
+name|entry
+init|=
+operator|new
+name|BibEntry
+argument_list|()
+decl_stmt|;
+name|entry
+operator|.
+name|setType
+argument_list|(
+literal|"misc"
+argument_list|)
+expr_stmt|;
+name|entry
+operator|.
+name|setField
+argument_list|(
+literal|"author"
+argument_list|,
+literal|"Firstname Lastname"
+argument_list|)
+expr_stmt|;
+name|List
+argument_list|<
+name|BibEntry
+argument_list|>
+name|expected
+init|=
+name|Collections
+operator|.
+name|singletonList
+argument_list|(
+name|entry
+argument_list|)
+decl_stmt|;
+name|BibtexEntryAssert
+operator|.
+name|assertEquals
+argument_list|(
+name|expected
+argument_list|,
+name|readEntries
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+end_function
+
+begin_function
 annotation|@
 name|Test
 DECL|method|testReadWriteDC ()
@@ -5123,16 +5337,13 @@ name|isEncrypted
 argument_list|()
 condition|)
 block|{
-name|System
+name|Assert
 operator|.
-name|err
-operator|.
-name|println
+name|fail
 argument_list|(
-literal|"Error: Cannot add metadata to encrypted document."
+literal|"Cannot add metadata to encrypted document."
 argument_list|)
 expr_stmt|;
-comment|//System.exit(1);
 block|}
 name|Assert
 operator|.
@@ -5202,7 +5413,7 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-literal|"peanut,butter,jelly"
+literal|"peanut, butter, jelly"
 argument_list|,
 name|document
 operator|.
@@ -5580,6 +5791,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Test
 DECL|method|testWriteSingleUpdatesDCAndInfo ()
@@ -5648,16 +5862,13 @@ name|isEncrypted
 argument_list|()
 condition|)
 block|{
-name|System
+name|Assert
 operator|.
-name|err
-operator|.
-name|println
+name|fail
 argument_list|(
-literal|"Error: Cannot add metadata to encrypted document."
+literal|"Cannot add metadata to encrypted document."
 argument_list|)
 expr_stmt|;
-comment|//System.exit(1);
 block|}
 name|Assert
 operator|.
@@ -5727,7 +5938,7 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-literal|"peanut,butter,jelly"
+literal|"peanut, butter, jelly"
 argument_list|,
 name|document
 operator|.
@@ -6104,6 +6315,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Test
 DECL|method|testReadRawXMP ()
@@ -6112,7 +6326,9 @@ name|void
 name|testReadRawXMP
 parameter_list|()
 throws|throws
-name|Exception
+name|IOException
+throws|,
+name|TransformerException
 block|{
 name|ParserResult
 name|result
@@ -6190,7 +6406,10 @@ argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
+name|Optional
+argument_list|<
 name|XMPMetadata
+argument_list|>
 name|metadata
 init|=
 name|XMPUtil
@@ -6202,9 +6421,12 @@ argument_list|)
 decl_stmt|;
 name|Assert
 operator|.
-name|assertNotNull
+name|assertTrue
 argument_list|(
 name|metadata
+operator|.
+name|isPresent
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|List
@@ -6214,6 +6436,9 @@ argument_list|>
 name|schemas
 init|=
 name|metadata
+operator|.
+name|get
+argument_list|()
 operator|.
 name|getSchemas
 argument_list|()
@@ -6233,6 +6458,9 @@ expr_stmt|;
 name|schemas
 operator|=
 name|metadata
+operator|.
+name|get
+argument_list|()
 operator|.
 name|getSchemasByNamespaceURI
 argument_list|(
@@ -6432,7 +6660,13 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Test whether the command-line client works correctly with writing a single entry      *      * @throws Exception      */
+end_function
+
+begin_comment
+comment|/**      * Test whether the command-line client works correctly with writing a single entry      * @throws IOException      * @throws TransformerException      * @throws COSVisitorException      *       */
+end_comment
+
+begin_function
 annotation|@
 name|Test
 DECL|method|testCommandLineSingleBib ()
@@ -6441,7 +6675,11 @@ name|void
 name|testCommandLineSingleBib
 parameter_list|()
 throws|throws
-name|Exception
+name|IOException
+throws|,
+name|TransformerException
+throws|,
+name|COSVisitorException
 block|{
 comment|// First check conversion from .bib to .xmp
 name|File
@@ -6609,7 +6847,13 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * @depends XMPUtil.writeXMP      */
+end_function
+
+begin_comment
+comment|/**      * @throws IOException      * @throws TransformerException      * @throws COSVisitorException      * @depends XMPUtil.writeXMP      */
+end_comment
+
+begin_function
 annotation|@
 name|Test
 DECL|method|testCommandLineSinglePdf ()
@@ -6618,7 +6862,11 @@ name|void
 name|testCommandLineSinglePdf
 parameter_list|()
 throws|throws
-name|Exception
+name|IOException
+throws|,
+name|TransformerException
+throws|,
+name|COSVisitorException
 block|{
 block|{
 comment|// Write XMP to file
@@ -7053,7 +7301,13 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Test whether the command-line client can pick one of several entries from a bibtex file      *      * @throws Exception      */
+end_function
+
+begin_comment
+comment|/**      * Test whether the command-line client can pick one of several entries from a bibtex file      * @throws IOException      * @throws TransformerException      *      */
+end_comment
+
+begin_function
 annotation|@
 name|Test
 annotation|@
@@ -7064,7 +7318,9 @@ name|void
 name|testCommandLineByKey
 parameter_list|()
 throws|throws
-name|Exception
+name|IOException
+throws|,
+name|TransformerException
 block|{
 name|File
 name|tempBib
@@ -7337,7 +7593,13 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * Test whether the command-line client can deal with several bibtex entries.      */
+end_function
+
+begin_comment
+comment|/**      * Test whether the command-line client can deal with several bibtex entries.      * @throws IOException      * @throws TransformerException      */
+end_comment
+
+begin_function
 annotation|@
 name|Test
 annotation|@
@@ -7348,7 +7610,9 @@ name|void
 name|testCommandLineSeveral
 parameter_list|()
 throws|throws
-name|Exception
+name|IOException
+throws|,
+name|TransformerException
 block|{
 name|File
 name|tempBib
@@ -7583,7 +7847,13 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * Test that readXMP and writeXMP work together.      *      * @throws Exception      */
+end_function
+
+begin_comment
+comment|/**      * Test that readXMP and writeXMP work together.      * @throws IOException      * @throws TransformerException      *      * @throws Exception      */
+end_comment
+
+begin_function
 annotation|@
 name|Test
 DECL|method|testResolveStrings ()
@@ -7592,7 +7862,9 @@ name|void
 name|testResolveStrings
 parameter_list|()
 throws|throws
-name|Exception
+name|IOException
+throws|,
+name|TransformerException
 block|{
 name|ParserResult
 name|original
@@ -7741,14 +8013,14 @@ name|assertEquals
 argument_list|(
 name|AuthorList
 operator|.
-name|getAuthorList
+name|parse
 argument_list|(
 literal|"Crowston, K. and Annabi, H. and Howison, J. and Masango, C."
 argument_list|)
 argument_list|,
 name|AuthorList
 operator|.
-name|getAuthorList
+name|parse
 argument_list|(
 name|x
 operator|.
@@ -7760,64 +8032,77 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Test that we cannot use encrypted PDFs.      */
+end_function
+
+begin_function
 annotation|@
 name|Test
-DECL|method|testEncryption ()
+argument_list|(
+name|expected
+operator|=
+name|EncryptedPdfsNotSupportedException
+operator|.
+name|class
+argument_list|)
+DECL|method|expectedEncryptionNotSupportedExceptionAtRead ()
 specifier|public
 name|void
-name|testEncryption
+name|expectedEncryptionNotSupportedExceptionAtRead
 parameter_list|()
 throws|throws
-name|Exception
+name|IOException
 block|{
-comment|// // PDF was created using:
-comment|//
-comment|// PDDocument pdf = null;
-comment|// try {
-comment|// pdf = new PDDocument();
-comment|// pdf.addPage(new PDPage()); // Need page to open in Acrobat
-comment|// pdf.encrypt("hello", "world");
-comment|// pdf.save("d:/download/encrypted.pdf");
-comment|// } finally {
-comment|// if (pdf != null)
-comment|// pdf.close();
-comment|// }
-comment|//
 try|try
+init|(
+name|InputStream
+name|is
+init|=
+name|XMPUtilTest
+operator|.
+name|class
+operator|.
+name|getResourceAsStream
+argument_list|(
+literal|"/pdfs/encrypted.pdf"
+argument_list|)
+init|)
 block|{
 name|XMPUtil
 operator|.
 name|readXMP
 argument_list|(
-name|XMPUtilTest
-operator|.
-name|SRC_TEST_RESOURCES_ENCRYPTED_PDF
+name|is
 argument_list|)
 expr_stmt|;
-name|Assert
+block|}
+block|}
+end_function
+
+begin_function
+annotation|@
+name|Test
+argument_list|(
+name|expected
+operator|=
+name|EncryptedPdfsNotSupportedException
 operator|.
-name|fail
-argument_list|()
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|EncryptionNotSupportedException
-name|ignored
-parameter_list|)
-block|{
-comment|// Ignored
-block|}
-try|try
+name|class
+argument_list|)
+DECL|method|expectedEncryptionNotSupportedExceptionAtWrite ()
+specifier|public
+name|void
+name|expectedEncryptionNotSupportedExceptionAtWrite
+parameter_list|()
+throws|throws
+name|IOException
+throws|,
+name|TransformerException
 block|{
 name|XMPUtil
 operator|.
 name|writeXMP
 argument_list|(
-name|XMPUtilTest
-operator|.
-name|SRC_TEST_RESOURCES_ENCRYPTED_PDF
+literal|"src/test/resources/pdfs/encrypted.pdf"
 argument_list|,
 name|t1BibtexEntry
 argument_list|()
@@ -7825,22 +8110,14 @@ argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
-name|fail
-argument_list|()
-expr_stmt|;
 block|}
-catch|catch
-parameter_list|(
-name|EncryptionNotSupportedException
-name|ignored
-parameter_list|)
-block|{
-comment|// Ignored
-block|}
-block|}
+end_function
+
+begin_comment
 comment|/**      * A better testcase for resolveStrings. Makes sure that also the document information and dublin core are written      * correctly.      *<p/>      * Data was contributed by Philip K.F. HÃ¶lzenspies (p.k.f.holzenspies [at] utwente.nl).      *      * @throws IOException      * @throws TransformerException      */
+end_comment
+
+begin_function
 annotation|@
 name|Test
 DECL|method|testResolveStrings2 ()
@@ -7897,7 +8174,7 @@ name|originalAuthors
 init|=
 name|AuthorList
 operator|.
-name|getAuthorList
+name|parse
 argument_list|(
 literal|"Patterson, David and Arvind and Asanov\\'\\i{}c, Krste and Chiou, Derek and Hoe, James and Kozyrakis, Christos and Lu, S{hih-Lien} and Oskin, Mark and Rabaey, Jan and Wawrzynek, John"
 argument_list|)
@@ -7957,7 +8234,7 @@ name|originalAuthors
 argument_list|,
 name|AuthorList
 operator|.
-name|getAuthorList
+name|parse
 argument_list|(
 name|b
 operator|.
@@ -7993,7 +8270,7 @@ name|originalAuthors
 argument_list|,
 name|AuthorList
 operator|.
-name|getAuthorList
+name|parse
 argument_list|(
 name|document
 operator|.
@@ -8028,7 +8305,7 @@ name|originalAuthors
 argument_list|,
 name|AuthorList
 operator|.
-name|getAuthorList
+name|parse
 argument_list|(
 name|b
 operator|.
@@ -8223,7 +8500,7 @@ name|originalAuthors
 argument_list|,
 name|AuthorList
 operator|.
-name|getAuthorList
+name|parse
 argument_list|(
 name|b
 operator|.
@@ -8260,99 +8537,8 @@ block|}
 block|}
 block|}
 block|}
-comment|/**      * Read the contents of a reader as one string      *      * @param reader      * @return      * @throws IOException      */
-DECL|method|slurp (Reader reader)
-specifier|public
-specifier|static
-name|String
-name|slurp
-parameter_list|(
-name|Reader
-name|reader
-parameter_list|)
-throws|throws
-name|IOException
-block|{
-name|char
-index|[]
-name|chars
-init|=
-operator|new
-name|char
-index|[
-literal|4092
-index|]
-decl_stmt|;
-name|StringBuilder
-name|totalBuffer
-init|=
-operator|new
-name|StringBuilder
-argument_list|()
-decl_stmt|;
-name|int
-name|bytesRead
-decl_stmt|;
-while|while
-condition|(
-operator|(
-name|bytesRead
-operator|=
-name|reader
-operator|.
-name|read
-argument_list|(
-name|chars
-argument_list|)
-operator|)
-operator|!=
-operator|-
-literal|1
-condition|)
-block|{
-if|if
-condition|(
-name|bytesRead
-operator|==
-literal|4092
-condition|)
-block|{
-name|totalBuffer
-operator|.
-name|append
-argument_list|(
-name|chars
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-name|totalBuffer
-operator|.
-name|append
-argument_list|(
-operator|new
-name|String
-argument_list|(
-name|chars
-argument_list|,
-literal|0
-argument_list|,
-name|bytesRead
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-return|return
-name|totalBuffer
-operator|.
-name|toString
-argument_list|()
-return|;
-block|}
-block|}
-end_class
+end_function
 
+unit|}
 end_unit
 

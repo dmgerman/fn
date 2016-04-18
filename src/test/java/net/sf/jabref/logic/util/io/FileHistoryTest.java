@@ -87,10 +87,12 @@ class|class
 name|FileHistoryTest
 block|{
 DECL|field|prefs
+specifier|private
 name|JabRefPreferences
 name|prefs
 decl_stmt|;
 DECL|field|oldFileNames
+specifier|private
 name|List
 argument_list|<
 name|String
@@ -104,8 +106,6 @@ specifier|public
 name|void
 name|setUp
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|prefs
 operator|=
@@ -143,21 +143,6 @@ operator|.
 name|RECENT_FILES
 argument_list|,
 name|oldFileNames
-argument_list|)
-expr_stmt|;
-block|}
-annotation|@
-name|Test
-DECL|method|testConstructor ()
-specifier|public
-name|void
-name|testConstructor
-parameter_list|()
-block|{
-operator|new
-name|FileHistory
-argument_list|(
-name|prefs
 argument_list|)
 expr_stmt|;
 block|}

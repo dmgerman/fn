@@ -30,6 +30,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|io
+operator|.
+name|FileFilter
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|List
@@ -181,13 +191,10 @@ specifier|abstract
 class|class
 name|EntryFromFileCreator
 implements|implements
-name|java
-operator|.
-name|io
-operator|.
 name|FileFilter
 block|{
 DECL|field|externalFileType
+specifier|protected
 specifier|final
 name|ExternalFileType
 name|externalFileType
@@ -253,7 +260,10 @@ function_decl|;
 comment|/**      * Create one BibEntry containing information regarding the given File.      *      * @param f      * @param addPathTokensAsKeywords      * @return      */
 DECL|method|createEntry (File f, boolean addPathTokensAsKeywords)
 specifier|public
+name|Optional
+argument_list|<
 name|BibEntry
+argument_list|>
 name|createEntry
 parameter_list|(
 name|File
@@ -279,7 +289,10 @@ argument_list|()
 condition|)
 block|{
 return|return
-literal|null
+name|Optional
+operator|.
+name|empty
+argument_list|()
 return|;
 block|}
 name|Optional
@@ -305,7 +318,7 @@ operator|)
 condition|)
 block|{
 return|return
-literal|null
+name|newEntry
 return|;
 block|}
 if|if
@@ -374,9 +387,6 @@ argument_list|)
 expr_stmt|;
 return|return
 name|newEntry
-operator|.
-name|get
-argument_list|()
 return|;
 block|}
 comment|/** Returns the ExternalFileType that is imported here */
@@ -511,7 +521,10 @@ name|File
 name|file
 parameter_list|)
 block|{
+name|Optional
+argument_list|<
 name|ExternalFileType
+argument_list|>
 name|fileType
 init|=
 name|ExternalFileTypes
@@ -535,7 +548,7 @@ name|possibleFilePaths
 init|=
 name|JabRef
 operator|.
-name|jrf
+name|mainFrame
 operator|.
 name|getCurrentBasePanel
 argument_list|()
@@ -543,15 +556,8 @@ operator|.
 name|getBibDatabaseContext
 argument_list|()
 operator|.
-name|getMetaData
-argument_list|()
-operator|.
 name|getFileDirectory
-argument_list|(
-name|Globals
-operator|.
-name|FILE_FIELD
-argument_list|)
+argument_list|()
 decl_stmt|;
 name|File
 name|shortenedFileName
@@ -613,6 +619,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|appendToField (BibEntry entry, String field, String value)
+specifier|protected
 name|void
 name|appendToField
 parameter_list|(
@@ -700,6 +707,7 @@ block|}
 block|}
 block|}
 DECL|method|addEntrysToEntry (BibEntry entry, List<BibEntry> entrys)
+specifier|protected
 name|void
 name|addEntrysToEntry
 parameter_list|(
@@ -739,6 +747,7 @@ block|}
 block|}
 block|}
 DECL|method|addEntryDataToEntry (BibEntry entry, BibEntry e)
+specifier|protected
 name|void
 name|addEntryDataToEntry
 parameter_list|(
