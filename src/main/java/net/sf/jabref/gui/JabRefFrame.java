@@ -10550,6 +10550,9 @@ argument_list|(
 name|databaseContext
 argument_list|)
 expr_stmt|;
+name|Charset
+name|usedEncoding
+decl_stmt|;
 if|if
 condition|(
 name|encoding
@@ -10557,7 +10560,7 @@ operator|==
 literal|null
 condition|)
 block|{
-name|encoding
+name|usedEncoding
 operator|=
 name|Globals
 operator|.
@@ -10565,6 +10568,13 @@ name|prefs
 operator|.
 name|getDefaultEncoding
 argument_list|()
+expr_stmt|;
+block|}
+else|else
+block|{
+name|usedEncoding
+operator|=
+name|encoding
 expr_stmt|;
 block|}
 name|BasePanel
@@ -10579,7 +10589,7 @@ name|this
 argument_list|,
 name|databaseContext
 argument_list|,
-name|encoding
+name|usedEncoding
 argument_list|)
 decl_stmt|;
 name|addTab

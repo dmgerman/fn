@@ -324,8 +324,10 @@ block|{
 try|try
 block|{
 comment|/* Remove "doi:" scheme identifier */
-name|query
-operator|=
+comment|/* Allow fetching only 1 key */
+name|String
+name|key
+init|=
 name|query
 operator|.
 name|replaceAll
@@ -334,12 +336,6 @@ literal|"^(doi:|DOI:)"
 argument_list|,
 literal|""
 argument_list|)
-expr_stmt|;
-comment|/* Allow fetching only 1 key */
-name|String
-name|key
-init|=
-name|query
 decl_stmt|;
 comment|/* Query ADS and load the results into the BibDatabase */
 name|status
