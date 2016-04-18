@@ -124,6 +124,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Set
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|TreeSet
 import|;
 end_import
@@ -909,7 +919,7 @@ name|NamedCompound
 name|ce
 parameter_list|)
 block|{
-name|TreeSet
+name|Set
 argument_list|<
 name|Object
 argument_list|>

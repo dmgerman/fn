@@ -458,7 +458,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-name|ArrayList
+name|List
 argument_list|<
 name|String
 argument_list|>

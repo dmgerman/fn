@@ -856,7 +856,7 @@ name|getFileDirectory
 argument_list|()
 decl_stmt|;
 comment|// Include the directory of the bib file:
-name|ArrayList
+name|List
 argument_list|<
 name|String
 argument_list|>
@@ -1452,7 +1452,7 @@ argument_list|>
 name|directories
 parameter_list|)
 block|{
-name|HashMap
+name|Map
 argument_list|<
 name|BibEntry
 argument_list|,

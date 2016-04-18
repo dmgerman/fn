@@ -901,7 +901,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-name|HashMap
+name|Map
 argument_list|<
 name|String
 argument_list|,
@@ -1241,7 +1241,7 @@ name|String
 name|lfFileName
 parameter_list|)
 block|{
-name|HashMap
+name|Map
 argument_list|<
 name|String
 argument_list|,

@@ -76,6 +76,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Set
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|TreeSet
 import|;
 end_import
@@ -367,7 +377,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// We use this list to build an alphabetical list of field names:
-name|TreeSet
+name|Set
 argument_list|<
 name|String
 argument_list|>

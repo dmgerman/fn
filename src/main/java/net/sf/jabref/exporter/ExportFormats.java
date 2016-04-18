@@ -1513,7 +1513,7 @@ argument_list|(
 name|currentDir
 argument_list|)
 decl_stmt|;
-name|TreeSet
+name|Set
 argument_list|<
 name|FileFilter
 argument_list|>

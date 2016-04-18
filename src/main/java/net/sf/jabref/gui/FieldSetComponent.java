@@ -1584,7 +1584,7 @@ argument_list|>
 name|getFields
 parameter_list|()
 block|{
-name|ArrayList
+name|List
 argument_list|<
 name|String
 argument_list|>

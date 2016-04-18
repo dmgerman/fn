@@ -335,7 +335,7 @@ name|BibEntry
 name|entry
 parameter_list|)
 block|{
-name|ArrayList
+name|List
 argument_list|<
 name|FieldChange
 argument_list|>

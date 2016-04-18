@@ -4536,7 +4536,7 @@ operator|.
 name|prevTab
 argument_list|)
 expr_stmt|;
-name|HashSet
+name|Set
 argument_list|<
 name|AWTKeyStroke
 argument_list|>

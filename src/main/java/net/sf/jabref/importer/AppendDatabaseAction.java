@@ -824,7 +824,7 @@ operator|.
 name|getDatabase
 argument_list|()
 decl_stmt|;
-name|ArrayList
+name|List
 argument_list|<
 name|BibEntry
 argument_list|>
@@ -835,7 +835,7 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
-name|ArrayList
+name|List
 argument_list|<
 name|BibEntry
 argument_list|>

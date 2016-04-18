@@ -217,7 +217,7 @@ name|JabRefPreferences
 name|preferences
 parameter_list|)
 block|{
-name|EnumSet
+name|Set
 argument_list|<
 name|CleanupStep
 argument_list|>

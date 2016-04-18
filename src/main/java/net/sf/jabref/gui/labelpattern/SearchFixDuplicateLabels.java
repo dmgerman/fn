@@ -256,7 +256,7 @@ name|HashMap
 argument_list|<>
 argument_list|()
 expr_stmt|;
-name|HashMap
+name|Map
 argument_list|<
 name|String
 argument_list|,
@@ -351,7 +351,7 @@ block|}
 else|else
 block|{
 comment|// Construct a list of entries for this key:
-name|ArrayList
+name|List
 argument_list|<
 name|BibEntry
 argument_list|>

@@ -1661,7 +1661,7 @@ name|be
 argument_list|)
 expr_stmt|;
 comment|// Set owner/timestamp if options are enabled:
-name|ArrayList
+name|List
 argument_list|<
 name|BibEntry
 argument_list|>

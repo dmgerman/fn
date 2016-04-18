@@ -2950,7 +2950,7 @@ operator|.
 name|depthFirstEnumeration
 argument_list|()
 decl_stmt|;
-name|ArrayList
+name|List
 argument_list|<
 name|CheckableTreeNode
 argument_list|>

@@ -54,6 +54,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Set
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|SortedSet
 import|;
 end_import
@@ -323,7 +333,7 @@ argument_list|(
 name|currentDir
 argument_list|)
 decl_stmt|;
-name|TreeSet
+name|Set
 argument_list|<
 name|ImportFileFilter
 argument_list|>

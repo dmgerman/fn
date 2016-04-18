@@ -571,7 +571,7 @@ argument_list|(
 name|value
 argument_list|)
 decl_stmt|;
-name|ArrayList
+name|List
 argument_list|<
 name|FileListEntry
 argument_list|>

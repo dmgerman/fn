@@ -505,7 +505,7 @@ name|comment
 init|=
 literal|""
 decl_stmt|;
-name|HashMap
+name|Map
 argument_list|<
 name|String
 argument_list|,
@@ -1709,7 +1709,7 @@ argument_list|)
 decl_stmt|;
 comment|// id assumes an existing database so don't
 comment|// Remove empty fields:
-name|ArrayList
+name|List
 argument_list|<
 name|Object
 argument_list|>

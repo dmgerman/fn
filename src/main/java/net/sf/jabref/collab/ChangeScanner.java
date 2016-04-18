@@ -1355,7 +1355,7 @@ literal|0
 decl_stmt|;
 comment|// Create a HashSet where we can put references to entry numbers in the "disk"
 comment|// database that we have matched. This is to avoid matching them twice.
-name|HashSet
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -1371,7 +1371,7 @@ name|getEntryCount
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|HashSet
+name|Set
 argument_list|<
 name|Integer
 argument_list|>
@@ -2241,7 +2241,7 @@ condition|)
 block|{
 return|return;
 block|}
-name|HashSet
+name|Set
 argument_list|<
 name|Object
 argument_list|>
@@ -2252,7 +2252,7 @@ name|HashSet
 argument_list|<>
 argument_list|()
 decl_stmt|;
-name|HashSet
+name|Set
 argument_list|<
 name|Object
 argument_list|>
@@ -2263,7 +2263,7 @@ name|HashSet
 argument_list|<>
 argument_list|()
 decl_stmt|;
-name|HashSet
+name|Set
 argument_list|<
 name|String
 argument_list|>

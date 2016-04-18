@@ -441,7 +441,7 @@ argument_list|,
 name|out
 argument_list|)
 expr_stmt|;
-name|HashSet
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -588,7 +588,7 @@ block|}
 block|}
 block|}
 comment|// Then write remaining fields in alphabetic order.
-name|TreeSet
+name|Set
 argument_list|<
 name|String
 argument_list|>

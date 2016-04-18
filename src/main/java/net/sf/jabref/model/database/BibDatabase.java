@@ -504,7 +504,7 @@ name|String
 name|key
 parameter_list|)
 block|{
-name|ArrayList
+name|List
 argument_list|<
 name|BibEntry
 argument_list|>

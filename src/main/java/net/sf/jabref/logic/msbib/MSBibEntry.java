@@ -6256,7 +6256,7 @@ expr_stmt|;
 comment|// id assumes an existing database so don't
 block|}
 comment|// Todo: add check for BibTexEntry types
-name|HashMap
+name|Map
 argument_list|<
 name|String
 argument_list|,

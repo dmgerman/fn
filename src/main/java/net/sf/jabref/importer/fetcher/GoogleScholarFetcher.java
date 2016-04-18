@@ -1725,7 +1725,7 @@ argument_list|(
 name|page
 argument_list|)
 decl_stmt|;
-name|HashMap
+name|Map
 argument_list|<
 name|String
 argument_list|,
