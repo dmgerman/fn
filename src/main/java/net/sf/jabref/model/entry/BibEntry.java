@@ -694,7 +694,7 @@ name|fields
 operator|.
 name|get
 argument_list|(
-name|normalizeFieldName
+name|toLowerCase
 argument_list|(
 name|name
 argument_list|)
@@ -723,7 +723,7 @@ name|fields
 operator|.
 name|get
 argument_list|(
-name|normalizeFieldName
+name|toLowerCase
 argument_list|(
 name|name
 argument_list|)
@@ -746,17 +746,17 @@ name|fields
 operator|.
 name|containsKey
 argument_list|(
-name|normalizeFieldName
+name|toLowerCase
 argument_list|(
 name|name
 argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|normalizeFieldName (String fieldName)
+DECL|method|toLowerCase (String fieldName)
 specifier|private
 name|String
-name|normalizeFieldName
+name|toLowerCase
 parameter_list|(
 name|String
 name|fieldName
@@ -797,7 +797,7 @@ name|fieldValue
 init|=
 name|getField
 argument_list|(
-name|normalizeFieldName
+name|toLowerCase
 argument_list|(
 name|name
 argument_list|)
@@ -1371,7 +1371,7 @@ expr_stmt|;
 name|String
 name|fieldName
 init|=
-name|normalizeFieldName
+name|toLowerCase
 argument_list|(
 name|name
 argument_list|)
@@ -1479,7 +1479,7 @@ block|{
 name|String
 name|fieldName
 init|=
-name|normalizeFieldName
+name|toLowerCase
 argument_list|(
 name|name
 argument_list|)
@@ -1591,7 +1591,7 @@ block|{
 name|String
 name|fieldName
 init|=
-name|normalizeFieldName
+name|toLowerCase
 argument_list|(
 name|field
 argument_list|)
@@ -1686,7 +1686,7 @@ block|{
 name|String
 name|fieldName
 init|=
-name|normalizeFieldName
+name|toLowerCase
 argument_list|(
 name|field
 argument_list|)
