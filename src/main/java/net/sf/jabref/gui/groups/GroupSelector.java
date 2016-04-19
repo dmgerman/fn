@@ -5662,6 +5662,21 @@ end_function
 begin_function
 annotation|@
 name|Override
+DECL|method|getRescalingWeight ()
+specifier|public
+name|int
+name|getRescalingWeight
+parameter_list|()
+block|{
+return|return
+literal|1
+return|;
+block|}
+end_function
+
+begin_function
+annotation|@
+name|Override
 DECL|method|componentClosing ()
 specifier|public
 name|void
