@@ -1911,6 +1911,18 @@ name|TRUE
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
+DECL|method|getRescalingWeight ()
+specifier|public
+name|int
+name|getRescalingWeight
+parameter_list|()
+block|{
+return|return
+literal|0
+return|;
+block|}
 DECL|class|EntryFetcherComparator
 specifier|private
 specifier|static

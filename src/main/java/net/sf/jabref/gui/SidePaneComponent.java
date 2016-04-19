@@ -518,6 +518,14 @@ name|getPreferredSize
 argument_list|()
 return|;
 block|}
+comment|/**      * Specifies how to distribute extra vertical space between side pane components.      * 0: fixed height, 1: fill the remaining space      */
+DECL|method|getRescalingWeight ()
+specifier|public
+specifier|abstract
+name|int
+name|getRescalingWeight
+parameter_list|()
+function_decl|;
 block|}
 end_class
 
