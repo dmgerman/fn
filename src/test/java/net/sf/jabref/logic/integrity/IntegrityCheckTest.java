@@ -1258,6 +1258,75 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+DECL|method|testHTMLCharacterChecks ()
+specifier|public
+name|void
+name|testHTMLCharacterChecks
+parameter_list|()
+block|{
+name|assertCorrect
+argument_list|(
+name|createContext
+argument_list|(
+literal|"title"
+argument_list|,
+literal|"Not a single {HTML} character"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertCorrect
+argument_list|(
+name|createContext
+argument_list|(
+literal|"month"
+argument_list|,
+literal|"#jan#"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertCorrect
+argument_list|(
+name|createContext
+argument_list|(
+literal|"author"
+argument_list|,
+literal|"A. Einstein and I. Newton"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertWrong
+argument_list|(
+name|createContext
+argument_list|(
+literal|"author"
+argument_list|,
+literal|"Lenhard, J&ouml;rg"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertWrong
+argument_list|(
+name|createContext
+argument_list|(
+literal|"author"
+argument_list|,
+literal|"Lenhard, J&#227;rg"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertWrong
+argument_list|(
+name|createContext
+argument_list|(
+literal|"journal"
+argument_list|,
+literal|"&Auml;rling Str&ouml;m for&#8211;&#x2031;"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|createContext (String field, String value, String type)
 specifier|private
 name|BibDatabaseContext
