@@ -202,7 +202,7 @@ name|org
 operator|.
 name|junit
 operator|.
-name|BeforeClass
+name|Before
 import|;
 end_import
 
@@ -272,6 +272,18 @@ name|assertFalse
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|mockito
+operator|.
+name|Matchers
+operator|.
+name|any
+import|;
+end_import
+
 begin_class
 DECL|class|IntegrityCheckTest
 specifier|public
@@ -290,10 +302,9 @@ name|TemporaryFolder
 argument_list|()
 decl_stmt|;
 annotation|@
-name|BeforeClass
+name|Before
 DECL|method|setUp ()
 specifier|public
-specifier|static
 name|void
 name|setUp
 parameter_list|()
@@ -935,6 +946,31 @@ name|of
 argument_list|(
 literal|"."
 argument_list|)
+argument_list|)
+expr_stmt|;
+name|Mockito
+operator|.
+name|when
+argument_list|(
+name|metaData
+operator|.
+name|getUserFileDirectory
+argument_list|(
+name|any
+argument_list|(
+name|String
+operator|.
+name|class
+argument_list|)
+argument_list|)
+argument_list|)
+operator|.
+name|thenReturn
+argument_list|(
+name|Optional
+operator|.
+name|empty
+argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// FIXME: must be set as checkBibtexDatabase only activates title checker based on database mode

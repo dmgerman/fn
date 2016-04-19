@@ -1449,22 +1449,10 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
-if|if
-condition|(
-name|metaData
-operator|.
-name|getData
-argument_list|(
-name|MetaData
-operator|.
-name|SAVE_ACTIONS
-argument_list|)
-operator|!=
-literal|null
-condition|)
-block|{
-comment|// save actions defined -> apply for every entry
+name|Optional
+argument_list|<
 name|FieldFormatterCleanups
+argument_list|>
 name|saveActions
 init|=
 name|metaData
@@ -1472,6 +1460,15 @@ operator|.
 name|getSaveActions
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|saveActions
+operator|.
+name|isPresent
+argument_list|()
+condition|)
+block|{
+comment|// save actions defined -> apply for every entry
 for|for
 control|(
 name|BibEntry
@@ -1485,6 +1482,9 @@ operator|.
 name|addAll
 argument_list|(
 name|saveActions
+operator|.
+name|get
+argument_list|()
 operator|.
 name|applySaveActions
 argument_list|(
