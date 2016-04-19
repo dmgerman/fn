@@ -168,7 +168,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|MonthUtil
+name|BibEntry
 import|;
 end_import
 
@@ -184,7 +184,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibEntry
+name|MonthUtil
 import|;
 end_import
 

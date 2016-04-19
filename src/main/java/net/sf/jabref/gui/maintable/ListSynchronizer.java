@@ -20,18 +20,6 @@ end_package
 
 begin_import
 import|import
-name|ca
-operator|.
-name|odell
-operator|.
-name|glazedlists
-operator|.
-name|EventList
-import|;
-end_import
-
-begin_import
-import|import
 name|net
 operator|.
 name|sf
@@ -75,6 +63,18 @@ operator|.
 name|entry
 operator|.
 name|BibEntry
+import|;
+end_import
+
+begin_import
+import|import
+name|ca
+operator|.
+name|odell
+operator|.
+name|glazedlists
+operator|.
+name|EventList
 import|;
 end_import
 

@@ -60,7 +60,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|IdGenerator
+name|BibEntry
 import|;
 end_import
 
@@ -76,7 +76,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibEntry
+name|IdGenerator
 import|;
 end_import
 

@@ -90,29 +90,15 @@ end_import
 
 begin_import
 import|import
-name|org
+name|net
 operator|.
-name|apache
+name|sf
 operator|.
-name|commons
+name|jabref
 operator|.
-name|logging
+name|importer
 operator|.
-name|Log
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|commons
-operator|.
-name|logging
-operator|.
-name|LogFactory
+name|ImportInspector
 import|;
 end_import
 
@@ -126,7 +112,7 @@ name|jabref
 operator|.
 name|importer
 operator|.
-name|*
+name|OutputPrinter
 import|;
 end_import
 
@@ -172,9 +158,7 @@ name|jabref
 operator|.
 name|model
 operator|.
-name|entry
-operator|.
-name|BibEntry
+name|DuplicateCheck
 import|;
 end_import
 
@@ -188,7 +172,37 @@ name|jabref
 operator|.
 name|model
 operator|.
-name|DuplicateCheck
+name|entry
+operator|.
+name|BibEntry
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
 import|;
 end_import
 

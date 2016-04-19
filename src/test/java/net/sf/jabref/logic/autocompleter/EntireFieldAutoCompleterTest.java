@@ -15,18 +15,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|org
-operator|.
-name|mockito
-operator|.
-name|Mockito
-operator|.
-name|*
-import|;
-end_import
-
-begin_import
 import|import
 name|java
 operator|.
@@ -58,6 +46,22 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|BibEntry
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|junit
@@ -77,18 +81,26 @@ import|;
 end_import
 
 begin_import
-import|import
-name|net
+import|import static
+name|org
 operator|.
-name|sf
+name|mockito
 operator|.
-name|jabref
+name|Mockito
 operator|.
-name|model
+name|mock
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
 operator|.
-name|entry
+name|mockito
 operator|.
-name|BibEntry
+name|Mockito
+operator|.
+name|when
 import|;
 end_import
 

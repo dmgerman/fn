@@ -14,6 +14,16 @@ end_package
 
 begin_import
 import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|JButton
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -147,16 +157,6 @@ operator|.
 name|junit
 operator|.
 name|Test
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|*
 import|;
 end_import
 

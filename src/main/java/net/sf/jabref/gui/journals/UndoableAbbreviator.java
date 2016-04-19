@@ -16,17 +16,13 @@ end_package
 
 begin_import
 import|import
-name|net
+name|javax
 operator|.
-name|sf
+name|swing
 operator|.
-name|jabref
+name|undo
 operator|.
-name|model
-operator|.
-name|database
-operator|.
-name|BibDatabase
+name|CompoundEdit
 import|;
 end_import
 
@@ -38,11 +34,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|model
+name|gui
 operator|.
-name|entry
+name|undo
 operator|.
-name|BibEntry
+name|UndoableFieldChange
 import|;
 end_import
 
@@ -86,23 +82,27 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
+name|model
 operator|.
-name|undo
+name|database
 operator|.
-name|UndoableFieldChange
+name|BibDatabase
 import|;
 end_import
 
 begin_import
 import|import
-name|javax
+name|net
 operator|.
-name|swing
+name|sf
 operator|.
-name|undo
+name|jabref
 operator|.
-name|CompoundEdit
+name|model
+operator|.
+name|entry
+operator|.
+name|BibEntry
 import|;
 end_import
 

@@ -24,7 +24,17 @@ name|java
 operator|.
 name|awt
 operator|.
-name|*
+name|Color
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|awt
+operator|.
+name|Component
 import|;
 end_import
 
@@ -34,7 +44,27 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|*
+name|Icon
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|JLabel
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|JTable
 import|;
 end_import
 

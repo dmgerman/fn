@@ -74,7 +74,19 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|*
+name|JabRefExecutorService
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|JabRefGUI
 import|;
 end_import
 
@@ -182,9 +194,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|model
+name|logic
 operator|.
-name|DuplicateCheck
+name|l10n
+operator|.
+name|Localization
 import|;
 end_import
 
@@ -196,11 +210,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|model
 operator|.
-name|l10n
-operator|.
-name|Localization
+name|DuplicateCheck
 import|;
 end_import
 

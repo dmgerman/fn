@@ -76,35 +76,27 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|*
+name|Icon
 import|;
 end_import
 
 begin_import
 import|import
-name|org
+name|javax
 operator|.
-name|apache
+name|swing
 operator|.
-name|commons
-operator|.
-name|logging
-operator|.
-name|Log
+name|JMenuItem
 import|;
 end_import
 
 begin_import
 import|import
-name|org
+name|javax
 operator|.
-name|apache
+name|swing
 operator|.
-name|commons
-operator|.
-name|logging
-operator|.
-name|LogFactory
+name|JOptionPane
 import|;
 end_import
 
@@ -116,7 +108,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|*
+name|BibDatabaseContext
 import|;
 end_import
 
@@ -131,6 +123,22 @@ operator|.
 name|gui
 operator|.
 name|JabRefFrame
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|desktop
+operator|.
+name|JabRefDesktop
 import|;
 end_import
 
@@ -168,17 +176,29 @@ end_import
 
 begin_import
 import|import
-name|net
+name|org
 operator|.
-name|sf
+name|apache
 operator|.
-name|jabref
+name|commons
 operator|.
-name|gui
+name|logging
 operator|.
-name|desktop
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
 operator|.
-name|JabRefDesktop
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
 import|;
 end_import
 

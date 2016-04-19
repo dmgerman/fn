@@ -82,23 +82,7 @@ name|logic
 operator|.
 name|groups
 operator|.
-name|GroupTreeNode
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|entry
-operator|.
-name|BibEntry
+name|ExplicitGroup
 import|;
 end_import
 
@@ -114,7 +98,7 @@ name|logic
 operator|.
 name|groups
 operator|.
-name|ExplicitGroup
+name|GroupTreeNode
 import|;
 end_import
 
@@ -131,6 +115,22 @@ operator|.
 name|l10n
 operator|.
 name|Localization
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|BibEntry
 import|;
 end_import
 

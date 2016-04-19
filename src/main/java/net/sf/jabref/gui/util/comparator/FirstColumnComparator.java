@@ -22,13 +22,21 @@ end_package
 
 begin_import
 import|import
-name|net
+name|java
 operator|.
-name|sf
+name|util
 operator|.
-name|jabref
+name|Comparator
+import|;
+end_import
+
+begin_import
+import|import
+name|java
 operator|.
-name|BibDatabaseContext
+name|util
+operator|.
+name|Optional
 import|;
 end_import
 
@@ -40,11 +48,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|model
-operator|.
-name|entry
-operator|.
-name|BibEntry
+name|BibDatabaseContext
 import|;
 end_import
 
@@ -64,21 +68,17 @@ end_import
 
 begin_import
 import|import
-name|java
+name|net
 operator|.
-name|util
+name|sf
 operator|.
-name|Comparator
-import|;
-end_import
-
-begin_import
-import|import
-name|java
+name|jabref
 operator|.
-name|util
+name|model
 operator|.
-name|Optional
+name|entry
+operator|.
+name|BibEntry
 import|;
 end_import
 

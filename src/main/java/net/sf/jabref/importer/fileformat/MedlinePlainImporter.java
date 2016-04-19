@@ -22,11 +22,19 @@ begin_import
 import|import
 name|java
 operator|.
-name|util
+name|io
 operator|.
-name|regex
+name|BufferedReader
+import|;
+end_import
+
+begin_import
+import|import
+name|java
 operator|.
-name|Pattern
+name|io
+operator|.
+name|IOException
 import|;
 end_import
 
@@ -44,9 +52,9 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
+name|util
 operator|.
-name|BufferedReader
+name|ArrayList
 import|;
 end_import
 
@@ -54,9 +62,9 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
+name|util
 operator|.
-name|IOException
+name|HashMap
 import|;
 end_import
 
@@ -86,17 +94,9 @@ name|java
 operator|.
 name|util
 operator|.
-name|ArrayList
-import|;
-end_import
-
-begin_import
-import|import
-name|java
+name|regex
 operator|.
-name|util
-operator|.
-name|HashMap
+name|Pattern
 import|;
 end_import
 
@@ -140,7 +140,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibEntry
+name|AuthorList
 import|;
 end_import
 
@@ -156,7 +156,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|AuthorList
+name|BibEntry
 import|;
 end_import
 

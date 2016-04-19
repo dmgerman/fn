@@ -18,29 +18,31 @@ end_package
 
 begin_import
 import|import
-name|net
+name|java
 operator|.
-name|sf
+name|io
 operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|JabRefFrame
+name|File
 import|;
 end_import
 
 begin_import
 import|import
-name|net
+name|java
 operator|.
-name|sf
+name|util
 operator|.
-name|jabref
+name|Timer
+import|;
+end_import
+
+begin_import
+import|import
+name|java
 operator|.
-name|gui
+name|util
 operator|.
-name|BasePanel
+name|TimerTask
 import|;
 end_import
 
@@ -70,21 +72,29 @@ end_import
 
 begin_import
 import|import
-name|java
+name|net
 operator|.
-name|util
+name|sf
 operator|.
-name|Timer
+name|jabref
+operator|.
+name|gui
+operator|.
+name|BasePanel
 import|;
 end_import
 
 begin_import
 import|import
-name|java
+name|net
 operator|.
-name|util
+name|sf
 operator|.
-name|TimerTask
+name|jabref
+operator|.
+name|gui
+operator|.
+name|JabRefFrame
 import|;
 end_import
 
@@ -113,16 +123,6 @@ operator|.
 name|logging
 operator|.
 name|LogFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|File
 import|;
 end_import
 

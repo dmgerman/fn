@@ -20,7 +20,7 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|*
+name|JTable
 import|;
 end_import
 

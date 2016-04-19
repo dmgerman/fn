@@ -17,24 +17,24 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|*
-import|;
-end_import
-
-begin_import
 import|import
 name|java
 operator|.
 name|util
 operator|.
 name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|JabRefPreferences
 import|;
 end_import
 
@@ -69,14 +69,26 @@ import|;
 end_import
 
 begin_import
-import|import
-name|net
+import|import static
+name|org
 operator|.
-name|sf
+name|junit
 operator|.
-name|jabref
+name|Assert
 operator|.
-name|JabRefPreferences
+name|assertArrayEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
 import|;
 end_import
 

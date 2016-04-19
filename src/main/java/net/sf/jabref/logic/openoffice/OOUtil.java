@@ -24,7 +24,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Set
+name|EnumSet
 import|;
 end_import
 
@@ -34,7 +34,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|EnumSet
+name|Set
 import|;
 end_import
 
@@ -59,6 +59,22 @@ operator|.
 name|regex
 operator|.
 name|Pattern
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|layout
+operator|.
+name|Layout
 import|;
 end_import
 
@@ -231,22 +247,6 @@ operator|.
 name|uno
 operator|.
 name|UnoRuntime
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
-name|layout
-operator|.
-name|Layout
 import|;
 end_import
 

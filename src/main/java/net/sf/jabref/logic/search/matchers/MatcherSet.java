@@ -22,22 +22,6 @@ end_package
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
-name|search
-operator|.
-name|SearchMatcher
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -63,6 +47,22 @@ operator|.
 name|util
 operator|.
 name|Vector
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|search
+operator|.
+name|SearchMatcher
 import|;
 end_import
 

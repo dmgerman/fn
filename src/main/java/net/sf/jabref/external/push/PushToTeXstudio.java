@@ -24,7 +24,19 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|*
+name|Icon
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|JabRefPreferences
 import|;
 end_import
 
@@ -39,18 +51,6 @@ operator|.
 name|gui
 operator|.
 name|IconTheme
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|JabRefPreferences
 import|;
 end_import
 

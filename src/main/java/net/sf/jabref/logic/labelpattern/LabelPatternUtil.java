@@ -34,16 +34,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|StringTokenizer
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|Arrays
 import|;
 end_import
@@ -55,6 +45,16 @@ operator|.
 name|util
 operator|.
 name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|StringTokenizer
 import|;
 end_import
 
@@ -182,9 +182,9 @@ name|jabref
 operator|.
 name|model
 operator|.
-name|entry
+name|database
 operator|.
-name|AuthorList
+name|BibDatabase
 import|;
 end_import
 
@@ -198,9 +198,9 @@ name|jabref
 operator|.
 name|model
 operator|.
-name|database
+name|entry
 operator|.
-name|BibDatabase
+name|AuthorList
 import|;
 end_import
 
