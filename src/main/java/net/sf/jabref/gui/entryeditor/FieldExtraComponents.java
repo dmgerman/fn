@@ -1272,6 +1272,7 @@ operator|.
 name|getTextComponent
 argument_list|()
 decl_stmt|;
+comment|// set new data
 name|field
 operator|.
 name|setText
@@ -1283,6 +1284,13 @@ argument_list|()
 operator|.
 name|getDOI
 argument_list|()
+argument_list|)
+expr_stmt|;
+name|entryEditor
+operator|.
+name|updateField
+argument_list|(
+name|fieldEditor
 argument_list|)
 expr_stmt|;
 block|}
