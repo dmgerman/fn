@@ -3708,10 +3708,7 @@ if|if
 condition|(
 operator|!
 name|identicalTypes
-condition|)
-block|{
-if|if
-condition|(
+operator|&&
 name|typeRadioButtons
 operator|.
 name|get
@@ -3746,7 +3743,6 @@ name|getType
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 comment|// Check the potentially different fields
 for|for
