@@ -1068,7 +1068,7 @@ literal|"914"
 block|,
 literal|"Beta"
 block|,
-literal|"{$\\Beta$}"
+literal|"{{$\\Beta$}}"
 block|}
 block|,
 comment|// greek capital letter beta, U+0392
@@ -1077,7 +1077,7 @@ literal|"915"
 block|,
 literal|"Gamma"
 block|,
-literal|"{$\\Gamma$}"
+literal|"{{$\\Gamma$}}"
 block|}
 block|,
 comment|// greek capital letter gamma,
@@ -1087,7 +1087,7 @@ literal|"916"
 block|,
 literal|"Delta"
 block|,
-literal|"{$\\Delta$}"
+literal|"{{$\\Delta$}}"
 block|}
 block|,
 comment|// greek capital letter delta,
@@ -1097,7 +1097,7 @@ literal|"917"
 block|,
 literal|"Epsilon"
 block|,
-literal|"{$\\Epsilon$}"
+literal|"{{$\\Epsilon$}}"
 block|}
 block|,
 comment|// greek capital letter epsilon, U+0395
@@ -1106,7 +1106,7 @@ literal|"918"
 block|,
 literal|"Zeta"
 block|,
-literal|"{$\\Zeta$}"
+literal|"{{$\\Zeta$}}"
 block|}
 block|,
 comment|// greek capital letter zeta, U+0396
@@ -1115,7 +1115,7 @@ literal|"919"
 block|,
 literal|"Eta"
 block|,
-literal|"{$\\Eta$}"
+literal|"{{$\\Eta$}}"
 block|}
 block|,
 comment|// greek capital letter eta, U+0397
@@ -1124,7 +1124,7 @@ literal|"920"
 block|,
 literal|"Theta"
 block|,
-literal|"{$\\Theta$}"
+literal|"{{$\\Theta$}}"
 block|}
 block|,
 comment|// greek capital letter theta,
@@ -1134,7 +1134,7 @@ literal|"921"
 block|,
 literal|"Iota"
 block|,
-literal|"{$\\Iota$}"
+literal|"{{$\\Iota$}}"
 block|}
 block|,
 comment|// greek capital letter iota, U+0399
@@ -1143,7 +1143,7 @@ literal|"922"
 block|,
 literal|"Kappa"
 block|,
-literal|"{$\\Kappa$}"
+literal|"{{$\\Kappa$}}"
 block|}
 block|,
 comment|// greek capital letter kappa, U+039A
@@ -1152,7 +1152,7 @@ literal|"923"
 block|,
 literal|"Lambda"
 block|,
-literal|"{$\\Lambda$}"
+literal|"{{$\\Lambda$}}"
 block|}
 block|,
 comment|// greek capital letter lambda,
@@ -1162,7 +1162,7 @@ literal|"924"
 block|,
 literal|"Mu"
 block|,
-literal|"{$\\Mu$}"
+literal|"{{$\\Mu$}}"
 block|}
 block|,
 comment|// greek capital letter mu, U+039C
@@ -1171,7 +1171,7 @@ literal|"925"
 block|,
 literal|"Nu"
 block|,
-literal|"{$\\Nu$}"
+literal|"{{$\\Nu$}}"
 block|}
 block|,
 comment|// greek capital letter nu, U+039D
@@ -1180,7 +1180,7 @@ literal|"926"
 block|,
 literal|"Xi"
 block|,
-literal|"{$\\Xi$}"
+literal|"{{$\\Xi$}}"
 block|}
 block|,
 comment|// greek capital letter xi, U+039E ISOgrk3
@@ -1189,7 +1189,7 @@ literal|"927"
 block|,
 literal|"Omicron"
 block|,
-literal|"{$\\Omicron$}"
+literal|"{{$\\Omicron$}}"
 block|}
 block|,
 comment|// greek capital letter omicron, U+039F
@@ -1198,7 +1198,7 @@ literal|"928"
 block|,
 literal|"Pi"
 block|,
-literal|"{$\\Pi$}"
+literal|"{{$\\Pi$}}"
 block|}
 block|,
 comment|// greek capital letter pi, U+03A0 ISOgrk3
@@ -1207,7 +1207,7 @@ literal|"929"
 block|,
 literal|"Rho"
 block|,
-literal|"{$\\Rho$}"
+literal|"{{$\\Rho$}}"
 block|}
 block|,
 comment|// greek capital letter rho, U+03A1
@@ -1217,7 +1217,7 @@ literal|"931"
 block|,
 literal|"Sigma"
 block|,
-literal|"{$\\Sigma$}"
+literal|"{{$\\Sigma$}}"
 block|}
 block|,
 comment|// greek capital letter sigma,
@@ -1227,7 +1227,7 @@ literal|"932"
 block|,
 literal|"Tau"
 block|,
-literal|"{$\\Tau$}"
+literal|"{{$\\Tau$}}"
 block|}
 block|,
 comment|// greek capital letter tau, U+03A4
@@ -1236,7 +1236,7 @@ literal|"933"
 block|,
 literal|"Upsilon"
 block|,
-literal|"{$\\Upsilon$}"
+literal|"{{$\\Upsilon$}}"
 block|}
 block|,
 comment|// greek capital letter upsilon,
@@ -1246,7 +1246,7 @@ literal|"934"
 block|,
 literal|"Phi"
 block|,
-literal|"{$\\Phi$}"
+literal|"{{$\\Phi$}}"
 block|}
 block|,
 comment|// greek capital letter phi,
@@ -1256,7 +1256,7 @@ literal|"935"
 block|,
 literal|"Chi"
 block|,
-literal|"{$\\Chi$}"
+literal|"{{$\\Chi$}}"
 block|}
 block|,
 comment|// greek capital letter chi, U+03A7
@@ -1265,7 +1265,7 @@ literal|"936"
 block|,
 literal|"Psi"
 block|,
-literal|"{$\\Psi$}"
+literal|"{{$\\Psi$}}"
 block|}
 block|,
 comment|// greek capital letter psi,
@@ -1275,7 +1275,7 @@ literal|"937"
 block|,
 literal|"Omega"
 block|,
-literal|"{$\\Omega$}"
+literal|"{{$\\Omega$}}"
 block|}
 block|,
 comment|// greek capital letter omega,
@@ -1558,7 +1558,7 @@ literal|"978"
 block|,
 literal|"upsih"
 block|,
-literal|"{$\\Upsilon$}"
+literal|"{{$\\Upsilon$}}"
 block|}
 block|,
 comment|// greek upsilon with hook symbol,
@@ -1648,7 +1648,7 @@ literal|"8465"
 block|,
 literal|"image"
 block|,
-literal|"{$\\Im$}"
+literal|"{{$\\Im$}}"
 block|}
 block|,
 comment|// blackletter capital I = imaginary part,
@@ -1658,7 +1658,7 @@ literal|"8476"
 block|,
 literal|"real"
 block|,
-literal|"{$\\Re$}"
+literal|"{{$\\Re$}}"
 block|}
 block|,
 comment|// blackletter capital R = real part symbol,
@@ -1744,7 +1744,7 @@ literal|"8656"
 block|,
 literal|"lArr"
 block|,
-literal|"{$\\Leftarrow$}"
+literal|"{{$\\Leftarrow$}}"
 block|}
 block|,
 comment|// leftwards double arrow, U+21D0 ISOtech
@@ -1754,7 +1754,7 @@ literal|"8657"
 block|,
 literal|"uArr"
 block|,
-literal|"{$\\Uparrow$}"
+literal|"{{$\\Uparrow$}}"
 block|}
 block|,
 comment|// upwards double arrow, U+21D1 ISOamsa
@@ -1763,7 +1763,7 @@ literal|"8658"
 block|,
 literal|"rArr"
 block|,
-literal|"{$\\Rightarrow$}"
+literal|"{{$\\Rightarrow$}}"
 block|}
 block|,
 comment|// rightwards double arrow,
@@ -1774,7 +1774,7 @@ literal|"8659"
 block|,
 literal|"dArr"
 block|,
-literal|"{$\\Downarrow$}"
+literal|"{{$\\Downarrow$}}"
 block|}
 block|,
 comment|// downwards double arrow, U+21D3 ISOamsa
@@ -1783,7 +1783,7 @@ literal|"8660"
 block|,
 literal|"hArr"
 block|,
-literal|"{$\\Leftrightarrow$}"
+literal|"{{$\\Leftrightarrow$}}"
 block|}
 block|,
 comment|// left right double arrow,
@@ -3410,7 +3410,7 @@ literal|"733"
 block|,
 literal|"dblac"
 block|,
-literal|"{\\H{}}"
+literal|"{{\\H{}}}"
 block|}
 block|,
 comment|// Double acute
@@ -3437,7 +3437,7 @@ literal|"1055"
 block|,
 literal|""
 block|,
-literal|"{\\cyrchar\\CYRP}"
+literal|"{{\\cyrchar\\CYRP}}"
 block|}
 block|,
 comment|// Cyrillic capital Pe
@@ -3563,7 +3563,7 @@ literal|"8451"
 block|,
 literal|""
 block|,
-literal|"$\\deg${C}"
+literal|"$\\deg${{C}}"
 block|}
 block|,
 comment|// Degree Celsius
@@ -3572,7 +3572,7 @@ literal|"8459"
 block|,
 literal|"Hscr"
 block|,
-literal|"$\\mathcal{H}$"
+literal|"{{$\\mathcal{H}}}$"
 block|}
 block|,
 comment|// script capital H -- possibly use \mathscr
@@ -3581,7 +3581,7 @@ literal|"8460"
 block|,
 literal|"Hfr"
 block|,
-literal|"$\\mathbb{H}$"
+literal|"{{$\\mathbb{H}$}}"
 block|}
 block|,
 comment|// black letter capital H -- requires e.g. amsfonts
@@ -3590,7 +3590,7 @@ literal|"8466"
 block|,
 literal|"Lscr"
 block|,
-literal|"$\\mathcal{L}$"
+literal|"{{$\\mathcal{L}$}}"
 block|}
 block|,
 comment|// script capital L -- possibly use \mathscr
@@ -3608,7 +3608,7 @@ literal|"8469"
 block|,
 literal|"naturals"
 block|,
-literal|"$\\mathbb{N}$"
+literal|"{{$\\mathbb{N}$}}"
 block|}
 block|,
 comment|// double struck capital N -- requires e.g. amsfonts
@@ -3617,7 +3617,7 @@ literal|"8474"
 block|,
 literal|"Qopf"
 block|,
-literal|"$\\mathbb{Q}$"
+literal|"{{$\\mathbb{Q}$}}"
 block|}
 block|,
 comment|// double struck capital Q -- requires e.g. amsfonts
@@ -3626,7 +3626,7 @@ literal|"8477"
 block|,
 literal|"reals"
 block|,
-literal|"$\\mathbb{R}$"
+literal|"{{$\\mathbb{R}$}}"
 block|}
 block|,
 comment|// double struck capital R -- requires e.g. amsfonts
@@ -3635,7 +3635,7 @@ literal|"8486"
 block|,
 literal|""
 block|,
-literal|"${\\Omega}$"
+literal|"${{\\Omega}}$"
 block|}
 block|,
 comment|// Omega
@@ -3653,7 +3653,7 @@ literal|"8496"
 block|,
 literal|"Escr"
 block|,
-literal|"$\\mathcal{E}$"
+literal|"{{$\\mathcal{E}$}}"
 block|}
 block|,
 comment|// script capital E
