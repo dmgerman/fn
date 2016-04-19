@@ -42,6 +42,16 @@ end_import
 
 begin_import
 import|import
+name|javafx
+operator|.
+name|application
+operator|.
+name|Platform
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -11202,6 +11212,11 @@ name|e
 parameter_list|)
 block|{
 name|quit
+argument_list|()
+expr_stmt|;
+name|Platform
+operator|.
+name|exit
 argument_list|()
 expr_stmt|;
 block|}
