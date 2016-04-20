@@ -1127,15 +1127,6 @@ annotation|@
 name|Override
 specifier|public
 name|void
-name|toFront
-parameter_list|()
-block|{
-comment|// Do nothing
-block|}
-annotation|@
-name|Override
-specifier|public
-name|void
 name|setProgress
 parameter_list|(
 name|int
