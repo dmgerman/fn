@@ -1752,7 +1752,7 @@ name|URL_FIELD
 init|=
 literal|"url"
 decl_stmt|;
-comment|/**      * Creates a dialog that displays the given list of fields in the table. The      * dialog allows another process to add entries dynamically while the dialog      * is shown.      *      * @param frame      * @param panel      * @param fields      */
+comment|/**      * Creates a dialog that displays the given list of fields in the table. The      * dialog allows another process to add entries dynamically while the dialog      * is shown.      *      * @param frame      * @param panel      */
 DECL|method|ImportInspectionDialog (JabRefFrame frame, BasePanel panel, String undoName, boolean newDatabase)
 specifier|public
 name|ImportInspectionDialog
