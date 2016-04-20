@@ -1229,7 +1229,7 @@ name|s
 operator|.
 name|startsWith
 argument_list|(
-name|Globals
+name|MetaData
 operator|.
 name|SELECTOR_META_PREFIX
 argument_list|)
