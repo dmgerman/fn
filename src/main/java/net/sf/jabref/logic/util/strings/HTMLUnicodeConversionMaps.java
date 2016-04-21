@@ -3190,6 +3190,24 @@ block|}
 block|,
 comment|// lower case s with circumflex
 block|{
+literal|"350"
+block|,
+literal|"Scedil"
+block|,
+literal|"{{\\c{S}}}"
+block|}
+block|,
+comment|// upper case S with cedilla
+block|{
+literal|"351"
+block|,
+literal|"scedil"
+block|,
+literal|"{\\c{s}}"
+block|}
+block|,
+comment|// lower case s with cedilla
+block|{
 literal|"370"
 block|,
 literal|"Uogon"
