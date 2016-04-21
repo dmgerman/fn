@@ -30,6 +30,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Objects
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|swing
@@ -125,18 +135,6 @@ operator|.
 name|swing
 operator|.
 name|JTextField
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|Globals
 import|;
 end_import
 
@@ -265,6 +263,12 @@ block|,
 literal|"\\bibtexkey\\begin{title} - \\format[RemoveBrackets]{\\title}\\end{title}"
 block|}
 decl_stmt|;
+DECL|field|prefs
+specifier|private
+specifier|final
+name|JabRefPreferences
+name|prefs
+decl_stmt|;
 DECL|field|radioButtonXmp
 specifier|private
 specifier|final
@@ -307,11 +311,25 @@ specifier|final
 name|JButton
 name|selectFileNamePattern
 decl_stmt|;
-DECL|method|ImportSettingsTab ()
+DECL|method|ImportSettingsTab (JabRefPreferences prefs)
 specifier|public
 name|ImportSettingsTab
-parameter_list|()
+parameter_list|(
+name|JabRefPreferences
+name|prefs
+parameter_list|)
 block|{
+name|this
+operator|.
+name|prefs
+operator|=
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|prefs
+argument_list|)
+expr_stmt|;
 name|setLayout
 argument_list|(
 operator|new
@@ -712,8 +730,6 @@ name|useDefaultPDFImportStyle
 operator|.
 name|setSelected
 argument_list|(
-name|Globals
-operator|.
 name|prefs
 operator|.
 name|getBoolean
@@ -727,8 +743,6 @@ expr_stmt|;
 name|int
 name|style
 init|=
-name|Globals
-operator|.
 name|prefs
 operator|.
 name|getInt
@@ -810,8 +824,6 @@ name|fileNamePattern
 operator|.
 name|setText
 argument_list|(
-name|Globals
-operator|.
 name|prefs
 operator|.
 name|get
@@ -831,8 +843,6 @@ name|void
 name|storeSettings
 parameter_list|()
 block|{
-name|Globals
-operator|.
 name|prefs
 operator|.
 name|putBoolean
@@ -917,8 +927,6 @@ operator|.
 name|ONLYATTACH
 expr_stmt|;
 block|}
-name|Globals
-operator|.
 name|prefs
 operator|.
 name|putInt
@@ -930,8 +938,6 @@ argument_list|,
 name|style
 argument_list|)
 expr_stmt|;
-name|Globals
-operator|.
 name|prefs
 operator|.
 name|put

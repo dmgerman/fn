@@ -72,6 +72,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Objects
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|swing
@@ -204,7 +214,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
+name|JabRefPreferences
 import|;
 end_import
 
@@ -340,6 +350,12 @@ name|JPanel
 implements|implements
 name|PrefsTab
 block|{
+DECL|field|prefs
+specifier|private
+specifier|final
+name|JabRefPreferences
+name|prefs
+decl_stmt|;
 DECL|field|tableChanged
 specifier|private
 name|boolean
@@ -497,11 +513,25 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * Tab to create custom Name Formatters      *      */
-DECL|method|NameFormatterTab ()
+DECL|method|NameFormatterTab (JabRefPreferences prefs)
 specifier|public
 name|NameFormatterTab
-parameter_list|()
+parameter_list|(
+name|JabRefPreferences
+name|prefs
+parameter_list|)
 block|{
+name|this
+operator|.
+name|prefs
+operator|=
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|prefs
+argument_list|)
+expr_stmt|;
 name|setLayout
 argument_list|(
 operator|new
@@ -1076,8 +1106,6 @@ name|String
 argument_list|>
 name|names
 init|=
-name|Globals
-operator|.
 name|prefs
 operator|.
 name|getStringList
@@ -1093,8 +1121,6 @@ name|String
 argument_list|>
 name|formats
 init|=
-name|Globals
-operator|.
 name|prefs
 operator|.
 name|getStringList
@@ -1685,8 +1711,6 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// Finally, we store the new preferences.
-name|Globals
-operator|.
 name|prefs
 operator|.
 name|putStringList
@@ -1698,8 +1722,6 @@ argument_list|,
 name|names
 argument_list|)
 expr_stmt|;
-name|Globals
-operator|.
 name|prefs
 operator|.
 name|putStringList

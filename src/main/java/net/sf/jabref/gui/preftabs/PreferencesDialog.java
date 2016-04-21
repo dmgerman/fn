@@ -783,7 +783,9 @@ name|add
 argument_list|(
 operator|new
 name|NameFormatterTab
-argument_list|()
+argument_list|(
+name|prefs
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|tabs
@@ -792,7 +794,9 @@ name|add
 argument_list|(
 operator|new
 name|ImportSettingsTab
-argument_list|()
+argument_list|(
+name|prefs
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|tabs
@@ -801,7 +805,9 @@ name|add
 argument_list|(
 operator|new
 name|XmpPrefsTab
-argument_list|()
+argument_list|(
+name|prefs
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|tabs

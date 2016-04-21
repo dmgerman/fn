@@ -76,6 +76,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Objects
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|stream
 operator|.
 name|Collectors
@@ -226,18 +236,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|JabRefPreferences
 import|;
 end_import
@@ -327,6 +325,12 @@ name|JPanel
 implements|implements
 name|PrefsTab
 block|{
+DECL|field|prefs
+specifier|private
+specifier|final
+name|JabRefPreferences
+name|prefs
+decl_stmt|;
 DECL|field|tableChanged
 specifier|private
 name|boolean
@@ -377,11 +381,25 @@ literal|10
 argument_list|)
 decl_stmt|;
 comment|/**      * Customization of external program paths.      */
-DECL|method|XmpPrefsTab ()
+DECL|method|XmpPrefsTab (JabRefPreferences prefs)
 specifier|public
 name|XmpPrefsTab
-parameter_list|()
+parameter_list|(
+name|JabRefPreferences
+name|prefs
+parameter_list|)
 block|{
+name|this
+operator|.
+name|prefs
+operator|=
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|prefs
+argument_list|)
+expr_stmt|;
 name|setLayout
 argument_list|(
 operator|new
@@ -1305,8 +1323,6 @@ name|isSelected
 argument_list|()
 operator|&&
 operator|!
-name|Globals
-operator|.
 name|prefs
 operator|.
 name|hasKey
