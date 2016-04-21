@@ -190,8 +190,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Returns a Jabref Database ID from the database in case the DB is already exported. In case the bib was already      * exported before, the method returns the id, otherwise it calls the method that inserts a new row and returns the      * ID for this new database      *      * @param databaseContext the database      * @param out The output (PrintStream or Connection) object to which the DML should be written.      * @return The ID of database row of the jabref database being exported      * @throws SQLException      */
-DECL|method|getDatabaseIDByName (BibDatabaseContext databaseContext, Object out, String dbName)
+comment|/**      * Returns a Jabref Database ID from the database in case the DB is already exported. In case the bib was already      * exported before, the method returns the id, otherwise it calls the method that inserts a new row and returns the      * ID for this new database      *      * @param databaseContext the database      * @param out             The output (PrintStream or Connection) object to which the DML should be written.      * @return The ID of database row of the jabref database being exported      * @throws SQLException      */
+DECL|method|getDatabaseIDByName (BibDatabaseContext databaseContext, Connection out, String dbName)
 specifier|public
 specifier|static
 name|int
@@ -200,7 +200,7 @@ parameter_list|(
 name|BibDatabaseContext
 name|databaseContext
 parameter_list|,
-name|Object
+name|Connection
 name|out
 parameter_list|,
 name|String
@@ -208,13 +208,6 @@ name|dbName
 parameter_list|)
 throws|throws
 name|SQLException
-block|{
-if|if
-condition|(
-name|out
-operator|instanceof
-name|Connection
-condition|)
 block|{
 name|String
 name|query
@@ -242,8 +235,17 @@ argument_list|)
 operator|.
 name|createStatement
 argument_list|()
-init|;                  ResultSet rs = statement.executeQuery(query)
-block|)
+init|;
+name|ResultSet
+name|rs
+operator|=
+name|statement
+operator|.
+name|executeQuery
+argument_list|(
+name|query
+argument_list|)
+init|)
 block|{
 if|if
 condition|(
@@ -286,33 +288,13 @@ return|;
 block|}
 block|}
 block|}
-else|else
-block|{
-comment|// in case of text export there will be only 1 bib exported
-name|insertJabRefDatabase
-argument_list|(
-name|databaseContext
-argument_list|,
-name|out
-argument_list|,
-name|dbName
-argument_list|)
-expr_stmt|;
-return|return
-literal|1
-return|;
-block|}
-block|}
-end_class
-
-begin_function
-DECL|method|removeAGivenDB (Object out, final int database_id)
+DECL|method|removeAGivenDB (Connection out, final int database_id)
 specifier|private
 specifier|static
 name|void
 name|removeAGivenDB
 parameter_list|(
-name|Object
+name|Connection
 name|out
 parameter_list|,
 specifier|final
@@ -343,20 +325,14 @@ literal|"';"
 argument_list|)
 expr_stmt|;
 block|}
-end_function
-
-begin_comment
-comment|/**      * Removes all records for the database being exported in case it was exported before.      *      * @param out The output (PrintStream or Connection) object to which the DML should be written.      * @param database_id Id of the database being exported.      * @throws SQLException      */
-end_comment
-
-begin_function
-DECL|method|removeAllRecordsForAGivenDB (Object out, final int database_id)
+comment|/**      * Removes all records for the database being exported in case it was exported before.      *      * @param out         The output (PrintStream or Connection) object to which the DML should be written.      * @param database_id Id of the database being exported.      * @throws SQLException      */
+DECL|method|removeAllRecordsForAGivenDB (Connection out, final int database_id)
 specifier|public
 specifier|static
 name|void
 name|removeAllRecordsForAGivenDB
 parameter_list|(
-name|Object
+name|Connection
 name|out
 parameter_list|,
 specifier|final
@@ -406,14 +382,8 @@ literal|"';"
 argument_list|)
 expr_stmt|;
 block|}
-end_function
-
-begin_comment
-comment|/**      * This method creates a new row into jabref_database table enabling to export more than one .bib      *      * @param databaseContext the database      * @param out The output (PrintStream or Connection) object to which the DML should be written.      *      * @throws SQLException      */
-end_comment
-
-begin_function
-DECL|method|insertJabRefDatabase (final BibDatabaseContext databaseContext, Object out, String dbName)
+comment|/**      * This method creates a new row into jabref_database table enabling to export more than one .bib      *      * @param databaseContext the database      * @param out             The output (PrintStream or Connection) object to which the DML should be written.      * @throws SQLException      */
+DECL|method|insertJabRefDatabase (final BibDatabaseContext databaseContext, Connection out, String dbName)
 specifier|private
 specifier|static
 name|void
@@ -423,7 +393,7 @@ specifier|final
 name|BibDatabaseContext
 name|databaseContext
 parameter_list|,
-name|Object
+name|Connection
 name|out
 parameter_list|,
 name|String
@@ -481,8 +451,8 @@ literal|"'));"
 argument_list|)
 expr_stmt|;
 block|}
-end_function
+block|}
+end_class
 
-unit|}
 end_unit
 

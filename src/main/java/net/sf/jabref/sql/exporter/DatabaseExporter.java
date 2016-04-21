@@ -22,51 +22,9 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
+name|sql
 operator|.
-name|BufferedOutputStream
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|File
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|FileOutputStream
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|PrintStream
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|nio
-operator|.
-name|charset
-operator|.
-name|Charset
+name|Connection
 import|;
 end_import
 
@@ -76,7 +34,7 @@ name|java
 operator|.
 name|sql
 operator|.
-name|Connection
+name|PreparedStatement
 import|;
 end_import
 
@@ -147,6 +105,18 @@ operator|.
 name|util
 operator|.
 name|Vector
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|stream
+operator|.
+name|Collectors
 import|;
 end_import
 
@@ -630,8 +600,8 @@ operator|=
 name|database
 expr_stmt|;
 block|}
-comment|/**      * Method for the exportDatabase methods.      *      * @param databaseContext the database to export      * @param entriesToExport The list of the entries to export.      * @param out      The output (PrintStream or Connection) object to which the DML should be written.      */
-DECL|method|performExport (BibDatabaseContext databaseContext, List<BibEntry> entriesToExport, Object out, String dbName)
+comment|/**      * Method for the exportDatabase methods.      *      * @param databaseContext the database to export      * @param entriesToExport The list of the entries to export.      * @param out             The output (PrintStream or Connection) object to which the DML should be written.      */
+DECL|method|performExport (BibDatabaseContext databaseContext, List<BibEntry> entriesToExport, Connection out, String dbName)
 specifier|public
 name|void
 name|performExport
@@ -645,7 +615,7 @@ name|BibEntry
 argument_list|>
 name|entriesToExport
 parameter_list|,
-name|Object
+name|Connection
 name|out
 parameter_list|,
 name|String
@@ -781,8 +751,8 @@ name|databaseID
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Generates the DML required to populate the entries table with jabref data and writes it to the output      * PrintStream.      *      * @param database_id ID of Jabref database related to the entries to be exported This information can be gathered      *                    using getDatabaseIDByPath(metaData, out)      * @param entries     The BibtexEntries to export      * @param out         The output (PrintStream or Connection) object to which the DML should be written.      */
-DECL|method|populateEntriesTable (final int database_id, List<BibEntry> entries, Object out)
+comment|/**      * Generates the DML required to populate the entries table with jabref data and writes it to the output      * PrintStream.      *      * @param database_id ID of Jabref database related to the entries to be exported This information can be gathered      *                    using getDatabaseIDByPath(metaData, connection)      * @param entries     The BibtexEntries to export      * @param connection  The output (PrintStream or Connection) object to which the DML should be written.      */
+DECL|method|populateEntriesTable (final int database_id, List<BibEntry> entries, Connection connection)
 specifier|private
 name|void
 name|populateEntriesTable
@@ -797,33 +767,12 @@ name|BibEntry
 argument_list|>
 name|entries
 parameter_list|,
-name|Object
-name|out
+name|Connection
+name|connection
 parameter_list|)
 throws|throws
 name|SQLException
 block|{
-name|StringBuilder
-name|query
-init|=
-operator|new
-name|StringBuilder
-argument_list|(
-literal|75
-argument_list|)
-decl_stmt|;
-name|String
-name|insert
-init|=
-literal|"INSERT INTO entries (jabref_eid, entry_types_id, cite_key, "
-operator|+
-name|SQLUtil
-operator|.
-name|getFieldStr
-argument_list|()
-operator|+
-literal|", database_id) VALUES ("
-decl_stmt|;
 for|for
 control|(
 name|BibEntry
@@ -832,251 +781,150 @@ range|:
 name|entries
 control|)
 block|{
-name|query
+try|try
+init|(
+name|PreparedStatement
+name|statement
+init|=
+name|connection
 operator|.
-name|append
+name|prepareStatement
 argument_list|(
-name|insert
+literal|"INSERT INTO entries (jabref_eid, entry_types_id, cite_key, "
+operator|+
+name|SQLUtil
+operator|.
+name|getFieldStr
+argument_list|()
+operator|+
+literal|", database_id) "
+operator|+
+literal|"VALUES (?, (SELECT entry_types_id FROM entry_types WHERE label= ? ), ?, "
+operator|+
+name|SQLUtil
+operator|.
+name|getAllFields
+argument_list|()
+operator|.
+name|stream
+argument_list|()
+operator|.
+name|map
+argument_list|(
+name|s
+lambda|->
+literal|"?"
 argument_list|)
 operator|.
-name|append
+name|collect
 argument_list|(
-literal|'\''
-argument_list|)
+name|Collectors
 operator|.
-name|append
+name|joining
 argument_list|(
+literal|", "
+argument_list|)
+argument_list|)
+operator|+
+literal|", ?);"
+argument_list|)
+init|)
+block|{
+name|statement
+operator|.
+name|setString
+argument_list|(
+literal|1
+argument_list|,
 name|entry
 operator|.
 name|getId
 argument_list|()
 argument_list|)
+block|;
+name|statement
 operator|.
-name|append
+name|setString
 argument_list|(
-literal|"', (SELECT entry_types_id FROM entry_types WHERE label='"
-argument_list|)
-operator|.
-name|append
-argument_list|(
+literal|2
+argument_list|,
 name|entry
 operator|.
 name|getType
 argument_list|()
 argument_list|)
+block|;
+name|statement
 operator|.
-name|append
+name|setString
 argument_list|(
-literal|"'), '"
-argument_list|)
-operator|.
-name|append
-argument_list|(
+literal|3
+argument_list|,
 name|entry
 operator|.
 name|getCiteKey
 argument_list|()
 argument_list|)
-operator|.
-name|append
-argument_list|(
-literal|'\''
-argument_list|)
-expr_stmt|;
+block|;
+name|int
+name|value
+operator|=
+literal|4
+block|;
 for|for
 control|(
-name|int
-name|i
-init|=
-literal|0
-init|;
-name|i
-operator|<
+name|String
+name|field
+range|:
 name|SQLUtil
 operator|.
 name|getAllFields
 argument_list|()
-operator|.
-name|size
-argument_list|()
-condition|;
-name|i
-operator|++
 control|)
 block|{
-name|query
+name|statement
 operator|.
-name|append
+name|setString
 argument_list|(
-literal|", "
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
-name|entry
-operator|.
-name|hasField
-argument_list|(
-name|SQLUtil
-operator|.
-name|getAllFields
-argument_list|()
-operator|.
-name|get
-argument_list|(
-name|i
-argument_list|)
-argument_list|)
-condition|)
-block|{
-name|String
-name|val
-init|=
+name|value
+argument_list|,
 name|entry
 operator|.
 name|getField
 argument_list|(
-name|SQLUtil
-operator|.
-name|getAllFields
-argument_list|()
-operator|.
-name|get
-argument_list|(
-name|i
+name|field
 argument_list|)
-argument_list|)
-decl_stmt|;
-comment|/**                      * The condition below is there since PostgreSQL automatically escapes the backslashes, so the entry                      * would double the number of slashes after storing/retrieving.                      **/
-if|if
-condition|(
-operator|(
-name|out
-operator|instanceof
-name|Connection
-operator|)
-operator|&&
-literal|"MySQL"
-operator|.
-name|equals
-argument_list|(
-name|dbStrings
-operator|.
-name|getDbPreferences
-argument_list|()
-operator|.
-name|getServerType
-argument_list|()
-argument_list|)
-condition|)
-block|{
-name|val
-operator|=
-name|val
-operator|.
-name|replace
-argument_list|(
-literal|"\\"
-argument_list|,
-literal|"\\\\"
 argument_list|)
 expr_stmt|;
-name|val
-operator|=
-name|val
-operator|.
-name|replace
-argument_list|(
-literal|"\""
-argument_list|,
-literal|"\\\""
-argument_list|)
-expr_stmt|;
-name|val
-operator|=
-name|val
-operator|.
-name|replace
-argument_list|(
-literal|"\'"
-argument_list|,
-literal|"''"
-argument_list|)
-expr_stmt|;
-name|val
-operator|=
-name|val
-operator|.
-name|replace
-argument_list|(
-literal|"`"
-argument_list|,
-literal|"\\`"
-argument_list|)
+name|value
+operator|++
 expr_stmt|;
 block|}
-name|query
+name|statement
 operator|.
-name|append
+name|setInt
 argument_list|(
-literal|'\''
-argument_list|)
-operator|.
-name|append
-argument_list|(
-name|val
-argument_list|)
-operator|.
-name|append
-argument_list|(
-literal|'\''
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-name|query
-operator|.
-name|append
-argument_list|(
-literal|"NULL"
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-name|query
-operator|.
-name|append
-argument_list|(
-literal|", '"
-argument_list|)
-operator|.
-name|append
-argument_list|(
+name|value
+argument_list|,
 name|database_id
 argument_list|)
-operator|.
-name|append
-argument_list|(
-literal|"');"
-argument_list|)
 expr_stmt|;
-block|}
-name|SQLUtil
+name|statement
 operator|.
-name|processQuery
-argument_list|(
-name|out
-argument_list|,
-name|query
-operator|.
-name|toString
+name|execute
 argument_list|()
-argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Recursive method to include a tree of groups.      *      * @param cursor      The current GroupTreeNode in the GroupsTree      * @param parentID    The integer ID associated with the cursors's parent node      * @param currentID   The integer value to associate with the cursor      * @param out         The output (PrintStream or Connection) object to which the DML should be written.      * @param database_id Id of jabref database to which the group is part of      */
-DECL|method|populateEntryGroupsTable (GroupTreeNode cursor, int parentID, int currentID, Object out, final int database_id)
+block|}
+block|}
+end_class
+
+begin_comment
+comment|/**      * Recursive method to include a tree of groups.      *      * @param cursor      The current GroupTreeNode in the GroupsTree      * @param parentID    The integer ID associated with the cursors's parent node      * @param currentID   The integer value to associate with the cursor      * @param connection  The Connection      * @param database_id Id of jabref database to which the group is part of      */
+end_comment
+
+begin_function
+DECL|method|populateEntryGroupsTable (GroupTreeNode cursor, int parentID, int currentID, Connection connection, final int database_id)
 specifier|private
 name|int
 name|populateEntryGroupsTable
@@ -1090,8 +938,8 @@ parameter_list|,
 name|int
 name|currentID
 parameter_list|,
-name|Object
-name|out
+name|Connection
+name|connection
 parameter_list|,
 specifier|final
 name|int
@@ -1150,7 +998,7 @@ name|SQLUtil
 operator|.
 name|processQuery
 argument_list|(
-name|out
+name|connection
 argument_list|,
 literal|"INSERT INTO entry_group (entries_id, groups_id) "
 operator|+
@@ -1199,19 +1047,31 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-if|if
-condition|(
-name|out
-operator|instanceof
-name|Connection
-condition|)
-block|{
 comment|// recurse on child nodes (depth-first traversal)
 name|String
-name|query
+name|sql
 init|=
-literal|"SELECT groups_id FROM groups WHERE label='"
-operator|+
+literal|"SELECT groups_id FROM groups WHERE label = ? AND database_id= ? AND parent_id = ? ;"
+decl_stmt|;
+try|try
+init|(
+name|PreparedStatement
+name|statement
+init|=
+name|connection
+operator|.
+name|prepareStatement
+argument_list|(
+name|sql
+argument_list|)
+init|)
+block|{
+name|statement
+operator|.
+name|setString
+argument_list|(
+literal|1
+argument_list|,
 name|cursor
 operator|.
 name|getGroup
@@ -1219,38 +1079,41 @@ argument_list|()
 operator|.
 name|getName
 argument_list|()
-operator|+
-literal|"' AND database_id='"
-operator|+
+argument_list|)
+expr_stmt|;
+name|statement
+operator|.
+name|setInt
+argument_list|(
+literal|2
+argument_list|,
 name|database_id
-operator|+
-literal|"' AND parent_id='"
-operator|+
+argument_list|)
+expr_stmt|;
+name|statement
+operator|.
+name|setInt
+argument_list|(
+literal|3
+argument_list|,
 name|parentID
-operator|+
-literal|"';"
-decl_stmt|;
+argument_list|)
+expr_stmt|;
 try|try
 init|(
-name|Statement
-name|statement
+name|ResultSet
+name|resultSet
 init|=
-operator|(
-operator|(
-name|Connection
-operator|)
-name|out
-operator|)
+name|statement
 operator|.
-name|createStatement
+name|executeQuery
 argument_list|()
-init|;                 ResultSet resultSet = statement.executeQuery(query)
-block|)
+init|)
 block|{
 comment|// setting values to ID and myID to be used in case of textual SQL
 comment|// export
-operator|++
 name|currentID
+operator|++
 expr_stmt|;
 name|int
 name|myID
@@ -1292,17 +1155,18 @@ name|myID
 argument_list|,
 name|currentID
 argument_list|,
-name|out
+name|connection
 argument_list|,
 name|database_id
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 comment|//Unfortunatley, AutoCloseable throws only Exception
 block|}
 catch|catch
 parameter_list|(
-name|Exception
+name|SQLException
 name|e
 parameter_list|)
 block|{
@@ -1316,24 +1180,23 @@ name|e
 argument_list|)
 expr_stmt|;
 block|}
-block|}
 return|return
 name|currentID
 return|;
 block|}
-end_class
+end_function
 
 begin_comment
 comment|/**      * Generates the SQL required to populate the entry_types table with jabref data.      *      * @param out  The output (PrintSream or Connection) object to which the DML should be written.      * @param type      */
 end_comment
 
 begin_function
-DECL|method|populateEntryTypesTable (Object out, BibDatabaseMode type)
+DECL|method|populateEntryTypesTable (Connection out, BibDatabaseMode type)
 specifier|private
 name|void
 name|populateEntryTypesTable
 parameter_list|(
-name|Object
+name|Connection
 name|out
 parameter_list|,
 name|BibDatabaseMode
@@ -1364,32 +1227,26 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
-if|if
-condition|(
-name|out
-operator|instanceof
-name|Connection
-condition|)
-block|{
 try|try
 init|(
 name|Statement
 name|sm
 init|=
-call|(
-name|Statement
-call|)
-argument_list|(
-operator|(
-name|Connection
-operator|)
 name|out
-argument_list|)
 operator|.
 name|createStatement
 argument_list|()
-init|;                     ResultSet rs = sm.executeQuery("SELECT label FROM entry_types")
-block|)
+init|;
+name|ResultSet
+name|rs
+operator|=
+name|sm
+operator|.
+name|executeQuery
+argument_list|(
+literal|"SELECT label FROM entry_types"
+argument_list|)
+init|)
 block|{
 while|while
 condition|(
@@ -1413,10 +1270,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-block|}
-end_function
-
-begin_for
 for|for
 control|(
 name|EntryType
@@ -1740,16 +1593,16 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-end_for
+block|}
+end_function
 
 begin_comment
-unit|}
 comment|/**      * Recursive worker method for the populateGroupsTable methods.      *      * @param cursor      The current GroupTreeNode in the GroupsTree      * @param parentID    The integer ID associated with the cursors's parent node      * @param currentID   The integer value to associate with the cursor      * @param out         The output (PrintStream or Connection) object to which the DML should be written.      * @param database_id Id of jabref database to which the groups/entries are part of      */
 end_comment
 
 begin_function
-DECL|method|populateGroupsTable (GroupTreeNode cursor, int parentID, int currentID, Object out, final int database_id)
-unit|private
+DECL|method|populateGroupsTable (GroupTreeNode cursor, int parentID, int currentID, Connection out, final int database_id)
+specifier|private
 name|int
 name|populateGroupsTable
 parameter_list|(
@@ -1762,7 +1615,7 @@ parameter_list|,
 name|int
 name|currentID
 parameter_list|,
-name|Object
+name|Connection
 name|out
 parameter_list|,
 specifier|final
@@ -2089,13 +1942,6 @@ operator|+
 literal|"');"
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|out
-operator|instanceof
-name|Connection
-condition|)
-block|{
 comment|// recurse on child nodes (depth-first traversal)
 try|try
 init|(
@@ -2111,7 +1957,20 @@ operator|)
 operator|.
 name|createStatement
 argument_list|()
-init|;                  ResultSet rs = statement.executeQuery(                     "SELECT groups_id FROM groups WHERE label='" + cursor.getGroup()
+init|;
+name|ResultSet
+name|rs
+operator|=
+name|statement
+operator|.
+name|executeQuery
+argument_list|(
+literal|"SELECT groups_id FROM groups WHERE label='"
+operator|+
+name|cursor
+operator|.
+name|getGroup
+argument_list|()
 operator|.
 name|getName
 argument_list|()
@@ -2125,8 +1984,8 @@ operator|+
 name|parentID
 operator|+
 literal|"';"
-block|)
-block|)
+argument_list|)
+init|)
 block|{
 comment|// setting values to ID and myID to be used in case of textual SQL
 comment|// export
@@ -2160,8 +2019,8 @@ name|getChildren
 argument_list|()
 control|)
 block|{
-operator|++
 name|currentID
+operator|++
 expr_stmt|;
 name|currentID
 operator|=
@@ -2179,14 +2038,10 @@ name|database_id
 argument_list|)
 expr_stmt|;
 block|}
-comment|//Unfortunatley, AutoCloseable throws only Exception
 block|}
-end_function
-
-begin_catch
 catch|catch
 parameter_list|(
-name|Exception
+name|SQLException
 name|e
 parameter_list|)
 block|{
@@ -2200,27 +2055,24 @@ name|e
 argument_list|)
 expr_stmt|;
 block|}
-end_catch
-
-begin_expr_stmt
-unit|}         return
+return|return
 name|currentID
-expr_stmt|;
-end_expr_stmt
+return|;
+block|}
+end_function
 
 begin_comment
-unit|}
 comment|/**      * Generates the DML required to populate the group_types table with JabRef data.      *      * @param out The output (PrintSream or Connection) object to which the DML should be written.      * @throws SQLException      */
 end_comment
 
 begin_function
-DECL|method|populateGroupTypesTable (Object out)
-unit|private
+DECL|method|populateGroupTypesTable (Connection out)
+specifier|private
 specifier|static
 name|void
 name|populateGroupTypesTable
 parameter_list|(
-name|Object
+name|Connection
 name|out
 parameter_list|)
 throws|throws
@@ -2231,13 +2083,6 @@ name|quantity
 init|=
 literal|0
 decl_stmt|;
-if|if
-condition|(
-name|out
-operator|instanceof
-name|Connection
-condition|)
-block|{
 try|try
 init|(
 name|Statement
@@ -2252,8 +2097,17 @@ operator|)
 operator|.
 name|createStatement
 argument_list|()
-init|;                     ResultSet res = sm.executeQuery("SELECT COUNT(*) AS amount FROM group_types")
-block|)
+init|;
+name|ResultSet
+name|res
+operator|=
+name|sm
+operator|.
+name|executeQuery
+argument_list|(
+literal|"SELECT COUNT(*) AS amount FROM group_types"
+argument_list|)
+init|)
 block|{
 name|res
 operator|.
@@ -2270,10 +2124,6 @@ literal|"amount"
 argument_list|)
 expr_stmt|;
 block|}
-block|}
-end_function
-
-begin_if
 if|if
 condition|(
 name|quantity
@@ -2334,16 +2184,16 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-end_if
+block|}
+end_function
 
 begin_comment
-unit|}
 comment|/**      * Generates the SQL required to populate the strings table with jabref data.      *      * @param database    BibDatabase object used from where the strings will be exported      * @param out         The output (PrintStream or Connection) object to which the DML should be written.      * @param database_id ID of Jabref database related to the entries to be exported This information can be gathered      *                    using getDatabaseIDByPath(metaData, out)      * @throws SQLException      */
 end_comment
 
 begin_function
-DECL|method|populateStringTable (BibDatabase database, Object out, final int database_id)
-unit|private
+DECL|method|populateStringTable (BibDatabase database, Connection out, final int database_id)
+specifier|private
 specifier|static
 name|void
 name|populateStringTable
@@ -2351,7 +2201,7 @@ parameter_list|(
 name|BibDatabase
 name|database
 parameter_list|,
-name|Object
+name|Connection
 name|out
 parameter_list|,
 specifier|final
@@ -2538,12 +2388,12 @@ comment|/**      * Generates DML code necessary to create all tables in a databa
 end_comment
 
 begin_function
-DECL|method|createTables (Object out)
+DECL|method|createTables (Connection out)
 specifier|public
 name|void
 name|createTables
 parameter_list|(
-name|Object
+name|Connection
 name|out
 parameter_list|)
 throws|throws
@@ -2576,108 +2426,6 @@ name|getCreateTableSQL
 argument_list|(
 name|table
 argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-end_function
-
-begin_comment
-comment|/**      * Accepts the BibDatabase and MetaData, generates the DML required to create and populate SQL database tables,      * and writes this DML to the specified output file.      *      * @param databaseContext the database to export      * @param entriesToExport   The list of the entries to export.      * @param file     The name of the file to which the DML should be written      * @param encoding The encoding to be used      */
-end_comment
-
-begin_function
-DECL|method|exportDatabaseAsFile (final BibDatabaseContext databaseContext, List<BibEntry> entriesToExport, String file, Charset encoding)
-specifier|public
-name|void
-name|exportDatabaseAsFile
-parameter_list|(
-specifier|final
-name|BibDatabaseContext
-name|databaseContext
-parameter_list|,
-name|List
-argument_list|<
-name|BibEntry
-argument_list|>
-name|entriesToExport
-parameter_list|,
-name|String
-name|file
-parameter_list|,
-name|Charset
-name|encoding
-parameter_list|)
-throws|throws
-name|Exception
-block|{
-comment|// open output file
-name|File
-name|outfile
-init|=
-operator|new
-name|File
-argument_list|(
-name|file
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|outfile
-operator|.
-name|exists
-argument_list|()
-operator|&&
-operator|!
-name|outfile
-operator|.
-name|delete
-argument_list|()
-condition|)
-block|{
-name|LOGGER
-operator|.
-name|warn
-argument_list|(
-literal|"Cannot delete/overwrite file."
-argument_list|)
-expr_stmt|;
-return|return;
-block|}
-try|try
-init|(
-name|BufferedOutputStream
-name|writer
-init|=
-operator|new
-name|BufferedOutputStream
-argument_list|(
-operator|new
-name|FileOutputStream
-argument_list|(
-name|outfile
-argument_list|)
-argument_list|)
-init|;
-name|PrintStream
-name|fout
-operator|=
-operator|new
-name|PrintStream
-argument_list|(
-name|writer
-argument_list|)
-init|)
-block|{
-name|performExport
-argument_list|(
-name|databaseContext
-argument_list|,
-name|entriesToExport
-argument_list|,
-name|fout
-argument_list|,
-literal|"file"
 argument_list|)
 expr_stmt|;
 block|}
@@ -3365,14 +3113,6 @@ argument_list|)
 return|;
 block|}
 end_function
-
-begin_comment
-comment|/**      * Returns a Jabref Database ID from the database in case the DB is already exported. In case the bib was already      * exported before, the method returns the id, otherwise it calls the method that inserts a new row and returns the      * ID for this new database      *      * @param metaData The MetaData object containing the database information      * @param out The output (PrintStream or Connection) object to which the DML should be written.      * @return The ID of database row of the jabref database being exported      * @throws SQLException      */
-end_comment
-
-begin_comment
-comment|/*      * public int getDatabaseIDByPath(MetaData metaData, Object out, String      * dbName) throws SQLException {      *      * if (out instanceof Connection) { Object response =      * SQLUtil.processQueryWithResults(out,      * "SELECT database_id FROM jabref_database WHERE md5_path=md5('" +      * metaData.getDatabaseFile().getAbsolutePath() + "');"); ResultSet rs =      * ((Statement) response).getResultSet(); if (rs.next()) return      * rs.getInt("database_id"); else { insertJabRefDatabase(metaData, out,      * dbName); return getDatabaseIDByPath(metaData, out, dbName); } } // in      * case of text export there will be only 1 bib exported else {      * insertJabRefDatabase(metaData, out, dbName); return 1; } }      */
-end_comment
 
 unit|}
 end_unit

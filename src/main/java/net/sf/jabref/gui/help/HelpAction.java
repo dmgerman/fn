@@ -295,7 +295,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|HelpAction (String title, String tooltip, String urlPart, Icon icon)
-specifier|public
+specifier|private
 name|HelpAction
 parameter_list|(
 name|String

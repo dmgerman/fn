@@ -1086,7 +1086,11 @@ argument_list|)
 expr_stmt|;
 name|fail
 argument_list|(
-literal|"Obsolete keys found in properties file which should be removed"
+literal|"Obsolete keys "
+operator|+
+name|obsoleteKeys
+operator|+
+literal|" found in properties file which should be removed"
 argument_list|)
 expr_stmt|;
 block|}
@@ -1206,7 +1210,11 @@ argument_list|)
 expr_stmt|;
 name|fail
 argument_list|(
-literal|"Obsolete keys found in menu properties file which should be removed"
+literal|"Obsolete keys "
+operator|+
+name|obsoleteKeys
+operator|+
+literal|" found in menu properties file which should be removed"
 argument_list|)
 expr_stmt|;
 block|}
