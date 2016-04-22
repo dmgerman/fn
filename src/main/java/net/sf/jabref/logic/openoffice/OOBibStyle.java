@@ -2206,7 +2206,7 @@ operator|.
 name|length
 argument_list|()
 operator|>
-literal|2
+literal|1
 operator|)
 operator|&&
 name|QUOTED
