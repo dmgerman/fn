@@ -285,6 +285,10 @@ argument_list|(
 name|fieldKey
 argument_list|)
 expr_stmt|;
+name|newValue
+operator|=
+literal|null
+expr_stmt|;
 block|}
 else|else
 block|{
