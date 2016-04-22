@@ -649,12 +649,8 @@ name|id
 operator|=
 name|bibtex
 operator|.
-name|getField
-argument_list|(
-name|BibEntry
-operator|.
-name|KEY_FIELD
-argument_list|)
+name|getCiteKey
+argument_list|()
 expr_stmt|;
 block|}
 if|if
