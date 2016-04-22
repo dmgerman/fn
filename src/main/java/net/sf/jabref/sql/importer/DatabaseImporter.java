@@ -1851,7 +1851,7 @@ argument_list|()
 decl_stmt|;
 name|expGroup
 operator|.
-name|addEntry
+name|add
 argument_list|(
 name|entries
 operator|.

@@ -286,22 +286,6 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibDatabase
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|database
-operator|.
 name|BibDatabaseMode
 import|;
 end_import
@@ -535,7 +519,7 @@ name|DBStrings
 argument_list|()
 decl_stmt|;
 comment|/**      * The MetaData object stores all meta data sets in Vectors. To ensure that      * the data is written correctly to string, the user of a meta data Vector      * must simply make sure the appropriate changes are reflected in the Vector      * it has been passed.      */
-DECL|method|MetaData (Map<String, String> inData, BibDatabase db)
+DECL|method|MetaData (Map<String, String> inData)
 specifier|public
 name|MetaData
 parameter_list|(
@@ -546,9 +530,6 @@ argument_list|,
 name|String
 argument_list|>
 name|inData
-parameter_list|,
-name|BibDatabase
-name|db
 parameter_list|)
 block|{
 name|Objects
@@ -778,8 +759,6 @@ block|{
 name|putGroups
 argument_list|(
 name|treeGroupsData
-argument_list|,
-name|db
 argument_list|,
 name|groupsVersionOnDisk
 argument_list|)
@@ -1047,8 +1026,8 @@ name|orderedData
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Parse the groups metadata string      *      * @param orderedData The vector of metadata strings      * @param db          The BibDatabase this metadata belongs to      * @param version     The group tree version      */
-DECL|method|putGroups (List<String> orderedData, BibDatabase db, int version)
+comment|/**      * Parse the groups metadata string      *      * @param orderedData The vector of metadata strings      * @param version     The group tree version      */
+DECL|method|putGroups (List<String> orderedData, int version)
 specifier|private
 name|void
 name|putGroups
@@ -1058,9 +1037,6 @@ argument_list|<
 name|String
 argument_list|>
 name|orderedData
-parameter_list|,
-name|BibDatabase
-name|db
 parameter_list|,
 name|int
 name|version
@@ -1075,8 +1051,6 @@ operator|.
 name|importGroups
 argument_list|(
 name|orderedData
-argument_list|,
-name|db
 argument_list|,
 name|version
 argument_list|)

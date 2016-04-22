@@ -197,7 +197,7 @@ argument_list|)
 decl_stmt|;
 name|group
 operator|.
-name|addEntry
+name|add
 argument_list|(
 name|makeBibtexEntry
 argument_list|()
