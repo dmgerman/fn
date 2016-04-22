@@ -305,7 +305,9 @@ name|entries
 argument_list|)
 argument_list|)
 argument_list|,
-literal|null
+operator|new
+name|MetaData
+argument_list|()
 argument_list|,
 operator|new
 name|HashMap

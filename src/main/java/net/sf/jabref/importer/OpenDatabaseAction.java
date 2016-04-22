@@ -619,10 +619,7 @@ argument_list|()
 decl_stmt|;
 static|static
 block|{
-comment|// Add the action for checking for new custom entry types loaded from
-comment|// the bib file:
-name|OpenDatabaseAction
-operator|.
+comment|// Add the action for checking for new custom entry types loaded from the bib file:
 name|POST_OPEN_ACTIONS
 operator|.
 name|add
@@ -632,9 +629,17 @@ name|CheckForNewEntryTypesAction
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// Add the action for the new external file handling system in version 2.3:
-name|OpenDatabaseAction
+comment|// Add the action for converting legacy entries in ExplicitGroup
+name|POST_OPEN_ACTIONS
 operator|.
+name|add
+argument_list|(
+operator|new
+name|ConvertLegacyExplicitGroups
+argument_list|()
+argument_list|)
+expr_stmt|;
+comment|// Add the action for the new external file handling system in version 2.3:
 name|POST_OPEN_ACTIONS
 operator|.
 name|add
@@ -645,8 +650,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// Add the action for warning about and handling duplicate BibTeX keys:
-name|OpenDatabaseAction
-operator|.
 name|POST_OPEN_ACTIONS
 operator|.
 name|add

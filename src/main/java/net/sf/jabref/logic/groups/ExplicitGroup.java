@@ -185,7 +185,7 @@ block|}
 DECL|method|fromString (String s, int version)
 specifier|public
 specifier|static
-name|AbstractGroup
+name|ExplicitGroup
 name|fromString
 parameter_list|(
 name|String
@@ -392,6 +392,22 @@ operator|.
 name|QUOTE_CHAR
 argument_list|)
 decl_stmt|;
+name|addLegacyEntryKey
+argument_list|(
+name|key
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+DECL|method|addLegacyEntryKey (String key)
+specifier|public
+name|void
+name|addLegacyEntryKey
+parameter_list|(
+name|String
+name|key
+parameter_list|)
+block|{
 name|this
 operator|.
 name|legacyEntryKeys
@@ -401,7 +417,6 @@ argument_list|(
 name|key
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 annotation|@
 name|Override

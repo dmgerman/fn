@@ -176,10 +176,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testToStringComplex ()
+DECL|method|toStringDoesNotWriteAssignedEntries ()
 specifier|public
 name|void
-name|testToStringComplex
+name|toStringDoesNotWriteAssignedEntries
 parameter_list|()
 block|{
 name|ExplicitGroup
@@ -205,7 +205,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"ExplicitGroup:myExplicitGroup;2;shields01;"
+literal|"ExplicitGroup:myExplicitGroup;2;"
 argument_list|,
 name|group
 operator|.
