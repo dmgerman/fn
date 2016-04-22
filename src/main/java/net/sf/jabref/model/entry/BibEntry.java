@@ -1299,7 +1299,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**      * Sets a number of fields simultaneously. The given HashMap contains field      * names as keys, each mapped to the value to set.      * WARNING: this method does not notify change listeners, so it should *NOT*      * be used for entries that are being displayed in the GUI. Furthermore, it      * does not check values for content, so e.g. empty strings will be set as such.      */
+comment|/**      * Sets a number of fields simultaneously. The given HashMap contains field      * names as keys, each mapped to the value to set.      */
 DECL|method|setField (Map<String, String> fields)
 specifier|public
 name|void
@@ -1323,17 +1323,22 @@ argument_list|,
 literal|"fields must not be null"
 argument_list|)
 expr_stmt|;
-name|changed
-operator|=
-literal|true
-expr_stmt|;
-name|this
-operator|.
 name|fields
 operator|.
-name|putAll
+name|forEach
 argument_list|(
-name|fields
+parameter_list|(
+name|field
+parameter_list|,
+name|value
+parameter_list|)
+lambda|->
+name|setField
+argument_list|(
+name|field
+argument_list|,
+name|value
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -1368,6 +1373,21 @@ argument_list|,
 literal|"field value must not be null"
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|value
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+name|clearField
+argument_list|(
+name|name
+argument_list|)
+expr_stmt|;
+return|return;
+block|}
 name|String
 name|fieldName
 init|=
