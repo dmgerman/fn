@@ -2246,10 +2246,6 @@ argument_list|(
 literal|"keywords"
 argument_list|)
 expr_stmt|;
-name|changed
-operator|=
-literal|true
-expr_stmt|;
 block|}
 return|return;
 block|}
@@ -2278,10 +2274,6 @@ literal|"keywords"
 argument_list|,
 name|newValue
 argument_list|)
-expr_stmt|;
-name|changed
-operator|=
-literal|true
 expr_stmt|;
 block|}
 block|}
@@ -2503,10 +2495,13 @@ return|;
 block|}
 if|if
 condition|(
+operator|(
 name|o
 operator|==
 literal|null
+operator|)
 operator|||
+operator|(
 name|getClass
 argument_list|()
 operator|!=
@@ -2514,6 +2509,7 @@ name|o
 operator|.
 name|getClass
 argument_list|()
+operator|)
 condition|)
 block|{
 return|return
