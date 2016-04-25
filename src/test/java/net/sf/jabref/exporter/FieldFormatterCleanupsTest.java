@@ -301,12 +301,8 @@ argument_list|)
 expr_stmt|;
 name|entry
 operator|.
-name|setField
+name|setCiteKey
 argument_list|(
-name|BibEntry
-operator|.
-name|KEY_FIELD
-argument_list|,
 literal|"6055279"
 argument_list|)
 expr_stmt|;

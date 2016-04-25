@@ -921,12 +921,8 @@ else|else
 block|{
 name|entry
 operator|.
-name|setField
+name|setCiteKey
 argument_list|(
-name|BibEntry
-operator|.
-name|KEY_FIELD
-argument_list|,
 name|key
 argument_list|)
 expr_stmt|;

@@ -670,12 +670,8 @@ argument_list|()
 decl_stmt|;
 name|entry
 operator|.
-name|setField
+name|setCiteKey
 argument_list|(
-name|BibEntry
-operator|.
-name|KEY_FIELD
-argument_list|,
 literal|"Toot"
 argument_list|)
 expr_stmt|;
@@ -1958,12 +1954,8 @@ argument_list|()
 decl_stmt|;
 name|entry
 operator|.
-name|setField
+name|setCiteKey
 argument_list|(
-name|BibEntry
-operator|.
-name|KEY_FIELD
-argument_list|,
 literal|"Toot"
 argument_list|)
 expr_stmt|;

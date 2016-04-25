@@ -2191,12 +2191,8 @@ block|{
 comment|// entry does not (yet) exist in the database, just update the entry
 name|entry
 operator|.
-name|setField
+name|setCiteKey
 argument_list|(
-name|BibEntry
-operator|.
-name|KEY_FIELD
-argument_list|,
 name|key
 argument_list|)
 expr_stmt|;
@@ -2353,12 +2349,8 @@ block|{
 comment|// entry does not (yet) exist in the database, just update the entry
 name|entry
 operator|.
-name|setField
+name|setCiteKey
 argument_list|(
-name|BibEntry
-operator|.
-name|KEY_FIELD
-argument_list|,
 name|moddedKey
 argument_list|)
 expr_stmt|;

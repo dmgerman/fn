@@ -469,12 +469,8 @@ argument_list|)
 decl_stmt|;
 name|localEntry
 operator|.
-name|setField
+name|setCiteKey
 argument_list|(
-name|BibEntry
-operator|.
-name|KEY_FIELD
-argument_list|,
 literal|"pdfInDatabase"
 argument_list|)
 expr_stmt|;
