@@ -505,11 +505,11 @@ name|BibtexEntryAssert
 operator|.
 name|assertEquals
 argument_list|(
-name|copacImporter
-argument_list|,
 name|bibStream
 argument_list|,
 name|copacStream
+argument_list|,
+name|copacImporter
 argument_list|)
 expr_stmt|;
 block|}
