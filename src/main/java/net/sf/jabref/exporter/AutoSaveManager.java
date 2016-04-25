@@ -425,6 +425,13 @@ argument_list|,
 name|prefs
 argument_list|)
 decl_stmt|;
+name|ss
+operator|.
+name|commit
+argument_list|(
+name|backupFile
+argument_list|)
+expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
