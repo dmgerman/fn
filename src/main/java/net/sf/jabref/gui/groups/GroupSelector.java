@@ -1140,7 +1140,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Edit Group Membership"
+literal|"Edit group membership"
 argument_list|)
 argument_list|,
 literal|false
@@ -2770,12 +2770,16 @@ name|invCb
 operator|.
 name|setToolTipText
 argument_list|(
+literal|"<html>"
+operator|+
 name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Show entries *not* in group selection"
+literal|"Show entries<b>not</b> in group selection"
 argument_list|)
+operator|+
+literal|"</html>"
 argument_list|)
 expr_stmt|;
 name|showOverlappingGroups
