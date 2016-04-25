@@ -158,7 +158,7 @@ name|jabref
 operator|.
 name|bibtex
 operator|.
-name|BibtexEntryAssert
+name|BibEntryAssert
 import|;
 end_import
 
@@ -501,7 +501,7 @@ name|bibFileName
 argument_list|)
 init|)
 block|{
-name|BibtexEntryAssert
+name|BibEntryAssert
 operator|.
 name|assertEquals
 argument_list|(

@@ -181,10 +181,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|BibtexEntryAssert
+DECL|class|BibEntryAssert
 specifier|public
 class|class
-name|BibtexEntryAssert
+name|BibEntryAssert
 block|{
 comment|/**      * Reads a single entry from the resource using `getResourceAsStream` from the given class. The resource has to      * contain a single entry      *      * @param clazz the class where to call `getResourceAsStream`      * @param resourceName the resource to read      * @param entry the entry to compare with      */
 DECL|method|assertEquals (Class<? extends Object> clazz, String resourceName, BibEntry entry)
@@ -244,7 +244,7 @@ name|resourceName
 argument_list|)
 init|)
 block|{
-name|BibtexEntryAssert
+name|BibEntryAssert
 operator|.
 name|assertEquals
 argument_list|(
@@ -316,7 +316,7 @@ name|resourceName
 argument_list|)
 init|)
 block|{
-name|BibtexEntryAssert
+name|BibEntryAssert
 operator|.
 name|assertEquals
 argument_list|(

@@ -108,7 +108,7 @@ name|jabref
 operator|.
 name|bibtex
 operator|.
-name|BibtexEntryAssert
+name|BibEntryAssert
 import|;
 end_import
 
@@ -469,7 +469,7 @@ argument_list|,
 literal|"19"
 argument_list|)
 expr_stmt|;
-name|BibtexEntryAssert
+name|BibEntryAssert
 operator|.
 name|assertEquals
 argument_list|(
