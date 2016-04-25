@@ -449,7 +449,7 @@ argument_list|)
 argument_list|,
 name|HelpFiles
 operator|.
-name|labelPatternHelp
+name|LABEL_PATTERN
 argument_list|)
 expr_stmt|;
 name|buildGUI

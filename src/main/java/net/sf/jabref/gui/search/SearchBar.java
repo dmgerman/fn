@@ -590,6 +590,19 @@ specifier|private
 specifier|final
 name|JTextFieldWithUnfocusedText
 name|searchField
+init|=
+operator|new
+name|JTextFieldWithUnfocusedText
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Search"
+argument_list|)
+operator|+
+literal|"..."
+argument_list|)
 decl_stmt|;
 DECL|field|searchMode
 specifier|private
@@ -636,6 +649,11 @@ specifier|private
 specifier|final
 name|JLabel
 name|searchIcon
+decl_stmt|;
+DECL|field|searchWorker
+specifier|private
+name|SearchWorker
+name|searchWorker
 decl_stmt|;
 comment|/**      * Initializes the search bar.      *      * @param basePanel the base panel      */
 DECL|method|SearchBar (BasePanel basePanel)
@@ -962,10 +980,6 @@ argument_list|(
 name|searchIcon
 argument_list|)
 expr_stmt|;
-name|this
-operator|.
-name|searchField
-operator|=
 name|initSearchField
 argument_list|()
 expr_stmt|;
@@ -1209,7 +1223,7 @@ name|HelpAction
 argument_list|(
 name|HelpFiles
 operator|.
-name|searchHelp
+name|SEARCH
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1410,26 +1424,10 @@ block|}
 comment|/**      * Initializes the search text field      */
 DECL|method|initSearchField ()
 specifier|private
-name|JTextFieldWithUnfocusedText
+name|void
 name|initSearchField
 parameter_list|()
 block|{
-name|JTextFieldWithUnfocusedText
-name|searchField
-init|=
-operator|new
-name|JTextFieldWithUnfocusedText
-argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Search"
-argument_list|)
-operator|+
-literal|"..."
-argument_list|)
-decl_stmt|;
 name|searchField
 operator|.
 name|setColumns
@@ -1524,9 +1522,6 @@ name|performSearch
 argument_list|()
 argument_list|)
 expr_stmt|;
-return|return
-name|searchField
-return|;
 block|}
 DECL|method|endSearch ()
 specifier|private
@@ -1732,11 +1727,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|field|worker
-specifier|private
-name|SearchWorker
-name|worker
-decl_stmt|;
 comment|/**      * Performs a new search based on the current search query.      */
 DECL|method|performSearch ()
 specifier|private
@@ -1746,12 +1736,12 @@ parameter_list|()
 block|{
 if|if
 condition|(
-name|worker
+name|searchWorker
 operator|!=
 literal|null
 condition|)
 block|{
-name|worker
+name|searchWorker
 operator|.
 name|cancel
 argument_list|(
@@ -1812,7 +1802,7 @@ argument_list|()
 expr_stmt|;
 return|return;
 block|}
-name|worker
+name|searchWorker
 operator|=
 operator|new
 name|SearchWorker
@@ -1824,7 +1814,7 @@ argument_list|,
 name|searchMode
 argument_list|)
 expr_stmt|;
-name|worker
+name|searchWorker
 operator|.
 name|execute
 argument_list|()

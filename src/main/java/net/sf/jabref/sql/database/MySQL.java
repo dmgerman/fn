@@ -139,11 +139,11 @@ name|void
 name|loadDriver
 parameter_list|()
 throws|throws
-name|ClassNotFoundException
+name|InstantiationException
 throws|,
 name|IllegalAccessException
 throws|,
-name|InstantiationException
+name|ClassNotFoundException
 block|{
 name|Class
 operator|.

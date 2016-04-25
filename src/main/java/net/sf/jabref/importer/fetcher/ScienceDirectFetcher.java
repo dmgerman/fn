@@ -132,6 +132,22 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
+name|help
+operator|.
+name|HelpFiles
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|importer
 operator|.
 name|ImportInspector
@@ -212,7 +228,13 @@ name|LogFactory
 import|;
 end_import
 
+begin_comment
+comment|/**  *  * The current ScienceDirect fetcher implementation does no longer work  *  */
+end_comment
+
 begin_class
+annotation|@
+name|Deprecated
 DECL|class|ScienceDirectFetcher
 specifier|public
 class|class
@@ -321,12 +343,14 @@ annotation|@
 name|Override
 DECL|method|getHelpPage ()
 specifier|public
-name|String
+name|HelpFiles
 name|getHelpPage
 parameter_list|()
 block|{
 return|return
-name|SCIENCE_DIRECT
+name|HelpFiles
+operator|.
+name|FETCHER_SCIENCEDIRECT
 return|;
 block|}
 annotation|@
@@ -351,7 +375,7 @@ name|getTitle
 parameter_list|()
 block|{
 return|return
-name|SCIENCE_DIRECT
+literal|"ScienceDirect"
 return|;
 block|}
 annotation|@

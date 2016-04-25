@@ -1001,8 +1001,11 @@ argument_list|)
 argument_list|,
 name|HelpFiles
 operator|.
-name|nameFormatterHelp
+name|CUSTOM_EXPORTS_NAME_FORMATTER
 argument_list|)
+operator|.
+name|getHelpButton
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|tabPanel

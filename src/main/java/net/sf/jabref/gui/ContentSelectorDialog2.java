@@ -2677,7 +2677,7 @@ name|HelpAction
 argument_list|(
 name|HelpFiles
 operator|.
-name|contentSelectorHelp
+name|CONTENT_SELECTOR
 argument_list|)
 operator|.
 name|getHelpButton

@@ -1846,7 +1846,7 @@ argument_list|)
 argument_list|,
 name|HelpFiles
 operator|.
-name|specialFieldsHelp
+name|SPECIAL_FIELDS
 argument_list|)
 operator|.
 name|getHelpButton

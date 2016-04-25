@@ -401,21 +401,6 @@ name|super
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**          * @param defaults          */
-DECL|method|DuplicationDetectionProperties (Properties defaults)
-specifier|public
-name|DuplicationDetectionProperties
-parameter_list|(
-name|Properties
-name|defaults
-parameter_list|)
-block|{
-name|super
-argument_list|(
-name|defaults
-argument_list|)
-expr_stmt|;
-block|}
 comment|/**          * Overriding the HashTable put() so we can check for duplicates          */
 annotation|@
 name|Override
@@ -1196,7 +1181,9 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"2. EXECUTE gradlew -b localization.gradle compareAndUpdateTranslationsWithEnglishTranslation TO"
+literal|"2. EXECUTE gradlew -b localization.gradle generateMissingTranslationKeys\r\n"
+operator|+
+literal|" TO"
 argument_list|)
 expr_stmt|;
 name|System
@@ -1366,7 +1353,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"EXECUTE gradlew -b localization.gradle compareAndUpdateTranslationsWithEnglishTranslation TO"
+literal|"EXECUTE gradlew -b localization.gradle generateMissingTranslationKeys TO"
 argument_list|)
 expr_stmt|;
 name|System

@@ -244,12 +244,12 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|field|urlPart
+DECL|field|helpPage
 specifier|private
-name|String
-name|urlPart
+name|HelpFiles
+name|helpPage
 decl_stmt|;
-DECL|method|HelpAction (String title, String tooltip, String urlPart, KeyStroke key)
+DECL|method|HelpAction (String title, String tooltip, HelpFiles helpPage, KeyStroke key)
 specifier|public
 name|HelpAction
 parameter_list|(
@@ -259,8 +259,8 @@ parameter_list|,
 name|String
 name|tooltip
 parameter_list|,
-name|String
-name|urlPart
+name|HelpFiles
+name|helpPage
 parameter_list|,
 name|KeyStroke
 name|key
@@ -272,7 +272,7 @@ name|title
 argument_list|,
 name|tooltip
 argument_list|,
-name|urlPart
+name|helpPage
 argument_list|,
 name|IconTheme
 operator|.
@@ -294,7 +294,7 @@ name|key
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|HelpAction (String title, String tooltip, String urlPart, Icon icon)
+DECL|method|HelpAction (String title, String tooltip, HelpFiles helpPage, Icon icon)
 specifier|private
 name|HelpAction
 parameter_list|(
@@ -304,8 +304,8 @@ parameter_list|,
 name|String
 name|tooltip
 parameter_list|,
-name|String
-name|urlPart
+name|HelpFiles
+name|helpPage
 parameter_list|,
 name|Icon
 name|icon
@@ -318,9 +318,9 @@ argument_list|)
 expr_stmt|;
 name|this
 operator|.
-name|urlPart
+name|helpPage
 operator|=
-name|urlPart
+name|helpPage
 expr_stmt|;
 name|putValue
 argument_list|(
@@ -341,15 +341,15 @@ name|tooltip
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|HelpAction (String tooltip, String urlPart)
+DECL|method|HelpAction (String tooltip, HelpFiles helpPage)
 specifier|public
 name|HelpAction
 parameter_list|(
 name|String
 name|tooltip
 parameter_list|,
-name|String
-name|urlPart
+name|HelpFiles
+name|helpPage
 parameter_list|)
 block|{
 name|this
@@ -363,7 +363,7 @@ argument_list|)
 argument_list|,
 name|tooltip
 argument_list|,
-name|urlPart
+name|helpPage
 argument_list|,
 name|IconTheme
 operator|.
@@ -376,12 +376,12 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|HelpAction (String urlPart, Icon icon)
+DECL|method|HelpAction (HelpFiles helpPage, Icon icon)
 specifier|public
 name|HelpAction
 parameter_list|(
-name|String
-name|urlPart
+name|HelpFiles
+name|helpPage
 parameter_list|,
 name|Icon
 name|icon
@@ -403,18 +403,18 @@ argument_list|(
 literal|"Help"
 argument_list|)
 argument_list|,
-name|urlPart
+name|helpPage
 argument_list|,
 name|icon
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|HelpAction (String urlPart)
+DECL|method|HelpAction (HelpFiles helpPage)
 specifier|public
 name|HelpAction
 parameter_list|(
-name|String
-name|urlPart
+name|HelpFiles
+name|helpPage
 parameter_list|)
 block|{
 name|this
@@ -433,7 +433,7 @@ argument_list|(
 literal|"Help"
 argument_list|)
 argument_list|,
-name|urlPart
+name|helpPage
 argument_list|,
 name|IconTheme
 operator|.
@@ -500,18 +500,18 @@ return|return
 name|button
 return|;
 block|}
-DECL|method|setHelpFile (String urlPart)
+DECL|method|setHelpFile (HelpFiles urlPart)
 specifier|public
 name|void
 name|setHelpFile
 parameter_list|(
-name|String
+name|HelpFiles
 name|urlPart
 parameter_list|)
 block|{
 name|this
 operator|.
-name|urlPart
+name|helpPage
 operator|=
 name|urlPart
 expr_stmt|;
@@ -548,7 +548,10 @@ argument_list|)
 operator|+
 literal|"/"
 operator|+
-name|urlPart
+name|helpPage
+operator|.
+name|getPageName
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

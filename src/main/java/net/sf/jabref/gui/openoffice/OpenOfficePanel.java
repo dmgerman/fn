@@ -430,6 +430,22 @@ name|jabref
 operator|.
 name|gui
 operator|.
+name|help
+operator|.
+name|HelpFiles
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
 name|keyboard
 operator|.
 name|KeyBinding
@@ -899,7 +915,16 @@ init|=
 operator|new
 name|HelpAction
 argument_list|(
-literal|"OpenOfficeIntegration"
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"OpenOffice/LibreOffice integration"
+argument_list|)
+argument_list|,
+name|HelpFiles
+operator|.
+name|OPENOFFICE_LIBREOFFICE
 argument_list|)
 operator|.
 name|getHelpButton
@@ -3249,6 +3274,8 @@ operator|new
 name|IOException
 argument_list|(
 literal|"Error, could not add URL to system classloader"
+argument_list|,
+name|e
 argument_list|)
 throw|;
 block|}

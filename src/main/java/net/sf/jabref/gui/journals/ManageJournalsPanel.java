@@ -1448,7 +1448,7 @@ name|HelpAction
 argument_list|(
 name|HelpFiles
 operator|.
-name|journalAbbrHelp
+name|JOURNAL_ABBREV
 argument_list|)
 operator|.
 name|getHelpButton

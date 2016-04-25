@@ -1639,7 +1639,7 @@ name|HelpAction
 argument_list|(
 name|HelpFiles
 operator|.
-name|entryEditorHelp
+name|ENTRY_EDITOR
 argument_list|,
 name|IconTheme
 operator|.

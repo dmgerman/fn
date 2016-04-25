@@ -520,7 +520,7 @@ name|HelpAction
 argument_list|(
 name|HelpFiles
 operator|.
-name|remoteHelp
+name|REMOTE
 argument_list|)
 operator|.
 name|getHelpButton
