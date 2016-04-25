@@ -2475,7 +2475,7 @@ argument_list|)
 argument_list|,
 name|HelpFiles
 operator|.
-name|helpContents
+name|CONTENTS
 argument_list|,
 name|Globals
 operator|.

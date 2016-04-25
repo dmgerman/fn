@@ -2385,7 +2385,7 @@ argument_list|)
 argument_list|,
 name|HelpFiles
 operator|.
-name|groupsHelp
+name|GROUP
 argument_list|)
 operator|.
 name|getHelpButton

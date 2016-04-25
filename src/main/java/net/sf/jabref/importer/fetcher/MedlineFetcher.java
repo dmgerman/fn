@@ -744,14 +744,14 @@ annotation|@
 name|Override
 DECL|method|getHelpPage ()
 specifier|public
-name|String
+name|HelpFiles
 name|getHelpPage
 parameter_list|()
 block|{
 return|return
 name|HelpFiles
 operator|.
-name|medlineHelp
+name|FETCHER_MEDLINE
 return|;
 block|}
 annotation|@

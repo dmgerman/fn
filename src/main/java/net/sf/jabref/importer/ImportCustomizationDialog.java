@@ -1433,7 +1433,7 @@ name|HelpAction
 argument_list|(
 name|HelpFiles
 operator|.
-name|importCustomizationHelp
+name|CUSTOM_IMPORTS
 argument_list|)
 operator|.
 name|getHelpButton

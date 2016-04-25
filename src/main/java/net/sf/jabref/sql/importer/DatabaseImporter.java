@@ -582,9 +582,6 @@ init|(
 name|Statement
 name|statement
 init|=
-operator|(
-name|Statement
-operator|)
 name|conn
 operator|.
 name|createStatement
@@ -638,7 +635,7 @@ name|colNames
 return|;
 block|}
 block|}
-comment|/**      * Worker method to perform the import from a database      *      * @param dbs  The necessary database connection information      * @param mode      * @return An ArrayList containing pairs of Objects. Each position of the ArrayList stores three Objects: a      * BibDatabase, a MetaData and a String with the bib database name stored in the DBMS      * @throws Exception      */
+comment|/**      * Worker method to perform the import from a database      *      * @param dbs  The necessary database connection information      * @param mode      * @return An ArrayList containing pairs of Objects. Each position of the ArrayList stores three Objects: a      * BibDatabase, a MetaData and a String with the bib database name stored in the DBMS      * @throws SQLException      * @throws ClassNotFoundException      * @throws InstantiationException      * @throws IllegalAccessException      * @throws Exception      */
 DECL|method|performImport (DBStrings dbs, List<String> listOfDBs, BibDatabaseMode mode)
 specifier|public
 name|List
@@ -660,7 +657,13 @@ name|BibDatabaseMode
 name|mode
 parameter_list|)
 throws|throws
-name|Exception
+name|IllegalAccessException
+throws|,
+name|InstantiationException
+throws|,
+name|ClassNotFoundException
+throws|,
+name|SQLException
 block|{
 name|List
 argument_list|<
@@ -1870,7 +1873,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * Given a DBStrings it connects to the DB and returns the java.sql.Connection object      *      * @param dbstrings The DBStrings to use to make the connection      * @return java.sql.Connection to the DB chosen      * @throws Exception      */
+comment|/**      * Given a DBStrings it connects to the DB and returns the java.sql.Connection object      *      * @param dbstrings The DBStrings to use to make the connection      * @return java.sql.Connection to the DB chosen      * @throws SQLException      * @throws ClassNotFoundException      * @throws InstantiationException      * @throws IllegalAccessException      */
 DECL|method|connectToDB (DBStrings dbstrings)
 specifier|public
 name|Connection
@@ -1880,7 +1883,13 @@ name|DBStrings
 name|dbstrings
 parameter_list|)
 throws|throws
-name|Exception
+name|IllegalAccessException
+throws|,
+name|InstantiationException
+throws|,
+name|ClassNotFoundException
+throws|,
+name|SQLException
 block|{
 name|String
 name|url

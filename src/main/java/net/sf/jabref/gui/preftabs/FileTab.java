@@ -1279,7 +1279,7 @@ argument_list|)
 argument_list|,
 name|HelpFiles
 operator|.
-name|regularExpressionSearchHelp
+name|REGEX_SEARCH
 argument_list|)
 operator|.
 name|getHelpButton
@@ -1346,7 +1346,7 @@ name|HelpAction
 argument_list|(
 name|HelpFiles
 operator|.
-name|autosaveHelp
+name|AUTOSAVE
 argument_list|)
 operator|.
 name|getHelpButton

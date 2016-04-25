@@ -1068,7 +1068,7 @@ name|HelpAction
 argument_list|(
 name|HelpFiles
 operator|.
-name|ownerHelp
+name|OWNER
 argument_list|)
 operator|.
 name|getHelpButton
@@ -1137,7 +1137,7 @@ name|HelpAction
 argument_list|(
 name|HelpFiles
 operator|.
-name|timeStampHelp
+name|TIMESTAMP
 argument_list|)
 operator|.
 name|getHelpButton

@@ -383,6 +383,8 @@ name|BibEntry
 name|entry
 parameter_list|)
 function_decl|;
+annotation|@
+name|Override
 DECL|method|isMatch (BibEntry entry)
 specifier|public
 name|boolean

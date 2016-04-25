@@ -519,7 +519,7 @@ name|HelpAction
 argument_list|(
 name|HelpFiles
 operator|.
-name|generalFieldsHelp
+name|GENERAL_FIELDS
 argument_list|)
 operator|.
 name|getHelpButton

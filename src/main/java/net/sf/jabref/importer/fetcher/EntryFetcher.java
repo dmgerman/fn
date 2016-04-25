@@ -50,6 +50,22 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
+name|help
+operator|.
+name|HelpFiles
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|importer
 operator|.
 name|ImportInspector
@@ -105,9 +121,9 @@ name|String
 name|getTitle
 parameter_list|()
 function_decl|;
-comment|/**      * Get the name of the help page for this activeFetcher.      *      * If given, a question mark is displayed in the side pane which leads to      * the help page.      *      * @return The name of the help file or null if this activeFetcher does not have      *         any help.      */
+comment|/**      * Get the name of the help page for this activeFetcher.      *      * If given, a question mark is displayed in the side pane which leads to      * the help page.      *      * @return The {@link HelpFiles} enum constant for the help page      */
 DECL|method|getHelpPage ()
-name|String
+name|HelpFiles
 name|getHelpPage
 parameter_list|()
 function_decl|;

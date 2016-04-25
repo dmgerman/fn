@@ -2293,7 +2293,7 @@ name|HelpAction
 argument_list|(
 name|HelpFiles
 operator|.
-name|importInspectionHelp
+name|IMPORT_INSPECTION
 argument_list|)
 operator|.
 name|getHelpButton

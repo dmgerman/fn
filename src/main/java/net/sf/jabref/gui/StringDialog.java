@@ -695,7 +695,7 @@ argument_list|)
 argument_list|,
 name|HelpFiles
 operator|.
-name|stringEditorHelp
+name|STRING_EDITOR
 argument_list|)
 expr_stmt|;
 name|addWindowListener

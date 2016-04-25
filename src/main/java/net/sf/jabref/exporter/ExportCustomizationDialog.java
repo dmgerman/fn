@@ -1003,7 +1003,7 @@ name|HelpAction
 argument_list|(
 name|HelpFiles
 operator|.
-name|exportCustomizationHelp
+name|CUSTOM_EXPORTS
 argument_list|)
 operator|.
 name|getHelpButton
