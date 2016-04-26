@@ -42,6 +42,16 @@ end_import
 
 begin_import
 import|import
+name|javafx
+operator|.
+name|application
+operator|.
+name|Platform
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -189,22 +199,6 @@ operator|.
 name|help
 operator|.
 name|AboutAction
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|help
-operator|.
-name|AboutDialog
 import|;
 end_import
 
@@ -1440,19 +1434,6 @@ argument_list|,
 name|this
 argument_list|)
 decl_stmt|;
-comment|// The help window.
-DECL|field|aboutDiag
-specifier|private
-specifier|final
-name|AboutDialog
-name|aboutDiag
-init|=
-operator|new
-name|AboutDialog
-argument_list|(
-name|this
-argument_list|)
-decl_stmt|;
 comment|// Here we instantiate menu/toolbar actions. Actions regarding
 comment|// the currently open database are defined as a GeneralAction
 comment|// with a unique command string. This causes the appropriate
@@ -1639,8 +1620,6 @@ name|menuTitle
 argument_list|(
 literal|"About JabRef"
 argument_list|)
-argument_list|,
-name|aboutDiag
 argument_list|,
 name|Localization
 operator|.
@@ -11202,6 +11181,11 @@ name|e
 parameter_list|)
 block|{
 name|quit
+argument_list|()
+expr_stmt|;
+name|Platform
+operator|.
+name|exit
 argument_list|()
 expr_stmt|;
 block|}
