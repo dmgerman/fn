@@ -67,7 +67,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Focus listener that changes the color of the text area when it has focus.  * Created by IntelliJ IDEA.  * User: alver  * Date: 18.mar.2005  * Time: 18:20:14  * To change this template use File | Settings | File Templates.  */
+comment|/**  * Focus listener that changes the color of the text area when it has focus.  */
 end_comment
 
 begin_class
