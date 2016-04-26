@@ -32,20 +32,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|bibtex
-operator|.
-name|BibtexEntryAssert
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|logic
 operator|.
 name|FieldChange
@@ -386,8 +372,6 @@ name|getNewValue
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|BibtexEntryAssert
-operator|.
 name|assertEquals
 argument_list|(
 name|entry
@@ -475,8 +459,6 @@ name|getNewValue
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|BibtexEntryAssert
-operator|.
 name|assertEquals
 argument_list|(
 name|entry
@@ -795,8 +777,6 @@ name|getOldValue
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|BibtexEntryAssert
-operator|.
 name|assertEquals
 argument_list|(
 name|entry
@@ -1016,8 +996,6 @@ name|getOldValue
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|BibtexEntryAssert
-operator|.
 name|assertEquals
 argument_list|(
 name|entry

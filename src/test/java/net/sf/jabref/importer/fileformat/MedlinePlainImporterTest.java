@@ -120,7 +120,7 @@ name|jabref
 operator|.
 name|bibtex
 operator|.
-name|BibtexEntryAssert
+name|BibEntryAssert
 import|;
 end_import
 
@@ -920,7 +920,7 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|BibtexEntryAssert
+name|BibEntryAssert
 operator|.
 name|assertEquals
 argument_list|(
@@ -1115,13 +1115,13 @@ operator|+
 literal|"Comment16"
 argument_list|)
 expr_stmt|;
-name|BibtexEntryAssert
+name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-name|Arrays
+name|Collections
 operator|.
-name|asList
+name|singletonList
 argument_list|(
 name|expectedEntry
 argument_list|)
@@ -1194,13 +1194,13 @@ argument_list|,
 literal|"Female, Male"
 argument_list|)
 expr_stmt|;
-name|BibtexEntryAssert
+name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-name|Arrays
+name|Collections
 operator|.
-name|asList
+name|singletonList
 argument_list|(
 name|expectedEntry
 argument_list|)
@@ -1283,13 +1283,13 @@ argument_list|(
 literal|"article"
 argument_list|)
 expr_stmt|;
-name|BibtexEntryAssert
+name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-name|Arrays
+name|Collections
 operator|.
-name|asList
+name|singletonList
 argument_list|(
 name|expectedEntry
 argument_list|)

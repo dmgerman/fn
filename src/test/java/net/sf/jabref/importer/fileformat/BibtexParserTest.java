@@ -146,20 +146,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|bibtex
-operator|.
-name|BibtexEntryAssert
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|exporter
 operator|.
 name|FieldFormatterCleanups
@@ -587,13 +573,11 @@ argument_list|,
 literal|"Ed von Test"
 argument_list|)
 expr_stmt|;
-name|BibtexEntryAssert
-operator|.
 name|assertEquals
 argument_list|(
-name|Arrays
+name|Collections
 operator|.
-name|asList
+name|singletonList
 argument_list|(
 name|expected
 argument_list|)
@@ -737,8 +721,6 @@ argument_list|,
 literal|"Title A"
 argument_list|)
 expr_stmt|;
-name|BibtexEntryAssert
-operator|.
 name|assertEquals
 argument_list|(
 name|expected
@@ -2262,8 +2244,6 @@ argument_list|(
 name|secondEntry
 argument_list|)
 expr_stmt|;
-name|BibtexEntryAssert
-operator|.
 name|assertEquals
 argument_list|(
 name|expected
@@ -2482,8 +2462,6 @@ argument_list|(
 name|secondEntry
 argument_list|)
 expr_stmt|;
-name|BibtexEntryAssert
-operator|.
 name|assertEquals
 argument_list|(
 name|expected
@@ -9194,8 +9172,6 @@ argument_list|(
 name|c
 argument_list|)
 expr_stmt|;
-name|BibtexEntryAssert
-operator|.
 name|assertEquals
 argument_list|(
 name|expected
