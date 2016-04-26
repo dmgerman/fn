@@ -156,6 +156,17 @@ specifier|static
 name|ResourceBundle
 name|menuTitles
 decl_stmt|;
+DECL|method|getMessages ()
+specifier|public
+specifier|static
+name|ResourceBundle
+name|getMessages
+parameter_list|()
+block|{
+return|return
+name|messages
+return|;
+block|}
 DECL|method|setLanguage (String language)
 specifier|public
 specifier|static
