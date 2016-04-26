@@ -2263,8 +2263,6 @@ name|String
 argument_list|>
 name|otherFields
 init|=
-name|this
-operator|.
 name|entry
 operator|.
 name|getFieldNames

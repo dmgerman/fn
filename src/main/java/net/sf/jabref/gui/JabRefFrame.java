@@ -2463,14 +2463,14 @@ name|Localization
 operator|.
 name|menuTitle
 argument_list|(
-literal|"JabRef help"
+literal|"Online help"
 argument_list|)
 argument_list|,
 name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"JabRef help"
+literal|"Online help"
 argument_list|)
 argument_list|,
 name|HelpFiles
