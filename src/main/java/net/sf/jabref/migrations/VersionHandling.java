@@ -124,22 +124,6 @@ name|StringUtil
 import|;
 end_import
 
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|database
-operator|.
-name|BibDatabase
-import|;
-end_import
-
 begin_comment
 comment|/**  * Handles versioning of groups, e.g. automatic conversion from previous to  * current versions, or import of flat groups (JabRef<= 1.6) to tree.  *  * @author jzieren (10.04.2005)  */
 end_comment
@@ -294,7 +278,7 @@ return|return
 name|root
 return|;
 block|}
-DECL|method|importGroups (List<String> orderedData, BibDatabase db, int version)
+DECL|method|importGroups (List<String> orderedData, int version)
 specifier|public
 specifier|static
 name|GroupTreeNode
@@ -305,9 +289,6 @@ argument_list|<
 name|String
 argument_list|>
 name|orderedData
-parameter_list|,
-name|BibDatabase
-name|db
 parameter_list|,
 name|int
 name|version
@@ -338,8 +319,6 @@ argument_list|(
 literal|0
 argument_list|)
 argument_list|,
-name|db
-argument_list|,
 name|version
 argument_list|)
 return|;
@@ -355,8 +334,6 @@ operator|.
 name|fromString
 argument_list|(
 name|orderedData
-argument_list|,
-name|db
 argument_list|,
 name|version
 argument_list|)
@@ -388,7 +365,7 @@ class|class
 name|Version0_1
 block|{
 comment|/**          * Parses the textual representation obtained from          * GroupTreeNode.toString() and recreates that node and all of its          * children from it.          *          * @throws Exception          *             When a group could not be recreated          */
-DECL|method|fromString (String str, BibDatabase db, int version)
+DECL|method|fromString (String str, int version)
 specifier|private
 specifier|static
 name|GroupTreeNode
@@ -396,9 +373,6 @@ name|fromString
 parameter_list|(
 name|String
 name|str
-parameter_list|,
-name|BibDatabase
-name|db
 parameter_list|,
 name|int
 name|version
@@ -461,8 +435,6 @@ operator|.
 name|fromString
 argument_list|(
 name|subtree
-argument_list|,
-name|db
 argument_list|,
 name|version
 argument_list|)
@@ -572,8 +544,6 @@ name|g
 argument_list|,
 literal|'\\'
 argument_list|)
-argument_list|,
-name|db
 argument_list|,
 name|version
 argument_list|)
@@ -779,7 +749,7 @@ specifier|static
 class|class
 name|Version2_3
 block|{
-DECL|method|fromString (List<String> data, BibDatabase db, int version)
+DECL|method|fromString (List<String> data, int version)
 specifier|private
 specifier|static
 name|GroupTreeNode
@@ -790,9 +760,6 @@ argument_list|<
 name|String
 argument_list|>
 name|data
-parameter_list|,
-name|BibDatabase
-name|db
 parameter_list|,
 name|int
 name|version
@@ -924,8 +891,6 @@ name|spaceIndex
 operator|+
 literal|1
 argument_list|)
-argument_list|,
-name|db
 argument_list|,
 name|version
 argument_list|)
