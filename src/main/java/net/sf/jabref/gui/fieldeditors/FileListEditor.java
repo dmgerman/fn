@@ -2812,8 +2812,6 @@ name|entryEditor
 operator|.
 name|updateField
 argument_list|(
-name|FileListEditor
-operator|.
 name|this
 argument_list|)
 expr_stmt|;
