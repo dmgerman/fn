@@ -906,6 +906,10 @@ name|alreadyHas
 operator|=
 literal|true
 expr_stmt|;
+name|foundAny
+operator|=
+literal|true
+expr_stmt|;
 break|break;
 block|}
 block|}
