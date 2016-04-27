@@ -1168,16 +1168,11 @@ argument_list|(
 name|group
 argument_list|)
 expr_stmt|;
-name|appendedEntries
-operator|.
-name|stream
-argument_list|()
-operator|.
-name|map
-argument_list|(
 name|group
-operator|::
-name|addEntry
+operator|.
+name|add
+argument_list|(
+name|appendedEntries
 argument_list|)
 expr_stmt|;
 block|}
@@ -1194,18 +1189,6 @@ argument_list|(
 name|newGroups
 argument_list|,
 name|ce
-argument_list|)
-expr_stmt|;
-comment|// for explicit groups, the entries copied to the mother fromDatabase have to
-comment|// be "reassigned", i.e. the old reference is removed and the reference
-comment|// to the new fromDatabase is added.
-name|newGroups
-operator|.
-name|replaceEntriesInExplicitGroup
-argument_list|(
-name|originalEntries
-argument_list|,
-name|appendedEntries
 argument_list|)
 expr_stmt|;
 block|}

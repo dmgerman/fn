@@ -898,8 +898,6 @@ operator|new
 name|MetaData
 argument_list|(
 name|meta
-argument_list|,
-name|database
 argument_list|)
 argument_list|)
 expr_stmt|;
