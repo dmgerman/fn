@@ -11241,8 +11241,6 @@ name|previousTabCount
 operator|=
 name|tabCount
 expr_stmt|;
-name|JabRefFrame
-operator|.
 name|setEnabled
 argument_list|(
 name|openDatabaseOnlyActions
@@ -11252,8 +11250,6 @@ operator|>
 literal|0
 argument_list|)
 expr_stmt|;
-name|JabRefFrame
-operator|.
 name|setEnabled
 argument_list|(
 name|severalDatabasesOnlyActions
@@ -11288,11 +11284,6 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
-name|boolean
-name|saved
-init|=
-literal|false
-decl_stmt|;
 if|if
 condition|(
 name|tabCount
@@ -11300,10 +11291,23 @@ operator|>
 literal|0
 condition|)
 block|{
-name|saved
-operator|=
+name|BasePanel
+name|current
+init|=
 name|getCurrentBasePanel
 argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|current
+operator|!=
+literal|null
+condition|)
+block|{
+name|boolean
+name|saved
+init|=
+name|current
 operator|.
 name|getBibDatabaseContext
 argument_list|()
@@ -11312,10 +11316,7 @@ name|getDatabaseFile
 argument_list|()
 operator|!=
 literal|null
-expr_stmt|;
-block|}
-name|JabRefFrame
-operator|.
+decl_stmt|;
 name|setEnabled
 argument_list|(
 name|openAndSavedDatabasesOnlyActions
@@ -11323,6 +11324,8 @@ argument_list|,
 name|saved
 argument_list|)
 expr_stmt|;
+block|}
+block|}
 block|}
 comment|/**      * This method causes all open BasePanels to set up their tables      * anew. When called from PrefsDialog3, this updates to the new      * settings.      */
 DECL|method|setupAllTables ()
