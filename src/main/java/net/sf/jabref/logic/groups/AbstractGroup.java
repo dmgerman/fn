@@ -168,7 +168,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Re-create a group instance from a textual representation.      *      * @param s The result from the group's toString() method.      * @return New instance of the encoded group.      * @throws Exception If an error occured and a group could not be created, e.g.      *                   due to a malformed regular expression.      */
-DECL|method|fromString (String s, int version)
+DECL|method|fromString (String s)
 specifier|public
 specifier|static
 name|AbstractGroup
@@ -176,9 +176,6 @@ name|fromString
 parameter_list|(
 name|String
 name|s
-parameter_list|,
-name|int
-name|version
 parameter_list|)
 throws|throws
 name|Exception
@@ -201,8 +198,6 @@ operator|.
 name|fromString
 argument_list|(
 name|s
-argument_list|,
-name|version
 argument_list|)
 return|;
 block|}
@@ -224,8 +219,6 @@ operator|.
 name|fromString
 argument_list|(
 name|s
-argument_list|,
-name|version
 argument_list|)
 return|;
 block|}
@@ -247,8 +240,6 @@ operator|.
 name|fromString
 argument_list|(
 name|s
-argument_list|,
-name|version
 argument_list|)
 return|;
 block|}
@@ -270,8 +261,6 @@ operator|.
 name|fromString
 argument_list|(
 name|s
-argument_list|,
-name|version
 argument_list|)
 return|;
 block|}

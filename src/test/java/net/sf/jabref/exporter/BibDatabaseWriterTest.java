@@ -1566,16 +1566,6 @@ operator|+
 name|Globals
 operator|.
 name|NEWLINE
-operator|+
-name|Globals
-operator|.
-name|NEWLINE
-operator|+
-literal|"@Comment{jabref-meta: groupsversion:3;}"
-operator|+
-name|Globals
-operator|.
-name|NEWLINE
 argument_list|,
 name|stringWriter
 operator|.
@@ -1694,16 +1684,6 @@ operator|.
 name|NEWLINE
 operator|+
 literal|"}"
-operator|+
-name|Globals
-operator|.
-name|NEWLINE
-operator|+
-name|Globals
-operator|.
-name|NEWLINE
-operator|+
-literal|"@Comment{jabref-meta: groupsversion:3;}"
 operator|+
 name|Globals
 operator|.
