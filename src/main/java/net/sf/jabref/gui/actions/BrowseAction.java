@@ -185,6 +185,12 @@ specifier|final
 name|JComponent
 name|focusTarget
 decl_stmt|;
+DECL|field|extension
+specifier|private
+specifier|final
+name|String
+name|extension
+decl_stmt|;
 DECL|method|buildForDir (JFrame frame, JTextField tc)
 specifier|public
 specifier|static
@@ -209,6 +215,10 @@ argument_list|,
 literal|true
 argument_list|,
 literal|null
+argument_list|,
+name|Globals
+operator|.
+name|NONE
 argument_list|)
 return|;
 block|}
@@ -233,6 +243,10 @@ argument_list|,
 literal|true
 argument_list|,
 literal|null
+argument_list|,
+name|Globals
+operator|.
+name|NONE
 argument_list|)
 return|;
 block|}
@@ -257,10 +271,14 @@ argument_list|,
 literal|false
 argument_list|,
 literal|null
+argument_list|,
+name|Globals
+operator|.
+name|NONE
 argument_list|)
 return|;
 block|}
-DECL|method|buildForFile (JTextField tc, JComponent focusTarget)
+DECL|method|buildForFile (JTextField tc, JComponent focusTarget, String extension)
 specifier|public
 specifier|static
 name|BrowseAction
@@ -271,6 +289,9 @@ name|tc
 parameter_list|,
 name|JComponent
 name|focusTarget
+parameter_list|,
+name|String
+name|extension
 parameter_list|)
 block|{
 return|return
@@ -284,6 +305,8 @@ argument_list|,
 literal|false
 argument_list|,
 name|focusTarget
+argument_list|,
+name|extension
 argument_list|)
 return|;
 block|}
@@ -311,10 +334,12 @@ argument_list|,
 literal|true
 argument_list|,
 name|focusTarget
+argument_list|,
+literal|null
 argument_list|)
 return|;
 block|}
-DECL|method|BrowseAction (JFrame frame, JTextField tc, boolean dir, JComponent focusTarget)
+DECL|method|BrowseAction (JFrame frame, JTextField tc, boolean dir, JComponent focusTarget, String extension)
 specifier|private
 name|BrowseAction
 parameter_list|(
@@ -329,6 +354,9 @@ name|dir
 parameter_list|,
 name|JComponent
 name|focusTarget
+parameter_list|,
+name|String
+name|extension
 parameter_list|)
 block|{
 name|super
@@ -364,6 +392,12 @@ operator|.
 name|focusTarget
 operator|=
 name|focusTarget
+expr_stmt|;
+name|this
+operator|.
+name|extension
+operator|=
+name|extension
 expr_stmt|;
 block|}
 annotation|@
@@ -452,9 +486,7 @@ name|getText
 argument_list|()
 argument_list|)
 argument_list|,
-name|Globals
-operator|.
-name|NONE
+name|extension
 argument_list|,
 name|JFileChooser
 operator|.
@@ -482,9 +514,7 @@ name|getText
 argument_list|()
 argument_list|)
 argument_list|,
-name|Globals
-operator|.
-name|NONE
+name|extension
 argument_list|,
 name|JFileChooser
 operator|.
