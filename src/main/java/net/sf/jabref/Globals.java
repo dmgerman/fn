@@ -266,15 +266,6 @@ operator|new
 name|ImportFormatReader
 argument_list|()
 decl_stmt|;
-DECL|field|NONE
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|NONE
-init|=
-literal|"_non__"
-decl_stmt|;
 DECL|field|SPECIAL_COMMAND_CHARS
 specifier|public
 specifier|static

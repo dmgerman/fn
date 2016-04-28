@@ -3359,9 +3359,7 @@ name|getText
 argument_list|()
 argument_list|)
 argument_list|,
-name|Globals
-operator|.
-name|NONE
+literal|""
 argument_list|,
 name|JFileChooser
 operator|.
@@ -3390,9 +3388,7 @@ name|getText
 argument_list|()
 argument_list|)
 argument_list|,
-name|Globals
-operator|.
-name|NONE
+literal|""
 argument_list|,
 name|JFileChooser
 operator|.
