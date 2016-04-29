@@ -62,6 +62,18 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|regex
+operator|.
+name|PatternSyntaxException
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -81,6 +93,22 @@ operator|.
 name|jabref
 operator|.
 name|JabRefPreferences
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|importer
+operator|.
+name|fileformat
+operator|.
+name|ParseException
 import|;
 end_import
 
@@ -284,7 +312,7 @@ name|GroupHierarchyType
 name|context
 parameter_list|)
 throws|throws
-name|IllegalArgumentException
+name|ParseException
 block|{
 name|super
 argument_list|(
@@ -335,7 +363,9 @@ name|void
 name|compilePattern
 parameter_list|()
 throws|throws
-name|IllegalArgumentException
+name|ParseException
+block|{
+try|try
 block|{
 name|pattern
 operator|=
@@ -368,6 +398,28 @@ name|CASE_INSENSITIVE
 argument_list|)
 expr_stmt|;
 block|}
+catch|catch
+parameter_list|(
+name|PatternSyntaxException
+name|exception
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|ParseException
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Syntax error in regular-expression pattern"
+argument_list|,
+name|searchExpression
+argument_list|)
+argument_list|)
+throw|;
+block|}
+block|}
 comment|/**      * Parses s and recreates the KeywordGroup from it.      *      * @param s The String representation obtained from      *          KeywordGroup.toString()      */
 DECL|method|fromString (String s)
 specifier|public
@@ -379,7 +431,7 @@ name|String
 name|s
 parameter_list|)
 throws|throws
-name|Exception
+name|ParseException
 block|{
 if|if
 condition|(
@@ -396,15 +448,13 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|Exception
+name|IllegalArgumentException
 argument_list|(
-literal|"Internal error: KeywordGroup cannot be created from \""
+literal|"KeywordGroup cannot be created from \""
 operator|+
 name|s
 operator|+
-literal|"\". "
-operator|+
-literal|"Please report this on https://github.com/JabRef/jabref/issues"
+literal|"\"."
 argument_list|)
 throw|;
 block|}
@@ -1679,12 +1729,11 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|Throwable
-name|t
+name|ParseException
+name|exception
 parameter_list|)
 block|{
-comment|// this should never happen, because the constructor obviously
-comment|// succeeded in creating _this_ instance!
+comment|// this should never happen, because the constructor obviously succeeded in creating _this_ instance!
 name|LOGGER
 operator|.
 name|error
@@ -1693,7 +1742,7 @@ literal|"Internal error in KeywordGroup.deepCopy(). "
 operator|+
 literal|"Please report this on https://github.com/JabRef/jabref/issues"
 argument_list|,
-name|t
+name|exception
 argument_list|)
 expr_stmt|;
 return|return

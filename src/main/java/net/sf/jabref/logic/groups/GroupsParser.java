@@ -28,6 +28,38 @@ name|List
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|importer
+operator|.
+name|fileformat
+operator|.
+name|ParseException
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
+import|;
+end_import
+
 begin_comment
 comment|/**  * Converts string representation of groups to a parsed {@link GroupTreeNode}.  */
 end_comment
@@ -51,7 +83,7 @@ argument_list|>
 name|orderedData
 parameter_list|)
 throws|throws
-name|Exception
+name|ParseException
 block|{
 name|GroupTreeNode
 name|cursor
@@ -108,9 +140,16 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|Exception
+name|ParseException
 argument_list|(
-literal|"bad format"
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Expected \"%0\" to contain whitespace"
+argument_list|,
+name|string
+argument_list|)
 argument_list|)
 throw|;
 block|}

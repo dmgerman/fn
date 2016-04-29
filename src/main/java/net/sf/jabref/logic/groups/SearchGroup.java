@@ -270,8 +270,6 @@ parameter_list|(
 name|String
 name|s
 parameter_list|)
-throws|throws
-name|Exception
 block|{
 if|if
 condition|(
@@ -288,15 +286,13 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|Exception
+name|IllegalArgumentException
 argument_list|(
-literal|"Internal error: SearchGroup cannot be created from \""
+literal|"SearchGroup cannot be created from \""
 operator|+
 name|s
 operator|+
-literal|"\". "
-operator|+
-literal|"Please report this on https://github.com/JabRef/jabref/issues"
+literal|"\"."
 argument_list|)
 throw|;
 block|}

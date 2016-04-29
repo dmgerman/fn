@@ -890,6 +890,8 @@ argument_list|()
 expr_stmt|;
 block|}
 comment|// Instantiate meta data:
+try|try
+block|{
 name|parserResult
 operator|.
 name|setMetaData
@@ -901,6 +903,24 @@ name|meta
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|ParseException
+name|exception
+parameter_list|)
+block|{
+name|parserResult
+operator|.
+name|addWarning
+argument_list|(
+name|exception
+operator|.
+name|getLocalizedMessage
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 name|parseRemainingContent
 argument_list|()
 expr_stmt|;

@@ -76,6 +76,22 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|importer
+operator|.
+name|fileformat
+operator|.
+name|ParseException
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|logic
 operator|.
 name|l10n
@@ -120,6 +136,34 @@ name|StringUtil
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
+import|;
+end_import
+
 begin_comment
 comment|/**  * Select explicit bibtex entries. It is also known as static group.  *  * @author jzieren  */
 end_comment
@@ -155,6 +199,22 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
+DECL|field|LOGGER
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOGGER
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|ExplicitGroup
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 DECL|method|ExplicitGroup (String name, GroupHierarchyType context)
 specifier|public
 name|ExplicitGroup
@@ -165,6 +225,8 @@ parameter_list|,
 name|GroupHierarchyType
 name|context
 parameter_list|)
+throws|throws
+name|ParseException
 block|{
 name|super
 argument_list|(
@@ -192,7 +254,7 @@ name|String
 name|s
 parameter_list|)
 throws|throws
-name|Exception
+name|ParseException
 block|{
 if|if
 condition|(
@@ -209,15 +271,13 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|Exception
+name|IllegalArgumentException
 argument_list|(
-literal|"Internal error: ExplicitGroup cannot be created from \""
+literal|"ExplicitGroup cannot be created from \""
 operator|+
 name|s
 operator|+
-literal|"\". "
-operator|+
-literal|"Please report this on https://github.com/JabRef/jabref/issues"
+literal|"\"."
 argument_list|)
 throw|;
 block|}
@@ -365,6 +425,8 @@ name|AbstractGroup
 name|deepCopy
 parameter_list|()
 block|{
+try|try
+block|{
 name|ExplicitGroup
 name|copy
 init|=
@@ -390,6 +452,29 @@ expr_stmt|;
 return|return
 name|copy
 return|;
+block|}
+catch|catch
+parameter_list|(
+name|ParseException
+name|exception
+parameter_list|)
+block|{
+comment|// this should never happen, because the constructor obviously succeeded in creating _this_ instance!
+name|LOGGER
+operator|.
+name|error
+argument_list|(
+literal|"Internal error in ExplicitGroup.deepCopy(). "
+operator|+
+literal|"Please report this on https://github.com/JabRef/jabref/issues"
+argument_list|,
+name|exception
+argument_list|)
+expr_stmt|;
+return|return
+literal|null
+return|;
+block|}
 block|}
 annotation|@
 name|Override

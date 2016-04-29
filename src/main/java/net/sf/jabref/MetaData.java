@@ -186,6 +186,22 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|importer
+operator|.
+name|fileformat
+operator|.
+name|ParseException
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|logic
 operator|.
 name|config
@@ -223,6 +239,22 @@ operator|.
 name|groups
 operator|.
 name|GroupsParser
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
 import|;
 end_import
 
@@ -481,13 +513,6 @@ specifier|private
 name|GroupTreeNode
 name|groupsRoot
 decl_stmt|;
-DECL|field|groupTreeValid
-specifier|private
-name|boolean
-name|groupTreeValid
-init|=
-literal|true
-decl_stmt|;
 DECL|field|labelPattern
 specifier|private
 name|AbstractLabelPattern
@@ -515,6 +540,8 @@ name|String
 argument_list|>
 name|inData
 parameter_list|)
+throws|throws
+name|ParseException
 block|{
 name|Objects
 operator|.
@@ -877,6 +904,8 @@ name|String
 argument_list|>
 name|orderedData
 parameter_list|)
+throws|throws
+name|ParseException
 block|{
 try|try
 block|{
@@ -889,31 +918,27 @@ argument_list|(
 name|orderedData
 argument_list|)
 expr_stmt|;
-name|groupTreeValid
-operator|=
-literal|true
-expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|Exception
+name|ParseException
 name|e
 parameter_list|)
 block|{
-comment|// we cannot really do anything about this here
-name|LOGGER
-operator|.
-name|error
+throw|throw
+operator|new
+name|ParseException
 argument_list|(
-literal|"Problem parsing groups from MetaData"
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Group tree could not be parsed. If you save the BibTeX database, all groups will be lost."
+argument_list|)
 argument_list|,
 name|e
 argument_list|)
-expr_stmt|;
-name|groupTreeValid
-operator|=
-literal|false
-expr_stmt|;
+throw|;
 block|}
 block|}
 DECL|method|getGroups ()
@@ -939,10 +964,6 @@ block|{
 name|groupsRoot
 operator|=
 name|root
-expr_stmt|;
-name|groupTreeValid
-operator|=
-literal|true
 expr_stmt|;
 block|}
 comment|/**      * Reads the next unit. Units are delimited by ';'.      */
@@ -1091,16 +1112,6 @@ name|dbStrings
 operator|=
 name|dbStrings
 expr_stmt|;
-block|}
-DECL|method|isGroupTreeValid ()
-specifier|public
-name|boolean
-name|isGroupTreeValid
-parameter_list|()
-block|{
-return|return
-name|groupTreeValid
-return|;
 block|}
 comment|/**      * @return the stored label patterns      */
 DECL|method|getLabelPattern ()
