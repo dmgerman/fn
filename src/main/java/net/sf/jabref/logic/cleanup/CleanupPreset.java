@@ -240,28 +240,6 @@ name|getBoolean
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|CLEANUP_SUPERSCRIPTS
-argument_list|)
-condition|)
-block|{
-name|activeJobs
-operator|.
-name|add
-argument_list|(
-name|CleanupStep
-operator|.
-name|CLEAN_UP_SUPERSCRIPTS
-argument_list|)
-expr_stmt|;
-block|}
-if|if
-condition|(
-name|preferences
-operator|.
-name|getBoolean
-argument_list|(
-name|JabRefPreferences
-operator|.
 name|CLEANUP_DOI
 argument_list|)
 condition|)
@@ -383,28 +361,6 @@ argument_list|(
 name|CleanupStep
 operator|.
 name|CLEAN_UP_UPGRADE_EXTERNAL_LINKS
-argument_list|)
-expr_stmt|;
-block|}
-if|if
-condition|(
-name|preferences
-operator|.
-name|getBoolean
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|CLEANUP_UNICODE
-argument_list|)
-condition|)
-block|{
-name|activeJobs
-operator|.
-name|add
-argument_list|(
-name|CleanupStep
-operator|.
-name|CONVERT_UNICODE_TO_LATEX
 argument_list|)
 expr_stmt|;
 block|}
@@ -494,21 +450,6 @@ name|CLEAN_UP_UPGRADE_EXTERNAL_LINKS
 argument_list|)
 return|;
 block|}
-DECL|method|isCleanUpSuperscripts ()
-specifier|public
-name|boolean
-name|isCleanUpSuperscripts
-parameter_list|()
-block|{
-return|return
-name|isActive
-argument_list|(
-name|CleanupStep
-operator|.
-name|CLEAN_UP_SUPERSCRIPTS
-argument_list|)
-return|;
-block|}
 DECL|method|isCleanUpDOI ()
 specifier|public
 name|boolean
@@ -591,21 +532,6 @@ name|RENAME_PDF_ONLY_RELATIVE_PATHS
 argument_list|)
 return|;
 block|}
-DECL|method|isConvertUnicodeToLatex ()
-specifier|public
-name|boolean
-name|isConvertUnicodeToLatex
-parameter_list|()
-block|{
-return|return
-name|isActive
-argument_list|(
-name|CleanupStep
-operator|.
-name|CONVERT_UNICODE_TO_LATEX
-argument_list|)
-return|;
-block|}
 DECL|method|isConvertToBiblatex ()
 specifier|public
 name|boolean
@@ -645,22 +571,6 @@ name|JabRefPreferences
 name|preferences
 parameter_list|)
 block|{
-name|preferences
-operator|.
-name|putBoolean
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|CLEANUP_SUPERSCRIPTS
-argument_list|,
-name|isActive
-argument_list|(
-name|CleanupStep
-operator|.
-name|CLEAN_UP_SUPERSCRIPTS
-argument_list|)
-argument_list|)
-expr_stmt|;
 name|preferences
 operator|.
 name|putBoolean
@@ -763,22 +673,6 @@ name|putBoolean
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|CLEANUP_UNICODE
-argument_list|,
-name|isActive
-argument_list|(
-name|CleanupStep
-operator|.
-name|CONVERT_UNICODE_TO_LATEX
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|preferences
-operator|.
-name|putBoolean
-argument_list|(
-name|JabRefPreferences
-operator|.
 name|CLEANUP_CONVERT_TO_BIBLATEX
 argument_list|,
 name|isActive
@@ -853,10 +747,6 @@ specifier|public
 enum|enum
 name|CleanupStep
 block|{
-comment|/**          * Converts the text in 1st, 2nd, ... to real superscripts by wrapping in \textsuperscript{st}, ...          */
-DECL|enumConstant|CLEAN_UP_SUPERSCRIPTS
-name|CLEAN_UP_SUPERSCRIPTS
-block|,
 comment|/**          * Removes the http://... for each DOI. Moves DOIs from URL and NOTE filed to DOI field.          */
 DECL|enumConstant|CLEAN_UP_DOI
 name|CLEAN_UP_DOI
@@ -873,10 +763,6 @@ block|,
 comment|/**          * Collects file links from the pdf or ps field, and adds them to the list contained in the file field.          */
 DECL|enumConstant|CLEAN_UP_UPGRADE_EXTERNAL_LINKS
 name|CLEAN_UP_UPGRADE_EXTERNAL_LINKS
-block|,
-comment|/**          * Converts Unicode characters to LaTeX code          */
-DECL|enumConstant|CONVERT_UNICODE_TO_LATEX
-name|CONVERT_UNICODE_TO_LATEX
 block|,
 comment|/**          * Converts to BibLatex format          */
 DECL|enumConstant|CONVERT_TO_BIBLATEX
