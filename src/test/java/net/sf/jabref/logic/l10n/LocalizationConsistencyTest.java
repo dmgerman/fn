@@ -1057,7 +1057,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"2. EXECUTE gradlew -b localization.gradle compareAndUpdateTranslationsWithEnglishTranslation TO"
+literal|"2. EXECUTE gradlew -b localization.gradle generateMissingTranslationKeys TO"
 argument_list|)
 expr_stmt|;
 name|System
@@ -1181,7 +1181,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"2. EXECUTE gradlew -b localization.gradle generateMissingTranslationKeys\r\n"
+literal|"2. EXECUTE gradlew -b localization.gradle generateMissingTranslationKeys"
 operator|+
 literal|" TO"
 argument_list|)
