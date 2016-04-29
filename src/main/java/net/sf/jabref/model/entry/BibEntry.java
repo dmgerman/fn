@@ -387,12 +387,13 @@ specifier|private
 name|String
 name|parsedSerialization
 decl_stmt|;
-comment|/*     * marks if the complete serialization, which was read from file, should be used.     * Is set to false, if parts of the entry change      */
+comment|/*      * Marks whether the complete serialization, which was read from file, should be used.      *      * Is set to false, if parts of the entry change. This causes the entry to be serialized based on the internal state (and not based on the old serialization)      */
 DECL|field|changed
 specifier|private
 name|boolean
 name|changed
 decl_stmt|;
+comment|/**      * Constructs a new BibEntry. The internal ID is set to IdGenerator.next()      */
 DECL|method|BibEntry ()
 specifier|public
 name|BibEntry
@@ -407,6 +408,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Constructs a new BibEntry with the given ID and DEFAULT_TYPE      *      * @param id The ID to be used      */
 DECL|method|BibEntry (String id)
 specifier|public
 name|BibEntry
@@ -423,6 +425,7 @@ name|DEFAULT_TYPE
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Constructs a new BibEntry with the given ID and given type      *      * @param id The ID to be used      * @param type The type to set. May be null or empty. In that case, DEFAULT_TYPE is used.      */
 DECL|method|BibEntry (String id, String type)
 specifier|public
 name|BibEntry
@@ -449,34 +452,132 @@ name|id
 operator|=
 name|id
 expr_stmt|;
-name|changed
-operator|=
-literal|true
-expr_stmt|;
 name|setType
 argument_list|(
 name|type
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Returns an set containing the names of all fields that are      * set for this particular entry.      *      * @return a set of existing field names      */
-DECL|method|getFieldNames ()
+comment|/**      * Sets this entry's ID, provided the database containing it      * doesn't veto the change.      *      * @param id The ID to be used      */
+DECL|method|setId (String id)
 specifier|public
-name|Set
-argument_list|<
+name|void
+name|setId
+parameter_list|(
 name|String
-argument_list|>
-name|getFieldNames
+name|id
+parameter_list|)
+block|{
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|id
+argument_list|,
+literal|"Every BibEntry must have an ID"
+argument_list|)
+expr_stmt|;
+try|try
+block|{
+name|firePropertyChangedEvent
+argument_list|(
+name|BibEntry
+operator|.
+name|ID_FIELD
+argument_list|,
+name|this
+operator|.
+name|id
+argument_list|,
+name|id
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|PropertyVetoException
+name|pv
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|IllegalStateException
+argument_list|(
+literal|"Couldn't change ID: "
+operator|+
+name|pv
+argument_list|)
+throw|;
+block|}
+name|this
+operator|.
+name|id
+operator|=
+name|id
+expr_stmt|;
+name|changed
+operator|=
+literal|true
+expr_stmt|;
+block|}
+comment|/**      * Returns this entry's ID.      */
+DECL|method|getId ()
+specifier|public
+name|String
+name|getId
 parameter_list|()
 block|{
 return|return
-operator|new
-name|TreeSet
-argument_list|<>
+name|id
+return|;
+block|}
+comment|/**      * Sets the cite key AKA citation key AKA BibTeX key.      *      * Note: This is<emph>not</emph> the internal Id of this entry. The internal Id is always present, whereas the BibTeX key might not be present.      *      * @param newCiteKey The cite key to set. Must not be null, may be empty to remove it.      */
+DECL|method|setCiteKey (String newCiteKey)
+specifier|public
+name|void
+name|setCiteKey
+parameter_list|(
+name|String
+name|newCiteKey
+parameter_list|)
+block|{
+name|setField
 argument_list|(
+name|KEY_FIELD
+argument_list|,
+name|newCiteKey
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Returns the cite key AKA citation key AKA BibTeX key, or null if it is not set.      *      * Note: this is<emph>not</emph> the internal Id of this entry. The internal Id is always present, whereas the BibTeX key might not be present.      */
+DECL|method|getCiteKey ()
+specifier|public
+name|String
+name|getCiteKey
+parameter_list|()
+block|{
+return|return
 name|fields
 operator|.
-name|keySet
+name|get
+argument_list|(
+name|KEY_FIELD
+argument_list|)
+return|;
+block|}
+DECL|method|hasCiteKey ()
+specifier|public
+name|boolean
+name|hasCiteKey
+parameter_list|()
+block|{
+return|return
+operator|!
+name|Strings
+operator|.
+name|isNullOrEmpty
+argument_list|(
+name|getCiteKey
 argument_list|()
 argument_list|)
 return|;
@@ -507,16 +608,12 @@ name|newType
 decl_stmt|;
 if|if
 condition|(
-operator|(
-name|type
-operator|==
-literal|null
-operator|)
-operator|||
-name|type
+name|Strings
 operator|.
-name|isEmpty
-argument_list|()
+name|isNullOrEmpty
+argument_list|(
+name|type
+argument_list|)
 condition|)
 block|{
 name|newType
@@ -606,77 +703,26 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Sets this entry's ID, provided the database containing it      * doesn't veto the change.      */
-DECL|method|setId (String id)
+comment|/**      * Returns an set containing the names of all fields that are      * set for this particular entry.      *      * @return a set of existing field names      */
+DECL|method|getFieldNames ()
 specifier|public
-name|void
-name|setId
-parameter_list|(
+name|Set
+argument_list|<
 name|String
-name|id
-parameter_list|)
-block|{
-name|Objects
-operator|.
-name|requireNonNull
-argument_list|(
-name|id
-argument_list|,
-literal|"Every BibEntry must have an ID"
-argument_list|)
-expr_stmt|;
-try|try
-block|{
-name|firePropertyChangedEvent
-argument_list|(
-name|BibEntry
-operator|.
-name|ID_FIELD
-argument_list|,
-name|this
-operator|.
-name|id
-argument_list|,
-name|id
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|PropertyVetoException
-name|pv
-parameter_list|)
-block|{
-throw|throw
-operator|new
-name|IllegalStateException
-argument_list|(
-literal|"Couldn't change ID: "
-operator|+
-name|pv
-argument_list|)
-throw|;
-block|}
-name|this
-operator|.
-name|id
-operator|=
-name|id
-expr_stmt|;
-name|changed
-operator|=
-literal|true
-expr_stmt|;
-block|}
-comment|/**      * Returns this entry's ID.      */
-DECL|method|getId ()
-specifier|public
-name|String
-name|getId
+argument_list|>
+name|getFieldNames
 parameter_list|()
 block|{
 return|return
-name|id
+operator|new
+name|TreeSet
+argument_list|<>
+argument_list|(
+name|fields
+operator|.
+name|keySet
+argument_list|()
+argument_list|)
 return|;
 block|}
 comment|/**      * Returns the contents of the given field, or null if it is not set.      */
@@ -1247,56 +1293,6 @@ block|}
 block|}
 return|return
 literal|null
-return|;
-block|}
-comment|/**      * Returns the bibtex key, or null if it is not set.      */
-DECL|method|getCiteKey ()
-specifier|public
-name|String
-name|getCiteKey
-parameter_list|()
-block|{
-return|return
-name|fields
-operator|.
-name|get
-argument_list|(
-name|KEY_FIELD
-argument_list|)
-return|;
-block|}
-DECL|method|setCiteKey (String newCiteKey)
-specifier|public
-name|void
-name|setCiteKey
-parameter_list|(
-name|String
-name|newCiteKey
-parameter_list|)
-block|{
-name|setField
-argument_list|(
-name|KEY_FIELD
-argument_list|,
-name|newCiteKey
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|hasCiteKey ()
-specifier|public
-name|boolean
-name|hasCiteKey
-parameter_list|()
-block|{
-return|return
-operator|!
-name|Strings
-operator|.
-name|isNullOrEmpty
-argument_list|(
-name|getCiteKey
-argument_list|()
-argument_list|)
 return|;
 block|}
 comment|/**      * Sets a number of fields simultaneously. The given HashMap contains field      * names as keys, each mapped to the value to set.      */
@@ -2466,7 +2462,6 @@ argument_list|>
 name|getFieldMap
 parameter_list|()
 block|{
-comment|// TODO Auto-generated method stub
 return|return
 name|fields
 return|;
