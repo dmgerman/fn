@@ -219,8 +219,7 @@ name|TOKEN_GROUP_LENGTH
 init|=
 literal|4
 decl_stmt|;
-comment|// number of entries for
-comment|// a token
+comment|// number of entries for a token
 comment|// the following are offsets of an entry in a group of entries for one token
 DECL|field|OFFSET_TOKEN
 specifier|private
@@ -562,6 +561,42 @@ operator|!
 name|tokenCase
 condition|)
 block|{
+name|int
+name|previousTermToken
+init|=
+name|tokens
+operator|.
+name|size
+argument_list|()
+operator|-
+name|TOKEN_GROUP_LENGTH
+operator|-
+name|TOKEN_GROUP_LENGTH
+operator|+
+name|OFFSET_TOKEN_TERM
+decl_stmt|;
+if|if
+condition|(
+name|previousTermToken
+operator|>=
+literal|0
+operator|&&
+name|tokens
+operator|.
+name|get
+argument_list|(
+name|previousTermToken
+argument_list|)
+operator|.
+name|equals
+argument_list|(
+literal|'-'
+argument_list|)
+condition|)
+block|{
+comment|// We are in a first name which contained a hyphen
+break|break;
+block|}
 name|vonStart
 operator|=
 name|tokens
@@ -1485,25 +1520,6 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-operator|(
-name|c
-operator|==
-literal|'}'
-operator|)
-operator|&&
-operator|(
-name|bracesLevel
-operator|>
-literal|0
-operator|)
-condition|)
-block|{
-name|bracesLevel
-operator|--
-expr_stmt|;
-block|}
-if|if
-condition|(
 name|firstLetterIsFound
 operator|&&
 operator|(
@@ -1522,6 +1538,25 @@ block|{
 name|tokenAbbr
 operator|=
 name|tokenEnd
+expr_stmt|;
+block|}
+if|if
+condition|(
+operator|(
+name|c
+operator|==
+literal|'}'
+operator|)
+operator|&&
+operator|(
+name|bracesLevel
+operator|>
+literal|0
+operator|)
+condition|)
+block|{
+name|bracesLevel
+operator|--
 expr_stmt|;
 block|}
 if|if
@@ -1692,11 +1727,6 @@ condition|)
 block|{
 break|break;
 block|}
-comment|// Morten Alver 18 Apr 2006: Removed check for hyphen '-' above to
-comment|// prevent
-comment|// problems with names like Bailey-Jones getting broken up and
-comment|// sorted wrong.
-comment|// Aaron Chen 14 Sep 2008: Enable hyphen check for first names like Chang-Chin
 name|tokenEnd
 operator|++
 expr_stmt|;

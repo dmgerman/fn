@@ -24,6 +24,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|List
 import|;
 end_import
@@ -198,6 +208,25 @@ operator|.
 name|requireNonNull
 argument_list|(
 name|authors
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|AuthorList (Author author)
+specifier|protected
+name|AuthorList
+parameter_list|(
+name|Author
+name|author
+parameter_list|)
+block|{
+name|this
+argument_list|(
+name|Collections
+operator|.
+name|singletonList
+argument_list|(
+name|author
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -1017,10 +1046,10 @@ name|toString
 parameter_list|()
 block|{
 return|return
-name|getAsLastFirstNamesWithAnd
-argument_list|(
-literal|false
-argument_list|)
+name|authors
+operator|.
+name|toString
+argument_list|()
 return|;
 block|}
 comment|/**      * Returns the list of authors separated by "and"s with first names after      * last name; first names are not abbreviated.      *<p>      *<ul>      *<li>"John Smith" ==> "Smith, John"</li>      *<li>"John Smith and Black Brown, Peter" ==> "Smith, John and Black      * Brown, Peter"</li>      *<li>"John von Neumann and John Smith and Black Brown, Peter" ==> "von      * Neumann, John and Smith, John and Black Brown, Peter".</li>      *</ul>      *      * @return formatted list of authors.      */
