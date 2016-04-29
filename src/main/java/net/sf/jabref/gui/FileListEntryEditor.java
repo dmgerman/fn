@@ -2336,9 +2336,7 @@ name|parent
 argument_list|,
 name|initial
 argument_list|,
-name|Globals
-operator|.
-name|NONE
+literal|""
 argument_list|,
 name|JFileChooser
 operator|.
