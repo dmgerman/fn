@@ -1943,11 +1943,6 @@ argument_list|()
 expr_stmt|;
 name|groupsTree
 operator|.
-name|validate
-argument_list|()
-expr_stmt|;
-name|groupsTree
-operator|.
 name|repaint
 argument_list|()
 expr_stmt|;
