@@ -186,6 +186,22 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+DECL|method|doesNotRemoveLetters ()
+specifier|public
+name|void
+name|doesNotRemoveLetters
+parameter_list|()
+block|{
+name|expectCorrect
+argument_list|(
+literal|"R1-R50"
+argument_list|,
+literal|"R1-R50"
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
 DECL|method|formatExample ()
 specifier|public
 name|void
