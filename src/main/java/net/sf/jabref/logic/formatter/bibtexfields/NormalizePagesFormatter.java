@@ -225,13 +225,10 @@ decl_stmt|;
 comment|// replacement?
 if|if
 condition|(
-operator|!
-name|newValue
+name|matcher
 operator|.
-name|equals
-argument_list|(
-name|cleanValue
-argument_list|)
+name|matches
+argument_list|()
 condition|)
 block|{
 comment|// write field
