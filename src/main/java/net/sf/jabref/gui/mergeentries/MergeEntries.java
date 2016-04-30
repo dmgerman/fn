@@ -364,7 +364,9 @@ name|logic
 operator|.
 name|formatter
 operator|.
-name|CaseChangers
+name|casechanger
+operator|.
+name|SentenceCaseFormatter
 import|;
 end_import
 
@@ -1647,9 +1649,9 @@ name|label
 init|=
 name|boldFontLabel
 argument_list|(
-name|CaseChangers
-operator|.
-name|TO_SENTENCE_CASE
+operator|new
+name|SentenceCaseFormatter
+argument_list|()
 operator|.
 name|format
 argument_list|(
