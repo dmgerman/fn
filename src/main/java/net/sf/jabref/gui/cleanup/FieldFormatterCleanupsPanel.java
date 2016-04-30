@@ -1252,6 +1252,13 @@ operator|.
 name|KEY_FIELD
 argument_list|)
 expr_stmt|;
+name|fieldNames
+operator|.
+name|add
+argument_list|(
+literal|"all"
+argument_list|)
+expr_stmt|;
 name|Collections
 operator|.
 name|sort
