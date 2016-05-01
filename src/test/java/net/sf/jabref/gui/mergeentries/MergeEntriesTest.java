@@ -232,6 +232,156 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+DECL|method|generateSymmetricHighlightingSingleWordAddTextWordDiff ()
+specifier|public
+name|void
+name|generateSymmetricHighlightingSingleWordAddTextWordDiff
+parameter_list|()
+block|{
+name|assertEquals
+argument_list|(
+literal|"<span class=change>foo</span>"
+argument_list|,
+name|MergeEntries
+operator|.
+name|generateSymmetricHighlighting
+argument_list|(
+literal|"foo"
+argument_list|,
+literal|"foobar"
+argument_list|,
+literal|" "
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|generateSymmetricHighlightingSingleWordAddTextCharacterDiff ()
+specifier|public
+name|void
+name|generateSymmetricHighlightingSingleWordAddTextCharacterDiff
+parameter_list|()
+block|{
+name|assertEquals
+argument_list|(
+literal|"foo"
+argument_list|,
+name|MergeEntries
+operator|.
+name|generateSymmetricHighlighting
+argument_list|(
+literal|"foo"
+argument_list|,
+literal|"foobar"
+argument_list|,
+literal|""
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|generateSymmetricHighlightingSingleWordDeleteTextWordDiff ()
+specifier|public
+name|void
+name|generateSymmetricHighlightingSingleWordDeleteTextWordDiff
+parameter_list|()
+block|{
+name|assertEquals
+argument_list|(
+literal|"<span class=change>foobar</span>"
+argument_list|,
+name|MergeEntries
+operator|.
+name|generateSymmetricHighlighting
+argument_list|(
+literal|"foobar"
+argument_list|,
+literal|"foo"
+argument_list|,
+literal|" "
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|generateSymmetricHighlightingSingleWordDeleteTextCharacterDiff ()
+specifier|public
+name|void
+name|generateSymmetricHighlightingSingleWordDeleteTextCharacterDiff
+parameter_list|()
+block|{
+name|assertEquals
+argument_list|(
+literal|"foo<span class=add>bar</span>"
+argument_list|,
+name|MergeEntries
+operator|.
+name|generateSymmetricHighlighting
+argument_list|(
+literal|"foobar"
+argument_list|,
+literal|"foo"
+argument_list|,
+literal|""
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|generateSymmetricHighlightingMultipleWordsDeleteTextCharacterDiff ()
+specifier|public
+name|void
+name|generateSymmetricHighlightingMultipleWordsDeleteTextCharacterDiff
+parameter_list|()
+block|{
+name|assertEquals
+argument_list|(
+literal|"foo<span class=add>bar</span> and<span class=add>some</span>thing"
+argument_list|,
+name|MergeEntries
+operator|.
+name|generateSymmetricHighlighting
+argument_list|(
+literal|"foobar and something"
+argument_list|,
+literal|"foo and thing"
+argument_list|,
+literal|""
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|generateSymmetricHighlightingMultipleWordsDeleteTextWordDiff ()
+specifier|public
+name|void
+name|generateSymmetricHighlightingMultipleWordsDeleteTextWordDiff
+parameter_list|()
+block|{
+name|assertEquals
+argument_list|(
+literal|"foo<span class=add>bar</span> and<span class=add>some</span> thing"
+argument_list|,
+name|MergeEntries
+operator|.
+name|generateSymmetricHighlighting
+argument_list|(
+literal|"foo bar and some thing"
+argument_list|,
+literal|"foo and thing"
+argument_list|,
+literal|" "
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_class
 
