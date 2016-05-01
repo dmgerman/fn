@@ -64,7 +64,7 @@ name|logic
 operator|.
 name|formatter
 operator|.
-name|BibtexFieldFormatters
+name|Formatter
 import|;
 end_import
 
@@ -80,7 +80,7 @@ name|logic
 operator|.
 name|formatter
 operator|.
-name|Formatter
+name|Formatters
 import|;
 end_import
 
@@ -136,7 +136,7 @@ control|(
 name|Formatter
 name|converter
 range|:
-name|BibtexFieldFormatters
+name|Formatters
 operator|.
 name|CONVERTERS
 control|)

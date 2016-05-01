@@ -74,7 +74,7 @@ name|logic
 operator|.
 name|formatter
 operator|.
-name|CaseChangers
+name|Formatter
 import|;
 end_import
 
@@ -90,7 +90,7 @@ name|logic
 operator|.
 name|formatter
 operator|.
-name|Formatter
+name|Formatters
 import|;
 end_import
 
@@ -151,9 +151,9 @@ specifier|final
 name|Formatter
 name|caseChanger
 range|:
-name|CaseChangers
+name|Formatters
 operator|.
-name|ALL
+name|CASE_CHANGERS
 control|)
 block|{
 name|JMenuItem
