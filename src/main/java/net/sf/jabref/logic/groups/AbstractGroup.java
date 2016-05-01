@@ -56,6 +56,22 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|importer
+operator|.
+name|fileformat
+operator|.
+name|ParseException
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|logic
 operator|.
 name|search
@@ -167,8 +183,8 @@ name|context
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Re-create a group instance from a textual representation.      *      * @param s The result from the group's toString() method.      * @return New instance of the encoded group.      * @throws Exception If an error occured and a group could not be created, e.g.      *                   due to a malformed regular expression.      */
-DECL|method|fromString (String s, int version)
+comment|/**      * Re-create a group instance from a textual representation.      *      * @param s The result from the group's toString() method.      * @return New instance of the encoded group.      * @throws ParseException If an error occurred and a group could not be created,      *                        e.g. due to a malformed regular expression.      */
+DECL|method|fromString (String s)
 specifier|public
 specifier|static
 name|AbstractGroup
@@ -176,12 +192,9 @@ name|fromString
 parameter_list|(
 name|String
 name|s
-parameter_list|,
-name|int
-name|version
 parameter_list|)
 throws|throws
-name|Exception
+name|ParseException
 block|{
 if|if
 condition|(
@@ -201,8 +214,6 @@ operator|.
 name|fromString
 argument_list|(
 name|s
-argument_list|,
-name|version
 argument_list|)
 return|;
 block|}
@@ -224,8 +235,6 @@ operator|.
 name|fromString
 argument_list|(
 name|s
-argument_list|,
-name|version
 argument_list|)
 return|;
 block|}
@@ -247,8 +256,6 @@ operator|.
 name|fromString
 argument_list|(
 name|s
-argument_list|,
-name|version
 argument_list|)
 return|;
 block|}
@@ -270,8 +277,6 @@ operator|.
 name|fromString
 argument_list|(
 name|s
-argument_list|,
-name|version
 argument_list|)
 return|;
 block|}

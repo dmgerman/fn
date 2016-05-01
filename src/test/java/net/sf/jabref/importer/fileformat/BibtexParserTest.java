@@ -8770,6 +8770,8 @@ name|integrationTestGroupTree
 parameter_list|()
 throws|throws
 name|IOException
+throws|,
+name|ParseException
 block|{
 name|ParserResult
 name|result

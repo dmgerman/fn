@@ -16,6 +16,22 @@ end_package
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|importer
+operator|.
+name|fileformat
+operator|.
+name|ParseException
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|junit
@@ -49,6 +65,8 @@ specifier|public
 name|void
 name|testToString
 parameter_list|()
+throws|throws
+name|ParseException
 block|{
 name|KeywordGroup
 name|group
@@ -89,6 +107,8 @@ specifier|public
 name|void
 name|testToString2
 parameter_list|()
+throws|throws
+name|ParseException
 block|{
 name|KeywordGroup
 name|group
