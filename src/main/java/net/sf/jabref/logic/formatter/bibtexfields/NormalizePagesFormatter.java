@@ -115,7 +115,7 @@ specifier|final
 name|String
 name|REJECT_LITERALS
 init|=
-literal|"[^0-9,\\-\\+]"
+literal|"[^a-zA-Z0-9,\\-\\+,]"
 decl_stmt|;
 DECL|field|PAGES_REPLACE_PATTERN
 specifier|private
@@ -155,7 +155,7 @@ return|return
 literal|"normalize_page_numbers"
 return|;
 block|}
-comment|/**      * Format page numbers, separated either by commas or double-hyphens.      * Converts the range number format of the<code>pages</code> field to page_number--page_number.      * Removes all literals except [0-9,-+].      * Keeps the existing String if the resulting field does not match the expected Regex.      *      *<example>      *     1-2 -> 1--2      *     1,2,3 -> 1,2,3      *     {1}-{2} -> 1--2      *     43+ -> 43+      *     Invalid -> Invalid      *</example>      */
+comment|/**      * Format page numbers, separated either by commas or double-hyphens.      * Converts the range number format of the<code>pages</code> field to page_number--page_number.      * Removes unwanted literals except letters, numbers and -+ signs.      * Keeps the existing String if the resulting field does not match the expected Regex.      *      *<example>      *     1-2 -> 1--2      *     1,2,3 -> 1,2,3      *     {1}-{2} -> 1--2      *     43+ -> 43+      *     Invalid -> Invalid      *</example>      */
 annotation|@
 name|Override
 DECL|method|format (String value)
@@ -225,13 +225,10 @@ decl_stmt|;
 comment|// replacement?
 if|if
 condition|(
-operator|!
-name|newValue
+name|matcher
 operator|.
-name|equals
-argument_list|(
-name|cleanValue
-argument_list|)
+name|matches
+argument_list|()
 condition|)
 block|{
 comment|// write field
