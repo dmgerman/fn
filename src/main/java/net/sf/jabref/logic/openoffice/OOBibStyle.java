@@ -438,6 +438,8 @@ DECL|field|name
 specifier|private
 name|String
 name|name
+init|=
+literal|""
 decl_stmt|;
 DECL|field|journals
 specifier|private
@@ -1522,10 +1524,6 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|name
-operator|=
-literal|null
-expr_stmt|;
 try|try
 init|(
 name|Reader

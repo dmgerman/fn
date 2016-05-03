@@ -600,7 +600,7 @@ argument_list|()
 decl_stmt|;
 name|loader
 operator|.
-name|addStyle
+name|addStyleIfValid
 argument_list|(
 name|filename
 argument_list|)
@@ -690,7 +690,7 @@ argument_list|()
 decl_stmt|;
 name|loader
 operator|.
-name|addStyle
+name|addStyleIfValid
 argument_list|(
 literal|"DefinitelyNotAValidFileNameOrWeAreExtremelyUnlucky"
 argument_list|)
@@ -1255,14 +1255,14 @@ argument_list|()
 decl_stmt|;
 name|loader
 operator|.
-name|addStyle
+name|addStyleIfValid
 argument_list|(
 name|filename
 argument_list|)
 expr_stmt|;
 name|loader
 operator|.
-name|addStyle
+name|addStyleIfValid
 argument_list|(
 name|filename
 argument_list|)
@@ -1328,7 +1328,7 @@ argument_list|)
 expr_stmt|;
 name|loader
 operator|.
-name|addStyle
+name|addStyleIfValid
 argument_list|(
 literal|null
 argument_list|)
