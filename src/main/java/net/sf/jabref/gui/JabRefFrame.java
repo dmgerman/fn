@@ -11283,6 +11283,13 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+name|setEnabled
+argument_list|(
+name|openAndSavedDatabasesOnlyActions
+argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
 block|}
 if|if
 condition|(
