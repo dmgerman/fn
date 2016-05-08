@@ -281,6 +281,8 @@ DECL|class|BibEntry
 specifier|public
 class|class
 name|BibEntry
+implements|implements
+name|Cloneable
 block|{
 DECL|field|LOGGER
 specifier|private

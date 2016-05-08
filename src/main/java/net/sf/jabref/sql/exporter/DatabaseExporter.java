@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General public static License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General public static License for more details.      You should have received a copy of the GNU General public static License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
+comment|/*  Copyright (C) 2003-2016 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General public static License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General public static License for more details.      You should have received a copy of the GNU General public static License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
 end_comment
 
 begin_package
@@ -600,7 +600,7 @@ operator|=
 name|database
 expr_stmt|;
 block|}
-comment|/**      * Method for the exportDatabase methods.      *      * @param databaseContext the database to export      * @param entriesToExport The list of the entries to export.      * @param out             The output (PrintStream or Connection) object to which the DML should be written.      */
+comment|/**      * Method for the exportDatabase methods.      *      * @param databaseContext the database to export      * @param entriesToExport The list of the entries to export.      * @param out             The output (PrintStream or Connection) object to which the DML should be written.      * @throws SQLException      */
 DECL|method|performExport (BibDatabaseContext databaseContext, List<BibEntry> entriesToExport, Connection out, String dbName)
 specifier|public
 name|void
@@ -622,7 +622,7 @@ name|String
 name|dbName
 parameter_list|)
 throws|throws
-name|Exception
+name|SQLException
 block|{
 name|SavePreferences
 name|savePrefs
@@ -945,8 +945,6 @@ specifier|final
 name|int
 name|database_id
 parameter_list|)
-throws|throws
-name|SQLException
 block|{
 if|if
 condition|(
@@ -1862,12 +1860,7 @@ init|(
 name|Statement
 name|statement
 init|=
-operator|(
-operator|(
-name|Connection
-operator|)
 name|out
-operator|)
 operator|.
 name|createStatement
 argument_list|()
@@ -2002,12 +1995,7 @@ init|(
 name|Statement
 name|sm
 init|=
-operator|(
-operator|(
-name|Connection
-operator|)
 name|out
-operator|)
 operator|.
 name|createStatement
 argument_list|()

@@ -417,6 +417,11 @@ name|void
 name|initSettingsPanel
 parameter_list|()
 block|{
+name|super
+operator|.
+name|initSettingsPanel
+argument_list|()
+expr_stmt|;
 name|settings
 operator|=
 operator|new
