@@ -28,6 +28,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Objects
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -637,17 +647,13 @@ decl_stmt|;
 if|if
 condition|(
 operator|(
-operator|(
-name|oldValue
-operator|==
-literal|null
-operator|)
-operator|||
 operator|!
-name|oldValue
+name|Objects
 operator|.
 name|equals
 argument_list|(
+name|oldValue
+argument_list|,
 name|updatedValue
 argument_list|)
 operator|)
