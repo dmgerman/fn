@@ -44,7 +44,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Arrays
+name|Collections
 import|;
 end_import
 
@@ -706,9 +706,9 @@ name|imi
 operator|.
 name|automatedImport
 argument_list|(
-name|Arrays
+name|Collections
 operator|.
-name|asList
+name|singletonList
 argument_list|(
 name|file
 operator|.

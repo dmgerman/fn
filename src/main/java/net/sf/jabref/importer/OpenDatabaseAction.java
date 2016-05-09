@@ -1212,11 +1212,8 @@ name|INSTANCE
 operator|.
 name|execute
 argument_list|(
-call|(
-name|Runnable
-call|)
-argument_list|()
-operator|->
+parameter_list|()
+lambda|->
 block|{
 for|for
 control|(
@@ -1235,8 +1232,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-block|)
-empty_stmt|;
+argument_list|)
+expr_stmt|;
 for|for
 control|(
 name|File
@@ -1326,13 +1323,7 @@ operator|)
 argument_list|)
 expr_stmt|;
 block|}
-end_class
-
-begin_comment
 comment|/**      * @param file the file, may be null or not existing      */
-end_comment
-
-begin_function
 DECL|method|openTheFile (File file, boolean raisePanel)
 specifier|private
 name|void
@@ -1951,13 +1942,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-end_function
-
-begin_comment
 comment|/**      * Go through the list of post open actions, and perform those that need to be performed.      *      * @param panel  The BasePanel where the database is shown.      * @param result The result of the bib file parse operation.      */
-end_comment
-
-begin_function
 DECL|method|performPostOpenActions (BasePanel panel, ParserResult result, boolean mustRaisePanel)
 specifier|public
 specifier|static
@@ -2025,9 +2010,6 @@ expr_stmt|;
 block|}
 block|}
 block|}
-end_function
-
-begin_function
 DECL|method|addNewDatabase (ParserResult result, final File file, boolean raisePanel)
 specifier|public
 name|BasePanel
@@ -2205,13 +2187,7 @@ return|return
 name|basePanel
 return|;
 block|}
-end_function
-
-begin_comment
 comment|/**      * Opens a new database.      */
-end_comment
-
-begin_function
 DECL|method|loadDatabase (File fileToOpen, Charset defaultEncoding)
 specifier|public
 specifier|static
@@ -2409,13 +2385,7 @@ name|result
 return|;
 block|}
 block|}
-end_function
-
-begin_comment
 comment|/**      * Opens the file with the provided encoding. If this fails (or no encoding is provided), then the fallback encoding      * will be used.      */
-end_comment
-
-begin_function
 DECL|method|openFile (File fileToOpen, Optional<Charset> encoding, Charset defaultEncoding)
 specifier|private
 specifier|static
@@ -2504,13 +2474,7 @@ argument_list|)
 return|;
 block|}
 block|}
-end_function
-
-begin_comment
 comment|/**      * Searches the file for "Encoding: myEncoding" and returns the found supplied encoding.      */
-end_comment
-
-begin_function
 DECL|method|getSuppliedEncoding (Reader reader)
 specifier|private
 specifier|static
@@ -2715,13 +2679,7 @@ name|empty
 argument_list|()
 return|;
 block|}
-end_function
-
-begin_comment
 comment|/**      * Load database (bib-file) or, if there exists, a newer autosave version, unless the flag is set to ignore the autosave     *     * @param name Name of the bib-file to open     * @param ignoreAutosave true if autosave version of the file should be ignored     * @return ParserResult which never is null     */
-end_comment
-
-begin_function
 DECL|method|loadDatabaseOrAutoSave (String name, boolean ignoreAutosave)
 specifier|public
 specifier|static
@@ -3030,8 +2988,8 @@ name|pr
 return|;
 block|}
 block|}
-end_function
+block|}
+end_class
 
-unit|}
 end_unit
 

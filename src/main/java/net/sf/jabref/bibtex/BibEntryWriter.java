@@ -796,6 +796,7 @@ comment|// only write field if is is not empty or if empty fields should be incl
 comment|// the first condition mirrors mirror behavior of com.jgoodies.common.base.Strings.isNotBlank(str)
 if|if
 condition|(
+operator|!
 name|Strings
 operator|.
 name|nullToEmpty
@@ -809,10 +810,6 @@ operator|.
 name|isEmpty
 argument_list|()
 condition|)
-block|{
-return|return;
-block|}
-else|else
 block|{
 name|out
 operator|.

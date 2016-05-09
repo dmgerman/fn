@@ -213,12 +213,10 @@ name|Action
 operator|.
 name|MNEMONIC_KEY
 argument_list|,
-name|Integer
-operator|.
-name|valueOf
-argument_list|(
+operator|(
+name|int
+operator|)
 name|mnemonic
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|value

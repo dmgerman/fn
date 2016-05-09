@@ -6733,9 +6733,9 @@ name|style
 operator|.
 name|getNumCitationMarker
 argument_list|(
-name|Arrays
+name|Collections
 operator|.
-name|asList
+name|singletonList
 argument_list|(
 name|number
 operator|++

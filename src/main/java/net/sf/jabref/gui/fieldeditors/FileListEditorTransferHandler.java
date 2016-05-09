@@ -601,11 +601,8 @@ name|SwingUtilities
 operator|.
 name|invokeLater
 argument_list|(
-call|(
-name|Runnable
-call|)
-argument_list|()
-operator|->
+parameter_list|()
+lambda|->
 block|{
 for|for
 control|(
@@ -665,7 +662,8 @@ operator|.
 name|getCurrentBasePanel
 argument_list|()
 argument_list|)
-block|;                                 }
+expr_stmt|;
+block|}
 name|droppedFileHandler
 operator|.
 name|handleDroppedfile

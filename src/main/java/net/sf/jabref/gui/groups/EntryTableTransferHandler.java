@@ -178,7 +178,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Arrays
+name|Collections
 import|;
 end_import
 
@@ -1259,9 +1259,9 @@ name|importer
 operator|.
 name|automatedImport
 argument_list|(
-name|Arrays
+name|Collections
 operator|.
-name|asList
+name|singletonList
 argument_list|(
 name|tmpfile
 operator|.
@@ -1567,16 +1567,8 @@ name|INSTANCE
 operator|.
 name|execute
 argument_list|(
-operator|new
-name|Runnable
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|run
 parameter_list|()
+lambda|->
 block|{
 specifier|final
 name|ImportPdfFilesResult
@@ -1621,7 +1613,6 @@ argument_list|,
 name|dropRow
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 argument_list|)
@@ -1912,9 +1903,9 @@ name|importer
 operator|.
 name|automatedImport
 argument_list|(
-name|Arrays
+name|Collections
 operator|.
-name|asList
+name|singletonList
 argument_list|(
 name|tmpfile
 operator|.

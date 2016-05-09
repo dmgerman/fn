@@ -2108,9 +2108,8 @@ argument_list|)
 operator|)
 condition|)
 block|{
-name|String
-name|relFileName
-init|=
+name|link
+operator|=
 name|fl
 operator|.
 name|getCanonicalPath
@@ -2125,10 +2124,6 @@ argument_list|()
 operator|+
 literal|1
 argument_list|)
-decl_stmt|;
-name|link
-operator|=
-name|relFileName
 expr_stmt|;
 name|found
 operator|=

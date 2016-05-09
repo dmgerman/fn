@@ -20,7 +20,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Arrays
+name|Collections
 import|;
 end_import
 
@@ -326,9 +326,9 @@ name|SpecialFieldsUtils
 operator|.
 name|FIELDNAME_RANKING
 argument_list|,
-name|Arrays
+name|Collections
 operator|.
-name|asList
+name|singletonList
 argument_list|(
 name|SpecialFieldsUtils
 operator|.
@@ -411,9 +411,9 @@ name|SpecialFieldsUtils
 operator|.
 name|FIELDNAME_PRIORITY
 argument_list|,
-name|Arrays
+name|Collections
 operator|.
-name|asList
+name|singletonList
 argument_list|(
 name|SpecialFieldsUtils
 operator|.
@@ -500,9 +500,9 @@ name|SpecialFieldsUtils
 operator|.
 name|FIELDNAME_READ
 argument_list|,
-name|Arrays
+name|Collections
 operator|.
-name|asList
+name|singletonList
 argument_list|(
 name|SpecialFieldsUtils
 operator|.
@@ -588,9 +588,9 @@ name|SpecialFieldsUtils
 operator|.
 name|FIELDNAME_RELEVANCE
 argument_list|,
-name|Arrays
+name|Collections
 operator|.
-name|asList
+name|singletonList
 argument_list|(
 name|SpecialFieldsUtils
 operator|.
@@ -623,9 +623,9 @@ name|SpecialFieldsUtils
 operator|.
 name|FIELDNAME_PRINTED
 argument_list|,
-name|Arrays
+name|Collections
 operator|.
-name|asList
+name|singletonList
 argument_list|(
 name|SpecialFieldsUtils
 operator|.
@@ -658,9 +658,9 @@ name|SpecialFieldsUtils
 operator|.
 name|FIELDNAME_QUALITY
 argument_list|,
-name|Arrays
+name|Collections
 operator|.
-name|asList
+name|singletonList
 argument_list|(
 name|SpecialFieldsUtils
 operator|.
@@ -694,9 +694,9 @@ name|Globals
 operator|.
 name|FILE_FIELD
 argument_list|,
-name|Arrays
+name|Collections
 operator|.
-name|asList
+name|singletonList
 argument_list|(
 name|Globals
 operator|.
@@ -974,9 +974,9 @@ name|MainTableColumn
 argument_list|(
 name|externalFileTypeName
 argument_list|,
-name|Arrays
+name|Collections
 operator|.
-name|asList
+name|singletonList
 argument_list|(
 name|Globals
 operator|.

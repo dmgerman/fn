@@ -616,11 +616,8 @@ name|INSTANCE
 operator|.
 name|executeAndWait
 argument_list|(
-call|(
-name|Runnable
-call|)
-argument_list|()
-operator|->
+parameter_list|()
+lambda|->
 block|{
 try|try
 init|(
@@ -693,10 +690,11 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-block|)
-class|;
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 end_class
 
-unit|} }
 end_unit
 

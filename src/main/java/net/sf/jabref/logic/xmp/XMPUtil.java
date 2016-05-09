@@ -902,8 +902,6 @@ name|inputStream
 parameter_list|)
 throws|throws
 name|IOException
-throws|,
-name|EncryptedPdfsNotSupportedException
 block|{
 name|PDDocument
 name|doc

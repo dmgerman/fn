@@ -56,7 +56,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Arrays
+name|Collections
 import|;
 end_import
 
@@ -684,9 +684,9 @@ condition|)
 block|{
 name|dirs
 operator|=
-name|Arrays
+name|Collections
 operator|.
-name|asList
+name|singletonList
 argument_list|(
 name|Globals
 operator|.

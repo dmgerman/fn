@@ -2027,11 +2027,8 @@ name|INSTANCE
 operator|.
 name|execute
 argument_list|(
-call|(
-name|Runnable
-call|)
-argument_list|()
-operator|->
+parameter_list|()
+lambda|->
 block|{
 if|if
 condition|(
@@ -2063,7 +2060,7 @@ expr_stmt|;
 block|}
 name|ChangeScanner
 name|scanner
-operator|=
+init|=
 operator|new
 name|ChangeScanner
 argument_list|(
@@ -2082,7 +2079,7 @@ operator|.
 name|getDatabaseFile
 argument_list|()
 argument_list|)
-argument_list|;
+decl_stmt|;
 name|JabRefExecutorService
 operator|.
 name|INSTANCE
@@ -2104,11 +2101,6 @@ name|scanner
 operator|.
 name|displayResult
 argument_list|(
-operator|(
-name|ChangeScanner
-operator|.
-name|DisplayResultCallback
-operator|)
 name|resolved
 lambda|->
 block|{
@@ -2128,11 +2120,8 @@ name|SwingUtilities
 operator|.
 name|invokeLater
 argument_list|(
-call|(
-name|Runnable
-call|)
-argument_list|()
-operator|->
+parameter_list|()
+lambda|->
 name|panel
 operator|.
 name|getSidePaneManager
@@ -2157,8 +2146,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-block|)
-empty_stmt|;
+argument_list|)
+expr_stmt|;
 return|return
 literal|true
 return|;
@@ -2232,18 +2221,13 @@ expr_stmt|;
 block|}
 block|}
 block|}
-end_class
-
-begin_comment
 comment|// Return false as either no external database file modifications have been found or overwrite is requested any way
-end_comment
-
-begin_return
 return|return
 literal|false
 return|;
-end_return
+block|}
+block|}
+end_class
 
-unit|} }
 end_unit
 

@@ -258,9 +258,9 @@ literal|null
 condition|)
 block|{
 return|return
-name|Arrays
+name|Collections
 operator|.
-name|asList
+name|singletonList
 argument_list|(
 operator|(
 name|String

@@ -617,11 +617,8 @@ name|INSTANCE
 operator|.
 name|execute
 argument_list|(
-call|(
-name|Runnable
-call|)
-argument_list|()
-operator|->
+parameter_list|()
+lambda|->
 block|{
 try|try
 block|{
@@ -729,11 +726,8 @@ name|downloadFinished
 argument_list|)
 expr_stmt|;
 block|}
-block|)
-class|;
-end_class
-
-begin_decl_stmt
+argument_list|)
+expr_stmt|;
 name|Optional
 argument_list|<
 name|ExternalFileType
@@ -745,9 +739,6 @@ operator|.
 name|empty
 argument_list|()
 decl_stmt|;
-end_decl_stmt
-
-begin_if
 if|if
 condition|(
 name|mimeType
@@ -777,19 +768,10 @@ name|mimeType
 argument_list|)
 expr_stmt|;
 block|}
-end_if
-
-begin_comment
 comment|// Then, while the download is proceeding, let the user choose the details of the file:
-end_comment
-
-begin_decl_stmt
 name|String
 name|suffix
 decl_stmt|;
-end_decl_stmt
-
-begin_if
 if|if
 condition|(
 name|suggestedType
@@ -844,9 +826,6 @@ name|suffix
 argument_list|)
 expr_stmt|;
 block|}
-end_if
-
-begin_decl_stmt
 name|String
 name|suggestedName
 init|=
@@ -855,9 +834,6 @@ argument_list|(
 name|suffix
 argument_list|)
 decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
 name|List
 argument_list|<
 name|String
@@ -869,15 +845,9 @@ operator|.
 name|getFileDirectory
 argument_list|()
 decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
 name|String
 name|directory
 decl_stmt|;
-end_decl_stmt
-
-begin_if
 if|if
 condition|(
 name|fDirectory
@@ -903,9 +873,6 @@ literal|0
 argument_list|)
 expr_stmt|;
 block|}
-end_if
-
-begin_decl_stmt
 specifier|final
 name|String
 name|suggestDir
@@ -923,9 +890,6 @@ argument_list|)
 else|:
 name|directory
 decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
 name|File
 name|file
 init|=
@@ -941,9 +905,6 @@ argument_list|,
 name|suggestedName
 argument_list|)
 decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
 name|FileListEntry
 name|entry
 init|=
@@ -960,9 +921,6 @@ argument_list|,
 name|suggestedType
 argument_list|)
 decl_stmt|;
-end_decl_stmt
-
-begin_expr_stmt
 name|editor
 operator|=
 operator|new
@@ -979,9 +937,6 @@ argument_list|,
 name|databaseContext
 argument_list|)
 expr_stmt|;
-end_expr_stmt
-
-begin_expr_stmt
 name|editor
 operator|.
 name|getProgressBar
@@ -992,9 +947,6 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
-end_expr_stmt
-
-begin_expr_stmt
 name|editor
 operator|.
 name|setOkEnabled
@@ -1002,9 +954,6 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
-end_expr_stmt
-
-begin_expr_stmt
 name|editor
 operator|.
 name|setExternalConfirm
@@ -1126,9 +1075,6 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
-end_expr_stmt
-
-begin_if
 if|if
 condition|(
 name|dontShowDialog
@@ -1148,13 +1094,7 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
-end_if
-
-begin_comment
 comment|// Editor closed. Go on:
-end_comment
-
-begin_if
 if|if
 condition|(
 name|editor
@@ -1396,16 +1336,10 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-end_if
-
-begin_comment
-unit|}
+block|}
 comment|/**      * Construct a File object pointing to the file linked, whether the link is      * absolute or relative to the main directory.      *      * @param directory The main directory.      * @param link      The absolute or relative link.      * @return The expanded File.      */
-end_comment
-
-begin_function
 DECL|method|expandFilename (String directory, String link)
-unit|private
+specifier|private
 name|File
 name|expandFilename
 parameter_list|(
@@ -1462,13 +1396,7 @@ return|return
 name|toFile
 return|;
 block|}
-end_function
-
-begin_comment
 comment|/**      * This is called by the download thread when download is completed.      */
-end_comment
-
-begin_function
 DECL|method|downloadFinished ()
 specifier|private
 name|void
@@ -1523,13 +1451,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-end_function
-
-begin_comment
 comment|// FIXME: will break download if no bibtexkey is present!
-end_comment
-
-begin_function
 DECL|method|getSuggestedFileName (String suffix)
 specifier|private
 name|String
@@ -1610,13 +1532,7 @@ return|return
 name|plannedName
 return|;
 block|}
-end_function
-
-begin_comment
 comment|/**      * Look for the last '.' in the link, and return the following characters.      * This gives the extension for most reasonably named links.      *      * @param link The link      * @return The suffix, excluding the dot (e.g. "pdf")      */
-end_comment
-
-begin_function
 DECL|method|getSuffix (final String link)
 specifier|private
 name|String
@@ -1896,13 +1812,7 @@ name|suffix
 return|;
 block|}
 block|}
-end_function
-
-begin_comment
 comment|/**      * Callback interface that users of this class must implement in order to receive      * notification when download is complete.      */
-end_comment
-
-begin_interface
 annotation|@
 name|FunctionalInterface
 DECL|interface|DownloadCallback
@@ -1919,8 +1829,8 @@ name|file
 parameter_list|)
 function_decl|;
 block|}
-end_interface
+block|}
+end_class
 
-unit|}
 end_unit
 

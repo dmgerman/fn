@@ -315,9 +315,6 @@ operator|new
 name|StringTokenizer
 argument_list|(
 name|o
-operator|.
-name|toString
-argument_list|()
 argument_list|,
 name|remove
 argument_list|,
