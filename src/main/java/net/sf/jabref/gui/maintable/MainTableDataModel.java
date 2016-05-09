@@ -174,22 +174,6 @@ name|jabref
 operator|.
 name|model
 operator|.
-name|database
-operator|.
-name|DatabaseChangeListener
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
 name|entry
 operator|.
 name|BibEntry
@@ -840,10 +824,10 @@ operator|.
 name|groupingState
 return|;
 block|}
-DECL|method|getEventList ()
+DECL|method|getListSynchronizer ()
 specifier|public
-name|DatabaseChangeListener
-name|getEventList
+name|ListSynchronizer
+name|getListSynchronizer
 parameter_list|()
 block|{
 return|return
