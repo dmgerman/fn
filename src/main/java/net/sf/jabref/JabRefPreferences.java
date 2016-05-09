@@ -5017,7 +5017,7 @@ name|put
 argument_list|(
 name|HIGHLIGHT_GROUPS_MATCHING
 argument_list|,
-literal|""
+literal|"all"
 argument_list|)
 expr_stmt|;
 name|defaults
