@@ -556,7 +556,7 @@ operator|.
 name|getOutputStream
 argument_list|()
 argument_list|)
-init|;)
+init|)
 block|{
 name|wr
 operator|.

@@ -296,7 +296,7 @@ block|,
 name|MONTH
 block|,
 name|OTHER
-block|;     }
+block|}
 DECL|field|field
 specifier|private
 specifier|final
