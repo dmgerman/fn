@@ -183,9 +183,9 @@ argument_list|()
 condition|)
 block|{
 return|return
-operator|new
-name|ArrayList
-argument_list|<>
+name|Collections
+operator|.
+name|emptyList
 argument_list|()
 return|;
 block|}
@@ -271,9 +271,9 @@ argument_list|)
 return|;
 block|}
 return|return
-operator|new
-name|ArrayList
-argument_list|<>
+name|Collections
+operator|.
+name|emptyList
 argument_list|()
 return|;
 block|}

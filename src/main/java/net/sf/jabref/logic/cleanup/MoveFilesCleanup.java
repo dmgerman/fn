@@ -232,9 +232,9 @@ argument_list|()
 condition|)
 block|{
 return|return
-operator|new
-name|ArrayList
-argument_list|<>
+name|Collections
+operator|.
+name|emptyList
 argument_list|()
 return|;
 block|}
@@ -288,9 +288,9 @@ argument_list|()
 condition|)
 block|{
 return|return
-operator|new
-name|ArrayList
-argument_list|<>
+name|Collections
+operator|.
+name|emptyList
 argument_list|()
 return|;
 block|}
@@ -381,6 +381,13 @@ name|exists
 argument_list|()
 condition|)
 block|{
+name|newFileList
+operator|.
+name|add
+argument_list|(
+name|fileEntry
+argument_list|)
+expr_stmt|;
 continue|continue;
 block|}
 name|File
@@ -412,6 +419,13 @@ argument_list|()
 condition|)
 block|{
 comment|// We do not overwrite already existing files
+name|newFileList
+operator|.
+name|add
+argument_list|(
+name|fileEntry
+argument_list|)
+expr_stmt|;
 continue|continue;
 block|}
 name|oldFile
@@ -528,9 +542,9 @@ return|;
 block|}
 block|}
 return|return
-operator|new
-name|ArrayList
-argument_list|<>
+name|Collections
+operator|.
+name|emptyList
 argument_list|()
 return|;
 block|}

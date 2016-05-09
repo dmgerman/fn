@@ -201,13 +201,8 @@ decl_stmt|;
 DECL|field|onlyRelativePaths
 specifier|private
 specifier|final
-name|Boolean
+name|boolean
 name|onlyRelativePaths
-decl_stmt|;
-DECL|field|unsuccessfulRenames
-specifier|private
-name|int
-name|unsuccessfulRenames
 decl_stmt|;
 DECL|field|repository
 specifier|private
@@ -215,11 +210,16 @@ specifier|final
 name|JournalAbbreviationRepository
 name|repository
 decl_stmt|;
-DECL|method|RenamePdfCleanup (Boolean onlyRelativePaths, BibDatabaseContext databaseContext, JournalAbbreviationRepository repository)
+DECL|field|unsuccessfulRenames
+specifier|private
+name|int
+name|unsuccessfulRenames
+decl_stmt|;
+DECL|method|RenamePdfCleanup (boolean onlyRelativePaths, BibDatabaseContext databaseContext, JournalAbbreviationRepository repository)
 specifier|public
 name|RenamePdfCleanup
 parameter_list|(
-name|Boolean
+name|boolean
 name|onlyRelativePaths
 parameter_list|,
 name|BibDatabaseContext
@@ -337,6 +337,13 @@ argument_list|()
 operator|)
 condition|)
 block|{
+name|newFileList
+operator|.
+name|add
+argument_list|(
+name|flEntry
+argument_list|)
+expr_stmt|;
 continue|continue;
 block|}
 name|StringBuilder
@@ -428,6 +435,13 @@ operator|)
 condition|)
 block|{
 comment|// something went wrong. Just skip this entry
+name|newFileList
+operator|.
+name|add
+argument_list|(
+name|flEntry
+argument_list|)
+expr_stmt|;
 continue|continue;
 block|}
 name|String
@@ -470,7 +484,7 @@ operator|.
 name|toString
 argument_list|()
 decl_stmt|;
-name|Boolean
+name|boolean
 name|pathsDifferOnlyByCase
 init|=
 name|newPath
@@ -507,6 +521,13 @@ comment|// we do not overwrite files
 comment|// Since File.exists is sometimes not case-sensitive, the check pathsDifferOnlyByCase ensures that we
 comment|// nonetheless rename files to a new name which just differs by case.
 comment|// TODO: we could check here if the newPath file is linked with the current entry. And if not, we could add a link
+name|newFileList
+operator|.
+name|add
+argument_list|(
+name|flEntry
+argument_list|)
+expr_stmt|;
 continue|continue;
 block|}
 comment|//do rename
@@ -699,9 +720,9 @@ return|;
 block|}
 block|}
 return|return
-operator|new
-name|ArrayList
-argument_list|<>
+name|Collections
+operator|.
+name|emptyList
 argument_list|()
 return|;
 block|}
