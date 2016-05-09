@@ -4834,12 +4834,9 @@ name|callBacks
 operator|.
 name|forEach
 argument_list|(
-name|c
-lambda|->
-name|c
-operator|.
+name|CallBack
+operator|::
 name|stopFetching
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

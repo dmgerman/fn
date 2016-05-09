@@ -1585,12 +1585,9 @@ argument_list|()
 operator|.
 name|map
 argument_list|(
-name|author
-lambda|->
-name|author
-operator|.
+name|Author
+operator|::
 name|getNameForAlphabetization
-argument_list|()
 argument_list|)
 operator|.
 name|collect

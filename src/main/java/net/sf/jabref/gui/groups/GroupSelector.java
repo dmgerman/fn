@@ -1545,20 +1545,8 @@ name|floatCb
 operator|.
 name|addChangeListener
 argument_list|(
-operator|new
-name|ChangeListener
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|stateChanged
-parameter_list|(
-name|ChangeEvent
 name|event
-parameter_list|)
-block|{
+lambda|->
 name|Globals
 operator|.
 name|prefs
@@ -1574,29 +1562,14 @@ operator|.
 name|isSelected
 argument_list|()
 argument_list|)
-expr_stmt|;
-block|}
-block|}
 argument_list|)
 expr_stmt|;
 name|andCb
 operator|.
 name|addChangeListener
 argument_list|(
-operator|new
-name|ChangeListener
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|stateChanged
-parameter_list|(
-name|ChangeEvent
 name|event
-parameter_list|)
-block|{
+lambda|->
 name|Globals
 operator|.
 name|prefs
@@ -1612,29 +1585,14 @@ operator|.
 name|isSelected
 argument_list|()
 argument_list|)
-expr_stmt|;
-block|}
-block|}
 argument_list|)
 expr_stmt|;
 name|invCb
 operator|.
 name|addChangeListener
 argument_list|(
-operator|new
-name|ChangeListener
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|stateChanged
-parameter_list|(
-name|ChangeEvent
 name|event
-parameter_list|)
-block|{
+lambda|->
 name|Globals
 operator|.
 name|prefs
@@ -1650,9 +1608,6 @@ operator|.
 name|isSelected
 argument_list|()
 argument_list|)
-expr_stmt|;
-block|}
-block|}
 argument_list|)
 expr_stmt|;
 name|showOverlappingGroups
@@ -1714,20 +1669,8 @@ name|select
 operator|.
 name|addChangeListener
 argument_list|(
-operator|new
-name|ChangeListener
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|stateChanged
-parameter_list|(
-name|ChangeEvent
 name|event
-parameter_list|)
-block|{
+lambda|->
 name|Globals
 operator|.
 name|prefs
@@ -1743,9 +1686,6 @@ operator|.
 name|isSelected
 argument_list|()
 argument_list|)
-expr_stmt|;
-block|}
-block|}
 argument_list|)
 expr_stmt|;
 name|grayOut
@@ -1955,20 +1895,8 @@ name|autoAssignGroup
 operator|.
 name|addChangeListener
 argument_list|(
-operator|new
-name|ChangeListener
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|stateChanged
-parameter_list|(
-name|ChangeEvent
 name|event
-parameter_list|)
-block|{
+lambda|->
 name|Globals
 operator|.
 name|prefs
@@ -1984,9 +1912,6 @@ operator|.
 name|isSelected
 argument_list|()
 argument_list|)
-expr_stmt|;
-block|}
-block|}
 argument_list|)
 expr_stmt|;
 name|invCb
@@ -4717,12 +4642,9 @@ argument_list|()
 operator|.
 name|allMatch
 argument_list|(
-name|node
-lambda|->
-name|node
-operator|.
+name|GroupTreeNodeViewModel
+operator|::
 name|isAllEntriesGroup
-argument_list|()
 argument_list|)
 condition|)
 block|{
@@ -4741,7 +4663,7 @@ name|DisplayOption
 operator|.
 name|DISABLED
 argument_list|)
-block|;
+expr_stmt|;
 if|if
 condition|(
 name|showOverlappingGroups
@@ -4785,9 +4707,6 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-end_class
-
-begin_function
 DECL|method|updateShownEntriesAccordingToSelectedGroups ()
 specifier|private
 name|void
@@ -4890,9 +4809,6 @@ name|update
 argument_list|()
 expr_stmt|;
 block|}
-end_function
-
-begin_function
 DECL|method|getLeafsOfSelection ()
 specifier|private
 name|List
@@ -4976,9 +4892,6 @@ return|return
 name|selectedLeafs
 return|;
 block|}
-end_function
-
-begin_function
 DECL|method|getFirstSelectedNode ()
 specifier|private
 name|GroupTreeNodeViewModel
@@ -5014,9 +4927,6 @@ return|return
 literal|null
 return|;
 block|}
-end_function
-
-begin_class
 DECL|class|GroupingWorker
 class|class
 name|GroupingWorker
@@ -5243,13 +5153,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-end_class
-
-begin_comment
 comment|/**      * Revalidate the groups tree (e.g. after the data stored in the model has been changed) and maintain the current      * selection and expansion state.      */
-end_comment
-
-begin_function
 DECL|method|revalidateGroups ()
 specifier|public
 name|void
@@ -5262,13 +5166,7 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
-end_function
-
-begin_comment
 comment|/**      * Revalidate the groups tree (e.g. after the data stored in the model has been changed) and maintain the current      * selection and expansion state.      *      * @param node If this is non-null, the view is scrolled to make it visible.      */
-end_comment
-
-begin_function
 DECL|method|revalidateGroups (GroupTreeNodeViewModel node)
 specifier|private
 name|void
@@ -5292,13 +5190,7 @@ name|node
 argument_list|)
 expr_stmt|;
 block|}
-end_function
-
-begin_comment
 comment|/**      * Revalidate the groups tree (e.g. after the data stored in the model has been changed) and set the specified      * selection and expansion state.      */
-end_comment
-
-begin_function
 DECL|method|revalidateGroups (TreePath[] selectionPaths, Enumeration<TreePath> expandedNodes)
 specifier|public
 name|void
@@ -5325,13 +5217,7 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
-end_function
-
-begin_comment
 comment|/**      * Revalidate the groups tree (e.g. after the data stored in the model has been changed) and set the specified      * selection and expansion state.      *      * @param node If this is non-null, the view is scrolled to make it visible.      */
-end_comment
-
-begin_function
 DECL|method|revalidateGroups (TreePath[] selectionPaths, Enumeration<TreePath> expandedNodes, GroupTreeNodeViewModel node)
 specifier|private
 name|void
@@ -5428,9 +5314,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-end_function
-
-begin_function
 annotation|@
 name|Override
 DECL|method|componentOpening ()
@@ -5445,9 +5328,6 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
-end_function
-
-begin_function
 annotation|@
 name|Override
 DECL|method|getRescalingWeight ()
@@ -5460,9 +5340,6 @@ return|return
 literal|1
 return|;
 block|}
-end_function
-
-begin_function
 annotation|@
 name|Override
 DECL|method|componentClosing ()
@@ -5506,9 +5383,6 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
-end_function
-
-begin_function
 DECL|method|setGroups (GroupTreeNode groupsRoot)
 specifier|private
 name|void
@@ -5586,13 +5460,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-end_function
-
-begin_comment
 comment|/**      * Adds the specified node as a child of the current root. The group contained in<b>newGroups</b> must not be of      * type AllEntriesGroup, since every tree has exactly one AllEntriesGroup (its root). The<b>newGroups</b> are      * inserted directly, i.e. they are not deepCopy()'d.      */
-end_comment
-
-begin_function
 DECL|method|addGroups (GroupTreeNode newGroups, CompoundEdit ce)
 specifier|public
 name|void
@@ -5657,9 +5525,6 @@ name|undo
 argument_list|)
 expr_stmt|;
 block|}
-end_function
-
-begin_class
 DECL|class|NodeAction
 specifier|private
 specifier|abstract
@@ -5727,9 +5592,6 @@ argument_list|()
 return|;
 block|}
 block|}
-end_class
-
-begin_class
 DECL|class|EditGroupAction
 specifier|private
 class|class
@@ -5943,9 +5805,6 @@ expr_stmt|;
 block|}
 block|}
 block|}
-end_class
-
-begin_class
 DECL|class|AddGroupAction
 specifier|private
 class|class
@@ -6159,9 +6018,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-end_class
-
-begin_class
 DECL|class|AddSubgroupAction
 specifier|private
 class|class
@@ -6328,9 +6184,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-end_class
-
-begin_class
 DECL|class|RemoveGroupAndSubgroupsAction
 specifier|private
 class|class
@@ -6485,9 +6338,6 @@ expr_stmt|;
 block|}
 block|}
 block|}
-end_class
-
-begin_class
 DECL|class|RemoveSubgroupsAction
 specifier|private
 class|class
@@ -6630,9 +6480,6 @@ expr_stmt|;
 block|}
 block|}
 block|}
-end_class
-
-begin_class
 DECL|class|RemoveGroupKeepSubgroupsAction
 specifier|private
 class|class
@@ -6819,9 +6666,6 @@ expr_stmt|;
 block|}
 block|}
 block|}
-end_class
-
-begin_function
 DECL|method|getSelectionPath ()
 specifier|public
 name|TreePath
@@ -6835,9 +6679,6 @@ name|getSelectionPath
 argument_list|()
 return|;
 block|}
-end_function
-
-begin_class
 DECL|class|SortDirectSubgroupsAction
 specifier|private
 class|class
@@ -6936,9 +6777,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-end_class
-
-begin_class
 DECL|class|SortAllSubgroupsAction
 specifier|private
 class|class
@@ -7037,9 +6875,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-end_class
-
-begin_class
 DECL|class|ExpandSubtreeAction
 specifier|private
 class|class
@@ -7087,9 +6922,6 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-end_class
-
-begin_class
 DECL|class|CollapseSubtreeAction
 specifier|private
 class|class
@@ -7137,9 +6969,6 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-end_class
-
-begin_class
 DECL|class|MoveNodeUpAction
 specifier|private
 class|class
@@ -7190,9 +7019,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-end_class
-
-begin_class
 DECL|class|MoveNodeDownAction
 specifier|private
 class|class
@@ -7243,9 +7069,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-end_class
-
-begin_class
 DECL|class|MoveNodeLeftAction
 specifier|private
 class|class
@@ -7296,9 +7119,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-end_class
-
-begin_class
 DECL|class|MoveNodeRightAction
 specifier|private
 class|class
@@ -7349,13 +7169,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-end_class
-
-begin_comment
 comment|/**      * @param node The node to move      * @return true if move was successful, false if not.      */
-end_comment
-
-begin_function
 DECL|method|moveNodeUp (GroupTreeNodeViewModel node, boolean checkSingleSelection)
 specifier|public
 name|boolean
@@ -7489,13 +7303,7 @@ return|return
 literal|true
 return|;
 block|}
-end_function
-
-begin_comment
 comment|/**      * @param node The node to move      * @return true if move was successful, false if not.      */
-end_comment
-
-begin_function
 DECL|method|moveNodeDown (GroupTreeNodeViewModel node, boolean checkSingleSelection)
 specifier|public
 name|boolean
@@ -7629,13 +7437,7 @@ return|return
 literal|true
 return|;
 block|}
-end_function
-
-begin_comment
 comment|/**      * @param node The node to move      * @return true if move was successful, false if not.      */
-end_comment
-
-begin_function
 DECL|method|moveNodeLeft (GroupTreeNodeViewModel node, boolean checkSingleSelection)
 specifier|public
 name|boolean
@@ -7768,13 +7570,7 @@ return|return
 literal|true
 return|;
 block|}
-end_function
-
-begin_comment
 comment|/**      * @param node The node to move      * @return true if move was successful, false if not.      */
-end_comment
-
-begin_function
 DECL|method|moveNodeRight (GroupTreeNodeViewModel node, boolean checkSingleSelection)
 specifier|public
 name|boolean
@@ -7907,13 +7703,7 @@ return|return
 literal|true
 return|;
 block|}
-end_function
-
-begin_comment
 comment|/**      * Concludes the moving of a group tree node by storing the specified undo information, marking the change, and      * setting the status line.      *      * @param moveChange Undo information for the move operation.      * @param node The node that has been moved.      */
-end_comment
-
-begin_function
 DECL|method|concludeMoveGroup (MoveGroupChange moveChange, GroupTreeNodeViewModel node)
 specifier|public
 name|void
@@ -7972,9 +7762,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-end_function
-
-begin_function
 DECL|method|concludeAssignment (AbstractUndoableEdit undo, GroupTreeNode node, int assignedEntries)
 specifier|public
 name|void
@@ -8097,9 +7884,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-end_function
-
-begin_function
 DECL|method|getGroupTreeRoot ()
 specifier|public
 name|GroupTreeNodeViewModel
@@ -8110,9 +7894,6 @@ return|return
 name|groupsRoot
 return|;
 block|}
-end_function
-
-begin_function
 DECL|method|getExpandedPaths ()
 specifier|public
 name|Enumeration
@@ -8134,13 +7915,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-end_function
-
-begin_comment
 comment|/**      * panel may be null to indicate that no file is currently open.      */
-end_comment
-
-begin_function
 annotation|@
 name|Override
 DECL|method|setActiveBasePanel (BasePanel panel)
@@ -8329,13 +8104,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-end_function
-
-begin_comment
 comment|/**      * Highlight all groups that contain any/all of the specified entries. If entries is null or has zero length,      * highlight is cleared.      */
-end_comment
-
-begin_function
 DECL|method|showMatchingGroups (List<BibEntry> list, boolean requireAll)
 specifier|public
 name|void
@@ -8450,13 +8219,7 @@ name|revalidate
 argument_list|()
 expr_stmt|;
 block|}
-end_function
-
-begin_comment
 comment|/**      * Show groups that, if selected, would show at least one of the entries found in the specified search.      */
-end_comment
-
-begin_function
 DECL|method|showOverlappingGroups (List<BibEntry> matches)
 specifier|private
 name|void
@@ -8497,9 +8260,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-end_function
-
-begin_function
 DECL|method|getGroupsTree ()
 specifier|public
 name|GroupsTree
@@ -8512,8 +8272,8 @@ operator|.
 name|groupsTree
 return|;
 block|}
-end_function
+block|}
+end_class
 
-unit|}
 end_unit
 

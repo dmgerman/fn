@@ -922,12 +922,9 @@ argument_list|)
 operator|.
 name|mapToInt
 argument_list|(
-name|field
-lambda|->
-name|field
-operator|.
+name|String
+operator|::
 name|length
-argument_list|()
 argument_list|)
 operator|.
 name|max
