@@ -218,6 +218,22 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+DECL|method|replacesLongDashWithDoubleDash ()
+specifier|public
+name|void
+name|replacesLongDashWithDoubleDash
+parameter_list|()
+block|{
+name|expectCorrect
+argument_list|(
+literal|"1 \u2014 50"
+argument_list|,
+literal|"1--50"
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
 DECL|method|formatExample ()
 specifier|public
 name|void

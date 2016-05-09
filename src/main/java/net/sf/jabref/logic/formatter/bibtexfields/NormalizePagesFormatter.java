@@ -195,6 +195,13 @@ name|value
 operator|.
 name|replaceAll
 argument_list|(
+literal|"\u2013|\u2014"
+argument_list|,
+literal|"-"
+argument_list|)
+operator|.
+name|replaceAll
+argument_list|(
 name|REJECT_LITERALS
 argument_list|,
 literal|""
