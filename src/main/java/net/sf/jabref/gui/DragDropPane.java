@@ -760,6 +760,13 @@ name|Graphics
 name|g
 parameter_list|)
 block|{
+name|super
+operator|.
+name|paintComponent
+argument_list|(
+name|g
+argument_list|)
+expr_stmt|;
 name|Graphics2D
 name|g2
 init|=
