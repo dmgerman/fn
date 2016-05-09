@@ -250,7 +250,12 @@ name|this
 operator|.
 name|repository
 operator|=
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
 name|repository
+argument_list|)
 expr_stmt|;
 block|}
 annotation|@
@@ -367,7 +372,6 @@ name|repository
 argument_list|)
 argument_list|)
 decl_stmt|;
-comment|//String oldFilename = bes.getField(GUIGlobals.FILE_FIELD); // would have to be stored for undoing purposes
 comment|//Add extension to newFilename
 name|newFilename
 operator|.

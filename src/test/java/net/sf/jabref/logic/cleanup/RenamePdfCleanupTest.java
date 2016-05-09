@@ -805,7 +805,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"importFileNamePattern"
+name|JabRefPreferences
+operator|.
+name|PREF_IMPORT_FILENAMEPATTERN
 argument_list|)
 argument_list|)
 operator|.
