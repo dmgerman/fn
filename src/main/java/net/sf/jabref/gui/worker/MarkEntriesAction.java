@@ -286,7 +286,18 @@ operator|=
 operator|new
 name|JMenuItem
 argument_list|(
-literal|"               "
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Level"
+argument_list|)
+operator|+
+literal|" "
+operator|+
+name|level
+operator|+
+literal|"   "
 argument_list|)
 expr_stmt|;
 name|menuItem
