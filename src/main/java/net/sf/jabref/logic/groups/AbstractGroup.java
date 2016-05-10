@@ -24,6 +24,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|List
 import|;
 end_import
@@ -35,6 +45,22 @@ operator|.
 name|util
 operator|.
 name|Optional
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|importer
+operator|.
+name|fileformat
+operator|.
+name|ParseException
 import|;
 end_import
 
@@ -157,8 +183,8 @@ name|context
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Re-create a group instance from a textual representation.      *      * @param s The result from the group's toString() method.      * @return New instance of the encoded group.      * @throws Exception If an error occured and a group could not be created, e.g.      *                   due to a malformed regular expression.      */
-DECL|method|fromString (String s, BibDatabase db, int version)
+comment|/**      * Re-create a group instance from a textual representation.      *      * @param s The result from the group's toString() method.      * @return New instance of the encoded group.      * @throws ParseException If an error occurred and a group could not be created,      *                        e.g. due to a malformed regular expression.      */
+DECL|method|fromString (String s)
 specifier|public
 specifier|static
 name|AbstractGroup
@@ -166,15 +192,9 @@ name|fromString
 parameter_list|(
 name|String
 name|s
-parameter_list|,
-name|BibDatabase
-name|db
-parameter_list|,
-name|int
-name|version
 parameter_list|)
 throws|throws
-name|Exception
+name|ParseException
 block|{
 if|if
 condition|(
@@ -194,8 +214,6 @@ operator|.
 name|fromString
 argument_list|(
 name|s
-argument_list|,
-name|version
 argument_list|)
 return|;
 block|}
@@ -217,8 +235,6 @@ operator|.
 name|fromString
 argument_list|(
 name|s
-argument_list|,
-name|version
 argument_list|)
 return|;
 block|}
@@ -240,8 +256,6 @@ operator|.
 name|fromString
 argument_list|(
 name|s
-argument_list|,
-name|version
 argument_list|)
 return|;
 block|}
@@ -263,10 +277,6 @@ operator|.
 name|fromString
 argument_list|(
 name|s
-argument_list|,
-name|db
-argument_list|,
-name|version
 argument_list|)
 return|;
 block|}
@@ -355,6 +365,30 @@ argument_list|>
 name|entriesToAdd
 parameter_list|)
 function_decl|;
+DECL|method|add (BibEntry entryToAdd)
+specifier|public
+name|Optional
+argument_list|<
+name|EntriesGroupChange
+argument_list|>
+name|add
+parameter_list|(
+name|BibEntry
+name|entryToAdd
+parameter_list|)
+block|{
+return|return
+name|add
+argument_list|(
+name|Collections
+operator|.
+name|singletonList
+argument_list|(
+name|entryToAdd
+argument_list|)
+argument_list|)
+return|;
+block|}
 comment|/**      * Removes the specified entries from this group.      *      * @return If this group or one or more entries was/were modified as a      * result of this operation, an object is returned that allows to      * undo this change. null is returned otherwise.      */
 DECL|method|remove (List<BibEntry> entriesToRemove)
 specifier|public
@@ -383,6 +417,8 @@ name|BibEntry
 name|entry
 parameter_list|)
 function_decl|;
+annotation|@
+name|Override
 DECL|method|isMatch (BibEntry entry)
 specifier|public
 name|boolean

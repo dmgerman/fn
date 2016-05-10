@@ -180,6 +180,22 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|importer
+operator|.
+name|fileformat
+operator|.
+name|ParseException
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|logic
 operator|.
 name|groups
@@ -582,9 +598,6 @@ init|(
 name|Statement
 name|statement
 init|=
-operator|(
-name|Statement
-operator|)
 name|conn
 operator|.
 name|createStatement
@@ -638,7 +651,7 @@ name|colNames
 return|;
 block|}
 block|}
-comment|/**      * Worker method to perform the import from a database      *      * @param dbs  The necessary database connection information      * @param mode      * @return An ArrayList containing pairs of Objects. Each position of the ArrayList stores three Objects: a      * BibDatabase, a MetaData and a String with the bib database name stored in the DBMS      * @throws Exception      */
+comment|/**      * Worker method to perform the import from a database      *      * @param dbs  The necessary database connection information      * @param mode      * @return An ArrayList containing pairs of Objects. Each position of the ArrayList stores three Objects: a      * BibDatabase, a MetaData and a String with the bib database name stored in the DBMS      * @throws SQLException      * @throws ClassNotFoundException      * @throws InstantiationException      * @throws IllegalAccessException      * @throws Exception      */
 DECL|method|performImport (DBStrings dbs, List<String> listOfDBs, BibDatabaseMode mode)
 specifier|public
 name|List
@@ -660,7 +673,13 @@ name|BibDatabaseMode
 name|mode
 parameter_list|)
 throws|throws
-name|Exception
+name|IllegalAccessException
+throws|,
+name|InstantiationException
+throws|,
+name|ClassNotFoundException
+throws|,
+name|SQLException
 block|{
 name|List
 argument_list|<
@@ -1019,12 +1038,8 @@ argument_list|)
 decl_stmt|;
 name|entry
 operator|.
-name|setField
+name|setCiteKey
 argument_list|(
-name|BibEntry
-operator|.
-name|KEY_FIELD
-argument_list|,
 name|rsEntries
 operator|.
 name|getString
@@ -1431,6 +1446,8 @@ argument_list|,
 name|conn
 argument_list|)
 decl_stmt|;
+try|try
+block|{
 switch|switch
 condition|(
 name|typeId
@@ -1649,6 +1666,21 @@ argument_list|)
 expr_stmt|;
 break|break;
 block|}
+block|}
+catch|catch
+parameter_list|(
+name|ParseException
+name|e
+parameter_list|)
+block|{
+name|LOGGER
+operator|.
+name|error
+argument_list|(
+name|e
+argument_list|)
+expr_stmt|;
+block|}
 if|if
 condition|(
 name|group
@@ -1851,7 +1883,7 @@ argument_list|()
 decl_stmt|;
 name|expGroup
 operator|.
-name|addEntry
+name|add
 argument_list|(
 name|entries
 operator|.
@@ -1874,7 +1906,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * Given a DBStrings it connects to the DB and returns the java.sql.Connection object      *      * @param dbstrings The DBStrings to use to make the connection      * @return java.sql.Connection to the DB chosen      * @throws Exception      */
+comment|/**      * Given a DBStrings it connects to the DB and returns the java.sql.Connection object      *      * @param dbstrings The DBStrings to use to make the connection      * @return java.sql.Connection to the DB chosen      * @throws SQLException      * @throws ClassNotFoundException      * @throws InstantiationException      * @throws IllegalAccessException      */
 DECL|method|connectToDB (DBStrings dbstrings)
 specifier|public
 name|Connection
@@ -1884,7 +1916,13 @@ name|DBStrings
 name|dbstrings
 parameter_list|)
 throws|throws
-name|Exception
+name|IllegalAccessException
+throws|,
+name|InstantiationException
+throws|,
+name|ClassNotFoundException
+throws|,
+name|SQLException
 block|{
 name|String
 name|url

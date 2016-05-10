@@ -230,6 +230,22 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|importer
+operator|.
+name|fileformat
+operator|.
+name|ParseException
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|logic
 operator|.
 name|cleanup
@@ -1484,6 +1500,8 @@ name|writeGroups
 parameter_list|()
 throws|throws
 name|IOException
+throws|,
+name|ParseException
 block|{
 name|GroupTreeNode
 name|groupRoot
@@ -1566,16 +1584,6 @@ operator|+
 name|Globals
 operator|.
 name|NEWLINE
-operator|+
-name|Globals
-operator|.
-name|NEWLINE
-operator|+
-literal|"@Comment{jabref-meta: groupsversion:3;}"
-operator|+
-name|Globals
-operator|.
-name|NEWLINE
 argument_list|,
 name|stringWriter
 operator|.
@@ -1594,6 +1602,8 @@ name|writeGroupsAndEncoding
 parameter_list|()
 throws|throws
 name|IOException
+throws|,
+name|ParseException
 block|{
 name|SavePreferences
 name|preferences
@@ -1694,16 +1704,6 @@ operator|.
 name|NEWLINE
 operator|+
 literal|"}"
-operator|+
-name|Globals
-operator|.
-name|NEWLINE
-operator|+
-name|Globals
-operator|.
-name|NEWLINE
-operator|+
-literal|"@Comment{jabref-meta: groupsversion:3;}"
 operator|+
 name|Globals
 operator|.

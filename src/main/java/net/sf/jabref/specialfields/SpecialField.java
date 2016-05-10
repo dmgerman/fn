@@ -52,7 +52,7 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|*
+name|Icon
 import|;
 end_import
 

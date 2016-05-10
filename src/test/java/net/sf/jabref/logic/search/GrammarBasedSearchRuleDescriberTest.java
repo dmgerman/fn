@@ -28,9 +28,7 @@ name|search
 operator|.
 name|rules
 operator|.
-name|describer
-operator|.
-name|GrammarBasedSearchRuleDescriber
+name|GrammarBasedSearchRule
 import|;
 end_import
 
@@ -48,7 +46,9 @@ name|search
 operator|.
 name|rules
 operator|.
-name|GrammarBasedSearchRule
+name|describer
+operator|.
+name|GrammarBasedSearchRuleDescriber
 import|;
 end_import
 
@@ -70,7 +70,19 @@ name|junit
 operator|.
 name|Assert
 operator|.
-name|*
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
 import|;
 end_import
 

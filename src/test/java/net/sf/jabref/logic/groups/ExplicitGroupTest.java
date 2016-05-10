@@ -22,7 +22,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|*
+name|Globals
 import|;
 end_import
 
@@ -34,11 +34,23 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|model
+name|JabRefPreferences
+import|;
+end_import
+
+begin_import
+import|import
+name|net
 operator|.
-name|entry
+name|sf
 operator|.
-name|IdGenerator
+name|jabref
+operator|.
+name|importer
+operator|.
+name|fileformat
+operator|.
+name|ParseException
 import|;
 end_import
 
@@ -76,6 +88,22 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|IdGenerator
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|junit
@@ -102,7 +130,7 @@ name|junit
 operator|.
 name|Assert
 operator|.
-name|*
+name|assertEquals
 import|;
 end_import
 
@@ -137,6 +165,8 @@ specifier|public
 name|void
 name|testToStringSimple
 parameter_list|()
+throws|throws
+name|ParseException
 block|{
 name|ExplicitGroup
 name|group
@@ -164,11 +194,13 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testToStringComplex ()
+DECL|method|toStringDoesNotWriteAssignedEntries ()
 specifier|public
 name|void
-name|testToStringComplex
+name|toStringDoesNotWriteAssignedEntries
 parameter_list|()
+throws|throws
+name|ParseException
 block|{
 name|ExplicitGroup
 name|group
@@ -185,7 +217,7 @@ argument_list|)
 decl_stmt|;
 name|group
 operator|.
-name|addEntry
+name|add
 argument_list|(
 name|makeBibtexEntry
 argument_list|()
@@ -193,7 +225,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"ExplicitGroup:myExplicitGroup;2;shields01;"
+literal|"ExplicitGroup:myExplicitGroup;2;"
 argument_list|,
 name|group
 operator|.

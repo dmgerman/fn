@@ -88,7 +88,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|*
+name|JabRefExecutorService
 import|;
 end_import
 

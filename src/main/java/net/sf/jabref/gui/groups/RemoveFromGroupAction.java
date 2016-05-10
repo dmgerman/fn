@@ -58,11 +58,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|gui
 operator|.
-name|groups
-operator|.
-name|EntriesGroupChange
+name|BasePanel
 import|;
 end_import
 
@@ -74,9 +72,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
+name|logic
 operator|.
-name|BasePanel
+name|groups
+operator|.
+name|EntriesGroupChange
 import|;
 end_import
 

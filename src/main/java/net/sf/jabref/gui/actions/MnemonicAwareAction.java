@@ -20,15 +20,11 @@ end_package
 
 begin_import
 import|import
-name|net
+name|javax
 operator|.
-name|sf
+name|swing
 operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|IconTheme
+name|AbstractAction
 import|;
 end_import
 
@@ -38,7 +34,31 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|*
+name|Action
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|Icon
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|IconTheme
 import|;
 end_import
 
@@ -193,12 +213,10 @@ name|Action
 operator|.
 name|MNEMONIC_KEY
 argument_list|,
-name|Integer
-operator|.
-name|valueOf
-argument_list|(
+operator|(
+name|int
+operator|)
 name|mnemonic
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|value

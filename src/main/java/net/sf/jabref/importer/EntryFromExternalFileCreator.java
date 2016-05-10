@@ -40,11 +40,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|model
+name|external
 operator|.
-name|entry
-operator|.
-name|BibEntry
+name|ExternalFileType
 import|;
 end_import
 
@@ -56,9 +54,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|external
+name|model
 operator|.
-name|ExternalFileType
+name|entry
+operator|.
+name|BibEntry
 import|;
 end_import
 

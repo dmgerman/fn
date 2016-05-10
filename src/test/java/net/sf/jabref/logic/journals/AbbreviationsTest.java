@@ -15,26 +15,14 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|org
+import|import
+name|net
 operator|.
-name|junit
+name|sf
 operator|.
-name|Assert
+name|jabref
 operator|.
-name|*
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|mockito
-operator|.
-name|Mockito
-operator|.
-name|*
+name|JabRefPreferences
 import|;
 end_import
 
@@ -49,14 +37,38 @@ import|;
 end_import
 
 begin_import
-import|import
-name|net
+import|import static
+name|org
 operator|.
-name|sf
+name|junit
 operator|.
-name|jabref
+name|Assert
 operator|.
-name|JabRefPreferences
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|mockito
+operator|.
+name|Mockito
+operator|.
+name|mock
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|mockito
+operator|.
+name|Mockito
+operator|.
+name|when
 import|;
 end_import
 

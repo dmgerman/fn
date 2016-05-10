@@ -170,7 +170,16 @@ expr_stmt|;
 block|}
 else|else
 block|{
-comment|//filePath as string, because it could be an URL
+comment|// quote String so explorer handles URL query strings correctly
+name|String
+name|quotePath
+init|=
+literal|"\""
+operator|+
+name|filePath
+operator|+
+literal|"\""
+decl_stmt|;
 name|Runtime
 operator|.
 name|getRuntime
@@ -184,7 +193,7 @@ index|[]
 block|{
 literal|"explorer.exe"
 block|,
-name|filePath
+name|quotePath
 block|}
 argument_list|)
 expr_stmt|;

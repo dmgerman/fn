@@ -18,16 +18,6 @@ end_package
 
 begin_import
 import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|JEditorPane
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|awt
@@ -53,6 +43,16 @@ operator|.
 name|awt
 operator|.
 name|RenderingHints
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|JEditorPane
 import|;
 end_import
 

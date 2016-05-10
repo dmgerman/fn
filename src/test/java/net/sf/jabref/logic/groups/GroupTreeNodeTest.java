@@ -16,6 +16,42 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Arrays
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|importer
+operator|.
+name|fileformat
+operator|.
+name|ParseException
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -61,26 +97,6 @@ import|;
 end_import
 
 begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Arrays
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
-begin_import
 import|import static
 name|org
 operator|.
@@ -88,7 +104,7 @@ name|junit
 operator|.
 name|Assert
 operator|.
-name|*
+name|assertEquals
 import|;
 end_import
 
@@ -107,6 +123,8 @@ parameter_list|(
 name|GroupTreeNode
 name|root
 parameter_list|)
+throws|throws
+name|ParseException
 block|{
 name|root
 operator|.
@@ -168,6 +186,8 @@ specifier|public
 name|GroupTreeNode
 name|getNodeInSimpleTree
 parameter_list|()
+throws|throws
+name|ParseException
 block|{
 return|return
 name|getNodeInSimpleTree
@@ -186,6 +206,8 @@ parameter_list|(
 name|GroupTreeNode
 name|root
 parameter_list|)
+throws|throws
+name|ParseException
 block|{
 name|root
 operator|.
@@ -348,6 +370,8 @@ parameter_list|(
 name|String
 name|name
 parameter_list|)
+throws|throws
+name|ParseException
 block|{
 return|return
 operator|new
@@ -404,6 +428,8 @@ parameter_list|(
 name|String
 name|name
 parameter_list|)
+throws|throws
+name|ParseException
 block|{
 return|return
 operator|new
@@ -565,6 +591,8 @@ specifier|public
 name|void
 name|getSearchRuleForIndependentGroupReturnsGroupAsMatcher
 parameter_list|()
+throws|throws
+name|ParseException
 block|{
 name|GroupTreeNode
 name|node
@@ -604,6 +632,8 @@ specifier|public
 name|void
 name|getSearchRuleForRefiningGroupReturnsParentAndGroupAsMatcher
 parameter_list|()
+throws|throws
+name|ParseException
 block|{
 name|GroupTreeNode
 name|parent
@@ -685,6 +715,8 @@ specifier|public
 name|void
 name|getSearchRuleForIncludingGroupReturnsGroupOrSubgroupAsMatcher
 parameter_list|()
+throws|throws
+name|ParseException
 block|{
 name|GroupTreeNode
 name|node

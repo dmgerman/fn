@@ -18,38 +18,6 @@ end_package
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
-name|formatter
-operator|.
-name|Formatter
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
-name|l10n
-operator|.
-name|Localization
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -79,6 +47,38 @@ operator|.
 name|regex
 operator|.
 name|Pattern
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|formatter
+operator|.
+name|Formatter
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
 import|;
 end_import
 
@@ -115,7 +115,7 @@ specifier|final
 name|String
 name|REJECT_LITERALS
 init|=
-literal|"[^0-9,\\-\\+]"
+literal|"[^a-zA-Z0-9,\\-\\+,]"
 decl_stmt|;
 DECL|field|PAGES_REPLACE_PATTERN
 specifier|private
@@ -155,7 +155,7 @@ return|return
 literal|"normalize_page_numbers"
 return|;
 block|}
-comment|/**      * Format page numbers, separated either by commas or double-hyphens.      * Converts the range number format of the<code>pages</code> field to page_number--page_number.      * Removes all literals except [0-9,-+].      * Keeps the existing String if the resulting field does not match the expected Regex.      *      *<example>      *     1-2 -> 1--2      *     1,2,3 -> 1,2,3      *     {1}-{2} -> 1--2      *     43+ -> 43+      *     Invalid -> Invalid      *</example>      */
+comment|/**      * Format page numbers, separated either by commas or double-hyphens.      * Converts the range number format of the<code>pages</code> field to page_number--page_number.      * Removes unwanted literals except letters, numbers and -+ signs.      * Keeps the existing String if the resulting field does not match the expected Regex.      *      *<example>      *     1-2 -> 1--2      *     1,2,3 -> 1,2,3      *     {1}-{2} -> 1--2      *     43+ -> 43+      *     Invalid -> Invalid      *</example>      */
 annotation|@
 name|Override
 DECL|method|format (String value)
@@ -195,6 +195,13 @@ name|value
 operator|.
 name|replaceAll
 argument_list|(
+literal|"\u2013|\u2014"
+argument_list|,
+literal|"-"
+argument_list|)
+operator|.
+name|replaceAll
+argument_list|(
 name|REJECT_LITERALS
 argument_list|,
 literal|""
@@ -225,13 +232,10 @@ decl_stmt|;
 comment|// replacement?
 if|if
 condition|(
-operator|!
-name|newValue
+name|matcher
 operator|.
-name|equals
-argument_list|(
-name|cleanValue
-argument_list|)
+name|matches
+argument_list|()
 condition|)
 block|{
 comment|// write field

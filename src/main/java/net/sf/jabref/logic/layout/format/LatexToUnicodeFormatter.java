@@ -22,6 +22,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -74,24 +84,6 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|util
-operator|.
-name|strings
-operator|.
-name|StringUtil
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
 name|layout
 operator|.
 name|LayoutFormatter
@@ -118,11 +110,19 @@ end_import
 
 begin_import
 import|import
-name|java
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
 operator|.
 name|util
 operator|.
-name|Map
+name|strings
+operator|.
+name|StringUtil
 import|;
 end_import
 
