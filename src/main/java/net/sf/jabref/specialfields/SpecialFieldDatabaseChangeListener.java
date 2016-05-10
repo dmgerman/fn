@@ -1,4 +1,8 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
+begin_comment
+comment|/*  Copyright (C) 2003-2016 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+end_comment
+
 begin_package
 DECL|package|net.sf.jabref.specialfields
 package|package
@@ -11,18 +15,6 @@ operator|.
 name|specialfields
 package|;
 end_package
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|JabRefGUI
-import|;
-end_import
 
 begin_import
 import|import
@@ -145,13 +137,13 @@ return|;
 block|}
 annotation|@
 name|Subscribe
-DECL|method|listen (EntryAddedEvent EntryAddedEvent)
+DECL|method|listen (EntryAddedEvent event)
 specifier|public
 name|void
 name|listen
 parameter_list|(
 name|EntryAddedEvent
-name|EntryAddedEvent
+name|event
 parameter_list|)
 block|{
 if|if
@@ -166,7 +158,7 @@ specifier|final
 name|BibEntry
 name|entry
 init|=
-name|EntryAddedEvent
+name|event
 operator|.
 name|getBibEntry
 argument_list|()
@@ -195,26 +187,9 @@ argument_list|,
 name|nc
 argument_list|)
 expr_stmt|;
-name|nc
-operator|.
-name|end
-argument_list|()
-expr_stmt|;
-name|JabRefGUI
-operator|.
-name|getMainFrame
-argument_list|()
-operator|.
-name|getCurrentBasePanel
-argument_list|()
-operator|.
-name|undoManager
-operator|.
-name|addEdit
-argument_list|(
-name|nc
-argument_list|)
-expr_stmt|;
+comment|// Don't insert the compound into the undoManager,
+comment|// it would be added before the component which undoes the insertion of the entry and creates heavy problems
+comment|// (which prohibits the undo the deleting multiple entries)
 block|}
 block|}
 block|}
