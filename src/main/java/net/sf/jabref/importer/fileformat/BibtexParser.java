@@ -146,18 +146,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|MetaData
 import|;
 end_import
@@ -231,24 +219,6 @@ operator|.
 name|l10n
 operator|.
 name|Localization
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
-name|util
-operator|.
-name|strings
-operator|.
-name|StringUtil
 import|;
 end_import
 
@@ -2400,31 +2370,6 @@ argument_list|(
 name|key
 argument_list|)
 decl_stmt|;
-comment|// Now, if the field in question is set up to be fitted automatically
-comment|// with braces around
-comment|// capitals, we should remove those now when reading the field:
-if|if
-condition|(
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|putBracesAroundCapitals
-argument_list|(
-name|key
-argument_list|)
-condition|)
-block|{
-name|content
-operator|=
-name|StringUtil
-operator|.
-name|removeBracesAroundCapitals
-argument_list|(
-name|content
-argument_list|)
-expr_stmt|;
-block|}
 if|if
 condition|(
 operator|!
