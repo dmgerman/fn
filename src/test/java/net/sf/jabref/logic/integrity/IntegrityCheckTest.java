@@ -1118,6 +1118,39 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+DECL|method|testBooktitleChecks ()
+specifier|public
+name|void
+name|testBooktitleChecks
+parameter_list|()
+block|{
+name|assertCorrect
+argument_list|(
+name|createContext
+argument_list|(
+literal|"booktitle"
+argument_list|,
+literal|"2014 Fourth International Conference on Digital Information and Communication Technology and it's Applications (DICTAP)"
+argument_list|,
+literal|"proceedings"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertWrong
+argument_list|(
+name|createContext
+argument_list|(
+literal|"booktitle"
+argument_list|,
+literal|"Digital Information and Communication Technology and it's Applications (DICTAP), 2014 Fourth International Conference on"
+argument_list|,
+literal|"proceedings"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
 DECL|method|testPageNumbersChecks ()
 specifier|public
 name|void
