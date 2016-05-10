@@ -3045,7 +3045,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Line %0: Found corrupted BibTeX-key."
+literal|"Line %0: Found corrupted BibTeX key."
 argument_list|,
 name|String
 operator|.
@@ -3077,7 +3077,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Line %0: Found corrupted BibTeX-key (contains whitespaces)."
+literal|"Line %0: Found corrupted BibTeX key (contains whitespaces)."
 argument_list|,
 name|String
 operator|.
@@ -3100,7 +3100,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Line %0: Found corrupted BibTeX-key (comma missing)."
+literal|"Line %0: Found corrupted BibTeX key (comma missing)."
 argument_list|,
 name|String
 operator|.
