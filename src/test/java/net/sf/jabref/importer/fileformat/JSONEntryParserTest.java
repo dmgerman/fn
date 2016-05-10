@@ -20,11 +20,17 @@ end_package
 
 begin_import
 import|import
-name|org
+name|net
 operator|.
-name|json
+name|sf
 operator|.
-name|JSONObject
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|BibEntry
 import|;
 end_import
 
@@ -32,9 +38,9 @@ begin_import
 import|import
 name|org
 operator|.
-name|junit
+name|json
 operator|.
-name|Test
+name|JSONObject
 import|;
 end_import
 
@@ -50,17 +56,11 @@ end_import
 
 begin_import
 import|import
-name|net
+name|org
 operator|.
-name|sf
+name|junit
 operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|entry
-operator|.
-name|BibEntry
+name|Test
 import|;
 end_import
 

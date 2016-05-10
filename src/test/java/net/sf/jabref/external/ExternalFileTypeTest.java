@@ -30,7 +30,7 @@ name|junit
 operator|.
 name|Assert
 operator|.
-name|*
+name|assertNotNull
 import|;
 end_import
 

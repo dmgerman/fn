@@ -52,11 +52,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|model
+name|logic
 operator|.
-name|entry
+name|l10n
 operator|.
-name|BibtexString
+name|Localization
 import|;
 end_import
 
@@ -68,11 +68,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|model
 operator|.
-name|l10n
+name|entry
 operator|.
-name|Localization
+name|BibtexString
 import|;
 end_import
 

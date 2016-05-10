@@ -94,11 +94,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|model
+name|logic
 operator|.
-name|entry
+name|msbib
 operator|.
-name|BibEntry
+name|MSBibDatabase
 import|;
 end_import
 
@@ -110,11 +110,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|model
 operator|.
-name|msbib
+name|entry
 operator|.
-name|MSBibDatabase
+name|BibEntry
 import|;
 end_import
 

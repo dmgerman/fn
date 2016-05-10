@@ -16,6 +16,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|net
+operator|.
+name|URISyntaxException
+import|;
+end_import
+
+begin_import
+import|import
 name|com
 operator|.
 name|github
@@ -51,12 +61,20 @@ import|;
 end_import
 
 begin_import
-import|import
-name|java
+import|import static
+name|com
 operator|.
-name|net
+name|github
 operator|.
-name|URISyntaxException
+name|tomakehurst
+operator|.
+name|wiremock
+operator|.
+name|client
+operator|.
+name|WireMock
+operator|.
+name|aResponse
 import|;
 end_import
 
@@ -74,7 +92,43 @@ name|client
 operator|.
 name|WireMock
 operator|.
-name|*
+name|get
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|github
+operator|.
+name|tomakehurst
+operator|.
+name|wiremock
+operator|.
+name|client
+operator|.
+name|WireMock
+operator|.
+name|stubFor
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|github
+operator|.
+name|tomakehurst
+operator|.
+name|wiremock
+operator|.
+name|client
+operator|.
+name|WireMock
+operator|.
+name|urlEqualTo
 import|;
 end_import
 

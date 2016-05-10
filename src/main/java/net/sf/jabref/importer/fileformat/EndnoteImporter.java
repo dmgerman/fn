@@ -967,28 +967,15 @@ condition|)
 block|{
 comment|// "Alternate journal. Let's set it only if no journal
 comment|// has been set with %B.
-if|if
-condition|(
 name|hm
 operator|.
-name|get
-argument_list|(
-literal|"journal"
-argument_list|)
-operator|==
-literal|null
-condition|)
-block|{
-name|hm
-operator|.
-name|put
+name|putIfAbsent
 argument_list|(
 literal|"journal"
 argument_list|,
 name|val
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 elseif|else
 if|if

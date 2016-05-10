@@ -60,7 +60,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|IdGenerator
+name|BibEntry
 import|;
 end_import
 
@@ -76,7 +76,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibEntry
+name|IdGenerator
 import|;
 end_import
 
@@ -365,12 +365,8 @@ condition|)
 block|{
 name|b
 operator|.
-name|setField
+name|setCiteKey
 argument_list|(
-name|BibEntry
-operator|.
-name|KEY_FIELD
-argument_list|,
 name|bibtexKey
 argument_list|)
 expr_stmt|;

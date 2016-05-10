@@ -22,7 +22,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|List
+name|Comparator
 import|;
 end_import
 
@@ -32,7 +32,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Comparator
+name|List
 import|;
 end_import
 

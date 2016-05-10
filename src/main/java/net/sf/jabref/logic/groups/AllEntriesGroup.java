@@ -46,11 +46,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|model
+name|importer
 operator|.
-name|entry
+name|fileformat
 operator|.
-name|BibEntry
+name|ParseException
 import|;
 end_import
 
@@ -67,6 +67,22 @@ operator|.
 name|l10n
 operator|.
 name|Localization
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|BibEntry
 import|;
 end_import
 
@@ -111,7 +127,7 @@ name|INDEPENDENT
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|fromString (String s, int version)
+DECL|method|fromString (String s)
 specifier|public
 specifier|static
 name|AbstractGroup
@@ -119,12 +135,9 @@ name|fromString
 parameter_list|(
 name|String
 name|s
-parameter_list|,
-name|int
-name|version
 parameter_list|)
 throws|throws
-name|Exception
+name|ParseException
 block|{
 if|if
 condition|(
@@ -141,51 +154,21 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|Exception
+name|IllegalArgumentException
 argument_list|(
-literal|"Internal error: AllEntriesGroup cannot be created from \""
+literal|"AllEntriesGroup cannot be created from \""
 operator|+
 name|s
 operator|+
-literal|"\". "
-operator|+
-literal|"Please report this on https://github.com/JabRef/jabref/issues"
+literal|"\"."
 argument_list|)
 throw|;
 block|}
-switch|switch
-condition|(
-name|version
-condition|)
-block|{
-case|case
-literal|0
-case|:
-case|case
-literal|1
-case|:
-case|case
-literal|2
-case|:
-case|case
-literal|3
-case|:
 return|return
 operator|new
 name|AllEntriesGroup
 argument_list|()
 return|;
-default|default:
-throw|throw
-operator|new
-name|UnsupportedVersionException
-argument_list|(
-literal|"AllEntriesGroup"
-argument_list|,
-name|version
-argument_list|)
-throw|;
-block|}
 block|}
 annotation|@
 name|Override

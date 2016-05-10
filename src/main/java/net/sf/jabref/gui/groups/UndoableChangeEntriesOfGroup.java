@@ -20,17 +20,13 @@ end_package
 
 begin_import
 import|import
-name|net
+name|javax
 operator|.
-name|sf
+name|swing
 operator|.
-name|jabref
+name|undo
 operator|.
-name|logic
-operator|.
-name|groups
-operator|.
-name|EntriesGroupChange
+name|AbstractUndoableEdit
 import|;
 end_import
 
@@ -90,21 +86,25 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|l10n
+name|groups
 operator|.
-name|Localization
+name|EntriesGroupChange
 import|;
 end_import
 
 begin_import
 import|import
-name|javax
+name|net
 operator|.
-name|swing
+name|sf
 operator|.
-name|undo
+name|jabref
 operator|.
-name|AbstractUndoableEdit
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
 import|;
 end_import
 

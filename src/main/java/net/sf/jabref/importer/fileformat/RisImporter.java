@@ -22,11 +22,19 @@ begin_import
 import|import
 name|java
 operator|.
-name|util
+name|io
 operator|.
-name|regex
+name|BufferedReader
+import|;
+end_import
+
+begin_import
+import|import
+name|java
 operator|.
-name|Pattern
+name|io
+operator|.
+name|IOException
 import|;
 end_import
 
@@ -44,9 +52,9 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
+name|util
 operator|.
-name|BufferedReader
+name|ArrayList
 import|;
 end_import
 
@@ -54,9 +62,9 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
+name|util
 operator|.
-name|IOException
+name|HashMap
 import|;
 end_import
 
@@ -86,17 +94,21 @@ name|java
 operator|.
 name|util
 operator|.
-name|ArrayList
+name|regex
+operator|.
+name|Pattern
 import|;
 end_import
 
 begin_import
 import|import
-name|java
+name|net
 operator|.
-name|util
+name|sf
 operator|.
-name|HashMap
+name|jabref
+operator|.
+name|Globals
 import|;
 end_import
 
@@ -140,7 +152,39 @@ name|model
 operator|.
 name|entry
 operator|.
-name|*
+name|AuthorList
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|BibEntry
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|MonthUtil
 import|;
 end_import
 
@@ -1355,7 +1399,9 @@ literal|"abstract"
 argument_list|,
 name|oldAb
 operator|+
-literal|"\n"
+name|Globals
+operator|.
+name|NEWLINE
 operator|+
 name|val
 argument_list|)

@@ -172,26 +172,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|beans
-operator|.
-name|PropertyChangeEvent
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|beans
-operator|.
-name|VetoableChangeListener
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|io
 operator|.
 name|IOException
@@ -591,6 +571,20 @@ operator|.
 name|bibtex
 operator|.
 name|InternalBibtexFields
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|event
+operator|.
+name|FieldChangedEvent
 import|;
 end_import
 
@@ -1248,6 +1242,20 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|eventbus
+operator|.
+name|Subscribe
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -1275,7 +1283,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * GUI component that allows editing of the fields of a BibEntry (i.e. the  * one that shows up, when you double click on an entry in the table)  *<p>  * It hosts the tabs (required, general, optional) and the buttons to the left.  *<p>  * EntryEditor also registers itself as a VetoableChangeListener, receiving  * events whenever a field of the entry changes, enabling the text fields to  * update themselves if the change is made from somewhere else.  */
+comment|/**  * GUI component that allows editing of the fields of a BibEntry (i.e. the  * one that shows up, when you double click on an entry in the table)  *<p>  * It hosts the tabs (required, general, optional) and the buttons to the left.  *<p>  * EntryEditor also registers itself to the event bus, receiving  * events whenever a field of the entry changes, enabling the text fields to  * update themselves if the change is made from somewhere else.  */
 end_comment
 
 begin_class
@@ -1286,8 +1294,6 @@ name|EntryEditor
 extends|extends
 name|JPanel
 implements|implements
-name|VetoableChangeListener
-implements|,
 name|EntryContainer
 block|{
 DECL|field|LOGGER
@@ -1604,20 +1610,16 @@ name|entry
 operator|=
 name|entry
 expr_stmt|;
-name|this
-operator|.
 name|entry
 operator|.
-name|addPropertyChangeListener
+name|registerListener
 argument_list|(
 name|this
 argument_list|)
 expr_stmt|;
-name|this
-operator|.
 name|entry
 operator|.
-name|addPropertyChangeListener
+name|registerListener
 argument_list|(
 name|SpecialFieldUpdateListener
 operator|.
@@ -1639,7 +1641,7 @@ name|HelpAction
 argument_list|(
 name|HelpFiles
 operator|.
-name|entryEditorHelp
+name|ENTRY_EDITOR
 argument_list|,
 name|IconTheme
 operator|.
@@ -2263,8 +2265,6 @@ name|String
 argument_list|>
 name|otherFields
 init|=
-name|this
-operator|.
 name|entry
 operator|.
 name|getFieldNames
@@ -3611,6 +3611,7 @@ block|}
 elseif|else
 if|if
 condition|(
+operator|!
 name|panel
 operator|.
 name|getBibDatabaseContext
@@ -3619,16 +3620,13 @@ operator|.
 name|getMetaData
 argument_list|()
 operator|.
-name|getData
+name|getContentSelectors
 argument_list|(
-name|Globals
-operator|.
-name|SELECTOR_META_PREFIX
-operator|+
 name|fieldName
 argument_list|)
-operator|!=
-literal|null
+operator|.
+name|isEmpty
+argument_list|()
 condition|)
 block|{
 return|return
@@ -5087,15 +5085,7 @@ name|this
 operator|.
 name|entry
 operator|.
-name|removePropertyChangeListener
-argument_list|(
-name|this
-argument_list|)
-expr_stmt|;
-comment|// Register as property listener for the new entry:
-name|switchEntry
-operator|.
-name|addPropertyChangeListener
+name|unregisterListener
 argument_list|(
 name|this
 argument_list|)
@@ -5105,6 +5095,16 @@ operator|.
 name|entry
 operator|=
 name|switchEntry
+expr_stmt|;
+comment|// Register as property listener for the new entry:
+name|this
+operator|.
+name|entry
+operator|.
+name|registerListener
+argument_list|(
+name|this
+argument_list|)
 expr_stmt|;
 name|updateAllFields
 argument_list|()
@@ -5404,17 +5404,13 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|(
-name|oldValue
-operator|==
-literal|null
-operator|)
-operator|||
 operator|!
-name|oldValue
+name|Objects
 operator|.
 name|equals
 argument_list|(
+name|oldValue
+argument_list|,
 name|newValue
 argument_list|)
 condition|)
@@ -5921,22 +5917,22 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * Update the JTextArea when a field has changed.      *      * @see java.beans.VetoableChangeListener#vetoableChange(java.beans.PropertyChangeEvent)      */
+comment|/**      * Update the JTextArea when a field has changed.      */
 annotation|@
-name|Override
-DECL|method|vetoableChange (PropertyChangeEvent e)
+name|Subscribe
+DECL|method|listen (FieldChangedEvent fieldChangedEvent)
 specifier|public
 name|void
-name|vetoableChange
+name|listen
 parameter_list|(
-name|PropertyChangeEvent
-name|e
+name|FieldChangedEvent
+name|fieldChangedEvent
 parameter_list|)
 block|{
 name|String
 name|newValue
 init|=
-name|e
+name|fieldChangedEvent
 operator|.
 name|getNewValue
 argument_list|()
@@ -5945,19 +5941,16 @@ literal|null
 condition|?
 literal|""
 else|:
-name|e
+name|fieldChangedEvent
 operator|.
 name|getNewValue
-argument_list|()
-operator|.
-name|toString
 argument_list|()
 decl_stmt|;
 name|setField
 argument_list|(
-name|e
+name|fieldChangedEvent
 operator|.
-name|getPropertyName
+name|getFieldName
 argument_list|()
 argument_list|,
 name|newValue
@@ -6733,16 +6726,12 @@ operator|)
 operator|)
 operator|||
 operator|(
-operator|(
-name|oldValue
-operator|!=
-literal|null
-operator|)
-operator|&&
-name|oldValue
+name|Objects
 operator|.
 name|equals
 argument_list|(
+name|oldValue
+argument_list|,
 name|newValue
 argument_list|)
 operator|)

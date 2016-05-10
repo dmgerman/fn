@@ -28,17 +28,11 @@ end_import
 
 begin_import
 import|import
-name|net
+name|java
 operator|.
-name|sf
+name|util
 operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|entry
-operator|.
-name|BibEntry
+name|Objects
 import|;
 end_import
 
@@ -99,6 +93,22 @@ operator|.
 name|util
 operator|.
 name|UpdateField
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|BibEntry
 import|;
 end_import
 
@@ -637,17 +647,13 @@ decl_stmt|;
 if|if
 condition|(
 operator|(
-operator|(
-name|oldValue
-operator|==
-literal|null
-operator|)
-operator|||
 operator|!
-name|oldValue
+name|Objects
 operator|.
 name|equals
 argument_list|(
+name|oldValue
+argument_list|,
 name|updatedValue
 argument_list|)
 operator|)

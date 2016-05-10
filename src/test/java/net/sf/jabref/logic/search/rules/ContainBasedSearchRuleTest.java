@@ -24,7 +24,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|*
+name|Globals
 import|;
 end_import
 
@@ -36,11 +36,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|model
-operator|.
-name|entry
-operator|.
-name|IdGenerator
+name|JabRefPreferences
 import|;
 end_import
 
@@ -73,6 +69,22 @@ operator|.
 name|entry
 operator|.
 name|BibtexEntryTypes
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|IdGenerator
 import|;
 end_import
 

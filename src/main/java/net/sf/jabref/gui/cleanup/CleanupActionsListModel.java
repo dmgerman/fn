@@ -16,31 +16,31 @@ end_package
 
 begin_import
 import|import
-name|net
+name|java
 operator|.
-name|sf
+name|util
 operator|.
-name|jabref
-operator|.
-name|exporter
-operator|.
-name|FieldFormatterCleanups
+name|ArrayList
 import|;
 end_import
 
 begin_import
 import|import
-name|net
+name|java
 operator|.
-name|sf
+name|util
 operator|.
-name|jabref
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
 operator|.
-name|logic
+name|util
 operator|.
-name|cleanup
-operator|.
-name|FieldFormatterCleanup
+name|Objects
 import|;
 end_import
 
@@ -50,7 +50,7 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|*
+name|ListModel
 import|;
 end_import
 
@@ -80,31 +80,31 @@ end_import
 
 begin_import
 import|import
-name|java
+name|net
 operator|.
-name|util
+name|sf
 operator|.
-name|ArrayList
+name|jabref
+operator|.
+name|exporter
+operator|.
+name|FieldFormatterCleanups
 import|;
 end_import
 
 begin_import
 import|import
-name|java
+name|net
 operator|.
-name|util
+name|sf
 operator|.
-name|List
-import|;
-end_import
-
-begin_import
-import|import
-name|java
+name|jabref
 operator|.
-name|util
+name|logic
 operator|.
-name|Objects
+name|cleanup
+operator|.
+name|FieldFormatterCleanup
 import|;
 end_import
 

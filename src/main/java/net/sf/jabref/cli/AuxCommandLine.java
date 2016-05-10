@@ -52,11 +52,13 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|model
+name|logic
 operator|.
-name|database
+name|util
 operator|.
-name|BibDatabase
+name|strings
+operator|.
+name|StringUtil
 import|;
 end_import
 
@@ -68,13 +70,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|model
 operator|.
-name|util
+name|database
 operator|.
-name|strings
-operator|.
-name|StringUtil
+name|BibDatabase
 import|;
 end_import
 

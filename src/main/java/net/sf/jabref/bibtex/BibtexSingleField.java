@@ -113,7 +113,7 @@ name|DISPLAYABLE
 block|,
 DECL|enumConstant|WRITEABLE
 name|WRITEABLE
-block|;     }
+block|}
 comment|// the field name
 DECL|field|name
 specifier|private
