@@ -964,7 +964,7 @@ name|IconTheme
 operator|.
 name|JabRefIcon
 operator|.
-name|WWW
+name|DOI
 operator|.
 name|getSmallIcon
 argument_list|()

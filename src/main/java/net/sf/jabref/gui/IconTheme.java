@@ -504,9 +504,9 @@ comment|/* css: file-pdf*/
 DECL|enumConstant|DOI
 name|DOI
 argument_list|(
-literal|"\uf59f"
+literal|"\uF072"
 argument_list|)
-comment|/*css: web*/
+comment|/*css: barcode-scan*/
 block|,
 DECL|enumConstant|DUPLICATE
 name|DUPLICATE
