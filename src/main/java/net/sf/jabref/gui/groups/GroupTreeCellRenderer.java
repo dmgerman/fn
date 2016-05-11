@@ -172,11 +172,18 @@ specifier|private
 name|Object
 name|highlight1Cell
 decl_stmt|;
-DECL|field|highlight2Cells
+DECL|field|overlappingGroups
 specifier|private
-name|Object
-index|[]
-name|highlight2Cells
+name|List
+argument_list|<
+name|GroupTreeNode
+argument_list|>
+name|overlappingGroups
+init|=
+operator|new
+name|ArrayList
+argument_list|<>
+argument_list|()
 decl_stmt|;
 DECL|field|matchingGroups
 specifier|private
@@ -355,9 +362,13 @@ name|red
 init|=
 name|printInRed
 argument_list|(
-name|value
+name|viewModel
 argument_list|)
+operator|&&
+operator|!
+name|selected
 decl_stmt|;
+comment|// do not print currently selected node in red
 name|Boolean
 name|underlined
 init|=
@@ -558,48 +569,38 @@ return|return
 name|c
 return|;
 block|}
-DECL|method|printInRed (Object value)
+DECL|method|printInRed (GroupTreeNodeViewModel viewModel)
 specifier|private
 name|boolean
 name|printInRed
 parameter_list|(
-name|Object
-name|value
+name|GroupTreeNodeViewModel
+name|viewModel
 parameter_list|)
 block|{
 if|if
 condition|(
-name|highlight2Cells
-operator|!=
-literal|null
-condition|)
-block|{
-for|for
-control|(
-name|Object
-name|highlight2Cell
-range|:
-name|highlight2Cells
-control|)
-block|{
-if|if
-condition|(
-name|highlight2Cell
+name|viewModel
 operator|.
-name|equals
-argument_list|(
-name|value
-argument_list|)
+name|isAllEntriesGroup
+argument_list|()
 condition|)
 block|{
-return|return
-literal|true
-return|;
-block|}
-block|}
-block|}
+comment|// Do not print all entries group in red
 return|return
 literal|false
+return|;
+block|}
+return|return
+name|overlappingGroups
+operator|.
+name|contains
+argument_list|(
+name|viewModel
+operator|.
+name|getNode
+argument_list|()
+argument_list|)
 return|;
 block|}
 DECL|method|printUnderlined (GroupTreeNodeViewModel viewModel)
@@ -653,22 +654,31 @@ operator|=
 name|cell
 expr_stmt|;
 block|}
-comment|/**      * Highlights the specified cells (in red), or disables highlight if cells == null.      */
-DECL|method|setHighlight2Cells (Object[] cells)
+comment|/**      * Highlights the specified groups in red.      */
+DECL|method|setOverlappingGroups (List<GroupTreeNode> nodes)
 specifier|public
 name|void
-name|setHighlight2Cells
+name|setOverlappingGroups
 parameter_list|(
-name|Object
-index|[]
-name|cells
+name|List
+argument_list|<
+name|GroupTreeNode
+argument_list|>
+name|nodes
 parameter_list|)
 block|{
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|nodes
+argument_list|)
+expr_stmt|;
 name|this
 operator|.
-name|highlight2Cells
+name|overlappingGroups
 operator|=
-name|cells
+name|nodes
 expr_stmt|;
 block|}
 comment|/**      * Highlights the specified groups by underlining.      */

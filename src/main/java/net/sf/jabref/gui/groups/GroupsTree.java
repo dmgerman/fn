@@ -2173,22 +2173,31 @@ name|repaint
 argument_list|()
 expr_stmt|;
 block|}
-comment|/** Highlights the specified cells or disables highlight if cells == null */
-DECL|method|setHighlight2Cells (Object[] cells)
+comment|/**      * Highlights the specified groups in red      **/
+DECL|method|setOverlappingGroups (List<GroupTreeNode> nodes)
 specifier|public
 name|void
-name|setHighlight2Cells
+name|setOverlappingGroups
 parameter_list|(
-name|Object
-index|[]
-name|cells
+name|List
+argument_list|<
+name|GroupTreeNode
+argument_list|>
+name|nodes
 parameter_list|)
 block|{
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|nodes
+argument_list|)
+expr_stmt|;
 name|localCellRenderer
 operator|.
-name|setHighlight2Cells
+name|setOverlappingGroups
 argument_list|(
-name|cells
+name|nodes
 argument_list|)
 expr_stmt|;
 name|repaint
