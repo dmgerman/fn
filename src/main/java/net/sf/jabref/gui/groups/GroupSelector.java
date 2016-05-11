@@ -152,6 +152,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Enumeration
 import|;
 end_import
@@ -7872,9 +7882,12 @@ block|{
 comment|// nothing selected
 name|groupsTree
 operator|.
-name|setHighlight3Cells
+name|setMatchingGroups
 argument_list|(
-literal|null
+name|Collections
+operator|.
+name|emptyList
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|groupsTree
@@ -7904,12 +7917,9 @@ argument_list|)
 decl_stmt|;
 name|groupsTree
 operator|.
-name|setHighlight3Cells
+name|setMatchingGroups
 argument_list|(
 name|nodeList
-operator|.
-name|toArray
-argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// ensure that all highlighted nodes are visible
@@ -7952,7 +7962,7 @@ name|revalidate
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Show groups that, if selected, would show at least one of the entries found in the specified search.      */
+comment|/**      * Show groups that, if selected, would show at least one of the entries in the specified list.      */
 DECL|method|showOverlappingGroups (List<BibEntry> matches)
 specifier|private
 name|void
@@ -7965,7 +7975,6 @@ argument_list|>
 name|matches
 parameter_list|)
 block|{
-comment|//DatabaseSearch search) {
 name|List
 argument_list|<
 name|GroupTreeNode
@@ -7987,9 +7996,6 @@ operator|.
 name|setHighlight2Cells
 argument_list|(
 name|nodes
-operator|.
-name|toArray
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

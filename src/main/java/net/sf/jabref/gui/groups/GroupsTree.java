@@ -298,6 +298,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Objects
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Optional
 import|;
 end_import
@@ -419,6 +429,22 @@ operator|.
 name|groups
 operator|.
 name|EntriesGroupChange
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|groups
+operator|.
+name|GroupTreeNode
 import|;
 end_import
 
@@ -2169,22 +2195,31 @@ name|repaint
 argument_list|()
 expr_stmt|;
 block|}
-comment|/** Highlights the specified cells or disables highlight if cells == null */
-DECL|method|setHighlight3Cells (Object[] cells)
+comment|/**      * Highlights the specified groups by underlining      **/
+DECL|method|setMatchingGroups (List<GroupTreeNode> nodes)
 specifier|public
 name|void
-name|setHighlight3Cells
+name|setMatchingGroups
 parameter_list|(
-name|Object
-index|[]
-name|cells
+name|List
+argument_list|<
+name|GroupTreeNode
+argument_list|>
+name|nodes
 parameter_list|)
 block|{
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|nodes
+argument_list|)
+expr_stmt|;
 name|localCellRenderer
 operator|.
-name|setHighlight3Cells
+name|setMatchingGroups
 argument_list|(
-name|cells
+name|nodes
 argument_list|)
 expr_stmt|;
 name|repaint
