@@ -1824,8 +1824,9 @@ elseif|else
 if|if
 condition|(
 name|changesAdd
-operator|!=
-literal|null
+operator|.
+name|isPresent
+argument_list|()
 condition|)
 block|{
 name|undoManager

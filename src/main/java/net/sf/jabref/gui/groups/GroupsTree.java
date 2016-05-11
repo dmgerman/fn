@@ -1852,11 +1852,6 @@ argument_list|)
 expr_stmt|;
 name|groupSelector
 operator|.
-name|revalidateGroups
-argument_list|()
-expr_stmt|;
-name|groupSelector
-operator|.
 name|concludeAssignment
 argument_list|(
 name|UndoableChangeEntriesOfGroup
