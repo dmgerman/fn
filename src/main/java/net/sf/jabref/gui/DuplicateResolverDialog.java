@@ -355,7 +355,8 @@ name|frame
 operator|=
 name|dialog
 operator|.
-name|frame
+name|getFrame
+argument_list|()
 expr_stmt|;
 name|init
 argument_list|(

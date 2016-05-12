@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2016 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -1336,7 +1336,7 @@ name|BasePanel
 name|panel
 decl_stmt|;
 DECL|field|frame
-specifier|public
+specifier|private
 specifier|final
 name|JabRefFrame
 name|frame
@@ -3037,6 +3037,8 @@ operator|.
 name|lock
 argument_list|()
 expr_stmt|;
+try|try
+block|{
 name|this
 operator|.
 name|entries
@@ -3046,6 +3048,9 @@ argument_list|(
 name|entry
 argument_list|)
 expr_stmt|;
+block|}
+finally|finally
+block|{
 name|this
 operator|.
 name|entries
@@ -3059,6 +3064,7 @@ operator|.
 name|unlock
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 block|}
 comment|/**      * Checks if there are duplicates to the given entry in the Collection. Does      * not report the entry as duplicate of itself if it is in the Collection.      *      * @param entriesDupe A Collection of BibEntry instances.      * @param entry       The entry to search for duplicates of.      * @return A possible duplicate, if any, or null if none were found.      */
@@ -3280,6 +3286,8 @@ operator|.
 name|lock
 argument_list|()
 expr_stmt|;
+try|try
+block|{
 name|BibDatabase
 name|database
 decl_stmt|;
@@ -3367,6 +3375,9 @@ argument_list|(
 name|entry
 argument_list|)
 expr_stmt|;
+block|}
+finally|finally
+block|{
 name|entries
 operator|.
 name|getReadWriteLock
@@ -3375,9 +3386,10 @@ operator|.
 name|writeLock
 argument_list|()
 operator|.
-name|lock
+name|unlock
 argument_list|()
 expr_stmt|;
+block|}
 name|glTable
 operator|.
 name|repaint
@@ -3402,6 +3414,8 @@ operator|.
 name|lock
 argument_list|()
 expr_stmt|;
+try|try
+block|{
 name|BibDatabase
 name|database
 decl_stmt|;
@@ -3516,6 +3530,16 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+name|preview
+operator|.
+name|update
+argument_list|()
+expr_stmt|;
+name|preview
+operator|.
+name|repaint
+argument_list|()
+expr_stmt|;
 comment|// Remove the entries from the database again, since they are not
 comment|// supposed to
 comment|// added yet. They only needed to be in it while we generated the keys,
@@ -3537,6 +3561,9 @@ name|entry
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+finally|finally
+block|{
 name|entries
 operator|.
 name|getReadWriteLock
@@ -3545,9 +3572,10 @@ operator|.
 name|writeLock
 argument_list|()
 operator|.
-name|lock
+name|unlock
 argument_list|()
 expr_stmt|;
+block|}
 name|glTable
 operator|.
 name|repaint
@@ -3827,6 +3855,8 @@ operator|.
 name|lock
 argument_list|()
 expr_stmt|;
+try|try
+block|{
 for|for
 control|(
 name|BibEntry
@@ -3887,6 +3917,9 @@ name|node
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+finally|finally
+block|{
 name|selectionModel
 operator|.
 name|getSelected
@@ -3901,6 +3934,7 @@ operator|.
 name|unlock
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 block|}
 DECL|method|addCallBack (CallBack cb)
@@ -5095,6 +5129,8 @@ operator|.
 name|lock
 argument_list|()
 expr_stmt|;
+try|try
+block|{
 for|for
 control|(
 name|Object
@@ -5111,6 +5147,9 @@ name|o
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+finally|finally
+block|{
 name|entries
 operator|.
 name|getReadWriteLock
@@ -5122,6 +5161,7 @@ operator|.
 name|unlock
 argument_list|()
 expr_stmt|;
+block|}
 name|glTable
 operator|.
 name|clearSelection
@@ -6156,6 +6196,8 @@ operator|.
 name|lock
 argument_list|()
 expr_stmt|;
+try|try
+block|{
 name|first
 operator|.
 name|setGroupHit
@@ -6163,6 +6205,9 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+block|}
+finally|finally
+block|{
 name|entries
 operator|.
 name|getReadWriteLock
@@ -6174,6 +6219,7 @@ operator|.
 name|unlock
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 elseif|else
 if|if
@@ -6200,6 +6246,8 @@ operator|.
 name|lock
 argument_list|()
 expr_stmt|;
+try|try
+block|{
 name|entries
 operator|.
 name|remove
@@ -6207,6 +6255,9 @@ argument_list|(
 name|first
 argument_list|)
 expr_stmt|;
+block|}
+finally|finally
+block|{
 name|entries
 operator|.
 name|getReadWriteLock
@@ -6218,6 +6269,7 @@ operator|.
 name|unlock
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 elseif|else
 if|if
@@ -6244,6 +6296,8 @@ operator|.
 name|lock
 argument_list|()
 expr_stmt|;
+try|try
+block|{
 name|first
 operator|.
 name|setGroupHit
@@ -6251,6 +6305,9 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+block|}
+finally|finally
+block|{
 name|entries
 operator|.
 name|getReadWriteLock
@@ -6262,6 +6319,7 @@ operator|.
 name|unlock
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 elseif|else
 if|if
@@ -6304,6 +6362,8 @@ operator|.
 name|lock
 argument_list|()
 expr_stmt|;
+try|try
+block|{
 name|diag
 operator|.
 name|getMergedEntry
@@ -6348,6 +6408,9 @@ name|BibEntry
 argument_list|()
 expr_stmt|;
 comment|// Reset first so the next duplicate doesn't trigger
+block|}
+finally|finally
+block|{
 name|entries
 operator|.
 name|getReadWriteLock
@@ -6359,6 +6422,7 @@ operator|.
 name|unlock
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 block|}
 comment|// Check if the duplicate is of another entry in the import:
@@ -6664,6 +6728,8 @@ operator|.
 name|lock
 argument_list|()
 expr_stmt|;
+try|try
+block|{
 if|if
 condition|(
 name|result
@@ -6700,6 +6766,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
+finally|finally
+block|{
 name|entries
 operator|.
 name|getReadWriteLock
@@ -6711,6 +6780,7 @@ operator|.
 name|unlock
 argument_list|()
 expr_stmt|;
+block|}
 name|glTable
 operator|.
 name|repaint
@@ -6967,6 +7037,8 @@ operator|.
 name|lock
 argument_list|()
 expr_stmt|;
+try|try
+block|{
 name|entry
 operator|.
 name|setField
@@ -6981,6 +7053,9 @@ name|getStringRepresentation
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
+finally|finally
+block|{
 name|entries
 operator|.
 name|getReadWriteLock
@@ -6992,6 +7067,7 @@ operator|.
 name|unlock
 argument_list|()
 expr_stmt|;
+block|}
 name|glTable
 operator|.
 name|repaint
@@ -7217,6 +7293,8 @@ operator|.
 name|lock
 argument_list|()
 expr_stmt|;
+try|try
+block|{
 name|entry
 operator|.
 name|setField
@@ -7231,6 +7309,9 @@ name|getStringRepresentation
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
+finally|finally
+block|{
 name|entries
 operator|.
 name|getReadWriteLock
@@ -7242,6 +7323,7 @@ operator|.
 name|unlock
 argument_list|()
 expr_stmt|;
+block|}
 name|glTable
 operator|.
 name|repaint
@@ -7424,6 +7506,8 @@ operator|.
 name|lock
 argument_list|()
 expr_stmt|;
+try|try
+block|{
 name|entry
 operator|.
 name|setField
@@ -7438,6 +7522,9 @@ name|getStringRepresentation
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
+finally|finally
+block|{
 name|entries
 operator|.
 name|getReadWriteLock
@@ -7449,6 +7536,7 @@ operator|.
 name|unlock
 argument_list|()
 expr_stmt|;
+block|}
 name|glTable
 operator|.
 name|repaint
@@ -7521,6 +7609,8 @@ operator|.
 name|lock
 argument_list|()
 expr_stmt|;
+try|try
+block|{
 name|entry
 operator|.
 name|setField
@@ -7535,6 +7625,9 @@ name|getStringRepresentation
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
+finally|finally
+block|{
 name|entries
 operator|.
 name|getReadWriteLock
@@ -7546,6 +7639,7 @@ operator|.
 name|unlock
 argument_list|()
 expr_stmt|;
+block|}
 name|glTable
 operator|.
 name|repaint
@@ -7730,8 +7824,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|// Set initial sort columns:
-comment|/*          * // Default sort order: String[] sortFields = new String[]          * {Globals.prefs.get(JabRefPreferences.PRIMARY_SORT_FIELD), Globals.prefs.get(JabRefPreferences.SECONDARY_SORT_FIELD),          * Globals.prefs.get(JabRefPreferences.TERTIARY_SORT_FIELD)}; boolean[] sortDirections = new          * boolean[] {Globals.prefs.getBoolean(JabRefPreferences.PRIMARY_SORT_DESCENDING),          * Globals.prefs.getBoolean(JabRefPreferences.SECONDARY_SORT_DESCENDING),          * Globals.prefs.getBoolean(JabRefPreferences.TERTIARY_SORT_DESCENDING)}; // descending          */
 name|sortedList
 operator|.
 name|getReadWriteLock
@@ -7743,6 +7835,8 @@ operator|.
 name|lock
 argument_list|()
 expr_stmt|;
+try|try
+block|{
 name|comparatorChooser
 operator|.
 name|appendComparator
@@ -7754,6 +7848,9 @@ argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;
+block|}
+finally|finally
+block|{
 name|sortedList
 operator|.
 name|getReadWriteLock
@@ -7765,6 +7862,7 @@ operator|.
 name|unlock
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 annotation|@
 name|FunctionalInterface
@@ -7968,6 +8066,8 @@ operator|.
 name|lock
 argument_list|()
 expr_stmt|;
+try|try
+block|{
 name|BibEntry
 name|entry
 init|=
@@ -7988,6 +8088,9 @@ operator|)
 name|value
 argument_list|)
 expr_stmt|;
+block|}
+finally|finally
+block|{
 name|entries
 operator|.
 name|getReadWriteLock
@@ -7999,6 +8102,7 @@ operator|.
 name|unlock
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 block|}
 DECL|class|EntryTableFormat
@@ -8408,6 +8512,16 @@ argument_list|,
 name|message
 argument_list|)
 expr_stmt|;
+block|}
+DECL|method|getFrame ()
+specifier|public
+name|JabRefFrame
+name|getFrame
+parameter_list|()
+block|{
+return|return
+name|frame
+return|;
 block|}
 block|}
 end_class

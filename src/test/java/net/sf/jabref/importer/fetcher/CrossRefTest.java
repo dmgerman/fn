@@ -75,8 +75,6 @@ specifier|public
 name|void
 name|findExactData
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|BibEntry
 name|entry
@@ -145,8 +143,6 @@ specifier|public
 name|void
 name|findMissingAuthor
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|BibEntry
 name|entry
@@ -206,8 +202,6 @@ specifier|public
 name|void
 name|findTitleOnly
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|BibEntry
 name|entry
@@ -258,8 +252,6 @@ specifier|public
 name|void
 name|findIncompleteTitle
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|BibEntry
 name|entry
@@ -319,8 +311,6 @@ specifier|public
 name|void
 name|findWrongAuthor
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|BibEntry
 name|entry
