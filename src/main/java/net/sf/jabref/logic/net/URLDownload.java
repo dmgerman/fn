@@ -164,6 +164,16 @@ name|java
 operator|.
 name|net
 operator|.
+name|MalformedURLException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|net
+operator|.
 name|URL
 import|;
 end_import
@@ -251,7 +261,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Each call to a public method creates a new HTTP connection. Nothing is cached.  *  * @author Erik Putrycz erik.putrycz-at-nrc-cnrc.gc.ca  * @author Simon Harrer  */
+comment|/**  * URL download to a string.  *<p>  * Example:  * URLDownload dl = new URLDownload(URL);  * String content = dl.downloadToString(ENCODING);  * dl.downloadToFile(FILE); // available in FILE  * String contentType = dl.determineMimeType();  *  * Each call to a public method creates a new HTTP connection. Nothing is cached.  *  * @author Erik Putrycz erik.putrycz-at-nrc-cnrc.gc.ca  * @author Simon Harrer  */
 end_comment
 
 begin_class
@@ -305,7 +315,28 @@ name|postData
 init|=
 literal|""
 decl_stmt|;
-comment|/**      * URL download to a string.      *<p>      * Example      * URLDownload dl = new URLDownload(URL);      * String content = dl.downloadToString(ENCODING);      * dl.downloadToFile(FILE); // available in FILE      * String contentType = dl.determineMimeType();      *      * @param source The URL to download.      */
+comment|/**      * @param address the URL to download from      * @throws MalformedURLException if no protocol is specified in the address, or an unknown protocol is found      */
+DECL|method|URLDownload (String address)
+specifier|public
+name|URLDownload
+parameter_list|(
+name|String
+name|address
+parameter_list|)
+throws|throws
+name|MalformedURLException
+block|{
+name|this
+argument_list|(
+operator|new
+name|URL
+argument_list|(
+name|address
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * @param source The URL to download.      */
 DECL|method|URLDownload (URL source)
 specifier|public
 name|URLDownload

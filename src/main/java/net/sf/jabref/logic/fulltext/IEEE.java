@@ -458,13 +458,9 @@ init|=
 operator|new
 name|URLDownload
 argument_list|(
-operator|new
-name|URL
-argument_list|(
 name|BASE_URL
 operator|+
 name|stampString
-argument_list|)
 argument_list|)
 operator|.
 name|downloadToString
