@@ -1333,6 +1333,29 @@ return|return
 name|res
 return|;
 block|}
+DECL|method|getDefaultSaveOrder ()
+specifier|public
+specifier|static
+name|SaveOrderConfig
+name|getDefaultSaveOrder
+parameter_list|()
+block|{
+name|SaveOrderConfig
+name|standard
+init|=
+operator|new
+name|SaveOrderConfig
+argument_list|()
+decl_stmt|;
+name|standard
+operator|.
+name|setSaveInOriginalOrder
+argument_list|()
+expr_stmt|;
+return|return
+name|standard
+return|;
+block|}
 block|}
 end_class
 

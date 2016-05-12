@@ -418,10 +418,6 @@ name|FormLayout
 import|;
 end_import
 
-begin_comment
-comment|/**  * Created by IntelliJ IDEA.  * User: alver  * Date: Oct 31, 2005  * Time: 10:46:03 PM  * To change this template use File | Settings | File Templates.  */
-end_comment
-
 begin_class
 DECL|class|DatabasePropertiesDialog
 specifier|public
@@ -503,11 +499,6 @@ DECL|field|oldSaveOrderConfig
 specifier|private
 name|SaveOrderConfig
 name|oldSaveOrderConfig
-decl_stmt|;
-DECL|field|defaultSaveOrderConfig
-specifier|private
-name|SaveOrderConfig
-name|defaultSaveOrderConfig
 decl_stmt|;
 comment|/* The code for "Save sort order" is copied from FileSortTab and slightly updated to fit storing at metadata */
 DECL|field|saveInOriginalOrder
@@ -1411,17 +1402,6 @@ name|getEncoding
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|defaultSaveOrderConfig
-operator|=
-operator|new
-name|SaveOrderConfig
-argument_list|()
-expr_stmt|;
-name|defaultSaveOrderConfig
-operator|.
-name|setSaveInOriginalOrder
-argument_list|()
-expr_stmt|;
 name|Optional
 argument_list|<
 name|SaveOrderConfig
@@ -1454,7 +1434,10 @@ argument_list|)
 expr_stmt|;
 name|oldSaveOrderConfig
 operator|=
-literal|null
+name|SaveOrderConfig
+operator|.
+name|getDefaultSaveOrder
+argument_list|()
 expr_stmt|;
 name|selected
 operator|=
@@ -1772,11 +1755,6 @@ expr_stmt|;
 block|}
 name|SaveOrderConfig
 name|newSaveOrderConfig
-init|=
-name|saveOrderPanel
-operator|.
-name|getSaveOrderConfig
-argument_list|()
 decl_stmt|;
 if|if
 condition|(
@@ -1787,13 +1765,22 @@ argument_list|()
 condition|)
 block|{
 name|newSaveOrderConfig
+operator|=
+name|SaveOrderConfig
 operator|.
-name|setSaveInOriginalOrder
+name|getDefaultSaveOrder
 argument_list|()
 expr_stmt|;
 block|}
 else|else
 block|{
+name|newSaveOrderConfig
+operator|=
+name|saveOrderPanel
+operator|.
+name|getSaveOrderConfig
+argument_list|()
+expr_stmt|;
 name|newSaveOrderConfig
 operator|.
 name|setSaveInSpecifiedOrder
@@ -1837,7 +1824,10 @@ name|newSaveOrderConfig
 operator|.
 name|equals
 argument_list|(
-name|defaultSaveOrderConfig
+name|SaveOrderConfig
+operator|.
+name|getDefaultSaveOrder
+argument_list|()
 argument_list|)
 condition|)
 block|{
