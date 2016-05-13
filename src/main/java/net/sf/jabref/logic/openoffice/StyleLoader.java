@@ -338,10 +338,11 @@ return|return
 name|result
 return|;
 block|}
-DECL|method|addStyle (String filename)
+comment|/**      * Adds the given style to the list of styles      * @param filename The filename of the style      * @return True if the added style is valid, false otherwise      */
+DECL|method|addStyleIfValid (String filename)
 specifier|public
-name|void
-name|addStyle
+name|boolean
+name|addStyleIfValid
 parameter_list|(
 name|String
 name|filename
@@ -414,6 +415,9 @@ expr_stmt|;
 name|storeExternalStyles
 argument_list|()
 expr_stmt|;
+return|return
+literal|true
+return|;
 block|}
 else|else
 block|{
@@ -470,6 +474,9 @@ name|e
 argument_list|)
 expr_stmt|;
 block|}
+return|return
+literal|false
+return|;
 block|}
 DECL|method|loadExternalStyles ()
 specifier|private
@@ -529,6 +536,7 @@ name|isValid
 argument_list|()
 condition|)
 block|{
+comment|//Problem!
 name|externalStyles
 operator|.
 name|add
