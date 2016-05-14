@@ -1167,13 +1167,16 @@ argument_list|(
 name|fileName
 lambda|->
 block|{
+if|if
+condition|(
 name|loader
 operator|.
-name|addStyle
+name|addStyleIfValid
 argument_list|(
 name|fileName
 argument_list|)
-expr_stmt|;
+condition|)
+block|{
 name|preferences
 operator|.
 name|setCurrentStyle
@@ -1181,6 +1184,7 @@ argument_list|(
 name|fileName
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 argument_list|)
 expr_stmt|;

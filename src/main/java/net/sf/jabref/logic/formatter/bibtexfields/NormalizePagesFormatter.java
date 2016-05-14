@@ -82,6 +82,20 @@ name|Localization
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Strings
+import|;
+end_import
+
 begin_comment
 comment|/**  * This class includes sensible defaults for consistent formatting of BibTex page numbers.  *  * From BibTex manual:  * One or more page numbers or range of numbers, such as 42--111 or 7,41,73--97 or 43+  * (the '+' in this last example indicates pages following that don't form a simple range).  * To make it easier to maintain Scribe-compatible databases, the standard styles convert  * a single dash (as in 7-33) to the double dash used in TEX to denote number ranges (as in 7--33).  */
 end_comment
@@ -105,7 +119,7 @@ name|Pattern
 operator|.
 name|compile
 argument_list|(
-literal|"\\A(\\d+)-{1,2}(\\d+)\\Z"
+literal|"\\A(\\d+)(?:-{1,2}(\\d+))?\\Z"
 argument_list|)
 decl_stmt|;
 DECL|field|REJECT_LITERALS
@@ -125,6 +139,15 @@ name|String
 name|PAGES_REPLACE_PATTERN
 init|=
 literal|"$1--$2"
+decl_stmt|;
+DECL|field|SINGLE_PAGE_REPLACE_PATTERN
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|SINGLE_PAGE_REPLACE_PATTERN
+init|=
+literal|"$1"
 decl_stmt|;
 annotation|@
 name|Override
@@ -187,11 +210,30 @@ return|return
 name|value
 return|;
 block|}
-comment|// remove unwanted literals incl. whitespace
+comment|// Remove pages prefix
 name|String
 name|cleanValue
 init|=
 name|value
+operator|.
+name|replace
+argument_list|(
+literal|"pp."
+argument_list|,
+literal|""
+argument_list|)
+operator|.
+name|replace
+argument_list|(
+literal|"p."
+argument_list|,
+literal|""
+argument_list|)
+decl_stmt|;
+comment|// remove unwanted literals incl. whitespace
+name|cleanValue
+operator|=
+name|cleanValue
 operator|.
 name|replaceAll
 argument_list|(
@@ -206,7 +248,7 @@ name|REJECT_LITERALS
 argument_list|,
 literal|""
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 comment|// try to find pages pattern
 name|Matcher
 name|matcher
@@ -218,18 +260,6 @@ argument_list|(
 name|cleanValue
 argument_list|)
 decl_stmt|;
-comment|// replace
-name|String
-name|newValue
-init|=
-name|matcher
-operator|.
-name|replaceFirst
-argument_list|(
-name|PAGES_REPLACE_PATTERN
-argument_list|)
-decl_stmt|;
-comment|// replacement?
 if|if
 condition|(
 name|matcher
@@ -238,11 +268,44 @@ name|matches
 argument_list|()
 condition|)
 block|{
-comment|// write field
+comment|// replace
+if|if
+condition|(
+name|Strings
+operator|.
+name|isNullOrEmpty
+argument_list|(
+name|matcher
+operator|.
+name|group
+argument_list|(
+literal|2
+argument_list|)
+argument_list|)
+condition|)
+block|{
 return|return
-name|newValue
+name|matcher
+operator|.
+name|replaceFirst
+argument_list|(
+name|SINGLE_PAGE_REPLACE_PATTERN
+argument_list|)
 return|;
 block|}
+else|else
+block|{
+return|return
+name|matcher
+operator|.
+name|replaceFirst
+argument_list|(
+name|PAGES_REPLACE_PATTERN
+argument_list|)
+return|;
+block|}
+block|}
+comment|// no replacement
 return|return
 name|value
 return|;
