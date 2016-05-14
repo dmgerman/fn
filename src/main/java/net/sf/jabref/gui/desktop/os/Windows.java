@@ -265,7 +265,7 @@ argument_list|,
 name|directoryName
 argument_list|,
 name|programName
-argument_list|,
+operator|+
 name|DEFAULT_EXECUTABLE_EXTENSION
 argument_list|)
 operator|.
@@ -281,7 +281,7 @@ argument_list|(
 name|progFiles
 argument_list|,
 name|programName
-argument_list|,
+operator|+
 name|DEFAULT_EXECUTABLE_EXTENSION
 argument_list|)
 operator|.
