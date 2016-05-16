@@ -1496,6 +1496,13 @@ name|boolean
 name|movingToDifferentEntry
 decl_stmt|;
 comment|// Indicates that we are about to go to the next or previous entry
+DECL|field|validEntry
+specifier|private
+name|boolean
+name|validEntry
+init|=
+literal|true
+decl_stmt|;
 DECL|field|tabs
 specifier|private
 specifier|final
@@ -7426,6 +7433,8 @@ name|lastSourceStringAccepted
 argument_list|)
 condition|)
 block|{
+name|validEntry
+operator|=
 name|storeSource
 argument_list|()
 expr_stmt|;
@@ -8331,7 +8340,7 @@ condition|)
 block|{
 comment|// Normal panel.
 name|EntryEditorTab
-name|fp
+name|tab
 init|=
 operator|(
 name|EntryEditorTab
@@ -8339,21 +8348,21 @@ operator|)
 name|activeTab
 decl_stmt|;
 name|FieldEditor
-name|fe
+name|fieldEditor
 init|=
-name|fp
+name|tab
 operator|.
 name|getActive
 argument_list|()
 decl_stmt|;
-name|fe
+name|fieldEditor
 operator|.
 name|clearAutoCompleteSuggestion
 argument_list|()
 expr_stmt|;
 name|updateField
 argument_list|(
-name|fe
+name|fieldEditor
 argument_list|)
 expr_stmt|;
 block|}
@@ -8366,6 +8375,11 @@ name|activeTab
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|validEntry
+condition|)
+block|{
 name|panel
 operator|.
 name|runCommand
@@ -8375,6 +8389,7 @@ operator|.
 name|SAVE
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 DECL|method|warnDuplicateBibtexkey ()
