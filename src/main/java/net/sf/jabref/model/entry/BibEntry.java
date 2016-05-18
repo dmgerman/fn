@@ -2411,6 +2411,29 @@ name|object
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|withField (String field, String value)
+specifier|public
+name|BibEntry
+name|withField
+parameter_list|(
+name|String
+name|field
+parameter_list|,
+name|String
+name|value
+parameter_list|)
+block|{
+name|setField
+argument_list|(
+name|field
+argument_list|,
+name|value
+argument_list|)
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
 block|}
 end_class
 

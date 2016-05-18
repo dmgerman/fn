@@ -512,6 +512,51 @@ return|return
 literal|true
 return|;
 block|}
+comment|/**      * Determines the number of entries in the specified list which are matched by this group.      * @param entries list of entries to be searched      * @return number of hits      */
+DECL|method|numberOfHits (List<BibEntry> entries)
+specifier|public
+name|int
+name|numberOfHits
+parameter_list|(
+name|List
+argument_list|<
+name|BibEntry
+argument_list|>
+name|entries
+parameter_list|)
+block|{
+name|int
+name|hits
+init|=
+literal|0
+decl_stmt|;
+for|for
+control|(
+name|BibEntry
+name|entry
+range|:
+name|entries
+control|)
+block|{
+if|if
+condition|(
+name|this
+operator|.
+name|contains
+argument_list|(
+name|entry
+argument_list|)
+condition|)
+block|{
+name|hits
+operator|++
+expr_stmt|;
+block|}
+block|}
+return|return
+name|hits
+return|;
+block|}
 comment|/**      * Returns true if this group is dynamic, i.e. uses a search definition or      * equiv. that might match new entries, or false if this group contains a      * fixed set of entries and thus will never match a new entry that was not      * explicitly added to it.      */
 DECL|method|isDynamic ()
 specifier|public

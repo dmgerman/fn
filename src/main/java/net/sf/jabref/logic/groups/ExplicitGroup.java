@@ -859,19 +859,6 @@ operator|.
 name|ID
 return|;
 block|}
-DECL|method|getNumEntries ()
-specifier|public
-name|int
-name|getNumEntries
-parameter_list|()
-block|{
-return|return
-name|legacyEntryKeys
-operator|.
-name|size
-argument_list|()
-return|;
-block|}
 annotation|@
 name|Override
 DECL|method|hashCode ()
