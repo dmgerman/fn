@@ -188,16 +188,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|After
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Before
 import|;
 end_import
@@ -312,6 +302,11 @@ operator|.
 name|none
 argument_list|()
 decl_stmt|;
+DECL|field|database
+specifier|private
+name|BibDatabase
+name|database
+decl_stmt|;
 annotation|@
 name|Before
 DECL|method|setUp ()
@@ -330,23 +325,13 @@ name|getInstance
 argument_list|()
 expr_stmt|;
 comment|// set preferences for this test
-block|}
-annotation|@
-name|After
-DECL|method|tearDown ()
-specifier|public
-name|void
-name|tearDown
-parameter_list|()
-block|{
-name|Globals
-operator|.
-name|prefs
+name|database
 operator|=
-literal|null
+operator|new
+name|BibDatabase
+argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Some basic test cases for resolving strings.      *      * @throws FileNotFoundException      * @throws IOException      */
 annotation|@
 name|Test
 DECL|method|resolveStrings ()
@@ -453,32 +438,12 @@ block|}
 block|}
 annotation|@
 name|Test
-DECL|method|insertEntry ()
+DECL|method|insertEntryAddsEntryToEntriesList ()
 specifier|public
 name|void
-name|insertEntry
+name|insertEntryAddsEntryToEntriesList
 parameter_list|()
 block|{
-name|BibDatabase
-name|database
-init|=
-operator|new
-name|BibDatabase
-argument_list|()
-decl_stmt|;
-name|assertEquals
-argument_list|(
-name|Collections
-operator|.
-name|emptyList
-argument_list|()
-argument_list|,
-name|database
-operator|.
-name|getEntries
-argument_list|()
-argument_list|)
-expr_stmt|;
 name|BibEntry
 name|entry
 init|=
@@ -534,19 +499,12 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|containsEntryId ()
+DECL|method|containsEntryIdFindsEntry ()
 specifier|public
 name|void
-name|containsEntryId
+name|containsEntryIdFindsEntry
 parameter_list|()
 block|{
-name|BibDatabase
-name|database
-init|=
-operator|new
-name|BibDatabase
-argument_list|()
-decl_stmt|;
 name|BibEntry
 name|entry
 init|=
@@ -603,13 +561,6 @@ name|void
 name|insertEntryWithSameIdThrowsException
 parameter_list|()
 block|{
-name|BibDatabase
-name|database
-init|=
-operator|new
-name|BibDatabase
-argument_list|()
-decl_stmt|;
 name|BibEntry
 name|entry0
 init|=
@@ -649,19 +600,12 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|removeEntry ()
+DECL|method|removeEntryRemovesEntryFromEntriesList ()
 specifier|public
 name|void
-name|removeEntry
+name|removeEntryRemovesEntryFromEntriesList
 parameter_list|()
 block|{
-name|BibDatabase
-name|database
-init|=
-operator|new
-name|BibDatabase
-argument_list|()
-decl_stmt|;
 name|BibEntry
 name|entry
 init|=
@@ -725,13 +669,6 @@ name|void
 name|insertNullEntryThrowsException
 parameter_list|()
 block|{
-name|BibDatabase
-name|database
-init|=
-operator|new
-name|BibDatabase
-argument_list|()
-decl_stmt|;
 name|database
 operator|.
 name|insertEntry
@@ -758,13 +695,6 @@ name|void
 name|removeNullEntryThrowsException
 parameter_list|()
 block|{
-name|BibDatabase
-name|database
-init|=
-operator|new
-name|BibDatabase
-argument_list|()
-decl_stmt|;
 name|database
 operator|.
 name|removeEntry
@@ -784,13 +714,6 @@ name|void
 name|emptyDatabaseHasNoStrings
 parameter_list|()
 block|{
-name|BibDatabase
-name|database
-init|=
-operator|new
-name|BibDatabase
-argument_list|()
-decl_stmt|;
 name|assertEquals
 argument_list|(
 name|Collections
@@ -815,19 +738,12 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|insertString ()
+DECL|method|insertStringUpdatesStringList ()
 specifier|public
 name|void
-name|insertString
+name|insertStringUpdatesStringList
 parameter_list|()
 block|{
-name|BibDatabase
-name|database
-init|=
-operator|new
-name|BibDatabase
-argument_list|()
-decl_stmt|;
 name|BibtexString
 name|string
 init|=
@@ -929,19 +845,12 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|insertAndRemoveString ()
+DECL|method|removeStringUpdatesStringList ()
 specifier|public
 name|void
-name|insertAndRemoveString
+name|removeStringUpdatesStringList
 parameter_list|()
 block|{
-name|BibDatabase
-name|database
-init|=
-operator|new
-name|BibDatabase
-argument_list|()
-decl_stmt|;
 name|BibtexString
 name|string
 init|=
@@ -1051,19 +960,12 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|hasStringLabel ()
+DECL|method|hasStringLabelFindsString ()
 specifier|public
 name|void
-name|hasStringLabel
+name|hasStringLabelFindsString
 parameter_list|()
 block|{
-name|BibDatabase
-name|database
-init|=
-operator|new
-name|BibDatabase
-argument_list|()
-decl_stmt|;
 name|BibtexString
 name|string
 init|=
@@ -1123,13 +1025,6 @@ name|void
 name|addSameStringLabelTwiceThrowsKeyCollisionException
 parameter_list|()
 block|{
-name|BibDatabase
-name|database
-init|=
-operator|new
-name|BibDatabase
-argument_list|()
-decl_stmt|;
 name|BibtexString
 name|string
 init|=
@@ -1194,13 +1089,6 @@ name|void
 name|addSameStringIdTwiceThrowsKeyCollisionException
 parameter_list|()
 block|{
-name|BibDatabase
-name|database
-init|=
-operator|new
-name|BibDatabase
-argument_list|()
-decl_stmt|;
 name|String
 name|id
 init|=
@@ -1254,19 +1142,12 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testAddedEntryEventReceivement ()
+DECL|method|insertEntryPostsAddedEntryEvent ()
 specifier|public
 name|void
-name|testAddedEntryEventReceivement
+name|insertEntryPostsAddedEntryEvent
 parameter_list|()
 block|{
-name|BibDatabase
-name|database
-init|=
-operator|new
-name|BibDatabase
-argument_list|()
-decl_stmt|;
 name|BibEntry
 name|expectedEntry
 init|=
@@ -1313,19 +1194,12 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testRemovedEntryEventReceivement ()
+DECL|method|removeEntryPostsRemovedEntryEvent ()
 specifier|public
 name|void
-name|testRemovedEntryEventReceivement
+name|removeEntryPostsRemovedEntryEvent
 parameter_list|()
 block|{
-name|BibDatabase
-name|database
-init|=
-operator|new
-name|BibDatabase
-argument_list|()
-decl_stmt|;
 name|BibEntry
 name|expectedEntry
 init|=
@@ -1374,6 +1248,62 @@ argument_list|(
 name|expectedEntry
 argument_list|,
 name|actualEntry
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|changingEntryPostsChangeEntryEvent ()
+specifier|public
+name|void
+name|changingEntryPostsChangeEntryEvent
+parameter_list|()
+block|{
+name|BibEntry
+name|entry
+init|=
+operator|new
+name|BibEntry
+argument_list|()
+decl_stmt|;
+name|TestEventListener
+name|tel
+init|=
+operator|new
+name|TestEventListener
+argument_list|()
+decl_stmt|;
+name|database
+operator|.
+name|insertEntry
+argument_list|(
+name|entry
+argument_list|)
+expr_stmt|;
+name|database
+operator|.
+name|registerListener
+argument_list|(
+name|tel
+argument_list|)
+expr_stmt|;
+name|entry
+operator|.
+name|setField
+argument_list|(
+literal|"test"
+argument_list|,
+literal|"some value"
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+name|entry
+argument_list|,
+name|tel
+operator|.
+name|getBibEntry
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

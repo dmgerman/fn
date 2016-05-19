@@ -8634,10 +8634,6 @@ return|;
 block|}
 end_function
 
-begin_comment
-comment|/**      * This listener is used to add a new entry to a group (or a set of groups) in case the Group View is selected and      * one or more groups are marked      */
-end_comment
-
 begin_class
 DECL|class|GroupTreeListener
 specifier|private
@@ -8655,6 +8651,7 @@ name|EntryAddedEvent
 name|addedEntryEvent
 parameter_list|)
 block|{
+comment|// Automatically add new entry to the selected group (or set of groups)
 if|if
 condition|(
 name|Globals
@@ -8763,6 +8760,36 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+comment|// Update group display (for example to reflect that the number of contained entries has changed)
+name|frame
+operator|.
+name|getGroupSelector
+argument_list|()
+operator|.
+name|revalidateGroups
+argument_list|()
+expr_stmt|;
+block|}
+annotation|@
+name|Subscribe
+DECL|method|listen (EntryChangedEvent entryChangedEvent)
+specifier|public
+name|void
+name|listen
+parameter_list|(
+name|EntryChangedEvent
+name|entryChangedEvent
+parameter_list|)
+block|{
+comment|// Update group display in order to take changes into account
+name|frame
+operator|.
+name|getGroupSelector
+argument_list|()
+operator|.
+name|revalidateGroups
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 end_class

@@ -166,7 +166,35 @@ name|jabref
 operator|.
 name|event
 operator|.
+name|EntryChangedEvent
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|event
+operator|.
 name|EntryRemovedEvent
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|event
+operator|.
+name|FieldChangedEvent
 import|;
 end_import
 
@@ -245,6 +273,20 @@ operator|.
 name|eventbus
 operator|.
 name|EventBus
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|eventbus
+operator|.
+name|Subscribe
 import|;
 end_import
 
@@ -782,6 +824,13 @@ operator|.
 name|add
 argument_list|(
 name|entry
+argument_list|)
+expr_stmt|;
+name|entry
+operator|.
+name|registerListener
+argument_list|(
+name|this
 argument_list|)
 expr_stmt|;
 name|eventBus
@@ -2093,14 +2142,14 @@ return|return
 name|epilog
 return|;
 block|}
-comment|/**      * Registers an listener object (subscriber) to the internal event bus.      * All subscribers should contain at least one<code>@Subscribe</code> annotated      * method accepting one of the following event types:      *      *   - {@link EntryAddedEvent}      *   - {@link EntryChangedEvent}      *   - {@link EntryRemovedEvent}      *      * or another {@link EntryEvent} extending type.      *      * @param object Listener (subscriber)      */
-DECL|method|registerListener (Object object)
+comment|/**      * Registers an listener object (subscriber) to the internal event bus.      * The following events are posted:      *      *   - {@link EntryAddedEvent}      *   - {@link EntryChangedEvent}      *   - {@link EntryRemovedEvent}      *      * @param listener listener (subscriber) to add      */
+DECL|method|registerListener (Object listener)
 specifier|public
 name|void
 name|registerListener
 parameter_list|(
 name|Object
-name|object
+name|listener
 parameter_list|)
 block|{
 name|this
@@ -2109,7 +2158,26 @@ name|eventBus
 operator|.
 name|register
 argument_list|(
-name|object
+name|listener
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Subscribe
+DECL|method|relayEntryChangeEvent (FieldChangedEvent event)
+specifier|private
+name|void
+name|relayEntryChangeEvent
+parameter_list|(
+name|FieldChangedEvent
+name|event
+parameter_list|)
+block|{
+name|eventBus
+operator|.
+name|post
+argument_list|(
+name|event
 argument_list|)
 expr_stmt|;
 block|}
