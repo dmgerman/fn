@@ -310,6 +310,22 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
+name|util
+operator|.
+name|OS
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|migrations
 operator|.
 name|PreferencesMigrations
@@ -511,8 +527,14 @@ operator|.
 name|upgradeFaultyEncodingStrings
 argument_list|()
 expr_stmt|;
-comment|// This property is set to make the Mac OSX Java VM move the menu bar to
-comment|// the top of the screen, where Mac users expect it to be.
+comment|// This property is set to make the Mac OSX Java VM move the menu bar to the top of the screen
+if|if
+condition|(
+name|OS
+operator|.
+name|OS_X
+condition|)
+block|{
 name|System
 operator|.
 name|setProperty
@@ -522,6 +544,7 @@ argument_list|,
 literal|"true"
 argument_list|)
 expr_stmt|;
+block|}
 comment|// Set antialiasing on everywhere. This only works in JRE>= 1.5.
 comment|// Or... it doesn't work, period.
 comment|// TODO test and maybe remove this! I found this commented out with no additional info ( payload@lavabit.com )
