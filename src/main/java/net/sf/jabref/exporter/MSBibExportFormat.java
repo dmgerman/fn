@@ -292,13 +292,11 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-comment|// Only export if entries exist
 return|return;
 block|}
-comment|// forcing to use UTF8 output format for some problems with
-comment|// xml export in other encodings
+comment|// forcing to use UTF8 output format for some problems with xml export in other encodings
 name|SaveSession
-name|ss
+name|session
 init|=
 operator|new
 name|SaveSession
@@ -311,7 +309,7 @@ literal|false
 argument_list|)
 decl_stmt|;
 name|MSBibDatabase
-name|md
+name|msBibDatabase
 init|=
 operator|new
 name|MSBibDatabase
@@ -329,13 +327,12 @@ init|(
 name|VerifyingWriter
 name|ps
 init|=
-name|ss
+name|session
 operator|.
 name|getWriter
 argument_list|()
 init|)
 block|{
-comment|// PS: DOES NOT SUPPORT EXPORTING ONLY A SET OF ENTRIES
 try|try
 block|{
 name|DOMSource
@@ -344,7 +341,7 @@ init|=
 operator|new
 name|DOMSource
 argument_list|(
-name|md
+name|msBibDatabase
 operator|.
 name|getDOMrepresentation
 argument_list|()
@@ -411,7 +408,7 @@ throw|;
 block|}
 name|finalizeSaveSession
 argument_list|(
-name|ss
+name|session
 argument_list|,
 operator|new
 name|File
