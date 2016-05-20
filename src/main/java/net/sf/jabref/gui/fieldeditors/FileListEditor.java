@@ -1014,7 +1014,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Auto"
+literal|"Get fulltext"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1028,7 +1028,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Download"
+literal|"Download from URL"
 argument_list|)
 argument_list|)
 decl_stmt|;
