@@ -155,6 +155,16 @@ argument_list|)
 decl_stmt|;
 name|menuItem
 operator|.
+name|setToolTipText
+argument_list|(
+name|converter
+operator|.
+name|getDescription
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|menuItem
+operator|.
 name|addActionListener
 argument_list|(
 name|e
