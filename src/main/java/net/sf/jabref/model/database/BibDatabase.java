@@ -768,7 +768,7 @@ return|return
 name|result
 return|;
 block|}
-comment|/**      * Inserts the entry, given that its ID is not already in use.      * use Util.createId(...) to make up a unique ID for an entry.      *      * @return false if the insert was done without a duplicate warning      */
+comment|/**      * Inserts the entry, given that its ID is not already in use.      * use Util.createId(...) to make up a unique ID for an entry.      *      * @param entry the entry to insert into the database      * @return false if the insert was done without a duplicate warning      * @throws KeyCollisionException thrown if the entry id ({@link BibEntry#getId()}) is already  present in the database      */
 DECL|method|insertEntry (BibEntry entry)
 specifier|public
 specifier|synchronized
@@ -777,6 +777,33 @@ name|insertEntry
 parameter_list|(
 name|BibEntry
 name|entry
+parameter_list|)
+throws|throws
+name|KeyCollisionException
+block|{
+return|return
+name|this
+operator|.
+name|insertEntry
+argument_list|(
+name|entry
+argument_list|,
+literal|false
+argument_list|)
+return|;
+block|}
+comment|/**      * Inserts the entry, given that its ID is not already in use.      * use Util.createId(...) to make up a unique ID for an entry.      *      * @param entry  the entry to insert into the database      * @param isUndo set to true if the insertion is caused by an undo      * @return false if the insert was done without a duplicate warning      * @throws KeyCollisionException thrown if the entry id ({@link BibEntry#getId()}) is already  present in the database      */
+DECL|method|insertEntry (BibEntry entry, boolean isUndo)
+specifier|public
+specifier|synchronized
+name|boolean
+name|insertEntry
+parameter_list|(
+name|BibEntry
+name|entry
+parameter_list|,
+name|boolean
+name|isUndo
 parameter_list|)
 throws|throws
 name|KeyCollisionException
@@ -841,6 +868,8 @@ operator|new
 name|EntryAddedEvent
 argument_list|(
 name|entry
+argument_list|,
+name|isUndo
 argument_list|)
 argument_list|)
 expr_stmt|;

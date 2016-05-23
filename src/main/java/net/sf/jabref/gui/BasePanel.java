@@ -8684,6 +8684,20 @@ name|EntryAddedEvent
 name|addedEntryEvent
 parameter_list|)
 block|{
+comment|// if the added entry is an undo don't add it to the current group
+if|if
+condition|(
+name|addedEntryEvent
+operator|.
+name|isUndo
+argument_list|()
+condition|)
+block|{
+name|scheduleUpdate
+argument_list|()
+expr_stmt|;
+return|return;
+block|}
 comment|// Automatically add new entry to the selected group (or set of groups)
 if|if
 condition|(
