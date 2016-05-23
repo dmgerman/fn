@@ -60,7 +60,7 @@ comment|//            export/import of some definition from/to a xml file
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref.bibtex
+DECL|package|net.sf.jabref.model.entry
 package|package
 name|net
 operator|.
@@ -68,7 +68,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|bibtex
+name|model
+operator|.
+name|entry
 package|;
 end_package
 
@@ -203,22 +205,6 @@ operator|.
 name|jabref
 operator|.
 name|JabRefPreferences
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|entry
-operator|.
-name|BibEntry
 import|;
 end_import
 

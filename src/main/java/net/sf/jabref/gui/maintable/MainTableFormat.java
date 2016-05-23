@@ -181,18 +181,6 @@ argument_list|<
 name|BibEntry
 argument_list|>
 block|{
-comment|// Character separating field names that are to be used in sequence as
-comment|// fallbacks for a single column (e.g. "author/editor" to use editor where
-comment|// author is not set):
-DECL|field|COL_DEFINITION_FIELD_SEPARATOR
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|COL_DEFINITION_FIELD_SEPARATOR
-init|=
-literal|"/"
-decl_stmt|;
 comment|// Values to gather iconImages for those columns
 comment|// These values are also used to put a heading into the table; see getColumnName(int)
 DECL|field|URL_FIRST
@@ -695,7 +683,7 @@ name|columnName
 operator|.
 name|split
 argument_list|(
-name|MainTableFormat
+name|Globals
 operator|.
 name|COL_DEFINITION_FIELD_SEPARATOR
 argument_list|)

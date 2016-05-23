@@ -1869,6 +1869,8 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
+try|try
+block|{
 name|EntryTypes
 operator|.
 name|addOrModifyCustomEntryType
@@ -1969,6 +1971,15 @@ name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
+finally|finally
+block|{
+name|EntryTypes
+operator|.
+name|removeAllCustomEntryTypes
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 annotation|@
 name|Test

@@ -137,9 +137,7 @@ init|=
 operator|new
 name|Dimension
 argument_list|(
-name|GUIGlobals
-operator|.
-name|SPLIT_PANE_DIVIDER_LOCATION
+literal|175
 argument_list|,
 literal|100
 argument_list|)

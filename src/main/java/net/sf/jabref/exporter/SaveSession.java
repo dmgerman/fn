@@ -110,20 +110,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
-operator|.
-name|GUIGlobals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|logic
 operator|.
 name|FieldChange
@@ -235,6 +221,16 @@ name|SaveSession
 operator|.
 name|class
 argument_list|)
+decl_stmt|;
+comment|// Filenames.
+DECL|field|BACKUP_EXTENSION
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|BACKUP_EXTENSION
+init|=
+literal|".bak"
 decl_stmt|;
 DECL|field|LOCKFILE_SUFFIX
 specifier|public
@@ -477,8 +473,6 @@ name|path
 argument_list|,
 name|name
 operator|+
-name|GUIGlobals
-operator|.
 name|BACKUP_EXTENSION
 argument_list|)
 decl_stmt|;

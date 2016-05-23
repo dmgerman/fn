@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|net.sf.jabref.exporter
+DECL|package|net.sf.jabref.logic.bibtex
 package|package
 name|net
 operator|.
@@ -8,7 +8,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|exporter
+name|logic
+operator|.
+name|bibtex
 package|;
 end_package
 
@@ -77,10 +79,6 @@ operator|.
 name|assertEquals
 import|;
 end_import
-
-begin_comment
-comment|/**  * Created by joerg on 05.10.2015.  */
-end_comment
 
 begin_class
 DECL|class|LatexFieldFormatterTests

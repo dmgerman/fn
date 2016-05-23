@@ -1686,6 +1686,16 @@ name|JFrame
 implements|implements
 name|OutputPrinter
 block|{
+comment|// Frame titles.
+DECL|field|FRAME_TITLE
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|FRAME_TITLE
+init|=
+literal|"JabRef"
+decl_stmt|;
 DECL|field|LOGGER
 specifier|private
 specifier|static
@@ -5546,8 +5556,6 @@ argument_list|)
 expr_stmt|;
 name|setTitle
 argument_list|(
-name|GUIGlobals
-operator|.
 name|FRAME_TITLE
 argument_list|)
 expr_stmt|;
@@ -5917,8 +5925,6 @@ condition|)
 block|{
 name|setTitle
 argument_list|(
-name|GUIGlobals
-operator|.
 name|FRAME_TITLE
 argument_list|)
 expr_stmt|;
@@ -5984,8 +5990,6 @@ condition|)
 block|{
 name|setTitle
 argument_list|(
-name|GUIGlobals
-operator|.
 name|FRAME_TITLE
 operator|+
 literal|" - "
@@ -6018,8 +6022,6 @@ argument_list|()
 decl_stmt|;
 name|setTitle
 argument_list|(
-name|GUIGlobals
-operator|.
 name|FRAME_TITLE
 operator|+
 literal|" - "

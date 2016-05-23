@@ -104,7 +104,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|bibtex
+name|model
+operator|.
+name|entry
 operator|.
 name|InternalBibtexFields
 import|;

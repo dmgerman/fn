@@ -100,6 +100,8 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
 name|bibtex
 operator|.
 name|BibEntryWriter
@@ -114,7 +116,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|exporter
+name|logic
+operator|.
+name|bibtex
 operator|.
 name|LatexFieldFormatter
 import|;

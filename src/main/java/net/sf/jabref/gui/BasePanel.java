@@ -1890,6 +1890,16 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+comment|// Divider size for BaseFrame split pane. 0 means non-resizable.
+DECL|field|SPLIT_PANE_DIVIDER_SIZE
+specifier|private
+specifier|static
+specifier|final
+name|int
+name|SPLIT_PANE_DIVIDER_SIZE
+init|=
+literal|4
+decl_stmt|;
 DECL|field|database
 specifier|private
 specifier|final
@@ -9829,8 +9839,6 @@ name|splitPane
 operator|.
 name|setDividerSize
 argument_list|(
-name|GUIGlobals
-operator|.
 name|SPLIT_PANE_DIVIDER_SIZE
 argument_list|)
 expr_stmt|;
@@ -13554,9 +13562,16 @@ operator|.
 name|size
 argument_list|()
 operator|>
-name|GUIGlobals
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getInt
+argument_list|(
+name|JabRefPreferences
 operator|.
 name|MAX_BACK_HISTORY_SIZE
+argument_list|)
 condition|)
 block|{
 name|previousEntries

@@ -210,6 +210,16 @@ name|FieldContentSelector
 extends|extends
 name|JComponent
 block|{
+DECL|field|MAX_CONTENT_SELECTOR_WIDTH
+specifier|private
+specifier|static
+specifier|final
+name|int
+name|MAX_CONTENT_SELECTOR_WIDTH
+init|=
+literal|240
+decl_stmt|;
+comment|// The max width of the combobox for content selectors.
 DECL|field|comboBox
 specifier|private
 specifier|final
@@ -331,8 +341,6 @@ name|parents
 operator|.
 name|width
 operator|>
-name|GUIGlobals
-operator|.
 name|MAX_CONTENT_SELECTOR_WIDTH
 condition|)
 block|{
@@ -340,8 +348,6 @@ name|parents
 operator|.
 name|width
 operator|=
-name|GUIGlobals
-operator|.
 name|MAX_CONTENT_SELECTOR_WIDTH
 expr_stmt|;
 block|}

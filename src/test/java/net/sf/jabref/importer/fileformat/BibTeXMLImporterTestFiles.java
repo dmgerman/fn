@@ -178,9 +178,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|bibtex
+name|importer
 operator|.
-name|BibEntryAssert
+name|OutputPrinterToNull
 import|;
 end_import
 
@@ -192,9 +192,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|importer
+name|logic
 operator|.
-name|OutputPrinterToNull
+name|bibtex
+operator|.
+name|BibEntryAssert
 import|;
 end_import
 
