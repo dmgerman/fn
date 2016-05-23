@@ -2023,11 +2023,11 @@ name|result
 return|;
 block|}
 comment|/**      * Determines filename provided by an entry in a database      *      * @param database the database, where the entry is located      * @param entry    the entry to which the file should be linked to      * @param repository      * @return a suggested fileName      */
-DECL|method|getLinkedFileName (BibDatabase database, BibEntry entry, JournalAbbreviationRepository repository)
+DECL|method|createFileNameFromPattern (BibDatabase database, BibEntry entry, JournalAbbreviationRepository repository)
 specifier|public
 specifier|static
 name|String
-name|getLinkedFileName
+name|createFileNameFromPattern
 parameter_list|(
 name|BibDatabase
 name|database

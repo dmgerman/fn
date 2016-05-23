@@ -667,7 +667,7 @@ name|suggName
 init|=
 name|FileUtil
 operator|.
-name|getLinkedFileName
+name|createFileNameFromPattern
 argument_list|(
 name|eEditor
 operator|.
