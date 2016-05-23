@@ -147,7 +147,7 @@ literal|"(^|[- /\\[(}\"])"
 operator|+
 name|listOfWord
 operator|+
-literal|"($|[^}])"
+literal|"($|[^a-zA-Z}])"
 argument_list|,
 literal|"$1\\{"
 operator|+

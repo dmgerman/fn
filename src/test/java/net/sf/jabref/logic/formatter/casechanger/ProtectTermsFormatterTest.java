@@ -114,6 +114,30 @@ literal|"VLSI {VLSI}"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"{BPEL}"
+argument_list|,
+name|formatter
+operator|.
+name|format
+argument_list|(
+literal|"{BPEL}"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"{Testing BPEL Engine Performance: A Survey}"
+argument_list|,
+name|formatter
+operator|.
+name|format
+argument_list|(
+literal|"{Testing BPEL Engine Performance: A Survey}"
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Test
