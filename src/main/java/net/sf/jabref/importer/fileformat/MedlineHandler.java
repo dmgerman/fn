@@ -1421,7 +1421,6 @@ name|author
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// b.setField("author",Util.replaceSpecialCharacters(ImportFormatReader.expandAuthorInitials(author)));
 name|author
 operator|=
 literal|""
