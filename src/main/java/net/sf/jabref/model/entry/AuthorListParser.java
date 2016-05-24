@@ -1532,6 +1532,10 @@ operator|(
 name|bracesLevel
 operator|==
 literal|0
+operator|||
+name|c
+operator|==
+literal|'{'
 operator|)
 condition|)
 block|{
