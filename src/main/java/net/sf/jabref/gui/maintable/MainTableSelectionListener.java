@@ -26,7 +26,67 @@ name|awt
 operator|.
 name|event
 operator|.
-name|*
+name|FocusEvent
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|awt
+operator|.
+name|event
+operator|.
+name|FocusListener
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|awt
+operator|.
+name|event
+operator|.
+name|KeyEvent
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|awt
+operator|.
+name|event
+operator|.
+name|KeyListener
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|awt
+operator|.
+name|event
+operator|.
+name|MouseEvent
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|awt
+operator|.
+name|event
+operator|.
+name|MouseListener
 import|;
 end_import
 
@@ -66,47 +126,47 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|*
+name|Icon
 import|;
 end_import
 
 begin_import
 import|import
-name|ca
+name|javax
 operator|.
-name|odell
+name|swing
 operator|.
-name|glazedlists
-operator|.
-name|EventList
+name|JLabel
 import|;
 end_import
 
 begin_import
 import|import
-name|ca
+name|javax
 operator|.
-name|odell
+name|swing
 operator|.
-name|glazedlists
-operator|.
-name|event
-operator|.
-name|ListEvent
+name|JPopupMenu
 import|;
 end_import
 
 begin_import
 import|import
-name|ca
+name|javax
 operator|.
-name|odell
+name|swing
 operator|.
-name|glazedlists
+name|SwingUtilities
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
 operator|.
-name|event
+name|swing
 operator|.
-name|ListEventListener
+name|Timer
 import|;
 end_import
 
@@ -118,7 +178,43 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|*
+name|Globals
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|JabRefExecutorService
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|JabRefGUI
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|JabRefPreferences
 import|;
 end_import
 
@@ -146,7 +242,91 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|*
+name|BasePanel
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|BasePanelMode
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|FileListEntry
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|FileListTableModel
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|GUIGlobals
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|IconTheme
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|PreviewPanel
 import|;
 end_import
 
@@ -301,6 +481,46 @@ operator|.
 name|specialfields
 operator|.
 name|SpecialFieldsUtils
+import|;
+end_import
+
+begin_import
+import|import
+name|ca
+operator|.
+name|odell
+operator|.
+name|glazedlists
+operator|.
+name|EventList
+import|;
+end_import
+
+begin_import
+import|import
+name|ca
+operator|.
+name|odell
+operator|.
+name|glazedlists
+operator|.
+name|event
+operator|.
+name|ListEvent
+import|;
+end_import
+
+begin_import
+import|import
+name|ca
+operator|.
+name|odell
+operator|.
+name|glazedlists
+operator|.
+name|event
+operator|.
+name|ListEventListener
 import|;
 end_import
 
@@ -1584,11 +1804,8 @@ name|INSTANCE
 operator|.
 name|execute
 argument_list|(
-call|(
-name|Runnable
-call|)
-argument_list|()
-operator|->
+parameter_list|()
+lambda|->
 block|{
 name|panel
 operator|.
@@ -1603,7 +1820,7 @@ argument_list|)
 operator|+
 literal|'.'
 argument_list|)
-block|;
+expr_stmt|;
 comment|// check for all field names whether a link is present
 comment|// (is relevant for combinations such as "url/doi")
 for|for
@@ -1882,19 +2099,13 @@ comment|// only open the first link
 block|}
 block|}
 block|}
-block|)
-function|;
+argument_list|)
+expr_stmt|;
 block|}
-end_class
-
-begin_comment
-unit|}
+block|}
 comment|/**      * Method to handle a single left click on one the special fields (e.g., ranking, quality, ...)      * Shows either a popup to select/clear a value or simply toggles the functionality to set/unset the special field      *      * @param e MouseEvent used to determine the position of the popups      * @param columnName the name of the specialfield column      */
-end_comment
-
-begin_function
 DECL|method|handleSpecialFieldLeftClick (MouseEvent e, String columnName)
-unit|private
+specifier|private
 name|void
 name|handleSpecialFieldLeftClick
 parameter_list|(
@@ -2021,13 +2232,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-end_function
-
-begin_comment
 comment|/**      * Process general right-click events on the table. Show the table context menu at      * the position where the user right-clicked.      * @param e The mouse event defining the popup trigger.      * @param row The row where the event occurred.      */
-end_comment
-
-begin_function
 DECL|method|processPopupTrigger (MouseEvent e, int row)
 specifier|private
 name|void
@@ -2090,9 +2295,10 @@ init|=
 operator|new
 name|RightClickMenu
 argument_list|(
-name|JabRef
+name|JabRefGUI
 operator|.
-name|mainFrame
+name|getMainFrame
+argument_list|()
 argument_list|,
 name|panel
 argument_list|)
@@ -2115,13 +2321,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-end_function
-
-begin_comment
 comment|/**      * Process popup trigger events occurring on an icon cell in the table. Show a menu where the user can choose which      * external resource to open for the entry. If no relevant external resources exist, let the normal popup trigger      * handler do its thing instead.      *      * @param e The mouse event defining this popup trigger.      * @param row The row where the event occurred.      * @param column the MainTableColumn associated with this table cell.      */
-end_comment
-
-begin_function
 DECL|method|showIconRightClickMenu (MouseEvent e, int row, MainTableColumn column)
 specifier|private
 name|void
@@ -2517,9 +2717,6 @@ expr_stmt|;
 block|}
 block|}
 block|}
-end_function
-
-begin_function
 DECL|method|entryEditorClosing (EntryEditor editor)
 specifier|public
 name|void
@@ -2572,9 +2769,6 @@ name|table
 argument_list|)
 expr_stmt|;
 block|}
-end_function
-
-begin_function
 annotation|@
 name|Override
 DECL|method|mouseEntered (MouseEvent e)
@@ -2588,9 +2782,6 @@ parameter_list|)
 block|{
 comment|// Do nothing
 block|}
-end_function
-
-begin_function
 annotation|@
 name|Override
 DECL|method|mouseExited (MouseEvent e)
@@ -2604,9 +2795,6 @@ parameter_list|)
 block|{
 comment|// Do nothing
 block|}
-end_function
-
-begin_function
 DECL|method|setPreviewActive (boolean enabled)
 specifier|public
 name|void
@@ -2663,9 +2851,6 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-end_function
-
-begin_function
 DECL|method|switchPreview ()
 specifier|public
 name|void
@@ -2753,13 +2938,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-end_function
-
-begin_comment
 comment|/**      * Receive key event on the main table. If the key is a letter or a digit,      * we should select the first entry in the table which starts with the given      * letter in the column by which the table is sorted.      * @param e The KeyEvent      */
-end_comment
-
-begin_function
 annotation|@
 name|Override
 DECL|method|keyTyped (KeyEvent e)
@@ -3037,9 +3216,6 @@ literal|0
 expr_stmt|;
 block|}
 block|}
-end_function
-
-begin_function
 annotation|@
 name|Override
 DECL|method|keyReleased (KeyEvent e)
@@ -3053,9 +3229,6 @@ parameter_list|)
 block|{
 comment|// Do nothing
 block|}
-end_function
-
-begin_function
 annotation|@
 name|Override
 DECL|method|keyPressed (KeyEvent e)
@@ -3069,9 +3242,6 @@ parameter_list|)
 block|{
 comment|// Do nothing
 block|}
-end_function
-
-begin_function
 annotation|@
 name|Override
 DECL|method|focusGained (FocusEvent e)
@@ -3085,9 +3255,6 @@ parameter_list|)
 block|{
 comment|// Do nothing
 block|}
-end_function
-
-begin_function
 annotation|@
 name|Override
 DECL|method|focusLost (FocusEvent e)
@@ -3105,8 +3272,8 @@ literal|0
 expr_stmt|;
 comment|// Reset quick jump when focus is lost.
 block|}
-end_function
+block|}
+end_class
 
-unit|}
 end_unit
 

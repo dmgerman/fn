@@ -66,12 +66,8 @@ argument_list|)
 decl_stmt|;
 name|e
 operator|.
-name|setField
+name|setCiteKey
 argument_list|(
-name|BibEntry
-operator|.
-name|KEY_FIELD
-argument_list|,
 literal|"key"
 argument_list|)
 expr_stmt|;
@@ -148,12 +144,8 @@ argument_list|)
 decl_stmt|;
 name|e
 operator|.
-name|setField
+name|setCiteKey
 argument_list|(
-name|BibEntry
-operator|.
-name|KEY_FIELD
-argument_list|,
 literal|"key"
 argument_list|)
 expr_stmt|;

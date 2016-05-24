@@ -16,16 +16,6 @@ end_package
 
 begin_import
 import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|Test
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -72,7 +62,67 @@ name|java
 operator|.
 name|util
 operator|.
-name|*
+name|Arrays
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|LinkedList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Properties
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|StringJoiner
 import|;
 end_import
 
@@ -85,6 +135,16 @@ operator|.
 name|stream
 operator|.
 name|Collectors
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Test
 import|;
 end_import
 
@@ -339,21 +399,6 @@ parameter_list|()
 block|{
 name|super
 argument_list|()
-expr_stmt|;
-block|}
-comment|/**          * @param defaults          */
-DECL|method|DuplicationDetectionProperties (Properties defaults)
-specifier|public
-name|DuplicationDetectionProperties
-parameter_list|(
-name|Properties
-name|defaults
-parameter_list|)
-block|{
-name|super
-argument_list|(
-name|defaults
-argument_list|)
 expr_stmt|;
 block|}
 comment|/**          * Overriding the HashTable put() so we can check for duplicates          */
@@ -1012,7 +1057,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"2. EXECUTE gradlew -b localization.gradle compareAndUpdateTranslationsWithEnglishTranslation TO"
+literal|"2. EXECUTE gradlew -b localization.gradle generateMissingTranslationKeys TO"
 argument_list|)
 expr_stmt|;
 name|System
@@ -1026,7 +1071,11 @@ argument_list|)
 expr_stmt|;
 name|fail
 argument_list|(
-literal|"Obsolete keys found in properties file which should be removed"
+literal|"Obsolete keys "
+operator|+
+name|obsoleteKeys
+operator|+
+literal|" found in properties file which should be removed"
 argument_list|)
 expr_stmt|;
 block|}
@@ -1132,7 +1181,9 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"2. EXECUTE gradlew -b localization.gradle compareAndUpdateTranslationsWithEnglishTranslation TO"
+literal|"2. EXECUTE gradlew -b localization.gradle generateMissingTranslationKeys"
+operator|+
+literal|" TO"
 argument_list|)
 expr_stmt|;
 name|System
@@ -1146,7 +1197,11 @@ argument_list|)
 expr_stmt|;
 name|fail
 argument_list|(
-literal|"Obsolete keys found in menu properties file which should be removed"
+literal|"Obsolete keys "
+operator|+
+name|obsoleteKeys
+operator|+
+literal|" found in menu properties file which should be removed"
 argument_list|)
 expr_stmt|;
 block|}
@@ -1298,7 +1353,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"EXECUTE gradlew -b localization.gradle compareAndUpdateTranslationsWithEnglishTranslation TO"
+literal|"EXECUTE gradlew -b localization.gradle generateMissingTranslationKeys TO"
 argument_list|)
 expr_stmt|;
 name|System

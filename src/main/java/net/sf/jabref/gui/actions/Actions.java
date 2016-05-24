@@ -78,15 +78,6 @@ name|BACK
 init|=
 literal|"back"
 decl_stmt|;
-DECL|field|CHECK_INTEGRITY
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|CHECK_INTEGRITY
-init|=
-literal|"checkIntegrity"
-decl_stmt|;
 DECL|field|CLEANUP
 specifier|public
 specifier|static

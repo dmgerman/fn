@@ -20,30 +20,6 @@ end_package
 
 begin_import
 import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|*
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|GUIGlobals
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|awt
@@ -66,8 +42,32 @@ name|FocusListener
 import|;
 end_import
 
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|JComponent
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|GUIGlobals
+import|;
+end_import
+
 begin_comment
-comment|/**  * Focus listener that changes the color of the text area when it has focus.  * Created by IntelliJ IDEA.  * User: alver  * Date: 18.mar.2005  * Time: 18:20:14  * To change this template use File | Settings | File Templates.  */
+comment|/**  * Focus listener that changes the color of the text area when it has focus.  */
 end_comment
 
 begin_class

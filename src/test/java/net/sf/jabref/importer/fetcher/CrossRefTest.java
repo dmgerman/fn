@@ -16,6 +16,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Locale
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -41,16 +51,6 @@ import|;
 end_import
 
 begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Locale
-import|;
-end_import
-
-begin_import
 import|import static
 name|org
 operator|.
@@ -58,7 +58,7 @@ name|junit
 operator|.
 name|Assert
 operator|.
-name|*
+name|assertEquals
 import|;
 end_import
 
@@ -75,8 +75,6 @@ specifier|public
 name|void
 name|findExactData
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|BibEntry
 name|entry
@@ -145,8 +143,6 @@ specifier|public
 name|void
 name|findMissingAuthor
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|BibEntry
 name|entry
@@ -206,8 +202,6 @@ specifier|public
 name|void
 name|findTitleOnly
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|BibEntry
 name|entry
@@ -258,8 +252,6 @@ specifier|public
 name|void
 name|findIncompleteTitle
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|BibEntry
 name|entry
@@ -319,8 +311,6 @@ specifier|public
 name|void
 name|findWrongAuthor
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|BibEntry
 name|entry

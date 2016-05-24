@@ -18,6 +18,28 @@ end_package
 
 begin_import
 import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|JComponent
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|tree
+operator|.
+name|DefaultMutableTreeNode
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -38,33 +60,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|model
+name|gui
 operator|.
-name|database
+name|undo
 operator|.
-name|BibDatabase
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|tree
-operator|.
-name|DefaultMutableTreeNode
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|JComponent
+name|NamedCompound
 import|;
 end_import
 
@@ -76,11 +76,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
+name|model
 operator|.
-name|undo
+name|database
 operator|.
-name|NamedCompound
+name|BibDatabase
 import|;
 end_import
 
@@ -209,16 +209,16 @@ block|}
 block|}
 comment|/**      * This method returns a JComponent detailing the nature of the change.      * @return JComponent      */
 DECL|method|description ()
-specifier|abstract
 specifier|public
+specifier|abstract
 name|JComponent
 name|description
 parameter_list|()
 function_decl|;
 comment|/**      * Perform the change. This method is responsible for adding a proper undo edit to      * the NamedCompound, so the change can be undone.      * @param panel BasePanel The tab where the database lives.      * @param secondary BibDatabase The "tmp" database for which the change      *   should also be made.      * @param undoEdit NamedCompound The compound to hold the undo edits.      * @return true if all changes were made, false if not all were accepted.      */
 DECL|method|makeChange (BasePanel panel, BibDatabase secondary, NamedCompound undoEdit)
-specifier|abstract
 specifier|public
+specifier|abstract
 name|boolean
 name|makeChange
 parameter_list|(

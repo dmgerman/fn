@@ -18,6 +18,26 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|File
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -36,7 +56,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|JabRef
+name|JabRefGUI
 import|;
 end_import
 
@@ -134,26 +154,6 @@ name|mock
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|File
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Optional
-import|;
-end_import
-
 begin_class
 DECL|class|EntryFromPDFCreatorTest
 specifier|public
@@ -190,15 +190,16 @@ name|EntryFromPDFCreator
 argument_list|()
 expr_stmt|;
 comment|// Needed for PdfImporter - still not enough
-name|JabRef
+name|JabRefGUI
 operator|.
-name|mainFrame
-operator|=
+name|setMainFrame
+argument_list|(
 name|mock
 argument_list|(
 name|JabRefFrame
 operator|.
 name|class
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

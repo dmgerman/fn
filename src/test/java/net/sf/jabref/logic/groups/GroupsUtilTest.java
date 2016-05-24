@@ -15,18 +15,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|*
-import|;
-end_import
-
-begin_import
 import|import
 name|java
 operator|.
@@ -73,36 +61,6 @@ operator|.
 name|util
 operator|.
 name|Set
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|After
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|Before
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|Test
 import|;
 end_import
 
@@ -176,6 +134,60 @@ name|BibDatabase
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|After
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Before
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Test
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
 begin_class
 DECL|class|GroupsUtilTest
 specifier|public
@@ -184,10 +196,10 @@ name|GroupsUtilTest
 block|{
 annotation|@
 name|Before
-DECL|method|setup ()
+DECL|method|setUp ()
 specifier|public
 name|void
-name|setup
+name|setUp
 parameter_list|()
 block|{
 name|Globals
@@ -202,10 +214,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|After
-DECL|method|teardown ()
+DECL|method|tearDown ()
 specifier|public
 name|void
-name|teardown
+name|tearDown
 parameter_list|()
 block|{
 name|Globals

@@ -20,7 +20,37 @@ name|java
 operator|.
 name|util
 operator|.
-name|*
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Objects
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|TreeMap
 import|;
 end_import
 
@@ -155,7 +185,7 @@ name|LANGUAGES
 operator|.
 name|put
 argument_list|(
-literal|"Brazilian Portugese"
+literal|"Brazilian Portuguese"
 argument_list|,
 literal|"pt_BR"
 argument_list|)

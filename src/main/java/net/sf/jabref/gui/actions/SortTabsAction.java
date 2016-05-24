@@ -192,7 +192,7 @@ name|e
 parameter_list|)
 block|{
 comment|// Make a sorted Map that compares case-insensitively:
-name|TreeMap
+name|Map
 argument_list|<
 name|String
 argument_list|,

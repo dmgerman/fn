@@ -132,9 +132,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
 name|bibtex
 operator|.
-name|BibtexEntryAssert
+name|BibEntryAssert
 import|;
 end_import
 
@@ -392,7 +394,7 @@ operator|.
 name|getEntries
 argument_list|()
 decl_stmt|;
-name|BibtexEntryAssert
+name|BibEntryAssert
 operator|.
 name|assertEquals
 argument_list|(

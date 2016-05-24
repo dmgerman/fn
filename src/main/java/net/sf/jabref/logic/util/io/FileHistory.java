@@ -80,8 +80,8 @@ argument_list|()
 decl_stmt|;
 DECL|field|HISTORY_SIZE
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|int
 name|HISTORY_SIZE
 init|=

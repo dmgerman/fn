@@ -278,22 +278,6 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|preftabs
-operator|.
-name|ImportSettingsTab
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
 name|undo
 operator|.
 name|UndoableInsertEntry
@@ -844,7 +828,7 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-name|ImportSettingsTab
+name|JabRefPreferences
 operator|.
 name|PREF_IMPORT_ALWAYSUSE
 argument_list|)
@@ -858,7 +842,7 @@ name|prefs
 operator|.
 name|getInt
 argument_list|(
-name|ImportSettingsTab
+name|JabRefPreferences
 operator|.
 name|PREF_IMPORT_DEFAULT_PDF_IMPORT_STYLE
 argument_list|)
@@ -1622,7 +1606,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-comment|// Only if the dialog was not cancelled.
+comment|// Only if the dialog was not canceled.
 name|String
 name|id
 init|=
@@ -1659,7 +1643,7 @@ name|be
 argument_list|)
 expr_stmt|;
 comment|// Set owner/timestamp if options are enabled:
-name|ArrayList
+name|List
 argument_list|<
 name|BibEntry
 argument_list|>

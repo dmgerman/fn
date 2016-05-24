@@ -44,7 +44,51 @@ name|java
 operator|.
 name|util
 operator|.
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|JLabel
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|Globals
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|JabRefPreferences
 import|;
 end_import
 
@@ -58,7 +102,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|*
+name|IconTheme
 import|;
 end_import
 
@@ -102,30 +146,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|JabRefPreferences
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|specialfields
 operator|.
 name|SpecialFieldsUtils
@@ -146,16 +166,6 @@ name|TableFormat
 import|;
 end_import
 
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|JLabel
-import|;
-end_import
-
 begin_comment
 comment|/**  * Class defining the contents and column headers of the main table.  */
 end_comment
@@ -171,18 +181,6 @@ argument_list|<
 name|BibEntry
 argument_list|>
 block|{
-comment|// Character separating field names that are to be used in sequence as
-comment|// fallbacks for a single column (e.g. "author/editor" to use editor where
-comment|// author is not set):
-DECL|field|COL_DEFINITION_FIELD_SEPARATOR
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|COL_DEFINITION_FIELD_SEPARATOR
-init|=
-literal|"/"
-decl_stmt|;
 comment|// Values to gather iconImages for those columns
 comment|// These values are also used to put a heading into the table; see getColumnName(int)
 DECL|field|URL_FIRST
@@ -233,9 +231,9 @@ name|String
 argument_list|>
 name|ARXIV
 init|=
-name|Arrays
+name|Collections
 operator|.
-name|asList
+name|singletonList
 argument_list|(
 literal|"eprint"
 argument_list|)
@@ -685,7 +683,7 @@ name|columnName
 operator|.
 name|split
 argument_list|(
-name|MainTableFormat
+name|Globals
 operator|.
 name|COL_DEFINITION_FIELD_SEPARATOR
 argument_list|)

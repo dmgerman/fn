@@ -218,7 +218,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|JabRef
+name|JabRefGUI
 import|;
 end_import
 
@@ -232,7 +232,7 @@ name|jabref
 operator|.
 name|importer
 operator|.
-name|ParserResult
+name|OutputPrinter
 import|;
 end_import
 
@@ -1273,9 +1273,10 @@ name|LabelPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
-name|JabRef
+name|JabRefGUI
 operator|.
-name|mainFrame
+name|getMainFrame
+argument_list|()
 operator|.
 name|getCurrentBasePanel
 argument_list|()
@@ -1286,9 +1287,10 @@ operator|.
 name|getMetaData
 argument_list|()
 argument_list|,
-name|JabRef
+name|JabRefGUI
 operator|.
-name|mainFrame
+name|getMainFrame
+argument_list|()
 operator|.
 name|getCurrentBasePanel
 argument_list|()

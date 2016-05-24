@@ -122,7 +122,21 @@ name|jabref
 operator|.
 name|importer
 operator|.
-name|ParserResult
+name|ImportFormatReader
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|importer
+operator|.
+name|OutputPrinter
 import|;
 end_import
 
@@ -138,7 +152,9 @@ name|logic
 operator|.
 name|formatter
 operator|.
-name|CaseChangers
+name|casechanger
+operator|.
+name|TitleCaseFormatter
 import|;
 end_import
 
@@ -598,9 +614,9 @@ condition|)
 block|{
 name|s
 operator|=
-name|CaseChangers
-operator|.
-name|TO_TITLE_CASE
+operator|new
+name|TitleCaseFormatter
+argument_list|()
 operator|.
 name|format
 argument_list|(

@@ -94,29 +94,13 @@ end_import
 
 begin_import
 import|import
-name|com
+name|net
 operator|.
-name|jgoodies
+name|sf
 operator|.
-name|forms
+name|jabref
 operator|.
-name|builder
-operator|.
-name|DefaultFormBuilder
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|jgoodies
-operator|.
-name|forms
-operator|.
-name|layout
-operator|.
-name|FormLayout
+name|JabRefPreferences
 import|;
 end_import
 
@@ -131,18 +115,6 @@ operator|.
 name|gui
 operator|.
 name|SaveOrderConfigDisplay
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|JabRefPreferences
 import|;
 end_import
 
@@ -175,6 +147,34 @@ operator|.
 name|l10n
 operator|.
 name|Localization
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|jgoodies
+operator|.
+name|forms
+operator|.
+name|builder
+operator|.
+name|DefaultFormBuilder
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|jgoodies
+operator|.
+name|forms
+operator|.
+name|layout
+operator|.
+name|FormLayout
 import|;
 end_import
 
@@ -672,7 +672,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Export Sorting"
+literal|"Export sorting"
 argument_list|)
 return|;
 block|}

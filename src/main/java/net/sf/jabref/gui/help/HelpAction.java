@@ -20,6 +20,78 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|awt
+operator|.
+name|Dimension
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|awt
+operator|.
+name|event
+operator|.
+name|ActionEvent
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|Action
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|Icon
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|JButton
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|KeyStroke
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -38,7 +110,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|JabRef
+name|JabRefGUI
 import|;
 end_import
 
@@ -144,48 +216,6 @@ name|LogFactory
 import|;
 end_import
 
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|*
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|awt
-operator|.
-name|*
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|awt
-operator|.
-name|event
-operator|.
-name|ActionEvent
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
 begin_comment
 comment|/**  * This Action keeps a reference to a URL. When activated, it shows the help  * Dialog unless it is already visible, and shows the URL in it.  */
 end_comment
@@ -214,12 +244,12 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|field|urlPart
+DECL|field|helpPage
 specifier|private
-name|String
-name|urlPart
+name|HelpFiles
+name|helpPage
 decl_stmt|;
-DECL|method|HelpAction (String title, String tooltip, String urlPart, KeyStroke key)
+DECL|method|HelpAction (String title, String tooltip, HelpFiles helpPage, KeyStroke key)
 specifier|public
 name|HelpAction
 parameter_list|(
@@ -229,8 +259,8 @@ parameter_list|,
 name|String
 name|tooltip
 parameter_list|,
-name|String
-name|urlPart
+name|HelpFiles
+name|helpPage
 parameter_list|,
 name|KeyStroke
 name|key
@@ -242,7 +272,7 @@ name|title
 argument_list|,
 name|tooltip
 argument_list|,
-name|urlPart
+name|helpPage
 argument_list|,
 name|IconTheme
 operator|.
@@ -264,8 +294,8 @@ name|key
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|HelpAction (String title, String tooltip, String urlPart, Icon icon)
-specifier|public
+DECL|method|HelpAction (String title, String tooltip, HelpFiles helpPage, Icon icon)
+specifier|private
 name|HelpAction
 parameter_list|(
 name|String
@@ -274,8 +304,8 @@ parameter_list|,
 name|String
 name|tooltip
 parameter_list|,
-name|String
-name|urlPart
+name|HelpFiles
+name|helpPage
 parameter_list|,
 name|Icon
 name|icon
@@ -288,9 +318,9 @@ argument_list|)
 expr_stmt|;
 name|this
 operator|.
-name|urlPart
+name|helpPage
 operator|=
-name|urlPart
+name|helpPage
 expr_stmt|;
 name|putValue
 argument_list|(
@@ -311,15 +341,15 @@ name|tooltip
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|HelpAction (String tooltip, String urlPart)
+DECL|method|HelpAction (String tooltip, HelpFiles helpPage)
 specifier|public
 name|HelpAction
 parameter_list|(
 name|String
 name|tooltip
 parameter_list|,
-name|String
-name|urlPart
+name|HelpFiles
+name|helpPage
 parameter_list|)
 block|{
 name|this
@@ -333,7 +363,7 @@ argument_list|)
 argument_list|,
 name|tooltip
 argument_list|,
-name|urlPart
+name|helpPage
 argument_list|,
 name|IconTheme
 operator|.
@@ -346,12 +376,12 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|HelpAction (String urlPart, Icon icon)
+DECL|method|HelpAction (HelpFiles helpPage, Icon icon)
 specifier|public
 name|HelpAction
 parameter_list|(
-name|String
-name|urlPart
+name|HelpFiles
+name|helpPage
 parameter_list|,
 name|Icon
 name|icon
@@ -373,18 +403,18 @@ argument_list|(
 literal|"Help"
 argument_list|)
 argument_list|,
-name|urlPart
+name|helpPage
 argument_list|,
 name|icon
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|HelpAction (String urlPart)
+DECL|method|HelpAction (HelpFiles helpPage)
 specifier|public
 name|HelpAction
 parameter_list|(
-name|String
-name|urlPart
+name|HelpFiles
+name|helpPage
 parameter_list|)
 block|{
 name|this
@@ -403,7 +433,7 @@ argument_list|(
 literal|"Help"
 argument_list|)
 argument_list|,
-name|urlPart
+name|helpPage
 argument_list|,
 name|IconTheme
 operator|.
@@ -470,18 +500,18 @@ return|return
 name|button
 return|;
 block|}
-DECL|method|setHelpFile (String urlPart)
+DECL|method|setHelpFile (HelpFiles urlPart)
 specifier|public
 name|void
 name|setHelpFile
 parameter_list|(
-name|String
+name|HelpFiles
 name|urlPart
 parameter_list|)
 block|{
 name|this
 operator|.
-name|urlPart
+name|helpPage
 operator|=
 name|urlPart
 expr_stmt|;
@@ -518,7 +548,10 @@ argument_list|)
 operator|+
 literal|"/"
 operator|+
-name|urlPart
+name|helpPage
+operator|.
+name|getPageName
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -537,9 +570,10 @@ argument_list|,
 name|ex
 argument_list|)
 expr_stmt|;
-name|JabRef
+name|JabRefGUI
 operator|.
-name|mainFrame
+name|getMainFrame
+argument_list|()
 operator|.
 name|getCurrentBasePanel
 argument_list|()

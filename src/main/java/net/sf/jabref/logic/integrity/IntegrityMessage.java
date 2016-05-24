@@ -147,6 +147,26 @@ return|return
 name|fieldName
 return|;
 block|}
+annotation|@
+name|Override
+DECL|method|clone ()
+specifier|public
+name|Object
+name|clone
+parameter_list|()
+block|{
+return|return
+operator|new
+name|IntegrityMessage
+argument_list|(
+name|message
+argument_list|,
+name|entry
+argument_list|,
+name|fieldName
+argument_list|)
+return|;
+block|}
 block|}
 end_class
 

@@ -54,16 +54,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Collections
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|List
 import|;
 end_import
@@ -260,20 +250,6 @@ end_import
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|util
-operator|.
-name|Util
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -312,6 +288,22 @@ name|MoveFileAction
 extends|extends
 name|AbstractAction
 block|{
+DECL|field|LOGGER
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOGGER
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|MoveFileAction
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 DECL|field|frame
 specifier|private
 specifier|final
@@ -348,22 +340,6 @@ operator|.
 name|lang
 argument_list|(
 literal|"Move/Rename file"
-argument_list|)
-decl_stmt|;
-DECL|field|LOGGER
-specifier|private
-specifier|static
-specifier|final
-name|Log
-name|LOGGER
-init|=
-name|LogFactory
-operator|.
-name|getLog
-argument_list|(
-name|MoveFileAction
-operator|.
-name|class
 argument_list|)
 decl_stmt|;
 DECL|method|MoveFileAction (JabRefFrame frame, EntryEditor eEditor, FileListEditor editor, boolean toFileDir)
@@ -438,7 +414,7 @@ block|{
 return|return;
 block|}
 name|FileListEntry
-name|flEntry
+name|entry
 init|=
 name|editor
 operator|.
@@ -454,7 +430,7 @@ comment|// Check if the current file exists:
 name|String
 name|ln
 init|=
-name|flEntry
+name|entry
 operator|.
 name|link
 decl_stmt|;
@@ -481,6 +457,7 @@ name|httpLink
 condition|)
 block|{
 comment|// TODO: notify that this operation cannot be done on remote links
+return|return;
 block|}
 comment|// Get an absolute path representation:
 name|List
@@ -634,7 +611,7 @@ literal|null
 decl_stmt|;
 if|if
 condition|(
-name|flEntry
+name|entry
 operator|.
 name|type
 operator|.
@@ -646,7 +623,7 @@ name|extension
 operator|=
 literal|"."
 operator|+
-name|flEntry
+name|entry
 operator|.
 name|type
 operator|.
@@ -688,9 +665,9 @@ comment|// Determine which name to suggest:
 name|String
 name|suggName
 init|=
-name|Util
+name|FileUtil
 operator|.
-name|getLinkedFileName
+name|createFileNameFromPattern
 argument_list|(
 name|eEditor
 operator|.
@@ -712,7 +689,7 @@ argument_list|)
 operator|.
 name|concat
 argument_list|(
-name|flEntry
+name|entry
 operator|.
 name|type
 operator|.
@@ -721,7 +698,7 @@ argument_list|()
 condition|?
 literal|"."
 operator|+
-name|flEntry
+name|entry
 operator|.
 name|type
 operator|.
@@ -971,7 +948,7 @@ literal|null
 condition|)
 block|{
 return|return;
-comment|// cancelled
+comment|// canceled
 block|}
 name|newFile
 operator|=
@@ -1201,13 +1178,13 @@ argument_list|,
 operator|new
 name|FileListEntry
 argument_list|(
-name|flEntry
+name|entry
 operator|.
 name|description
 argument_list|,
 name|newLink
 argument_list|,
-name|flEntry
+name|entry
 operator|.
 name|type
 argument_list|)
@@ -1244,13 +1221,13 @@ argument_list|,
 operator|new
 name|FileListEntry
 argument_list|(
-name|flEntry
+name|entry
 operator|.
 name|description
 argument_list|,
 name|newLink
 argument_list|,
-name|flEntry
+name|entry
 operator|.
 name|type
 argument_list|)
@@ -1280,13 +1257,13 @@ argument_list|,
 operator|new
 name|FileListEntry
 argument_list|(
-name|flEntry
+name|entry
 operator|.
 name|description
 argument_list|,
 name|newLink
 argument_list|,
-name|flEntry
+name|entry
 operator|.
 name|type
 argument_list|)
@@ -1404,7 +1381,7 @@ name|lang
 argument_list|(
 literal|"Could not find file '%0'."
 argument_list|,
-name|flEntry
+name|entry
 operator|.
 name|link
 argument_list|)

@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2016 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -56,7 +56,57 @@ name|java
 operator|.
 name|util
 operator|.
-name|*
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|TreeMap
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|TreeSet
 import|;
 end_import
 
@@ -114,29 +164,13 @@ end_import
 
 begin_import
 import|import
-name|org
+name|net
 operator|.
-name|apache
+name|sf
 operator|.
-name|commons
+name|jabref
 operator|.
-name|logging
-operator|.
-name|Log
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|commons
-operator|.
-name|logging
-operator|.
-name|LogFactory
+name|Globals
 import|;
 end_import
 
@@ -148,7 +182,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|*
+name|JabRefPreferences
 import|;
 end_import
 
@@ -230,9 +264,33 @@ name|BibEntry
 import|;
 end_import
 
-begin_comment
-comment|/**  * User: alver  *  * Date: Oct 18, 2006  *  * Time: 9:35:08 PM  */
-end_comment
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
+import|;
+end_import
 
 begin_class
 DECL|class|ExportFormats
@@ -666,24 +724,6 @@ name|putFormat
 argument_list|(
 operator|new
 name|MSBibExportFormat
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|ExportFormats
-operator|.
-name|putFormat
-argument_list|(
-operator|new
-name|MySQLExport
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|ExportFormats
-operator|.
-name|putFormat
-argument_list|(
-operator|new
-name|PostgreSQLExport
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1162,8 +1202,6 @@ argument_list|<
 name|BibEntry
 argument_list|>
 name|entries
-init|=
-literal|null
 decl_stmt|;
 if|if
 condition|(
@@ -1218,15 +1256,6 @@ argument_list|()
 operator|.
 name|getFileDirectory
 argument_list|()
-operator|.
-name|toArray
-argument_list|(
-operator|new
-name|String
-index|[
-literal|0
-index|]
-argument_list|)
 expr_stmt|;
 comment|// Make sure we remember which filter was used, to set
 comment|// the default for next time:
@@ -1522,7 +1551,7 @@ argument_list|(
 name|currentDir
 argument_list|)
 decl_stmt|;
-name|TreeSet
+name|Set
 argument_list|<
 name|FileFilter
 argument_list|>

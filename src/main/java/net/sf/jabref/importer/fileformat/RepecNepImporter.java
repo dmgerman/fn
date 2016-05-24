@@ -104,16 +104,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Collections
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|Date
 import|;
 end_import
@@ -140,11 +130,15 @@ end_import
 
 begin_import
 import|import
-name|java
+name|net
 operator|.
-name|util
+name|sf
 operator|.
-name|Objects
+name|jabref
+operator|.
+name|importer
+operator|.
+name|ImportFormatReader
 import|;
 end_import
 
@@ -158,7 +152,7 @@ name|jabref
 operator|.
 name|importer
 operator|.
-name|ParserResult
+name|OutputPrinter
 import|;
 end_import
 

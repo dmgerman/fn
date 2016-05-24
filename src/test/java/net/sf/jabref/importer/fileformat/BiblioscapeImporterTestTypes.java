@@ -20,7 +20,7 @@ name|java
 operator|.
 name|io
 operator|.
-name|BufferedReader
+name|ByteArrayInputStream
 import|;
 end_import
 
@@ -38,9 +38,11 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
+name|nio
 operator|.
-name|StringReader
+name|charset
+operator|.
+name|StandardCharsets
 import|;
 end_import
 
@@ -61,6 +63,16 @@ operator|.
 name|util
 operator|.
 name|Collection
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Collections
 import|;
 end_import
 
@@ -106,9 +118,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|bibtex
+name|importer
 operator|.
-name|BibtexEntryAssert
+name|OutputPrinterToNull
 import|;
 end_import
 
@@ -468,26 +480,14 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-literal|1
-argument_list|,
-name|bibEntries
+name|Collections
 operator|.
-name|size
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|BibtexEntryAssert
-operator|.
-name|assertEquals
+name|singletonList
 argument_list|(
 name|entry
+argument_list|)
 argument_list|,
 name|bibEntries
-operator|.
-name|get
-argument_list|(
-literal|0
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

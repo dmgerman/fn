@@ -17,6 +17,8 @@ package|;
 end_package
 
 begin_interface
+annotation|@
+name|FunctionalInterface
 DECL|interface|MessageHandler
 specifier|public
 interface|interface

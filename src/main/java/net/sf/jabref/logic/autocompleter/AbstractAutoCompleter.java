@@ -74,6 +74,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Set
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|SortedSet
 import|;
 end_import
@@ -157,7 +167,7 @@ name|Map
 argument_list|<
 name|String
 argument_list|,
-name|TreeSet
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -279,7 +289,7 @@ argument_list|)
 decl_stmt|;
 comment|// As subset only contains lower case strings,
 comment|// we have to to determine possible strings for each hit
-name|ArrayList
+name|List
 argument_list|<
 name|String
 argument_list|>
@@ -493,7 +503,7 @@ argument_list|(
 name|lowerCase
 argument_list|)
 expr_stmt|;
-name|TreeSet
+name|Set
 argument_list|<
 name|String
 argument_list|>

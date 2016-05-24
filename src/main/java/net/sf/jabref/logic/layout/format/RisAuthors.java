@@ -28,7 +28,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|*
+name|Globals
 import|;
 end_import
 
@@ -44,7 +44,7 @@ name|logic
 operator|.
 name|layout
 operator|.
-name|*
+name|ParamLayoutFormatter
 import|;
 end_import
 

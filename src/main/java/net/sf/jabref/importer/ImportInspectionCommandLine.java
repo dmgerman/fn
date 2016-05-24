@@ -32,6 +32,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|LinkedList
 import|;
 end_import
@@ -70,11 +80,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|model
+name|logic
 operator|.
-name|entry
+name|l10n
 operator|.
-name|BibEntry
+name|Localization
 import|;
 end_import
 
@@ -86,11 +96,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|model
 operator|.
-name|l10n
+name|entry
 operator|.
-name|Localization
+name|BibEntry
 import|;
 end_import
 
@@ -299,18 +309,11 @@ name|entries
 return|;
 block|}
 return|return
-literal|null
+name|Collections
+operator|.
+name|emptyList
+argument_list|()
 return|;
-block|}
-annotation|@
-name|Override
-DECL|method|toFront ()
-specifier|public
-name|void
-name|toFront
-parameter_list|()
-block|{
-comment|// Nothing
 block|}
 block|}
 end_class

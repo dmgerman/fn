@@ -325,7 +325,7 @@ name|toCharArray
 argument_list|()
 decl_stmt|;
 name|int
-name|brakets
+name|brackets
 init|=
 literal|0
 decl_stmt|;
@@ -357,7 +357,7 @@ operator|==
 literal|'{'
 condition|)
 block|{
-name|brakets
+name|brackets
 operator|++
 expr_stmt|;
 block|}
@@ -372,7 +372,7 @@ operator|==
 literal|'}'
 condition|)
 block|{
-name|brakets
+name|brackets
 operator|--
 expr_stmt|;
 block|}
@@ -383,7 +383,7 @@ index|[
 name|i
 index|]
 operator|=
-name|brakets
+name|brackets
 operator|>
 literal|0
 expr_stmt|;

@@ -360,7 +360,7 @@ name|importer
 operator|.
 name|fileformat
 operator|.
-name|BibtexImporter
+name|BibtexParser
 import|;
 end_import
 
@@ -579,10 +579,7 @@ argument_list|()
 decl_stmt|;
 static|static
 block|{
-comment|// Add the action for checking for new custom entry types loaded from
-comment|// the bib file:
-name|OpenDatabaseAction
-operator|.
+comment|// Add the action for checking for new custom entry types loaded from the bib file:
 name|POST_OPEN_ACTIONS
 operator|.
 name|add
@@ -592,9 +589,17 @@ name|CheckForNewEntryTypesAction
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// Add the action for the new external file handling system in version 2.3:
-name|OpenDatabaseAction
+comment|// Add the action for converting legacy entries in ExplicitGroup
+name|POST_OPEN_ACTIONS
 operator|.
+name|add
+argument_list|(
+operator|new
+name|ConvertLegacyExplicitGroups
+argument_list|()
+argument_list|)
+expr_stmt|;
+comment|// Add the action for the new external file handling system in version 2.3:
 name|POST_OPEN_ACTIONS
 operator|.
 name|add
@@ -605,8 +610,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// Add the action for warning about and handling duplicate BibTeX keys:
-name|OpenDatabaseAction
-operator|.
 name|POST_OPEN_ACTIONS
 operator|.
 name|add
@@ -1663,24 +1666,18 @@ argument_list|)
 expr_stmt|;
 name|result
 operator|=
-literal|null
+name|ParserResult
+operator|.
+name|getNullResult
+argument_list|()
 expr_stmt|;
 block|}
 if|if
 condition|(
-operator|(
 name|result
-operator|==
-literal|null
-operator|)
-operator|||
-operator|(
-name|result
-operator|==
-name|ParserResult
 operator|.
-name|INVALID_FORMAT
-operator|)
+name|isNullResult
+argument_list|()
 condition|)
 block|{
 name|JOptionPane
@@ -2175,34 +2172,9 @@ expr_stmt|;
 block|}
 name|LOGGER
 operator|.
-name|info
+name|debug
 argument_list|(
 literal|"Synchronized special fields based on keywords"
-argument_list|)
-expr_stmt|;
-block|}
-if|if
-condition|(
-operator|!
-name|result
-operator|.
-name|getMetaData
-argument_list|()
-operator|.
-name|isGroupTreeValid
-argument_list|()
-condition|)
-block|{
-name|result
-operator|.
-name|addWarning
-argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Group tree could not be parsed. If you save the BibTeX database, all groups will be lost."
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

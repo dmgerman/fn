@@ -20,7 +20,7 @@ name|java
 operator|.
 name|io
 operator|.
-name|BufferedReader
+name|ByteArrayInputStream
 import|;
 end_import
 
@@ -40,17 +40,7 @@ name|java
 operator|.
 name|io
 operator|.
-name|StringReader
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|net
-operator|.
-name|URISyntaxException
+name|InputStream
 import|;
 end_import
 
@@ -62,31 +52,7 @@ name|nio
 operator|.
 name|charset
 operator|.
-name|Charset
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|nio
-operator|.
-name|file
-operator|.
-name|Path
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|nio
-operator|.
-name|file
-operator|.
-name|Paths
+name|StandardCharsets
 import|;
 end_import
 
@@ -131,6 +97,20 @@ operator|.
 name|jabref
 operator|.
 name|JabRefPreferences
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|importer
+operator|.
+name|OutputPrinterToNull
 import|;
 end_import
 

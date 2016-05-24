@@ -36,7 +36,17 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|*
+name|Action
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|Icon
 import|;
 end_import
 

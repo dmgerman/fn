@@ -42,6 +42,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|io
+operator|.
+name|InputStream
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|ArrayList
@@ -98,9 +108,35 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|Globals
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|importer
 operator|.
-name|ParserResult
+name|ImportFormatReader
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|importer
+operator|.
+name|OutputPrinter
 import|;
 end_import
 
@@ -450,7 +486,7 @@ name|comment
 init|=
 literal|""
 decl_stmt|;
-name|HashMap
+name|Map
 argument_list|<
 name|String
 argument_list|,
@@ -1229,7 +1265,9 @@ literal|"abstract"
 argument_list|,
 name|oldAb
 operator|+
-literal|"\n"
+name|Globals
+operator|.
+name|NEWLINE
 operator|+
 name|val
 argument_list|)
@@ -1654,7 +1692,7 @@ argument_list|)
 decl_stmt|;
 comment|// id assumes an existing database so don't
 comment|// Remove empty fields:
-name|ArrayList
+name|List
 argument_list|<
 name|Object
 argument_list|>

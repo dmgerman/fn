@@ -230,6 +230,18 @@ name|ENCODING_PREFIX
 init|=
 literal|"Encoding: "
 decl_stmt|;
+comment|// Character separating field names that are to be used in sequence as
+comment|// fallbacks for a single column (e.g. "author/editor" to use editor where
+comment|// author is not set):
+DECL|field|COL_DEFINITION_FIELD_SEPARATOR
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|COL_DEFINITION_FIELD_SEPARATOR
+init|=
+literal|"/"
+decl_stmt|;
 comment|// Newlines
 comment|// will be overridden in initialization due to feature #857 @ JabRef.java
 DECL|field|NEWLINE
@@ -265,24 +277,6 @@ init|=
 operator|new
 name|ImportFormatReader
 argument_list|()
-decl_stmt|;
-DECL|field|SELECTOR_META_PREFIX
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|SELECTOR_META_PREFIX
-init|=
-literal|"selector_"
-decl_stmt|;
-DECL|field|PROTECTED_FLAG_META
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|PROTECTED_FLAG_META
-init|=
-literal|"protectedFlag"
 decl_stmt|;
 DECL|field|SPECIAL_COMMAND_CHARS
 specifier|public

@@ -18,17 +18,11 @@ end_package
 
 begin_import
 import|import
-name|net
+name|java
 operator|.
-name|sf
+name|io
 operator|.
-name|jabref
-operator|.
-name|importer
-operator|.
-name|fileformat
-operator|.
-name|ImportFormat
+name|File
 import|;
 end_import
 
@@ -46,11 +40,17 @@ end_import
 
 begin_import
 import|import
-name|java
+name|net
 operator|.
-name|io
+name|sf
 operator|.
-name|File
+name|jabref
+operator|.
+name|importer
+operator|.
+name|fileformat
+operator|.
+name|ImportFormat
 import|;
 end_import
 

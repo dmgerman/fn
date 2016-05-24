@@ -155,7 +155,7 @@ name|BibEntry
 name|entry
 parameter_list|)
 block|{
-name|ArrayList
+name|List
 argument_list|<
 name|FieldChange
 argument_list|>
@@ -279,9 +279,7 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-operator|(
 name|field
-operator|)
 argument_list|)
 argument_list|)
 operator|.

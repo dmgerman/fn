@@ -196,20 +196,6 @@ name|jabref
 operator|.
 name|importer
 operator|.
-name|ParserResult
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|importer
-operator|.
 name|fileformat
 operator|.
 name|MedlineImporter
@@ -778,14 +764,14 @@ annotation|@
 name|Override
 DECL|method|getHelpPage ()
 specifier|public
-name|String
+name|HelpFiles
 name|getHelpPage
 parameter_list|()
 block|{
 return|return
 name|HelpFiles
 operator|.
-name|medlineHelp
+name|FETCHER_MEDLINE
 return|;
 block|}
 annotation|@

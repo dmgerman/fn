@@ -108,22 +108,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|model
-operator|.
-name|database
-operator|.
-name|BibDatabase
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|gui
 operator|.
 name|FindUnlinkedFilesDialog
@@ -148,6 +132,22 @@ name|FileNodeWrapper
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|database
+operator|.
+name|BibDatabase
+import|;
+end_import
+
 begin_comment
 comment|/**  * Util class for searching files on the file system which are not linked to a provided {@link BibDatabase}.  */
 end_comment
@@ -161,8 +161,8 @@ block|{
 comment|/**      * File filter, that accepts directories only.      */
 DECL|field|DIRECTORY_FILTER
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|FileFilter
 name|DIRECTORY_FILTER
 init|=
@@ -259,7 +259,7 @@ name|ChangeListener
 name|changeListener
 parameter_list|)
 block|{
-comment|/* Cancellation of the search from outside! */
+comment|/* Cancelation of the search from outside! */
 if|if
 condition|(
 operator|(

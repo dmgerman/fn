@@ -44,7 +44,7 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|*
+name|JOptionPane
 import|;
 end_import
 
@@ -108,7 +108,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|CleanupPresetPanel
+name|JabRefFrame
 import|;
 end_import
 
@@ -122,7 +122,9 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|JabRefFrame
+name|cleanup
+operator|.
+name|CleanupPresetPanel
 import|;
 end_import
 
@@ -296,10 +298,10 @@ specifier|private
 name|int
 name|unsuccessfulRenames
 decl_stmt|;
-DECL|field|cancelled
+DECL|field|canceled
 specifier|private
 name|boolean
-name|cancelled
+name|canceled
 decl_stmt|;
 DECL|field|modifiedEntriesCount
 specifier|private
@@ -311,12 +313,6 @@ specifier|private
 specifier|final
 name|JabRefPreferences
 name|preferences
-decl_stmt|;
-DECL|field|presetPanel
-specifier|private
-specifier|final
-name|CleanupPresetPanel
-name|presetPanel
 decl_stmt|;
 DECL|method|CleanupAction (BasePanel panel, JabRefPreferences preferences)
 specifier|public
@@ -355,26 +351,6 @@ argument_list|(
 name|preferences
 argument_list|)
 expr_stmt|;
-name|this
-operator|.
-name|presetPanel
-operator|=
-operator|new
-name|CleanupPresetPanel
-argument_list|(
-name|panel
-operator|.
-name|getBibDatabaseContext
-argument_list|()
-argument_list|,
-name|CleanupPreset
-operator|.
-name|loadFromPreferences
-argument_list|(
-name|preferences
-argument_list|)
-argument_list|)
-expr_stmt|;
 block|}
 annotation|@
 name|Override
@@ -384,7 +360,7 @@ name|void
 name|init
 parameter_list|()
 block|{
-name|cancelled
+name|canceled
 operator|=
 literal|false
 expr_stmt|;
@@ -429,7 +405,7 @@ operator|.
 name|INFORMATION_MESSAGE
 argument_list|)
 expr_stmt|;
-name|cancelled
+name|canceled
 operator|=
 literal|true
 expr_stmt|;
@@ -476,16 +452,37 @@ parameter_list|()
 block|{
 if|if
 condition|(
-name|cancelled
+name|canceled
 condition|)
 block|{
 return|return;
 block|}
+name|CleanupPresetPanel
+name|presetPanel
+init|=
+operator|new
+name|CleanupPresetPanel
+argument_list|(
+name|panel
+operator|.
+name|getBibDatabaseContext
+argument_list|()
+argument_list|,
+name|CleanupPreset
+operator|.
+name|loadFromPreferences
+argument_list|(
+name|preferences
+argument_list|)
+argument_list|)
+decl_stmt|;
 name|int
 name|choice
 init|=
 name|showDialog
-argument_list|()
+argument_list|(
+name|presetPanel
+argument_list|)
 decl_stmt|;
 if|if
 condition|(
@@ -496,7 +493,7 @@ operator|.
 name|OK_OPTION
 condition|)
 block|{
-name|cancelled
+name|canceled
 operator|=
 literal|true
 expr_stmt|;
@@ -613,7 +610,7 @@ operator|.
 name|NO_OPTION
 condition|)
 block|{
-name|cancelled
+name|canceled
 operator|=
 literal|true
 expr_stmt|;
@@ -693,7 +690,7 @@ parameter_list|()
 block|{
 if|if
 condition|(
-name|cancelled
+name|canceled
 condition|)
 block|{
 name|frame
@@ -828,11 +825,14 @@ name|unblock
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|showDialog ()
+DECL|method|showDialog (CleanupPresetPanel presetPanel)
 specifier|private
 name|int
 name|showDialog
-parameter_list|()
+parameter_list|(
+name|CleanupPresetPanel
+name|presetPanel
+parameter_list|)
 block|{
 name|String
 name|dialogTitle

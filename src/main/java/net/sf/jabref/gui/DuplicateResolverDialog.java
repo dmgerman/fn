@@ -22,7 +22,7 @@ name|java
 operator|.
 name|awt
 operator|.
-name|*
+name|BorderLayout
 import|;
 end_import
 
@@ -32,23 +32,37 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|*
+name|Box
 import|;
 end_import
 
 begin_import
 import|import
-name|net
+name|javax
 operator|.
-name|sf
+name|swing
 operator|.
-name|jabref
+name|JButton
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
 operator|.
-name|model
+name|swing
 operator|.
-name|entry
+name|JDialog
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
 operator|.
-name|BibEntry
+name|swing
+operator|.
+name|JPanel
 import|;
 end_import
 
@@ -109,6 +123,22 @@ operator|.
 name|l10n
 operator|.
 name|Localization
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|BibEntry
 import|;
 end_import
 
@@ -325,7 +355,8 @@ name|frame
 operator|=
 name|dialog
 operator|.
-name|frame
+name|getFrame
+argument_list|()
 expr_stmt|;
 name|init
 argument_list|(

@@ -17,6 +17,16 @@ package|;
 end_package
 
 begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Test
+import|;
+end_import
+
+begin_import
 import|import static
 name|org
 operator|.
@@ -24,17 +34,7 @@ name|junit
 operator|.
 name|Assert
 operator|.
-name|*
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|Test
+name|assertEquals
 import|;
 end_import
 
@@ -111,6 +111,30 @@ operator|.
 name|format
 argument_list|(
 literal|"VLSI {VLSI}"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"{BPEL}"
+argument_list|,
+name|formatter
+operator|.
+name|format
+argument_list|(
+literal|"{BPEL}"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"{Testing BPEL Engine Performance: A Survey}"
+argument_list|,
+name|formatter
+operator|.
+name|format
+argument_list|(
+literal|"{Testing BPEL Engine Performance: A Survey}"
 argument_list|)
 argument_list|)
 expr_stmt|;

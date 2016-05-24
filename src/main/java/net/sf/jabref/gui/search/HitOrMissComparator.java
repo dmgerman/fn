@@ -20,15 +20,21 @@ end_package
 
 begin_import
 import|import
-name|ca
+name|java
 operator|.
-name|odell
+name|util
 operator|.
-name|glazedlists
+name|Comparator
+import|;
+end_import
+
+begin_import
+import|import
+name|java
 operator|.
-name|matchers
+name|util
 operator|.
-name|Matcher
+name|Objects
 import|;
 end_import
 
@@ -50,21 +56,15 @@ end_import
 
 begin_import
 import|import
-name|java
+name|ca
 operator|.
-name|util
+name|odell
 operator|.
-name|Comparator
-import|;
-end_import
-
-begin_import
-import|import
-name|java
+name|glazedlists
 operator|.
-name|util
+name|matchers
 operator|.
-name|Objects
+name|Matcher
 import|;
 end_import
 

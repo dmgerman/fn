@@ -20,7 +20,7 @@ name|java
 operator|.
 name|awt
 operator|.
-name|*
+name|Color
 import|;
 end_import
 

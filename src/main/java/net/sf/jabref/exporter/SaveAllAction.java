@@ -46,7 +46,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|*
+name|Globals
 import|;
 end_import
 
@@ -60,7 +60,35 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|*
+name|BasePanel
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|IconTheme
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|JabRefFrame
 import|;
 end_import
 

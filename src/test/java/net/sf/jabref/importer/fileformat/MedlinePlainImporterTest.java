@@ -1,6 +1,7 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
 DECL|package|net.sf.jabref.importer.fileformat
+DECL|package|net.sf.jabref.importer.fileformat
 package|package
 name|net
 operator|.
@@ -162,9 +163,25 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|importer
+operator|.
+name|OutputPrinterToNull
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
 name|bibtex
 operator|.
-name|BibtexEntryAssert
+name|BibEntryAssert
 import|;
 end_import
 
@@ -216,15 +233,18 @@ end_import
 
 begin_class
 DECL|class|MedlinePlainImporterTest
+DECL|class|MedlinePlainImporterTest
 specifier|public
 class|class
 name|MedlinePlainImporterTest
 block|{
 DECL|field|importer
+DECL|field|importer
 specifier|private
 name|MedlinePlainImporter
 name|importer
 decl_stmt|;
+DECL|method|readerForString (String string)
 DECL|method|readerForString (String string)
 specifier|private
 name|BufferedReader
@@ -249,6 +269,7 @@ block|}
 annotation|@
 name|Before
 DECL|method|setUp ()
+DECL|method|setUp ()
 specifier|public
 name|void
 name|setUp
@@ -272,6 +293,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+DECL|method|testIsRecognizedFormat ()
 DECL|method|testIsRecognizedFormat ()
 specifier|public
 name|void
@@ -355,6 +377,7 @@ block|}
 annotation|@
 name|Test
 DECL|method|testIsNotRecognizedFormat ()
+DECL|method|testIsNotRecognizedFormat ()
 specifier|public
 name|void
 name|testIsNotRecognizedFormat
@@ -435,6 +458,7 @@ block|}
 annotation|@
 name|Test
 DECL|method|doesNotRecognizeEmptyFiles ()
+DECL|method|doesNotRecognizeEmptyFiles ()
 specifier|public
 name|void
 name|doesNotRecognizeEmptyFiles
@@ -460,6 +484,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+DECL|method|testImportMultipleEntriesInSingleFile ()
 DECL|method|testImportMultipleEntriesInSingleFile ()
 specifier|public
 name|void
@@ -828,6 +853,7 @@ block|}
 annotation|@
 name|Test
 DECL|method|testEmptyFileImport ()
+DECL|method|testEmptyFileImport ()
 specifier|public
 name|void
 name|testEmptyFileImport
@@ -872,6 +898,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+DECL|method|testImportSingleEntriesInSingleFiles ()
 DECL|method|testImportSingleEntriesInSingleFiles ()
 specifier|public
 name|void
@@ -934,6 +961,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+DECL|method|assertImportOfMedlineFileEqualsBibtexFile (String medlineFile, String bibtexFile)
 DECL|method|assertImportOfMedlineFileEqualsBibtexFile (String medlineFile, String bibtexFile)
 specifier|private
 name|void
@@ -1028,7 +1056,7 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|BibtexEntryAssert
+name|BibEntryAssert
 operator|.
 name|assertEquals
 argument_list|(
@@ -1046,6 +1074,7 @@ block|}
 block|}
 annotation|@
 name|Test
+DECL|method|testMultiLineComments ()
 DECL|method|testMultiLineComments ()
 specifier|public
 name|void
@@ -1221,13 +1250,13 @@ operator|+
 literal|"Comment16"
 argument_list|)
 expr_stmt|;
-name|BibtexEntryAssert
+name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-name|Arrays
+name|Collections
 operator|.
-name|asList
+name|singletonList
 argument_list|(
 name|expectedEntry
 argument_list|)
@@ -1236,8 +1265,13 @@ name|actualEntries
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+end_class
+
+begin_function
 annotation|@
 name|Test
+DECL|method|testKeyWords ()
 DECL|method|testKeyWords ()
 specifier|public
 name|void
@@ -1300,13 +1334,13 @@ argument_list|,
 literal|"Female, Male"
 argument_list|)
 expr_stmt|;
-name|BibtexEntryAssert
+name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-name|Arrays
+name|Collections
 operator|.
-name|asList
+name|singletonList
 argument_list|(
 name|expectedEntry
 argument_list|)
@@ -1316,8 +1350,12 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Test
+DECL|method|testAllArticleTypes ()
 DECL|method|testAllArticleTypes ()
 specifier|public
 name|void
@@ -1400,14 +1438,13 @@ literal|"keywords"
 argument_list|,
 literal|"Female"
 argument_list|)
-expr_stmt|;
-name|BibtexEntryAssert
+name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-name|Arrays
+name|Collections
 operator|.
-name|asList
+name|singletonList
 argument_list|(
 name|expectedEntry
 argument_list|)
@@ -1417,8 +1454,12 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Test
+DECL|method|testGetFormatName ()
 DECL|method|testGetFormatName ()
 specifier|public
 name|void
@@ -1438,8 +1479,12 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Test
+DECL|method|testGetCLIId ()
 DECL|method|testGetCLIId ()
 specifier|public
 name|void
@@ -1459,8 +1504,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-block|}
-end_class
+end_function
 
+unit|}
 end_unit
 

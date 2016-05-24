@@ -46,8 +46,8 @@ name|FileFilter
 block|{
 DECL|field|INSTANCE
 specifier|public
-specifier|final
 specifier|static
+specifier|final
 name|PdfFileFilter
 name|INSTANCE
 init|=

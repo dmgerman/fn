@@ -501,8 +501,6 @@ parameter_list|()
 throws|throws
 name|IOException
 throws|,
-name|MalformedURLException
-throws|,
 name|ClassNotFoundException
 throws|,
 name|InstantiationException

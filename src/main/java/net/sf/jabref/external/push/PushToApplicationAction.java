@@ -88,7 +88,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|*
+name|JabRefExecutorService
 import|;
 end_import
 
@@ -446,26 +446,14 @@ name|SwingUtilities
 operator|.
 name|invokeLater
 argument_list|(
-operator|new
-name|Runnable
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|run
 parameter_list|()
-block|{
+lambda|->
 name|operation
 operator|.
 name|operationCompleted
 argument_list|(
 name|panel
 argument_list|)
-expr_stmt|;
-block|}
-block|}
 argument_list|)
 expr_stmt|;
 block|}

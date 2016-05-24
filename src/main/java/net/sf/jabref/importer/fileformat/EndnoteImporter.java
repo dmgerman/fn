@@ -74,6 +74,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|regex
 operator|.
 name|Pattern
@@ -437,7 +447,7 @@ argument_list|(
 name|ENDOFRECORD
 argument_list|)
 decl_stmt|;
-name|HashMap
+name|Map
 argument_list|<
 name|String
 argument_list|,
@@ -914,28 +924,15 @@ condition|)
 block|{
 comment|// "Alternate journal. Let's set it only if no journal
 comment|// has been set with %B.
-if|if
-condition|(
 name|hm
 operator|.
-name|get
-argument_list|(
-literal|"journal"
-argument_list|)
-operator|==
-literal|null
-condition|)
-block|{
-name|hm
-operator|.
-name|put
+name|putIfAbsent
 argument_list|(
 literal|"journal"
 argument_list|,
 name|val
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 elseif|else
 if|if
