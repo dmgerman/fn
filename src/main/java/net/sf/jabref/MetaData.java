@@ -48,6 +48,18 @@ begin_import
 import|import
 name|java
 operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|Charset
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|ArrayList
@@ -525,6 +537,18 @@ name|dbStrings
 init|=
 operator|new
 name|DBStrings
+argument_list|()
+decl_stmt|;
+DECL|field|encoding
+specifier|private
+name|Charset
+name|encoding
+init|=
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getDefaultEncoding
 argument_list|()
 decl_stmt|;
 comment|/**      * The MetaData object stores all meta data sets in Vectors. To ensure that      * the data is written correctly to string, the user of a meta data Vector      * must simply make sure the appropriate changes are reflected in the Vector      * it has been passed.      */
@@ -2333,6 +2357,38 @@ block|{
 name|remove
 argument_list|(
 name|SAVE_ORDER_CONFIG
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Returns the encoding used during parsing.      */
+DECL|method|getEncoding ()
+specifier|public
+name|Charset
+name|getEncoding
+parameter_list|()
+block|{
+return|return
+name|encoding
+return|;
+block|}
+DECL|method|setEncoding (Charset encoding)
+specifier|public
+name|void
+name|setEncoding
+parameter_list|(
+name|Charset
+name|encoding
+parameter_list|)
+block|{
+name|this
+operator|.
+name|encoding
+operator|=
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|encoding
 argument_list|)
 expr_stmt|;
 block|}

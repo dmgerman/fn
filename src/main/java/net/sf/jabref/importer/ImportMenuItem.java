@@ -1117,13 +1117,6 @@ operator|.
 name|getDatabaseContext
 argument_list|()
 argument_list|,
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getDefaultEncoding
-argument_list|()
-argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;

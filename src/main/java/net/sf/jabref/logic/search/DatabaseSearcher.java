@@ -208,11 +208,13 @@ name|database
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      *      * @return BibDatabase, never null      */
-DECL|method|getDatabaseFromMatches ()
+DECL|method|getMatches ()
 specifier|public
-name|BibDatabase
-name|getDatabaseFromMatches
+name|List
+argument_list|<
+name|BibEntry
+argument_list|>
+name|getMatches
 parameter_list|()
 block|{
 name|LOGGER
@@ -241,15 +243,10 @@ literal|"Search failed: illegal search expression"
 argument_list|)
 expr_stmt|;
 return|return
-name|BibDatabases
-operator|.
-name|createDatabase
-argument_list|(
 name|Collections
 operator|.
 name|emptyList
 argument_list|()
-argument_list|)
 return|;
 block|}
 name|List
@@ -284,14 +281,9 @@ decl_stmt|;
 return|return
 name|BibDatabases
 operator|.
-name|createDatabase
-argument_list|(
-name|BibDatabases
-operator|.
 name|purgeEmptyEntries
 argument_list|(
 name|matchEntries
-argument_list|)
 argument_list|)
 return|;
 block|}

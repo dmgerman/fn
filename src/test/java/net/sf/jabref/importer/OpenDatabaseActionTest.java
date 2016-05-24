@@ -388,6 +388,9 @@ name|defaultEncoding
 argument_list|,
 name|result
 operator|.
+name|getMetaData
+argument_list|()
+operator|.
 name|getEncoding
 argument_list|()
 argument_list|)
@@ -422,6 +425,9 @@ argument_list|(
 name|defaultEncoding
 argument_list|,
 name|result
+operator|.
+name|getMetaData
+argument_list|()
 operator|.
 name|getEncoding
 argument_list|()
@@ -462,6 +468,9 @@ name|UTF_8
 argument_list|,
 name|result
 operator|.
+name|getMetaData
+argument_list|()
+operator|.
 name|getEncoding
 argument_list|()
 argument_list|)
@@ -500,6 +509,9 @@ operator|.
 name|UTF_8
 argument_list|,
 name|result
+operator|.
+name|getMetaData
+argument_list|()
 operator|.
 name|getEncoding
 argument_list|()
@@ -727,6 +739,9 @@ operator|.
 name|US_ASCII
 argument_list|,
 name|result
+operator|.
+name|getMetaData
+argument_list|()
 operator|.
 name|getEncoding
 argument_list|()

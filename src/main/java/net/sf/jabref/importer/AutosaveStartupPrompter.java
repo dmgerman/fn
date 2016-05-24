@@ -452,11 +452,6 @@ name|addTab
 argument_list|(
 name|databaseContext
 argument_list|,
-name|pr
-operator|.
-name|getEncoding
-argument_list|()
-argument_list|,
 name|first
 argument_list|)
 decl_stmt|;

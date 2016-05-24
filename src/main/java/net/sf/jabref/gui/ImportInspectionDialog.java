@@ -4393,13 +4393,6 @@ name|BibDatabaseContext
 argument_list|(
 name|defaults
 argument_list|)
-argument_list|,
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getDefaultEncoding
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

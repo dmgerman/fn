@@ -1152,6 +1152,12 @@ name|withEncoding
 argument_list|(
 name|panel
 operator|.
+name|getBibDatabaseContext
+argument_list|()
+operator|.
+name|getMetaData
+argument_list|()
+operator|.
 name|getEncoding
 argument_list|()
 argument_list|)

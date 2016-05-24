@@ -1978,11 +1978,6 @@ specifier|private
 name|boolean
 name|updatedExternally
 decl_stmt|;
-DECL|field|encoding
-specifier|private
-name|Charset
-name|encoding
-decl_stmt|;
 comment|// AutoCompleter used in the search bar
 DECL|field|searchAutoCompleter
 specifier|private
@@ -2149,7 +2144,7 @@ specifier|private
 name|ContentAutoCompleters
 name|autoCompleters
 decl_stmt|;
-DECL|method|BasePanel (JabRefFrame frame, BibDatabaseContext bibDatabaseContext, Charset encoding)
+DECL|method|BasePanel (JabRefFrame frame, BibDatabaseContext bibDatabaseContext)
 specifier|public
 name|BasePanel
 parameter_list|(
@@ -2158,9 +2153,6 @@ name|frame
 parameter_list|,
 name|BibDatabaseContext
 name|bibDatabaseContext
-parameter_list|,
-name|Charset
-name|encoding
 parameter_list|)
 block|{
 name|Objects
@@ -2174,21 +2166,8 @@ name|Objects
 operator|.
 name|requireNonNull
 argument_list|(
-name|encoding
-argument_list|)
-expr_stmt|;
-name|Objects
-operator|.
-name|requireNonNull
-argument_list|(
 name|bibDatabaseContext
 argument_list|)
-expr_stmt|;
-name|this
-operator|.
-name|encoding
-operator|=
-name|encoding
 expr_stmt|;
 name|this
 operator|.
@@ -2479,32 +2458,6 @@ block|{
 return|return
 name|frame
 return|;
-block|}
-DECL|method|getEncoding ()
-specifier|public
-name|Charset
-name|getEncoding
-parameter_list|()
-block|{
-return|return
-name|encoding
-return|;
-block|}
-DECL|method|setEncoding (Charset encoding)
-specifier|public
-name|void
-name|setEncoding
-parameter_list|(
-name|Charset
-name|encoding
-parameter_list|)
-block|{
-name|this
-operator|.
-name|encoding
-operator|=
-name|encoding
-expr_stmt|;
 block|}
 DECL|method|output (String s)
 specifier|public
@@ -8277,9 +8230,15 @@ argument_list|)
 expr_stmt|;
 name|this
 operator|.
-name|encoding
-operator|=
+name|bibDatabaseContext
+operator|.
+name|getMetaData
+argument_list|()
+operator|.
+name|setEncoding
+argument_list|(
 name|enc
+argument_list|)
 expr_stmt|;
 comment|// Make sure to remember which encoding we used.
 block|}

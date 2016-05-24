@@ -263,6 +263,9 @@ argument_list|)
 decl_stmt|;
 name|parserResult
 operator|.
+name|getMetaData
+argument_list|()
+operator|.
 name|setEncoding
 argument_list|(
 name|encoding

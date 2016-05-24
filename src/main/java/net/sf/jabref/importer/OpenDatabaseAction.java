@@ -1916,7 +1916,7 @@ block|}
 block|}
 block|}
 DECL|method|addNewDatabase (ParserResult result, final File file, boolean raisePanel)
-specifier|public
+specifier|private
 name|BasePanel
 name|addNewDatabase
 parameter_list|(
@@ -2024,11 +2024,6 @@ name|file
 argument_list|,
 name|defaults
 argument_list|)
-argument_list|,
-name|result
-operator|.
-name|getEncoding
-argument_list|()
 argument_list|)
 decl_stmt|;
 comment|// file is set to null inside the EventDispatcherThread
