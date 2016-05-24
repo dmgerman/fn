@@ -20,7 +20,7 @@ name|java
 operator|.
 name|io
 operator|.
-name|ByteArrayInputStream
+name|BufferedReader
 import|;
 end_import
 
@@ -38,11 +38,9 @@ begin_import
 import|import
 name|java
 operator|.
-name|nio
+name|io
 operator|.
-name|charset
-operator|.
-name|StandardCharsets
+name|StringReader
 import|;
 end_import
 
@@ -107,20 +105,6 @@ operator|.
 name|jabref
 operator|.
 name|JabRefPreferences
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|importer
-operator|.
-name|OutputPrinterToNull
 import|;
 end_import
 

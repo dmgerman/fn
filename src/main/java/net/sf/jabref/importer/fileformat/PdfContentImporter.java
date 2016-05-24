@@ -20,6 +20,16 @@ name|java
 operator|.
 name|io
 operator|.
+name|BufferedReader
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
 name|IOException
 import|;
 end_import
@@ -30,7 +40,7 @@ name|java
 operator|.
 name|io
 operator|.
-name|InputStream
+name|StringWriter
 import|;
 end_import
 
@@ -38,9 +48,23 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
+name|nio
 operator|.
-name|StringWriter
+name|charset
+operator|.
+name|Charset
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|file
+operator|.
+name|Path
 import|;
 end_import
 
@@ -60,7 +84,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Collections
+name|List
 import|;
 end_import
 
@@ -70,7 +94,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|List
+name|Objects
 import|;
 end_import
 
@@ -118,21 +142,7 @@ name|jabref
 operator|.
 name|importer
 operator|.
-name|ImportInspector
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|importer
-operator|.
-name|OutputPrinter
+name|ParserResult
 import|;
 end_import
 
@@ -275,34 +285,6 @@ operator|.
 name|base
 operator|.
 name|Strings
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|commons
-operator|.
-name|logging
-operator|.
-name|Log
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|commons
-operator|.
-name|logging
-operator|.
-name|LogFactory
 import|;
 end_import
 

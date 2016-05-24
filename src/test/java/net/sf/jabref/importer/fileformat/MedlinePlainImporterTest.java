@@ -1,7 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
 DECL|package|net.sf.jabref.importer.fileformat
-DECL|package|net.sf.jabref.importer.fileformat
 package|package
 name|net
 operator|.
@@ -163,20 +162,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|importer
-operator|.
-name|OutputPrinterToNull
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|logic
 operator|.
 name|bibtex
@@ -231,20 +216,29 @@ name|Test
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
 begin_class
-DECL|class|MedlinePlainImporterTest
 DECL|class|MedlinePlainImporterTest
 specifier|public
 class|class
 name|MedlinePlainImporterTest
 block|{
 DECL|field|importer
-DECL|field|importer
 specifier|private
 name|MedlinePlainImporter
 name|importer
 decl_stmt|;
-DECL|method|readerForString (String string)
 DECL|method|readerForString (String string)
 specifier|private
 name|BufferedReader
@@ -269,7 +263,6 @@ block|}
 annotation|@
 name|Before
 DECL|method|setUp ()
-DECL|method|setUp ()
 specifier|public
 name|void
 name|setUp
@@ -293,7 +286,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testIsRecognizedFormat ()
 DECL|method|testIsRecognizedFormat ()
 specifier|public
 name|void
@@ -377,7 +369,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testIsNotRecognizedFormat ()
-DECL|method|testIsNotRecognizedFormat ()
 specifier|public
 name|void
 name|testIsNotRecognizedFormat
@@ -458,7 +449,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|doesNotRecognizeEmptyFiles ()
-DECL|method|doesNotRecognizeEmptyFiles ()
 specifier|public
 name|void
 name|doesNotRecognizeEmptyFiles
@@ -484,7 +474,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testImportMultipleEntriesInSingleFile ()
 DECL|method|testImportMultipleEntriesInSingleFile ()
 specifier|public
 name|void
@@ -539,8 +528,6 @@ operator|.
 name|getEntries
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|7
@@ -561,8 +548,6 @@ argument_list|(
 literal|0
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"article"
@@ -585,8 +570,6 @@ literal|"month"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Long, Vicky and Marland, Hilary"
@@ -599,8 +582,6 @@ literal|"author"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"From danger and motherhood to health and beauty: health advice for the factory girl in early twentieth-century Britain."
@@ -622,8 +603,6 @@ argument_list|(
 literal|1
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"conference"
@@ -634,8 +613,6 @@ name|getType
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"06"
@@ -681,8 +658,6 @@ argument_list|(
 literal|2
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"book"
@@ -693,8 +668,6 @@ name|getType
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"This is a Testtitle: This title should be appended: This title should also be appended. Another append to the Title? LastTitle"
@@ -716,8 +689,6 @@ argument_list|(
 literal|3
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"techreport"
@@ -749,8 +720,6 @@ argument_list|(
 literal|4
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"inproceedings"
@@ -761,8 +730,6 @@ name|getType
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Inproceedings book title"
@@ -798,8 +765,6 @@ argument_list|,
 literal|"Female"
 argument_list|)
 expr_stmt|;
-name|BibtexEntryAssert
-operator|.
 name|assertEquals
 argument_list|(
 name|expectedEntry5
@@ -835,8 +800,6 @@ argument_list|,
 literal|"Female"
 argument_list|)
 expr_stmt|;
-name|BibtexEntryAssert
-operator|.
 name|assertEquals
 argument_list|(
 name|expectedEntry6
@@ -852,7 +815,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testEmptyFileImport ()
 DECL|method|testEmptyFileImport ()
 specifier|public
 name|void
@@ -883,8 +845,6 @@ operator|.
 name|getEntries
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Collections
@@ -898,7 +858,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testImportSingleEntriesInSingleFiles ()
 DECL|method|testImportSingleEntriesInSingleFiles ()
 specifier|public
 name|void
@@ -961,7 +920,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|assertImportOfMedlineFileEqualsBibtexFile (String medlineFile, String bibtexFile)
 DECL|method|assertImportOfMedlineFileEqualsBibtexFile (String medlineFile, String bibtexFile)
 specifier|private
 name|void
@@ -1044,8 +1002,6 @@ argument_list|(
 name|entries
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -1074,7 +1030,6 @@ block|}
 block|}
 annotation|@
 name|Test
-DECL|method|testMultiLineComments ()
 DECL|method|testMultiLineComments ()
 specifier|public
 name|void
@@ -1250,8 +1205,6 @@ operator|+
 literal|"Comment16"
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Collections
@@ -1265,13 +1218,8 @@ name|actualEntries
 argument_list|)
 expr_stmt|;
 block|}
-block|}
-end_class
-
-begin_function
 annotation|@
 name|Test
-DECL|method|testKeyWords ()
 DECL|method|testKeyWords ()
 specifier|public
 name|void
@@ -1334,8 +1282,6 @@ argument_list|,
 literal|"Female, Male"
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Collections
@@ -1350,12 +1296,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-end_function
-
-begin_function
 annotation|@
 name|Test
-DECL|method|testAllArticleTypes ()
 DECL|method|testAllArticleTypes ()
 specifier|public
 name|void
@@ -1438,8 +1380,7 @@ literal|"keywords"
 argument_list|,
 literal|"Female"
 argument_list|)
-name|Assert
-operator|.
+expr_stmt|;
 name|assertEquals
 argument_list|(
 name|Collections
@@ -1454,20 +1395,14 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-end_function
-
-begin_function
 annotation|@
 name|Test
-DECL|method|testGetFormatName ()
 DECL|method|testGetFormatName ()
 specifier|public
 name|void
 name|testGetFormatName
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"MedlinePlain"
@@ -1479,20 +1414,14 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-end_function
-
-begin_function
 annotation|@
 name|Test
-DECL|method|testGetCLIId ()
 DECL|method|testGetCLIId ()
 specifier|public
 name|void
 name|testGetCLIId
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"medlineplain"
@@ -1504,8 +1433,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-end_function
+block|}
+end_class
 
-unit|}
 end_unit
 

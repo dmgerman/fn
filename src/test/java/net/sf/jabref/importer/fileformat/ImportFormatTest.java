@@ -446,7 +446,7 @@ name|Object
 index|[]
 block|{
 operator|new
-name|BibteXMLImporter
+name|BibTeXMLImporter
 argument_list|()
 block|}
 argument_list|,

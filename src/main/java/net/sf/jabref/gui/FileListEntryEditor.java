@@ -110,6 +110,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|List
 import|;
 end_import
@@ -2354,7 +2364,7 @@ name|getNewFile
 argument_list|(
 name|parent
 argument_list|,
-name|initial
+name|workingDir
 argument_list|,
 name|Collections
 operator|.

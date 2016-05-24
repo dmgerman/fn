@@ -20,7 +20,7 @@ name|java
 operator|.
 name|io
 operator|.
-name|ByteArrayInputStream
+name|BufferedReader
 import|;
 end_import
 
@@ -141,20 +141,6 @@ operator|.
 name|jabref
 operator|.
 name|JabRefPreferences
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|importer
-operator|.
-name|OutputPrinterToNull
 import|;
 end_import
 
@@ -556,7 +542,7 @@ name|InspecImportTest
 operator|.
 name|class
 operator|.
-name|getResourceAsStream
+name|getResource
 argument_list|(
 literal|"InspecImportTest2.txt"
 argument_list|)
