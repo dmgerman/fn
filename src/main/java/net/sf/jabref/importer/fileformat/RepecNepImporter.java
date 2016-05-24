@@ -42,16 +42,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
-operator|.
-name|InputStream
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|text
 operator|.
 name|ParseException
@@ -114,6 +104,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Date
 import|;
 end_import
@@ -140,15 +140,11 @@ end_import
 
 begin_import
 import|import
-name|net
+name|java
 operator|.
-name|sf
+name|util
 operator|.
-name|jabref
-operator|.
-name|importer
-operator|.
-name|ImportFormatReader
+name|Objects
 import|;
 end_import
 
@@ -162,7 +158,7 @@ name|jabref
 operator|.
 name|importer
 operator|.
-name|OutputPrinter
+name|ParserResult
 import|;
 end_import
 
@@ -303,7 +299,6 @@ specifier|private
 name|boolean
 name|inOverviewSection
 decl_stmt|;
-comment|/**      * Return the name of this import format.      */
 annotation|@
 name|Override
 DECL|method|getFormatName ()
@@ -316,33 +311,38 @@ return|return
 literal|"REPEC New Economic Papers (NEP)"
 return|;
 block|}
-comment|/*      *  (non-Javadoc)      * @see net.sf.jabref.imports.ImportFormat#getCLIId()      */
 annotation|@
 name|Override
-DECL|method|getCLIId ()
+DECL|method|getId ()
 specifier|public
 name|String
-name|getCLIId
+name|getId
 parameter_list|()
 block|{
 return|return
 literal|"repecnep"
 return|;
 block|}
-comment|/*      *  (non-Javadoc)      * @see net.sf.jabref.imports.ImportFormat#getExtensions()      */
 annotation|@
 name|Override
 DECL|method|getExtensions ()
 specifier|public
+name|List
+argument_list|<
 name|String
+argument_list|>
 name|getExtensions
 parameter_list|()
 block|{
 return|return
+name|Collections
+operator|.
+name|singletonList
+argument_list|(
 literal|".txt"
+argument_list|)
 return|;
 block|}
-comment|/*      *  (non-Javadoc)      * @see net.sf.jabref.imports.ImportFormat#getDescription()      */
 annotation|@
 name|Override
 DECL|method|getDescription ()
@@ -363,16 +363,15 @@ operator|+
 literal|"contains the line \"nep.repec.org\"."
 return|;
 block|}
-comment|/*      *  (non-Javadoc)      * @see net.sf.jabref.imports.ImportFormat#isRecognizedFormat(java.io.InputStream)      */
 annotation|@
 name|Override
-DECL|method|isRecognizedFormat (InputStream stream)
+DECL|method|isRecognizedFormat (BufferedReader reader)
 specifier|public
 name|boolean
 name|isRecognizedFormat
 parameter_list|(
-name|InputStream
-name|stream
+name|BufferedReader
+name|reader
 parameter_list|)
 throws|throws
 name|IOException
@@ -380,23 +379,6 @@ block|{
 comment|// read the first couple of lines
 comment|// NEP message usually contain the String 'NEP: New Economics Papers'
 comment|// or, they are from nep.repec.org
-try|try
-init|(
-name|BufferedReader
-name|inBR
-init|=
-operator|new
-name|BufferedReader
-argument_list|(
-name|ImportFormatReader
-operator|.
-name|getReaderDefaultEncoding
-argument_list|(
-name|stream
-argument_list|)
-argument_list|)
-init|)
-block|{
 name|StringBuilder
 name|startOfMessage
 init|=
@@ -407,7 +389,7 @@ decl_stmt|;
 name|String
 name|tmpLine
 init|=
-name|inBR
+name|reader
 operator|.
 name|readLine
 argument_list|()
@@ -444,7 +426,7 @@ argument_list|)
 expr_stmt|;
 name|tmpLine
 operator|=
-name|inBR
+name|reader
 operator|.
 name|readLine
 argument_list|()
@@ -471,7 +453,6 @@ argument_list|(
 literal|"nep.repec.org"
 argument_list|)
 return|;
-block|}
 block|}
 DECL|method|startsWithKeyword (Collection<String> keywords)
 specifier|private
@@ -1750,26 +1731,26 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/*      *  (non-Javadoc)      * @see net.sf.jabref.imports.ImportFormat#importEntries(java.io.InputStream)      */
 annotation|@
 name|Override
-DECL|method|importEntries (InputStream stream, OutputPrinter status)
+DECL|method|importDatabase (BufferedReader reader)
 specifier|public
-name|List
-argument_list|<
-name|BibEntry
-argument_list|>
-name|importEntries
+name|ParserResult
+name|importDatabase
 parameter_list|(
-name|InputStream
-name|stream
-parameter_list|,
-name|OutputPrinter
-name|status
+name|BufferedReader
+name|reader
 parameter_list|)
 throws|throws
 name|IOException
 block|{
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|reader
+argument_list|)
+expr_stmt|;
 name|List
 argument_list|<
 name|BibEntry
@@ -1793,25 +1774,10 @@ operator|=
 literal|0
 expr_stmt|;
 try|try
-init|(
-name|BufferedReader
-name|in
-init|=
-operator|new
-name|BufferedReader
-argument_list|(
-name|ImportFormatReader
-operator|.
-name|getReaderDefaultEncoding
-argument_list|(
-name|stream
-argument_list|)
-argument_list|)
-init|)
 block|{
 name|readLine
 argument_list|(
-name|in
+name|reader
 argument_list|)
 expr_stmt|;
 comment|// skip header and editor information
@@ -1899,7 +1865,7 @@ name|parseTitleString
 argument_list|(
 name|be
 argument_list|,
-name|in
+name|reader
 argument_list|)
 expr_stmt|;
 if|if
@@ -1918,7 +1884,7 @@ name|be
 argument_list|,
 literal|false
 argument_list|,
-name|in
+name|reader
 argument_list|)
 expr_stmt|;
 block|}
@@ -1926,7 +1892,7 @@ else|else
 block|{
 name|readLine
 argument_list|(
-name|in
+name|reader
 argument_list|)
 expr_stmt|;
 comment|// skip empty line
@@ -1934,12 +1900,12 @@ name|parseAuthors
 argument_list|(
 name|be
 argument_list|,
-name|in
+name|reader
 argument_list|)
 expr_stmt|;
 name|readLine
 argument_list|(
-name|in
+name|reader
 argument_list|)
 expr_stmt|;
 comment|// skip empty line
@@ -1959,7 +1925,7 @@ name|parseAbstract
 argument_list|(
 name|be
 argument_list|,
-name|in
+name|reader
 argument_list|)
 expr_stmt|;
 block|}
@@ -1969,7 +1935,7 @@ name|be
 argument_list|,
 literal|true
 argument_list|,
-name|in
+name|reader
 argument_list|)
 expr_stmt|;
 name|bibitems
@@ -1996,7 +1962,7 @@ name|lastLine
 expr_stmt|;
 name|readLine
 argument_list|(
-name|in
+name|reader
 argument_list|)
 expr_stmt|;
 block|}
@@ -2037,7 +2003,7 @@ name|message
 operator|+=
 name|e
 operator|.
-name|getMessage
+name|getLocalizedMessage
 argument_list|()
 expr_stmt|;
 name|LOGGER
@@ -2049,41 +2015,21 @@ argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
-name|IOException
-name|toThrow
-decl_stmt|;
-if|if
-condition|(
-name|e
-operator|instanceof
-name|IOException
-condition|)
-block|{
-name|toThrow
-operator|=
-operator|(
-name|IOException
-operator|)
-name|e
-expr_stmt|;
-block|}
-else|else
-block|{
-name|toThrow
-operator|=
-operator|new
-name|IOException
+return|return
+name|ParserResult
+operator|.
+name|fromErrorMessage
 argument_list|(
 name|message
 argument_list|)
-expr_stmt|;
-block|}
-throw|throw
-name|toThrow
-throw|;
+return|;
 block|}
 return|return
+operator|new
+name|ParserResult
+argument_list|(
 name|bibitems
+argument_list|)
 return|;
 block|}
 block|}

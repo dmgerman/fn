@@ -58,9 +58,31 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
+name|net
 operator|.
-name|UnsupportedEncodingException
+name|URISyntaxException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|net
+operator|.
+name|URL
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|Charset
 import|;
 end_import
 
@@ -73,6 +95,30 @@ operator|.
 name|charset
 operator|.
 name|StandardCharsets
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|file
+operator|.
+name|Path
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|file
+operator|.
+name|Paths
 import|;
 end_import
 
@@ -93,20 +139,6 @@ operator|.
 name|util
 operator|.
 name|List
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|importer
-operator|.
-name|OutputPrinterToNull
 import|;
 end_import
 
@@ -189,7 +221,7 @@ class|class
 name|BibEntryAssert
 block|{
 comment|/**      * Reads a single entry from the resource using `getResourceAsStream` from the given class. The resource has to      * contain a single entry      *      * @param clazz the class where to call `getResourceAsStream`      * @param resourceName the resource to read      * @param entry the entry to compare with      */
-DECL|method|assertEquals (Class<? extends Object> clazz, String resourceName, BibEntry entry)
+DECL|method|assertEquals (Class<?> clazz, String resourceName, BibEntry entry)
 specifier|public
 specifier|static
 name|void
@@ -198,8 +230,6 @@ parameter_list|(
 name|Class
 argument_list|<
 name|?
-extends|extends
-name|Object
 argument_list|>
 name|clazz
 parameter_list|,
@@ -258,7 +288,7 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * Reads a single entry from the resource using `getResourceAsStream` from the given class. The resource has to      * contain a single entry      *      * @param clazz the class where to call `getResourceAsStream`      * @param resourceName the resource to read      * @param asIsEntries a list containing a single entry to compare with      */
-DECL|method|assertEquals (Class<? extends Object> clazz, String resourceName, List<BibEntry> asIsEntries)
+DECL|method|assertEquals (Class<?> clazz, String resourceName, List<BibEntry> asIsEntries)
 specifier|public
 specifier|static
 name|void
@@ -267,8 +297,6 @@ parameter_list|(
 name|Class
 argument_list|<
 name|?
-extends|extends
-name|Object
 argument_list|>
 name|clazz
 parameter_list|,
@@ -424,8 +452,6 @@ argument_list|>
 name|actualEntries
 parameter_list|)
 throws|throws
-name|UnsupportedEncodingException
-throws|,
 name|IOException
 block|{
 name|Assert
@@ -471,8 +497,6 @@ name|InputStream
 name|actualInputStream
 parameter_list|)
 throws|throws
-name|UnsupportedEncodingException
-throws|,
 name|IOException
 block|{
 name|Assert
@@ -516,8 +540,6 @@ name|BibEntry
 name|actual
 parameter_list|)
 throws|throws
-name|UnsupportedEncodingException
-throws|,
 name|IOException
 block|{
 name|assertEquals
@@ -533,8 +555,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Compares two InputStreams. For each InputStream a list will be created. expectedIs is read directly, actualIs is filtered through importerForActualIs to convert to a list of BibEntries.      * @param expectedIs A BibtexImporter InputStream.      * @param actualIs Your ImportFormat InputStream you want to compare with a BibtexImporter ImportStream.      * @param importerForActualIs The fileformat you want to use to convert the actualIs to the list of expected BibEntries      * @throws IOException      */
-DECL|method|assertEquals (InputStream expectedIs, InputStream actualIs, ImportFormat importerForActualIs)
+comment|/**      * Compares two InputStreams. For each InputStream a list will be created. expectedIs is read directly, actualIs is filtered through importFormat to convert to a list of BibEntries.      * @param expectedIs A BibtexImporter InputStream.      * @param fileToImport The path to the file to be imported.      * @param importFormat The fileformat you want to use to read the passed file to get the list of expected BibEntries      * @throws IOException      */
+DECL|method|assertEquals (InputStream expectedIs, Path fileToImport, ImportFormat importFormat)
 specifier|public
 specifier|static
 name|void
@@ -543,34 +565,15 @@ parameter_list|(
 name|InputStream
 name|expectedIs
 parameter_list|,
-name|InputStream
-name|actualIs
+name|Path
+name|fileToImport
 parameter_list|,
 name|ImportFormat
-name|importerForActualIs
+name|importFormat
 parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|List
-argument_list|<
-name|BibEntry
-argument_list|>
-name|actualEntries
-init|=
-name|importerForActualIs
-operator|.
-name|importEntries
-argument_list|(
-name|actualIs
-argument_list|,
-operator|new
-name|OutputPrinterToNull
-argument_list|()
-argument_list|)
-decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|getListFromInputStream
@@ -578,12 +581,52 @@ argument_list|(
 name|expectedIs
 argument_list|)
 argument_list|,
-name|actualEntries
+name|fileToImport
+argument_list|,
+name|importFormat
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Compares a list of BibEntries to an InputStream. actualIs is filtered through importerForActualIs to convert to a list of BibEntries.      * @param expectedIs A BibtexImporter InputStream.      * @param actualIs Your ImportFormat InputStream you want to compare with a BibtexImporter ImportStream.      * @param importerForActualIs The fileformat you want to use to convert the actualIs to the list of expected BibEntries      * @throws IOException      */
-DECL|method|assertEquals (List<BibEntry> expected, InputStream actualIs, ImportFormat importerForActualIs)
+DECL|method|assertEquals (InputStream expectedIs, URL fileToImport, ImportFormat importFormat)
+specifier|public
+specifier|static
+name|void
+name|assertEquals
+parameter_list|(
+name|InputStream
+name|expectedIs
+parameter_list|,
+name|URL
+name|fileToImport
+parameter_list|,
+name|ImportFormat
+name|importFormat
+parameter_list|)
+throws|throws
+name|URISyntaxException
+throws|,
+name|IOException
+block|{
+name|assertEquals
+argument_list|(
+name|expectedIs
+argument_list|,
+name|Paths
+operator|.
+name|get
+argument_list|(
+name|fileToImport
+operator|.
+name|toURI
+argument_list|()
+argument_list|)
+argument_list|,
+name|importFormat
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Compares a list of BibEntries to an InputStream. actualIs is filtered through importerForActualIs to convert to a list of BibEntries.      * @param expected A BibtexImporter InputStream.      * @param fileToImport The path to the file to be imported.      * @param importFormat The fileformat you want to use to read the passed file to get the list of expected BibEntries      * @throws IOException      */
+DECL|method|assertEquals (List<BibEntry> expected, Path fileToImport, ImportFormat importFormat)
 specifier|public
 specifier|static
 name|void
@@ -595,11 +638,11 @@ name|BibEntry
 argument_list|>
 name|expected
 parameter_list|,
-name|InputStream
-name|actualIs
+name|Path
+name|fileToImport
 parameter_list|,
 name|ImportFormat
-name|importerForActualIs
+name|importFormat
 parameter_list|)
 throws|throws
 name|IOException
@@ -610,16 +653,23 @@ name|BibEntry
 argument_list|>
 name|actualEntries
 init|=
-name|importerForActualIs
+name|importFormat
 operator|.
-name|importEntries
+name|importDatabase
 argument_list|(
-name|actualIs
+name|fileToImport
 argument_list|,
-operator|new
-name|OutputPrinterToNull
+name|Charset
+operator|.
+name|defaultCharset
 argument_list|()
 argument_list|)
+operator|.
+name|getDatabase
+argument_list|()
+operator|.
+name|getEntries
+argument_list|()
 decl_stmt|;
 name|Assert
 operator|.
@@ -628,6 +678,47 @@ argument_list|(
 name|expected
 argument_list|,
 name|actualEntries
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|assertEquals (List<BibEntry> expected, URL fileToImport, ImportFormat importFormat)
+specifier|public
+specifier|static
+name|void
+name|assertEquals
+parameter_list|(
+name|List
+argument_list|<
+name|BibEntry
+argument_list|>
+name|expected
+parameter_list|,
+name|URL
+name|fileToImport
+parameter_list|,
+name|ImportFormat
+name|importFormat
+parameter_list|)
+throws|throws
+name|URISyntaxException
+throws|,
+name|IOException
+block|{
+name|assertEquals
+argument_list|(
+name|expected
+argument_list|,
+name|Paths
+operator|.
+name|get
+argument_list|(
+name|fileToImport
+operator|.
+name|toURI
+argument_list|()
+argument_list|)
+argument_list|,
+name|importFormat
 argument_list|)
 expr_stmt|;
 block|}

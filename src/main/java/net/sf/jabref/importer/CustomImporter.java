@@ -553,13 +553,6 @@ operator|.
 name|newInstance
 argument_list|()
 decl_stmt|;
-name|importFormat
-operator|.
-name|setIsCustomImporter
-argument_list|(
-literal|true
-argument_list|)
-expr_stmt|;
 return|return
 name|importFormat
 return|;

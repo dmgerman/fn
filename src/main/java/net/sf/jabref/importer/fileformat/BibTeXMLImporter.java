@@ -42,16 +42,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
-operator|.
-name|InputStream
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|ArrayList
@@ -65,6 +55,16 @@ operator|.
 name|util
 operator|.
 name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Objects
 import|;
 end_import
 
@@ -114,21 +114,7 @@ name|jabref
 operator|.
 name|importer
 operator|.
-name|ImportFormatReader
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|importer
-operator|.
-name|OutputPrinter
+name|ParserResult
 import|;
 end_import
 
@@ -176,6 +162,18 @@ name|LogFactory
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|xml
+operator|.
+name|sax
+operator|.
+name|InputSource
+import|;
+end_import
+
 begin_comment
 comment|/**  * Importer for the Refer/Endnote format.  *  * check here for details on the format  * http://www.ecst.csuchico.edu/~jacobsd/bib/formats/endnote.html  */
 end_comment
@@ -218,7 +216,6 @@ argument_list|(
 literal|"<(bibtex:)?file .*"
 argument_list|)
 decl_stmt|;
-comment|/**      * Return the name of this import format.      */
 annotation|@
 name|Override
 DECL|method|getFormatName ()
@@ -231,51 +228,47 @@ return|return
 literal|"BibTeXML"
 return|;
 block|}
-comment|/*      *  (non-Javadoc)      * @see net.sf.jabref.imports.ImportFormat#getCLIId()      */
 annotation|@
 name|Override
-DECL|method|getCLIId ()
+DECL|method|getExtensions ()
 specifier|public
+name|List
+argument_list|<
 name|String
-name|getCLIId
+argument_list|>
+name|getExtensions
 parameter_list|()
 block|{
 return|return
-literal|"bibtexml"
+literal|null
 return|;
 block|}
-comment|/**      * Check whether the source is in the correct format for this importer.      */
 annotation|@
 name|Override
-DECL|method|isRecognizedFormat (InputStream stream)
+DECL|method|getDescription ()
+specifier|public
+name|String
+name|getDescription
+parameter_list|()
+block|{
+return|return
+literal|null
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|isRecognizedFormat (BufferedReader reader)
 specifier|public
 name|boolean
 name|isRecognizedFormat
 parameter_list|(
-name|InputStream
-name|stream
+name|BufferedReader
+name|reader
 parameter_list|)
 throws|throws
 name|IOException
 block|{
 comment|// Our strategy is to look for the "<bibtex:file *" line.
-try|try
-init|(
-name|BufferedReader
-name|in
-init|=
-operator|new
-name|BufferedReader
-argument_list|(
-name|ImportFormatReader
-operator|.
-name|getReaderDefaultEncoding
-argument_list|(
-name|stream
-argument_list|)
-argument_list|)
-init|)
-block|{
 name|String
 name|str
 decl_stmt|;
@@ -284,7 +277,7 @@ condition|(
 operator|(
 name|str
 operator|=
-name|in
+name|reader
 operator|.
 name|readLine
 argument_list|()
@@ -315,27 +308,26 @@ return|return
 literal|false
 return|;
 block|}
-block|}
-comment|/**      * Parse the entries in the source, and return a List of BibEntry      * objects.      */
 annotation|@
 name|Override
-DECL|method|importEntries (InputStream stream, OutputPrinter status)
+DECL|method|importDatabase (BufferedReader reader)
 specifier|public
-name|List
-argument_list|<
-name|BibEntry
-argument_list|>
-name|importEntries
+name|ParserResult
+name|importDatabase
 parameter_list|(
-name|InputStream
-name|stream
-parameter_list|,
-name|OutputPrinter
-name|status
+name|BufferedReader
+name|reader
 parameter_list|)
 throws|throws
 name|IOException
 block|{
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|reader
+argument_list|)
+expr_stmt|;
 name|List
 argument_list|<
 name|BibEntry
@@ -390,7 +382,11 @@ name|parser
 operator|.
 name|parse
 argument_list|(
-name|stream
+operator|new
+name|InputSource
+argument_list|(
+name|reader
+argument_list|)
 argument_list|,
 name|handler
 argument_list|)
@@ -428,16 +424,17 @@ argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
-name|status
+return|return
+name|ParserResult
 operator|.
-name|showMessage
+name|fromErrorMessage
 argument_list|(
 name|e
 operator|.
 name|getLocalizedMessage
 argument_list|()
 argument_list|)
-expr_stmt|;
+return|;
 block|}
 catch|catch
 parameter_list|(
@@ -460,16 +457,17 @@ argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
-name|status
+return|return
+name|ParserResult
 operator|.
-name|showMessage
+name|fromErrorMessage
 argument_list|(
 name|e
 operator|.
 name|getLocalizedMessage
 argument_list|()
 argument_list|)
-expr_stmt|;
+return|;
 block|}
 catch|catch
 parameter_list|(
@@ -486,19 +484,24 @@ argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
-name|status
+return|return
+name|ParserResult
 operator|.
-name|showMessage
+name|fromErrorMessage
 argument_list|(
 name|e
 operator|.
 name|getLocalizedMessage
 argument_list|()
 argument_list|)
-expr_stmt|;
+return|;
 block|}
 return|return
+operator|new
+name|ParserResult
+argument_list|(
 name|bibItems
+argument_list|)
 return|;
 block|}
 block|}

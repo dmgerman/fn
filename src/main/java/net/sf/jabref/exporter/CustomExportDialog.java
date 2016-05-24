@@ -92,6 +92,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|swing
@@ -619,7 +629,12 @@ name|parent
 argument_list|,
 name|directory
 argument_list|,
+name|Collections
+operator|.
+name|singletonList
+argument_list|(
 literal|".layout"
+argument_list|)
 argument_list|,
 name|JFileChooser
 operator|.

@@ -24,7 +24,7 @@ name|java
 operator|.
 name|io
 operator|.
-name|IOException
+name|BufferedReader
 import|;
 end_import
 
@@ -34,7 +34,7 @@ name|java
 operator|.
 name|io
 operator|.
-name|InputStream
+name|IOException
 import|;
 end_import
 
@@ -126,7 +126,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Collections
+name|List
 import|;
 end_import
 
@@ -136,7 +136,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|List
+name|Objects
 import|;
 end_import
 
@@ -232,7 +232,7 @@ name|jabref
 operator|.
 name|importer
 operator|.
-name|OutputPrinter
+name|ParserResult
 import|;
 end_import
 
@@ -374,38 +374,38 @@ argument_list|)
 decl_stmt|;
 annotation|@
 name|Override
-DECL|method|isRecognizedFormat (InputStream in)
+DECL|method|isRecognizedFormat (BufferedReader reader)
 specifier|public
 name|boolean
 name|isRecognizedFormat
 parameter_list|(
-name|InputStream
-name|in
+name|BufferedReader
+name|reader
 parameter_list|)
 throws|throws
 name|IOException
 block|{
-comment|// TODO: We don't know how to recognize text files, therefore we return
-comment|// "false"
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|reader
+argument_list|)
+expr_stmt|;
+comment|// TODO: We don't know how to recognize text files, therefore we return "false"
 return|return
 literal|false
 return|;
 block|}
 annotation|@
 name|Override
-DECL|method|importEntries (InputStream in, OutputPrinter status)
+DECL|method|importDatabase (BufferedReader reader)
 specifier|public
-name|List
-argument_list|<
-name|BibEntry
-argument_list|>
-name|importEntries
+name|ParserResult
+name|importDatabase
 parameter_list|(
-name|InputStream
-name|in
-parameter_list|,
-name|OutputPrinter
-name|status
+name|BufferedReader
+name|reader
 parameter_list|)
 throws|throws
 name|IOException
@@ -418,7 +418,7 @@ init|=
 operator|new
 name|Scanner
 argument_list|(
-name|in
+name|reader
 argument_list|)
 init|)
 block|{
@@ -439,25 +439,17 @@ return|return
 name|importEntries
 argument_list|(
 name|text
-argument_list|,
-name|status
 argument_list|)
 return|;
 block|}
 block|}
-DECL|method|importEntries (String text, OutputPrinter status)
+DECL|method|importEntries (String text)
 specifier|public
-name|List
-argument_list|<
-name|BibEntry
-argument_list|>
+name|ParserResult
 name|importEntries
 parameter_list|(
 name|String
 name|text
-parameter_list|,
-name|OutputPrinter
-name|status
 parameter_list|)
 block|{
 comment|// URLencode the string for transmission
@@ -542,9 +534,8 @@ name|e
 argument_list|)
 expr_stmt|;
 return|return
-name|Collections
-operator|.
-name|emptyList
+operator|new
+name|ParserResult
 argument_list|()
 return|;
 block|}
@@ -564,9 +555,8 @@ name|e
 argument_list|)
 expr_stmt|;
 return|return
-name|Collections
-operator|.
-name|emptyList
+operator|new
+name|ParserResult
 argument_list|()
 return|;
 block|}
@@ -643,18 +633,6 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|status
-operator|.
-name|showMessage
-argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Unable to connect to FreeCite online service."
-argument_list|)
-argument_list|)
-expr_stmt|;
 name|LOGGER
 operator|.
 name|warn
@@ -665,10 +643,17 @@ name|e
 argument_list|)
 expr_stmt|;
 return|return
-name|Collections
+name|ParserResult
 operator|.
-name|emptyList
-argument_list|()
+name|fromErrorMessage
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Unable to connect to FreeCite online service."
+argument_list|)
+argument_list|)
 return|;
 block|}
 comment|// output is in conn.getInputStream();
@@ -1354,14 +1339,17 @@ name|ex
 argument_list|)
 expr_stmt|;
 return|return
-name|Collections
-operator|.
-name|emptyList
+operator|new
+name|ParserResult
 argument_list|()
 return|;
 block|}
 return|return
+operator|new
+name|ParserResult
+argument_list|(
 name|res
+argument_list|)
 return|;
 block|}
 annotation|@
@@ -1374,6 +1362,33 @@ parameter_list|()
 block|{
 return|return
 literal|"text citations"
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|getExtensions ()
+specifier|public
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|getExtensions
+parameter_list|()
+block|{
+return|return
+literal|null
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|getDescription ()
+specifier|public
+name|String
+name|getDescription
+parameter_list|()
+block|{
+return|return
+literal|null
 return|;
 block|}
 block|}

@@ -3348,7 +3348,10 @@ name|getText
 argument_list|()
 argument_list|)
 argument_list|,
-literal|""
+name|Collections
+operator|.
+name|emptyList
+argument_list|()
 argument_list|,
 name|JFileChooser
 operator|.
@@ -3377,7 +3380,10 @@ name|getText
 argument_list|()
 argument_list|)
 argument_list|,
-literal|""
+name|Collections
+operator|.
+name|emptyList
+argument_list|()
 argument_list|,
 name|JFileChooser
 operator|.

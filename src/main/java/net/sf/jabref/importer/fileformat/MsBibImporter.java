@@ -24,7 +24,7 @@ name|java
 operator|.
 name|io
 operator|.
-name|IOException
+name|BufferedReader
 import|;
 end_import
 
@@ -34,7 +34,7 @@ name|java
 operator|.
 name|io
 operator|.
-name|InputStream
+name|IOException
 import|;
 end_import
 
@@ -45,6 +45,16 @@ operator|.
 name|util
 operator|.
 name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Objects
 import|;
 end_import
 
@@ -82,7 +92,7 @@ name|jabref
 operator|.
 name|importer
 operator|.
-name|OutputPrinter
+name|ParserResult
 import|;
 end_import
 
@@ -104,22 +114,6 @@ end_import
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|entry
-operator|.
-name|BibEntry
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|w3c
@@ -127,6 +121,18 @@ operator|.
 name|dom
 operator|.
 name|Document
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|xml
+operator|.
+name|sax
+operator|.
+name|InputSource
 import|;
 end_import
 
@@ -144,18 +150,25 @@ name|ImportFormat
 block|{
 annotation|@
 name|Override
-DECL|method|isRecognizedFormat (InputStream in)
+DECL|method|isRecognizedFormat (BufferedReader reader)
 specifier|public
 name|boolean
 name|isRecognizedFormat
 parameter_list|(
-name|InputStream
-name|in
+name|BufferedReader
+name|reader
 parameter_list|)
 throws|throws
 name|IOException
 block|{
-comment|/*             This method is available for checking if a file can be of the MSBib type.             The effect of this method is primarily to avoid unnecessary processing of             files when searching for a suitable import format. If this method returns             false, the import routine will move on to the next import format.              The correct behaviour is to return false if it is certain that the file is             not of the MsBib type, and true otherwise. Returning true is the safe choice             if not certain.          */
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|reader
+argument_list|)
+expr_stmt|;
+comment|/*             The correct behaviour is to return false if it is certain that the file is             not of the MsBib type, and true otherwise. Returning true is the safe choice             if not certain.          */
 name|Document
 name|docin
 decl_stmt|;
@@ -178,7 +191,11 @@ name|dbuild
 operator|.
 name|parse
 argument_list|(
-name|in
+operator|new
+name|InputSource
+argument_list|(
+name|reader
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -213,36 +230,26 @@ literal|"Sources"
 argument_list|)
 return|;
 block|}
-comment|/**      * String used to identify this import filter on the command line.      * @return "msbib"      */
-DECL|method|getCommandLineId ()
-specifier|public
-name|String
-name|getCommandLineId
-parameter_list|()
-block|{
-return|return
-literal|"msbib"
-return|;
-block|}
 annotation|@
 name|Override
-DECL|method|importEntries (InputStream in, OutputPrinter status)
+DECL|method|importDatabase (BufferedReader reader)
 specifier|public
-name|List
-argument_list|<
-name|BibEntry
-argument_list|>
-name|importEntries
+name|ParserResult
+name|importDatabase
 parameter_list|(
-name|InputStream
-name|in
-parameter_list|,
-name|OutputPrinter
-name|status
+name|BufferedReader
+name|reader
 parameter_list|)
 throws|throws
 name|IOException
 block|{
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|reader
+argument_list|)
+expr_stmt|;
 name|MSBibDatabase
 name|dbase
 init|=
@@ -251,11 +258,15 @@ name|MSBibDatabase
 argument_list|()
 decl_stmt|;
 return|return
+operator|new
+name|ParserResult
+argument_list|(
 name|dbase
 operator|.
 name|importEntries
 argument_list|(
-name|in
+name|reader
+argument_list|)
 argument_list|)
 return|;
 block|}
@@ -267,9 +278,35 @@ name|String
 name|getFormatName
 parameter_list|()
 block|{
-comment|// This method should return the name of this import format.
 return|return
 literal|"MSBib"
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|getExtensions ()
+specifier|public
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|getExtensions
+parameter_list|()
+block|{
+return|return
+literal|null
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|getDescription ()
+specifier|public
+name|String
+name|getDescription
+parameter_list|()
+block|{
+return|return
+literal|null
 return|;
 block|}
 block|}

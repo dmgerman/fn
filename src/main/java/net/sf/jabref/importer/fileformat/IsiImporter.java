@@ -42,16 +42,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
-operator|.
-name|InputStream
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|ArrayList
@@ -94,6 +84,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Objects
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|regex
 operator|.
 name|Matcher
@@ -122,21 +122,7 @@ name|jabref
 operator|.
 name|importer
 operator|.
-name|ImportFormatReader
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|importer
-operator|.
-name|OutputPrinter
+name|ParserResult
 import|;
 end_import
 
@@ -232,7 +218,6 @@ argument_list|(
 literal|"FN ISI Export Format|VR 1.|PY \\d{4}"
 argument_list|)
 decl_stmt|;
-comment|/**      * Return the name of this import format.      */
 annotation|@
 name|Override
 DECL|method|getFormatName ()
@@ -245,49 +230,57 @@ return|return
 literal|"ISI"
 return|;
 block|}
-comment|/*      * (non-Javadoc)      *      * @see net.sf.jabref.imports.ImportFormat#getCLIId()      */
 annotation|@
 name|Override
-DECL|method|getCLIId ()
+DECL|method|getExtensions ()
+specifier|public
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|getExtensions
+parameter_list|()
+block|{
+return|return
+literal|null
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|getId ()
 specifier|public
 name|String
-name|getCLIId
+name|getId
 parameter_list|()
 block|{
 return|return
 literal|"isi"
 return|;
 block|}
-comment|/**      * Check whether the source is in the correct format for this importer.      */
 annotation|@
 name|Override
-DECL|method|isRecognizedFormat (InputStream stream)
+DECL|method|getDescription ()
+specifier|public
+name|String
+name|getDescription
+parameter_list|()
+block|{
+return|return
+literal|null
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|isRecognizedFormat (BufferedReader reader)
 specifier|public
 name|boolean
 name|isRecognizedFormat
 parameter_list|(
-name|InputStream
-name|stream
+name|BufferedReader
+name|reader
 parameter_list|)
 throws|throws
 name|IOException
-block|{
-try|try
-init|(
-name|BufferedReader
-name|in
-init|=
-operator|new
-name|BufferedReader
-argument_list|(
-name|ImportFormatReader
-operator|.
-name|getReaderDefaultEncoding
-argument_list|(
-name|stream
-argument_list|)
-argument_list|)
-init|)
 block|{
 name|String
 name|str
@@ -303,7 +296,7 @@ operator|(
 operator|(
 name|str
 operator|=
-name|in
+name|reader
 operator|.
 name|readLine
 argument_list|()
@@ -319,7 +312,7 @@ literal|50
 operator|)
 condition|)
 block|{
-comment|/**                  * The following line gives false positives for RIS files, so it                  * should not be uncommented. The hypen is a characteristic of the                  * RIS format.                  *                  * str = str.replace(" - ", "")                  */
+comment|/**              * The following line gives false positives for RIS files, so it              * should not be uncommented. The hypen is a characteristic of the              * RIS format.              *              * str = str.replace(" - ", "")              */
 if|if
 condition|(
 name|IsiImporter
@@ -342,7 +335,6 @@ block|}
 name|i
 operator|++
 expr_stmt|;
-block|}
 block|}
 return|return
 literal|false
@@ -630,41 +622,26 @@ block|}
 block|}
 block|}
 block|}
-comment|/**      * Parse the entries in the source, and return a List of BibEntry      * objects.      */
 annotation|@
 name|Override
-DECL|method|importEntries (InputStream stream, OutputPrinter status)
+DECL|method|importDatabase (BufferedReader reader)
 specifier|public
-name|List
-argument_list|<
-name|BibEntry
-argument_list|>
-name|importEntries
+name|ParserResult
+name|importDatabase
 parameter_list|(
-name|InputStream
-name|stream
-parameter_list|,
-name|OutputPrinter
-name|status
+name|BufferedReader
+name|reader
 parameter_list|)
 throws|throws
 name|IOException
 block|{
-if|if
-condition|(
-name|stream
-operator|==
-literal|null
-condition|)
-block|{
-throw|throw
-operator|new
-name|IOException
+name|Objects
+operator|.
+name|requireNonNull
 argument_list|(
-literal|"No stream given."
+name|reader
 argument_list|)
-throw|;
-block|}
+expr_stmt|;
 name|List
 argument_list|<
 name|BibEntry
@@ -683,23 +660,6 @@ operator|new
 name|StringBuilder
 argument_list|()
 decl_stmt|;
-try|try
-init|(
-name|BufferedReader
-name|in
-init|=
-operator|new
-name|BufferedReader
-argument_list|(
-name|ImportFormatReader
-operator|.
-name|getReaderDefaultEncoding
-argument_list|(
-name|stream
-argument_list|)
-argument_list|)
-init|)
-block|{
 comment|// Pattern fieldPattern = Pattern.compile("^AU |^TI |^SO |^DT |^C1 |^AB
 comment|// |^ID |^BP |^PY |^SE |^PY |^VL |^IS ");
 name|String
@@ -710,7 +670,7 @@ condition|(
 operator|(
 name|str
 operator|=
-name|in
+name|reader
 operator|.
 name|readLine
 argument_list|()
@@ -829,7 +789,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// remove the initial spaces
-block|}
 block|}
 block|}
 block|}
@@ -1914,7 +1873,11 @@ argument_list|)
 expr_stmt|;
 block|}
 return|return
+operator|new
+name|ParserResult
+argument_list|(
 name|bibitems
+argument_list|)
 return|;
 block|}
 DECL|method|parsePages (String value)

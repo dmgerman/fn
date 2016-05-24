@@ -24,7 +24,7 @@ name|java
 operator|.
 name|io
 operator|.
-name|IOException
+name|BufferedReader
 import|;
 end_import
 
@@ -34,7 +34,7 @@ name|java
 operator|.
 name|io
 operator|.
-name|InputStream
+name|IOException
 import|;
 end_import
 
@@ -240,6 +240,18 @@ name|xml
 operator|.
 name|sax
 operator|.
+name|InputSource
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|xml
+operator|.
+name|sax
+operator|.
 name|SAXException
 import|;
 end_import
@@ -331,7 +343,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|importEntries (InputStream stream)
+DECL|method|importEntries (BufferedReader reader)
 specifier|public
 name|List
 argument_list|<
@@ -339,8 +351,8 @@ name|BibEntry
 argument_list|>
 name|importEntries
 parameter_list|(
-name|InputStream
-name|stream
+name|BufferedReader
+name|reader
 parameter_list|)
 block|{
 name|entries
@@ -372,7 +384,11 @@ name|documentBuilder
 operator|.
 name|parse
 argument_list|(
-name|stream
+operator|new
+name|InputSource
+argument_list|(
+name|reader
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

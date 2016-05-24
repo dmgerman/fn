@@ -895,6 +895,32 @@ return|return
 name|result
 return|;
 block|}
+DECL|method|loadWithAutomaticDecryption (Path filePath)
+specifier|public
+specifier|static
+name|PDDocument
+name|loadWithAutomaticDecryption
+parameter_list|(
+name|Path
+name|filePath
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+return|return
+name|loadWithAutomaticDecryption
+argument_list|(
+operator|new
+name|FileInputStream
+argument_list|(
+name|filePath
+operator|.
+name|toFile
+argument_list|()
+argument_list|)
+argument_list|)
+return|;
+block|}
 DECL|method|loadWithAutomaticDecryption (InputStream inputStream)
 specifier|public
 specifier|static
@@ -1270,6 +1296,31 @@ return|;
 block|}
 return|return
 name|result
+return|;
+block|}
+DECL|method|readXMP (Path filePath)
+specifier|public
+specifier|static
+name|Collection
+argument_list|<
+name|BibEntry
+argument_list|>
+name|readXMP
+parameter_list|(
+name|Path
+name|filePath
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+return|return
+name|readXMP
+argument_list|(
+name|filePath
+operator|.
+name|toFile
+argument_list|()
+argument_list|)
 return|;
 block|}
 comment|/**      * Helper function for retrieving a BibEntry from the      * PDDocumentInformation in a PDF file.      *      * To understand how to get hold of a PDDocumentInformation have a look in      * the test cases for XMPUtil.      *      * The BibEntry is build by mapping individual fields in the document      * information (like author, title, keywords) to fields in a bibtex entry.      *      * @param di      *            The document information from which to build a BibEntry.      *      * @return The bibtex entry found in the document information.      */

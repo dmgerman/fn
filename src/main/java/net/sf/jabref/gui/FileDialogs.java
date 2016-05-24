@@ -58,6 +58,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Objects
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|swing
@@ -126,18 +136,14 @@ name|OS
 import|;
 end_import
 
-begin_comment
-comment|/**  * Created by IntelliJ IDEA.  * User: alver  * Date: Apr 14, 2009  * Time: 7:24:07 PM  * To change this template use File | Settings | File Templates.  */
-end_comment
-
 begin_class
 DECL|class|FileDialogs
 specifier|public
 class|class
 name|FileDialogs
 block|{
-comment|/**      * Will return the names of multiple files selected in the given directory      * and the given extensions.      *      * Will return an empty String array if no entry is found.      *      * @param owner      * @param directory      * @param extension      * @param updateWorkingdirectory      * @return an array of selected file paths, or an empty array if no selection is made.      */
-DECL|method|getMultipleFiles (JFrame owner, File directory, String extension, boolean updateWorkingdirectory)
+comment|/**      * Will return the names of multiple files selected in the given directory      * and the given extensions.      *      * Will return an empty String array if no entry is found.      *      * @param owner      * @param directory      * @param extensions      * @param updateWorkingdirectory      * @return an array of selected file paths, or an empty array if no selection is made.      */
+DECL|method|getMultipleFiles (JFrame owner, File directory, List<String> extensions, boolean updateWorkingdirectory)
 specifier|public
 specifier|static
 name|List
@@ -152,37 +158,29 @@ parameter_list|,
 name|File
 name|directory
 parameter_list|,
+name|List
+argument_list|<
 name|String
-name|extension
+argument_list|>
+name|extensions
 parameter_list|,
 name|boolean
 name|updateWorkingdirectory
 parameter_list|)
 block|{
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|extensions
+argument_list|)
+expr_stmt|;
 name|OpenFileFilter
 name|off
-init|=
-literal|null
 decl_stmt|;
 if|if
 condition|(
-name|extension
-operator|==
-literal|null
-condition|)
-block|{
-name|off
-operator|=
-operator|new
-name|OpenFileFilter
-argument_list|()
-expr_stmt|;
-block|}
-elseif|else
-if|if
-condition|(
-operator|!
-name|extension
+name|extensions
 operator|.
 name|isEmpty
 argument_list|()
@@ -192,8 +190,17 @@ name|off
 operator|=
 operator|new
 name|OpenFileFilter
+argument_list|()
+expr_stmt|;
+block|}
+else|else
+block|{
+name|off
+operator|=
+operator|new
+name|OpenFileFilter
 argument_list|(
-name|extension
+name|extensions
 argument_list|)
 expr_stmt|;
 block|}
@@ -208,7 +215,7 @@ name|owner
 argument_list|,
 name|directory
 argument_list|,
-name|extension
+name|extensions
 argument_list|,
 literal|null
 argument_list|,
@@ -276,7 +283,7 @@ name|emptyList
 argument_list|()
 return|;
 block|}
-DECL|method|getNewFile (JFrame owner, File directory, String extension, int dialogType, boolean updateWorkingDirectory)
+DECL|method|getNewFile (JFrame owner, File directory, List<String> extensions, int dialogType, boolean updateWorkingDirectory)
 specifier|public
 specifier|static
 name|String
@@ -288,8 +295,11 @@ parameter_list|,
 name|File
 name|directory
 parameter_list|,
+name|List
+argument_list|<
 name|String
-name|extension
+argument_list|>
+name|extensions
 parameter_list|,
 name|int
 name|dialogType
@@ -307,7 +317,7 @@ name|owner
 argument_list|,
 name|directory
 argument_list|,
-name|extension
+name|extensions
 argument_list|,
 literal|null
 argument_list|,
@@ -321,7 +331,7 @@ literal|null
 argument_list|)
 return|;
 block|}
-DECL|method|getNewFile (JFrame owner, File directory, String extension, int dialogType, boolean updateWorkingDirectory, JComponent accessory)
+DECL|method|getNewFile (JFrame owner, File directory, List<String> extensions, int dialogType, boolean updateWorkingDirectory, JComponent accessory)
 specifier|public
 specifier|static
 name|String
@@ -333,8 +343,11 @@ parameter_list|,
 name|File
 name|directory
 parameter_list|,
+name|List
+argument_list|<
 name|String
-name|extension
+argument_list|>
+name|extensions
 parameter_list|,
 name|int
 name|dialogType
@@ -355,7 +368,7 @@ name|owner
 argument_list|,
 name|directory
 argument_list|,
-name|extension
+name|extensions
 argument_list|,
 literal|null
 argument_list|,
@@ -369,7 +382,7 @@ name|accessory
 argument_list|)
 return|;
 block|}
-DECL|method|getNewFile (JFrame owner, File directory, String extension, String description, int dialogType, boolean updateWorkingDirectory)
+DECL|method|getNewFile (JFrame owner, File directory, List<String> extensions, String description, int dialogType, boolean updateWorkingDirectory)
 specifier|public
 specifier|static
 name|String
@@ -381,8 +394,11 @@ parameter_list|,
 name|File
 name|directory
 parameter_list|,
+name|List
+argument_list|<
 name|String
-name|extension
+argument_list|>
+name|extensions
 parameter_list|,
 name|String
 name|description
@@ -403,7 +419,7 @@ name|owner
 argument_list|,
 name|directory
 argument_list|,
-name|extension
+name|extensions
 argument_list|,
 name|description
 argument_list|,
@@ -417,7 +433,7 @@ literal|null
 argument_list|)
 return|;
 block|}
-DECL|method|getNewDir (JFrame owner, File directory, String extension, int dialogType, boolean updateWorkingDirectory)
+DECL|method|getNewDir (JFrame owner, File directory, List<String> extensions, int dialogType, boolean updateWorkingDirectory)
 specifier|public
 specifier|static
 name|String
@@ -429,8 +445,11 @@ parameter_list|,
 name|File
 name|directory
 parameter_list|,
+name|List
+argument_list|<
 name|String
-name|extension
+argument_list|>
+name|extensions
 parameter_list|,
 name|int
 name|dialogType
@@ -448,7 +467,7 @@ name|owner
 argument_list|,
 name|directory
 argument_list|,
-name|extension
+name|extensions
 argument_list|,
 literal|null
 argument_list|,
@@ -462,7 +481,7 @@ literal|null
 argument_list|)
 return|;
 block|}
-DECL|method|getNewDir (JFrame owner, File directory, String extension, String description, int dialogType, boolean updateWorkingDirectory)
+DECL|method|getNewDir (JFrame owner, File directory, List<String> extensions, String description, int dialogType, boolean updateWorkingDirectory)
 specifier|public
 specifier|static
 name|String
@@ -474,8 +493,11 @@ parameter_list|,
 name|File
 name|directory
 parameter_list|,
+name|List
+argument_list|<
 name|String
-name|extension
+argument_list|>
+name|extensions
 parameter_list|,
 name|String
 name|description
@@ -496,7 +518,7 @@ name|owner
 argument_list|,
 name|directory
 argument_list|,
-name|extension
+name|extensions
 argument_list|,
 name|description
 argument_list|,
@@ -510,7 +532,7 @@ literal|null
 argument_list|)
 return|;
 block|}
-DECL|method|getNewFile (JFrame owner, File directory, String extension, String description, int dialogType, boolean updateWorkingDirectory, boolean dirOnly, JComponent accessory)
+DECL|method|getNewFile (JFrame owner, File directory, List<String> extensions, String description, int dialogType, boolean updateWorkingDirectory, boolean dirOnly, JComponent accessory)
 specifier|private
 specifier|static
 name|String
@@ -522,8 +544,11 @@ parameter_list|,
 name|File
 name|directory
 parameter_list|,
+name|List
+argument_list|<
 name|String
-name|extension
+argument_list|>
+name|extensions
 parameter_list|,
 name|String
 name|description
@@ -543,28 +568,10 @@ parameter_list|)
 block|{
 name|OpenFileFilter
 name|off
-init|=
-literal|null
 decl_stmt|;
 if|if
 condition|(
-name|extension
-operator|==
-literal|null
-condition|)
-block|{
-name|off
-operator|=
-operator|new
-name|OpenFileFilter
-argument_list|()
-expr_stmt|;
-block|}
-elseif|else
-if|if
-condition|(
-operator|!
-name|extension
+name|extensions
 operator|.
 name|isEmpty
 argument_list|()
@@ -574,8 +581,17 @@ name|off
 operator|=
 operator|new
 name|OpenFileFilter
+argument_list|()
+expr_stmt|;
+block|}
+else|else
+block|{
+name|off
+operator|=
+operator|new
+name|OpenFileFilter
 argument_list|(
-name|extension
+name|extensions
 argument_list|)
 expr_stmt|;
 block|}
@@ -591,7 +607,7 @@ name|owner
 argument_list|,
 name|directory
 argument_list|,
-name|extension
+name|extensions
 argument_list|,
 name|description
 argument_list|,
@@ -609,7 +625,7 @@ name|accessory
 argument_list|)
 return|;
 block|}
-DECL|method|getNewFileImpl (JFrame owner, File directory, String extension, String description, OpenFileFilter off, int dialogType, boolean updateWorkingDirectory, boolean dirOnly, boolean multipleSelection, JComponent accessory)
+DECL|method|getNewFileImpl (JFrame owner, File directory, List<String> extensions, String description, OpenFileFilter off, int dialogType, boolean updateWorkingDirectory, boolean dirOnly, boolean multipleSelection, JComponent accessory)
 specifier|private
 specifier|static
 name|Object
@@ -621,8 +637,11 @@ parameter_list|,
 name|File
 name|directory
 parameter_list|,
+name|List
+argument_list|<
 name|String
-name|extension
+argument_list|>
+name|extensions
 parameter_list|,
 name|String
 name|description
@@ -863,9 +882,11 @@ comment|// we enforce the given extension. But only if extension is not null.
 if|if
 condition|(
 operator|(
-name|extension
-operator|!=
-literal|null
+operator|!
+name|extensions
+operator|.
+name|isEmpty
+argument_list|()
 operator|)
 operator|&&
 operator|(
@@ -905,17 +926,12 @@ operator|.
 name|getPath
 argument_list|()
 operator|+
-name|extension
+name|extensions
 operator|.
-name|split
+name|get
 argument_list|(
-literal|"[, ]+"
-argument_list|,
 literal|0
 argument_list|)
-index|[
-literal|0
-index|]
 argument_list|)
 expr_stmt|;
 block|}

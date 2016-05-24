@@ -64,6 +64,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|HashMap
 import|;
 end_import
@@ -280,6 +290,20 @@ specifier|private
 name|boolean
 name|toOpenTab
 decl_stmt|;
+DECL|method|ParserResult ()
+specifier|public
+name|ParserResult
+parameter_list|()
+block|{
+name|this
+argument_list|(
+name|Collections
+operator|.
+name|emptyList
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|ParserResult (Collection<BibEntry> entries)
 specifier|public
 name|ParserResult
@@ -353,6 +377,34 @@ name|entryTypes
 operator|=
 name|entryTypes
 expr_stmt|;
+block|}
+DECL|method|fromErrorMessage (String message)
+specifier|public
+specifier|static
+name|ParserResult
+name|fromErrorMessage
+parameter_list|(
+name|String
+name|message
+parameter_list|)
+block|{
+name|ParserResult
+name|parserResult
+init|=
+operator|new
+name|ParserResult
+argument_list|()
+decl_stmt|;
+name|parserResult
+operator|.
+name|addWarning
+argument_list|(
+name|message
+argument_list|)
+expr_stmt|;
+return|return
+name|parserResult
+return|;
 block|}
 comment|/**      * Check if this base is marked to be added to the currently open tab. Default is false.      *      * @return      */
 DECL|method|toOpenTab ()

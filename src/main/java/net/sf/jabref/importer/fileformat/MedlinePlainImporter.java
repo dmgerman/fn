@@ -42,16 +42,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
-operator|.
-name|InputStream
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|ArrayList
@@ -122,21 +112,7 @@ name|jabref
 operator|.
 name|importer
 operator|.
-name|ImportFormatReader
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|importer
-operator|.
-name|OutputPrinter
+name|ParserResult
 import|;
 end_import
 
@@ -226,7 +202,6 @@ argument_list|(
 literal|"PMCR.*-.*"
 argument_list|)
 decl_stmt|;
-comment|/**      * Return the name of this import format.      */
 annotation|@
 name|Override
 DECL|method|getFormatName ()
@@ -239,52 +214,48 @@ return|return
 literal|"MedlinePlain"
 return|;
 block|}
-comment|/*      *  (non-Javadoc)      * @see net.sf.jabref.imports.ImportFormat#getCLIId()      */
 annotation|@
 name|Override
-DECL|method|getCLIId ()
+DECL|method|getExtensions ()
 specifier|public
+name|List
+argument_list|<
 name|String
-name|getCLIId
+argument_list|>
+name|getExtensions
 parameter_list|()
 block|{
 return|return
-literal|"medlineplain"
+literal|null
 return|;
 block|}
-comment|/**      * Check whether the source is in the correct format for this importer.      */
 annotation|@
 name|Override
-DECL|method|isRecognizedFormat (InputStream stream)
+DECL|method|getDescription ()
+specifier|public
+name|String
+name|getDescription
+parameter_list|()
+block|{
+return|return
+literal|null
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|isRecognizedFormat (BufferedReader reader)
 specifier|public
 name|boolean
 name|isRecognizedFormat
 parameter_list|(
-name|InputStream
-name|stream
+name|BufferedReader
+name|reader
 parameter_list|)
 throws|throws
 name|IOException
 block|{
 comment|// Our strategy is to look for the "PMID  - *", "PMC.*-.*", or "PMCR.*-.*" line
 comment|// (i.e., PubMed Unique Identifier, PubMed Central Identifier, PubMed Central Release)
-try|try
-init|(
-name|BufferedReader
-name|in
-init|=
-operator|new
-name|BufferedReader
-argument_list|(
-name|ImportFormatReader
-operator|.
-name|getReaderDefaultEncoding
-argument_list|(
-name|stream
-argument_list|)
-argument_list|)
-init|)
-block|{
 name|String
 name|str
 decl_stmt|;
@@ -293,7 +264,7 @@ condition|(
 operator|(
 name|str
 operator|=
-name|in
+name|reader
 operator|.
 name|readLine
 argument_list|()
@@ -340,27 +311,19 @@ literal|true
 return|;
 block|}
 block|}
-block|}
 return|return
 literal|false
 return|;
 block|}
-comment|/**      * Parse the entries in the source, and return a List of BibEntry      * objects.      */
 annotation|@
 name|Override
-DECL|method|importEntries (InputStream stream, OutputPrinter status)
+DECL|method|importDatabase (BufferedReader reader)
 specifier|public
-name|List
-argument_list|<
-name|BibEntry
-argument_list|>
-name|importEntries
+name|ParserResult
+name|importDatabase
 parameter_list|(
-name|InputStream
-name|stream
-parameter_list|,
-name|OutputPrinter
-name|status
+name|BufferedReader
+name|reader
 parameter_list|)
 throws|throws
 name|IOException
@@ -383,23 +346,6 @@ operator|new
 name|StringBuilder
 argument_list|()
 decl_stmt|;
-try|try
-init|(
-name|BufferedReader
-name|in
-init|=
-operator|new
-name|BufferedReader
-argument_list|(
-name|ImportFormatReader
-operator|.
-name|getReaderDefaultEncoding
-argument_list|(
-name|stream
-argument_list|)
-argument_list|)
-init|)
-block|{
 name|String
 name|str
 decl_stmt|;
@@ -408,7 +354,7 @@ condition|(
 operator|(
 name|str
 operator|=
-name|in
+name|reader
 operator|.
 name|readLine
 argument_list|()
@@ -431,7 +377,6 @@ argument_list|(
 literal|'\n'
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 name|String
 index|[]
@@ -1817,7 +1762,11 @@ argument_list|)
 expr_stmt|;
 block|}
 return|return
+operator|new
+name|ParserResult
+argument_list|(
 name|bibitems
+argument_list|)
 return|;
 block|}
 block|}
