@@ -270,16 +270,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Timer
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|TimerTask
 import|;
 end_import
