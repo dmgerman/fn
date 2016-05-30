@@ -122,7 +122,6 @@ name|RTFChars
 implements|implements
 name|LayoutFormatter
 block|{
-comment|// Instantiate logger:
 DECL|field|LOGGER
 specifier|private
 specifier|static
@@ -626,14 +625,12 @@ if|if
 condition|(
 name|i
 operator|>=
-operator|(
 name|field
 operator|.
 name|length
 argument_list|()
 operator|-
 literal|1
-operator|)
 condition|)
 block|{
 break|break
@@ -1041,6 +1038,7 @@ literal|' '
 case|:
 if|if
 condition|(
+operator|!
 name|commandNestedInBraces
 condition|)
 block|{
