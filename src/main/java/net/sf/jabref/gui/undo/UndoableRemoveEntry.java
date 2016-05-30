@@ -225,6 +225,8 @@ operator|.
 name|insertEntry
 argument_list|(
 name|entry
+argument_list|,
+literal|true
 argument_list|)
 expr_stmt|;
 block|}
