@@ -287,7 +287,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * @author Oscar  *  *         Dialog for merging Bibtex entry with data fetched from DOI  */
+comment|/**  * Dialog for merging Bibtex entry with data fetched from DOI  */
 end_comment
 
 begin_class
@@ -474,6 +474,11 @@ name|getField
 argument_list|(
 literal|"doi"
 argument_list|)
+argument_list|)
+operator|.
+name|orElse
+argument_list|(
+literal|null
 argument_list|)
 expr_stmt|;
 if|if

@@ -655,10 +655,10 @@ return|;
 block|}
 block|}
 comment|/**      * Return an ASCII URL presentation for the DOI      *      * @return an encoded URL representation of the DOI      */
-DECL|method|getURLAsASCIIString ()
+DECL|method|getURIAsASCIIString ()
 specifier|public
 name|String
-name|getURLAsASCIIString
+name|getURIAsASCIIString
 parameter_list|()
 block|{
 return|return

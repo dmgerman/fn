@@ -306,7 +306,7 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|getURLAsASCIIString
+name|getURIAsASCIIString
 argument_list|()
 decl_stmt|;
 comment|// follow all redirects and scan for a single pdf link
