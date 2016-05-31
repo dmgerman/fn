@@ -9920,6 +9920,10 @@ argument_list|(
 name|SPLIT_PANE_DIVIDER_SIZE
 argument_list|)
 expr_stmt|;
+name|adjustSplitter
+argument_list|()
+expr_stmt|;
+comment|// restore last splitting state (before mainTable is created as creation affects the stored size of the entryEditors)
 comment|// check whether a mainTable already existed and a floatSearch was active
 name|boolean
 name|floatSearchActive
