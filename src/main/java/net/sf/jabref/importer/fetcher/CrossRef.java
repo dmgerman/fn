@@ -72,6 +72,24 @@ name|jabref
 operator|.
 name|logic
 operator|.
+name|layout
+operator|.
+name|format
+operator|.
+name|LatexToUnicodeFormatter
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
 name|util
 operator|.
 name|DOI
@@ -600,15 +618,12 @@ name|JSONArray
 name|result
 parameter_list|)
 block|{
+comment|// TODO: use latex-free version instead in the future
 specifier|final
 name|String
 name|entryTitle
 init|=
-operator|new
-name|RemoveBracesFormatter
-argument_list|()
-operator|.
-name|format
+name|removeLaTeX
 argument_list|(
 name|entry
 operator|.
@@ -727,6 +742,47 @@ literal|false
 return|;
 block|}
 block|}
+DECL|method|removeLaTeX (String text)
+specifier|private
+specifier|static
+name|String
+name|removeLaTeX
+parameter_list|(
+name|String
+name|text
+parameter_list|)
+block|{
+name|String
+name|result
+decl_stmt|;
+comment|// remove braces
+name|result
+operator|=
+operator|new
+name|RemoveBracesFormatter
+argument_list|()
+operator|.
+name|format
+argument_list|(
+name|text
+argument_list|)
+expr_stmt|;
+comment|// convert to unicode
+name|result
+operator|=
+operator|new
+name|LatexToUnicodeFormatter
+argument_list|()
+operator|.
+name|format
+argument_list|(
+name|result
+argument_list|)
+expr_stmt|;
+return|return
+name|result
+return|;
+block|}
 DECL|method|editDistanceIgnoreCase (String a, String b)
 specifier|private
 specifier|static
@@ -740,6 +796,7 @@ name|String
 name|b
 parameter_list|)
 block|{
+comment|// TODO: locale is dependent on the language of the strings?!
 return|return
 name|METRIC_DISTANCE
 operator|.
