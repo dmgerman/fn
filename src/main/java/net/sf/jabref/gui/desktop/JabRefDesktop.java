@@ -778,7 +778,7 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|getURLAsASCIIString
+name|getURIAsASCIIString
 argument_list|()
 expr_stmt|;
 block|}

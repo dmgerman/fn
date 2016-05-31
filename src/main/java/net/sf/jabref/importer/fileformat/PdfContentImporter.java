@@ -1139,7 +1139,10 @@ argument_list|(
 name|result
 argument_list|)
 decl_stmt|;
+name|Optional
+argument_list|<
 name|BibEntry
+argument_list|>
 name|entry
 init|=
 name|DOI_TO_BIBTEX_FETCHER
@@ -1157,6 +1160,12 @@ argument_list|,
 name|parserResult
 argument_list|)
 decl_stmt|;
+name|entry
+operator|.
+name|ifPresent
+argument_list|(
+name|e
+lambda|->
 name|parserResult
 operator|.
 name|getDatabase
@@ -1164,7 +1173,8 @@ argument_list|()
 operator|.
 name|insertEntry
 argument_list|(
-name|entry
+name|e
+argument_list|)
 argument_list|)
 expr_stmt|;
 return|return

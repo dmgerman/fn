@@ -659,7 +659,7 @@ argument_list|(
 literal|"http://doi.org/10.1006/rwei.1999%25.0001"
 argument_list|)
 operator|.
-name|getURLAsASCIIString
+name|getURIAsASCIIString
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -676,7 +676,7 @@ argument_list|(
 literal|"http://doi.org/10.1006/rwei.1999%22.0001"
 argument_list|)
 operator|.
-name|getURLAsASCIIString
+name|getURIAsASCIIString
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -693,7 +693,7 @@ argument_list|(
 literal|"http://doi.org/10.1006/rwei.1999%23.0001"
 argument_list|)
 operator|.
-name|getURLAsASCIIString
+name|getURIAsASCIIString
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -710,7 +710,7 @@ argument_list|(
 literal|"http://doi.org/10.1006/rwei.1999%20.0001"
 argument_list|)
 operator|.
-name|getURLAsASCIIString
+name|getURIAsASCIIString
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -727,7 +727,7 @@ argument_list|(
 literal|"http://doi.org/10.1006/rwei.1999%3F.0001"
 argument_list|)
 operator|.
-name|getURLAsASCIIString
+name|getURIAsASCIIString
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -753,7 +753,7 @@ argument_list|(
 literal|"10.1006/jmbi.1998.2354"
 argument_list|)
 operator|.
-name|getURLAsASCIIString
+name|getURIAsASCIIString
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -769,7 +769,7 @@ argument_list|(
 literal|"http://doi.org/10.1006/jmbi.1998.2354"
 argument_list|)
 operator|.
-name|getURLAsASCIIString
+name|getURIAsASCIIString
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -785,7 +785,7 @@ argument_list|(
 literal|"doi:10.1109/VLHCC.2004.20"
 argument_list|)
 operator|.
-name|getURLAsASCIIString
+name|getURIAsASCIIString
 argument_list|()
 argument_list|)
 expr_stmt|;

@@ -160,6 +160,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -581,7 +591,10 @@ argument_list|(
 literal|"Found DOI in clipboard"
 argument_list|)
 expr_stmt|;
+name|Optional
+argument_list|<
 name|BibEntry
+argument_list|>
 name|entry
 init|=
 operator|new
@@ -598,25 +611,17 @@ argument_list|)
 operator|.
 name|getDOI
 argument_list|()
-argument_list|,
-literal|null
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
 name|entry
-operator|!=
-literal|null
-condition|)
-block|{
-name|result
 operator|.
-name|add
+name|ifPresent
 argument_list|(
-name|entry
+name|result
+operator|::
+name|add
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 else|else
 block|{
