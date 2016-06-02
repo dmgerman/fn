@@ -95,10 +95,6 @@ specifier|private
 name|Rank
 parameter_list|()
 block|{
-name|TEXT_DONE_PATTERN
-operator|=
-literal|"Set rank to '%0' for %1 entries"
-expr_stmt|;
 name|List
 argument_list|<
 name|SpecialFieldValue
@@ -380,29 +376,12 @@ operator|.
 name|FIELDNAME_RANKING
 return|;
 block|}
+DECL|method|getLocalizedFieldName ()
 annotation|@
 name|Override
-DECL|method|getToolTip ()
 specifier|public
 name|String
-name|getToolTip
-parameter_list|()
-block|{
-return|return
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Rank"
-argument_list|)
-return|;
-block|}
-annotation|@
-name|Override
-DECL|method|getMenuString ()
-specifier|public
-name|String
-name|getMenuString
+name|getLocalizedFieldName
 parameter_list|()
 block|{
 return|return

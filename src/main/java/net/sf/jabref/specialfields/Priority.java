@@ -289,10 +289,6 @@ argument_list|(
 name|values
 argument_list|)
 expr_stmt|;
-name|TEXT_DONE_PATTERN
-operator|=
-literal|"Set priority to '%0' for %1 entries"
-expr_stmt|;
 block|}
 DECL|method|getInstance ()
 specifier|public
@@ -339,6 +335,23 @@ operator|.
 name|FIELDNAME_PRIORITY
 return|;
 block|}
+DECL|method|getLocalizedFieldName ()
+annotation|@
+name|Override
+specifier|public
+name|String
+name|getLocalizedFieldName
+parameter_list|()
+block|{
+return|return
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Priority"
+argument_list|)
+return|;
+block|}
 annotation|@
 name|Override
 DECL|method|getRepresentingIcon ()
@@ -351,40 +364,6 @@ return|return
 name|this
 operator|.
 name|icon
-return|;
-block|}
-annotation|@
-name|Override
-DECL|method|getToolTip ()
-specifier|public
-name|String
-name|getToolTip
-parameter_list|()
-block|{
-return|return
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Priority"
-argument_list|)
-return|;
-block|}
-annotation|@
-name|Override
-DECL|method|getMenuString ()
-specifier|public
-name|String
-name|getMenuString
-parameter_list|()
-block|{
-return|return
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Priority"
-argument_list|)
 return|;
 block|}
 block|}

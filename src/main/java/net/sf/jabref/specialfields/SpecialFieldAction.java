@@ -80,22 +80,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
-operator|.
-name|l10n
-operator|.
-name|Localization
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|model
 operator|.
 name|entry
@@ -146,17 +130,11 @@ specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
-DECL|field|doneTextPattern
-specifier|private
-specifier|final
-name|String
-name|doneTextPattern
-decl_stmt|;
-DECL|field|c
+DECL|field|specialField
 specifier|private
 specifier|final
 name|SpecialField
-name|c
+name|specialField
 decl_stmt|;
 DECL|field|value
 specifier|private
@@ -192,8 +170,8 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|/**      *      * @param nullFieldIfValueIsTheSame - false also causes that doneTextPattern has two place holders %0 for the value and %1 for the sum of entries      * @param doneTextPattern - the pattern to use to update status information shown in MainFrame      */
-DECL|method|SpecialFieldAction ( JabRefFrame frame, SpecialField c, String value, boolean nullFieldIfValueIsTheSame, String undoText, String doneTextPattern)
+comment|/**      *      * @param nullFieldIfValueIsTheSame - false also causes that doneTextPattern has two place holders %0 for the value and %1 for the sum of entries      */
+DECL|method|SpecialFieldAction ( JabRefFrame frame, SpecialField specialField, String value, boolean nullFieldIfValueIsTheSame, String undoText)
 specifier|public
 name|SpecialFieldAction
 parameter_list|(
@@ -201,7 +179,7 @@ name|JabRefFrame
 name|frame
 parameter_list|,
 name|SpecialField
-name|c
+name|specialField
 parameter_list|,
 name|String
 name|value
@@ -211,9 +189,6 @@ name|nullFieldIfValueIsTheSame
 parameter_list|,
 name|String
 name|undoText
-parameter_list|,
-name|String
-name|doneTextPattern
 parameter_list|)
 block|{
 name|this
@@ -224,9 +199,9 @@ name|frame
 expr_stmt|;
 name|this
 operator|.
-name|c
+name|specialField
 operator|=
-name|c
+name|specialField
 expr_stmt|;
 name|this
 operator|.
@@ -245,12 +220,6 @@ operator|.
 name|undoText
 operator|=
 name|undoText
-expr_stmt|;
-name|this
-operator|.
-name|doneTextPattern
-operator|=
-name|doneTextPattern
 expr_stmt|;
 block|}
 annotation|@
@@ -315,7 +284,7 @@ name|SpecialFieldsUtils
 operator|.
 name|updateField
 argument_list|(
-name|c
+name|specialField
 argument_list|,
 name|value
 argument_list|,
@@ -374,16 +343,18 @@ decl_stmt|;
 if|if
 condition|(
 name|nullFieldIfValueIsTheSame
+operator|||
+name|value
+operator|==
+literal|null
 condition|)
 block|{
 name|outText
 operator|=
-name|Localization
+name|specialField
 operator|.
-name|lang
+name|getTextDone
 argument_list|(
-name|doneTextPattern
-argument_list|,
 name|Integer
 operator|.
 name|toString
@@ -400,12 +371,10 @@ else|else
 block|{
 name|outText
 operator|=
-name|Localization
+name|specialField
 operator|.
-name|lang
+name|getTextDone
 argument_list|(
-name|doneTextPattern
-argument_list|,
 name|value
 argument_list|,
 name|Integer

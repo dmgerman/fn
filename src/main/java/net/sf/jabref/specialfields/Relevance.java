@@ -153,10 +153,6 @@ argument_list|(
 name|values
 argument_list|)
 expr_stmt|;
-name|TEXT_DONE_PATTERN
-operator|=
-literal|"Toggled relevance for %0 entries"
-expr_stmt|;
 block|}
 annotation|@
 name|Override
@@ -170,6 +166,23 @@ return|return
 name|SpecialFieldsUtils
 operator|.
 name|FIELDNAME_RELEVANCE
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|getLocalizedFieldName ()
+specifier|public
+name|String
+name|getLocalizedFieldName
+parameter_list|()
+block|{
+return|return
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Relevance"
+argument_list|)
 return|;
 block|}
 DECL|method|getInstance ()
@@ -224,46 +237,6 @@ argument_list|)
 operator|.
 name|getIcon
 argument_list|()
-return|;
-block|}
-annotation|@
-name|Override
-DECL|method|getToolTip ()
-specifier|public
-name|String
-name|getToolTip
-parameter_list|()
-block|{
-return|return
-name|this
-operator|.
-name|getValues
-argument_list|()
-operator|.
-name|get
-argument_list|(
-literal|0
-argument_list|)
-operator|.
-name|getToolTipText
-argument_list|()
-return|;
-block|}
-annotation|@
-name|Override
-DECL|method|getMenuString ()
-specifier|public
-name|String
-name|getMenuString
-parameter_list|()
-block|{
-return|return
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Relevance"
-argument_list|)
 return|;
 block|}
 annotation|@

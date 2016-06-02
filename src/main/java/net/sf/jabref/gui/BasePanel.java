@@ -6711,13 +6711,6 @@ name|lang
 argument_list|(
 literal|"Toggle relevance"
 argument_list|)
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Toggled relevance for %0 entries"
-argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -6781,13 +6774,6 @@ name|lang
 argument_list|(
 literal|"Toggle quality assured"
 argument_list|)
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Toggled quality for %0 entries"
-argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -6850,13 +6836,6 @@ operator|.
 name|lang
 argument_list|(
 literal|"Toggle print status"
-argument_list|)
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Toggled print status for %0 entries"
 argument_list|)
 argument_list|)
 argument_list|)
