@@ -5777,7 +5777,8 @@ name|setFocused
 argument_list|(
 name|bp
 operator|.
-name|mainTable
+name|getMainTable
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|setWindowTitle
@@ -5805,7 +5806,8 @@ name|FocusRequester
 argument_list|(
 name|bp
 operator|.
-name|mainTable
+name|getMainTable
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -11824,7 +11826,8 @@ argument_list|)
 decl_stmt|;
 name|bp
 operator|.
-name|entryEditors
+name|getEntryEditors
+argument_list|()
 operator|.
 name|clear
 argument_list|()

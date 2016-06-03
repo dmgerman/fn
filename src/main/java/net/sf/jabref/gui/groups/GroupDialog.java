@@ -1279,14 +1279,6 @@ name|this
 argument_list|,
 name|m_kgSearchTerm
 argument_list|,
-name|m_basePanel
-operator|.
-name|getBibDatabaseContext
-argument_list|()
-operator|.
-name|getMetaData
-argument_list|()
-argument_list|,
 literal|null
 argument_list|,
 literal|true

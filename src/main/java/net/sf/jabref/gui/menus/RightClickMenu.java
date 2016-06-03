@@ -592,7 +592,8 @@ if|if
 condition|(
 name|panel
 operator|.
-name|mainTable
+name|getMainTable
+argument_list|()
 operator|.
 name|getSelectedRowCount
 argument_list|()
@@ -604,7 +605,8 @@ name|be
 operator|=
 name|panel
 operator|.
-name|mainTable
+name|getMainTable
+argument_list|()
 operator|.
 name|getSelected
 argument_list|()
@@ -1722,7 +1724,8 @@ block|{
 return|return
 name|panel
 operator|.
-name|mainTable
+name|getMainTable
+argument_list|()
 operator|.
 name|getSelectedRowCount
 argument_list|()
@@ -1739,7 +1742,8 @@ block|{
 return|return
 name|panel
 operator|.
-name|mainTable
+name|getMainTable
+argument_list|()
 operator|.
 name|getSelectedRowCount
 argument_list|()
@@ -1943,7 +1947,8 @@ if|if
 condition|(
 name|panel
 operator|.
-name|mainTable
+name|getMainTable
+argument_list|()
 operator|.
 name|getSelectedRowCount
 argument_list|()
@@ -1956,7 +1961,8 @@ name|entry
 init|=
 name|panel
 operator|.
-name|mainTable
+name|getMainTable
+argument_list|()
 operator|.
 name|getSelected
 argument_list|()
@@ -1995,7 +2001,8 @@ if|if
 condition|(
 name|panel
 operator|.
-name|mainTable
+name|getMainTable
+argument_list|()
 operator|.
 name|getSelectedRowCount
 argument_list|()
@@ -2008,7 +2015,8 @@ name|entry
 init|=
 name|panel
 operator|.
-name|mainTable
+name|getMainTable
+argument_list|()
 operator|.
 name|getSelected
 argument_list|()

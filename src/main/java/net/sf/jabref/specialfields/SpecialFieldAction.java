@@ -314,7 +314,8 @@ operator|.
 name|getCurrentBasePanel
 argument_list|()
 operator|.
-name|undoManager
+name|getUndoManager
+argument_list|()
 operator|.
 name|addEdit
 argument_list|(

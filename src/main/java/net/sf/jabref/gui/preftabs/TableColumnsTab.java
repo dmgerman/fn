@@ -4099,7 +4099,8 @@ name|i
 operator|<
 name|panel
 operator|.
-name|mainTable
+name|getMainTable
+argument_list|()
 operator|.
 name|getColumnCount
 argument_list|()
@@ -4113,7 +4114,8 @@ name|name
 init|=
 name|panel
 operator|.
-name|mainTable
+name|getMainTable
+argument_list|()
 operator|.
 name|getColumnName
 argument_list|(
@@ -4289,7 +4291,8 @@ name|colMod
 init|=
 name|panel
 operator|.
-name|mainTable
+name|getMainTable
+argument_list|()
 operator|.
 name|getColumnModel
 argument_list|()
@@ -4343,7 +4346,8 @@ name|name
 init|=
 name|panel
 operator|.
-name|mainTable
+name|getMainTable
+argument_list|()
 operator|.
 name|getColumnName
 argument_list|(

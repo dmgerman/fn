@@ -1532,7 +1532,8 @@ block|{
 comment|// first focus request is necessary so that the UI stays nice
 name|basePanel
 operator|.
-name|mainTable
+name|getMainTable
+argument_list|()
 operator|.
 name|requestFocus
 argument_list|()
@@ -1542,7 +1543,8 @@ argument_list|()
 expr_stmt|;
 name|basePanel
 operator|.
-name|mainTable
+name|getMainTable
+argument_list|()
 operator|.
 name|requestFocus
 argument_list|()
@@ -1684,7 +1686,8 @@ argument_list|)
 expr_stmt|;
 name|basePanel
 operator|.
-name|mainTable
+name|getMainTable
+argument_list|()
 operator|.
 name|getTableModel
 argument_list|()
@@ -1854,7 +1857,8 @@ argument_list|)
 expr_stmt|;
 name|basePanel
 operator|.
-name|mainTable
+name|getMainTable
+argument_list|()
 operator|.
 name|getTableModel
 argument_list|()

@@ -2128,7 +2128,8 @@ operator|.
 name|getCurrentBasePanel
 argument_list|()
 operator|.
-name|mainTable
+name|getMainTable
+argument_list|()
 operator|.
 name|repaint
 argument_list|()

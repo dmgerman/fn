@@ -253,8 +253,8 @@ specifier|final
 name|String
 name|delimiter
 decl_stmt|;
-comment|/**      *      * Create a new FieldContentSelector.      *      * @param frame      *            The one JabRef-Frame.      * @param panel      *            The basepanel the entry-editor is on.      * @param owner      *            The window/frame/dialog which should be the owner of the      *            content selector dialog.      * @param editor      *            The entry editor which will be appended by the text selected      *            by the user from the combobox.      * @param metaData      *            The metadata that contains the list of items to display in the      *            combobox under the key Globals.SELECTOR_META_PREFIX +      *            editor.getFieldName().      * @param action      *            The action that will be performed to after an item from the      *            combobox has been appended to the text in the entryeditor.      * @param horizontalLayout      *            Whether to put a 2 pixel horizontal strut between combobox and      *            button.      */
-DECL|method|FieldContentSelector (JabRefFrame frame, final BasePanel panel, Window owner, final FieldEditor editor, final MetaData metaData, final AbstractAction action, boolean horizontalLayout, String delimiter)
+comment|/**      *      * Create a new FieldContentSelector.      *      * @param frame      *            The one JabRef-Frame.      * @param panel      *            The basepanel the entry-editor is on.      * @param owner      *            The window/frame/dialog which should be the owner of the      *            content selector dialog.      * @param editor      *            The entry editor which will be appended by the text selected      *            by the user from the combobox.      * @param action      *            The action that will be performed to after an item from the      *            combobox has been appended to the text in the entryeditor.      * @param horizontalLayout      *            Whether to put a 2 pixel horizontal strut between combobox and      *            button.      */
+DECL|method|FieldContentSelector (JabRefFrame frame, final BasePanel panel, Window owner, final FieldEditor editor, final AbstractAction action, boolean horizontalLayout, String delimiter)
 specifier|public
 name|FieldContentSelector
 parameter_list|(
@@ -271,10 +271,6 @@ parameter_list|,
 specifier|final
 name|FieldEditor
 name|editor
-parameter_list|,
-specifier|final
-name|MetaData
-name|metaData
 parameter_list|,
 specifier|final
 name|AbstractAction
@@ -297,7 +293,13 @@ name|this
 operator|.
 name|metaData
 operator|=
-name|metaData
+name|panel
+operator|.
+name|getBibDatabaseContext
+argument_list|()
+operator|.
+name|getMetaData
+argument_list|()
 expr_stmt|;
 name|this
 operator|.
@@ -603,8 +605,6 @@ argument_list|,
 name|panel
 argument_list|,
 literal|true
-argument_list|,
-name|metaData
 argument_list|,
 name|editor
 operator|.

@@ -766,7 +766,8 @@ condition|)
 block|{
 name|panel
 operator|.
-name|undoManager
+name|getUndoManager
+argument_list|()
 operator|.
 name|markUnchanged
 argument_list|()
@@ -1033,7 +1034,8 @@ name|row
 init|=
 name|panel
 operator|.
-name|mainTable
+name|getMainTable
+argument_list|()
 operator|.
 name|findEntry
 argument_list|(
@@ -1059,7 +1061,8 @@ argument_list|)
 decl_stmt|;
 name|panel
 operator|.
-name|mainTable
+name|getMainTable
+argument_list|()
 operator|.
 name|setRowSelectionInterval
 argument_list|(
@@ -1070,7 +1073,8 @@ argument_list|)
 expr_stmt|;
 name|panel
 operator|.
-name|mainTable
+name|getMainTable
+argument_list|()
 operator|.
 name|scrollTo
 argument_list|(
@@ -1763,13 +1767,6 @@ literal|null
 expr_stmt|;
 block|}
 block|}
-if|if
-condition|(
-name|f
-operator|!=
-literal|null
-condition|)
-block|{
 name|File
 name|oldFile
 init|=
@@ -1890,7 +1887,6 @@ name|getPath
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 name|frame
 operator|.
 name|updateEnabledState

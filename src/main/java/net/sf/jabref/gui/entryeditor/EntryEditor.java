@@ -4125,7 +4125,8 @@ name|row
 init|=
 name|panel
 operator|.
-name|mainTable
+name|getMainTable
+argument_list|()
 operator|.
 name|findEntry
 argument_list|(
@@ -4143,7 +4144,8 @@ if|if
 condition|(
 name|panel
 operator|.
-name|mainTable
+name|getMainTable
+argument_list|()
 operator|.
 name|getSelectedRowCount
 argument_list|()
@@ -4153,7 +4155,8 @@ condition|)
 block|{
 name|panel
 operator|.
-name|mainTable
+name|getMainTable
+argument_list|()
 operator|.
 name|setRowSelectionInterval
 argument_list|(
@@ -4165,7 +4168,8 @@ expr_stmt|;
 block|}
 name|panel
 operator|.
-name|mainTable
+name|getMainTable
+argument_list|()
 operator|.
 name|ensureVisible
 argument_list|(
@@ -4798,7 +4802,8 @@ literal|true
 expr_stmt|;
 name|panel
 operator|.
-name|mainTable
+name|getMainTable
+argument_list|()
 operator|.
 name|setRowSelectionInterval
 argument_list|(
@@ -4809,7 +4814,8 @@ argument_list|)
 expr_stmt|;
 name|panel
 operator|.
-name|mainTable
+name|getMainTable
+argument_list|()
 operator|.
 name|ensureVisible
 argument_list|(
@@ -5554,7 +5560,8 @@ return|;
 block|}
 name|panel
 operator|.
-name|undoManager
+name|getUndoManager
+argument_list|()
 operator|.
 name|addEdit
 argument_list|(
@@ -5638,7 +5645,8 @@ name|row
 init|=
 name|panel
 operator|.
-name|mainTable
+name|getMainTable
+argument_list|()
 operator|.
 name|findEntry
 argument_list|(
@@ -5654,7 +5662,8 @@ condition|)
 block|{
 name|panel
 operator|.
-name|mainTable
+name|getMainTable
+argument_list|()
 operator|.
 name|ensureVisible
 argument_list|(
@@ -6500,7 +6509,8 @@ argument_list|()
 expr_stmt|;
 name|panel
 operator|.
-name|undoManager
+name|getUndoManager
+argument_list|()
 operator|.
 name|addEdit
 argument_list|(
@@ -6953,7 +6963,8 @@ argument_list|)
 expr_stmt|;
 name|panel
 operator|.
-name|undoManager
+name|getUndoManager
+argument_list|()
 operator|.
 name|addEdit
 argument_list|(
@@ -6965,7 +6976,8 @@ else|else
 block|{
 name|panel
 operator|.
-name|undoManager
+name|getUndoManager
+argument_list|()
 operator|.
 name|addEdit
 argument_list|(
@@ -7313,7 +7325,8 @@ argument_list|)
 expr_stmt|;
 name|panel
 operator|.
-name|undoManager
+name|getUndoManager
+argument_list|()
 operator|.
 name|addEdit
 argument_list|(
@@ -7325,7 +7338,8 @@ else|else
 block|{
 name|panel
 operator|.
-name|undoManager
+name|getUndoManager
+argument_list|()
 operator|.
 name|addEdit
 argument_list|(
@@ -7478,7 +7492,8 @@ name|row
 init|=
 name|panel
 operator|.
-name|mainTable
+name|getMainTable
+argument_list|()
 operator|.
 name|findEntry
 argument_list|(
@@ -7494,7 +7509,8 @@ condition|)
 block|{
 name|panel
 operator|.
-name|mainTable
+name|getMainTable
+argument_list|()
 operator|.
 name|ensureVisible
 argument_list|(
@@ -7693,7 +7709,8 @@ name|thisRow
 init|=
 name|panel
 operator|.
-name|mainTable
+name|getMainTable
+argument_list|()
 operator|.
 name|findEntry
 argument_list|(
@@ -7753,7 +7770,8 @@ argument_list|)
 expr_stmt|;
 name|panel
 operator|.
-name|mainTable
+name|getMainTable
+argument_list|()
 operator|.
 name|setRowSelectionInterval
 argument_list|(
@@ -7825,7 +7843,8 @@ name|thisRow
 init|=
 name|panel
 operator|.
-name|mainTable
+name|getMainTable
+argument_list|()
 operator|.
 name|findEntry
 argument_list|(
@@ -7897,7 +7916,8 @@ argument_list|)
 expr_stmt|;
 name|panel
 operator|.
-name|mainTable
+name|getMainTable
+argument_list|()
 operator|.
 name|setRowSelectionInterval
 argument_list|(
@@ -8137,7 +8157,8 @@ expr_stmt|;
 comment|// Store undo information:
 name|panel
 operator|.
-name|undoManager
+name|getUndoManager
+argument_list|()
 operator|.
 name|addEdit
 argument_list|(

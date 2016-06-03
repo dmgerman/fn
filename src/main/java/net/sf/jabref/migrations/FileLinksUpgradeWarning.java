@@ -1083,7 +1083,8 @@ argument_list|)
 decl_stmt|;
 name|panel
 operator|.
-name|undoManager
+name|getUndoManager
+argument_list|()
 operator|.
 name|addEdit
 argument_list|(

@@ -1186,7 +1186,8 @@ operator|.
 name|getCurrentBasePanel
 argument_list|()
 operator|.
-name|mainTable
+name|getMainTable
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

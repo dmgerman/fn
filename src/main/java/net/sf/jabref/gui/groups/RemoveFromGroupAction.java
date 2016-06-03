@@ -273,7 +273,8 @@ comment|// no changed made
 block|}
 name|mPanel
 operator|.
-name|undoManager
+name|getUndoManager
+argument_list|()
 operator|.
 name|addEdit
 argument_list|(

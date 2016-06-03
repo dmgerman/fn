@@ -2231,7 +2231,8 @@ name|newGroup
 argument_list|,
 name|panel
 operator|.
-name|undoManager
+name|getUndoManager
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|panel
@@ -4245,7 +4246,8 @@ name|entries
 argument_list|,
 name|panel
 operator|.
-name|undoManager
+name|getUndoManager
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|panel
@@ -4302,7 +4304,8 @@ condition|)
 block|{
 name|panel
 operator|.
-name|mainTable
+name|getMainTable
+argument_list|()
 operator|.
 name|getTableModel
 argument_list|()
@@ -4711,7 +4714,8 @@ condition|)
 block|{
 name|panel
 operator|.
-name|mainTable
+name|getMainTable
+argument_list|()
 operator|.
 name|getTableModel
 argument_list|()
@@ -4737,7 +4741,8 @@ condition|)
 block|{
 name|panel
 operator|.
-name|mainTable
+name|getMainTable
+argument_list|()
 operator|.
 name|getTableModel
 argument_list|()
@@ -4754,7 +4759,8 @@ expr_stmt|;
 block|}
 name|panel
 operator|.
-name|mainTable
+name|getMainTable
+argument_list|()
 operator|.
 name|getTableModel
 argument_list|()
@@ -4764,7 +4770,8 @@ argument_list|()
 expr_stmt|;
 name|panel
 operator|.
-name|mainTable
+name|getMainTable
+argument_list|()
 operator|.
 name|getTableModel
 argument_list|()
@@ -4774,7 +4781,8 @@ argument_list|()
 expr_stmt|;
 name|panel
 operator|.
-name|mainTable
+name|getMainTable
+argument_list|()
 operator|.
 name|scrollTo
 argument_list|(
@@ -5013,7 +5021,8 @@ block|{
 comment|// panel may be null if no file is open any more
 name|panel
 operator|.
-name|mainTable
+name|getMainTable
+argument_list|()
 operator|.
 name|getTableModel
 argument_list|()
@@ -5387,7 +5396,8 @@ condition|)
 block|{
 name|panel
 operator|.
-name|undoManager
+name|getUndoManager
+argument_list|()
 operator|.
 name|addEdit
 argument_list|(
@@ -5427,7 +5437,8 @@ argument_list|()
 expr_stmt|;
 name|panel
 operator|.
-name|undoManager
+name|getUndoManager
+argument_list|()
 operator|.
 name|addEdit
 argument_list|(
@@ -5642,7 +5653,8 @@ expr_stmt|;
 comment|// Store undo information.
 name|panel
 operator|.
-name|undoManager
+name|getUndoManager
+argument_list|()
 operator|.
 name|addEdit
 argument_list|(
@@ -5808,7 +5820,8 @@ expr_stmt|;
 comment|// Store undo information.
 name|panel
 operator|.
-name|undoManager
+name|getUndoManager
+argument_list|()
 operator|.
 name|addEdit
 argument_list|(
@@ -5961,7 +5974,8 @@ expr_stmt|;
 comment|// Store undo information.
 name|panel
 operator|.
-name|undoManager
+name|getUndoManager
+argument_list|()
 operator|.
 name|addEdit
 argument_list|(
@@ -6103,7 +6117,8 @@ comment|//revalidateGroups();
 comment|// Store undo information.
 name|panel
 operator|.
-name|undoManager
+name|getUndoManager
+argument_list|()
 operator|.
 name|addEdit
 argument_list|(
@@ -6289,7 +6304,8 @@ expr_stmt|;
 comment|// Store undo information.
 name|panel
 operator|.
-name|undoManager
+name|getUndoManager
+argument_list|()
 operator|.
 name|addEdit
 argument_list|(
@@ -6406,7 +6422,8 @@ argument_list|)
 expr_stmt|;
 name|panel
 operator|.
-name|undoManager
+name|getUndoManager
+argument_list|()
 operator|.
 name|addEdit
 argument_list|(
@@ -6504,7 +6521,8 @@ argument_list|)
 expr_stmt|;
 name|panel
 operator|.
-name|undoManager
+name|getUndoManager
+argument_list|()
 operator|.
 name|addEdit
 argument_list|(
@@ -7373,7 +7391,8 @@ parameter_list|)
 block|{
 name|panel
 operator|.
-name|undoManager
+name|getUndoManager
+argument_list|()
 operator|.
 name|addEdit
 argument_list|(
@@ -7463,7 +7482,8 @@ return|return;
 block|}
 name|panel
 operator|.
-name|undoManager
+name|getUndoManager
+argument_list|()
 operator|.
 name|addEdit
 argument_list|(

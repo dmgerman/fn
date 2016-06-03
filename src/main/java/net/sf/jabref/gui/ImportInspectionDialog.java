@@ -4623,7 +4623,8 @@ argument_list|()
 expr_stmt|;
 name|panel
 operator|.
-name|undoManager
+name|getUndoManager
+argument_list|()
 operator|.
 name|addEdit
 argument_list|(

@@ -487,6 +487,7 @@ argument_list|()
 decl_stmt|;
 DECL|field|WORD_FIRSTLINE_TEXT
 specifier|private
+specifier|static
 specifier|final
 name|String
 name|WORD_FIRSTLINE_TEXT
@@ -500,6 +501,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|FIELD_FIRST_LINE
 specifier|private
+specifier|static
 specifier|final
 name|String
 name|FIELD_FIRST_LINE
@@ -806,8 +808,8 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|/**      *      * @param owner the parent Window (Dialog or Frame)      * @param frame the JabRef Frame      * @param panel the currently selected BasePanel      * @param modal should this dialog be modal?      * @param metaData The metadata of the current database      * @param fieldName the field this selector is initialized for. May be null.      */
-DECL|method|ContentSelectorDialog2 (Window owner, JabRefFrame frame, BasePanel panel, boolean modal, MetaData metaData, String fieldName)
+comment|/**      *      * @param owner the parent Window (Dialog or Frame)      * @param frame the JabRef Frame      * @param panel the currently selected BasePanel      * @param modal should this dialog be modal?      * @param fieldName the field this selector is initialized for. May be null.      */
+DECL|method|ContentSelectorDialog2 (Window owner, JabRefFrame frame, BasePanel panel, boolean modal, String fieldName)
 specifier|public
 name|ContentSelectorDialog2
 parameter_list|(
@@ -822,9 +824,6 @@ name|panel
 parameter_list|,
 name|boolean
 name|modal
-parameter_list|,
-name|MetaData
-name|metaData
 parameter_list|,
 name|String
 name|fieldName
@@ -853,7 +852,13 @@ name|this
 operator|.
 name|metaData
 operator|=
-name|metaData
+name|panel
+operator|.
+name|getBibDatabaseContext
+argument_list|()
+operator|.
+name|getMetaData
+argument_list|()
 expr_stmt|;
 name|this
 operator|.
@@ -1840,7 +1845,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|// System.out.println("TODO: remove metadata for removed selector field.");
+comment|// TODO: remove metadata for removed selector field.
 name|panel
 operator|.
 name|markNonUndoableBaseChanged

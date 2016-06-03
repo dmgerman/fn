@@ -2028,7 +2028,8 @@ control|)
 block|{
 name|panel
 operator|.
-name|entryEditors
+name|getEntryEditors
+argument_list|()
 operator|.
 name|clear
 argument_list|()

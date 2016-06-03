@@ -2635,7 +2635,8 @@ block|{
 comment|// Invalidate associated cached entry editor
 name|bp
 operator|.
-name|entryEditors
+name|getEntryEditors
+argument_list|()
 operator|.
 name|remove
 argument_list|(
@@ -2710,7 +2711,8 @@ name|AbstractTableModel
 operator|)
 name|basePanel
 operator|.
-name|mainTable
+name|getMainTable
+argument_list|()
 operator|.
 name|getModel
 argument_list|()
