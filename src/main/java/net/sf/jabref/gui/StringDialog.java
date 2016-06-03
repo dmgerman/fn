@@ -638,7 +638,7 @@ name|CloseAction
 argument_list|()
 decl_stmt|;
 DECL|field|STRINGS_TITLE
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|String

@@ -6165,7 +6165,7 @@ argument_list|()
 operator|==
 name|DuplicateResolverResult
 operator|.
-name|KEEP_UPPER
+name|KEEP_LEFT
 condition|)
 block|{
 comment|// Remove old entry. Or... add it to a list of entries
@@ -6230,7 +6230,7 @@ argument_list|()
 operator|==
 name|DuplicateResolverResult
 operator|.
-name|KEEP_LOWER
+name|KEEP_RIGHT
 condition|)
 block|{
 comment|// Remove the entry from the import inspection dialog.
@@ -6503,7 +6503,7 @@ name|answer
 operator|==
 name|DuplicateResolverResult
 operator|.
-name|KEEP_UPPER
+name|KEEP_LEFT
 condition|)
 block|{
 name|entries
@@ -6531,7 +6531,7 @@ name|answer
 operator|==
 name|DuplicateResolverResult
 operator|.
-name|KEEP_LOWER
+name|KEEP_RIGHT
 condition|)
 block|{
 name|entries

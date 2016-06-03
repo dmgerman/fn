@@ -599,7 +599,7 @@ name|answer
 operator|==
 name|DuplicateResolverResult
 operator|.
-name|KEEP_UPPER
+name|KEEP_LEFT
 operator|)
 operator|||
 operator|(
@@ -644,7 +644,7 @@ name|answer
 operator|==
 name|DuplicateResolverResult
 operator|.
-name|KEEP_LOWER
+name|KEEP_RIGHT
 condition|)
 block|{
 name|toRemove

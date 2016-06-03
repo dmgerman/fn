@@ -192,11 +192,11 @@ block|,
 DECL|enumConstant|KEEP_BOTH
 name|KEEP_BOTH
 block|,
-DECL|enumConstant|KEEP_UPPER
-name|KEEP_UPPER
+DECL|enumConstant|KEEP_LEFT
+name|KEEP_LEFT
 block|,
-DECL|enumConstant|KEEP_LOWER
-name|KEEP_LOWER
+DECL|enumConstant|KEEP_RIGHT
+name|KEEP_RIGHT
 block|,
 DECL|enumConstant|AUTOREMOVE_EXACT
 name|AUTOREMOVE_EXACT
@@ -770,7 +770,7 @@ name|buttonPressed
 argument_list|(
 name|DuplicateResolverResult
 operator|.
-name|KEEP_UPPER
+name|KEEP_LEFT
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -784,7 +784,7 @@ name|buttonPressed
 argument_list|(
 name|DuplicateResolverResult
 operator|.
-name|KEEP_LOWER
+name|KEEP_RIGHT
 argument_list|)
 argument_list|)
 expr_stmt|;
