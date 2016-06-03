@@ -186,7 +186,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"{$\\Epsilon$}"
+literal|"{{$\\Epsilon$}}"
 argument_list|,
 name|formatter
 operator|.

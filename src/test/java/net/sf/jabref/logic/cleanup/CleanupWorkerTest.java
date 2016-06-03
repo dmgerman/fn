@@ -2035,7 +2035,7 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-literal|"{$\\Epsilon$}"
+literal|"{{$\\Epsilon$}}"
 argument_list|,
 name|entry
 operator|.

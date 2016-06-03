@@ -473,7 +473,7 @@ name|result
 operator|=
 name|result
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
 name|pattern
 argument_list|,
@@ -552,7 +552,7 @@ name|result
 operator|=
 name|result
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
 literal|"&#"
 operator|+
@@ -669,7 +669,7 @@ name|result
 operator|=
 name|result
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
 name|m
 operator|.
@@ -703,7 +703,7 @@ argument_list|)
 operator|+
 literal|";"
 argument_list|,
-literal|"\\{\\\\"
+literal|"{\\"
 operator|+
 name|HTMLUnicodeConversionMaps
 operator|.
@@ -714,7 +714,7 @@ argument_list|(
 name|num
 argument_list|)
 operator|+
-literal|"\\{\\\\i\\}\\}"
+literal|"{\\i}}"
 argument_list|)
 expr_stmt|;
 block|}
@@ -738,7 +738,7 @@ name|result
 operator|=
 name|result
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
 name|m
 operator|.
@@ -772,7 +772,7 @@ argument_list|)
 operator|+
 literal|";"
 argument_list|,
-literal|"\\{\\\\"
+literal|"{\\"
 operator|+
 name|HTMLUnicodeConversionMaps
 operator|.
@@ -783,7 +783,7 @@ argument_list|(
 name|num
 argument_list|)
 operator|+
-literal|"\\{\\\\j\\}\\}"
+literal|"{\\j}}"
 argument_list|)
 expr_stmt|;
 block|}
@@ -793,7 +793,7 @@ name|result
 operator|=
 name|result
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
 name|m
 operator|.
@@ -827,7 +827,7 @@ argument_list|)
 operator|+
 literal|";"
 argument_list|,
-literal|"\\{\\\\"
+literal|"{\\"
 operator|+
 name|HTMLUnicodeConversionMaps
 operator|.
@@ -838,7 +838,7 @@ argument_list|(
 name|num
 argument_list|)
 operator|+
-literal|"\\{"
+literal|"{"
 operator|+
 name|m
 operator|.
@@ -847,7 +847,7 @@ argument_list|(
 literal|1
 argument_list|)
 operator|+
-literal|"\\}\\}"
+literal|"}}"
 argument_list|)
 expr_stmt|;
 block|}
