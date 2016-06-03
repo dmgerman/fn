@@ -138,10 +138,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|removeWhitespaceForSinglePageNumber ()
+DECL|method|removeWhitespace ()
 specifier|public
 name|void
-name|removeWhitespaceForSinglePageNumber
+name|removeWhitespace
 parameter_list|()
 block|{
 name|expectCorrect
@@ -149,6 +149,13 @@ argument_list|(
 literal|"   1  "
 argument_list|,
 literal|"1"
+argument_list|)
+expr_stmt|;
+name|expectCorrect
+argument_list|(
+literal|"   1 -- 2  "
+argument_list|,
+literal|"1--2"
 argument_list|)
 expr_stmt|;
 block|}

@@ -355,6 +355,10 @@ block|,
 block|{
 literal|"MsBibImporterTest6"
 block|}
+block|,
+block|{
+literal|"MsBibLCID"
+block|}
 block|}
 decl_stmt|;
 return|return

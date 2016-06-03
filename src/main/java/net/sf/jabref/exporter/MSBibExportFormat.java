@@ -343,7 +343,7 @@ name|DOMSource
 argument_list|(
 name|msBibDatabase
 operator|.
-name|getDOMrepresentation
+name|getDOM
 argument_list|()
 argument_list|)
 decl_stmt|;
