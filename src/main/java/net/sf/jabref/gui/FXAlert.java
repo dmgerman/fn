@@ -18,6 +18,40 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|awt
+operator|.
+name|Window
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|awt
+operator|.
+name|event
+operator|.
+name|WindowAdapter
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|awt
+operator|.
+name|event
+operator|.
+name|WindowEvent
+import|;
+end_import
+
+begin_import
+import|import
 name|javafx
 operator|.
 name|application
@@ -62,40 +96,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|awt
-operator|.
-name|Window
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|awt
-operator|.
-name|event
-operator|.
-name|WindowAdapter
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|awt
-operator|.
-name|event
-operator|.
-name|WindowEvent
-import|;
-end_import
-
-begin_import
-import|import
 name|net
 operator|.
 name|sf
@@ -116,7 +116,7 @@ specifier|public
 class|class
 name|FXAlert
 extends|extends
-name|Alert
+name|Stage
 block|{
 comment|/**      * The WindowAdapter will be added to all swing windows once an instance      * of this class is shown and redirects the focus towards this instance.      * It will be removed once the instance of this class gets hidden.      *      */
 DECL|field|fxOverSwingHelper
@@ -205,10 +205,12 @@ expr_stmt|;
 block|}
 block|}
 decl_stmt|;
-DECL|method|FXAlert (AlertType type, String title, Image image)
+DECL|method|FXAlert (Alert.AlertType type, String title, Image image)
 specifier|public
 name|FXAlert
 parameter_list|(
+name|Alert
+operator|.
 name|AlertType
 name|type
 parameter_list|,
@@ -232,10 +234,12 @@ name|image
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|FXAlert (AlertType type, String title)
+DECL|method|FXAlert (Alert.AlertType type, String title)
 specifier|public
 name|FXAlert
 parameter_list|(
+name|Alert
+operator|.
 name|AlertType
 name|type
 parameter_list|,
@@ -254,19 +258,17 @@ name|title
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|FXAlert (AlertType type)
+DECL|method|FXAlert (Alert.AlertType type)
 specifier|public
 name|FXAlert
 parameter_list|(
+name|Alert
+operator|.
 name|AlertType
 name|type
 parameter_list|)
 block|{
-name|super
-argument_list|(
-name|type
-argument_list|)
-expr_stmt|;
+comment|//super(type);
 name|Stage
 name|fxDialogWindow
 init|=
@@ -325,8 +327,7 @@ name|String
 name|pathToStyleSheet
 parameter_list|)
 block|{
-name|getDialogPane
-argument_list|()
+name|this
 operator|.
 name|getScene
 argument_list|()
@@ -373,17 +374,7 @@ name|getDialogWindow
 parameter_list|()
 block|{
 return|return
-operator|(
-name|Stage
-operator|)
-name|getDialogPane
-argument_list|()
-operator|.
-name|getScene
-argument_list|()
-operator|.
-name|getWindow
-argument_list|()
+name|this
 return|;
 block|}
 DECL|method|setSwingWindowsEnabledAndFocusable (boolean enabled)

@@ -233,6 +233,24 @@ specifier|final
 name|BibDatabaseMode
 name|mode
 decl_stmt|;
+DECL|method|TypedBibEntry (BibEntry entry)
+specifier|public
+name|TypedBibEntry
+parameter_list|(
+name|BibEntry
+name|entry
+parameter_list|)
+block|{
+name|this
+argument_list|(
+name|entry
+argument_list|,
+name|BibDatabaseMode
+operator|.
+name|BIBLATEX
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|TypedBibEntry (BibEntry entry, BibDatabaseMode mode)
 specifier|public
 name|TypedBibEntry

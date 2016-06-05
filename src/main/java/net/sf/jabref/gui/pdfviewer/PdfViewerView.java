@@ -1,10 +1,10 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2016 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  * Copyright (C) 2003-2016 JabRef contributors.  * This program is free software; you can redistribute it and/or modify  * it under the terms of the GNU General Public License as published by  * the Free Software Foundation; either version 2 of the License, or  * (at your option) any later version.  *  * This program is distributed in the hope that it will be useful,  * but WITHOUT ANY WARRANTY; without even the implied warranty of  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the  * GNU General Public License for more details.  *  * You should have received a copy of the GNU General Public License along  * with this program; if not, write to the Free Software Foundation, Inc.,  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref.gui.help
+DECL|package|net.sf.jabref.gui.pdfviewer
 package|package
 name|net
 operator|.
@@ -14,7 +14,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|help
+name|pdfviewer
 package|;
 end_package
 
@@ -87,16 +87,16 @@ import|;
 end_import
 
 begin_class
-DECL|class|AboutDialogView
+DECL|class|PdfViewerView
 specifier|public
 class|class
-name|AboutDialogView
+name|PdfViewerView
 extends|extends
 name|FXMLView
 block|{
-DECL|method|AboutDialogView ()
+DECL|method|PdfViewerView ()
 specifier|public
-name|AboutDialogView
+name|PdfViewerView
 parameter_list|()
 block|{
 name|super
@@ -117,7 +117,7 @@ name|show
 parameter_list|()
 block|{
 name|FXAlert
-name|aboutDialog
+name|dialog
 init|=
 operator|new
 name|FXAlert
@@ -130,11 +130,12 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"About JabRef"
+literal|"PDF Preview"
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|aboutDialog
+comment|//dialog.setDialogPane((DialogPane) this.getView());
+name|dialog
 operator|.
 name|setScene
 argument_list|(
@@ -148,8 +149,15 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//aboutDialog.setDialogPane((DialogPane) this.getView());
-name|aboutDialog
+comment|//dialog.getDialogPane().setContent(this.getView());
+name|dialog
+operator|.
+name|setResizable
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|dialog
 operator|.
 name|show
 argument_list|()
