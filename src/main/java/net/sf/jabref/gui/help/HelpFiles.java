@@ -80,7 +80,7 @@ block|,
 DECL|enumConstant|LABEL_PATTERN
 name|LABEL_PATTERN
 argument_list|(
-literal|"labelPatternHelp"
+literal|"LabelPatterns"
 argument_list|)
 block|,
 DECL|enumConstant|OWNER
