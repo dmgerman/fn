@@ -56,13 +56,13 @@ end_import
 
 begin_import
 import|import static
-name|org
-operator|.
 name|junit
 operator|.
-name|Assert
+name|framework
 operator|.
-name|*
+name|TestCase
+operator|.
+name|assertEquals
 import|;
 end_import
 
