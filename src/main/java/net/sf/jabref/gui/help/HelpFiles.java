@@ -19,7 +19,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * This enum globally defines all help pages with the name of the markdown file in the help repository at github  * @see<a href=https://github.com/JabRef/help.jabref.org>help.jabref.org@github</a>  *  *  */
+comment|/**  * This enum globally defines all help pages with the name of the markdown file in the help repository at Github.  *  * @see<a href=https://github.com/JabRef/help.jabref.org>help.jabref.org@github</a>  */
 end_comment
 
 begin_enum
@@ -74,7 +74,7 @@ block|,
 DECL|enumConstant|SPECIAL_FIELDS
 name|SPECIAL_FIELDS
 argument_list|(
-literal|"specialFieldsHelp"
+literal|"SpecialFieldsHelp"
 argument_list|)
 block|,
 DECL|enumConstant|LABEL_PATTERN
@@ -264,7 +264,13 @@ argument_list|(
 literal|""
 argument_list|)
 block|;
-comment|/**      *      * @param pageName The filename of the help page      */
+DECL|field|pageName
+specifier|private
+specifier|final
+name|String
+name|pageName
+decl_stmt|;
+comment|/**      * Sets the URL path part of the help page.      *      * @param pageName the URL path part of the help page      */
 DECL|method|HelpFiles (String pageName)
 name|HelpFiles
 parameter_list|(
@@ -279,13 +285,7 @@ operator|=
 name|pageName
 expr_stmt|;
 block|}
-DECL|field|pageName
-specifier|private
-specifier|final
-name|String
-name|pageName
-decl_stmt|;
-comment|/**      * Get the filename of a help page      * @return The filename of the associated help page      */
+comment|/**      * Returns the URL path part of the help page.      *      * @return the URL path part of the help page      */
 DECL|method|getPageName ()
 specifier|public
 name|String
