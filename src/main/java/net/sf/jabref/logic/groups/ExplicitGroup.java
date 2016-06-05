@@ -874,6 +874,18 @@ name|hashCode
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
+DECL|method|isDynamic ()
+specifier|public
+name|boolean
+name|isDynamic
+parameter_list|()
+block|{
+return|return
+literal|false
+return|;
+block|}
 block|}
 end_class
 
