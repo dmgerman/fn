@@ -130,6 +130,18 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|Globals
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|gui
 operator|.
 name|BasePanel
@@ -419,9 +431,6 @@ specifier|public
 name|DbImpAction
 parameter_list|()
 block|{
-name|super
-argument_list|()
-expr_stmt|;
 name|putValue
 argument_list|(
 name|Action
@@ -845,6 +854,7 @@ operator|.
 name|moreThanOne
 condition|)
 block|{
+comment|// use default DB mode for import
 name|databases
 operator|=
 name|importer
@@ -857,15 +867,11 @@ name|dialogo
 operator|.
 name|listOfDBs
 argument_list|,
-name|frame
+name|Globals
 operator|.
-name|getCurrentBasePanel
-argument_list|()
+name|prefs
 operator|.
-name|getBibDatabaseContext
-argument_list|()
-operator|.
-name|getMode
+name|getDefaultBibDatabaseMode
 argument_list|()
 argument_list|)
 expr_stmt|;

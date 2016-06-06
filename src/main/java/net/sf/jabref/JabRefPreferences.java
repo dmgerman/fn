@@ -738,6 +738,22 @@ name|jabref
 operator|.
 name|model
 operator|.
+name|database
+operator|.
+name|BibDatabaseMode
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
 name|entry
 operator|.
 name|CustomEntryType
@@ -7665,6 +7681,36 @@ literal|2
 index|]
 argument_list|)
 return|;
+block|}
+comment|/**      * Returns the default BibDatabase mode, which can be either BIBTEX or BIBLATEX.      *      * @return the default BibDatabaseMode      */
+DECL|method|getDefaultBibDatabaseMode ()
+specifier|public
+name|BibDatabaseMode
+name|getDefaultBibDatabaseMode
+parameter_list|()
+block|{
+if|if
+condition|(
+name|getBoolean
+argument_list|(
+name|BIBLATEX_DEFAULT_MODE
+argument_list|)
+condition|)
+block|{
+return|return
+name|BibDatabaseMode
+operator|.
+name|BIBLATEX
+return|;
+block|}
+else|else
+block|{
+return|return
+name|BibDatabaseMode
+operator|.
+name|BIBTEX
+return|;
+block|}
 block|}
 comment|/**      * Set the default value for a key. This is useful for plugins that need to add default values for the prefs keys      * they use.      *      * @param key The preferences key.      * @param value The default value.      */
 DECL|method|putDefaultValue (String key, Object value)
