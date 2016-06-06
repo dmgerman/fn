@@ -1111,7 +1111,7 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-name|group
+name|node
 operator|.
 name|numberOfHits
 argument_list|(
