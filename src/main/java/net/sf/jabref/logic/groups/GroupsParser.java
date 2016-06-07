@@ -66,7 +66,6 @@ end_comment
 
 begin_class
 DECL|class|GroupsParser
-specifier|public
 class|class
 name|GroupsParser
 block|{

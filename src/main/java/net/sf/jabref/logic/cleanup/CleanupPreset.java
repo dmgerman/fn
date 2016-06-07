@@ -413,7 +413,7 @@ name|formatterCleanups
 init|=
 name|FieldFormatterCleanups
 operator|.
-name|parseFromString
+name|parse
 argument_list|(
 name|preferences
 operator|.
@@ -709,7 +709,7 @@ name|CLEANUP_FORMATTERS
 argument_list|,
 name|formatterCleanups
 operator|.
-name|convertToString
+name|getAsStringList
 argument_list|()
 argument_list|)
 expr_stmt|;

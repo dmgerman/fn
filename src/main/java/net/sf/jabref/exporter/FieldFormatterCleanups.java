@@ -1172,13 +1172,13 @@ name|toString
 argument_list|()
 return|;
 block|}
-DECL|method|convertToString ()
+DECL|method|getAsStringList ()
 specifier|public
 name|List
 argument_list|<
 name|String
 argument_list|>
-name|convertToString
+name|getAsStringList
 parameter_list|()
 block|{
 name|List
@@ -1236,11 +1236,11 @@ return|return
 name|stringRepresentation
 return|;
 block|}
-DECL|method|parseFromString (List<String> formatterMetaList)
+DECL|method|parse (List<String> formatterMetaList)
 specifier|public
 specifier|static
 name|FieldFormatterCleanups
-name|parseFromString
+name|parse
 parameter_list|(
 name|List
 argument_list|<

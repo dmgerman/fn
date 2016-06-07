@@ -9253,7 +9253,7 @@ operator|.
 name|getFormatterCleanups
 argument_list|()
 operator|.
-name|convertToString
+name|getAsStringList
 argument_list|()
 argument_list|)
 argument_list|)

@@ -174,7 +174,7 @@ argument_list|()
 argument_list|,
 name|metaData
 operator|.
-name|serialize
+name|getAsStringMap
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -258,7 +258,7 @@ name|expectedSerialization
 argument_list|,
 name|metaData
 operator|.
-name|serialize
+name|getAsStringMap
 argument_list|()
 argument_list|)
 expr_stmt|;
