@@ -280,7 +280,7 @@ argument_list|,
 literal|"URL"
 argument_list|)
 expr_stmt|;
-comment|// BibTeX only fields
+comment|// BibTeX/Biblatex only fields
 name|bibtexToMSBib
 operator|.
 name|put
@@ -413,18 +413,16 @@ operator|+
 literal|"Paper"
 argument_list|)
 expr_stmt|;
-comment|// MSBib only fields
 name|bibtexToMSBib
 operator|.
 name|put
 argument_list|(
-name|MSBIB_PREFIX
-operator|+
 literal|"shorttitle"
 argument_list|,
 literal|"ShortTitle"
 argument_list|)
 expr_stmt|;
+comment|// MSBib only fields
 name|bibtexToMSBib
 operator|.
 name|put
