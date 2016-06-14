@@ -2343,6 +2343,10 @@ comment|// configure for current type
 if|if
 condition|(
 name|editedGroup
+operator|!=
+literal|null
+operator|&&
+name|editedGroup
 operator|.
 name|getClass
 argument_list|()
@@ -2430,6 +2434,10 @@ elseif|else
 if|if
 condition|(
 name|editedGroup
+operator|!=
+literal|null
+operator|&&
+name|editedGroup
 operator|.
 name|getClass
 argument_list|()
@@ -2506,6 +2514,10 @@ block|}
 elseif|else
 if|if
 condition|(
+name|editedGroup
+operator|!=
+literal|null
+operator|&&
 name|editedGroup
 operator|.
 name|getClass
