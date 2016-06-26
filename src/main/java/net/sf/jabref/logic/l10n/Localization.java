@@ -164,7 +164,11 @@ name|getMessages
 parameter_list|()
 block|{
 return|return
+operator|new
+name|LocalizationBundle
+argument_list|(
 name|messages
+argument_list|)
 return|;
 block|}
 DECL|method|setLanguage (String language)
@@ -402,7 +406,7 @@ expr_stmt|;
 block|}
 comment|/**      * In the translation, %0, ..., %9 is replaced by the respective params given      *      * @param resBundle         the ResourceBundle to use      * @param idForErrorMessage output when translation is not found      * @param key               the key to lookup in resBundle      * @param params            a list of Strings to replace %0, %1, ...      * @return      */
 DECL|method|translate (ResourceBundle resBundle, String idForErrorMessage, String key, String... params)
-specifier|private
+specifier|protected
 specifier|static
 name|String
 name|translate
