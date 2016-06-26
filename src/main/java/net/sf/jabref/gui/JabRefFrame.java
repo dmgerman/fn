@@ -560,6 +560,16 @@ end_import
 
 begin_import
 import|import
+name|javafx
+operator|.
+name|application
+operator|.
+name|Platform
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -1615,16 +1625,6 @@ operator|.
 name|looks
 operator|.
 name|Options
-import|;
-end_import
-
-begin_import
-import|import
-name|javafx
-operator|.
-name|application
-operator|.
-name|Platform
 import|;
 end_import
 
