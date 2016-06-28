@@ -1346,21 +1346,15 @@ name|String
 name|content
 parameter_list|)
 block|{
-if|if
-condition|(
-name|content
-operator|==
-literal|null
-condition|)
-block|{
-throw|throw
-operator|new
-name|IllegalArgumentException
+name|Objects
+operator|.
+name|requireNonNull
 argument_list|(
+name|content
+argument_list|,
 literal|"Content for resolveForStrings must not be null."
 argument_list|)
-throw|;
-block|}
+expr_stmt|;
 return|return
 name|resolveContent
 argument_list|(
@@ -1392,21 +1386,15 @@ name|boolean
 name|inPlace
 parameter_list|)
 block|{
-if|if
-condition|(
-name|entries
-operator|==
-literal|null
-condition|)
-block|{
-throw|throw
-operator|new
-name|IllegalArgumentException
+name|Objects
+operator|.
+name|requireNonNull
 argument_list|(
-literal|"entries must not be null"
+name|entries
+argument_list|,
+literal|"entries must not be null."
 argument_list|)
-throw|;
-block|}
+expr_stmt|;
 name|List
 argument_list|<
 name|BibEntry
