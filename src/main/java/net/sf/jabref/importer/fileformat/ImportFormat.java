@@ -381,7 +381,7 @@ name|String
 name|getFormatName
 parameter_list|()
 function_decl|;
-comment|/**      * Returns the file extensions that this importer can read.      * The extension should contain the leading dot, so for example ".bib"      *      * @return list of supported file extensions (not null but may be empty)      */
+comment|/**      * Returns the file extensions that this importer can read.      * The extension should contain the leading dot, so for example ".bib"      *      * @return list of supported file extensions (not null but may be empty). The list should never be null. Instead return an empty list.      */
 DECL|method|getExtensions ()
 specifier|public
 specifier|abstract

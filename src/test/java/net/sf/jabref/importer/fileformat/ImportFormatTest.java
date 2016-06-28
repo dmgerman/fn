@@ -251,8 +251,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
 DECL|method|getExtensionsDoesNotReturnNull ()
 specifier|public
 name|void
@@ -378,8 +376,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
 DECL|method|getDescriptionDoesNotReturnNull ()
 specifier|public
 name|void

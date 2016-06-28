@@ -16,6 +16,30 @@ end_package
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|Globals
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|JabRefPreferences
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -128,30 +152,6 @@ end_import
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|Globals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|JabRefPreferences
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|junit
@@ -166,7 +166,7 @@ name|org
 operator|.
 name|junit
 operator|.
-name|BeforeClass
+name|Before
 import|;
 end_import
 
@@ -225,7 +225,12 @@ name|FILEFORMAT_PATH
 init|=
 literal|"src/test/resources/net/sf/jabref/importer/fileformat"
 decl_stmt|;
-comment|/**      * Generates a List of all files in the package "/src/test/resources/net/sf/jabref/importer/fileformat"      * @return A list of Names      * @throws IOException      */
+DECL|field|importer
+specifier|private
+name|BibTeXMLImporter
+name|importer
+decl_stmt|;
+comment|/**      * Generates a List of all files in the package "/src/test/resources/net/sf/jabref/importer/fileformat"      *      * @return A list of Names      * @throws IOException      */
 DECL|method|getTestFiles ()
 specifier|public
 name|List
@@ -284,13 +289,14 @@ name|files
 return|;
 block|}
 annotation|@
-name|BeforeClass
+name|Before
 DECL|method|setUp ()
 specifier|public
-specifier|static
 name|void
 name|setUp
 parameter_list|()
+throws|throws
+name|Exception
 block|{
 name|Globals
 operator|.
@@ -299,6 +305,12 @@ operator|=
 name|JabRefPreferences
 operator|.
 name|getInstance
+argument_list|()
+expr_stmt|;
+name|importer
+operator|=
+operator|new
+name|BibTeXMLImporter
 argument_list|()
 expr_stmt|;
 block|}
@@ -341,13 +353,6 @@ name|void
 name|testGetFormatName
 parameter_list|()
 block|{
-name|BibTeXMLImporter
-name|importer
-init|=
-operator|new
-name|BibTeXMLImporter
-argument_list|()
-decl_stmt|;
 name|Assert
 operator|.
 name|assertEquals
@@ -369,13 +374,6 @@ name|void
 name|testGetCLIId
 parameter_list|()
 block|{
-name|BibTeXMLImporter
-name|importer
-init|=
-operator|new
-name|BibTeXMLImporter
-argument_list|()
-decl_stmt|;
 name|Assert
 operator|.
 name|assertEquals
@@ -391,6 +389,53 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+DECL|method|testsGetExtensions ()
+specifier|public
+name|void
+name|testsGetExtensions
+parameter_list|()
+block|{
+name|Assert
+operator|.
+name|assertEquals
+argument_list|(
+name|Collections
+operator|.
+name|singletonList
+argument_list|(
+literal|".xml"
+argument_list|)
+argument_list|,
+name|importer
+operator|.
+name|getExtensions
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|testGetDescription ()
+specifier|public
+name|void
+name|testGetDescription
+parameter_list|()
+block|{
+name|Assert
+operator|.
+name|assertEquals
+argument_list|(
+literal|"Importer for the BibTeXML format."
+argument_list|,
+name|importer
+operator|.
+name|getDescription
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
 DECL|method|testIsRecognizedFormatReject ()
 specifier|public
 name|void
@@ -399,13 +444,6 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
-name|BibTeXMLImporter
-name|importer
-init|=
-operator|new
-name|BibTeXMLImporter
-argument_list|()
-decl_stmt|;
 name|List
 argument_list|<
 name|Path

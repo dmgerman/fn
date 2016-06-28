@@ -275,6 +275,53 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+DECL|method|testsGetExtensions ()
+specifier|public
+name|void
+name|testsGetExtensions
+parameter_list|()
+block|{
+name|Assert
+operator|.
+name|assertEquals
+argument_list|(
+literal|".txt"
+argument_list|,
+name|importer
+operator|.
+name|getExtensions
+argument_list|()
+operator|.
+name|get
+argument_list|(
+literal|0
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|testGetDescription ()
+specifier|public
+name|void
+name|testGetDescription
+parameter_list|()
+block|{
+name|Assert
+operator|.
+name|assertEquals
+argument_list|(
+literal|"Imports an Ovid file."
+argument_list|,
+name|importer
+operator|.
+name|getDescription
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
 DECL|method|testIsRecognizedFormatAccept ()
 specifier|public
 name|void

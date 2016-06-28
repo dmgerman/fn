@@ -182,31 +182,7 @@ name|junit
 operator|.
 name|Assert
 operator|.
-name|assertEquals
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertFalse
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertTrue
+name|*
 import|;
 end_import
 
@@ -260,6 +236,49 @@ argument_list|,
 name|importer
 operator|.
 name|getFormatName
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|testsGetExtensions ()
+specifier|public
+name|void
+name|testsGetExtensions
+parameter_list|()
+block|{
+name|assertEquals
+argument_list|(
+literal|".pdf"
+argument_list|,
+name|importer
+operator|.
+name|getExtensions
+argument_list|()
+operator|.
+name|get
+argument_list|(
+literal|0
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|testGetDescription ()
+specifier|public
+name|void
+name|testGetDescription
+parameter_list|()
+block|{
+name|assertEquals
+argument_list|(
+literal|"Wraps the XMPUtility function to be used as an ImportFormat."
+argument_list|,
+name|importer
+operator|.
+name|getDescription
 argument_list|()
 argument_list|)
 expr_stmt|;

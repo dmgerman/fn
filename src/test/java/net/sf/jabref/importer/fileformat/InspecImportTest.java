@@ -204,31 +204,7 @@ name|junit
 operator|.
 name|Assert
 operator|.
-name|assertEquals
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertFalse
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertTrue
+name|*
 import|;
 end_import
 
@@ -238,10 +214,10 @@ specifier|public
 class|class
 name|InspecImportTest
 block|{
-DECL|field|inspecImp
+DECL|field|importer
 specifier|private
 name|InspecImporter
-name|inspecImp
+name|importer
 decl_stmt|;
 annotation|@
 name|Before
@@ -264,7 +240,7 @@ argument_list|()
 expr_stmt|;
 name|this
 operator|.
-name|inspecImp
+name|importer
 operator|=
 operator|new
 name|InspecImporter
@@ -328,7 +304,7 @@ argument_list|)
 decl_stmt|;
 name|assertTrue
 argument_list|(
-name|inspecImp
+name|importer
 operator|.
 name|isRecognizedFormat
 argument_list|(
@@ -414,7 +390,7 @@ argument_list|)
 decl_stmt|;
 name|assertFalse
 argument_list|(
-name|inspecImp
+name|importer
 operator|.
 name|isRecognizedFormat
 argument_list|(
@@ -547,7 +523,7 @@ argument_list|(
 literal|"InspecImportTest2.txt"
 argument_list|)
 argument_list|,
-name|inspecImp
+name|importer
 argument_list|)
 expr_stmt|;
 block|}
@@ -617,7 +593,7 @@ name|BibEntry
 argument_list|>
 name|entries
 init|=
-name|inspecImp
+name|importer
 operator|.
 name|importDatabase
 argument_list|(
@@ -710,7 +686,7 @@ name|BibEntry
 argument_list|>
 name|entries
 init|=
-name|inspecImp
+name|importer
 operator|.
 name|importDatabase
 argument_list|(
@@ -764,7 +740,7 @@ name|assertEquals
 argument_list|(
 literal|"INSPEC"
 argument_list|,
-name|inspecImp
+name|importer
 operator|.
 name|getFormatName
 argument_list|()
@@ -783,9 +759,52 @@ name|assertEquals
 argument_list|(
 literal|"inspec"
 argument_list|,
-name|inspecImp
+name|importer
 operator|.
 name|getId
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|testsGetExtensions ()
+specifier|public
+name|void
+name|testsGetExtensions
+parameter_list|()
+block|{
+name|assertEquals
+argument_list|(
+literal|".txt"
+argument_list|,
+name|importer
+operator|.
+name|getExtensions
+argument_list|()
+operator|.
+name|get
+argument_list|(
+literal|0
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|testGetDescription ()
+specifier|public
+name|void
+name|testGetDescription
+parameter_list|()
+block|{
+name|assertEquals
+argument_list|(
+literal|"INSPEC format importer."
+argument_list|,
+name|importer
+operator|.
+name|getDescription
 argument_list|()
 argument_list|)
 expr_stmt|;

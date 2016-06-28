@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|net.sf.jabref.importer.fileformat
+DECL|package|net.sf.jabref.importer.fetcher
 package|package
 name|net
 operator|.
@@ -10,7 +10,7 @@ name|jabref
 operator|.
 name|importer
 operator|.
-name|fileformat
+name|fetcher
 package|;
 end_package
 
@@ -71,22 +71,6 @@ operator|.
 name|importer
 operator|.
 name|OAI2Handler
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|importer
-operator|.
-name|fetcher
-operator|.
-name|OAI2Fetcher
 import|;
 end_import
 
@@ -179,10 +163,10 @@ comment|/**  * Test for OAI2-Handler and Fetcher.  *  * @author Ulrich St&auml;r
 end_comment
 
 begin_class
-DECL|class|OAI2ImportTest
+DECL|class|OAI2HandlerFetcherTest
 specifier|public
 class|class
-name|OAI2ImportTest
+name|OAI2HandlerFetcherTest
 block|{
 DECL|field|handler
 specifier|protected

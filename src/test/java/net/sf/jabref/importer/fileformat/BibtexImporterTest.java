@@ -76,6 +76,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Arrays
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|List
 import|;
 end_import
@@ -725,6 +735,53 @@ argument_list|,
 name|importer
 operator|.
 name|getFormatName
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|testsGetExtensions ()
+specifier|public
+name|void
+name|testsGetExtensions
+parameter_list|()
+block|{
+name|assertEquals
+argument_list|(
+name|Arrays
+operator|.
+name|asList
+argument_list|(
+literal|".bib"
+argument_list|)
+argument_list|,
+name|importer
+operator|.
+name|getExtensions
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|testGetDescription ()
+specifier|public
+name|void
+name|testGetDescription
+parameter_list|()
+block|{
+name|assertEquals
+argument_list|(
+literal|"This importer exists only to enable `--importToOpen someEntry.bib`\n"
+operator|+
+literal|"It is NOT intended to import a bib file. This is done via the option action, which treats the metadata fields.\n"
+operator|+
+literal|"The metadata is not required to be read here, as this class is NOT called at --import."
+argument_list|,
+name|importer
+operator|.
+name|getDescription
 argument_list|()
 argument_list|)
 expr_stmt|;

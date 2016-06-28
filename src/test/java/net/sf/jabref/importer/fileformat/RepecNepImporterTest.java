@@ -725,6 +725,27 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+DECL|method|testGetExtension ()
+specifier|public
+name|void
+name|testGetExtension
+parameter_list|()
+block|{
+name|Assert
+operator|.
+name|assertEquals
+argument_list|(
+literal|".txt"
+argument_list|,
+name|testImporter
+operator|.
+name|getExtensions
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
 DECL|method|testGetDescription ()
 specifier|public
 specifier|final
@@ -736,15 +757,9 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-literal|"Imports a New Economics Papers-Message (see http://nep.repec.org)\n"
+literal|"Imports a New Economics Papers-Message \n"
 operator|+
-literal|"from the REPEC-NEP Service (see http://www.repec.org).\n"
-operator|+
-literal|"To import papers either save a NEP message as a text file and then import or\n"
-operator|+
-literal|"copy&paste the papers you want to import and make sure, one of the first lines\n"
-operator|+
-literal|"contains the line \"nep.repec.org\"."
+literal|"from the REPEC-NEP Service."
 argument_list|,
 name|testImporter
 operator|.
