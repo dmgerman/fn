@@ -1245,7 +1245,7 @@ return|;
 block|}
 comment|/**      * Look for the given non-regexp string in another string, but check whether a      * match concerns a complete word, not part of a word.      *      * @param word The word to look for.      * @param text The string to look in.      * @return true if the word was found, false otherwise.      */
 DECL|method|containsWord (String word, String text)
-specifier|private
+specifier|public
 specifier|static
 name|boolean
 name|containsWord

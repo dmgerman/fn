@@ -234,7 +234,7 @@ name|logic
 operator|.
 name|journals
 operator|.
-name|JournalAbbreviationRepository
+name|JournalAbbreviationLoader
 import|;
 end_import
 
@@ -303,6 +303,16 @@ operator|.
 name|junit
 operator|.
 name|Before
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Ignore
 import|;
 end_import
 
@@ -437,7 +447,7 @@ name|DEFAULT_AUTHORYEAR_STYLE_PATH
 argument_list|,
 name|mock
 argument_list|(
-name|JournalAbbreviationRepository
+name|JournalAbbreviationLoader
 operator|.
 name|class
 argument_list|)
@@ -555,7 +565,7 @@ name|defFile
 argument_list|,
 name|mock
 argument_list|(
-name|JournalAbbreviationRepository
+name|JournalAbbreviationLoader
 operator|.
 name|class
 argument_list|)
@@ -655,7 +665,7 @@ name|DEFAULT_NUMERICAL_STYLE_PATH
 argument_list|,
 name|mock
 argument_list|(
-name|JournalAbbreviationRepository
+name|JournalAbbreviationLoader
 operator|.
 name|class
 argument_list|)
@@ -740,7 +750,7 @@ name|DEFAULT_NUMERICAL_STYLE_PATH
 argument_list|,
 name|mock
 argument_list|(
-name|JournalAbbreviationRepository
+name|JournalAbbreviationLoader
 operator|.
 name|class
 argument_list|)
@@ -1002,7 +1012,7 @@ name|DEFAULT_NUMERICAL_STYLE_PATH
 argument_list|,
 name|mock
 argument_list|(
-name|JournalAbbreviationRepository
+name|JournalAbbreviationLoader
 operator|.
 name|class
 argument_list|)
@@ -1167,7 +1177,7 @@ name|DEFAULT_NUMERICAL_STYLE_PATH
 argument_list|,
 name|mock
 argument_list|(
-name|JournalAbbreviationRepository
+name|JournalAbbreviationLoader
 operator|.
 name|class
 argument_list|)
@@ -1302,7 +1312,7 @@ name|DEFAULT_NUMERICAL_STYLE_PATH
 argument_list|,
 name|mock
 argument_list|(
-name|JournalAbbreviationRepository
+name|JournalAbbreviationLoader
 operator|.
 name|class
 argument_list|)
@@ -1497,7 +1507,7 @@ name|DEFAULT_NUMERICAL_STYLE_PATH
 argument_list|,
 name|mock
 argument_list|(
-name|JournalAbbreviationRepository
+name|JournalAbbreviationLoader
 operator|.
 name|class
 argument_list|)
@@ -1609,7 +1619,7 @@ name|DEFAULT_NUMERICAL_STYLE_PATH
 argument_list|,
 name|mock
 argument_list|(
-name|JournalAbbreviationRepository
+name|JournalAbbreviationLoader
 operator|.
 name|class
 argument_list|)
@@ -1726,7 +1736,7 @@ name|DEFAULT_NUMERICAL_STYLE_PATH
 argument_list|,
 name|mock
 argument_list|(
-name|JournalAbbreviationRepository
+name|JournalAbbreviationLoader
 operator|.
 name|class
 argument_list|)
@@ -1843,7 +1853,7 @@ name|DEFAULT_NUMERICAL_STYLE_PATH
 argument_list|,
 name|mock
 argument_list|(
-name|JournalAbbreviationRepository
+name|JournalAbbreviationLoader
 operator|.
 name|class
 argument_list|)
@@ -1987,7 +1997,7 @@ name|DEFAULT_NUMERICAL_STYLE_PATH
 argument_list|,
 name|mock
 argument_list|(
-name|JournalAbbreviationRepository
+name|JournalAbbreviationLoader
 operator|.
 name|class
 argument_list|)
@@ -2131,7 +2141,7 @@ name|DEFAULT_NUMERICAL_STYLE_PATH
 argument_list|,
 name|mock
 argument_list|(
-name|JournalAbbreviationRepository
+name|JournalAbbreviationLoader
 operator|.
 name|class
 argument_list|)
@@ -2257,7 +2267,7 @@ name|DEFAULT_NUMERICAL_STYLE_PATH
 argument_list|,
 name|mock
 argument_list|(
-name|JournalAbbreviationRepository
+name|JournalAbbreviationLoader
 operator|.
 name|class
 argument_list|)
@@ -2383,7 +2393,7 @@ name|DEFAULT_NUMERICAL_STYLE_PATH
 argument_list|,
 name|mock
 argument_list|(
-name|JournalAbbreviationRepository
+name|JournalAbbreviationLoader
 operator|.
 name|class
 argument_list|)
@@ -2500,7 +2510,7 @@ name|DEFAULT_NUMERICAL_STYLE_PATH
 argument_list|,
 name|mock
 argument_list|(
-name|JournalAbbreviationRepository
+name|JournalAbbreviationLoader
 operator|.
 name|class
 argument_list|)
@@ -2774,7 +2784,7 @@ name|DEFAULT_NUMERICAL_STYLE_PATH
 argument_list|,
 name|mock
 argument_list|(
-name|JournalAbbreviationRepository
+name|JournalAbbreviationLoader
 operator|.
 name|class
 argument_list|)
@@ -3048,7 +3058,7 @@ name|DEFAULT_NUMERICAL_STYLE_PATH
 argument_list|,
 name|mock
 argument_list|(
-name|JournalAbbreviationRepository
+name|JournalAbbreviationLoader
 operator|.
 name|class
 argument_list|)
@@ -3311,7 +3321,7 @@ name|DEFAULT_NUMERICAL_STYLE_PATH
 argument_list|,
 name|mock
 argument_list|(
-name|JournalAbbreviationRepository
+name|JournalAbbreviationLoader
 operator|.
 name|class
 argument_list|)
@@ -3575,7 +3585,7 @@ name|DEFAULT_NUMERICAL_STYLE_PATH
 argument_list|,
 name|mock
 argument_list|(
-name|JournalAbbreviationRepository
+name|JournalAbbreviationLoader
 operator|.
 name|class
 argument_list|)
@@ -3593,7 +3603,7 @@ name|DEFAULT_NUMERICAL_STYLE_PATH
 argument_list|,
 name|mock
 argument_list|(
-name|JournalAbbreviationRepository
+name|JournalAbbreviationLoader
 operator|.
 name|class
 argument_list|)
@@ -3630,7 +3640,7 @@ name|DEFAULT_NUMERICAL_STYLE_PATH
 argument_list|,
 name|mock
 argument_list|(
-name|JournalAbbreviationRepository
+name|JournalAbbreviationLoader
 operator|.
 name|class
 argument_list|)
@@ -3648,7 +3658,7 @@ name|DEFAULT_AUTHORYEAR_STYLE_PATH
 argument_list|,
 name|mock
 argument_list|(
-name|JournalAbbreviationRepository
+name|JournalAbbreviationLoader
 operator|.
 name|class
 argument_list|)
@@ -3684,7 +3694,7 @@ name|DEFAULT_NUMERICAL_STYLE_PATH
 argument_list|,
 name|mock
 argument_list|(
-name|JournalAbbreviationRepository
+name|JournalAbbreviationLoader
 operator|.
 name|class
 argument_list|)
@@ -3702,7 +3712,7 @@ name|DEFAULT_NUMERICAL_STYLE_PATH
 argument_list|,
 name|mock
 argument_list|(
-name|JournalAbbreviationRepository
+name|JournalAbbreviationLoader
 operator|.
 name|class
 argument_list|)
@@ -3743,7 +3753,7 @@ name|DEFAULT_NUMERICAL_STYLE_PATH
 argument_list|,
 name|mock
 argument_list|(
-name|JournalAbbreviationRepository
+name|JournalAbbreviationLoader
 operator|.
 name|class
 argument_list|)
@@ -3761,7 +3771,7 @@ name|DEFAULT_AUTHORYEAR_STYLE_PATH
 argument_list|,
 name|mock
 argument_list|(
-name|JournalAbbreviationRepository
+name|JournalAbbreviationLoader
 operator|.
 name|class
 argument_list|)
@@ -3792,6 +3802,10 @@ literal|0
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+annotation|@
+name|Ignore
 DECL|method|testEmptyStringPropertyAndOxfordComma ()
 specifier|public
 name|void
@@ -3835,7 +3849,7 @@ name|fileName
 argument_list|,
 name|mock
 argument_list|(
-name|JournalAbbreviationRepository
+name|JournalAbbreviationLoader
 operator|.
 name|class
 argument_list|)

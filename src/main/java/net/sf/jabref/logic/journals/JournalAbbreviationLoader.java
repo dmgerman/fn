@@ -187,20 +187,6 @@ specifier|private
 name|JournalAbbreviationRepository
 name|journalAbbrev
 decl_stmt|;
-DECL|method|JournalAbbreviationLoader (JabRefPreferences preferences)
-specifier|public
-name|JournalAbbreviationLoader
-parameter_list|(
-name|JabRefPreferences
-name|preferences
-parameter_list|)
-block|{
-name|update
-argument_list|(
-name|preferences
-argument_list|)
-expr_stmt|;
-block|}
 DECL|method|update (JabRefPreferences jabRefPreferences)
 specifier|public
 name|void
@@ -477,6 +463,21 @@ name|JournalAbbreviationRepository
 name|getRepository
 parameter_list|()
 block|{
+if|if
+condition|(
+name|journalAbbrev
+operator|==
+literal|null
+condition|)
+block|{
+name|update
+argument_list|(
+name|Globals
+operator|.
+name|prefs
+argument_list|)
+expr_stmt|;
+block|}
 return|return
 name|journalAbbrev
 return|;

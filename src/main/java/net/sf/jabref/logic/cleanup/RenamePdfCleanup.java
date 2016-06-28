@@ -130,7 +130,7 @@ name|logic
 operator|.
 name|journals
 operator|.
-name|JournalAbbreviationRepository
+name|JournalAbbreviationLoader
 import|;
 end_import
 
@@ -204,18 +204,18 @@ specifier|final
 name|boolean
 name|onlyRelativePaths
 decl_stmt|;
-DECL|field|repository
+DECL|field|repositoryLoader
 specifier|private
 specifier|final
-name|JournalAbbreviationRepository
-name|repository
+name|JournalAbbreviationLoader
+name|repositoryLoader
 decl_stmt|;
 DECL|field|unsuccessfulRenames
 specifier|private
 name|int
 name|unsuccessfulRenames
 decl_stmt|;
-DECL|method|RenamePdfCleanup (boolean onlyRelativePaths, BibDatabaseContext databaseContext, JournalAbbreviationRepository repository)
+DECL|method|RenamePdfCleanup (boolean onlyRelativePaths, BibDatabaseContext databaseContext, JournalAbbreviationLoader repositoryLoader)
 specifier|public
 name|RenamePdfCleanup
 parameter_list|(
@@ -225,8 +225,8 @@ parameter_list|,
 name|BibDatabaseContext
 name|databaseContext
 parameter_list|,
-name|JournalAbbreviationRepository
-name|repository
+name|JournalAbbreviationLoader
+name|repositoryLoader
 parameter_list|)
 block|{
 name|this
@@ -248,13 +248,13 @@ name|onlyRelativePaths
 expr_stmt|;
 name|this
 operator|.
-name|repository
+name|repositoryLoader
 operator|=
 name|Objects
 operator|.
 name|requireNonNull
 argument_list|(
-name|repository
+name|repositoryLoader
 argument_list|)
 expr_stmt|;
 block|}
@@ -368,7 +368,7 @@ argument_list|()
 argument_list|,
 name|entry
 argument_list|,
-name|repository
+name|repositoryLoader
 argument_list|)
 argument_list|)
 decl_stmt|;

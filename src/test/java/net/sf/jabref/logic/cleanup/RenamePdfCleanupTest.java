@@ -116,7 +116,7 @@ name|logic
 operator|.
 name|journals
 operator|.
-name|JournalAbbreviationRepository
+name|JournalAbbreviationLoader
 import|;
 end_import
 
@@ -439,7 +439,7 @@ name|context
 argument_list|,
 name|mock
 argument_list|(
-name|JournalAbbreviationRepository
+name|JournalAbbreviationLoader
 operator|.
 name|class
 argument_list|)
@@ -591,7 +591,7 @@ name|context
 argument_list|,
 name|mock
 argument_list|(
-name|JournalAbbreviationRepository
+name|JournalAbbreviationLoader
 operator|.
 name|class
 argument_list|)
@@ -743,7 +743,7 @@ name|context
 argument_list|,
 name|mock
 argument_list|(
-name|JournalAbbreviationRepository
+name|JournalAbbreviationLoader
 operator|.
 name|class
 argument_list|)
@@ -871,7 +871,7 @@ name|context
 argument_list|,
 name|mock
 argument_list|(
-name|JournalAbbreviationRepository
+name|JournalAbbreviationLoader
 operator|.
 name|class
 argument_list|)

@@ -96,7 +96,7 @@ name|logic
 operator|.
 name|journals
 operator|.
-name|JournalAbbreviationRepository
+name|JournalAbbreviationLoader
 import|;
 end_import
 
@@ -209,7 +209,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|method|Layout (List<StringInt> parsedEntries, JournalAbbreviationRepository repository)
+DECL|method|Layout (List<StringInt> parsedEntries, JournalAbbreviationLoader repositoryLoader)
 specifier|public
 name|Layout
 parameter_list|(
@@ -219,8 +219,8 @@ name|StringInt
 argument_list|>
 name|parsedEntries
 parameter_list|,
-name|JournalAbbreviationRepository
-name|repository
+name|JournalAbbreviationLoader
+name|repositoryLoader
 parameter_list|)
 block|{
 name|List
@@ -378,7 +378,7 @@ name|LayoutHelper
 operator|.
 name|IS_GROUP_START
 argument_list|,
-name|repository
+name|repositoryLoader
 argument_list|)
 expr_stmt|;
 name|tmpEntries
@@ -442,7 +442,7 @@ name|LayoutEntry
 argument_list|(
 name|parsedEntry
 argument_list|,
-name|repository
+name|repositoryLoader
 argument_list|)
 argument_list|)
 expr_stmt|;

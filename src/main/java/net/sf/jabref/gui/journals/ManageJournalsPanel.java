@@ -462,20 +462,6 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|BasePanel
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
 name|FileDialogs
 import|;
 end_import
@@ -3010,35 +2996,22 @@ expr_stmt|;
 end_expr_stmt
 
 begin_comment
-comment|// Update the autocompleter for the "journal" field in all base panels,
+comment|// Update journal abbreviation loader
 end_comment
 
-begin_comment
-comment|// so added journal names are available:
-end_comment
-
-begin_for
-for|for
-control|(
-name|BasePanel
-name|basePanel
-range|:
-name|frame
+begin_expr_stmt
+name|Globals
 operator|.
-name|getBasePanelList
-argument_list|()
-control|)
-block|{
-name|basePanel
+name|journalAbbreviationLoader
 operator|.
-name|getAutoCompleters
-argument_list|()
+name|update
+argument_list|(
+name|Globals
 operator|.
-name|addJournalListToAutoCompleter
-argument_list|()
+name|prefs
+argument_list|)
 expr_stmt|;
-block|}
-end_for
+end_expr_stmt
 
 begin_expr_stmt
 unit|}       class

@@ -90,7 +90,7 @@ name|logic
 operator|.
 name|journals
 operator|.
-name|JournalAbbreviationRepository
+name|JournalAbbreviationLoader
 import|;
 end_import
 
@@ -220,26 +220,26 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
-DECL|field|repository
+DECL|field|repositoryLoader
 specifier|private
 specifier|final
-name|JournalAbbreviationRepository
-name|repository
+name|JournalAbbreviationLoader
+name|repositoryLoader
 decl_stmt|;
 DECL|field|endOfFile
 specifier|private
 name|boolean
 name|endOfFile
 decl_stmt|;
-DECL|method|LayoutHelper (Reader in, JournalAbbreviationRepository repository)
+DECL|method|LayoutHelper (Reader in, JournalAbbreviationLoader repositoryLoader)
 specifier|public
 name|LayoutHelper
 parameter_list|(
 name|Reader
 name|in
 parameter_list|,
-name|JournalAbbreviationRepository
-name|repository
+name|JournalAbbreviationLoader
+name|repositoryLoader
 parameter_list|)
 block|{
 name|this
@@ -259,13 +259,13 @@ argument_list|)
 expr_stmt|;
 name|this
 operator|.
-name|repository
+name|repositoryLoader
 operator|=
 name|Objects
 operator|.
 name|requireNonNull
 argument_list|(
-name|repository
+name|repositoryLoader
 argument_list|)
 expr_stmt|;
 block|}
@@ -363,7 +363,7 @@ name|Layout
 argument_list|(
 name|parsedEntries
 argument_list|,
-name|repository
+name|repositoryLoader
 argument_list|)
 return|;
 block|}

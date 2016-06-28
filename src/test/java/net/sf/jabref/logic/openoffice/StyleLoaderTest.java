@@ -132,22 +132,6 @@ end_import
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
-name|journals
-operator|.
-name|JournalAbbreviationRepository
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|junit
@@ -375,7 +359,7 @@ literal|null
 argument_list|,
 name|mock
 argument_list|(
-name|JournalAbbreviationRepository
+name|JournalAbbreviationLoader
 operator|.
 name|class
 argument_list|)
@@ -462,7 +446,7 @@ argument_list|)
 argument_list|,
 name|mock
 argument_list|(
-name|JournalAbbreviationRepository
+name|JournalAbbreviationLoader
 operator|.
 name|class
 argument_list|)
@@ -501,7 +485,7 @@ name|preferences
 argument_list|,
 name|mock
 argument_list|(
-name|JournalAbbreviationRepository
+name|JournalAbbreviationLoader
 operator|.
 name|class
 argument_list|)
@@ -557,7 +541,7 @@ name|preferences
 argument_list|,
 name|mock
 argument_list|(
-name|JournalAbbreviationRepository
+name|JournalAbbreviationLoader
 operator|.
 name|class
 argument_list|)
@@ -664,7 +648,7 @@ name|preferences
 argument_list|,
 name|mock
 argument_list|(
-name|JournalAbbreviationRepository
+name|JournalAbbreviationLoader
 operator|.
 name|class
 argument_list|)
@@ -768,7 +752,7 @@ name|preferences
 argument_list|,
 name|mock
 argument_list|(
-name|JournalAbbreviationRepository
+name|JournalAbbreviationLoader
 operator|.
 name|class
 argument_list|)
@@ -832,7 +816,7 @@ argument_list|)
 argument_list|,
 name|mock
 argument_list|(
-name|JournalAbbreviationRepository
+name|JournalAbbreviationLoader
 operator|.
 name|class
 argument_list|)
@@ -924,7 +908,7 @@ argument_list|)
 argument_list|,
 name|mock
 argument_list|(
-name|JournalAbbreviationRepository
+name|JournalAbbreviationLoader
 operator|.
 name|class
 argument_list|)
@@ -1082,7 +1066,7 @@ name|preferences
 argument_list|,
 name|mock
 argument_list|(
-name|JournalAbbreviationRepository
+name|JournalAbbreviationLoader
 operator|.
 name|class
 argument_list|)
@@ -1201,7 +1185,7 @@ argument_list|)
 argument_list|,
 name|mock
 argument_list|(
-name|JournalAbbreviationRepository
+name|JournalAbbreviationLoader
 operator|.
 name|class
 argument_list|)
@@ -1313,7 +1297,7 @@ argument_list|)
 argument_list|,
 name|mock
 argument_list|(
-name|JournalAbbreviationRepository
+name|JournalAbbreviationLoader
 operator|.
 name|class
 argument_list|)
@@ -1371,7 +1355,7 @@ argument_list|)
 argument_list|,
 name|mock
 argument_list|(
-name|JournalAbbreviationRepository
+name|JournalAbbreviationLoader
 operator|.
 name|class
 argument_list|)
@@ -1457,7 +1441,7 @@ argument_list|)
 argument_list|,
 name|mock
 argument_list|(
-name|JournalAbbreviationRepository
+name|JournalAbbreviationLoader
 operator|.
 name|class
 argument_list|)
@@ -1541,7 +1525,7 @@ argument_list|)
 argument_list|,
 name|mock
 argument_list|(
-name|JournalAbbreviationRepository
+name|JournalAbbreviationLoader
 operator|.
 name|class
 argument_list|)
@@ -1622,7 +1606,7 @@ name|preferences
 argument_list|,
 name|mock
 argument_list|(
-name|JournalAbbreviationRepository
+name|JournalAbbreviationLoader
 operator|.
 name|class
 argument_list|)

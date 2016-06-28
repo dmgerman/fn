@@ -248,7 +248,7 @@ name|logic
 operator|.
 name|journals
 operator|.
-name|JournalAbbreviationRepository
+name|JournalAbbreviationLoader
 import|;
 end_import
 
@@ -967,11 +967,11 @@ name|AUTHOR_SEPARATOR
 init|=
 literal|"AuthorSeparator"
 decl_stmt|;
-DECL|field|repository
+DECL|field|repositoryLoader
 specifier|private
 specifier|final
-name|JournalAbbreviationRepository
-name|repository
+name|JournalAbbreviationLoader
+name|repositoryLoader
 decl_stmt|;
 DECL|field|QUOTED
 specifier|private
@@ -1003,15 +1003,15 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|method|OOBibStyle (File styleFile, JournalAbbreviationRepository repository, Charset encoding)
+DECL|method|OOBibStyle (File styleFile, JournalAbbreviationLoader repositoryLoader, Charset encoding)
 specifier|public
 name|OOBibStyle
 parameter_list|(
 name|File
 name|styleFile
 parameter_list|,
-name|JournalAbbreviationRepository
-name|repository
+name|JournalAbbreviationLoader
+name|repositoryLoader
 parameter_list|,
 name|Charset
 name|encoding
@@ -1021,13 +1021,13 @@ name|IOException
 block|{
 name|this
 operator|.
-name|repository
+name|repositoryLoader
 operator|=
 name|Objects
 operator|.
 name|requireNonNull
 argument_list|(
-name|repository
+name|repositoryLoader
 argument_list|)
 expr_stmt|;
 name|this
@@ -1070,28 +1070,28 @@ name|getPath
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|OOBibStyle (String resourcePath, JournalAbbreviationRepository repository)
+DECL|method|OOBibStyle (String resourcePath, JournalAbbreviationLoader repositoryLoader)
 specifier|public
 name|OOBibStyle
 parameter_list|(
 name|String
 name|resourcePath
 parameter_list|,
-name|JournalAbbreviationRepository
-name|repository
+name|JournalAbbreviationLoader
+name|repositoryLoader
 parameter_list|)
 throws|throws
 name|IOException
 block|{
 name|this
 operator|.
-name|repository
+name|repositoryLoader
 operator|=
 name|Objects
 operator|.
 name|requireNonNull
 argument_list|(
-name|repository
+name|repositoryLoader
 argument_list|)
 expr_stmt|;
 name|this
@@ -2062,7 +2062,7 @@ argument_list|)
 argument_list|,
 name|this
 operator|.
-name|repository
+name|repositoryLoader
 argument_list|)
 operator|.
 name|getLayoutFromText

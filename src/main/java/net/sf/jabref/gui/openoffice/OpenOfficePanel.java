@@ -1124,9 +1124,6 @@ argument_list|,
 name|Globals
 operator|.
 name|journalAbbreviationLoader
-operator|.
-name|getRepository
-argument_list|()
 argument_list|,
 name|Globals
 operator|.

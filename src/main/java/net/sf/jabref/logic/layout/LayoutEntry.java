@@ -184,7 +184,7 @@ name|logic
 operator|.
 name|journals
 operator|.
-name|JournalAbbreviationRepository
+name|JournalAbbreviationLoader
 import|;
 end_import
 
@@ -1446,28 +1446,28 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|field|repository
+DECL|field|repositoryLoader
 specifier|private
 specifier|final
-name|JournalAbbreviationRepository
-name|repository
+name|JournalAbbreviationLoader
+name|repositoryLoader
 decl_stmt|;
-DECL|method|LayoutEntry (StringInt si, JournalAbbreviationRepository repository)
+DECL|method|LayoutEntry (StringInt si, JournalAbbreviationLoader repositoryLoader)
 specifier|public
 name|LayoutEntry
 parameter_list|(
 name|StringInt
 name|si
 parameter_list|,
-name|JournalAbbreviationRepository
-name|repository
+name|JournalAbbreviationLoader
+name|repositoryLoader
 parameter_list|)
 block|{
 name|this
 operator|.
-name|repository
+name|repositoryLoader
 operator|=
-name|repository
+name|repositoryLoader
 expr_stmt|;
 name|type
 operator|=
@@ -1534,7 +1534,7 @@ default|default:
 break|break;
 block|}
 block|}
-DECL|method|LayoutEntry (List<StringInt> parsedEntries, int layoutType, JournalAbbreviationRepository repository)
+DECL|method|LayoutEntry (List<StringInt> parsedEntries, int layoutType, JournalAbbreviationLoader repositoryLoader)
 specifier|public
 name|LayoutEntry
 parameter_list|(
@@ -1547,15 +1547,15 @@ parameter_list|,
 name|int
 name|layoutType
 parameter_list|,
-name|JournalAbbreviationRepository
-name|repository
+name|JournalAbbreviationLoader
+name|repositoryLoader
 parameter_list|)
 block|{
 name|this
 operator|.
-name|repository
+name|repositoryLoader
 operator|=
-name|repository
+name|repositoryLoader
 expr_stmt|;
 name|List
 argument_list|<
@@ -1741,7 +1741,7 @@ name|blockEntries
 argument_list|,
 name|groupType
 argument_list|,
-name|repository
+name|repositoryLoader
 argument_list|)
 decl_stmt|;
 name|tmpEntries
@@ -1802,7 +1802,7 @@ name|LayoutEntry
 argument_list|(
 name|parsedEntry
 argument_list|,
-name|repository
+name|repositoryLoader
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -3263,7 +3263,7 @@ return|return
 operator|new
 name|JournalAbbreviator
 argument_list|(
-name|repository
+name|repositoryLoader
 argument_list|)
 return|;
 case|case

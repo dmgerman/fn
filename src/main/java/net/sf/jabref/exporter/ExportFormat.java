@@ -802,9 +802,6 @@ argument_list|,
 name|Globals
 operator|.
 name|journalAbbreviationLoader
-operator|.
-name|getRepository
-argument_list|()
 argument_list|)
 decl_stmt|;
 name|beginLayout
@@ -917,9 +914,6 @@ argument_list|,
 name|Globals
 operator|.
 name|journalAbbreviationLoader
-operator|.
-name|getRepository
-argument_list|()
 argument_list|)
 expr_stmt|;
 name|defLayout
@@ -1060,9 +1054,6 @@ argument_list|,
 name|Globals
 operator|.
 name|journalAbbreviationLoader
-operator|.
-name|getRepository
-argument_list|()
 argument_list|)
 expr_stmt|;
 name|layout
@@ -1164,9 +1155,6 @@ argument_list|,
 name|Globals
 operator|.
 name|journalAbbreviationLoader
-operator|.
-name|getRepository
-argument_list|()
 argument_list|)
 expr_stmt|;
 name|endLayout

@@ -96,7 +96,7 @@ name|logic
 operator|.
 name|journals
 operator|.
-name|JournalAbbreviationRepository
+name|JournalAbbreviationLoader
 import|;
 end_import
 
@@ -128,26 +128,26 @@ specifier|final
 name|BibDatabaseContext
 name|databaseContext
 decl_stmt|;
-DECL|field|repository
+DECL|field|repositoryLoader
 specifier|private
 specifier|final
-name|JournalAbbreviationRepository
-name|repository
+name|JournalAbbreviationLoader
+name|repositoryLoader
 decl_stmt|;
 DECL|field|unsuccessfulRenames
 specifier|private
 name|int
 name|unsuccessfulRenames
 decl_stmt|;
-DECL|method|CleanupWorker (BibDatabaseContext databaseContext, JournalAbbreviationRepository repository)
+DECL|method|CleanupWorker (BibDatabaseContext databaseContext, JournalAbbreviationLoader repositoryLoader)
 specifier|public
 name|CleanupWorker
 parameter_list|(
 name|BibDatabaseContext
 name|databaseContext
 parameter_list|,
-name|JournalAbbreviationRepository
-name|repository
+name|JournalAbbreviationLoader
+name|repositoryLoader
 parameter_list|)
 block|{
 name|this
@@ -158,9 +158,9 @@ name|databaseContext
 expr_stmt|;
 name|this
 operator|.
-name|repository
+name|repositoryLoader
 operator|=
-name|repository
+name|repositoryLoader
 expr_stmt|;
 block|}
 DECL|method|getUnsuccessfulRenames ()
@@ -396,7 +396,7 @@ argument_list|()
 argument_list|,
 name|databaseContext
 argument_list|,
-name|repository
+name|repositoryLoader
 argument_list|)
 decl_stmt|;
 name|jobs

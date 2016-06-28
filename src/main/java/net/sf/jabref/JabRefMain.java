@@ -424,11 +424,7 @@ name|journalAbbreviationLoader
 operator|=
 operator|new
 name|JournalAbbreviationLoader
-argument_list|(
-name|Globals
-operator|.
-name|prefs
-argument_list|)
+argument_list|()
 expr_stmt|;
 comment|// Check for running JabRef
 name|RemotePreferences

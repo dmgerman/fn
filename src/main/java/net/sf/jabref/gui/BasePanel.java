@@ -7057,9 +7057,6 @@ argument_list|,
 name|Globals
 operator|.
 name|journalAbbreviationLoader
-operator|.
-name|getRepository
-argument_list|()
 argument_list|)
 operator|.
 name|getLayoutFromText
@@ -8821,21 +8818,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-annotation|@
-name|Subscribe
-DECL|method|listen (EntryChangedEvent entryChangedEvent)
-specifier|public
-name|void
-name|listen
-parameter_list|(
-name|EntryChangedEvent
-name|entryChangedEvent
-parameter_list|)
-block|{
-name|scheduleUpdate
-argument_list|()
-expr_stmt|;
-block|}
 block|}
 end_class
 
@@ -10142,11 +10124,7 @@ name|autoCompleters
 operator|=
 operator|new
 name|ContentAutoCompleters
-argument_list|(
-name|Globals
-operator|.
-name|journalAbbreviationLoader
-argument_list|)
+argument_list|()
 expr_stmt|;
 block|}
 comment|// restore floating search result
@@ -10218,6 +10196,10 @@ operator|new
 name|AutoCompleterFactory
 argument_list|(
 name|autoCompletePreferences
+argument_list|,
+name|Globals
+operator|.
+name|journalAbbreviationLoader
 argument_list|)
 decl_stmt|;
 name|searchAutoCompleter

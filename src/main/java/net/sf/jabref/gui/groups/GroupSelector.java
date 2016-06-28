@@ -4900,11 +4900,6 @@ name|GroupTreeNodeViewModel
 name|node
 parameter_list|)
 block|{
-name|groupsTreeModel
-operator|.
-name|reload
-argument_list|()
-expr_stmt|;
 name|groupsTree
 operator|.
 name|clearSelection

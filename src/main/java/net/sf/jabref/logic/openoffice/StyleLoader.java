@@ -112,7 +112,7 @@ name|logic
 operator|.
 name|journals
 operator|.
-name|JournalAbbreviationRepository
+name|JournalAbbreviationLoader
 import|;
 end_import
 
@@ -203,11 +203,11 @@ argument_list|,
 name|DEFAULT_NUMERICAL_STYLE_PATH
 argument_list|)
 decl_stmt|;
-DECL|field|repository
+DECL|field|journalAbbreviationLoader
 specifier|private
 specifier|final
-name|JournalAbbreviationRepository
-name|repository
+name|JournalAbbreviationLoader
+name|journalAbbreviationLoader
 decl_stmt|;
 DECL|field|preferences
 specifier|private
@@ -251,15 +251,15 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
-DECL|method|StyleLoader (OpenOfficePreferences preferences, JournalAbbreviationRepository repository, Charset encoding)
+DECL|method|StyleLoader (OpenOfficePreferences preferences, JournalAbbreviationLoader journalAbbreviationLoader, Charset encoding)
 specifier|public
 name|StyleLoader
 parameter_list|(
 name|OpenOfficePreferences
 name|preferences
 parameter_list|,
-name|JournalAbbreviationRepository
-name|repository
+name|JournalAbbreviationLoader
+name|journalAbbreviationLoader
 parameter_list|,
 name|Charset
 name|encoding
@@ -267,13 +267,13 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|repository
+name|journalAbbreviationLoader
 operator|=
 name|Objects
 operator|.
 name|requireNonNull
 argument_list|(
-name|repository
+name|journalAbbreviationLoader
 argument_list|)
 expr_stmt|;
 name|this
@@ -369,7 +369,7 @@ argument_list|(
 name|filename
 argument_list|)
 argument_list|,
-name|repository
+name|journalAbbreviationLoader
 argument_list|,
 name|encoding
 argument_list|)
@@ -523,7 +523,7 @@ argument_list|(
 name|filename
 argument_list|)
 argument_list|,
-name|repository
+name|journalAbbreviationLoader
 argument_list|,
 name|encoding
 argument_list|)
@@ -632,7 +632,7 @@ name|OOBibStyle
 argument_list|(
 name|filename
 argument_list|,
-name|repository
+name|journalAbbreviationLoader
 argument_list|)
 argument_list|)
 expr_stmt|;

@@ -42,7 +42,7 @@ name|logic
 operator|.
 name|journals
 operator|.
-name|JournalAbbreviationRepository
+name|JournalAbbreviationLoader
 import|;
 end_import
 
@@ -74,29 +74,29 @@ name|JournalAbbreviator
 implements|implements
 name|LayoutFormatter
 block|{
-DECL|field|repostiory
+DECL|field|repostioryLoader
 specifier|private
 specifier|final
-name|JournalAbbreviationRepository
-name|repostiory
+name|JournalAbbreviationLoader
+name|repostioryLoader
 decl_stmt|;
-DECL|method|JournalAbbreviator (JournalAbbreviationRepository repostiory)
+DECL|method|JournalAbbreviator (JournalAbbreviationLoader repostioryLoader)
 specifier|public
 name|JournalAbbreviator
 parameter_list|(
-name|JournalAbbreviationRepository
-name|repostiory
+name|JournalAbbreviationLoader
+name|repostioryLoader
 parameter_list|)
 block|{
 name|this
 operator|.
-name|repostiory
+name|repostioryLoader
 operator|=
 name|Objects
 operator|.
 name|requireNonNull
 argument_list|(
-name|repostiory
+name|repostioryLoader
 argument_list|)
 expr_stmt|;
 block|}
@@ -112,7 +112,10 @@ name|fieldText
 parameter_list|)
 block|{
 return|return
-name|repostiory
+name|repostioryLoader
+operator|.
+name|getRepository
+argument_list|()
 operator|.
 name|getIsoAbbreviation
 argument_list|(

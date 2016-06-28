@@ -681,6 +681,9 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Returns the contents of the given field, or null if it is not set.      */
+annotation|@
+name|Deprecated
+comment|//Use getFieldOptional instead
 DECL|method|getField (String name)
 specifier|public
 name|String

@@ -270,7 +270,7 @@ name|logic
 operator|.
 name|journals
 operator|.
-name|JournalAbbreviationRepository
+name|JournalAbbreviationLoader
 import|;
 end_import
 
@@ -2022,8 +2022,8 @@ return|return
 name|result
 return|;
 block|}
-comment|/**      * Determines filename provided by an entry in a database      *      * @param database the database, where the entry is located      * @param entry    the entry to which the file should be linked to      * @param repository      * @return a suggested fileName      */
-DECL|method|createFileNameFromPattern (BibDatabase database, BibEntry entry, JournalAbbreviationRepository repository)
+comment|/**      * Determines filename provided by an entry in a database      *      * @param database the database, where the entry is located      * @param entry    the entry to which the file should be linked to      * @param repositoryLoader      * @return a suggested fileName      */
+DECL|method|createFileNameFromPattern (BibDatabase database, BibEntry entry, JournalAbbreviationLoader repositoryLoader)
 specifier|public
 specifier|static
 name|String
@@ -2035,8 +2035,8 @@ parameter_list|,
 name|BibEntry
 name|entry
 parameter_list|,
-name|JournalAbbreviationRepository
-name|repository
+name|JournalAbbreviationLoader
+name|repositoryLoader
 parameter_list|)
 block|{
 name|String
@@ -2088,7 +2088,7 @@ name|LayoutHelper
 argument_list|(
 name|sr
 argument_list|,
-name|repository
+name|repositoryLoader
 argument_list|)
 operator|.
 name|getLayoutFromText
