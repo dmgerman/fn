@@ -18,6 +18,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|net
+operator|.
+name|URL
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|nio
 operator|.
 name|charset
@@ -124,6 +134,18 @@ name|Test
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertNotNull
+import|;
+end_import
+
 begin_class
 DECL|class|SilverPlatterImporterTestNotRecognized
 specifier|public
@@ -186,8 +208,6 @@ literal|"emptyFile.xml"
 argument_list|,
 literal|"IsiImporterTest1.isi"
 argument_list|,
-literal|"oai2.xml"
-argument_list|,
 literal|"RisImporterTest1.ris"
 argument_list|,
 literal|"InspecImportTest2.txt"
@@ -201,13 +221,9 @@ range|:
 name|notAccept
 control|)
 block|{
-name|Path
-name|file
+name|URL
+name|resource
 init|=
-name|Paths
-operator|.
-name|get
-argument_list|(
 name|SilverPlatterImporter
 operator|.
 name|class
@@ -216,6 +232,26 @@ name|getResource
 argument_list|(
 name|s
 argument_list|)
+decl_stmt|;
+name|assertNotNull
+argument_list|(
+literal|"resource "
+operator|+
+name|s
+operator|+
+literal|" must be available"
+argument_list|,
+name|resource
+argument_list|)
+expr_stmt|;
+name|Path
+name|file
+init|=
+name|Paths
+operator|.
+name|get
+argument_list|(
+name|resource
 operator|.
 name|toURI
 argument_list|()

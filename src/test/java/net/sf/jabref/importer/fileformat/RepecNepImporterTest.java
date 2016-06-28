@@ -96,6 +96,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|List
 import|;
 end_import
@@ -735,7 +745,12 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
+name|Collections
+operator|.
+name|singletonList
+argument_list|(
 literal|".txt"
+argument_list|)
 argument_list|,
 name|testImporter
 operator|.
@@ -757,9 +772,7 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-literal|"Imports a New Economics Papers-Message \n"
-operator|+
-literal|"from the REPEC-NEP Service."
+literal|"Imports a New Economics Papers-Message from the REPEC-NEP Service."
 argument_list|,
 name|testImporter
 operator|.
