@@ -3584,7 +3584,7 @@ name|get
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|GROUP_KEYWORD_SEPARATOR
+name|KEYWORD_SEPARATOR
 argument_list|)
 argument_list|)
 argument_list|)

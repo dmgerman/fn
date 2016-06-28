@@ -40,7 +40,9 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|FieldChange
+name|l10n
+operator|.
+name|Localization
 import|;
 end_import
 
@@ -52,11 +54,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|model
 operator|.
-name|l10n
-operator|.
-name|Localization
+name|FieldChange
 import|;
 end_import
 

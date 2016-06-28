@@ -80,7 +80,9 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|FieldChange
+name|journals
+operator|.
+name|JournalAbbreviationLoader
 import|;
 end_import
 
@@ -92,11 +94,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|model
 operator|.
-name|journals
-operator|.
-name|JournalAbbreviationLoader
+name|FieldChange
 import|;
 end_import
 

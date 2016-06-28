@@ -78,7 +78,9 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|FieldChange
+name|formatter
+operator|.
+name|Formatter
 import|;
 end_import
 
@@ -90,11 +92,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|model
 operator|.
-name|formatter
-operator|.
-name|Formatter
+name|FieldChange
 import|;
 end_import
 

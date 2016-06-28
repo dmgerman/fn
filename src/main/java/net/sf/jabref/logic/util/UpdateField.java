@@ -68,7 +68,11 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|FieldChange
+name|util
+operator|.
+name|date
+operator|.
+name|EasyDateFormat
 import|;
 end_import
 
@@ -80,13 +84,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|model
 operator|.
-name|util
-operator|.
-name|date
-operator|.
-name|EasyDateFormat
+name|FieldChange
 import|;
 end_import
 

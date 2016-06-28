@@ -20,7 +20,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|ArrayList
+name|LinkedHashSet
 import|;
 end_import
 
@@ -30,7 +30,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|List
+name|Set
 import|;
 end_import
 
@@ -119,40 +119,40 @@ argument_list|()
 return|;
 block|}
 block|}
-comment|/**      * @param keywords a String of keywords      * @return an List containing the keywords. An empty list if keywords are null or empty      */
-DECL|method|getSeparatedKeywords (String keywords)
+comment|/**      * @param keywordString a String of keywords      * @return an List containing the keywords. An empty list if keywords are null or empty      */
+DECL|method|getSeparatedKeywords (String keywordString)
 specifier|public
 specifier|static
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
 name|getSeparatedKeywords
 parameter_list|(
 name|String
-name|keywords
+name|keywordString
 parameter_list|)
 block|{
-name|List
+name|LinkedHashSet
 argument_list|<
 name|String
 argument_list|>
-name|res
+name|keywords
 init|=
 operator|new
-name|ArrayList
+name|LinkedHashSet
 argument_list|<>
 argument_list|()
 decl_stmt|;
 if|if
 condition|(
-name|keywords
+name|keywordString
 operator|==
 literal|null
 condition|)
 block|{
 return|return
-name|res
+name|keywords
 return|;
 block|}
 comment|// _NOSPACE is a hack to support keywords such as "choreography transactions"
@@ -165,7 +165,7 @@ init|=
 operator|new
 name|StringTokenizer
 argument_list|(
-name|keywords
+name|keywordString
 argument_list|,
 name|SEPARATING_CHARS_NOSPACE
 argument_list|)
@@ -189,7 +189,7 @@ operator|.
 name|trim
 argument_list|()
 decl_stmt|;
-name|res
+name|keywords
 operator|.
 name|add
 argument_list|(
@@ -198,7 +198,7 @@ argument_list|)
 expr_stmt|;
 block|}
 return|return
-name|res
+name|keywords
 return|;
 block|}
 block|}

@@ -1871,12 +1871,12 @@ name|EDIT_GROUP_MEMBERSHIP_MODE
 init|=
 literal|"groupEditGroupMembershipMode"
 decl_stmt|;
-DECL|field|GROUP_KEYWORD_SEPARATOR
+DECL|field|KEYWORD_SEPARATOR
 specifier|public
 specifier|static
 specifier|final
 name|String
-name|GROUP_KEYWORD_SEPARATOR
+name|KEYWORD_SEPARATOR
 init|=
 literal|"groupKeywordSeparator"
 decl_stmt|;
@@ -4998,7 +4998,7 @@ name|defaults
 operator|.
 name|put
 argument_list|(
-name|GROUP_KEYWORD_SEPARATOR
+name|KEYWORD_SEPARATOR
 argument_list|,
 literal|", "
 argument_list|)
