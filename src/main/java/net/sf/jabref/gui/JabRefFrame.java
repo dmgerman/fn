@@ -894,6 +894,22 @@ name|gui
 operator|.
 name|actions
 operator|.
+name|SearchForUpdateAction
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|actions
+operator|.
 name|SortTabsAction
 import|;
 end_import
@@ -6120,10 +6136,10 @@ expr_stmt|;
 block|}
 comment|// General preferences dialog.  The MacAdapter calls this method when "Preferences..."
 comment|// is selected from the application menu.
-DECL|method|preferences ()
+DECL|method|showPreferencesDialog ()
 specifier|public
 name|void
-name|preferences
+name|showPreferencesDialog
 parameter_list|()
 block|{
 name|output
@@ -9692,6 +9708,15 @@ name|helpMenu
 operator|.
 name|add
 argument_list|(
+operator|new
+name|SearchForUpdateAction
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|helpMenu
+operator|.
+name|add
+argument_list|(
 name|about
 argument_list|)
 expr_stmt|;
@@ -10455,6 +10480,7 @@ name|donationAction
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * displays the String on the Status Line visible on the bottom of the JabRef mainframe      */
 DECL|method|output (final String s)
 specifier|public
 name|void
@@ -11684,7 +11710,7 @@ name|ActionEvent
 name|e
 parameter_list|)
 block|{
-name|preferences
+name|showPreferencesDialog
 argument_list|()
 expr_stmt|;
 block|}

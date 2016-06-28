@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2015 JabRef contributors.  This program is free software; you can redistribute it and/or modify  it under the terms of the GNU General Public License as published by  the Free Software Foundation; either version 2 of the License, or  (at your option) any later version.   This program is distributed in the hope that it will be useful,  but WITHOUT ANY WARRANTY; without even the implied warranty of  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the  GNU General Public License for more details.   You should have received a copy of the GNU General Public License along  with this program; if not, write to the Free Software Foundation, Inc.,  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
+comment|/*  Copyright (C) 2003-2016 JabRef contributors.  This program is free software; you can redistribute it and/or modify  it under the terms of the GNU General Public License as published by  the Free Software Foundation; either version 2 of the License, or  (at your option) any later version.   This program is distributed in the hope that it will be useful,  but WITHOUT ANY WARRANTY; without even the implied warranty of  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the  GNU General Public License for more details.   You should have received a copy of the GNU General Public License along  with this program; if not, write to the Free Software Foundation, Inc.,  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
 end_comment
 
 begin_package
@@ -707,6 +707,22 @@ operator|.
 name|util
 operator|.
 name|OS
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|util
+operator|.
+name|VersionPreferences
 import|;
 end_import
 
@@ -3545,7 +3561,7 @@ argument_list|(
 literal|"user.home"
 argument_list|)
 decl_stmt|;
-comment|/**      * Set with all custom {@link ImportFormat}s      */
+comment|/**      * Set with all custom {@link net.sf.jabref.importer.fileformat.ImportFormat}s      */
 DECL|field|customImports
 specifier|public
 specifier|final
@@ -6789,6 +6805,18 @@ argument_list|(
 name|INDENT
 argument_list|,
 literal|4
+argument_list|)
+expr_stmt|;
+comment|//versioncheck defaults
+name|defaults
+operator|.
+name|put
+argument_list|(
+name|VersionPreferences
+operator|.
+name|VERSION_IGNORED_UPDATE
+argument_list|,
+literal|""
 argument_list|)
 expr_stmt|;
 block|}
