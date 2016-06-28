@@ -248,6 +248,8 @@ operator|new
 name|Timer
 argument_list|(
 literal|"timer"
+argument_list|,
+literal|true
 argument_list|)
 decl_stmt|;
 DECL|method|JabRefExecutorService ()
@@ -683,11 +685,7 @@ operator|.
 name|clear
 argument_list|()
 expr_stmt|;
-name|timer
-operator|.
-name|cancel
-argument_list|()
-expr_stmt|;
+comment|// timer doesn't need to be canceled as it is run in daemon mode, which ensures that it is stopped if the application is shut down
 block|}
 block|}
 end_class
