@@ -209,7 +209,7 @@ name|isDevelopmentVersion
 init|=
 literal|false
 decl_stmt|;
-comment|/**      * @param version must be in form of X.X (eg 3.3; 3.4dev)      */
+comment|/**      * @param version must be in form of X.X (e.g., 3.3; 3.4dev)      */
 DECL|method|Version (String version)
 specifier|public
 name|Version
@@ -372,7 +372,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Grabs the latest release version from the JabRef GitHub repository      *      * @return      * @throws IOException      */
+comment|/**      * Grabs the latest release version from the JabRef GitHub repository      */
 DECL|method|getLatestVersion ()
 specifier|public
 specifier|static
@@ -451,7 +451,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**      * @return true if this version is newer than the passed one      */
+comment|/**      * @return true iff this version is newer than the passed one      */
 DECL|method|isNewerThan (Version otherVersion)
 specifier|public
 name|boolean
@@ -484,6 +484,7 @@ return|return
 literal|false
 return|;
 block|}
+elseif|else
 if|if
 condition|(
 name|this
@@ -503,6 +504,7 @@ return|return
 literal|false
 return|;
 block|}
+elseif|else
 if|if
 condition|(
 name|otherVersion
@@ -522,6 +524,7 @@ return|return
 literal|false
 return|;
 block|}
+elseif|else
 if|if
 condition|(
 name|this
@@ -539,6 +542,7 @@ return|return
 literal|true
 return|;
 block|}
+elseif|else
 if|if
 condition|(
 name|this
@@ -569,6 +573,7 @@ return|return
 literal|true
 return|;
 block|}
+elseif|else
 if|if
 condition|(
 operator|(
@@ -600,10 +605,19 @@ return|return
 literal|true
 return|;
 block|}
-block|}
+else|else
+block|{
 return|return
 literal|false
 return|;
+block|}
+block|}
+else|else
+block|{
+return|return
+literal|false
+return|;
+block|}
 block|}
 DECL|method|getFullVersion ()
 specifier|public
