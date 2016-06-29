@@ -765,6 +765,22 @@ return|;
 block|}
 annotation|@
 name|Override
+DECL|method|hashCode ()
+specifier|public
+name|int
+name|hashCode
+parameter_list|()
+block|{
+return|return
+name|getFullVersion
+argument_list|()
+operator|.
+name|hashCode
+argument_list|()
+return|;
+block|}
+annotation|@
+name|Override
 DECL|method|toString ()
 specifier|public
 name|String
