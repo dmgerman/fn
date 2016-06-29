@@ -220,9 +220,11 @@ parameter_list|)
 block|{
 if|if
 condition|(
+operator|(
 name|version
 operator|==
 literal|null
+operator|)
 operator|||
 literal|""
 operator|.
@@ -569,6 +571,7 @@ return|;
 block|}
 if|if
 condition|(
+operator|(
 name|this
 operator|.
 name|getMinor
@@ -578,7 +581,9 @@ name|otherVersion
 operator|.
 name|getMinor
 argument_list|()
+operator|)
 operator|&&
+operator|(
 name|this
 operator|.
 name|getPatch
@@ -588,6 +593,7 @@ name|otherVersion
 operator|.
 name|getPatch
 argument_list|()
+operator|)
 condition|)
 block|{
 return|return
