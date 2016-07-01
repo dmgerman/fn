@@ -185,29 +185,21 @@ DECL|field|major
 specifier|private
 name|int
 name|major
-init|=
-literal|0
 decl_stmt|;
 DECL|field|minor
 specifier|private
 name|int
 name|minor
-init|=
-literal|0
 decl_stmt|;
 DECL|field|patch
 specifier|private
 name|int
 name|patch
-init|=
-literal|0
 decl_stmt|;
 DECL|field|isDevelopmentVersion
 specifier|private
 name|boolean
 name|isDevelopmentVersion
-init|=
-literal|false
 decl_stmt|;
 comment|/**      * @param version must be in form of X.X (e.g., 3.3; 3.4dev)      */
 DECL|method|Version (String version)
