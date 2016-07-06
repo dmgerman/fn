@@ -334,6 +334,11 @@ specifier|private
 name|boolean
 name|okPressed
 decl_stmt|;
+DECL|field|cancelPressed
+specifier|private
+name|boolean
+name|cancelPressed
+decl_stmt|;
 DECL|field|LAYOUT
 specifier|private
 specifier|static
@@ -506,10 +511,6 @@ operator|!
 name|first
 argument_list|)
 decl_stmt|;
-comment|//JPanel pan = new JPanel();
-comment|//pan.setLayout(new BorderLayout());
-comment|//pan.add(cb, BorderLayout.NORTH);
-comment|//cb.add(new JPanel(), BorderLayout.CENTER);
 name|b
 operator|.
 name|appendRows
@@ -561,7 +562,6 @@ literal|90
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//pp.setBorder(BorderFactory.createEtchedBorder());
 name|b
 operator|.
 name|add
@@ -627,6 +627,27 @@ operator|.
 name|addButton
 argument_list|(
 name|ok
+argument_list|)
+expr_stmt|;
+name|JButton
+name|ignore
+init|=
+operator|new
+name|JButton
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Ignore"
+argument_list|)
+argument_list|)
+decl_stmt|;
+name|bb
+operator|.
+name|addButton
+argument_list|(
+name|ignore
 argument_list|)
 expr_stmt|;
 name|JButton
@@ -734,6 +755,18 @@ expr_stmt|;
 block|}
 argument_list|)
 expr_stmt|;
+name|ignore
+operator|.
+name|addActionListener
+argument_list|(
+name|e
+lambda|->
+name|diag
+operator|.
+name|dispose
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|AbstractAction
 name|closeAction
 init|=
@@ -751,6 +784,10 @@ name|ActionEvent
 name|e
 parameter_list|)
 block|{
+name|cancelPressed
+operator|=
+literal|true
+expr_stmt|;
 name|diag
 operator|.
 name|dispose
@@ -873,6 +910,16 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
+DECL|method|isCancelPressed ()
+specifier|public
+name|boolean
+name|isCancelPressed
+parameter_list|()
+block|{
+return|return
+name|cancelPressed
+return|;
 block|}
 block|}
 end_class

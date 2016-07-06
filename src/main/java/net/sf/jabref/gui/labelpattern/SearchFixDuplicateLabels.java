@@ -248,7 +248,7 @@ name|void
 name|run
 parameter_list|()
 block|{
-comment|// Find all multiple occurences of BibTeX keys.
+comment|// Find all multiple occurrences of BibTeX keys.
 name|dupes
 operator|=
 operator|new
@@ -565,6 +565,17 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
+elseif|else
+if|if
+condition|(
+name|rdld
+operator|.
+name|isCancelPressed
+argument_list|()
+condition|)
+block|{
+break|break;
 block|}
 block|}
 comment|// Do the actual generation:
