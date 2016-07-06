@@ -134,15 +134,6 @@ name|BibEntry
 argument_list|>
 name|entries
 decl_stmt|;
-DECL|field|comp
-specifier|private
-specifier|final
-name|Comparator
-argument_list|<
-name|BibEntry
-argument_list|>
-name|comp
-decl_stmt|;
 DECL|method|EntrySorter (List<BibEntry> entries, Comparator<BibEntry> comparator)
 specifier|public
 name|EntrySorter
@@ -170,12 +161,6 @@ argument_list|<>
 argument_list|(
 name|entries
 argument_list|)
-expr_stmt|;
-name|this
-operator|.
-name|comp
-operator|=
-name|comparator
 expr_stmt|;
 name|Collections
 operator|.

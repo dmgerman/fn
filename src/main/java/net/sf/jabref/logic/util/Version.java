@@ -140,8 +140,8 @@ name|Version
 block|{
 DECL|field|JABREF_DOWNLOAD_URL
 specifier|public
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|JABREF_DOWNLOAD_URL
 init|=
@@ -165,8 +165,8 @@ argument_list|)
 decl_stmt|;
 DECL|field|JABREF_GITHUB_URL
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|JABREF_GITHUB_URL
 init|=
