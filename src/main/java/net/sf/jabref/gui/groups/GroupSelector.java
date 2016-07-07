@@ -5069,15 +5069,21 @@ argument_list|(
 name|groupsRoot
 argument_list|)
 expr_stmt|;
+comment|// refactor notice: groupsTreeModel::nodeStructureChanged cannot be used, because an NPE will be risen if no groupsTreeModel exists
 name|this
 operator|.
 name|groupsRoot
 operator|.
 name|subscribeToDescendantChanged
 argument_list|(
+name|source
+lambda|->
 name|groupsTreeModel
-operator|::
+operator|.
 name|nodeStructureChanged
+argument_list|(
+name|source
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|groupsTreeModel
