@@ -334,9 +334,11 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|config
+name|bibtex
 operator|.
-name|SaveOrderConfig
+name|comparator
+operator|.
+name|IdComparator
 import|;
 end_import
 
@@ -350,9 +352,9 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|id
+name|config
 operator|.
-name|IdComparator
+name|SaveOrderConfig
 import|;
 end_import
 
