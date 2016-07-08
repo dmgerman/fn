@@ -1106,6 +1106,13 @@ literal|"\uf18d"
 argument_list|)
 block|,
 comment|/*css: console */
+DECL|enumConstant|FORUM
+name|FORUM
+argument_list|(
+literal|"\uF28C"
+argument_list|)
+block|,
+comment|/* css: forum */
 comment|// STILL MISSING:
 DECL|enumConstant|GROUP_REGULAR
 name|GROUP_REGULAR
