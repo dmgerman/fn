@@ -1712,9 +1712,6 @@ name|fieldEditor
 operator|.
 name|setText
 argument_list|(
-literal|"#"
-operator|+
-operator|(
 name|MonthUtil
 operator|.
 name|getMonthByNumber
@@ -1723,9 +1720,6 @@ name|monthnumber
 argument_list|)
 operator|.
 name|bibtexFormat
-operator|)
-operator|+
-literal|"#"
 argument_list|)
 expr_stmt|;
 block|}
