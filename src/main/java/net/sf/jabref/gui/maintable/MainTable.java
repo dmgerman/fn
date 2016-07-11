@@ -783,16 +783,6 @@ specifier|final
 name|MainTableDataModel
 name|model
 decl_stmt|;
-DECL|method|getTableModel ()
-specifier|public
-name|MainTableDataModel
-name|getTableModel
-parameter_list|()
-block|{
-return|return
-name|model
-return|;
-block|}
 comment|// Enum used to define how a cell should be rendered.
 DECL|enum|CellRendererMode
 specifier|private
@@ -1239,6 +1229,16 @@ return|return
 name|pane
 return|;
 block|}
+DECL|method|getTableModel ()
+specifier|public
+name|MainTableDataModel
+name|getTableModel
+parameter_list|()
+block|{
+return|return
+name|model
+return|;
+block|}
 annotation|@
 name|Override
 DECL|method|getToolTipText (MouseEvent e)
@@ -1403,13 +1403,12 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|!
 operator|(
 name|model
 operator|.
 name|getSearchState
 argument_list|()
-operator|==
+operator|!=
 name|MainTableDataModel
 operator|.
 name|DisplayOption
@@ -1446,13 +1445,12 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-operator|!
 operator|(
 name|model
 operator|.
 name|getGroupingState
 argument_list|()
-operator|==
+operator|!=
 name|MainTableDataModel
 operator|.
 name|DisplayOption
@@ -3465,13 +3463,12 @@ argument_list|()
 operator|)
 operator|)
 operator|&&
-operator|!
 operator|(
 name|model
 operator|.
 name|getSearchState
 argument_list|()
-operator|==
+operator|!=
 name|MainTableDataModel
 operator|.
 name|DisplayOption

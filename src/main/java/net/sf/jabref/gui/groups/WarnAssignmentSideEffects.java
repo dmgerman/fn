@@ -1,14 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
-begin_comment
-comment|/*  Copyright (C) 2003-2016 JabRef contributors.     Copyright (C) 2015 Oliver Kopp      This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
-end_comment
-
-begin_comment
-comment|// created by : Morten O. Alver 2003
-end_comment
-
 begin_package
-DECL|package|net.sf.jabref.util
+DECL|package|net.sf.jabref.gui.groups
 package|package
 name|net
 operator|.
@@ -16,7 +8,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|util
+name|gui
+operator|.
+name|groups
 package|;
 end_package
 
@@ -67,54 +61,6 @@ operator|.
 name|swing
 operator|.
 name|JOptionPane
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|worker
-operator|.
-name|AbstractWorker
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|worker
-operator|.
-name|CallBack
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|worker
-operator|.
-name|Worker
 import|;
 end_import
 
@@ -182,101 +128,12 @@ name|InternalBibtexFields
 import|;
 end_import
 
-begin_comment
-comment|/**  * utility functions  */
-end_comment
-
 begin_class
-DECL|class|Util
+DECL|class|WarnAssignmentSideEffects
 specifier|public
 class|class
-name|Util
+name|WarnAssignmentSideEffects
 block|{
-comment|/**      * Run an AbstractWorker's methods using Spin features to put each method on the correct thread.      *      * @param worker The worker to run.      * @throws Throwable      */
-DECL|method|runAbstractWorker (AbstractWorker worker)
-specifier|public
-specifier|static
-name|void
-name|runAbstractWorker
-parameter_list|(
-name|AbstractWorker
-name|worker
-parameter_list|)
-throws|throws
-name|Throwable
-block|{
-comment|// This part uses Spin's features:
-name|Worker
-name|wrk
-init|=
-name|worker
-operator|.
-name|getWorker
-argument_list|()
-decl_stmt|;
-comment|// The Worker returned by getWorker() has been wrapped
-comment|// by Spin.off(), which makes its methods be run in
-comment|// a different thread from the EDT.
-name|CallBack
-name|clb
-init|=
-name|worker
-operator|.
-name|getCallBack
-argument_list|()
-decl_stmt|;
-name|worker
-operator|.
-name|init
-argument_list|()
-expr_stmt|;
-comment|// This method runs in this same thread, the EDT.
-comment|// Useful for initial GUI actions, like printing a message.
-comment|// The CallBack returned by getCallBack() has been wrapped
-comment|// by Spin.over(), which makes its methods be run on
-comment|// the EDT.
-name|wrk
-operator|.
-name|run
-argument_list|()
-expr_stmt|;
-comment|// Runs the potentially time-consuming action
-comment|// without freezing the GUI. The magic is that THIS line
-comment|// of execution will not continue until run() is finished.
-name|clb
-operator|.
-name|update
-argument_list|()
-expr_stmt|;
-comment|// Runs the update() method on the EDT.
-block|}
-DECL|method|warnAssignmentSideEffects (AbstractGroup group, Component parent)
-specifier|public
-specifier|static
-name|boolean
-name|warnAssignmentSideEffects
-parameter_list|(
-name|AbstractGroup
-name|group
-parameter_list|,
-name|Component
-name|parent
-parameter_list|)
-block|{
-return|return
-name|warnAssignmentSideEffects
-argument_list|(
-name|Collections
-operator|.
-name|singletonList
-argument_list|(
-name|group
-argument_list|)
-argument_list|,
-name|parent
-argument_list|)
-return|;
-block|}
 comment|/**      * Warns the user of undesired side effects of an explicit assignment/removal of entries to/from this group.      * Currently there are four types of groups: AllEntriesGroup, SearchGroup - do not support explicit assignment.      * ExplicitGroup and KeywordGroup - this modifies entries upon assignment/removal.      * Modifications are acceptable unless they affect a standard field (such as "author") besides the "keywords" or "groups' field.      *      * @param parent The Component used as a parent when displaying a confirmation dialog.      * @return true if the assignment has no undesired side effects, or the user chose to perform it anyway. false      * otherwise (this indicates that the user has aborted the assignment).      */
 DECL|method|warnAssignmentSideEffects (List<AbstractGroup> groups, Component parent)
 specifier|public
@@ -321,7 +178,7 @@ name|KeywordGroup
 condition|)
 block|{
 name|KeywordGroup
-name|kg
+name|keywordGroup
 init|=
 operator|(
 name|KeywordGroup
@@ -331,7 +188,7 @@ decl_stmt|;
 name|String
 name|field
 init|=
-name|kg
+name|keywordGroup
 operator|.
 name|getSearchField
 argument_list|()
@@ -559,6 +416,33 @@ comment|// }
 comment|// }
 comment|// }
 comment|// return true; // found no side effects
+block|}
+DECL|method|warnAssignmentSideEffects (AbstractGroup group, Component parent)
+specifier|public
+specifier|static
+name|boolean
+name|warnAssignmentSideEffects
+parameter_list|(
+name|AbstractGroup
+name|group
+parameter_list|,
+name|Component
+name|parent
+parameter_list|)
+block|{
+return|return
+name|warnAssignmentSideEffects
+argument_list|(
+name|Collections
+operator|.
+name|singletonList
+argument_list|(
+name|group
+argument_list|)
+argument_list|,
+name|parent
+argument_list|)
+return|;
 block|}
 block|}
 end_class

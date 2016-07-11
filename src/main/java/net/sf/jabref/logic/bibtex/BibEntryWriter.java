@@ -218,20 +218,6 @@ name|InternalBibtexFields
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Strings
-import|;
-end_import
-
 begin_class
 DECL|class|BibEntryWriter
 specifier|public
@@ -786,27 +772,33 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+name|Optional
+argument_list|<
 name|String
+argument_list|>
 name|field
 init|=
 name|entry
 operator|.
-name|getField
+name|getFieldOptional
 argument_list|(
 name|name
 argument_list|)
 decl_stmt|;
-comment|// only write field if is is not empty or if empty fields should be included
-comment|// the first condition mirrors mirror behavior of com.jgoodies.common.base.Strings.isNotBlank(str)
+comment|// only write field if is is not empty
+comment|// field.ifPresent does not work as an IOException may be thrown
 if|if
 condition|(
-operator|!
-name|Strings
-operator|.
-name|nullToEmpty
-argument_list|(
 name|field
-argument_list|)
+operator|.
+name|isPresent
+argument_list|()
+operator|&&
+operator|!
+name|field
+operator|.
+name|get
+argument_list|()
 operator|.
 name|trim
 argument_list|()
@@ -840,6 +832,9 @@ operator|.
 name|format
 argument_list|(
 name|field
+operator|.
+name|get
+argument_list|()
 argument_list|,
 name|name
 argument_list|)

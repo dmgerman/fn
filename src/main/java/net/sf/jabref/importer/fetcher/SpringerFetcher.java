@@ -604,9 +604,13 @@ name|min
 argument_list|(
 name|MAX_PER_PAGE
 argument_list|,
+operator|(
 name|numberToFetch
 operator|-
 name|startItem
+operator|)
+operator|+
+literal|1
 argument_list|)
 decl_stmt|;
 name|jsonResponse
