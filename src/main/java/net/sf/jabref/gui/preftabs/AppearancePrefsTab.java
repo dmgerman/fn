@@ -372,7 +372,7 @@ specifier|final
 name|JTextField
 name|rowPadding
 decl_stmt|;
-comment|// Look& Feel
+comment|// look and feel
 DECL|field|classNamesLAF
 specifier|private
 specifier|final

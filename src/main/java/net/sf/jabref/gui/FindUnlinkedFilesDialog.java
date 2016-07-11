@@ -1957,7 +1957,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Choose Directory"
+literal|"Choose directory"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -3027,7 +3027,7 @@ name|void
 name|setupActions
 parameter_list|()
 block|{
-comment|/**          * Stores the selected Directory.          */
+comment|/**          * Stores the selected directory.          */
 name|buttonBrowse
 operator|.
 name|addActionListener

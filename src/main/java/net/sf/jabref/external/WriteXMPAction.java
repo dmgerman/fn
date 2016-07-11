@@ -545,7 +545,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"This operation requires at least one entry."
+literal|"This operation requires one or more entries to be selected."
 argument_list|)
 argument_list|,
 name|Localization

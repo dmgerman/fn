@@ -786,7 +786,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Select new ImportFormat Subclass"
+literal|"Select new ImportFormat subclass"
 argument_list|)
 argument_list|,
 name|JFileChooser

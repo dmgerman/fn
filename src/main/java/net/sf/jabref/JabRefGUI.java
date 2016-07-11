@@ -677,7 +677,7 @@ argument_list|,
 literal|"lcd"
 argument_list|)
 expr_stmt|;
-comment|// Look& Feel. This MUST be the first thing to do before loading any Swing-specific code!
+comment|// look and feel. This MUST be the first thing to do before loading any Swing-specific code!
 name|setLookAndFeel
 argument_list|()
 expr_stmt|;
@@ -1656,7 +1656,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Unable to find the requested Look& Feel and thus the default one is used."
+literal|"Unable to find the requested look and feel and thus the default one is used."
 argument_list|)
 argument_list|,
 name|Localization
@@ -1675,7 +1675,7 @@ name|LOGGER
 operator|.
 name|warn
 argument_list|(
-literal|"Unable to find requested Look and Feel"
+literal|"Unable to find requested look and feel"
 argument_list|,
 name|e
 argument_list|)

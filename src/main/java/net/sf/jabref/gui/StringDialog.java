@@ -2676,7 +2676,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Really delete the selected %0 entries?"
+literal|"Really delete the %0 selected entries?"
 argument_list|,
 name|Integer
 operator|.

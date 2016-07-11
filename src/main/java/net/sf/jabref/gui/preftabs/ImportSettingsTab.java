@@ -501,7 +501,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Default import style for drag&drop of PDFs"
+literal|"Default import style for drag and drop of PDFs"
 argument_list|)
 argument_list|)
 expr_stmt|;

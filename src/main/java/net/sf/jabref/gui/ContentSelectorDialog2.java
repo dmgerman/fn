@@ -837,7 +837,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Setup selectors"
+literal|"Manage content selectors"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1314,7 +1314,7 @@ name|LOGGER
 operator|.
 name|info
 argument_list|(
-literal|"Could not apply changes in \"Setup selectors\""
+literal|"Could not apply changes in \"Manage content selectors\""
 argument_list|,
 name|ex
 argument_list|)
@@ -1383,7 +1383,7 @@ name|LOGGER
 operator|.
 name|info
 argument_list|(
-literal|"Could not apply changes in \"Setup selectors\""
+literal|"Could not apply changes in \"Manage content selectors\""
 argument_list|,
 name|ex
 argument_list|)
