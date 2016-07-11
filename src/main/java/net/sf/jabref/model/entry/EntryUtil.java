@@ -201,6 +201,39 @@ return|return
 name|keywords
 return|;
 block|}
+comment|/**      * @param entry a BibEntry      * @return an List containing the keywords of the entry. An empty list if keywords are null or empty      */
+DECL|method|getSeparatedKeywords (BibEntry entry)
+specifier|public
+specifier|static
+name|Set
+argument_list|<
+name|String
+argument_list|>
+name|getSeparatedKeywords
+parameter_list|(
+name|BibEntry
+name|entry
+parameter_list|)
+block|{
+return|return
+name|getSeparatedKeywords
+argument_list|(
+name|entry
+operator|.
+name|getFieldOptional
+argument_list|(
+name|BibEntry
+operator|.
+name|KEYWORDS_FIELD
+argument_list|)
+operator|.
+name|orElse
+argument_list|(
+literal|null
+argument_list|)
+argument_list|)
+return|;
+block|}
 block|}
 end_class
 

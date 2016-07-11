@@ -2346,11 +2346,6 @@ operator|.
 name|getSeparatedKeywords
 argument_list|(
 name|this
-operator|.
-name|getField
-argument_list|(
-name|KEYWORDS_FIELD
-argument_list|)
 argument_list|)
 return|;
 block|}

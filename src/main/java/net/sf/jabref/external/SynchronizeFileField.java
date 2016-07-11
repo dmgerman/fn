@@ -1028,12 +1028,15 @@ operator|++
 argument_list|)
 expr_stmt|;
 specifier|final
+name|Optional
+argument_list|<
 name|String
+argument_list|>
 name|old
 init|=
 name|aSel
 operator|.
-name|getField
+name|getFieldOptional
 argument_list|(
 name|Globals
 operator|.
@@ -1043,15 +1046,17 @@ decl_stmt|;
 comment|// Check if a extension is set:
 if|if
 condition|(
-operator|(
 name|old
-operator|!=
-literal|null
-operator|)
+operator|.
+name|isPresent
+argument_list|()
 operator|&&
 operator|!
 operator|(
 name|old
+operator|.
+name|get
+argument_list|()
 operator|.
 name|isEmpty
 argument_list|()
@@ -1070,6 +1075,9 @@ operator|.
 name|setContentDontGuessTypes
 argument_list|(
 name|old
+operator|.
+name|get
+argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// We need to specify which directories to search in for Util.expandFilename:
@@ -1697,6 +1705,11 @@ operator|.
 name|equals
 argument_list|(
 name|old
+operator|.
+name|orElse
+argument_list|(
+literal|null
+argument_list|)
 argument_list|)
 condition|)
 block|{
@@ -1731,6 +1744,11 @@ operator|.
 name|FILE_FIELD
 argument_list|,
 name|old
+operator|.
+name|orElse
+argument_list|(
+literal|null
+argument_list|)
 argument_list|,
 literal|null
 argument_list|)
@@ -1762,6 +1780,11 @@ operator|.
 name|FILE_FIELD
 argument_list|,
 name|old
+operator|.
+name|orElse
+argument_list|(
+literal|null
+argument_list|)
 argument_list|,
 name|toSet
 argument_list|)
