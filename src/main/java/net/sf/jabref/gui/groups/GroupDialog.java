@@ -608,20 +608,6 @@ end_import
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|util
-operator|.
-name|Util
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|jgoodies
@@ -3173,7 +3159,7 @@ block|{
 if|if
 condition|(
 operator|!
-name|Util
+name|WarnAssignmentSideEffects
 operator|.
 name|warnAssignmentSideEffects
 argument_list|(
