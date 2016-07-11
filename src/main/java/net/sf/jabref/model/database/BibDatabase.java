@@ -429,14 +429,6 @@ name|HashSet
 argument_list|<>
 argument_list|()
 decl_stmt|;
-comment|/**      * Configuration      */
-DECL|field|followCrossrefs
-specifier|private
-name|boolean
-name|followCrossrefs
-init|=
-literal|true
-decl_stmt|;
 DECL|field|eventBus
 specifier|private
 specifier|final
@@ -2011,10 +2003,6 @@ operator|!=
 literal|null
 operator|)
 operator|&&
-name|database
-operator|.
-name|followCrossrefs
-operator|&&
 operator|!
 name|field
 operator|.
@@ -2156,22 +2144,6 @@ block|}
 return|return
 name|toResolve
 return|;
-block|}
-DECL|method|setFollowCrossrefs (boolean followCrossrefs)
-specifier|public
-name|void
-name|setFollowCrossrefs
-parameter_list|(
-name|boolean
-name|followCrossrefs
-parameter_list|)
-block|{
-name|this
-operator|.
-name|followCrossrefs
-operator|=
-name|followCrossrefs
-expr_stmt|;
 block|}
 DECL|method|setEpilog (String epilog)
 specifier|public

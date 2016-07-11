@@ -4039,13 +4039,6 @@ name|void
 name|update
 parameter_list|()
 block|{
-name|database
-operator|.
-name|setFollowCrossrefs
-argument_list|(
-literal|true
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 name|canceled
