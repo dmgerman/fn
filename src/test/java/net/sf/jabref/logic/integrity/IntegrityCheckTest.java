@@ -349,6 +349,16 @@ literal|"file://c:/asdf/asdf"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|assertCorrect
+argument_list|(
+name|createContext
+argument_list|(
+literal|"url"
+argument_list|,
+literal|"http://scikit-learn.org/stable/modules/ensemble.html#random-forests"
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|assertWrong
 argument_list|(
 name|createContext
