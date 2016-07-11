@@ -307,7 +307,8 @@ name|addFocusListener
 argument_list|(
 name|Globals
 operator|.
-name|focusListener
+name|getFocusListener
+argument_list|()
 argument_list|)
 expr_stmt|;
 if|if

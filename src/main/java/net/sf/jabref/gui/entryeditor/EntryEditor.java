@@ -3974,7 +3974,8 @@ name|addFocusListener
 argument_list|(
 name|Globals
 operator|.
-name|focusListener
+name|getFocusListener
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|source
@@ -4818,7 +4819,8 @@ name|comp
 init|=
 name|Globals
 operator|.
-name|focusListener
+name|getFocusListener
+argument_list|()
 operator|.
 name|getFocused
 argument_list|()

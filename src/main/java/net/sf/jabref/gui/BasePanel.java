@@ -2289,7 +2289,8 @@ name|fileMonitorHandle
 operator|=
 name|Globals
 operator|.
-name|fileUpdateMonitor
+name|getFileUpdateMonitor
+argument_list|()
 operator|.
 name|addUpdateListener
 argument_list|(
@@ -12252,7 +12253,8 @@ name|focused
 init|=
 name|Globals
 operator|.
-name|focusListener
+name|getFocusListener
+argument_list|()
 operator|.
 name|getFocused
 argument_list|()
@@ -12801,7 +12803,8 @@ name|focused
 init|=
 name|Globals
 operator|.
-name|focusListener
+name|getFocusListener
+argument_list|()
 operator|.
 name|getFocused
 argument_list|()
@@ -13064,7 +13067,8 @@ expr_stmt|;
 comment|// Perturb the stored timestamp so successive checks are made:
 name|Globals
 operator|.
-name|fileUpdateMonitor
+name|getFileUpdateMonitor
+argument_list|()
 operator|.
 name|perturbTimestamp
 argument_list|(
@@ -13249,7 +13253,8 @@ condition|)
 block|{
 name|Globals
 operator|.
-name|fileUpdateMonitor
+name|getFileUpdateMonitor
+argument_list|()
 operator|.
 name|removeUpdateListener
 argument_list|(

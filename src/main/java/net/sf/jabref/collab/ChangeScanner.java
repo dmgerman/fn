@@ -665,7 +665,8 @@ name|tempFile
 init|=
 name|Globals
 operator|.
-name|fileUpdateMonitor
+name|getFileUpdateMonitor
+argument_list|()
 operator|.
 name|getTempFile
 argument_list|(
@@ -1218,7 +1219,8 @@ name|commit
 argument_list|(
 name|Globals
 operator|.
-name|fileUpdateMonitor
+name|getFileUpdateMonitor
+argument_list|()
 operator|.
 name|getTempFile
 argument_list|(

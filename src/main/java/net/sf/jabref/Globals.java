@@ -16,6 +16,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -302,12 +312,40 @@ specifier|static
 name|JournalAbbreviationLoader
 name|journalAbbreviationLoader
 decl_stmt|;
+comment|// Key binding preferences
 DECL|field|keyPrefs
 specifier|private
 specifier|static
 name|KeyBindingPreferences
 name|keyPrefs
 decl_stmt|;
+comment|// Background tasks
+DECL|field|focusListener
+specifier|private
+specifier|static
+name|GlobalFocusListener
+name|focusListener
+decl_stmt|;
+DECL|field|fileUpdateMonitor
+specifier|private
+specifier|static
+name|FileUpdateMonitor
+name|fileUpdateMonitor
+decl_stmt|;
+DECL|field|streamEavesdropper
+specifier|private
+specifier|static
+name|StreamEavesdropper
+name|streamEavesdropper
+decl_stmt|;
+comment|// Autosave manager
+DECL|field|autoSaveManager
+specifier|private
+specifier|static
+name|AutoSaveManager
+name|autoSaveManager
+decl_stmt|;
+comment|// Key binding preferences
 DECL|method|getKeyPrefs ()
 specifier|public
 specifier|static
@@ -336,24 +374,6 @@ name|keyPrefs
 return|;
 block|}
 comment|// Background tasks
-DECL|field|focusListener
-specifier|public
-specifier|static
-name|GlobalFocusListener
-name|focusListener
-decl_stmt|;
-DECL|field|fileUpdateMonitor
-specifier|public
-specifier|static
-name|FileUpdateMonitor
-name|fileUpdateMonitor
-decl_stmt|;
-DECL|field|streamEavesdropper
-specifier|public
-specifier|static
-name|StreamEavesdropper
-name|streamEavesdropper
-decl_stmt|;
 DECL|method|startBackgroundTasks ()
 specifier|public
 specifier|static
@@ -400,13 +420,40 @@ literal|"FileUpdateMonitor"
 argument_list|)
 expr_stmt|;
 block|}
-comment|// Autosave manager
-DECL|field|autoSaveManager
+DECL|method|getFocusListener ()
 specifier|public
 specifier|static
-name|AutoSaveManager
-name|autoSaveManager
-decl_stmt|;
+name|GlobalFocusListener
+name|getFocusListener
+parameter_list|()
+block|{
+return|return
+name|focusListener
+return|;
+block|}
+DECL|method|getFileUpdateMonitor ()
+specifier|public
+specifier|static
+name|FileUpdateMonitor
+name|getFileUpdateMonitor
+parameter_list|()
+block|{
+return|return
+name|fileUpdateMonitor
+return|;
+block|}
+DECL|method|getStreamEavesdropper ()
+specifier|public
+specifier|static
+name|StreamEavesdropper
+name|getStreamEavesdropper
+parameter_list|()
+block|{
+return|return
+name|streamEavesdropper
+return|;
+block|}
+comment|// Autosave manager
 DECL|method|startAutoSaveManager (JabRefFrame frame)
 specifier|public
 specifier|static
@@ -473,6 +520,27 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
+block|}
+DECL|method|getAutoSaveManager ()
+specifier|public
+specifier|static
+name|Optional
+argument_list|<
+name|AutoSaveManager
+argument_list|>
+name|getAutoSaveManager
+parameter_list|()
+block|{
+return|return
+name|Optional
+operator|.
+name|ofNullable
+argument_list|(
+name|Globals
+operator|.
+name|autoSaveManager
+argument_list|)
+return|;
 block|}
 block|}
 end_class
