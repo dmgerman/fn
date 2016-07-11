@@ -4,17 +4,17 @@ comment|/*  *  Copyright (C) 2015  Oliver Kopp  *  Copyright (C) 2016  Oscar Gus
 end_comment
 
 begin_package
-DECL|package|org.xnap.commons.gui.shortcut
+DECL|package|net.sf.jabref.gui.keyboard
 package|package
-name|org
+name|net
 operator|.
-name|xnap
+name|sf
 operator|.
-name|commons
+name|jabref
 operator|.
 name|gui
 operator|.
-name|shortcut
+name|keyboard
 package|;
 end_package
 
