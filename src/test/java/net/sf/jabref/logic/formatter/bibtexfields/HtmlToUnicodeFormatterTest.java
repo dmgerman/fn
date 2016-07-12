@@ -184,10 +184,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testHTML ()
+DECL|method|testUmlauts ()
 specifier|public
 name|void
-name|testHTML
+name|testUmlauts
 parameter_list|()
 block|{
 name|assertEquals
@@ -226,6 +226,15 @@ literal|"&#xe4;"
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|testGreekLetter ()
+specifier|public
+name|void
+name|testGreekLetter
+parameter_list|()
+block|{
 name|assertEquals
 argument_list|(
 literal|"Î"
