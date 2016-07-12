@@ -26,6 +26,16 @@ name|org
 operator|.
 name|junit
 operator|.
+name|Before
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Test
 import|;
 end_import
@@ -50,14 +60,24 @@ name|ClearFormatterTest
 block|{
 DECL|field|formatter
 specifier|private
-specifier|final
 name|ClearFormatter
 name|formatter
-init|=
+decl_stmt|;
+annotation|@
+name|Before
+DECL|method|setUp ()
+specifier|public
+name|void
+name|setUp
+parameter_list|()
+block|{
+name|formatter
+operator|=
 operator|new
 name|ClearFormatter
 argument_list|()
-decl_stmt|;
+expr_stmt|;
+block|}
 comment|/**      * Check whether the clear formatter really returns the empty string for the empty string      */
 annotation|@
 name|Test
