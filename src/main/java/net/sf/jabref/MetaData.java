@@ -592,7 +592,10 @@ decl_stmt|;
 comment|// We must allow for ; and \ in escape sequences.
 try|try
 block|{
+name|Optional
+argument_list|<
 name|String
+argument_list|>
 name|unit
 decl_stmt|;
 while|while
@@ -605,8 +608,9 @@ argument_list|(
 name|data
 argument_list|)
 operator|)
-operator|!=
-literal|null
+operator|.
+name|isPresent
+argument_list|()
 condition|)
 block|{
 name|orderedData
@@ -614,6 +618,9 @@ operator|.
 name|add
 argument_list|(
 name|unit
+operator|.
+name|get
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -1019,7 +1026,10 @@ comment|/**      * Reads the next unit. Units are delimited by ';'.      */
 DECL|method|getNextUnit (Reader reader)
 specifier|private
 specifier|static
+name|Optional
+argument_list|<
 name|String
+argument_list|>
 name|getNextUnit
 parameter_list|(
 name|Reader
@@ -1126,14 +1136,22 @@ literal|0
 condition|)
 block|{
 return|return
+name|Optional
+operator|.
+name|of
+argument_list|(
 name|res
 operator|.
 name|toString
 argument_list|()
+argument_list|)
 return|;
 block|}
 return|return
-literal|null
+name|Optional
+operator|.
+name|empty
+argument_list|()
 return|;
 block|}
 DECL|method|getDBStrings ()

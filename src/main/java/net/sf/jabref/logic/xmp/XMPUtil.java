@@ -2822,21 +2822,15 @@ argument_list|)
 condition|)
 block|{
 comment|/**                  * Year + Month -> Date                  *                  * Field: dc:date                  *                  * Type: seq Date                  *                  * Category: External                  *                  * Description: Date(s) that something interesting happened to                  * the resource.                  *                  * Bibtex-Fields used: year, month                  */
-name|String
-name|publicationDate
-init|=
 name|entry
 operator|.
 name|getPublicationDate
 argument_list|()
-decl_stmt|;
-if|if
-condition|(
+operator|.
+name|ifPresent
+argument_list|(
 name|publicationDate
-operator|!=
-literal|null
-condition|)
-block|{
+lambda|->
 name|dcSchema
 operator|.
 name|addSequenceValue
@@ -2845,8 +2839,8 @@ literal|"dc:date"
 argument_list|,
 name|publicationDate
 argument_list|)
+argument_list|)
 expr_stmt|;
-block|}
 continue|continue;
 block|}
 comment|/**              * Abstract -> Description              *              * Field: dc:description              *              * Type: Lang Alt              *              * Category: External              *              * Description: A textual description of the content of the              * resource. Multiple values may be present for different languages.              *              * Bibtex-Fields used: abstract              */

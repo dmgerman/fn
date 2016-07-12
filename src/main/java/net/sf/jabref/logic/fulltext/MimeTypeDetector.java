@@ -46,6 +46,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -104,7 +114,10 @@ name|String
 name|url
 parameter_list|)
 block|{
+name|Optional
+argument_list|<
 name|String
+argument_list|>
 name|contentType
 init|=
 name|getMimeType
@@ -114,10 +127,14 @@ argument_list|)
 decl_stmt|;
 return|return
 name|contentType
-operator|!=
-literal|null
+operator|.
+name|isPresent
+argument_list|()
 operator|&&
 name|contentType
+operator|.
+name|get
+argument_list|()
 operator|.
 name|toLowerCase
 argument_list|()
@@ -131,7 +148,10 @@ block|}
 DECL|method|getMimeType (String url)
 specifier|private
 specifier|static
+name|Optional
+argument_list|<
 name|String
+argument_list|>
 name|getMimeType
 parameter_list|(
 name|String
@@ -153,10 +173,15 @@ name|openConnection
 argument_list|()
 decl_stmt|;
 return|return
+name|Optional
+operator|.
+name|ofNullable
+argument_list|(
 name|connection
 operator|.
 name|getContentType
 argument_list|()
+argument_list|)
 return|;
 block|}
 catch|catch
@@ -175,7 +200,10 @@ name|e
 argument_list|)
 expr_stmt|;
 return|return
-literal|null
+name|Optional
+operator|.
+name|empty
+argument_list|()
 return|;
 block|}
 block|}
