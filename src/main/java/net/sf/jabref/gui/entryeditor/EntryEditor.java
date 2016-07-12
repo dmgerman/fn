@@ -6973,6 +6973,11 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|ce
+operator|.
+name|end
+argument_list|()
+expr_stmt|;
 name|panel
 operator|.
 name|getUndoManager
@@ -7334,6 +7339,11 @@ name|fieldChange
 argument_list|)
 argument_list|)
 argument_list|)
+expr_stmt|;
+name|ce
+operator|.
+name|end
+argument_list|()
 expr_stmt|;
 name|panel
 operator|.
