@@ -140,6 +140,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -1276,7 +1286,10 @@ condition|)
 block|{
 comment|// A custom entry type can also be stored in a
 comment|// "@comment"
+name|Optional
+argument_list|<
 name|CustomEntryType
+argument_list|>
 name|typ
 init|=
 name|CustomEntryType
@@ -1289,9 +1302,31 @@ decl_stmt|;
 if|if
 condition|(
 name|typ
-operator|==
-literal|null
+operator|.
+name|isPresent
+argument_list|()
 condition|)
+block|{
+name|entryTypes
+operator|.
+name|put
+argument_list|(
+name|typ
+operator|.
+name|get
+argument_list|()
+operator|.
+name|getName
+argument_list|()
+argument_list|,
+name|typ
+operator|.
+name|get
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+else|else
 block|{
 name|parserResult
 operator|.
@@ -1307,21 +1342,6 @@ operator|+
 literal|": "
 operator|+
 name|comment
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-name|entryTypes
-operator|.
-name|put
-argument_list|(
-name|typ
-operator|.
-name|getName
-argument_list|()
-argument_list|,
-name|typ
 argument_list|)
 expr_stmt|;
 block|}

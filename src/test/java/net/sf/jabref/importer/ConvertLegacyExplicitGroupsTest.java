@@ -297,8 +297,9 @@ name|generateParserResult
 argument_list|(
 name|entry
 argument_list|,
-operator|new
 name|GroupTreeNode
+operator|.
+name|fromGroup
 argument_list|(
 name|group
 argument_list|)
@@ -343,8 +344,9 @@ name|generateParserResult
 argument_list|(
 name|entry
 argument_list|,
-operator|new
 name|GroupTreeNode
+operator|.
+name|fromGroup
 argument_list|(
 name|group
 argument_list|)
@@ -386,8 +388,9 @@ block|{
 name|GroupTreeNode
 name|root
 init|=
-operator|new
 name|GroupTreeNode
+operator|.
+name|fromGroup
 argument_list|(
 operator|new
 name|AllEntriesGroup
@@ -465,8 +468,9 @@ name|generateParserResult
 argument_list|(
 name|entry
 argument_list|,
-operator|new
 name|GroupTreeNode
+operator|.
+name|fromGroup
 argument_list|(
 name|group
 argument_list|)

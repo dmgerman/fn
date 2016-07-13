@@ -82,6 +82,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -942,7 +952,10 @@ range|:
 name|field
 control|)
 block|{
+name|Optional
+argument_list|<
 name|String
+argument_list|>
 name|o
 init|=
 name|entry
@@ -955,12 +968,16 @@ decl_stmt|;
 if|if
 condition|(
 name|o
-operator|!=
-literal|null
+operator|.
+name|isPresent
+argument_list|()
 condition|)
 block|{
 return|return
 name|o
+operator|.
+name|get
+argument_list|()
 return|;
 block|}
 block|}

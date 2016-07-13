@@ -707,8 +707,9 @@ block|{
 name|GroupTreeNode
 name|autoGroupsRoot
 init|=
-operator|new
 name|GroupTreeNode
+operator|.
+name|fromGroup
 argument_list|(
 operator|new
 name|ExplicitGroup
@@ -940,8 +941,9 @@ name|autoGroupsRoot
 operator|.
 name|addChild
 argument_list|(
-operator|new
 name|GroupTreeNode
+operator|.
+name|fromGroup
 argument_list|(
 name|group
 argument_list|)

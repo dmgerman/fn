@@ -1510,8 +1510,9 @@ block|{
 name|GroupTreeNode
 name|groupRoot
 init|=
-operator|new
 name|GroupTreeNode
+operator|.
+name|fromGroup
 argument_list|(
 operator|new
 name|AllEntriesGroup
@@ -1626,8 +1627,9 @@ decl_stmt|;
 name|GroupTreeNode
 name|groupRoot
 init|=
-operator|new
 name|GroupTreeNode
+operator|.
+name|fromGroup
 argument_list|(
 operator|new
 name|AllEntriesGroup
@@ -1638,8 +1640,9 @@ name|groupRoot
 operator|.
 name|addChild
 argument_list|(
-operator|new
 name|GroupTreeNode
+operator|.
+name|fromGroup
 argument_list|(
 operator|new
 name|ExplicitGroup

@@ -4607,7 +4607,8 @@ name|this
 argument_list|,
 name|Globals
 operator|.
-name|streamEavesdropper
+name|getStreamEavesdropper
+argument_list|()
 argument_list|,
 name|GuiAppender
 operator|.
@@ -5879,7 +5880,8 @@ argument_list|)
 expr_stmt|;
 name|Globals
 operator|.
-name|focusListener
+name|getFocusListener
+argument_list|()
 operator|.
 name|setFocused
 argument_list|(
@@ -6497,23 +6499,22 @@ name|prefs
 argument_list|)
 expr_stmt|;
 comment|// Clear autosave files:
-if|if
-condition|(
+comment|// TODO: Is this really needed since clearAutoSave() is called in stopAutoSaveManager() a few rows below?
 name|Globals
 operator|.
-name|autoSaveManager
-operator|!=
-literal|null
-condition|)
-block|{
-name|Globals
+name|getAutoSaveManager
+argument_list|()
 operator|.
-name|autoSaveManager
+name|ifPresent
+argument_list|(
+name|manager
+lambda|->
+name|manager
 operator|.
 name|clearAutoSaves
 argument_list|()
+argument_list|)
 expr_stmt|;
-block|}
 name|prefs
 operator|.
 name|flush
@@ -6538,21 +6539,11 @@ argument_list|()
 expr_stmt|;
 block|}
 comment|// shutdown any timers that are may be active
-if|if
-condition|(
-name|Globals
-operator|.
-name|autoSaveManager
-operator|!=
-literal|null
-condition|)
-block|{
 name|Globals
 operator|.
 name|stopAutoSaveManager
 argument_list|()
 expr_stmt|;
-block|}
 block|}
 comment|/**      * General info dialog.  The MacAdapter calls this method when "Quit"      * is selected from the application menu, Cmd-Q is pressed, or "Quit" is selected from the Dock.      * The function returns a boolean indicating if quitting is ok or not.      *<p>      * Non-OSX JabRef calls this when choosing "Quit" from the menu      *<p>      * SIDE EFFECT: tears down JabRef      *      * @return true if the user chose to quit; false otherwise      */
 DECL|method|quit ()
@@ -10578,6 +10569,13 @@ argument_list|(
 name|donationAction
 argument_list|)
 expr_stmt|;
+name|tlb
+operator|.
+name|add
+argument_list|(
+name|forkMeOnGitHubAction
+argument_list|)
+expr_stmt|;
 block|}
 comment|/**      * displays the String on the Status Line visible on the bottom of the JabRef mainframe      */
 DECL|method|output (final String s)
@@ -12418,7 +12416,8 @@ name|debug
 argument_list|(
 name|Globals
 operator|.
-name|focusListener
+name|getFocusListener
+argument_list|()
 operator|.
 name|getFocused
 argument_list|()
@@ -12432,7 +12431,8 @@ name|source
 init|=
 name|Globals
 operator|.
-name|focusListener
+name|getFocusListener
+argument_list|()
 operator|.
 name|getFocused
 argument_list|()

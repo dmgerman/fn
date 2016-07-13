@@ -289,6 +289,9 @@ name|getEntryByKey
 argument_list|(
 literal|"entry1"
 argument_list|)
+operator|.
+name|get
+argument_list|()
 expr_stmt|;
 name|entry2
 operator|=
@@ -298,6 +301,9 @@ name|getEntryByKey
 argument_list|(
 literal|"entry2"
 argument_list|)
+operator|.
+name|get
+argument_list|()
 expr_stmt|;
 block|}
 block|}

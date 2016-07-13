@@ -265,9 +265,14 @@ name|encode
 argument_list|(
 name|entry
 operator|.
-name|getField
+name|getFieldOptional
 argument_list|(
 literal|"title"
+argument_list|)
+operator|.
+name|orElse
+argument_list|(
+literal|null
 argument_list|)
 argument_list|,
 name|StandardCharsets

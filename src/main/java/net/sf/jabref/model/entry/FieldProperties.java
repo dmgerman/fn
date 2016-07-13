@@ -96,6 +96,9 @@ name|PAGINATION
 block|,
 DECL|enumConstant|TYPE
 name|TYPE
+block|,
+DECL|enumConstant|CROSSREF
+name|CROSSREF
 block|;
 DECL|field|ALL_OPTS
 specifier|public

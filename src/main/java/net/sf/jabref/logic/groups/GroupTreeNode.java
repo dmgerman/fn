@@ -50,6 +50,28 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|stream
+operator|.
+name|Collectors
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -170,7 +192,7 @@ name|group
 decl_stmt|;
 comment|/**      * Creates this node and associates the specified group with it.      *      * @param group the group underlying this node      */
 DECL|method|GroupTreeNode (AbstractGroup group)
-specifier|public
+specifier|private
 name|GroupTreeNode
 parameter_list|(
 name|AbstractGroup
@@ -190,6 +212,24 @@ name|group
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|fromGroup (AbstractGroup group)
+specifier|public
+specifier|static
+name|GroupTreeNode
+name|fromGroup
+parameter_list|(
+name|AbstractGroup
+name|group
+parameter_list|)
+block|{
+return|return
+operator|new
+name|GroupTreeNode
+argument_list|(
+name|group
+argument_list|)
+return|;
+block|}
 comment|/**      * Returns the group underlying this node.      *      * @return the group associated with this node      */
 DECL|method|getGroup ()
 specifier|public
@@ -201,14 +241,17 @@ return|return
 name|group
 return|;
 block|}
-comment|/**      * Associates the specified group with this node.      *      * @param group the new group (has to be non-null)      */
-DECL|method|setGroup (AbstractGroup group)
+comment|/**      * Associates the specified group with this node.      *      * @param newGroup the new group (has to be non-null)      */
+annotation|@
+name|Deprecated
+comment|// use other overload
+DECL|method|setGroup (AbstractGroup newGroup)
 specifier|public
 name|void
 name|setGroup
 parameter_list|(
 name|AbstractGroup
-name|group
+name|newGroup
 parameter_list|)
 block|{
 name|this
@@ -219,9 +262,115 @@ name|Objects
 operator|.
 name|requireNonNull
 argument_list|(
-name|group
+name|newGroup
 argument_list|)
 expr_stmt|;
+block|}
+comment|/**      * Associates the specified group with this node while also providing the possibility to modify previous matched      * entries so that they are now matched by the new group.      *      * @param newGroup the new group (has to be non-null)      * @param shouldKeepPreviousAssignments specifies whether previous matched entries should be carried over      * @param entriesInDatabase list of entries in the database      */
+DECL|method|setGroup (AbstractGroup newGroup, boolean shouldKeepPreviousAssignments, List<BibEntry> entriesInDatabase)
+specifier|public
+name|Optional
+argument_list|<
+name|EntriesGroupChange
+argument_list|>
+name|setGroup
+parameter_list|(
+name|AbstractGroup
+name|newGroup
+parameter_list|,
+name|boolean
+name|shouldKeepPreviousAssignments
+parameter_list|,
+name|List
+argument_list|<
+name|BibEntry
+argument_list|>
+name|entriesInDatabase
+parameter_list|)
+block|{
+name|AbstractGroup
+name|oldGroup
+init|=
+name|getGroup
+argument_list|()
+decl_stmt|;
+name|setGroup
+argument_list|(
+name|newGroup
+argument_list|)
+expr_stmt|;
+comment|// Keep assignments from previous group
+if|if
+condition|(
+name|shouldKeepPreviousAssignments
+operator|&&
+name|newGroup
+operator|.
+name|supportsAdd
+argument_list|()
+condition|)
+block|{
+name|List
+argument_list|<
+name|BibEntry
+argument_list|>
+name|entriesMatchedByOldGroup
+init|=
+name|entriesInDatabase
+operator|.
+name|stream
+argument_list|()
+operator|.
+name|filter
+argument_list|(
+name|oldGroup
+operator|::
+name|isMatch
+argument_list|)
+operator|.
+name|collect
+argument_list|(
+name|Collectors
+operator|.
+name|toList
+argument_list|()
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|oldGroup
+operator|instanceof
+name|ExplicitGroup
+operator|&&
+name|newGroup
+operator|instanceof
+name|ExplicitGroup
+condition|)
+block|{
+comment|// Rename of explicit group, so remove old group assignment
+name|oldGroup
+operator|.
+name|remove
+argument_list|(
+name|entriesMatchedByOldGroup
+argument_list|)
+expr_stmt|;
+block|}
+return|return
+name|newGroup
+operator|.
+name|add
+argument_list|(
+name|entriesMatchedByOldGroup
+argument_list|)
+return|;
+block|}
+return|return
+name|Optional
+operator|.
+name|empty
+argument_list|()
+return|;
 block|}
 comment|/**      * Returns a textual representation of this node and its children. This      * representation contains both the tree structure and the textual      * representations of the group associated with each node.      * Every node is one entry in the list of strings.      *      * @return a representation of the tree based at this node as a list of strings      */
 DECL|method|getTreeAsString ()
@@ -800,8 +949,9 @@ block|{
 name|GroupTreeNode
 name|child
 init|=
-operator|new
 name|GroupTreeNode
+operator|.
+name|fromGroup
 argument_list|(
 name|group
 argument_list|)
@@ -851,8 +1001,9 @@ name|copyNode
 parameter_list|()
 block|{
 return|return
-operator|new
 name|GroupTreeNode
+operator|.
+name|fromGroup
 argument_list|(
 name|group
 argument_list|)

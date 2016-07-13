@@ -195,8 +195,9 @@ operator|.
 name|copySubtree
 argument_list|()
 else|:
-operator|new
 name|GroupTreeNode
+operator|.
+name|fromGroup
 argument_list|(
 name|editedNode
 operator|.

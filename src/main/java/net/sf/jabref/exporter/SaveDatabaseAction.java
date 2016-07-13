@@ -729,7 +729,8 @@ argument_list|)
 expr_stmt|;
 name|Globals
 operator|.
-name|fileUpdateMonitor
+name|getFileUpdateMonitor
+argument_list|()
 operator|.
 name|updateTimeStamp
 argument_list|(
@@ -1835,7 +1836,8 @@ name|setFileMonitorHandle
 argument_list|(
 name|Globals
 operator|.
-name|fileUpdateMonitor
+name|getFileUpdateMonitor
+argument_list|()
 operator|.
 name|addUpdateListener
 argument_list|(
@@ -1932,7 +1934,8 @@ argument_list|()
 operator|||
 name|Globals
 operator|.
-name|fileUpdateMonitor
+name|getFileUpdateMonitor
+argument_list|()
 operator|.
 name|hasBeenModified
 argument_list|(

@@ -1221,8 +1221,9 @@ decl_stmt|;
 name|GroupTreeNode
 name|root
 init|=
-operator|new
 name|GroupTreeNode
+operator|.
+name|fromGroup
 argument_list|(
 operator|new
 name|AllEntriesGroup

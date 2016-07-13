@@ -189,8 +189,9 @@ decl_stmt|;
 name|GroupTreeNode
 name|newNode
 init|=
-operator|new
 name|GroupTreeNode
+operator|.
+name|fromGroup
 argument_list|(
 name|group
 argument_list|)

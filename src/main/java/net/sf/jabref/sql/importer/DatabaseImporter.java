@@ -1375,8 +1375,9 @@ decl_stmt|;
 name|GroupTreeNode
 name|rootNode
 init|=
-operator|new
 name|GroupTreeNode
+operator|.
+name|fromGroup
 argument_list|(
 operator|new
 name|AllEntriesGroup
@@ -1693,8 +1694,9 @@ block|{
 name|GroupTreeNode
 name|node
 init|=
-operator|new
 name|GroupTreeNode
+operator|.
+name|fromGroup
 argument_list|(
 name|group
 argument_list|)

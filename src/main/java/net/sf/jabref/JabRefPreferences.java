@@ -234,6 +234,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Set
 import|;
 end_import
@@ -7570,7 +7580,10 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
+name|Optional
+argument_list|<
 name|String
+argument_list|>
 name|rs
 decl_stmt|;
 try|try
@@ -7585,8 +7598,9 @@ argument_list|(
 name|rd
 argument_list|)
 operator|)
-operator|!=
-literal|null
+operator|.
+name|isPresent
+argument_list|()
 condition|)
 block|{
 name|res
@@ -7594,6 +7608,9 @@ operator|.
 name|add
 argument_list|(
 name|rs
+operator|.
+name|get
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -8369,7 +8386,10 @@ block|}
 DECL|method|getNextUnit (Reader data)
 specifier|private
 specifier|static
+name|Optional
+argument_list|<
 name|String
+argument_list|>
 name|getNextUnit
 parameter_list|(
 name|Reader
@@ -8518,10 +8538,15 @@ literal|0
 condition|)
 block|{
 return|return
+name|Optional
+operator|.
+name|of
+argument_list|(
 name|res
 operator|.
 name|toString
 argument_list|()
+argument_list|)
 return|;
 block|}
 elseif|else
@@ -8535,13 +8560,21 @@ condition|)
 block|{
 comment|// end of stream
 return|return
-literal|null
+name|Optional
+operator|.
+name|empty
+argument_list|()
 return|;
 block|}
 else|else
 block|{
 return|return
+name|Optional
+operator|.
+name|of
+argument_list|(
 literal|""
+argument_list|)
 return|;
 block|}
 block|}
@@ -8644,7 +8677,10 @@ block|}
 comment|/**      * Retrieves all information about the entry type in preferences, with the tag given by number.      */
 DECL|method|getCustomEntryType (int number)
 specifier|public
+name|Optional
+argument_list|<
 name|CustomEntryType
+argument_list|>
 name|getCustomEntryType
 parameter_list|(
 name|int
@@ -8681,7 +8717,10 @@ literal|null
 condition|)
 block|{
 return|return
-literal|null
+name|Optional
+operator|.
+name|empty
+argument_list|()
 return|;
 block|}
 name|List
@@ -8738,6 +8777,10 @@ argument_list|()
 condition|)
 block|{
 return|return
+name|Optional
+operator|.
+name|of
+argument_list|(
 operator|new
 name|CustomEntryType
 argument_list|(
@@ -8751,6 +8794,7 @@ argument_list|,
 name|req
 argument_list|,
 name|opt
+argument_list|)
 argument_list|)
 return|;
 block|}
@@ -8775,6 +8819,10 @@ name|priOpt
 argument_list|)
 expr_stmt|;
 return|return
+name|Optional
+operator|.
+name|of
+argument_list|(
 operator|new
 name|CustomEntryType
 argument_list|(
@@ -8790,6 +8838,7 @@ argument_list|,
 name|priOpt
 argument_list|,
 name|secondary
+argument_list|)
 argument_list|)
 return|;
 block|}
@@ -8839,53 +8888,6 @@ argument_list|,
 name|number
 argument_list|)
 expr_stmt|;
-block|}
-DECL|method|purgeCustomEntryTypes ()
-specifier|public
-name|void
-name|purgeCustomEntryTypes
-parameter_list|()
-block|{
-name|int
-name|number
-init|=
-literal|0
-decl_stmt|;
-if|if
-condition|(
-name|getCustomEntryType
-argument_list|(
-name|number
-argument_list|)
-operator|!=
-literal|null
-condition|)
-block|{
-name|number
-operator|++
-expr_stmt|;
-block|}
-for|for
-control|(
-name|int
-name|i
-init|=
-literal|0
-init|;
-name|i
-operator|<
-name|number
-condition|;
-name|i
-operator|++
-control|)
-block|{
-name|purgeCustomEntryTypes
-argument_list|(
-name|i
-argument_list|)
-expr_stmt|;
-block|}
 block|}
 comment|/**      * Removes all entries keyed by prefix+number, where number is equal to or higher than the given number.      *      * @param number or higher.      */
 DECL|method|purgeSeries (String prefix, int number)
