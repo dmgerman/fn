@@ -20,6 +20,16 @@ name|org
 operator|.
 name|junit
 operator|.
+name|Before
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Test
 import|;
 end_import
@@ -48,14 +58,24 @@ name|IdentityFormatterTest
 block|{
 DECL|field|formatter
 specifier|private
-specifier|final
 name|IdentityFormatter
 name|formatter
-init|=
+decl_stmt|;
+annotation|@
+name|Before
+DECL|method|setUp ()
+specifier|public
+name|void
+name|setUp
+parameter_list|()
+block|{
+name|formatter
+operator|=
 operator|new
 name|IdentityFormatter
 argument_list|()
-decl_stmt|;
+expr_stmt|;
+block|}
 annotation|@
 name|Test
 DECL|method|formatExample ()

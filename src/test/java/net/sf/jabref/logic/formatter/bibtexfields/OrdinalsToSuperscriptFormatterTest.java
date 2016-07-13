@@ -1,21 +1,7 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|net.sf.jabref.logic.formatter
+DECL|package|net.sf.jabref.logic.formatter.bibtexfields
 package|package
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
-name|formatter
-package|;
-end_package
-
-begin_import
-import|import
 name|net
 operator|.
 name|sf
@@ -27,8 +13,16 @@ operator|.
 name|formatter
 operator|.
 name|bibtexfields
+package|;
+end_package
+
+begin_import
+import|import
+name|org
 operator|.
-name|OrdinalsToSuperscriptFormatter
+name|junit
+operator|.
+name|Assert
 import|;
 end_import
 
@@ -38,7 +32,7 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|Before
 import|;
 end_import
 
@@ -76,14 +70,24 @@ name|OrdinalsToSuperscriptFormatterTest
 block|{
 DECL|field|formatter
 specifier|private
-specifier|final
 name|OrdinalsToSuperscriptFormatter
 name|formatter
-init|=
+decl_stmt|;
+annotation|@
+name|Before
+DECL|method|setUp ()
+specifier|public
+name|void
+name|setUp
+parameter_list|()
+block|{
+name|formatter
+operator|=
 operator|new
 name|OrdinalsToSuperscriptFormatter
 argument_list|()
-decl_stmt|;
+expr_stmt|;
+block|}
 annotation|@
 name|Test
 DECL|method|replacesSuperscript ()

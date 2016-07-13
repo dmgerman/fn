@@ -56,6 +56,16 @@ name|org
 operator|.
 name|junit
 operator|.
+name|BeforeClass
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Test
 import|;
 end_import
@@ -84,20 +94,16 @@ name|HtmlToLatexFormatterTest
 block|{
 DECL|field|formatter
 specifier|private
-specifier|final
 name|HtmlToLatexFormatter
 name|formatter
-init|=
-operator|new
-name|HtmlToLatexFormatter
-argument_list|()
 decl_stmt|;
 annotation|@
-name|Before
-DECL|method|setUp ()
+name|BeforeClass
+DECL|method|setUpBeforeClass ()
 specifier|public
+specifier|static
 name|void
-name|setUp
+name|setUpBeforeClass
 parameter_list|()
 throws|throws
 name|Exception
@@ -109,6 +115,21 @@ operator|=
 name|JabRefPreferences
 operator|.
 name|getInstance
+argument_list|()
+expr_stmt|;
+block|}
+annotation|@
+name|Before
+DECL|method|setUp ()
+specifier|public
+name|void
+name|setUp
+parameter_list|()
+block|{
+name|formatter
+operator|=
+operator|new
+name|HtmlToLatexFormatter
 argument_list|()
 expr_stmt|;
 block|}
