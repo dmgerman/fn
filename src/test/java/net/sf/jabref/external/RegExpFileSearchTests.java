@@ -415,6 +415,9 @@ name|getEntryByKey
 argument_list|(
 literal|"HipKro03"
 argument_list|)
+operator|.
+name|get
+argument_list|()
 expr_stmt|;
 name|Assert
 operator|.

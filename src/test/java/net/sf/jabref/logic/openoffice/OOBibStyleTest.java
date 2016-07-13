@@ -1369,6 +1369,9 @@ name|getEntryByKey
 argument_list|(
 literal|"1137631"
 argument_list|)
+operator|.
+name|get
+argument_list|()
 decl_stmt|;
 name|assertEquals
 argument_list|(
@@ -1549,6 +1552,9 @@ name|getEntryByKey
 argument_list|(
 literal|"1137631"
 argument_list|)
+operator|.
+name|get
+argument_list|()
 decl_stmt|;
 name|assertEquals
 argument_list|(
