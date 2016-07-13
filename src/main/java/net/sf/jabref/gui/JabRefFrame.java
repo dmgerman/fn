@@ -10569,6 +10569,13 @@ argument_list|(
 name|donationAction
 argument_list|)
 expr_stmt|;
+name|tlb
+operator|.
+name|add
+argument_list|(
+name|forkMeOnGitHubAction
+argument_list|)
+expr_stmt|;
 block|}
 comment|/**      * displays the String on the Status Line visible on the bottom of the JabRef mainframe      */
 DECL|method|output (final String s)
