@@ -146,7 +146,7 @@ literal|"\\{[A-Z]+\\}"
 argument_list|)
 decl_stmt|;
 DECL|field|UNICODE_CHAR_MAP
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|UnicodeToReadableCharMap
