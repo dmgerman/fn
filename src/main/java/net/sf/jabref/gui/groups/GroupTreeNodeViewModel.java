@@ -1840,8 +1840,9 @@ block|{
 name|GroupTreeNode
 name|newNode
 init|=
-operator|new
 name|GroupTreeNode
+operator|.
+name|fromGroup
 argument_list|(
 name|newGroup
 argument_list|)
