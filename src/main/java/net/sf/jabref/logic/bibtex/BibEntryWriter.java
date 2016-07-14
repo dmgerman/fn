@@ -289,7 +289,7 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Writes the given BibEntry using the given writer      *      * @param entry The entry to write      * @param out The writer to use      * @param bibDatabaseMode The database mode (bibtex or biblatex)      * @param reformat Should the entry be in any case, even if no change occurred?      */
+comment|/**      * Writes the given BibEntry using the given writer      *      * @param entry           The entry to write      * @param out             The writer to use      * @param bibDatabaseMode The database mode (bibtex or biblatex)      * @param reformat        Should the entry be in any case, even if no change occurred?      */
 DECL|method|write (BibEntry entry, Writer out, BibDatabaseMode bibDatabaseMode, Boolean reformat)
 specifier|public
 name|void
@@ -335,6 +335,13 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
+name|writeUserComments
+argument_list|(
+name|entry
+argument_list|,
+name|out
+argument_list|)
+expr_stmt|;
 name|out
 operator|.
 name|write
@@ -362,6 +369,50 @@ operator|.
 name|NEWLINE
 argument_list|)
 expr_stmt|;
+block|}
+DECL|method|writeUserComments (BibEntry entry, Writer out)
+specifier|private
+name|void
+name|writeUserComments
+parameter_list|(
+name|BibEntry
+name|entry
+parameter_list|,
+name|Writer
+name|out
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+name|String
+name|userComments
+init|=
+name|entry
+operator|.
+name|getUserComments
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+operator|!
+name|userComments
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+name|out
+operator|.
+name|write
+argument_list|(
+name|userComments
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 DECL|method|writeWithoutPrependedNewlines (BibEntry entry, Writer out, BibDatabaseMode bibDatabaseMode)
 specifier|public
@@ -751,7 +802,7 @@ name|NEWLINE
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Write a single field, if it has any content.      *      * @param entry             the entry to write      * @param out               the target of the write      * @param name              The field name      * @throws IOException In case of an IO error      */
+comment|/**      * Write a single field, if it has any content.      *      * @param entry the entry to write      * @param out   the target of the write      * @param name  The field name      * @throws IOException In case of an IO error      */
 DECL|method|writeField (BibEntry entry, Writer out, String name, int indentation)
 specifier|private
 name|void

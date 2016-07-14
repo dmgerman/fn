@@ -2677,6 +2677,81 @@ return|return
 name|this
 return|;
 block|}
+comment|/*     * Returns user comments (arbitrary text before the entry), if they exist. If not, returns the empty String      */
+DECL|method|getUserComments ()
+specifier|public
+name|String
+name|getUserComments
+parameter_list|()
+block|{
+if|if
+condition|(
+name|parsedSerialization
+operator|!=
+literal|null
+condition|)
+block|{
+try|try
+block|{
+comment|// get the text before the entry
+name|String
+name|prolog
+init|=
+name|parsedSerialization
+operator|.
+name|substring
+argument_list|(
+literal|0
+argument_list|,
+name|parsedSerialization
+operator|.
+name|indexOf
+argument_list|(
+literal|'@'
+argument_list|)
+argument_list|)
+decl_stmt|;
+comment|// delete trailing whitespaces (between entry and text)
+name|prolog
+operator|=
+name|prolog
+operator|.
+name|replaceFirst
+argument_list|(
+literal|"\\s+$"
+argument_list|,
+literal|""
+argument_list|)
+expr_stmt|;
+comment|// if there is any non whitespace text, write it
+if|if
+condition|(
+name|prolog
+operator|.
+name|length
+argument_list|()
+operator|>
+literal|0
+condition|)
+block|{
+return|return
+name|prolog
+return|;
+block|}
+block|}
+catch|catch
+parameter_list|(
+name|StringIndexOutOfBoundsException
+name|ignore
+parameter_list|)
+block|{
+comment|// if this occurs a broken parsed serialization has been set, so just do nothing
+block|}
+block|}
+return|return
+literal|""
+return|;
+block|}
 DECL|method|getFieldAsWords (String field)
 specifier|public
 name|Set
