@@ -2819,15 +2819,7 @@ literal|"\\}"
 block|}
 block|,
 comment|// Right curly bracket
-block|{
-literal|"138"
-block|,
-literal|""
-block|,
-literal|"{{\\v{S}}}"
-block|}
-block|,
-comment|// Line tabulation set
+comment|// {"138", "", "{{\\v{S}}}"}, // Line tabulation set
 comment|// {"141", "", ""}, // Reverse line feed
 block|{
 literal|"145"
@@ -2874,15 +2866,7 @@ literal|"--"
 block|}
 block|,
 comment|// En dash
-block|{
-literal|"154"
-block|,
-literal|""
-block|,
-literal|"{\\v{s}}"
-block|}
-block|,
-comment|// Single character introducer
+comment|// {"154", "", "{\\v{s}}"}, // Single character introducer
 block|{
 literal|"260"
 block|,
@@ -3401,7 +3385,7 @@ literal|"729"
 block|,
 literal|"dot"
 block|,
-literal|"{\\\\.{}}"
+literal|"{\\.{}}"
 block|}
 block|,
 comment|// Dot above
@@ -4651,6 +4635,23 @@ name|HashMap
 argument_list|<>
 argument_list|()
 decl_stmt|;
+DECL|field|UNICODE_ESCAPED_ACCENTS
+specifier|public
+specifier|static
+specifier|final
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
+name|UNICODE_ESCAPED_ACCENTS
+init|=
+operator|new
+name|HashMap
+argument_list|<>
+argument_list|()
+decl_stmt|;
 DECL|field|NUMERICAL_LATEX_CONVERSION_MAP
 specifier|public
 specifier|static
@@ -4674,7 +4675,7 @@ specifier|static
 specifier|final
 name|Map
 argument_list|<
-name|Character
+name|String
 argument_list|,
 name|String
 argument_list|>
@@ -4902,12 +4903,17 @@ operator|>
 literal|128
 condition|)
 block|{
-name|Character
-name|c
+name|String
+name|unicodeSymbol
 init|=
-operator|(
-name|char
-operator|)
+name|String
+operator|.
+name|valueOf
+argument_list|(
+name|Character
+operator|.
+name|toChars
+argument_list|(
 name|Integer
 operator|.
 name|decode
@@ -4917,15 +4923,14 @@ index|[
 literal|0
 index|]
 argument_list|)
-operator|.
-name|intValue
-argument_list|()
+argument_list|)
+argument_list|)
 decl_stmt|;
 name|UNICODE_LATEX_CONVERSION_MAP
 operator|.
 name|put
 argument_list|(
-name|c
+name|unicodeSymbol
 argument_list|,
 name|aConversionList
 index|[
@@ -4948,10 +4953,7 @@ name|put
 argument_list|(
 name|strippedLaTeX
 argument_list|,
-name|c
-operator|.
-name|toString
-argument_list|()
+name|unicodeSymbol
 argument_list|)
 expr_stmt|;
 block|}
@@ -4986,6 +4988,36 @@ name|anAccentList
 index|[
 literal|1
 index|]
+argument_list|)
+expr_stmt|;
+name|UNICODE_ESCAPED_ACCENTS
+operator|.
+name|put
+argument_list|(
+name|anAccentList
+index|[
+literal|1
+index|]
+argument_list|,
+name|String
+operator|.
+name|valueOf
+argument_list|(
+name|Character
+operator|.
+name|toChars
+argument_list|(
+name|Integer
+operator|.
+name|decode
+argument_list|(
+name|anAccentList
+index|[
+literal|0
+index|]
+argument_list|)
+argument_list|)
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -5029,6 +5061,26 @@ literal|"Ã"
 argument_list|)
 expr_stmt|;
 comment|// Overwritten by Ãngstrom symbol
+comment|// Manual additions
+comment|// Support relax to the extent that it is simply removed
+name|LATEX_HTML_CONVERSION_MAP
+operator|.
+name|put
+argument_list|(
+literal|"relax"
+argument_list|,
+literal|""
+argument_list|)
+expr_stmt|;
+name|LATEX_UNICODE_CONVERSION_MAP
+operator|.
+name|put
+argument_list|(
+literal|"relax"
+argument_list|,
+literal|""
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|cleanLaTeX (String escapedString)
 specifier|private

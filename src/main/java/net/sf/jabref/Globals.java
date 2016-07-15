@@ -288,6 +288,7 @@ operator|new
 name|ImportFormatReader
 argument_list|()
 decl_stmt|;
+comment|// Non-letters which are used to denote accents in LaTeX-commands, e.g., in {\"{a}}
 DECL|field|SPECIAL_COMMAND_CHARS
 specifier|public
 specifier|static
@@ -295,7 +296,7 @@ specifier|final
 name|String
 name|SPECIAL_COMMAND_CHARS
 init|=
-literal|"\"`^~'c="
+literal|"\"`^~'=.|"
 decl_stmt|;
 comment|// In the main program, this field is initialized in JabRef.java
 comment|// Each test case initializes this field if required
