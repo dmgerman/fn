@@ -8,13 +8,15 @@ comment|// $Id$
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref.bst
+DECL|package|net.sf.jabref.logic.bst
 package|package
 name|net
 operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|logic
 operator|.
 name|bst
 package|;

@@ -1,12 +1,14 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|net.sf.jabref.bst
+DECL|package|net.sf.jabref.logic.bst
 package|package
 name|net
 operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|logic
 operator|.
 name|bst
 package|;
@@ -33,87 +35,88 @@ import|;
 end_import
 
 begin_class
-DECL|class|BibtexPurifyTest
+DECL|class|TextPrefixFunctionTest
 specifier|public
 class|class
-name|BibtexPurifyTest
+name|TextPrefixFunctionTest
 block|{
 annotation|@
 name|Test
-DECL|method|testPurify ()
+DECL|method|testPrefix ()
 specifier|public
 name|void
-name|testPurify
+name|testPrefix
 parameter_list|()
 block|{
-name|assertPurify
+name|assertPrefix
 argument_list|(
 literal|"i"
 argument_list|,
 literal|"i"
 argument_list|)
 expr_stmt|;
-name|assertPurify
+name|assertPrefix
 argument_list|(
-literal|"0I  "
+literal|"0I~ "
 argument_list|,
 literal|"0I~ "
 argument_list|)
 expr_stmt|;
-name|assertPurify
+name|assertPrefix
 argument_list|(
-literal|"Hi Hi "
+literal|"Hi Hi"
 argument_list|,
 literal|"Hi Hi "
 argument_list|)
 expr_stmt|;
-name|assertPurify
+name|assertPrefix
 argument_list|(
-literal|"oe"
+literal|"{\\oe}"
 argument_list|,
 literal|"{\\oe}"
 argument_list|)
 expr_stmt|;
-name|assertPurify
+name|assertPrefix
 argument_list|(
-literal|"Hi oeHi "
+literal|"Hi {\\oe   }H"
 argument_list|,
 literal|"Hi {\\oe   }Hi "
 argument_list|)
 expr_stmt|;
-name|assertPurify
+name|assertPrefix
 argument_list|(
-literal|"Jonathan Meyer and Charles Louis Xavier Joseph de la Vallee Poussin"
+literal|"Jonat"
 argument_list|,
 literal|"Jonathan Meyer and Charles Louis Xavier Joseph de la Vall{\\'e}e Poussin"
 argument_list|)
 expr_stmt|;
-name|assertPurify
+name|assertPrefix
 argument_list|(
-literal|"e"
+literal|"{\\'e}"
 argument_list|,
 literal|"{\\'e}"
 argument_list|)
 expr_stmt|;
-name|assertPurify
+name|assertPrefix
 argument_list|(
-literal|"Edouard Masterly"
+literal|"{\\'{E}}doua"
 argument_list|,
 literal|"{\\'{E}}douard Masterly"
 argument_list|)
 expr_stmt|;
-name|assertPurify
+name|assertPrefix
 argument_list|(
-literal|"Ulrich Underwood and Ned Net and Paul Pot"
+literal|"Ulric"
 argument_list|,
 literal|"Ulrich {\\\"{U}}nderwood and Ned {\\~N}et and Paul {\\={P}}ot"
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|assertPurify (final String string, final String string2)
+DECL|method|assertPrefix (final String string, final String string2)
 specifier|private
+specifier|static
 name|void
-name|assertPurify
+name|assertPrefix
 parameter_list|(
 specifier|final
 name|String
@@ -130,10 +133,12 @@ name|assertEquals
 argument_list|(
 name|string
 argument_list|,
-name|BibtexPurify
+name|BibtexTextPrefix
 operator|.
-name|purify
+name|textPrefix
 argument_list|(
+literal|5
+argument_list|,
 name|string2
 argument_list|,
 name|s
@@ -142,15 +147,11 @@ name|Assert
 operator|.
 name|fail
 argument_list|(
-literal|"Should not Warn ("
-operator|+
-name|s
-operator|+
-literal|")! purify should be "
+literal|"Should not Warn! text.prefix$ should be "
 operator|+
 name|string
 operator|+
-literal|" for "
+literal|" for (5) "
 operator|+
 name|string2
 argument_list|)

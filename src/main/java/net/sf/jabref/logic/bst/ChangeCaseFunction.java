@@ -4,13 +4,15 @@ comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is fre
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref.bst
+DECL|package|net.sf.jabref.logic.bst
 package|package
 name|net
 operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|logic
 operator|.
 name|bst
 package|;
@@ -34,6 +36,8 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
 name|bst
 operator|.
 name|BibtexCaseChanger
@@ -50,6 +54,8 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
 name|bst
 operator|.
 name|VM
@@ -65,6 +71,8 @@ operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|logic
 operator|.
 name|bst
 operator|.

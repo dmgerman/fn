@@ -4,13 +4,15 @@ comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is fre
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref.bst
+DECL|package|net.sf.jabref.logic.bst
 package|package
 name|net
 operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|logic
 operator|.
 name|bst
 package|;
@@ -34,6 +36,8 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
 name|bst
 operator|.
 name|VM
@@ -50,6 +54,8 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
 name|bst
 operator|.
 name|VM
@@ -59,14 +65,14 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *  * The |built_in| function {\.{purify\$}} pops the top (string) literal, removes  * nonalphanumeric characters except for |white_space| and |sep_char| characters  * (these get converted to a |space|) and removes certain alphabetic characters  * contained in the control sequences associated with a special character, and  * pushes the resulting string. If the literal isn't a string, it complains and  * pushes the null string.  *  */
+comment|/**  The |built_in| function {\.{text.prefix\$}} pops the top two literals  (the integer literal |pop_lit1| and a string literal, in that order).  It pushes the substring of the (at most) |pop_lit1| consecutive text  characters starting from the beginning of the string.  This function  is similar to {\.{substring\$}}, but this one considers an accented  character (or more precisely, a ``special character''$\!$, even if  it's missing its matching |right_brace|) to be a single text character  (rather than however many |ASCII_code| characters it actually  comprises), and this function doesn't consider braces to be text  characters; furthermore, this function appends any needed matching  |right_brace|s.  If any of the types is incorrect, it complains and  pushes the null string.  *  */
 end_comment
 
 begin_class
-DECL|class|PurifyFunction
+DECL|class|TextPrefixFunction
 specifier|public
 class|class
-name|PurifyFunction
+name|TextPrefixFunction
 implements|implements
 name|BstFunction
 block|{
@@ -76,9 +82,9 @@ specifier|final
 name|VM
 name|vm
 decl_stmt|;
-DECL|method|PurifyFunction (VM vm)
+DECL|method|TextPrefixFunction (VM vm)
 specifier|public
-name|PurifyFunction
+name|TextPrefixFunction
 parameter_list|(
 name|VM
 name|vm
@@ -117,15 +123,17 @@ if|if
 condition|(
 name|stack
 operator|.
-name|isEmpty
+name|size
 argument_list|()
+operator|<
+literal|2
 condition|)
 block|{
 throw|throw
 operator|new
 name|VMException
 argument_list|(
-literal|"Not enough operands on stack for operation purify$"
+literal|"Not enough operands on stack for operation text.prefix$"
 argument_list|)
 throw|;
 block|}
@@ -143,6 +151,40 @@ operator|!
 operator|(
 name|o1
 operator|instanceof
+name|Integer
+operator|)
+condition|)
+block|{
+name|vm
+operator|.
+name|warn
+argument_list|(
+literal|"An integer is needed as first parameter to text.prefix$"
+argument_list|)
+expr_stmt|;
+name|stack
+operator|.
+name|push
+argument_list|(
+literal|""
+argument_list|)
+expr_stmt|;
+return|return;
+block|}
+name|Object
+name|o2
+init|=
+name|stack
+operator|.
+name|pop
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+operator|!
+operator|(
+name|o2
+operator|instanceof
 name|String
 operator|)
 condition|)
@@ -151,7 +193,7 @@ name|vm
 operator|.
 name|warn
 argument_list|(
-literal|"A string is needed for purify$"
+literal|"A string is needed as second parameter to text.prefix$"
 argument_list|)
 expr_stmt|;
 name|stack
@@ -167,14 +209,19 @@ name|stack
 operator|.
 name|push
 argument_list|(
-name|BibtexPurify
+name|BibtexTextPrefix
 operator|.
-name|purify
+name|textPrefix
 argument_list|(
+operator|(
+name|Integer
+operator|)
+name|o1
+argument_list|,
 operator|(
 name|String
 operator|)
-name|o1
+name|o2
 argument_list|,
 name|vm
 argument_list|)

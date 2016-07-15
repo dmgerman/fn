@@ -70,6 +70,8 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
 name|bst
 operator|.
 name|BibtexNameFormatter
