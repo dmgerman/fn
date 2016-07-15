@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|net.sf.jabref.gui.mergeentries
+DECL|package|net.sf.jabref.logic.util.strings
 package|package
 name|net
 operator|.
@@ -8,9 +8,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
+name|logic
 operator|.
-name|mergeentries
+name|util
+operator|.
+name|strings
 package|;
 end_package
 
@@ -49,10 +51,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|MergeEntriesTest
+DECL|class|DiffHighlightingTest
 specifier|public
 class|class
-name|MergeEntriesTest
+name|DiffHighlightingTest
 block|{
 annotation|@
 name|Test
@@ -64,7 +66,7 @@ parameter_list|()
 block|{
 name|assertNull
 argument_list|(
-name|MergeEntries
+name|DiffHighlighting
 operator|.
 name|generateDiffHighlighting
 argument_list|(
@@ -94,7 +96,7 @@ parameter_list|()
 block|{
 name|assertNull
 argument_list|(
-name|MergeEntries
+name|DiffHighlighting
 operator|.
 name|generateDiffHighlighting
 argument_list|(
@@ -119,7 +121,7 @@ name|assertEquals
 argument_list|(
 literal|"foo"
 argument_list|,
-name|MergeEntries
+name|DiffHighlighting
 operator|.
 name|generateDiffHighlighting
 argument_list|(
@@ -144,7 +146,7 @@ name|assertEquals
 argument_list|(
 literal|"<span class=del>foo</span><span class=add>foobar</span>"
 argument_list|,
-name|MergeEntries
+name|DiffHighlighting
 operator|.
 name|generateDiffHighlighting
 argument_list|(
@@ -169,7 +171,7 @@ name|assertEquals
 argument_list|(
 literal|"foo<span class=add>bar</span>"
 argument_list|,
-name|MergeEntries
+name|DiffHighlighting
 operator|.
 name|generateDiffHighlighting
 argument_list|(
@@ -194,7 +196,7 @@ name|assertEquals
 argument_list|(
 literal|"<span class=del>foobar</span><span class=add>foo</span>"
 argument_list|,
-name|MergeEntries
+name|DiffHighlighting
 operator|.
 name|generateDiffHighlighting
 argument_list|(
@@ -219,7 +221,7 @@ name|assertEquals
 argument_list|(
 literal|"foo<span class=del>bar</span>"
 argument_list|,
-name|MergeEntries
+name|DiffHighlighting
 operator|.
 name|generateDiffHighlighting
 argument_list|(
@@ -244,7 +246,7 @@ name|assertEquals
 argument_list|(
 literal|"<span class=change>foo</span>"
 argument_list|,
-name|MergeEntries
+name|DiffHighlighting
 operator|.
 name|generateSymmetricHighlighting
 argument_list|(
@@ -269,7 +271,7 @@ name|assertEquals
 argument_list|(
 literal|"foo"
 argument_list|,
-name|MergeEntries
+name|DiffHighlighting
 operator|.
 name|generateSymmetricHighlighting
 argument_list|(
@@ -294,7 +296,7 @@ name|assertEquals
 argument_list|(
 literal|"<span class=change>foobar</span>"
 argument_list|,
-name|MergeEntries
+name|DiffHighlighting
 operator|.
 name|generateSymmetricHighlighting
 argument_list|(
@@ -319,7 +321,7 @@ name|assertEquals
 argument_list|(
 literal|"foo<span class=add>bar</span>"
 argument_list|,
-name|MergeEntries
+name|DiffHighlighting
 operator|.
 name|generateSymmetricHighlighting
 argument_list|(
@@ -344,7 +346,7 @@ name|assertEquals
 argument_list|(
 literal|"foo<span class=add>bar</span> and<span class=add>some</span>thing"
 argument_list|,
-name|MergeEntries
+name|DiffHighlighting
 operator|.
 name|generateSymmetricHighlighting
 argument_list|(
@@ -369,7 +371,7 @@ name|assertEquals
 argument_list|(
 literal|"foo<span class=add>bar</span> and<span class=add>some</span> thing"
 argument_list|,
-name|MergeEntries
+name|DiffHighlighting
 operator|.
 name|generateSymmetricHighlighting
 argument_list|(

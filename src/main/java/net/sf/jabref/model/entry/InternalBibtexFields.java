@@ -2812,6 +2812,25 @@ name|isNumeric
 argument_list|()
 return|;
 block|}
+DECL|method|isInternalField (String field)
+specifier|public
+specifier|static
+name|boolean
+name|isInternalField
+parameter_list|(
+name|String
+name|field
+parameter_list|)
+block|{
+return|return
+name|field
+operator|.
+name|startsWith
+argument_list|(
+literal|"__"
+argument_list|)
+return|;
+block|}
 comment|/**      * returns a List with all fieldnames      */
 DECL|method|getAllFieldNames ()
 specifier|public
