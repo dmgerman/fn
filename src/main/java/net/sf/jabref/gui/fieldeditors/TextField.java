@@ -220,22 +220,6 @@ name|FieldTextMenu
 import|;
 end_import
 
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|entry
-operator|.
-name|EntryUtil
-import|;
-end_import
-
 begin_comment
 comment|/**  * An implementation of the FieldEditor backed by a JTextField. Used for single-line input, only BibTex key at the  * moment?!  */
 end_comment
@@ -335,18 +319,9 @@ operator|=
 operator|new
 name|FieldNameLabel
 argument_list|(
-literal|' '
-operator|+
-name|EntryUtil
-operator|.
-name|capitalizeFirst
-argument_list|(
 name|this
 operator|.
 name|fieldName
-argument_list|)
-operator|+
-literal|' '
 argument_list|)
 expr_stmt|;
 name|setBackground

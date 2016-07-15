@@ -92,6 +92,22 @@ name|GUIGlobals
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|EntryUtil
+import|;
+end_import
+
 begin_class
 DECL|class|FieldNameLabel
 specifier|public
@@ -110,7 +126,12 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
+name|FieldNameLabel
+operator|.
+name|getFieldNameLabelText
+argument_list|(
 name|name
+argument_list|)
 argument_list|,
 name|SwingConstants
 operator|.
@@ -124,7 +145,6 @@ operator|.
 name|TOP
 argument_list|)
 expr_stmt|;
-comment|//setFont(GUIGlobals.fieldNameFont);
 name|setForeground
 argument_list|(
 name|GUIGlobals
@@ -132,8 +152,6 @@ operator|.
 name|ENTRY_EDITOR_LABEL_COLOR
 argument_list|)
 expr_stmt|;
-comment|//  setBorder(BorderFactory.createMatteBorder(1,0,0,0, Color.GRAY));
-comment|//setBorder(BorderFactory.createEtchedBorder());
 name|setBorder
 argument_list|(
 name|BorderFactory
@@ -195,6 +213,120 @@ argument_list|(
 name|g2
 argument_list|)
 expr_stmt|;
+block|}
+DECL|method|getFieldNameLabelText (String fieldName)
+specifier|private
+specifier|static
+name|String
+name|getFieldNameLabelText
+parameter_list|(
+name|String
+name|fieldName
+parameter_list|)
+block|{
+comment|// selected terms should be uppercase
+if|if
+condition|(
+literal|"isbn"
+operator|.
+name|equalsIgnoreCase
+argument_list|(
+name|fieldName
+argument_list|)
+condition|)
+block|{
+return|return
+literal|" ISBN "
+return|;
+block|}
+elseif|else
+if|if
+condition|(
+literal|"url"
+operator|.
+name|equalsIgnoreCase
+argument_list|(
+name|fieldName
+argument_list|)
+condition|)
+block|{
+return|return
+literal|" URL "
+return|;
+block|}
+elseif|else
+if|if
+condition|(
+literal|"uri"
+operator|.
+name|equalsIgnoreCase
+argument_list|(
+name|fieldName
+argument_list|)
+condition|)
+block|{
+return|return
+literal|" URI "
+return|;
+block|}
+elseif|else
+if|if
+condition|(
+literal|"issn"
+operator|.
+name|equalsIgnoreCase
+argument_list|(
+name|fieldName
+argument_list|)
+condition|)
+block|{
+return|return
+literal|" ISSN "
+return|;
+block|}
+elseif|else
+if|if
+condition|(
+literal|"doi"
+operator|.
+name|equalsIgnoreCase
+argument_list|(
+name|fieldName
+argument_list|)
+condition|)
+block|{
+return|return
+literal|" DOI "
+return|;
+block|}
+elseif|else
+if|if
+condition|(
+literal|"isrn"
+operator|.
+name|equalsIgnoreCase
+argument_list|(
+name|fieldName
+argument_list|)
+condition|)
+block|{
+return|return
+literal|" ISRN "
+return|;
+block|}
+comment|// otherwise capitalize
+return|return
+literal|' '
+operator|+
+name|EntryUtil
+operator|.
+name|capitalizeFirst
+argument_list|(
+name|fieldName
+argument_list|)
+operator|+
+literal|' '
+return|;
 block|}
 block|}
 end_class
