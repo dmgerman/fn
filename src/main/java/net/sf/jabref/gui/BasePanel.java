@@ -540,7 +540,7 @@ name|jabref
 operator|.
 name|exporter
 operator|.
-name|BibDatabaseWriter
+name|BibtexDatabaseWriter
 import|;
 end_import
 
@@ -555,6 +555,20 @@ operator|.
 name|exporter
 operator|.
 name|ExportToClipboardAction
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|exporter
+operator|.
+name|FileSaveSession
 import|;
 end_import
 
@@ -7674,12 +7688,16 @@ argument_list|(
 name|saveType
 argument_list|)
 decl_stmt|;
-name|BibDatabaseWriter
+name|BibtexDatabaseWriter
 name|databaseWriter
 init|=
 operator|new
-name|BibDatabaseWriter
-argument_list|()
+name|BibtexDatabaseWriter
+argument_list|(
+name|FileSaveSession
+operator|::
+operator|new
+argument_list|)
 decl_stmt|;
 if|if
 condition|(
@@ -7694,12 +7712,12 @@ name|savePartOfDatabase
 argument_list|(
 name|bibDatabaseContext
 argument_list|,
-name|prefs
-argument_list|,
 name|mainTable
 operator|.
 name|getSelectedEntries
 argument_list|()
+argument_list|,
+name|prefs
 argument_list|)
 expr_stmt|;
 block|}
@@ -8182,6 +8200,9 @@ operator|.
 name|commit
 argument_list|(
 name|file
+operator|.
+name|toPath
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|this
@@ -13043,6 +13064,9 @@ name|getBibDatabaseContext
 argument_list|()
 operator|.
 name|getDatabaseFile
+argument_list|()
+operator|.
+name|toPath
 argument_list|()
 argument_list|,
 literal|10

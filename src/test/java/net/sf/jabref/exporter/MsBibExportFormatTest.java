@@ -324,6 +324,8 @@ name|testPerformExportWithNoEntry
 parameter_list|()
 throws|throws
 name|IOException
+throws|,
+name|SaveException
 block|{
 name|List
 argument_list|<

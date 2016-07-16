@@ -40,6 +40,30 @@ begin_import
 import|import
 name|java
 operator|.
+name|nio
+operator|.
+name|file
+operator|.
+name|Files
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|file
+operator|.
+name|Path
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|HashMap
@@ -468,7 +492,7 @@ block|}
 comment|/**      * Method for getting the temporary file used for this database. The tempfile      * is used for comparison with the changed on-disk version.      * @param key String The handle for this monitor.      * @throws IllegalArgumentException If the handle doesn't correspond to an entry.      * @return File The temporary file.      */
 DECL|method|getTempFile (String key)
 specifier|public
-name|File
+name|Path
 name|getTempFile
 parameter_list|(
 name|String
@@ -535,7 +559,7 @@ decl_stmt|;
 DECL|field|tmpFile
 specifier|private
 specifier|final
-name|File
+name|Path
 name|tmpFile
 decl_stmt|;
 DECL|field|timeStamp
@@ -596,6 +620,9 @@ literal|null
 condition|)
 block|{
 name|tmpFile
+operator|.
+name|toFile
+argument_list|()
 operator|.
 name|deleteOnExit
 argument_list|()
@@ -716,6 +743,9 @@ argument_list|(
 name|file
 argument_list|,
 name|tmpFile
+operator|.
+name|toFile
+argument_list|()
 argument_list|,
 literal|true
 argument_list|)
@@ -734,9 +764,6 @@ argument_list|(
 literal|"Cannot copy to temporary file '"
 operator|+
 name|tmpFile
-operator|.
-name|getPath
-argument_list|()
 operator|+
 literal|'\''
 argument_list|,
@@ -791,7 +818,7 @@ expr_stmt|;
 block|}
 DECL|method|getTmpFile ()
 specifier|public
-name|File
+name|Path
 name|getTmpFile
 parameter_list|()
 block|{
@@ -814,20 +841,20 @@ DECL|method|getTempFile ()
 specifier|private
 specifier|static
 specifier|synchronized
-name|File
+name|Path
 name|getTempFile
 parameter_list|()
 block|{
-name|File
-name|f
+name|Path
+name|temporaryFile
 init|=
 literal|null
 decl_stmt|;
 try|try
 block|{
-name|f
+name|temporaryFile
 operator|=
-name|File
+name|Files
 operator|.
 name|createTempFile
 argument_list|(
@@ -836,7 +863,10 @@ argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
-name|f
+name|temporaryFile
+operator|.
+name|toFile
+argument_list|()
 operator|.
 name|deleteOnExit
 argument_list|()
@@ -859,7 +889,7 @@ argument_list|)
 expr_stmt|;
 block|}
 return|return
-name|f
+name|temporaryFile
 return|;
 block|}
 block|}

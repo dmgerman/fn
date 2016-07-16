@@ -114,6 +114,18 @@ begin_import
 import|import
 name|java
 operator|.
+name|nio
+operator|.
+name|file
+operator|.
+name|Paths
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|ArrayList
@@ -660,11 +672,12 @@ block|{
 comment|// Do not export if no entries to export -- avoids exports with only template text
 return|return;
 block|}
-name|File
+name|Path
 name|outFile
 init|=
-operator|new
-name|File
+name|Paths
+operator|.
+name|get
 argument_list|(
 name|file
 argument_list|)
@@ -688,7 +701,7 @@ block|{
 name|ss
 operator|=
 operator|new
-name|SaveSession
+name|FileSaveSession
 argument_list|(
 name|this
 operator|.
@@ -700,7 +713,7 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|IOException
+name|SaveException
 name|ex
 parameter_list|)
 block|{
@@ -727,7 +740,7 @@ block|{
 name|ss
 operator|=
 operator|new
-name|SaveSession
+name|FileSaveSession
 argument_list|(
 name|encoding
 argument_list|,
@@ -1573,7 +1586,7 @@ return|return
 name|fileFilter
 return|;
 block|}
-DECL|method|finalizeSaveSession (final SaveSession ss, File file)
+DECL|method|finalizeSaveSession (final SaveSession ss, Path file)
 specifier|public
 name|void
 name|finalizeSaveSession
@@ -1582,7 +1595,7 @@ specifier|final
 name|SaveSession
 name|ss
 parameter_list|,
-name|File
+name|Path
 name|file
 parameter_list|)
 throws|throws

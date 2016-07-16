@@ -2974,6 +2974,29 @@ name|toString
 argument_list|()
 return|;
 block|}
+DECL|method|isNullOrEmpty (String toTest)
+specifier|public
+specifier|static
+name|boolean
+name|isNullOrEmpty
+parameter_list|(
+name|String
+name|toTest
+parameter_list|)
+block|{
+return|return
+operator|(
+name|toTest
+operator|==
+literal|null
+operator|||
+name|toTest
+operator|.
+name|isEmpty
+argument_list|()
+operator|)
+return|;
+block|}
 block|}
 end_class
 

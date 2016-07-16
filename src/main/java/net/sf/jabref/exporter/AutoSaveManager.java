@@ -413,8 +413,12 @@ name|BibDatabaseWriter
 name|databaseWriter
 init|=
 operator|new
-name|BibDatabaseWriter
-argument_list|()
+name|BibtexDatabaseWriter
+argument_list|(
+name|FileSaveSession
+operator|::
+operator|new
+argument_list|)
 decl_stmt|;
 name|SaveSession
 name|ss
@@ -436,6 +440,9 @@ operator|.
 name|commit
 argument_list|(
 name|backupFile
+operator|.
+name|toPath
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

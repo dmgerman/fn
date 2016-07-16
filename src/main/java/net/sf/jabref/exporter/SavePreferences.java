@@ -701,6 +701,25 @@ name|reformatFile
 argument_list|)
 return|;
 block|}
+DECL|method|getEncodingOrDefault ()
+specifier|public
+name|Charset
+name|getEncodingOrDefault
+parameter_list|()
+block|{
+return|return
+name|encoding
+operator|==
+literal|null
+condition|?
+name|Charset
+operator|.
+name|defaultCharset
+argument_list|()
+else|:
+name|encoding
+return|;
+block|}
 DECL|enum|DatabaseSaveType
 specifier|public
 enum|enum
