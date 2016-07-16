@@ -78,6 +78,8 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
 name|exporter
 operator|.
 name|FieldFormatterCleanups

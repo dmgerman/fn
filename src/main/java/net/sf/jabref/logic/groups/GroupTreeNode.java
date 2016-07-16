@@ -192,7 +192,7 @@ name|group
 decl_stmt|;
 comment|/**      * Creates this node and associates the specified group with it.      *      * @param group the group underlying this node      */
 DECL|method|GroupTreeNode (AbstractGroup group)
-specifier|private
+specifier|public
 name|GroupTreeNode
 parameter_list|(
 name|AbstractGroup
@@ -338,13 +338,17 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|oldGroup
 operator|instanceof
 name|ExplicitGroup
+operator|)
 operator|&&
+operator|(
 name|newGroup
 operator|instanceof
 name|ExplicitGroup
+operator|)
 condition|)
 block|{
 comment|// Rename of explicit group, so remove old group assignment
@@ -660,10 +664,13 @@ return|;
 block|}
 if|if
 condition|(
+operator|(
 name|o
 operator|==
 literal|null
+operator|)
 operator|||
+operator|(
 name|getClass
 argument_list|()
 operator|!=
@@ -671,6 +678,7 @@ name|o
 operator|.
 name|getClass
 argument_list|()
+operator|)
 condition|)
 block|{
 return|return
