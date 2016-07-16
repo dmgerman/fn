@@ -242,7 +242,7 @@ name|gui
 operator|.
 name|help
 operator|.
-name|HelpFiles
+name|HelpFile
 import|;
 end_import
 
@@ -1179,7 +1179,7 @@ argument_list|(
 literal|"Help on Regular Expression Search"
 argument_list|)
 argument_list|,
-name|HelpFiles
+name|HelpFile
 operator|.
 name|REGEX_SEARCH
 argument_list|)
@@ -1246,7 +1246,7 @@ init|=
 operator|new
 name|HelpAction
 argument_list|(
-name|HelpFiles
+name|HelpFile
 operator|.
 name|AUTOSAVE
 argument_list|)

@@ -50,7 +50,7 @@ name|gui
 operator|.
 name|help
 operator|.
-name|HelpFiles
+name|HelpFile
 import|;
 end_import
 
@@ -790,12 +790,12 @@ annotation|@
 name|Override
 DECL|method|getHelpPage ()
 specifier|public
-name|HelpFiles
+name|HelpFile
 name|getHelpPage
 parameter_list|()
 block|{
 return|return
-name|HelpFiles
+name|HelpFile
 operator|.
 name|FETCHER_DOAJ
 return|;

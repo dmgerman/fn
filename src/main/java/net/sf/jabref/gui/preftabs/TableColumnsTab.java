@@ -430,7 +430,7 @@ name|gui
 operator|.
 name|help
 operator|.
-name|HelpFiles
+name|HelpFile
 import|;
 end_import
 
@@ -1848,7 +1848,7 @@ argument_list|(
 literal|"Help on special fields"
 argument_list|)
 argument_list|,
-name|HelpFiles
+name|HelpFile
 operator|.
 name|SPECIAL_FIELDS
 argument_list|)

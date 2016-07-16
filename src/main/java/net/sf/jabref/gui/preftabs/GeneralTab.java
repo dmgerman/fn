@@ -222,7 +222,7 @@ name|gui
 operator|.
 name|help
 operator|.
-name|HelpFiles
+name|HelpFile
 import|;
 end_import
 
@@ -1066,7 +1066,7 @@ init|=
 operator|new
 name|HelpAction
 argument_list|(
-name|HelpFiles
+name|HelpFile
 operator|.
 name|OWNER
 argument_list|)
@@ -1135,7 +1135,7 @@ operator|=
 operator|new
 name|HelpAction
 argument_list|(
-name|HelpFiles
+name|HelpFile
 operator|.
 name|TIMESTAMP
 argument_list|)
