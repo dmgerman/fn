@@ -298,7 +298,7 @@ name|gui
 operator|.
 name|help
 operator|.
-name|HelpFiles
+name|HelpFile
 import|;
 end_import
 
@@ -1221,7 +1221,7 @@ argument_list|(
 operator|new
 name|HelpAction
 argument_list|(
-name|HelpFiles
+name|HelpFile
 operator|.
 name|SEARCH
 argument_list|)

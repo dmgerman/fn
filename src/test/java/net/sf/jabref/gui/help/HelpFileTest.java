@@ -67,10 +67,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|HelpFilesTest
+DECL|class|HelpFileTest
 specifier|public
 class|class
-name|HelpFilesTest
+name|HelpFileTest
 block|{
 DECL|field|jabrefHelp
 specifier|private
@@ -92,10 +92,10 @@ name|IOException
 block|{
 for|for
 control|(
-name|HelpFiles
+name|HelpFile
 name|help
 range|:
-name|HelpFiles
+name|HelpFile
 operator|.
 name|values
 argument_list|()

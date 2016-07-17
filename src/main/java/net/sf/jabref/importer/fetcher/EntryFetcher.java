@@ -54,7 +54,7 @@ name|gui
 operator|.
 name|help
 operator|.
-name|HelpFiles
+name|HelpFile
 import|;
 end_import
 
@@ -121,9 +121,9 @@ name|String
 name|getTitle
 parameter_list|()
 function_decl|;
-comment|/**      * Get the name of the help page for this activeFetcher.      *      * If given, a question mark is displayed in the side pane which leads to      * the help page.      *      * @return The {@link HelpFiles} enum constant for the help page      */
+comment|/**      * Get the name of the help page for this activeFetcher.      *      * If given, a question mark is displayed in the side pane which leads to      * the help page.      *      * @return The {@link HelpFile} enum constant for the help page      */
 DECL|method|getHelpPage ()
-name|HelpFiles
+name|HelpFile
 name|getHelpPage
 parameter_list|()
 function_decl|;

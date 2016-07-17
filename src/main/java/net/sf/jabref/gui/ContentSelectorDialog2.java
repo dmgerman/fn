@@ -314,7 +314,7 @@ name|gui
 operator|.
 name|help
 operator|.
-name|HelpFiles
+name|HelpFile
 import|;
 end_import
 
@@ -2700,7 +2700,7 @@ argument_list|(
 operator|new
 name|HelpAction
 argument_list|(
-name|HelpFiles
+name|HelpFile
 operator|.
 name|CONTENT_SELECTOR
 argument_list|)

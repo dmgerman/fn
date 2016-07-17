@@ -376,7 +376,7 @@ name|gui
 operator|.
 name|help
 operator|.
-name|HelpFiles
+name|HelpFile
 import|;
 end_import
 
@@ -697,7 +697,7 @@ argument_list|(
 literal|"Help"
 argument_list|)
 argument_list|,
-name|HelpFiles
+name|HelpFile
 operator|.
 name|STRING_EDITOR
 argument_list|)

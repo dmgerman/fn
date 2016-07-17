@@ -224,10 +224,10 @@ argument_list|)
 decl_stmt|;
 DECL|field|helpPage
 specifier|private
-name|HelpFiles
+name|HelpFile
 name|helpPage
 decl_stmt|;
-DECL|method|HelpAction (String title, String tooltip, HelpFiles helpPage, KeyStroke key)
+DECL|method|HelpAction (String title, String tooltip, HelpFile helpPage, KeyStroke key)
 specifier|public
 name|HelpAction
 parameter_list|(
@@ -237,7 +237,7 @@ parameter_list|,
 name|String
 name|tooltip
 parameter_list|,
-name|HelpFiles
+name|HelpFile
 name|helpPage
 parameter_list|,
 name|KeyStroke
@@ -272,7 +272,7 @@ name|key
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|HelpAction (String title, String tooltip, HelpFiles helpPage, Icon icon)
+DECL|method|HelpAction (String title, String tooltip, HelpFile helpPage, Icon icon)
 specifier|private
 name|HelpAction
 parameter_list|(
@@ -282,7 +282,7 @@ parameter_list|,
 name|String
 name|tooltip
 parameter_list|,
-name|HelpFiles
+name|HelpFile
 name|helpPage
 parameter_list|,
 name|Icon
@@ -319,14 +319,14 @@ name|tooltip
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|HelpAction (String tooltip, HelpFiles helpPage)
+DECL|method|HelpAction (String tooltip, HelpFile helpPage)
 specifier|public
 name|HelpAction
 parameter_list|(
 name|String
 name|tooltip
 parameter_list|,
-name|HelpFiles
+name|HelpFile
 name|helpPage
 parameter_list|)
 block|{
@@ -354,11 +354,11 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|HelpAction (HelpFiles helpPage, Icon icon)
+DECL|method|HelpAction (HelpFile helpPage, Icon icon)
 specifier|public
 name|HelpAction
 parameter_list|(
-name|HelpFiles
+name|HelpFile
 name|helpPage
 parameter_list|,
 name|Icon
@@ -387,11 +387,11 @@ name|icon
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|HelpAction (HelpFiles helpPage)
+DECL|method|HelpAction (HelpFile helpPage)
 specifier|public
 name|HelpAction
 parameter_list|(
-name|HelpFiles
+name|HelpFile
 name|helpPage
 parameter_list|)
 block|{
@@ -478,12 +478,12 @@ return|return
 name|button
 return|;
 block|}
-DECL|method|setHelpFile (HelpFiles urlPart)
+DECL|method|setHelpFile (HelpFile urlPart)
 specifier|public
 name|void
 name|setHelpFile
 parameter_list|(
-name|HelpFiles
+name|HelpFile
 name|urlPart
 parameter_list|)
 block|{

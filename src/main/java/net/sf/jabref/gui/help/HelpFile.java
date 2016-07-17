@@ -23,10 +23,10 @@ comment|/**  * This enum globally defines all help pages with the name of the ma
 end_comment
 
 begin_enum
-DECL|enum|HelpFiles
+DECL|enum|HelpFile
 specifier|public
 enum|enum
-name|HelpFiles
+name|HelpFile
 block|{
 DECL|enumConstant|COMMAND_LINE
 name|COMMAND_LINE
@@ -271,8 +271,8 @@ name|String
 name|pageName
 decl_stmt|;
 comment|/**      * Sets the URL path part of the help page.      *      * @param pageName the URL path part of the help page      */
-DECL|method|HelpFiles (String pageName)
-name|HelpFiles
+DECL|method|HelpFile (String pageName)
+name|HelpFile
 parameter_list|(
 name|String
 name|pageName

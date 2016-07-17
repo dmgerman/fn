@@ -432,7 +432,7 @@ name|gui
 operator|.
 name|help
 operator|.
-name|HelpFiles
+name|HelpFile
 import|;
 end_import
 
@@ -922,7 +922,7 @@ argument_list|(
 literal|"OpenOffice/LibreOffice integration"
 argument_list|)
 argument_list|,
-name|HelpFiles
+name|HelpFile
 operator|.
 name|OPENOFFICE_LIBREOFFICE
 argument_list|)
