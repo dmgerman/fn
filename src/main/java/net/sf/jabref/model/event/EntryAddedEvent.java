@@ -4,13 +4,15 @@ comment|/*  Copyright (C) 2016 JabRef contributors.     This program is free sof
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref.event
+DECL|package|net.sf.jabref.model.event
 package|package
 name|net
 operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|model
 operator|.
 name|event
 package|;
