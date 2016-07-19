@@ -1,12 +1,16 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|net.sf.jabref
+DECL|package|net.sf.jabref.gui.preftabs
 package|package
 name|net
 operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|gui
+operator|.
+name|preftabs
 package|;
 end_package
 
@@ -162,11 +166,24 @@ name|Localization
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|preferences
+operator|.
+name|JabRefPreferencesFilter
+import|;
+end_import
+
 begin_class
-DECL|class|JabRefPreferencesFilterDialog
-specifier|public
+DECL|class|PreferencesFilterDialog
 class|class
-name|JabRefPreferencesFilterDialog
+name|PreferencesFilterDialog
 extends|extends
 name|JDialog
 block|{
@@ -194,9 +211,9 @@ specifier|final
 name|JLabel
 name|count
 decl_stmt|;
-DECL|method|JabRefPreferencesFilterDialog (JabRefPreferencesFilter preferencesFilter, JFrame frame)
+DECL|method|PreferencesFilterDialog (JabRefPreferencesFilter preferencesFilter, JFrame frame)
 specifier|public
-name|JabRefPreferencesFilterDialog
+name|PreferencesFilterDialog
 parameter_list|(
 name|JabRefPreferencesFilter
 name|preferencesFilter

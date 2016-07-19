@@ -116,7 +116,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|JabRefPreferences
+name|logic
+operator|.
+name|util
+operator|.
+name|OS
 import|;
 end_import
 
@@ -128,11 +132,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|preferences
 operator|.
-name|util
-operator|.
-name|OS
+name|JabRefPreferences
 import|;
 end_import
 

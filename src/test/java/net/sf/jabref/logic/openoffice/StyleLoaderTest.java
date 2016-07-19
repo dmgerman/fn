@@ -110,7 +110,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|JabRefPreferences
+name|logic
+operator|.
+name|journals
+operator|.
+name|JournalAbbreviationLoader
 import|;
 end_import
 
@@ -122,11 +126,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|preferences
 operator|.
-name|journals
-operator|.
-name|JournalAbbreviationLoader
+name|JabRefPreferences
 import|;
 end_import
 

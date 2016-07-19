@@ -108,6 +108,20 @@ name|BibDatabaseModeDetection
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|preferences
+operator|.
+name|JabRefPreferences
+import|;
+end_import
+
 begin_comment
 comment|/**  * Represents everything related to a .bib file.  *<p>  * The entries are stored in BibDatabase, the other data in MetaData and the options relevant for this file in Defaults.  */
 end_comment

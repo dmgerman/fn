@@ -34,7 +34,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|JabRefPreferences
+name|model
+operator|.
+name|entry
+operator|.
+name|BibEntry
 import|;
 end_import
 
@@ -46,11 +50,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|model
+name|preferences
 operator|.
-name|entry
-operator|.
-name|BibEntry
+name|JabRefPreferences
 import|;
 end_import
 

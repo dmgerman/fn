@@ -246,6 +246,8 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|preferences
+operator|.
 name|JabRefPreferences
 import|;
 end_import

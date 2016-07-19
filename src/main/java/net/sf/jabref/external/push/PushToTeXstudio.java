@@ -36,7 +36,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|JabRefPreferences
+name|gui
+operator|.
+name|IconTheme
 import|;
 end_import
 
@@ -48,9 +50,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
+name|preferences
 operator|.
-name|IconTheme
+name|JabRefPreferences
 import|;
 end_import
 

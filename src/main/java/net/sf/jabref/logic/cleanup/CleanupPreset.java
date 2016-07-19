@@ -66,7 +66,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|JabRefPreferences
+name|logic
+operator|.
+name|exporter
+operator|.
+name|FieldFormatterCleanups
 import|;
 end_import
 
@@ -78,11 +82,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|preferences
 operator|.
-name|exporter
-operator|.
-name|FieldFormatterCleanups
+name|JabRefPreferences
 import|;
 end_import
 

@@ -46,7 +46,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|JabRefPreferences
+name|logic
+operator|.
+name|config
+operator|.
+name|SaveOrderConfig
 import|;
 end_import
 
@@ -58,11 +62,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|preferences
 operator|.
-name|config
-operator|.
-name|SaveOrderConfig
+name|JabRefPreferences
 import|;
 end_import
 
