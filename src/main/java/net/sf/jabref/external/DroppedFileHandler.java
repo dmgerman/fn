@@ -1387,6 +1387,10 @@ operator|.
 name|readXMP
 argument_list|(
 name|fileName
+argument_list|,
+name|Globals
+operator|.
+name|prefs
 argument_list|)
 expr_stmt|;
 block|}
@@ -2025,6 +2029,10 @@ argument_list|,
 name|Globals
 operator|.
 name|journalAbbreviationLoader
+argument_list|,
+name|Globals
+operator|.
+name|prefs
 argument_list|)
 decl_stmt|;
 name|renameToTextBox

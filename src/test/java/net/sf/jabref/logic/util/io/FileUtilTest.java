@@ -310,6 +310,10 @@ name|JournalAbbreviationLoader
 operator|.
 name|class
 argument_list|)
+argument_list|,
+name|Globals
+operator|.
+name|prefs
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -383,6 +387,10 @@ name|JournalAbbreviationLoader
 operator|.
 name|class
 argument_list|)
+argument_list|,
+name|Globals
+operator|.
+name|prefs
 argument_list|)
 argument_list|)
 expr_stmt|;

@@ -82,32 +82,6 @@ end_import
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|Globals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|preferences
-operator|.
-name|JabRefPreferences
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -189,13 +163,13 @@ specifier|private
 name|JournalAbbreviationRepository
 name|journalAbbrev
 decl_stmt|;
-DECL|method|update (JabRefPreferences jabRefPreferences)
+DECL|method|update (JournalAbbreviationPreferences journalAbbreviationPreferences)
 specifier|public
 name|void
 name|update
 parameter_list|(
-name|JabRefPreferences
-name|jabRefPreferences
+name|JournalAbbreviationPreferences
+name|journalAbbreviationPreferences
 parameter_list|)
 block|{
 name|journalAbbrev
@@ -221,14 +195,10 @@ expr_stmt|;
 comment|// read IEEE list
 if|if
 condition|(
-name|jabRefPreferences
+name|journalAbbreviationPreferences
 operator|.
-name|getBoolean
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|USE_IEEE_ABRV
-argument_list|)
+name|isUseIEEEAbbreviations
+argument_list|()
 condition|)
 block|{
 name|journalAbbrev
@@ -258,14 +228,10 @@ name|String
 argument_list|>
 name|lists
 init|=
-name|jabRefPreferences
+name|journalAbbreviationPreferences
 operator|.
-name|getStringList
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|EXTERNAL_JOURNAL_LISTS
-argument_list|)
+name|getExternalJournalLists
+argument_list|()
 decl_stmt|;
 if|if
 condition|(
@@ -335,14 +301,10 @@ comment|// Read personal list
 name|String
 name|personalJournalList
 init|=
-name|jabRefPreferences
+name|journalAbbreviationPreferences
 operator|.
-name|get
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|PERSONAL_JOURNAL_LIST
-argument_list|)
+name|getPersonalJournalLists
+argument_list|()
 decl_stmt|;
 if|if
 condition|(
@@ -376,9 +338,7 @@ argument_list|(
 name|personalJournalList
 argument_list|)
 argument_list|,
-name|Globals
-operator|.
-name|prefs
+name|journalAbbreviationPreferences
 operator|.
 name|getDefaultEncoding
 argument_list|()
@@ -459,11 +419,14 @@ name|JOURNALS_FILE_BUILTIN
 argument_list|)
 return|;
 block|}
-DECL|method|getRepository ()
+DECL|method|getRepository (JournalAbbreviationPreferences journalAbbreviationPreferences)
 specifier|public
 name|JournalAbbreviationRepository
 name|getRepository
-parameter_list|()
+parameter_list|(
+name|JournalAbbreviationPreferences
+name|journalAbbreviationPreferences
+parameter_list|)
 block|{
 if|if
 condition|(
@@ -474,9 +437,7 @@ condition|)
 block|{
 name|update
 argument_list|(
-name|Globals
-operator|.
-name|prefs
+name|journalAbbreviationPreferences
 argument_list|)
 expr_stmt|;
 block|}

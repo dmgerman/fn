@@ -1932,6 +1932,10 @@ argument_list|()
 argument_list|,
 name|getContext
 argument_list|()
+argument_list|,
+name|Globals
+operator|.
+name|prefs
 argument_list|)
 expr_stmt|;
 block|}
@@ -1987,6 +1991,10 @@ argument_list|()
 argument_list|,
 name|getContext
 argument_list|()
+argument_list|,
+name|Globals
+operator|.
+name|prefs
 argument_list|)
 expr_stmt|;
 block|}
@@ -2144,10 +2152,13 @@ expr_stmt|;
 comment|// configure for current type
 if|if
 condition|(
+operator|(
 name|editedGroup
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 name|editedGroup
 operator|.
 name|getClass
@@ -2156,6 +2167,7 @@ operator|==
 name|KeywordGroup
 operator|.
 name|class
+operator|)
 condition|)
 block|{
 name|KeywordGroup
@@ -2235,10 +2247,13 @@ block|}
 elseif|else
 if|if
 condition|(
+operator|(
 name|editedGroup
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 name|editedGroup
 operator|.
 name|getClass
@@ -2247,6 +2262,7 @@ operator|==
 name|SearchGroup
 operator|.
 name|class
+operator|)
 condition|)
 block|{
 name|SearchGroup
@@ -2316,10 +2332,13 @@ block|}
 elseif|else
 if|if
 condition|(
+operator|(
 name|editedGroup
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 name|editedGroup
 operator|.
 name|getClass
@@ -2328,6 +2347,7 @@ operator|==
 name|ExplicitGroup
 operator|.
 name|class
+operator|)
 condition|)
 block|{
 name|nameField

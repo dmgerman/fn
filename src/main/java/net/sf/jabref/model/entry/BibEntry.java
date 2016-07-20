@@ -206,18 +206,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|model
 operator|.
 name|FieldChange
@@ -253,20 +241,6 @@ operator|.
 name|event
 operator|.
 name|FieldChangedEvent
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|preferences
-operator|.
-name|JabRefPreferences
 import|;
 end_import
 
@@ -2277,7 +2251,7 @@ operator|=
 name|changed
 expr_stmt|;
 block|}
-DECL|method|putKeywords (Collection<String> keywords)
+DECL|method|putKeywords (Collection<String> keywords, String separator)
 specifier|public
 name|Optional
 argument_list|<
@@ -2290,6 +2264,9 @@ argument_list|<
 name|String
 argument_list|>
 name|keywords
+parameter_list|,
+name|String
+name|separator
 parameter_list|)
 block|{
 name|Objects
@@ -2356,16 +2333,7 @@ name|String
 operator|.
 name|join
 argument_list|(
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|get
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|KEYWORD_SEPARATOR
-argument_list|)
+name|separator
 argument_list|,
 name|keywords
 argument_list|)
@@ -2382,13 +2350,16 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Check if a keyword already exists (case insensitive), if not: add it      *      * @param keyword Keyword to add      */
-DECL|method|addKeyword (String keyword)
+DECL|method|addKeyword (String keyword, String separator)
 specifier|public
 name|void
 name|addKeyword
 parameter_list|(
 name|String
 name|keyword
+parameter_list|,
+name|String
+name|separator
 parameter_list|)
 block|{
 name|Objects
@@ -2433,11 +2404,13 @@ operator|.
 name|putKeywords
 argument_list|(
 name|keywords
+argument_list|,
+name|separator
 argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Add multiple keywords to entry      *      * @param keywords Keywords to add      */
-DECL|method|addKeywords (Collection<String> keywords)
+DECL|method|addKeywords (Collection<String> keywords, String separator)
 specifier|public
 name|void
 name|addKeywords
@@ -2447,6 +2420,9 @@ argument_list|<
 name|String
 argument_list|>
 name|keywords
+parameter_list|,
+name|String
+name|separator
 parameter_list|)
 block|{
 name|Objects
@@ -2469,6 +2445,8 @@ operator|.
 name|addKeyword
 argument_list|(
 name|keyword
+argument_list|,
+name|separator
 argument_list|)
 expr_stmt|;
 block|}

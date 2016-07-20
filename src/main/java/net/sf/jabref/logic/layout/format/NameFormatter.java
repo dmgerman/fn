@@ -58,18 +58,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|logic
 operator|.
 name|bst
@@ -107,6 +95,20 @@ operator|.
 name|entry
 operator|.
 name|AuthorList
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|preferences
+operator|.
+name|JabRefPreferences
 import|;
 end_import
 
@@ -628,7 +630,7 @@ operator|=
 name|parameter
 expr_stmt|;
 block|}
-DECL|method|getNameFormatters ()
+DECL|method|getNameFormatters (JabRefPreferences prefs)
 specifier|public
 specifier|static
 name|Map
@@ -638,7 +640,10 @@ argument_list|,
 name|String
 argument_list|>
 name|getNameFormatters
-parameter_list|()
+parameter_list|(
+name|JabRefPreferences
+name|prefs
+parameter_list|)
 block|{
 name|Map
 argument_list|<
@@ -659,8 +664,6 @@ name|String
 argument_list|>
 name|names
 init|=
-name|Globals
-operator|.
 name|prefs
 operator|.
 name|getStringList
@@ -676,8 +679,6 @@ name|String
 argument_list|>
 name|formats
 init|=
-name|Globals
-operator|.
 name|prefs
 operator|.
 name|getStringList

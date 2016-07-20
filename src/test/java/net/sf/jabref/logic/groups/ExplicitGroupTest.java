@@ -181,6 +181,10 @@ argument_list|,
 name|GroupHierarchyType
 operator|.
 name|INDEPENDENT
+argument_list|,
+name|Globals
+operator|.
+name|prefs
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -215,6 +219,10 @@ argument_list|,
 name|GroupHierarchyType
 operator|.
 name|INCLUDING
+argument_list|,
+name|Globals
+operator|.
+name|prefs
 argument_list|)
 decl_stmt|;
 name|group

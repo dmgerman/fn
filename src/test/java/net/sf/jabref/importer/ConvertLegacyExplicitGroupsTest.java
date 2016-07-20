@@ -282,6 +282,10 @@ argument_list|,
 name|GroupHierarchyType
 operator|.
 name|INCLUDING
+argument_list|,
+name|Globals
+operator|.
+name|prefs
 argument_list|)
 expr_stmt|;
 name|group
@@ -426,6 +430,10 @@ argument_list|,
 name|GroupHierarchyType
 operator|.
 name|INCLUDING
+argument_list|,
+name|Globals
+operator|.
+name|prefs
 argument_list|)
 argument_list|)
 expr_stmt|;

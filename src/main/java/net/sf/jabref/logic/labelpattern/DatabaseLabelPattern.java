@@ -36,7 +36,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
+name|preferences
+operator|.
+name|JabRefPreferences
 import|;
 end_import
 
@@ -48,6 +50,27 @@ name|DatabaseLabelPattern
 extends|extends
 name|AbstractLabelPattern
 block|{
+DECL|field|prefs
+specifier|private
+specifier|final
+name|JabRefPreferences
+name|prefs
+decl_stmt|;
+DECL|method|DatabaseLabelPattern (JabRefPreferences prefs)
+specifier|public
+name|DatabaseLabelPattern
+parameter_list|(
+name|JabRefPreferences
+name|prefs
+parameter_list|)
+block|{
+name|this
+operator|.
+name|prefs
+operator|=
+name|prefs
+expr_stmt|;
+block|}
 annotation|@
 name|Override
 DECL|method|getLastLevelLabelPattern (String key)
@@ -63,8 +86,6 @@ name|key
 parameter_list|)
 block|{
 return|return
-name|Globals
-operator|.
 name|prefs
 operator|.
 name|getKeyPattern

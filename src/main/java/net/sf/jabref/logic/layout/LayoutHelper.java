@@ -94,6 +94,20 @@ name|JournalAbbreviationLoader
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|preferences
+operator|.
+name|JabRefPreferences
+import|;
+end_import
+
 begin_comment
 comment|/**  * Helper class to get a Layout object.  *  *<code>  * LayoutHelper helper = new LayoutHelper(...a reader...);  * Layout layout = helper.getLayoutFromText();  *</code>  *  */
 end_comment
@@ -226,17 +240,26 @@ specifier|final
 name|JournalAbbreviationLoader
 name|repositoryLoader
 decl_stmt|;
+DECL|field|prefs
+specifier|private
+specifier|final
+name|JabRefPreferences
+name|prefs
+decl_stmt|;
 DECL|field|endOfFile
 specifier|private
 name|boolean
 name|endOfFile
 decl_stmt|;
-DECL|method|LayoutHelper (Reader in, JournalAbbreviationLoader repositoryLoader)
+DECL|method|LayoutHelper (Reader in, JabRefPreferences prefs, JournalAbbreviationLoader repositoryLoader)
 specifier|public
 name|LayoutHelper
 parameter_list|(
 name|Reader
 name|in
+parameter_list|,
+name|JabRefPreferences
+name|prefs
 parameter_list|,
 name|JournalAbbreviationLoader
 name|repositoryLoader
@@ -266,6 +289,17 @@ operator|.
 name|requireNonNull
 argument_list|(
 name|repositoryLoader
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|prefs
+operator|=
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|prefs
 argument_list|)
 expr_stmt|;
 block|}
@@ -362,6 +396,8 @@ operator|new
 name|Layout
 argument_list|(
 name|parsedEntries
+argument_list|,
+name|prefs
 argument_list|,
 name|repositoryLoader
 argument_list|)

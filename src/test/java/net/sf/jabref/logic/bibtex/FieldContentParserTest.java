@@ -126,7 +126,16 @@ name|parser
 operator|=
 operator|new
 name|FieldContentParser
-argument_list|()
+argument_list|(
+name|FieldContentParserPreferences
+operator|.
+name|fromPreferences
+argument_list|(
+name|Globals
+operator|.
+name|prefs
+argument_list|)
+argument_list|)
 expr_stmt|;
 block|}
 annotation|@

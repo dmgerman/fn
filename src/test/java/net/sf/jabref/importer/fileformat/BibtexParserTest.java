@@ -9045,7 +9045,11 @@ name|expectedPattern
 init|=
 operator|new
 name|DatabaseLabelPattern
-argument_list|()
+argument_list|(
+name|Globals
+operator|.
+name|prefs
+argument_list|)
 decl_stmt|;
 name|expectedPattern
 operator|.
@@ -9231,6 +9235,10 @@ argument_list|,
 name|GroupHierarchyType
 operator|.
 name|INDEPENDENT
+argument_list|,
+name|Globals
+operator|.
+name|prefs
 argument_list|)
 argument_list|,
 name|root
@@ -9265,6 +9273,10 @@ argument_list|,
 name|GroupHierarchyType
 operator|.
 name|INDEPENDENT
+argument_list|,
+name|Globals
+operator|.
+name|prefs
 argument_list|)
 argument_list|,
 name|root

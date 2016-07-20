@@ -1470,6 +1470,10 @@ name|sr
 argument_list|,
 name|Globals
 operator|.
+name|prefs
+argument_list|,
+name|Globals
+operator|.
 name|journalAbbreviationLoader
 argument_list|)
 operator|.

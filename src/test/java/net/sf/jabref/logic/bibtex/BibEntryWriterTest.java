@@ -292,7 +292,16 @@ name|BibEntryWriter
 argument_list|(
 operator|new
 name|LatexFieldFormatter
-argument_list|()
+argument_list|(
+name|LatexFieldFormatterPreferences
+operator|.
+name|fromPreferences
+argument_list|(
+name|Globals
+operator|.
+name|prefs
+argument_list|)
+argument_list|)
 argument_list|,
 literal|true
 argument_list|)

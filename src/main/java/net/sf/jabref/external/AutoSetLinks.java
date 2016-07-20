@@ -733,6 +733,10 @@ argument_list|,
 name|extensions
 argument_list|,
 name|dirs
+argument_list|,
+name|Globals
+operator|.
+name|prefs
 argument_list|)
 expr_stmt|;
 block|}

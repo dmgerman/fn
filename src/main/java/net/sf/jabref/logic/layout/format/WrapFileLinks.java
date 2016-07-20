@@ -180,6 +180,20 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|preferences
+operator|.
+name|JabRefPreferences
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -345,6 +359,12 @@ name|HashMap
 argument_list|<>
 argument_list|()
 decl_stmt|;
+DECL|field|prefs
+specifier|private
+specifier|final
+name|JabRefPreferences
+name|prefs
+decl_stmt|;
 static|static
 block|{
 name|WrapFileLinks
@@ -424,6 +444,21 @@ name|WrapFileLinks
 operator|.
 name|FILE_DESCRIPTION
 argument_list|)
+expr_stmt|;
+block|}
+DECL|method|WrapFileLinks (JabRefPreferences prefs)
+specifier|public
+name|WrapFileLinks
+parameter_list|(
+name|JabRefPreferences
+name|prefs
+parameter_list|)
+block|{
+name|this
+operator|.
+name|prefs
+operator|=
+name|prefs
 expr_stmt|;
 block|}
 annotation|@
@@ -673,8 +708,6 @@ comment|// ugly hack, the export routine has set a global variable before
 comment|// starting the export, which contains the database's file directory:
 if|if
 condition|(
-name|Globals
-operator|.
 name|prefs
 operator|.
 name|fileDirForDatabase
@@ -688,8 +721,6 @@ name|Collections
 operator|.
 name|singletonList
 argument_list|(
-name|Globals
-operator|.
 name|prefs
 operator|.
 name|get
@@ -709,8 +740,6 @@ else|else
 block|{
 name|dirs
 operator|=
-name|Globals
-operator|.
 name|prefs
 operator|.
 name|fileDirForDatabase

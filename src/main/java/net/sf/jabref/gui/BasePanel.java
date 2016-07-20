@@ -4022,6 +4022,10 @@ argument_list|,
 name|database
 argument_list|,
 name|bes
+argument_list|,
+name|Globals
+operator|.
+name|prefs
 argument_list|)
 expr_stmt|;
 name|ce
@@ -7083,6 +7087,10 @@ operator|new
 name|LayoutHelper
 argument_list|(
 name|sr
+argument_list|,
+name|Globals
+operator|.
+name|prefs
 argument_list|,
 name|Globals
 operator|.
@@ -12115,6 +12123,10 @@ argument_list|,
 name|database
 argument_list|,
 name|bes
+argument_list|,
+name|Globals
+operator|.
+name|prefs
 argument_list|)
 expr_stmt|;
 name|ce
@@ -14377,6 +14389,10 @@ argument_list|,
 name|extensions
 argument_list|,
 name|dirs
+argument_list|,
+name|Globals
+operator|.
+name|prefs
 argument_list|)
 expr_stmt|;
 block|}

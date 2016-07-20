@@ -526,11 +526,13 @@ name|panel
 decl_stmt|;
 DECL|field|entryTable
 specifier|private
+specifier|final
 name|MainTable
 name|entryTable
 decl_stmt|;
 DECL|field|dropRow
 specifier|private
+specifier|final
 name|int
 name|dropRow
 decl_stmt|;
@@ -902,6 +904,10 @@ name|get
 argument_list|(
 name|fileName
 argument_list|)
+argument_list|,
+name|Globals
+operator|.
+name|prefs
 argument_list|)
 condition|)
 block|{
@@ -1488,6 +1494,10 @@ name|getDatabase
 argument_list|()
 argument_list|,
 name|entry
+argument_list|,
+name|Globals
+operator|.
+name|prefs
 argument_list|)
 expr_stmt|;
 name|DroppedFileHandler

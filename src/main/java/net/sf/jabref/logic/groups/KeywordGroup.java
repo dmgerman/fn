@@ -90,18 +90,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|importer
 operator|.
 name|fileformat
@@ -302,11 +290,18 @@ name|pattern
 decl_stmt|;
 DECL|field|searchWords
 specifier|private
+specifier|final
 name|List
 argument_list|<
 name|String
 argument_list|>
 name|searchWords
+decl_stmt|;
+DECL|field|jabRefPreferences
+specifier|protected
+specifier|final
+name|JabRefPreferences
+name|jabRefPreferences
 decl_stmt|;
 DECL|field|LOGGER
 specifier|private
@@ -325,7 +320,7 @@ name|class
 argument_list|)
 decl_stmt|;
 comment|/**      * Creates a KeywordGroup with the specified properties.      */
-DECL|method|KeywordGroup (String name, String searchField, String searchExpression, boolean caseSensitive, boolean regExp, GroupHierarchyType context)
+DECL|method|KeywordGroup (String name, String searchField, String searchExpression, boolean caseSensitive, boolean regExp, GroupHierarchyType context, JabRefPreferences jabRefPreferences)
 specifier|public
 name|KeywordGroup
 parameter_list|(
@@ -346,6 +341,9 @@ name|regExp
 parameter_list|,
 name|GroupHierarchyType
 name|context
+parameter_list|,
+name|JabRefPreferences
+name|jabRefPreferences
 parameter_list|)
 throws|throws
 name|ParseException
@@ -392,6 +390,12 @@ name|compilePattern
 argument_list|()
 expr_stmt|;
 block|}
+name|this
+operator|.
+name|jabRefPreferences
+operator|=
+name|jabRefPreferences
+expr_stmt|;
 name|this
 operator|.
 name|searchWords
@@ -468,7 +472,7 @@ throw|;
 block|}
 block|}
 comment|/**      * Parses s and recreates the KeywordGroup from it.      *      * @param s The String representation obtained from      *          KeywordGroup.toString()      */
-DECL|method|fromString (String s)
+DECL|method|fromString (String s, JabRefPreferences jabRefPreferences)
 specifier|public
 specifier|static
 name|AbstractGroup
@@ -476,6 +480,9 @@ name|fromString
 parameter_list|(
 name|String
 name|s
+parameter_list|,
+name|JabRefPreferences
+name|jabRefPreferences
 parameter_list|)
 throws|throws
 name|ParseException
@@ -646,6 +653,8 @@ name|getByNumber
 argument_list|(
 name|context
 argument_list|)
+argument_list|,
+name|jabRefPreferences
 argument_list|)
 return|;
 block|}
@@ -874,9 +883,7 @@ decl_stmt|;
 name|String
 name|pre
 init|=
-name|Globals
-operator|.
-name|prefs
+name|jabRefPreferences
 operator|.
 name|get
 argument_list|(
@@ -1614,9 +1621,7 @@ specifier|final
 name|String
 name|separator
 init|=
-name|Globals
-operator|.
-name|prefs
+name|jabRefPreferences
 operator|.
 name|get
 argument_list|(
@@ -1873,6 +1878,8 @@ name|regExp
 argument_list|,
 name|getContext
 argument_list|()
+argument_list|,
+name|jabRefPreferences
 argument_list|)
 return|;
 block|}
@@ -2110,11 +2117,14 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|getShortDescription ()
+DECL|method|getShortDescription (boolean showDynamic)
 specifier|public
 name|String
 name|getShortDescription
-parameter_list|()
+parameter_list|(
+name|boolean
+name|showDynamic
+parameter_list|)
 block|{
 name|StringBuilder
 name|sb
@@ -2132,16 +2142,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getBoolean
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|GROUP_SHOW_DYNAMIC
-argument_list|)
+name|showDynamic
 condition|)
 block|{
 name|sb

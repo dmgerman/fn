@@ -212,6 +212,22 @@ name|logic
 operator|.
 name|bibtex
 operator|.
+name|LatexFieldFormatterPreferences
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|bibtex
+operator|.
 name|comparator
 operator|.
 name|BibtexStringComparator
@@ -1081,6 +1097,11 @@ name|preferences
 operator|.
 name|isReformatFile
 argument_list|()
+argument_list|,
+name|preferences
+operator|.
+name|getLatexFieldFormatterPreferences
+argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// Write database entries.
@@ -1203,6 +1224,11 @@ name|preferences
 operator|.
 name|isReformatFile
 argument_list|()
+argument_list|,
+name|preferences
+operator|.
+name|getLatexFieldFormatterPreferences
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -1292,7 +1318,7 @@ parameter_list|)
 throws|throws
 name|SaveException
 function_decl|;
-DECL|method|writeEntry (BibEntry entry, BibDatabaseMode mode, Boolean isReformatFile)
+DECL|method|writeEntry (BibEntry entry, BibDatabaseMode mode, Boolean isReformatFile, LatexFieldFormatterPreferences latexFieldFormatterPreferences)
 specifier|protected
 specifier|abstract
 name|void
@@ -1306,6 +1332,9 @@ name|mode
 parameter_list|,
 name|Boolean
 name|isReformatFile
+parameter_list|,
+name|LatexFieldFormatterPreferences
+name|latexFieldFormatterPreferences
 parameter_list|)
 throws|throws
 name|SaveException
@@ -1411,7 +1440,7 @@ throws|throws
 name|SaveException
 function_decl|;
 comment|/**      * Write all strings in alphabetical order, modified to produce a safe (for      * BibTeX) order of the strings if they reference each other.      *      * @param database The database whose strings we should write.      */
-DECL|method|writeStrings (BibDatabase database, Boolean reformatFile)
+DECL|method|writeStrings (BibDatabase database, Boolean reformatFile, LatexFieldFormatterPreferences latexFieldFormatterPreferences)
 specifier|private
 name|void
 name|writeStrings
@@ -1421,6 +1450,9 @@ name|database
 parameter_list|,
 name|Boolean
 name|reformatFile
+parameter_list|,
+name|LatexFieldFormatterPreferences
+name|latexFieldFormatterPreferences
 parameter_list|)
 throws|throws
 name|SaveException
@@ -1583,6 +1615,8 @@ argument_list|,
 name|maxKeyLength
 argument_list|,
 name|reformatFile
+argument_list|,
+name|latexFieldFormatterPreferences
 argument_list|)
 expr_stmt|;
 name|isFirstStringInType
@@ -1593,7 +1627,7 @@ block|}
 block|}
 block|}
 block|}
-DECL|method|writeString (BibtexString bibtexString, boolean isFirstString, Map<String, BibtexString> remaining, int maxKeyLength, Boolean reformatFile)
+DECL|method|writeString (BibtexString bibtexString, boolean isFirstString, Map<String, BibtexString> remaining, int maxKeyLength, Boolean reformatFile, LatexFieldFormatterPreferences latexFieldFormatterPreferences)
 specifier|protected
 name|void
 name|writeString
@@ -1617,6 +1651,9 @@ name|maxKeyLength
 parameter_list|,
 name|Boolean
 name|reformatFile
+parameter_list|,
+name|LatexFieldFormatterPreferences
+name|latexFieldFormatterPreferences
 parameter_list|)
 throws|throws
 name|SaveException
@@ -1746,6 +1783,8 @@ argument_list|,
 name|maxKeyLength
 argument_list|,
 name|reformatFile
+argument_list|,
+name|latexFieldFormatterPreferences
 argument_list|)
 expr_stmt|;
 block|}
@@ -1759,10 +1798,12 @@ argument_list|,
 name|maxKeyLength
 argument_list|,
 name|reformatFile
+argument_list|,
+name|latexFieldFormatterPreferences
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|writeString (BibtexString bibtexString, boolean isFirstString, int maxKeyLength, Boolean reformatFile)
+DECL|method|writeString (BibtexString bibtexString, boolean isFirstString, int maxKeyLength, Boolean reformatFile, LatexFieldFormatterPreferences latexFieldFormatterPreferences)
 specifier|protected
 specifier|abstract
 name|void
@@ -1779,6 +1820,9 @@ name|maxKeyLength
 parameter_list|,
 name|Boolean
 name|reformatFile
+parameter_list|,
+name|LatexFieldFormatterPreferences
+name|latexFieldFormatterPreferences
 parameter_list|)
 throws|throws
 name|SaveException

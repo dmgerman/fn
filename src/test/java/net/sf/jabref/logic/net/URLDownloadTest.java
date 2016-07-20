@@ -196,7 +196,14 @@ argument_list|,
 name|dl
 operator|.
 name|downloadToString
+argument_list|(
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getDefaultEncoding
 argument_list|()
+argument_list|)
 operator|.
 name|contains
 argument_list|(

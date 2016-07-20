@@ -138,6 +138,22 @@ name|jabref
 operator|.
 name|logic
 operator|.
+name|bibtex
+operator|.
+name|LatexFieldFormatterPreferences
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
 name|util
 operator|.
 name|strings
@@ -546,7 +562,7 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|writeString (BibtexString bibtexString, boolean isFirstString, int maxKeyLength, Boolean reformatFile)
+DECL|method|writeString (BibtexString bibtexString, boolean isFirstString, int maxKeyLength, Boolean reformatFile, LatexFieldFormatterPreferences latexFieldFormatterPreferences)
 specifier|protected
 name|void
 name|writeString
@@ -562,6 +578,9 @@ name|maxKeyLength
 parameter_list|,
 name|Boolean
 name|reformatFile
+parameter_list|,
+name|LatexFieldFormatterPreferences
+name|latexFieldFormatterPreferences
 parameter_list|)
 throws|throws
 name|SaveException
@@ -702,7 +721,9 @@ name|formatted
 init|=
 operator|new
 name|LatexFieldFormatter
-argument_list|()
+argument_list|(
+name|latexFieldFormatterPreferences
+argument_list|)
 operator|.
 name|format
 argument_list|(
@@ -926,7 +947,7 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|writeEntry (BibEntry entry, BibDatabaseMode mode, Boolean isReformatFile)
+DECL|method|writeEntry (BibEntry entry, BibDatabaseMode mode, Boolean isReformatFile, LatexFieldFormatterPreferences latexFieldFormatterPreferences)
 specifier|protected
 name|void
 name|writeEntry
@@ -939,6 +960,9 @@ name|mode
 parameter_list|,
 name|Boolean
 name|isReformatFile
+parameter_list|,
+name|LatexFieldFormatterPreferences
+name|latexFieldFormatterPreferences
 parameter_list|)
 throws|throws
 name|SaveException
@@ -951,7 +975,9 @@ name|BibEntryWriter
 argument_list|(
 operator|new
 name|LatexFieldFormatter
-argument_list|()
+argument_list|(
+name|latexFieldFormatterPreferences
+argument_list|)
 argument_list|,
 literal|true
 argument_list|)

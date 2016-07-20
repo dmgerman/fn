@@ -72,18 +72,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|logic
 operator|.
 name|formatter
@@ -139,20 +127,6 @@ operator|.
 name|strings
 operator|.
 name|HTMLUnicodeConversionMaps
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|preferences
-operator|.
-name|JabRefPreferences
 import|;
 end_import
 
@@ -316,47 +290,6 @@ name|StringBuilder
 argument_list|()
 decl_stmt|;
 comment|// Deal with the form<sup>k</sup>and<sub>k</sub>
-comment|// If the result is in text or equation form can be controlled
-comment|// From the "Advanced settings" tab
-if|if
-condition|(
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getBoolean
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|USE_CONVERT_TO_EQUATION
-argument_list|)
-condition|)
-block|{
-name|result
-operator|=
-name|result
-operator|.
-name|replaceAll
-argument_list|(
-literal|"<[ ]?sup>([^<]+)</sup>"
-argument_list|,
-literal|"\\$\\^\\{$1\\}\\$"
-argument_list|)
-expr_stmt|;
-name|result
-operator|=
-name|result
-operator|.
-name|replaceAll
-argument_list|(
-literal|"<[ ]?sub>([^<]+)</sub>"
-argument_list|,
-literal|"\\$_\\{$1\\}\\$"
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
 name|result
 operator|=
 name|result
@@ -379,7 +312,6 @@ argument_list|,
 literal|"\\\\textsubscript\\{$1\\}"
 argument_list|)
 expr_stmt|;
-block|}
 comment|// TODO: maybe rewrite this based on regular expressions instead
 comment|// Note that (at least) the IEEE Xplore fetcher must be fixed as it relies on the current way to
 comment|// remove tags for its image alt-tag to equation converter

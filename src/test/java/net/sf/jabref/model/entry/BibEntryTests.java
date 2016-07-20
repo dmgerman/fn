@@ -1316,6 +1316,8 @@ operator|.
 name|addKeyword
 argument_list|(
 literal|null
+argument_list|,
+literal|", "
 argument_list|)
 expr_stmt|;
 name|Assert
@@ -1343,6 +1345,45 @@ name|keywordEntry
 operator|.
 name|putKeywords
 argument_list|(
+literal|null
+argument_list|,
+literal|", "
+argument_list|)
+expr_stmt|;
+name|Assert
+operator|.
+name|fail
+argument_list|()
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+argument_list|(
+name|expected
+operator|=
+name|NullPointerException
+operator|.
+name|class
+argument_list|)
+DECL|method|putNullKeywordSeparatorThrowsNPE ()
+specifier|public
+name|void
+name|putNullKeywordSeparatorThrowsNPE
+parameter_list|()
+block|{
+name|keywordEntry
+operator|.
+name|putKeywords
+argument_list|(
+name|Arrays
+operator|.
+name|asList
+argument_list|(
+literal|"A"
+argument_list|,
+literal|"B"
+argument_list|)
+argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
@@ -1399,6 +1440,8 @@ operator|.
 name|addKeyword
 argument_list|(
 literal|"FooBar"
+argument_list|,
+literal|", "
 argument_list|)
 expr_stmt|;
 name|String
@@ -1442,6 +1485,8 @@ operator|.
 name|addKeyword
 argument_list|(
 literal|"FooBar"
+argument_list|,
+literal|", "
 argument_list|)
 expr_stmt|;
 name|Assert
@@ -1468,6 +1513,8 @@ operator|.
 name|addKeyword
 argument_list|(
 literal|"FooBar"
+argument_list|,
+literal|", "
 argument_list|)
 expr_stmt|;
 name|keywordEntry
@@ -1475,6 +1522,8 @@ operator|.
 name|addKeyword
 argument_list|(
 literal|"FooBar"
+argument_list|,
+literal|", "
 argument_list|)
 expr_stmt|;
 name|String
@@ -1518,6 +1567,8 @@ operator|.
 name|addKeyword
 argument_list|(
 literal|"FOO"
+argument_list|,
+literal|", "
 argument_list|)
 expr_stmt|;
 name|String
@@ -1561,6 +1612,8 @@ operator|.
 name|addKeyword
 argument_list|(
 literal|"FOO"
+argument_list|,
+literal|", "
 argument_list|)
 expr_stmt|;
 name|Assert
@@ -1587,6 +1640,8 @@ operator|.
 name|addKeyword
 argument_list|(
 literal|""
+argument_list|,
+literal|", "
 argument_list|)
 expr_stmt|;
 name|String
@@ -1628,6 +1683,8 @@ operator|.
 name|addKeyword
 argument_list|(
 literal|""
+argument_list|,
+literal|", "
 argument_list|)
 expr_stmt|;
 name|Assert
@@ -1676,6 +1733,8 @@ operator|.
 name|addKeyword
 argument_list|(
 literal|""
+argument_list|,
+literal|", "
 argument_list|)
 expr_stmt|;
 name|Assert
@@ -1705,6 +1764,8 @@ operator|.
 name|addKeyword
 argument_list|(
 literal|""
+argument_list|,
+literal|", "
 argument_list|)
 expr_stmt|;
 name|Assert
@@ -1744,6 +1805,8 @@ name|keywordEntry
 operator|.
 name|getKeywords
 argument_list|()
+argument_list|,
+literal|", "
 argument_list|)
 expr_stmt|;
 name|Assert
@@ -1782,6 +1845,8 @@ literal|"Yin"
 argument_list|,
 literal|"Yang"
 argument_list|)
+argument_list|,
+literal|", "
 argument_list|)
 expr_stmt|;
 name|String
@@ -1830,6 +1895,8 @@ literal|"Yin"
 argument_list|,
 literal|"Yang"
 argument_list|)
+argument_list|,
+literal|", "
 argument_list|)
 expr_stmt|;
 name|Assert
@@ -1859,6 +1926,8 @@ name|Collections
 operator|.
 name|emptyList
 argument_list|()
+argument_list|,
+literal|", "
 argument_list|)
 expr_stmt|;
 name|Assert
@@ -1891,6 +1960,8 @@ name|Collections
 operator|.
 name|emptyList
 argument_list|()
+argument_list|,
+literal|", "
 argument_list|)
 expr_stmt|;
 name|Assert
@@ -1920,6 +1991,8 @@ name|Collections
 operator|.
 name|emptyList
 argument_list|()
+argument_list|,
+literal|", "
 argument_list|)
 expr_stmt|;
 name|Assert
@@ -1952,6 +2025,8 @@ name|Collections
 operator|.
 name|emptyList
 argument_list|()
+argument_list|,
+literal|", "
 argument_list|)
 expr_stmt|;
 name|Assert
@@ -1987,6 +2062,8 @@ name|Collections
 operator|.
 name|emptyList
 argument_list|()
+argument_list|,
+literal|", "
 argument_list|)
 decl_stmt|;
 name|Assert
@@ -2024,6 +2101,8 @@ name|Collections
 operator|.
 name|emptyList
 argument_list|()
+argument_list|,
+literal|", "
 argument_list|)
 decl_stmt|;
 name|Assert
@@ -2077,6 +2156,8 @@ literal|"Test"
 argument_list|,
 literal|"FooTest"
 argument_list|)
+argument_list|,
+literal|", "
 argument_list|)
 decl_stmt|;
 name|Assert
@@ -2130,6 +2211,8 @@ literal|"Foo"
 argument_list|,
 literal|"Bar"
 argument_list|)
+argument_list|,
+literal|", "
 argument_list|)
 decl_stmt|;
 name|Assert

@@ -170,6 +170,20 @@ name|BibEntry
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|preferences
+operator|.
+name|JabRefPreferences
+import|;
+end_import
+
 begin_comment
 comment|/**  * A node in the groups tree that holds exactly one AbstractGroup.  */
 end_comment
@@ -1017,7 +1031,7 @@ name|group
 argument_list|)
 return|;
 block|}
-DECL|method|parse (List<String> orderedData)
+DECL|method|parse (List<String> orderedData, JabRefPreferences jabRefPreferences)
 specifier|public
 specifier|static
 name|GroupTreeNode
@@ -1028,6 +1042,9 @@ argument_list|<
 name|String
 argument_list|>
 name|orderedData
+parameter_list|,
+name|JabRefPreferences
+name|jabRefPreferences
 parameter_list|)
 throws|throws
 name|ParseException
@@ -1038,6 +1055,8 @@ operator|.
 name|importGroups
 argument_list|(
 name|orderedData
+argument_list|,
+name|jabRefPreferences
 argument_list|)
 return|;
 block|}

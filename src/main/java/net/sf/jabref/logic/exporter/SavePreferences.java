@@ -34,7 +34,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
+name|logic
+operator|.
+name|bibtex
+operator|.
+name|LatexFieldFormatterPreferences
 import|;
 end_import
 
@@ -116,6 +120,12 @@ specifier|final
 name|boolean
 name|takeMetadataSaveOrderInAccount
 decl_stmt|;
+DECL|field|latexFieldFormatterPreferences
+specifier|private
+specifier|final
+name|LatexFieldFormatterPreferences
+name|latexFieldFormatterPreferences
+decl_stmt|;
 DECL|method|SavePreferences ()
 specifier|public
 name|SavePreferences
@@ -138,10 +148,14 @@ argument_list|,
 literal|true
 argument_list|,
 literal|false
+argument_list|,
+operator|new
+name|LatexFieldFormatterPreferences
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|SavePreferences (Boolean saveInOriginalOrder, SaveOrderConfig saveOrder, Charset encoding, Boolean makeBackup, DatabaseSaveType saveType, Boolean takeMetadataSaveOrderInAccount, Boolean reformatFile)
+DECL|method|SavePreferences (Boolean saveInOriginalOrder, SaveOrderConfig saveOrder, Charset encoding, Boolean makeBackup, DatabaseSaveType saveType, Boolean takeMetadataSaveOrderInAccount, Boolean reformatFile, LatexFieldFormatterPreferences latexFieldFormatterPreferences)
 specifier|public
 name|SavePreferences
 parameter_list|(
@@ -165,6 +179,9 @@ name|takeMetadataSaveOrderInAccount
 parameter_list|,
 name|Boolean
 name|reformatFile
+parameter_list|,
+name|LatexFieldFormatterPreferences
+name|latexFieldFormatterPreferences
 parameter_list|)
 block|{
 name|this
@@ -208,6 +225,12 @@ operator|.
 name|reformatFile
 operator|=
 name|reformatFile
+expr_stmt|;
+name|this
+operator|.
+name|latexFieldFormatterPreferences
+operator|=
+name|latexFieldFormatterPreferences
 expr_stmt|;
 block|}
 DECL|method|loadForExportFromPreferences (JabRefPreferences preferences)
@@ -223,9 +246,7 @@ block|{
 name|Boolean
 name|saveInOriginalOrder
 init|=
-name|Globals
-operator|.
-name|prefs
+name|preferences
 operator|.
 name|getBoolean
 argument_list|(
@@ -247,9 +268,7 @@ condition|)
 block|{
 if|if
 condition|(
-name|Globals
-operator|.
-name|prefs
+name|preferences
 operator|.
 name|getBoolean
 argument_list|(
@@ -326,6 +345,16 @@ operator|.
 name|REFORMAT_FILE_ON_SAVE_AND_EXPORT
 argument_list|)
 decl_stmt|;
+name|LatexFieldFormatterPreferences
+name|latexFieldFormatterPreferences
+init|=
+name|LatexFieldFormatterPreferences
+operator|.
+name|fromPreferences
+argument_list|(
+name|preferences
+argument_list|)
+decl_stmt|;
 return|return
 operator|new
 name|SavePreferences
@@ -343,6 +372,8 @@ argument_list|,
 name|takeMetadataSaveOrderInAccount
 argument_list|,
 name|reformatFile
+argument_list|,
+name|latexFieldFormatterPreferences
 argument_list|)
 return|;
 block|}
@@ -410,6 +441,16 @@ operator|.
 name|REFORMAT_FILE_ON_SAVE_AND_EXPORT
 argument_list|)
 decl_stmt|;
+name|LatexFieldFormatterPreferences
+name|latexFieldFormatterPreferences
+init|=
+name|LatexFieldFormatterPreferences
+operator|.
+name|fromPreferences
+argument_list|(
+name|preferences
+argument_list|)
+decl_stmt|;
 return|return
 operator|new
 name|SavePreferences
@@ -427,6 +468,8 @@ argument_list|,
 name|takeMetadataSaveOrderInAccount
 argument_list|,
 name|reformatFile
+argument_list|,
+name|latexFieldFormatterPreferences
 argument_list|)
 return|;
 block|}
@@ -498,6 +541,10 @@ argument_list|,
 name|this
 operator|.
 name|reformatFile
+argument_list|,
+name|this
+operator|.
+name|latexFieldFormatterPreferences
 argument_list|)
 return|;
 block|}
@@ -549,6 +596,10 @@ argument_list|,
 name|this
 operator|.
 name|reformatFile
+argument_list|,
+name|this
+operator|.
+name|latexFieldFormatterPreferences
 argument_list|)
 return|;
 block|}
@@ -600,6 +651,10 @@ argument_list|,
 name|this
 operator|.
 name|reformatFile
+argument_list|,
+name|this
+operator|.
+name|latexFieldFormatterPreferences
 argument_list|)
 return|;
 block|}
@@ -651,6 +706,10 @@ argument_list|,
 name|this
 operator|.
 name|reformatFile
+argument_list|,
+name|this
+operator|.
+name|latexFieldFormatterPreferences
 argument_list|)
 return|;
 block|}
@@ -702,6 +761,10 @@ operator|.
 name|takeMetadataSaveOrderInAccount
 argument_list|,
 name|reformatFile
+argument_list|,
+name|this
+operator|.
+name|latexFieldFormatterPreferences
 argument_list|)
 return|;
 block|}
@@ -722,6 +785,16 @@ name|defaultCharset
 argument_list|()
 else|:
 name|encoding
+return|;
+block|}
+DECL|method|getLatexFieldFormatterPreferences ()
+specifier|public
+name|LatexFieldFormatterPreferences
+name|getLatexFieldFormatterPreferences
+parameter_list|()
+block|{
+return|return
+name|latexFieldFormatterPreferences
 return|;
 block|}
 DECL|enum|DatabaseSaveType

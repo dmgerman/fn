@@ -724,6 +724,10 @@ argument_list|,
 name|GroupHierarchyType
 operator|.
 name|INCLUDING
+argument_list|,
+name|Globals
+operator|.
+name|prefs
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -935,6 +939,10 @@ argument_list|,
 name|GroupHierarchyType
 operator|.
 name|INDEPENDENT
+argument_list|,
+name|Globals
+operator|.
+name|prefs
 argument_list|)
 decl_stmt|;
 name|autoGroupsRoot

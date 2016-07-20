@@ -46,18 +46,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|logic
 operator|.
 name|l10n
@@ -131,20 +119,6 @@ operator|.
 name|entry
 operator|.
 name|BibEntry
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|preferences
-operator|.
-name|JabRefPreferences
 import|;
 end_import
 
@@ -846,11 +820,14 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|getShortDescription ()
+DECL|method|getShortDescription (boolean showDynamic)
 specifier|public
 name|String
 name|getShortDescription
-parameter_list|()
+parameter_list|(
+name|boolean
+name|showDynamic
+parameter_list|)
 block|{
 name|StringBuilder
 name|sb
@@ -868,16 +845,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getBoolean
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|GROUP_SHOW_DYNAMIC
-argument_list|)
+name|showDynamic
 condition|)
 block|{
 name|sb

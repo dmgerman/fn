@@ -3371,6 +3371,10 @@ argument_list|,
 name|database
 argument_list|,
 name|entry
+argument_list|,
+name|Globals
+operator|.
+name|prefs
 argument_list|)
 expr_stmt|;
 comment|// Remove the entry from the database again, since we only added it in
@@ -3524,6 +3528,10 @@ argument_list|,
 name|database
 argument_list|,
 name|entry
+argument_list|,
+name|Globals
+operator|.
+name|prefs
 argument_list|)
 expr_stmt|;
 comment|// Add the generated key to our list:

@@ -330,11 +330,14 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|getShortDescription ()
+DECL|method|getShortDescription (boolean showDynamic)
 specifier|public
 name|String
 name|getShortDescription
-parameter_list|()
+parameter_list|(
+name|boolean
+name|showDynamic
+parameter_list|)
 block|{
 return|return
 name|Localization

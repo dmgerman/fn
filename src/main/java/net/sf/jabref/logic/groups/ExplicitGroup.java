@@ -138,6 +138,20 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|preferences
+operator|.
+name|JabRefPreferences
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -215,7 +229,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|method|ExplicitGroup (String name, GroupHierarchyType context)
+DECL|method|ExplicitGroup (String name, GroupHierarchyType context, JabRefPreferences jabRefPreferences)
 specifier|public
 name|ExplicitGroup
 parameter_list|(
@@ -224,6 +238,9 @@ name|name
 parameter_list|,
 name|GroupHierarchyType
 name|context
+parameter_list|,
+name|JabRefPreferences
+name|jabRefPreferences
 parameter_list|)
 throws|throws
 name|ParseException
@@ -241,10 +258,12 @@ argument_list|,
 literal|false
 argument_list|,
 name|context
+argument_list|,
+name|jabRefPreferences
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|fromString (String s)
+DECL|method|fromString (String s, JabRefPreferences jabRefPreferences)
 specifier|public
 specifier|static
 name|ExplicitGroup
@@ -252,6 +271,9 @@ name|fromString
 parameter_list|(
 name|String
 name|s
+parameter_list|,
+name|JabRefPreferences
+name|jabRefPreferences
 parameter_list|)
 throws|throws
 name|ParseException
@@ -343,6 +365,8 @@ name|getByNumber
 argument_list|(
 name|context
 argument_list|)
+argument_list|,
+name|jabRefPreferences
 argument_list|)
 decl_stmt|;
 name|newGroup
@@ -438,6 +462,8 @@ argument_list|()
 argument_list|,
 name|getContext
 argument_list|()
+argument_list|,
+name|jabRefPreferences
 argument_list|)
 decl_stmt|;
 name|copy
@@ -733,11 +759,14 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|getShortDescription ()
+DECL|method|getShortDescription (boolean showDynamic)
 specifier|public
 name|String
 name|getShortDescription
-parameter_list|()
+parameter_list|(
+name|boolean
+name|showDynamic
+parameter_list|)
 block|{
 name|StringBuilder
 name|sb

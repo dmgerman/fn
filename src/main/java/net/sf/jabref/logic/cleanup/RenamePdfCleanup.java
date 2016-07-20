@@ -184,6 +184,20 @@ name|ParsedFileField
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|preferences
+operator|.
+name|JabRefPreferences
+import|;
+end_import
+
 begin_class
 DECL|class|RenamePdfCleanup
 specifier|public
@@ -210,12 +224,18 @@ specifier|final
 name|JournalAbbreviationLoader
 name|repositoryLoader
 decl_stmt|;
+DECL|field|prefs
+specifier|private
+specifier|final
+name|JabRefPreferences
+name|prefs
+decl_stmt|;
 DECL|field|unsuccessfulRenames
 specifier|private
 name|int
 name|unsuccessfulRenames
 decl_stmt|;
-DECL|method|RenamePdfCleanup (boolean onlyRelativePaths, BibDatabaseContext databaseContext, JournalAbbreviationLoader repositoryLoader)
+DECL|method|RenamePdfCleanup (boolean onlyRelativePaths, BibDatabaseContext databaseContext, JournalAbbreviationLoader repositoryLoader, JabRefPreferences prefs)
 specifier|public
 name|RenamePdfCleanup
 parameter_list|(
@@ -227,6 +247,9 @@ name|databaseContext
 parameter_list|,
 name|JournalAbbreviationLoader
 name|repositoryLoader
+parameter_list|,
+name|JabRefPreferences
+name|prefs
 parameter_list|)
 block|{
 name|this
@@ -255,6 +278,17 @@ operator|.
 name|requireNonNull
 argument_list|(
 name|repositoryLoader
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|prefs
+operator|=
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|prefs
 argument_list|)
 expr_stmt|;
 block|}
@@ -369,6 +403,8 @@ argument_list|,
 name|entry
 argument_list|,
 name|repositoryLoader
+argument_list|,
+name|prefs
 argument_list|)
 argument_list|)
 decl_stmt|;

@@ -974,6 +974,10 @@ operator|.
 name|parse
 argument_list|(
 name|orderedData
+argument_list|,
+name|Globals
+operator|.
+name|prefs
 argument_list|)
 expr_stmt|;
 block|}
@@ -1204,7 +1208,11 @@ name|labelPattern
 operator|=
 operator|new
 name|DatabaseLabelPattern
-argument_list|()
+argument_list|(
+name|Globals
+operator|.
+name|prefs
+argument_list|)
 expr_stmt|;
 comment|// read the data from the metadata and store it into the labelPattern
 for|for

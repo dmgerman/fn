@@ -150,6 +150,20 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|preferences
+operator|.
+name|JabRefPreferences
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -209,6 +223,27 @@ specifier|private
 name|String
 name|fileType
 decl_stmt|;
+DECL|field|prefs
+specifier|private
+specifier|final
+name|JabRefPreferences
+name|prefs
+decl_stmt|;
+DECL|method|FileLink (JabRefPreferences prefs)
+specifier|public
+name|FileLink
+parameter_list|(
+name|JabRefPreferences
+name|prefs
+parameter_list|)
+block|{
+name|this
+operator|.
+name|prefs
+operator|=
+name|prefs
+expr_stmt|;
+block|}
 annotation|@
 name|Override
 DECL|method|format (String field)
@@ -340,8 +375,6 @@ comment|// ugly hack, the export routine has set a global variable before
 comment|// starting the export, which contains the database's file directory:
 if|if
 condition|(
-name|Globals
-operator|.
 name|prefs
 operator|.
 name|fileDirForDatabase
@@ -355,8 +388,6 @@ name|Collections
 operator|.
 name|singletonList
 argument_list|(
-name|Globals
-operator|.
 name|prefs
 operator|.
 name|get
@@ -376,8 +407,6 @@ else|else
 block|{
 name|dirs
 operator|=
-name|Globals
-operator|.
 name|prefs
 operator|.
 name|fileDirForDatabase
