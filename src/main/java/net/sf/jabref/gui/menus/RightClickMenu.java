@@ -2067,12 +2067,15 @@ name|getFirstLabel
 argument_list|(
 name|entry
 operator|.
-name|getField
+name|getFieldOptional
 argument_list|(
 name|Globals
 operator|.
 name|FILE_FIELD
 argument_list|)
+operator|.
+name|get
+argument_list|()
 argument_list|)
 decl_stmt|;
 if|if

@@ -277,10 +277,13 @@ name|oldValue
 operator|=
 name|be
 operator|.
-name|getField
+name|getFieldOptional
 argument_list|(
 name|field
 argument_list|)
+operator|.
+name|get
+argument_list|()
 expr_stmt|;
 if|if
 condition|(

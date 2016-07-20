@@ -1599,22 +1599,17 @@ block|}
 comment|// Clean up some remaining HTML code from Elsevier(?) papers
 comment|// Search for: Poincare algebra
 comment|// to see an example
-name|String
-name|title
-init|=
 name|entry
 operator|.
-name|getField
+name|getFieldOptional
 argument_list|(
 literal|"title"
 argument_list|)
-decl_stmt|;
-if|if
-condition|(
+operator|.
+name|ifPresent
+argument_list|(
 name|title
-operator|!=
-literal|null
-condition|)
+lambda|->
 block|{
 name|String
 name|newtitle
@@ -1650,6 +1645,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+argument_list|)
+expr_stmt|;
 return|return
 name|entry
 return|;

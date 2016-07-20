@@ -333,11 +333,16 @@ name|FILE_FIELD
 argument_list|,
 name|entry
 operator|.
-name|getField
+name|getFieldOptional
 argument_list|(
 name|Globals
 operator|.
 name|FILE_FIELD
+argument_list|)
+operator|.
+name|orElse
+argument_list|(
+literal|null
 argument_list|)
 argument_list|,
 name|newVal

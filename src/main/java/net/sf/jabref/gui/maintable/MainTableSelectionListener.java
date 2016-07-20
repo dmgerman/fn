@@ -1835,10 +1835,13 @@ name|link
 init|=
 name|entry
 operator|.
-name|getField
+name|getFieldOptional
 argument_list|(
 name|fieldName
 argument_list|)
+operator|.
+name|get
+argument_list|()
 decl_stmt|;
 comment|// See if this is a simple file link field, or if it is a file-list
 comment|// field that can specify a list of links:
@@ -2439,16 +2442,6 @@ argument_list|)
 condition|)
 block|{
 comment|// We use a FileListTableModel to parse the field content:
-name|String
-name|fileFieldContent
-init|=
-name|entry
-operator|.
-name|getField
-argument_list|(
-name|field
-argument_list|)
-decl_stmt|;
 name|FileListTableModel
 name|fileList
 init|=
@@ -2456,11 +2449,18 @@ operator|new
 name|FileListTableModel
 argument_list|()
 decl_stmt|;
-name|fileList
+name|entry
 operator|.
-name|setContent
+name|getFieldOptional
 argument_list|(
-name|fileFieldContent
+name|field
+argument_list|)
+operator|.
+name|ifPresent
+argument_list|(
+name|fileList
+operator|::
+name|setContent
 argument_list|)
 expr_stmt|;
 for|for

@@ -2466,10 +2466,13 @@ name|key
 argument_list|,
 name|entry
 operator|.
-name|getField
+name|getFieldOptional
 argument_list|(
 name|key
 argument_list|)
+operator|.
+name|get
+argument_list|()
 operator|+
 literal|" and "
 operator|+

@@ -187,10 +187,13 @@ name|text
 init|=
 name|entry
 operator|.
-name|getField
+name|getFieldOptional
 argument_list|(
 name|fieldName
 argument_list|)
+operator|.
+name|get
+argument_list|()
 decl_stmt|;
 name|String
 name|origText

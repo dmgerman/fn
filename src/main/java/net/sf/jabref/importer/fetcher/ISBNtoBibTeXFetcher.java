@@ -545,22 +545,17 @@ literal|null
 condition|)
 block|{
 comment|// Optionally add curly brackets around key words to keep the case
-name|String
-name|title
-init|=
 name|entry
 operator|.
-name|getField
+name|getFieldOptional
 argument_list|(
 literal|"title"
 argument_list|)
-decl_stmt|;
-if|if
-condition|(
+operator|.
+name|ifPresent
+argument_list|(
 name|title
-operator|!=
-literal|null
-condition|)
+lambda|->
 block|{
 comment|// Unit formatting
 if|if
@@ -622,6 +617,8 @@ name|title
 argument_list|)
 expr_stmt|;
 block|}
+argument_list|)
+expr_stmt|;
 name|inspector
 operator|.
 name|addEntry

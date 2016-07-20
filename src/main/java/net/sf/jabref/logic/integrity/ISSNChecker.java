@@ -168,10 +168,13 @@ name|issn
 init|=
 name|entry
 operator|.
-name|getField
+name|getFieldOptional
 argument_list|(
 literal|"issn"
 argument_list|)
+operator|.
+name|get
+argument_list|()
 operator|.
 name|trim
 argument_list|()

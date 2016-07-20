@@ -920,10 +920,13 @@ name|field
 argument_list|,
 name|b
 operator|.
-name|getField
+name|getFieldOptional
 argument_list|(
 name|field
 argument_list|)
+operator|.
+name|get
+argument_list|()
 operator|+
 name|separator
 operator|+

@@ -3055,12 +3055,15 @@ name|selectionEnd
 argument_list|)
 expr_stmt|;
 comment|// get old text from BibTeX tag
+name|Optional
+argument_list|<
 name|String
+argument_list|>
 name|old
 init|=
 name|entry
 operator|.
-name|getField
+name|getFieldOptional
 argument_list|(
 name|fieldName
 argument_list|)
@@ -3069,22 +3072,10 @@ comment|// merge old and selected text
 if|if
 condition|(
 name|old
-operator|==
-literal|null
-condition|)
-block|{
-comment|// "null"+"txt" Strings forbidden
-name|entry
 operator|.
-name|setField
-argument_list|(
-name|fieldName
-argument_list|,
-name|txt
-argument_list|)
-expr_stmt|;
-block|}
-else|else
+name|isPresent
+argument_list|()
+condition|)
 block|{
 comment|// insert a new name with an additional "and"
 if|if
@@ -3111,6 +3102,9 @@ argument_list|(
 name|fieldName
 argument_list|,
 name|old
+operator|.
+name|get
+argument_list|()
 operator|+
 literal|" and "
 operator|+
@@ -3147,11 +3141,27 @@ argument_list|(
 name|fieldName
 argument_list|,
 name|old
+operator|.
+name|get
+argument_list|()
 operator|+
 name|txt
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+else|else
+block|{
+comment|// "null"+"txt" Strings forbidden
+name|entry
+operator|.
+name|setField
+argument_list|(
+name|fieldName
+argument_list|,
+name|txt
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 comment|// make the new data in BibTeX source code visible
