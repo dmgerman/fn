@@ -6452,6 +6452,9 @@ operator|.
 name|updateAll
 argument_list|()
 expr_stmt|;
+name|activateVisible
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 argument_list|)
