@@ -242,9 +242,9 @@ name|entry
 operator|.
 name|getFieldOptional
 argument_list|(
-name|BibEntry
+name|FieldName
 operator|.
-name|KEYWORDS_FIELD
+name|KEYWORDS
 argument_list|)
 operator|.
 name|orElse

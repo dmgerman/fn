@@ -946,7 +946,9 @@ init|=
 name|field
 lambda|->
 operator|!
-literal|"bibtexkey"
+name|BibEntry
+operator|.
+name|KEY_FIELD
 operator|.
 name|equals
 argument_list|(

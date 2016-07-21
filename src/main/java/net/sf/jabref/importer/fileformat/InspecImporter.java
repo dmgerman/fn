@@ -146,6 +146,22 @@ name|BibEntry
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|FieldName
+import|;
+end_import
+
 begin_comment
 comment|/**  * INSPEC format importer.  */
 end_comment
@@ -484,7 +500,9 @@ name|h
 operator|.
 name|put
 argument_list|(
-literal|"title"
+name|FieldName
+operator|.
+name|TITLE
 argument_list|,
 name|frest
 argument_list|)
@@ -505,7 +523,9 @@ name|h
 operator|.
 name|put
 argument_list|(
-literal|"year"
+name|FieldName
+operator|.
+name|YEAR
 argument_list|,
 name|frest
 argument_list|)
@@ -526,7 +546,9 @@ name|h
 operator|.
 name|put
 argument_list|(
-literal|"author"
+name|FieldName
+operator|.
+name|AUTHOR
 argument_list|,
 name|AuthorList
 operator|.
@@ -566,7 +588,9 @@ name|h
 operator|.
 name|put
 argument_list|(
-literal|"abstract"
+name|FieldName
+operator|.
+name|ABSTRACT
 argument_list|,
 name|frest
 argument_list|)
@@ -587,7 +611,9 @@ name|h
 operator|.
 name|put
 argument_list|(
-literal|"keywords"
+name|FieldName
+operator|.
+name|KEYWORDS
 argument_list|,
 name|frest
 argument_list|)
@@ -637,7 +663,9 @@ name|h
 operator|.
 name|put
 argument_list|(
-literal|"journal"
+name|FieldName
+operator|.
+name|JOURNAL
 argument_list|,
 name|jr
 operator|.
@@ -695,7 +723,9 @@ name|h
 operator|.
 name|put
 argument_list|(
-literal|"year"
+name|FieldName
+operator|.
+name|YEAR
 argument_list|,
 name|yr
 argument_list|)
@@ -744,7 +774,9 @@ name|h
 operator|.
 name|put
 argument_list|(
-literal|"pages"
+name|FieldName
+operator|.
+name|PAGES
 argument_list|,
 name|pg
 argument_list|)
@@ -768,7 +800,9 @@ name|h
 operator|.
 name|put
 argument_list|(
-literal|"volume"
+name|FieldName
+operator|.
+name|VOLUME
 argument_list|,
 name|vol
 argument_list|)

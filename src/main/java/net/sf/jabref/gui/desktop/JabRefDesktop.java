@@ -472,6 +472,22 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|FieldName
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|preferences
 operator|.
 name|JabRefPreferences
@@ -786,7 +802,9 @@ block|}
 elseif|else
 if|if
 condition|(
-literal|"doi"
+name|FieldName
+operator|.
+name|DOI
 operator|.
 name|equals
 argument_list|(
@@ -829,7 +847,9 @@ block|}
 comment|// should be opened in browser
 name|fieldName
 operator|=
-literal|"url"
+name|FieldName
+operator|.
+name|URL
 expr_stmt|;
 block|}
 elseif|else
@@ -845,7 +865,9 @@ condition|)
 block|{
 name|fieldName
 operator|=
-literal|"url"
+name|FieldName
+operator|.
+name|URL
 expr_stmt|;
 comment|// Check to see if link field already contains a well formated URL
 if|if
@@ -869,7 +891,9 @@ block|}
 block|}
 if|if
 condition|(
-literal|"url"
+name|FieldName
+operator|.
+name|URL
 operator|.
 name|equals
 argument_list|(
@@ -1533,9 +1557,9 @@ name|entry
 operator|.
 name|getFieldOptional
 argument_list|(
-name|Globals
+name|FieldName
 operator|.
-name|FILE_FIELD
+name|FILE
 argument_list|)
 decl_stmt|;
 name|oldValue
@@ -1673,9 +1697,9 @@ name|UndoableFieldChange
 argument_list|(
 name|entry
 argument_list|,
-name|Globals
+name|FieldName
 operator|.
-name|FILE_FIELD
+name|FILE
 argument_list|,
 name|oldValue
 operator|.
@@ -1691,9 +1715,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|Globals
+name|FieldName
 operator|.
-name|FILE_FIELD
+name|FILE
 argument_list|,
 name|newValue
 argument_list|)

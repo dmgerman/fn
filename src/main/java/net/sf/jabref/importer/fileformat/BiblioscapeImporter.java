@@ -128,6 +128,22 @@ name|BibEntry
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|FieldName
+import|;
+end_import
+
 begin_comment
 comment|/**  * Imports a Biblioscape Tag File. The format is described on  * http://www.biblioscape.com/download/Biblioscape8.pdf Several  * Biblioscape field types are ignored. Others are only included in the BibTeX  * field "comment".  */
 end_comment
@@ -390,7 +406,9 @@ name|hm
 operator|.
 name|put
 argument_list|(
-literal|"author"
+name|FieldName
+operator|.
+name|AUTHOR
 argument_list|,
 name|entry
 operator|.
@@ -470,7 +488,9 @@ name|hm
 operator|.
 name|put
 argument_list|(
-literal|"year"
+name|FieldName
+operator|.
+name|YEAR
 argument_list|,
 name|entry
 operator|.
@@ -500,7 +520,9 @@ name|hm
 operator|.
 name|put
 argument_list|(
-literal|"volume"
+name|FieldName
+operator|.
+name|VOLUME
 argument_list|,
 name|entry
 operator|.
@@ -530,7 +552,9 @@ name|hm
 operator|.
 name|put
 argument_list|(
-literal|"number"
+name|FieldName
+operator|.
+name|NUMBER
 argument_list|,
 name|entry
 operator|.
@@ -616,7 +640,9 @@ name|hm
 operator|.
 name|put
 argument_list|(
-literal|"keywords"
+name|FieldName
+operator|.
+name|KEYWORDS
 argument_list|,
 name|entry
 operator|.
@@ -758,7 +784,9 @@ name|hm
 operator|.
 name|put
 argument_list|(
-literal|"publisher"
+name|FieldName
+operator|.
+name|PUBLISHER
 argument_list|,
 name|entry
 operator|.
@@ -954,7 +982,9 @@ name|hm
 operator|.
 name|put
 argument_list|(
-literal|"isbn"
+name|FieldName
+operator|.
+name|ISBN
 argument_list|,
 name|entry
 operator|.
@@ -984,7 +1014,9 @@ name|hm
 operator|.
 name|put
 argument_list|(
-literal|"abstract"
+name|FieldName
+operator|.
+name|ABSTRACT
 argument_list|,
 name|entry
 operator|.
@@ -1132,7 +1164,9 @@ argument_list|(
 literal|"ftp://"
 argument_list|)
 condition|?
-literal|"url"
+name|FieldName
+operator|.
+name|URL
 else|:
 literal|"pdf"
 argument_list|,
@@ -1686,7 +1720,9 @@ name|hm
 operator|.
 name|put
 argument_list|(
-literal|"journal"
+name|FieldName
+operator|.
+name|JOURNAL
 argument_list|,
 name|titleST
 argument_list|)
@@ -1703,7 +1739,9 @@ name|hm
 operator|.
 name|put
 argument_list|(
-literal|"title"
+name|FieldName
+operator|.
+name|TITLE
 argument_list|,
 name|titleTI
 argument_list|)
@@ -1749,7 +1787,9 @@ name|hm
 operator|.
 name|put
 argument_list|(
-literal|"title"
+name|FieldName
+operator|.
+name|TITLE
 argument_list|,
 name|titleTI
 argument_list|)
@@ -1789,7 +1829,9 @@ name|hm
 operator|.
 name|put
 argument_list|(
-literal|"title"
+name|FieldName
+operator|.
+name|TITLE
 argument_list|,
 name|titleTI
 argument_list|)
@@ -1822,7 +1864,9 @@ name|hm
 operator|.
 name|put
 argument_list|(
-literal|"pages"
+name|FieldName
+operator|.
+name|PAGES
 argument_list|,
 operator|(
 name|pages

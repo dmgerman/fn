@@ -209,9 +209,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|BibEntry
+name|FieldName
 operator|.
-name|KEYWORDS_FIELD
+name|KEYWORDS
 argument_list|,
 name|keywords
 argument_list|)

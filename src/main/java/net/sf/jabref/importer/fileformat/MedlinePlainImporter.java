@@ -168,6 +168,22 @@ name|BibEntry
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|FieldName
+import|;
+end_import
+
 begin_comment
 comment|/**  * Importer for the MEDLINE Plain format.  *  * check here for details on the format  * http://www.nlm.nih.gov/bsd/mms/medlineelements.html  *  * @author vegeziel  */
 end_comment
@@ -901,7 +917,9 @@ name|put
 argument_list|(
 literal|"PG"
 argument_list|,
-literal|"pages"
+name|FieldName
+operator|.
+name|PAGES
 argument_list|)
 expr_stmt|;
 name|hashMap
@@ -937,7 +955,9 @@ name|put
 argument_list|(
 literal|"VI"
 argument_list|,
-literal|"volume"
+name|FieldName
+operator|.
+name|VOLUME
 argument_list|)
 expr_stmt|;
 name|hashMap
@@ -1009,7 +1029,9 @@ name|put
 argument_list|(
 literal|"IP"
 argument_list|,
-literal|"issue"
+name|FieldName
+operator|.
+name|ISSUE
 argument_list|)
 expr_stmt|;
 name|hashMap
@@ -1260,7 +1282,9 @@ name|fields
 operator|.
 name|containsKey
 argument_list|(
-literal|"keywords"
+name|FieldName
+operator|.
+name|KEYWORDS
 argument_list|)
 condition|)
 block|{
@@ -1268,7 +1292,9 @@ name|fields
 operator|.
 name|put
 argument_list|(
-literal|"keywords"
+name|FieldName
+operator|.
+name|KEYWORDS
 argument_list|,
 name|value
 argument_list|)
@@ -1283,14 +1309,18 @@ name|fields
 operator|.
 name|get
 argument_list|(
-literal|"keywords"
+name|FieldName
+operator|.
+name|KEYWORDS
 argument_list|)
 decl_stmt|;
 name|fields
 operator|.
 name|put
 argument_list|(
-literal|"keywords"
+name|FieldName
+operator|.
+name|KEYWORDS
 argument_list|,
 name|kw
 operator|+
@@ -1447,7 +1477,9 @@ name|fields
 argument_list|,
 name|author
 argument_list|,
-literal|"author"
+name|FieldName
+operator|.
+name|AUTHOR
 argument_list|)
 expr_stmt|;
 name|fixAuthors
@@ -1456,7 +1488,9 @@ name|fields
 argument_list|,
 name|editor
 argument_list|,
-literal|"editor"
+name|FieldName
+operator|.
+name|EDITOR
 argument_list|)
 expr_stmt|;
 if|if
@@ -1704,7 +1738,9 @@ block|{
 name|String
 name|key
 init|=
-literal|"issn"
+name|FieldName
+operator|.
+name|ISSN
 decl_stmt|;
 comment|//it is possible to have two issn, one for electronic and for print
 comment|//if there are two then it comes at the end in brackets (electronic) or (print)
@@ -1810,7 +1846,9 @@ name|hm
 operator|.
 name|put
 argument_list|(
-literal|"isbn"
+name|FieldName
+operator|.
+name|ISBN
 argument_list|,
 name|value
 argument_list|)
@@ -1933,7 +1971,9 @@ argument_list|()
 expr_stmt|;
 name|key
 operator|=
-literal|"doi"
+name|FieldName
+operator|.
+name|DOI
 expr_stmt|;
 block|}
 elseif|else
@@ -2154,7 +2194,9 @@ name|hm
 operator|.
 name|get
 argument_list|(
-literal|"title"
+name|FieldName
+operator|.
+name|TITLE
 argument_list|)
 decl_stmt|;
 if|if
@@ -2168,7 +2210,9 @@ name|hm
 operator|.
 name|put
 argument_list|(
-literal|"title"
+name|FieldName
+operator|.
+name|TITLE
 argument_list|,
 name|val
 argument_list|)
@@ -2204,7 +2248,9 @@ name|hm
 operator|.
 name|put
 argument_list|(
-literal|"title"
+name|FieldName
+operator|.
+name|TITLE
 argument_list|,
 name|oldVal
 operator|+
@@ -2220,7 +2266,9 @@ name|hm
 operator|.
 name|put
 argument_list|(
-literal|"title"
+name|FieldName
+operator|.
+name|TITLE
 argument_list|,
 name|oldVal
 operator|+
@@ -2297,7 +2345,9 @@ name|hm
 operator|.
 name|put
 argument_list|(
-literal|"journal"
+name|FieldName
+operator|.
+name|JOURNAL
 argument_list|,
 name|val
 argument_list|)
@@ -2503,7 +2553,9 @@ name|hm
 operator|.
 name|get
 argument_list|(
-literal|"abstract"
+name|FieldName
+operator|.
+name|ABSTRACT
 argument_list|)
 decl_stmt|;
 if|if
@@ -2517,7 +2569,9 @@ name|hm
 operator|.
 name|put
 argument_list|(
-literal|"abstract"
+name|FieldName
+operator|.
+name|ABSTRACT
 argument_list|,
 name|abstractValue
 argument_list|)
@@ -2529,7 +2583,9 @@ name|hm
 operator|.
 name|put
 argument_list|(
-literal|"abstract"
+name|FieldName
+operator|.
+name|ABSTRACT
 argument_list|,
 name|oldAb
 operator|+
@@ -2746,7 +2802,9 @@ name|hm
 operator|.
 name|put
 argument_list|(
-literal|"year"
+name|FieldName
+operator|.
+name|YEAR
 argument_list|,
 name|parts
 index|[
@@ -2778,7 +2836,9 @@ name|hm
 operator|.
 name|put
 argument_list|(
-literal|"month"
+name|FieldName
+operator|.
+name|MONTH
 argument_list|,
 name|parts
 index|[

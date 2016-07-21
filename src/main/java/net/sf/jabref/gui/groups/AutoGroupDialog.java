@@ -412,6 +412,22 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|FieldName
+import|;
+end_import
+
+begin_import
+import|import
 name|com
 operator|.
 name|jgoodies
@@ -848,7 +864,9 @@ name|fields
 operator|.
 name|add
 argument_list|(
-literal|"author"
+name|FieldName
+operator|.
+name|AUTHOR
 argument_list|)
 expr_stmt|;
 name|hs
@@ -867,7 +885,9 @@ argument_list|)
 expr_stmt|;
 name|fieldText
 operator|=
-literal|"author"
+name|FieldName
+operator|.
+name|AUTHOR
 expr_stmt|;
 block|}
 else|else
@@ -890,7 +910,9 @@ name|fields
 operator|.
 name|add
 argument_list|(
-literal|"editor"
+name|FieldName
+operator|.
+name|EDITOR
 argument_list|)
 expr_stmt|;
 name|hs
@@ -909,7 +931,9 @@ argument_list|)
 expr_stmt|;
 name|fieldText
 operator|=
-literal|"editor"
+name|FieldName
+operator|.
+name|EDITOR
 expr_stmt|;
 block|}
 for|for

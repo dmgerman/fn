@@ -100,6 +100,22 @@ name|BibEntry
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|FieldName
+import|;
+end_import
+
 begin_class
 DECL|class|ISBNChecker
 specifier|public
@@ -129,7 +145,9 @@ name|entry
 operator|.
 name|hasField
 argument_list|(
-literal|"isbn"
+name|FieldName
+operator|.
+name|ISBN
 argument_list|)
 condition|)
 block|{
@@ -151,7 +169,9 @@ name|entry
 operator|.
 name|getFieldOptional
 argument_list|(
-literal|"isbn"
+name|FieldName
+operator|.
+name|ISBN
 argument_list|)
 operator|.
 name|get
@@ -184,7 +204,9 @@ argument_list|)
 argument_list|,
 name|entry
 argument_list|,
-literal|"isbn"
+name|FieldName
+operator|.
+name|ISBN
 argument_list|)
 argument_list|)
 return|;
@@ -215,7 +237,9 @@ argument_list|)
 argument_list|,
 name|entry
 argument_list|,
-literal|"isbn"
+name|FieldName
+operator|.
+name|ISBN
 argument_list|)
 argument_list|)
 return|;

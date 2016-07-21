@@ -404,6 +404,22 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|FieldName
+import|;
+end_import
+
+begin_import
+import|import
 name|com
 operator|.
 name|jgoodies
@@ -756,9 +772,9 @@ name|entry
 operator|.
 name|hasField
 argument_list|(
-name|Globals
+name|FieldName
 operator|.
-name|FILE_FIELD
+name|FILE
 argument_list|)
 condition|)
 block|{
@@ -773,9 +789,9 @@ name|entry
 operator|.
 name|getFieldOptional
 argument_list|(
-name|Globals
+name|FieldName
 operator|.
-name|FILE_FIELD
+name|FILE
 argument_list|)
 operator|.
 name|ifPresent

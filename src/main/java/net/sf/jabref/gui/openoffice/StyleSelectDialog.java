@@ -592,6 +592,22 @@ name|model
 operator|.
 name|entry
 operator|.
+name|FieldName
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
 name|IdGenerator
 import|;
 end_import
@@ -2583,7 +2599,9 @@ name|prevEntry
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|FieldName
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"Smith, Bill and Jones, Bob and Williams, Jeff"
 argument_list|)
@@ -2592,7 +2610,9 @@ name|prevEntry
 operator|.
 name|setField
 argument_list|(
-literal|"editor"
+name|FieldName
+operator|.
+name|EDITOR
 argument_list|,
 literal|"Taylor, Phil"
 argument_list|)
@@ -2601,7 +2621,9 @@ name|prevEntry
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|FieldName
+operator|.
+name|TITLE
 argument_list|,
 literal|"Title of the test entry for reference styles"
 argument_list|)
@@ -2610,7 +2632,9 @@ name|prevEntry
 operator|.
 name|setField
 argument_list|(
-literal|"volume"
+name|FieldName
+operator|.
+name|VOLUME
 argument_list|,
 literal|"34"
 argument_list|)
@@ -2619,7 +2643,9 @@ name|prevEntry
 operator|.
 name|setField
 argument_list|(
-literal|"year"
+name|FieldName
+operator|.
+name|YEAR
 argument_list|,
 literal|"2008"
 argument_list|)
@@ -2628,7 +2654,9 @@ name|prevEntry
 operator|.
 name|setField
 argument_list|(
-literal|"journal"
+name|FieldName
+operator|.
+name|JOURNAL
 argument_list|,
 literal|"BibTeX journal"
 argument_list|)
@@ -2637,7 +2665,9 @@ name|prevEntry
 operator|.
 name|setField
 argument_list|(
-literal|"publisher"
+name|FieldName
+operator|.
+name|PUBLISHER
 argument_list|,
 literal|"JabRef publishing"
 argument_list|)

@@ -516,6 +516,22 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|FieldName
+import|;
+end_import
+
+begin_import
+import|import
 name|com
 operator|.
 name|jgoodies
@@ -1038,9 +1054,9 @@ name|aSel
 operator|.
 name|getFieldOptional
 argument_list|(
-name|Globals
+name|FieldName
 operator|.
-name|FILE_FIELD
+name|FILE
 argument_list|)
 decl_stmt|;
 comment|// Check if a extension is set:
@@ -1739,9 +1755,9 @@ name|UndoableFieldChange
 argument_list|(
 name|aSel
 argument_list|,
-name|Globals
+name|FieldName
 operator|.
-name|FILE_FIELD
+name|FILE
 argument_list|,
 name|old
 operator|.
@@ -1758,9 +1774,9 @@ name|aSel
 operator|.
 name|clearField
 argument_list|(
-name|Globals
+name|FieldName
 operator|.
-name|FILE_FIELD
+name|FILE
 argument_list|)
 expr_stmt|;
 block|}
@@ -1775,9 +1791,9 @@ name|UndoableFieldChange
 argument_list|(
 name|aSel
 argument_list|,
-name|Globals
+name|FieldName
 operator|.
-name|FILE_FIELD
+name|FILE
 argument_list|,
 name|old
 operator|.
@@ -1794,9 +1810,9 @@ name|aSel
 operator|.
 name|setField
 argument_list|(
-name|Globals
+name|FieldName
 operator|.
-name|FILE_FIELD
+name|FILE
 argument_list|,
 name|toSet
 argument_list|)

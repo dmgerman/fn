@@ -280,6 +280,22 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|FieldName
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -902,7 +918,9 @@ operator|.
 name|isStartElement
 argument_list|()
 operator|&&
-literal|"abstract"
+name|FieldName
+operator|.
+name|ABSTRACT
 operator|.
 name|equals
 argument_list|(
@@ -978,7 +996,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"abstract"
+name|FieldName
+operator|.
+name|ABSTRACT
 argument_list|,
 name|abstractText
 argument_list|)

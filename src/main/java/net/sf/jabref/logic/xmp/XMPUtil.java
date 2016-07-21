@@ -480,6 +480,22 @@ name|model
 operator|.
 name|entry
 operator|.
+name|FieldName
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
 name|MonthUtil
 import|;
 end_import
@@ -1408,7 +1424,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|FieldName
+operator|.
+name|AUTHOR
 argument_list|,
 name|s
 argument_list|)
@@ -1432,7 +1450,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|FieldName
+operator|.
+name|TITLE
 argument_list|,
 name|s
 argument_list|)
@@ -1456,7 +1476,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"keywords"
+name|FieldName
+operator|.
+name|KEYWORDS
 argument_list|,
 name|s
 argument_list|)
@@ -1480,7 +1502,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"abstract"
+name|FieldName
+operator|.
+name|ABSTRACT
 argument_list|,
 name|s
 argument_list|)
@@ -1665,7 +1689,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"editor"
+name|FieldName
+operator|.
+name|EDITOR
 argument_list|,
 name|String
 operator|.
@@ -1709,7 +1735,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|FieldName
+operator|.
+name|AUTHOR
 argument_list|,
 name|String
 operator|.
@@ -1800,7 +1828,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"year"
+name|FieldName
+operator|.
+name|YEAR
 argument_list|,
 name|String
 operator|.
@@ -1831,7 +1861,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"month"
+name|FieldName
+operator|.
+name|MONTH
 argument_list|,
 name|MonthUtil
 operator|.
@@ -1873,7 +1905,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"abstract"
+name|FieldName
+operator|.
+name|ABSTRACT
 argument_list|,
 name|s
 argument_list|)
@@ -1898,7 +1932,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"doi"
+name|FieldName
+operator|.
+name|DOI
 argument_list|,
 name|s
 argument_list|)
@@ -2147,7 +2183,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|FieldName
+operator|.
+name|TITLE
 argument_list|,
 name|s
 argument_list|)
@@ -2735,7 +2773,9 @@ continue|continue;
 block|}
 if|if
 condition|(
-literal|"editor"
+name|FieldName
+operator|.
+name|EDITOR
 operator|.
 name|equals
 argument_list|(
@@ -2850,7 +2890,9 @@ continue|continue;
 block|}
 if|if
 condition|(
-literal|"month"
+name|FieldName
+operator|.
+name|MONTH
 operator|.
 name|equals
 argument_list|(
@@ -2863,7 +2905,9 @@ continue|continue;
 block|}
 if|if
 condition|(
-literal|"year"
+name|FieldName
+operator|.
+name|YEAR
 operator|.
 name|equals
 argument_list|(
@@ -2896,7 +2940,9 @@ block|}
 comment|/**              * Abstract -> Description              *              * Field: dc:description              *              * Type: Lang Alt              *              * Category: External              *              * Description: A textual description of the content of the              * resource. Multiple values may be present for different languages.              *              * Bibtex-Fields used: abstract              */
 if|if
 condition|(
-literal|"abstract"
+name|FieldName
+operator|.
+name|ABSTRACT
 operator|.
 name|equals
 argument_list|(
@@ -2926,7 +2972,9 @@ block|}
 comment|/**              * DOI -> identifier              *              * Field: dc:identifier              *              * Type: Text              *              * Category: External              *              * Description: Unique identifier of the resource.              *              * Bibtex-Fields used: doi              */
 if|if
 condition|(
-literal|"doi"
+name|FieldName
+operator|.
+name|DOI
 operator|.
 name|equals
 argument_list|(
@@ -2957,7 +3005,9 @@ comment|/**              * ? -> Language              *              * Unmapped 
 comment|/**              * Publisher -> Publisher              *              * Field: dc:publisher              *              * Type: bag ProperName              *              * Category: External              *              * Description: Publishers.              *              * Bibtex-Fields used: doi              */
 if|if
 condition|(
-literal|"publisher"
+name|FieldName
+operator|.
+name|PUBLISHER
 operator|.
 name|equals
 argument_list|(
@@ -2989,7 +3039,9 @@ comment|/**              * ? -> Source              *              * Unmapped   
 comment|/**              * Keywords -> Subject              *              * Field: dc:subject              *              * Type: bag Text              *              * Category: External              *              * Description: An unordered array of descriptive phrases or              * keywords that specify the topic of the content of the resource.              *              * Bibtex-Fields used: doi              */
 if|if
 condition|(
-literal|"keywords"
+name|FieldName
+operator|.
+name|KEYWORDS
 operator|.
 name|equals
 argument_list|(
@@ -3042,7 +3094,9 @@ block|}
 comment|/**              * Title -> Title              *              * Field: dc:title              *              * Type: Lang Alt              *              * Category: External              *              * Description: The title of the document, or the name given to the              * resource. Typically, it will be a name by which the resource is              * formally known.              *              * Bibtex-Fields used: title              */
 if|if
 condition|(
-literal|"title"
+name|FieldName
+operator|.
+name|TITLE
 operator|.
 name|equals
 argument_list|(
@@ -3582,7 +3636,9 @@ block|}
 elseif|else
 if|if
 condition|(
-literal|"title"
+name|FieldName
+operator|.
+name|TITLE
 operator|.
 name|equals
 argument_list|(
@@ -3601,7 +3657,9 @@ block|}
 elseif|else
 if|if
 condition|(
-literal|"keywords"
+name|FieldName
+operator|.
+name|KEYWORDS
 operator|.
 name|equals
 argument_list|(
@@ -3620,7 +3678,9 @@ block|}
 elseif|else
 if|if
 condition|(
-literal|"abstract"
+name|FieldName
+operator|.
+name|ABSTRACT
 operator|.
 name|equals
 argument_list|(
@@ -3670,7 +3730,9 @@ name|resolvedEntry
 operator|.
 name|getField
 argument_list|(
-literal|"author"
+name|FieldName
+operator|.
+name|AUTHOR
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -3678,7 +3740,9 @@ block|}
 elseif|else
 if|if
 condition|(
-literal|"title"
+name|FieldName
+operator|.
+name|TITLE
 operator|.
 name|equals
 argument_list|(
@@ -3694,7 +3758,9 @@ name|resolvedEntry
 operator|.
 name|getField
 argument_list|(
-literal|"title"
+name|FieldName
+operator|.
+name|TITLE
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -3702,7 +3768,9 @@ block|}
 elseif|else
 if|if
 condition|(
-literal|"keywords"
+name|FieldName
+operator|.
+name|KEYWORDS
 operator|.
 name|equals
 argument_list|(
@@ -3718,7 +3786,9 @@ name|resolvedEntry
 operator|.
 name|getField
 argument_list|(
-literal|"keywords"
+name|FieldName
+operator|.
+name|KEYWORDS
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -3726,7 +3796,9 @@ block|}
 elseif|else
 if|if
 condition|(
-literal|"abstract"
+name|FieldName
+operator|.
+name|ABSTRACT
 operator|.
 name|equals
 argument_list|(
@@ -3742,7 +3814,9 @@ name|resolvedEntry
 operator|.
 name|getField
 argument_list|(
-literal|"abstract"
+name|FieldName
+operator|.
+name|ABSTRACT
 argument_list|)
 argument_list|)
 expr_stmt|;

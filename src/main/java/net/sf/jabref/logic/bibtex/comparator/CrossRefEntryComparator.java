@@ -46,6 +46,22 @@ name|BibEntry
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|FieldName
+import|;
+end_import
+
 begin_comment
 comment|/**  * Compares Bibtex entries based on their 'crossref' fields. Entries including  * this field are deemed smaller than entries without this field. This serves  * the purpose of always placing referenced entries after referring entries in  * the .bib file. After this criterion comes comparisons of individual fields.  */
 end_comment
@@ -61,15 +77,6 @@ argument_list|<
 name|BibEntry
 argument_list|>
 block|{
-DECL|field|CROSS_REF_FIELD
-specifier|private
-specifier|static
-specifier|final
-name|String
-name|CROSS_REF_FIELD
-init|=
-literal|"crossref"
-decl_stmt|;
 annotation|@
 name|Override
 DECL|method|compare (BibEntry e1, BibEntry e2)
@@ -91,9 +98,9 @@ name|e1
 operator|.
 name|hasField
 argument_list|(
-name|CrossRefEntryComparator
+name|FieldName
 operator|.
-name|CROSS_REF_FIELD
+name|CROSSREF
 argument_list|)
 decl_stmt|;
 name|Boolean
@@ -103,9 +110,9 @@ name|e2
 operator|.
 name|hasField
 argument_list|(
-name|CrossRefEntryComparator
+name|FieldName
 operator|.
-name|CROSS_REF_FIELD
+name|CROSSREF
 argument_list|)
 decl_stmt|;
 if|if

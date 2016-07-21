@@ -170,27 +170,25 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|preferences
+name|model
 operator|.
-name|JabRefPreferences
+name|entry
+operator|.
+name|FieldName
 import|;
 end_import
 
 begin_import
-import|import static
+import|import
 name|net
 operator|.
 name|sf
 operator|.
 name|jabref
 operator|.
-name|model
+name|preferences
 operator|.
-name|entry
-operator|.
-name|BibEntry
-operator|.
-name|KEYWORDS_FIELD
+name|JabRefPreferences
 import|;
 end_import
 
@@ -970,7 +968,9 @@ name|be
 operator|.
 name|hasField
 argument_list|(
-name|KEYWORDS_FIELD
+name|FieldName
+operator|.
+name|KEYWORDS
 argument_list|)
 condition|)
 block|{

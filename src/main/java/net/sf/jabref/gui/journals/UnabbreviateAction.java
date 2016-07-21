@@ -134,6 +134,22 @@ name|BibEntry
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|FieldName
+import|;
+end_import
+
 begin_comment
 comment|/**  * Converts journal abbreviations back to full name for all selected entries.  */
 end_comment
@@ -286,7 +302,9 @@ argument_list|()
 argument_list|,
 name|entry
 argument_list|,
-literal|"journal"
+name|FieldName
+operator|.
+name|JOURNAL
 argument_list|,
 name|ce
 argument_list|)
@@ -309,7 +327,9 @@ argument_list|()
 argument_list|,
 name|entry
 argument_list|,
-literal|"journaltitle"
+name|FieldName
+operator|.
+name|JOURNALTITLE
 argument_list|,
 name|ce
 argument_list|)

@@ -114,6 +114,22 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|FieldName
+import|;
+end_import
+
+begin_import
+import|import
 name|com
 operator|.
 name|mashape
@@ -339,7 +355,9 @@ name|entry
 operator|.
 name|getFieldOptional
 argument_list|(
-literal|"title"
+name|FieldName
+operator|.
+name|TITLE
 argument_list|)
 decl_stmt|;
 if|if
@@ -537,7 +555,9 @@ name|entry
 operator|.
 name|getFieldOptional
 argument_list|(
-literal|"author"
+name|FieldName
+operator|.
+name|AUTHOR
 argument_list|)
 operator|.
 name|ifPresent
@@ -575,7 +595,9 @@ name|entry
 operator|.
 name|getFieldOptional
 argument_list|(
-literal|"year"
+name|FieldName
+operator|.
+name|YEAR
 argument_list|)
 operator|.
 name|ifPresent
@@ -639,7 +661,9 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-literal|"title"
+name|FieldName
+operator|.
+name|TITLE
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -666,7 +690,9 @@ name|data
 operator|.
 name|getJSONArray
 argument_list|(
-literal|"title"
+name|FieldName
+operator|.
+name|TITLE
 argument_list|)
 operator|.
 name|getString

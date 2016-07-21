@@ -142,9 +142,13 @@ name|FIELD_ALIASES_TEX_TO_LTX
 operator|.
 name|put
 argument_list|(
-literal|"journal"
+name|FieldName
+operator|.
+name|JOURNAL
 argument_list|,
-literal|"journaltitle"
+name|FieldName
+operator|.
+name|JOURNALTITLE
 argument_list|)
 expr_stmt|;
 name|EntryConverter
@@ -166,7 +170,9 @@ name|put
 argument_list|(
 literal|"pdf"
 argument_list|,
-literal|"file"
+name|FieldName
+operator|.
+name|FILE
 argument_list|)
 expr_stmt|;
 name|EntryConverter

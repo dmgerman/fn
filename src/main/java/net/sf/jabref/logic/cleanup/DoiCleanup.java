@@ -112,6 +112,22 @@ name|BibEntry
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|FieldName
+import|;
+end_import
+
 begin_comment
 comment|/**  * Formats the DOI (e.g. removes http part) and also moves DOIs from note, url or ee field to the doi field.  */
 end_comment
@@ -136,7 +152,9 @@ init|=
 block|{
 literal|"note"
 block|,
-literal|"url"
+name|FieldName
+operator|.
+name|URL
 block|,
 literal|"ee"
 block|}
@@ -173,7 +191,9 @@ name|entry
 operator|.
 name|hasField
 argument_list|(
-literal|"doi"
+name|FieldName
+operator|.
+name|DOI
 argument_list|)
 condition|)
 block|{
@@ -184,7 +204,9 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-literal|"doi"
+name|FieldName
+operator|.
+name|DOI
 argument_list|)
 decl_stmt|;
 name|Optional
@@ -234,7 +256,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"doi"
+name|FieldName
+operator|.
+name|DOI
 argument_list|,
 name|newValue
 argument_list|)
@@ -247,7 +271,9 @@ name|FieldChange
 argument_list|(
 name|entry
 argument_list|,
-literal|"doi"
+name|FieldName
+operator|.
+name|DOI
 argument_list|,
 name|doiFieldValue
 argument_list|,
@@ -345,7 +371,9 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-literal|"doi"
+name|FieldName
+operator|.
+name|DOI
 argument_list|)
 decl_stmt|;
 name|String
@@ -363,7 +391,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"doi"
+name|FieldName
+operator|.
+name|DOI
 argument_list|,
 name|newValue
 argument_list|)
@@ -376,7 +406,9 @@ name|FieldChange
 argument_list|(
 name|entry
 argument_list|,
-literal|"doi"
+name|FieldName
+operator|.
+name|DOI
 argument_list|,
 name|oldValue
 argument_list|,

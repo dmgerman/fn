@@ -482,6 +482,22 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|FieldName
+import|;
+end_import
+
+begin_import
+import|import
 name|com
 operator|.
 name|sun
@@ -1301,7 +1317,9 @@ init|=
 operator|new
 name|FieldComparator
 argument_list|(
-literal|"author"
+name|FieldName
+operator|.
+name|AUTHOR
 argument_list|)
 decl_stmt|;
 DECL|field|yearComp
@@ -1313,7 +1331,9 @@ init|=
 operator|new
 name|FieldComparator
 argument_list|(
-literal|"year"
+name|FieldName
+operator|.
+name|YEAR
 argument_list|)
 decl_stmt|;
 DECL|field|titleComp
@@ -1325,7 +1345,9 @@ init|=
 operator|new
 name|FieldComparator
 argument_list|(
-literal|"title"
+name|FieldName
+operator|.
+name|TITLE
 argument_list|)
 decl_stmt|;
 DECL|field|authorYearTitleList
@@ -8360,7 +8382,9 @@ argument_list|,
 operator|new
 name|FieldComparator
 argument_list|(
-literal|"year"
+name|FieldName
+operator|.
+name|YEAR
 argument_list|)
 argument_list|)
 expr_stmt|;

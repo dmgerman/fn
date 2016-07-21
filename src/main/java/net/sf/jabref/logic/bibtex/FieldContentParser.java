@@ -58,6 +58,22 @@ name|StringUtil
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|FieldName
+import|;
+end_import
+
 begin_comment
 comment|/**  * This class provides the reformatting needed when reading BibTeX fields formatted  * in JabRef style. The reformatting must undo all formatting done by JabRef when  * writing the same fields.  */
 end_comment
@@ -112,14 +128,18 @@ name|multiLineFields
 operator|.
 name|add
 argument_list|(
-literal|"abstract"
+name|FieldName
+operator|.
+name|ABSTRACT
 argument_list|)
 expr_stmt|;
 name|multiLineFields
 operator|.
 name|add
 argument_list|(
-literal|"review"
+name|FieldName
+operator|.
+name|REVIEW
 argument_list|)
 expr_stmt|;
 comment|// the file field should not be formatted, therefore we treat it as a multi line field

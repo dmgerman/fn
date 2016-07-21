@@ -152,6 +152,22 @@ name|AuthorList
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|FieldName
+import|;
+end_import
+
 begin_comment
 comment|/**  * Create DocBook authors formatter.  */
 end_comment
@@ -211,7 +227,9 @@ name|sb
 argument_list|,
 name|al
 argument_list|,
-literal|"author"
+name|FieldName
+operator|.
+name|AUTHOR
 argument_list|)
 expr_stmt|;
 return|return
