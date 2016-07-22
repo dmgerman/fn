@@ -118,6 +118,20 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|preferences
+operator|.
+name|JabRefPreferences
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -221,6 +235,12 @@ specifier|final
 name|Charset
 name|encoding
 decl_stmt|;
+DECL|field|jabrefPreferences
+specifier|private
+specifier|final
+name|JabRefPreferences
+name|jabrefPreferences
+decl_stmt|;
 comment|// Lists of the internal
 comment|// and external styles
 DECL|field|internalStyles
@@ -251,12 +271,15 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
-DECL|method|StyleLoader (OpenOfficePreferences preferences, JournalAbbreviationLoader journalAbbreviationLoader, Charset encoding)
+DECL|method|StyleLoader (OpenOfficePreferences preferences, JabRefPreferences jabrefPreferences, JournalAbbreviationLoader journalAbbreviationLoader, Charset encoding)
 specifier|public
 name|StyleLoader
 parameter_list|(
 name|OpenOfficePreferences
 name|preferences
+parameter_list|,
+name|JabRefPreferences
+name|jabrefPreferences
 parameter_list|,
 name|JournalAbbreviationLoader
 name|journalAbbreviationLoader
@@ -285,6 +308,17 @@ operator|.
 name|requireNonNull
 argument_list|(
 name|preferences
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|jabrefPreferences
+operator|=
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|jabrefPreferences
 argument_list|)
 expr_stmt|;
 name|this
@@ -368,6 +402,8 @@ name|File
 argument_list|(
 name|filename
 argument_list|)
+argument_list|,
+name|jabrefPreferences
 argument_list|,
 name|journalAbbreviationLoader
 argument_list|,
@@ -523,6 +559,8 @@ argument_list|(
 name|filename
 argument_list|)
 argument_list|,
+name|jabrefPreferences
+argument_list|,
 name|journalAbbreviationLoader
 argument_list|,
 name|encoding
@@ -631,6 +669,8 @@ operator|new
 name|OOBibStyle
 argument_list|(
 name|filename
+argument_list|,
+name|jabrefPreferences
 argument_list|,
 name|journalAbbreviationLoader
 argument_list|)

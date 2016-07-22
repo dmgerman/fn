@@ -116,6 +116,20 @@ name|BibEntry
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|preferences
+operator|.
+name|JabRefPreferences
+import|;
+end_import
+
 begin_class
 DECL|class|CleanupWorker
 specifier|public
@@ -134,12 +148,18 @@ specifier|final
 name|JournalAbbreviationLoader
 name|repositoryLoader
 decl_stmt|;
+DECL|field|prefs
+specifier|private
+specifier|final
+name|JabRefPreferences
+name|prefs
+decl_stmt|;
 DECL|field|unsuccessfulRenames
 specifier|private
 name|int
 name|unsuccessfulRenames
 decl_stmt|;
-DECL|method|CleanupWorker (BibDatabaseContext databaseContext, JournalAbbreviationLoader repositoryLoader)
+DECL|method|CleanupWorker (BibDatabaseContext databaseContext, JournalAbbreviationLoader repositoryLoader, JabRefPreferences prefs)
 specifier|public
 name|CleanupWorker
 parameter_list|(
@@ -148,6 +168,9 @@ name|databaseContext
 parameter_list|,
 name|JournalAbbreviationLoader
 name|repositoryLoader
+parameter_list|,
+name|JabRefPreferences
+name|prefs
 parameter_list|)
 block|{
 name|this
@@ -161,6 +184,12 @@ operator|.
 name|repositoryLoader
 operator|=
 name|repositoryLoader
+expr_stmt|;
+name|this
+operator|.
+name|prefs
+operator|=
+name|prefs
 expr_stmt|;
 block|}
 DECL|method|getUnsuccessfulRenames ()
@@ -397,6 +426,8 @@ argument_list|,
 name|databaseContext
 argument_list|,
 name|repositoryLoader
+argument_list|,
+name|prefs
 argument_list|)
 decl_stmt|;
 name|jobs

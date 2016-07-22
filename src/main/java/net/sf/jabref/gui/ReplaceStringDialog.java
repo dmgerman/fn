@@ -1410,10 +1410,13 @@ name|txt
 init|=
 name|be
 operator|.
-name|getField
+name|getFieldOptional
 argument_list|(
 name|fieldname
 argument_list|)
+operator|.
+name|get
+argument_list|()
 decl_stmt|;
 name|StringBuilder
 name|sb

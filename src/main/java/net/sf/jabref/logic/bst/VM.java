@@ -192,6 +192,22 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|FieldName
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|antlr
@@ -4016,7 +4032,9 @@ argument_list|()
 operator|.
 name|containsKey
 argument_list|(
-literal|"crossref"
+name|FieldName
+operator|.
+name|CROSSREF
 argument_list|)
 condition|)
 block|{
@@ -4027,7 +4045,9 @@ argument_list|()
 operator|.
 name|put
 argument_list|(
-literal|"crossref"
+name|FieldName
+operator|.
+name|CROSSREF
 argument_list|,
 literal|null
 argument_list|)

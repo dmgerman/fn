@@ -108,6 +108,22 @@ name|EntryUtil
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|FieldName
+import|;
+end_import
+
 begin_class
 DECL|class|FieldNameLabel
 specifier|public
@@ -227,7 +243,9 @@ block|{
 comment|// selected terms should be uppercase
 if|if
 condition|(
-literal|"isbn"
+name|FieldName
+operator|.
+name|ISBN
 operator|.
 name|equalsIgnoreCase
 argument_list|(
@@ -242,7 +260,9 @@ block|}
 elseif|else
 if|if
 condition|(
-literal|"url"
+name|FieldName
+operator|.
+name|URL
 operator|.
 name|equalsIgnoreCase
 argument_list|(
@@ -272,7 +292,9 @@ block|}
 elseif|else
 if|if
 condition|(
-literal|"issn"
+name|FieldName
+operator|.
+name|ISSN
 operator|.
 name|equalsIgnoreCase
 argument_list|(
@@ -287,7 +309,9 @@ block|}
 elseif|else
 if|if
 condition|(
-literal|"doi"
+name|FieldName
+operator|.
+name|DOI
 operator|.
 name|equalsIgnoreCase
 argument_list|(

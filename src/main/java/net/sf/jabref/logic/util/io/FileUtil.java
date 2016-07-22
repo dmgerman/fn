@@ -242,18 +242,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|logic
 operator|.
 name|journals
@@ -339,6 +327,22 @@ operator|.
 name|entry
 operator|.
 name|BibEntry
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|FieldName
 import|;
 end_import
 
@@ -1649,7 +1653,7 @@ name|fileName
 return|;
 block|}
 block|}
-DECL|method|findAssociatedFiles (Collection<BibEntry> entries, Collection<String> extensions, Collection<File> directories)
+DECL|method|findAssociatedFiles (Collection<BibEntry> entries, Collection<String> extensions, Collection<File> directories, JabRefPreferences prefs)
 specifier|public
 specifier|static
 name|Map
@@ -1680,6 +1684,9 @@ argument_list|<
 name|File
 argument_list|>
 name|directories
+parameter_list|,
+name|JabRefPreferences
+name|prefs
 parameter_list|)
 block|{
 name|Map
@@ -1739,8 +1746,6 @@ block|}
 name|boolean
 name|exactOnly
 init|=
-name|Globals
-operator|.
 name|prefs
 operator|.
 name|getBoolean
@@ -1973,6 +1978,20 @@ range|:
 name|bes
 control|)
 block|{
+name|entry
+operator|.
+name|getFieldOptional
+argument_list|(
+name|FieldName
+operator|.
+name|FILE
+argument_list|)
+operator|.
+name|ifPresent
+argument_list|(
+name|fileField
+lambda|->
+block|{
 name|List
 argument_list|<
 name|ParsedFileField
@@ -1983,14 +2002,7 @@ name|FileField
 operator|.
 name|parse
 argument_list|(
-name|entry
-operator|.
-name|getField
-argument_list|(
-name|Globals
-operator|.
-name|FILE_FIELD
-argument_list|)
+name|fileField
 argument_list|)
 decl_stmt|;
 for|for
@@ -2020,12 +2032,15 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+argument_list|)
+expr_stmt|;
+block|}
 return|return
 name|result
 return|;
 block|}
 comment|/**      * Determines filename provided by an entry in a database      *      * @param database the database, where the entry is located      * @param entry    the entry to which the file should be linked to      * @param repositoryLoader      * @return a suggested fileName      */
-DECL|method|createFileNameFromPattern (BibDatabase database, BibEntry entry, JournalAbbreviationLoader repositoryLoader)
+DECL|method|createFileNameFromPattern (BibDatabase database, BibEntry entry, JournalAbbreviationLoader repositoryLoader, JabRefPreferences prefs)
 specifier|public
 specifier|static
 name|String
@@ -2039,6 +2054,9 @@ name|entry
 parameter_list|,
 name|JournalAbbreviationLoader
 name|repositoryLoader
+parameter_list|,
+name|JabRefPreferences
+name|prefs
 parameter_list|)
 block|{
 name|String
@@ -2064,8 +2082,6 @@ init|=
 operator|new
 name|StringReader
 argument_list|(
-name|Globals
-operator|.
 name|prefs
 operator|.
 name|get
@@ -2089,6 +2105,8 @@ operator|new
 name|LayoutHelper
 argument_list|(
 name|sr
+argument_list|,
+name|prefs
 argument_list|,
 name|repositoryLoader
 argument_list|)

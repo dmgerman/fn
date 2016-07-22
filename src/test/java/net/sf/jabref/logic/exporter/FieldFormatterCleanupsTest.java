@@ -439,11 +439,16 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
+name|Optional
+operator|.
+name|of
+argument_list|(
 literal|"Educational session 1"
+argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getField
+name|getFieldOptional
 argument_list|(
 literal|"title"
 argument_list|)
@@ -491,11 +496,16 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
+name|Optional
+operator|.
+name|of
+argument_list|(
 literal|"Educational session 1"
+argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getField
+name|getFieldOptional
 argument_list|(
 literal|"title"
 argument_list|)
@@ -558,11 +568,16 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
+name|Optional
+operator|.
+name|of
+argument_list|(
 literal|"educational session 1"
+argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getField
+name|getFieldOptional
 argument_list|(
 literal|"title"
 argument_list|)
@@ -640,11 +655,16 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
+name|Optional
+operator|.
+name|of
+argument_list|(
 literal|"educational session 1"
+argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getField
+name|getFieldOptional
 argument_list|(
 literal|"title"
 argument_list|)
@@ -737,11 +757,16 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
+name|Optional
+operator|.
+name|of
+argument_list|(
 literal|"educational session 1"
+argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getField
+name|getFieldOptional
 argument_list|(
 literal|"title"
 argument_list|)
@@ -827,11 +852,16 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
+name|Optional
+operator|.
+name|of
+argument_list|(
 literal|"educational session 1"
+argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getField
+name|getFieldOptional
 argument_list|(
 literal|"title"
 argument_list|)
@@ -839,11 +869,16 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
+name|Optional
+operator|.
+name|of
+argument_list|(
 literal|"1--7"
+argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getField
+name|getFieldOptional
 argument_list|(
 literal|"pages"
 argument_list|)
@@ -944,11 +979,16 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
+name|Optional
+operator|.
+name|of
+argument_list|(
 literal|"educational session 1"
+argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getField
+name|getFieldOptional
 argument_list|(
 literal|"title"
 argument_list|)
@@ -956,11 +996,16 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
+name|Optional
+operator|.
+name|of
+argument_list|(
 literal|"1--7"
+argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getField
+name|getFieldOptional
 argument_list|(
 literal|"pages"
 argument_list|)

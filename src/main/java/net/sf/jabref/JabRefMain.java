@@ -410,8 +410,19 @@ expr_stmt|;
 comment|// Update which fields should be treated as numeric, based on preferences:
 name|InternalBibtexFields
 operator|.
-name|setNumericFieldsFromPrefs
-argument_list|()
+name|setNumericFields
+argument_list|(
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getStringList
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|NUMERIC_FIELDS
+argument_list|)
+argument_list|)
 expr_stmt|;
 comment|/* Build list of Import and Export formats */
 name|Globals
@@ -431,7 +442,20 @@ expr_stmt|;
 name|ExportFormats
 operator|.
 name|initAllExports
-argument_list|()
+argument_list|(
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|customExports
+operator|.
+name|getCustomExportFormats
+argument_list|(
+name|Globals
+operator|.
+name|prefs
+argument_list|)
+argument_list|)
 expr_stmt|;
 comment|// Read list(s) of journal names and abbreviations
 name|Globals

@@ -112,6 +112,20 @@ name|BibEntry
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|preferences
+operator|.
+name|JabRefPreferences
+import|;
+end_import
+
 begin_comment
 comment|/**  * A group of BibtexEntries.  */
 end_comment
@@ -184,7 +198,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Re-create a group instance from a textual representation.      *      * @param s The result from the group's toString() method.      * @return New instance of the encoded group.      * @throws ParseException If an error occurred and a group could not be created,      *                        e.g. due to a malformed regular expression.      */
-DECL|method|fromString (String s)
+DECL|method|fromString (String s, JabRefPreferences jabRefPreferences)
 specifier|public
 specifier|static
 name|AbstractGroup
@@ -192,6 +206,9 @@ name|fromString
 parameter_list|(
 name|String
 name|s
+parameter_list|,
+name|JabRefPreferences
+name|jabRefPreferences
 parameter_list|)
 throws|throws
 name|ParseException
@@ -214,6 +231,8 @@ operator|.
 name|fromString
 argument_list|(
 name|s
+argument_list|,
+name|jabRefPreferences
 argument_list|)
 return|;
 block|}
@@ -277,6 +296,8 @@ operator|.
 name|fromString
 argument_list|(
 name|s
+argument_list|,
+name|jabRefPreferences
 argument_list|)
 return|;
 block|}
@@ -574,12 +595,15 @@ name|deepCopy
 parameter_list|()
 function_decl|;
 comment|/**      * Returns a short description of the group in HTML (for a tooltip).      */
-DECL|method|getShortDescription ()
+DECL|method|getShortDescription (boolean showDynamic)
 specifier|public
 specifier|abstract
 name|String
 name|getShortDescription
-parameter_list|()
+parameter_list|(
+name|boolean
+name|showDynamic
+parameter_list|)
 function_decl|;
 comment|// by general AbstractGroup contract, toString() must return
 comment|// something from which this object can be reconstructed

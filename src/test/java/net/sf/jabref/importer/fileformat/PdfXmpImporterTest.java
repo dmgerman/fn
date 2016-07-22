@@ -92,6 +92,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -445,11 +455,16 @@ argument_list|)
 decl_stmt|;
 name|assertEquals
 argument_list|(
+name|Optional
+operator|.
+name|of
+argument_list|(
 literal|"how to annotate a pdf"
+argument_list|)
 argument_list|,
 name|be0
 operator|.
-name|getField
+name|getFieldOptional
 argument_list|(
 literal|"abstract"
 argument_list|)
@@ -457,11 +472,16 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
+name|Optional
+operator|.
+name|of
+argument_list|(
 literal|"Chris"
+argument_list|)
 argument_list|,
 name|be0
 operator|.
-name|getField
+name|getFieldOptional
 argument_list|(
 literal|"author"
 argument_list|)
@@ -469,11 +489,16 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
+name|Optional
+operator|.
+name|of
+argument_list|(
 literal|"pdf, annotation"
+argument_list|)
 argument_list|,
 name|be0
 operator|.
-name|getField
+name|getFieldOptional
 argument_list|(
 literal|"keywords"
 argument_list|)
@@ -481,11 +506,16 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
+name|Optional
+operator|.
+name|of
+argument_list|(
 literal|"The best Pdf ever"
+argument_list|)
 argument_list|,
 name|be0
 operator|.
-name|getField
+name|getFieldOptional
 argument_list|(
 literal|"title"
 argument_list|)

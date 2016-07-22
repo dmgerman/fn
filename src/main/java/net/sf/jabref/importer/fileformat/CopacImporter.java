@@ -120,6 +120,22 @@ name|BibEntry
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|FieldName
+import|;
+end_import
+
 begin_comment
 comment|/**  * Importer for COPAC format.  *  * Documentation can be found online at:  *  * http://copac.ac.uk/faq/#format  */
 end_comment
@@ -542,7 +558,9 @@ name|setOrAppend
 argument_list|(
 name|b
 argument_list|,
-literal|"title"
+name|FieldName
+operator|.
+name|TITLE
 argument_list|,
 name|line
 operator|.
@@ -573,7 +591,9 @@ name|setOrAppend
 argument_list|(
 name|b
 argument_list|,
-literal|"author"
+name|FieldName
+operator|.
+name|AUTHOR
 argument_list|,
 name|line
 operator|.
@@ -604,7 +624,9 @@ name|setOrAppend
 argument_list|(
 name|b
 argument_list|,
-literal|"year"
+name|FieldName
+operator|.
+name|YEAR
 argument_list|,
 name|line
 operator|.
@@ -635,7 +657,9 @@ name|setOrAppend
 argument_list|(
 name|b
 argument_list|,
-literal|"publisher"
+name|FieldName
+operator|.
+name|PUBLISHER
 argument_list|,
 name|line
 operator|.
@@ -666,7 +690,9 @@ name|setOrAppend
 argument_list|(
 name|b
 argument_list|,
-literal|"series"
+name|FieldName
+operator|.
+name|SERIES
 argument_list|,
 name|line
 operator|.
@@ -697,7 +723,9 @@ name|setOrAppend
 argument_list|(
 name|b
 argument_list|,
-literal|"isbn"
+name|FieldName
+operator|.
+name|ISBN
 argument_list|,
 name|line
 operator|.
@@ -728,7 +756,9 @@ name|setOrAppend
 argument_list|(
 name|b
 argument_list|,
-literal|"keywords"
+name|FieldName
+operator|.
+name|KEYWORDS
 argument_list|,
 name|line
 operator|.
@@ -759,7 +789,9 @@ name|setOrAppend
 argument_list|(
 name|b
 argument_list|,
-literal|"note"
+name|FieldName
+operator|.
+name|NOTE
 argument_list|,
 name|line
 operator|.
@@ -920,10 +952,13 @@ name|field
 argument_list|,
 name|b
 operator|.
-name|getField
+name|getFieldOptional
 argument_list|(
 name|field
 argument_list|)
+operator|.
+name|get
+argument_list|()
 operator|+
 name|separator
 operator|+

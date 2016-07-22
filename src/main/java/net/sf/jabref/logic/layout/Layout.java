@@ -134,6 +134,20 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|preferences
+operator|.
+name|JabRefPreferences
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -209,7 +223,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|method|Layout (List<StringInt> parsedEntries, JournalAbbreviationLoader repositoryLoader)
+DECL|method|Layout (List<StringInt> parsedEntries, JabRefPreferences prefs, JournalAbbreviationLoader repositoryLoader)
 specifier|public
 name|Layout
 parameter_list|(
@@ -218,6 +232,9 @@ argument_list|<
 name|StringInt
 argument_list|>
 name|parsedEntries
+parameter_list|,
+name|JabRefPreferences
+name|prefs
 parameter_list|,
 name|JournalAbbreviationLoader
 name|repositoryLoader
@@ -378,6 +395,8 @@ name|LayoutHelper
 operator|.
 name|IS_GROUP_START
 argument_list|,
+name|prefs
+argument_list|,
 name|repositoryLoader
 argument_list|)
 expr_stmt|;
@@ -441,6 +460,8 @@ operator|new
 name|LayoutEntry
 argument_list|(
 name|parsedEntry
+argument_list|,
+name|prefs
 argument_list|,
 name|repositoryLoader
 argument_list|)

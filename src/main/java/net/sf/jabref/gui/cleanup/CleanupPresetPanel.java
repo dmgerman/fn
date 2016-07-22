@@ -138,6 +138,22 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|FieldName
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|preferences
 operator|.
 name|JabRefPreferences
@@ -428,9 +444,9 @@ name|lang
 argument_list|(
 literal|"Upgrade external PDF/PS links to use the '%0' field."
 argument_list|,
-name|Globals
+name|FieldName
 operator|.
-name|FILE_FIELD
+name|FILE
 argument_list|)
 argument_list|)
 expr_stmt|;

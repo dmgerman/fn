@@ -366,6 +366,10 @@ name|LayoutHelper
 argument_list|(
 name|sr
 argument_list|,
+name|Globals
+operator|.
+name|prefs
+argument_list|,
 name|mock
 argument_list|(
 name|JournalAbbreviationLoader

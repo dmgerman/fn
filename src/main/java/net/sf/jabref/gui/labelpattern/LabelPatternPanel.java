@@ -1665,7 +1665,11 @@ name|res
 init|=
 operator|new
 name|DatabaseLabelPattern
-argument_list|()
+argument_list|(
+name|Globals
+operator|.
+name|prefs
+argument_list|)
 decl_stmt|;
 name|fillPatternUsingPanelData
 argument_list|(

@@ -109,7 +109,9 @@ name|FIELD_ALIASES_TEX_TO_LTX
 operator|.
 name|put
 argument_list|(
-literal|"address"
+name|FieldName
+operator|.
+name|ADDRESS
 argument_list|,
 literal|"location"
 argument_list|)
@@ -142,9 +144,13 @@ name|FIELD_ALIASES_TEX_TO_LTX
 operator|.
 name|put
 argument_list|(
-literal|"journal"
+name|FieldName
+operator|.
+name|JOURNAL
 argument_list|,
-literal|"journaltitle"
+name|FieldName
+operator|.
+name|JOURNALTITLE
 argument_list|)
 expr_stmt|;
 name|EntryConverter
@@ -166,7 +172,9 @@ name|put
 argument_list|(
 literal|"pdf"
 argument_list|,
-literal|"file"
+name|FieldName
+operator|.
+name|FILE
 argument_list|)
 expr_stmt|;
 name|EntryConverter
@@ -186,9 +194,13 @@ name|FIELD_ALIASES_TEX_TO_LTX
 operator|.
 name|put
 argument_list|(
-literal|"school"
+name|FieldName
+operator|.
+name|SCHOOL
 argument_list|,
-literal|"institution"
+name|FieldName
+operator|.
+name|INSTITUTION
 argument_list|)
 expr_stmt|;
 comment|// inverse map

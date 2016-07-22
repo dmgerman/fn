@@ -163,7 +163,7 @@ import|;
 end_import
 
 begin_import
-import|import static
+import|import
 name|net
 operator|.
 name|sf
@@ -174,9 +174,21 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibEntry
+name|FieldName
+import|;
+end_import
+
+begin_import
+import|import
+name|net
 operator|.
-name|KEYWORDS_FIELD
+name|sf
+operator|.
+name|jabref
+operator|.
+name|preferences
+operator|.
+name|JabRefPreferences
 import|;
 end_import
 
@@ -702,6 +714,17 @@ operator|.
 name|putKeywords
 argument_list|(
 name|keywordList
+argument_list|,
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|get
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|KEYWORD_SEPARATOR
+argument_list|)
 argument_list|)
 decl_stmt|;
 if|if
@@ -945,7 +968,9 @@ name|be
 operator|.
 name|hasField
 argument_list|(
-name|KEYWORDS_FIELD
+name|FieldName
+operator|.
+name|KEYWORDS
 argument_list|)
 condition|)
 block|{

@@ -110,18 +110,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|MetaData
 import|;
 end_import
@@ -225,6 +213,22 @@ operator|.
 name|entry
 operator|.
 name|BibEntry
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|FieldName
 import|;
 end_import
 
@@ -1292,7 +1296,9 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-literal|"school"
+name|FieldName
+operator|.
+name|SCHOOL
 operator|.
 name|equalsIgnoreCase
 argument_list|(
@@ -1470,7 +1476,9 @@ literal|"^[Dd][EeIi][Pp].*"
 argument_list|)
 operator|&&
 operator|!
-literal|"school"
+name|FieldName
+operator|.
+name|SCHOOL
 operator|.
 name|equalsIgnoreCase
 argument_list|(
@@ -1787,7 +1795,7 @@ name|fieldList
 return|;
 block|}
 comment|/**      * Generates a BibTeX label according to the pattern for a given entry type, and saves the unique label in the      *<code>Bibtexentry</code>.      *      * The given database is used to avoid duplicate keys.      *      * @param dBase a<code>BibDatabase</code>      * @param entry a<code>BibEntry</code>      * @return modified BibEntry      */
-DECL|method|makeLabel (MetaData metaData, BibDatabase dBase, BibEntry entry)
+DECL|method|makeLabel (MetaData metaData, BibDatabase dBase, BibEntry entry, JabRefPreferences prefs)
 specifier|public
 specifier|static
 name|void
@@ -1801,6 +1809,9 @@ name|dBase
 parameter_list|,
 name|BibEntry
 name|entry
+parameter_list|,
+name|JabRefPreferences
+name|prefs
 parameter_list|)
 block|{
 name|database
@@ -2024,8 +2035,6 @@ comment|// Remove Regular Expressions while generating Keys
 name|String
 name|regex
 init|=
-name|Globals
-operator|.
 name|prefs
 operator|.
 name|get
@@ -2056,8 +2065,6 @@ block|{
 name|String
 name|replacement
 init|=
-name|Globals
-operator|.
 name|prefs
 operator|.
 name|get
@@ -2143,8 +2150,6 @@ block|}
 name|boolean
 name|alwaysAddLetter
 init|=
-name|Globals
-operator|.
 name|prefs
 operator|.
 name|getBoolean
@@ -2157,8 +2162,6 @@ decl_stmt|;
 name|boolean
 name|firstLetterA
 init|=
-name|Globals
-operator|.
 name|prefs
 operator|.
 name|getBoolean
@@ -2679,7 +2682,9 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-literal|"author"
+name|FieldName
+operator|.
+name|AUTHOR
 argument_list|)
 decl_stmt|;
 if|if
@@ -2744,7 +2749,9 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-literal|"editor"
+name|FieldName
+operator|.
+name|EDITOR
 argument_list|)
 expr_stmt|;
 if|if
@@ -3317,7 +3324,9 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-literal|"editor"
+name|FieldName
+operator|.
+name|EDITOR
 argument_list|)
 argument_list|)
 return|;
@@ -3340,7 +3349,9 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-literal|"editor"
+name|FieldName
+operator|.
+name|EDITOR
 argument_list|)
 argument_list|)
 return|;
@@ -3363,7 +3374,9 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-literal|"editor"
+name|FieldName
+operator|.
+name|EDITOR
 argument_list|)
 argument_list|)
 return|;
@@ -3387,7 +3400,9 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-literal|"editor"
+name|FieldName
+operator|.
+name|EDITOR
 argument_list|)
 argument_list|)
 return|;
@@ -3410,7 +3425,9 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-literal|"editor"
+name|FieldName
+operator|.
+name|EDITOR
 argument_list|)
 argument_list|)
 return|;
@@ -3433,7 +3450,9 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-literal|"editor"
+name|FieldName
+operator|.
+name|EDITOR
 argument_list|)
 argument_list|)
 return|;
@@ -3473,7 +3492,9 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-literal|"editor"
+name|FieldName
+operator|.
+name|EDITOR
 argument_list|)
 argument_list|,
 name|num
@@ -3525,7 +3546,9 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-literal|"editor"
+name|FieldName
+operator|.
+name|EDITOR
 argument_list|)
 argument_list|,
 name|Integer
@@ -3581,7 +3604,9 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-literal|"editor"
+name|FieldName
+operator|.
+name|EDITOR
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -3615,7 +3640,9 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-literal|"editor"
+name|FieldName
+operator|.
+name|EDITOR
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -3651,7 +3678,9 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-literal|"editor"
+name|FieldName
+operator|.
+name|EDITOR
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -3742,7 +3771,9 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-literal|"pages"
+name|FieldName
+operator|.
+name|PAGES
 argument_list|)
 argument_list|)
 return|;
@@ -3765,7 +3796,9 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-literal|"pages"
+name|FieldName
+operator|.
+name|PAGES
 argument_list|)
 argument_list|)
 return|;
@@ -3790,7 +3823,9 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-literal|"title"
+name|FieldName
+operator|.
+name|TITLE
 argument_list|)
 argument_list|)
 return|;
@@ -3819,7 +3854,9 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-literal|"title"
+name|FieldName
+operator|.
+name|TITLE
 argument_list|)
 argument_list|)
 argument_list|,
@@ -3855,7 +3892,9 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-literal|"title"
+name|FieldName
+operator|.
+name|TITLE
 argument_list|)
 argument_list|)
 return|;
@@ -3878,7 +3917,9 @@ name|entry
 operator|.
 name|getFieldOrAlias
 argument_list|(
-literal|"year"
+name|FieldName
+operator|.
+name|YEAR
 argument_list|)
 operator|.
 name|orElse

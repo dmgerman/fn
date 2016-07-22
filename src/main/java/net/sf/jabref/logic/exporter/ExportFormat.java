@@ -812,6 +812,10 @@ name|reader
 argument_list|,
 name|Globals
 operator|.
+name|prefs
+argument_list|,
+name|Globals
+operator|.
 name|journalAbbreviationLoader
 argument_list|)
 decl_stmt|;
@@ -921,6 +925,10 @@ operator|new
 name|LayoutHelper
 argument_list|(
 name|reader
+argument_list|,
+name|Globals
+operator|.
+name|prefs
 argument_list|,
 name|Globals
 operator|.
@@ -1064,6 +1072,10 @@ name|reader
 argument_list|,
 name|Globals
 operator|.
+name|prefs
+argument_list|,
+name|Globals
+operator|.
 name|journalAbbreviationLoader
 argument_list|)
 expr_stmt|;
@@ -1162,6 +1174,10 @@ operator|new
 name|LayoutHelper
 argument_list|(
 name|reader
+argument_list|,
+name|Globals
+operator|.
+name|prefs
 argument_list|,
 name|Globals
 operator|.

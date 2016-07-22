@@ -6496,7 +6496,11 @@ operator|.
 name|customExports
 operator|.
 name|store
-argument_list|()
+argument_list|(
+name|Globals
+operator|.
+name|prefs
+argument_list|)
 expr_stmt|;
 name|prefs
 operator|.

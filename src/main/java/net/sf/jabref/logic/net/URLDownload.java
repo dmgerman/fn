@@ -222,18 +222,6 @@ end_import
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|Globals
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -608,27 +596,7 @@ return|return
 name|connection
 return|;
 block|}
-comment|/**      * Encoding will be determined from JabRefPreferences.DEFAULT_ENCODING      *      * @return the downloaded string      * @throws IOException      */
-DECL|method|downloadToString ()
-specifier|public
-name|String
-name|downloadToString
-parameter_list|()
-throws|throws
-name|IOException
-block|{
-return|return
-name|downloadToString
-argument_list|(
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getDefaultEncoding
-argument_list|()
-argument_list|)
-return|;
-block|}
+comment|/**      *      * @return the downloaded string      * @throws IOException      */
 DECL|method|downloadToString (Charset encoding)
 specifier|public
 name|String

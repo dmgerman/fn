@@ -261,6 +261,8 @@ operator|.
 name|addKeyword
 argument_list|(
 literal|"one two"
+argument_list|,
+literal|", "
 argument_list|)
 expr_stmt|;
 name|SearchQuery

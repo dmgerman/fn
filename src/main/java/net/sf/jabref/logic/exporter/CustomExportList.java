@@ -76,18 +76,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|preferences
 operator|.
 name|JabRefPreferences
@@ -257,7 +245,7 @@ name|comp
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|getCustomExportFormats ()
+DECL|method|getCustomExportFormats (JabRefPreferences prefs)
 specifier|public
 name|Map
 argument_list|<
@@ -266,7 +254,10 @@ argument_list|,
 name|ExportFormat
 argument_list|>
 name|getCustomExportFormats
-parameter_list|()
+parameter_list|(
+name|JabRefPreferences
+name|prefs
+parameter_list|)
 block|{
 name|formats
 operator|.
@@ -274,7 +265,9 @@ name|clear
 argument_list|()
 expr_stmt|;
 name|readPrefs
-argument_list|()
+argument_list|(
+name|prefs
+argument_list|)
 expr_stmt|;
 return|return
 name|formats
@@ -309,11 +302,14 @@ return|return
 name|sorted
 return|;
 block|}
-DECL|method|readPrefs ()
+DECL|method|readPrefs (JabRefPreferences prefs)
 specifier|private
 name|void
 name|readPrefs
-parameter_list|()
+parameter_list|(
+name|JabRefPreferences
+name|prefs
+parameter_list|)
 block|{
 name|formats
 operator|.
@@ -343,8 +339,6 @@ operator|(
 operator|(
 name|s
 operator|=
-name|Globals
-operator|.
 name|prefs
 operator|.
 name|getStringList
@@ -412,8 +406,6 @@ block|{
 name|String
 name|customExportFormat
 init|=
-name|Globals
-operator|.
 name|prefs
 operator|.
 name|get
@@ -665,11 +657,14 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|store ()
+DECL|method|store (JabRefPreferences prefs)
 specifier|public
 name|void
 name|store
-parameter_list|()
+parameter_list|(
+name|JabRefPreferences
+name|prefs
+parameter_list|)
 block|{
 if|if
 condition|(
@@ -682,6 +677,8 @@ block|{
 name|purge
 argument_list|(
 literal|0
+argument_list|,
+name|prefs
 argument_list|)
 expr_stmt|;
 block|}
@@ -705,8 +702,6 @@ name|i
 operator|++
 control|)
 block|{
-name|Globals
-operator|.
 name|prefs
 operator|.
 name|putStringList
@@ -732,17 +727,22 @@ name|list
 operator|.
 name|size
 argument_list|()
+argument_list|,
+name|prefs
 argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|purge (int from)
+DECL|method|purge (int from, JabRefPreferences prefs)
 specifier|private
 name|void
 name|purge
 parameter_list|(
 name|int
 name|from
+parameter_list|,
+name|JabRefPreferences
+name|prefs
 parameter_list|)
 block|{
 name|int
@@ -753,8 +753,6 @@ decl_stmt|;
 while|while
 condition|(
 operator|!
-name|Globals
-operator|.
 name|prefs
 operator|.
 name|getStringList
@@ -770,8 +768,6 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-name|Globals
-operator|.
 name|prefs
 operator|.
 name|remove

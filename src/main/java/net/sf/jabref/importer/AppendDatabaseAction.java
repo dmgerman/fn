@@ -1170,6 +1170,10 @@ argument_list|,
 name|GroupHierarchyType
 operator|.
 name|INDEPENDENT
+argument_list|,
+name|Globals
+operator|.
+name|prefs
 argument_list|)
 expr_stmt|;
 block|}

@@ -196,6 +196,22 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|FieldName
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -325,7 +341,9 @@ argument_list|(
 operator|new
 name|FieldComparator
 argument_list|(
-literal|"author"
+name|FieldName
+operator|.
+name|AUTHOR
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -336,7 +354,9 @@ argument_list|(
 operator|new
 name|FieldComparator
 argument_list|(
-literal|"year"
+name|FieldName
+operator|.
+name|YEAR
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1162,7 +1182,9 @@ name|getField
 argument_list|(
 name|e
 argument_list|,
-literal|"isbn"
+name|FieldName
+operator|.
+name|ISBN
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1192,11 +1214,13 @@ name|getField
 argument_list|(
 name|e
 argument_list|,
-literal|"author"
+name|FieldName
+operator|.
+name|AUTHOR
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//new AuthorLastFirst().format(getField(e, "author")));
+comment|//new AuthorLastFirst().format(getField(e, FieldName.AUTHOR_FIELD)));
 name|addTableCell
 argument_list|(
 name|result
@@ -1219,7 +1243,9 @@ name|getField
 argument_list|(
 name|e
 argument_list|,
-literal|"title"
+name|FieldName
+operator|.
+name|TITLE
 argument_list|)
 argument_list|)
 argument_list|)
@@ -1235,7 +1261,9 @@ name|getField
 argument_list|(
 name|e
 argument_list|,
-literal|"journal"
+name|FieldName
+operator|.
+name|JOURNAL
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1249,7 +1277,9 @@ name|getField
 argument_list|(
 name|e
 argument_list|,
-literal|"volume"
+name|FieldName
+operator|.
+name|VOLUME
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1263,7 +1293,9 @@ name|getField
 argument_list|(
 name|e
 argument_list|,
-literal|"number"
+name|FieldName
+operator|.
+name|NUMBER
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1277,7 +1309,9 @@ name|getField
 argument_list|(
 name|e
 argument_list|,
-literal|"month"
+name|FieldName
+operator|.
+name|MONTH
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1291,7 +1325,9 @@ name|getField
 argument_list|(
 name|e
 argument_list|,
-literal|"pages"
+name|FieldName
+operator|.
+name|PAGES
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1305,7 +1341,9 @@ name|getField
 argument_list|(
 name|e
 argument_list|,
-literal|"year"
+name|FieldName
+operator|.
+name|YEAR
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1319,7 +1357,9 @@ name|getField
 argument_list|(
 name|e
 argument_list|,
-literal|"address"
+name|FieldName
+operator|.
+name|ADDRESS
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1333,7 +1373,9 @@ name|getField
 argument_list|(
 name|e
 argument_list|,
-literal|"note"
+name|FieldName
+operator|.
+name|NOTE
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1347,7 +1389,9 @@ name|getField
 argument_list|(
 name|e
 argument_list|,
-literal|"url"
+name|FieldName
+operator|.
+name|URL
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1361,7 +1405,9 @@ name|getField
 argument_list|(
 name|e
 argument_list|,
-literal|"booktitle"
+name|FieldName
+operator|.
+name|BOOKTITLE
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1389,7 +1435,9 @@ name|getField
 argument_list|(
 name|e
 argument_list|,
-literal|"edition"
+name|FieldName
+operator|.
+name|EDITION
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1403,7 +1451,9 @@ name|getField
 argument_list|(
 name|e
 argument_list|,
-literal|"series"
+name|FieldName
+operator|.
+name|SERIES
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1417,11 +1467,13 @@ name|getField
 argument_list|(
 name|e
 argument_list|,
-literal|"editor"
+name|FieldName
+operator|.
+name|EDITOR
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//new AuthorLastFirst().format(getField(e, "editor")));
+comment|//new AuthorLastFirst().format(getField(e, FieldName.EDITOR_FIELD)));
 name|addTableCell
 argument_list|(
 name|result
@@ -1432,7 +1484,9 @@ name|getField
 argument_list|(
 name|e
 argument_list|,
-literal|"publisher"
+name|FieldName
+operator|.
+name|PUBLISHER
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1460,7 +1514,9 @@ name|getField
 argument_list|(
 name|e
 argument_list|,
-literal|"howpublished"
+name|FieldName
+operator|.
+name|HOWPUBLISHED
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1474,7 +1530,9 @@ name|getField
 argument_list|(
 name|e
 argument_list|,
-literal|"institution"
+name|FieldName
+operator|.
+name|INSTITUTION
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1488,7 +1546,9 @@ name|getField
 argument_list|(
 name|e
 argument_list|,
-literal|"organization"
+name|FieldName
+operator|.
+name|ORGANIZATION
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1502,7 +1562,9 @@ name|getField
 argument_list|(
 name|e
 argument_list|,
-literal|"school"
+name|FieldName
+operator|.
+name|SCHOOL
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1600,7 +1662,9 @@ name|getField
 argument_list|(
 name|e
 argument_list|,
-literal|"language"
+name|FieldName
+operator|.
+name|LANGUAGE
 argument_list|)
 argument_list|)
 expr_stmt|;

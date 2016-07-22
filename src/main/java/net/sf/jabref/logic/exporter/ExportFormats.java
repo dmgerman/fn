@@ -68,18 +68,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|logic
 operator|.
 name|l10n
@@ -118,12 +106,20 @@ specifier|static
 name|int
 name|entryNumber
 decl_stmt|;
-DECL|method|initAllExports ()
+DECL|method|initAllExports (Map<String, ExportFormat> customFormats)
 specifier|public
 specifier|static
 name|void
 name|initAllExports
-parameter_list|()
+parameter_list|(
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|ExportFormat
+argument_list|>
+name|customFormats
+parameter_list|)
 block|{
 name|ExportFormats
 operator|.
@@ -517,23 +513,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// Now add custom export formats
-name|Map
-argument_list|<
-name|String
-argument_list|,
-name|ExportFormat
-argument_list|>
-name|customFormats
-init|=
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|customExports
-operator|.
-name|getCustomExportFormats
-argument_list|()
-decl_stmt|;
 for|for
 control|(
 name|IExportFormat

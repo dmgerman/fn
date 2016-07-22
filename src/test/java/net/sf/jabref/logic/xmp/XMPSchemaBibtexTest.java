@@ -356,14 +356,14 @@ name|assertEquals
 argument_list|(
 name|e
 operator|.
-name|getField
+name|getFieldOptional
 argument_list|(
 name|name
 argument_list|)
 argument_list|,
 name|x
 operator|.
-name|getField
+name|getFieldOptional
 argument_list|(
 name|name
 argument_list|)

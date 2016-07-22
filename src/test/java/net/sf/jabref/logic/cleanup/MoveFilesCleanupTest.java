@@ -46,6 +46,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -463,6 +473,10 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
+name|Optional
+operator|.
+name|of
+argument_list|(
 name|FileField
 operator|.
 name|getStringRepresentation
@@ -480,10 +494,11 @@ argument_list|,
 literal|""
 argument_list|)
 argument_list|)
+argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getField
+name|getFieldOptional
 argument_list|(
 literal|"file"
 argument_list|)
@@ -634,6 +649,10 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
+name|Optional
+operator|.
+name|of
+argument_list|(
 name|FileField
 operator|.
 name|getStringRepresentation
@@ -676,10 +695,11 @@ literal|""
 argument_list|)
 argument_list|)
 argument_list|)
+argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getField
+name|getFieldOptional
 argument_list|(
 literal|"file"
 argument_list|)

@@ -132,18 +132,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|logic
 operator|.
 name|formatter
@@ -185,6 +173,22 @@ operator|.
 name|journals
 operator|.
 name|JournalAbbreviationLoader
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|journals
+operator|.
+name|JournalAbbreviationPreferences
 import|;
 end_import
 
@@ -1352,6 +1356,20 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|preferences
+operator|.
+name|JabRefPreferences
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -1452,12 +1470,21 @@ specifier|final
 name|JournalAbbreviationLoader
 name|repositoryLoader
 decl_stmt|;
-DECL|method|LayoutEntry (StringInt si, JournalAbbreviationLoader repositoryLoader)
+DECL|field|prefs
+specifier|private
+specifier|final
+name|JabRefPreferences
+name|prefs
+decl_stmt|;
+DECL|method|LayoutEntry (StringInt si, JabRefPreferences prefs, JournalAbbreviationLoader repositoryLoader)
 specifier|public
 name|LayoutEntry
 parameter_list|(
 name|StringInt
 name|si
+parameter_list|,
+name|JabRefPreferences
+name|prefs
 parameter_list|,
 name|JournalAbbreviationLoader
 name|repositoryLoader
@@ -1468,6 +1495,12 @@ operator|.
 name|repositoryLoader
 operator|=
 name|repositoryLoader
+expr_stmt|;
+name|this
+operator|.
+name|prefs
+operator|=
+name|prefs
 expr_stmt|;
 name|type
 operator|=
@@ -1534,7 +1567,7 @@ default|default:
 break|break;
 block|}
 block|}
-DECL|method|LayoutEntry (List<StringInt> parsedEntries, int layoutType, JournalAbbreviationLoader repositoryLoader)
+DECL|method|LayoutEntry (List<StringInt> parsedEntries, int layoutType, JabRefPreferences prefs, JournalAbbreviationLoader repositoryLoader)
 specifier|public
 name|LayoutEntry
 parameter_list|(
@@ -1547,6 +1580,9 @@ parameter_list|,
 name|int
 name|layoutType
 parameter_list|,
+name|JabRefPreferences
+name|prefs
+parameter_list|,
 name|JournalAbbreviationLoader
 name|repositoryLoader
 parameter_list|)
@@ -1556,6 +1592,12 @@ operator|.
 name|repositoryLoader
 operator|=
 name|repositoryLoader
+expr_stmt|;
+name|this
+operator|.
+name|prefs
+operator|=
+name|prefs
 expr_stmt|;
 name|List
 argument_list|<
@@ -1741,6 +1783,8 @@ name|blockEntries
 argument_list|,
 name|groupType
 argument_list|,
+name|prefs
+argument_list|,
 name|repositoryLoader
 argument_list|)
 decl_stmt|;
@@ -1801,6 +1845,8 @@ operator|new
 name|LayoutEntry
 argument_list|(
 name|parsedEntry
+argument_list|,
+name|prefs
 argument_list|,
 name|repositoryLoader
 argument_list|)
@@ -3264,6 +3310,13 @@ operator|new
 name|JournalAbbreviator
 argument_list|(
 name|repositoryLoader
+argument_list|,
+name|JournalAbbreviationPreferences
+operator|.
+name|fromPreferences
+argument_list|(
+name|prefs
+argument_list|)
 argument_list|)
 return|;
 case|case
@@ -3412,7 +3465,9 @@ case|:
 return|return
 operator|new
 name|FileLink
-argument_list|()
+argument_list|(
+name|prefs
+argument_list|)
 return|;
 case|case
 literal|"Number"
@@ -3468,7 +3523,9 @@ case|:
 return|return
 operator|new
 name|WrapFileLinks
-argument_list|()
+argument_list|(
+name|prefs
+argument_list|)
 return|;
 default|default:
 return|return
@@ -3534,7 +3591,9 @@ init|=
 name|NameFormatter
 operator|.
 name|getNameFormatters
-argument_list|()
+argument_list|(
+name|prefs
+argument_list|)
 decl_stmt|;
 for|for
 control|(
@@ -3563,8 +3622,6 @@ decl_stmt|;
 comment|// Check if this is a name formatter defined by this export filter:
 if|if
 condition|(
-name|Globals
-operator|.
 name|prefs
 operator|.
 name|customExportNameFormatters
@@ -3575,8 +3632,6 @@ block|{
 name|String
 name|contents
 init|=
-name|Globals
-operator|.
 name|prefs
 operator|.
 name|customExportNameFormatters

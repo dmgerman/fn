@@ -196,6 +196,22 @@ name|model
 operator|.
 name|entry
 operator|.
+name|FieldName
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
 name|IdGenerator
 import|;
 end_import
@@ -1451,7 +1467,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|FieldName
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"Luis E. C. Conceic{\\~a}o and Terje van der Meeren and Johan A. J. Verreth and M S. Evjen and D. F. Houlihan and H. J. Fyhn"
 argument_list|)
@@ -1462,7 +1480,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|FieldName
+operator|.
+name|TITLE
 argument_list|,
 literal|"Amino acid metabolism and protein turnover in larval turbot (Scophthalmus maximus) fed natural zooplankton or Artemia"
 argument_list|)
@@ -1473,7 +1493,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"year"
+name|FieldName
+operator|.
+name|YEAR
 argument_list|,
 literal|"1997"
 argument_list|)
@@ -1484,7 +1506,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"journal"
+name|FieldName
+operator|.
+name|JOURNAL
 argument_list|,
 literal|"Marine Biology"
 argument_list|)
@@ -1495,7 +1519,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"month"
+name|FieldName
+operator|.
+name|MONTH
 argument_list|,
 literal|"January"
 argument_list|)
@@ -1506,7 +1532,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"number"
+name|FieldName
+operator|.
+name|NUMBER
 argument_list|,
 literal|"2"
 argument_list|)
@@ -1517,7 +1545,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"volume"
+name|FieldName
+operator|.
+name|VOLUME
 argument_list|,
 literal|"123"
 argument_list|)
@@ -1539,7 +1569,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"pages"
+name|FieldName
+operator|.
+name|PAGES
 argument_list|,
 literal|"255--265"
 argument_list|)
@@ -1550,7 +1582,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"keywords"
+name|FieldName
+operator|.
+name|KEYWORDS
 argument_list|,
 literal|"energetics, artemia, metabolism, amino acid, turbot"
 argument_list|)
@@ -1561,7 +1595,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"url"
+name|FieldName
+operator|.
+name|URL
 argument_list|,
 literal|"http://ejournals.ebsco.com/direct.asp?ArticleID=TYY4NT82XA9H7R8PFPPV"
 argument_list|)
@@ -1572,7 +1608,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"abstract"
+name|FieldName
+operator|.
+name|ABSTRACT
 argument_list|,
 literal|"Abstract The present paper studied the influence of different food regimes "
 operator|+

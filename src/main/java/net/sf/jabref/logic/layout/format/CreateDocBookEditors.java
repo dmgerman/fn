@@ -120,6 +120,22 @@ name|AuthorList
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|FieldName
+import|;
+end_import
+
 begin_comment
 comment|/**  * Create DocBook editors formatter.  */
 end_comment
@@ -169,7 +185,9 @@ name|sb
 argument_list|,
 name|al
 argument_list|,
-literal|"editor"
+name|FieldName
+operator|.
+name|EDITOR
 argument_list|)
 expr_stmt|;
 return|return

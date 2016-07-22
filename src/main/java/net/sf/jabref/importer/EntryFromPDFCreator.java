@@ -80,6 +80,18 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|Globals
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|JabRefGUI
 import|;
 end_import
@@ -155,6 +167,22 @@ operator|.
 name|entry
 operator|.
 name|BibEntry
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|InternalBibtexFields
 import|;
 end_import
 
@@ -463,7 +491,7 @@ name|empty
 argument_list|()
 return|;
 block|}
-comment|/*addEntryDataFromPDDocumentInformation(pdfFile, entry);         addEntryDataFromXMP(pdfFile, entry);          if (entry.getField("title") == null) {         	entry.setField("title", pdfFile.getName());         }          return entry;*/
+comment|/*addEntryDataFromPDDocumentInformation(pdfFile, entry);         addEntryDataFromXMP(pdfFile, entry);          if (entry.getField(FieldName.TITLE) == null) {         	entry.setField(FieldName.TITLE, pdfFile.getName());         }          return entry;*/
 block|}
 comment|/** Adds entry data read from the PDDocument information of the file.      * @param pdfFile      * @param entry      */
 DECL|method|addEntryDataFromPDDocumentInformation (File pdfFile, BibEntry entry)
@@ -580,7 +608,9 @@ name|appendToField
 argument_list|(
 name|entry
 argument_list|,
-literal|"timestamp"
+name|InternalBibtexFields
+operator|.
+name|TIMESTAMP
 argument_list|,
 name|date
 argument_list|)
@@ -652,6 +682,10 @@ name|aFile
 operator|.
 name|getAbsoluteFile
 argument_list|()
+argument_list|,
+name|Globals
+operator|.
+name|prefs
 argument_list|)
 decl_stmt|;
 name|addEntrysToEntry

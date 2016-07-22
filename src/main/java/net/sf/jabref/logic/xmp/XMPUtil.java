@@ -364,6 +364,22 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
+name|bibtex
+operator|.
+name|LatexFieldFormatterPreferences
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|model
 operator|.
 name|database
@@ -449,6 +465,22 @@ operator|.
 name|entry
 operator|.
 name|EntryUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|FieldName
 import|;
 end_import
 
@@ -779,7 +811,7 @@ name|class
 argument_list|)
 decl_stmt|;
 comment|/**      * Convenience method for readXMP(File).      *      * @param filename      *            The filename from which to open the file.      * @return BibtexEntryies found in the PDF or an empty list      * @throws IOException      */
-DECL|method|readXMP (String filename)
+DECL|method|readXMP (String filename, JabRefPreferences prefs)
 specifier|public
 specifier|static
 name|List
@@ -790,6 +822,9 @@ name|readXMP
 parameter_list|(
 name|String
 name|filename
+parameter_list|,
+name|JabRefPreferences
+name|prefs
 parameter_list|)
 throws|throws
 name|IOException
@@ -804,6 +839,8 @@ name|File
 argument_list|(
 name|filename
 argument_list|)
+argument_list|,
+name|prefs
 argument_list|)
 return|;
 block|}
@@ -845,7 +882,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Try to read the BibTexEntries from the XMP-stream of the given PDF-file.      *      * @param file      *            The file to read from.      *      * @throws IOException      *             Throws an IOException if the file cannot be read, so the user      *             than remove a lock or cancel the operation.      */
-DECL|method|readXMP (File file)
+DECL|method|readXMP (File file, JabRefPreferences prefs)
 specifier|public
 specifier|static
 name|List
@@ -856,6 +893,9 @@ name|readXMP
 parameter_list|(
 name|File
 name|file
+parameter_list|,
+name|JabRefPreferences
+name|prefs
 parameter_list|)
 throws|throws
 name|IOException
@@ -890,6 +930,8 @@ operator|.
 name|readXMP
 argument_list|(
 name|inputStream
+argument_list|,
+name|prefs
 argument_list|)
 expr_stmt|;
 block|}
@@ -1005,7 +1047,7 @@ name|doc
 return|;
 block|}
 comment|/**      * Try to read the given BibTexEntry from the XMP-stream of the given      * inputstream containing a PDF-file.      *      * @param inputStream      *            The inputstream to read from.      *      * @throws IOException      *             Throws an IOException if the file cannot be read, so the user      *             than remove a lock or cancel the operation.      *      * @return list of BibEntries retrieved from the stream. May be empty, but never null      */
-DECL|method|readXMP (InputStream inputStream)
+DECL|method|readXMP (InputStream inputStream, JabRefPreferences prefs)
 specifier|public
 specifier|static
 name|List
@@ -1016,6 +1058,9 @@ name|readXMP
 parameter_list|(
 name|InputStream
 name|inputStream
+parameter_list|,
+name|JabRefPreferences
+name|prefs
 parameter_list|)
 throws|throws
 name|IOException
@@ -1181,6 +1226,8 @@ operator|.
 name|getBibtexEntryFromDublinCore
 argument_list|(
 name|dc
+argument_list|,
+name|prefs
 argument_list|)
 decl_stmt|;
 if|if
@@ -1300,7 +1347,7 @@ return|return
 name|result
 return|;
 block|}
-DECL|method|readXMP (Path filePath)
+DECL|method|readXMP (Path filePath, JabRefPreferences prefs)
 specifier|public
 specifier|static
 name|Collection
@@ -1311,6 +1358,9 @@ name|readXMP
 parameter_list|(
 name|Path
 name|filePath
+parameter_list|,
+name|JabRefPreferences
+name|prefs
 parameter_list|)
 throws|throws
 name|IOException
@@ -1322,6 +1372,8 @@ name|filePath
 operator|.
 name|toFile
 argument_list|()
+argument_list|,
+name|prefs
 argument_list|)
 return|;
 block|}
@@ -1372,7 +1424,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|FieldName
+operator|.
+name|AUTHOR
 argument_list|,
 name|s
 argument_list|)
@@ -1396,7 +1450,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|FieldName
+operator|.
+name|TITLE
 argument_list|,
 name|s
 argument_list|)
@@ -1420,7 +1476,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"keywords"
+name|FieldName
+operator|.
+name|KEYWORDS
 argument_list|,
 name|s
 argument_list|)
@@ -1444,7 +1502,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"abstract"
+name|FieldName
+operator|.
+name|ABSTRACT
 argument_list|,
 name|s
 argument_list|)
@@ -1575,7 +1635,7 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Helper function for retrieving a BibEntry from the DublinCore metadata      * in a PDF file.      *      * To understand how to get hold of a XMPSchemaDublinCore have a look in the      * test cases for XMPUtil.      *      * The BibEntry is build by mapping individual fields in the dublin core      * (like creator, title, subject) to fields in a bibtex entry.      *      * @param dcSchema      *            The document information from which to build a BibEntry.      *      * @return The bibtex entry found in the document information.      */
-DECL|method|getBibtexEntryFromDublinCore (XMPSchemaDublinCore dcSchema)
+DECL|method|getBibtexEntryFromDublinCore (XMPSchemaDublinCore dcSchema, JabRefPreferences prefs)
 specifier|public
 specifier|static
 name|Optional
@@ -1586,6 +1646,9 @@ name|getBibtexEntryFromDublinCore
 parameter_list|(
 name|XMPSchemaDublinCore
 name|dcSchema
+parameter_list|,
+name|JabRefPreferences
+name|prefs
 parameter_list|)
 block|{
 name|BibEntry
@@ -1626,7 +1689,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"editor"
+name|FieldName
+operator|.
+name|EDITOR
 argument_list|,
 name|String
 operator|.
@@ -1670,7 +1735,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|FieldName
+operator|.
+name|AUTHOR
 argument_list|,
 name|String
 operator|.
@@ -1761,7 +1828,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"year"
+name|FieldName
+operator|.
+name|YEAR
 argument_list|,
 name|String
 operator|.
@@ -1792,7 +1861,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"month"
+name|FieldName
+operator|.
+name|MONTH
 argument_list|,
 name|MonthUtil
 operator|.
@@ -1834,7 +1905,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"abstract"
+name|FieldName
+operator|.
+name|ABSTRACT
 argument_list|,
 name|s
 argument_list|)
@@ -1859,7 +1932,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"doi"
+name|FieldName
+operator|.
+name|DOI
 argument_list|,
 name|s
 argument_list|)
@@ -2077,6 +2152,15 @@ operator|.
 name|addKeywords
 argument_list|(
 name|subjects
+argument_list|,
+name|prefs
+operator|.
+name|get
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|KEYWORD_SEPARATOR
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -2099,7 +2183,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|FieldName
+operator|.
+name|TITLE
 argument_list|,
 name|s
 argument_list|)
@@ -2687,7 +2773,9 @@ continue|continue;
 block|}
 if|if
 condition|(
-literal|"editor"
+name|FieldName
+operator|.
+name|EDITOR
 operator|.
 name|equals
 argument_list|(
@@ -2802,7 +2890,9 @@ continue|continue;
 block|}
 if|if
 condition|(
-literal|"month"
+name|FieldName
+operator|.
+name|MONTH
 operator|.
 name|equals
 argument_list|(
@@ -2815,7 +2905,9 @@ continue|continue;
 block|}
 if|if
 condition|(
-literal|"year"
+name|FieldName
+operator|.
+name|YEAR
 operator|.
 name|equals
 argument_list|(
@@ -2848,7 +2940,9 @@ block|}
 comment|/**              * Abstract -> Description              *              * Field: dc:description              *              * Type: Lang Alt              *              * Category: External              *              * Description: A textual description of the content of the              * resource. Multiple values may be present for different languages.              *              * Bibtex-Fields used: abstract              */
 if|if
 condition|(
-literal|"abstract"
+name|FieldName
+operator|.
+name|ABSTRACT
 operator|.
 name|equals
 argument_list|(
@@ -2878,7 +2972,9 @@ block|}
 comment|/**              * DOI -> identifier              *              * Field: dc:identifier              *              * Type: Text              *              * Category: External              *              * Description: Unique identifier of the resource.              *              * Bibtex-Fields used: doi              */
 if|if
 condition|(
-literal|"doi"
+name|FieldName
+operator|.
+name|DOI
 operator|.
 name|equals
 argument_list|(
@@ -2909,7 +3005,9 @@ comment|/**              * ? -> Language              *              * Unmapped 
 comment|/**              * Publisher -> Publisher              *              * Field: dc:publisher              *              * Type: bag ProperName              *              * Category: External              *              * Description: Publishers.              *              * Bibtex-Fields used: doi              */
 if|if
 condition|(
-literal|"publisher"
+name|FieldName
+operator|.
+name|PUBLISHER
 operator|.
 name|equals
 argument_list|(
@@ -2941,7 +3039,9 @@ comment|/**              * ? -> Source              *              * Unmapped   
 comment|/**              * Keywords -> Subject              *              * Field: dc:subject              *              * Type: bag Text              *              * Category: External              *              * Description: An unordered array of descriptive phrases or              * keywords that specify the topic of the content of the resource.              *              * Bibtex-Fields used: doi              */
 if|if
 condition|(
-literal|"keywords"
+name|FieldName
+operator|.
+name|KEYWORDS
 operator|.
 name|equals
 argument_list|(
@@ -2994,7 +3094,9 @@ block|}
 comment|/**              * Title -> Title              *              * Field: dc:title              *              * Type: Lang Alt              *              * Category: External              *              * Description: The title of the document, or the name given to the              * resource. Typically, it will be a name by which the resource is              * formally known.              *              * Bibtex-Fields used: title              */
 if|if
 condition|(
-literal|"title"
+name|FieldName
+operator|.
+name|TITLE
 operator|.
 name|equals
 argument_list|(
@@ -3534,7 +3636,9 @@ block|}
 elseif|else
 if|if
 condition|(
-literal|"title"
+name|FieldName
+operator|.
+name|TITLE
 operator|.
 name|equals
 argument_list|(
@@ -3553,7 +3657,9 @@ block|}
 elseif|else
 if|if
 condition|(
-literal|"keywords"
+name|FieldName
+operator|.
+name|KEYWORDS
 operator|.
 name|equals
 argument_list|(
@@ -3572,7 +3678,9 @@ block|}
 elseif|else
 if|if
 condition|(
-literal|"abstract"
+name|FieldName
+operator|.
+name|ABSTRACT
 operator|.
 name|equals
 argument_list|(
@@ -3622,7 +3730,9 @@ name|resolvedEntry
 operator|.
 name|getField
 argument_list|(
-literal|"author"
+name|FieldName
+operator|.
+name|AUTHOR
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -3630,7 +3740,9 @@ block|}
 elseif|else
 if|if
 condition|(
-literal|"title"
+name|FieldName
+operator|.
+name|TITLE
 operator|.
 name|equals
 argument_list|(
@@ -3646,7 +3758,9 @@ name|resolvedEntry
 operator|.
 name|getField
 argument_list|(
-literal|"title"
+name|FieldName
+operator|.
+name|TITLE
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -3654,7 +3768,9 @@ block|}
 elseif|else
 if|if
 condition|(
-literal|"keywords"
+name|FieldName
+operator|.
+name|KEYWORDS
 operator|.
 name|equals
 argument_list|(
@@ -3670,7 +3786,9 @@ name|resolvedEntry
 operator|.
 name|getField
 argument_list|(
-literal|"keywords"
+name|FieldName
+operator|.
+name|KEYWORDS
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -3678,7 +3796,9 @@ block|}
 elseif|else
 if|if
 condition|(
-literal|"abstract"
+name|FieldName
+operator|.
+name|ABSTRACT
 operator|.
 name|equals
 argument_list|(
@@ -3694,7 +3814,9 @@ name|resolvedEntry
 operator|.
 name|getField
 argument_list|(
-literal|"abstract"
+name|FieldName
+operator|.
+name|ABSTRACT
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -4323,6 +4445,10 @@ index|[
 literal|0
 index|]
 argument_list|)
+argument_list|,
+name|Globals
+operator|.
+name|prefs
 argument_list|)
 decl_stmt|;
 name|BibEntryWriter
@@ -4333,7 +4459,16 @@ name|BibEntryWriter
 argument_list|(
 operator|new
 name|LatexFieldFormatter
-argument_list|()
+argument_list|(
+name|LatexFieldFormatterPreferences
+operator|.
+name|fromPreferences
+argument_list|(
+name|Globals
+operator|.
+name|prefs
+argument_list|)
+argument_list|)
 argument_list|,
 literal|false
 argument_list|)
@@ -4851,7 +4986,7 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * see XMPUtil.hasMetadata(InputStream)      */
-DECL|method|hasMetadata (Path path)
+DECL|method|hasMetadata (Path path, JabRefPreferences prefs)
 specifier|public
 specifier|static
 name|boolean
@@ -4859,6 +4994,9 @@ name|hasMetadata
 parameter_list|(
 name|Path
 name|path
+parameter_list|,
+name|JabRefPreferences
+name|prefs
 parameter_list|)
 block|{
 try|try
@@ -4882,6 +5020,8 @@ return|return
 name|hasMetadata
 argument_list|(
 name|inputStream
+argument_list|,
+name|prefs
 argument_list|)
 return|;
 block|}
@@ -4906,7 +5046,7 @@ return|;
 block|}
 block|}
 comment|/**      * Will try to read XMP metadata from the given file, returning whether      * metadata was found.      *      * Caution: This method is as expensive as it is reading the actual metadata      * itself from the PDF.      *      * @param inputStream      *            The inputStream to read the PDF from.      * @return whether a BibEntry was found in the given PDF.      */
-DECL|method|hasMetadata (InputStream inputStream)
+DECL|method|hasMetadata (InputStream inputStream, JabRefPreferences prefs)
 specifier|public
 specifier|static
 name|boolean
@@ -4914,6 +5054,9 @@ name|hasMetadata
 parameter_list|(
 name|InputStream
 name|inputStream
+parameter_list|,
+name|JabRefPreferences
+name|prefs
 parameter_list|)
 block|{
 try|try
@@ -4929,6 +5072,8 @@ operator|.
 name|readXMP
 argument_list|(
 name|inputStream
+argument_list|,
+name|prefs
 argument_list|)
 decl_stmt|;
 return|return

@@ -114,6 +114,22 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|FieldName
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -305,7 +321,9 @@ name|clonedEntry
 operator|.
 name|getFieldOptional
 argument_list|(
-literal|"doi"
+name|FieldName
+operator|.
+name|DOI
 argument_list|)
 decl_stmt|;
 if|if
@@ -346,7 +364,9 @@ name|clonedEntry
 operator|.
 name|setField
 argument_list|(
-literal|"doi"
+name|FieldName
+operator|.
+name|DOI
 argument_list|,
 name|e
 operator|.
