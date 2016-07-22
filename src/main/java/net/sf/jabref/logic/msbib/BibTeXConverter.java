@@ -322,7 +322,9 @@ name|fieldValues
 operator|.
 name|containsKey
 argument_list|(
-literal|"language"
+name|FieldName
+operator|.
+name|LANGUAGE
 argument_list|)
 condition|)
 block|{
@@ -337,7 +339,9 @@ name|fieldValues
 operator|.
 name|get
 argument_list|(
-literal|"language"
+name|FieldName
+operator|.
+name|LANGUAGE
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -345,7 +349,9 @@ name|fieldValues
 operator|.
 name|put
 argument_list|(
-literal|"language"
+name|FieldName
+operator|.
+name|LANGUAGE
 argument_list|,
 name|MSBibMapping
 operator|.
@@ -601,7 +607,9 @@ name|fieldValues
 operator|.
 name|put
 argument_list|(
-literal|"address"
+name|FieldName
+operator|.
+name|ADDRESS
 argument_list|,
 name|entry
 operator|.
@@ -623,7 +631,9 @@ name|fieldValues
 operator|.
 name|put
 argument_list|(
-literal|"organization"
+name|FieldName
+operator|.
+name|ORGANIZATION
 argument_list|,
 name|entry
 operator|.

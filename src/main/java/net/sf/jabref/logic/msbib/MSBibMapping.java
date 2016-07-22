@@ -187,7 +187,9 @@ name|bibtexToMSBib
 operator|.
 name|put
 argument_list|(
-literal|"note"
+name|FieldName
+operator|.
+name|NOTE
 argument_list|,
 literal|"Comments"
 argument_list|)
@@ -207,7 +209,9 @@ name|bibtexToMSBib
 operator|.
 name|put
 argument_list|(
-literal|"language"
+name|FieldName
+operator|.
+name|LANGUAGE
 argument_list|,
 literal|"LCID"
 argument_list|)
@@ -216,7 +220,9 @@ name|bibtexToMSBib
 operator|.
 name|put
 argument_list|(
-literal|"edition"
+name|FieldName
+operator|.
+name|EDITION
 argument_list|,
 literal|"Edition"
 argument_list|)
@@ -236,12 +242,14 @@ name|bibtexToMSBib
 operator|.
 name|put
 argument_list|(
-literal|"booktitle"
+name|FieldName
+operator|.
+name|BOOKTITLE
 argument_list|,
 literal|"BookTitle"
 argument_list|)
 expr_stmt|;
-comment|//bibtexToMSBib.put("booktitle", "ConferenceName");
+comment|//bibtexToMSBib.put(FieldName.BOOKTITLE, "ConferenceName");
 comment|//bibtexToMSBib.put(FieldName.PAGES, "Pages");
 name|bibtexToMSBib
 operator|.
@@ -278,7 +286,9 @@ name|bibtexToMSBib
 operator|.
 name|put
 argument_list|(
-literal|"school"
+name|FieldName
+operator|.
+name|SCHOOL
 argument_list|,
 literal|"Department"
 argument_list|)
@@ -287,7 +297,9 @@ name|bibtexToMSBib
 operator|.
 name|put
 argument_list|(
-literal|"institution"
+name|FieldName
+operator|.
+name|INSTITUTION
 argument_list|,
 literal|"Institution"
 argument_list|)
@@ -319,7 +331,9 @@ name|bibtexToMSBib
 operator|.
 name|put
 argument_list|(
-literal|"series"
+name|FieldName
+operator|.
+name|SERIES
 argument_list|,
 name|BIBTEX_PREFIX
 operator|+
@@ -369,7 +383,9 @@ name|bibtexToMSBib
 operator|.
 name|put
 argument_list|(
-literal|"howpublished"
+name|FieldName
+operator|.
+name|HOWPUBLISHED
 argument_list|,
 name|BIBTEX_PREFIX
 operator|+
@@ -559,7 +575,9 @@ name|put
 argument_list|(
 name|MSBIB_PREFIX
 operator|+
-literal|"type"
+name|FieldName
+operator|.
+name|TYPE
 argument_list|,
 literal|"Type"
 argument_list|)

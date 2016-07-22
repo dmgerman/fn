@@ -377,7 +377,9 @@ name|PRESERVE_WHITE_SPACE
 operator|.
 name|add
 argument_list|(
-literal|"note"
+name|FieldName
+operator|.
+name|NOTE
 argument_list|)
 expr_stmt|;
 name|XMPSchemaBibtex

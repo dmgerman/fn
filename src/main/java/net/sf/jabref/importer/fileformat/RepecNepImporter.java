@@ -1150,7 +1150,9 @@ name|be
 operator|.
 name|setField
 argument_list|(
-literal|"institution"
+name|FieldName
+operator|.
+name|INSTITUTION
 argument_list|,
 name|institutions
 operator|.

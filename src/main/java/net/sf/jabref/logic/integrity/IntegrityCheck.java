@@ -569,7 +569,9 @@ argument_list|(
 operator|new
 name|AbbreviationChecker
 argument_list|(
-literal|"booktitle"
+name|FieldName
+operator|.
+name|BOOKTITLE
 argument_list|)
 operator|.
 name|check
@@ -794,7 +796,9 @@ block|{
 name|String
 name|field
 init|=
-literal|"booktitle"
+name|FieldName
+operator|.
+name|BOOKTITLE
 decl_stmt|;
 name|Optional
 argument_list|<

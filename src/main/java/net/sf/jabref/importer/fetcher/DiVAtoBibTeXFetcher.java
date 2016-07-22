@@ -704,7 +704,9 @@ name|entry
 operator|.
 name|getFieldOptional
 argument_list|(
-literal|"institution"
+name|FieldName
+operator|.
+name|INSTITUTION
 argument_list|)
 operator|.
 name|ifPresent
@@ -715,7 +717,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"institution"
+name|FieldName
+operator|.
+name|INSTITUTION
 argument_list|,
 operator|new
 name|UnicodeToLatexFormatter

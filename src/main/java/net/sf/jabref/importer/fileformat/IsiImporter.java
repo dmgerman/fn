@@ -1089,7 +1089,9 @@ name|hm
 operator|.
 name|put
 argument_list|(
-literal|"booktitle"
+name|FieldName
+operator|.
+name|BOOKTITLE
 argument_list|,
 name|value
 argument_list|)

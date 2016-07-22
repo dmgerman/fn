@@ -1040,7 +1040,9 @@ argument_list|(
 name|ln
 argument_list|)
 operator|||
-literal|"institution"
+name|FieldName
+operator|.
+name|INSTITUTION
 operator|.
 name|equals
 argument_list|(
@@ -1063,7 +1065,9 @@ argument_list|(
 name|ln
 argument_list|)
 operator|||
-literal|"note"
+name|FieldName
+operator|.
+name|NOTE
 operator|.
 name|equals
 argument_list|(
@@ -1132,7 +1136,9 @@ block|}
 elseif|else
 if|if
 condition|(
-literal|"booktitle"
+name|FieldName
+operator|.
+name|BOOKTITLE
 operator|.
 name|equals
 argument_list|(
@@ -1174,7 +1180,9 @@ name|e
 operator|.
 name|setField
 argument_list|(
-literal|"booktitle"
+name|FieldName
+operator|.
+name|BOOKTITLE
 argument_list|,
 name|booktitle
 argument_list|)
@@ -1256,7 +1264,9 @@ name|e
 operator|.
 name|hasField
 argument_list|(
-literal|"note"
+name|FieldName
+operator|.
+name|NOTE
 argument_list|)
 condition|)
 block|{
@@ -1267,7 +1277,9 @@ name|e
 operator|.
 name|getFieldOptional
 argument_list|(
-literal|"note"
+name|FieldName
+operator|.
+name|NOTE
 argument_list|)
 operator|.
 name|get
@@ -1303,7 +1315,9 @@ name|e
 operator|.
 name|setField
 argument_list|(
-literal|"note"
+name|FieldName
+operator|.
+name|NOTE
 argument_list|,
 name|note
 argument_list|)

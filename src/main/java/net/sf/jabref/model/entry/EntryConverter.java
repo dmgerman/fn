@@ -109,7 +109,9 @@ name|FIELD_ALIASES_TEX_TO_LTX
 operator|.
 name|put
 argument_list|(
-literal|"address"
+name|FieldName
+operator|.
+name|ADDRESS
 argument_list|,
 literal|"location"
 argument_list|)
@@ -192,9 +194,13 @@ name|FIELD_ALIASES_TEX_TO_LTX
 operator|.
 name|put
 argument_list|(
-literal|"school"
+name|FieldName
+operator|.
+name|SCHOOL
 argument_list|,
-literal|"institution"
+name|FieldName
+operator|.
+name|INSTITUTION
 argument_list|)
 expr_stmt|;
 comment|// inverse map

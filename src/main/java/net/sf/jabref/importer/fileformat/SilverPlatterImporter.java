@@ -1118,7 +1118,9 @@ name|h
 operator|.
 name|put
 argument_list|(
-literal|"school"
+name|FieldName
+operator|.
+name|SCHOOL
 argument_list|,
 name|frest
 operator|.

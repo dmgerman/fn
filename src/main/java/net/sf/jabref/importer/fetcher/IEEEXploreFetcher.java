@@ -2498,7 +2498,9 @@ name|entry
 operator|.
 name|clearField
 argument_list|(
-literal|"booktitle"
+name|FieldName
+operator|.
+name|BOOKTITLE
 argument_list|)
 expr_stmt|;
 block|}
@@ -2515,7 +2517,9 @@ condition|)
 block|{
 name|sourceField
 operator|=
-literal|"booktitle"
+name|FieldName
+operator|.
+name|BOOKTITLE
 expr_stmt|;
 block|}
 if|if
@@ -2658,7 +2662,9 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-literal|"note"
+name|FieldName
+operator|.
+name|NOTE
 argument_list|)
 decl_stmt|;
 if|if

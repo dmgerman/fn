@@ -2676,7 +2676,9 @@ name|prevEntry
 operator|.
 name|setField
 argument_list|(
-literal|"address"
+name|FieldName
+operator|.
+name|ADDRESS
 argument_list|,
 literal|"Trondheim"
 argument_list|)

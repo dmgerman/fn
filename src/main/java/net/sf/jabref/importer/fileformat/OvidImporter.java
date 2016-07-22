@@ -1160,7 +1160,9 @@ name|h
 operator|.
 name|put
 argument_list|(
-literal|"booktitle"
+name|FieldName
+operator|.
+name|BOOKTITLE
 argument_list|,
 name|matcher
 operator|.
@@ -1190,7 +1192,9 @@ name|h
 operator|.
 name|put
 argument_list|(
-literal|"address"
+name|FieldName
+operator|.
+name|ADDRESS
 argument_list|,
 name|matcher
 operator|.
@@ -1273,7 +1277,9 @@ name|h
 operator|.
 name|put
 argument_list|(
-literal|"address"
+name|FieldName
+operator|.
+name|ADDRESS
 argument_list|,
 name|matcher
 operator|.
@@ -1454,7 +1460,9 @@ name|h
 operator|.
 name|put
 argument_list|(
-literal|"language"
+name|FieldName
+operator|.
+name|LANGUAGE
 argument_list|,
 name|content
 argument_list|)

@@ -1296,7 +1296,9 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-literal|"school"
+name|FieldName
+operator|.
+name|SCHOOL
 operator|.
 name|equalsIgnoreCase
 argument_list|(
@@ -1474,7 +1476,9 @@ literal|"^[Dd][EeIi][Pp].*"
 argument_list|)
 operator|&&
 operator|!
-literal|"school"
+name|FieldName
+operator|.
+name|SCHOOL
 operator|.
 name|equalsIgnoreCase
 argument_list|(

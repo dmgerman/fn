@@ -812,7 +812,9 @@ name|bibtex
 operator|.
 name|getField
 argument_list|(
-literal|"booktitle"
+name|FieldName
+operator|.
+name|BOOKTITLE
 argument_list|)
 expr_stmt|;
 name|host

@@ -690,7 +690,9 @@ name|setOrAppend
 argument_list|(
 name|b
 argument_list|,
-literal|"series"
+name|FieldName
+operator|.
+name|SERIES
 argument_list|,
 name|line
 operator|.
@@ -787,7 +789,9 @@ name|setOrAppend
 argument_list|(
 name|b
 argument_list|,
-literal|"note"
+name|FieldName
+operator|.
+name|NOTE
 argument_list|,
 name|line
 operator|.

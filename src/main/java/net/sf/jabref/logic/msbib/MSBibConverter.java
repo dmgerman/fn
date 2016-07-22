@@ -280,7 +280,9 @@ name|entry
 operator|.
 name|hasField
 argument_list|(
-literal|"booktitle"
+name|FieldName
+operator|.
+name|BOOKTITLE
 argument_list|)
 condition|)
 block|{
@@ -292,7 +294,9 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-literal|"booktitle"
+name|FieldName
+operator|.
+name|BOOKTITLE
 argument_list|)
 expr_stmt|;
 block|}
@@ -431,7 +435,9 @@ name|entry
 operator|.
 name|hasField
 argument_list|(
-literal|"language"
+name|FieldName
+operator|.
+name|LANGUAGE
 argument_list|)
 condition|)
 block|{
@@ -455,7 +461,9 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-literal|"language"
+name|FieldName
+operator|.
+name|LANGUAGE
 argument_list|)
 argument_list|)
 argument_list|)
@@ -623,7 +631,9 @@ name|entry
 operator|.
 name|hasField
 argument_list|(
-literal|"address"
+name|FieldName
+operator|.
+name|ADDRESS
 argument_list|)
 condition|)
 block|{
@@ -635,7 +645,9 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-literal|"address"
+name|FieldName
+operator|.
+name|ADDRESS
 argument_list|)
 expr_stmt|;
 block|}
@@ -645,7 +657,9 @@ name|entry
 operator|.
 name|hasField
 argument_list|(
-literal|"type"
+name|FieldName
+operator|.
+name|TYPE
 argument_list|)
 condition|)
 block|{
@@ -657,7 +671,9 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-literal|"type"
+name|FieldName
+operator|.
+name|TYPE
 argument_list|)
 expr_stmt|;
 block|}

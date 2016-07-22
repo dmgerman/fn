@@ -875,7 +875,9 @@ name|hm
 operator|.
 name|put
 argument_list|(
-literal|"edition"
+name|FieldName
+operator|.
+name|EDITION
 argument_list|,
 name|val
 argument_list|)
@@ -896,7 +898,9 @@ name|hm
 operator|.
 name|put
 argument_list|(
-literal|"address"
+name|FieldName
+operator|.
+name|ADDRESS
 argument_list|,
 name|val
 argument_list|)
@@ -1030,7 +1034,9 @@ name|hm
 operator|.
 name|put
 argument_list|(
-literal|"series"
+name|FieldName
+operator|.
+name|SERIES
 argument_list|,
 name|val
 argument_list|)
@@ -1043,7 +1049,9 @@ name|hm
 operator|.
 name|put
 argument_list|(
-literal|"booktitle"
+name|FieldName
+operator|.
+name|BOOKTITLE
 argument_list|,
 name|val
 argument_list|)
@@ -1075,7 +1083,9 @@ name|hm
 operator|.
 name|put
 argument_list|(
-literal|"school"
+name|FieldName
+operator|.
+name|SCHOOL
 argument_list|,
 name|val
 argument_list|)
@@ -1291,7 +1301,9 @@ name|hm
 operator|.
 name|put
 argument_list|(
-literal|"note"
+name|FieldName
+operator|.
+name|NOTE
 argument_list|,
 name|val
 argument_list|)

@@ -1068,7 +1068,9 @@ argument_list|)
 expr_stmt|;
 name|nametype
 operator|=
-literal|"booktitle"
+name|FieldName
+operator|.
+name|BOOKTITLE
 expr_stmt|;
 name|entry
 operator|.

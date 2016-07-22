@@ -385,7 +385,9 @@ argument_list|(
 operator|new
 name|FieldFormatterCleanup
 argument_list|(
-literal|"booktitle"
+name|FieldName
+operator|.
+name|BOOKTITLE
 argument_list|,
 operator|new
 name|OrdinalsToSuperscriptFormatter

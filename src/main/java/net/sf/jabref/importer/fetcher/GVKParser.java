@@ -1942,7 +1942,9 @@ name|result
 operator|.
 name|setField
 argument_list|(
-literal|"address"
+name|FieldName
+operator|.
+name|ADDRESS
 argument_list|,
 name|address
 argument_list|)
@@ -1959,7 +1961,9 @@ name|result
 operator|.
 name|setField
 argument_list|(
-literal|"series"
+name|FieldName
+operator|.
+name|SERIES
 argument_list|,
 name|series
 argument_list|)
@@ -1976,7 +1980,9 @@ name|result
 operator|.
 name|setField
 argument_list|(
-literal|"edition"
+name|FieldName
+operator|.
+name|EDITION
 argument_list|,
 name|edition
 argument_list|)
@@ -2160,7 +2166,9 @@ name|result
 operator|.
 name|setField
 argument_list|(
-literal|"note"
+name|FieldName
+operator|.
+name|NOTE
 argument_list|,
 name|note
 argument_list|)
@@ -2215,7 +2223,9 @@ name|result
 operator|.
 name|setField
 argument_list|(
-literal|"booktitle"
+name|FieldName
+operator|.
+name|BOOKTITLE
 argument_list|,
 name|booktitle
 argument_list|)

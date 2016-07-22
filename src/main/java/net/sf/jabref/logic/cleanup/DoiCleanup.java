@@ -150,7 +150,9 @@ index|[]
 name|FIELDS
 init|=
 block|{
-literal|"note"
+name|FieldName
+operator|.
+name|NOTE
 block|,
 name|FieldName
 operator|.

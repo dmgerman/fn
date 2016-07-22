@@ -2377,7 +2377,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"booktitle"
+name|FieldName
+operator|.
+name|BOOKTITLE
 argument_list|,
 name|conference
 argument_list|)
@@ -2413,7 +2415,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"series"
+name|FieldName
+operator|.
+name|SERIES
 argument_list|,
 name|series
 argument_list|)
