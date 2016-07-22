@@ -126,6 +126,22 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
+name|layout
+operator|.
+name|LayoutFormatterPreferences
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|preferences
 operator|.
 name|JabRefPreferences
@@ -359,6 +375,10 @@ name|StyleLoader
 argument_list|(
 literal|null
 argument_list|,
+name|LayoutFormatterPreferences
+operator|.
+name|fromPreferences
+argument_list|(
 name|Globals
 operator|.
 name|prefs
@@ -368,6 +388,7 @@ argument_list|(
 name|JournalAbbreviationLoader
 operator|.
 name|class
+argument_list|)
 argument_list|)
 argument_list|,
 name|mock
@@ -409,11 +430,16 @@ operator|.
 name|class
 argument_list|)
 argument_list|,
+name|LayoutFormatterPreferences
+operator|.
+name|fromPreferences
+argument_list|(
 name|Globals
 operator|.
 name|prefs
 argument_list|,
 literal|null
+argument_list|)
 argument_list|,
 name|mock
 argument_list|(
@@ -454,6 +480,10 @@ operator|.
 name|class
 argument_list|)
 argument_list|,
+name|LayoutFormatterPreferences
+operator|.
+name|fromPreferences
+argument_list|(
 name|Globals
 operator|.
 name|prefs
@@ -463,6 +493,7 @@ argument_list|(
 name|JournalAbbreviationLoader
 operator|.
 name|class
+argument_list|)
 argument_list|)
 argument_list|,
 literal|null
@@ -497,6 +528,10 @@ name|StyleLoader
 argument_list|(
 name|preferences
 argument_list|,
+name|LayoutFormatterPreferences
+operator|.
+name|fromPreferences
+argument_list|(
 name|Globals
 operator|.
 name|prefs
@@ -506,6 +541,7 @@ argument_list|(
 name|JournalAbbreviationLoader
 operator|.
 name|class
+argument_list|)
 argument_list|)
 argument_list|,
 name|Globals
@@ -557,6 +593,10 @@ name|StyleLoader
 argument_list|(
 name|preferences
 argument_list|,
+name|LayoutFormatterPreferences
+operator|.
+name|fromPreferences
+argument_list|(
 name|Globals
 operator|.
 name|prefs
@@ -566,6 +606,7 @@ argument_list|(
 name|JournalAbbreviationLoader
 operator|.
 name|class
+argument_list|)
 argument_list|)
 argument_list|,
 name|Globals
@@ -668,6 +709,10 @@ name|StyleLoader
 argument_list|(
 name|preferences
 argument_list|,
+name|LayoutFormatterPreferences
+operator|.
+name|fromPreferences
+argument_list|(
 name|Globals
 operator|.
 name|prefs
@@ -677,6 +722,7 @@ argument_list|(
 name|JournalAbbreviationLoader
 operator|.
 name|class
+argument_list|)
 argument_list|)
 argument_list|,
 name|Globals
@@ -776,6 +822,10 @@ name|StyleLoader
 argument_list|(
 name|preferences
 argument_list|,
+name|LayoutFormatterPreferences
+operator|.
+name|fromPreferences
+argument_list|(
 name|Globals
 operator|.
 name|prefs
@@ -785,6 +835,7 @@ argument_list|(
 name|JournalAbbreviationLoader
 operator|.
 name|class
+argument_list|)
 argument_list|)
 argument_list|,
 name|Globals
@@ -844,6 +895,10 @@ operator|.
 name|prefs
 argument_list|)
 argument_list|,
+name|LayoutFormatterPreferences
+operator|.
+name|fromPreferences
+argument_list|(
 name|Globals
 operator|.
 name|prefs
@@ -853,6 +908,7 @@ argument_list|(
 name|JournalAbbreviationLoader
 operator|.
 name|class
+argument_list|)
 argument_list|)
 argument_list|,
 name|Globals
@@ -940,6 +996,10 @@ operator|.
 name|prefs
 argument_list|)
 argument_list|,
+name|LayoutFormatterPreferences
+operator|.
+name|fromPreferences
+argument_list|(
 name|Globals
 operator|.
 name|prefs
@@ -949,6 +1009,7 @@ argument_list|(
 name|JournalAbbreviationLoader
 operator|.
 name|class
+argument_list|)
 argument_list|)
 argument_list|,
 name|Globals
@@ -1102,6 +1163,10 @@ name|StyleLoader
 argument_list|(
 name|preferences
 argument_list|,
+name|LayoutFormatterPreferences
+operator|.
+name|fromPreferences
+argument_list|(
 name|Globals
 operator|.
 name|prefs
@@ -1111,6 +1176,7 @@ argument_list|(
 name|JournalAbbreviationLoader
 operator|.
 name|class
+argument_list|)
 argument_list|)
 argument_list|,
 name|Globals
@@ -1225,6 +1291,10 @@ operator|.
 name|prefs
 argument_list|)
 argument_list|,
+name|LayoutFormatterPreferences
+operator|.
+name|fromPreferences
+argument_list|(
 name|Globals
 operator|.
 name|prefs
@@ -1234,6 +1304,7 @@ argument_list|(
 name|JournalAbbreviationLoader
 operator|.
 name|class
+argument_list|)
 argument_list|)
 argument_list|,
 name|Globals
@@ -1341,6 +1412,10 @@ operator|.
 name|prefs
 argument_list|)
 argument_list|,
+name|LayoutFormatterPreferences
+operator|.
+name|fromPreferences
+argument_list|(
 name|Globals
 operator|.
 name|prefs
@@ -1350,6 +1425,7 @@ argument_list|(
 name|JournalAbbreviationLoader
 operator|.
 name|class
+argument_list|)
 argument_list|)
 argument_list|,
 name|Globals
@@ -1403,6 +1479,10 @@ operator|.
 name|prefs
 argument_list|)
 argument_list|,
+name|LayoutFormatterPreferences
+operator|.
+name|fromPreferences
+argument_list|(
 name|Globals
 operator|.
 name|prefs
@@ -1412,6 +1492,7 @@ argument_list|(
 name|JournalAbbreviationLoader
 operator|.
 name|class
+argument_list|)
 argument_list|)
 argument_list|,
 name|Globals
@@ -1493,6 +1574,10 @@ operator|.
 name|prefs
 argument_list|)
 argument_list|,
+name|LayoutFormatterPreferences
+operator|.
+name|fromPreferences
+argument_list|(
 name|Globals
 operator|.
 name|prefs
@@ -1502,6 +1587,7 @@ argument_list|(
 name|JournalAbbreviationLoader
 operator|.
 name|class
+argument_list|)
 argument_list|)
 argument_list|,
 name|Globals
@@ -1581,6 +1667,10 @@ operator|.
 name|prefs
 argument_list|)
 argument_list|,
+name|LayoutFormatterPreferences
+operator|.
+name|fromPreferences
+argument_list|(
 name|Globals
 operator|.
 name|prefs
@@ -1590,6 +1680,7 @@ argument_list|(
 name|JournalAbbreviationLoader
 operator|.
 name|class
+argument_list|)
 argument_list|)
 argument_list|,
 name|Globals
@@ -1666,6 +1757,10 @@ name|StyleLoader
 argument_list|(
 name|preferences
 argument_list|,
+name|LayoutFormatterPreferences
+operator|.
+name|fromPreferences
+argument_list|(
 name|Globals
 operator|.
 name|prefs
@@ -1675,6 +1770,7 @@ argument_list|(
 name|JournalAbbreviationLoader
 operator|.
 name|class
+argument_list|)
 argument_list|)
 argument_list|,
 name|Globals

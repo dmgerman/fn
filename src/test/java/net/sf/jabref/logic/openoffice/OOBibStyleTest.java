@@ -250,6 +250,22 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
+name|layout
+operator|.
+name|LayoutFormatterPreferences
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|model
 operator|.
 name|database
@@ -447,6 +463,10 @@ name|StyleLoader
 operator|.
 name|DEFAULT_AUTHORYEAR_STYLE_PATH
 argument_list|,
+name|LayoutFormatterPreferences
+operator|.
+name|fromPreferences
+argument_list|(
 name|Globals
 operator|.
 name|prefs
@@ -456,6 +476,7 @@ argument_list|(
 name|JournalAbbreviationLoader
 operator|.
 name|class
+argument_list|)
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -569,6 +590,10 @@ name|OOBibStyle
 argument_list|(
 name|defFile
 argument_list|,
+name|LayoutFormatterPreferences
+operator|.
+name|fromPreferences
+argument_list|(
 name|Globals
 operator|.
 name|prefs
@@ -578,6 +603,7 @@ argument_list|(
 name|JournalAbbreviationLoader
 operator|.
 name|class
+argument_list|)
 argument_list|)
 argument_list|,
 name|Globals
@@ -673,6 +699,10 @@ name|StyleLoader
 operator|.
 name|DEFAULT_NUMERICAL_STYLE_PATH
 argument_list|,
+name|LayoutFormatterPreferences
+operator|.
+name|fromPreferences
+argument_list|(
 name|Globals
 operator|.
 name|prefs
@@ -682,6 +712,7 @@ argument_list|(
 name|JournalAbbreviationLoader
 operator|.
 name|class
+argument_list|)
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -762,6 +793,10 @@ name|StyleLoader
 operator|.
 name|DEFAULT_NUMERICAL_STYLE_PATH
 argument_list|,
+name|LayoutFormatterPreferences
+operator|.
+name|fromPreferences
+argument_list|(
 name|Globals
 operator|.
 name|prefs
@@ -771,6 +806,7 @@ argument_list|(
 name|JournalAbbreviationLoader
 operator|.
 name|class
+argument_list|)
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -1028,6 +1064,10 @@ name|StyleLoader
 operator|.
 name|DEFAULT_NUMERICAL_STYLE_PATH
 argument_list|,
+name|LayoutFormatterPreferences
+operator|.
+name|fromPreferences
+argument_list|(
 name|Globals
 operator|.
 name|prefs
@@ -1037,6 +1077,7 @@ argument_list|(
 name|JournalAbbreviationLoader
 operator|.
 name|class
+argument_list|)
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -1197,6 +1238,10 @@ name|StyleLoader
 operator|.
 name|DEFAULT_NUMERICAL_STYLE_PATH
 argument_list|,
+name|LayoutFormatterPreferences
+operator|.
+name|fromPreferences
+argument_list|(
 name|Globals
 operator|.
 name|prefs
@@ -1206,6 +1251,7 @@ argument_list|(
 name|JournalAbbreviationLoader
 operator|.
 name|class
+argument_list|)
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -1336,6 +1382,10 @@ name|StyleLoader
 operator|.
 name|DEFAULT_NUMERICAL_STYLE_PATH
 argument_list|,
+name|LayoutFormatterPreferences
+operator|.
+name|fromPreferences
+argument_list|(
 name|Globals
 operator|.
 name|prefs
@@ -1345,6 +1395,7 @@ argument_list|(
 name|JournalAbbreviationLoader
 operator|.
 name|class
+argument_list|)
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -1538,6 +1589,10 @@ name|StyleLoader
 operator|.
 name|DEFAULT_NUMERICAL_STYLE_PATH
 argument_list|,
+name|LayoutFormatterPreferences
+operator|.
+name|fromPreferences
+argument_list|(
 name|Globals
 operator|.
 name|prefs
@@ -1547,6 +1602,7 @@ argument_list|(
 name|JournalAbbreviationLoader
 operator|.
 name|class
+argument_list|)
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -1657,6 +1713,10 @@ name|StyleLoader
 operator|.
 name|DEFAULT_NUMERICAL_STYLE_PATH
 argument_list|,
+name|LayoutFormatterPreferences
+operator|.
+name|fromPreferences
+argument_list|(
 name|Globals
 operator|.
 name|prefs
@@ -1666,6 +1726,7 @@ argument_list|(
 name|JournalAbbreviationLoader
 operator|.
 name|class
+argument_list|)
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -1778,6 +1839,10 @@ name|StyleLoader
 operator|.
 name|DEFAULT_NUMERICAL_STYLE_PATH
 argument_list|,
+name|LayoutFormatterPreferences
+operator|.
+name|fromPreferences
+argument_list|(
 name|Globals
 operator|.
 name|prefs
@@ -1787,6 +1852,7 @@ argument_list|(
 name|JournalAbbreviationLoader
 operator|.
 name|class
+argument_list|)
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -1899,6 +1965,10 @@ name|StyleLoader
 operator|.
 name|DEFAULT_NUMERICAL_STYLE_PATH
 argument_list|,
+name|LayoutFormatterPreferences
+operator|.
+name|fromPreferences
+argument_list|(
 name|Globals
 operator|.
 name|prefs
@@ -1908,6 +1978,7 @@ argument_list|(
 name|JournalAbbreviationLoader
 operator|.
 name|class
+argument_list|)
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -2047,6 +2118,10 @@ name|StyleLoader
 operator|.
 name|DEFAULT_NUMERICAL_STYLE_PATH
 argument_list|,
+name|LayoutFormatterPreferences
+operator|.
+name|fromPreferences
+argument_list|(
 name|Globals
 operator|.
 name|prefs
@@ -2056,6 +2131,7 @@ argument_list|(
 name|JournalAbbreviationLoader
 operator|.
 name|class
+argument_list|)
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -2195,6 +2271,10 @@ name|StyleLoader
 operator|.
 name|DEFAULT_NUMERICAL_STYLE_PATH
 argument_list|,
+name|LayoutFormatterPreferences
+operator|.
+name|fromPreferences
+argument_list|(
 name|Globals
 operator|.
 name|prefs
@@ -2204,6 +2284,7 @@ argument_list|(
 name|JournalAbbreviationLoader
 operator|.
 name|class
+argument_list|)
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -2325,6 +2406,10 @@ name|StyleLoader
 operator|.
 name|DEFAULT_NUMERICAL_STYLE_PATH
 argument_list|,
+name|LayoutFormatterPreferences
+operator|.
+name|fromPreferences
+argument_list|(
 name|Globals
 operator|.
 name|prefs
@@ -2334,6 +2419,7 @@ argument_list|(
 name|JournalAbbreviationLoader
 operator|.
 name|class
+argument_list|)
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -2455,6 +2541,10 @@ name|StyleLoader
 operator|.
 name|DEFAULT_NUMERICAL_STYLE_PATH
 argument_list|,
+name|LayoutFormatterPreferences
+operator|.
+name|fromPreferences
+argument_list|(
 name|Globals
 operator|.
 name|prefs
@@ -2464,6 +2554,7 @@ argument_list|(
 name|JournalAbbreviationLoader
 operator|.
 name|class
+argument_list|)
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -2576,6 +2667,10 @@ name|StyleLoader
 operator|.
 name|DEFAULT_NUMERICAL_STYLE_PATH
 argument_list|,
+name|LayoutFormatterPreferences
+operator|.
+name|fromPreferences
+argument_list|(
 name|Globals
 operator|.
 name|prefs
@@ -2585,6 +2680,7 @@ argument_list|(
 name|JournalAbbreviationLoader
 operator|.
 name|class
+argument_list|)
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -2854,6 +2950,10 @@ name|StyleLoader
 operator|.
 name|DEFAULT_NUMERICAL_STYLE_PATH
 argument_list|,
+name|LayoutFormatterPreferences
+operator|.
+name|fromPreferences
+argument_list|(
 name|Globals
 operator|.
 name|prefs
@@ -2863,6 +2963,7 @@ argument_list|(
 name|JournalAbbreviationLoader
 operator|.
 name|class
+argument_list|)
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -3132,6 +3233,10 @@ name|StyleLoader
 operator|.
 name|DEFAULT_NUMERICAL_STYLE_PATH
 argument_list|,
+name|LayoutFormatterPreferences
+operator|.
+name|fromPreferences
+argument_list|(
 name|Globals
 operator|.
 name|prefs
@@ -3141,6 +3246,7 @@ argument_list|(
 name|JournalAbbreviationLoader
 operator|.
 name|class
+argument_list|)
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -3399,6 +3505,10 @@ name|StyleLoader
 operator|.
 name|DEFAULT_NUMERICAL_STYLE_PATH
 argument_list|,
+name|LayoutFormatterPreferences
+operator|.
+name|fromPreferences
+argument_list|(
 name|Globals
 operator|.
 name|prefs
@@ -3408,6 +3518,7 @@ argument_list|(
 name|JournalAbbreviationLoader
 operator|.
 name|class
+argument_list|)
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -3667,6 +3778,10 @@ name|StyleLoader
 operator|.
 name|DEFAULT_NUMERICAL_STYLE_PATH
 argument_list|,
+name|LayoutFormatterPreferences
+operator|.
+name|fromPreferences
+argument_list|(
 name|Globals
 operator|.
 name|prefs
@@ -3676,6 +3791,7 @@ argument_list|(
 name|JournalAbbreviationLoader
 operator|.
 name|class
+argument_list|)
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -3689,6 +3805,10 @@ name|StyleLoader
 operator|.
 name|DEFAULT_NUMERICAL_STYLE_PATH
 argument_list|,
+name|LayoutFormatterPreferences
+operator|.
+name|fromPreferences
+argument_list|(
 name|Globals
 operator|.
 name|prefs
@@ -3698,6 +3818,7 @@ argument_list|(
 name|JournalAbbreviationLoader
 operator|.
 name|class
+argument_list|)
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -3730,6 +3851,10 @@ name|StyleLoader
 operator|.
 name|DEFAULT_NUMERICAL_STYLE_PATH
 argument_list|,
+name|LayoutFormatterPreferences
+operator|.
+name|fromPreferences
+argument_list|(
 name|Globals
 operator|.
 name|prefs
@@ -3739,6 +3864,7 @@ argument_list|(
 name|JournalAbbreviationLoader
 operator|.
 name|class
+argument_list|)
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -3752,6 +3878,10 @@ name|StyleLoader
 operator|.
 name|DEFAULT_AUTHORYEAR_STYLE_PATH
 argument_list|,
+name|LayoutFormatterPreferences
+operator|.
+name|fromPreferences
+argument_list|(
 name|Globals
 operator|.
 name|prefs
@@ -3761,6 +3891,7 @@ argument_list|(
 name|JournalAbbreviationLoader
 operator|.
 name|class
+argument_list|)
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -3792,6 +3923,10 @@ name|StyleLoader
 operator|.
 name|DEFAULT_NUMERICAL_STYLE_PATH
 argument_list|,
+name|LayoutFormatterPreferences
+operator|.
+name|fromPreferences
+argument_list|(
 name|Globals
 operator|.
 name|prefs
@@ -3801,6 +3936,7 @@ argument_list|(
 name|JournalAbbreviationLoader
 operator|.
 name|class
+argument_list|)
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -3814,6 +3950,10 @@ name|StyleLoader
 operator|.
 name|DEFAULT_NUMERICAL_STYLE_PATH
 argument_list|,
+name|LayoutFormatterPreferences
+operator|.
+name|fromPreferences
+argument_list|(
 name|Globals
 operator|.
 name|prefs
@@ -3823,6 +3963,7 @@ argument_list|(
 name|JournalAbbreviationLoader
 operator|.
 name|class
+argument_list|)
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -3859,6 +4000,10 @@ name|StyleLoader
 operator|.
 name|DEFAULT_NUMERICAL_STYLE_PATH
 argument_list|,
+name|LayoutFormatterPreferences
+operator|.
+name|fromPreferences
+argument_list|(
 name|Globals
 operator|.
 name|prefs
@@ -3868,6 +4013,7 @@ argument_list|(
 name|JournalAbbreviationLoader
 operator|.
 name|class
+argument_list|)
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -3881,6 +4027,10 @@ name|StyleLoader
 operator|.
 name|DEFAULT_AUTHORYEAR_STYLE_PATH
 argument_list|,
+name|LayoutFormatterPreferences
+operator|.
+name|fromPreferences
+argument_list|(
 name|Globals
 operator|.
 name|prefs
@@ -3890,6 +4040,7 @@ argument_list|(
 name|JournalAbbreviationLoader
 operator|.
 name|class
+argument_list|)
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -3963,6 +4114,10 @@ name|OOBibStyle
 argument_list|(
 name|fileName
 argument_list|,
+name|LayoutFormatterPreferences
+operator|.
+name|fromPreferences
+argument_list|(
 name|Globals
 operator|.
 name|prefs
@@ -3972,6 +4127,7 @@ argument_list|(
 name|JournalAbbreviationLoader
 operator|.
 name|class
+argument_list|)
 argument_list|)
 argument_list|)
 decl_stmt|;

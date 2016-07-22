@@ -366,6 +366,10 @@ name|LayoutHelper
 argument_list|(
 name|sr
 argument_list|,
+name|LayoutFormatterPreferences
+operator|.
+name|fromPreferences
+argument_list|(
 name|Globals
 operator|.
 name|prefs
@@ -375,6 +379,7 @@ argument_list|(
 name|JournalAbbreviationLoader
 operator|.
 name|class
+argument_list|)
 argument_list|)
 argument_list|)
 operator|.

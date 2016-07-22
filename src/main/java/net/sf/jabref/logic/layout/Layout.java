@@ -92,22 +92,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
-operator|.
-name|journals
-operator|.
-name|JournalAbbreviationLoader
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|model
 operator|.
 name|database
@@ -129,20 +113,6 @@ operator|.
 name|entry
 operator|.
 name|BibEntry
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|preferences
-operator|.
-name|JabRefPreferences
 import|;
 end_import
 
@@ -223,7 +193,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|method|Layout (List<StringInt> parsedEntries, JabRefPreferences prefs, JournalAbbreviationLoader repositoryLoader)
+DECL|method|Layout (List<StringInt> parsedEntries, LayoutFormatterPreferences prefs)
 specifier|public
 name|Layout
 parameter_list|(
@@ -233,11 +203,8 @@ name|StringInt
 argument_list|>
 name|parsedEntries
 parameter_list|,
-name|JabRefPreferences
+name|LayoutFormatterPreferences
 name|prefs
-parameter_list|,
-name|JournalAbbreviationLoader
-name|repositoryLoader
 parameter_list|)
 block|{
 name|List
@@ -396,8 +363,6 @@ operator|.
 name|IS_GROUP_START
 argument_list|,
 name|prefs
-argument_list|,
-name|repositoryLoader
 argument_list|)
 expr_stmt|;
 name|tmpEntries
@@ -462,8 +427,6 @@ argument_list|(
 name|parsedEntry
 argument_list|,
 name|prefs
-argument_list|,
-name|repositoryLoader
 argument_list|)
 argument_list|)
 expr_stmt|;
