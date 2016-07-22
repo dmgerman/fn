@@ -126,6 +126,15 @@ operator|.
 name|openConnection
 argument_list|()
 decl_stmt|;
+name|http
+operator|.
+name|setRequestProperty
+argument_list|(
+literal|"User-Agent"
+argument_list|,
+literal|"Mozilla/5.0 (Windows NT 6.1; WOW64)"
+argument_list|)
+expr_stmt|;
 name|assertEquals
 argument_list|(
 literal|200
