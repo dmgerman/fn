@@ -1,6 +1,10 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
+begin_comment
+comment|/*  * Copyright (C) 2003-2016 JabRef contributors.  * This program is free software; you can redistribute it and/or modify  * it under the terms of the GNU General Public License as published by  * the Free Software Foundation; either version 2 of the License, or  * (at your option) any later version.  *  * This program is distributed in the hope that it will be useful,  * but WITHOUT ANY WARRANTY; without even the implied warranty of  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the  * GNU General Public License for more details.  *  * You should have received a copy of the GNU General Public License along  * with this program; if not, write to the Free Software Foundation, Inc.,  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
+end_comment
+
 begin_package
-DECL|package|net.sf.jabref.logic.fulltext
+DECL|package|net.sf.jabref.logic.importer.fetcher
 package|package
 name|net
 operator|.
@@ -10,7 +14,9 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|fulltext
+name|importer
+operator|.
+name|fetcher
 package|;
 end_package
 
@@ -115,14 +121,14 @@ import|;
 end_import
 
 begin_class
-DECL|class|ACSTest
+DECL|class|GoogleScholarTest
 specifier|public
 class|class
-name|ACSTest
+name|GoogleScholarTest
 block|{
 DECL|field|finder
 specifier|private
-name|ACS
+name|GoogleScholar
 name|finder
 decl_stmt|;
 DECL|field|entry
@@ -141,7 +147,7 @@ block|{
 name|finder
 operator|=
 operator|new
-name|ACS
+name|GoogleScholar
 argument_list|()
 expr_stmt|;
 name|entry
@@ -149,34 +155,6 @@ operator|=
 operator|new
 name|BibEntry
 argument_list|()
-expr_stmt|;
-block|}
-annotation|@
-name|Test
-DECL|method|doiNotPresent ()
-specifier|public
-name|void
-name|doiNotPresent
-parameter_list|()
-throws|throws
-name|IOException
-block|{
-name|Assert
-operator|.
-name|assertEquals
-argument_list|(
-name|Optional
-operator|.
-name|empty
-argument_list|()
-argument_list|,
-name|finder
-operator|.
-name|findFullText
-argument_list|(
-name|entry
-argument_list|)
-argument_list|)
 expr_stmt|;
 block|}
 annotation|@
@@ -211,15 +189,43 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|findByDOI ()
+DECL|method|requiresEntryTitle ()
 specifier|public
 name|void
-name|findByDOI
+name|requiresEntryTitle
 parameter_list|()
 throws|throws
 name|IOException
 block|{
-comment|// CI server is unreliable
+name|Assert
+operator|.
+name|assertEquals
+argument_list|(
+name|Optional
+operator|.
+name|empty
+argument_list|()
+argument_list|,
+name|finder
+operator|.
+name|findFullText
+argument_list|(
+name|entry
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|linkFound ()
+specifier|public
+name|void
+name|linkFound
+parameter_list|()
+throws|throws
+name|IOException
+block|{
+comment|// CI server is blocked by Google
 name|Assume
 operator|.
 name|assumeFalse
@@ -234,9 +240,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"doi"
+literal|"title"
 argument_list|,
-literal|"10.1021/bk-2006-STYG.ch014"
+literal|"Towards Application Portability in Platform as a Service"
 argument_list|)
 expr_stmt|;
 name|Assert
@@ -250,7 +256,7 @@ argument_list|(
 operator|new
 name|URL
 argument_list|(
-literal|"http://pubs.acs.org/doi/pdf/10.1021/bk-2006-STYG.ch014"
+literal|"https://www.uni-bamberg.de/fileadmin/uni/fakultaeten/wiai_lehrstuehle/praktische_informatik/Dateien/Publikationen/sose14-towards-application-portability-in-paas.pdf"
 argument_list|)
 argument_list|)
 argument_list|,
@@ -265,15 +271,15 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|notFoundByDOI ()
+DECL|method|noLinkFound ()
 specifier|public
 name|void
-name|notFoundByDOI
+name|noLinkFound
 parameter_list|()
 throws|throws
 name|IOException
 block|{
-comment|// CI server is unreliable
+comment|// CI server is blocked by Google
 name|Assume
 operator|.
 name|assumeFalse
@@ -288,9 +294,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"doi"
+literal|"title"
 argument_list|,
-literal|"10.1021/bk-2006-WWW.ch014"
+literal|"Pro WF: Windows Workflow in NET 3.5"
 argument_list|)
 expr_stmt|;
 name|Assert

@@ -174,22 +174,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
-operator|.
-name|help
-operator|.
-name|HelpFile
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|importer
 operator|.
 name|ImportInspector
@@ -221,6 +205,22 @@ operator|.
 name|importer
 operator|.
 name|OutputPrinter
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|help
+operator|.
+name|HelpFile
 import|;
 end_import
 
@@ -359,7 +359,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *  * This class can be used to access any archive offering an OAI2 interface. By  * default it will access ArXiv.org  *  * @author Ulrich St&auml;rk  * @author Christian Kopf  */
+comment|/**  *  * This class can be used to access any archive offering an OAI2 interface. By  * default it will access ArXiv.org  *  * @see<a href="http://arxiv.org/help/oa/index"></a>  *  * @author Ulrich St&auml;rk  * @author Christian Kopf  */
 end_comment
 
 begin_class

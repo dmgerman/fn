@@ -1,6 +1,10 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
+begin_comment
+comment|/*  * Copyright (C) 2003-2016 JabRef contributors.  * This program is free software; you can redistribute it and/or modify  * it under the terms of the GNU General Public License as published by  * the Free Software Foundation; either version 2 of the License, or  * (at your option) any later version.  *  * This program is distributed in the hope that it will be useful,  * but WITHOUT ANY WARRANTY; without even the implied warranty of  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the  * GNU General Public License for more details.  *  * You should have received a copy of the GNU General Public License along  * with this program; if not, write to the Free Software Foundation, Inc.,  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
+end_comment
+
 begin_package
-DECL|package|net.sf.jabref.logic.fulltext
+DECL|package|net.sf.jabref.logic.importer.fetcher
 package|package
 name|net
 operator|.
@@ -10,7 +14,9 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|fulltext
+name|importer
+operator|.
+name|fetcher
 package|;
 end_package
 
@@ -62,11 +68,35 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|support
+operator|.
+name|DevEnvironment
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|junit
 operator|.
 name|Assert
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Assume
 import|;
 end_import
 
@@ -86,19 +116,29 @@ name|org
 operator|.
 name|junit
 operator|.
+name|Ignore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Test
 import|;
 end_import
 
 begin_class
-DECL|class|SpringerLinkTest
+DECL|class|DoiResolutionTest
 specifier|public
 class|class
-name|SpringerLinkTest
+name|DoiResolutionTest
 block|{
 DECL|field|finder
 specifier|private
-name|SpringerLink
+name|DoiResolution
 name|finder
 decl_stmt|;
 DECL|field|entry
@@ -117,7 +157,7 @@ block|{
 name|finder
 operator|=
 operator|new
-name|SpringerLink
+name|DoiResolution
 argument_list|()
 expr_stmt|;
 name|entry
@@ -195,13 +235,24 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
+comment|// CI server is blocked
+name|Assume
+operator|.
+name|assumeFalse
+argument_list|(
+name|DevEnvironment
+operator|.
+name|isCIServer
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|entry
 operator|.
 name|setField
 argument_list|(
 literal|"doi"
 argument_list|,
-literal|"10.1186/s13677-015-0042-8"
+literal|"10.1051/0004-6361/201527330"
 argument_list|)
 expr_stmt|;
 name|Assert
@@ -215,7 +266,7 @@ argument_list|(
 operator|new
 name|URL
 argument_list|(
-literal|"http://link.springer.com/content/pdf/10.1186/s13677-015-0042-8.pdf"
+literal|"http://www.aanda.org/articles/aa/pdf/2016/01/aa27330-15.pdf"
 argument_list|)
 argument_list|)
 argument_list|,
@@ -229,6 +280,20 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
+name|Ignore
+annotation|@
+name|Test
+DECL|method|notReturnAnythingWhenMultipleLinksAreFound ()
+specifier|public
+name|void
+name|notReturnAnythingWhenMultipleLinksAreFound
+parameter_list|()
+throws|throws
+name|IOException
+block|{
+comment|// To be implemented
+block|}
+annotation|@
 name|Test
 DECL|method|notFoundByDOI ()
 specifier|public
@@ -238,6 +303,17 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
+comment|// CI server is blocked
+name|Assume
+operator|.
+name|assumeFalse
+argument_list|(
+name|DevEnvironment
+operator|.
+name|isCIServer
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|entry
 operator|.
 name|setField

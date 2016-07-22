@@ -136,9 +136,9 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|help
+name|remote
 operator|.
-name|HelpFile
+name|JabRefMessageHandler
 import|;
 end_import
 
@@ -150,11 +150,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
+name|logic
 operator|.
-name|remote
+name|help
 operator|.
-name|JabRefMessageHandler
+name|HelpFile
 import|;
 end_import
 

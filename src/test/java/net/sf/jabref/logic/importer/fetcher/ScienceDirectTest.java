@@ -1,6 +1,10 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
+begin_comment
+comment|/*  * Copyright (C) 2003-2016 JabRef contributors.  * This program is free software; you can redistribute it and/or modify  * it under the terms of the GNU General Public License as published by  * the Free Software Foundation; either version 2 of the License, or  * (at your option) any later version.  *  * This program is distributed in the hope that it will be useful,  * but WITHOUT ANY WARRANTY; without even the implied warranty of  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the  * GNU General Public License for more details.  *  * You should have received a copy of the GNU General Public License along  * with this program; if not, write to the Free Software Foundation, Inc.,  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
+end_comment
+
 begin_package
-DECL|package|net.sf.jabref.logic.fulltext
+DECL|package|net.sf.jabref.logic.importer.fetcher
 package|package
 name|net
 operator|.
@@ -10,7 +14,9 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|fulltext
+name|importer
+operator|.
+name|fetcher
 package|;
 end_package
 
@@ -115,14 +121,14 @@ import|;
 end_import
 
 begin_class
-DECL|class|GoogleScholarTest
+DECL|class|ScienceDirectTest
 specifier|public
 class|class
-name|GoogleScholarTest
+name|ScienceDirectTest
 block|{
 DECL|field|finder
 specifier|private
-name|GoogleScholar
+name|ScienceDirect
 name|finder
 decl_stmt|;
 DECL|field|entry
@@ -141,7 +147,7 @@ block|{
 name|finder
 operator|=
 operator|new
-name|GoogleScholar
+name|ScienceDirect
 argument_list|()
 expr_stmt|;
 name|entry
@@ -183,10 +189,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|requiresEntryTitle ()
+DECL|method|doiNotPresent ()
 specifier|public
 name|void
-name|requiresEntryTitle
+name|doiNotPresent
 parameter_list|()
 throws|throws
 name|IOException
@@ -211,15 +217,15 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|linkFound ()
+DECL|method|findByDOI ()
 specifier|public
 name|void
-name|linkFound
+name|findByDOI
 parameter_list|()
 throws|throws
 name|IOException
 block|{
-comment|// CI server is blocked by Google
+comment|// CI server is blocked
 name|Assume
 operator|.
 name|assumeFalse
@@ -234,9 +240,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+literal|"doi"
 argument_list|,
-literal|"Towards Application Portability in Platform as a Service"
+literal|"10.1016/j.jrmge.2015.08.004"
 argument_list|)
 expr_stmt|;
 name|Assert
@@ -250,7 +256,7 @@ argument_list|(
 operator|new
 name|URL
 argument_list|(
-literal|"https://www.uni-bamberg.de/fileadmin/uni/fakultaeten/wiai_lehrstuehle/praktische_informatik/Dateien/Publikationen/sose14-towards-application-portability-in-paas.pdf"
+literal|"http://www.sciencedirect.com/science/article/pii/S1674775515001079/pdfft?md5=2b19b19a387cffbae237ca6a987279df&pid=1-s2.0-S1674775515001079-main.pdf"
 argument_list|)
 argument_list|)
 argument_list|,
@@ -265,15 +271,15 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|noLinkFound ()
+DECL|method|notFoundByDOI ()
 specifier|public
 name|void
-name|noLinkFound
+name|notFoundByDOI
 parameter_list|()
 throws|throws
 name|IOException
 block|{
-comment|// CI server is blocked by Google
+comment|// CI server is blocked
 name|Assume
 operator|.
 name|assumeFalse
@@ -288,9 +294,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+literal|"doi"
 argument_list|,
-literal|"Pro WF: Windows Workflow in NET 3.5"
+literal|"10.1016/j.aasri.2014.0559.002"
 argument_list|)
 expr_stmt|;
 name|Assert

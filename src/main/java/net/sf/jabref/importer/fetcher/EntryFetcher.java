@@ -50,22 +50,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
-operator|.
-name|help
-operator|.
-name|HelpFile
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|importer
 operator|.
 name|ImportInspector
@@ -86,11 +70,30 @@ name|OutputPrinter
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|help
+operator|.
+name|HelpFile
+import|;
+end_import
+
 begin_comment
 comment|/**  * Implement this interface to add another activeFetcher (something that grabs records  * from the Web for JabRef). Have a look at the existing implemenations  * OAI2Fetcher, IEEEXploreFetcher, MedlineFetcher, JStorFetcher and  * CiteSeerEntryFetcher.  *  * Note: You also need to implement the method stopFetching from  * ImportInspectionDialog.Callback  *  * A Fetcher should not execute any GUI Operations, because it might be run in  * headless mode, but rather use the OutputPrinter for talking to the user.  */
 end_comment
 
 begin_interface
+annotation|@
+name|Deprecated
+comment|// use SearchBasedFetcher instead
 DECL|interface|EntryFetcher
 specifier|public
 interface|interface

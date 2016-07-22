@@ -252,9 +252,9 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|help
+name|keyboard
 operator|.
-name|HelpFile
+name|KeyBinding
 import|;
 end_import
 
@@ -266,11 +266,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
+name|logic
 operator|.
-name|keyboard
+name|help
 operator|.
-name|KeyBinding
+name|HelpFile
 import|;
 end_import
 

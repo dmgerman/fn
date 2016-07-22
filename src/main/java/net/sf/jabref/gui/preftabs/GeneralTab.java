@@ -206,7 +206,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
+name|logic
 operator|.
 name|help
 operator|.

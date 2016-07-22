@@ -136,9 +136,9 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|fulltext
+name|importer
 operator|.
-name|FindFullText
+name|FulltextFetchers
 import|;
 end_import
 
@@ -324,11 +324,11 @@ argument_list|(
 literal|0
 argument_list|)
 expr_stmt|;
-name|FindFullText
+name|FulltextFetchers
 name|fft
 init|=
 operator|new
-name|FindFullText
+name|FulltextFetchers
 argument_list|()
 decl_stmt|;
 name|result
