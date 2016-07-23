@@ -1174,7 +1174,9 @@ name|FieldName
 operator|.
 name|URL
 else|:
-literal|"pdf"
+name|FieldName
+operator|.
+name|PDF
 argument_list|,
 name|entry
 operator|.
@@ -1366,7 +1368,9 @@ name|hm
 operator|.
 name|put
 argument_list|(
-literal|"annote"
+name|FieldName
+operator|.
+name|ANNOTE
 argument_list|,
 name|entry
 operator|.
@@ -1450,7 +1454,9 @@ name|hm
 operator|.
 name|put
 argument_list|(
-literal|"chapter"
+name|FieldName
+operator|.
+name|CHAPTER
 argument_list|,
 name|entry
 operator|.

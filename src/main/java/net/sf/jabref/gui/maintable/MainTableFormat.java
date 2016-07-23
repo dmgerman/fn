@@ -261,7 +261,9 @@ name|Collections
 operator|.
 name|singletonList
 argument_list|(
-literal|"eprint"
+name|FieldName
+operator|.
+name|EPRINT
 argument_list|)
 decl_stmt|;
 DECL|field|database

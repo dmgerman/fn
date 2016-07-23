@@ -1258,7 +1258,9 @@ name|getField
 argument_list|(
 name|e
 argument_list|,
-literal|"annote"
+name|FieldName
+operator|.
+name|ANNOTE
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1305,7 +1307,9 @@ name|getField
 argument_list|(
 name|e
 argument_list|,
-literal|"chapter"
+name|FieldName
+operator|.
+name|CHAPTER
 argument_list|)
 argument_list|)
 expr_stmt|;

@@ -659,7 +659,9 @@ name|TABLE_ICONS
 operator|.
 name|put
 argument_list|(
-literal|"pdf"
+name|FieldName
+operator|.
+name|PDF
 argument_list|,
 name|label
 argument_list|)
@@ -781,7 +783,9 @@ name|TABLE_ICONS
 operator|.
 name|put
 argument_list|(
-literal|"eprint"
+name|FieldName
+operator|.
+name|EPRINT
 argument_list|,
 name|label
 argument_list|)
@@ -870,7 +874,9 @@ name|TABLE_ICONS
 operator|.
 name|put
 argument_list|(
-literal|"ps"
+name|FieldName
+operator|.
+name|PS
 argument_list|,
 name|label
 argument_list|)

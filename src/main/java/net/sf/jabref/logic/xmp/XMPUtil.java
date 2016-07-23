@@ -1971,7 +1971,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"publishers"
+name|FieldName
+operator|.
+name|PUBLISHER
 argument_list|,
 name|String
 operator|.
@@ -2834,7 +2836,9 @@ comment|/**              * ? -> Coverage              *              * Unmapped 
 comment|/**              * Author -> Creator              *              * Field: dc:creator              *              * Type: seq ProperName              *              * Category: External              *              * Description: The authors of the resource (listed in order of              * precedence, if significant).              *              * Bibtex-Fields used: author              */
 if|if
 condition|(
-literal|"author"
+name|FieldName
+operator|.
+name|AUTHOR
 operator|.
 name|equals
 argument_list|(
@@ -3617,7 +3621,9 @@ block|{
 comment|// erase field instead of adding it
 if|if
 condition|(
-literal|"author"
+name|FieldName
+operator|.
+name|AUTHOR
 operator|.
 name|equals
 argument_list|(
@@ -3714,7 +3720,9 @@ continue|continue;
 block|}
 if|if
 condition|(
-literal|"author"
+name|FieldName
+operator|.
+name|AUTHOR
 operator|.
 name|equals
 argument_list|(

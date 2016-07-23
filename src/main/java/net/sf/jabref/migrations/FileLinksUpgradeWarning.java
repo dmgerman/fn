@@ -374,9 +374,13 @@ operator|new
 name|String
 index|[]
 block|{
-literal|"pdf"
+name|FieldName
+operator|.
+name|PDF
 block|,
-literal|"ps"
+name|FieldName
+operator|.
+name|PS
 block|,
 literal|"evastar_pdf"
 block|}

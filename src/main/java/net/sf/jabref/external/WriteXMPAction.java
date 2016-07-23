@@ -719,7 +719,9 @@ name|entry
 operator|.
 name|getFieldOptional
 argument_list|(
-literal|"pdf"
+name|FieldName
+operator|.
+name|PDF
 argument_list|)
 operator|.
 name|ifPresent

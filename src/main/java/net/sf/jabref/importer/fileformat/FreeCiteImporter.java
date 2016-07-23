@@ -1049,7 +1049,9 @@ argument_list|(
 name|ln
 argument_list|)
 operator|||
-literal|"location"
+name|FieldName
+operator|.
+name|LOCATION
 operator|.
 name|equals
 argument_list|(

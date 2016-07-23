@@ -12470,24 +12470,6 @@ name|OpenURLAction
 implements|implements
 name|BaseAction
 block|{
-DECL|field|PS_FIELD
-specifier|private
-specifier|static
-specifier|final
-name|String
-name|PS_FIELD
-init|=
-literal|"ps"
-decl_stmt|;
-DECL|field|PDF_FIELD
-specifier|private
-specifier|static
-specifier|final
-name|String
-name|PDF_FIELD
-init|=
-literal|"pdf"
-decl_stmt|;
 annotation|@
 name|Override
 DECL|method|action ()
@@ -12731,7 +12713,9 @@ name|getName
 argument_list|()
 argument_list|)
 operator|||
-name|PS_FIELD
+name|FieldName
+operator|.
+name|PS
 operator|.
 name|equalsIgnoreCase
 argument_list|(
@@ -12746,7 +12730,9 @@ name|getName
 argument_list|()
 argument_list|)
 operator|||
-name|PDF_FIELD
+name|FieldName
+operator|.
+name|PDF
 operator|.
 name|equalsIgnoreCase
 argument_list|(

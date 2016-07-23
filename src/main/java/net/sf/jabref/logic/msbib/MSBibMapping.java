@@ -255,7 +255,9 @@ name|bibtexToMSBib
 operator|.
 name|put
 argument_list|(
-literal|"chapter"
+name|FieldName
+operator|.
+name|CHAPTER
 argument_list|,
 literal|"ChapterNumber"
 argument_list|)

@@ -378,7 +378,9 @@ literal|"eventdate"
 argument_list|,
 literal|"origdate"
 argument_list|,
-literal|"urldate"
+name|FieldName
+operator|.
+name|URLDATE
 argument_list|)
 decl_stmt|;
 DECL|field|BIBLATEX_PERSON_NAME_FIELDS
@@ -543,7 +545,9 @@ argument_list|(
 operator|new
 name|BibtexSingleField
 argument_list|(
-literal|"annote"
+name|FieldName
+operator|.
+name|ANNOTE
 argument_list|,
 literal|true
 argument_list|,
@@ -592,7 +596,9 @@ argument_list|(
 operator|new
 name|BibtexSingleField
 argument_list|(
-literal|"chapter"
+name|FieldName
+operator|.
+name|CHAPTER
 argument_list|,
 literal|true
 argument_list|,
@@ -782,7 +788,9 @@ argument_list|(
 operator|new
 name|BibtexSingleField
 argument_list|(
-literal|"key"
+name|FieldName
+operator|.
+name|KEY
 argument_list|,
 literal|true
 argument_list|)
@@ -920,7 +928,9 @@ argument_list|(
 operator|new
 name|BibtexSingleField
 argument_list|(
-literal|"school"
+name|FieldName
+operator|.
+name|SCHOOL
 argument_list|,
 literal|true
 argument_list|,
@@ -1442,7 +1452,9 @@ argument_list|(
 operator|new
 name|BibtexSingleField
 argument_list|(
-literal|"location"
+name|FieldName
+operator|.
+name|LOCATION
 argument_list|,
 literal|false
 argument_list|)

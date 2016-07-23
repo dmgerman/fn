@@ -287,7 +287,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"eprint"
+name|FieldName
+operator|.
+name|EPRINT
 argument_list|,
 name|content
 argument_list|)
