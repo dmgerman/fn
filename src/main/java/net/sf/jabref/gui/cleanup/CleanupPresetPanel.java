@@ -205,6 +205,11 @@ specifier|private
 name|JCheckBox
 name|cleanUpDOI
 decl_stmt|;
+DECL|field|cleanUpISSN
+specifier|private
+name|JCheckBox
+name|cleanUpISSN
+decl_stmt|;
 DECL|field|cleanUpMovePDF
 specifier|private
 name|JCheckBox
@@ -303,6 +308,19 @@ operator|.
 name|lang
 argument_list|(
 literal|"Move DOIs from note and URL field to DOI field and remove http prefix"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|cleanUpISSN
+operator|=
+operator|new
+name|JCheckBox
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Reformat ISSN"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -496,7 +514,7 @@ name|FormLayout
 argument_list|(
 literal|"left:15dlu, pref:grow"
 argument_list|,
-literal|"pref, pref, pref, pref, pref, pref, pref,pref, 190dlu, fill:pref:grow,"
+literal|"pref, pref, pref, pref, pref, pref, pref,pref, pref,190dlu, fill:pref:grow,"
 argument_list|)
 decl_stmt|;
 name|FormBuilder
@@ -673,7 +691,7 @@ name|builder
 operator|.
 name|add
 argument_list|(
-name|cleanUpFormatters
+name|cleanUpISSN
 argument_list|)
 operator|.
 name|xyw
@@ -681,6 +699,22 @@ argument_list|(
 literal|1
 argument_list|,
 literal|9
+argument_list|,
+literal|2
+argument_list|)
+expr_stmt|;
+name|builder
+operator|.
+name|add
+argument_list|(
+name|cleanUpFormatters
+argument_list|)
+operator|.
+name|xyw
+argument_list|(
+literal|1
+argument_list|,
+literal|10
 argument_list|,
 literal|2
 argument_list|)
@@ -791,6 +825,16 @@ name|isConvertToBiblatex
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|cleanUpBibLatex
+operator|.
+name|setSelected
+argument_list|(
+name|preset
+operator|.
+name|isCleanUpISSN
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|cleanUpFormatters
 operator|.
 name|setValues
@@ -874,6 +918,26 @@ operator|.
 name|CleanupStep
 operator|.
 name|CLEAN_UP_DOI
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|cleanUpISSN
+operator|.
+name|isSelected
+argument_list|()
+condition|)
+block|{
+name|activeJobs
+operator|.
+name|add
+argument_list|(
+name|CleanupPreset
+operator|.
+name|CleanupStep
+operator|.
+name|CLEAN_UP_ISSN
 argument_list|)
 expr_stmt|;
 block|}
