@@ -526,7 +526,7 @@ block|{
 name|String
 name|url
 init|=
-literal|"http://help.jabref.org/"
+literal|"https://help.jabref.org/"
 operator|+
 name|Globals
 operator|.

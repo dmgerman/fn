@@ -82,7 +82,7 @@ specifier|final
 name|String
 name|jabrefHelp
 init|=
-literal|"http://help.jabref.org/en/"
+literal|"https://help.jabref.org/en/"
 decl_stmt|;
 annotation|@
 name|Test
