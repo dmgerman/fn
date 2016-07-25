@@ -371,13 +371,13 @@ class|class
 name|AutoSetLinks
 block|{
 comment|/**      * Shortcut method if links are set without using the GUI      *      * @param entries  the entries for which links should be set      * @param databaseContext the database for which links are set      */
-DECL|method|autoSetLinks (Collection<BibEntry> entries, BibDatabaseContext databaseContext)
+DECL|method|autoSetLinks (List<BibEntry> entries, BibDatabaseContext databaseContext)
 specifier|public
 specifier|static
 name|void
 name|autoSetLinks
 parameter_list|(
-name|Collection
+name|List
 argument_list|<
 name|BibEntry
 argument_list|>
@@ -406,14 +406,14 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Automatically add links for this set of entries, based on the globally stored list of external file types. The      * entries are modified, and corresponding UndoEdit elements added to the NamedCompound given as argument.      * Furthermore, all entries which are modified are added to the Set of entries given as an argument.      *<p>      * The entries' bibtex keys must have been set - entries lacking key are ignored. The operation is done in a new      * thread, which is returned for the caller to wait for if needed.      *      * @param entries          A collection of BibEntry objects to find links for.      * @param ce               A NamedCompound to add UndoEdit elements to.      * @param changedEntries   MODIFIED, optional. A Set of BibEntry objects to which all modified entries is added.      *                         This is used for status output and debugging      * @param singleTableModel UGLY HACK. The table model to insert links into. Already existing links are not      *                         duplicated or removed. This parameter has to be null if entries.count() != 1. The hack has been      *                         introduced as a bibtexentry does not (yet) support the function getListTableModel() and the      *                         FileListEntryEditor editor holds an instance of that table model and does not reconstruct it after the      *                         search has succeeded.      * @param databaseContext  The database providing the relevant file directory, if any.      * @param callback         An ActionListener that is notified (on the event dispatch thread) when the search is finished.      *                         The ActionEvent has id=0 if no new links were added, and id=1 if one or more links were added. This      *                         parameter can be null, which means that no callback will be notified.      * @param diag             An instantiated modal JDialog which will be used to display the progress of the automatically setting. This      *                         parameter can be null, which means that no progress update will be shown.      * @return the thread performing the automatically setting      */
-DECL|method|autoSetLinks (final Collection<BibEntry> entries, final NamedCompound ce, final Set<BibEntry> changedEntries, final FileListTableModel singleTableModel, final BibDatabaseContext databaseContext, final ActionListener callback, final JDialog diag)
+DECL|method|autoSetLinks (final List<BibEntry> entries, final NamedCompound ce, final Set<BibEntry> changedEntries, final FileListTableModel singleTableModel, final BibDatabaseContext databaseContext, final ActionListener callback, final JDialog diag)
 specifier|public
 specifier|static
 name|Runnable
 name|autoSetLinks
 parameter_list|(
 specifier|final
-name|Collection
+name|List
 argument_list|<
 name|BibEntry
 argument_list|>
@@ -649,7 +649,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// determine extensions
-name|Collection
+name|List
 argument_list|<
 name|String
 argument_list|>
@@ -738,6 +738,20 @@ expr_stmt|;
 block|}
 else|else
 block|{
+name|boolean
+name|autoLinkExactKeyOnly
+init|=
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|AUTOLINK_EXACT_KEY_ONLY
+argument_list|)
+decl_stmt|;
 name|result
 operator|=
 name|FileUtil
@@ -750,9 +764,7 @@ name|extensions
 argument_list|,
 name|dirs
 argument_list|,
-name|Globals
-operator|.
-name|prefs
+name|autoLinkExactKeyOnly
 argument_list|)
 expr_stmt|;
 block|}

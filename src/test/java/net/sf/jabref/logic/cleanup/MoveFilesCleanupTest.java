@@ -542,7 +542,6 @@ name|createNewFile
 argument_list|()
 argument_list|)
 expr_stmt|;
-empty_stmt|;
 name|assertTrue
 argument_list|(
 name|fileBefore

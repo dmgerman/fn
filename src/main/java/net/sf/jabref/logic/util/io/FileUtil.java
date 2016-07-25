@@ -116,16 +116,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Collection
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|Collections
 import|;
 end_import
@@ -1663,7 +1653,7 @@ name|fileName
 return|;
 block|}
 block|}
-DECL|method|findAssociatedFiles (Collection<BibEntry> entries, Collection<String> extensions, Collection<File> directories, JabRefPreferences prefs)
+DECL|method|findAssociatedFiles (List<BibEntry> entries, List<String> extensions, List<File> directories, boolean autolinkExactKeyOnly)
 specifier|public
 specifier|static
 name|Map
@@ -1677,26 +1667,26 @@ argument_list|>
 argument_list|>
 name|findAssociatedFiles
 parameter_list|(
-name|Collection
+name|List
 argument_list|<
 name|BibEntry
 argument_list|>
 name|entries
 parameter_list|,
-name|Collection
+name|List
 argument_list|<
 name|String
 argument_list|>
 name|extensions
 parameter_list|,
-name|Collection
+name|List
 argument_list|<
 name|File
 argument_list|>
 name|directories
 parameter_list|,
-name|JabRefPreferences
-name|prefs
+name|boolean
+name|autolinkExactKeyOnly
 parameter_list|)
 block|{
 name|Map
@@ -1753,18 +1743,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-name|boolean
-name|exactOnly
-init|=
-name|prefs
-operator|.
-name|getBoolean
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|AUTOLINK_EXACT_KEY_ONLY
-argument_list|)
-decl_stmt|;
 comment|// Now look for keys
 name|nextFile
 label|:
@@ -1868,7 +1846,7 @@ comment|// matches are allowed, try to find one:
 if|if
 condition|(
 operator|!
-name|exactOnly
+name|autolinkExactKeyOnly
 condition|)
 block|{
 for|for

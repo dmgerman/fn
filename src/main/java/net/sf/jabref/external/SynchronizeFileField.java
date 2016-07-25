@@ -943,7 +943,7 @@ condition|(
 name|autoSet
 condition|)
 block|{
-name|Collection
+name|List
 argument_list|<
 name|BibEntry
 argument_list|>
