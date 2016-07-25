@@ -24,7 +24,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
+name|logic
+operator|.
+name|util
+operator|.
+name|OS
 import|;
 end_import
 
@@ -137,7 +141,7 @@ name|assertEquals
 argument_list|(
 literal|"KW  - abcd"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
@@ -166,19 +170,19 @@ name|assertEquals
 argument_list|(
 literal|"KW  - abcd"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"KW  - efg"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"KW  - hij"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+

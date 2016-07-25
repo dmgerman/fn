@@ -1705,7 +1705,9 @@ else|else
 block|{
 name|Type
 operator|=
-literal|"misc"
+name|BibEntry
+operator|.
+name|DEFAULT_TYPE
 expr_stmt|;
 block|}
 block|}

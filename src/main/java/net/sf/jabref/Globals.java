@@ -198,15 +198,6 @@ specifier|public
 class|class
 name|Globals
 block|{
-DECL|field|DIR_SUFFIX
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|DIR_SUFFIX
-init|=
-literal|"Directory"
-decl_stmt|;
 comment|// JabRef version info
 DECL|field|BUILD_INFO
 specifier|public
@@ -217,50 +208,6 @@ name|BUILD_INFO
 init|=
 operator|new
 name|BuildInfo
-argument_list|()
-decl_stmt|;
-comment|// Signature written at the top of the .bib file.
-DECL|field|SIGNATURE
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|SIGNATURE
-init|=
-literal|"This file was created with JabRef"
-decl_stmt|;
-DECL|field|ENCODING_PREFIX
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|ENCODING_PREFIX
-init|=
-literal|"Encoding: "
-decl_stmt|;
-comment|// Character separating field names that are to be used in sequence as
-comment|// fallbacks for a single column (e.g. "author/editor" to use editor where
-comment|// author is not set):
-DECL|field|COL_DEFINITION_FIELD_SEPARATOR
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|COL_DEFINITION_FIELD_SEPARATOR
-init|=
-literal|"/"
-decl_stmt|;
-comment|// Newlines
-comment|// will be overridden in initialization due to feature #857 @ JabRef.java
-DECL|field|NEWLINE
-specifier|public
-specifier|static
-name|String
-name|NEWLINE
-init|=
-name|System
-operator|.
-name|lineSeparator
 argument_list|()
 decl_stmt|;
 comment|// Remote listener
@@ -285,16 +232,6 @@ init|=
 operator|new
 name|ImportFormatReader
 argument_list|()
-decl_stmt|;
-comment|// Non-letters which are used to denote accents in LaTeX-commands, e.g., in {\"{a}}
-DECL|field|SPECIAL_COMMAND_CHARS
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|SPECIAL_COMMAND_CHARS
-init|=
-literal|"\"`^~'=.|"
 decl_stmt|;
 comment|// In the main program, this field is initialized in JabRef.java
 comment|// Each test case initializes this field if required

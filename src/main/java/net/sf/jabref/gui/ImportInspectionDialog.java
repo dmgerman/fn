@@ -1773,17 +1773,6 @@ name|PAD
 init|=
 literal|4
 decl_stmt|;
-DECL|field|URL_FIELD
-specifier|private
-specifier|static
-specifier|final
-name|String
-name|URL_FIELD
-init|=
-name|FieldName
-operator|.
-name|URL
-decl_stmt|;
 comment|/**      * Creates a dialog that displays the given list of fields in the table. The      * dialog allows another process to add entries dynamically while the dialog      * is shown.      *      * @param frame      * @param panel      */
 DECL|method|ImportInspectionDialog (JabRefFrame frame, BasePanel panel, String undoName, boolean newDatabase)
 specifier|public
@@ -5589,7 +5578,9 @@ block|{
 comment|// Must be URL_COL
 name|openExternalLink
 argument_list|(
-name|URL_FIELD
+name|FieldName
+operator|.
+name|URL
 argument_list|,
 name|e
 argument_list|)
@@ -6749,7 +6740,9 @@ name|entry
 operator|.
 name|getFieldOptional
 argument_list|(
-name|URL_FIELD
+name|FieldName
+operator|.
+name|URL
 argument_list|)
 operator|.
 name|orElse
@@ -6790,7 +6783,9 @@ name|entry
 operator|.
 name|clearField
 argument_list|(
-name|URL_FIELD
+name|FieldName
+operator|.
+name|URL
 argument_list|)
 expr_stmt|;
 block|}
@@ -6800,7 +6795,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|URL_FIELD
+name|FieldName
+operator|.
+name|URL
 argument_list|,
 name|result
 argument_list|)
@@ -7802,7 +7799,9 @@ name|Collections
 operator|.
 name|singletonList
 argument_list|(
-name|URL_FIELD
+name|FieldName
+operator|.
+name|URL
 argument_list|)
 argument_list|)
 argument_list|)
@@ -8339,12 +8338,14 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|(
 name|model
 operator|.
 name|getRowCount
 argument_list|()
 operator|>
 literal|0
+operator|)
 operator|&&
 name|model
 operator|.
@@ -8399,7 +8400,9 @@ name|entry
 operator|.
 name|hasField
 argument_list|(
-name|URL_FIELD
+name|FieldName
+operator|.
+name|URL
 argument_list|)
 condition|)
 block|{
@@ -8411,7 +8414,9 @@ name|entry
 operator|.
 name|getFieldOptional
 argument_list|(
-name|URL_FIELD
+name|FieldName
+operator|.
+name|URL
 argument_list|)
 operator|.
 name|orElse

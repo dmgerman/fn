@@ -3751,8 +3751,6 @@ argument_list|)
 expr_stmt|;
 continue|continue;
 block|}
-comment|// If not found throw exception...
-comment|//return new LayoutFormatter[] {new NotFoundFormatter(className)};
 name|results
 operator|.
 name|add
@@ -3764,7 +3762,6 @@ name|className
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//throw new Exception(Globals.lang("Formatter not found") + ": "+ className);
 block|}
 return|return
 name|results

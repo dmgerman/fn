@@ -1164,7 +1164,9 @@ name|entry
 operator|.
 name|setType
 argument_list|(
-literal|"misc"
+name|BibEntry
+operator|.
+name|DEFAULT_TYPE
 argument_list|)
 expr_stmt|;
 block|}
@@ -1258,7 +1260,9 @@ argument_list|()
 operator|.
 name|setType
 argument_list|(
-literal|"misc"
+name|BibEntry
+operator|.
+name|DEFAULT_TYPE
 argument_list|)
 expr_stmt|;
 block|}
@@ -1402,7 +1406,9 @@ name|entry
 operator|.
 name|setType
 argument_list|(
-literal|"misc"
+name|BibEntry
+operator|.
+name|DEFAULT_TYPE
 argument_list|)
 expr_stmt|;
 name|String

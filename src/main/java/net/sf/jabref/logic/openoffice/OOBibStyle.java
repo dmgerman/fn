@@ -3993,7 +3993,9 @@ name|field
 operator|.
 name|split
 argument_list|(
-literal|"/"
+name|FieldName
+operator|.
+name|FIELD_SEPARATOR
 argument_list|)
 decl_stmt|;
 for|for

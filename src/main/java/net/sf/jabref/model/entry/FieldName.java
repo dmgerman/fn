@@ -20,6 +20,19 @@ specifier|public
 class|class
 name|FieldName
 block|{
+comment|// Character separating field names that are to be used in sequence as
+comment|// fallbacks for a single column (e.g. "author/editor" to use editor where
+comment|// author is not set):
+DECL|field|FIELD_SEPARATOR
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|FIELD_SEPARATOR
+init|=
+literal|"/"
+decl_stmt|;
+comment|// Field name constants
 DECL|field|ABSTRACT
 specifier|public
 specifier|static

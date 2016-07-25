@@ -114,6 +114,22 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
+name|util
+operator|.
+name|OS
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|model
 operator|.
 name|database
@@ -398,43 +414,43 @@ comment|// @formatter:off
 name|String
 name|expected
 init|=
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"@Article{,"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"  author  = {Foo Bar},"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"  journal = {International Journal of Something},"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"  number  = {1},"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"  note    = {some note},"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"}"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 decl_stmt|;
@@ -463,31 +479,31 @@ name|bibtexEntry
 init|=
 literal|"@Article{test,"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"  Author                   = {Foo Bar},"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"  Journal                  = {International Journal of Something},"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"  Note                     = {some note},"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"  Number                   = {1}"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
@@ -587,31 +603,31 @@ name|bibtexEntry
 init|=
 literal|"\r\n@Article{test,"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"  Author                   = {Foo Bar},"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"  Journal                  = {International Journal of Something},"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"  Note                     = {some note},"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"  Number                   = {1}"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
@@ -709,37 +725,37 @@ comment|// @formatter:off
 name|String
 name|bibtexEntry
 init|=
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"@Article{test,"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"  Author                   = {Foo Bar},"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"  Journal                  = {International Journal of Something},"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"  Note                     = {some note},"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"  Number                   = {1},"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
@@ -829,43 +845,43 @@ comment|// @formatter:off
 name|String
 name|expected
 init|=
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"@Article{test,"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"  author  = {BlaBla},"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"  journal = {International Journal of Something},"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"  number  = {1},"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"  note    = {some note},"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"}"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 decl_stmt|;
@@ -892,43 +908,43 @@ comment|// @formatter:off
 name|String
 name|bibtexEntry
 init|=
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"@Article{test,"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"  Author                   = {Foo Bar},"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"  Journal                  = {International Journal of Something},"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"  Note                     = {some note},"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"  Number                   = {1},"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"  HowPublished             = {asdf},"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
@@ -1018,49 +1034,49 @@ comment|// @formatter:off
 name|String
 name|expected
 init|=
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"@Article{test,"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"  author       = {BlaBla},"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"  journal      = {International Journal of Something},"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"  number       = {1},"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"  note         = {some note},"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"  howpublished = {asdf},"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"}"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 decl_stmt|;
@@ -1087,49 +1103,49 @@ comment|// @formatter:off
 name|String
 name|expected
 init|=
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"@Article{test,"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"  author       = {BlaBla},"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"  journal      = {International Journal of Something},"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"  number       = {1},"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"  note         = {some note},"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"  howpublished = {asdf},"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"}"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 decl_stmt|;
@@ -1215,49 +1231,49 @@ comment|// @formatter:off
 name|String
 name|expectedNewEntry
 init|=
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"@InProceedings{test,"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"  author       = {BlaBla},"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"  number       = {1},"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"  note         = {some note},"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"  howpublished = {asdf},"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"  journal      = {International Journal of Something},"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"}"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 decl_stmt|;
@@ -1286,31 +1302,31 @@ name|bibtexEntry
 init|=
 literal|"@Article{test,"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"  Author                   = {Foo Bar},"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"  Journal                  = {International Journal of Something},"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"  Note                     = {some note},"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"  Number                   = {1}"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
@@ -1423,31 +1439,31 @@ name|bibtexEntry
 init|=
 literal|"@Article{test,"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"  Author                   = {Foo Bar},"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"  Journal                  = {International Journal of Something},"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"  Note                     = {some note},"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"  Number                   = {1}"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
@@ -1591,25 +1607,25 @@ name|bibtexEntry
 init|=
 literal|"@Article{test,"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"  Author                   = {Foo Bar},"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"  Month                    = mar,"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"  Number                   = {1}"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
@@ -1744,41 +1760,41 @@ comment|// @formatter:off
 name|String
 name|bibtexEntry
 init|=
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"@Article{test,"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"  author =  {BlaBla},"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"  journal = {International Journal of Something},"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"  number =  {1},"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"  note =    {some note},"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
@@ -1868,49 +1884,49 @@ comment|// @formatter:off
 name|String
 name|expected
 init|=
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"@Article{test,"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"  author       = {BlaBla},"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"  journal      = {International Journal of Something},"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"  number       = {1},"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"  note         = {some note},"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"  howpublished = {asdf},"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"}"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 decl_stmt|;
@@ -1993,25 +2009,25 @@ decl_stmt|;
 name|String
 name|expected
 init|=
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"@Article{,"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"  note   = {some note},"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"}"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 decl_stmt|;
@@ -2084,25 +2100,25 @@ decl_stmt|;
 name|String
 name|expected
 init|=
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"@Article{,"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"  note = {some note},"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"}"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 decl_stmt|;
@@ -2130,37 +2146,37 @@ name|bibtexEntry
 init|=
 literal|"% Some random comment that should stay here"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"@Article{test,"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"  Author                   = {Foo Bar},"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"  Journal                  = {International Journal of Something},"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"  Note                     = {some note},"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"  Number                   = {1}"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
@@ -2260,37 +2276,37 @@ name|bibtexEntry
 init|=
 literal|"% Some random comment that should stay here"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"@Article{test,"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"  Author                   = {Foo Bar},"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"  Journal                  = {International Journal of Something},"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"  Note                     = {some note},"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"  Number                   = {1}"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
@@ -2382,47 +2398,47 @@ name|expected
 init|=
 literal|"% Some random comment that should stay here"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"@Article{test,"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"  author  = {John Doe},"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"  journal = {International Journal of Something},"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"  number  = {1},"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"  note    = {some note},"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"}"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 decl_stmt|;

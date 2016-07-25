@@ -216,6 +216,22 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
+name|util
+operator|.
+name|OS
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|model
 operator|.
 name|entry
@@ -564,7 +580,7 @@ expr_stmt|;
 block|}
 comment|// override used newline character with the one stored in the preferences
 comment|// The preferences return the system newline character sequence as default
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|=

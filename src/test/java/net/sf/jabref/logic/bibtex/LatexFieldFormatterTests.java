@@ -34,6 +34,22 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
+name|util
+operator|.
+name|OS
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|preferences
 operator|.
 name|JabRefPreferences
@@ -156,7 +172,7 @@ name|text
 init|=
 literal|"lorem"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
@@ -170,25 +186,25 @@ literal|"{"
 operator|+
 literal|"lorem"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|" ipsum lorem ipsum"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"lorem ipsum "
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"lorem ipsum"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
@@ -235,13 +251,13 @@ name|text
 init|=
 literal|"lorem ipsum lorem ipsum"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"lorem ipsum lorem ipsum"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 decl_stmt|;
@@ -293,17 +309,17 @@ name|text
 init|=
 literal|"lorem ipsum lorem ipsum"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"lorem ipsum lorem ipsum"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 decl_stmt|;
@@ -355,13 +371,13 @@ name|text
 init|=
 literal|"lorem ipsum lorem ipsum"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"lorem ipsum lorem ipsum"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 decl_stmt|;

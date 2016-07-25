@@ -1681,7 +1681,9 @@ condition|)
 block|{
 name|entryType
 operator|=
-literal|"misc"
+name|BibEntry
+operator|.
+name|DEFAULT_TYPE
 expr_stmt|;
 if|if
 condition|(
@@ -1725,7 +1727,9 @@ condition|)
 block|{
 name|entryType
 operator|=
-literal|"misc"
+name|BibEntry
+operator|.
+name|DEFAULT_TYPE
 expr_stmt|;
 block|}
 elseif|else
@@ -1741,7 +1745,9 @@ condition|)
 block|{
 name|entryType
 operator|=
-literal|"misc"
+name|BibEntry
+operator|.
+name|DEFAULT_TYPE
 expr_stmt|;
 comment|// FIXME: online only available in Biblatex
 comment|//entryType = "online";

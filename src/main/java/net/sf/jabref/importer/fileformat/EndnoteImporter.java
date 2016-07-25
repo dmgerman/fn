@@ -522,7 +522,9 @@ literal|""
 expr_stmt|;
 name|type
 operator|=
-literal|"misc"
+name|BibEntry
+operator|.
+name|DEFAULT_TYPE
 expr_stmt|;
 name|editor
 operator|=
@@ -855,7 +857,9 @@ else|else
 block|{
 name|type
 operator|=
-literal|"misc"
+name|BibEntry
+operator|.
+name|DEFAULT_TYPE
 expr_stmt|;
 comment|//
 block|}

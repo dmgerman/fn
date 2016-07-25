@@ -38,18 +38,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|logic
 operator|.
 name|layout
@@ -370,7 +358,7 @@ operator|==
 literal|'%'
 operator|)
 operator|||
-name|Globals
+name|StringUtil
 operator|.
 name|SPECIAL_COMMAND_CHARS
 operator|.
@@ -425,7 +413,7 @@ operator|==
 literal|1
 operator|)
 operator|&&
-name|Globals
+name|StringUtil
 operator|.
 name|SPECIAL_COMMAND_CHARS
 operator|.

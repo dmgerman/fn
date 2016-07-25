@@ -352,7 +352,7 @@ init|=
 literal|"id"
 decl_stmt|;
 DECL|field|DEFAULT_TYPE
-specifier|private
+specifier|public
 specifier|static
 specifier|final
 name|String
@@ -1730,12 +1730,6 @@ name|BibDatabase
 name|database
 parameter_list|)
 block|{
-specifier|final
-name|String
-name|orSeparator
-init|=
-literal|"/"
-decl_stmt|;
 for|for
 control|(
 name|String
@@ -1759,7 +1753,9 @@ name|fieldName
 operator|.
 name|contains
 argument_list|(
-name|orSeparator
+name|FieldName
+operator|.
+name|FIELD_SEPARATOR
 argument_list|)
 condition|)
 block|{
@@ -1771,7 +1767,9 @@ name|field
 operator|.
 name|split
 argument_list|(
-name|orSeparator
+name|FieldName
+operator|.
+name|FIELD_SEPARATOR
 argument_list|)
 decl_stmt|;
 if|if

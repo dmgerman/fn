@@ -1476,7 +1476,9 @@ block|}
 name|String
 name|bibtexType
 init|=
-literal|"misc"
+name|BibEntry
+operator|.
+name|DEFAULT_TYPE
 decl_stmt|;
 comment|// to find type, first check TW, then RT
 for|for
@@ -1492,7 +1494,9 @@ operator|>=
 literal|0
 operator|)
 operator|&&
-literal|"misc"
+name|BibEntry
+operator|.
+name|DEFAULT_TYPE
 operator|.
 name|equals
 argument_list|(

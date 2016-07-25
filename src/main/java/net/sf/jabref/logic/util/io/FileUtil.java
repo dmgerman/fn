@@ -458,20 +458,6 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|field|FILE_SEPARATOR
-specifier|private
-specifier|static
-specifier|final
-name|String
-name|FILE_SEPARATOR
-init|=
-name|System
-operator|.
-name|getProperty
-argument_list|(
-literal|"file.separator"
-argument_list|)
-decl_stmt|;
 DECL|field|SLASH
 specifier|private
 specifier|static
@@ -1332,6 +1318,8 @@ name|dir
 operator|.
 name|endsWith
 argument_list|(
+name|OS
+operator|.
 name|FILE_SEPARATOR
 argument_list|)
 condition|)
@@ -1349,6 +1337,8 @@ name|name
 operator|=
 name|dir
 operator|+
+name|OS
+operator|.
 name|FILE_SEPARATOR
 operator|+
 name|name
@@ -1613,6 +1603,8 @@ name|dir
 operator|.
 name|endsWith
 argument_list|(
+name|OS
+operator|.
 name|FILE_SEPARATOR
 argument_list|)
 condition|)
@@ -1623,6 +1615,8 @@ name|dir
 operator|.
 name|concat
 argument_list|(
+name|OS
+operator|.
 name|FILE_SEPARATOR
 argument_list|)
 expr_stmt|;
