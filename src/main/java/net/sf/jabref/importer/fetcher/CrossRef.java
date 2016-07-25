@@ -690,9 +690,7 @@ name|data
 operator|.
 name|getJSONArray
 argument_list|(
-name|FieldName
-operator|.
-name|TITLE
+literal|"title"
 argument_list|)
 operator|.
 name|getString
