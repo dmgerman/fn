@@ -110,7 +110,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|InternalBibtexFields
+name|FieldName
 import|;
 end_import
 
@@ -283,7 +283,7 @@ condition|)
 block|{
 if|if
 condition|(
-name|InternalBibtexFields
+name|FieldName
 operator|.
 name|NUMBER_COL
 operator|.

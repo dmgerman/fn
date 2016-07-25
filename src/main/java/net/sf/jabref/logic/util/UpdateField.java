@@ -106,7 +106,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|InternalBibtexFields
+name|FieldName
 import|;
 end_import
 
@@ -484,7 +484,7 @@ name|entry
 operator|.
 name|hasField
 argument_list|(
-name|InternalBibtexFields
+name|FieldName
 operator|.
 name|OWNER
 argument_list|)
@@ -571,7 +571,7 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|InternalBibtexFields
+name|FieldName
 operator|.
 name|OWNER
 argument_list|,
@@ -715,7 +715,7 @@ name|curEntry
 operator|.
 name|hasField
 argument_list|(
-name|InternalBibtexFields
+name|FieldName
 operator|.
 name|OWNER
 argument_list|)

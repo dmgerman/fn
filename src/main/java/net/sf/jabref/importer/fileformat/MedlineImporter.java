@@ -2794,7 +2794,9 @@ name|fields
 operator|.
 name|put
 argument_list|(
-literal|"owner"
+name|FieldName
+operator|.
+name|OWNER
 argument_list|,
 name|medlineCitation
 operator|.

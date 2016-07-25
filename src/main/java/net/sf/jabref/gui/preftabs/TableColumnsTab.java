@@ -466,7 +466,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|InternalBibtexFields
+name|FieldName
 import|;
 end_import
 
@@ -1013,7 +1013,7 @@ name|column
 operator|==
 literal|0
 condition|?
-name|InternalBibtexFields
+name|FieldName
 operator|.
 name|NUMBER_COL
 else|:

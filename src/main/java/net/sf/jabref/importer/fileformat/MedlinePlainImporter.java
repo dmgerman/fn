@@ -1135,7 +1135,9 @@ name|put
 argument_list|(
 literal|"OWN"
 argument_list|,
-literal|"owner"
+name|FieldName
+operator|.
+name|OWNER
 argument_list|)
 expr_stmt|;
 comment|//add the fields to hm

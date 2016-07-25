@@ -579,7 +579,9 @@ name|entry
 operator|.
 name|getFieldOptional
 argument_list|(
-literal|"eprint"
+name|FieldName
+operator|.
+name|EPRINT
 argument_list|)
 decl_stmt|;
 if|if
@@ -2048,7 +2050,9 @@ name|bibEntry
 operator|.
 name|setField
 argument_list|(
-literal|"eprinttype"
+name|FieldName
+operator|.
+name|EPRINTTYPE
 argument_list|,
 literal|"arXiv"
 argument_list|)
@@ -2057,7 +2061,9 @@ name|bibEntry
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|FieldName
+operator|.
+name|AUTHOR
 argument_list|,
 name|StringUtils
 operator|.
@@ -2071,20 +2077,14 @@ argument_list|)
 expr_stmt|;
 name|bibEntry
 operator|.
-name|setField
-argument_list|(
-literal|"keywords"
-argument_list|,
-name|StringUtils
-operator|.
-name|join
+name|addKeywords
 argument_list|(
 name|categories
 argument_list|,
 literal|", "
 argument_list|)
-argument_list|)
 expr_stmt|;
+comment|// TODO: Should use separator value from preferences
 name|getId
 argument_list|()
 operator|.
@@ -2096,7 +2096,9 @@ name|bibEntry
 operator|.
 name|setField
 argument_list|(
-literal|"eprint"
+name|FieldName
+operator|.
+name|EPRINT
 argument_list|,
 name|id
 argument_list|)
@@ -2112,7 +2114,9 @@ name|bibEntry
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|FieldName
+operator|.
+name|TITLE
 argument_list|,
 name|title
 argument_list|)
@@ -2128,7 +2132,9 @@ name|bibEntry
 operator|.
 name|setField
 argument_list|(
-literal|"doi"
+name|FieldName
+operator|.
+name|DOI
 argument_list|,
 name|doi
 argument_list|)
@@ -2144,7 +2150,9 @@ name|bibEntry
 operator|.
 name|setField
 argument_list|(
-literal|"abstract"
+name|FieldName
+operator|.
+name|ABSTRACT
 argument_list|,
 name|abstractText
 argument_list|)
@@ -2161,7 +2169,9 @@ name|bibEntry
 operator|.
 name|setField
 argument_list|(
-literal|"date"
+name|FieldName
+operator|.
+name|DATE
 argument_list|,
 name|date
 argument_list|)
@@ -2177,7 +2187,9 @@ name|bibEntry
 operator|.
 name|setField
 argument_list|(
-literal|"eprintclass"
+name|FieldName
+operator|.
+name|EPRINTCLASS
 argument_list|,
 name|category
 argument_list|)
@@ -2193,7 +2205,9 @@ name|bibEntry
 operator|.
 name|setField
 argument_list|(
-literal|"journaltitle"
+name|FieldName
+operator|.
+name|JOURNALTITLE
 argument_list|,
 name|journal
 argument_list|)

@@ -1223,7 +1223,18 @@ name|put
 argument_list|(
 name|AUTHOR_FIELD
 argument_list|,
-literal|"author/editor"
+name|FieldName
+operator|.
+name|orFields
+argument_list|(
+name|FieldName
+operator|.
+name|AUTHOR
+argument_list|,
+name|FieldName
+operator|.
+name|EDITOR
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|citProperties
@@ -3961,7 +3972,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * This method looks up a field for an entry in a database. Any number of backup fields can be used      * if the primary field is empty.      *      * @param entry    The entry.      * @param database The database the entry belongs to.      * @param field    The field, or succession of fields, to look up. If backup fields are needed, separate      *                 field names by /. E.g. to use "author" with "editor" as backup, specify "author/editor".      * @return The resolved field content, or an empty string if the field(s) were empty.      */
+comment|/**      * This method looks up a field for an entry in a database. Any number of backup fields can be used      * if the primary field is empty.      *      * @param entry    The entry.      * @param database The database the entry belongs to.      * @param field    The field, or succession of fields, to look up. If backup fields are needed, separate      *                 field names by /. E.g. to use "author" with "editor" as backup, specify FieldName.orFields(FieldName.AUTHOR, FieldName.EDITOR).      * @return The resolved field content, or an empty string if the field(s) were empty.      */
 DECL|method|getCitationMarkerField (BibEntry entry, BibDatabase database, String field)
 specifier|private
 name|String

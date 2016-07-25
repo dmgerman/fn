@@ -695,6 +695,7 @@ literal|"place"
 argument_list|)
 condition|)
 block|{
+comment|// TODO: "place" is the MODS version, in BibTeX: "address", BibLaTeX: "location"?
 if|if
 condition|(
 name|CHARFORMAT

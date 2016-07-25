@@ -1890,7 +1890,9 @@ name|result
 operator|.
 name|setField
 argument_list|(
-literal|"subtitle"
+name|FieldName
+operator|.
+name|SUBTITLE
 argument_list|,
 name|newSubtitle
 operator|.
@@ -2062,7 +2064,9 @@ name|result
 operator|.
 name|setField
 argument_list|(
-literal|"pagetotal"
+name|FieldName
+operator|.
+name|PAGETOTAL
 argument_list|,
 name|pagetotal
 argument_list|)
