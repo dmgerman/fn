@@ -4543,7 +4543,7 @@ literal|".bib"
 argument_list|)
 condition|)
 block|{
-comment|// Read from bib and write as XMP
+comment|// Read from BIB and write as XMP
 try|try
 init|(
 name|FileReader

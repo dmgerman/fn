@@ -1558,7 +1558,7 @@ name|i
 operator|++
 expr_stmt|;
 block|}
-comment|// Try to load bib files normally, and import the rest into the current
+comment|// Try to load BIB files normally, and import the rest into the current
 comment|// database.
 comment|// This process must be spun off into a background thread:
 name|JabRefExecutorService
@@ -1621,7 +1621,7 @@ return|return
 literal|true
 return|;
 block|}
-comment|/**      * Take a set of filenames. Those with names indicating bib files are opened as such if possible. All other files we      * will attempt to import into the current database.      *      * @param fileNames The names of the files to open.      * @param dropRow success status for the operation      */
+comment|/**      * Take a set of filenames. Those with names indicating BIB files are opened as such if possible. All other files we      * will attempt to import into the current database.      *      * @param fileNames The names of the files to open.      * @param dropRow success status for the operation      */
 DECL|method|loadOrImportFiles (List<String> fileNames, int dropRow)
 specifier|private
 name|void

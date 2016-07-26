@@ -1021,7 +1021,7 @@ name|toFile
 argument_list|)
 return|;
 block|}
-comment|/**      * Converts a relative filename to an absolute one, if necessary. Returns      * null if the file does not exist.<br/>      *<p>      * Uses<ul>      *<li>the default directory associated with the extension of the file</li>      *<li>the standard file directory</li>      *<li>the directory of the bib file</li>      *</ul>      *      * @param databaseContext The database this file belongs to.      * @param name     The filename, may also be a relative path to the file      */
+comment|/**      * Converts a relative filename to an absolute one, if necessary. Returns      * null if the file does not exist.<br/>      *<p>      * Uses<ul>      *<li>the default directory associated with the extension of the file</li>      *<li>the standard file directory</li>      *<li>the directory of the BIB file</li>      *</ul>      *      * @param databaseContext The database this file belongs to.      * @param name     The filename, may also be a relative path to the file      */
 DECL|method|expandFilename (final BibDatabaseContext databaseContext, String name)
 specifier|public
 specifier|static
@@ -1081,7 +1081,7 @@ operator|.
 name|getFileDirectory
 argument_list|()
 decl_stmt|;
-comment|// Include the directory of the bib file:
+comment|// Include the directory of the BIB file:
 name|List
 argument_list|<
 name|String
@@ -1841,7 +1841,7 @@ name|nextFile
 continue|;
 block|}
 block|}
-comment|// If we get here, we didn't find any exact matches. If non-exact
+comment|// If we get here, we did not find any exact matches. If non-exact
 comment|// matches are allowed, try to find one:
 if|if
 condition|(

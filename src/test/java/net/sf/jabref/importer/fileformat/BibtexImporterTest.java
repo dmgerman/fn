@@ -917,7 +917,7 @@ name|assertEquals
 argument_list|(
 literal|"This importer exists only to enable `--importToOpen someEntry.bib`\n"
 operator|+
-literal|"It is NOT intended to import a bib file. This is done via the option action, which treats the metadata fields.\n"
+literal|"It is NOT intended to import a BIB file. This is done via the option action, which treats the metadata fields.\n"
 operator|+
 literal|"The metadata is not required to be read here, as this class is NOT called at --import."
 argument_list|,

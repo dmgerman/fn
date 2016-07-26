@@ -368,7 +368,7 @@ name|warn
 operator|.
 name|warn
 argument_list|(
-literal|"Format String in format.name$ may only contain fvlj on brace level 1 in group "
+literal|"Format string in format.name$ may only contain fvlj on brace level 1 in group "
 operator|+
 name|group
 operator|+
@@ -444,7 +444,7 @@ name|warn
 operator|.
 name|warn
 argument_list|(
-literal|"Format String in format.name$ may only be one or two character long on brace level 1 in group "
+literal|"Format string in format.name$ may only be one or two character long on brace level 1 in group "
 operator|+
 name|group
 operator|+
@@ -598,7 +598,7 @@ name|warn
 operator|.
 name|warn
 argument_list|(
-literal|"Format String in format.name$ may only contain one type of vlfj on brace level 1 in group "
+literal|"Format string in format.name$ may only contain one type of vlfj on brace level 1 in group "
 operator|+
 name|group
 operator|+

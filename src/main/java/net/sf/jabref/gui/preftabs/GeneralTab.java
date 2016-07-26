@@ -1881,7 +1881,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Memory Stick Mode"
+literal|"Memory stick mode"
 argument_list|)
 argument_list|,
 name|JOptionPane

@@ -449,7 +449,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|// In case it didn't work
+comment|// In case it did not work
 catch|catch
 parameter_list|(
 name|IOException

@@ -1025,7 +1025,7 @@ operator|||
 name|offerSetFileDir
 return|;
 block|}
-comment|/**      * Check the database to find out whether any of a set of fields are used      * for any of the entries.      * @param database The bib database.      * @param fields The set of fields to look for.      * @return true if at least one of the given fields is set in at least one entry,      *  false otherwise.      */
+comment|/**      * Check the database to find out whether any of a set of fields are used      * for any of the entries.      * @param database The BIB database.      * @param fields The set of fields to look for.      * @return true if at least one of the given fields is set in at least one entry,      *  false otherwise.      */
 DECL|method|linksFound (BibDatabase database, String[] fields)
 specifier|private
 name|boolean

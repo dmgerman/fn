@@ -247,7 +247,7 @@ name|FieldName
 operator|.
 name|ABSTRACT
 argument_list|,
-literal|"This entry describes a test scenario which may be useful in JabRef. By providing a test entry it is possible to see how certain things will look in this graphical bib-file mananger."
+literal|"This entry describes a test scenario which may be useful in JabRef. By providing a test entry it is possible to see how certain things will look in this graphical BIB-file mananger."
 argument_list|)
 expr_stmt|;
 return|return

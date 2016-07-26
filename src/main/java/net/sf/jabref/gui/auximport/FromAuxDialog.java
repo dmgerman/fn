@@ -4,7 +4,7 @@ comment|/*  Copyright (C) 2004 R. Nagel  Copyright (C) 2016 JabRef Contributors 
 end_comment
 
 begin_comment
-comment|// A wizard dialog for generating a new sub database from existing TeX aux file
+comment|// A wizard dialog for generating a new sub database from existing TeX AUX file
 end_comment
 
 begin_comment

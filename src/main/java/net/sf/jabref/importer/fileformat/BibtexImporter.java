@@ -133,7 +133,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This importer exists only to enable `--importToOpen someEntry.bib`  *  * It is NOT intended to import a bib file. This is done via the option action, which treats the metadata fields  * The metadata is not required to be read here, as this class is NOT called at --import  */
+comment|/**  * This importer exists only to enable `--importToOpen someEntry.bib`  *  * It is NOT intended to import a BIB file. This is done via the option action, which treats the metadata fields  * The metadata is not required to be read here, as this class is NOT called at --import  */
 end_comment
 
 begin_class
@@ -223,7 +223,7 @@ name|utf8Reader
 argument_list|)
 expr_stmt|;
 block|}
-comment|// Now if that didn't get us anywhere, we check with the 16 bit encoding:
+comment|// Now if that did not get us anywhere, we check with the 16 bit encoding:
 if|if
 condition|(
 operator|!
@@ -354,7 +354,7 @@ block|{
 return|return
 literal|"This importer exists only to enable `--importToOpen someEntry.bib`\n"
 operator|+
-literal|"It is NOT intended to import a bib file. This is done via the option action, which treats the metadata fields.\n"
+literal|"It is NOT intended to import a BIB file. This is done via the option action, which treats the metadata fields.\n"
 operator|+
 literal|"The metadata is not required to be read here, as this class is NOT called at --import."
 return|;

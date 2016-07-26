@@ -189,7 +189,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This action checks whether any new custom entry types were loaded from this  * bib file. If so, an offer to remember these entry types is given.  */
+comment|/**  * This action checks whether any new custom entry types were loaded from this  * BIB file. If so, an offer to remember these entry types is given.  */
 end_comment
 
 begin_class

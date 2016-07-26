@@ -381,7 +381,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|/**      * New Zip file chooser.      *      * @param owner  Owner of the file chooser      * @param zipFile  Zip-Fle to choose from, must be readable      */
+comment|/**      * New ZIP file chooser.      *      * @param owner  Owner of the file chooser      * @param zipFile  ZIP-Fle to choose from, must be readable      */
 DECL|method|ZipFileChooser (ImportCustomizationDialog importCustomizationDialog, ZipFile zipFile)
 specifier|public
 name|ZipFileChooser
@@ -903,7 +903,7 @@ name|table
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Entries that can be selected with this dialog.      *      * @param zipFile  Zip-File      * @return  entries that can be selected      */
+comment|/**      * Entries that can be selected with this dialog.      *      * @param zipFile  ZIP-File      * @return  entries that can be selected      */
 DECL|method|getSelectableZipEntries (ZipFile zipFile)
 specifier|private
 specifier|static
@@ -1148,7 +1148,7 @@ name|col
 argument_list|)
 return|;
 block|}
-comment|/**          * Zip-File entry at the given row index.          *          * @param rowIndex  row index          * @return  Zip file entry          */
+comment|/**          * ZIP-File entry at the given row index.          *          * @param rowIndex  row index          * @return  ZIP file entry          */
 DECL|method|getZipEntry (int rowIndex)
 specifier|public
 name|ZipEntry
@@ -1169,7 +1169,7 @@ name|rowIndex
 argument_list|)
 return|;
 block|}
-comment|/**          * Zip file which contains all entries of this model.          *          * @return zip file          */
+comment|/**          * ZIP file which contains all entries of this model.          *          * @return zip file          */
 DECL|method|getZipFile ()
 specifier|public
 name|ZipFile

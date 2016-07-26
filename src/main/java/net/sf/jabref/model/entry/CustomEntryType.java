@@ -659,7 +659,7 @@ name|result
 argument_list|)
 return|;
 block|}
-comment|/**      * Get a String describing the required field set for this entry type.      *      * @return Description of required field set for storage in preferences or bib file.      */
+comment|/**      * Get a String describing the required field set for this entry type.      *      * @return Description of required field set for storage in preferences or BIB file.      */
 DECL|method|getRequiredFieldsString ()
 specifier|public
 name|String

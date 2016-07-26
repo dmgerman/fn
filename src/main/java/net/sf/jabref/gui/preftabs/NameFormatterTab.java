@@ -662,14 +662,14 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Formatter Name"
+literal|"Formatter name"
 argument_list|)
 else|:
 name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Format String"
+literal|"Format string"
 argument_list|)
 return|;
 block|}
@@ -1029,7 +1029,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Special Name Formatters"
+literal|"Special name formatters"
 argument_list|)
 argument_list|)
 expr_stmt|;

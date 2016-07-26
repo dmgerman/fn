@@ -2761,7 +2761,7 @@ literal|"/program/classes"
 expr_stmt|;
 block|}
 block|}
-comment|// Add OO jars to the classpath:
+comment|// Add OO JARs to the classpath:
 try|try
 block|{
 name|List

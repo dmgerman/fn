@@ -581,7 +581,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * List event, mouse, key and focus listener for the main table that makes up the  * most part of the BasePanel for a single bib database.  */
+comment|/**  * List event, mouse, key and focus listener for the main table that makes up the  * most part of the BasePanel for a single BIB database.  */
 end_comment
 
 begin_class

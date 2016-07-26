@@ -1019,7 +1019,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Subdatabase from aux"
+literal|"Subdatabase from AUX"
 argument_list|)
 argument_list|,
 name|Localization
@@ -1108,7 +1108,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Run Fetcher, e.g. \"--fetch=Medline:cancer\""
+literal|"Run fetcher, e.g. \"--fetch=Medline:cancer\""
 argument_list|)
 argument_list|)
 operator|.

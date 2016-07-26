@@ -2718,7 +2718,7 @@ parameter_list|)
 block|{
 comment|// We need to catch this one here because the OpenOfficePanel class is
 comment|// loaded before connection, and therefore cannot directly reference
-comment|// or catch a DisposedException (which is in a OO jar file).
+comment|// or catch a DisposedException (which is in a OO JAR file).
 throw|throw
 operator|new
 name|ConnectionLostException
@@ -2771,7 +2771,7 @@ parameter_list|)
 block|{
 comment|// We need to catch this one here because the OpenOfficePanel class is
 comment|// loaded before connection, and therefore cannot directly reference
-comment|// or catch a DisposedException (which is in a OO jar file).
+comment|// or catch a DisposedException (which is in a OO JAR file).
 throw|throw
 operator|new
 name|ConnectionLostException

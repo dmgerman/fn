@@ -5483,7 +5483,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Close Others"
+literal|"Close others"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -5497,7 +5497,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Close All"
+literal|"Close all"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -6193,7 +6193,7 @@ name|groupSelector
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * The MacAdapter calls this method when a ".bib" file has been double-clicked from the Finder.      */
+comment|/**      * The MacAdapter calls this method when a "BIB" file has been double-clicked from the Finder.      */
 DECL|method|openAction (String filePath)
 specifier|public
 name|void

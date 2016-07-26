@@ -805,7 +805,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-comment|// If we didn't find a file type from the MIME type, try based on extension:
+comment|// If we did not find a file type from the MIME type, try based on extension:
 name|suffix
 operator|=
 name|getSuffix

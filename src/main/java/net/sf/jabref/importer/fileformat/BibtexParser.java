@@ -1419,7 +1419,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Ill-formed entrytype comment in bib file"
+literal|"Ill-formed entrytype comment in BIB file"
 argument_list|)
 operator|+
 literal|": "
@@ -2511,7 +2511,7 @@ comment|// Multiple author or editor lines are not allowed by the bibtex
 comment|// format, but
 comment|// at least one online database exports bibtex like that, making
 comment|// it inconvenient
-comment|// for users if JabRef didn't accept it.
+comment|// for users if JabRef did not accept it.
 if|if
 condition|(
 name|InternalBibtexFields

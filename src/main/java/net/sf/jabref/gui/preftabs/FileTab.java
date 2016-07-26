@@ -560,7 +560,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Use the bib file location as primary file directory"
+literal|"Use the BIB file location as primary file directory"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -574,7 +574,7 @@ name|lang
 argument_list|(
 literal|"When downloading files, or moving linked files to the "
 operator|+
-literal|"file directory, prefer the bib file location rather than the file directory set above"
+literal|"file directory, prefer the BIB file location rather than the file directory set above"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -768,7 +768,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Curly Brackets"
+literal|"Curly brackets"
 argument_list|)
 operator|+
 literal|": {, }"
@@ -852,7 +852,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Always reformat .bib file on save and export"
+literal|"Always reformat BIB file on save and export"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1228,7 +1228,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Help on Regular Expression Search"
+literal|"Help on regular expression search"
 argument_list|)
 argument_list|,
 name|HelpFile
