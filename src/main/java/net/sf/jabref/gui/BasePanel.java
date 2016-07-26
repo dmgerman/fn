@@ -4948,6 +4948,10 @@ argument_list|,
 literal|false
 argument_list|,
 literal|false
+argument_list|,
+name|Globals
+operator|.
+name|prefs
 argument_list|)
 block|;
 name|insertEntry
@@ -6534,6 +6538,10 @@ name|JabRefPreferences
 operator|.
 name|OVERWRITE_TIME_STAMP
 argument_list|)
+argument_list|,
+name|Globals
+operator|.
+name|prefs
 argument_list|)
 expr_stmt|;
 comment|// We have to clone the
@@ -8512,6 +8520,10 @@ argument_list|,
 literal|true
 argument_list|,
 literal|true
+argument_list|,
+name|Globals
+operator|.
+name|prefs
 argument_list|)
 expr_stmt|;
 comment|// Create an UndoableInsertEntry object.
@@ -9092,6 +9104,10 @@ argument_list|,
 literal|true
 argument_list|,
 literal|true
+argument_list|,
+name|Globals
+operator|.
+name|prefs
 argument_list|)
 expr_stmt|;
 block|}

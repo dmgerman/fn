@@ -2017,7 +2017,7 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Set up field such that double click inserts the current date      * If isDataPicker is True, a button with a data picker is returned      *      * @param editor      * @param isDatePicker      * @return      */
-DECL|method|getDateTimeExtraComponent (FieldEditor editor, Boolean isDatePicker)
+DECL|method|getDateTimeExtraComponent (FieldEditor editor, Boolean isDatePicker, Boolean isoFormat)
 specifier|public
 specifier|static
 name|Optional
@@ -2031,6 +2031,9 @@ name|editor
 parameter_list|,
 name|Boolean
 name|isDatePicker
+parameter_list|,
+name|Boolean
+name|isoFormat
 parameter_list|)
 block|{
 operator|(
@@ -2070,8 +2073,9 @@ comment|// double click
 name|String
 name|date
 init|=
-operator|new
 name|EasyDateFormat
+operator|.
+name|isoDateFormat
 argument_list|()
 operator|.
 name|getCurrentDate
@@ -2102,6 +2106,8 @@ operator|new
 name|DatePickerButton
 argument_list|(
 name|editor
+argument_list|,
+name|isoFormat
 argument_list|)
 decl_stmt|;
 return|return

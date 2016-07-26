@@ -4452,6 +4452,10 @@ name|JabRefPreferences
 operator|.
 name|OVERWRITE_TIME_STAMP
 argument_list|)
+argument_list|,
+name|Globals
+operator|.
+name|prefs
 argument_list|)
 expr_stmt|;
 comment|// Mark entries if we should

@@ -3397,6 +3397,10 @@ argument_list|,
 literal|false
 argument_list|,
 literal|false
+argument_list|,
+name|Globals
+operator|.
+name|prefs
 argument_list|)
 expr_stmt|;
 name|boolean

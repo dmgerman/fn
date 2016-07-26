@@ -1698,6 +1698,10 @@ argument_list|,
 literal|true
 argument_list|,
 literal|true
+argument_list|,
+name|Globals
+operator|.
+name|prefs
 argument_list|)
 expr_stmt|;
 comment|// Create an UndoableInsertEntry object.

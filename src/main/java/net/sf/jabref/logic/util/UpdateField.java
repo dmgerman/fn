@@ -42,18 +42,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|logic
 operator|.
 name|util
@@ -130,17 +118,6 @@ specifier|public
 class|class
 name|UpdateField
 block|{
-DECL|field|DATE_FORMATTER
-specifier|private
-specifier|static
-specifier|final
-name|EasyDateFormat
-name|DATE_FORMATTER
-init|=
-operator|new
-name|EasyDateFormat
-argument_list|()
-decl_stmt|;
 comment|/**      * Updating a field will result in the entry being reformatted on save      *      * @param be         BibEntry      * @param field      Field name      * @param newValue   New field value      */
 DECL|method|updateField (BibEntry be, String field, String newValue)
 specifier|public
@@ -409,7 +386,7 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Sets empty or non-existing owner fields of a bibtex entry to a specified default value. Timestamp field is also      * set. Preferences are checked to see if these options are enabled.      *      * @param entry              The entry to set fields for.      * @param overwriteOwner     Indicates whether owner should be set if it is already set.      * @param overwriteTimestamp Indicates whether timestamp should be set if it is already set.      */
-DECL|method|setAutomaticFields (BibEntry entry, boolean overwriteOwner, boolean overwriteTimestamp)
+DECL|method|setAutomaticFields (BibEntry entry, boolean overwriteOwner, boolean overwriteTimestamp, JabRefPreferences prefs)
 specifier|public
 specifier|static
 name|void
@@ -423,13 +400,14 @@ name|overwriteOwner
 parameter_list|,
 name|boolean
 name|overwriteTimestamp
+parameter_list|,
+name|JabRefPreferences
+name|prefs
 parameter_list|)
 block|{
 name|String
 name|defaultOwner
 init|=
-name|Globals
-operator|.
 name|prefs
 operator|.
 name|get
@@ -442,7 +420,12 @@ decl_stmt|;
 name|String
 name|timestamp
 init|=
-name|DATE_FORMATTER
+name|EasyDateFormat
+operator|.
+name|fromPreferences
+argument_list|(
+name|prefs
+argument_list|)
 operator|.
 name|getCurrentDate
 argument_list|()
@@ -450,8 +433,6 @@ decl_stmt|;
 name|String
 name|timeStampField
 init|=
-name|Globals
-operator|.
 name|prefs
 operator|.
 name|get
@@ -464,8 +445,6 @@ decl_stmt|;
 name|boolean
 name|setOwner
 init|=
-name|Globals
-operator|.
 name|prefs
 operator|.
 name|getBoolean
@@ -494,8 +473,6 @@ decl_stmt|;
 name|boolean
 name|setTimeStamp
 init|=
-name|Globals
-operator|.
 name|prefs
 operator|.
 name|getBoolean
@@ -596,7 +573,7 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * Sets empty or non-existing owner fields of bibtex entries inside a List to a specified default value. Timestamp      * field is also set. Preferences are checked to see if these options are enabled.      *      * @param bibs List of bibtex entries      */
-DECL|method|setAutomaticFields (Collection<BibEntry> bibs, boolean overwriteOwner, boolean overwriteTimestamp)
+DECL|method|setAutomaticFields (Collection<BibEntry> bibs, boolean overwriteOwner, boolean overwriteTimestamp, JabRefPreferences prefs)
 specifier|public
 specifier|static
 name|void
@@ -613,13 +590,14 @@ name|overwriteOwner
 parameter_list|,
 name|boolean
 name|overwriteTimestamp
+parameter_list|,
+name|JabRefPreferences
+name|prefs
 parameter_list|)
 block|{
 name|boolean
 name|globalSetOwner
 init|=
-name|Globals
-operator|.
 name|prefs
 operator|.
 name|getBoolean
@@ -632,8 +610,6 @@ decl_stmt|;
 name|boolean
 name|globalSetTimeStamp
 init|=
-name|Globals
-operator|.
 name|prefs
 operator|.
 name|getBoolean
@@ -659,8 +635,6 @@ block|}
 name|String
 name|timeStampField
 init|=
-name|Globals
-operator|.
 name|prefs
 operator|.
 name|get
@@ -673,8 +647,6 @@ decl_stmt|;
 name|String
 name|defaultOwner
 init|=
-name|Globals
-operator|.
 name|prefs
 operator|.
 name|get
@@ -687,7 +659,12 @@ decl_stmt|;
 name|String
 name|timestamp
 init|=
-name|DATE_FORMATTER
+name|EasyDateFormat
+operator|.
+name|fromPreferences
+argument_list|(
+name|prefs
+argument_list|)
 operator|.
 name|getCurrentDate
 argument_list|()

@@ -54,9 +54,11 @@ begin_import
 import|import
 name|java
 operator|.
-name|text
+name|time
 operator|.
-name|SimpleDateFormat
+name|format
+operator|.
+name|DateTimeFormatter
 import|;
 end_import
 
@@ -2191,8 +2193,9 @@ block|{
 try|try
 block|{
 comment|// Test if date format is legal:
-operator|new
-name|SimpleDateFormat
+name|DateTimeFormatter
+operator|.
+name|ofPattern
 argument_list|(
 name|timeStampFormat
 operator|.
