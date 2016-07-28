@@ -381,6 +381,8 @@ name|entry0
 argument_list|,
 literal|"auth"
 argument_list|)
+argument_list|,
+literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -424,6 +426,8 @@ name|entry
 argument_list|,
 literal|"authors3"
 argument_list|)
+argument_list|,
+literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -462,6 +466,8 @@ name|entry
 argument_list|,
 literal|"auth"
 argument_list|)
+argument_list|,
+literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -501,6 +507,8 @@ name|entry0
 argument_list|,
 literal|"auth3"
 argument_list|)
+argument_list|,
+literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -529,6 +537,8 @@ name|entry0
 argument_list|,
 literal|"auth3"
 argument_list|)
+argument_list|,
+literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -557,6 +567,8 @@ name|entry0
 argument_list|,
 literal|"auth3"
 argument_list|)
+argument_list|,
+literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -585,6 +597,8 @@ name|entry0
 argument_list|,
 literal|"auth3"
 argument_list|)
+argument_list|,
+literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -613,6 +627,8 @@ name|entry0
 argument_list|,
 literal|"auth3"
 argument_list|)
+argument_list|,
+literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -641,6 +657,8 @@ name|entry0
 argument_list|,
 literal|"auth3"
 argument_list|)
+argument_list|,
+literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -669,6 +687,8 @@ name|entry0
 argument_list|,
 literal|"auth3"
 argument_list|)
+argument_list|,
+literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -697,6 +717,8 @@ name|entry0
 argument_list|,
 literal|"auth3"
 argument_list|)
+argument_list|,
+literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -725,6 +747,8 @@ name|entry0
 argument_list|,
 literal|"auth3"
 argument_list|)
+argument_list|,
+literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -753,6 +777,8 @@ name|entry0
 argument_list|,
 literal|"auth3"
 argument_list|)
+argument_list|,
+literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -781,6 +807,8 @@ name|entry0
 argument_list|,
 literal|"auth3"
 argument_list|)
+argument_list|,
+literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -809,6 +837,8 @@ name|entry0
 argument_list|,
 literal|"auth3"
 argument_list|)
+argument_list|,
+literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -848,6 +878,8 @@ name|entry0
 argument_list|,
 literal|"auth3"
 argument_list|)
+argument_list|,
+literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -876,6 +908,8 @@ name|entry0
 argument_list|,
 literal|"auth3"
 argument_list|)
+argument_list|,
+literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -904,6 +938,8 @@ name|entry0
 argument_list|,
 literal|"auth3"
 argument_list|)
+argument_list|,
+literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -932,6 +968,8 @@ name|entry0
 argument_list|,
 literal|"auth3"
 argument_list|)
+argument_list|,
+literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -960,6 +998,8 @@ name|entry0
 argument_list|,
 literal|"auth3"
 argument_list|)
+argument_list|,
+literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -997,6 +1037,8 @@ operator|.
 name|checkLegalKey
 argument_list|(
 name|accents
+argument_list|,
+literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1017,6 +1059,8 @@ operator|.
 name|checkLegalKey
 argument_list|(
 name|accents
+argument_list|,
+literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1037,6 +1081,8 @@ operator|.
 name|checkLegalKey
 argument_list|(
 name|accents
+argument_list|,
+literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1057,6 +1103,8 @@ operator|.
 name|checkLegalKey
 argument_list|(
 name|accents
+argument_list|,
+literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1077,6 +1125,8 @@ operator|.
 name|checkLegalKey
 argument_list|(
 name|accents
+argument_list|,
+literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1098,6 +1148,8 @@ operator|.
 name|checkLegalKey
 argument_list|(
 name|accents
+argument_list|,
+literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1118,6 +1170,8 @@ operator|.
 name|checkLegalKey
 argument_list|(
 name|accents
+argument_list|,
+literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1138,6 +1192,8 @@ operator|.
 name|checkLegalKey
 argument_list|(
 name|accents
+argument_list|,
+literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1158,6 +1214,8 @@ operator|.
 name|checkLegalKey
 argument_list|(
 name|accents
+argument_list|,
+literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1178,6 +1236,8 @@ operator|.
 name|checkLegalKey
 argument_list|(
 name|accents
+argument_list|,
+literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1224,6 +1284,8 @@ operator|.
 name|checkLegalKey
 argument_list|(
 name|totest
+argument_list|,
+literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1343,6 +1405,8 @@ name|entry
 argument_list|,
 literal|"auth"
 argument_list|)
+argument_list|,
+literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1381,6 +1445,8 @@ name|entry
 argument_list|,
 literal|"auth"
 argument_list|)
+argument_list|,
+literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1419,6 +1485,8 @@ name|entry
 argument_list|,
 literal|"auth"
 argument_list|)
+argument_list|,
+literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1457,6 +1525,8 @@ name|entry
 argument_list|,
 literal|"auth"
 argument_list|)
+argument_list|,
+literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -3409,16 +3479,6 @@ operator|.
 name|checkLegalKey
 argument_list|(
 literal|null
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertNull
-argument_list|(
-name|LabelPatternUtil
-operator|.
-name|checkLegalKey
-argument_list|(
-literal|null
 argument_list|,
 literal|true
 argument_list|)
@@ -3446,6 +3506,17 @@ operator|.
 name|checkLegalKey
 argument_list|(
 literal|"AA AA"
+argument_list|,
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|ENFORCE_LEGAL_BIBTEX_KEY
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -3458,6 +3529,17 @@ operator|.
 name|checkLegalKey
 argument_list|(
 literal|"\n\t\r"
+argument_list|,
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|ENFORCE_LEGAL_BIBTEX_KEY
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;

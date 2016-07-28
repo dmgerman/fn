@@ -1170,6 +1170,17 @@ name|parts
 index|[
 literal|1
 index|]
+argument_list|,
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|ENFORCE_LEGAL_BIBTEX_KEY
+argument_list|)
 argument_list|)
 decl_stmt|;
 if|if

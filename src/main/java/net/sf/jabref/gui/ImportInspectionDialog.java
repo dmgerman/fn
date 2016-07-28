@@ -926,6 +926,22 @@ name|logic
 operator|.
 name|labelpattern
 operator|.
+name|LabelPatternPreferences
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|labelpattern
+operator|.
 name|LabelPatternUtil
 import|;
 end_import
@@ -3385,9 +3401,14 @@ name|database
 argument_list|,
 name|entry
 argument_list|,
+name|LabelPatternPreferences
+operator|.
+name|fromPreferences
+argument_list|(
 name|Globals
 operator|.
 name|prefs
+argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Remove the entry from the database again, since we only added it in
@@ -3542,9 +3563,14 @@ name|database
 argument_list|,
 name|entry
 argument_list|,
+name|LabelPatternPreferences
+operator|.
+name|fromPreferences
+argument_list|(
 name|Globals
 operator|.
 name|prefs
+argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Add the generated key to our list:
