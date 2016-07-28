@@ -124,6 +124,24 @@ name|TAG_END
 init|=
 literal|"</span>"
 decl_stmt|;
+DECL|field|HTML_START
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|HTML_START
+init|=
+literal|"<html><body>"
+decl_stmt|;
+DECL|field|HTML_END
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|HTML_END
+init|=
+literal|"</body></html>"
+decl_stmt|;
 DECL|method|generateDiffHighlighting (String baseString, String modifiedString, String separator)
 specifier|public
 specifier|static
