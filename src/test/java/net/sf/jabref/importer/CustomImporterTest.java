@@ -558,7 +558,13 @@ name|importer
 operator|.
 name|compareTo
 argument_list|(
-name|importer
+operator|new
+name|CustomImporter
+argument_list|(
+operator|new
+name|CopacImporter
+argument_list|()
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
