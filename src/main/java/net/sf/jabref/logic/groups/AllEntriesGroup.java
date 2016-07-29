@@ -213,7 +213,10 @@ parameter_list|)
 block|{
 comment|// not supported -> ignore
 return|return
-literal|null
+name|Optional
+operator|.
+name|empty
+argument_list|()
 return|;
 block|}
 annotation|@
@@ -235,7 +238,10 @@ parameter_list|)
 block|{
 comment|// not supported -> ignore
 return|return
-literal|null
+name|Optional
+operator|.
+name|empty
+argument_list|()
 return|;
 block|}
 annotation|@

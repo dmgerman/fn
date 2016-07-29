@@ -2458,13 +2458,14 @@ if|if
 condition|(
 operator|(
 name|hashCount
-operator|%
-literal|2
+operator|&
+literal|1
 operator|)
 operator|==
 literal|1
 condition|)
 block|{
+comment|// Check if odd
 name|results
 operator|.
 name|add
