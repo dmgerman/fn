@@ -2720,7 +2720,7 @@ literal|0
 argument_list|,
 name|parsedSerialization
 operator|.
-name|indexOf
+name|lastIndexOf
 argument_list|(
 literal|'@'
 argument_list|)
