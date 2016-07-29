@@ -1518,10 +1518,6 @@ init|=
 operator|new
 name|URLDownload
 argument_list|(
-name|GoogleScholarFetcher
-operator|.
-name|URL_START
-operator|+
 name|link
 argument_list|)
 operator|.
