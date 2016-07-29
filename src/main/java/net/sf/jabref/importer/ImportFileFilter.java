@@ -271,6 +271,17 @@ parameter_list|)
 block|{
 if|if
 condition|(
+name|this
+operator|==
+name|o
+condition|)
+block|{
+return|return
+literal|true
+return|;
+block|}
+if|if
+condition|(
 name|o
 operator|instanceof
 name|ImportFileFilter
