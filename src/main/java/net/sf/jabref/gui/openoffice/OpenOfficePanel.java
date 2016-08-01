@@ -34,6 +34,16 @@ name|java
 operator|.
 name|awt
 operator|.
+name|Dimension
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|awt
+operator|.
 name|event
 operator|.
 name|ActionEvent
@@ -1044,7 +1054,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Generate new BIB database"
+literal|"Export cited"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -1209,6 +1219,32 @@ literal|"Manual connect"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|connect
+operator|.
+name|setPreferredSize
+argument_list|(
+operator|new
+name|Dimension
+argument_list|(
+literal|24
+argument_list|,
+literal|24
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|manualConnect
+operator|.
+name|setPreferredSize
+argument_list|(
+operator|new
+name|Dimension
+argument_list|(
+literal|24
+argument_list|,
+literal|24
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|selectDocument
 operator|=
 operator|new
@@ -1236,6 +1272,19 @@ literal|"Select Writer document"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|selectDocument
+operator|.
+name|setPreferredSize
+argument_list|(
+operator|new
+name|Dimension
+argument_list|(
+literal|24
+argument_list|,
+literal|24
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|update
 operator|=
 operator|new
@@ -1260,6 +1309,19 @@ operator|.
 name|lang
 argument_list|(
 literal|"Sync OpenOffice/LibreOffice bibliography"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|update
+operator|.
+name|setPreferredSize
+argument_list|(
+operator|new
+name|Dimension
+argument_list|(
+literal|24
+argument_list|,
+literal|24
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2372,9 +2434,7 @@ argument_list|(
 operator|new
 name|FormLayout
 argument_list|(
-literal|"fill:pref:grow, 1dlu, fill:pref:grow, 1dlu, fill:pref:grow, "
-operator|+
-literal|"1dlu, fill:pref:grow, 1dlu, fill:pref:grow"
+literal|"fill:pref:grow, 1dlu, fill:pref:grow, 1dlu, fill:pref:grow, 1dlu, fill:pref:grow, 1dlu, fill:pref"
 argument_list|,
 literal|"pref"
 argument_list|)
@@ -3042,12 +3102,26 @@ block|}
 elseif|else
 if|if
 condition|(
-operator|!
 name|adp
 operator|.
 name|canceled
 argument_list|()
 condition|)
+block|{
+name|frame
+operator|.
+name|setStatus
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Operation canceled."
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+else|else
 block|{
 name|JOptionPane
 operator|.
@@ -3072,21 +3146,6 @@ argument_list|,
 name|JOptionPane
 operator|.
 name|ERROR_MESSAGE
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-name|frame
-operator|.
-name|setStatus
-argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Operation canceled."
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
