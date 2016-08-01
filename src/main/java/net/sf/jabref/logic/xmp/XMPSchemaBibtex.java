@@ -228,20 +228,6 @@ end_import
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|preferences
-operator|.
-name|JabRefPreferences
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -1403,13 +1389,16 @@ return|return
 name|result
 return|;
 block|}
-DECL|method|setBibtexEntry (BibEntry entry)
+DECL|method|setBibtexEntry (BibEntry entry, XMPPreferences xmpPreferences)
 specifier|public
 name|void
 name|setBibtexEntry
 parameter_list|(
 name|BibEntry
 name|entry
+parameter_list|,
+name|XMPPreferences
+name|xmpPreferences
 parameter_list|)
 block|{
 name|setBibtexEntry
@@ -1417,11 +1406,13 @@ argument_list|(
 name|entry
 argument_list|,
 literal|null
+argument_list|,
+name|xmpPreferences
 argument_list|)
 expr_stmt|;
 block|}
 comment|/**      *      * @param entry      * @param database maybenull      */
-DECL|method|setBibtexEntry (BibEntry entry, BibDatabase database)
+DECL|method|setBibtexEntry (BibEntry entry, BibDatabase database, XMPPreferences xmpPreferences)
 specifier|public
 name|void
 name|setBibtexEntry
@@ -1431,6 +1422,9 @@ name|entry
 parameter_list|,
 name|BibDatabase
 name|database
+parameter_list|,
+name|XMPPreferences
+name|xmpPreferences
 parameter_list|)
 block|{
 comment|// Set all the values including key and entryType
@@ -1445,24 +1439,12 @@ operator|.
 name|getFieldNames
 argument_list|()
 decl_stmt|;
-name|JabRefPreferences
-name|prefs
-init|=
-name|JabRefPreferences
-operator|.
-name|getInstance
-argument_list|()
-decl_stmt|;
 if|if
 condition|(
-name|prefs
+name|xmpPreferences
 operator|.
-name|getBoolean
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|USE_XMP_PRIVACY_FILTER
-argument_list|)
+name|isUseXMPPrivacyFilter
+argument_list|()
 condition|)
 block|{
 name|Set
@@ -1475,14 +1457,10 @@ operator|new
 name|TreeSet
 argument_list|<>
 argument_list|(
-name|prefs
+name|xmpPreferences
 operator|.
-name|getStringList
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|XMP_PRIVACY_FILTERS
-argument_list|)
+name|getXmpPrivacyFilter
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|fields

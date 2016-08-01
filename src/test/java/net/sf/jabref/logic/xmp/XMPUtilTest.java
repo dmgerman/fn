@@ -278,6 +278,20 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|cli
+operator|.
+name|XMPUtilMain
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|importer
 operator|.
 name|ParserResult
@@ -695,6 +709,11 @@ argument_list|<
 name|String
 argument_list|>
 name|privacyFilters
+decl_stmt|;
+DECL|field|xmpPreferences
+specifier|private
+name|XMPPreferences
+name|xmpPreferences
 decl_stmt|;
 comment|/**      * Wrap bibtex-data (<bibtex:author>...) into an rdf:Description.      *      * @param bibtex      * @return      */
 DECL|method|bibtexDescription (String bibtex)
@@ -1456,6 +1475,17 @@ name|getInstance
 argument_list|()
 expr_stmt|;
 block|}
+name|xmpPreferences
+operator|=
+name|XMPPreferences
+operator|.
+name|fromPreferences
+argument_list|(
+name|Globals
+operator|.
+name|prefs
+argument_list|)
+expr_stmt|;
 comment|// Store Privacy Settings
 name|prefs
 operator|=
@@ -1582,9 +1612,7 @@ operator|.
 name|getAbsoluteFile
 argument_list|()
 argument_list|,
-name|Globals
-operator|.
-name|prefs
+name|xmpPreferences
 argument_list|)
 decl_stmt|;
 name|Assert
@@ -1733,9 +1761,7 @@ operator|.
 name|getAbsoluteFile
 argument_list|()
 argument_list|,
-name|Globals
-operator|.
-name|prefs
+name|xmpPreferences
 argument_list|)
 decl_stmt|;
 name|Assert
@@ -1888,6 +1914,13 @@ argument_list|,
 name|e
 argument_list|,
 literal|null
+argument_list|,
+name|XMPPreferences
+operator|.
+name|fromPreferences
+argument_list|(
+name|prefs
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|List
@@ -1905,9 +1938,12 @@ operator|.
 name|getAbsoluteFile
 argument_list|()
 argument_list|,
-name|Globals
+name|XMPPreferences
 operator|.
+name|fromPreferences
+argument_list|(
 name|prefs
+argument_list|)
 argument_list|)
 decl_stmt|;
 name|Assert
@@ -2014,6 +2050,13 @@ argument_list|,
 name|e
 argument_list|,
 literal|null
+argument_list|,
+name|XMPPreferences
+operator|.
+name|fromPreferences
+argument_list|(
+name|prefs
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|List
@@ -2031,9 +2074,12 @@ operator|.
 name|getAbsoluteFile
 argument_list|()
 argument_list|,
-name|Globals
+name|XMPPreferences
 operator|.
+name|fromPreferences
+argument_list|(
 name|prefs
+argument_list|)
 argument_list|)
 decl_stmt|;
 name|Assert
@@ -2198,9 +2244,7 @@ operator|.
 name|getAbsoluteFile
 argument_list|()
 argument_list|,
-name|Globals
-operator|.
-name|prefs
+name|xmpPreferences
 argument_list|)
 decl_stmt|;
 name|Assert
@@ -2341,9 +2385,7 @@ operator|.
 name|getAbsoluteFile
 argument_list|()
 argument_list|,
-name|Globals
-operator|.
-name|prefs
+name|xmpPreferences
 argument_list|)
 decl_stmt|;
 name|Assert
@@ -2733,6 +2775,8 @@ argument_list|,
 name|e
 argument_list|,
 literal|null
+argument_list|,
+name|xmpPreferences
 argument_list|)
 expr_stmt|;
 name|List
@@ -2750,9 +2794,7 @@ operator|.
 name|getAbsoluteFile
 argument_list|()
 argument_list|,
-name|Globals
-operator|.
-name|prefs
+name|xmpPreferences
 argument_list|)
 decl_stmt|;
 name|Assert
@@ -2845,9 +2887,7 @@ operator|.
 name|getAbsoluteFile
 argument_list|()
 argument_list|,
-name|Globals
-operator|.
-name|prefs
+name|xmpPreferences
 argument_list|)
 decl_stmt|;
 name|Assert
@@ -2984,9 +3024,7 @@ operator|.
 name|getAbsoluteFile
 argument_list|()
 argument_list|,
-name|Globals
-operator|.
-name|prefs
+name|xmpPreferences
 argument_list|)
 decl_stmt|;
 name|Assert
@@ -3048,9 +3086,7 @@ name|readXMP
 argument_list|(
 name|pdfFile
 argument_list|,
-name|Globals
-operator|.
-name|prefs
+name|xmpPreferences
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -3145,9 +3181,7 @@ name|readXMP
 argument_list|(
 name|pdfFile
 argument_list|,
-name|Globals
-operator|.
-name|prefs
+name|xmpPreferences
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -3231,9 +3265,7 @@ name|readXMP
 argument_list|(
 name|pdfFile
 argument_list|,
-name|Globals
-operator|.
-name|prefs
+name|xmpPreferences
 argument_list|)
 operator|.
 name|size
@@ -3252,6 +3284,8 @@ name|t1BibtexEntry
 argument_list|()
 argument_list|,
 literal|null
+argument_list|,
+name|xmpPreferences
 argument_list|)
 expr_stmt|;
 name|List
@@ -3269,9 +3303,7 @@ operator|.
 name|getAbsoluteFile
 argument_list|()
 argument_list|,
-name|Globals
-operator|.
-name|prefs
+name|xmpPreferences
 argument_list|)
 decl_stmt|;
 name|Assert
@@ -3884,6 +3916,8 @@ argument_list|,
 name|toSet
 argument_list|,
 literal|null
+argument_list|,
+name|xmpPreferences
 argument_list|)
 expr_stmt|;
 name|List
@@ -3901,9 +3935,7 @@ operator|.
 name|getAbsoluteFile
 argument_list|()
 argument_list|,
-name|Globals
-operator|.
-name|prefs
+name|xmpPreferences
 argument_list|)
 decl_stmt|;
 name|Assert
@@ -4595,6 +4627,8 @@ argument_list|,
 name|e
 argument_list|,
 literal|null
+argument_list|,
+name|xmpPreferences
 argument_list|)
 expr_stmt|;
 name|List
@@ -4612,9 +4646,7 @@ operator|.
 name|getAbsoluteFile
 argument_list|()
 argument_list|,
-name|Globals
-operator|.
-name|prefs
+name|xmpPreferences
 argument_list|)
 decl_stmt|;
 name|Assert
@@ -4904,6 +4936,8 @@ argument_list|(
 name|c
 argument_list|,
 literal|null
+argument_list|,
+name|xmpPreferences
 argument_list|)
 decl_stmt|;
 comment|/* Test minimal syntaxical completeness */
@@ -5091,9 +5125,7 @@ name|readXMP
 argument_list|(
 name|pdfFile
 argument_list|,
-name|Globals
-operator|.
-name|prefs
+name|xmpPreferences
 argument_list|)
 decl_stmt|;
 name|Assert
@@ -5306,9 +5338,7 @@ name|readXMP
 argument_list|(
 name|pdfFile
 argument_list|,
-name|Globals
-operator|.
-name|prefs
+name|xmpPreferences
 argument_list|)
 decl_stmt|;
 name|Assert
@@ -5444,6 +5474,8 @@ argument_list|,
 literal|null
 argument_list|,
 literal|false
+argument_list|,
+name|xmpPreferences
 argument_list|)
 expr_stmt|;
 name|l
@@ -5454,9 +5486,7 @@ name|readXMP
 argument_list|(
 name|pdfFile
 argument_list|,
-name|Globals
-operator|.
-name|prefs
+name|xmpPreferences
 argument_list|)
 expr_stmt|;
 name|Assert
@@ -5577,9 +5607,7 @@ name|hasMetadata
 argument_list|(
 name|is
 argument_list|,
-name|Globals
-operator|.
-name|prefs
+name|xmpPreferences
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -5629,9 +5657,7 @@ name|readXMP
 argument_list|(
 name|is
 argument_list|,
-name|Globals
-operator|.
-name|prefs
+name|xmpPreferences
 argument_list|)
 decl_stmt|;
 name|BibEntry
@@ -5726,6 +5752,8 @@ argument_list|,
 literal|null
 argument_list|,
 literal|true
+argument_list|,
+name|xmpPreferences
 argument_list|)
 expr_stmt|;
 try|try
@@ -6199,9 +6227,7 @@ name|getBibtexEntryFromDublinCore
 argument_list|(
 name|dcSchema
 argument_list|,
-name|Globals
-operator|.
-name|prefs
+name|xmpPreferences
 argument_list|)
 operator|.
 name|get
@@ -6255,6 +6281,8 @@ argument_list|,
 literal|null
 argument_list|,
 literal|true
+argument_list|,
+name|xmpPreferences
 argument_list|)
 expr_stmt|;
 try|try
@@ -6727,9 +6755,7 @@ name|getBibtexEntryFromDublinCore
 argument_list|(
 name|dcSchema
 argument_list|,
-name|Globals
-operator|.
-name|prefs
+name|xmpPreferences
 argument_list|)
 operator|.
 name|get
@@ -6827,6 +6853,8 @@ argument_list|,
 name|e
 argument_list|,
 literal|null
+argument_list|,
+name|xmpPreferences
 argument_list|)
 expr_stmt|;
 name|Optional
@@ -7170,7 +7198,7 @@ name|s
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|XMPUtil
+name|XMPUtilMain
 operator|.
 name|main
 argument_list|(
@@ -7220,9 +7248,7 @@ name|readXMP
 argument_list|(
 name|pdfFile
 argument_list|,
-name|Globals
-operator|.
-name|prefs
+name|xmpPreferences
 argument_list|)
 decl_stmt|;
 name|Assert
@@ -7312,6 +7338,8 @@ argument_list|,
 name|e
 argument_list|,
 literal|null
+argument_list|,
+name|xmpPreferences
 argument_list|)
 expr_stmt|;
 try|try
@@ -7342,7 +7370,7 @@ name|s
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|XMPUtil
+name|XMPUtilMain
 operator|.
 name|main
 argument_list|(
@@ -7448,6 +7476,8 @@ argument_list|,
 name|e
 argument_list|,
 literal|null
+argument_list|,
+name|xmpPreferences
 argument_list|)
 expr_stmt|;
 try|try
@@ -7478,7 +7508,7 @@ name|s
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|XMPUtil
+name|XMPUtilMain
 operator|.
 name|main
 argument_list|(
@@ -7700,9 +7730,7 @@ name|readXMP
 argument_list|(
 name|pdfFile
 argument_list|,
-name|Globals
-operator|.
-name|prefs
+name|xmpPreferences
 argument_list|)
 decl_stmt|;
 name|Assert
@@ -7823,7 +7851,7 @@ name|s
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|XMPUtil
+name|XMPUtilMain
 operator|.
 name|main
 argument_list|(
@@ -7869,9 +7897,7 @@ name|readXMP
 argument_list|(
 name|pdfFile
 argument_list|,
-name|Globals
-operator|.
-name|prefs
+name|xmpPreferences
 argument_list|)
 decl_stmt|;
 name|Assert
@@ -7931,7 +7957,7 @@ argument_list|)
 expr_stmt|;
 try|try
 block|{
-name|XMPUtil
+name|XMPUtilMain
 operator|.
 name|main
 argument_list|(
@@ -7978,9 +8004,7 @@ name|readXMP
 argument_list|(
 name|pdfFile
 argument_list|,
-name|Globals
-operator|.
-name|prefs
+name|xmpPreferences
 argument_list|)
 decl_stmt|;
 name|Assert
@@ -8126,7 +8150,7 @@ name|s
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|XMPUtil
+name|XMPUtilMain
 operator|.
 name|main
 argument_list|(
@@ -8166,9 +8190,7 @@ name|readXMP
 argument_list|(
 name|pdfFile
 argument_list|,
-name|Globals
-operator|.
-name|prefs
+name|xmpPreferences
 argument_list|)
 decl_stmt|;
 name|Assert
@@ -8410,6 +8432,8 @@ name|original
 operator|.
 name|getDatabase
 argument_list|()
+argument_list|,
+name|xmpPreferences
 argument_list|)
 expr_stmt|;
 name|List
@@ -8427,9 +8451,7 @@ operator|.
 name|getAbsoluteFile
 argument_list|()
 argument_list|,
-name|Globals
-operator|.
-name|prefs
+name|xmpPreferences
 argument_list|)
 decl_stmt|;
 name|Assert
@@ -8523,9 +8545,7 @@ name|readXMP
 argument_list|(
 name|is
 argument_list|,
-name|Globals
-operator|.
-name|prefs
+name|xmpPreferences
 argument_list|)
 expr_stmt|;
 block|}
@@ -8562,6 +8582,8 @@ name|t1BibtexEntry
 argument_list|()
 argument_list|,
 literal|null
+argument_list|,
+name|xmpPreferences
 argument_list|)
 expr_stmt|;
 block|}
@@ -8658,6 +8680,8 @@ name|result
 operator|.
 name|getDatabase
 argument_list|()
+argument_list|,
+name|xmpPreferences
 argument_list|)
 expr_stmt|;
 comment|// Test whether we the main function can load the bibtex correctly
@@ -8670,9 +8694,7 @@ name|readXMP
 argument_list|(
 name|pdfFile
 argument_list|,
-name|Globals
-operator|.
-name|prefs
+name|xmpPreferences
 argument_list|)
 operator|.
 name|get
@@ -8948,9 +8970,7 @@ name|getBibtexEntryFromDublinCore
 argument_list|(
 name|dcSchema
 argument_list|,
-name|Globals
-operator|.
-name|prefs
+name|xmpPreferences
 argument_list|)
 operator|.
 name|get
