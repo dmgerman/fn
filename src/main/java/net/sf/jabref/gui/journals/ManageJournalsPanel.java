@@ -3202,7 +3202,10 @@ literal|"user.home"
 argument_list|)
 argument_list|)
 argument_list|,
-literal|null
+name|Collections
+operator|.
+name|emptyList
+argument_list|()
 argument_list|,
 name|JFileChooser
 operator|.
