@@ -52,16 +52,6 @@ name|java
 operator|.
 name|awt
 operator|.
-name|EventQueue
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|awt
-operator|.
 name|Rectangle
 import|;
 end_import
