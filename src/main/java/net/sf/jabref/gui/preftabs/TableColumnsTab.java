@@ -1042,7 +1042,7 @@ return|return
 literal|""
 return|;
 block|}
-name|Object
+name|TableRow
 name|rowContent
 init|=
 name|tableRows
@@ -1063,14 +1063,6 @@ return|return
 literal|""
 return|;
 block|}
-name|TableRow
-name|tr
-init|=
-operator|(
-name|TableRow
-operator|)
-name|rowContent
-decl_stmt|;
 comment|// Only two columns
 if|if
 condition|(
@@ -1080,7 +1072,7 @@ literal|0
 condition|)
 block|{
 return|return
-name|tr
+name|rowContent
 operator|.
 name|getName
 argument_list|()
@@ -1089,7 +1081,7 @@ block|}
 else|else
 block|{
 return|return
-name|tr
+name|rowContent
 operator|.
 name|getLength
 argument_list|()
@@ -1100,7 +1092,7 @@ name|Integer
 operator|.
 name|toString
 argument_list|(
-name|tr
+name|rowContent
 operator|.
 name|getLength
 argument_list|()

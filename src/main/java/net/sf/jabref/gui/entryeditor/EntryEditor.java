@@ -8185,7 +8185,7 @@ expr_stmt|;
 comment|// This is a partial clone of net.sf.jabref.gui.BasePanel.setupActions().new AbstractWorker() {...}.run()
 comment|// this updates the table automatically, on close, but not
 comment|// within the tab
-name|Object
+name|String
 name|oldValue
 init|=
 name|entry
@@ -8372,9 +8372,6 @@ argument_list|()
 argument_list|,
 name|entry
 argument_list|,
-operator|(
-name|String
-operator|)
 name|oldValue
 argument_list|,
 name|entry

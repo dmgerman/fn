@@ -1249,7 +1249,7 @@ condition|(
 name|isChapter
 condition|)
 block|{
-name|Object
+name|String
 name|titleO
 init|=
 name|h
@@ -1271,12 +1271,7 @@ block|{
 name|String
 name|title
 init|=
-operator|(
-operator|(
-name|String
-operator|)
 name|titleO
-operator|)
 operator|.
 name|trim
 argument_list|()

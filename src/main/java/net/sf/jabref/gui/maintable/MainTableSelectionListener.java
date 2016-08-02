@@ -946,7 +946,7 @@ operator|.
 name|getSourceList
 argument_list|()
 decl_stmt|;
-name|Object
+name|BibEntry
 name|newSelected
 init|=
 literal|null
@@ -1024,9 +1024,6 @@ specifier|final
 name|BibEntry
 name|toShow
 init|=
-operator|(
-name|BibEntry
-operator|)
 name|newSelected
 decl_stmt|;
 specifier|final

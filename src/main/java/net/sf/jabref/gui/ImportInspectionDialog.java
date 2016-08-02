@@ -5152,7 +5152,7 @@ argument_list|()
 decl_stmt|;
 name|List
 argument_list|<
-name|Object
+name|BibEntry
 argument_list|>
 name|toRemove
 init|=
@@ -5186,8 +5186,8 @@ try|try
 block|{
 for|for
 control|(
-name|Object
-name|o
+name|BibEntry
+name|entry
 range|:
 name|toRemove
 control|)
@@ -5196,7 +5196,7 @@ name|entries
 operator|.
 name|remove
 argument_list|(
-name|o
+name|entry
 argument_list|)
 expr_stmt|;
 block|}

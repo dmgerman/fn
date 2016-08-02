@@ -497,8 +497,8 @@ name|String
 name|fieldType
 parameter_list|)
 block|{
-name|Object
-name|o
+name|JLabel
+name|label
 init|=
 name|GUIGlobals
 operator|.
@@ -511,7 +511,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|o
+name|label
 operator|==
 literal|null
 condition|)
@@ -534,10 +534,7 @@ block|}
 else|else
 block|{
 return|return
-operator|(
-name|JLabel
-operator|)
-name|o
+name|label
 return|;
 block|}
 block|}

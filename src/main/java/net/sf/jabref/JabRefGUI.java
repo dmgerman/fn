@@ -814,14 +814,14 @@ name|Iterator
 argument_list|<
 name|ParserResult
 argument_list|>
-name|i
+name|parserResultIterator
 init|=
 name|loaded
 operator|.
 name|iterator
 argument_list|()
 init|;
-name|i
+name|parserResultIterator
 operator|.
 name|hasNext
 argument_list|()
@@ -831,7 +831,7 @@ block|{
 name|ParserResult
 name|pr
 init|=
-name|i
+name|parserResultIterator
 operator|.
 name|next
 argument_list|()
@@ -875,7 +875,7 @@ argument_list|(
 name|pr
 argument_list|)
 expr_stmt|;
-name|i
+name|parserResultIterator
 operator|.
 name|remove
 argument_list|()
@@ -931,7 +931,7 @@ block|}
 block|}
 else|else
 block|{
-name|i
+name|parserResultIterator
 operator|.
 name|remove
 argument_list|()

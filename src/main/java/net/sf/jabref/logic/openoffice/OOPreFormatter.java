@@ -562,7 +562,7 @@ operator|.
 name|toString
 argument_list|()
 decl_stmt|;
-name|Object
+name|String
 name|result
 init|=
 name|OOPreFormatter
@@ -596,9 +596,6 @@ name|sb
 operator|.
 name|append
 argument_list|(
-operator|(
-name|String
-operator|)
 name|result
 argument_list|)
 expr_stmt|;
