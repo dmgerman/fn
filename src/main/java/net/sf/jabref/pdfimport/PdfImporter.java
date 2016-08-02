@@ -66,16 +66,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Arrays
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|Collections
 import|;
 end_import
@@ -724,13 +714,15 @@ return|;
 block|}
 block|}
 comment|/**      *      * Imports the PDF files given by fileNames      *      * @param fileNames states the names of the files to import      * @return list of successful created BibTeX entries and list of non-PDF files      */
-DECL|method|importPdfFiles (String[] fileNames)
+DECL|method|importPdfFiles (List<String> fileNames)
 specifier|public
 name|ImportPdfFilesResult
 name|importPdfFiles
 parameter_list|(
+name|List
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|fileNames
 parameter_list|)
 block|{
@@ -747,12 +739,7 @@ operator|new
 name|ArrayList
 argument_list|<>
 argument_list|(
-name|Arrays
-operator|.
-name|asList
-argument_list|(
 name|fileNames
-argument_list|)
 argument_list|)
 decl_stmt|;
 name|List
@@ -816,7 +803,7 @@ name|BibEntry
 argument_list|>
 name|entries
 init|=
-name|importPdfFiles
+name|importPdfFilesInternal
 argument_list|(
 name|files
 argument_list|)
@@ -832,13 +819,13 @@ argument_list|)
 return|;
 block|}
 comment|/**      * @param fileNames - PDF files to import      * @return true if the import succeeded, false otherwise      */
-DECL|method|importPdfFiles (List<String> fileNames)
+DECL|method|importPdfFilesInternal (List<String> fileNames)
 specifier|private
 name|List
 argument_list|<
 name|BibEntry
 argument_list|>
-name|importPdfFiles
+name|importPdfFilesInternal
 parameter_list|(
 name|List
 argument_list|<

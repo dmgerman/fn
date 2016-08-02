@@ -4164,8 +4164,10 @@ literal|"  author={Norton Bar}}"
 argument_list|)
 argument_list|)
 decl_stmt|;
+name|List
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|duplicateKeys
 init|=
 name|result
@@ -4179,7 +4181,8 @@ literal|1
 argument_list|,
 name|duplicateKeys
 operator|.
-name|length
+name|size
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -4187,9 +4190,11 @@ argument_list|(
 literal|"canh05"
 argument_list|,
 name|duplicateKeys
-index|[
+operator|.
+name|get
+argument_list|(
 literal|0
-index|]
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

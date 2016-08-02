@@ -18,6 +18,26 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Arrays
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -196,8 +216,10 @@ argument_list|)
 decl_stmt|;
 DECL|field|leftOver
 specifier|private
+name|List
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|leftOver
 decl_stmt|;
 DECL|field|cl
@@ -242,10 +264,15 @@ name|this
 operator|.
 name|leftOver
 operator|=
+name|Arrays
+operator|.
+name|asList
+argument_list|(
 name|cl
 operator|.
 name|getArgs
 argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 catch|catch
@@ -1373,8 +1400,10 @@ return|;
 block|}
 DECL|method|getLeftOver ()
 specifier|public
+name|List
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|getLeftOver
 parameter_list|()
 block|{

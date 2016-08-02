@@ -1630,14 +1630,14 @@ name|isBlank
 argument_list|()
 operator|&&
 operator|(
+operator|!
 name|cli
 operator|.
 name|getLeftOver
 argument_list|()
 operator|.
-name|length
-operator|>
-literal|0
+name|isEmpty
+argument_list|()
 operator|)
 condition|)
 block|{

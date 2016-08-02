@@ -1601,7 +1601,9 @@ name|prefs
 operator|.
 name|put
 argument_list|(
-literal|"externalFileTypes"
+name|JabRefPreferences
+operator|.
+name|EXTERNAL_FILE_TYPES
 argument_list|,
 name|FileField
 operator|.
