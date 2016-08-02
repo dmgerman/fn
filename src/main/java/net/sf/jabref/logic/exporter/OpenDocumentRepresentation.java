@@ -1844,9 +1844,7 @@ name|String
 name|field
 parameter_list|)
 block|{
-name|String
-name|s
-init|=
+return|return
 name|BibDatabase
 operator|.
 name|getResolvedField
@@ -1857,15 +1855,11 @@ name|e
 argument_list|,
 name|database
 argument_list|)
-decl_stmt|;
-return|return
-name|s
-operator|==
-literal|null
-condition|?
+operator|.
+name|orElse
+argument_list|(
 literal|""
-else|:
-name|s
+argument_list|)
 return|;
 block|}
 DECL|method|addTableCell (Document doc, Element parent, String content)

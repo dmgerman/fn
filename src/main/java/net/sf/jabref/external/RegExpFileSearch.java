@@ -1483,6 +1483,7 @@ return|return
 literal|""
 return|;
 block|}
+comment|// If no field value was found, try to interpret it as a key generator field marker:
 name|String
 name|fieldValue
 init|=
@@ -1496,17 +1497,9 @@ name|entry
 argument_list|,
 name|database
 argument_list|)
-decl_stmt|;
-comment|// If no field value was found, try to interpret it as a key generator field marker:
-if|if
-condition|(
-name|fieldValue
-operator|==
-literal|null
-condition|)
-block|{
-name|fieldValue
-operator|=
+operator|.
+name|orElse
+argument_list|(
 name|LabelPatternUtil
 operator|.
 name|makeLabel
@@ -1515,8 +1508,8 @@ name|entry
 argument_list|,
 name|beforeColon
 argument_list|)
-expr_stmt|;
-block|}
+argument_list|)
+decl_stmt|;
 if|if
 condition|(
 name|fieldValue

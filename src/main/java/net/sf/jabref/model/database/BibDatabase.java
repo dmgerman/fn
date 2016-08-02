@@ -1958,11 +1958,14 @@ return|return
 name|res
 return|;
 block|}
-comment|/**      * Returns the text stored in the given field of the given bibtex entry      * which belongs to the given database.      *<p>      * If a database is given, this function will try to resolve any string      * references in the field-value.      * Also, if a database is given, this function will try to find values for      * unset fields in the entry linked by the "crossref" field, if any.      *      * @param field    The field to return the value of.      * @param entry    maybenull      *                 The bibtex entry which contains the field.      * @param database maybenull      *                 The database of the bibtex entry.      * @return The resolved field value or null if not found.      */
+comment|/**      * Returns the text stored in the given field of the given bibtex entry      * which belongs to the given database.      *<p>      * If a database is given, this function will try to resolve any string      * references in the field-value.      * Also, if a database is given, this function will try to find values for      * unset fields in the entry linked by the "crossref" field, if any.      *      * @param field    The field to return the value of.      * @param entry    The bibtex entry which contains the field.      * @param database maybenull      *                 The database of the bibtex entry.      * @return The resolved field value or null if not found.      */
 DECL|method|getResolvedField (String field, BibEntry entry, BibDatabase database)
 specifier|public
 specifier|static
+name|Optional
+argument_list|<
 name|String
+argument_list|>
 name|getResolvedField
 parameter_list|(
 name|String
@@ -1975,6 +1978,15 @@ name|BibDatabase
 name|database
 parameter_list|)
 block|{
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|entry
+argument_list|,
+literal|"entry cannot be null"
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 literal|"bibtextype"
@@ -1986,6 +1998,10 @@ argument_list|)
 condition|)
 block|{
 return|return
+name|Optional
+operator|.
+name|of
+argument_list|(
 name|EntryUtil
 operator|.
 name|capitalizeFirst
@@ -1994,6 +2010,7 @@ name|entry
 operator|.
 name|getType
 argument_list|()
+argument_list|)
 argument_list|)
 return|;
 block|}
@@ -2105,18 +2122,20 @@ block|}
 block|}
 block|}
 return|return
+name|result
+operator|.
+name|map
+argument_list|(
+name|resultText
+lambda|->
 name|BibDatabase
 operator|.
 name|getText
 argument_list|(
-name|result
-operator|.
-name|orElse
-argument_list|(
-literal|null
-argument_list|)
+name|resultText
 argument_list|,
 name|database
+argument_list|)
 argument_list|)
 return|;
 block|}
