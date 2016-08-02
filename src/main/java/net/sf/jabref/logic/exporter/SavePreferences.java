@@ -78,6 +78,16 @@ specifier|public
 class|class
 name|SavePreferences
 block|{
+comment|// Encoding written at the top of the .bib file.
+DECL|field|ENCODING_PREFIX
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|ENCODING_PREFIX
+init|=
+literal|"Encoding: "
+decl_stmt|;
 DECL|field|reformatFile
 specifier|private
 specifier|final

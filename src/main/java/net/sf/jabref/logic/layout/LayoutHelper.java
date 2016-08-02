@@ -1375,7 +1375,7 @@ name|name
 argument_list|)
 condition|)
 block|{
-comment|// Print the name of the database bib file.
+comment|// Print the name of the database BIB file.
 comment|// This is only supported in begin/end layouts, not in
 comment|// entry layouts.
 name|parsedEntries
@@ -1406,7 +1406,7 @@ name|name
 argument_list|)
 condition|)
 block|{
-comment|// Print the full path of the database bib file.
+comment|// Print the full path of the database BIB file.
 comment|// This is only supported in begin/end layouts, not in
 comment|// entry layouts.
 name|parsedEntries

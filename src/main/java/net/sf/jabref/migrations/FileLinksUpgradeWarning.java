@@ -254,6 +254,24 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
+name|layout
+operator|.
+name|format
+operator|.
+name|FileLinkPreferences
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|model
 operator|.
 name|FieldChange
@@ -461,7 +479,7 @@ name|FieldName
 operator|.
 name|FILE
 operator|+
-name|Globals
+name|FileLinkPreferences
 operator|.
 name|DIR_SUFFIX
 argument_list|)
@@ -1007,7 +1025,7 @@ operator|||
 name|offerSetFileDir
 return|;
 block|}
-comment|/**      * Check the database to find out whether any of a set of fields are used      * for any of the entries.      * @param database The bib database.      * @param fields The set of fields to look for.      * @return true if at least one of the given fields is set in at least one entry,      *  false otherwise.      */
+comment|/**      * Check the database to find out whether any of a set of fields are used      * for any of the entries.      * @param database The BIB database.      * @param fields The set of fields to look for.      * @return true if at least one of the given fields is set in at least one entry,      *  false otherwise.      */
 DECL|method|linksFound (BibDatabase database, String[] fields)
 specifier|private
 name|boolean
@@ -1136,7 +1154,7 @@ name|FieldName
 operator|.
 name|FILE
 operator|+
-name|Globals
+name|FileLinkPreferences
 operator|.
 name|DIR_SUFFIX
 argument_list|,

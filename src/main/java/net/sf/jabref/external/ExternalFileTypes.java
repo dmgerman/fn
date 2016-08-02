@@ -28,16 +28,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Collection
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|List
 import|;
 end_import
@@ -997,7 +987,7 @@ return|;
 block|}
 DECL|method|getExternalFileTypeSelection ()
 specifier|public
-name|Collection
+name|Set
 argument_list|<
 name|ExternalFileType
 argument_list|>

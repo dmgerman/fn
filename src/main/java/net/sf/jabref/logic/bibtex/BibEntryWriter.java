@@ -104,7 +104,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
+name|logic
+operator|.
+name|TypedBibEntry
 import|;
 end_import
 
@@ -118,7 +120,9 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|TypedBibEntry
+name|util
+operator|.
+name|OS
 import|;
 end_import
 
@@ -346,7 +350,7 @@ name|out
 operator|.
 name|write
 argument_list|(
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 argument_list|)
@@ -364,7 +368,7 @@ name|out
 operator|.
 name|write
 argument_list|(
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 argument_list|)
@@ -407,7 +411,7 @@ name|write
 argument_list|(
 name|userComments
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 argument_list|)
@@ -796,7 +800,7 @@ name|keyField
 operator|+
 literal|','
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 argument_list|)
@@ -897,7 +901,7 @@ name|write
 argument_list|(
 literal|','
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 argument_list|)

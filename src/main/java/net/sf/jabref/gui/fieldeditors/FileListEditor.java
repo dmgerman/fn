@@ -178,16 +178,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Collection
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|List
 import|;
 end_import
@@ -2780,7 +2770,7 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
-name|Collection
+name|List
 argument_list|<
 name|BibEntry
 argument_list|>
@@ -2789,11 +2779,6 @@ init|=
 operator|new
 name|ArrayList
 argument_list|<>
-argument_list|()
-decl_stmt|;
-name|entries
-operator|.
-name|addAll
 argument_list|(
 name|frame
 operator|.
@@ -2803,7 +2788,7 @@ operator|.
 name|getSelectedEntries
 argument_list|()
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 comment|// filesystem lookup
 name|JDialog
 name|dialog

@@ -1699,7 +1699,9 @@ argument_list|(
 literal|"entrytype"
 argument_list|)
 else|:
-literal|"misc"
+name|BibEntry
+operator|.
+name|DEFAULT_TYPE
 decl_stmt|;
 name|h
 operator|.

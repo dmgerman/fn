@@ -108,7 +108,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
+name|importer
+operator|.
+name|ParserResult
 import|;
 end_import
 
@@ -120,9 +122,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|importer
+name|logic
 operator|.
-name|ParserResult
+name|util
+operator|.
+name|OS
 import|;
 end_import
 
@@ -1413,7 +1417,7 @@ name|ABSTRACT
 argument_list|,
 name|oldAb
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+

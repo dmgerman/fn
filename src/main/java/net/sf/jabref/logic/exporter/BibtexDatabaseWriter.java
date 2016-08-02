@@ -80,18 +80,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|MetaData
 import|;
 end_import
@@ -141,6 +129,22 @@ operator|.
 name|bibtex
 operator|.
 name|LatexFieldFormatterPreferences
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|util
+operator|.
+name|OS
 import|;
 end_import
 
@@ -317,7 +321,7 @@ argument_list|()
 operator|.
 name|write
 argument_list|(
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 argument_list|)
@@ -335,7 +339,7 @@ argument_list|()
 operator|.
 name|write
 argument_list|(
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 argument_list|)
@@ -388,7 +392,7 @@ name|stringBuilder
 operator|.
 name|append
 argument_list|(
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 argument_list|)
@@ -443,7 +447,7 @@ name|stringBuilder
 operator|.
 name|append
 argument_list|(
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 argument_list|)
@@ -508,7 +512,7 @@ argument_list|()
 operator|.
 name|write
 argument_list|(
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 argument_list|)
@@ -538,7 +542,7 @@ name|write
 argument_list|(
 literal|'}'
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 argument_list|)
@@ -638,7 +642,7 @@ name|write
 argument_list|(
 name|userComments
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 argument_list|)
@@ -654,7 +658,7 @@ argument_list|()
 operator|.
 name|write
 argument_list|(
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 argument_list|)
@@ -770,7 +774,7 @@ name|write
 argument_list|(
 literal|"}"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 argument_list|)
@@ -811,7 +815,7 @@ argument_list|()
 operator|.
 name|write
 argument_list|(
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 argument_list|)
@@ -850,7 +854,7 @@ argument_list|()
 operator|.
 name|write
 argument_list|(
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 argument_list|)
@@ -912,7 +916,7 @@ argument_list|()
 operator|.
 name|write
 argument_list|(
-name|Globals
+name|SavePreferences
 operator|.
 name|ENCODING_PREFIX
 operator|+
@@ -924,7 +928,7 @@ argument_list|()
 operator|.
 name|write
 argument_list|(
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 argument_list|)

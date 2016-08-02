@@ -102,7 +102,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
+name|logic
+operator|.
+name|util
+operator|.
+name|OS
 import|;
 end_import
 
@@ -140,6 +144,16 @@ specifier|public
 class|class
 name|StringUtil
 block|{
+comment|// Non-letters which are used to denote accents in LaTeX-commands, e.g., in {\"{a}}
+DECL|field|SPECIAL_COMMAND_CHARS
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|SPECIAL_COMMAND_CHARS
+init|=
+literal|"\"`^~'=.|"
+decl_stmt|;
 comment|// contains all possible line breaks, not omitting any break such as "\\n"
 DECL|field|LINE_BREAKS
 specifier|private
@@ -743,7 +757,7 @@ name|result
 operator|.
 name|append
 argument_list|(
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 argument_list|)
@@ -762,7 +776,7 @@ name|result
 operator|.
 name|append
 argument_list|(
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 argument_list|)
@@ -778,7 +792,7 @@ name|result
 operator|.
 name|append
 argument_list|(
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 argument_list|)
@@ -914,7 +928,7 @@ name|insert
 argument_list|(
 name|current
 argument_list|,
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
@@ -925,7 +939,7 @@ name|length
 operator|=
 name|current
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|.
@@ -1829,7 +1843,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * Replaces all platform-dependent line breaks by Globals.NEWLINE line breaks.      *      * We do NOT use UNIX line breaks as the user explicitly configures its linebreaks and this method is used in bibtex field writing      *      *<example>      * Legacy Macintosh \r -> Globals.NEWLINE      * Windows \r\n -> Globals.NEWLINE      *</example>      *      * @return a String with only Globals.NEWLINE as line breaks      */
+comment|/**      * Replaces all platform-dependent line breaks by OS.NEWLINE line breaks.      *      * We do NOT use UNIX line breaks as the user explicitly configures its linebreaks and this method is used in bibtex field writing      *      *<example>      * Legacy Macintosh \r -> OS.NEWLINE      * Windows \r\n -> OS.NEWLINE      *</example>      *      * @return a String with only OS.NEWLINE as line breaks      */
 DECL|method|unifyLineBreaksToConfiguredLineBreaks (String s)
 specifier|public
 specifier|static
@@ -1850,7 +1864,7 @@ argument_list|)
 operator|.
 name|replaceAll
 argument_list|(
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 argument_list|)
@@ -3010,9 +3024,11 @@ parameter_list|)
 block|{
 return|return
 operator|(
+operator|(
 name|toTest
 operator|==
 literal|null
+operator|)
 operator|||
 name|toTest
 operator|.

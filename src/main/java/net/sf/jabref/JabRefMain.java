@@ -136,6 +136,38 @@ name|jabref
 operator|.
 name|logic
 operator|.
+name|labelpattern
+operator|.
+name|LabelPatternPreferences
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|labelpattern
+operator|.
+name|LabelPatternUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
 name|net
 operator|.
 name|ProxyAuthenticator
@@ -205,6 +237,22 @@ operator|.
 name|client
 operator|.
 name|RemoteListenerClient
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|util
+operator|.
+name|OS
 import|;
 end_import
 
@@ -466,6 +514,21 @@ operator|new
 name|JournalAbbreviationLoader
 argument_list|()
 expr_stmt|;
+comment|// Set key pattern based on preferences
+name|LabelPatternUtil
+operator|.
+name|updateDefaultPattern
+argument_list|(
+name|LabelPatternPreferences
+operator|.
+name|fromPreferences
+argument_list|(
+name|Globals
+operator|.
+name|prefs
+argument_list|)
+argument_list|)
+expr_stmt|;
 comment|// Check for running JabRef
 name|RemotePreferences
 name|remotePreferences
@@ -564,7 +627,7 @@ expr_stmt|;
 block|}
 comment|// override used newline character with the one stored in the preferences
 comment|// The preferences return the system newline character sequence as default
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|=

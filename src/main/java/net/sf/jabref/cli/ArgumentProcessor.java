@@ -472,6 +472,22 @@ name|logic
 operator|.
 name|labelpattern
 operator|.
+name|LabelPatternPreferences
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|labelpattern
+operator|.
 name|LabelPatternUtil
 import|;
 end_import
@@ -1637,7 +1653,7 @@ argument_list|()
 control|)
 block|{
 comment|// Leftover arguments that have a "bib" extension are interpreted as
-comment|// bib files to open. Other files, and files that could not be opened
+comment|// BIB files to open. Other files, and files that could not be opened
 comment|// as bib, we try to import instead.
 name|boolean
 name|bibExtension
@@ -2007,7 +2023,7 @@ argument_list|,
 name|prefs
 argument_list|)
 decl_stmt|;
-comment|// Show just a warning message if encoding didn't work for all characters:
+comment|// Show just a warning message if encoding did not work for all characters:
 if|if
 condition|(
 operator|!
@@ -2290,7 +2306,7 @@ argument_list|,
 name|prefs
 argument_list|)
 decl_stmt|;
-comment|// Show just a warning message if encoding didn't work for all characters:
+comment|// Show just a warning message if encoding did not work for all characters:
 if|if
 condition|(
 operator|!
@@ -2989,9 +3005,14 @@ name|database
 argument_list|,
 name|entry
 argument_list|,
+name|LabelPatternPreferences
+operator|.
+name|fromPreferences
+argument_list|(
 name|Globals
 operator|.
 name|prefs
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -3006,7 +3027,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"No meta data present in bibfile. Cannot regenerate BibTeX keys"
+literal|"No meta data present in BIB_file. Cannot regenerate BibTeX keys"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -3271,7 +3292,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Running Query '%0' with fetcher '%1'."
+literal|"Running query '%0' with fetcher '%1'."
 argument_list|,
 name|query
 argument_list|,

@@ -542,7 +542,7 @@ operator|)
 expr_stmt|;
 block|}
 comment|// Attempt to get a Reader for the file path given, either by
-comment|// loading it as a resource (from within jar), or as a normal file. If
+comment|// loading it as a resource (from within JAR), or as a normal file. If
 comment|// unsuccessful (e.g. file not found), an IOException is thrown.
 name|String
 name|name
@@ -554,7 +554,7 @@ decl_stmt|;
 name|Reader
 name|reader
 decl_stmt|;
-comment|// Try loading as a resource first. This works for files inside the jar:
+comment|// Try loading as a resource first. This works for files inside the JAR:
 name|URL
 name|reso
 init|=
@@ -567,7 +567,7 @@ argument_list|(
 name|name
 argument_list|)
 decl_stmt|;
-comment|// If that didn't work, try loading as a normal file URL:
+comment|// If that did not work, try loading as a normal file URL:
 try|try
 block|{
 if|if

@@ -1894,7 +1894,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-comment|// We didn't find the boundaries of the string ref. This
+comment|// We did not find the boundaries of the string ref. This
 comment|// makes it impossible to interpret it as a string label.
 comment|// So we should just append the rest of the text and finish.
 name|newRes

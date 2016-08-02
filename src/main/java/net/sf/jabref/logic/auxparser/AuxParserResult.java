@@ -309,7 +309,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"found_in_aux_file"
+literal|"found_in_AUX_file"
 argument_list|)
 argument_list|)
 operator|.
@@ -455,7 +455,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"nested_aux_files"
+literal|"nested_AUX_files"
 argument_list|)
 argument_list|)
 operator|.

@@ -270,6 +270,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Set
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|TimerTask
 import|;
 end_import
@@ -1355,6 +1365,22 @@ operator|.
 name|l10n
 operator|.
 name|Localization
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|labelpattern
+operator|.
+name|LabelPatternPreferences
 import|;
 end_import
 
@@ -4055,9 +4081,14 @@ name|database
 argument_list|,
 name|bes
 argument_list|,
+name|LabelPatternPreferences
+operator|.
+name|fromPreferences
+argument_list|(
 name|Globals
 operator|.
 name|prefs
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|ce
@@ -4938,6 +4969,10 @@ argument_list|,
 literal|false
 argument_list|,
 literal|false
+argument_list|,
+name|Globals
+operator|.
+name|prefs
 argument_list|)
 block|;
 name|insertEntry
@@ -6524,6 +6559,10 @@ name|JabRefPreferences
 operator|.
 name|OVERWRITE_TIME_STAMP
 argument_list|)
+argument_list|,
+name|Globals
+operator|.
+name|prefs
 argument_list|)
 expr_stmt|;
 comment|// We have to clone the
@@ -8502,6 +8541,10 @@ argument_list|,
 literal|true
 argument_list|,
 literal|true
+argument_list|,
+name|Globals
+operator|.
+name|prefs
 argument_list|)
 expr_stmt|;
 comment|// Create an UndoableInsertEntry object.
@@ -9082,6 +9125,10 @@ argument_list|,
 literal|true
 argument_list|,
 literal|true
+argument_list|,
+name|Globals
+operator|.
+name|prefs
 argument_list|)
 expr_stmt|;
 block|}
@@ -12161,9 +12208,14 @@ name|database
 argument_list|,
 name|bes
 argument_list|,
+name|LabelPatternPreferences
+operator|.
+name|fromPreferences
+argument_list|(
 name|Globals
 operator|.
 name|prefs
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|ce
@@ -14213,7 +14265,7 @@ block|}
 comment|/*  The search can lead to an unexpected 100% CPU usage which is perceived                 as a bug, if the search incidentally starts at a directory with lots                 of stuff below. It is now disabled by default. */
 comment|// see if we can fall back to a filename based on the bibtex key
 specifier|final
-name|Collection
+name|List
 argument_list|<
 name|BibEntry
 argument_list|>
@@ -14221,13 +14273,13 @@ name|entries
 init|=
 name|Collections
 operator|.
-name|singleton
+name|singletonList
 argument_list|(
 name|entry
 argument_list|)
 decl_stmt|;
 specifier|final
-name|Collection
+name|Set
 argument_list|<
 name|ExternalFileType
 argument_list|>
@@ -14395,6 +14447,20 @@ expr_stmt|;
 block|}
 else|else
 block|{
+name|boolean
+name|autoLinkExactKeyOnly
+init|=
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|AUTOLINK_EXACT_KEY_ONLY
+argument_list|)
+decl_stmt|;
 name|result
 operator|=
 name|FileUtil
@@ -14407,9 +14473,7 @@ name|extensions
 argument_list|,
 name|dirs
 argument_list|,
-name|Globals
-operator|.
-name|prefs
+name|autoLinkExactKeyOnly
 argument_list|)
 expr_stmt|;
 block|}

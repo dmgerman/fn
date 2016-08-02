@@ -950,7 +950,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Add from jar"
+literal|"Add from JAR"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -998,7 +998,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Select a Zip-archive"
+literal|"Select a ZIP-archive"
 argument_list|)
 argument_list|,
 name|JFileChooser
@@ -1076,7 +1076,7 @@ name|LOGGER
 operator|.
 name|info
 argument_list|(
-literal|"Could not open Zip-archive."
+literal|"Could not open ZIP-archive."
 argument_list|,
 name|exc
 argument_list|)
@@ -1117,7 +1117,7 @@ name|LOGGER
 operator|.
 name|info
 argument_list|(
-literal|"Could not instantiate Zip-archive reader."
+literal|"Could not instantiate ZIP-archive reader."
 argument_list|,
 name|exc
 argument_list|)
@@ -1160,7 +1160,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Add a (compiled) custom ImportFormat class from a Zip-archive."
+literal|"Add a (compiled) custom ImportFormat class from a ZIP-archive."
 argument_list|)
 operator|+
 literal|"\n"
@@ -1169,7 +1169,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"The Zip-archive need not be on the classpath of JabRef."
+literal|"The ZIP-archive need not be on the classpath of JabRef."
 argument_list|)
 argument_list|)
 expr_stmt|;

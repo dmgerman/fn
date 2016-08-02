@@ -228,6 +228,22 @@ name|jabref
 operator|.
 name|logic
 operator|.
+name|exporter
+operator|.
+name|SavePreferences
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
 name|l10n
 operator|.
 name|Localization
@@ -1173,10 +1189,32 @@ block|{
 name|StringBuilder
 name|buffer
 init|=
+literal|null
+decl_stmt|;
+try|try
+block|{
+name|buffer
+operator|=
 name|parseBracketedTextExactly
 argument_list|()
-decl_stmt|;
-comment|/**          *          * Metadata are used to store Bibkeeper-specific          * information in .bib files.          *          * Metadata are stored in bibtex files in the format          *          * @comment{jabref-meta: type:data0;data1;data2;...}          *          * Each comment that starts with the META_FLAG is stored          * in the meta HashMap, with type as key. Unluckily, the          * old META_FLAG bibkeeper-meta: was used in JabRef 1.0          * and 1.1, so we need to support it as well. At least          * for a while. We'll always save with the new one.          */
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|e
+parameter_list|)
+block|{
+comment|/* if we get an IO Exception here, than we have an unbracketed comment,             * which means that we should just return and the comment will be picked up as arbitrary text             *  by the parser              */
+name|LOGGER
+operator|.
+name|info
+argument_list|(
+literal|"Found unbracketed comment"
+argument_list|)
+expr_stmt|;
+return|return;
+block|}
 name|String
 name|comment
 init|=
@@ -1403,7 +1441,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Ill-formed entrytype comment in bib file"
+literal|"Ill-formed entrytype comment in BIB file"
 argument_list|)
 operator|+
 literal|": "
@@ -1415,20 +1453,6 @@ block|}
 comment|// custom entry types are always re-written by JabRef and not stored in the file
 name|dumpTextReadSoFarToString
 argument_list|()
-expr_stmt|;
-block|}
-else|else
-block|{
-comment|// FIXME: user comments are simply dropped
-comment|// at least, we log that we ignored the comment
-name|LOGGER
-operator|.
-name|info
-argument_list|(
-literal|"Dropped comment from database: "
-operator|+
-name|comment
-argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -1537,7 +1561,7 @@ name|result
 operator|.
 name|contains
 argument_list|(
-name|Globals
+name|SavePreferences
 operator|.
 name|ENCODING_PREFIX
 argument_list|)
@@ -1551,7 +1575,7 @@ name|result
 operator|.
 name|indexOf
 argument_list|(
-name|Globals
+name|SavePreferences
 operator|.
 name|ENCODING_PREFIX
 argument_list|)
@@ -2495,7 +2519,7 @@ comment|// Multiple author or editor lines are not allowed by the bibtex
 comment|// format, but
 comment|// at least one online database exports bibtex like that, making
 comment|// it inconvenient
-comment|// for users if JabRef didn't accept it.
+comment|// for users if JabRef did not accept it.
 if|if
 condition|(
 name|InternalBibtexFields

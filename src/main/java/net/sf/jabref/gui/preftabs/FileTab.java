@@ -258,6 +258,40 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
+name|layout
+operator|.
+name|format
+operator|.
+name|FileLinkPreferences
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|util
+operator|.
+name|OS
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|model
 operator|.
 name|entry
@@ -526,7 +560,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Use the bib file location as primary file directory"
+literal|"Use the BIB file location as primary file directory"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -540,7 +574,7 @@ name|lang
 argument_list|(
 literal|"When downloading files, or moving linked files to the "
 operator|+
-literal|"file directory, prefer the bib file location rather than the file directory set above"
+literal|"file directory, prefer the BIB file location rather than the file directory set above"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -734,7 +768,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Curly Brackets"
+literal|"Curly brackets"
 argument_list|)
 operator|+
 literal|": {, }"
@@ -818,7 +852,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Always reformat .bib file on save and export"
+literal|"Always reformat BIB file on save and export"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1194,7 +1228,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Help on Regular Expression Search"
+literal|"Help on regular expression search"
 argument_list|)
 argument_list|,
 name|HelpFile
@@ -1425,7 +1459,7 @@ name|FieldName
 operator|.
 name|FILE
 operator|+
-name|Globals
+name|FileLinkPreferences
 operator|.
 name|DIR_SUFFIX
 argument_list|)
@@ -1773,7 +1807,7 @@ name|FieldName
 operator|.
 name|FILE
 operator|+
-name|Globals
+name|FileLinkPreferences
 operator|.
 name|DIR_SUFFIX
 argument_list|,
@@ -1922,7 +1956,7 @@ name|newline
 argument_list|)
 expr_stmt|;
 comment|// we also have to change Globals variable as globals is not a getter, but a constant
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|=

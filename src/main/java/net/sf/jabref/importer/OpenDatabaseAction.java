@@ -593,7 +593,7 @@ argument_list|()
 decl_stmt|;
 static|static
 block|{
-comment|// Add the action for checking for new custom entry types loaded from the bib file:
+comment|// Add the action for checking for new custom entry types loaded from the BIB file:
 name|POST_OPEN_ACTIONS
 operator|.
 name|add
@@ -1368,7 +1368,7 @@ name|lang
 argument_list|(
 literal|"An autosave file was found for this database. This could indicate "
 operator|+
-literal|"that JabRef didn't shut down cleanly last time the file was used."
+literal|"that JabRef did not shut down cleanly last time the file was used."
 argument_list|)
 operator|+
 literal|"<br>"
@@ -1882,7 +1882,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * Go through the list of post open actions, and perform those that need to be performed.      *      * @param panel  The BasePanel where the database is shown.      * @param result The result of the bib file parse operation.      */
+comment|/**      * Go through the list of post open actions, and perform those that need to be performed.      *      * @param panel  The BasePanel where the database is shown.      * @param result The result of the BIB file parse operation.      */
 DECL|method|performPostOpenActions (BasePanel panel, ParserResult result, boolean mustRaisePanel)
 specifier|public
 specifier|static
@@ -2212,7 +2212,7 @@ return|return
 name|result
 return|;
 block|}
-comment|/**      * Load database (bib-file) or, if there exists, a newer autosave version, unless the flag is set to ignore the autosave      *      * @param name Name of the bib-file to open      * @param ignoreAutosave true if autosave version of the file should be ignored      * @return ParserResult which never is null      */
+comment|/**      * Load database (bib-file) or, if there exists, a newer autosave version, unless the flag is set to ignore the autosave      *      * @param name Name of the BIB-file to open      * @param ignoreAutosave true if autosave version of the file should be ignored      * @return ParserResult which never is null      */
 DECL|method|loadDatabaseOrAutoSave (String name, boolean ignoreAutosave)
 specifier|public
 specifier|static

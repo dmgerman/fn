@@ -223,7 +223,9 @@ argument_list|(
 name|field
 argument_list|)
 operator|||
-literal|"groups"
+name|FieldName
+operator|.
+name|GROUPS
 operator|.
 name|equals
 argument_list|(

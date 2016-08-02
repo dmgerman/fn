@@ -243,15 +243,9 @@ literal|"  timestamp = {2006.05.29},\n"
 operator|+
 literal|"  url = {http://james.howison.name/publications.html},\n"
 operator|+
-literal|"  abstract = {\\~{n}\n"
+literal|"  abstract = {\\~{n} \\~n "
 operator|+
-literal|"\\~n\n"
-operator|+
-literal|"\\'i\n"
-operator|+
-literal|"\\i\n"
-operator|+
-literal|"\\i}\n"
+literal|"\\'i \\i \\i}\n"
 operator|+
 literal|"}\n"
 return|;
@@ -452,8 +446,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
 DECL|method|testHTMLChar ()
 specifier|public
 name|void
@@ -499,15 +491,29 @@ argument_list|,
 name|layoutText
 argument_list|)
 expr_stmt|;
+block|}
+annotation|@
+name|Test
+annotation|@
+name|Ignore
+DECL|method|testHTMLCharDoubleLineBreak ()
+specifier|public
+name|void
+name|testHTMLCharDoubleLineBreak
+parameter_list|()
+throws|throws
+name|IOException
+block|{
+name|String
 name|layoutText
-operator|=
+init|=
 name|layout
 argument_list|(
 literal|"\\begin{author}\\format[HTMLChars]{\\author}\\end{author} "
 argument_list|,
 literal|"@other{bla, author={This\nis\na\n\ntext}}"
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|Assert
 operator|.
 name|assertEquals
@@ -551,8 +557,6 @@ block|}
 comment|/**      * [ 1495181 ] Dotless i and tilde not handled in preview      *      * @throws Exception      */
 annotation|@
 name|Test
-annotation|@
-name|Ignore
 DECL|method|testLayout ()
 specifier|public
 name|void
@@ -576,7 +580,7 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-literal|"<font face=\"arial\"><BR><BR><b>Abstract:</b>&ntilde;&ntilde;&iacute;&#305;&#305;</font>"
+literal|"<font face=\"arial\"><BR><BR><b>Abstract:</b>&ntilde;&ntilde;&iacute;&imath;&imath;</font>"
 argument_list|,
 name|layoutText
 argument_list|)

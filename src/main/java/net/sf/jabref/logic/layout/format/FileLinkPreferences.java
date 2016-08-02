@@ -44,18 +44,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|model
 operator|.
 name|entry
@@ -101,6 +89,15 @@ argument_list|<
 name|String
 argument_list|>
 name|fileDirForDatabase
+decl_stmt|;
+DECL|field|DIR_SUFFIX
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|DIR_SUFFIX
+init|=
+literal|"Directory"
 decl_stmt|;
 DECL|method|FileLinkPreferences (List<String> generatedDirForDatabase, List<String> fileDirForDatabase)
 specifier|public
@@ -158,7 +155,7 @@ name|FieldName
 operator|.
 name|FILE
 operator|+
-name|Globals
+name|FileLinkPreferences
 operator|.
 name|DIR_SUFFIX
 argument_list|)

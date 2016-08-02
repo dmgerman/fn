@@ -485,9 +485,9 @@ name|MAX_VALUE
 expr_stmt|;
 comment|// 2014-11-08
 comment|// DBLP now shows the BibTeX entry using ugly HTML entities
-comment|// but they also offer the download of a bib file
+comment|// but they also offer the download of a BIB file
 comment|// we find this in the page which we get from "url"
-comment|// and this bib file is then in "biburl"
+comment|// and this BIB file is then in "biburl"
 name|int
 name|count
 init|=

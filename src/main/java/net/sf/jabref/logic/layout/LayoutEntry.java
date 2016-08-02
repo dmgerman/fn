@@ -642,6 +642,24 @@ name|layout
 operator|.
 name|format
 operator|.
+name|DateFormatter
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|layout
+operator|.
+name|format
+operator|.
 name|Default
 import|;
 end_import
@@ -3149,6 +3167,14 @@ name|CurrentDate
 argument_list|()
 return|;
 case|case
+literal|"DateFormatter"
+case|:
+return|return
+operator|new
+name|DateFormatter
+argument_list|()
+return|;
+case|case
 literal|"DOICheck"
 case|:
 return|return
@@ -3725,8 +3751,6 @@ argument_list|)
 expr_stmt|;
 continue|continue;
 block|}
-comment|// If not found throw exception...
-comment|//return new LayoutFormatter[] {new NotFoundFormatter(className)};
 name|results
 operator|.
 name|add
@@ -3738,7 +3762,6 @@ name|className
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//throw new Exception(Globals.lang("Formatter not found") + ": "+ className);
 block|}
 return|return
 name|results

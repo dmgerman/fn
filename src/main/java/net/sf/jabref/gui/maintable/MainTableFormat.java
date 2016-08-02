@@ -711,9 +711,9 @@ name|columnName
 operator|.
 name|split
 argument_list|(
-name|Globals
+name|FieldName
 operator|.
-name|COL_DEFINITION_FIELD_SEPARATOR
+name|FIELD_SEPARATOR
 argument_list|)
 decl_stmt|;
 name|tableColumns

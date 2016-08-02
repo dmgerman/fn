@@ -46,7 +46,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
+name|logic
+operator|.
+name|util
+operator|.
+name|OS
 import|;
 end_import
 
@@ -251,7 +255,7 @@ name|result
 operator|.
 name|contains
 argument_list|(
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 argument_list|)
@@ -278,7 +282,7 @@ name|replace
 argument_list|(
 literal|"\n"
 argument_list|,
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 argument_list|)

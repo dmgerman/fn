@@ -311,7 +311,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"To see what's new view the changelog."
+literal|"To see what is new view the changelog."
 argument_list|)
 decl_stmt|;
 name|JLabel

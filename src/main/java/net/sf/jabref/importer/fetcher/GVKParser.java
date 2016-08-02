@@ -1681,7 +1681,9 @@ condition|)
 block|{
 name|entryType
 operator|=
-literal|"misc"
+name|BibEntry
+operator|.
+name|DEFAULT_TYPE
 expr_stmt|;
 if|if
 condition|(
@@ -1725,7 +1727,9 @@ condition|)
 block|{
 name|entryType
 operator|=
-literal|"misc"
+name|BibEntry
+operator|.
+name|DEFAULT_TYPE
 expr_stmt|;
 block|}
 elseif|else
@@ -1741,7 +1745,9 @@ condition|)
 block|{
 name|entryType
 operator|=
-literal|"misc"
+name|BibEntry
+operator|.
+name|DEFAULT_TYPE
 expr_stmt|;
 comment|// FIXME: online only available in Biblatex
 comment|//entryType = "online";
@@ -1884,7 +1890,9 @@ name|result
 operator|.
 name|setField
 argument_list|(
-literal|"subtitle"
+name|FieldName
+operator|.
+name|SUBTITLE
 argument_list|,
 name|newSubtitle
 operator|.
@@ -2056,7 +2064,9 @@ name|result
 operator|.
 name|setField
 argument_list|(
-literal|"pagetotal"
+name|FieldName
+operator|.
+name|PAGETOTAL
 argument_list|,
 name|pagetotal
 argument_list|)

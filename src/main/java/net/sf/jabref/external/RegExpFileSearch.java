@@ -62,16 +62,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Collection
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|Collections
 import|;
 end_import
@@ -298,7 +288,7 @@ literal|"\\[.*?\\]"
 argument_list|)
 decl_stmt|;
 comment|/**      * Search for file links for a set of entries using regexp. Lists of extensions and directories      * are given.      * @param entries The entries to search for.      * @param extensions The extensions that are acceptable.      * @param directories The root directories to search.      * @param regExp The expression deciding which names are acceptable.      * @return A map linking each given entry to a list of files matching the given criteria.      */
-DECL|method|findFilesForSet (Collection<BibEntry> entries, Collection<String> extensions, List<File> directories, String regExp)
+DECL|method|findFilesForSet (List<BibEntry> entries, List<String> extensions, List<File> directories, String regExp)
 specifier|public
 specifier|static
 name|Map
@@ -312,13 +302,13 @@ argument_list|>
 argument_list|>
 name|findFilesForSet
 parameter_list|(
-name|Collection
+name|List
 argument_list|<
 name|BibEntry
 argument_list|>
 name|entries
 parameter_list|,
-name|Collection
+name|List
 argument_list|<
 name|String
 argument_list|>
@@ -382,7 +372,7 @@ name|res
 return|;
 block|}
 comment|/**      * Method for searching for files using regexp. A list of extensions and directories can be      * given.      * @param entry The entry to search for.      * @param extensions The extensions that are acceptable.      * @param directories The root directories to search.      * @param regularExpression The expression deciding which names are acceptable.      * @return A list of files paths matching the given criteria.      */
-DECL|method|findFiles (BibEntry entry, Collection<String> extensions, Collection<File> directories, String regularExpression)
+DECL|method|findFiles (BibEntry entry, List<String> extensions, List<File> directories, String regularExpression)
 specifier|private
 specifier|static
 name|List
@@ -394,13 +384,13 @@ parameter_list|(
 name|BibEntry
 name|entry
 parameter_list|,
-name|Collection
+name|List
 argument_list|<
 name|String
 argument_list|>
 name|extensions
 parameter_list|,
-name|Collection
+name|List
 argument_list|<
 name|File
 argument_list|>
@@ -440,7 +430,7 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Searches the given directory and filename pattern for a file for the      * BibTeX entry.      *      * Used to fix:      *      * http://sourceforge.net/tracker/index.php?func=detail&aid=1503410&group_id=92314&atid=600309      *      * Requirements:      *  - Be able to find the associated PDF in a set of given directories.      *  - Be able to return a relative path or absolute path.      *  - Be fast.      *  - Allow for flexible naming schemes in the PDFs.      *      * Syntax scheme for file:      *<ul>      *<li>* Any subDir</li>      *<li>** Any subDir (recursive)</li>      *<li>[key] Key from BibTeX file and database</li>      *<li>.* Anything else is taken to be a Regular expression.</li>      *</ul>      *      * @param entry      *            non-null      * @param dirs      *            A set of root directories to start the search from. Paths are      *            returned relative to these directories if relative is set to      *            true. These directories will not be expanded or anything. Use      *            the file attribute for this.      * @param file      *            non-null      *      * @param relative      *            whether to return relative file paths or absolute ones      *      * @return Will return the first file found to match the given criteria or      *         null if none was found.      */
-DECL|method|findFile (BibEntry entry, Collection<File> dirs, String file, String extensionRegExp)
+DECL|method|findFile (BibEntry entry, List<File> dirs, String file, String extensionRegExp)
 specifier|private
 specifier|static
 name|List
@@ -452,7 +442,7 @@ parameter_list|(
 name|BibEntry
 name|entry
 parameter_list|,
-name|Collection
+name|List
 argument_list|<
 name|File
 argument_list|>

@@ -299,7 +299,7 @@ name|LOGGER
 operator|.
 name|warn
 argument_list|(
-literal|"Couldn't connect to the updateserver."
+literal|"Could not connect to the updateserver."
 argument_list|,
 name|ioException
 argument_list|)
@@ -351,7 +351,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Couldn't connect to the update server."
+literal|"Could not connect to the update server."
 argument_list|)
 decl_stmt|;
 name|String

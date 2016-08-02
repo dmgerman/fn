@@ -223,7 +223,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * LaTeX Aux to BibTeX Parser  *<p>  * Extracts a subset of BibTeX entries from a BibDatabase that are included in an aux file.  */
+comment|/**  * LaTeX Aux to BibTeX Parser  *<p>  * Extracts a subset of BibTeX entries from a BibDatabase that are included in an AUX file.  */
 end_comment
 
 begin_class
@@ -288,7 +288,7 @@ specifier|final
 name|BibDatabase
 name|masterDatabase
 decl_stmt|;
-comment|/**      * Generates a database based on the given aux file and BibTeX database      *      * @param auxFile  Path to the LaTeX aux file      * @param database BibTeX database      */
+comment|/**      * Generates a database based on the given AUX file and BibTeX database      *      * @param auxFile  Path to the LaTeX AUX file      * @param database BibTeX database      */
 DECL|method|AuxParser (String auxFile, BibDatabase database)
 specifier|public
 name|AuxParser
@@ -323,7 +323,7 @@ name|parseAuxFile
 argument_list|()
 return|;
 block|}
-comment|/*      * Parses the aux file and extracts all bib keys.      * Also supports nested aux files (latex \\include).      *      * There exists no specification of the aux file.      * Every package, class or document can write to the aux file.      * The aux file consists of LaTeX macros and is read at the \begin{document} and again at the \end{document}.      *      * BibTeX citation: \citation{x,y,z}      * Biblatex citation: \abx@aux@cite{x,y,z}      * Nested aux files: \@input{x}      */
+comment|/*      * Parses the AUX file and extracts all BIB keys.      * Also supports nested AUX files (latex \\include).      *      * There exists no specification of the AUX file.      * Every package, class or document can write to the AUX file.      * The AUX file consists of LaTeX macros and is read at the \begin{document} and again at the \end{document}.      *      * BibTeX citation: \citation{x,y,z}      * Biblatex citation: \abx@aux@cite{x,y,z}      * Nested AUX files: \@input{x}      */
 DECL|method|parseAuxFile ()
 specifier|private
 name|AuxParserResult
@@ -339,7 +339,7 @@ argument_list|(
 name|masterDatabase
 argument_list|)
 decl_stmt|;
-comment|// nested aux files
+comment|// nested AUX files
 name|List
 argument_list|<
 name|String
@@ -620,7 +620,7 @@ return|return
 name|result
 return|;
 block|}
-comment|/*      * Try to find an equivalent BibTeX entry inside the reference database for all keys inside the aux file.      */
+comment|/*      * Try to find an equivalent BibTeX entry inside the reference database for all keys inside the AUX file.      */
 DECL|method|resolveTags (AuxParserResult result)
 specifier|private
 name|void

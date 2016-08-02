@@ -1122,7 +1122,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"An Exception occurred while accessing '%0'"
+literal|"An exception occurred while accessing '%0'"
 argument_list|,
 name|url
 argument_list|)
@@ -1154,7 +1154,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"An SAXException occurred while parsing '%0':"
+literal|"A SAX exception occurred while parsing '%0':"
 argument_list|,
 name|url
 argument_list|)

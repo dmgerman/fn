@@ -439,7 +439,7 @@ argument_list|>
 name|entries
 parameter_list|)
 throws|throws
-name|Exception
+name|IOException
 block|{
 name|Objects
 operator|.
@@ -498,7 +498,7 @@ name|InputStream
 name|source
 parameter_list|)
 throws|throws
-name|Exception
+name|IOException
 block|{
 try|try
 init|(
@@ -716,7 +716,7 @@ argument_list|>
 name|entries
 parameter_list|)
 throws|throws
-name|Exception
+name|IOException
 block|{
 comment|// First store the xml formatted content to a temporary file.
 name|File

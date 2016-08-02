@@ -116,16 +116,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Collection
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|Collections
 import|;
 end_import
@@ -456,20 +446,6 @@ argument_list|(
 name|FileUtil
 operator|.
 name|class
-argument_list|)
-decl_stmt|;
-DECL|field|FILE_SEPARATOR
-specifier|private
-specifier|static
-specifier|final
-name|String
-name|FILE_SEPARATOR
-init|=
-name|System
-operator|.
-name|getProperty
-argument_list|(
-literal|"file.separator"
 argument_list|)
 decl_stmt|;
 DECL|field|SLASH
@@ -1045,7 +1021,7 @@ name|toFile
 argument_list|)
 return|;
 block|}
-comment|/**      * Converts a relative filename to an absolute one, if necessary. Returns      * null if the file does not exist.<br/>      *<p>      * Uses<ul>      *<li>the default directory associated with the extension of the file</li>      *<li>the standard file directory</li>      *<li>the directory of the bib file</li>      *</ul>      *      * @param databaseContext The database this file belongs to.      * @param name     The filename, may also be a relative path to the file      */
+comment|/**      * Converts a relative filename to an absolute one, if necessary. Returns      * null if the file does not exist.<br/>      *<p>      * Uses<ul>      *<li>the default directory associated with the extension of the file</li>      *<li>the standard file directory</li>      *<li>the directory of the BIB file</li>      *</ul>      *      * @param databaseContext The database this file belongs to.      * @param name     The filename, may also be a relative path to the file      */
 DECL|method|expandFilename (final BibDatabaseContext databaseContext, String name)
 specifier|public
 specifier|static
@@ -1105,7 +1081,7 @@ operator|.
 name|getFileDirectory
 argument_list|()
 decl_stmt|;
-comment|// Include the directory of the bib file:
+comment|// Include the directory of the BIB file:
 name|List
 argument_list|<
 name|String
@@ -1332,6 +1308,8 @@ name|dir
 operator|.
 name|endsWith
 argument_list|(
+name|OS
+operator|.
 name|FILE_SEPARATOR
 argument_list|)
 condition|)
@@ -1349,6 +1327,8 @@ name|name
 operator|=
 name|dir
 operator|+
+name|OS
+operator|.
 name|FILE_SEPARATOR
 operator|+
 name|name
@@ -1613,6 +1593,8 @@ name|dir
 operator|.
 name|endsWith
 argument_list|(
+name|OS
+operator|.
 name|FILE_SEPARATOR
 argument_list|)
 condition|)
@@ -1623,6 +1605,8 @@ name|dir
 operator|.
 name|concat
 argument_list|(
+name|OS
+operator|.
 name|FILE_SEPARATOR
 argument_list|)
 expr_stmt|;
@@ -1669,7 +1653,7 @@ name|fileName
 return|;
 block|}
 block|}
-DECL|method|findAssociatedFiles (Collection<BibEntry> entries, Collection<String> extensions, Collection<File> directories, JabRefPreferences prefs)
+DECL|method|findAssociatedFiles (List<BibEntry> entries, List<String> extensions, List<File> directories, boolean autolinkExactKeyOnly)
 specifier|public
 specifier|static
 name|Map
@@ -1683,26 +1667,26 @@ argument_list|>
 argument_list|>
 name|findAssociatedFiles
 parameter_list|(
-name|Collection
+name|List
 argument_list|<
 name|BibEntry
 argument_list|>
 name|entries
 parameter_list|,
-name|Collection
+name|List
 argument_list|<
 name|String
 argument_list|>
 name|extensions
 parameter_list|,
-name|Collection
+name|List
 argument_list|<
 name|File
 argument_list|>
 name|directories
 parameter_list|,
-name|JabRefPreferences
-name|prefs
+name|boolean
+name|autolinkExactKeyOnly
 parameter_list|)
 block|{
 name|Map
@@ -1759,18 +1743,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-name|boolean
-name|exactOnly
-init|=
-name|prefs
-operator|.
-name|getBoolean
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|AUTOLINK_EXACT_KEY_ONLY
-argument_list|)
-decl_stmt|;
 comment|// Now look for keys
 name|nextFile
 label|:
@@ -1869,12 +1841,12 @@ name|nextFile
 continue|;
 block|}
 block|}
-comment|// If we get here, we didn't find any exact matches. If non-exact
+comment|// If we get here, we did not find any exact matches. If non-exact
 comment|// matches are allowed, try to find one:
 if|if
 condition|(
 operator|!
-name|exactOnly
+name|autolinkExactKeyOnly
 condition|)
 block|{
 for|for

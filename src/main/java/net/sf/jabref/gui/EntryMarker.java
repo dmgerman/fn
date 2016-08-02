@@ -148,7 +148,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|InternalBibtexFields
+name|FieldName
 import|;
 end_import
 
@@ -254,7 +254,7 @@ name|be
 operator|.
 name|hasField
 argument_list|(
-name|InternalBibtexFields
+name|FieldName
 operator|.
 name|MARKED
 argument_list|)
@@ -267,7 +267,7 @@ name|be
 operator|.
 name|getFieldOptional
 argument_list|(
-name|InternalBibtexFields
+name|FieldName
 operator|.
 name|MARKED
 argument_list|)
@@ -512,7 +512,7 @@ name|UndoableFieldChange
 argument_list|(
 name|be
 argument_list|,
-name|InternalBibtexFields
+name|FieldName
 operator|.
 name|MARKED
 argument_list|,
@@ -520,7 +520,7 @@ name|be
 operator|.
 name|getFieldOptional
 argument_list|(
-name|InternalBibtexFields
+name|FieldName
 operator|.
 name|MARKED
 argument_list|)
@@ -538,7 +538,7 @@ name|be
 operator|.
 name|setField
 argument_list|(
-name|InternalBibtexFields
+name|FieldName
 operator|.
 name|MARKED
 argument_list|,
@@ -572,7 +572,7 @@ name|be
 operator|.
 name|hasField
 argument_list|(
-name|InternalBibtexFields
+name|FieldName
 operator|.
 name|MARKED
 argument_list|)
@@ -585,7 +585,7 @@ name|be
 operator|.
 name|getFieldOptional
 argument_list|(
-name|InternalBibtexFields
+name|FieldName
 operator|.
 name|MARKED
 argument_list|)
@@ -867,7 +867,7 @@ name|UndoableFieldChange
 argument_list|(
 name|be
 argument_list|,
-name|InternalBibtexFields
+name|FieldName
 operator|.
 name|MARKED
 argument_list|,
@@ -875,7 +875,7 @@ name|be
 operator|.
 name|getFieldOptional
 argument_list|(
-name|InternalBibtexFields
+name|FieldName
 operator|.
 name|MARKED
 argument_list|)
@@ -898,7 +898,7 @@ name|be
 operator|.
 name|clearField
 argument_list|(
-name|InternalBibtexFields
+name|FieldName
 operator|.
 name|MARKED
 argument_list|)
@@ -910,7 +910,7 @@ name|be
 operator|.
 name|setField
 argument_list|(
-name|InternalBibtexFields
+name|FieldName
 operator|.
 name|MARKED
 argument_list|,
@@ -963,7 +963,7 @@ name|entry
 operator|.
 name|getFieldOptional
 argument_list|(
-name|InternalBibtexFields
+name|FieldName
 operator|.
 name|OWNER
 argument_list|)
@@ -1054,7 +1054,7 @@ name|UndoableFieldChange
 argument_list|(
 name|be
 argument_list|,
-name|InternalBibtexFields
+name|FieldName
 operator|.
 name|MARKED
 argument_list|,
@@ -1062,7 +1062,7 @@ name|be
 operator|.
 name|getFieldOptional
 argument_list|(
-name|InternalBibtexFields
+name|FieldName
 operator|.
 name|MARKED
 argument_list|)
@@ -1080,7 +1080,7 @@ name|be
 operator|.
 name|clearField
 argument_list|(
-name|InternalBibtexFields
+name|FieldName
 operator|.
 name|MARKED
 argument_list|)
@@ -1097,7 +1097,7 @@ name|UndoableFieldChange
 argument_list|(
 name|be
 argument_list|,
-name|InternalBibtexFields
+name|FieldName
 operator|.
 name|MARKED
 argument_list|,
@@ -1105,7 +1105,7 @@ name|be
 operator|.
 name|getFieldOptional
 argument_list|(
-name|InternalBibtexFields
+name|FieldName
 operator|.
 name|MARKED
 argument_list|)
@@ -1123,7 +1123,7 @@ name|be
 operator|.
 name|setField
 argument_list|(
-name|InternalBibtexFields
+name|FieldName
 operator|.
 name|MARKED
 argument_list|,
@@ -1149,7 +1149,7 @@ name|be
 operator|.
 name|hasField
 argument_list|(
-name|InternalBibtexFields
+name|FieldName
 operator|.
 name|MARKED
 argument_list|)
@@ -1166,7 +1166,7 @@ name|be
 operator|.
 name|getFieldOptional
 argument_list|(
-name|InternalBibtexFields
+name|FieldName
 operator|.
 name|MARKED
 argument_list|)

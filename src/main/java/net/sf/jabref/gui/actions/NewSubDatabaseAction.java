@@ -177,7 +177,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * The action concerned with generate a new (sub-)database from latex aux file.  */
+comment|/**  * The action concerned with generate a new (sub-)database from latex AUX file.  */
 end_comment
 
 begin_class

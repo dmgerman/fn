@@ -556,9 +556,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|FieldName
-operator|.
-name|TITLE
+literal|"title"
 operator|.
 name|equals
 argument_list|(
@@ -616,7 +614,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"comments"
+name|FieldName
+operator|.
+name|COMMENTS
 argument_list|,
 name|content
 argument_list|)
@@ -637,7 +637,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"reportno"
+name|FieldName
+operator|.
+name|REPORTNO
 argument_list|,
 name|content
 argument_list|)
@@ -646,9 +648,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|FieldName
-operator|.
-name|DOI
+literal|"doi"
 operator|.
 name|equals
 argument_list|(
@@ -671,9 +671,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|FieldName
-operator|.
-name|AUTHOR
+literal|"author"
 operator|.
 name|equals
 argument_list|(

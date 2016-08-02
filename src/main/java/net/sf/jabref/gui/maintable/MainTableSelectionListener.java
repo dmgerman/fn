@@ -122,6 +122,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|swing
@@ -571,7 +581,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * List event, mouse, key and focus listener for the main table that makes up the  * most part of the BasePanel for a single bib database.  */
+comment|/**  * List event, mouse, key and focus listener for the main table that makes up the  * most part of the BasePanel for a single BIB database.  */
 end_comment
 
 begin_class
@@ -2665,26 +2675,27 @@ expr_stmt|;
 block|}
 else|else
 block|{
-if|if
-condition|(
-name|entry
-operator|.
-name|hasField
-argument_list|(
-name|field
-argument_list|)
-condition|)
-block|{
+name|Optional
+argument_list|<
 name|String
+argument_list|>
 name|content
 init|=
 name|entry
 operator|.
-name|getField
+name|getFieldOptional
 argument_list|(
 name|field
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|content
+operator|.
+name|isPresent
+argument_list|()
+condition|)
+block|{
 name|Icon
 name|icon
 decl_stmt|;
@@ -2742,8 +2753,14 @@ argument_list|,
 name|entry
 argument_list|,
 name|content
+operator|.
+name|get
+argument_list|()
 argument_list|,
 name|content
+operator|.
+name|get
+argument_list|()
 argument_list|,
 name|icon
 argument_list|,

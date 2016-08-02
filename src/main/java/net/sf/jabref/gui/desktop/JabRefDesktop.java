@@ -1191,7 +1191,7 @@ return|;
 block|}
 else|else
 block|{
-comment|// No file matched the name, or we didn't know the file type.
+comment|// No file matched the name, or we did not know the file type.
 return|return
 literal|false
 return|;

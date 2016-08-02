@@ -708,7 +708,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"An Exception occurred while accessing '%0'"
+literal|"An exception occurred while accessing '%0'"
 argument_list|,
 name|url
 argument_list|)
@@ -749,7 +749,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"An Error occurred while fetching from ADS (%0):"
+literal|"An error occurred while fetching from ADS (%0):"
 argument_list|,
 name|url
 argument_list|)
@@ -1018,7 +1018,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"An Error occurred while parsing abstract"
+literal|"An error occurred while parsing abstract"
 argument_list|)
 argument_list|,
 name|getTitle
@@ -1044,7 +1044,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"An Exception occurred while accessing '%0'"
+literal|"An exception occurred while accessing '%0'"
 argument_list|,
 name|url
 argument_list|)
@@ -1076,7 +1076,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"An Error occurred while fetching from ADS (%0):"
+literal|"An error occurred while fetching from ADS (%0):"
 argument_list|,
 name|url
 argument_list|)

@@ -826,7 +826,7 @@ operator|.
 name|UTF_8
 argument_list|)
 decl_stmt|;
-comment|// Find title, and create entry if we do. Otherwise assume we didn't get an entry:
+comment|// Find title, and create entry if we do. Otherwise assume we did not get an entry:
 name|Matcher
 name|m
 init|=

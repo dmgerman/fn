@@ -415,7 +415,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This class embodies a bibliography formatting for OpenOffice, which is composed  * of the following elements:  *<p>  * 1) Each OO bib entry type must have a formatting. A formatting is an array of elements, each  * of which is either a piece of constant text, an entry field value, or a tab. Each element has  * a character format associated with it.  *<p>  * 2) Many field values (e.g. author) need to be formatted before input to OpenOffice. The style  * has the responsibility of formatting all field values. Formatting is handled by 0-n  * JabRef LayoutFormatter classes.  *<p>  * 3) If the entries are not numbered, a citation marker must be produced for each entry. This  * operation is performed for each JabRef BibEntry.  */
+comment|/**  * This class embodies a bibliography formatting for OpenOffice, which is composed  * of the following elements:  *<p>  * 1) Each OO BIB entry type must have a formatting. A formatting is an array of elements, each  * of which is either a piece of constant text, an entry field value, or a tab. Each element has  * a character format associated with it.  *<p>  * 2) Many field values (e.g. author) need to be formatted before input to OpenOffice. The style  * has the responsibility of formatting all field values. Formatting is handled by 0-n  * JabRef LayoutFormatter classes.  *<p>  * 3) If the entries are not numbered, a citation marker must be produced for each entry. This  * operation is performed for each JabRef BibEntry.  */
 end_comment
 
 begin_class
@@ -1223,7 +1223,18 @@ name|put
 argument_list|(
 name|AUTHOR_FIELD
 argument_list|,
-literal|"author/editor"
+name|FieldName
+operator|.
+name|orFields
+argument_list|(
+name|FieldName
+operator|.
+name|AUTHOR
+argument_list|,
+name|FieldName
+operator|.
+name|EDITOR
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|citProperties
@@ -2843,7 +2854,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * Format the marker for the in-text citation according to this bib style. Uniquefier letters are added as      * provided by the uniquefiers argument. If successive entries within the citation are uniquefied from each other,      * this method will perform a grouping of these entries.      *      * @param entries       The list of JabRef BibEntry providing the data.      * @param database      A map of BibEntry-BibDatabase pairs.      * @param inParenthesis Signals whether a parenthesized citation or an in-text citation is wanted.      * @param uniquefiers   Strings to add behind the year for each entry in case it's needed to separate similar      *                      entries.      * @param unlimAuthors  Boolean for each entry. If true, we should not use "et al" formatting regardless      *                      of the number of authors. Can be null to indicate that no entries should have unlimited names.      * @return The formatted citation.      */
+comment|/**      * Format the marker for the in-text citation according to this BIB style. Uniquefier letters are added as      * provided by the uniquefiers argument. If successive entries within the citation are uniquefied from each other,      * this method will perform a grouping of these entries.      *      * @param entries       The list of JabRef BibEntry providing the data.      * @param database      A map of BibEntry-BibDatabase pairs.      * @param inParenthesis Signals whether a parenthesized citation or an in-text citation is wanted.      * @param uniquefiers   Strings to add behind the year for each entry in case it's needed to separate similar      *                      entries.      * @param unlimAuthors  Boolean for each entry. If true, we should not use "et al" formatting regardless      *                      of the number of authors. Can be null to indicate that no entries should have unlimited names.      * @return The formatted citation.      */
 DECL|method|getCitationMarker (List<BibEntry> entries, Map<BibEntry, BibDatabase> database, boolean inParenthesis, String[] uniquefiers, int[] unlimAuthors)
 specifier|public
 name|String
@@ -3961,7 +3972,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * This method looks up a field for an entry in a database. Any number of backup fields can be used      * if the primary field is empty.      *      * @param entry    The entry.      * @param database The database the entry belongs to.      * @param field    The field, or succession of fields, to look up. If backup fields are needed, separate      *                 field names by /. E.g. to use "author" with "editor" as backup, specify "author/editor".      * @return The resolved field content, or an empty string if the field(s) were empty.      */
+comment|/**      * This method looks up a field for an entry in a database. Any number of backup fields can be used      * if the primary field is empty.      *      * @param entry    The entry.      * @param database The database the entry belongs to.      * @param field    The field, or succession of fields, to look up. If backup fields are needed, separate      *                 field names by /. E.g. to use "author" with "editor" as backup, specify FieldName.orFields(FieldName.AUTHOR, FieldName.EDITOR).      * @return The resolved field content, or an empty string if the field(s) were empty.      */
 DECL|method|getCitationMarkerField (BibEntry entry, BibDatabase database, String field)
 specifier|private
 name|String
@@ -3993,7 +4004,9 @@ name|field
 operator|.
 name|split
 argument_list|(
-literal|"/"
+name|FieldName
+operator|.
+name|FIELD_SEPARATOR
 argument_list|)
 decl_stmt|;
 for|for
@@ -4523,24 +4536,73 @@ parameter_list|)
 block|{
 if|if
 condition|(
+name|this
+operator|==
+name|o
+condition|)
+block|{
+return|return
+literal|true
+return|;
+block|}
+if|if
+condition|(
 name|o
 operator|instanceof
 name|OOBibStyle
 condition|)
 block|{
-return|return
-name|path
-operator|.
-name|equals
-argument_list|(
-operator|(
+name|OOBibStyle
+name|otherStyle
+init|=
 operator|(
 name|OOBibStyle
 operator|)
 name|o
-operator|)
+decl_stmt|;
+return|return
+name|Objects
+operator|.
+name|equals
+argument_list|(
+name|path
+argument_list|,
+name|otherStyle
 operator|.
 name|path
+argument_list|)
+operator|&&
+name|Objects
+operator|.
+name|equals
+argument_list|(
+name|name
+argument_list|,
+name|otherStyle
+operator|.
+name|name
+argument_list|)
+operator|&&
+name|Objects
+operator|.
+name|equals
+argument_list|(
+name|citProperties
+argument_list|,
+name|otherStyle
+operator|.
+name|citProperties
+argument_list|)
+operator|&&
+name|Objects
+operator|.
+name|equals
+argument_list|(
+name|properties
+argument_list|,
+name|otherStyle
+operator|.
+name|properties
 argument_list|)
 return|;
 block|}
@@ -4562,6 +4624,12 @@ operator|.
 name|hash
 argument_list|(
 name|path
+argument_list|,
+name|name
+argument_list|,
+name|citProperties
+argument_list|,
+name|properties
 argument_list|)
 return|;
 block|}
