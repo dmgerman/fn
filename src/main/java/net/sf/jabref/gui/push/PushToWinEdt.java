@@ -1,10 +1,10 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2015 JabRef contributors.     Copyright (C) 2015 Oscar Gustafsson.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref.external.push
+DECL|package|net.sf.jabref.gui.push
 package|package
 name|net
 operator|.
@@ -12,7 +12,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|external
+name|gui
 operator|.
 name|push
 package|;
@@ -56,15 +56,11 @@ name|JabRefPreferences
 import|;
 end_import
 
-begin_comment
-comment|/**  * Class for pushing entries into TexMaker.  */
-end_comment
-
 begin_class
-DECL|class|PushToTexmaker
+DECL|class|PushToWinEdt
 specifier|public
 class|class
-name|PushToTexmaker
+name|PushToWinEdt
 extends|extends
 name|AbstractPushToApplication
 implements|implements
@@ -79,7 +75,7 @@ name|getApplicationName
 parameter_list|()
 block|{
 return|return
-literal|"Texmaker"
+literal|"WinEdt"
 return|;
 block|}
 annotation|@
@@ -95,7 +91,7 @@ name|IconTheme
 operator|.
 name|getImage
 argument_list|(
-literal|"texmaker"
+literal|"winedt"
 argument_list|)
 return|;
 block|}
@@ -118,16 +114,23 @@ index|[]
 block|{
 name|commandPath
 block|,
-literal|"-insert"
-block|,
+literal|"\"[InsText('"
+operator|+
 name|getCiteCommand
 argument_list|()
 operator|+
 literal|"{"
 operator|+
 name|keyString
+operator|.
+name|replace
+argument_list|(
+literal|"'"
+argument_list|,
+literal|"''"
+argument_list|)
 operator|+
-literal|"}"
+literal|"}');]\""
 block|}
 return|;
 block|}
@@ -143,7 +146,7 @@ name|commandPathPreferenceKey
 operator|=
 name|JabRefPreferences
 operator|.
-name|TEXMAKER_PATH
+name|WIN_EDT_PATH
 expr_stmt|;
 block|}
 block|}

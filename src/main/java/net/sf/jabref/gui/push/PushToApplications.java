@@ -4,7 +4,7 @@ comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is fre
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref.external.push
+DECL|package|net.sf.jabref.gui.push
 package|package
 name|net
 operator|.
@@ -12,7 +12,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|external
+name|gui
 operator|.
 name|push
 package|;
@@ -44,29 +44,29 @@ specifier|public
 class|class
 name|PushToApplications
 block|{
-DECL|field|APPLICATIONS
+DECL|field|applications
 specifier|private
-specifier|static
 specifier|final
 name|List
 argument_list|<
 name|PushToApplication
 argument_list|>
-name|APPLICATIONS
+name|applications
 decl_stmt|;
-comment|/**      * Set up the current available choices:      */
-static|static
+DECL|method|PushToApplications ()
+specifier|public
+name|PushToApplications
+parameter_list|()
 block|{
-name|APPLICATIONS
+comment|/**      * Set up the current available choices:      */
+name|applications
 operator|=
 operator|new
 name|ArrayList
 argument_list|<>
 argument_list|()
 expr_stmt|;
-name|PushToApplications
-operator|.
-name|APPLICATIONS
+name|applications
 operator|.
 name|add
 argument_list|(
@@ -75,9 +75,7 @@ name|PushToEmacs
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|PushToApplications
-operator|.
-name|APPLICATIONS
+name|applications
 operator|.
 name|add
 argument_list|(
@@ -86,9 +84,7 @@ name|PushToLatexEditor
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|PushToApplications
-operator|.
-name|APPLICATIONS
+name|applications
 operator|.
 name|add
 argument_list|(
@@ -97,9 +93,7 @@ name|PushToLyx
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|PushToApplications
-operator|.
-name|APPLICATIONS
+name|applications
 operator|.
 name|add
 argument_list|(
@@ -108,9 +102,7 @@ name|PushToTexmaker
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|PushToApplications
-operator|.
-name|APPLICATIONS
+name|applications
 operator|.
 name|add
 argument_list|(
@@ -119,9 +111,7 @@ name|PushToTeXstudio
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|PushToApplications
-operator|.
-name|APPLICATIONS
+name|applications
 operator|.
 name|add
 argument_list|(
@@ -130,9 +120,7 @@ name|PushToVim
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|PushToApplications
-operator|.
-name|APPLICATIONS
+name|applications
 operator|.
 name|add
 argument_list|(
@@ -144,7 +132,6 @@ expr_stmt|;
 block|}
 DECL|method|getApplications ()
 specifier|public
-specifier|static
 name|List
 argument_list|<
 name|PushToApplication
@@ -153,7 +140,7 @@ name|getApplications
 parameter_list|()
 block|{
 return|return
-name|APPLICATIONS
+name|applications
 return|;
 block|}
 block|}

@@ -4,7 +4,7 @@ comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is fre
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref.external.push
+DECL|package|net.sf.jabref.gui.push
 package|package
 name|net
 operator|.
@@ -12,7 +12,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|external
+name|gui
 operator|.
 name|push
 package|;
@@ -56,11 +56,15 @@ name|JabRefPreferences
 import|;
 end_import
 
+begin_comment
+comment|/**  * Created by IntelliJ IDEA. User: alver Date: Jan 14, 2006 Time: 4:55:23 PM To change this template use File | Settings  * | File Templates.  */
+end_comment
+
 begin_class
-DECL|class|PushToWinEdt
+DECL|class|PushToTeXstudio
 specifier|public
 class|class
-name|PushToWinEdt
+name|PushToTeXstudio
 extends|extends
 name|AbstractPushToApplication
 implements|implements
@@ -75,7 +79,7 @@ name|getApplicationName
 parameter_list|()
 block|{
 return|return
-literal|"WinEdt"
+literal|"TeXstudio"
 return|;
 block|}
 annotation|@
@@ -91,7 +95,7 @@ name|IconTheme
 operator|.
 name|getImage
 argument_list|(
-literal|"winedt"
+literal|"texstudio"
 argument_list|)
 return|;
 block|}
@@ -114,23 +118,19 @@ index|[]
 block|{
 name|commandPath
 block|,
-literal|"\"[InsText('"
-operator|+
+literal|"--insert-cite"
+block|,
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"%s{%s}"
+argument_list|,
 name|getCiteCommand
 argument_list|()
-operator|+
-literal|"{"
-operator|+
-name|keyString
-operator|.
-name|replace
-argument_list|(
-literal|"'"
 argument_list|,
-literal|"''"
+name|keyString
 argument_list|)
-operator|+
-literal|"}');]\""
 block|}
 return|;
 block|}
@@ -146,7 +146,7 @@ name|commandPathPreferenceKey
 operator|=
 name|JabRefPreferences
 operator|.
-name|WIN_EDT_PATH
+name|TEXSTUDIO_PATH
 expr_stmt|;
 block|}
 block|}

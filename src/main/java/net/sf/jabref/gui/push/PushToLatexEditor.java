@@ -4,7 +4,7 @@ comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is fre
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref.external.push
+DECL|package|net.sf.jabref.gui.push
 package|package
 name|net
 operator|.
@@ -12,7 +12,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|external
+name|gui
 operator|.
 name|push
 package|;
@@ -57,14 +57,14 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Created by IntelliJ IDEA. User: alver Date: Jan 14, 2006 Time: 4:55:23 PM To change this template use File | Settings  * | File Templates.  */
+comment|/**  * Class for pushing entries into LatexEditor.  */
 end_comment
 
 begin_class
-DECL|class|PushToTeXstudio
+DECL|class|PushToLatexEditor
 specifier|public
 class|class
-name|PushToTeXstudio
+name|PushToLatexEditor
 extends|extends
 name|AbstractPushToApplication
 implements|implements
@@ -79,7 +79,7 @@ name|getApplicationName
 parameter_list|()
 block|{
 return|return
-literal|"TeXstudio"
+literal|"LatexEditor"
 return|;
 block|}
 annotation|@
@@ -93,10 +93,12 @@ block|{
 return|return
 name|IconTheme
 operator|.
-name|getImage
-argument_list|(
-literal|"texstudio"
-argument_list|)
+name|JabRefIcon
+operator|.
+name|EDIT
+operator|.
+name|getSmallIcon
+argument_list|()
 return|;
 block|}
 annotation|@
@@ -118,20 +120,29 @@ index|[]
 block|{
 name|commandPath
 block|,
-literal|"--insert-cite"
+literal|"-i"
 block|,
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"%s{%s}"
-argument_list|,
 name|getCiteCommand
 argument_list|()
-argument_list|,
+operator|+
+literal|"{"
+operator|+
 name|keyString
-argument_list|)
+operator|+
+literal|"}"
 block|}
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|getCommandName ()
+specifier|protected
+name|String
+name|getCommandName
+parameter_list|()
+block|{
+return|return
+literal|"LEd.exe"
 return|;
 block|}
 annotation|@
@@ -146,7 +157,7 @@ name|commandPathPreferenceKey
 operator|=
 name|JabRefPreferences
 operator|.
-name|TEXSTUDIO_PATH
+name|LATEX_EDITOR_PATH
 expr_stmt|;
 block|}
 block|}

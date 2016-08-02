@@ -1,10 +1,10 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2015 JabRef contributors.     Copyright (C) 2015 Oscar Gustafsson.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref.external.push
+DECL|package|net.sf.jabref.gui.push
 package|package
 name|net
 operator|.
@@ -12,7 +12,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|external
+name|gui
 operator|.
 name|push
 package|;
@@ -57,14 +57,14 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Class for pushing entries into LatexEditor.  */
+comment|/**  * Class for pushing entries into TexMaker.  */
 end_comment
 
 begin_class
-DECL|class|PushToLatexEditor
+DECL|class|PushToTexmaker
 specifier|public
 class|class
-name|PushToLatexEditor
+name|PushToTexmaker
 extends|extends
 name|AbstractPushToApplication
 implements|implements
@@ -79,7 +79,7 @@ name|getApplicationName
 parameter_list|()
 block|{
 return|return
-literal|"LatexEditor"
+literal|"Texmaker"
 return|;
 block|}
 annotation|@
@@ -93,12 +93,10 @@ block|{
 return|return
 name|IconTheme
 operator|.
-name|JabRefIcon
-operator|.
-name|EDIT
-operator|.
-name|getSmallIcon
-argument_list|()
+name|getImage
+argument_list|(
+literal|"texmaker"
+argument_list|)
 return|;
 block|}
 annotation|@
@@ -120,7 +118,7 @@ index|[]
 block|{
 name|commandPath
 block|,
-literal|"-i"
+literal|"-insert"
 block|,
 name|getCiteCommand
 argument_list|()
@@ -135,18 +133,6 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|getCommandName ()
-specifier|protected
-name|String
-name|getCommandName
-parameter_list|()
-block|{
-return|return
-literal|"LEd.exe"
-return|;
-block|}
-annotation|@
-name|Override
 DECL|method|initParameters ()
 specifier|protected
 name|void
@@ -157,7 +143,7 @@ name|commandPathPreferenceKey
 operator|=
 name|JabRefPreferences
 operator|.
-name|LATEX_EDITOR_PATH
+name|TEXMAKER_PATH
 expr_stmt|;
 block|}
 block|}
