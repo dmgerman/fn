@@ -1442,6 +1442,10 @@ decl_stmt|;
 if|if
 condition|(
 name|xmpPreferences
+operator|!=
+literal|null
+operator|&&
+name|xmpPreferences
 operator|.
 name|isUseXMPPrivacyFilter
 argument_list|()
