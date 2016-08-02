@@ -4,22 +4,8 @@ comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is fre
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref.gui.openoffice
+DECL|package|net.sf.jabref.logic.openoffice
 package|package
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|openoffice
-package|;
-end_package
-
-begin_import
-import|import
 name|net
 operator|.
 name|sf
@@ -29,10 +15,8 @@ operator|.
 name|logic
 operator|.
 name|openoffice
-operator|.
-name|OOBibStyle
-import|;
-end_import
+package|;
+end_package
 
 begin_import
 import|import
@@ -88,6 +72,7 @@ end_comment
 
 begin_class
 DECL|class|UndefinedBibtexEntry
+specifier|public
 class|class
 name|UndefinedBibtexEntry
 extends|extends

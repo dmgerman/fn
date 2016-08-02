@@ -497,11 +497,6 @@ name|TypedBibEntry
 argument_list|(
 name|entry
 argument_list|,
-name|Optional
-operator|.
-name|empty
-argument_list|()
-argument_list|,
 name|bibDatabaseMode
 argument_list|)
 decl_stmt|;
