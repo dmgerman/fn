@@ -713,7 +713,6 @@ name|boolean
 name|isNullResult
 parameter_list|()
 block|{
-comment|// TODO Auto-generated method stub
 return|return
 name|this
 operator|==

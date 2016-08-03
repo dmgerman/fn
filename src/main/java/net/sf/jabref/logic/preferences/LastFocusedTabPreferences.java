@@ -101,7 +101,6 @@ literal|null
 condition|)
 block|{
 return|return;
-comment|// no change detected
 block|}
 name|String
 name|filePath

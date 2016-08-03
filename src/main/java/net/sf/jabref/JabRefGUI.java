@@ -480,14 +480,14 @@ specifier|static
 name|JabRefFrame
 name|mainFrame
 decl_stmt|;
-DECL|field|loaded
+DECL|field|loadedDatabases
 specifier|private
 specifier|final
 name|List
 argument_list|<
 name|ParserResult
 argument_list|>
-name|loaded
+name|loadedDatabases
 decl_stmt|;
 DECL|field|isBlank
 specifier|private
@@ -537,7 +537,7 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
-DECL|method|JabRefGUI (List<ParserResult> loaded, boolean isBlank)
+DECL|method|JabRefGUI (List<ParserResult> loadedDatabases, boolean isBlank)
 specifier|public
 name|JabRefGUI
 parameter_list|(
@@ -545,7 +545,7 @@ name|List
 argument_list|<
 name|ParserResult
 argument_list|>
-name|loaded
+name|loadedDatabases
 parameter_list|,
 name|boolean
 name|isBlank
@@ -553,9 +553,9 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|loaded
+name|loadedDatabases
 operator|=
-name|loaded
+name|loadedDatabases
 expr_stmt|;
 name|this
 operator|.
@@ -728,7 +728,7 @@ literal|null
 operator|)
 condition|)
 block|{
-name|openLastEditedDatabase
+name|openLastEditedDatabases
 argument_list|()
 expr_stmt|;
 block|}
@@ -793,7 +793,7 @@ operator|new
 name|JabRefFrame
 argument_list|()
 expr_stmt|;
-comment|// Add all loaded databases to the frame:
+comment|// Add all loadedDatabases databases to the frame:
 name|boolean
 name|first
 init|=
@@ -802,7 +802,7 @@ decl_stmt|;
 if|if
 condition|(
 operator|!
-name|loaded
+name|loadedDatabases
 operator|.
 name|isEmpty
 argument_list|()
@@ -816,7 +816,7 @@ name|ParserResult
 argument_list|>
 name|parserResultIterator
 init|=
-name|loaded
+name|loadedDatabases
 operator|.
 name|iterator
 argument_list|()
@@ -1153,7 +1153,7 @@ control|(
 name|ParserResult
 name|pr
 range|:
-name|loaded
+name|loadedDatabases
 control|)
 block|{
 name|ParserResultWarningDialog
@@ -1180,7 +1180,7 @@ comment|// if the database contents should be modified due to new features
 comment|// in this version of JabRef.
 comment|// Note that we have to check whether i does not go over getBasePanelCount().
 comment|// This is because importToOpen might have been used, which adds to
-comment|// loaded, but not to getBasePanelCount()
+comment|// loadedDatabases, but not to getBasePanelCount()
 for|for
 control|(
 name|int
@@ -1191,7 +1191,7 @@ init|;
 operator|(
 name|i
 operator|<
-name|loaded
+name|loadedDatabases
 operator|.
 name|size
 argument_list|()
@@ -1216,7 +1216,7 @@ block|{
 name|ParserResult
 name|pr
 init|=
-name|loaded
+name|loadedDatabases
 operator|.
 name|get
 argument_list|(
@@ -1291,7 +1291,7 @@ block|}
 if|if
 condition|(
 operator|!
-name|loaded
+name|loadedDatabases
 operator|.
 name|isEmpty
 argument_list|()
@@ -1314,18 +1314,17 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|openLastEditedDatabase ()
+DECL|method|openLastEditedDatabases ()
 specifier|private
 name|void
-name|openLastEditedDatabase
+name|openLastEditedDatabases
 parameter_list|()
 block|{
-comment|// How to handle errors in the databases to open?
 name|List
 argument_list|<
 name|String
 argument_list|>
-name|names
+name|lastFiles
 init|=
 name|Globals
 operator|.
@@ -1338,83 +1337,55 @@ operator|.
 name|LAST_EDITED
 argument_list|)
 decl_stmt|;
-name|lastEdLoop
-label|:
 for|for
 control|(
 name|String
-name|name
+name|fileName
 range|:
-name|names
+name|lastFiles
 control|)
 block|{
 name|File
-name|fileToOpen
+name|dbFile
 init|=
 operator|new
 name|File
 argument_list|(
-name|name
+name|fileName
 argument_list|)
 decl_stmt|;
-for|for
-control|(
-name|ParserResult
-name|pr
-range|:
-name|loaded
-control|)
-block|{
+comment|// Already parsed via command line parameter, e.g., "jabref.jar somefile.bib"
 if|if
 condition|(
-operator|(
-name|pr
-operator|.
-name|getFile
-argument_list|()
-operator|!=
-literal|null
-operator|)
-operator|&&
-name|pr
-operator|.
-name|getFile
-argument_list|()
-operator|.
-name|equals
+name|isLoaded
 argument_list|(
-name|fileToOpen
+name|dbFile
 argument_list|)
-condition|)
-block|{
-continue|continue
-name|lastEdLoop
-continue|;
-block|}
-block|}
-if|if
-condition|(
-name|fileToOpen
+operator|||
+operator|!
+name|dbFile
 operator|.
 name|exists
 argument_list|()
 condition|)
 block|{
+continue|continue;
+block|}
 name|ParserResult
-name|pr
+name|parsedDatabase
 init|=
 name|OpenDatabaseAction
 operator|.
 name|loadDatabaseOrAutoSave
 argument_list|(
-name|name
+name|fileName
 argument_list|,
 literal|false
 argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|pr
+name|parsedDatabase
 operator|.
 name|isNullResult
 argument_list|()
@@ -1433,7 +1404,7 @@ argument_list|)
 operator|+
 literal|" '"
 operator|+
-name|fileToOpen
+name|dbFile
 operator|.
 name|getPath
 argument_list|()
@@ -1444,16 +1415,61 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|loaded
+name|loadedDatabases
 operator|.
 name|add
 argument_list|(
-name|pr
+name|parsedDatabase
 argument_list|)
 expr_stmt|;
 block|}
 block|}
 block|}
+DECL|method|isLoaded (File fileToOpen)
+specifier|private
+name|boolean
+name|isLoaded
+parameter_list|(
+name|File
+name|fileToOpen
+parameter_list|)
+block|{
+for|for
+control|(
+name|ParserResult
+name|pr
+range|:
+name|loadedDatabases
+control|)
+block|{
+if|if
+condition|(
+name|pr
+operator|.
+name|getFile
+argument_list|()
+operator|!=
+literal|null
+operator|&&
+name|pr
+operator|.
+name|getFile
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+name|fileToOpen
+argument_list|)
+condition|)
+block|{
+return|return
+literal|true
+return|;
+block|}
+block|}
+return|return
+literal|false
+return|;
 block|}
 DECL|method|setLookAndFeel ()
 specifier|private
