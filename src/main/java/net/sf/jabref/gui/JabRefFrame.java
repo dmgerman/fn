@@ -248,6 +248,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|swing
@@ -1684,16 +1694,6 @@ name|JFrame
 implements|implements
 name|OutputPrinter
 block|{
-comment|// Frame titles.
-DECL|field|FRAME_TITLE
-specifier|private
-specifier|static
-specifier|final
-name|String
-name|FRAME_TITLE
-init|=
-literal|"JabRef"
-decl_stmt|;
 DECL|field|LOGGER
 specifier|private
 specifier|static
@@ -1709,6 +1709,16 @@ name|JabRefFrame
 operator|.
 name|class
 argument_list|)
+decl_stmt|;
+comment|// Frame titles.
+DECL|field|FRAME_TITLE
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|FRAME_TITLE
+init|=
+literal|"JabRef"
 decl_stmt|;
 DECL|field|ELLIPSES
 specifier|private
@@ -9946,7 +9956,7 @@ return|return
 name|res
 return|;
 block|}
-DECL|method|addParserResult (ParserResult pr, boolean raisePanel)
+DECL|method|addParserResult (ParserResult pr, boolean focusPanel)
 specifier|public
 name|void
 name|addParserResult
@@ -9955,7 +9965,7 @@ name|ParserResult
 name|pr
 parameter_list|,
 name|boolean
-name|raisePanel
+name|focusPanel
 parameter_list|)
 block|{
 if|if
@@ -9988,7 +9998,7 @@ operator|.
 name|getDatabaseContext
 argument_list|()
 argument_list|,
-name|raisePanel
+name|focusPanel
 argument_list|)
 expr_stmt|;
 block|}
@@ -10026,6 +10036,64 @@ block|}
 block|}
 else|else
 block|{
+comment|// only add tab if DB is not already open
+name|Optional
+argument_list|<
+name|BasePanel
+argument_list|>
+name|panel
+init|=
+name|getBasePanelList
+argument_list|()
+operator|.
+name|stream
+argument_list|()
+operator|.
+name|filter
+argument_list|(
+name|p
+lambda|->
+name|p
+operator|.
+name|getBibDatabaseContext
+argument_list|()
+operator|.
+name|getDatabaseFile
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+name|pr
+operator|.
+name|getFile
+argument_list|()
+argument_list|)
+argument_list|)
+operator|.
+name|findFirst
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|panel
+operator|.
+name|isPresent
+argument_list|()
+condition|)
+block|{
+name|tabbedPane
+operator|.
+name|setSelectedComponent
+argument_list|(
+name|panel
+operator|.
+name|get
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
 name|addTab
 argument_list|(
 name|pr
@@ -10033,9 +10101,10 @@ operator|.
 name|getDatabaseContext
 argument_list|()
 argument_list|,
-name|raisePanel
+name|focusPanel
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 DECL|method|createToolBar ()
