@@ -1019,8 +1019,6 @@ specifier|public
 name|boolean
 name|keywordGroupContainsWord
 parameter_list|()
-throws|throws
-name|ParseException
 block|{
 return|return
 name|KeywordGroup

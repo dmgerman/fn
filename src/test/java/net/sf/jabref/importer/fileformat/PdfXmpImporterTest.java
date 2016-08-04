@@ -327,8 +327,6 @@ name|void
 name|importEncryptedFileReturnsError
 parameter_list|()
 throws|throws
-name|IOException
-throws|,
 name|URISyntaxException
 block|{
 name|Path
@@ -385,8 +383,6 @@ name|void
 name|testImportEntries
 parameter_list|()
 throws|throws
-name|IOException
-throws|,
 name|URISyntaxException
 block|{
 name|Path

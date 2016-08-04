@@ -1183,8 +1183,6 @@ name|String
 argument_list|>
 name|meta
 parameter_list|)
-throws|throws
-name|IOException
 block|{
 name|StringBuilder
 name|buffer

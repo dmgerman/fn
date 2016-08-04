@@ -5481,8 +5481,6 @@ name|OOBibStyle
 name|style
 parameter_list|)
 throws|throws
-name|IOException
-throws|,
 name|NoSuchElementException
 throws|,
 name|WrappedTargetException
