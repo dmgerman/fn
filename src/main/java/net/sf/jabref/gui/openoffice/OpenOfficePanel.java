@@ -4136,7 +4136,7 @@ argument_list|)
 expr_stmt|;
 name|builder
 operator|.
-name|appendColumns
+name|appendRows
 argument_list|(
 literal|"4dlu, pref"
 argument_list|)
