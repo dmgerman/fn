@@ -3516,7 +3516,10 @@ expr_stmt|;
 block|}
 name|List
 argument_list|<
+name|Optional
+argument_list|<
 name|String
+argument_list|>
 argument_list|>
 name|keys
 init|=
@@ -3578,14 +3581,14 @@ name|prefs
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// Add the generated key to our list:
+comment|// Add the generated key to our list:   -- TODO: Why??
 name|keys
 operator|.
 name|add
 argument_list|(
 name|entry
 operator|.
-name|getCiteKey
+name|getCiteKeyOptional
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -4715,12 +4718,11 @@ literal|false
 decl_stmt|;
 if|if
 condition|(
+operator|!
 name|entry
 operator|.
-name|getCiteKey
+name|hasCiteKey
 argument_list|()
-operator|==
-literal|null
 condition|)
 block|{
 comment|// The entry has no key, so it can't be added to the
@@ -4784,10 +4786,8 @@ if|if
 condition|(
 name|entry
 operator|.
-name|getCiteKey
+name|hasCiteKey
 argument_list|()
-operator|!=
-literal|null
 condition|)
 block|{
 for|for
@@ -6937,19 +6937,24 @@ argument_list|(
 literal|0
 argument_list|)
 expr_stmt|;
+name|Optional
+argument_list|<
 name|String
+argument_list|>
 name|bibtexKey
 init|=
 name|entry
 operator|.
-name|getCiteKey
+name|getCiteKeyOptional
 argument_list|()
 decl_stmt|;
 if|if
 condition|(
+operator|!
 name|bibtexKey
-operator|==
-literal|null
+operator|.
+name|isPresent
+argument_list|()
 condition|)
 block|{
 name|int
@@ -7000,7 +7005,7 @@ name|bibtexKey
 operator|=
 name|entry
 operator|.
-name|getCiteKey
+name|getCiteKeyOptional
 argument_list|()
 expr_stmt|;
 block|}
@@ -7016,6 +7021,9 @@ argument_list|,
 name|bibDatabaseContext
 argument_list|,
 name|bibtexKey
+operator|.
+name|get
+argument_list|()
 argument_list|)
 decl_stmt|;
 try|try
@@ -7220,12 +7228,11 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|!
 name|entry
 operator|.
-name|getCiteKey
+name|hasCiteKey
 argument_list|()
-operator|==
-literal|null
 condition|)
 block|{
 name|int

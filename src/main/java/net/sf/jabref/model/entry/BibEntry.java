@@ -579,6 +579,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Returns the cite key AKA citation key AKA BibTeX key, or null if it is not set.      *      * Note: this is<emph>not</emph> the internal Id of this entry. The internal Id is always present, whereas the BibTeX key might not be present.      */
+annotation|@
+name|Deprecated
 DECL|method|getCiteKey ()
 specifier|public
 name|String
@@ -591,6 +593,29 @@ operator|.
 name|get
 argument_list|(
 name|KEY_FIELD
+argument_list|)
+return|;
+block|}
+DECL|method|getCiteKeyOptional ()
+specifier|public
+name|Optional
+argument_list|<
+name|String
+argument_list|>
+name|getCiteKeyOptional
+parameter_list|()
+block|{
+return|return
+name|Optional
+operator|.
+name|ofNullable
+argument_list|(
+name|fields
+operator|.
+name|get
+argument_list|(
+name|KEY_FIELD
+argument_list|)
 argument_list|)
 return|;
 block|}

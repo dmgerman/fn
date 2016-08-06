@@ -5381,8 +5381,13 @@ name|newKey
 init|=
 name|newEntry
 operator|.
-name|getCiteKey
+name|getCiteKeyOptional
 argument_list|()
+operator|.
+name|orElse
+argument_list|(
+literal|null
+argument_list|)
 decl_stmt|;
 name|boolean
 name|entryChanged
@@ -6862,8 +6867,13 @@ name|oldValue
 init|=
 name|entry
 operator|.
-name|getCiteKey
+name|getCiteKeyOptional
 argument_list|()
+operator|.
+name|orElse
+argument_list|(
+literal|null
+argument_list|)
 decl_stmt|;
 name|String
 name|newValue
@@ -8185,19 +8195,23 @@ expr_stmt|;
 comment|// This is a partial clone of net.sf.jabref.gui.BasePanel.setupActions().new AbstractWorker() {...}.run()
 comment|// this updates the table automatically, on close, but not
 comment|// within the tab
+name|Optional
+argument_list|<
 name|String
+argument_list|>
 name|oldValue
 init|=
 name|entry
 operator|.
-name|getCiteKey
+name|getCiteKeyOptional
 argument_list|()
 decl_stmt|;
 if|if
 condition|(
 name|oldValue
-operator|!=
-literal|null
+operator|.
+name|isPresent
+argument_list|()
 condition|)
 block|{
 if|if
@@ -8373,21 +8387,33 @@ argument_list|,
 name|entry
 argument_list|,
 name|oldValue
+operator|.
+name|orElse
+argument_list|(
+literal|null
+argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getCiteKey
+name|getCiteKeyOptional
+argument_list|()
+operator|.
+name|get
 argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|// Cite key always set here
 comment|// here we update the field
 name|String
 name|bibtexKeyData
 init|=
 name|entry
 operator|.
-name|getCiteKey
+name|getCiteKeyOptional
+argument_list|()
+operator|.
+name|get
 argument_list|()
 decl_stmt|;
 name|setField

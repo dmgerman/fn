@@ -2367,11 +2367,16 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
+name|Optional
+operator|.
+name|of
+argument_list|(
 literal|"Einstein1931"
+argument_list|)
 argument_list|,
 name|be
 operator|.
-name|getCiteKey
+name|getCiteKeyOptional
 argument_list|()
 argument_list|)
 expr_stmt|;

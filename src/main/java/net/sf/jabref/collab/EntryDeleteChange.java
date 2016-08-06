@@ -318,8 +318,13 @@ literal|"Modified entry: "
 operator|+
 name|memEntry
 operator|.
-name|getCiteKey
+name|getCiteKeyOptional
 argument_list|()
+operator|.
+name|orElse
+argument_list|(
+literal|"<no BibTeX key set>"
+argument_list|)
 operator|+
 literal|"\n Modified locally: "
 operator|+

@@ -306,12 +306,12 @@ name|assertEquals
 argument_list|(
 name|e
 operator|.
-name|getCiteKey
+name|getCiteKeyOptional
 argument_list|()
 argument_list|,
 name|x
 operator|.
-name|getCiteKey
+name|getCiteKeyOptional
 argument_list|()
 argument_list|)
 expr_stmt|;

@@ -1901,11 +1901,11 @@ name|JobName
 argument_list|(
 name|entry
 operator|.
-name|map
+name|flatMap
 argument_list|(
 name|BibEntry
 operator|::
-name|getCiteKey
+name|getCiteKeyOptional
 argument_list|)
 operator|.
 name|orElse

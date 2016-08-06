@@ -1276,8 +1276,13 @@ operator|.
 name|getEntry
 argument_list|()
 operator|.
-name|getCiteKey
+name|getCiteKeyOptional
 argument_list|()
+operator|.
+name|orElse
+argument_list|(
+literal|""
+argument_list|)
 argument_list|,
 literal|true
 argument_list|)

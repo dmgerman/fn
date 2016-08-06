@@ -484,8 +484,13 @@ operator|.
 name|getEntry
 argument_list|()
 operator|.
-name|getCiteKey
+name|getCiteKeyOptional
 argument_list|()
+operator|.
+name|orElse
+argument_list|(
+literal|""
+argument_list|)
 expr_stmt|;
 name|model
 index|[

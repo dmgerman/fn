@@ -841,11 +841,16 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
+name|Optional
+operator|.
+name|of
+argument_list|(
 literal|"testArticle"
+argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getCiteKey
+name|getCiteKeyOptional
 argument_list|()
 argument_list|)
 expr_stmt|;
