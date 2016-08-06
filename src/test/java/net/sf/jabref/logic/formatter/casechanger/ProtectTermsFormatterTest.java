@@ -18,6 +18,48 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|protectedterms
+operator|.
+name|ProtectedTermsLoader
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|protectedterms
+operator|.
+name|ProtectedTermsPreferences
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|junit
@@ -71,6 +113,39 @@ name|void
 name|setUp
 parameter_list|()
 block|{
+name|ProtectTermsFormatter
+operator|.
+name|setProtectedTermsLoader
+argument_list|(
+operator|new
+name|ProtectedTermsLoader
+argument_list|(
+operator|new
+name|ProtectedTermsPreferences
+argument_list|(
+name|ProtectedTermsLoader
+operator|.
+name|getInternalLists
+argument_list|()
+argument_list|,
+name|Collections
+operator|.
+name|emptyList
+argument_list|()
+argument_list|,
+name|Collections
+operator|.
+name|emptyList
+argument_list|()
+argument_list|,
+name|Collections
+operator|.
+name|emptyList
+argument_list|()
+argument_list|)
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|formatter
 operator|=
 operator|new
@@ -80,10 +155,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|test ()
+DECL|method|testSingleWord ()
 specifier|public
 name|void
-name|test
+name|testSingleWord
 parameter_list|()
 block|{
 name|assertEquals
@@ -98,6 +173,15 @@ literal|"VLSI"
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|testDoNotProtectAlreadyProtected ()
+specifier|public
+name|void
+name|testDoNotProtectAlreadyProtected
+parameter_list|()
+block|{
 name|assertEquals
 argument_list|(
 literal|"{VLSI}"
@@ -110,6 +194,15 @@ literal|"{VLSI}"
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|testCaseSensitivity ()
+specifier|public
+name|void
+name|testCaseSensitivity
+parameter_list|()
+block|{
 name|assertEquals
 argument_list|(
 literal|"VLsI"
@@ -122,6 +215,60 @@ literal|"VLsI"
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|formatExample ()
+specifier|public
+name|void
+name|formatExample
+parameter_list|()
+block|{
+name|assertEquals
+argument_list|(
+literal|"In {CDMA}"
+argument_list|,
+name|formatter
+operator|.
+name|format
+argument_list|(
+name|formatter
+operator|.
+name|getExampleInput
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|testCorrectOrderingOfTerms ()
+specifier|public
+name|void
+name|testCorrectOrderingOfTerms
+parameter_list|()
+block|{
+name|assertEquals
+argument_list|(
+literal|"{3GPP} {3G}"
+argument_list|,
+name|formatter
+operator|.
+name|format
+argument_list|(
+literal|"3GPP 3G"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|test ()
+specifier|public
+name|void
+name|test
+parameter_list|()
+block|{
 name|assertEquals
 argument_list|(
 literal|"{VLSI} {VLSI}"
@@ -155,30 +302,6 @@ operator|.
 name|format
 argument_list|(
 literal|"{Testing BPEL Engine Performance: A Survey}"
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-annotation|@
-name|Test
-DECL|method|formatExample ()
-specifier|public
-name|void
-name|formatExample
-parameter_list|()
-block|{
-name|assertEquals
-argument_list|(
-literal|"In {CDMA}"
-argument_list|,
-name|formatter
-operator|.
-name|format
-argument_list|(
-name|formatter
-operator|.
-name|getExampleInput
-argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;

@@ -154,6 +154,22 @@ name|jabref
 operator|.
 name|logic
 operator|.
+name|protectedterms
+operator|.
+name|ProtectedTermsLoader
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
 name|remote
 operator|.
 name|server
@@ -247,6 +263,13 @@ specifier|public
 specifier|static
 name|JournalAbbreviationLoader
 name|journalAbbreviationLoader
+decl_stmt|;
+comment|/**      * This field is initialized upon startup.      * Only GUI code is allowed to access it, logic code should use dependency injection.      */
+DECL|field|protectedTermsLoader
+specifier|public
+specifier|static
+name|ProtectedTermsLoader
+name|protectedTermsLoader
 decl_stmt|;
 comment|// Key binding preferences
 DECL|field|keyPrefs
