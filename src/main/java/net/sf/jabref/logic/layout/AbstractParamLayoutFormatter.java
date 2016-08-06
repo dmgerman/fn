@@ -60,12 +60,14 @@ name|SEPARATOR
 init|=
 literal|','
 decl_stmt|;
-comment|/**      * Parse an argument string and return the parts of the argument. The parts are      * separated by commas, and escaped commas are reduced to literal commas.      * @param arg The argument string.      * @return An array of strings representing the parts of the argument.      */
+comment|/**      * Parse an argument string and return the parts of the argument. The parts are      * separated by commas, and escaped commas are reduced to literal commas.      * @param arg The argument string.      * @return A list of strings representing the parts of the argument.      */
 DECL|method|parseArgument (String arg)
 specifier|protected
 specifier|static
+name|List
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|parseArgument
 parameter_list|(
 name|String
@@ -321,18 +323,6 @@ argument_list|)
 expr_stmt|;
 return|return
 name|parts
-operator|.
-name|toArray
-argument_list|(
-operator|new
-name|String
-index|[
-name|parts
-operator|.
-name|size
-argument_list|()
-index|]
-argument_list|)
 return|;
 block|}
 block|}
