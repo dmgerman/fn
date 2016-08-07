@@ -515,6 +515,22 @@ return|return
 literal|""
 return|;
 block|}
+annotation|@
+name|Override
+DECL|method|toString ()
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+name|name
+operator|+
+literal|"="
+operator|+
+name|content
+return|;
+block|}
 block|}
 end_class
 

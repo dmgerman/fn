@@ -40,13 +40,17 @@ end_import
 
 begin_import
 import|import
-name|javax
+name|net
 operator|.
-name|swing
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
 operator|.
 name|undo
 operator|.
-name|AbstractUndoableEdit
+name|AbstractUndoableJabRefEdit
 import|;
 end_import
 
@@ -107,7 +111,7 @@ DECL|class|UndoableMoveGroup
 class|class
 name|UndoableMoveGroup
 extends|extends
-name|AbstractUndoableEdit
+name|AbstractUndoableJabRefEdit
 block|{
 DECL|field|root
 specifier|private
@@ -211,48 +215,13 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|getUndoPresentationName ()
+DECL|method|getPresentationName ()
 specifier|public
 name|String
-name|getUndoPresentationName
+name|getPresentationName
 parameter_list|()
 block|{
 return|return
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Undo"
-argument_list|)
-operator|+
-literal|": "
-operator|+
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"move group"
-argument_list|)
-return|;
-block|}
-annotation|@
-name|Override
-DECL|method|getRedoPresentationName ()
-specifier|public
-name|String
-name|getRedoPresentationName
-parameter_list|()
-block|{
-return|return
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Redo"
-argument_list|)
-operator|+
-literal|": "
-operator|+
 name|Localization
 operator|.
 name|lang

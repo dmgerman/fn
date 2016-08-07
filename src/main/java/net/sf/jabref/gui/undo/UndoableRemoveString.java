@@ -20,18 +20,6 @@ end_package
 
 begin_import
 import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|undo
-operator|.
-name|AbstractUndoableEdit
-import|;
-end_import
-
-begin_import
-import|import
 name|net
 operator|.
 name|sf
@@ -57,6 +45,24 @@ operator|.
 name|l10n
 operator|.
 name|Localization
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|util
+operator|.
+name|strings
+operator|.
+name|StringUtil
 import|;
 end_import
 
@@ -142,7 +148,7 @@ specifier|public
 class|class
 name|UndoableRemoveString
 extends|extends
-name|AbstractUndoableEdit
+name|AbstractUndoableJabRefEdit
 block|{
 DECL|field|base
 specifier|private
@@ -213,10 +219,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|getUndoPresentationName ()
+DECL|method|getPresentationName ()
 specifier|public
 name|String
-name|getUndoPresentationName
+name|getPresentationName
 parameter_list|()
 block|{
 return|return
@@ -224,42 +230,17 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Undo"
-argument_list|)
-operator|+
-literal|": "
-operator|+
-name|Localization
+literal|"remove string %0"
+argument_list|,
+name|StringUtil
 operator|.
-name|lang
+name|boldHTML
 argument_list|(
-literal|"remove string"
-argument_list|)
-return|;
-block|}
-annotation|@
-name|Override
-DECL|method|getRedoPresentationName ()
-specifier|public
-name|String
-name|getRedoPresentationName
-parameter_list|()
-block|{
-return|return
-name|Localization
+name|string
 operator|.
-name|lang
-argument_list|(
-literal|"Redo"
+name|toString
+argument_list|()
 argument_list|)
-operator|+
-literal|": "
-operator|+
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"remove string"
 argument_list|)
 return|;
 block|}

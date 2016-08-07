@@ -2092,18 +2092,6 @@ argument_list|>
 name|searchAutoCompleter
 decl_stmt|;
 comment|// The undo manager.
-DECL|field|undoManager
-specifier|private
-specifier|final
-name|CountingUndoManager
-name|undoManager
-init|=
-operator|new
-name|CountingUndoManager
-argument_list|(
-name|this
-argument_list|)
-decl_stmt|;
 DECL|field|undoAction
 specifier|private
 specifier|final
@@ -2122,6 +2110,16 @@ name|redoAction
 init|=
 operator|new
 name|RedoAction
+argument_list|()
+decl_stmt|;
+DECL|field|undoManager
+specifier|private
+specifier|final
+name|CountingUndoManager
+name|undoManager
+init|=
+operator|new
+name|CountingUndoManager
 argument_list|()
 decl_stmt|;
 DECL|field|previousEntries

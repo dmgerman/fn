@@ -20,13 +20,17 @@ end_package
 
 begin_import
 import|import
-name|javax
+name|net
 operator|.
-name|swing
+name|sf
 operator|.
-name|undo
+name|jabref
 operator|.
-name|AbstractUndoableEdit
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
 import|;
 end_import
 
@@ -40,9 +44,11 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|l10n
+name|util
 operator|.
-name|Localization
+name|strings
+operator|.
+name|StringUtil
 import|;
 end_import
 
@@ -114,7 +120,7 @@ specifier|public
 class|class
 name|UndoableFieldChange
 extends|extends
-name|AbstractUndoableEdit
+name|AbstractUndoableJabRefEdit
 block|{
 DECL|field|LOGGER
 specifier|private
@@ -243,59 +249,54 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"change field"
+literal|"change field %0 of entry %1 from %2 to %3"
+argument_list|,
+name|StringUtil
+operator|.
+name|boldHTML
+argument_list|(
+name|field
 argument_list|)
-return|;
-block|}
-annotation|@
-name|Override
-DECL|method|getUndoPresentationName ()
-specifier|public
-name|String
-name|getUndoPresentationName
-parameter_list|()
-block|{
-return|return
+argument_list|,
+name|StringUtil
+operator|.
+name|boldHTML
+argument_list|(
+name|entry
+operator|.
+name|getCiteKey
+argument_list|()
+argument_list|,
+literal|""
+argument_list|)
+argument_list|,
+name|StringUtil
+operator|.
+name|boldHTML
+argument_list|(
+name|oldValue
+argument_list|,
 name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Undo"
+literal|"undefined"
 argument_list|)
-operator|+
-literal|": "
-operator|+
+argument_list|)
+argument_list|,
+name|StringUtil
+operator|.
+name|boldHTML
+argument_list|(
+name|newValue
+argument_list|,
 name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"change field"
+literal|"undefined"
 argument_list|)
-return|;
-block|}
-annotation|@
-name|Override
-DECL|method|getRedoPresentationName ()
-specifier|public
-name|String
-name|getRedoPresentationName
-parameter_list|()
-block|{
-return|return
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Redo"
 argument_list|)
-operator|+
-literal|": "
-operator|+
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"change field"
 argument_list|)
 return|;
 block|}

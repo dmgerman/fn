@@ -3084,6 +3084,62 @@ name|string
 argument_list|)
 return|;
 block|}
+comment|/**      * Return string enclosed in HTML bold tags      */
+DECL|method|boldHTML (String input)
+specifier|public
+specifier|static
+name|String
+name|boldHTML
+parameter_list|(
+name|String
+name|input
+parameter_list|)
+block|{
+return|return
+literal|"<b>"
+operator|+
+name|input
+operator|+
+literal|"</b>"
+return|;
+block|}
+comment|/**      * Return string enclosed in HTML bold tags  if not null, otherwise return alternative text in HTML bold tags      */
+DECL|method|boldHTML (String input, String alternative)
+specifier|public
+specifier|static
+name|String
+name|boldHTML
+parameter_list|(
+name|String
+name|input
+parameter_list|,
+name|String
+name|alternative
+parameter_list|)
+block|{
+if|if
+condition|(
+name|input
+operator|==
+literal|null
+condition|)
+block|{
+return|return
+literal|"<b>"
+operator|+
+name|alternative
+operator|+
+literal|"</b>"
+return|;
+block|}
+return|return
+literal|"<b>"
+operator|+
+name|input
+operator|+
+literal|"</b>"
+return|;
+block|}
 block|}
 end_class
 
