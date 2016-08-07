@@ -36,6 +36,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|List
 import|;
 end_import
@@ -70,6 +80,7 @@ name|LayoutFormatter
 block|{
 DECL|field|formatters
 specifier|private
+specifier|final
 name|List
 argument_list|<
 name|LayoutFormatter
@@ -82,7 +93,13 @@ specifier|public
 name|CompositeFormat
 parameter_list|()
 block|{
-comment|// Nothing
+name|formatters
+operator|=
+name|Collections
+operator|.
+name|emptyList
+argument_list|()
+expr_stmt|;
 block|}
 DECL|method|CompositeFormat (LayoutFormatter first, LayoutFormatter second)
 specifier|public
@@ -144,13 +161,6 @@ name|result
 init|=
 name|fieldText
 decl_stmt|;
-if|if
-condition|(
-name|formatters
-operator|!=
-literal|null
-condition|)
-block|{
 for|for
 control|(
 name|LayoutFormatter
@@ -168,7 +178,6 @@ argument_list|(
 name|result
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 return|return
 name|result
