@@ -22,18 +22,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|preferences
 operator|.
 name|JabRefPreferences
@@ -151,12 +139,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|Globals
-operator|.
-name|prefs
-operator|=
-name|prefs
-expr_stmt|;
 name|abbreviations
 operator|=
 operator|new
@@ -201,8 +183,6 @@ name|JournalAbbreviationPreferences
 operator|.
 name|fromPreferences
 argument_list|(
-name|Globals
-operator|.
 name|prefs
 argument_list|)
 argument_list|)
@@ -254,8 +234,6 @@ name|JournalAbbreviationPreferences
 operator|.
 name|fromPreferences
 argument_list|(
-name|Globals
-operator|.
 name|prefs
 argument_list|)
 argument_list|)
@@ -290,8 +268,6 @@ name|JournalAbbreviationPreferences
 operator|.
 name|fromPreferences
 argument_list|(
-name|Globals
-operator|.
 name|prefs
 argument_list|)
 argument_list|)
@@ -326,8 +302,6 @@ name|JournalAbbreviationPreferences
 operator|.
 name|fromPreferences
 argument_list|(
-name|Globals
-operator|.
 name|prefs
 argument_list|)
 argument_list|)
@@ -362,8 +336,6 @@ name|JournalAbbreviationPreferences
 operator|.
 name|fromPreferences
 argument_list|(
-name|Globals
-operator|.
 name|prefs
 argument_list|)
 argument_list|)

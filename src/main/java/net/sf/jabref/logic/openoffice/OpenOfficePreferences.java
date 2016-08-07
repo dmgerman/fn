@@ -600,6 +600,22 @@ name|OO_BIBLIOGRAPHY_STYLE_FILE
 argument_list|)
 return|;
 block|}
+DECL|method|clearCurrentStyle ()
+specifier|public
+name|void
+name|clearCurrentStyle
+parameter_list|()
+block|{
+name|preferences
+operator|.
+name|remove
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|OO_BIBLIOGRAPHY_STYLE_FILE
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|setCurrentStyle (String path)
 specifier|public
 name|void

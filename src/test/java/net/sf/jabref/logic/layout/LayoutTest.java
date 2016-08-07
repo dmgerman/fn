@@ -190,6 +190,11 @@ specifier|public
 class|class
 name|LayoutTest
 block|{
+DECL|field|prefs
+specifier|private
+name|LayoutFormatterPreferences
+name|prefs
+decl_stmt|;
 comment|/**      * Initialize Preferences.      */
 annotation|@
 name|Before
@@ -198,15 +203,6 @@ specifier|public
 name|void
 name|setUp
 parameter_list|()
-block|{
-if|if
-condition|(
-name|Globals
-operator|.
-name|prefs
-operator|==
-literal|null
-condition|)
 block|{
 name|Globals
 operator|.
@@ -217,7 +213,25 @@ operator|.
 name|getInstance
 argument_list|()
 expr_stmt|;
-block|}
+name|prefs
+operator|=
+name|LayoutFormatterPreferences
+operator|.
+name|fromPreferences
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|getInstance
+argument_list|()
+argument_list|,
+name|mock
+argument_list|(
+name|JournalAbbreviationLoader
+operator|.
+name|class
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 comment|/**      * Return Test data.      */
 DECL|method|t1BibtexString ()
@@ -360,21 +374,7 @@ name|LayoutHelper
 argument_list|(
 name|sr
 argument_list|,
-name|LayoutFormatterPreferences
-operator|.
-name|fromPreferences
-argument_list|(
-name|Globals
-operator|.
 name|prefs
-argument_list|,
-name|mock
-argument_list|(
-name|JournalAbbreviationLoader
-operator|.
-name|class
-argument_list|)
-argument_list|)
 argument_list|)
 operator|.
 name|getLayoutFromText

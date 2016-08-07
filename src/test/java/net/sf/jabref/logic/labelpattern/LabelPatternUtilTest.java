@@ -3379,13 +3379,12 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testCheckLegalKey2 ()
+DECL|method|testCheckLegalKeyEnforceLegal ()
 specifier|public
 name|void
-name|testCheckLegalKey2
+name|testCheckLegalKeyEnforceLegal
 parameter_list|()
 block|{
-comment|// Enforce legal keys
 name|assertEquals
 argument_list|(
 literal|"AAAA"
@@ -3428,7 +3427,15 @@ literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// Do not enforce legal keys
+block|}
+annotation|@
+name|Test
+DECL|method|testCheckLegalKeyDoNotEnforceLegal ()
+specifier|public
+name|void
+name|testCheckLegalKeyDoNotEnforceLegal
+parameter_list|()
+block|{
 name|assertEquals
 argument_list|(
 literal|"AAAA"
@@ -3471,7 +3478,15 @@ literal|false
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// Check null input
+block|}
+annotation|@
+name|Test
+DECL|method|testCheckLegalNullInNullOut ()
+specifier|public
+name|void
+name|testCheckLegalNullInNullOut
+parameter_list|()
+block|{
 name|assertNull
 argument_list|(
 name|LabelPatternUtil
@@ -3493,53 +3508,6 @@ argument_list|(
 literal|null
 argument_list|,
 literal|false
-argument_list|)
-argument_list|)
-expr_stmt|;
-comment|// Use preferences setting
-name|assertEquals
-argument_list|(
-literal|"AAAA"
-argument_list|,
-name|LabelPatternUtil
-operator|.
-name|checkLegalKey
-argument_list|(
-literal|"AA AA"
-argument_list|,
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getBoolean
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|ENFORCE_LEGAL_BIBTEX_KEY
-argument_list|)
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|""
-argument_list|,
-name|LabelPatternUtil
-operator|.
-name|checkLegalKey
-argument_list|(
-literal|"\n\t\r"
-argument_list|,
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getBoolean
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|ENFORCE_LEGAL_BIBTEX_KEY
-argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
