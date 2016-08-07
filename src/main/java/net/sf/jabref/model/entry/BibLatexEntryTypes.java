@@ -4363,7 +4363,9 @@ name|FieldName
 operator|.
 name|NUMBER
 argument_list|,
-literal|"isrn"
+name|FieldName
+operator|.
+name|ISRN
 argument_list|,
 name|FieldName
 operator|.
@@ -4468,7 +4470,9 @@ name|FieldName
 operator|.
 name|MONTH
 argument_list|,
-literal|"isrn"
+name|FieldName
+operator|.
+name|ISRN
 argument_list|,
 name|FieldName
 operator|.
@@ -5536,7 +5540,9 @@ name|FieldName
 operator|.
 name|NUMBER
 argument_list|,
-literal|"isrn"
+name|FieldName
+operator|.
+name|ISRN
 argument_list|,
 name|FieldName
 operator|.
@@ -5642,7 +5648,9 @@ name|FieldName
 operator|.
 name|MONTH
 argument_list|,
-literal|"isrn"
+name|FieldName
+operator|.
+name|ISRN
 argument_list|,
 name|FieldName
 operator|.

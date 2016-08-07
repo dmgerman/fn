@@ -256,7 +256,7 @@ name|hasField
 argument_list|(
 name|FieldName
 operator|.
-name|MARKED
+name|MARKED_INTERNAL
 argument_list|)
 condition|)
 block|{
@@ -269,7 +269,7 @@ name|getFieldOptional
 argument_list|(
 name|FieldName
 operator|.
-name|MARKED
+name|MARKED_INTERNAL
 argument_list|)
 operator|.
 name|get
@@ -514,7 +514,7 @@ name|be
 argument_list|,
 name|FieldName
 operator|.
-name|MARKED
+name|MARKED_INTERNAL
 argument_list|,
 name|be
 operator|.
@@ -522,7 +522,7 @@ name|getFieldOptional
 argument_list|(
 name|FieldName
 operator|.
-name|MARKED
+name|MARKED_INTERNAL
 argument_list|)
 operator|.
 name|orElse
@@ -540,7 +540,7 @@ name|setField
 argument_list|(
 name|FieldName
 operator|.
-name|MARKED
+name|MARKED_INTERNAL
 argument_list|,
 name|newValue
 argument_list|)
@@ -574,7 +574,7 @@ name|hasField
 argument_list|(
 name|FieldName
 operator|.
-name|MARKED
+name|MARKED_INTERNAL
 argument_list|)
 condition|)
 block|{
@@ -587,7 +587,7 @@ name|getFieldOptional
 argument_list|(
 name|FieldName
 operator|.
-name|MARKED
+name|MARKED_INTERNAL
 argument_list|)
 operator|.
 name|get
@@ -869,7 +869,7 @@ name|be
 argument_list|,
 name|FieldName
 operator|.
-name|MARKED
+name|MARKED_INTERNAL
 argument_list|,
 name|be
 operator|.
@@ -877,7 +877,7 @@ name|getFieldOptional
 argument_list|(
 name|FieldName
 operator|.
-name|MARKED
+name|MARKED_INTERNAL
 argument_list|)
 operator|.
 name|get
@@ -900,7 +900,7 @@ name|clearField
 argument_list|(
 name|FieldName
 operator|.
-name|MARKED
+name|MARKED_INTERNAL
 argument_list|)
 expr_stmt|;
 block|}
@@ -912,7 +912,7 @@ name|setField
 argument_list|(
 name|FieldName
 operator|.
-name|MARKED
+name|MARKED_INTERNAL
 argument_list|,
 name|newValue
 argument_list|)
@@ -1056,7 +1056,7 @@ name|be
 argument_list|,
 name|FieldName
 operator|.
-name|MARKED
+name|MARKED_INTERNAL
 argument_list|,
 name|be
 operator|.
@@ -1064,7 +1064,7 @@ name|getFieldOptional
 argument_list|(
 name|FieldName
 operator|.
-name|MARKED
+name|MARKED_INTERNAL
 argument_list|)
 operator|.
 name|orElse
@@ -1082,7 +1082,7 @@ name|clearField
 argument_list|(
 name|FieldName
 operator|.
-name|MARKED
+name|MARKED_INTERNAL
 argument_list|)
 expr_stmt|;
 block|}
@@ -1099,7 +1099,7 @@ name|be
 argument_list|,
 name|FieldName
 operator|.
-name|MARKED
+name|MARKED_INTERNAL
 argument_list|,
 name|be
 operator|.
@@ -1107,7 +1107,7 @@ name|getFieldOptional
 argument_list|(
 name|FieldName
 operator|.
-name|MARKED
+name|MARKED_INTERNAL
 argument_list|)
 operator|.
 name|orElse
@@ -1125,7 +1125,7 @@ name|setField
 argument_list|(
 name|FieldName
 operator|.
-name|MARKED
+name|MARKED_INTERNAL
 argument_list|,
 name|newVal
 argument_list|)
@@ -1151,7 +1151,7 @@ name|hasField
 argument_list|(
 name|FieldName
 operator|.
-name|MARKED
+name|MARKED_INTERNAL
 argument_list|)
 condition|)
 block|{
@@ -1168,7 +1168,7 @@ name|getFieldOptional
 argument_list|(
 name|FieldName
 operator|.
-name|MARKED
+name|MARKED_INTERNAL
 argument_list|)
 operator|.
 name|get

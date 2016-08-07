@@ -276,14 +276,14 @@ name|MERGE_ENTRIES
 init|=
 literal|"mergeEntries"
 decl_stmt|;
-DECL|field|MERGE_DOI
+DECL|field|MERGE_WITH_FETCHED_ENTRY
 specifier|public
 specifier|static
 specifier|final
 name|String
-name|MERGE_DOI
+name|MERGE_WITH_FETCHED_ENTRY
 init|=
-literal|"mergeWithDOI"
+literal|"mergeWithFetchedEntry"
 decl_stmt|;
 DECL|field|MOVE_TO_GROUP
 specifier|public

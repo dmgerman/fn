@@ -102,6 +102,12 @@ name|CROSSREF
 block|,
 DECL|enumConstant|ISO_DATE
 name|ISO_DATE
+block|,
+DECL|enumConstant|ISBN
+name|ISBN
+block|,
+DECL|enumConstant|EPRINT
+name|EPRINT
 block|;
 DECL|field|ALL_OPTS
 specifier|public
