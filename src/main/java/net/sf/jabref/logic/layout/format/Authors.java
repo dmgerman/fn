@@ -611,8 +611,10 @@ name|String
 name|arg
 parameter_list|)
 block|{
+name|List
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|parts
 init|=
 name|AbstractParamLayoutFormatter

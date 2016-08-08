@@ -138,6 +138,36 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|FieldName
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|preferences
+operator|.
+name|JabRefPreferences
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -215,7 +245,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|method|ExplicitGroup (String name, GroupHierarchyType context)
+DECL|method|ExplicitGroup (String name, GroupHierarchyType context, JabRefPreferences jabRefPreferences)
 specifier|public
 name|ExplicitGroup
 parameter_list|(
@@ -224,6 +254,9 @@ name|name
 parameter_list|,
 name|GroupHierarchyType
 name|context
+parameter_list|,
+name|JabRefPreferences
+name|jabRefPreferences
 parameter_list|)
 throws|throws
 name|ParseException
@@ -232,7 +265,9 @@ name|super
 argument_list|(
 name|name
 argument_list|,
-literal|"groups"
+name|FieldName
+operator|.
+name|GROUPS
 argument_list|,
 name|name
 argument_list|,
@@ -241,10 +276,12 @@ argument_list|,
 literal|false
 argument_list|,
 name|context
+argument_list|,
+name|jabRefPreferences
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|fromString (String s)
+DECL|method|fromString (String s, JabRefPreferences jabRefPreferences)
 specifier|public
 specifier|static
 name|ExplicitGroup
@@ -252,6 +289,9 @@ name|fromString
 parameter_list|(
 name|String
 name|s
+parameter_list|,
+name|JabRefPreferences
+name|jabRefPreferences
 parameter_list|)
 throws|throws
 name|ParseException
@@ -343,6 +383,8 @@ name|getByNumber
 argument_list|(
 name|context
 argument_list|)
+argument_list|,
+name|jabRefPreferences
 argument_list|)
 decl_stmt|;
 name|newGroup
@@ -438,6 +480,8 @@ argument_list|()
 argument_list|,
 name|getContext
 argument_list|()
+argument_list|,
+name|jabRefPreferences
 argument_list|)
 decl_stmt|;
 name|copy
@@ -487,6 +531,17 @@ name|Object
 name|o
 parameter_list|)
 block|{
+if|if
+condition|(
+name|this
+operator|==
+name|o
+condition|)
+block|{
+return|return
+literal|true
+return|;
+block|}
 if|if
 condition|(
 operator|!
@@ -733,11 +788,14 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|getShortDescription ()
+DECL|method|getShortDescription (boolean showDynamic)
 specifier|public
 name|String
 name|getShortDescription
-parameter_list|()
+parameter_list|(
+name|boolean
+name|showDynamic
+parameter_list|)
 block|{
 name|StringBuilder
 name|sb
@@ -859,19 +917,6 @@ operator|.
 name|ID
 return|;
 block|}
-DECL|method|getNumEntries ()
-specifier|public
-name|int
-name|getNumEntries
-parameter_list|()
-block|{
-return|return
-name|legacyEntryKeys
-operator|.
-name|size
-argument_list|()
-return|;
-block|}
 annotation|@
 name|Override
 DECL|method|hashCode ()
@@ -885,6 +930,18 @@ name|super
 operator|.
 name|hashCode
 argument_list|()
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|isDynamic ()
+specifier|public
+name|boolean
+name|isDynamic
+parameter_list|()
+block|{
+return|return
+literal|false
 return|;
 block|}
 block|}

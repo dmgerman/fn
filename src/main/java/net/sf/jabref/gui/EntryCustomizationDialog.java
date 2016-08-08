@@ -338,20 +338,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|bibtex
-operator|.
-name|InternalBibtexFields
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|gui
 operator|.
 name|keyboard
@@ -467,6 +453,22 @@ operator|.
 name|entry
 operator|.
 name|EntryUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|InternalBibtexFields
 import|;
 end_import
 
@@ -2633,7 +2635,8 @@ block|{
 comment|// Invalidate associated cached entry editor
 name|bp
 operator|.
-name|entryEditors
+name|getEntryEditors
+argument_list|()
 operator|.
 name|remove
 argument_list|(
@@ -2708,7 +2711,8 @@ name|AbstractTableModel
 operator|)
 name|basePanel
 operator|.
-name|mainTable
+name|getMainTable
+argument_list|()
 operator|.
 name|getModel
 argument_list|()

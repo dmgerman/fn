@@ -42,6 +42,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Set
 import|;
 end_import
@@ -262,32 +272,24 @@ block|{
 name|super
 argument_list|()
 expr_stmt|;
+name|Optional
+argument_list|<
 name|String
+argument_list|>
 name|key
 init|=
 name|tmpEntry
 operator|.
-name|getCiteKey
+name|getCiteKeyOptional
 argument_list|()
 decl_stmt|;
 if|if
 condition|(
 name|key
-operator|==
-literal|null
-condition|)
-block|{
-name|name
-operator|=
-name|Localization
 operator|.
-name|lang
-argument_list|(
-literal|"Modified entry"
-argument_list|)
-expr_stmt|;
-block|}
-else|else
+name|isPresent
+argument_list|()
+condition|)
 block|{
 name|name
 operator|=
@@ -301,8 +303,23 @@ operator|+
 literal|": '"
 operator|+
 name|key
+operator|.
+name|get
+argument_list|()
 operator|+
 literal|'\''
+expr_stmt|;
+block|}
+else|else
+block|{
+name|name
+operator|=
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Modified entry"
+argument_list|)
 expr_stmt|;
 block|}
 comment|// We know that tmpEntry is not equal to diskEntry. Check if it has been modified
@@ -349,8 +366,13 @@ literal|"Modified entry: "
 operator|+
 name|memEntry
 operator|.
-name|getCiteKey
+name|getCiteKeyOptional
 argument_list|()
+operator|.
+name|orElse
+argument_list|(
+literal|"<no BibTeX key set>"
+argument_list|)
 operator|+
 literal|"\n Modified locally: "
 operator|+

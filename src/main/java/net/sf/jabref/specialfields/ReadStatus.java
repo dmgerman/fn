@@ -247,10 +247,6 @@ argument_list|(
 name|values
 argument_list|)
 expr_stmt|;
-name|TEXT_DONE_PATTERN
-operator|=
-literal|"Set read status to '%0' for %1 entries"
-expr_stmt|;
 block|}
 DECL|method|getInstance ()
 specifier|public
@@ -299,6 +295,23 @@ return|;
 block|}
 annotation|@
 name|Override
+DECL|method|getLocalizedFieldName ()
+specifier|public
+name|String
+name|getLocalizedFieldName
+parameter_list|()
+block|{
+return|return
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Read status"
+argument_list|)
+return|;
+block|}
+annotation|@
+name|Override
 DECL|method|getRepresentingIcon ()
 specifier|public
 name|Icon
@@ -309,40 +322,6 @@ return|return
 name|this
 operator|.
 name|icon
-return|;
-block|}
-annotation|@
-name|Override
-DECL|method|getToolTip ()
-specifier|public
-name|String
-name|getToolTip
-parameter_list|()
-block|{
-return|return
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Read status"
-argument_list|)
-return|;
-block|}
-annotation|@
-name|Override
-DECL|method|getMenuString ()
-specifier|public
-name|String
-name|getMenuString
-parameter_list|()
-block|{
-return|return
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Read status"
-argument_list|)
 return|;
 block|}
 block|}

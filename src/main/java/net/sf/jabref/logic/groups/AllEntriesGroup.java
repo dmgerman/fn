@@ -46,22 +46,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|importer
-operator|.
-name|fileformat
-operator|.
-name|ParseException
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|logic
 operator|.
 name|l10n
@@ -136,8 +120,6 @@ parameter_list|(
 name|String
 name|s
 parameter_list|)
-throws|throws
-name|ParseException
 block|{
 if|if
 condition|(
@@ -213,7 +195,10 @@ parameter_list|)
 block|{
 comment|// not supported -> ignore
 return|return
-literal|null
+name|Optional
+operator|.
+name|empty
+argument_list|()
 return|;
 block|}
 annotation|@
@@ -235,7 +220,10 @@ parameter_list|)
 block|{
 comment|// not supported -> ignore
 return|return
-literal|null
+name|Optional
+operator|.
+name|empty
+argument_list|()
 return|;
 block|}
 annotation|@
@@ -330,11 +318,14 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|getShortDescription ()
+DECL|method|getShortDescription (boolean showDynamic)
 specifier|public
 name|String
 name|getShortDescription
-parameter_list|()
+parameter_list|(
+name|boolean
+name|showDynamic
+parameter_list|)
 block|{
 return|return
 name|Localization

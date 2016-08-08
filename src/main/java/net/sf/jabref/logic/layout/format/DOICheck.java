@@ -123,7 +123,7 @@ name|map
 argument_list|(
 name|DOI
 operator|::
-name|getURLAsASCIIString
+name|getURIAsASCIIString
 argument_list|)
 operator|.
 name|orElse

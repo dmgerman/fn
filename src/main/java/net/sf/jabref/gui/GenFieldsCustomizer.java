@@ -218,18 +218,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|JabRefPreferences
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|gui
 operator|.
 name|entryeditor
@@ -264,9 +252,9 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|help
+name|keyboard
 operator|.
-name|HelpFiles
+name|KeyBinding
 import|;
 end_import
 
@@ -278,11 +266,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
+name|logic
 operator|.
-name|keyboard
+name|help
 operator|.
-name|KeyBinding
+name|HelpFile
 import|;
 end_import
 
@@ -315,6 +303,20 @@ operator|.
 name|labelpattern
 operator|.
 name|LabelPatternUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|preferences
+operator|.
+name|JabRefPreferences
 import|;
 end_import
 
@@ -517,7 +519,7 @@ operator|=
 operator|new
 name|HelpAction
 argument_list|(
-name|HelpFiles
+name|HelpFile
 operator|.
 name|GENERAL_FIELDS
 argument_list|)
@@ -1168,6 +1170,17 @@ name|parts
 index|[
 literal|1
 index|]
+argument_list|,
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|ENFORCE_LEGAL_BIBTEX_KEY
+argument_list|)
 argument_list|)
 decl_stmt|;
 if|if

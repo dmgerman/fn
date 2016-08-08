@@ -76,6 +76,18 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|Globals
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|gui
 operator|.
 name|BasePanel
@@ -143,6 +155,22 @@ operator|.
 name|l10n
 operator|.
 name|Localization
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|labelpattern
+operator|.
+name|LabelPatternPreferences
 import|;
 end_import
 
@@ -248,7 +276,7 @@ name|void
 name|run
 parameter_list|()
 block|{
-comment|// Find all multiple occurences of BibTeX keys.
+comment|// Find all multiple occurrences of BibTeX keys.
 name|dupes
 operator|=
 operator|new
@@ -566,6 +594,17 @@ expr_stmt|;
 block|}
 block|}
 block|}
+elseif|else
+if|if
+condition|(
+name|rdld
+operator|.
+name|isCancelPressed
+argument_list|()
+condition|)
+block|{
+break|break;
+block|}
 block|}
 comment|// Do the actual generation:
 if|if
@@ -625,6 +664,15 @@ name|getDatabase
 argument_list|()
 argument_list|,
 name|entry
+argument_list|,
+name|LabelPatternPreferences
+operator|.
+name|fromPreferences
+argument_list|(
+name|Globals
+operator|.
+name|prefs
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|ce
@@ -658,7 +706,8 @@ argument_list|()
 expr_stmt|;
 name|panel
 operator|.
-name|undoManager
+name|getUndoManager
+argument_list|()
 operator|.
 name|addEdit
 argument_list|(

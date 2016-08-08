@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2016 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -24,7 +24,7 @@ name|java
 operator|.
 name|io
 operator|.
-name|IOException
+name|BufferedReader
 import|;
 end_import
 
@@ -34,7 +34,41 @@ name|java
 operator|.
 name|io
 operator|.
-name|InputStream
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|Charset
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|file
+operator|.
+name|Path
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Collections
 import|;
 end_import
 
@@ -50,6 +84,28 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Objects
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|Globals
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -58,7 +114,7 @@ name|jabref
 operator|.
 name|importer
 operator|.
-name|OutputPrinter
+name|ParserResult
 import|;
 end_import
 
@@ -90,7 +146,7 @@ name|logic
 operator|.
 name|xmp
 operator|.
-name|XMPUtil
+name|XMPPreferences
 import|;
 end_import
 
@@ -102,11 +158,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|model
+name|logic
 operator|.
-name|entry
+name|xmp
 operator|.
-name|BibEntry
+name|XMPUtil
 import|;
 end_import
 
@@ -139,67 +195,214 @@ literal|"XMP-annotated PDF"
 argument_list|)
 return|;
 block|}
-comment|/**      * Returns a list of all BibtexEntries found in the inputstream.      */
 annotation|@
 name|Override
-DECL|method|importEntries (InputStream in, OutputPrinter status)
+DECL|method|getExtensions ()
 specifier|public
 name|List
 argument_list|<
-name|BibEntry
+name|String
 argument_list|>
-name|importEntries
+name|getExtensions
+parameter_list|()
+block|{
+return|return
+name|Collections
+operator|.
+name|singletonList
+argument_list|(
+literal|".pdf"
+argument_list|)
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|importDatabase (BufferedReader reader)
+specifier|public
+name|ParserResult
+name|importDatabase
 parameter_list|(
-name|InputStream
-name|in
-parameter_list|,
-name|OutputPrinter
-name|status
+name|BufferedReader
+name|reader
 parameter_list|)
 throws|throws
 name|IOException
 block|{
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|reader
+argument_list|)
+expr_stmt|;
+throw|throw
+operator|new
+name|UnsupportedOperationException
+argument_list|(
+literal|"PdfXmpImporter does not support importDatabase(BufferedReader reader)."
+operator|+
+literal|"Instead use importDatabase(Path filePath, Charset defaultEncoding)."
+argument_list|)
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|importDatabase (Path filePath, Charset defaultEncoding)
+specifier|public
+name|ParserResult
+name|importDatabase
+parameter_list|(
+name|Path
+name|filePath
+parameter_list|,
+name|Charset
+name|defaultEncoding
+parameter_list|)
+block|{
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|filePath
+argument_list|)
+expr_stmt|;
+try|try
+block|{
 return|return
+operator|new
+name|ParserResult
+argument_list|(
 name|XMPUtil
 operator|.
 name|readXMP
 argument_list|(
-name|in
+name|filePath
+argument_list|,
+name|XMPPreferences
+operator|.
+name|fromPreferences
+argument_list|(
+name|Globals
+operator|.
+name|prefs
+argument_list|)
+argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**      * Returns whether the given stream contains data that is a.) a pdf and b.)      * contains at least one BibEntry.      */
+catch|catch
+parameter_list|(
+name|IOException
+name|exception
+parameter_list|)
+block|{
+return|return
+name|ParserResult
+operator|.
+name|fromErrorMessage
+argument_list|(
+name|exception
+operator|.
+name|getLocalizedMessage
+argument_list|()
+argument_list|)
+return|;
+block|}
+block|}
 annotation|@
 name|Override
-DECL|method|isRecognizedFormat (InputStream in)
-specifier|public
+DECL|method|isRecognizedFormat (BufferedReader reader)
+specifier|protected
 name|boolean
 name|isRecognizedFormat
 parameter_list|(
-name|InputStream
-name|in
+name|BufferedReader
+name|reader
 parameter_list|)
 throws|throws
 name|IOException
 block|{
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|reader
+argument_list|)
+expr_stmt|;
+throw|throw
+operator|new
+name|UnsupportedOperationException
+argument_list|(
+literal|"PdfXmpImporter does not support isRecognizedFormat(BufferedReader reader)."
+operator|+
+literal|"Instead use isRecognizedFormat(Path filePath, Charset defaultEncoding)."
+argument_list|)
+throw|;
+block|}
+comment|/**      * Returns whether the given stream contains data that is a.) a pdf and b.)      * contains at least one BibEntry.      */
+annotation|@
+name|Override
+DECL|method|isRecognizedFormat (Path filePath, Charset defaultEncoding)
+specifier|public
+name|boolean
+name|isRecognizedFormat
+parameter_list|(
+name|Path
+name|filePath
+parameter_list|,
+name|Charset
+name|defaultEncoding
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|filePath
+argument_list|)
+expr_stmt|;
 return|return
 name|XMPUtil
 operator|.
 name|hasMetadata
 argument_list|(
-name|in
+name|filePath
+argument_list|,
+name|XMPPreferences
+operator|.
+name|fromPreferences
+argument_list|(
+name|Globals
+operator|.
+name|prefs
+argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**      * String used to identify this import filter on the command line.      *       * @return "xmp"      */
-DECL|method|getCommandLineId ()
+annotation|@
+name|Override
+DECL|method|getId ()
 specifier|public
 name|String
-name|getCommandLineId
+name|getId
 parameter_list|()
 block|{
 return|return
 literal|"xmp"
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|getDescription ()
+specifier|public
+name|String
+name|getDescription
+parameter_list|()
+block|{
+return|return
+literal|"Wraps the XMPUtility function to be used as an ImportFormat."
 return|;
 block|}
 block|}

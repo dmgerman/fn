@@ -32,6 +32,16 @@ name|org
 operator|.
 name|junit
 operator|.
+name|Before
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Test
 import|;
 end_import
@@ -48,14 +58,24 @@ name|NormalizePagesFormatterTest
 block|{
 DECL|field|formatter
 specifier|private
-specifier|final
 name|NormalizePagesFormatter
 name|formatter
-init|=
+decl_stmt|;
+annotation|@
+name|Before
+DECL|method|setUp ()
+specifier|public
+name|void
+name|setUp
+parameter_list|()
+block|{
+name|formatter
+operator|=
 operator|new
 name|NormalizePagesFormatter
 argument_list|()
-decl_stmt|;
+expr_stmt|;
+block|}
 annotation|@
 name|Test
 DECL|method|formatSinglePageResultsInNoChange ()
@@ -138,6 +158,29 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+DECL|method|removeWhitespace ()
+specifier|public
+name|void
+name|removeWhitespace
+parameter_list|()
+block|{
+name|expectCorrect
+argument_list|(
+literal|"   1  "
+argument_list|,
+literal|"1"
+argument_list|)
+expr_stmt|;
+name|expectCorrect
+argument_list|(
+literal|"   1 -- 2  "
+argument_list|,
+literal|"1--2"
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
 DECL|method|ignoreWhitespaceInPageNumbersWithDoubleDash ()
 specifier|public
 name|void
@@ -202,10 +245,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|doesNotRemoveLetters ()
+DECL|method|doNotRemoveLetters ()
 specifier|public
 name|void
-name|doesNotRemoveLetters
+name|doNotRemoveLetters
 parameter_list|()
 block|{
 name|expectCorrect
@@ -218,10 +261,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|replacesLongDashWithDoubleDash ()
+DECL|method|replaceLongDashWithDoubleDash ()
 specifier|public
 name|void
-name|replacesLongDashWithDoubleDash
+name|replaceLongDashWithDoubleDash
 parameter_list|()
 block|{
 name|expectCorrect
@@ -229,6 +272,38 @@ argument_list|(
 literal|"1 \u2014 50"
 argument_list|,
 literal|"1--50"
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|removePagePrefix ()
+specifier|public
+name|void
+name|removePagePrefix
+parameter_list|()
+block|{
+name|expectCorrect
+argument_list|(
+literal|"p.50"
+argument_list|,
+literal|"50"
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|removePagesPrefix ()
+specifier|public
+name|void
+name|removePagesPrefix
+parameter_list|()
+block|{
+name|expectCorrect
+argument_list|(
+literal|"pp.50"
+argument_list|,
+literal|"50"
 argument_list|)
 expr_stmt|;
 block|}

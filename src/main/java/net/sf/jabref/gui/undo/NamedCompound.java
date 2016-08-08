@@ -138,6 +138,8 @@ name|getUndoPresentationName
 parameter_list|()
 block|{
 return|return
+literal|"<html>"
+operator|+
 name|Localization
 operator|.
 name|lang
@@ -148,6 +150,13 @@ operator|+
 literal|": "
 operator|+
 name|name
+operator|+
+literal|"<ul>"
+operator|+
+name|getPresentationName
+argument_list|()
+operator|+
+literal|"</ul></html>"
 return|;
 block|}
 annotation|@
@@ -159,6 +168,8 @@ name|getRedoPresentationName
 parameter_list|()
 block|{
 return|return
+literal|"<html>"
+operator|+
 name|Localization
 operator|.
 name|lang
@@ -169,17 +180,59 @@ operator|+
 literal|": "
 operator|+
 name|name
+operator|+
+literal|"<ul>"
+operator|+
+name|getPresentationName
+argument_list|()
+operator|+
+literal|"</ul></html>"
 return|;
 block|}
-comment|/**      * Returns the name of this compound, without the Undo or Redo prefix.      */
-DECL|method|getNameOnly ()
+annotation|@
+name|Override
+DECL|method|getPresentationName ()
 specifier|public
 name|String
-name|getNameOnly
+name|getPresentationName
 parameter_list|()
 block|{
+name|StringBuilder
+name|sb
+init|=
+operator|new
+name|StringBuilder
+argument_list|()
+decl_stmt|;
+for|for
+control|(
+name|UndoableEdit
+name|edit
+range|:
+name|edits
+control|)
+block|{
+name|sb
+operator|.
+name|append
+argument_list|(
+literal|"<li>"
+argument_list|)
+operator|.
+name|append
+argument_list|(
+name|edit
+operator|.
+name|getPresentationName
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 return|return
-name|name
+name|sb
+operator|.
+name|toString
+argument_list|()
 return|;
 block|}
 block|}

@@ -42,7 +42,27 @@ name|java
 operator|.
 name|util
 operator|.
+name|Arrays
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|HashSet
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
 import|;
 end_import
 
@@ -92,12 +112,14 @@ specifier|final
 name|String
 name|desc
 decl_stmt|;
-DECL|method|OpenFileFilter (String[] extensions)
+DECL|method|OpenFileFilter (List<String> extensions)
 specifier|public
 name|OpenFileFilter
 parameter_list|(
+name|List
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|extensions
 parameter_list|)
 block|{
@@ -113,7 +135,8 @@ name|numExt
 init|=
 name|extensions
 operator|.
-name|length
+name|size
+argument_list|()
 decl_stmt|;
 if|if
 condition|(
@@ -134,9 +157,11 @@ operator|.
 name|append
 argument_list|(
 name|extensions
-index|[
+operator|.
+name|get
+argument_list|(
 literal|0
-index|]
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|extSet
@@ -144,9 +169,11 @@ operator|.
 name|add
 argument_list|(
 name|extensions
-index|[
+operator|.
+name|get
+argument_list|(
 literal|0
-index|]
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -177,9 +204,11 @@ operator|.
 name|append
 argument_list|(
 name|extensions
-index|[
+operator|.
+name|get
+argument_list|(
 name|curExt
-index|]
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|extSet
@@ -187,9 +216,11 @@ operator|.
 name|add
 argument_list|(
 name|extensions
-index|[
+operator|.
+name|get
+argument_list|(
 name|curExt
-index|]
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -208,51 +239,30 @@ parameter_list|()
 block|{
 name|this
 argument_list|(
-operator|new
-name|String
-index|[]
-block|{
+name|Arrays
+operator|.
+name|asList
+argument_list|(
 literal|".bib"
-block|,
+argument_list|,
 literal|".dat"
-block|,
+argument_list|,
 comment|// silverplatter ending
 literal|".txt"
-block|,
-comment|// windows puts ".txt" extentions and for scifinder
+argument_list|,
+comment|// windows puts ".txt" extensions and for scifinder
 literal|".ris"
-block|,
+argument_list|,
 literal|".ref"
-block|,
+argument_list|,
 comment|// refer/endnote format
 literal|".fcgi"
-block|,
+argument_list|,
 comment|// default for pubmed
 literal|".bibx"
-block|,
+argument_list|,
 comment|// default for BibTeXML
 literal|".xml"
-block|}
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|OpenFileFilter (String s)
-specifier|public
-name|OpenFileFilter
-parameter_list|(
-name|String
-name|s
-parameter_list|)
-block|{
-name|this
-argument_list|(
-name|s
-operator|.
-name|split
-argument_list|(
-literal|"[, ]+"
-argument_list|,
-literal|0
 argument_list|)
 argument_list|)
 expr_stmt|;

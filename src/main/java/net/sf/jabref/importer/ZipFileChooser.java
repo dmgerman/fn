@@ -50,9 +50,43 @@ begin_import
 import|import
 name|java
 operator|.
-name|text
+name|time
 operator|.
-name|SimpleDateFormat
+name|ZoneId
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|time
+operator|.
+name|ZonedDateTime
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|time
+operator|.
+name|format
+operator|.
+name|DateTimeFormatter
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|time
+operator|.
+name|format
+operator|.
+name|FormatStyle
 import|;
 end_import
 
@@ -63,6 +97,16 @@ operator|.
 name|util
 operator|.
 name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Arrays
 import|;
 end_import
 
@@ -337,7 +381,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|/**      * New Zip file chooser.      *      * @param owner  Owner of the file chooser      * @param zipFile  Zip-Fle to choose from, must be readable      */
+comment|/**      * New ZIP file chooser.      *      * @param owner  Owner of the file chooser      * @param zipFile  ZIP-Fle to choose from, must be readable      */
 DECL|method|ZipFileChooser (ImportCustomizationDialog importCustomizationDialog, ZipFile zipFile)
 specifier|public
 name|ZipFileChooser
@@ -673,7 +717,7 @@ name|setCliId
 argument_list|(
 name|importFormat
 operator|.
-name|getCLIId
+name|getId
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -859,12 +903,14 @@ name|table
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Entries that can be selected with this dialog.      *      * @param zipFile  Zip-File      * @return  entries that can be selected      */
+comment|/**      * Entries that can be selected with this dialog.      *      * @param zipFile  ZIP-File      * @return  entries that can be selected      */
 DECL|method|getSelectableZipEntries (ZipFile zipFile)
 specifier|private
 specifier|static
+name|List
+argument_list|<
 name|ZipEntry
-index|[]
+argument_list|>
 name|getSelectableZipEntries
 parameter_list|(
 name|ZipFile
@@ -938,18 +984,6 @@ block|}
 block|}
 return|return
 name|entries
-operator|.
-name|toArray
-argument_list|(
-operator|new
-name|ZipEntry
-index|[
-name|entries
-operator|.
-name|size
-argument_list|()
-index|]
-argument_list|)
 return|;
 block|}
 comment|/*      *  (non-Javadoc)      * @see java.awt.Component#getSize()      */
@@ -983,41 +1017,45 @@ block|{
 DECL|field|columnNames
 specifier|private
 specifier|final
+name|List
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|columnNames
 init|=
-operator|new
-name|String
-index|[]
-block|{
+name|Arrays
+operator|.
+name|asList
+argument_list|(
 name|Localization
 operator|.
 name|lang
 argument_list|(
 literal|"Name"
 argument_list|)
-block|,
+argument_list|,
 name|Localization
 operator|.
 name|lang
 argument_list|(
 literal|"Last modified"
 argument_list|)
-block|,
+argument_list|,
 name|Localization
 operator|.
 name|lang
 argument_list|(
 literal|"Size"
 argument_list|)
-block|}
+argument_list|)
 decl_stmt|;
 DECL|field|rows
 specifier|private
 specifier|final
+name|List
+argument_list|<
 name|ZipEntry
-index|[]
+argument_list|>
 name|rows
 decl_stmt|;
 DECL|field|zipFile
@@ -1026,14 +1064,16 @@ specifier|final
 name|ZipFile
 name|zipFile
 decl_stmt|;
-DECL|method|ZipFileChooserTableModel (ZipFile zipFile, ZipEntry[] rows)
+DECL|method|ZipFileChooserTableModel (ZipFile zipFile, List<ZipEntry> rows)
 name|ZipFileChooserTableModel
 parameter_list|(
 name|ZipFile
 name|zipFile
 parameter_list|,
+name|List
+argument_list|<
 name|ZipEntry
-index|[]
+argument_list|>
 name|rows
 parameter_list|)
 block|{
@@ -1065,7 +1105,8 @@ block|{
 return|return
 name|columnNames
 operator|.
-name|length
+name|size
+argument_list|()
 return|;
 block|}
 comment|/*          *  (non-Javadoc)          * @see javax.swing.table.TableModel#getRowCount()          */
@@ -1082,7 +1123,8 @@ name|this
 operator|.
 name|rows
 operator|.
-name|length
+name|size
+argument_list|()
 return|;
 block|}
 comment|/*          *  (non-Javadoc)          * @see javax.swing.table.TableModel#getColumnName(int)          */
@@ -1099,12 +1141,14 @@ parameter_list|)
 block|{
 return|return
 name|columnNames
-index|[
+operator|.
+name|get
+argument_list|(
 name|col
-index|]
+argument_list|)
 return|;
 block|}
-comment|/**          * Zip-File entry at the given row index.          *          * @param rowIndex  row index          * @return  Zip file entry          */
+comment|/**          * ZIP-File entry at the given row index.          *          * @param rowIndex  row index          * @return  ZIP file entry          */
 DECL|method|getZipEntry (int rowIndex)
 specifier|public
 name|ZipEntry
@@ -1118,12 +1162,14 @@ return|return
 name|this
 operator|.
 name|rows
-index|[
+operator|.
+name|get
+argument_list|(
 name|rowIndex
-index|]
+argument_list|)
 return|;
 block|}
-comment|/**          * Zip file which contains all entries of this model.          *          * @return zip file          */
+comment|/**          * ZIP file which contains all entries of this model.          *          * @return zip file          */
 DECL|method|getZipFile ()
 specifier|public
 name|ZipFile
@@ -1189,12 +1235,9 @@ condition|)
 block|{
 name|value
 operator|=
-name|SimpleDateFormat
+name|ZonedDateTime
 operator|.
-name|getDateTimeInstance
-argument_list|()
-operator|.
-name|format
+name|ofInstant
 argument_list|(
 operator|new
 name|Date
@@ -1203,6 +1246,26 @@ name|entry
 operator|.
 name|getTime
 argument_list|()
+argument_list|)
+operator|.
+name|toInstant
+argument_list|()
+argument_list|,
+name|ZoneId
+operator|.
+name|systemDefault
+argument_list|()
+argument_list|)
+operator|.
+name|format
+argument_list|(
+name|DateTimeFormatter
+operator|.
+name|ofLocalizedDateTime
+argument_list|(
+name|FormatStyle
+operator|.
+name|MEDIUM
 argument_list|)
 argument_list|)
 expr_stmt|;

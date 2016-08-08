@@ -46,6 +46,8 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|preferences
+operator|.
 name|JabRefPreferences
 import|;
 end_import
@@ -99,7 +101,6 @@ literal|null
 condition|)
 block|{
 return|return;
-comment|// no change detected
 block|}
 name|String
 name|filePath

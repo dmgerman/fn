@@ -242,18 +242,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|JabRefPreferences
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|logic
 operator|.
 name|l10n
@@ -277,6 +265,20 @@ operator|.
 name|strings
 operator|.
 name|StringUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|preferences
+operator|.
+name|JabRefPreferences
 import|;
 end_import
 
@@ -473,7 +475,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Import_metadata_from:"
+literal|"Import metadata from:"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -510,7 +512,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Choose_the_source_for_the_metadata_import"
+literal|"Choose the source for the metadata import"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -677,7 +679,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Create_blank_entry_linking_the_PDF"
+literal|"Create blank entry linking the PDF"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -690,7 +692,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Create_entry_based_on_XMP_data"
+literal|"Create entry based on XMP data"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -703,7 +705,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Create_entry_based_on_content"
+literal|"Create entry based on content"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -716,7 +718,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Only_attach_PDF"
+literal|"Only attach PDF"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -797,7 +799,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Create New Entry"
+literal|"Create new entry"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -836,7 +838,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Update_Existing_Entry"
+literal|"Update existing entry"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1030,7 +1032,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Import_Metadata_From_PDF"
+literal|"Import metadata from PDF"
 argument_list|)
 argument_list|)
 expr_stmt|;

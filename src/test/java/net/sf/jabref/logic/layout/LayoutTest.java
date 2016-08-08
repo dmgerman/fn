@@ -64,18 +64,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|JabRefPreferences
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|importer
 operator|.
 name|ParserResult
@@ -110,7 +98,7 @@ name|logic
 operator|.
 name|journals
 operator|.
-name|JournalAbbreviationRepository
+name|JournalAbbreviationLoader
 import|;
 end_import
 
@@ -127,6 +115,20 @@ operator|.
 name|entry
 operator|.
 name|BibEntry
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|preferences
+operator|.
+name|JabRefPreferences
 import|;
 end_import
 
@@ -188,6 +190,11 @@ specifier|public
 class|class
 name|LayoutTest
 block|{
+DECL|field|prefs
+specifier|private
+name|LayoutFormatterPreferences
+name|prefs
+decl_stmt|;
 comment|/**      * Initialize Preferences.      */
 annotation|@
 name|Before
@@ -196,15 +203,6 @@ specifier|public
 name|void
 name|setUp
 parameter_list|()
-block|{
-if|if
-condition|(
-name|Globals
-operator|.
-name|prefs
-operator|==
-literal|null
-condition|)
 block|{
 name|Globals
 operator|.
@@ -215,7 +213,25 @@ operator|.
 name|getInstance
 argument_list|()
 expr_stmt|;
-block|}
+name|prefs
+operator|=
+name|LayoutFormatterPreferences
+operator|.
+name|fromPreferences
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|getInstance
+argument_list|()
+argument_list|,
+name|mock
+argument_list|(
+name|JournalAbbreviationLoader
+operator|.
+name|class
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 comment|/**      * Return Test data.      */
 DECL|method|t1BibtexString ()
@@ -241,15 +257,9 @@ literal|"  timestamp = {2006.05.29},\n"
 operator|+
 literal|"  url = {http://james.howison.name/publications.html},\n"
 operator|+
-literal|"  abstract = {\\~{n}\n"
+literal|"  abstract = {\\~{n} \\~n "
 operator|+
-literal|"\\~n\n"
-operator|+
-literal|"\\'i\n"
-operator|+
-literal|"\\i\n"
-operator|+
-literal|"\\i}\n"
+literal|"\\'i \\i \\i}\n"
 operator|+
 literal|"}\n"
 return|;
@@ -364,12 +374,7 @@ name|LayoutHelper
 argument_list|(
 name|sr
 argument_list|,
-name|mock
-argument_list|(
-name|JournalAbbreviationRepository
-operator|.
-name|class
-argument_list|)
+name|prefs
 argument_list|)
 operator|.
 name|getLayoutFromText
@@ -441,8 +446,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
 DECL|method|testHTMLChar ()
 specifier|public
 name|void
@@ -488,15 +491,29 @@ argument_list|,
 name|layoutText
 argument_list|)
 expr_stmt|;
+block|}
+annotation|@
+name|Test
+annotation|@
+name|Ignore
+DECL|method|testHTMLCharDoubleLineBreak ()
+specifier|public
+name|void
+name|testHTMLCharDoubleLineBreak
+parameter_list|()
+throws|throws
+name|IOException
+block|{
+name|String
 name|layoutText
-operator|=
+init|=
 name|layout
 argument_list|(
 literal|"\\begin{author}\\format[HTMLChars]{\\author}\\end{author} "
 argument_list|,
 literal|"@other{bla, author={This\nis\na\n\ntext}}"
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|Assert
 operator|.
 name|assertEquals
@@ -540,8 +557,6 @@ block|}
 comment|/**      * [ 1495181 ] Dotless i and tilde not handled in preview      *      * @throws Exception      */
 annotation|@
 name|Test
-annotation|@
-name|Ignore
 DECL|method|testLayout ()
 specifier|public
 name|void
@@ -565,7 +580,7 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-literal|"<font face=\"arial\"><BR><BR><b>Abstract:</b>&ntilde;&ntilde;&iacute;&#305;&#305;</font>"
+literal|"<font face=\"arial\"><BR><BR><b>Abstract:</b>&ntilde;&ntilde;&iacute;&imath;&imath;</font>"
 argument_list|,
 name|layoutText
 argument_list|)

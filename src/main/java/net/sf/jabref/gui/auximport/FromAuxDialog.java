@@ -4,7 +4,7 @@ comment|/*  Copyright (C) 2004 R. Nagel  Copyright (C) 2016 JabRef Contributors 
 end_comment
 
 begin_comment
-comment|// A wizard dialog for generating a new sub database from existing TeX aux file
+comment|// A wizard dialog for generating a new sub database from existing TeX AUX file
 end_comment
 
 begin_comment
@@ -71,6 +71,16 @@ operator|.
 name|io
 operator|.
 name|File
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Collections
 import|;
 end_import
 
@@ -1649,7 +1659,12 @@ name|getText
 argument_list|()
 argument_list|)
 argument_list|,
+name|Collections
+operator|.
+name|singletonList
+argument_list|(
 literal|".aux"
+argument_list|)
 argument_list|,
 name|JFileChooser
 operator|.

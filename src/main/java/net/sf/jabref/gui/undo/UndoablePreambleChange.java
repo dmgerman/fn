@@ -20,18 +20,6 @@ end_package
 
 begin_import
 import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|undo
-operator|.
-name|AbstractUndoableEdit
-import|;
-end_import
-
-begin_import
-import|import
 name|net
 operator|.
 name|sf
@@ -86,7 +74,7 @@ specifier|public
 class|class
 name|UndoablePreambleChange
 extends|extends
-name|AbstractUndoableEdit
+name|AbstractUndoableJabRefEdit
 block|{
 DECL|field|base
 specifier|private
@@ -156,48 +144,13 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|getUndoPresentationName ()
+DECL|method|getPresentationName ()
 specifier|public
 name|String
-name|getUndoPresentationName
+name|getPresentationName
 parameter_list|()
 block|{
 return|return
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Undo"
-argument_list|)
-operator|+
-literal|": "
-operator|+
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"change preamble"
-argument_list|)
-return|;
-block|}
-annotation|@
-name|Override
-DECL|method|getRedoPresentationName ()
-specifier|public
-name|String
-name|getRedoPresentationName
-parameter_list|()
-block|{
-return|return
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Redo"
-argument_list|)
-operator|+
-literal|": "
-operator|+
 name|Localization
 operator|.
 name|lang

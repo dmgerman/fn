@@ -451,7 +451,7 @@ return|return;
 block|}
 name|parentFrame
 operator|.
-name|preferences
+name|showPreferencesDialog
 argument_list|()
 expr_stmt|;
 block|}

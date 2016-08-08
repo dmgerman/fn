@@ -312,22 +312,6 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|help
-operator|.
-name|HelpFiles
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
 name|keyboard
 operator|.
 name|KeyBinder
@@ -360,9 +344,41 @@ name|jabref
 operator|.
 name|logic
 operator|.
+name|help
+operator|.
+name|HelpFile
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
 name|l10n
 operator|.
 name|Localization
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|FieldName
 import|;
 end_import
 
@@ -487,6 +503,7 @@ argument_list|()
 decl_stmt|;
 DECL|field|WORD_FIRSTLINE_TEXT
 specifier|private
+specifier|static
 specifier|final
 name|String
 name|WORD_FIRSTLINE_TEXT
@@ -500,6 +517,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|FIELD_FIRST_LINE
 specifier|private
+specifier|static
 specifier|final
 name|String
 name|FIELD_FIRST_LINE
@@ -806,8 +824,8 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|/**      *      * @param owner the parent Window (Dialog or Frame)      * @param frame the JabRef Frame      * @param panel the currently selected BasePanel      * @param modal should this dialog be modal?      * @param metaData The metadata of the current database      * @param fieldName the field this selector is initialized for. May be null.      */
-DECL|method|ContentSelectorDialog2 (Window owner, JabRefFrame frame, BasePanel panel, boolean modal, MetaData metaData, String fieldName)
+comment|/**      *      * @param owner the parent Window (Dialog or Frame)      * @param frame the JabRef Frame      * @param panel the currently selected BasePanel      * @param modal should this dialog be modal?      * @param fieldName the field this selector is initialized for. May be null.      */
+DECL|method|ContentSelectorDialog2 (Window owner, JabRefFrame frame, BasePanel panel, boolean modal, String fieldName)
 specifier|public
 name|ContentSelectorDialog2
 parameter_list|(
@@ -823,9 +841,6 @@ parameter_list|,
 name|boolean
 name|modal
 parameter_list|,
-name|MetaData
-name|metaData
-parameter_list|,
 name|String
 name|fieldName
 parameter_list|)
@@ -838,7 +853,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Setup selectors"
+literal|"Manage content selectors"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -853,7 +868,13 @@ name|this
 operator|.
 name|metaData
 operator|=
-name|metaData
+name|panel
+operator|.
+name|getBibDatabaseContext
+argument_list|()
+operator|.
+name|getMetaData
+argument_list|()
 expr_stmt|;
 name|this
 operator|.
@@ -1309,7 +1330,7 @@ name|LOGGER
 operator|.
 name|info
 argument_list|(
-literal|"Could not apply changes in \"Setup selectors\""
+literal|"Could not apply changes in \"Manage content selectors\""
 argument_list|,
 name|ex
 argument_list|)
@@ -1378,7 +1399,7 @@ name|LOGGER
 operator|.
 name|info
 argument_list|(
-literal|"Could not apply changes in \"Setup selectors\""
+literal|"Could not apply changes in \"Manage content selectors\""
 argument_list|,
 name|ex
 argument_list|)
@@ -1680,12 +1701,22 @@ block|}
 comment|// Cycle through all fields that we have created listmodels for:
 for|for
 control|(
+name|Map
+operator|.
+name|Entry
+argument_list|<
 name|String
-name|fieldName
+argument_list|,
+name|DefaultListModel
+argument_list|<
+name|String
+argument_list|>
+argument_list|>
+name|entry
 range|:
 name|wordListModels
 operator|.
-name|keySet
+name|entrySet
 argument_list|()
 control|)
 block|{
@@ -1693,7 +1724,10 @@ comment|// For each field name, store the values:
 if|if
 condition|(
 operator|(
-name|fieldName
+name|entry
+operator|.
+name|getKey
+argument_list|()
 operator|==
 literal|null
 operator|)
@@ -1702,7 +1736,10 @@ name|FIELD_FIRST_LINE
 operator|.
 name|equals
 argument_list|(
-name|fieldName
+name|entry
+operator|.
+name|getKey
+argument_list|()
 argument_list|)
 condition|)
 block|{
@@ -1714,12 +1751,10 @@ name|String
 argument_list|>
 name|lm
 init|=
-name|wordListModels
+name|entry
 operator|.
-name|get
-argument_list|(
-name|fieldName
-argument_list|)
+name|getValue
+argument_list|()
 decl_stmt|;
 name|int
 name|start
@@ -1771,7 +1806,10 @@ name|metaData
 operator|.
 name|getContentSelectors
 argument_list|(
-name|fieldName
+name|entry
+operator|.
+name|getKey
+argument_list|()
 argument_list|)
 operator|.
 name|isEmpty
@@ -1833,14 +1871,17 @@ name|metaData
 operator|.
 name|setContentSelectors
 argument_list|(
-name|fieldName
+name|entry
+operator|.
+name|getKey
+argument_list|()
 argument_list|,
 name|data
 argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|// System.out.println("TODO: remove metadata for removed selector field.");
+comment|// TODO: remove metadata for removed selector field.
 name|panel
 operator|.
 name|markNonUndoableBaseChanged
@@ -1958,28 +1999,36 @@ name|fieldListModel
 operator|.
 name|addElement
 argument_list|(
-literal|"author"
+name|FieldName
+operator|.
+name|AUTHOR
 argument_list|)
 expr_stmt|;
 name|fieldListModel
 operator|.
 name|addElement
 argument_list|(
-literal|"journal"
+name|FieldName
+operator|.
+name|JOURNAL
 argument_list|)
 expr_stmt|;
 name|fieldListModel
 operator|.
 name|addElement
 argument_list|(
-literal|"keywords"
+name|FieldName
+operator|.
+name|KEYWORDS
 argument_list|)
 expr_stmt|;
 name|fieldListModel
 operator|.
 name|addElement
 argument_list|(
-literal|"publisher"
+name|FieldName
+operator|.
+name|PUBLISHER
 argument_list|)
 expr_stmt|;
 block|}
@@ -2675,7 +2724,7 @@ argument_list|(
 operator|new
 name|HelpAction
 argument_list|(
-name|HelpFiles
+name|HelpFile
 operator|.
 name|CONTENT_SELECTOR
 argument_list|)

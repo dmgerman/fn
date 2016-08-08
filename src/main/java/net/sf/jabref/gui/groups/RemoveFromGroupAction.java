@@ -96,20 +96,6 @@ name|Localization
 import|;
 end_import
 
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|util
-operator|.
-name|Util
-import|;
-end_import
-
 begin_class
 DECL|class|RemoveFromGroupAction
 specifier|public
@@ -221,7 +207,7 @@ comment|// warn if assignment has undesired side effects (modifies a field != ke
 if|if
 condition|(
 operator|!
-name|Util
+name|WarnAssignmentSideEffects
 operator|.
 name|warnAssignmentSideEffects
 argument_list|(
@@ -273,7 +259,8 @@ comment|// no changed made
 block|}
 name|mPanel
 operator|.
-name|undoManager
+name|getUndoManager
+argument_list|()
 operator|.
 name|addEdit
 argument_list|(

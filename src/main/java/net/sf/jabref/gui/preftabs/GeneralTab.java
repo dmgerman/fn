@@ -54,9 +54,11 @@ begin_import
 import|import
 name|java
 operator|.
-name|text
+name|time
 operator|.
-name|SimpleDateFormat
+name|format
+operator|.
+name|DateTimeFormatter
 import|;
 end_import
 
@@ -190,18 +192,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|JabRefPreferences
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|gui
 operator|.
 name|help
@@ -218,11 +208,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
+name|logic
 operator|.
 name|help
 operator|.
-name|HelpFiles
+name|HelpFile
 import|;
 end_import
 
@@ -271,6 +261,20 @@ operator|.
 name|database
 operator|.
 name|BibDatabaseMode
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|preferences
+operator|.
+name|JabRefPreferences
 import|;
 end_import
 
@@ -1066,7 +1070,7 @@ init|=
 operator|new
 name|HelpAction
 argument_list|(
-name|HelpFiles
+name|HelpFile
 operator|.
 name|OWNER
 argument_list|)
@@ -1135,7 +1139,7 @@ operator|=
 operator|new
 name|HelpAction
 argument_list|(
-name|HelpFiles
+name|HelpFile
 operator|.
 name|TIMESTAMP
 argument_list|)
@@ -1877,7 +1881,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Memory Stick Mode"
+literal|"Memory stick mode"
 argument_list|)
 argument_list|,
 name|JOptionPane
@@ -2189,8 +2193,9 @@ block|{
 try|try
 block|{
 comment|// Test if date format is legal:
-operator|new
-name|SimpleDateFormat
+name|DateTimeFormatter
+operator|.
+name|ofPattern
 argument_list|(
 name|timeStampFormat
 operator|.

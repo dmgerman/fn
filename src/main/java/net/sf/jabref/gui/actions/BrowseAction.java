@@ -42,6 +42,26 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|swing
@@ -176,7 +196,10 @@ decl_stmt|;
 DECL|field|extension
 specifier|private
 specifier|final
+name|List
+argument_list|<
 name|String
+argument_list|>
 name|extension
 decl_stmt|;
 DECL|method|buildForDir (JFrame frame, JTextField tc)
@@ -204,7 +227,10 @@ literal|true
 argument_list|,
 literal|null
 argument_list|,
-literal|""
+name|Collections
+operator|.
+name|emptyList
+argument_list|()
 argument_list|)
 return|;
 block|}
@@ -230,7 +256,10 @@ literal|true
 argument_list|,
 literal|null
 argument_list|,
-literal|""
+name|Collections
+operator|.
+name|emptyList
+argument_list|()
 argument_list|)
 return|;
 block|}
@@ -256,11 +285,14 @@ literal|false
 argument_list|,
 literal|null
 argument_list|,
-literal|""
+name|Collections
+operator|.
+name|emptyList
+argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|buildForFile (JTextField tc, JComponent focusTarget, String extension)
+DECL|method|buildForFile (JTextField tc, JComponent focusTarget, List<String> extension)
 specifier|public
 specifier|static
 name|BrowseAction
@@ -272,7 +304,10 @@ parameter_list|,
 name|JComponent
 name|focusTarget
 parameter_list|,
+name|List
+argument_list|<
 name|String
+argument_list|>
 name|extension
 parameter_list|)
 block|{
@@ -321,7 +356,7 @@ literal|null
 argument_list|)
 return|;
 block|}
-DECL|method|BrowseAction (JFrame frame, JTextField tc, boolean dir, JComponent focusTarget, String extension)
+DECL|method|BrowseAction (JFrame frame, JTextField tc, boolean dir, JComponent focusTarget, List<String> extension)
 specifier|private
 name|BrowseAction
 parameter_list|(
@@ -337,7 +372,10 @@ parameter_list|,
 name|JComponent
 name|focusTarget
 parameter_list|,
+name|List
+argument_list|<
 name|String
+argument_list|>
 name|extension
 parameter_list|)
 block|{

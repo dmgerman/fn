@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
+comment|/*  Copyright (C) 2003-2016 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
 end_comment
 
 begin_package
@@ -42,9 +42,9 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
+name|util
 operator|.
-name|InputStream
+name|Collections
 import|;
 end_import
 
@@ -74,6 +74,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Objects
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|regex
 operator|.
 name|Pattern
@@ -90,21 +100,7 @@ name|jabref
 operator|.
 name|importer
 operator|.
-name|ImportFormatReader
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|importer
-operator|.
-name|OutputPrinter
+name|ParserResult
 import|;
 end_import
 
@@ -121,6 +117,22 @@ operator|.
 name|entry
 operator|.
 name|BibEntry
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|FieldName
 import|;
 end_import
 
@@ -150,7 +162,6 @@ argument_list|(
 literal|"^\\s*TI- "
 argument_list|)
 decl_stmt|;
-comment|/**      * Return the name of this import format.      */
 annotation|@
 name|Override
 DECL|method|getFormatName ()
@@ -163,47 +174,63 @@ return|return
 literal|"Copac"
 return|;
 block|}
-comment|/*      * (non-Javadoc)      *      * @see net.sf.jabref.imports.ImportFormat#getCLIId()      */
 annotation|@
 name|Override
-DECL|method|getCLIId ()
+DECL|method|getExtensions ()
+specifier|public
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|getExtensions
+parameter_list|()
+block|{
+return|return
+name|Collections
+operator|.
+name|singletonList
+argument_list|(
+literal|".txt"
+argument_list|)
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|getId ()
 specifier|public
 name|String
-name|getCLIId
+name|getId
 parameter_list|()
 block|{
 return|return
 literal|"cpc"
 return|;
 block|}
-comment|/**      * Check whether the source is in the correct format for this importer.      */
 annotation|@
 name|Override
-DECL|method|isRecognizedFormat (InputStream stream)
+DECL|method|getDescription ()
+specifier|public
+name|String
+name|getDescription
+parameter_list|()
+block|{
+return|return
+literal|"Importer for COPAC format."
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|isRecognizedFormat (BufferedReader reader)
 specifier|public
 name|boolean
 name|isRecognizedFormat
 parameter_list|(
-name|InputStream
-name|stream
+name|BufferedReader
+name|reader
 parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|BufferedReader
-name|in
-init|=
-operator|new
-name|BufferedReader
-argument_list|(
-name|ImportFormatReader
-operator|.
-name|getReaderDefaultEncoding
-argument_list|(
-name|stream
-argument_list|)
-argument_list|)
-decl_stmt|;
 name|String
 name|str
 decl_stmt|;
@@ -212,7 +239,7 @@ condition|(
 operator|(
 name|str
 operator|=
-name|in
+name|reader
 operator|.
 name|readLine
 argument_list|()
@@ -245,41 +272,26 @@ return|return
 literal|false
 return|;
 block|}
-comment|/**      * Parse the entries in the source, and return a List of BibEntry      * objects.      */
 annotation|@
 name|Override
-DECL|method|importEntries (InputStream stream, OutputPrinter status)
+DECL|method|importDatabase (BufferedReader reader)
 specifier|public
-name|List
-argument_list|<
-name|BibEntry
-argument_list|>
-name|importEntries
+name|ParserResult
+name|importDatabase
 parameter_list|(
-name|InputStream
-name|stream
-parameter_list|,
-name|OutputPrinter
-name|status
+name|BufferedReader
+name|reader
 parameter_list|)
 throws|throws
 name|IOException
 block|{
-if|if
-condition|(
-name|stream
-operator|==
-literal|null
-condition|)
-block|{
-throw|throw
-operator|new
-name|IOException
+name|Objects
+operator|.
+name|requireNonNull
 argument_list|(
-literal|"No stream given."
+name|reader
 argument_list|)
-throw|;
-block|}
+expr_stmt|;
 name|List
 argument_list|<
 name|String
@@ -298,23 +310,6 @@ operator|new
 name|StringBuilder
 argument_list|()
 decl_stmt|;
-try|try
-init|(
-name|BufferedReader
-name|in
-init|=
-operator|new
-name|BufferedReader
-argument_list|(
-name|ImportFormatReader
-operator|.
-name|getReaderDefaultEncoding
-argument_list|(
-name|stream
-argument_list|)
-argument_list|)
-init|)
-block|{
 comment|// Preprocess entries
 name|String
 name|str
@@ -324,7 +319,7 @@ condition|(
 operator|(
 name|str
 operator|=
-name|in
+name|reader
 operator|.
 name|readLine
 argument_list|()
@@ -445,7 +440,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-block|}
 if|if
 condition|(
 name|sb
@@ -564,7 +558,9 @@ name|setOrAppend
 argument_list|(
 name|b
 argument_list|,
-literal|"title"
+name|FieldName
+operator|.
+name|TITLE
 argument_list|,
 name|line
 operator|.
@@ -595,7 +591,9 @@ name|setOrAppend
 argument_list|(
 name|b
 argument_list|,
-literal|"author"
+name|FieldName
+operator|.
+name|AUTHOR
 argument_list|,
 name|line
 operator|.
@@ -626,7 +624,9 @@ name|setOrAppend
 argument_list|(
 name|b
 argument_list|,
-literal|"year"
+name|FieldName
+operator|.
+name|YEAR
 argument_list|,
 name|line
 operator|.
@@ -657,7 +657,9 @@ name|setOrAppend
 argument_list|(
 name|b
 argument_list|,
-literal|"publisher"
+name|FieldName
+operator|.
+name|PUBLISHER
 argument_list|,
 name|line
 operator|.
@@ -688,7 +690,9 @@ name|setOrAppend
 argument_list|(
 name|b
 argument_list|,
-literal|"series"
+name|FieldName
+operator|.
+name|SERIES
 argument_list|,
 name|line
 operator|.
@@ -719,7 +723,9 @@ name|setOrAppend
 argument_list|(
 name|b
 argument_list|,
-literal|"isbn"
+name|FieldName
+operator|.
+name|ISBN
 argument_list|,
 name|line
 operator|.
@@ -750,7 +756,9 @@ name|setOrAppend
 argument_list|(
 name|b
 argument_list|,
-literal|"keywords"
+name|FieldName
+operator|.
+name|KEYWORDS
 argument_list|,
 name|line
 operator|.
@@ -781,7 +789,9 @@ name|setOrAppend
 argument_list|(
 name|b
 argument_list|,
-literal|"note"
+name|FieldName
+operator|.
+name|NOTE
 argument_list|,
 name|line
 operator|.
@@ -898,7 +908,11 @@ argument_list|)
 expr_stmt|;
 block|}
 return|return
+operator|new
+name|ParserResult
+argument_list|(
 name|results
+argument_list|)
 return|;
 block|}
 DECL|method|setOrAppend (BibEntry b, String field, String value, String separator)
@@ -938,10 +952,13 @@ name|field
 argument_list|,
 name|b
 operator|.
-name|getField
+name|getFieldOptional
 argument_list|(
 name|field
 argument_list|)
+operator|.
+name|get
+argument_list|()
 operator|+
 name|separator
 operator|+

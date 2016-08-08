@@ -74,18 +74,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|JabRefPreferences
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|gui
 operator|.
 name|mergeentries
@@ -142,6 +130,20 @@ name|BibEntry
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|preferences
+operator|.
+name|JabRefPreferences
+import|;
+end_import
+
 begin_comment
 comment|// created by : ?
 end_comment
@@ -192,11 +194,11 @@ block|,
 DECL|enumConstant|KEEP_BOTH
 name|KEEP_BOTH
 block|,
-DECL|enumConstant|KEEP_UPPER
-name|KEEP_UPPER
+DECL|enumConstant|KEEP_LEFT
+name|KEEP_LEFT
 block|,
-DECL|enumConstant|KEEP_LOWER
-name|KEEP_LOWER
+DECL|enumConstant|KEEP_RIGHT
+name|KEEP_RIGHT
 block|,
 DECL|enumConstant|AUTOREMOVE_EXACT
 name|AUTOREMOVE_EXACT
@@ -355,7 +357,8 @@ name|frame
 operator|=
 name|dialog
 operator|.
-name|frame
+name|getFrame
+argument_list|()
 expr_stmt|;
 name|init
 argument_list|(
@@ -769,7 +772,7 @@ name|buttonPressed
 argument_list|(
 name|DuplicateResolverResult
 operator|.
-name|KEEP_UPPER
+name|KEEP_LEFT
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -783,7 +786,7 @@ name|buttonPressed
 argument_list|(
 name|DuplicateResolverResult
 operator|.
-name|KEEP_LOWER
+name|KEEP_RIGHT
 argument_list|)
 argument_list|)
 expr_stmt|;

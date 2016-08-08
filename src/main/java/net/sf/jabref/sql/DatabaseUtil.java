@@ -194,7 +194,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Returns a Jabref Database ID from the database in case the DB is already exported. In case the bib was already      * exported before, the method returns the id, otherwise it calls the method that inserts a new row and returns the      * ID for this new database      *      * @param databaseContext the database      * @param out             The output (PrintStream or Connection) object to which the DML should be written.      * @return The ID of database row of the jabref database being exported      * @throws SQLException      */
+comment|/**      * Returns a Jabref Database ID from the database in case the DB is already exported. In case the BIB was already      * exported before, the method returns the id, otherwise it calls the method that inserts a new row and returns the      * ID for this new database      *      * @param databaseContext the database      * @param out             The output (PrintStream or Connection) object to which the DML should be written.      * @return The ID of database row of the jabref database being exported      * @throws SQLException      */
 DECL|method|getDatabaseIDByName (BibDatabaseContext databaseContext, Connection out, String dbName)
 specifier|public
 specifier|static

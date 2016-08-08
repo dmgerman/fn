@@ -80,18 +80,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|JabRefPreferences
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|gui
 operator|.
 name|BasePanel
@@ -174,8 +162,22 @@ name|BibDatabaseMode
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|preferences
+operator|.
+name|JabRefPreferences
+import|;
+end_import
+
 begin_comment
-comment|/**  * The action concerned with generate a new (sub-)database from latex aux file.  */
+comment|/**  * The action concerned with generate a new (sub-)database from latex AUX file.  */
 end_comment
 
 begin_class
@@ -342,16 +344,8 @@ argument_list|()
 argument_list|,
 name|defaults
 argument_list|)
-argument_list|,
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getDefaultEncoding
-argument_list|()
 argument_list|)
 decl_stmt|;
-comment|// meta data
 name|jabRefFrame
 operator|.
 name|addTab

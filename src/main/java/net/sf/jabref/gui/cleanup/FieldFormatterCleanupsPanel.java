@@ -282,23 +282,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|bibtex
+name|logic
 operator|.
-name|InternalBibtexFields
-import|;
-end_import
-
-begin_import
-import|import
-name|net
+name|cleanup
 operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|exporter
-operator|.
-name|FieldFormatterCleanups
+name|FieldFormatterCleanup
 import|;
 end_import
 
@@ -312,9 +300,9 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|cleanup
+name|exporter
 operator|.
-name|FieldFormatterCleanup
+name|FieldFormatterCleanups
 import|;
 end_import
 
@@ -363,6 +351,22 @@ operator|.
 name|entry
 operator|.
 name|BibEntry
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|InternalBibtexFields
 import|;
 end_import
 

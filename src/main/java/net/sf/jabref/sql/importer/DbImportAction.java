@@ -202,6 +202,38 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
+name|worker
+operator|.
+name|CallBack
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|worker
+operator|.
+name|Worker
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|logic
 operator|.
 name|l10n
@@ -291,20 +323,6 @@ operator|.
 name|sql
 operator|.
 name|SQLUtil
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|util
-operator|.
-name|Util
 import|;
 end_import
 
@@ -431,9 +449,6 @@ specifier|public
 name|DbImpAction
 parameter_list|()
 block|{
-name|super
-argument_list|()
-expr_stmt|;
 name|putValue
 argument_list|(
 name|Action
@@ -462,14 +477,8 @@ parameter_list|)
 block|{
 try|try
 block|{
-name|Util
-operator|.
-name|runAbstractWorker
-argument_list|(
-name|DbImportAction
-operator|.
-name|this
-argument_list|)
+name|runInSeparateThread
+argument_list|()
 expr_stmt|;
 block|}
 catch|catch
@@ -857,6 +866,7 @@ operator|.
 name|moreThanOne
 condition|)
 block|{
+comment|// use default DB mode for import
 name|databases
 operator|=
 name|importer
@@ -869,15 +879,11 @@ name|dialogo
 operator|.
 name|listOfDBs
 argument_list|,
-name|frame
+name|Globals
 operator|.
-name|getCurrentBasePanel
-argument_list|()
+name|prefs
 operator|.
-name|getBibDatabaseContext
-argument_list|()
-operator|.
-name|getMode
+name|getDefaultBibDatabaseMode
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1073,13 +1079,6 @@ name|addTab
 argument_list|(
 name|databaseContext
 argument_list|,
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getDefaultEncoding
-argument_list|()
-argument_list|,
 literal|true
 argument_list|)
 decl_stmt|;
@@ -1141,6 +1140,59 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
+DECL|method|runInSeparateThread ()
+specifier|private
+name|void
+name|runInSeparateThread
+parameter_list|()
+throws|throws
+name|Throwable
+block|{
+comment|// This part uses Spin's features:
+name|Worker
+name|wrk
+init|=
+name|this
+operator|.
+name|getWorker
+argument_list|()
+decl_stmt|;
+comment|// The Worker returned by getWorker() has been wrapped
+comment|// by Spin.off(), which makes its methods be run in
+comment|// a different thread from the EDT.
+name|CallBack
+name|clb
+init|=
+name|this
+operator|.
+name|getCallBack
+argument_list|()
+decl_stmt|;
+name|this
+operator|.
+name|init
+argument_list|()
+expr_stmt|;
+comment|// This method runs in this same thread, the EDT.
+comment|// Useful for initial GUI actions, like printing a message.
+comment|// The CallBack returned by getCallBack() has been wrapped
+comment|// by Spin.over(), which makes its methods be run on
+comment|// the EDT.
+name|wrk
+operator|.
+name|run
+argument_list|()
+expr_stmt|;
+comment|// Runs the potentially time-consuming action
+comment|// without freezing the GUI. The magic is that THIS line
+comment|// of execution will not continue until run() is finished.
+name|clb
+operator|.
+name|update
+argument_list|()
+expr_stmt|;
+comment|// Runs the update() method on the EDT.
 block|}
 block|}
 end_class

@@ -46,6 +46,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -65,18 +75,6 @@ operator|.
 name|jabref
 operator|.
 name|Globals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|JabRefPreferences
 import|;
 end_import
 
@@ -153,6 +151,20 @@ operator|.
 name|entry
 operator|.
 name|ParsedFileField
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|preferences
+operator|.
+name|JabRefPreferences
 import|;
 end_import
 
@@ -461,6 +473,10 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
+name|Optional
+operator|.
+name|of
+argument_list|(
 name|FileField
 operator|.
 name|getStringRepresentation
@@ -478,10 +494,11 @@ argument_list|,
 literal|""
 argument_list|)
 argument_list|)
+argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getField
+name|getFieldOptional
 argument_list|(
 literal|"file"
 argument_list|)
@@ -525,7 +542,6 @@ name|createNewFile
 argument_list|()
 argument_list|)
 expr_stmt|;
-empty_stmt|;
 name|assertTrue
 argument_list|(
 name|fileBefore
@@ -632,6 +648,10 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
+name|Optional
+operator|.
+name|of
+argument_list|(
 name|FileField
 operator|.
 name|getStringRepresentation
@@ -674,10 +694,11 @@ literal|""
 argument_list|)
 argument_list|)
 argument_list|)
+argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getField
+name|getFieldOptional
 argument_list|(
 literal|"file"
 argument_list|)

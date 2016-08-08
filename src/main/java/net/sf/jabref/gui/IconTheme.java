@@ -549,9 +549,9 @@ comment|/* css: file-pdf*/
 DECL|enumConstant|DOI
 name|DOI
 argument_list|(
-literal|"\uf59f"
+literal|"\uF072"
 argument_list|)
-comment|/*css: web*/
+comment|/*css: barcode-scan*/
 block|,
 DECL|enumConstant|DUPLICATE
 name|DUPLICATE
@@ -1151,6 +1151,13 @@ literal|"\uf18d"
 argument_list|)
 block|,
 comment|/*css: console */
+DECL|enumConstant|FORUM
+name|FORUM
+argument_list|(
+literal|"\uF28C"
+argument_list|)
+block|,
+comment|/* css: forum */
 comment|// STILL MISSING:
 DECL|enumConstant|GROUP_REGULAR
 name|GROUP_REGULAR

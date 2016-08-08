@@ -24,13 +24,11 @@ end_import
 
 begin_import
 import|import
-name|net
+name|java
 operator|.
-name|sf
+name|util
 operator|.
-name|jabref
-operator|.
-name|Globals
+name|Optional
 import|;
 end_import
 
@@ -42,7 +40,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|JabRefPreferences
+name|Globals
 import|;
 end_import
 
@@ -137,6 +135,20 @@ operator|.
 name|entry
 operator|.
 name|BibEntry
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|preferences
+operator|.
+name|JabRefPreferences
 import|;
 end_import
 
@@ -270,6 +282,10 @@ argument_list|,
 name|GroupHierarchyType
 operator|.
 name|INCLUDING
+argument_list|,
+name|Globals
+operator|.
+name|prefs
 argument_list|)
 expr_stmt|;
 name|group
@@ -297,8 +313,9 @@ name|generateParserResult
 argument_list|(
 name|entry
 argument_list|,
-operator|new
 name|GroupTreeNode
+operator|.
+name|fromGroup
 argument_list|(
 name|group
 argument_list|)
@@ -315,11 +332,16 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
+name|Optional
+operator|.
+name|of
+argument_list|(
 literal|"TestGroup"
+argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getField
+name|getFieldOptional
 argument_list|(
 literal|"groups"
 argument_list|)
@@ -343,8 +365,9 @@ name|generateParserResult
 argument_list|(
 name|entry
 argument_list|,
-operator|new
 name|GroupTreeNode
+operator|.
+name|fromGroup
 argument_list|(
 name|group
 argument_list|)
@@ -386,8 +409,9 @@ block|{
 name|GroupTreeNode
 name|root
 init|=
-operator|new
 name|GroupTreeNode
+operator|.
+name|fromGroup
 argument_list|(
 operator|new
 name|AllEntriesGroup
@@ -406,6 +430,10 @@ argument_list|,
 name|GroupHierarchyType
 operator|.
 name|INCLUDING
+argument_list|,
+name|Globals
+operator|.
+name|prefs
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -437,11 +465,16 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
+name|Optional
+operator|.
+name|of
+argument_list|(
 literal|"TestGroup"
+argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getField
+name|getFieldOptional
 argument_list|(
 literal|"groups"
 argument_list|)
@@ -465,8 +498,9 @@ name|generateParserResult
 argument_list|(
 name|entry
 argument_list|,
-operator|new
 name|GroupTreeNode
+operator|.
+name|fromGroup
 argument_list|(
 name|group
 argument_list|)

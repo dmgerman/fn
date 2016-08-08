@@ -213,8 +213,8 @@ name|String
 name|key
 parameter_list|)
 block|{
-name|Object
-name|o
+name|Integer
+name|numberOfOccurrences
 init|=
 name|allKeys
 operator|.
@@ -225,7 +225,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|o
+name|numberOfOccurrences
 operator|==
 literal|null
 condition|)
@@ -237,10 +237,7 @@ block|}
 else|else
 block|{
 return|return
-operator|(
-name|Integer
-operator|)
-name|o
+name|numberOfOccurrences
 return|;
 block|}
 block|}

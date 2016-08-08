@@ -90,13 +90,11 @@ end_import
 
 begin_import
 import|import
-name|net
+name|java
 operator|.
-name|sf
+name|util
 operator|.
-name|jabref
-operator|.
-name|Globals
+name|Optional
 import|;
 end_import
 
@@ -108,7 +106,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|JabRefPreferences
+name|Globals
 import|;
 end_import
 
@@ -141,6 +139,20 @@ operator|.
 name|entry
 operator|.
 name|BibEntry
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|preferences
+operator|.
+name|JabRefPreferences
 import|;
 end_import
 
@@ -388,6 +400,9 @@ name|defaultEncoding
 argument_list|,
 name|result
 operator|.
+name|getMetaData
+argument_list|()
+operator|.
 name|getEncoding
 argument_list|()
 argument_list|)
@@ -422,6 +437,9 @@ argument_list|(
 name|defaultEncoding
 argument_list|,
 name|result
+operator|.
+name|getMetaData
+argument_list|()
 operator|.
 name|getEncoding
 argument_list|()
@@ -462,6 +480,9 @@ name|UTF_8
 argument_list|,
 name|result
 operator|.
+name|getMetaData
+argument_list|()
+operator|.
 name|getEncoding
 argument_list|()
 argument_list|)
@@ -500,6 +521,9 @@ operator|.
 name|UTF_8
 argument_list|,
 name|result
+operator|.
+name|getMetaData
+argument_list|()
 operator|.
 name|getEncoding
 argument_list|()
@@ -553,7 +577,12 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
+name|Optional
+operator|.
+name|of
+argument_list|(
 literal|"2014"
+argument_list|)
 argument_list|,
 name|db
 operator|.
@@ -562,7 +591,10 @@ argument_list|(
 literal|"1"
 argument_list|)
 operator|.
-name|getField
+name|get
+argument_list|()
+operator|.
+name|getFieldOptional
 argument_list|(
 literal|"year"
 argument_list|)
@@ -616,7 +648,12 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
+name|Optional
+operator|.
+name|of
+argument_list|(
 literal|"2014"
+argument_list|)
 argument_list|,
 name|db
 operator|.
@@ -625,7 +662,10 @@ argument_list|(
 literal|"1"
 argument_list|)
 operator|.
-name|getField
+name|get
+argument_list|()
+operator|.
+name|getFieldOptional
 argument_list|(
 literal|"year"
 argument_list|)
@@ -679,7 +719,12 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
+name|Optional
+operator|.
+name|of
+argument_list|(
 literal|"2014"
+argument_list|)
 argument_list|,
 name|db
 operator|.
@@ -688,7 +733,10 @@ argument_list|(
 literal|"1"
 argument_list|)
 operator|.
-name|getField
+name|get
+argument_list|()
+operator|.
+name|getFieldOptional
 argument_list|(
 literal|"year"
 argument_list|)
@@ -727,6 +775,9 @@ operator|.
 name|US_ASCII
 argument_list|,
 name|result
+operator|.
+name|getMetaData
+argument_list|()
 operator|.
 name|getEncoding
 argument_list|()
@@ -790,11 +841,16 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
+name|Optional
+operator|.
+name|of
+argument_list|(
 literal|"testArticle"
+argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getCiteKey
+name|getCiteKeyOptional
 argument_list|()
 argument_list|)
 expr_stmt|;

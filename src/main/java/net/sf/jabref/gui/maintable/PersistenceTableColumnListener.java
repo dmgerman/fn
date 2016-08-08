@@ -106,7 +106,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|JabRefPreferences
+name|model
+operator|.
+name|entry
+operator|.
+name|FieldName
 import|;
 end_import
 
@@ -118,9 +122,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|bibtex
+name|preferences
 operator|.
-name|InternalBibtexFields
+name|JabRefPreferences
 import|;
 end_import
 
@@ -136,24 +140,6 @@ name|PersistenceTableColumnListener
 implements|implements
 name|TableColumnModelListener
 block|{
-DECL|field|ACTIVATE_PREF_KEY
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|ACTIVATE_PREF_KEY
-init|=
-literal|"ActivatePersistenceTableColumnListener"
-decl_stmt|;
-DECL|field|DEFAULT_ENABLED
-specifier|public
-specifier|static
-specifier|final
-name|boolean
-name|DEFAULT_ENABLED
-init|=
-literal|true
-decl_stmt|;
 DECL|field|SIMPLE_CLASS_NAME
 specifier|private
 specifier|static
@@ -297,7 +283,7 @@ condition|)
 block|{
 if|if
 condition|(
-name|InternalBibtexFields
+name|FieldName
 operator|.
 name|NUMBER_COL
 operator|.

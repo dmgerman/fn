@@ -102,13 +102,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|model
 operator|.
-name|util
+name|entry
 operator|.
-name|strings
-operator|.
-name|StringUtil
+name|BibEntry
 import|;
 end_import
 
@@ -124,7 +122,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibEntry
+name|FieldName
 import|;
 end_import
 
@@ -1683,7 +1681,9 @@ condition|)
 block|{
 name|entryType
 operator|=
-literal|"misc"
+name|BibEntry
+operator|.
+name|DEFAULT_TYPE
 expr_stmt|;
 if|if
 condition|(
@@ -1727,7 +1727,9 @@ condition|)
 block|{
 name|entryType
 operator|=
-literal|"misc"
+name|BibEntry
+operator|.
+name|DEFAULT_TYPE
 expr_stmt|;
 block|}
 elseif|else
@@ -1743,7 +1745,9 @@ condition|)
 block|{
 name|entryType
 operator|=
-literal|"misc"
+name|BibEntry
+operator|.
+name|DEFAULT_TYPE
 expr_stmt|;
 comment|// FIXME: online only available in Biblatex
 comment|//entryType = "online";
@@ -1775,14 +1779,11 @@ name|result
 operator|.
 name|setField
 argument_list|(
-literal|"author"
-argument_list|,
-name|StringUtil
+name|FieldName
 operator|.
-name|expandAuthorInitials
-argument_list|(
+name|AUTHOR
+argument_list|,
 name|author
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -1797,14 +1798,11 @@ name|result
 operator|.
 name|setField
 argument_list|(
-literal|"editor"
-argument_list|,
-name|StringUtil
+name|FieldName
 operator|.
-name|expandAuthorInitials
-argument_list|(
+name|EDITOR
+argument_list|,
 name|editor
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -1819,7 +1817,9 @@ name|result
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|FieldName
+operator|.
+name|TITLE
 argument_list|,
 name|title
 argument_list|)
@@ -1890,7 +1890,9 @@ name|result
 operator|.
 name|setField
 argument_list|(
-literal|"subtitle"
+name|FieldName
+operator|.
+name|SUBTITLE
 argument_list|,
 name|newSubtitle
 operator|.
@@ -1910,7 +1912,9 @@ name|result
 operator|.
 name|setField
 argument_list|(
-literal|"publisher"
+name|FieldName
+operator|.
+name|PUBLISHER
 argument_list|,
 name|publisher
 argument_list|)
@@ -1927,7 +1931,9 @@ name|result
 operator|.
 name|setField
 argument_list|(
-literal|"year"
+name|FieldName
+operator|.
+name|YEAR
 argument_list|,
 name|year
 argument_list|)
@@ -1944,7 +1950,9 @@ name|result
 operator|.
 name|setField
 argument_list|(
-literal|"address"
+name|FieldName
+operator|.
+name|ADDRESS
 argument_list|,
 name|address
 argument_list|)
@@ -1961,7 +1969,9 @@ name|result
 operator|.
 name|setField
 argument_list|(
-literal|"series"
+name|FieldName
+operator|.
+name|SERIES
 argument_list|,
 name|series
 argument_list|)
@@ -1978,7 +1988,9 @@ name|result
 operator|.
 name|setField
 argument_list|(
-literal|"edition"
+name|FieldName
+operator|.
+name|EDITION
 argument_list|,
 name|edition
 argument_list|)
@@ -1995,7 +2007,9 @@ name|result
 operator|.
 name|setField
 argument_list|(
-literal|"isbn"
+name|FieldName
+operator|.
+name|ISBN
 argument_list|,
 name|isbn
 argument_list|)
@@ -2012,7 +2026,9 @@ name|result
 operator|.
 name|setField
 argument_list|(
-literal|"issn"
+name|FieldName
+operator|.
+name|ISSN
 argument_list|,
 name|issn
 argument_list|)
@@ -2029,7 +2045,9 @@ name|result
 operator|.
 name|setField
 argument_list|(
-literal|"number"
+name|FieldName
+operator|.
+name|NUMBER
 argument_list|,
 name|number
 argument_list|)
@@ -2046,7 +2064,9 @@ name|result
 operator|.
 name|setField
 argument_list|(
-literal|"pagetotal"
+name|FieldName
+operator|.
+name|PAGETOTAL
 argument_list|,
 name|pagetotal
 argument_list|)
@@ -2063,7 +2083,9 @@ name|result
 operator|.
 name|setField
 argument_list|(
-literal|"pages"
+name|FieldName
+operator|.
+name|PAGES
 argument_list|,
 name|pages
 argument_list|)
@@ -2080,7 +2102,9 @@ name|result
 operator|.
 name|setField
 argument_list|(
-literal|"volume"
+name|FieldName
+operator|.
+name|VOLUME
 argument_list|,
 name|volume
 argument_list|)
@@ -2097,7 +2121,9 @@ name|result
 operator|.
 name|setField
 argument_list|(
-literal|"journal"
+name|FieldName
+operator|.
+name|JOURNAL
 argument_list|,
 name|journal
 argument_list|)
@@ -2131,7 +2157,9 @@ name|result
 operator|.
 name|setField
 argument_list|(
-literal|"url"
+name|FieldName
+operator|.
+name|URL
 argument_list|,
 name|url
 argument_list|)
@@ -2148,7 +2176,9 @@ name|result
 operator|.
 name|setField
 argument_list|(
-literal|"note"
+name|FieldName
+operator|.
+name|NOTE
 argument_list|,
 name|note
 argument_list|)
@@ -2174,7 +2204,9 @@ name|result
 operator|.
 name|setField
 argument_list|(
-literal|"journal"
+name|FieldName
+operator|.
+name|JOURNAL
 argument_list|,
 name|journal
 argument_list|)
@@ -2201,7 +2233,9 @@ name|result
 operator|.
 name|setField
 argument_list|(
-literal|"booktitle"
+name|FieldName
+operator|.
+name|BOOKTITLE
 argument_list|,
 name|booktitle
 argument_list|)

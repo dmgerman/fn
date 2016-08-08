@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/* Copyright (C) 2005 Andreas Rudert    Copyright (C) 2015 JabRef contributors      This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
+comment|/* Copyright (C) 2005 Andreas Rudert    Copyright (C) 2016 JabRef contributors      This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
 end_comment
 
 begin_package
@@ -35,16 +35,6 @@ operator|.
 name|io
 operator|.
 name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|InputStream
 import|;
 end_import
 
@@ -114,6 +104,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Date
 import|;
 end_import
@@ -134,21 +134,39 @@ name|java
 operator|.
 name|util
 operator|.
+name|LinkedHashSet
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|List
 import|;
 end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Objects
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
 operator|.
 name|jabref
 operator|.
-name|importer
-operator|.
-name|ImportFormatReader
+name|Globals
 import|;
 end_import
 
@@ -162,7 +180,7 @@ name|jabref
 operator|.
 name|importer
 operator|.
-name|OutputPrinter
+name|ParserResult
 import|;
 end_import
 
@@ -194,7 +212,37 @@ name|model
 operator|.
 name|entry
 operator|.
+name|FieldName
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
 name|IdGenerator
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|preferences
+operator|.
+name|JabRefPreferences
 import|;
 end_import
 
@@ -227,7 +275,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Imports a New Economics Papers-Message from the REPEC-NEP Service.  *  *<p><a href="http://www.repec.org">RePEc (Research Papers in Economics)</a>  * is a collaborative effort of over 100 volunteers in 49 countries  * to enhance the dissemination of research in economics. The heart of  * the project is a decentralized database of working papers, journal  * articles and software components. All RePEc material is freely available.</p>  * At the time of writing RePEc holds over 300.000 items.</p>  *  *<p><a href="http://nep.repec.org">NEP (New Economic Papers)</a> is an announcement  * service which filters information on new additions to RePEc into edited  * reports. The goal is to provide subscribers with up-to-date information  * to the research literature.</p>  *  *<p>This importer is capable of importing NEP messages into JabRef.</p>  *  *<p>There is no officially defined message format for NEP. NEP messages are assumed to have  * (and almost always have) the form given by the following semi-formal grammar:  *<pre>  * NEPMessage:  *       MessageSection NEPMessage  *       MessageSection  *  * MessageSection:  *       OverviewMessageSection  *       OtherMessageSection  *  * # we skip the overview  * OverviewMessageSection:  *       'In this issue we have: ' SectionSeparator OtherStuff  *  * OtherMessageSection:  *       SectionSeparator  OtherMessageSectionContent  *  * # we skip other stuff and read only full working paper references  * OtherMessageSectionContent:  *       WorkingPaper EmptyLine OtherMessageSectionContent  *       OtherStuff EmptyLine OtherMessageSectionContent  *       ''  *  * OtherStuff:  *       NonEmptyLine OtherStuff  *       NonEmptyLine  *  * NonEmptyLine:  *       a non-empty String that does not start with a number followed by a '.'  *  * # working papers are recognized by a number followed by a '.'  * # in a non-overview section  * WorkingPaper:  *       Number'.' WhiteSpace TitleString EmptyLine Authors EmptyLine Abstract AdditionalFields  *       Number'.' WhiteSpace TitleString AdditionalFields Abstract AdditionalFields  *  * TitleString:  *       a String that may span several lines and should be joined  *  * # there must be at least one author  * Authors:  *       Author '\n' Authors  *       Author '\n'  *  * # optionally, an institution is given for an author  * Author:  *       AuthorName  *       AuthorName '(' Institution ')'  *  * # there are no rules about the name, it may be firstname lastname or lastname, firstname or anything else  * AuthorName:  *       a non-empty String without '(' or ')' characters, not spanning more that one line  *  * Institution:  *       a non-empty String that may span several lines  *  * Abstract:  *       a (possibly empty) String that may span several lines  *  * AdditionalFields:  *       AdditionalField '\n' AdditionalFields  *       EmptyLine AdditionalFields  *       ''  *  * AdditionalField:  *       'Keywords:' KeywordList  *       'URL:' non-empty String  *       'Date:' DateString  *       'JEL:' JelClassificationList  *       'By': Authors  *  * KeywordList:  *        Keyword ',' KeywordList  *        Keyword ';' KeywordList  *        Keyword  *  * Keyword:  *        non-empty String that does not contain ',' (may contain whitespace)  *  * # if no date is given, the current year as given by the system clock is assumed  * DateString:  *        'yyyy-MM-dd'  *        'yyyy-MM'  *        'yyyy'  *  * JelClassificationList:  *        JelClassification JelClassificationList  *        JelClassification  *  * # the JEL Classifications are set into a new BIBTEX-field 'jel'  * # they will appear if you add it as a field to one of the BIBTex Entry sections  * JelClassification:  *        one of the allowed classes, see http://ideas.repec.org/j/  *  * SectionSeparator:  *       '\n-----------------------------'  *</pre>  *</p>  *  * @see<a href="http://nep.repec.org">NEP</a>  * @author andreas_sf at rudert-home dot de  */
+comment|/**  * Imports a New Economics Papers-Message from the REPEC-NEP Service.  *<p>  *<p><a href="http://www.repec.org">RePEc (Research Papers in Economics)</a>  * is a collaborative effort of over 100 volunteers in 49 countries  * to enhance the dissemination of research in economics. The heart of  * the project is a decentralized database of working papers, journal  * articles and software components. All RePEc material is freely available.</p>  * At the time of writing RePEc holds over 300.000 items.</p>  *<p>  *<p><a href="http://nep.repec.org">NEP (New Economic Papers)</a> is an announcement  * service which filters information on new additions to RePEc into edited  * reports. The goal is to provide subscribers with up-to-date information  * to the research literature.</p>  *<p>  *<p>This importer is capable of importing NEP messages into JabRef.</p>  *<p>  *<p>There is no officially defined message format for NEP. NEP messages are assumed to have  * (and almost always have) the form given by the following semi-formal grammar:  *<pre>  * NEPMessage:  *       MessageSection NEPMessage  *       MessageSection  *  * MessageSection:  *       OverviewMessageSection  *       OtherMessageSection  *  * # we skip the overview  * OverviewMessageSection:  *       'In this issue we have: ' SectionSeparator OtherStuff  *  * OtherMessageSection:  *       SectionSeparator  OtherMessageSectionContent  *  * # we skip other stuff and read only full working paper references  * OtherMessageSectionContent:  *       WorkingPaper EmptyLine OtherMessageSectionContent  *       OtherStuff EmptyLine OtherMessageSectionContent  *       ''  *  * OtherStuff:  *       NonEmptyLine OtherStuff  *       NonEmptyLine  *  * NonEmptyLine:  *       a non-empty String that does not start with a number followed by a '.'  *  * # working papers are recognized by a number followed by a '.'  * # in a non-overview section  * WorkingPaper:  *       Number'.' WhiteSpace TitleString EmptyLine Authors EmptyLine Abstract AdditionalFields  *       Number'.' WhiteSpace TitleString AdditionalFields Abstract AdditionalFields  *  * TitleString:  *       a String that may span several lines and should be joined  *  * # there must be at least one author  * Authors:  *       Author '\n' Authors  *       Author '\n'  *  * # optionally, an institution is given for an author  * Author:  *       AuthorName  *       AuthorName '(' Institution ')'  *  * # there are no rules about the name, it may be firstname lastname or lastname, firstname or anything else  * AuthorName:  *       a non-empty String without '(' or ')' characters, not spanning more that one line  *  * Institution:  *       a non-empty String that may span several lines  *  * Abstract:  *       a (possibly empty) String that may span several lines  *  * AdditionalFields:  *       AdditionalField '\n' AdditionalFields  *       EmptyLine AdditionalFields  *       ''  *  * AdditionalField:  *       'Keywords:' KeywordList  *       'URL:' non-empty String  *       'Date:' DateString  *       'JEL:' JelClassificationList  *       'By': Authors  *  * KeywordList:  *        Keyword ',' KeywordList  *        Keyword ';' KeywordList  *        Keyword  *  * Keyword:  *        non-empty String that does not contain ',' (may contain whitespace)  *  * # if no date is given, the current year as given by the system clock is assumed  * DateString:  *        'yyyy-MM-dd'  *        'yyyy-MM'  *        'yyyy'  *  * JelClassificationList:  *        JelClassification JelClassificationList  *        JelClassification  *  * # the JEL Classifications are set into a new BIBTEX-field 'jel'  * # they will appear if you add it as a field to one of the BIBTex Entry sections  * JelClassification:  *        one of the allowed classes, see http://ideas.repec.org/j/  *  * SectionSeparator:  *       '\n-----------------------------'  *</pre>  *</p>  *  * @author andreas_sf at rudert-home dot de  * @see<a href="http://nep.repec.org">NEP</a>  */
 end_comment
 
 begin_class
@@ -303,7 +351,6 @@ specifier|private
 name|boolean
 name|inOverviewSection
 decl_stmt|;
-comment|/**      * Return the name of this import format.      */
 annotation|@
 name|Override
 DECL|method|getFormatName ()
@@ -316,33 +363,38 @@ return|return
 literal|"REPEC New Economic Papers (NEP)"
 return|;
 block|}
-comment|/*      *  (non-Javadoc)      * @see net.sf.jabref.imports.ImportFormat#getCLIId()      */
 annotation|@
 name|Override
-DECL|method|getCLIId ()
+DECL|method|getId ()
 specifier|public
 name|String
-name|getCLIId
+name|getId
 parameter_list|()
 block|{
 return|return
 literal|"repecnep"
 return|;
 block|}
-comment|/*      *  (non-Javadoc)      * @see net.sf.jabref.imports.ImportFormat#getExtensions()      */
 annotation|@
 name|Override
 DECL|method|getExtensions ()
 specifier|public
+name|List
+argument_list|<
 name|String
+argument_list|>
 name|getExtensions
 parameter_list|()
 block|{
 return|return
+name|Collections
+operator|.
+name|singletonList
+argument_list|(
 literal|".txt"
+argument_list|)
 return|;
 block|}
-comment|/*      *  (non-Javadoc)      * @see net.sf.jabref.imports.ImportFormat#getDescription()      */
 annotation|@
 name|Override
 DECL|method|getDescription ()
@@ -352,27 +404,18 @@ name|getDescription
 parameter_list|()
 block|{
 return|return
-literal|"Imports a New Economics Papers-Message (see http://nep.repec.org)\n"
-operator|+
-literal|"from the REPEC-NEP Service (see http://www.repec.org).\n"
-operator|+
-literal|"To import papers either save a NEP message as a text file and then import or\n"
-operator|+
-literal|"copy&paste the papers you want to import and make sure, one of the first lines\n"
-operator|+
-literal|"contains the line \"nep.repec.org\"."
+literal|"Imports a New Economics Papers-Message from the REPEC-NEP Service."
 return|;
 block|}
-comment|/*      *  (non-Javadoc)      * @see net.sf.jabref.imports.ImportFormat#isRecognizedFormat(java.io.InputStream)      */
 annotation|@
 name|Override
-DECL|method|isRecognizedFormat (InputStream stream)
+DECL|method|isRecognizedFormat (BufferedReader reader)
 specifier|public
 name|boolean
 name|isRecognizedFormat
 parameter_list|(
-name|InputStream
-name|stream
+name|BufferedReader
+name|reader
 parameter_list|)
 throws|throws
 name|IOException
@@ -380,23 +423,6 @@ block|{
 comment|// read the first couple of lines
 comment|// NEP message usually contain the String 'NEP: New Economics Papers'
 comment|// or, they are from nep.repec.org
-try|try
-init|(
-name|BufferedReader
-name|inBR
-init|=
-operator|new
-name|BufferedReader
-argument_list|(
-name|ImportFormatReader
-operator|.
-name|getReaderDefaultEncoding
-argument_list|(
-name|stream
-argument_list|)
-argument_list|)
-init|)
-block|{
 name|StringBuilder
 name|startOfMessage
 init|=
@@ -407,7 +433,7 @@ decl_stmt|;
 name|String
 name|tmpLine
 init|=
-name|inBR
+name|reader
 operator|.
 name|readLine
 argument_list|()
@@ -444,7 +470,7 @@ argument_list|)
 expr_stmt|;
 name|tmpLine
 operator|=
-name|inBR
+name|reader
 operator|.
 name|readLine
 argument_list|()
@@ -471,7 +497,6 @@ argument_list|(
 literal|"nep.repec.org"
 argument_list|)
 return|;
-block|}
 block|}
 DECL|method|startsWithKeyword (Collection<String> keywords)
 specifier|private
@@ -573,7 +598,7 @@ name|readLine
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Read multiple lines.      *      *<p>Reads multiple lines until either      *<ul>      *<li>an empty line</li>      *<li>the end of file</li>      *<li>the next working paper or</li>      *<li>a keyword</li>      *</ul>      * is found. Whitespace at start or end of lines is trimmed except for one blank character.</p>      *      * @return  result      */
+comment|/**      * Read multiple lines.      *<p>      *<p>Reads multiple lines until either      *<ul>      *<li>an empty line</li>      *<li>the end of file</li>      *<li>the next working paper or</li>      *<li>a keyword</li>      *</ul>      * is found. Whitespace at start or end of lines is trimmed except for one blank character.</p>      *      * @return result      */
 DECL|method|readMultipleLines (BufferedReader in)
 specifier|private
 name|String
@@ -730,7 +755,9 @@ name|be
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|FieldName
+operator|.
+name|TITLE
 argument_list|,
 name|readMultipleLines
 argument_list|(
@@ -1094,7 +1121,9 @@ name|be
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|FieldName
+operator|.
+name|AUTHOR
 argument_list|,
 name|String
 operator|.
@@ -1121,7 +1150,9 @@ name|be
 operator|.
 name|setField
 argument_list|(
-literal|"institution"
+name|FieldName
+operator|.
+name|INSTITUTION
 argument_list|,
 name|institutions
 operator|.
@@ -1169,7 +1200,9 @@ name|be
 operator|.
 name|setField
 argument_list|(
-literal|"abstract"
+name|FieldName
+operator|.
+name|ABSTRACT
 argument_list|,
 name|theabstract
 argument_list|)
@@ -1372,11 +1405,27 @@ name|be
 operator|.
 name|addKeywords
 argument_list|(
+operator|new
+name|LinkedHashSet
+argument_list|<>
+argument_list|(
 name|Arrays
 operator|.
 name|asList
 argument_list|(
 name|keywords
+argument_list|)
+argument_list|)
+argument_list|,
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|get
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|KEYWORD_SEPARATOR
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1526,7 +1575,9 @@ name|be
 operator|.
 name|setField
 argument_list|(
-literal|"year"
+name|FieldName
+operator|.
+name|YEAR
 argument_list|,
 name|String
 operator|.
@@ -1568,7 +1619,9 @@ name|be
 operator|.
 name|setField
 argument_list|(
-literal|"month"
+name|FieldName
+operator|.
+name|MONTH
 argument_list|,
 name|String
 operator|.
@@ -1678,7 +1731,9 @@ name|be
 operator|.
 name|setField
 argument_list|(
-literal|"url"
+name|FieldName
+operator|.
+name|URL
 argument_list|,
 name|content
 argument_list|)
@@ -1750,26 +1805,26 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/*      *  (non-Javadoc)      * @see net.sf.jabref.imports.ImportFormat#importEntries(java.io.InputStream)      */
 annotation|@
 name|Override
-DECL|method|importEntries (InputStream stream, OutputPrinter status)
+DECL|method|importDatabase (BufferedReader reader)
 specifier|public
-name|List
-argument_list|<
-name|BibEntry
-argument_list|>
-name|importEntries
+name|ParserResult
+name|importDatabase
 parameter_list|(
-name|InputStream
-name|stream
-parameter_list|,
-name|OutputPrinter
-name|status
+name|BufferedReader
+name|reader
 parameter_list|)
 throws|throws
 name|IOException
 block|{
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|reader
+argument_list|)
+expr_stmt|;
 name|List
 argument_list|<
 name|BibEntry
@@ -1793,25 +1848,10 @@ operator|=
 literal|0
 expr_stmt|;
 try|try
-init|(
-name|BufferedReader
-name|in
-init|=
-operator|new
-name|BufferedReader
-argument_list|(
-name|ImportFormatReader
-operator|.
-name|getReaderDefaultEncoding
-argument_list|(
-name|stream
-argument_list|)
-argument_list|)
-init|)
 block|{
 name|readLine
 argument_list|(
-name|in
+name|reader
 argument_list|)
 expr_stmt|;
 comment|// skip header and editor information
@@ -1899,7 +1939,7 @@ name|parseTitleString
 argument_list|(
 name|be
 argument_list|,
-name|in
+name|reader
 argument_list|)
 expr_stmt|;
 if|if
@@ -1918,7 +1958,7 @@ name|be
 argument_list|,
 literal|false
 argument_list|,
-name|in
+name|reader
 argument_list|)
 expr_stmt|;
 block|}
@@ -1926,7 +1966,7 @@ else|else
 block|{
 name|readLine
 argument_list|(
-name|in
+name|reader
 argument_list|)
 expr_stmt|;
 comment|// skip empty line
@@ -1934,12 +1974,12 @@ name|parseAuthors
 argument_list|(
 name|be
 argument_list|,
-name|in
+name|reader
 argument_list|)
 expr_stmt|;
 name|readLine
 argument_list|(
-name|in
+name|reader
 argument_list|)
 expr_stmt|;
 comment|// skip empty line
@@ -1959,7 +1999,7 @@ name|parseAbstract
 argument_list|(
 name|be
 argument_list|,
-name|in
+name|reader
 argument_list|)
 expr_stmt|;
 block|}
@@ -1969,7 +2009,7 @@ name|be
 argument_list|,
 literal|true
 argument_list|,
-name|in
+name|reader
 argument_list|)
 expr_stmt|;
 name|bibitems
@@ -1996,7 +2036,7 @@ name|lastLine
 expr_stmt|;
 name|readLine
 argument_list|(
-name|in
+name|reader
 argument_list|)
 expr_stmt|;
 block|}
@@ -2037,7 +2077,7 @@ name|message
 operator|+=
 name|e
 operator|.
-name|getMessage
+name|getLocalizedMessage
 argument_list|()
 expr_stmt|;
 name|LOGGER
@@ -2049,41 +2089,21 @@ argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
-name|IOException
-name|toThrow
-decl_stmt|;
-if|if
-condition|(
-name|e
-operator|instanceof
-name|IOException
-condition|)
-block|{
-name|toThrow
-operator|=
-operator|(
-name|IOException
-operator|)
-name|e
-expr_stmt|;
-block|}
-else|else
-block|{
-name|toThrow
-operator|=
-operator|new
-name|IOException
+return|return
+name|ParserResult
+operator|.
+name|fromErrorMessage
 argument_list|(
 name|message
 argument_list|)
-expr_stmt|;
-block|}
-throw|throw
-name|toThrow
-throw|;
+return|;
 block|}
 return|return
+operator|new
+name|ParserResult
+argument_list|(
 name|bibitems
+argument_list|)
 return|;
 block|}
 block|}

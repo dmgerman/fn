@@ -30,18 +30,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|nio
-operator|.
-name|charset
-operator|.
-name|Charset
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|ArrayList
@@ -55,6 +43,16 @@ operator|.
 name|util
 operator|.
 name|Collection
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Collections
 import|;
 end_import
 
@@ -259,12 +257,6 @@ specifier|private
 name|String
 name|errorMessage
 decl_stmt|;
-comment|// Which encoding was used?
-DECL|field|encoding
-specifier|private
-name|Charset
-name|encoding
-decl_stmt|;
 DECL|field|postponedAutosaveFound
 specifier|private
 name|boolean
@@ -280,6 +272,20 @@ specifier|private
 name|boolean
 name|toOpenTab
 decl_stmt|;
+DECL|method|ParserResult ()
+specifier|public
+name|ParserResult
+parameter_list|()
+block|{
+name|this
+argument_list|(
+name|Collections
+operator|.
+name|emptyList
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|ParserResult (Collection<BibEntry> entries)
 specifier|public
 name|ParserResult
@@ -304,6 +310,20 @@ argument_list|(
 name|entries
 argument_list|)
 argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|ParserResult (BibDatabase database)
+specifier|public
+name|ParserResult
+parameter_list|(
+name|BibDatabase
+name|database
+parameter_list|)
+block|{
+name|this
+argument_list|(
+name|database
 argument_list|,
 operator|new
 name|MetaData
@@ -353,6 +373,34 @@ name|entryTypes
 operator|=
 name|entryTypes
 expr_stmt|;
+block|}
+DECL|method|fromErrorMessage (String message)
+specifier|public
+specifier|static
+name|ParserResult
+name|fromErrorMessage
+parameter_list|(
+name|String
+name|message
+parameter_list|)
+block|{
+name|ParserResult
+name|parserResult
+init|=
+operator|new
+name|ParserResult
+argument_list|()
+decl_stmt|;
+name|parserResult
+operator|.
+name|addWarning
+argument_list|(
+name|message
+argument_list|)
+expr_stmt|;
+return|return
+name|parserResult
+return|;
 block|}
 comment|/**      * Check if this base is marked to be added to the currently open tab. Default is false.      *      * @return      */
 DECL|method|toOpenTab ()
@@ -455,32 +503,6 @@ name|file
 operator|=
 name|f
 expr_stmt|;
-block|}
-comment|/**      * Sets the variable indicating which encoding was used during parsing.      *      * @param enc the encoding.      */
-DECL|method|setEncoding (Charset enc)
-specifier|public
-name|void
-name|setEncoding
-parameter_list|(
-name|Charset
-name|enc
-parameter_list|)
-block|{
-name|encoding
-operator|=
-name|enc
-expr_stmt|;
-block|}
-comment|/**      * Returns the encoding used during parsing, or null if not specified (indicates that      * prefs.get(JabRefPreferences.DEFAULT_ENCODING) was used).      */
-DECL|method|getEncoding ()
-specifier|public
-name|Charset
-name|getEncoding
-parameter_list|()
-block|{
-return|return
-name|encoding
-return|;
 block|}
 comment|/**      * Add a parser warning.      *      * @param s String Warning text. Must be pretranslated. Only added if there isn't already a dupe.      */
 DECL|method|addWarning (String s)
@@ -589,28 +611,18 @@ name|isEmpty
 argument_list|()
 return|;
 block|}
-comment|/**      * Get all duplicated keys found in the database.      *      * @return An array containing the duplicated keys.      */
+comment|/**      * Get all duplicated keys found in the database.      *      * @return A list containing the duplicated keys.      */
 DECL|method|getDuplicateKeys ()
 specifier|public
+name|List
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|getDuplicateKeys
 parameter_list|()
 block|{
 return|return
 name|duplicateKeys
-operator|.
-name|toArray
-argument_list|(
-operator|new
-name|String
-index|[
-name|duplicateKeys
-operator|.
-name|size
-argument_list|()
-index|]
-argument_list|)
 return|;
 block|}
 DECL|method|isPostponedAutosaveFound ()
@@ -715,7 +727,6 @@ name|boolean
 name|isNullResult
 parameter_list|()
 block|{
-comment|// TODO Auto-generated method stub
 return|return
 name|this
 operator|==

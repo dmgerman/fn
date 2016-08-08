@@ -28,18 +28,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|logic
 operator|.
 name|layout
@@ -84,6 +72,24 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|util
+operator|.
+name|strings
+operator|.
+name|StringUtil
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -122,7 +128,6 @@ name|RTFChars
 implements|implements
 name|LayoutFormatter
 block|{
-comment|// Instantiate logger:
 DECL|field|LOGGER
 specifier|private
 specifier|static
@@ -292,7 +297,7 @@ argument_list|(
 name|c
 argument_list|)
 operator|||
-name|Globals
+name|StringUtil
 operator|.
 name|SPECIAL_COMMAND_CHARS
 operator|.
@@ -337,7 +342,7 @@ operator|==
 literal|1
 operator|)
 operator|&&
-name|Globals
+name|StringUtil
 operator|.
 name|SPECIAL_COMMAND_CHARS
 operator|.
@@ -626,14 +631,12 @@ if|if
 condition|(
 name|i
 operator|>=
-operator|(
 name|field
 operator|.
 name|length
 argument_list|()
 operator|-
 literal|1
-operator|)
 condition|)
 block|{
 break|break
@@ -1041,6 +1044,7 @@ literal|' '
 case|:
 if|if
 condition|(
+operator|!
 name|commandNestedInBraces
 condition|)
 block|{

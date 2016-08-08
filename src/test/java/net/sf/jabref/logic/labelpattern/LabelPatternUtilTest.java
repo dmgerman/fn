@@ -34,18 +34,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|JabRefPreferences
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|importer
 operator|.
 name|fileformat
@@ -83,6 +71,20 @@ operator|.
 name|entry
 operator|.
 name|BibEntry
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|preferences
+operator|.
+name|JabRefPreferences
 import|;
 end_import
 
@@ -379,6 +381,8 @@ name|entry0
 argument_list|,
 literal|"auth"
 argument_list|)
+argument_list|,
+literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -422,6 +426,8 @@ name|entry
 argument_list|,
 literal|"authors3"
 argument_list|)
+argument_list|,
+literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -460,6 +466,8 @@ name|entry
 argument_list|,
 literal|"auth"
 argument_list|)
+argument_list|,
+literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -499,6 +507,8 @@ name|entry0
 argument_list|,
 literal|"auth3"
 argument_list|)
+argument_list|,
+literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -527,6 +537,8 @@ name|entry0
 argument_list|,
 literal|"auth3"
 argument_list|)
+argument_list|,
+literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -555,6 +567,8 @@ name|entry0
 argument_list|,
 literal|"auth3"
 argument_list|)
+argument_list|,
+literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -583,6 +597,8 @@ name|entry0
 argument_list|,
 literal|"auth3"
 argument_list|)
+argument_list|,
+literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -611,6 +627,8 @@ name|entry0
 argument_list|,
 literal|"auth3"
 argument_list|)
+argument_list|,
+literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -639,6 +657,8 @@ name|entry0
 argument_list|,
 literal|"auth3"
 argument_list|)
+argument_list|,
+literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -667,6 +687,8 @@ name|entry0
 argument_list|,
 literal|"auth3"
 argument_list|)
+argument_list|,
+literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -695,6 +717,8 @@ name|entry0
 argument_list|,
 literal|"auth3"
 argument_list|)
+argument_list|,
+literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -723,6 +747,8 @@ name|entry0
 argument_list|,
 literal|"auth3"
 argument_list|)
+argument_list|,
+literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -751,6 +777,8 @@ name|entry0
 argument_list|,
 literal|"auth3"
 argument_list|)
+argument_list|,
+literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -779,6 +807,8 @@ name|entry0
 argument_list|,
 literal|"auth3"
 argument_list|)
+argument_list|,
+literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -807,6 +837,8 @@ name|entry0
 argument_list|,
 literal|"auth3"
 argument_list|)
+argument_list|,
+literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -846,6 +878,8 @@ name|entry0
 argument_list|,
 literal|"auth3"
 argument_list|)
+argument_list|,
+literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -874,6 +908,8 @@ name|entry0
 argument_list|,
 literal|"auth3"
 argument_list|)
+argument_list|,
+literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -902,6 +938,8 @@ name|entry0
 argument_list|,
 literal|"auth3"
 argument_list|)
+argument_list|,
+literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -930,6 +968,8 @@ name|entry0
 argument_list|,
 literal|"auth3"
 argument_list|)
+argument_list|,
+literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -958,6 +998,8 @@ name|entry0
 argument_list|,
 literal|"auth3"
 argument_list|)
+argument_list|,
+literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -995,6 +1037,8 @@ operator|.
 name|checkLegalKey
 argument_list|(
 name|accents
+argument_list|,
+literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1015,6 +1059,8 @@ operator|.
 name|checkLegalKey
 argument_list|(
 name|accents
+argument_list|,
+literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1035,6 +1081,8 @@ operator|.
 name|checkLegalKey
 argument_list|(
 name|accents
+argument_list|,
+literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1055,6 +1103,8 @@ operator|.
 name|checkLegalKey
 argument_list|(
 name|accents
+argument_list|,
+literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1075,6 +1125,8 @@ operator|.
 name|checkLegalKey
 argument_list|(
 name|accents
+argument_list|,
+literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1096,6 +1148,8 @@ operator|.
 name|checkLegalKey
 argument_list|(
 name|accents
+argument_list|,
+literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1116,6 +1170,8 @@ operator|.
 name|checkLegalKey
 argument_list|(
 name|accents
+argument_list|,
+literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1136,6 +1192,8 @@ operator|.
 name|checkLegalKey
 argument_list|(
 name|accents
+argument_list|,
+literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1156,6 +1214,8 @@ operator|.
 name|checkLegalKey
 argument_list|(
 name|accents
+argument_list|,
+literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1176,6 +1236,8 @@ operator|.
 name|checkLegalKey
 argument_list|(
 name|accents
+argument_list|,
+literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1222,6 +1284,8 @@ operator|.
 name|checkLegalKey
 argument_list|(
 name|totest
+argument_list|,
+literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1341,6 +1405,8 @@ name|entry
 argument_list|,
 literal|"auth"
 argument_list|)
+argument_list|,
+literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1379,6 +1445,8 @@ name|entry
 argument_list|,
 literal|"auth"
 argument_list|)
+argument_list|,
+literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1417,6 +1485,8 @@ name|entry
 argument_list|,
 literal|"auth"
 argument_list|)
+argument_list|,
+literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1455,6 +1525,8 @@ name|entry
 argument_list|,
 literal|"auth"
 argument_list|)
+argument_list|,
+literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -3307,13 +3379,12 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testCheckLegalKey2 ()
+DECL|method|testCheckLegalKeyEnforceLegal ()
 specifier|public
 name|void
-name|testCheckLegalKey2
+name|testCheckLegalKeyEnforceLegal
 parameter_list|()
 block|{
-comment|// Enforce legal keys
 name|assertEquals
 argument_list|(
 literal|"AAAA"
@@ -3356,7 +3427,15 @@ literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// Do not enforce legal keys
+block|}
+annotation|@
+name|Test
+DECL|method|testCheckLegalKeyDoNotEnforceLegal ()
+specifier|public
+name|void
+name|testCheckLegalKeyDoNotEnforceLegal
+parameter_list|()
+block|{
 name|assertEquals
 argument_list|(
 literal|"AAAA"
@@ -3399,17 +3478,15 @@ literal|false
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// Check null input
-name|assertNull
-argument_list|(
-name|LabelPatternUtil
-operator|.
-name|checkLegalKey
-argument_list|(
-literal|null
-argument_list|)
-argument_list|)
-expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|testCheckLegalNullInNullOut ()
+specifier|public
+name|void
+name|testCheckLegalNullInNullOut
+parameter_list|()
+block|{
 name|assertNull
 argument_list|(
 name|LabelPatternUtil
@@ -3434,28 +3511,56 @@ literal|false
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// Use preferences setting
+block|}
+annotation|@
+name|Test
+DECL|method|testApplyModifiers ()
+specifier|public
+name|void
+name|testApplyModifiers
+parameter_list|()
+block|{
+name|BibEntry
+name|entry
+init|=
+operator|new
+name|BibEntry
+argument_list|()
+decl_stmt|;
+name|entry
+operator|.
+name|setField
+argument_list|(
+literal|"title"
+argument_list|,
+literal|"Green Scheduling of Whatever"
+argument_list|)
+expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"AAAA"
+literal|"GSW"
 argument_list|,
 name|LabelPatternUtil
 operator|.
-name|checkLegalKey
+name|makeLabel
 argument_list|(
-literal|"AA AA"
+name|entry
+argument_list|,
+literal|"shorttitleINI"
 argument_list|)
 argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|""
+literal|"GreenSchedulingWhatever"
 argument_list|,
 name|LabelPatternUtil
 operator|.
-name|checkLegalKey
+name|makeLabel
 argument_list|(
-literal|"\n\t\r"
+name|entry
+argument_list|,
+literal|"shorttitle"
 argument_list|)
 argument_list|)
 expr_stmt|;

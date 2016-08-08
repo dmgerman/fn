@@ -194,18 +194,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|JabRefPreferences
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|gui
 operator|.
 name|BasePanel
@@ -296,22 +284,6 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|help
-operator|.
-name|HelpFiles
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
 name|maintable
 operator|.
 name|MainTableDataModel
@@ -365,6 +337,22 @@ operator|.
 name|autocompleter
 operator|.
 name|AutoCompleter
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|help
+operator|.
+name|HelpFile
 import|;
 end_import
 
@@ -445,6 +433,20 @@ operator|.
 name|entry
 operator|.
 name|BibEntry
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|preferences
+operator|.
+name|JabRefPreferences
 import|;
 end_import
 
@@ -1221,7 +1223,7 @@ argument_list|(
 operator|new
 name|HelpAction
 argument_list|(
-name|HelpFiles
+name|HelpFile
 operator|.
 name|SEARCH
 argument_list|)
@@ -1495,7 +1497,8 @@ name|addFocusListener
 argument_list|(
 name|Globals
 operator|.
-name|focusListener
+name|getFocusListener
+argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// Search if user press enter
@@ -1532,7 +1535,8 @@ block|{
 comment|// first focus request is necessary so that the UI stays nice
 name|basePanel
 operator|.
-name|mainTable
+name|getMainTable
+argument_list|()
 operator|.
 name|requestFocus
 argument_list|()
@@ -1542,7 +1546,8 @@ argument_list|()
 expr_stmt|;
 name|basePanel
 operator|.
-name|mainTable
+name|getMainTable
+argument_list|()
 operator|.
 name|requestFocus
 argument_list|()
@@ -1684,7 +1689,8 @@ argument_list|)
 expr_stmt|;
 name|basePanel
 operator|.
-name|mainTable
+name|getMainTable
+argument_list|()
 operator|.
 name|getTableModel
 argument_list|()
@@ -1854,7 +1860,8 @@ argument_list|)
 expr_stmt|;
 name|basePanel
 operator|.
-name|mainTable
+name|getMainTable
+argument_list|()
 operator|.
 name|getTableModel
 argument_list|()

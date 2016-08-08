@@ -168,6 +168,18 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|Globals
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|MetaData
 import|;
 end_import
@@ -651,7 +663,7 @@ name|colNames
 return|;
 block|}
 block|}
-comment|/**      * Worker method to perform the import from a database      *      * @param dbs  The necessary database connection information      * @param mode      * @return An ArrayList containing pairs of Objects. Each position of the ArrayList stores three Objects: a      * BibDatabase, a MetaData and a String with the bib database name stored in the DBMS      * @throws SQLException      * @throws ClassNotFoundException      * @throws InstantiationException      * @throws IllegalAccessException      * @throws Exception      */
+comment|/**      * Worker method to perform the import from a database      *      * @param dbs  The necessary database connection information      * @param mode      * @return An ArrayList containing pairs of Objects. Each position of the ArrayList stores three Objects: a      * BibDatabase, a MetaData and a String with the BIB database name stored in the DBMS      * @throws SQLException      * @throws ClassNotFoundException      * @throws InstantiationException      * @throws IllegalAccessException      * @throws Exception      */
 DECL|method|performImport (DBStrings dbs, List<String> listOfDBs, BibDatabaseMode mode)
 specifier|public
 name|List
@@ -1375,8 +1387,9 @@ decl_stmt|;
 name|GroupTreeNode
 name|rootNode
 init|=
-operator|new
 name|GroupTreeNode
+operator|.
+name|fromGroup
 argument_list|(
 operator|new
 name|AllEntriesGroup
@@ -1502,6 +1515,10 @@ argument_list|(
 literal|"hierarchical_context"
 argument_list|)
 argument_list|)
+argument_list|,
+name|Globals
+operator|.
+name|prefs
 argument_list|)
 expr_stmt|;
 break|break;
@@ -1589,6 +1606,10 @@ argument_list|(
 literal|"hierarchical_context"
 argument_list|)
 argument_list|)
+argument_list|,
+name|Globals
+operator|.
+name|prefs
 argument_list|)
 expr_stmt|;
 break|break;
@@ -1665,6 +1686,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 break|break;
+default|default:
+break|break;
 block|}
 block|}
 catch|catch
@@ -1691,8 +1714,9 @@ block|{
 name|GroupTreeNode
 name|node
 init|=
-operator|new
 name|GroupTreeNode
+operator|.
+name|fromGroup
 argument_list|(
 name|group
 argument_list|)

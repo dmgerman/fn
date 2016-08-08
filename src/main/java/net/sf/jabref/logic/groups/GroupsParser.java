@@ -60,17 +60,30 @@ name|Localization
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|preferences
+operator|.
+name|JabRefPreferences
+import|;
+end_import
+
 begin_comment
 comment|/**  * Converts string representation of groups to a parsed {@link GroupTreeNode}.  */
 end_comment
 
 begin_class
 DECL|class|GroupsParser
-specifier|public
 class|class
 name|GroupsParser
 block|{
-DECL|method|importGroups (List<String> orderedData)
+DECL|method|importGroups (List<String> orderedData, JabRefPreferences jabRefPreferences)
 specifier|public
 specifier|static
 name|GroupTreeNode
@@ -81,6 +94,9 @@ argument_list|<
 name|String
 argument_list|>
 name|orderedData
+parameter_list|,
+name|JabRefPreferences
+name|jabRefPreferences
 parameter_list|)
 throws|throws
 name|ParseException
@@ -185,13 +201,16 @@ name|spaceIndex
 operator|+
 literal|1
 argument_list|)
+argument_list|,
+name|jabRefPreferences
 argument_list|)
 decl_stmt|;
 name|GroupTreeNode
 name|newNode
 init|=
-operator|new
 name|GroupTreeNode
+operator|.
+name|fromGroup
 argument_list|(
 name|group
 argument_list|)

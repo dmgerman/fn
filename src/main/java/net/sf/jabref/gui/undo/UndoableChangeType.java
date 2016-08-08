@@ -20,13 +20,35 @@ end_package
 
 begin_import
 import|import
-name|javax
+name|net
 operator|.
-name|swing
+name|sf
 operator|.
-name|undo
+name|jabref
 operator|.
-name|AbstractUndoableEdit
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|util
+operator|.
+name|strings
+operator|.
+name|StringUtil
 import|;
 end_import
 
@@ -56,7 +78,7 @@ specifier|public
 class|class
 name|UndoableChangeType
 extends|extends
-name|AbstractUndoableEdit
+name|AbstractUndoableJabRefEdit
 block|{
 DECL|field|oldType
 specifier|private
@@ -111,26 +133,52 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|getUndoPresentationName ()
+DECL|method|getPresentationName ()
 specifier|public
 name|String
-name|getUndoPresentationName
+name|getPresentationName
 parameter_list|()
 block|{
 return|return
-literal|"Undo: change type"
-return|;
-block|}
-annotation|@
-name|Override
-DECL|method|getRedoPresentationName ()
-specifier|public
-name|String
-name|getRedoPresentationName
-parameter_list|()
-block|{
-return|return
-literal|"Redo: change type"
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"change type of entry %0 from %1 to %2"
+argument_list|,
+name|StringUtil
+operator|.
+name|boldHTML
+argument_list|(
+name|entry
+operator|.
+name|getCiteKey
+argument_list|()
+argument_list|,
+literal|""
+argument_list|)
+argument_list|,
+name|StringUtil
+operator|.
+name|boldHTML
+argument_list|(
+name|oldType
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"undefined"
+argument_list|)
+argument_list|)
+argument_list|,
+name|StringUtil
+operator|.
+name|boldHTML
+argument_list|(
+name|newType
+argument_list|)
+argument_list|)
 return|;
 block|}
 annotation|@

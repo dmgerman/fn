@@ -78,22 +78,6 @@ name|Objects
 import|;
 end_import
 
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
-name|journals
-operator|.
-name|JournalAbbreviationRepository
-import|;
-end_import
-
 begin_comment
 comment|/**  * Helper class to get a Layout object.  *  *<code>  * LayoutHelper helper = new LayoutHelper(...a reader...);  * Layout layout = helper.getLayoutFromText();  *</code>  *  */
 end_comment
@@ -220,26 +204,26 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
-DECL|field|repository
+DECL|field|prefs
 specifier|private
 specifier|final
-name|JournalAbbreviationRepository
-name|repository
+name|LayoutFormatterPreferences
+name|prefs
 decl_stmt|;
 DECL|field|endOfFile
 specifier|private
 name|boolean
 name|endOfFile
 decl_stmt|;
-DECL|method|LayoutHelper (Reader in, JournalAbbreviationRepository repository)
+DECL|method|LayoutHelper (Reader in, LayoutFormatterPreferences prefs)
 specifier|public
 name|LayoutHelper
 parameter_list|(
 name|Reader
 name|in
 parameter_list|,
-name|JournalAbbreviationRepository
-name|repository
+name|LayoutFormatterPreferences
+name|prefs
 parameter_list|)
 block|{
 name|this
@@ -259,13 +243,13 @@ argument_list|)
 expr_stmt|;
 name|this
 operator|.
-name|repository
+name|prefs
 operator|=
 name|Objects
 operator|.
 name|requireNonNull
 argument_list|(
-name|repository
+name|prefs
 argument_list|)
 expr_stmt|;
 block|}
@@ -363,7 +347,7 @@ name|Layout
 argument_list|(
 name|parsedEntries
 argument_list|,
-name|repository
+name|prefs
 argument_list|)
 return|;
 block|}
@@ -1391,7 +1375,7 @@ name|name
 argument_list|)
 condition|)
 block|{
-comment|// Print the name of the database bib file.
+comment|// Print the name of the database BIB file.
 comment|// This is only supported in begin/end layouts, not in
 comment|// entry layouts.
 name|parsedEntries
@@ -1422,7 +1406,7 @@ name|name
 argument_list|)
 condition|)
 block|{
-comment|// Print the full path of the database bib file.
+comment|// Print the full path of the database BIB file.
 comment|// This is only supported in begin/end layouts, not in
 comment|// entry layouts.
 name|parsedEntries

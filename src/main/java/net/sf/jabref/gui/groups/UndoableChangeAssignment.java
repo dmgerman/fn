@@ -60,13 +60,17 @@ end_import
 
 begin_import
 import|import
-name|javax
+name|net
 operator|.
-name|swing
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
 operator|.
 name|undo
 operator|.
-name|AbstractUndoableEdit
+name|AbstractUndoableJabRefEdit
 import|;
 end_import
 
@@ -128,7 +132,7 @@ specifier|public
 class|class
 name|UndoableChangeAssignment
 extends|extends
-name|AbstractUndoableEdit
+name|AbstractUndoableJabRefEdit
 block|{
 DECL|field|previousAssignments
 specifier|private
@@ -151,6 +155,7 @@ decl_stmt|;
 comment|/**      * The path to the edited node      */
 DECL|field|pathToNode
 specifier|private
+specifier|final
 name|List
 argument_list|<
 name|Integer
@@ -160,6 +165,7 @@ decl_stmt|;
 comment|/**      * The root of the global groups tree      */
 DECL|field|root
 specifier|private
+specifier|final
 name|GroupTreeNode
 name|root
 decl_stmt|;
@@ -233,48 +239,13 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|getUndoPresentationName ()
+DECL|method|getPresentationName ()
 specifier|public
 name|String
-name|getUndoPresentationName
+name|getPresentationName
 parameter_list|()
 block|{
 return|return
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Undo"
-argument_list|)
-operator|+
-literal|": "
-operator|+
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"change assignment of entries"
-argument_list|)
-return|;
-block|}
-annotation|@
-name|Override
-DECL|method|getRedoPresentationName ()
-specifier|public
-name|String
-name|getRedoPresentationName
-parameter_list|()
-block|{
-return|return
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Redo"
-argument_list|)
-operator|+
-literal|": "
-operator|+
 name|Localization
 operator|.
 name|lang

@@ -110,9 +110,9 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|journals
+name|layout
 operator|.
-name|JournalAbbreviationRepository
+name|LayoutFormatterPreferences
 import|;
 end_import
 
@@ -203,12 +203,6 @@ argument_list|,
 name|DEFAULT_NUMERICAL_STYLE_PATH
 argument_list|)
 decl_stmt|;
-DECL|field|repository
-specifier|private
-specifier|final
-name|JournalAbbreviationRepository
-name|repository
-decl_stmt|;
 DECL|field|preferences
 specifier|private
 specifier|final
@@ -220,6 +214,12 @@ specifier|private
 specifier|final
 name|Charset
 name|encoding
+decl_stmt|;
+DECL|field|layoutFormatterPreferences
+specifier|private
+specifier|final
+name|LayoutFormatterPreferences
+name|layoutFormatterPreferences
 decl_stmt|;
 comment|// Lists of the internal
 comment|// and external styles
@@ -251,15 +251,15 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
-DECL|method|StyleLoader (OpenOfficePreferences preferences, JournalAbbreviationRepository repository, Charset encoding)
+DECL|method|StyleLoader (OpenOfficePreferences preferences, LayoutFormatterPreferences jabrefPreferences, Charset encoding)
 specifier|public
 name|StyleLoader
 parameter_list|(
 name|OpenOfficePreferences
 name|preferences
 parameter_list|,
-name|JournalAbbreviationRepository
-name|repository
+name|LayoutFormatterPreferences
+name|jabrefPreferences
 parameter_list|,
 name|Charset
 name|encoding
@@ -267,24 +267,24 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|repository
+name|preferences
 operator|=
 name|Objects
 operator|.
 name|requireNonNull
 argument_list|(
-name|repository
+name|preferences
 argument_list|)
 expr_stmt|;
 name|this
 operator|.
-name|preferences
+name|layoutFormatterPreferences
 operator|=
 name|Objects
 operator|.
 name|requireNonNull
 argument_list|(
-name|preferences
+name|jabrefPreferences
 argument_list|)
 expr_stmt|;
 name|this
@@ -338,10 +338,11 @@ return|return
 name|result
 return|;
 block|}
-DECL|method|addStyle (String filename)
+comment|/**      * Adds the given style to the list of styles      * @param filename The filename of the style      * @return True if the added style is valid, false otherwise      */
+DECL|method|addStyleIfValid (String filename)
 specifier|public
-name|void
-name|addStyle
+name|boolean
+name|addStyleIfValid
 parameter_list|(
 name|String
 name|filename
@@ -368,7 +369,7 @@ argument_list|(
 name|filename
 argument_list|)
 argument_list|,
-name|repository
+name|layoutFormatterPreferences
 argument_list|,
 name|encoding
 argument_list|)
@@ -414,6 +415,9 @@ expr_stmt|;
 name|storeExternalStyles
 argument_list|()
 expr_stmt|;
+return|return
+literal|true
+return|;
 block|}
 else|else
 block|{
@@ -470,6 +474,9 @@ name|e
 argument_list|)
 expr_stmt|;
 block|}
+return|return
+literal|false
+return|;
 block|}
 DECL|method|loadExternalStyles ()
 specifier|private
@@ -516,7 +523,7 @@ argument_list|(
 name|filename
 argument_list|)
 argument_list|,
-name|repository
+name|layoutFormatterPreferences
 argument_list|,
 name|encoding
 argument_list|)
@@ -529,6 +536,7 @@ name|isValid
 argument_list|()
 condition|)
 block|{
+comment|//Problem!
 name|externalStyles
 operator|.
 name|add
@@ -624,7 +632,7 @@ name|OOBibStyle
 argument_list|(
 name|filename
 argument_list|,
-name|repository
+name|layoutFormatterPreferences
 argument_list|)
 argument_list|)
 expr_stmt|;

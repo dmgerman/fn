@@ -74,6 +74,26 @@ name|java
 operator|.
 name|util
 operator|.
+name|Arrays
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|zip
 operator|.
 name|ZipFile
@@ -264,35 +284,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|JabRefPreferences
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|gui
 operator|.
 name|FileDialogs
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|GUIGlobals
 import|;
 end_import
 
@@ -323,22 +317,6 @@ operator|.
 name|help
 operator|.
 name|HelpAction
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|help
-operator|.
-name|HelpFiles
 import|;
 end_import
 
@@ -400,9 +378,39 @@ name|jabref
 operator|.
 name|logic
 operator|.
+name|help
+operator|.
+name|HelpFile
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
 name|l10n
 operator|.
 name|Localization
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|preferences
+operator|.
+name|JabRefPreferences
 import|;
 end_import
 
@@ -460,6 +468,43 @@ name|ImportCustomizationDialog
 extends|extends
 name|JDialog
 block|{
+comment|// Column widths for import customization dialog table:
+DECL|field|COL_0_WIDTH
+specifier|private
+specifier|static
+specifier|final
+name|int
+name|COL_0_WIDTH
+init|=
+literal|200
+decl_stmt|;
+DECL|field|COL_1_WIDTH
+specifier|private
+specifier|static
+specifier|final
+name|int
+name|COL_1_WIDTH
+init|=
+literal|80
+decl_stmt|;
+DECL|field|COL_2_WIDTH
+specifier|private
+specifier|static
+specifier|final
+name|int
+name|COL_2_WIDTH
+init|=
+literal|200
+decl_stmt|;
+DECL|field|COL_3_WIDTH
+specifier|private
+specifier|static
+specifier|final
+name|int
+name|COL_3_WIDTH
+init|=
+literal|200
+decl_stmt|;
 DECL|field|customImporterTable
 specifier|private
 specifier|final
@@ -482,7 +527,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|/**      *      * @param frame_      * @throws HeadlessException      */
+comment|/**      *      * @param frame      */
 DECL|method|ImportCustomizationDialog (final JabRefFrame frame)
 specifier|public
 name|ImportCustomizationDialog
@@ -538,9 +583,7 @@ argument_list|)
 operator|.
 name|setPreferredWidth
 argument_list|(
-name|GUIGlobals
-operator|.
-name|IMPORT_DIALOG_COL_0_WIDTH
+name|COL_0_WIDTH
 argument_list|)
 expr_stmt|;
 name|cm
@@ -552,9 +595,7 @@ argument_list|)
 operator|.
 name|setPreferredWidth
 argument_list|(
-name|GUIGlobals
-operator|.
-name|IMPORT_DIALOG_COL_1_WIDTH
+name|COL_1_WIDTH
 argument_list|)
 expr_stmt|;
 name|cm
@@ -566,9 +607,7 @@ argument_list|)
 operator|.
 name|setPreferredWidth
 argument_list|(
-name|GUIGlobals
-operator|.
-name|IMPORT_DIALOG_COL_2_WIDTH
+name|COL_2_WIDTH
 argument_list|)
 expr_stmt|;
 name|cm
@@ -580,9 +619,7 @@ argument_list|)
 operator|.
 name|setPreferredWidth
 argument_list|(
-name|GUIGlobals
-operator|.
-name|IMPORT_DIALOG_COL_3_WIDTH
+name|COL_3_WIDTH
 argument_list|)
 expr_stmt|;
 name|JScrollPane
@@ -660,11 +697,6 @@ argument_list|(
 name|e
 lambda|->
 block|{
-name|String
-name|chosenFileStr
-init|=
-literal|null
-decl_stmt|;
 name|CustomImporter
 name|importer
 init|=
@@ -697,7 +729,10 @@ name|WORKING_DIRECTORY
 argument_list|)
 argument_list|)
 argument_list|,
-literal|""
+name|Collections
+operator|.
+name|emptyList
+argument_list|()
 argument_list|,
 name|Localization
 operator|.
@@ -714,6 +749,11 @@ literal|false
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|String
+name|chosenFileStr
+init|=
+literal|null
+decl_stmt|;
 if|if
 condition|(
 name|importer
@@ -737,13 +777,18 @@ operator|.
 name|getFileFromBasePath
 argument_list|()
 argument_list|,
+name|Collections
+operator|.
+name|singletonList
+argument_list|(
 literal|".class"
+argument_list|)
 argument_list|,
 name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Select new ImportFormat Subclass"
+literal|"Select new ImportFormat subclass"
 argument_list|)
 argument_list|,
 name|JFileChooser
@@ -804,7 +849,7 @@ operator|.
 name|getInstance
 argument_list|()
 operator|.
-name|getCLIId
+name|getId
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -905,7 +950,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Add from jar"
+literal|"Add from JAR"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -940,13 +985,20 @@ name|WORKING_DIRECTORY
 argument_list|)
 argument_list|)
 argument_list|,
-literal|".zip,.jar"
+name|Arrays
+operator|.
+name|asList
+argument_list|(
+literal|".zip"
+argument_list|,
+literal|".jar"
+argument_list|)
 argument_list|,
 name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Select a Zip-archive"
+literal|"Select a ZIP-archive"
 argument_list|)
 argument_list|,
 name|JFileChooser
@@ -1024,7 +1076,7 @@ name|LOGGER
 operator|.
 name|info
 argument_list|(
-literal|"Could not open Zip-archive."
+literal|"Could not open ZIP-archive."
 argument_list|,
 name|exc
 argument_list|)
@@ -1065,7 +1117,7 @@ name|LOGGER
 operator|.
 name|info
 argument_list|(
-literal|"Could not instantiate Zip-archive reader."
+literal|"Could not instantiate ZIP-archive reader."
 argument_list|,
 name|exc
 argument_list|)
@@ -1108,7 +1160,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Add a (compiled) custom ImportFormat class from a Zip-archive."
+literal|"Add a (compiled) custom ImportFormat class from a ZIP-archive."
 argument_list|)
 operator|+
 literal|"\n"
@@ -1117,7 +1169,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"The Zip-archive need not be on the classpath of JabRef."
+literal|"The ZIP-archive need not be on the classpath of JabRef."
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1431,7 +1483,7 @@ init|=
 operator|new
 name|HelpAction
 argument_list|(
-name|HelpFiles
+name|HelpFile
 operator|.
 name|CUSTOM_IMPORTS
 argument_list|)
@@ -1667,21 +1719,13 @@ block|{
 name|int
 name|width
 init|=
-name|GUIGlobals
-operator|.
-name|IMPORT_DIALOG_COL_0_WIDTH
+name|COL_0_WIDTH
 operator|+
-name|GUIGlobals
-operator|.
-name|IMPORT_DIALOG_COL_1_WIDTH
+name|COL_1_WIDTH
 operator|+
-name|GUIGlobals
-operator|.
-name|IMPORT_DIALOG_COL_2_WIDTH
+name|COL_2_WIDTH
 operator|+
-name|GUIGlobals
-operator|.
-name|IMPORT_DIALOG_COL_3_WIDTH
+name|COL_3_WIDTH
 decl_stmt|;
 return|return
 operator|new

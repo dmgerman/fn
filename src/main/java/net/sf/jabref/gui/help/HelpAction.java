@@ -42,16 +42,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|swing
@@ -99,30 +89,6 @@ operator|.
 name|jabref
 operator|.
 name|Globals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|JabRefGUI
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|JabRefPreferences
 import|;
 end_import
 
@@ -182,6 +148,22 @@ name|jabref
 operator|.
 name|logic
 operator|.
+name|help
+operator|.
+name|HelpFile
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
 name|l10n
 operator|.
 name|Localization
@@ -190,29 +172,15 @@ end_import
 
 begin_import
 import|import
-name|org
+name|net
 operator|.
-name|apache
+name|sf
 operator|.
-name|commons
+name|jabref
 operator|.
-name|logging
+name|preferences
 operator|.
-name|Log
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|commons
-operator|.
-name|logging
-operator|.
-name|LogFactory
+name|JabRefPreferences
 import|;
 end_import
 
@@ -228,28 +196,12 @@ name|HelpAction
 extends|extends
 name|MnemonicAwareAction
 block|{
-DECL|field|LOGGER
-specifier|private
-specifier|static
-specifier|final
-name|Log
-name|LOGGER
-init|=
-name|LogFactory
-operator|.
-name|getLog
-argument_list|(
-name|HelpAction
-operator|.
-name|class
-argument_list|)
-decl_stmt|;
 DECL|field|helpPage
 specifier|private
-name|HelpFiles
+name|HelpFile
 name|helpPage
 decl_stmt|;
-DECL|method|HelpAction (String title, String tooltip, HelpFiles helpPage, KeyStroke key)
+DECL|method|HelpAction (String title, String tooltip, HelpFile helpPage, KeyStroke key)
 specifier|public
 name|HelpAction
 parameter_list|(
@@ -259,7 +211,7 @@ parameter_list|,
 name|String
 name|tooltip
 parameter_list|,
-name|HelpFiles
+name|HelpFile
 name|helpPage
 parameter_list|,
 name|KeyStroke
@@ -294,7 +246,7 @@ name|key
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|HelpAction (String title, String tooltip, HelpFiles helpPage, Icon icon)
+DECL|method|HelpAction (String title, String tooltip, HelpFile helpPage, Icon icon)
 specifier|private
 name|HelpAction
 parameter_list|(
@@ -304,7 +256,7 @@ parameter_list|,
 name|String
 name|tooltip
 parameter_list|,
-name|HelpFiles
+name|HelpFile
 name|helpPage
 parameter_list|,
 name|Icon
@@ -341,14 +293,14 @@ name|tooltip
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|HelpAction (String tooltip, HelpFiles helpPage)
+DECL|method|HelpAction (String tooltip, HelpFile helpPage)
 specifier|public
 name|HelpAction
 parameter_list|(
 name|String
 name|tooltip
 parameter_list|,
-name|HelpFiles
+name|HelpFile
 name|helpPage
 parameter_list|)
 block|{
@@ -376,11 +328,11 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|HelpAction (HelpFiles helpPage, Icon icon)
+DECL|method|HelpAction (HelpFile helpPage, Icon icon)
 specifier|public
 name|HelpAction
 parameter_list|(
-name|HelpFiles
+name|HelpFile
 name|helpPage
 parameter_list|,
 name|Icon
@@ -409,11 +361,11 @@ name|icon
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|HelpAction (HelpFiles helpPage)
+DECL|method|HelpAction (HelpFile helpPage)
 specifier|public
 name|HelpAction
 parameter_list|(
-name|HelpFiles
+name|HelpFile
 name|helpPage
 parameter_list|)
 block|{
@@ -500,12 +452,12 @@ return|return
 name|button
 return|;
 block|}
-DECL|method|setHelpFile (HelpFiles urlPart)
+DECL|method|setHelpFile (HelpFile urlPart)
 specifier|public
 name|void
 name|setHelpFile
 parameter_list|(
-name|HelpFiles
+name|HelpFile
 name|urlPart
 parameter_list|)
 block|{
@@ -527,13 +479,10 @@ name|ActionEvent
 name|e
 parameter_list|)
 block|{
-try|try
-block|{
-name|JabRefDesktop
-operator|.
-name|openBrowser
-argument_list|(
-literal|"http://help.jabref.org/"
+name|String
+name|url
+init|=
+literal|"https://help.jabref.org/"
 operator|+
 name|Globals
 operator|.
@@ -552,43 +501,14 @@ name|helpPage
 operator|.
 name|getPageName
 argument_list|()
+decl_stmt|;
+name|JabRefDesktop
+operator|.
+name|openBrowserShowPopup
+argument_list|(
+name|url
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|IOException
-name|ex
-parameter_list|)
-block|{
-name|LOGGER
-operator|.
-name|warn
-argument_list|(
-literal|"Could not open browser"
-argument_list|,
-name|ex
-argument_list|)
-expr_stmt|;
-name|JabRefGUI
-operator|.
-name|getMainFrame
-argument_list|()
-operator|.
-name|getCurrentBasePanel
-argument_list|()
-operator|.
-name|output
-argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Could not open browser."
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
 block|}
 block|}
 end_class

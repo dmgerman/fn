@@ -178,16 +178,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Collection
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|List
 import|;
 end_import
@@ -652,22 +642,6 @@ end_import
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|entry
-operator|.
-name|EntryUtil
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|jgoodies
@@ -868,16 +842,7 @@ operator|=
 operator|new
 name|FieldNameLabel
 argument_list|(
-literal|" "
-operator|+
-name|EntryUtil
-operator|.
-name|capitalizeFirst
-argument_list|(
 name|fieldName
-argument_list|)
-operator|+
-literal|" "
 argument_list|)
 expr_stmt|;
 name|tableModel
@@ -1014,7 +979,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Auto"
+literal|"Get fulltext"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1028,7 +993,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Download"
+literal|"Download from URL"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -2805,7 +2770,7 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
-name|Collection
+name|List
 argument_list|<
 name|BibEntry
 argument_list|>
@@ -2814,11 +2779,6 @@ init|=
 operator|new
 name|ArrayList
 argument_list|<>
-argument_list|()
-decl_stmt|;
-name|entries
-operator|.
-name|addAll
 argument_list|(
 name|frame
 operator|.
@@ -2828,7 +2788,7 @@ operator|.
 name|getSelectedEntries
 argument_list|()
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 comment|// filesystem lookup
 name|JDialog
 name|dialog
@@ -2963,7 +2923,10 @@ name|void
 name|downloadFile
 parameter_list|()
 block|{
+name|Optional
+argument_list|<
 name|String
+argument_list|>
 name|bibtexKey
 init|=
 name|entryEditor
@@ -2971,14 +2934,16 @@ operator|.
 name|getEntry
 argument_list|()
 operator|.
-name|getCiteKey
+name|getCiteKeyOptional
 argument_list|()
 decl_stmt|;
 if|if
 condition|(
+operator|!
 name|bibtexKey
-operator|==
-literal|null
+operator|.
+name|isPresent
+argument_list|()
 condition|)
 block|{
 name|int
@@ -3044,7 +3009,7 @@ operator|.
 name|getEntry
 argument_list|()
 operator|.
-name|getCiteKey
+name|getCiteKeyOptional
 argument_list|()
 expr_stmt|;
 block|}
@@ -3066,6 +3031,11 @@ name|getBibDatabaseContext
 argument_list|()
 argument_list|,
 name|bibtexKey
+operator|.
+name|orElse
+argument_list|(
+literal|null
+argument_list|)
 argument_list|)
 decl_stmt|;
 try|try

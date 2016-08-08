@@ -298,6 +298,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Objects
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Optional
 import|;
 end_import
@@ -386,18 +396,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|JabRefPreferences
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|logic
 operator|.
 name|groups
@@ -419,6 +417,22 @@ operator|.
 name|groups
 operator|.
 name|EntriesGroupChange
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|groups
+operator|.
+name|GroupTreeNode
 import|;
 end_import
 
@@ -462,9 +476,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|util
+name|preferences
 operator|.
-name|Util
+name|JabRefPreferences
 import|;
 end_import
 
@@ -1764,7 +1778,7 @@ comment|// field != keywords)
 if|if
 condition|(
 operator|!
-name|Util
+name|WarnAssignmentSideEffects
 operator|.
 name|warnAssignmentSideEffects
 argument_list|(
@@ -1823,11 +1837,6 @@ name|dropComplete
 argument_list|(
 literal|true
 argument_list|)
-expr_stmt|;
-name|groupSelector
-operator|.
-name|revalidateGroups
-argument_list|()
 expr_stmt|;
 name|groupSelector
 operator|.
@@ -2147,44 +2156,62 @@ name|repaint
 argument_list|()
 expr_stmt|;
 block|}
-comment|/** Highlights the specified cells or disables highlight if cells == null */
-DECL|method|setHighlight2Cells (Object[] cells)
+comment|/**      * Highlights the specified groups in red      **/
+DECL|method|setOverlappingGroups (List<GroupTreeNode> nodes)
 specifier|public
 name|void
-name|setHighlight2Cells
+name|setOverlappingGroups
 parameter_list|(
-name|Object
-index|[]
-name|cells
+name|List
+argument_list|<
+name|GroupTreeNode
+argument_list|>
+name|nodes
 parameter_list|)
 block|{
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|nodes
+argument_list|)
+expr_stmt|;
 name|localCellRenderer
 operator|.
-name|setHighlight2Cells
+name|setOverlappingGroups
 argument_list|(
-name|cells
+name|nodes
 argument_list|)
 expr_stmt|;
 name|repaint
 argument_list|()
 expr_stmt|;
 block|}
-comment|/** Highlights the specified cells or disables highlight if cells == null */
-DECL|method|setHighlight3Cells (Object[] cells)
+comment|/**      * Highlights the specified groups by underlining      **/
+DECL|method|setMatchingGroups (List<GroupTreeNode> nodes)
 specifier|public
 name|void
-name|setHighlight3Cells
+name|setMatchingGroups
 parameter_list|(
-name|Object
-index|[]
-name|cells
+name|List
+argument_list|<
+name|GroupTreeNode
+argument_list|>
+name|nodes
 parameter_list|)
 block|{
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|nodes
+argument_list|)
+expr_stmt|;
 name|localCellRenderer
 operator|.
-name|setHighlight3Cells
+name|setMatchingGroups
 argument_list|(
-name|cells
+name|nodes
 argument_list|)
 expr_stmt|;
 name|repaint

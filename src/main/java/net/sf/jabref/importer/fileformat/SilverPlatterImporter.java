@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
+comment|/*  Copyright (C) 2003-2016 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
 end_comment
 
 begin_package
@@ -42,9 +42,9 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
+name|util
 operator|.
-name|InputStream
+name|ArrayList
 import|;
 end_import
 
@@ -54,7 +54,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|ArrayList
+name|Collections
 import|;
 end_import
 
@@ -110,21 +110,7 @@ name|jabref
 operator|.
 name|importer
 operator|.
-name|ImportFormatReader
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|importer
-operator|.
-name|OutputPrinter
+name|ParserResult
 import|;
 end_import
 
@@ -160,6 +146,22 @@ name|BibEntry
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|FieldName
+import|;
+end_import
+
 begin_comment
 comment|/**  * Imports a SilverPlatter exported file. This is a poor format to parse,  * so it currently doesn't handle everything correctly.  */
 end_comment
@@ -186,7 +188,6 @@ argument_list|(
 literal|"Record.*INSPEC.*"
 argument_list|)
 decl_stmt|;
-comment|/**      * Return the name of this import format.      */
 annotation|@
 name|Override
 DECL|method|getFormatName ()
@@ -199,49 +200,50 @@ return|return
 literal|"SilverPlatter"
 return|;
 block|}
-comment|/*      *  (non-Javadoc)      * @see net.sf.jabref.imports.ImportFormat#getCLIId()      */
 annotation|@
 name|Override
-DECL|method|getCLIId ()
+DECL|method|getExtensions ()
 specifier|public
+name|List
+argument_list|<
 name|String
-name|getCLIId
+argument_list|>
+name|getExtensions
 parameter_list|()
 block|{
 return|return
-literal|"silverplatter"
+name|Collections
+operator|.
+name|singletonList
+argument_list|(
+literal|".txt"
+argument_list|)
 return|;
 block|}
-comment|/**      * Check whether the source is in the correct format for this importer.      */
 annotation|@
 name|Override
-DECL|method|isRecognizedFormat (InputStream stream)
+DECL|method|getDescription ()
+specifier|public
+name|String
+name|getDescription
+parameter_list|()
+block|{
+return|return
+literal|"Imports a SilverPlatter exported file."
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|isRecognizedFormat (BufferedReader reader)
 specifier|public
 name|boolean
 name|isRecognizedFormat
 parameter_list|(
-name|InputStream
-name|stream
+name|BufferedReader
+name|reader
 parameter_list|)
 throws|throws
 name|IOException
-block|{
-try|try
-init|(
-name|BufferedReader
-name|in
-init|=
-operator|new
-name|BufferedReader
-argument_list|(
-name|ImportFormatReader
-operator|.
-name|getReaderDefaultEncoding
-argument_list|(
-name|stream
-argument_list|)
-argument_list|)
-init|)
 block|{
 comment|// This format is very similar to Inspec, so we have a two-fold strategy:
 comment|// If we see the flag signaling that it is an Inspec file, return false.
@@ -255,7 +257,7 @@ condition|(
 operator|(
 name|str
 operator|=
-name|in
+name|reader
 operator|.
 name|readLine
 argument_list|()
@@ -313,27 +315,19 @@ literal|true
 return|;
 block|}
 block|}
-block|}
 return|return
 literal|false
 return|;
 block|}
-comment|/**      * Parse the entries in the source, and return a List of BibEntry      * objects.      */
 annotation|@
 name|Override
-DECL|method|importEntries (InputStream stream, OutputPrinter status)
+DECL|method|importDatabase (BufferedReader reader)
 specifier|public
-name|List
-argument_list|<
-name|BibEntry
-argument_list|>
-name|importEntries
+name|ParserResult
+name|importDatabase
 parameter_list|(
-name|InputStream
-name|stream
-parameter_list|,
-name|OutputPrinter
-name|status
+name|BufferedReader
+name|reader
 parameter_list|)
 throws|throws
 name|IOException
@@ -349,23 +343,6 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
-try|try
-init|(
-name|BufferedReader
-name|in
-init|=
-operator|new
-name|BufferedReader
-argument_list|(
-name|ImportFormatReader
-operator|.
-name|getReaderDefaultEncoding
-argument_list|(
-name|stream
-argument_list|)
-argument_list|)
-init|)
-block|{
 name|boolean
 name|isChapter
 init|=
@@ -386,7 +363,7 @@ condition|(
 operator|(
 name|str
 operator|=
-name|in
+name|reader
 operator|.
 name|readLine
 argument_list|()
@@ -561,7 +538,9 @@ name|h
 operator|.
 name|put
 argument_list|(
-literal|"title"
+name|FieldName
+operator|.
+name|TITLE
 argument_list|,
 name|frest
 argument_list|)
@@ -619,7 +598,9 @@ name|h
 operator|.
 name|put
 argument_list|(
-literal|"editor"
+name|FieldName
+operator|.
+name|EDITOR
 argument_list|,
 name|AuthorList
 operator|.
@@ -650,7 +631,9 @@ name|h
 operator|.
 name|put
 argument_list|(
-literal|"author"
+name|FieldName
+operator|.
+name|AUTHOR
 argument_list|,
 name|AuthorList
 operator|.
@@ -691,7 +674,9 @@ name|h
 operator|.
 name|put
 argument_list|(
-literal|"abstract"
+name|FieldName
+operator|.
+name|ABSTRACT
 argument_list|,
 name|frest
 argument_list|)
@@ -727,7 +712,9 @@ name|h
 operator|.
 name|put
 argument_list|(
-literal|"keywords"
+name|FieldName
+operator|.
+name|KEYWORDS
 argument_list|,
 name|kw
 operator|.
@@ -789,7 +776,9 @@ name|h
 operator|.
 name|put
 argument_list|(
-literal|"journal"
+name|FieldName
+operator|.
+name|JOURNAL
 argument_list|,
 name|jr
 operator|.
@@ -847,7 +836,9 @@ name|h
 operator|.
 name|put
 argument_list|(
-literal|"year"
+name|FieldName
+operator|.
+name|YEAR
 argument_list|,
 name|yr
 argument_list|)
@@ -916,7 +907,9 @@ name|h
 operator|.
 name|put
 argument_list|(
-literal|"pages"
+name|FieldName
+operator|.
+name|PAGES
 argument_list|,
 name|pg
 argument_list|)
@@ -925,7 +918,9 @@ name|h
 operator|.
 name|put
 argument_list|(
-literal|"volume"
+name|FieldName
+operator|.
+name|VOLUME
 argument_list|,
 name|frest
 operator|.
@@ -944,7 +939,9 @@ name|h
 operator|.
 name|put
 argument_list|(
-literal|"issue"
+name|FieldName
+operator|.
+name|ISSUE
 argument_list|,
 name|frest
 operator|.
@@ -1009,7 +1006,9 @@ name|h
 operator|.
 name|put
 argument_list|(
-literal|"publisher"
+name|FieldName
+operator|.
+name|PUBLISHER
 argument_list|,
 name|jr
 operator|.
@@ -1084,7 +1083,9 @@ name|h
 operator|.
 name|put
 argument_list|(
-literal|"year"
+name|FieldName
+operator|.
+name|YEAR
 argument_list|,
 name|yr
 argument_list|)
@@ -1117,7 +1118,9 @@ name|h
 operator|.
 name|put
 argument_list|(
-literal|"school"
+name|FieldName
+operator|.
+name|SCHOOL
 argument_list|,
 name|frest
 operator|.
@@ -1185,7 +1188,9 @@ argument_list|()
 operator|.
 name|contains
 argument_list|(
-literal|"journal"
+name|FieldName
+operator|.
+name|JOURNAL
 argument_list|)
 condition|)
 block|{
@@ -1244,14 +1249,16 @@ condition|(
 name|isChapter
 condition|)
 block|{
-name|Object
+name|String
 name|titleO
 init|=
 name|h
 operator|.
 name|get
 argument_list|(
-literal|"title"
+name|FieldName
+operator|.
+name|TITLE
 argument_list|)
 decl_stmt|;
 if|if
@@ -1264,12 +1271,7 @@ block|{
 name|String
 name|title
 init|=
-operator|(
-operator|(
-name|String
-operator|)
 name|titleO
-operator|)
 operator|.
 name|trim
 argument_list|()
@@ -1295,7 +1297,9 @@ name|h
 operator|.
 name|put
 argument_list|(
-literal|"title"
+name|FieldName
+operator|.
+name|TITLE
 argument_list|,
 name|title
 operator|.
@@ -1338,9 +1342,12 @@ name|b
 argument_list|)
 expr_stmt|;
 block|}
-block|}
 return|return
+operator|new
+name|ParserResult
+argument_list|(
 name|bibitems
+argument_list|)
 return|;
 block|}
 block|}

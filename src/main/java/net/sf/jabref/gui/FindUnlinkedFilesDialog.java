@@ -730,18 +730,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|JabRefPreferences
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|gui
 operator|.
 name|desktop
@@ -865,6 +853,36 @@ operator|.
 name|entry
 operator|.
 name|EntryType
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|FieldName
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|preferences
+operator|.
+name|JabRefPreferences
 import|;
 end_import
 
@@ -1957,7 +1975,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Choose Directory"
+literal|"Choose directory"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -3027,7 +3045,7 @@ name|void
 name|setupActions
 parameter_list|()
 block|{
-comment|/**          * Stores the selected Directory.          */
+comment|/**          * Stores the selected directory.          */
 name|buttonBrowse
 operator|.
 name|addActionListener
@@ -5437,7 +5455,9 @@ operator|.
 name|getAbsolutePath
 argument_list|()
 argument_list|,
-literal|"pdf"
+name|FieldName
+operator|.
+name|PDF
 argument_list|)
 expr_stmt|;
 block|}

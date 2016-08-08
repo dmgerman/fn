@@ -640,6 +640,9 @@ name|BUILD_INFO
 operator|.
 name|getVersion
 argument_list|()
+operator|.
+name|getFullVersion
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|String

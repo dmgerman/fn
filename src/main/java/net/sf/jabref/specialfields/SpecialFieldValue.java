@@ -353,12 +353,6 @@ name|this
 operator|.
 name|getMenuString
 argument_list|()
-argument_list|,
-name|this
-operator|.
-name|field
-operator|.
-name|TEXT_DONE_PATTERN
 argument_list|)
 expr_stmt|;
 block|}

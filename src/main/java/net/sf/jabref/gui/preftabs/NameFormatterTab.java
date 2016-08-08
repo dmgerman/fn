@@ -214,18 +214,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|JabRefPreferences
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|gui
 operator|.
 name|IconTheme
@@ -270,11 +258,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
+name|logic
 operator|.
 name|help
 operator|.
-name|HelpFiles
+name|HelpFile
 import|;
 end_import
 
@@ -309,6 +297,20 @@ operator|.
 name|format
 operator|.
 name|NameFormatter
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|preferences
+operator|.
+name|JabRefPreferences
 import|;
 end_import
 
@@ -660,14 +662,14 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Formatter Name"
+literal|"Formatter name"
 argument_list|)
 else|:
 name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Format String"
+literal|"Format string"
 argument_list|)
 return|;
 block|}
@@ -999,7 +1001,7 @@ argument_list|(
 literal|"Help on Name Formatting"
 argument_list|)
 argument_list|,
-name|HelpFiles
+name|HelpFile
 operator|.
 name|CUSTOM_EXPORTS_NAME_FORMATTER
 argument_list|)
@@ -1027,7 +1029,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Special Name Formatters"
+literal|"Special name formatters"
 argument_list|)
 argument_list|)
 expr_stmt|;

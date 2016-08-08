@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
+comment|/*  Copyright (C) 2003-2016 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
 end_comment
 
 begin_package
@@ -42,9 +42,9 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
+name|util
 operator|.
-name|InputStream
+name|ArrayList
 import|;
 end_import
 
@@ -54,7 +54,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|ArrayList
+name|Collections
 import|;
 end_import
 
@@ -108,9 +108,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|importer
-operator|.
-name|ImportFormatReader
+name|Globals
 import|;
 end_import
 
@@ -124,7 +122,7 @@ name|jabref
 operator|.
 name|importer
 operator|.
-name|OutputPrinter
+name|ParserResult
 import|;
 end_import
 
@@ -176,8 +174,38 @@ name|BibEntry
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|FieldName
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|preferences
+operator|.
+name|JabRefPreferences
+import|;
+end_import
+
 begin_comment
-comment|/**  * Importer for the Refer/Endnote format.  * modified to use article number for pages if pages are missing (some  * journals, e.g., Physical Review Letters, don't use pages anymore)  *  * check here for details on the format  * http://www.ecst.csuchico.edu/~jacobsd/bib/formats/endnote.html  */
+comment|/**  * Importer for the Refer/Endnote format.  * modified to use article number for pages if pages are missing (some  * journals, e.g., Physical Review Letters, don't use pages anymore)  *  * check here for details on the format  * http://libguides.csuchico.edu/c.php?g=414245&p=2822898  */
 end_comment
 
 begin_class
@@ -225,7 +253,6 @@ argument_list|(
 literal|"%E .*"
 argument_list|)
 decl_stmt|;
-comment|/**      * Return the name of this import format.      */
 annotation|@
 name|Override
 DECL|method|getFormatName ()
@@ -238,51 +265,64 @@ return|return
 literal|"Refer/Endnote"
 return|;
 block|}
-comment|/*      *  (non-Javadoc)      * @see net.sf.jabref.imports.ImportFormat#getCLIId()      */
 annotation|@
 name|Override
-DECL|method|getCLIId ()
+DECL|method|getExtensions ()
+specifier|public
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|getExtensions
+parameter_list|()
+block|{
+return|return
+name|Collections
+operator|.
+name|singletonList
+argument_list|(
+literal|".enw"
+argument_list|)
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|getId ()
 specifier|public
 name|String
-name|getCLIId
+name|getId
 parameter_list|()
 block|{
 return|return
 literal|"refer"
 return|;
 block|}
-comment|/**      * Check whether the source is in the correct format for this importer.      */
 annotation|@
 name|Override
-DECL|method|isRecognizedFormat (InputStream stream)
+DECL|method|getDescription ()
+specifier|public
+name|String
+name|getDescription
+parameter_list|()
+block|{
+return|return
+literal|"Importer for the Refer/Endnote format. Modified to use article number for pages if pages are missing."
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|isRecognizedFormat (BufferedReader reader)
 specifier|public
 name|boolean
 name|isRecognizedFormat
 parameter_list|(
-name|InputStream
-name|stream
+name|BufferedReader
+name|reader
 parameter_list|)
 throws|throws
 name|IOException
 block|{
 comment|// Our strategy is to look for the "%A *" line.
-try|try
-init|(
-name|BufferedReader
-name|in
-init|=
-operator|new
-name|BufferedReader
-argument_list|(
-name|ImportFormatReader
-operator|.
-name|getReaderDefaultEncoding
-argument_list|(
-name|stream
-argument_list|)
-argument_list|)
-init|)
-block|{
 name|String
 name|str
 decl_stmt|;
@@ -291,7 +331,7 @@ condition|(
 operator|(
 name|str
 operator|=
-name|in
+name|reader
 operator|.
 name|readLine
 argument_list|()
@@ -328,27 +368,19 @@ literal|true
 return|;
 block|}
 block|}
-block|}
 return|return
 literal|false
 return|;
 block|}
-comment|/**      * Parse the entries in the source, and return a List of BibEntry      * objects.      */
 annotation|@
 name|Override
-DECL|method|importEntries (InputStream stream, OutputPrinter status)
+DECL|method|importDatabase (BufferedReader reader)
 specifier|public
-name|List
-argument_list|<
-name|BibEntry
-argument_list|>
-name|importEntries
+name|ParserResult
+name|importDatabase
 parameter_list|(
-name|InputStream
-name|stream
-parameter_list|,
-name|OutputPrinter
-name|status
+name|BufferedReader
+name|reader
 parameter_list|)
 throws|throws
 name|IOException
@@ -371,23 +403,6 @@ operator|new
 name|StringBuilder
 argument_list|()
 decl_stmt|;
-try|try
-init|(
-name|BufferedReader
-name|in
-init|=
-operator|new
-name|BufferedReader
-argument_list|(
-name|ImportFormatReader
-operator|.
-name|getReaderDefaultEncoding
-argument_list|(
-name|stream
-argument_list|)
-argument_list|)
-init|)
-block|{
 name|String
 name|str
 decl_stmt|;
@@ -401,7 +416,7 @@ condition|(
 operator|(
 name|str
 operator|=
-name|in
+name|reader
 operator|.
 name|readLine
 argument_list|()
@@ -475,7 +490,6 @@ literal|'\n'
 argument_list|)
 expr_stmt|;
 block|}
-block|}
 name|String
 index|[]
 name|entries
@@ -534,7 +548,9 @@ literal|""
 expr_stmt|;
 name|type
 operator|=
-literal|"misc"
+name|BibEntry
+operator|.
+name|DEFAULT_TYPE
 expr_stmt|;
 name|editor
 operator|=
@@ -697,7 +713,9 @@ name|hm
 operator|.
 name|put
 argument_list|(
-literal|"title"
+name|FieldName
+operator|.
+name|TITLE
 argument_list|,
 name|val
 argument_list|)
@@ -865,7 +883,9 @@ else|else
 block|{
 name|type
 operator|=
-literal|"misc"
+name|BibEntry
+operator|.
+name|DEFAULT_TYPE
 expr_stmt|;
 comment|//
 block|}
@@ -885,7 +905,9 @@ name|hm
 operator|.
 name|put
 argument_list|(
-literal|"edition"
+name|FieldName
+operator|.
+name|EDITION
 argument_list|,
 name|val
 argument_list|)
@@ -906,7 +928,9 @@ name|hm
 operator|.
 name|put
 argument_list|(
-literal|"address"
+name|FieldName
+operator|.
+name|ADDRESS
 argument_list|,
 name|val
 argument_list|)
@@ -927,7 +951,9 @@ name|hm
 operator|.
 name|put
 argument_list|(
-literal|"year"
+name|FieldName
+operator|.
+name|YEAR
 argument_list|,
 name|val
 argument_list|)
@@ -948,7 +974,9 @@ name|hm
 operator|.
 name|put
 argument_list|(
-literal|"date"
+name|FieldName
+operator|.
+name|DATE
 argument_list|,
 name|val
 argument_list|)
@@ -971,7 +999,9 @@ name|hm
 operator|.
 name|putIfAbsent
 argument_list|(
-literal|"journal"
+name|FieldName
+operator|.
+name|JOURNAL
 argument_list|,
 name|val
 argument_list|)
@@ -1004,7 +1034,9 @@ name|hm
 operator|.
 name|put
 argument_list|(
-literal|"journal"
+name|FieldName
+operator|.
+name|JOURNAL
 argument_list|,
 name|val
 argument_list|)
@@ -1032,7 +1064,9 @@ name|hm
 operator|.
 name|put
 argument_list|(
-literal|"series"
+name|FieldName
+operator|.
+name|SERIES
 argument_list|,
 name|val
 argument_list|)
@@ -1045,7 +1079,9 @@ name|hm
 operator|.
 name|put
 argument_list|(
-literal|"booktitle"
+name|FieldName
+operator|.
+name|BOOKTITLE
 argument_list|,
 name|val
 argument_list|)
@@ -1077,7 +1113,9 @@ name|hm
 operator|.
 name|put
 argument_list|(
-literal|"school"
+name|FieldName
+operator|.
+name|SCHOOL
 argument_list|,
 name|val
 argument_list|)
@@ -1089,7 +1127,9 @@ name|hm
 operator|.
 name|put
 argument_list|(
-literal|"publisher"
+name|FieldName
+operator|.
+name|PUBLISHER
 argument_list|,
 name|val
 argument_list|)
@@ -1112,7 +1152,9 @@ name|hm
 operator|.
 name|put
 argument_list|(
-literal|"pages"
+name|FieldName
+operator|.
+name|PAGES
 argument_list|,
 name|val
 operator|.
@@ -1140,7 +1182,9 @@ name|hm
 operator|.
 name|put
 argument_list|(
-literal|"volume"
+name|FieldName
+operator|.
+name|VOLUME
 argument_list|,
 name|val
 argument_list|)
@@ -1161,7 +1205,9 @@ name|hm
 operator|.
 name|put
 argument_list|(
-literal|"number"
+name|FieldName
+operator|.
+name|NUMBER
 argument_list|,
 name|val
 argument_list|)
@@ -1182,7 +1228,9 @@ name|hm
 operator|.
 name|put
 argument_list|(
-literal|"url"
+name|FieldName
+operator|.
+name|URL
 argument_list|,
 name|val
 argument_list|)
@@ -1228,7 +1276,9 @@ name|hm
 operator|.
 name|put
 argument_list|(
-literal|"doi"
+name|FieldName
+operator|.
+name|DOI
 argument_list|,
 name|doi
 argument_list|)
@@ -1281,7 +1331,9 @@ name|hm
 operator|.
 name|put
 argument_list|(
-literal|"note"
+name|FieldName
+operator|.
+name|NOTE
 argument_list|,
 name|val
 argument_list|)
@@ -1303,7 +1355,9 @@ name|hm
 operator|.
 name|put
 argument_list|(
-literal|"keywords"
+name|FieldName
+operator|.
+name|KEYWORDS
 argument_list|,
 name|val
 argument_list|)
@@ -1324,7 +1378,9 @@ name|hm
 operator|.
 name|put
 argument_list|(
-literal|"abstract"
+name|FieldName
+operator|.
+name|ABSTRACT
 argument_list|,
 name|val
 argument_list|)
@@ -1400,6 +1456,17 @@ operator|.
 name|checkLegalKey
 argument_list|(
 name|val
+argument_list|,
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|ENFORCE_LEGAL_BIBTEX_KEY
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1444,7 +1511,9 @@ name|hm
 operator|.
 name|put
 argument_list|(
-literal|"author"
+name|FieldName
+operator|.
+name|AUTHOR
 argument_list|,
 name|fixAuthor
 argument_list|(
@@ -1468,7 +1537,9 @@ name|hm
 operator|.
 name|put
 argument_list|(
-literal|"editor"
+name|FieldName
+operator|.
+name|EDITOR
 argument_list|,
 name|fixAuthor
 argument_list|(
@@ -1486,7 +1557,9 @@ name|hm
 operator|.
 name|get
 argument_list|(
-literal|"pages"
+name|FieldName
+operator|.
+name|PAGES
 argument_list|)
 operator|==
 literal|null
@@ -1500,7 +1573,9 @@ name|hm
 operator|.
 name|get
 argument_list|(
-literal|"pages"
+name|FieldName
+operator|.
+name|PAGES
 argument_list|)
 argument_list|)
 operator|)
@@ -1518,7 +1593,9 @@ name|hm
 operator|.
 name|put
 argument_list|(
-literal|"pages"
+name|FieldName
+operator|.
+name|PAGES
 argument_list|,
 name|artnum
 argument_list|)
@@ -1566,7 +1643,11 @@ expr_stmt|;
 block|}
 block|}
 return|return
+operator|new
+name|ParserResult
+argument_list|(
 name|bibitems
+argument_list|)
 return|;
 block|}
 comment|/**      * We must be careful about the author names, since they can be presented differently      * by different sources. Normally each %A tag brings one name, and we get the authors      * separated by " and ". This is the correct behaviour.      * One source lists the names separated by comma, with a comma at the end. We can detect      * this format and fix it.      * @param s The author string      * @return The fixed author string      */

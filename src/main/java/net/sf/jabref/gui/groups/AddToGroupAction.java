@@ -182,20 +182,6 @@ name|BibEntry
 import|;
 end_import
 
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|util
-operator|.
-name|Util
-import|;
-end_import
-
 begin_class
 DECL|class|AddToGroupAction
 specifier|public
@@ -408,7 +394,8 @@ argument_list|()
 expr_stmt|;
 name|panel
 operator|.
-name|undoManager
+name|getUndoManager
+argument_list|()
 operator|.
 name|addEdit
 argument_list|(
@@ -538,7 +525,7 @@ expr_stmt|;
 if|if
 condition|(
 operator|!
-name|Util
+name|WarnAssignmentSideEffects
 operator|.
 name|warnAssignmentSideEffects
 argument_list|(
@@ -665,7 +652,7 @@ block|{
 if|if
 condition|(
 operator|!
-name|Util
+name|WarnAssignmentSideEffects
 operator|.
 name|warnAssignmentSideEffects
 argument_list|(

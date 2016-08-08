@@ -26,6 +26,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -75,8 +85,6 @@ specifier|public
 name|void
 name|findExactData
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|BibEntry
 name|entry
@@ -145,8 +153,6 @@ specifier|public
 name|void
 name|findMissingAuthor
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|BibEntry
 name|entry
@@ -206,8 +212,6 @@ specifier|public
 name|void
 name|findTitleOnly
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|BibEntry
 name|entry
@@ -253,13 +257,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|findIncompleteTitle ()
+DECL|method|notFindIncompleteTitle ()
 specifier|public
 name|void
-name|findIncompleteTitle
+name|notFindIncompleteTitle
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|BibEntry
 name|entry
@@ -275,6 +277,55 @@ argument_list|(
 literal|"title"
 argument_list|,
 literal|"Towards Application Portability"
+argument_list|)
+expr_stmt|;
+name|entry
+operator|.
+name|setField
+argument_list|(
+literal|"author"
+argument_list|,
+literal|"Stefan Kolb and Guido Wirtz"
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+name|Optional
+operator|.
+name|empty
+argument_list|()
+argument_list|,
+name|CrossRef
+operator|.
+name|findDOI
+argument_list|(
+name|entry
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|acceptTitleUnderThreshold ()
+specifier|public
+name|void
+name|acceptTitleUnderThreshold
+parameter_list|()
+block|{
+name|BibEntry
+name|entry
+init|=
+operator|new
+name|BibEntry
+argument_list|()
+decl_stmt|;
+name|entry
+operator|.
+name|setField
+argument_list|(
+literal|"title"
+argument_list|,
+literal|"Towards Application Portability in Platform as a Service----"
 argument_list|)
 expr_stmt|;
 name|entry
@@ -314,13 +365,60 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+DECL|method|notAcceptTitleOverThreshold ()
+specifier|public
+name|void
+name|notAcceptTitleOverThreshold
+parameter_list|()
+block|{
+name|BibEntry
+name|entry
+init|=
+operator|new
+name|BibEntry
+argument_list|()
+decl_stmt|;
+name|entry
+operator|.
+name|setField
+argument_list|(
+literal|"title"
+argument_list|,
+literal|"Towards Application Portability in Platform as a Service-----"
+argument_list|)
+expr_stmt|;
+name|entry
+operator|.
+name|setField
+argument_list|(
+literal|"author"
+argument_list|,
+literal|"Stefan Kolb and Guido Wirtz"
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+name|Optional
+operator|.
+name|empty
+argument_list|()
+argument_list|,
+name|CrossRef
+operator|.
+name|findDOI
+argument_list|(
+name|entry
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
 DECL|method|findWrongAuthor ()
 specifier|public
 name|void
 name|findWrongAuthor
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|BibEntry
 name|entry

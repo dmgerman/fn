@@ -68,6 +68,24 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
+name|layout
+operator|.
+name|format
+operator|.
+name|FileLinkPreferences
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|model
 operator|.
 name|database
@@ -108,8 +126,38 @@ name|BibDatabaseModeDetection
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|FieldName
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|preferences
+operator|.
+name|JabRefPreferences
+import|;
+end_import
+
 begin_comment
-comment|/**  * Represents everything related to a .bib file.  *<p>  * The entries are stored in BibDatabase, the other data in MetaData and the options relevant for this file in Defaults.  */
+comment|/**  * Represents everything related to a BIB file.  *<p>  * The entries are stored in BibDatabase, the other data in MetaData and the options relevant for this file in Defaults.  */
 end_comment
 
 begin_class
@@ -515,7 +563,7 @@ operator|.
 name|BIBLATEX
 return|;
 block|}
-comment|/**      * Look up the directory set up for the given field type for this database.      * If no directory is set up, return that defined in global preferences.      * There can be up to three directory definitions for these files:      * the database's metadata can specify a general directory and/or a user-specific directory      * or the preferences can specify one.      *<p>      * The settings are prioritized in the following order and the first defined setting is used:      * 1. metadata user-specific directory      * 2. metadata general directory      * 3. preferences directory      * 4. bib file directory      *      * @param fieldName The field type      * @return The default directory for this field type.      */
+comment|/**      * Look up the directory set up for the given field type for this database.      * If no directory is set up, return that defined in global preferences.      * There can be up to three directory definitions for these files:      * the database's metadata can specify a general directory and/or a user-specific directory      * or the preferences can specify one.      *<p>      * The settings are prioritized in the following order and the first defined setting is used:      * 1. metadata user-specific directory      * 2. metadata general directory      * 3. preferences directory      * 4. BIB file directory      *      * @param fieldName The field type      * @return The default directory for this field type.      */
 DECL|method|getFileDirectory (String fieldName)
 specifier|public
 name|List
@@ -626,7 +674,7 @@ name|get
 argument_list|(
 name|fieldName
 operator|+
-name|Globals
+name|FileLinkPreferences
 operator|.
 name|DIR_SUFFIX
 argument_list|)
@@ -647,7 +695,7 @@ name|dir
 argument_list|)
 expr_stmt|;
 block|}
-comment|// 4. bib file directory
+comment|// 4. BIB file directory
 if|if
 condition|(
 name|getDatabaseFile
@@ -720,7 +768,7 @@ init|=
 name|directoryName
 decl_stmt|;
 comment|// If this directory is relative, we try to interpret it as relative to
-comment|// the file path of this bib file:
+comment|// the file path of this BIB file:
 if|if
 condition|(
 operator|!
@@ -817,9 +865,9 @@ block|{
 return|return
 name|getFileDirectory
 argument_list|(
-name|Globals
+name|FieldName
 operator|.
-name|FILE_FIELD
+name|FILE
 argument_list|)
 return|;
 block|}

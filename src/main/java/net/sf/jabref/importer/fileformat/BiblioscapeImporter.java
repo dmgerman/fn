@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
+comment|/*  Copyright (C) 2003-2016 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
 end_comment
 
 begin_package
@@ -35,16 +35,6 @@ operator|.
 name|io
 operator|.
 name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|InputStream
 import|;
 end_import
 
@@ -100,15 +90,11 @@ end_import
 
 begin_import
 import|import
-name|net
+name|java
 operator|.
-name|sf
+name|util
 operator|.
-name|jabref
-operator|.
-name|importer
-operator|.
-name|ImportFormatReader
+name|Objects
 import|;
 end_import
 
@@ -122,7 +108,7 @@ name|jabref
 operator|.
 name|importer
 operator|.
-name|OutputPrinter
+name|ParserResult
 import|;
 end_import
 
@@ -142,8 +128,24 @@ name|BibEntry
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|FieldName
+import|;
+end_import
+
 begin_comment
-comment|/**  * Imports a Biblioscape Tag File. The format is described on  * http://www.biblioscape.com/manual_bsp/Biblioscape_Tag_File.htm Several  * Biblioscape field types are ignored. Others are only included in the BibTeX  * field "comment".  */
+comment|/**  * Imports a Biblioscape Tag File. The format is described on  * http://www.biblioscape.com/download/Biblioscape8.pdf Several  * Biblioscape field types are ignored. Others are only included in the BibTeX  * field "comment".  */
 end_comment
 
 begin_class
@@ -154,7 +156,6 @@ name|BiblioscapeImporter
 extends|extends
 name|ImportFormat
 block|{
-comment|/**      * Return the name of this import format.      */
 annotation|@
 name|Override
 DECL|method|getFormatName ()
@@ -167,53 +168,71 @@ return|return
 literal|"Biblioscape"
 return|;
 block|}
-comment|/*      *  (non-Javadoc)      * @see net.sf.jabref.imports.ImportFormat#getCLIId()      */
 annotation|@
 name|Override
-DECL|method|getCLIId ()
+DECL|method|getExtensions ()
 specifier|public
+name|List
+argument_list|<
 name|String
-name|getCLIId
+argument_list|>
+name|getExtensions
 parameter_list|()
 block|{
 return|return
-literal|"biblioscape"
+name|Collections
+operator|.
+name|singletonList
+argument_list|(
+literal|".txt"
+argument_list|)
 return|;
 block|}
-comment|/**      * Check whether the source is in the correct format for this importer.      */
 annotation|@
 name|Override
-DECL|method|isRecognizedFormat (InputStream in)
+DECL|method|getDescription ()
+specifier|public
+name|String
+name|getDescription
+parameter_list|()
+block|{
+return|return
+literal|"Imports a Biblioscape Tag File.\n"
+operator|+
+literal|"Several Biblioscape field types are ignored. Others are only included in the BibTeX field \"comment\"."
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|isRecognizedFormat (BufferedReader reader)
 specifier|public
 name|boolean
 name|isRecognizedFormat
 parameter_list|(
-name|InputStream
-name|in
+name|BufferedReader
+name|reader
 parameter_list|)
-throws|throws
-name|IOException
 block|{
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|reader
+argument_list|)
+expr_stmt|;
 return|return
 literal|true
 return|;
 block|}
-comment|/**      * Parse the entries in the source, and return a List of BibEntry      * objects.      */
 annotation|@
 name|Override
-DECL|method|importEntries (InputStream stream, OutputPrinter status)
+DECL|method|importDatabase (BufferedReader reader)
 specifier|public
-name|List
-argument_list|<
-name|BibEntry
-argument_list|>
-name|importEntries
+name|ParserResult
+name|importDatabase
 parameter_list|(
-name|InputStream
-name|stream
-parameter_list|,
-name|OutputPrinter
-name|status
+name|BufferedReader
+name|reader
 parameter_list|)
 throws|throws
 name|IOException
@@ -228,20 +247,6 @@ operator|new
 name|ArrayList
 argument_list|<>
 argument_list|()
-decl_stmt|;
-name|BufferedReader
-name|in
-init|=
-operator|new
-name|BufferedReader
-argument_list|(
-name|ImportFormatReader
-operator|.
-name|getReaderDefaultEncoding
-argument_list|(
-name|stream
-argument_list|)
-argument_list|)
 decl_stmt|;
 name|String
 name|line
@@ -282,7 +287,7 @@ condition|(
 operator|(
 name|line
 operator|=
-name|in
+name|reader
 operator|.
 name|readLine
 argument_list|()
@@ -401,7 +406,9 @@ name|hm
 operator|.
 name|put
 argument_list|(
-literal|"author"
+name|FieldName
+operator|.
+name|AUTHOR
 argument_list|,
 name|entry
 operator|.
@@ -481,7 +488,9 @@ name|hm
 operator|.
 name|put
 argument_list|(
-literal|"year"
+name|FieldName
+operator|.
+name|YEAR
 argument_list|,
 name|entry
 operator|.
@@ -511,7 +520,9 @@ name|hm
 operator|.
 name|put
 argument_list|(
-literal|"volume"
+name|FieldName
+operator|.
+name|VOLUME
 argument_list|,
 name|entry
 operator|.
@@ -541,7 +552,9 @@ name|hm
 operator|.
 name|put
 argument_list|(
-literal|"number"
+name|FieldName
+operator|.
+name|NUMBER
 argument_list|,
 name|entry
 operator|.
@@ -627,7 +640,9 @@ name|hm
 operator|.
 name|put
 argument_list|(
-literal|"keywords"
+name|FieldName
+operator|.
+name|KEYWORDS
 argument_list|,
 name|entry
 operator|.
@@ -739,7 +754,9 @@ name|hm
 operator|.
 name|put
 argument_list|(
-literal|"note"
+name|FieldName
+operator|.
+name|NOTE
 argument_list|,
 name|entry
 operator|.
@@ -769,7 +786,9 @@ name|hm
 operator|.
 name|put
 argument_list|(
-literal|"publisher"
+name|FieldName
+operator|.
+name|PUBLISHER
 argument_list|,
 name|entry
 operator|.
@@ -853,7 +872,9 @@ name|hm
 operator|.
 name|put
 argument_list|(
-literal|"edition"
+name|FieldName
+operator|.
+name|EDITION
 argument_list|,
 name|entry
 operator|.
@@ -965,7 +986,9 @@ name|hm
 operator|.
 name|put
 argument_list|(
-literal|"isbn"
+name|FieldName
+operator|.
+name|ISBN
 argument_list|,
 name|entry
 operator|.
@@ -995,7 +1018,9 @@ name|hm
 operator|.
 name|put
 argument_list|(
-literal|"abstract"
+name|FieldName
+operator|.
+name|ABSTRACT
 argument_list|,
 name|entry
 operator|.
@@ -1050,7 +1075,9 @@ name|hm
 operator|.
 name|put
 argument_list|(
-literal|"language"
+name|FieldName
+operator|.
+name|LANGUAGE
 argument_list|,
 name|entry
 operator|.
@@ -1143,9 +1170,13 @@ argument_list|(
 literal|"ftp://"
 argument_list|)
 condition|?
-literal|"url"
+name|FieldName
+operator|.
+name|URL
 else|:
-literal|"pdf"
+name|FieldName
+operator|.
+name|PDF
 argument_list|,
 name|entry
 operator|.
@@ -1337,7 +1368,9 @@ name|hm
 operator|.
 name|put
 argument_list|(
-literal|"annote"
+name|FieldName
+operator|.
+name|ANNOTE
 argument_list|,
 name|entry
 operator|.
@@ -1421,7 +1454,9 @@ name|hm
 operator|.
 name|put
 argument_list|(
-literal|"chapter"
+name|FieldName
+operator|.
+name|CHAPTER
 argument_list|,
 name|entry
 operator|.
@@ -1441,7 +1476,9 @@ block|}
 name|String
 name|bibtexType
 init|=
-literal|"misc"
+name|BibEntry
+operator|.
+name|DEFAULT_TYPE
 decl_stmt|;
 comment|// to find type, first check TW, then RT
 for|for
@@ -1457,7 +1494,9 @@ operator|>=
 literal|0
 operator|)
 operator|&&
-literal|"misc"
+name|BibEntry
+operator|.
+name|DEFAULT_TYPE
 operator|.
 name|equals
 argument_list|(
@@ -1697,7 +1736,9 @@ name|hm
 operator|.
 name|put
 argument_list|(
-literal|"journal"
+name|FieldName
+operator|.
+name|JOURNAL
 argument_list|,
 name|titleST
 argument_list|)
@@ -1714,7 +1755,9 @@ name|hm
 operator|.
 name|put
 argument_list|(
-literal|"title"
+name|FieldName
+operator|.
+name|TITLE
 argument_list|,
 name|titleTI
 argument_list|)
@@ -1743,7 +1786,9 @@ name|hm
 operator|.
 name|put
 argument_list|(
-literal|"booktitle"
+name|FieldName
+operator|.
+name|BOOKTITLE
 argument_list|,
 name|titleST
 argument_list|)
@@ -1760,7 +1805,9 @@ name|hm
 operator|.
 name|put
 argument_list|(
-literal|"title"
+name|FieldName
+operator|.
+name|TITLE
 argument_list|,
 name|titleTI
 argument_list|)
@@ -1780,7 +1827,9 @@ name|hm
 operator|.
 name|put
 argument_list|(
-literal|"booktitle"
+name|FieldName
+operator|.
+name|BOOKTITLE
 argument_list|,
 name|titleST
 argument_list|)
@@ -1800,7 +1849,9 @@ name|hm
 operator|.
 name|put
 argument_list|(
-literal|"title"
+name|FieldName
+operator|.
+name|TITLE
 argument_list|,
 name|titleTI
 argument_list|)
@@ -1833,7 +1884,9 @@ name|hm
 operator|.
 name|put
 argument_list|(
-literal|"pages"
+name|FieldName
+operator|.
+name|PAGES
 argument_list|,
 operator|(
 name|pages
@@ -1883,7 +1936,9 @@ name|hm
 operator|.
 name|put
 argument_list|(
-literal|"address"
+name|FieldName
+operator|.
+name|ADDRESS
 argument_list|,
 name|address
 operator|+
@@ -2043,9 +2098,8 @@ literal|null
 condition|)
 block|{
 return|return
-name|Collections
-operator|.
-name|emptyList
+operator|new
+name|ParserResult
 argument_list|()
 return|;
 block|}
@@ -2061,7 +2115,11 @@ argument_list|)
 expr_stmt|;
 block|}
 return|return
+operator|new
+name|ParserResult
+argument_list|(
 name|bibItems
+argument_list|)
 return|;
 block|}
 block|}
