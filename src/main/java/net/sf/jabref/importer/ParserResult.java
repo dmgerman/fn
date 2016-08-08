@@ -310,6 +310,20 @@ argument_list|(
 name|entries
 argument_list|)
 argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|ParserResult (BibDatabase database)
+specifier|public
+name|ParserResult
+parameter_list|(
+name|BibDatabase
+name|database
+parameter_list|)
+block|{
+name|this
+argument_list|(
+name|database
 argument_list|,
 operator|new
 name|MetaData
