@@ -60,18 +60,6 @@ specifier|final
 name|boolean
 name|resolveStringsAllFields
 decl_stmt|;
-DECL|field|valueDelimiterStartOfValue
-specifier|private
-specifier|final
-name|char
-name|valueDelimiterStartOfValue
-decl_stmt|;
-DECL|field|valueDelimiterEndOfValue
-specifier|private
-specifier|final
-name|char
-name|valueDelimiterEndOfValue
-decl_stmt|;
 DECL|field|doNotResolveStringsFor
 specifier|private
 specifier|final
@@ -93,18 +81,12 @@ specifier|final
 name|FieldContentParserPreferences
 name|fieldContentParserPreferences
 decl_stmt|;
-DECL|method|LatexFieldFormatterPreferences (boolean resolveStringsAllFields, char valueDelimiterStartOfValue, char valueDelimiterEndOfValue, List<String> doNotResolveStringsFor, int lineLength, FieldContentParserPreferences fieldContentParserPreferences)
+DECL|method|LatexFieldFormatterPreferences (boolean resolveStringsAllFields, List<String> doNotResolveStringsFor, int lineLength, FieldContentParserPreferences fieldContentParserPreferences)
 specifier|public
 name|LatexFieldFormatterPreferences
 parameter_list|(
 name|boolean
 name|resolveStringsAllFields
-parameter_list|,
-name|char
-name|valueDelimiterStartOfValue
-parameter_list|,
-name|char
-name|valueDelimiterEndOfValue
 parameter_list|,
 name|List
 argument_list|<
@@ -124,18 +106,6 @@ operator|.
 name|resolveStringsAllFields
 operator|=
 name|resolveStringsAllFields
-expr_stmt|;
-name|this
-operator|.
-name|valueDelimiterStartOfValue
-operator|=
-name|valueDelimiterStartOfValue
-expr_stmt|;
-name|this
-operator|.
-name|valueDelimiterEndOfValue
-operator|=
-name|valueDelimiterEndOfValue
 expr_stmt|;
 name|this
 operator|.
@@ -165,10 +135,6 @@ comment|// This constructor is only to allow an empty constructor in SavePrefere
 name|this
 argument_list|(
 literal|true
-argument_list|,
-literal|'{'
-argument_list|,
-literal|'}'
 argument_list|,
 name|Collections
 operator|.
@@ -208,20 +174,6 @@ argument_list|)
 argument_list|,
 name|prefs
 operator|.
-name|getValueDelimiters
-argument_list|(
-literal|0
-argument_list|)
-argument_list|,
-name|prefs
-operator|.
-name|getValueDelimiters
-argument_list|(
-literal|1
-argument_list|)
-argument_list|,
-name|prefs
-operator|.
 name|getStringList
 argument_list|(
 name|JabRefPreferences
@@ -255,26 +207,6 @@ parameter_list|()
 block|{
 return|return
 name|resolveStringsAllFields
-return|;
-block|}
-DECL|method|getValueDelimiterStartOfValue ()
-specifier|public
-name|char
-name|getValueDelimiterStartOfValue
-parameter_list|()
-block|{
-return|return
-name|valueDelimiterStartOfValue
-return|;
-block|}
-DECL|method|getValueDelimiterEndOfValue ()
-specifier|public
-name|char
-name|getValueDelimiterEndOfValue
-parameter_list|()
-block|{
-return|return
-name|valueDelimiterEndOfValue
 return|;
 block|}
 DECL|method|getDoNotResolveStringsFor ()

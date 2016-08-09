@@ -667,11 +667,6 @@ block|{
 comment|// Perform checks and changes for users with a preference set from an older JabRef version.
 name|PreferencesMigrations
 operator|.
-name|replaceAbstractField
-argument_list|()
-expr_stmt|;
-name|PreferencesMigrations
-operator|.
 name|upgradeSortOrder
 argument_list|()
 expr_stmt|;
