@@ -26,6 +26,22 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|event
+operator|.
+name|source
+operator|.
+name|EntryEventSource
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|model
 operator|.
 name|database
@@ -62,12 +78,6 @@ name|EntryAddedEvent
 extends|extends
 name|EntryEvent
 block|{
-comment|/**      * flag if the addition is the undo of a deletion/cut      */
-DECL|field|isUndo
-specifier|private
-name|boolean
-name|isUndo
-decl_stmt|;
 comment|/**      * @param bibEntry the entry which has been added      */
 DECL|method|EntryAddedEvent (BibEntry bibEntry)
 specifier|public
@@ -82,46 +92,26 @@ argument_list|(
 name|bibEntry
 argument_list|)
 expr_stmt|;
-name|this
-operator|.
-name|isUndo
-operator|=
-literal|false
-expr_stmt|;
 block|}
-comment|/**      * @param bibEntry the entry which has been added      * @param isUndo   flag if the addition is the undo of a deletion/cut      */
-DECL|method|EntryAddedEvent (BibEntry bibEntry, boolean isUndo)
+comment|/**      * @param bibEntry<code>BibEntry</code> object which has been added.      * @param location Location affected by this event      */
+DECL|method|EntryAddedEvent (BibEntry bibEntry, EntryEventSource location)
 specifier|public
 name|EntryAddedEvent
 parameter_list|(
 name|BibEntry
 name|bibEntry
 parameter_list|,
-name|boolean
-name|isUndo
+name|EntryEventSource
+name|location
 parameter_list|)
 block|{
 name|super
 argument_list|(
 name|bibEntry
+argument_list|,
+name|location
 argument_list|)
 expr_stmt|;
-name|this
-operator|.
-name|isUndo
-operator|=
-name|isUndo
-expr_stmt|;
-block|}
-DECL|method|isUndo ()
-specifier|public
-name|boolean
-name|isUndo
-parameter_list|()
-block|{
-return|return
-name|isUndo
-return|;
 block|}
 block|}
 end_class

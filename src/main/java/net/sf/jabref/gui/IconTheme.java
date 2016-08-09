@@ -1078,6 +1078,13 @@ literal|"\uf16b"
 argument_list|)
 block|,
 comment|/*css: code-equal */
+DECL|enumConstant|PULL
+name|PULL
+argument_list|(
+literal|"\uf4c2"
+argument_list|)
+block|,
+comment|/*source-pull*/
 DECL|enumConstant|OPEN_IN_NEW_WINDOW
 name|OPEN_IN_NEW_WINDOW
 argument_list|(

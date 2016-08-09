@@ -233,6 +233,13 @@ name|BuildInfo
 operator|.
 name|UNKNOWN_VERSION
 argument_list|)
+operator|||
+literal|"${version}"
+operator|.
+name|equals
+argument_list|(
+name|version
+argument_list|)
 condition|)
 block|{
 return|return;

@@ -846,6 +846,21 @@ argument_list|,
 literal|"ctrl V"
 argument_list|)
 block|,
+DECL|enumConstant|PULL_CHANGES_FROM_SHARED_DATABASE
+name|PULL_CHANGES_FROM_SHARED_DATABASE
+argument_list|(
+literal|"Pull changes from shared database"
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Pull changes from shared database"
+argument_list|)
+argument_list|,
+literal|"ctrl shift R"
+argument_list|)
+block|,
 DECL|enumConstant|PREAMBLE_EDITOR_STORE_CHANGES
 name|PREAMBLE_EDITOR_STORE_CHANGES
 argument_list|(

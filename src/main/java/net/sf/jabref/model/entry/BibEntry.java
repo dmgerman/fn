@@ -206,6 +206,22 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|event
+operator|.
+name|source
+operator|.
+name|EntryEventSource
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|model
 operator|.
 name|FieldChange
@@ -365,6 +381,12 @@ specifier|private
 name|String
 name|id
 decl_stmt|;
+DECL|field|sharedBibEntryData
+specifier|private
+specifier|final
+name|SharedBibEntryData
+name|sharedBibEntryData
+decl_stmt|;
 DECL|field|type
 specifier|private
 name|String
@@ -500,6 +522,14 @@ name|setType
 argument_list|(
 name|type
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|sharedBibEntryData
+operator|=
+operator|new
+name|SharedBibEntryData
+argument_list|()
 expr_stmt|;
 block|}
 comment|/**      * Sets this entry's ID, provided the database containing it      * doesn't veto the change.      *      * @param id The ID to be used      */
@@ -648,13 +678,16 @@ name|type
 return|;
 block|}
 comment|/**      * Sets this entry's type.      */
-DECL|method|setType (String type)
+DECL|method|setType (String type, EntryEventSource eventSource)
 specifier|public
 name|void
 name|setType
 parameter_list|(
 name|String
 name|type
+parameter_list|,
+name|EntryEventSource
+name|eventSource
 parameter_list|)
 block|{
 name|String
@@ -714,7 +747,29 @@ argument_list|,
 name|TYPE_HEADER
 argument_list|,
 name|newType
+argument_list|,
+name|eventSource
 argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Sets this entry's type.      */
+DECL|method|setType (String type)
+specifier|public
+name|void
+name|setType
+parameter_list|(
+name|String
+name|type
+parameter_list|)
+block|{
+name|setType
+argument_list|(
+name|type
+argument_list|,
+name|EntryEventSource
+operator|.
+name|LOCAL
 argument_list|)
 expr_stmt|;
 block|}
@@ -1450,8 +1505,8 @@ name|setField
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Set a field, and notify listeners about the change.      *  @param name  The field to set.      * @param value The value to set.      */
-DECL|method|setField (String name, String value)
+comment|/**      * Set a field, and notify listeners about the change.      * @param name  The field to set      * @param value The value to set      * @param eventSource Source the event is sent from      */
+DECL|method|setField (String name, String value, EntryEventSource eventSource)
 specifier|public
 name|Optional
 argument_list|<
@@ -1464,6 +1519,9 @@ name|name
 parameter_list|,
 name|String
 name|value
+parameter_list|,
+name|EntryEventSource
+name|eventSource
 parameter_list|)
 block|{
 name|Objects
@@ -1604,6 +1662,8 @@ operator|new
 name|FieldChangedEvent
 argument_list|(
 name|change
+argument_list|,
+name|eventSource
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1613,6 +1673,85 @@ operator|.
 name|of
 argument_list|(
 name|change
+argument_list|)
+return|;
+block|}
+DECL|method|setField (String name, Optional<String> value, EntryEventSource eventSource)
+specifier|public
+name|Optional
+argument_list|<
+name|FieldChange
+argument_list|>
+name|setField
+parameter_list|(
+name|String
+name|name
+parameter_list|,
+name|Optional
+argument_list|<
+name|String
+argument_list|>
+name|value
+parameter_list|,
+name|EntryEventSource
+name|eventSource
+parameter_list|)
+block|{
+if|if
+condition|(
+name|value
+operator|.
+name|isPresent
+argument_list|()
+condition|)
+block|{
+return|return
+name|setField
+argument_list|(
+name|name
+argument_list|,
+name|value
+operator|.
+name|get
+argument_list|()
+argument_list|,
+name|eventSource
+argument_list|)
+return|;
+block|}
+return|return
+name|Optional
+operator|.
+name|empty
+argument_list|()
+return|;
+block|}
+comment|/**      * Set a field, and notify listeners about the change.      *      * @param name  The field to set.      * @param value The value to set.      */
+DECL|method|setField (String name, String value)
+specifier|public
+name|Optional
+argument_list|<
+name|FieldChange
+argument_list|>
+name|setField
+parameter_list|(
+name|String
+name|name
+parameter_list|,
+name|String
+name|value
+parameter_list|)
+block|{
+return|return
+name|setField
+argument_list|(
+name|name
+argument_list|,
+name|value
+argument_list|,
+name|EntryEventSource
+operator|.
+name|LOCAL
 argument_list|)
 return|;
 block|}
@@ -1627,6 +1766,33 @@ name|clearField
 parameter_list|(
 name|String
 name|name
+parameter_list|)
+block|{
+return|return
+name|clearField
+argument_list|(
+name|name
+argument_list|,
+name|EntryEventSource
+operator|.
+name|LOCAL
+argument_list|)
+return|;
+block|}
+comment|/**      * Remove the mapping for the field name, and notify listeners about      * the change including the {@link EntryEventSource}.      *      * @param name The field to clear.      * @param eventSource the source a new {@link FieldChangedEvent} should be posten from.      */
+DECL|method|clearField (String name, EntryEventSource eventSource)
+specifier|public
+name|Optional
+argument_list|<
+name|FieldChange
+argument_list|>
+name|clearField
+parameter_list|(
+name|String
+name|name
+parameter_list|,
+name|EntryEventSource
+name|eventSource
 parameter_list|)
 block|{
 name|String
@@ -1732,6 +1898,8 @@ operator|new
 name|FieldChangedEvent
 argument_list|(
 name|change
+argument_list|,
+name|eventSource
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2572,6 +2740,16 @@ parameter_list|()
 block|{
 return|return
 name|fields
+return|;
+block|}
+DECL|method|getSharedBibEntryData ()
+specifier|public
+name|SharedBibEntryData
+name|getSharedBibEntryData
+parameter_list|()
+block|{
+return|return
+name|sharedBibEntryData
 return|;
 block|}
 annotation|@

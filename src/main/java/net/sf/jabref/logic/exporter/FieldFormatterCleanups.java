@@ -607,7 +607,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|parse (String formatterString)
-specifier|private
+specifier|public
 specifier|static
 name|List
 argument_list|<

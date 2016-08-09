@@ -160,6 +160,22 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|event
+operator|.
+name|source
+operator|.
+name|EntryEventSource
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|model
 operator|.
 name|entry
@@ -783,7 +799,7 @@ return|return
 name|result
 return|;
 block|}
-comment|/**      * Inserts the entry, given that its ID is not already in use.      * use Util.createId(...) to make up a unique ID for an entry.      *      * @param entry the entry to insert into the database      * @return false if the insert was done without a duplicate warning      * @throws KeyCollisionException thrown if the entry id ({@link BibEntry#getId()}) is already  present in the database      */
+comment|/**      * Inserts the entry, given that its ID is not already in use.      * use Util.createId(...) to make up a unique ID for an entry.      *      * @param entry BibEntry to insert into the database      * @return false if the insert was done without a duplicate warning      * @throws KeyCollisionException thrown if the entry id ({@link BibEntry#getId()}) is already  present in the database      */
 DECL|method|insertEntry (BibEntry entry)
 specifier|public
 specifier|synchronized
@@ -797,18 +813,18 @@ throws|throws
 name|KeyCollisionException
 block|{
 return|return
-name|this
-operator|.
 name|insertEntry
 argument_list|(
 name|entry
 argument_list|,
-literal|false
+name|EntryEventSource
+operator|.
+name|LOCAL
 argument_list|)
 return|;
 block|}
-comment|/**      * Inserts the entry, given that its ID is not already in use.      * use Util.createId(...) to make up a unique ID for an entry.      *      * @param entry  the entry to insert into the database      * @param isUndo set to true if the insertion is caused by an undo      * @return false if the insert was done without a duplicate warning      * @throws KeyCollisionException thrown if the entry id ({@link BibEntry#getId()}) is already  present in the database      */
-DECL|method|insertEntry (BibEntry entry, boolean isUndo)
+comment|/**      * Inserts the entry, given that its ID is not already in use.      * use Util.createId(...) to make up a unique ID for an entry.      *      * @param entry BibEntry to insert      * @param eventSource Source the event is sent from      * @return false if the insert was done without a duplicate warning      */
+DECL|method|insertEntry (BibEntry entry, EntryEventSource eventSource)
 specifier|public
 specifier|synchronized
 name|boolean
@@ -817,8 +833,8 @@ parameter_list|(
 name|BibEntry
 name|entry
 parameter_list|,
-name|boolean
-name|isUndo
+name|EntryEventSource
+name|eventSource
 parameter_list|)
 throws|throws
 name|KeyCollisionException
@@ -884,7 +900,7 @@ name|EntryAddedEvent
 argument_list|(
 name|entry
 argument_list|,
-name|isUndo
+name|eventSource
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -907,7 +923,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**      * Removes the given entry.      * The Entry is removed based on the id {@link BibEntry#id}      */
+comment|/**      * Removes the given entry.      * The Entry is removed based on the id {@link BibEntry#id}      * @param toBeDeleted Entry to delete      */
 DECL|method|removeEntry (BibEntry toBeDeleted)
 specifier|public
 specifier|synchronized
@@ -916,6 +932,30 @@ name|removeEntry
 parameter_list|(
 name|BibEntry
 name|toBeDeleted
+parameter_list|)
+block|{
+name|removeEntry
+argument_list|(
+name|toBeDeleted
+argument_list|,
+name|EntryEventSource
+operator|.
+name|LOCAL
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Removes the given entry.      * The Entry is removed based on the id {@link BibEntry#id}      * @param toBeDeleted Entry to delete      * @param eventSource Source the event is sent from      */
+DECL|method|removeEntry (BibEntry toBeDeleted, EntryEventSource eventSource)
+specifier|public
+specifier|synchronized
+name|void
+name|removeEntry
+parameter_list|(
+name|BibEntry
+name|toBeDeleted
+parameter_list|,
+name|EntryEventSource
+name|eventSource
 parameter_list|)
 block|{
 name|Objects
@@ -983,6 +1023,8 @@ operator|new
 name|EntryRemovedEvent
 argument_list|(
 name|toBeDeleted
+argument_list|,
+name|eventSource
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2231,6 +2273,26 @@ operator|.
 name|eventBus
 operator|.
 name|register
+argument_list|(
+name|listener
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Unregisters an listener object.      * @param listener listener (subscriber) to remove      */
+DECL|method|unregisterListener (Object listener)
+specifier|public
+name|void
+name|unregisterListener
+parameter_list|(
+name|Object
+name|listener
+parameter_list|)
+block|{
+name|this
+operator|.
+name|eventBus
+operator|.
+name|unregister
 argument_list|(
 name|listener
 argument_list|)

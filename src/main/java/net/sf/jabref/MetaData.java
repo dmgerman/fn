@@ -174,6 +174,34 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|event
+operator|.
+name|GroupUpdatedEvent
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|event
+operator|.
+name|MetaDataChangedEvent
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|importer
 operator|.
 name|fileformat
@@ -364,15 +392,15 @@ end_import
 
 begin_import
 import|import
-name|net
+name|com
 operator|.
-name|sf
+name|google
 operator|.
-name|jabref
+name|common
 operator|.
-name|sql
+name|eventbus
 operator|.
-name|DBStrings
+name|EventBus
 import|;
 end_import
 
@@ -551,19 +579,20 @@ specifier|private
 name|GroupTreeNode
 name|groupsRoot
 decl_stmt|;
+DECL|field|eventBus
+specifier|private
+specifier|final
+name|EventBus
+name|eventBus
+init|=
+operator|new
+name|EventBus
+argument_list|()
+decl_stmt|;
 DECL|field|labelPattern
 specifier|private
 name|AbstractLabelPattern
 name|labelPattern
-decl_stmt|;
-DECL|field|dbStrings
-specifier|private
-name|DBStrings
-name|dbStrings
-init|=
-operator|new
-name|DBStrings
-argument_list|()
 decl_stmt|;
 DECL|field|encoding
 specifier|private
@@ -599,6 +628,64 @@ name|requireNonNull
 argument_list|(
 name|inData
 argument_list|)
+expr_stmt|;
+name|setData
+argument_list|(
+name|inData
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * The MetaData object can be constructed with no data in it.      */
+DECL|method|MetaData ()
+specifier|public
+name|MetaData
+parameter_list|()
+block|{
+comment|// No data
+block|}
+DECL|method|parse (Map<String, String> data)
+specifier|public
+specifier|static
+name|MetaData
+name|parse
+parameter_list|(
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
+name|data
+parameter_list|)
+throws|throws
+name|ParseException
+block|{
+return|return
+operator|new
+name|MetaData
+argument_list|(
+name|data
+argument_list|)
+return|;
+block|}
+DECL|method|setData (Map<String, String> inData)
+specifier|public
+name|void
+name|setData
+parameter_list|(
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
+name|inData
+parameter_list|)
+throws|throws
+name|ParseException
+block|{
+name|clearMetaData
+argument_list|()
 expr_stmt|;
 for|for
 control|(
@@ -712,6 +799,17 @@ name|orderedData
 argument_list|)
 expr_stmt|;
 comment|// the keys "groupsversion" and "groups" were used in JabRef versions around 1.3, we will not support them anymore
+name|eventBus
+operator|.
+name|post
+argument_list|(
+operator|new
+name|GroupUpdatedEvent
+argument_list|(
+name|this
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 elseif|else
 if|if
@@ -727,20 +825,30 @@ argument_list|()
 argument_list|)
 condition|)
 block|{
-name|setSaveActions
+name|metaData
+operator|.
+name|put
 argument_list|(
+name|SAVE_ACTIONS
+argument_list|,
 name|FieldFormatterCleanups
 operator|.
 name|parse
 argument_list|(
 name|orderedData
 argument_list|)
+operator|.
+name|getAsStringList
+argument_list|()
 argument_list|)
 expr_stmt|;
+comment|// Without MetaDataChangedEvent
 block|}
 else|else
 block|{
-name|putData
+name|metaData
+operator|.
+name|put
 argument_list|(
 name|entry
 operator|.
@@ -752,39 +860,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-block|}
-comment|/**      * The MetaData object can be constructed with no data in it.      */
-DECL|method|MetaData ()
-specifier|public
-name|MetaData
-parameter_list|()
-block|{
-comment|// No data
-block|}
-DECL|method|parse (Map<String, String> data)
-specifier|public
-specifier|static
-name|MetaData
-name|parse
-parameter_list|(
-name|Map
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
-name|data
-parameter_list|)
-throws|throws
-name|ParseException
-block|{
-return|return
-operator|new
-name|MetaData
-argument_list|(
-name|data
-argument_list|)
-return|;
 block|}
 DECL|method|getSaveOrderConfig ()
 specifier|public
@@ -976,6 +1051,17 @@ name|String
 name|key
 parameter_list|)
 block|{
+if|if
+condition|(
+name|metaData
+operator|.
+name|containsKey
+argument_list|(
+name|key
+argument_list|)
+condition|)
+block|{
+comment|//otherwise redundant and disturbing events are going to be posted
 name|metaData
 operator|.
 name|remove
@@ -983,6 +1069,10 @@ argument_list|(
 name|key
 argument_list|)
 expr_stmt|;
+name|postChange
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 comment|/**      * Stores the specified data in this object, using the specified key. For      * certain keys (e.g. "groupstree"), the objects in orderedData are      * reconstructed from their textual (String) representation if they are of      * type String, and stored as an actual instance.      */
 DECL|method|putData (String key, List<String> orderedData)
@@ -1008,6 +1098,9 @@ name|key
 argument_list|,
 name|orderedData
 argument_list|)
+expr_stmt|;
+name|postChange
+argument_list|()
 expr_stmt|;
 block|}
 comment|/**      * Parse the groups metadata string      *      * @param orderedData The vector of metadata strings      */
@@ -1038,6 +1131,17 @@ argument_list|,
 name|Globals
 operator|.
 name|prefs
+argument_list|)
+expr_stmt|;
+name|eventBus
+operator|.
+name|post
+argument_list|(
+operator|new
+name|GroupUpdatedEvent
+argument_list|(
+name|this
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -1086,6 +1190,17 @@ block|{
 name|groupsRoot
 operator|=
 name|root
+expr_stmt|;
+name|eventBus
+operator|.
+name|post
+argument_list|(
+operator|new
+name|GroupUpdatedEvent
+argument_list|(
+name|this
+argument_list|)
+argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Reads the next unit. Units are delimited by ';'.      */
@@ -1219,32 +1334,6 @@ operator|.
 name|empty
 argument_list|()
 return|;
-block|}
-DECL|method|getDBStrings ()
-specifier|public
-name|DBStrings
-name|getDBStrings
-parameter_list|()
-block|{
-return|return
-name|dbStrings
-return|;
-block|}
-DECL|method|setDBStrings (DBStrings dbStrings)
-specifier|public
-name|void
-name|setDBStrings
-parameter_list|(
-name|DBStrings
-name|dbStrings
-parameter_list|)
-block|{
-name|this
-operator|.
-name|dbStrings
-operator|=
-name|dbStrings
-expr_stmt|;
 block|}
 comment|/**      * @return the stored label patterns      */
 DECL|method|getLabelPattern ()
@@ -2426,6 +2515,25 @@ name|SAVE_ORDER_CONFIG
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Posts a new {@link MetaDataChangedEvent} on the {@link EventBus}.      */
+DECL|method|postChange ()
+specifier|public
+name|void
+name|postChange
+parameter_list|()
+block|{
+name|eventBus
+operator|.
+name|post
+argument_list|(
+operator|new
+name|MetaDataChangedEvent
+argument_list|(
+name|this
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 comment|/**      * Returns the encoding used during parsing.      */
 DECL|method|getEncoding ()
 specifier|public
@@ -2455,6 +2563,56 @@ operator|.
 name|requireNonNull
 argument_list|(
 name|encoding
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|clearMetaData ()
+specifier|public
+name|void
+name|clearMetaData
+parameter_list|()
+block|{
+name|metaData
+operator|.
+name|clear
+argument_list|()
+expr_stmt|;
+block|}
+DECL|method|registerListener (Object listener)
+specifier|public
+name|void
+name|registerListener
+parameter_list|(
+name|Object
+name|listener
+parameter_list|)
+block|{
+name|this
+operator|.
+name|eventBus
+operator|.
+name|register
+argument_list|(
+name|listener
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|unregisterListener (Object listener)
+specifier|public
+name|void
+name|unregisterListener
+parameter_list|(
+name|Object
+name|listener
+parameter_list|)
+block|{
+name|this
+operator|.
+name|eventBus
+operator|.
+name|unregister
+argument_list|(
+name|listener
 argument_list|)
 expr_stmt|;
 block|}
