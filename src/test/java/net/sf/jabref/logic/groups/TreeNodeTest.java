@@ -3559,6 +3559,7 @@ block|}
 block|}
 DECL|class|WrongTreeNodeImplementation
 specifier|private
+specifier|static
 class|class
 name|WrongTreeNodeImplementation
 extends|extends
