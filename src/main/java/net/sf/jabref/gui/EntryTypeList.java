@@ -136,9 +136,9 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|l10n
+name|bibtexkeypattern
 operator|.
-name|Localization
+name|BibtexKeyPatternUtil
 import|;
 end_import
 
@@ -152,9 +152,9 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|bibtexkeypattern
+name|l10n
 operator|.
-name|BibtexKeyPatternUtil
+name|Localization
 import|;
 end_import
 
