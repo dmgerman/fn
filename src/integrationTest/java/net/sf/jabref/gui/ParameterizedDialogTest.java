@@ -1189,6 +1189,50 @@ index|[]
 block|{
 literal|"BibTeX"
 block|,
+literal|"New entry..."
+block|}
+block|,
+literal|"Select entry type"
+block|,
+literal|"Cancel"
+block|,
+literal|false
+block|}
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
+literal|true
+block|,
+operator|new
+name|String
+index|[]
+block|{
+literal|"BibTeX"
+block|,
+literal|"New entry..."
+block|}
+block|,
+literal|"Select entry type"
+block|,
+literal|"Close button"
+block|,
+literal|true
+block|}
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
+literal|true
+block|,
+operator|new
+name|String
+index|[]
+block|{
+literal|"BibTeX"
+block|,
 literal|"Edit preamble"
 block|}
 block|,
