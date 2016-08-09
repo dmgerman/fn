@@ -560,9 +560,9 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|labelpattern
+name|bibtexkeypattern
 operator|.
-name|LabelPatternPreferences
+name|BibtexKeyPatternUtil
 import|;
 end_import
 
@@ -576,9 +576,9 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|labelpattern
+name|bibtexkeypattern
 operator|.
-name|LabelPatternUtil
+name|BibtexKeyPatternPreferences
 import|;
 end_import
 
@@ -4984,10 +4984,10 @@ operator|)
 condition|)
 block|{
 comment|// Generate keys
-name|LabelPatternPreferences
+name|BibtexKeyPatternPreferences
 name|prefs
 init|=
-name|LabelPatternPreferences
+name|BibtexKeyPatternPreferences
 operator|.
 name|fromPreferences
 argument_list|(
@@ -5029,7 +5029,7 @@ literal|null
 condition|)
 block|{
 comment|// Generate key
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|makeLabel
 argument_list|(

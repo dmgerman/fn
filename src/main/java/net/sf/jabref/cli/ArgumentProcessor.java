@@ -470,9 +470,9 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|labelpattern
+name|bibtexkeypattern
 operator|.
-name|LabelPatternPreferences
+name|BibtexKeyPatternUtil
 import|;
 end_import
 
@@ -486,9 +486,9 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|labelpattern
+name|bibtexkeypattern
 operator|.
-name|LabelPatternUtil
+name|BibtexKeyPatternPreferences
 import|;
 end_import
 
@@ -2995,7 +2995,7 @@ argument_list|()
 control|)
 block|{
 comment|// try to make a new label
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
@@ -3005,7 +3005,7 @@ name|database
 argument_list|,
 name|entry
 argument_list|,
-name|LabelPatternPreferences
+name|BibtexKeyPatternPreferences
 operator|.
 name|fromPreferences
 argument_list|(

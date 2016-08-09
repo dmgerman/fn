@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|net.sf.jabref.logic.labelpattern
+DECL|package|net.sf.jabref.logic.bibtexkeypattern
 package|package
 name|net
 operator|.
@@ -10,7 +10,7 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|labelpattern
+name|bibtexkeypattern
 package|;
 end_package
 
@@ -29,10 +29,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|LabelPatternPreferences
+DECL|class|BibtexKeyPatternPreferences
 specifier|public
 class|class
-name|LabelPatternPreferences
+name|BibtexKeyPatternPreferences
 block|{
 DECL|field|defaultLabelPattern
 specifier|private
@@ -70,9 +70,9 @@ specifier|final
 name|boolean
 name|enforceLegalKey
 decl_stmt|;
-DECL|method|LabelPatternPreferences (String defaultLabelPattern, String keyPatternRegex, String keyPatternReplacement, boolean alwaysAddLetter, boolean firstLetterA, boolean enforceLegalKey)
+DECL|method|BibtexKeyPatternPreferences (String defaultLabelPattern, String keyPatternRegex, String keyPatternReplacement, boolean alwaysAddLetter, boolean firstLetterA, boolean enforceLegalKey)
 specifier|public
-name|LabelPatternPreferences
+name|BibtexKeyPatternPreferences
 parameter_list|(
 name|String
 name|defaultLabelPattern
@@ -133,7 +133,7 @@ block|}
 DECL|method|fromPreferences (JabRefPreferences jabRefPreferences)
 specifier|public
 specifier|static
-name|LabelPatternPreferences
+name|BibtexKeyPatternPreferences
 name|fromPreferences
 parameter_list|(
 name|JabRefPreferences
@@ -142,7 +142,7 @@ parameter_list|)
 block|{
 return|return
 operator|new
-name|LabelPatternPreferences
+name|BibtexKeyPatternPreferences
 argument_list|(
 name|jabRefPreferences
 operator|.

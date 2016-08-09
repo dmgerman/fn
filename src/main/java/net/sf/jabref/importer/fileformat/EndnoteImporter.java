@@ -136,9 +136,9 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|labelpattern
+name|bibtexkeypattern
 operator|.
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 import|;
 end_import
 
@@ -1451,7 +1451,7 @@ name|BibEntry
 operator|.
 name|KEY_FIELD
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|checkLegalKey
 argument_list|(

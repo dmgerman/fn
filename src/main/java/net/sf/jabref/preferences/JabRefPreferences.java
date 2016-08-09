@@ -860,9 +860,9 @@ name|jabref
 operator|.
 name|model
 operator|.
-name|labelpattern
+name|bibtexkeypattern
 operator|.
-name|AbstractLabelPattern
+name|AbstractBibtexKeyPattern
 import|;
 end_import
 
@@ -876,9 +876,9 @@ name|jabref
 operator|.
 name|model
 operator|.
-name|labelpattern
+name|bibtexkeypattern
 operator|.
-name|GlobalLabelPattern
+name|GlobalBibtexKeyPattern
 import|;
 end_import
 
@@ -2600,7 +2600,7 @@ init|=
 literal|"useDefaultConsoleApplication"
 decl_stmt|;
 comment|// Currently, it is not possible to specify defaults for specific entry types
-comment|// When this should be made possible, the code to inspect is net.sf.jabref.gui.preftabs.LabelPatternPrefTab.storeSettings() -> LabelPattern keypatterns = getLabelPattern(); etc
+comment|// When this should be made possible, the code to inspect is net.sf.jabref.gui.preftabs.BibtexKeyPatternPrefTab.storeSettings() -> LabelPattern keypatterns = getLabelPattern(); etc
 DECL|field|DEFAULT_LABEL_PATTERN
 specifier|public
 specifier|static
@@ -3557,7 +3557,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|keyPattern
 specifier|private
-name|GlobalLabelPattern
+name|GlobalBibtexKeyPattern
 name|keyPattern
 decl_stmt|;
 comment|// Object containing custom export formats:
@@ -8046,16 +8046,16 @@ block|}
 comment|/**      * Fetches key patterns from preferences.      * The implementation doesn't cache the results      *      * @return LabelPattern containing all keys. Returned LabelPattern has no parent      */
 DECL|method|getKeyPattern ()
 specifier|public
-name|GlobalLabelPattern
+name|GlobalBibtexKeyPattern
 name|getKeyPattern
 parameter_list|()
 block|{
 name|keyPattern
 operator|=
 operator|new
-name|GlobalLabelPattern
+name|GlobalBibtexKeyPattern
 argument_list|(
-name|AbstractLabelPattern
+name|AbstractBibtexKeyPattern
 operator|.
 name|split
 argument_list|(
@@ -8080,7 +8080,7 @@ name|Preferences
 operator|.
 name|userNodeForPackage
 argument_list|(
-name|GlobalLabelPattern
+name|GlobalBibtexKeyPattern
 operator|.
 name|class
 argument_list|)
@@ -8153,12 +8153,12 @@ name|keyPattern
 return|;
 block|}
 comment|/**      * Adds the given key pattern to the preferences      *      * @param pattern the pattern to store      */
-DECL|method|putKeyPattern (GlobalLabelPattern pattern)
+DECL|method|putKeyPattern (GlobalBibtexKeyPattern pattern)
 specifier|public
 name|void
 name|putKeyPattern
 parameter_list|(
-name|GlobalLabelPattern
+name|GlobalBibtexKeyPattern
 name|pattern
 parameter_list|)
 block|{
@@ -8174,7 +8174,7 @@ name|Preferences
 operator|.
 name|userNodeForPackage
 argument_list|(
-name|GlobalLabelPattern
+name|GlobalBibtexKeyPattern
 operator|.
 name|class
 argument_list|)
@@ -8236,7 +8236,7 @@ condition|)
 block|{
 comment|// no default value
 comment|// the first entry in the array is the full pattern
-comment|// see net.sf.jabref.logic.labelPattern.LabelPatternUtil.split(String)
+comment|// see net.sf.jabref.logic.labelPattern.BibtexKeyPatternUtil.split(String)
 name|pre
 operator|.
 name|put

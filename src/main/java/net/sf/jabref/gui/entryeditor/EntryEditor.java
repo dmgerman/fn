@@ -1060,9 +1060,9 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|labelpattern
+name|bibtexkeypattern
 operator|.
-name|LabelPatternPreferences
+name|BibtexKeyPatternPreferences
 import|;
 end_import
 
@@ -1076,9 +1076,9 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|labelpattern
+name|bibtexkeypattern
 operator|.
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 import|;
 end_import
 
@@ -6983,7 +6983,7 @@ comment|// Make sure the key is legal:
 name|String
 name|cleaned
 init|=
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|checkLegalKey
 argument_list|(
@@ -8391,7 +8391,7 @@ return|return;
 block|}
 block|}
 block|}
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
@@ -8410,7 +8410,7 @@ argument_list|()
 argument_list|,
 name|entry
 argument_list|,
-name|LabelPatternPreferences
+name|BibtexKeyPatternPreferences
 operator|.
 name|fromPreferences
 argument_list|(

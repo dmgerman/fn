@@ -836,7 +836,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|labelpattern
+name|bibtexkeypattern
 operator|.
 name|SearchFixDuplicateLabels
 import|;
@@ -1396,9 +1396,9 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|labelpattern
+name|bibtexkeypattern
 operator|.
-name|LabelPatternPreferences
+name|BibtexKeyPatternUtil
 import|;
 end_import
 
@@ -1412,9 +1412,9 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|labelpattern
+name|bibtexkeypattern
 operator|.
-name|LabelPatternUtil
+name|BibtexKeyPatternPreferences
 import|;
 end_import
 
@@ -3640,7 +3640,7 @@ name|bes
 operator|=
 name|entry
 expr_stmt|;
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
@@ -3653,7 +3653,7 @@ name|database
 argument_list|,
 name|bes
 argument_list|,
-name|LabelPatternPreferences
+name|BibtexKeyPatternPreferences
 operator|.
 name|fromPreferences
 argument_list|(
@@ -11903,7 +11903,7 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
@@ -11916,7 +11916,7 @@ name|database
 argument_list|,
 name|bes
 argument_list|,
-name|LabelPatternPreferences
+name|BibtexKeyPatternPreferences
 operator|.
 name|fromPreferences
 argument_list|(

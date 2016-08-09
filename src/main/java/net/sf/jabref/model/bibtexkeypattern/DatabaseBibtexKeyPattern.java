@@ -4,7 +4,7 @@ comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is fre
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref.model.labelpattern
+DECL|package|net.sf.jabref.model.bibtexkeypattern
 package|package
 name|net
 operator|.
@@ -14,7 +14,7 @@ name|jabref
 operator|.
 name|model
 operator|.
-name|labelpattern
+name|bibtexkeypattern
 package|;
 end_package
 
@@ -43,12 +43,12 @@ import|;
 end_import
 
 begin_class
-DECL|class|DatabaseLabelPattern
+DECL|class|DatabaseBibtexKeyPattern
 specifier|public
 class|class
-name|DatabaseLabelPattern
+name|DatabaseBibtexKeyPattern
 extends|extends
-name|AbstractLabelPattern
+name|AbstractBibtexKeyPattern
 block|{
 DECL|field|prefs
 specifier|private
@@ -56,9 +56,9 @@ specifier|final
 name|JabRefPreferences
 name|prefs
 decl_stmt|;
-DECL|method|DatabaseLabelPattern (JabRefPreferences prefs)
+DECL|method|DatabaseBibtexKeyPattern (JabRefPreferences prefs)
 specifier|public
-name|DatabaseLabelPattern
+name|DatabaseBibtexKeyPattern
 parameter_list|(
 name|JabRefPreferences
 name|prefs

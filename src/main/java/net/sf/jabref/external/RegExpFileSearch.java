@@ -140,9 +140,9 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|labelpattern
+name|bibtexkeypattern
 operator|.
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 import|;
 end_import
 
@@ -1500,7 +1500,7 @@ argument_list|)
 operator|.
 name|orElse
 argument_list|(
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
@@ -1552,7 +1552,7 @@ argument_list|)
 decl_stmt|;
 name|fieldValue
 operator|=
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|applyModifiers
 argument_list|(

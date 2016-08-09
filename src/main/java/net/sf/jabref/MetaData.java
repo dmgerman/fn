@@ -336,6 +336,22 @@ name|jabref
 operator|.
 name|model
 operator|.
+name|bibtexkeypattern
+operator|.
+name|AbstractBibtexKeyPattern
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
 name|database
 operator|.
 name|BibDatabaseMode
@@ -368,25 +384,9 @@ name|jabref
 operator|.
 name|model
 operator|.
-name|labelpattern
+name|bibtexkeypattern
 operator|.
-name|AbstractLabelPattern
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|labelpattern
-operator|.
-name|DatabaseLabelPattern
+name|DatabaseBibtexKeyPattern
 import|;
 end_import
 
@@ -591,7 +591,7 @@ argument_list|()
 decl_stmt|;
 DECL|field|labelPattern
 specifier|private
-name|AbstractLabelPattern
+name|AbstractBibtexKeyPattern
 name|labelPattern
 decl_stmt|;
 DECL|field|encoding
@@ -1338,7 +1338,7 @@ block|}
 comment|/**      * @return the stored label patterns      */
 DECL|method|getLabelPattern ()
 specifier|public
-name|AbstractLabelPattern
+name|AbstractBibtexKeyPattern
 name|getLabelPattern
 parameter_list|()
 block|{
@@ -1356,7 +1356,7 @@ block|}
 name|labelPattern
 operator|=
 operator|new
-name|DatabaseLabelPattern
+name|DatabaseBibtexKeyPattern
 argument_list|(
 name|Globals
 operator|.
@@ -1458,12 +1458,12 @@ name|labelPattern
 return|;
 block|}
 comment|/**      * Updates the stored key patterns to the given key patterns.      *      * @param labelPattern the key patterns to update to.<br />      *                     A reference to this object is stored internally and is returned at getLabelPattern();      */
-DECL|method|setLabelPattern (AbstractLabelPattern labelPattern)
+DECL|method|setLabelPattern (AbstractBibtexKeyPattern labelPattern)
 specifier|public
 name|void
 name|setLabelPattern
 parameter_list|(
-name|AbstractLabelPattern
+name|AbstractBibtexKeyPattern
 name|labelPattern
 parameter_list|)
 block|{

@@ -4,7 +4,7 @@ comment|/*  Copyright (C) 2003-2015 JabRef contributors.                   2003 
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref.model.labelpattern
+DECL|package|net.sf.jabref.model.bibtexkeypattern
 package|package
 name|net
 operator|.
@@ -14,7 +14,7 @@ name|jabref
 operator|.
 name|model
 operator|.
-name|labelpattern
+name|bibtexkeypattern
 package|;
 end_package
 
@@ -93,11 +93,11 @@ comment|/**  * A small table, where an entry type is associated with a label pat
 end_comment
 
 begin_class
-DECL|class|AbstractLabelPattern
+DECL|class|AbstractBibtexKeyPattern
 specifier|public
 specifier|abstract
 class|class
-name|AbstractLabelPattern
+name|AbstractBibtexKeyPattern
 block|{
 DECL|field|defaultPattern
 specifier|protected
@@ -143,7 +143,7 @@ name|put
 argument_list|(
 name|type
 argument_list|,
-name|AbstractLabelPattern
+name|AbstractBibtexKeyPattern
 operator|.
 name|split
 argument_list|(
@@ -167,7 +167,7 @@ init|=
 operator|new
 name|StringBuilder
 argument_list|(
-literal|"AbstractLabelPattern{"
+literal|"AbstractBibtexKeyPattern{"
 argument_list|)
 decl_stmt|;
 name|sb
@@ -253,11 +253,11 @@ return|return
 literal|false
 return|;
 block|}
-name|AbstractLabelPattern
+name|AbstractBibtexKeyPattern
 name|that
 init|=
 operator|(
-name|AbstractLabelPattern
+name|AbstractBibtexKeyPattern
 operator|)
 name|o
 decl_stmt|;
@@ -516,7 +516,7 @@ name|this
 operator|.
 name|defaultPattern
 operator|=
-name|AbstractLabelPattern
+name|AbstractBibtexKeyPattern
 operator|.
 name|split
 argument_list|(

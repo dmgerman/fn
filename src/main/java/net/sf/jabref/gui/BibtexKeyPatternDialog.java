@@ -152,9 +152,9 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|keyboard
+name|bibtexkeypattern
 operator|.
-name|KeyBinder
+name|BibtexKeyPatternPanel
 import|;
 end_import
 
@@ -168,9 +168,9 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|labelpattern
+name|keyboard
 operator|.
-name|LabelPatternPanel
+name|KeyBinder
 import|;
 end_import
 
@@ -200,9 +200,9 @@ name|jabref
 operator|.
 name|model
 operator|.
-name|labelpattern
+name|bibtexkeypattern
 operator|.
-name|AbstractLabelPattern
+name|AbstractBibtexKeyPattern
 import|;
 end_import
 
@@ -238,11 +238,11 @@ specifier|private
 name|BasePanel
 name|panel
 decl_stmt|;
-DECL|field|labelPatternPanel
+DECL|field|bibtexKeyPatternPanel
 specifier|private
 specifier|final
-name|LabelPatternPanel
-name|labelPatternPanel
+name|BibtexKeyPatternPanel
+name|bibtexKeyPatternPanel
 decl_stmt|;
 DECL|method|BibtexKeyPatternDialog (JabRefFrame parent, BasePanel panel)
 specifier|public
@@ -271,10 +271,10 @@ argument_list|)
 expr_stmt|;
 name|this
 operator|.
-name|labelPatternPanel
+name|bibtexKeyPatternPanel
 operator|=
 operator|new
-name|LabelPatternPanel
+name|BibtexKeyPatternPanel
 argument_list|(
 name|panel
 argument_list|)
@@ -316,7 +316,7 @@ operator|.
 name|getMetaData
 argument_list|()
 expr_stmt|;
-name|AbstractLabelPattern
+name|AbstractBibtexKeyPattern
 name|keypatterns
 init|=
 name|metaData
@@ -324,7 +324,7 @@ operator|.
 name|getLabelPattern
 argument_list|()
 decl_stmt|;
-name|labelPatternPanel
+name|bibtexKeyPatternPanel
 operator|.
 name|setValues
 argument_list|(
@@ -353,7 +353,7 @@ argument_list|()
 operator|.
 name|add
 argument_list|(
-name|labelPatternPanel
+name|bibtexKeyPatternPanel
 argument_list|,
 name|BorderLayout
 operator|.
@@ -489,7 +489,7 @@ name|metaData
 operator|.
 name|setLabelPattern
 argument_list|(
-name|labelPatternPanel
+name|bibtexKeyPatternPanel
 operator|.
 name|getLabelPatternAsDatabaseLabelPattern
 argument_list|()

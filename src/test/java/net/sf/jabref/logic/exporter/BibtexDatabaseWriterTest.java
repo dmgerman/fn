@@ -452,9 +452,9 @@ name|jabref
 operator|.
 name|model
 operator|.
-name|labelpattern
+name|bibtexkeypattern
 operator|.
-name|AbstractLabelPattern
+name|AbstractBibtexKeyPattern
 import|;
 end_import
 
@@ -468,9 +468,9 @@ name|jabref
 operator|.
 name|model
 operator|.
-name|labelpattern
+name|bibtexkeypattern
 operator|.
-name|DatabaseLabelPattern
+name|DatabaseBibtexKeyPattern
 import|;
 end_import
 
@@ -1238,11 +1238,11 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|DatabaseLabelPattern
+name|DatabaseBibtexKeyPattern
 name|labelPattern
 init|=
 operator|new
-name|DatabaseLabelPattern
+name|DatabaseBibtexKeyPattern
 argument_list|(
 name|Globals
 operator|.
@@ -1325,11 +1325,11 @@ operator|.
 name|US_ASCII
 argument_list|)
 decl_stmt|;
-name|DatabaseLabelPattern
+name|DatabaseBibtexKeyPattern
 name|labelPattern
 init|=
 operator|new
-name|DatabaseLabelPattern
+name|DatabaseBibtexKeyPattern
 argument_list|(
 name|Globals
 operator|.
@@ -3095,11 +3095,11 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|AbstractLabelPattern
+name|AbstractBibtexKeyPattern
 name|pattern
 init|=
 operator|new
-name|DatabaseLabelPattern
+name|DatabaseBibtexKeyPattern
 argument_list|(
 name|Globals
 operator|.

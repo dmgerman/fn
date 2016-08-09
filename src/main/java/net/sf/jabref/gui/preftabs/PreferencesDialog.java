@@ -765,7 +765,7 @@ operator|.
 name|add
 argument_list|(
 operator|new
-name|LabelPatternPrefTab
+name|BibtexKeyPatternPrefTab
 argument_list|(
 name|prefs
 argument_list|,

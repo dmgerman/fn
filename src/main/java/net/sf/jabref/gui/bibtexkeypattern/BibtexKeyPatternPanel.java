@@ -4,7 +4,7 @@ comment|/*  Copyright (C) 2003-2016 JabRef contributors.     This program is fre
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref.gui.labelpattern
+DECL|package|net.sf.jabref.gui.bibtexkeypattern
 package|package
 name|net
 operator|.
@@ -14,7 +14,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|labelpattern
+name|bibtexkeypattern
 package|;
 end_package
 
@@ -302,9 +302,9 @@ name|jabref
 operator|.
 name|model
 operator|.
-name|labelpattern
+name|bibtexkeypattern
 operator|.
-name|AbstractLabelPattern
+name|AbstractBibtexKeyPattern
 import|;
 end_import
 
@@ -318,9 +318,9 @@ name|jabref
 operator|.
 name|model
 operator|.
-name|labelpattern
+name|bibtexkeypattern
 operator|.
-name|DatabaseLabelPattern
+name|DatabaseBibtexKeyPattern
 import|;
 end_import
 
@@ -334,9 +334,9 @@ name|jabref
 operator|.
 name|model
 operator|.
-name|labelpattern
+name|bibtexkeypattern
 operator|.
-name|GlobalLabelPattern
+name|GlobalBibtexKeyPattern
 import|;
 end_import
 
@@ -355,14 +355,14 @@ import|;
 end_import
 
 begin_class
-DECL|class|LabelPatternPanel
+DECL|class|BibtexKeyPatternPanel
 specifier|public
 class|class
-name|LabelPatternPanel
+name|BibtexKeyPatternPanel
 extends|extends
 name|JPanel
 block|{
-comment|// used by both LabelPatternPanel and TabLabelPAttern
+comment|// used by both BibtexKeyPatternPanel and TabLabelPAttern
 DECL|field|gbl
 specifier|protected
 specifier|final
@@ -423,9 +423,9 @@ specifier|final
 name|BasePanel
 name|panel
 decl_stmt|;
-DECL|method|LabelPatternPanel (BasePanel panel)
+DECL|method|BibtexKeyPatternPanel (BasePanel panel)
 specifier|public
-name|LabelPatternPanel
+name|BibtexKeyPatternPanel
 parameter_list|(
 name|BasePanel
 name|panel
@@ -1536,12 +1536,12 @@ name|tf
 return|;
 block|}
 comment|/**      * fill the given LabelPattern by values generated from the text fields      */
-DECL|method|fillPatternUsingPanelData (AbstractLabelPattern keypatterns)
+DECL|method|fillPatternUsingPanelData (AbstractBibtexKeyPattern keypatterns)
 specifier|private
 name|void
 name|fillPatternUsingPanelData
 parameter_list|(
-name|AbstractLabelPattern
+name|AbstractBibtexKeyPattern
 name|keypatterns
 parameter_list|)
 block|{
@@ -1634,17 +1634,17 @@ block|}
 block|}
 DECL|method|getLabelPatternAsGlobalLabelPattern ()
 specifier|protected
-name|GlobalLabelPattern
+name|GlobalBibtexKeyPattern
 name|getLabelPatternAsGlobalLabelPattern
 parameter_list|()
 block|{
-name|GlobalLabelPattern
+name|GlobalBibtexKeyPattern
 name|res
 init|=
 operator|new
-name|GlobalLabelPattern
+name|GlobalBibtexKeyPattern
 argument_list|(
-name|AbstractLabelPattern
+name|AbstractBibtexKeyPattern
 operator|.
 name|split
 argument_list|(
@@ -1673,15 +1673,15 @@ return|;
 block|}
 DECL|method|getLabelPatternAsDatabaseLabelPattern ()
 specifier|public
-name|DatabaseLabelPattern
+name|DatabaseBibtexKeyPattern
 name|getLabelPatternAsDatabaseLabelPattern
 parameter_list|()
 block|{
-name|DatabaseLabelPattern
+name|DatabaseBibtexKeyPattern
 name|res
 init|=
 operator|new
-name|DatabaseLabelPattern
+name|DatabaseBibtexKeyPattern
 argument_list|(
 name|Globals
 operator|.
@@ -1698,12 +1698,12 @@ name|res
 return|;
 block|}
 comment|/**      * Fills the current values to the text fields      *      * @param keypatterns the LabelPattern to use as initial value      */
-DECL|method|setValues (AbstractLabelPattern keypatterns)
+DECL|method|setValues (AbstractBibtexKeyPattern keypatterns)
 specifier|public
 name|void
 name|setValues
 parameter_list|(
-name|AbstractLabelPattern
+name|AbstractBibtexKeyPattern
 name|keypatterns
 parameter_list|)
 block|{
@@ -1778,7 +1778,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|setValue (JTextField tf, String fieldName, AbstractLabelPattern keypatterns)
+DECL|method|setValue (JTextField tf, String fieldName, AbstractBibtexKeyPattern keypatterns)
 specifier|private
 specifier|static
 name|void
@@ -1790,7 +1790,7 @@ parameter_list|,
 name|String
 name|fieldName
 parameter_list|,
-name|AbstractLabelPattern
+name|AbstractBibtexKeyPattern
 name|keypatterns
 parameter_list|)
 block|{
