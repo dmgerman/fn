@@ -198,7 +198,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|model
 operator|.
 name|labelpattern
 operator|.

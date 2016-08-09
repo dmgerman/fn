@@ -4,7 +4,7 @@ comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is fre
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref.logic.labelpattern
+DECL|package|net.sf.jabref.model.labelpattern
 package|package
 name|net
 operator|.
@@ -12,7 +12,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|model
 operator|.
 name|labelpattern
 package|;
@@ -36,6 +36,30 @@ name|GlobalLabelPattern
 extends|extends
 name|AbstractLabelPattern
 block|{
+DECL|field|defaultLabelPattern
+specifier|private
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|defaultLabelPattern
+decl_stmt|;
+DECL|method|GlobalLabelPattern (List<String> labelPattern)
+specifier|public
+name|GlobalLabelPattern
+parameter_list|(
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|labelPattern
+parameter_list|)
+block|{
+name|defaultLabelPattern
+operator|=
+name|labelPattern
+expr_stmt|;
+block|}
 annotation|@
 name|Override
 DECL|method|getLastLevelLabelPattern (String key)
@@ -51,10 +75,7 @@ name|key
 parameter_list|)
 block|{
 return|return
-name|LabelPatternUtil
-operator|.
-name|getDefaultLabelPattern
-argument_list|()
+name|defaultLabelPattern
 return|;
 block|}
 block|}

@@ -200,16 +200,6 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|getDefaultLabelPattern ()
-specifier|public
-name|String
-name|getDefaultLabelPattern
-parameter_list|()
-block|{
-return|return
-name|defaultLabelPattern
-return|;
-block|}
 DECL|method|getKeyPatternRegex ()
 specifier|public
 name|String
@@ -258,6 +248,16 @@ parameter_list|()
 block|{
 return|return
 name|enforceLegalKey
+return|;
+block|}
+DECL|method|getDefaultLabelPattern ()
+specifier|public
+name|String
+name|getDefaultLabelPattern
+parameter_list|()
+block|{
+return|return
+name|defaultLabelPattern
 return|;
 block|}
 block|}

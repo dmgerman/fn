@@ -4,7 +4,7 @@ comment|/*  Copyright (C) 2003-2015 JabRef contributors.                   2003 
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref.logic.labelpattern
+DECL|package|net.sf.jabref.model.labelpattern
 package|package
 name|net
 operator|.
@@ -12,11 +12,21 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|model
 operator|.
 name|labelpattern
 package|;
 end_package
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|ArrayList
+import|;
+end_import
 
 begin_import
 import|import
@@ -65,6 +75,16 @@ operator|.
 name|util
 operator|.
 name|Set
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|StringTokenizer
 import|;
 end_import
 
@@ -123,7 +143,7 @@ name|put
 argument_list|(
 name|type
 argument_list|,
-name|LabelPatternUtil
+name|AbstractLabelPattern
 operator|.
 name|split
 argument_list|(
@@ -374,6 +394,76 @@ return|return
 name|result
 return|;
 block|}
+comment|/**      * This method takes a string of the form [field1]spacer[field2]spacer[field3]...,      * where the fields are the (required) fields of a BibTex entry. The string is split      * into fields and spacers by recognizing the [ and ].      *      * @param labelPattern a<code>String</code>      * @return an<code>ArrayList</code> The first item of the list      * is a string representation of the key pattern (the parameter),      * the remaining items are the fields      */
+DECL|method|split (String labelPattern)
+specifier|public
+specifier|static
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|split
+parameter_list|(
+name|String
+name|labelPattern
+parameter_list|)
+block|{
+comment|// A holder for fields of the entry to be used for the key
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|fieldList
+init|=
+operator|new
+name|ArrayList
+argument_list|<>
+argument_list|()
+decl_stmt|;
+comment|// Before we do anything, we add the parameter to the ArrayLIst
+name|fieldList
+operator|.
+name|add
+argument_list|(
+name|labelPattern
+argument_list|)
+expr_stmt|;
+name|StringTokenizer
+name|tok
+init|=
+operator|new
+name|StringTokenizer
+argument_list|(
+name|labelPattern
+argument_list|,
+literal|"[]"
+argument_list|,
+literal|true
+argument_list|)
+decl_stmt|;
+while|while
+condition|(
+name|tok
+operator|.
+name|hasMoreTokens
+argument_list|()
+condition|)
+block|{
+name|fieldList
+operator|.
+name|add
+argument_list|(
+name|tok
+operator|.
+name|nextToken
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+return|return
+name|fieldList
+return|;
+block|}
 comment|/**      * Checks whether this pattern is customized or the default value.      */
 DECL|method|isDefaultValue (String key)
 specifier|public
@@ -426,7 +516,7 @@ name|this
 operator|.
 name|defaultPattern
 operator|=
-name|LabelPatternUtil
+name|AbstractLabelPattern
 operator|.
 name|split
 argument_list|(
