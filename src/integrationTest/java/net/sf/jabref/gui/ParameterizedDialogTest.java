@@ -957,28 +957,7 @@ block|,
 literal|false
 block|}
 argument_list|,
-operator|new
-name|Object
-index|[]
-block|{
-literal|true
-block|,
-operator|new
-name|String
-index|[]
-block|{
-literal|"Edit"
-block|,
-literal|"Set/clear/rename fields..."
-block|}
-block|,
-literal|"Set/clear/rename fields"
-block|,
-literal|"OK"
-block|,
-literal|false
-block|}
-argument_list|,
+comment|//new Object[]{true, new String[]{"Edit", "Set/clear/rename fields..."}, "Set/clear/rename fields", "OK", false},
 operator|new
 name|Object
 index|[]
@@ -1343,6 +1322,50 @@ index|[]
 block|{
 literal|"Quality"
 block|,
+literal|"Synchronize file links..."
+block|}
+block|,
+literal|"Synchronize file links"
+block|,
+literal|"Cancel"
+block|,
+literal|false
+block|}
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
+literal|true
+block|,
+operator|new
+name|String
+index|[]
+block|{
+literal|"Quality"
+block|,
+literal|"Synchronize file links..."
+block|}
+block|,
+literal|"Synchronize file links"
+block|,
+literal|"Close button"
+block|,
+literal|true
+block|}
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
+literal|true
+block|,
+operator|new
+name|String
+index|[]
+block|{
+literal|"Quality"
+block|,
 literal|"Find unlinked files..."
 block|}
 block|,
@@ -1369,6 +1392,50 @@ literal|"Find unlinked files..."
 block|}
 block|,
 literal|"Find unlinked files"
+block|,
+literal|"Close button"
+block|,
+literal|true
+block|}
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
+literal|true
+block|,
+operator|new
+name|String
+index|[]
+block|{
+literal|"Tools"
+block|,
+literal|"New subdatabase based on AUX file..."
+block|}
+block|,
+literal|"AUX file import"
+block|,
+literal|"Cancel"
+block|,
+literal|false
+block|}
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
+literal|true
+block|,
+operator|new
+name|String
+index|[]
+block|{
+literal|"Tools"
+block|,
+literal|"New subdatabase based on AUX file..."
+block|}
+block|,
+literal|"AUX file import"
 block|,
 literal|"Close button"
 block|,
