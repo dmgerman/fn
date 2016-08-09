@@ -828,7 +828,7 @@ name|get
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|DEFAULT_LABEL_PATTERN
+name|DEFAULT_BIBTEX_KEY_PATTERN
 argument_list|)
 argument_list|)
 argument_list|)
@@ -1216,7 +1216,7 @@ name|get
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|DEFAULT_LABEL_PATTERN
+name|DEFAULT_BIBTEX_KEY_PATTERN
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1589,7 +1589,7 @@ condition|)
 block|{
 name|keypatterns
 operator|.
-name|addLabelPattern
+name|addBibtexKeyPattern
 argument_list|(
 name|entry
 operator|.
@@ -1632,10 +1632,10 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|getLabelPatternAsGlobalLabelPattern ()
+DECL|method|getKeyPatternAsGlobalBibtexKeyPattern ()
 specifier|protected
 name|GlobalBibtexKeyPattern
-name|getLabelPatternAsGlobalLabelPattern
+name|getKeyPatternAsGlobalBibtexKeyPattern
 parameter_list|()
 block|{
 name|GlobalBibtexKeyPattern
@@ -1657,7 +1657,7 @@ name|get
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|DEFAULT_LABEL_PATTERN
+name|DEFAULT_BIBTEX_KEY_PATTERN
 argument_list|)
 argument_list|)
 argument_list|)
@@ -1671,10 +1671,10 @@ return|return
 name|res
 return|;
 block|}
-DECL|method|getLabelPatternAsDatabaseLabelPattern ()
+DECL|method|getKeyPatternAsDatabaseBibtexKeyPattern ()
 specifier|public
 name|DatabaseBibtexKeyPattern
-name|getLabelPatternAsDatabaseLabelPattern
+name|getKeyPatternAsDatabaseBibtexKeyPattern
 parameter_list|()
 block|{
 name|DatabaseBibtexKeyPattern
@@ -1697,14 +1697,14 @@ return|return
 name|res
 return|;
 block|}
-comment|/**      * Fills the current values to the text fields      *      * @param keypatterns the LabelPattern to use as initial value      */
-DECL|method|setValues (AbstractBibtexKeyPattern keypatterns)
+comment|/**      * Fills the current values to the text fields      *      * @param keyPattern the BibtexKeyPattern to use as initial value      */
+DECL|method|setValues (AbstractBibtexKeyPattern keyPattern)
 specifier|public
 name|void
 name|setValues
 parameter_list|(
 name|AbstractBibtexKeyPattern
-name|keypatterns
+name|keyPattern
 parameter_list|)
 block|{
 for|for
@@ -1737,13 +1737,13 @@ operator|.
 name|getKey
 argument_list|()
 argument_list|,
-name|keypatterns
+name|keyPattern
 argument_list|)
 expr_stmt|;
 block|}
 if|if
 condition|(
-name|keypatterns
+name|keyPattern
 operator|.
 name|getDefaultValue
 argument_list|()
@@ -1765,7 +1765,7 @@ name|defaultPat
 operator|.
 name|setText
 argument_list|(
-name|keypatterns
+name|keyPattern
 operator|.
 name|getDefaultValue
 argument_list|()
@@ -1778,7 +1778,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|setValue (JTextField tf, String fieldName, AbstractBibtexKeyPattern keypatterns)
+DECL|method|setValue (JTextField tf, String fieldName, AbstractBibtexKeyPattern keyPattern)
 specifier|private
 specifier|static
 name|void
@@ -1791,12 +1791,12 @@ name|String
 name|fieldName
 parameter_list|,
 name|AbstractBibtexKeyPattern
-name|keypatterns
+name|keyPattern
 parameter_list|)
 block|{
 if|if
 condition|(
-name|keypatterns
+name|keyPattern
 operator|.
 name|isDefaultValue
 argument_list|(
@@ -1818,7 +1818,7 @@ name|tf
 operator|.
 name|setText
 argument_list|(
-name|keypatterns
+name|keyPattern
 operator|.
 name|getValue
 argument_list|(

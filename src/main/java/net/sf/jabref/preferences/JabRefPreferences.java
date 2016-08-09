@@ -2600,13 +2600,13 @@ init|=
 literal|"useDefaultConsoleApplication"
 decl_stmt|;
 comment|// Currently, it is not possible to specify defaults for specific entry types
-comment|// When this should be made possible, the code to inspect is net.sf.jabref.gui.preftabs.BibtexKeyPatternPrefTab.storeSettings() -> LabelPattern keypatterns = getLabelPattern(); etc
-DECL|field|DEFAULT_LABEL_PATTERN
+comment|// When this should be made possible, the code to inspect is net.sf.jabref.gui.preftabs.BibtexKeyPatternPrefTab.storeSettings() -> LabelPattern keypatterns = getBibtexKeyPattern(); etc
+DECL|field|DEFAULT_BIBTEX_KEY_PATTERN
 specifier|public
 specifier|static
 specifier|final
 name|String
-name|DEFAULT_LABEL_PATTERN
+name|DEFAULT_BIBTEX_KEY_PATTERN
 init|=
 literal|"defaultLabelPattern"
 decl_stmt|;
@@ -5901,7 +5901,7 @@ name|defaults
 operator|.
 name|put
 argument_list|(
-name|DEFAULT_LABEL_PATTERN
+name|DEFAULT_BIBTEX_KEY_PATTERN
 argument_list|,
 literal|"[auth][year]"
 argument_list|)
@@ -8068,7 +8068,7 @@ name|get
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|DEFAULT_LABEL_PATTERN
+name|DEFAULT_BIBTEX_KEY_PATTERN
 argument_list|)
 argument_list|)
 argument_list|)
@@ -8115,7 +8115,7 @@ control|)
 block|{
 name|keyPattern
 operator|.
-name|addLabelPattern
+name|addBibtexKeyPattern
 argument_list|(
 name|key
 argument_list|,

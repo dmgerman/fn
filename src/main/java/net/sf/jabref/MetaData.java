@@ -589,10 +589,10 @@ operator|new
 name|EventBus
 argument_list|()
 decl_stmt|;
-DECL|field|labelPattern
+DECL|field|bibtexKeyPattern
 specifier|private
 name|AbstractBibtexKeyPattern
-name|labelPattern
+name|bibtexKeyPattern
 decl_stmt|;
 DECL|field|encoding
 specifier|private
@@ -1336,24 +1336,24 @@ argument_list|()
 return|;
 block|}
 comment|/**      * @return the stored label patterns      */
-DECL|method|getLabelPattern ()
+DECL|method|getBibtexKeyPattern ()
 specifier|public
 name|AbstractBibtexKeyPattern
-name|getLabelPattern
+name|getBibtexKeyPattern
 parameter_list|()
 block|{
 if|if
 condition|(
-name|labelPattern
+name|bibtexKeyPattern
 operator|!=
 literal|null
 condition|)
 block|{
 return|return
-name|labelPattern
+name|bibtexKeyPattern
 return|;
 block|}
-name|labelPattern
+name|bibtexKeyPattern
 operator|=
 operator|new
 name|DatabaseBibtexKeyPattern
@@ -1363,7 +1363,7 @@ operator|.
 name|prefs
 argument_list|)
 expr_stmt|;
-comment|// read the data from the metadata and store it into the labelPattern
+comment|// read the data from the metadata and store it into the bibtexKeyPattern
 for|for
 control|(
 name|String
@@ -1406,9 +1406,9 @@ name|length
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|labelPattern
+name|bibtexKeyPattern
 operator|.
-name|addLabelPattern
+name|addBibtexKeyPattern
 argument_list|(
 name|type
 argument_list|,
@@ -1440,7 +1440,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|labelPattern
+name|bibtexKeyPattern
 operator|.
 name|setDefaultValue
 argument_list|(
@@ -1454,17 +1454,17 @@ argument_list|)
 expr_stmt|;
 block|}
 return|return
-name|labelPattern
+name|bibtexKeyPattern
 return|;
 block|}
-comment|/**      * Updates the stored key patterns to the given key patterns.      *      * @param labelPattern the key patterns to update to.<br />      *                     A reference to this object is stored internally and is returned at getLabelPattern();      */
-DECL|method|setLabelPattern (AbstractBibtexKeyPattern labelPattern)
+comment|/**      * Updates the stored key patterns to the given key patterns.      *      * @param bibtexKeyPattern the key patterns to update to.<br />      *                     A reference to this object is stored internally and is returned at getBibtexKeyPattern();      */
+DECL|method|setBibtexKeyPattern (AbstractBibtexKeyPattern bibtexKeyPattern)
 specifier|public
 name|void
-name|setLabelPattern
+name|setBibtexKeyPattern
 parameter_list|(
 name|AbstractBibtexKeyPattern
-name|labelPattern
+name|bibtexKeyPattern
 parameter_list|)
 block|{
 comment|// remove all keypatterns from metadata
@@ -1519,7 +1519,7 @@ name|String
 argument_list|>
 name|allKeys
 init|=
-name|labelPattern
+name|bibtexKeyPattern
 operator|.
 name|getAllKeys
 argument_list|()
@@ -1542,7 +1542,7 @@ decl_stmt|;
 if|if
 condition|(
 operator|!
-name|labelPattern
+name|bibtexKeyPattern
 operator|.
 name|isDefaultValue
 argument_list|(
@@ -1565,7 +1565,7 @@ name|data
 operator|.
 name|add
 argument_list|(
-name|labelPattern
+name|bibtexKeyPattern
 operator|.
 name|getValue
 argument_list|(
@@ -1592,7 +1592,7 @@ block|}
 comment|// store default pattern
 if|if
 condition|(
-name|labelPattern
+name|bibtexKeyPattern
 operator|.
 name|getDefaultValue
 argument_list|()
@@ -1625,7 +1625,7 @@ name|data
 operator|.
 name|add
 argument_list|(
-name|labelPattern
+name|bibtexKeyPattern
 operator|.
 name|getDefaultValue
 argument_list|()
@@ -1648,9 +1648,9 @@ expr_stmt|;
 block|}
 name|this
 operator|.
-name|labelPattern
+name|bibtexKeyPattern
 operator|=
-name|labelPattern
+name|bibtexKeyPattern
 expr_stmt|;
 block|}
 DECL|method|getSaveActions ()

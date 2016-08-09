@@ -410,7 +410,7 @@ name|put
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|DEFAULT_LABEL_PATTERN
+name|DEFAULT_BIBTEX_KEY_PATTERN
 argument_list|,
 name|defaultPat
 operator|.
@@ -605,7 +605,7 @@ comment|// fetch entries from GUI
 name|GlobalBibtexKeyPattern
 name|keypatterns
 init|=
-name|getLabelPatternAsGlobalLabelPattern
+name|getKeyPatternAsGlobalBibtexKeyPattern
 argument_list|()
 decl_stmt|;
 comment|// store new patterns globally
@@ -993,7 +993,7 @@ name|get
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|DEFAULT_LABEL_PATTERN
+name|DEFAULT_BIBTEX_KEY_PATTERN
 argument_list|)
 argument_list|)
 expr_stmt|;

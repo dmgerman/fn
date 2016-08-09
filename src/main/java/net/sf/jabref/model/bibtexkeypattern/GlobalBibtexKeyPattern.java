@@ -36,15 +36,15 @@ name|GlobalBibtexKeyPattern
 extends|extends
 name|AbstractBibtexKeyPattern
 block|{
-DECL|field|defaultLabelPattern
+DECL|field|defaultBibtexKeyPattern
 specifier|private
 name|List
 argument_list|<
 name|String
 argument_list|>
-name|defaultLabelPattern
+name|defaultBibtexKeyPattern
 decl_stmt|;
-DECL|method|GlobalBibtexKeyPattern (List<String> labelPattern)
+DECL|method|GlobalBibtexKeyPattern (List<String> bibtexKeyPattern)
 specifier|public
 name|GlobalBibtexKeyPattern
 parameter_list|(
@@ -52,30 +52,30 @@ name|List
 argument_list|<
 name|String
 argument_list|>
-name|labelPattern
+name|bibtexKeyPattern
 parameter_list|)
 block|{
-name|defaultLabelPattern
+name|defaultBibtexKeyPattern
 operator|=
-name|labelPattern
+name|bibtexKeyPattern
 expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|getLastLevelLabelPattern (String key)
+DECL|method|getLastLevelBibtexKeyPattern (String key)
 specifier|public
 name|List
 argument_list|<
 name|String
 argument_list|>
-name|getLastLevelLabelPattern
+name|getLastLevelBibtexKeyPattern
 parameter_list|(
 name|String
 name|key
 parameter_list|)
 block|{
 return|return
-name|defaultLabelPattern
+name|defaultBibtexKeyPattern
 return|;
 block|}
 block|}

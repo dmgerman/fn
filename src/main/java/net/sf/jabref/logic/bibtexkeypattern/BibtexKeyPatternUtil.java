@@ -1726,7 +1726,7 @@ argument_list|<>
 argument_list|(
 name|metaData
 operator|.
-name|getLabelPattern
+name|getBibtexKeyPattern
 argument_list|()
 operator|.
 name|getValue

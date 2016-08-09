@@ -73,13 +73,13 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|getLastLevelLabelPattern (String key)
+DECL|method|getLastLevelBibtexKeyPattern (String key)
 specifier|public
 name|List
 argument_list|<
 name|String
 argument_list|>
-name|getLastLevelLabelPattern
+name|getLastLevelBibtexKeyPattern
 parameter_list|(
 name|String
 name|key

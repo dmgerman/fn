@@ -321,7 +321,7 @@ name|keypatterns
 init|=
 name|metaData
 operator|.
-name|getLabelPattern
+name|getBibtexKeyPattern
 argument_list|()
 decl_stmt|;
 name|bibtexKeyPatternPanel
@@ -487,11 +487,11 @@ lambda|->
 block|{
 name|metaData
 operator|.
-name|setLabelPattern
+name|setBibtexKeyPattern
 argument_list|(
 name|bibtexKeyPatternPanel
 operator|.
-name|getLabelPatternAsDatabaseLabelPattern
+name|getKeyPatternAsDatabaseBibtexKeyPattern
 argument_list|()
 argument_list|)
 expr_stmt|;

@@ -9247,14 +9247,14 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 name|AbstractBibtexKeyPattern
-name|labelPattern
+name|bibtexKeyPattern
 init|=
 name|result
 operator|.
 name|getMetaData
 argument_list|()
 operator|.
-name|getLabelPattern
+name|getBibtexKeyPattern
 argument_list|()
 decl_stmt|;
 name|AbstractBibtexKeyPattern
@@ -9277,7 +9277,7 @@ argument_list|)
 expr_stmt|;
 name|expectedPattern
 operator|.
-name|addLabelPattern
+name|addBibtexKeyPattern
 argument_list|(
 literal|"article"
 argument_list|,
@@ -9288,7 +9288,7 @@ name|assertEquals
 argument_list|(
 name|expectedPattern
 argument_list|,
-name|labelPattern
+name|bibtexKeyPattern
 argument_list|)
 expr_stmt|;
 block|}

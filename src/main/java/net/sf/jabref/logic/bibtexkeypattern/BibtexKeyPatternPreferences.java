@@ -34,11 +34,11 @@ specifier|public
 class|class
 name|BibtexKeyPatternPreferences
 block|{
-DECL|field|defaultLabelPattern
+DECL|field|defaultBibtexKeyPattern
 specifier|private
 specifier|final
 name|String
-name|defaultLabelPattern
+name|defaultBibtexKeyPattern
 decl_stmt|;
 DECL|field|keyPatternRegex
 specifier|private
@@ -70,12 +70,12 @@ specifier|final
 name|boolean
 name|enforceLegalKey
 decl_stmt|;
-DECL|method|BibtexKeyPatternPreferences (String defaultLabelPattern, String keyPatternRegex, String keyPatternReplacement, boolean alwaysAddLetter, boolean firstLetterA, boolean enforceLegalKey)
+DECL|method|BibtexKeyPatternPreferences (String defaultBibtexKeyPattern, String keyPatternRegex, String keyPatternReplacement, boolean alwaysAddLetter, boolean firstLetterA, boolean enforceLegalKey)
 specifier|public
 name|BibtexKeyPatternPreferences
 parameter_list|(
 name|String
-name|defaultLabelPattern
+name|defaultBibtexKeyPattern
 parameter_list|,
 name|String
 name|keyPatternRegex
@@ -95,9 +95,9 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|defaultLabelPattern
+name|defaultBibtexKeyPattern
 operator|=
-name|defaultLabelPattern
+name|defaultBibtexKeyPattern
 expr_stmt|;
 name|this
 operator|.
@@ -150,7 +150,7 @@ name|get
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|DEFAULT_LABEL_PATTERN
+name|DEFAULT_BIBTEX_KEY_PATTERN
 argument_list|)
 argument_list|,
 name|jabRefPreferences
@@ -250,14 +250,14 @@ return|return
 name|enforceLegalKey
 return|;
 block|}
-DECL|method|getDefaultLabelPattern ()
+DECL|method|getDefaultBibtexKeyPattern ()
 specifier|public
 name|String
-name|getDefaultLabelPattern
+name|getDefaultBibtexKeyPattern
 parameter_list|()
 block|{
 return|return
-name|defaultLabelPattern
+name|defaultBibtexKeyPattern
 return|;
 block|}
 block|}

@@ -1239,7 +1239,7 @@ throws|throws
 name|Exception
 block|{
 name|DatabaseBibtexKeyPattern
-name|labelPattern
+name|bibtexKeyPattern
 init|=
 operator|new
 name|DatabaseBibtexKeyPattern
@@ -1249,7 +1249,7 @@ operator|.
 name|prefs
 argument_list|)
 decl_stmt|;
-name|labelPattern
+name|bibtexKeyPattern
 operator|.
 name|setDefaultValue
 argument_list|(
@@ -1258,9 +1258,9 @@ argument_list|)
 expr_stmt|;
 name|metaData
 operator|.
-name|setLabelPattern
+name|setBibtexKeyPattern
 argument_list|(
-name|labelPattern
+name|bibtexKeyPattern
 argument_list|)
 expr_stmt|;
 name|StringSaveSession
@@ -1326,7 +1326,7 @@ name|US_ASCII
 argument_list|)
 decl_stmt|;
 name|DatabaseBibtexKeyPattern
-name|labelPattern
+name|bibtexKeyPattern
 init|=
 operator|new
 name|DatabaseBibtexKeyPattern
@@ -1336,7 +1336,7 @@ operator|.
 name|prefs
 argument_list|)
 decl_stmt|;
-name|labelPattern
+name|bibtexKeyPattern
 operator|.
 name|setDefaultValue
 argument_list|(
@@ -1345,9 +1345,9 @@ argument_list|)
 expr_stmt|;
 name|metaData
 operator|.
-name|setLabelPattern
+name|setBibtexKeyPattern
 argument_list|(
-name|labelPattern
+name|bibtexKeyPattern
 argument_list|)
 expr_stmt|;
 name|StringSaveSession
@@ -3115,7 +3115,7 @@ argument_list|)
 expr_stmt|;
 name|pattern
 operator|.
-name|addLabelPattern
+name|addBibtexKeyPattern
 argument_list|(
 literal|"article"
 argument_list|,
@@ -3124,7 +3124,7 @@ argument_list|)
 expr_stmt|;
 name|metaData
 operator|.
-name|setLabelPattern
+name|setBibtexKeyPattern
 argument_list|(
 name|pattern
 argument_list|)
