@@ -369,6 +369,21 @@ argument_list|(
 name|sciLink
 argument_list|)
 decl_stmt|;
+comment|// pretend to be a browser (agent& referrer)
+name|connection
+operator|.
+name|userAgent
+argument_list|(
+literal|"Mozilla/5.0 (Windows; U; WindowsNT 5.1; en-US; rv1.8.1.6) Gecko/20070725 Firefox/2.0.0.6"
+argument_list|)
+expr_stmt|;
+name|connection
+operator|.
+name|referrer
+argument_list|(
+literal|"http://www.google.com"
+argument_list|)
+expr_stmt|;
 name|connection
 operator|.
 name|followRedirects
