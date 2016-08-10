@@ -2608,7 +2608,7 @@ specifier|final
 name|String
 name|DEFAULT_BIBTEX_KEY_PATTERN
 init|=
-literal|"defaultLabelPattern"
+literal|"defaultBibtexKeyPattern"
 decl_stmt|;
 DECL|field|SEARCH_MODE_FLOAT
 specifier|public
