@@ -151,7 +151,12 @@ name|cleanName
 init|=
 operator|new
 name|StringBuilder
+argument_list|(
+name|badFileName
+operator|.
+name|length
 argument_list|()
+argument_list|)
 decl_stmt|;
 for|for
 control|(
@@ -215,6 +220,9 @@ name|cleanName
 operator|.
 name|toString
 argument_list|()
+operator|.
+name|trim
+argument_list|()
 return|;
 block|}
 DECL|method|isCharLegal (char c)
@@ -236,9 +244,6 @@ name|FileNameCleaner
 operator|.
 name|ILLEGAL_CHARS
 argument_list|,
-operator|(
-name|int
-operator|)
 name|c
 argument_list|)
 operator|<
