@@ -451,7 +451,7 @@ argument_list|)
 argument_list|,
 name|HelpFile
 operator|.
-name|LABEL_PATTERN
+name|BIBTEX_KEY_PATTERN
 argument_list|)
 expr_stmt|;
 name|buildGUI
