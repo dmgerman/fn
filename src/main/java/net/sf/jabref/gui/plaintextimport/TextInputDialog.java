@@ -300,9 +300,11 @@ begin_import
 import|import
 name|java
 operator|.
-name|util
+name|nio
 operator|.
-name|ArrayList
+name|file
+operator|.
+name|Path
 import|;
 end_import
 
@@ -312,7 +314,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Collections
+name|ArrayList
 import|;
 end_import
 
@@ -453,16 +455,6 @@ operator|.
 name|swing
 operator|.
 name|JDialog
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|JFileChooser
 import|;
 end_import
 
@@ -754,7 +746,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|FileDialogs
+name|FileExtensions
 import|;
 end_import
 
@@ -783,6 +775,20 @@ operator|.
 name|gui
 operator|.
 name|JabRefFrame
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|NewFileDialogs
 import|;
 end_import
 
@@ -3897,46 +3903,46 @@ parameter_list|)
 block|{
 try|try
 block|{
-name|String
-name|chosen
+name|Optional
+argument_list|<
+name|Path
+argument_list|>
+name|path
 init|=
-name|FileDialogs
-operator|.
-name|getNewFile
+operator|new
+name|NewFileDialogs
 argument_list|(
 name|frame
-argument_list|,
-literal|null
-argument_list|,
-name|Collections
-operator|.
-name|emptyList
-argument_list|()
-argument_list|,
-literal|".txt"
-argument_list|,
-name|JFileChooser
-operator|.
-name|OPEN_DIALOG
-argument_list|,
-literal|false
 argument_list|)
+operator|.
+name|withExtension
+argument_list|(
+name|FileExtensions
+operator|.
+name|TXT
+argument_list|)
+operator|.
+name|openDlgAndGetSelectedFile
+argument_list|()
 decl_stmt|;
 if|if
 condition|(
-name|chosen
-operator|!=
-literal|null
+name|path
+operator|.
+name|isPresent
+argument_list|()
 condition|)
 block|{
 name|File
 name|newFile
 init|=
-operator|new
-name|File
-argument_list|(
-name|chosen
-argument_list|)
+name|path
+operator|.
+name|get
+argument_list|()
+operator|.
+name|toFile
+argument_list|()
 decl_stmt|;
 name|document
 operator|.
@@ -4327,7 +4333,7 @@ block|}
 comment|/* This is the only method defined by ListCellRenderer.  We just          * reconfigure the Jlabel each time we're called.          */
 annotation|@
 name|Override
-DECL|method|getListCellRendererComponent ( JList<?> list, Object value, int index, boolean iss, boolean chf)
+DECL|method|getListCellRendererComponent (JList<?> list, Object value, int index, boolean iss, boolean chf)
 specifier|public
 name|Component
 name|getListCellRendererComponent

@@ -38,16 +38,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Collections
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|swing
@@ -135,6 +125,20 @@ operator|.
 name|jabref
 operator|.
 name|Globals
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|FileExtensions
 import|;
 end_import
 
@@ -424,14 +428,9 @@ name|buildForFile
 argument_list|(
 name|newFile
 argument_list|,
-literal|null
-argument_list|,
-name|Collections
+name|FileExtensions
 operator|.
-name|singletonList
-argument_list|(
-literal|".terms"
-argument_list|)
+name|TERMS
 argument_list|)
 argument_list|)
 expr_stmt|;
