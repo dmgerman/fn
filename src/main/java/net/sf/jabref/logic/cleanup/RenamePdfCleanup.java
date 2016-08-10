@@ -422,6 +422,9 @@ name|repositoryLoader
 argument_list|,
 name|prefs
 argument_list|)
+operator|.
+name|trim
+argument_list|()
 argument_list|)
 decl_stmt|;
 comment|//Add extension to newFilename
