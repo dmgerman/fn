@@ -430,6 +430,13 @@ operator|.
 name|getCurrentBasePanel
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|panel
+operator|!=
+literal|null
+condition|)
+block|{
 name|List
 argument_list|<
 name|BibEntry
@@ -511,6 +518,7 @@ argument_list|(
 name|ce
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 annotation|@

@@ -311,7 +311,34 @@ name|void
 name|run
 parameter_list|()
 block|{
-comment|// TODO: just download for all entries and save files without dialog
+if|if
+condition|(
+name|basePanel
+operator|.
+name|getSelectedEntries
+argument_list|()
+operator|.
+name|size
+argument_list|()
+operator|!=
+literal|1
+condition|)
+block|{
+name|basePanel
+operator|.
+name|output
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"This operation requires exactly one item to be selected."
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
 name|entry
 operator|=
 name|basePanel
@@ -340,6 +367,7 @@ argument_list|(
 name|entry
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 annotation|@
 name|Override
