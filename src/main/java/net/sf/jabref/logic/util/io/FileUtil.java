@@ -2176,6 +2176,9 @@ argument_list|)
 expr_stmt|;
 return|return
 name|targetName
+operator|.
+name|trim
+argument_list|()
 return|;
 block|}
 block|}
