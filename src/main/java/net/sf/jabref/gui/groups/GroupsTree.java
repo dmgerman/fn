@@ -692,6 +692,13 @@ operator|.
 name|DISCONTIGUOUS_TREE_SELECTION
 argument_list|)
 expr_stmt|;
+name|this
+operator|.
+name|setFocusable
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Override

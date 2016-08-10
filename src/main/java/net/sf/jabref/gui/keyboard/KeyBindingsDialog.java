@@ -373,9 +373,9 @@ argument_list|(
 operator|new
 name|Dimension
 argument_list|(
-literal|250
+literal|500
 argument_list|,
-literal|400
+literal|500
 argument_list|)
 argument_list|)
 expr_stmt|;

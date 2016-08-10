@@ -555,6 +555,15 @@ name|WRITE_XMP
 init|=
 literal|"writeXMP"
 decl_stmt|;
+DECL|field|PRINT_PREVIEW
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|PRINT_PREVIEW
+init|=
+literal|"printPreview"
+decl_stmt|;
 block|}
 end_class
 

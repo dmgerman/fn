@@ -3368,6 +3368,16 @@ literal|0
 expr_stmt|;
 comment|// Reset quick jump when focus is lost.
 block|}
+DECL|method|getPreview ()
+specifier|public
+name|PreviewPanel
+name|getPreview
+parameter_list|()
+block|{
+return|return
+name|preview
+return|;
+block|}
 block|}
 end_class
 

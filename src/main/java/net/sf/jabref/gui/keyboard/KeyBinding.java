@@ -78,7 +78,7 @@ argument_list|(
 literal|"Automatically set file links"
 argument_list|)
 argument_list|,
-literal|"alt F"
+literal|"F7"
 argument_list|)
 block|,
 DECL|enumConstant|BACK
@@ -108,7 +108,7 @@ argument_list|(
 literal|"Cleanup entries"
 argument_list|)
 argument_list|,
-literal|"ctrl shift F7"
+literal|"F8"
 argument_list|)
 block|,
 DECL|enumConstant|CLEAR_SEARCH
@@ -306,21 +306,6 @@ argument_list|,
 literal|"ctrl E"
 argument_list|)
 block|,
-DECL|enumConstant|EDIT_PREAMBLE
-name|EDIT_PREAMBLE
-argument_list|(
-literal|"Edit preamble"
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Edit preamble"
-argument_list|)
-argument_list|,
-literal|"ctrl P"
-argument_list|)
-block|,
 DECL|enumConstant|EDIT_STRINGS
 name|EDIT_STRINGS
 argument_list|(
@@ -498,7 +483,7 @@ argument_list|(
 literal|"Focus entry table"
 argument_list|)
 argument_list|,
-literal|"ctrl shift E"
+literal|"alt 1"
 argument_list|)
 block|,
 DECL|enumConstant|FORWARD
@@ -529,21 +514,6 @@ literal|"Help"
 argument_list|)
 argument_list|,
 literal|"F1"
-argument_list|)
-block|,
-DECL|enumConstant|HIDE_SHOW_TOOLBAR
-name|HIDE_SHOW_TOOLBAR
-argument_list|(
-literal|"Hide/show toolbar"
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Hide/show toolbar"
-argument_list|)
-argument_list|,
-literal|"ctrl alt T"
 argument_list|)
 block|,
 DECL|enumConstant|IMPORT_INTO_CURRENT_DATABASE
@@ -741,6 +711,21 @@ argument_list|,
 literal|"ctrl shift U"
 argument_list|)
 block|,
+DECL|enumConstant|NEW_TECHREPORT
+name|NEW_TECHREPORT
+argument_list|(
+literal|"New technical report"
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"New technical report"
+argument_list|)
+argument_list|,
+literal|"ctrl shift R"
+argument_list|)
+block|,
 DECL|enumConstant|NEXT_TAB
 name|NEXT_TAB
 argument_list|(
@@ -768,7 +753,7 @@ argument_list|(
 literal|"Open terminal here"
 argument_list|)
 argument_list|,
-literal|"ctrl shift J"
+literal|"ctrl shift L"
 argument_list|)
 block|,
 DECL|enumConstant|OPEN_DATABASE
@@ -889,21 +874,6 @@ literal|"Previous tab"
 argument_list|)
 argument_list|,
 literal|"ctrl PAGE_UP"
-argument_list|)
-block|,
-DECL|enumConstant|PRINT_ENTRY_PREVIEW
-name|PRINT_ENTRY_PREVIEW
-argument_list|(
-literal|"Print entry preview"
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Print entry preview"
-argument_list|)
-argument_list|,
-literal|"alt P"
 argument_list|)
 block|,
 DECL|enumConstant|PUSH_TO_APPLICATION
@@ -1128,7 +1098,7 @@ argument_list|(
 literal|"Synchronize files"
 argument_list|)
 argument_list|,
-literal|"ctrl F4"
+literal|"ctrl shift F7"
 argument_list|)
 block|,
 DECL|enumConstant|TOGGLE_ENTRY_PREVIEW
@@ -1143,7 +1113,7 @@ argument_list|(
 literal|"Toggle entry preview"
 argument_list|)
 argument_list|,
-literal|"ctrl F9"
+literal|"alt 2"
 argument_list|)
 block|,
 DECL|enumConstant|TOGGLE_GROUPS_INTERFACE
@@ -1158,7 +1128,7 @@ argument_list|(
 literal|"Toggle groups interface"
 argument_list|)
 argument_list|,
-literal|"ctrl shift G"
+literal|"alt 3"
 argument_list|)
 block|,
 DECL|enumConstant|UNABBREVIATE
@@ -1218,7 +1188,7 @@ argument_list|(
 literal|"Web search"
 argument_list|)
 argument_list|,
-literal|"F5"
+literal|"alt 4"
 argument_list|)
 block|,
 DECL|enumConstant|WRITE_XMP
@@ -1233,7 +1203,22 @@ argument_list|(
 literal|"Write XMP"
 argument_list|)
 argument_list|,
-literal|"ctrl F7"
+literal|"F6"
+argument_list|)
+block|,
+DECL|enumConstant|OPEN_OPEN_OFFICE_LIBRE_OFFICE_CONNECTION
+name|OPEN_OPEN_OFFICE_LIBRE_OFFICE_CONNECTION
+argument_list|(
+literal|"Open OpenOffice/LibreOffice connection"
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Open OpenOffice/LibreOffice connection"
+argument_list|)
+argument_list|,
+literal|"alt 0"
 argument_list|)
 block|,;
 DECL|field|key
