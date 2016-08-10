@@ -675,6 +675,11 @@ operator|.
 name|upgradeFaultyEncodingStrings
 argument_list|()
 expr_stmt|;
+name|PreferencesMigrations
+operator|.
+name|upgradeLabelPatternToBibtexKeyPattern
+argument_list|()
+expr_stmt|;
 comment|// This property is set to make the Mac OSX Java VM move the menu bar to the top of the screen
 if|if
 condition|(
