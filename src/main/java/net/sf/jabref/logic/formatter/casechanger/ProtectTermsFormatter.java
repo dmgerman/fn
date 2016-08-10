@@ -120,7 +120,7 @@ specifier|static
 name|ProtectedTermsLoader
 name|protectedTermsLoader
 decl_stmt|;
-comment|/**      * @deprecated Use ProtectTermsFormatter(ProtectedTermsLoader)      */
+comment|/**      * @deprecated use ProtectTermsFormatter(ProtectedTermsLoader) instead      */
 annotation|@
 name|Deprecated
 DECL|method|ProtectTermsFormatter ()
@@ -143,7 +143,9 @@ operator|=
 name|protectedTermsLoader
 expr_stmt|;
 block|}
-comment|// This must be called from JabRefMain
+comment|/**      * This must be called from JabRefMain      *      * @deprecated use ProtectTermsFormatter(ProtectedTermsLoader) instead      */
+annotation|@
+name|Deprecated
 DECL|method|setProtectedTermsLoader (ProtectedTermsLoader loader)
 specifier|public
 specifier|static
@@ -233,14 +235,16 @@ name|String
 name|text
 parameter_list|)
 block|{
-if|if
-condition|(
 name|Objects
 operator|.
 name|requireNonNull
 argument_list|(
 name|text
 argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|text
 operator|.
 name|isEmpty
 argument_list|()
