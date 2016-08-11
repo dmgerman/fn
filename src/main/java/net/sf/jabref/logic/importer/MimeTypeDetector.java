@@ -176,6 +176,15 @@ operator|.
 name|openConnection
 argument_list|()
 decl_stmt|;
+name|connection
+operator|.
+name|setRequestProperty
+argument_list|(
+literal|"User-Agent"
+argument_list|,
+literal|"Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.4; en-US; rv:1.9.2.2) Gecko/20100316 Firefox/3.6.2"
+argument_list|)
+expr_stmt|;
 return|return
 name|Optional
 operator|.

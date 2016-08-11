@@ -66,6 +66,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Locale
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Objects
 import|;
 end_import
@@ -425,7 +435,7 @@ argument_list|()
 operator|.
 name|select
 argument_list|(
-literal|"[href]"
+literal|"a[href]"
 argument_list|)
 decl_stmt|;
 name|List
@@ -459,17 +469,49 @@ name|attr
 argument_list|(
 literal|"abs:href"
 argument_list|)
+operator|.
+name|toLowerCase
+argument_list|(
+name|Locale
+operator|.
+name|ENGLISH
+argument_list|)
 decl_stmt|;
-comment|// Only check if pdf is included in the link
-comment|// See https://github.com/lehner/LocalCopy for scrape ideas
+name|String
+name|hrefText
+init|=
+name|element
+operator|.
+name|text
+argument_list|()
+operator|.
+name|toLowerCase
+argument_list|(
+name|Locale
+operator|.
+name|ENGLISH
+argument_list|)
+decl_stmt|;
+comment|// Only check if pdf is included in the link or inside the text
+comment|// ACM uses tokens without PDF inside the link
+comment|// See https://github.com/lehner/LocalCopy for more scrape ideas
 if|if
 condition|(
+operator|(
 name|href
 operator|.
 name|contains
 argument_list|(
 literal|"pdf"
 argument_list|)
+operator|||
+name|hrefText
+operator|.
+name|contains
+argument_list|(
+literal|"pdf"
+argument_list|)
+operator|)
 operator|&&
 name|MimeTypeDetector
 operator|.
