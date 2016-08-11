@@ -4,7 +4,7 @@ comment|/*  Copyright (C) 2003-2015 JabRef contributors.                   2003-
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref.logic.labelpattern
+DECL|package|net.sf.jabref.logic.bibtexkeypattern
 package|package
 name|net
 operator|.
@@ -14,7 +14,7 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|labelpattern
+name|bibtexkeypattern
 package|;
 end_package
 
@@ -255,10 +255,10 @@ comment|/**  * This is the utility class of the LabelPattern package.  */
 end_comment
 
 begin_class
-DECL|class|LabelPatternUtil
+DECL|class|BibtexKeyPatternUtil
 specifier|public
 class|class
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 block|{
 DECL|field|STARTING_CAPITAL_PATTERN
 specifier|private
@@ -290,7 +290,7 @@ name|LogFactory
 operator|.
 name|getLog
 argument_list|(
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|class
 argument_list|)
@@ -1659,7 +1659,7 @@ operator|)
 return|;
 block|}
 comment|/**      * Generates a BibTeX label according to the pattern for a given entry type, and saves the unique label in the      *<code>Bibtexentry</code>.      *      * The given database is used to avoid duplicate keys.      *      * @param dBase a<code>BibDatabase</code>      * @param entry a<code>BibEntry</code>      * @return modified BibEntry      */
-DECL|method|makeLabel (MetaData metaData, BibDatabase dBase, BibEntry entry, LabelPatternPreferences labelPatternPreferences)
+DECL|method|makeLabel (MetaData metaData, BibDatabase dBase, BibEntry entry, BibtexKeyPatternPreferences bibtexKeyPatternPreferences)
 specifier|public
 specifier|static
 name|void
@@ -1674,8 +1674,8 @@ parameter_list|,
 name|BibEntry
 name|entry
 parameter_list|,
-name|LabelPatternPreferences
-name|labelPatternPreferences
+name|BibtexKeyPatternPreferences
+name|bibtexKeyPatternPreferences
 parameter_list|)
 block|{
 name|database
@@ -1726,7 +1726,7 @@ argument_list|<>
 argument_list|(
 name|metaData
 operator|.
-name|getLabelPattern
+name|getBibtexKeyPattern
 argument_list|()
 operator|.
 name|getValue
@@ -1894,7 +1894,7 @@ operator|.
 name|toString
 argument_list|()
 argument_list|,
-name|labelPatternPreferences
+name|bibtexKeyPatternPreferences
 operator|.
 name|isEnforceLegalKey
 argument_list|()
@@ -1904,7 +1904,7 @@ comment|// Remove Regular Expressions while generating Keys
 name|String
 name|regex
 init|=
-name|labelPatternPreferences
+name|bibtexKeyPatternPreferences
 operator|.
 name|getKeyPatternRegex
 argument_list|()
@@ -1930,7 +1930,7 @@ block|{
 name|String
 name|replacement
 init|=
-name|labelPatternPreferences
+name|bibtexKeyPatternPreferences
 operator|.
 name|getKeyPatternReplacement
 argument_list|()
@@ -2011,7 +2011,7 @@ block|}
 name|boolean
 name|alwaysAddLetter
 init|=
-name|labelPatternPreferences
+name|bibtexKeyPatternPreferences
 operator|.
 name|isAlwaysAddLetter
 argument_list|()
@@ -2019,7 +2019,7 @@ decl_stmt|;
 name|boolean
 name|firstLetterA
 init|=
-name|labelPatternPreferences
+name|bibtexKeyPatternPreferences
 operator|.
 name|isFirstLetterA
 argument_list|()

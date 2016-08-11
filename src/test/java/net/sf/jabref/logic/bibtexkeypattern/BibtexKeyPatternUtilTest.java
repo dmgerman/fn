@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|net.sf.jabref.logic.labelpattern
+DECL|package|net.sf.jabref.logic.bibtexkeypattern
 package|package
 name|net
 operator|.
@@ -10,7 +10,7 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|labelpattern
+name|bibtexkeypattern
 package|;
 end_package
 
@@ -143,10 +143,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|LabelPatternUtilTest
+DECL|class|BibtexKeyPatternUtilTest
 specifier|public
 class|class
-name|LabelPatternUtilTest
+name|BibtexKeyPatternUtilTest
 block|{
 DECL|field|AUTHOR_STRING_FIRSTNAME_FULL_LASTNAME_FULL_COUNT_1
 specifier|private
@@ -337,7 +337,7 @@ name|void
 name|setUp
 parameter_list|()
 block|{
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|setDataBase
 argument_list|(
@@ -369,11 +369,11 @@ name|assertEquals
 argument_list|(
 literal|"Holland"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|checkLegalKey
 argument_list|(
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
@@ -414,11 +414,11 @@ name|assertEquals
 argument_list|(
 literal|"HerlandHaugeHelgeland"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|checkLegalKey
 argument_list|(
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
@@ -454,11 +454,11 @@ name|assertEquals
 argument_list|(
 literal|"Popovicova"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|checkLegalKey
 argument_list|(
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
@@ -495,11 +495,11 @@ name|assertEquals
 argument_list|(
 literal|"Koen"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|checkLegalKey
 argument_list|(
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
@@ -525,11 +525,11 @@ name|assertEquals
 argument_list|(
 literal|"Aoen"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|checkLegalKey
 argument_list|(
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
@@ -555,11 +555,11 @@ name|assertEquals
 argument_list|(
 literal|"Eoen"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|checkLegalKey
 argument_list|(
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
@@ -585,11 +585,11 @@ name|assertEquals
 argument_list|(
 literal|"Ioen"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|checkLegalKey
 argument_list|(
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
@@ -615,11 +615,11 @@ name|assertEquals
 argument_list|(
 literal|"Loen"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|checkLegalKey
 argument_list|(
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
@@ -645,11 +645,11 @@ name|assertEquals
 argument_list|(
 literal|"Noen"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|checkLegalKey
 argument_list|(
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
@@ -675,11 +675,11 @@ name|assertEquals
 argument_list|(
 literal|"Ooen"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|checkLegalKey
 argument_list|(
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
@@ -705,11 +705,11 @@ name|assertEquals
 argument_list|(
 literal|"Roen"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|checkLegalKey
 argument_list|(
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
@@ -735,11 +735,11 @@ name|assertEquals
 argument_list|(
 literal|"Soen"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|checkLegalKey
 argument_list|(
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
@@ -765,11 +765,11 @@ name|assertEquals
 argument_list|(
 literal|"Uoen"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|checkLegalKey
 argument_list|(
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
@@ -795,11 +795,11 @@ name|assertEquals
 argument_list|(
 literal|"Yoen"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|checkLegalKey
 argument_list|(
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
@@ -825,11 +825,11 @@ name|assertEquals
 argument_list|(
 literal|"Zoen"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|checkLegalKey
 argument_list|(
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
@@ -866,11 +866,11 @@ name|assertEquals
 argument_list|(
 literal|"Aoen"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|checkLegalKey
 argument_list|(
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
@@ -896,11 +896,11 @@ name|assertEquals
 argument_list|(
 literal|"Eoen"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|checkLegalKey
 argument_list|(
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
@@ -926,11 +926,11 @@ name|assertEquals
 argument_list|(
 literal|"Ioen"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|checkLegalKey
 argument_list|(
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
@@ -956,11 +956,11 @@ name|assertEquals
 argument_list|(
 literal|"Ooen"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|checkLegalKey
 argument_list|(
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
@@ -986,11 +986,11 @@ name|assertEquals
 argument_list|(
 literal|"Uoen"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|checkLegalKey
 argument_list|(
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
@@ -1004,7 +1004,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Tests if checkLegalKey replaces Non-ASCII chars.      * There are quite a few chars that should be replaced. Perhaps there is a better method than the current.      *      * @see LabelPatternUtil#checkLegalKey(String)      */
+comment|/**      * Tests if checkLegalKey replaces Non-ASCII chars.      * There are quite a few chars that should be replaced. Perhaps there is a better method than the current.      *      * @see BibtexKeyPatternUtil#checkLegalKey(String)      */
 annotation|@
 name|Test
 DECL|method|testCheckLegalKey ()
@@ -1032,7 +1032,7 @@ name|assertEquals
 argument_list|(
 name|expectedResult
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|checkLegalKey
 argument_list|(
@@ -1054,7 +1054,7 @@ name|assertEquals
 argument_list|(
 name|expectedResult
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|checkLegalKey
 argument_list|(
@@ -1076,7 +1076,7 @@ name|assertEquals
 argument_list|(
 name|expectedResult
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|checkLegalKey
 argument_list|(
@@ -1098,7 +1098,7 @@ name|assertEquals
 argument_list|(
 name|expectedResult
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|checkLegalKey
 argument_list|(
@@ -1120,7 +1120,7 @@ name|assertEquals
 argument_list|(
 name|expectedResult
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|checkLegalKey
 argument_list|(
@@ -1143,7 +1143,7 @@ name|assertEquals
 argument_list|(
 name|expectedResult
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|checkLegalKey
 argument_list|(
@@ -1165,7 +1165,7 @@ name|assertEquals
 argument_list|(
 name|expectedResult
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|checkLegalKey
 argument_list|(
@@ -1187,7 +1187,7 @@ name|assertEquals
 argument_list|(
 name|expectedResult
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|checkLegalKey
 argument_list|(
@@ -1209,7 +1209,7 @@ name|assertEquals
 argument_list|(
 name|expectedResult
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|checkLegalKey
 argument_list|(
@@ -1231,7 +1231,7 @@ name|assertEquals
 argument_list|(
 name|expectedResult
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|checkLegalKey
 argument_list|(
@@ -1279,7 +1279,7 @@ name|assertEquals
 argument_list|(
 name|expectedResults
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|checkLegalKey
 argument_list|(
@@ -1302,7 +1302,7 @@ name|assertEquals
 argument_list|(
 literal|"Newton"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|firstAuthor
 argument_list|(
@@ -1314,7 +1314,7 @@ name|assertEquals
 argument_list|(
 literal|"Newton"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|firstAuthor
 argument_list|(
@@ -1327,7 +1327,7 @@ name|assertEquals
 argument_list|(
 literal|"K{\\\"o}ning"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|firstAuthor
 argument_list|(
@@ -1339,7 +1339,7 @@ name|assertEquals
 argument_list|(
 literal|""
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|firstAuthor
 argument_list|(
@@ -1363,7 +1363,7 @@ name|void
 name|testFirstAuthorNull
 parameter_list|()
 block|{
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|firstAuthor
 argument_list|(
@@ -1393,11 +1393,11 @@ name|assertEquals
 argument_list|(
 literal|"UniLinkoeping"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|checkLegalKey
 argument_list|(
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
@@ -1433,11 +1433,11 @@ name|assertEquals
 argument_list|(
 literal|"UniLinkoepingEE"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|checkLegalKey
 argument_list|(
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
@@ -1473,11 +1473,11 @@ name|assertEquals
 argument_list|(
 literal|"UniLinkoepingCE"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|checkLegalKey
 argument_list|(
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
@@ -1513,11 +1513,11 @@ name|assertEquals
 argument_list|(
 literal|"MIT"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|checkLegalKey
 argument_list|(
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
@@ -1543,7 +1543,7 @@ name|assertEquals
 argument_list|(
 literal|"NMEB"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|authIniN
 argument_list|(
@@ -1557,7 +1557,7 @@ name|assertEquals
 argument_list|(
 literal|"NMEB"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|authIniN
 argument_list|(
@@ -1571,7 +1571,7 @@ name|assertEquals
 argument_list|(
 literal|"NeME"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|authIniN
 argument_list|(
@@ -1585,7 +1585,7 @@ name|assertEquals
 argument_list|(
 literal|"NeMa"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|authIniN
 argument_list|(
@@ -1599,7 +1599,7 @@ name|assertEquals
 argument_list|(
 literal|"Newt"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|authIniN
 argument_list|(
@@ -1620,7 +1620,7 @@ name|assertEquals
 argument_list|(
 literal|"N"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|authIniN
 argument_list|(
@@ -1634,7 +1634,7 @@ name|assertEquals
 argument_list|(
 literal|""
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|authIniN
 argument_list|(
@@ -1648,7 +1648,7 @@ name|assertEquals
 argument_list|(
 literal|""
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|authIniN
 argument_list|(
@@ -1663,7 +1663,7 @@ name|assertEquals
 argument_list|(
 literal|"Newton"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|authIniN
 argument_list|(
@@ -1677,7 +1677,7 @@ name|assertEquals
 argument_list|(
 literal|"Newton"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|authIniN
 argument_list|(
@@ -1703,7 +1703,7 @@ name|void
 name|testAuthIniNNull
 parameter_list|()
 block|{
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|authIniN
 argument_list|(
@@ -1726,7 +1726,7 @@ name|assertEquals
 argument_list|(
 literal|"Newton"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|authAuthEa
 argument_list|(
@@ -1738,7 +1738,7 @@ name|assertEquals
 argument_list|(
 literal|"Newton.Maxwell"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|authAuthEa
 argument_list|(
@@ -1750,7 +1750,7 @@ name|assertEquals
 argument_list|(
 literal|"Newton.Maxwell.ea"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|authAuthEa
 argument_list|(
@@ -1784,7 +1784,7 @@ name|assertEquals
 argument_list|(
 literal|"Newton.etal"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|authEtal
 argument_list|(
@@ -1800,7 +1800,7 @@ name|assertEquals
 argument_list|(
 literal|"Newton.Maxwell"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|authEtal
 argument_list|(
@@ -1825,7 +1825,7 @@ name|assertEquals
 argument_list|(
 literal|"NewtonEtAl"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|authEtal
 argument_list|(
@@ -1841,7 +1841,7 @@ name|assertEquals
 argument_list|(
 literal|"NewtonMaxwell"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|authEtal
 argument_list|(
@@ -1868,7 +1868,7 @@ name|assertEquals
 argument_list|(
 literal|"NME+"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|authshort
 argument_list|(
@@ -1880,7 +1880,7 @@ name|assertEquals
 argument_list|(
 literal|"NME"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|authshort
 argument_list|(
@@ -1892,7 +1892,7 @@ name|assertEquals
 argument_list|(
 literal|"NM"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|authshort
 argument_list|(
@@ -1904,7 +1904,7 @@ name|assertEquals
 argument_list|(
 literal|"Newton"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|authshort
 argument_list|(
@@ -1926,7 +1926,7 @@ name|assertEquals
 argument_list|(
 literal|"N"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|authNofMth
 argument_list|(
@@ -1942,7 +1942,7 @@ name|assertEquals
 argument_list|(
 literal|"Max"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|authNofMth
 argument_list|(
@@ -1958,7 +1958,7 @@ name|assertEquals
 argument_list|(
 literal|"New"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|authNofMth
 argument_list|(
@@ -1974,7 +1974,7 @@ name|assertEquals
 argument_list|(
 literal|"Bo"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|authNofMth
 argument_list|(
@@ -1990,7 +1990,7 @@ name|assertEquals
 argument_list|(
 literal|"Bohr"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|authNofMth
 argument_list|(
@@ -2006,7 +2006,7 @@ name|assertEquals
 argument_list|(
 literal|"Aal"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|authNofMth
 argument_list|(
@@ -2022,7 +2022,7 @@ name|assertEquals
 argument_list|(
 literal|"Less"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|authNofMth
 argument_list|(
@@ -2038,7 +2038,7 @@ name|assertEquals
 argument_list|(
 literal|""
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|authNofMth
 argument_list|(
@@ -2066,7 +2066,7 @@ name|void
 name|authNMThrowsNPE
 parameter_list|()
 block|{
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|authNofMth
 argument_list|(
@@ -2091,7 +2091,7 @@ name|assertEquals
 argument_list|(
 literal|"I"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|firstAuthorForenameInitials
 argument_list|(
@@ -2103,7 +2103,7 @@ name|assertEquals
 argument_list|(
 literal|"I"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|firstAuthorForenameInitials
 argument_list|(
@@ -2115,7 +2115,7 @@ name|assertEquals
 argument_list|(
 literal|"I"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|firstAuthorForenameInitials
 argument_list|(
@@ -2127,7 +2127,7 @@ name|assertEquals
 argument_list|(
 literal|"I"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|firstAuthorForenameInitials
 argument_list|(
@@ -2149,7 +2149,7 @@ name|assertEquals
 argument_list|(
 literal|"vanderAalst"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|firstAuthorVonAndLast
 argument_list|(
@@ -2161,7 +2161,7 @@ name|assertEquals
 argument_list|(
 literal|"vanderAalst"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|firstAuthorVonAndLast
 argument_list|(
@@ -2183,7 +2183,7 @@ name|assertEquals
 argument_list|(
 literal|"Newton"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|allAuthors
 argument_list|(
@@ -2195,7 +2195,7 @@ name|assertEquals
 argument_list|(
 literal|"NewtonMaxwell"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|allAuthors
 argument_list|(
@@ -2207,7 +2207,7 @@ name|assertEquals
 argument_list|(
 literal|"NewtonMaxwellEinstein"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|allAuthors
 argument_list|(
@@ -2229,7 +2229,7 @@ name|assertEquals
 argument_list|(
 literal|"New"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|authorsAlpha
 argument_list|(
@@ -2241,7 +2241,7 @@ name|assertEquals
 argument_list|(
 literal|"NM"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|authorsAlpha
 argument_list|(
@@ -2253,7 +2253,7 @@ name|assertEquals
 argument_list|(
 literal|"NME"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|authorsAlpha
 argument_list|(
@@ -2265,7 +2265,7 @@ name|assertEquals
 argument_list|(
 literal|"NMEB"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|authorsAlpha
 argument_list|(
@@ -2277,7 +2277,7 @@ name|assertEquals
 argument_list|(
 literal|"NME+"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|authorsAlpha
 argument_list|(
@@ -2289,7 +2289,7 @@ name|assertEquals
 argument_list|(
 literal|"vdAal"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|authorsAlpha
 argument_list|(
@@ -2301,7 +2301,7 @@ name|assertEquals
 argument_list|(
 literal|"vdAvL"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|authorsAlpha
 argument_list|(
@@ -2323,7 +2323,7 @@ name|assertEquals
 argument_list|(
 literal|"Newton"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|lastAuthor
 argument_list|(
@@ -2335,7 +2335,7 @@ name|assertEquals
 argument_list|(
 literal|"Maxwell"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|lastAuthor
 argument_list|(
@@ -2347,7 +2347,7 @@ name|assertEquals
 argument_list|(
 literal|"Einstein"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|lastAuthor
 argument_list|(
@@ -2359,7 +2359,7 @@ name|assertEquals
 argument_list|(
 literal|"Bohr"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|lastAuthor
 argument_list|(
@@ -2371,7 +2371,7 @@ name|assertEquals
 argument_list|(
 literal|"Unknown"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|lastAuthor
 argument_list|(
@@ -2383,7 +2383,7 @@ name|assertEquals
 argument_list|(
 literal|"Aalst"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|lastAuthor
 argument_list|(
@@ -2395,7 +2395,7 @@ name|assertEquals
 argument_list|(
 literal|"Lessen"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|lastAuthor
 argument_list|(
@@ -2417,7 +2417,7 @@ name|assertEquals
 argument_list|(
 literal|"I"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|lastAuthorForenameInitials
 argument_list|(
@@ -2429,7 +2429,7 @@ name|assertEquals
 argument_list|(
 literal|"J"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|lastAuthorForenameInitials
 argument_list|(
@@ -2441,7 +2441,7 @@ name|assertEquals
 argument_list|(
 literal|"A"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|lastAuthorForenameInitials
 argument_list|(
@@ -2453,7 +2453,7 @@ name|assertEquals
 argument_list|(
 literal|"N"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|lastAuthorForenameInitials
 argument_list|(
@@ -2465,7 +2465,7 @@ name|assertEquals
 argument_list|(
 literal|"H"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|lastAuthorForenameInitials
 argument_list|(
@@ -2477,7 +2477,7 @@ name|assertEquals
 argument_list|(
 literal|"W"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|lastAuthorForenameInitials
 argument_list|(
@@ -2489,7 +2489,7 @@ name|assertEquals
 argument_list|(
 literal|"T"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|lastAuthorForenameInitials
 argument_list|(
@@ -2511,7 +2511,7 @@ name|assertEquals
 argument_list|(
 literal|"Newto"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|oneAuthorPlusIni
 argument_list|(
@@ -2523,7 +2523,7 @@ name|assertEquals
 argument_list|(
 literal|"NewtoM"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|oneAuthorPlusIni
 argument_list|(
@@ -2535,7 +2535,7 @@ name|assertEquals
 argument_list|(
 literal|"NewtoME"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|oneAuthorPlusIni
 argument_list|(
@@ -2547,7 +2547,7 @@ name|assertEquals
 argument_list|(
 literal|"NewtoMEB"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|oneAuthorPlusIni
 argument_list|(
@@ -2559,7 +2559,7 @@ name|assertEquals
 argument_list|(
 literal|"NewtoMEBU"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|oneAuthorPlusIni
 argument_list|(
@@ -2571,7 +2571,7 @@ name|assertEquals
 argument_list|(
 literal|"Aalst"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|oneAuthorPlusIni
 argument_list|(
@@ -2583,7 +2583,7 @@ name|assertEquals
 argument_list|(
 literal|"AalstL"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|oneAuthorPlusIni
 argument_list|(
@@ -2605,7 +2605,7 @@ name|assertEquals
 argument_list|(
 literal|"Newton"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|nAuthors
 argument_list|(
@@ -2619,7 +2619,7 @@ name|assertEquals
 argument_list|(
 literal|"NewtonEtAl"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|nAuthors
 argument_list|(
@@ -2633,7 +2633,7 @@ name|assertEquals
 argument_list|(
 literal|"NewtonEtAl"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|nAuthors
 argument_list|(
@@ -2647,7 +2647,7 @@ name|assertEquals
 argument_list|(
 literal|"NewtonEtAl"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|nAuthors
 argument_list|(
@@ -2671,7 +2671,7 @@ name|assertEquals
 argument_list|(
 literal|"Newton"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|nAuthors
 argument_list|(
@@ -2685,7 +2685,7 @@ name|assertEquals
 argument_list|(
 literal|"NewtonMaxwell"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|nAuthors
 argument_list|(
@@ -2699,7 +2699,7 @@ name|assertEquals
 argument_list|(
 literal|"NewtonMaxwellEinstein"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|nAuthors
 argument_list|(
@@ -2713,7 +2713,7 @@ name|assertEquals
 argument_list|(
 literal|"NewtonMaxwellEinsteinEtAl"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|nAuthors
 argument_list|(
@@ -2736,7 +2736,7 @@ name|assertEquals
 argument_list|(
 literal|"7"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|firstPage
 argument_list|(
@@ -2748,7 +2748,7 @@ name|assertEquals
 argument_list|(
 literal|"27"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|firstPage
 argument_list|(
@@ -2760,7 +2760,7 @@ name|assertEquals
 argument_list|(
 literal|""
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|firstPage
 argument_list|(
@@ -2772,7 +2772,7 @@ name|assertEquals
 argument_list|(
 literal|"42"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|firstPage
 argument_list|(
@@ -2784,7 +2784,7 @@ name|assertEquals
 argument_list|(
 literal|"7"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|firstPage
 argument_list|(
@@ -2796,7 +2796,7 @@ name|assertEquals
 argument_list|(
 literal|"7"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|firstPage
 argument_list|(
@@ -2808,7 +2808,7 @@ name|assertEquals
 argument_list|(
 literal|"43"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|firstPage
 argument_list|(
@@ -2832,7 +2832,7 @@ name|void
 name|testFirstPageNull
 parameter_list|()
 block|{
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|firstPage
 argument_list|(
@@ -2852,7 +2852,7 @@ name|assertEquals
 argument_list|(
 literal|"27"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|lastPage
 argument_list|(
@@ -2864,7 +2864,7 @@ name|assertEquals
 argument_list|(
 literal|"27"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|lastPage
 argument_list|(
@@ -2876,7 +2876,7 @@ name|assertEquals
 argument_list|(
 literal|""
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|lastPage
 argument_list|(
@@ -2888,7 +2888,7 @@ name|assertEquals
 argument_list|(
 literal|"111"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|lastPage
 argument_list|(
@@ -2900,7 +2900,7 @@ name|assertEquals
 argument_list|(
 literal|"97"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|lastPage
 argument_list|(
@@ -2912,7 +2912,7 @@ name|assertEquals
 argument_list|(
 literal|"97"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|lastPage
 argument_list|(
@@ -2924,7 +2924,7 @@ name|assertEquals
 argument_list|(
 literal|"43"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|lastPage
 argument_list|(
@@ -2948,7 +2948,7 @@ name|void
 name|testLastPageNull
 parameter_list|()
 block|{
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|lastPage
 argument_list|(
@@ -2975,7 +2975,7 @@ name|assertEquals
 argument_list|(
 literal|"application"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|getTitleWords
 argument_list|(
@@ -2989,7 +2989,7 @@ name|assertEquals
 argument_list|(
 literal|"BPEL"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|getTitleWords
 argument_list|(
@@ -3003,7 +3003,7 @@ name|assertEquals
 argument_list|(
 literal|"Process"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|getTitleWords
 argument_list|(
@@ -3017,7 +3017,7 @@ name|assertEquals
 argument_list|(
 literal|"BPMN"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|getTitleWords
 argument_list|(
@@ -3031,7 +3031,7 @@ name|assertEquals
 argument_list|(
 literal|"Difference"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|getTitleWords
 argument_list|(
@@ -3045,7 +3045,7 @@ name|assertEquals
 argument_list|(
 literal|"Cloud"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|getTitleWords
 argument_list|(
@@ -3059,7 +3059,7 @@ name|assertEquals
 argument_list|(
 literal|"Towards"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|getTitleWords
 argument_list|(
@@ -3073,7 +3073,7 @@ name|assertEquals
 argument_list|(
 literal|"Measurement"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|getTitleWords
 argument_list|(
@@ -3103,7 +3103,7 @@ name|assertEquals
 argument_list|(
 literal|"applicationmigrationeffort"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|getTitleWords
 argument_list|(
@@ -3117,7 +3117,7 @@ name|assertEquals
 argument_list|(
 literal|"BPELconformanceopen"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|getTitleWords
 argument_list|(
@@ -3131,7 +3131,7 @@ name|assertEquals
 argument_list|(
 literal|"ProcessViewingPatterns"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|getTitleWords
 argument_list|(
@@ -3145,7 +3145,7 @@ name|assertEquals
 argument_list|(
 literal|"BPMNConformanceOpen"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|getTitleWords
 argument_list|(
@@ -3159,7 +3159,7 @@ name|assertEquals
 argument_list|(
 literal|"DifferenceGraphBased"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|getTitleWords
 argument_list|(
@@ -3173,7 +3173,7 @@ name|assertEquals
 argument_list|(
 literal|"CloudComputingNext"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|getTitleWords
 argument_list|(
@@ -3187,7 +3187,7 @@ name|assertEquals
 argument_list|(
 literal|"TowardsChoreographybased"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|getTitleWords
 argument_list|(
@@ -3201,7 +3201,7 @@ name|assertEquals
 argument_list|(
 literal|"MeasurementDesignTime"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|getTitleWords
 argument_list|(
@@ -3239,7 +3239,7 @@ expr_stmt|;
 name|String
 name|result
 init|=
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
@@ -3258,7 +3258,7 @@ expr_stmt|;
 comment|// check keywords with space
 name|result
 operator|=
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
@@ -3277,7 +3277,7 @@ expr_stmt|;
 comment|// check out of range
 name|result
 operator|=
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
@@ -3322,7 +3322,7 @@ comment|// all keywords
 name|String
 name|result
 init|=
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
@@ -3341,7 +3341,7 @@ expr_stmt|;
 comment|// check keywords with space
 name|result
 operator|=
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
@@ -3360,7 +3360,7 @@ expr_stmt|;
 comment|// check out of range
 name|result
 operator|=
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
@@ -3389,7 +3389,7 @@ name|assertEquals
 argument_list|(
 literal|"AAAA"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|checkLegalKey
 argument_list|(
@@ -3403,7 +3403,7 @@ name|assertEquals
 argument_list|(
 literal|"SPECIALCHARS"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|checkLegalKey
 argument_list|(
@@ -3417,7 +3417,7 @@ name|assertEquals
 argument_list|(
 literal|""
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|checkLegalKey
 argument_list|(
@@ -3440,7 +3440,7 @@ name|assertEquals
 argument_list|(
 literal|"AAAA"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|checkLegalKey
 argument_list|(
@@ -3454,7 +3454,7 @@ name|assertEquals
 argument_list|(
 literal|"SPECIALCHARS#~^"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|checkLegalKey
 argument_list|(
@@ -3468,7 +3468,7 @@ name|assertEquals
 argument_list|(
 literal|""
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|checkLegalKey
 argument_list|(
@@ -3489,7 +3489,7 @@ parameter_list|()
 block|{
 name|assertNull
 argument_list|(
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|checkLegalKey
 argument_list|(
@@ -3501,7 +3501,7 @@ argument_list|)
 expr_stmt|;
 name|assertNull
 argument_list|(
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|checkLegalKey
 argument_list|(
@@ -3540,7 +3540,7 @@ name|assertEquals
 argument_list|(
 literal|"GSW"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
@@ -3554,7 +3554,7 @@ name|assertEquals
 argument_list|(
 literal|"GreenSchedulingWhatever"
 argument_list|,
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|makeLabel
 argument_list|(

@@ -340,9 +340,9 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|l10n
+name|bibtexkeypattern
 operator|.
-name|Localization
+name|BibtexKeyPatternUtil
 import|;
 end_import
 
@@ -356,9 +356,9 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|labelpattern
+name|l10n
 operator|.
-name|LabelPatternUtil
+name|Localization
 import|;
 end_import
 
@@ -1484,7 +1484,7 @@ block|}
 name|String
 name|testString
 init|=
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|checkLegalKey
 argument_list|(

@@ -4,7 +4,7 @@ comment|/*  Copyright (C) 2003-2015 JabRef contributors.                   2003 
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref.model.labelpattern
+DECL|package|net.sf.jabref.model.bibtexkeypattern
 package|package
 name|net
 operator|.
@@ -14,7 +14,7 @@ name|jabref
 operator|.
 name|model
 operator|.
-name|labelpattern
+name|bibtexkeypattern
 package|;
 end_package
 
@@ -89,15 +89,15 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A small table, where an entry type is associated with a label pattern (an  *<code>ArrayList</code>). A parent LabelPattern can be set.  */
+comment|/**  * A small table, where an entry type is associated with a Bibtex key pattern (an  *<code>ArrayList</code>). A parent BibtexKeyPattern can be set.  */
 end_comment
 
 begin_class
-DECL|class|AbstractLabelPattern
+DECL|class|AbstractBibtexKeyPattern
 specifier|public
 specifier|abstract
 class|class
-name|AbstractLabelPattern
+name|AbstractBibtexKeyPattern
 block|{
 DECL|field|defaultPattern
 specifier|protected
@@ -125,10 +125,10 @@ name|HashMap
 argument_list|<>
 argument_list|()
 decl_stmt|;
-DECL|method|addLabelPattern (String type, String pattern)
+DECL|method|addBibtexKeyPattern (String type, String pattern)
 specifier|public
 name|void
-name|addLabelPattern
+name|addBibtexKeyPattern
 parameter_list|(
 name|String
 name|type
@@ -143,7 +143,7 @@ name|put
 argument_list|(
 name|type
 argument_list|,
-name|AbstractLabelPattern
+name|AbstractBibtexKeyPattern
 operator|.
 name|split
 argument_list|(
@@ -167,7 +167,7 @@ init|=
 operator|new
 name|StringBuilder
 argument_list|(
-literal|"AbstractLabelPattern{"
+literal|"AbstractBibtexKeyPattern{"
 argument_list|)
 decl_stmt|;
 name|sb
@@ -253,11 +253,11 @@ return|return
 literal|false
 return|;
 block|}
-name|AbstractLabelPattern
+name|AbstractBibtexKeyPattern
 name|that
 init|=
 operator|(
-name|AbstractLabelPattern
+name|AbstractBibtexKeyPattern
 operator|)
 name|o
 decl_stmt|;
@@ -304,11 +304,11 @@ name|data
 argument_list|)
 return|;
 block|}
-comment|/**      * Remove a label pattern from the LabelPattern.      *      * @param type a<code>String</code>      */
-DECL|method|removeLabelPattern (String type)
+comment|/**      * Remove a Bibtex key pattern from the BibtexKeyPattern.      *      * @param type a<code>String</code>      */
+DECL|method|removeBibtexKeyPattern (String type)
 specifier|public
 name|void
-name|removeLabelPattern
+name|removeBibtexKeyPattern
 parameter_list|(
 name|String
 name|type
@@ -333,7 +333,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Gets an object for a desired label from this LabelPattern or one of it's      * parents (in the case of DatabaseLAbelPattern). This method first tries to obtain the object from this      * LabelPattern via the<code>get</code> method of<code>Hashtable</code>.      * If this fails, we try the default.<br />      * If that fails, we try the parent.<br />      * If that fails, we return the DEFAULT_LABELPATTERN<br />      *      * @param key a<code>String</code>      * @return the list of Strings for the given key. First entry: the complete key      */
+comment|/**      * Gets an object for a desired key from this BibtexKeyPattern or one of it's      * parents (in the case of DatabaseBibtexKeyPattern). This method first tries to obtain the object from this      * BibtexKeyPattern via the<code>get</code> method of<code>Hashtable</code>.      * If this fails, we try the default.<br />      * If that fails, we try the parent.<br />      * If that fails, we return the DEFAULT_LABELPATTERN<br />      *      * @param key a<code>String</code>      * @return the list of Strings for the given key. First entry: the complete key      */
 DECL|method|getValue (String key)
 specifier|public
 name|List
@@ -383,7 +383,7 @@ block|{
 comment|// we are the "last" to ask
 comment|// we don't have anything left
 return|return
-name|getLastLevelLabelPattern
+name|getLastLevelBibtexKeyPattern
 argument_list|(
 name|key
 argument_list|)
@@ -394,8 +394,8 @@ return|return
 name|result
 return|;
 block|}
-comment|/**      * This method takes a string of the form [field1]spacer[field2]spacer[field3]...,      * where the fields are the (required) fields of a BibTex entry. The string is split      * into fields and spacers by recognizing the [ and ].      *      * @param labelPattern a<code>String</code>      * @return an<code>ArrayList</code> The first item of the list      * is a string representation of the key pattern (the parameter),      * the remaining items are the fields      */
-DECL|method|split (String labelPattern)
+comment|/**      * This method takes a string of the form [field1]spacer[field2]spacer[field3]...,      * where the fields are the (required) fields of a BibTex entry. The string is split      * into fields and spacers by recognizing the [ and ].      *      * @param bibtexKeyPattern a<code>String</code>      * @return an<code>ArrayList</code> The first item of the list      * is a string representation of the key pattern (the parameter),      * the remaining items are the fields      */
+DECL|method|split (String bibtexKeyPattern)
 specifier|public
 specifier|static
 name|List
@@ -405,7 +405,7 @@ argument_list|>
 name|split
 parameter_list|(
 name|String
-name|labelPattern
+name|bibtexKeyPattern
 parameter_list|)
 block|{
 comment|// A holder for fields of the entry to be used for the key
@@ -425,7 +425,7 @@ name|fieldList
 operator|.
 name|add
 argument_list|(
-name|labelPattern
+name|bibtexKeyPattern
 argument_list|)
 expr_stmt|;
 name|StringTokenizer
@@ -434,7 +434,7 @@ init|=
 operator|new
 name|StringTokenizer
 argument_list|(
-name|labelPattern
+name|bibtexKeyPattern
 argument_list|,
 literal|"[]"
 argument_list|,
@@ -502,25 +502,25 @@ operator|.
 name|defaultPattern
 return|;
 block|}
-comment|/**      * Sets the DEFAULT PATTERN for this label pattern      * @param labelPattern the pattern to store      */
-DECL|method|setDefaultValue (String labelPattern)
+comment|/**      * Sets the DEFAULT PATTERN for this key pattern      * @param bibtexKeyPattern the pattern to store      */
+DECL|method|setDefaultValue (String bibtexKeyPattern)
 specifier|public
 name|void
 name|setDefaultValue
 parameter_list|(
 name|String
-name|labelPattern
+name|bibtexKeyPattern
 parameter_list|)
 block|{
 name|this
 operator|.
 name|defaultPattern
 operator|=
-name|AbstractLabelPattern
+name|AbstractBibtexKeyPattern
 operator|.
 name|split
 argument_list|(
-name|labelPattern
+name|bibtexKeyPattern
 argument_list|)
 expr_stmt|;
 block|}
@@ -540,14 +540,14 @@ name|keySet
 argument_list|()
 return|;
 block|}
-DECL|method|getLastLevelLabelPattern (String key)
+DECL|method|getLastLevelBibtexKeyPattern (String key)
 specifier|public
 specifier|abstract
 name|List
 argument_list|<
 name|String
 argument_list|>
-name|getLastLevelLabelPattern
+name|getLastLevelBibtexKeyPattern
 parameter_list|(
 name|String
 name|key

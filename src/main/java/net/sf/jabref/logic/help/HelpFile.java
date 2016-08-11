@@ -77,10 +77,10 @@ argument_list|(
 literal|"SpecialFieldsHelp"
 argument_list|)
 block|,
-DECL|enumConstant|LABEL_PATTERN
-name|LABEL_PATTERN
+DECL|enumConstant|BIBTEX_KEY_PATTERN
+name|BIBTEX_KEY_PATTERN
 argument_list|(
-literal|"LabelPatterns"
+literal|"BibtexKeyPatterns"
 argument_list|)
 block|,
 DECL|enumConstant|OWNER

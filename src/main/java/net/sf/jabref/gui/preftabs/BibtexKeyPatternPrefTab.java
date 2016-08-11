@@ -124,9 +124,9 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|labelpattern
+name|bibtexkeypattern
 operator|.
-name|LabelPatternPanel
+name|BibtexKeyPatternPanel
 import|;
 end_import
 
@@ -156,9 +156,9 @@ name|jabref
 operator|.
 name|model
 operator|.
-name|labelpattern
+name|bibtexkeypattern
 operator|.
-name|GlobalLabelPattern
+name|GlobalBibtexKeyPattern
 import|;
 end_import
 
@@ -209,11 +209,11 @@ comment|/**  * The Preferences panel for key generation.  */
 end_comment
 
 begin_class
-DECL|class|LabelPatternPrefTab
+DECL|class|BibtexKeyPatternPrefTab
 class|class
-name|LabelPatternPrefTab
+name|BibtexKeyPatternPrefTab
 extends|extends
-name|LabelPatternPanel
+name|BibtexKeyPatternPanel
 implements|implements
 name|PrefsTab
 block|{
@@ -366,9 +366,9 @@ argument_list|(
 literal|20
 argument_list|)
 decl_stmt|;
-DECL|method|LabelPatternPrefTab (JabRefPreferences prefs, BasePanel panel)
+DECL|method|BibtexKeyPatternPrefTab (JabRefPreferences prefs, BasePanel panel)
 specifier|public
-name|LabelPatternPrefTab
+name|BibtexKeyPatternPrefTab
 parameter_list|(
 name|JabRefPreferences
 name|prefs
@@ -410,7 +410,7 @@ name|put
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|DEFAULT_LABEL_PATTERN
+name|DEFAULT_BIBTEX_KEY_PATTERN
 argument_list|,
 name|defaultPat
 operator|.
@@ -602,10 +602,10 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// fetch entries from GUI
-name|GlobalLabelPattern
+name|GlobalBibtexKeyPattern
 name|keypatterns
 init|=
-name|getLabelPatternAsGlobalLabelPattern
+name|getKeyPatternAsGlobalBibtexKeyPattern
 argument_list|()
 decl_stmt|;
 comment|// store new patterns globally
@@ -993,7 +993,7 @@ name|get
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|DEFAULT_LABEL_PATTERN
+name|DEFAULT_BIBTEX_KEY_PATTERN
 argument_list|)
 argument_list|)
 expr_stmt|;
