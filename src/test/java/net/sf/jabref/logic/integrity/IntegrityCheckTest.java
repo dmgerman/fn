@@ -1735,6 +1735,45 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+DECL|method|testASCIIChecks ()
+specifier|public
+name|void
+name|testASCIIChecks
+parameter_list|()
+block|{
+name|assertCorrect
+argument_list|(
+name|createContext
+argument_list|(
+literal|"title"
+argument_list|,
+literal|"Only ascii characters!'@12"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertWrong
+argument_list|(
+name|createContext
+argument_list|(
+literal|"month"
+argument_list|,
+literal|"Umlauts are nÃ¶t Ã¤llowed"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertWrong
+argument_list|(
+name|createContext
+argument_list|(
+literal|"author"
+argument_list|,
+literal|"Some unicode â"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|createContext (String field, String value, String type)
 specifier|private
 name|BibDatabaseContext
