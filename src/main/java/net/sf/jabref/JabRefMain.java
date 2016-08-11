@@ -473,6 +473,40 @@ operator|.
 name|setLanguageDependentDefaultValues
 argument_list|()
 expr_stmt|;
+comment|// Update handling of special fields based on preferences
+name|InternalBibtexFields
+operator|.
+name|updateSpecialFields
+argument_list|(
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|PREF_SERIALIZESPECIALFIELDS
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|// Update name of the time stamp field based on preferences
+name|InternalBibtexFields
+operator|.
+name|updateTimeStampField
+argument_list|(
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|get
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|TIME_STAMP_FIELD
+argument_list|)
+argument_list|)
+expr_stmt|;
 comment|// Update which fields should be treated as numeric, based on preferences:
 name|InternalBibtexFields
 operator|.

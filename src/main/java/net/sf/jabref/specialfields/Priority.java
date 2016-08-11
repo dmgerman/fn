@@ -76,6 +76,22 @@ name|Localization
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|SpecialFields
+import|;
+end_import
+
 begin_class
 DECL|class|Priority
 specifier|public
@@ -330,7 +346,7 @@ name|getFieldName
 parameter_list|()
 block|{
 return|return
-name|SpecialFieldsUtils
+name|SpecialFields
 operator|.
 name|FIELDNAME_PRIORITY
 return|;

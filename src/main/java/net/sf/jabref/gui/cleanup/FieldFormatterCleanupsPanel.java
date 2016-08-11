@@ -1237,15 +1237,10 @@ name|String
 argument_list|>
 name|fieldNames
 init|=
-operator|new
-name|ArrayList
-argument_list|<>
-argument_list|(
 name|InternalBibtexFields
 operator|.
-name|getAllFieldNames
+name|getAllPublicFieldNames
 argument_list|()
-argument_list|)
 decl_stmt|;
 name|fieldNames
 operator|.

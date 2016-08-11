@@ -64,9 +64,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|specialfields
+name|model
 operator|.
-name|SpecialFieldsUtils
+name|entry
+operator|.
+name|SpecialFields
 import|;
 end_import
 
@@ -109,7 +111,7 @@ name|e1
 operator|.
 name|getFieldOptional
 argument_list|(
-name|SpecialFieldsUtils
+name|SpecialFields
 operator|.
 name|FIELDNAME_RANKING
 argument_list|)
@@ -124,7 +126,7 @@ name|e2
 operator|.
 name|getFieldOptional
 argument_list|(
-name|SpecialFieldsUtils
+name|SpecialFields
 operator|.
 name|FIELDNAME_RANKING
 argument_list|)

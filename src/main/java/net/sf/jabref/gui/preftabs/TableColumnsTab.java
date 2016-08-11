@@ -486,20 +486,6 @@ end_import
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|specialfields
-operator|.
-name|SpecialFieldsUtils
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|jgoodies
@@ -2814,7 +2800,7 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-name|SpecialFieldsUtils
+name|JabRefPreferences
 operator|.
 name|PREF_SHOWCOLUMN_RANKING
 argument_list|)
@@ -2832,7 +2818,7 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-name|SpecialFieldsUtils
+name|JabRefPreferences
 operator|.
 name|PREF_SHOWCOLUMN_QUALITY
 argument_list|)
@@ -2850,7 +2836,7 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-name|SpecialFieldsUtils
+name|JabRefPreferences
 operator|.
 name|PREF_SHOWCOLUMN_PRIORITY
 argument_list|)
@@ -2868,7 +2854,7 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-name|SpecialFieldsUtils
+name|JabRefPreferences
 operator|.
 name|PREF_SHOWCOLUMN_RELEVANCE
 argument_list|)
@@ -2886,7 +2872,7 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-name|SpecialFieldsUtils
+name|JabRefPreferences
 operator|.
 name|PREF_SHOWCOLUMN_PRINTED
 argument_list|)
@@ -2904,7 +2890,7 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-name|SpecialFieldsUtils
+name|JabRefPreferences
 operator|.
 name|PREF_SHOWCOLUMN_READ
 argument_list|)
@@ -2922,7 +2908,7 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-name|SpecialFieldsUtils
+name|JabRefPreferences
 operator|.
 name|PREF_AUTOSYNCSPECIALFIELDSTOKEYWORDS
 argument_list|)
@@ -2940,7 +2926,7 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-name|SpecialFieldsUtils
+name|JabRefPreferences
 operator|.
 name|PREF_SERIALIZESPECIALFIELDS
 argument_list|)
@@ -2959,7 +2945,7 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-name|SpecialFieldsUtils
+name|JabRefPreferences
 operator|.
 name|PREF_SPECIALFIELDSENABLED
 argument_list|)
@@ -4885,7 +4871,7 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
-name|SpecialFieldsUtils
+name|JabRefPreferences
 operator|.
 name|PREF_SPECIALFIELDSENABLED
 argument_list|,
@@ -4896,7 +4882,7 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
-name|SpecialFieldsUtils
+name|JabRefPreferences
 operator|.
 name|PREF_SHOWCOLUMN_RANKING
 argument_list|,
@@ -4907,7 +4893,7 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
-name|SpecialFieldsUtils
+name|JabRefPreferences
 operator|.
 name|PREF_SHOWCOLUMN_PRIORITY
 argument_list|,
@@ -4918,7 +4904,7 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
-name|SpecialFieldsUtils
+name|JabRefPreferences
 operator|.
 name|PREF_SHOWCOLUMN_QUALITY
 argument_list|,
@@ -4929,7 +4915,7 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
-name|SpecialFieldsUtils
+name|JabRefPreferences
 operator|.
 name|PREF_SHOWCOLUMN_RELEVANCE
 argument_list|,
@@ -4940,7 +4926,7 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
-name|SpecialFieldsUtils
+name|JabRefPreferences
 operator|.
 name|PREF_SHOWCOLUMN_PRINTED
 argument_list|,
@@ -4951,7 +4937,7 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
-name|SpecialFieldsUtils
+name|JabRefPreferences
 operator|.
 name|PREF_SHOWCOLUMN_READ
 argument_list|,
@@ -4962,7 +4948,7 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
-name|SpecialFieldsUtils
+name|JabRefPreferences
 operator|.
 name|PREF_AUTOSYNCSPECIALFIELDSTOKEYWORDS
 argument_list|,
@@ -4973,7 +4959,7 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
-name|SpecialFieldsUtils
+name|JabRefPreferences
 operator|.
 name|PREF_SERIALIZESPECIALFIELDS
 argument_list|,

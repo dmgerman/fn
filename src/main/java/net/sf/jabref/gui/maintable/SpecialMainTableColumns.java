@@ -150,6 +150,22 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|SpecialFields
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|specialfields
 operator|.
 name|Printed
@@ -226,20 +242,6 @@ name|Relevance
 import|;
 end_import
 
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|specialfields
-operator|.
-name|SpecialFieldsUtils
-import|;
-end_import
-
 begin_class
 DECL|class|SpecialMainTableColumns
 specifier|public
@@ -298,7 +300,7 @@ init|=
 operator|new
 name|MainTableColumn
 argument_list|(
-name|SpecialFieldsUtils
+name|SpecialFields
 operator|.
 name|FIELDNAME_RANKING
 argument_list|,
@@ -306,7 +308,7 @@ name|Collections
 operator|.
 name|singletonList
 argument_list|(
-name|SpecialFieldsUtils
+name|SpecialFields
 operator|.
 name|FIELDNAME_RANKING
 argument_list|)
@@ -314,7 +316,7 @@ argument_list|,
 operator|new
 name|JLabel
 argument_list|(
-name|SpecialFieldsUtils
+name|SpecialFields
 operator|.
 name|FIELDNAME_RANKING
 argument_list|)
@@ -335,7 +337,7 @@ name|entry
 operator|.
 name|getFieldOptional
 argument_list|(
-name|SpecialFieldsUtils
+name|SpecialFields
 operator|.
 name|FIELDNAME_RANKING
 argument_list|)
@@ -378,7 +380,7 @@ init|=
 operator|new
 name|MainTableColumn
 argument_list|(
-name|SpecialFieldsUtils
+name|SpecialFields
 operator|.
 name|FIELDNAME_PRIORITY
 argument_list|,
@@ -386,7 +388,7 @@ name|Collections
 operator|.
 name|singletonList
 argument_list|(
-name|SpecialFieldsUtils
+name|SpecialFields
 operator|.
 name|FIELDNAME_PRIORITY
 argument_list|)
@@ -419,7 +421,7 @@ name|entry
 operator|.
 name|getFieldOptional
 argument_list|(
-name|SpecialFieldsUtils
+name|SpecialFields
 operator|.
 name|FIELDNAME_PRIORITY
 argument_list|)
@@ -462,7 +464,7 @@ init|=
 operator|new
 name|MainTableColumn
 argument_list|(
-name|SpecialFieldsUtils
+name|SpecialFields
 operator|.
 name|FIELDNAME_READ
 argument_list|,
@@ -470,7 +472,7 @@ name|Collections
 operator|.
 name|singletonList
 argument_list|(
-name|SpecialFieldsUtils
+name|SpecialFields
 operator|.
 name|FIELDNAME_READ
 argument_list|)
@@ -503,7 +505,7 @@ name|entry
 operator|.
 name|getFieldOptional
 argument_list|(
-name|SpecialFieldsUtils
+name|SpecialFields
 operator|.
 name|FIELDNAME_READ
 argument_list|)
@@ -545,7 +547,7 @@ name|RELEVANCE_COLUMN
 init|=
 name|createIconColumn
 argument_list|(
-name|SpecialFieldsUtils
+name|SpecialFields
 operator|.
 name|FIELDNAME_RELEVANCE
 argument_list|,
@@ -553,7 +555,7 @@ name|Collections
 operator|.
 name|singletonList
 argument_list|(
-name|SpecialFieldsUtils
+name|SpecialFields
 operator|.
 name|FIELDNAME_RELEVANCE
 argument_list|)
@@ -580,7 +582,7 @@ name|PRINTED_COLUMN
 init|=
 name|createIconColumn
 argument_list|(
-name|SpecialFieldsUtils
+name|SpecialFields
 operator|.
 name|FIELDNAME_PRINTED
 argument_list|,
@@ -588,7 +590,7 @@ name|Collections
 operator|.
 name|singletonList
 argument_list|(
-name|SpecialFieldsUtils
+name|SpecialFields
 operator|.
 name|FIELDNAME_PRINTED
 argument_list|)
@@ -615,7 +617,7 @@ name|QUALITY_COLUMN
 init|=
 name|createIconColumn
 argument_list|(
-name|SpecialFieldsUtils
+name|SpecialFields
 operator|.
 name|FIELDNAME_QUALITY
 argument_list|,
@@ -623,7 +625,7 @@ name|Collections
 operator|.
 name|singletonList
 argument_list|(
-name|SpecialFieldsUtils
+name|SpecialFields
 operator|.
 name|FIELDNAME_QUALITY
 argument_list|)

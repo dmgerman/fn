@@ -588,7 +588,7 @@ name|preset
 init|=
 name|InternalBibtexFields
 operator|.
-name|getAllFieldNames
+name|getAllPublicFieldNames
 argument_list|()
 decl_stmt|;
 DECL|field|lastSelected

@@ -620,9 +620,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|preferences
+name|model
 operator|.
-name|JabRefPreferences
+name|entry
+operator|.
+name|SpecialFields
 import|;
 end_import
 
@@ -634,9 +636,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|specialfields
+name|preferences
 operator|.
-name|SpecialFieldsUtils
+name|JabRefPreferences
 import|;
 end_import
 
@@ -1926,7 +1928,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|SpecialFieldsUtils
+name|SpecialFields
 operator|.
 name|FIELDNAME_RANKING
 operator|.
@@ -2408,7 +2410,7 @@ argument_list|()
 expr_stmt|;
 if|if
 condition|(
-name|SpecialFieldsUtils
+name|SpecialFields
 operator|.
 name|FIELDNAME_RANKING
 operator|.

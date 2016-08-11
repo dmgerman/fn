@@ -162,6 +162,22 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|SpecialFields
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|preferences
 operator|.
 name|JabRefPreferences
@@ -249,20 +265,6 @@ operator|.
 name|specialfields
 operator|.
 name|Relevance
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|specialfields
-operator|.
-name|SpecialFieldsUtils
 import|;
 end_import
 
@@ -1048,7 +1050,7 @@ name|TABLE_ICONS
 operator|.
 name|put
 argument_list|(
-name|SpecialFieldsUtils
+name|SpecialFields
 operator|.
 name|FIELDNAME_RELEVANCE
 argument_list|,
@@ -1088,7 +1090,7 @@ name|TABLE_ICONS
 operator|.
 name|put
 argument_list|(
-name|SpecialFieldsUtils
+name|SpecialFields
 operator|.
 name|FIELDNAME_QUALITY
 argument_list|,
@@ -1129,7 +1131,7 @@ name|TABLE_ICONS
 operator|.
 name|put
 argument_list|(
-name|SpecialFieldsUtils
+name|SpecialFields
 operator|.
 name|FIELDNAME_RANKING
 argument_list|,
@@ -1170,7 +1172,7 @@ name|TABLE_ICONS
 operator|.
 name|put
 argument_list|(
-name|SpecialFieldsUtils
+name|SpecialFields
 operator|.
 name|FIELDNAME_PRIORITY
 argument_list|,
@@ -1211,7 +1213,7 @@ name|TABLE_ICONS
 operator|.
 name|put
 argument_list|(
-name|SpecialFieldsUtils
+name|SpecialFields
 operator|.
 name|FIELDNAME_READ
 argument_list|,
@@ -1252,7 +1254,7 @@ name|TABLE_ICONS
 operator|.
 name|put
 argument_list|(
-name|SpecialFieldsUtils
+name|SpecialFields
 operator|.
 name|FIELDNAME_PRINTED
 argument_list|,
