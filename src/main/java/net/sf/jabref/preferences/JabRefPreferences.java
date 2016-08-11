@@ -3524,7 +3524,7 @@ literal|"customTypePriOpt_"
 decl_stmt|;
 comment|// Prefs node for BibtexKeyPatterns
 DECL|field|BIBTEX_KEY_PATTERNS_NODE
-specifier|private
+specifier|public
 specifier|static
 specifier|final
 name|String
