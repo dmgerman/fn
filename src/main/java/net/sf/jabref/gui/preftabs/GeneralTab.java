@@ -845,7 +845,7 @@ init|=
 operator|new
 name|FormLayout
 argument_list|(
-literal|"8dlu, 1dlu, left:170dlu, 4dlu, fill:pref, 4dlu, fill:pref, 4dlu, left:pref, 4dlu, left:pref, 4dlu, left:pref"
+literal|"8dlu, 1dlu, left:pref:grow, 4dlu, fill:pref, 4dlu, fill:pref, 4dlu, left:pref, 1dlu, left:pref, 4dlu, left:pref"
 argument_list|,
 literal|""
 argument_list|)
@@ -1072,7 +1072,7 @@ name|append
 argument_list|(
 name|updateTimeStamp
 argument_list|,
-literal|2
+literal|11
 argument_list|)
 expr_stmt|;
 name|builder
