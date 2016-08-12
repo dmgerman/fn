@@ -200,6 +200,18 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|regex
+operator|.
+name|Pattern
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -376,6 +388,20 @@ name|DEFAULT_TYPE
 init|=
 literal|"misc"
 decl_stmt|;
+DECL|field|REMOVE_TRAILING_WHITESPACE
+specifier|private
+specifier|static
+specifier|final
+name|Pattern
+name|REMOVE_TRAILING_WHITESPACE
+init|=
+name|Pattern
+operator|.
+name|compile
+argument_list|(
+literal|"\\s+$"
+argument_list|)
+decl_stmt|;
 DECL|field|id
 specifier|private
 name|String
@@ -442,6 +468,13 @@ DECL|field|parsedSerialization
 specifier|private
 name|String
 name|parsedSerialization
+decl_stmt|;
+DECL|field|commentsBeforeEntry
+specifier|private
+name|String
+name|commentsBeforeEntry
+init|=
+literal|""
 decl_stmt|;
 comment|/*      * Marks whether the complete serialization, which was read from file, should be used.      *      * Is set to false, if parts of the entry change. This causes the entry to be serialized based on the internal state (and not based on the old serialization)      */
 DECL|field|changed
@@ -2451,6 +2484,22 @@ return|return
 name|parsedSerialization
 return|;
 block|}
+DECL|method|setCommentsBeforeEntry (String parsedComments)
+specifier|public
+name|void
+name|setCommentsBeforeEntry
+parameter_list|(
+name|String
+name|parsedComments
+parameter_list|)
+block|{
+name|this
+operator|.
+name|commentsBeforeEntry
+operator|=
+name|parsedComments
+expr_stmt|;
+block|}
 DECL|method|hasChanged ()
 specifier|public
 name|boolean
@@ -2916,72 +2965,19 @@ name|String
 name|getUserComments
 parameter_list|()
 block|{
-if|if
-condition|(
-name|parsedSerialization
-operator|!=
-literal|null
-condition|)
-block|{
-try|try
-block|{
-comment|// get the text before the entry
-name|String
-name|prolog
-init|=
-name|parsedSerialization
+comment|// delete trailing whitespaces (between entry and text) from stored serialization
+return|return
+name|REMOVE_TRAILING_WHITESPACE
 operator|.
-name|substring
+name|matcher
 argument_list|(
-literal|0
-argument_list|,
-name|parsedSerialization
-operator|.
-name|lastIndexOf
-argument_list|(
-literal|'@'
+name|commentsBeforeEntry
 argument_list|)
-argument_list|)
-decl_stmt|;
-comment|// delete trailing whitespaces (between entry and text)
-name|prolog
-operator|=
-name|prolog
 operator|.
 name|replaceFirst
 argument_list|(
-literal|"\\s+$"
-argument_list|,
 literal|""
 argument_list|)
-expr_stmt|;
-comment|// if there is any non whitespace text, write it
-if|if
-condition|(
-name|prolog
-operator|.
-name|length
-argument_list|()
-operator|>
-literal|0
-condition|)
-block|{
-return|return
-name|prolog
-return|;
-block|}
-block|}
-catch|catch
-parameter_list|(
-name|StringIndexOutOfBoundsException
-name|ignore
-parameter_list|)
-block|{
-comment|// if this occurs a broken parsed serialization has been set, so just do nothing
-block|}
-block|}
-return|return
-literal|""
 return|;
 block|}
 DECL|method|getFieldAsWords (String field)

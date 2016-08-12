@@ -1028,6 +1028,14 @@ block|{
 comment|/**          * Morten Alver 13 Aug 2006: Trying to make the parser more          * robust. If an exception is thrown when parsing an entry,          * drop the entry and try to resume parsing. Add a warning          * for the user.          */
 try|try
 block|{
+comment|// collect all comments and the entry type definition in front of the actual entry
+comment|// this is at least `@Type`
+name|String
+name|commentsAndEntryTypeDefinition
+init|=
+name|dumpTextReadSoFarToString
+argument_list|()
+decl_stmt|;
 name|BibEntry
 name|entry
 init|=
@@ -1036,6 +1044,37 @@ argument_list|(
 name|type
 argument_list|)
 decl_stmt|;
+comment|// store comments collected without type definition
+name|entry
+operator|.
+name|setCommentsBeforeEntry
+argument_list|(
+name|commentsAndEntryTypeDefinition
+operator|.
+name|substring
+argument_list|(
+literal|0
+argument_list|,
+name|commentsAndEntryTypeDefinition
+operator|.
+name|lastIndexOf
+argument_list|(
+literal|'@'
+argument_list|)
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|// store complete parsed serialization (comments, type definition + type contents)
+name|entry
+operator|.
+name|setParsedSerialization
+argument_list|(
+name|commentsAndEntryTypeDefinition
+operator|+
+name|dumpTextReadSoFarToString
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|boolean
 name|duplicateKey
 init|=
@@ -1046,14 +1085,6 @@ argument_list|(
 name|entry
 argument_list|)
 decl_stmt|;
-name|entry
-operator|.
-name|setParsedSerialization
-argument_list|(
-name|dumpTextReadSoFarToString
-argument_list|()
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 name|duplicateKey
