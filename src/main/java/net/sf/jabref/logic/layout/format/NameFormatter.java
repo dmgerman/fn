@@ -58,17 +58,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
+name|logic
 operator|.
 name|bst
 operator|.
@@ -626,7 +616,7 @@ operator|=
 name|parameter
 expr_stmt|;
 block|}
-DECL|method|getNameFormatters ()
+DECL|method|getNameFormatters (NameFormatterPreferences prefs)
 specifier|public
 specifier|static
 name|Map
@@ -636,7 +626,10 @@ argument_list|,
 name|String
 argument_list|>
 name|getNameFormatters
-parameter_list|()
+parameter_list|(
+name|NameFormatterPreferences
+name|prefs
+parameter_list|)
 block|{
 name|Map
 argument_list|<
@@ -657,16 +650,10 @@ name|String
 argument_list|>
 name|names
 init|=
-name|Globals
-operator|.
 name|prefs
 operator|.
-name|getStringList
-argument_list|(
-name|NameFormatter
-operator|.
-name|NAME_FORMATER_KEY
-argument_list|)
+name|getNameFormatterKey
+argument_list|()
 decl_stmt|;
 name|List
 argument_list|<
@@ -674,16 +661,10 @@ name|String
 argument_list|>
 name|formats
 init|=
-name|Globals
-operator|.
 name|prefs
 operator|.
-name|getStringList
-argument_list|(
-name|NameFormatter
-operator|.
-name|NAME_FORMATTER_VALUE
-argument_list|)
+name|getNameFormatterValue
+argument_list|()
 decl_stmt|;
 for|for
 control|(

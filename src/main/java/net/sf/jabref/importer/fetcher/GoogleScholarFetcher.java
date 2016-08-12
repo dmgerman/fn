@@ -184,9 +184,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
-operator|.
-name|FetcherPreviewDialog
+name|Globals
 import|;
 end_import
 
@@ -200,9 +198,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|help
-operator|.
-name|HelpFiles
+name|FetcherPreviewDialog
 import|;
 end_import
 
@@ -274,6 +270,22 @@ name|jabref
 operator|.
 name|logic
 operator|.
+name|help
+operator|.
+name|HelpFile
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
 name|l10n
 operator|.
 name|Localization
@@ -309,6 +321,22 @@ operator|.
 name|entry
 operator|.
 name|BibEntry
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|FieldName
 import|;
 end_import
 
@@ -878,12 +906,12 @@ annotation|@
 name|Override
 DECL|method|getHelpPage ()
 specifier|public
-name|HelpFiles
+name|HelpFile
 name|getHelpPage
 parameter_list|()
 block|{
 return|return
-name|HelpFiles
+name|HelpFile
 operator|.
 name|FETCHER_GOOGLE_SCHOLAR
 return|;
@@ -933,7 +961,14 @@ literal|"http://scholar.google.com"
 argument_list|)
 operator|.
 name|downloadToString
+argument_list|(
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getDefaultEncoding
 argument_list|()
+argument_list|)
 expr_stmt|;
 comment|//save("setting.html", ud.getStringContent());
 name|String
@@ -948,7 +983,14 @@ name|URL_SETTING
 argument_list|)
 operator|.
 name|downloadToString
+argument_list|(
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getDefaultEncoding
 argument_list|()
+argument_list|)
 decl_stmt|;
 comment|// Get the form items and their values from the page:
 name|Map
@@ -1045,7 +1087,14 @@ name|request
 argument_list|)
 operator|.
 name|downloadToString
+argument_list|(
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getDefaultEncoding
 argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 catch|catch
@@ -1205,7 +1254,14 @@ name|urlQuery
 argument_list|)
 operator|.
 name|downloadToString
+argument_list|(
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getDefaultEncoding
 argument_list|()
+argument_list|)
 decl_stmt|;
 name|Matcher
 name|m
@@ -1462,15 +1518,18 @@ init|=
 operator|new
 name|URLDownload
 argument_list|(
-name|GoogleScholarFetcher
-operator|.
-name|URL_START
-operator|+
 name|link
 argument_list|)
 operator|.
 name|downloadToString
+argument_list|(
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getDefaultEncoding
 argument_list|()
+argument_list|)
 decl_stmt|;
 name|BibtexParser
 name|bp
@@ -1564,7 +1623,9 @@ name|entry
 operator|.
 name|hasField
 argument_list|(
-literal|"url"
+name|FieldName
+operator|.
+name|URL
 argument_list|)
 condition|)
 block|{
@@ -1589,7 +1650,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"url"
+name|FieldName
+operator|.
+name|URL
 argument_list|,
 name|storedUrl
 argument_list|)
@@ -1599,22 +1662,19 @@ block|}
 comment|// Clean up some remaining HTML code from Elsevier(?) papers
 comment|// Search for: Poincare algebra
 comment|// to see an example
-name|String
-name|title
-init|=
 name|entry
 operator|.
-name|getField
+name|getFieldOptional
 argument_list|(
-literal|"title"
+name|FieldName
+operator|.
+name|TITLE
 argument_list|)
-decl_stmt|;
-if|if
-condition|(
+operator|.
+name|ifPresent
+argument_list|(
 name|title
-operator|!=
-literal|null
-condition|)
+lambda|->
 block|{
 name|String
 name|newtitle
@@ -1643,13 +1703,17 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|FieldName
+operator|.
+name|TITLE
 argument_list|,
 name|newtitle
 argument_list|)
 expr_stmt|;
 block|}
 block|}
+argument_list|)
+expr_stmt|;
 return|return
 name|entry
 return|;

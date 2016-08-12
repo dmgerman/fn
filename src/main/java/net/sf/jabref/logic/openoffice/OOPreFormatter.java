@@ -36,18 +36,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|logic
 operator|.
 name|layout
@@ -351,7 +339,7 @@ operator|==
 literal|'%'
 operator|)
 operator|||
-name|Globals
+name|StringUtil
 operator|.
 name|SPECIAL_COMMAND_CHARS
 operator|.
@@ -406,7 +394,7 @@ operator|==
 literal|1
 operator|)
 operator|&&
-name|Globals
+name|StringUtil
 operator|.
 name|SPECIAL_COMMAND_CHARS
 operator|.
@@ -574,7 +562,7 @@ operator|.
 name|toString
 argument_list|()
 decl_stmt|;
-name|Object
+name|String
 name|result
 init|=
 name|OOPreFormatter
@@ -608,9 +596,6 @@ name|sb
 operator|.
 name|append
 argument_list|(
-operator|(
-name|String
-operator|)
 name|result
 argument_list|)
 expr_stmt|;

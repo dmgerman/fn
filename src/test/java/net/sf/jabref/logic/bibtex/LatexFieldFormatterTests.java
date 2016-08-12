@@ -22,7 +22,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
+name|logic
+operator|.
+name|util
+operator|.
+name|OS
 import|;
 end_import
 
@@ -33,6 +37,8 @@ operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|preferences
 operator|.
 name|JabRefPreferences
 import|;
@@ -45,16 +51,6 @@ operator|.
 name|junit
 operator|.
 name|Before
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|BeforeClass
 import|;
 end_import
 
@@ -92,25 +88,6 @@ name|LatexFieldFormatter
 name|formatter
 decl_stmt|;
 annotation|@
-name|BeforeClass
-DECL|method|setUpBeforeClass ()
-specifier|public
-specifier|static
-name|void
-name|setUpBeforeClass
-parameter_list|()
-block|{
-name|Globals
-operator|.
-name|prefs
-operator|=
-name|JabRefPreferences
-operator|.
-name|getInstance
-argument_list|()
-expr_stmt|;
-block|}
-annotation|@
 name|Before
 DECL|method|setUp ()
 specifier|public
@@ -124,7 +101,17 @@ name|formatter
 operator|=
 operator|new
 name|LatexFieldFormatter
+argument_list|(
+name|LatexFieldFormatterPreferences
+operator|.
+name|fromPreferences
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|getInstance
 argument_list|()
+argument_list|)
+argument_list|)
 expr_stmt|;
 block|}
 annotation|@
@@ -145,7 +132,7 @@ name|text
 init|=
 literal|"lorem"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
@@ -159,25 +146,25 @@ literal|"{"
 operator|+
 literal|"lorem"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|" ipsum lorem ipsum"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"lorem ipsum "
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"lorem ipsum"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
@@ -224,13 +211,13 @@ name|text
 init|=
 literal|"lorem ipsum lorem ipsum"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"lorem ipsum lorem ipsum"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 decl_stmt|;
@@ -282,17 +269,17 @@ name|text
 init|=
 literal|"lorem ipsum lorem ipsum"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"lorem ipsum lorem ipsum"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 decl_stmt|;
@@ -344,13 +331,13 @@ name|text
 init|=
 literal|"lorem ipsum lorem ipsum"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
 literal|"lorem ipsum lorem ipsum"
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 decl_stmt|;

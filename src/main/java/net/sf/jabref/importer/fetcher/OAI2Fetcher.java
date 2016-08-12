@@ -174,22 +174,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
-operator|.
-name|help
-operator|.
-name|HelpFiles
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|importer
 operator|.
 name|ImportInspector
@@ -234,6 +218,22 @@ name|jabref
 operator|.
 name|logic
 operator|.
+name|help
+operator|.
+name|HelpFile
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
 name|l10n
 operator|.
 name|Localization
@@ -253,6 +253,22 @@ operator|.
 name|entry
 operator|.
 name|BibEntry
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|FieldName
 import|;
 end_import
 
@@ -343,7 +359,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *  * This class can be used to access any archive offering an OAI2 interface. By  * default it will access ArXiv.org  *  * @author Ulrich St&auml;rk  * @author Christian Kopf  */
+comment|/**  *  * This class can be used to access any archive offering an OAI2 interface. By  * default it will access ArXiv.org  *  * @see<a href="http://arxiv.org/help/oa/index"></a>  *  * @author Ulrich St&auml;rk  * @author Christian Kopf  */
 end_comment
 
 begin_class
@@ -980,6 +996,17 @@ control|)
 block|{
 name|be
 operator|.
+name|getFieldOptional
+argument_list|(
+name|name
+argument_list|)
+operator|.
+name|ifPresent
+argument_list|(
+name|content
+lambda|->
+name|be
+operator|.
 name|setField
 argument_list|(
 name|name
@@ -988,11 +1015,7 @@ name|OAI2Fetcher
 operator|.
 name|correctLineBreaks
 argument_list|(
-name|be
-operator|.
-name|getField
-argument_list|(
-name|name
+name|content
 argument_list|)
 argument_list|)
 argument_list|)
@@ -1012,7 +1035,9 @@ name|be
 operator|.
 name|setField
 argument_list|(
-literal|"year"
+name|FieldName
+operator|.
+name|YEAR
 argument_list|,
 literal|"20"
 operator|+
@@ -1067,7 +1092,9 @@ name|be
 operator|.
 name|setField
 argument_list|(
-literal|"month"
+name|FieldName
+operator|.
+name|MONTH
 argument_list|,
 name|month
 operator|.
@@ -1095,7 +1122,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"An Exception occurred while accessing '%0'"
+literal|"An exception occurred while accessing '%0'"
 argument_list|,
 name|url
 argument_list|)
@@ -1127,7 +1154,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"An SAXException occurred while parsing '%0':"
+literal|"A SAX exception occurred while parsing '%0':"
 argument_list|,
 name|url
 argument_list|)
@@ -1207,12 +1234,12 @@ annotation|@
 name|Override
 DECL|method|getHelpPage ()
 specifier|public
-name|HelpFiles
+name|HelpFile
 name|getHelpPage
 parameter_list|()
 block|{
 return|return
-name|HelpFiles
+name|HelpFile
 operator|.
 name|FETCHER_OAI2_ARXIV
 return|;

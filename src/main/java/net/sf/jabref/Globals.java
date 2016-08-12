@@ -16,15 +16,11 @@ end_package
 
 begin_import
 import|import
-name|net
+name|java
 operator|.
-name|sf
+name|util
 operator|.
-name|jabref
-operator|.
-name|collab
-operator|.
-name|FileUpdateMonitor
+name|Optional
 import|;
 end_import
 
@@ -36,9 +32,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|exporter
+name|collab
 operator|.
-name|AutoSaveManager
+name|FileUpdateMonitor
 import|;
 end_import
 
@@ -67,6 +63,22 @@ operator|.
 name|gui
 operator|.
 name|JabRefFrame
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|exporter
+operator|.
+name|AutoSaveManager
 import|;
 end_import
 
@@ -142,6 +154,22 @@ name|jabref
 operator|.
 name|logic
 operator|.
+name|protectedterms
+operator|.
+name|ProtectedTermsLoader
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
 name|remote
 operator|.
 name|server
@@ -166,39 +194,26 @@ name|BuildInfo
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|preferences
+operator|.
+name|JabRefPreferences
+import|;
+end_import
+
 begin_class
 DECL|class|Globals
 specifier|public
 class|class
 name|Globals
 block|{
-DECL|field|FILE_FIELD
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|FILE_FIELD
-init|=
-literal|"file"
-decl_stmt|;
-DECL|field|FOLDER_FIELD
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|FOLDER_FIELD
-init|=
-literal|"folder"
-decl_stmt|;
-DECL|field|DIR_SUFFIX
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|DIR_SUFFIX
-init|=
-literal|"Directory"
-decl_stmt|;
 comment|// JabRef version info
 DECL|field|BUILD_INFO
 specifier|public
@@ -209,50 +224,6 @@ name|BUILD_INFO
 init|=
 operator|new
 name|BuildInfo
-argument_list|()
-decl_stmt|;
-comment|// Signature written at the top of the .bib file.
-DECL|field|SIGNATURE
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|SIGNATURE
-init|=
-literal|"This file was created with JabRef"
-decl_stmt|;
-DECL|field|ENCODING_PREFIX
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|ENCODING_PREFIX
-init|=
-literal|"Encoding: "
-decl_stmt|;
-comment|// Character separating field names that are to be used in sequence as
-comment|// fallbacks for a single column (e.g. "author/editor" to use editor where
-comment|// author is not set):
-DECL|field|COL_DEFINITION_FIELD_SEPARATOR
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|COL_DEFINITION_FIELD_SEPARATOR
-init|=
-literal|"/"
-decl_stmt|;
-comment|// Newlines
-comment|// will be overridden in initialization due to feature #857 @ JabRef.java
-DECL|field|NEWLINE
-specifier|public
-specifier|static
-name|String
-name|NEWLINE
-init|=
-name|System
-operator|.
-name|lineSeparator
 argument_list|()
 decl_stmt|;
 comment|// Remote listener
@@ -278,15 +249,6 @@ operator|new
 name|ImportFormatReader
 argument_list|()
 decl_stmt|;
-DECL|field|SPECIAL_COMMAND_CHARS
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|SPECIAL_COMMAND_CHARS
-init|=
-literal|"\"`^~'c="
-decl_stmt|;
 comment|// In the main program, this field is initialized in JabRef.java
 comment|// Each test case initializes this field if required
 DECL|field|prefs
@@ -302,12 +264,47 @@ specifier|static
 name|JournalAbbreviationLoader
 name|journalAbbreviationLoader
 decl_stmt|;
+comment|/**      * This field is initialized upon startup.      * Only GUI code is allowed to access it, logic code should use dependency injection.      */
+DECL|field|protectedTermsLoader
+specifier|public
+specifier|static
+name|ProtectedTermsLoader
+name|protectedTermsLoader
+decl_stmt|;
+comment|// Key binding preferences
 DECL|field|keyPrefs
 specifier|private
 specifier|static
 name|KeyBindingPreferences
 name|keyPrefs
 decl_stmt|;
+comment|// Background tasks
+DECL|field|focusListener
+specifier|private
+specifier|static
+name|GlobalFocusListener
+name|focusListener
+decl_stmt|;
+DECL|field|fileUpdateMonitor
+specifier|private
+specifier|static
+name|FileUpdateMonitor
+name|fileUpdateMonitor
+decl_stmt|;
+DECL|field|streamEavesdropper
+specifier|private
+specifier|static
+name|StreamEavesdropper
+name|streamEavesdropper
+decl_stmt|;
+comment|// Autosave manager
+DECL|field|autoSaveManager
+specifier|private
+specifier|static
+name|AutoSaveManager
+name|autoSaveManager
+decl_stmt|;
+comment|// Key binding preferences
 DECL|method|getKeyPrefs ()
 specifier|public
 specifier|static
@@ -336,24 +333,6 @@ name|keyPrefs
 return|;
 block|}
 comment|// Background tasks
-DECL|field|focusListener
-specifier|public
-specifier|static
-name|GlobalFocusListener
-name|focusListener
-decl_stmt|;
-DECL|field|fileUpdateMonitor
-specifier|public
-specifier|static
-name|FileUpdateMonitor
-name|fileUpdateMonitor
-decl_stmt|;
-DECL|field|streamEavesdropper
-specifier|public
-specifier|static
-name|StreamEavesdropper
-name|streamEavesdropper
-decl_stmt|;
 DECL|method|startBackgroundTasks ()
 specifier|public
 specifier|static
@@ -400,13 +379,40 @@ literal|"FileUpdateMonitor"
 argument_list|)
 expr_stmt|;
 block|}
-comment|// Autosave manager
-DECL|field|autoSaveManager
+DECL|method|getFocusListener ()
 specifier|public
 specifier|static
-name|AutoSaveManager
-name|autoSaveManager
-decl_stmt|;
+name|GlobalFocusListener
+name|getFocusListener
+parameter_list|()
+block|{
+return|return
+name|focusListener
+return|;
+block|}
+DECL|method|getFileUpdateMonitor ()
+specifier|public
+specifier|static
+name|FileUpdateMonitor
+name|getFileUpdateMonitor
+parameter_list|()
+block|{
+return|return
+name|fileUpdateMonitor
+return|;
+block|}
+DECL|method|getStreamEavesdropper ()
+specifier|public
+specifier|static
+name|StreamEavesdropper
+name|getStreamEavesdropper
+parameter_list|()
+block|{
+return|return
+name|streamEavesdropper
+return|;
+block|}
+comment|// Autosave manager
 DECL|method|startAutoSaveManager (JabRefFrame frame)
 specifier|public
 specifier|static
@@ -473,6 +479,27 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
+block|}
+DECL|method|getAutoSaveManager ()
+specifier|public
+specifier|static
+name|Optional
+argument_list|<
+name|AutoSaveManager
+argument_list|>
+name|getAutoSaveManager
+parameter_list|()
+block|{
+return|return
+name|Optional
+operator|.
+name|ofNullable
+argument_list|(
+name|Globals
+operator|.
+name|autoSaveManager
+argument_list|)
+return|;
 block|}
 block|}
 end_class

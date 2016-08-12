@@ -588,7 +588,7 @@ name|preset
 init|=
 name|InternalBibtexFields
 operator|.
-name|getAllFieldNames
+name|getAllPublicFieldNames
 argument_list|()
 decl_stmt|;
 DECL|field|lastSelected
@@ -2258,12 +2258,14 @@ operator|.
 name|isPresent
 argument_list|()
 operator|&&
+operator|(
 name|type
 operator|.
 name|get
 argument_list|()
 operator|instanceof
 name|CustomEntryType
+operator|)
 condition|)
 block|{
 if|if
@@ -2598,7 +2600,6 @@ operator|==
 name|typeComp
 condition|)
 block|{
-comment|//System.out.println("add: "+e.getActionCommand());
 name|typeComp
 operator|.
 name|selectField

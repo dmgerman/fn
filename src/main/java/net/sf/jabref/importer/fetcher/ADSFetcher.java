@@ -164,22 +164,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
-operator|.
-name|help
-operator|.
-name|HelpFiles
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|importer
 operator|.
 name|ImportInspector
@@ -240,6 +224,22 @@ name|jabref
 operator|.
 name|logic
 operator|.
+name|help
+operator|.
+name|HelpFile
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
 name|l10n
 operator|.
 name|Localization
@@ -275,6 +275,22 @@ operator|.
 name|entry
 operator|.
 name|BibEntry
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|FieldName
 import|;
 end_import
 
@@ -350,12 +366,12 @@ annotation|@
 name|Override
 DECL|method|getHelpPage ()
 specifier|public
-name|HelpFiles
+name|HelpFile
 name|getHelpPage
 parameter_list|()
 block|{
 return|return
-name|HelpFiles
+name|HelpFile
 operator|.
 name|FETCHER_ADS
 return|;
@@ -692,7 +708,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"An Exception occurred while accessing '%0'"
+literal|"An exception occurred while accessing '%0'"
 argument_list|,
 name|url
 argument_list|)
@@ -733,7 +749,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"An Error occurred while fetching from ADS (%0):"
+literal|"An error occurred while fetching from ADS (%0):"
 argument_list|,
 name|url
 argument_list|)
@@ -902,7 +918,9 @@ operator|.
 name|isStartElement
 argument_list|()
 operator|&&
-literal|"abstract"
+name|FieldName
+operator|.
+name|ABSTRACT
 operator|.
 name|equals
 argument_list|(
@@ -978,7 +996,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"abstract"
+name|FieldName
+operator|.
+name|ABSTRACT
 argument_list|,
 name|abstractText
 argument_list|)
@@ -998,7 +1018,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"An Error occurred while parsing abstract"
+literal|"An error occurred while parsing abstract"
 argument_list|)
 argument_list|,
 name|getTitle
@@ -1024,7 +1044,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"An Exception occurred while accessing '%0'"
+literal|"An exception occurred while accessing '%0'"
 argument_list|,
 name|url
 argument_list|)
@@ -1056,7 +1076,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"An Error occurred while fetching from ADS (%0):"
+literal|"An error occurred while fetching from ADS (%0):"
 argument_list|,
 name|url
 argument_list|)

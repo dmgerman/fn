@@ -138,22 +138,6 @@ name|FieldTextMenu
 import|;
 end_import
 
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|entry
-operator|.
-name|EntryUtil
-import|;
-end_import
-
 begin_comment
 comment|/**  * An implementation of the FieldEditor backed by a JTextArea.  * Used for multi-line input, currently all BibTexFields except Bibtex key!  */
 end_comment
@@ -215,7 +199,8 @@ name|addFocusListener
 argument_list|(
 name|Globals
 operator|.
-name|focusListener
+name|getFocusListener
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|addFocusListener
@@ -275,18 +260,7 @@ operator|=
 operator|new
 name|FieldNameLabel
 argument_list|(
-literal|' '
-operator|+
-name|EntryUtil
-operator|.
-name|capitalizeFirst
-argument_list|(
-name|this
-operator|.
 name|fieldName
-argument_list|)
-operator|+
-literal|' '
 argument_list|)
 expr_stmt|;
 name|setBackground

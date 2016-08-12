@@ -20,13 +20,17 @@ end_package
 
 begin_import
 import|import
-name|javax
+name|net
 operator|.
-name|swing
+name|sf
 operator|.
-name|undo
+name|jabref
 operator|.
-name|AbstractUndoableEdit
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
 import|;
 end_import
 
@@ -40,9 +44,11 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|l10n
+name|util
 operator|.
-name|Localization
+name|strings
+operator|.
+name|StringUtil
 import|;
 end_import
 
@@ -88,7 +94,7 @@ specifier|public
 class|class
 name|UndoableKeyChange
 extends|extends
-name|AbstractUndoableEdit
+name|AbstractUndoableJabRefEdit
 block|{
 DECL|field|entry
 specifier|private
@@ -169,59 +175,35 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"change key"
-argument_list|)
-return|;
-block|}
-annotation|@
-name|Override
-DECL|method|getUndoPresentationName ()
-specifier|public
-name|String
-name|getUndoPresentationName
-parameter_list|()
-block|{
-return|return
+literal|"change key from %0 to %1"
+argument_list|,
+name|StringUtil
+operator|.
+name|boldHTML
+argument_list|(
+name|oldValue
+argument_list|,
 name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Undo"
+literal|"undefined"
 argument_list|)
-operator|+
-literal|": "
-operator|+
+argument_list|)
+argument_list|,
+name|StringUtil
+operator|.
+name|boldHTML
+argument_list|(
+name|newValue
+argument_list|,
 name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"change key"
+literal|"undefined"
 argument_list|)
-return|;
-block|}
-annotation|@
-name|Override
-DECL|method|getRedoPresentationName ()
-specifier|public
-name|String
-name|getRedoPresentationName
-parameter_list|()
-block|{
-return|return
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Redo"
 argument_list|)
-operator|+
-literal|": "
-operator|+
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"change key"
 argument_list|)
 return|;
 block|}

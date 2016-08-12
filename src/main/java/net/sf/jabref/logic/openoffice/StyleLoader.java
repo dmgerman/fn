@@ -110,9 +110,9 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|journals
+name|layout
 operator|.
-name|JournalAbbreviationLoader
+name|LayoutFormatterPreferences
 import|;
 end_import
 
@@ -203,12 +203,6 @@ argument_list|,
 name|DEFAULT_NUMERICAL_STYLE_PATH
 argument_list|)
 decl_stmt|;
-DECL|field|journalAbbreviationLoader
-specifier|private
-specifier|final
-name|JournalAbbreviationLoader
-name|journalAbbreviationLoader
-decl_stmt|;
 DECL|field|preferences
 specifier|private
 specifier|final
@@ -220,6 +214,12 @@ specifier|private
 specifier|final
 name|Charset
 name|encoding
+decl_stmt|;
+DECL|field|layoutFormatterPreferences
+specifier|private
+specifier|final
+name|LayoutFormatterPreferences
+name|layoutFormatterPreferences
 decl_stmt|;
 comment|// Lists of the internal
 comment|// and external styles
@@ -251,15 +251,15 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
-DECL|method|StyleLoader (OpenOfficePreferences preferences, JournalAbbreviationLoader journalAbbreviationLoader, Charset encoding)
+DECL|method|StyleLoader (OpenOfficePreferences preferences, LayoutFormatterPreferences jabrefPreferences, Charset encoding)
 specifier|public
 name|StyleLoader
 parameter_list|(
 name|OpenOfficePreferences
 name|preferences
 parameter_list|,
-name|JournalAbbreviationLoader
-name|journalAbbreviationLoader
+name|LayoutFormatterPreferences
+name|jabrefPreferences
 parameter_list|,
 name|Charset
 name|encoding
@@ -267,24 +267,24 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|journalAbbreviationLoader
+name|preferences
 operator|=
 name|Objects
 operator|.
 name|requireNonNull
 argument_list|(
-name|journalAbbreviationLoader
+name|preferences
 argument_list|)
 expr_stmt|;
 name|this
 operator|.
-name|preferences
+name|layoutFormatterPreferences
 operator|=
 name|Objects
 operator|.
 name|requireNonNull
 argument_list|(
-name|preferences
+name|jabrefPreferences
 argument_list|)
 expr_stmt|;
 name|this
@@ -369,7 +369,7 @@ argument_list|(
 name|filename
 argument_list|)
 argument_list|,
-name|journalAbbreviationLoader
+name|layoutFormatterPreferences
 argument_list|,
 name|encoding
 argument_list|)
@@ -523,7 +523,7 @@ argument_list|(
 name|filename
 argument_list|)
 argument_list|,
-name|journalAbbreviationLoader
+name|layoutFormatterPreferences
 argument_list|,
 name|encoding
 argument_list|)
@@ -632,7 +632,7 @@ name|OOBibStyle
 argument_list|(
 name|filename
 argument_list|,
-name|journalAbbreviationLoader
+name|layoutFormatterPreferences
 argument_list|)
 argument_list|)
 expr_stmt|;

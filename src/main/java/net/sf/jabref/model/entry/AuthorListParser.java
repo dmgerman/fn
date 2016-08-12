@@ -60,6 +60,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Set
 import|;
 end_import
@@ -344,27 +354,16 @@ name|length
 argument_list|()
 condition|)
 block|{
-name|Author
-name|author
-init|=
 name|getAuthor
 argument_list|()
-decl_stmt|;
-if|if
-condition|(
-name|author
-operator|!=
-literal|null
-condition|)
-block|{
-name|authors
 operator|.
-name|add
+name|ifPresent
 argument_list|(
-name|author
+name|authors
+operator|::
+name|add
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 return|return
 operator|new
@@ -374,10 +373,13 @@ name|authors
 argument_list|)
 return|;
 block|}
-comment|/**      * Parses one author name and returns preformatted information.      *      * @return Preformatted author name;<CODE>null</CODE> if author name is      * empty.      */
+comment|/**      * Parses one author name and returns preformatted information.      *      * @return Preformatted author name;<CODE>Optional.empty()</CODE> if author name is      * empty.      */
 DECL|method|getAuthor ()
 specifier|private
+name|Optional
+argument_list|<
 name|Author
+argument_list|>
 name|getAuthor
 parameter_list|()
 block|{
@@ -564,6 +566,7 @@ block|{
 name|int
 name|previousTermToken
 init|=
+operator|(
 name|tokens
 operator|.
 name|size
@@ -572,14 +575,17 @@ operator|-
 name|TOKEN_GROUP_LENGTH
 operator|-
 name|TOKEN_GROUP_LENGTH
+operator|)
 operator|+
 name|OFFSET_TOKEN_TERM
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|previousTermToken
 operator|>=
 literal|0
+operator|)
 operator|&&
 name|tokens
 operator|.
@@ -648,7 +654,10 @@ argument_list|()
 condition|)
 block|{
 return|return
-literal|null
+name|Optional
+operator|.
+name|empty
+argument_list|()
 return|;
 comment|// no author information
 block|}
@@ -1138,13 +1147,17 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|firstPart
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 name|lastPart
 operator|!=
 literal|null
+operator|)
 operator|&&
 name|lastPart
 operator|.
@@ -1156,18 +1169,24 @@ name|toUpperCase
 argument_list|()
 argument_list|)
 operator|&&
+operator|(
 name|lastPart
 operator|.
 name|length
 argument_list|()
 operator|<
 literal|5
+operator|)
 condition|)
 block|{
 comment|// The last part is a small string in complete upper case, so interpret it as initial of the first name
 comment|// This is the case for example in "Smith SH" which we think of as lastname=Smith and firstname=SH
 comment|// The length< 5 constraint should allow for "Smith S.H." as input
 return|return
+name|Optional
+operator|.
+name|of
+argument_list|(
 operator|new
 name|Author
 argument_list|(
@@ -1181,11 +1200,16 @@ name|firstPart
 argument_list|,
 name|jrPart
 argument_list|)
+argument_list|)
 return|;
 block|}
 else|else
 block|{
 return|return
+name|Optional
+operator|.
+name|of
+argument_list|(
 operator|new
 name|Author
 argument_list|(
@@ -1198,6 +1222,7 @@ argument_list|,
 name|lastPart
 argument_list|,
 name|jrPart
+argument_list|)
 argument_list|)
 return|;
 block|}
@@ -1529,13 +1554,17 @@ literal|0
 operator|)
 operator|&&
 operator|(
+operator|(
 name|bracesLevel
 operator|==
 literal|0
+operator|)
 operator|||
+operator|(
 name|c
 operator|==
 literal|'{'
+operator|)
 operator|)
 condition|)
 block|{

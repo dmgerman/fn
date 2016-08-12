@@ -104,7 +104,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
+name|logic
+operator|.
+name|TypedBibEntry
 import|;
 end_import
 
@@ -118,7 +120,9 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|TypedBibEntry
+name|util
+operator|.
+name|OS
 import|;
 end_import
 
@@ -218,20 +222,6 @@ name|InternalBibtexFields
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Strings
-import|;
-end_import
-
 begin_class
 DECL|class|BibEntryWriter
 specifier|public
@@ -303,7 +293,7 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Writes the given BibEntry using the given writer      *      * @param entry The entry to write      * @param out The writer to use      * @param bibDatabaseMode The database mode (bibtex or biblatex)      * @param reformat Should the entry be in any case, even if no change occurred?      */
+comment|/**      * Writes the given BibEntry using the given writer      *      * @param entry           The entry to write      * @param out             The writer to use      * @param bibDatabaseMode The database mode (bibtex or biblatex)      * @param reformat        Should the entry be in any case, even if no change occurred?      */
 DECL|method|write (BibEntry entry, Writer out, BibDatabaseMode bibDatabaseMode, Boolean reformat)
 specifier|public
 name|void
@@ -349,11 +339,18 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
+name|writeUserComments
+argument_list|(
+name|entry
+argument_list|,
+name|out
+argument_list|)
+expr_stmt|;
 name|out
 operator|.
 name|write
 argument_list|(
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 argument_list|)
@@ -371,11 +368,55 @@ name|out
 operator|.
 name|write
 argument_list|(
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 argument_list|)
 expr_stmt|;
+block|}
+DECL|method|writeUserComments (BibEntry entry, Writer out)
+specifier|private
+name|void
+name|writeUserComments
+parameter_list|(
+name|BibEntry
+name|entry
+parameter_list|,
+name|Writer
+name|out
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+name|String
+name|userComments
+init|=
+name|entry
+operator|.
+name|getUserComments
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+operator|!
+name|userComments
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+name|out
+operator|.
+name|write
+argument_list|(
+name|userComments
+operator|+
+name|OS
+operator|.
+name|NEWLINE
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 DECL|method|writeWithoutPrependedNewlines (BibEntry entry, Writer out, BibDatabaseMode bibDatabaseMode)
 specifier|public
@@ -455,11 +496,6 @@ operator|new
 name|TypedBibEntry
 argument_list|(
 name|entry
-argument_list|,
-name|Optional
-operator|.
-name|empty
-argument_list|()
 argument_list|,
 name|bibDatabaseMode
 argument_list|)
@@ -759,13 +795,13 @@ name|keyField
 operator|+
 literal|','
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Write a single field, if it has any content.      *      * @param entry             the entry to write      * @param out               the target of the write      * @param name              The field name      * @throws IOException In case of an IO error      */
+comment|/**      * Write a single field, if it has any content.      *      * @param entry the entry to write      * @param out   the target of the write      * @param name  The field name      * @throws IOException In case of an IO error      */
 DECL|method|writeField (BibEntry entry, Writer out, String name, int indentation)
 specifier|private
 name|void
@@ -786,27 +822,33 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+name|Optional
+argument_list|<
 name|String
+argument_list|>
 name|field
 init|=
 name|entry
 operator|.
-name|getField
+name|getFieldOptional
 argument_list|(
 name|name
 argument_list|)
 decl_stmt|;
-comment|// only write field if is is not empty or if empty fields should be included
-comment|// the first condition mirrors mirror behavior of com.jgoodies.common.base.Strings.isNotBlank(str)
+comment|// only write field if is is not empty
+comment|// field.ifPresent does not work as an IOException may be thrown
 if|if
 condition|(
-operator|!
-name|Strings
-operator|.
-name|nullToEmpty
-argument_list|(
 name|field
-argument_list|)
+operator|.
+name|isPresent
+argument_list|()
+operator|&&
+operator|!
+name|field
+operator|.
+name|get
+argument_list|()
 operator|.
 name|trim
 argument_list|()
@@ -840,6 +882,9 @@ operator|.
 name|format
 argument_list|(
 name|field
+operator|.
+name|get
+argument_list|()
 argument_list|,
 name|name
 argument_list|)
@@ -851,7 +896,7 @@ name|write
 argument_list|(
 literal|','
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 argument_list|)
@@ -900,7 +945,9 @@ init|=
 name|field
 lambda|->
 operator|!
-literal|"bibtexkey"
+name|BibEntry
+operator|.
+name|KEY_FIELD
 operator|.
 name|equals
 argument_list|(

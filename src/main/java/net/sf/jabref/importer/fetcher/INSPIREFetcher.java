@@ -140,22 +140,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
-operator|.
-name|help
-operator|.
-name|HelpFiles
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|importer
 operator|.
 name|ImportInspector
@@ -203,6 +187,22 @@ operator|.
 name|fileformat
 operator|.
 name|BibtexParser
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|help
+operator|.
+name|HelpFile
 import|;
 end_import
 
@@ -513,7 +513,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"An Exception occurred while accessing '%0'"
+literal|"An exception occurred while accessing '%0'"
 argument_list|,
 name|url
 argument_list|)
@@ -540,12 +540,12 @@ annotation|@
 name|Override
 DECL|method|getHelpPage ()
 specifier|public
-name|HelpFiles
+name|HelpFile
 name|getHelpPage
 parameter_list|()
 block|{
 return|return
-name|HelpFiles
+name|HelpFile
 operator|.
 name|FETCHER_INSPIRE
 return|;

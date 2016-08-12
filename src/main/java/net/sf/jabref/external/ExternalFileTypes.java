@@ -28,16 +28,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Collection
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|List
 import|;
 end_import
@@ -81,18 +71,6 @@ operator|.
 name|jabref
 operator|.
 name|Globals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|JabRefPreferences
 import|;
 end_import
 
@@ -157,6 +135,20 @@ operator|.
 name|entry
 operator|.
 name|FileField
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|preferences
+operator|.
+name|JabRefPreferences
 import|;
 end_import
 
@@ -995,7 +987,7 @@ return|;
 block|}
 DECL|method|getExternalFileTypeSelection ()
 specifier|public
-name|Collection
+name|Set
 argument_list|<
 name|ExternalFileType
 argument_list|>
@@ -1609,7 +1601,9 @@ name|prefs
 operator|.
 name|put
 argument_list|(
-literal|"externalFileTypes"
+name|JabRefPreferences
+operator|.
+name|EXTERNAL_FILE_TYPES
 argument_list|,
 name|FileField
 operator|.

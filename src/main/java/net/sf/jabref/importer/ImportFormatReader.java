@@ -1268,7 +1268,7 @@ name|IOException
 name|ex
 parameter_list|)
 block|{
-comment|// The import didn't succeed. Go on.
+comment|// The import did not succeed. Go on.
 block|}
 block|}
 if|if

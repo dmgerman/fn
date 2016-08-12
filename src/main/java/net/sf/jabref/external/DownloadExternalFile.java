@@ -805,7 +805,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-comment|// If we didn't find a file type from the MIME type, try based on extension:
+comment|// If we did not find a file type from the MIME type, try based on extension:
 name|suffix
 operator|=
 name|getSuffix
@@ -1162,12 +1162,9 @@ name|directory
 operator|.
 name|endsWith
 argument_list|(
-name|System
+name|OS
 operator|.
-name|getProperty
-argument_list|(
-literal|"file.separator"
-argument_list|)
+name|FILE_SEPARATOR
 argument_list|)
 condition|)
 block|{
@@ -1182,12 +1179,9 @@ name|dirPrefix
 operator|=
 name|directory
 operator|+
-name|System
+name|OS
 operator|.
-name|getProperty
-argument_list|(
-literal|"file.separator"
-argument_list|)
+name|FILE_SEPARATOR
 expr_stmt|;
 block|}
 block|}
@@ -1377,12 +1371,9 @@ name|dirPrefix
 init|=
 name|directory
 operator|+
-name|System
+name|OS
 operator|.
-name|getProperty
-argument_list|(
-literal|"file.separator"
-argument_list|)
+name|FILE_SEPARATOR
 decl_stmt|;
 if|if
 condition|(
@@ -1501,6 +1492,10 @@ argument_list|,
 name|Globals
 operator|.
 name|journalAbbreviationLoader
+argument_list|,
+name|Globals
+operator|.
+name|prefs
 argument_list|)
 decl_stmt|;
 if|if

@@ -40,13 +40,17 @@ end_import
 
 begin_import
 import|import
-name|javax
+name|net
 operator|.
-name|swing
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
 operator|.
 name|undo
 operator|.
-name|AbstractUndoableEdit
+name|AbstractUndoableJabRefEdit
 import|;
 end_import
 
@@ -66,29 +70,13 @@ name|GroupTreeNode
 import|;
 end_import
 
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
-name|l10n
-operator|.
-name|Localization
-import|;
-end_import
-
 begin_class
 DECL|class|UndoableModifySubtree
 specifier|public
 class|class
 name|UndoableModifySubtree
 extends|extends
-name|AbstractUndoableEdit
+name|AbstractUndoableJabRefEdit
 block|{
 comment|/** A backup of the groups before the modification */
 DECL|field|m_groupRoot
@@ -183,43 +171,13 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|getUndoPresentationName ()
+DECL|method|getPresentationName ()
 specifier|public
 name|String
-name|getUndoPresentationName
+name|getPresentationName
 parameter_list|()
 block|{
 return|return
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Undo"
-argument_list|)
-operator|+
-literal|": "
-operator|+
-name|m_name
-return|;
-block|}
-annotation|@
-name|Override
-DECL|method|getRedoPresentationName ()
-specifier|public
-name|String
-name|getRedoPresentationName
-parameter_list|()
-block|{
-return|return
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Redo"
-argument_list|)
-operator|+
-literal|": "
-operator|+
 name|m_name
 return|;
 block|}

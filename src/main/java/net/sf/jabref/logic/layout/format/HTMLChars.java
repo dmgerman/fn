@@ -38,18 +38,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|logic
 operator|.
 name|layout
@@ -277,7 +265,7 @@ operator|.
 name|toString
 argument_list|()
 decl_stmt|;
-name|Object
+name|String
 name|result
 init|=
 name|HTML_CHARS
@@ -308,9 +296,6 @@ name|sb
 operator|.
 name|append
 argument_list|(
-operator|(
-name|String
-operator|)
 name|result
 argument_list|)
 expr_stmt|;
@@ -370,7 +355,7 @@ operator|==
 literal|'%'
 operator|)
 operator|||
-name|Globals
+name|StringUtil
 operator|.
 name|SPECIAL_COMMAND_CHARS
 operator|.
@@ -425,7 +410,7 @@ operator|==
 literal|1
 operator|)
 operator|&&
-name|Globals
+name|StringUtil
 operator|.
 name|SPECIAL_COMMAND_CHARS
 operator|.
@@ -479,7 +464,7 @@ name|i
 argument_list|)
 expr_stmt|;
 name|String
-name|combody
+name|commandBody
 decl_stmt|;
 if|if
 condition|(
@@ -509,14 +494,14 @@ operator|.
 name|length
 argument_list|()
 expr_stmt|;
-name|combody
+name|commandBody
 operator|=
 name|part
 expr_stmt|;
 block|}
 else|else
 block|{
-name|combody
+name|commandBody
 operator|=
 name|field
 operator|.
@@ -530,7 +515,7 @@ literal|1
 argument_list|)
 expr_stmt|;
 block|}
-name|Object
+name|String
 name|result
 init|=
 name|HTML_CHARS
@@ -539,13 +524,13 @@ name|get
 argument_list|(
 name|command
 operator|+
-name|combody
+name|commandBody
 argument_list|)
 decl_stmt|;
 if|if
 condition|(
 name|result
-operator|!=
+operator|==
 literal|null
 condition|)
 block|{
@@ -553,9 +538,16 @@ name|sb
 operator|.
 name|append
 argument_list|(
-operator|(
-name|String
-operator|)
+name|commandBody
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|sb
+operator|.
+name|append
+argument_list|(
 name|result
 argument_list|)
 expr_stmt|;
@@ -594,7 +586,7 @@ operator|.
 name|toString
 argument_list|()
 decl_stmt|;
-name|Object
+name|String
 name|result
 init|=
 name|HTML_CHARS
@@ -626,9 +618,6 @@ name|sb
 operator|.
 name|append
 argument_list|(
-operator|(
-name|String
-operator|)
 name|result
 argument_list|)
 expr_stmt|;
@@ -807,7 +796,7 @@ literal|null
 condition|)
 block|{
 comment|// handle common case of general latex command
-name|Object
+name|String
 name|result
 init|=
 name|HTML_CHARS
@@ -829,6 +818,28 @@ operator|==
 literal|null
 condition|)
 block|{
+if|if
+condition|(
+name|argument
+operator|.
+name|length
+argument_list|()
+operator|==
+literal|0
+condition|)
+block|{
+comment|// Maybe a separator, such as in \LaTeX{}, so use command
+name|sb
+operator|.
+name|append
+argument_list|(
+name|command
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+comment|// Otherwise, use argument
 name|sb
 operator|.
 name|append
@@ -837,15 +848,13 @@ name|argument
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 else|else
 block|{
 name|sb
 operator|.
 name|append
 argument_list|(
-operator|(
-name|String
-operator|)
 name|result
 argument_list|)
 expr_stmt|;
@@ -863,7 +872,7 @@ block|{
 comment|// This end brace terminates a command. This can be the case in
 comment|// constructs like {\aa}. The correct behaviour should be to
 comment|// substitute the evaluated command and swallow the brace:
-name|Object
+name|String
 name|result
 init|=
 name|HTML_CHARS
@@ -895,9 +904,6 @@ name|sb
 operator|.
 name|append
 argument_list|(
-operator|(
-name|String
-operator|)
 name|result
 argument_list|)
 expr_stmt|;
@@ -905,7 +911,7 @@ block|}
 block|}
 else|else
 block|{
-name|Object
+name|String
 name|result
 init|=
 name|HTML_CHARS
@@ -936,9 +942,6 @@ name|sb
 operator|.
 name|append
 argument_list|(
-operator|(
-name|String
-operator|)
 name|result
 argument_list|)
 expr_stmt|;

@@ -122,11 +122,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
-operator|.
-name|help
-operator|.
-name|HelpFiles
+name|Globals
 import|;
 end_import
 
@@ -155,6 +151,22 @@ operator|.
 name|importer
 operator|.
 name|OutputPrinter
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|help
+operator|.
+name|HelpFile
 import|;
 end_import
 
@@ -333,12 +345,12 @@ annotation|@
 name|Override
 DECL|method|getHelpPage ()
 specifier|public
-name|HelpFiles
+name|HelpFile
 name|getHelpPage
 parameter_list|()
 block|{
 return|return
-name|HelpFiles
+name|HelpFile
 operator|.
 name|FETCHER_SCIENCEDIRECT
 return|;
@@ -682,7 +694,14 @@ name|urlQuery
 argument_list|)
 operator|.
 name|downloadToString
+argument_list|(
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getDefaultEncoding
 argument_list|()
+argument_list|)
 decl_stmt|;
 name|Matcher
 name|m

@@ -70,6 +70,22 @@ name|JournalAbbreviationLoader
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|journals
+operator|.
+name|JournalAbbreviationPreferences
+import|;
+end_import
+
 begin_class
 DECL|class|JournalAutoCompleter
 specifier|public
@@ -83,6 +99,12 @@ specifier|private
 specifier|final
 name|JournalAbbreviationLoader
 name|abbreviationLoader
+decl_stmt|;
+DECL|field|journalAbbreviationPreferences
+specifier|private
+specifier|final
+name|JournalAbbreviationPreferences
+name|journalAbbreviationPreferences
 decl_stmt|;
 DECL|method|JournalAutoCompleter (String fieldName, AutoCompletePreferences preferences, JournalAbbreviationLoader abbreviationLoader)
 name|JournalAutoCompleter
@@ -114,6 +136,15 @@ name|requireNonNull
 argument_list|(
 name|abbreviationLoader
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|journalAbbreviationPreferences
+operator|=
+name|preferences
+operator|.
+name|getJournalAbbreviationPreferences
+argument_list|()
 expr_stmt|;
 block|}
 annotation|@
@@ -152,7 +183,9 @@ range|:
 name|abbreviationLoader
 operator|.
 name|getRepository
-argument_list|()
+argument_list|(
+name|journalAbbreviationPreferences
+argument_list|)
 operator|.
 name|getAbbreviations
 argument_list|()

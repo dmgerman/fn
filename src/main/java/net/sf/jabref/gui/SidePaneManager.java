@@ -138,6 +138,8 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|preferences
+operator|.
 name|JabRefPreferences
 import|;
 end_import
@@ -351,8 +353,8 @@ name|String
 name|name
 parameter_list|)
 block|{
-name|Object
-name|o
+name|SidePaneComponent
+name|sidePaneComponent
 init|=
 name|components
 operator|.
@@ -363,7 +365,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|o
+name|sidePaneComponent
 operator|==
 literal|null
 condition|)
@@ -379,7 +381,7 @@ name|visible
 operator|.
 name|contains
 argument_list|(
-name|o
+name|sidePaneComponent
 argument_list|)
 return|;
 block|}
@@ -427,8 +429,8 @@ name|String
 name|name
 parameter_list|)
 block|{
-name|Object
-name|o
+name|SidePaneComponent
+name|sidePaneComponent
 init|=
 name|components
 operator|.
@@ -439,7 +441,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|o
+name|sidePaneComponent
 operator|==
 literal|null
 condition|)
@@ -460,10 +462,7 @@ else|else
 block|{
 name|show
 argument_list|(
-operator|(
-name|SidePaneComponent
-operator|)
-name|o
+name|sidePaneComponent
 argument_list|)
 expr_stmt|;
 block|}
@@ -478,8 +477,8 @@ name|String
 name|name
 parameter_list|)
 block|{
-name|Object
-name|o
+name|SidePaneComponent
+name|sidePaneComponent
 init|=
 name|components
 operator|.
@@ -490,7 +489,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|o
+name|sidePaneComponent
 operator|==
 literal|null
 condition|)
@@ -511,10 +510,7 @@ else|else
 block|{
 name|hideComponent
 argument_list|(
-operator|(
-name|SidePaneComponent
-operator|)
-name|o
+name|sidePaneComponent
 argument_list|)
 expr_stmt|;
 block|}

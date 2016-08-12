@@ -146,18 +146,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|JabRefPreferences
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|gui
 operator|.
 name|PreviewPanel
@@ -188,11 +176,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|model
+name|logic
 operator|.
-name|entry
+name|util
 operator|.
-name|BibEntry
+name|TestEntry
 import|;
 end_import
 
@@ -204,11 +192,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|model
+name|preferences
 operator|.
-name|entry
-operator|.
-name|IdGenerator
+name|JabRefPreferences
 import|;
 end_import
 
@@ -414,12 +400,6 @@ name|JScrollPane
 argument_list|(
 name|layout2
 argument_list|)
-decl_stmt|;
-DECL|field|entry
-specifier|private
-specifier|static
-name|BibEntry
-name|entry
 decl_stmt|;
 DECL|method|PreviewPrefsTab (JabRefPreferences prefs)
 specifier|public
@@ -1143,11 +1123,6 @@ argument_list|(
 name|e
 lambda|->
 block|{
-name|PreviewPrefsTab
-operator|.
-name|getTestEntry
-argument_list|()
-expr_stmt|;
 try|try
 block|{
 name|PreviewPanel
@@ -1158,9 +1133,10 @@ name|PreviewPanel
 argument_list|(
 literal|null
 argument_list|,
-name|PreviewPrefsTab
+name|TestEntry
 operator|.
-name|entry
+name|getTestEntry
+argument_list|()
 argument_list|,
 literal|null
 argument_list|,
@@ -1271,11 +1247,6 @@ argument_list|(
 name|e
 lambda|->
 block|{
-name|PreviewPrefsTab
-operator|.
-name|getTestEntry
-argument_list|()
-expr_stmt|;
 try|try
 block|{
 name|PreviewPanel
@@ -1286,9 +1257,10 @@ name|PreviewPanel
 argument_list|(
 literal|null
 argument_list|,
-name|PreviewPrefsTab
+name|TestEntry
 operator|.
-name|entry
+name|getTestEntry
+argument_list|()
 argument_list|,
 literal|null
 argument_list|,
@@ -1396,228 +1368,6 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
-block|}
-DECL|method|getTestEntry ()
-specifier|private
-specifier|static
-name|BibEntry
-name|getTestEntry
-parameter_list|()
-block|{
-if|if
-condition|(
-name|PreviewPrefsTab
-operator|.
-name|entry
-operator|!=
-literal|null
-condition|)
-block|{
-return|return
-name|PreviewPrefsTab
-operator|.
-name|entry
-return|;
-block|}
-name|PreviewPrefsTab
-operator|.
-name|entry
-operator|=
-operator|new
-name|BibEntry
-argument_list|(
-name|IdGenerator
-operator|.
-name|next
-argument_list|()
-argument_list|,
-literal|"article"
-argument_list|)
-expr_stmt|;
-name|PreviewPrefsTab
-operator|.
-name|entry
-operator|.
-name|setCiteKey
-argument_list|(
-literal|"conceicao1997"
-argument_list|)
-expr_stmt|;
-name|PreviewPrefsTab
-operator|.
-name|entry
-operator|.
-name|setField
-argument_list|(
-literal|"author"
-argument_list|,
-literal|"Luis E. C. Conceic{\\~a}o and Terje van der Meeren and Johan A. J. Verreth and M S. Evjen and D. F. Houlihan and H. J. Fyhn"
-argument_list|)
-expr_stmt|;
-name|PreviewPrefsTab
-operator|.
-name|entry
-operator|.
-name|setField
-argument_list|(
-literal|"title"
-argument_list|,
-literal|"Amino acid metabolism and protein turnover in larval turbot (Scophthalmus maximus) fed natural zooplankton or Artemia"
-argument_list|)
-expr_stmt|;
-name|PreviewPrefsTab
-operator|.
-name|entry
-operator|.
-name|setField
-argument_list|(
-literal|"year"
-argument_list|,
-literal|"1997"
-argument_list|)
-expr_stmt|;
-name|PreviewPrefsTab
-operator|.
-name|entry
-operator|.
-name|setField
-argument_list|(
-literal|"journal"
-argument_list|,
-literal|"Marine Biology"
-argument_list|)
-expr_stmt|;
-name|PreviewPrefsTab
-operator|.
-name|entry
-operator|.
-name|setField
-argument_list|(
-literal|"month"
-argument_list|,
-literal|"January"
-argument_list|)
-expr_stmt|;
-name|PreviewPrefsTab
-operator|.
-name|entry
-operator|.
-name|setField
-argument_list|(
-literal|"number"
-argument_list|,
-literal|"2"
-argument_list|)
-expr_stmt|;
-name|PreviewPrefsTab
-operator|.
-name|entry
-operator|.
-name|setField
-argument_list|(
-literal|"volume"
-argument_list|,
-literal|"123"
-argument_list|)
-expr_stmt|;
-name|PreviewPrefsTab
-operator|.
-name|entry
-operator|.
-name|setField
-argument_list|(
-literal|"pdf"
-argument_list|,
-literal|"conceicao1997.pdf"
-argument_list|)
-expr_stmt|;
-name|PreviewPrefsTab
-operator|.
-name|entry
-operator|.
-name|setField
-argument_list|(
-literal|"pages"
-argument_list|,
-literal|"255--265"
-argument_list|)
-expr_stmt|;
-name|PreviewPrefsTab
-operator|.
-name|entry
-operator|.
-name|setField
-argument_list|(
-literal|"keywords"
-argument_list|,
-literal|"energetics, artemia, metabolism, amino acid, turbot"
-argument_list|)
-expr_stmt|;
-name|PreviewPrefsTab
-operator|.
-name|entry
-operator|.
-name|setField
-argument_list|(
-literal|"url"
-argument_list|,
-literal|"http://ejournals.ebsco.com/direct.asp?ArticleID=TYY4NT82XA9H7R8PFPPV"
-argument_list|)
-expr_stmt|;
-name|PreviewPrefsTab
-operator|.
-name|entry
-operator|.
-name|setField
-argument_list|(
-literal|"abstract"
-argument_list|,
-literal|"Abstract The present paper studied the influence of different food regimes "
-operator|+
-literal|"on the free amino acid (FAA) pool, the rate of protein turnover, the flux of amino acids, and "
-operator|+
-literal|"their relation to growth of larval turbot (Scophthalmus maximus L.) from first feeding until "
-operator|+
-literal|"metamorphosis. The amino acid profile of protein was stable during the larval period although "
-operator|+
-literal|"some small, but significant, differences were found. Turbot larvae had proteins which were rich "
-operator|+
-literal|"in leucine and aspartate, and poor in glutamate, suggesting a high leucine requirement. The "
-operator|+
-literal|"profile of the FAA pool was highly variable and quite different from the amino acid profile in "
-operator|+
-literal|"protein. The proportion of essential FAA decreased with development. High contents of free tyrosine "
-operator|+
-literal|"and phenylalanine were found on Day 3, while free taurine was present at high levels throughout "
-operator|+
-literal|"the experimental period. Larval growth rates were positively correlated with taurine levels, "
-operator|+
-literal|"suggesting a dietary dependency for taurine and/or sulphur amino acids.\n\nReduced growth rates in "
-operator|+
-literal|"Artemia-fed larvae were associated with lower levels of free methionine, indicating that this diet "
-operator|+
-literal|"is deficient in methionine for turbot larvae. Leucine might also be limiting turbot growth as the "
-operator|+
-literal|"different diet organisms had lower levels of this amino acid in the free pool than was found in the "
-operator|+
-literal|"larval protein. A previously presented model was used to describe the flux of amino acids in growing "
-operator|+
-literal|"turbot larvae. The FAA pool was found to be small and variable. It was estimated that the daily dietary "
-operator|+
-literal|"amino acid intake might be up to ten times the larval FAA pool. In addition, protein synthesis and "
-operator|+
-literal|"protein degradation might daily remove and return, respectively, the equivalent of up to 20 and 10 "
-operator|+
-literal|"times the size of the FAA pool. In an early phase (Day 11) high growth rates were associated with a "
-operator|+
-literal|"relatively low protein turnover, while at a later stage (Day 17), a much higher turnover was observed."
-argument_list|)
-expr_stmt|;
-return|return
-name|PreviewPrefsTab
-operator|.
-name|entry
-return|;
 block|}
 annotation|@
 name|Override

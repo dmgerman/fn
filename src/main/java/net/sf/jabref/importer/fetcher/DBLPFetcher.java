@@ -86,11 +86,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
-operator|.
-name|help
-operator|.
-name|HelpFiles
+name|Globals
 import|;
 end_import
 
@@ -135,6 +131,22 @@ operator|.
 name|fileformat
 operator|.
 name|BibtexParser
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|help
+operator|.
+name|HelpFile
 import|;
 end_import
 
@@ -376,7 +388,14 @@ init|=
 name|dl
 operator|.
 name|downloadToString
+argument_list|(
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getDefaultEncoding
 argument_list|()
+argument_list|)
 decl_stmt|;
 name|String
 index|[]
@@ -466,9 +485,9 @@ name|MAX_VALUE
 expr_stmt|;
 comment|// 2014-11-08
 comment|// DBLP now shows the BibTeX entry using ugly HTML entities
-comment|// but they also offer the download of a bib file
+comment|// but they also offer the download of a BIB file
 comment|// we find this in the page which we get from "url"
-comment|// and this bib file is then in "biburl"
+comment|// and this BIB file is then in "biburl"
 name|int
 name|count
 init|=
@@ -501,7 +520,14 @@ name|urlStr
 argument_list|)
 operator|.
 name|downloadToString
+argument_list|(
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getDefaultEncoding
 argument_list|()
+argument_list|)
 decl_stmt|;
 specifier|final
 name|String
@@ -592,7 +618,14 @@ name|bibtexUrl
 argument_list|)
 operator|.
 name|downloadToString
+argument_list|(
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getDefaultEncoding
 argument_list|()
+argument_list|)
 decl_stmt|;
 name|Collection
 argument_list|<
@@ -785,12 +818,12 @@ annotation|@
 name|Override
 DECL|method|getHelpPage ()
 specifier|public
-name|HelpFiles
+name|HelpFile
 name|getHelpPage
 parameter_list|()
 block|{
 return|return
-name|HelpFiles
+name|HelpFile
 operator|.
 name|FETCHER_DBLP
 return|;

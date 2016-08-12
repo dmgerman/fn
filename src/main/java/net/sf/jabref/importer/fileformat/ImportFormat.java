@@ -513,13 +513,13 @@ parameter_list|)
 block|{
 if|if
 condition|(
-name|obj
+name|this
 operator|==
-literal|null
+name|obj
 condition|)
 block|{
 return|return
-literal|false
+literal|true
 return|;
 block|}
 if|if

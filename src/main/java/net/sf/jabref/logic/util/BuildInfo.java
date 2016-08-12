@@ -65,8 +65,8 @@ literal|"*unknown*"
 decl_stmt|;
 DECL|field|OS
 specifier|public
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|OS
 init|=
@@ -84,8 +84,8 @@ argument_list|()
 decl_stmt|;
 DECL|field|OS_VERSION
 specifier|public
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|OS_VERSION
 init|=
@@ -103,8 +103,8 @@ argument_list|()
 decl_stmt|;
 DECL|field|OS_ARCH
 specifier|public
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|OS_ARCH
 init|=
@@ -122,8 +122,8 @@ argument_list|()
 decl_stmt|;
 DECL|field|JAVA_VERSION
 specifier|public
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|JAVA_VERSION
 init|=

@@ -66,16 +66,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Arrays
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|Collections
 import|;
 end_import
@@ -109,18 +99,6 @@ operator|.
 name|jabref
 operator|.
 name|Globals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|JabRefPreferences
 import|;
 end_import
 
@@ -340,9 +318,9 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|l10n
+name|bibtexkeypattern
 operator|.
-name|Localization
+name|BibtexKeyPatternPreferences
 import|;
 end_import
 
@@ -356,9 +334,25 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|labelpattern
+name|bibtexkeypattern
 operator|.
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
 import|;
 end_import
 
@@ -393,6 +387,22 @@ operator|.
 name|io
 operator|.
 name|FileUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|xmp
+operator|.
+name|XMPPreferences
 import|;
 end_import
 
@@ -472,7 +482,37 @@ name|model
 operator|.
 name|entry
 operator|.
+name|FieldName
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
 name|IdGenerator
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|preferences
+operator|.
+name|JabRefPreferences
 import|;
 end_import
 
@@ -524,11 +564,13 @@ name|panel
 decl_stmt|;
 DECL|field|entryTable
 specifier|private
+specifier|final
 name|MainTable
 name|entryTable
 decl_stmt|;
 DECL|field|dropRow
 specifier|private
+specifier|final
 name|int
 name|dropRow
 decl_stmt|;
@@ -672,13 +714,15 @@ return|;
 block|}
 block|}
 comment|/**      *      * Imports the PDF files given by fileNames      *      * @param fileNames states the names of the files to import      * @return list of successful created BibTeX entries and list of non-PDF files      */
-DECL|method|importPdfFiles (String[] fileNames)
+DECL|method|importPdfFiles (List<String> fileNames)
 specifier|public
 name|ImportPdfFilesResult
 name|importPdfFiles
 parameter_list|(
+name|List
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|fileNames
 parameter_list|)
 block|{
@@ -695,12 +739,7 @@ operator|new
 name|ArrayList
 argument_list|<>
 argument_list|(
-name|Arrays
-operator|.
-name|asList
-argument_list|(
 name|fileNames
-argument_list|)
 argument_list|)
 decl_stmt|;
 name|List
@@ -764,7 +803,7 @@ name|BibEntry
 argument_list|>
 name|entries
 init|=
-name|importPdfFiles
+name|importPdfFilesInternal
 argument_list|(
 name|files
 argument_list|)
@@ -780,13 +819,13 @@ argument_list|)
 return|;
 block|}
 comment|/**      * @param fileNames - PDF files to import      * @return true if the import succeeded, false otherwise      */
-DECL|method|importPdfFiles (List<String> fileNames)
+DECL|method|importPdfFilesInternal (List<String> fileNames)
 specifier|private
 name|List
 argument_list|<
 name|BibEntry
 argument_list|>
-name|importPdfFiles
+name|importPdfFilesInternal
 parameter_list|(
 name|List
 argument_list|<
@@ -899,6 +938,15 @@ operator|.
 name|get
 argument_list|(
 name|fileName
+argument_list|)
+argument_list|,
+name|XMPPreferences
+operator|.
+name|fromPreferences
+argument_list|(
+name|Globals
+operator|.
+name|prefs
 argument_list|)
 argument_list|)
 condition|)
@@ -1272,9 +1320,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|Globals
+name|FieldName
 operator|.
-name|FILE_FIELD
+name|FILE
 argument_list|,
 name|tm
 operator|.
@@ -1468,7 +1516,7 @@ operator|.
 name|markBaseChanged
 argument_list|()
 expr_stmt|;
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
@@ -1486,6 +1534,15 @@ name|getDatabase
 argument_list|()
 argument_list|,
 name|entry
+argument_list|,
+name|BibtexKeyPatternPreferences
+operator|.
+name|fromPreferences
+argument_list|(
+name|Globals
+operator|.
+name|prefs
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|DroppedFileHandler
@@ -1670,6 +1727,10 @@ argument_list|,
 literal|true
 argument_list|,
 literal|true
+argument_list|,
+name|Globals
+operator|.
+name|prefs
 argument_list|)
 expr_stmt|;
 comment|// Create an UndoableInsertEntry object.

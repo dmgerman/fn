@@ -403,8 +403,13 @@ literal|"FieldChange [entry="
 operator|+
 name|entry
 operator|.
-name|getCiteKey
+name|getCiteKeyOptional
 argument_list|()
+operator|.
+name|orElse
+argument_list|(
+literal|""
+argument_list|)
 operator|+
 literal|", field="
 operator|+

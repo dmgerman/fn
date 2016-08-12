@@ -44,13 +44,11 @@ end_import
 
 begin_import
 import|import
-name|net
+name|java
 operator|.
-name|sf
+name|util
 operator|.
-name|jabref
-operator|.
-name|JabRefPreferences
+name|Optional
 import|;
 end_import
 
@@ -116,6 +114,20 @@ name|EntryType
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|preferences
+operator|.
+name|JabRefPreferences
+import|;
+end_import
+
 begin_class
 DECL|class|CustomEntryTypesManager
 specifier|public
@@ -153,7 +165,10 @@ name|number
 init|=
 literal|0
 decl_stmt|;
+name|Optional
+argument_list|<
 name|CustomEntryType
+argument_list|>
 name|type
 decl_stmt|;
 while|while
@@ -168,8 +183,9 @@ argument_list|(
 name|number
 argument_list|)
 operator|)
-operator|!=
-literal|null
+operator|.
+name|isPresent
+argument_list|()
 condition|)
 block|{
 name|EntryTypes
@@ -177,6 +193,9 @@ operator|.
 name|addOrModifyCustomEntryType
 argument_list|(
 name|type
+operator|.
+name|get
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|ALL
@@ -184,6 +203,9 @@ operator|.
 name|add
 argument_list|(
 name|type
+operator|.
+name|get
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|number

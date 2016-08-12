@@ -123,6 +123,16 @@ name|ActionEvent
 name|evt
 parameter_list|)
 block|{
+if|if
+condition|(
+name|frame
+operator|.
+name|getCurrentBasePanel
+argument_list|()
+operator|!=
+literal|null
+condition|)
+block|{
 name|frame
 operator|.
 name|getCurrentBasePanel
@@ -133,6 +143,7 @@ argument_list|(
 name|actionName
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 end_class

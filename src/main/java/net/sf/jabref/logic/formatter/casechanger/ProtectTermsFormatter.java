@@ -82,6 +82,22 @@ name|jabref
 operator|.
 name|logic
 operator|.
+name|protectedterms
+operator|.
+name|ProtectedTermsLoader
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
 name|util
 operator|.
 name|strings
@@ -98,6 +114,53 @@ name|ProtectTermsFormatter
 implements|implements
 name|Formatter
 block|{
+DECL|field|protectedTermsLoader
+specifier|private
+specifier|static
+name|ProtectedTermsLoader
+name|protectedTermsLoader
+decl_stmt|;
+comment|/**      * @deprecated use ProtectTermsFormatter(ProtectedTermsLoader) instead      */
+annotation|@
+name|Deprecated
+DECL|method|ProtectTermsFormatter ()
+specifier|public
+name|ProtectTermsFormatter
+parameter_list|()
+block|{     }
+DECL|method|ProtectTermsFormatter (ProtectedTermsLoader protectedTermsLoader)
+specifier|public
+name|ProtectTermsFormatter
+parameter_list|(
+name|ProtectedTermsLoader
+name|protectedTermsLoader
+parameter_list|)
+block|{
+name|ProtectTermsFormatter
+operator|.
+name|protectedTermsLoader
+operator|=
+name|protectedTermsLoader
+expr_stmt|;
+block|}
+comment|/**      * This must be called from JabRefMain      *      * @deprecated use ProtectTermsFormatter(ProtectedTermsLoader) instead      */
+annotation|@
+name|Deprecated
+DECL|method|setProtectedTermsLoader (ProtectedTermsLoader loader)
+specifier|public
+specifier|static
+name|void
+name|setProtectedTermsLoader
+parameter_list|(
+name|ProtectedTermsLoader
+name|loader
+parameter_list|)
+block|{
+name|protectedTermsLoader
+operator|=
+name|loader
+expr_stmt|;
+block|}
 DECL|method|format (String text, List<String> listOfWords)
 specifier|private
 name|String
@@ -191,6 +254,15 @@ return|return
 name|text
 return|;
 block|}
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|ProtectTermsFormatter
+operator|.
+name|protectedTermsLoader
+argument_list|)
+expr_stmt|;
 return|return
 name|this
 operator|.
@@ -198,9 +270,11 @@ name|format
 argument_list|(
 name|text
 argument_list|,
-name|CaseKeeperList
+name|ProtectTermsFormatter
 operator|.
-name|getAll
+name|protectedTermsLoader
+operator|.
+name|getProtectedTerms
 argument_list|()
 argument_list|)
 return|;

@@ -54,17 +54,23 @@ name|java
 operator|.
 name|util
 operator|.
-name|Locale
+name|Objects
 import|;
 end_import
 
 begin_import
 import|import
-name|java
+name|net
 operator|.
-name|util
+name|sf
 operator|.
-name|Objects
+name|jabref
+operator|.
+name|event
+operator|.
+name|source
+operator|.
+name|EntryEventSource
 import|;
 end_import
 
@@ -180,16 +186,9 @@ if|if
 condition|(
 literal|"all"
 operator|.
-name|equals
+name|equalsIgnoreCase
 argument_list|(
 name|field
-operator|.
-name|toLowerCase
-argument_list|(
-name|Locale
-operator|.
-name|ENGLISH
-argument_list|)
 argument_list|)
 condition|)
 block|{
@@ -252,9 +251,14 @@ name|oldValue
 init|=
 name|entry
 operator|.
-name|getField
+name|getFieldOptional
 argument_list|(
 name|fieldKey
+argument_list|)
+operator|.
+name|orElse
+argument_list|(
+literal|null
 argument_list|)
 decl_stmt|;
 comment|// Run formatter
@@ -316,6 +320,10 @@ argument_list|(
 name|fieldKey
 argument_list|,
 name|newValue
+argument_list|,
+name|EntryEventSource
+operator|.
+name|SAVE_ACTION
 argument_list|)
 expr_stmt|;
 block|}

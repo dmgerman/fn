@@ -38,7 +38,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
+name|logic
+operator|.
+name|layout
+operator|.
+name|LayoutFormatter
 import|;
 end_import
 
@@ -52,9 +56,9 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|layout
+name|util
 operator|.
-name|LayoutFormatter
+name|OS
 import|;
 end_import
 
@@ -163,7 +167,7 @@ name|sb
 operator|.
 name|append
 argument_list|(
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 argument_list|)

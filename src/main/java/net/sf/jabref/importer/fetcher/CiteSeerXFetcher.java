@@ -112,11 +112,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
-operator|.
-name|help
-operator|.
-name|HelpFiles
+name|Globals
 import|;
 end_import
 
@@ -176,6 +172,22 @@ name|jabref
 operator|.
 name|logic
 operator|.
+name|help
+operator|.
+name|HelpFile
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
 name|net
 operator|.
 name|URLDownload
@@ -195,6 +207,22 @@ operator|.
 name|entry
 operator|.
 name|BibEntry
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|FieldName
 import|;
 end_import
 
@@ -548,12 +576,12 @@ annotation|@
 name|Override
 DECL|method|getHelpPage ()
 specifier|public
-name|HelpFiles
+name|HelpFile
 name|getHelpPage
 parameter_list|()
 block|{
 return|return
-name|HelpFiles
+name|HelpFile
 operator|.
 name|FETCHER_CITESEERX
 return|;
@@ -720,7 +748,14 @@ name|urlQuery
 argument_list|)
 operator|.
 name|downloadToString
+argument_list|(
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getDefaultEncoding
 argument_list|()
+argument_list|)
 decl_stmt|;
 name|Matcher
 name|m
@@ -791,7 +826,7 @@ operator|.
 name|UTF_8
 argument_list|)
 decl_stmt|;
-comment|// Find title, and create entry if we do. Otherwise assume we didn't get an entry:
+comment|// Find title, and create entry if we do. Otherwise assume we did not get an entry:
 name|Matcher
 name|m
 init|=
@@ -828,7 +863,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|FieldName
+operator|.
+name|TITLE
 argument_list|,
 name|m
 operator|.
@@ -872,7 +909,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|FieldName
+operator|.
+name|AUTHOR
 argument_list|,
 operator|new
 name|NormalizeNamesFormatter
@@ -909,7 +948,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"year"
+name|FieldName
+operator|.
+name|YEAR
 argument_list|,
 name|m
 operator|.
@@ -944,7 +985,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"abstract"
+name|FieldName
+operator|.
+name|ABSTRACT
 argument_list|,
 name|m
 operator|.

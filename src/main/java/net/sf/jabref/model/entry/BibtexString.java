@@ -440,6 +440,97 @@ return|return
 name|hasChanged
 return|;
 block|}
+comment|/*     * Returns user comments (arbitrary text before the string) if there are any. If not returns the empty string      */
+DECL|method|getUserComments ()
+specifier|public
+name|String
+name|getUserComments
+parameter_list|()
+block|{
+if|if
+condition|(
+name|parsedSerialization
+operator|!=
+literal|null
+condition|)
+block|{
+try|try
+block|{
+comment|// get the text before the string
+name|String
+name|prolog
+init|=
+name|parsedSerialization
+operator|.
+name|substring
+argument_list|(
+literal|0
+argument_list|,
+name|parsedSerialization
+operator|.
+name|indexOf
+argument_list|(
+literal|'@'
+argument_list|)
+argument_list|)
+decl_stmt|;
+comment|// delete trailing whitespaces (between string and text)
+name|prolog
+operator|=
+name|prolog
+operator|.
+name|replaceFirst
+argument_list|(
+literal|"\\s+$"
+argument_list|,
+literal|""
+argument_list|)
+expr_stmt|;
+comment|// if there is any non whitespace text, write it with proper line separation
+if|if
+condition|(
+name|prolog
+operator|.
+name|length
+argument_list|()
+operator|>
+literal|0
+condition|)
+block|{
+return|return
+name|prolog
+return|;
+block|}
+block|}
+catch|catch
+parameter_list|(
+name|StringIndexOutOfBoundsException
+name|ignore
+parameter_list|)
+block|{
+comment|// if this occurs a broken parsed serialization has been set, so just do nothing
+block|}
+block|}
+return|return
+literal|""
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|toString ()
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+name|name
+operator|+
+literal|"="
+operator|+
+name|content
+return|;
+block|}
 block|}
 end_class
 

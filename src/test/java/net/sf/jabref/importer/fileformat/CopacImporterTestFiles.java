@@ -166,7 +166,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|JabRefPreferences
+name|logic
+operator|.
+name|bibtex
+operator|.
+name|BibEntryAssert
 import|;
 end_import
 
@@ -178,11 +182,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|preferences
 operator|.
-name|bibtex
-operator|.
-name|BibEntryAssert
+name|JabRefPreferences
 import|;
 end_import
 

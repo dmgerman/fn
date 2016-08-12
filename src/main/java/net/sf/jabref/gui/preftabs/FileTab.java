@@ -180,18 +180,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|JabRefPreferences
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|gui
 operator|.
 name|JabRefFrame
@@ -238,11 +226,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
+name|logic
 operator|.
 name|help
 operator|.
-name|HelpFiles
+name|HelpFile
 import|;
 end_import
 
@@ -259,6 +247,70 @@ operator|.
 name|l10n
 operator|.
 name|Localization
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|layout
+operator|.
+name|format
+operator|.
+name|FileLinkPreferences
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|util
+operator|.
+name|OS
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|FieldName
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|preferences
+operator|.
+name|JabRefPreferences
 import|;
 end_import
 
@@ -338,15 +390,6 @@ specifier|private
 specifier|final
 name|JCheckBox
 name|promptBeforeUsingAutoSave
-decl_stmt|;
-DECL|field|valueDelimiter
-specifier|private
-specifier|final
-name|JComboBox
-argument_list|<
-name|String
-argument_list|>
-name|valueDelimiter
 decl_stmt|;
 DECL|field|newlineSeparator
 specifier|private
@@ -508,7 +551,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Use the bib file location as primary file directory"
+literal|"Use the BIB file location as primary file directory"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -522,7 +565,7 @@ name|lang
 argument_list|(
 literal|"When downloading files, or moving linked files to the "
 operator|+
-literal|"file directory, prefer the bib file location rather than the file directory set above"
+literal|"file directory, prefer the BIB file location rather than the file directory set above"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -693,36 +736,6 @@ literal|1
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|valueDelimiter
-operator|=
-operator|new
-name|JComboBox
-argument_list|<>
-argument_list|(
-operator|new
-name|String
-index|[]
-block|{
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Quotes"
-argument_list|)
-operator|+
-literal|": \", \""
-block|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Curly Brackets"
-argument_list|)
-operator|+
-literal|": {, }"
-block|}
-argument_list|)
-expr_stmt|;
 name|resolveStringsAll
 operator|=
 operator|new
@@ -800,7 +813,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Always reformat .bib file on save and export"
+literal|"Always reformat BIB file on save and export"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1176,10 +1189,10 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Help on Regular Expression Search"
+literal|"Help on regular expression search"
 argument_list|)
 argument_list|,
-name|HelpFiles
+name|HelpFile
 operator|.
 name|REGEX_SEARCH
 argument_list|)
@@ -1246,7 +1259,7 @@ init|=
 operator|new
 name|HelpAction
 argument_list|(
-name|HelpFiles
+name|HelpFile
 operator|.
 name|AUTOSAVE
 argument_list|)
@@ -1403,11 +1416,11 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-name|Globals
+name|FieldName
 operator|.
-name|FILE_FIELD
+name|FILE
 operator|+
-name|Globals
+name|FileLinkPreferences
 operator|.
 name|DIR_SUFFIX
 argument_list|)
@@ -1724,20 +1737,6 @@ operator|.
 name|isSelected
 argument_list|()
 expr_stmt|;
-name|valueDelimiter
-operator|.
-name|setSelectedIndex
-argument_list|(
-name|prefs
-operator|.
-name|getInt
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|VALUE_DELIMITERS2
-argument_list|)
-argument_list|)
-expr_stmt|;
 block|}
 annotation|@
 name|Override
@@ -1751,11 +1750,11 @@ name|prefs
 operator|.
 name|put
 argument_list|(
-name|Globals
+name|FieldName
 operator|.
-name|FILE_FIELD
+name|FILE
 operator|+
-name|Globals
+name|FileLinkPreferences
 operator|.
 name|DIR_SUFFIX
 argument_list|,
@@ -1904,7 +1903,7 @@ name|newline
 argument_list|)
 expr_stmt|;
 comment|// we also have to change Globals variable as globals is not a getter, but a constant
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|=
@@ -2025,20 +2024,6 @@ operator|)
 name|autoSaveInterval
 operator|.
 name|getValue
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|prefs
-operator|.
-name|putInt
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|VALUE_DELIMITERS2
-argument_list|,
-name|valueDelimiter
-operator|.
-name|getSelectedIndex
 argument_list|()
 argument_list|)
 expr_stmt|;

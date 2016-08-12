@@ -84,18 +84,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|JabRefPreferences
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|importer
 operator|.
 name|fileformat
@@ -115,6 +103,20 @@ operator|.
 name|model
 operator|.
 name|FieldChange
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|preferences
+operator|.
+name|JabRefPreferences
 import|;
 end_import
 
@@ -275,14 +277,17 @@ argument_list|)
 expr_stmt|;
 name|Assert
 operator|.
-name|assertNull
+name|assertFalse
 argument_list|(
 name|entry
 operator|.
-name|getField
+name|getFieldOptional
 argument_list|(
 literal|"author"
 argument_list|)
+operator|.
+name|isPresent
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -731,7 +736,12 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
+name|Optional
+operator|.
+name|of
+argument_list|(
 literal|"2003-02"
+argument_list|)
 argument_list|,
 operator|(
 name|BibtexParser
@@ -750,7 +760,12 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
+name|Optional
+operator|.
+name|of
+argument_list|(
 literal|"2003-03"
+argument_list|)
 argument_list|,
 operator|(
 name|BibtexParser
@@ -769,7 +784,12 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
+name|Optional
+operator|.
+name|of
+argument_list|(
 literal|"2003"
+argument_list|)
 argument_list|,
 operator|(
 name|BibtexParser
@@ -788,7 +808,10 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-literal|null
+name|Optional
+operator|.
+name|empty
+argument_list|()
 argument_list|,
 operator|(
 name|BibtexParser
@@ -807,7 +830,10 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-literal|null
+name|Optional
+operator|.
+name|empty
+argument_list|()
 argument_list|,
 operator|(
 name|BibtexParser
@@ -826,7 +852,12 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
+name|Optional
+operator|.
+name|of
+argument_list|(
 literal|"2003-12"
+argument_list|)
 argument_list|,
 operator|(
 name|BibtexParser
@@ -872,7 +903,12 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
+name|Optional
+operator|.
+name|of
+argument_list|(
 literal|"2003-03"
+argument_list|)
 argument_list|,
 name|emptyEntry
 operator|.
@@ -913,7 +949,12 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
+name|Optional
+operator|.
+name|of
+argument_list|(
 literal|"2003-03"
+argument_list|)
 argument_list|,
 name|emptyEntry
 operator|.
@@ -954,7 +995,12 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
+name|Optional
+operator|.
+name|of
+argument_list|(
 literal|"2003-03"
+argument_list|)
 argument_list|,
 name|emptyEntry
 operator|.
@@ -986,7 +1032,12 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
+name|Optional
+operator|.
+name|of
+argument_list|(
 literal|"2003"
+argument_list|)
 argument_list|,
 name|emptyEntry
 operator|.
@@ -1018,7 +1069,12 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
+name|Optional
+operator|.
+name|of
+argument_list|(
 literal|"2003"
+argument_list|)
 argument_list|,
 name|emptyEntry
 operator|.
@@ -1050,7 +1106,12 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
+name|Optional
+operator|.
+name|of
+argument_list|(
 literal|"2003"
+argument_list|)
 argument_list|,
 name|emptyEntry
 operator|.
@@ -1082,7 +1143,12 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
+name|Optional
+operator|.
+name|of
+argument_list|(
 literal|"2003"
+argument_list|)
 argument_list|,
 name|emptyEntry
 operator|.
@@ -1112,8 +1178,13 @@ argument_list|)
 expr_stmt|;
 name|Assert
 operator|.
-name|assertNull
+name|assertEquals
 argument_list|(
+name|Optional
+operator|.
+name|empty
+argument_list|()
+argument_list|,
 name|emptyEntry
 operator|.
 name|getFieldOrAlias
@@ -1144,7 +1215,12 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
+name|Optional
+operator|.
+name|of
+argument_list|(
 literal|"3"
+argument_list|)
 argument_list|,
 name|emptyEntry
 operator|.
@@ -1176,7 +1252,12 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
+name|Optional
+operator|.
+name|of
+argument_list|(
 literal|"3"
+argument_list|)
 argument_list|,
 name|emptyEntry
 operator|.
@@ -1235,6 +1316,8 @@ operator|.
 name|addKeyword
 argument_list|(
 literal|null
+argument_list|,
+literal|", "
 argument_list|)
 expr_stmt|;
 name|Assert
@@ -1262,6 +1345,45 @@ name|keywordEntry
 operator|.
 name|putKeywords
 argument_list|(
+literal|null
+argument_list|,
+literal|", "
+argument_list|)
+expr_stmt|;
+name|Assert
+operator|.
+name|fail
+argument_list|()
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+argument_list|(
+name|expected
+operator|=
+name|NullPointerException
+operator|.
+name|class
+argument_list|)
+DECL|method|putNullKeywordSeparatorThrowsNPE ()
+specifier|public
+name|void
+name|putNullKeywordSeparatorThrowsNPE
+parameter_list|()
+block|{
+name|keywordEntry
+operator|.
+name|putKeywords
+argument_list|(
+name|Arrays
+operator|.
+name|asList
+argument_list|(
+literal|"A"
+argument_list|,
+literal|"B"
+argument_list|)
+argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
@@ -1318,6 +1440,8 @@ operator|.
 name|addKeyword
 argument_list|(
 literal|"FooBar"
+argument_list|,
+literal|", "
 argument_list|)
 expr_stmt|;
 name|String
@@ -1361,6 +1485,8 @@ operator|.
 name|addKeyword
 argument_list|(
 literal|"FooBar"
+argument_list|,
+literal|", "
 argument_list|)
 expr_stmt|;
 name|Assert
@@ -1387,6 +1513,8 @@ operator|.
 name|addKeyword
 argument_list|(
 literal|"FooBar"
+argument_list|,
+literal|", "
 argument_list|)
 expr_stmt|;
 name|keywordEntry
@@ -1394,6 +1522,8 @@ operator|.
 name|addKeyword
 argument_list|(
 literal|"FooBar"
+argument_list|,
+literal|", "
 argument_list|)
 expr_stmt|;
 name|String
@@ -1437,6 +1567,8 @@ operator|.
 name|addKeyword
 argument_list|(
 literal|"FOO"
+argument_list|,
+literal|", "
 argument_list|)
 expr_stmt|;
 name|String
@@ -1480,6 +1612,8 @@ operator|.
 name|addKeyword
 argument_list|(
 literal|"FOO"
+argument_list|,
+literal|", "
 argument_list|)
 expr_stmt|;
 name|Assert
@@ -1506,6 +1640,8 @@ operator|.
 name|addKeyword
 argument_list|(
 literal|""
+argument_list|,
+literal|", "
 argument_list|)
 expr_stmt|;
 name|String
@@ -1547,6 +1683,8 @@ operator|.
 name|addKeyword
 argument_list|(
 literal|""
+argument_list|,
+literal|", "
 argument_list|)
 expr_stmt|;
 name|Assert
@@ -1595,6 +1733,8 @@ operator|.
 name|addKeyword
 argument_list|(
 literal|""
+argument_list|,
+literal|", "
 argument_list|)
 expr_stmt|;
 name|Assert
@@ -1624,6 +1764,8 @@ operator|.
 name|addKeyword
 argument_list|(
 literal|""
+argument_list|,
+literal|", "
 argument_list|)
 expr_stmt|;
 name|Assert
@@ -1663,6 +1805,8 @@ name|keywordEntry
 operator|.
 name|getKeywords
 argument_list|()
+argument_list|,
+literal|", "
 argument_list|)
 expr_stmt|;
 name|Assert
@@ -1701,6 +1845,8 @@ literal|"Yin"
 argument_list|,
 literal|"Yang"
 argument_list|)
+argument_list|,
+literal|", "
 argument_list|)
 expr_stmt|;
 name|String
@@ -1749,6 +1895,8 @@ literal|"Yin"
 argument_list|,
 literal|"Yang"
 argument_list|)
+argument_list|,
+literal|", "
 argument_list|)
 expr_stmt|;
 name|Assert
@@ -1778,6 +1926,8 @@ name|Collections
 operator|.
 name|emptyList
 argument_list|()
+argument_list|,
+literal|", "
 argument_list|)
 expr_stmt|;
 name|Assert
@@ -1810,6 +1960,8 @@ name|Collections
 operator|.
 name|emptyList
 argument_list|()
+argument_list|,
+literal|", "
 argument_list|)
 expr_stmt|;
 name|Assert
@@ -1839,6 +1991,8 @@ name|Collections
 operator|.
 name|emptyList
 argument_list|()
+argument_list|,
+literal|", "
 argument_list|)
 expr_stmt|;
 name|Assert
@@ -1871,6 +2025,8 @@ name|Collections
 operator|.
 name|emptyList
 argument_list|()
+argument_list|,
+literal|", "
 argument_list|)
 expr_stmt|;
 name|Assert
@@ -1906,6 +2062,8 @@ name|Collections
 operator|.
 name|emptyList
 argument_list|()
+argument_list|,
+literal|", "
 argument_list|)
 decl_stmt|;
 name|Assert
@@ -1943,6 +2101,8 @@ name|Collections
 operator|.
 name|emptyList
 argument_list|()
+argument_list|,
+literal|", "
 argument_list|)
 decl_stmt|;
 name|Assert
@@ -1996,6 +2156,8 @@ literal|"Test"
 argument_list|,
 literal|"FooTest"
 argument_list|)
+argument_list|,
+literal|", "
 argument_list|)
 decl_stmt|;
 name|Assert
@@ -2049,6 +2211,8 @@ literal|"Foo"
 argument_list|,
 literal|"Bar"
 argument_list|)
+argument_list|,
+literal|", "
 argument_list|)
 decl_stmt|;
 name|Assert
@@ -2203,11 +2367,16 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
+name|Optional
+operator|.
+name|of
+argument_list|(
 literal|"Einstein1931"
+argument_list|)
 argument_list|,
 name|be
 operator|.
-name|getCiteKey
+name|getCiteKeyOptional
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2215,11 +2384,16 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
+name|Optional
+operator|.
+name|of
+argument_list|(
 literal|"Albert Einstein"
+argument_list|)
 argument_list|,
 name|be
 operator|.
-name|getField
+name|getFieldOptional
 argument_list|(
 literal|"author"
 argument_list|)
@@ -2234,11 +2408,16 @@ argument_list|)
 expr_stmt|;
 name|Assert
 operator|.
-name|assertNull
+name|assertEquals
 argument_list|(
+name|Optional
+operator|.
+name|empty
+argument_list|()
+argument_list|,
 name|be
 operator|.
-name|getField
+name|getFieldOptional
 argument_list|(
 literal|"author"
 argument_list|)

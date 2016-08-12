@@ -122,6 +122,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|swing
@@ -214,7 +224,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|JabRefPreferences
+name|external
+operator|.
+name|ExternalFileMenuItem
 import|;
 end_import
 
@@ -228,7 +240,7 @@ name|jabref
 operator|.
 name|external
 operator|.
-name|ExternalFileMenuItem
+name|ExternalFileType
 import|;
 end_import
 
@@ -450,9 +462,25 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|specialfields
+name|model
 operator|.
-name|SpecialField
+name|entry
+operator|.
+name|FieldName
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|preferences
+operator|.
+name|JabRefPreferences
 import|;
 end_import
 
@@ -553,7 +581,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * List event, mouse, key and focus listener for the main table that makes up the  * most part of the BasePanel for a single bib database.  */
+comment|/**  * List event, mouse, key and focus listener for the main table that makes up the  * most part of the BasePanel for a single BIB database.  */
 end_comment
 
 begin_class
@@ -918,7 +946,7 @@ operator|.
 name|getSourceList
 argument_list|()
 decl_stmt|;
-name|Object
+name|BibEntry
 name|newSelected
 init|=
 literal|null
@@ -996,9 +1024,6 @@ specifier|final
 name|BibEntry
 name|toShow
 init|=
-operator|(
-name|BibEntry
-operator|)
 name|newSelected
 decl_stmt|;
 specifier|final
@@ -1847,10 +1872,13 @@ name|link
 init|=
 name|entry
 operator|.
-name|getField
+name|getFieldOptional
 argument_list|(
 name|fieldName
 argument_list|)
+operator|.
+name|get
+argument_list|()
 decl_stmt|;
 comment|// See if this is a simple file link field, or if it is a file-list
 comment|// field that can specify a list of links:
@@ -1860,9 +1888,9 @@ name|fieldName
 operator|.
 name|equals
 argument_list|(
-name|Globals
+name|FieldName
 operator|.
-name|FILE_FIELD
+name|FILE
 argument_list|)
 condition|)
 block|{
@@ -2001,11 +2029,17 @@ name|flEntry
 operator|.
 name|type
 operator|.
-name|get
-argument_list|()
-operator|.
+name|map
+argument_list|(
+name|ExternalFileType
+operator|::
 name|getIcon
-argument_list|()
+argument_list|)
+operator|.
+name|orElse
+argument_list|(
+literal|null
+argument_list|)
 argument_list|,
 name|panel
 operator|.
@@ -2102,6 +2136,65 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
+elseif|else
+if|if
+condition|(
+name|modelColumn
+operator|.
+name|getBibtexFields
+argument_list|()
+operator|.
+name|contains
+argument_list|(
+name|FieldName
+operator|.
+name|CROSSREF
+argument_list|)
+condition|)
+block|{
+comment|// Clicking on crossref column
+name|tableRows
+operator|.
+name|get
+argument_list|(
+name|row
+argument_list|)
+operator|.
+name|getFieldOptional
+argument_list|(
+name|FieldName
+operator|.
+name|CROSSREF
+argument_list|)
+operator|.
+name|ifPresent
+argument_list|(
+name|crossref
+lambda|->
+name|panel
+operator|.
+name|getDatabase
+argument_list|()
+operator|.
+name|getEntryByKey
+argument_list|(
+name|crossref
+argument_list|)
+operator|.
+name|ifPresent
+argument_list|(
+name|entry
+lambda|->
+name|panel
+operator|.
+name|highlightEntry
+argument_list|(
+name|entry
+argument_list|)
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 comment|/**      * Method to handle a single left click on one the special fields (e.g., ranking, quality, ...)      * Shows either a popup to select/clear a value or simply toggles the functionality to set/unset the special field      *      * @param e MouseEvent used to determine the position of the popups      * @param columnName the name of the specialfield column      */
 DECL|method|handleSpecialFieldLeftClick (MouseEvent e, String columnName)
@@ -2116,16 +2209,6 @@ name|String
 name|columnName
 parameter_list|)
 block|{
-name|SpecialField
-name|field
-init|=
-name|SpecialFieldsUtils
-operator|.
-name|getSpecialFieldInstanceFromFieldName
-argument_list|(
-name|columnName
-argument_list|)
-decl_stmt|;
 if|if
 condition|(
 operator|(
@@ -2136,13 +2219,19 @@ argument_list|()
 operator|==
 literal|1
 operator|)
-operator|&&
-operator|(
-name|field
-operator|!=
-literal|null
-operator|)
 condition|)
+block|{
+name|SpecialFieldsUtils
+operator|.
+name|getSpecialFieldInstanceFromFieldName
+argument_list|(
+name|columnName
+argument_list|)
+operator|.
+name|ifPresent
+argument_list|(
+name|field
+lambda|->
 block|{
 comment|// special field found
 if|if
@@ -2230,6 +2319,9 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 comment|/**      * Process general right-click events on the table. Show the table context menu at      * the position where the user right-clicked.      * @param e The mouse event defining the popup trigger.      * @param row The row where the event occurred.      */
@@ -2386,9 +2478,9 @@ control|)
 block|{
 if|if
 condition|(
-name|Globals
+name|FieldName
 operator|.
-name|FILE_FIELD
+name|FILE
 operator|.
 name|equals
 argument_list|(
@@ -2397,16 +2489,6 @@ argument_list|)
 condition|)
 block|{
 comment|// We use a FileListTableModel to parse the field content:
-name|String
-name|fileFieldContent
-init|=
-name|entry
-operator|.
-name|getField
-argument_list|(
-name|field
-argument_list|)
-decl_stmt|;
 name|FileListTableModel
 name|fileList
 init|=
@@ -2414,11 +2496,18 @@ operator|new
 name|FileListTableModel
 argument_list|()
 decl_stmt|;
-name|fileList
+name|entry
 operator|.
-name|setContent
+name|getFieldOptional
 argument_list|(
-name|fileFieldContent
+name|field
+argument_list|)
+operator|.
+name|ifPresent
+argument_list|(
+name|fileList
+operator|::
+name|setContent
 argument_list|)
 expr_stmt|;
 for|for
@@ -2583,26 +2672,27 @@ expr_stmt|;
 block|}
 else|else
 block|{
-if|if
-condition|(
-name|entry
-operator|.
-name|hasField
-argument_list|(
-name|field
-argument_list|)
-condition|)
-block|{
+name|Optional
+argument_list|<
 name|String
+argument_list|>
 name|content
 init|=
 name|entry
 operator|.
-name|getField
+name|getFieldOptional
 argument_list|(
 name|field
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|content
+operator|.
+name|isPresent
+argument_list|()
+condition|)
+block|{
 name|Icon
 name|icon
 decl_stmt|;
@@ -2660,8 +2750,14 @@ argument_list|,
 name|entry
 argument_list|,
 name|content
+operator|.
+name|get
+argument_list|()
 argument_list|,
 name|content
+operator|.
+name|get
+argument_list|()
 argument_list|,
 name|icon
 argument_list|,
@@ -3271,6 +3367,16 @@ operator|=
 literal|0
 expr_stmt|;
 comment|// Reset quick jump when focus is lost.
+block|}
+DECL|method|getPreview ()
+specifier|public
+name|PreviewPanel
+name|getPreview
+parameter_list|()
+block|{
+return|return
+name|preview
+return|;
 block|}
 block|}
 end_class

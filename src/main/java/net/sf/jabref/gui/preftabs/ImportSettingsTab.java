@@ -146,18 +146,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|JabRefPreferences
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|logic
 operator|.
 name|l10n
@@ -177,6 +165,20 @@ operator|.
 name|pdfimport
 operator|.
 name|ImportDialog
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|preferences
+operator|.
+name|JabRefPreferences
 import|;
 end_import
 
@@ -501,7 +503,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Default import style for drag&drop of PDFs"
+literal|"Default import style for drag and drop of PDFs"
 argument_list|)
 argument_list|)
 expr_stmt|;

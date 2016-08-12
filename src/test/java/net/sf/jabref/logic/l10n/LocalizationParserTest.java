@@ -145,9 +145,9 @@ argument_list|)
 expr_stmt|;
 name|assertLocalizationParsing
 argument_list|(
-literal|"Localization.lang(\"Run Fetcher, e.g. \\\"--fetch=Medline:cancer\\\"\");"
+literal|"Localization.lang(\"Run fetcher, e.g. \\\"--fetch=Medline:cancer\\\"\");"
 argument_list|,
-literal|"Run_Fetcher,_e.g._\"--fetch\\=Medline\\:cancer\""
+literal|"Run_fetcher,_e.g._\"--fetch\\=Medline\\:cancer\""
 argument_list|)
 expr_stmt|;
 block|}

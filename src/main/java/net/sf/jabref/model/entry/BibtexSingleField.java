@@ -119,7 +119,6 @@ block|}
 comment|// the field name
 DECL|field|name
 specifier|private
-specifier|final
 name|String
 name|name
 decl_stmt|;
@@ -384,6 +383,22 @@ name|PRIVATE
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|setPublic ()
+specifier|public
+name|void
+name|setPublic
+parameter_list|()
+block|{
+name|flags
+operator|.
+name|remove
+argument_list|(
+name|Flag
+operator|.
+name|PRIVATE
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|isPrivate ()
 specifier|public
 name|boolean
@@ -613,6 +628,20 @@ operator|.
 name|NUMERIC
 argument_list|)
 return|;
+block|}
+DECL|method|setName (String fieldName)
+specifier|public
+name|void
+name|setName
+parameter_list|(
+name|String
+name|fieldName
+parameter_list|)
+block|{
+name|name
+operator|=
+name|fieldName
+expr_stmt|;
 block|}
 block|}
 end_class

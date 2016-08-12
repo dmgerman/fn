@@ -20,18 +20,6 @@ end_package
 
 begin_import
 import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|undo
-operator|.
-name|AbstractUndoableEdit
-import|;
-end_import
-
-begin_import
-import|import
 name|net
 operator|.
 name|sf
@@ -68,6 +56,24 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
+name|util
+operator|.
+name|strings
+operator|.
+name|StringUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|model
 operator|.
 name|entry
@@ -82,7 +88,7 @@ specifier|public
 class|class
 name|UndoableStringChange
 extends|extends
-name|AbstractUndoableEdit
+name|AbstractUndoableJabRefEdit
 block|{
 DECL|field|string
 specifier|private
@@ -167,22 +173,13 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|getUndoPresentationName ()
+DECL|method|getPresentationName ()
 specifier|public
 name|String
-name|getUndoPresentationName
+name|getPresentationName
 parameter_list|()
 block|{
 return|return
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Undo"
-argument_list|)
-operator|+
-literal|": "
-operator|+
 operator|(
 name|nameChange
 condition|?
@@ -190,51 +187,42 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"change string name"
+literal|"change string name %0 to %1"
+argument_list|,
+name|StringUtil
+operator|.
+name|boldHTML
+argument_list|(
+name|oldValue
+argument_list|)
+argument_list|,
+name|StringUtil
+operator|.
+name|boldHTML
+argument_list|(
+name|newValue
+argument_list|)
 argument_list|)
 else|:
 name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"change string content"
-argument_list|)
-operator|)
-return|;
-block|}
-annotation|@
-name|Override
-DECL|method|getRedoPresentationName ()
-specifier|public
-name|String
-name|getRedoPresentationName
-parameter_list|()
-block|{
-return|return
-name|Localization
+literal|"change string content %0 to %1"
+argument_list|,
+name|StringUtil
 operator|.
-name|lang
+name|boldHTML
 argument_list|(
-literal|"Redo"
+name|oldValue
 argument_list|)
-operator|+
-literal|": "
-operator|+
-operator|(
-name|nameChange
-condition|?
-name|Localization
+argument_list|,
+name|StringUtil
 operator|.
-name|lang
+name|boldHTML
 argument_list|(
-literal|"change string name"
+name|newValue
 argument_list|)
-else|:
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"change string content"
 argument_list|)
 operator|)
 return|;

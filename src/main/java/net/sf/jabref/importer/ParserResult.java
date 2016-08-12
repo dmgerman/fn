@@ -310,6 +310,20 @@ argument_list|(
 name|entries
 argument_list|)
 argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|ParserResult (BibDatabase database)
+specifier|public
+name|ParserResult
+parameter_list|(
+name|BibDatabase
+name|database
+parameter_list|)
+block|{
+name|this
+argument_list|(
+name|database
 argument_list|,
 operator|new
 name|MetaData
@@ -597,28 +611,18 @@ name|isEmpty
 argument_list|()
 return|;
 block|}
-comment|/**      * Get all duplicated keys found in the database.      *      * @return An array containing the duplicated keys.      */
+comment|/**      * Get all duplicated keys found in the database.      *      * @return A list containing the duplicated keys.      */
 DECL|method|getDuplicateKeys ()
 specifier|public
+name|List
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|getDuplicateKeys
 parameter_list|()
 block|{
 return|return
 name|duplicateKeys
-operator|.
-name|toArray
-argument_list|(
-operator|new
-name|String
-index|[
-name|duplicateKeys
-operator|.
-name|size
-argument_list|()
-index|]
-argument_list|)
 return|;
 block|}
 DECL|method|isPostponedAutosaveFound ()
@@ -723,7 +727,6 @@ name|boolean
 name|isNullResult
 parameter_list|()
 block|{
-comment|// TODO Auto-generated method stub
 return|return
 name|this
 operator|==

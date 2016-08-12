@@ -16,13 +16,11 @@ end_package
 
 begin_import
 import|import
-name|net
+name|java
 operator|.
-name|sf
+name|util
 operator|.
-name|jabref
-operator|.
-name|Globals
+name|Collections
 import|;
 end_import
 
@@ -34,7 +32,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|JabRefPreferences
+name|logic
+operator|.
+name|util
+operator|.
+name|OS
 import|;
 end_import
 
@@ -45,16 +47,6 @@ operator|.
 name|junit
 operator|.
 name|Before
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|BeforeClass
 import|;
 end_import
 
@@ -91,25 +83,11 @@ specifier|private
 name|FieldContentParser
 name|parser
 decl_stmt|;
-annotation|@
-name|BeforeClass
-DECL|method|loadPreferences ()
-specifier|public
-specifier|static
-name|void
-name|loadPreferences
-parameter_list|()
-block|{
-name|Globals
-operator|.
+DECL|field|prefs
+specifier|private
+name|FieldContentParserPreferences
 name|prefs
-operator|=
-name|JabRefPreferences
-operator|.
-name|getInstance
-argument_list|()
-expr_stmt|;
-block|}
+decl_stmt|;
 annotation|@
 name|Before
 DECL|method|setUp ()
@@ -120,11 +98,24 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|prefs
+operator|=
+operator|new
+name|FieldContentParserPreferences
+argument_list|(
+name|Collections
+operator|.
+name|emptyList
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|parser
 operator|=
 operator|new
 name|FieldContentParser
-argument_list|()
+argument_list|(
+name|prefs
+argument_list|)
 expr_stmt|;
 block|}
 annotation|@
@@ -149,7 +140,7 @@ name|replace
 argument_list|(
 literal|"\n"
 argument_list|,
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 argument_list|)
@@ -203,7 +194,7 @@ name|replace
 argument_list|(
 literal|"\n"
 argument_list|,
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 argument_list|)

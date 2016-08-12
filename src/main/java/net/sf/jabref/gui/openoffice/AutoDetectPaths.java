@@ -307,7 +307,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Tools for automatically detecting jar and executable paths to OpenOffice and/or LibreOffice.  */
+comment|/**  * Tools for automatically detecting JAR and executable paths to OpenOffice and/or LibreOffice.  */
 end_comment
 
 begin_class

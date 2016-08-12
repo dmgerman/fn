@@ -66,30 +66,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|JabRefPreferences
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|logic
 operator|.
 name|journals
@@ -116,11 +92,15 @@ end_import
 
 begin_import
 import|import
-name|org
+name|net
 operator|.
-name|junit
+name|sf
 operator|.
-name|After
+name|jabref
+operator|.
+name|preferences
+operator|.
+name|JabRefPreferences
 import|;
 end_import
 
@@ -198,6 +178,11 @@ specifier|public
 class|class
 name|FileUtilTest
 block|{
+DECL|field|prefs
+specifier|private
+name|JabRefPreferences
+name|prefs
+decl_stmt|;
 annotation|@
 name|Before
 DECL|method|setUp ()
@@ -206,8 +191,6 @@ name|void
 name|setUp
 parameter_list|()
 block|{
-name|Globals
-operator|.
 name|prefs
 operator|=
 name|mock
@@ -216,27 +199,6 @@ name|JabRefPreferences
 operator|.
 name|class
 argument_list|)
-expr_stmt|;
-block|}
-annotation|@
-name|After
-DECL|method|tearDown ()
-specifier|public
-name|void
-name|tearDown
-parameter_list|()
-block|{
-name|Globals
-operator|.
-name|prefs
-operator|=
-literal|null
-expr_stmt|;
-name|Globals
-operator|.
-name|journalAbbreviationLoader
-operator|=
-literal|null
 expr_stmt|;
 block|}
 annotation|@
@@ -250,8 +212,6 @@ block|{
 comment|// bibkey - title
 name|when
 argument_list|(
-name|Globals
-operator|.
 name|prefs
 operator|.
 name|get
@@ -308,6 +268,8 @@ name|JournalAbbreviationLoader
 operator|.
 name|class
 argument_list|)
+argument_list|,
+name|prefs
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -323,8 +285,6 @@ block|{
 comment|// bibkey
 name|when
 argument_list|(
-name|Globals
-operator|.
 name|prefs
 operator|.
 name|get
@@ -381,6 +341,8 @@ name|JournalAbbreviationLoader
 operator|.
 name|class
 argument_list|)
+argument_list|,
+name|prefs
 argument_list|)
 argument_list|)
 expr_stmt|;
