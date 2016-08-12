@@ -584,6 +584,13 @@ argument_list|,
 literal|"Every BibEntry must have an ID"
 argument_list|)
 expr_stmt|;
+name|String
+name|oldId
+init|=
+name|this
+operator|.
+name|id
+decl_stmt|;
 name|eventBus
 operator|.
 name|post
@@ -598,6 +605,8 @@ operator|.
 name|ID_FIELD
 argument_list|,
 name|id
+argument_list|,
+name|oldId
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -748,6 +757,19 @@ operator|=
 name|type
 expr_stmt|;
 block|}
+name|String
+name|oldType
+init|=
+name|getFieldOptional
+argument_list|(
+name|TYPE_HEADER
+argument_list|)
+operator|.
+name|orElse
+argument_list|(
+literal|null
+argument_list|)
+decl_stmt|;
 comment|// We set the type before throwing the changeEvent, to enable
 comment|// the change listener to access the new value if the change
 comment|// sets off a change in database sorting etc.
@@ -780,6 +802,8 @@ argument_list|,
 name|TYPE_HEADER
 argument_list|,
 name|newType
+argument_list|,
+name|oldType
 argument_list|,
 name|eventSource
 argument_list|)

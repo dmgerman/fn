@@ -495,6 +495,23 @@ operator|new
 name|EventBus
 argument_list|()
 decl_stmt|;
+DECL|method|BibDatabase ()
+specifier|public
+name|BibDatabase
+parameter_list|()
+block|{
+name|this
+operator|.
+name|registerListener
+argument_list|(
+operator|new
+name|KeyChangeListener
+argument_list|(
+name|this
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 comment|/**      * Returns the number of entries.      */
 DECL|method|getEntryCount ()
 specifier|public

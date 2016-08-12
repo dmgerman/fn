@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2016 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -17,16 +17,6 @@ operator|.
 name|autocompleter
 package|;
 end_package
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Arrays
-import|;
-end_import
 
 begin_import
 import|import
@@ -207,13 +197,18 @@ block|}
 elseif|else
 if|if
 condition|(
-name|FieldName
+name|InternalBibtexFields
 operator|.
-name|CROSSREF
-operator|.
-name|equals
+name|getFieldExtras
 argument_list|(
 name|fieldName
+argument_list|)
+operator|.
+name|contains
+argument_list|(
+name|FieldProperties
+operator|.
+name|SINGLE_ENTRY_LINK
 argument_list|)
 condition|)
 block|{
@@ -228,13 +223,18 @@ block|}
 elseif|else
 if|if
 condition|(
-name|FieldName
+name|InternalBibtexFields
 operator|.
-name|JOURNAL
-operator|.
-name|equals
+name|getFieldExtras
 argument_list|(
 name|fieldName
+argument_list|)
+operator|.
+name|contains
+argument_list|(
+name|FieldProperties
+operator|.
+name|JOURNAL_NAME
 argument_list|)
 operator|||
 name|FieldName
@@ -285,18 +285,10 @@ return|return
 operator|new
 name|NameFieldAutoCompleter
 argument_list|(
-name|Arrays
+name|InternalBibtexFields
 operator|.
-name|asList
-argument_list|(
-name|FieldName
-operator|.
-name|AUTHOR
-argument_list|,
-name|FieldName
-operator|.
-name|EDITOR
-argument_list|)
+name|getPersonNameFields
+argument_list|()
 argument_list|,
 literal|true
 argument_list|,
