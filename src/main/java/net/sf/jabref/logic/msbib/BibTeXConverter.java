@@ -381,7 +381,9 @@ name|fieldValues
 argument_list|,
 name|MSBIB_PREFIX
 operator|+
-literal|"bookauthor"
+name|FieldName
+operator|.
+name|BOOKAUTHOR
 argument_list|,
 name|entry
 operator|.
@@ -407,7 +409,9 @@ name|fieldValues
 argument_list|,
 name|MSBIB_PREFIX
 operator|+
-literal|"translator"
+name|FieldName
+operator|.
+name|TRANSLATOR
 argument_list|,
 name|entry
 operator|.
