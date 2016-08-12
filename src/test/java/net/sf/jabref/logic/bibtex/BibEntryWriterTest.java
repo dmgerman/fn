@@ -84,6 +84,24 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
+name|importer
+operator|.
+name|ImportFormatPreferences
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
 name|importer
 operator|.
 name|ParserResult
@@ -97,6 +115,8 @@ operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|logic
 operator|.
 name|importer
 operator|.
@@ -249,6 +269,12 @@ specifier|static
 name|JabRefPreferences
 name|backup
 decl_stmt|;
+DECL|field|importFormatPreferences
+specifier|private
+specifier|static
+name|ImportFormatPreferences
+name|importFormatPreferences
+decl_stmt|;
 annotation|@
 name|BeforeClass
 DECL|method|setUp ()
@@ -272,6 +298,17 @@ operator|=
 name|Globals
 operator|.
 name|prefs
+expr_stmt|;
+name|importFormatPreferences
+operator|=
+name|ImportFormatPreferences
+operator|.
+name|fromPreferences
+argument_list|(
+name|Globals
+operator|.
+name|prefs
+argument_list|)
 expr_stmt|;
 block|}
 annotation|@
@@ -523,6 +560,8 @@ name|StringReader
 argument_list|(
 name|bibtexEntry
 argument_list|)
+argument_list|,
+name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -647,6 +686,8 @@ name|StringReader
 argument_list|(
 name|bibtexEntry
 argument_list|)
+argument_list|,
+name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -775,6 +816,8 @@ name|StringReader
 argument_list|(
 name|bibtexEntry
 argument_list|)
+argument_list|,
+name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -964,6 +1007,8 @@ name|StringReader
 argument_list|(
 name|bibtexEntry
 argument_list|)
+argument_list|,
+name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -1163,6 +1208,8 @@ name|StringReader
 argument_list|(
 name|expected
 argument_list|)
+argument_list|,
+name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -1346,6 +1393,8 @@ name|StringReader
 argument_list|(
 name|bibtexEntry
 argument_list|)
+argument_list|,
+name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -1524,6 +1573,8 @@ name|StringReader
 argument_list|(
 name|bibtexEntry
 argument_list|)
+argument_list|,
+name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -1645,6 +1696,8 @@ name|StringReader
 argument_list|(
 name|bibtexEntry
 argument_list|)
+argument_list|,
+name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -1814,6 +1867,8 @@ name|StringReader
 argument_list|(
 name|bibtexEntry
 argument_list|)
+argument_list|,
+name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -2196,6 +2251,8 @@ name|StringReader
 argument_list|(
 name|bibtexEntry
 argument_list|)
+argument_list|,
+name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -2326,6 +2383,8 @@ name|StringReader
 argument_list|(
 name|bibtexEntry
 argument_list|)
+argument_list|,
+name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|Collection

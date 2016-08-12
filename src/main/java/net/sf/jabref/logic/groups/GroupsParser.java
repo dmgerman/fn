@@ -36,9 +36,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
 name|importer
 operator|.
-name|fileformat
+name|util
 operator|.
 name|ParseException
 import|;

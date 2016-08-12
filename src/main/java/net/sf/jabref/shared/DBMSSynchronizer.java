@@ -138,11 +138,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|importer
+name|logic
 operator|.
-name|fileformat
+name|exporter
 operator|.
-name|ParseException
+name|BibDatabaseWriter
 import|;
 end_import
 
@@ -156,9 +156,11 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|exporter
+name|importer
 operator|.
-name|BibDatabaseWriter
+name|util
+operator|.
+name|ParseException
 import|;
 end_import
 

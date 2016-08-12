@@ -412,20 +412,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|importer
-operator|.
-name|CustomImportList
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|logic
 operator|.
 name|autocompleter
@@ -3679,7 +3665,7 @@ argument_list|(
 literal|"user.home"
 argument_list|)
 decl_stmt|;
-comment|/**      * Set with all custom {@link net.sf.jabref.importer.fileformat.ImportFormat}s      */
+comment|/**      * Set with all custom {@link net.sf.jabref.logic.importer.fileformat.ImportFormat}s      */
 DECL|field|customImports
 specifier|public
 specifier|final

@@ -106,9 +106,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|importer
+name|logic
 operator|.
-name|ImportFormatReader
+name|error
+operator|.
+name|StreamEavesdropper
 import|;
 end_import
 
@@ -122,9 +124,9 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|error
+name|importer
 operator|.
-name|StreamEavesdropper
+name|ImportFormatReader
 import|;
 end_import
 

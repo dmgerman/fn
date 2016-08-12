@@ -46,22 +46,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
-operator|.
-name|undo
-operator|.
-name|NamedCompound
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|model
 operator|.
 name|entry
@@ -172,15 +156,6 @@ argument_list|(
 parameter_list|()
 lambda|->
 block|{
-name|NamedCompound
-name|compound
-init|=
-operator|new
-name|NamedCompound
-argument_list|(
-literal|"SpecialFieldSync"
-argument_list|)
-decl_stmt|;
 if|if
 condition|(
 name|FieldName
@@ -198,8 +173,6 @@ operator|.
 name|syncSpecialFieldsFromKeywords
 argument_list|(
 name|entry
-argument_list|,
-name|compound
 argument_list|)
 expr_stmt|;
 name|SwingUtilities
@@ -238,8 +211,6 @@ operator|.
 name|syncKeywordsFromSpecialFields
 argument_list|(
 name|entry
-argument_list|,
-name|compound
 argument_list|)
 expr_stmt|;
 name|SwingUtilities
@@ -262,9 +233,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|// we do NOT pass the named component to the undo manager since we do not want to have undo capabilities
-comment|// if the user undoes the change in the keyword field, this method is also called and
-comment|// the special fields are updated accordingly
 block|}
 argument_list|)
 expr_stmt|;

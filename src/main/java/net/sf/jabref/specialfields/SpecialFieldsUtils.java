@@ -533,6 +533,24 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+DECL|method|syncKeywordsFromSpecialFields (BibEntry be)
+specifier|public
+specifier|static
+name|void
+name|syncKeywordsFromSpecialFields
+parameter_list|(
+name|BibEntry
+name|be
+parameter_list|)
+block|{
+name|syncKeywordsFromSpecialFields
+argument_list|(
+name|be
+argument_list|,
+literal|null
+argument_list|)
+expr_stmt|;
+block|}
 comment|/**      * Update keywords according to values of special fields      *      * @param nc indicates the undo named compound. May be null      */
 DECL|method|syncKeywordsFromSpecialFields (BibEntry be, NamedCompound nc)
 specifier|public
@@ -726,7 +744,25 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * updates field values according to keywords      *      * @param ce indicates the undo named compound. May be null      */
+DECL|method|syncSpecialFieldsFromKeywords (BibEntry be)
+specifier|public
+specifier|static
+name|void
+name|syncSpecialFieldsFromKeywords
+parameter_list|(
+name|BibEntry
+name|be
+parameter_list|)
+block|{
+name|syncSpecialFieldsFromKeywords
+argument_list|(
+name|be
+argument_list|,
+literal|null
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**     * updates field values according to keywords     *     * @param ce indicates the undo named compound. May be null     */
 DECL|method|syncSpecialFieldsFromKeywords (BibEntry be, NamedCompound ce)
 specifier|public
 specifier|static

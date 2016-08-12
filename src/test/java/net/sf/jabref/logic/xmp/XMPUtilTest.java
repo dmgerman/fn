@@ -316,36 +316,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|importer
-operator|.
-name|ParserResult
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|importer
-operator|.
-name|fileformat
-operator|.
-name|BibtexParser
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|logic
 operator|.
 name|bibtex
@@ -383,6 +353,56 @@ operator|.
 name|bibtex
 operator|.
 name|LatexFieldFormatterPreferences
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|importer
+operator|.
+name|ImportFormatPreferences
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|importer
+operator|.
+name|ParserResult
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|importer
+operator|.
+name|fileformat
+operator|.
+name|BibtexParser
 import|;
 end_import
 
@@ -739,6 +759,11 @@ specifier|private
 name|XMPPreferences
 name|xmpPreferences
 decl_stmt|;
+DECL|field|importFormatPreferences
+specifier|private
+name|ImportFormatPreferences
+name|importFormatPreferences
+decl_stmt|;
 comment|/**      * Wrap bibtex-data (<bibtex:author>...) into an rdf:Description.      *      * @param bibtex      * @return      */
 DECL|method|bibtexDescription (String bibtex)
 specifier|public
@@ -943,7 +968,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|bibtexString2BibtexEntry (String s)
+DECL|method|bibtexString2BibtexEntry (String s, ImportFormatPreferences importFormatPreferences)
 specifier|public
 specifier|static
 name|BibEntry
@@ -951,6 +976,9 @@ name|bibtexString2BibtexEntry
 parameter_list|(
 name|String
 name|s
+parameter_list|,
+name|ImportFormatPreferences
+name|importFormatPreferences
 parameter_list|)
 throws|throws
 name|IOException
@@ -967,6 +995,8 @@ name|StringReader
 argument_list|(
 name|s
 argument_list|)
+argument_list|,
+name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -1005,7 +1035,7 @@ name|next
 argument_list|()
 return|;
 block|}
-DECL|method|bibtexEntry2BibtexString (BibEntry e)
+DECL|method|bibtexEntry2BibtexString (BibEntry e, JabRefPreferences preferences)
 specifier|public
 specifier|static
 name|String
@@ -1013,6 +1043,9 @@ name|bibtexEntry2BibtexString
 parameter_list|(
 name|BibEntry
 name|e
+parameter_list|,
+name|JabRefPreferences
+name|preferences
 parameter_list|)
 throws|throws
 name|IOException
@@ -1034,9 +1067,7 @@ name|LatexFieldFormatterPreferences
 operator|.
 name|fromPreferences
 argument_list|(
-name|Globals
-operator|.
-name|prefs
+name|preferences
 argument_list|)
 argument_list|)
 argument_list|,
@@ -1103,6 +1134,8 @@ name|bibtexString2BibtexEntry
 argument_list|(
 name|t1BibtexString
 argument_list|()
+argument_list|,
+name|importFormatPreferences
 argument_list|)
 return|;
 block|}
@@ -1147,6 +1180,8 @@ name|bibtexEntry2BibtexString
 argument_list|(
 name|t2BibtexEntry
 argument_list|()
+argument_list|,
+name|prefs
 argument_list|)
 return|;
 block|}
@@ -1364,6 +1399,8 @@ name|bibtexEntry2BibtexString
 argument_list|(
 name|t3BibtexEntry
 argument_list|()
+argument_list|,
+name|prefs
 argument_list|)
 return|;
 block|}
@@ -1499,17 +1536,6 @@ name|getInstance
 argument_list|()
 expr_stmt|;
 block|}
-name|xmpPreferences
-operator|=
-name|XMPPreferences
-operator|.
-name|fromPreferences
-argument_list|(
-name|Globals
-operator|.
-name|prefs
-argument_list|)
-expr_stmt|;
 comment|// Store Privacy Settings
 name|prefs
 operator|=
@@ -1548,6 +1574,24 @@ argument_list|(
 literal|"useXmpPrivacyFilter"
 argument_list|,
 literal|false
+argument_list|)
+expr_stmt|;
+name|importFormatPreferences
+operator|=
+name|ImportFormatPreferences
+operator|.
+name|fromPreferences
+argument_list|(
+name|prefs
+argument_list|)
+expr_stmt|;
+name|xmpPreferences
+operator|=
+name|XMPPreferences
+operator|.
+name|fromPreferences
+argument_list|(
+name|prefs
 argument_list|)
 expr_stmt|;
 block|}
@@ -2766,6 +2810,8 @@ literal|"\n"
 operator|+
 literal|"}"
 argument_list|)
+argument_list|,
+name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -4618,6 +4664,8 @@ literal|"\n"
 operator|+
 literal|"}"
 argument_list|)
+argument_list|,
+name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -4937,6 +4985,8 @@ literal|"@inProceedings{foo,"
 operator|+
 literal|"  author={Norton Bar}}"
 argument_list|)
+argument_list|,
+name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -6854,6 +6904,8 @@ literal|"  timestamp = {2006.05.29},\n"
 operator|+
 literal|"  url = {http://james.howison.name/publications.html}}"
 argument_list|)
+argument_list|,
+name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -7469,6 +7521,8 @@ name|StringReader
 argument_list|(
 name|bibtex
 argument_list|)
+argument_list|,
+name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -8454,6 +8508,8 @@ literal|"\n"
 operator|+
 literal|"}"
 argument_list|)
+argument_list|,
+name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -8709,6 +8765,8 @@ operator|.
 name|parse
 argument_list|(
 name|fr
+argument_list|,
+name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|Assert
