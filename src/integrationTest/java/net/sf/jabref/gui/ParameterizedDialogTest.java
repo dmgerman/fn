@@ -791,82 +791,14 @@ index|[]
 block|{
 literal|"File"
 block|,
-literal|"Connect to external SQL database"
+literal|"Open shared database"
 block|}
 block|,
-literal|"Connect to SQL database"
+literal|"Open shared database"
 block|,
 literal|"Cancel"
 block|,
 literal|false
-block|}
-argument_list|,
-operator|new
-name|Object
-index|[]
-block|{
-literal|true
-block|,
-operator|new
-name|String
-index|[]
-block|{
-literal|"File"
-block|,
-literal|"Connect to external SQL database"
-block|}
-block|,
-literal|"Connect to SQL database"
-block|,
-literal|"Close button"
-block|,
-literal|true
-block|}
-argument_list|,
-comment|//new Object[]{false, new String[]{"File", "Import from external SQL database"}, "Connect to SQL database", "Cancel", false},
-comment|//new Object[]{false, new String[]{"File", "Import from external SQL database"}, "Connect to SQL database", "Close button", true},
-operator|new
-name|Object
-index|[]
-block|{
-literal|true
-block|,
-operator|new
-name|String
-index|[]
-block|{
-literal|"File"
-block|,
-literal|"Export to external SQL database"
-block|}
-block|,
-literal|"Connect to SQL database"
-block|,
-literal|"Cancel"
-block|,
-literal|false
-block|}
-argument_list|,
-operator|new
-name|Object
-index|[]
-block|{
-literal|true
-block|,
-operator|new
-name|String
-index|[]
-block|{
-literal|"File"
-block|,
-literal|"Export to external SQL database"
-block|}
-block|,
-literal|"Connect to SQL database"
-block|,
-literal|"Close button"
-block|,
-literal|true
 block|}
 argument_list|,
 operator|new
