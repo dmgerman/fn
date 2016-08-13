@@ -600,16 +600,9 @@ DECL|field|encoding
 specifier|private
 name|Charset
 name|encoding
-init|=
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getDefaultEncoding
-argument_list|()
 decl_stmt|;
 comment|/**      * The MetaData object stores all meta data sets in Vectors. To ensure that      * the data is written correctly to string, the user of a meta data Vector      * must simply make sure the appropriate changes are reflected in the Vector      * it has been passed.      */
-DECL|method|MetaData (Map<String, String> inData)
+DECL|method|MetaData (Map<String, String> inData, Charset encoding)
 specifier|private
 name|MetaData
 parameter_list|(
@@ -620,6 +613,9 @@ argument_list|,
 name|String
 argument_list|>
 name|inData
+parameter_list|,
+name|Charset
+name|encoding
 parameter_list|)
 throws|throws
 name|ParseException
@@ -636,15 +632,49 @@ argument_list|(
 name|inData
 argument_list|)
 expr_stmt|;
+name|this
+operator|.
+name|encoding
+operator|=
+name|encoding
+expr_stmt|;
 block|}
 comment|/**      * The MetaData object can be constructed with no data in it.      */
+annotation|@
+name|Deprecated
 DECL|method|MetaData ()
 specifier|public
 name|MetaData
 parameter_list|()
 block|{
-comment|// No data
+name|this
+argument_list|(
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getDefaultEncoding
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
+DECL|method|MetaData (Charset encoding)
+specifier|public
+name|MetaData
+parameter_list|(
+name|Charset
+name|encoding
+parameter_list|)
+block|{
+name|this
+operator|.
+name|encoding
+operator|=
+name|encoding
+expr_stmt|;
+block|}
+annotation|@
+name|Deprecated
 DECL|method|parse (Map<String, String> data)
 specifier|public
 specifier|static
@@ -667,6 +697,43 @@ operator|new
 name|MetaData
 argument_list|(
 name|data
+argument_list|,
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getDefaultEncoding
+argument_list|()
+argument_list|)
+return|;
+block|}
+DECL|method|parse (Map<String, String> data, Charset encoding)
+specifier|public
+specifier|static
+name|MetaData
+name|parse
+parameter_list|(
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
+name|data
+parameter_list|,
+name|Charset
+name|encoding
+parameter_list|)
+throws|throws
+name|ParseException
+block|{
+return|return
+operator|new
+name|MetaData
+argument_list|(
+name|data
+argument_list|,
+name|encoding
 argument_list|)
 return|;
 block|}

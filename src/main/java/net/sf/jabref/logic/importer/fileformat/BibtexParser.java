@@ -999,6 +999,11 @@ operator|.
 name|parse
 argument_list|(
 name|meta
+argument_list|,
+name|importFormatPreferences
+operator|.
+name|getEncoding
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
