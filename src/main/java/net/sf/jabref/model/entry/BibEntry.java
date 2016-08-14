@@ -204,6 +204,18 @@ name|java
 operator|.
 name|util
 operator|.
+name|concurrent
+operator|.
+name|ConcurrentHashMap
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|regex
 operator|.
 name|Pattern
@@ -429,7 +441,7 @@ argument_list|>
 name|fields
 init|=
 operator|new
-name|HashMap
+name|ConcurrentHashMap
 argument_list|<>
 argument_list|()
 decl_stmt|;
