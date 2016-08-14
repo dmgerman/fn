@@ -210,6 +210,7 @@ block|{
 annotation|@
 name|Mock
 DECL|field|loader
+specifier|private
 name|ProtectedTermsLoader
 name|loader
 decl_stmt|;

@@ -144,15 +144,6 @@ operator|new
 name|EventBus
 argument_list|()
 decl_stmt|;
-DECL|method|CountingUndoManager ()
-specifier|public
-name|CountingUndoManager
-parameter_list|()
-block|{
-name|super
-argument_list|()
-expr_stmt|;
-block|}
 annotation|@
 name|Override
 DECL|method|addEdit (UndoableEdit edit)

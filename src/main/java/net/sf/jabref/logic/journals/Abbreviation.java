@@ -72,10 +72,6 @@ name|this
 operator|.
 name|name
 operator|=
-name|java
-operator|.
-name|util
-operator|.
 name|Objects
 operator|.
 name|requireNonNull
@@ -90,10 +86,6 @@ name|this
 operator|.
 name|abbreviation
 operator|=
-name|java
-operator|.
-name|util
-operator|.
 name|Objects
 operator|.
 name|requireNonNull

@@ -106,6 +106,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Objects
 import|;
 end_import
@@ -1687,7 +1697,7 @@ argument_list|>
 name|bibItems
 parameter_list|)
 block|{
-name|HashMap
+name|Map
 argument_list|<
 name|String
 argument_list|,
@@ -2167,12 +2177,12 @@ name|entry
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|addBookInformation (HashMap<String, String> fields, Book book)
+DECL|method|addBookInformation (Map<String, String> fields, Book book)
 specifier|private
 name|void
 name|addBookInformation
 parameter_list|(
-name|HashMap
+name|Map
 argument_list|<
 name|String
 argument_list|,
@@ -2469,12 +2479,12 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|putStringFromSerializableList (HashMap<String, String> fields, String medlineKey, List<Serializable> contentList)
+DECL|method|putStringFromSerializableList (Map<String, String> fields, String medlineKey, List<Serializable> contentList)
 specifier|private
 name|void
 name|putStringFromSerializableList
 parameter_list|(
-name|HashMap
+name|Map
 argument_list|<
 name|String
 argument_list|,
@@ -2550,12 +2560,12 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|addContributionDate (HashMap<String, String> fields, ContributionDate contributionDate)
+DECL|method|addContributionDate (Map<String, String> fields, ContributionDate contributionDate)
 specifier|private
 name|void
 name|addContributionDate
 parameter_list|(
-name|HashMap
+name|Map
 argument_list|<
 name|String
 argument_list|,
@@ -2674,7 +2684,7 @@ argument_list|>
 name|bibItems
 parameter_list|)
 block|{
-name|HashMap
+name|Map
 argument_list|<
 name|String
 argument_list|,
@@ -3248,12 +3258,12 @@ name|entry
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|addNotes (HashMap<String, String> fields, List<GeneralNote> generalNote)
+DECL|method|addNotes (Map<String, String> fields, List<GeneralNote> generalNote)
 specifier|private
 name|void
 name|addNotes
 parameter_list|(
-name|HashMap
+name|Map
 argument_list|<
 name|String
 argument_list|,
@@ -3323,12 +3333,12 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|addInvestigators (HashMap<String, String> fields, InvestigatorList investigatorList)
+DECL|method|addInvestigators (Map<String, String> fields, InvestigatorList investigatorList)
 specifier|private
 name|void
 name|addInvestigators
 parameter_list|(
-name|HashMap
+name|Map
 argument_list|<
 name|String
 argument_list|,
@@ -3519,12 +3529,12 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|addKeyWords (HashMap<String, String> fields, List<KeywordList> allKeywordLists)
+DECL|method|addKeyWords (Map<String, String> fields, List<KeywordList> allKeywordLists)
 specifier|private
 name|void
 name|addKeyWords
 parameter_list|(
-name|HashMap
+name|Map
 argument_list|<
 name|String
 argument_list|,
@@ -3686,12 +3696,12 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|addOtherId (HashMap<String, String> fields, List<OtherID> otherID)
+DECL|method|addOtherId (Map<String, String> fields, List<OtherID> otherID)
 specifier|private
 name|void
 name|addOtherId
 parameter_list|(
-name|HashMap
+name|Map
 argument_list|<
 name|String
 argument_list|,
@@ -3753,12 +3763,12 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|addPersonalNames (HashMap<String, String> fields, PersonalNameSubjectList personalNameSubjectList)
+DECL|method|addPersonalNames (Map<String, String> fields, PersonalNameSubjectList personalNameSubjectList)
 specifier|private
 name|void
 name|addPersonalNames
 parameter_list|(
-name|HashMap
+name|Map
 argument_list|<
 name|String
 argument_list|,
@@ -3883,12 +3893,12 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|addMeashHeading (HashMap<String, String> fields, MeshHeadingList meshHeadingList)
+DECL|method|addMeashHeading (Map<String, String> fields, MeshHeadingList meshHeadingList)
 specifier|private
 name|void
 name|addMeashHeading
 parameter_list|(
-name|HashMap
+name|Map
 argument_list|<
 name|String
 argument_list|,
@@ -3990,12 +4000,12 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|addGeneSymbols (HashMap<String, String> fields, GeneSymbolList geneSymbolList)
+DECL|method|addGeneSymbols (Map<String, String> fields, GeneSymbolList geneSymbolList)
 specifier|private
 name|void
 name|addGeneSymbols
 parameter_list|(
-name|HashMap
+name|Map
 argument_list|<
 name|String
 argument_list|,
@@ -4033,12 +4043,12 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|addChemicals (HashMap<String, String> fields, List<Chemical> chemicals)
+DECL|method|addChemicals (Map<String, String> fields, List<Chemical> chemicals)
 specifier|private
 name|void
 name|addChemicals
 parameter_list|(
-name|HashMap
+name|Map
 argument_list|<
 name|String
 argument_list|,
@@ -4109,12 +4119,12 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|addArticleInformation (HashMap<String, String> fields, List<Object> content)
+DECL|method|addArticleInformation (Map<String, String> fields, List<Object> content)
 specifier|private
 name|void
 name|addArticleInformation
 parameter_list|(
-name|HashMap
+name|Map
 argument_list|<
 name|String
 argument_list|,
@@ -4372,12 +4382,12 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|addElocationID (HashMap<String, String> fields, ELocationID eLocationID)
+DECL|method|addElocationID (Map<String, String> fields, ELocationID eLocationID)
 specifier|private
 name|void
 name|addElocationID
 parameter_list|(
-name|HashMap
+name|Map
 argument_list|<
 name|String
 argument_list|,
@@ -4446,12 +4456,12 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|addPubDate (HashMap<String, String> fields, PubDate pubDate)
+DECL|method|addPubDate (Map<String, String> fields, PubDate pubDate)
 specifier|private
 name|void
 name|addPubDate
 parameter_list|(
-name|HashMap
+name|Map
 argument_list|<
 name|String
 argument_list|,
@@ -4559,12 +4569,12 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|addAbstract (HashMap<String, String> fields, Abstract abs)
+DECL|method|addAbstract (Map<String, String> fields, Abstract abs)
 specifier|private
 name|void
 name|addAbstract
 parameter_list|(
-name|HashMap
+name|Map
 argument_list|<
 name|String
 argument_list|,
@@ -4658,12 +4668,12 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|addPagination (HashMap<String, String> fields, Pagination pagination)
+DECL|method|addPagination (Map<String, String> fields, Pagination pagination)
 specifier|private
 name|void
 name|addPagination
 parameter_list|(
-name|HashMap
+name|Map
 argument_list|<
 name|String
 argument_list|,
@@ -4839,12 +4849,12 @@ literal|4
 argument_list|)
 return|;
 block|}
-DECL|method|handleAuthors (HashMap<String, String> fields, AuthorList authors)
+DECL|method|handleAuthors (Map<String, String> fields, AuthorList authors)
 specifier|private
 name|void
 name|handleAuthors
 parameter_list|(
-name|HashMap
+name|Map
 argument_list|<
 name|String
 argument_list|,
@@ -5013,12 +5023,12 @@ name|list
 argument_list|)
 return|;
 block|}
-DECL|method|addDateRevised (HashMap<String, String> fields, DateRevised dateRevised)
+DECL|method|addDateRevised (Map<String, String> fields, DateRevised dateRevised)
 specifier|private
 name|void
 name|addDateRevised
 parameter_list|(
-name|HashMap
+name|Map
 argument_list|<
 name|String
 argument_list|,
@@ -5087,12 +5097,12 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|putIfValueNotNull (HashMap<String, String> fields, String medlineKey, String value)
+DECL|method|putIfValueNotNull (Map<String, String> fields, String medlineKey, String value)
 specifier|private
 name|void
 name|putIfValueNotNull
 parameter_list|(
-name|HashMap
+name|Map
 argument_list|<
 name|String
 argument_list|,

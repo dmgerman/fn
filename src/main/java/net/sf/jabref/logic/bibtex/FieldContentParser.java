@@ -34,6 +34,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Set
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|regex
 operator|.
 name|Pattern
@@ -87,7 +97,7 @@ block|{
 DECL|field|multiLineFields
 specifier|private
 specifier|final
-name|HashSet
+name|Set
 argument_list|<
 name|String
 argument_list|>

@@ -119,13 +119,15 @@ specifier|public
 class|class
 name|AbbreviationsTest
 block|{
-DECL|field|prefs
 annotation|@
 name|Mock
+DECL|field|prefs
+specifier|private
 name|JabRefPreferences
 name|prefs
 decl_stmt|;
 DECL|field|abbreviations
+specifier|private
 name|JournalAbbreviationLoader
 name|abbreviations
 decl_stmt|;

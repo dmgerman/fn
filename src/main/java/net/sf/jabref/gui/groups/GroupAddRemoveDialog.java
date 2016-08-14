@@ -391,11 +391,6 @@ specifier|private
 name|JTree
 name|tree
 decl_stmt|;
-DECL|field|ok
-specifier|private
-name|JButton
-name|ok
-decl_stmt|;
 DECL|method|GroupAddRemoveDialog (BasePanel panel, boolean add, boolean move)
 specifier|public
 name|GroupAddRemoveDialog
@@ -513,8 +508,9 @@ argument_list|,
 literal|true
 argument_list|)
 decl_stmt|;
+name|JButton
 name|ok
-operator|=
+init|=
 operator|new
 name|JButton
 argument_list|(
@@ -525,7 +521,7 @@ argument_list|(
 literal|"OK"
 argument_list|)
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|JButton
 name|cancel
 init|=
