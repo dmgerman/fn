@@ -22,18 +22,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|logic
 operator|.
 name|importer
@@ -113,16 +101,6 @@ operator|.
 name|junit
 operator|.
 name|Before
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|BeforeClass
 import|;
 end_import
 
@@ -335,23 +313,13 @@ name|ImportFormatPreferences
 name|importFormatPreferences
 decl_stmt|;
 annotation|@
-name|BeforeClass
-DECL|method|setUpGlobalsPrefs ()
+name|Before
+DECL|method|setUp ()
 specifier|public
-specifier|static
 name|void
-name|setUpGlobalsPrefs
+name|setUp
 parameter_list|()
 block|{
-name|Globals
-operator|.
-name|prefs
-operator|=
-name|JabRefPreferences
-operator|.
-name|getInstance
-argument_list|()
-expr_stmt|;
 name|importFormatPreferences
 operator|=
 name|ImportFormatPreferences
@@ -364,15 +332,6 @@ name|getInstance
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
-annotation|@
-name|Before
-DECL|method|setUp ()
-specifier|public
-name|void
-name|setUp
-parameter_list|()
-block|{
 name|BibtexKeyPatternUtil
 operator|.
 name|setDataBase
