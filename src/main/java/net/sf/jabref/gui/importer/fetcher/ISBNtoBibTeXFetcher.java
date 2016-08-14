@@ -671,6 +671,39 @@ operator|!=
 literal|null
 condition|)
 block|{
+comment|// Remove the added " Seiten" from the "pagetotal" field
+name|entry
+operator|.
+name|getFieldOptional
+argument_list|(
+name|FieldName
+operator|.
+name|PAGETOTAL
+argument_list|)
+operator|.
+name|ifPresent
+argument_list|(
+name|pagetotal
+lambda|->
+name|entry
+operator|.
+name|setField
+argument_list|(
+name|FieldName
+operator|.
+name|PAGETOTAL
+argument_list|,
+name|pagetotal
+operator|.
+name|replace
+argument_list|(
+literal|" Seiten"
+argument_list|,
+literal|""
+argument_list|)
+argument_list|)
+argument_list|)
+expr_stmt|;
 comment|// Optionally add curly brackets around key words to keep the case
 name|entry
 operator|.

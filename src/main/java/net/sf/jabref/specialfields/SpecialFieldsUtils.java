@@ -731,6 +731,14 @@ name|ifPresent
 argument_list|(
 name|fieldChange
 lambda|->
+block|{
+if|if
+condition|(
+name|nc
+operator|!=
+literal|null
+condition|)
+block|{
 name|nc
 operator|.
 name|addEdit
@@ -741,6 +749,9 @@ argument_list|(
 name|fieldChange
 argument_list|)
 argument_list|)
+expr_stmt|;
+block|}
+block|}
 argument_list|)
 expr_stmt|;
 block|}
