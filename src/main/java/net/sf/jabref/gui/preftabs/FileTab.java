@@ -2089,18 +2089,6 @@ operator|=
 literal|true
 expr_stmt|;
 block|}
-comment|// If either of the two last entries were changed, run the update for special field handling:
-if|if
-condition|(
-name|updateSpecialFields
-condition|)
-block|{
-name|prefs
-operator|.
-name|updateSpecialFieldHandling
-argument_list|()
-expr_stmt|;
-block|}
 comment|// See if we should start or stop the auto save manager:
 if|if
 condition|(

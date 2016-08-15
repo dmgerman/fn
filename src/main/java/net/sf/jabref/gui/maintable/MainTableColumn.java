@@ -74,6 +74,20 @@ name|jabref
 operator|.
 name|logic
 operator|.
+name|TypedBibEntry
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
 name|layout
 operator|.
 name|LayoutFormatter
@@ -124,9 +138,9 @@ name|jabref
 operator|.
 name|model
 operator|.
-name|entry
+name|database
 operator|.
-name|BibEntry
+name|BibDatabaseMode
 import|;
 end_import
 
@@ -142,7 +156,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|EntryUtil
+name|BibEntry
 import|;
 end_import
 
@@ -603,17 +617,26 @@ name|TYPE_HEADER
 argument_list|)
 condition|)
 block|{
-name|content
-operator|=
-name|EntryUtil
-operator|.
-name|capitalizeFirst
+comment|// Fancy typesetting
+name|TypedBibEntry
+name|typedEntry
+init|=
+operator|new
+name|TypedBibEntry
 argument_list|(
 name|entry
+argument_list|,
+name|BibDatabaseMode
 operator|.
-name|getType
-argument_list|()
+name|BIBLATEX
 argument_list|)
+decl_stmt|;
+name|content
+operator|=
+name|typedEntry
+operator|.
+name|getTypeForDisplay
+argument_list|()
 expr_stmt|;
 block|}
 else|else

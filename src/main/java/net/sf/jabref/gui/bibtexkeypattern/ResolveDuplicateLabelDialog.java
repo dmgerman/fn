@@ -346,7 +346,7 @@ specifier|final
 name|String
 name|LAYOUT
 init|=
-literal|"<font face=\"arial\"><b><i>\\bibtextype</i><a name=\"\\bibtexkey\">\\begin{bibtexkey} (\\bibtexkey)</a>\\end{bibtexkey}</b><br>\n"
+literal|"<font face=\"arial\"><b><i>\\entrytype</i><a name=\"\\bibtexkey\">\\begin{bibtexkey} (\\bibtexkey)</a>\\end{bibtexkey}</b><br>\n"
 operator|+
 literal|"\\begin{author} \\format[HTMLChars,AuthorAbbreviator,AuthorAndsReplacer]{\\author}<BR>\\end{author}\n"
 operator|+

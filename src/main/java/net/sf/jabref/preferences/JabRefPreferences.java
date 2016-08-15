@@ -196,16 +196,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|HashSet
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|List
 import|;
 end_import
@@ -3622,22 +3612,6 @@ specifier|final
 name|Preferences
 name|prefs
 decl_stmt|;
-DECL|field|nonWrappableFields
-specifier|private
-specifier|final
-name|Set
-argument_list|<
-name|String
-argument_list|>
-name|nonWrappableFields
-init|=
-operator|new
-name|HashSet
-argument_list|<>
-argument_list|(
-literal|5
-argument_list|)
-decl_stmt|;
 DECL|field|keyPattern
 specifier|private
 name|GlobalBibtexKeyPattern
@@ -6017,7 +5991,7 @@ name|PREVIEW_0
 argument_list|,
 literal|"<font face=\"sans-serif\">"
 operator|+
-literal|"<b><i>\\bibtextype</i><a name=\"\\bibtexkey\">\\begin{bibtexkey} (\\bibtexkey)</a>"
+literal|"<b><i>\\format[EntryTypeFormatter]{\\entrytype}</i><a name=\"\\bibtexkey\">\\begin{bibtexkey} (\\bibtexkey)</a>"
 operator|+
 literal|"\\end{bibtexkey}</b><br>__NEWLINE__"
 operator|+
@@ -6061,7 +6035,7 @@ name|PREVIEW_1
 argument_list|,
 literal|"<font face=\"sans-serif\">"
 operator|+
-literal|"<b><i>\\bibtextype</i><a name=\"\\bibtexkey\">\\begin{bibtexkey} (\\bibtexkey)</a>"
+literal|"<b><i>\\format[EntryTypeFormatter]{\\entrytype}</i><a name=\"\\bibtexkey\">\\begin{bibtexkey} (\\bibtexkey)</a>"
 operator|+
 literal|"\\end{bibtexkey}</b><br>__NEWLINE__"
 operator|+
@@ -6133,7 +6107,7 @@ name|put
 argument_list|(
 name|NON_WRAPPABLE_FIELDS
 argument_list|,
-literal|"pdf;ps;url;doi;file"
+literal|"pdf;ps;url;doi;file;isbn;issn"
 argument_list|)
 expr_stmt|;
 name|defaults
@@ -6730,9 +6704,6 @@ argument_list|(
 name|this
 argument_list|)
 expr_stmt|;
-name|updateSpecialFieldHandling
-argument_list|()
-expr_stmt|;
 name|WRAPPED_USERNAME
 operator|=
 literal|'['
@@ -7147,66 +7118,6 @@ literal|"References"
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
-DECL|method|updateSpecialFieldHandling ()
-specifier|public
-name|void
-name|updateSpecialFieldHandling
-parameter_list|()
-block|{
-name|nonWrappableFields
-operator|.
-name|clear
-argument_list|()
-expr_stmt|;
-name|String
-name|fieldString
-init|=
-name|get
-argument_list|(
-name|NON_WRAPPABLE_FIELDS
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-operator|!
-name|fieldString
-operator|.
-name|isEmpty
-argument_list|()
-condition|)
-block|{
-name|String
-index|[]
-name|fields
-init|=
-name|fieldString
-operator|.
-name|split
-argument_list|(
-literal|";"
-argument_list|)
-decl_stmt|;
-for|for
-control|(
-name|String
-name|field
-range|:
-name|fields
-control|)
-block|{
-name|nonWrappableFields
-operator|.
-name|add
-argument_list|(
-name|field
-operator|.
-name|trim
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
-block|}
 block|}
 comment|/**      * Check whether a key is set (differently from null).      *      * @param key The key to check.      * @return true if the key is set, false otherwise.      */
 DECL|method|hasKey (String key)

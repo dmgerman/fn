@@ -3012,7 +3012,6 @@ argument_list|)
 expr_stmt|;
 continue|continue;
 block|}
-comment|/**              * bibtextype -> relation              *              * Field: dc:relation              *              * Type: bag Text              *              * Category: External              *              * Description: Relationships to other documents.              *              * Bibtex-Fields used: bibtextype              */
 comment|/**              * All others (including the bibtex key) get packaged in the              * relation attribute              */
 name|String
 name|o
@@ -3046,7 +3045,7 @@ argument_list|(
 literal|"application/pdf"
 argument_list|)
 expr_stmt|;
-comment|/**          * Type -> Type          *          * Field: dc:type          *          * Type: bag open Choice          *          * Category: External          *          * Description: A document type; for example, novel, poem, or working          * paper.          *          * Bibtex-Fields used: title          */
+comment|/**          * entrytype -> Type          *          * Field: dc:type          *          * Type: bag open Choice          *          * Category: External          *          * Description: A document type; for example, novel, poem, or working          * paper.          *          * Bibtex-Fields used: entrytype          */
 name|TypedBibEntry
 name|typedEntry
 init|=

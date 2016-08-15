@@ -373,6 +373,15 @@ name|TYPE_HEADER
 init|=
 literal|"entrytype"
 decl_stmt|;
+DECL|field|OBSOLETE_TYPE_HEADER
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|OBSOLETE_TYPE_HEADER
+init|=
+literal|"bibtextype"
+decl_stmt|;
 DECL|field|KEY_FIELD
 specifier|public
 specifier|static
