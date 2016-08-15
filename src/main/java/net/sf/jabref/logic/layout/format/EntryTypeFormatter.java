@@ -78,6 +78,10 @@ name|BibEntry
 import|;
 end_import
 
+begin_comment
+comment|/*  * Camel casing of entry type string, unknown entry types gets a leading capital  *  * Example (known): inbook -> InBook  * Example (unknown): banana -> Banana  */
+end_comment
+
 begin_class
 DECL|class|EntryTypeFormatter
 specifier|public
@@ -86,18 +90,18 @@ name|EntryTypeFormatter
 implements|implements
 name|LayoutFormatter
 block|{
+comment|/**      * Input: entry type as a string      */
 annotation|@
 name|Override
-DECL|method|format (String fieldText)
+DECL|method|format (String entryType)
 specifier|public
 name|String
 name|format
 parameter_list|(
 name|String
-name|fieldText
+name|entryType
 parameter_list|)
 block|{
-comment|// Fancy typesetting
 name|BibEntry
 name|entry
 init|=
@@ -109,7 +113,7 @@ name|entry
 operator|.
 name|setType
 argument_list|(
-name|fieldText
+name|entryType
 argument_list|)
 expr_stmt|;
 name|TypedBibEntry
