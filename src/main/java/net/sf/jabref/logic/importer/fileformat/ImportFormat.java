@@ -112,16 +112,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|List
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|Objects
 import|;
 end_import
@@ -139,6 +129,22 @@ operator|.
 name|importer
 operator|.
 name|ParserResult
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|util
+operator|.
+name|FileExtensions
 import|;
 end_import
 
@@ -385,14 +391,11 @@ name|String
 name|getFormatName
 parameter_list|()
 function_decl|;
-comment|/**      * Returns the file extensions that this importer can read.      * The extension should contain the leading dot, so for example ".bib"      *      * @return list of supported file extensions (not null but may be empty). The list should never be null. Instead return an empty list.      */
+comment|/**      * Returns the file extensions that this importer can read      * @return {@link FileExtensions} correspoding to the importer      */
 DECL|method|getExtensions ()
 specifier|public
 specifier|abstract
-name|List
-argument_list|<
-name|String
-argument_list|>
+name|FileExtensions
 name|getExtensions
 parameter_list|()
 function_decl|;

@@ -166,19 +166,25 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|preferences
+name|logic
 operator|.
-name|JabRefPreferences
+name|util
+operator|.
+name|FileExtensions
 import|;
 end_import
 
 begin_import
 import|import
-name|org
+name|net
 operator|.
-name|junit
+name|sf
 operator|.
-name|Assert
+name|jabref
+operator|.
+name|preferences
+operator|.
+name|JabRefPreferences
 import|;
 end_import
 
@@ -223,6 +229,30 @@ operator|.
 name|runners
 operator|.
 name|MockitoJUnitRunner
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertFalse
 import|;
 end_import
 
@@ -352,8 +382,6 @@ operator|new
 name|BibTeXMLHandler
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Collections
@@ -376,8 +404,6 @@ name|void
 name|testGetFormatName
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"BibTeXML"
@@ -397,8 +423,6 @@ name|void
 name|testGetCLIId
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"bibtexml"
@@ -418,16 +442,11 @@ name|void
 name|testsGetExtensions
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
-name|Collections
+name|FileExtensions
 operator|.
-name|singletonList
-argument_list|(
-literal|".xml"
-argument_list|)
+name|BIBTEXML
 argument_list|,
 name|importer
 operator|.
@@ -444,8 +463,6 @@ name|void
 name|testGetDescription
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Importer for the BibTeXML format."
@@ -514,8 +531,6 @@ range|:
 name|list
 control|)
 block|{
-name|Assert
-operator|.
 name|assertFalse
 argument_list|(
 name|file

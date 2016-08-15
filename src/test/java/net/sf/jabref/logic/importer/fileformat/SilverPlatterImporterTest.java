@@ -128,6 +128,22 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
+name|util
+operator|.
+name|FileExtensions
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|model
 operator|.
 name|entry
@@ -232,6 +248,18 @@ name|Parameters
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
 begin_class
 annotation|@
 name|RunWith
@@ -328,21 +356,16 @@ name|void
 name|testsGetExtensions
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
-literal|".txt"
+name|FileExtensions
+operator|.
+name|SILVER_PLATTER
 argument_list|,
 name|testImporter
 operator|.
 name|getExtensions
 argument_list|()
-operator|.
-name|get
-argument_list|(
-literal|0
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -354,8 +377,6 @@ name|void
 name|testGetDescription
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Imports a SilverPlatter exported file."
