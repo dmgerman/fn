@@ -160,13 +160,16 @@ argument_list|,
 operator|(
 name|BibtexParser
 operator|.
-name|singleFromString
+name|singleFromStringOptional
 argument_list|(
 literal|"@ARTICLE{HipKro03, year = {2003}, month = #FEB# }"
 argument_list|,
 name|importFormatPreferences
 argument_list|)
 operator|)
+operator|.
+name|get
+argument_list|()
 operator|.
 name|getPublicationDate
 argument_list|()
@@ -186,13 +189,16 @@ argument_list|,
 operator|(
 name|BibtexParser
 operator|.
-name|singleFromString
+name|singleFromStringOptional
 argument_list|(
 literal|"@ARTICLE{HipKro03, year = {2003}, month = 3 }"
 argument_list|,
 name|importFormatPreferences
 argument_list|)
 operator|)
+operator|.
+name|get
+argument_list|()
 operator|.
 name|getPublicationDate
 argument_list|()
@@ -212,7 +218,7 @@ argument_list|,
 operator|(
 name|BibtexParser
 operator|.
-name|singleFromString
+name|singleFromStringOptional
 argument_list|(
 literal|"@ARTICLE{HipKro03, year = {2003}}"
 argument_list|,
@@ -220,6 +226,9 @@ name|importFormatPreferences
 argument_list|)
 operator|)
 operator|.
+name|get
+argument_list|()
+operator|.
 name|getPublicationDate
 argument_list|()
 argument_list|)
@@ -236,7 +245,7 @@ argument_list|,
 operator|(
 name|BibtexParser
 operator|.
-name|singleFromString
+name|singleFromStringOptional
 argument_list|(
 literal|"@ARTICLE{HipKro03, month = 3 }"
 argument_list|,
@@ -244,6 +253,9 @@ name|importFormatPreferences
 argument_list|)
 operator|)
 operator|.
+name|get
+argument_list|()
+operator|.
 name|getPublicationDate
 argument_list|()
 argument_list|)
@@ -260,13 +272,16 @@ argument_list|,
 operator|(
 name|BibtexParser
 operator|.
-name|singleFromString
+name|singleFromStringOptional
 argument_list|(
 literal|"@ARTICLE{HipKro03, author={bla}}"
 argument_list|,
 name|importFormatPreferences
 argument_list|)
 operator|)
+operator|.
+name|get
+argument_list|()
 operator|.
 name|getPublicationDate
 argument_list|()
@@ -286,13 +301,16 @@ argument_list|,
 operator|(
 name|BibtexParser
 operator|.
-name|singleFromString
+name|singleFromStringOptional
 argument_list|(
 literal|"@ARTICLE{HipKro03, year = {2003}, month = #DEC# }"
 argument_list|,
 name|importFormatPreferences
 argument_list|)
 operator|)
+operator|.
+name|get
+argument_list|()
 operator|.
 name|getPublicationDate
 argument_list|()

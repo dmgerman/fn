@@ -94,6 +94,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|swing
@@ -628,12 +638,15 @@ return|return
 literal|false
 return|;
 block|}
+name|Optional
+argument_list|<
 name|BibEntry
+argument_list|>
 name|entry
 init|=
 name|BibtexParser
 operator|.
-name|singleFromString
+name|singleFromStringOptional
 argument_list|(
 name|bibtexString
 argument_list|,
@@ -650,12 +663,16 @@ decl_stmt|;
 if|if
 condition|(
 name|entry
-operator|!=
-literal|null
+operator|.
+name|isPresent
+argument_list|()
 condition|)
 block|{
 comment|// Optionally add curly brackets around key words to keep the case
 name|entry
+operator|.
+name|get
+argument_list|()
 operator|.
 name|getFieldOptional
 argument_list|(
@@ -721,6 +738,9 @@ expr_stmt|;
 block|}
 name|entry
 operator|.
+name|get
+argument_list|()
+operator|.
 name|setField
 argument_list|(
 name|FieldName
@@ -735,6 +755,9 @@ argument_list|)
 expr_stmt|;
 name|entry
 operator|.
+name|get
+argument_list|()
+operator|.
 name|getFieldOptional
 argument_list|(
 name|FieldName
@@ -747,6 +770,9 @@ argument_list|(
 name|institution
 lambda|->
 name|entry
+operator|.
+name|get
+argument_list|()
 operator|.
 name|setField
 argument_list|(
@@ -772,6 +798,9 @@ operator|.
 name|addEntry
 argument_list|(
 name|entry
+operator|.
+name|get
+argument_list|()
 argument_list|)
 expr_stmt|;
 return|return
