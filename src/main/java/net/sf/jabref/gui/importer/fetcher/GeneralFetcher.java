@@ -1758,6 +1758,20 @@ name|getIcon
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|putValue
+argument_list|(
+name|Action
+operator|.
+name|SHORT_DESCRIPTION
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Toggle web search interface"
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Override
