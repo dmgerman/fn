@@ -200,7 +200,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
+name|gui
+operator|.
+name|JabRefFrame
 import|;
 end_import
 
@@ -214,7 +216,9 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|JabRefFrame
+name|util
+operator|.
+name|GUIUtil
 import|;
 end_import
 
@@ -263,20 +267,6 @@ operator|.
 name|l10n
 operator|.
 name|Localization
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|preferences
-operator|.
-name|JabRefPreferences
 import|;
 end_import
 
@@ -763,22 +753,11 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+name|GUIUtil
+operator|.
+name|correctRowHeight
+argument_list|(
 name|table
-operator|.
-name|setRowHeight
-argument_list|(
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getInt
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|MENU_FONT_SIZE
-argument_list|)
-operator|+
-literal|2
 argument_list|)
 expr_stmt|;
 name|table
