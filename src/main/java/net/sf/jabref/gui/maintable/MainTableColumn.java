@@ -488,7 +488,7 @@ return|;
 block|}
 comment|/**      * Checks whether the column should display names      * Relevant as name value format can be formatted.      *      * @return true if the bibtex fields contains author or editor      */
 DECL|method|isNameColumn ()
-specifier|public
+specifier|private
 name|boolean
 name|isNameColumn
 parameter_list|()
@@ -717,6 +717,22 @@ block|}
 block|}
 if|if
 condition|(
+name|isNameColumn
+argument_list|()
+condition|)
+block|{
+name|content
+operator|=
+name|MainTableNameFormatter
+operator|.
+name|formatName
+argument_list|(
+name|content
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
 name|content
 operator|!=
 literal|null
@@ -730,22 +746,10 @@ name|format
 argument_list|(
 name|content
 argument_list|)
-expr_stmt|;
-block|}
-if|if
-condition|(
-name|isNameColumn
-argument_list|()
-condition|)
-block|{
-return|return
-name|MainTableNameFormatter
 operator|.
-name|formatName
-argument_list|(
-name|content
-argument_list|)
-return|;
+name|trim
+argument_list|()
+expr_stmt|;
 block|}
 return|return
 name|content
