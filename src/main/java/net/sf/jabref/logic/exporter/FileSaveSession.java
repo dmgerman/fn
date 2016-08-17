@@ -548,8 +548,6 @@ operator|.
 name|waitForFileLock
 argument_list|(
 name|file
-argument_list|,
-literal|10
 argument_list|)
 condition|)
 block|{

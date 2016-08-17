@@ -349,8 +349,6 @@ name|file
 operator|.
 name|toPath
 argument_list|()
-argument_list|,
-literal|10
 argument_list|)
 condition|)
 block|{

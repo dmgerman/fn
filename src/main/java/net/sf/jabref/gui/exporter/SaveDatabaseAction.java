@@ -760,14 +760,13 @@ return|return;
 block|}
 try|try
 block|{
-comment|// Make sure the current edit is stored:
+comment|// Make sure the current edit is stored
 name|panel
 operator|.
 name|storeCurrentEdit
 argument_list|()
 expr_stmt|;
-comment|// If the option is set, autogenerate keys for all entries that are
-comment|// lacking keys, before saving:
+comment|// If set in preferences, generate missing BibTeX keys
 name|panel
 operator|.
 name|autoGenerateKeysBeforeSaving
@@ -789,8 +788,6 @@ argument_list|()
 operator|.
 name|toPath
 argument_list|()
-argument_list|,
-literal|10
 argument_list|)
 condition|)
 block|{
@@ -2134,8 +2131,6 @@ argument_list|()
 operator|.
 name|toPath
 argument_list|()
-argument_list|,
-literal|10
 argument_list|)
 condition|)
 block|{
