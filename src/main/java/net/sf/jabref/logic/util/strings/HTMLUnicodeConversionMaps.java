@@ -1025,34 +1025,6 @@ block|}
 block|,
 comment|// latin small letter y with diaeresis,
 comment|//                                 U+00FF ISOlat1
-block|{
-literal|"332"
-block|,
-literal|"Omacro"
-block|,
-literal|"{{\\={O}}}"
-block|}
-block|,
-comment|// the small letter o with macron
-block|{
-literal|"333"
-block|,
-literal|"omacro"
-block|,
-literal|"{\\={o}}"
-block|}
-block|,
-comment|// the big letter O with macron
-block|{
-literal|"402"
-block|,
-literal|"fnof"
-block|,
-literal|"\textit{f}"
-block|}
-block|,
-comment|// latin small f with hook = function
-comment|//                                   = florin, U+0192 ISOtech
 comment|/* Greek */
 block|{
 literal|"913"
@@ -2296,57 +2268,6 @@ literal|"$>$"
 block|}
 block|,
 comment|// greater-than sign, U+003E ISOnum
-comment|/* Latin Extended-A */
-block|{
-literal|"338"
-block|,
-literal|"OElig"
-block|,
-literal|"{{\\OE}}"
-block|}
-block|,
-comment|// latin capital ligature OE,
-comment|//                                   U+0152 ISOlat2
-block|{
-literal|"339"
-block|,
-literal|"oelig"
-block|,
-literal|"{{\\oe}}"
-block|}
-block|,
-comment|// latin small ligature oe, U+0153 ISOlat2
-comment|/* ligature is a misnomer, this is a separate character in some languages */
-block|{
-literal|"352"
-block|,
-literal|"Scaron"
-block|,
-literal|"{{\\v{S}}}"
-block|}
-block|,
-comment|// latin capital letter S with caron,
-comment|//                                   U+0160 ISOlat2
-block|{
-literal|"353"
-block|,
-literal|"scaron"
-block|,
-literal|"{\\v{s}}"
-block|}
-block|,
-comment|// latin small letter s with caron,
-comment|//                                   U+0161 ISOlat2
-block|{
-literal|"376"
-block|,
-literal|"Yuml"
-block|,
-literal|"{{\\\"{Y}}}"
-block|}
-block|,
-comment|// latin capital letter Y with diaeresis,
-comment|//                                   U+0178 ISOlat2
 comment|/* Spacing Modifier Letters */
 block|{
 literal|"710"
@@ -2868,6 +2789,42 @@ block|,
 comment|// En dash
 comment|// {"154", "", "{\\v{s}}"}, // Single character introducer
 block|{
+literal|"256"
+block|,
+literal|""
+block|,
+literal|"{{\\={A}}}"
+block|}
+block|,
+comment|// capital A with macron
+block|{
+literal|"257"
+block|,
+literal|""
+block|,
+literal|"{\\={a}}"
+block|}
+block|,
+comment|// small a with macron
+block|{
+literal|"258"
+block|,
+literal|""
+block|,
+literal|"{{\\u{A}}}"
+block|}
+block|,
+comment|// capital A with breve
+block|{
+literal|"259"
+block|,
+literal|""
+block|,
+literal|"{\\u{a}}"
+block|}
+block|,
+comment|// small a with breve
+block|{
 literal|"260"
 block|,
 literal|"Aogon"
@@ -2958,6 +2915,24 @@ block|}
 block|,
 comment|// small C with caron
 block|{
+literal|"270"
+block|,
+literal|""
+block|,
+literal|"{{\\v{D}}}"
+block|}
+block|,
+comment|// capital D with caron
+block|{
+literal|"271"
+block|,
+literal|""
+block|,
+literal|"{\\v{d}}"
+block|}
+block|,
+comment|// small d with caron
+block|{
 literal|"272"
 block|,
 literal|"Dstrok"
@@ -2975,6 +2950,60 @@ literal|"{{\\dj}}"
 block|}
 block|,
 comment|// small d with stroke
+block|{
+literal|"274"
+block|,
+literal|""
+block|,
+literal|"{{\\={E}}}"
+block|}
+block|,
+comment|// capital E with macron
+block|{
+literal|"275"
+block|,
+literal|""
+block|,
+literal|"{\\={e}}"
+block|}
+block|,
+comment|// small e with macron
+block|{
+literal|"276"
+block|,
+literal|""
+block|,
+literal|"{{\\u{E}}}"
+block|}
+block|,
+comment|// capital E with breve
+block|{
+literal|"277"
+block|,
+literal|""
+block|,
+literal|"{\\u{e}}"
+block|}
+block|,
+comment|// small e with breve
+block|{
+literal|"278"
+block|,
+literal|""
+block|,
+literal|"{{\\.{E}}}"
+block|}
+block|,
+comment|// capital E with dot above
+block|{
+literal|"279"
+block|,
+literal|""
+block|,
+literal|"{\\.{e}}"
+block|}
+block|,
+comment|// small e with dot above
 block|{
 literal|"280"
 block|,
@@ -2994,6 +3023,150 @@ block|}
 block|,
 comment|// small e with ogonek
 block|{
+literal|"282"
+block|,
+literal|""
+block|,
+literal|"{{\\v{E}}}"
+block|}
+block|,
+comment|// capital E with caron
+block|{
+literal|"283"
+block|,
+literal|""
+block|,
+literal|"{\\v{e}}"
+block|}
+block|,
+comment|// small e with caron
+block|{
+literal|"284"
+block|,
+literal|""
+block|,
+literal|"{{\\^{G}}}"
+block|}
+block|,
+comment|// capital G with circumflex
+block|{
+literal|"285"
+block|,
+literal|""
+block|,
+literal|"{\\^{g}}"
+block|}
+block|,
+comment|// small g with circumflex
+block|{
+literal|"286"
+block|,
+literal|""
+block|,
+literal|"{{\\u{G}}}"
+block|}
+block|,
+comment|// capital G with breve
+block|{
+literal|"287"
+block|,
+literal|""
+block|,
+literal|"{\\u{g}}"
+block|}
+block|,
+comment|// small g with breve
+block|{
+literal|"288"
+block|,
+literal|""
+block|,
+literal|"{{\\.{G}}}"
+block|}
+block|,
+comment|// capital G with dot above
+block|{
+literal|"289"
+block|,
+literal|""
+block|,
+literal|"{\\.{g}}"
+block|}
+block|,
+comment|// small g with dot above
+block|{
+literal|"290"
+block|,
+literal|""
+block|,
+literal|"{{\\c{G}}}"
+block|}
+block|,
+comment|// capital G with cedilla
+block|{
+literal|"291"
+block|,
+literal|""
+block|,
+literal|"{\\c{g}}"
+block|}
+block|,
+comment|// small g with cedilla
+block|{
+literal|"292"
+block|,
+literal|""
+block|,
+literal|"{{\\^{H}}}"
+block|}
+block|,
+comment|// capital H with circumflex
+block|{
+literal|"293"
+block|,
+literal|""
+block|,
+literal|"{\\^{h}}"
+block|}
+block|,
+comment|// small h with circumflex
+block|{
+literal|"294"
+block|,
+literal|""
+block|,
+literal|"{{\\B{H}}}"
+block|}
+block|,
+comment|// capital H with stroke
+block|{
+literal|"295"
+block|,
+literal|""
+block|,
+literal|"{\\B{h}}"
+block|}
+block|,
+comment|// small h with stroke
+block|{
+literal|"296"
+block|,
+literal|""
+block|,
+literal|"{{\\~{I}}}"
+block|}
+block|,
+comment|// capital I with tilde
+block|{
+literal|"297"
+block|,
+literal|""
+block|,
+literal|"{\\~{\\i}}"
+block|}
+block|,
+comment|// small i with tilde
+block|{
 literal|"298"
 block|,
 literal|"Imacr"
@@ -3011,6 +3184,24 @@ literal|"{\\={\\i}}"
 block|}
 block|,
 comment|// small i with macron
+block|{
+literal|"300"
+block|,
+literal|""
+block|,
+literal|"{{\\u{I}}}"
+block|}
+block|,
+comment|// capital I with breve
+block|{
+literal|"301"
+block|,
+literal|""
+block|,
+literal|"{\\u{\\i}}"
+block|}
+block|,
+comment|// small i with breve
 block|{
 literal|"302"
 block|,
@@ -3075,6 +3266,42 @@ block|}
 block|,
 comment|// Dutch di-graph ij
 block|{
+literal|"308"
+block|,
+literal|""
+block|,
+literal|"{{\\^{J}}}"
+block|}
+block|,
+comment|// capital J with circumflex
+block|{
+literal|"309"
+block|,
+literal|""
+block|,
+literal|"{\\^{\\j}}"
+block|}
+block|,
+comment|// small j with circumflex
+block|{
+literal|"310"
+block|,
+literal|""
+block|,
+literal|"{{\\c{K}}}"
+block|}
+block|,
+comment|// capital K with cedilla
+block|{
+literal|"311"
+block|,
+literal|""
+block|,
+literal|"{\\c{k}}"
+block|}
+block|,
+comment|// small k with cedilla
+block|{
 literal|"312"
 block|,
 literal|""
@@ -3083,6 +3310,60 @@ literal|"{\\textkra}"
 block|}
 block|,
 comment|// Letter kra
+block|{
+literal|"313"
+block|,
+literal|""
+block|,
+literal|"{{\\'{L}}}"
+block|}
+block|,
+comment|// capital L with acute
+block|{
+literal|"314"
+block|,
+literal|""
+block|,
+literal|"{\\'{l}}"
+block|}
+block|,
+comment|// small l with acute
+block|{
+literal|"315"
+block|,
+literal|""
+block|,
+literal|"{{\\c{L}}}"
+block|}
+block|,
+comment|// capital L with cedilla
+block|{
+literal|"316"
+block|,
+literal|""
+block|,
+literal|"{\\c{l}}"
+block|}
+block|,
+comment|// small l with cedilla
+block|{
+literal|"317"
+block|,
+literal|""
+block|,
+literal|"{{\\v{L}}}"
+block|}
+block|,
+comment|// capital L with caron
+block|{
+literal|"318"
+block|,
+literal|""
+block|,
+literal|"{\\v{l}}"
+block|}
+block|,
+comment|// small l with caron
 block|{
 literal|"319"
 block|,
@@ -3120,6 +3401,60 @@ block|}
 block|,
 comment|// lower case l with stroke
 block|{
+literal|"323"
+block|,
+literal|"Nacute"
+block|,
+literal|"{{\\'{N}}}"
+block|}
+block|,
+comment|// upper case N with acute
+block|{
+literal|"324"
+block|,
+literal|"nacute"
+block|,
+literal|"{{\\'{n}}}"
+block|}
+block|,
+comment|// lower case n with acute
+block|{
+literal|"325"
+block|,
+literal|""
+block|,
+literal|"{{\\c{N}}}"
+block|}
+block|,
+comment|// capital N with cedilla
+block|{
+literal|"326"
+block|,
+literal|""
+block|,
+literal|"{\\c{n}}"
+block|}
+block|,
+comment|// small n with cedilla
+block|{
+literal|"327"
+block|,
+literal|""
+block|,
+literal|"{{\\v{N}}}"
+block|}
+block|,
+comment|// capital N with caron
+block|{
+literal|"328"
+block|,
+literal|""
+block|,
+literal|"{\\v{n}}"
+block|}
+block|,
+comment|// small n with caron
+block|{
 literal|"330"
 block|,
 literal|""
@@ -3138,9 +3473,27 @@ block|}
 block|,
 comment|// lower case letter Eng
 block|{
+literal|"332"
+block|,
+literal|"Omacro"
+block|,
+literal|"{{\\={O}}}"
+block|}
+block|,
+comment|// the small letter o with macron
+block|{
+literal|"333"
+block|,
+literal|"omacro"
+block|,
+literal|"{\\={o}}"
+block|}
+block|,
+comment|// the big letter O with macron
+block|{
 literal|"338"
 block|,
-literal|""
+literal|"OElig"
 block|,
 literal|"{{\\OE}}"
 block|}
@@ -3149,7 +3502,7 @@ comment|// OE-ligature
 block|{
 literal|"339"
 block|,
-literal|""
+literal|"oelig"
 block|,
 literal|"{{\\oe}}"
 block|}
@@ -3192,6 +3545,24 @@ block|}
 block|,
 comment|// lower case s with cedilla
 block|{
+literal|"352"
+block|,
+literal|"Scaron"
+block|,
+literal|"{{\\v{S}}}"
+block|}
+block|,
+comment|// latin capital letter S with caron,
+block|{
+literal|"353"
+block|,
+literal|"scaron"
+block|,
+literal|"{\\v{s}}"
+block|}
+block|,
+comment|// latin small letter s with caron,
+block|{
 literal|"370"
 block|,
 literal|"Uogon"
@@ -3210,6 +3581,15 @@ block|}
 block|,
 comment|// small u with ogonek
 block|{
+literal|"376"
+block|,
+literal|"Yuml"
+block|,
+literal|"{{\\\"{Y}}}"
+block|}
+block|,
+comment|// latin capital letter Y with diaeresis,
+block|{
 literal|"381"
 block|,
 literal|"Zcaron"
@@ -3227,6 +3607,15 @@ literal|"{\\v{z}}"
 block|}
 block|,
 comment|// small z with caron
+block|{
+literal|"402"
+block|,
+literal|"fnof"
+block|,
+literal|"\textit{f}"
+block|}
+block|,
+comment|// latin small f with hook = function
 block|{
 literal|"405"
 block|,
