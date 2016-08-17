@@ -7314,11 +7314,6 @@ name|fieldEditor
 operator|.
 name|getText
 argument_list|()
-decl_stmt|;
-name|String
-name|trim
-init|=
-name|currentText
 operator|.
 name|trim
 argument_list|()
@@ -7326,7 +7321,7 @@ decl_stmt|;
 if|if
 condition|(
 operator|!
-name|trim
+name|currentText
 operator|.
 name|isEmpty
 argument_list|()
@@ -7334,7 +7329,7 @@ condition|)
 block|{
 name|toSet
 operator|=
-name|trim
+name|currentText
 expr_stmt|;
 block|}
 comment|// We check if the field has changed, since we don't want to

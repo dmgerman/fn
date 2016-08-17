@@ -396,6 +396,22 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|BibEntry
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|preferences
 operator|.
 name|JabRefPreferences
@@ -802,7 +818,7 @@ condition|)
 block|{
 return|return;
 block|}
-comment|// Save the database:
+comment|// Save the database
 name|success
 operator|=
 name|saveDatabase
@@ -845,7 +861,6 @@ expr_stmt|;
 block|}
 else|else
 block|{
-comment|// No file lock
 name|success
 operator|=
 literal|false
@@ -855,6 +870,7 @@ operator|=
 literal|true
 expr_stmt|;
 block|}
+comment|// release panel from save status
 name|panel
 operator|.
 name|setSaving
@@ -875,20 +891,13 @@ operator|.
 name|markUnchanged
 argument_list|()
 expr_stmt|;
-if|if
-condition|(
-operator|!
 name|AutoSaveManager
 operator|.
 name|deleteAutoSaveFile
 argument_list|(
 name|panel
 argument_list|)
-condition|)
-block|{
-comment|//System.out.println("Deletion of autosave file failed");
-block|}
-comment|/* else                      System.out.println("Deleted autosave file (if it existed)");*/
+expr_stmt|;
 comment|// (Only) after a successful save the following
 comment|// statement marks that the base is unchanged
 comment|// since last save:
@@ -918,12 +927,12 @@ block|}
 catch|catch
 parameter_list|(
 name|SaveException
-name|ex2
+name|ex
 parameter_list|)
 block|{
 if|if
 condition|(
-name|ex2
+name|ex
 operator|==
 name|SaveException
 operator|.
@@ -946,7 +955,7 @@ name|error
 argument_list|(
 literal|"Problem saving file"
 argument_list|,
-name|ex2
+name|ex
 argument_list|)
 expr_stmt|;
 block|}
@@ -971,6 +980,7 @@ block|{
 name|SaveSession
 name|session
 decl_stmt|;
+comment|// block user input
 name|frame
 operator|.
 name|block
@@ -1063,7 +1073,7 @@ block|}
 catch|catch
 parameter_list|(
 name|UnsupportedCharsetException
-name|ex2
+name|ex
 parameter_list|)
 block|{
 name|JOptionPane
@@ -1103,6 +1113,7 @@ operator|.
 name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
+comment|// FIXME: rethrow anti-pattern
 throw|throw
 operator|new
 name|SaveException
@@ -1138,68 +1149,18 @@ name|specificEntry
 argument_list|()
 condition|)
 block|{
-comment|// Error occured during processing of
-comment|// be. Highlight it:
-name|int
-name|row
+name|BibEntry
+name|entry
 init|=
-name|panel
-operator|.
-name|getMainTable
-argument_list|()
-operator|.
-name|findEntry
-argument_list|(
 name|ex
 operator|.
 name|getEntry
 argument_list|()
-argument_list|)
 decl_stmt|;
-name|int
-name|topShow
-init|=
-name|Math
-operator|.
-name|max
+comment|// Error occured during processing of an entry. Highlight it!
+name|highlightEntry
 argument_list|(
-literal|0
-argument_list|,
-name|row
-operator|-
-literal|3
-argument_list|)
-decl_stmt|;
-name|panel
-operator|.
-name|getMainTable
-argument_list|()
-operator|.
-name|setRowSelectionInterval
-argument_list|(
-name|row
-argument_list|,
-name|row
-argument_list|)
-expr_stmt|;
-name|panel
-operator|.
-name|getMainTable
-argument_list|()
-operator|.
-name|scrollTo
-argument_list|(
-name|topShow
-argument_list|)
-expr_stmt|;
-name|panel
-operator|.
-name|showEntry
-argument_list|(
-name|ex
-operator|.
-name|getEntry
-argument_list|()
+name|entry
 argument_list|)
 expr_stmt|;
 block|}
@@ -1209,7 +1170,7 @@ name|LOGGER
 operator|.
 name|error
 argument_list|(
-literal|"Problem saving file"
+literal|"A problem occured when trying to save the file"
 argument_list|,
 name|ex
 argument_list|)
@@ -1247,6 +1208,7 @@ operator|.
 name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
+comment|// FIXME: rethrow anti-pattern
 throw|throw
 operator|new
 name|SaveException
@@ -1257,14 +1219,16 @@ throw|;
 block|}
 finally|finally
 block|{
+comment|// re-enable user input
 name|frame
 operator|.
 name|unblock
 argument_list|()
 expr_stmt|;
 block|}
+comment|// handle encoding problems
 name|boolean
-name|commit
+name|success
 init|=
 literal|true
 decl_stmt|;
@@ -1499,7 +1463,7 @@ operator|==
 literal|null
 condition|)
 block|{
-name|commit
+name|success
 operator|=
 literal|false
 expr_stmt|;
@@ -1541,17 +1505,18 @@ operator|.
 name|CANCEL_OPTION
 condition|)
 block|{
-name|commit
+name|success
 operator|=
 literal|false
 expr_stmt|;
 block|}
 block|}
+comment|// backup file?
 try|try
 block|{
 if|if
 condition|(
-name|commit
+name|success
 condition|)
 block|{
 name|session
@@ -1673,15 +1638,81 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|commit
+name|success
 operator|=
 literal|false
 expr_stmt|;
 block|}
 block|}
 return|return
-name|commit
+name|success
 return|;
+block|}
+DECL|method|highlightEntry (BibEntry entry)
+specifier|private
+name|void
+name|highlightEntry
+parameter_list|(
+name|BibEntry
+name|entry
+parameter_list|)
+block|{
+name|int
+name|row
+init|=
+name|panel
+operator|.
+name|getMainTable
+argument_list|()
+operator|.
+name|findEntry
+argument_list|(
+name|entry
+argument_list|)
+decl_stmt|;
+name|int
+name|topShow
+init|=
+name|Math
+operator|.
+name|max
+argument_list|(
+literal|0
+argument_list|,
+name|row
+operator|-
+literal|3
+argument_list|)
+decl_stmt|;
+name|panel
+operator|.
+name|getMainTable
+argument_list|()
+operator|.
+name|setRowSelectionInterval
+argument_list|(
+name|row
+argument_list|,
+name|row
+argument_list|)
+expr_stmt|;
+name|panel
+operator|.
+name|getMainTable
+argument_list|()
+operator|.
+name|scrollTo
+argument_list|(
+name|topShow
+argument_list|)
+expr_stmt|;
+name|panel
+operator|.
+name|showEntry
+argument_list|(
+name|entry
+argument_list|)
+expr_stmt|;
 block|}
 comment|/**      * Run the "Save" operation. This method offloads the actual save operation to a background thread, but      * still runs synchronously using Spin (the method returns only after completing the operation).      */
 DECL|method|runCommand ()
@@ -1694,7 +1725,7 @@ name|Throwable
 block|{
 comment|// This part uses Spin's features:
 name|Worker
-name|wrk
+name|worker
 init|=
 name|getWorker
 argument_list|()
@@ -1703,7 +1734,7 @@ comment|// The Worker returned by getWorker() has been wrapped
 comment|// by Spin.off(), which makes its methods be run in
 comment|// a different thread from the EDT.
 name|CallBack
-name|clb
+name|callback
 init|=
 name|getCallBack
 argument_list|()
@@ -1716,7 +1747,7 @@ comment|// Useful for initial GUI actions, like printing a message.
 comment|// The CallBack returned by getCallBack() has been wrapped
 comment|// by Spin.over(), which makes its methods be run on
 comment|// the EDT.
-name|wrk
+name|worker
 operator|.
 name|run
 argument_list|()
@@ -1724,7 +1755,7 @@ expr_stmt|;
 comment|// Runs the potentially time-consuming action
 comment|// without freezing the GUI. The magic is that THIS line
 comment|// of execution will not continue until run() is finished.
-name|clb
+name|callback
 operator|.
 name|update
 argument_list|()

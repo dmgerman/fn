@@ -7604,10 +7604,11 @@ name|session
 argument_list|)
 expr_stmt|;
 block|}
+comment|// FIXME: not sure if this is really thrown anywhere
 catch|catch
 parameter_list|(
 name|UnsupportedCharsetException
-name|ex2
+name|ex
 parameter_list|)
 block|{
 name|JOptionPane
@@ -7666,8 +7667,7 @@ name|specificEntry
 argument_list|()
 condition|)
 block|{
-comment|// Error occurred during processing of
-comment|// be. Highlight it:
+comment|// Error occurred during processing of the entry. Highlight it:
 specifier|final
 name|int
 name|row
