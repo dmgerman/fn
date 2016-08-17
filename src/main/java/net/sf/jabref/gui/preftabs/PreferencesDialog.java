@@ -266,7 +266,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|NewFileDialogs
+name|NewFileDialog
 import|;
 end_import
 
@@ -1243,7 +1243,7 @@ argument_list|>
 name|path
 init|=
 operator|new
-name|NewFileDialogs
+name|NewFileDialog
 argument_list|(
 name|frame
 argument_list|,
@@ -1361,7 +1361,7 @@ argument_list|>
 name|fileName
 init|=
 operator|new
-name|NewFileDialogs
+name|NewFileDialog
 argument_list|(
 name|frame
 argument_list|,
@@ -1380,7 +1380,7 @@ operator|.
 name|XML
 argument_list|)
 operator|.
-name|openDlgAndGetSelectedFile
+name|openDialogAndGetSelectedFile
 argument_list|()
 decl_stmt|;
 if|if

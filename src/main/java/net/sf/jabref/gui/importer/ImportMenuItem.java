@@ -190,7 +190,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|NewFileDialogs
+name|NewFileDialog
 import|;
 end_import
 
@@ -631,7 +631,7 @@ expr_stmt|;
 name|filenames
 operator|=
 operator|new
-name|NewFileDialogs
+name|NewFileDialog
 argument_list|(
 name|frame
 argument_list|)
@@ -639,7 +639,7 @@ operator|.
 name|updateWorkingDirPref
 argument_list|()
 operator|.
-name|showDlgAndGetMultipleFiles
+name|showDialogAndGetMultipleFiles
 argument_list|()
 expr_stmt|;
 if|if

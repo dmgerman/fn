@@ -2295,7 +2295,7 @@ argument_list|>
 name|path
 init|=
 operator|new
-name|NewFileDialogs
+name|NewFileDialog
 argument_list|(
 name|this
 operator|.
@@ -2304,7 +2304,7 @@ argument_list|,
 name|workingDir
 argument_list|)
 operator|.
-name|openDlgAndGetSelectedFile
+name|openDialogAndGetSelectedFile
 argument_list|()
 decl_stmt|;
 name|path

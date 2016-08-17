@@ -13907,7 +13907,7 @@ argument_list|>
 name|chosenFile
 init|=
 operator|new
-name|NewFileDialogs
+name|NewFileDialog
 argument_list|(
 name|frame
 argument_list|)

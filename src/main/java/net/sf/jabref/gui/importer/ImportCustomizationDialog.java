@@ -304,7 +304,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|NewFileDialogs
+name|NewFileDialog
 import|;
 end_import
 
@@ -769,7 +769,7 @@ argument_list|>
 name|selectedFile
 init|=
 operator|new
-name|NewFileDialogs
+name|NewFileDialog
 argument_list|(
 name|frame
 argument_list|)
@@ -781,7 +781,7 @@ operator|.
 name|CLASS
 argument_list|)
 operator|.
-name|openDlgAndGetSelectedFile
+name|openDialogAndGetSelectedFile
 argument_list|()
 decl_stmt|;
 if|if
@@ -990,7 +990,7 @@ argument_list|>
 name|jarZipFile
 init|=
 operator|new
-name|NewFileDialogs
+name|NewFileDialog
 argument_list|(
 name|frame
 argument_list|)
@@ -1011,7 +1011,7 @@ name|JAR
 argument_list|)
 argument_list|)
 operator|.
-name|openDlgAndGetSelectedFile
+name|openDialogAndGetSelectedFile
 argument_list|()
 decl_stmt|;
 if|if

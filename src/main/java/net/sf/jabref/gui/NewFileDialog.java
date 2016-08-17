@@ -52,6 +52,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Arrays
 import|;
 end_import
@@ -229,10 +239,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|NewFileDialogs
+DECL|class|NewFileDialog
 specifier|public
 class|class
-name|NewFileDialogs
+name|NewFileDialog
 block|{
 comment|/**      * Custom confirmation dialog      * http://stackoverflow.com/a/3729157      */
 DECL|field|fileChooser
@@ -367,10 +377,18 @@ specifier|final
 name|String
 name|directory
 decl_stmt|;
-DECL|field|extFilter
+DECL|field|fileFilters
 specifier|private
+name|List
+argument_list|<
 name|FileNameExtensionFilter
-name|extFilter
+argument_list|>
+name|fileFilters
+init|=
+operator|new
+name|ArrayList
+argument_list|<>
+argument_list|()
 decl_stmt|;
 DECL|field|extensions
 specifier|private
@@ -390,9 +408,9 @@ name|class
 argument_list|)
 decl_stmt|;
 comment|/**      * Creates a new filedialog showing the current working dir {@link JabRefPreferences#WORKING_DIRECTORY}      * @param parent The parent frame associated with this dialog      */
-DECL|method|NewFileDialogs (JFrame parent)
+DECL|method|NewFileDialog (JFrame parent)
 specifier|public
-name|NewFileDialogs
+name|NewFileDialog
 parameter_list|(
 name|JFrame
 name|parent
@@ -408,9 +426,9 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Creates a new dialog in the given directory      * @param parent The parent frame associated with this dialog      * @param dir The starting directory to show in the dialog      */
-DECL|method|NewFileDialogs (JFrame parent, String dir)
+DECL|method|NewFileDialog (JFrame parent, String dir)
 specifier|public
-name|NewFileDialogs
+name|NewFileDialog
 parameter_list|(
 name|JFrame
 name|parent
@@ -456,10 +474,10 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Show only directories instead of files and folders      * @return NewFileDialogs      */
+comment|/**      * Show only directories instead of files and folders      * @return NewFileDialog      */
 DECL|method|dirsOnly ()
 specifier|public
-name|NewFileDialogs
+name|NewFileDialog
 name|dirsOnly
 parameter_list|()
 block|{
@@ -476,10 +494,10 @@ return|return
 name|this
 return|;
 block|}
-comment|/**      * Add a single extension as filter      * @param singleExt The extension      * @return NewFileDialogs      */
+comment|/**      * Add a single extension as file filter      * @param singleExt The extension      * @return NewFileDialog      */
 DECL|method|withExtension (FileExtensions singleExt)
 specifier|public
-name|NewFileDialogs
+name|NewFileDialog
 name|withExtension
 parameter_list|(
 name|FileExtensions
@@ -500,9 +518,10 @@ return|return
 name|this
 return|;
 block|}
+comment|/**      * Add a multiple extensions as file filter      * @param fileExtensions The extensions      * @return NewFileDialog      */
 DECL|method|withExtensions (Collection<FileExtensions> fileExtensions)
 specifier|public
-name|NewFileDialogs
+name|NewFileDialog
 name|withExtensions
 parameter_list|(
 name|Collection
@@ -526,8 +545,9 @@ range|:
 name|fileExtensions
 control|)
 block|{
+name|FileNameExtensionFilter
 name|extFilter
-operator|=
+init|=
 operator|new
 name|FileNameExtensionFilter
 argument_list|(
@@ -541,10 +561,17 @@ operator|.
 name|getExtensions
 argument_list|()
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|fileChooser
 operator|.
 name|addChoosableFileFilter
+argument_list|(
+name|extFilter
+argument_list|)
+expr_stmt|;
+name|fileFilters
+operator|.
+name|add
 argument_list|(
 name|extFilter
 argument_list|)
@@ -554,10 +581,61 @@ return|return
 name|this
 return|;
 block|}
-comment|/**      * Updates the working directory preference      * @return NewFileDialogs      */
+comment|/**      * Sets the default file filter extension for the file dialog.      * If the desired extension is not found nothing is changed.      *      * @param extension the file extension      */
+DECL|method|setDefaultExtension (FileExtensions extension)
+specifier|public
+name|void
+name|setDefaultExtension
+parameter_list|(
+name|FileExtensions
+name|extension
+parameter_list|)
+block|{
+name|Arrays
+operator|.
+name|stream
+argument_list|(
+name|fileChooser
+operator|.
+name|getChoosableFileFilters
+argument_list|()
+argument_list|)
+operator|.
+name|filter
+argument_list|(
+name|f
+lambda|->
+name|Objects
+operator|.
+name|equals
+argument_list|(
+name|f
+operator|.
+name|getDescription
+argument_list|()
+argument_list|,
+name|extension
+operator|.
+name|getDescription
+argument_list|()
+argument_list|)
+argument_list|)
+operator|.
+name|findFirst
+argument_list|()
+operator|.
+name|ifPresent
+argument_list|(
+name|fileChooser
+operator|::
+name|setFileFilter
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Updates the working directory preference      * @return NewFileDialog      */
 DECL|method|updateWorkingDirPref ()
 specifier|public
-name|NewFileDialogs
+name|NewFileDialog
 name|updateWorkingDirPref
 parameter_list|()
 block|{
@@ -581,13 +659,13 @@ name|this
 return|;
 block|}
 comment|/**      * Shows an {@link JFileChooser#OPEN_DIALOG} and allows to select multiple files      * @return List containing the paths of all files or an empty list if dialog is canceled      */
-DECL|method|showDlgAndGetMultipleFiles ()
+DECL|method|showDialogAndGetMultipleFiles ()
 specifier|public
 name|List
 argument_list|<
 name|String
 argument_list|>
-name|showDlgAndGetMultipleFiles
+name|showDialogAndGetMultipleFiles
 parameter_list|()
 block|{
 name|fileChooser
@@ -655,13 +733,13 @@ argument_list|()
 return|;
 block|}
 comment|/**      * Shows an {@link JFileChooser#OPEN_DIALOG} and allows to select a single file/folder      * @return The path of the selected file/folder or {@link Optional#empty()} if dialog is aborted      */
-DECL|method|openDlgAndGetSelectedFile ()
+DECL|method|openDialogAndGetSelectedFile ()
 specifier|public
 name|Optional
 argument_list|<
 name|Path
 argument_list|>
-name|openDlgAndGetSelectedFile
+name|openDialogAndGetSelectedFile
 parameter_list|()
 block|{
 name|fileChooser
@@ -701,7 +779,7 @@ name|empty
 argument_list|()
 return|;
 block|}
-comment|/**      *      * Shows an {@link JFileChooser#SAVE_DIALOG} and allows to save a new file<br>      * If an extension is provided, adds the extension to the file<br>      * Selecting an existing file will show an overwrite dialog      * @return The path of the new file, or {@link Optional#empty()} if dialog is aborted      */
+comment|/**      * Shows an {@link JFileChooser#SAVE_DIALOG} and allows to save a new file<br>      * If an extension is provided, adds the extension to the file<br>      * Selecting an existing file will show an overwrite dialog      * @return The path of the new file, or {@link Optional#empty()} if dialog is aborted      */
 DECL|method|saveNewFile ()
 specifier|public
 name|Optional

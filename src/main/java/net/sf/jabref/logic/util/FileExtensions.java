@@ -41,7 +41,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *  *  *This enum contains all kind of file extensions for open and save dialogs  *Important: Enter the extension without a dot!  *The dot is added implicit  */
+comment|/**  * This enum contains all kind of file extensions for open and save dialogs.  *  * Important: Enter the extension without a dot! The dot is added implicitly.  */
 end_comment
 
 begin_enum

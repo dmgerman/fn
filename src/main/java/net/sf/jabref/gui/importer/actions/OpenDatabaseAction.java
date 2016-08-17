@@ -258,7 +258,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|NewFileDialogs
+name|NewFileDialog
 import|;
 end_import
 
@@ -749,7 +749,7 @@ argument_list|>
 name|chosenStrings
 init|=
 operator|new
-name|NewFileDialogs
+name|NewFileDialog
 argument_list|(
 name|frame
 argument_list|)
@@ -761,7 +761,7 @@ operator|.
 name|BIBTEX_DB
 argument_list|)
 operator|.
-name|showDlgAndGetMultipleFiles
+name|showDialogAndGetMultipleFiles
 argument_list|()
 decl_stmt|;
 for|for

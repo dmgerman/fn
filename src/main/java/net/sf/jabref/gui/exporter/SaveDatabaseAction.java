@@ -190,7 +190,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|NewFileDialogs
+name|NewFileDialog
 import|;
 end_import
 
@@ -1800,17 +1800,17 @@ operator|==
 literal|null
 condition|)
 block|{
-name|Optional
-argument_list|<
-name|Path
-argument_list|>
-name|path
+comment|// configure file dialog
+name|NewFileDialog
+name|dialog
 init|=
 operator|new
-name|NewFileDialogs
+name|NewFileDialog
 argument_list|(
 name|frame
 argument_list|)
+decl_stmt|;
+name|dialog
 operator|.
 name|withExtension
 argument_list|(
@@ -1818,6 +1818,23 @@ name|FileExtensions
 operator|.
 name|BIBTEX_DB
 argument_list|)
+expr_stmt|;
+name|dialog
+operator|.
+name|setDefaultExtension
+argument_list|(
+name|FileExtensions
+operator|.
+name|BIBTEX_DB
+argument_list|)
+expr_stmt|;
+name|Optional
+argument_list|<
+name|Path
+argument_list|>
+name|path
+init|=
+name|dialog
 operator|.
 name|saveNewFile
 argument_list|()
@@ -1848,7 +1865,6 @@ operator|=
 literal|true
 expr_stmt|;
 return|return;
-comment|// canceled
 block|}
 block|}
 name|File
