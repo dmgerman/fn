@@ -263,6 +263,12 @@ name|FETCHER_BIBSONOMY_SCRAPER
 argument_list|(
 literal|""
 argument_list|)
+block|,
+DECL|enumConstant|DATABASE_PROPERTIES
+name|DATABASE_PROPERTIES
+argument_list|(
+literal|"DatabaseProperties"
+argument_list|)
 block|;
 DECL|field|pageName
 specifier|private
