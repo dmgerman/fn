@@ -239,10 +239,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|NewFileDialog
+DECL|class|FileDialog
 specifier|public
 class|class
-name|NewFileDialog
+name|FileDialog
 block|{
 comment|/**      * Custom confirmation dialog      * http://stackoverflow.com/a/3729157      */
 DECL|field|fileChooser
@@ -408,9 +408,9 @@ name|class
 argument_list|)
 decl_stmt|;
 comment|/**      * Creates a new filedialog showing the current working dir {@link JabRefPreferences#WORKING_DIRECTORY}      * @param parent The parent frame associated with this dialog      */
-DECL|method|NewFileDialog (JFrame parent)
+DECL|method|FileDialog (JFrame parent)
 specifier|public
-name|NewFileDialog
+name|FileDialog
 parameter_list|(
 name|JFrame
 name|parent
@@ -426,9 +426,9 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Creates a new dialog in the given directory      * @param parent The parent frame associated with this dialog      * @param dir The starting directory to show in the dialog      */
-DECL|method|NewFileDialog (JFrame parent, String dir)
+DECL|method|FileDialog (JFrame parent, String dir)
 specifier|public
-name|NewFileDialog
+name|FileDialog
 parameter_list|(
 name|JFrame
 name|parent
@@ -474,10 +474,10 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Show only directories instead of files and folders      * @return NewFileDialog      */
+comment|/**      * Show only directories instead of files and folders      * @return FileDialog      */
 DECL|method|dirsOnly ()
 specifier|public
-name|NewFileDialog
+name|FileDialog
 name|dirsOnly
 parameter_list|()
 block|{
@@ -494,10 +494,10 @@ return|return
 name|this
 return|;
 block|}
-comment|/**      * Add a single extension as file filter      * @param singleExt The extension      * @return NewFileDialog      */
+comment|/**      * Add a single extension as file filter      * @param singleExt The extension      * @return FileDialog      */
 DECL|method|withExtension (FileExtensions singleExt)
 specifier|public
-name|NewFileDialog
+name|FileDialog
 name|withExtension
 parameter_list|(
 name|FileExtensions
@@ -518,10 +518,10 @@ return|return
 name|this
 return|;
 block|}
-comment|/**      * Add a multiple extensions as file filter      * @param fileExtensions The extensions      * @return NewFileDialog      */
+comment|/**      * Add a multiple extensions as file filter      * @param fileExtensions The extensions      * @return FileDialog      */
 DECL|method|withExtensions (Collection<FileExtensions> fileExtensions)
 specifier|public
-name|NewFileDialog
+name|FileDialog
 name|withExtensions
 parameter_list|(
 name|Collection
@@ -632,10 +632,10 @@ name|setFileFilter
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Updates the working directory preference      * @return NewFileDialog      */
+comment|/**      * Updates the working directory preference      * @return FileDialog      */
 DECL|method|updateWorkingDirPref ()
 specifier|public
-name|NewFileDialog
+name|FileDialog
 name|updateWorkingDirPref
 parameter_list|()
 block|{

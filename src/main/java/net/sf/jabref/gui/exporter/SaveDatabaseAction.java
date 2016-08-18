@@ -190,7 +190,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|NewFileDialog
+name|FileDialog
 import|;
 end_import
 
@@ -1801,11 +1801,11 @@ literal|null
 condition|)
 block|{
 comment|// configure file dialog
-name|NewFileDialog
+name|FileDialog
 name|dialog
 init|=
 operator|new
-name|NewFileDialog
+name|FileDialog
 argument_list|(
 name|frame
 argument_list|)

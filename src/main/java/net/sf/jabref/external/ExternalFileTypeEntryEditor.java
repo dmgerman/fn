@@ -220,7 +220,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|NewFileDialog
+name|FileDialog
 import|;
 end_import
 
@@ -544,7 +544,7 @@ argument_list|>
 name|path
 init|=
 operator|new
-name|NewFileDialog
+name|FileDialog
 argument_list|(
 name|fParent
 argument_list|,

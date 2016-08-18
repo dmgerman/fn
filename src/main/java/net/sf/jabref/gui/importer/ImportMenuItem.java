@@ -176,7 +176,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|JabRefFrame
+name|FileDialog
 import|;
 end_import
 
@@ -190,7 +190,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|NewFileDialog
+name|JabRefFrame
 import|;
 end_import
 
@@ -631,7 +631,7 @@ expr_stmt|;
 name|filenames
 operator|=
 operator|new
-name|NewFileDialog
+name|FileDialog
 argument_list|(
 name|frame
 argument_list|)

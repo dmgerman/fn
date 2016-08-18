@@ -13893,11 +13893,11 @@ parameter_list|()
 throws|throws
 name|SaveException
 block|{
-name|NewFileDialog
+name|FileDialog
 name|dialog
 init|=
 operator|new
-name|NewFileDialog
+name|FileDialog
 argument_list|(
 name|frame
 argument_list|)

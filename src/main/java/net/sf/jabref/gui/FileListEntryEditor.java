@@ -2295,7 +2295,7 @@ argument_list|>
 name|path
 init|=
 operator|new
-name|NewFileDialog
+name|FileDialog
 argument_list|(
 name|this
 operator|.
