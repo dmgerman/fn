@@ -629,10 +629,10 @@ argument_list|()
 return|;
 block|}
 comment|/**      * Sets a custom file filter.      * Only use when withExtension() does not suffice.      *      * @param filter the custom file filter      */
-DECL|method|setFileFiler (FileFilter filter)
+DECL|method|setFileFilter (FileFilter filter)
 specifier|public
 name|void
-name|setFileFiler
+name|setFileFilter
 parameter_list|(
 name|FileFilter
 name|filter

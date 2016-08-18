@@ -590,7 +590,7 @@ argument_list|)
 decl_stmt|;
 name|dialog
 operator|.
-name|setFileFiler
+name|setFileFilter
 argument_list|(
 operator|new
 name|FileNameExtensionFilter
