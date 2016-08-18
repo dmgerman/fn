@@ -1142,22 +1142,9 @@ name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
 block|}
-if|if
-condition|(
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getBoolean
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|DISPLAY_KEY_WARNING_DIALOG_AT_STARTUP
-argument_list|)
-condition|)
-block|{
+comment|// Display warnings, if any
 name|int
-name|i
+name|tabNumber
 init|=
 literal|0
 decl_stmt|;
@@ -1180,11 +1167,10 @@ operator|.
 name|getMainFrame
 argument_list|()
 argument_list|,
-name|i
+name|tabNumber
 operator|++
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 comment|// After adding the databases, go through each and see if
 comment|// any post open actions need to be done. For instance, checking

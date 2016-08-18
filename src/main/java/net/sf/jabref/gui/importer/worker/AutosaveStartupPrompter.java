@@ -672,17 +672,6 @@ name|pr
 operator|.
 name|isInvalid
 argument_list|()
-operator|&&
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getBoolean
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|DISPLAY_KEY_WARNING_DIALOG_AT_STARTUP
-argument_list|)
 condition|)
 block|{
 name|ParserResultWarningDialog

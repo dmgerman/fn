@@ -13589,16 +13589,9 @@ operator|.
 name|size
 argument_list|()
 operator|>
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getInt
-argument_list|(
-name|JabRefPreferences
+name|GUIGlobals
 operator|.
 name|MAX_BACK_HISTORY_SIZE
-argument_list|)
 condition|)
 block|{
 name|previousEntries

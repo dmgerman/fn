@@ -74,14 +74,17 @@ specifier|private
 specifier|final
 name|int
 name|lineLength
+init|=
+literal|65
 decl_stmt|;
+comment|// Constant
 DECL|field|fieldContentParserPreferences
 specifier|private
 specifier|final
 name|FieldContentParserPreferences
 name|fieldContentParserPreferences
 decl_stmt|;
-DECL|method|LatexFieldFormatterPreferences (boolean resolveStringsAllFields, List<String> doNotResolveStringsFor, int lineLength, FieldContentParserPreferences fieldContentParserPreferences)
+DECL|method|LatexFieldFormatterPreferences (boolean resolveStringsAllFields, List<String> doNotResolveStringsFor, FieldContentParserPreferences fieldContentParserPreferences)
 specifier|public
 name|LatexFieldFormatterPreferences
 parameter_list|(
@@ -93,9 +96,6 @@ argument_list|<
 name|String
 argument_list|>
 name|doNotResolveStringsFor
-parameter_list|,
-name|int
-name|lineLength
 parameter_list|,
 name|FieldContentParserPreferences
 name|fieldContentParserPreferences
@@ -112,12 +112,6 @@ operator|.
 name|doNotResolveStringsFor
 operator|=
 name|doNotResolveStringsFor
-expr_stmt|;
-name|this
-operator|.
-name|lineLength
-operator|=
-name|lineLength
 expr_stmt|;
 name|this
 operator|.
@@ -140,8 +134,6 @@ name|Collections
 operator|.
 name|emptyList
 argument_list|()
-argument_list|,
-literal|0
 argument_list|,
 operator|new
 name|FieldContentParserPreferences
@@ -179,15 +171,6 @@ argument_list|(
 name|JabRefPreferences
 operator|.
 name|DO_NOT_RESOLVE_STRINGS_FOR
-argument_list|)
-argument_list|,
-name|prefs
-operator|.
-name|getInt
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|LINE_LENGTH
 argument_list|)
 argument_list|,
 name|FieldContentParserPreferences
