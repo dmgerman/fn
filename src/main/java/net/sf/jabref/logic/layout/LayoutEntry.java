@@ -3655,12 +3655,14 @@ decl_stmt|;
 comment|// Check if this is a name formatter defined by this export filter:
 if|if
 condition|(
+operator|!
 name|prefs
 operator|.
 name|getCustomExportNameFormatters
 argument_list|()
-operator|!=
-literal|null
+operator|.
+name|isEmpty
+argument_list|()
 condition|)
 block|{
 name|String

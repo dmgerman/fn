@@ -20,6 +20,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|HashMap
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Map
 import|;
 end_import
@@ -150,6 +160,11 @@ argument_list|,
 name|String
 argument_list|>
 name|customExportNameFormatters
+init|=
+operator|new
+name|HashMap
+argument_list|<>
+argument_list|()
 decl_stmt|;
 DECL|field|journalAbbreviationLoader
 specifier|private
@@ -157,7 +172,7 @@ specifier|final
 name|JournalAbbreviationLoader
 name|journalAbbreviationLoader
 decl_stmt|;
-DECL|method|LayoutFormatterPreferences (NameFormatterPreferences nameFormatterPreferences, JournalAbbreviationPreferences journalAbbreviationPreferences, FileLinkPreferences fileLinkPreferences, Map<String, String> customExportNameFormatters, JournalAbbreviationLoader journalAbbreviationLoader)
+DECL|method|LayoutFormatterPreferences (NameFormatterPreferences nameFormatterPreferences, JournalAbbreviationPreferences journalAbbreviationPreferences, FileLinkPreferences fileLinkPreferences, JournalAbbreviationLoader journalAbbreviationLoader)
 specifier|public
 name|LayoutFormatterPreferences
 parameter_list|(
@@ -169,14 +184,6 @@ name|journalAbbreviationPreferences
 parameter_list|,
 name|FileLinkPreferences
 name|fileLinkPreferences
-parameter_list|,
-name|Map
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
-name|customExportNameFormatters
 parameter_list|,
 name|JournalAbbreviationLoader
 name|journalAbbreviationLoader
@@ -193,12 +200,6 @@ operator|.
 name|journalAbbreviationPreferences
 operator|=
 name|journalAbbreviationPreferences
-expr_stmt|;
-name|this
-operator|.
-name|customExportNameFormatters
-operator|=
-name|customExportNameFormatters
 expr_stmt|;
 name|this
 operator|.
@@ -264,10 +265,6 @@ name|fromPreferences
 argument_list|(
 name|jabRefPreferences
 argument_list|)
-argument_list|,
-name|jabRefPreferences
-operator|.
-name|customExportNameFormatters
 argument_list|,
 name|journalAbbreviationLoader
 argument_list|)

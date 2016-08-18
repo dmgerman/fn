@@ -3649,19 +3649,6 @@ name|String
 argument_list|>
 name|fileDirForDatabase
 decl_stmt|;
-comment|// The following field is used as a global variable during the export of a database.
-comment|// It is used to hold custom name formatters defined by a custom export filter.
-comment|// It is set before the export starts:
-DECL|field|customExportNameFormatters
-specifier|public
-name|Map
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
-name|customExportNameFormatters
-decl_stmt|;
 comment|// The only instance of this class:
 DECL|field|singleton
 specifier|private
