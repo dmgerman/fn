@@ -614,6 +614,15 @@ name|NUMERIC_FIELDS
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|// Read list(s) of journal names and abbreviations
+name|Globals
+operator|.
+name|journalAbbreviationLoader
+operator|=
+operator|new
+name|JournalAbbreviationLoader
+argument_list|()
+expr_stmt|;
 comment|/* Build list of Import and Export formats */
 name|Globals
 operator|.
@@ -710,15 +719,6 @@ name|layoutPreferences
 argument_list|,
 name|savePreferences
 argument_list|)
-expr_stmt|;
-comment|// Read list(s) of journal names and abbreviations
-name|Globals
-operator|.
-name|journalAbbreviationLoader
-operator|=
-operator|new
-name|JournalAbbreviationLoader
-argument_list|()
 expr_stmt|;
 comment|// Initialize protected terms loader
 name|Globals
