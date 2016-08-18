@@ -269,6 +269,12 @@ name|DATABASE_PROPERTIES
 argument_list|(
 literal|"DatabaseProperties"
 argument_list|)
+block|,
+DECL|enumConstant|FIND_DUPLICATES
+name|FIND_DUPLICATES
+argument_list|(
+literal|"FindDuplicates"
+argument_list|)
 block|;
 DECL|field|pageName
 specifier|private
