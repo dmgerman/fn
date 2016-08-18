@@ -176,7 +176,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|JabRefFrame
+name|FileDialog
 import|;
 end_import
 
@@ -190,7 +190,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|FileDialog
+name|JabRefFrame
 import|;
 end_import
 

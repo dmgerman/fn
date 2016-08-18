@@ -206,7 +206,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|IconTheme
+name|FileDialog
 import|;
 end_import
 
@@ -220,7 +220,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|FileDialog
+name|IconTheme
 import|;
 end_import
 
