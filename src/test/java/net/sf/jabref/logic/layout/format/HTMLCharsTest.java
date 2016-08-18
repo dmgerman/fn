@@ -244,13 +244,13 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"&Lmidot;&imath;"
+literal|"&Oogon;&imath;"
 argument_list|,
 name|layout
 operator|.
 name|format
 argument_list|(
-literal|"\\Lmidot\\i"
+literal|"\\k{O}\\i"
 argument_list|)
 argument_list|)
 expr_stmt|;
