@@ -489,7 +489,7 @@ argument_list|(
 name|extensions
 argument_list|)
 operator|.
-name|openDialogAndGetSelectedFile
+name|showDialogAndGetSelectedFile
 argument_list|()
 operator|.
 name|orElse
@@ -535,7 +535,7 @@ argument_list|(
 name|extensions
 argument_list|)
 operator|.
-name|openDialogAndGetSelectedFile
+name|showDialogAndGetSelectedFile
 argument_list|()
 operator|.
 name|orElse

@@ -551,7 +551,7 @@ argument_list|,
 name|appDir
 argument_list|)
 operator|.
-name|openDialogAndGetSelectedFile
+name|showDialogAndGetSelectedFile
 argument_list|()
 decl_stmt|;
 name|path

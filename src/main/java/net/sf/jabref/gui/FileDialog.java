@@ -176,6 +176,18 @@ name|swing
 operator|.
 name|filechooser
 operator|.
+name|FileFilter
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|filechooser
+operator|.
 name|FileNameExtensionFilter
 import|;
 end_import
@@ -377,19 +389,6 @@ specifier|final
 name|String
 name|directory
 decl_stmt|;
-DECL|field|fileFilters
-specifier|private
-name|List
-argument_list|<
-name|FileNameExtensionFilter
-argument_list|>
-name|fileFilters
-init|=
-operator|new
-name|ArrayList
-argument_list|<>
-argument_list|()
-decl_stmt|;
 DECL|field|extensions
 specifier|private
 name|Collection
@@ -569,13 +568,6 @@ argument_list|(
 name|extFilter
 argument_list|)
 expr_stmt|;
-name|fileFilters
-operator|.
-name|add
-argument_list|(
-name|extFilter
-argument_list|)
-expr_stmt|;
 block|}
 return|return
 name|this
@@ -629,6 +621,38 @@ argument_list|(
 name|fileChooser
 operator|::
 name|setFileFilter
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Returns the currently selected file filter.      *      * @return FileFilter      */
+DECL|method|getFileFilter ()
+specifier|public
+name|FileFilter
+name|getFileFilter
+parameter_list|()
+block|{
+return|return
+name|fileChooser
+operator|.
+name|getFileFilter
+argument_list|()
+return|;
+block|}
+comment|/**      * Sets a custom file filter.      * Only use when withExtension() does not suffice.      *      * @param filter the custom file filter      */
+DECL|method|setFileFiler (FileFilter filter)
+specifier|public
+name|void
+name|setFileFiler
+parameter_list|(
+name|FileFilter
+name|filter
+parameter_list|)
+block|{
+name|fileChooser
+operator|.
+name|setFileFilter
+argument_list|(
+name|filter
 argument_list|)
 expr_stmt|;
 block|}
@@ -733,13 +757,13 @@ argument_list|()
 return|;
 block|}
 comment|/**      * Shows an {@link JFileChooser#OPEN_DIALOG} and allows to select a single file/folder      * @return The path of the selected file/folder or {@link Optional#empty()} if dialog is aborted      */
-DECL|method|openDialogAndGetSelectedFile ()
+DECL|method|showDialogAndGetSelectedFile ()
 specifier|public
 name|Optional
 argument_list|<
 name|Path
 argument_list|>
-name|openDialogAndGetSelectedFile
+name|showDialogAndGetSelectedFile
 parameter_list|()
 block|{
 name|fileChooser
