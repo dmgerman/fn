@@ -480,6 +480,16 @@ init|=
 literal|80
 decl_stmt|;
 comment|// Width of Ranking Icon Column
+DECL|field|MAX_BACK_HISTORY_SIZE
+specifier|public
+specifier|static
+specifier|final
+name|int
+name|MAX_BACK_HISTORY_SIZE
+init|=
+literal|10
+decl_stmt|;
+comment|// The maximum number of "Back" operations stored.
 DECL|method|getTableIcon (String fieldType)
 specifier|public
 specifier|static
