@@ -114,6 +114,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|swing
@@ -139,6 +149,16 @@ operator|.
 name|swing
 operator|.
 name|JButton
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|JCheckBox
 import|;
 end_import
 
@@ -276,10 +296,19 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
-DECL|method|ColorSetupPanel ()
+DECL|method|ColorSetupPanel (JCheckBox colorCodes, JCheckBox resolvedColorCodes, JCheckBox showGrid)
 specifier|public
 name|ColorSetupPanel
-parameter_list|()
+parameter_list|(
+name|JCheckBox
+name|colorCodes
+parameter_list|,
+name|JCheckBox
+name|resolvedColorCodes
+parameter_list|,
+name|JCheckBox
+name|showGrid
+parameter_list|)
 block|{
 name|FormLayout
 name|layout
@@ -289,7 +318,7 @@ name|FormLayout
 argument_list|(
 literal|"30dlu, 4dlu, fill:pref, 4dlu, fill:pref, 8dlu, 30dlu, 4dlu, fill:pref, 4dlu, fill:pref"
 argument_list|,
-literal|"pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref"
+literal|"pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref"
 argument_list|)
 decl_stmt|;
 name|FormBuilder
@@ -406,6 +435,8 @@ name|lang
 argument_list|(
 literal|"Background color for required fields"
 argument_list|)
+argument_list|,
+name|colorCodes
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -448,6 +479,8 @@ name|lang
 argument_list|(
 literal|"Background color for optional fields"
 argument_list|)
+argument_list|,
+name|colorCodes
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -532,6 +565,8 @@ name|lang
 argument_list|(
 literal|"Table grid color"
 argument_list|)
+argument_list|,
+name|showGrid
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -632,6 +667,28 @@ name|lang
 argument_list|(
 literal|"Entry editor invalid field color"
 argument_list|)
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|buttons
+operator|.
+name|add
+argument_list|(
+operator|new
+name|ColorButton
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|TABLE_RESOLVED_FIELD_BACKGROUND
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Background color for resolved fields"
+argument_list|)
+argument_list|,
+name|resolvedColorCodes
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -924,6 +981,23 @@ argument_list|(
 name|chosen
 argument_list|)
 expr_stmt|;
+name|button
+operator|.
+name|getCheckBox
+argument_list|()
+operator|.
+name|ifPresent
+argument_list|(
+name|checkBox
+lambda|->
+name|checkBox
+operator|.
+name|setSelected
+argument_list|(
+literal|true
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 block|}
@@ -958,6 +1032,52 @@ specifier|final
 name|String
 name|name
 decl_stmt|;
+DECL|field|checkBox
+specifier|private
+name|Optional
+argument_list|<
+name|JCheckBox
+argument_list|>
+name|checkBox
+init|=
+name|Optional
+operator|.
+name|empty
+argument_list|()
+decl_stmt|;
+DECL|method|ColorButton (String key, String name, JCheckBox checkBox)
+specifier|public
+name|ColorButton
+parameter_list|(
+name|String
+name|key
+parameter_list|,
+name|String
+name|name
+parameter_list|,
+name|JCheckBox
+name|checkBox
+parameter_list|)
+block|{
+name|this
+argument_list|(
+name|key
+argument_list|,
+name|name
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|checkBox
+operator|=
+name|Optional
+operator|.
+name|of
+argument_list|(
+name|checkBox
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|ColorButton (String key, String name)
 specifier|public
 name|ColorButton
@@ -1175,6 +1295,19 @@ return|return
 name|ColorSetupPanel
 operator|.
 name|ICON_HEIGHT
+return|;
+block|}
+DECL|method|getCheckBox ()
+specifier|public
+name|Optional
+argument_list|<
+name|JCheckBox
+argument_list|>
+name|getCheckBox
+parameter_list|()
+block|{
+return|return
+name|checkBox
 return|;
 block|}
 block|}
