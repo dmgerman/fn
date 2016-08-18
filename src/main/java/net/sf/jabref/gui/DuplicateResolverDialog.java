@@ -28,6 +28,30 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|awt
+operator|.
+name|event
+operator|.
+name|WindowAdapter
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|awt
+operator|.
+name|event
+operator|.
+name|WindowEvent
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|swing
@@ -159,22 +183,6 @@ operator|.
 name|JabRefPreferences
 import|;
 end_import
-
-begin_comment
-comment|// created by : ?
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|// modified : r.nagel 2.09.2004
-end_comment
-
-begin_comment
-comment|//            - insert close button
-end_comment
 
 begin_class
 DECL|class|DuplicateResolverDialog
@@ -872,6 +880,33 @@ name|BREAK
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|addWindowListener
+argument_list|(
+operator|new
+name|WindowAdapter
+argument_list|()
+block|{
+annotation|@
+name|Override
+specifier|public
+name|void
+name|windowClosing
+parameter_list|(
+name|WindowEvent
+name|e
+parameter_list|)
+block|{
+name|buttonPressed
+argument_list|(
+name|DuplicateResolverResult
+operator|.
+name|BREAK
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+argument_list|)
+expr_stmt|;
 name|getContentPane
 argument_list|()
 operator|.
@@ -934,18 +969,18 @@ name|requestFocus
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|buttonPressed (DuplicateResolverResult button)
+DECL|method|buttonPressed (DuplicateResolverResult result)
 specifier|private
 name|void
 name|buttonPressed
 parameter_list|(
 name|DuplicateResolverResult
-name|button
+name|result
 parameter_list|)
 block|{
 name|status
 operator|=
-name|button
+name|result
 expr_stmt|;
 name|dispose
 argument_list|()
