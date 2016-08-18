@@ -582,6 +582,14 @@ comment|// While synchronizing the local database (see synchronizeLocalDatabase(
 comment|// In this case DBSynchronizer should not try to update the bibEntry entry again (but it would not harm).
 if|if
 condition|(
+name|isPresentLocalBibEntry
+argument_list|(
+name|event
+operator|.
+name|getBibEntry
+argument_list|()
+argument_list|)
+operator|&&
 name|isEventSourceAccepted
 argument_list|(
 name|event
@@ -1696,6 +1704,27 @@ name|getDatabase
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
+DECL|method|isPresentLocalBibEntry (BibEntry bibEntry)
+specifier|private
+name|boolean
+name|isPresentLocalBibEntry
+parameter_list|(
+name|BibEntry
+name|bibEntry
+parameter_list|)
+block|{
+return|return
+name|bibDatabase
+operator|.
+name|getEntries
+argument_list|()
+operator|.
+name|contains
+argument_list|(
+name|bibEntry
+argument_list|)
+return|;
 block|}
 DECL|method|getDBName ()
 specifier|public
