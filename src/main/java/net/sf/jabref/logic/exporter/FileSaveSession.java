@@ -92,18 +92,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|logic
 operator|.
 name|l10n
@@ -145,20 +133,6 @@ operator|.
 name|io
 operator|.
 name|FileUtil
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|preferences
-operator|.
-name|JabRefPreferences
 import|;
 end_import
 
@@ -246,12 +220,6 @@ name|TEMP_SUFFIX
 init|=
 literal|"save.bib"
 decl_stmt|;
-DECL|field|useLockFile
-specifier|private
-specifier|final
-name|boolean
-name|useLockFile
-decl_stmt|;
 DECL|field|temporaryFile
 specifier|private
 specifier|final
@@ -317,21 +285,6 @@ operator|.
 name|temporaryFile
 operator|=
 name|temporaryFile
-expr_stmt|;
-name|this
-operator|.
-name|useLockFile
-operator|=
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getBoolean
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|USE_LOCK_FILES
-argument_list|)
 expr_stmt|;
 block|}
 DECL|method|getWriterForFile (Charset encoding, Path file)
@@ -522,11 +475,7 @@ block|}
 block|}
 try|try
 block|{
-if|if
-condition|(
-name|useLockFile
-condition|)
-block|{
+comment|// Always use a lock file
 try|try
 block|{
 if|if
@@ -574,7 +523,6 @@ argument_list|,
 name|ex
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 name|FileUtil
 operator|.
@@ -631,11 +579,6 @@ throw|;
 block|}
 finally|finally
 block|{
-if|if
-condition|(
-name|useLockFile
-condition|)
-block|{
 name|FileBasedLock
 operator|.
 name|deleteLockFile
@@ -643,7 +586,6 @@ argument_list|(
 name|file
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 try|try
 block|{
