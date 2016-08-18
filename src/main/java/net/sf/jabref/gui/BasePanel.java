@@ -4720,6 +4720,9 @@ argument_list|,
 name|Globals
 operator|.
 name|prefs
+operator|.
+name|getUpdateFieldPreferences
+argument_list|()
 argument_list|)
 block|;
 name|insertEntry
@@ -6304,27 +6307,8 @@ name|Globals
 operator|.
 name|prefs
 operator|.
-name|getBoolean
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|OVERWRITE_OWNER
-argument_list|)
-argument_list|,
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getBoolean
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|OVERWRITE_TIME_STAMP
-argument_list|)
-argument_list|,
-name|Globals
-operator|.
-name|prefs
+name|getUpdateFieldPreferences
+argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// We have to clone the
@@ -8303,6 +8287,9 @@ argument_list|,
 name|Globals
 operator|.
 name|prefs
+operator|.
+name|getUpdateFieldPreferences
+argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// Create an UndoableInsertEntry object.
@@ -8897,6 +8884,9 @@ argument_list|,
 name|Globals
 operator|.
 name|prefs
+operator|.
+name|getUpdateFieldPreferences
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
