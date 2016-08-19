@@ -1771,6 +1771,9 @@ argument_list|,
 name|Globals
 operator|.
 name|prefs
+operator|.
+name|getUpdateFieldPreferences
+argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// Create an UndoableInsertEntry object.

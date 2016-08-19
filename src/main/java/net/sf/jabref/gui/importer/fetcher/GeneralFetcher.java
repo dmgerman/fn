@@ -632,9 +632,6 @@ operator|.
 name|getTitle
 argument_list|()
 expr_stmt|;
-comment|//choices[i] = new JLabel(fetchers.get(i).getTitle(), new ImageIcon(fetchers.get(i).getIcon()),
-comment|//        JLabel.HORIZONTAL);
-comment|/*if (fetchers.get(i).getOptionsPanel() != null)                 optionsPanel.add(fetchers.get(i).getOptionsPanel(), String.valueOf(i));             else                 optionsPanel.add(new JPanel(), String.valueOf(i));*/
 block|}
 name|JComboBox
 argument_list|<
@@ -754,8 +751,6 @@ operator|!=
 literal|null
 argument_list|)
 expr_stmt|;
-comment|//optionsCards.show(optionsPanel, String.valueOf(defaultFetcher));
-comment|/*fetcherChoice.setRenderer(new ListCellRenderer() {             JLabel label = new JLabel();             public Component getListCellRendererComponent(JList jList, Object o, int i, boolean isSelected,                 boolean cellHasFocus) {                 JLabel theLab = (JLabel)o;                 label.setIcon(theLab.getIcon());                 label.setText(theLab.getText());                 if (cellHasFocus) {                     label.setBackground(UIManager.getDefaults().getColor("ComboBox.selectionBackground").darker());                     label.setForeground(UIManager.getDefaults().getColor("ComboBox.foreground"));                 } else {                     label.setBackground(UIManager.getDefaults().getColor("ComboBox.background"));                     label.setForeground(UIManager.getDefaults().getColor("ComboBox.foreground"));                 }                 return label;             }         });*/
 name|fetcherChoice
 operator|.
 name|addActionListener

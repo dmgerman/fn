@@ -184,6 +184,24 @@ name|dateFormatter
 argument_list|)
 return|;
 block|}
+DECL|method|fromTimeStampFormat (String timeStampFormat)
+specifier|public
+specifier|static
+name|EasyDateFormat
+name|fromTimeStampFormat
+parameter_list|(
+name|String
+name|timeStampFormat
+parameter_list|)
+block|{
+return|return
+operator|new
+name|EasyDateFormat
+argument_list|(
+name|timeStampFormat
+argument_list|)
+return|;
+block|}
 DECL|method|fromPreferences (JabRefPreferences preferences)
 specifier|public
 specifier|static
