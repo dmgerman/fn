@@ -4,7 +4,7 @@ comment|/**  * License: GPLv2, but Jan Frederik Maas agreed to change license up
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref.logic.importer.util
+DECL|package|net.sf.jabref.logic.importer.fetcher
 package|package
 name|net
 operator|.
@@ -16,7 +16,7 @@ name|logic
 operator|.
 name|importer
 operator|.
-name|util
+name|fetcher
 package|;
 end_package
 
@@ -248,7 +248,6 @@ end_import
 
 begin_class
 DECL|class|GVKParser
-specifier|public
 class|class
 name|GVKParser
 block|{
@@ -269,7 +268,6 @@ name|class
 argument_list|)
 decl_stmt|;
 DECL|method|parseEntries (InputStream is)
-specifier|public
 name|List
 argument_list|<
 name|BibEntry
@@ -317,7 +315,6 @@ argument_list|)
 return|;
 block|}
 DECL|method|parseEntries (Document content)
-specifier|public
 name|List
 argument_list|<
 name|BibEntry
@@ -1053,10 +1050,6 @@ argument_list|(
 literal|1
 argument_list|)
 expr_stmt|;
-block|}
-else|else
-block|{
-comment|// we nevertheless keep the old title data
 block|}
 name|number
 operator|=
