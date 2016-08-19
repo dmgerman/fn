@@ -200,9 +200,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
-operator|.
-name|util
+name|preferences
 operator|.
 name|VersionPreferences
 import|;

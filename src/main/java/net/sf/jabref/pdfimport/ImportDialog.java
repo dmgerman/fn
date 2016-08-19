@@ -1170,7 +1170,7 @@ name|getInt
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|PREF_IMPORT_DEFAULT_PDF_IMPORT_STYLE
+name|IMPORT_DEFAULT_PDF_IMPORT_STYLE
 argument_list|)
 condition|)
 block|{
@@ -1261,7 +1261,7 @@ name|putInt
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|PREF_IMPORT_DEFAULT_PDF_IMPORT_STYLE
+name|IMPORT_DEFAULT_PDF_IMPORT_STYLE
 argument_list|,
 name|this
 operator|.
@@ -1285,7 +1285,7 @@ name|putBoolean
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|PREF_IMPORT_ALWAYSUSE
+name|IMPORT_ALWAYSUSE
 argument_list|,
 literal|true
 argument_list|)

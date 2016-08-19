@@ -738,7 +738,7 @@ name|getBoolean
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|PREF_IMPORT_ALWAYSUSE
+name|IMPORT_ALWAYSUSE
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -751,7 +751,7 @@ name|getInt
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|PREF_IMPORT_DEFAULT_PDF_IMPORT_STYLE
+name|IMPORT_DEFAULT_PDF_IMPORT_STYLE
 argument_list|)
 decl_stmt|;
 switch|switch
@@ -832,7 +832,7 @@ name|get
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|PREF_IMPORT_FILENAMEPATTERN
+name|IMPORT_FILENAMEPATTERN
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -851,7 +851,7 @@ name|putBoolean
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|PREF_IMPORT_ALWAYSUSE
+name|IMPORT_ALWAYSUSE
 argument_list|,
 name|useDefaultPDFImportStyle
 operator|.
@@ -935,7 +935,7 @@ name|putInt
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|PREF_IMPORT_DEFAULT_PDF_IMPORT_STYLE
+name|IMPORT_DEFAULT_PDF_IMPORT_STYLE
 argument_list|,
 name|style
 argument_list|)
@@ -946,7 +946,7 @@ name|put
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|PREF_IMPORT_FILENAMEPATTERN
+name|IMPORT_FILENAMEPATTERN
 argument_list|,
 name|fileNamePattern
 operator|.

@@ -531,7 +531,7 @@ name|getBoolean
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|AKS_AUTO_NAMING_PDFS_AGAIN
+name|ASK_AUTO_NAMING_PDFS_AGAIN
 argument_list|)
 condition|)
 block|{
@@ -597,7 +597,7 @@ name|putBoolean
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|AKS_AUTO_NAMING_PDFS_AGAIN
+name|ASK_AUTO_NAMING_PDFS_AGAIN
 argument_list|,
 literal|false
 argument_list|)

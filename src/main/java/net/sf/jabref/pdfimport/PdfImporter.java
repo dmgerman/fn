@@ -891,7 +891,7 @@ name|getBoolean
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|PREF_IMPORT_ALWAYSUSE
+name|IMPORT_ALWAYSUSE
 argument_list|)
 decl_stmt|;
 name|int
@@ -905,7 +905,7 @@ name|getInt
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|PREF_IMPORT_DEFAULT_PDF_IMPORT_STYLE
+name|IMPORT_DEFAULT_PDF_IMPORT_STYLE
 argument_list|)
 decl_stmt|;
 name|List

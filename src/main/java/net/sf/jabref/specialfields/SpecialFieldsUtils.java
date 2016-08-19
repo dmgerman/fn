@@ -1124,7 +1124,7 @@ name|getBoolean
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|PREF_SPECIALFIELDSENABLED
+name|SPECIALFIELDSENABLED
 argument_list|)
 operator|&&
 name|Globals
@@ -1135,7 +1135,7 @@ name|getBoolean
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|PREF_AUTOSYNCSPECIALFIELDSTOKEYWORDS
+name|AUTOSYNCSPECIALFIELDSTOKEYWORDS
 argument_list|)
 return|;
 block|}

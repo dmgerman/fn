@@ -846,7 +846,7 @@ name|get
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|PREF_IMPORT_FILENAMEPATTERN
+name|IMPORT_FILENAMEPATTERN
 argument_list|)
 argument_list|)
 operator|.

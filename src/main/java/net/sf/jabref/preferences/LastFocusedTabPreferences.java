@@ -4,15 +4,13 @@ comment|/*  Copyright (C) 2003-2015 JabRef contributors.  This program is free s
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref.logic.preferences
+DECL|package|net.sf.jabref.preferences
 package|package
 name|net
 operator|.
 name|sf
 operator|.
 name|jabref
-operator|.
-name|logic
 operator|.
 name|preferences
 package|;
@@ -35,20 +33,6 @@ operator|.
 name|util
 operator|.
 name|Objects
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|preferences
-operator|.
-name|JabRefPreferences
 import|;
 end_import
 

@@ -2825,7 +2825,7 @@ name|getBoolean
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|PREF_SHOWCOLUMN_RANKING
+name|SHOWCOLUMN_RANKING
 argument_list|)
 expr_stmt|;
 name|rankingColumn
@@ -2843,7 +2843,7 @@ name|getBoolean
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|PREF_SHOWCOLUMN_QUALITY
+name|SHOWCOLUMN_QUALITY
 argument_list|)
 expr_stmt|;
 name|qualityColumn
@@ -2861,7 +2861,7 @@ name|getBoolean
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|PREF_SHOWCOLUMN_PRIORITY
+name|SHOWCOLUMN_PRIORITY
 argument_list|)
 expr_stmt|;
 name|priorityColumn
@@ -2879,7 +2879,7 @@ name|getBoolean
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|PREF_SHOWCOLUMN_RELEVANCE
+name|SHOWCOLUMN_RELEVANCE
 argument_list|)
 expr_stmt|;
 name|relevanceColumn
@@ -2897,7 +2897,7 @@ name|getBoolean
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|PREF_SHOWCOLUMN_PRINTED
+name|SHOWCOLUMN_PRINTED
 argument_list|)
 expr_stmt|;
 name|printedColumn
@@ -2915,7 +2915,7 @@ name|getBoolean
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|PREF_SHOWCOLUMN_READ
+name|SHOWCOLUMN_READ
 argument_list|)
 expr_stmt|;
 name|readStatusColumn
@@ -2933,7 +2933,7 @@ name|getBoolean
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|PREF_AUTOSYNCSPECIALFIELDSTOKEYWORDS
+name|AUTOSYNCSPECIALFIELDSTOKEYWORDS
 argument_list|)
 expr_stmt|;
 name|syncKeywords
@@ -2951,7 +2951,7 @@ name|getBoolean
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|PREF_SERIALIZESPECIALFIELDS
+name|SERIALIZESPECIALFIELDS
 argument_list|)
 expr_stmt|;
 name|writeSpecialFields
@@ -2970,7 +2970,7 @@ name|getBoolean
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|PREF_SPECIALFIELDSENABLED
+name|SPECIALFIELDSENABLED
 argument_list|)
 expr_stmt|;
 name|specialFieldsEnabled
@@ -4896,7 +4896,7 @@ name|putBoolean
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|PREF_SPECIALFIELDSENABLED
+name|SPECIALFIELDSENABLED
 argument_list|,
 name|newSpecialFieldsEnabled
 argument_list|)
@@ -4907,7 +4907,7 @@ name|putBoolean
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|PREF_SHOWCOLUMN_RANKING
+name|SHOWCOLUMN_RANKING
 argument_list|,
 name|newRankingColumn
 argument_list|)
@@ -4918,7 +4918,7 @@ name|putBoolean
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|PREF_SHOWCOLUMN_PRIORITY
+name|SHOWCOLUMN_PRIORITY
 argument_list|,
 name|newPriorityColumn
 argument_list|)
@@ -4929,7 +4929,7 @@ name|putBoolean
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|PREF_SHOWCOLUMN_QUALITY
+name|SHOWCOLUMN_QUALITY
 argument_list|,
 name|newQualityColumn
 argument_list|)
@@ -4940,7 +4940,7 @@ name|putBoolean
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|PREF_SHOWCOLUMN_RELEVANCE
+name|SHOWCOLUMN_RELEVANCE
 argument_list|,
 name|newRelevanceColumn
 argument_list|)
@@ -4951,7 +4951,7 @@ name|putBoolean
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|PREF_SHOWCOLUMN_PRINTED
+name|SHOWCOLUMN_PRINTED
 argument_list|,
 name|newPrintedColumn
 argument_list|)
@@ -4962,7 +4962,7 @@ name|putBoolean
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|PREF_SHOWCOLUMN_READ
+name|SHOWCOLUMN_READ
 argument_list|,
 name|newReadStatusColumn
 argument_list|)
@@ -4973,7 +4973,7 @@ name|putBoolean
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|PREF_AUTOSYNCSPECIALFIELDSTOKEYWORDS
+name|AUTOSYNCSPECIALFIELDSTOKEYWORDS
 argument_list|,
 name|newSyncKeyWords
 argument_list|)
@@ -4984,7 +4984,7 @@ name|putBoolean
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|PREF_SERIALIZESPECIALFIELDS
+name|SERIALIZESPECIALFIELDS
 argument_list|,
 name|newWriteSpecialFields
 argument_list|)

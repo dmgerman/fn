@@ -576,7 +576,7 @@ name|getBoolean
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|PREF_SERIALIZESPECIALFIELDS
+name|SERIALIZESPECIALFIELDS
 argument_list|)
 argument_list|)
 expr_stmt|;

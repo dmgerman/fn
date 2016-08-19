@@ -4,7 +4,7 @@ comment|/*  Copyright (C) 2016 JabRef contributors.     This program is free sof
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref.logic.util
+DECL|package|net.sf.jabref.preferences
 package|package
 name|net
 operator|.
@@ -12,9 +12,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
-operator|.
-name|util
+name|preferences
 package|;
 end_package
 
@@ -26,9 +24,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|preferences
+name|logic
 operator|.
-name|JabRefPreferences
+name|util
+operator|.
+name|Version
 import|;
 end_import
 
@@ -38,15 +38,6 @@ specifier|public
 class|class
 name|VersionPreferences
 block|{
-DECL|field|VERSION_IGNORED_UPDATE
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|VERSION_IGNORED_UPDATE
-init|=
-literal|"versionIgnoreUpdate"
-decl_stmt|;
 DECL|field|preferences
 specifier|private
 specifier|final
@@ -81,6 +72,8 @@ name|preferences
 operator|.
 name|put
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|VERSION_IGNORED_UPDATE
 argument_list|,
 name|version
@@ -104,6 +97,8 @@ name|preferences
 operator|.
 name|get
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|VERSION_IGNORED_UPDATE
 argument_list|)
 argument_list|)

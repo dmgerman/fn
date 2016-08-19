@@ -734,7 +734,7 @@ name|getBoolean
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|PREF_SPECIALFIELDSENABLED
+name|SPECIALFIELDSENABLED
 argument_list|)
 condition|)
 block|{
@@ -748,7 +748,7 @@ name|getBoolean
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|PREF_SHOWCOLUMN_RANKING
+name|SHOWCOLUMN_RANKING
 argument_list|)
 condition|)
 block|{
@@ -772,7 +772,7 @@ name|getBoolean
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|PREF_SHOWCOLUMN_RELEVANCE
+name|SHOWCOLUMN_RELEVANCE
 argument_list|)
 condition|)
 block|{
@@ -796,7 +796,7 @@ name|getBoolean
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|PREF_SHOWCOLUMN_QUALITY
+name|SHOWCOLUMN_QUALITY
 argument_list|)
 condition|)
 block|{
@@ -820,7 +820,7 @@ name|getBoolean
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|PREF_SHOWCOLUMN_PRIORITY
+name|SHOWCOLUMN_PRIORITY
 argument_list|)
 condition|)
 block|{
@@ -844,7 +844,7 @@ name|getBoolean
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|PREF_SHOWCOLUMN_PRINTED
+name|SHOWCOLUMN_PRINTED
 argument_list|)
 condition|)
 block|{
@@ -868,7 +868,7 @@ name|getBoolean
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|PREF_SHOWCOLUMN_READ
+name|SHOWCOLUMN_READ
 argument_list|)
 condition|)
 block|{
