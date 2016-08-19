@@ -387,7 +387,7 @@ import|;
 end_import
 
 begin_comment
-comment|/*  * TODO: could separate the "menu item" functionality from the importing functionality  *  */
+comment|/*  * TODO: could separate the "menu item" functionality from the importing functionality  */
 end_comment
 
 begin_class
@@ -819,25 +819,6 @@ name|getDefaultEncoding
 argument_list|()
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
-name|pr
-operator|.
-name|hasWarnings
-argument_list|()
-condition|)
-block|{
-name|frame
-operator|.
-name|showMessage
-argument_list|(
-name|pr
-operator|.
-name|getErrorMessage
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
 name|imports
 operator|.
 name|add

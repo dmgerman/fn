@@ -1466,7 +1466,7 @@ name|fileName
 init|=
 name|dialog
 operator|.
-name|openDialogAndGetSelectedFile
+name|showDialogAndGetSelectedFile
 argument_list|()
 decl_stmt|;
 if|if

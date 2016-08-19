@@ -804,7 +804,7 @@ operator|.
 name|CLASS
 argument_list|)
 operator|.
-name|openDialogAndGetSelectedFile
+name|showDialogAndGetSelectedFile
 argument_list|()
 decl_stmt|;
 if|if
@@ -1034,7 +1034,7 @@ name|JAR
 argument_list|)
 argument_list|)
 operator|.
-name|openDialogAndGetSelectedFile
+name|showDialogAndGetSelectedFile
 argument_list|()
 decl_stmt|;
 if|if

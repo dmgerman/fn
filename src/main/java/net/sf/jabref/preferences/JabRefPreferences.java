@@ -2691,15 +2691,6 @@ name|LAST_USED_EXPORT
 init|=
 literal|"lastUsedExport"
 decl_stmt|;
-DECL|field|LAST_USED_IMPORT
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|LAST_USED_IMPORT
-init|=
-literal|"lastUsedImport"
-decl_stmt|;
 DECL|field|FLOAT_MARKED_ENTRIES
 specifier|public
 specifier|static

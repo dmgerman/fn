@@ -2304,7 +2304,7 @@ argument_list|,
 name|workingDir
 argument_list|)
 operator|.
-name|openDialogAndGetSelectedFile
+name|showDialogAndGetSelectedFile
 argument_list|()
 decl_stmt|;
 name|path
