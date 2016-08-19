@@ -88,6 +88,8 @@ literal|"BibTeXML"
 argument_list|)
 argument_list|,
 literal|"bibx"
+argument_list|,
+literal|"xml"
 argument_list|)
 block|,
 DECL|enumConstant|BILBIOSCAPE
