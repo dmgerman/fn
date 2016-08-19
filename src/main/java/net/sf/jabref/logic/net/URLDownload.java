@@ -154,16 +154,6 @@ name|java
 operator|.
 name|net
 operator|.
-name|CookieHandler
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|net
-operator|.
 name|MalformedURLException
 import|;
 end_import
@@ -346,11 +336,6 @@ argument_list|,
 literal|"JabRef"
 argument_list|)
 expr_stmt|;
-name|URLDownload
-operator|.
-name|setCookieHandler
-argument_list|()
-expr_stmt|;
 block|}
 DECL|method|getSource ()
 specifier|public
@@ -361,47 +346,6 @@ block|{
 return|return
 name|source
 return|;
-block|}
-DECL|method|setCookieHandler ()
-specifier|private
-specifier|static
-name|void
-name|setCookieHandler
-parameter_list|()
-block|{
-try|try
-block|{
-comment|// This should set up JabRef to receive cookies properly
-if|if
-condition|(
-name|CookieHandler
-operator|.
-name|getDefault
-argument_list|()
-operator|==
-literal|null
-condition|)
-block|{
-name|CookieHandler
-operator|.
-name|setDefault
-argument_list|(
-operator|new
-name|CookieHandlerImpl
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-catch|catch
-parameter_list|(
-name|SecurityException
-name|ignored
-parameter_list|)
-block|{
-comment|// Setting or getting the system default cookie handler is forbidden
-comment|// In this case cookie handling is not possible.
-block|}
 block|}
 DECL|method|determineMimeType ()
 specifier|public
