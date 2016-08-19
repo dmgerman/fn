@@ -116,18 +116,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|stream
-operator|.
-name|Stream
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|swing
@@ -153,18 +141,6 @@ operator|.
 name|swing
 operator|.
 name|JOptionPane
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|filechooser
-operator|.
-name|FileNameExtensionFilter
 import|;
 end_import
 
