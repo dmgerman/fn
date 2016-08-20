@@ -1694,6 +1694,16 @@ argument_list|()
 operator|.
 name|getEncoding
 argument_list|()
+operator|.
+name|orElse
+argument_list|(
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getDefaultEncoding
+argument_list|()
+argument_list|)
 decl_stmt|;
 name|Charset
 name|newEncoding

@@ -3450,11 +3450,9 @@ argument_list|)
 decl_stmt|;
 name|assertEquals
 argument_list|(
-name|Globals
+name|Optional
 operator|.
-name|prefs
-operator|.
-name|getDefaultEncoding
+name|empty
 argument_list|()
 argument_list|,
 name|result

@@ -839,6 +839,16 @@ argument_list|()
 operator|.
 name|getEncoding
 argument_list|()
+operator|.
+name|orElse
+argument_list|(
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getDefaultEncoding
+argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|Globals
