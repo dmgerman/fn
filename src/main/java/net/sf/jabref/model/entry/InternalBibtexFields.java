@@ -3363,7 +3363,6 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/*        public static int getPreferredFieldLength(String name) {        int l = DEFAULT_FIELD_LENGTH;        Object o = fieldLength.get(name.toLowerCase());        if (o != null)        l = ((Integer)o).intValue();        return l;        }*/
 block|}
 end_class
 
