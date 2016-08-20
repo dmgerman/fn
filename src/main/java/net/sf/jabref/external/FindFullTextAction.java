@@ -336,6 +336,13 @@ literal|"This operation requires exactly one item to be selected."
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|result
+operator|=
+name|Optional
+operator|.
+name|empty
+argument_list|()
+expr_stmt|;
 block|}
 else|else
 block|{

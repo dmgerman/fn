@@ -129,7 +129,7 @@ name|setBackground
 argument_list|(
 name|GUIGlobals
 operator|.
-name|activeBackground
+name|activeBackgroundColor
 argument_list|)
 expr_stmt|;
 block|}
