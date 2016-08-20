@@ -380,6 +380,10 @@ name|FormLayout
 import|;
 end_import
 
+begin_comment
+comment|/**  * A wizard dialog for generating a new sub database from existing TeX AUX file  */
+end_comment
+
 begin_class
 DECL|class|FromAuxDialog
 specifier|public

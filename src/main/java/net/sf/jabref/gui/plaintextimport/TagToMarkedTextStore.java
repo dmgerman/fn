@@ -66,6 +66,10 @@ name|StyledDocument
 import|;
 end_import
 
+begin_comment
+comment|/**  * Save the textposition for tags in a recent TextInputDialog context  */
+end_comment
+
 begin_class
 DECL|class|TagToMarkedTextStore
 specifier|public

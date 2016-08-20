@@ -154,6 +154,10 @@ name|DatePicker
 import|;
 end_import
 
+begin_comment
+comment|/**  * wrapper and service class for the DatePicker handling at the EntryEditor  */
+end_comment
+
 begin_class
 DECL|class|DatePickerButton
 specifier|public

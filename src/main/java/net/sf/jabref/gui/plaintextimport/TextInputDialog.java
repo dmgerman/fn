@@ -1062,6 +1062,10 @@ name|LogFactory
 import|;
 end_import
 
+begin_comment
+comment|/**  * import from plain text => simple mark/copy/paste into bibtex entry  *  * TODO  *   - change colors and fonts  *   - delete selected text  *   - make textarea editable  *   - create several bibtex entries in dialog  *   - if the dialog works with an existing entry (right click menu item), the cancel option doesn't work well  */
+end_comment
+
 begin_class
 DECL|class|TextInputDialog
 specifier|public
