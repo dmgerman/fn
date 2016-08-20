@@ -3068,6 +3068,13 @@ name|int
 name|max
 parameter_list|)
 block|{
+name|SwingUtilities
+operator|.
+name|invokeLater
+argument_list|(
+parameter_list|()
+lambda|->
+block|{
 name|progressBar
 operator|.
 name|setIndeterminate
@@ -3094,6 +3101,9 @@ operator|.
 name|setValue
 argument_list|(
 name|current
+argument_list|)
+expr_stmt|;
+block|}
 argument_list|)
 expr_stmt|;
 block|}
@@ -3223,11 +3233,18 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+name|SwingUtilities
+operator|.
+name|invokeLater
+argument_list|(
+parameter_list|()
+lambda|->
 name|deselectAllDuplicates
 operator|.
 name|setEnabled
 argument_list|(
 literal|true
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -3358,6 +3375,13 @@ name|void
 name|entryListComplete
 parameter_list|()
 block|{
+name|SwingUtilities
+operator|.
+name|invokeLater
+argument_list|(
+parameter_list|()
+lambda|->
+block|{
 name|progressBar
 operator|.
 name|setIndeterminate
@@ -3446,6 +3470,9 @@ argument_list|)
 expr_stmt|;
 comment|//Select first row in the table
 block|}
+block|}
+argument_list|)
+expr_stmt|;
 block|}
 comment|/**      * Generate key for the selected entry only.      */
 DECL|method|generateKeySelectedEntry ()

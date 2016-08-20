@@ -410,11 +410,11 @@ specifier|static
 name|Color
 name|validFieldBackgroundColor
 decl_stmt|;
-DECL|field|activeBackground
+DECL|field|activeBackgroundColor
 specifier|public
 specifier|static
 name|Color
-name|activeBackground
+name|activeBackgroundColor
 decl_stmt|;
 DECL|field|invalidFieldBackgroundColor
 specifier|public
@@ -546,7 +546,7 @@ parameter_list|()
 block|{
 name|GUIGlobals
 operator|.
-name|activeBackground
+name|activeBackgroundColor
 operator|=
 name|JabRefPreferences
 operator|.
