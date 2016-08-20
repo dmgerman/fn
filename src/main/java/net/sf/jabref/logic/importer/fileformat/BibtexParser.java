@@ -710,46 +710,15 @@ argument_list|()
 return|;
 block|}
 block|}
-annotation|@
-name|Deprecated
-DECL|method|singleFromString (String bibtexString, ImportFormatPreferences importFormatPreferences)
-specifier|public
-specifier|static
-name|BibEntry
-name|singleFromString
-parameter_list|(
-name|String
-name|bibtexString
-parameter_list|,
-name|ImportFormatPreferences
-name|importFormatPreferences
-parameter_list|)
-block|{
-return|return
-name|BibtexParser
-operator|.
-name|singleFromStringOptional
-argument_list|(
-name|bibtexString
-argument_list|,
-name|importFormatPreferences
-argument_list|)
-operator|.
-name|orElse
-argument_list|(
-literal|null
-argument_list|)
-return|;
-block|}
 comment|/**      * Parses BibtexEntries from the given string and returns one entry found (or null if none found)      *<p>      * It is undetermined which entry is returned, so use this in case you know there is only one entry in the string.      *      * @param bibtexString      * @return An Optional<BibEntry>. Optional.empty() if non was found or an error occurred.      */
-DECL|method|singleFromStringOptional (String bibtexString, ImportFormatPreferences importFormatPreferences)
+DECL|method|singleFromString (String bibtexString, ImportFormatPreferences importFormatPreferences)
 specifier|public
 specifier|static
 name|Optional
 argument_list|<
 name|BibEntry
 argument_list|>
-name|singleFromStringOptional
+name|singleFromString
 parameter_list|(
 name|String
 name|bibtexString

@@ -1482,8 +1482,8 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**      * Take the given collection of BibEntry and resolve any string      * references.      *      * @param entries A collection of BibtexEntries in which all strings of the form      *                #xxx# will be resolved against the hash map of string      *                references stored in the database.      * @param inPlace If inPlace is true then the given BibtexEntries will be modified, if false then copies of the BibtexEntries are made before resolving the strings.      * @return a list of bibtexentries, with all strings resolved. It is dependent on the value of inPlace whether copies are made or the given BibtexEntries are modified.      */
-DECL|method|resolveForStrings (Collection<BibEntry> entries, boolean inPlace)
+comment|/**      * Take the given collection of BibEntry and resolve any string      * references.      *      * @param entriesToResolve A collection of BibtexEntries in which all strings of the form      *                #xxx# will be resolved against the hash map of string      *                references stored in the database.      * @param inPlace If inPlace is true then the given BibtexEntries will be modified, if false then copies of the BibtexEntries are made before resolving the strings.      * @return a list of bibtexentries, with all strings resolved. It is dependent on the value of inPlace whether copies are made or the given BibtexEntries are modified.      */
+DECL|method|resolveForStrings (Collection<BibEntry> entriesToResolve, boolean inPlace)
 specifier|public
 name|List
 argument_list|<
@@ -1495,7 +1495,7 @@ name|Collection
 argument_list|<
 name|BibEntry
 argument_list|>
-name|entries
+name|entriesToResolve
 parameter_list|,
 name|boolean
 name|inPlace
@@ -1505,7 +1505,7 @@ name|Objects
 operator|.
 name|requireNonNull
 argument_list|(
-name|entries
+name|entriesToResolve
 argument_list|,
 literal|"entries must not be null."
 argument_list|)
@@ -1520,7 +1520,7 @@ operator|new
 name|ArrayList
 argument_list|<>
 argument_list|(
-name|entries
+name|entriesToResolve
 operator|.
 name|size
 argument_list|()
@@ -1531,7 +1531,7 @@ control|(
 name|BibEntry
 name|entry
 range|:
-name|entries
+name|entriesToResolve
 control|)
 block|{
 name|results

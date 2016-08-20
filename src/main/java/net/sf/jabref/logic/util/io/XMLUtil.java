@@ -660,6 +660,8 @@ operator|=
 name|list
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|get (int index)
 specifier|public
 name|Node
@@ -678,6 +680,8 @@ name|index
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|size ()
 specifier|public
 name|int

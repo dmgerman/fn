@@ -11318,13 +11318,6 @@ init|=
 name|getCurrentBasePanel
 argument_list|()
 decl_stmt|;
-if|if
-condition|(
-name|current
-operator|!=
-literal|null
-condition|)
-block|{
 name|boolean
 name|saved
 init|=
@@ -11345,7 +11338,6 @@ argument_list|,
 name|saved
 argument_list|)
 expr_stmt|;
-block|}
 name|boolean
 name|isShared
 init|=

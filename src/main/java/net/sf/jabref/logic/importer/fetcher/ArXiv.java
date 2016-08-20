@@ -2106,7 +2106,7 @@ name|title
 operator|.
 name|ifPresent
 argument_list|(
-name|title
+name|titleContent
 lambda|->
 name|bibEntry
 operator|.
@@ -2116,7 +2116,7 @@ name|FieldName
 operator|.
 name|TITLE
 argument_list|,
-name|title
+name|titleContent
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2124,7 +2124,7 @@ name|doi
 operator|.
 name|ifPresent
 argument_list|(
-name|doi
+name|doiContent
 lambda|->
 name|bibEntry
 operator|.
@@ -2134,7 +2134,7 @@ name|FieldName
 operator|.
 name|DOI
 argument_list|,
-name|doi
+name|doiContent
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2142,7 +2142,7 @@ name|abstractText
 operator|.
 name|ifPresent
 argument_list|(
-name|abstractText
+name|abstractContent
 lambda|->
 name|bibEntry
 operator|.
@@ -2152,7 +2152,7 @@ name|FieldName
 operator|.
 name|ABSTRACT
 argument_list|,
-name|abstractText
+name|abstractContent
 argument_list|)
 argument_list|)
 expr_stmt|;

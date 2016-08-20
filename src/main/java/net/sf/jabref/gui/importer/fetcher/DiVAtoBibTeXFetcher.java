@@ -642,7 +642,7 @@ name|entry
 init|=
 name|BibtexParser
 operator|.
-name|singleFromStringOptional
+name|singleFromString
 argument_list|(
 name|bibtexString
 argument_list|,

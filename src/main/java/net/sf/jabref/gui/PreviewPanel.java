@@ -647,13 +647,13 @@ name|class
 argument_list|)
 decl_stmt|;
 comment|/**      * The bibtex entry currently shown      */
-DECL|field|entry
+DECL|field|bibEntry
 specifier|private
 name|Optional
 argument_list|<
 name|BibEntry
 argument_list|>
-name|entry
+name|bibEntry
 init|=
 name|Optional
 operator|.
@@ -1547,7 +1547,7 @@ name|BibEntry
 name|newEntry
 parameter_list|)
 block|{
-name|entry
+name|bibEntry
 operator|.
 name|filter
 argument_list|(
@@ -1570,7 +1570,7 @@ name|this
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|entry
+name|bibEntry
 operator|=
 name|Optional
 operator|.
@@ -1579,7 +1579,7 @@ argument_list|(
 name|newEntry
 argument_list|)
 expr_stmt|;
-name|entry
+name|bibEntry
 operator|.
 name|ifPresent
 argument_list|(
@@ -1601,6 +1601,11 @@ argument_list|()
 expr_stmt|;
 block|}
 comment|/**     * Listener for ChangedFieldEvent.     */
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 annotation|@
 name|Subscribe
 DECL|method|listen (FieldChangedEvent fieldChangedEvent)
@@ -1627,7 +1632,7 @@ block|{
 return|return
 name|this
 operator|.
-name|entry
+name|bibEntry
 operator|.
 name|orElse
 argument_list|(
@@ -1655,7 +1660,7 @@ operator|=
 literal|1
 expr_stmt|;
 comment|// Set entry number in case that is included in the preview layout.
-name|entry
+name|bibEntry
 operator|.
 name|ifPresent
 argument_list|(
@@ -1665,13 +1670,13 @@ name|layout
 operator|.
 name|ifPresent
 argument_list|(
-name|layout
+name|acutalLayout
 lambda|->
 name|sb
 operator|.
 name|append
 argument_list|(
-name|layout
+name|acutalLayout
 operator|.
 name|doLayout
 argument_list|(
@@ -1907,7 +1912,7 @@ argument_list|(
 operator|new
 name|JobName
 argument_list|(
-name|entry
+name|bibEntry
 operator|.
 name|flatMap
 argument_list|(

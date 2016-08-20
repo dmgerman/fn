@@ -805,7 +805,7 @@ name|parsed
 init|=
 name|BibtexParser
 operator|.
-name|singleFromStringOptional
+name|singleFromString
 argument_list|(
 literal|"@article{canh05,"
 operator|+
@@ -884,7 +884,7 @@ name|parsed
 init|=
 name|BibtexParser
 operator|.
-name|singleFromStringOptional
+name|singleFromString
 argument_list|(
 literal|"@article{canh05,"
 operator|+
@@ -955,7 +955,7 @@ name|parsed
 init|=
 name|BibtexParser
 operator|.
-name|singleFromStringOptional
+name|singleFromString
 argument_list|(
 literal|""
 argument_list|,
@@ -989,7 +989,7 @@ name|parsed
 init|=
 name|BibtexParser
 operator|.
-name|singleFromStringOptional
+name|singleFromString
 argument_list|(
 literal|"@@article@@{{{{{{}"
 argument_list|,

@@ -1163,10 +1163,14 @@ name|add
 argument_list|)
 expr_stmt|;
 name|FieldListFocusListener
+argument_list|<
+name|String
+argument_list|>
 name|fieldListFocusListener
 init|=
 operator|new
 name|FieldListFocusListener
+argument_list|<>
 argument_list|(
 name|list
 argument_list|)

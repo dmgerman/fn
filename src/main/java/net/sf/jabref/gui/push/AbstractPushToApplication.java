@@ -615,6 +615,11 @@ literal|true
 return|;
 block|}
 comment|/**      * Function to get the command to be executed for pushing keys to be cited      *      * @param keyString String containing the Bibtex keys to be pushed to the application      * @return String array with the command to call and its arguments      */
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 DECL|method|getCommandLine (String keyString)
 specifier|protected
 name|String

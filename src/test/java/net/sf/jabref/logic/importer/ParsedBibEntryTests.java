@@ -160,7 +160,7 @@ argument_list|,
 operator|(
 name|BibtexParser
 operator|.
-name|singleFromStringOptional
+name|singleFromString
 argument_list|(
 literal|"@ARTICLE{HipKro03, year = {2003}, month = #FEB# }"
 argument_list|,
@@ -189,7 +189,7 @@ argument_list|,
 operator|(
 name|BibtexParser
 operator|.
-name|singleFromStringOptional
+name|singleFromString
 argument_list|(
 literal|"@ARTICLE{HipKro03, year = {2003}, month = 3 }"
 argument_list|,
@@ -218,7 +218,7 @@ argument_list|,
 operator|(
 name|BibtexParser
 operator|.
-name|singleFromStringOptional
+name|singleFromString
 argument_list|(
 literal|"@ARTICLE{HipKro03, year = {2003}}"
 argument_list|,
@@ -245,7 +245,7 @@ argument_list|,
 operator|(
 name|BibtexParser
 operator|.
-name|singleFromStringOptional
+name|singleFromString
 argument_list|(
 literal|"@ARTICLE{HipKro03, month = 3 }"
 argument_list|,
@@ -272,7 +272,7 @@ argument_list|,
 operator|(
 name|BibtexParser
 operator|.
-name|singleFromStringOptional
+name|singleFromString
 argument_list|(
 literal|"@ARTICLE{HipKro03, author={bla}}"
 argument_list|,
@@ -301,7 +301,7 @@ argument_list|,
 operator|(
 name|BibtexParser
 operator|.
-name|singleFromStringOptional
+name|singleFromString
 argument_list|(
 literal|"@ARTICLE{HipKro03, year = {2003}, month = #DEC# }"
 argument_list|,

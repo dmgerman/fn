@@ -292,7 +292,7 @@ argument_list|)
 expr_stmt|;
 name|BibtexParser
 operator|.
-name|singleFromStringOptional
+name|singleFromString
 argument_list|(
 name|entry1
 argument_list|,
@@ -379,7 +379,7 @@ argument_list|)
 expr_stmt|;
 name|BibtexParser
 operator|.
-name|singleFromStringOptional
+name|singleFromString
 argument_list|(
 name|entry2
 argument_list|,

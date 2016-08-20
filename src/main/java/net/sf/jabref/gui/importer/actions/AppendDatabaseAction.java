@@ -1179,15 +1179,11 @@ name|AllEntriesGroup
 condition|)
 block|{
 comment|// create a dummy group
+try|try
+block|{
 name|ExplicitGroup
 name|group
 init|=
-literal|null
-decl_stmt|;
-try|try
-block|{
-name|group
-operator|=
 operator|new
 name|ExplicitGroup
 argument_list|(
@@ -1200,6 +1196,20 @@ argument_list|,
 name|Globals
 operator|.
 name|prefs
+argument_list|)
+decl_stmt|;
+name|newGroups
+operator|.
+name|setGroup
+argument_list|(
+name|group
+argument_list|)
+expr_stmt|;
+name|group
+operator|.
+name|add
+argument_list|(
+name|appendedEntries
 argument_list|)
 expr_stmt|;
 block|}
@@ -1217,20 +1227,6 @@ name|e
 argument_list|)
 expr_stmt|;
 block|}
-name|newGroups
-operator|.
-name|setGroup
-argument_list|(
-name|group
-argument_list|)
-expr_stmt|;
-name|group
-operator|.
-name|add
-argument_list|(
-name|appendedEntries
-argument_list|)
-expr_stmt|;
 block|}
 comment|// groupsSelector is always created, even when no groups
 comment|// have been defined. therefore, no check for null is

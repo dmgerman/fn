@@ -513,20 +513,20 @@ return|return
 name|saveInOriginalOrder
 return|;
 block|}
-DECL|method|withSaveInOriginalOrder (Boolean saveInOriginalOrder)
+DECL|method|withSaveInOriginalOrder (Boolean newSaveInOriginalOrder)
 specifier|public
 name|SavePreferences
 name|withSaveInOriginalOrder
 parameter_list|(
 name|Boolean
-name|saveInOriginalOrder
+name|newSaveInOriginalOrder
 parameter_list|)
 block|{
 return|return
 operator|new
 name|SavePreferences
 argument_list|(
-name|saveInOriginalOrder
+name|newSaveInOriginalOrder
 argument_list|,
 name|this
 operator|.
@@ -568,13 +568,13 @@ return|return
 name|makeBackup
 return|;
 block|}
-DECL|method|withMakeBackup (Boolean makeBackup)
+DECL|method|withMakeBackup (Boolean newMakeBackup)
 specifier|public
 name|SavePreferences
 name|withMakeBackup
 parameter_list|(
 name|Boolean
-name|makeBackup
+name|newMakeBackup
 parameter_list|)
 block|{
 return|return
@@ -593,7 +593,7 @@ name|this
 operator|.
 name|encoding
 argument_list|,
-name|makeBackup
+name|newMakeBackup
 argument_list|,
 name|this
 operator|.
@@ -623,13 +623,13 @@ return|return
 name|encoding
 return|;
 block|}
-DECL|method|withEncoding (Charset encoding)
+DECL|method|withEncoding (Charset newEncoding)
 specifier|public
 name|SavePreferences
 name|withEncoding
 parameter_list|(
 name|Charset
-name|encoding
+name|newEncoding
 parameter_list|)
 block|{
 return|return
@@ -644,7 +644,7 @@ name|this
 operator|.
 name|saveOrder
 argument_list|,
-name|encoding
+name|newEncoding
 argument_list|,
 name|this
 operator|.
@@ -678,13 +678,13 @@ return|return
 name|saveType
 return|;
 block|}
-DECL|method|withSaveType (DatabaseSaveType saveType)
+DECL|method|withSaveType (DatabaseSaveType newSaveType)
 specifier|public
 name|SavePreferences
 name|withSaveType
 parameter_list|(
 name|DatabaseSaveType
-name|saveType
+name|newSaveType
 parameter_list|)
 block|{
 return|return
@@ -707,7 +707,7 @@ name|this
 operator|.
 name|makeBackup
 argument_list|,
-name|saveType
+name|newSaveType
 argument_list|,
 name|this
 operator|.
@@ -733,13 +733,13 @@ return|return
 name|reformatFile
 return|;
 block|}
-DECL|method|withReformatFile (boolean reformatFile)
+DECL|method|withReformatFile (boolean newReformatFile)
 specifier|public
 name|SavePreferences
 name|withReformatFile
 parameter_list|(
 name|boolean
-name|reformatFile
+name|newReformatFile
 parameter_list|)
 block|{
 return|return
@@ -770,7 +770,7 @@ name|this
 operator|.
 name|takeMetadataSaveOrderInAccount
 argument_list|,
-name|reformatFile
+name|newReformatFile
 argument_list|,
 name|this
 operator|.

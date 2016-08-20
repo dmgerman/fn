@@ -1168,6 +1168,13 @@ expr_stmt|;
 block|}
 block|}
 comment|// Write the entry
+if|if
+condition|(
+name|layout
+operator|!=
+literal|null
+condition|)
+block|{
 name|ps
 operator|.
 name|write
@@ -1185,6 +1192,7 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|// Print footer
 comment|// changed section - begin (arudert)

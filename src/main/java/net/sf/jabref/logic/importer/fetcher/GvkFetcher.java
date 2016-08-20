@@ -448,6 +448,7 @@ name|queryList
 init|=
 operator|new
 name|LinkedList
+argument_list|<>
 argument_list|(
 name|Arrays
 operator|.

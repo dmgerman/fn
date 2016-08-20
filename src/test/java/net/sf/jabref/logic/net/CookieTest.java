@@ -99,6 +99,11 @@ class|class
 name|CookieTest
 block|{
 annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
+annotation|@
 name|Test
 argument_list|(
 name|expected
@@ -115,9 +120,6 @@ parameter_list|()
 throws|throws
 name|URISyntaxException
 block|{
-name|Cookie
-name|cookie
-init|=
 operator|new
 name|Cookie
 argument_list|(
@@ -129,11 +131,16 @@ argument_list|)
 argument_list|,
 literal|"name=TestCookie; expires=Tue, 25/07/10 16:43:15 GMT"
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|fail
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 annotation|@
 name|Test
 argument_list|(
@@ -151,9 +158,6 @@ parameter_list|()
 throws|throws
 name|URISyntaxException
 block|{
-name|Cookie
-name|cookie
-init|=
 operator|new
 name|Cookie
 argument_list|(
@@ -165,7 +169,7 @@ argument_list|)
 argument_list|,
 literal|"name=TestCookie; domain=google.com"
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|fail
 argument_list|()
 expr_stmt|;
