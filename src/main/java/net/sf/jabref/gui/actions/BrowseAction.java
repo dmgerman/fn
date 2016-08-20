@@ -171,7 +171,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Action used to produce a "Browse" button for one of the text fields.  */
+comment|/**  * Action used to produce a "Browse" button for one of the text fields.  * TODO: Replace by FileDialog usage and remove afterwards  */
 end_comment
 
 begin_class
@@ -323,36 +323,6 @@ name|of
 argument_list|(
 name|extensions
 argument_list|)
-argument_list|)
-return|;
-block|}
-DECL|method|buildForFile (JTextField tc, Set<FileExtensions> extensions)
-specifier|public
-specifier|static
-name|BrowseAction
-name|buildForFile
-parameter_list|(
-name|JTextField
-name|tc
-parameter_list|,
-name|Set
-argument_list|<
-name|FileExtensions
-argument_list|>
-name|extensions
-parameter_list|)
-block|{
-return|return
-operator|new
-name|BrowseAction
-argument_list|(
-literal|null
-argument_list|,
-name|tc
-argument_list|,
-literal|false
-argument_list|,
-name|extensions
 argument_list|)
 return|;
 block|}

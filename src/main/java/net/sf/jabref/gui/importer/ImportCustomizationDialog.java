@@ -542,6 +542,22 @@ name|ImportCustomizationDialog
 extends|extends
 name|JDialog
 block|{
+DECL|field|LOGGER
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOGGER
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|ImportCustomizationDialog
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 comment|// Column widths for import customization dialog table:
 DECL|field|COL_0_WIDTH
 specifier|private
@@ -585,23 +601,6 @@ specifier|final
 name|JTable
 name|customImporterTable
 decl_stmt|;
-DECL|field|LOGGER
-specifier|private
-specifier|static
-specifier|final
-name|Log
-name|LOGGER
-init|=
-name|LogFactory
-operator|.
-name|getLog
-argument_list|(
-name|ImportCustomizationDialog
-operator|.
-name|class
-argument_list|)
-decl_stmt|;
-comment|/**      *      * @param frame      */
 DECL|method|ImportCustomizationDialog (final JabRefFrame frame)
 specifier|public
 name|ImportCustomizationDialog
