@@ -3636,7 +3636,7 @@ name|formatterStrings
 control|)
 block|{
 name|String
-name|className
+name|nameFormatterName
 init|=
 name|strings
 operator|.
@@ -3649,36 +3649,25 @@ name|trim
 argument_list|()
 decl_stmt|;
 comment|// Check if this is a name formatter defined by this export filter:
-if|if
-condition|(
-operator|!
-name|prefs
-operator|.
-name|getCustomExportNameFormatters
-argument_list|()
-operator|.
-name|isEmpty
-argument_list|()
-condition|)
-block|{
+name|Optional
+argument_list|<
 name|String
+argument_list|>
 name|contents
 init|=
 name|prefs
 operator|.
-name|getCustomExportNameFormatters
-argument_list|()
-operator|.
-name|get
+name|getCustomExportNameFormatter
 argument_list|(
-name|className
+name|nameFormatterName
 argument_list|)
 decl_stmt|;
 if|if
 condition|(
 name|contents
-operator|!=
-literal|null
+operator|.
+name|isPresent
+argument_list|()
 condition|)
 block|{
 name|NameFormatter
@@ -3693,6 +3682,9 @@ operator|.
 name|setParameter
 argument_list|(
 name|contents
+operator|.
+name|get
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|results
@@ -3704,7 +3696,6 @@ argument_list|)
 expr_stmt|;
 continue|continue;
 block|}
-block|}
 comment|// Try to load from formatters in formatter folder
 try|try
 block|{
@@ -3713,7 +3704,7 @@ name|f
 init|=
 name|getLayoutFormatterByName
 argument_list|(
-name|className
+name|nameFormatterName
 argument_list|)
 decl_stmt|;
 comment|// If this formatter accepts an argument, check if we have one, and
@@ -3787,7 +3778,7 @@ name|userNameFormatter
 operator|.
 name|get
 argument_list|(
-name|className
+name|nameFormatterName
 argument_list|)
 decl_stmt|;
 if|if
@@ -3827,7 +3818,7 @@ argument_list|(
 operator|new
 name|NotFoundFormatter
 argument_list|(
-name|className
+name|nameFormatterName
 argument_list|)
 argument_list|)
 expr_stmt|;

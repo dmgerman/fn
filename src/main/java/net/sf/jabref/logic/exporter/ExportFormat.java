@@ -190,7 +190,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
+name|JabRefMain
 import|;
 end_import
 
@@ -618,7 +618,7 @@ comment|// Try loading as a resource first. This works for files inside the JAR:
 name|URL
 name|reso
 init|=
-name|Globals
+name|JabRefMain
 operator|.
 name|class
 operator|.
@@ -1271,10 +1271,7 @@ block|}
 comment|// Clear custom name formatters:
 name|layoutPreferences
 operator|.
-name|getCustomExportNameFormatters
-argument_list|()
-operator|.
-name|clear
+name|clearCustomExportNameFormatters
 argument_list|()
 expr_stmt|;
 if|if
@@ -1547,10 +1544,7 @@ argument_list|)
 decl_stmt|;
 name|layoutPreferences
 operator|.
-name|getCustomExportNameFormatters
-argument_list|()
-operator|.
-name|put
+name|putCustomExportNameFormatter
 argument_list|(
 name|formatterName
 argument_list|,
