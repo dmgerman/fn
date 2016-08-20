@@ -463,26 +463,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Show only directories instead of files and folders      * @return FileDialog      */
-DECL|method|dirsOnly ()
-specifier|public
-name|FileDialog
-name|dirsOnly
-parameter_list|()
-block|{
-name|fileChooser
-operator|.
-name|setFileSelectionMode
-argument_list|(
-name|JFileChooser
-operator|.
-name|DIRECTORIES_ONLY
-argument_list|)
-expr_stmt|;
-return|return
-name|this
-return|;
-block|}
 comment|/**      * Add a single extension as file filter      * @param singleExt The extension      * @return FileDialog      */
 DECL|method|withExtension (FileExtensions singleExt)
 specifier|public
@@ -670,6 +650,30 @@ argument_list|)
 expr_stmt|;
 return|return
 name|this
+return|;
+block|}
+comment|/**      * Shows an {@link JFileChooser#OPEN_DIALOG} and allows to select a single folder      * @return The path of the selected folder or {@link Optional#empty()} if dialog is aborted      */
+DECL|method|showDialogAndGetSelectedDirectory ()
+specifier|public
+name|Optional
+argument_list|<
+name|Path
+argument_list|>
+name|showDialogAndGetSelectedDirectory
+parameter_list|()
+block|{
+name|fileChooser
+operator|.
+name|setFileSelectionMode
+argument_list|(
+name|JFileChooser
+operator|.
+name|DIRECTORIES_ONLY
+argument_list|)
+expr_stmt|;
+return|return
+name|showDialogAndGetSelectedFile
+argument_list|()
 return|;
 block|}
 comment|/**      * Shows an {@link JFileChooser#OPEN_DIALOG} and allows to select multiple files      * @return List containing the paths of all files or an empty list if dialog is canceled      */

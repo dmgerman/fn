@@ -392,15 +392,12 @@ name|getText
 argument_list|()
 argument_list|)
 operator|.
-name|dirsOnly
-argument_list|()
-operator|.
 name|withExtensions
 argument_list|(
 name|extensions
 argument_list|)
 operator|.
-name|showDialogAndGetSelectedFile
+name|showDialogAndGetSelectedDirectory
 argument_list|()
 operator|.
 name|orElse
