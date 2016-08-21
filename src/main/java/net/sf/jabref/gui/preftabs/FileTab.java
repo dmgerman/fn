@@ -1091,7 +1091,14 @@ name|browse
 init|=
 operator|new
 name|JButton
-argument_list|()
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Browse"
+argument_list|)
+argument_list|)
 decl_stmt|;
 name|browse
 operator|.
