@@ -1040,8 +1040,15 @@ name|JAR
 argument_list|)
 argument_list|)
 decl_stmt|;
-comment|// TODO: global FileFilter supportedFiles = new ImportFileFilter("", );
-comment|//dialog.setFileFilter(supportedFiles);
+name|dialog
+operator|.
+name|setDefaultExtension
+argument_list|(
+name|FileExtensions
+operator|.
+name|JAR
+argument_list|)
+expr_stmt|;
 name|Optional
 argument_list|<
 name|Path
