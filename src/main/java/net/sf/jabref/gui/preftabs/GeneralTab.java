@@ -1766,16 +1766,6 @@ argument_list|)
 expr_stmt|;
 name|prefs
 operator|.
-name|WRAPPED_USERNAME
-operator|=
-literal|'['
-operator|+
-name|owner
-operator|+
-literal|']'
-expr_stmt|;
-name|prefs
-operator|.
 name|put
 argument_list|(
 name|JabRefPreferences

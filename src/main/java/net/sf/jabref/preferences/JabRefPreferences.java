@@ -26,6 +26,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|awt
+operator|.
+name|Font
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|io
 operator|.
 name|File
@@ -2405,15 +2415,6 @@ name|DO_NOT_RESOLVE_STRINGS_FOR
 init|=
 literal|"doNotResolveStringsFor"
 decl_stmt|;
-DECL|field|PREVIEW_PRINT_BUTTON
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|PREVIEW_PRINT_BUTTON
-init|=
-literal|"previewPrintButton"
-decl_stmt|;
 DECL|field|PREVIEW_1
 specifier|public
 specifier|static
@@ -3585,11 +3586,6 @@ name|String
 name|REMOTE_SERVER_PORT
 init|=
 literal|"remoteServerPort"
-decl_stmt|;
-DECL|field|WRAPPED_USERNAME
-specifier|public
-name|String
-name|WRAPPED_USERNAME
 decl_stmt|;
 DECL|field|MARKING_WITH_NUMBER_PATTERN
 specifier|public
@@ -5143,10 +5139,6 @@ name|put
 argument_list|(
 name|FONT_STYLE
 argument_list|,
-name|java
-operator|.
-name|awt
-operator|.
 name|Font
 operator|.
 name|PLAIN
@@ -5509,8 +5501,6 @@ name|defaults
 operator|.
 name|put
 argument_list|(
-name|JabRefPreferences
-operator|.
 name|OO_PATH
 argument_list|,
 name|OpenOfficePreferences
@@ -5522,8 +5512,6 @@ name|defaults
 operator|.
 name|put
 argument_list|(
-name|JabRefPreferences
-operator|.
 name|OO_EXECUTABLE_PATH
 argument_list|,
 name|OpenOfficePreferences
@@ -5543,8 +5531,6 @@ name|defaults
 operator|.
 name|put
 argument_list|(
-name|JabRefPreferences
-operator|.
 name|OO_JARS_PATH
 argument_list|,
 name|OpenOfficePreferences
@@ -5569,8 +5555,6 @@ name|defaults
 operator|.
 name|put
 argument_list|(
-name|JabRefPreferences
-operator|.
 name|OO_PATH
 argument_list|,
 name|OpenOfficePreferences
@@ -5582,8 +5566,6 @@ name|defaults
 operator|.
 name|put
 argument_list|(
-name|JabRefPreferences
-operator|.
 name|OO_EXECUTABLE_PATH
 argument_list|,
 name|OpenOfficePreferences
@@ -5603,8 +5585,6 @@ name|defaults
 operator|.
 name|put
 argument_list|(
-name|JabRefPreferences
-operator|.
 name|OO_JARS_PATH
 argument_list|,
 name|OpenOfficePreferences
@@ -5624,8 +5604,6 @@ name|defaults
 operator|.
 name|put
 argument_list|(
-name|JabRefPreferences
-operator|.
 name|OO_PATH
 argument_list|,
 literal|"/opt/openoffice.org3"
@@ -5635,8 +5613,6 @@ name|defaults
 operator|.
 name|put
 argument_list|(
-name|JabRefPreferences
-operator|.
 name|OO_EXECUTABLE_PATH
 argument_list|,
 literal|"/usr/lib/openoffice/program/soffice"
@@ -5646,8 +5622,6 @@ name|defaults
 operator|.
 name|put
 argument_list|(
-name|JabRefPreferences
-operator|.
 name|OO_JARS_PATH
 argument_list|,
 literal|"/opt/openoffice.org/basis3.0"
@@ -5658,8 +5632,6 @@ name|defaults
 operator|.
 name|put
 argument_list|(
-name|JabRefPreferences
-operator|.
 name|OO_SYNC_WHEN_CITING
 argument_list|,
 literal|false
@@ -5669,8 +5641,6 @@ name|defaults
 operator|.
 name|put
 argument_list|(
-name|JabRefPreferences
-operator|.
 name|OO_SHOW_PANEL
 argument_list|,
 literal|false
@@ -5680,8 +5650,6 @@ name|defaults
 operator|.
 name|put
 argument_list|(
-name|JabRefPreferences
-operator|.
 name|OO_USE_ALL_OPEN_BASES
 argument_list|,
 literal|true
@@ -5691,8 +5659,6 @@ name|defaults
 operator|.
 name|put
 argument_list|(
-name|JabRefPreferences
-operator|.
 name|OO_BIBLIOGRAPHY_STYLE_FILE
 argument_list|,
 name|StyleLoader
@@ -5704,8 +5670,6 @@ name|defaults
 operator|.
 name|put
 argument_list|(
-name|JabRefPreferences
-operator|.
 name|OO_EXTERNAL_STYLE_FILES
 argument_list|,
 literal|""
@@ -5751,8 +5715,6 @@ name|defaults
 operator|.
 name|put
 argument_list|(
-name|JabRefPreferences
-operator|.
 name|SPECIALFIELDSENABLED
 argument_list|,
 name|SpecialFields
@@ -5764,8 +5726,6 @@ name|defaults
 operator|.
 name|put
 argument_list|(
-name|JabRefPreferences
-operator|.
 name|SHOWCOLUMN_PRIORITY
 argument_list|,
 name|SpecialFields
@@ -5777,8 +5737,6 @@ name|defaults
 operator|.
 name|put
 argument_list|(
-name|JabRefPreferences
-operator|.
 name|SHOWCOLUMN_QUALITY
 argument_list|,
 name|SpecialFields
@@ -5790,8 +5748,6 @@ name|defaults
 operator|.
 name|put
 argument_list|(
-name|JabRefPreferences
-operator|.
 name|SHOWCOLUMN_RANKING
 argument_list|,
 name|SpecialFields
@@ -5803,8 +5759,6 @@ name|defaults
 operator|.
 name|put
 argument_list|(
-name|JabRefPreferences
-operator|.
 name|SHOWCOLUMN_RELEVANCE
 argument_list|,
 name|SpecialFields
@@ -5816,8 +5770,6 @@ name|defaults
 operator|.
 name|put
 argument_list|(
-name|JabRefPreferences
-operator|.
 name|SHOWCOLUMN_PRINTED
 argument_list|,
 name|SpecialFields
@@ -5829,8 +5781,6 @@ name|defaults
 operator|.
 name|put
 argument_list|(
-name|JabRefPreferences
-operator|.
 name|SHOWCOLUMN_READ
 argument_list|,
 name|SpecialFields
@@ -5842,8 +5792,6 @@ name|defaults
 operator|.
 name|put
 argument_list|(
-name|JabRefPreferences
-operator|.
 name|AUTOSYNCSPECIALFIELDSTOKEYWORDS
 argument_list|,
 name|SpecialFields
@@ -5855,8 +5803,6 @@ name|defaults
 operator|.
 name|put
 argument_list|(
-name|JabRefPreferences
-operator|.
 name|SERIALIZESPECIALFIELDS
 argument_list|,
 name|SpecialFields
@@ -6054,18 +6000,6 @@ operator|+
 literal|"</dd>__NEWLINE__<p></p></font>"
 argument_list|)
 expr_stmt|;
-comment|// TODO: Currently not possible to edit this setting:
-name|defaults
-operator|.
-name|put
-argument_list|(
-name|PREVIEW_PRINT_BUTTON
-argument_list|,
-name|Boolean
-operator|.
-name|FALSE
-argument_list|)
-expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -6210,8 +6144,6 @@ name|defaults
 operator|.
 name|put
 argument_list|(
-name|JabRefPreferences
-operator|.
 name|USE_REMOTE_SERVER
 argument_list|,
 name|Boolean
@@ -6223,8 +6155,6 @@ name|defaults
 operator|.
 name|put
 argument_list|(
-name|JabRefPreferences
-operator|.
 name|REMOTE_SERVER_PORT
 argument_list|,
 literal|6050
@@ -6558,8 +6488,6 @@ name|defaults
 operator|.
 name|put
 argument_list|(
-name|JabRefPreferences
-operator|.
 name|DROPPEDFILEHANDLER_LEAVE
 argument_list|,
 name|Boolean
@@ -6571,8 +6499,6 @@ name|defaults
 operator|.
 name|put
 argument_list|(
-name|JabRefPreferences
-operator|.
 name|DROPPEDFILEHANDLER_COPY
 argument_list|,
 name|Boolean
@@ -6584,8 +6510,6 @@ name|defaults
 operator|.
 name|put
 argument_list|(
-name|JabRefPreferences
-operator|.
 name|DROPPEDFILEHANDLER_MOVE
 argument_list|,
 name|Boolean
@@ -6597,8 +6521,6 @@ name|defaults
 operator|.
 name|put
 argument_list|(
-name|JabRefPreferences
-operator|.
 name|DROPPEDFILEHANDLER_RENAME
 argument_list|,
 name|Boolean
@@ -6606,25 +6528,6 @@ operator|.
 name|FALSE
 argument_list|)
 expr_stmt|;
-comment|//defaults.put("lastAutodetectedImport", "");
-comment|//defaults.put("autoRemoveExactDuplicates", Boolean.FALSE);
-comment|//defaults.put("confirmAutoRemoveExactDuplicates", Boolean.TRUE);
-comment|//defaults.put("tempDir", System.getProperty("java.io.tmpdir"));
-name|LOGGER
-operator|.
-name|debug
-argument_list|(
-literal|"Temporary directory: "
-operator|+
-name|System
-operator|.
-name|getProperty
-argument_list|(
-literal|"java.io.tempdir"
-argument_list|)
-argument_list|)
-expr_stmt|;
-comment|//defaults.put("keyPattern", new LabelPattern(KEY_PATTERN));
 name|defaults
 operator|.
 name|put
@@ -6679,17 +6582,6 @@ name|CustomImportList
 argument_list|(
 name|this
 argument_list|)
-expr_stmt|;
-name|WRAPPED_USERNAME
-operator|=
-literal|'['
-operator|+
-name|get
-argument_list|(
-name|DEFAULT_OWNER
-argument_list|)
-operator|+
-literal|']'
 expr_stmt|;
 name|MARKING_WITH_NUMBER_PATTERN
 operator|=
@@ -6812,8 +6704,6 @@ name|defaults
 operator|.
 name|put
 argument_list|(
-name|JabRefPreferences
-operator|.
 name|VERSION_IGNORED_UPDATE
 argument_list|,
 literal|""
@@ -8009,8 +7899,6 @@ argument_list|()
 operator|.
 name|get
 argument_list|(
-name|JabRefPreferences
-operator|.
 name|DEFAULT_BIBTEX_KEY_PATTERN
 argument_list|)
 argument_list|)
@@ -8564,8 +8452,6 @@ argument_list|)
 decl_stmt|;
 name|put
 argument_list|(
-name|JabRefPreferences
-operator|.
 name|CUSTOM_TYPE_NAME
 operator|+
 name|nr
@@ -8578,8 +8464,6 @@ argument_list|)
 expr_stmt|;
 name|put
 argument_list|(
-name|JabRefPreferences
-operator|.
 name|CUSTOM_TYPE_REQ
 operator|+
 name|nr
@@ -8603,8 +8487,6 @@ argument_list|()
 decl_stmt|;
 name|putStringList
 argument_list|(
-name|JabRefPreferences
-operator|.
 name|CUSTOM_TYPE_OPT
 operator|+
 name|nr
@@ -8625,8 +8507,6 @@ argument_list|()
 decl_stmt|;
 name|putStringList
 argument_list|(
-name|JabRefPreferences
-operator|.
 name|CUSTOM_TYPE_PRIOPT
 operator|+
 name|nr
@@ -8663,8 +8543,6 @@ name|name
 init|=
 name|get
 argument_list|(
-name|JabRefPreferences
-operator|.
 name|CUSTOM_TYPE_NAME
 operator|+
 name|nr
@@ -8692,8 +8570,6 @@ name|req
 init|=
 name|getStringList
 argument_list|(
-name|JabRefPreferences
-operator|.
 name|CUSTOM_TYPE_REQ
 operator|+
 name|nr
@@ -8707,8 +8583,6 @@ name|opt
 init|=
 name|getStringList
 argument_list|(
-name|JabRefPreferences
-operator|.
 name|CUSTOM_TYPE_OPT
 operator|+
 name|nr
@@ -8722,8 +8596,6 @@ name|priOpt
 init|=
 name|getStringList
 argument_list|(
-name|JabRefPreferences
-operator|.
 name|CUSTOM_TYPE_PRIOPT
 operator|+
 name|nr
@@ -8815,8 +8687,6 @@ parameter_list|)
 block|{
 name|purgeSeries
 argument_list|(
-name|JabRefPreferences
-operator|.
 name|CUSTOM_TYPE_NAME
 argument_list|,
 name|number
@@ -8824,8 +8694,6 @@ argument_list|)
 expr_stmt|;
 name|purgeSeries
 argument_list|(
-name|JabRefPreferences
-operator|.
 name|CUSTOM_TYPE_REQ
 argument_list|,
 name|number
@@ -8833,8 +8701,6 @@ argument_list|)
 expr_stmt|;
 name|purgeSeries
 argument_list|(
-name|JabRefPreferences
-operator|.
 name|CUSTOM_TYPE_OPT
 argument_list|,
 name|number
@@ -8842,8 +8708,6 @@ argument_list|)
 expr_stmt|;
 name|purgeSeries
 argument_list|(
-name|JabRefPreferences
-operator|.
 name|CUSTOM_TYPE_PRIOPT
 argument_list|,
 name|number
@@ -9075,6 +8939,23 @@ operator|=
 name|owPrefs
 expr_stmt|;
 block|}
+DECL|method|getWrappedUsername ()
+specifier|public
+name|String
+name|getWrappedUsername
+parameter_list|()
+block|{
+return|return
+literal|'['
+operator|+
+name|get
+argument_list|(
+name|DEFAULT_OWNER
+argument_list|)
+operator|+
+literal|']'
+return|;
+block|}
 DECL|method|getDefaultEncoding ()
 specifier|public
 name|Charset
@@ -9088,8 +8969,6 @@ name|forName
 argument_list|(
 name|get
 argument_list|(
-name|JabRefPreferences
-operator|.
 name|DEFAULT_ENCODING
 argument_list|)
 argument_list|)
@@ -9106,8 +8985,6 @@ parameter_list|)
 block|{
 name|put
 argument_list|(
-name|JabRefPreferences
-operator|.
 name|DEFAULT_ENCODING
 argument_list|,
 name|encoding

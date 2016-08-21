@@ -282,7 +282,8 @@ name|Globals
 operator|.
 name|prefs
 operator|.
-name|WRAPPED_USERNAME
+name|getWrappedUsername
+argument_list|()
 argument_list|)
 decl_stmt|;
 if|if
@@ -318,7 +319,8 @@ name|Globals
 operator|.
 name|prefs
 operator|.
-name|WRAPPED_USERNAME
+name|getWrappedUsername
+argument_list|()
 operator|.
 name|length
 argument_list|()
@@ -328,7 +330,8 @@ name|Globals
 operator|.
 name|prefs
 operator|.
-name|WRAPPED_USERNAME
+name|getWrappedUsername
+argument_list|()
 operator|.
 name|substring
 argument_list|(
@@ -338,7 +341,8 @@ name|Globals
 operator|.
 name|prefs
 operator|.
-name|WRAPPED_USERNAME
+name|getWrappedUsername
+argument_list|()
 operator|.
 name|length
 argument_list|()
@@ -474,7 +478,8 @@ name|Globals
 operator|.
 name|prefs
 operator|.
-name|WRAPPED_USERNAME
+name|getWrappedUsername
+argument_list|()
 operator|.
 name|substring
 argument_list|(
@@ -484,7 +489,8 @@ name|Globals
 operator|.
 name|prefs
 operator|.
-name|WRAPPED_USERNAME
+name|getWrappedUsername
+argument_list|()
 operator|.
 name|length
 argument_list|()
@@ -633,7 +639,8 @@ name|Globals
 operator|.
 name|prefs
 operator|.
-name|WRAPPED_USERNAME
+name|getWrappedUsername
+argument_list|()
 argument_list|)
 decl_stmt|;
 if|if
@@ -674,7 +681,8 @@ name|Globals
 operator|.
 name|prefs
 operator|.
-name|WRAPPED_USERNAME
+name|getWrappedUsername
+argument_list|()
 operator|.
 name|length
 argument_list|()
@@ -776,7 +784,8 @@ name|Globals
 operator|.
 name|prefs
 operator|.
-name|WRAPPED_USERNAME
+name|getWrappedUsername
+argument_list|()
 operator|.
 name|substring
 argument_list|(
@@ -786,7 +795,8 @@ name|Globals
 operator|.
 name|prefs
 operator|.
-name|WRAPPED_USERNAME
+name|getWrappedUsername
+argument_list|()
 operator|.
 name|length
 argument_list|()
@@ -1195,7 +1205,8 @@ name|Globals
 operator|.
 name|prefs
 operator|.
-name|WRAPPED_USERNAME
+name|getWrappedUsername
+argument_list|()
 argument_list|)
 decl_stmt|;
 if|if
