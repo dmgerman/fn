@@ -368,7 +368,7 @@ name|entry0
 init|=
 name|BibtexParser
 operator|.
-name|singleFromStringOptional
+name|singleFromString
 argument_list|(
 literal|"@ARTICLE{kohn, author={Simon Holland}}"
 argument_list|,
@@ -421,7 +421,7 @@ name|entry
 init|=
 name|BibtexParser
 operator|.
-name|singleFromStringOptional
+name|singleFromString
 argument_list|(
 name|bibtexString
 argument_list|,
@@ -469,7 +469,7 @@ name|entry
 init|=
 name|BibtexParser
 operator|.
-name|singleFromStringOptional
+name|singleFromString
 argument_list|(
 literal|"@ARTICLE{kohn, author={Simon Popovi\\v{c}ov\\'{a}}}"
 argument_list|,
@@ -518,7 +518,7 @@ name|entry0
 init|=
 name|BibtexParser
 operator|.
-name|singleFromStringOptional
+name|singleFromString
 argument_list|(
 literal|"@ARTICLE{kohn, author={Andreas KÃ¶ning}, year={2000}}"
 argument_list|,
@@ -553,7 +553,7 @@ name|entry0
 operator|=
 name|BibtexParser
 operator|.
-name|singleFromStringOptional
+name|singleFromString
 argument_list|(
 literal|"@ARTICLE{kohn, author={Andreas ÃÃ¶ning}, year={2000}}"
 argument_list|,
@@ -588,7 +588,7 @@ name|entry0
 operator|=
 name|BibtexParser
 operator|.
-name|singleFromStringOptional
+name|singleFromString
 argument_list|(
 literal|"@ARTICLE{kohn, author={Andreas ÃÃ¶ning}, year={2000}}"
 argument_list|,
@@ -623,7 +623,7 @@ name|entry0
 operator|=
 name|BibtexParser
 operator|.
-name|singleFromStringOptional
+name|singleFromString
 argument_list|(
 literal|"@ARTICLE{kohn, author={Andreas ÃÃ¶ning}, year={2000}}"
 argument_list|,
@@ -658,7 +658,7 @@ name|entry0
 operator|=
 name|BibtexParser
 operator|.
-name|singleFromStringOptional
+name|singleFromString
 argument_list|(
 literal|"@ARTICLE{kohn, author={Andreas Ä¹Ã¶ning}, year={2000}}"
 argument_list|,
@@ -693,7 +693,7 @@ name|entry0
 operator|=
 name|BibtexParser
 operator|.
-name|singleFromStringOptional
+name|singleFromString
 argument_list|(
 literal|"@ARTICLE{kohn, author={Andreas ÅÃ¶ning}, year={2000}}"
 argument_list|,
@@ -728,7 +728,7 @@ name|entry0
 operator|=
 name|BibtexParser
 operator|.
-name|singleFromStringOptional
+name|singleFromString
 argument_list|(
 literal|"@ARTICLE{kohn, author={Andreas ÃÃ¶ning}, year={2000}}"
 argument_list|,
@@ -763,7 +763,7 @@ name|entry0
 operator|=
 name|BibtexParser
 operator|.
-name|singleFromStringOptional
+name|singleFromString
 argument_list|(
 literal|"@ARTICLE{kohn, author={Andreas ÅÃ¶ning}, year={2000}}"
 argument_list|,
@@ -798,7 +798,7 @@ name|entry0
 operator|=
 name|BibtexParser
 operator|.
-name|singleFromStringOptional
+name|singleFromString
 argument_list|(
 literal|"@ARTICLE{kohn, author={Andreas ÅÃ¶ning}, year={2000}}"
 argument_list|,
@@ -833,7 +833,7 @@ name|entry0
 operator|=
 name|BibtexParser
 operator|.
-name|singleFromStringOptional
+name|singleFromString
 argument_list|(
 literal|"@ARTICLE{kohn, author={Andreas ÃÃ¶ning}, year={2000}}"
 argument_list|,
@@ -868,7 +868,7 @@ name|entry0
 operator|=
 name|BibtexParser
 operator|.
-name|singleFromStringOptional
+name|singleFromString
 argument_list|(
 literal|"@ARTICLE{kohn, author={Andreas ÃÃ¶ning}, year={2000}}"
 argument_list|,
@@ -903,7 +903,7 @@ name|entry0
 operator|=
 name|BibtexParser
 operator|.
-name|singleFromStringOptional
+name|singleFromString
 argument_list|(
 literal|"@ARTICLE{kohn, author={Andreas Å¹Ã¶ning}, year={2000}}"
 argument_list|,
@@ -952,7 +952,7 @@ name|entry0
 init|=
 name|BibtexParser
 operator|.
-name|singleFromStringOptional
+name|singleFromString
 argument_list|(
 literal|"@ARTICLE{kohn, author={Andreas ÃÃ¶ning}, year={2000}}"
 argument_list|,
@@ -987,7 +987,7 @@ name|entry0
 operator|=
 name|BibtexParser
 operator|.
-name|singleFromStringOptional
+name|singleFromString
 argument_list|(
 literal|"@ARTICLE{kohn, author={Andreas ÃÃ¶ning}, year={2000}}"
 argument_list|,
@@ -1022,7 +1022,7 @@ name|entry0
 operator|=
 name|BibtexParser
 operator|.
-name|singleFromStringOptional
+name|singleFromString
 argument_list|(
 literal|"@ARTICLE{kohn, author={Andreas ÃÃ¶ning}, year={2000}}"
 argument_list|,
@@ -1057,7 +1057,7 @@ name|entry0
 operator|=
 name|BibtexParser
 operator|.
-name|singleFromStringOptional
+name|singleFromString
 argument_list|(
 literal|"@ARTICLE{kohn, author={Andreas ÃÃ¶ning}, year={2000}}"
 argument_list|,
@@ -1092,7 +1092,7 @@ name|entry0
 operator|=
 name|BibtexParser
 operator|.
-name|singleFromStringOptional
+name|singleFromString
 argument_list|(
 literal|"@ARTICLE{kohn, author={Andreas ÃÃ¶ning}, year={2000}}"
 argument_list|,
@@ -1507,7 +1507,7 @@ name|entry
 init|=
 name|BibtexParser
 operator|.
-name|singleFromStringOptional
+name|singleFromString
 argument_list|(
 literal|"@ARTICLE{kohn, author={{Link{\\\"{o}}ping University}}}"
 argument_list|,
@@ -1555,7 +1555,7 @@ name|entry
 init|=
 name|BibtexParser
 operator|.
-name|singleFromStringOptional
+name|singleFromString
 argument_list|(
 literal|"@ARTICLE{kohn, author={{Link{\\\"{o}}ping University, Department of Electrical Engineering}}}"
 argument_list|,
@@ -1603,7 +1603,7 @@ name|entry
 init|=
 name|BibtexParser
 operator|.
-name|singleFromStringOptional
+name|singleFromString
 argument_list|(
 literal|"@ARTICLE{kohn, author={{Link{\\\"{o}}ping University, School of Computer Engineering}}}"
 argument_list|,
@@ -1651,7 +1651,7 @@ name|entry
 init|=
 name|BibtexParser
 operator|.
-name|singleFromStringOptional
+name|singleFromString
 argument_list|(
 literal|"@ARTICLE{kohn, author={{Massachusetts Institute of Technology}}}"
 argument_list|,

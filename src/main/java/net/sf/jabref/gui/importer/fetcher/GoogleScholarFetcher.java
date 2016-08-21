@@ -1,8 +1,4 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
-begin_comment
-comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
-end_comment
-
 begin_package
 DECL|package|net.sf.jabref.gui.importer.fetcher
 package|package
@@ -450,7 +446,7 @@ specifier|final
 name|String
 name|URL_START
 init|=
-literal|"http://scholar.google.com"
+literal|"https://scholar.google.com"
 decl_stmt|;
 DECL|field|URL_SETTING
 specifier|private
@@ -459,7 +455,7 @@ specifier|final
 name|String
 name|URL_SETTING
 init|=
-literal|"http://scholar.google.com/scholar_settings"
+literal|"https://scholar.google.com/scholar_settings"
 decl_stmt|;
 DECL|field|URL_SETPREFS
 specifier|private
@@ -468,7 +464,7 @@ specifier|final
 name|String
 name|URL_SETPREFS
 init|=
-literal|"http://scholar.google.com/scholar_setprefs"
+literal|"https://scholar.google.com/scholar_setprefs"
 decl_stmt|;
 DECL|field|SEARCH_URL
 specifier|private
@@ -487,7 +483,7 @@ name|GoogleScholarFetcher
 operator|.
 name|QUERY_MARKER
 operator|+
-literal|"&amp;hl=en&amp;btnG=Search"
+literal|"&hl=en&btnG=Search&oe=utf-8"
 decl_stmt|;
 DECL|field|BIBTEX_LINK_PATTERN
 specifier|private
@@ -575,8 +571,6 @@ name|HashMap
 argument_list|<>
 argument_list|()
 decl_stmt|;
-comment|//final static Pattern NEXT_PAGE_PATTERN = Pattern.compile(
-comment|//        "<a href=\"([^\"]*)\"><span class=\"SPRITE_nav_next\"></span><br><span style=\".*\">Next</span></a>");
 DECL|field|stopFetching
 specifier|private
 name|boolean
@@ -969,8 +963,6 @@ operator|=
 literal|true
 expr_stmt|;
 block|}
-comment|/*  Used for debugging */
-comment|/*    private static void save(String filename, String content) throws IOException {         try (BufferedWriter out = new BufferedWriter(new FileWriter(filename))) {             out.write(content);         }     }     */
 DECL|method|runConfig ()
 specifier|private
 specifier|static
@@ -990,15 +982,11 @@ argument_list|)
 operator|.
 name|downloadToString
 argument_list|(
-name|Globals
+name|StandardCharsets
 operator|.
-name|prefs
-operator|.
-name|getDefaultEncoding
-argument_list|()
+name|UTF_8
 argument_list|)
 expr_stmt|;
-comment|//save("setting.html", ud.getStringContent());
 name|String
 name|settingsPage
 init|=
@@ -1012,12 +1000,9 @@ argument_list|)
 operator|.
 name|downloadToString
 argument_list|(
-name|Globals
+name|StandardCharsets
 operator|.
-name|prefs
-operator|.
-name|getDefaultEncoding
-argument_list|()
+name|UTF_8
 argument_list|)
 decl_stmt|;
 comment|// Get the form items and their values from the page:
@@ -1283,12 +1268,9 @@ argument_list|)
 operator|.
 name|downloadToString
 argument_list|(
-name|Globals
+name|StandardCharsets
 operator|.
-name|prefs
-operator|.
-name|getDefaultEncoding
-argument_list|()
+name|UTF_8
 argument_list|)
 decl_stmt|;
 name|Matcher
@@ -1333,6 +1315,13 @@ argument_list|,
 literal|"&"
 argument_list|)
 decl_stmt|;
+name|link
+operator|=
+name|link
+operator|+
+literal|"&oe=utf-8"
+expr_stmt|;
+comment|// append param 'oe=utf-8' to tell google to serve UTF-8 encoded results
 name|String
 name|pText
 decl_stmt|;
@@ -1551,12 +1540,9 @@ argument_list|)
 operator|.
 name|downloadToString
 argument_list|(
-name|Globals
+name|StandardCharsets
 operator|.
-name|prefs
-operator|.
-name|getDefaultEncoding
-argument_list|()
+name|UTF_8
 argument_list|)
 decl_stmt|;
 name|BibtexParser

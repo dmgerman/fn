@@ -1,8 +1,4 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
-begin_comment
-comment|/* Copyright (C) 2003-2016 JabRef contributors Copyright (C) 2003 David Weitzman, Morten O. Alver  All programs in this directory and subdirectories are published under the GNU General Public License as described below.  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.  This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.  You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA  Further information about the GNU GPL is available at: http://www.gnu.org/copyleft/gpl.ja.html  Note: Modified for use in JabRef   */
-end_comment
-
 begin_package
 DECL|package|net.sf.jabref.model.database
 package|package
@@ -1486,8 +1482,8 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**      * Take the given collection of BibEntry and resolve any string      * references.      *      * @param entries A collection of BibtexEntries in which all strings of the form      *                #xxx# will be resolved against the hash map of string      *                references stored in the database.      * @param inPlace If inPlace is true then the given BibtexEntries will be modified, if false then copies of the BibtexEntries are made before resolving the strings.      * @return a list of bibtexentries, with all strings resolved. It is dependent on the value of inPlace whether copies are made or the given BibtexEntries are modified.      */
-DECL|method|resolveForStrings (Collection<BibEntry> entries, boolean inPlace)
+comment|/**      * Take the given collection of BibEntry and resolve any string      * references.      *      * @param entriesToResolve A collection of BibtexEntries in which all strings of the form      *                #xxx# will be resolved against the hash map of string      *                references stored in the database.      * @param inPlace If inPlace is true then the given BibtexEntries will be modified, if false then copies of the BibtexEntries are made before resolving the strings.      * @return a list of bibtexentries, with all strings resolved. It is dependent on the value of inPlace whether copies are made or the given BibtexEntries are modified.      */
+DECL|method|resolveForStrings (Collection<BibEntry> entriesToResolve, boolean inPlace)
 specifier|public
 name|List
 argument_list|<
@@ -1499,7 +1495,7 @@ name|Collection
 argument_list|<
 name|BibEntry
 argument_list|>
-name|entries
+name|entriesToResolve
 parameter_list|,
 name|boolean
 name|inPlace
@@ -1509,7 +1505,7 @@ name|Objects
 operator|.
 name|requireNonNull
 argument_list|(
-name|entries
+name|entriesToResolve
 argument_list|,
 literal|"entries must not be null."
 argument_list|)
@@ -1524,7 +1520,7 @@ operator|new
 name|ArrayList
 argument_list|<>
 argument_list|(
-name|entries
+name|entriesToResolve
 operator|.
 name|size
 argument_list|()
@@ -1535,7 +1531,7 @@ control|(
 name|BibEntry
 name|entry
 range|:
-name|entries
+name|entriesToResolve
 control|)
 block|{
 name|results

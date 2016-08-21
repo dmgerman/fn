@@ -1,8 +1,4 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
-begin_comment
-comment|/*  Copyright (C) 2003-2016 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
-end_comment
-
 begin_package
 DECL|package|net.sf.jabref.gui
 package|package
@@ -97,6 +93,18 @@ operator|.
 name|io
 operator|.
 name|StringReader
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|lang
+operator|.
+name|reflect
+operator|.
+name|InvocationTargetException
 import|;
 end_import
 
@@ -639,13 +647,13 @@ name|class
 argument_list|)
 decl_stmt|;
 comment|/**      * The bibtex entry currently shown      */
-DECL|field|entry
+DECL|field|bibEntry
 specifier|private
 name|Optional
 argument_list|<
 name|BibEntry
 argument_list|>
-name|entry
+name|bibEntry
 init|=
 name|Optional
 operator|.
@@ -1539,7 +1547,7 @@ name|BibEntry
 name|newEntry
 parameter_list|)
 block|{
-name|entry
+name|bibEntry
 operator|.
 name|filter
 argument_list|(
@@ -1562,7 +1570,7 @@ name|this
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|entry
+name|bibEntry
 operator|=
 name|Optional
 operator|.
@@ -1571,7 +1579,7 @@ argument_list|(
 name|newEntry
 argument_list|)
 expr_stmt|;
-name|entry
+name|bibEntry
 operator|.
 name|ifPresent
 argument_list|(
@@ -1593,6 +1601,11 @@ argument_list|()
 expr_stmt|;
 block|}
 comment|/**     * Listener for ChangedFieldEvent.     */
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 annotation|@
 name|Subscribe
 DECL|method|listen (FieldChangedEvent fieldChangedEvent)
@@ -1619,7 +1632,7 @@ block|{
 return|return
 name|this
 operator|.
-name|entry
+name|bibEntry
 operator|.
 name|orElse
 argument_list|(
@@ -1647,7 +1660,7 @@ operator|=
 literal|1
 expr_stmt|;
 comment|// Set entry number in case that is included in the preview layout.
-name|entry
+name|bibEntry
 operator|.
 name|ifPresent
 argument_list|(
@@ -1657,13 +1670,13 @@ name|layout
 operator|.
 name|ifPresent
 argument_list|(
-name|layout
+name|acutalLayout
 lambda|->
 name|sb
 operator|.
 name|append
 argument_list|(
-name|layout
+name|acutalLayout
 operator|.
 name|doLayout
 argument_list|(
@@ -1697,6 +1710,14 @@ operator|.
 name|toString
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|SwingUtilities
+operator|.
+name|isEventDispatchThread
+argument_list|()
+condition|)
+block|{
 name|previewPane
 operator|.
 name|setText
@@ -1709,6 +1730,53 @@ operator|.
 name|revalidate
 argument_list|()
 expr_stmt|;
+block|}
+else|else
+block|{
+try|try
+block|{
+name|SwingUtilities
+operator|.
+name|invokeAndWait
+argument_list|(
+parameter_list|()
+lambda|->
+block|{
+name|previewPane
+operator|.
+name|setText
+argument_list|(
+name|newValue
+argument_list|)
+expr_stmt|;
+name|previewPane
+operator|.
+name|revalidate
+argument_list|()
+expr_stmt|;
+block|}
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|InvocationTargetException
+decl||
+name|InterruptedException
+name|e
+parameter_list|)
+block|{
+name|LOGGER
+operator|.
+name|info
+argument_list|(
+literal|"Problem setting preview text"
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 comment|// Scroll to top:
 name|scrollToTop
 argument_list|()
@@ -1844,7 +1912,7 @@ argument_list|(
 operator|new
 name|JobName
 argument_list|(
-name|entry
+name|bibEntry
 operator|.
 name|flatMap
 argument_list|(

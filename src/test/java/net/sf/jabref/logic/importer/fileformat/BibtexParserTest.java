@@ -805,7 +805,7 @@ name|parsed
 init|=
 name|BibtexParser
 operator|.
-name|singleFromStringOptional
+name|singleFromString
 argument_list|(
 literal|"@article{canh05,"
 operator|+
@@ -884,7 +884,7 @@ name|parsed
 init|=
 name|BibtexParser
 operator|.
-name|singleFromStringOptional
+name|singleFromString
 argument_list|(
 literal|"@article{canh05,"
 operator|+
@@ -955,7 +955,7 @@ name|parsed
 init|=
 name|BibtexParser
 operator|.
-name|singleFromStringOptional
+name|singleFromString
 argument_list|(
 literal|""
 argument_list|,
@@ -989,7 +989,7 @@ name|parsed
 init|=
 name|BibtexParser
 operator|.
-name|singleFromStringOptional
+name|singleFromString
 argument_list|(
 literal|"@@article@@{{{{{{}"
 argument_list|,
@@ -3450,11 +3450,9 @@ argument_list|)
 decl_stmt|;
 name|assertEquals
 argument_list|(
-name|Globals
+name|Optional
 operator|.
-name|prefs
-operator|.
-name|getDefaultEncoding
+name|empty
 argument_list|()
 argument_list|,
 name|result

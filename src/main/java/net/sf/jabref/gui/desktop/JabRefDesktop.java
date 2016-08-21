@@ -1,8 +1,4 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
-begin_comment
-comment|/*  Copyright (C) 2003-2016 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
-end_comment
-
 begin_package
 DECL|package|net.sf.jabref.gui.desktop
 package|package
@@ -2085,39 +2081,11 @@ argument_list|(
 literal|" "
 argument_list|)
 decl_stmt|;
-name|StringBuilder
+comment|// replace the placeholder if used
+name|String
 name|commandLoggingText
 init|=
-operator|new
-name|StringBuilder
-argument_list|()
-decl_stmt|;
-for|for
-control|(
-name|int
-name|i
-init|=
-literal|0
-init|;
-name|i
-operator|<
-name|subcommands
-operator|.
-name|length
-condition|;
-name|i
-operator|++
-control|)
-block|{
-name|subcommands
-index|[
-name|i
-index|]
-operator|=
-name|subcommands
-index|[
-name|i
-index|]
+name|command
 operator|.
 name|replace
 argument_list|(
@@ -2125,40 +2093,7 @@ literal|"%DIR"
 argument_list|,
 name|absolutePath
 argument_list|)
-expr_stmt|;
-comment|// replace the placeholder if used
-name|commandLoggingText
-operator|.
-name|append
-argument_list|(
-name|subcommands
-index|[
-name|i
-index|]
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
-name|i
-operator|<
-operator|(
-name|subcommands
-operator|.
-name|length
-operator|-
-literal|1
-operator|)
-condition|)
-block|{
-name|commandLoggingText
-operator|.
-name|append
-argument_list|(
-literal|" "
-argument_list|)
-expr_stmt|;
-block|}
-block|}
+decl_stmt|;
 name|JabRefGUI
 operator|.
 name|getMainFrame
@@ -2173,9 +2108,6 @@ argument_list|(
 literal|"Executing command \"%0\"..."
 argument_list|,
 name|commandLoggingText
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2186,9 +2118,6 @@ argument_list|(
 literal|"Executing command \""
 operator|+
 name|commandLoggingText
-operator|.
-name|toString
-argument_list|()
 operator|+
 literal|"\"..."
 argument_list|)
@@ -2236,9 +2165,6 @@ argument_list|(
 literal|"Error_occured_while_executing_the_command_\"%0\"."
 argument_list|,
 name|commandLoggingText
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 argument_list|,
 name|Localization

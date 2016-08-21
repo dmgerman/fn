@@ -332,7 +332,7 @@ decl_stmt|;
 return|return
 name|BibtexParser
 operator|.
-name|singleFromStringOptional
+name|singleFromString
 argument_list|(
 name|bibtexString
 argument_list|,

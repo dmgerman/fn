@@ -1,8 +1,4 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
-begin_comment
-comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
-end_comment
-
 begin_package
 DECL|package|net.sf.jabref
 package|package
@@ -602,6 +598,34 @@ name|Charset
 name|encoding
 decl_stmt|;
 comment|/**      * The MetaData object stores all meta data sets in Vectors. To ensure that      * the data is written correctly to string, the user of a meta data Vector      * must simply make sure the appropriate changes are reflected in the Vector      * it has been passed.      */
+DECL|method|MetaData (Map<String, String> inData)
+specifier|private
+name|MetaData
+parameter_list|(
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
+name|inData
+parameter_list|)
+throws|throws
+name|ParseException
+block|{
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|inData
+argument_list|)
+expr_stmt|;
+name|setData
+argument_list|(
+name|inData
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|MetaData (Map<String, String> inData, Charset encoding)
 specifier|private
 name|MetaData
@@ -620,14 +644,7 @@ parameter_list|)
 throws|throws
 name|ParseException
 block|{
-name|Objects
-operator|.
-name|requireNonNull
-argument_list|(
-name|inData
-argument_list|)
-expr_stmt|;
-name|setData
+name|this
 argument_list|(
 name|inData
 argument_list|)
@@ -636,27 +653,21 @@ name|this
 operator|.
 name|encoding
 operator|=
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
 name|encoding
+argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * The MetaData object can be constructed with no data in it.      */
-annotation|@
-name|Deprecated
 DECL|method|MetaData ()
 specifier|public
 name|MetaData
 parameter_list|()
 block|{
-name|this
-argument_list|(
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getDefaultEncoding
-argument_list|()
-argument_list|)
-expr_stmt|;
+comment|// Do nothing
 block|}
 DECL|method|MetaData (Charset encoding)
 specifier|public
@@ -673,8 +684,6 @@ operator|=
 name|encoding
 expr_stmt|;
 block|}
-annotation|@
-name|Deprecated
 DECL|method|parse (Map<String, String> data)
 specifier|public
 specifier|static
@@ -697,13 +706,6 @@ operator|new
 name|MetaData
 argument_list|(
 name|data
-argument_list|,
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getDefaultEncoding
-argument_list|()
 argument_list|)
 return|;
 block|}
@@ -2606,12 +2608,20 @@ block|}
 comment|/**      * Returns the encoding used during parsing.      */
 DECL|method|getEncoding ()
 specifier|public
+name|Optional
+argument_list|<
 name|Charset
+argument_list|>
 name|getEncoding
 parameter_list|()
 block|{
 return|return
+name|Optional
+operator|.
+name|ofNullable
+argument_list|(
 name|encoding
+argument_list|)
 return|;
 block|}
 DECL|method|setEncoding (Charset encoding)

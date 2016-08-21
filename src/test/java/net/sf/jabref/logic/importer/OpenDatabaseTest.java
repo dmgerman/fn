@@ -442,6 +442,9 @@ argument_list|()
 operator|.
 name|getEncoding
 argument_list|()
+operator|.
+name|get
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -479,6 +482,9 @@ name|getMetaData
 argument_list|()
 operator|.
 name|getEncoding
+argument_list|()
+operator|.
+name|get
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -525,6 +531,9 @@ argument_list|()
 operator|.
 name|getEncoding
 argument_list|()
+operator|.
+name|get
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -569,6 +578,9 @@ name|getMetaData
 argument_list|()
 operator|.
 name|getEncoding
+argument_list|()
+operator|.
+name|get
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -823,6 +835,9 @@ name|getMetaData
 argument_list|()
 operator|.
 name|getEncoding
+argument_list|()
+operator|.
+name|get
 argument_list|()
 argument_list|)
 expr_stmt|;

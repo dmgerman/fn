@@ -1,8 +1,4 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
-begin_comment
-comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
-end_comment
-
 begin_package
 DECL|package|net.sf.jabref.logic.net
 package|package
@@ -298,7 +294,7 @@ block|{
 continue|continue;
 block|}
 name|String
-name|name
+name|attributeName
 init|=
 name|nameValue
 operator|.
@@ -310,7 +306,7 @@ name|equals
 argument_list|)
 decl_stmt|;
 name|String
-name|value
+name|attributeValue
 init|=
 name|nameValue
 operator|.
@@ -327,7 +323,7 @@ literal|"domain"
 operator|.
 name|equalsIgnoreCase
 argument_list|(
-name|name
+name|attributeName
 argument_list|)
 condition|)
 block|{
@@ -345,7 +341,7 @@ name|uriDomain
 operator|.
 name|equals
 argument_list|(
-name|value
+name|attributeValue
 argument_list|)
 condition|)
 block|{
@@ -353,7 +349,7 @@ name|this
 operator|.
 name|domain
 operator|=
-name|value
+name|attributeValue
 expr_stmt|;
 block|}
 else|else
@@ -361,7 +357,7 @@ block|{
 if|if
 condition|(
 operator|!
-name|value
+name|attributeValue
 operator|.
 name|startsWith
 argument_list|(
@@ -369,11 +365,11 @@ literal|"."
 argument_list|)
 condition|)
 block|{
-name|value
+name|attributeValue
 operator|=
 literal|'.'
 operator|+
-name|value
+name|attributeValue
 expr_stmt|;
 block|}
 name|uriDomain
@@ -397,7 +393,7 @@ name|uriDomain
 operator|.
 name|equals
 argument_list|(
-name|value
+name|attributeValue
 argument_list|)
 operator|&&
 operator|!
@@ -405,11 +401,11 @@ name|uriDomain
 operator|.
 name|endsWith
 argument_list|(
-name|value
+name|attributeValue
 argument_list|)
 operator|&&
 operator|!
-name|value
+name|attributeValue
 operator|.
 name|endsWith
 argument_list|(
@@ -429,7 +425,7 @@ name|this
 operator|.
 name|domain
 operator|=
-name|value
+name|attributeValue
 expr_stmt|;
 block|}
 block|}
@@ -440,7 +436,7 @@ literal|"path"
 operator|.
 name|equalsIgnoreCase
 argument_list|(
-name|name
+name|attributeName
 argument_list|)
 condition|)
 block|{
@@ -448,7 +444,7 @@ name|this
 operator|.
 name|path
 operator|=
-name|value
+name|attributeValue
 expr_stmt|;
 block|}
 elseif|else
@@ -458,7 +454,7 @@ literal|"expires"
 operator|.
 name|equalsIgnoreCase
 argument_list|(
-name|name
+name|attributeName
 argument_list|)
 condition|)
 block|{
@@ -472,7 +468,7 @@ name|ZonedDateTime
 operator|.
 name|parse
 argument_list|(
-name|value
+name|attributeValue
 argument_list|,
 name|whiteSpaceFormat
 argument_list|)
@@ -494,7 +490,7 @@ name|ZonedDateTime
 operator|.
 name|parse
 argument_list|(
-name|value
+name|attributeValue
 argument_list|,
 name|hyphenFormat
 argument_list|)
@@ -516,7 +512,7 @@ name|ZonedDateTime
 operator|.
 name|parse
 argument_list|(
-name|value
+name|attributeValue
 argument_list|,
 name|hyphenTwoDigitYearFormat
 argument_list|)
@@ -534,7 +530,7 @@ name|IllegalArgumentException
 argument_list|(
 literal|"Bad date format in header: "
 operator|+
-name|value
+name|attributeValue
 argument_list|)
 throw|;
 block|}

@@ -1,64 +1,4 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
-begin_comment
-comment|/*  Copyright (C) 2003-2016 Raik Nagel and JabRef contributors     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|// function : Handling of bibtex fields.
-end_comment
-
-begin_comment
-comment|//            All bibtex-field related stuff should be placed here!
-end_comment
-
-begin_comment
-comment|//            Because we can export these informations into additional
-end_comment
-
-begin_comment
-comment|//            config files -> simple extension and definition of new fields....
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|// todo     : - handling of identically fields with different names
-end_comment
-
-begin_comment
-comment|//              e.g. LCCN = lib-congress
-end_comment
-
-begin_comment
-comment|//            - group id for each fields, e.g. standard, jurabib, bio....
-end_comment
-
-begin_comment
-comment|//            - add a additional properties functionality into the
-end_comment
-
-begin_comment
-comment|//              BibtexSingleField class
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|// modified : r.nagel 25.04.2006
-end_comment
-
-begin_comment
-comment|//            export/import of some definition from/to a xml file
-end_comment
-
 begin_package
 DECL|package|net.sf.jabref.model.entry
 package|package
@@ -195,6 +135,10 @@ operator|.
 name|Collectors
 import|;
 end_import
+
+begin_comment
+comment|/**  * Handling of bibtex fields.  * All bibtex-field related stuff should be placed here!  * Because we can export these informations into additional  * config files -> simple extension and definition of new fields....  *  * TODO:  *  - handling of identically fields with different names  *    e.g. LCCN = lib-congress  *  - group id for each fields, e.g. standard, jurabib, bio....  *  - add a additional properties functionality into the BibtexSingleField class  */
+end_comment
 
 begin_class
 DECL|class|InternalBibtexFields
@@ -3419,7 +3363,6 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/*        public static int getPreferredFieldLength(String name) {        int l = DEFAULT_FIELD_LENGTH;        Object o = fieldLength.get(name.toLowerCase());        if (o != null)        l = ((Integer)o).intValue();        return l;        }*/
 block|}
 end_class
 

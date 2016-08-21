@@ -1,8 +1,4 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
-begin_comment
-comment|/*  Copyright (C) 2012, 2015 JabRef contributors.     This program is free software: you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation, either version 3 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License     along with this program.  If not, see<http://www.gnu.org/licenses/>. */
-end_comment
-
 begin_package
 DECL|package|net.sf.jabref.gui.importer.fetcher
 package|package
@@ -645,8 +641,11 @@ name|next
 argument_list|()
 expr_stmt|;
 block|}
+name|Optional
+argument_list|<
 name|BibEntry
-name|entry
+argument_list|>
+name|bibEntry
 init|=
 name|BibtexParser
 operator|.
@@ -664,12 +663,12 @@ name|prefs
 argument_list|)
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
+name|bibEntry
+operator|.
+name|ifPresent
+argument_list|(
 name|entry
-operator|!=
-literal|null
-condition|)
+lambda|->
 block|{
 comment|// Remove the added " Seiten" from the "pagetotal" field
 name|entry
@@ -783,20 +782,11 @@ expr_stmt|;
 block|}
 argument_list|)
 expr_stmt|;
-return|return
-name|Optional
-operator|.
-name|of
-argument_list|(
-name|entry
-argument_list|)
-return|;
 block|}
+argument_list|)
+expr_stmt|;
 return|return
-name|Optional
-operator|.
-name|empty
-argument_list|()
+name|bibEntry
 return|;
 block|}
 catch|catch
