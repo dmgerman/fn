@@ -413,6 +413,11 @@ argument_list|(
 literal|60
 argument_list|)
 decl_stmt|;
+DECL|field|frame
+specifier|private
+name|JabRefFrame
+name|frame
+decl_stmt|;
 DECL|field|okPressed
 specifier|private
 name|boolean
@@ -443,6 +448,10 @@ name|this
 argument_list|(
 name|parent
 argument_list|)
+expr_stmt|;
+name|frame
+operator|=
+name|parent
 expr_stmt|;
 name|name
 operator|.
@@ -488,6 +497,10 @@ argument_list|)
 argument_list|,
 literal|true
 argument_list|)
+expr_stmt|;
+name|frame
+operator|=
+name|parent
 expr_stmt|;
 name|ActionListener
 name|okListener
@@ -696,7 +709,7 @@ init|=
 operator|new
 name|FileDialog
 argument_list|(
-literal|null
+name|frame
 argument_list|)
 operator|.
 name|withExtension

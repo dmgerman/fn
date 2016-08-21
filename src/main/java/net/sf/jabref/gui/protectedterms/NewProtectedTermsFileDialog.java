@@ -134,6 +134,16 @@ name|javax
 operator|.
 name|swing
 operator|.
+name|JFrame
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
 name|JTextField
 import|;
 end_import
@@ -340,6 +350,11 @@ specifier|final
 name|ProtectedTermsLoader
 name|loader
 decl_stmt|;
+DECL|field|parent
+specifier|private
+name|JFrame
+name|parent
+decl_stmt|;
 DECL|method|NewProtectedTermsFileDialog (JDialog parent, ProtectedTermsLoader loader)
 specifier|public
 name|NewProtectedTermsFileDialog
@@ -405,6 +420,10 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
+name|parent
+operator|=
+name|mainFrame
+expr_stmt|;
 name|this
 operator|.
 name|loader
@@ -446,7 +465,7 @@ init|=
 operator|new
 name|FileDialog
 argument_list|(
-literal|null
+name|parent
 argument_list|)
 operator|.
 name|withExtension
