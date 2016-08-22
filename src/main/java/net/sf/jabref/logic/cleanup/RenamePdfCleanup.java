@@ -110,9 +110,9 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|journals
+name|layout
 operator|.
-name|JournalAbbreviationLoader
+name|LayoutFormatterPreferences
 import|;
 end_import
 
@@ -196,20 +196,6 @@ name|ParsedFileField
 import|;
 end_import
 
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|preferences
-operator|.
-name|JabRefPreferences
-import|;
-end_import
-
 begin_class
 DECL|class|RenamePdfCleanup
 specifier|public
@@ -230,16 +216,16 @@ specifier|final
 name|boolean
 name|onlyRelativePaths
 decl_stmt|;
-DECL|field|repositoryLoader
+DECL|field|fileNamePattern
 specifier|private
 specifier|final
-name|JournalAbbreviationLoader
-name|repositoryLoader
+name|String
+name|fileNamePattern
 decl_stmt|;
 DECL|field|prefs
 specifier|private
 specifier|final
-name|JabRefPreferences
+name|LayoutFormatterPreferences
 name|prefs
 decl_stmt|;
 DECL|field|unsuccessfulRenames
@@ -247,7 +233,7 @@ specifier|private
 name|int
 name|unsuccessfulRenames
 decl_stmt|;
-DECL|method|RenamePdfCleanup (boolean onlyRelativePaths, BibDatabaseContext databaseContext, JournalAbbreviationLoader repositoryLoader, JabRefPreferences prefs)
+DECL|method|RenamePdfCleanup (boolean onlyRelativePaths, BibDatabaseContext databaseContext, String fileNamePattern, LayoutFormatterPreferences prefs)
 specifier|public
 name|RenamePdfCleanup
 parameter_list|(
@@ -257,10 +243,10 @@ parameter_list|,
 name|BibDatabaseContext
 name|databaseContext
 parameter_list|,
-name|JournalAbbreviationLoader
-name|repositoryLoader
+name|String
+name|fileNamePattern
 parameter_list|,
-name|JabRefPreferences
+name|LayoutFormatterPreferences
 name|prefs
 parameter_list|)
 block|{
@@ -283,13 +269,13 @@ name|onlyRelativePaths
 expr_stmt|;
 name|this
 operator|.
-name|repositoryLoader
+name|fileNamePattern
 operator|=
 name|Objects
 operator|.
 name|requireNonNull
 argument_list|(
-name|repositoryLoader
+name|fileNamePattern
 argument_list|)
 expr_stmt|;
 name|this
@@ -414,7 +400,7 @@ argument_list|()
 argument_list|,
 name|entry
 argument_list|,
-name|repositoryLoader
+name|fileNamePattern
 argument_list|,
 name|prefs
 argument_list|)

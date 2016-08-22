@@ -230,22 +230,6 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|journals
-operator|.
-name|JournalAbbreviationLoader
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
 name|layout
 operator|.
 name|Layout
@@ -377,20 +361,6 @@ operator|.
 name|entry
 operator|.
 name|ParsedFileField
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|preferences
-operator|.
-name|JabRefPreferences
 import|;
 end_import
 
@@ -2043,8 +2013,8 @@ return|return
 name|result
 return|;
 block|}
-comment|/**      * Determines filename provided by an entry in a database      *      * @param database the database, where the entry is located      * @param entry    the entry to which the file should be linked to      * @param repositoryLoader      * @return a suggested fileName      */
-DECL|method|createFileNameFromPattern (BibDatabase database, BibEntry entry, JournalAbbreviationLoader repositoryLoader, JabRefPreferences prefs)
+comment|/**      * Determines filename provided by an entry in a database      *      * @param database        the database, where the entry is located      * @param entry           the entry to which the file should be linked to      * @param fileNamePattern the filename pattern      * @param prefs           the layout preferences      * @return a suggested fileName      */
+DECL|method|createFileNameFromPattern (BibDatabase database, BibEntry entry, String fileNamePattern, LayoutFormatterPreferences prefs)
 specifier|public
 specifier|static
 name|String
@@ -2056,10 +2026,10 @@ parameter_list|,
 name|BibEntry
 name|entry
 parameter_list|,
-name|JournalAbbreviationLoader
-name|repositoryLoader
+name|String
+name|fileNamePattern
 parameter_list|,
-name|JabRefPreferences
+name|LayoutFormatterPreferences
 name|prefs
 parameter_list|)
 block|{
@@ -2082,14 +2052,7 @@ init|=
 operator|new
 name|StringReader
 argument_list|(
-name|prefs
-operator|.
-name|get
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|IMPORT_FILENAMEPATTERN
-argument_list|)
+name|fileNamePattern
 argument_list|)
 decl_stmt|;
 name|Layout
@@ -2106,14 +2069,7 @@ name|LayoutHelper
 argument_list|(
 name|sr
 argument_list|,
-name|LayoutFormatterPreferences
-operator|.
-name|fromPreferences
-argument_list|(
 name|prefs
-argument_list|,
-name|repositoryLoader
-argument_list|)
 argument_list|)
 operator|.
 name|getLayoutFromText

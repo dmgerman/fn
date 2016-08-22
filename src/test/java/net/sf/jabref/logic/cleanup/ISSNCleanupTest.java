@@ -46,9 +46,9 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|journals
+name|layout
 operator|.
-name|JournalAbbreviationLoader
+name|LayoutFormatterPreferences
 import|;
 end_import
 
@@ -65,20 +65,6 @@ operator|.
 name|entry
 operator|.
 name|BibEntry
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|preferences
-operator|.
-name|JabRefPreferences
 import|;
 end_import
 
@@ -155,17 +141,14 @@ operator|.
 name|class
 argument_list|)
 argument_list|,
+literal|""
+argument_list|,
 name|mock
 argument_list|(
-name|JournalAbbreviationLoader
+name|LayoutFormatterPreferences
 operator|.
 name|class
 argument_list|)
-argument_list|,
-name|JabRefPreferences
-operator|.
-name|getInstance
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
