@@ -1451,7 +1451,7 @@ name|WORKING_DIRECTORY
 argument_list|,
 name|file
 operator|.
-name|getPath
+name|getParent
 argument_list|()
 argument_list|)
 expr_stmt|;
