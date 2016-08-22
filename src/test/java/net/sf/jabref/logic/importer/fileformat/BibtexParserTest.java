@@ -2874,7 +2874,10 @@ if|if
 condition|(
 name|entry
 operator|.
-name|getCiteKey
+name|getCiteKeyOptional
+argument_list|()
+operator|.
+name|get
 argument_list|()
 operator|.
 name|equals

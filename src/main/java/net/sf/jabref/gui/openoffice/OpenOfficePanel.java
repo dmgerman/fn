@@ -4866,12 +4866,14 @@ control|)
 block|{
 if|if
 condition|(
+operator|!
 name|entry
 operator|.
-name|getCiteKey
+name|getCiteKeyOptional
 argument_list|()
-operator|==
-literal|null
+operator|.
+name|isPresent
+argument_list|()
 condition|)
 block|{
 comment|// Found one, no need to look further for now
@@ -5016,12 +5018,14 @@ control|)
 block|{
 if|if
 condition|(
+operator|!
 name|entry
 operator|.
-name|getCiteKey
+name|getCiteKeyOptional
 argument_list|()
-operator|==
-literal|null
+operator|.
+name|isPresent
+argument_list|()
 condition|)
 block|{
 comment|// Generate key
@@ -5066,7 +5070,10 @@ literal|null
 argument_list|,
 name|entry
 operator|.
-name|getCiteKey
+name|getCiteKeyOptional
+argument_list|()
+operator|.
+name|get
 argument_list|()
 argument_list|)
 argument_list|)

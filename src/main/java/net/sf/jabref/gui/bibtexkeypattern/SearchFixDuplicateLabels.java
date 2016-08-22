@@ -312,40 +312,31 @@ name|getEntries
 argument_list|()
 control|)
 block|{
-name|String
-name|key
-init|=
 name|entry
 operator|.
-name|getCiteKey
+name|getCiteKeyOptional
 argument_list|()
-decl_stmt|;
-comment|// Only handle keys that are actually set:
-if|if
-condition|(
-operator|(
+operator|.
+name|filter
+argument_list|(
 name|key
-operator|!=
-literal|null
-operator|)
-operator|&&
+lambda|->
 operator|!
 name|key
 operator|.
 name|isEmpty
 argument_list|()
-condition|)
-block|{
-comment|// See whether this entry's key is already known:
-if|if
-condition|(
-name|foundKeys
+argument_list|)
 operator|.
-name|containsKey
+name|ifPresent
 argument_list|(
 name|key
+lambda|->
+block|{
+comment|// See whether this entry's key is already known:
+lambda|if (foundKeys.containsKey(key
 argument_list|)
-condition|)
+block|)
 block|{
 comment|// Already known, so we have found a dupe. See if it was already found as a dupe:
 if|if
@@ -432,8 +423,12 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-block|}
-block|}
+block|)
+class|;
+end_class
+
+begin_function
+unit|}     }
 annotation|@
 name|Override
 DECL|method|init ()
@@ -457,6 +452,9 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Override
 DECL|method|update ()
@@ -639,8 +637,13 @@ name|oldKey
 init|=
 name|entry
 operator|.
-name|getCiteKey
+name|getCiteKeyOptional
 argument_list|()
+operator|.
+name|orElse
+argument_list|(
+literal|null
+argument_list|)
 decl_stmt|;
 name|BibtexKeyPatternUtil
 operator|.
@@ -689,7 +692,10 @@ name|oldKey
 argument_list|,
 name|entry
 operator|.
-name|getCiteKey
+name|getCiteKeyOptional
+argument_list|()
+operator|.
+name|get
 argument_list|()
 argument_list|)
 argument_list|)
@@ -739,8 +745,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-block|}
-end_class
+end_function
 
+unit|}
 end_unit
 
