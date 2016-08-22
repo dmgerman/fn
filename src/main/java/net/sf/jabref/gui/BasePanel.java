@@ -2390,6 +2390,24 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|// saves the divider position as soon as it changes
+name|splitPane
+operator|.
+name|addPropertyChangeListener
+argument_list|(
+name|JSplitPane
+operator|.
+name|DIVIDER_LOCATION_PROPERTY
+argument_list|,
+name|propertyChangeEvent
+lambda|->
+block|{
+name|saveDividerLocation
+argument_list|()
+expr_stmt|;
+block|}
+argument_list|)
+expr_stmt|;
 block|}
 comment|// Returns a collection of AutoCompleters, which are populated from the current database
 DECL|method|getAutoCompleters ()

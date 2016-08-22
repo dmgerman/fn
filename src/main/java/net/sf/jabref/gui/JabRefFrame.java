@@ -6522,21 +6522,6 @@ expr_stmt|;
 name|dispose
 argument_list|()
 expr_stmt|;
-if|if
-condition|(
-name|getCurrentBasePanel
-argument_list|()
-operator|!=
-literal|null
-condition|)
-block|{
-name|getCurrentBasePanel
-argument_list|()
-operator|.
-name|saveDividerLocation
-argument_list|()
-expr_stmt|;
-block|}
 comment|//prefs.putBoolean(JabRefPreferences.WINDOW_MAXIMISED, (getExtendedState()&MAXIMIZED_BOTH)>0);
 name|prefs
 operator|.
