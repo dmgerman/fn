@@ -43,9 +43,6 @@ block|{
 DECL|enumConstant|YES_NO
 name|YES_NO
 block|,
-DECL|enumConstant|URL
-name|URL
-block|,
 DECL|enumConstant|DATE
 name|DATE
 block|,
