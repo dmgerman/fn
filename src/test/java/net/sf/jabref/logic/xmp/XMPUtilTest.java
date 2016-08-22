@@ -290,18 +290,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|cli
 operator|.
 name|XMPUtilMain
@@ -1514,26 +1502,6 @@ operator|.
 name|getAbsolutePath
 argument_list|()
 argument_list|)
-expr_stmt|;
-block|}
-comment|// Don't forget to initialize the preferences
-if|if
-condition|(
-name|Globals
-operator|.
-name|prefs
-operator|==
-literal|null
-condition|)
-block|{
-name|Globals
-operator|.
-name|prefs
-operator|=
-name|JabRefPreferences
-operator|.
-name|getInstance
-argument_list|()
 expr_stmt|;
 block|}
 comment|// Store Privacy Settings

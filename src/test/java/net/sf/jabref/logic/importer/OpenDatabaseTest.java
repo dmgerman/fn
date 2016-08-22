@@ -376,7 +376,7 @@ name|void
 name|setUpGlobalsPrefs
 parameter_list|()
 block|{
-comment|// otherwise FieldContentParser (called by BibtexParser) crashes
+comment|// otherwise FieldContentParser (called by BibtexParser) and SpecialFields crashes
 name|Globals
 operator|.
 name|prefs
@@ -401,9 +401,10 @@ name|ImportFormatPreferences
 operator|.
 name|fromPreferences
 argument_list|(
-name|Globals
+name|JabRefPreferences
 operator|.
-name|prefs
+name|getInstance
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

@@ -118,12 +118,15 @@ specifier|public
 class|class
 name|BibtexTestData
 block|{
-DECL|method|getBibtexEntry ()
+DECL|method|getBibtexEntry (ImportFormatPreferences importFormatPreferences)
 specifier|public
 specifier|static
 name|BibEntry
 name|getBibtexEntry
-parameter_list|()
+parameter_list|(
+name|ImportFormatPreferences
+name|importFormatPreferences
+parameter_list|)
 throws|throws
 name|IOException
 block|{
@@ -131,7 +134,9 @@ name|BibDatabase
 name|database
 init|=
 name|getBibtexDatabase
-argument_list|()
+argument_list|(
+name|importFormatPreferences
+argument_list|)
 decl_stmt|;
 return|return
 name|database
@@ -145,12 +150,15 @@ name|get
 argument_list|()
 return|;
 block|}
-DECL|method|getBibtexDatabase ()
+DECL|method|getBibtexDatabase (ImportFormatPreferences importFormatPreferences)
 specifier|public
 specifier|static
 name|BibDatabase
 name|getBibtexDatabase
-parameter_list|()
+parameter_list|(
+name|ImportFormatPreferences
+name|importFormatPreferences
+parameter_list|)
 throws|throws
 name|IOException
 block|{
@@ -199,14 +207,7 @@ name|BibtexParser
 argument_list|(
 name|reader
 argument_list|,
-name|ImportFormatPreferences
-operator|.
-name|fromPreferences
-argument_list|(
-name|Globals
-operator|.
-name|prefs
-argument_list|)
+name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|ParserResult

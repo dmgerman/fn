@@ -279,6 +279,7 @@ operator|.
 name|getInstance
 argument_list|()
 expr_stmt|;
+comment|// Needed for special fields
 name|reader
 operator|=
 operator|new
