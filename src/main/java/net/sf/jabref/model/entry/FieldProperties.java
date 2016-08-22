@@ -52,9 +52,6 @@ block|,
 DECL|enumConstant|EXTERNAL
 name|EXTERNAL
 block|,
-DECL|enumConstant|BROWSE
-name|BROWSE
-block|,
 DECL|enumConstant|OWNER
 name|OWNER
 block|,
@@ -78,9 +75,6 @@ name|GENDER
 block|,
 DECL|enumConstant|LANGUAGE
 name|LANGUAGE
-block|,
-DECL|enumConstant|LANG_ID
-name|LANG_ID
 block|,
 DECL|enumConstant|DOI
 name|DOI
