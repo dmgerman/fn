@@ -6439,7 +6439,7 @@ name|firstBE
 argument_list|)
 expr_stmt|;
 block|}
-comment|//            If we inserted a duplicate we want to select the duplicate
+comment|// If we inserted a duplicate we want to select the duplicate (thus we have to search from the back)
 name|highlightLastEntry
 argument_list|(
 name|firstBE
