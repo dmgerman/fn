@@ -43,9 +43,6 @@ block|{
 DECL|enumConstant|YES_NO
 name|YES_NO
 block|,
-DECL|enumConstant|URL
-name|URL
-block|,
 DECL|enumConstant|DATE
 name|DATE
 block|,
@@ -54,9 +51,6 @@ name|JOURNAL_NAME
 block|,
 DECL|enumConstant|EXTERNAL
 name|EXTERNAL
-block|,
-DECL|enumConstant|BROWSE
-name|BROWSE
 block|,
 DECL|enumConstant|OWNER
 name|OWNER
@@ -81,9 +75,6 @@ name|GENDER
 block|,
 DECL|enumConstant|LANGUAGE
 name|LANGUAGE
-block|,
-DECL|enumConstant|LANG_ID
-name|LANG_ID
 block|,
 DECL|enumConstant|DOI
 name|DOI
