@@ -22,6 +22,22 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|model
+operator|.
+name|bibtexkeypattern
+operator|.
+name|GlobalBibtexKeyPattern
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|preferences
 operator|.
 name|JabRefPreferences
@@ -70,7 +86,13 @@ specifier|final
 name|boolean
 name|enforceLegalKey
 decl_stmt|;
-DECL|method|BibtexKeyPatternPreferences (String defaultBibtexKeyPattern, String keyPatternRegex, String keyPatternReplacement, boolean alwaysAddLetter, boolean firstLetterA, boolean enforceLegalKey)
+DECL|field|keyPattern
+specifier|private
+specifier|final
+name|GlobalBibtexKeyPattern
+name|keyPattern
+decl_stmt|;
+DECL|method|BibtexKeyPatternPreferences (String defaultBibtexKeyPattern, String keyPatternRegex, String keyPatternReplacement, boolean alwaysAddLetter, boolean firstLetterA, boolean enforceLegalKey, GlobalBibtexKeyPattern keyPattern)
 specifier|public
 name|BibtexKeyPatternPreferences
 parameter_list|(
@@ -91,6 +113,9 @@ name|firstLetterA
 parameter_list|,
 name|boolean
 name|enforceLegalKey
+parameter_list|,
+name|GlobalBibtexKeyPattern
+name|keyPattern
 parameter_list|)
 block|{
 name|this
@@ -128,6 +153,12 @@ operator|.
 name|enforceLegalKey
 operator|=
 name|enforceLegalKey
+expr_stmt|;
+name|this
+operator|.
+name|keyPattern
+operator|=
+name|keyPattern
 expr_stmt|;
 block|}
 DECL|method|fromPreferences (JabRefPreferences jabRefPreferences)
@@ -197,6 +228,11 @@ name|JabRefPreferences
 operator|.
 name|ENFORCE_LEGAL_BIBTEX_KEY
 argument_list|)
+argument_list|,
+name|jabRefPreferences
+operator|.
+name|getKeyPattern
+argument_list|()
 argument_list|)
 return|;
 block|}
@@ -258,6 +294,16 @@ parameter_list|()
 block|{
 return|return
 name|defaultBibtexKeyPattern
+return|;
+block|}
+DECL|method|getKeyPattern ()
+specifier|public
+name|GlobalBibtexKeyPattern
+name|getKeyPattern
+parameter_list|()
+block|{
+return|return
+name|keyPattern
 return|;
 block|}
 block|}

@@ -1737,7 +1737,12 @@ argument_list|(
 name|metaData
 operator|.
 name|getBibtexKeyPattern
+argument_list|(
+name|bibtexKeyPatternPreferences
+operator|.
+name|getKeyPattern
 argument_list|()
+argument_list|)
 operator|.
 name|getValue
 argument_list|(

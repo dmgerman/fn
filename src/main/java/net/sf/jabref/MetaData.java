@@ -366,6 +366,22 @@ name|jabref
 operator|.
 name|model
 operator|.
+name|bibtexkeypattern
+operator|.
+name|GlobalBibtexKeyPattern
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
 name|database
 operator|.
 name|BibDatabaseMode
@@ -1407,11 +1423,14 @@ argument_list|()
 return|;
 block|}
 comment|/**      * @return the stored label patterns      */
-DECL|method|getBibtexKeyPattern ()
+DECL|method|getBibtexKeyPattern (GlobalBibtexKeyPattern globalPattern)
 specifier|public
 name|AbstractBibtexKeyPattern
 name|getBibtexKeyPattern
-parameter_list|()
+parameter_list|(
+name|GlobalBibtexKeyPattern
+name|globalPattern
+parameter_list|)
 block|{
 if|if
 condition|(
@@ -1429,9 +1448,7 @@ operator|=
 operator|new
 name|DatabaseBibtexKeyPattern
 argument_list|(
-name|Globals
-operator|.
-name|prefs
+name|globalPattern
 argument_list|)
 expr_stmt|;
 comment|// read the data from the metadata and store it into the bibtexKeyPattern

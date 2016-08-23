@@ -24,20 +24,6 @@ name|List
 import|;
 end_import
 
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|preferences
-operator|.
-name|JabRefPreferences
-import|;
-end_import
-
 begin_class
 DECL|class|DatabaseBibtexKeyPattern
 specifier|public
@@ -46,25 +32,25 @@ name|DatabaseBibtexKeyPattern
 extends|extends
 name|AbstractBibtexKeyPattern
 block|{
-DECL|field|prefs
+DECL|field|globalBibtexKeyPattern
 specifier|private
 specifier|final
-name|JabRefPreferences
-name|prefs
+name|GlobalBibtexKeyPattern
+name|globalBibtexKeyPattern
 decl_stmt|;
-DECL|method|DatabaseBibtexKeyPattern (JabRefPreferences prefs)
+DECL|method|DatabaseBibtexKeyPattern (GlobalBibtexKeyPattern globalBibtexKeyPattern)
 specifier|public
 name|DatabaseBibtexKeyPattern
 parameter_list|(
-name|JabRefPreferences
-name|prefs
+name|GlobalBibtexKeyPattern
+name|globalBibtexKeyPattern
 parameter_list|)
 block|{
 name|this
 operator|.
-name|prefs
+name|globalBibtexKeyPattern
 operator|=
-name|prefs
+name|globalBibtexKeyPattern
 expr_stmt|;
 block|}
 annotation|@
@@ -82,10 +68,7 @@ name|key
 parameter_list|)
 block|{
 return|return
-name|prefs
-operator|.
-name|getKeyPattern
-argument_list|()
+name|globalBibtexKeyPattern
 operator|.
 name|getValue
 argument_list|(
