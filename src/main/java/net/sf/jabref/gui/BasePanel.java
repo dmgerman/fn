@@ -10937,14 +10937,14 @@ comment|/**      * This method selects the given entry, and scrolls it into view
 end_comment
 
 begin_function
-DECL|method|highlightEntry (final BibEntry be)
+DECL|method|highlightEntry (final BibEntry bibEntry)
 specifier|public
 name|void
 name|highlightEntry
 parameter_list|(
 specifier|final
 name|BibEntry
-name|be
+name|bibEntry
 parameter_list|)
 block|{
 specifier|final
@@ -10955,7 +10955,7 @@ name|mainTable
 operator|.
 name|findEntry
 argument_list|(
-name|be
+name|bibEntry
 argument_list|)
 decl_stmt|;
 if|if
