@@ -3242,6 +3242,27 @@ name|entry
 argument_list|)
 return|;
 block|}
+DECL|method|findLastEntry (BibEntry entry)
+specifier|public
+name|int
+name|findLastEntry
+parameter_list|(
+name|BibEntry
+name|entry
+parameter_list|)
+block|{
+return|return
+name|model
+operator|.
+name|getTableRows
+argument_list|()
+operator|.
+name|lastIndexOf
+argument_list|(
+name|entry
+argument_list|)
+return|;
+block|}
 comment|/**      * method to check whether a MainTableColumn at the modelIndex refers to the file field (either as a specific      * file extension filter or not)      *      * @param modelIndex model index of the column to check      * @return true if the column shows the "file" field; false otherwise      */
 DECL|method|isFileColumn (int modelIndex)
 specifier|public
