@@ -1406,6 +1406,10 @@ argument_list|(
 name|FieldProperties
 operator|.
 name|EXTERNAL
+argument_list|,
+name|FieldProperties
+operator|.
+name|VERBATIM
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1469,6 +1473,10 @@ argument_list|(
 name|FieldProperties
 operator|.
 name|FILE_EDITOR
+argument_list|,
+name|FieldProperties
+operator|.
+name|VERBATIM
 argument_list|)
 argument_list|)
 expr_stmt|;
