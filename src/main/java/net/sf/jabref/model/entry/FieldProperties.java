@@ -120,6 +120,9 @@ name|MULTIPLE_ENTRY_LINK
 block|,
 DECL|enumConstant|PUBLICATION_STATE
 name|PUBLICATION_STATE
+block|,
+DECL|enumConstant|VERBATIM
+name|VERBATIM
 block|;
 DECL|field|ALL_OPTS
 specifier|public
