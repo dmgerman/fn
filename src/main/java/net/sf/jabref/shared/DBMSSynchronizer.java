@@ -168,22 +168,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
-operator|.
-name|l10n
-operator|.
-name|Localization
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|model
 operator|.
 name|database
@@ -317,6 +301,22 @@ operator|.
 name|event
 operator|.
 name|UpdateRefusedEvent
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|shared
+operator|.
+name|exception
+operator|.
+name|DatabaseNotSupportedException
 import|;
 end_import
 
@@ -518,7 +518,7 @@ name|EventBus
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Listening method. Inserts a new {@link BibEntry} into shared database.      * @param event {@link EntryAddedEvent} object      */
+comment|/**      * Listening method. Inserts a new {@link BibEntry} into shared database.      *      * @param event {@link EntryAddedEvent} object      */
 annotation|@
 name|Subscribe
 DECL|method|listen (EntryAddedEvent event)
@@ -562,7 +562,7 @@ expr_stmt|;
 comment|// Pull changes for the case that there were some
 block|}
 block|}
-comment|/**      * Listening method. Updates an existing shared {@link BibEntry}.      * @param event {@link FieldChangedEvent} object      */
+comment|/**      * Listening method. Updates an existing shared {@link BibEntry}.      *      * @param event {@link FieldChangedEvent} object      */
 annotation|@
 name|Subscribe
 DECL|method|listen (FieldChangedEvent event)
@@ -617,7 +617,7 @@ expr_stmt|;
 comment|// Pull changes for the case that there were some
 block|}
 block|}
-comment|/**      * Listening method. Deletes the given {@link BibEntry} from shared database.      * @param event {@link EntryRemovedEvent} object      */
+comment|/**      * Listening method. Deletes the given {@link BibEntry} from shared database.      *      * @param event {@link EntryRemovedEvent} object      */
 annotation|@
 name|Subscribe
 DECL|method|listen (EntryRemovedEvent event)
@@ -661,7 +661,7 @@ expr_stmt|;
 comment|// Pull changes for the case that there where some
 block|}
 block|}
-comment|/**      * Listening method. Synchronizes the shared {@link MetaData} and applies them locally.      * @param event      */
+comment|/**      * Listening method. Synchronizes the shared {@link MetaData} and applies them locally.      *      * @param event      */
 annotation|@
 name|Subscribe
 DECL|method|listen (MetaDataChangedEvent event)
@@ -695,14 +695,16 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Sets the table structure of shared database if needed and pulls all shared entries      * to the new local database.      * @param bibDatabase Local {@link BibDatabase}      */
+comment|/**      * Sets the table structure of shared database if needed and pulls all shared entries      * to the new local database.      *      * @param bibDatabase Local {@link BibDatabase}      * @throws DatabaseNotSupportedException if the version of shared database does not match      *          the version of current shared database support ({@link DBMSProcessor}).      */
 DECL|method|initializeDatabases ()
 specifier|public
 name|void
 name|initializeDatabases
 parameter_list|()
-block|{
-try|try
+throws|throws
+name|DatabaseNotSupportedException
+throws|,
+name|SQLException
 block|{
 if|if
 condition|(
@@ -717,36 +719,30 @@ name|LOGGER
 operator|.
 name|info
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
 literal|"Integrity check failed. Fixing..."
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|dbmsProcessor
 operator|.
-name|setUpSharedDatabase
+name|setupSharedDatabase
 argument_list|()
 expr_stmt|;
-block|}
-block|}
-catch|catch
-parameter_list|(
-name|SQLException
-name|e
-parameter_list|)
-block|{
-name|LOGGER
+comment|// This check should only be performed once on initial database setup.
+comment|// Calling dbmsProcessor.setupSharedDatabase() lets dbmsProcessor.checkBaseIntegrity() be true.
+if|if
+condition|(
+name|dbmsProcessor
 operator|.
-name|error
-argument_list|(
-literal|"SQL Error: "
-argument_list|,
-name|e
-argument_list|)
-expr_stmt|;
+name|checkForPre3Dot6Intergrity
+argument_list|()
+condition|)
+block|{
+throw|throw
+operator|new
+name|DatabaseNotSupportedException
+argument_list|()
+throw|;
+block|}
 block|}
 name|synchronizeLocalMetaData
 argument_list|()
@@ -1579,7 +1575,7 @@ literal|false
 return|;
 block|}
 block|}
-comment|/**      * Checks whether the {@link EntryEventSource} of an {@link EntryEvent} is crucial for this class.      * @param event An {@link EntryEvent}      * @return<code>true</code> if the event is able to trigger operations in {@link DBMSSynchronizer}, else<code>false</code>      */
+comment|/**      * Checks whether the {@link EntryEventSource} of an {@link EntryEvent} is crucial for this class.      *      * @param event An {@link EntryEvent}      * @return<code>true</code> if the event is able to trigger operations in {@link DBMSSynchronizer}, else<code>false</code>      */
 DECL|method|isEventSourceAccepted (EntryEvent event)
 specifier|public
 name|boolean
@@ -1631,6 +1627,10 @@ parameter_list|,
 name|String
 name|name
 parameter_list|)
+throws|throws
+name|DatabaseNotSupportedException
+throws|,
+name|SQLException
 block|{
 name|this
 operator|.
@@ -1679,6 +1679,8 @@ throws|throws
 name|ClassNotFoundException
 throws|,
 name|SQLException
+throws|,
+name|DatabaseNotSupportedException
 block|{
 name|openSharedDatabase
 argument_list|(

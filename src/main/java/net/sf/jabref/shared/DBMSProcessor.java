@@ -78,16 +78,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Arrays
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|HashMap
 import|;
 end_import
@@ -109,6 +99,16 @@ operator|.
 name|util
 operator|.
 name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Locale
 import|;
 end_import
 
@@ -155,22 +155,6 @@ operator|.
 name|source
 operator|.
 name|EntryEventSource
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
-name|l10n
-operator|.
-name|Localization
 import|;
 end_import
 
@@ -299,12 +283,65 @@ operator|=
 name|connection
 expr_stmt|;
 block|}
-comment|/**      * Scans the database for required tables.      * @return<code>true</code> if the structure matches the requirements,<code>false</code> if not.      * @throws SQLException      */
+comment|/**      * Scans the database for required tables.      *      * @return<code>true</code> if the structure matches the requirements,<code>false</code> if not.      * @throws SQLException      */
 DECL|method|checkBaseIntegrity ()
 specifier|public
 name|boolean
 name|checkBaseIntegrity
 parameter_list|()
+throws|throws
+name|SQLException
+block|{
+return|return
+name|checkTableAvailibility
+argument_list|(
+literal|"ENTRY"
+argument_list|,
+literal|"FIELD"
+argument_list|,
+literal|"METADATA"
+argument_list|)
+return|;
+block|}
+comment|/**      * Determines whether the database is using an pre-3.6 structure.      *      * @return<code>true</code> if the structure is old, else<code>false</code>.      */
+DECL|method|checkForPre3Dot6Intergrity ()
+specifier|public
+name|boolean
+name|checkForPre3Dot6Intergrity
+parameter_list|()
+throws|throws
+name|SQLException
+block|{
+return|return
+name|checkTableAvailibility
+argument_list|(
+literal|"ENTRIES"
+argument_list|,
+literal|"ENTRY_GROUP"
+argument_list|,
+literal|"ENTRY_TYPES"
+argument_list|,
+literal|"GROUPS"
+argument_list|,
+literal|"GROUP_TYPES"
+argument_list|,
+literal|"JABREF_DATABASE"
+argument_list|,
+literal|"STRINGS"
+argument_list|)
+return|;
+comment|// old tables
+block|}
+comment|/**      * Checks whether all given table names (<b>case insensitive</b>) exist in database.      *      * @param tableNames Table names to be checked      * @return<code>true</code> if<b>all</b> given tables are present, else<code>false</code>.      */
+DECL|method|checkTableAvailibility (String... tableNames)
+specifier|private
+name|boolean
+name|checkTableAvailibility
+parameter_list|(
+name|String
+modifier|...
+name|tableNames
+parameter_list|)
 throws|throws
 name|SQLException
 block|{
@@ -317,20 +354,31 @@ init|=
 operator|new
 name|ArrayList
 argument_list|<>
-argument_list|(
-name|Arrays
-operator|.
-name|asList
-argument_list|(
-literal|"ENTRY"
-argument_list|,
-literal|"FIELD"
-argument_list|,
-literal|"METADATA"
-argument_list|)
-argument_list|)
+argument_list|()
 decl_stmt|;
-comment|// the list should be dynamic
+for|for
+control|(
+name|String
+name|name
+range|:
+name|tableNames
+control|)
+block|{
+name|requiredTables
+operator|.
+name|add
+argument_list|(
+name|name
+operator|.
+name|toUpperCase
+argument_list|(
+name|Locale
+operator|.
+name|ENGLISH
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 name|DatabaseMetaData
 name|databaseMetaData
 init|=
@@ -398,10 +446,10 @@ return|;
 block|}
 block|}
 comment|/**      * Creates and sets up the needed tables and columns according to the database type and      * performs a check whether the needed tables are present.      *      * @throws SQLException      */
-DECL|method|setUpSharedDatabase ()
+DECL|method|setupSharedDatabase ()
 specifier|public
 name|void
-name|setUpSharedDatabase
+name|setupSharedDatabase
 parameter_list|()
 throws|throws
 name|SQLException
@@ -421,17 +469,12 @@ name|LOGGER
 operator|.
 name|error
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
 literal|"Corrupt_shared_database_structure."
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Creates and sets up the needed tables and columns according to the database type.      * @throws SQLException      */
+comment|/**      * Creates and sets up the needed tables and columns according to the database type.      *      * @throws SQLException      */
 DECL|method|setUp ()
 specifier|protected
 specifier|abstract
@@ -441,7 +484,7 @@ parameter_list|()
 throws|throws
 name|SQLException
 function_decl|;
-comment|/**      * Escapes parts of SQL expressions like table or field name to match the conventions      * of the database system using the current dbmsType.      * @param expression Table or field name      * @return Correctly escaped expression      */
+comment|/**      * Escapes parts of SQL expressions like table or field name to match the conventions      * of the database system using the current dbmsType.      *      * @param expression Table or field name      * @return Correctly escaped expression      */
 DECL|method|escape (String expression)
 specifier|public
 specifier|abstract
@@ -452,7 +495,7 @@ name|String
 name|expression
 parameter_list|)
 function_decl|;
-comment|/**      * Inserts the given bibEntry into shared database.      * @param bibEntry {@link BibEntry} to be inserted      */
+comment|/**      * Inserts the given bibEntry into shared database.      *      * @param bibEntry {@link BibEntry} to be inserted      */
 DECL|method|insertEntry (BibEntry bibEntry)
 specifier|public
 name|void
@@ -1702,7 +1745,7 @@ block|}
 block|}
 block|}
 block|}
-comment|/**      * Removes the shared bibEntry.      * @param bibEntry {@link BibEntry} to be deleted      */
+comment|/**      * Removes the shared bibEntry.      *      * @param bibEntry {@link BibEntry} to be deleted      */
 DECL|method|removeEntry (BibEntry bibEntry)
 specifier|public
 name|void
@@ -2423,7 +2466,7 @@ return|return
 name|data
 return|;
 block|}
-comment|/**      * Clears and sets all shared meta data.      * @param metaData JabRef meta data.      * @throws SQLException      */
+comment|/**      * Clears and sets all shared meta data.      *      * @param metaData JabRef meta data.      * @throws SQLException      */
 DECL|method|setSharedMetaData (Map<String, String> data)
 specifier|public
 name|void

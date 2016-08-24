@@ -59,7 +59,7 @@ name|connection
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Creates and sets up the needed tables and columns according to the database type.      * @throws SQLException      */
+comment|/**      * Creates and sets up the needed tables and columns according to the database type.      *      * @throws SQLException      */
 annotation|@
 name|Override
 DECL|method|setUp ()

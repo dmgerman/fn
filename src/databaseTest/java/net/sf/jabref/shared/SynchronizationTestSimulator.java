@@ -142,6 +142,22 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|shared
+operator|.
+name|exception
+operator|.
+name|DatabaseNotSupportedException
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|junit
@@ -285,6 +301,8 @@ throws|throws
 name|ClassNotFoundException
 throws|,
 name|SQLException
+throws|,
+name|DatabaseNotSupportedException
 block|{
 comment|// Get only one connection for each parameter
 if|if

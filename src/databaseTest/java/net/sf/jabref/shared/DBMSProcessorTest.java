@@ -318,7 +318,7 @@ argument_list|)
 expr_stmt|;
 name|dbmsProcessor
 operator|.
-name|setUpSharedDatabase
+name|setupSharedDatabase
 argument_list|()
 expr_stmt|;
 block|}
@@ -395,7 +395,7 @@ argument_list|()
 expr_stmt|;
 name|dbmsProcessor
 operator|.
-name|setUpSharedDatabase
+name|setupSharedDatabase
 argument_list|()
 expr_stmt|;
 name|Assert
