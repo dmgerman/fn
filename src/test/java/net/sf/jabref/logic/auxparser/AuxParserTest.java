@@ -96,7 +96,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
+name|logic
+operator|.
+name|importer
+operator|.
+name|ImportFormatPreferences
 import|;
 end_import
 
@@ -108,17 +112,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|JabRefPreferences
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
+name|logic
 operator|.
 name|importer
 operator|.
@@ -133,6 +127,8 @@ operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|logic
 operator|.
 name|importer
 operator|.
@@ -155,6 +151,20 @@ operator|.
 name|database
 operator|.
 name|BibDatabase
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|preferences
+operator|.
+name|JabRefPreferences
 import|;
 end_import
 
@@ -208,6 +218,11 @@ specifier|public
 class|class
 name|AuxParserTest
 block|{
+DECL|field|importFormatPreferences
+specifier|private
+name|ImportFormatPreferences
+name|importFormatPreferences
+decl_stmt|;
 annotation|@
 name|Before
 DECL|method|setUp ()
@@ -216,14 +231,17 @@ name|void
 name|setUp
 parameter_list|()
 block|{
-name|Globals
-operator|.
-name|prefs
+name|importFormatPreferences
 operator|=
+name|ImportFormatPreferences
+operator|.
+name|fromPreferences
+argument_list|(
 name|JabRefPreferences
 operator|.
 name|getInstance
 argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 annotation|@
@@ -297,6 +315,8 @@ operator|.
 name|parse
 argument_list|(
 name|originalReader
+argument_list|,
+name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|AuxParser
@@ -487,6 +507,8 @@ operator|.
 name|parse
 argument_list|(
 name|originalReader
+argument_list|,
+name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|AuxParser
@@ -677,6 +699,8 @@ operator|.
 name|parse
 argument_list|(
 name|originalReader
+argument_list|,
+name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|AuxParser
@@ -805,6 +829,8 @@ operator|.
 name|parse
 argument_list|(
 name|originalReader
+argument_list|,
+name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|AuxParser

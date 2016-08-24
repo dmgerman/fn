@@ -1,8 +1,4 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
-begin_comment
-comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
-end_comment
-
 begin_package
 DECL|package|net.sf.jabref.logic.groups
 package|package
@@ -56,9 +52,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
 name|importer
 operator|.
-name|fileformat
+name|util
 operator|.
 name|ParseException
 import|;
@@ -109,6 +107,20 @@ operator|.
 name|entry
 operator|.
 name|BibEntry
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|preferences
+operator|.
+name|JabRefPreferences
 import|;
 end_import
 
@@ -184,7 +196,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Re-create a group instance from a textual representation.      *      * @param s The result from the group's toString() method.      * @return New instance of the encoded group.      * @throws ParseException If an error occurred and a group could not be created,      *                        e.g. due to a malformed regular expression.      */
-DECL|method|fromString (String s)
+DECL|method|fromString (String s, JabRefPreferences jabRefPreferences)
 specifier|public
 specifier|static
 name|AbstractGroup
@@ -192,6 +204,9 @@ name|fromString
 parameter_list|(
 name|String
 name|s
+parameter_list|,
+name|JabRefPreferences
+name|jabRefPreferences
 parameter_list|)
 throws|throws
 name|ParseException
@@ -214,6 +229,8 @@ operator|.
 name|fromString
 argument_list|(
 name|s
+argument_list|,
+name|jabRefPreferences
 argument_list|)
 return|;
 block|}
@@ -277,6 +294,8 @@ operator|.
 name|fromString
 argument_list|(
 name|s
+argument_list|,
+name|jabRefPreferences
 argument_list|)
 return|;
 block|}
@@ -512,51 +531,6 @@ return|return
 literal|true
 return|;
 block|}
-comment|/**      * Determines the number of entries in the specified list which are matched by this group.      * @param entries list of entries to be searched      * @return number of hits      */
-DECL|method|numberOfHits (List<BibEntry> entries)
-specifier|public
-name|int
-name|numberOfHits
-parameter_list|(
-name|List
-argument_list|<
-name|BibEntry
-argument_list|>
-name|entries
-parameter_list|)
-block|{
-name|int
-name|hits
-init|=
-literal|0
-decl_stmt|;
-for|for
-control|(
-name|BibEntry
-name|entry
-range|:
-name|entries
-control|)
-block|{
-if|if
-condition|(
-name|this
-operator|.
-name|contains
-argument_list|(
-name|entry
-argument_list|)
-condition|)
-block|{
-name|hits
-operator|++
-expr_stmt|;
-block|}
-block|}
-return|return
-name|hits
-return|;
-block|}
 comment|/**      * Returns true if this group is dynamic, i.e. uses a search definition or      * equiv. that might match new entries, or false if this group contains a      * fixed set of entries and thus will never match a new entry that was not      * explicitly added to it.      */
 DECL|method|isDynamic ()
 specifier|public
@@ -619,12 +593,15 @@ name|deepCopy
 parameter_list|()
 function_decl|;
 comment|/**      * Returns a short description of the group in HTML (for a tooltip).      */
-DECL|method|getShortDescription ()
+DECL|method|getShortDescription (boolean showDynamic)
 specifier|public
 specifier|abstract
 name|String
 name|getShortDescription
-parameter_list|()
+parameter_list|(
+name|boolean
+name|showDynamic
+parameter_list|)
 function_decl|;
 comment|// by general AbstractGroup contract, toString() must return
 comment|// something from which this object can be reconstructed

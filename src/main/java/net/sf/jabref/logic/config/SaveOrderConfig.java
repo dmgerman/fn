@@ -62,6 +62,8 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|preferences
+operator|.
 name|JabRefPreferences
 import|;
 end_import
@@ -95,6 +97,27 @@ index|[
 literal|3
 index|]
 decl_stmt|;
+DECL|method|parse (List<String> orderedData)
+specifier|public
+specifier|static
+name|SaveOrderConfig
+name|parse
+parameter_list|(
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|orderedData
+parameter_list|)
+block|{
+return|return
+operator|new
+name|SaveOrderConfig
+argument_list|(
+name|orderedData
+argument_list|)
+return|;
+block|}
 DECL|class|SortCriterion
 specifier|public
 specifier|static
@@ -606,7 +629,7 @@ argument_list|()
 return|;
 block|}
 DECL|method|SaveOrderConfig (List<String> data)
-specifier|public
+specifier|private
 name|SaveOrderConfig
 parameter_list|(
 name|List
@@ -1197,13 +1220,13 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Outputs the current configuration to be consumed later by the constructor      */
-DECL|method|getConfigurationList ()
+DECL|method|getAsStringList ()
 specifier|public
 name|List
 argument_list|<
 name|String
 argument_list|>
-name|getConfigurationList
+name|getAsStringList
 parameter_list|()
 block|{
 name|List

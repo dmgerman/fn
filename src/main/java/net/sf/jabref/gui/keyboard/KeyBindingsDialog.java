@@ -1,8 +1,4 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
-begin_comment
-comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
-end_comment
-
 begin_package
 DECL|package|net.sf.jabref.gui.keyboard
 package|package
@@ -166,7 +162,9 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|GUIGlobals
+name|util
+operator|.
+name|GUIUtil
 import|;
 end_import
 
@@ -203,6 +201,25 @@ name|KeyBindingsDialog
 extends|extends
 name|JDialog
 block|{
+DECL|field|KEYBIND_COL_0
+specifier|private
+specifier|static
+specifier|final
+name|int
+name|KEYBIND_COL_0
+init|=
+literal|200
+decl_stmt|;
+DECL|field|KEYBIND_COL_1
+specifier|private
+specifier|static
+specifier|final
+name|int
+name|KEYBIND_COL_1
+init|=
+literal|80
+decl_stmt|;
+comment|// Added to the font size when determining table
 DECL|field|ok
 specifier|private
 specifier|final
@@ -368,9 +385,9 @@ argument_list|(
 operator|new
 name|Dimension
 argument_list|(
-literal|250
+literal|500
 argument_list|,
-literal|400
+literal|500
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -521,6 +538,13 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+name|GUIUtil
+operator|.
+name|correctRowHeight
+argument_list|(
+name|table
+argument_list|)
+expr_stmt|;
 return|return
 name|table
 return|;
@@ -565,8 +589,6 @@ argument_list|)
 operator|.
 name|setPreferredWidth
 argument_list|(
-name|GUIGlobals
-operator|.
 name|KEYBIND_COL_0
 argument_list|)
 expr_stmt|;
@@ -579,8 +601,6 @@ argument_list|)
 operator|.
 name|setPreferredWidth
 argument_list|(
-name|GUIGlobals
-operator|.
 name|KEYBIND_COL_1
 argument_list|)
 expr_stmt|;

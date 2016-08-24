@@ -80,6 +80,40 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|importer
+operator|.
+name|fetcher
+operator|.
+name|CrossRef
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|BibEntry
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -518,6 +552,29 @@ return|return
 name|result
 return|;
 block|}
+comment|/**      * Tries to retrieve a DOI for an existing BibEntry.      *      * @param entry the BibteX entry      * @return an Optional containing the DOI or an empty Optional      */
+DECL|method|fromBibEntry (BibEntry entry)
+specifier|public
+specifier|static
+name|Optional
+argument_list|<
+name|DOI
+argument_list|>
+name|fromBibEntry
+parameter_list|(
+name|BibEntry
+name|entry
+parameter_list|)
+block|{
+return|return
+name|CrossRef
+operator|.
+name|findDOI
+argument_list|(
+name|entry
+argument_list|)
+return|;
+block|}
 comment|/**      * Return the plain DOI      *      * @return the plain DOI value.      */
 DECL|method|getDOI ()
 specifier|public
@@ -600,10 +657,10 @@ return|;
 block|}
 block|}
 comment|/**      * Return an ASCII URL presentation for the DOI      *      * @return an encoded URL representation of the DOI      */
-DECL|method|getURLAsASCIIString ()
+DECL|method|getURIAsASCIIString ()
 specifier|public
 name|String
-name|getURLAsASCIIString
+name|getURIAsASCIIString
 parameter_list|()
 block|{
 return|return

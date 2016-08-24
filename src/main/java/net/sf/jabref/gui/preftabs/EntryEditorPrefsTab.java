@@ -1,8 +1,4 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
-begin_comment
-comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
-end_comment
-
 begin_package
 DECL|package|net.sf.jabref.gui.preftabs
 package|package
@@ -136,18 +132,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|JabRefPreferences
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|gui
 operator|.
 name|BasePanel
@@ -165,6 +149,22 @@ operator|.
 name|gui
 operator|.
 name|JabRefFrame
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|keyboard
+operator|.
+name|EmacsKeyBindings
 import|;
 end_import
 
@@ -218,6 +218,20 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|preferences
+operator|.
+name|JabRefPreferences
+import|;
+end_import
+
+begin_import
+import|import
 name|com
 operator|.
 name|jgoodies
@@ -255,22 +269,6 @@ operator|.
 name|layout
 operator|.
 name|FormLayout
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|xnap
-operator|.
-name|commons
-operator|.
-name|gui
-operator|.
-name|shortcut
-operator|.
-name|EmacsKeyBindings
 import|;
 end_import
 
@@ -312,12 +310,6 @@ specifier|private
 specifier|final
 name|JCheckBox
 name|emacsRebindCtrlF
-decl_stmt|;
-DECL|field|disableOnMultiple
-specifier|private
-specifier|final
-name|JCheckBox
-name|disableOnMultiple
 decl_stmt|;
 DECL|field|autoComplete
 specifier|private
@@ -511,19 +503,6 @@ operator|.
 name|lang
 argument_list|(
 literal|"Rebind C-f, too"
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|disableOnMultiple
-operator|=
-operator|new
-name|JCheckBox
-argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Disable entry editor when multiple entries are selected"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -800,10 +779,10 @@ comment|// 4dlu, left:pref, 4dlu",
 comment|// rows  1 to 10
 literal|"pref, 6dlu, pref, 6dlu, pref, 6dlu, pref, 6dlu, pref, 6dlu, "
 operator|+
-comment|// rows 11 to 20
-literal|"pref, 6dlu, pref, 6dlu, pref, 6dlu, pref, 6dlu, pref, 6dlu, "
+comment|// rows 11 to 16
+literal|"pref, 6dlu, pref, 6dlu, pref, 6dlu, "
 operator|+
-comment|// rows 21 to 31
+comment|// rows 17 to 27
 literal|"pref, 6dlu, pref, pref, pref, pref, 6dlu, pref, pref, pref, pref"
 argument_list|)
 decl_stmt|;
@@ -866,7 +845,7 @@ name|builder
 operator|.
 name|add
 argument_list|(
-name|disableOnMultiple
+name|defSource
 argument_list|,
 name|cc
 operator|.
@@ -882,7 +861,7 @@ name|builder
 operator|.
 name|add
 argument_list|(
-name|defSource
+name|emacsMode
 argument_list|,
 name|cc
 operator|.
@@ -898,7 +877,7 @@ name|builder
 operator|.
 name|add
 argument_list|(
-name|emacsMode
+name|emacsRebindCtrlA
 argument_list|,
 name|cc
 operator|.
@@ -914,22 +893,6 @@ name|builder
 operator|.
 name|add
 argument_list|(
-name|emacsRebindCtrlA
-argument_list|,
-name|cc
-operator|.
-name|xy
-argument_list|(
-literal|2
-argument_list|,
-literal|11
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|builder
-operator|.
-name|add
-argument_list|(
 name|emacsRebindCtrlF
 argument_list|,
 name|cc
@@ -938,7 +901,7 @@ name|xy
 argument_list|(
 literal|2
 argument_list|,
-literal|13
+literal|11
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -959,7 +922,7 @@ name|xyw
 argument_list|(
 literal|1
 argument_list|,
-literal|15
+literal|13
 argument_list|,
 literal|5
 argument_list|)
@@ -977,7 +940,7 @@ name|xy
 argument_list|(
 literal|2
 argument_list|,
-literal|19
+literal|15
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1071,7 +1034,7 @@ name|xyw
 argument_list|(
 literal|2
 argument_list|,
-literal|21
+literal|17
 argument_list|,
 literal|3
 argument_list|)
@@ -1094,7 +1057,7 @@ name|xyw
 argument_list|(
 literal|2
 argument_list|,
-literal|23
+literal|19
 argument_list|,
 literal|4
 argument_list|)
@@ -1112,7 +1075,7 @@ name|xy
 argument_list|(
 literal|2
 argument_list|,
-literal|24
+literal|20
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1128,7 +1091,7 @@ name|xy
 argument_list|(
 literal|2
 argument_list|,
-literal|25
+literal|21
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1144,7 +1107,7 @@ name|xy
 argument_list|(
 literal|2
 argument_list|,
-literal|26
+literal|22
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1165,7 +1128,7 @@ name|xyw
 argument_list|(
 literal|2
 argument_list|,
-literal|28
+literal|24
 argument_list|,
 literal|4
 argument_list|)
@@ -1183,7 +1146,7 @@ name|xy
 argument_list|(
 literal|2
 argument_list|,
-literal|29
+literal|25
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1199,7 +1162,7 @@ name|xy
 argument_list|(
 literal|2
 argument_list|,
-literal|30
+literal|26
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1215,7 +1178,7 @@ name|xy
 argument_list|(
 literal|2
 argument_list|,
-literal|31
+literal|27
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1396,20 +1359,6 @@ argument_list|(
 name|JabRefPreferences
 operator|.
 name|EDITOR_EMACS_KEYBINDINGS_REBIND_CF
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|disableOnMultiple
-operator|.
-name|setSelected
-argument_list|(
-name|prefs
-operator|.
-name|getBoolean
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|DISABLE_ON_MULTIPLE_SELECTION
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1769,20 +1718,6 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-name|prefs
-operator|.
-name|putBoolean
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|DISABLE_ON_MULTIPLE_SELECTION
-argument_list|,
-name|disableOnMultiple
-operator|.
-name|isSelected
-argument_list|()
-argument_list|)
-expr_stmt|;
 comment|// We want to know if the following settings have been modified:
 name|boolean
 name|oldAutoComplete
@@ -2028,7 +1963,8 @@ control|)
 block|{
 name|panel
 operator|.
-name|entryEditors
+name|getEntryEditors
+argument_list|()
 operator|.
 name|clear
 argument_list|()

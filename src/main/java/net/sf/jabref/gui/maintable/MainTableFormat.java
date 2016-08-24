@@ -1,8 +1,4 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
-begin_comment
-comment|/*  Copyright (C) 2003-2012 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
-end_comment
-
 begin_package
 DECL|package|net.sf.jabref.gui.maintable
 package|package
@@ -88,18 +84,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|JabRefPreferences
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|gui
 operator|.
 name|IconTheme
@@ -146,9 +130,25 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|specialfields
+name|model
 operator|.
-name|SpecialFieldsUtils
+name|entry
+operator|.
+name|FieldName
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|preferences
+operator|.
+name|JabRefPreferences
 import|;
 end_import
 
@@ -181,18 +181,6 @@ argument_list|<
 name|BibEntry
 argument_list|>
 block|{
-comment|// Character separating field names that are to be used in sequence as
-comment|// fallbacks for a single column (e.g. "author/editor" to use editor where
-comment|// author is not set):
-DECL|field|COL_DEFINITION_FIELD_SEPARATOR
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|COL_DEFINITION_FIELD_SEPARATOR
-init|=
-literal|"/"
-decl_stmt|;
 comment|// Values to gather iconImages for those columns
 comment|// These values are also used to put a heading into the table; see getColumnName(int)
 DECL|field|URL_FIRST
@@ -209,9 +197,13 @@ name|Arrays
 operator|.
 name|asList
 argument_list|(
-literal|"url"
+name|FieldName
+operator|.
+name|URL
 argument_list|,
-literal|"doi"
+name|FieldName
+operator|.
+name|DOI
 argument_list|)
 decl_stmt|;
 DECL|field|DOI_FIRST
@@ -228,9 +220,13 @@ name|Arrays
 operator|.
 name|asList
 argument_list|(
-literal|"doi"
+name|FieldName
+operator|.
+name|DOI
 argument_list|,
-literal|"url"
+name|FieldName
+operator|.
+name|URL
 argument_list|)
 decl_stmt|;
 DECL|field|ARXIV
@@ -247,7 +243,9 @@ name|Collections
 operator|.
 name|singletonList
 argument_list|(
-literal|"eprint"
+name|FieldName
+operator|.
+name|EPRINT
 argument_list|)
 decl_stmt|;
 DECL|field|database
@@ -695,9 +693,9 @@ name|columnName
 operator|.
 name|split
 argument_list|(
-name|MainTableFormat
+name|FieldName
 operator|.
-name|COL_DEFINITION_FIELD_SEPARATOR
+name|FIELD_SEPARATOR
 argument_list|)
 decl_stmt|;
 name|tableColumns
@@ -730,9 +728,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-name|SpecialFieldsUtils
+name|JabRefPreferences
 operator|.
-name|PREF_SPECIALFIELDSENABLED
+name|SPECIALFIELDSENABLED
 argument_list|)
 condition|)
 block|{
@@ -744,9 +742,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-name|SpecialFieldsUtils
+name|JabRefPreferences
 operator|.
-name|PREF_SHOWCOLUMN_RANKING
+name|SHOWCOLUMN_RANKING
 argument_list|)
 condition|)
 block|{
@@ -768,9 +766,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-name|SpecialFieldsUtils
+name|JabRefPreferences
 operator|.
-name|PREF_SHOWCOLUMN_RELEVANCE
+name|SHOWCOLUMN_RELEVANCE
 argument_list|)
 condition|)
 block|{
@@ -792,9 +790,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-name|SpecialFieldsUtils
+name|JabRefPreferences
 operator|.
-name|PREF_SHOWCOLUMN_QUALITY
+name|SHOWCOLUMN_QUALITY
 argument_list|)
 condition|)
 block|{
@@ -816,9 +814,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-name|SpecialFieldsUtils
+name|JabRefPreferences
 operator|.
-name|PREF_SHOWCOLUMN_PRIORITY
+name|SHOWCOLUMN_PRIORITY
 argument_list|)
 condition|)
 block|{
@@ -840,9 +838,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-name|SpecialFieldsUtils
+name|JabRefPreferences
 operator|.
-name|PREF_SHOWCOLUMN_PRINTED
+name|SHOWCOLUMN_PRINTED
 argument_list|)
 condition|)
 block|{
@@ -864,9 +862,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-name|SpecialFieldsUtils
+name|JabRefPreferences
 operator|.
-name|PREF_SHOWCOLUMN_READ
+name|SHOWCOLUMN_READ
 argument_list|)
 condition|)
 block|{

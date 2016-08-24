@@ -1,8 +1,4 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
-begin_comment
-comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
-end_comment
-
 begin_package
 DECL|package|net.sf.jabref.collab
 package|package
@@ -33,6 +29,30 @@ operator|.
 name|io
 operator|.
 name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|file
+operator|.
+name|Files
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|file
+operator|.
+name|Path
 import|;
 end_import
 
@@ -319,8 +339,8 @@ name|String
 name|handle
 parameter_list|)
 block|{
-name|Object
-name|o
+name|Entry
+name|entry
 init|=
 name|entries
 operator|.
@@ -331,7 +351,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|o
+name|entry
 operator|==
 literal|null
 condition|)
@@ -343,12 +363,7 @@ block|}
 try|try
 block|{
 return|return
-operator|(
-operator|(
-name|Entry
-operator|)
-name|o
-operator|)
+name|entry
 operator|.
 name|hasBeenUpdated
 argument_list|()
@@ -376,8 +391,8 @@ name|String
 name|handle
 parameter_list|)
 block|{
-name|Object
-name|o
+name|Entry
+name|entry
 init|=
 name|entries
 operator|.
@@ -388,23 +403,17 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|o
-operator|==
+name|entry
+operator|!=
 literal|null
 condition|)
 block|{
-return|return;
-block|}
-operator|(
-operator|(
-name|Entry
-operator|)
-name|o
-operator|)
+name|entry
 operator|.
 name|decreaseTimeStamp
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 comment|/**      * Removes a listener from the monitor.      * @param handle String The handle for the listener to remove.      */
 DECL|method|removeUpdateListener (String handle)
@@ -433,8 +442,8 @@ name|String
 name|key
 parameter_list|)
 block|{
-name|Object
-name|o
+name|Entry
+name|entry
 init|=
 name|entries
 operator|.
@@ -445,19 +454,11 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|o
+name|entry
 operator|!=
 literal|null
 condition|)
 block|{
-name|Entry
-name|entry
-init|=
-operator|(
-name|Entry
-operator|)
-name|o
-decl_stmt|;
 name|entry
 operator|.
 name|updateTimeStamp
@@ -468,7 +469,7 @@ block|}
 comment|/**      * Method for getting the temporary file used for this database. The tempfile      * is used for comparison with the changed on-disk version.      * @param key String The handle for this monitor.      * @throws IllegalArgumentException If the handle doesn't correspond to an entry.      * @return File The temporary file.      */
 DECL|method|getTempFile (String key)
 specifier|public
-name|File
+name|Path
 name|getTempFile
 parameter_list|(
 name|String
@@ -477,8 +478,8 @@ parameter_list|)
 throws|throws
 name|IllegalArgumentException
 block|{
-name|Object
-name|o
+name|Entry
+name|entry
 init|=
 name|entries
 operator|.
@@ -489,7 +490,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|o
+name|entry
 operator|==
 literal|null
 condition|)
@@ -503,12 +504,7 @@ argument_list|)
 throw|;
 block|}
 return|return
-operator|(
-operator|(
-name|Entry
-operator|)
-name|o
-operator|)
+name|entry
 operator|.
 name|getTmpFile
 argument_list|()
@@ -535,7 +531,7 @@ decl_stmt|;
 DECL|field|tmpFile
 specifier|private
 specifier|final
-name|File
+name|Path
 name|tmpFile
 decl_stmt|;
 DECL|field|timeStamp
@@ -596,6 +592,9 @@ literal|null
 condition|)
 block|{
 name|tmpFile
+operator|.
+name|toFile
+argument_list|()
 operator|.
 name|deleteOnExit
 argument_list|()
@@ -716,6 +715,9 @@ argument_list|(
 name|file
 argument_list|,
 name|tmpFile
+operator|.
+name|toFile
+argument_list|()
 argument_list|,
 literal|true
 argument_list|)
@@ -734,9 +736,6 @@ argument_list|(
 literal|"Cannot copy to temporary file '"
 operator|+
 name|tmpFile
-operator|.
-name|getPath
-argument_list|()
 operator|+
 literal|'\''
 argument_list|,
@@ -791,7 +790,7 @@ expr_stmt|;
 block|}
 DECL|method|getTmpFile ()
 specifier|public
-name|File
+name|Path
 name|getTmpFile
 parameter_list|()
 block|{
@@ -814,20 +813,20 @@ DECL|method|getTempFile ()
 specifier|private
 specifier|static
 specifier|synchronized
-name|File
+name|Path
 name|getTempFile
 parameter_list|()
 block|{
-name|File
-name|f
+name|Path
+name|temporaryFile
 init|=
 literal|null
 decl_stmt|;
 try|try
 block|{
-name|f
+name|temporaryFile
 operator|=
-name|File
+name|Files
 operator|.
 name|createTempFile
 argument_list|(
@@ -836,7 +835,10 @@ argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
-name|f
+name|temporaryFile
+operator|.
+name|toFile
+argument_list|()
 operator|.
 name|deleteOnExit
 argument_list|()
@@ -859,7 +861,7 @@ argument_list|)
 expr_stmt|;
 block|}
 return|return
-name|f
+name|temporaryFile
 return|;
 block|}
 block|}

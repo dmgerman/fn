@@ -1,8 +1,4 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
-begin_comment
-comment|/*  Copyright (C) 2003-2016 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
-end_comment
-
 begin_package
 DECL|package|net.sf.jabref.logic.openoffice
 package|package
@@ -25,6 +21,16 @@ operator|.
 name|util
 operator|.
 name|EnumSet
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
 import|;
 end_import
 
@@ -391,7 +397,7 @@ parameter_list|()
 block|{
 comment|// Just to hide the public constructor
 block|}
-comment|/**      * Insert a reference, formatted using a Layout, at the position of a given cursor.      * @param text The text to insert in.      * @param cursor The cursor giving the insert location.      * @param layout The Layout to format the reference with.      * @param parStyle The name of the paragraph style to use.      * @param entry The entry to insert.      * @param database The database the entry belongs to.      * @param uniquefier Uniqiefier letter, if any, to append to the entry's year.      * @throws Exception      */
+comment|/**      * Insert a reference, formatted using a Layout, at the position of a given cursor.      * @param text The text to insert in.      * @param cursor The cursor giving the insert location.      * @param layout The Layout to format the reference with.      * @param parStyle The name of the paragraph style to use.      * @param entry The entry to insert.      * @param database The database the entry belongs to.      * @param uniquefier Uniqiefier letter, if any, to append to the entry's year.      */
 DECL|method|insertFullReferenceAtCurrentLocation (XText text, XTextCursor cursor, Layout layout, String parStyle, BibEntry entry, BibDatabase database, String uniquefier)
 specifier|public
 specifier|static
@@ -431,12 +437,15 @@ throws|,
 name|IllegalArgumentException
 block|{
 comment|// Backup the value of the uniq field, just in case the entry already has it:
+name|Optional
+argument_list|<
 name|String
+argument_list|>
 name|oldUniqVal
 init|=
 name|entry
 operator|.
-name|getField
+name|getFieldOptional
 argument_list|(
 name|UNIQUEFIER_FIELD
 argument_list|)
@@ -486,19 +495,10 @@ comment|// Afterwards, reset the old value:
 if|if
 condition|(
 name|oldUniqVal
-operator|==
-literal|null
-condition|)
-block|{
-name|entry
 operator|.
-name|clearField
-argument_list|(
-name|UNIQUEFIER_FIELD
-argument_list|)
-expr_stmt|;
-block|}
-else|else
+name|isPresent
+argument_list|()
+condition|)
 block|{
 name|entry
 operator|.
@@ -507,6 +507,19 @@ argument_list|(
 name|UNIQUEFIER_FIELD
 argument_list|,
 name|oldUniqVal
+operator|.
+name|get
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|entry
+operator|.
+name|clearField
+argument_list|(
+name|UNIQUEFIER_FIELD
 argument_list|)
 expr_stmt|;
 block|}

@@ -1,8 +1,4 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
-begin_comment
-comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
-end_comment
-
 begin_package
 DECL|package|net.sf.jabref.logic.util.strings
 package|package
@@ -56,6 +52,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|StringTokenizer
 import|;
 end_import
@@ -92,7 +98,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
+name|logic
+operator|.
+name|util
+operator|.
+name|OS
 import|;
 end_import
 
@@ -110,12 +120,36 @@ name|CharMatcher
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|lang3
+operator|.
+name|StringUtils
+import|;
+end_import
+
 begin_class
 DECL|class|StringUtil
 specifier|public
 class|class
 name|StringUtil
 block|{
+comment|// Non-letters which are used to denote accents in LaTeX-commands, e.g., in {\"{a}}
+DECL|field|SPECIAL_COMMAND_CHARS
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|SPECIAL_COMMAND_CHARS
+init|=
+literal|"\"`^~'=.|"
+decl_stmt|;
 comment|// contains all possible line breaks, not omitting any break such as "\\n"
 DECL|field|LINE_BREAKS
 specifier|private
@@ -146,7 +180,7 @@ literal|"\\{[A-Z]+\\}"
 argument_list|)
 decl_stmt|;
 DECL|field|UNICODE_CHAR_MAP
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|UnicodeToReadableCharMap
@@ -719,7 +753,7 @@ name|result
 operator|.
 name|append
 argument_list|(
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 argument_list|)
@@ -738,7 +772,7 @@ name|result
 operator|.
 name|append
 argument_list|(
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 argument_list|)
@@ -754,7 +788,7 @@ name|result
 operator|.
 name|append
 argument_list|(
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 argument_list|)
@@ -890,7 +924,7 @@ name|insert
 argument_list|(
 name|current
 argument_list|,
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|+
@@ -901,7 +935,7 @@ name|length
 operator|=
 name|current
 operator|+
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 operator|.
@@ -1805,7 +1839,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * Replaces all platform-dependent line breaks by Globals.NEWLINE line breaks.      *      * We do NOT use UNIX line breaks as the user explicitly configures its linebreaks and this method is used in bibtex field writing      *      *<example>      * Legacy Macintosh \r -> Globals.NEWLINE      * Windows \r\n -> Globals.NEWLINE      *</example>      *      * @return a String with only Globals.NEWLINE as line breaks      */
+comment|/**      * Replaces all platform-dependent line breaks by OS.NEWLINE line breaks.      *      * We do NOT use UNIX line breaks as the user explicitly configures its linebreaks and this method is used in bibtex field writing      *      *<example>      * Legacy Macintosh \r -> OS.NEWLINE      * Windows \r\n -> OS.NEWLINE      *</example>      *      * @return a String with only OS.NEWLINE as line breaks      */
 DECL|method|unifyLineBreaksToConfiguredLineBreaks (String s)
 specifier|public
 specifier|static
@@ -1826,7 +1860,7 @@ argument_list|)
 operator|.
 name|replaceAll
 argument_list|(
-name|Globals
+name|OS
 operator|.
 name|NEWLINE
 argument_list|)
@@ -2972,6 +3006,134 @@ name|resultSB
 operator|.
 name|toString
 argument_list|()
+return|;
+block|}
+DECL|method|isNullOrEmpty (String toTest)
+specifier|public
+specifier|static
+name|boolean
+name|isNullOrEmpty
+parameter_list|(
+name|String
+name|toTest
+parameter_list|)
+block|{
+return|return
+operator|(
+operator|(
+name|toTest
+operator|==
+literal|null
+operator|)
+operator|||
+name|toTest
+operator|.
+name|isEmpty
+argument_list|()
+operator|)
+return|;
+block|}
+DECL|method|isNotBlank (Optional<String> string)
+specifier|public
+specifier|static
+name|boolean
+name|isNotBlank
+parameter_list|(
+name|Optional
+argument_list|<
+name|String
+argument_list|>
+name|string
+parameter_list|)
+block|{
+return|return
+name|string
+operator|.
+name|isPresent
+argument_list|()
+operator|&&
+name|isNotBlank
+argument_list|(
+name|string
+operator|.
+name|get
+argument_list|()
+argument_list|)
+return|;
+block|}
+DECL|method|isNotBlank (String string)
+specifier|public
+specifier|static
+name|boolean
+name|isNotBlank
+parameter_list|(
+name|String
+name|string
+parameter_list|)
+block|{
+return|return
+name|StringUtils
+operator|.
+name|isNotBlank
+argument_list|(
+name|string
+argument_list|)
+return|;
+block|}
+comment|/**      * Return string enclosed in HTML bold tags      */
+DECL|method|boldHTML (String input)
+specifier|public
+specifier|static
+name|String
+name|boldHTML
+parameter_list|(
+name|String
+name|input
+parameter_list|)
+block|{
+return|return
+literal|"<b>"
+operator|+
+name|input
+operator|+
+literal|"</b>"
+return|;
+block|}
+comment|/**      * Return string enclosed in HTML bold tags  if not null, otherwise return alternative text in HTML bold tags      */
+DECL|method|boldHTML (String input, String alternative)
+specifier|public
+specifier|static
+name|String
+name|boldHTML
+parameter_list|(
+name|String
+name|input
+parameter_list|,
+name|String
+name|alternative
+parameter_list|)
+block|{
+if|if
+condition|(
+name|input
+operator|==
+literal|null
+condition|)
+block|{
+return|return
+literal|"<b>"
+operator|+
+name|alternative
+operator|+
+literal|"</b>"
+return|;
+block|}
+return|return
+literal|"<b>"
+operator|+
+name|input
+operator|+
+literal|"</b>"
 return|;
 block|}
 block|}

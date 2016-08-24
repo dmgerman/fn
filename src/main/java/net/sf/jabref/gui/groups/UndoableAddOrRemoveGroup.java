@@ -1,8 +1,4 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
-begin_comment
-comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
-end_comment
-
 begin_package
 DECL|package|net.sf.jabref.gui.groups
 package|package
@@ -30,13 +26,17 @@ end_import
 
 begin_import
 import|import
-name|javax
+name|net
 operator|.
-name|swing
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
 operator|.
 name|undo
 operator|.
-name|AbstractUndoableEdit
+name|AbstractUndoableJabRefEdit
 import|;
 end_import
 
@@ -77,7 +77,7 @@ DECL|class|UndoableAddOrRemoveGroup
 class|class
 name|UndoableAddOrRemoveGroup
 extends|extends
-name|AbstractUndoableEdit
+name|AbstractUndoableJabRefEdit
 block|{
 comment|/** The root of the global groups tree */
 DECL|field|m_groupsRootHandle
@@ -195,8 +195,9 @@ operator|.
 name|copySubtree
 argument_list|()
 else|:
-operator|new
 name|GroupTreeNode
+operator|.
+name|fromGroup
 argument_list|(
 name|editedNode
 operator|.
@@ -226,30 +227,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|getUndoPresentationName ()
+DECL|method|getPresentationName ()
 specifier|public
 name|String
-name|getUndoPresentationName
-parameter_list|()
-block|{
-return|return
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Undo"
-argument_list|)
-operator|+
-literal|": "
-operator|+
-name|getName
-argument_list|()
-return|;
-block|}
-DECL|method|getName ()
-specifier|private
-name|String
-name|getName
+name|getPresentationName
 parameter_list|()
 block|{
 switch|switch
@@ -304,28 +285,6 @@ literal|"unknown edit"
 argument_list|)
 operator|+
 literal|")"
-return|;
-block|}
-annotation|@
-name|Override
-DECL|method|getRedoPresentationName ()
-specifier|public
-name|String
-name|getRedoPresentationName
-parameter_list|()
-block|{
-return|return
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Redo"
-argument_list|)
-operator|+
-literal|": "
-operator|+
-name|getName
-argument_list|()
 return|;
 block|}
 annotation|@

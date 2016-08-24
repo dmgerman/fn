@@ -1,8 +1,4 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
-begin_comment
-comment|/*  Copyright (C) 2016 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
-end_comment
-
 begin_package
 DECL|package|net.sf.jabref.logic.openoffice
 package|package
@@ -110,9 +106,9 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|journals
+name|layout
 operator|.
-name|JournalAbbreviationRepository
+name|LayoutFormatterPreferences
 import|;
 end_import
 
@@ -203,12 +199,6 @@ argument_list|,
 name|DEFAULT_NUMERICAL_STYLE_PATH
 argument_list|)
 decl_stmt|;
-DECL|field|repository
-specifier|private
-specifier|final
-name|JournalAbbreviationRepository
-name|repository
-decl_stmt|;
 DECL|field|preferences
 specifier|private
 specifier|final
@@ -220,6 +210,12 @@ specifier|private
 specifier|final
 name|Charset
 name|encoding
+decl_stmt|;
+DECL|field|layoutFormatterPreferences
+specifier|private
+specifier|final
+name|LayoutFormatterPreferences
+name|layoutFormatterPreferences
 decl_stmt|;
 comment|// Lists of the internal
 comment|// and external styles
@@ -251,15 +247,15 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
-DECL|method|StyleLoader (OpenOfficePreferences preferences, JournalAbbreviationRepository repository, Charset encoding)
+DECL|method|StyleLoader (OpenOfficePreferences preferences, LayoutFormatterPreferences jabrefPreferences, Charset encoding)
 specifier|public
 name|StyleLoader
 parameter_list|(
 name|OpenOfficePreferences
 name|preferences
 parameter_list|,
-name|JournalAbbreviationRepository
-name|repository
+name|LayoutFormatterPreferences
+name|jabrefPreferences
 parameter_list|,
 name|Charset
 name|encoding
@@ -267,24 +263,24 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|repository
+name|preferences
 operator|=
 name|Objects
 operator|.
 name|requireNonNull
 argument_list|(
-name|repository
+name|preferences
 argument_list|)
 expr_stmt|;
 name|this
 operator|.
-name|preferences
+name|layoutFormatterPreferences
 operator|=
 name|Objects
 operator|.
 name|requireNonNull
 argument_list|(
-name|preferences
+name|jabrefPreferences
 argument_list|)
 expr_stmt|;
 name|this
@@ -369,7 +365,7 @@ argument_list|(
 name|filename
 argument_list|)
 argument_list|,
-name|repository
+name|layoutFormatterPreferences
 argument_list|,
 name|encoding
 argument_list|)
@@ -523,7 +519,7 @@ argument_list|(
 name|filename
 argument_list|)
 argument_list|,
-name|repository
+name|layoutFormatterPreferences
 argument_list|,
 name|encoding
 argument_list|)
@@ -632,7 +628,7 @@ name|OOBibStyle
 argument_list|(
 name|filename
 argument_list|,
-name|repository
+name|layoutFormatterPreferences
 argument_list|)
 argument_list|)
 expr_stmt|;

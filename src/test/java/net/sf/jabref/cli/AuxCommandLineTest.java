@@ -68,6 +68,18 @@ name|java
 operator|.
 name|nio
 operator|.
+name|charset
+operator|.
+name|StandardCharsets
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
 name|file
 operator|.
 name|Paths
@@ -82,7 +94,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
+name|logic
+operator|.
+name|importer
+operator|.
+name|ImportFormatPreferences
 import|;
 end_import
 
@@ -94,17 +110,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|JabRefPreferences
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
+name|logic
 operator|.
 name|importer
 operator|.
@@ -119,6 +125,8 @@ operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|logic
 operator|.
 name|importer
 operator|.
@@ -146,11 +154,15 @@ end_import
 
 begin_import
 import|import
-name|org
+name|net
 operator|.
-name|junit
+name|sf
 operator|.
-name|Assert
+name|jabref
+operator|.
+name|preferences
+operator|.
+name|JabRefPreferences
 import|;
 end_import
 
@@ -160,7 +172,7 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Before
+name|Assert
 import|;
 end_import
 
@@ -180,24 +192,6 @@ specifier|public
 class|class
 name|AuxCommandLineTest
 block|{
-annotation|@
-name|Before
-DECL|method|setUp ()
-specifier|public
-name|void
-name|setUp
-parameter_list|()
-block|{
-name|Globals
-operator|.
-name|prefs
-operator|=
-name|JabRefPreferences
-operator|.
-name|getInstance
-argument_list|()
-expr_stmt|;
-block|}
 annotation|@
 name|Test
 DECL|method|test ()
@@ -254,6 +248,10 @@ operator|new
 name|InputStreamReader
 argument_list|(
 name|originalStream
+argument_list|,
+name|StandardCharsets
+operator|.
+name|UTF_8
 argument_list|)
 init|)
 block|{
@@ -265,6 +263,16 @@ operator|.
 name|parse
 argument_list|(
 name|originalReader
+argument_list|,
+name|ImportFormatPreferences
+operator|.
+name|fromPreferences
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|getInstance
+argument_list|()
+argument_list|)
 argument_list|)
 decl_stmt|;
 name|AuxCommandLine

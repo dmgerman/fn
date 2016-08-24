@@ -1,8 +1,4 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
-begin_comment
-comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
-end_comment
-
 begin_package
 DECL|package|net.sf.jabref.logic.util.io
 package|package
@@ -107,16 +103,6 @@ operator|.
 name|util
 operator|.
 name|Arrays
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Collection
 import|;
 end_import
 
@@ -242,35 +228,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|JabRefPreferences
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|logic
 operator|.
-name|journals
+name|layout
 operator|.
-name|JournalAbbreviationRepository
+name|Layout
 import|;
 end_import
 
@@ -286,7 +248,7 @@ name|logic
 operator|.
 name|layout
 operator|.
-name|Layout
+name|LayoutFormatterPreferences
 import|;
 end_import
 
@@ -351,6 +313,22 @@ operator|.
 name|entry
 operator|.
 name|BibEntry
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|FieldName
 import|;
 end_import
 
@@ -434,20 +412,6 @@ argument_list|(
 name|FileUtil
 operator|.
 name|class
-argument_list|)
-decl_stmt|;
-DECL|field|FILE_SEPARATOR
-specifier|private
-specifier|static
-specifier|final
-name|String
-name|FILE_SEPARATOR
-init|=
-name|System
-operator|.
-name|getProperty
-argument_list|(
-literal|"file.separator"
 argument_list|)
 decl_stmt|;
 DECL|field|SLASH
@@ -1023,7 +987,7 @@ name|toFile
 argument_list|)
 return|;
 block|}
-comment|/**      * Converts a relative filename to an absolute one, if necessary. Returns      * null if the file does not exist.<br/>      *<p>      * Uses<ul>      *<li>the default directory associated with the extension of the file</li>      *<li>the standard file directory</li>      *<li>the directory of the bib file</li>      *</ul>      *      * @param databaseContext The database this file belongs to.      * @param name     The filename, may also be a relative path to the file      */
+comment|/**      * Converts a relative filename to an absolute one, if necessary. Returns      * null if the file does not exist.<br/>      *<p>      * Uses<ul>      *<li>the default directory associated with the extension of the file</li>      *<li>the standard file directory</li>      *<li>the directory of the BIB file</li>      *</ul>      *      * @param databaseContext The database this file belongs to.      * @param name     The filename, may also be a relative path to the file      */
 DECL|method|expandFilename (final BibDatabaseContext databaseContext, String name)
 specifier|public
 specifier|static
@@ -1083,7 +1047,7 @@ operator|.
 name|getFileDirectory
 argument_list|()
 decl_stmt|;
-comment|// Include the directory of the bib file:
+comment|// Include the directory of the BIB file:
 name|List
 argument_list|<
 name|String
@@ -1310,6 +1274,8 @@ name|dir
 operator|.
 name|endsWith
 argument_list|(
+name|OS
+operator|.
 name|FILE_SEPARATOR
 argument_list|)
 condition|)
@@ -1327,6 +1293,8 @@ name|name
 operator|=
 name|dir
 operator|+
+name|OS
+operator|.
 name|FILE_SEPARATOR
 operator|+
 name|name
@@ -1591,6 +1559,8 @@ name|dir
 operator|.
 name|endsWith
 argument_list|(
+name|OS
+operator|.
 name|FILE_SEPARATOR
 argument_list|)
 condition|)
@@ -1601,6 +1571,8 @@ name|dir
 operator|.
 name|concat
 argument_list|(
+name|OS
+operator|.
 name|FILE_SEPARATOR
 argument_list|)
 expr_stmt|;
@@ -1647,7 +1619,7 @@ name|fileName
 return|;
 block|}
 block|}
-DECL|method|findAssociatedFiles (Collection<BibEntry> entries, Collection<String> extensions, Collection<File> directories)
+DECL|method|findAssociatedFiles (List<BibEntry> entries, List<String> extensions, List<File> directories, boolean autolinkExactKeyOnly)
 specifier|public
 specifier|static
 name|Map
@@ -1661,23 +1633,26 @@ argument_list|>
 argument_list|>
 name|findAssociatedFiles
 parameter_list|(
-name|Collection
+name|List
 argument_list|<
 name|BibEntry
 argument_list|>
 name|entries
 parameter_list|,
-name|Collection
+name|List
 argument_list|<
 name|String
 argument_list|>
 name|extensions
 parameter_list|,
-name|Collection
+name|List
 argument_list|<
 name|File
 argument_list|>
 name|directories
+parameter_list|,
+name|boolean
+name|autolinkExactKeyOnly
 parameter_list|)
 block|{
 name|Map
@@ -1734,20 +1709,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-name|boolean
-name|exactOnly
-init|=
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getBoolean
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|AUTOLINK_EXACT_KEY_ONLY
-argument_list|)
-decl_stmt|;
 comment|// Now look for keys
 name|nextFile
 label|:
@@ -1786,24 +1747,31 @@ range|:
 name|entries
 control|)
 block|{
+name|Optional
+argument_list|<
 name|String
+argument_list|>
 name|citeKey
 init|=
 name|entry
 operator|.
-name|getCiteKey
+name|getCiteKeyOptional
 argument_list|()
 decl_stmt|;
 if|if
 condition|(
 operator|(
 name|citeKey
-operator|!=
-literal|null
+operator|.
+name|isPresent
+argument_list|()
 operator|)
 operator|&&
 operator|!
 name|citeKey
+operator|.
+name|get
+argument_list|()
 operator|.
 name|isEmpty
 argument_list|()
@@ -1826,6 +1794,9 @@ operator|.
 name|equals
 argument_list|(
 name|citeKey
+operator|.
+name|get
+argument_list|()
 argument_list|)
 condition|)
 block|{
@@ -1846,12 +1817,12 @@ name|nextFile
 continue|;
 block|}
 block|}
-comment|// If we get here, we didn't find any exact matches. If non-exact
+comment|// If we get here, we did not find any exact matches. If non-exact
 comment|// matches are allowed, try to find one:
 if|if
 condition|(
 operator|!
-name|exactOnly
+name|autolinkExactKeyOnly
 condition|)
 block|{
 for|for
@@ -1862,24 +1833,31 @@ range|:
 name|entries
 control|)
 block|{
+name|Optional
+argument_list|<
 name|String
+argument_list|>
 name|citeKey
 init|=
 name|entry
 operator|.
-name|getCiteKey
+name|getCiteKeyOptional
 argument_list|()
 decl_stmt|;
 if|if
 condition|(
 operator|(
 name|citeKey
-operator|!=
-literal|null
+operator|.
+name|isPresent
+argument_list|()
 operator|)
 operator|&&
 operator|!
 name|citeKey
+operator|.
+name|get
+argument_list|()
 operator|.
 name|isEmpty
 argument_list|()
@@ -1889,6 +1867,9 @@ operator|.
 name|startsWith
 argument_list|(
 name|citeKey
+operator|.
+name|get
+argument_list|()
 argument_list|)
 condition|)
 block|{
@@ -1971,6 +1952,20 @@ range|:
 name|bes
 control|)
 block|{
+name|entry
+operator|.
+name|getFieldOptional
+argument_list|(
+name|FieldName
+operator|.
+name|FILE
+argument_list|)
+operator|.
+name|ifPresent
+argument_list|(
+name|fileField
+lambda|->
+block|{
 name|List
 argument_list|<
 name|ParsedFileField
@@ -1981,14 +1976,7 @@ name|FileField
 operator|.
 name|parse
 argument_list|(
-name|entry
-operator|.
-name|getField
-argument_list|(
-name|Globals
-operator|.
-name|FILE_FIELD
-argument_list|)
+name|fileField
 argument_list|)
 decl_stmt|;
 for|for
@@ -2018,16 +2006,19 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+argument_list|)
+expr_stmt|;
+block|}
 return|return
 name|result
 return|;
 block|}
-comment|/**      * Determines filename provided by an entry in a database      *      * @param database the database, where the entry is located      * @param entry    the entry to which the file should be linked to      * @param repository      * @return a suggested fileName      */
-DECL|method|getLinkedFileName (BibDatabase database, BibEntry entry, JournalAbbreviationRepository repository)
+comment|/**      * Determines filename provided by an entry in a database      *      * @param database        the database, where the entry is located      * @param entry           the entry to which the file should be linked to      * @param fileNamePattern the filename pattern      * @param prefs           the layout preferences      * @return a suggested fileName      */
+DECL|method|createFileNameFromPattern (BibDatabase database, BibEntry entry, String fileNamePattern, LayoutFormatterPreferences prefs)
 specifier|public
 specifier|static
 name|String
-name|getLinkedFileName
+name|createFileNameFromPattern
 parameter_list|(
 name|BibDatabase
 name|database
@@ -2035,8 +2026,11 @@ parameter_list|,
 name|BibEntry
 name|entry
 parameter_list|,
-name|JournalAbbreviationRepository
-name|repository
+name|String
+name|fileNamePattern
+parameter_list|,
+name|LayoutFormatterPreferences
+name|prefs
 parameter_list|)
 block|{
 name|String
@@ -2044,17 +2038,13 @@ name|targetName
 init|=
 name|entry
 operator|.
-name|getCiteKey
+name|getCiteKeyOptional
 argument_list|()
-operator|==
-literal|null
-condition|?
-literal|"default"
-else|:
-name|entry
 operator|.
-name|getCiteKey
-argument_list|()
+name|orElse
+argument_list|(
+literal|"default"
+argument_list|)
 decl_stmt|;
 name|StringReader
 name|sr
@@ -2062,16 +2052,7 @@ init|=
 operator|new
 name|StringReader
 argument_list|(
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|get
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|PREF_IMPORT_FILENAMEPATTERN
-argument_list|)
+name|fileNamePattern
 argument_list|)
 decl_stmt|;
 name|Layout
@@ -2088,7 +2069,7 @@ name|LayoutHelper
 argument_list|(
 name|sr
 argument_list|,
-name|repository
+name|prefs
 argument_list|)
 operator|.
 name|getLayoutFromText

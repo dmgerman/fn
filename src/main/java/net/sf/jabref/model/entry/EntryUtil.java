@@ -20,7 +20,17 @@ name|java
 operator|.
 name|util
 operator|.
-name|ArrayList
+name|Arrays
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|LinkedHashSet
 import|;
 end_import
 
@@ -31,6 +41,16 @@ operator|.
 name|util
 operator|.
 name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
 import|;
 end_import
 
@@ -119,40 +139,40 @@ argument_list|()
 return|;
 block|}
 block|}
-comment|/**      * @param keywords a String of keywords      * @return an List containing the keywords. An empty list if keywords are null or empty      */
-DECL|method|getSeparatedKeywords (String keywords)
+comment|/**      * @param keywordString a String of keywords      * @return an List containing the keywords. An empty list if keywords are null or empty      */
+DECL|method|getSeparatedKeywords (String keywordString)
 specifier|public
 specifier|static
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
 name|getSeparatedKeywords
 parameter_list|(
 name|String
-name|keywords
+name|keywordString
 parameter_list|)
 block|{
-name|List
+name|LinkedHashSet
 argument_list|<
 name|String
 argument_list|>
-name|res
+name|keywords
 init|=
 operator|new
-name|ArrayList
+name|LinkedHashSet
 argument_list|<>
 argument_list|()
 decl_stmt|;
 if|if
 condition|(
-name|keywords
+name|keywordString
 operator|==
 literal|null
 condition|)
 block|{
 return|return
-name|res
+name|keywords
 return|;
 block|}
 comment|// _NOSPACE is a hack to support keywords such as "choreography transactions"
@@ -165,7 +185,7 @@ init|=
 operator|new
 name|StringTokenizer
 argument_list|(
-name|keywords
+name|keywordString
 argument_list|,
 name|SEPARATING_CHARS_NOSPACE
 argument_list|)
@@ -189,7 +209,7 @@ operator|.
 name|trim
 argument_list|()
 decl_stmt|;
-name|res
+name|keywords
 operator|.
 name|add
 argument_list|(
@@ -198,7 +218,68 @@ argument_list|)
 expr_stmt|;
 block|}
 return|return
-name|res
+name|keywords
+return|;
+block|}
+comment|/**      * @param entry a BibEntry      * @return an List containing the keywords of the entry. An empty list if keywords are null or empty      */
+DECL|method|getSeparatedKeywords (BibEntry entry)
+specifier|public
+specifier|static
+name|Set
+argument_list|<
+name|String
+argument_list|>
+name|getSeparatedKeywords
+parameter_list|(
+name|BibEntry
+name|entry
+parameter_list|)
+block|{
+return|return
+name|getSeparatedKeywords
+argument_list|(
+name|entry
+operator|.
+name|getFieldOptional
+argument_list|(
+name|FieldName
+operator|.
+name|KEYWORDS
+argument_list|)
+operator|.
+name|orElse
+argument_list|(
+literal|null
+argument_list|)
+argument_list|)
+return|;
+block|}
+comment|/**      * Returns a list of words contained in the given text.      * Whitespace, comma and semicolon are considered as separator between words.      *      * @param text the input      * @return a list of words      */
+DECL|method|getStringAsWords (String text)
+specifier|public
+specifier|static
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|getStringAsWords
+parameter_list|(
+name|String
+name|text
+parameter_list|)
+block|{
+return|return
+name|Arrays
+operator|.
+name|asList
+argument_list|(
+name|text
+operator|.
+name|split
+argument_list|(
+literal|"[\\s,;]+"
+argument_list|)
+argument_list|)
 return|;
 block|}
 block|}

@@ -1,8 +1,4 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
-begin_comment
-comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
-end_comment
-
 begin_package
 DECL|package|net.sf.jabref.logic.groups
 package|package
@@ -76,9 +72,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
 name|importer
 operator|.
-name|fileformat
+name|util
 operator|.
 name|ParseException
 import|;
@@ -133,6 +131,36 @@ operator|.
 name|strings
 operator|.
 name|StringUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|FieldName
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|preferences
+operator|.
+name|JabRefPreferences
 import|;
 end_import
 
@@ -215,7 +243,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|method|ExplicitGroup (String name, GroupHierarchyType context)
+DECL|method|ExplicitGroup (String name, GroupHierarchyType context, JabRefPreferences jabRefPreferences)
 specifier|public
 name|ExplicitGroup
 parameter_list|(
@@ -224,6 +252,9 @@ name|name
 parameter_list|,
 name|GroupHierarchyType
 name|context
+parameter_list|,
+name|JabRefPreferences
+name|jabRefPreferences
 parameter_list|)
 throws|throws
 name|ParseException
@@ -232,7 +263,9 @@ name|super
 argument_list|(
 name|name
 argument_list|,
-literal|"groups"
+name|FieldName
+operator|.
+name|GROUPS
 argument_list|,
 name|name
 argument_list|,
@@ -241,10 +274,12 @@ argument_list|,
 literal|false
 argument_list|,
 name|context
+argument_list|,
+name|jabRefPreferences
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|fromString (String s)
+DECL|method|fromString (String s, JabRefPreferences jabRefPreferences)
 specifier|public
 specifier|static
 name|ExplicitGroup
@@ -252,6 +287,9 @@ name|fromString
 parameter_list|(
 name|String
 name|s
+parameter_list|,
+name|JabRefPreferences
+name|jabRefPreferences
 parameter_list|)
 throws|throws
 name|ParseException
@@ -343,6 +381,8 @@ name|getByNumber
 argument_list|(
 name|context
 argument_list|)
+argument_list|,
+name|jabRefPreferences
 argument_list|)
 decl_stmt|;
 name|newGroup
@@ -438,6 +478,8 @@ argument_list|()
 argument_list|,
 name|getContext
 argument_list|()
+argument_list|,
+name|jabRefPreferences
 argument_list|)
 decl_stmt|;
 name|copy
@@ -487,6 +529,17 @@ name|Object
 name|o
 parameter_list|)
 block|{
+if|if
+condition|(
+name|this
+operator|==
+name|o
+condition|)
+block|{
+return|return
+literal|true
+return|;
+block|}
 if|if
 condition|(
 operator|!
@@ -733,11 +786,14 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|getShortDescription ()
+DECL|method|getShortDescription (boolean showDynamic)
 specifier|public
 name|String
 name|getShortDescription
-parameter_list|()
+parameter_list|(
+name|boolean
+name|showDynamic
+parameter_list|)
 block|{
 name|StringBuilder
 name|sb
@@ -872,6 +928,18 @@ name|super
 operator|.
 name|hashCode
 argument_list|()
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|isDynamic ()
+specifier|public
+name|boolean
+name|isDynamic
+parameter_list|()
+block|{
+return|return
+literal|false
 return|;
 block|}
 block|}

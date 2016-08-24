@@ -137,7 +137,9 @@ name|field
 operator|.
 name|split
 argument_list|(
-literal|"/"
+name|FieldName
+operator|.
+name|FIELD_SEPARATOR
 argument_list|)
 argument_list|)
 operator|.

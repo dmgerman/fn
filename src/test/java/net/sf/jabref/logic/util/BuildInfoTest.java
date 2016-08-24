@@ -67,6 +67,9 @@ name|buildInfo
 operator|.
 name|getVersion
 argument_list|()
+operator|.
+name|getFullVersion
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -94,6 +97,9 @@ argument_list|,
 name|buildInfo
 operator|.
 name|getVersion
+argument_list|()
+operator|.
+name|getFullVersion
 argument_list|()
 argument_list|)
 expr_stmt|;

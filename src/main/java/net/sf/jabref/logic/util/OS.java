@@ -1,8 +1,4 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
-begin_comment
-comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
-end_comment
-
 begin_package
 DECL|package|net.sf.jabref.logic.util
 package|package
@@ -89,6 +85,34 @@ name|startsWith
 argument_list|(
 literal|"mac"
 argument_list|)
+decl_stmt|;
+comment|// File separator obtained from system
+DECL|field|FILE_SEPARATOR
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|FILE_SEPARATOR
+init|=
+name|System
+operator|.
+name|getProperty
+argument_list|(
+literal|"file.separator"
+argument_list|)
+decl_stmt|;
+comment|// Newlines
+comment|// will be overridden in initialization due to feature #857 @ JabRef.java
+DECL|field|NEWLINE
+specifier|public
+specifier|static
+name|String
+name|NEWLINE
+init|=
+name|System
+operator|.
+name|lineSeparator
+argument_list|()
 decl_stmt|;
 block|}
 end_class

@@ -1,8 +1,4 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
-begin_comment
-comment|/*  Copyright (C) 2003-2016 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
-end_comment
-
 begin_package
 DECL|package|net.sf.jabref.gui
 package|package
@@ -210,6 +206,16 @@ name|FieldContentSelector
 extends|extends
 name|JComponent
 block|{
+DECL|field|MAX_CONTENT_SELECTOR_WIDTH
+specifier|private
+specifier|static
+specifier|final
+name|int
+name|MAX_CONTENT_SELECTOR_WIDTH
+init|=
+literal|240
+decl_stmt|;
+comment|// The max width of the combobox for content selectors.
 DECL|field|comboBox
 specifier|private
 specifier|final
@@ -243,8 +249,8 @@ specifier|final
 name|String
 name|delimiter
 decl_stmt|;
-comment|/**      *      * Create a new FieldContentSelector.      *      * @param frame      *            The one JabRef-Frame.      * @param panel      *            The basepanel the entry-editor is on.      * @param owner      *            The window/frame/dialog which should be the owner of the      *            content selector dialog.      * @param editor      *            The entry editor which will be appended by the text selected      *            by the user from the combobox.      * @param metaData      *            The metadata that contains the list of items to display in the      *            combobox under the key Globals.SELECTOR_META_PREFIX +      *            editor.getFieldName().      * @param action      *            The action that will be performed to after an item from the      *            combobox has been appended to the text in the entryeditor.      * @param horizontalLayout      *            Whether to put a 2 pixel horizontal strut between combobox and      *            button.      */
-DECL|method|FieldContentSelector (JabRefFrame frame, final BasePanel panel, Window owner, final FieldEditor editor, final MetaData metaData, final AbstractAction action, boolean horizontalLayout, String delimiter)
+comment|/**      *      * Create a new FieldContentSelector.      *      * @param frame      *            The one JabRef-Frame.      * @param panel      *            The basepanel the entry-editor is on.      * @param owner      *            The window/frame/dialog which should be the owner of the      *            content selector dialog.      * @param editor      *            The entry editor which will be appended by the text selected      *            by the user from the combobox.      * @param action      *            The action that will be performed to after an item from the      *            combobox has been appended to the text in the entryeditor.      * @param horizontalLayout      *            Whether to put a 2 pixel horizontal strut between combobox and      *            button.      */
+DECL|method|FieldContentSelector (JabRefFrame frame, final BasePanel panel, Window owner, final FieldEditor editor, final AbstractAction action, boolean horizontalLayout, String delimiter)
 specifier|public
 name|FieldContentSelector
 parameter_list|(
@@ -261,10 +267,6 @@ parameter_list|,
 specifier|final
 name|FieldEditor
 name|editor
-parameter_list|,
-specifier|final
-name|MetaData
-name|metaData
 parameter_list|,
 specifier|final
 name|AbstractAction
@@ -287,7 +289,13 @@ name|this
 operator|.
 name|metaData
 operator|=
-name|metaData
+name|panel
+operator|.
+name|getBibDatabaseContext
+argument_list|()
+operator|.
+name|getMetaData
+argument_list|()
 expr_stmt|;
 name|this
 operator|.
@@ -331,8 +339,6 @@ name|parents
 operator|.
 name|width
 operator|>
-name|GUIGlobals
-operator|.
 name|MAX_CONTENT_SELECTOR_WIDTH
 condition|)
 block|{
@@ -340,8 +346,6 @@ name|parents
 operator|.
 name|width
 operator|=
-name|GUIGlobals
-operator|.
 name|MAX_CONTENT_SELECTOR_WIDTH
 expr_stmt|;
 block|}
@@ -597,8 +601,6 @@ argument_list|,
 name|panel
 argument_list|,
 literal|true
-argument_list|,
-name|metaData
 argument_list|,
 name|editor
 operator|.

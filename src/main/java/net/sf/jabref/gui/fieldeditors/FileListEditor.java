@@ -1,8 +1,4 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
-begin_comment
-comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
-end_comment
-
 begin_package
 DECL|package|net.sf.jabref.gui.fieldeditors
 package|package
@@ -169,16 +165,6 @@ operator|.
 name|util
 operator|.
 name|ArrayList
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Collection
 import|;
 end_import
 
@@ -608,6 +594,22 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
+name|util
+operator|.
+name|GUIUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|logic
 operator|.
 name|l10n
@@ -647,22 +649,6 @@ operator|.
 name|entry
 operator|.
 name|BibEntry
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|entry
-operator|.
-name|EntryUtil
 import|;
 end_import
 
@@ -868,16 +854,7 @@ operator|=
 operator|new
 name|FieldNameLabel
 argument_list|(
-literal|" "
-operator|+
-name|EntryUtil
-operator|.
-name|capitalizeFirst
-argument_list|(
 name|fieldName
-argument_list|)
-operator|+
-literal|" "
 argument_list|)
 expr_stmt|;
 name|tableModel
@@ -915,6 +892,13 @@ argument_list|(
 operator|new
 name|TableClickListener
 argument_list|()
+argument_list|)
+expr_stmt|;
+name|GUIUtil
+operator|.
+name|correctRowHeight
+argument_list|(
+name|this
 argument_list|)
 expr_stmt|;
 name|JButton
@@ -2805,7 +2789,7 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
-name|Collection
+name|List
 argument_list|<
 name|BibEntry
 argument_list|>
@@ -2814,11 +2798,6 @@ init|=
 operator|new
 name|ArrayList
 argument_list|<>
-argument_list|()
-decl_stmt|;
-name|entries
-operator|.
-name|addAll
 argument_list|(
 name|frame
 operator|.
@@ -2828,7 +2807,7 @@ operator|.
 name|getSelectedEntries
 argument_list|()
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 comment|// filesystem lookup
 name|JDialog
 name|dialog
@@ -2963,7 +2942,10 @@ name|void
 name|downloadFile
 parameter_list|()
 block|{
+name|Optional
+argument_list|<
 name|String
+argument_list|>
 name|bibtexKey
 init|=
 name|entryEditor
@@ -2971,14 +2953,16 @@ operator|.
 name|getEntry
 argument_list|()
 operator|.
-name|getCiteKey
+name|getCiteKeyOptional
 argument_list|()
 decl_stmt|;
 if|if
 condition|(
+operator|!
 name|bibtexKey
-operator|==
-literal|null
+operator|.
+name|isPresent
+argument_list|()
 condition|)
 block|{
 name|int
@@ -3044,7 +3028,7 @@ operator|.
 name|getEntry
 argument_list|()
 operator|.
-name|getCiteKey
+name|getCiteKeyOptional
 argument_list|()
 expr_stmt|;
 block|}
@@ -3066,6 +3050,11 @@ name|getBibDatabaseContext
 argument_list|()
 argument_list|,
 name|bibtexKey
+operator|.
+name|orElse
+argument_list|(
+literal|null
+argument_list|)
 argument_list|)
 decl_stmt|;
 try|try

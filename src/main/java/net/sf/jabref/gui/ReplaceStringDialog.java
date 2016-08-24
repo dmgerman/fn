@@ -1,8 +1,4 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
-begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
-end_comment
-
 begin_package
 DECL|package|net.sf.jabref.gui
 package|package
@@ -303,7 +299,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Dialog for creating or modifying groups. Operates directly on the  * Vector containing group information.  */
+comment|/**  * Dialog for replacing strings.  */
 end_comment
 
 begin_class
@@ -313,11 +309,11 @@ name|ReplaceStringDialog
 extends|extends
 name|JDialog
 block|{
-DECL|field|fields
+DECL|field|fieldsField
 specifier|private
 specifier|final
 name|JTextField
-name|fields
+name|fieldsField
 init|=
 operator|new
 name|JTextField
@@ -327,11 +323,11 @@ argument_list|,
 literal|30
 argument_list|)
 decl_stmt|;
-DECL|field|from
+DECL|field|fromField
 specifier|private
 specifier|final
 name|JTextField
-name|from
+name|fromField
 init|=
 operator|new
 name|JTextField
@@ -341,11 +337,11 @@ argument_list|,
 literal|30
 argument_list|)
 decl_stmt|;
-DECL|field|to
+DECL|field|toField
 specifier|private
 specifier|final
 name|JTextField
-name|to
+name|toField
 init|=
 operator|new
 name|JTextField
@@ -419,21 +415,21 @@ specifier|private
 name|boolean
 name|okPressed
 decl_stmt|;
-DECL|field|flds
+DECL|field|fieldStrings
 specifier|private
 name|String
 index|[]
-name|flds
+name|fieldStrings
 decl_stmt|;
-DECL|field|s1
+DECL|field|fromString
 specifier|private
 name|String
-name|s1
+name|fromString
 decl_stmt|;
-DECL|field|s2
+DECL|field|toString
 specifier|private
 name|String
-name|s2
+name|toString
 decl_stmt|;
 DECL|method|ReplaceStringDialog (JabRefFrame parent)
 specifier|public
@@ -481,30 +477,19 @@ expr_stmt|;
 name|ActionListener
 name|okListener
 init|=
-operator|new
-name|ActionListener
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|actionPerformed
-parameter_list|(
-name|ActionEvent
 name|e
-parameter_list|)
+lambda|->
 block|{
-name|s1
+name|fromString
 operator|=
-name|from
+name|fromField
 operator|.
 name|getText
 argument_list|()
 expr_stmt|;
-name|s2
+name|toString
 operator|=
-name|to
+name|toField
 operator|.
 name|getText
 argument_list|()
@@ -515,7 +500,7 @@ literal|""
 operator|.
 name|equals
 argument_list|(
-name|s1
+name|fromString
 argument_list|)
 condition|)
 block|{
@@ -525,9 +510,9 @@ name|okPressed
 operator|=
 literal|true
 expr_stmt|;
-name|flds
+name|fieldStrings
 operator|=
-name|fields
+name|fieldsField
 operator|.
 name|getText
 argument_list|()
@@ -543,7 +528,6 @@ expr_stmt|;
 name|dispose
 argument_list|()
 expr_stmt|;
-block|}
 block|}
 decl_stmt|;
 name|JButton
@@ -567,14 +551,14 @@ argument_list|(
 name|okListener
 argument_list|)
 expr_stmt|;
-name|to
+name|toField
 operator|.
 name|addActionListener
 argument_list|(
 name|okListener
 argument_list|)
 expr_stmt|;
-name|fields
+name|fieldsField
 operator|.
 name|addActionListener
 argument_list|(
@@ -769,8 +753,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Settings panel:
-comment|/*         con.weightx = 0;         con.insets = new Insets(3, 5, 3, 5);         con.anchor = GridBagConstraints.EAST;         con.fill = GridBagConstraints.NONE;         con.gridx = 0;         con.gridy = 2;         gbl.setConstraints(nf, con);         settings.add(nf);*/
-comment|//con.weightx = 1;
 name|GridBagConstraints
 name|con
 init|=
@@ -786,7 +768,6 @@ name|GridBagConstraints
 operator|.
 name|HORIZONTAL
 expr_stmt|;
-comment|//JSeparator sep = new JSeparator()
 name|con
 operator|.
 name|gridwidth
@@ -951,12 +932,11 @@ name|weightx
 operator|=
 literal|1
 expr_stmt|;
-comment|//con.insets = new Insets(3, 5, 3, 5);
 name|gbl
 operator|.
 name|setConstraints
 argument_list|(
-name|fields
+name|fieldsField
 argument_list|,
 name|con
 argument_list|)
@@ -965,7 +945,7 @@ name|settings
 operator|.
 name|add
 argument_list|(
-name|fields
+name|fieldsField
 argument_list|)
 expr_stmt|;
 name|con
@@ -1078,7 +1058,7 @@ name|gbl
 operator|.
 name|setConstraints
 argument_list|(
-name|from
+name|fromField
 argument_list|,
 name|con
 argument_list|)
@@ -1087,7 +1067,7 @@ name|main
 operator|.
 name|add
 argument_list|(
-name|from
+name|fromField
 argument_list|)
 expr_stmt|;
 name|con
@@ -1100,7 +1080,7 @@ name|gbl
 operator|.
 name|setConstraints
 argument_list|(
-name|to
+name|toField
 argument_list|,
 name|con
 argument_list|)
@@ -1109,7 +1089,7 @@ name|main
 operator|.
 name|add
 argument_list|(
-name|to
+name|toField
 argument_list|)
 expr_stmt|;
 comment|// Option buttons:
@@ -1244,7 +1224,6 @@ expr_stmt|;
 name|pack
 argument_list|()
 expr_stmt|;
-comment|//setSize(400, 170);
 name|this
 operator|.
 name|setLocationRelativeTo
@@ -1358,7 +1337,7 @@ control|(
 name|String
 name|fld
 range|:
-name|flds
+name|fieldStrings
 control|)
 block|{
 if|if
@@ -1427,10 +1406,13 @@ name|txt
 init|=
 name|be
 operator|.
-name|getField
+name|getFieldOptional
 argument_list|(
 name|fieldname
 argument_list|)
+operator|.
+name|get
+argument_list|()
 decl_stmt|;
 name|StringBuilder
 name|sb
@@ -1455,7 +1437,7 @@ decl_stmt|;
 name|int
 name|len1
 init|=
-name|s1
+name|fromString
 operator|.
 name|length
 argument_list|()
@@ -1469,7 +1451,7 @@ name|txt
 operator|.
 name|indexOf
 argument_list|(
-name|s1
+name|fromString
 argument_list|,
 name|piv
 argument_list|)
@@ -1500,7 +1482,7 @@ name|sb
 operator|.
 name|append
 argument_list|(
-name|s2
+name|toString
 argument_list|)
 expr_stmt|;
 comment|// Insert s2

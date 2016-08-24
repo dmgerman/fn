@@ -1,8 +1,4 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
-begin_comment
-comment|/*  Copyright (C) 2012-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
-end_comment
-
 begin_package
 DECL|package|net.sf.jabref.logic.formatter.bibtexfields
 package|package
@@ -26,7 +22,37 @@ name|java
 operator|.
 name|util
 operator|.
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Arrays
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
 import|;
 end_import
 
@@ -102,342 +128,324 @@ DECL|field|UNIT_LIST
 specifier|private
 specifier|static
 specifier|final
+name|List
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|UNIT_LIST
 init|=
-operator|new
-name|String
-index|[]
-block|{
+name|Arrays
+operator|.
+name|asList
+argument_list|(
 literal|"A"
-block|,
+argument_list|,
 comment|// Ampere
 literal|"Ah"
-block|,
+argument_list|,
 comment|// Ampere hours
 literal|"B"
-block|,
+argument_list|,
 comment|// Byte
 literal|"Bq"
-block|,
+argument_list|,
 comment|// Bequerel
 literal|"C"
-block|,
+argument_list|,
 comment|// Coulomb
 literal|"F"
-block|,
+argument_list|,
 comment|// Farad
 literal|"Gy"
-block|,
+argument_list|,
 comment|// Gray
 literal|"H"
-block|,
+argument_list|,
 comment|// Henry
 literal|"Hz"
-block|,
+argument_list|,
 comment|// Hertz
 literal|"J"
-block|,
+argument_list|,
 comment|// Joule
 literal|"K"
-block|,
+argument_list|,
 comment|// Kelvin
 literal|"N"
-block|,
+argument_list|,
 comment|// Newton
 literal|"\\$\\\\Omega\\$"
-block|,
+argument_list|,
 comment|// Ohm
 literal|"Pa"
-block|,
+argument_list|,
 comment|// Pascal
 literal|"S"
-block|,
+argument_list|,
 comment|// Siemens, Samples
 literal|"Sa"
-block|,
+argument_list|,
 comment|// Samples
 literal|"Sv"
-block|,
+argument_list|,
 comment|// Sv
 literal|"T"
-block|,
+argument_list|,
 comment|// Tesla
 literal|"V"
-block|,
+argument_list|,
 comment|// Volt
 literal|"VA"
-block|,
+argument_list|,
 comment|// Volt ampere
 literal|"W"
-block|,
+argument_list|,
 comment|// Watt
 literal|"Wb"
-block|,
+argument_list|,
 comment|// Weber
 literal|"Wh"
-block|,
+argument_list|,
 comment|// Watt hours
 literal|"bar"
-block|,
+argument_list|,
 comment|// bar
 literal|"b"
-block|,
+argument_list|,
 comment|// bit
 literal|"cd"
-block|,
+argument_list|,
 comment|// candela
 literal|"dB"
-block|,
+argument_list|,
 comment|// decibel
 literal|"dBm"
-block|,
+argument_list|,
 comment|// decibel
 literal|"dBc"
-block|,
+argument_list|,
 comment|//decibel
 literal|"eV"
-block|,
+argument_list|,
 comment|// electron volts
 literal|"inch"
-block|,
+argument_list|,
 comment|// inch
 literal|"kat"
-block|,
+argument_list|,
 comment|// katal
 literal|"lm"
-block|,
+argument_list|,
 comment|// lumen
 literal|"lx"
-block|,
+argument_list|,
 comment|// lux
 literal|"m"
-block|,
+argument_list|,
 comment|// meters
 literal|"mol"
-block|,
+argument_list|,
 comment|// mol
 literal|"rad"
-block|,
+argument_list|,
 comment|// radians
 literal|"s"
-block|,
+argument_list|,
 comment|// seconds
 literal|"sr"
-block|,
 comment|// steradians
-block|}
+argument_list|)
 decl_stmt|;
 DECL|field|UNIT_PREFIX_LIST
 specifier|private
 specifier|static
 specifier|final
+name|List
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|UNIT_PREFIX_LIST
 init|=
-operator|new
-name|String
-index|[]
-block|{
+name|Arrays
+operator|.
+name|asList
+argument_list|(
 literal|"y"
-block|,
+argument_list|,
 comment|// yocto
 literal|"z"
-block|,
+argument_list|,
 comment|// zepto
 literal|"a"
-block|,
+argument_list|,
 comment|// atto
 literal|"f"
-block|,
+argument_list|,
 comment|// femto
 literal|"p"
-block|,
+argument_list|,
 comment|// pico
 literal|"n"
-block|,
+argument_list|,
 comment|// nano
 literal|"\\$\\\\mu\\$"
-block|,
+argument_list|,
 comment|// micro
 literal|"u"
-block|,
+argument_list|,
 comment|// micro
 literal|"m"
-block|,
+argument_list|,
 comment|// milli
 literal|"c"
-block|,
+argument_list|,
 comment|// centi
 literal|"d"
-block|,
+argument_list|,
 comment|// deci
 literal|""
-block|,
+argument_list|,
 comment|// no prefix
 literal|"da"
-block|,
+argument_list|,
 comment|// deca
 literal|"h"
-block|,
+argument_list|,
 comment|// hekto
 literal|"k"
-block|,
+argument_list|,
 comment|// kilo
 literal|"M"
-block|,
+argument_list|,
 comment|// mega
 literal|"G"
-block|,
+argument_list|,
 comment|// giga
 literal|"T"
-block|,
+argument_list|,
 comment|// tera
 literal|"P"
-block|,
+argument_list|,
 comment|// peta
 literal|"E"
-block|,
+argument_list|,
 comment|// exa
 literal|"Z"
-block|,
+argument_list|,
 comment|// zetta
 literal|"Y"
-block|,
 comment|// yotta
-block|}
+argument_list|)
 decl_stmt|;
-DECL|field|UNIT_COMBINATIONS
+DECL|field|prefixUnitCombinations
 specifier|private
-specifier|static
 specifier|final
+name|List
+argument_list|<
 name|String
-index|[]
-name|UNIT_COMBINATIONS
+argument_list|>
+name|prefixUnitCombinations
 decl_stmt|;
-static|static
+DECL|method|UnitsToLatexFormatter ()
+specifier|public
+name|UnitsToLatexFormatter
+parameter_list|()
 block|{
-name|int
-name|uLLength
-init|=
-name|UnitsToLatexFormatter
-operator|.
-name|UNIT_LIST
-operator|.
-name|length
-decl_stmt|;
-name|int
-name|uPLLength
-init|=
-name|UnitsToLatexFormatter
-operator|.
-name|UNIT_PREFIX_LIST
-operator|.
-name|length
-decl_stmt|;
-name|int
-name|uCLength
-init|=
-name|uLLength
-operator|*
-name|uPLLength
-decl_stmt|;
-name|UNIT_COMBINATIONS
+name|prefixUnitCombinations
 operator|=
 operator|new
-name|String
-index|[
-name|uCLength
-index|]
-expr_stmt|;
-for|for
-control|(
-name|int
-name|i
-init|=
-literal|0
-init|;
-name|i
-operator|<
-name|uLLength
-condition|;
-name|i
-operator|++
-control|)
-block|{
-for|for
-control|(
-name|int
-name|j
-init|=
-literal|0
-init|;
-name|j
-operator|<
-name|uPLLength
-condition|;
-name|j
-operator|++
-control|)
-block|{
-name|UnitsToLatexFormatter
-operator|.
-name|UNIT_COMBINATIONS
-index|[
-operator|(
-name|i
-operator|*
-name|uPLLength
-operator|)
-operator|+
-name|j
-index|]
-operator|=
-name|UnitsToLatexFormatter
-operator|.
-name|UNIT_PREFIX_LIST
-index|[
-name|j
-index|]
-operator|+
+name|ArrayList
+argument_list|<>
+argument_list|(
 name|UnitsToLatexFormatter
 operator|.
 name|UNIT_LIST
-index|[
-name|i
-index|]
+operator|.
+name|size
+argument_list|()
+operator|*
+name|UnitsToLatexFormatter
+operator|.
+name|UNIT_PREFIX_LIST
+operator|.
+name|size
+argument_list|()
+argument_list|)
+expr_stmt|;
+for|for
+control|(
+name|String
+name|unit
+range|:
+name|UnitsToLatexFormatter
+operator|.
+name|UNIT_LIST
+control|)
+block|{
+for|for
+control|(
+name|String
+name|prefix
+range|:
+name|UnitsToLatexFormatter
+operator|.
+name|UNIT_PREFIX_LIST
+control|)
+block|{
+name|prefixUnitCombinations
+operator|.
+name|add
+argument_list|(
+name|prefix
+operator|+
+name|unit
+argument_list|)
 expr_stmt|;
 block|}
 block|}
-block|}
-DECL|method|format (String text, String[] listOfWords)
-specifier|private
-specifier|static
-name|String
-name|format
-parameter_list|(
-name|String
-name|text
-parameter_list|,
-name|String
-index|[]
-name|listOfWords
-parameter_list|)
-block|{
-name|Arrays
+name|Collections
 operator|.
 name|sort
 argument_list|(
-name|listOfWords
+name|prefixUnitCombinations
 argument_list|,
 operator|new
 name|StringLengthComparator
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// LengthComparator from ProtectTermsFormatter.java
+comment|// Sort based on string length
+block|}
+annotation|@
+name|Override
+DECL|method|format (String text)
+specifier|public
+name|String
+name|format
+parameter_list|(
+name|String
+name|text
+parameter_list|)
+block|{
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|text
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|text
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+return|return
+name|text
+return|;
+block|}
 comment|// Replace the hyphen in 12-bit etc with a non-breaking hyphen, will also avoid bad casing of 12-Bit
 name|String
 name|result
@@ -469,7 +477,7 @@ control|(
 name|String
 name|listOfWord
 range|:
-name|listOfWords
+name|prefixUnitCombinations
 control|)
 block|{
 comment|// Add {} if the character before is a space, -, /, (, [, or } or if it is at the start of the string but not if it is followed by a }
@@ -524,47 +532,6 @@ comment|// Replace space with a hard space
 block|}
 return|return
 name|result
-return|;
-block|}
-annotation|@
-name|Override
-DECL|method|format (String text)
-specifier|public
-name|String
-name|format
-parameter_list|(
-name|String
-name|text
-parameter_list|)
-block|{
-name|Objects
-operator|.
-name|requireNonNull
-argument_list|(
-name|text
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
-name|text
-operator|.
-name|isEmpty
-argument_list|()
-condition|)
-block|{
-return|return
-name|text
-return|;
-block|}
-return|return
-name|format
-argument_list|(
-name|text
-argument_list|,
-name|UnitsToLatexFormatter
-operator|.
-name|UNIT_COMBINATIONS
-argument_list|)
 return|;
 block|}
 annotation|@

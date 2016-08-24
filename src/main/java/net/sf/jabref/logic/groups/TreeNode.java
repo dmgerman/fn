@@ -123,6 +123,7 @@ decl_stmt|;
 comment|/**      * Array of children, may be empty if this node has no children (but never null)      */
 DECL|field|children
 specifier|private
+specifier|final
 name|List
 argument_list|<
 name|T
@@ -464,12 +465,14 @@ operator|.
 name|isPresent
 argument_list|()
 operator|&&
+operator|(
 name|oldParent
 operator|.
 name|get
 argument_list|()
 operator|==
 name|target
+operator|)
 condition|)
 block|{
 name|this
@@ -762,16 +765,20 @@ name|index
 parameter_list|)
 block|{
 return|return
+operator|(
 name|index
 operator|>=
 literal|0
+operator|)
 operator|&&
+operator|(
 name|index
 operator|<
 name|children
 operator|.
 name|size
 argument_list|()
+operator|)
 return|;
 block|}
 comment|/**      * Returns true if this node is the root of the tree.      * The root is the only node in the tree with an empty parent; every tree has exactly one root.      *      * @return true if this node is the root of its tree      */
@@ -1552,7 +1559,9 @@ name|onDescendantChanged
 init|=
 name|t
 lambda|->
-block|{}
+block|{
+comment|/* Do nothing */
+block|}
 decl_stmt|;
 comment|/**      * Adds the given function to the list of subscribers which are notified when something changes in the subtree.      *      * The following events are supported (the text in parentheses specifies which node is passed as the source):      *  - addChild (new parent)      *  - removeChild (old parent)      *  - move (old parent and new parent)      * @param subscriber function to be invoked upon a change      */
 DECL|method|subscribeToDescendantChanged (Consumer<T> subscriber)

@@ -38,6 +38,24 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
+name|importer
+operator|.
+name|ImportFormatPreferences
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
 name|importer
 operator|.
 name|ParserResult
@@ -51,6 +69,8 @@ operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|logic
 operator|.
 name|importer
 operator|.
@@ -98,12 +118,15 @@ specifier|public
 class|class
 name|BibtexTestData
 block|{
-DECL|method|getBibtexEntry ()
+DECL|method|getBibtexEntry (ImportFormatPreferences importFormatPreferences)
 specifier|public
 specifier|static
 name|BibEntry
 name|getBibtexEntry
-parameter_list|()
+parameter_list|(
+name|ImportFormatPreferences
+name|importFormatPreferences
+parameter_list|)
 throws|throws
 name|IOException
 block|{
@@ -111,7 +134,9 @@ name|BibDatabase
 name|database
 init|=
 name|getBibtexDatabase
-argument_list|()
+argument_list|(
+name|importFormatPreferences
+argument_list|)
 decl_stmt|;
 return|return
 name|database
@@ -120,14 +145,20 @@ name|getEntryByKey
 argument_list|(
 literal|"HipKro03"
 argument_list|)
+operator|.
+name|get
+argument_list|()
 return|;
 block|}
-DECL|method|getBibtexDatabase ()
+DECL|method|getBibtexDatabase (ImportFormatPreferences importFormatPreferences)
 specifier|public
 specifier|static
 name|BibDatabase
 name|getBibtexDatabase
-parameter_list|()
+parameter_list|(
+name|ImportFormatPreferences
+name|importFormatPreferences
+parameter_list|)
 throws|throws
 name|IOException
 block|{
@@ -175,6 +206,8 @@ operator|new
 name|BibtexParser
 argument_list|(
 name|reader
+argument_list|,
+name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|ParserResult

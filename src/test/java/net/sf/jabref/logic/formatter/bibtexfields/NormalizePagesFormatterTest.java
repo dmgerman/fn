@@ -32,6 +32,16 @@ name|org
 operator|.
 name|junit
 operator|.
+name|Before
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Test
 import|;
 end_import
@@ -48,14 +58,24 @@ name|NormalizePagesFormatterTest
 block|{
 DECL|field|formatter
 specifier|private
-specifier|final
 name|NormalizePagesFormatter
 name|formatter
-init|=
+decl_stmt|;
+annotation|@
+name|Before
+DECL|method|setUp ()
+specifier|public
+name|void
+name|setUp
+parameter_list|()
+block|{
+name|formatter
+operator|=
 operator|new
 name|NormalizePagesFormatter
 argument_list|()
-decl_stmt|;
+expr_stmt|;
+block|}
 annotation|@
 name|Test
 DECL|method|formatSinglePageResultsInNoChange ()
@@ -138,10 +158,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|removeWhitespaceForSinglePageNumber ()
+DECL|method|removeWhitespace ()
 specifier|public
 name|void
-name|removeWhitespaceForSinglePageNumber
+name|removeWhitespace
 parameter_list|()
 block|{
 name|expectCorrect
@@ -149,6 +169,13 @@ argument_list|(
 literal|"   1  "
 argument_list|,
 literal|"1"
+argument_list|)
+expr_stmt|;
+name|expectCorrect
+argument_list|(
+literal|"   1 -- 2  "
+argument_list|,
+literal|"1--2"
 argument_list|)
 expr_stmt|;
 block|}

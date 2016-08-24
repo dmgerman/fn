@@ -1,8 +1,4 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
-begin_comment
-comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
-end_comment
-
 begin_package
 DECL|package|net.sf.jabref.model.entry
 package|package
@@ -438,6 +434,97 @@ parameter_list|()
 block|{
 return|return
 name|hasChanged
+return|;
+block|}
+comment|/*     * Returns user comments (arbitrary text before the string) if there are any. If not returns the empty string      */
+DECL|method|getUserComments ()
+specifier|public
+name|String
+name|getUserComments
+parameter_list|()
+block|{
+if|if
+condition|(
+name|parsedSerialization
+operator|!=
+literal|null
+condition|)
+block|{
+try|try
+block|{
+comment|// get the text before the string
+name|String
+name|prolog
+init|=
+name|parsedSerialization
+operator|.
+name|substring
+argument_list|(
+literal|0
+argument_list|,
+name|parsedSerialization
+operator|.
+name|indexOf
+argument_list|(
+literal|'@'
+argument_list|)
+argument_list|)
+decl_stmt|;
+comment|// delete trailing whitespaces (between string and text)
+name|prolog
+operator|=
+name|prolog
+operator|.
+name|replaceFirst
+argument_list|(
+literal|"\\s+$"
+argument_list|,
+literal|""
+argument_list|)
+expr_stmt|;
+comment|// if there is any non whitespace text, write it with proper line separation
+if|if
+condition|(
+name|prolog
+operator|.
+name|length
+argument_list|()
+operator|>
+literal|0
+condition|)
+block|{
+return|return
+name|prolog
+return|;
+block|}
+block|}
+catch|catch
+parameter_list|(
+name|StringIndexOutOfBoundsException
+name|ignore
+parameter_list|)
+block|{
+comment|// if this occurs a broken parsed serialization has been set, so just do nothing
+block|}
+block|}
+return|return
+literal|""
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|toString ()
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+name|name
+operator|+
+literal|"="
+operator|+
+name|content
 return|;
 block|}
 block|}

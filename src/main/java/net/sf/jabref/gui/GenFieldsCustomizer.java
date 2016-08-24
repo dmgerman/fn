@@ -1,8 +1,4 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
-begin_comment
-comment|/*  Copyright (C) 2003-2016 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
-end_comment
-
 begin_package
 DECL|package|net.sf.jabref.gui
 package|package
@@ -218,18 +214,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|JabRefPreferences
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|gui
 operator|.
 name|entryeditor
@@ -264,9 +248,9 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|help
+name|keyboard
 operator|.
-name|HelpFiles
+name|KeyBinding
 import|;
 end_import
 
@@ -278,11 +262,27 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
+name|logic
 operator|.
-name|keyboard
+name|bibtexkeypattern
 operator|.
-name|KeyBinding
+name|BibtexKeyPatternUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|help
+operator|.
+name|HelpFile
 import|;
 end_import
 
@@ -310,11 +310,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|preferences
 operator|.
-name|labelpattern
-operator|.
-name|LabelPatternUtil
+name|JabRefPreferences
 import|;
 end_import
 
@@ -517,7 +515,7 @@ operator|=
 operator|new
 name|HelpAction
 argument_list|(
-name|HelpFiles
+name|HelpFile
 operator|.
 name|GENERAL_FIELDS
 argument_list|)
@@ -1160,7 +1158,7 @@ block|}
 name|String
 name|testString
 init|=
-name|LabelPatternUtil
+name|BibtexKeyPatternUtil
 operator|.
 name|checkLegalKey
 argument_list|(
@@ -1168,6 +1166,17 @@ name|parts
 index|[
 literal|1
 index|]
+argument_list|,
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|ENFORCE_LEGAL_BIBTEX_KEY
+argument_list|)
 argument_list|)
 decl_stmt|;
 if|if

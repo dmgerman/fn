@@ -1,16 +1,4 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
-begin_comment
-comment|/*  Copyright (C) 2003-2011 Raik Nagel     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
-end_comment
-
-begin_comment
-comment|// function : wrapper and service class for the DatePicker handling at the
-end_comment
-
-begin_comment
-comment|//            EntryEditor
-end_comment
-
 begin_package
 DECL|package|net.sf.jabref.gui.date
 package|package
@@ -98,6 +86,18 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|Globals
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|gui
 operator|.
 name|fieldeditors
@@ -142,6 +142,20 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|preferences
+operator|.
+name|JabRefPreferences
+import|;
+end_import
+
+begin_import
+import|import
 name|com
 operator|.
 name|michaelbaranov
@@ -153,6 +167,10 @@ operator|.
 name|DatePicker
 import|;
 end_import
+
+begin_comment
+comment|/**  * wrapper and service class for the DatePicker handling at the EntryEditor  */
+end_comment
 
 begin_class
 DECL|class|DatePickerButton
@@ -188,14 +206,29 @@ specifier|final
 name|FieldEditor
 name|editor
 decl_stmt|;
-DECL|method|DatePickerButton (FieldEditor pEditor)
+DECL|field|isoFormat
+specifier|private
+specifier|final
+name|boolean
+name|isoFormat
+decl_stmt|;
+DECL|method|DatePickerButton (FieldEditor pEditor, Boolean isoFormat)
 specifier|public
 name|DatePickerButton
 parameter_list|(
 name|FieldEditor
 name|pEditor
+parameter_list|,
+name|Boolean
+name|isoFormat
 parameter_list|)
 block|{
+name|this
+operator|.
+name|isoFormat
+operator|=
+name|isoFormat
+expr_stmt|;
 name|datePicker
 operator|.
 name|showButtonOnly
@@ -268,12 +301,18 @@ operator|!=
 literal|null
 condition|)
 block|{
+if|if
+condition|(
+name|isoFormat
+condition|)
+block|{
 name|editor
 operator|.
 name|setText
 argument_list|(
-operator|new
 name|EasyDateFormat
+operator|.
+name|isoDateFormat
 argument_list|()
 operator|.
 name|getDateAt
@@ -282,6 +321,36 @@ name|date
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+name|editor
+operator|.
+name|setText
+argument_list|(
+name|EasyDateFormat
+operator|.
+name|fromTimeStampFormat
+argument_list|(
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|get
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|TIME_STAMP_FORMAT
+argument_list|)
+argument_list|)
+operator|.
+name|getDateAt
+argument_list|(
+name|date
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 comment|// Set focus to editor component after changing its text:
 operator|new
 name|FocusRequester

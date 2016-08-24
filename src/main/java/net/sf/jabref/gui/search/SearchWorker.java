@@ -496,7 +496,8 @@ expr_stmt|;
 block|}
 name|basePanel
 operator|.
-name|mainTable
+name|getMainTable
+argument_list|()
 operator|.
 name|getTableModel
 argument_list|()
@@ -521,7 +522,8 @@ name|FLOAT
 case|:
 name|basePanel
 operator|.
-name|mainTable
+name|getMainTable
+argument_list|()
 operator|.
 name|getTableModel
 argument_list|()
@@ -541,7 +543,8 @@ name|FILTER
 case|:
 name|basePanel
 operator|.
-name|mainTable
+name|getMainTable
+argument_list|()
 operator|.
 name|getTableModel
 argument_list|()
@@ -579,7 +582,8 @@ operator|&&
 operator|(
 name|basePanel
 operator|.
-name|mainTable
+name|getMainTable
+argument_list|()
 operator|.
 name|getRowCount
 argument_list|()
@@ -590,7 +594,8 @@ condition|)
 block|{
 name|basePanel
 operator|.
-name|mainTable
+name|getMainTable
+argument_list|()
 operator|.
 name|setSelected
 argument_list|(

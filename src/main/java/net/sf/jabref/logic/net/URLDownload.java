@@ -1,8 +1,4 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
-begin_comment
-comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
-end_comment
-
 begin_package
 DECL|package|net.sf.jabref.logic.net
 package|package
@@ -154,16 +150,6 @@ name|java
 operator|.
 name|net
 operator|.
-name|CookieHandler
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|net
-operator|.
 name|MalformedURLException
 import|;
 end_import
@@ -217,18 +203,6 @@ operator|.
 name|util
 operator|.
 name|Map
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|Globals
 import|;
 end_import
 
@@ -358,11 +332,6 @@ argument_list|,
 literal|"JabRef"
 argument_list|)
 expr_stmt|;
-name|URLDownload
-operator|.
-name|setCookieHandler
-argument_list|()
-expr_stmt|;
 block|}
 DECL|method|getSource ()
 specifier|public
@@ -373,47 +342,6 @@ block|{
 return|return
 name|source
 return|;
-block|}
-DECL|method|setCookieHandler ()
-specifier|private
-specifier|static
-name|void
-name|setCookieHandler
-parameter_list|()
-block|{
-try|try
-block|{
-comment|// This should set up JabRef to receive cookies properly
-if|if
-condition|(
-name|CookieHandler
-operator|.
-name|getDefault
-argument_list|()
-operator|==
-literal|null
-condition|)
-block|{
-name|CookieHandler
-operator|.
-name|setDefault
-argument_list|(
-operator|new
-name|CookieHandlerImpl
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-catch|catch
-parameter_list|(
-name|SecurityException
-name|ignored
-parameter_list|)
-block|{
-comment|// Setting or getting the system default cookie handler is forbidden
-comment|// In this case cookie handling is not possible.
-block|}
 block|}
 DECL|method|determineMimeType ()
 specifier|public
@@ -608,27 +536,7 @@ return|return
 name|connection
 return|;
 block|}
-comment|/**      * Encoding will be determined from JabRefPreferences.DEFAULT_ENCODING      *      * @return the downloaded string      * @throws IOException      */
-DECL|method|downloadToString ()
-specifier|public
-name|String
-name|downloadToString
-parameter_list|()
-throws|throws
-name|IOException
-block|{
-return|return
-name|downloadToString
-argument_list|(
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getDefaultEncoding
-argument_list|()
-argument_list|)
-return|;
-block|}
+comment|/**      *      * @return the downloaded string      * @throws IOException      */
 DECL|method|downloadToString (Charset encoding)
 specifier|public
 name|String

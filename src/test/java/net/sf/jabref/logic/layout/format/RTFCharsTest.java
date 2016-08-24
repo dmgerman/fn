@@ -38,7 +38,27 @@ name|org
 operator|.
 name|junit
 operator|.
+name|After
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Assert
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Before
 import|;
 end_import
 
@@ -68,6 +88,39 @@ specifier|public
 class|class
 name|RTFCharsTest
 block|{
+DECL|field|formatter
+specifier|private
+name|LayoutFormatter
+name|formatter
+decl_stmt|;
+annotation|@
+name|Before
+DECL|method|setUp ()
+specifier|public
+name|void
+name|setUp
+parameter_list|()
+block|{
+name|formatter
+operator|=
+operator|new
+name|RTFChars
+argument_list|()
+expr_stmt|;
+block|}
+annotation|@
+name|After
+DECL|method|tearDown ()
+specifier|public
+name|void
+name|tearDown
+parameter_list|()
+block|{
+name|formatter
+operator|=
+literal|null
+expr_stmt|;
+block|}
 annotation|@
 name|Test
 DECL|method|testBasicFormat ()
@@ -76,20 +129,13 @@ name|void
 name|testBasicFormat
 parameter_list|()
 block|{
-name|LayoutFormatter
-name|layout
-init|=
-operator|new
-name|RTFChars
-argument_list|()
-decl_stmt|;
 name|Assert
 operator|.
 name|assertEquals
 argument_list|(
 literal|""
 argument_list|,
-name|layout
+name|formatter
 operator|.
 name|format
 argument_list|(
@@ -103,7 +149,7 @@ name|assertEquals
 argument_list|(
 literal|"hallo"
 argument_list|,
-name|layout
+name|formatter
 operator|.
 name|format
 argument_list|(
@@ -118,7 +164,7 @@ name|assertEquals
 argument_list|(
 literal|"R\\u233?flexions sur le timing de la quantit\\u233?"
 argument_list|,
-name|layout
+name|formatter
 operator|.
 name|format
 argument_list|(
@@ -132,7 +178,7 @@ name|assertEquals
 argument_list|(
 literal|"h\\u225allo"
 argument_list|,
-name|layout
+name|formatter
 operator|.
 name|format
 argument_list|(
@@ -146,7 +192,7 @@ name|assertEquals
 argument_list|(
 literal|"h\\u225allo"
 argument_list|,
-name|layout
+name|formatter
 operator|.
 name|format
 argument_list|(
@@ -163,20 +209,13 @@ name|void
 name|testLaTeXHighlighting
 parameter_list|()
 block|{
-name|LayoutFormatter
-name|layout
-init|=
-operator|new
-name|RTFChars
-argument_list|()
-decl_stmt|;
 name|Assert
 operator|.
 name|assertEquals
 argument_list|(
 literal|"{\\i hallo}"
 argument_list|,
-name|layout
+name|formatter
 operator|.
 name|format
 argument_list|(
@@ -190,7 +229,7 @@ name|assertEquals
 argument_list|(
 literal|"{\\i hallo}"
 argument_list|,
-name|layout
+name|formatter
 operator|.
 name|format
 argument_list|(
@@ -202,9 +241,23 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
+literal|"An article title with {\\i a book title} emphasized"
+argument_list|,
+name|formatter
+operator|.
+name|format
+argument_list|(
+literal|"An article title with \\emph{a book title} emphasized"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|Assert
+operator|.
+name|assertEquals
+argument_list|(
 literal|"{\\i hallo}"
 argument_list|,
-name|layout
+name|formatter
 operator|.
 name|format
 argument_list|(
@@ -218,7 +271,7 @@ name|assertEquals
 argument_list|(
 literal|"{\\i hallo}"
 argument_list|,
-name|layout
+name|formatter
 operator|.
 name|format
 argument_list|(
@@ -232,7 +285,7 @@ name|assertEquals
 argument_list|(
 literal|"{\\b hallo}"
 argument_list|,
-name|layout
+name|formatter
 operator|.
 name|format
 argument_list|(
@@ -246,7 +299,7 @@ name|assertEquals
 argument_list|(
 literal|"{\\b hallo}"
 argument_list|,
-name|layout
+name|formatter
 operator|.
 name|format
 argument_list|(
@@ -265,20 +318,13 @@ name|void
 name|testComplicated
 parameter_list|()
 block|{
-name|LayoutFormatter
-name|layout
-init|=
-operator|new
-name|RTFChars
-argument_list|()
-decl_stmt|;
 name|Assert
 operator|.
 name|assertEquals
 argument_list|(
 literal|"R\\u233eflexions sur le timing de la quantit\\u233e \\u230ae should be \\u230ae"
 argument_list|,
-name|layout
+name|formatter
 operator|.
 name|format
 argument_list|(
@@ -292,7 +338,7 @@ name|assertEquals
 argument_list|(
 literal|"h\\u225all{\\uc2\\u339oe}"
 argument_list|,
-name|layout
+name|formatter
 operator|.
 name|format
 argument_list|(
@@ -311,20 +357,13 @@ name|void
 name|testSpecialCharacters
 parameter_list|()
 block|{
-name|LayoutFormatter
-name|layout
-init|=
-operator|new
-name|RTFChars
-argument_list|()
-decl_stmt|;
 name|Assert
 operator|.
 name|assertEquals
 argument_list|(
 literal|"\\u243o"
 argument_list|,
-name|layout
+name|formatter
 operator|.
 name|format
 argument_list|(
@@ -339,7 +378,7 @@ name|assertEquals
 argument_list|(
 literal|"\\'f2"
 argument_list|,
-name|layout
+name|formatter
 operator|.
 name|format
 argument_list|(
@@ -354,7 +393,7 @@ name|assertEquals
 argument_list|(
 literal|"\\'f4"
 argument_list|,
-name|layout
+name|formatter
 operator|.
 name|format
 argument_list|(
@@ -369,7 +408,7 @@ name|assertEquals
 argument_list|(
 literal|"\\'f6"
 argument_list|,
-name|layout
+name|formatter
 operator|.
 name|format
 argument_list|(
@@ -384,7 +423,7 @@ name|assertEquals
 argument_list|(
 literal|"\\u245o"
 argument_list|,
-name|layout
+name|formatter
 operator|.
 name|format
 argument_list|(
@@ -399,7 +438,7 @@ name|assertEquals
 argument_list|(
 literal|"\\u333o"
 argument_list|,
-name|layout
+name|formatter
 operator|.
 name|format
 argument_list|(
@@ -413,7 +452,7 @@ name|assertEquals
 argument_list|(
 literal|"\\u334O"
 argument_list|,
-name|layout
+name|formatter
 operator|.
 name|format
 argument_list|(
@@ -427,7 +466,7 @@ name|assertEquals
 argument_list|(
 literal|"\\u231c"
 argument_list|,
-name|layout
+name|formatter
 operator|.
 name|format
 argument_list|(
@@ -442,7 +481,7 @@ name|assertEquals
 argument_list|(
 literal|"{\\uc2\\u339oe}"
 argument_list|,
-name|layout
+name|formatter
 operator|.
 name|format
 argument_list|(
@@ -456,7 +495,7 @@ name|assertEquals
 argument_list|(
 literal|"{\\uc2\\u338OE}"
 argument_list|,
-name|layout
+name|formatter
 operator|.
 name|format
 argument_list|(
@@ -470,7 +509,7 @@ name|assertEquals
 argument_list|(
 literal|"{\\uc2\\u230ae}"
 argument_list|,
-name|layout
+name|formatter
 operator|.
 name|format
 argument_list|(
@@ -485,7 +524,7 @@ name|assertEquals
 argument_list|(
 literal|"{\\uc2\\u198AE}"
 argument_list|,
-name|layout
+name|formatter
 operator|.
 name|format
 argument_list|(
@@ -500,7 +539,7 @@ name|assertEquals
 argument_list|(
 literal|""
 argument_list|,
-name|layout
+name|formatter
 operator|.
 name|format
 argument_list|(
@@ -515,7 +554,7 @@ name|assertEquals
 argument_list|(
 literal|""
 argument_list|,
-name|layout
+name|formatter
 operator|.
 name|format
 argument_list|(
@@ -530,7 +569,7 @@ name|assertEquals
 argument_list|(
 literal|""
 argument_list|,
-name|layout
+name|formatter
 operator|.
 name|format
 argument_list|(
@@ -545,7 +584,7 @@ name|assertEquals
 argument_list|(
 literal|""
 argument_list|,
-name|layout
+name|formatter
 operator|.
 name|format
 argument_list|(
@@ -559,7 +598,7 @@ name|assertEquals
 argument_list|(
 literal|""
 argument_list|,
-name|layout
+name|formatter
 operator|.
 name|format
 argument_list|(
@@ -574,7 +613,7 @@ name|assertEquals
 argument_list|(
 literal|""
 argument_list|,
-name|layout
+name|formatter
 operator|.
 name|format
 argument_list|(
@@ -589,7 +628,7 @@ name|assertEquals
 argument_list|(
 literal|""
 argument_list|,
-name|layout
+name|formatter
 operator|.
 name|format
 argument_list|(
@@ -604,7 +643,7 @@ name|assertEquals
 argument_list|(
 literal|""
 argument_list|,
-name|layout
+name|formatter
 operator|.
 name|format
 argument_list|(
@@ -619,7 +658,7 @@ name|assertEquals
 argument_list|(
 literal|""
 argument_list|,
-name|layout
+name|formatter
 operator|.
 name|format
 argument_list|(
@@ -634,7 +673,7 @@ name|assertEquals
 argument_list|(
 literal|""
 argument_list|,
-name|layout
+name|formatter
 operator|.
 name|format
 argument_list|(
@@ -649,7 +688,7 @@ name|assertEquals
 argument_list|(
 literal|""
 argument_list|,
-name|layout
+name|formatter
 operator|.
 name|format
 argument_list|(
@@ -663,7 +702,7 @@ name|assertEquals
 argument_list|(
 literal|""
 argument_list|,
-name|layout
+name|formatter
 operator|.
 name|format
 argument_list|(
@@ -677,7 +716,7 @@ name|assertEquals
 argument_list|(
 literal|"{\\uc2\\u223ss}"
 argument_list|,
-name|layout
+name|formatter
 operator|.
 name|format
 argument_list|(
@@ -692,7 +731,7 @@ name|assertEquals
 argument_list|(
 literal|""
 argument_list|,
-name|layout
+name|formatter
 operator|.
 name|format
 argument_list|(
@@ -707,7 +746,7 @@ name|assertEquals
 argument_list|(
 literal|""
 argument_list|,
-name|layout
+name|formatter
 operator|.
 name|format
 argument_list|(
@@ -722,7 +761,7 @@ name|assertEquals
 argument_list|(
 literal|""
 argument_list|,
-name|layout
+name|formatter
 operator|.
 name|format
 argument_list|(
@@ -736,7 +775,7 @@ name|assertEquals
 argument_list|(
 literal|""
 argument_list|,
-name|layout
+name|formatter
 operator|.
 name|format
 argument_list|(
@@ -750,7 +789,7 @@ name|assertEquals
 argument_list|(
 literal|""
 argument_list|,
-name|layout
+name|formatter
 operator|.
 name|format
 argument_list|(
@@ -765,7 +804,7 @@ name|assertEquals
 argument_list|(
 literal|""
 argument_list|,
-name|layout
+name|formatter
 operator|.
 name|format
 argument_list|(
@@ -780,7 +819,7 @@ name|assertEquals
 argument_list|(
 literal|""
 argument_list|,
-name|layout
+name|formatter
 operator|.
 name|format
 argument_list|(
@@ -795,7 +834,7 @@ name|assertEquals
 argument_list|(
 literal|""
 argument_list|,
-name|layout
+name|formatter
 operator|.
 name|format
 argument_list|(

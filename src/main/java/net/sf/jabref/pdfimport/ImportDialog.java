@@ -1,8 +1,4 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
-begin_comment
-comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
-end_comment
-
 begin_package
 DECL|package|net.sf.jabref.pdfimport
 package|package
@@ -242,18 +238,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|JabRefPreferences
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|logic
 operator|.
 name|l10n
@@ -277,6 +261,20 @@ operator|.
 name|strings
 operator|.
 name|StringUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|preferences
+operator|.
+name|JabRefPreferences
 import|;
 end_import
 
@@ -473,7 +471,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Import_metadata_from:"
+literal|"Import metadata from:"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -510,7 +508,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Choose_the_source_for_the_metadata_import"
+literal|"Choose the source for the metadata import"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -677,7 +675,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Create_blank_entry_linking_the_PDF"
+literal|"Create blank entry linking the PDF"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -690,7 +688,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Create_entry_based_on_XMP_data"
+literal|"Create entry based on XMP data"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -703,7 +701,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Create_entry_based_on_content"
+literal|"Create entry based on content"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -716,7 +714,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Only_attach_PDF"
+literal|"Only attach PDF"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -797,7 +795,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Create New Entry"
+literal|"Create new entry"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -836,7 +834,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Update_Existing_Entry"
+literal|"Update existing entry"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1030,7 +1028,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Import_Metadata_From_PDF"
+literal|"Import metadata from PDF"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1168,7 +1166,7 @@ name|getInt
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|PREF_IMPORT_DEFAULT_PDF_IMPORT_STYLE
+name|IMPORT_DEFAULT_PDF_IMPORT_STYLE
 argument_list|)
 condition|)
 block|{
@@ -1259,7 +1257,7 @@ name|putInt
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|PREF_IMPORT_DEFAULT_PDF_IMPORT_STYLE
+name|IMPORT_DEFAULT_PDF_IMPORT_STYLE
 argument_list|,
 name|this
 operator|.
@@ -1283,7 +1281,7 @@ name|putBoolean
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|PREF_IMPORT_ALWAYSUSE
+name|IMPORT_ALWAYSUSE
 argument_list|,
 literal|true
 argument_list|)

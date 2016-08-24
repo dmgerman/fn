@@ -1,8 +1,4 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
-begin_comment
-comment|/*  Copyright (C) 2003-2016 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
-end_comment
-
 begin_package
 DECL|package|net.sf.jabref.logic.layout
 package|package
@@ -75,22 +71,6 @@ operator|.
 name|util
 operator|.
 name|Objects
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
-name|journals
-operator|.
-name|JournalAbbreviationRepository
 import|;
 end_import
 
@@ -220,26 +200,26 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
-DECL|field|repository
+DECL|field|prefs
 specifier|private
 specifier|final
-name|JournalAbbreviationRepository
-name|repository
+name|LayoutFormatterPreferences
+name|prefs
 decl_stmt|;
 DECL|field|endOfFile
 specifier|private
 name|boolean
 name|endOfFile
 decl_stmt|;
-DECL|method|LayoutHelper (Reader in, JournalAbbreviationRepository repository)
+DECL|method|LayoutHelper (Reader in, LayoutFormatterPreferences prefs)
 specifier|public
 name|LayoutHelper
 parameter_list|(
 name|Reader
 name|in
 parameter_list|,
-name|JournalAbbreviationRepository
-name|repository
+name|LayoutFormatterPreferences
+name|prefs
 parameter_list|)
 block|{
 name|this
@@ -259,13 +239,13 @@ argument_list|)
 expr_stmt|;
 name|this
 operator|.
-name|repository
+name|prefs
 operator|=
 name|Objects
 operator|.
 name|requireNonNull
 argument_list|(
-name|repository
+name|prefs
 argument_list|)
 expr_stmt|;
 block|}
@@ -363,7 +343,7 @@ name|Layout
 argument_list|(
 name|parsedEntries
 argument_list|,
-name|repository
+name|prefs
 argument_list|)
 return|;
 block|}
@@ -1391,7 +1371,7 @@ name|name
 argument_list|)
 condition|)
 block|{
-comment|// Print the name of the database bib file.
+comment|// Print the name of the database BIB file.
 comment|// This is only supported in begin/end layouts, not in
 comment|// entry layouts.
 name|parsedEntries
@@ -1422,7 +1402,7 @@ name|name
 argument_list|)
 condition|)
 block|{
-comment|// Print the full path of the database bib file.
+comment|// Print the full path of the database BIB file.
 comment|// This is only supported in begin/end layouts, not in
 comment|// entry layouts.
 name|parsedEntries
