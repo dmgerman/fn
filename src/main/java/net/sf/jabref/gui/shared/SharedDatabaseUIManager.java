@@ -273,7 +273,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"The connection to the server has been determinated."
+literal|"The connection to the server has been terminated."
 argument_list|)
 operator|+
 literal|"\n\n"
