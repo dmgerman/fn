@@ -3574,7 +3574,7 @@ operator|||
 operator|(
 operator|(
 name|y
-operator|>
+operator|>=
 operator|(
 name|vert
 operator|.
