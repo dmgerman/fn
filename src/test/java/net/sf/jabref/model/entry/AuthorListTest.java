@@ -2171,7 +2171,12 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
+name|Optional
+operator|.
+name|of
+argument_list|(
 literal|"J."
+argument_list|)
 argument_list|,
 name|author
 operator|.
@@ -2341,7 +2346,12 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
+name|Optional
+operator|.
+name|of
+argument_list|(
 literal|"P. B."
+argument_list|)
 argument_list|,
 name|author
 operator|.
@@ -2442,7 +2452,12 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
+name|Optional
+operator|.
+name|of
+argument_list|(
 literal|"J."
+argument_list|)
 argument_list|,
 name|author
 operator|.
@@ -4273,7 +4288,12 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
+name|Optional
+operator|.
+name|of
+argument_list|(
 literal|"J. G."
+argument_list|)
 argument_list|,
 name|AuthorList
 operator|.

@@ -727,12 +727,17 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
+name|String
+name|fileName
+init|=
+name|file
+decl_stmt|;
 name|File
 name|actualDirectory
 decl_stmt|;
 if|if
 condition|(
-name|file
+name|fileName
 operator|.
 name|startsWith
 argument_list|(
@@ -748,9 +753,9 @@ argument_list|(
 literal|"."
 argument_list|)
 expr_stmt|;
-name|file
+name|fileName
 operator|=
-name|file
+name|fileName
 operator|.
 name|substring
 argument_list|(
@@ -773,7 +778,7 @@ name|ESCAPE_PATTERN
 operator|.
 name|matcher
 argument_list|(
-name|file
+name|fileName
 argument_list|)
 decl_stmt|;
 name|StringBuffer
@@ -822,7 +827,7 @@ argument_list|(
 name|s
 argument_list|)
 expr_stmt|;
-name|file
+name|fileName
 operator|=
 name|s
 operator|.
@@ -833,7 +838,7 @@ name|String
 index|[]
 name|fileParts
 init|=
-name|file
+name|fileName
 operator|.
 name|split
 argument_list|(

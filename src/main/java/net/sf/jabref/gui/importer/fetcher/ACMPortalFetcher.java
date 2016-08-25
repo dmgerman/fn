@@ -2701,8 +2701,6 @@ argument_list|)
 throw|;
 block|}
 block|}
-else|else
-block|{
 name|LOGGER
 operator|.
 name|info
@@ -2712,7 +2710,6 @@ operator|+
 name|substring
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 throw|throw
 operator|new

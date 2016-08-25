@@ -2556,15 +2556,6 @@ block|{
 comment|// We have found a string with a matching name.
 if|if
 condition|(
-operator|(
-name|tmp
-operator|.
-name|getContent
-argument_list|()
-operator|!=
-literal|null
-operator|)
-operator|&&
 operator|!
 name|tmp
 operator|.

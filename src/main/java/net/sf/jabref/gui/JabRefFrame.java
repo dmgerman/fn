@@ -14780,15 +14780,6 @@ argument_list|(
 parameter_list|()
 lambda|->
 block|{
-if|if
-condition|(
-name|JabRefFrame
-operator|.
-name|this
-operator|!=
-literal|null
-condition|)
-block|{
 name|undo
 operator|.
 name|putValue
@@ -14837,7 +14828,6 @@ name|isCanRedo
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 argument_list|)
 expr_stmt|;
