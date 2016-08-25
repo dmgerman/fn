@@ -339,6 +339,9 @@ operator|.
 name|getFile
 argument_list|()
 operator|.
+name|get
+argument_list|()
+operator|.
 name|getName
 argument_list|()
 operator|+

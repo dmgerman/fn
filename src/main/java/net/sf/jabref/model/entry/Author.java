@@ -24,6 +24,16 @@ name|Objects
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
 begin_comment
 comment|/**  * This is an immutable class that keeps information regarding single  * author. It is just a container for the information, with very simple  * methods to access it.  *<p>  * Current usage: only methods<code>getLastOnly</code>,  *<code>getFirstLast</code>, and<code>getLastFirst</code> are used;  * all other methods are provided for completeness.  */
 end_comment
@@ -1031,12 +1041,20 @@ block|}
 comment|/**      * Returns the first name of the author stored in this object ("First").      *      * @return first name of the author (may consist of several tokens)      */
 DECL|method|getFirst ()
 specifier|public
+name|Optional
+argument_list|<
 name|String
+argument_list|>
 name|getFirst
 parameter_list|()
 block|{
 return|return
+name|Optional
+operator|.
+name|ofNullable
+argument_list|(
 name|firstPart
+argument_list|)
 return|;
 block|}
 comment|/**      * Returns the abbreviated first name of the author stored in this      * object ("F.").      *      * @return abbreviated first name of the author (may consist of several      * tokens)      */
@@ -1053,34 +1071,58 @@ block|}
 comment|/**      * Returns the von part of the author's name stored in this object      * ("von").      *      * @return von part of the author's name (may consist of several tokens)      */
 DECL|method|getVon ()
 specifier|public
+name|Optional
+argument_list|<
 name|String
+argument_list|>
 name|getVon
 parameter_list|()
 block|{
 return|return
+name|Optional
+operator|.
+name|ofNullable
+argument_list|(
 name|vonPart
+argument_list|)
 return|;
 block|}
 comment|/**      * Returns the last name of the author stored in this object ("Last").      *      * @return last name of the author (may consist of several tokens)      */
 DECL|method|getLast ()
 specifier|public
+name|Optional
+argument_list|<
 name|String
+argument_list|>
 name|getLast
 parameter_list|()
 block|{
 return|return
+name|Optional
+operator|.
+name|ofNullable
+argument_list|(
 name|lastPart
+argument_list|)
 return|;
 block|}
 comment|/**      * Returns the junior part of the author's name stored in this object      * ("Jr").      *      * @return junior part of the author's name (may consist of several      * tokens) or null if the author does not have a Jr. Part      */
 DECL|method|getJr ()
 specifier|public
+name|Optional
+argument_list|<
 name|String
+argument_list|>
 name|getJr
 parameter_list|()
 block|{
 return|return
+name|Optional
+operator|.
+name|ofNullable
+argument_list|(
 name|jrPart
+argument_list|)
 return|;
 block|}
 comment|/**      * Returns von-part followed by last name ("von Last"). If both fields      * were specified as<CODE>null</CODE>, the empty string<CODE>""</CODE>      * is returned.      *      * @return 'von Last'      */

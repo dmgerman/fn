@@ -103,15 +103,6 @@ operator|!=
 literal|null
 operator|)
 operator|&&
-operator|(
-name|fieldText
-operator|.
-name|trim
-argument_list|()
-operator|!=
-literal|null
-operator|)
-operator|&&
 operator|!
 name|fieldText
 operator|.
