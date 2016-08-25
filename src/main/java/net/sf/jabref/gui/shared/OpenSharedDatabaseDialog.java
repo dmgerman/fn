@@ -837,6 +837,11 @@ name|void
 name|openSharedDatabase
 parameter_list|()
 block|{
+name|setLoadingConnectButtonText
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 try|try
 block|{
 name|bibDatabaseContext
@@ -883,7 +888,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Connection_to_%0_server_stablished."
+literal|"Connection_to_%0_server_established."
 argument_list|,
 name|connectionProperties
 operator|.
@@ -898,6 +903,8 @@ expr_stmt|;
 name|dispose
 argument_list|()
 expr_stmt|;
+return|return;
+comment|// setLoadingConnectButtonText(false) should not be reached regularly.
 block|}
 catch|catch
 parameter_list|(
@@ -981,6 +988,11 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
+name|setLoadingConnectButtonText
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 block|}
 comment|/**      * Defines and sets the different actions up.      */
 DECL|method|setupActions ()
@@ -1929,6 +1941,12 @@ name|gridx
 operator|=
 literal|1
 expr_stmt|;
+name|gridBagConstraints
+operator|.
+name|gridwidth
+operator|=
+literal|2
+expr_stmt|;
 name|buttonPanel
 operator|.
 name|setLayout
@@ -1985,6 +2003,12 @@ operator|.
 name|gridy
 operator|=
 literal|0
+expr_stmt|;
+name|gridBagConstraints
+operator|.
+name|gridwidth
+operator|=
+literal|1
 expr_stmt|;
 name|gridBagConstraints
 operator|.
@@ -2276,6 +2300,58 @@ argument_list|)
 argument_list|)
 argument_list|)
 throw|;
+block|}
+block|}
+comment|/**      * Sets the connectButton according to the current connection state.      */
+DECL|method|setLoadingConnectButtonText (boolean isLoading)
+specifier|private
+name|void
+name|setLoadingConnectButtonText
+parameter_list|(
+name|boolean
+name|isLoading
+parameter_list|)
+block|{
+name|connectButton
+operator|.
+name|setEnabled
+argument_list|(
+operator|!
+name|isLoading
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|isLoading
+condition|)
+block|{
+name|connectButton
+operator|.
+name|setText
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Connecting..."
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|connectButton
+operator|.
+name|setText
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Connect"
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 block|}
