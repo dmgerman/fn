@@ -13272,6 +13272,11 @@ argument_list|)
 expr_stmt|;
 name|propertiesDialog
 operator|.
+name|updateEnableStatus
+argument_list|()
+expr_stmt|;
+name|propertiesDialog
+operator|.
 name|setLocationRelativeTo
 argument_list|(
 name|JabRefFrame
