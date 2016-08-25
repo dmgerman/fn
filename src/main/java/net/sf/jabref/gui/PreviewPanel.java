@@ -1341,7 +1341,7 @@ name|layout
 operator|=
 name|Optional
 operator|.
-name|of
+name|ofNullable
 argument_list|(
 name|layout
 argument_list|)
