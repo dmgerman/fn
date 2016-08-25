@@ -890,10 +890,9 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**      * Returns the contents of the given field, or null if it is not set.      */
+comment|/**      * Use {@link #getFieldOptional} instead      */
 annotation|@
 name|Deprecated
-comment|//Use getFieldOptional instead
 DECL|method|getField (String name)
 specifier|public
 name|String
@@ -996,7 +995,7 @@ name|ENGLISH
 argument_list|)
 return|;
 block|}
-comment|/**      * Returns the contents of the given field, its alias or null if both are      * not set.      *<p>      * The following aliases are considered (old bibtex<-> new biblatex) based      * on the BibLatex documentation, chapter 2.2.5:      * address<-> location      * annote<-> annotation      * archiveprefix<-> eprinttype      * journal<-> journaltitle      * key<-> sortkey      * pdf<-> file      * primaryclass<-> eprintclass      * school<-> institution      * These work bidirectional.      *<p>      * Special attention is paid to dates: (see the BibLatex documentation,      * chapter 2.3.8)      * The fields 'year' and 'month' are used if the 'date'      * field is empty. Conversely, getFieldOrAlias("year") also tries to      * extract the year from the 'date' field (analogously for 'month').      */
+comment|/**      * Returns the contents of the given field or its alias as an Optional      *<p>      * The following aliases are considered (old bibtex<-> new biblatex) based      * on the BibLatex documentation, chapter 2.2.5:<br>      * address<-> location<br>      * annote<-> annotation<br>      * archiveprefix<-> eprinttype<br>      * journal<-> journaltitle<br>      * key<-> sortkey<br>      * pdf<-> file<br      * primaryclass<-> eprintclass<br>      * school<-> institution<br>      * These work bidirectional.<br>      *<p>      * Special attention is paid to dates: (see the BibLatex documentation,      * chapter 2.3.8)      * The fields 'year' and 'month' are used if the 'date'      * field is empty. Conversely, getFieldOrAlias("year") also tries to      * extract the year from the 'date' field (analogously for 'month').      */
 DECL|method|getFieldOrAlias (String name)
 specifier|public
 name|Optional
