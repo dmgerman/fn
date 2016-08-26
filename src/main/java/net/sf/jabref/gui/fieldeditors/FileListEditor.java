@@ -708,10 +708,6 @@ name|LogFactory
 import|;
 end_import
 
-begin_comment
-comment|/**  * Created by Morten O. Alver 2007.02.22  */
-end_comment
-
 begin_class
 DECL|class|FileListEditor
 specifier|public
