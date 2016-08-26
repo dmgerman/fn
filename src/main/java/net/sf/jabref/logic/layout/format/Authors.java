@@ -1745,6 +1745,11 @@ name|a
 operator|.
 name|getFirstAbbr
 argument_list|()
+operator|.
+name|orElse
+argument_list|(
+literal|""
+argument_list|)
 expr_stmt|;
 if|if
 condition|(
