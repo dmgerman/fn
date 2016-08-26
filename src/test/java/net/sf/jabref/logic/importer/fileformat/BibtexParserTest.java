@@ -9975,6 +9975,9 @@ argument_list|()
 operator|.
 name|getGroups
 argument_list|()
+operator|.
+name|get
+argument_list|()
 decl_stmt|;
 name|assertEquals
 argument_list|(

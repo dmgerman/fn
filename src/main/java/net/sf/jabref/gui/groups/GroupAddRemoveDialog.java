@@ -78,6 +78,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|swing
@@ -430,7 +440,10 @@ parameter_list|()
 throws|throws
 name|Throwable
 block|{
+name|Optional
+argument_list|<
 name|GroupTreeNode
+argument_list|>
 name|groups
 init|=
 name|panel
@@ -446,9 +459,11 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+operator|!
 name|groups
-operator|==
-literal|null
+operator|.
+name|isPresent
+argument_list|()
 condition|)
 block|{
 return|return;
@@ -541,6 +556,9 @@ operator|new
 name|GroupTreeNodeViewModel
 argument_list|(
 name|groups
+operator|.
+name|get
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
