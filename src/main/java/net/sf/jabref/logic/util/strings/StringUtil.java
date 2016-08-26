@@ -2312,12 +2312,15 @@ throw|;
 block|}
 block|}
 block|}
-comment|/**      * Optimized method for converting a String into an Integer      *      * From http://stackoverflow.com/questions/1030479/most-efficient-way-of-converting-string-to-integer-in-java      *      * @param str the String holding an Integer value      * @return the int value of str or null if not possible      */
-DECL|method|intValueOfWithNull (String str)
+comment|/**      * Optimized method for converting a String into an Integer      *      * From http://stackoverflow.com/questions/1030479/most-efficient-way-of-converting-string-to-integer-in-java      *      * @param str the String holding an Integer value      * @return the int value of str or Optional.empty() if not possible      */
+DECL|method|intValueOfOptional (String str)
 specifier|public
 specifier|static
+name|Optional
+argument_list|<
 name|Integer
-name|intValueOfWithNull
+argument_list|>
+name|intValueOfOptional
 parameter_list|(
 name|String
 name|str
@@ -2426,7 +2429,10 @@ operator|)
 condition|)
 block|{
 return|return
-literal|null
+name|Optional
+operator|.
+name|empty
+argument_list|()
 return|;
 block|}
 name|int
@@ -2458,12 +2464,17 @@ name|end
 condition|)
 block|{
 return|return
+name|Optional
+operator|.
+name|of
+argument_list|(
 name|sign
 condition|?
 name|ival
 else|:
 operator|-
 name|ival
+argument_list|)
 return|;
 block|}
 if|if
@@ -2491,7 +2502,10 @@ operator|)
 condition|)
 block|{
 return|return
-literal|null
+name|Optional
+operator|.
+name|empty
+argument_list|()
 return|;
 block|}
 block|}
