@@ -1192,12 +1192,20 @@ comment|/**      * Returns the database's preamble.      */
 DECL|method|getPreamble ()
 specifier|public
 specifier|synchronized
+name|Optional
+argument_list|<
 name|String
+argument_list|>
 name|getPreamble
 parameter_list|()
 block|{
 return|return
+name|Optional
+operator|.
+name|ofNullable
+argument_list|(
 name|preamble
+argument_list|)
 return|;
 block|}
 comment|/**      * Inserts a Bibtex String.      */
@@ -1381,6 +1389,11 @@ name|database
 operator|.
 name|getPreamble
 argument_list|()
+operator|.
+name|orElse
+argument_list|(
+literal|""
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

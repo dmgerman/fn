@@ -854,7 +854,12 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
+name|Optional
+operator|.
+name|of
+argument_list|(
 literal|"testPreamble"
+argument_list|)
 argument_list|,
 name|db
 operator|.
