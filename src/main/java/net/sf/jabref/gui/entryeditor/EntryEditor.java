@@ -1284,7 +1284,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|FieldProperties
+name|FieldProperty
 import|;
 end_import
 
@@ -3606,13 +3606,13 @@ decl_stmt|;
 specifier|final
 name|Set
 argument_list|<
-name|FieldProperties
+name|FieldProperty
 argument_list|>
 name|fieldExtras
 init|=
 name|InternalBibtexFields
 operator|.
-name|getFieldExtras
+name|getFieldProperties
 argument_list|(
 name|fieldName
 argument_list|)
@@ -3640,7 +3640,7 @@ name|fieldExtras
 operator|.
 name|contains
 argument_list|(
-name|FieldProperties
+name|FieldProperty
 operator|.
 name|DATE
 argument_list|)
@@ -3658,7 +3658,7 @@ name|fieldExtras
 operator|.
 name|contains
 argument_list|(
-name|FieldProperties
+name|FieldProperty
 operator|.
 name|DATE
 argument_list|)
@@ -3667,7 +3667,7 @@ name|fieldExtras
 operator|.
 name|contains
 argument_list|(
-name|FieldProperties
+name|FieldProperty
 operator|.
 name|ISO_DATE
 argument_list|)
@@ -3681,7 +3681,7 @@ name|fieldExtras
 operator|.
 name|contains
 argument_list|(
-name|FieldProperties
+name|FieldProperty
 operator|.
 name|EXTERNAL
 argument_list|)
@@ -3705,7 +3705,7 @@ name|fieldExtras
 operator|.
 name|contains
 argument_list|(
-name|FieldProperties
+name|FieldProperty
 operator|.
 name|JOURNAL_NAME
 argument_list|)
@@ -3779,7 +3779,7 @@ name|fieldExtras
 operator|.
 name|contains
 argument_list|(
-name|FieldProperties
+name|FieldProperty
 operator|.
 name|DOI
 argument_list|)
@@ -3805,7 +3805,7 @@ name|fieldExtras
 operator|.
 name|contains
 argument_list|(
-name|FieldProperties
+name|FieldProperty
 operator|.
 name|EPRINT
 argument_list|)
@@ -3831,7 +3831,7 @@ name|fieldExtras
 operator|.
 name|contains
 argument_list|(
-name|FieldProperties
+name|FieldProperty
 operator|.
 name|ISBN
 argument_list|)
@@ -3857,7 +3857,7 @@ name|fieldExtras
 operator|.
 name|contains
 argument_list|(
-name|FieldProperties
+name|FieldProperty
 operator|.
 name|OWNER
 argument_list|)
@@ -3882,7 +3882,7 @@ name|fieldExtras
 operator|.
 name|contains
 argument_list|(
-name|FieldProperties
+name|FieldProperty
 operator|.
 name|YES_NO
 argument_list|)
@@ -3906,7 +3906,7 @@ name|fieldExtras
 operator|.
 name|contains
 argument_list|(
-name|FieldProperties
+name|FieldProperty
 operator|.
 name|MONTH
 argument_list|)
@@ -3941,7 +3941,7 @@ name|fieldExtras
 operator|.
 name|contains
 argument_list|(
-name|FieldProperties
+name|FieldProperty
 operator|.
 name|GENDER
 argument_list|)
@@ -3965,7 +3965,7 @@ name|fieldExtras
 operator|.
 name|contains
 argument_list|(
-name|FieldProperties
+name|FieldProperty
 operator|.
 name|EDITOR_TYPE
 argument_list|)
@@ -3989,7 +3989,7 @@ name|fieldExtras
 operator|.
 name|contains
 argument_list|(
-name|FieldProperties
+name|FieldProperty
 operator|.
 name|PAGINATION
 argument_list|)
@@ -4013,7 +4013,7 @@ name|fieldExtras
 operator|.
 name|contains
 argument_list|(
-name|FieldProperties
+name|FieldProperty
 operator|.
 name|TYPE
 argument_list|)
@@ -4047,7 +4047,7 @@ name|fieldExtras
 operator|.
 name|contains
 argument_list|(
-name|FieldProperties
+name|FieldProperty
 operator|.
 name|CROSSREF
 argument_list|)

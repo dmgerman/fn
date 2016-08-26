@@ -507,7 +507,9 @@ name|put
 argument_list|(
 name|MSBIB_PREFIX
 operator|+
-literal|"day"
+name|FieldName
+operator|.
+name|DAY
 argument_list|,
 literal|"Day"
 argument_list|)

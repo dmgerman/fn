@@ -35,10 +35,10 @@ import|;
 end_import
 
 begin_enum
-DECL|enum|FieldProperties
+DECL|enum|FieldProperty
 specifier|public
 enum|enum
-name|FieldProperties
+name|FieldProperty
 block|{
 DECL|enumConstant|YES_NO
 name|YES_NO
@@ -121,7 +121,7 @@ specifier|static
 specifier|final
 name|Set
 argument_list|<
-name|FieldProperties
+name|FieldProperty
 argument_list|>
 name|ALL_OPTS
 init|=
@@ -129,7 +129,7 @@ name|EnumSet
 operator|.
 name|allOf
 argument_list|(
-name|FieldProperties
+name|FieldProperty
 operator|.
 name|class
 argument_list|)

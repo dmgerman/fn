@@ -535,7 +535,8 @@ name|field
 range|:
 name|InternalBibtexFields
 operator|.
-name|BIBLATEX_PERSON_NAME_FIELDS
+name|getPersonNameFields
+argument_list|()
 control|)
 block|{
 name|assertCorrect
