@@ -1112,10 +1112,24 @@ comment|/*css: console */
 DECL|enumConstant|FORUM
 name|FORUM
 argument_list|(
-literal|"\uF28C"
+literal|"\uf28c"
 argument_list|)
 block|,
 comment|/* css: forum */
+DECL|enumConstant|FACEBOOK
+name|FACEBOOK
+argument_list|(
+literal|"\uf20c"
+argument_list|)
+block|,
+comment|/* css: facebook */
+DECL|enumConstant|BLOG
+name|BLOG
+argument_list|(
+literal|"\uf46b"
+argument_list|)
+block|,
+comment|/* css: rss */
 comment|// STILL MISSING:
 DECL|enumConstant|GROUP_REGULAR
 name|GROUP_REGULAR
