@@ -862,12 +862,10 @@ name|context
 argument_list|,
 name|fileNamePattern
 argument_list|,
-name|LayoutFormatterPreferences
-operator|.
-name|fromPreferences
-argument_list|(
 name|prefs
-argument_list|,
+operator|.
+name|getLayoutFormatterPreferences
+argument_list|(
 name|mock
 argument_list|(
 name|JournalAbbreviationLoader

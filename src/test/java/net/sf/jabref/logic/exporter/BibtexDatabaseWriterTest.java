@@ -642,12 +642,10 @@ argument_list|)
 expr_stmt|;
 name|importFormatPreferences
 operator|=
-name|ImportFormatPreferences
-operator|.
-name|fromPreferences
-argument_list|(
 name|prefs
-argument_list|)
+operator|.
+name|getImportFormatPreferences
+argument_list|()
 expr_stmt|;
 block|}
 annotation|@

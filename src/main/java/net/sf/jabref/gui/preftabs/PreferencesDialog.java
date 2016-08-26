@@ -1764,14 +1764,12 @@ decl_stmt|;
 name|LayoutFormatterPreferences
 name|layoutPreferences
 init|=
-name|LayoutFormatterPreferences
-operator|.
-name|fromPreferences
-argument_list|(
 name|Globals
 operator|.
 name|prefs
-argument_list|,
+operator|.
+name|getLayoutFormatterPreferences
+argument_list|(
 name|Globals
 operator|.
 name|journalAbbreviationLoader

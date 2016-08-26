@@ -443,12 +443,10 @@ name|getJournalAbbreviationPreferences
 parameter_list|()
 block|{
 return|return
-name|JournalAbbreviationPreferences
-operator|.
-name|fromPreferences
-argument_list|(
 name|preferences
-argument_list|)
+operator|.
+name|getJournalAbbreviationPreferences
+argument_list|()
 return|;
 block|}
 block|}

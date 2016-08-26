@@ -118,20 +118,6 @@ end_import
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|preferences
-operator|.
-name|JabRefPreferences
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|junit
@@ -181,15 +167,6 @@ name|void
 name|setUp
 parameter_list|()
 block|{
-name|Globals
-operator|.
-name|prefs
-operator|=
-name|JabRefPreferences
-operator|.
-name|getInstance
-argument_list|()
-expr_stmt|;
 name|metaData
 operator|=
 operator|new

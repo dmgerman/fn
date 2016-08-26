@@ -781,14 +781,12 @@ decl_stmt|;
 name|ImportFormatPreferences
 name|importFormatPreferences
 init|=
-name|ImportFormatPreferences
-operator|.
-name|fromPreferences
-argument_list|(
 name|Globals
 operator|.
 name|prefs
-argument_list|)
+operator|.
+name|getImportFormatPreferences
+argument_list|()
 decl_stmt|;
 name|ParserResult
 name|result
