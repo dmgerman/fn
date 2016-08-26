@@ -74,7 +74,7 @@ name|nio
 operator|.
 name|charset
 operator|.
-name|Charset
+name|StandardCharsets
 import|;
 end_import
 
@@ -418,10 +418,9 @@ name|isRecognizedFormat
 argument_list|(
 name|file
 argument_list|,
-name|Charset
+name|StandardCharsets
 operator|.
-name|defaultCharset
-argument_list|()
+name|UTF_8
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -498,10 +497,9 @@ name|isRecognizedFormat
 argument_list|(
 name|file
 argument_list|,
-name|Charset
+name|StandardCharsets
 operator|.
-name|defaultCharset
-argument_list|()
+name|UTF_8
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -577,10 +575,9 @@ name|importDatabase
 argument_list|(
 name|inputFile
 argument_list|,
-name|Charset
+name|StandardCharsets
 operator|.
-name|defaultCharset
-argument_list|()
+name|UTF_8
 argument_list|)
 operator|.
 name|getDatabase
@@ -1081,10 +1078,9 @@ name|importDatabase
 argument_list|(
 name|file
 argument_list|,
-name|Charset
+name|StandardCharsets
 operator|.
-name|defaultCharset
-argument_list|()
+name|UTF_8
 argument_list|)
 operator|.
 name|getDatabase
@@ -1442,10 +1438,9 @@ name|importDatabase
 argument_list|(
 name|file
 argument_list|,
-name|Charset
+name|StandardCharsets
 operator|.
-name|defaultCharset
-argument_list|()
+name|UTF_8
 argument_list|)
 operator|.
 name|getDatabase

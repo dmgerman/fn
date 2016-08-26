@@ -610,9 +610,10 @@ name|ImportFormatPreferences
 operator|.
 name|fromPreferences
 argument_list|(
-name|Globals
+name|JabRefPreferences
 operator|.
-name|prefs
+name|getInstance
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -2435,9 +2436,9 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|parseRecognizesEntryWithAtInField ()
 annotation|@
 name|Test
+DECL|method|parseRecognizesEntryWithAtInField ()
 specifier|public
 name|void
 name|parseRecognizesEntryWithAtInField
@@ -2518,9 +2519,9 @@ name|parsed
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|parseRecognizesEntryPrecedingComment ()
 annotation|@
 name|Test
+DECL|method|parseRecognizesEntryPrecedingComment ()
 specifier|public
 name|void
 name|parseRecognizesEntryPrecedingComment
