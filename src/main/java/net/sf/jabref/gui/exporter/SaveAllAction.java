@@ -376,6 +376,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|!
 name|panel
 operator|.
 name|getBibDatabaseContext
@@ -383,8 +384,9 @@ argument_list|()
 operator|.
 name|getDatabaseFile
 argument_list|()
-operator|==
-literal|null
+operator|.
+name|isPresent
+argument_list|()
 condition|)
 block|{
 name|frame

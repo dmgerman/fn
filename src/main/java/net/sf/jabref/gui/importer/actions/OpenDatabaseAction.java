@@ -1057,8 +1057,9 @@ argument_list|()
 operator|.
 name|getDatabaseFile
 argument_list|()
-operator|!=
-literal|null
+operator|.
+name|isPresent
+argument_list|()
 operator|)
 operator|&&
 name|basePanel
@@ -1067,6 +1068,9 @@ name|getBibDatabaseContext
 argument_list|()
 operator|.
 name|getDatabaseFile
+argument_list|()
+operator|.
+name|get
 argument_list|()
 operator|.
 name|equals
@@ -1204,6 +1208,9 @@ name|getBibDatabaseContext
 argument_list|()
 operator|.
 name|getDatabaseFile
+argument_list|()
+operator|.
+name|get
 argument_list|()
 operator|.
 name|getPath

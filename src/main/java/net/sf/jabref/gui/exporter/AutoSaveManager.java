@@ -411,8 +411,9 @@ argument_list|()
 operator|.
 name|getDatabaseFile
 argument_list|()
-operator|!=
-literal|null
+operator|.
+name|isPresent
+argument_list|()
 operator|)
 condition|)
 block|{
@@ -448,6 +449,11 @@ argument_list|()
 operator|.
 name|getDatabaseFile
 argument_list|()
+operator|.
+name|orElse
+argument_list|(
+literal|null
+argument_list|)
 decl_stmt|;
 name|File
 name|backupFile
@@ -575,6 +581,7 @@ parameter_list|)
 block|{
 if|if
 condition|(
+operator|!
 name|panel
 operator|.
 name|getBibDatabaseContext
@@ -582,8 +589,9 @@ argument_list|()
 operator|.
 name|getDatabaseFile
 argument_list|()
-operator|==
-literal|null
+operator|.
+name|isPresent
+argument_list|()
 condition|)
 block|{
 return|return
@@ -603,6 +611,9 @@ name|getBibDatabaseContext
 argument_list|()
 operator|.
 name|getDatabaseFile
+argument_list|()
+operator|.
+name|get
 argument_list|()
 argument_list|)
 decl_stmt|;

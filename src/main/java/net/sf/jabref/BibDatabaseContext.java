@@ -604,15 +604,23 @@ name|bibDatabaseMode
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Get the file where this database was last saved to or loaded from, if any.      *      * @return The relevant File, or null if none is defined.      */
+comment|/**      * Get the file where this database was last saved to or loaded from, if any.      *      * @return Optional of the relevant File, or Optional.empty() if none is defined.      */
 DECL|method|getDatabaseFile ()
 specifier|public
+name|Optional
+argument_list|<
 name|File
+argument_list|>
 name|getDatabaseFile
 parameter_list|()
 block|{
 return|return
+name|Optional
+operator|.
+name|ofNullable
+argument_list|(
 name|file
+argument_list|)
 return|;
 block|}
 DECL|method|setDatabaseFile (File file)
@@ -799,19 +807,18 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// 4. BIB file directory
-if|if
-condition|(
 name|getDatabaseFile
 argument_list|()
-operator|!=
-literal|null
-condition|)
+operator|.
+name|ifPresent
+argument_list|(
+name|databaseFile
+lambda|->
 block|{
 name|String
 name|parentDir
 init|=
-name|getDatabaseFile
-argument_list|()
+name|databaseFile
 operator|.
 name|getParent
 argument_list|()
@@ -852,6 +859,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+argument_list|)
+expr_stmt|;
 return|return
 name|fileDirs
 return|;
@@ -872,6 +881,15 @@ name|directoryName
 decl_stmt|;
 comment|// If this directory is relative, we try to interpret it as relative to
 comment|// the file path of this BIB file:
+name|Optional
+argument_list|<
+name|File
+argument_list|>
+name|databaseFile
+init|=
+name|getDatabaseFile
+argument_list|()
+decl_stmt|;
 if|if
 condition|(
 operator|!
@@ -884,12 +902,10 @@ operator|.
 name|isAbsolute
 argument_list|()
 operator|&&
-operator|(
-name|getDatabaseFile
+name|databaseFile
+operator|.
+name|isPresent
 argument_list|()
-operator|!=
-literal|null
-operator|)
 condition|)
 block|{
 name|String
@@ -908,7 +924,9 @@ block|{
 comment|// if dir is only "current" directory, just use its parent (== real current directory) as path
 name|relDir
 operator|=
-name|getDatabaseFile
+name|databaseFile
+operator|.
+name|get
 argument_list|()
 operator|.
 name|getParent
@@ -919,7 +937,9 @@ else|else
 block|{
 name|relDir
 operator|=
-name|getDatabaseFile
+name|databaseFile
+operator|.
+name|get
 argument_list|()
 operator|.
 name|getParent

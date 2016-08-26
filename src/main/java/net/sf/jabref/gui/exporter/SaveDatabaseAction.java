@@ -580,15 +580,10 @@ argument_list|()
 operator|.
 name|getDatabaseFile
 argument_list|()
-operator|==
-literal|null
-condition|)
-block|{
-name|saveAs
+operator|.
+name|isPresent
 argument_list|()
-expr_stmt|;
-block|}
-else|else
+condition|)
 block|{
 comment|// Check for external modifications: if true, save not performed so do not tell the user a save is underway but return instead.
 if|if
@@ -622,6 +617,12 @@ name|setSaving
 argument_list|(
 literal|true
 argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|saveAs
+argument_list|()
 expr_stmt|;
 block|}
 block|}
@@ -658,6 +659,9 @@ operator|.
 name|getDatabaseFile
 argument_list|()
 operator|.
+name|get
+argument_list|()
+operator|.
 name|getAbsolutePath
 argument_list|()
 argument_list|)
@@ -681,6 +685,9 @@ name|getBibDatabaseContext
 argument_list|()
 operator|.
 name|getDatabaseFile
+argument_list|()
+operator|.
+name|get
 argument_list|()
 operator|.
 name|getPath
@@ -755,7 +762,7 @@ if|if
 condition|(
 name|canceled
 operator|||
-operator|(
+operator|!
 name|panel
 operator|.
 name|getBibDatabaseContext
@@ -763,9 +770,9 @@ argument_list|()
 operator|.
 name|getDatabaseFile
 argument_list|()
-operator|==
-literal|null
-operator|)
+operator|.
+name|isPresent
+argument_list|()
 condition|)
 block|{
 return|return;
@@ -798,6 +805,9 @@ operator|.
 name|getDatabaseFile
 argument_list|()
 operator|.
+name|get
+argument_list|()
+operator|.
 name|toPath
 argument_list|()
 argument_list|)
@@ -825,6 +835,9 @@ name|getBibDatabaseContext
 argument_list|()
 operator|.
 name|getDatabaseFile
+argument_list|()
+operator|.
+name|get
 argument_list|()
 argument_list|,
 literal|false
@@ -1819,6 +1832,11 @@ argument_list|()
 operator|.
 name|getDatabaseFile
 argument_list|()
+operator|.
+name|orElse
+argument_list|(
+literal|null
+argument_list|)
 decl_stmt|;
 name|panel
 operator|.
@@ -1891,6 +1909,11 @@ argument_list|()
 operator|.
 name|getDatabaseFile
 argument_list|()
+operator|.
+name|orElse
+argument_list|(
+literal|null
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1924,6 +1947,9 @@ name|getBibDatabaseContext
 argument_list|()
 operator|.
 name|getDatabaseFile
+argument_list|()
+operator|.
+name|get
 argument_list|()
 operator|.
 name|getPath
@@ -2118,6 +2144,9 @@ operator|.
 name|getDatabaseFile
 argument_list|()
 operator|.
+name|get
+argument_list|()
+operator|.
 name|toPath
 argument_list|()
 argument_list|)
@@ -2151,6 +2180,9 @@ name|getBibDatabaseContext
 argument_list|()
 operator|.
 name|getDatabaseFile
+argument_list|()
+operator|.
+name|get
 argument_list|()
 argument_list|)
 decl_stmt|;
