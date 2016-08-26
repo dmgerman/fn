@@ -639,6 +639,13 @@ operator|.
 name|getFileDirectory
 argument_list|(
 name|fieldName
+argument_list|,
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getFileDirectoryPreferences
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|Optional
@@ -1122,6 +1129,13 @@ argument_list|(
 name|databaseContext
 argument_list|,
 name|link
+argument_list|,
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getFileDirectoryPreferences
+argument_list|()
 argument_list|)
 decl_stmt|;
 if|if

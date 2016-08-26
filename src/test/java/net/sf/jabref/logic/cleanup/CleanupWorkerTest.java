@@ -524,6 +524,7 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
+comment|// Needed for ExternalFileTypes
 if|if
 condition|(
 name|Globals
@@ -594,9 +595,10 @@ name|CleanupWorker
 argument_list|(
 name|context
 argument_list|,
-name|Globals
+name|JabRefPreferences
 operator|.
-name|prefs
+name|getInstance
+argument_list|()
 operator|.
 name|get
 argument_list|(
@@ -611,6 +613,14 @@ name|LayoutFormatterPreferences
 operator|.
 name|class
 argument_list|)
+argument_list|,
+name|JabRefPreferences
+operator|.
+name|getInstance
+argument_list|()
+operator|.
+name|getFileDirectoryPreferences
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

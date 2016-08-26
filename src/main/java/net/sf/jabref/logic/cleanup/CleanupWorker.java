@@ -74,6 +74,18 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|FileDirectoryPreferences
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|logic
 operator|.
 name|layout
@@ -152,12 +164,18 @@ specifier|final
 name|LayoutFormatterPreferences
 name|prefs
 decl_stmt|;
+DECL|field|fileDirectoryPreferences
+specifier|private
+specifier|final
+name|FileDirectoryPreferences
+name|fileDirectoryPreferences
+decl_stmt|;
 DECL|field|unsuccessfulRenames
 specifier|private
 name|int
 name|unsuccessfulRenames
 decl_stmt|;
-DECL|method|CleanupWorker (BibDatabaseContext databaseContext, String fileNamePattern, LayoutFormatterPreferences prefs)
+DECL|method|CleanupWorker (BibDatabaseContext databaseContext, String fileNamePattern, LayoutFormatterPreferences prefs, FileDirectoryPreferences fileDirectoryPreferences)
 specifier|public
 name|CleanupWorker
 parameter_list|(
@@ -169,6 +187,9 @@ name|fileNamePattern
 parameter_list|,
 name|LayoutFormatterPreferences
 name|prefs
+parameter_list|,
+name|FileDirectoryPreferences
+name|fileDirectoryPreferences
 parameter_list|)
 block|{
 name|this
@@ -188,6 +209,12 @@ operator|.
 name|prefs
 operator|=
 name|prefs
+expr_stmt|;
+name|this
+operator|.
+name|fileDirectoryPreferences
+operator|=
+name|fileDirectoryPreferences
 expr_stmt|;
 block|}
 DECL|method|getUnsuccessfulRenames ()
@@ -400,6 +427,8 @@ operator|new
 name|MoveFilesCleanup
 argument_list|(
 name|databaseContext
+argument_list|,
+name|fileDirectoryPreferences
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -420,6 +449,8 @@ operator|new
 name|RelativePathsCleanup
 argument_list|(
 name|databaseContext
+argument_list|,
+name|fileDirectoryPreferences
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -448,6 +479,8 @@ argument_list|,
 name|fileNamePattern
 argument_list|,
 name|prefs
+argument_list|,
+name|fileDirectoryPreferences
 argument_list|)
 decl_stmt|;
 name|jobs

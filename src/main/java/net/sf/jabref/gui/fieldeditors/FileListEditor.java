@@ -1670,7 +1670,14 @@ range|:
 name|databaseContext
 operator|.
 name|getFileDirectory
+argument_list|(
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getFileDirectoryPreferences
 argument_list|()
+argument_list|)
 control|)
 block|{
 name|Path
@@ -1919,6 +1926,13 @@ argument_list|,
 name|entry
 operator|.
 name|link
+argument_list|,
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getFileDirectoryPreferences
+argument_list|()
 argument_list|)
 decl_stmt|;
 comment|// transactional delete and unlink
@@ -2451,7 +2465,14 @@ init|=
 name|databaseContext
 operator|.
 name|getFileDirectory
+argument_list|(
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getFileDirectoryPreferences
 argument_list|()
+argument_list|)
 decl_stmt|;
 if|if
 condition|(

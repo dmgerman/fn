@@ -2579,7 +2579,14 @@ operator|=
 name|databaseContext
 operator|.
 name|getFileDirectory
+argument_list|(
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getFileDirectoryPreferences
 argument_list|()
+argument_list|)
 expr_stmt|;
 name|System
 operator|.

@@ -162,6 +162,18 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|FileDirectoryPreferences
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|logic
 operator|.
 name|l10n
@@ -310,12 +322,21 @@ specifier|final
 name|BibDatabaseContext
 name|bibDatabaseContext
 decl_stmt|;
-DECL|method|IntegrityCheck (BibDatabaseContext bibDatabaseContext)
+DECL|field|fileDirectoryPreferences
+specifier|private
+specifier|final
+name|FileDirectoryPreferences
+name|fileDirectoryPreferences
+decl_stmt|;
+DECL|method|IntegrityCheck (BibDatabaseContext bibDatabaseContext, FileDirectoryPreferences fileDirectoryPreferences)
 specifier|public
 name|IntegrityCheck
 parameter_list|(
 name|BibDatabaseContext
 name|bibDatabaseContext
+parameter_list|,
+name|FileDirectoryPreferences
+name|fileDirectoryPreferences
 parameter_list|)
 block|{
 name|this
@@ -327,6 +348,17 @@ operator|.
 name|requireNonNull
 argument_list|(
 name|bibDatabaseContext
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|fileDirectoryPreferences
+operator|=
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|fileDirectoryPreferences
 argument_list|)
 expr_stmt|;
 block|}
@@ -551,6 +583,8 @@ operator|new
 name|FileChecker
 argument_list|(
 name|bibDatabaseContext
+argument_list|,
+name|fileDirectoryPreferences
 argument_list|)
 operator|.
 name|check
@@ -1057,12 +1091,21 @@ specifier|final
 name|BibDatabaseContext
 name|context
 decl_stmt|;
-DECL|method|FileChecker (BibDatabaseContext context)
+DECL|field|fileDirectoryPreferences
+specifier|private
+specifier|final
+name|FileDirectoryPreferences
+name|fileDirectoryPreferences
+decl_stmt|;
+DECL|method|FileChecker (BibDatabaseContext context, FileDirectoryPreferences fileDirectoryPreferences)
 specifier|private
 name|FileChecker
 parameter_list|(
 name|BibDatabaseContext
 name|context
+parameter_list|,
+name|FileDirectoryPreferences
+name|fileDirectoryPreferences
 parameter_list|)
 block|{
 name|this
@@ -1070,6 +1113,12 @@ operator|.
 name|context
 operator|=
 name|context
+expr_stmt|;
+name|this
+operator|.
+name|fileDirectoryPreferences
+operator|=
+name|fileDirectoryPreferences
 expr_stmt|;
 block|}
 annotation|@
@@ -1196,6 +1245,8 @@ name|p
 operator|.
 name|getLink
 argument_list|()
+argument_list|,
+name|fileDirectoryPreferences
 argument_list|)
 decl_stmt|;
 if|if

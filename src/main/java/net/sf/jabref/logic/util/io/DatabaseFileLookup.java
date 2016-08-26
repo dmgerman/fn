@@ -106,6 +106,18 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|FileDirectoryPreferences
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|model
 operator|.
 name|database
@@ -212,12 +224,15 @@ argument_list|>
 name|possibleFilePaths
 decl_stmt|;
 comment|/**      * Creates an instance by passing a {@link BibDatabase} which will be used for the searches.      *      * @param database A {@link BibDatabase}.      */
-DECL|method|DatabaseFileLookup (BibDatabaseContext databaseContext)
+DECL|method|DatabaseFileLookup (BibDatabaseContext databaseContext, FileDirectoryPreferences fileDirectoryPreferences)
 specifier|public
 name|DatabaseFileLookup
 parameter_list|(
 name|BibDatabaseContext
 name|databaseContext
+parameter_list|,
+name|FileDirectoryPreferences
+name|fileDirectoryPreferences
 parameter_list|)
 block|{
 name|Objects
@@ -236,7 +251,9 @@ argument_list|(
 name|databaseContext
 operator|.
 name|getFileDirectory
-argument_list|()
+argument_list|(
+name|fileDirectoryPreferences
+argument_list|)
 argument_list|)
 operator|.
 name|orElse

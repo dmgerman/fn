@@ -68,24 +68,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
-operator|.
-name|layout
-operator|.
-name|format
-operator|.
-name|FileLinkPreferences
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|model
 operator|.
 name|database
@@ -155,20 +137,6 @@ operator|.
 name|entry
 operator|.
 name|FieldName
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|preferences
-operator|.
-name|JabRefPreferences
 import|;
 end_import
 
@@ -674,8 +642,31 @@ operator|.
 name|BIBLATEX
 return|;
 block|}
-comment|/**      * Look up the directory set up for the given field type for this database.      * If no directory is set up, return that defined in global preferences.      * There can be up to three directory definitions for these files:      * the database's metadata can specify a general directory and/or a user-specific directory      * or the preferences can specify one.      *<p>      * The settings are prioritized in the following order and the first defined setting is used:      * 1. metadata user-specific directory      * 2. metadata general directory      * 3. preferences directory      * 4. BIB file directory      *      * @param fieldName The field type      * @return The default directory for this field type.      */
-DECL|method|getFileDirectory (String fieldName)
+DECL|method|getFileDirectory (FileDirectoryPreferences preferences)
+specifier|public
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|getFileDirectory
+parameter_list|(
+name|FileDirectoryPreferences
+name|preferences
+parameter_list|)
+block|{
+return|return
+name|getFileDirectory
+argument_list|(
+name|FieldName
+operator|.
+name|FILE
+argument_list|,
+name|preferences
+argument_list|)
+return|;
+block|}
+comment|/**     * Look up the directory set up for the given field type for this database.     * If no directory is set up, return that defined in global preferences.     * There can be up to three directory definitions for these files:     * the database's metadata can specify a general directory and/or a user-specific directory     * or the preferences can specify one.     *<p>     * The settings are prioritized in the following order and the first defined setting is used:     * 1. metadata user-specific directory     * 2. metadata general directory     * 3. preferences directory     * 4. BIB file directory     *     * @param     * @param fieldName The field type     * @return The default directory for this field type.     */
+DECL|method|getFileDirectory (String fieldName, FileDirectoryPreferences preferences)
 specifier|public
 name|List
 argument_list|<
@@ -685,6 +676,9 @@ name|getFileDirectory
 parameter_list|(
 name|String
 name|fieldName
+parameter_list|,
+name|FileDirectoryPreferences
+name|preferences
 parameter_list|)
 block|{
 name|List
@@ -709,9 +703,7 @@ name|metaData
 operator|.
 name|getUserFileDirectory
 argument_list|(
-name|Globals
-operator|.
-name|prefs
+name|preferences
 operator|.
 name|getUser
 argument_list|()
@@ -774,38 +766,20 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// 3. preferences directory
-name|String
-name|dir
-init|=
-name|Globals
+name|preferences
 operator|.
-name|prefs
-operator|.
-name|get
+name|getFileDirectory
 argument_list|(
 name|fieldName
-operator|+
-name|FileLinkPreferences
-operator|.
-name|DIR_SUFFIX
 argument_list|)
-decl_stmt|;
-comment|// FILE_DIR
-if|if
-condition|(
-name|dir
-operator|!=
-literal|null
-condition|)
-block|{
-name|fileDirs
 operator|.
-name|add
+name|ifPresent
 argument_list|(
-name|dir
+name|fileDirs
+operator|::
+name|add
 argument_list|)
 expr_stmt|;
-block|}
 comment|// 4. BIB file directory
 name|getDatabaseFile
 argument_list|()
@@ -826,16 +800,10 @@ decl_stmt|;
 comment|// Check if we should add it as primary file dir (first in the list) or not:
 if|if
 condition|(
-name|Globals
+name|preferences
 operator|.
-name|prefs
-operator|.
-name|getBoolean
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|BIB_LOC_AS_PRIMARY_DIR
-argument_list|)
+name|isBibLocationAsPrimary
+argument_list|()
 condition|)
 block|{
 name|fileDirs
@@ -974,24 +942,6 @@ block|}
 block|}
 return|return
 name|dir
-return|;
-block|}
-DECL|method|getFileDirectory ()
-specifier|public
-name|List
-argument_list|<
-name|String
-argument_list|>
-name|getFileDirectory
-parameter_list|()
-block|{
-return|return
-name|getFileDirectory
-argument_list|(
-name|FieldName
-operator|.
-name|FILE
-argument_list|)
 return|;
 block|}
 DECL|method|getDBSynchronizer ()

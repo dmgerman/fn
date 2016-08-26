@@ -124,18 +124,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|MetaData
 import|;
 end_import
@@ -590,6 +578,11 @@ specifier|private
 name|ImportFormatPreferences
 name|importFormatPreferences
 decl_stmt|;
+DECL|field|prefs
+specifier|private
+name|JabRefPreferences
+name|prefs
+decl_stmt|;
 annotation|@
 name|Before
 DECL|method|setUp ()
@@ -598,8 +591,6 @@ name|void
 name|setUp
 parameter_list|()
 block|{
-name|Globals
-operator|.
 name|prefs
 operator|=
 name|JabRefPreferences
@@ -655,8 +646,6 @@ name|ImportFormatPreferences
 operator|.
 name|fromPreferences
 argument_list|(
-name|Globals
-operator|.
 name|prefs
 argument_list|)
 expr_stmt|;
@@ -1282,8 +1271,6 @@ init|=
 operator|new
 name|DatabaseBibtexKeyPattern
 argument_list|(
-name|Globals
-operator|.
 name|prefs
 operator|.
 name|getKeyPattern
@@ -1372,8 +1359,6 @@ init|=
 operator|new
 name|DatabaseBibtexKeyPattern
 argument_list|(
-name|Globals
-operator|.
 name|prefs
 operator|.
 name|getKeyPattern
@@ -1471,8 +1456,6 @@ name|GroupHierarchyType
 operator|.
 name|INCLUDING
 argument_list|,
-name|Globals
-operator|.
 name|prefs
 argument_list|)
 argument_list|)
@@ -1595,8 +1578,6 @@ name|GroupHierarchyType
 operator|.
 name|INCLUDING
 argument_list|,
-name|Globals
-operator|.
 name|prefs
 argument_list|)
 argument_list|)
@@ -3153,8 +3134,6 @@ init|=
 operator|new
 name|DatabaseBibtexKeyPattern
 argument_list|(
-name|Globals
-operator|.
 name|prefs
 operator|.
 name|getKeyPattern
