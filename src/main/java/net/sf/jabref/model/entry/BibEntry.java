@@ -777,7 +777,7 @@ block|}
 name|String
 name|oldType
 init|=
-name|getFieldOptional
+name|getField
 argument_list|(
 name|TYPE_HEADER
 argument_list|)
@@ -890,38 +890,14 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**      * Use {@link #getFieldOptional} instead      */
-annotation|@
-name|Deprecated
-DECL|method|getField (String name)
-specifier|public
-name|String
-name|getField
-parameter_list|(
-name|String
-name|name
-parameter_list|)
-block|{
-return|return
-name|fields
-operator|.
-name|get
-argument_list|(
-name|toLowerCase
-argument_list|(
-name|name
-argument_list|)
-argument_list|)
-return|;
-block|}
 comment|/**      * Returns the contents of the given field as an Optional.      */
-DECL|method|getFieldOptional (String name)
+DECL|method|getField (String name)
 specifier|public
 name|Optional
 argument_list|<
 name|String
 argument_list|>
-name|getFieldOptional
+name|getField
 parameter_list|(
 name|String
 name|name
@@ -1014,7 +990,7 @@ name|String
 argument_list|>
 name|fieldValue
 init|=
-name|getFieldOptional
+name|getField
 argument_list|(
 name|toLowerCase
 argument_list|(
@@ -1064,7 +1040,7 @@ literal|null
 condition|)
 block|{
 return|return
-name|getFieldOptional
+name|getField
 argument_list|(
 name|aliasForField
 argument_list|)
@@ -1089,7 +1065,7 @@ name|String
 argument_list|>
 name|year
 init|=
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -1113,7 +1089,7 @@ name|MonthUtil
 operator|.
 name|getMonth
 argument_list|(
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -1187,7 +1163,7 @@ name|String
 argument_list|>
 name|date
 init|=
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -1641,7 +1617,7 @@ block|}
 name|String
 name|oldValue
 init|=
-name|getFieldOptional
+name|getField
 argument_list|(
 name|fieldName
 argument_list|)
@@ -1906,7 +1882,7 @@ name|String
 argument_list|>
 name|oldValue
 init|=
-name|getFieldOptional
+name|getField
 argument_list|(
 name|fieldName
 argument_list|)
@@ -2286,7 +2262,7 @@ operator|new
 name|String
 index|[]
 block|{
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -2298,7 +2274,7 @@ argument_list|(
 literal|"N/A"
 argument_list|)
 block|,
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -2310,7 +2286,7 @@ argument_list|(
 literal|"N/A"
 argument_list|)
 block|,
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -2418,7 +2394,7 @@ name|String
 argument_list|>
 name|year
 init|=
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -2431,7 +2407,7 @@ name|String
 argument_list|>
 name|monthString
 init|=
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -2599,7 +2575,7 @@ name|oldValue
 init|=
 name|this
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.

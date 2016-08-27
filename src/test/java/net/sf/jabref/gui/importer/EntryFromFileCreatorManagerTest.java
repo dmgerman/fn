@@ -500,7 +500,7 @@ name|filesInfo
 init|=
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"file"
 argument_list|)

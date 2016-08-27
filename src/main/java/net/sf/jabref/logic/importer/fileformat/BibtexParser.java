@@ -2618,7 +2618,7 @@ name|key
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|key
 argument_list|)

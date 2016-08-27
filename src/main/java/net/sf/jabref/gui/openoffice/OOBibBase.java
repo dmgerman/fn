@@ -3168,8 +3168,13 @@ name|add
 argument_list|(
 name|entry
 operator|.
-name|getCiteKey
+name|getCiteKeyOptional
 argument_list|()
+operator|.
+name|orElse
+argument_list|(
+literal|null
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -9181,7 +9186,7 @@ expr_stmt|;
 comment|// Check if the cloned entry has a crossref field
 name|clonedEntry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.

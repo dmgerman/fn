@@ -1816,7 +1816,7 @@ name|link
 init|=
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|fieldName
 argument_list|)
@@ -2104,7 +2104,7 @@ argument_list|(
 name|row
 argument_list|)
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -2442,7 +2442,7 @@ argument_list|()
 decl_stmt|;
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|field
 argument_list|)
@@ -2624,7 +2624,7 @@ name|content
 init|=
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|field
 argument_list|)

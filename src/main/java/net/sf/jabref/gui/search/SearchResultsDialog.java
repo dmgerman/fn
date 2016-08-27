@@ -2409,7 +2409,7 @@ argument_list|()
 decl_stmt|;
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -2484,7 +2484,7 @@ name|URL_COL
 case|:
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -2620,7 +2620,7 @@ argument_list|()
 decl_stmt|;
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -2990,7 +2990,7 @@ argument_list|()
 decl_stmt|;
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -3109,7 +3109,7 @@ name|setToolTipText
 argument_list|(
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -3184,7 +3184,7 @@ name|formatName
 argument_list|(
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|field
 argument_list|)
@@ -3200,7 +3200,7 @@ block|}
 return|return
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|field
 argument_list|)

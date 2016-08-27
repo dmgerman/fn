@@ -229,7 +229,7 @@ name|removeLaTeX
 argument_list|(
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|field
 argument_list|)
@@ -273,7 +273,7 @@ block|}
 comment|// Duplicate: also added as BookTitle
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -293,7 +293,7 @@ argument_list|)
 expr_stmt|;
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -317,7 +317,7 @@ argument_list|)
 expr_stmt|;
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|MSBIB_PREFIX
 operator|+
@@ -352,7 +352,7 @@ name|albumTitle
 operator|=
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -382,7 +382,7 @@ name|broadcastTitle
 operator|=
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -414,7 +414,7 @@ name|patentNumber
 operator|=
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -468,7 +468,7 @@ condition|(
 operator|!
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -503,7 +503,7 @@ condition|(
 operator|!
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -520,7 +520,7 @@ name|number
 operator|=
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -537,7 +537,7 @@ comment|// Value must be converted
 comment|//Currently only english is supported
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -579,7 +579,7 @@ argument_list|()
 decl_stmt|;
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -602,7 +602,7 @@ argument_list|)
 expr_stmt|;
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -625,7 +625,7 @@ argument_list|)
 expr_stmt|;
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"lccn"
 argument_list|)
@@ -646,7 +646,7 @@ argument_list|)
 expr_stmt|;
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"mrnumber"
 argument_list|)
@@ -713,7 +713,7 @@ if|if
 condition|(
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -730,7 +730,7 @@ name|thesisType
 operator|=
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -853,7 +853,7 @@ name|internetSiteTitle
 operator|=
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -897,7 +897,7 @@ name|publicationTitle
 operator|=
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -912,7 +912,7 @@ expr_stmt|;
 block|}
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -935,7 +935,7 @@ argument_list|)
 expr_stmt|;
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.

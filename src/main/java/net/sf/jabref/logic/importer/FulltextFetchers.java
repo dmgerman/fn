@@ -447,7 +447,7 @@ name|doi
 init|=
 name|clonedEntry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.

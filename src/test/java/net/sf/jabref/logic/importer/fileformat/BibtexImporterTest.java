@@ -369,7 +369,7 @@ argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"author"
 argument_list|)
@@ -386,7 +386,7 @@ argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"bibtexkey"
 argument_list|)
@@ -403,7 +403,7 @@ argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"date"
 argument_list|)
@@ -420,7 +420,7 @@ argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"indextitle"
 argument_list|)
@@ -437,7 +437,7 @@ argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"journaltitle"
 argument_list|)
@@ -454,7 +454,7 @@ argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"number"
 argument_list|)
@@ -471,7 +471,7 @@ argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"pages"
 argument_list|)
@@ -490,7 +490,7 @@ argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"title"
 argument_list|)
@@ -507,7 +507,7 @@ argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"volume"
 argument_list|)
@@ -546,7 +546,7 @@ argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"annotation"
 argument_list|)
@@ -563,7 +563,7 @@ argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"bibtexkey"
 argument_list|)
@@ -580,7 +580,7 @@ argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"entryset"
 argument_list|)
@@ -619,7 +619,7 @@ argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"annotation"
 argument_list|)
@@ -636,7 +636,7 @@ argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"bibtexkey"
 argument_list|)
@@ -653,7 +653,7 @@ argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"entryset"
 argument_list|)
@@ -688,7 +688,7 @@ argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"address"
 argument_list|)
@@ -705,7 +705,7 @@ argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"author"
 argument_list|)
@@ -722,7 +722,7 @@ argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"bibtexkey"
 argument_list|)
@@ -739,7 +739,7 @@ argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"edition"
 argument_list|)
@@ -756,7 +756,7 @@ argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"isbn"
 argument_list|)
@@ -773,7 +773,7 @@ argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"keywords"
 argument_list|)
@@ -790,7 +790,7 @@ argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"pages"
 argument_list|)
@@ -807,7 +807,7 @@ argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"publisher"
 argument_list|)
@@ -824,7 +824,7 @@ argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"title"
 argument_list|)
@@ -841,7 +841,7 @@ argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"url"
 argument_list|)
@@ -858,7 +858,7 @@ argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"year"
 argument_list|)

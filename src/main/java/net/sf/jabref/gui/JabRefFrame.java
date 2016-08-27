@@ -5842,7 +5842,7 @@ name|addSeparator
 argument_list|()
 expr_stmt|;
 name|JMenuItem
-name|databaseProperties
+name|databasePropertiesMenu
 init|=
 operator|new
 name|JMenuItem
@@ -5855,7 +5855,7 @@ literal|"Database properties"
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|databaseProperties
+name|databasePropertiesMenu
 operator|.
 name|addActionListener
 argument_list|(
@@ -5868,7 +5868,7 @@ name|popupMenu
 operator|.
 name|add
 argument_list|(
-name|databaseProperties
+name|databasePropertiesMenu
 argument_list|)
 expr_stmt|;
 name|JMenuItem

@@ -462,7 +462,7 @@ argument_list|)
 argument_list|,
 name|be0
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"abstract"
 argument_list|)
@@ -479,7 +479,7 @@ argument_list|)
 argument_list|,
 name|be0
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"author"
 argument_list|)
@@ -496,7 +496,7 @@ argument_list|)
 argument_list|,
 name|be0
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"keywords"
 argument_list|)
@@ -513,7 +513,7 @@ argument_list|)
 argument_list|,
 name|be0
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"title"
 argument_list|)

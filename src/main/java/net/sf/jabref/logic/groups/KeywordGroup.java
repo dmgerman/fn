@@ -859,7 +859,7 @@ name|oldContent
 init|=
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|searchField
 argument_list|)
@@ -1031,7 +1031,7 @@ name|oldContent
 init|=
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|searchField
 argument_list|)
@@ -1062,7 +1062,7 @@ name|oldContent
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|searchField
 argument_list|)
@@ -1232,7 +1232,7 @@ name|content
 init|=
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|searchField
 argument_list|)
@@ -1542,7 +1542,7 @@ parameter_list|)
 block|{
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|searchField
 argument_list|)

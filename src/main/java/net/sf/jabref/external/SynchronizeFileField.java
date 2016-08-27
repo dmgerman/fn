@@ -1048,7 +1048,7 @@ name|old
 init|=
 name|aSel
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.

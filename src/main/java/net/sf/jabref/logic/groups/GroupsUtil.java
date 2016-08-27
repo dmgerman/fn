@@ -205,7 +205,7 @@ control|)
 block|{
 name|be
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|field
 argument_list|)
@@ -308,7 +308,7 @@ control|)
 block|{
 name|be
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|field
 argument_list|)
@@ -418,7 +418,7 @@ control|)
 block|{
 name|be
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|field
 argument_list|)

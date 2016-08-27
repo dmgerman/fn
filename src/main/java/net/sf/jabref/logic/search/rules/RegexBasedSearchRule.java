@@ -281,7 +281,7 @@ name|format
 argument_list|(
 name|bibEntry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|field
 argument_list|)

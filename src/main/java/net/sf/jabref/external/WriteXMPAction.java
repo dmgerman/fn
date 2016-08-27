@@ -723,7 +723,7 @@ decl_stmt|;
 comment|// First check the (legacy) "pdf" field:
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -811,7 +811,7 @@ argument_list|()
 decl_stmt|;
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.

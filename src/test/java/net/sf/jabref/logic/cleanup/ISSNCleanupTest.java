@@ -230,7 +230,7 @@ argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"issn"
 argument_list|)
@@ -296,7 +296,7 @@ argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"issn"
 argument_list|)
@@ -362,7 +362,7 @@ argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"issn"
 argument_list|)

@@ -278,7 +278,7 @@ name|e
 argument_list|,
 name|be
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|e
 operator|.
@@ -321,7 +321,7 @@ name|e
 argument_list|,
 name|be
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|e
 operator|.

@@ -191,7 +191,7 @@ argument_list|()
 decl_stmt|;
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|oldFieldName
 argument_list|)
@@ -213,7 +213,7 @@ operator|(
 operator|!
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|newFieldName
 argument_list|)
@@ -282,7 +282,7 @@ block|}
 comment|// Dates: create date out of year and month, save it and delete old fields
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -324,7 +324,7 @@ name|oldYear
 init|=
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -339,7 +339,7 @@ name|oldMonth
 init|=
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.

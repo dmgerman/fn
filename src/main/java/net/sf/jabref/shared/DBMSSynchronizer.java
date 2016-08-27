@@ -982,7 +982,7 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|field
 argument_list|)

@@ -1423,7 +1423,7 @@ block|{
 comment|// Convert from HTML and optionally add curly brackets around key words to keep the case
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -1526,7 +1526,7 @@ argument_list|)
 expr_stmt|;
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.

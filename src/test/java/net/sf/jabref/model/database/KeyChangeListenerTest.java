@@ -266,7 +266,7 @@ argument_list|)
 argument_list|,
 name|entry1
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"crossref"
 argument_list|)
@@ -290,7 +290,7 @@ argument_list|)
 argument_list|,
 name|entry1
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"crossref"
 argument_list|)
@@ -316,7 +316,7 @@ argument_list|)
 argument_list|,
 name|entry2
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"related"
 argument_list|)
@@ -340,7 +340,7 @@ argument_list|)
 argument_list|,
 name|entry2
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"related"
 argument_list|)
@@ -366,7 +366,7 @@ argument_list|)
 argument_list|,
 name|entry3
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"related"
 argument_list|)
@@ -390,7 +390,7 @@ argument_list|)
 argument_list|,
 name|entry3
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"related"
 argument_list|)
@@ -423,7 +423,7 @@ argument_list|()
 argument_list|,
 name|entry1
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"crossref"
 argument_list|)
@@ -454,7 +454,7 @@ argument_list|()
 argument_list|,
 name|entry1
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"crossref"
 argument_list|)
@@ -487,7 +487,7 @@ argument_list|)
 argument_list|,
 name|entry2
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"related"
 argument_list|)
@@ -525,7 +525,7 @@ argument_list|()
 argument_list|,
 name|entry2
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"related"
 argument_list|)

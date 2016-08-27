@@ -230,7 +230,7 @@ name|assertFalse
 argument_list|(
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"author"
 argument_list|)
@@ -2193,7 +2193,7 @@ argument_list|)
 argument_list|,
 name|be
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"author"
 argument_list|)
@@ -2217,7 +2217,7 @@ argument_list|()
 argument_list|,
 name|be
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"author"
 argument_list|)

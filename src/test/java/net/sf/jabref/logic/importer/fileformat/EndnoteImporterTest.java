@@ -605,7 +605,7 @@ argument_list|)
 argument_list|,
 name|be0
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"author"
 argument_list|)
@@ -622,7 +622,7 @@ argument_list|)
 argument_list|,
 name|be0
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"editor"
 argument_list|)
@@ -639,7 +639,7 @@ argument_list|)
 argument_list|,
 name|be0
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"title"
 argument_list|)
@@ -676,7 +676,7 @@ argument_list|)
 argument_list|,
 name|be1
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"address"
 argument_list|)
@@ -693,7 +693,7 @@ argument_list|)
 argument_list|,
 name|be1
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"booktitle"
 argument_list|)
@@ -710,7 +710,7 @@ argument_list|)
 argument_list|,
 name|be1
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"date"
 argument_list|)
@@ -727,7 +727,7 @@ argument_list|)
 argument_list|,
 name|be1
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"edition"
 argument_list|)
@@ -744,7 +744,7 @@ argument_list|)
 argument_list|,
 name|be1
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"journal"
 argument_list|)
@@ -761,7 +761,7 @@ argument_list|)
 argument_list|,
 name|be1
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"year"
 argument_list|)
@@ -798,7 +798,7 @@ argument_list|)
 argument_list|,
 name|be2
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"journal"
 argument_list|)
@@ -835,7 +835,7 @@ argument_list|)
 argument_list|,
 name|be3
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"publisher"
 argument_list|)
@@ -852,7 +852,7 @@ argument_list|)
 argument_list|,
 name|be3
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"series"
 argument_list|)
@@ -889,7 +889,7 @@ argument_list|)
 argument_list|,
 name|be4
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"abstract"
 argument_list|)
@@ -906,7 +906,7 @@ argument_list|)
 argument_list|,
 name|be4
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"bibtexkey"
 argument_list|)
@@ -923,7 +923,7 @@ argument_list|)
 argument_list|,
 name|be4
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"doi"
 argument_list|)
@@ -940,7 +940,7 @@ argument_list|)
 argument_list|,
 name|be4
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"keywords"
 argument_list|)
@@ -957,7 +957,7 @@ argument_list|)
 argument_list|,
 name|be4
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"note"
 argument_list|)
@@ -974,7 +974,7 @@ argument_list|)
 argument_list|,
 name|be4
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"number"
 argument_list|)
@@ -991,7 +991,7 @@ argument_list|)
 argument_list|,
 name|be4
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"pages"
 argument_list|)
@@ -1008,7 +1008,7 @@ argument_list|)
 argument_list|,
 name|be4
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"school"
 argument_list|)
@@ -1025,7 +1025,7 @@ argument_list|)
 argument_list|,
 name|be4
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"url"
 argument_list|)
@@ -1042,7 +1042,7 @@ argument_list|)
 argument_list|,
 name|be4
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"volume"
 argument_list|)
@@ -1132,7 +1132,7 @@ argument_list|)
 argument_list|,
 name|be
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"author"
 argument_list|)
@@ -1149,7 +1149,7 @@ argument_list|)
 argument_list|,
 name|be
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"editor"
 argument_list|)
@@ -1166,7 +1166,7 @@ argument_list|)
 argument_list|,
 name|be
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"pages"
 argument_list|)
@@ -1269,7 +1269,7 @@ argument_list|)
 argument_list|,
 name|be
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"address"
 argument_list|)
@@ -1286,7 +1286,7 @@ argument_list|)
 argument_list|,
 name|be
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"author"
 argument_list|)
@@ -1303,7 +1303,7 @@ argument_list|)
 argument_list|,
 name|be
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"edition"
 argument_list|)
@@ -1320,7 +1320,7 @@ argument_list|)
 argument_list|,
 name|be
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"keywords"
 argument_list|)
@@ -1337,7 +1337,7 @@ argument_list|)
 argument_list|,
 name|be
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"pages"
 argument_list|)
@@ -1354,7 +1354,7 @@ argument_list|)
 argument_list|,
 name|be
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"publisher"
 argument_list|)
@@ -1371,7 +1371,7 @@ argument_list|)
 argument_list|,
 name|be
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"title"
 argument_list|)
@@ -1388,7 +1388,7 @@ argument_list|)
 argument_list|,
 name|be
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"url"
 argument_list|)
@@ -1405,7 +1405,7 @@ argument_list|)
 argument_list|,
 name|be
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"year"
 argument_list|)

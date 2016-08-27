@@ -1508,8 +1508,13 @@ operator|.
 name|getBibtexEntry
 argument_list|()
 operator|.
-name|getCiteKey
+name|getCiteKeyOptional
 argument_list|()
+operator|.
+name|orElse
+argument_list|(
+literal|null
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -3988,6 +3993,11 @@ name|mEntry
 operator|.
 name|getKey
 argument_list|()
+argument_list|)
+operator|.
+name|orElse
+argument_list|(
+literal|null
 argument_list|)
 decl_stmt|;
 name|mEntry

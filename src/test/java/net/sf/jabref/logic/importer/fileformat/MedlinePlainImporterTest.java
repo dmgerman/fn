@@ -625,7 +625,7 @@ argument_list|()
 argument_list|,
 name|testEntry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"month"
 argument_list|)
@@ -642,7 +642,7 @@ argument_list|)
 argument_list|,
 name|testEntry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"author"
 argument_list|)
@@ -659,7 +659,7 @@ argument_list|)
 argument_list|,
 name|testEntry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"title"
 argument_list|)
@@ -695,7 +695,7 @@ argument_list|)
 argument_list|,
 name|testEntry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"month"
 argument_list|)
@@ -710,7 +710,7 @@ argument_list|()
 argument_list|,
 name|testEntry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"author"
 argument_list|)
@@ -725,7 +725,7 @@ argument_list|()
 argument_list|,
 name|testEntry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"title"
 argument_list|)
@@ -761,7 +761,7 @@ argument_list|)
 argument_list|,
 name|testEntry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"title"
 argument_list|)
@@ -792,7 +792,7 @@ name|assertTrue
 argument_list|(
 name|testEntry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"doi"
 argument_list|)
@@ -831,7 +831,7 @@ argument_list|)
 argument_list|,
 name|testEntry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"booktitle"
 argument_list|)

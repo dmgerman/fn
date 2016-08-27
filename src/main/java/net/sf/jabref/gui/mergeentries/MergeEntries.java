@@ -1562,7 +1562,7 @@ name|leftString
 init|=
 name|leftEntry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|field
 argument_list|)
@@ -1575,7 +1575,7 @@ name|rightString
 init|=
 name|rightEntry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|field
 argument_list|)
@@ -2678,7 +2678,7 @@ name|leftString
 init|=
 name|leftEntry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|field
 argument_list|)
@@ -2693,7 +2693,7 @@ name|rightString
 init|=
 name|rightEntry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|field
 argument_list|)
@@ -3047,7 +3047,7 @@ name|field
 argument_list|,
 name|leftEntry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|field
 argument_list|)
@@ -3085,7 +3085,7 @@ name|field
 argument_list|,
 name|rightEntry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|field
 argument_list|)

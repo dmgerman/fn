@@ -1433,7 +1433,7 @@ argument_list|(
 name|getEntry
 argument_list|()
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|fieldEditor
 operator|.
@@ -1627,7 +1627,7 @@ name|toSet
 init|=
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|editor
 operator|.

@@ -1603,7 +1603,7 @@ block|}
 comment|// clean up title
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -1800,7 +1800,7 @@ expr_stmt|;
 comment|// clean up author
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -1955,7 +1955,7 @@ expr_stmt|;
 comment|// clean up month
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -2366,7 +2366,7 @@ end_comment
 begin_expr_stmt
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -2543,7 +2543,7 @@ name|fullName
 init|=
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|sourceField
 argument_list|)
@@ -2666,7 +2666,7 @@ expr_stmt|;
 block|}
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -3276,7 +3276,7 @@ name|year
 init|=
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -3367,7 +3367,7 @@ end_comment
 begin_expr_stmt
 unit|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -3508,7 +3508,7 @@ end_comment
 begin_expr_stmt
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -3549,7 +3549,7 @@ end_comment
 begin_expr_stmt
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.

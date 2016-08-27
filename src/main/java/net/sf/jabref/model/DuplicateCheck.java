@@ -816,7 +816,7 @@ name|optionalStringOne
 init|=
 name|one
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|field
 argument_list|)
@@ -829,7 +829,7 @@ name|optionalStringTwo
 init|=
 name|two
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|field
 argument_list|)
@@ -1217,7 +1217,7 @@ name|stringOne
 init|=
 name|one
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|field
 argument_list|)
@@ -1230,7 +1230,7 @@ name|stringTwo
 init|=
 name|two
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|field
 argument_list|)

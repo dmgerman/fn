@@ -2567,7 +2567,7 @@ name|authString
 init|=
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -2628,7 +2628,7 @@ name|authString
 operator|=
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -3196,7 +3196,7 @@ name|firstAuthor
 argument_list|(
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -3226,7 +3226,7 @@ name|firstAuthorForenameInitials
 argument_list|(
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -3256,7 +3256,7 @@ name|allAuthors
 argument_list|(
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -3287,7 +3287,7 @@ name|lastAuthor
 argument_list|(
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -3317,7 +3317,7 @@ name|lastAuthorForenameInitials
 argument_list|(
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -3347,7 +3347,7 @@ name|oneAuthorPlusIni
 argument_list|(
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -3394,7 +3394,7 @@ name|authIniN
 argument_list|(
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -3453,7 +3453,7 @@ name|authNofMth
 argument_list|(
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -3516,7 +3516,7 @@ name|authAuthEa
 argument_list|(
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -3557,7 +3557,7 @@ name|authshort
 argument_list|(
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -3600,7 +3600,7 @@ name|firstAuthor
 argument_list|(
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -3698,7 +3698,7 @@ name|firstPage
 argument_list|(
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -3728,7 +3728,7 @@ name|lastPage
 argument_list|(
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -3760,7 +3760,7 @@ literal|3
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -3796,7 +3796,7 @@ literal|3
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -3839,7 +3839,7 @@ literal|1
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.

@@ -335,7 +335,7 @@ block|{
 return|return
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|SpecialFields
 operator|.
@@ -419,7 +419,7 @@ block|{
 return|return
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|SpecialFields
 operator|.
@@ -503,7 +503,7 @@ block|{
 return|return
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|SpecialFields
 operator|.
@@ -700,7 +700,7 @@ argument_list|()
 decl_stmt|;
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -1004,7 +1004,7 @@ argument_list|()
 decl_stmt|;
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.

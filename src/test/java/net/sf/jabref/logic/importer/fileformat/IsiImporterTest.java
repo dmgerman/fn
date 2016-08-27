@@ -872,7 +872,7 @@ argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"title"
 argument_list|)
@@ -889,7 +889,7 @@ argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"author"
 argument_list|)
@@ -916,7 +916,7 @@ argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"journal"
 argument_list|)
@@ -933,7 +933,7 @@ argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"year"
 argument_list|)
@@ -950,7 +950,7 @@ argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"volume"
 argument_list|)
@@ -967,7 +967,7 @@ argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"number"
 argument_list|)
@@ -984,7 +984,7 @@ argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"pages"
 argument_list|)
@@ -1077,7 +1077,7 @@ argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"title"
 argument_list|)
@@ -1104,7 +1104,7 @@ argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"journal"
 argument_list|)
@@ -1121,7 +1121,7 @@ argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"year"
 argument_list|)
@@ -1138,7 +1138,7 @@ argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"volume"
 argument_list|)
@@ -1155,7 +1155,7 @@ argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"number"
 argument_list|)
@@ -1172,7 +1172,7 @@ argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"pages"
 argument_list|)
@@ -1268,7 +1268,7 @@ if|if
 condition|(
 name|a
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"title"
 argument_list|)
@@ -1309,7 +1309,7 @@ argument_list|)
 argument_list|,
 name|a
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"title"
 argument_list|)
@@ -1336,7 +1336,7 @@ argument_list|)
 argument_list|,
 name|a
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"author"
 argument_list|)
@@ -1353,7 +1353,7 @@ argument_list|)
 argument_list|,
 name|a
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"journal"
 argument_list|)
@@ -1370,7 +1370,7 @@ argument_list|)
 argument_list|,
 name|a
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"year"
 argument_list|)
@@ -1387,7 +1387,7 @@ argument_list|)
 argument_list|,
 name|a
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"month"
 argument_list|)
@@ -1404,7 +1404,7 @@ argument_list|)
 argument_list|,
 name|a
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"volume"
 argument_list|)
@@ -1421,7 +1421,7 @@ argument_list|)
 argument_list|,
 name|a
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"number"
 argument_list|)
@@ -1438,7 +1438,7 @@ argument_list|)
 argument_list|,
 name|a
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"abstract"
 argument_list|)
@@ -1455,7 +1455,7 @@ argument_list|)
 argument_list|,
 name|a
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"publisher"
 argument_list|)
@@ -1472,7 +1472,7 @@ argument_list|)
 argument_list|,
 name|b
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"title"
 argument_list|)
@@ -1585,7 +1585,7 @@ argument_list|)
 argument_list|,
 name|a
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"title"
 argument_list|)
@@ -1602,7 +1602,7 @@ argument_list|)
 argument_list|,
 name|b
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"title"
 argument_list|)
@@ -1619,7 +1619,7 @@ argument_list|)
 argument_list|,
 name|a
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"journal"
 argument_list|)
@@ -1977,7 +1977,7 @@ argument_list|)
 argument_list|,
 name|a
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"journal"
 argument_list|)
@@ -1998,7 +1998,7 @@ argument_list|)
 argument_list|,
 name|a
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"title"
 argument_list|)
@@ -2015,7 +2015,7 @@ argument_list|)
 argument_list|,
 name|a
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"volume"
 argument_list|)
@@ -2032,7 +2032,7 @@ argument_list|)
 argument_list|,
 name|a
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"number"
 argument_list|)
@@ -2049,7 +2049,7 @@ argument_list|)
 argument_list|,
 name|a
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"SN"
 argument_list|)
@@ -2066,7 +2066,7 @@ argument_list|)
 argument_list|,
 name|a
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"pages"
 argument_list|)
@@ -2083,7 +2083,7 @@ argument_list|)
 argument_list|,
 name|a
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"author"
 argument_list|)
@@ -2100,7 +2100,7 @@ argument_list|)
 argument_list|,
 name|a
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"year"
 argument_list|)
@@ -2117,7 +2117,7 @@ argument_list|)
 argument_list|,
 name|a
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"keywords"
 argument_list|)
@@ -2134,7 +2134,7 @@ argument_list|)
 argument_list|,
 name|a
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"abstract"
 argument_list|)
@@ -2237,7 +2237,7 @@ argument_list|)
 argument_list|,
 name|a
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"journal"
 argument_list|)
@@ -2254,7 +2254,7 @@ argument_list|)
 argument_list|,
 name|a
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"title"
 argument_list|)
@@ -2271,7 +2271,7 @@ argument_list|)
 argument_list|,
 name|a
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"volume"
 argument_list|)
@@ -2288,7 +2288,7 @@ argument_list|)
 argument_list|,
 name|a
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"number"
 argument_list|)
@@ -2305,7 +2305,7 @@ argument_list|)
 argument_list|,
 name|a
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"SN"
 argument_list|)
@@ -2322,7 +2322,7 @@ argument_list|)
 argument_list|,
 name|a
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"pages"
 argument_list|)
@@ -2339,7 +2339,7 @@ argument_list|)
 argument_list|,
 name|a
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"author"
 argument_list|)
@@ -2356,7 +2356,7 @@ argument_list|)
 argument_list|,
 name|a
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"year"
 argument_list|)
@@ -2373,7 +2373,7 @@ argument_list|)
 argument_list|,
 name|a
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"keywords"
 argument_list|)
@@ -2390,7 +2390,7 @@ argument_list|)
 argument_list|,
 name|a
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"abstract"
 argument_list|)
@@ -2493,7 +2493,7 @@ argument_list|)
 argument_list|,
 name|a
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"title"
 argument_list|)
@@ -2510,7 +2510,7 @@ argument_list|)
 argument_list|,
 name|a
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"author"
 argument_list|)
@@ -2527,7 +2527,7 @@ argument_list|)
 argument_list|,
 name|a
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"journal"
 argument_list|)
@@ -2544,7 +2544,7 @@ argument_list|)
 argument_list|,
 name|a
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"year"
 argument_list|)
@@ -2559,7 +2559,7 @@ argument_list|()
 argument_list|,
 name|a
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"month"
 argument_list|)
@@ -2576,7 +2576,7 @@ argument_list|)
 argument_list|,
 name|a
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"volume"
 argument_list|)
@@ -2593,7 +2593,7 @@ argument_list|)
 argument_list|,
 name|a
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"number"
 argument_list|)
@@ -2610,7 +2610,7 @@ argument_list|)
 argument_list|,
 name|a
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"pages"
 argument_list|)
@@ -2637,7 +2637,7 @@ argument_list|)
 argument_list|,
 name|b
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"title"
 argument_list|)
@@ -2654,7 +2654,7 @@ argument_list|)
 argument_list|,
 name|b
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"author"
 argument_list|)
@@ -2671,7 +2671,7 @@ argument_list|)
 argument_list|,
 name|b
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"year"
 argument_list|)
@@ -2688,7 +2688,7 @@ argument_list|)
 argument_list|,
 name|b
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"month"
 argument_list|)
@@ -2705,7 +2705,7 @@ argument_list|)
 argument_list|,
 name|b
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"volume"
 argument_list|)
@@ -2722,7 +2722,7 @@ argument_list|)
 argument_list|,
 name|b
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"number"
 argument_list|)
@@ -2739,7 +2739,7 @@ argument_list|)
 argument_list|,
 name|b
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"pages"
 argument_list|)

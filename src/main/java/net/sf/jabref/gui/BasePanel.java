@@ -7198,7 +7198,7 @@ expr_stmt|;
 return|return;
 block|}
 name|FileListTableModel
-name|tableModel
+name|fileListTableModel
 init|=
 operator|new
 name|FileListTableModel
@@ -7206,7 +7206,7 @@ argument_list|()
 decl_stmt|;
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -7215,14 +7215,14 @@ argument_list|)
 operator|.
 name|ifPresent
 argument_list|(
-name|tableModel
+name|fileListTableModel
 operator|::
 name|setContent
 argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|tableModel
+name|fileListTableModel
 operator|.
 name|getRowCount
 argument_list|()
@@ -7230,7 +7230,7 @@ operator|==
 literal|0
 condition|)
 block|{
-comment|// content in bibtex field is not readable
+comment|// content in BibTeX field is not readable
 operator|new
 name|SearchAndOpenFile
 argument_list|(
@@ -7249,7 +7249,7 @@ block|}
 name|FileListEntry
 name|flEntry
 init|=
-name|tableModel
+name|fileListTableModel
 operator|.
 name|getEntry
 argument_list|(
@@ -12450,7 +12450,7 @@ argument_list|(
 literal|0
 argument_list|)
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -12483,7 +12483,7 @@ argument_list|(
 literal|0
 argument_list|)
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -12582,7 +12582,7 @@ argument_list|(
 literal|0
 argument_list|)
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.

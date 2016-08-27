@@ -247,7 +247,7 @@ name|oldValue
 init|=
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|fieldKey
 argument_list|)

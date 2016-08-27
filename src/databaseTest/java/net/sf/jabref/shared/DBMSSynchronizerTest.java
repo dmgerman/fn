@@ -631,7 +631,7 @@ name|assertEquals
 argument_list|(
 name|expectedEntry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"author"
 argument_list|)
@@ -643,7 +643,7 @@ argument_list|(
 literal|0
 argument_list|)
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"author"
 argument_list|)
@@ -662,7 +662,7 @@ argument_list|(
 literal|0
 argument_list|)
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"title"
 argument_list|)
@@ -1237,7 +1237,7 @@ literal|"wirthlin, michael j1"
 argument_list|,
 name|bibEntry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"author"
 argument_list|)

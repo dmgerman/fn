@@ -856,7 +856,7 @@ literal|3
 argument_list|,
 name|bibEntry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|fieldName
 argument_list|)
@@ -1362,7 +1362,7 @@ name|valueOptional
 init|=
 name|localBibEntry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|fieldName
 argument_list|)

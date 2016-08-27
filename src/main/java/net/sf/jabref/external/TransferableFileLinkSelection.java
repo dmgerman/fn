@@ -276,7 +276,7 @@ argument_list|(
 literal|0
 argument_list|)
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.

@@ -1688,7 +1688,7 @@ argument_list|)
 argument_list|,
 name|e
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"year"
 argument_list|)
@@ -1707,7 +1707,7 @@ argument_list|)
 argument_list|,
 name|e
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"title"
 argument_list|)
@@ -1842,7 +1842,7 @@ argument_list|)
 argument_list|,
 name|e
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"year"
 argument_list|)
@@ -1861,7 +1861,7 @@ argument_list|)
 argument_list|,
 name|e
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"title"
 argument_list|)
@@ -2317,7 +2317,7 @@ literal|"Kelly Clarkson and Ozzy Osbourne"
 argument_list|,
 name|e
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"author"
 argument_list|)
@@ -2334,7 +2334,7 @@ literal|"Huey Duck and Dewey Duck and Louie Duck"
 argument_list|,
 name|e
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"editor"
 argument_list|)
@@ -2950,7 +2950,7 @@ literal|"Hallo World this is not an exercise ."
 argument_list|,
 name|e
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"title"
 argument_list|)
@@ -2967,7 +2967,7 @@ literal|"Hallo World this is not an exercise ."
 argument_list|,
 name|e
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"tabs"
 argument_list|)
@@ -2984,7 +2984,7 @@ literal|"\n\nAbstract preserve\n\t Whitespace\n\n"
 argument_list|,
 name|e
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"abstract"
 argument_list|)
@@ -4800,7 +4800,7 @@ name|parse
 argument_list|(
 name|expected
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|field
 argument_list|)
@@ -4818,7 +4818,7 @@ name|parse
 argument_list|(
 name|actual
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|field
 argument_list|)
@@ -4849,14 +4849,14 @@ name|field
 argument_list|,
 name|expected
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|field
 argument_list|)
 argument_list|,
 name|actual
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|field
 argument_list|)
@@ -5242,7 +5242,7 @@ literal|"K. Crowston and H. Annabi"
 argument_list|,
 name|a
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"author"
 argument_list|)
@@ -5259,7 +5259,7 @@ literal|"Title A"
 argument_list|,
 name|a
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"title"
 argument_list|)
@@ -5305,7 +5305,7 @@ literal|"Norton Bar"
 argument_list|,
 name|b
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"author"
 argument_list|)
@@ -8568,7 +8568,7 @@ name|parse
 argument_list|(
 name|x
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"author"
 argument_list|)
@@ -8808,7 +8808,7 @@ name|parse
 argument_list|(
 name|b
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"author"
 argument_list|)
@@ -8882,7 +8882,7 @@ name|parse
 argument_list|(
 name|b
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"author"
 argument_list|)
@@ -9082,7 +9082,7 @@ name|parse
 argument_list|(
 name|b
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"author"
 argument_list|)

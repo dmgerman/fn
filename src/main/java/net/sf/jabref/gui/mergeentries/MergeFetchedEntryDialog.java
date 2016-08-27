@@ -895,7 +895,7 @@ name|originalString
 init|=
 name|originalEntry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|field
 argument_list|)
@@ -908,7 +908,7 @@ name|mergedString
 init|=
 name|mergedEntry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|field
 argument_list|)
@@ -1010,7 +1010,7 @@ name|originalString
 init|=
 name|originalEntry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|field
 argument_list|)

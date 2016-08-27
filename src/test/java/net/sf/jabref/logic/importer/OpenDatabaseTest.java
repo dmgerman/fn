@@ -606,7 +606,7 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"year"
 argument_list|)
@@ -677,7 +677,7 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"year"
 argument_list|)
@@ -748,7 +748,7 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"year"
 argument_list|)

@@ -952,7 +952,7 @@ name|field
 argument_list|,
 name|b
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|field
 argument_list|)

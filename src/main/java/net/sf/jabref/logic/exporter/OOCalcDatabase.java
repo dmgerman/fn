@@ -1821,7 +1821,7 @@ block|{
 return|return
 name|e
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|field
 argument_list|)

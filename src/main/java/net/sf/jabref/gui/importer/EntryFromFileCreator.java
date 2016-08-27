@@ -685,7 +685,7 @@ name|oVal
 init|=
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|field
 argument_list|)
@@ -809,7 +809,7 @@ control|)
 block|{
 name|e
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|field
 argument_list|)

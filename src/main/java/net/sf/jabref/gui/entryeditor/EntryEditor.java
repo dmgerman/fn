@@ -5564,7 +5564,7 @@ name|oldValue
 init|=
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|fieldName
 argument_list|)
@@ -7324,7 +7324,7 @@ name|equals
 argument_list|(
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|fieldEditor
 operator|.
@@ -7386,7 +7386,7 @@ name|oldValue
 init|=
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|fieldEditor
 operator|.

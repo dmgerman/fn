@@ -2067,11 +2067,6 @@ name|DO_NOT_RESOLVE_STRINGS_FOR
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|boolean
-name|updateSpecialFields
-init|=
-literal|false
-decl_stmt|;
 if|if
 condition|(
 operator|!
@@ -2109,10 +2104,6 @@ operator|.
 name|getText
 argument_list|()
 argument_list|)
-expr_stmt|;
-name|updateSpecialFields
-operator|=
-literal|true
 expr_stmt|;
 block|}
 comment|// See if we should start or stop the auto save manager:

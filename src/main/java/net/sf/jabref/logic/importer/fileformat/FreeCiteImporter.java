@@ -1324,7 +1324,7 @@ name|note
 operator|=
 name|e
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.

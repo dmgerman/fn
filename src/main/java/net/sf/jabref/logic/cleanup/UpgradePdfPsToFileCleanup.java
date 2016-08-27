@@ -221,7 +221,7 @@ name|oldFileContent
 init|=
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -269,7 +269,7 @@ control|)
 block|{
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|field
 argument_list|)

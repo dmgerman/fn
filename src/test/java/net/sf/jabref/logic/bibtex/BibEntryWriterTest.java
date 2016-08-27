@@ -1669,7 +1669,7 @@ literal|"#mar#"
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"month"
 argument_list|)

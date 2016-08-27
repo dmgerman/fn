@@ -931,7 +931,7 @@ argument_list|()
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"pdf"
 argument_list|)
@@ -950,7 +950,7 @@ argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"file"
 argument_list|)
@@ -1014,7 +1014,7 @@ argument_list|()
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"pdf"
 argument_list|)
@@ -1033,7 +1033,7 @@ argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"file"
 argument_list|)
@@ -1099,7 +1099,7 @@ argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"doi"
 argument_list|)
@@ -1247,7 +1247,7 @@ argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"doi"
 argument_list|)
@@ -1264,7 +1264,7 @@ argument_list|()
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"url"
 argument_list|)
@@ -1452,7 +1452,7 @@ argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"month"
 argument_list|)
@@ -1533,7 +1533,7 @@ argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"pages"
 argument_list|)
@@ -1614,7 +1614,7 @@ argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"date"
 argument_list|)
@@ -1680,7 +1680,7 @@ argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"file"
 argument_list|)
@@ -1814,7 +1814,7 @@ argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"file"
 argument_list|)
@@ -1932,7 +1932,7 @@ argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"file"
 argument_list|)
@@ -2054,7 +2054,7 @@ argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"file"
 argument_list|)
@@ -2135,7 +2135,7 @@ argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"title"
 argument_list|)
@@ -2216,7 +2216,7 @@ argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"title"
 argument_list|)
@@ -2345,7 +2345,7 @@ argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"title"
 argument_list|)
@@ -2426,7 +2426,7 @@ argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"title"
 argument_list|)
@@ -2490,7 +2490,7 @@ argument_list|()
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"journal"
 argument_list|)
@@ -2509,7 +2509,7 @@ argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"journaltitle"
 argument_list|)
@@ -2590,7 +2590,7 @@ argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"month"
 argument_list|)

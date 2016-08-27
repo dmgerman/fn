@@ -2253,7 +2253,7 @@ name|crossrefKey
 init|=
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
