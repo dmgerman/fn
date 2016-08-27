@@ -137,7 +137,13 @@ specifier|final
 name|boolean
 name|convertUnitsOnSearch
 decl_stmt|;
-DECL|method|ImportFormatPreferences (Set<CustomImporter> customImportList, Charset encoding, String keywordSeparator, BibtexKeyPatternPreferences bibtexKeyPatternPreferences, FieldContentParserPreferences fieldContentParserPreferences, boolean convertUnitsOnSearch, boolean useCaseKeeperOnSearch)
+DECL|field|keywordSyncEnabled
+specifier|private
+specifier|final
+name|boolean
+name|keywordSyncEnabled
+decl_stmt|;
+DECL|method|ImportFormatPreferences (Set<CustomImporter> customImportList, Charset encoding, String keywordSeparator, BibtexKeyPatternPreferences bibtexKeyPatternPreferences, FieldContentParserPreferences fieldContentParserPreferences, boolean convertUnitsOnSearch, boolean useCaseKeeperOnSearch, boolean keywordSyncEnabled)
 specifier|public
 name|ImportFormatPreferences
 parameter_list|(
@@ -164,6 +170,9 @@ name|convertUnitsOnSearch
 parameter_list|,
 name|boolean
 name|useCaseKeeperOnSearch
+parameter_list|,
+name|boolean
+name|keywordSyncEnabled
 parameter_list|)
 block|{
 name|this
@@ -207,6 +216,12 @@ operator|.
 name|useCaseKeeperOnSearch
 operator|=
 name|useCaseKeeperOnSearch
+expr_stmt|;
+name|this
+operator|.
+name|keywordSyncEnabled
+operator|=
+name|keywordSyncEnabled
 expr_stmt|;
 block|}
 DECL|method|getCustomImportList ()
@@ -308,7 +323,19 @@ argument_list|,
 name|convertUnitsOnSearch
 argument_list|,
 name|useCaseKeeperOnSearch
+argument_list|,
+name|keywordSyncEnabled
 argument_list|)
+return|;
+block|}
+DECL|method|isKeywordSyncEnabled ()
+specifier|public
+name|boolean
+name|isKeywordSyncEnabled
+parameter_list|()
+block|{
+return|return
+name|keywordSyncEnabled
 return|;
 block|}
 block|}

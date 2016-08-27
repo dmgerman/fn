@@ -614,7 +614,7 @@ name|Charset
 name|encoding
 decl_stmt|;
 comment|/**      * The MetaData object stores all meta data sets in Vectors. To ensure that      * the data is written correctly to string, the user of a meta data Vector      * must simply make sure the appropriate changes are reflected in the Vector      * it has been passed.      */
-DECL|method|MetaData (Map<String, String> inData)
+DECL|method|MetaData (Map<String, String> inData, String keywordSeparator)
 specifier|private
 name|MetaData
 parameter_list|(
@@ -625,6 +625,9 @@ argument_list|,
 name|String
 argument_list|>
 name|inData
+parameter_list|,
+name|String
+name|keywordSeparator
 parameter_list|)
 throws|throws
 name|ParseException
@@ -639,10 +642,12 @@ expr_stmt|;
 name|setData
 argument_list|(
 name|inData
+argument_list|,
+name|keywordSeparator
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|MetaData (Map<String, String> inData, Charset encoding)
+DECL|method|MetaData (Map<String, String> inData, Charset encoding, String keywordSeparator)
 specifier|private
 name|MetaData
 parameter_list|(
@@ -656,6 +661,9 @@ name|inData
 parameter_list|,
 name|Charset
 name|encoding
+parameter_list|,
+name|String
+name|keywordSeparator
 parameter_list|)
 throws|throws
 name|ParseException
@@ -663,6 +671,8 @@ block|{
 name|this
 argument_list|(
 name|inData
+argument_list|,
+name|keywordSeparator
 argument_list|)
 expr_stmt|;
 name|this
@@ -700,7 +710,7 @@ operator|=
 name|encoding
 expr_stmt|;
 block|}
-DECL|method|parse (Map<String, String> data)
+DECL|method|parse (Map<String, String> data, String keywordSeparator)
 specifier|public
 specifier|static
 name|MetaData
@@ -713,6 +723,9 @@ argument_list|,
 name|String
 argument_list|>
 name|data
+parameter_list|,
+name|String
+name|keywordSeparator
 parameter_list|)
 throws|throws
 name|ParseException
@@ -722,10 +735,12 @@ operator|new
 name|MetaData
 argument_list|(
 name|data
+argument_list|,
+name|keywordSeparator
 argument_list|)
 return|;
 block|}
-DECL|method|parse (Map<String, String> data, Charset encoding)
+DECL|method|parse (Map<String, String> data, Charset encoding, String keywordSeparator)
 specifier|public
 specifier|static
 name|MetaData
@@ -741,6 +756,9 @@ name|data
 parameter_list|,
 name|Charset
 name|encoding
+parameter_list|,
+name|String
+name|keywordSeparator
 parameter_list|)
 throws|throws
 name|ParseException
@@ -752,10 +770,12 @@ argument_list|(
 name|data
 argument_list|,
 name|encoding
+argument_list|,
+name|keywordSeparator
 argument_list|)
 return|;
 block|}
-DECL|method|setData (Map<String, String> inData)
+DECL|method|setData (Map<String, String> inData, String keywordSeparator)
 specifier|public
 name|void
 name|setData
@@ -767,6 +787,9 @@ argument_list|,
 name|String
 argument_list|>
 name|inData
+parameter_list|,
+name|String
+name|keywordSeparator
 parameter_list|)
 throws|throws
 name|ParseException
@@ -883,6 +906,8 @@ block|{
 name|putGroups
 argument_list|(
 name|orderedData
+argument_list|,
+name|keywordSeparator
 argument_list|)
 expr_stmt|;
 comment|// the keys "groupsversion" and "groups" were used in JabRef versions around 1.3, we will not support them anymore
@@ -1191,7 +1216,7 @@ argument_list|()
 expr_stmt|;
 block|}
 comment|/**      * Parse the groups metadata string      *      * @param orderedData The vector of metadata strings      */
-DECL|method|putGroups (List<String> orderedData)
+DECL|method|putGroups (List<String> orderedData, String keywordSeparator)
 specifier|private
 name|void
 name|putGroups
@@ -1201,6 +1226,9 @@ argument_list|<
 name|String
 argument_list|>
 name|orderedData
+parameter_list|,
+name|String
+name|keywordSeparator
 parameter_list|)
 throws|throws
 name|ParseException
@@ -1215,9 +1243,7 @@ name|parse
 argument_list|(
 name|orderedData
 argument_list|,
-name|Globals
-operator|.
-name|prefs
+name|keywordSeparator
 argument_list|)
 expr_stmt|;
 name|eventBus

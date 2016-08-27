@@ -108,18 +108,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|model
 operator|.
 name|database
@@ -175,16 +163,6 @@ operator|.
 name|junit
 operator|.
 name|Before
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|BeforeClass
 import|;
 end_import
 
@@ -364,26 +342,6 @@ argument_list|()
 argument_list|)
 operator|.
 name|toFile
-argument_list|()
-expr_stmt|;
-block|}
-annotation|@
-name|BeforeClass
-DECL|method|setUpGlobalsPrefs ()
-specifier|public
-specifier|static
-name|void
-name|setUpGlobalsPrefs
-parameter_list|()
-block|{
-comment|// otherwise FieldContentParser (called by BibtexParser) and SpecialFields crashes
-name|Globals
-operator|.
-name|prefs
-operator|=
-name|JabRefPreferences
-operator|.
-name|getInstance
 argument_list|()
 expr_stmt|;
 block|}

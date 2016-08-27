@@ -1455,6 +1455,13 @@ operator|.
 name|INCLUDING
 argument_list|,
 name|prefs
+operator|.
+name|get
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|KEYWORD_SEPARATOR
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1577,6 +1584,13 @@ operator|.
 name|INCLUDING
 argument_list|,
 name|prefs
+operator|.
+name|get
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|KEYWORD_SEPARATOR
+argument_list|)
 argument_list|)
 argument_list|)
 argument_list|)

@@ -1011,6 +1011,13 @@ argument_list|,
 name|Globals
 operator|.
 name|prefs
+operator|.
+name|get
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|KEYWORD_SEPARATOR
+argument_list|)
 argument_list|)
 decl_stmt|;
 return|return

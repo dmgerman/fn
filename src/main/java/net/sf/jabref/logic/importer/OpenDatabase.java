@@ -528,9 +528,9 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|SpecialFieldsUtils
+name|importFormatPreferences
 operator|.
-name|keywordSyncEnabled
+name|isKeywordSyncEnabled
 argument_list|()
 condition|)
 block|{

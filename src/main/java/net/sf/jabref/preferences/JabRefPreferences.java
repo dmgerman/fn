@@ -9625,6 +9625,28 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+DECL|method|isKeywordSyncEnabled ()
+specifier|public
+name|boolean
+name|isKeywordSyncEnabled
+parameter_list|()
+block|{
+return|return
+name|getBoolean
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|SPECIALFIELDSENABLED
+argument_list|)
+operator|&&
+name|getBoolean
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|AUTOSYNCSPECIALFIELDSTOKEYWORDS
+argument_list|)
+return|;
+block|}
 DECL|method|getImportFormatPreferences ()
 specifier|public
 name|ImportFormatPreferences
@@ -9660,6 +9682,9 @@ name|getBoolean
 argument_list|(
 name|USE_CASE_KEEPER_ON_SEARCH
 argument_list|)
+argument_list|,
+name|isKeywordSyncEnabled
+argument_list|()
 argument_list|)
 return|;
 block|}
