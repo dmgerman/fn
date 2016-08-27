@@ -1134,7 +1134,7 @@ name|prefs
 operator|.
 name|getStringList
 argument_list|(
-name|NameFormatter
+name|JabRefPreferences
 operator|.
 name|NAME_FORMATER_KEY
 argument_list|)
@@ -1149,7 +1149,7 @@ name|prefs
 operator|.
 name|getStringList
 argument_list|(
-name|NameFormatter
+name|JabRefPreferences
 operator|.
 name|NAME_FORMATTER_VALUE
 argument_list|)
@@ -1739,7 +1739,7 @@ name|prefs
 operator|.
 name|putStringList
 argument_list|(
-name|NameFormatter
+name|JabRefPreferences
 operator|.
 name|NAME_FORMATER_KEY
 argument_list|,
@@ -1750,7 +1750,7 @@ name|prefs
 operator|.
 name|putStringList
 argument_list|(
-name|NameFormatter
+name|JabRefPreferences
 operator|.
 name|NAME_FORMATTER_VALUE
 argument_list|,

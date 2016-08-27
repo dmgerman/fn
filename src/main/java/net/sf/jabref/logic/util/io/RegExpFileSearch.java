@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|net.sf.jabref.external
+DECL|package|net.sf.jabref.logic.util.io
 package|package
 name|net
 operator|.
@@ -8,7 +8,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|external
+name|logic
+operator|.
+name|util
+operator|.
+name|io
 package|;
 end_package
 
