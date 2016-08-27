@@ -1615,6 +1615,12 @@ name|renameCheckBox
 operator|.
 name|isSelected
 argument_list|()
+operator|||
+operator|(
+name|single
+operator|==
+literal|null
+operator|)
 condition|)
 block|{
 name|destFilename

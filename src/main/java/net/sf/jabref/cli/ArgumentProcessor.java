@@ -1711,7 +1711,10 @@ decl_stmt|;
 name|ParserResult
 name|pr
 init|=
-literal|null
+name|ParserResult
+operator|.
+name|getNullResult
+argument_list|()
 decl_stmt|;
 if|if
 condition|(

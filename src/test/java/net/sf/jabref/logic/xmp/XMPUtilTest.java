@@ -6487,6 +6487,7 @@ operator|.
 name|fail
 argument_list|()
 expr_stmt|;
+return|return;
 block|}
 name|XMPMetadata
 name|meta
@@ -8921,6 +8922,8 @@ operator|.
 name|fail
 argument_list|()
 expr_stmt|;
+return|return;
+comment|// To avoid warnings
 block|}
 name|XMPMetadata
 name|meta

@@ -984,6 +984,12 @@ expr_stmt|;
 block|}
 if|if
 condition|(
+operator|(
+name|newFile
+operator|!=
+literal|null
+operator|)
+operator|&&
 operator|!
 name|newFile
 operator|.

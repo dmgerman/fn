@@ -260,6 +260,22 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|BibEntry
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|preferences
 operator|.
 name|JabRefPreferences
@@ -332,11 +348,11 @@ specifier|final
 name|BibDatabaseContext
 name|databaseContext
 decl_stmt|;
-DECL|field|bibtexKey
+DECL|field|entry
 specifier|private
 specifier|final
-name|String
-name|bibtexKey
+name|BibEntry
+name|entry
 decl_stmt|;
 DECL|field|editor
 specifier|private
@@ -353,7 +369,7 @@ specifier|private
 name|boolean
 name|dontShowDialog
 decl_stmt|;
-DECL|method|DownloadExternalFile (JabRefFrame frame, BibDatabaseContext databaseContext, String bibtexKey)
+DECL|method|DownloadExternalFile (JabRefFrame frame, BibDatabaseContext databaseContext, BibEntry entry)
 specifier|public
 name|DownloadExternalFile
 parameter_list|(
@@ -363,8 +379,8 @@ parameter_list|,
 name|BibDatabaseContext
 name|databaseContext
 parameter_list|,
-name|String
-name|bibtexKey
+name|BibEntry
+name|entry
 parameter_list|)
 block|{
 name|this
@@ -381,9 +397,9 @@ name|databaseContext
 expr_stmt|;
 name|this
 operator|.
-name|bibtexKey
+name|entry
 operator|=
-name|bibtexKey
+name|entry
 expr_stmt|;
 block|}
 comment|/**      * Start a download.      *      * @param callback The object to which the filename should be reported when download      *                 is complete.      */
@@ -935,7 +951,7 @@ name|suggestedName
 argument_list|)
 decl_stmt|;
 name|FileListEntry
-name|entry
+name|fileListEntry
 init|=
 operator|new
 name|FileListEntry
@@ -957,7 +973,7 @@ name|FileListEntryEditor
 argument_list|(
 name|frame
 argument_list|,
-name|entry
+name|fileListEntry
 argument_list|,
 literal|true
 argument_list|,
@@ -1142,7 +1158,7 @@ condition|?
 operator|new
 name|File
 argument_list|(
-name|entry
+name|fileListEntry
 operator|.
 name|link
 argument_list|)
@@ -1151,7 +1167,7 @@ name|expandFilename
 argument_list|(
 name|directory
 argument_list|,
-name|entry
+name|fileListEntry
 operator|.
 name|link
 argument_list|)
@@ -1238,12 +1254,12 @@ comment|// path to relative:
 if|if
 condition|(
 operator|(
-name|directory
+name|dirPrefix
 operator|!=
 literal|null
 operator|)
 operator|&&
-name|entry
+name|fileListEntry
 operator|.
 name|link
 operator|.
@@ -1253,7 +1269,7 @@ name|directory
 argument_list|)
 operator|&&
 operator|(
-name|entry
+name|fileListEntry
 operator|.
 name|link
 operator|.
@@ -1267,16 +1283,16 @@ argument_list|()
 operator|)
 condition|)
 block|{
-name|entry
+name|fileListEntry
 operator|=
 operator|new
 name|FileListEntry
 argument_list|(
-name|entry
+name|fileListEntry
 operator|.
 name|description
 argument_list|,
-name|entry
+name|fileListEntry
 operator|.
 name|link
 operator|.
@@ -1288,7 +1304,7 @@ name|length
 argument_list|()
 argument_list|)
 argument_list|,
-name|entry
+name|fileListEntry
 operator|.
 name|type
 argument_list|)
@@ -1298,7 +1314,7 @@ name|callback
 operator|.
 name|downloadComplete
 argument_list|(
-name|entry
+name|fileListEntry
 argument_list|)
 expr_stmt|;
 block|}
@@ -1471,7 +1487,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|// FIXME: will break download if no bibtexkey is present!
 DECL|method|getSuggestedFileName (String suffix)
 specifier|private
 name|String
@@ -1493,18 +1508,7 @@ operator|.
 name|getDatabase
 argument_list|()
 argument_list|,
-name|frame
-operator|.
-name|getCurrentBasePanel
-argument_list|()
-operator|.
-name|getSelectedEntries
-argument_list|()
-operator|.
-name|get
-argument_list|(
-literal|0
-argument_list|)
+name|entry
 argument_list|,
 name|Globals
 operator|.

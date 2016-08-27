@@ -3066,12 +3066,10 @@ operator|.
 name|getBibDatabaseContext
 argument_list|()
 argument_list|,
-name|bibtexKey
+name|entryEditor
 operator|.
-name|orElse
-argument_list|(
-literal|null
-argument_list|)
+name|getEntry
+argument_list|()
 argument_list|)
 decl_stmt|;
 try|try

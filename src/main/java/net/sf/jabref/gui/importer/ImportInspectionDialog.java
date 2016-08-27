@@ -3461,41 +3461,16 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Generate key for the selected entry only.      */
-DECL|method|generateKeySelectedEntry ()
+comment|/**      * Generate key for an entry.      */
+DECL|method|generateKeyForEntry (BibEntry entry)
 specifier|private
 name|void
-name|generateKeySelectedEntry
-parameter_list|()
-block|{
-if|if
-condition|(
-name|selectionModel
-operator|.
-name|getSelected
-argument_list|()
-operator|.
-name|size
-argument_list|()
-operator|!=
-literal|1
-condition|)
-block|{
-return|return;
-block|}
+name|generateKeyForEntry
+parameter_list|(
 name|BibEntry
 name|entry
-init|=
-name|selectionModel
-operator|.
-name|getSelected
-argument_list|()
-operator|.
-name|get
-argument_list|(
-literal|0
-argument_list|)
-decl_stmt|;
+parameter_list|)
+block|{
 name|entries
 operator|.
 name|getReadWriteLock
@@ -7093,21 +7068,13 @@ argument_list|(
 literal|0
 argument_list|)
 expr_stmt|;
-name|Optional
-argument_list|<
-name|String
-argument_list|>
-name|bibtexKey
-init|=
+if|if
+condition|(
+operator|!
 name|entry
 operator|.
 name|getCiteKeyOptional
 argument_list|()
-decl_stmt|;
-if|if
-condition|(
-operator|!
-name|bibtexKey
 operator|.
 name|isPresent
 argument_list|()
@@ -7154,15 +7121,10 @@ operator|.
 name|OK_OPTION
 condition|)
 block|{
-name|generateKeySelectedEntry
-argument_list|()
-expr_stmt|;
-name|bibtexKey
-operator|=
+name|generateKeyForEntry
+argument_list|(
 name|entry
-operator|.
-name|getCiteKeyOptional
-argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -7176,10 +7138,7 @@ name|frame
 argument_list|,
 name|bibDatabaseContext
 argument_list|,
-name|bibtexKey
-operator|.
-name|get
-argument_list|()
+name|entry
 argument_list|)
 decl_stmt|;
 try|try
@@ -7202,7 +7161,7 @@ name|LOGGER
 operator|.
 name|warn
 argument_list|(
-literal|"Could not downlod file"
+literal|"Could not download file"
 argument_list|,
 name|ex
 argument_list|)
@@ -7432,8 +7391,10 @@ operator|.
 name|OK_OPTION
 condition|)
 block|{
-name|generateKeySelectedEntry
-argument_list|()
+name|generateKeyForEntry
+argument_list|(
+name|entry
+argument_list|)
 expr_stmt|;
 block|}
 else|else
