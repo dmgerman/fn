@@ -1268,6 +1268,8 @@ name|jabref
 operator|.
 name|model
 operator|.
+name|entry
+operator|.
 name|event
 operator|.
 name|FieldChangedEvent

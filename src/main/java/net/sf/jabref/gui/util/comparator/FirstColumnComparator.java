@@ -34,7 +34,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|BibDatabaseContext
+name|logic
+operator|.
+name|TypedBibEntry
 import|;
 end_import
 
@@ -46,9 +48,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|model
 operator|.
-name|TypedBibEntry
+name|database
+operator|.
+name|BibDatabaseContext
 import|;
 end_import
 

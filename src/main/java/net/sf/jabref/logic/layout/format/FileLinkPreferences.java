@@ -50,15 +50,6 @@ name|String
 argument_list|>
 name|fileDirForDatabase
 decl_stmt|;
-DECL|field|DIR_SUFFIX
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|DIR_SUFFIX
-init|=
-literal|"Directory"
-decl_stmt|;
 DECL|method|FileLinkPreferences (List<String> generatedDirForDatabase, List<String> fileDirForDatabase)
 specifier|public
 name|FileLinkPreferences

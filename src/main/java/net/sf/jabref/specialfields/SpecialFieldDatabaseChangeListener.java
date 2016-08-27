@@ -66,9 +66,11 @@ name|jabref
 operator|.
 name|model
 operator|.
-name|entry
+name|database
 operator|.
-name|BibEntry
+name|event
+operator|.
+name|EntryAddedEvent
 import|;
 end_import
 
@@ -82,9 +84,9 @@ name|jabref
 operator|.
 name|model
 operator|.
-name|event
+name|entry
 operator|.
-name|EntryAddedEvent
+name|BibEntry
 import|;
 end_import
 
