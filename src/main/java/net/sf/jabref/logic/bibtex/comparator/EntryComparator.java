@@ -101,7 +101,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This implementation of Comparator takes care of most of the details of sorting BibTeX entries in JabRef. It is  * structured as a node in a linked list of comparators, where each node can contain a link to a new comparator that  * decides the ordering (by recursion) if this one can't find a difference. The next node, if any, is given at  * construction time, and an arbitrary number of nodes can be included. If the entries are equal by this comparator, and  * there is no next entry, the entries' unique IDs will decide the ordering. Consequently, this comparator can never  * return 0 unless the entries are the same object.  */
+comment|/**  * This implementation of Comparator takes care of most of the details of sorting BibTeX entries in JabRef. It is  * structured as a node in a linked list of comparators, where each node can contain a link to a new comparator that  * decides the ordering (by recursion) if this one can't find a difference. The next node, if any, is given at  * construction time, and an arbitrary number of nodes can be included. If the entries are equal by this comparator, and  * there is no next entry, the entries' unique IDs will decide the ordering.  */
 end_comment
 
 begin_class
@@ -148,7 +148,7 @@ name|BibEntry
 argument_list|>
 name|next
 decl_stmt|;
-DECL|method|EntryComparator (boolean binary, boolean desc, String field, Comparator<BibEntry> next)
+DECL|method|EntryComparator (boolean binary, boolean descending, String field, Comparator<BibEntry> next)
 specifier|public
 name|EntryComparator
 parameter_list|(
@@ -156,7 +156,7 @@ name|boolean
 name|binary
 parameter_list|,
 name|boolean
-name|desc
+name|descending
 parameter_list|,
 name|String
 name|field
@@ -184,7 +184,7 @@ name|this
 operator|.
 name|descending
 operator|=
-name|desc
+name|descending
 expr_stmt|;
 name|this
 operator|.
@@ -204,7 +204,7 @@ name|sortField
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|EntryComparator (boolean binary, boolean desc, String field)
+DECL|method|EntryComparator (boolean binary, boolean descending, String field)
 specifier|public
 name|EntryComparator
 parameter_list|(
@@ -212,7 +212,7 @@ name|boolean
 name|binary
 parameter_list|,
 name|boolean
-name|desc
+name|descending
 parameter_list|,
 name|String
 name|field
@@ -234,7 +234,7 @@ name|this
 operator|.
 name|descending
 operator|=
-name|desc
+name|descending
 expr_stmt|;
 name|this
 operator|.
@@ -268,6 +268,9 @@ name|BibEntry
 name|e2
 parameter_list|)
 block|{
+comment|// default equals
+comment|// TODO: with the new default equals this does not only return 0 for identical objects,
+comment|// but for all objects that have the same id and same fields
 if|if
 condition|(
 name|Objects
