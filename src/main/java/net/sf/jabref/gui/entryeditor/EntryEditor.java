@@ -2909,6 +2909,7 @@ name|optionalPanel
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Add a tab for displaying comments from a PDF       */
 DECL|method|addPdfTab ()
 specifier|private
 name|void
