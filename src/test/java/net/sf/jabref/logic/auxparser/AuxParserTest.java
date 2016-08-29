@@ -455,6 +455,11 @@ name|auxResult
 operator|.
 name|getFoundKeysInAux
 argument_list|()
+operator|+
+name|auxResult
+operator|.
+name|getCrossRefEntriesCount
+argument_list|()
 argument_list|,
 name|auxResult
 operator|.
@@ -646,6 +651,11 @@ argument_list|(
 name|auxResult
 operator|.
 name|getFoundKeysInAux
+argument_list|()
+operator|+
+name|auxResult
+operator|.
+name|getCrossRefEntriesCount
 argument_list|()
 argument_list|,
 name|auxResult
@@ -974,6 +984,11 @@ name|auxResult
 operator|.
 name|getFoundKeysInAux
 argument_list|()
+operator|+
+name|auxResult
+operator|.
+name|getCrossRefEntriesCount
+argument_list|()
 argument_list|,
 name|auxResult
 operator|.
@@ -1111,7 +1126,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|1
+literal|2
 argument_list|,
 name|auxResult
 operator|.
@@ -1129,7 +1144,7 @@ argument_list|()
 decl_stmt|;
 name|assertEquals
 argument_list|(
-literal|2
+literal|4
 argument_list|,
 name|newDB
 operator|.
@@ -1142,7 +1157,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|1
+literal|3
 argument_list|,
 name|auxResult
 operator|.
@@ -1152,7 +1167,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|2
+literal|4
 argument_list|,
 name|auxResult
 operator|.
@@ -1165,6 +1180,11 @@ argument_list|(
 name|auxResult
 operator|.
 name|getFoundKeysInAux
+argument_list|()
+operator|+
+name|auxResult
+operator|.
+name|getCrossRefEntriesCount
 argument_list|()
 argument_list|,
 name|auxResult
@@ -1290,6 +1310,11 @@ argument_list|(
 name|auxResult
 operator|.
 name|getFoundKeysInAux
+argument_list|()
+operator|+
+name|auxResult
+operator|.
+name|getCrossRefEntriesCount
 argument_list|()
 argument_list|,
 name|auxResult
