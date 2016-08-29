@@ -256,7 +256,7 @@ name|LogFactory
 operator|.
 name|getLog
 argument_list|(
-name|DBMSConnector
+name|DBMSProcessor
 operator|.
 name|class
 argument_list|)

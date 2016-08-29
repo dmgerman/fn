@@ -92,18 +92,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|MetaData
 import|;
 end_import
@@ -265,20 +253,6 @@ operator|.
 name|event
 operator|.
 name|FieldChangedEvent
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|preferences
-operator|.
-name|JabRefPreferences
 import|;
 end_import
 
@@ -503,12 +477,21 @@ specifier|private
 name|Connection
 name|currentConnection
 decl_stmt|;
-DECL|method|DBMSSynchronizer (BibDatabaseContext bibDatabaseContext)
+DECL|field|keywordSeparator
+specifier|private
+specifier|final
+name|String
+name|keywordSeparator
+decl_stmt|;
+DECL|method|DBMSSynchronizer (BibDatabaseContext bibDatabaseContext, String keywordSeparator)
 specifier|public
 name|DBMSSynchronizer
 parameter_list|(
 name|BibDatabaseContext
 name|bibDatabaseContext
+parameter_list|,
+name|String
+name|keywordSeparator
 parameter_list|)
 block|{
 name|this
@@ -542,6 +525,12 @@ operator|=
 operator|new
 name|EventBus
 argument_list|()
+expr_stmt|;
+name|this
+operator|.
+name|keywordSeparator
+operator|=
+name|keywordSeparator
 expr_stmt|;
 block|}
 comment|/**      * Listening method. Inserts a new {@link BibEntry} into shared database.      *      * @param event {@link EntryAddedEvent} object      */
@@ -1327,16 +1316,7 @@ operator|.
 name|getSharedMetaData
 argument_list|()
 argument_list|,
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|get
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|KEYWORD_SEPARATOR
-argument_list|)
+name|keywordSeparator
 argument_list|)
 expr_stmt|;
 block|}
