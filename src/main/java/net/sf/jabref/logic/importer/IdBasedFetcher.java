@@ -52,7 +52,7 @@ name|IdBasedFetcher
 extends|extends
 name|WebFetcher
 block|{
-comment|/**      * Looks for bibliographic information associated to the given identifier.      *      * @param identifier a string which uniquely identifies the item      * @return a {@link BibEntry} containing the bibliographic information (or an empty optional if no data was found)      */
+comment|/**      * Looks for bibliographic information associated to the given identifier.      *      * @param identifier a string which uniquely identifies the item      * @return a {@link BibEntry} containing the bibliographic information (or an empty optional if no data was found)      * @throws FetcherException      */
 DECL|method|performSearchById (String identifier)
 name|Optional
 argument_list|<
