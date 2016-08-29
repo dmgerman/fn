@@ -2923,7 +2923,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"PDF Comments"
+literal|"PDF comments"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2935,14 +2935,14 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"PDF Comments"
+literal|"PDF comments"
 argument_list|)
 argument_list|,
 name|IconTheme
 operator|.
 name|JabRefIcon
 operator|.
-name|SOURCE
+name|PDF_FILE
 operator|.
 name|getSmallIcon
 argument_list|()
@@ -2953,7 +2953,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Show PDF Comments"
+literal|"Show PDF comments"
 argument_list|)
 argument_list|)
 expr_stmt|;
