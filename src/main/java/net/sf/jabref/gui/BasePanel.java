@@ -2307,17 +2307,6 @@ name|isPresent
 argument_list|()
 condition|)
 block|{
-if|if
-condition|(
-name|bibDatabaseContext
-operator|.
-name|getDatabase
-argument_list|()
-operator|.
-name|hasEntries
-argument_list|()
-condition|)
-block|{
 comment|// Register so we get notifications about outside changes to the file.
 try|try
 block|{
@@ -2356,8 +2345,18 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-block|}
 else|else
+block|{
+if|if
+condition|(
+name|bibDatabaseContext
+operator|.
+name|getDatabase
+argument_list|()
+operator|.
+name|hasEntries
+argument_list|()
+condition|)
 block|{
 comment|// if the database is not empty and no file is assigned,
 comment|// the database came from an import and has to be treated somehow
@@ -2368,6 +2367,7 @@ name|baseChanged
 operator|=
 literal|true
 expr_stmt|;
+block|}
 block|}
 block|}
 comment|// Returns a collection of AutoCompleters, which are populated from the current database
