@@ -100,16 +100,19 @@ argument_list|(
 name|highlightPattern
 argument_list|)
 expr_stmt|;
+name|String
+name|searchText
+init|=
 name|Objects
 operator|.
 name|requireNonNull
 argument_list|(
 name|text
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 if|if
 condition|(
-name|text
+name|searchText
 operator|.
 name|isEmpty
 argument_list|()
@@ -122,7 +125,7 @@ argument_list|()
 condition|)
 block|{
 return|return
-name|text
+name|searchText
 return|;
 block|}
 name|Matcher
@@ -135,7 +138,7 @@ argument_list|()
 operator|.
 name|matcher
 argument_list|(
-name|text
+name|searchText
 argument_list|)
 decl_stmt|;
 name|StringBuffer
@@ -202,7 +205,7 @@ argument_list|(
 name|sb
 argument_list|)
 expr_stmt|;
-name|text
+name|searchText
 operator|=
 name|sb
 operator|.
@@ -211,7 +214,7 @@ argument_list|()
 expr_stmt|;
 block|}
 return|return
-name|text
+name|searchText
 return|;
 block|}
 block|}

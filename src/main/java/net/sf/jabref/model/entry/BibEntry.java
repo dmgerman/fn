@@ -1,8 +1,4 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
-begin_comment
-comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
-end_comment
-
 begin_package
 DECL|package|net.sf.jabref.model.entry
 package|package
@@ -200,6 +196,46 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|ConcurrentHashMap
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|regex
+operator|.
+name|Pattern
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|event
+operator|.
+name|source
+operator|.
+name|EntryEventSource
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -333,6 +369,15 @@ name|TYPE_HEADER
 init|=
 literal|"entrytype"
 decl_stmt|;
+DECL|field|OBSOLETE_TYPE_HEADER
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|OBSOLETE_TYPE_HEADER
+init|=
+literal|"bibtextype"
+decl_stmt|;
 DECL|field|KEY_FIELD
 specifier|public
 specifier|static
@@ -360,10 +405,30 @@ name|DEFAULT_TYPE
 init|=
 literal|"misc"
 decl_stmt|;
+DECL|field|REMOVE_TRAILING_WHITESPACE
+specifier|private
+specifier|static
+specifier|final
+name|Pattern
+name|REMOVE_TRAILING_WHITESPACE
+init|=
+name|Pattern
+operator|.
+name|compile
+argument_list|(
+literal|"\\s+$"
+argument_list|)
+decl_stmt|;
 DECL|field|id
 specifier|private
 name|String
 name|id
+decl_stmt|;
+DECL|field|sharedBibEntryData
+specifier|private
+specifier|final
+name|SharedBibEntryData
+name|sharedBibEntryData
 decl_stmt|;
 DECL|field|type
 specifier|private
@@ -381,7 +446,7 @@ argument_list|>
 name|fields
 init|=
 operator|new
-name|HashMap
+name|ConcurrentHashMap
 argument_list|<>
 argument_list|()
 decl_stmt|;
@@ -420,6 +485,13 @@ DECL|field|parsedSerialization
 specifier|private
 name|String
 name|parsedSerialization
+decl_stmt|;
+DECL|field|commentsBeforeEntry
+specifier|private
+name|String
+name|commentsBeforeEntry
+init|=
+literal|""
 decl_stmt|;
 comment|/*      * Marks whether the complete serialization, which was read from file, should be used.      *      * Is set to false, if parts of the entry change. This causes the entry to be serialized based on the internal state (and not based on the old serialization)      */
 DECL|field|changed
@@ -501,6 +573,14 @@ argument_list|(
 name|type
 argument_list|)
 expr_stmt|;
+name|this
+operator|.
+name|sharedBibEntryData
+operator|=
+operator|new
+name|SharedBibEntryData
+argument_list|()
+expr_stmt|;
 block|}
 comment|/**      * Sets this entry's ID, provided the database containing it      * doesn't veto the change.      *      * @param id The ID to be used      */
 DECL|method|setId (String id)
@@ -521,6 +601,13 @@ argument_list|,
 literal|"Every BibEntry must have an ID"
 argument_list|)
 expr_stmt|;
+name|String
+name|oldId
+init|=
+name|this
+operator|.
+name|id
+decl_stmt|;
 name|eventBus
 operator|.
 name|post
@@ -535,6 +622,8 @@ operator|.
 name|ID_FIELD
 argument_list|,
 name|id
+argument_list|,
+name|oldId
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -579,6 +668,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Returns the cite key AKA citation key AKA BibTeX key, or null if it is not set.      *      * Note: this is<emph>not</emph> the internal Id of this entry. The internal Id is always present, whereas the BibTeX key might not be present.      */
+annotation|@
+name|Deprecated
 DECL|method|getCiteKey ()
 specifier|public
 name|String
@@ -591,6 +682,29 @@ operator|.
 name|get
 argument_list|(
 name|KEY_FIELD
+argument_list|)
+return|;
+block|}
+DECL|method|getCiteKeyOptional ()
+specifier|public
+name|Optional
+argument_list|<
+name|String
+argument_list|>
+name|getCiteKeyOptional
+parameter_list|()
+block|{
+return|return
+name|Optional
+operator|.
+name|ofNullable
+argument_list|(
+name|fields
+operator|.
+name|get
+argument_list|(
+name|KEY_FIELD
+argument_list|)
 argument_list|)
 return|;
 block|}
@@ -623,13 +737,16 @@ name|type
 return|;
 block|}
 comment|/**      * Sets this entry's type.      */
-DECL|method|setType (String type)
+DECL|method|setType (String type, EntryEventSource eventSource)
 specifier|public
 name|void
 name|setType
 parameter_list|(
 name|String
 name|type
+parameter_list|,
+name|EntryEventSource
+name|eventSource
 parameter_list|)
 block|{
 name|String
@@ -657,6 +774,19 @@ operator|=
 name|type
 expr_stmt|;
 block|}
+name|String
+name|oldType
+init|=
+name|getField
+argument_list|(
+name|TYPE_HEADER
+argument_list|)
+operator|.
+name|orElse
+argument_list|(
+literal|null
+argument_list|)
+decl_stmt|;
 comment|// We set the type before throwing the changeEvent, to enable
 comment|// the change listener to access the new value if the change
 comment|// sets off a change in database sorting etc.
@@ -689,7 +819,31 @@ argument_list|,
 name|TYPE_HEADER
 argument_list|,
 name|newType
+argument_list|,
+name|oldType
+argument_list|,
+name|eventSource
 argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Sets this entry's type.      */
+DECL|method|setType (String type)
+specifier|public
+name|void
+name|setType
+parameter_list|(
+name|String
+name|type
+parameter_list|)
+block|{
+name|setType
+argument_list|(
+name|type
+argument_list|,
+name|EntryEventSource
+operator|.
+name|LOCAL
 argument_list|)
 expr_stmt|;
 block|}
@@ -736,39 +890,14 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**      * Returns the contents of the given field, or null if it is not set.      */
-annotation|@
-name|Deprecated
-comment|//Use getFieldOptional instead
-DECL|method|getField (String name)
-specifier|public
-name|String
-name|getField
-parameter_list|(
-name|String
-name|name
-parameter_list|)
-block|{
-return|return
-name|fields
-operator|.
-name|get
-argument_list|(
-name|toLowerCase
-argument_list|(
-name|name
-argument_list|)
-argument_list|)
-return|;
-block|}
 comment|/**      * Returns the contents of the given field as an Optional.      */
-DECL|method|getFieldOptional (String name)
+DECL|method|getField (String name)
 specifier|public
 name|Optional
 argument_list|<
 name|String
 argument_list|>
-name|getFieldOptional
+name|getField
 parameter_list|(
 name|String
 name|name
@@ -842,7 +971,7 @@ name|ENGLISH
 argument_list|)
 return|;
 block|}
-comment|/**      * Returns the contents of the given field, its alias or null if both are      * not set.      *<p>      * The following aliases are considered (old bibtex<-> new biblatex) based      * on the BibLatex documentation, chapter 2.2.5:      * address<-> location      * annote<-> annotation      * archiveprefix<-> eprinttype      * journal<-> journaltitle      * key<-> sortkey      * pdf<-> file      * primaryclass<-> eprintclass      * school<-> institution      * These work bidirectional.      *<p>      * Special attention is paid to dates: (see the BibLatex documentation,      * chapter 2.3.8)      * The fields 'year' and 'month' are used if the 'date'      * field is empty. Conversely, getFieldOrAlias("year") also tries to      * extract the year from the 'date' field (analogously for 'month').      */
+comment|/**      * Returns the contents of the given field or its alias as an Optional      *<p>      * The following aliases are considered (old bibtex<-> new biblatex) based      * on the BibLatex documentation, chapter 2.2.5:<br>      * address<-> location<br>      * annote<-> annotation<br>      * archiveprefix<-> eprinttype<br>      * journal<-> journaltitle<br>      * key<-> sortkey<br>      * pdf<-> file<br      * primaryclass<-> eprintclass<br>      * school<-> institution<br>      * These work bidirectional.<br>      *<p>      * Special attention is paid to dates: (see the BibLatex documentation,      * chapter 2.3.8)      * The fields 'year' and 'month' are used if the 'date'      * field is empty. Conversely, getFieldOrAlias("year") also tries to      * extract the year from the 'date' field (analogously for 'month').      */
 DECL|method|getFieldOrAlias (String name)
 specifier|public
 name|Optional
@@ -861,7 +990,7 @@ name|String
 argument_list|>
 name|fieldValue
 init|=
-name|getFieldOptional
+name|getField
 argument_list|(
 name|toLowerCase
 argument_list|(
@@ -911,7 +1040,7 @@ literal|null
 condition|)
 block|{
 return|return
-name|getFieldOptional
+name|getField
 argument_list|(
 name|aliasForField
 argument_list|)
@@ -936,7 +1065,7 @@ name|String
 argument_list|>
 name|year
 init|=
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -960,7 +1089,7 @@ name|MonthUtil
 operator|.
 name|getMonth
 argument_list|(
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -1034,7 +1163,7 @@ name|String
 argument_list|>
 name|date
 init|=
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -1425,8 +1554,8 @@ name|setField
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Set a field, and notify listeners about the change.      *  @param name  The field to set.      * @param value The value to set.      */
-DECL|method|setField (String name, String value)
+comment|/**      * Set a field, and notify listeners about the change.      * @param name  The field to set      * @param value The value to set      * @param eventSource Source the event is sent from      */
+DECL|method|setField (String name, String value, EntryEventSource eventSource)
 specifier|public
 name|Optional
 argument_list|<
@@ -1439,6 +1568,9 @@ name|name
 parameter_list|,
 name|String
 name|value
+parameter_list|,
+name|EntryEventSource
+name|eventSource
 parameter_list|)
 block|{
 name|Objects
@@ -1485,7 +1617,7 @@ block|}
 name|String
 name|oldValue
 init|=
-name|getFieldOptional
+name|getField
 argument_list|(
 name|fieldName
 argument_list|)
@@ -1579,6 +1711,8 @@ operator|new
 name|FieldChangedEvent
 argument_list|(
 name|change
+argument_list|,
+name|eventSource
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1588,6 +1722,85 @@ operator|.
 name|of
 argument_list|(
 name|change
+argument_list|)
+return|;
+block|}
+DECL|method|setField (String name, Optional<String> value, EntryEventSource eventSource)
+specifier|public
+name|Optional
+argument_list|<
+name|FieldChange
+argument_list|>
+name|setField
+parameter_list|(
+name|String
+name|name
+parameter_list|,
+name|Optional
+argument_list|<
+name|String
+argument_list|>
+name|value
+parameter_list|,
+name|EntryEventSource
+name|eventSource
+parameter_list|)
+block|{
+if|if
+condition|(
+name|value
+operator|.
+name|isPresent
+argument_list|()
+condition|)
+block|{
+return|return
+name|setField
+argument_list|(
+name|name
+argument_list|,
+name|value
+operator|.
+name|get
+argument_list|()
+argument_list|,
+name|eventSource
+argument_list|)
+return|;
+block|}
+return|return
+name|Optional
+operator|.
+name|empty
+argument_list|()
+return|;
+block|}
+comment|/**      * Set a field, and notify listeners about the change.      *      * @param name  The field to set.      * @param value The value to set.      */
+DECL|method|setField (String name, String value)
+specifier|public
+name|Optional
+argument_list|<
+name|FieldChange
+argument_list|>
+name|setField
+parameter_list|(
+name|String
+name|name
+parameter_list|,
+name|String
+name|value
+parameter_list|)
+block|{
+return|return
+name|setField
+argument_list|(
+name|name
+argument_list|,
+name|value
+argument_list|,
+name|EntryEventSource
+operator|.
+name|LOCAL
 argument_list|)
 return|;
 block|}
@@ -1602,6 +1815,33 @@ name|clearField
 parameter_list|(
 name|String
 name|name
+parameter_list|)
+block|{
+return|return
+name|clearField
+argument_list|(
+name|name
+argument_list|,
+name|EntryEventSource
+operator|.
+name|LOCAL
+argument_list|)
+return|;
+block|}
+comment|/**      * Remove the mapping for the field name, and notify listeners about      * the change including the {@link EntryEventSource}.      *      * @param name The field to clear.      * @param eventSource the source a new {@link FieldChangedEvent} should be posten from.      */
+DECL|method|clearField (String name, EntryEventSource eventSource)
+specifier|public
+name|Optional
+argument_list|<
+name|FieldChange
+argument_list|>
+name|clearField
+parameter_list|(
+name|String
+name|name
+parameter_list|,
+name|EntryEventSource
+name|eventSource
 parameter_list|)
 block|{
 name|String
@@ -1642,7 +1882,7 @@ name|String
 argument_list|>
 name|oldValue
 init|=
-name|getFieldOptional
+name|getField
 argument_list|(
 name|fieldName
 argument_list|)
@@ -1707,6 +1947,8 @@ operator|new
 name|FieldChangedEvent
 argument_list|(
 name|change
+argument_list|,
+name|eventSource
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2020,7 +2262,7 @@ operator|new
 name|String
 index|[]
 block|{
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -2032,7 +2274,7 @@ argument_list|(
 literal|"N/A"
 argument_list|)
 block|,
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -2044,7 +2286,7 @@ argument_list|(
 literal|"N/A"
 argument_list|)
 block|,
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -2152,7 +2394,7 @@ name|String
 argument_list|>
 name|year
 init|=
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -2165,7 +2407,7 @@ name|String
 argument_list|>
 name|monthString
 init|=
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -2258,6 +2500,22 @@ return|return
 name|parsedSerialization
 return|;
 block|}
+DECL|method|setCommentsBeforeEntry (String parsedComments)
+specifier|public
+name|void
+name|setCommentsBeforeEntry
+parameter_list|(
+name|String
+name|parsedComments
+parameter_list|)
+block|{
+name|this
+operator|.
+name|commentsBeforeEntry
+operator|=
+name|parsedComments
+expr_stmt|;
+block|}
 DECL|method|hasChanged ()
 specifier|public
 name|boolean
@@ -2317,7 +2575,7 @@ name|oldValue
 init|=
 name|this
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -2549,6 +2807,16 @@ return|return
 name|fields
 return|;
 block|}
+DECL|method|getSharedBibEntryData ()
+specifier|public
+name|SharedBibEntryData
+name|getSharedBibEntryData
+parameter_list|()
+block|{
+return|return
+name|sharedBibEntryData
+return|;
+block|}
 annotation|@
 name|Override
 DECL|method|equals (Object o)
@@ -2713,72 +2981,19 @@ name|String
 name|getUserComments
 parameter_list|()
 block|{
-if|if
-condition|(
-name|parsedSerialization
-operator|!=
-literal|null
-condition|)
-block|{
-try|try
-block|{
-comment|// get the text before the entry
-name|String
-name|prolog
-init|=
-name|parsedSerialization
+comment|// delete trailing whitespaces (between entry and text) from stored serialization
+return|return
+name|REMOVE_TRAILING_WHITESPACE
 operator|.
-name|substring
+name|matcher
 argument_list|(
-literal|0
-argument_list|,
-name|parsedSerialization
-operator|.
-name|lastIndexOf
-argument_list|(
-literal|'@'
+name|commentsBeforeEntry
 argument_list|)
-argument_list|)
-decl_stmt|;
-comment|// delete trailing whitespaces (between entry and text)
-name|prolog
-operator|=
-name|prolog
 operator|.
 name|replaceFirst
 argument_list|(
-literal|"\\s+$"
-argument_list|,
 literal|""
 argument_list|)
-expr_stmt|;
-comment|// if there is any non whitespace text, write it
-if|if
-condition|(
-name|prolog
-operator|.
-name|length
-argument_list|()
-operator|>
-literal|0
-condition|)
-block|{
-return|return
-name|prolog
-return|;
-block|}
-block|}
-catch|catch
-parameter_list|(
-name|StringIndexOutOfBoundsException
-name|ignore
-parameter_list|)
-block|{
-comment|// if this occurs a broken parsed serialization has been set, so just do nothing
-block|}
-block|}
-return|return
-literal|""
 return|;
 block|}
 DECL|method|getFieldAsWords (String field)

@@ -1,8 +1,4 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
-begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
-end_comment
-
 begin_package
 DECL|package|net.sf.jabref.gui.fieldeditors
 package|package
@@ -89,22 +85,6 @@ operator|.
 name|gui
 operator|.
 name|GUIGlobals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|entry
-operator|.
-name|EntryUtil
 import|;
 end_import
 
@@ -240,111 +220,12 @@ name|String
 name|fieldName
 parameter_list|)
 block|{
-comment|// selected terms should be uppercase
-if|if
-condition|(
-name|FieldName
-operator|.
-name|ISBN
-operator|.
-name|equalsIgnoreCase
-argument_list|(
-name|fieldName
-argument_list|)
-condition|)
-block|{
-return|return
-literal|" ISBN "
-return|;
-block|}
-elseif|else
-if|if
-condition|(
-name|FieldName
-operator|.
-name|URL
-operator|.
-name|equalsIgnoreCase
-argument_list|(
-name|fieldName
-argument_list|)
-condition|)
-block|{
-return|return
-literal|" URL "
-return|;
-block|}
-elseif|else
-if|if
-condition|(
-literal|"uri"
-operator|.
-name|equalsIgnoreCase
-argument_list|(
-name|fieldName
-argument_list|)
-condition|)
-block|{
-return|return
-literal|" URI "
-return|;
-block|}
-elseif|else
-if|if
-condition|(
-name|FieldName
-operator|.
-name|ISSN
-operator|.
-name|equalsIgnoreCase
-argument_list|(
-name|fieldName
-argument_list|)
-condition|)
-block|{
-return|return
-literal|" ISSN "
-return|;
-block|}
-elseif|else
-if|if
-condition|(
-name|FieldName
-operator|.
-name|DOI
-operator|.
-name|equalsIgnoreCase
-argument_list|(
-name|fieldName
-argument_list|)
-condition|)
-block|{
-return|return
-literal|" DOI "
-return|;
-block|}
-elseif|else
-if|if
-condition|(
-literal|"isrn"
-operator|.
-name|equalsIgnoreCase
-argument_list|(
-name|fieldName
-argument_list|)
-condition|)
-block|{
-return|return
-literal|" ISRN "
-return|;
-block|}
-comment|// otherwise capitalize
 return|return
 literal|' '
 operator|+
-name|EntryUtil
+name|FieldName
 operator|.
-name|capitalizeFirst
+name|getDisplayName
 argument_list|(
 name|fieldName
 argument_list|)

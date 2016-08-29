@@ -1,8 +1,4 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
-begin_comment
-comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
-end_comment
-
 begin_package
 DECL|package|net.sf.jabref.gui.fieldeditors
 package|package
@@ -598,6 +594,22 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
+name|util
+operator|.
+name|GUIUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|logic
 operator|.
 name|l10n
@@ -695,10 +707,6 @@ operator|.
 name|LogFactory
 import|;
 end_import
-
-begin_comment
-comment|/**  * Created by Morten O. Alver 2007.02.22  */
-end_comment
 
 begin_class
 DECL|class|FileListEditor
@@ -880,6 +888,13 @@ argument_list|(
 operator|new
 name|TableClickListener
 argument_list|()
+argument_list|)
+expr_stmt|;
+name|GUIUtil
+operator|.
+name|correctRowHeight
+argument_list|(
+name|this
 argument_list|)
 expr_stmt|;
 name|JButton
@@ -1655,7 +1670,14 @@ range|:
 name|databaseContext
 operator|.
 name|getFileDirectory
+argument_list|(
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getFileDirectoryPreferences
 argument_list|()
+argument_list|)
 control|)
 block|{
 name|Path
@@ -1904,6 +1926,13 @@ argument_list|,
 name|entry
 operator|.
 name|link
+argument_list|,
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getFileDirectoryPreferences
+argument_list|()
 argument_list|)
 decl_stmt|;
 comment|// transactional delete and unlink
@@ -2436,7 +2465,14 @@ init|=
 name|databaseContext
 operator|.
 name|getFileDirectory
+argument_list|(
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getFileDirectoryPreferences
 argument_list|()
+argument_list|)
 decl_stmt|;
 if|if
 condition|(
@@ -2923,7 +2959,10 @@ name|void
 name|downloadFile
 parameter_list|()
 block|{
+name|Optional
+argument_list|<
 name|String
+argument_list|>
 name|bibtexKey
 init|=
 name|entryEditor
@@ -2931,14 +2970,16 @@ operator|.
 name|getEntry
 argument_list|()
 operator|.
-name|getCiteKey
+name|getCiteKeyOptional
 argument_list|()
 decl_stmt|;
 if|if
 condition|(
+operator|!
 name|bibtexKey
-operator|==
-literal|null
+operator|.
+name|isPresent
+argument_list|()
 condition|)
 block|{
 name|int
@@ -3004,7 +3045,7 @@ operator|.
 name|getEntry
 argument_list|()
 operator|.
-name|getCiteKey
+name|getCiteKeyOptional
 argument_list|()
 expr_stmt|;
 block|}
@@ -3025,7 +3066,10 @@ operator|.
 name|getBibDatabaseContext
 argument_list|()
 argument_list|,
-name|bibtexKey
+name|entryEditor
+operator|.
+name|getEntry
+argument_list|()
 argument_list|)
 decl_stmt|;
 try|try

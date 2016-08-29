@@ -1,8 +1,4 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
-begin_comment
-comment|/*  * Copyright (C) 2003-2016 JabRef contributors.  * This program is free software; you can redistribute it and/or modify  * it under the terms of the GNU General Public License as published by  * the Free Software Foundation; either version 2 of the License, or  * (at your option) any later version.  *  * This program is distributed in the hope that it will be useful,  * but WITHOUT ANY WARRANTY; without even the implied warranty of  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the  * GNU General Public License for more details.  *  * You should have received a copy of the GNU General Public License along  * with this program; if not, write to the Free Software Foundation, Inc.,  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
-end_comment
-
 begin_package
 DECL|package|net.sf.jabref.logic.exporter
 package|package
@@ -47,6 +43,16 @@ operator|.
 name|util
 operator|.
 name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Arrays
 import|;
 end_import
 
@@ -606,6 +612,36 @@ return|return
 name|changes
 return|;
 block|}
+DECL|method|applySaveActions (BibEntry entry, MetaData metaData)
+specifier|public
+specifier|static
+name|List
+argument_list|<
+name|FieldChange
+argument_list|>
+name|applySaveActions
+parameter_list|(
+name|BibEntry
+name|entry
+parameter_list|,
+name|MetaData
+name|metaData
+parameter_list|)
+block|{
+return|return
+name|applySaveActions
+argument_list|(
+name|Arrays
+operator|.
+name|asList
+argument_list|(
+name|entry
+argument_list|)
+argument_list|,
+name|metaData
+argument_list|)
+return|;
+block|}
 DECL|method|getSaveComparators (SavePreferences preferences, MetaData metaData)
 specifier|private
 specifier|static
@@ -1083,6 +1119,11 @@ argument_list|()
 operator|.
 name|getPreamble
 argument_list|()
+operator|.
+name|orElse
+argument_list|(
+literal|""
+argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Write strings if there are any.

@@ -1,8 +1,4 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
-begin_comment
-comment|/* Copyright (C) 2003-2016 JabRef contributors Copyright (C) 2003 David Weitzman, Morten O. Alver  All programs in this directory and subdirectories are published under the GNU General Public License as described below.  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.  This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.  You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA  Further information about the GNU GPL is available at: http://www.gnu.org/copyleft/gpl.ja.html  Note: Modified for use in JabRef   */
-end_comment
-
 begin_package
 DECL|package|net.sf.jabref.model.database
 package|package
@@ -160,6 +156,36 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|event
+operator|.
+name|source
+operator|.
+name|EntryEventSource
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|EntryTypes
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|model
 operator|.
 name|entry
@@ -181,6 +207,22 @@ operator|.
 name|entry
 operator|.
 name|BibtexString
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|EntryType
 import|;
 end_import
 
@@ -479,6 +521,23 @@ operator|new
 name|EventBus
 argument_list|()
 decl_stmt|;
+DECL|method|BibDatabase ()
+specifier|public
+name|BibDatabase
+parameter_list|()
+block|{
+name|this
+operator|.
+name|registerListener
+argument_list|(
+operator|new
+name|KeyChangeListener
+argument_list|(
+name|this
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 comment|/**      * Returns the number of entries.      */
 DECL|method|getEntryCount ()
 specifier|public
@@ -703,8 +762,13 @@ name|equals
 argument_list|(
 name|entry
 operator|.
-name|getCiteKey
+name|getCiteKeyOptional
 argument_list|()
+operator|.
+name|orElse
+argument_list|(
+literal|null
+argument_list|)
 argument_list|)
 condition|)
 block|{
@@ -757,16 +821,23 @@ range|:
 name|entries
 control|)
 block|{
+name|entry
+operator|.
+name|getCiteKeyOptional
+argument_list|()
+operator|.
+name|ifPresent
+argument_list|(
+name|entryKey
+lambda|->
+block|{
 if|if
 condition|(
 name|key
 operator|.
 name|equals
 argument_list|(
-name|entry
-operator|.
-name|getCiteKey
-argument_list|()
+name|entryKey
 argument_list|)
 condition|)
 block|{
@@ -779,11 +850,14 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+argument_list|)
+expr_stmt|;
+block|}
 return|return
 name|result
 return|;
 block|}
-comment|/**      * Inserts the entry, given that its ID is not already in use.      * use Util.createId(...) to make up a unique ID for an entry.      *      * @param entry the entry to insert into the database      * @return false if the insert was done without a duplicate warning      * @throws KeyCollisionException thrown if the entry id ({@link BibEntry#getId()}) is already  present in the database      */
+comment|/**      * Inserts the entry, given that its ID is not already in use.      * use Util.createId(...) to make up a unique ID for an entry.      *      * @param entry BibEntry to insert into the database      * @return false if the insert was done without a duplicate warning      * @throws KeyCollisionException thrown if the entry id ({@link BibEntry#getId()}) is already  present in the database      */
 DECL|method|insertEntry (BibEntry entry)
 specifier|public
 specifier|synchronized
@@ -797,18 +871,18 @@ throws|throws
 name|KeyCollisionException
 block|{
 return|return
-name|this
-operator|.
 name|insertEntry
 argument_list|(
 name|entry
 argument_list|,
-literal|false
+name|EntryEventSource
+operator|.
+name|LOCAL
 argument_list|)
 return|;
 block|}
-comment|/**      * Inserts the entry, given that its ID is not already in use.      * use Util.createId(...) to make up a unique ID for an entry.      *      * @param entry  the entry to insert into the database      * @param isUndo set to true if the insertion is caused by an undo      * @return false if the insert was done without a duplicate warning      * @throws KeyCollisionException thrown if the entry id ({@link BibEntry#getId()}) is already  present in the database      */
-DECL|method|insertEntry (BibEntry entry, boolean isUndo)
+comment|/**      * Inserts the entry, given that its ID is not already in use.      * use Util.createId(...) to make up a unique ID for an entry.      *      * @param entry BibEntry to insert      * @param eventSource Source the event is sent from      * @return false if the insert was done without a duplicate warning      */
+DECL|method|insertEntry (BibEntry entry, EntryEventSource eventSource)
 specifier|public
 specifier|synchronized
 name|boolean
@@ -817,8 +891,8 @@ parameter_list|(
 name|BibEntry
 name|entry
 parameter_list|,
-name|boolean
-name|isUndo
+name|EntryEventSource
+name|eventSource
 parameter_list|)
 throws|throws
 name|KeyCollisionException
@@ -884,7 +958,7 @@ name|EntryAddedEvent
 argument_list|(
 name|entry
 argument_list|,
-name|isUndo
+name|eventSource
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -897,12 +971,17 @@ literal|null
 argument_list|,
 name|entry
 operator|.
-name|getCiteKey
+name|getCiteKeyOptional
 argument_list|()
+operator|.
+name|orElse
+argument_list|(
+literal|null
+argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**      * Removes the given entry.      * The Entry is removed based on the id {@link BibEntry#id}      */
+comment|/**      * Removes the given entry.      * The Entry is removed based on the id {@link BibEntry#id}      * @param toBeDeleted Entry to delete      */
 DECL|method|removeEntry (BibEntry toBeDeleted)
 specifier|public
 specifier|synchronized
@@ -911,6 +990,30 @@ name|removeEntry
 parameter_list|(
 name|BibEntry
 name|toBeDeleted
+parameter_list|)
+block|{
+name|removeEntry
+argument_list|(
+name|toBeDeleted
+argument_list|,
+name|EntryEventSource
+operator|.
+name|LOCAL
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Removes the given entry.      * The Entry is removed based on the id {@link BibEntry#id}      * @param toBeDeleted Entry to delete      * @param eventSource Source the event is sent from      */
+DECL|method|removeEntry (BibEntry toBeDeleted, EntryEventSource eventSource)
+specifier|public
+specifier|synchronized
+name|void
+name|removeEntry
+parameter_list|(
+name|BibEntry
+name|toBeDeleted
+parameter_list|,
+name|EntryEventSource
+name|eventSource
 parameter_list|)
 block|{
 name|Objects
@@ -958,14 +1061,16 @@ name|getId
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|duplicationChecker
-operator|.
-name|removeKeyFromSet
-argument_list|(
 name|toBeDeleted
 operator|.
-name|getCiteKey
+name|getCiteKeyOptional
 argument_list|()
+operator|.
+name|ifPresent
+argument_list|(
+name|duplicationChecker
+operator|::
+name|removeKeyFromSet
 argument_list|)
 expr_stmt|;
 name|eventBus
@@ -976,6 +1081,8 @@ operator|new
 name|EntryRemovedEvent
 argument_list|(
 name|toBeDeleted
+argument_list|,
+name|eventSource
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1017,8 +1124,13 @@ name|oldKey
 init|=
 name|entry
 operator|.
-name|getCiteKey
+name|getCiteKeyOptional
 argument_list|()
+operator|.
+name|orElse
+argument_list|(
+literal|null
+argument_list|)
 decl_stmt|;
 if|if
 condition|(
@@ -1054,10 +1166,7 @@ name|checkForDuplicateKeyAndAdd
 argument_list|(
 name|oldKey
 argument_list|,
-name|entry
-operator|.
-name|getCiteKey
-argument_list|()
+name|key
 argument_list|)
 return|;
 block|}
@@ -1083,12 +1192,20 @@ comment|/**      * Returns the database's preamble.      */
 DECL|method|getPreamble ()
 specifier|public
 specifier|synchronized
+name|Optional
+argument_list|<
 name|String
+argument_list|>
 name|getPreamble
 parameter_list|()
 block|{
 return|return
+name|Optional
+operator|.
+name|ofNullable
+argument_list|(
 name|preamble
+argument_list|)
 return|;
 block|}
 comment|/**      * Inserts a Bibtex String.      */
@@ -1272,6 +1389,11 @@ name|database
 operator|.
 name|getPreamble
 argument_list|()
+operator|.
+name|orElse
+argument_list|(
+literal|""
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -1388,8 +1510,8 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**      * Take the given collection of BibEntry and resolve any string      * references.      *      * @param entries A collection of BibtexEntries in which all strings of the form      *                #xxx# will be resolved against the hash map of string      *                references stored in the database.      * @param inPlace If inPlace is true then the given BibtexEntries will be modified, if false then copies of the BibtexEntries are made before resolving the strings.      * @return a list of bibtexentries, with all strings resolved. It is dependent on the value of inPlace whether copies are made or the given BibtexEntries are modified.      */
-DECL|method|resolveForStrings (Collection<BibEntry> entries, boolean inPlace)
+comment|/**      * Take the given collection of BibEntry and resolve any string      * references.      *      * @param entriesToResolve A collection of BibtexEntries in which all strings of the form      *                #xxx# will be resolved against the hash map of string      *                references stored in the database.      * @param inPlace If inPlace is true then the given BibtexEntries will be modified, if false then copies of the BibtexEntries are made before resolving the strings.      * @return a list of bibtexentries, with all strings resolved. It is dependent on the value of inPlace whether copies are made or the given BibtexEntries are modified.      */
+DECL|method|resolveForStrings (Collection<BibEntry> entriesToResolve, boolean inPlace)
 specifier|public
 name|List
 argument_list|<
@@ -1401,7 +1523,7 @@ name|Collection
 argument_list|<
 name|BibEntry
 argument_list|>
-name|entries
+name|entriesToResolve
 parameter_list|,
 name|boolean
 name|inPlace
@@ -1411,7 +1533,7 @@ name|Objects
 operator|.
 name|requireNonNull
 argument_list|(
-name|entries
+name|entriesToResolve
 argument_list|,
 literal|"entries must not be null."
 argument_list|)
@@ -1426,7 +1548,7 @@ operator|new
 name|ArrayList
 argument_list|<>
 argument_list|(
-name|entries
+name|entriesToResolve
 operator|.
 name|size
 argument_list|()
@@ -1437,7 +1559,7 @@ control|(
 name|BibEntry
 name|entry
 range|:
-name|entries
+name|entriesToResolve
 control|)
 block|{
 name|results
@@ -1989,13 +2111,69 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-literal|"bibtextype"
+name|BibEntry
+operator|.
+name|TYPE_HEADER
+operator|.
+name|equals
+argument_list|(
+name|field
+argument_list|)
+operator|||
+name|BibEntry
+operator|.
+name|OBSOLETE_TYPE_HEADER
 operator|.
 name|equals
 argument_list|(
 name|field
 argument_list|)
 condition|)
+block|{
+name|Optional
+argument_list|<
+name|EntryType
+argument_list|>
+name|entryType
+init|=
+name|EntryTypes
+operator|.
+name|getType
+argument_list|(
+name|entry
+operator|.
+name|getType
+argument_list|()
+argument_list|,
+name|BibDatabaseMode
+operator|.
+name|BIBLATEX
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|entryType
+operator|.
+name|isPresent
+argument_list|()
+condition|)
+block|{
+return|return
+name|Optional
+operator|.
+name|of
+argument_list|(
+name|entryType
+operator|.
+name|get
+argument_list|()
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+return|;
+block|}
+else|else
 block|{
 return|return
 name|Optional
@@ -2012,6 +2190,26 @@ name|getType
 argument_list|()
 argument_list|)
 argument_list|)
+return|;
+block|}
+block|}
+if|if
+condition|(
+name|BibEntry
+operator|.
+name|KEY_FIELD
+operator|.
+name|equals
+argument_list|(
+name|field
+argument_list|)
+condition|)
+block|{
+return|return
+name|entry
+operator|.
+name|getCiteKeyOptional
+argument_list|()
 return|;
 block|}
 comment|// TODO: Changed this to also consider alias fields, which is the expected
@@ -2045,16 +2243,6 @@ name|database
 operator|!=
 literal|null
 operator|)
-operator|&&
-operator|!
-name|field
-operator|.
-name|equals
-argument_list|(
-name|BibEntry
-operator|.
-name|KEY_FIELD
-argument_list|)
 condition|)
 block|{
 name|Optional
@@ -2065,7 +2253,7 @@ name|crossrefKey
 init|=
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -2077,6 +2265,15 @@ condition|(
 name|crossrefKey
 operator|.
 name|isPresent
+argument_list|()
+operator|&&
+operator|!
+name|crossrefKey
+operator|.
+name|get
+argument_list|()
+operator|.
+name|isEmpty
 argument_list|()
 condition|)
 block|{
@@ -2113,7 +2310,7 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|getFieldOptional
+name|getFieldOrAlias
 argument_list|(
 name|field
 argument_list|)
@@ -2222,6 +2419,26 @@ operator|.
 name|eventBus
 operator|.
 name|register
+argument_list|(
+name|listener
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Unregisters an listener object.      * @param listener listener (subscriber) to remove      */
+DECL|method|unregisterListener (Object listener)
+specifier|public
+name|void
+name|unregisterListener
+parameter_list|(
+name|Object
+name|listener
+parameter_list|)
+block|{
+name|this
+operator|.
+name|eventBus
+operator|.
+name|unregister
 argument_list|(
 name|listener
 argument_list|)

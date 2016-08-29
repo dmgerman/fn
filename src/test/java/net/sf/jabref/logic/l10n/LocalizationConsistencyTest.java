@@ -585,7 +585,11 @@ argument_list|()
 decl_stmt|;
 name|assertEquals
 argument_list|(
-literal|"Duplicate keys of "
+literal|"Duplicate keys inside bundle "
+operator|+
+name|bundle
+operator|+
+literal|"_"
 operator|+
 name|lang
 argument_list|,

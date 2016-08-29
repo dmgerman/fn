@@ -106,18 +106,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|MetaData
 import|;
 end_import
@@ -197,16 +185,6 @@ operator|.
 name|preferences
 operator|.
 name|JabRefPreferences
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|Before
 import|;
 end_import
 
@@ -305,24 +283,6 @@ operator|new
 name|TemporaryFolder
 argument_list|()
 decl_stmt|;
-annotation|@
-name|Before
-DECL|method|setUp ()
-specifier|public
-name|void
-name|setUp
-parameter_list|()
-block|{
-name|Globals
-operator|.
-name|prefs
-operator|=
-name|JabRefPreferences
-operator|.
-name|getInstance
-argument_list|()
-expr_stmt|;
-block|}
 annotation|@
 name|Test
 DECL|method|testUrlChecks ()
@@ -535,7 +495,8 @@ name|field
 range|:
 name|InternalBibtexFields
 operator|.
-name|BIBLATEX_PERSON_NAME_FIELDS
+name|getPersonNameFields
+argument_list|()
 control|)
 block|{
 name|assertCorrect
@@ -1735,6 +1696,45 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+DECL|method|testASCIIChecks ()
+specifier|public
+name|void
+name|testASCIIChecks
+parameter_list|()
+block|{
+name|assertCorrect
+argument_list|(
+name|createContext
+argument_list|(
+literal|"title"
+argument_list|,
+literal|"Only ascii characters!'@12"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertWrong
+argument_list|(
+name|createContext
+argument_list|(
+literal|"month"
+argument_list|,
+literal|"Umlauts are nÃ¶t Ã¤llowed"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertWrong
+argument_list|(
+name|createContext
+argument_list|(
+literal|"author"
+argument_list|,
+literal|"Some unicode â"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|createContext (String field, String value, String type)
 specifier|private
 name|BibDatabaseContext
@@ -1902,6 +1902,14 @@ operator|new
 name|IntegrityCheck
 argument_list|(
 name|context
+argument_list|,
+name|JabRefPreferences
+operator|.
+name|getInstance
+argument_list|()
+operator|.
+name|getFileDirectoryPreferences
+argument_list|()
 argument_list|)
 operator|.
 name|checkBibtexDatabase
@@ -1940,6 +1948,14 @@ operator|new
 name|IntegrityCheck
 argument_list|(
 name|context
+argument_list|,
+name|JabRefPreferences
+operator|.
+name|getInstance
+argument_list|()
+operator|.
+name|getFileDirectoryPreferences
+argument_list|()
 argument_list|)
 operator|.
 name|checkBibtexDatabase

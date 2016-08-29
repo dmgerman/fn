@@ -119,7 +119,6 @@ block|}
 comment|// the field name
 DECL|field|name
 specifier|private
-specifier|final
 name|String
 name|name
 decl_stmt|;
@@ -161,22 +160,21 @@ name|weight
 init|=
 name|DEFAULT_FIELD_WEIGHT
 decl_stmt|;
-comment|// the extras data
-comment|// fieldExtras contains mappings to tell the EntryEditor to add a specific
-comment|// function to this field, for instance a "browse" button for the "pdf" field.
-DECL|field|extras
+comment|// properties contains a set of FieldProperty to e.g. tell the EntryEditor to add a specific
+comment|// function to this field, to format names, or to control the integrity checks.
+DECL|field|properties
 specifier|private
 name|Set
 argument_list|<
-name|FieldProperties
+name|FieldProperty
 argument_list|>
-name|extras
+name|properties
 init|=
 name|EnumSet
 operator|.
 name|noneOf
 argument_list|(
-name|FieldProperties
+name|FieldProperty
 operator|.
 name|class
 argument_list|)
@@ -384,6 +382,22 @@ name|PRIVATE
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|setPublic ()
+specifier|public
+name|void
+name|setPublic
+parameter_list|()
+block|{
+name|flags
+operator|.
+name|remove
+argument_list|(
+name|Flag
+operator|.
+name|PRIVATE
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|isPrivate ()
 specifier|public
 name|boolean
@@ -473,36 +487,36 @@ name|WRITEABLE
 argument_list|)
 return|;
 block|}
-DECL|method|setExtras (Set<FieldProperties> pExtras)
+DECL|method|setExtras (Set<FieldProperty> pExtras)
 specifier|public
 name|void
 name|setExtras
 parameter_list|(
 name|Set
 argument_list|<
-name|FieldProperties
+name|FieldProperty
 argument_list|>
 name|pExtras
 parameter_list|)
 block|{
-name|extras
+name|properties
 operator|=
 name|pExtras
 expr_stmt|;
 block|}
 comment|// fieldExtras contains mappings to tell the EntryEditor to add a specific
 comment|// function to this field, for instance a "browse" button for the "pdf" field.
-DECL|method|getExtras ()
+DECL|method|getFieldProperties ()
 specifier|public
 name|Set
 argument_list|<
-name|FieldProperties
+name|FieldProperty
 argument_list|>
-name|getExtras
+name|getFieldProperties
 parameter_list|()
 block|{
 return|return
-name|extras
+name|properties
 return|;
 block|}
 DECL|method|setWeight (double value)
@@ -571,11 +585,11 @@ condition|(
 name|numeric
 condition|)
 block|{
-name|extras
+name|properties
 operator|.
 name|add
 argument_list|(
-name|FieldProperties
+name|FieldProperty
 operator|.
 name|NUMERIC
 argument_list|)
@@ -583,11 +597,11 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|extras
+name|properties
 operator|.
 name|remove
 argument_list|(
-name|FieldProperties
+name|FieldProperty
 operator|.
 name|NUMERIC
 argument_list|)
@@ -604,15 +618,29 @@ name|isNumeric
 parameter_list|()
 block|{
 return|return
-name|extras
+name|properties
 operator|.
 name|contains
 argument_list|(
-name|FieldProperties
+name|FieldProperty
 operator|.
 name|NUMERIC
 argument_list|)
 return|;
+block|}
+DECL|method|setName (String fieldName)
+specifier|public
+name|void
+name|setName
+parameter_list|(
+name|String
+name|fieldName
+parameter_list|)
+block|{
+name|name
+operator|=
+name|fieldName
+expr_stmt|;
 block|}
 block|}
 end_class

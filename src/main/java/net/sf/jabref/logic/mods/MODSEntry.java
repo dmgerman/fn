@@ -1,8 +1,4 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
-begin_comment
-comment|/*  Copyright (C) 2003-2016 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
-end_comment
-
 begin_package
 DECL|package|net.sf.jabref.logic.mods
 package|package
@@ -604,7 +600,7 @@ name|format
 argument_list|(
 name|bibtex
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -622,7 +618,7 @@ name|title
 operator|=
 name|bibtex
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -659,7 +655,7 @@ name|format
 argument_list|(
 name|bibtex
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -677,7 +673,7 @@ name|publisher
 operator|=
 name|bibtex
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -705,7 +701,10 @@ name|id
 operator|=
 name|bibtex
 operator|.
-name|getCiteKey
+name|getCiteKeyOptional
+argument_list|()
+operator|.
+name|get
 argument_list|()
 expr_stmt|;
 block|}
@@ -737,6 +736,9 @@ name|getField
 argument_list|(
 literal|"place"
 argument_list|)
+operator|.
+name|get
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -750,6 +752,9 @@ name|getField
 argument_list|(
 literal|"place"
 argument_list|)
+operator|.
+name|get
+argument_list|()
 expr_stmt|;
 block|}
 block|}
@@ -785,7 +790,7 @@ name|getAuthors
 argument_list|(
 name|bibtex
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -844,6 +849,11 @@ name|FieldName
 operator|.
 name|BOOKTITLE
 argument_list|)
+operator|.
+name|orElse
+argument_list|(
+literal|null
+argument_list|)
 expr_stmt|;
 name|host
 operator|.
@@ -857,6 +867,11 @@ name|FieldName
 operator|.
 name|PUBLISHER
 argument_list|)
+operator|.
+name|orElse
+argument_list|(
+literal|null
+argument_list|)
 expr_stmt|;
 name|host
 operator|.
@@ -869,6 +884,11 @@ argument_list|(
 name|FieldName
 operator|.
 name|NUMBER
+argument_list|)
+operator|.
+name|orElse
+argument_list|(
+literal|null
 argument_list|)
 expr_stmt|;
 if|if
@@ -889,7 +909,7 @@ name|volume
 operator|=
 name|bibtex
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -927,7 +947,7 @@ name|PageNumbers
 argument_list|(
 name|bibtex
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -995,7 +1015,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|getAuthors (String authors)
+DECL|method|getAuthors (String authorString)
 specifier|private
 name|List
 argument_list|<
@@ -1004,7 +1024,7 @@ argument_list|>
 name|getAuthors
 parameter_list|(
 name|String
-name|authors
+name|authorString
 parameter_list|)
 block|{
 name|List
@@ -1020,7 +1040,7 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-name|authors
+name|authorString
 operator|.
 name|contains
 argument_list|(
@@ -1032,7 +1052,7 @@ name|String
 index|[]
 name|names
 init|=
-name|authors
+name|authorString
 operator|.
 name|split
 argument_list|(
@@ -1103,7 +1123,7 @@ name|chars
 operator|.
 name|format
 argument_list|(
-name|authors
+name|authorString
 argument_list|)
 argument_list|)
 argument_list|)
@@ -1118,7 +1138,7 @@ argument_list|(
 operator|new
 name|PersonName
 argument_list|(
-name|authors
+name|authorString
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1148,7 +1168,7 @@ argument_list|()
 decl_stmt|;
 name|bibtex
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -1164,7 +1184,7 @@ argument_list|)
 expr_stmt|;
 name|bibtex
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -1591,7 +1611,7 @@ literal|null
 condition|)
 block|{
 name|Element
-name|publisher
+name|publisherElement
 init|=
 name|d
 operator|.
@@ -1602,7 +1622,7 @@ operator|.
 name|PUBLISHER
 argument_list|)
 decl_stmt|;
-name|publisher
+name|publisherElement
 operator|.
 name|appendChild
 argument_list|(
@@ -1625,7 +1645,7 @@ name|originInfo
 operator|.
 name|appendChild
 argument_list|(
-name|publisher
+name|publisherElement
 argument_list|)
 expr_stmt|;
 block|}
@@ -1672,7 +1692,7 @@ argument_list|)
 expr_stmt|;
 block|}
 name|Element
-name|issuance
+name|issuanceElement
 init|=
 name|d
 operator|.
@@ -1681,7 +1701,7 @@ argument_list|(
 literal|"issuance"
 argument_list|)
 decl_stmt|;
-name|issuance
+name|issuanceElement
 operator|.
 name|appendChild
 argument_list|(
@@ -1704,7 +1724,7 @@ name|originInfo
 operator|.
 name|appendChild
 argument_list|(
-name|issuance
+name|issuanceElement
 argument_list|)
 expr_stmt|;
 if|if

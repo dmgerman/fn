@@ -1,8 +1,4 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
-begin_comment
-comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
-end_comment
-
 begin_package
 DECL|package|net.sf.jabref.logic.groups
 package|package
@@ -90,9 +86,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
 name|importer
 operator|.
-name|fileformat
+name|util
 operator|.
 name|ParseException
 import|;
@@ -198,20 +196,6 @@ end_import
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|preferences
-operator|.
-name|JabRefPreferences
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -297,11 +281,11 @@ name|String
 argument_list|>
 name|searchWords
 decl_stmt|;
-DECL|field|jabRefPreferences
+DECL|field|keywordSeparator
 specifier|protected
 specifier|final
-name|JabRefPreferences
-name|jabRefPreferences
+name|String
+name|keywordSeparator
 decl_stmt|;
 DECL|field|LOGGER
 specifier|private
@@ -320,7 +304,7 @@ name|class
 argument_list|)
 decl_stmt|;
 comment|/**      * Creates a KeywordGroup with the specified properties.      */
-DECL|method|KeywordGroup (String name, String searchField, String searchExpression, boolean caseSensitive, boolean regExp, GroupHierarchyType context, JabRefPreferences jabRefPreferences)
+DECL|method|KeywordGroup (String name, String searchField, String searchExpression, boolean caseSensitive, boolean regExp, GroupHierarchyType context, String keywordSeparator)
 specifier|public
 name|KeywordGroup
 parameter_list|(
@@ -342,8 +326,8 @@ parameter_list|,
 name|GroupHierarchyType
 name|context
 parameter_list|,
-name|JabRefPreferences
-name|jabRefPreferences
+name|String
+name|keywordSeparator
 parameter_list|)
 throws|throws
 name|ParseException
@@ -392,9 +376,9 @@ expr_stmt|;
 block|}
 name|this
 operator|.
-name|jabRefPreferences
+name|keywordSeparator
 operator|=
-name|jabRefPreferences
+name|keywordSeparator
 expr_stmt|;
 name|this
 operator|.
@@ -472,7 +456,7 @@ throw|;
 block|}
 block|}
 comment|/**      * Parses s and recreates the KeywordGroup from it.      *      * @param s The String representation obtained from      *          KeywordGroup.toString()      */
-DECL|method|fromString (String s, JabRefPreferences jabRefPreferences)
+DECL|method|fromString (String s, String keywordSeparator)
 specifier|public
 specifier|static
 name|AbstractGroup
@@ -481,8 +465,8 @@ parameter_list|(
 name|String
 name|s
 parameter_list|,
-name|JabRefPreferences
-name|jabRefPreferences
+name|String
+name|keywordSeparator
 parameter_list|)
 throws|throws
 name|ParseException
@@ -654,7 +638,7 @@ argument_list|(
 name|context
 argument_list|)
 argument_list|,
-name|jabRefPreferences
+name|keywordSeparator
 argument_list|)
 return|;
 block|}
@@ -875,7 +859,7 @@ name|oldContent
 init|=
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|searchField
 argument_list|)
@@ -883,18 +867,6 @@ operator|.
 name|orElse
 argument_list|(
 literal|null
-argument_list|)
-decl_stmt|;
-name|String
-name|pre
-init|=
-name|jabRefPreferences
-operator|.
-name|get
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|KEYWORD_SEPARATOR
 argument_list|)
 decl_stmt|;
 name|String
@@ -909,7 +881,7 @@ literal|""
 else|:
 name|oldContent
 operator|+
-name|pre
+name|keywordSeparator
 operator|)
 operator|+
 name|searchExpression
@@ -1059,7 +1031,7 @@ name|oldContent
 init|=
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|searchField
 argument_list|)
@@ -1090,7 +1062,7 @@ name|oldContent
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|searchField
 argument_list|)
@@ -1260,7 +1232,7 @@ name|content
 init|=
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|searchField
 argument_list|)
@@ -1570,7 +1542,7 @@ parameter_list|)
 block|{
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|searchField
 argument_list|)
@@ -1630,19 +1602,6 @@ name|j
 decl_stmt|;
 name|int
 name|k
-decl_stmt|;
-specifier|final
-name|String
-name|separator
-init|=
-name|jabRefPreferences
-operator|.
-name|get
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|KEYWORD_SEPARATOR
-argument_list|)
 decl_stmt|;
 while|while
 condition|(
@@ -1714,7 +1673,7 @@ literal|0
 operator|)
 operator|&&
 operator|(
-name|separator
+name|keywordSeparator
 operator|.
 name|indexOf
 argument_list|(
@@ -1748,7 +1707,7 @@ argument_list|()
 operator|)
 operator|&&
 operator|(
-name|separator
+name|keywordSeparator
 operator|.
 name|indexOf
 argument_list|(
@@ -1791,7 +1750,7 @@ name|length
 argument_list|()
 operator|)
 condition|?
-name|separator
+name|keywordSeparator
 else|:
 literal|""
 argument_list|)
@@ -1819,7 +1778,7 @@ name|length
 argument_list|()
 operator|)
 condition|?
-name|separator
+name|keywordSeparator
 else|:
 literal|""
 argument_list|)
@@ -1896,7 +1855,7 @@ argument_list|,
 name|getContext
 argument_list|()
 argument_list|,
-name|jabRefPreferences
+name|keywordSeparator
 argument_list|)
 return|;
 block|}

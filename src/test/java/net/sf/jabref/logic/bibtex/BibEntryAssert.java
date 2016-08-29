@@ -150,6 +150,8 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
 name|importer
 operator|.
 name|ParserResult
@@ -163,6 +165,8 @@ operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|logic
 operator|.
 name|importer
 operator|.
@@ -179,6 +183,8 @@ operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|logic
 operator|.
 name|importer
 operator|.
@@ -201,6 +207,20 @@ operator|.
 name|entry
 operator|.
 name|BibEntry
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|preferences
+operator|.
+name|JabRefPreferences
 import|;
 end_import
 
@@ -398,6 +418,14 @@ operator|new
 name|BibtexParser
 argument_list|(
 name|reader
+argument_list|,
+name|JabRefPreferences
+operator|.
+name|getInstance
+argument_list|()
+operator|.
+name|getImportFormatPreferences
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|result

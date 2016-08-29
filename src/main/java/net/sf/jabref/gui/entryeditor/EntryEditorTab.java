@@ -1,8 +1,4 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
-begin_comment
-comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
-end_comment
-
 begin_package
 DECL|package|net.sf.jabref.gui.entryeditor
 package|package
@@ -392,6 +388,22 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
+name|util
+operator|.
+name|GUIUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|logic
 operator|.
 name|autocompleter
@@ -428,7 +440,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|FieldProperties
+name|FieldProperty
 import|;
 end_import
 
@@ -946,14 +958,14 @@ if|if
 condition|(
 name|InternalBibtexFields
 operator|.
-name|getFieldExtras
+name|getFieldProperties
 argument_list|(
 name|field
 argument_list|)
 operator|.
 name|contains
 argument_list|(
-name|FieldProperties
+name|FieldProperty
 operator|.
 name|FILE_EDITOR
 argument_list|)
@@ -984,6 +996,13 @@ operator|(
 name|FileListEditor
 operator|)
 name|fieldEditor
+expr_stmt|;
+name|GUIUtil
+operator|.
+name|correctRowHeight
+argument_list|(
+name|fileListEditor
+argument_list|)
 expr_stmt|;
 name|defaultHeight
 operator|=
@@ -1276,8 +1295,13 @@ operator|.
 name|getEntry
 argument_list|()
 operator|.
-name|getCiteKey
+name|getCiteKeyOptional
 argument_list|()
+operator|.
+name|orElse
+argument_list|(
+literal|""
+argument_list|)
 argument_list|,
 literal|true
 argument_list|)
@@ -1409,7 +1433,7 @@ argument_list|(
 name|getEntry
 argument_list|()
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|fieldEditor
 operator|.
@@ -1603,7 +1627,7 @@ name|toSet
 init|=
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|editor
 operator|.

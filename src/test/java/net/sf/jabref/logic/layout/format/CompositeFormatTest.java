@@ -60,12 +60,11 @@ name|CompositeFormatTest
 block|{
 annotation|@
 name|Test
-DECL|method|testComposite ()
+DECL|method|testEmptyComposite ()
 specifier|public
 name|void
-name|testComposite
+name|testEmptyComposite
 parameter_list|()
-block|{
 block|{
 name|LayoutFormatter
 name|f
@@ -89,6 +88,13 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+DECL|method|testArrayComposite ()
+specifier|public
+name|void
+name|testArrayComposite
+parameter_list|()
 block|{
 name|LayoutFormatter
 name|f
@@ -135,6 +141,14 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+DECL|method|testDoubleComposite ()
+specifier|public
+name|void
+name|testDoubleComposite
+parameter_list|()
+block|{
 name|LayoutFormatter
 name|f
 init|=

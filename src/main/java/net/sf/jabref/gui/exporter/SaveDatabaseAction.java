@@ -1,8 +1,4 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
-begin_comment
-comment|/*  Copyright (C) 2003-2015 JabRef contributors.      This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
-end_comment
-
 begin_package
 DECL|package|net.sf.jabref.gui.exporter
 package|package
@@ -66,19 +62,21 @@ begin_import
 import|import
 name|java
 operator|.
-name|util
+name|nio
 operator|.
-name|Collections
+name|file
+operator|.
+name|Path
 import|;
 end_import
 
 begin_import
 import|import
-name|javax
+name|java
 operator|.
-name|swing
+name|util
 operator|.
-name|JFileChooser
+name|Optional
 import|;
 end_import
 
@@ -174,7 +172,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|FileDialogs
+name|FileDialog
 import|;
 end_import
 
@@ -364,9 +362,41 @@ name|logic
 operator|.
 name|util
 operator|.
+name|FileExtensions
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|util
+operator|.
 name|io
 operator|.
 name|FileBasedLock
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|BibEntry
 import|;
 end_import
 
@@ -550,15 +580,10 @@ argument_list|()
 operator|.
 name|getDatabaseFile
 argument_list|()
-operator|==
-literal|null
-condition|)
-block|{
-name|saveAs
+operator|.
+name|isPresent
 argument_list|()
-expr_stmt|;
-block|}
-else|else
+condition|)
 block|{
 comment|// Check for external modifications: if true, save not performed so do not tell the user a save is underway but return instead.
 if|if
@@ -592,6 +617,12 @@ name|setSaving
 argument_list|(
 literal|true
 argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|saveAs
+argument_list|()
 expr_stmt|;
 block|}
 block|}
@@ -628,6 +659,9 @@ operator|.
 name|getDatabaseFile
 argument_list|()
 operator|.
+name|get
+argument_list|()
+operator|.
 name|getAbsolutePath
 argument_list|()
 argument_list|)
@@ -651,6 +685,9 @@ name|getBibDatabaseContext
 argument_list|()
 operator|.
 name|getDatabaseFile
+argument_list|()
+operator|.
+name|get
 argument_list|()
 operator|.
 name|getPath
@@ -725,7 +762,7 @@ if|if
 condition|(
 name|canceled
 operator|||
-operator|(
+operator|!
 name|panel
 operator|.
 name|getBibDatabaseContext
@@ -733,23 +770,22 @@ argument_list|()
 operator|.
 name|getDatabaseFile
 argument_list|()
-operator|==
-literal|null
-operator|)
+operator|.
+name|isPresent
+argument_list|()
 condition|)
 block|{
 return|return;
 block|}
 try|try
 block|{
-comment|// Make sure the current edit is stored:
+comment|// Make sure the current edit is stored
 name|panel
 operator|.
 name|storeCurrentEdit
 argument_list|()
 expr_stmt|;
-comment|// If the option is set, autogenerate keys for all entries that are
-comment|// lacking keys, before saving:
+comment|// If set in preferences, generate missing BibTeX keys
 name|panel
 operator|.
 name|autoGenerateKeysBeforeSaving
@@ -769,10 +805,11 @@ operator|.
 name|getDatabaseFile
 argument_list|()
 operator|.
+name|get
+argument_list|()
+operator|.
 name|toPath
 argument_list|()
-argument_list|,
-literal|10
 argument_list|)
 condition|)
 block|{
@@ -787,7 +824,7 @@ condition|)
 block|{
 return|return;
 block|}
-comment|// Save the database:
+comment|// Save the database
 name|success
 operator|=
 name|saveDatabase
@@ -798,6 +835,9 @@ name|getBibDatabaseContext
 argument_list|()
 operator|.
 name|getDatabaseFile
+argument_list|()
+operator|.
+name|get
 argument_list|()
 argument_list|,
 literal|false
@@ -812,6 +852,16 @@ argument_list|()
 operator|.
 name|getEncoding
 argument_list|()
+operator|.
+name|orElse
+argument_list|(
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getDefaultEncoding
+argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|Globals
@@ -830,7 +880,6 @@ expr_stmt|;
 block|}
 else|else
 block|{
-comment|// No file lock
 name|success
 operator|=
 literal|false
@@ -840,6 +889,7 @@ operator|=
 literal|true
 expr_stmt|;
 block|}
+comment|// release panel from save status
 name|panel
 operator|.
 name|setSaving
@@ -860,20 +910,13 @@ operator|.
 name|markUnchanged
 argument_list|()
 expr_stmt|;
-if|if
-condition|(
-operator|!
 name|AutoSaveManager
 operator|.
 name|deleteAutoSaveFile
 argument_list|(
 name|panel
 argument_list|)
-condition|)
-block|{
-comment|//System.out.println("Deletion of autosave file failed");
-block|}
-comment|/* else                      System.out.println("Deleted autosave file (if it existed)");*/
+expr_stmt|;
 comment|// (Only) after a successful save the following
 comment|// statement marks that the base is unchanged
 comment|// since last save:
@@ -903,12 +946,12 @@ block|}
 catch|catch
 parameter_list|(
 name|SaveException
-name|ex2
+name|ex
 parameter_list|)
 block|{
 if|if
 condition|(
-name|ex2
+name|ex
 operator|==
 name|SaveException
 operator|.
@@ -931,7 +974,7 @@ name|error
 argument_list|(
 literal|"Problem saving file"
 argument_list|,
-name|ex2
+name|ex
 argument_list|)
 expr_stmt|;
 block|}
@@ -956,6 +999,7 @@ block|{
 name|SaveSession
 name|session
 decl_stmt|;
+comment|// block user input
 name|frame
 operator|.
 name|block
@@ -981,10 +1025,14 @@ name|encoding
 argument_list|)
 decl_stmt|;
 name|BibtexDatabaseWriter
+argument_list|<
+name|SaveSession
+argument_list|>
 name|databaseWriter
 init|=
 operator|new
 name|BibtexDatabaseWriter
+argument_list|<>
 argument_list|(
 name|FileSaveSession
 operator|::
@@ -1044,7 +1092,7 @@ block|}
 catch|catch
 parameter_list|(
 name|UnsupportedCharsetException
-name|ex2
+name|ex
 parameter_list|)
 block|{
 name|JOptionPane
@@ -1084,6 +1132,7 @@ operator|.
 name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
+comment|// FIXME: rethrow anti-pattern
 throw|throw
 operator|new
 name|SaveException
@@ -1119,68 +1168,20 @@ name|specificEntry
 argument_list|()
 condition|)
 block|{
-comment|// Error occured during processing of
-comment|// be. Highlight it:
-name|int
-name|row
+name|BibEntry
+name|entry
 init|=
-name|panel
-operator|.
-name|getMainTable
-argument_list|()
-operator|.
-name|findEntry
-argument_list|(
 name|ex
 operator|.
 name|getEntry
 argument_list|()
-argument_list|)
 decl_stmt|;
-name|int
-name|topShow
-init|=
-name|Math
-operator|.
-name|max
-argument_list|(
-literal|0
-argument_list|,
-name|row
-operator|-
-literal|3
-argument_list|)
-decl_stmt|;
+comment|// Error occured during processing of an entry. Highlight it!
 name|panel
 operator|.
-name|getMainTable
-argument_list|()
-operator|.
-name|setRowSelectionInterval
+name|highlightEntry
 argument_list|(
-name|row
-argument_list|,
-name|row
-argument_list|)
-expr_stmt|;
-name|panel
-operator|.
-name|getMainTable
-argument_list|()
-operator|.
-name|scrollTo
-argument_list|(
-name|topShow
-argument_list|)
-expr_stmt|;
-name|panel
-operator|.
-name|showEntry
-argument_list|(
-name|ex
-operator|.
-name|getEntry
-argument_list|()
+name|entry
 argument_list|)
 expr_stmt|;
 block|}
@@ -1190,7 +1191,7 @@ name|LOGGER
 operator|.
 name|error
 argument_list|(
-literal|"Problem saving file"
+literal|"A problem occured when trying to save the file"
 argument_list|,
 name|ex
 argument_list|)
@@ -1228,6 +1229,7 @@ operator|.
 name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
+comment|// FIXME: rethrow anti-pattern
 throw|throw
 operator|new
 name|SaveException
@@ -1238,14 +1240,16 @@ throw|;
 block|}
 finally|finally
 block|{
+comment|// re-enable user input
 name|frame
 operator|.
 name|unblock
 argument_list|()
 expr_stmt|;
 block|}
+comment|// handle encoding problems
 name|boolean
-name|commit
+name|success
 init|=
 literal|true
 decl_stmt|;
@@ -1480,7 +1484,7 @@ operator|==
 literal|null
 condition|)
 block|{
-name|commit
+name|success
 operator|=
 literal|false
 expr_stmt|;
@@ -1522,17 +1526,18 @@ operator|.
 name|CANCEL_OPTION
 condition|)
 block|{
-name|commit
+name|success
 operator|=
 literal|false
 expr_stmt|;
 block|}
 block|}
+comment|// backup file?
 try|try
 block|{
 if|if
 condition|(
-name|commit
+name|success
 condition|)
 block|{
 name|session
@@ -1654,14 +1659,14 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|commit
+name|success
 operator|=
 literal|false
 expr_stmt|;
 block|}
 block|}
 return|return
-name|commit
+name|success
 return|;
 block|}
 comment|/**      * Run the "Save" operation. This method offloads the actual save operation to a background thread, but      * still runs synchronously using Spin (the method returns only after completing the operation).      */
@@ -1675,7 +1680,7 @@ name|Throwable
 block|{
 comment|// This part uses Spin's features:
 name|Worker
-name|wrk
+name|worker
 init|=
 name|getWorker
 argument_list|()
@@ -1684,7 +1689,7 @@ comment|// The Worker returned by getWorker() has been wrapped
 comment|// by Spin.off(), which makes its methods be run in
 comment|// a different thread from the EDT.
 name|CallBack
-name|clb
+name|callback
 init|=
 name|getCallBack
 argument_list|()
@@ -1697,7 +1702,7 @@ comment|// Useful for initial GUI actions, like printing a message.
 comment|// The CallBack returned by getCallBack() has been wrapped
 comment|// by Spin.over(), which makes its methods be run on
 comment|// the EDT.
-name|wrk
+name|worker
 operator|.
 name|run
 argument_list|()
@@ -1705,7 +1710,7 @@ expr_stmt|;
 comment|// Runs the potentially time-consuming action
 comment|// without freezing the GUI. The magic is that THIS line
 comment|// of execution will not continue until run() is finished.
-name|clb
+name|callback
 operator|.
 name|update
 argument_list|()
@@ -1738,131 +1743,83 @@ parameter_list|()
 throws|throws
 name|Throwable
 block|{
-name|String
-name|chosenFile
-decl_stmt|;
 name|File
-name|f
+name|file
 init|=
 literal|null
 decl_stmt|;
 while|while
 condition|(
-name|f
+name|file
 operator|==
 literal|null
 condition|)
 block|{
-name|chosenFile
-operator|=
-name|FileDialogs
-operator|.
-name|getNewFile
+comment|// configure file dialog
+name|FileDialog
+name|dialog
+init|=
+operator|new
+name|FileDialog
 argument_list|(
 name|frame
-argument_list|,
-operator|new
-name|File
-argument_list|(
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|get
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|WORKING_DIRECTORY
 argument_list|)
-argument_list|)
-argument_list|,
-name|Collections
+decl_stmt|;
+name|dialog
 operator|.
-name|singletonList
+name|withExtension
 argument_list|(
-literal|".bib"
-argument_list|)
-argument_list|,
-name|JFileChooser
+name|FileExtensions
 operator|.
-name|SAVE_DIALOG
-argument_list|,
-literal|false
-argument_list|,
-literal|null
+name|BIBTEX_DB
 argument_list|)
 expr_stmt|;
+name|dialog
+operator|.
+name|setDefaultExtension
+argument_list|(
+name|FileExtensions
+operator|.
+name|BIBTEX_DB
+argument_list|)
+expr_stmt|;
+name|Optional
+argument_list|<
+name|Path
+argument_list|>
+name|path
+init|=
+name|dialog
+operator|.
+name|saveNewFile
+argument_list|()
+decl_stmt|;
 if|if
 condition|(
-name|chosenFile
-operator|==
-literal|null
+name|path
+operator|.
+name|isPresent
+argument_list|()
 condition|)
+block|{
+name|file
+operator|=
+name|path
+operator|.
+name|get
+argument_list|()
+operator|.
+name|toFile
+argument_list|()
+expr_stmt|;
+block|}
+else|else
 block|{
 name|canceled
 operator|=
 literal|true
 expr_stmt|;
 return|return;
-comment|// canceled
-block|}
-name|f
-operator|=
-operator|new
-name|File
-argument_list|(
-name|chosenFile
-argument_list|)
-expr_stmt|;
-comment|// Check if the file already exists:
-if|if
-condition|(
-name|f
-operator|.
-name|exists
-argument_list|()
-operator|&&
-operator|(
-name|JOptionPane
-operator|.
-name|showConfirmDialog
-argument_list|(
-name|frame
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"'%0' exists. Overwrite file?"
-argument_list|,
-name|f
-operator|.
-name|getName
-argument_list|()
-argument_list|)
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Save database"
-argument_list|)
-argument_list|,
-name|JOptionPane
-operator|.
-name|OK_CANCEL_OPTION
-argument_list|)
-operator|!=
-name|JOptionPane
-operator|.
-name|OK_OPTION
-operator|)
-condition|)
-block|{
-name|f
-operator|=
-literal|null
-expr_stmt|;
 block|}
 block|}
 name|File
@@ -1875,6 +1832,11 @@ argument_list|()
 operator|.
 name|getDatabaseFile
 argument_list|()
+operator|.
+name|orElse
+argument_list|(
+literal|null
+argument_list|)
 decl_stmt|;
 name|panel
 operator|.
@@ -1883,7 +1845,7 @@ argument_list|()
 operator|.
 name|setDatabaseFile
 argument_list|(
-name|f
+name|file
 argument_list|)
 expr_stmt|;
 name|Globals
@@ -1896,7 +1858,7 @@ name|JabRefPreferences
 operator|.
 name|WORKING_DIRECTORY
 argument_list|,
-name|f
+name|file
 operator|.
 name|getParent
 argument_list|()
@@ -1947,6 +1909,11 @@ argument_list|()
 operator|.
 name|getDatabaseFile
 argument_list|()
+operator|.
+name|orElse
+argument_list|(
+literal|null
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1980,6 +1947,9 @@ name|getBibDatabaseContext
 argument_list|()
 operator|.
 name|getDatabaseFile
+argument_list|()
+operator|.
+name|get
 argument_list|()
 operator|.
 name|getPath
@@ -2174,10 +2144,11 @@ operator|.
 name|getDatabaseFile
 argument_list|()
 operator|.
+name|get
+argument_list|()
+operator|.
 name|toPath
 argument_list|()
-argument_list|,
-literal|10
 argument_list|)
 condition|)
 block|{
@@ -2209,6 +2180,9 @@ name|getBibDatabaseContext
 argument_list|()
 operator|.
 name|getDatabaseFile
+argument_list|()
+operator|.
+name|get
 argument_list|()
 argument_list|)
 decl_stmt|;

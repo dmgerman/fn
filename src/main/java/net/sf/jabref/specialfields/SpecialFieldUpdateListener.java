@@ -1,8 +1,4 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
-begin_comment
-comment|/*  Copyright (C) 2012 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
-end_comment
-
 begin_package
 DECL|package|net.sf.jabref.specialfields
 package|package
@@ -35,22 +31,6 @@ operator|.
 name|jabref
 operator|.
 name|JabRefGUI
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|undo
-operator|.
-name|NamedCompound
 import|;
 end_import
 
@@ -172,15 +152,6 @@ argument_list|(
 parameter_list|()
 lambda|->
 block|{
-name|NamedCompound
-name|compound
-init|=
-operator|new
-name|NamedCompound
-argument_list|(
-literal|"SpecialFieldSync"
-argument_list|)
-decl_stmt|;
 if|if
 condition|(
 name|FieldName
@@ -198,8 +169,6 @@ operator|.
 name|syncSpecialFieldsFromKeywords
 argument_list|(
 name|entry
-argument_list|,
-name|compound
 argument_list|)
 expr_stmt|;
 name|SwingUtilities
@@ -238,8 +207,6 @@ operator|.
 name|syncKeywordsFromSpecialFields
 argument_list|(
 name|entry
-argument_list|,
-name|compound
 argument_list|)
 expr_stmt|;
 name|SwingUtilities
@@ -262,9 +229,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|// we do NOT pass the named component to the undo manager since we do not want to have undo capabilities
-comment|// if the user undoes the change in the keyword field, this method is also called and
-comment|// the special fields are updated accordingly
 block|}
 argument_list|)
 expr_stmt|;
