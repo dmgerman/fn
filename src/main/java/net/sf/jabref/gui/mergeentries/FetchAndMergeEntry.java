@@ -130,7 +130,7 @@ name|importer
 operator|.
 name|fetcher
 operator|.
-name|DOItoBibTeX
+name|DoiFetcher
 import|;
 end_import
 
@@ -395,9 +395,7 @@ condition|)
 block|{
 name|fetchedEntry
 operator|=
-operator|new
-name|DOItoBibTeX
-argument_list|()
+name|DoiFetcher
 operator|.
 name|getEntryFromDOI
 argument_list|(
@@ -405,6 +403,8 @@ name|fieldContent
 operator|.
 name|get
 argument_list|()
+argument_list|,
+literal|null
 argument_list|,
 name|Globals
 operator|.

@@ -180,7 +180,7 @@ name|importer
 operator|.
 name|fetcher
 operator|.
-name|DOItoBibTeX
+name|DoiFetcher
 import|;
 end_import
 
@@ -1220,7 +1220,7 @@ name|BibEntry
 argument_list|>
 name|entry
 init|=
-name|DOItoBibTeX
+name|DoiFetcher
 operator|.
 name|getEntryFromDOI
 argument_list|(
