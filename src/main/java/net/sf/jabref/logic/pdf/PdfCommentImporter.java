@@ -38,16 +38,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|net
-operator|.
-name|URI
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|HashMap
@@ -132,7 +122,7 @@ name|PdfCommentImporter
 parameter_list|()
 block|{      }
 comment|/**      * Imports the comments from a pdf specified by its URI      * @param pathToPDF the URI specifying the document      * @return a hasmap with the unique name as key and the notes content as value      */
-DECL|method|importNotes (final URI pathToPDF)
+DECL|method|importNotes (final String pathToPDF)
 specifier|public
 name|HashMap
 argument_list|<
@@ -143,7 +133,7 @@ argument_list|>
 name|importNotes
 parameter_list|(
 specifier|final
-name|URI
+name|String
 name|pathToPDF
 parameter_list|)
 block|{
@@ -257,13 +247,13 @@ return|return
 name|annotationsMap
 return|;
 block|}
-DECL|method|importPdfFile (final URI pathToPDF)
+DECL|method|importPdfFile (final String pathToPDF)
 specifier|private
 name|PDDocument
 name|importPdfFile
 parameter_list|(
 specifier|final
-name|URI
+name|String
 name|pathToPDF
 parameter_list|)
 throws|throws
