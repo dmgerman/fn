@@ -9700,11 +9700,6 @@ name|BibtexKeyPatternPreferences
 argument_list|(
 name|get
 argument_list|(
-name|DEFAULT_BIBTEX_KEY_PATTERN
-argument_list|)
-argument_list|,
-name|get
-argument_list|(
 name|KEY_PATTERN_REGEX
 argument_list|)
 argument_list|,
