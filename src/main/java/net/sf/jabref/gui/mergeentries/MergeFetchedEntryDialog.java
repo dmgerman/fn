@@ -148,7 +148,7 @@ name|gui
 operator|.
 name|util
 operator|.
-name|PositionWindow
+name|WindowLocation
 import|;
 end_import
 
@@ -701,11 +701,11 @@ name|MARGIN
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|PositionWindow
+name|WindowLocation
 name|pw
 init|=
 operator|new
-name|PositionWindow
+name|WindowLocation
 argument_list|(
 name|this
 argument_list|,
@@ -728,7 +728,7 @@ argument_list|)
 decl_stmt|;
 name|pw
 operator|.
-name|setWindowPosition
+name|displayWindowAtStoredLocation
 argument_list|()
 expr_stmt|;
 block|}
