@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|net.sf.jabref.gui
+DECL|package|net.sf.jabref.gui.bibtexkeypattern
 package|package
 name|net
 operator|.
@@ -9,6 +9,8 @@ operator|.
 name|jabref
 operator|.
 name|gui
+operator|.
+name|bibtexkeypattern
 package|;
 end_package
 
@@ -160,9 +162,21 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|bibtexkeypattern
+name|BasePanel
+import|;
+end_import
+
+begin_import
+import|import
+name|net
 operator|.
-name|BibtexKeyPatternPanel
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|JabRefFrame
 import|;
 end_import
 
