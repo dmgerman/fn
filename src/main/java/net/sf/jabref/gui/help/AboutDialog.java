@@ -58,6 +58,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|awt
+operator|.
+name|Frame
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|Objects
@@ -224,20 +234,6 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|JabRefFrame
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
 name|actions
 operator|.
 name|CopyVersionToClipboardAction
@@ -268,12 +264,12 @@ name|AboutDialog
 extends|extends
 name|JDialog
 block|{
-DECL|method|AboutDialog (JabRefFrame bf)
+DECL|method|AboutDialog (Frame owner)
 specifier|public
 name|AboutDialog
 parameter_list|(
-name|JabRefFrame
-name|bf
+name|Frame
+name|owner
 parameter_list|)
 block|{
 name|super
@@ -282,7 +278,7 @@ name|Objects
 operator|.
 name|requireNonNull
 argument_list|(
-name|bf
+name|owner
 argument_list|)
 argument_list|,
 name|Localization
@@ -308,7 +304,7 @@ argument_list|)
 expr_stmt|;
 name|setLocationRelativeTo
 argument_list|(
-name|bf
+name|owner
 argument_list|)
 expr_stmt|;
 name|JPanel

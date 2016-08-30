@@ -995,9 +995,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|// If we are set to remember the window location, we also remember the maximised
-comment|// state. This needs to be set after the window has been made visible, so we
-comment|// do it here:
 if|if
 condition|(
 name|Globals
@@ -1035,33 +1032,6 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getBoolean
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|WINDOW_MAXIMISED
-argument_list|)
-condition|)
-block|{
-name|JabRefGUI
-operator|.
-name|getMainFrame
-argument_list|()
-operator|.
-name|setExtendedState
-argument_list|(
-name|JFrame
-operator|.
-name|MAXIMIZED_BOTH
-argument_list|)
-expr_stmt|;
-block|}
 for|for
 control|(
 name|ParserResult
