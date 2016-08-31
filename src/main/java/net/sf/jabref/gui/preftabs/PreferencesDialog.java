@@ -1297,13 +1297,6 @@ operator|new
 name|FileDialog
 argument_list|(
 name|frame
-argument_list|,
-name|System
-operator|.
-name|getProperty
-argument_list|(
-literal|"user.home"
-argument_list|)
 argument_list|)
 operator|.
 name|withExtension
@@ -1429,13 +1422,6 @@ operator|new
 name|FileDialog
 argument_list|(
 name|frame
-argument_list|,
-name|System
-operator|.
-name|getProperty
-argument_list|(
-literal|"user.home"
-argument_list|)
 argument_list|)
 operator|.
 name|withExtension
