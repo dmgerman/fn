@@ -4635,9 +4635,7 @@ name|manageJournals
 init|=
 operator|new
 name|ManageJournalsAction
-argument_list|(
-name|this
-argument_list|)
+argument_list|()
 decl_stmt|;
 DECL|field|databaseProperties
 specifier|private

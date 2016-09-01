@@ -1,4 +1,8 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
+begin_comment
+comment|/*  Copyright (C) 2003-2016 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
+end_comment
+
 begin_package
 DECL|package|net.sf.jabref.logic.journals
 package|package
@@ -21,6 +25,18 @@ operator|.
 name|util
 operator|.
 name|Objects
+import|;
+end_import
+
+begin_import
+import|import
+name|javafx
+operator|.
+name|beans
+operator|.
+name|property
+operator|.
+name|SimpleStringProperty
 import|;
 end_import
 
@@ -48,14 +64,26 @@ comment|// elements after SPLITTER are not used at the moment
 DECL|field|name
 specifier|private
 specifier|final
-name|String
+name|SimpleStringProperty
 name|name
+init|=
+operator|new
+name|SimpleStringProperty
+argument_list|(
+literal|""
+argument_list|)
 decl_stmt|;
 DECL|field|abbreviation
 specifier|private
 specifier|final
-name|String
+name|SimpleStringProperty
 name|abbreviation
+init|=
+operator|new
+name|SimpleStringProperty
+argument_list|(
+literal|""
+argument_list|)
 decl_stmt|;
 DECL|method|Abbreviation (String name, String abbreviation)
 specifier|public
@@ -71,11 +99,9 @@ block|{
 name|this
 operator|.
 name|name
-operator|=
-name|java
 operator|.
-name|util
-operator|.
+name|set
+argument_list|(
 name|Objects
 operator|.
 name|requireNonNull
@@ -85,15 +111,14 @@ argument_list|)
 operator|.
 name|trim
 argument_list|()
+argument_list|)
 expr_stmt|;
 name|this
 operator|.
 name|abbreviation
-operator|=
-name|java
 operator|.
-name|util
-operator|.
+name|set
+argument_list|(
 name|Objects
 operator|.
 name|requireNonNull
@@ -103,6 +128,7 @@ argument_list|)
 operator|.
 name|trim
 argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 DECL|method|getName ()
@@ -113,6 +139,82 @@ parameter_list|()
 block|{
 return|return
 name|name
+operator|.
+name|get
+argument_list|()
+return|;
+block|}
+DECL|method|setName (String name)
+specifier|public
+name|void
+name|setName
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+block|{
+name|this
+operator|.
+name|name
+operator|.
+name|set
+argument_list|(
+name|name
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|nameProperty ()
+specifier|public
+name|SimpleStringProperty
+name|nameProperty
+parameter_list|()
+block|{
+return|return
+name|name
+return|;
+block|}
+DECL|method|getAbbreviation ()
+specifier|public
+name|String
+name|getAbbreviation
+parameter_list|()
+block|{
+return|return
+name|this
+operator|.
+name|abbreviation
+operator|.
+name|get
+argument_list|()
+return|;
+block|}
+DECL|method|setAbbreviation (String abbreviation)
+specifier|public
+name|void
+name|setAbbreviation
+parameter_list|(
+name|String
+name|abbreviation
+parameter_list|)
+block|{
+name|this
+operator|.
+name|abbreviation
+operator|.
+name|set
+argument_list|(
+name|abbreviation
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|abbreviationProperty ()
+specifier|public
+name|SimpleStringProperty
+name|abbreviationProperty
+parameter_list|()
+block|{
+return|return
+name|abbreviation
 return|;
 block|}
 DECL|method|getIsoAbbreviation ()
@@ -123,7 +225,8 @@ parameter_list|()
 block|{
 if|if
 condition|(
-name|abbreviation
+name|getAbbreviation
+argument_list|()
 operator|.
 name|contains
 argument_list|(
@@ -135,7 +238,8 @@ name|String
 index|[]
 name|restParts
 init|=
-name|abbreviation
+name|getAbbreviation
+argument_list|()
 operator|.
 name|split
 argument_list|(
@@ -153,7 +257,8 @@ argument_list|()
 return|;
 block|}
 return|return
-name|abbreviation
+name|getAbbreviation
+argument_list|()
 return|;
 block|}
 DECL|method|getMedlineAbbreviation ()
@@ -196,13 +301,15 @@ name|toCompare
 parameter_list|)
 block|{
 return|return
-name|name
+name|getName
+argument_list|()
 operator|.
 name|compareTo
 argument_list|(
 name|toCompare
 operator|.
-name|name
+name|getName
+argument_list|()
 argument_list|)
 return|;
 block|}
@@ -279,7 +386,8 @@ name|format
 argument_list|(
 literal|"Abbreviation{name=%s, iso=%s, medline=%s}"
 argument_list|,
-name|name
+name|getName
+argument_list|()
 argument_list|,
 name|getIsoAbbreviation
 argument_list|()
@@ -331,11 +439,13 @@ name|Objects
 operator|.
 name|equals
 argument_list|(
-name|name
+name|getName
+argument_list|()
 argument_list|,
 name|that
 operator|.
-name|name
+name|getName
+argument_list|()
 argument_list|)
 return|;
 block|}
@@ -356,7 +466,8 @@ name|Objects
 operator|.
 name|hashCode
 argument_list|(
-name|name
+name|getName
+argument_list|()
 argument_list|)
 return|;
 block|}
