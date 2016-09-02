@@ -546,7 +546,7 @@ throw|throw
 operator|new
 name|FetcherException
 argument_list|(
-literal|"Bad URL when fetching ISBN info"
+literal|"Bad URL when fetching DOI info"
 argument_list|,
 name|e
 argument_list|)
