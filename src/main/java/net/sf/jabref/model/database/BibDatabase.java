@@ -150,6 +150,18 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|stream
+operator|.
+name|Collectors
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -255,22 +267,6 @@ operator|.
 name|entry
 operator|.
 name|FieldName
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|entry
-operator|.
-name|InternalBibtexFields
 import|;
 end_import
 
@@ -634,6 +630,7 @@ name|entries
 argument_list|)
 return|;
 block|}
+comment|/**      * Returns a set of Strings, that contains all field names that are visible. This means that the fields      * are not internal fields. Internal fields are fields, that are starting with "_".      *      * @return set of fieldnames, that are visible      */
 DECL|method|getAllVisibleFields ()
 specifier|public
 name|Set
@@ -674,62 +671,49 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-name|Set
-argument_list|<
-name|String
-argument_list|>
-name|toberemoved
-init|=
-operator|new
-name|TreeSet
-argument_list|<>
-argument_list|()
-decl_stmt|;
-for|for
-control|(
-name|String
-name|field
-range|:
+return|return
 name|allFields
-control|)
-block|{
-if|if
-condition|(
-name|InternalBibtexFields
 operator|.
+name|stream
+argument_list|()
+operator|.
+name|filter
+argument_list|(
+name|field
+lambda|->
+operator|!
 name|isInternalField
 argument_list|(
 name|field
 argument_list|)
-condition|)
-block|{
-name|toberemoved
-operator|.
-name|add
-argument_list|(
-name|field
 argument_list|)
-expr_stmt|;
+operator|.
+name|collect
+argument_list|(
+name|Collectors
+operator|.
+name|toSet
+argument_list|()
+argument_list|)
+return|;
 block|}
-block|}
-for|for
-control|(
+DECL|method|isInternalField (String field)
+specifier|public
+specifier|static
+name|boolean
+name|isInternalField
+parameter_list|(
 name|String
 name|field
-range|:
-name|toberemoved
-control|)
+parameter_list|)
 block|{
-name|allFields
-operator|.
-name|remove
-argument_list|(
-name|field
-argument_list|)
-expr_stmt|;
-block|}
 return|return
-name|allFields
+name|field
+operator|.
+name|startsWith
+argument_list|(
+literal|"__"
+argument_list|)
 return|;
 block|}
 comment|/**      * Returns the entry with the given bibtex key.      */
@@ -789,6 +773,7 @@ name|empty
 argument_list|()
 return|;
 block|}
+comment|/**      * Collects entries having the specified BibTeX key and returns these entries as list.      * The order of the entries is the order they appear in the database.      *      * @param key      * @return list of entries that contains the given key      */
 DECL|method|getEntriesByKey (String key)
 specifier|public
 specifier|synchronized
@@ -971,13 +956,8 @@ literal|null
 argument_list|,
 name|entry
 operator|.
-name|getCiteKeyOptional
+name|getCiteKey
 argument_list|()
-operator|.
-name|orElse
-argument_list|(
-literal|null
-argument_list|)
 argument_list|)
 return|;
 block|}
@@ -1002,7 +982,7 @@ name|LOCAL
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Removes the given entry.      * The Entry is removed based on the id {@link BibEntry#id}      * @param toBeDeleted Entry to delete      * @param eventSource Source the event is sent from      */
+comment|/**      * Removes the given entry.      * The Entry is removed based on the id {@link BibEntry#id}      *      * @param toBeDeleted Entry to delete      * @param eventSource Source the event is sent from      */
 DECL|method|removeEntry (BibEntry toBeDeleted, EntryEventSource eventSource)
 specifier|public
 specifier|synchronized
@@ -1106,6 +1086,7 @@ name|key
 argument_list|)
 return|;
 block|}
+comment|/**      * Sets the given key to the given entry.      * If the key is null, the entry field will be cleared.      *      * @return true, if the entry contains the key, false if not      */
 DECL|method|setCiteKeyForEntry (BibEntry entry, String key)
 specifier|public
 specifier|synchronized
@@ -1124,13 +1105,8 @@ name|oldKey
 init|=
 name|entry
 operator|.
-name|getCiteKeyOptional
+name|getCiteKey
 argument_list|()
-operator|.
-name|orElse
-argument_list|(
-literal|null
-argument_list|)
 decl_stmt|;
 if|if
 condition|(
@@ -2212,9 +2188,9 @@ name|getCiteKeyOptional
 argument_list|()
 return|;
 block|}
-comment|// TODO: Changed this to also consider alias fields, which is the expected
+comment|// Changed this to also consider alias fields, which is the expected
 comment|// behavior for the preview layout and for the check whatever all fields are present.
-comment|// But there might be unwanted side-effects?!
+comment|// TODO: But there might be unwanted side-effects?!
 name|Optional
 argument_list|<
 name|String
