@@ -916,7 +916,7 @@ operator|.
 name|getGeneratedBibDatabase
 argument_list|()
 operator|.
-name|insertEntry
+name|insertEntryWithDuplicationCheck
 argument_list|(
 name|clonedEntry
 argument_list|)

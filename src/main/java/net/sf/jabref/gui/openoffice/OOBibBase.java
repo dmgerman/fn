@@ -9178,7 +9178,7 @@ expr_stmt|;
 comment|// Insert a copy of the entry
 name|resultDatabase
 operator|.
-name|insertEntry
+name|insertEntryWithDuplicationCheck
 argument_list|(
 name|clonedEntry
 argument_list|)
@@ -9225,7 +9225,7 @@ name|ifPresent
 argument_list|(
 name|resultDatabase
 operator|::
-name|insertEntry
+name|insertEntryWithDuplicationCheck
 argument_list|)
 expr_stmt|;
 block|}

@@ -3615,17 +3615,10 @@ literal|null
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|bibDatabaseContext
-operator|.
-name|getDatabase
-argument_list|()
-operator|.
-name|setCiteKeyForEntry
-argument_list|(
 name|bes
-argument_list|,
-literal|null
-argument_list|)
+operator|.
+name|clearCiteKey
+argument_list|()
 expr_stmt|;
 block|}
 block|}
@@ -6332,7 +6325,7 @@ operator|.
 name|getDatabase
 argument_list|()
 operator|.
-name|insertEntry
+name|insertEntryWithDuplicationCheck
 argument_list|(
 name|be
 argument_list|)
@@ -8250,7 +8243,7 @@ operator|.
 name|getDatabase
 argument_list|()
 operator|.
-name|insertEntry
+name|insertEntryWithDuplicationCheck
 argument_list|(
 name|be
 argument_list|)
@@ -8851,7 +8844,7 @@ operator|.
 name|getDatabase
 argument_list|()
 operator|.
-name|insertEntry
+name|insertEntryWithDuplicationCheck
 argument_list|(
 name|bibEntry
 argument_list|)

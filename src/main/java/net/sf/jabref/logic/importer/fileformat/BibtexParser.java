@@ -1121,7 +1121,7 @@ name|duplicateKey
 init|=
 name|database
 operator|.
-name|insertEntry
+name|insertEntryWithDuplicationCheck
 argument_list|(
 name|entry
 argument_list|)

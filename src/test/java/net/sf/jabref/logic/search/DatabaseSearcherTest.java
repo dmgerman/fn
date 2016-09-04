@@ -222,7 +222,7 @@ argument_list|()
 decl_stmt|;
 name|database
 operator|.
-name|insertEntry
+name|insertEntryWithDuplicationCheck
 argument_list|(
 operator|new
 name|BibEntry
@@ -305,7 +305,7 @@ argument_list|)
 expr_stmt|;
 name|database
 operator|.
-name|insertEntry
+name|insertEntryWithDuplicationCheck
 argument_list|(
 name|entry
 argument_list|)
@@ -386,7 +386,7 @@ argument_list|)
 expr_stmt|;
 name|database
 operator|.
-name|insertEntry
+name|insertEntryWithDuplicationCheck
 argument_list|(
 name|entry
 argument_list|)

@@ -1492,13 +1492,11 @@ comment|// If no field value was found, try to interpret it as a key generator f
 name|String
 name|fieldValue
 init|=
-name|BibDatabase
+name|entry
 operator|.
-name|getResolvedField
+name|getResolvedFieldOrAlias
 argument_list|(
 name|beforeColon
-argument_list|,
-name|entry
 argument_list|,
 name|database
 argument_list|)

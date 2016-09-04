@@ -290,14 +290,14 @@ operator|.
 name|getDatabase
 argument_list|()
 operator|.
-name|insertEntry
+name|insertEntryWithDuplicationCheck
 argument_list|(
 name|diskEntry
 argument_list|)
 expr_stmt|;
 name|secondary
 operator|.
-name|insertEntry
+name|insertEntryWithDuplicationCheck
 argument_list|(
 name|diskEntry
 argument_list|)
