@@ -122,6 +122,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Set
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|StringJoiner
 import|;
 end_import
@@ -201,7 +211,7 @@ literal|"Menu"
 argument_list|)
 control|)
 block|{
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -223,7 +233,7 @@ literal|"en"
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -256,7 +266,7 @@ name|collect
 argument_list|(
 name|Collectors
 operator|.
-name|toList
+name|toSet
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -268,7 +278,7 @@ range|:
 name|nonEnglishLanguages
 control|)
 block|{
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -855,7 +865,7 @@ argument_list|()
 operator|.
 name|map
 argument_list|(
-name|Object
+name|LocalizationEntry
 operator|::
 name|toString
 argument_list|)
@@ -931,7 +941,7 @@ argument_list|()
 operator|.
 name|map
 argument_list|(
-name|Object
+name|LocalizationEntry
 operator|::
 name|toString
 argument_list|)
@@ -966,7 +976,7 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -1017,13 +1027,6 @@ operator|.
 name|stream
 argument_list|()
 operator|.
-name|map
-argument_list|(
-name|Object
-operator|::
-name|toString
-argument_list|)
-operator|.
 name|collect
 argument_list|(
 name|Collectors
@@ -1057,16 +1060,9 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"2. EXECUTE gradlew -b localization.gradle generateMissingTranslationKeys TO"
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"REMOVE THESE FROM THE NON-ENGLISH LANGUAGE FILES"
+literal|"2. EXECUTE gradlew -b localization.gradle generateMissingTranslationKeys "
+operator|+
+literal|"TO REMOVE THESE FROM THE NON-ENGLISH LANGUAGE FILES"
 argument_list|)
 expr_stmt|;
 name|fail
@@ -1090,7 +1086,7 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -1141,13 +1137,6 @@ operator|.
 name|stream
 argument_list|()
 operator|.
-name|map
-argument_list|(
-name|Object
-operator|::
-name|toString
-argument_list|)
-operator|.
 name|collect
 argument_list|(
 name|Collectors
@@ -1181,18 +1170,9 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"2. EXECUTE gradlew -b localization.gradle generateMissingTranslationKeys"
+literal|"2. EXECUTE gradlew -b localization.gradle generateMissingTranslationKeys "
 operator|+
-literal|" TO"
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"REMOVE THESE FROM THE NON-ENGLISH LANGUAGE FILES"
+literal|"TO REMOVE THESE FROM THE NON-ENGLISH LANGUAGE FILES"
 argument_list|)
 expr_stmt|;
 name|fail

@@ -144,6 +144,15 @@ name|MENU_RESOURCE_PREFIX
 init|=
 literal|"l10n/Menu"
 decl_stmt|;
+DECL|field|BIBTEX
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|BIBTEX
+init|=
+literal|"BibTeX"
+decl_stmt|;
 DECL|field|messages
 specifier|private
 specifier|static
@@ -159,7 +168,7 @@ decl_stmt|;
 DECL|method|getMessages ()
 specifier|public
 specifier|static
-name|ResourceBundle
+name|LocalizationBundle
 name|getMessages
 parameter_list|()
 block|{
