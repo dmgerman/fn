@@ -434,6 +434,22 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|shared
+operator|.
+name|prefs
+operator|.
+name|SharedDatabasePreferences
+import|;
+end_import
+
+begin_import
+import|import
 name|com
 operator|.
 name|jgoodies
@@ -1623,6 +1639,13 @@ block|{
 try|try
 block|{
 name|prefs
+operator|.
+name|clear
+argument_list|()
+expr_stmt|;
+operator|new
+name|SharedDatabasePreferences
+argument_list|()
 operator|.
 name|clear
 argument_list|()
