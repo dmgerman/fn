@@ -328,6 +328,9 @@ name|getContents
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|annotation
+operator|.
+name|get
 block|}
 block|}
 catch|catch
@@ -348,7 +351,7 @@ name|annotationsMap
 return|;
 block|}
 DECL|method|importPdfFile (final List<BibEntry> entryList, final BibDatabaseContext bibDatabaseContext)
-specifier|private
+specifier|public
 name|List
 argument_list|<
 name|PDDocument
