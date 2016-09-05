@@ -6337,18 +6337,6 @@ name|mode
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|String
-name|changeFlag
-init|=
-name|panel
-operator|.
-name|isModified
-argument_list|()
-condition|?
-literal|"*"
-else|:
-literal|""
-decl_stmt|;
 if|if
 condition|(
 name|panel
@@ -6364,6 +6352,18 @@ operator|.
 name|LOCAL
 condition|)
 block|{
+name|String
+name|changeFlag
+init|=
+name|panel
+operator|.
+name|isModified
+argument_list|()
+condition|?
+literal|"*"
+else|:
+literal|""
+decl_stmt|;
 name|String
 name|databaseFile
 init|=
@@ -6436,7 +6436,16 @@ operator|.
 name|getDBName
 argument_list|()
 operator|+
-literal|" [shared]"
+literal|" ["
+operator|+
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"shared"
+argument_list|)
+operator|+
+literal|"]"
 operator|+
 name|modeInfo
 argument_list|)

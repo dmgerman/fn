@@ -2519,7 +2519,16 @@ operator|.
 name|getDBName
 argument_list|()
 operator|+
-literal|" [shared]"
+literal|" ["
+operator|+
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"shared"
+argument_list|)
+operator|+
+literal|"]"
 argument_list|)
 expr_stmt|;
 block|}
@@ -3559,7 +3568,7 @@ name|Map
 argument_list|<
 name|BibEntry
 argument_list|,
-name|Object
+name|String
 argument_list|>
 name|oldvals
 init|=
@@ -3688,9 +3697,6 @@ argument_list|()
 argument_list|,
 name|bes
 argument_list|,
-operator|(
-name|String
-operator|)
 name|oldvals
 operator|.
 name|get
@@ -11026,12 +11032,14 @@ block|{
 name|highlightEntry
 argument_list|(
 operator|(
+operator|(
 name|mainTable
 operator|.
 name|getSelectedRow
 argument_list|()
 operator|-
 literal|1
+operator|)
 operator|+
 name|mainTable
 operator|.
