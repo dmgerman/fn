@@ -533,7 +533,6 @@ name|note
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//TODO add context information for importedNotes
 block|}
 name|commentScrollPane
 operator|.
