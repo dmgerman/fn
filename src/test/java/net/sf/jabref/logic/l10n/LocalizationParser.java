@@ -1166,7 +1166,6 @@ argument_list|)
 return|;
 block|}
 DECL|class|JavaLocalizationEntryParser
-specifier|private
 specifier|static
 class|class
 name|JavaLocalizationEntryParser
