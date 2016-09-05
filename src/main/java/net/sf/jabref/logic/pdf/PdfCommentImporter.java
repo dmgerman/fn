@@ -328,9 +328,6 @@ name|getContents
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|annotation
-operator|.
-name|get
 block|}
 block|}
 catch|catch
