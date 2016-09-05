@@ -256,10 +256,10 @@ name|DoiFetcher
 implements|implements
 name|IdBasedFetcher
 block|{
-DECL|field|prefs
+DECL|field|preferences
 specifier|private
 name|ImportFormatPreferences
-name|prefs
+name|preferences
 decl_stmt|;
 DECL|field|LOGGER
 specifier|private
@@ -287,12 +287,12 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|prefs
+name|preferences
 operator|=
 name|preferences
 expr_stmt|;
 block|}
-DECL|method|getEntryFromDOI (String doiStr, ParserResult parserResult, ImportFormatPreferences importFormatPreferences)
+DECL|method|getEntryFromDOI (String doi, ParserResult parserResult, ImportFormatPreferences preferences)
 specifier|public
 specifier|static
 name|Optional
@@ -302,13 +302,13 @@ argument_list|>
 name|getEntryFromDOI
 parameter_list|(
 name|String
-name|doiStr
+name|doi
 parameter_list|,
 name|ParserResult
 name|parserResult
 parameter_list|,
 name|ImportFormatPreferences
-name|importFormatPreferences
+name|preferences
 parameter_list|)
 block|{
 try|try
@@ -317,12 +317,12 @@ return|return
 operator|new
 name|DoiFetcher
 argument_list|(
-name|importFormatPreferences
+name|preferences
 argument_list|)
 operator|.
 name|performSearchById
 argument_list|(
-name|doiStr
+name|doi
 argument_list|)
 return|;
 block|}
@@ -351,7 +351,7 @@ name|lang
 argument_list|(
 literal|"Invalid DOI: '%0'."
 argument_list|,
-name|doiStr
+name|doi
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -508,7 +508,7 @@ argument_list|(
 name|bibtexString
 argument_list|)
 argument_list|,
-name|prefs
+name|preferences
 argument_list|)
 return|;
 block|}
