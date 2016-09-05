@@ -848,6 +848,22 @@ name|jabref
 operator|.
 name|gui
 operator|.
+name|bibtexkeypattern
+operator|.
+name|BibtexKeyPatternDialog
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
 name|dbproperties
 operator|.
 name|DatabasePropertiesDialog
@@ -979,22 +995,6 @@ operator|.
 name|help
 operator|.
 name|AboutAction
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|help
-operator|.
-name|AboutDialog
 import|;
 end_import
 
@@ -1318,7 +1318,7 @@ name|gui
 operator|.
 name|util
 operator|.
-name|PositionWindow
+name|WindowLocation
 import|;
 end_import
 
@@ -1908,11 +1908,6 @@ argument_list|,
 literal|0
 argument_list|)
 decl_stmt|;
-DECL|field|pw
-specifier|private
-name|PositionWindow
-name|pw
-decl_stmt|;
 DECL|field|checkIntegrity
 specifier|private
 specifier|final
@@ -2025,19 +2020,6 @@ name|FileHistoryMenu
 argument_list|(
 name|prefs
 argument_list|,
-name|this
-argument_list|)
-decl_stmt|;
-comment|// The help window.
-DECL|field|aboutDiag
-specifier|private
-specifier|final
-name|AboutDialog
-name|aboutDiag
-init|=
-operator|new
-name|AboutDialog
-argument_list|(
 name|this
 argument_list|)
 decl_stmt|;
@@ -2527,7 +2509,7 @@ argument_list|(
 literal|"About JabRef"
 argument_list|)
 argument_list|,
-name|aboutDiag
+name|this
 argument_list|,
 name|Localization
 operator|.
@@ -6073,10 +6055,11 @@ name|getMaximumWindowBounds
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|WindowLocation
 name|pw
-operator|=
+init|=
 operator|new
-name|PositionWindow
+name|WindowLocation
 argument_list|(
 name|this
 argument_list|,
@@ -6096,8 +6079,10 @@ name|JabRefPreferences
 operator|.
 name|SIZE_Y
 argument_list|)
-expr_stmt|;
-name|positionWindowOnScreen
+decl_stmt|;
+name|pw
+operator|.
+name|displayWindowAtStoredLocation
 argument_list|()
 expr_stmt|;
 name|tabbedPane
@@ -6276,32 +6261,6 @@ name|e
 argument_list|)
 expr_stmt|;
 block|}
-block|}
-block|}
-DECL|method|positionWindowOnScreen ()
-specifier|private
-name|void
-name|positionWindowOnScreen
-parameter_list|()
-block|{
-if|if
-condition|(
-operator|!
-name|prefs
-operator|.
-name|getBoolean
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|WINDOW_MAXIMISED
-argument_list|)
-condition|)
-block|{
-name|pw
-operator|.
-name|setWindowPosition
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 DECL|method|refreshTitleAndTabs ()
@@ -6676,7 +6635,6 @@ expr_stmt|;
 name|dispose
 argument_list|()
 expr_stmt|;
-comment|//prefs.putBoolean(JabRefPreferences.WINDOW_MAXIMISED, (getExtendedState()&MAXIMIZED_BOTH)>0);
 name|prefs
 operator|.
 name|putBoolean

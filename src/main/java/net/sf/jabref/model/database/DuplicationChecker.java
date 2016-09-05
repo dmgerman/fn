@@ -63,7 +63,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Determines which bibtex cite keys are duplicates in a single {@link BibDatabase}  */
+comment|/**  * Determines which bibtex cite keys are duplicates in a single {@link BibDatabase}.  */
 end_comment
 
 begin_class
@@ -104,12 +104,7 @@ name|HashMap
 argument_list|<>
 argument_list|()
 decl_stmt|;
-comment|//##########################################
-comment|//  usage:
-comment|//  isDuplicate=checkForDuplicateKeyAndAdd( null, b.getKey() , issueDuplicateWarning);
-comment|//############################################
-comment|// if the newkey already exists and is not the same as oldkey it will give a warning
-comment|// else it will add the newkey to the to set and remove the oldkey
+comment|/**      * Usage:      *<br>      * isDuplicate=checkForDuplicateKeyAndAdd( null, b.getKey() , issueDuplicateWarning);      *      * If the newkey already exists and is not the same as oldkey it will give a warning      * else it will add the newkey to the to set and remove the oldkey      *      * @return true, if there is a duplicate key, else false      */
 DECL|method|checkForDuplicateKeyAndAdd (String oldKey, String newKey)
 specifier|public
 name|boolean
@@ -122,9 +117,10 @@ name|String
 name|newKey
 parameter_list|)
 block|{
-comment|// LOGGER.debug(" checkForDuplicateKeyAndAdd [oldKey = " + oldKey + "] [newKey = " + newKey + "]");
 name|boolean
 name|duplicate
+init|=
+literal|false
 decl_stmt|;
 if|if
 condition|(
@@ -133,7 +129,7 @@ operator|==
 literal|null
 condition|)
 block|{
-comment|// this is a new entry so don't bother removing oldKey
+comment|// No old key
 name|duplicate
 operator|=
 name|addKeyToSet
@@ -162,19 +158,20 @@ expr_stmt|;
 block|}
 else|else
 block|{
-comment|// user changed the key
-comment|// removed the oldkey
-comment|// But what if more than two have the same key?
-comment|// this means that user can add another key and would not get a warning!
-comment|// consider this: i add a key xxx, then i add another key xxx . I get a warning. I delete the key xxx. JBM
-comment|// removes this key from the allKey. then I add another key xxx. I don't get a warning!
-comment|// i need a way to count the number of keys of each type
-comment|// hashmap=>int (increment each time)
 name|removeKeyFromSet
 argument_list|(
 name|oldKey
 argument_list|)
 expr_stmt|;
+comment|// Get rid of old key
+if|if
+condition|(
+name|newKey
+operator|!=
+literal|null
+condition|)
+block|{
+comment|// Add new key if any
 name|duplicate
 operator|=
 name|addKeyToSet
@@ -182,6 +179,7 @@ argument_list|(
 name|newKey
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 if|if
@@ -241,11 +239,9 @@ name|numberOfOccurrences
 return|;
 block|}
 block|}
-comment|//========================================================
-comment|// keep track of all the keys to warn if there are duplicates
-comment|//========================================================
+comment|/**      * Helper function for counting the number of the key usages.      * Adds the given key to the internal keyset together with the count of it.      * The counter is increased if the key already exists, otherwise set to 1.      *<br>      * Special case: If a null or empty key is passed, it is not counted and thus not added.      *      * Reasoning:      * Consider this: I add a key xxx, then I add another key xxx. I get a warning. I delete the key xxx.      * Consider JabRef simply removing this key from a set of allKeys.      * Then I add another key xxx. I don't get a warning!      * Thus, I need a way to count the number of keys of each type.      * Solution: hashmap=>int (increment each time at add and decrement each time at remove)      */
 DECL|method|addKeyToSet (String key)
-specifier|public
+specifier|protected
 name|boolean
 name|addKeyToSet
 parameter_list|(
@@ -308,7 +304,6 @@ operator|+
 literal|1
 argument_list|)
 expr_stmt|;
-comment|// incrementInteger( allKeys.get(key)));
 block|}
 else|else
 block|{
@@ -326,12 +321,9 @@ return|return
 name|exists
 return|;
 block|}
-comment|//========================================================
-comment|// reduce the number of keys by 1. if this number goes to zero then remove from the set
-comment|// note: there is a good reason why we should not use a hashset but use hashmap instead
-comment|//========================================================
+comment|/**      * Helper function for counting the number of the key usages.      * Removes the given key from the internal keyset together with the count of it, if the key is set to 1.      * If it is not set to 1, the counter will be decreased.      *<br>      * Special case: If a null or empty key is passed, it is not counted and thus not removed.      */
 DECL|method|removeKeyFromSet (String key)
-specifier|public
+specifier|protected
 name|void
 name|removeKeyFromSet
 parameter_list|(
@@ -375,7 +367,6 @@ argument_list|(
 name|key
 argument_list|)
 decl_stmt|;
-comment|// if(allKeys.get(key) instanceof Integer)
 if|if
 condition|(
 name|tI
@@ -404,7 +395,6 @@ operator|-
 literal|1
 argument_list|)
 expr_stmt|;
-comment|//decrementInteger( tI ));
 block|}
 block|}
 block|}

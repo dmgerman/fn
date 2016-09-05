@@ -1733,7 +1733,7 @@ operator|.
 name|getDatabase
 argument_list|()
 operator|.
-name|insertEntry
+name|insertEntryWithDuplicationCheck
 argument_list|(
 name|aXmpEntriesInFile
 argument_list|)
