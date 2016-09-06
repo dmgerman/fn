@@ -232,6 +232,18 @@ name|getContents
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
+DECL|method|toString ()
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+name|content
+return|;
+block|}
 DECL|method|getCommentId ()
 specifier|public
 name|String
