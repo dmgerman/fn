@@ -136,16 +136,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|JTextField
-import|;
-end_import
-
-begin_import
-import|import
 name|net
 operator|.
 name|sf
@@ -233,6 +223,22 @@ operator|.
 name|entry
 operator|.
 name|FieldName
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|pdf
+operator|.
+name|PdfComment
 import|;
 end_import
 
@@ -741,6 +747,11 @@ condition|)
 block|{
 name|listModel
 operator|.
+name|clear
+argument_list|()
+expr_stmt|;
+name|listModel
+operator|.
 name|addElement
 argument_list|(
 name|Localization
@@ -758,7 +769,7 @@ name|HashMap
 argument_list|<
 name|String
 argument_list|,
-name|String
+name|PdfComment
 argument_list|>
 name|importedNotes
 init|=
@@ -782,7 +793,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|updateShownComments (HashMap<String, String> importedNotes)
+DECL|method|updateShownComments (HashMap<String, PdfComment> importedNotes)
 specifier|private
 name|void
 name|updateShownComments
@@ -791,7 +802,7 @@ name|HashMap
 argument_list|<
 name|String
 argument_list|,
-name|String
+name|PdfComment
 argument_list|>
 name|importedNotes
 parameter_list|)
@@ -820,6 +831,9 @@ operator|.
 name|addElement
 argument_list|(
 name|note
+operator|.
+name|getContent
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
