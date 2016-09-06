@@ -271,7 +271,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"author"
+literal|"Author"
 argument_list|)
 argument_list|,
 name|JLabel
@@ -318,7 +318,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"date"
+literal|"Date"
 argument_list|)
 argument_list|,
 name|JLabel
@@ -365,7 +365,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"page"
+literal|"Page"
 argument_list|)
 argument_list|,
 name|JLabel
@@ -412,7 +412,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"content"
+literal|"Content"
 argument_list|)
 argument_list|,
 name|JLabel
@@ -513,7 +513,12 @@ name|this
 operator|.
 name|tabTitle
 operator|=
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"PDF comments"
+argument_list|)
 expr_stmt|;
 name|this
 operator|.
