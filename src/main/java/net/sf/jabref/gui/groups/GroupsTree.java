@@ -1,8 +1,4 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
-begin_comment
-comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
-end_comment
-
 begin_package
 DECL|package|net.sf.jabref.gui.groups
 package|package
@@ -25,16 +21,6 @@ operator|.
 name|awt
 operator|.
 name|Cursor
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|awt
-operator|.
-name|FontMetrics
 import|;
 end_import
 
@@ -384,7 +370,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
+name|gui
+operator|.
+name|util
+operator|.
+name|GUIUtil
 import|;
 end_import
 
@@ -465,20 +455,6 @@ operator|.
 name|entry
 operator|.
 name|BibEntry
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|preferences
-operator|.
-name|JabRefPreferences
 import|;
 end_import
 
@@ -595,30 +571,11 @@ name|GroupSelector
 name|groupSelector
 parameter_list|)
 block|{
-comment|// Adjust height according to http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=4760081
-name|FontMetrics
-name|metrics
-init|=
-name|getFontMetrics
-argument_list|(
-name|getFont
-argument_list|()
-argument_list|)
-decl_stmt|;
-name|setRowHeight
-argument_list|(
-name|Math
+name|GUIUtil
 operator|.
-name|max
+name|correctRowHeight
 argument_list|(
-name|getRowHeight
-argument_list|()
-argument_list|,
-name|metrics
-operator|.
-name|getHeight
-argument_list|()
-argument_list|)
+name|this
 argument_list|)
 expr_stmt|;
 name|this
@@ -708,20 +665,6 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
-name|setVisibleRowCount
-argument_list|(
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getInt
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|GROUPS_VISIBLE_ROWS
-argument_list|)
-argument_list|)
-expr_stmt|;
 name|getSelectionModel
 argument_list|()
 operator|.
@@ -730,6 +673,13 @@ argument_list|(
 name|TreeSelectionModel
 operator|.
 name|DISCONTIGUOUS_TREE_SELECTION
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|setFocusable
+argument_list|(
+literal|true
 argument_list|)
 expr_stmt|;
 block|}
@@ -1067,7 +1017,7 @@ block|{
 comment|// check if node accepts explicit assignment
 if|if
 condition|(
-name|path
+name|target
 operator|==
 literal|null
 condition|)

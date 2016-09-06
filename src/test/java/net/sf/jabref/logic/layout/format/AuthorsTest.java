@@ -636,6 +636,43 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+DECL|method|testEmptyEtAl ()
+specifier|public
+name|void
+name|testEmptyEtAl
+parameter_list|()
+block|{
+name|ParamLayoutFormatter
+name|a
+init|=
+operator|new
+name|Authors
+argument_list|()
+decl_stmt|;
+name|a
+operator|.
+name|setArgument
+argument_list|(
+literal|"fullname, LastFirst, Comma, 3, etal="
+argument_list|)
+expr_stmt|;
+name|Assert
+operator|.
+name|assertEquals
+argument_list|(
+literal|"Bruce, Bob Croydon"
+argument_list|,
+name|a
+operator|.
+name|format
+argument_list|(
+literal|"Bob Croydon Bruce and Charles Manson and Jolly Jumper and Chuck Chuckles"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_class
 

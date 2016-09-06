@@ -22,6 +22,22 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|event
+operator|.
+name|source
+operator|.
+name|EntryEventSource
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|model
 operator|.
 name|entry
@@ -47,7 +63,13 @@ specifier|final
 name|BibEntry
 name|bibEntry
 decl_stmt|;
-comment|/**      * @param bibEntry BibEntry object which is involved in this event       */
+DECL|field|location
+specifier|private
+specifier|final
+name|EntryEventSource
+name|location
+decl_stmt|;
+comment|/**      * @param bibEntry BibEntry object which is involved in this event      */
 DECL|method|EntryEvent (BibEntry bibEntry)
 specifier|public
 name|EntryEvent
@@ -57,10 +79,38 @@ name|bibEntry
 parameter_list|)
 block|{
 name|this
+argument_list|(
+name|bibEntry
+argument_list|,
+name|EntryEventSource
+operator|.
+name|LOCAL
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * @param bibEntry BibEntry object which is involved in this event      * @param location Location affected by this event      */
+DECL|method|EntryEvent (BibEntry bibEntry, EntryEventSource location)
+specifier|public
+name|EntryEvent
+parameter_list|(
+name|BibEntry
+name|bibEntry
+parameter_list|,
+name|EntryEventSource
+name|location
+parameter_list|)
+block|{
+name|this
 operator|.
 name|bibEntry
 operator|=
 name|bibEntry
+expr_stmt|;
+name|this
+operator|.
+name|location
+operator|=
+name|location
 expr_stmt|;
 block|}
 DECL|method|getBibEntry ()
@@ -73,6 +123,18 @@ return|return
 name|this
 operator|.
 name|bibEntry
+return|;
+block|}
+DECL|method|getEntryEventSource ()
+specifier|public
+name|EntryEventSource
+name|getEntryEventSource
+parameter_list|()
+block|{
+return|return
+name|this
+operator|.
+name|location
 return|;
 block|}
 block|}

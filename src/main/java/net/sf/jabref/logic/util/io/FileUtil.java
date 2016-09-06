@@ -1,8 +1,4 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
-begin_comment
-comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
-end_comment
-
 begin_package
 DECL|package|net.sf.jabref.logic.util.io
 package|package
@@ -232,11 +228,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
-operator|.
-name|journals
-operator|.
-name|JournalAbbreviationLoader
+name|FileDirectoryPreferences
 import|;
 end_import
 
@@ -381,20 +373,6 @@ operator|.
 name|entry
 operator|.
 name|ParsedFileField
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|preferences
-operator|.
-name|JabRefPreferences
 import|;
 end_import
 
@@ -1022,7 +1000,7 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Converts a relative filename to an absolute one, if necessary. Returns      * null if the file does not exist.<br/>      *<p>      * Uses<ul>      *<li>the default directory associated with the extension of the file</li>      *<li>the standard file directory</li>      *<li>the directory of the BIB file</li>      *</ul>      *      * @param databaseContext The database this file belongs to.      * @param name     The filename, may also be a relative path to the file      */
-DECL|method|expandFilename (final BibDatabaseContext databaseContext, String name)
+DECL|method|expandFilename (final BibDatabaseContext databaseContext, String name, FileDirectoryPreferences fileDirectoryPreferences)
 specifier|public
 specifier|static
 name|Optional
@@ -1037,6 +1015,9 @@ name|databaseContext
 parameter_list|,
 name|String
 name|name
+parameter_list|,
+name|FileDirectoryPreferences
+name|fileDirectoryPreferences
 parameter_list|)
 block|{
 name|Optional
@@ -1067,6 +1048,8 @@ name|orElse
 argument_list|(
 literal|null
 argument_list|)
+argument_list|,
+name|fileDirectoryPreferences
 argument_list|)
 decl_stmt|;
 comment|// Include the standard "file" directory:
@@ -1079,7 +1062,9 @@ init|=
 name|databaseContext
 operator|.
 name|getFileDirectory
-argument_list|()
+argument_list|(
+name|fileDirectoryPreferences
+argument_list|)
 decl_stmt|;
 comment|// Include the directory of the BIB file:
 name|List
@@ -1988,7 +1973,7 @@ control|)
 block|{
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -2047,8 +2032,8 @@ return|return
 name|result
 return|;
 block|}
-comment|/**      * Determines filename provided by an entry in a database      *      * @param database the database, where the entry is located      * @param entry    the entry to which the file should be linked to      * @param repositoryLoader      * @return a suggested fileName      */
-DECL|method|createFileNameFromPattern (BibDatabase database, BibEntry entry, JournalAbbreviationLoader repositoryLoader, JabRefPreferences prefs)
+comment|/**      * Determines filename provided by an entry in a database      *      * @param database        the database, where the entry is located      * @param entry           the entry to which the file should be linked to      * @param fileNamePattern the filename pattern      * @param prefs           the layout preferences      * @return a suggested fileName      */
+DECL|method|createFileNameFromPattern (BibDatabase database, BibEntry entry, String fileNamePattern, LayoutFormatterPreferences prefs)
 specifier|public
 specifier|static
 name|String
@@ -2060,25 +2045,17 @@ parameter_list|,
 name|BibEntry
 name|entry
 parameter_list|,
-name|JournalAbbreviationLoader
-name|repositoryLoader
+name|String
+name|fileNamePattern
 parameter_list|,
-name|JabRefPreferences
+name|LayoutFormatterPreferences
 name|prefs
 parameter_list|)
 block|{
 name|String
 name|targetName
 init|=
-name|entry
-operator|.
-name|getCiteKeyOptional
-argument_list|()
-operator|.
-name|orElse
-argument_list|(
-literal|"default"
-argument_list|)
+literal|null
 decl_stmt|;
 name|StringReader
 name|sr
@@ -2086,14 +2063,7 @@ init|=
 operator|new
 name|StringReader
 argument_list|(
-name|prefs
-operator|.
-name|get
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|PREF_IMPORT_FILENAMEPATTERN
-argument_list|)
+name|fileNamePattern
 argument_list|)
 decl_stmt|;
 name|Layout
@@ -2110,14 +2080,7 @@ name|LayoutHelper
 argument_list|(
 name|sr
 argument_list|,
-name|LayoutFormatterPreferences
-operator|.
-name|fromPreferences
-argument_list|(
 name|prefs
-argument_list|,
-name|repositoryLoader
-argument_list|)
 argument_list|)
 operator|.
 name|getLayoutFromText
@@ -2161,6 +2124,33 @@ argument_list|(
 name|entry
 argument_list|,
 name|database
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
+operator|(
+name|targetName
+operator|==
+literal|null
+operator|)
+operator|||
+name|targetName
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+name|targetName
+operator|=
+name|entry
+operator|.
+name|getCiteKeyOptional
+argument_list|()
+operator|.
+name|orElse
+argument_list|(
+literal|"default"
 argument_list|)
 expr_stmt|;
 block|}

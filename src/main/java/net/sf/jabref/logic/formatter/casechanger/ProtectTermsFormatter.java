@@ -1,8 +1,4 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
-begin_comment
-comment|/*  Copyright (C) 2012 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
-end_comment
-
 begin_package
 DECL|package|net.sf.jabref.logic.formatter.casechanger
 package|package
@@ -120,7 +116,32 @@ specifier|static
 name|ProtectedTermsLoader
 name|protectedTermsLoader
 decl_stmt|;
-comment|// This must be called from JabRefMain
+comment|/**      * @deprecated use ProtectTermsFormatter(ProtectedTermsLoader) instead      */
+annotation|@
+name|Deprecated
+DECL|method|ProtectTermsFormatter ()
+specifier|public
+name|ProtectTermsFormatter
+parameter_list|()
+block|{     }
+DECL|method|ProtectTermsFormatter (ProtectedTermsLoader protectedTermsLoader)
+specifier|public
+name|ProtectTermsFormatter
+parameter_list|(
+name|ProtectedTermsLoader
+name|protectedTermsLoader
+parameter_list|)
+block|{
+name|ProtectTermsFormatter
+operator|.
+name|protectedTermsLoader
+operator|=
+name|protectedTermsLoader
+expr_stmt|;
+block|}
+comment|/**      * This must be called from JabRefMain      *      * @deprecated use ProtectTermsFormatter(ProtectedTermsLoader) instead      */
+annotation|@
+name|Deprecated
 DECL|method|setProtectedTermsLoader (ProtectedTermsLoader loader)
 specifier|public
 specifier|static
@@ -229,6 +250,15 @@ return|return
 name|text
 return|;
 block|}
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|ProtectTermsFormatter
+operator|.
+name|protectedTermsLoader
+argument_list|)
+expr_stmt|;
 return|return
 name|this
 operator|.

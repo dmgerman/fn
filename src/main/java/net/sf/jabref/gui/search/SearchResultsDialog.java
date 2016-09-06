@@ -1,8 +1,4 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
-begin_comment
-comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
-end_comment
-
 begin_package
 DECL|package|net.sf.jabref.gui.search
 package|package
@@ -534,6 +530,22 @@ name|gui
 operator|.
 name|util
 operator|.
+name|GUIUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|util
+operator|.
 name|comparator
 operator|.
 name|IconComparator
@@ -652,7 +664,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|FieldProperties
+name|FieldProperty
 import|;
 end_import
 
@@ -1236,6 +1248,13 @@ operator|new
 name|JTable
 argument_list|(
 name|model
+argument_list|)
+expr_stmt|;
+name|GUIUtil
+operator|.
+name|correctRowHeight
+argument_list|(
+name|entryTable
 argument_list|)
 expr_stmt|;
 name|GeneralRenderer
@@ -2390,7 +2409,7 @@ argument_list|()
 decl_stmt|;
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -2465,7 +2484,7 @@ name|URL_COL
 case|:
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -2601,7 +2620,7 @@ argument_list|()
 decl_stmt|;
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -2971,7 +2990,7 @@ argument_list|()
 decl_stmt|;
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -3090,7 +3109,7 @@ name|setToolTipText
 argument_list|(
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -3133,14 +3152,14 @@ if|if
 condition|(
 name|InternalBibtexFields
 operator|.
-name|getFieldExtras
+name|getFieldProperties
 argument_list|(
 name|field
 argument_list|)
 operator|.
 name|contains
 argument_list|(
-name|FieldProperties
+name|FieldProperty
 operator|.
 name|PERSON_NAMES
 argument_list|)
@@ -3165,7 +3184,7 @@ name|formatName
 argument_list|(
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|field
 argument_list|)
@@ -3181,7 +3200,7 @@ block|}
 return|return
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|field
 argument_list|)

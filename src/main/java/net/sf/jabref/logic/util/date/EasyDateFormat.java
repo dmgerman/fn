@@ -58,20 +58,6 @@ name|Date
 import|;
 end_import
 
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|preferences
-operator|.
-name|JabRefPreferences
-import|;
-end_import
-
 begin_class
 DECL|class|EasyDateFormat
 specifier|public
@@ -184,28 +170,21 @@ name|dateFormatter
 argument_list|)
 return|;
 block|}
-DECL|method|fromPreferences (JabRefPreferences preferences)
+DECL|method|fromTimeStampFormat (String timeStampFormat)
 specifier|public
 specifier|static
 name|EasyDateFormat
-name|fromPreferences
+name|fromTimeStampFormat
 parameter_list|(
-name|JabRefPreferences
-name|preferences
+name|String
+name|timeStampFormat
 parameter_list|)
 block|{
 return|return
 operator|new
 name|EasyDateFormat
 argument_list|(
-name|preferences
-operator|.
-name|get
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|TIME_STAMP_FORMAT
-argument_list|)
+name|timeStampFormat
 argument_list|)
 return|;
 block|}

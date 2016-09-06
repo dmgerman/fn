@@ -1,8 +1,4 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
-begin_comment
-comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
-end_comment
-
 begin_package
 DECL|package|net.sf.jabref.logic.util.strings
 package|package
@@ -2316,12 +2312,15 @@ throw|;
 block|}
 block|}
 block|}
-comment|/**      * Optimized method for converting a String into an Integer      *      * From http://stackoverflow.com/questions/1030479/most-efficient-way-of-converting-string-to-integer-in-java      *      * @param str the String holding an Integer value      * @return the int value of str or null if not possible      */
-DECL|method|intValueOfWithNull (String str)
+comment|/**      * Optimized method for converting a String into an Integer      *      * From http://stackoverflow.com/questions/1030479/most-efficient-way-of-converting-string-to-integer-in-java      *      * @param str the String holding an Integer value      * @return the int value of str or Optional.empty() if not possible      */
+DECL|method|intValueOfOptional (String str)
 specifier|public
 specifier|static
+name|Optional
+argument_list|<
 name|Integer
-name|intValueOfWithNull
+argument_list|>
+name|intValueOfOptional
 parameter_list|(
 name|String
 name|str
@@ -2430,7 +2429,10 @@ operator|)
 condition|)
 block|{
 return|return
-literal|null
+name|Optional
+operator|.
+name|empty
+argument_list|()
 return|;
 block|}
 name|int
@@ -2462,12 +2464,17 @@ name|end
 condition|)
 block|{
 return|return
+name|Optional
+operator|.
+name|of
+argument_list|(
 name|sign
 condition|?
 name|ival
 else|:
 operator|-
 name|ival
+argument_list|)
 return|;
 block|}
 if|if
@@ -2495,7 +2502,10 @@ operator|)
 condition|)
 block|{
 return|return
-literal|null
+name|Optional
+operator|.
+name|empty
+argument_list|()
 return|;
 block|}
 block|}

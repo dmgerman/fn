@@ -929,6 +929,25 @@ operator|.
 name|BIBTEX
 argument_list|)
 block|,
+DECL|enumConstant|NEW_TECHREPORT
+name|NEW_TECHREPORT
+argument_list|(
+literal|"New technical report"
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"New technical report"
+argument_list|)
+argument_list|,
+literal|"ctrl shift R"
+argument_list|,
+name|KeyBindingCategory
+operator|.
+name|BIBTEX
+argument_list|)
+block|,
 DECL|enumConstant|NEXT_TAB
 name|NEXT_TAB
 argument_list|(
@@ -1060,6 +1079,25 @@ argument_list|,
 name|KeyBindingCategory
 operator|.
 name|EDIT
+argument_list|)
+block|,
+DECL|enumConstant|PULL_CHANGES_FROM_SHARED_DATABASE
+name|PULL_CHANGES_FROM_SHARED_DATABASE
+argument_list|(
+literal|"Pull changes from shared database"
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Pull changes from shared database"
+argument_list|)
+argument_list|,
+literal|"ctrl shift R"
+argument_list|,
+name|KeyBindingCategory
+operator|.
+name|FILE
 argument_list|)
 block|,
 DECL|enumConstant|PREAMBLE_EDITOR_STORE_CHANGES
@@ -1536,7 +1574,26 @@ name|KeyBindingCategory
 operator|.
 name|TOOLS
 argument_list|)
-block|,;
+block|,
+DECL|enumConstant|OPEN_OPEN_OFFICE_LIBRE_OFFICE_CONNECTION
+name|OPEN_OPEN_OFFICE_LIBRE_OFFICE_CONNECTION
+argument_list|(
+literal|"Open OpenOffice/LibreOffice connection"
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Open OpenOffice/LibreOffice connection"
+argument_list|)
+argument_list|,
+literal|"alt 0"
+argument_list|,
+name|KeyBindingCategory
+operator|.
+name|TOOLS
+argument_list|)
+block|;
 DECL|field|key
 specifier|private
 specifier|final

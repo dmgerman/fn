@@ -1,8 +1,4 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
-begin_comment
-comment|/*  * Copyright (C) 2003-2016 JabRef contributors.  * This program is free software; you can redistribute it and/or modify  * it under the terms of the GNU General Public License as published by  * the Free Software Foundation; either version 2 of the License, or  * (at your option) any later version.  *  * This program is distributed in the hope that it will be useful,  * but WITHOUT ANY WARRANTY; without even the implied warranty of  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the  * GNU General Public License for more details.  *  * You should have received a copy of the GNU General Public License along  * with this program; if not, write to the Free Software Foundation, Inc.,  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
-end_comment
-
 begin_package
 DECL|package|net.sf.jabref.logic.importer.fetcher
 package|package
@@ -176,22 +172,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|importer
-operator|.
-name|fetcher
-operator|.
-name|OAI2Fetcher
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|logic
 operator|.
 name|TypedBibEntry
@@ -275,6 +255,24 @@ operator|.
 name|importer
 operator|.
 name|SearchBasedFetcher
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|importer
+operator|.
+name|util
+operator|.
+name|OAI2Handler
 import|;
 end_import
 
@@ -577,7 +575,7 @@ name|identifier
 init|=
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -664,7 +662,7 @@ name|doi
 init|=
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -1592,7 +1590,7 @@ argument_list|)
 operator|.
 name|map
 argument_list|(
-name|OAI2Fetcher
+name|OAI2Handler
 operator|::
 name|correctLineBreaks
 argument_list|)
@@ -1635,7 +1633,7 @@ argument_list|)
 operator|.
 name|map
 argument_list|(
-name|OAI2Fetcher
+name|OAI2Handler
 operator|::
 name|correctLineBreaks
 argument_list|)
@@ -2108,7 +2106,7 @@ name|title
 operator|.
 name|ifPresent
 argument_list|(
-name|title
+name|titleContent
 lambda|->
 name|bibEntry
 operator|.
@@ -2118,7 +2116,7 @@ name|FieldName
 operator|.
 name|TITLE
 argument_list|,
-name|title
+name|titleContent
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2126,7 +2124,7 @@ name|doi
 operator|.
 name|ifPresent
 argument_list|(
-name|doi
+name|doiContent
 lambda|->
 name|bibEntry
 operator|.
@@ -2136,7 +2134,7 @@ name|FieldName
 operator|.
 name|DOI
 argument_list|,
-name|doi
+name|doiContent
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2144,7 +2142,7 @@ name|abstractText
 operator|.
 name|ifPresent
 argument_list|(
-name|abstractText
+name|abstractContent
 lambda|->
 name|bibEntry
 operator|.
@@ -2154,7 +2152,7 @@ name|FieldName
 operator|.
 name|ABSTRACT
 argument_list|,
-name|abstractText
+name|abstractContent
 argument_list|)
 argument_list|)
 expr_stmt|;

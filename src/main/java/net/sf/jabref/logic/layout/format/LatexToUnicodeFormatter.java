@@ -1,8 +1,4 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
-begin_comment
-comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
-end_comment
-
 begin_package
 DECL|package|net.sf.jabref.logic.layout.format
 package|package
@@ -773,9 +769,6 @@ block|}
 block|}
 else|else
 block|{
-name|String
-name|argument
-decl_stmt|;
 if|if
 condition|(
 operator|!
@@ -832,7 +825,7 @@ literal|'{'
 condition|)
 block|{
 name|String
-name|part
+name|argument
 init|=
 name|StringUtil
 operator|.
@@ -847,22 +840,11 @@ argument_list|)
 decl_stmt|;
 name|i
 operator|+=
-name|part
+name|argument
 operator|.
 name|length
 argument_list|()
 expr_stmt|;
-name|argument
-operator|=
-name|part
-expr_stmt|;
-if|if
-condition|(
-name|argument
-operator|!=
-literal|null
-condition|)
-block|{
 comment|// handle common case of general latex command
 name|String
 name|result
@@ -922,10 +904,8 @@ if|if
 condition|(
 name|argument
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|==
-literal|0
 condition|)
 block|{
 comment|// Empty argument, may be used as separator as in \LaTeX{}, so keep the command
@@ -984,7 +964,6 @@ argument_list|(
 name|result
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 elseif|else
@@ -1085,10 +1064,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/* else if (c == '}') {                     System.out.printf("com term by }: '%s'\n", currentCommand.toString());                      argument = "";                  }*/
 else|else
 block|{
-comment|/*                       * TODO: this point is reached, apparently, if a command is                       * terminated in a strange way, such as with "$\omega$".                       * Also, the command "\&" causes us to get here. The former                       * issue is maybe a little difficult to address, since it                       * involves the LaTeX math mode. We don't have a complete                       * LaTeX parser, so maybe it's better to ignore these                       * commands?                       */
+comment|/*                      * TODO: this point is reached, apparently, if a command is                      * terminated in a strange way, such as with "$\omega$".                      * Also, the command "\&" causes us to get here. The former                      * issue is maybe a little difficult to address, since it                      * involves the LaTeX math mode. We don't have a complete                      * LaTeX parser, so maybe it's better to ignore these                      * commands?                      */
 block|}
 name|incommand
 operator|=
