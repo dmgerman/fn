@@ -16,16 +16,6 @@ end_package
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Optional
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -103,13 +93,10 @@ name|content
 decl_stmt|;
 DECL|field|text
 specifier|private
-name|Optional
-argument_list|<
 name|String
-argument_list|>
 name|text
 decl_stmt|;
-DECL|method|PdfComment (String commentId, String author, String date, int page, String content, Optional<String> text)
+DECL|method|PdfComment (String commentId, String author, String date, int page, String content, String text)
 specifier|public
 name|PdfComment
 parameter_list|(
@@ -128,10 +115,7 @@ parameter_list|,
 name|String
 name|content
 parameter_list|,
-name|Optional
-argument_list|<
 name|String
-argument_list|>
 name|text
 parameter_list|)
 block|{
@@ -164,6 +148,12 @@ operator|.
 name|text
 operator|=
 name|text
+expr_stmt|;
+name|this
+operator|.
+name|commentId
+operator|=
+name|commentId
 expr_stmt|;
 block|}
 DECL|method|PdfComment (PDAnnotation annotation, int page)
@@ -376,10 +366,7 @@ expr_stmt|;
 block|}
 DECL|method|getText ()
 specifier|public
-name|Optional
-argument_list|<
 name|String
-argument_list|>
 name|getText
 parameter_list|()
 block|{
@@ -387,15 +374,12 @@ return|return
 name|text
 return|;
 block|}
-DECL|method|setText (Optional<String> text)
+DECL|method|setText (String text)
 specifier|public
 name|void
 name|setText
 parameter_list|(
-name|Optional
-argument_list|<
 name|String
-argument_list|>
 name|text
 parameter_list|)
 block|{
