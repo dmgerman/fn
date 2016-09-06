@@ -699,6 +699,19 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|isAbbreviationEditableAndRemovable ()
+specifier|public
+name|boolean
+name|isAbbreviationEditableAndRemovable
+parameter_list|()
+block|{
+return|return
+name|isAbbreviationEditableAndRemovable
+operator|.
+name|get
+argument_list|()
+return|;
+block|}
 comment|/**      * This will wrap the built in and ieee abbreviations in pseudo abbreviation files      * and add them to the list of journal abbreviation files.      */
 DECL|method|addBuiltInLists ()
 specifier|public
