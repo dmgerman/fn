@@ -159,7 +159,7 @@ decl_stmt|;
 DECL|method|getMessages ()
 specifier|public
 specifier|static
-name|ResourceBundle
+name|LocalizationBundle
 name|getMessages
 parameter_list|()
 block|{
