@@ -86,28 +86,25 @@ argument_list|)
 block|,
 DECL|enumConstant|BIBTEX
 name|BIBTEX
-argument_list|(
-DECL|enumConstant|Localization.menuTitle
+parameter_list|(
 name|Localization
 operator|.
-name|menuTitle
-argument_list|(
-literal|"BibTeX"
-argument_list|)
-argument_list|)
-block|,
+name|BIBTEX
+parameter_list|)
+operator|,
 DECL|enumConstant|QUALITY
-name|QUALITY
-argument_list|(
+constructor|QUALITY(             Localization.menuTitle("Quality"
 DECL|enumConstant|Localization.menuTitle
-name|Localization
-operator|.
-name|menuTitle
-argument_list|(
-literal|"Quality"
-argument_list|)
-argument_list|)
-block|,
+block|)
+end_enum
+
+begin_operator
+DECL|enumConstant|Localization.menuTitle
+unit|)
+operator|,
+end_operator
+
+begin_expr_stmt
 DECL|enumConstant|TOOLS
 name|TOOLS
 argument_list|(
@@ -119,13 +116,19 @@ argument_list|(
 literal|"Tools"
 argument_list|)
 argument_list|)
-block|;
+expr_stmt|;
+end_expr_stmt
+
+begin_decl_stmt
 DECL|field|name
 specifier|private
 specifier|final
 name|String
 name|name
 decl_stmt|;
+end_decl_stmt
+
+begin_constructor
 DECL|method|KeyBindingCategory (String name)
 specifier|private
 name|KeyBindingCategory
@@ -141,6 +144,9 @@ operator|=
 name|name
 expr_stmt|;
 block|}
+end_constructor
+
+begin_function
 DECL|method|getName ()
 specifier|public
 name|String
@@ -151,8 +157,8 @@ return|return
 name|name
 return|;
 block|}
-block|}
-end_enum
+end_function
 
+unit|}
 end_unit
 

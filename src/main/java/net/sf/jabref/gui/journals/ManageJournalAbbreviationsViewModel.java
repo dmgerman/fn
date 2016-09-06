@@ -236,6 +236,22 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|preferences
 operator|.
 name|JabRefPreferences
@@ -769,7 +785,12 @@ name|AbbreviationsFileViewModel
 argument_list|(
 name|builtInListViewModel
 argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"JabRef built in list"
+argument_list|)
 argument_list|)
 decl_stmt|;
 name|List
@@ -851,7 +872,12 @@ name|AbbreviationsFileViewModel
 argument_list|(
 name|ieeeListViewModel
 argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"IEEE built in list"
+argument_list|)
 argument_list|)
 decl_stmt|;
 name|journalFiles
