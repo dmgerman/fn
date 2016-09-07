@@ -507,13 +507,6 @@ name|cancelButton
 decl_stmt|;
 annotation|@
 name|FXML
-DECL|field|saveButton
-specifier|private
-name|Button
-name|saveButton
-decl_stmt|;
-annotation|@
-name|FXML
 DECL|field|journalFilesBox
 specifier|private
 name|ComboBox
@@ -565,8 +558,13 @@ block|{
 name|super
 argument_list|()
 expr_stmt|;
-comment|// TODO: Uncomment this line; for some reason the LocalizationTests fail then. Fix this.
-comment|//bundle = Localization.getMessages();
+name|bundle
+operator|=
+name|Localization
+operator|.
+name|getMessages
+argument_list|()
+expr_stmt|;
 block|}
 annotation|@
 name|FXML
