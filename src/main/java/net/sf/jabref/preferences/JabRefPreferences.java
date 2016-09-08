@@ -2778,6 +2778,24 @@ name|USE_DEFAULT_CONSOLE_APPLICATION
 init|=
 literal|"useDefaultConsoleApplication"
 decl_stmt|;
+DECL|field|ADOBE_ACROBAT_COMMAND
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|ADOBE_ACROBAT_COMMAND
+init|=
+literal|"adobeAcrobatCommand"
+decl_stmt|;
+DECL|field|SUMATRA_COMMAND
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|SUMATRA_COMMAND
+init|=
+literal|"sumatraCommand"
+decl_stmt|;
 comment|// Currently, it is not possible to specify defaults for specific entry types
 comment|// When this should be made possible, the code to inspect is net.sf.jabref.gui.preftabs.BibtexKeyPatternPrefTab.storeSettings() -> LabelPattern keypatterns = getBibtexKeyPattern(); etc
 DECL|field|DEFAULT_BIBTEX_KEY_PATTERN
@@ -6950,6 +6968,24 @@ argument_list|,
 literal|"C:\\Program Files\\ConEmu\\ConEmu64.exe /single /dir \"%DIR\""
 argument_list|)
 expr_stmt|;
+name|defaults
+operator|.
+name|put
+argument_list|(
+name|ADOBE_ACROBAT_COMMAND
+argument_list|,
+literal|"C:\\Program Files (x86)\\Adobe\\Acrobat Reader DC\\Reader"
+argument_list|)
+expr_stmt|;
+name|defaults
+operator|.
+name|put
+argument_list|(
+name|SUMATRA_COMMAND
+argument_list|,
+literal|"C:\\Program Files\\SumatraPDF"
+argument_list|)
+expr_stmt|;
 block|}
 else|else
 block|{
@@ -6958,6 +6994,24 @@ operator|.
 name|put
 argument_list|(
 name|CONSOLE_COMMAND
+argument_list|,
+literal|""
+argument_list|)
+expr_stmt|;
+name|defaults
+operator|.
+name|put
+argument_list|(
+name|ADOBE_ACROBAT_COMMAND
+argument_list|,
+literal|""
+argument_list|)
+expr_stmt|;
+name|defaults
+operator|.
+name|put
+argument_list|(
+name|SUMATRA_COMMAND
 argument_list|,
 literal|""
 argument_list|)
