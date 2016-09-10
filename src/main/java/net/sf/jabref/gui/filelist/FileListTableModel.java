@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|net.sf.jabref.gui
+DECL|package|net.sf.jabref.gui.filelist
 package|package
 name|net
 operator|.
@@ -9,6 +9,8 @@ operator|.
 name|jabref
 operator|.
 name|gui
+operator|.
+name|filelist
 package|;
 end_package
 
@@ -104,7 +106,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|external
+name|gui
+operator|.
+name|externalfiletype
 operator|.
 name|ExternalFileType
 import|;
@@ -118,7 +122,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|external
+name|gui
+operator|.
+name|externalfiletype
 operator|.
 name|ExternalFileTypes
 import|;
@@ -132,7 +138,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|external
+name|gui
+operator|.
+name|externalfiletype
 operator|.
 name|UnknownExternalFileType
 import|;

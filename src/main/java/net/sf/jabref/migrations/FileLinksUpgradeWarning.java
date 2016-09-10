@@ -18,16 +18,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Arrays
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|List
 import|;
 end_import
@@ -399,8 +389,6 @@ block|,
 name|FieldName
 operator|.
 name|PS
-block|,
-literal|"evastar_pdf"
 block|}
 decl_stmt|;
 DECL|field|offerChangeSettings
@@ -1167,10 +1155,6 @@ name|pr
 operator|.
 name|getDatabase
 argument_list|()
-argument_list|,
-name|FileLinksUpgradeWarning
-operator|.
-name|FIELDS_TO_LOOK_FOR
 argument_list|)
 decl_stmt|;
 name|panel
@@ -1428,7 +1412,7 @@ name|found
 return|;
 block|}
 comment|/**      * Collect file links from the given set of fields, and add them to the list contained in the field      * GUIGlobals.FILE_FIELD.      *      * @param database The database to modify.      * @param fields   The fields to find links in.      * @return A CompoundEdit specifying the undo operation for the whole operation.      */
-DECL|method|upgradePdfPsToFile (BibDatabase database, String[] fields)
+DECL|method|upgradePdfPsToFile (BibDatabase database)
 specifier|private
 specifier|static
 name|NamedCompound
@@ -1436,10 +1420,6 @@ name|upgradePdfPsToFile
 parameter_list|(
 name|BibDatabase
 name|database
-parameter_list|,
-name|String
-index|[]
-name|fields
 parameter_list|)
 block|{
 name|NamedCompound
@@ -1461,14 +1441,7 @@ name|cleanupJob
 init|=
 operator|new
 name|UpgradePdfPsToFileCleanup
-argument_list|(
-name|Arrays
-operator|.
-name|asList
-argument_list|(
-name|fields
-argument_list|)
-argument_list|)
+argument_list|()
 decl_stmt|;
 for|for
 control|(

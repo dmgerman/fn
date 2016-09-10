@@ -206,7 +206,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|external
+name|gui
+operator|.
+name|externalfiles
 operator|.
 name|AutoSetLinks
 import|;
