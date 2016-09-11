@@ -1971,13 +1971,13 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-DECL|method|storeSettings (FileListEntry entry)
+DECL|method|storeSettings (FileListEntry listEntry)
 specifier|private
 name|void
 name|storeSettings
 parameter_list|(
 name|FileListEntry
-name|entry
+name|listEntry
 parameter_list|)
 block|{
 name|String
@@ -1994,7 +1994,7 @@ name|trim
 argument_list|()
 decl_stmt|;
 name|String
-name|link
+name|fileLink
 init|=
 literal|""
 decl_stmt|;
@@ -2027,7 +2027,7 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-name|link
+name|fileLink
 operator|=
 name|this
 operator|.
@@ -2126,7 +2126,7 @@ argument_list|)
 operator|)
 condition|)
 block|{
-name|link
+name|fileLink
 operator|=
 name|fl
 operator|.
@@ -2157,7 +2157,7 @@ operator|!
 name|found
 condition|)
 block|{
-name|link
+name|fileLink
 operator|=
 name|this
 operator|.
@@ -2179,7 +2179,7 @@ name|ex
 parameter_list|)
 block|{
 comment|// Don't think this should happen, but set the file link directly as a fallback:
-name|link
+name|fileLink
 operator|=
 name|this
 operator|.
@@ -2203,13 +2203,13 @@ operator|.
 name|getSelectedItem
 argument_list|()
 decl_stmt|;
-name|entry
+name|listEntry
 operator|.
 name|description
 operator|=
 name|descriptionText
 expr_stmt|;
-name|entry
+name|listEntry
 operator|.
 name|type
 operator|=
@@ -2220,11 +2220,11 @@ argument_list|(
 name|type
 argument_list|)
 expr_stmt|;
-name|entry
+name|listEntry
 operator|.
 name|link
 operator|=
-name|link
+name|fileLink
 expr_stmt|;
 block|}
 DECL|method|okPressed ()

@@ -736,6 +736,11 @@ condition|)
 block|{
 comment|// JOptionPane.showMessageDialog(null, "Received
 comment|// javaFileListFlavor");
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
 name|List
 argument_list|<
 name|File
