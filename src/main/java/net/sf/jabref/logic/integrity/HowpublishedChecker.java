@@ -157,10 +157,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|EditionChecker
+DECL|class|HowpublishedChecker
 specifier|public
 class|class
-name|EditionChecker
+name|HowpublishedChecker
 implements|implements
 name|Checker
 block|{
@@ -184,35 +184,15 @@ operator|.
 name|asPredicate
 argument_list|()
 decl_stmt|;
-DECL|field|ONLY_NUMERALS_OR_LITERALS
-specifier|private
-specifier|static
-specifier|final
-name|Predicate
-argument_list|<
-name|String
-argument_list|>
-name|ONLY_NUMERALS_OR_LITERALS
-init|=
-name|Pattern
-operator|.
-name|compile
-argument_list|(
-literal|"^([0-9]+|[^0-9].+)$"
-argument_list|)
-operator|.
-name|asPredicate
-argument_list|()
-decl_stmt|;
 DECL|field|bibDatabaseContextEdition
 specifier|private
 specifier|final
 name|BibDatabaseContext
 name|bibDatabaseContextEdition
 decl_stmt|;
-DECL|method|EditionChecker (BibDatabaseContext bibDatabaseContext)
+DECL|method|HowpublishedChecker (BibDatabaseContext bibDatabaseContext)
 specifier|public
-name|EditionChecker
+name|HowpublishedChecker
 parameter_list|(
 name|BibDatabaseContext
 name|bibDatabaseContext
@@ -230,7 +210,7 @@ name|bibDatabaseContext
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Checks, if field contains only an integer or a literal (BibLaTeX mode)      * Checks, if the first letter is capitalized (BibTeX mode)      * BibLaTeX package documentation:      * The edition of a printed publication. This must be an integer, not an ordinal.      * It is also possible to give the edition as a literal string, for example "Third, revised and expanded edition".      * Official BibTeX specification:      * The edition of a book-for example, "Second".      * This should be an ordinal, and should have the first letter capitalized.      */
+comment|/**      * BibLaTeX package documentation (Section 4.9.1):      * The BibLaTeX package will automatically capitalize the first word when required at the beginning of a sentence.      * Official BibTeX specification:      * howpublished: How something strange has been published. The first word should be capitalized.      */
 annotation|@
 name|Override
 DECL|method|check (BibEntry entry)
@@ -257,7 +237,7 @@ name|getField
 argument_list|(
 name|FieldName
 operator|.
-name|EDITION
+name|HOWPUBLISHED
 argument_list|)
 decl_stmt|;
 if|if
@@ -274,53 +254,6 @@ name|Collections
 operator|.
 name|emptyList
 argument_list|()
-return|;
-block|}
-comment|//BibLaTeX
-if|if
-condition|(
-name|bibDatabaseContextEdition
-operator|.
-name|isBiblatexMode
-argument_list|()
-operator|&&
-operator|!
-name|ONLY_NUMERALS_OR_LITERALS
-operator|.
-name|test
-argument_list|(
-name|value
-operator|.
-name|get
-argument_list|()
-operator|.
-name|trim
-argument_list|()
-argument_list|)
-condition|)
-block|{
-return|return
-name|Collections
-operator|.
-name|singletonList
-argument_list|(
-operator|new
-name|IntegrityMessage
-argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"should contain an integer or a literal"
-argument_list|)
-argument_list|,
-name|entry
-argument_list|,
-name|FieldName
-operator|.
-name|EDITION
-argument_list|)
-argument_list|)
 return|;
 block|}
 comment|//BibTeX
@@ -366,7 +299,7 @@ name|entry
 argument_list|,
 name|FieldName
 operator|.
-name|EDITION
+name|HOWPUBLISHED
 argument_list|)
 argument_list|)
 return|;
