@@ -39,10 +39,10 @@ block|{
 DECL|enumConstant|FILE
 name|FILE
 argument_list|(
-DECL|enumConstant|Localization.menuTitle
+DECL|enumConstant|Localization.lang
 name|Localization
 operator|.
-name|menuTitle
+name|lang
 argument_list|(
 literal|"File"
 argument_list|)
@@ -51,10 +51,10 @@ block|,
 DECL|enumConstant|EDIT
 name|EDIT
 argument_list|(
-DECL|enumConstant|Localization.menuTitle
+DECL|enumConstant|Localization.lang
 name|Localization
 operator|.
-name|menuTitle
+name|lang
 argument_list|(
 literal|"Edit"
 argument_list|)
@@ -63,10 +63,10 @@ block|,
 DECL|enumConstant|SEARCH
 name|SEARCH
 argument_list|(
-DECL|enumConstant|Localization.menuTitle
+DECL|enumConstant|Localization.lang
 name|Localization
 operator|.
-name|menuTitle
+name|lang
 argument_list|(
 literal|"Search"
 argument_list|)
@@ -75,10 +75,10 @@ block|,
 DECL|enumConstant|VIEW
 name|VIEW
 argument_list|(
-DECL|enumConstant|Localization.menuTitle
+DECL|enumConstant|Localization.lang
 name|Localization
 operator|.
-name|menuTitle
+name|lang
 argument_list|(
 literal|"View"
 argument_list|)
@@ -93,13 +93,13 @@ name|BIBTEX
 parameter_list|)
 operator|,
 DECL|enumConstant|QUALITY
-constructor|QUALITY(             Localization.menuTitle("Quality"
-DECL|enumConstant|Localization.menuTitle
+constructor|QUALITY(             Localization.lang("Quality"
+DECL|enumConstant|Localization.lang
 block|)
 end_enum
 
 begin_operator
-DECL|enumConstant|Localization.menuTitle
+DECL|enumConstant|Localization.lang
 unit|)
 operator|,
 end_operator
@@ -108,10 +108,10 @@ begin_expr_stmt
 DECL|enumConstant|TOOLS
 name|TOOLS
 argument_list|(
-DECL|enumConstant|Localization.menuTitle
+DECL|enumConstant|Localization.lang
 name|Localization
 operator|.
-name|menuTitle
+name|lang
 argument_list|(
 literal|"Tools"
 argument_list|)
