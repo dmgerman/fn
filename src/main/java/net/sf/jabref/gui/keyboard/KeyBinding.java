@@ -86,7 +86,7 @@ argument_list|(
 literal|"Automatically set file links"
 argument_list|)
 argument_list|,
-literal|"alt F"
+literal|"F7"
 argument_list|,
 name|KeyBindingCategory
 operator|.
@@ -124,7 +124,7 @@ argument_list|(
 literal|"Cleanup entries"
 argument_list|)
 argument_list|,
-literal|"ctrl shift F7"
+literal|"F8"
 argument_list|,
 name|KeyBindingCategory
 operator|.
@@ -378,25 +378,6 @@ operator|.
 name|BIBTEX
 argument_list|)
 block|,
-DECL|enumConstant|EDIT_PREAMBLE
-name|EDIT_PREAMBLE
-argument_list|(
-literal|"Edit preamble"
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Edit preamble"
-argument_list|)
-argument_list|,
-literal|"ctrl P"
-argument_list|,
-name|KeyBindingCategory
-operator|.
-name|BIBTEX
-argument_list|)
-block|,
 DECL|enumConstant|EDIT_STRINGS
 name|EDIT_STRINGS
 argument_list|(
@@ -618,7 +599,7 @@ argument_list|(
 literal|"Focus entry table"
 argument_list|)
 argument_list|,
-literal|"ctrl shift E"
+literal|"alt 1"
 argument_list|,
 name|KeyBindingCategory
 operator|.
@@ -661,25 +642,6 @@ argument_list|,
 name|KeyBindingCategory
 operator|.
 name|FILE
-argument_list|)
-block|,
-DECL|enumConstant|HIDE_SHOW_TOOLBAR
-name|HIDE_SHOW_TOOLBAR
-argument_list|(
-literal|"Hide/show toolbar"
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Hide/show toolbar"
-argument_list|)
-argument_list|,
-literal|"ctrl alt T"
-argument_list|,
-name|KeyBindingCategory
-operator|.
-name|VIEW
 argument_list|)
 block|,
 DECL|enumConstant|IMPORT_INTO_CURRENT_DATABASE
@@ -979,7 +941,7 @@ argument_list|(
 literal|"Open terminal here"
 argument_list|)
 argument_list|,
-literal|"ctrl shift J"
+literal|"ctrl shift L"
 argument_list|,
 name|KeyBindingCategory
 operator|.
@@ -1136,25 +1098,6 @@ argument_list|,
 name|KeyBindingCategory
 operator|.
 name|VIEW
-argument_list|)
-block|,
-DECL|enumConstant|PRINT_ENTRY_PREVIEW
-name|PRINT_ENTRY_PREVIEW
-argument_list|(
-literal|"Print entry preview"
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Print entry preview"
-argument_list|)
-argument_list|,
-literal|"alt P"
-argument_list|,
-name|KeyBindingCategory
-operator|.
-name|FILE
 argument_list|)
 block|,
 DECL|enumConstant|PUSH_TO_APPLICATION
@@ -1435,7 +1378,7 @@ argument_list|(
 literal|"Synchronize files"
 argument_list|)
 argument_list|,
-literal|"ctrl F4"
+literal|"shift F7"
 argument_list|,
 name|KeyBindingCategory
 operator|.
@@ -1454,7 +1397,7 @@ argument_list|(
 literal|"Toggle entry preview"
 argument_list|)
 argument_list|,
-literal|"ctrl F9"
+literal|"alt 2"
 argument_list|,
 name|KeyBindingCategory
 operator|.
@@ -1473,7 +1416,7 @@ argument_list|(
 literal|"Toggle groups interface"
 argument_list|)
 argument_list|,
-literal|"ctrl shift G"
+literal|"alt 3"
 argument_list|,
 name|KeyBindingCategory
 operator|.
@@ -1549,7 +1492,7 @@ argument_list|(
 literal|"Web search"
 argument_list|)
 argument_list|,
-literal|"F5"
+literal|"alt 4"
 argument_list|,
 name|KeyBindingCategory
 operator|.
@@ -1568,7 +1511,7 @@ argument_list|(
 literal|"Write XMP"
 argument_list|)
 argument_list|,
-literal|"ctrl F7"
+literal|"F6"
 argument_list|,
 name|KeyBindingCategory
 operator|.
