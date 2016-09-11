@@ -1362,13 +1362,48 @@ name|IOException
 name|ex
 parameter_list|)
 block|{
-name|LOGGER
+name|String
+name|content
+init|=
+name|String
 operator|.
-name|warn
+name|format
 argument_list|(
-literal|"Problem downloading file"
+literal|"%s %n %s"
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Error message:"
+argument_list|)
 argument_list|,
 name|ex
+operator|.
+name|getLocalizedMessage
+argument_list|()
+argument_list|)
+decl_stmt|;
+name|JOptionPane
+operator|.
+name|showMessageDialog
+argument_list|(
+name|this
+operator|.
+name|frame
+argument_list|,
+name|content
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Error while writing"
+argument_list|)
+argument_list|,
+name|JOptionPane
+operator|.
+name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
 block|}
