@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|net.sf.jabref.external
+DECL|package|net.sf.jabref.gui.externalfiletype
 package|package
 name|net
 operator|.
@@ -8,7 +8,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|external
+name|gui
+operator|.
+name|externalfiletype
 package|;
 end_package
 
@@ -1850,22 +1852,13 @@ expr_stmt|;
 block|}
 block|}
 comment|// Finally, build the list of types based on the modified defaults list:
-for|for
-control|(
-name|ExternalFileType
-name|type
-range|:
-name|types
-control|)
-block|{
 name|externalFileTypes
 operator|.
-name|add
+name|addAll
 argument_list|(
-name|type
+name|types
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 end_class

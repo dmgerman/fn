@@ -1302,10 +1302,14 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 name|BibDatabaseWriter
+argument_list|<
+name|SaveSession
+argument_list|>
 name|databaseWriter
 init|=
 operator|new
 name|BibtexDatabaseWriter
+argument_list|<>
 argument_list|(
 name|FileSaveSession
 operator|::

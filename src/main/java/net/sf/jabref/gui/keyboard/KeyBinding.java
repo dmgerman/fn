@@ -74,6 +74,25 @@ operator|.
 name|QUALITY
 argument_list|)
 block|,
+DECL|enumConstant|ACCEPT
+name|ACCEPT
+argument_list|(
+literal|"Accept"
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Accept"
+argument_list|)
+argument_list|,
+literal|"ctrl ENTER"
+argument_list|,
+name|KeyBindingCategory
+operator|.
+name|EDIT
+argument_list|)
+block|,
 DECL|enumConstant|AUTOMATICALLY_LINK_FILES
 name|AUTOMATICALLY_LINK_FILES
 argument_list|(
@@ -623,6 +642,25 @@ argument_list|,
 name|KeyBindingCategory
 operator|.
 name|VIEW
+argument_list|)
+block|,
+DECL|enumConstant|GLOBAL_SEARCH
+name|GLOBAL_SEARCH
+argument_list|(
+literal|"Search globally"
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Search globally"
+argument_list|)
+argument_list|,
+literal|"ctrl shift F"
+argument_list|,
+name|KeyBindingCategory
+operator|.
+name|SEARCH
 argument_list|)
 block|,
 DECL|enumConstant|HELP
@@ -1378,7 +1416,7 @@ argument_list|(
 literal|"Synchronize files"
 argument_list|)
 argument_list|,
-literal|"shift F7"
+literal|"ctrl shift F7"
 argument_list|,
 name|KeyBindingCategory
 operator|.

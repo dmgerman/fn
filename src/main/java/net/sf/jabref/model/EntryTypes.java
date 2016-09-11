@@ -18,6 +18,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Arrays
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Collection
 import|;
 end_import
@@ -224,7 +234,7 @@ specifier|final
 name|EntryType
 name|defaultType
 decl_stmt|;
-DECL|method|InternalEntryTypes (EntryType defaultType, List<EntryType>... entryTypes)
+DECL|method|InternalEntryTypes (EntryType defaultType, List<List<EntryType>> entryTypes)
 specifier|public
 name|InternalEntryTypes
 parameter_list|(
@@ -233,9 +243,11 @@ name|defaultType
 parameter_list|,
 name|List
 argument_list|<
+name|List
+argument_list|<
 name|EntryType
 argument_list|>
-modifier|...
+argument_list|>
 name|entryTypes
 parameter_list|)
 block|{
@@ -517,6 +529,10 @@ name|BibtexEntryTypes
 operator|.
 name|MISC
 argument_list|,
+name|Arrays
+operator|.
+name|asList
+argument_list|(
 name|BibtexEntryTypes
 operator|.
 name|ALL
@@ -524,6 +540,7 @@ argument_list|,
 name|IEEETranEntryTypes
 operator|.
 name|ALL
+argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|BIBLATEX
@@ -540,9 +557,14 @@ name|BibLatexEntryTypes
 operator|.
 name|MISC
 argument_list|,
+name|Arrays
+operator|.
+name|asList
+argument_list|(
 name|BibLatexEntryTypes
 operator|.
 name|ALL
+argument_list|)
 argument_list|)
 decl_stmt|;
 comment|/**      * This method returns the BibtexEntryType for the name of a type,      * or null if it does not exist.      */
