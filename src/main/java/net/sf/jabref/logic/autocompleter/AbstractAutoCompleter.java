@@ -94,6 +94,24 @@ name|TreeSet
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|layout
+operator|.
+name|format
+operator|.
+name|LatexToUnicodeFormatter
+import|;
+end_import
+
 begin_comment
 comment|/**  * Delivers possible completions for a given string.  *  * @author kahlert, cordes, olly98  * @see AutoCompleterFactory  */
 end_comment
@@ -474,6 +492,17 @@ condition|)
 block|{
 return|return;
 block|}
+name|word
+operator|=
+operator|new
+name|LatexToUnicodeFormatter
+argument_list|()
+operator|.
+name|format
+argument_list|(
+name|word
+argument_list|)
+expr_stmt|;
 name|indexCaseSensitive
 operator|.
 name|add

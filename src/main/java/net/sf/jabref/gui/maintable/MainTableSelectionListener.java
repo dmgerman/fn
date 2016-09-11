@@ -816,7 +816,10 @@ block|}
 expr_stmt|;
 name|panel
 operator|.
-name|getSearchBar
+name|frame
+argument_list|()
+operator|.
+name|getGlobalSearchBar
 argument_list|()
 operator|.
 name|getSearchQueryHighlightObservable
@@ -829,14 +832,6 @@ index|[
 literal|0
 index|]
 argument_list|)
-expr_stmt|;
-name|panel
-operator|.
-name|getSearchBar
-argument_list|()
-operator|.
-name|getSearchQueryHighlightObservable
-argument_list|()
 operator|.
 name|addSearchListener
 argument_list|(
