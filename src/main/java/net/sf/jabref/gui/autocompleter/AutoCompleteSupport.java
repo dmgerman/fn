@@ -1173,6 +1173,23 @@ operator|=
 name|autoCompleter
 expr_stmt|;
 block|}
+DECL|method|setVisible (boolean visible)
+specifier|public
+name|void
+name|setVisible
+parameter_list|(
+name|boolean
+name|visible
+parameter_list|)
+block|{
+name|popup
+operator|.
+name|setVisible
+argument_list|(
+name|visible
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_class
 

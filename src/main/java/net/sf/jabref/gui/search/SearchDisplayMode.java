@@ -35,12 +35,13 @@ comment|/**  * Collects the possible search modes  */
 end_comment
 
 begin_enum
-DECL|enum|SearchMode
+DECL|enum|SearchDisplayMode
 specifier|public
 enum|enum
-name|SearchMode
+name|SearchDisplayMode
 block|{
 DECL|enumConstant|FLOAT
+DECL|enumConstant|Localization.lang
 DECL|enumConstant|Localization.lang
 name|FLOAT
 argument_list|(
@@ -51,7 +52,6 @@ argument_list|(
 literal|"Float"
 argument_list|)
 argument_list|,
-DECL|enumConstant|Localization.lang
 name|Localization
 operator|.
 name|lang
@@ -62,6 +62,7 @@ argument_list|)
 block|,
 DECL|enumConstant|FILTER
 DECL|enumConstant|Localization.lang
+DECL|enumConstant|Localization.lang
 name|FILTER
 argument_list|(
 name|Localization
@@ -71,7 +72,6 @@ argument_list|(
 literal|"Filter"
 argument_list|)
 argument_list|,
-DECL|enumConstant|Localization.lang
 name|Localization
 operator|.
 name|lang
@@ -92,8 +92,8 @@ specifier|final
 name|String
 name|toolTipText
 decl_stmt|;
-DECL|method|SearchMode (String displayName, String toolTipText)
-name|SearchMode
+DECL|method|SearchDisplayMode (String displayName, String toolTipText)
+name|SearchDisplayMode
 parameter_list|(
 name|String
 name|displayName

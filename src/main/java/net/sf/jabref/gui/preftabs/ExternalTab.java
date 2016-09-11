@@ -174,9 +174,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|external
+name|gui
 operator|.
-name|ExternalFileTypeEditor
+name|JabRefFrame
 import|;
 end_import
 
@@ -190,7 +190,9 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|JabRefFrame
+name|externalfiletype
+operator|.
+name|ExternalFileTypeEditor
 import|;
 end_import
 

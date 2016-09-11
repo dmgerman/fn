@@ -110,9 +110,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|external
+name|gui
 operator|.
-name|AutoSetLinks
+name|IconTheme
 import|;
 end_import
 
@@ -126,7 +126,9 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|IconTheme
+name|externalfiles
+operator|.
+name|AutoSetLinks
 import|;
 end_import
 

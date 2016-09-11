@@ -66,7 +66,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|external
+name|gui
+operator|.
+name|externalfiletype
 operator|.
 name|ExternalFileType
 import|;
@@ -80,7 +82,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|external
+name|gui
+operator|.
+name|externalfiletype
 operator|.
 name|ExternalFileTypes
 import|;

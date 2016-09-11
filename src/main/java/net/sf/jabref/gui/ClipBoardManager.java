@@ -481,8 +481,17 @@ block|{
 comment|// We have determined that the clipboard data is a set of entries.
 try|try
 block|{
-name|result
-operator|=
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
+name|List
+argument_list|<
+name|BibEntry
+argument_list|>
+name|contents
+init|=
 operator|(
 name|List
 argument_list|<
@@ -497,6 +506,10 @@ name|TransferableBibtexEntry
 operator|.
 name|entryFlavor
 argument_list|)
+decl_stmt|;
+name|result
+operator|=
+name|contents
 expr_stmt|;
 block|}
 catch|catch
