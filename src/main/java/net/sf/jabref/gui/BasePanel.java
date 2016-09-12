@@ -11122,6 +11122,41 @@ expr_stmt|;
 block|}
 end_function
 
+begin_function
+DECL|method|selectFirstEntry ()
+specifier|public
+name|void
+name|selectFirstEntry
+parameter_list|()
+block|{
+name|highlightEntry
+argument_list|(
+literal|0
+argument_list|)
+expr_stmt|;
+block|}
+end_function
+
+begin_function
+DECL|method|selectLastEntry ()
+specifier|public
+name|void
+name|selectLastEntry
+parameter_list|()
+block|{
+name|highlightEntry
+argument_list|(
+name|mainTable
+operator|.
+name|getRowCount
+argument_list|()
+operator|-
+literal|1
+argument_list|)
+expr_stmt|;
+block|}
+end_function
+
 begin_comment
 comment|/**      * This method is called from an EntryEditor when it should be closed. We relay to the selection listener, which      * takes care of the rest.      *      * @param editor The entry editor to close.      */
 end_comment
