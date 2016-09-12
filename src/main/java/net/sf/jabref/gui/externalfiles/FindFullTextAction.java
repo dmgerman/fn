@@ -671,7 +671,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"External programs"
+literal|"File"
 argument_list|)
 argument_list|,
 name|Localization
