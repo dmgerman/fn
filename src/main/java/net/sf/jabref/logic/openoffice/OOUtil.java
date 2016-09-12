@@ -445,7 +445,7 @@ name|oldUniqVal
 init|=
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|UNIQUEFIER_FIELD
 argument_list|)

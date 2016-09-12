@@ -340,22 +340,6 @@ name|logic
 operator|.
 name|journals
 operator|.
-name|JournalAbbreviationPreferences
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
-name|journals
-operator|.
 name|JournalAbbreviationRepository
 import|;
 end_import
@@ -502,7 +486,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|FieldProperties
+name|FieldProperty
 import|;
 end_import
 
@@ -760,14 +744,12 @@ name|journalAbbreviationLoader
 operator|.
 name|getRepository
 argument_list|(
-name|JournalAbbreviationPreferences
-operator|.
-name|fromPreferences
-argument_list|(
 name|Globals
 operator|.
 name|prefs
-argument_list|)
+operator|.
+name|getJournalAbbreviationPreferences
+argument_list|()
 argument_list|)
 decl_stmt|;
 if|if
@@ -2339,7 +2321,7 @@ literal|false
 argument_list|,
 name|InternalBibtexFields
 operator|.
-name|getFieldExtras
+name|getFieldProperties
 argument_list|(
 name|editor
 operator|.
@@ -2349,7 +2331,7 @@ argument_list|)
 operator|.
 name|contains
 argument_list|(
-name|FieldProperties
+name|FieldProperty
 operator|.
 name|PERSON_NAMES
 argument_list|)

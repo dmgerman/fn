@@ -16,6 +16,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|junit
@@ -2144,7 +2154,12 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
+name|Optional
+operator|.
+name|of
+argument_list|(
 literal|"John"
+argument_list|)
 argument_list|,
 name|author
 operator|.
@@ -2156,7 +2171,12 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
+name|Optional
+operator|.
+name|of
+argument_list|(
 literal|"J."
+argument_list|)
 argument_list|,
 name|author
 operator|.
@@ -2196,7 +2216,10 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-literal|null
+name|Optional
+operator|.
+name|empty
+argument_list|()
 argument_list|,
 name|author
 operator|.
@@ -2208,7 +2231,12 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
+name|Optional
+operator|.
+name|of
+argument_list|(
 literal|"Smith"
+argument_list|)
 argument_list|,
 name|author
 operator|.
@@ -2272,7 +2300,10 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-literal|null
+name|Optional
+operator|.
+name|empty
+argument_list|()
 argument_list|,
 name|author
 operator|.
@@ -2298,7 +2329,12 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
+name|Optional
+operator|.
+name|of
+argument_list|(
 literal|"Peter Black"
+argument_list|)
 argument_list|,
 name|author
 operator|.
@@ -2310,7 +2346,12 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
+name|Optional
+operator|.
+name|of
+argument_list|(
 literal|"P. B."
+argument_list|)
 argument_list|,
 name|author
 operator|.
@@ -2350,7 +2391,10 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-literal|null
+name|Optional
+operator|.
+name|empty
+argument_list|()
 argument_list|,
 name|author
 operator|.
@@ -2362,7 +2406,10 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-literal|null
+name|Optional
+operator|.
+name|empty
+argument_list|()
 argument_list|,
 name|author
 operator|.
@@ -2388,7 +2435,12 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
+name|Optional
+operator|.
+name|of
+argument_list|(
 literal|"John"
+argument_list|)
 argument_list|,
 name|author
 operator|.
@@ -2400,7 +2452,12 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
+name|Optional
+operator|.
+name|of
+argument_list|(
 literal|"J."
+argument_list|)
 argument_list|,
 name|author
 operator|.
@@ -2440,7 +2497,12 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
+name|Optional
+operator|.
+name|of
+argument_list|(
 literal|"Jr"
+argument_list|)
 argument_list|,
 name|author
 operator|.
@@ -2452,7 +2514,12 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
+name|Optional
+operator|.
+name|of
+argument_list|(
 literal|"Neumann"
+argument_list|)
 argument_list|,
 name|author
 operator|.
@@ -2516,7 +2583,12 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
+name|Optional
+operator|.
+name|of
+argument_list|(
 literal|"von"
+argument_list|)
 argument_list|,
 name|author
 operator|.
@@ -4216,7 +4288,12 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
+name|Optional
+operator|.
+name|of
+argument_list|(
 literal|"J. G."
+argument_list|)
 argument_list|,
 name|AuthorList
 operator|.

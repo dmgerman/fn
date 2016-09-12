@@ -138,22 +138,6 @@ name|ProtectedTermsList
 import|;
 end_import
 
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
-name|protectedterms
-operator|.
-name|ProtectedTermsPreferences
-import|;
-end_import
-
 begin_class
 DECL|class|ProtectedTermsMenu
 specifier|public
@@ -171,7 +155,11 @@ name|formatter
 init|=
 operator|new
 name|ProtectTermsFormatter
-argument_list|()
+argument_list|(
+name|Globals
+operator|.
+name|protectedTermsLoader
+argument_list|)
 decl_stmt|;
 DECL|field|externalFiles
 specifier|private
@@ -502,14 +490,12 @@ argument_list|()
 condition|)
 block|{
 comment|// Update preferences with new list
-name|ProtectedTermsPreferences
-operator|.
-name|toPreferences
-argument_list|(
 name|Globals
 operator|.
 name|prefs
-argument_list|,
+operator|.
+name|setProtectedTermsPreferences
+argument_list|(
 name|Globals
 operator|.
 name|protectedTermsLoader

@@ -124,24 +124,6 @@ name|NameFormatter
 operator|.
 name|DEFAULT_FORMAT
 decl_stmt|;
-DECL|field|NAME_FORMATER_KEY
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|NAME_FORMATER_KEY
-init|=
-literal|"nameFormatterNames"
-decl_stmt|;
-DECL|field|NAME_FORMATTER_VALUE
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|NAME_FORMATTER_VALUE
-init|=
-literal|"nameFormatterFormats"
-decl_stmt|;
 DECL|method|format (String toFormat, AuthorList al, String[] formats)
 specifier|private
 specifier|static

@@ -362,22 +362,6 @@ name|logic
 operator|.
 name|importer
 operator|.
-name|ImportFormatPreferences
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
-name|importer
-operator|.
 name|ImportInspector
 import|;
 end_import
@@ -1439,7 +1423,7 @@ block|{
 comment|// Convert from HTML and optionally add curly brackets around key words to keep the case
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -1542,7 +1526,7 @@ argument_list|)
 expr_stmt|;
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -2310,14 +2294,12 @@ name|parse
 argument_list|(
 name|in
 argument_list|,
-name|ImportFormatPreferences
-operator|.
-name|fromPreferences
-argument_list|(
 name|Globals
 operator|.
 name|prefs
-argument_list|)
+operator|.
+name|getImportFormatPreferences
+argument_list|()
 argument_list|)
 operator|.
 name|getDatabase
@@ -2701,8 +2683,6 @@ argument_list|)
 throw|;
 block|}
 block|}
-else|else
-block|{
 name|LOGGER
 operator|.
 name|info
@@ -2712,7 +2692,6 @@ operator|+
 name|substring
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 throw|throw
 operator|new

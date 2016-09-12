@@ -306,22 +306,6 @@ name|logic
 operator|.
 name|importer
 operator|.
-name|ImportFormatPreferences
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
-name|importer
-operator|.
 name|ImportInspector
 import|;
 end_import
@@ -373,22 +357,6 @@ operator|.
 name|journals
 operator|.
 name|JournalAbbreviationLoader
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
-name|journals
-operator|.
-name|JournalAbbreviationPreferences
 import|;
 end_import
 
@@ -1148,14 +1116,12 @@ name|fromString
 argument_list|(
 name|bibtexPage
 argument_list|,
-name|ImportFormatPreferences
-operator|.
-name|fromPreferences
-argument_list|(
 name|Globals
 operator|.
 name|prefs
-argument_list|)
+operator|.
+name|getImportFormatPreferences
+argument_list|()
 argument_list|)
 decl_stmt|;
 if|if
@@ -1637,7 +1603,7 @@ block|}
 comment|// clean up title
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -1834,7 +1800,7 @@ expr_stmt|;
 comment|// clean up author
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -1989,7 +1955,7 @@ expr_stmt|;
 comment|// clean up month
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -2400,7 +2366,7 @@ end_comment
 begin_expr_stmt
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -2577,7 +2543,7 @@ name|fullName
 init|=
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|sourceField
 argument_list|)
@@ -2700,7 +2666,7 @@ expr_stmt|;
 block|}
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -3072,14 +3038,12 @@ name|abbreviationLoader
 operator|.
 name|getRepository
 argument_list|(
-name|JournalAbbreviationPreferences
-operator|.
-name|fromPreferences
-argument_list|(
 name|Globals
 operator|.
 name|prefs
-argument_list|)
+operator|.
+name|getJournalAbbreviationPreferences
+argument_list|()
 argument_list|)
 operator|.
 name|getMedlineAbbreviation
@@ -3312,7 +3276,7 @@ name|year
 init|=
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -3403,7 +3367,7 @@ end_comment
 begin_expr_stmt
 unit|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -3544,7 +3508,7 @@ end_comment
 begin_expr_stmt
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -3585,7 +3549,7 @@ end_comment
 begin_expr_stmt
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.

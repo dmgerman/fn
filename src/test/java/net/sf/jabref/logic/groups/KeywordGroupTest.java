@@ -50,20 +50,6 @@ end_import
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|preferences
-operator|.
-name|JabRefPreferences
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|junit
@@ -132,10 +118,7 @@ name|GroupHierarchyType
 operator|.
 name|INDEPENDENT
 argument_list|,
-name|JabRefPreferences
-operator|.
-name|getInstance
-argument_list|()
+literal|", "
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -179,10 +162,7 @@ name|GroupHierarchyType
 operator|.
 name|REFINING
 argument_list|,
-name|JabRefPreferences
-operator|.
-name|getInstance
-argument_list|()
+literal|", "
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -226,10 +206,7 @@ name|GroupHierarchyType
 operator|.
 name|INDEPENDENT
 argument_list|,
-name|JabRefPreferences
-operator|.
-name|getInstance
-argument_list|()
+literal|", "
 argument_list|)
 decl_stmt|;
 name|BibEntry
@@ -287,10 +264,7 @@ name|GroupHierarchyType
 operator|.
 name|INDEPENDENT
 argument_list|,
-name|JabRefPreferences
-operator|.
-name|getInstance
-argument_list|()
+literal|", "
 argument_list|)
 decl_stmt|;
 name|BibEntry
@@ -348,10 +322,7 @@ name|GroupHierarchyType
 operator|.
 name|INDEPENDENT
 argument_list|,
-name|JabRefPreferences
-operator|.
-name|getInstance
-argument_list|()
+literal|", "
 argument_list|)
 decl_stmt|;
 name|BibEntry
@@ -409,10 +380,7 @@ name|GroupHierarchyType
 operator|.
 name|INDEPENDENT
 argument_list|,
-name|JabRefPreferences
-operator|.
-name|getInstance
-argument_list|()
+literal|", "
 argument_list|)
 decl_stmt|;
 name|BibEntry
@@ -470,10 +438,7 @@ name|GroupHierarchyType
 operator|.
 name|INDEPENDENT
 argument_list|,
-name|JabRefPreferences
-operator|.
-name|getInstance
-argument_list|()
+literal|", "
 argument_list|)
 decl_stmt|;
 name|BibEntry
@@ -531,10 +496,7 @@ name|GroupHierarchyType
 operator|.
 name|INDEPENDENT
 argument_list|,
-name|JabRefPreferences
-operator|.
-name|getInstance
-argument_list|()
+literal|", "
 argument_list|)
 decl_stmt|;
 name|BibEntry
@@ -592,10 +554,7 @@ name|GroupHierarchyType
 operator|.
 name|INDEPENDENT
 argument_list|,
-name|JabRefPreferences
-operator|.
-name|getInstance
-argument_list|()
+literal|", "
 argument_list|)
 decl_stmt|;
 name|BibEntry

@@ -816,32 +816,6 @@ return|return
 name|result
 return|;
 block|}
-DECL|method|loadWithAutomaticDecryption (Path filePath)
-specifier|public
-specifier|static
-name|PDDocument
-name|loadWithAutomaticDecryption
-parameter_list|(
-name|Path
-name|filePath
-parameter_list|)
-throws|throws
-name|IOException
-block|{
-return|return
-name|loadWithAutomaticDecryption
-argument_list|(
-operator|new
-name|FileInputStream
-argument_list|(
-name|filePath
-operator|.
-name|toFile
-argument_list|()
-argument_list|)
-argument_list|)
-return|;
-block|}
 DECL|method|loadWithAutomaticDecryption (InputStream inputStream)
 specifier|public
 specifier|static

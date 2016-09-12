@@ -1406,7 +1406,7 @@ name|txt
 init|=
 name|be
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|fieldname
 argument_list|)

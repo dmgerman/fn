@@ -1726,7 +1726,9 @@ name|fields
 operator|.
 name|put
 argument_list|(
-literal|"pmid"
+name|FieldName
+operator|.
+name|PMID
 argument_list|,
 name|bookDocument
 operator|.
@@ -2875,7 +2877,9 @@ name|fields
 operator|.
 name|put
 argument_list|(
-literal|"pmid"
+name|FieldName
+operator|.
+name|PMID
 argument_list|,
 name|medlineCitation
 operator|.

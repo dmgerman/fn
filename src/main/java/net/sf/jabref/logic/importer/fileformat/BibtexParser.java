@@ -380,7 +380,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|FieldProperties
+name|FieldProperty
 import|;
 end_import
 
@@ -1006,6 +1006,11 @@ operator|.
 name|parse
 argument_list|(
 name|meta
+argument_list|,
+name|importFormatPreferences
+operator|.
+name|getKeywordSeparator
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1116,7 +1121,7 @@ name|duplicateKey
 init|=
 name|database
 operator|.
-name|insertEntry
+name|insertEntryWithDuplicationCheck
 argument_list|(
 name|entry
 argument_list|)
@@ -2592,14 +2597,14 @@ if|if
 condition|(
 name|InternalBibtexFields
 operator|.
-name|getFieldExtras
+name|getFieldProperties
 argument_list|(
 name|key
 argument_list|)
 operator|.
 name|contains
 argument_list|(
-name|FieldProperties
+name|FieldProperty
 operator|.
 name|PERSON_NAMES
 argument_list|)
@@ -2613,7 +2618,7 @@ name|key
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|key
 argument_list|)

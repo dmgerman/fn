@@ -152,20 +152,6 @@ end_import
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|preferences
-operator|.
-name|JabRefPreferences
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -243,7 +229,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|method|ExplicitGroup (String name, GroupHierarchyType context, JabRefPreferences jabRefPreferences)
+DECL|method|ExplicitGroup (String name, GroupHierarchyType context, String keywordSeparator)
 specifier|public
 name|ExplicitGroup
 parameter_list|(
@@ -253,8 +239,8 @@ parameter_list|,
 name|GroupHierarchyType
 name|context
 parameter_list|,
-name|JabRefPreferences
-name|jabRefPreferences
+name|String
+name|keywordSeparator
 parameter_list|)
 throws|throws
 name|ParseException
@@ -275,11 +261,11 @@ literal|false
 argument_list|,
 name|context
 argument_list|,
-name|jabRefPreferences
+name|keywordSeparator
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|fromString (String s, JabRefPreferences jabRefPreferences)
+DECL|method|fromString (String s, String keywordSeparator)
 specifier|public
 specifier|static
 name|ExplicitGroup
@@ -288,8 +274,8 @@ parameter_list|(
 name|String
 name|s
 parameter_list|,
-name|JabRefPreferences
-name|jabRefPreferences
+name|String
+name|keywordSeparator
 parameter_list|)
 throws|throws
 name|ParseException
@@ -382,7 +368,7 @@ argument_list|(
 name|context
 argument_list|)
 argument_list|,
-name|jabRefPreferences
+name|keywordSeparator
 argument_list|)
 decl_stmt|;
 name|newGroup
@@ -479,7 +465,7 @@ argument_list|,
 name|getContext
 argument_list|()
 argument_list|,
-name|jabRefPreferences
+name|keywordSeparator
 argument_list|)
 decl_stmt|;
 name|copy

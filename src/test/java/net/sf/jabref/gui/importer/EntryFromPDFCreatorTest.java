@@ -358,7 +358,7 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"file"
 argument_list|)
@@ -393,7 +393,7 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"title"
 argument_list|)

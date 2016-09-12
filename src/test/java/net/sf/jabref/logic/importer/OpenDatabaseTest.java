@@ -108,18 +108,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|model
 operator|.
 name|database
@@ -175,16 +163,6 @@ operator|.
 name|junit
 operator|.
 name|Before
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|BeforeClass
 import|;
 end_import
 
@@ -368,26 +346,6 @@ argument_list|()
 expr_stmt|;
 block|}
 annotation|@
-name|BeforeClass
-DECL|method|setUpGlobalsPrefs ()
-specifier|public
-specifier|static
-name|void
-name|setUpGlobalsPrefs
-parameter_list|()
-block|{
-comment|// otherwise FieldContentParser (called by BibtexParser) and SpecialFields crashes
-name|Globals
-operator|.
-name|prefs
-operator|=
-name|JabRefPreferences
-operator|.
-name|getInstance
-argument_list|()
-expr_stmt|;
-block|}
-annotation|@
 name|Before
 DECL|method|setUp ()
 specifier|public
@@ -397,15 +355,13 @@ parameter_list|()
 block|{
 name|importFormatPreferences
 operator|=
-name|ImportFormatPreferences
-operator|.
-name|fromPreferences
-argument_list|(
 name|JabRefPreferences
 operator|.
 name|getInstance
 argument_list|()
-argument_list|)
+operator|.
+name|getImportFormatPreferences
+argument_list|()
 expr_stmt|;
 block|}
 annotation|@
@@ -650,7 +606,7 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"year"
 argument_list|)
@@ -721,7 +677,7 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"year"
 argument_list|)
@@ -792,7 +748,7 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"year"
 argument_list|)
@@ -854,7 +810,12 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
+name|Optional
+operator|.
+name|of
+argument_list|(
 literal|"testPreamble"
+argument_list|)
 argument_list|,
 name|db
 operator|.

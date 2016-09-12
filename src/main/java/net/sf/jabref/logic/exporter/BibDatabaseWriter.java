@@ -1119,6 +1119,11 @@ argument_list|()
 operator|.
 name|getPreamble
 argument_list|()
+operator|.
+name|orElse
+argument_list|(
+literal|""
+argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Write strings if there are any.

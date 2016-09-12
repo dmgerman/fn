@@ -110,20 +110,6 @@ name|BibEntry
 import|;
 end_import
 
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|preferences
-operator|.
-name|JabRefPreferences
-import|;
-end_import
-
 begin_comment
 comment|/**  * A group of BibtexEntries.  */
 end_comment
@@ -196,7 +182,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Re-create a group instance from a textual representation.      *      * @param s The result from the group's toString() method.      * @return New instance of the encoded group.      * @throws ParseException If an error occurred and a group could not be created,      *                        e.g. due to a malformed regular expression.      */
-DECL|method|fromString (String s, JabRefPreferences jabRefPreferences)
+DECL|method|fromString (String s, String keywordSeparator)
 specifier|public
 specifier|static
 name|AbstractGroup
@@ -205,8 +191,8 @@ parameter_list|(
 name|String
 name|s
 parameter_list|,
-name|JabRefPreferences
-name|jabRefPreferences
+name|String
+name|keywordSeparator
 parameter_list|)
 throws|throws
 name|ParseException
@@ -230,7 +216,7 @@ name|fromString
 argument_list|(
 name|s
 argument_list|,
-name|jabRefPreferences
+name|keywordSeparator
 argument_list|)
 return|;
 block|}
@@ -295,7 +281,7 @@ name|fromString
 argument_list|(
 name|s
 argument_list|,
-name|jabRefPreferences
+name|keywordSeparator
 argument_list|)
 return|;
 block|}

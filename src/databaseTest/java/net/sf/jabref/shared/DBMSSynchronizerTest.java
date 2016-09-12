@@ -102,18 +102,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|MetaData
 import|;
 end_import
@@ -163,20 +151,6 @@ operator|.
 name|entry
 operator|.
 name|BibEntry
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|preferences
-operator|.
-name|JabRefPreferences
 import|;
 end_import
 
@@ -374,15 +348,6 @@ name|SQLException
 throws|,
 name|DatabaseNotSupportedException
 block|{
-name|Globals
-operator|.
-name|prefs
-operator|=
-name|JabRefPreferences
-operator|.
-name|getInstance
-argument_list|()
-expr_stmt|;
 name|connection
 operator|=
 name|TestConnector
@@ -413,6 +378,8 @@ operator|new
 name|DBMSSynchronizer
 argument_list|(
 name|context
+argument_list|,
+literal|", "
 argument_list|)
 expr_stmt|;
 name|dbmsProcessor
@@ -631,7 +598,7 @@ name|assertEquals
 argument_list|(
 name|expectedEntry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"author"
 argument_list|)
@@ -643,7 +610,7 @@ argument_list|(
 literal|0
 argument_list|)
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"author"
 argument_list|)
@@ -662,7 +629,7 @@ argument_list|(
 literal|0
 argument_list|)
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"title"
 argument_list|)
@@ -1237,7 +1204,7 @@ literal|"wirthlin, michael j1"
 argument_list|,
 name|bibEntry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"author"
 argument_list|)

@@ -44,18 +44,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|gui
 operator|.
 name|BasePanel
@@ -160,20 +148,6 @@ end_import
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|preferences
-operator|.
-name|JabRefPreferences
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|junit
@@ -264,15 +238,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|Globals
-operator|.
-name|prefs
-operator|=
-name|JabRefPreferences
-operator|.
-name|getInstance
-argument_list|()
-expr_stmt|;
 name|action
 operator|=
 operator|new
@@ -303,9 +268,7 @@ name|GroupHierarchyType
 operator|.
 name|INCLUDING
 argument_list|,
-name|Globals
-operator|.
-name|prefs
+literal|", "
 argument_list|)
 expr_stmt|;
 name|group
@@ -361,7 +324,7 @@ argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"groups"
 argument_list|)
@@ -451,9 +414,7 @@ name|GroupHierarchyType
 operator|.
 name|INCLUDING
 argument_list|,
-name|Globals
-operator|.
-name|prefs
+literal|", "
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -494,7 +455,7 @@ argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"groups"
 argument_list|)

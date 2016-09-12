@@ -94,6 +94,18 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|FileDirectoryPreferences
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|logic
 operator|.
 name|TypedBibEntry
@@ -228,12 +240,18 @@ specifier|final
 name|LayoutFormatterPreferences
 name|prefs
 decl_stmt|;
+DECL|field|fileDirectoryPreferences
+specifier|private
+specifier|final
+name|FileDirectoryPreferences
+name|fileDirectoryPreferences
+decl_stmt|;
 DECL|field|unsuccessfulRenames
 specifier|private
 name|int
 name|unsuccessfulRenames
 decl_stmt|;
-DECL|method|RenamePdfCleanup (boolean onlyRelativePaths, BibDatabaseContext databaseContext, String fileNamePattern, LayoutFormatterPreferences prefs)
+DECL|method|RenamePdfCleanup (boolean onlyRelativePaths, BibDatabaseContext databaseContext, String fileNamePattern, LayoutFormatterPreferences prefs, FileDirectoryPreferences fileDirectoryPreferences)
 specifier|public
 name|RenamePdfCleanup
 parameter_list|(
@@ -248,6 +266,9 @@ name|fileNamePattern
 parameter_list|,
 name|LayoutFormatterPreferences
 name|prefs
+parameter_list|,
+name|FileDirectoryPreferences
+name|fileDirectoryPreferences
 parameter_list|)
 block|{
 name|this
@@ -288,6 +309,12 @@ name|requireNonNull
 argument_list|(
 name|prefs
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|fileDirectoryPreferences
+operator|=
+name|fileDirectoryPreferences
 expr_stmt|;
 block|}
 annotation|@
@@ -449,7 +476,9 @@ argument_list|,
 name|databaseContext
 operator|.
 name|getFileDirectory
-argument_list|()
+argument_list|(
+name|fileDirectoryPreferences
+argument_list|)
 argument_list|)
 decl_stmt|;
 if|if
@@ -636,7 +665,9 @@ operator|||
 name|databaseContext
 operator|.
 name|getFileDirectory
-argument_list|()
+argument_list|(
+name|fileDirectoryPreferences
+argument_list|)
 operator|.
 name|contains
 argument_list|(

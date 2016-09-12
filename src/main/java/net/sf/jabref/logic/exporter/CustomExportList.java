@@ -409,12 +409,10 @@ decl_stmt|;
 name|LayoutFormatterPreferences
 name|layoutPreferences
 init|=
-name|LayoutFormatterPreferences
-operator|.
-name|fromPreferences
-argument_list|(
 name|prefs
-argument_list|,
+operator|.
+name|getLayoutFormatterPreferences
+argument_list|(
 name|loader
 argument_list|)
 decl_stmt|;

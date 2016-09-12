@@ -79,7 +79,8 @@ name|ynFields
 init|=
 name|InternalBibtexFields
 operator|.
-name|IEEETRANBSTCTL_YES_NO_FIELDS
+name|getIEEETranBSTctlYesNoFields
+argument_list|()
 decl_stmt|;
 name|Assert
 operator|.

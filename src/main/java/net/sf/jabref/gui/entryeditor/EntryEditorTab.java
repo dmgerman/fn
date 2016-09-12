@@ -440,7 +440,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|FieldProperties
+name|FieldProperty
 import|;
 end_import
 
@@ -958,14 +958,14 @@ if|if
 condition|(
 name|InternalBibtexFields
 operator|.
-name|getFieldExtras
+name|getFieldProperties
 argument_list|(
 name|field
 argument_list|)
 operator|.
 name|contains
 argument_list|(
-name|FieldProperties
+name|FieldProperty
 operator|.
 name|FILE_EDITOR
 argument_list|)
@@ -1023,7 +1023,10 @@ argument_list|)
 expr_stmt|;
 name|bPanel
 operator|.
-name|getSearchBar
+name|frame
+argument_list|()
+operator|.
+name|getGlobalSearchBar
 argument_list|()
 operator|.
 name|getSearchQueryHighlightObservable
@@ -1433,7 +1436,7 @@ argument_list|(
 name|getEntry
 argument_list|()
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|fieldEditor
 operator|.
@@ -1627,7 +1630,7 @@ name|toSet
 init|=
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|editor
 operator|.

@@ -34,7 +34,7 @@ name|nio
 operator|.
 name|charset
 operator|.
-name|Charset
+name|StandardCharsets
 import|;
 end_import
 
@@ -79,22 +79,6 @@ operator|.
 name|util
 operator|.
 name|List
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
-name|importer
-operator|.
-name|ImportFormatPreferences
 import|;
 end_import
 
@@ -200,15 +184,13 @@ operator|=
 operator|new
 name|PdfContentImporter
 argument_list|(
-name|ImportFormatPreferences
-operator|.
-name|fromPreferences
-argument_list|(
 name|JabRefPreferences
 operator|.
 name|getInstance
 argument_list|()
-argument_list|)
+operator|.
+name|getImportFormatPreferences
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -294,10 +276,9 @@ name|importDatabase
 argument_list|(
 name|file
 argument_list|,
-name|Charset
+name|StandardCharsets
 operator|.
-name|defaultCharset
-argument_list|()
+name|UTF_8
 argument_list|)
 operator|.
 name|getDatabase

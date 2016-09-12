@@ -863,7 +863,7 @@ name|entry
 lambda|->
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"title"
 argument_list|)

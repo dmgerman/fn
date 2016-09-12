@@ -1456,13 +1456,6 @@ name|elementValue
 decl_stmt|;
 if|if
 condition|(
-name|value
-operator|!=
-literal|null
-condition|)
-block|{
-if|if
-condition|(
 name|FieldName
 operator|.
 name|NUMBER
@@ -1519,7 +1512,6 @@ name|value
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 elseif|else

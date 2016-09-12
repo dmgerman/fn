@@ -163,7 +163,7 @@ argument_list|)
 argument_list|,
 name|bibEntry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"journal"
 argument_list|)
@@ -182,7 +182,7 @@ argument_list|)
 argument_list|,
 name|bibEntry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"doi"
 argument_list|)
@@ -201,7 +201,7 @@ argument_list|)
 argument_list|,
 name|bibEntry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"author"
 argument_list|)
@@ -220,7 +220,7 @@ argument_list|)
 argument_list|,
 name|bibEntry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"title"
 argument_list|)
@@ -239,7 +239,7 @@ argument_list|)
 argument_list|,
 name|bibEntry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"year"
 argument_list|)
@@ -317,7 +317,7 @@ argument_list|)
 argument_list|,
 name|bibEntry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"year"
 argument_list|)
@@ -336,7 +336,7 @@ argument_list|)
 argument_list|,
 name|bibEntry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"number"
 argument_list|)
@@ -355,7 +355,7 @@ argument_list|)
 argument_list|,
 name|bibEntry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"month"
 argument_list|)
@@ -374,7 +374,7 @@ argument_list|)
 argument_list|,
 name|bibEntry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"doi"
 argument_list|)
@@ -393,7 +393,7 @@ argument_list|)
 argument_list|,
 name|bibEntry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"volume"
 argument_list|)
@@ -412,7 +412,7 @@ argument_list|)
 argument_list|,
 name|bibEntry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"publisher"
 argument_list|)
@@ -431,7 +431,7 @@ argument_list|)
 argument_list|,
 name|bibEntry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"date"
 argument_list|)

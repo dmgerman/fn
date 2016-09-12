@@ -134,18 +134,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|logic
 operator|.
 name|cleanup
@@ -408,6 +396,22 @@ name|jabref
 operator|.
 name|model
 operator|.
+name|bibtexkeypattern
+operator|.
+name|GlobalBibtexKeyPattern
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
 name|database
 operator|.
 name|BibDatabaseMode
@@ -595,25 +599,15 @@ name|void
 name|setUp
 parameter_list|()
 block|{
-name|Globals
-operator|.
-name|prefs
+name|importFormatPreferences
 operator|=
 name|JabRefPreferences
 operator|.
 name|getInstance
 argument_list|()
-expr_stmt|;
-name|importFormatPreferences
-operator|=
-name|ImportFormatPreferences
 operator|.
-name|fromPreferences
-argument_list|(
-name|Globals
-operator|.
-name|prefs
-argument_list|)
+name|getImportFormatPreferences
+argument_list|()
 expr_stmt|;
 block|}
 annotation|@
@@ -1161,7 +1155,7 @@ argument_list|)
 argument_list|,
 name|e
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"author"
 argument_list|)
@@ -1278,7 +1272,7 @@ argument_list|)
 argument_list|,
 name|e
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"author"
 argument_list|)
@@ -1482,7 +1476,7 @@ argument_list|)
 argument_list|,
 name|e
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"author"
 argument_list|)
@@ -1599,7 +1593,7 @@ argument_list|)
 argument_list|,
 name|e
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"author"
 argument_list|)
@@ -1716,7 +1710,7 @@ argument_list|)
 argument_list|,
 name|e
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"author"
 argument_list|)
@@ -1833,7 +1827,7 @@ argument_list|)
 argument_list|,
 name|e
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"author"
 argument_list|)
@@ -1950,7 +1944,7 @@ argument_list|)
 argument_list|,
 name|e
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"author"
 argument_list|)
@@ -2067,7 +2061,7 @@ argument_list|)
 argument_list|,
 name|e
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"author"
 argument_list|)
@@ -2170,7 +2164,7 @@ argument_list|)
 argument_list|,
 name|e
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"isbn"
 argument_list|)
@@ -2187,7 +2181,7 @@ argument_list|)
 argument_list|,
 name|e
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"isbn2"
 argument_list|)
@@ -2204,7 +2198,7 @@ argument_list|)
 argument_list|,
 name|e
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"small"
 argument_list|)
@@ -2311,7 +2305,7 @@ argument_list|)
 argument_list|,
 name|e
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"author"
 argument_list|)
@@ -2428,16 +2422,16 @@ argument_list|)
 argument_list|,
 name|e
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"author"
 argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|parseRecognizesEntryWithAtInField ()
 annotation|@
 name|Test
+DECL|method|parseRecognizesEntryWithAtInField ()
 specifier|public
 name|void
 name|parseRecognizesEntryWithAtInField
@@ -2518,9 +2512,9 @@ name|parsed
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|parseRecognizesEntryPrecedingComment ()
 annotation|@
 name|Test
+DECL|method|parseRecognizesEntryPrecedingComment ()
 specifier|public
 name|void
 name|parseRecognizesEntryPrecedingComment
@@ -3139,7 +3133,7 @@ argument_list|)
 argument_list|,
 name|e
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"author"
 argument_list|)
@@ -3256,7 +3250,7 @@ argument_list|)
 argument_list|,
 name|e
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"editor"
 argument_list|)
@@ -3374,7 +3368,7 @@ argument_list|)
 argument_list|,
 name|e
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"keywords"
 argument_list|)
@@ -3551,7 +3545,7 @@ argument_list|)
 argument_list|,
 name|e
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"author"
 argument_list|)
@@ -3568,7 +3562,7 @@ argument_list|)
 argument_list|,
 name|e
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"title"
 argument_list|)
@@ -3585,7 +3579,7 @@ argument_list|)
 argument_list|,
 name|e
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"booktitle"
 argument_list|)
@@ -3602,7 +3596,7 @@ argument_list|)
 argument_list|,
 name|e
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"year"
 argument_list|)
@@ -3619,7 +3613,7 @@ argument_list|)
 argument_list|,
 name|e
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"owner"
 argument_list|)
@@ -3636,7 +3630,7 @@ argument_list|)
 argument_list|,
 name|e
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"timestamp"
 argument_list|)
@@ -3653,7 +3647,7 @@ argument_list|)
 argument_list|,
 name|e
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"url"
 argument_list|)
@@ -3804,7 +3798,7 @@ argument_list|)
 argument_list|,
 name|e
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"author"
 argument_list|)
@@ -3821,7 +3815,7 @@ argument_list|)
 argument_list|,
 name|e
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"title"
 argument_list|)
@@ -3838,7 +3832,7 @@ argument_list|)
 argument_list|,
 name|e
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"booktitle"
 argument_list|)
@@ -3855,7 +3849,7 @@ argument_list|)
 argument_list|,
 name|e
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"year"
 argument_list|)
@@ -3872,7 +3866,7 @@ argument_list|)
 argument_list|,
 name|e
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"owner"
 argument_list|)
@@ -3889,7 +3883,7 @@ argument_list|)
 argument_list|,
 name|e
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"timestamp"
 argument_list|)
@@ -3906,7 +3900,7 @@ argument_list|)
 argument_list|,
 name|e
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"url"
 argument_list|)
@@ -4023,7 +4017,7 @@ argument_list|)
 argument_list|,
 name|e
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"author"
 argument_list|)
@@ -4140,7 +4134,7 @@ argument_list|)
 argument_list|,
 name|e
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"year"
 argument_list|)
@@ -4257,7 +4251,7 @@ argument_list|)
 argument_list|,
 name|e
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"author"
 argument_list|)
@@ -4375,7 +4369,7 @@ argument_list|)
 argument_list|,
 name|e
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"file"
 argument_list|)
@@ -4493,7 +4487,7 @@ argument_list|)
 argument_list|,
 name|e
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"date"
 argument_list|)
@@ -4953,7 +4947,7 @@ argument_list|)
 argument_list|,
 name|e
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"review"
 argument_list|)
@@ -5065,7 +5059,7 @@ argument_list|)
 argument_list|,
 name|e
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"review"
 argument_list|)
@@ -5431,7 +5425,7 @@ argument_list|(
 literal|0
 argument_list|)
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"author"
 argument_list|)
@@ -5548,7 +5542,7 @@ argument_list|)
 argument_list|,
 name|e
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"author"
 argument_list|)
@@ -5665,7 +5659,7 @@ argument_list|)
 argument_list|,
 name|e
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"author"
 argument_list|)
@@ -5783,7 +5777,7 @@ argument_list|)
 argument_list|,
 name|e
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"author"
 argument_list|)
@@ -5969,7 +5963,7 @@ argument_list|)
 argument_list|,
 name|e
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"author"
 argument_list|)
@@ -6087,7 +6081,7 @@ argument_list|)
 argument_list|,
 name|e
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"author"
 argument_list|)
@@ -6104,7 +6098,7 @@ argument_list|)
 argument_list|,
 name|e
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"month"
 argument_list|)
@@ -6139,7 +6133,12 @@ argument_list|)
 decl_stmt|;
 name|assertEquals
 argument_list|(
+name|Optional
+operator|.
+name|of
+argument_list|(
 literal|"some text and \\latex"
+argument_list|)
 argument_list|,
 name|result
 operator|.
@@ -6179,7 +6178,12 @@ argument_list|)
 decl_stmt|;
 name|assertEquals
 argument_list|(
+name|Optional
+operator|.
+name|of
+argument_list|(
 literal|"some text and \\latex"
+argument_list|)
 argument_list|,
 name|result
 operator|.
@@ -6219,7 +6223,12 @@ argument_list|)
 decl_stmt|;
 name|assertEquals
 argument_list|(
+name|Optional
+operator|.
+name|of
+argument_list|(
 literal|"some text and \\latex"
+argument_list|)
 argument_list|,
 name|result
 operator|.
@@ -6259,7 +6268,12 @@ argument_list|)
 decl_stmt|;
 name|assertEquals
 argument_list|(
+name|Optional
+operator|.
+name|of
+argument_list|(
 literal|"some text and \\latex"
+argument_list|)
 argument_list|,
 name|result
 operator|.
@@ -6299,7 +6313,12 @@ argument_list|)
 decl_stmt|;
 name|assertEquals
 argument_list|(
+name|Optional
+operator|.
+name|of
+argument_list|(
 literal|"\"some text\" # \"and \\latex\""
+argument_list|)
 argument_list|,
 name|result
 operator|.
@@ -6934,7 +6953,7 @@ argument_list|)
 argument_list|,
 name|e
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"address"
 argument_list|)
@@ -6951,7 +6970,7 @@ argument_list|)
 argument_list|,
 name|e
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"author"
 argument_list|)
@@ -6968,7 +6987,7 @@ argument_list|)
 argument_list|,
 name|e
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"isbn"
 argument_list|)
@@ -6985,7 +7004,7 @@ argument_list|)
 argument_list|,
 name|e
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"publisher"
 argument_list|)
@@ -7002,7 +7021,7 @@ argument_list|)
 argument_list|,
 name|e
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"title"
 argument_list|)
@@ -7019,7 +7038,7 @@ argument_list|)
 argument_list|,
 name|e
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"year"
 argument_list|)
@@ -7274,7 +7293,7 @@ argument_list|)
 argument_list|,
 name|e
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"author"
 argument_list|)
@@ -7393,7 +7412,7 @@ argument_list|)
 argument_list|,
 name|e
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"author"
 argument_list|)
@@ -7555,7 +7574,7 @@ argument_list|)
 argument_list|,
 name|e
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"author"
 argument_list|)
@@ -7674,7 +7693,7 @@ argument_list|)
 argument_list|,
 name|e
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"author"
 argument_list|)
@@ -7743,7 +7762,7 @@ argument_list|)
 argument_list|,
 name|e
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"a"
 argument_list|)
@@ -7816,7 +7835,7 @@ argument_list|)
 argument_list|,
 name|e
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"a"
 argument_list|)
@@ -7833,7 +7852,7 @@ argument_list|)
 argument_list|,
 name|e
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"b"
 argument_list|)
@@ -7850,7 +7869,7 @@ argument_list|)
 argument_list|,
 name|e
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"c"
 argument_list|)
@@ -7919,7 +7938,7 @@ argument_list|)
 argument_list|,
 name|e
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"a"
 argument_list|)
@@ -7992,7 +8011,7 @@ argument_list|)
 argument_list|,
 name|e
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"a"
 argument_list|)
@@ -8009,7 +8028,7 @@ argument_list|)
 argument_list|,
 name|e
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"b"
 argument_list|)
@@ -8026,7 +8045,7 @@ argument_list|)
 argument_list|,
 name|e
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"c"
 argument_list|)
@@ -8096,7 +8115,7 @@ argument_list|)
 argument_list|,
 name|e
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"file"
 argument_list|)
@@ -8171,7 +8190,7 @@ argument_list|)
 argument_list|,
 name|e
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"file"
 argument_list|)
@@ -8246,7 +8265,7 @@ argument_list|)
 argument_list|,
 name|e
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"file"
 argument_list|)
@@ -8359,7 +8378,7 @@ argument_list|)
 argument_list|,
 name|e
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"author"
 argument_list|)
@@ -8403,7 +8422,12 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
+name|Optional
+operator|.
+name|of
+argument_list|(
 literal|"some text and \\latex"
+argument_list|)
 argument_list|,
 name|result
 operator|.
@@ -8485,7 +8509,7 @@ argument_list|)
 argument_list|,
 name|e
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"author"
 argument_list|)
@@ -8529,7 +8553,12 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
+name|Optional
+operator|.
+name|of
+argument_list|(
 literal|"some text and \\latex"
+argument_list|)
 argument_list|,
 name|result
 operator|.
@@ -9761,6 +9790,17 @@ argument_list|,
 name|importFormatPreferences
 argument_list|)
 decl_stmt|;
+name|GlobalBibtexKeyPattern
+name|pattern
+init|=
+name|JabRefPreferences
+operator|.
+name|getInstance
+argument_list|()
+operator|.
+name|getKeyPattern
+argument_list|()
+decl_stmt|;
 name|AbstractBibtexKeyPattern
 name|bibtexKeyPattern
 init|=
@@ -9771,12 +9811,7 @@ argument_list|()
 operator|.
 name|getBibtexKeyPattern
 argument_list|(
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getKeyPattern
-argument_list|()
+name|pattern
 argument_list|)
 decl_stmt|;
 name|AbstractBibtexKeyPattern
@@ -9785,12 +9820,7 @@ init|=
 operator|new
 name|DatabaseBibtexKeyPattern
 argument_list|(
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getKeyPattern
-argument_list|()
+name|pattern
 argument_list|)
 decl_stmt|;
 name|expectedPattern
@@ -9940,6 +9970,9 @@ argument_list|()
 operator|.
 name|getGroups
 argument_list|()
+operator|.
+name|get
+argument_list|()
 decl_stmt|;
 name|assertEquals
 argument_list|(
@@ -9982,9 +10015,7 @@ name|GroupHierarchyType
 operator|.
 name|INDEPENDENT
 argument_list|,
-name|Globals
-operator|.
-name|prefs
+literal|", "
 argument_list|)
 argument_list|,
 name|root
@@ -10020,9 +10051,7 @@ name|GroupHierarchyType
 operator|.
 name|INDEPENDENT
 argument_list|,
-name|Globals
-operator|.
-name|prefs
+literal|", "
 argument_list|)
 argument_list|,
 name|root
@@ -10535,7 +10564,7 @@ argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"author"
 argument_list|)
@@ -10711,7 +10740,7 @@ argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"author"
 argument_list|)
@@ -11332,6 +11361,110 @@ argument_list|,
 name|entry
 operator|.
 name|getParsedSerialization
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|parseEmptyPreambleLeadsToEmptyString ()
+specifier|public
+name|void
+name|parseEmptyPreambleLeadsToEmptyString
+parameter_list|()
+throws|throws
+name|IOException
+block|{
+name|ParserResult
+name|result
+init|=
+name|BibtexParser
+operator|.
+name|parse
+argument_list|(
+operator|new
+name|StringReader
+argument_list|(
+literal|"@preamble{}"
+argument_list|)
+argument_list|,
+name|importFormatPreferences
+argument_list|)
+decl_stmt|;
+name|assertFalse
+argument_list|(
+name|result
+operator|.
+name|hasWarnings
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+name|Optional
+operator|.
+name|of
+argument_list|(
+literal|""
+argument_list|)
+argument_list|,
+name|result
+operator|.
+name|getDatabase
+argument_list|()
+operator|.
+name|getPreamble
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|parseEmptyFileLeadsToPreamble ()
+specifier|public
+name|void
+name|parseEmptyFileLeadsToPreamble
+parameter_list|()
+throws|throws
+name|IOException
+block|{
+name|ParserResult
+name|result
+init|=
+name|BibtexParser
+operator|.
+name|parse
+argument_list|(
+operator|new
+name|StringReader
+argument_list|(
+literal|""
+argument_list|)
+argument_list|,
+name|importFormatPreferences
+argument_list|)
+decl_stmt|;
+name|assertFalse
+argument_list|(
+name|result
+operator|.
+name|hasWarnings
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+name|Optional
+operator|.
+name|empty
+argument_list|()
+argument_list|,
+name|result
+operator|.
+name|getDatabase
+argument_list|()
+operator|.
+name|getPreamble
 argument_list|()
 argument_list|)
 expr_stmt|;

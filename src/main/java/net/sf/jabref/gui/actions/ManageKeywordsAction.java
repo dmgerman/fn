@@ -1890,9 +1890,11 @@ return|return;
 block|}
 if|if
 condition|(
-name|SpecialFieldsUtils
+name|Globals
 operator|.
-name|keywordSyncEnabled
+name|prefs
+operator|.
+name|isKeywordSyncEnabled
 argument_list|()
 operator|&&
 operator|!
@@ -2063,9 +2065,11 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-name|SpecialFieldsUtils
+name|Globals
 operator|.
-name|keywordSyncEnabled
+name|prefs
+operator|.
+name|isKeywordSyncEnabled
 argument_list|()
 condition|)
 block|{

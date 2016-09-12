@@ -330,6 +330,7 @@ name|name
 argument_list|)
 expr_stmt|;
 block|}
+comment|/*      * Never returns null      */
 DECL|method|getContent ()
 specifier|public
 name|String

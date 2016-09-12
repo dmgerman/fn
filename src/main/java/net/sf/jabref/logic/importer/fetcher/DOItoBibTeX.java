@@ -613,7 +613,7 @@ block|{
 comment|// Optionally add curly brackets around key words to keep the case
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.

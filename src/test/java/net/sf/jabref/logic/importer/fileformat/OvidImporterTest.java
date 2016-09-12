@@ -54,7 +54,7 @@ name|nio
 operator|.
 name|charset
 operator|.
-name|Charset
+name|StandardCharsets
 import|;
 end_import
 
@@ -385,10 +385,9 @@ name|isRecognizedFormat
 argument_list|(
 name|file
 argument_list|,
-name|Charset
+name|StandardCharsets
 operator|.
-name|defaultCharset
-argument_list|()
+name|UTF_8
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -459,10 +458,9 @@ name|isRecognizedFormat
 argument_list|(
 name|file
 argument_list|,
-name|Charset
+name|StandardCharsets
 operator|.
-name|defaultCharset
-argument_list|()
+name|UTF_8
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -512,10 +510,9 @@ name|importDatabase
 argument_list|(
 name|file
 argument_list|,
-name|Charset
+name|StandardCharsets
 operator|.
-name|defaultCharset
-argument_list|()
+name|UTF_8
 argument_list|)
 operator|.
 name|getDatabase
@@ -581,10 +578,9 @@ name|importDatabase
 argument_list|(
 name|file
 argument_list|,
-name|Charset
+name|StandardCharsets
 operator|.
-name|defaultCharset
-argument_list|()
+name|UTF_8
 argument_list|)
 operator|.
 name|getDatabase
@@ -640,7 +636,7 @@ argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"author"
 argument_list|)
@@ -659,7 +655,7 @@ argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"abstract"
 argument_list|)
@@ -678,7 +674,7 @@ argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"title"
 argument_list|)
@@ -697,7 +693,7 @@ argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"chaptertitle"
 argument_list|)
@@ -737,7 +733,7 @@ argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"editor"
 argument_list|)
@@ -756,7 +752,7 @@ argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"title"
 argument_list|)
@@ -775,7 +771,7 @@ argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"journal"
 argument_list|)
@@ -794,7 +790,7 @@ argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"volume"
 argument_list|)
@@ -813,7 +809,7 @@ argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"issue"
 argument_list|)
@@ -832,7 +828,7 @@ argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"year"
 argument_list|)
@@ -851,7 +847,7 @@ argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"pages"
 argument_list|)
@@ -891,7 +887,7 @@ argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"author"
 argument_list|)
@@ -910,7 +906,7 @@ argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"title"
 argument_list|)
@@ -929,7 +925,7 @@ argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"journal"
 argument_list|)
@@ -948,7 +944,7 @@ argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"volume"
 argument_list|)
@@ -967,7 +963,7 @@ argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"issue"
 argument_list|)
@@ -986,7 +982,7 @@ argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"month"
 argument_list|)
@@ -1005,7 +1001,7 @@ argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"year"
 argument_list|)
@@ -1024,7 +1020,7 @@ argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"pages"
 argument_list|)
@@ -1064,7 +1060,7 @@ argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"author"
 argument_list|)
@@ -1083,7 +1079,7 @@ argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"year"
 argument_list|)
@@ -1102,7 +1098,7 @@ argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"editor"
 argument_list|)
@@ -1121,7 +1117,7 @@ argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"booktitle"
 argument_list|)
@@ -1140,7 +1136,7 @@ argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"pages"
 argument_list|)
@@ -1159,7 +1155,7 @@ argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"address"
 argument_list|)
@@ -1178,7 +1174,7 @@ argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"publisher"
 argument_list|)
@@ -1218,7 +1214,7 @@ argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"year"
 argument_list|)
@@ -1237,7 +1233,7 @@ argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"pages"
 argument_list|)
@@ -1256,7 +1252,7 @@ argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"address"
 argument_list|)
@@ -1273,7 +1269,7 @@ argument_list|()
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"title"
 argument_list|)
@@ -1292,7 +1288,7 @@ argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"publisher"
 argument_list|)
@@ -1343,10 +1339,9 @@ name|importDatabase
 argument_list|(
 name|file
 argument_list|,
-name|Charset
+name|StandardCharsets
 operator|.
-name|defaultCharset
-argument_list|()
+name|UTF_8
 argument_list|)
 operator|.
 name|getDatabase
@@ -1450,10 +1445,9 @@ name|importDatabase
 argument_list|(
 name|file
 argument_list|,
-name|Charset
+name|StandardCharsets
 operator|.
-name|defaultCharset
-argument_list|()
+name|UTF_8
 argument_list|)
 operator|.
 name|getDatabase

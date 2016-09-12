@@ -1266,7 +1266,7 @@ control|)
 block|{
 name|database
 operator|.
-name|insertEntry
+name|insertEntryWithDuplicationCheck
 argument_list|(
 name|entry
 argument_list|)
@@ -1409,7 +1409,7 @@ expr_stmt|;
 block|}
 name|database
 operator|.
-name|insertEntry
+name|insertEntryWithDuplicationCheck
 argument_list|(
 name|entry
 argument_list|)

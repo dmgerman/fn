@@ -1592,7 +1592,9 @@ name|getField
 argument_list|(
 name|e
 argument_list|,
-literal|"assignee"
+name|FieldName
+operator|.
+name|ASSIGNEE
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1606,7 +1608,9 @@ name|getField
 argument_list|(
 name|e
 argument_list|,
-literal|"day"
+name|FieldName
+operator|.
+name|DAY
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1620,7 +1624,9 @@ name|getField
 argument_list|(
 name|e
 argument_list|,
-literal|"dayfiled"
+name|FieldName
+operator|.
+name|DAYFILED
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1634,7 +1640,9 @@ name|getField
 argument_list|(
 name|e
 argument_list|,
-literal|"monthfiled"
+name|FieldName
+operator|.
+name|MONTHFILED
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1648,7 +1656,9 @@ name|getField
 argument_list|(
 name|e
 argument_list|,
-literal|"yearfiled"
+name|FieldName
+operator|.
+name|YEARFILED
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1678,7 +1688,9 @@ name|getField
 argument_list|(
 name|e
 argument_list|,
-literal|"nationality"
+name|FieldName
+operator|.
+name|NATIONALITY
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1692,7 +1704,9 @@ name|getField
 argument_list|(
 name|e
 argument_list|,
-literal|"revision"
+name|FieldName
+operator|.
+name|REVISION
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1807,7 +1821,7 @@ block|{
 return|return
 name|e
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|field
 argument_list|)

@@ -261,7 +261,7 @@ name|markerString
 init|=
 name|be
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -520,7 +520,7 @@ name|MARKED_INTERNAL
 argument_list|,
 name|be
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -585,7 +585,7 @@ name|markerString
 init|=
 name|be
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -879,7 +879,7 @@ name|MARKED_INTERNAL
 argument_list|,
 name|be
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -967,7 +967,7 @@ control|)
 block|{
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -1066,7 +1066,7 @@ name|MARKED_INTERNAL
 argument_list|,
 name|be
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -1109,7 +1109,7 @@ name|MARKED_INTERNAL
 argument_list|,
 name|be
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -1170,7 +1170,7 @@ name|s
 init|=
 name|be
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.

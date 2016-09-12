@@ -1671,7 +1671,9 @@ name|be
 operator|.
 name|setField
 argument_list|(
-literal|"day"
+name|FieldName
+operator|.
+name|DAY
 argument_list|,
 name|String
 operator|.

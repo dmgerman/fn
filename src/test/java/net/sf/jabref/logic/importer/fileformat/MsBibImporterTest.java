@@ -345,7 +345,7 @@ name|class
 operator|.
 name|getResource
 argument_list|(
-literal|"MsBibImporterTest.xml"
+literal|"EmptyMsBib_Test.xml"
 argument_list|)
 operator|.
 name|toURI

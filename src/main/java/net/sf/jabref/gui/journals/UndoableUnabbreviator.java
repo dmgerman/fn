@@ -172,7 +172,7 @@ name|text
 init|=
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|fieldName
 argument_list|)

@@ -253,6 +253,11 @@ argument_list|()
 operator|.
 name|getGroups
 argument_list|()
+operator|.
+name|orElse
+argument_list|(
+literal|null
+argument_list|)
 decl_stmt|;
 specifier|final
 name|UndoableModifySubtree
@@ -274,6 +279,11 @@ argument_list|()
 operator|.
 name|getGroups
 argument_list|()
+operator|.
+name|orElse
+argument_list|(
+literal|null
+argument_list|)
 argument_list|)
 argument_list|,
 operator|new

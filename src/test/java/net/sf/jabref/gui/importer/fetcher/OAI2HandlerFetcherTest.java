@@ -373,7 +373,7 @@ argument_list|)
 argument_list|,
 name|be
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"eprint"
 argument_list|)
@@ -392,7 +392,7 @@ argument_list|)
 argument_list|,
 name|be
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"author"
 argument_list|)
@@ -411,7 +411,7 @@ argument_list|)
 argument_list|,
 name|be
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"journal"
 argument_list|)
@@ -430,7 +430,7 @@ argument_list|)
 argument_list|,
 name|be
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"volume"
 argument_list|)
@@ -449,7 +449,7 @@ argument_list|)
 argument_list|,
 name|be
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"year"
 argument_list|)
@@ -468,7 +468,7 @@ argument_list|)
 argument_list|,
 name|be
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"pages"
 argument_list|)
@@ -504,7 +504,7 @@ argument_list|)
 argument_list|,
 name|be
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"title"
 argument_list|)
@@ -516,7 +516,7 @@ name|assertTrue
 argument_list|(
 name|be
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"abstract"
 argument_list|)
@@ -538,7 +538,7 @@ argument_list|)
 argument_list|,
 name|be
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"comments"
 argument_list|)
@@ -557,7 +557,7 @@ argument_list|)
 argument_list|,
 name|be
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"reportno"
 argument_list|)
@@ -620,7 +620,7 @@ argument_list|)
 argument_list|,
 name|be
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"year"
 argument_list|)
@@ -669,7 +669,7 @@ argument_list|)
 argument_list|,
 name|be
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"author"
 argument_list|)
@@ -876,7 +876,7 @@ argument_list|)
 argument_list|,
 name|be
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"eprint"
 argument_list|)
@@ -895,7 +895,7 @@ argument_list|)
 argument_list|,
 name|be
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"title"
 argument_list|)
@@ -914,7 +914,7 @@ argument_list|)
 argument_list|,
 name|be
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"author"
 argument_list|)
@@ -933,7 +933,7 @@ argument_list|)
 argument_list|,
 name|be
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"year"
 argument_list|)
@@ -984,7 +984,7 @@ argument_list|)
 argument_list|,
 name|be
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"eprint"
 argument_list|)
@@ -1003,7 +1003,7 @@ argument_list|)
 argument_list|,
 name|be
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"title"
 argument_list|)
@@ -1054,7 +1054,7 @@ argument_list|)
 argument_list|,
 name|be
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"eprint"
 argument_list|)
@@ -1105,7 +1105,7 @@ argument_list|)
 argument_list|,
 name|be
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"eprint"
 argument_list|)
@@ -1155,7 +1155,7 @@ argument_list|)
 argument_list|,
 name|be
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"year"
 argument_list|)
@@ -1174,7 +1174,7 @@ argument_list|)
 argument_list|,
 name|be
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"month"
 argument_list|)

@@ -614,7 +614,7 @@ name|Charset
 name|encoding
 decl_stmt|;
 comment|/**      * The MetaData object stores all meta data sets in Vectors. To ensure that      * the data is written correctly to string, the user of a meta data Vector      * must simply make sure the appropriate changes are reflected in the Vector      * it has been passed.      */
-DECL|method|MetaData (Map<String, String> inData)
+DECL|method|MetaData (Map<String, String> inData, String keywordSeparator)
 specifier|private
 name|MetaData
 parameter_list|(
@@ -625,6 +625,9 @@ argument_list|,
 name|String
 argument_list|>
 name|inData
+parameter_list|,
+name|String
+name|keywordSeparator
 parameter_list|)
 throws|throws
 name|ParseException
@@ -639,10 +642,12 @@ expr_stmt|;
 name|setData
 argument_list|(
 name|inData
+argument_list|,
+name|keywordSeparator
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|MetaData (Map<String, String> inData, Charset encoding)
+DECL|method|MetaData (Map<String, String> inData, Charset encoding, String keywordSeparator)
 specifier|private
 name|MetaData
 parameter_list|(
@@ -656,6 +661,9 @@ name|inData
 parameter_list|,
 name|Charset
 name|encoding
+parameter_list|,
+name|String
+name|keywordSeparator
 parameter_list|)
 throws|throws
 name|ParseException
@@ -663,6 +671,8 @@ block|{
 name|this
 argument_list|(
 name|inData
+argument_list|,
+name|keywordSeparator
 argument_list|)
 expr_stmt|;
 name|this
@@ -700,7 +710,7 @@ operator|=
 name|encoding
 expr_stmt|;
 block|}
-DECL|method|parse (Map<String, String> data)
+DECL|method|parse (Map<String, String> data, String keywordSeparator)
 specifier|public
 specifier|static
 name|MetaData
@@ -713,6 +723,9 @@ argument_list|,
 name|String
 argument_list|>
 name|data
+parameter_list|,
+name|String
+name|keywordSeparator
 parameter_list|)
 throws|throws
 name|ParseException
@@ -722,10 +735,12 @@ operator|new
 name|MetaData
 argument_list|(
 name|data
+argument_list|,
+name|keywordSeparator
 argument_list|)
 return|;
 block|}
-DECL|method|parse (Map<String, String> data, Charset encoding)
+DECL|method|parse (Map<String, String> data, Charset encoding, String keywordSeparator)
 specifier|public
 specifier|static
 name|MetaData
@@ -741,6 +756,9 @@ name|data
 parameter_list|,
 name|Charset
 name|encoding
+parameter_list|,
+name|String
+name|keywordSeparator
 parameter_list|)
 throws|throws
 name|ParseException
@@ -752,10 +770,12 @@ argument_list|(
 name|data
 argument_list|,
 name|encoding
+argument_list|,
+name|keywordSeparator
 argument_list|)
 return|;
 block|}
-DECL|method|setData (Map<String, String> inData)
+DECL|method|setData (Map<String, String> inData, String keywordSeparator)
 specifier|public
 name|void
 name|setData
@@ -767,6 +787,9 @@ argument_list|,
 name|String
 argument_list|>
 name|inData
+parameter_list|,
+name|String
+name|keywordSeparator
 parameter_list|)
 throws|throws
 name|ParseException
@@ -883,6 +906,8 @@ block|{
 name|putGroups
 argument_list|(
 name|orderedData
+argument_list|,
+name|keywordSeparator
 argument_list|)
 expr_stmt|;
 comment|// the keys "groupsversion" and "groups" were used in JabRef versions around 1.3, we will not support them anymore
@@ -1191,7 +1216,7 @@ argument_list|()
 expr_stmt|;
 block|}
 comment|/**      * Parse the groups metadata string      *      * @param orderedData The vector of metadata strings      */
-DECL|method|putGroups (List<String> orderedData)
+DECL|method|putGroups (List<String> orderedData, String keywordSeparator)
 specifier|private
 name|void
 name|putGroups
@@ -1201,6 +1226,9 @@ argument_list|<
 name|String
 argument_list|>
 name|orderedData
+parameter_list|,
+name|String
+name|keywordSeparator
 parameter_list|)
 throws|throws
 name|ParseException
@@ -1215,9 +1243,7 @@ name|parse
 argument_list|(
 name|orderedData
 argument_list|,
-name|Globals
-operator|.
-name|prefs
+name|keywordSeparator
 argument_list|)
 expr_stmt|;
 name|eventBus
@@ -1256,12 +1282,20 @@ block|}
 block|}
 DECL|method|getGroups ()
 specifier|public
+name|Optional
+argument_list|<
 name|GroupTreeNode
+argument_list|>
 name|getGroups
 parameter_list|()
 block|{
 return|return
+name|Optional
+operator|.
+name|ofNullable
+argument_list|(
 name|groupsRoot
+argument_list|)
 return|;
 block|}
 comment|/**      * Sets a new group root node.<b>WARNING</b>: This invalidates everything      * returned by getGroups() so far!!!      */
@@ -2245,31 +2279,33 @@ block|}
 block|}
 comment|// write groups if present. skip this if only the root node exists
 comment|// (which is always the AllEntriesGroup).
-if|if
-condition|(
-operator|(
-name|groupsRoot
-operator|!=
-literal|null
-operator|)
-operator|&&
-operator|(
-name|groupsRoot
+name|getGroups
+argument_list|()
+operator|.
+name|filter
+argument_list|(
+name|groups
+lambda|->
+name|groups
 operator|.
 name|getNumberOfChildren
 argument_list|()
 operator|>
 literal|0
-operator|)
-condition|)
+argument_list|)
+operator|.
+name|ifPresent
+argument_list|(
+name|groups
+lambda|->
 block|{
 name|StringBuilder
 name|stringBuilder
-init|=
+operator|=
 operator|new
 name|StringBuilder
 argument_list|()
-decl_stmt|;
+argument_list|;
 name|stringBuilder
 operator|.
 name|append
@@ -2278,17 +2314,16 @@ name|OS
 operator|.
 name|NEWLINE
 argument_list|)
-expr_stmt|;
-for|for
-control|(
+argument_list|;              for
+operator|(
 name|String
 name|groupNode
-range|:
-name|groupsRoot
+operator|:
+name|groups
 operator|.
 name|getTreeAsString
 argument_list|()
-control|)
+operator|)
 block|{
 name|stringBuilder
 operator|.
@@ -2305,14 +2340,14 @@ argument_list|,
 literal|'\\'
 argument_list|)
 argument_list|)
-expr_stmt|;
+block|;
 name|stringBuilder
 operator|.
 name|append
 argument_list|(
 literal|";"
 argument_list|)
-expr_stmt|;
+block|;
 name|stringBuilder
 operator|.
 name|append
@@ -2321,8 +2356,7 @@ name|OS
 operator|.
 name|NEWLINE
 argument_list|)
-expr_stmt|;
-block|}
+block|;             }
 name|serializedMetaData
 operator|.
 name|put
@@ -2334,14 +2368,21 @@ operator|.
 name|toString
 argument_list|()
 argument_list|)
-expr_stmt|;
+argument_list|;
 block|}
+block|)
+class|;
+end_class
+
+begin_return
 return|return
 name|serializedMetaData
 return|;
-block|}
+end_return
+
+begin_function
+unit|}      public
 DECL|method|setSaveActions (FieldFormatterCleanups saveActions)
-specifier|public
 name|void
 name|setSaveActions
 parameter_list|(
@@ -2368,6 +2409,9 @@ name|actionsSerialized
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 DECL|method|setSaveOrderConfig (SaveOrderConfig saveOrderConfig)
 specifier|public
 name|void
@@ -2396,6 +2440,9 @@ name|serialized
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 DECL|method|setMode (BibDatabaseMode mode)
 specifier|public
 name|void
@@ -2421,6 +2468,9 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 DECL|method|markAsProtected ()
 specifier|public
 name|void
@@ -2440,6 +2490,9 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 DECL|method|setContentSelectors (String fieldName, List<String> contentSelectors)
 specifier|public
 name|void
@@ -2465,6 +2518,9 @@ name|contentSelectors
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 DECL|method|setDefaultFileDirectory (String path)
 specifier|public
 name|void
@@ -2487,6 +2543,9 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 DECL|method|clearDefaultFileDirectory ()
 specifier|public
 name|void
@@ -2499,6 +2558,9 @@ name|FILE_DIRECTORY
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 DECL|method|setUserFileDirectory (String user, String path)
 specifier|public
 name|void
@@ -2531,6 +2593,9 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 DECL|method|clearUserFileDirectory (String user)
 specifier|public
 name|void
@@ -2550,6 +2615,9 @@ name|user
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 DECL|method|clearContentSelectors (String fieldName)
 specifier|public
 name|void
@@ -2567,6 +2635,9 @@ name|fieldName
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 DECL|method|markAsNotProtected ()
 specifier|public
 name|void
@@ -2579,6 +2650,9 @@ name|PROTECTED_FLAG_META
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 DECL|method|clearSaveActions ()
 specifier|public
 name|void
@@ -2591,6 +2665,9 @@ name|SAVE_ACTIONS
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 DECL|method|clearSaveOrderConfig ()
 specifier|public
 name|void
@@ -2603,7 +2680,13 @@ name|SAVE_ORDER_CONFIG
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Posts a new {@link MetaDataChangedEvent} on the {@link EventBus}.      */
+end_comment
+
+begin_function
 DECL|method|postChange ()
 specifier|public
 name|void
@@ -2622,7 +2705,13 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Returns the encoding used during parsing.      */
+end_comment
+
+begin_function
 DECL|method|getEncoding ()
 specifier|public
 name|Optional
@@ -2641,6 +2730,9 @@ name|encoding
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|setEncoding (Charset encoding)
 specifier|public
 name|void
@@ -2662,6 +2754,9 @@ name|encoding
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 DECL|method|clearMetaData ()
 specifier|public
 name|void
@@ -2674,6 +2769,9 @@ name|clear
 argument_list|()
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 DECL|method|registerListener (Object listener)
 specifier|public
 name|void
@@ -2693,6 +2791,9 @@ name|listener
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 DECL|method|unregisterListener (Object listener)
 specifier|public
 name|void
@@ -2712,8 +2813,8 @@ name|listener
 argument_list|)
 expr_stmt|;
 block|}
-block|}
-end_class
+end_function
 
+unit|}
 end_unit
 

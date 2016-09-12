@@ -134,7 +134,7 @@ name|val1
 init|=
 name|e1
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|field
 argument_list|)
@@ -147,7 +147,7 @@ name|val2
 init|=
 name|e2
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|field
 argument_list|)

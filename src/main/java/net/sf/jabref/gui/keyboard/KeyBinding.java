@@ -51,6 +51,21 @@ argument_list|,
 literal|"ctrl alt A"
 argument_list|)
 block|,
+DECL|enumConstant|ACCEPT
+name|ACCEPT
+argument_list|(
+literal|"Accept"
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Accept"
+argument_list|)
+argument_list|,
+literal|"ctrl ENTER"
+argument_list|)
+block|,
 DECL|enumConstant|AUTOGENERATE_BIBTEX_KEYS
 name|AUTOGENERATE_BIBTEX_KEYS
 argument_list|(
@@ -499,6 +514,21 @@ literal|"Forward"
 argument_list|)
 argument_list|,
 literal|"alt RIGHT"
+argument_list|)
+block|,
+DECL|enumConstant|GLOBAL_SEARCH
+name|GLOBAL_SEARCH
+argument_list|(
+literal|"Search globally"
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Search globally"
+argument_list|)
+argument_list|,
+literal|"ctrl shift F"
 argument_list|)
 block|,
 DECL|enumConstant|HELP

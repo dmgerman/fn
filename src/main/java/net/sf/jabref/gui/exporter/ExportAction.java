@@ -475,14 +475,12 @@ decl_stmt|;
 name|LayoutFormatterPreferences
 name|layoutPreferences
 init|=
-name|LayoutFormatterPreferences
-operator|.
-name|fromPreferences
-argument_list|(
 name|Globals
 operator|.
 name|prefs
-argument_list|,
+operator|.
+name|getLayoutFormatterPreferences
+argument_list|(
 name|Globals
 operator|.
 name|journalAbbreviationLoader
@@ -733,7 +731,14 @@ name|getBibDatabaseContext
 argument_list|()
 operator|.
 name|getFileDirectory
+argument_list|(
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getFileDirectoryPreferences
 argument_list|()
+argument_list|)
 expr_stmt|;
 comment|// Make sure we remember which filter was used, to set
 comment|// the default for next time:

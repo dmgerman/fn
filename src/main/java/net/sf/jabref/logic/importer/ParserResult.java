@@ -86,6 +86,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -480,12 +490,20 @@ return|;
 block|}
 DECL|method|getFile ()
 specifier|public
+name|Optional
+argument_list|<
 name|File
+argument_list|>
 name|getFile
 parameter_list|()
 block|{
 return|return
+name|Optional
+operator|.
+name|ofNullable
+argument_list|(
 name|file
+argument_list|)
 return|;
 block|}
 DECL|method|setFile (File f)

@@ -835,7 +835,7 @@ name|field
 init|=
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|name
 argument_list|)

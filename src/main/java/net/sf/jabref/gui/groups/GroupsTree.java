@@ -1017,7 +1017,7 @@ block|{
 comment|// check if node accepts explicit assignment
 if|if
 condition|(
-name|path
+name|target
 operator|==
 literal|null
 condition|)
