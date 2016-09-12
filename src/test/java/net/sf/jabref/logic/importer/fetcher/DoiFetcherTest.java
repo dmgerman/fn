@@ -364,7 +364,7 @@ parameter_list|()
 block|{
 name|assertEquals
 argument_list|(
-literal|"DOI to BibTeX"
+literal|"DOI"
 argument_list|,
 name|fetcher
 operator|.

@@ -168,6 +168,22 @@ name|jabref
 operator|.
 name|logic
 operator|.
+name|l10n
+operator|.
+name|Localization
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
 name|net
 operator|.
 name|URLDownload
@@ -263,7 +279,7 @@ name|getName
 parameter_list|()
 block|{
 return|return
-literal|"DOI to BibTeX"
+literal|"DOI"
 return|;
 block|}
 annotation|@
@@ -394,11 +410,11 @@ throw|throw
 operator|new
 name|FetcherException
 argument_list|(
-name|String
+name|Localization
 operator|.
-name|format
+name|lang
 argument_list|(
-literal|"Invalid DOI: %s"
+literal|"Invalid_DOI:_'%0'."
 argument_list|,
 name|identifier
 argument_list|)
