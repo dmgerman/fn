@@ -429,6 +429,15 @@ name|SEARCH
 init|=
 literal|"search"
 decl_stmt|;
+DECL|field|GLOBAL_SEARCH
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|GLOBAL_SEARCH
+init|=
+literal|"globalSearch"
+decl_stmt|;
 DECL|field|SELECT_ALL
 specifier|public
 specifier|static

@@ -155,7 +155,11 @@ name|formatter
 init|=
 operator|new
 name|ProtectTermsFormatter
-argument_list|()
+argument_list|(
+name|Globals
+operator|.
+name|protectedTermsLoader
+argument_list|)
 decl_stmt|;
 DECL|field|externalFiles
 specifier|private

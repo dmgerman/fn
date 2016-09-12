@@ -391,9 +391,9 @@ name|class
 argument_list|)
 decl_stmt|;
 comment|// All these fields should be private or protected
+comment|/**      * @deprecated use get/setType      */
 annotation|@
 name|Deprecated
-comment|// use get/setType
 DECL|field|TYPE_HEADER
 specifier|public
 specifier|static
@@ -414,9 +414,9 @@ name|OBSOLETE_TYPE_HEADER
 init|=
 literal|"bibtextype"
 decl_stmt|;
+comment|/**      * @deprecated use dedicated methods like get/set/clearCiteKey      */
 annotation|@
 name|Deprecated
-comment|// use dedicated methods like get/set/clearCiteKey
 DECL|field|KEY_FIELD
 specifier|public
 specifier|static
@@ -435,9 +435,9 @@ name|ID_FIELD
 init|=
 literal|"id"
 decl_stmt|;
+comment|/**      * @deprecated use constructor without type      */
 annotation|@
 name|Deprecated
-comment|// use constructor without type
 DECL|field|DEFAULT_TYPE
 specifier|public
 specifier|static

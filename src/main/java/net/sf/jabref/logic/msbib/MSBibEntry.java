@@ -1936,6 +1936,17 @@ name|document
 argument_list|,
 name|rootNode
 argument_list|,
+literal|"Number"
+argument_list|,
+name|number
+argument_list|)
+expr_stmt|;
+name|addField
+argument_list|(
+name|document
+argument_list|,
+name|rootNode
+argument_list|,
 literal|"StandardNumber"
 argument_list|,
 name|standardNumber

@@ -2026,10 +2026,9 @@ return|return
 name|res
 return|;
 block|}
-comment|/**      * Returns a text with references resolved according to an optionally given database.      *      * @param toResolve maybenull The text to resolve.      * @param database  maybenull The database to use for resolving the text.      * @return The resolved text or the original text if either the text or the database are null      */
+comment|/**      * @deprecated use  {@link BibDatabase#resolveForStrings(String)}      * Returns a text with references resolved according to an optionally given database.      *      * @param toResolve maybenull The text to resolve.      * @param database  maybenull The database to use for resolving the text.      * @return The resolved text or the original text if either the text or the database are null      */
 annotation|@
 name|Deprecated
-comment|// use BibDatabase.resolveForStrings
 DECL|method|getText (String toResolve, BibDatabase database)
 specifier|public
 specifier|static
