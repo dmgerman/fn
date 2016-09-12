@@ -96,7 +96,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|external
+name|gui
+operator|.
+name|externalfiletype
 operator|.
 name|ExternalFileType
 import|;
@@ -110,7 +112,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|external
+name|gui
+operator|.
+name|externalfiletype
 operator|.
 name|ExternalFileTypes
 import|;
@@ -126,6 +130,8 @@ name|jabref
 operator|.
 name|gui
 operator|.
+name|filelist
+operator|.
 name|FileListEntry
 import|;
 end_import
@@ -139,6 +145,8 @@ operator|.
 name|jabref
 operator|.
 name|gui
+operator|.
+name|filelist
 operator|.
 name|FileListTableModel
 import|;

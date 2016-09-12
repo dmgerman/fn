@@ -1130,6 +1130,20 @@ literal|"\uf46b"
 argument_list|)
 block|,
 comment|/* css: rss */
+DECL|enumConstant|GLOBAL_SEARCH_ON
+name|GLOBAL_SEARCH_ON
+argument_list|(
+literal|"\uF1E7"
+argument_list|)
+block|,
+comment|/* css: earth */
+DECL|enumConstant|GLOBAL_SEARCH_OFF
+name|GLOBAL_SEARCH_OFF
+argument_list|(
+literal|"\uF1E8"
+argument_list|)
+block|,
+comment|/* css: earth-off */
 comment|// STILL MISSING:
 DECL|enumConstant|GROUP_REGULAR
 name|GROUP_REGULAR

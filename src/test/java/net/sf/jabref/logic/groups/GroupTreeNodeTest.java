@@ -126,20 +126,6 @@ end_import
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|preferences
-operator|.
-name|JabRefPreferences
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|junit
@@ -305,17 +291,7 @@ name|GroupHierarchyType
 operator|.
 name|INCLUDING
 argument_list|,
-name|JabRefPreferences
-operator|.
-name|getInstance
-argument_list|()
-operator|.
-name|get
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|KEYWORD_SEPARATOR
-argument_list|)
+literal|", "
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -335,17 +311,7 @@ name|GroupHierarchyType
 operator|.
 name|INDEPENDENT
 argument_list|,
-name|JabRefPreferences
-operator|.
-name|getInstance
-argument_list|()
-operator|.
-name|get
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|KEYWORD_SEPARATOR
-argument_list|)
+literal|", "
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -365,17 +331,7 @@ name|GroupHierarchyType
 operator|.
 name|REFINING
 argument_list|,
-name|JabRefPreferences
-operator|.
-name|getInstance
-argument_list|()
-operator|.
-name|get
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|KEYWORD_SEPARATOR
-argument_list|)
+literal|", "
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -434,17 +390,7 @@ name|GroupHierarchyType
 operator|.
 name|INCLUDING
 argument_list|,
-name|JabRefPreferences
-operator|.
-name|getInstance
-argument_list|()
-operator|.
-name|get
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|KEYWORD_SEPARATOR
-argument_list|)
+literal|", "
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -464,17 +410,7 @@ name|GroupHierarchyType
 operator|.
 name|INDEPENDENT
 argument_list|,
-name|JabRefPreferences
-operator|.
-name|getInstance
-argument_list|()
-operator|.
-name|get
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|KEYWORD_SEPARATOR
-argument_list|)
+literal|", "
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -617,17 +553,7 @@ name|GroupHierarchyType
 operator|.
 name|INDEPENDENT
 argument_list|,
-name|JabRefPreferences
-operator|.
-name|getInstance
-argument_list|()
-operator|.
-name|get
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|KEYWORD_SEPARATOR
-argument_list|)
+literal|", "
 argument_list|)
 return|;
 block|}
@@ -679,17 +605,7 @@ name|GroupHierarchyType
 operator|.
 name|REFINING
 argument_list|,
-name|JabRefPreferences
-operator|.
-name|getInstance
-argument_list|()
-operator|.
-name|get
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|KEYWORD_SEPARATOR
-argument_list|)
+literal|", "
 argument_list|)
 return|;
 block|}
@@ -861,17 +777,7 @@ name|GroupHierarchyType
 operator|.
 name|INDEPENDENT
 argument_list|,
-name|JabRefPreferences
-operator|.
-name|getInstance
-argument_list|()
-operator|.
-name|get
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|KEYWORD_SEPARATOR
-argument_list|)
+literal|", "
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -915,17 +821,7 @@ name|GroupHierarchyType
 operator|.
 name|INDEPENDENT
 argument_list|,
-name|JabRefPreferences
-operator|.
-name|getInstance
-argument_list|()
-operator|.
-name|get
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|KEYWORD_SEPARATOR
-argument_list|)
+literal|", "
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -945,17 +841,7 @@ name|GroupHierarchyType
 operator|.
 name|REFINING
 argument_list|,
-name|JabRefPreferences
-operator|.
-name|getInstance
-argument_list|()
-operator|.
-name|get
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|KEYWORD_SEPARATOR
-argument_list|)
+literal|", "
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -1023,17 +909,7 @@ name|GroupHierarchyType
 operator|.
 name|INCLUDING
 argument_list|,
-name|JabRefPreferences
-operator|.
-name|getInstance
-argument_list|()
-operator|.
-name|get
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|KEYWORD_SEPARATOR
-argument_list|)
+literal|", "
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -1053,17 +929,7 @@ name|GroupHierarchyType
 operator|.
 name|INDEPENDENT
 argument_list|,
-name|JabRefPreferences
-operator|.
-name|getInstance
-argument_list|()
-operator|.
-name|get
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|KEYWORD_SEPARATOR
-argument_list|)
+literal|", "
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -1172,17 +1038,7 @@ name|GroupHierarchyType
 operator|.
 name|INDEPENDENT
 argument_list|,
-name|JabRefPreferences
-operator|.
-name|getInstance
-argument_list|()
-operator|.
-name|get
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|KEYWORD_SEPARATOR
-argument_list|)
+literal|", "
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -1239,17 +1095,7 @@ name|GroupHierarchyType
 operator|.
 name|INDEPENDENT
 argument_list|,
-name|JabRefPreferences
-operator|.
-name|getInstance
-argument_list|()
-operator|.
-name|get
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|KEYWORD_SEPARATOR
-argument_list|)
+literal|", "
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -1306,17 +1152,7 @@ name|GroupHierarchyType
 operator|.
 name|INDEPENDENT
 argument_list|,
-name|JabRefPreferences
-operator|.
-name|getInstance
-argument_list|()
-operator|.
-name|get
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|KEYWORD_SEPARATOR
-argument_list|)
+literal|", "
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -1344,17 +1180,7 @@ name|GroupHierarchyType
 operator|.
 name|REFINING
 argument_list|,
-name|JabRefPreferences
-operator|.
-name|getInstance
-argument_list|()
-operator|.
-name|get
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|KEYWORD_SEPARATOR
-argument_list|)
+literal|", "
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -1411,17 +1237,7 @@ name|GroupHierarchyType
 operator|.
 name|INDEPENDENT
 argument_list|,
-name|JabRefPreferences
-operator|.
-name|getInstance
-argument_list|()
-operator|.
-name|get
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|KEYWORD_SEPARATOR
-argument_list|)
+literal|", "
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -1449,17 +1265,7 @@ name|GroupHierarchyType
 operator|.
 name|INDEPENDENT
 argument_list|,
-name|JabRefPreferences
-operator|.
-name|getInstance
-argument_list|()
-operator|.
-name|get
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|KEYWORD_SEPARATOR
-argument_list|)
+literal|", "
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -1504,17 +1310,7 @@ name|GroupHierarchyType
 operator|.
 name|INDEPENDENT
 argument_list|,
-name|JabRefPreferences
-operator|.
-name|getInstance
-argument_list|()
-operator|.
-name|get
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|KEYWORD_SEPARATOR
-argument_list|)
+literal|", "
 argument_list|)
 decl_stmt|;
 name|node
@@ -1561,17 +1357,7 @@ name|GroupHierarchyType
 operator|.
 name|INDEPENDENT
 argument_list|,
-name|JabRefPreferences
-operator|.
-name|getInstance
-argument_list|()
-operator|.
-name|get
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|KEYWORD_SEPARATOR
-argument_list|)
+literal|", "
 argument_list|)
 decl_stmt|;
 name|oldGroup
@@ -1603,17 +1389,7 @@ name|GroupHierarchyType
 operator|.
 name|INDEPENDENT
 argument_list|,
-name|JabRefPreferences
-operator|.
-name|getInstance
-argument_list|()
-operator|.
-name|get
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|KEYWORD_SEPARATOR
-argument_list|)
+literal|", "
 argument_list|)
 decl_stmt|;
 name|node
@@ -1660,17 +1436,7 @@ name|GroupHierarchyType
 operator|.
 name|INDEPENDENT
 argument_list|,
-name|JabRefPreferences
-operator|.
-name|getInstance
-argument_list|()
-operator|.
-name|get
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|KEYWORD_SEPARATOR
-argument_list|)
+literal|", "
 argument_list|)
 decl_stmt|;
 name|oldGroup
@@ -1702,17 +1468,7 @@ name|GroupHierarchyType
 operator|.
 name|INDEPENDENT
 argument_list|,
-name|JabRefPreferences
-operator|.
-name|getInstance
-argument_list|()
-operator|.
-name|get
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|KEYWORD_SEPARATOR
-argument_list|)
+literal|", "
 argument_list|)
 decl_stmt|;
 name|node
@@ -1759,17 +1515,7 @@ name|GroupHierarchyType
 operator|.
 name|INDEPENDENT
 argument_list|,
-name|JabRefPreferences
-operator|.
-name|getInstance
-argument_list|()
-operator|.
-name|get
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|KEYWORD_SEPARATOR
-argument_list|)
+literal|", "
 argument_list|)
 decl_stmt|;
 name|assertFalse
@@ -1804,17 +1550,7 @@ name|GroupHierarchyType
 operator|.
 name|INDEPENDENT
 argument_list|,
-name|JabRefPreferences
-operator|.
-name|getInstance
-argument_list|()
-operator|.
-name|get
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|KEYWORD_SEPARATOR
-argument_list|)
+literal|", "
 argument_list|)
 decl_stmt|;
 name|node
@@ -1861,17 +1597,7 @@ name|GroupHierarchyType
 operator|.
 name|INDEPENDENT
 argument_list|,
-name|JabRefPreferences
-operator|.
-name|getInstance
-argument_list|()
-operator|.
-name|get
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|KEYWORD_SEPARATOR
-argument_list|)
+literal|", "
 argument_list|)
 decl_stmt|;
 name|oldGroup
@@ -1954,17 +1680,7 @@ name|GroupHierarchyType
 operator|.
 name|INDEPENDENT
 argument_list|,
-name|JabRefPreferences
-operator|.
-name|getInstance
-argument_list|()
-operator|.
-name|get
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|KEYWORD_SEPARATOR
-argument_list|)
+literal|", "
 argument_list|)
 decl_stmt|;
 name|oldGroup
@@ -1996,17 +1712,7 @@ name|GroupHierarchyType
 operator|.
 name|INDEPENDENT
 argument_list|,
-name|JabRefPreferences
-operator|.
-name|getInstance
-argument_list|()
-operator|.
-name|get
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|KEYWORD_SEPARATOR
-argument_list|)
+literal|", "
 argument_list|)
 decl_stmt|;
 name|node

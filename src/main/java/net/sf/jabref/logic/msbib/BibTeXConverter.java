@@ -195,6 +195,7 @@ name|MSBIB_PREFIX
 init|=
 literal|"msbib-"
 decl_stmt|;
+comment|/**      * Converts an {@link MSBibEntry} to a {@link BibEntry} for import      * @param entry The MsBibEntry to convert      * @return The bib entry      */
 DECL|method|convert (MSBibEntry entry)
 specifier|public
 specifier|static
@@ -646,7 +647,7 @@ name|put
 argument_list|(
 name|FieldName
 operator|.
-name|ADDRESS
+name|LOCATION
 argument_list|,
 name|entry
 operator|.

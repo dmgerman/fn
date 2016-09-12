@@ -269,7 +269,7 @@ name|ParserResult
 argument_list|(
 name|dbase
 operator|.
-name|importEntries
+name|importEntriesFromXml
 argument_list|(
 name|reader
 argument_list|)

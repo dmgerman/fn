@@ -1023,7 +1023,10 @@ argument_list|)
 expr_stmt|;
 name|bPanel
 operator|.
-name|getSearchBar
+name|frame
+argument_list|()
+operator|.
+name|getGlobalSearchBar
 argument_list|()
 operator|.
 name|getSearchQueryHighlightObservable

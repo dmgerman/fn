@@ -137,53 +137,52 @@ operator|.
 name|empty
 argument_list|()
 decl_stmt|;
-comment|/**      * Adds a SearchQueryHighlightListener to the search bar. The added listener is immediately informed about the current search.      * Subscribers will be notified about searches.      *      * @param l SearchQueryHighlightListener to be added      */
-DECL|method|addSearchListener (SearchQueryHighlightListener l)
+comment|/**      * Adds a SearchQueryHighlightListener to the search bar. The added listener is immediately informed about the current search.      * Subscribers will be notified about searches.      *      * @param newListener SearchQueryHighlightListener to be added      */
+DECL|method|addSearchListener (SearchQueryHighlightListener newListener)
 specifier|public
-name|void
+name|SearchQueryHighlightObservable
 name|addSearchListener
 parameter_list|(
 name|SearchQueryHighlightListener
-name|l
+name|newListener
 parameter_list|)
 block|{
 name|Objects
 operator|.
 name|requireNonNull
 argument_list|(
-name|l
+name|newListener
 argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|!
 name|listeners
 operator|.
 name|contains
 argument_list|(
-name|l
+name|newListener
 argument_list|)
 condition|)
-block|{
-return|return;
-block|}
-else|else
 block|{
 name|listeners
 operator|.
 name|add
 argument_list|(
-name|l
+name|newListener
 argument_list|)
 expr_stmt|;
-block|}
-comment|// fire event for the new subscriber
-name|l
+name|newListener
 operator|.
 name|highlightPattern
 argument_list|(
 name|pattern
 argument_list|)
 expr_stmt|;
+block|}
+return|return
+name|this
+return|;
 block|}
 DECL|method|getListenerCount ()
 specifier|public

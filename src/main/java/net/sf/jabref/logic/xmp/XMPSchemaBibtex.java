@@ -96,6 +96,18 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|xml
+operator|.
+name|transform
+operator|.
+name|TransformerException
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -1482,13 +1494,11 @@ block|{
 name|String
 name|value
 init|=
-name|BibDatabase
+name|entry
 operator|.
-name|getResolvedField
+name|getResolvedFieldOrAlias
 argument_list|(
 name|field
-argument_list|,
-name|entry
 argument_list|,
 name|database
 argument_list|)

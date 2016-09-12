@@ -114,6 +114,18 @@ name|swing
 operator|.
 name|plaf
 operator|.
+name|ComponentUI
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|plaf
+operator|.
 name|basic
 operator|.
 name|BasicLabelUI
@@ -219,7 +231,7 @@ block|}
 comment|/**      * Overridden to always return Component.BaselineResizeBehavior.OTHER,      * since a vertical label does not have a meaningful baseline      *      * @see ComponentUI#getBaselineResizeBehavior(javax.swing.JComponent)      */
 annotation|@
 name|Override
-DECL|method|getBaselineResizeBehavior ( JComponent c)
+DECL|method|getBaselineResizeBehavior (JComponent c)
 specifier|public
 name|Component
 operator|.

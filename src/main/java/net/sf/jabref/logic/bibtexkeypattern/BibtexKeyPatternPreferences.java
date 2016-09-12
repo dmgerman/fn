@@ -36,12 +36,6 @@ specifier|public
 class|class
 name|BibtexKeyPatternPreferences
 block|{
-DECL|field|defaultBibtexKeyPattern
-specifier|private
-specifier|final
-name|String
-name|defaultBibtexKeyPattern
-decl_stmt|;
 DECL|field|keyPatternRegex
 specifier|private
 specifier|final
@@ -78,13 +72,10 @@ specifier|final
 name|GlobalBibtexKeyPattern
 name|keyPattern
 decl_stmt|;
-DECL|method|BibtexKeyPatternPreferences (String defaultBibtexKeyPattern, String keyPatternRegex, String keyPatternReplacement, boolean alwaysAddLetter, boolean firstLetterA, boolean enforceLegalKey, GlobalBibtexKeyPattern keyPattern)
+DECL|method|BibtexKeyPatternPreferences (String keyPatternRegex, String keyPatternReplacement, boolean alwaysAddLetter, boolean firstLetterA, boolean enforceLegalKey, GlobalBibtexKeyPattern keyPattern)
 specifier|public
 name|BibtexKeyPatternPreferences
 parameter_list|(
-name|String
-name|defaultBibtexKeyPattern
-parameter_list|,
 name|String
 name|keyPatternRegex
 parameter_list|,
@@ -104,12 +95,6 @@ name|GlobalBibtexKeyPattern
 name|keyPattern
 parameter_list|)
 block|{
-name|this
-operator|.
-name|defaultBibtexKeyPattern
-operator|=
-name|defaultBibtexKeyPattern
-expr_stmt|;
 name|this
 operator|.
 name|keyPatternRegex
@@ -195,16 +180,6 @@ parameter_list|()
 block|{
 return|return
 name|enforceLegalKey
-return|;
-block|}
-DECL|method|getDefaultBibtexKeyPattern ()
-specifier|public
-name|String
-name|getDefaultBibtexKeyPattern
-parameter_list|()
-block|{
-return|return
-name|defaultBibtexKeyPattern
 return|;
 block|}
 DECL|method|getKeyPattern ()

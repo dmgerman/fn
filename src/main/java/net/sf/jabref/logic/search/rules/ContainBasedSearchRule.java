@@ -50,7 +50,7 @@ name|layout
 operator|.
 name|format
 operator|.
-name|RemoveLatexCommands
+name|LatexToUnicodeFormatter
 import|;
 end_import
 
@@ -82,15 +82,15 @@ name|ContainBasedSearchRule
 implements|implements
 name|SearchRule
 block|{
-DECL|field|REMOVE_LATEX_COMMANDS
+DECL|field|LATEX_TO_UNICODE_FORMATTER
 specifier|private
 specifier|static
 specifier|final
-name|RemoveLatexCommands
-name|REMOVE_LATEX_COMMANDS
+name|LatexToUnicodeFormatter
+name|LATEX_TO_UNICODE_FORMATTER
 init|=
 operator|new
-name|RemoveLatexCommands
+name|LatexToUnicodeFormatter
 argument_list|()
 decl_stmt|;
 DECL|field|caseSensitive
@@ -203,7 +203,7 @@ name|formattedFieldContent
 init|=
 name|ContainBasedSearchRule
 operator|.
-name|REMOVE_LATEX_COMMANDS
+name|LATEX_TO_UNICODE_FORMATTER
 operator|.
 name|format
 argument_list|(

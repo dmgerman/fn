@@ -258,6 +258,26 @@ argument_list|,
 literal|"BookTitle"
 argument_list|)
 expr_stmt|;
+name|biblatexToMsBib
+operator|.
+name|put
+argument_list|(
+literal|"shorttitle"
+argument_list|,
+literal|"ShortTitle"
+argument_list|)
+expr_stmt|;
+name|biblatexToMsBib
+operator|.
+name|put
+argument_list|(
+name|FieldName
+operator|.
+name|NOTE
+argument_list|,
+literal|"Comments"
+argument_list|)
+expr_stmt|;
 comment|//biblatexToMsBib.put(FieldName.BOOKTITLE, "ConferenceName");
 comment|//biblatexToMsBib.put(FieldName.PAGES, "Pages");
 name|biblatexToMsBib
@@ -473,9 +493,13 @@ name|biblatexToMsBib
 operator|.
 name|put
 argument_list|(
-literal|"shorttitle"
+name|FieldName
+operator|.
+name|KEY
 argument_list|,
-literal|"ShortTitle"
+name|BIBTEX_PREFIX
+operator|+
+literal|"Key"
 argument_list|)
 expr_stmt|;
 comment|// MSBib only fields

@@ -648,7 +648,7 @@ argument_list|)
 expr_stmt|;
 name|database
 operator|.
-name|insertEntry
+name|insertEntryWithDuplicationCheck
 argument_list|(
 name|entry
 argument_list|)
@@ -1008,16 +1008,7 @@ name|GroupHierarchyType
 operator|.
 name|INDEPENDENT
 argument_list|,
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|get
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|KEYWORD_SEPARATOR
-argument_list|)
+literal|", "
 argument_list|)
 decl_stmt|;
 return|return

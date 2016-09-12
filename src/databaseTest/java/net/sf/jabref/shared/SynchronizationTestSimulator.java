@@ -74,18 +74,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|model
 operator|.
 name|database
@@ -123,20 +111,6 @@ operator|.
 name|entry
 operator|.
 name|BibEntry
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|preferences
-operator|.
-name|JabRefPreferences
 import|;
 end_import
 
@@ -324,15 +298,6 @@ name|dbmsType
 argument_list|)
 expr_stmt|;
 block|}
-name|Globals
-operator|.
-name|prefs
-operator|=
-name|JabRefPreferences
-operator|.
-name|getInstance
-argument_list|()
-expr_stmt|;
 name|clientContextA
 operator|=
 operator|new
@@ -349,6 +314,8 @@ argument_list|,
 name|DatabaseLocation
 operator|.
 name|SHARED
+argument_list|,
+literal|", "
 argument_list|)
 expr_stmt|;
 name|clientContextA
@@ -381,6 +348,8 @@ argument_list|,
 name|DatabaseLocation
 operator|.
 name|SHARED
+argument_list|,
+literal|", "
 argument_list|)
 expr_stmt|;
 name|clientContextB

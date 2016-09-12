@@ -406,13 +406,9 @@ specifier|private
 name|String
 name|bibtexEntryType
 decl_stmt|;
-comment|// reduced subset, supports only "CITY , STATE, COUNTRY"
-comment|// \b(\w+)\s?[,]?\s?(\w+)\s?[,]?\s?(\w+)\b
-comment|// WORD SPACE , SPACE WORD SPACE , SPACE WORD
-comment|// tested using http://www.javaregex.com/test.html
+comment|/**      * reduced subset, supports only "CITY , STATE, COUNTRY"<br>      *<b>\b(\w+)\s?[,]?\s?(\w+)\s?[,]?\s?(\w*)\b</b><br>      *  WORD SPACE , SPACE WORD SPACE (Can be zero or more) , SPACE WORD (Can be zero or more)<br>      *  Matches both single locations (only city) like Berlin and full locations like Stroudsburg, PA, USA<br>      *  tested using http://www.regexpal.com/      */
 DECL|field|ADDRESS_PATTERN
 specifier|private
-specifier|static
 specifier|final
 name|Pattern
 name|ADDRESS_PATTERN
@@ -421,13 +417,10 @@ name|Pattern
 operator|.
 name|compile
 argument_list|(
-literal|"\\b(\\w+)\\s?[,]?\\s?(\\w+)\\s?[,]?\\s?(\\w+)\\b"
+literal|"\\b(\\w+)\\s?[,]?\\s?(\\w*)\\s?[,]?\\s?(\\w*)\\b"
 argument_list|)
 decl_stmt|;
-comment|// Allows 20.3-2007|||20/3-  2007 etc.
-comment|// (\d{1,2})\s?[.,-/]\s?(\d{1,2})\s?[.,-/]\s?(\d{2,4})
-comment|// 1-2 DIGITS SPACE SEPERATOR SPACE 1-2 DIGITS SPACE SEPERATOR SPACE 2-4 DIGITS
-comment|// tested using http://www.javaregex.com/test.html
+comment|/**      * Allows 20.3-2007|||20/3-  2007 etc.      *<b>(\d{1,2})\s?[.,-/]\s?(\d{1,2})\s?[.,-/]\s?(\d{2,4})</b>      * 1-2 DIGITS SPACE SEPERATOR SPACE 1-2 DIGITS SPACE SEPERATOR SPACE 2-4 DIGITS      */
 DECL|field|DATE_PATTERN
 specifier|private
 specifier|static
@@ -446,7 +439,10 @@ DECL|method|MSBibEntry ()
 specifier|public
 name|MSBibEntry
 parameter_list|()
-block|{      }
+block|{
+comment|//empty
+block|}
+comment|/**      * Createa new {@link MsBibEntry} to import from an xml element      * @param entry      */
 DECL|method|MSBibEntry (Element entry)
 specifier|public
 name|MSBibEntry
@@ -740,25 +736,44 @@ name|append
 argument_list|(
 name|city
 argument_list|)
-operator|.
-name|append
-argument_list|(
-literal|", "
-argument_list|)
 expr_stmt|;
 block|}
 if|if
 condition|(
+operator|(
+operator|(
 name|state
 operator|!=
 literal|null
+operator|)
+operator|&&
+operator|!
+name|state
+operator|.
+name|isEmpty
+argument_list|()
+operator|)
+operator|&&
+operator|(
+operator|(
+name|city
+operator|!=
+literal|null
+operator|)
+operator|&&
+operator|!
+name|city
+operator|.
+name|isEmpty
+argument_list|()
+operator|)
 condition|)
 block|{
 name|addressBuffer
 operator|.
 name|append
 argument_list|(
-name|state
+literal|","
 argument_list|)
 operator|.
 name|append
@@ -766,14 +781,41 @@ argument_list|(
 literal|' '
 argument_list|)
 expr_stmt|;
+name|addressBuffer
+operator|.
+name|append
+argument_list|(
+name|state
+argument_list|)
+expr_stmt|;
 block|}
 if|if
 condition|(
+operator|(
 name|country
 operator|!=
 literal|null
+operator|)
+operator|&&
+operator|!
+name|country
+operator|.
+name|isEmpty
+argument_list|()
 condition|)
 block|{
+name|addressBuffer
+operator|.
+name|append
+argument_list|(
+literal|","
+argument_list|)
+operator|.
+name|append
+argument_list|(
+literal|' '
+argument_list|)
+expr_stmt|;
 name|addressBuffer
 operator|.
 name|append
@@ -1475,10 +1517,11 @@ return|return
 name|result
 return|;
 block|}
-DECL|method|getDOM (Document document)
+comment|/**      * Gets the dom representation for one entry, used for export      * @param document XmlDocument      * @return XmlElement represenation of one entry      */
+DECL|method|getEntryDom (Document document)
 specifier|public
 name|Element
-name|getDOM
+name|getEntryDom
 parameter_list|(
 name|Document
 name|document
@@ -1893,6 +1936,17 @@ name|document
 argument_list|,
 name|rootNode
 argument_list|,
+literal|"Number"
+argument_list|,
+name|number
+argument_list|)
+expr_stmt|;
+name|addField
+argument_list|(
+name|document
+argument_list|,
+name|rootNode
+argument_list|,
 literal|"StandardNumber"
 argument_list|,
 name|standardNumber
@@ -2204,7 +2258,7 @@ name|authorTop
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|addAddress (Document document, Element parent, String address)
+DECL|method|addAddress (Document document, Element parent, String addressToSplit)
 specifier|private
 name|void
 name|addAddress
@@ -2216,12 +2270,12 @@ name|Element
 name|parent
 parameter_list|,
 name|String
-name|address
+name|addressToSplit
 parameter_list|)
 block|{
 if|if
 condition|(
-name|address
+name|addressToSplit
 operator|==
 literal|null
 condition|)
@@ -2235,7 +2289,7 @@ name|ADDRESS_PATTERN
 operator|.
 name|matcher
 argument_list|(
-name|address
+name|addressToSplit
 argument_list|)
 decl_stmt|;
 if|if
@@ -2314,7 +2368,7 @@ name|parent
 argument_list|,
 literal|"City"
 argument_list|,
-name|address
+name|addressToSplit
 argument_list|)
 expr_stmt|;
 block|}

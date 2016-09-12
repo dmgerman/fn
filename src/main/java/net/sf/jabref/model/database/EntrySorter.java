@@ -76,7 +76,6 @@ specifier|public
 class|class
 name|EntrySorter
 block|{
-comment|// guarded by itself
 DECL|field|entries
 specifier|private
 specifier|final

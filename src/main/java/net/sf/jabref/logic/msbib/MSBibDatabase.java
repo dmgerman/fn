@@ -253,7 +253,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Microsoft Word bibliography.  *  * See http://www.ecma-international.org/publications/standards/Ecma-376.htm  */
+comment|/**  * Microsoft Word bibliography.  * The class is uesed both for import and export  * See http://www.ecma-international.org/publications/standards/Ecma-376.htm  */
 end_comment
 
 begin_class
@@ -304,6 +304,7 @@ name|MSBibEntry
 argument_list|>
 name|entries
 decl_stmt|;
+comment|/**      * Creates a {@link MSBibDatabase} for<b>import</b>      */
 DECL|method|MSBibDatabase ()
 specifier|public
 name|MSBibDatabase
@@ -318,6 +319,7 @@ argument_list|()
 expr_stmt|;
 block|}
 comment|// TODO: why an additonal entry list? entries are included inside database!
+comment|/**      * Creates a new {@link MSBibDatabase} for<b>export</b>      * @param database The bib database      * @param entries List of {@link BibEntry}      */
 DECL|method|MSBibDatabase (BibDatabase database, List<BibEntry> entries)
 specifier|public
 name|MSBibDatabase
@@ -339,7 +341,7 @@ operator|==
 literal|null
 condition|)
 block|{
-name|addEntries
+name|addEntriesForExport
 argument_list|(
 name|database
 operator|.
@@ -350,20 +352,21 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|addEntries
+name|addEntriesForExport
 argument_list|(
 name|entries
 argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|importEntries (BufferedReader reader)
+comment|/**      * Imports entries from an office xml file      * @param reader      * @return List of {@link BibEntry}      */
+DECL|method|importEntriesFromXml (BufferedReader reader)
 specifier|public
 name|List
 argument_list|<
 name|BibEntry
 argument_list|>
-name|importEntries
+name|importEntriesFromXml
 parameter_list|(
 name|BufferedReader
 name|reader
@@ -584,10 +587,10 @@ return|return
 name|bibitems
 return|;
 block|}
-DECL|method|addEntries (List<BibEntry> entriesToAdd)
+DECL|method|addEntriesForExport (List<BibEntry> entriesToAdd)
 specifier|private
 name|void
-name|addEntries
+name|addEntriesForExport
 parameter_list|(
 name|List
 argument_list|<
@@ -630,10 +633,11 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|getDOM ()
+comment|/**      * Gets the assembled dom for export      * @return XML Document      */
+DECL|method|getDomForExport ()
 specifier|public
 name|Document
-name|getDOM
+name|getDomForExport
 parameter_list|()
 block|{
 name|Document
@@ -745,7 +749,7 @@ name|node
 init|=
 name|entry
 operator|.
-name|getDOM
+name|getEntryDom
 argument_list|(
 name|document
 argument_list|)
