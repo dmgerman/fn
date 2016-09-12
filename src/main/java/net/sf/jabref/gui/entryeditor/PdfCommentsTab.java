@@ -1573,7 +1573,7 @@ name|addActionListener
 argument_list|(
 name|e
 lambda|->
-name|copytoClipboard
+name|copyToClipboard
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1605,10 +1605,10 @@ return|return
 name|buttonPanel
 return|;
 block|}
-DECL|method|copytoClipboard ()
+DECL|method|copyToClipboard ()
 specifier|private
 name|void
-name|copytoClipboard
+name|copyToClipboard
 parameter_list|()
 block|{
 operator|new

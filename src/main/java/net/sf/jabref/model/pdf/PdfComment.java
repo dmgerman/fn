@@ -96,6 +96,15 @@ specifier|private
 name|String
 name|text
 decl_stmt|;
+DECL|field|ABBREVIATED_ANNOTATION_NAME_LENGTH
+specifier|private
+specifier|final
+specifier|static
+name|int
+name|ABBREVIATED_ANNOTATION_NAME_LENGTH
+init|=
+literal|45
+decl_stmt|;
 DECL|method|PdfComment (String commentId, String author, String date, int page, String content, String text)
 specifier|public
 name|PdfComment
@@ -222,6 +231,52 @@ name|getContents
 argument_list|()
 expr_stmt|;
 block|}
+comment|/**      * Abbreviate annotation names when they are longer than {@code ABBREVIATED_ANNOTATION_NAME_LENGTH} chars      * @param annotationName      * @return the abbreviated name      */
+DECL|method|abbreviateAnnotationName (final String annotationName )
+specifier|private
+name|String
+name|abbreviateAnnotationName
+parameter_list|(
+specifier|final
+name|String
+name|annotationName
+parameter_list|)
+block|{
+name|int
+name|abbreviatedContentLengthForName
+init|=
+name|ABBREVIATED_ANNOTATION_NAME_LENGTH
+decl_stmt|;
+if|if
+condition|(
+name|annotationName
+operator|.
+name|length
+argument_list|()
+operator|>
+name|abbreviatedContentLengthForName
+condition|)
+block|{
+return|return
+name|annotationName
+operator|.
+name|subSequence
+argument_list|(
+literal|0
+argument_list|,
+name|abbreviatedContentLengthForName
+argument_list|)
+operator|.
+name|toString
+argument_list|()
+operator|+
+literal|"..."
+return|;
+block|}
+return|return
+name|annotationName
+return|;
+block|}
 annotation|@
 name|Override
 DECL|method|toString ()
@@ -231,7 +286,10 @@ name|toString
 parameter_list|()
 block|{
 return|return
+name|abbreviateAnnotationName
+argument_list|(
 name|content
+argument_list|)
 return|;
 block|}
 DECL|method|getCommentId ()
