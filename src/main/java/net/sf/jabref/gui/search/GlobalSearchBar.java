@@ -685,10 +685,11 @@ specifier|private
 name|SearchDisplayMode
 name|searchDisplayMode
 decl_stmt|;
-DECL|field|switchedDatabase
+comment|/**      * if this flag is set the searchbar won't be selected after the next search      */
+DECL|field|dontSelectSearchBar
 specifier|private
 name|boolean
-name|switchedDatabase
+name|dontSelectSearchBar
 decl_stmt|;
 DECL|method|GlobalSearchBar (JabRefFrame frame)
 specifier|public
@@ -1974,10 +1975,10 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-name|switchedDatabase
+name|dontSelectSearchBar
 condition|)
 block|{
-name|switchedDatabase
+name|dontSelectSearchBar
 operator|=
 literal|false
 expr_stmt|;
@@ -2486,7 +2487,7 @@ operator|=
 name|searchResultFrame
 expr_stmt|;
 block|}
-DECL|method|setSearchTerm (String searchTerm, boolean switchedDatabase)
+DECL|method|setSearchTerm (String searchTerm, boolean dontSelectSearchBar)
 specifier|public
 name|void
 name|setSearchTerm
@@ -2495,7 +2496,7 @@ name|String
 name|searchTerm
 parameter_list|,
 name|boolean
-name|switchedDatabase
+name|dontSelectSearchBar
 parameter_list|)
 block|{
 if|if
@@ -2513,11 +2514,10 @@ condition|)
 block|{
 return|return;
 block|}
-name|this
-operator|.
-name|switchedDatabase
-operator|=
-name|switchedDatabase
+name|setDontSelectSearchBar
+argument_list|(
+name|dontSelectSearchBar
+argument_list|)
 expr_stmt|;
 name|searchField
 operator|.
@@ -2533,6 +2533,22 @@ name|setVisible
 argument_list|(
 literal|false
 argument_list|)
+expr_stmt|;
+block|}
+DECL|method|setDontSelectSearchBar (boolean dontSelectSearchBar)
+specifier|public
+name|void
+name|setDontSelectSearchBar
+parameter_list|(
+name|boolean
+name|dontSelectSearchBar
+parameter_list|)
+block|{
+name|this
+operator|.
+name|dontSelectSearchBar
+operator|=
+name|dontSelectSearchBar
 expr_stmt|;
 block|}
 block|}
