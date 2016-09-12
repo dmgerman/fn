@@ -366,7 +366,12 @@ name|UTF_8
 argument_list|)
 decl_stmt|;
 comment|// BibTeX entry
-return|return
+name|Optional
+argument_list|<
+name|BibEntry
+argument_list|>
+name|result
+init|=
 name|BibtexParser
 operator|.
 name|singleFromString
@@ -378,6 +383,9 @@ argument_list|)
 argument_list|,
 name|preferences
 argument_list|)
+decl_stmt|;
+return|return
+name|result
 return|;
 block|}
 else|else
@@ -386,9 +394,14 @@ throw|throw
 operator|new
 name|FetcherException
 argument_list|(
-literal|"Invalid DOI: "
-operator|+
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"Invalid DOI: %s"
+argument_list|,
 name|identifier
+argument_list|)
 argument_list|)
 throw|;
 block|}
