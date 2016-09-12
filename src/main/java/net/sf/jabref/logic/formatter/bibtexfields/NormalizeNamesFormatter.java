@@ -18,6 +18,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Objects
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -107,15 +117,22 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|format (String value)
+DECL|method|format (String nameList)
 specifier|public
 name|String
 name|format
 parameter_list|(
 name|String
-name|value
+name|nameList
 parameter_list|)
 block|{
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|nameList
+argument_list|)
+expr_stmt|;
 name|AuthorList
 name|authorList
 init|=
@@ -123,7 +140,7 @@ name|AuthorList
 operator|.
 name|parse
 argument_list|(
-name|value
+name|nameList
 argument_list|)
 decl_stmt|;
 return|return
