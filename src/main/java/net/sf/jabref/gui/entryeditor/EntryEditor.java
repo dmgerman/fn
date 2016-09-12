@@ -7973,6 +7973,9 @@ argument_list|,
 name|ex
 argument_list|)
 expr_stmt|;
+name|requestFocus
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 block|}
