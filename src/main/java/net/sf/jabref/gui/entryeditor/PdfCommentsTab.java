@@ -48,6 +48,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|awt
+operator|.
+name|SystemColor
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|io
 operator|.
 name|IOException
@@ -391,7 +401,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Comments and marked text"
+literal|"Comments and highlighted text"
 argument_list|)
 argument_list|,
 name|JLabel
@@ -770,9 +780,29 @@ argument_list|)
 expr_stmt|;
 name|tabConstraints
 operator|.
+name|weightx
+operator|=
+literal|1
+expr_stmt|;
+name|tabConstraints
+operator|.
+name|weighty
+operator|=
+literal|1
+expr_stmt|;
+name|tabConstraints
+operator|.
 name|gridy
 operator|=
 literal|1
+expr_stmt|;
+name|tabConstraints
+operator|.
+name|fill
+operator|=
+name|GridBagConstraints
+operator|.
+name|BOTH
 expr_stmt|;
 name|this
 operator|.
@@ -1135,11 +1165,23 @@ argument_list|()
 decl_stmt|;
 name|pdfLayoutConstrains
 operator|.
+name|weightx
+operator|=
+literal|1
+expr_stmt|;
+name|pdfLayoutConstrains
+operator|.
+name|weighty
+operator|=
+literal|1
+expr_stmt|;
+name|pdfLayoutConstrains
+operator|.
 name|fill
 operator|=
 name|GridBagConstraints
 operator|.
-name|HORIZONTAL
+name|BOTH
 expr_stmt|;
 name|pdfLayoutConstrains
 operator|.
@@ -1354,7 +1396,15 @@ comment|//        authorLabel.setBounds(0, 44, 61, 20);
 comment|//        informationPanel.add(authorLabel);
 comment|//        authorScrollPane.setBounds(116, 43, 547, 20);
 comment|//        informationPanel.add(authorScrollPane);
-comment|//        authorArea.setBackground(SystemColor.control);
+name|authorArea
+operator|.
+name|setBackground
+argument_list|(
+name|SystemColor
+operator|.
+name|control
+argument_list|)
+expr_stmt|;
 comment|//        authorScrollPane.setViewportView(authorArea);
 name|authorArea
 operator|.
@@ -1368,7 +1418,22 @@ comment|//        dateLabel.setBounds(0, 70, 61, 20);
 comment|//        informationPanel.add(dateLabel);
 comment|//        dateScrollPane.setBounds(116, 69, 547, 20);
 comment|//        informationPanel.add(dateScrollPane);
-comment|//        dateArea.setBackground(SystemColor.control);
+name|dateArea
+operator|.
+name|setBackground
+argument_list|(
+name|SystemColor
+operator|.
+name|control
+argument_list|)
+expr_stmt|;
+name|dateArea
+operator|.
+name|setBorder
+argument_list|(
+literal|null
+argument_list|)
+expr_stmt|;
 comment|//        dateScrollPane.setViewportView(dateArea);
 name|dateArea
 operator|.
@@ -1382,7 +1447,22 @@ comment|//        pageLabel.setBounds(10, 95, 34, 20);
 comment|//        informationPanel.add(pageLabel);
 comment|//        pageScrollPane.setBounds(116, 94, 547, 20);
 comment|//        informationPanel.add(pageScrollPane);
-comment|//        pageArea.setBackground(SystemColor.control);
+name|pageArea
+operator|.
+name|setBackground
+argument_list|(
+name|SystemColor
+operator|.
+name|control
+argument_list|)
+expr_stmt|;
+name|pageArea
+operator|.
+name|setBorder
+argument_list|(
+literal|null
+argument_list|)
+expr_stmt|;
 comment|//        pageScrollPane.setViewportView(pageArea);
 name|pageArea
 operator|.
@@ -1402,6 +1482,13 @@ operator|.
 name|setEditable
 argument_list|(
 literal|false
+argument_list|)
+expr_stmt|;
+name|commentTxtArea
+operator|.
+name|setBorder
+argument_list|(
+literal|null
 argument_list|)
 expr_stmt|;
 comment|//
