@@ -201,16 +201,6 @@ name|ImportFormatPreferences
 name|importFormatPreferences
 parameter_list|)
 block|{
-comment|// String in OpenDatabaseAction.java
-name|LOGGER
-operator|.
-name|info
-argument_list|(
-literal|"Opening: "
-operator|+
-name|name
-argument_list|)
-expr_stmt|;
 name|File
 name|file
 init|=
@@ -220,6 +210,15 @@ argument_list|(
 name|name
 argument_list|)
 decl_stmt|;
+name|LOGGER
+operator|.
+name|info
+argument_list|(
+literal|"Opening: "
+operator|+
+name|name
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 operator|!
@@ -475,7 +474,7 @@ argument_list|)
 expr_stmt|;
 name|LOGGER
 operator|.
-name|info
+name|error
 argument_list|(
 literal|"Problem opening .bib-file"
 argument_list|,
@@ -503,7 +502,6 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-comment|// Open and parse file
 name|ParserResult
 name|result
 init|=

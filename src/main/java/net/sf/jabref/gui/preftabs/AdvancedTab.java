@@ -309,11 +309,10 @@ name|prefs
 expr_stmt|;
 name|remotePreferences
 operator|=
-operator|new
-name|RemotePreferences
-argument_list|(
-name|preferences
-argument_list|)
+name|prefs
+operator|.
+name|getRemotePreferences
+argument_list|()
 expr_stmt|;
 name|useRemoteServer
 operator|=
@@ -948,6 +947,13 @@ name|stop
 argument_list|()
 expr_stmt|;
 block|}
+name|preferences
+operator|.
+name|setRemotePreferences
+argument_list|(
+name|remotePreferences
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|getPortAsInt ()
 specifier|private

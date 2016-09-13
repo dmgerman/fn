@@ -3624,6 +3624,92 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+DECL|method|testGetAuthorsLastFirstAndsCaching ()
+specifier|public
+name|void
+name|testGetAuthorsLastFirstAndsCaching
+parameter_list|()
+block|{
+comment|// getAsLastFirstNamesWithAnd caches its results, therefore we call the method twice using the same arguments
+name|Assert
+operator|.
+name|assertEquals
+argument_list|(
+literal|"Smith, John"
+argument_list|,
+name|AuthorList
+operator|.
+name|parse
+argument_list|(
+literal|"John Smith"
+argument_list|)
+operator|.
+name|getAsLastFirstNamesWithAnd
+argument_list|(
+literal|false
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|Assert
+operator|.
+name|assertEquals
+argument_list|(
+literal|"Smith, John"
+argument_list|,
+name|AuthorList
+operator|.
+name|parse
+argument_list|(
+literal|"John Smith"
+argument_list|)
+operator|.
+name|getAsLastFirstNamesWithAnd
+argument_list|(
+literal|false
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|Assert
+operator|.
+name|assertEquals
+argument_list|(
+literal|"Smith, J."
+argument_list|,
+name|AuthorList
+operator|.
+name|parse
+argument_list|(
+literal|"John Smith"
+argument_list|)
+operator|.
+name|getAsLastFirstNamesWithAnd
+argument_list|(
+literal|true
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|Assert
+operator|.
+name|assertEquals
+argument_list|(
+literal|"Smith, J."
+argument_list|,
+name|AuthorList
+operator|.
+name|parse
+argument_list|(
+literal|"John Smith"
+argument_list|)
+operator|.
+name|getAsLastFirstNamesWithAnd
+argument_list|(
+literal|true
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
 DECL|method|testGetAuthorsFirstFirst ()
 specifier|public
 name|void
