@@ -691,13 +691,12 @@ comment|// Check for running JabRef
 name|RemotePreferences
 name|remotePreferences
 init|=
-operator|new
-name|RemotePreferences
-argument_list|(
 name|Globals
 operator|.
 name|prefs
-argument_list|)
+operator|.
+name|getRemotePreferences
+argument_list|()
 decl_stmt|;
 if|if
 condition|(
