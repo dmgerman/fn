@@ -207,10 +207,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|SeachResultsTest
+DECL|class|SearchResultsTest
 specifier|public
 class|class
-name|SeachResultsTest
+name|SearchResultsTest
 extends|extends
 name|AssertJSwingJUnitTestCase
 block|{

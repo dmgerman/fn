@@ -607,7 +607,7 @@ argument_list|,
 literal|true
 argument_list|)
 operator|.
-name|isValidQuery
+name|isValid
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -623,7 +623,7 @@ argument_list|,
 literal|false
 argument_list|)
 operator|.
-name|isValidQuery
+name|isValid
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -639,7 +639,7 @@ argument_list|,
 literal|false
 argument_list|)
 operator|.
-name|isValidQuery
+name|isValid
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -655,7 +655,7 @@ argument_list|,
 literal|true
 argument_list|)
 operator|.
-name|isValidQuery
+name|isValid
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -671,7 +671,7 @@ argument_list|,
 literal|true
 argument_list|)
 operator|.
-name|isValidQuery
+name|isValid
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -687,7 +687,7 @@ argument_list|,
 literal|true
 argument_list|)
 operator|.
-name|isValidQuery
+name|isValid
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -703,7 +703,7 @@ argument_list|,
 literal|false
 argument_list|)
 operator|.
-name|isValidQuery
+name|isValid
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -719,7 +719,7 @@ argument_list|,
 literal|true
 argument_list|)
 operator|.
-name|isValidQuery
+name|isValid
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -735,7 +735,7 @@ argument_list|,
 literal|false
 argument_list|)
 operator|.
-name|isValidQuery
+name|isValid
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -751,7 +751,7 @@ argument_list|,
 literal|true
 argument_list|)
 operator|.
-name|isValidQuery
+name|isValid
 argument_list|()
 argument_list|)
 expr_stmt|;
