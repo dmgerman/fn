@@ -442,12 +442,10 @@ decl_stmt|;
 name|ProxyPreferences
 name|proxyPreferences
 init|=
-name|ProxyPreferences
-operator|.
-name|loadFromPreferences
-argument_list|(
 name|preferences
-argument_list|)
+operator|.
+name|getProxyPreferences
+argument_list|()
 decl_stmt|;
 name|ProxyRegisterer
 operator|.
