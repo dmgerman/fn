@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|net.sf.jabref.logic.importer.fetcher
+DECL|package|net.sf.jabref.logic.importer.fileformat
 package|package
 name|net
 operator|.
@@ -12,7 +12,7 @@ name|logic
 operator|.
 name|importer
 operator|.
-name|fetcher
+name|fileformat
 package|;
 end_package
 
@@ -89,6 +89,38 @@ operator|.
 name|parsers
 operator|.
 name|ParserConfigurationException
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|importer
+operator|.
+name|Parser
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|importer
+operator|.
+name|ParserException
 import|;
 end_import
 
@@ -243,9 +275,12 @@ import|;
 end_import
 
 begin_class
-DECL|class|GVKParser
+DECL|class|GvkParser
+specifier|public
 class|class
-name|GVKParser
+name|GvkParser
+implements|implements
+name|Parser
 block|{
 DECL|field|LOGGER
 specifier|private
@@ -258,12 +293,15 @@ name|LogFactory
 operator|.
 name|getLog
 argument_list|(
-name|GVKParser
+name|GvkParser
 operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|method|parseEntries (InputStream is)
+annotation|@
+name|Override
+DECL|method|parseEntries (InputStream inputStream)
+specifier|public
 name|List
 argument_list|<
 name|BibEntry
@@ -271,14 +309,12 @@ argument_list|>
 name|parseEntries
 parameter_list|(
 name|InputStream
-name|is
+name|inputStream
 parameter_list|)
 throws|throws
-name|ParserConfigurationException
-throws|,
-name|SAXException
-throws|,
-name|IOException
+name|ParserException
+block|{
+try|try
 block|{
 name|DocumentBuilder
 name|dbuild
@@ -298,7 +334,7 @@ name|dbuild
 operator|.
 name|parse
 argument_list|(
-name|is
+name|inputStream
 argument_list|)
 decl_stmt|;
 return|return
@@ -310,7 +346,27 @@ name|content
 argument_list|)
 return|;
 block|}
+catch|catch
+parameter_list|(
+name|ParserConfigurationException
+decl||
+name|SAXException
+decl||
+name|IOException
+name|exception
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|ParserException
+argument_list|(
+name|exception
+argument_list|)
+throw|;
+block|}
+block|}
 DECL|method|parseEntries (Document content)
+specifier|private
 name|List
 argument_list|<
 name|BibEntry

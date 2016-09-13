@@ -563,6 +563,9 @@ name|CleanupWorker
 argument_list|(
 name|context
 argument_list|,
+operator|new
+name|CleanupPreferences
+argument_list|(
 name|JabRefPreferences
 operator|.
 name|getInstance
@@ -589,6 +592,7 @@ argument_list|()
 operator|.
 name|getFileDirectoryPreferences
 argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

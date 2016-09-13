@@ -153,6 +153,9 @@ operator|.
 name|class
 argument_list|)
 argument_list|,
+operator|new
+name|CleanupPreferences
+argument_list|(
 literal|""
 argument_list|,
 name|mock
@@ -167,6 +170,7 @@ argument_list|(
 name|FileDirectoryPreferences
 operator|.
 name|class
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;

@@ -149,21 +149,15 @@ specifier|private
 name|int
 name|unsuccessfulRenames
 decl_stmt|;
-DECL|method|CleanupWorker (BibDatabaseContext databaseContext, String fileNamePattern, LayoutFormatterPreferences prefs, FileDirectoryPreferences fileDirectoryPreferences)
+DECL|method|CleanupWorker (BibDatabaseContext databaseContext, CleanupPreferences cleanupPreferences)
 specifier|public
 name|CleanupWorker
 parameter_list|(
 name|BibDatabaseContext
 name|databaseContext
 parameter_list|,
-name|String
-name|fileNamePattern
-parameter_list|,
-name|LayoutFormatterPreferences
-name|prefs
-parameter_list|,
-name|FileDirectoryPreferences
-name|fileDirectoryPreferences
+name|CleanupPreferences
+name|cleanupPreferences
 parameter_list|)
 block|{
 name|this
@@ -176,19 +170,28 @@ name|this
 operator|.
 name|fileNamePattern
 operator|=
-name|fileNamePattern
+name|cleanupPreferences
+operator|.
+name|getFileNamePattern
+argument_list|()
 expr_stmt|;
 name|this
 operator|.
 name|prefs
 operator|=
-name|prefs
+name|cleanupPreferences
+operator|.
+name|getLayoutFormatterPreferences
+argument_list|()
 expr_stmt|;
 name|this
 operator|.
 name|fileDirectoryPreferences
 operator|=
-name|fileDirectoryPreferences
+name|cleanupPreferences
+operator|.
+name|getFileDirectoryPreferences
+argument_list|()
 expr_stmt|;
 block|}
 DECL|method|getUnsuccessfulRenames ()
