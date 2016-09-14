@@ -819,18 +819,14 @@ name|isSelected
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|String
-name|localization
-init|=
+if|if
+condition|(
 name|globalSearch
 operator|.
 name|isSelected
 argument_list|()
-condition|?
-literal|"Search in all open databases"
-else|:
-literal|"Show search results in a window"
-decl_stmt|;
+condition|)
+block|{
 name|openCurrentResultsInDialog
 operator|.
 name|setToolTipText
@@ -839,10 +835,26 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-name|localization
+literal|"Search in all open databases"
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+name|openCurrentResultsInDialog
+operator|.
+name|setToolTipText
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Show search results in a window"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 argument_list|)
 expr_stmt|;
