@@ -1052,7 +1052,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"1. REMOVE THESE FROM THE ENGLISH LANGUAGE FILE"
+literal|"1. CAREFULLY CHECK IF THE KEY IS REALLY NOT USED ANYMORE"
 argument_list|)
 expr_stmt|;
 name|System
@@ -1061,7 +1061,16 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"2. EXECUTE gradlew -b localization.gradle generateMissingTranslationKeys TO"
+literal|"2. REMOVE THESE FROM THE ENGLISH LANGUAGE FILE"
+argument_list|)
+expr_stmt|;
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+literal|"3. EXECUTE gradlew -b localization.gradle generateMissingTranslationKeys TO"
 argument_list|)
 expr_stmt|;
 name|System
