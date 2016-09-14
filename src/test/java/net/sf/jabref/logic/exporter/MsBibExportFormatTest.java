@@ -86,6 +86,10 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|model
+operator|.
+name|database
+operator|.
 name|BibDatabaseContext
 import|;
 end_import

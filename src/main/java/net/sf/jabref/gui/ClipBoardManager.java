@@ -644,12 +644,6 @@ init|=
 operator|new
 name|BibtexParser
 argument_list|(
-operator|new
-name|StringReader
-argument_list|(
-name|data
-argument_list|)
-argument_list|,
 name|Globals
 operator|.
 name|prefs
@@ -664,7 +658,13 @@ init|=
 name|bp
 operator|.
 name|parse
-argument_list|()
+argument_list|(
+operator|new
+name|StringReader
+argument_list|(
+name|data
+argument_list|)
+argument_list|)
 operator|.
 name|getDatabase
 argument_list|()

@@ -70,9 +70,9 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|groups
+name|l10n
 operator|.
-name|EntriesGroupChange
+name|Localization
 import|;
 end_import
 
@@ -84,11 +84,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|model
 operator|.
-name|l10n
+name|groups
 operator|.
-name|Localization
+name|EntriesGroupChange
 import|;
 end_import
 
