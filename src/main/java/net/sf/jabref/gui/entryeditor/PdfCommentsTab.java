@@ -20,16 +20,6 @@ name|java
 operator|.
 name|awt
 operator|.
-name|Dimension
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|awt
-operator|.
 name|GridBagConstraints
 import|;
 end_import
@@ -41,6 +31,16 @@ operator|.
 name|awt
 operator|.
 name|GridBagLayout
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|awt
+operator|.
+name|Insets
 import|;
 end_import
 
@@ -756,19 +756,6 @@ name|ipadx
 operator|=
 literal|200
 expr_stmt|;
-name|commentScrollPane
-operator|.
-name|setMinimumSize
-argument_list|(
-operator|new
-name|Dimension
-argument_list|(
-literal|200
-argument_list|,
-literal|150
-argument_list|)
-argument_list|)
-expr_stmt|;
 name|this
 operator|.
 name|add
@@ -1165,6 +1152,22 @@ argument_list|()
 decl_stmt|;
 name|pdfLayoutConstrains
 operator|.
+name|insets
+operator|=
+operator|new
+name|Insets
+argument_list|(
+literal|5
+argument_list|,
+literal|5
+argument_list|,
+literal|5
+argument_list|,
+literal|5
+argument_list|)
+expr_stmt|;
+name|pdfLayoutConstrains
+operator|.
 name|weightx
 operator|=
 literal|1
@@ -1229,6 +1232,13 @@ argument_list|(
 name|authorArea
 argument_list|)
 expr_stmt|;
+name|authorScrollPane
+operator|.
+name|setBorder
+argument_list|(
+literal|null
+argument_list|)
+expr_stmt|;
 name|pdfCommentPanel
 operator|.
 name|add
@@ -1272,6 +1282,13 @@ argument_list|(
 name|dateArea
 argument_list|)
 expr_stmt|;
+name|dateScrollPane
+operator|.
+name|setBorder
+argument_list|(
+literal|null
+argument_list|)
+expr_stmt|;
 name|pdfCommentPanel
 operator|.
 name|add
@@ -1313,6 +1330,13 @@ operator|.
 name|setViewportView
 argument_list|(
 name|pageArea
+argument_list|)
+expr_stmt|;
+name|pageScrollPane
+operator|.
+name|setBorder
+argument_list|(
+literal|null
 argument_list|)
 expr_stmt|;
 name|pdfCommentPanel
@@ -1366,6 +1390,12 @@ name|commentTxtScrollPane
 argument_list|,
 name|pdfLayoutConstrains
 argument_list|)
+expr_stmt|;
+name|pdfLayoutConstrains
+operator|.
+name|weighty
+operator|=
+literal|0
 expr_stmt|;
 name|pdfLayoutConstrains
 operator|.
@@ -1427,13 +1457,7 @@ operator|.
 name|control
 argument_list|)
 expr_stmt|;
-name|dateArea
-operator|.
-name|setBorder
-argument_list|(
-literal|null
-argument_list|)
-expr_stmt|;
+comment|//        dateArea.setBorder(null);
 comment|//        dateScrollPane.setViewportView(dateArea);
 name|dateArea
 operator|.
@@ -1456,13 +1480,7 @@ operator|.
 name|control
 argument_list|)
 expr_stmt|;
-name|pageArea
-operator|.
-name|setBorder
-argument_list|(
-literal|null
-argument_list|)
-expr_stmt|;
+comment|//        pageArea.setBorder(null);
 comment|//        pageScrollPane.setViewportView(pageArea);
 name|pageArea
 operator|.
@@ -1477,18 +1495,12 @@ comment|//        informationPanel.add(commentTxtLabel);
 comment|//        commentTxtScrollPane.setBounds(116, 143, 547, 173);
 comment|//        informationPanel.add(commentTxtScrollPane);
 comment|//        commentTxtScrollPane.setViewportView(commentTxtArea);
+comment|//        commentTxtArea.setBorder(null);
 name|commentTxtArea
 operator|.
 name|setEditable
 argument_list|(
 literal|false
-argument_list|)
-expr_stmt|;
-name|commentTxtArea
-operator|.
-name|setBorder
-argument_list|(
-literal|null
 argument_list|)
 expr_stmt|;
 comment|//
