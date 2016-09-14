@@ -22,7 +22,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|FileDirectoryPreferences
+name|logic
+operator|.
+name|layout
+operator|.
+name|LayoutFormatterPreferences
 import|;
 end_import
 
@@ -34,11 +38,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|model
 operator|.
-name|layout
+name|metadata
 operator|.
-name|LayoutFormatterPreferences
+name|FileDirectoryPreferences
 import|;
 end_import
 

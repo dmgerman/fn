@@ -138,9 +138,11 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|groups
+name|util
 operator|.
-name|GroupTreeNode
+name|strings
+operator|.
+name|StringUtil
 import|;
 end_import
 
@@ -152,13 +154,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|model
 operator|.
-name|util
+name|groups
 operator|.
-name|strings
-operator|.
-name|StringUtil
+name|GroupTreeNode
 import|;
 end_import
 

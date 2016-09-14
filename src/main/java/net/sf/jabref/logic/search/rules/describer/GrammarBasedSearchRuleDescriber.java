@@ -66,11 +66,11 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|search
+name|util
 operator|.
-name|rules
+name|strings
 operator|.
-name|GrammarBasedSearchRule
+name|StringUtil
 import|;
 end_import
 
@@ -82,13 +82,13 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|model
 operator|.
-name|util
+name|search
 operator|.
-name|strings
+name|rules
 operator|.
-name|StringUtil
+name|GrammarBasedSearchRule
 import|;
 end_import
 

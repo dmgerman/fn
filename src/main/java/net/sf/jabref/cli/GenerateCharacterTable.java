@@ -40,11 +40,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|model
 operator|.
 name|util
-operator|.
-name|strings
 operator|.
 name|HTMLUnicodeConversionMaps
 import|;

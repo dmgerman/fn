@@ -150,11 +150,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|event
+name|model
 operator|.
-name|source
+name|entry
 operator|.
-name|EntryEventSource
+name|BibEntry
 import|;
 end_import
 
@@ -170,7 +170,9 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibEntry
+name|event
+operator|.
+name|EntryEventSource
 import|;
 end_import
 

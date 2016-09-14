@@ -14,18 +14,6 @@ name|database
 package|;
 end_package
 
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|BibDatabaseContext
-import|;
-end_import
-
 begin_comment
 comment|/**  *  This enum represents the location for {@link BibDatabaseContext}.  */
 end_comment

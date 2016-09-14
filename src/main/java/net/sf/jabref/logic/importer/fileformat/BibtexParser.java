@@ -196,18 +196,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|MetaData
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|logic
 operator|.
 name|bibtex
@@ -310,7 +298,7 @@ name|importer
 operator|.
 name|util
 operator|.
-name|ParseException
+name|MetaDataParser
 import|;
 end_import
 
@@ -327,6 +315,20 @@ operator|.
 name|l10n
 operator|.
 name|Localization
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|ParseException
 import|;
 end_import
 
@@ -487,6 +489,22 @@ operator|.
 name|entry
 operator|.
 name|InternalBibtexFields
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|metadata
+operator|.
+name|MetaData
 import|;
 end_import
 
@@ -1155,7 +1173,7 @@ name|parserResult
 operator|.
 name|setMetaData
 argument_list|(
-name|MetaData
+name|MetaDataParser
 operator|.
 name|parse
 argument_list|(
