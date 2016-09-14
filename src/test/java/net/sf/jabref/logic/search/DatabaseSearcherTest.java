@@ -650,8 +650,10 @@ name|assertEquals
 argument_list|(
 name|Collections
 operator|.
-name|emptyList
-argument_list|()
+name|singletonList
+argument_list|(
+name|entry
+argument_list|)
 argument_list|,
 name|databaseSearcher
 operator|.
