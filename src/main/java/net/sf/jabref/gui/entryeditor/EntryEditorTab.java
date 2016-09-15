@@ -1718,6 +1718,23 @@ argument_list|(
 name|field
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|fieldEditor
+operator|.
+name|getText
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+name|content
+argument_list|)
+condition|)
+block|{
+return|return
+literal|true
+return|;
+block|}
 comment|// trying to preserve current edit position (fixes SF bug #1285)
 if|if
 condition|(
