@@ -8405,14 +8405,27 @@ argument_list|(
 name|be
 argument_list|)
 expr_stmt|;
+comment|// The database just changed.
 name|markBaseChanged
 argument_list|()
 expr_stmt|;
-comment|// The database just changed.
+specifier|final
+name|EntryEditor
+name|entryEditor
+init|=
 name|getEntryEditor
 argument_list|(
 name|be
 argument_list|)
+decl_stmt|;
+name|this
+operator|.
+name|showEntryEditor
+argument_list|(
+name|entryEditor
+argument_list|)
+expr_stmt|;
+name|entryEditor
 operator|.
 name|requestFocus
 argument_list|()
@@ -9155,6 +9168,13 @@ operator|.
 name|setFocusToField
 argument_list|(
 name|fieldName
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|showEntryEditor
+argument_list|(
+name|editor
 argument_list|)
 expr_stmt|;
 name|editor
