@@ -10458,7 +10458,7 @@ block|}
 return|return;
 block|}
 name|EntryEditor
-name|form
+name|entryEditor
 decl_stmt|;
 name|int
 name|divLoc
@@ -10530,7 +10530,7 @@ argument_list|)
 condition|)
 block|{
 comment|// We already have an editor for this entry type.
-name|form
+name|entryEditor
 operator|=
 name|entryEditors
 operator|.
@@ -10542,7 +10542,7 @@ name|getType
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|form
+name|entryEditor
 operator|.
 name|switchTo
 argument_list|(
@@ -10556,7 +10556,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|form
+name|entryEditor
 operator|.
 name|setVisiblePanel
 argument_list|(
@@ -10568,14 +10568,14 @@ name|splitPane
 operator|.
 name|setBottomComponent
 argument_list|(
-name|form
+name|entryEditor
 argument_list|)
 expr_stmt|;
 block|}
 else|else
 block|{
 comment|// We must instantiate a new editor for this type.
-name|form
+name|entryEditor
 operator|=
 operator|new
 name|EntryEditor
@@ -10596,7 +10596,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|form
+name|entryEditor
 operator|.
 name|setVisiblePanel
 argument_list|(
@@ -10608,7 +10608,7 @@ name|splitPane
 operator|.
 name|setBottomComponent
 argument_list|(
-name|form
+name|entryEditor
 argument_list|)
 expr_stmt|;
 name|entryEditors
@@ -10620,7 +10620,7 @@ operator|.
 name|getType
 argument_list|()
 argument_list|,
-name|form
+name|entryEditor
 argument_list|)
 expr_stmt|;
 block|}
@@ -10692,7 +10692,7 @@ name|entry
 parameter_list|)
 block|{
 name|EntryEditor
-name|form
+name|entryEditor
 decl_stmt|;
 if|if
 condition|(
@@ -10713,7 +10713,7 @@ init|=
 name|currentEditor
 decl_stmt|;
 comment|// We already have an editor for this entry type.
-name|form
+name|entryEditor
 operator|=
 name|entryEditors
 operator|.
@@ -10738,7 +10738,7 @@ operator|&&
 operator|(
 operator|!
 operator|(
-name|form
+name|entryEditor
 operator|.
 name|equals
 argument_list|(
@@ -10754,7 +10754,7 @@ name|storeCurrentEdit
 argument_list|()
 expr_stmt|;
 block|}
-name|form
+name|entryEditor
 operator|.
 name|switchTo
 argument_list|(
@@ -10770,7 +10770,7 @@ name|storeCurrentEdit
 argument_list|()
 expr_stmt|;
 comment|// Then start the new one:
-name|form
+name|entryEditor
 operator|=
 operator|new
 name|EntryEditor
@@ -10793,12 +10793,12 @@ operator|.
 name|getType
 argument_list|()
 argument_list|,
-name|form
+name|entryEditor
 argument_list|)
 expr_stmt|;
 block|}
 return|return
-name|form
+name|entryEditor
 return|;
 block|}
 end_function
