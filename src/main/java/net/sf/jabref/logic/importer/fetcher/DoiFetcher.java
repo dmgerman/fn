@@ -432,7 +432,12 @@ throw|throw
 operator|new
 name|FetcherException
 argument_list|(
-literal|"Bad URL when fetching DOI info"
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Invalid URL"
+argument_list|)
 argument_list|,
 name|e
 argument_list|)

@@ -2638,7 +2638,10 @@ name|ParserResult
 operator|.
 name|fromErrorMessage
 argument_list|(
-literal|"Bad URL when fetching DOI info"
+name|e
+operator|.
+name|getMessage
+argument_list|()
 argument_list|)
 return|;
 block|}

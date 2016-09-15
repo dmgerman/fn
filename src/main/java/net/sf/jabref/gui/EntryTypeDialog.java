@@ -1396,11 +1396,9 @@ name|LOGGER
 operator|.
 name|error
 argument_list|(
-literal|"Error fetching from "
-operator|+
-name|fetcher
+name|e
 operator|.
-name|getName
+name|getMessage
 argument_list|()
 argument_list|,
 name|e
@@ -1423,6 +1421,13 @@ operator|.
 name|getName
 argument_list|()
 argument_list|)
+operator|+
+literal|"\n"
+operator|+
+name|e
+operator|.
+name|getMessage
+argument_list|()
 argument_list|,
 name|Localization
 operator|.
