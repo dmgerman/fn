@@ -1108,22 +1108,6 @@ name|gui
 operator|.
 name|util
 operator|.
-name|FocusRequester
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|util
-operator|.
 name|component
 operator|.
 name|CheckBoxMessage
@@ -2742,11 +2726,12 @@ name|BaseAction
 call|)
 argument_list|()
 operator|->
-operator|new
-name|FocusRequester
-argument_list|(
+block|{
 name|mainTable
-argument_list|)
+operator|.
+name|requestFocus
+argument_list|()
+block|;         }
 argument_list|)
 expr_stmt|;
 comment|// The action for opening an entry editor.
@@ -8424,14 +8409,13 @@ name|markBaseChanged
 argument_list|()
 expr_stmt|;
 comment|// The database just changed.
-operator|new
-name|FocusRequester
-argument_list|(
 name|getEntryEditor
 argument_list|(
 name|be
 argument_list|)
-argument_list|)
+operator|.
+name|requestFocus
+argument_list|()
 expr_stmt|;
 return|return
 name|be
@@ -9173,11 +9157,10 @@ argument_list|(
 name|fieldName
 argument_list|)
 expr_stmt|;
-operator|new
-name|FocusRequester
-argument_list|(
 name|editor
-argument_list|)
+operator|.
+name|requestFocus
+argument_list|()
 expr_stmt|;
 block|}
 block|}
