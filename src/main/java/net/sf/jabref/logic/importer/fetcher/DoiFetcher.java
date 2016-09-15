@@ -382,12 +382,7 @@ name|UTF_8
 argument_list|)
 decl_stmt|;
 comment|// BibTeX entry
-name|Optional
-argument_list|<
-name|BibEntry
-argument_list|>
-name|result
-init|=
+return|return
 name|BibtexParser
 operator|.
 name|singleFromString
@@ -399,9 +394,6 @@ argument_list|)
 argument_list|,
 name|preferences
 argument_list|)
-decl_stmt|;
-return|return
-name|result
 return|;
 block|}
 else|else
