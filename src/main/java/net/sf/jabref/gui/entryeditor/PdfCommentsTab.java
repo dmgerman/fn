@@ -433,7 +433,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Comments and highlighted text"
+literal|"Comments"
 argument_list|)
 argument_list|,
 name|JLabel
@@ -1247,7 +1247,7 @@ argument_list|)
 operator|.
 name|rows
 argument_list|(
-literal|"pref, $lg, pref, $lg, pref, $lg, pref, $lg, pref, $lg, pref, $lg, pref"
+literal|"pref, $lg, pref, $lg, pref, $lg, pref, $lg, fill:pref:grow, $lg, pref"
 argument_list|)
 operator|.
 name|padding
@@ -1267,6 +1267,8 @@ argument_list|(
 literal|1
 argument_list|,
 literal|1
+argument_list|,
+literal|"left, top"
 argument_list|)
 operator|.
 name|add
@@ -1291,6 +1293,8 @@ argument_list|(
 literal|1
 argument_list|,
 literal|3
+argument_list|,
+literal|"left, top"
 argument_list|)
 operator|.
 name|add
@@ -1315,6 +1319,8 @@ argument_list|(
 literal|1
 argument_list|,
 literal|5
+argument_list|,
+literal|"left, top"
 argument_list|)
 operator|.
 name|add
@@ -1339,6 +1345,8 @@ argument_list|(
 literal|1
 argument_list|,
 literal|7
+argument_list|,
+literal|"left, top"
 argument_list|)
 operator|.
 name|add
@@ -1363,6 +1371,8 @@ argument_list|(
 literal|1
 argument_list|,
 literal|9
+argument_list|,
+literal|"left, top"
 argument_list|)
 operator|.
 name|add
