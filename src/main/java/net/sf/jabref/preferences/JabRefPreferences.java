@@ -4142,7 +4142,9 @@ name|put
 argument_list|(
 name|BIBLATEX_DEFAULT_MODE
 argument_list|,
-literal|false
+name|Boolean
+operator|.
+name|FALSE
 argument_list|)
 expr_stmt|;
 if|if
@@ -4233,7 +4235,9 @@ name|put
 argument_list|(
 name|EMACS_23
 argument_list|,
-literal|true
+name|Boolean
+operator|.
+name|TRUE
 argument_list|)
 expr_stmt|;
 name|defaults
@@ -4291,7 +4295,9 @@ name|put
 argument_list|(
 name|EMACS_23
 argument_list|,
-literal|false
+name|Boolean
+operator|.
+name|FALSE
 argument_list|)
 expr_stmt|;
 name|defaults
@@ -5922,7 +5928,9 @@ name|put
 argument_list|(
 name|OO_SYNC_WHEN_CITING
 argument_list|,
-literal|false
+name|Boolean
+operator|.
+name|FALSE
 argument_list|)
 expr_stmt|;
 name|defaults
@@ -5931,7 +5939,9 @@ name|put
 argument_list|(
 name|OO_SHOW_PANEL
 argument_list|,
-literal|false
+name|Boolean
+operator|.
+name|FALSE
 argument_list|)
 expr_stmt|;
 name|defaults
@@ -5940,7 +5950,9 @@ name|put
 argument_list|(
 name|OO_USE_ALL_OPEN_BASES
 argument_list|,
-literal|true
+name|Boolean
+operator|.
+name|TRUE
 argument_list|)
 expr_stmt|;
 name|defaults

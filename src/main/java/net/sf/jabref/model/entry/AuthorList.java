@@ -1894,7 +1894,7 @@ name|authorsAlph
 return|;
 block|}
 comment|/**      * Builds a new array of strings with stringbuilder.      * Regarding to the name affixes.      * @return New string with correct seperation      */
-DECL|method|buildWithAffix (Collection<Integer> indexArray, List nameList)
+DECL|method|buildWithAffix (Collection<Integer> indexArray, List<String> nameList)
 specifier|private
 specifier|static
 name|StringBuilder
@@ -1907,6 +1907,9 @@ argument_list|>
 name|indexArray
 parameter_list|,
 name|List
+argument_list|<
+name|String
+argument_list|>
 name|nameList
 parameter_list|)
 block|{

@@ -297,8 +297,6 @@ name|String
 argument_list|>
 name|queryList
 parameter_list|)
-throws|throws
-name|FetcherException
 block|{
 name|String
 name|query
@@ -382,8 +380,6 @@ parameter_list|(
 name|String
 name|query
 parameter_list|)
-throws|throws
-name|FetcherException
 block|{
 name|Objects
 operator|.

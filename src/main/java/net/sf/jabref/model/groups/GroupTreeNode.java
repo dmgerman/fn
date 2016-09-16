@@ -925,13 +925,13 @@ name|getName
 argument_list|()
 return|;
 block|}
-DECL|method|addSubgroup (AbstractGroup group)
+DECL|method|addSubgroup (AbstractGroup subgroup)
 specifier|public
 name|GroupTreeNode
 name|addSubgroup
 parameter_list|(
 name|AbstractGroup
-name|group
+name|subgroup
 parameter_list|)
 block|{
 name|GroupTreeNode
@@ -941,7 +941,7 @@ name|GroupTreeNode
 operator|.
 name|fromGroup
 argument_list|(
-name|group
+name|subgroup
 argument_list|)
 decl_stmt|;
 name|addChild

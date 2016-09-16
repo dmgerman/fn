@@ -20,16 +20,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|Optional
@@ -315,8 +305,6 @@ name|testFetcher10
 parameter_list|()
 throws|throws
 name|FetcherException
-throws|,
-name|IOException
 block|{
 name|Optional
 argument_list|<
@@ -353,8 +341,6 @@ name|testFetcher13
 parameter_list|()
 throws|throws
 name|FetcherException
-throws|,
-name|IOException
 block|{
 name|Optional
 argument_list|<
@@ -391,8 +377,6 @@ name|testFetcher10Empty
 parameter_list|()
 throws|throws
 name|FetcherException
-throws|,
-name|IOException
 block|{
 name|Optional
 argument_list|<
@@ -427,8 +411,6 @@ name|testFetcher10ShortISBN
 parameter_list|()
 throws|throws
 name|FetcherException
-throws|,
-name|IOException
 block|{
 name|Optional
 argument_list|<
@@ -463,8 +445,6 @@ name|testFetcher10LongISBN
 parameter_list|()
 throws|throws
 name|FetcherException
-throws|,
-name|IOException
 block|{
 name|Optional
 argument_list|<
@@ -499,8 +479,6 @@ name|testFetcher10InvalidISBN
 parameter_list|()
 throws|throws
 name|FetcherException
-throws|,
-name|IOException
 block|{
 name|Optional
 argument_list|<
