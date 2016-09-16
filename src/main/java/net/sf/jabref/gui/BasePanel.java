@@ -1108,22 +1108,6 @@ name|gui
 operator|.
 name|util
 operator|.
-name|FocusRequester
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|util
-operator|.
 name|component
 operator|.
 name|CheckBoxMessage
@@ -2742,11 +2726,12 @@ name|BaseAction
 call|)
 argument_list|()
 operator|->
-operator|new
-name|FocusRequester
-argument_list|(
+block|{
 name|mainTable
-argument_list|)
+operator|.
+name|requestFocus
+argument_list|()
+block|;         }
 argument_list|)
 expr_stmt|;
 comment|// The action for opening an entry editor.
@@ -8420,18 +8405,30 @@ argument_list|(
 name|be
 argument_list|)
 expr_stmt|;
+comment|// The database just changed.
 name|markBaseChanged
 argument_list|()
 expr_stmt|;
-comment|// The database just changed.
-operator|new
-name|FocusRequester
-argument_list|(
+specifier|final
+name|EntryEditor
+name|entryEditor
+init|=
 name|getEntryEditor
 argument_list|(
 name|be
 argument_list|)
+decl_stmt|;
+name|this
+operator|.
+name|showEntryEditor
+argument_list|(
+name|entryEditor
 argument_list|)
+expr_stmt|;
+name|entryEditor
+operator|.
+name|requestFocus
+argument_list|()
 expr_stmt|;
 return|return
 name|be
@@ -9173,11 +9170,17 @@ argument_list|(
 name|fieldName
 argument_list|)
 expr_stmt|;
-operator|new
-name|FocusRequester
+name|this
+operator|.
+name|showEntryEditor
 argument_list|(
 name|editor
 argument_list|)
+expr_stmt|;
+name|editor
+operator|.
+name|requestFocus
+argument_list|()
 expr_stmt|;
 block|}
 block|}
@@ -10458,7 +10461,7 @@ block|}
 return|return;
 block|}
 name|EntryEditor
-name|form
+name|entryEditor
 decl_stmt|;
 name|int
 name|divLoc
@@ -10530,7 +10533,7 @@ argument_list|)
 condition|)
 block|{
 comment|// We already have an editor for this entry type.
-name|form
+name|entryEditor
 operator|=
 name|entryEditors
 operator|.
@@ -10542,7 +10545,7 @@ name|getType
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|form
+name|entryEditor
 operator|.
 name|switchTo
 argument_list|(
@@ -10556,7 +10559,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|form
+name|entryEditor
 operator|.
 name|setVisiblePanel
 argument_list|(
@@ -10568,14 +10571,14 @@ name|splitPane
 operator|.
 name|setBottomComponent
 argument_list|(
-name|form
+name|entryEditor
 argument_list|)
 expr_stmt|;
 block|}
 else|else
 block|{
 comment|// We must instantiate a new editor for this type.
-name|form
+name|entryEditor
 operator|=
 operator|new
 name|EntryEditor
@@ -10596,7 +10599,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|form
+name|entryEditor
 operator|.
 name|setVisiblePanel
 argument_list|(
@@ -10608,7 +10611,7 @@ name|splitPane
 operator|.
 name|setBottomComponent
 argument_list|(
-name|form
+name|entryEditor
 argument_list|)
 expr_stmt|;
 name|entryEditors
@@ -10620,7 +10623,7 @@ operator|.
 name|getType
 argument_list|()
 argument_list|,
-name|form
+name|entryEditor
 argument_list|)
 expr_stmt|;
 block|}
@@ -10692,7 +10695,7 @@ name|entry
 parameter_list|)
 block|{
 name|EntryEditor
-name|form
+name|entryEditor
 decl_stmt|;
 if|if
 condition|(
@@ -10713,7 +10716,7 @@ init|=
 name|currentEditor
 decl_stmt|;
 comment|// We already have an editor for this entry type.
-name|form
+name|entryEditor
 operator|=
 name|entryEditors
 operator|.
@@ -10738,7 +10741,7 @@ operator|&&
 operator|(
 operator|!
 operator|(
-name|form
+name|entryEditor
 operator|.
 name|equals
 argument_list|(
@@ -10754,7 +10757,7 @@ name|storeCurrentEdit
 argument_list|()
 expr_stmt|;
 block|}
-name|form
+name|entryEditor
 operator|.
 name|switchTo
 argument_list|(
@@ -10770,7 +10773,7 @@ name|storeCurrentEdit
 argument_list|()
 expr_stmt|;
 comment|// Then start the new one:
-name|form
+name|entryEditor
 operator|=
 operator|new
 name|EntryEditor
@@ -10793,12 +10796,12 @@ operator|.
 name|getType
 argument_list|()
 argument_list|,
-name|form
+name|entryEditor
 argument_list|)
 expr_stmt|;
 block|}
 return|return
-name|form
+name|entryEditor
 return|;
 block|}
 end_function

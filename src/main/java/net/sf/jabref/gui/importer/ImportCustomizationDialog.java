@@ -348,22 +348,6 @@ name|gui
 operator|.
 name|util
 operator|.
-name|FocusRequester
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|util
-operator|.
 name|GUIUtil
 import|;
 end_import
@@ -1749,11 +1733,10 @@ argument_list|(
 name|frame
 argument_list|)
 expr_stmt|;
-operator|new
-name|FocusRequester
-argument_list|(
 name|customImporterTable
-argument_list|)
+operator|.
+name|requestFocus
+argument_list|()
 expr_stmt|;
 block|}
 comment|/*     *  (non-Javadoc)     * @see java.awt.Component#getSize()     */
