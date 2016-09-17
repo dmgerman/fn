@@ -892,6 +892,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 name|panel
 operator|.
 name|add
@@ -900,7 +901,6 @@ name|createIdFetcherPanel
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 return|return
 name|panel
 return|;
