@@ -284,7 +284,7 @@ parameter_list|()
 block|{
 name|assertEquals
 argument_list|(
-literal|"ISBNtoBibTeXHelp"
+literal|"ISBNtoBibTeX"
 argument_list|,
 name|fetcher
 operator|.

@@ -386,7 +386,7 @@ parameter_list|()
 block|{
 name|assertEquals
 argument_list|(
-literal|"DOItoBibTeXHelp"
+literal|"DOItoBibTeX"
 argument_list|,
 name|fetcher
 operator|.

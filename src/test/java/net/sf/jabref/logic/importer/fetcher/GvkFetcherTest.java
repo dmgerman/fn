@@ -442,7 +442,7 @@ parameter_list|()
 block|{
 name|assertEquals
 argument_list|(
-literal|"GVKHelp"
+literal|"GVK"
 argument_list|,
 name|fetcher
 operator|.
