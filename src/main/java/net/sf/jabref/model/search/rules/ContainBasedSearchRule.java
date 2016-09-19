@@ -199,8 +199,6 @@ block|{
 name|String
 name|formattedFieldContent
 init|=
-name|ContainBasedSearchRule
-operator|.
 name|LATEX_TO_UNICODE_FORMATTER
 operator|.
 name|format
