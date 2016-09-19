@@ -859,15 +859,6 @@ argument_list|(
 name|commentList
 argument_list|)
 expr_stmt|;
-name|commentLabel
-operator|.
-name|setForeground
-argument_list|(
-name|GUIGlobals
-operator|.
-name|ENTRY_EDITOR_LABEL_COLOR
-argument_list|)
-expr_stmt|;
 name|this
 operator|.
 name|add
