@@ -6122,15 +6122,6 @@ range|:
 name|tabs
 control|)
 block|{
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-name|tab
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 name|tab
