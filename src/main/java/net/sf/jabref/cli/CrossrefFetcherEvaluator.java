@@ -299,8 +299,6 @@ init|=
 operator|new
 name|BibtexParser
 argument_list|(
-name|reader
-argument_list|,
 name|Globals
 operator|.
 name|prefs
@@ -315,7 +313,9 @@ init|=
 name|parser
 operator|.
 name|parse
-argument_list|()
+argument_list|(
+name|reader
+argument_list|)
 decl_stmt|;
 name|BibDatabase
 name|db

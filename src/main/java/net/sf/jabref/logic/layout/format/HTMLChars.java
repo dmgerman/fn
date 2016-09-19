@@ -50,11 +50,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|model
 operator|.
 name|util
-operator|.
-name|strings
 operator|.
 name|HTMLUnicodeConversionMaps
 import|;
@@ -68,13 +66,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|model
 operator|.
 name|util
 operator|.
-name|strings
-operator|.
-name|StringUtil
+name|ModelStringUtil
 import|;
 end_import
 
@@ -351,7 +347,7 @@ operator|==
 literal|'%'
 operator|)
 operator|||
-name|StringUtil
+name|ModelStringUtil
 operator|.
 name|SPECIAL_COMMAND_CHARS
 operator|.
@@ -406,7 +402,7 @@ operator|==
 literal|1
 operator|)
 operator|&&
-name|StringUtil
+name|ModelStringUtil
 operator|.
 name|SPECIAL_COMMAND_CHARS
 operator|.
@@ -472,7 +468,7 @@ block|{
 name|String
 name|part
 init|=
-name|StringUtil
+name|ModelStringUtil
 operator|.
 name|getPart
 argument_list|(
@@ -692,7 +688,7 @@ block|{
 name|String
 name|part
 init|=
-name|StringUtil
+name|ModelStringUtil
 operator|.
 name|getPart
 argument_list|(
@@ -759,7 +755,7 @@ block|{
 name|String
 name|argument
 init|=
-name|StringUtil
+name|ModelStringUtil
 operator|.
 name|getPart
 argument_list|(

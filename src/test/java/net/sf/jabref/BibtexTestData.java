@@ -162,12 +162,9 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|StringReader
-name|reader
+name|String
+name|article
 init|=
-operator|new
-name|StringReader
-argument_list|(
 literal|"@ARTICLE{HipKro03,\n"
 operator|+
 literal|"  author = {Eric von Hippel and Georg von Krogh},\n"
@@ -197,7 +194,6 @@ operator|+
 literal|"  publisher = {INFORMS}\n"
 operator|+
 literal|"}"
-argument_list|)
 decl_stmt|;
 name|BibtexParser
 name|parser
@@ -205,8 +201,6 @@ init|=
 operator|new
 name|BibtexParser
 argument_list|(
-name|reader
-argument_list|,
 name|importFormatPreferences
 argument_list|)
 decl_stmt|;
@@ -216,7 +210,13 @@ init|=
 name|parser
 operator|.
 name|parse
-argument_list|()
+argument_list|(
+operator|new
+name|StringReader
+argument_list|(
+name|article
+argument_list|)
+argument_list|)
 decl_stmt|;
 return|return
 name|result

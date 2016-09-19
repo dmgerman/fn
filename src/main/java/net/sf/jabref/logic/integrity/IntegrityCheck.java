@@ -52,19 +52,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|model
+operator|.
+name|database
+operator|.
 name|BibDatabaseContext
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|FileDirectoryPreferences
 import|;
 end_import
 
@@ -113,6 +105,22 @@ operator|.
 name|entry
 operator|.
 name|InternalBibtexFields
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|metadata
+operator|.
+name|FileDirectoryPreferences
 import|;
 end_import
 

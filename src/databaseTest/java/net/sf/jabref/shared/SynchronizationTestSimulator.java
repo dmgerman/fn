@@ -50,7 +50,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|BibDatabaseContext
+name|model
+operator|.
+name|Defaults
 import|;
 end_import
 
@@ -62,7 +64,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Defaults
+name|model
+operator|.
+name|database
+operator|.
+name|BibDatabaseContext
 import|;
 end_import
 

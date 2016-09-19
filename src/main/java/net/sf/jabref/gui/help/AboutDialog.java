@@ -612,9 +612,9 @@ operator|.
 name|getYear
 argument_list|()
 argument_list|,
-literal|"http://www.jabref.org"
+literal|"https://www.jabref.org"
 argument_list|,
-literal|"GNU General Public License v2 or later"
+literal|"MIT License"
 argument_list|,
 name|Globals
 operator|.

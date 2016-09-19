@@ -417,8 +417,6 @@ init|=
 operator|new
 name|BibtexParser
 argument_list|(
-name|reader
-argument_list|,
 name|JabRefPreferences
 operator|.
 name|getInstance
@@ -433,7 +431,9 @@ operator|=
 name|parser
 operator|.
 name|parse
-argument_list|()
+argument_list|(
+name|reader
+argument_list|)
 expr_stmt|;
 block|}
 name|Assert

@@ -48,10 +48,16 @@ parameter_list|()
 function_decl|;
 comment|/**      * Returns the help page for this fetcher.      *      * @return the {@link HelpFile} enum constant for the help page      */
 DECL|method|getHelpPage ()
+specifier|default
 name|HelpFile
 name|getHelpPage
 parameter_list|()
-function_decl|;
+block|{
+return|return
+literal|null
+return|;
+comment|// no help page by default
+block|}
 block|}
 end_interface
 
