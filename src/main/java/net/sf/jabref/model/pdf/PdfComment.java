@@ -96,6 +96,11 @@ specifier|private
 name|String
 name|text
 decl_stmt|;
+DECL|field|annotationType
+specifier|private
+name|String
+name|annotationType
+decl_stmt|;
 DECL|field|ABBREVIATED_ANNOTATION_NAME_LENGTH
 specifier|private
 specifier|final
@@ -105,27 +110,37 @@ name|ABBREVIATED_ANNOTATION_NAME_LENGTH
 init|=
 literal|45
 decl_stmt|;
-DECL|method|PdfComment (String commentId, String author, String date, int page, String content, String text)
+DECL|method|PdfComment ( final String commentId, final String author, final String date, final int page, final String content, final String text, final String annotationType)
 specifier|public
 name|PdfComment
 parameter_list|(
+specifier|final
 name|String
 name|commentId
 parameter_list|,
+specifier|final
 name|String
 name|author
 parameter_list|,
+specifier|final
 name|String
 name|date
 parameter_list|,
+specifier|final
 name|int
 name|page
 parameter_list|,
+specifier|final
 name|String
 name|content
 parameter_list|,
+specifier|final
 name|String
 name|text
+parameter_list|,
+specifier|final
+name|String
+name|annotationType
 parameter_list|)
 block|{
 name|this
@@ -163,6 +178,12 @@ operator|.
 name|commentId
 operator|=
 name|commentId
+expr_stmt|;
+name|this
+operator|.
+name|annotationType
+operator|=
+name|annotationType
 expr_stmt|;
 block|}
 DECL|method|PdfComment (PDAnnotation annotation, int page)
@@ -228,6 +249,15 @@ operator|=
 name|annotation
 operator|.
 name|getContents
+argument_list|()
+expr_stmt|;
+name|this
+operator|.
+name|annotationType
+operator|=
+name|annotation
+operator|.
+name|getSubtype
 argument_list|()
 expr_stmt|;
 block|}
@@ -447,6 +477,16 @@ name|text
 operator|=
 name|text
 expr_stmt|;
+block|}
+DECL|method|getAnnotationType ()
+specifier|public
+name|String
+name|getAnnotationType
+parameter_list|()
+block|{
+return|return
+name|annotationType
+return|;
 block|}
 block|}
 end_class
