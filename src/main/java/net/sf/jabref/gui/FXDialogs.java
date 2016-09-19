@@ -351,6 +351,8 @@ argument_list|(
 name|type
 argument_list|,
 name|title
+argument_list|,
+literal|true
 argument_list|)
 decl_stmt|;
 name|alert
