@@ -2953,6 +2953,8 @@ argument_list|,
 name|frame
 argument_list|,
 name|panel
+argument_list|,
+name|tabbed
 argument_list|)
 expr_stmt|;
 name|tabbed

@@ -200,6 +200,16 @@ name|javax
 operator|.
 name|swing
 operator|.
+name|JTabbedPane
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
 name|JTextArea
 import|;
 end_import
@@ -738,6 +748,12 @@ specifier|final
 name|BasePanel
 name|basePanel
 decl_stmt|;
+DECL|field|tabbed
+specifier|private
+specifier|final
+name|JTabbedPane
+name|tabbed
+decl_stmt|;
 DECL|field|commentListSelectedIndex
 specifier|private
 name|int
@@ -776,7 +792,7 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
-DECL|method|PdfCommentsTab (EntryEditor parent, JabRefFrame frame, BasePanel basePanel)
+DECL|method|PdfCommentsTab (EntryEditor parent, JabRefFrame frame, BasePanel basePanel, JTabbedPane tabbed)
 specifier|public
 name|PdfCommentsTab
 parameter_list|(
@@ -788,6 +804,9 @@ name|frame
 parameter_list|,
 name|BasePanel
 name|basePanel
+parameter_list|,
+name|JTabbedPane
+name|tabbed
 parameter_list|)
 block|{
 name|this
@@ -818,6 +837,12 @@ name|lang
 argument_list|(
 literal|"PDF comments"
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|tabbed
+operator|=
+name|tabbed
 expr_stmt|;
 name|setLayout
 argument_list|(
@@ -1130,13 +1155,39 @@ name|indexSelectedByComboBox
 argument_list|)
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|listModel
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+name|tabbed
+operator|.
+name|remove
+argument_list|(
+name|this
+argument_list|)
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|commentList
+operator|.
+name|isSelectionEmpty
+argument_list|()
+condition|)
+block|{
 name|commentList
 operator|.
 name|setSelectedIndex
 argument_list|(
-name|commentListSelectedIndex
+literal|0
 argument_list|)
 expr_stmt|;
+block|}
 comment|//set up the comboBox for representing the selected file
 name|fileNameComboBox
 operator|.
@@ -1370,16 +1421,6 @@ operator|.
 name|setText
 argument_list|(
 name|comment
-operator|.
-name|getContent
-argument_list|()
-operator|+
-literal|" "
-operator|+
-name|comment
-operator|.
-name|getLinkedPdfComment
-argument_list|()
 operator|.
 name|getContent
 argument_list|()
@@ -2037,12 +2078,6 @@ name|ListSelectionEvent
 name|e
 parameter_list|)
 block|{
-comment|//render previously marked linked pdf comments to not show the mark anymore
-name|triggerRenderingACell
-argument_list|(
-name|commentListSelectedIndex
-argument_list|)
-expr_stmt|;
 name|int
 name|index
 decl_stmt|;
@@ -2092,10 +2127,11 @@ argument_list|(
 name|commentListSelectedIndex
 argument_list|)
 expr_stmt|;
-name|triggerRenderingACell
-argument_list|(
-name|commentListSelectedIndex
-argument_list|)
+comment|//repaint the list to refresh the linked annotation highlighting
+name|commentList
+operator|.
+name|repaint
+argument_list|()
 expr_stmt|;
 block|}
 block|}
@@ -2167,6 +2203,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|/**      * Cell renderer that shows different icons dependent on the annotation subtype and highlights annotations that are      * linked with each other eg.      */
 DECL|class|CommentsListCellRenderer
 class|class
 name|CommentsListCellRenderer
