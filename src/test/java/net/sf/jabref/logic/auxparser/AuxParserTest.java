@@ -1217,10 +1217,6 @@ specifier|public
 name|void
 name|testFileNotFound
 parameter_list|()
-throws|throws
-name|URISyntaxException
-throws|,
-name|IOException
 block|{
 name|AuxParser
 name|auxParser

@@ -230,6 +230,22 @@ argument_list|,
 literal|"txt"
 argument_list|)
 block|,
+DECL|enumConstant|MODS
+DECL|enumConstant|Localization.lang
+name|MODS
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"%0 file"
+argument_list|,
+literal|"MODS"
+argument_list|)
+argument_list|,
+literal|"xml"
+argument_list|)
+block|,
 DECL|enumConstant|MSBIB
 DECL|enumConstant|Localization.lang
 name|MSBIB

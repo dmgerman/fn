@@ -580,6 +580,15 @@ name|Object
 index|[]
 block|{
 operator|new
+name|ModsImporter
+argument_list|()
+block|}
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
+operator|new
 name|MsBibImporter
 argument_list|()
 block|}

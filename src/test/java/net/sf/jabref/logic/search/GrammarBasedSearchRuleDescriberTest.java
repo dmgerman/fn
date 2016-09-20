@@ -28,7 +28,9 @@ name|search
 operator|.
 name|rules
 operator|.
-name|GrammarBasedSearchRule
+name|describer
+operator|.
+name|GrammarBasedSearchRuleDescriber
 import|;
 end_import
 
@@ -40,15 +42,13 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|model
 operator|.
 name|search
 operator|.
 name|rules
 operator|.
-name|describer
-operator|.
-name|GrammarBasedSearchRuleDescriber
+name|GrammarBasedSearchRule
 import|;
 end_import
 

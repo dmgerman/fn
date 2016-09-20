@@ -1618,11 +1618,6 @@ argument_list|(
 name|editor
 argument_list|)
 expr_stmt|;
-name|panel
-operator|.
-name|adjustSplitter
-argument_list|()
-expr_stmt|;
 block|}
 name|res
 operator|.

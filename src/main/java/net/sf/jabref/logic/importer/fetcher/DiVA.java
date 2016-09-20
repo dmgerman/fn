@@ -20,9 +20,9 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
+name|net
 operator|.
-name|IOException
+name|MalformedURLException
 import|;
 end_import
 
@@ -40,21 +40,9 @@ begin_import
 import|import
 name|java
 operator|.
-name|nio
+name|net
 operator|.
-name|charset
-operator|.
-name|StandardCharsets
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Optional
+name|URL
 import|;
 end_import
 
@@ -102,7 +90,7 @@ name|logic
 operator|.
 name|importer
 operator|.
-name|IdBasedFetcher
+name|IdBasedParserFetcher
 import|;
 end_import
 
@@ -134,9 +122,7 @@ name|logic
 operator|.
 name|importer
 operator|.
-name|fileformat
-operator|.
-name|BibtexParser
+name|Parser
 import|;
 end_import
 
@@ -150,25 +136,11 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|net
+name|importer
 operator|.
-name|URLDownload
-import|;
-end_import
-
-begin_import
-import|import
-name|net
+name|fileformat
 operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|entry
-operator|.
-name|BibEntry
+name|BibtexParser
 import|;
 end_import
 
@@ -198,18 +170,8 @@ specifier|public
 class|class
 name|DiVA
 implements|implements
-name|IdBasedFetcher
+name|IdBasedParserFetcher
 block|{
-DECL|field|URL
-specifier|private
-specifier|static
-specifier|final
-name|String
-name|URL
-init|=
-literal|"http://www.diva-portal.org/smash/getreferences"
-decl_stmt|;
-comment|// ?referenceFormat=BibTex&pids=%s";
 DECL|field|importFormatPreferences
 specifier|private
 specifier|final
@@ -259,21 +221,20 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|performSearchById (String identifier)
+DECL|method|getURLForID (String identifier)
 specifier|public
-name|Optional
-argument_list|<
-name|BibEntry
-argument_list|>
-name|performSearchById
+name|URL
+name|getURLForID
 parameter_list|(
 name|String
 name|identifier
 parameter_list|)
 throws|throws
+name|URISyntaxException
+throws|,
+name|MalformedURLException
+throws|,
 name|FetcherException
-block|{
-try|try
 block|{
 name|URIBuilder
 name|uriBuilder
@@ -281,7 +242,7 @@ init|=
 operator|new
 name|URIBuilder
 argument_list|(
-name|URL
+literal|"http://www.diva-portal.org/smash/getreferences"
 argument_list|)
 decl_stmt|;
 name|uriBuilder
@@ -302,12 +263,7 @@ argument_list|,
 name|identifier
 argument_list|)
 expr_stmt|;
-name|URLDownload
-name|dl
-init|=
-operator|new
-name|URLDownload
-argument_list|(
+return|return
 name|uriBuilder
 operator|.
 name|build
@@ -315,49 +271,23 @@ argument_list|()
 operator|.
 name|toURL
 argument_list|()
-argument_list|)
-decl_stmt|;
-name|String
-name|bibtexString
-init|=
-name|dl
-operator|.
-name|downloadToString
-argument_list|(
-name|StandardCharsets
-operator|.
-name|UTF_8
-argument_list|)
-decl_stmt|;
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|getParser ()
+specifier|public
+name|Parser
+name|getParser
+parameter_list|()
+block|{
 return|return
+operator|new
 name|BibtexParser
-operator|.
-name|singleFromString
 argument_list|(
-name|bibtexString
-argument_list|,
 name|importFormatPreferences
 argument_list|)
 return|;
-block|}
-catch|catch
-parameter_list|(
-name|URISyntaxException
-decl||
-name|IOException
-name|e
-parameter_list|)
-block|{
-throw|throw
-operator|new
-name|FetcherException
-argument_list|(
-literal|"Problem getting information from DiVA"
-argument_list|,
-name|e
-argument_list|)
-throw|;
-block|}
 block|}
 DECL|method|isValidId (String identifier)
 specifier|public

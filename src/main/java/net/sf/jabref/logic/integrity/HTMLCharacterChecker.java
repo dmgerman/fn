@@ -118,6 +118,38 @@ name|BibEntry
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|FieldProperty
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|InternalBibtexFields
+import|;
+end_import
+
 begin_class
 DECL|class|HTMLCharacterChecker
 specifier|public
@@ -141,7 +173,7 @@ argument_list|(
 literal|"&[#\\p{Alnum}]+;"
 argument_list|)
 decl_stmt|;
-comment|/**      * Checks, if there are any HTML encoded characters in the fields      */
+comment|/**      * Checks, if there are any HTML encoded characters in nonverbatim fields.      */
 annotation|@
 name|Override
 DECL|method|check (BibEntry entry)
@@ -188,6 +220,29 @@ name|entrySet
 argument_list|()
 control|)
 block|{
+comment|// skip verbatim fields
+if|if
+condition|(
+name|InternalBibtexFields
+operator|.
+name|getFieldProperties
+argument_list|(
+name|field
+operator|.
+name|getKey
+argument_list|()
+argument_list|)
+operator|.
+name|contains
+argument_list|(
+name|FieldProperty
+operator|.
+name|VERBATIM
+argument_list|)
+condition|)
+block|{
+continue|continue;
+block|}
 name|Matcher
 name|characterMatcher
 init|=

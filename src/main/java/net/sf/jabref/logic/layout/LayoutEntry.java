@@ -116,18 +116,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|BibDatabaseContext
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|logic
 operator|.
 name|formatter
@@ -1070,7 +1058,7 @@ name|layout
 operator|.
 name|format
 operator|.
-name|RemoveLatexCommands
+name|RemoveLatexCommandsFormatter
 import|;
 end_import
 
@@ -1335,6 +1323,22 @@ operator|.
 name|database
 operator|.
 name|BibDatabase
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|database
+operator|.
+name|BibDatabaseContext
 import|;
 end_import
 
@@ -3388,7 +3392,7 @@ literal|"RemoveLatexCommands"
 case|:
 return|return
 operator|new
-name|RemoveLatexCommands
+name|RemoveLatexCommandsFormatter
 argument_list|()
 return|;
 case|case

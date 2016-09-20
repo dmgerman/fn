@@ -313,17 +313,10 @@ name|status
 operator|.
 name|setStatus
 argument_list|(
-name|Localization
+name|e
 operator|.
-name|lang
-argument_list|(
-literal|"Error while fetching from %0"
-argument_list|,
-name|fetcher
-operator|.
-name|getName
+name|getLocalizedMessage
 argument_list|()
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|LOGGER

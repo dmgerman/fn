@@ -1071,6 +1071,36 @@ argument_list|,
 literal|"ctrl A"
 argument_list|)
 block|,
+DECL|enumConstant|SELECT_FIRST_ENTRY
+name|SELECT_FIRST_ENTRY
+argument_list|(
+literal|"Select first entry"
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Select first entry"
+argument_list|)
+argument_list|,
+literal|"HOME"
+argument_list|)
+block|,
+DECL|enumConstant|SELECT_LAST_ENTRY
+name|SELECT_LAST_ENTRY
+argument_list|(
+literal|"Select last entry"
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Select last entry"
+argument_list|)
+argument_list|,
+literal|"END"
+argument_list|)
+block|,
 DECL|enumConstant|STRING_DIALOG_ADD_STRING
 name|STRING_DIALOG_ADD_STRING
 argument_list|(
