@@ -120,6 +120,7 @@ end_import
 
 begin_class
 DECL|class|TransferableEntrySelection
+specifier|public
 class|class
 name|TransferableEntrySelection
 implements|implements
