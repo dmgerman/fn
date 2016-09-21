@@ -2147,7 +2147,7 @@ name|System
 operator|.
 name|getProperty
 argument_list|(
-literal|"line.seperator"
+literal|"line.separator"
 argument_list|)
 argument_list|)
 decl_stmt|;
