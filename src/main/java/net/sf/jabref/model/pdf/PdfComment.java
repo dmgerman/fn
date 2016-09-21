@@ -16,16 +16,6 @@ end_package
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Optional
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -101,14 +91,6 @@ specifier|private
 name|String
 name|content
 decl_stmt|;
-DECL|field|annotationTypeInfo
-specifier|private
-name|Optional
-argument_list|<
-name|String
-argument_list|>
-name|annotationTypeInfo
-decl_stmt|;
 DECL|field|annotationType
 specifier|private
 name|String
@@ -127,6 +109,11 @@ name|int
 name|ABBREVIATED_ANNOTATION_NAME_LENGTH
 init|=
 literal|45
+decl_stmt|;
+DECL|field|linkedComment
+specifier|private
+name|boolean
+name|linkedComment
 decl_stmt|;
 DECL|method|PdfComment (final String commentId, final String author, final String date, final int page, final String content, final String annotationType)
 specifier|public
@@ -337,6 +324,17 @@ argument_list|(
 name|this
 argument_list|)
 expr_stmt|;
+name|commentToLinkTo
+operator|.
+name|setLinkedComment
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|linkedComment
+operator|=
+literal|true
+expr_stmt|;
 block|}
 annotation|@
 name|Override
@@ -518,6 +516,32 @@ block|{
 return|return
 name|annotationType
 return|;
+block|}
+DECL|method|hasLinkedComment ()
+specifier|public
+name|boolean
+name|hasLinkedComment
+parameter_list|()
+block|{
+return|return
+name|linkedComment
+return|;
+block|}
+DECL|method|setLinkedComment (boolean linkedComment)
+specifier|public
+name|void
+name|setLinkedComment
+parameter_list|(
+name|boolean
+name|linkedComment
+parameter_list|)
+block|{
+name|this
+operator|.
+name|linkedComment
+operator|=
+name|linkedComment
+expr_stmt|;
 block|}
 block|}
 end_class
