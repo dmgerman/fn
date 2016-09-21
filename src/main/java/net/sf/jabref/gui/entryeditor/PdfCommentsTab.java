@@ -985,6 +985,7 @@ name|getEntry
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|//check which attached file is selected in the combo box
 name|int
 name|indexSelectedByComboBox
 decl_stmt|;
@@ -1013,6 +1014,7 @@ name|getSelectedIndex
 argument_list|()
 expr_stmt|;
 block|}
+comment|//import notes if the selected file is a pdf
 name|FileField
 operator|.
 name|parse
@@ -1069,6 +1071,11 @@ argument_list|(
 name|parsedFileField
 operator|.
 name|getLink
+argument_list|()
+argument_list|,
+name|basePanel
+operator|.
+name|getDatabaseContext
 argument_list|()
 argument_list|)
 argument_list|)
@@ -2263,6 +2270,12 @@ name|value
 decl_stmt|;
 if|if
 condition|(
+operator|!
+name|commentList
+operator|.
+name|isSelectionEmpty
+argument_list|()
+operator|&&
 name|comment
 operator|.
 name|equals
