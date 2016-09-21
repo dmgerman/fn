@@ -71,9 +71,9 @@ name|POSTGRESQL
 argument_list|(
 literal|"PostgreSQL"
 argument_list|,
-literal|"org.postgresql.Driver"
+literal|"com.impossibl.postgres.jdbc.PGDriver"
 argument_list|,
-literal|"jdbc:postgresql://%s:%d/%s"
+literal|"jdbc:pgsql://%s:%d/%s"
 argument_list|,
 literal|5432
 argument_list|)

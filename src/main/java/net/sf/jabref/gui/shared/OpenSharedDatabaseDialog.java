@@ -450,7 +450,7 @@ name|jabref
 operator|.
 name|shared
 operator|.
-name|DBMSConnectionProperties
+name|DBMSConnection
 import|;
 end_import
 
@@ -464,7 +464,7 @@ name|jabref
 operator|.
 name|shared
 operator|.
-name|DBMSConnector
+name|DBMSConnectionProperties
 import|;
 end_import
 
@@ -954,7 +954,7 @@ try|try
 block|{
 name|bibDatabaseContext
 operator|.
-name|getDBSynchronizer
+name|getDBMSSynchronizer
 argument_list|()
 operator|.
 name|openSharedDatabase
@@ -976,7 +976,7 @@ argument_list|()
 expr_stmt|;
 name|bibDatabaseContext
 operator|.
-name|getDBSynchronizer
+name|getDBMSSynchronizer
 argument_list|()
 operator|.
 name|registerListener
@@ -1024,38 +1024,6 @@ argument_list|()
 expr_stmt|;
 return|return;
 comment|// setLoadingConnectButtonText(false) should not be reached regularly.
-block|}
-catch|catch
-parameter_list|(
-name|ClassNotFoundException
-name|exception
-parameter_list|)
-block|{
-name|JOptionPane
-operator|.
-name|showMessageDialog
-argument_list|(
-name|OpenSharedDatabaseDialog
-operator|.
-name|this
-argument_list|,
-name|exception
-operator|.
-name|getMessage
-argument_list|()
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Driver error"
-argument_list|)
-argument_list|,
-name|JOptionPane
-operator|.
-name|ERROR_MESSAGE
-argument_list|)
-expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
@@ -1761,7 +1729,7 @@ name|DBMSType
 argument_list|>
 name|availableDBMSTypes
 init|=
-name|DBMSConnector
+name|DBMSConnection
 operator|.
 name|getAvailableDBMSTypes
 argument_list|()

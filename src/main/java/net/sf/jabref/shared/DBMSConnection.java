@@ -106,15 +106,11 @@ name|LogFactory
 import|;
 end_import
 
-begin_comment
-comment|/**  * Used to establish connections between JabRef and database systems like MySQL, PostgreSQL and Oracle.  */
-end_comment
-
 begin_class
-DECL|class|DBMSConnector
+DECL|class|DBMSConnection
 specifier|public
 class|class
-name|DBMSConnector
+name|DBMSConnection
 block|{
 DECL|field|LOGGER
 specifier|private
@@ -127,26 +123,39 @@ name|LogFactory
 operator|.
 name|getLog
 argument_list|(
-name|DBMSConnector
+name|DBMSConnection
 operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|/**      * Determines the suitable driver and retrieves a working SQL Connection in normal case.      *      * @param dbmsType Enum entry of {@link DBMSType} which determines the driver      * @param host Hostname, Domain or IP address      * @param port Port number the server is listening on      * @param database An already existent database name.      * @param user Username      * @param password Password      * @return      * @throws ClassNotFoundException Thrown if no suitable drivers were found      * @throws SQLException Thrown if connection has failed      */
-DECL|method|getNewConnection (DBMSConnectionProperties properties)
-specifier|public
-specifier|static
+DECL|field|connection
+specifier|private
+specifier|final
 name|Connection
-name|getNewConnection
+name|connection
+decl_stmt|;
+DECL|field|properties
+specifier|private
+specifier|final
+name|DBMSConnectionProperties
+name|properties
+decl_stmt|;
+DECL|method|DBMSConnection (DBMSConnectionProperties properties)
+specifier|public
+name|DBMSConnection
 parameter_list|(
 name|DBMSConnectionProperties
 name|properties
 parameter_list|)
 throws|throws
-name|ClassNotFoundException
-throws|,
 name|SQLException
 block|{
+name|this
+operator|.
+name|properties
+operator|=
+name|properties
+expr_stmt|;
 try|try
 block|{
 name|DriverManager
@@ -156,7 +165,10 @@ argument_list|(
 literal|3
 argument_list|)
 expr_stmt|;
-return|return
+name|this
+operator|.
+name|connection
+operator|=
 name|DriverManager
 operator|.
 name|getConnection
@@ -194,7 +206,7 @@ operator|.
 name|getPassword
 argument_list|()
 argument_list|)
-return|;
+expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
@@ -227,6 +239,30 @@ throw|throw
 name|e
 throw|;
 block|}
+block|}
+DECL|method|getConnection ()
+specifier|public
+name|Connection
+name|getConnection
+parameter_list|()
+block|{
+return|return
+name|this
+operator|.
+name|connection
+return|;
+block|}
+DECL|method|getProperties ()
+specifier|public
+name|DBMSConnectionProperties
+name|getProperties
+parameter_list|()
+block|{
+return|return
+name|this
+operator|.
+name|properties
+return|;
 block|}
 comment|/**      * Returns a Set of {@link DBMSType} which is supported by available drivers.      */
 DECL|method|getAvailableDBMSTypes ()

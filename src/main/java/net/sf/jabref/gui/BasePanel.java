@@ -2574,7 +2574,7 @@ name|this
 operator|.
 name|bibDatabaseContext
 operator|.
-name|getDBSynchronizer
+name|getDBMSSynchronizer
 argument_list|()
 operator|.
 name|getDBName
@@ -4293,7 +4293,7 @@ operator|.
 name|getBibDatabaseContext
 argument_list|()
 operator|.
-name|getDBSynchronizer
+name|getDBMSSynchronizer
 argument_list|()
 block|;
 name|dbmsSynchronizer

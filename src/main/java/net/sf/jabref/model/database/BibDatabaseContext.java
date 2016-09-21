@@ -918,10 +918,10 @@ return|return
 name|dir
 return|;
 block|}
-DECL|method|getDBSynchronizer ()
+DECL|method|getDBMSSynchronizer ()
 specifier|public
 name|DBMSSynchronizer
-name|getDBSynchronizer
+name|getDBMSSynchronizer
 parameter_list|()
 block|{
 return|return
@@ -929,6 +929,19 @@ name|this
 operator|.
 name|dbmsSynchronizer
 return|;
+block|}
+DECL|method|clearDBMSSynchronizer ()
+specifier|public
+name|void
+name|clearDBMSSynchronizer
+parameter_list|()
+block|{
+name|this
+operator|.
+name|dbmsSynchronizer
+operator|=
+literal|null
+expr_stmt|;
 block|}
 DECL|method|getLocation ()
 specifier|public
