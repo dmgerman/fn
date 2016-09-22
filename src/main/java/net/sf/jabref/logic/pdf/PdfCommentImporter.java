@@ -304,7 +304,7 @@ block|{      }
 comment|/**      * Imports the comments from a pdf specified by its path      *      * @param path a path to a pdf      * @return a list with the all the annotations found in the file of the path      */
 DECL|method|importNotes (final String path, final BibDatabaseContext context)
 specifier|public
-name|ArrayList
+name|List
 argument_list|<
 name|PdfComment
 argument_list|>
@@ -319,7 +319,7 @@ name|BibDatabaseContext
 name|context
 parameter_list|)
 block|{
-name|ArrayList
+name|List
 argument_list|<
 name|PdfComment
 argument_list|>
