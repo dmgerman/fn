@@ -76,9 +76,9 @@ name|jabref
 operator|.
 name|model
 operator|.
-name|util
+name|strings
 operator|.
-name|ModelStringUtil
+name|StringUtil
 import|;
 end_import
 
@@ -291,7 +291,7 @@ argument_list|(
 name|c
 argument_list|)
 operator|||
-name|ModelStringUtil
+name|StringUtil
 operator|.
 name|SPECIAL_COMMAND_CHARS
 operator|.
@@ -336,7 +336,7 @@ operator|==
 literal|1
 operator|)
 operator|&&
-name|ModelStringUtil
+name|StringUtil
 operator|.
 name|SPECIAL_COMMAND_CHARS
 operator|.

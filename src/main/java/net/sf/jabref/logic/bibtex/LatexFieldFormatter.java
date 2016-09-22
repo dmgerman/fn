@@ -58,13 +58,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|model
 operator|.
-name|util
+name|entry
 operator|.
-name|strings
-operator|.
-name|StringUtil
+name|InternalBibtexFields
 import|;
 end_import
 
@@ -78,9 +76,9 @@ name|jabref
 operator|.
 name|model
 operator|.
-name|entry
+name|strings
 operator|.
-name|InternalBibtexFields
+name|StringUtil
 import|;
 end_import
 
@@ -1198,6 +1196,10 @@ name|prefs
 operator|.
 name|getLineLength
 argument_list|()
+argument_list|,
+name|OS
+operator|.
+name|NEWLINE
 argument_list|)
 argument_list|)
 expr_stmt|;

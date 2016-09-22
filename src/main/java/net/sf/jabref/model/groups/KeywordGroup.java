@@ -148,9 +148,9 @@ name|jabref
 operator|.
 name|model
 operator|.
-name|util
+name|strings
 operator|.
-name|ModelStringUtil
+name|StringUtil
 import|;
 end_import
 
@@ -424,7 +424,7 @@ name|KeywordGroup
 operator|.
 name|ID
 operator|+
-name|ModelStringUtil
+name|StringUtil
 operator|.
 name|quote
 argument_list|(
@@ -454,7 +454,7 @@ name|AbstractGroup
 operator|.
 name|SEPARATOR
 operator|+
-name|ModelStringUtil
+name|StringUtil
 operator|.
 name|quote
 argument_list|(
@@ -473,7 +473,7 @@ name|AbstractGroup
 operator|.
 name|SEPARATOR
 operator|+
-name|ModelStringUtil
+name|StringUtil
 operator|.
 name|quote
 argument_list|(
@@ -492,7 +492,7 @@ name|AbstractGroup
 operator|.
 name|SEPARATOR
 operator|+
-name|ModelStringUtil
+name|StringUtil
 operator|.
 name|booleanToBinaryString
 argument_list|(
@@ -503,7 +503,7 @@ name|AbstractGroup
 operator|.
 name|SEPARATOR
 operator|+
-name|ModelStringUtil
+name|StringUtil
 operator|.
 name|booleanToBinaryString
 argument_list|(

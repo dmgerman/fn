@@ -104,9 +104,9 @@ name|jabref
 operator|.
 name|model
 operator|.
-name|util
+name|strings
 operator|.
-name|ModelStringUtil
+name|StringUtil
 import|;
 end_import
 
@@ -417,7 +417,7 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-name|ModelStringUtil
+name|StringUtil
 operator|.
 name|quote
 argument_list|(
@@ -488,7 +488,7 @@ name|sb
 operator|.
 name|append
 argument_list|(
-name|ModelStringUtil
+name|StringUtil
 operator|.
 name|quote
 argument_list|(

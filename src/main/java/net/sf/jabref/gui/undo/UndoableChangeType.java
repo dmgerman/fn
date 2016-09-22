@@ -38,13 +38,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|model
 operator|.
-name|util
+name|entry
 operator|.
-name|strings
-operator|.
-name|StringUtil
+name|BibEntry
 import|;
 end_import
 
@@ -58,9 +56,9 @@ name|jabref
 operator|.
 name|model
 operator|.
-name|entry
+name|strings
 operator|.
-name|BibEntry
+name|StringUtil
 import|;
 end_import
 

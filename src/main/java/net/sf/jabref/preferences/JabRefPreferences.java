@@ -1156,9 +1156,9 @@ name|jabref
 operator|.
 name|model
 operator|.
-name|util
+name|strings
 operator|.
-name|ModelStringUtil
+name|StringUtil
 import|;
 end_import
 
@@ -7637,7 +7637,7 @@ name|map
 argument_list|(
 name|val
 lambda|->
-name|ModelStringUtil
+name|StringUtil
 operator|.
 name|quote
 argument_list|(

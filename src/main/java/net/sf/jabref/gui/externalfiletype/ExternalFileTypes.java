@@ -114,13 +114,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|model
 operator|.
-name|util
+name|entry
 operator|.
-name|strings
-operator|.
-name|StringUtil
+name|FileField
 import|;
 end_import
 
@@ -134,9 +132,9 @@ name|jabref
 operator|.
 name|model
 operator|.
-name|entry
+name|strings
 operator|.
-name|FileField
+name|StringUtil
 import|;
 end_import
 
