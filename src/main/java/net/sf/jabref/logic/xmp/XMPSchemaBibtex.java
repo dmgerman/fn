@@ -1494,11 +1494,13 @@ block|{
 name|String
 name|value
 init|=
-name|entry
+name|BibDatabase
 operator|.
-name|getResolvedFieldOrAlias
+name|getResolvedField
 argument_list|(
 name|field
+argument_list|,
+name|entry
 argument_list|,
 name|database
 argument_list|)

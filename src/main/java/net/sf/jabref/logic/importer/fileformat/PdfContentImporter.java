@@ -1262,7 +1262,7 @@ operator|.
 name|getDatabase
 argument_list|()
 operator|::
-name|insertEntryWithDuplicationCheck
+name|insertEntry
 argument_list|)
 expr_stmt|;
 return|return

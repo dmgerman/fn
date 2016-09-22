@@ -159,7 +159,7 @@ argument_list|)
 expr_stmt|;
 name|db
 operator|.
-name|insertEntryWithDuplicationCheck
+name|insertEntry
 argument_list|(
 name|entry1
 argument_list|)
@@ -190,7 +190,7 @@ argument_list|)
 expr_stmt|;
 name|db
 operator|.
-name|insertEntryWithDuplicationCheck
+name|insertEntry
 argument_list|(
 name|entry2
 argument_list|)
@@ -221,7 +221,7 @@ argument_list|)
 expr_stmt|;
 name|db
 operator|.
-name|insertEntryWithDuplicationCheck
+name|insertEntry
 argument_list|(
 name|entry3
 argument_list|)
@@ -241,7 +241,7 @@ argument_list|)
 expr_stmt|;
 name|db
 operator|.
-name|insertEntryWithDuplicationCheck
+name|insertEntry
 argument_list|(
 name|entry4
 argument_list|)

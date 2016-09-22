@@ -6418,7 +6418,7 @@ operator|.
 name|getDatabase
 argument_list|()
 operator|.
-name|insertEntryWithDuplicationCheck
+name|insertEntry
 argument_list|(
 name|be
 argument_list|)
@@ -8298,7 +8298,7 @@ operator|.
 name|getDatabase
 argument_list|()
 operator|.
-name|insertEntryWithDuplicationCheck
+name|insertEntry
 argument_list|(
 name|be
 argument_list|)
@@ -8952,7 +8952,7 @@ operator|.
 name|getDatabase
 argument_list|()
 operator|.
-name|insertEntryWithDuplicationCheck
+name|insertEntry
 argument_list|(
 name|bibEntry
 argument_list|)
