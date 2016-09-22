@@ -1280,8 +1280,6 @@ argument_list|(
 literal|null
 argument_list|,
 literal|null
-argument_list|,
-literal|""
 argument_list|)
 expr_stmt|;
 comment|// Use the test entry from the Preview settings tab in Preferences:
