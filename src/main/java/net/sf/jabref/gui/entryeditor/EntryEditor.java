@@ -2946,8 +2946,6 @@ name|PdfCommentsTab
 argument_list|(
 name|this
 argument_list|,
-name|frame
-argument_list|,
 name|panel
 argument_list|,
 name|tabbed

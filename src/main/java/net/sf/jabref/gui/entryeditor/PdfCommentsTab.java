@@ -90,6 +90,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Optional
 import|;
 end_import
@@ -291,20 +301,6 @@ operator|.
 name|gui
 operator|.
 name|IconTheme
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|JabRefFrame
 import|;
 end_import
 
@@ -730,18 +726,6 @@ specifier|final
 name|EntryEditor
 name|parent
 decl_stmt|;
-DECL|field|tabTitle
-specifier|private
-specifier|final
-name|String
-name|tabTitle
-decl_stmt|;
-DECL|field|frame
-specifier|private
-specifier|final
-name|JabRefFrame
-name|frame
-decl_stmt|;
 DECL|field|basePanel
 specifier|private
 specifier|final
@@ -761,26 +745,11 @@ name|commentListSelectedIndex
 init|=
 literal|0
 decl_stmt|;
-DECL|field|importedNotes
-specifier|private
-name|ArrayList
-argument_list|<
-name|PdfComment
-argument_list|>
-name|importedNotes
-init|=
-operator|new
-name|ArrayList
-argument_list|<
-name|PdfComment
-argument_list|>
-argument_list|()
-decl_stmt|;
 DECL|field|allNotes
 specifier|private
-name|ArrayList
+name|List
 argument_list|<
-name|ArrayList
+name|List
 argument_list|<
 name|PdfComment
 argument_list|>
@@ -792,15 +761,12 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
-DECL|method|PdfCommentsTab (EntryEditor parent, JabRefFrame frame, BasePanel basePanel, JTabbedPane tabbed)
+DECL|method|PdfCommentsTab (EntryEditor parent, BasePanel basePanel, JTabbedPane tabbed)
 specifier|public
 name|PdfCommentsTab
 parameter_list|(
 name|EntryEditor
 name|parent
-parameter_list|,
-name|JabRefFrame
-name|frame
 parameter_list|,
 name|BasePanel
 name|basePanel
@@ -817,26 +783,9 @@ name|parent
 expr_stmt|;
 name|this
 operator|.
-name|frame
-operator|=
-name|frame
-expr_stmt|;
-name|this
-operator|.
 name|basePanel
 operator|=
 name|basePanel
-expr_stmt|;
-name|this
-operator|.
-name|tabTitle
-operator|=
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"PDF comments"
-argument_list|)
 expr_stmt|;
 name|this
 operator|.
@@ -893,6 +842,7 @@ name|setUpInformationPanel
 argument_list|()
 expr_stmt|;
 block|}
+comment|/**      * Adds pdf comments from all attached pdf files belonging to the entry selected in the main table and      * shows those from the first file in the comments tab      * @throws IOException      */
 DECL|method|addComments ()
 specifier|public
 name|void
@@ -1203,12 +1153,12 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * Updates the list model to show the given notes without those with no content      * @param importedNotes value is the comments name and the value is a pdfComment object to add to the list model      */
-DECL|method|updateShownComments (ArrayList<PdfComment> importedNotes)
+DECL|method|updateShownComments (List<PdfComment> importedNotes)
 specifier|private
 name|void
 name|updateShownComments
 parameter_list|(
-name|ArrayList
+name|List
 argument_list|<
 name|PdfComment
 argument_list|>
@@ -1318,6 +1268,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|/**      * Updates the text fields showing meta data and the content from the selected comment      * @param comment pdf comment which data should be shown in the text fields      */
 DECL|method|updateTextFields (PdfComment comment)
 specifier|private
 name|void
@@ -1373,6 +1324,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Updates the selection of files that are attached to the pdf file      */
 DECL|method|updateFileNameComboBox ()
 specifier|private
 name|void
