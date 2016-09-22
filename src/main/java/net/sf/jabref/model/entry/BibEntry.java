@@ -394,10 +394,6 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|// All these fields should be private or protected
-comment|/**      * @deprecated use get/setType      */
-annotation|@
-name|Deprecated
 DECL|field|TYPE_HEADER
 specifier|public
 specifier|static
@@ -407,8 +403,6 @@ name|TYPE_HEADER
 init|=
 literal|"entrytype"
 decl_stmt|;
-annotation|@
-name|Deprecated
 DECL|field|OBSOLETE_TYPE_HEADER
 specifier|public
 specifier|static
@@ -418,9 +412,6 @@ name|OBSOLETE_TYPE_HEADER
 init|=
 literal|"bibtextype"
 decl_stmt|;
-comment|/**      * @deprecated use dedicated methods like get/set/clearCiteKey      */
-annotation|@
-name|Deprecated
 DECL|field|KEY_FIELD
 specifier|public
 specifier|static
@@ -439,9 +430,6 @@ name|ID_FIELD
 init|=
 literal|"id"
 decl_stmt|;
-comment|/**      * @deprecated use constructor without type      */
-annotation|@
-name|Deprecated
 DECL|field|DEFAULT_TYPE
 specifier|public
 specifier|static

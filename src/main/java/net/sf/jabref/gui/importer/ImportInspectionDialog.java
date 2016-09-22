@@ -3580,7 +3580,7 @@ expr_stmt|;
 comment|// Add the entry to the database we are working with:
 name|database
 operator|.
-name|insertEntryWithDuplicationCheck
+name|insertEntry
 argument_list|(
 name|entry
 argument_list|)
@@ -3744,7 +3744,7 @@ argument_list|)
 expr_stmt|;
 name|database
 operator|.
-name|insertEntryWithDuplicationCheck
+name|insertEntry
 argument_list|(
 name|entry
 argument_list|)
@@ -4820,7 +4820,7 @@ operator|.
 name|getDatabase
 argument_list|()
 operator|.
-name|insertEntryWithDuplicationCheck
+name|insertEntry
 argument_list|(
 name|entry
 argument_list|)

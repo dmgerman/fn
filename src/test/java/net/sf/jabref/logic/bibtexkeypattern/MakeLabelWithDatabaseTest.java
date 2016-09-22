@@ -238,7 +238,7 @@ argument_list|)
 expr_stmt|;
 name|database
 operator|.
-name|insertEntryWithDuplicationCheck
+name|insertEntry
 argument_list|(
 name|entry
 argument_list|)
@@ -744,7 +744,7 @@ argument_list|)
 expr_stmt|;
 name|database
 operator|.
-name|insertEntryWithDuplicationCheck
+name|insertEntry
 argument_list|(
 name|entry2
 argument_list|)
@@ -789,7 +789,7 @@ argument_list|)
 expr_stmt|;
 name|database
 operator|.
-name|insertEntryWithDuplicationCheck
+name|insertEntry
 argument_list|(
 name|entry3
 argument_list|)
@@ -884,7 +884,7 @@ argument_list|)
 expr_stmt|;
 name|database
 operator|.
-name|insertEntryWithDuplicationCheck
+name|insertEntry
 argument_list|(
 name|entry2
 argument_list|)
@@ -929,7 +929,7 @@ argument_list|)
 expr_stmt|;
 name|database
 operator|.
-name|insertEntryWithDuplicationCheck
+name|insertEntry
 argument_list|(
 name|entry3
 argument_list|)

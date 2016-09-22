@@ -404,7 +404,7 @@ argument_list|(
 operator|new
 name|ExportFormat
 argument_list|(
-literal|"ISO 690"
+literal|"ISO 690 RTF"
 argument_list|,
 literal|"iso690rtf"
 argument_list|,

@@ -654,7 +654,7 @@ argument_list|)
 expr_stmt|;
 name|database
 operator|.
-name|insertEntryWithDuplicationCheck
+name|insertEntry
 argument_list|(
 name|entry
 argument_list|)

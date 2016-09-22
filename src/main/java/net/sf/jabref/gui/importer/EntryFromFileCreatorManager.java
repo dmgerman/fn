@@ -732,7 +732,7 @@ if|if
 condition|(
 name|database
 operator|.
-name|insertEntryWithDuplicationCheck
+name|insertEntry
 argument_list|(
 name|entry
 operator|.

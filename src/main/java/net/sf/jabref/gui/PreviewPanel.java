@@ -90,18 +90,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|lang
-operator|.
-name|reflect
-operator|.
-name|InvocationTargetException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|Objects
@@ -1530,11 +1518,9 @@ expr_stmt|;
 block|}
 else|else
 block|{
-try|try
-block|{
 name|SwingUtilities
 operator|.
-name|invokeAndWait
+name|invokeLater
 argument_list|(
 parameter_list|()
 lambda|->
@@ -1554,25 +1540,6 @@ expr_stmt|;
 block|}
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|InvocationTargetException
-decl||
-name|InterruptedException
-name|e
-parameter_list|)
-block|{
-name|LOGGER
-operator|.
-name|info
-argument_list|(
-literal|"Problem setting preview text"
-argument_list|,
-name|e
-argument_list|)
-expr_stmt|;
-block|}
 block|}
 comment|// Scroll to top:
 name|scrollToTop

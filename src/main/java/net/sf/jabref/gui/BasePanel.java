@@ -2574,7 +2574,7 @@ name|this
 operator|.
 name|bibDatabaseContext
 operator|.
-name|getDBSynchronizer
+name|getDBMSSynchronizer
 argument_list|()
 operator|.
 name|getDBName
@@ -4293,7 +4293,7 @@ operator|.
 name|getBibDatabaseContext
 argument_list|()
 operator|.
-name|getDBSynchronizer
+name|getDBMSSynchronizer
 argument_list|()
 block|;
 name|dbmsSynchronizer
@@ -6418,7 +6418,7 @@ operator|.
 name|getDatabase
 argument_list|()
 operator|.
-name|insertEntryWithDuplicationCheck
+name|insertEntry
 argument_list|(
 name|be
 argument_list|)
@@ -8298,7 +8298,7 @@ operator|.
 name|getDatabase
 argument_list|()
 operator|.
-name|insertEntryWithDuplicationCheck
+name|insertEntry
 argument_list|(
 name|be
 argument_list|)
@@ -8952,7 +8952,7 @@ operator|.
 name|getDatabase
 argument_list|()
 operator|.
-name|insertEntryWithDuplicationCheck
+name|insertEntry
 argument_list|(
 name|bibEntry
 argument_list|)

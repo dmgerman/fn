@@ -276,7 +276,7 @@ argument_list|)
 decl_stmt|;
 name|db
 operator|.
-name|insertEntryWithDuplicationCheck
+name|insertEntry
 argument_list|(
 name|e1
 argument_list|)
@@ -331,7 +331,7 @@ argument_list|)
 decl_stmt|;
 name|db
 operator|.
-name|insertEntryWithDuplicationCheck
+name|insertEntry
 argument_list|(
 name|e1
 argument_list|)
