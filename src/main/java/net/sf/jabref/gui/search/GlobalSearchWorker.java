@@ -375,7 +375,7 @@ operator|.
 name|getEntries
 argument_list|()
 operator|.
-name|stream
+name|parallelStream
 argument_list|()
 operator|.
 name|filter
