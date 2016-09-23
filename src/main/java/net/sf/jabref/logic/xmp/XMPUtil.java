@@ -1438,7 +1438,9 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-literal|"entrytype"
+name|BibEntry
+operator|.
+name|TYPE_HEADER
 operator|.
 name|equals
 argument_list|(
