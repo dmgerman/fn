@@ -264,7 +264,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"empty bibtexkey"
+literal|"empty BibTeX key"
 argument_list|)
 operator|+
 literal|": "
