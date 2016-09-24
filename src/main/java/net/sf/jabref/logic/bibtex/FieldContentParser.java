@@ -218,7 +218,7 @@ comment|// Unify line breaks
 return|return
 name|StringUtil
 operator|.
-name|unifyLineBreaksToConfiguredLineBreaks
+name|unifyLineBreaks
 argument_list|(
 name|fieldContent
 argument_list|,

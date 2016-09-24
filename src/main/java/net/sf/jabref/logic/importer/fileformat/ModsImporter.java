@@ -900,7 +900,7 @@ DECL|field|KEYWORD_SEPARATOR
 specifier|private
 specifier|static
 specifier|final
-name|String
+name|Character
 name|KEYWORD_SEPARATOR
 init|=
 name|JabRefPreferences
@@ -1815,6 +1815,9 @@ operator|.
 name|KEYWORDS
 argument_list|,
 name|KEYWORD_SEPARATOR
+operator|.
+name|toString
+argument_list|()
 argument_list|)
 expr_stmt|;
 comment|//same goes for authors and notes

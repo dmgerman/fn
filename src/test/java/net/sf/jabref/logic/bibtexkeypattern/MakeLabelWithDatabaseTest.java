@@ -272,6 +272,8 @@ argument_list|,
 literal|true
 argument_list|,
 name|pattern
+argument_list|,
+literal|','
 argument_list|)
 expr_stmt|;
 block|}
@@ -411,6 +413,8 @@ argument_list|,
 literal|true
 argument_list|,
 name|pattern
+argument_list|,
+literal|','
 argument_list|)
 expr_stmt|;
 name|BibtexKeyPatternUtil
@@ -466,6 +470,8 @@ argument_list|,
 literal|true
 argument_list|,
 name|pattern
+argument_list|,
+literal|','
 argument_list|)
 expr_stmt|;
 name|BibtexKeyPatternUtil
@@ -559,6 +565,8 @@ argument_list|,
 literal|true
 argument_list|,
 name|pattern
+argument_list|,
+literal|','
 argument_list|)
 expr_stmt|;
 name|BibtexKeyPatternUtil
@@ -614,6 +622,8 @@ argument_list|,
 literal|true
 argument_list|,
 name|pattern
+argument_list|,
+literal|','
 argument_list|)
 expr_stmt|;
 name|BibtexKeyPatternUtil
@@ -2096,6 +2106,8 @@ argument_list|,
 literal|true
 argument_list|,
 name|pattern
+argument_list|,
+literal|','
 argument_list|)
 expr_stmt|;
 name|DatabaseBibtexKeyPattern

@@ -14551,6 +14551,13 @@ argument_list|,
 name|dirs
 argument_list|,
 name|regExp
+argument_list|,
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getKeywordDelimiter
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

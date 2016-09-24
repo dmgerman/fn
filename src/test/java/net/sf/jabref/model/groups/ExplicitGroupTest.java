@@ -126,7 +126,7 @@ name|GroupHierarchyType
 operator|.
 name|INDEPENDENT
 argument_list|,
-literal|", "
+literal|','
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -162,7 +162,7 @@ name|GroupHierarchyType
 operator|.
 name|INCLUDING
 argument_list|,
-literal|", "
+literal|','
 argument_list|)
 decl_stmt|;
 name|group
@@ -185,7 +185,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|makeBibtexEntry ()
-specifier|public
+specifier|private
 name|BibEntry
 name|makeBibtexEntry
 parameter_list|()

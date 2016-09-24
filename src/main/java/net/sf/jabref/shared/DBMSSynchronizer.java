@@ -516,17 +516,17 @@ decl_stmt|;
 DECL|field|keywordSeparator
 specifier|private
 specifier|final
-name|String
+name|Character
 name|keywordSeparator
 decl_stmt|;
-DECL|method|DBMSSynchronizer (BibDatabaseContext bibDatabaseContext, String keywordSeparator)
+DECL|method|DBMSSynchronizer (BibDatabaseContext bibDatabaseContext, Character keywordSeparator)
 specifier|public
 name|DBMSSynchronizer
 parameter_list|(
 name|BibDatabaseContext
 name|bibDatabaseContext
 parameter_list|,
-name|String
+name|Character
 name|keywordSeparator
 parameter_list|)
 block|{
@@ -777,7 +777,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Sets the table structure of shared database if needed and pulls all shared entries      * to the new local database.      *      * @param bibDatabase Local {@link BibDatabase}      * @throws DatabaseNotSupportedException if the version of shared database does not match      *          the version of current shared database support ({@link DBMSProcessor}).      */
+comment|/**      * Sets the table structure of shared database if needed and pulls all shared entries      * to the new local database.      *      * @throws DatabaseNotSupportedException if the version of shared database does not match      *          the version of current shared database support ({@link DBMSProcessor}).      */
 DECL|method|initializeDatabases ()
 specifier|public
 name|void

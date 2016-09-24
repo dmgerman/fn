@@ -366,7 +366,14 @@ name|SearchBasedEntryFetcher
 argument_list|(
 operator|new
 name|ArXiv
+argument_list|(
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getImportFormatPreferences
 argument_list|()
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;

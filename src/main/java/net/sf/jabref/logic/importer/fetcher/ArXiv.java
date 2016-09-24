@@ -254,6 +254,22 @@ name|logic
 operator|.
 name|importer
 operator|.
+name|ImportFormatPreferences
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|importer
+operator|.
 name|SearchBasedFetcher
 import|;
 end_import
@@ -414,20 +430,6 @@ name|apache
 operator|.
 name|commons
 operator|.
-name|lang3
-operator|.
-name|StringUtils
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|commons
-operator|.
 name|logging
 operator|.
 name|Log
@@ -541,6 +543,27 @@ name|API_URL
 init|=
 literal|"http://export.arxiv.org/api/query"
 decl_stmt|;
+DECL|field|importFormatPreferences
+specifier|private
+specifier|final
+name|ImportFormatPreferences
+name|importFormatPreferences
+decl_stmt|;
+DECL|method|ArXiv (ImportFormatPreferences importFormatPreferences)
+specifier|public
+name|ArXiv
+parameter_list|(
+name|ImportFormatPreferences
+name|importFormatPreferences
+parameter_list|)
+block|{
+name|this
+operator|.
+name|importFormatPreferences
+operator|=
+name|importFormatPreferences
+expr_stmt|;
+block|}
 annotation|@
 name|Override
 DECL|method|findFullText (BibEntry entry)
@@ -1061,7 +1084,7 @@ decl_stmt|;
 comment|// The arXiv API has problems with accents, so we remove them (i.e. FrÃ©chet -> Frechet)
 if|if
 condition|(
-name|StringUtils
+name|StringUtil
 operator|.
 name|isNotBlank
 argument_list|(
@@ -1075,7 +1098,7 @@ name|addParameter
 argument_list|(
 literal|"search_query"
 argument_list|,
-name|StringUtils
+name|StringUtil
 operator|.
 name|stripAccents
 argument_list|(
@@ -1099,13 +1122,13 @@ name|addParameter
 argument_list|(
 literal|"id_list"
 argument_list|,
-name|StringUtils
+name|String
 operator|.
 name|join
 argument_list|(
-name|ids
+literal|","
 argument_list|,
-literal|','
+name|ids
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1424,9 +1447,19 @@ argument_list|()
 operator|.
 name|map
 argument_list|(
-name|ArXivEntry
-operator|::
+parameter_list|(
+name|arXivEntry
+parameter_list|)
+lambda|->
+name|arXivEntry
+operator|.
 name|toBibEntry
+argument_list|(
+name|importFormatPreferences
+operator|.
+name|getKeywordSeparator
+argument_list|()
+argument_list|)
 argument_list|)
 operator|.
 name|collect
@@ -1462,9 +1495,19 @@ argument_list|)
 operator|.
 name|map
 argument_list|(
-name|ArXivEntry
-operator|::
+parameter_list|(
+name|arXivEntry
+parameter_list|)
+lambda|->
+name|arXivEntry
+operator|.
 name|toBibEntry
+argument_list|(
+name|importFormatPreferences
+operator|.
+name|getKeywordSeparator
+argument_list|()
+argument_list|)
 argument_list|)
 return|;
 block|}
@@ -2020,11 +2063,14 @@ block|}
 argument_list|)
 return|;
 block|}
-DECL|method|toBibEntry ()
+DECL|method|toBibEntry (Character keywordDelimiter)
 specifier|public
 name|BibEntry
 name|toBibEntry
-parameter_list|()
+parameter_list|(
+name|Character
+name|keywordDelimiter
+parameter_list|)
 block|{
 name|BibEntry
 name|bibEntry
@@ -2061,13 +2107,13 @@ name|FieldName
 operator|.
 name|AUTHOR
 argument_list|,
-name|StringUtils
+name|String
 operator|.
 name|join
 argument_list|(
-name|authorNames
-argument_list|,
 literal|" and "
+argument_list|,
+name|authorNames
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2077,10 +2123,9 @@ name|addKeywords
 argument_list|(
 name|categories
 argument_list|,
-literal|", "
+name|keywordDelimiter
 argument_list|)
 expr_stmt|;
-comment|// TODO: Should use separator value from preferences
 name|getId
 argument_list|()
 operator|.

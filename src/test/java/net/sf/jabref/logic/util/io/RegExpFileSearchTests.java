@@ -426,6 +426,8 @@ argument_list|,
 name|dirs
 argument_list|,
 literal|"**/[bibtexkey].*\\\\.[extension]"
+argument_list|,
+literal|','
 argument_list|)
 decl_stmt|;
 comment|//then
@@ -464,6 +466,8 @@ argument_list|,
 name|entry
 argument_list|,
 name|database
+argument_list|,
+literal|','
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -480,6 +484,8 @@ argument_list|,
 name|entry
 argument_list|,
 name|database
+argument_list|,
+literal|','
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -496,6 +502,8 @@ argument_list|,
 name|entry
 argument_list|,
 name|database
+argument_list|,
+literal|','
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -512,6 +520,8 @@ argument_list|,
 name|entry
 argument_list|,
 name|database
+argument_list|,
+literal|','
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -528,6 +538,8 @@ argument_list|,
 name|entry
 argument_list|,
 name|database
+argument_list|,
+literal|','
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -544,6 +556,8 @@ argument_list|,
 name|entry
 argument_list|,
 name|database
+argument_list|,
+literal|','
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -560,6 +574,8 @@ argument_list|,
 name|entry
 argument_list|,
 name|database
+argument_list|,
+literal|','
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -576,6 +592,8 @@ argument_list|,
 name|entry
 argument_list|,
 name|database
+argument_list|,
+literal|','
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -601,6 +619,8 @@ argument_list|,
 name|entry
 argument_list|,
 name|database
+argument_list|,
+literal|','
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -617,6 +637,8 @@ argument_list|,
 name|entry
 argument_list|,
 name|database
+argument_list|,
+literal|','
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -633,6 +655,8 @@ argument_list|,
 name|entry
 argument_list|,
 name|database
+argument_list|,
+literal|','
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -649,6 +673,8 @@ argument_list|,
 name|entry
 argument_list|,
 name|database
+argument_list|,
+literal|','
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -665,6 +691,8 @@ argument_list|,
 name|entry
 argument_list|,
 name|database
+argument_list|,
+literal|','
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -681,6 +709,8 @@ argument_list|,
 name|entry
 argument_list|,
 name|database
+argument_list|,
+literal|','
 argument_list|)
 argument_list|)
 expr_stmt|;

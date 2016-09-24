@@ -9978,7 +9978,7 @@ name|GroupHierarchyType
 operator|.
 name|INDEPENDENT
 argument_list|,
-literal|", "
+literal|','
 argument_list|)
 argument_list|,
 name|root
@@ -10014,7 +10014,7 @@ name|GroupHierarchyType
 operator|.
 name|INDEPENDENT
 argument_list|,
-literal|", "
+literal|','
 argument_list|)
 argument_list|,
 name|root

@@ -299,7 +299,7 @@ name|DatabaseLocation
 operator|.
 name|SHARED
 argument_list|,
-literal|", "
+literal|','
 argument_list|)
 expr_stmt|;
 name|clientContextA
@@ -329,7 +329,7 @@ name|DatabaseLocation
 operator|.
 name|SHARED
 argument_list|,
-literal|", "
+literal|','
 argument_list|)
 expr_stmt|;
 name|clientContextB

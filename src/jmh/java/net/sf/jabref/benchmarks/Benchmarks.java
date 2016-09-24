@@ -1031,7 +1031,7 @@ name|GroupHierarchyType
 operator|.
 name|INDEPENDENT
 argument_list|,
-literal|", "
+literal|','
 argument_list|)
 decl_stmt|;
 return|return

@@ -350,26 +350,17 @@ specifier|final
 name|JabRefFrame
 name|jabRefFrame
 decl_stmt|;
-DECL|field|keywordSeparator
-specifier|private
-specifier|final
-name|String
-name|keywordSeparator
-decl_stmt|;
 DECL|field|dbmsSynchronizer
 specifier|private
 name|DBMSSynchronizer
 name|dbmsSynchronizer
 decl_stmt|;
-DECL|method|SharedDatabaseUIManager (JabRefFrame jabRefFrame, String keywordSeparator)
+DECL|method|SharedDatabaseUIManager (JabRefFrame jabRefFrame)
 specifier|public
 name|SharedDatabaseUIManager
 parameter_list|(
 name|JabRefFrame
 name|jabRefFrame
-parameter_list|,
-name|String
-name|keywordSeparator
 parameter_list|)
 block|{
 name|this
@@ -377,12 +368,6 @@ operator|.
 name|jabRefFrame
 operator|=
 name|jabRefFrame
-expr_stmt|;
-name|this
-operator|.
-name|keywordSeparator
-operator|=
-name|keywordSeparator
 expr_stmt|;
 block|}
 annotation|@
@@ -780,7 +765,12 @@ name|DatabaseLocation
 operator|.
 name|SHARED
 argument_list|,
-name|keywordSeparator
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getKeywordDelimiter
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|dbmsSynchronizer

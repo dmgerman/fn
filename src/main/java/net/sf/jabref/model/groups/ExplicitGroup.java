@@ -189,7 +189,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|method|ExplicitGroup (String name, GroupHierarchyType context, String keywordSeparator)
+DECL|method|ExplicitGroup (String name, GroupHierarchyType context, Character keywordSeparator)
 specifier|public
 name|ExplicitGroup
 parameter_list|(
@@ -199,7 +199,7 @@ parameter_list|,
 name|GroupHierarchyType
 name|context
 parameter_list|,
-name|String
+name|Character
 name|keywordSeparator
 parameter_list|)
 throws|throws

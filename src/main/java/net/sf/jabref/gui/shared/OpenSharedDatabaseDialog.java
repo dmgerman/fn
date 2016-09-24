@@ -296,18 +296,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|JabRefException
 import|;
 end_import
@@ -397,20 +385,6 @@ operator|.
 name|l10n
 operator|.
 name|Localization
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|preferences
-operator|.
-name|JabRefPreferences
 import|;
 end_import
 
@@ -960,17 +934,6 @@ operator|new
 name|SharedDatabaseUIManager
 argument_list|(
 name|frame
-argument_list|,
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|get
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|KEYWORD_SEPARATOR
-argument_list|)
 argument_list|)
 operator|.
 name|openNewSharedDatabaseTab
@@ -2156,7 +2119,7 @@ comment|// Owner window should be disabled while this dialog is opened.
 block|}
 comment|/**      * Saves the data from this dialog persistently to facilitate the usage.      */
 DECL|method|setPreferences ()
-specifier|public
+specifier|private
 name|void
 name|setPreferences
 parameter_list|()
@@ -2165,15 +2128,10 @@ name|prefs
 operator|.
 name|setType
 argument_list|(
-operator|(
-operator|(
-name|DBMSType
-operator|)
 name|dbmsTypeDropDown
 operator|.
 name|getSelectedItem
 argument_list|()
-operator|)
 operator|.
 name|toString
 argument_list|()

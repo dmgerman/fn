@@ -310,7 +310,7 @@ name|addKeyword
 argument_list|(
 literal|"one two"
 argument_list|,
-literal|", "
+literal|','
 argument_list|)
 expr_stmt|;
 name|SearchQuery
