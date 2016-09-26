@@ -320,6 +320,20 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|migrations
+operator|.
+name|PreferencesMigrations
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|model
 operator|.
 name|entry
@@ -507,6 +521,23 @@ operator|.
 name|prefs
 operator|.
 name|setLanguageDependentDefaultValues
+argument_list|()
+expr_stmt|;
+comment|// Perform Migrations
+comment|// Perform checks and changes for users with a preference set from an older JabRef version.
+name|PreferencesMigrations
+operator|.
+name|upgradeSortOrder
+argument_list|()
+expr_stmt|;
+name|PreferencesMigrations
+operator|.
+name|upgradeFaultyEncodingStrings
+argument_list|()
+expr_stmt|;
+name|PreferencesMigrations
+operator|.
+name|upgradeLabelPatternToBibtexKeyPattern
 argument_list|()
 expr_stmt|;
 comment|// Update handling of special fields based on preferences

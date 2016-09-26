@@ -382,20 +382,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|migrations
-operator|.
-name|PreferencesMigrations
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|preferences
 operator|.
 name|JabRefPreferences
@@ -706,22 +692,6 @@ name|void
 name|openWindow
 parameter_list|()
 block|{
-comment|// Perform checks and changes for users with a preference set from an older JabRef version.
-name|PreferencesMigrations
-operator|.
-name|upgradeSortOrder
-argument_list|()
-expr_stmt|;
-name|PreferencesMigrations
-operator|.
-name|upgradeFaultyEncodingStrings
-argument_list|()
-expr_stmt|;
-name|PreferencesMigrations
-operator|.
-name|upgradeLabelPatternToBibtexKeyPattern
-argument_list|()
-expr_stmt|;
 comment|// This property is set to make the Mac OSX Java VM move the menu bar to the top of the screen
 if|if
 condition|(
