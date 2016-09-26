@@ -2042,6 +2042,14 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+name|panel
+operator|.
+name|frame
+argument_list|()
+operator|.
+name|updateEnabledState
+argument_list|()
+expr_stmt|;
 block|}
 comment|/**      * Method to handle a single left click on one the special fields (e.g., ranking, quality, ...)      * Shows either a popup to select/clear a value or simply toggles the functionality to set/unset the special field      *      * @param e MouseEvent used to determine the position of the popups      * @param columnName the name of the specialfield column      */
 DECL|method|handleSpecialFieldLeftClick (MouseEvent e, String columnName)
@@ -3199,6 +3207,14 @@ operator|=
 literal|0
 expr_stmt|;
 block|}
+name|panel
+operator|.
+name|frame
+argument_list|()
+operator|.
+name|updateEnabledState
+argument_list|()
+expr_stmt|;
 block|}
 annotation|@
 name|Override
