@@ -18,20 +18,6 @@ end_package
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|preferences
-operator|.
-name|JabRefPreferences
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|junit
@@ -85,15 +71,7 @@ name|fetcher
 operator|=
 operator|new
 name|MedlineFetcher
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|getInstance
 argument_list|()
-operator|.
-name|getImportFormatPreferences
-argument_list|()
-argument_list|)
 expr_stmt|;
 block|}
 annotation|@
