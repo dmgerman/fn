@@ -2833,6 +2833,15 @@ name|SUMATRA_COMMAND
 init|=
 literal|"sumatraCommand"
 decl_stmt|;
+DECL|field|USE_PDF_READER
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|USE_PDF_READER
+init|=
+literal|"usePDFReader"
+decl_stmt|;
 comment|// Currently, it is not possible to specify defaults for specific entry types
 comment|// When this should be made possible, the code to inspect is net.sf.jabref.gui.preftabs.BibtexKeyPatternPrefTab.storeSettings() -> LabelPattern keypatterns = getBibtexKeyPattern(); etc
 DECL|field|DEFAULT_BIBTEX_KEY_PATTERN
@@ -6937,6 +6946,15 @@ argument_list|,
 literal|"C:\\Program Files\\SumatraPDF"
 argument_list|)
 expr_stmt|;
+name|defaults
+operator|.
+name|put
+argument_list|(
+name|USE_PDF_READER
+argument_list|,
+name|ADOBE_ACROBAT_COMMAND
+argument_list|)
+expr_stmt|;
 block|}
 else|else
 block|{
@@ -6963,6 +6981,15 @@ operator|.
 name|put
 argument_list|(
 name|SUMATRA_COMMAND
+argument_list|,
+literal|""
+argument_list|)
+expr_stmt|;
+name|defaults
+operator|.
+name|put
+argument_list|(
+name|USE_PDF_READER
 argument_list|,
 literal|""
 argument_list|)
