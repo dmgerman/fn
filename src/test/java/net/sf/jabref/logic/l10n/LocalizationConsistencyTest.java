@@ -122,6 +122,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Set
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|stream
 operator|.
 name|Collectors
@@ -179,7 +189,7 @@ literal|"Menu"
 argument_list|)
 control|)
 block|{
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -246,7 +256,7 @@ range|:
 name|nonEnglishLanguages
 control|)
 block|{
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -978,7 +988,7 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -1012,7 +1022,7 @@ operator|.
 expr|<
 name|String
 operator|>
-name|emptyList
+name|emptySet
 argument_list|()
 argument_list|,
 name|obsoleteKeys
@@ -1029,7 +1039,7 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -1063,7 +1073,7 @@ operator|.
 expr|<
 name|String
 operator|>
-name|emptyList
+name|emptySet
 argument_list|()
 argument_list|,
 name|obsoleteKeys
