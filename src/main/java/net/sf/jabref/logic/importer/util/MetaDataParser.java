@@ -502,6 +502,22 @@ argument_list|)
 expr_stmt|;
 comment|// Without MetaDataChangedEvent
 block|}
+elseif|else
+if|if
+condition|(
+name|entry
+operator|.
+name|getKey
+argument_list|()
+operator|.
+name|startsWith
+argument_list|(
+literal|"selector_"
+argument_list|)
+condition|)
+block|{
+comment|// ignore old content selector metadata
+block|}
 else|else
 block|{
 name|newMetaData
