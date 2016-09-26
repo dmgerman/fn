@@ -733,6 +733,26 @@ name|GeneralAction
 argument_list|(
 name|Actions
 operator|.
+name|COPY_KEY_AND_LINK
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Copy BibTeX key and link"
+argument_list|)
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|copySpecialMenu
+operator|.
+name|add
+argument_list|(
+operator|new
+name|GeneralAction
+argument_list|(
+name|Actions
+operator|.
 name|EXPORT_TO_CLIPBOARD
 argument_list|,
 name|Localization
