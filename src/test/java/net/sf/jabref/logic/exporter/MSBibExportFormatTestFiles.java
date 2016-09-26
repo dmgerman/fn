@@ -156,7 +156,13 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|BibDatabaseContext
+name|logic
+operator|.
+name|importer
+operator|.
+name|fileformat
+operator|.
+name|BibtexImporter
 import|;
 end_import
 
@@ -168,13 +174,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|model
 operator|.
-name|importer
+name|database
 operator|.
-name|fileformat
-operator|.
-name|BibtexImporter
+name|BibDatabaseContext
 import|;
 end_import
 

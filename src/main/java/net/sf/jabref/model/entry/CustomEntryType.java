@@ -98,6 +98,22 @@ name|Stream
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|strings
+operator|.
+name|StringUtil
+import|;
+end_import
+
 begin_comment
 comment|/**  * This class is used to represent customized entry types.  */
 end_comment
@@ -182,7 +198,7 @@ name|this
 operator|.
 name|name
 operator|=
-name|EntryUtil
+name|StringUtil
 operator|.
 name|capitalizeFirst
 argument_list|(
@@ -253,7 +269,7 @@ name|this
 operator|.
 name|name
 operator|=
-name|EntryUtil
+name|StringUtil
 operator|.
 name|capitalizeFirst
 argument_list|(

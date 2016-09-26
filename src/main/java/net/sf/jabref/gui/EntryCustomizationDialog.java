@@ -338,22 +338,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
-operator|.
-name|util
-operator|.
-name|FocusRequester
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|logic
 operator|.
 name|l10n
@@ -452,7 +436,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|EntryUtil
+name|InternalBibtexFields
 import|;
 end_import
 
@@ -466,9 +450,9 @@ name|jabref
 operator|.
 name|model
 operator|.
-name|entry
+name|strings
 operator|.
-name|InternalBibtexFields
+name|StringUtil
 import|;
 end_import
 
@@ -1696,11 +1680,10 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
-operator|new
-name|FocusRequester
-argument_list|(
 name|reqComp
-argument_list|)
+operator|.
+name|requestFocus
+argument_list|()
 expr_stmt|;
 block|}
 block|}
@@ -1928,7 +1911,7 @@ comment|// This type should be reverted to its default setup.
 name|String
 name|nm
 init|=
-name|EntryUtil
+name|StringUtil
 operator|.
 name|capitalizeFirst
 argument_list|(
@@ -2108,7 +2091,7 @@ condition|?
 operator|new
 name|CustomEntryType
 argument_list|(
-name|EntryUtil
+name|StringUtil
 operator|.
 name|capitalizeFirst
 argument_list|(
@@ -2128,7 +2111,7 @@ else|:
 operator|new
 name|CustomEntryType
 argument_list|(
-name|EntryUtil
+name|StringUtil
 operator|.
 name|capitalizeFirst
 argument_list|(
@@ -2322,7 +2305,7 @@ argument_list|)
 operator|+
 literal|" '"
 operator|+
-name|EntryUtil
+name|StringUtil
 operator|.
 name|capitalizeFirst
 argument_list|(
@@ -2363,7 +2346,7 @@ argument_list|)
 expr_stmt|;
 name|updateTypesForEntries
 argument_list|(
-name|EntryUtil
+name|StringUtil
 operator|.
 name|capitalizeFirst
 argument_list|(

@@ -302,6 +302,25 @@ operator|.
 name|EDIT
 argument_list|)
 block|,
+DECL|enumConstant|COPY_BIBTEX_KEY_AND_LINK
+name|COPY_BIBTEX_KEY_AND_LINK
+argument_list|(
+literal|"Copy BibTeX key and link"
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Copy BibTeX key and link"
+argument_list|)
+argument_list|,
+literal|"ctrl alt K"
+argument_list|,
+name|KeyBindingCategory
+operator|.
+name|EDIT
+argument_list|)
+block|,
 DECL|enumConstant|COPY_PREVIEW
 name|COPY_PREVIEW
 argument_list|(
@@ -948,6 +967,25 @@ operator|.
 name|BIBTEX
 argument_list|)
 block|,
+DECL|enumConstant|NEXT_PREVIEW_LAYOUT
+name|NEXT_PREVIEW_LAYOUT
+argument_list|(
+literal|"Next preview layout"
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Next preview layout"
+argument_list|)
+argument_list|,
+literal|"F9"
+argument_list|,
+name|KeyBindingCategory
+operator|.
+name|VIEW
+argument_list|)
+block|,
 DECL|enumConstant|NEXT_TAB
 name|NEXT_TAB
 argument_list|(
@@ -1117,6 +1155,25 @@ argument_list|,
 name|KeyBindingCategory
 operator|.
 name|FILE
+argument_list|)
+block|,
+DECL|enumConstant|PREVIOUS_PREVIEW_LAYOUT
+name|PREVIOUS_PREVIEW_LAYOUT
+argument_list|(
+literal|"Previous preview layout"
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Previous preview layout"
+argument_list|)
+argument_list|,
+literal|"shift F9"
+argument_list|,
+name|KeyBindingCategory
+operator|.
+name|VIEW
 argument_list|)
 block|,
 DECL|enumConstant|PREVIOUS_TAB
@@ -1347,6 +1404,44 @@ operator|.
 name|EDIT
 argument_list|)
 block|,
+DECL|enumConstant|SELECT_FIRST_ENTRY
+name|SELECT_FIRST_ENTRY
+argument_list|(
+literal|"Select first entry"
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Select first entry"
+argument_list|)
+argument_list|,
+literal|"HOME"
+argument_list|,
+name|KeyBindingCategory
+operator|.
+name|EDIT
+argument_list|)
+block|,
+DECL|enumConstant|SELECT_LAST_ENTRY
+name|SELECT_LAST_ENTRY
+argument_list|(
+literal|"Select last entry"
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Select last entry"
+argument_list|)
+argument_list|,
+literal|"END"
+argument_list|,
+name|KeyBindingCategory
+operator|.
+name|EDIT
+argument_list|)
+block|,
 DECL|enumConstant|STRING_DIALOG_ADD_STRING
 name|STRING_DIALOG_ADD_STRING
 argument_list|(
@@ -1383,25 +1478,6 @@ argument_list|,
 name|KeyBindingCategory
 operator|.
 name|FILE
-argument_list|)
-block|,
-DECL|enumConstant|SWITCH_PREVIEW_LAYOUT
-name|SWITCH_PREVIEW_LAYOUT
-argument_list|(
-literal|"Switch preview layout"
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Switch preview layout"
-argument_list|)
-argument_list|,
-literal|"F9"
-argument_list|,
-name|KeyBindingCategory
-operator|.
-name|VIEW
 argument_list|)
 block|,
 DECL|enumConstant|SYNCHRONIZE_FILES

@@ -1274,17 +1274,6 @@ argument_list|,
 name|mergedEntry
 argument_list|,
 literal|null
-argument_list|,
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|get
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|PREVIEW_0
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|mainPanel

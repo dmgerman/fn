@@ -62,7 +62,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|model
 operator|.
 name|search
 operator|.
@@ -80,9 +80,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
-operator|.
-name|util
+name|model
 operator|.
 name|strings
 operator|.

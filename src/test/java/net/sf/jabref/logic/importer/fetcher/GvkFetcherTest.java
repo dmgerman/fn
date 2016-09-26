@@ -442,7 +442,7 @@ parameter_list|()
 block|{
 name|assertEquals
 argument_list|(
-literal|"GVKHelp"
+literal|"GVK"
 argument_list|,
 name|fetcher
 operator|.
@@ -511,7 +511,7 @@ name|url
 init|=
 name|fetcher
 operator|.
-name|getQueryURL
+name|getURLForQuery
 argument_list|(
 name|query
 argument_list|)
@@ -584,7 +584,7 @@ name|url
 init|=
 name|fetcher
 operator|.
-name|getQueryURL
+name|getURLForQuery
 argument_list|(
 name|query
 argument_list|)

@@ -102,19 +102,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|BibDatabaseContext
-import|;
-end_import
-
-begin_import
-import|import
-name|net
+name|model
 operator|.
-name|sf
+name|database
 operator|.
-name|jabref
-operator|.
-name|MetaData
+name|BibDatabase
 import|;
 end_import
 
@@ -130,7 +122,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibDatabase
+name|BibDatabaseContext
 import|;
 end_import
 
@@ -179,6 +171,22 @@ operator|.
 name|entry
 operator|.
 name|EntryType
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|metadata
+operator|.
+name|MetaData
 import|;
 end_import
 

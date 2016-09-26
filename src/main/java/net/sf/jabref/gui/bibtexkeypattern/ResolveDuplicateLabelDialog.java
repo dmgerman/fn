@@ -335,37 +335,6 @@ specifier|private
 name|boolean
 name|cancelPressed
 decl_stmt|;
-DECL|field|LAYOUT
-specifier|private
-specifier|static
-specifier|final
-name|String
-name|LAYOUT
-init|=
-literal|"<font face=\"arial\"><b><i>\\entrytype</i><a name=\"\\bibtexkey\">\\begin{bibtexkey} (\\bibtexkey)</a>\\end{bibtexkey}</b><br>\n"
-operator|+
-literal|"\\begin{author} \\format[HTMLChars,AuthorAbbreviator,AuthorAndsReplacer]{\\author}<BR>\\end{author}\n"
-operator|+
-literal|"\\begin{editor} \\format[HTMLChars,AuthorAbbreviator,AuthorAndsReplacer]{\\editor}<i>(\\format[IfPlural(Eds.,Ed.)]{\\editor})</i><BR>\\end{editor}\n"
-operator|+
-literal|"\\begin{title} \\format[HTMLChars]{\\title} \\end{title}<BR>\n"
-operator|+
-literal|"\\begin{chapter} \\format[HTMLChars]{\\chapter}<BR>\\end{chapter}\n"
-operator|+
-literal|"\\begin{journal}<em>\\format[HTMLChars]{\\journal},</em>\\end{journal}\n"
-operator|+
-literal|"\\begin{booktitle}<em>\\format[HTMLChars]{\\booktitle},</em>\\end{booktitle}\n"
-operator|+
-literal|"\\begin{school}<em>\\format[HTMLChars]{\\school},</em>\\end{school}\n"
-operator|+
-literal|"\\begin{institution}<em>\\format[HTMLChars]{\\institution},</em>\\end{institution}\n"
-operator|+
-literal|"\\begin{publisher}<em>\\format[HTMLChars]{\\publisher},</em>\\end{publisher}\n"
-operator|+
-literal|"\\begin{year}<b>\\year</b>\\end{year}\\begin{volume}<i>, \\volume</i>\\end{volume}\\begin{pages}, \\format[FormatPagesForHTML]{\\pages} \\end{pages}\n"
-operator|+
-literal|"<p></p></font>"
-decl_stmt|;
 DECL|method|ResolveDuplicateLabelDialog (BasePanel panel, String key, List<BibEntry> entries)
 specifier|public
 name|ResolveDuplicateLabelDialog
@@ -539,10 +508,6 @@ argument_list|,
 name|entry
 argument_list|,
 literal|null
-argument_list|,
-name|ResolveDuplicateLabelDialog
-operator|.
-name|LAYOUT
 argument_list|)
 decl_stmt|;
 name|pp

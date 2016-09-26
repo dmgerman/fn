@@ -1235,7 +1235,7 @@ operator|.
 name|getDatabase
 argument_list|()
 operator|.
-name|insertEntryWithDuplicationCheck
+name|insertEntry
 argument_list|(
 name|entry
 argument_list|)
@@ -1523,7 +1523,7 @@ operator|.
 name|getDatabase
 argument_list|()
 operator|.
-name|insertEntryWithDuplicationCheck
+name|insertEntry
 argument_list|(
 name|entry
 argument_list|)
@@ -1618,11 +1618,6 @@ argument_list|(
 name|editor
 argument_list|)
 expr_stmt|;
-name|panel
-operator|.
-name|adjustSplitter
-argument_list|()
-expr_stmt|;
 block|}
 name|res
 operator|.
@@ -1712,7 +1707,7 @@ operator|.
 name|getDatabase
 argument_list|()
 operator|.
-name|insertEntryWithDuplicationCheck
+name|insertEntry
 argument_list|(
 name|bibEntry
 argument_list|)

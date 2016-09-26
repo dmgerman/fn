@@ -388,6 +388,20 @@ operator|==
 literal|0
 return|;
 block|}
+DECL|method|isValid ()
+specifier|public
+name|boolean
+name|isValid
+parameter_list|()
+block|{
+return|return
+name|isValidFormat
+argument_list|()
+operator|&&
+name|isValidChecksum
+argument_list|()
+return|;
+block|}
 block|}
 end_class
 

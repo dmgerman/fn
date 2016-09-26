@@ -48,10 +48,10 @@ decl_stmt|;
 DECL|field|keywordSeparator
 specifier|private
 specifier|final
-name|String
+name|Character
 name|keywordSeparator
 decl_stmt|;
-DECL|method|XMPPreferences (boolean useXMPPrivacyFilter, List<String> xmpPrivacyFilter, String keywordSeparator)
+DECL|method|XMPPreferences (boolean useXMPPrivacyFilter, List<String> xmpPrivacyFilter, Character keywordSeparator)
 specifier|public
 name|XMPPreferences
 parameter_list|(
@@ -64,7 +64,7 @@ name|String
 argument_list|>
 name|xmpPrivacyFilter
 parameter_list|,
-name|String
+name|Character
 name|keywordSeparator
 parameter_list|)
 block|{
@@ -112,7 +112,7 @@ return|;
 block|}
 DECL|method|getKeywordSeparator ()
 specifier|public
-name|String
+name|Character
 name|getKeywordSeparator
 parameter_list|()
 block|{

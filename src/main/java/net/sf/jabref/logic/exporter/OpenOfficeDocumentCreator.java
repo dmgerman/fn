@@ -264,7 +264,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|BibDatabaseContext
+name|model
+operator|.
+name|database
+operator|.
+name|BibDatabase
 import|;
 end_import
 
@@ -280,7 +284,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibDatabase
+name|BibDatabaseContext
 import|;
 end_import
 

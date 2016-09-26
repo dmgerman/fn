@@ -350,6 +350,20 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|migrations
+operator|.
+name|PreferencesMigrations
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|model
 operator|.
 name|entry
@@ -511,12 +525,10 @@ decl_stmt|;
 name|ProxyPreferences
 name|proxyPreferences
 init|=
-name|ProxyPreferences
-operator|.
-name|loadFromPreferences
-argument_list|(
 name|preferences
-argument_list|)
+operator|.
+name|getProxyPreferences
+argument_list|()
 decl_stmt|;
 name|ProxyRegisterer
 operator|.
@@ -578,6 +590,23 @@ operator|.
 name|prefs
 operator|.
 name|setLanguageDependentDefaultValues
+argument_list|()
+expr_stmt|;
+comment|// Perform Migrations
+comment|// Perform checks and changes for users with a preference set from an older JabRef version.
+name|PreferencesMigrations
+operator|.
+name|upgradeSortOrder
+argument_list|()
+expr_stmt|;
+name|PreferencesMigrations
+operator|.
+name|upgradeFaultyEncodingStrings
+argument_list|()
+expr_stmt|;
+name|PreferencesMigrations
+operator|.
+name|upgradeLabelPatternToBibtexKeyPattern
 argument_list|()
 expr_stmt|;
 comment|// Update handling of special fields based on preferences
@@ -760,13 +789,12 @@ comment|// Check for running JabRef
 name|RemotePreferences
 name|remotePreferences
 init|=
-operator|new
-name|RemotePreferences
-argument_list|(
 name|Globals
 operator|.
 name|prefs
-argument_list|)
+operator|.
+name|getRemotePreferences
+argument_list|()
 decl_stmt|;
 if|if
 condition|(

@@ -525,7 +525,14 @@ name|fft
 init|=
 operator|new
 name|FulltextFetchers
+argument_list|(
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getImportFormatPreferences
 argument_list|()
+argument_list|)
 decl_stmt|;
 name|downloads
 operator|.
@@ -671,7 +678,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"External programs"
+literal|"File"
 argument_list|)
 argument_list|,
 name|Localization

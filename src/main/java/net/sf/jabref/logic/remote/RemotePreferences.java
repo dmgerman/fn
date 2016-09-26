@@ -14,20 +14,6 @@ name|remote
 package|;
 end_package
 
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|preferences
-operator|.
-name|JabRefPreferences
-import|;
-end_import
-
 begin_comment
 comment|/**  * Place for handling the preferences for the remote communication  */
 end_comment
@@ -38,25 +24,38 @@ specifier|public
 class|class
 name|RemotePreferences
 block|{
-DECL|field|preferences
+DECL|field|port
 specifier|private
-specifier|final
-name|JabRefPreferences
-name|preferences
+name|int
+name|port
 decl_stmt|;
-DECL|method|RemotePreferences (JabRefPreferences preferences)
+DECL|field|useRemoteServer
+specifier|private
+name|boolean
+name|useRemoteServer
+decl_stmt|;
+DECL|method|RemotePreferences (int port, boolean useRemoteServer)
 specifier|public
 name|RemotePreferences
 parameter_list|(
-name|JabRefPreferences
-name|preferences
+name|int
+name|port
+parameter_list|,
+name|boolean
+name|useRemoteServer
 parameter_list|)
 block|{
 name|this
 operator|.
-name|preferences
+name|port
 operator|=
-name|preferences
+name|port
+expr_stmt|;
+name|this
+operator|.
+name|useRemoteServer
+operator|=
+name|useRemoteServer
 expr_stmt|;
 block|}
 DECL|method|getPort ()
@@ -66,14 +65,7 @@ name|getPort
 parameter_list|()
 block|{
 return|return
-name|preferences
-operator|.
-name|getInt
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|REMOTE_SERVER_PORT
-argument_list|)
+name|port
 return|;
 block|}
 DECL|method|setPort (int port)
@@ -85,16 +77,11 @@ name|int
 name|port
 parameter_list|)
 block|{
-name|preferences
+name|this
 operator|.
-name|putInt
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|REMOTE_SERVER_PORT
-argument_list|,
 name|port
-argument_list|)
+operator|=
+name|port
 expr_stmt|;
 block|}
 DECL|method|useRemoteServer ()
@@ -104,14 +91,7 @@ name|useRemoteServer
 parameter_list|()
 block|{
 return|return
-name|preferences
-operator|.
-name|getBoolean
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|USE_REMOTE_SERVER
-argument_list|)
+name|useRemoteServer
 return|;
 block|}
 DECL|method|setUseRemoteServer (boolean useRemoteServer)
@@ -123,16 +103,11 @@ name|boolean
 name|useRemoteServer
 parameter_list|)
 block|{
-name|preferences
+name|this
 operator|.
-name|putBoolean
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|USE_REMOTE_SERVER
-argument_list|,
 name|useRemoteServer
-argument_list|)
+operator|=
+name|useRemoteServer
 expr_stmt|;
 block|}
 DECL|method|isDifferentPort (int otherPort)

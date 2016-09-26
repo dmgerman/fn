@@ -176,7 +176,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|BibDatabaseContext
+name|logic
+operator|.
+name|msbib
+operator|.
+name|MSBibDatabase
 import|;
 end_import
 
@@ -188,11 +192,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|model
 operator|.
-name|msbib
+name|database
 operator|.
-name|MSBibDatabase
+name|BibDatabaseContext
 import|;
 end_import
 

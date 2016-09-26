@@ -334,18 +334,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|BibDatabaseContext
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|Globals
 import|;
 end_import
@@ -611,6 +599,22 @@ operator|.
 name|util
 operator|.
 name|TestEntry
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|database
+operator|.
+name|BibDatabaseContext
 import|;
 end_import
 
@@ -1276,8 +1280,6 @@ argument_list|(
 literal|null
 argument_list|,
 literal|null
-argument_list|,
-literal|""
 argument_list|)
 expr_stmt|;
 comment|// Use the test entry from the Preview settings tab in Preferences:

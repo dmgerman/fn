@@ -591,14 +591,14 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Export with selected format"
+literal|"Export"
 argument_list|)
 block|,
 name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Return to JabRef"
+literal|"Cancel"
 argument_list|)
 block|}
 argument_list|,
@@ -606,7 +606,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Export with selected format"
+literal|"Export"
 argument_list|)
 argument_list|)
 decl_stmt|;

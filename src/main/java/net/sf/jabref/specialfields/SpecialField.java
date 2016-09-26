@@ -18,16 +18,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|ArrayList
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|HashMap
 import|;
 end_import
@@ -85,6 +75,22 @@ operator|.
 name|l10n
 operator|.
 name|Localization
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|KeywordList
 import|;
 end_import
 
@@ -151,10 +157,7 @@ name|values
 decl_stmt|;
 DECL|field|keywords
 specifier|private
-name|List
-argument_list|<
-name|String
-argument_list|>
+name|KeywordList
 name|keywords
 decl_stmt|;
 DECL|field|map
@@ -167,6 +170,9 @@ name|SpecialFieldValue
 argument_list|>
 name|map
 decl_stmt|;
+annotation|@
+name|Deprecated
+comment|// create via a new constructor SpecialField(List<SpecialFieldValue> values) instead
 DECL|method|setValues (List<SpecialFieldValue> values)
 specifier|protected
 name|void
@@ -190,8 +196,7 @@ operator|.
 name|keywords
 operator|=
 operator|new
-name|ArrayList
-argument_list|<>
+name|KeywordList
 argument_list|()
 expr_stmt|;
 name|this
@@ -206,12 +211,12 @@ expr_stmt|;
 for|for
 control|(
 name|SpecialFieldValue
-name|v
+name|value
 range|:
 name|values
 control|)
 block|{
-name|v
+name|value
 operator|.
 name|getKeyword
 argument_list|()
@@ -223,7 +228,7 @@ operator|::
 name|add
 argument_list|)
 expr_stmt|;
-name|v
+name|value
 operator|.
 name|getFieldValue
 argument_list|()
@@ -238,7 +243,7 @@ name|put
 argument_list|(
 name|fieldValue
 argument_list|,
-name|v
+name|value
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -261,10 +266,7 @@ return|;
 block|}
 DECL|method|getKeyWords ()
 specifier|public
-name|List
-argument_list|<
-name|String
-argument_list|>
+name|KeywordList
 name|getKeyWords
 parameter_list|()
 block|{
