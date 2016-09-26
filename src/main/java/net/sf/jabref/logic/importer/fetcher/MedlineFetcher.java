@@ -144,6 +144,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|regex
 operator|.
 name|Matcher
@@ -241,6 +251,22 @@ operator|.
 name|fileformat
 operator|.
 name|MedlineImporter
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
 import|;
 end_import
 
@@ -907,15 +933,7 @@ literal|"\\d+[,\\d+]*"
 argument_list|)
 condition|)
 block|{
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"Fetching Medline by id..."
-argument_list|)
-expr_stmt|;
+comment|//fetch medline by id
 name|List
 argument_list|<
 name|BibEntry
@@ -935,13 +953,16 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-name|System
+name|LOGGER
 operator|.
-name|out
+name|warn
+argument_list|(
+name|Localization
 operator|.
-name|println
+name|lang
 argument_list|(
 literal|"No references found"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -974,15 +995,7 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"Fetching Medline by term..."
-argument_list|)
-expr_stmt|;
+comment|//fetch medline by term
 name|String
 name|searchTerm
 init|=
@@ -1013,13 +1026,16 @@ operator|==
 literal|0
 condition|)
 block|{
-name|System
+name|LOGGER
 operator|.
-name|out
+name|warn
+argument_list|(
+name|Localization
 operator|.
-name|println
+name|lang
 argument_list|(
 literal|"No references found"
+argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
@@ -1130,30 +1146,13 @@ return|return
 name|entryList
 return|;
 block|}
-name|System
-operator|.
-name|out
-operator|.
-name|println
+throw|throw
+operator|new
+name|FetcherException
 argument_list|(
-literal|"Please enter a comma separated list of Medline IDs (numbers) or search terms."
+literal|"Input Error. Please enter a comma separated list of Medline IDs (numbers) or search terms."
 argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"Input error"
-argument_list|)
-expr_stmt|;
-return|return
-name|Collections
-operator|.
-name|emptyList
-argument_list|()
-return|;
+throw|;
 block|}
 comment|/**      * Fetch and parse an medline item from eutils.ncbi.nlm.nih.gov.      *      * @param id One or several ids, separated by ","      * @return Will return an empty list on error.      */
 DECL|method|fetchMedline (String id)
@@ -1270,11 +1269,9 @@ name|hasWarnings
 argument_list|()
 condition|)
 block|{
-name|System
+name|LOGGER
 operator|.
-name|out
-operator|.
-name|println
+name|warn
 argument_list|(
 name|result
 operator|.
@@ -1301,6 +1298,18 @@ name|IOException
 name|e
 parameter_list|)
 block|{
+name|LOGGER
+operator|.
+name|warn
+argument_list|(
+name|e
+operator|.
+name|getLocalizedMessage
+argument_list|()
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
 return|return
 operator|new
 name|ArrayList
