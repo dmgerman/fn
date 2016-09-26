@@ -756,6 +756,21 @@ argument_list|,
 literal|"ctrl shift R"
 argument_list|)
 block|,
+DECL|enumConstant|NEXT_PREVIEW_LAYOUT
+name|NEXT_PREVIEW_LAYOUT
+argument_list|(
+literal|"Next preview layout"
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Next preview layout"
+argument_list|)
+argument_list|,
+literal|"F9"
+argument_list|)
+block|,
 DECL|enumConstant|NEXT_TAB
 name|NEXT_TAB
 argument_list|(
@@ -889,6 +904,21 @@ literal|"Preamble editor, store changes"
 argument_list|)
 argument_list|,
 literal|"alt S"
+argument_list|)
+block|,
+DECL|enumConstant|PREVIOUS_PREVIEW_LAYOUT
+name|PREVIOUS_PREVIEW_LAYOUT
+argument_list|(
+literal|"Previous preview layout"
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Previous preview layout"
+argument_list|)
+argument_list|,
+literal|"shift F9"
 argument_list|)
 block|,
 DECL|enumConstant|PREVIOUS_TAB
@@ -1129,21 +1159,6 @@ literal|"String dialog, remove string"
 argument_list|)
 argument_list|,
 literal|"shift DELETE"
-argument_list|)
-block|,
-DECL|enumConstant|SWITCH_PREVIEW_LAYOUT
-name|SWITCH_PREVIEW_LAYOUT
-argument_list|(
-literal|"Switch preview layout"
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Switch preview layout"
-argument_list|)
-argument_list|,
-literal|"F9"
 argument_list|)
 block|,
 DECL|enumConstant|SYNCHRONIZE_FILES

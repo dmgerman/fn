@@ -324,10 +324,13 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
-DECL|method|FulltextFetchers ()
+DECL|method|FulltextFetchers (ImportFormatPreferences importFormatPreferences)
 specifier|public
 name|FulltextFetchers
-parameter_list|()
+parameter_list|(
+name|ImportFormatPreferences
+name|importFormatPreferences
+parameter_list|)
 block|{
 comment|// Ordering is important, authorities first!
 comment|// Publisher
@@ -373,7 +376,9 @@ name|add
 argument_list|(
 operator|new
 name|ArXiv
-argument_list|()
+argument_list|(
+name|importFormatPreferences
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|finders

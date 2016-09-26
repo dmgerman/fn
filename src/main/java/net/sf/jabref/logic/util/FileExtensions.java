@@ -124,6 +124,22 @@ argument_list|,
 literal|"txt"
 argument_list|)
 block|,
+DECL|enumConstant|CITATION_STYLE
+DECL|enumConstant|Localization.lang
+name|CITATION_STYLE
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"%0 file"
+argument_list|,
+literal|"CSL"
+argument_list|)
+argument_list|,
+literal|"csl"
+argument_list|)
+block|,
 DECL|enumConstant|ENDNOTE
 DECL|enumConstant|Localization.lang
 name|ENDNOTE

@@ -210,7 +210,7 @@ name|NewVersionDialog
 extends|extends
 name|JDialog
 block|{
-DECL|method|NewVersionDialog (JFrame frame, Version currentVersion, Version latestVersion, Version toBeIgnored)
+DECL|method|NewVersionDialog (JFrame frame, Version currentVersion, Version latestVersion)
 specifier|public
 name|NewVersionDialog
 parameter_list|(
@@ -222,9 +222,6 @@ name|currentVersion
 parameter_list|,
 name|Version
 name|latestVersion
-parameter_list|,
-name|Version
-name|toBeIgnored
 parameter_list|)
 block|{
 name|super
@@ -395,17 +392,17 @@ argument_list|(
 name|e
 lambda|->
 block|{
-operator|new
-name|VersionPreferences
-argument_list|(
 name|Globals
 operator|.
 name|prefs
-argument_list|)
 operator|.
-name|setAsIgnoredVersion
+name|storeVersionPreferences
 argument_list|(
-name|toBeIgnored
+operator|new
+name|VersionPreferences
+argument_list|(
+name|latestVersion
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|dispose

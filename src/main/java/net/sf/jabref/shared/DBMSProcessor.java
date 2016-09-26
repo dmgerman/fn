@@ -2823,6 +2823,18 @@ literal|null
 return|;
 comment|// can never happen except new types were added without updating this method.
 block|}
+DECL|method|getDBMSConnectionProperties ()
+specifier|public
+name|DBMSConnectionProperties
+name|getDBMSConnectionProperties
+parameter_list|()
+block|{
+return|return
+name|this
+operator|.
+name|connectionProperties
+return|;
+block|}
 comment|/**      * Listens for notifications from DBMS.      * Needs to be implemented if LiveUpdate is supported by the DBMS      *      * @param dbmsSynchronizer {@link DBMSSynchronizer} which handles the notification.      */
 DECL|method|startNotificationListener (@uppressWarningsR) DBMSSynchronizer dbmsSynchronizer)
 specifier|public

@@ -136,13 +136,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|model
 operator|.
-name|util
+name|groups
 operator|.
-name|strings
-operator|.
-name|StringUtil
+name|GroupTreeNode
 import|;
 end_import
 
@@ -156,9 +154,9 @@ name|jabref
 operator|.
 name|model
 operator|.
-name|groups
+name|strings
 operator|.
-name|GroupTreeNode
+name|StringUtil
 import|;
 end_import
 

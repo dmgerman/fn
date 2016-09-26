@@ -1548,7 +1548,9 @@ block|}
 block|}
 name|setTextProperty
 argument_list|(
-literal|"entrytype"
+name|BibEntry
+operator|.
+name|TYPE_HEADER
 argument_list|,
 name|entry
 operator|.
@@ -1568,7 +1570,9 @@ name|type
 init|=
 name|getTextProperty
 argument_list|(
-literal|"entrytype"
+name|BibEntry
+operator|.
+name|TYPE_HEADER
 argument_list|)
 decl_stmt|;
 name|BibEntry
@@ -1607,7 +1611,9 @@ name|text
 operator|.
 name|remove
 argument_list|(
-literal|"entrytype"
+name|BibEntry
+operator|.
+name|TYPE_HEADER
 argument_list|)
 expr_stmt|;
 name|e

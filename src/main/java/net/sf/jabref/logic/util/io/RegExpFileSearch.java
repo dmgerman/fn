@@ -154,24 +154,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
-operator|.
-name|util
-operator|.
-name|strings
-operator|.
-name|StringUtil
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|model
 operator|.
 name|database
@@ -193,6 +175,22 @@ operator|.
 name|entry
 operator|.
 name|BibEntry
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|strings
+operator|.
+name|StringUtil
 import|;
 end_import
 
@@ -287,8 +285,8 @@ argument_list|(
 literal|"\\[.*?\\]"
 argument_list|)
 decl_stmt|;
-comment|/**      * Search for file links for a set of entries using regexp. Lists of extensions and directories      * are given.      * @param entries The entries to search for.      * @param extensions The extensions that are acceptable.      * @param directories The root directories to search.      * @param regExp The expression deciding which names are acceptable.      * @return A map linking each given entry to a list of files matching the given criteria.      */
-DECL|method|findFilesForSet (List<BibEntry> entries, List<String> extensions, List<File> directories, String regExp)
+comment|/**      * Search for file links for a set of entries using regexp. Lists of extensions and directories      * are given.      * @param entries The entries to search for.      * @param extensions The extensions that are acceptable.      * @param directories The root directories to search.      * @param regExp The expression deciding which names are acceptable.      * @param keywordDelimiter      * @return A map linking each given entry to a list of files matching the given criteria.      */
+DECL|method|findFilesForSet (List<BibEntry> entries, List<String> extensions, List<File> directories, String regExp, Character keywordDelimiter)
 specifier|public
 specifier|static
 name|Map
@@ -322,6 +320,9 @@ name|directories
 parameter_list|,
 name|String
 name|regExp
+parameter_list|,
+name|Character
+name|keywordDelimiter
 parameter_list|)
 block|{
 name|Map
@@ -363,6 +364,8 @@ argument_list|,
 name|directories
 argument_list|,
 name|regExp
+argument_list|,
+name|keywordDelimiter
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -371,8 +374,8 @@ return|return
 name|res
 return|;
 block|}
-comment|/**      * Method for searching for files using regexp. A list of extensions and directories can be      * given.      * @param entry The entry to search for.      * @param extensions The extensions that are acceptable.      * @param directories The root directories to search.      * @param regularExpression The expression deciding which names are acceptable.      * @return A list of files paths matching the given criteria.      */
-DECL|method|findFiles (BibEntry entry, List<String> extensions, List<File> directories, String regularExpression)
+comment|/**      * Method for searching for files using regexp. A list of extensions and directories can be      * given.      * @param entry The entry to search for.      * @param extensions The extensions that are acceptable.      * @param directories The root directories to search.      * @param regularExpression The expression deciding which names are acceptable.      * @param keywordDelimiter      * @return A list of files paths matching the given criteria.      */
+DECL|method|findFiles (BibEntry entry, List<String> extensions, List<File> directories, String regularExpression, Character keywordDelimiter)
 specifier|private
 specifier|static
 name|List
@@ -398,6 +401,9 @@ name|directories
 parameter_list|,
 name|String
 name|regularExpression
+parameter_list|,
+name|Character
+name|keywordDelimiter
 parameter_list|)
 block|{
 name|String
@@ -426,11 +432,13 @@ argument_list|,
 name|regularExpression
 argument_list|,
 name|extensionRegExp
+argument_list|,
+name|keywordDelimiter
 argument_list|)
 return|;
 block|}
-comment|/**      * Searches the given directory and filename pattern for a file for the      * BibTeX entry.      *      * Used to fix:      *      * http://sourceforge.net/tracker/index.php?func=detail&aid=1503410&group_id=92314&atid=600309      *      * Requirements:      *  - Be able to find the associated PDF in a set of given directories.      *  - Be able to return a relative path or absolute path.      *  - Be fast.      *  - Allow for flexible naming schemes in the PDFs.      *      * Syntax scheme for file:      *<ul>      *<li>* Any subDir</li>      *<li>** Any subDir (recursive)</li>      *<li>[key] Key from BibTeX file and database</li>      *<li>.* Anything else is taken to be a Regular expression.</li>      *</ul>      *      * @param entry      *            non-null      * @param dirs      *            A set of root directories to start the search from. Paths are      *            returned relative to these directories if relative is set to      *            true. These directories will not be expanded or anything. Use      *            the file attribute for this.      * @param file      *            non-null      *      * @param relative      *            whether to return relative file paths or absolute ones      *      * @return Will return the first file found to match the given criteria or      *         null if none was found.      */
-DECL|method|findFile (BibEntry entry, List<File> dirs, String file, String extensionRegExp)
+comment|/**      * Searches the given directory and filename pattern for a file for the      * BibTeX entry.      *      * Used to fix:      *      * http://sourceforge.net/tracker/index.php?func=detail&aid=1503410&group_id=92314&atid=600309      *      * Requirements:      *  - Be able to find the associated PDF in a set of given directories.      *  - Be able to return a relative path or absolute path.      *  - Be fast.      *  - Allow for flexible naming schemes in the PDFs.      *      * Syntax scheme for file:      *<ul>      *<li>* Any subDir</li>      *<li>** Any subDir (recursive)</li>      *<li>[key] Key from BibTeX file and database</li>      *<li>.* Anything else is taken to be a Regular expression.</li>      *</ul>      *      * @param keywordDelimiter      * @param entry      *            non-null      * @param dirs      *            A set of root directories to start the search from. Paths are      *            returned relative to these directories if relative is set to      *            true. These directories will not be expanded or anything. Use      *            the file attribute for this.      * @param file      *            non-null      *      * @return Will return the first file found to match the given criteria or      *         null if none was found.      */
+DECL|method|findFile (BibEntry entry, List<File> dirs, String file, String extensionRegExp, Character keywordDelimiter)
 specifier|private
 specifier|static
 name|List
@@ -453,6 +461,9 @@ name|file
 parameter_list|,
 name|String
 name|extensionRegExp
+parameter_list|,
+name|Character
+name|keywordDelimiter
 parameter_list|)
 block|{
 name|List
@@ -490,6 +501,8 @@ argument_list|,
 name|file
 argument_list|,
 name|extensionRegExp
+argument_list|,
+name|keywordDelimiter
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -499,7 +512,7 @@ name|res
 return|;
 block|}
 comment|/**      * Internal Version of findFile, which also accepts a current directory to      * base the search on.      *      */
-DECL|method|findFile (BibEntry entry, String directory, String file, String extensionRegExp)
+DECL|method|findFile (BibEntry entry, String directory, String file, String extensionRegExp, Character keywordDelimiter)
 specifier|private
 specifier|static
 name|List
@@ -519,6 +532,9 @@ name|file
 parameter_list|,
 name|String
 name|extensionRegExp
+parameter_list|,
+name|Character
+name|keywordDelimiter
 parameter_list|)
 block|{
 name|File
@@ -584,6 +600,8 @@ argument_list|,
 name|file
 argument_list|,
 name|extensionRegExp
+argument_list|,
+name|keywordDelimiter
 argument_list|)
 decl_stmt|;
 name|List
@@ -698,7 +716,7 @@ name|result
 return|;
 block|}
 comment|/**      * The actual work-horse. Will find absolute filepaths starting from the      * given directory using the given regular expression string for search.      */
-DECL|method|findFile (BibEntry entry, File directory, String file, String extensionRegExp)
+DECL|method|findFile (BibEntry entry, File directory, String file, String extensionRegExp, Character keywordDelimiter)
 specifier|private
 specifier|static
 name|List
@@ -718,6 +736,9 @@ name|file
 parameter_list|,
 name|String
 name|extensionRegExp
+parameter_list|,
+name|Character
+name|keywordDelimiter
 parameter_list|)
 block|{
 name|List
@@ -900,6 +921,8 @@ argument_list|,
 name|entry
 argument_list|,
 literal|null
+argument_list|,
+name|keywordDelimiter
 argument_list|)
 expr_stmt|;
 if|if
@@ -1037,6 +1060,8 @@ argument_list|,
 name|restOfFileString
 argument_list|,
 name|extensionRegExp
+argument_list|,
+name|keywordDelimiter
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1170,6 +1195,8 @@ argument_list|,
 name|restOfFileString
 argument_list|,
 name|extensionRegExp
+argument_list|,
+name|keywordDelimiter
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1208,6 +1235,8 @@ argument_list|,
 name|entry
 argument_list|,
 literal|null
+argument_list|,
+name|keywordDelimiter
 argument_list|)
 operator|.
 name|replaceAll
@@ -1303,8 +1332,8 @@ return|return
 name|res
 return|;
 block|}
-comment|/**      * Takes a string that contains bracketed expression and expands each of these using getFieldAndFormat.      *<p>      * Unknown Bracket expressions are silently dropped.      *      * @param bracketString      * @param entry      * @param database      * @return      */
-DECL|method|expandBrackets (String bracketString, BibEntry entry, BibDatabase database)
+comment|/**      * Takes a string that contains bracketed expression and expands each of these using getFieldAndFormat.      *<p>      * Unknown Bracket expressions are silently dropped.      *      * @param bracketString      * @param entry      * @param database      * @param keywordDelimiter      * @return      */
+DECL|method|expandBrackets (String bracketString, BibEntry entry, BibDatabase database, Character keywordDelimiter)
 specifier|public
 specifier|static
 name|String
@@ -1318,6 +1347,9 @@ name|entry
 parameter_list|,
 name|BibDatabase
 name|database
+parameter_list|,
+name|Character
+name|keywordDelimiter
 parameter_list|)
 block|{
 name|Matcher
@@ -1358,6 +1390,8 @@ argument_list|,
 name|entry
 argument_list|,
 name|database
+argument_list|,
+name|keywordDelimiter
 argument_list|)
 decl_stmt|;
 name|m
@@ -1384,8 +1418,8 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * Accepts a string like [author:lower] or [title:abbr] or [auth], whereas the first part signifies the bibtex-field      * to get, or the key generator field marker to use, while the others are the modifiers that will be applied.      *      * @param fieldAndFormat      * @param entry      * @param database      * @return      */
-DECL|method|getFieldAndFormat (String fieldAndFormat, BibEntry entry, BibDatabase database)
+comment|/**      * Accepts a string like [author:lower] or [title:abbr] or [auth], whereas the first part signifies the bibtex-field      * to get, or the key generator field marker to use, while the others are the modifiers that will be applied.      *      * @param fieldAndFormat      * @param entry      * @param database      * @param keywordDelimiter      * @return      */
+DECL|method|getFieldAndFormat (String fieldAndFormat, BibEntry entry, BibDatabase database, Character keywordDelimiter)
 specifier|public
 specifier|static
 name|String
@@ -1399,6 +1433,9 @@ name|entry
 parameter_list|,
 name|BibDatabase
 name|database
+parameter_list|,
+name|Character
+name|keywordDelimiter
 parameter_list|)
 block|{
 name|String
@@ -1512,6 +1549,8 @@ argument_list|(
 name|entry
 argument_list|,
 name|beforeColon
+argument_list|,
+name|keywordDelimiter
 argument_list|)
 argument_list|)
 decl_stmt|;

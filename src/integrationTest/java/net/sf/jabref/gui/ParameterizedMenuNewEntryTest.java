@@ -42,9 +42,9 @@ name|jabref
 operator|.
 name|model
 operator|.
-name|entry
+name|strings
 operator|.
-name|EntryUtil
+name|StringUtil
 import|;
 end_import
 
@@ -207,7 +207,7 @@ literal|"BibTeX"
 argument_list|,
 literal|"New entry by type..."
 argument_list|,
-name|EntryUtil
+name|StringUtil
 operator|.
 name|capitalizeFirst
 argument_list|(

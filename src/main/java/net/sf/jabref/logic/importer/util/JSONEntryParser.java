@@ -32,16 +32,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|LinkedHashSet
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|List
 import|;
 end_import
@@ -165,7 +155,7 @@ name|class
 argument_list|)
 decl_stmt|;
 comment|/**      * Convert a JSONObject containing a bibJSON entry to a BibEntry      *      * @param bibJsonEntry The JSONObject to convert      * @return the converted BibEntry      */
-DECL|method|parseBibJSONtoBibtex (JSONObject bibJsonEntry, String keywordSeparator)
+DECL|method|parseBibJSONtoBibtex (JSONObject bibJsonEntry, Character keywordSeparator)
 specifier|public
 name|BibEntry
 name|parseBibJSONtoBibtex
@@ -173,7 +163,7 @@ parameter_list|(
 name|JSONObject
 name|bibJsonEntry
 parameter_list|,
-name|String
+name|Character
 name|keywordSeparator
 parameter_list|)
 block|{
@@ -584,17 +574,6 @@ argument_list|(
 literal|"keywords"
 argument_list|)
 decl_stmt|;
-name|LinkedHashSet
-argument_list|<
-name|String
-argument_list|>
-name|keywordList
-init|=
-operator|new
-name|LinkedHashSet
-argument_list|<>
-argument_list|()
-decl_stmt|;
 for|for
 control|(
 name|int
@@ -624,9 +603,9 @@ name|i
 argument_list|)
 condition|)
 block|{
-name|keywordList
+name|entry
 operator|.
-name|add
+name|addKeyword
 argument_list|(
 name|keywords
 operator|.
@@ -634,19 +613,12 @@ name|getString
 argument_list|(
 name|i
 argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-name|entry
-operator|.
-name|putKeywords
-argument_list|(
-name|keywordList
 argument_list|,
 name|keywordSeparator
 argument_list|)
 expr_stmt|;
+block|}
+block|}
 block|}
 comment|// Identifiers
 if|if

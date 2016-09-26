@@ -332,7 +332,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"large capitals are not masked using curly brackets {}"
+literal|"capital letters are not masked using curly brackets {}"
 argument_list|)
 argument_list|,
 name|entry

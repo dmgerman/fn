@@ -161,7 +161,9 @@ name|fetcher
 operator|=
 operator|new
 name|ArXiv
-argument_list|()
+argument_list|(
+name|preferences
+argument_list|)
 expr_stmt|;
 break|break;
 default|default:

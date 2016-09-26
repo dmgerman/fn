@@ -377,7 +377,7 @@ name|DBMSSynchronizer
 argument_list|(
 name|context
 argument_list|,
-literal|", "
+literal|','
 argument_list|)
 expr_stmt|;
 name|dbmsProcessor

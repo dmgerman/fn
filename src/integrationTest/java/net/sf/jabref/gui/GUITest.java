@@ -497,7 +497,7 @@ name|menuItemWithPath
 argument_list|(
 literal|"View"
 argument_list|,
-literal|"Switch preview layout"
+literal|"Next preview layout"
 argument_list|)
 operator|.
 name|click
@@ -509,7 +509,7 @@ name|menuItemWithPath
 argument_list|(
 literal|"View"
 argument_list|,
-literal|"Switch preview layout"
+literal|"Previous preview layout"
 argument_list|)
 operator|.
 name|click

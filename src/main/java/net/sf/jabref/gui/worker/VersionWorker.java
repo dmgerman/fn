@@ -443,8 +443,6 @@ argument_list|,
 name|installedVersion
 argument_list|,
 name|latestVersion
-argument_list|,
-name|toBeIgnored
 argument_list|)
 expr_stmt|;
 return|return;

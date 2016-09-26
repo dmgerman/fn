@@ -62,13 +62,13 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|model
 operator|.
-name|util
+name|search
 operator|.
-name|strings
+name|rules
 operator|.
-name|StringUtil
+name|SentenceAnalyzer
 import|;
 end_import
 
@@ -82,11 +82,9 @@ name|jabref
 operator|.
 name|model
 operator|.
-name|search
+name|strings
 operator|.
-name|rules
-operator|.
-name|SentenceAnalyzer
+name|StringUtil
 import|;
 end_import
 

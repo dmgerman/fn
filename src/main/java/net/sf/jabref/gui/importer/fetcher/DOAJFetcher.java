@@ -148,20 +148,6 @@ end_import
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|preferences
-operator|.
-name|JabRefPreferences
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|mashape
@@ -713,12 +699,8 @@ name|Globals
 operator|.
 name|prefs
 operator|.
-name|get
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|KEYWORD_SEPARATOR
-argument_list|)
+name|getKeywordDelimiter
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|inspector
