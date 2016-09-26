@@ -1855,11 +1855,13 @@ name|field
 parameter_list|)
 block|{
 return|return
-name|e
+name|BibDatabase
 operator|.
-name|getResolvedFieldOrAlias
+name|getResolvedField
 argument_list|(
 name|field
+argument_list|,
+name|e
 argument_list|,
 name|database
 argument_list|)

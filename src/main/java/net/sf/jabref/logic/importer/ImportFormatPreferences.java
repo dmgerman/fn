@@ -110,7 +110,7 @@ decl_stmt|;
 DECL|field|keywordSeparator
 specifier|private
 specifier|final
-name|String
+name|Character
 name|keywordSeparator
 decl_stmt|;
 DECL|field|bibtexKeyPatternPreferences
@@ -143,7 +143,7 @@ specifier|final
 name|boolean
 name|keywordSyncEnabled
 decl_stmt|;
-DECL|method|ImportFormatPreferences (Set<CustomImporter> customImportList, Charset encoding, String keywordSeparator, BibtexKeyPatternPreferences bibtexKeyPatternPreferences, FieldContentParserPreferences fieldContentParserPreferences, boolean convertUnitsOnSearch, boolean useCaseKeeperOnSearch, boolean keywordSyncEnabled)
+DECL|method|ImportFormatPreferences (Set<CustomImporter> customImportList, Charset encoding, Character keywordSeparator, BibtexKeyPatternPreferences bibtexKeyPatternPreferences, FieldContentParserPreferences fieldContentParserPreferences, boolean convertUnitsOnSearch, boolean useCaseKeeperOnSearch, boolean keywordSyncEnabled)
 specifier|public
 name|ImportFormatPreferences
 parameter_list|(
@@ -156,7 +156,7 @@ parameter_list|,
 name|Charset
 name|encoding
 parameter_list|,
-name|String
+name|Character
 name|keywordSeparator
 parameter_list|,
 name|BibtexKeyPatternPreferences
@@ -249,7 +249,7 @@ return|;
 block|}
 DECL|method|getKeywordSeparator ()
 specifier|public
-name|String
+name|Character
 name|getKeywordSeparator
 parameter_list|()
 block|{

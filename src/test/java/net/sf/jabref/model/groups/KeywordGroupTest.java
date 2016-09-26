@@ -114,7 +114,7 @@ name|GroupHierarchyType
 operator|.
 name|INDEPENDENT
 argument_list|,
-literal|", "
+literal|','
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -158,7 +158,7 @@ name|GroupHierarchyType
 operator|.
 name|REFINING
 argument_list|,
-literal|", "
+literal|','
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -202,7 +202,7 @@ name|GroupHierarchyType
 operator|.
 name|INDEPENDENT
 argument_list|,
-literal|", "
+literal|','
 argument_list|)
 decl_stmt|;
 name|BibEntry
@@ -260,7 +260,7 @@ name|GroupHierarchyType
 operator|.
 name|INDEPENDENT
 argument_list|,
-literal|", "
+literal|','
 argument_list|)
 decl_stmt|;
 name|BibEntry
@@ -318,7 +318,7 @@ name|GroupHierarchyType
 operator|.
 name|INDEPENDENT
 argument_list|,
-literal|", "
+literal|','
 argument_list|)
 decl_stmt|;
 name|BibEntry
@@ -376,7 +376,7 @@ name|GroupHierarchyType
 operator|.
 name|INDEPENDENT
 argument_list|,
-literal|", "
+literal|','
 argument_list|)
 decl_stmt|;
 name|BibEntry
@@ -434,7 +434,7 @@ name|GroupHierarchyType
 operator|.
 name|INDEPENDENT
 argument_list|,
-literal|", "
+literal|','
 argument_list|)
 decl_stmt|;
 name|BibEntry
@@ -492,7 +492,7 @@ name|GroupHierarchyType
 operator|.
 name|INDEPENDENT
 argument_list|,
-literal|", "
+literal|','
 argument_list|)
 decl_stmt|;
 name|BibEntry
@@ -550,7 +550,7 @@ name|GroupHierarchyType
 operator|.
 name|INDEPENDENT
 argument_list|,
-literal|", "
+literal|','
 argument_list|)
 decl_stmt|;
 name|BibEntry

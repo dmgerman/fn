@@ -1137,6 +1137,68 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+DECL|method|testJournaltitleChecks ()
+specifier|public
+name|void
+name|testJournaltitleChecks
+parameter_list|()
+block|{
+name|assertCorrect
+argument_list|(
+name|withMode
+argument_list|(
+name|createContext
+argument_list|(
+literal|"journaltitle"
+argument_list|,
+literal|"A journal"
+argument_list|)
+argument_list|,
+name|BibDatabaseMode
+operator|.
+name|BIBLATEX
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertWrong
+argument_list|(
+name|withMode
+argument_list|(
+name|createContext
+argument_list|(
+literal|"journaltitle"
+argument_list|,
+literal|"A journal"
+argument_list|)
+argument_list|,
+name|BibDatabaseMode
+operator|.
+name|BIBTEX
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|testBibtexkeyChecks ()
+specifier|public
+name|void
+name|testBibtexkeyChecks
+parameter_list|()
+block|{
+name|assertCorrect
+argument_list|(
+name|createContext
+argument_list|(
+literal|"bibtexkey"
+argument_list|,
+literal|"Knuth2014"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
 DECL|method|testBracketChecks ()
 specifier|public
 name|void
@@ -2516,7 +2578,7 @@ argument_list|()
 decl_stmt|;
 name|bibDatabase
 operator|.
-name|insertEntryWithDuplicationCheck
+name|insertEntry
 argument_list|(
 name|entry
 argument_list|)
@@ -2573,7 +2635,7 @@ argument_list|()
 decl_stmt|;
 name|bibDatabase
 operator|.
-name|insertEntryWithDuplicationCheck
+name|insertEntry
 argument_list|(
 name|entry
 argument_list|)

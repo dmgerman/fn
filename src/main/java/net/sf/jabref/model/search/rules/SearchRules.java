@@ -16,6 +16,22 @@ name|rules
 package|;
 end_package
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|strings
+operator|.
+name|StringUtil
+import|;
+end_import
+
 begin_class
 DECL|class|SearchRules
 specifier|public
@@ -39,6 +55,24 @@ name|boolean
 name|regex
 parameter_list|)
 block|{
+if|if
+condition|(
+name|StringUtil
+operator|.
+name|isBlank
+argument_list|(
+name|query
+argument_list|)
+condition|)
+block|{
+return|return
+operator|new
+name|ContainBasedSearchRule
+argument_list|(
+name|caseSensitive
+argument_list|)
+return|;
+block|}
 comment|// this searches specified fields if specified,
 comment|// and all fields otherwise
 name|SearchRule

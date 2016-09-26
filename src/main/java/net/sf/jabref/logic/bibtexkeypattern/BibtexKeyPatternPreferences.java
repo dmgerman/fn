@@ -72,7 +72,12 @@ specifier|final
 name|GlobalBibtexKeyPattern
 name|keyPattern
 decl_stmt|;
-DECL|method|BibtexKeyPatternPreferences (String keyPatternRegex, String keyPatternReplacement, boolean alwaysAddLetter, boolean firstLetterA, boolean enforceLegalKey, GlobalBibtexKeyPattern keyPattern)
+DECL|field|keywordDelimiter
+specifier|private
+name|Character
+name|keywordDelimiter
+decl_stmt|;
+DECL|method|BibtexKeyPatternPreferences (String keyPatternRegex, String keyPatternReplacement, boolean alwaysAddLetter, boolean firstLetterA, boolean enforceLegalKey, GlobalBibtexKeyPattern keyPattern, Character keywordDelimiter)
 specifier|public
 name|BibtexKeyPatternPreferences
 parameter_list|(
@@ -93,6 +98,9 @@ name|enforceLegalKey
 parameter_list|,
 name|GlobalBibtexKeyPattern
 name|keyPattern
+parameter_list|,
+name|Character
+name|keywordDelimiter
 parameter_list|)
 block|{
 name|this
@@ -130,6 +138,12 @@ operator|.
 name|keyPattern
 operator|=
 name|keyPattern
+expr_stmt|;
+name|this
+operator|.
+name|keywordDelimiter
+operator|=
+name|keywordDelimiter
 expr_stmt|;
 block|}
 DECL|method|getKeyPatternRegex ()
@@ -190,6 +204,16 @@ parameter_list|()
 block|{
 return|return
 name|keyPattern
+return|;
+block|}
+DECL|method|getKeywordDelimiter ()
+specifier|public
+name|Character
+name|getKeywordDelimiter
+parameter_list|()
+block|{
+return|return
+name|keywordDelimiter
 return|;
 block|}
 block|}

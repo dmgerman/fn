@@ -547,11 +547,13 @@ control|)
 block|{
 name|content
 operator|=
-name|entry
+name|BibDatabase
 operator|.
-name|getResolvedFieldOrAlias
+name|getResolvedField
 argument_list|(
 name|field
+argument_list|,
+name|entry
 argument_list|,
 name|database
 operator|.
@@ -667,7 +669,7 @@ argument_list|)
 return|;
 block|}
 block|}
-comment|/**      * Check if the value returned by getColumnValue() is the same as a simple check of the entry's field(s) would give      * The reasons for being different are (combinations may also happen):      * - The entry has a crossref where the field content is obtained from      * - The field has a string in it (which getColumnValue() resolves)      * - There are some alias fields. For example, if the entry has a date field but no year field, getResolvedFieldOrAlias()      *   will return the year value from the date field when queried for year      *      *      * @param entry the BibEntry      * @return true if the value returned by getColumnValue() is resolved as outlined above      */
+comment|/**      * Check if the value returned by getColumnValue() is the same as a simple check of the entry's field(s) would give      * The reasons for being different are (combinations may also happen):      * - The entry has a crossref where the field content is obtained from      * - The field has a string in it (which getColumnValue() resolves)      * - There are some alias fields. For example, if the entry has a date field but no year field, getResolvedField()      *   will return the year value from the date field when queried for year      *      *      * @param entry the BibEntry      * @return true if the value returned by getColumnValue() is resolved as outlined above      */
 DECL|method|isResolved (BibEntry entry)
 specifier|public
 name|boolean
@@ -767,11 +769,13 @@ argument_list|)
 expr_stmt|;
 name|resolvedFieldContent
 operator|=
-name|entry
+name|BibDatabase
 operator|.
-name|getResolvedFieldOrAlias
+name|getResolvedField
 argument_list|(
 name|field
+argument_list|,
+name|entry
 argument_list|,
 name|database
 operator|.

@@ -68,9 +68,7 @@ name|logic
 operator|.
 name|util
 operator|.
-name|strings
-operator|.
-name|StringUtil
+name|OS
 import|;
 end_import
 
@@ -87,6 +85,22 @@ operator|.
 name|entry
 operator|.
 name|FieldName
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|strings
+operator|.
+name|StringUtil
 import|;
 end_import
 
@@ -204,9 +218,13 @@ comment|// Unify line breaks
 return|return
 name|StringUtil
 operator|.
-name|unifyLineBreaksToConfiguredLineBreaks
+name|unifyLineBreaks
 argument_list|(
 name|fieldContent
+argument_list|,
+name|OS
+operator|.
+name|NEWLINE
 argument_list|)
 return|;
 block|}

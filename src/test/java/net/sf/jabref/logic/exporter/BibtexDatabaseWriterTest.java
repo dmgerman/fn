@@ -967,7 +967,7 @@ argument_list|)
 expr_stmt|;
 name|database
 operator|.
-name|insertEntryWithDuplicationCheck
+name|insertEntry
 argument_list|(
 name|entry
 argument_list|)
@@ -1070,7 +1070,7 @@ argument_list|)
 expr_stmt|;
 name|database
 operator|.
-name|insertEntryWithDuplicationCheck
+name|insertEntry
 argument_list|(
 name|entry
 argument_list|)
@@ -1466,7 +1466,7 @@ name|GroupHierarchyType
 operator|.
 name|INCLUDING
 argument_list|,
-literal|", "
+literal|','
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1590,7 +1590,7 @@ name|GroupHierarchyType
 operator|.
 name|INCLUDING
 argument_list|,
-literal|", "
+literal|','
 argument_list|)
 argument_list|)
 argument_list|)
@@ -1851,7 +1851,7 @@ argument_list|)
 expr_stmt|;
 name|database
 operator|.
-name|insertEntryWithDuplicationCheck
+name|insertEntry
 argument_list|(
 name|entry
 argument_list|)
@@ -2618,7 +2618,7 @@ argument_list|)
 expr_stmt|;
 name|database
 operator|.
-name|insertEntryWithDuplicationCheck
+name|insertEntry
 argument_list|(
 name|entry
 argument_list|)
@@ -2716,7 +2716,7 @@ argument_list|)
 expr_stmt|;
 name|database
 operator|.
-name|insertEntryWithDuplicationCheck
+name|insertEntry
 argument_list|(
 name|entry
 argument_list|)
@@ -3740,21 +3740,21 @@ argument_list|)
 expr_stmt|;
 name|database
 operator|.
-name|insertEntryWithDuplicationCheck
+name|insertEntry
 argument_list|(
 name|secondEntry
 argument_list|)
 expr_stmt|;
 name|database
 operator|.
-name|insertEntryWithDuplicationCheck
+name|insertEntry
 argument_list|(
 name|thirdEntry
 argument_list|)
 expr_stmt|;
 name|database
 operator|.
-name|insertEntryWithDuplicationCheck
+name|insertEntry
 argument_list|(
 name|firstEntry
 argument_list|)
@@ -4020,21 +4020,21 @@ argument_list|)
 expr_stmt|;
 name|database
 operator|.
-name|insertEntryWithDuplicationCheck
+name|insertEntry
 argument_list|(
 name|firstEntry
 argument_list|)
 expr_stmt|;
 name|database
 operator|.
-name|insertEntryWithDuplicationCheck
+name|insertEntry
 argument_list|(
 name|secondEntry
 argument_list|)
 expr_stmt|;
 name|database
 operator|.
-name|insertEntryWithDuplicationCheck
+name|insertEntry
 argument_list|(
 name|thirdEntry
 argument_list|)

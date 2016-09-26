@@ -239,15 +239,15 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testNoMatchesFromDatabaseWithEmptyEntry ()
+DECL|method|testGetDatabaseFromMatchesDatabaseWithEmptyEntries ()
 specifier|public
 name|void
-name|testNoMatchesFromDatabaseWithEmptyEntry
+name|testGetDatabaseFromMatchesDatabaseWithEmptyEntries
 parameter_list|()
 block|{
 name|database
 operator|.
-name|insertEntryWithDuplicationCheck
+name|insertEntry
 argument_list|(
 operator|new
 name|BibEntry
@@ -323,7 +323,7 @@ argument_list|)
 expr_stmt|;
 name|database
 operator|.
-name|insertEntryWithDuplicationCheck
+name|insertEntry
 argument_list|(
 name|entry
 argument_list|)
@@ -397,7 +397,7 @@ argument_list|)
 expr_stmt|;
 name|database
 operator|.
-name|insertEntryWithDuplicationCheck
+name|insertEntry
 argument_list|(
 name|entry
 argument_list|)

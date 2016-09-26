@@ -135,7 +135,7 @@ name|parseBibJSONtoBibtex
 argument_list|(
 name|jsonObject
 argument_list|,
-literal|", "
+literal|','
 argument_list|)
 decl_stmt|;
 name|Assert

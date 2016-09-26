@@ -18,16 +18,6 @@ name|java
 operator|.
 name|sql
 operator|.
-name|Connection
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|sql
-operator|.
 name|SQLException
 import|;
 end_import
@@ -44,18 +34,16 @@ specifier|static
 name|DBMSType
 name|currentConnectionType
 decl_stmt|;
-DECL|method|getTestConnection (DBMSType dbmsType)
+DECL|method|getTestDBMSConnection (DBMSType dbmsType)
 specifier|public
 specifier|static
-name|Connection
-name|getTestConnection
+name|DBMSConnection
+name|getTestDBMSConnection
 parameter_list|(
 name|DBMSType
 name|dbmsType
 parameter_list|)
 throws|throws
-name|ClassNotFoundException
-throws|,
 name|SQLException
 block|{
 name|currentConnectionType
@@ -65,25 +53,24 @@ expr_stmt|;
 name|DBMSConnectionProperties
 name|properties
 init|=
-name|getConnectionProperties
+name|getTestConnectionProperties
 argument_list|(
 name|dbmsType
 argument_list|)
 decl_stmt|;
 return|return
-name|DBMSConnector
-operator|.
-name|getNewConnection
+operator|new
+name|DBMSConnection
 argument_list|(
 name|properties
 argument_list|)
 return|;
 block|}
-DECL|method|getConnectionProperties (DBMSType dbmsType)
+DECL|method|getTestConnectionProperties (DBMSType dbmsType)
 specifier|public
 specifier|static
 name|DBMSConnectionProperties
-name|getConnectionProperties
+name|getTestConnectionProperties
 parameter_list|(
 name|DBMSType
 name|dbmsType

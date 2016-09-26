@@ -129,7 +129,7 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-literal|"org.postgresql.Driver"
+literal|"com.impossibl.postgres.jdbc.PGDriver"
 argument_list|,
 name|DBMSType
 operator|.
@@ -273,7 +273,7 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-literal|"jdbc:postgresql://localhost:5432/xe"
+literal|"jdbc:pgsql://localhost:5432/xe"
 argument_list|,
 name|DBMSType
 operator|.

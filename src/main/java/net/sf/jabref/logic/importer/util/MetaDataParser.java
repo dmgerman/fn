@@ -224,7 +224,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|method|parse (Map<String, String> data, String keywordSeparator)
+DECL|method|parse (Map<String, String> data, Character keywordSeparator)
 specifier|public
 specifier|static
 name|MetaData
@@ -238,7 +238,7 @@ name|String
 argument_list|>
 name|data
 parameter_list|,
-name|String
+name|Character
 name|keywordSeparator
 parameter_list|)
 throws|throws
@@ -269,7 +269,7 @@ return|return
 name|metaData
 return|;
 block|}
-DECL|method|getParsedData (Map<String, String> inData, String keywordSeparator, MetaData metaData)
+DECL|method|getParsedData (Map<String, String> inData, Character keywordSeparator, MetaData metaData)
 specifier|public
 specifier|static
 name|Map
@@ -291,7 +291,7 @@ name|String
 argument_list|>
 name|inData
 parameter_list|,
-name|String
+name|Character
 name|keywordSeparator
 parameter_list|,
 name|MetaData

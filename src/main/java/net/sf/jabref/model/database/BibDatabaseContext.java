@@ -397,7 +397,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|BibDatabaseContext (Defaults defaults, DatabaseLocation location, String keywordSeparator)
+DECL|method|BibDatabaseContext (Defaults defaults, DatabaseLocation location, Character keywordSeparator)
 specifier|public
 name|BibDatabaseContext
 parameter_list|(
@@ -407,7 +407,7 @@ parameter_list|,
 name|DatabaseLocation
 name|location
 parameter_list|,
-name|String
+name|Character
 name|keywordSeparator
 parameter_list|)
 block|{
@@ -918,10 +918,10 @@ return|return
 name|dir
 return|;
 block|}
-DECL|method|getDBSynchronizer ()
+DECL|method|getDBMSSynchronizer ()
 specifier|public
 name|DBMSSynchronizer
-name|getDBSynchronizer
+name|getDBMSSynchronizer
 parameter_list|()
 block|{
 return|return
@@ -929,6 +929,19 @@ name|this
 operator|.
 name|dbmsSynchronizer
 return|;
+block|}
+DECL|method|clearDBMSSynchronizer ()
+specifier|public
+name|void
+name|clearDBMSSynchronizer
+parameter_list|()
+block|{
+name|this
+operator|.
+name|dbmsSynchronizer
+operator|=
+literal|null
+expr_stmt|;
 block|}
 DECL|method|getLocation ()
 specifier|public
@@ -942,12 +955,12 @@ operator|.
 name|location
 return|;
 block|}
-DECL|method|convertToSharedDatabase (String keywordSeparator)
+DECL|method|convertToSharedDatabase (Character keywordSeparator)
 specifier|public
 name|void
 name|convertToSharedDatabase
 parameter_list|(
-name|String
+name|Character
 name|keywordSeparator
 parameter_list|)
 block|{

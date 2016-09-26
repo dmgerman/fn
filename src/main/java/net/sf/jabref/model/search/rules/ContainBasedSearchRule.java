@@ -62,7 +62,7 @@ name|jabref
 operator|.
 name|model
 operator|.
-name|util
+name|strings
 operator|.
 name|LatexToUnicode
 import|;

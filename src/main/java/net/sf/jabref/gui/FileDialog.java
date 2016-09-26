@@ -16,6 +16,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|awt
+operator|.
+name|Component
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|io
 operator|.
 name|File
@@ -135,16 +145,6 @@ operator|.
 name|swing
 operator|.
 name|JFileChooser
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|JFrame
 import|;
 end_import
 
@@ -370,7 +370,7 @@ decl_stmt|;
 DECL|field|parent
 specifier|private
 specifier|final
-name|JFrame
+name|Component
 name|parent
 decl_stmt|;
 DECL|field|directory
@@ -397,11 +397,11 @@ name|class
 argument_list|)
 decl_stmt|;
 comment|/**      * Creates a new filedialog showing the current working dir {@link JabRefPreferences#WORKING_DIRECTORY}      * @param parent The parent frame associated with this dialog      */
-DECL|method|FileDialog (JFrame parent)
+DECL|method|FileDialog (Component parent)
 specifier|public
 name|FileDialog
 parameter_list|(
-name|JFrame
+name|Component
 name|parent
 parameter_list|)
 block|{
@@ -415,11 +415,11 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Creates a new dialog in the given directory      * @param parent The parent frame associated with this dialog      * @param dir The starting directory to show in the dialog      */
-DECL|method|FileDialog (JFrame parent, String dir)
+DECL|method|FileDialog (Component parent, String dir)
 specifier|public
 name|FileDialog
 parameter_list|(
-name|JFrame
+name|Component
 name|parent
 parameter_list|,
 name|String

@@ -1923,16 +1923,6 @@ name|isBiblatexMode
 argument_list|()
 condition|)
 block|{
-name|displayedOptionalFields
-operator|.
-name|addAll
-argument_list|(
-name|type
-operator|.
-name|getOptionalFields
-argument_list|()
-argument_list|)
-expr_stmt|;
 name|addOptionalTab
 argument_list|(
 name|type

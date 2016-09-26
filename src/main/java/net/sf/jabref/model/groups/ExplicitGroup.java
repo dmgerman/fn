@@ -104,9 +104,9 @@ name|jabref
 operator|.
 name|model
 operator|.
-name|util
+name|strings
 operator|.
-name|ModelStringUtil
+name|StringUtil
 import|;
 end_import
 
@@ -189,7 +189,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|method|ExplicitGroup (String name, GroupHierarchyType context, String keywordSeparator)
+DECL|method|ExplicitGroup (String name, GroupHierarchyType context, Character keywordSeparator)
 specifier|public
 name|ExplicitGroup
 parameter_list|(
@@ -199,7 +199,7 @@ parameter_list|,
 name|GroupHierarchyType
 name|context
 parameter_list|,
-name|String
+name|Character
 name|keywordSeparator
 parameter_list|)
 throws|throws
@@ -417,7 +417,7 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-name|ModelStringUtil
+name|StringUtil
 operator|.
 name|quote
 argument_list|(
@@ -488,7 +488,7 @@ name|sb
 operator|.
 name|append
 argument_list|(
-name|ModelStringUtil
+name|StringUtil
 operator|.
 name|quote
 argument_list|(

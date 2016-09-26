@@ -18,16 +18,6 @@ name|java
 operator|.
 name|sql
 operator|.
-name|Connection
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|sql
-operator|.
 name|SQLException
 import|;
 end_import
@@ -44,12 +34,11 @@ name|MySQLProcessor
 extends|extends
 name|DBMSProcessor
 block|{
-comment|/**      * @param connection Working SQL connection      * @param dbmsType Instance of {@link DBMSType}      */
-DECL|method|MySQLProcessor (Connection connection)
+DECL|method|MySQLProcessor (DBMSConnection connection)
 specifier|public
 name|MySQLProcessor
 parameter_list|(
-name|Connection
+name|DBMSConnection
 name|connection
 parameter_list|)
 block|{
@@ -122,7 +111,6 @@ block|}
 annotation|@
 name|Override
 DECL|method|escape (String expression)
-specifier|public
 name|String
 name|escape
 parameter_list|(
