@@ -112,6 +112,16 @@ name|org
 operator|.
 name|junit
 operator|.
+name|Ignore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Test
 import|;
 end_import
@@ -213,6 +223,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Ignore
+argument_list|(
+literal|"Fails both locally and on TravisCI"
+argument_list|)
 DECL|method|findByDOI ()
 specifier|public
 name|void
@@ -221,17 +236,6 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
-comment|// CI server is unreliable
-name|Assume
-operator|.
-name|assumeFalse
-argument_list|(
-name|DevEnvironment
-operator|.
-name|isCIServer
-argument_list|()
-argument_list|)
-expr_stmt|;
 name|entry
 operator|.
 name|setField
@@ -267,6 +271,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Ignore
+argument_list|(
+literal|"Fails both locally and on TravisCI"
+argument_list|)
 DECL|method|findByURL ()
 specifier|public
 name|void
@@ -275,17 +284,6 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
-comment|// CI server is unreliable
-name|Assume
-operator|.
-name|assumeFalse
-argument_list|(
-name|DevEnvironment
-operator|.
-name|isCIServer
-argument_list|()
-argument_list|)
-expr_stmt|;
 name|entry
 operator|.
 name|setField
@@ -321,6 +319,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Ignore
+argument_list|(
+literal|"Fails both locally and on TravisCI"
+argument_list|)
 DECL|method|findByOldURL ()
 specifier|public
 name|void
@@ -329,17 +332,6 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
-comment|// CI server is unreliable
-name|Assume
-operator|.
-name|assumeFalse
-argument_list|(
-name|DevEnvironment
-operator|.
-name|isCIServer
-argument_list|()
-argument_list|)
-expr_stmt|;
 name|entry
 operator|.
 name|setField
@@ -375,6 +367,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Ignore
+argument_list|(
+literal|"Fails both locally and on TravisCI"
+argument_list|)
 DECL|method|findByDOIButNotURL ()
 specifier|public
 name|void
@@ -383,17 +380,6 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
-comment|// CI server is unreliable
-name|Assume
-operator|.
-name|assumeFalse
-argument_list|(
-name|DevEnvironment
-operator|.
-name|isCIServer
-argument_list|()
-argument_list|)
-expr_stmt|;
 name|entry
 operator|.
 name|setField

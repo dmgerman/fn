@@ -110,6 +110,22 @@ name|FieldName
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|strings
+operator|.
+name|StringUtil
+import|;
+end_import
+
 begin_class
 DECL|class|BibtexkeyChecker
 specifier|public
@@ -228,19 +244,12 @@ return|;
 block|}
 if|if
 condition|(
-operator|!
+name|StringUtil
+operator|.
+name|isBlank
+argument_list|(
 name|valuekey
-operator|.
-name|isPresent
-argument_list|()
-operator|||
-name|valuekey
-operator|.
-name|get
-argument_list|()
-operator|.
-name|isEmpty
-argument_list|()
+argument_list|)
 condition|)
 block|{
 return|return
@@ -255,7 +264,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"empty bibtexkey"
+literal|"empty BibTeX key"
 argument_list|)
 operator|+
 literal|": "

@@ -1923,16 +1923,6 @@ name|isBiblatexMode
 argument_list|()
 condition|)
 block|{
-name|displayedOptionalFields
-operator|.
-name|addAll
-argument_list|(
-name|type
-operator|.
-name|getOptionalFields
-argument_list|()
-argument_list|)
-expr_stmt|;
 name|addOptionalTab
 argument_list|(
 name|type
@@ -2945,8 +2935,6 @@ operator|new
 name|PdfCommentsTab
 argument_list|(
 name|this
-argument_list|,
-name|frame
 argument_list|,
 name|panel
 argument_list|,

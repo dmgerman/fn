@@ -77,6 +77,40 @@ import|;
 end_import
 
 begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|runner
+operator|.
+name|RunWith
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|mockito
+operator|.
+name|Mock
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|mockito
+operator|.
+name|runners
+operator|.
+name|MockitoJUnitRunner
+import|;
+end_import
+
+begin_import
 import|import static
 name|org
 operator|.
@@ -132,31 +166,35 @@ name|mockito
 operator|.
 name|Mockito
 operator|.
-name|mock
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|mockito
-operator|.
-name|Mockito
-operator|.
 name|verify
 import|;
 end_import
 
 begin_class
+annotation|@
+name|RunWith
+argument_list|(
+name|MockitoJUnitRunner
+operator|.
+name|class
+argument_list|)
 DECL|class|TreeNodeTest
 specifier|public
 class|class
 name|TreeNodeTest
 block|{
+annotation|@
+name|Mock
+DECL|field|subscriber
+name|Consumer
+argument_list|<
+name|TreeNodeMock
+argument_list|>
+name|subscriber
+decl_stmt|;
 comment|/**      * Gets the marked node in the following tree:      * Root      *      A      *      A (= parent)      *          B (<-- this)      */
 DECL|method|getNodeInSimpleTree (TreeNodeMock root)
-specifier|public
+specifier|private
 name|TreeNodeMock
 name|getNodeInSimpleTree
 parameter_list|(
@@ -206,7 +244,7 @@ name|node
 return|;
 block|}
 DECL|method|getNodeInSimpleTree ()
-specifier|public
+specifier|private
 name|TreeNodeMock
 name|getNodeInSimpleTree
 parameter_list|()
@@ -222,7 +260,7 @@ return|;
 block|}
 comment|/**      * Gets the marked node in the following tree:      * Root      *      A      *      A      *      A (= grand parent)      *          B      *          B (= parent)      *              C (<-- this)      *                  D (= child)      *              C      *              C      *              C      *          B      *          B      *      A      */
 DECL|method|getNodeInComplexTree (TreeNodeMock root)
-specifier|public
+specifier|private
 name|TreeNodeMock
 name|getNodeInComplexTree
 parameter_list|(
@@ -367,7 +405,7 @@ name|node
 return|;
 block|}
 DECL|method|getNodeInComplexTree ()
-specifier|public
+specifier|private
 name|TreeNodeMock
 name|getNodeInComplexTree
 parameter_list|()
@@ -383,7 +421,7 @@ return|;
 block|}
 comment|/**      * Gets the marked in the following tree:      * Root      *      A      *      A      *      A (<- this)      *      A      */
 DECL|method|getNodeAsChild (TreeNodeMock root)
-specifier|public
+specifier|private
 name|TreeNodeMock
 name|getNodeAsChild
 parameter_list|(
@@ -436,11 +474,6 @@ return|return
 name|node
 return|;
 block|}
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unused"
-argument_list|)
 annotation|@
 name|Test
 argument_list|(
@@ -3195,19 +3228,6 @@ argument_list|(
 name|root
 argument_list|)
 decl_stmt|;
-name|Consumer
-argument_list|<
-name|TreeNodeMock
-argument_list|>
-name|subscriber
-init|=
-name|mock
-argument_list|(
-name|Consumer
-operator|.
-name|class
-argument_list|)
-decl_stmt|;
 name|root
 operator|.
 name|subscribeToDescendantChanged
@@ -3268,19 +3288,6 @@ argument_list|()
 operator|.
 name|get
 argument_list|()
-decl_stmt|;
-name|Consumer
-argument_list|<
-name|TreeNodeMock
-argument_list|>
-name|subscriber
-init|=
-name|mock
-argument_list|(
-name|Consumer
-operator|.
-name|class
-argument_list|)
 decl_stmt|;
 name|root
 operator|.
@@ -3352,19 +3359,6 @@ name|TreeNodeMock
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|Consumer
-argument_list|<
-name|TreeNodeMock
-argument_list|>
-name|subscriber
-init|=
-name|mock
-argument_list|(
-name|Consumer
-operator|.
-name|class
-argument_list|)
-decl_stmt|;
 name|root
 operator|.
 name|subscribeToDescendantChanged
@@ -3422,19 +3416,6 @@ name|TreeNodeMock
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Consumer
-argument_list|<
-name|TreeNodeMock
-argument_list|>
-name|subscriber
-init|=
-name|mock
-argument_list|(
-name|Consumer
-operator|.
-name|class
-argument_list|)
-decl_stmt|;
 name|root
 operator|.
 name|subscribeToDescendantChanged

@@ -22,6 +22,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|LinkedList
 import|;
 end_import
@@ -118,7 +128,12 @@ name|getWords
 parameter_list|()
 block|{
 return|return
+name|Collections
+operator|.
+name|unmodifiableList
+argument_list|(
 name|words
+argument_list|)
 return|;
 block|}
 DECL|method|getFirstWord ()

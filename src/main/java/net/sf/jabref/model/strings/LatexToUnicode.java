@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|net.sf.jabref.model.util
+DECL|package|net.sf.jabref.model.strings
 package|package
 name|net
 operator|.
@@ -10,7 +10,7 @@ name|jabref
 operator|.
 name|model
 operator|.
-name|util
+name|strings
 package|;
 end_package
 
@@ -307,7 +307,7 @@ operator|==
 literal|'%'
 operator|)
 operator|||
-name|ModelStringUtil
+name|StringUtil
 operator|.
 name|SPECIAL_COMMAND_CHARS
 operator|.
@@ -360,7 +360,7 @@ operator|==
 literal|1
 operator|)
 operator|&&
-name|ModelStringUtil
+name|StringUtil
 operator|.
 name|SPECIAL_COMMAND_CHARS
 operator|.
@@ -422,7 +422,7 @@ block|{
 name|String
 name|part
 init|=
-name|ModelStringUtil
+name|StringUtil
 operator|.
 name|getPart
 argument_list|(
@@ -678,7 +678,7 @@ block|{
 name|String
 name|argument
 init|=
-name|ModelStringUtil
+name|StringUtil
 operator|.
 name|getPart
 argument_list|(

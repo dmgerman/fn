@@ -144,9 +144,9 @@ name|jabref
 operator|.
 name|model
 operator|.
-name|entry
+name|strings
 operator|.
-name|EntryUtil
+name|StringUtil
 import|;
 end_import
 
@@ -308,7 +308,7 @@ name|Action
 operator|.
 name|NAME
 argument_list|,
-name|EntryUtil
+name|StringUtil
 operator|.
 name|capitalizeFirst
 argument_list|(
@@ -350,7 +350,7 @@ name|Action
 operator|.
 name|NAME
 argument_list|,
-name|EntryUtil
+name|StringUtil
 operator|.
 name|capitalizeFirst
 argument_list|(

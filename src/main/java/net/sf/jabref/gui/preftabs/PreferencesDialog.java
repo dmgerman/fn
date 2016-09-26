@@ -854,9 +854,7 @@ name|add
 argument_list|(
 operator|new
 name|PreviewPrefsTab
-argument_list|(
-name|prefs
-argument_list|)
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|tabs

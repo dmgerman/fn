@@ -132,25 +132,9 @@ name|jabref
 operator|.
 name|model
 operator|.
-name|entry
+name|strings
 operator|.
-name|EntryUtil
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|util
-operator|.
-name|ModelStringUtil
+name|StringUtil
 import|;
 end_import
 
@@ -244,7 +228,7 @@ decl_stmt|;
 DECL|field|keywordSeparator
 specifier|protected
 specifier|final
-name|String
+name|Character
 name|keywordSeparator
 decl_stmt|;
 DECL|field|LOGGER
@@ -264,7 +248,7 @@ name|class
 argument_list|)
 decl_stmt|;
 comment|/**      * Creates a KeywordGroup with the specified properties.      */
-DECL|method|KeywordGroup (String name, String searchField, String searchExpression, boolean caseSensitive, boolean regExp, GroupHierarchyType context, String keywordSeparator)
+DECL|method|KeywordGroup (String name, String searchField, String searchExpression, boolean caseSensitive, boolean regExp, GroupHierarchyType context, Character keywordSeparator)
 specifier|public
 name|KeywordGroup
 parameter_list|(
@@ -286,7 +270,7 @@ parameter_list|,
 name|GroupHierarchyType
 name|context
 parameter_list|,
-name|String
+name|Character
 name|keywordSeparator
 parameter_list|)
 throws|throws
@@ -344,7 +328,7 @@ name|this
 operator|.
 name|searchWords
 operator|=
-name|EntryUtil
+name|StringUtil
 operator|.
 name|getStringAsWords
 argument_list|(
@@ -424,7 +408,7 @@ name|KeywordGroup
 operator|.
 name|ID
 operator|+
-name|ModelStringUtil
+name|StringUtil
 operator|.
 name|quote
 argument_list|(
@@ -454,7 +438,7 @@ name|AbstractGroup
 operator|.
 name|SEPARATOR
 operator|+
-name|ModelStringUtil
+name|StringUtil
 operator|.
 name|quote
 argument_list|(
@@ -473,7 +457,7 @@ name|AbstractGroup
 operator|.
 name|SEPARATOR
 operator|+
-name|ModelStringUtil
+name|StringUtil
 operator|.
 name|quote
 argument_list|(
@@ -492,7 +476,7 @@ name|AbstractGroup
 operator|.
 name|SEPARATOR
 operator|+
-name|ModelStringUtil
+name|StringUtil
 operator|.
 name|booleanToBinaryString
 argument_list|(
@@ -503,7 +487,7 @@ name|AbstractGroup
 operator|.
 name|SEPARATOR
 operator|+
-name|ModelStringUtil
+name|StringUtil
 operator|.
 name|booleanToBinaryString
 argument_list|(
@@ -1443,6 +1427,9 @@ operator|&&
 operator|(
 name|keywordSeparator
 operator|.
+name|toString
+argument_list|()
+operator|.
 name|indexOf
 argument_list|(
 name|haystack
@@ -1476,6 +1463,9 @@ operator|)
 operator|&&
 operator|(
 name|keywordSeparator
+operator|.
+name|toString
+argument_list|()
 operator|.
 name|indexOf
 argument_list|(
@@ -1519,6 +1509,9 @@ argument_list|()
 operator|)
 condition|?
 name|keywordSeparator
+operator|.
+name|toString
+argument_list|()
 else|:
 literal|""
 argument_list|)
@@ -1547,6 +1540,9 @@ argument_list|()
 operator|)
 condition|?
 name|keywordSeparator
+operator|.
+name|toString
+argument_list|()
 else|:
 literal|""
 argument_list|)

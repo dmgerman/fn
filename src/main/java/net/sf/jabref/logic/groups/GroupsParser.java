@@ -66,24 +66,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
-operator|.
-name|util
-operator|.
-name|strings
-operator|.
-name|StringUtil
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|model
 operator|.
 name|ParseException
@@ -202,6 +184,22 @@ name|SearchGroup
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|strings
+operator|.
+name|StringUtil
+import|;
+end_import
+
 begin_comment
 comment|/**  * Converts string representation of groups to a parsed {@link GroupTreeNode}.  */
 end_comment
@@ -212,7 +210,7 @@ specifier|public
 class|class
 name|GroupsParser
 block|{
-DECL|method|importGroups (List<String> orderedData, String keywordSeparator)
+DECL|method|importGroups (List<String> orderedData, Character keywordSeparator)
 specifier|public
 specifier|static
 name|GroupTreeNode
@@ -224,7 +222,7 @@ name|String
 argument_list|>
 name|orderedData
 parameter_list|,
-name|String
+name|Character
 name|keywordSeparator
 parameter_list|)
 throws|throws
@@ -400,7 +398,7 @@ name|root
 return|;
 block|}
 comment|/**      * Re-create a group instance from a textual representation.      *      * @param s The result from the group's toString() method.      * @return New instance of the encoded group.      * @throws ParseException If an error occurred and a group could not be created,      *                        e.g. due to a malformed regular expression.      */
-DECL|method|fromString (String s, String keywordSeparator)
+DECL|method|fromString (String s, Character keywordSeparator)
 specifier|public
 specifier|static
 name|AbstractGroup
@@ -409,7 +407,7 @@ parameter_list|(
 name|String
 name|s
 parameter_list|,
-name|String
+name|Character
 name|keywordSeparator
 parameter_list|)
 throws|throws
@@ -509,7 +507,7 @@ return|;
 comment|// unknown group
 block|}
 comment|/**      * Parses s and recreates the KeywordGroup from it.      *      * @param s The String representation obtained from      *          KeywordGroup.toString()      */
-DECL|method|keywordGroupFromString (String s, String keywordSeparator)
+DECL|method|keywordGroupFromString (String s, Character keywordSeparator)
 specifier|public
 specifier|static
 name|AbstractGroup
@@ -518,7 +516,7 @@ parameter_list|(
 name|String
 name|s
 parameter_list|,
-name|String
+name|Character
 name|keywordSeparator
 parameter_list|)
 throws|throws
@@ -695,7 +693,7 @@ name|keywordSeparator
 argument_list|)
 return|;
 block|}
-DECL|method|explicitGroupFromString (String s, String keywordSeparator)
+DECL|method|explicitGroupFromString (String s, Character keywordSeparator)
 specifier|public
 specifier|static
 name|ExplicitGroup
@@ -704,7 +702,7 @@ parameter_list|(
 name|String
 name|s
 parameter_list|,
-name|String
+name|Character
 name|keywordSeparator
 parameter_list|)
 throws|throws

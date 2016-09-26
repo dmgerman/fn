@@ -304,7 +304,7 @@ block|{      }
 comment|/**      * Imports the comments from a pdf specified by its path      *      * @param path a path to a pdf      * @return a list with the all the annotations found in the file of the path      */
 DECL|method|importNotes (final String path, final BibDatabaseContext context)
 specifier|public
-name|ArrayList
+name|List
 argument_list|<
 name|PdfComment
 argument_list|>
@@ -319,11 +319,11 @@ name|BibDatabaseContext
 name|context
 parameter_list|)
 block|{
-name|ArrayList
+name|List
 argument_list|<
 name|PdfComment
 argument_list|>
-name|annotationsMap
+name|annotationsList
 init|=
 operator|new
 name|ArrayList
@@ -461,6 +461,7 @@ operator|.
 name|getSubtype
 argument_list|()
 decl_stmt|;
+comment|//highlighted text has to be extracted by the rectangle calculated from the highlighting
 if|if
 condition|(
 name|subtype
@@ -817,6 +818,7 @@ operator|+
 literal|1
 argument_list|)
 decl_stmt|;
+comment|//highlighted text that has a sticky note on it should be linked to the sticky note
 name|highlighting
 operator|.
 name|linkComments
@@ -824,14 +826,14 @@ argument_list|(
 name|annotationBelongingToHighlighting
 argument_list|)
 expr_stmt|;
-name|annotationsMap
+name|annotationsList
 operator|.
 name|add
 argument_list|(
 name|annotationBelongingToHighlighting
 argument_list|)
 expr_stmt|;
-name|annotationsMap
+name|annotationsList
 operator|.
 name|add
 argument_list|(
@@ -841,7 +843,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|annotationsMap
+name|annotationsList
 operator|.
 name|add
 argument_list|(
@@ -893,9 +895,10 @@ argument_list|()
 expr_stmt|;
 block|}
 return|return
-name|annotationsMap
+name|annotationsList
 return|;
 block|}
+comment|/**      *      * @param path the absolute path to the pdf file      * @return a PDDocument representing the pdf file      * @throws IOException      */
 DECL|method|importPdfFile (final String path)
 specifier|public
 name|PDDocument

@@ -436,7 +436,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|EntryUtil
+name|InternalBibtexFields
 import|;
 end_import
 
@@ -450,9 +450,9 @@ name|jabref
 operator|.
 name|model
 operator|.
-name|entry
+name|strings
 operator|.
-name|InternalBibtexFields
+name|StringUtil
 import|;
 end_import
 
@@ -1911,7 +1911,7 @@ comment|// This type should be reverted to its default setup.
 name|String
 name|nm
 init|=
-name|EntryUtil
+name|StringUtil
 operator|.
 name|capitalizeFirst
 argument_list|(
@@ -2091,7 +2091,7 @@ condition|?
 operator|new
 name|CustomEntryType
 argument_list|(
-name|EntryUtil
+name|StringUtil
 operator|.
 name|capitalizeFirst
 argument_list|(
@@ -2111,7 +2111,7 @@ else|:
 operator|new
 name|CustomEntryType
 argument_list|(
-name|EntryUtil
+name|StringUtil
 operator|.
 name|capitalizeFirst
 argument_list|(
@@ -2305,7 +2305,7 @@ argument_list|)
 operator|+
 literal|" '"
 operator|+
-name|EntryUtil
+name|StringUtil
 operator|.
 name|capitalizeFirst
 argument_list|(
@@ -2346,7 +2346,7 @@ argument_list|)
 expr_stmt|;
 name|updateTypesForEntries
 argument_list|(
-name|EntryUtil
+name|StringUtil
 operator|.
 name|capitalizeFirst
 argument_list|(

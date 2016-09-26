@@ -317,7 +317,7 @@ name|setField
 argument_list|(
 literal|"publisher"
 argument_list|,
-literal|"Institute of Electrical {\\&} Electronics Engineers ({IEEE})"
+literal|"Institute of Electrical and Electronics Engineers ({IEEE})"
 argument_list|)
 expr_stmt|;
 name|bibEntryDecker2007
