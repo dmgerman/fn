@@ -2644,10 +2644,13 @@ expr_stmt|;
 if|if
 condition|(
 name|field
-operator|==
+operator|.
+name|equals
+argument_list|(
 name|FieldName
 operator|.
 name|DOI
+argument_list|)
 condition|)
 block|{
 name|menu
