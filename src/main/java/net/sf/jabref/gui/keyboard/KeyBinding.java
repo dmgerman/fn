@@ -246,6 +246,21 @@ argument_list|,
 literal|"ctrl shift alt K"
 argument_list|)
 block|,
+DECL|enumConstant|COPY_BIBTEX_KEY_AND_LINK
+name|COPY_BIBTEX_KEY_AND_LINK
+argument_list|(
+literal|"Copy BibTeX key and link"
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Copy BibTeX key and link"
+argument_list|)
+argument_list|,
+literal|"ctrl alt K"
+argument_list|)
+block|,
 DECL|enumConstant|COPY_PREVIEW
 name|COPY_PREVIEW
 argument_list|(

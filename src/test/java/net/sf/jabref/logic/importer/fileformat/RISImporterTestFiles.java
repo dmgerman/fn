@@ -321,6 +321,10 @@ argument_list|,
 literal|"RisImporterTest5b"
 argument_list|,
 literal|"RisImporterTest6"
+argument_list|,
+literal|"RisImporterTestDoiAndJournalTitle"
+argument_list|,
+literal|"RisImporterTestScopus"
 argument_list|)
 return|;
 block|}
