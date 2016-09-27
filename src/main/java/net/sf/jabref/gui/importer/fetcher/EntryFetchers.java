@@ -580,6 +580,15 @@ argument_list|)
 expr_stmt|;
 name|list
 operator|.
+name|add
+argument_list|(
+operator|new
+name|MedlineFetcher
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|list
+operator|.
 name|sort
 argument_list|(
 parameter_list|(
