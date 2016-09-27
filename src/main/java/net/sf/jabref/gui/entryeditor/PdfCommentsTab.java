@@ -728,7 +728,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Highlighted text"
+literal|"Highlight"
 argument_list|)
 argument_list|,
 name|JLabel
@@ -1239,7 +1239,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Attached_file_has_no_valid_path"
+literal|"PDF has no attached annotations"
 argument_list|)
 argument_list|,
 literal|""
