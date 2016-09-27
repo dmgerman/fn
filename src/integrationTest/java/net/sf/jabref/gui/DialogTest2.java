@@ -89,23 +89,23 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This test has been split to work, the other part can be found at DialogTest2  */
+comment|/**  * Split of DialogTest, since the test cases were only running separately  */
 end_comment
 
 begin_class
-DECL|class|DialogTest
+DECL|class|DialogTest2
 specifier|public
 class|class
-name|DialogTest
+name|DialogTest2
 extends|extends
 name|AbstractUITest
 block|{
 annotation|@
 name|Test
-DECL|method|testCancelStyleSelectDialog ()
+DECL|method|testCloseStyleSelectDialog ()
 specifier|public
 name|void
-name|testCancelStyleSelectDialog
+name|testCloseStyleSelectDialog
 parameter_list|()
 block|{
 name|mainFrame
@@ -215,49 +215,6 @@ comment|// Only a single SidePane
 block|}
 block|}
 decl_stmt|;
-name|GenericTypeMatcher
-argument_list|<
-name|JButton
-argument_list|>
-name|buttonMatcher2
-init|=
-operator|new
-name|GenericTypeMatcher
-argument_list|<
-name|JButton
-argument_list|>
-argument_list|(
-name|JButton
-operator|.
-name|class
-argument_list|)
-block|{
-annotation|@
-name|Override
-specifier|protected
-name|boolean
-name|isMatching
-parameter_list|(
-annotation|@
-name|Nonnull
-name|JButton
-name|jButton
-parameter_list|)
-block|{
-return|return
-literal|"Cancel"
-operator|.
-name|equals
-argument_list|(
-name|jButton
-operator|.
-name|getText
-argument_list|()
-argument_list|)
-return|;
-block|}
-block|}
-decl_stmt|;
 name|findDialog
 argument_list|(
 name|styleDialogMatcher
@@ -274,12 +231,7 @@ name|robot
 argument_list|()
 argument_list|)
 operator|.
-name|button
-argument_list|(
-name|buttonMatcher2
-argument_list|)
-operator|.
-name|click
+name|close
 argument_list|()
 expr_stmt|;
 name|exitJabRef
