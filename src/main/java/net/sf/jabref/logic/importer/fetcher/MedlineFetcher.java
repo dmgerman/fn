@@ -304,22 +304,6 @@ end_import
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|entry
-operator|.
-name|FieldName
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -1029,7 +1013,21 @@ throw|throw
 operator|new
 name|FetcherException
 argument_list|(
-literal|"Input Error. Please enter a comma separated list of Medline IDs (numbers) or search terms."
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Input error"
+argument_list|)
+operator|+
+literal|". "
+operator|+
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Please enter a comma separated list of Medline IDs (numbers) or search terms."
+argument_list|)
 argument_list|)
 throw|;
 block|}
@@ -1197,35 +1195,6 @@ argument_list|()
 return|;
 block|}
 block|}
-DECL|method|doPostCleanUp (BibEntry entry)
-specifier|private
-name|BibEntry
-name|doPostCleanUp
-parameter_list|(
-name|BibEntry
-name|entry
-parameter_list|)
-block|{
-name|Optional
-argument_list|<
-name|String
-argument_list|>
-name|bibEntryOptional
-init|=
-name|entry
-operator|.
-name|getField
-argument_list|(
-name|FieldName
-operator|.
-name|MONTH
-argument_list|)
-decl_stmt|;
-comment|//TODO: Month Checker
-return|return
-name|entry
-return|;
-block|}
 annotation|@
 name|Override
 DECL|method|performSearchById (String identifier)
@@ -1299,16 +1268,22 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-if|if
-condition|(
-name|bibs
+name|LOGGER
 operator|.
-name|size
+name|info
+argument_list|(
+literal|"Fetcher "
+operator|+
+name|getName
 argument_list|()
-operator|==
-literal|1
-condition|)
-block|{
+operator|+
+literal|"found more than one result for identifier "
+operator|+
+name|identifier
+operator|+
+literal|". We will use the first entry."
+argument_list|)
+expr_stmt|;
 return|return
 name|Optional
 operator|.
@@ -1323,7 +1298,6 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-block|}
 return|return
 name|Optional
 operator|.
@@ -1337,29 +1311,24 @@ class|class
 name|SearchResult
 block|{
 DECL|field|count
-specifier|public
 name|int
 name|count
 decl_stmt|;
 DECL|field|retmax
-specifier|public
 name|int
 name|retmax
 decl_stmt|;
 DECL|field|retstart
-specifier|public
 name|int
 name|retstart
 decl_stmt|;
 DECL|field|ids
-specifier|public
 name|String
 name|ids
 init|=
 literal|""
 decl_stmt|;
 DECL|method|addID (String id)
-specifier|public
 name|void
 name|addID
 parameter_list|(
