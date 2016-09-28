@@ -376,6 +376,15 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+DECL|field|CLEAN_ID_QUERY
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|CLEAN_ID_QUERY
+init|=
+literal|"\\d+[,\\d+]*"
+decl_stmt|;
 DECL|field|API_MEDLINE_FETCH
 specifier|private
 specifier|static
@@ -450,28 +459,17 @@ argument_list|(
 literal|"<RetStart>(\\d+)<\\/RetStart>"
 argument_list|)
 decl_stmt|;
-comment|/**      * How many entries to query in one request      */
-DECL|field|PACING
-specifier|private
-specifier|static
-specifier|final
-name|int
-name|PACING
-init|=
-literal|20
-decl_stmt|;
-DECL|method|toSearchTerm (String query)
+DECL|method|replaceCommaWithAND (String query)
 specifier|private
 specifier|static
 name|String
-name|toSearchTerm
+name|replaceCommaWithAND
 parameter_list|(
 name|String
 name|query
 parameter_list|)
 block|{
-name|query
-operator|=
+return|return
 name|query
 operator|.
 name|replaceAll
@@ -480,10 +478,6 @@ literal|", "
 argument_list|,
 literal|" AND "
 argument_list|)
-expr_stmt|;
-name|query
-operator|=
-name|query
 operator|.
 name|replaceAll
 argument_list|(
@@ -491,9 +485,6 @@ literal|","
 argument_list|,
 literal|" AND "
 argument_list|)
-expr_stmt|;
-return|return
-name|query
 return|;
 block|}
 comment|/**      * Gets the initial list of ids      */
@@ -853,6 +844,7 @@ parameter_list|)
 throws|throws
 name|FetcherException
 block|{
+specifier|final
 name|int
 name|numberToFetch
 init|=
@@ -881,7 +873,7 @@ block|{
 name|String
 name|searchTerm
 init|=
-name|toSearchTerm
+name|replaceCommaWithAND
 argument_list|(
 name|query
 argument_list|)
@@ -939,28 +931,9 @@ operator|<
 name|numberToFetch
 condition|;
 name|i
-operator|+=
-name|MedlineFetcher
-operator|.
-name|PACING
+operator|++
 control|)
 block|{
-name|int
-name|noToFetch
-init|=
-name|Math
-operator|.
-name|min
-argument_list|(
-name|MedlineFetcher
-operator|.
-name|PACING
-argument_list|,
-name|numberToFetch
-operator|-
-name|i
-argument_list|)
-decl_stmt|;
 comment|// get the ids from entrez
 name|result
 operator|=
@@ -970,7 +943,9 @@ name|searchTerm
 argument_list|,
 name|i
 argument_list|,
-name|noToFetch
+name|numberToFetch
+operator|-
+name|i
 argument_list|)
 expr_stmt|;
 name|List
@@ -1221,7 +1196,7 @@ name|cleanQuery
 operator|.
 name|matches
 argument_list|(
-literal|"\\d+[,\\d+]*"
+name|CLEAN_ID_QUERY
 argument_list|)
 condition|)
 block|{
@@ -1229,7 +1204,7 @@ name|List
 argument_list|<
 name|BibEntry
 argument_list|>
-name|bibs
+name|entry
 init|=
 name|fetchMedline
 argument_list|(
@@ -1238,7 +1213,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|bibs
+name|entry
 operator|.
 name|isEmpty
 argument_list|()
@@ -1278,7 +1253,7 @@ name|Optional
 operator|.
 name|of
 argument_list|(
-name|bibs
+name|entry
 operator|.
 name|get
 argument_list|(
