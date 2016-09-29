@@ -60,6 +60,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -235,6 +245,27 @@ argument_list|(
 literal|"This feature is not supported by your Operating System."
 argument_list|)
 expr_stmt|;
+block|}
+annotation|@
+name|Override
+DECL|method|openPdfWithParameters (String filePath, List<String> parameters)
+specifier|public
+name|void
+name|openPdfWithParameters
+parameter_list|(
+name|String
+name|filePath
+parameter_list|,
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|parameters
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+comment|//TODO imlement default
 block|}
 annotation|@
 name|Override

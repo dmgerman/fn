@@ -26,6 +26,16 @@ name|IOException
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
 begin_interface
 DECL|interface|NativeDesktop
 specifier|public
@@ -75,6 +85,22 @@ name|openConsole
 parameter_list|(
 name|String
 name|absolutePath
+parameter_list|)
+throws|throws
+name|IOException
+function_decl|;
+DECL|method|openPdfWithParameters (String filePath, List<String> parameters)
+name|void
+name|openPdfWithParameters
+parameter_list|(
+name|String
+name|filePath
+parameter_list|,
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|parameters
 parameter_list|)
 throws|throws
 name|IOException
