@@ -742,12 +742,9 @@ block|}
 catch|catch
 parameter_list|(
 name|URISyntaxException
-decl||
-name|MalformedURLException
 name|e
 parameter_list|)
 block|{
-comment|// new URL() failed
 name|LOGGER
 operator|.
 name|warn
@@ -764,7 +761,6 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-comment|// openConnection() failed
 name|LOGGER
 operator|.
 name|warn
@@ -865,36 +861,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-elseif|else
-if|if
-condition|(
-name|entry
-operator|.
-name|size
-argument_list|()
-operator|>
-literal|1
-condition|)
-block|{
-name|LOGGER
-operator|.
-name|info
-argument_list|(
-literal|"Fetcher "
-operator|+
-name|getName
-argument_list|()
-operator|+
-literal|" "
-operator|+
-literal|"found more than one result for identifier "
-operator|+
-name|identifier
-operator|+
-literal|". We will use the first entry."
-argument_list|)
-expr_stmt|;
-block|}
 return|return
 name|Optional
 operator|.
@@ -959,7 +925,6 @@ argument_list|(
 name|query
 argument_list|)
 decl_stmt|;
-comment|// get the ids from entrez
 name|getIds
 argument_list|(
 name|searchTerm
