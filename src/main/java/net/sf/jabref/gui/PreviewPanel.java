@@ -816,9 +816,6 @@ expr_stmt|;
 name|createPreviewPane
 argument_list|()
 expr_stmt|;
-name|updateLayout
-argument_list|()
-expr_stmt|;
 if|if
 condition|(
 name|this
@@ -893,6 +890,9 @@ expr_stmt|;
 name|this
 operator|.
 name|createKeyBindings
+argument_list|()
+expr_stmt|;
+name|updateLayout
 argument_list|()
 expr_stmt|;
 block|}
