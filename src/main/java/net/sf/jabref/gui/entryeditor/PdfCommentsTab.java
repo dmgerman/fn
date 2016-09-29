@@ -100,6 +100,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|StringJoiner
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|stream
 operator|.
 name|Collectors
@@ -2062,25 +2072,101 @@ return|return
 name|buttonPanel
 return|;
 block|}
+comment|/**      * Copies the meta and content information of the pdf annotation to the clipboard      */
 DECL|method|copyToClipboard ()
 specifier|private
 name|void
 name|copyToClipboard
 parameter_list|()
 block|{
+name|StringJoiner
+name|sj
+init|=
 operator|new
-name|ClipBoardManager
-argument_list|()
-operator|.
-name|setClipboardContents
+name|StringJoiner
 argument_list|(
+name|System
+operator|.
+name|getProperty
+argument_list|(
+literal|"line.separator"
+argument_list|)
+argument_list|)
+decl_stmt|;
+name|sj
+operator|.
+name|add
+argument_list|(
+literal|"Author: "
+operator|+
+name|authorArea
+operator|.
+name|getText
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|sj
+operator|.
+name|add
+argument_list|(
+literal|"Date: "
+operator|+
+name|dateArea
+operator|.
+name|getText
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|sj
+operator|.
+name|add
+argument_list|(
+literal|"Page: "
+operator|+
+name|pageArea
+operator|.
+name|getText
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|sj
+operator|.
+name|add
+argument_list|(
+literal|"Content: "
+operator|+
 name|contentTxtArea
 operator|.
 name|getText
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|sj
+operator|.
+name|add
+argument_list|(
+literal|"Highlighted: "
+operator|+
+name|highlightTxtArea
+operator|.
+name|getText
+argument_list|()
+argument_list|)
+expr_stmt|;
+operator|new
+name|ClipBoardManager
+argument_list|()
+operator|.
+name|setClipboardContents
+argument_list|(
+name|sj
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
+comment|/**      * TODO: implement for every OS      */
 DECL|method|openPdf ()
 specifier|private
 name|void
@@ -2430,7 +2516,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Cell renderer that shows different icons dependent on the annotation subtype and highlights annotations that are      * linked with each other eg.      */
+comment|/**      * Cell renderer that shows different icons dependent on the annotation subtype      */
 DECL|class|CommentsListCellRenderer
 class|class
 name|CommentsListCellRenderer
@@ -2442,7 +2528,6 @@ name|JLabel
 name|label
 decl_stmt|;
 DECL|method|CommentsListCellRenderer ()
-specifier|public
 name|CommentsListCellRenderer
 parameter_list|()
 block|{
@@ -2481,11 +2566,6 @@ name|boolean
 name|cellHasFocus
 parameter_list|)
 block|{
-name|boolean
-name|isLinkedComment
-init|=
-literal|false
-decl_stmt|;
 name|PdfComment
 name|comment
 init|=
@@ -2494,33 +2574,6 @@ name|PdfComment
 operator|)
 name|value
 decl_stmt|;
-if|if
-condition|(
-operator|!
-name|commentList
-operator|.
-name|isSelectionEmpty
-argument_list|()
-operator|&&
-name|comment
-operator|.
-name|equals
-argument_list|(
-name|commentList
-operator|.
-name|getSelectedValue
-argument_list|()
-operator|.
-name|getLinkedPdfComment
-argument_list|()
-argument_list|)
-condition|)
-block|{
-name|isLinkedComment
-operator|=
-literal|true
-expr_stmt|;
-block|}
 comment|//call the super method so that the cell selection is done as usual
 name|label
 operator|=
