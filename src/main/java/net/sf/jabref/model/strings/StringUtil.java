@@ -3289,6 +3289,35 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+comment|/**      * Removes all comma's in a given String      *      * @param query input to remove comma's      * @return input without comma's      */
+DECL|method|replaceCommaWithAND (String query)
+specifier|public
+specifier|static
+name|String
+name|replaceCommaWithAND
+parameter_list|(
+name|String
+name|query
+parameter_list|)
+block|{
+return|return
+name|query
+operator|.
+name|replaceAll
+argument_list|(
+literal|", "
+argument_list|,
+literal|" AND "
+argument_list|)
+operator|.
+name|replaceAll
+argument_list|(
+literal|","
+argument_list|,
+literal|" AND "
+argument_list|)
+return|;
+block|}
 block|}
 end_class
 
