@@ -5777,6 +5777,15 @@ literal|"Revert to original source"
 argument_list|)
 block|}
 decl_stmt|;
+if|if
+condition|(
+operator|!
+name|SwingUtilities
+operator|.
+name|isEventDispatchThread
+argument_list|()
+condition|)
+block|{
 name|int
 name|answer
 init|=
@@ -5839,6 +5848,7 @@ expr_stmt|;
 name|updateSource
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 name|LOGGER
 operator|.
