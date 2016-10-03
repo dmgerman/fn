@@ -1060,7 +1060,7 @@ name|fieldValue
 init|=
 name|entry
 operator|.
-name|getField
+name|getLatexFreeField
 argument_list|(
 name|field
 argument_list|)
