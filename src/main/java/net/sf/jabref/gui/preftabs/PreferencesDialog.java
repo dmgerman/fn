@@ -1805,11 +1805,6 @@ argument_list|,
 name|savePreferences
 argument_list|)
 expr_stmt|;
-name|frame
-operator|.
-name|removeCachedEntryEditors
-argument_list|()
-expr_stmt|;
 name|Globals
 operator|.
 name|prefs

@@ -2619,17 +2619,6 @@ name|getBasePanelList
 argument_list|()
 control|)
 block|{
-comment|// Invalidate associated cached entry editor
-name|bp
-operator|.
-name|getEntryEditors
-argument_list|()
-operator|.
-name|remove
-argument_list|(
-name|typeName
-argument_list|)
-expr_stmt|;
 for|for
 control|(
 name|BibEntry

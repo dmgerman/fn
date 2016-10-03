@@ -1316,11 +1316,6 @@ operator|.
 name|updateEntryEditorTabList
 argument_list|()
 expr_stmt|;
-name|parentFrame
-operator|.
-name|removeCachedEntryEditors
-argument_list|()
-expr_stmt|;
 name|dispose
 argument_list|()
 expr_stmt|;
