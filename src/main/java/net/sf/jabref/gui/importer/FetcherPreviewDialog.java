@@ -1741,6 +1741,58 @@ name|message
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Displays a dialog which tells the user that an error occurred while fetching entries      */
+DECL|method|showErrorMessage (String fetcherTitle, String localizedMessage)
+specifier|public
+name|void
+name|showErrorMessage
+parameter_list|(
+name|String
+name|fetcherTitle
+parameter_list|,
+name|String
+name|localizedMessage
+parameter_list|)
+block|{
+name|showMessage
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Error while fetching from %0"
+argument_list|,
+name|fetcherTitle
+argument_list|)
+operator|+
+literal|"\n"
+operator|+
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Please try again later and/or check your network connection."
+argument_list|)
+operator|+
+literal|"\n"
+operator|+
+name|localizedMessage
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Search %0"
+argument_list|,
+name|fetcherTitle
+argument_list|)
+argument_list|,
+name|JOptionPane
+operator|.
+name|ERROR_MESSAGE
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_class
 

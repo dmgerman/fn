@@ -80,6 +80,7 @@ end_comment
 
 begin_interface
 DECL|interface|PreviewEntryFetcher
+specifier|public
 interface|interface
 name|PreviewEntryFetcher
 extends|extends
