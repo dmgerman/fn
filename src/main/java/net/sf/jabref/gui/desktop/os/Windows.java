@@ -101,6 +101,20 @@ import|;
 end_import
 
 begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|preferences
+operator|.
+name|JabRefPreferences
+import|;
+end_import
+
+begin_import
 import|import static
 name|net
 operator|.
@@ -483,7 +497,15 @@ name|Paths
 operator|.
 name|get
 argument_list|(
+name|JabRefPreferences
+operator|.
+name|getInstance
+argument_list|()
+operator|.
+name|get
+argument_list|(
 name|USE_PDF_READER
+argument_list|)
 argument_list|)
 operator|.
 name|toString
