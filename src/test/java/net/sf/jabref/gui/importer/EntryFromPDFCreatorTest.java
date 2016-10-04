@@ -316,6 +316,7 @@ annotation|@
 name|Test
 annotation|@
 name|Ignore
+comment|//Can't mock basepanel and maintable
 DECL|method|testCreationOfEntryNotInDatabase ()
 specifier|public
 name|void

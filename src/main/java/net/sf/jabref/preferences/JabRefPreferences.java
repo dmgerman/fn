@@ -2563,14 +2563,14 @@ name|FONT_STYLE
 init|=
 literal|"fontStyle"
 decl_stmt|;
-DECL|field|RECENT_FILES
+DECL|field|RECENT_DATABASES
 specifier|public
 specifier|static
 specifier|final
 name|String
-name|RECENT_FILES
+name|RECENT_DATABASES
 init|=
-literal|"recentFiles"
+literal|"recentDatabases"
 decl_stmt|;
 DECL|field|RENAME_ON_MOVE_FILE_TO_FILE_DIR
 specifier|public
@@ -4385,7 +4385,7 @@ name|defaults
 operator|.
 name|put
 argument_list|(
-name|RECENT_FILES
+name|RECENT_DATABASES
 argument_list|,
 literal|""
 argument_list|)
@@ -9534,7 +9534,7 @@ name|FileHistory
 argument_list|(
 name|getStringList
 argument_list|(
-name|RECENT_FILES
+name|RECENT_DATABASES
 argument_list|)
 argument_list|)
 return|;
@@ -9559,7 +9559,7 @@ condition|)
 block|{
 name|putStringList
 argument_list|(
-name|RECENT_FILES
+name|RECENT_DATABASES
 argument_list|,
 name|history
 operator|.

@@ -52,16 +52,6 @@ name|java
 operator|.
 name|net
 operator|.
-name|MalformedURLException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|net
-operator|.
 name|URL
 import|;
 end_import
@@ -85,16 +75,6 @@ operator|.
 name|charset
 operator|.
 name|StandardCharsets
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|ArrayList
 import|;
 end_import
 
@@ -149,6 +129,22 @@ operator|.
 name|swing
 operator|.
 name|JPanel
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|importer
+operator|.
+name|ImportInspectionDialog
 import|;
 end_import
 
@@ -406,6 +402,20 @@ argument_list|(
 literal|"<RetStart>(\\d+)<\\/RetStart>"
 argument_list|)
 decl_stmt|;
+DECL|field|NUMBER_PATTERN
+specifier|private
+specifier|static
+specifier|final
+name|Pattern
+name|NUMBER_PATTERN
+init|=
+name|Pattern
+operator|.
+name|compile
+argument_list|(
+literal|"\\d+[,\\d+]*"
+argument_list|)
+decl_stmt|;
 comment|/**      * How many entries to query in one request      */
 DECL|field|PACING
 specifier|private
@@ -506,6 +516,8 @@ parameter_list|,
 name|int
 name|pacing
 parameter_list|)
+throws|throws
+name|IOException
 block|{
 name|String
 name|baseUrl
@@ -549,8 +561,6 @@ operator|new
 name|SearchResult
 argument_list|()
 decl_stmt|;
-try|try
-block|{
 name|URL
 name|ncbi
 init|=
@@ -740,41 +750,6 @@ literal|false
 expr_stmt|;
 block|}
 block|}
-block|}
-catch|catch
-parameter_list|(
-name|MalformedURLException
-name|e
-parameter_list|)
-block|{
-comment|// new URL() failed
-name|LOGGER
-operator|.
-name|warn
-argument_list|(
-literal|"Bad url"
-argument_list|,
-name|e
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|IOException
-name|e
-parameter_list|)
-block|{
-comment|// openConnection() failed
-name|LOGGER
-operator|.
-name|warn
-argument_list|(
-literal|"Connection failed"
-argument_list|,
-name|e
-argument_list|)
-expr_stmt|;
-block|}
 return|return
 name|result
 return|;
@@ -833,7 +808,7 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|processQuery (String query, ImportInspector iIDialog, OutputPrinter frameOP)
+DECL|method|processQuery (String query, ImportInspector dialog, OutputPrinter status)
 specifier|public
 name|boolean
 name|processQuery
@@ -842,11 +817,13 @@ name|String
 name|query
 parameter_list|,
 name|ImportInspector
-name|iIDialog
+name|dialog
 parameter_list|,
 name|OutputPrinter
-name|frameOP
+name|status
 parameter_list|)
+block|{
+try|try
 block|{
 name|shouldContinue
 operator|=
@@ -869,15 +846,18 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|cleanQuery
+name|NUMBER_PATTERN
 operator|.
-name|matches
+name|matcher
 argument_list|(
-literal|"\\d+[,\\d+]*"
+name|cleanQuery
 argument_list|)
+operator|.
+name|find
+argument_list|()
 condition|)
 block|{
-name|frameOP
+name|status
 operator|.
 name|setStatus
 argument_list|(
@@ -899,7 +879,7 @@ name|fetchMedline
 argument_list|(
 name|cleanQuery
 argument_list|,
-name|frameOP
+name|status
 argument_list|)
 decl_stmt|;
 if|if
@@ -910,7 +890,7 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-name|frameOP
+name|status
 operator|.
 name|showMessage
 argument_list|(
@@ -920,8 +900,25 @@ name|lang
 argument_list|(
 literal|"No references found"
 argument_list|)
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Search %0"
+argument_list|,
+name|getTitle
+argument_list|()
+argument_list|)
+argument_list|,
+name|JOptionPane
+operator|.
+name|INFORMATION_MESSAGE
 argument_list|)
 expr_stmt|;
+return|return
+literal|false
+return|;
 block|}
 for|for
 control|(
@@ -931,7 +928,7 @@ range|:
 name|bibs
 control|)
 block|{
-name|iIDialog
+name|dialog
 operator|.
 name|addEntry
 argument_list|(
@@ -952,7 +949,7 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-name|frameOP
+name|status
 operator|.
 name|setStatus
 argument_list|(
@@ -994,7 +991,7 @@ operator|==
 literal|0
 condition|)
 block|{
-name|frameOP
+name|status
 operator|.
 name|showMessage
 argument_list|(
@@ -1004,6 +1001,20 @@ name|lang
 argument_list|(
 literal|"No references found"
 argument_list|)
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Search %0"
+argument_list|,
+name|getTitle
+argument_list|()
+argument_list|)
+argument_list|,
+name|JOptionPane
+operator|.
+name|INFORMATION_MESSAGE
 argument_list|)
 expr_stmt|;
 return|return
@@ -1026,10 +1037,12 @@ operator|.
 name|PACING
 condition|)
 block|{
-while|while
-condition|(
-literal|true
-condition|)
+name|boolean
+name|numberEntered
+init|=
+literal|false
+decl_stmt|;
+do|do
 block|{
 name|String
 name|strCount
@@ -1042,27 +1055,14 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"References found"
-argument_list|)
-operator|+
-literal|": "
-operator|+
-name|numberToFetch
-operator|+
-literal|"  "
-operator|+
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Number of references to fetch?"
-argument_list|)
+literal|"%0 references found. Number of references to fetch?"
 argument_list|,
-name|Integer
+name|String
 operator|.
-name|toString
+name|valueOf
 argument_list|(
 name|numberToFetch
+argument_list|)
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -1073,7 +1073,7 @@ operator|==
 literal|null
 condition|)
 block|{
-name|frameOP
+name|status
 operator|.
 name|setStatus
 argument_list|(
@@ -1083,7 +1083,8 @@ name|lang
 argument_list|(
 literal|"%0 import canceled"
 argument_list|,
-literal|"Medline"
+name|getTitle
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1105,7 +1106,10 @@ name|trim
 argument_list|()
 argument_list|)
 expr_stmt|;
-break|break;
+name|numberEntered
+operator|=
+literal|true
+expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
@@ -1113,7 +1117,7 @@ name|NumberFormatException
 name|ex
 parameter_list|)
 block|{
-name|frameOP
+name|status
 operator|.
 name|showMessage
 argument_list|(
@@ -1127,6 +1131,12 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+do|while
+condition|(
+operator|!
+name|numberEntered
+condition|)
+do|;
 block|}
 for|for
 control|(
@@ -1138,6 +1148,8 @@ init|;
 name|i
 operator|<
 name|numberToFetch
+operator|&&
+name|shouldContinue
 condition|;
 name|i
 operator|+=
@@ -1146,14 +1158,6 @@ operator|.
 name|PACING
 control|)
 block|{
-if|if
-condition|(
-operator|!
-name|shouldContinue
-condition|)
-block|{
-break|break;
-block|}
 name|int
 name|noToFetch
 init|=
@@ -1194,7 +1198,7 @@ name|result
 operator|.
 name|ids
 argument_list|,
-name|frameOP
+name|status
 argument_list|)
 decl_stmt|;
 for|for
@@ -1205,7 +1209,7 @@ range|:
 name|bibs
 control|)
 block|{
-name|iIDialog
+name|dialog
 operator|.
 name|addEntry
 argument_list|(
@@ -1213,7 +1217,7 @@ name|entry
 argument_list|)
 expr_stmt|;
 block|}
-name|iIDialog
+name|dialog
 operator|.
 name|setProgress
 argument_list|(
@@ -1229,7 +1233,9 @@ return|return
 literal|true
 return|;
 block|}
-name|frameOP
+else|else
+block|{
+name|status
 operator|.
 name|showMessage
 argument_list|(
@@ -1240,6 +1246,18 @@ argument_list|(
 literal|"Please enter a comma separated list of Medline IDs (numbers) or search terms."
 argument_list|)
 argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Search %0"
+argument_list|,
+name|getTitle
+argument_list|()
+argument_list|)
+operator|+
+literal|": "
+operator|+
 name|Localization
 operator|.
 name|lang
@@ -1256,7 +1274,61 @@ return|return
 literal|false
 return|;
 block|}
-comment|/**      * Fetch and parse an medline item from eutils.ncbi.nlm.nih.gov.      *      * @param id One or several ids, separated by ","      *      * @return Will return an empty list on error.      */
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|e
+parameter_list|)
+block|{
+name|LOGGER
+operator|.
+name|error
+argument_list|(
+literal|"Error while fetching from "
+operator|+
+name|getTitle
+argument_list|()
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+name|status
+operator|.
+name|showMessage
+argument_list|(
+name|e
+operator|.
+name|getLocalizedMessage
+argument_list|()
+argument_list|)
+expr_stmt|;
+operator|(
+operator|(
+name|ImportInspectionDialog
+operator|)
+name|dialog
+operator|)
+operator|.
+name|showErrorMessage
+argument_list|(
+name|this
+operator|.
+name|getTitle
+argument_list|()
+argument_list|,
+name|e
+operator|.
+name|getLocalizedMessage
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+return|return
+literal|false
+return|;
+block|}
+comment|/**      * Fetch and parse an medline item from eutils.ncbi.nlm.nih.gov.      *      * @param id One or several ids, separated by ","      */
 DECL|method|fetchMedline (String id, OutputPrinter status)
 specifier|private
 specifier|static
@@ -1272,6 +1344,8 @@ parameter_list|,
 name|OutputPrinter
 name|status
 parameter_list|)
+throws|throws
+name|IOException
 block|{
 name|String
 name|baseUrl
@@ -1280,8 +1354,6 @@ literal|"http://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&retm
 operator|+
 name|id
 decl_stmt|;
-try|try
-block|{
 name|URL
 name|url
 init|=
@@ -1354,20 +1426,6 @@ operator|.
 name|getEntries
 argument_list|()
 return|;
-block|}
-catch|catch
-parameter_list|(
-name|IOException
-name|e
-parameter_list|)
-block|{
-return|return
-operator|new
-name|ArrayList
-argument_list|<>
-argument_list|()
-return|;
-block|}
 block|}
 DECL|class|SearchResult
 specifier|static

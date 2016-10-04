@@ -1302,14 +1302,6 @@ operator|.
 name|updateEntryEditorTabList
 argument_list|()
 expr_stmt|;
-name|panel
-operator|.
-name|frame
-argument_list|()
-operator|.
-name|removeCachedEntryEditors
-argument_list|()
-expr_stmt|;
 block|}
 name|panel
 operator|.

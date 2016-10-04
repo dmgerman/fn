@@ -96,6 +96,22 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
+name|importer
+operator|.
+name|ImportInspectionDialog
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|logic
 operator|.
 name|help
@@ -368,11 +384,6 @@ operator|new
 name|HashMap
 argument_list|<>
 argument_list|()
-decl_stmt|;
-name|boolean
-name|res
-init|=
-literal|false
 decl_stmt|;
 name|this
 operator|.
@@ -737,11 +748,9 @@ name|count
 operator|++
 expr_stmt|;
 block|}
-comment|// everything went smooth
-name|res
-operator|=
+return|return
 literal|true
-expr_stmt|;
+return|;
 block|}
 catch|catch
 parameter_list|(
@@ -751,20 +760,33 @@ parameter_list|)
 block|{
 name|LOGGER
 operator|.
-name|warn
+name|error
 argument_list|(
-literal|"Communcation problems"
+literal|"Error while fetching from "
+operator|+
+name|getTitle
+argument_list|()
 argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
-name|status
+operator|(
+operator|(
+name|ImportInspectionDialog
+operator|)
+name|inspector
+operator|)
 operator|.
-name|showMessage
+name|showErrorMessage
 argument_list|(
+name|this
+operator|.
+name|getTitle
+argument_list|()
+argument_list|,
 name|e
 operator|.
-name|getMessage
+name|getLocalizedMessage
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -780,7 +802,7 @@ name|saveThreshold
 expr_stmt|;
 block|}
 return|return
-name|res
+literal|false
 return|;
 block|}
 DECL|method|makeSearchURL ()

@@ -8128,8 +8128,6 @@ end_comment
 begin_function
 annotation|@
 name|Test
-annotation|@
-name|Ignore
 DECL|method|testCommandLineSeveral ()
 specifier|public
 name|void

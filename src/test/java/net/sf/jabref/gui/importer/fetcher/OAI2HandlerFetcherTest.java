@@ -838,6 +838,10 @@ name|testOnline
 parameter_list|()
 throws|throws
 name|InterruptedException
+throws|,
+name|IOException
+throws|,
+name|SAXException
 block|{
 block|{
 name|OAI2Fetcher
