@@ -89,6 +89,7 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
+comment|/**      * This method opens a pdf using the giving the parameters to the executing pdf reader      * @param filePath absolute path to the pdf file to be opened      * @param parameters console parameters depending on the pdf reader      * @throws IOException      */
 DECL|method|openPdfWithParameters (String filePath, List<String> parameters)
 name|void
 name|openPdfWithParameters

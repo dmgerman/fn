@@ -2212,7 +2212,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * TODO: implement for every OS      */
 DECL|method|openPdf ()
 specifier|private
 name|void
