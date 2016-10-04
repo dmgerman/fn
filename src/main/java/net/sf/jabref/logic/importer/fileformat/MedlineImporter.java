@@ -4180,6 +4180,13 @@ operator|.
 name|getISSN
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|issn
+operator|!=
+literal|null
+condition|)
+block|{
 name|putIfValueNotNull
 argument_list|(
 name|fields
@@ -4194,6 +4201,7 @@ name|getContent
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 name|JournalIssue
 name|journalIssue
 init|=
