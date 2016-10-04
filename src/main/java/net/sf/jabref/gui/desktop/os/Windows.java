@@ -560,6 +560,9 @@ name|ProcessBuilder
 argument_list|(
 name|command
 argument_list|)
+operator|.
+name|start
+argument_list|()
 expr_stmt|;
 block|}
 block|}
