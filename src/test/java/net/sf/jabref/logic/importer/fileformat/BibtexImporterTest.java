@@ -881,7 +881,7 @@ literal|"BibTeX"
 argument_list|,
 name|importer
 operator|.
-name|getFormatName
+name|getName
 argument_list|()
 argument_list|)
 expr_stmt|;

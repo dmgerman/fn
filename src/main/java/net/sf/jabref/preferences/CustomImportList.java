@@ -56,9 +56,7 @@ name|logic
 operator|.
 name|importer
 operator|.
-name|fileformat
-operator|.
-name|CustomImporter
+name|Importer
 import|;
 end_import
 
@@ -76,7 +74,7 @@ name|importer
 operator|.
 name|fileformat
 operator|.
-name|ImportFormat
+name|CustomImporter
 import|;
 end_import
 
@@ -109,7 +107,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Collection of user defined custom import formats.  *  *<p>The collection can be stored and retrieved from Preferences. It is sorted by the default  * order of {@link ImportFormat}.</p>  */
+comment|/**  * Collection of user defined custom import formats.  *  *<p>The collection can be stored and retrieved from Preferences. It is sorted by the default  * order of {@link Importer}.</p>  */
 end_comment
 
 begin_class
@@ -209,6 +207,17 @@ condition|)
 block|{
 try|try
 block|{
+if|if
+condition|(
+name|s
+operator|.
+name|size
+argument_list|()
+operator|==
+literal|2
+condition|)
+block|{
+comment|// New format: basePath, className
 name|super
 operator|.
 name|add
@@ -217,9 +226,49 @@ operator|new
 name|CustomImporter
 argument_list|(
 name|s
+operator|.
+name|get
+argument_list|(
+literal|0
+argument_list|)
+argument_list|,
+name|s
+operator|.
+name|get
+argument_list|(
+literal|1
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+comment|// Old format: name, cliId, className, basePath
+name|super
+operator|.
+name|add
+argument_list|(
+operator|new
+name|CustomImporter
+argument_list|(
+name|s
+operator|.
+name|get
+argument_list|(
+literal|3
+argument_list|)
+argument_list|,
+name|s
+operator|.
+name|get
+argument_list|(
+literal|2
+argument_list|)
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(

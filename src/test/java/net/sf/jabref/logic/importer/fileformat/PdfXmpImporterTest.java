@@ -278,7 +278,7 @@ literal|"XMP-annotated PDF"
 argument_list|,
 name|importer
 operator|.
-name|getFormatName
+name|getName
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -314,7 +314,7 @@ parameter_list|()
 block|{
 name|assertEquals
 argument_list|(
-literal|"Wraps the XMPUtility function to be used as an ImportFormat."
+literal|"Wraps the XMPUtility function to be used as an Importer."
 argument_list|,
 name|importer
 operator|.

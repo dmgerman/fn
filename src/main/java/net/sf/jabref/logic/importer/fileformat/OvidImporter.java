@@ -112,6 +112,22 @@ name|logic
 operator|.
 name|importer
 operator|.
+name|Importer
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|importer
+operator|.
 name|ParserResult
 import|;
 end_import
@@ -206,7 +222,7 @@ specifier|public
 class|class
 name|OvidImporter
 extends|extends
-name|ImportFormat
+name|Importer
 block|{
 DECL|field|OVID_SOURCE_PATTERN
 specifier|private
@@ -314,10 +330,10 @@ literal|50
 decl_stmt|;
 annotation|@
 name|Override
-DECL|method|getFormatName ()
+DECL|method|getName ()
 specifier|public
 name|String
-name|getFormatName
+name|getName
 parameter_list|()
 block|{
 return|return
