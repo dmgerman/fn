@@ -1748,6 +1748,14 @@ name|getDefaultValue
 argument_list|()
 operator|==
 literal|null
+operator|||
+name|keyPattern
+operator|.
+name|getDefaultValue
+argument_list|()
+operator|.
+name|isEmpty
+argument_list|()
 condition|)
 block|{
 name|defaultPat
