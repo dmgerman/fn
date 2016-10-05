@@ -322,9 +322,9 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|exporter
+name|cleanup
 operator|.
-name|FieldFormatterCleanups
+name|Cleanups
 import|;
 end_import
 
@@ -1192,7 +1192,7 @@ argument_list|(
 literal|"Enable save actions"
 argument_list|)
 argument_list|,
-name|FieldFormatterCleanups
+name|Cleanups
 operator|.
 name|DEFAULT_SAVE_ACTIONS
 argument_list|)

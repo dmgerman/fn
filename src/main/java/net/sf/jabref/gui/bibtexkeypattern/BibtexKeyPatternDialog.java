@@ -347,7 +347,7 @@ name|keypatterns
 init|=
 name|metaData
 operator|.
-name|getBibtexKeyPattern
+name|getCiteKeyPattern
 argument_list|(
 name|Globals
 operator|.
@@ -520,7 +520,7 @@ lambda|->
 block|{
 name|metaData
 operator|.
-name|setBibtexKeyPattern
+name|setCiteKeyPattern
 argument_list|(
 name|bibtexKeyPatternPanel
 operator|.

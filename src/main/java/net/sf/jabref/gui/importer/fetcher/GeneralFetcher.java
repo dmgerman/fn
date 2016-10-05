@@ -1596,6 +1596,13 @@ argument_list|(
 name|frame
 argument_list|)
 expr_stmt|;
+name|dialog
+operator|.
+name|setVisible
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 name|JabRefExecutorService
 operator|.
 name|INSTANCE
@@ -1629,13 +1636,6 @@ name|dialog
 operator|.
 name|entryListComplete
 argument_list|()
-expr_stmt|;
-name|dialog
-operator|.
-name|setVisible
-argument_list|(
-literal|true
-argument_list|)
 expr_stmt|;
 block|}
 else|else

@@ -102,9 +102,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|model
 operator|.
-name|formatter
+name|cleanup
 operator|.
 name|Formatter
 import|;

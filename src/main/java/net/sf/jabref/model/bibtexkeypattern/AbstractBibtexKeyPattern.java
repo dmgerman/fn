@@ -84,6 +84,18 @@ name|StringTokenizer
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|stream
+operator|.
+name|Collectors
+import|;
+end_import
+
 begin_comment
 comment|/**  * A small table, where an entry type is associated with a Bibtex key pattern (an  *<code>ArrayList</code>). A parent BibtexKeyPattern can be set.  */
 end_comment
@@ -102,6 +114,11 @@ argument_list|<
 name|String
 argument_list|>
 name|defaultPattern
+init|=
+operator|new
+name|ArrayList
+argument_list|<>
+argument_list|()
 decl_stmt|;
 DECL|field|data
 specifier|protected
@@ -374,6 +391,11 @@ condition|(
 name|result
 operator|==
 literal|null
+operator|||
+name|result
+operator|.
+name|isEmpty
+argument_list|()
 condition|)
 block|{
 comment|// we are the "last" to ask
@@ -508,6 +530,13 @@ name|String
 name|bibtexKeyPattern
 parameter_list|)
 block|{
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|bibtexKeyPattern
+argument_list|)
+expr_stmt|;
 name|this
 operator|.
 name|defaultPattern
@@ -534,6 +563,50 @@ name|data
 operator|.
 name|keySet
 argument_list|()
+return|;
+block|}
+DECL|method|getPatterns ()
+specifier|public
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|List
+argument_list|<
+name|String
+argument_list|>
+argument_list|>
+name|getPatterns
+parameter_list|()
+block|{
+return|return
+name|data
+operator|.
+name|entrySet
+argument_list|()
+operator|.
+name|stream
+argument_list|()
+operator|.
+name|collect
+argument_list|(
+name|Collectors
+operator|.
+name|toMap
+argument_list|(
+name|Map
+operator|.
+name|Entry
+operator|::
+name|getKey
+argument_list|,
+name|Map
+operator|.
+name|Entry
+operator|::
+name|getValue
+argument_list|)
+argument_list|)
 return|;
 block|}
 DECL|method|getLastLevelBibtexKeyPattern (String key)

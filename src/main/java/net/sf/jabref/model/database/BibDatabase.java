@@ -1169,7 +1169,7 @@ operator|=
 name|preamble
 expr_stmt|;
 block|}
-comment|/**      * Returns the database's preamble.      */
+comment|/**      * Returns the database's preamble.      * If the preamble text consists only of whitespace, then also an empty optional is returned.      */
 DECL|method|getPreamble ()
 specifier|public
 specifier|synchronized
@@ -1180,14 +1180,34 @@ argument_list|>
 name|getPreamble
 parameter_list|()
 block|{
+if|if
+condition|(
+name|StringUtil
+operator|.
+name|isBlank
+argument_list|(
+name|preamble
+argument_list|)
+condition|)
+block|{
 return|return
 name|Optional
 operator|.
-name|ofNullable
+name|empty
+argument_list|()
+return|;
+block|}
+else|else
+block|{
+return|return
+name|Optional
+operator|.
+name|of
 argument_list|(
 name|preamble
 argument_list|)
 return|;
+block|}
 block|}
 comment|/**      * Inserts a Bibtex String.      */
 DECL|method|addString (BibtexString string)

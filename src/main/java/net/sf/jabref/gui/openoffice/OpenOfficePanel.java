@@ -5093,6 +5093,14 @@ argument_list|()
 operator|.
 name|getMetaData
 argument_list|()
+operator|.
+name|getCiteKeyPattern
+argument_list|(
+name|prefs
+operator|.
+name|getKeyPattern
+argument_list|()
+argument_list|)
 argument_list|,
 name|panel
 operator|.

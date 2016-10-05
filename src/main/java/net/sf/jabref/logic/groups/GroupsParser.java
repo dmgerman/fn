@@ -228,6 +228,8 @@ parameter_list|)
 throws|throws
 name|ParseException
 block|{
+try|try
+block|{
 name|GroupTreeNode
 name|cursor
 init|=
@@ -396,6 +398,28 @@ block|}
 return|return
 name|root
 return|;
+block|}
+catch|catch
+parameter_list|(
+name|ParseException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|ParseException
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Group tree could not be parsed. If you save the BibTeX database, all groups will be lost."
+argument_list|)
+argument_list|,
+name|e
+argument_list|)
+throw|;
+block|}
 block|}
 comment|/**      * Re-create a group instance from a textual representation.      *      * @param s The result from the group's toString() method.      * @return New instance of the encoded group.      * @throws ParseException If an error occurred and a group could not be created,      *                        e.g. due to a malformed regular expression.      */
 DECL|method|fromString (String s, Character keywordSeparator)

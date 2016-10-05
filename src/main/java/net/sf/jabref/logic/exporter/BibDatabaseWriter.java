@@ -326,6 +326,38 @@ name|jabref
 operator|.
 name|model
 operator|.
+name|bibtexkeypattern
+operator|.
+name|GlobalBibtexKeyPattern
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|cleanup
+operator|.
+name|FieldFormatterCleanups
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
 name|database
 operator|.
 name|BibDatabase
@@ -579,12 +611,10 @@ name|FieldFormatterCleanups
 argument_list|>
 name|saveActions
 init|=
-name|FieldFormatterCleanups
-operator|.
-name|fromMetaData
-argument_list|(
 name|metaData
-argument_list|)
+operator|.
+name|getSaveActions
+argument_list|()
 decl_stmt|;
 name|saveActions
 operator|.
@@ -1304,6 +1334,11 @@ name|bibDatabaseContext
 operator|.
 name|getMetaData
 argument_list|()
+argument_list|,
+name|preferences
+operator|.
+name|getGlobalCiteKeyPattern
+argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// Write type definitions, if any:
@@ -1403,13 +1438,16 @@ throws|throws
 name|SaveException
 function_decl|;
 comment|/**      * Writes all data to the specified writer, using each object's toString() method.      */
-DECL|method|writeMetaData (MetaData metaData)
+DECL|method|writeMetaData (MetaData metaData, GlobalBibtexKeyPattern globalCiteKeyPattern)
 specifier|protected
 name|void
 name|writeMetaData
 parameter_list|(
 name|MetaData
 name|metaData
+parameter_list|,
+name|GlobalBibtexKeyPattern
+name|globalCiteKeyPattern
 parameter_list|)
 throws|throws
 name|SaveException
@@ -1434,6 +1472,8 @@ operator|.
 name|getSerializedStringMap
 argument_list|(
 name|metaData
+argument_list|,
+name|globalCiteKeyPattern
 argument_list|)
 decl_stmt|;
 for|for
