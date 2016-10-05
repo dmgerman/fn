@@ -112,7 +112,7 @@ name|model
 operator|.
 name|pdf
 operator|.
-name|PdfComment
+name|FileAnnotation
 import|;
 end_import
 
@@ -281,10 +281,12 @@ import|;
 end_import
 
 begin_class
-DECL|class|PdfCommentImporter
+DECL|class|PdfAnnotationImporterImpl
 specifier|public
 class|class
-name|PdfCommentImporter
+name|PdfAnnotationImporterImpl
+implements|implements
+name|AnnotationImporterInterface
 block|{
 DECL|field|pdfPages
 specifier|private
@@ -296,19 +298,21 @@ specifier|private
 name|PDPage
 name|page
 decl_stmt|;
-DECL|method|PdfCommentImporter ()
+DECL|method|PdfAnnotationImporterImpl ()
 specifier|public
-name|PdfCommentImporter
+name|PdfAnnotationImporterImpl
 parameter_list|()
 block|{      }
 comment|/**      * Imports the comments from a pdf specified by its path      *      * @param path a path to a pdf      * @return a list with the all the annotations found in the file of the path      */
-DECL|method|importNotes (final String path, final BibDatabaseContext context)
+annotation|@
+name|Override
+DECL|method|importAnnotations (final String path, final BibDatabaseContext context)
 specifier|public
 name|List
 argument_list|<
-name|PdfComment
+name|FileAnnotation
 argument_list|>
-name|importNotes
+name|importAnnotations
 parameter_list|(
 specifier|final
 name|String
@@ -321,7 +325,7 @@ parameter_list|)
 block|{
 name|List
 argument_list|<
-name|PdfComment
+name|FileAnnotation
 argument_list|>
 name|annotationsList
 init|=
@@ -474,11 +478,11 @@ name|SUBTYPE
 argument_list|)
 condition|)
 block|{
-name|PdfComment
+name|FileAnnotation
 name|annotationBelongingToHighlighting
 init|=
 operator|new
-name|PdfComment
+name|FileAnnotation
 argument_list|(
 name|annotation
 operator|.
@@ -805,11 +809,11 @@ argument_list|(
 name|highlightedText
 argument_list|)
 expr_stmt|;
-name|PdfComment
+name|FileAnnotation
 name|highlighting
 init|=
 operator|new
-name|PdfComment
+name|FileAnnotation
 argument_list|(
 name|annotation
 argument_list|,
@@ -848,7 +852,7 @@ operator|.
 name|add
 argument_list|(
 operator|new
-name|PdfComment
+name|FileAnnotation
 argument_list|(
 name|annotation
 argument_list|,

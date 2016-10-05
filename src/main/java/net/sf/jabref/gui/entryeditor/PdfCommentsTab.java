@@ -396,7 +396,7 @@ name|logic
 operator|.
 name|pdf
 operator|.
-name|PdfCommentImporter
+name|PdfAnnotationImporterImpl
 import|;
 end_import
 
@@ -476,7 +476,7 @@ name|model
 operator|.
 name|pdf
 operator|.
-name|PdfComment
+name|FileAnnotation
 import|;
 end_import
 
@@ -537,7 +537,7 @@ specifier|private
 specifier|final
 name|JList
 argument_list|<
-name|PdfComment
+name|FileAnnotation
 argument_list|>
 name|commentList
 init|=
@@ -835,7 +835,7 @@ decl_stmt|;
 DECL|field|listModel
 name|DefaultListModel
 argument_list|<
-name|PdfComment
+name|FileAnnotation
 argument_list|>
 name|listModel
 decl_stmt|;
@@ -875,7 +875,7 @@ name|List
 argument_list|<
 name|List
 argument_list|<
-name|PdfComment
+name|FileAnnotation
 argument_list|>
 argument_list|>
 name|allNotes
@@ -1081,34 +1081,9 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-name|PdfCommentImporter
-name|commentImporter
-init|=
-operator|new
-name|PdfCommentImporter
-argument_list|()
+name|PdfAnnotationImporterImpl
+name|annotationImporter
 decl_stmt|;
-name|ArrayList
-argument_list|<
-name|BibEntry
-argument_list|>
-name|entries
-init|=
-operator|new
-name|ArrayList
-argument_list|<>
-argument_list|()
-decl_stmt|;
-name|entries
-operator|.
-name|add
-argument_list|(
-name|parent
-operator|.
-name|getEntry
-argument_list|()
-argument_list|)
-expr_stmt|;
 comment|//check which attached file is selected in the combo box
 name|int
 name|indexSelectedByComboBox
@@ -1138,6 +1113,33 @@ name|getSelectedIndex
 argument_list|()
 expr_stmt|;
 block|}
+name|ArrayList
+argument_list|<
+name|BibEntry
+argument_list|>
+name|entries
+init|=
+operator|new
+name|ArrayList
+argument_list|<>
+argument_list|()
+decl_stmt|;
+name|entries
+operator|.
+name|add
+argument_list|(
+name|parent
+operator|.
+name|getEntry
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|annotationImporter
+operator|=
+operator|new
+name|PdfAnnotationImporterImpl
+argument_list|()
+expr_stmt|;
 comment|//import notes if the selected file is a pdf
 name|getFilteredFileList
 argument_list|()
@@ -1150,9 +1152,9 @@ name|allNotes
 operator|.
 name|add
 argument_list|(
-name|commentImporter
+name|annotationImporter
 operator|.
-name|importNotes
+name|importAnnotations
 argument_list|(
 name|parsedFileField
 operator|.
@@ -1167,7 +1169,7 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|updateShownComments
+name|updateShownAnnotations
 argument_list|(
 name|allNotes
 operator|.
@@ -1177,6 +1179,7 @@ name|indexSelectedByComboBox
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|//select the first annotation or remove the whole tab when no annotations are present
 if|if
 condition|(
 name|listModel
@@ -1241,14 +1244,14 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * Updates the list model to show the given notes without those with no content      * @param importedNotes value is the comments name and the value is a pdfComment object to add to the list model      */
-DECL|method|updateShownComments (List<PdfComment> importedNotes)
+DECL|method|updateShownAnnotations (List<FileAnnotation> importedNotes)
 specifier|private
 name|void
-name|updateShownComments
+name|updateShownAnnotations
 parameter_list|(
 name|List
 argument_list|<
-name|PdfComment
+name|FileAnnotation
 argument_list|>
 name|importedNotes
 parameter_list|)
@@ -1271,7 +1274,7 @@ operator|.
 name|addElement
 argument_list|(
 operator|new
-name|PdfComment
+name|FileAnnotation
 argument_list|(
 literal|""
 argument_list|,
@@ -1297,26 +1300,26 @@ else|else
 block|{
 name|Comparator
 argument_list|<
-name|PdfComment
+name|FileAnnotation
 argument_list|>
 name|byPage
 init|=
 parameter_list|(
-name|comment1
+name|annotation1
 parameter_list|,
-name|comment2
+name|annotation2
 parameter_list|)
 lambda|->
 name|Integer
 operator|.
 name|compare
 argument_list|(
-name|comment1
+name|annotation1
 operator|.
 name|getPage
 argument_list|()
 argument_list|,
-name|comment2
+name|annotation2
 operator|.
 name|getPage
 argument_list|()
@@ -1329,13 +1332,13 @@ argument_list|()
 operator|.
 name|filter
 argument_list|(
-name|comment
+name|annotation
 lambda|->
 operator|!
 operator|(
 literal|null
 operator|==
-name|comment
+name|annotation
 operator|.
 name|getContent
 argument_list|()
@@ -1344,9 +1347,9 @@ argument_list|)
 operator|.
 name|filter
 argument_list|(
-name|comment
+name|annotation
 lambda|->
-name|comment
+name|annotation
 operator|.
 name|getAnnotationType
 argument_list|()
@@ -1361,9 +1364,9 @@ operator|||
 operator|(
 literal|null
 operator|==
-name|comment
+name|annotation
 operator|.
-name|getLinkedPdfComment
+name|getLinkedFileAnnotation
 argument_list|()
 operator|)
 argument_list|)
@@ -1383,12 +1386,12 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * Updates the text fields showing meta data and the content from the selected comment      * @param comment pdf comment which data should be shown in the text fields      */
-DECL|method|updateTextFields (PdfComment comment)
+DECL|method|updateTextFields (FileAnnotation comment)
 specifier|private
 name|void
 name|updateTextFields
 parameter_list|(
-name|PdfComment
+name|FileAnnotation
 name|comment
 parameter_list|)
 block|{
@@ -1523,7 +1526,7 @@ argument_list|(
 name|indexSelectedByComboBox
 argument_list|)
 expr_stmt|;
-name|updateShownComments
+name|updateShownAnnotations
 argument_list|(
 name|allNotes
 operator|.
@@ -2356,13 +2359,13 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * Fills the highlight and comment texts and enables/disables the highlight area if there is no highlighted text      *      * @param comment either a text comment or a highlighting from a pdf      */
-DECL|method|updateContentAndHighlightTextfields (final PdfComment comment)
+DECL|method|updateContentAndHighlightTextfields (final FileAnnotation comment)
 specifier|private
 name|void
 name|updateContentAndHighlightTextfields
 parameter_list|(
 specifier|final
-name|PdfComment
+name|FileAnnotation
 name|comment
 parameter_list|)
 block|{
@@ -2410,7 +2413,7 @@ name|textComment
 operator|=
 name|comment
 operator|.
-name|getLinkedPdfComment
+name|getLinkedFileAnnotation
 argument_list|()
 operator|.
 name|getContent
@@ -2423,7 +2426,7 @@ name|highlightedText
 operator|=
 name|comment
 operator|.
-name|getLinkedPdfComment
+name|getLinkedFileAnnotation
 argument_list|()
 operator|.
 name|getContent
@@ -2689,11 +2692,11 @@ name|boolean
 name|cellHasFocus
 parameter_list|)
 block|{
-name|PdfComment
+name|FileAnnotation
 name|comment
 init|=
 operator|(
-name|PdfComment
+name|FileAnnotation
 operator|)
 name|value
 decl_stmt|;

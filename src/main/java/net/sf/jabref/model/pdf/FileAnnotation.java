@@ -61,10 +61,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|PdfComment
+DECL|class|FileAnnotation
 specifier|public
 class|class
-name|PdfComment
+name|FileAnnotation
 block|{
 DECL|field|commentId
 specifier|private
@@ -96,10 +96,10 @@ specifier|private
 name|String
 name|annotationType
 decl_stmt|;
-DECL|field|linkedPdfComment
+DECL|field|linkedFileAnnotation
 specifier|private
-name|PdfComment
-name|linkedPdfComment
+name|FileAnnotation
+name|linkedFileAnnotation
 decl_stmt|;
 DECL|field|ABBREVIATED_ANNOTATION_NAME_LENGTH
 specifier|private
@@ -115,9 +115,9 @@ specifier|private
 name|boolean
 name|linkedComment
 decl_stmt|;
-DECL|method|PdfComment (final String commentId, final String author, final String date, final int page, final String content, final String annotationType)
+DECL|method|FileAnnotation (final String commentId, final String author, final String date, final int page, final String content, final String annotationType)
 specifier|public
-name|PdfComment
+name|FileAnnotation
 parameter_list|(
 specifier|final
 name|String
@@ -181,9 +181,9 @@ operator|=
 name|annotationType
 expr_stmt|;
 block|}
-DECL|method|PdfComment (final PDAnnotation annotation, final int page )
+DECL|method|FileAnnotation (final PDAnnotation annotation, final int page )
 specifier|public
-name|PdfComment
+name|FileAnnotation
 parameter_list|(
 specifier|final
 name|PDAnnotation
@@ -304,22 +304,22 @@ return|return
 name|annotationName
 return|;
 block|}
-DECL|method|linkComments (PdfComment commentToLinkTo)
+DECL|method|linkComments (FileAnnotation commentToLinkTo)
 specifier|public
 name|void
 name|linkComments
 parameter_list|(
-name|PdfComment
+name|FileAnnotation
 name|commentToLinkTo
 parameter_list|)
 block|{
-name|linkedPdfComment
+name|linkedFileAnnotation
 operator|=
 name|commentToLinkTo
 expr_stmt|;
 name|commentToLinkTo
 operator|.
-name|setLinkedPdfComment
+name|setLinkedFileAnnotation
 argument_list|(
 name|this
 argument_list|)
@@ -351,30 +351,30 @@ name|content
 argument_list|)
 return|;
 block|}
-DECL|method|getLinkedPdfComment ()
+DECL|method|getLinkedFileAnnotation ()
 specifier|public
-name|PdfComment
-name|getLinkedPdfComment
+name|FileAnnotation
+name|getLinkedFileAnnotation
 parameter_list|()
 block|{
 return|return
-name|linkedPdfComment
+name|linkedFileAnnotation
 return|;
 block|}
-DECL|method|setLinkedPdfComment (PdfComment linkedPdfComment)
+DECL|method|setLinkedFileAnnotation (FileAnnotation linkedFileAnnotation)
 specifier|public
 name|void
-name|setLinkedPdfComment
+name|setLinkedFileAnnotation
 parameter_list|(
-name|PdfComment
-name|linkedPdfComment
+name|FileAnnotation
+name|linkedFileAnnotation
 parameter_list|)
 block|{
 name|this
 operator|.
-name|linkedPdfComment
+name|linkedFileAnnotation
 operator|=
-name|linkedPdfComment
+name|linkedFileAnnotation
 expr_stmt|;
 block|}
 DECL|method|getCommentId ()
