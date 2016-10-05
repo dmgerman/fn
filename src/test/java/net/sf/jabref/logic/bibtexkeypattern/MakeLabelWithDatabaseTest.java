@@ -106,22 +106,6 @@ end_import
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|metadata
-operator|.
-name|MetaData
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|junit
@@ -163,11 +147,6 @@ specifier|private
 name|BibDatabase
 name|database
 decl_stmt|;
-DECL|field|metadata
-specifier|private
-name|MetaData
-name|metadata
-decl_stmt|;
 DECL|field|preferences
 specifier|private
 name|BibtexKeyPatternPreferences
@@ -200,12 +179,6 @@ name|database
 operator|=
 operator|new
 name|BibDatabase
-argument_list|()
-expr_stmt|;
-name|metadata
-operator|=
-operator|new
-name|MetaData
 argument_list|()
 expr_stmt|;
 name|entry
@@ -269,13 +242,6 @@ argument_list|(
 name|pattern
 argument_list|)
 expr_stmt|;
-name|metadata
-operator|.
-name|setBibtexKeyPattern
-argument_list|(
-name|bibtexKeyPattern
-argument_list|)
-expr_stmt|;
 name|preferences
 operator|=
 operator|new
@@ -309,7 +275,7 @@ name|BibtexKeyPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
-name|metadata
+name|bibtexKeyPattern
 argument_list|,
 name|database
 argument_list|,
@@ -346,7 +312,7 @@ name|BibtexKeyPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
-name|metadata
+name|bibtexKeyPattern
 argument_list|,
 name|database
 argument_list|,
@@ -384,7 +350,7 @@ name|BibtexKeyPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
-name|metadata
+name|bibtexKeyPattern
 argument_list|,
 name|database
 argument_list|,
@@ -441,7 +407,7 @@ name|BibtexKeyPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
-name|metadata
+name|bibtexKeyPattern
 argument_list|,
 name|database
 argument_list|,
@@ -498,7 +464,7 @@ name|BibtexKeyPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
-name|metadata
+name|bibtexKeyPattern
 argument_list|,
 name|database
 argument_list|,
@@ -536,7 +502,7 @@ name|BibtexKeyPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
-name|metadata
+name|bibtexKeyPattern
 argument_list|,
 name|database
 argument_list|,
@@ -593,7 +559,7 @@ name|BibtexKeyPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
-name|metadata
+name|bibtexKeyPattern
 argument_list|,
 name|database
 argument_list|,
@@ -650,7 +616,7 @@ name|BibtexKeyPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
-name|metadata
+name|bibtexKeyPattern
 argument_list|,
 name|database
 argument_list|,
@@ -688,7 +654,7 @@ name|BibtexKeyPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
-name|metadata
+name|bibtexKeyPattern
 argument_list|,
 name|database
 argument_list|,
@@ -725,7 +691,7 @@ name|BibtexKeyPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
-name|metadata
+name|bibtexKeyPattern
 argument_list|,
 name|database
 argument_list|,
@@ -828,7 +794,7 @@ name|BibtexKeyPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
-name|metadata
+name|bibtexKeyPattern
 argument_list|,
 name|database
 argument_list|,
@@ -865,7 +831,7 @@ name|BibtexKeyPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
-name|metadata
+name|bibtexKeyPattern
 argument_list|,
 name|database
 argument_list|,
@@ -903,7 +869,7 @@ name|BibtexKeyPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
-name|metadata
+name|bibtexKeyPattern
 argument_list|,
 name|database
 argument_list|,
@@ -968,7 +934,7 @@ name|BibtexKeyPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
-name|metadata
+name|bibtexKeyPattern
 argument_list|,
 name|database
 argument_list|,
@@ -1012,7 +978,7 @@ name|BibtexKeyPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
-name|metadata
+name|bibtexKeyPattern
 argument_list|,
 name|database
 argument_list|,
@@ -1056,7 +1022,7 @@ name|BibtexKeyPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
-name|metadata
+name|bibtexKeyPattern
 argument_list|,
 name|database
 argument_list|,
@@ -1100,7 +1066,7 @@ name|BibtexKeyPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
-name|metadata
+name|bibtexKeyPattern
 argument_list|,
 name|database
 argument_list|,
@@ -1144,7 +1110,7 @@ name|BibtexKeyPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
-name|metadata
+name|bibtexKeyPattern
 argument_list|,
 name|database
 argument_list|,
@@ -1188,7 +1154,7 @@ name|BibtexKeyPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
-name|metadata
+name|bibtexKeyPattern
 argument_list|,
 name|database
 argument_list|,
@@ -1232,7 +1198,7 @@ name|BibtexKeyPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
-name|metadata
+name|bibtexKeyPattern
 argument_list|,
 name|database
 argument_list|,
@@ -1275,7 +1241,7 @@ name|BibtexKeyPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
-name|metadata
+name|bibtexKeyPattern
 argument_list|,
 name|database
 argument_list|,
@@ -1324,7 +1290,7 @@ name|BibtexKeyPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
-name|metadata
+name|bibtexKeyPattern
 argument_list|,
 name|database
 argument_list|,
@@ -1375,7 +1341,7 @@ name|BibtexKeyPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
-name|metadata
+name|bibtexKeyPattern
 argument_list|,
 name|database
 argument_list|,
@@ -1419,7 +1385,7 @@ name|BibtexKeyPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
-name|metadata
+name|bibtexKeyPattern
 argument_list|,
 name|database
 argument_list|,
@@ -1463,7 +1429,7 @@ name|BibtexKeyPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
-name|metadata
+name|bibtexKeyPattern
 argument_list|,
 name|database
 argument_list|,
@@ -1507,7 +1473,7 @@ name|BibtexKeyPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
-name|metadata
+name|bibtexKeyPattern
 argument_list|,
 name|database
 argument_list|,
@@ -1551,7 +1517,7 @@ name|BibtexKeyPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
-name|metadata
+name|bibtexKeyPattern
 argument_list|,
 name|database
 argument_list|,
@@ -1595,7 +1561,7 @@ name|BibtexKeyPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
-name|metadata
+name|bibtexKeyPattern
 argument_list|,
 name|database
 argument_list|,
@@ -1648,7 +1614,7 @@ name|BibtexKeyPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
-name|metadata
+name|bibtexKeyPattern
 argument_list|,
 name|database
 argument_list|,
@@ -1701,7 +1667,7 @@ name|BibtexKeyPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
-name|metadata
+name|bibtexKeyPattern
 argument_list|,
 name|database
 argument_list|,
@@ -1754,7 +1720,7 @@ name|BibtexKeyPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
-name|metadata
+name|bibtexKeyPattern
 argument_list|,
 name|database
 argument_list|,
@@ -1805,7 +1771,7 @@ name|BibtexKeyPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
-name|metadata
+name|bibtexKeyPattern
 argument_list|,
 name|database
 argument_list|,
@@ -1878,7 +1844,7 @@ name|BibtexKeyPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
-name|metadata
+name|bibtexKeyPattern
 argument_list|,
 name|database
 argument_list|,
@@ -1931,7 +1897,7 @@ name|BibtexKeyPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
-name|metadata
+name|bibtexKeyPattern
 argument_list|,
 name|database
 argument_list|,
@@ -1984,7 +1950,7 @@ name|BibtexKeyPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
-name|metadata
+name|bibtexKeyPattern
 argument_list|,
 name|database
 argument_list|,
@@ -2009,6 +1975,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|generateKeyTitleTitleCase ()
 specifier|public
 name|void
@@ -2026,7 +1994,7 @@ name|BibtexKeyPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
-name|metadata
+name|bibtexKeyPattern
 argument_list|,
 name|database
 argument_list|,
@@ -2070,7 +2038,7 @@ name|BibtexKeyPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
-name|metadata
+name|bibtexKeyPattern
 argument_list|,
 name|database
 argument_list|,
@@ -2114,7 +2082,7 @@ name|BibtexKeyPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
-name|metadata
+name|bibtexKeyPattern
 argument_list|,
 name|database
 argument_list|,
@@ -2158,7 +2126,7 @@ name|BibtexKeyPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
-name|metadata
+name|bibtexKeyPattern
 argument_list|,
 name|database
 argument_list|,
@@ -2202,7 +2170,7 @@ name|BibtexKeyPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
-name|metadata
+name|bibtexKeyPattern
 argument_list|,
 name|database
 argument_list|,
@@ -2246,7 +2214,7 @@ name|BibtexKeyPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
-name|metadata
+name|bibtexKeyPattern
 argument_list|,
 name|database
 argument_list|,

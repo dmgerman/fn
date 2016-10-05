@@ -88,6 +88,22 @@ name|jabref
 operator|.
 name|model
 operator|.
+name|bibtexkeypattern
+operator|.
+name|GlobalBibtexKeyPattern
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
 name|entry
 operator|.
 name|FieldName
@@ -158,7 +174,6 @@ name|database
 decl_stmt|;
 DECL|field|metaData
 specifier|private
-specifier|final
 name|MetaData
 name|metaData
 decl_stmt|;
@@ -397,7 +412,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|BibDatabaseContext (Defaults defaults, DatabaseLocation location, Character keywordSeparator)
+DECL|method|BibDatabaseContext (Defaults defaults, DatabaseLocation location, Character keywordSeparator, GlobalBibtexKeyPattern globalCiteKeyPattern)
 specifier|public
 name|BibDatabaseContext
 parameter_list|(
@@ -409,6 +424,9 @@ name|location
 parameter_list|,
 name|Character
 name|keywordSeparator
+parameter_list|,
+name|GlobalBibtexKeyPattern
+name|globalCiteKeyPattern
 parameter_list|)
 block|{
 name|this
@@ -436,6 +454,8 @@ block|{
 name|convertToSharedDatabase
 argument_list|(
 name|keywordSeparator
+argument_list|,
+name|globalCiteKeyPattern
 argument_list|)
 expr_stmt|;
 block|}
@@ -600,6 +620,27 @@ block|{
 return|return
 name|metaData
 return|;
+block|}
+DECL|method|setMetaData (MetaData metaData)
+specifier|public
+name|void
+name|setMetaData
+parameter_list|(
+name|MetaData
+name|metaData
+parameter_list|)
+block|{
+name|this
+operator|.
+name|metaData
+operator|=
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|metaData
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|isBiblatexMode ()
 specifier|public
@@ -955,13 +996,16 @@ operator|.
 name|location
 return|;
 block|}
-DECL|method|convertToSharedDatabase (Character keywordSeparator)
+DECL|method|convertToSharedDatabase (Character keywordSeparator, GlobalBibtexKeyPattern globalCiteKeyPattern)
 specifier|public
 name|void
 name|convertToSharedDatabase
 parameter_list|(
 name|Character
 name|keywordSeparator
+parameter_list|,
+name|GlobalBibtexKeyPattern
+name|globalCiteKeyPattern
 parameter_list|)
 block|{
 name|this
@@ -974,6 +1018,8 @@ argument_list|(
 name|this
 argument_list|,
 name|keywordSeparator
+argument_list|,
+name|globalCiteKeyPattern
 argument_list|)
 expr_stmt|;
 name|this

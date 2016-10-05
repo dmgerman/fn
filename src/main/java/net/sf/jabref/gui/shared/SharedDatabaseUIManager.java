@@ -771,6 +771,13 @@ name|prefs
 operator|.
 name|getKeywordDelimiter
 argument_list|()
+argument_list|,
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getKeyPattern
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|dbmsSynchronizer

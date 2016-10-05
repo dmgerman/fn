@@ -1399,6 +1399,17 @@ argument_list|()
 operator|.
 name|getMetaData
 argument_list|()
+operator|.
+name|getCiteKeyPattern
+argument_list|(
+name|importFormatPreferences
+operator|.
+name|getBibtexKeyPatternPreferences
+argument_list|()
+operator|.
+name|getKeyPattern
+argument_list|()
+argument_list|)
 argument_list|,
 name|JabRefGUI
 operator|.
