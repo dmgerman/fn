@@ -34,7 +34,7 @@ name|JTabbedPane
 block|{
 DECL|field|pdfTab
 specifier|private
-name|PdfCommentsTab
+name|FileAnnotationTab
 name|pdfTab
 decl_stmt|;
 DECL|method|EntryEditorTabbedPane ()
@@ -46,12 +46,12 @@ name|super
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|hidePdfTab (PdfCommentsTab pdfTab)
+DECL|method|hidePdfTab (FileAnnotationTab pdfTab)
 specifier|public
 name|void
 name|hidePdfTab
 parameter_list|(
-name|PdfCommentsTab
+name|FileAnnotationTab
 name|pdfTab
 parameter_list|)
 block|{

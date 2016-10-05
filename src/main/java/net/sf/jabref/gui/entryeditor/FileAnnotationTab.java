@@ -525,10 +525,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|PdfCommentsTab
+DECL|class|FileAnnotationTab
 specifier|public
 class|class
-name|PdfCommentsTab
+name|FileAnnotationTab
 extends|extends
 name|JPanel
 block|{
@@ -885,9 +885,9 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
-DECL|method|PdfCommentsTab (EntryEditor parent, BasePanel basePanel, JTabbedPane tabbed)
+DECL|method|FileAnnotationTab (EntryEditor parent, BasePanel basePanel, JTabbedPane tabbed)
 specifier|public
-name|PdfCommentsTab
+name|FileAnnotationTab
 parameter_list|(
 name|EntryEditor
 name|parent
@@ -944,13 +944,13 @@ operator|=
 literal|false
 expr_stmt|;
 block|}
-DECL|method|initializeTab (PdfCommentsTab tab)
+DECL|method|initializeTab (FileAnnotationTab tab)
 specifier|public
 specifier|static
-name|PdfCommentsTab
+name|FileAnnotationTab
 name|initializeTab
 parameter_list|(
-name|PdfCommentsTab
+name|FileAnnotationTab
 name|tab
 parameter_list|)
 block|{
@@ -1288,7 +1288,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"PDF has no attached annotations"
+literal|"File has no attached annotations"
 argument_list|)
 argument_list|,
 literal|""
@@ -2057,7 +2057,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Open PDF"
+literal|"Open file"
 argument_list|)
 argument_list|)
 expr_stmt|;
