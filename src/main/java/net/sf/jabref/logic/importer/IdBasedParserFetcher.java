@@ -391,7 +391,7 @@ throw|;
 block|}
 catch|catch
 parameter_list|(
-name|ParserException
+name|ParseException
 name|e
 parameter_list|)
 block|{

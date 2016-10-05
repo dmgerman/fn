@@ -126,9 +126,7 @@ name|logic
 operator|.
 name|importer
 operator|.
-name|util
-operator|.
-name|MetaDataParser
+name|ParseException
 import|;
 end_import
 
@@ -140,9 +138,13 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|model
+name|logic
 operator|.
-name|ParseException
+name|importer
+operator|.
+name|util
+operator|.
+name|MetaDataParser
 import|;
 end_import
 

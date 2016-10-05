@@ -146,7 +146,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|model
+name|logic
+operator|.
+name|importer
 operator|.
 name|ParseException
 import|;

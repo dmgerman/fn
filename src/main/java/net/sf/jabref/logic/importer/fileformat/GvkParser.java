@@ -104,7 +104,7 @@ name|logic
 operator|.
 name|importer
 operator|.
-name|Parser
+name|ParseException
 import|;
 end_import
 
@@ -120,7 +120,7 @@ name|logic
 operator|.
 name|importer
 operator|.
-name|ParserException
+name|Parser
 import|;
 end_import
 
@@ -312,7 +312,7 @@ name|InputStream
 name|inputStream
 parameter_list|)
 throws|throws
-name|ParserException
+name|ParseException
 block|{
 try|try
 block|{
@@ -358,7 +358,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|ParserException
+name|ParseException
 argument_list|(
 name|exception
 argument_list|)
