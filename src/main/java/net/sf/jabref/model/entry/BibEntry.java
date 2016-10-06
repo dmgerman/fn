@@ -326,6 +326,22 @@ name|model
 operator|.
 name|strings
 operator|.
+name|LatexToUnicode
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|strings
+operator|.
 name|StringUtil
 import|;
 end_import
@@ -500,7 +516,7 @@ name|ConcurrentHashMap
 argument_list|<>
 argument_list|()
 decl_stmt|;
-comment|/*      * Map to store the words in every field      */
+comment|/**      * Map to store the words in every field      */
 DECL|field|fieldsAsWords
 specifier|private
 specifier|final
@@ -518,6 +534,33 @@ init|=
 operator|new
 name|HashMap
 argument_list|<>
+argument_list|()
+decl_stmt|;
+comment|/**      * Cache that stores latex free versions of fields.      */
+DECL|field|latexFreeFields
+specifier|private
+specifier|final
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
+name|latexFreeFields
+init|=
+operator|new
+name|ConcurrentHashMap
+argument_list|<>
+argument_list|()
+decl_stmt|;
+comment|/**      * Used to cleanse field values for internal LaTeX-free storage      */
+DECL|field|unicodeConverter
+specifier|private
+name|LatexToUnicode
+name|unicodeConverter
+init|=
+operator|new
+name|LatexToUnicode
 argument_list|()
 decl_stmt|;
 comment|// Search and grouping status is stored in boolean fields for quick reference:
@@ -543,7 +586,7 @@ name|commentsBeforeEntry
 init|=
 literal|""
 decl_stmt|;
-comment|/*      * Marks whether the complete serialization, which was read from file, should be used.      *      * Is set to false, if parts of the entry change. This causes the entry to be serialized based on the internal state (and not based on the old serialization)      */
+comment|/**      * Marks whether the complete serialization, which was read from file, should be used.      *      * Is set to false, if parts of the entry change. This causes the entry to be serialized based on the internal state (and not based on the old serialization)      */
 DECL|field|changed
 specifier|private
 name|boolean
@@ -591,7 +634,7 @@ name|DEFAULT_TYPE
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Constructs a new BibEntry with the given ID and given type      *      * @param id The ID to be used      * @param type The type to set. May be null or empty. In that case, DEFAULT_TYPE is used.      */
+comment|/**      * Constructs a new BibEntry with the given ID and given type      *      * @param id   The ID to be used      * @param type The type to set. May be null or empty. In that case, DEFAULT_TYPE is used.      */
 DECL|method|BibEntry (String id, String type)
 specifier|public
 name|BibEntry
@@ -938,7 +981,7 @@ return|return
 name|id
 return|;
 block|}
-comment|/**      * Sets the cite key AKA citation key AKA BibTeX key.      *      * Note: This is<emph>not</emph> the internal Id of this entry. The internal Id is always present, whereas the BibTeX key might not be present.      *      * @param newCiteKey The cite key to set. Must not be null; use {@link #clearCiteKey()} to remove the cite key.      */
+comment|/**      * Sets the cite key AKA citation key AKA BibTeX key.      * Note: This is<emph>not</emph> the internal Id of this entry. The internal Id is always present, whereas the BibTeX key might not be present.      *      * @param newCiteKey The cite key to set. Must not be null; use {@link #clearCiteKey()} to remove the cite key.      */
 DECL|method|setCiteKey (String newCiteKey)
 specifier|public
 name|void
@@ -956,7 +999,7 @@ name|newCiteKey
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Returns the cite key AKA citation key AKA BibTeX key, or null if it is not set.      *      * Note: this is<emph>not</emph> the internal Id of this entry. The internal Id is always present, whereas the BibTeX key might not be present.      */
+comment|/**      * Returns the cite key AKA citation key AKA BibTeX key, or null if it is not set.      * Note: this is<emph>not</emph> the internal Id of this entry. The internal Id is always present, whereas the BibTeX key might not be present.      */
 annotation|@
 name|Deprecated
 DECL|method|getCiteKey ()
@@ -1843,7 +1886,7 @@ name|setField
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Set a field, and notify listeners about the change.      * @param name  The field to set      * @param value The value to set      * @param eventSource Source the event is sent from      */
+comment|/**      * Set a field, and notify listeners about the change.      *      * @param name        The field to set      * @param value       The value to set      * @param eventSource Source the event is sent from      */
 DECL|method|setField (String name, String value, EntryEventSource eventSource)
 specifier|public
 name|Optional
@@ -1968,11 +2011,12 @@ argument_list|(
 name|fieldName
 argument_list|,
 name|value
+operator|.
+name|intern
+argument_list|()
 argument_list|)
 expr_stmt|;
-name|fieldsAsWords
-operator|.
-name|remove
+name|invalidateFieldCache
 argument_list|(
 name|fieldName
 argument_list|)
@@ -2117,7 +2161,7 @@ name|LOCAL
 argument_list|)
 return|;
 block|}
-comment|/**      * Remove the mapping for the field name, and notify listeners about      * the change including the {@link EntryEventSource}.      *      * @param name The field to clear.      * @param eventSource the source a new {@link FieldChangedEvent} should be posten from.      */
+comment|/**      * Remove the mapping for the field name, and notify listeners about      * the change including the {@link EntryEventSource}.      *      * @param name        The field to clear.      * @param eventSource the source a new {@link FieldChangedEvent} should be posten from.      */
 DECL|method|clearField (String name, EntryEventSource eventSource)
 specifier|public
 name|Optional
@@ -2203,9 +2247,7 @@ argument_list|(
 name|fieldName
 argument_list|)
 expr_stmt|;
-name|fieldsAsWords
-operator|.
-name|remove
+name|invalidateFieldCache
 argument_list|(
 name|fieldName
 argument_list|)
@@ -3554,6 +3596,126 @@ argument_list|(
 name|KEY_FIELD
 argument_list|)
 return|;
+block|}
+DECL|method|invalidateFieldCache (String fieldName)
+specifier|private
+name|void
+name|invalidateFieldCache
+parameter_list|(
+name|String
+name|fieldName
+parameter_list|)
+block|{
+name|latexFreeFields
+operator|.
+name|remove
+argument_list|(
+name|fieldName
+argument_list|)
+expr_stmt|;
+name|fieldsAsWords
+operator|.
+name|remove
+argument_list|(
+name|fieldName
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|getLatexFreeField (String name)
+specifier|public
+name|Optional
+argument_list|<
+name|String
+argument_list|>
+name|getLatexFreeField
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+block|{
+if|if
+condition|(
+operator|!
+name|hasField
+argument_list|(
+name|name
+argument_list|)
+condition|)
+block|{
+return|return
+name|Optional
+operator|.
+name|empty
+argument_list|()
+return|;
+block|}
+elseif|else
+if|if
+condition|(
+name|latexFreeFields
+operator|.
+name|containsKey
+argument_list|(
+name|name
+argument_list|)
+condition|)
+block|{
+return|return
+name|Optional
+operator|.
+name|ofNullable
+argument_list|(
+name|latexFreeFields
+operator|.
+name|get
+argument_list|(
+name|toLowerCase
+argument_list|(
+name|name
+argument_list|)
+argument_list|)
+argument_list|)
+return|;
+block|}
+else|else
+block|{
+name|String
+name|latexFreeField
+init|=
+name|unicodeConverter
+operator|.
+name|format
+argument_list|(
+name|getField
+argument_list|(
+name|name
+argument_list|)
+operator|.
+name|get
+argument_list|()
+argument_list|)
+operator|.
+name|intern
+argument_list|()
+decl_stmt|;
+name|latexFreeFields
+operator|.
+name|put
+argument_list|(
+name|name
+argument_list|,
+name|latexFreeField
+argument_list|)
+expr_stmt|;
+return|return
+name|Optional
+operator|.
+name|of
+argument_list|(
+name|latexFreeField
+argument_list|)
+return|;
+block|}
 block|}
 block|}
 end_class

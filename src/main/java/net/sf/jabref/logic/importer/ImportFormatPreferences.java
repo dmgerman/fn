@@ -125,25 +125,13 @@ specifier|final
 name|FieldContentParserPreferences
 name|fieldContentParserPreferences
 decl_stmt|;
-DECL|field|useCaseKeeperOnSearch
-specifier|private
-specifier|final
-name|boolean
-name|useCaseKeeperOnSearch
-decl_stmt|;
-DECL|field|convertUnitsOnSearch
-specifier|private
-specifier|final
-name|boolean
-name|convertUnitsOnSearch
-decl_stmt|;
 DECL|field|keywordSyncEnabled
 specifier|private
 specifier|final
 name|boolean
 name|keywordSyncEnabled
 decl_stmt|;
-DECL|method|ImportFormatPreferences (Set<CustomImporter> customImportList, Charset encoding, Character keywordSeparator, BibtexKeyPatternPreferences bibtexKeyPatternPreferences, FieldContentParserPreferences fieldContentParserPreferences, boolean convertUnitsOnSearch, boolean useCaseKeeperOnSearch, boolean keywordSyncEnabled)
+DECL|method|ImportFormatPreferences (Set<CustomImporter> customImportList, Charset encoding, Character keywordSeparator, BibtexKeyPatternPreferences bibtexKeyPatternPreferences, FieldContentParserPreferences fieldContentParserPreferences, boolean keywordSyncEnabled)
 specifier|public
 name|ImportFormatPreferences
 parameter_list|(
@@ -164,12 +152,6 @@ name|bibtexKeyPatternPreferences
 parameter_list|,
 name|FieldContentParserPreferences
 name|fieldContentParserPreferences
-parameter_list|,
-name|boolean
-name|convertUnitsOnSearch
-parameter_list|,
-name|boolean
-name|useCaseKeeperOnSearch
 parameter_list|,
 name|boolean
 name|keywordSyncEnabled
@@ -207,23 +189,14 @@ name|fieldContentParserPreferences
 expr_stmt|;
 name|this
 operator|.
-name|convertUnitsOnSearch
-operator|=
-name|convertUnitsOnSearch
-expr_stmt|;
-name|this
-operator|.
-name|useCaseKeeperOnSearch
-operator|=
-name|useCaseKeeperOnSearch
-expr_stmt|;
-name|this
-operator|.
 name|keywordSyncEnabled
 operator|=
 name|keywordSyncEnabled
 expr_stmt|;
 block|}
+comment|/**      * @deprecated importer should not know about the other custom importers      */
+annotation|@
+name|Deprecated
 DECL|method|getCustomImportList ()
 specifier|public
 name|Set
@@ -277,26 +250,6 @@ return|return
 name|fieldContentParserPreferences
 return|;
 block|}
-DECL|method|isConvertUnitsOnSearch ()
-specifier|public
-name|boolean
-name|isConvertUnitsOnSearch
-parameter_list|()
-block|{
-return|return
-name|convertUnitsOnSearch
-return|;
-block|}
-DECL|method|isUseCaseKeeperOnSearch ()
-specifier|public
-name|boolean
-name|isUseCaseKeeperOnSearch
-parameter_list|()
-block|{
-return|return
-name|useCaseKeeperOnSearch
-return|;
-block|}
 DECL|method|withEncoding (Charset newEncoding)
 specifier|public
 name|ImportFormatPreferences
@@ -320,14 +273,13 @@ name|bibtexKeyPatternPreferences
 argument_list|,
 name|fieldContentParserPreferences
 argument_list|,
-name|convertUnitsOnSearch
-argument_list|,
-name|useCaseKeeperOnSearch
-argument_list|,
 name|keywordSyncEnabled
 argument_list|)
 return|;
 block|}
+comment|/**      * @deprecated importer should not keyword synchronization; this is a post-import action      */
+annotation|@
+name|Deprecated
 DECL|method|isKeywordSyncEnabled ()
 specifier|public
 name|boolean

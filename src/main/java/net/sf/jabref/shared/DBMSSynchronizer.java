@@ -58,6 +58,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Objects
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Optional
 import|;
 end_import
@@ -116,6 +126,22 @@ name|logic
 operator|.
 name|importer
 operator|.
+name|ParseException
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|importer
+operator|.
 name|util
 operator|.
 name|MetaDataParser
@@ -132,7 +158,9 @@ name|jabref
 operator|.
 name|model
 operator|.
-name|ParseException
+name|bibtexkeypattern
+operator|.
+name|GlobalBibtexKeyPattern
 import|;
 end_import
 
@@ -519,7 +547,12 @@ specifier|final
 name|Character
 name|keywordSeparator
 decl_stmt|;
-DECL|method|DBMSSynchronizer (BibDatabaseContext bibDatabaseContext, Character keywordSeparator)
+DECL|field|globalCiteKeyPattern
+specifier|private
+name|GlobalBibtexKeyPattern
+name|globalCiteKeyPattern
+decl_stmt|;
+DECL|method|DBMSSynchronizer (BibDatabaseContext bibDatabaseContext, Character keywordSeparator, GlobalBibtexKeyPattern globalCiteKeyPattern)
 specifier|public
 name|DBMSSynchronizer
 parameter_list|(
@@ -528,13 +561,21 @@ name|bibDatabaseContext
 parameter_list|,
 name|Character
 name|keywordSeparator
+parameter_list|,
+name|GlobalBibtexKeyPattern
+name|globalCiteKeyPattern
 parameter_list|)
 block|{
 name|this
 operator|.
 name|bibDatabaseContext
 operator|=
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
 name|bibDatabaseContext
+argument_list|)
 expr_stmt|;
 name|this
 operator|.
@@ -567,6 +608,17 @@ operator|.
 name|keywordSeparator
 operator|=
 name|keywordSeparator
+expr_stmt|;
+name|this
+operator|.
+name|globalCiteKeyPattern
+operator|=
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|globalCiteKeyPattern
+argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Listening method. Inserts a new {@link BibEntry} into shared database.      *      * @param event {@link EntryAddedEvent} object      */
@@ -736,6 +788,8 @@ name|event
 operator|.
 name|getMetaData
 argument_list|()
+argument_list|,
+name|globalCiteKeyPattern
 argument_list|)
 expr_stmt|;
 name|synchronizeLocalDatabase
@@ -1372,12 +1426,10 @@ block|}
 try|try
 block|{
 name|metaData
-operator|.
-name|setParsedData
-argument_list|(
+operator|=
 name|MetaDataParser
 operator|.
-name|getParsedData
+name|parse
 argument_list|(
 name|dbmsProcessor
 operator|.
@@ -1385,9 +1437,6 @@ name|getSharedMetaData
 argument_list|()
 argument_list|,
 name|keywordSeparator
-argument_list|,
-name|metaData
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -1409,13 +1458,16 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * Synchronizes all shared meta data.      */
-DECL|method|synchronizeSharedMetaData (MetaData data)
-specifier|public
+DECL|method|synchronizeSharedMetaData (MetaData data, GlobalBibtexKeyPattern globalCiteKeyPattern)
+specifier|private
 name|void
 name|synchronizeSharedMetaData
 parameter_list|(
 name|MetaData
 name|data
+parameter_list|,
+name|GlobalBibtexKeyPattern
+name|globalCiteKeyPattern
 parameter_list|)
 block|{
 if|if
@@ -1438,6 +1490,8 @@ operator|.
 name|getSerializedStringMap
 argument_list|(
 name|data
+argument_list|,
+name|globalCiteKeyPattern
 argument_list|)
 argument_list|)
 expr_stmt|;

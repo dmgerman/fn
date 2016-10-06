@@ -154,6 +154,22 @@ name|logic
 operator|.
 name|importer
 operator|.
+name|Importer
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|importer
+operator|.
 name|ParserResult
 import|;
 end_import
@@ -173,24 +189,6 @@ operator|.
 name|fileformat
 operator|.
 name|BibtexParser
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
-name|importer
-operator|.
-name|fileformat
-operator|.
-name|ImportFormat
 import|;
 end_import
 
@@ -583,8 +581,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Compares two InputStreams. For each InputStream a list will be created. expectedIs is read directly, actualIs is filtered through importFormat to convert to a list of BibEntries.      * @param expectedIs A BibtexImporter InputStream.      * @param fileToImport The path to the file to be imported.      * @param importFormat The fileformat you want to use to read the passed file to get the list of expected BibEntries      * @throws IOException      */
-DECL|method|assertEquals (InputStream expectedIs, Path fileToImport, ImportFormat importFormat)
+comment|/**      * Compares two InputStreams. For each InputStream a list will be created. expectedIs is read directly, actualIs is filtered through importer to convert to a list of BibEntries.      * @param expectedIs A BibtexImporter InputStream.      * @param fileToImport The path to the file to be imported.      * @param importer The fileformat you want to use to read the passed file to get the list of expected BibEntries      * @throws IOException      */
+DECL|method|assertEquals (InputStream expectedIs, Path fileToImport, Importer importer)
 specifier|public
 specifier|static
 name|void
@@ -596,8 +594,8 @@ parameter_list|,
 name|Path
 name|fileToImport
 parameter_list|,
-name|ImportFormat
-name|importFormat
+name|Importer
+name|importer
 parameter_list|)
 throws|throws
 name|IOException
@@ -611,11 +609,11 @@ argument_list|)
 argument_list|,
 name|fileToImport
 argument_list|,
-name|importFormat
+name|importer
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|assertEquals (InputStream expectedIs, URL fileToImport, ImportFormat importFormat)
+DECL|method|assertEquals (InputStream expectedIs, URL fileToImport, Importer importer)
 specifier|public
 specifier|static
 name|void
@@ -627,8 +625,8 @@ parameter_list|,
 name|URL
 name|fileToImport
 parameter_list|,
-name|ImportFormat
-name|importFormat
+name|Importer
+name|importer
 parameter_list|)
 throws|throws
 name|URISyntaxException
@@ -649,12 +647,12 @@ name|toURI
 argument_list|()
 argument_list|)
 argument_list|,
-name|importFormat
+name|importer
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Compares a list of BibEntries to an InputStream. actualIs is filtered through importerForActualIs to convert to a list of BibEntries.      * @param expected A BibtexImporter InputStream.      * @param fileToImport The path to the file to be imported.      * @param importFormat The fileformat you want to use to read the passed file to get the list of expected BibEntries      * @throws IOException      */
-DECL|method|assertEquals (List<BibEntry> expected, Path fileToImport, ImportFormat importFormat)
+comment|/**      * Compares a list of BibEntries to an InputStream. actualIs is filtered through importerForActualIs to convert to a list of BibEntries.      * @param expected A BibtexImporter InputStream.      * @param fileToImport The path to the file to be imported.      * @param importer The fileformat you want to use to read the passed file to get the list of expected BibEntries      * @throws IOException      */
+DECL|method|assertEquals (List<BibEntry> expected, Path fileToImport, Importer importer)
 specifier|public
 specifier|static
 name|void
@@ -669,8 +667,8 @@ parameter_list|,
 name|Path
 name|fileToImport
 parameter_list|,
-name|ImportFormat
-name|importFormat
+name|Importer
+name|importer
 parameter_list|)
 throws|throws
 name|IOException
@@ -681,7 +679,7 @@ name|BibEntry
 argument_list|>
 name|actualEntries
 init|=
-name|importFormat
+name|importer
 operator|.
 name|importDatabase
 argument_list|(
@@ -709,7 +707,7 @@ name|actualEntries
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|assertEquals (List<BibEntry> expected, URL fileToImport, ImportFormat importFormat)
+DECL|method|assertEquals (List<BibEntry> expected, URL fileToImport, Importer importer)
 specifier|public
 specifier|static
 name|void
@@ -724,8 +722,8 @@ parameter_list|,
 name|URL
 name|fileToImport
 parameter_list|,
-name|ImportFormat
-name|importFormat
+name|Importer
+name|importer
 parameter_list|)
 throws|throws
 name|URISyntaxException
@@ -746,7 +744,7 @@ name|toURI
 argument_list|()
 argument_list|)
 argument_list|,
-name|importFormat
+name|importer
 argument_list|)
 expr_stmt|;
 block|}

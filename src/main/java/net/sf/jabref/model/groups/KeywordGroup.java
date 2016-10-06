@@ -102,20 +102,6 @@ name|jabref
 operator|.
 name|model
 operator|.
-name|ParseException
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
 name|entry
 operator|.
 name|BibEntry
@@ -273,8 +259,6 @@ parameter_list|,
 name|Character
 name|keywordSeparator
 parameter_list|)
-throws|throws
-name|ParseException
 block|{
 name|super
 argument_list|(
@@ -342,7 +326,7 @@ name|void
 name|compilePattern
 parameter_list|()
 throws|throws
-name|ParseException
+name|IllegalArgumentException
 block|{
 try|try
 block|{
@@ -385,7 +369,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|ParseException
+name|IllegalArgumentException
 argument_list|(
 literal|"Syntax error in regular-expression pattern: "
 operator|+
@@ -1599,8 +1583,6 @@ name|AbstractGroup
 name|deepCopy
 parameter_list|()
 block|{
-try|try
-block|{
 return|return
 operator|new
 name|KeywordGroup
@@ -1622,29 +1604,6 @@ argument_list|,
 name|keywordSeparator
 argument_list|)
 return|;
-block|}
-catch|catch
-parameter_list|(
-name|ParseException
-name|exception
-parameter_list|)
-block|{
-comment|// this should never happen, because the constructor obviously succeeded in creating _this_ instance!
-name|LOGGER
-operator|.
-name|error
-argument_list|(
-literal|"Internal error in KeywordGroup.deepCopy(). "
-operator|+
-literal|"Please report this on https://github.com/JabRef/jabref/issues"
-argument_list|,
-name|exception
-argument_list|)
-expr_stmt|;
-return|return
-literal|null
-return|;
-block|}
 block|}
 DECL|method|isCaseSensitive ()
 specifier|public

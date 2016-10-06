@@ -238,24 +238,6 @@ name|importer
 operator|.
 name|fileformat
 operator|.
-name|ImportFormat
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
-name|importer
-operator|.
-name|fileformat
-operator|.
 name|InspecImporter
 import|;
 end_import
@@ -581,13 +563,13 @@ name|BIBTEX_FORMAT
 init|=
 literal|"BibTeX"
 decl_stmt|;
-comment|/**      * All import formats.      * Sorted accordingly to {@link ImportFormat#compareTo}, which defaults to alphabetically by the name      */
+comment|/**      * All import formats.      * Sorted accordingly to {@link Importer#compareTo}, which defaults to alphabetically by the name      */
 DECL|field|formats
 specifier|private
 specifier|final
 name|SortedSet
 argument_list|<
-name|ImportFormat
+name|Importer
 argument_list|>
 name|formats
 init|=
@@ -810,53 +792,13 @@ name|getCustomImportList
 argument_list|()
 control|)
 block|{
-try|try
-block|{
-name|ImportFormat
-name|imFo
-init|=
-name|importer
-operator|.
-name|getInstance
-argument_list|()
-decl_stmt|;
 name|formats
 operator|.
 name|add
 argument_list|(
-name|imFo
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|IOException
-decl||
-name|ClassNotFoundException
-decl||
-name|InstantiationException
-decl||
-name|IllegalAccessException
-name|e
-parameter_list|)
-block|{
-name|LOGGER
-operator|.
-name|error
-argument_list|(
-literal|"Could not instantiate "
-operator|+
 name|importer
-operator|.
-name|getName
-argument_list|()
-operator|+
-literal|" importer, will ignore it. Please check if the class is still available."
-argument_list|,
-name|e
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 comment|/**      * Format for a given CLI-ID.      *<p>      *<p>Will return the first format according to the default-order of      * format that matches the given ID.</p>      *      * @param cliId CLI-Id      * @return Import Format or<code>null</code> if none matches      */
@@ -864,7 +806,7 @@ DECL|method|getByCliId (String cliId)
 specifier|private
 name|Optional
 argument_list|<
-name|ImportFormat
+name|Importer
 argument_list|>
 name|getByCliId
 parameter_list|(
@@ -874,7 +816,7 @@ parameter_list|)
 block|{
 for|for
 control|(
-name|ImportFormat
+name|Importer
 name|format
 range|:
 name|formats
@@ -926,7 +868,7 @@ name|IOException
 block|{
 name|Optional
 argument_list|<
-name|ImportFormat
+name|Importer
 argument_list|>
 name|importer
 init|=
@@ -976,7 +918,7 @@ DECL|method|getImportFormats ()
 specifier|public
 name|SortedSet
 argument_list|<
-name|ImportFormat
+name|Importer
 argument_list|>
 name|getImportFormats
 parameter_list|()
@@ -1003,7 +945,7 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-name|ImportFormat
+name|Importer
 name|imFo
 range|:
 name|formats
@@ -1022,7 +964,7 @@ literal|14
 operator|-
 name|imFo
 operator|.
-name|getFormatName
+name|getName
 argument_list|()
 operator|.
 name|length
@@ -1042,7 +984,7 @@ name|append
 argument_list|(
 name|imFo
 operator|.
-name|getFormatName
+name|getName
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1262,7 +1204,7 @@ decl_stmt|;
 comment|// Cycle through all importers:
 for|for
 control|(
-name|ImportFormat
+name|Importer
 name|imFo
 range|:
 name|getImportFormats
@@ -1355,7 +1297,7 @@ name|bestFormatName
 operator|=
 name|imFo
 operator|.
-name|getFormatName
+name|getName
 argument_list|()
 expr_stmt|;
 block|}

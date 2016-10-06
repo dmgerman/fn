@@ -528,22 +528,6 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|cleanup
-operator|.
-name|FieldFormatterCleanup
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
 name|exporter
 operator|.
 name|CustomExportList
@@ -563,22 +547,6 @@ operator|.
 name|exporter
 operator|.
 name|ExportComparator
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
-name|exporter
-operator|.
-name|FieldFormatterCleanups
 import|;
 end_import
 
@@ -721,6 +689,22 @@ operator|.
 name|importer
 operator|.
 name|ImportFormatPreferences
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|importer
+operator|.
+name|Importer
 import|;
 end_import
 
@@ -1047,6 +1031,38 @@ operator|.
 name|bibtexkeypattern
 operator|.
 name|GlobalBibtexKeyPattern
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|cleanup
+operator|.
+name|FieldFormatterCleanup
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|cleanup
+operator|.
+name|FieldFormatterCleanups
 import|;
 end_import
 
@@ -2563,14 +2579,14 @@ name|FONT_STYLE
 init|=
 literal|"fontStyle"
 decl_stmt|;
-DECL|field|RECENT_FILES
+DECL|field|RECENT_DATABASES
 specifier|public
 specifier|static
 specifier|final
 name|String
-name|RECENT_FILES
+name|RECENT_DATABASES
 init|=
-literal|"recentFiles"
+literal|"recentDatabases"
 decl_stmt|;
 DECL|field|RENAME_ON_MOVE_FILE_TO_FILE_DIR
 specifier|public
@@ -2816,7 +2832,7 @@ init|=
 literal|"useDefaultConsoleApplication"
 decl_stmt|;
 comment|// Currently, it is not possible to specify defaults for specific entry types
-comment|// When this should be made possible, the code to inspect is net.sf.jabref.gui.preftabs.BibtexKeyPatternPrefTab.storeSettings() -> LabelPattern keypatterns = getBibtexKeyPattern(); etc
+comment|// When this should be made possible, the code to inspect is net.sf.jabref.gui.preftabs.BibtexKeyPatternPrefTab.storeSettings() -> LabelPattern keypatterns = getCiteKeyPattern(); etc
 DECL|field|DEFAULT_BIBTEX_KEY_PATTERN
 specifier|public
 specifier|static
@@ -3964,7 +3980,7 @@ argument_list|(
 literal|"user.home"
 argument_list|)
 decl_stmt|;
-comment|/**      * Set with all custom {@link net.sf.jabref.logic.importer.fileformat.ImportFormat}s      */
+comment|/**      * Set with all custom {@link Importer}s      */
 DECL|field|customImports
 specifier|public
 specifier|final
@@ -4358,7 +4374,7 @@ name|defaults
 operator|.
 name|put
 argument_list|(
-name|RECENT_FILES
+name|RECENT_DATABASES
 argument_list|,
 literal|""
 argument_list|)
@@ -8194,11 +8210,6 @@ name|AbstractBibtexKeyPattern
 operator|.
 name|split
 argument_list|(
-name|JabRefPreferences
-operator|.
-name|getInstance
-argument_list|()
-operator|.
 name|get
 argument_list|(
 name|DEFAULT_BIBTEX_KEY_PATTERN
@@ -9436,7 +9447,11 @@ name|getFormatterCleanups
 argument_list|()
 operator|.
 name|getAsStringList
-argument_list|()
+argument_list|(
+name|OS
+operator|.
+name|NEWLINE
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -9453,7 +9468,7 @@ name|FileHistory
 argument_list|(
 name|getStringList
 argument_list|(
-name|RECENT_FILES
+name|RECENT_DATABASES
 argument_list|)
 argument_list|)
 return|;
@@ -9478,7 +9493,7 @@ condition|)
 block|{
 name|putStringList
 argument_list|(
-name|RECENT_FILES
+name|RECENT_DATABASES
 argument_list|,
 name|history
 operator|.
@@ -9708,16 +9723,6 @@ argument_list|()
 argument_list|,
 name|getFieldContentParserPreferences
 argument_list|()
-argument_list|,
-name|getBoolean
-argument_list|(
-name|USE_UNIT_FORMATTER_ON_SEARCH
-argument_list|)
-argument_list|,
-name|getBoolean
-argument_list|(
-name|USE_CASE_KEEPER_ON_SEARCH
-argument_list|)
 argument_list|,
 name|isKeywordSyncEnabled
 argument_list|()

@@ -335,6 +335,18 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+else|else
+block|{
+comment|// in this case the user selected "none" in the date picker, so we just clear the field
+name|editor
+operator|.
+name|setText
+argument_list|(
+literal|""
+argument_list|)
+expr_stmt|;
+block|}
 comment|// Set focus to editor component after changing its text:
 name|editor
 operator|.
@@ -344,7 +356,6 @@ operator|.
 name|requestFocus
 argument_list|()
 expr_stmt|;
-block|}
 block|}
 DECL|method|getDatePicker ()
 specifier|public
