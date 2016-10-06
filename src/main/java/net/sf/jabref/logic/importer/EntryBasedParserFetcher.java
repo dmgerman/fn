@@ -102,9 +102,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|model
 operator|.
-name|formatter
+name|cleanup
 operator|.
 name|Formatter
 import|;
@@ -275,7 +275,7 @@ throw|;
 block|}
 catch|catch
 parameter_list|(
-name|ParserException
+name|ParseException
 name|e
 parameter_list|)
 block|{

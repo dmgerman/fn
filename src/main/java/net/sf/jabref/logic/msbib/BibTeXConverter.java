@@ -92,9 +92,7 @@ name|logic
 operator|.
 name|importer
 operator|.
-name|fileformat
-operator|.
-name|ImportFormat
+name|Importer
 import|;
 end_import
 
@@ -234,7 +232,7 @@ operator|=
 operator|new
 name|BibEntry
 argument_list|(
-name|ImportFormat
+name|Importer
 operator|.
 name|DEFAULT_BIBTEXENTRY_ID
 argument_list|,

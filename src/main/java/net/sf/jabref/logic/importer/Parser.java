@@ -71,7 +71,7 @@ name|InputStream
 name|inputStream
 parameter_list|)
 throws|throws
-name|ParserException
+name|ParseException
 function_decl|;
 block|}
 end_interface

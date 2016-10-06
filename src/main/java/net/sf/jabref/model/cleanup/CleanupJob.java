@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|net.sf.jabref.logic.cleanup
+DECL|package|net.sf.jabref.model.cleanup
 package|package
 name|net
 operator|.
@@ -8,7 +8,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|model
 operator|.
 name|cleanup
 package|;

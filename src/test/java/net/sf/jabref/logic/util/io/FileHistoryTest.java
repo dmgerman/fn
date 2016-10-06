@@ -136,7 +136,7 @@ name|getStringList
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|RECENT_FILES
+name|RECENT_DATABASES
 argument_list|)
 expr_stmt|;
 block|}
@@ -154,7 +154,7 @@ name|putStringList
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|RECENT_FILES
+name|RECENT_DATABASES
 argument_list|,
 name|oldFileNames
 argument_list|)
@@ -466,7 +466,7 @@ name|getStringList
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|RECENT_FILES
+name|RECENT_DATABASES
 argument_list|)
 operator|.
 name|toArray

@@ -104,9 +104,7 @@ name|logic
 operator|.
 name|importer
 operator|.
-name|fileformat
-operator|.
-name|ImportFormat
+name|Importer
 import|;
 end_import
 
@@ -150,11 +148,11 @@ specifier|final
 name|FileNameExtensionFilter
 name|fileFilter
 decl_stmt|;
-DECL|method|ImportFileFilter (ImportFormat format)
+DECL|method|ImportFileFilter (Importer format)
 specifier|public
 name|ImportFileFilter
 parameter_list|(
-name|ImportFormat
+name|Importer
 name|format
 parameter_list|)
 block|{
@@ -192,7 +190,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|ImportFileFilter (String description, Collection<ImportFormat> formats)
+DECL|method|ImportFileFilter (String description, Collection<Importer> formats)
 specifier|public
 name|ImportFileFilter
 parameter_list|(
@@ -201,7 +199,7 @@ name|description
 parameter_list|,
 name|Collection
 argument_list|<
-name|ImportFormat
+name|Importer
 argument_list|>
 name|formats
 parameter_list|)

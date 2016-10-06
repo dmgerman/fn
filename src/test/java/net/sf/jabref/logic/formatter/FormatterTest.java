@@ -438,6 +438,22 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|cleanup
+operator|.
+name|Formatter
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|junit
@@ -799,7 +815,7 @@ argument_list|>
 name|instancesToTest
 parameter_list|()
 block|{
-comment|// all classes implementing {@link net.sf.jabref.logic.formatter.Formatter}
+comment|// all classes implementing {@link net.sf.jabref.model.cleanup.Formatter}
 comment|// sorted alphabetically
 comment|// Alternative: Use reflection - https://github.com/ronmamo/reflections
 comment|// @formatter:off

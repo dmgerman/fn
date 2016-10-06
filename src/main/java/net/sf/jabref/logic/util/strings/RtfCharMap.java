@@ -31,14 +31,22 @@ DECL|class|RtfCharMap
 specifier|public
 class|class
 name|RtfCharMap
-extends|extends
+block|{
+DECL|field|rtfMap
+specifier|private
 name|HashMap
 argument_list|<
 name|String
 argument_list|,
 name|String
 argument_list|>
-block|{
+name|rtfMap
+init|=
+operator|new
+name|HashMap
+argument_list|<>
+argument_list|()
+decl_stmt|;
 DECL|method|RtfCharMap ()
 specifier|public
 name|RtfCharMap
@@ -81,35 +89,35 @@ argument_list|)
 expr_stmt|;
 name|put
 argument_list|(
-literal|"?a"
+literal|"'a"
 argument_list|,
 literal|"\\'e1"
 argument_list|)
 expr_stmt|;
 name|put
 argument_list|(
-literal|"?e"
+literal|"'e"
 argument_list|,
 literal|"\\'e9"
 argument_list|)
 expr_stmt|;
 name|put
 argument_list|(
-literal|"?i"
+literal|"'i"
 argument_list|,
 literal|"\\'ed"
 argument_list|)
 expr_stmt|;
 name|put
 argument_list|(
-literal|"?o"
+literal|"'o"
 argument_list|,
 literal|"\\'f3"
 argument_list|)
 expr_stmt|;
 name|put
 argument_list|(
-literal|"?u"
+literal|"'u"
 argument_list|,
 literal|"\\'fa"
 argument_list|)
@@ -228,35 +236,35 @@ argument_list|)
 expr_stmt|;
 name|put
 argument_list|(
-literal|"?A"
+literal|"'A"
 argument_list|,
 literal|"\\'c1"
 argument_list|)
 expr_stmt|;
 name|put
 argument_list|(
-literal|"?E"
+literal|"'E"
 argument_list|,
 literal|"\\'c9"
 argument_list|)
 expr_stmt|;
 name|put
 argument_list|(
-literal|"?I"
+literal|"'I"
 argument_list|,
 literal|"\\'cd"
 argument_list|)
 expr_stmt|;
 name|put
 argument_list|(
-literal|"?O"
+literal|"'O"
 argument_list|,
 literal|"\\'d3"
 argument_list|)
 expr_stmt|;
 name|put
 argument_list|(
-literal|"?U"
+literal|"'U"
 argument_list|,
 literal|"\\'da"
 argument_list|)
@@ -335,28 +343,52 @@ comment|// Use UNICODE characters for RTF-Chars which can not be found in the
 comment|// standard codepage
 name|put
 argument_list|(
-literal|"`A"
+literal|"S"
 argument_list|,
-literal|"\\u192A"
+literal|"\\u167S"
 argument_list|)
 expr_stmt|;
-comment|// "Agrave"
+comment|// Section sign
 name|put
 argument_list|(
-literal|"'A"
+literal|"`!"
 argument_list|,
-literal|"\\u193A"
+literal|"\\u161!"
 argument_list|)
 expr_stmt|;
-comment|// "Aacute"
+comment|// Inverted exclamation point
 name|put
 argument_list|(
-literal|"^A"
+literal|"pounds"
 argument_list|,
-literal|"\\u194A"
+literal|"\\u163?"
 argument_list|)
 expr_stmt|;
-comment|// "Acirc"
+comment|// Pound sign
+name|put
+argument_list|(
+literal|"copyright"
+argument_list|,
+literal|"\\u169?"
+argument_list|)
+expr_stmt|;
+comment|// Copyright sign
+name|put
+argument_list|(
+literal|"P"
+argument_list|,
+literal|"\\u182P"
+argument_list|)
+expr_stmt|;
+comment|// Paragraph sign
+name|put
+argument_list|(
+literal|"`?"
+argument_list|,
+literal|"\\u191?"
+argument_list|)
+expr_stmt|;
+comment|// Inverted question mark
 name|put
 argument_list|(
 literal|"~A"
@@ -365,14 +397,6 @@ literal|"\\u195A"
 argument_list|)
 expr_stmt|;
 comment|// "Atilde"
-name|put
-argument_list|(
-literal|"\"A"
-argument_list|,
-literal|"\\u196A"
-argument_list|)
-expr_stmt|;
-comment|// "Auml"
 name|put
 argument_list|(
 literal|"AA"
@@ -386,7 +410,7 @@ name|put
 argument_list|(
 literal|"AE"
 argument_list|,
-literal|"{\\u198A}"
+literal|"{\\u198AE}"
 argument_list|)
 expr_stmt|;
 comment|// "AElig"
@@ -398,70 +422,6 @@ literal|"\\u199C"
 argument_list|)
 expr_stmt|;
 comment|// "Ccedil"
-name|put
-argument_list|(
-literal|"`E"
-argument_list|,
-literal|"\\u200E"
-argument_list|)
-expr_stmt|;
-comment|// "Egrave"
-name|put
-argument_list|(
-literal|"'E"
-argument_list|,
-literal|"\\u201E"
-argument_list|)
-expr_stmt|;
-comment|// "Eacute"
-name|put
-argument_list|(
-literal|"^E"
-argument_list|,
-literal|"\\u202E"
-argument_list|)
-expr_stmt|;
-comment|// "Ecirc"
-name|put
-argument_list|(
-literal|"\"E"
-argument_list|,
-literal|"\\u203E"
-argument_list|)
-expr_stmt|;
-comment|// "Euml"
-name|put
-argument_list|(
-literal|"`I"
-argument_list|,
-literal|"\\u204I"
-argument_list|)
-expr_stmt|;
-comment|// "Igrave
-name|put
-argument_list|(
-literal|"'I"
-argument_list|,
-literal|"\\u205I"
-argument_list|)
-expr_stmt|;
-comment|// "Iacute"
-name|put
-argument_list|(
-literal|"^I"
-argument_list|,
-literal|"\\u206I"
-argument_list|)
-expr_stmt|;
-comment|// "Icirc"
-name|put
-argument_list|(
-literal|"\"I"
-argument_list|,
-literal|"\\u207I"
-argument_list|)
-expr_stmt|;
-comment|// "Iuml"
 name|put
 argument_list|(
 literal|"DH"
@@ -480,44 +440,12 @@ expr_stmt|;
 comment|// "Ntilde"
 name|put
 argument_list|(
-literal|"`O"
-argument_list|,
-literal|"\\u210O"
-argument_list|)
-expr_stmt|;
-comment|// "Ograve"
-name|put
-argument_list|(
-literal|"'O"
-argument_list|,
-literal|"\\u211O"
-argument_list|)
-expr_stmt|;
-comment|// "Oacute"
-name|put
-argument_list|(
-literal|"^O"
-argument_list|,
-literal|"\\u212O"
-argument_list|)
-expr_stmt|;
-comment|// "Ocirc"
-name|put
-argument_list|(
 literal|"~O"
 argument_list|,
 literal|"\\u213O"
 argument_list|)
 expr_stmt|;
 comment|// "Otilde"
-name|put
-argument_list|(
-literal|"\"O"
-argument_list|,
-literal|"\\u214O"
-argument_list|)
-expr_stmt|;
-comment|// "Ouml"
 comment|// According to ISO 8859-1 the "\times" symbol should be placed here
 comment|// (#215).
 comment|// Omitting this, because it is a mathematical symbol.
@@ -539,38 +467,6 @@ argument_list|)
 expr_stmt|;
 name|put
 argument_list|(
-literal|"`U"
-argument_list|,
-literal|"\\u217U"
-argument_list|)
-expr_stmt|;
-comment|// "Ugrave"
-name|put
-argument_list|(
-literal|"'U"
-argument_list|,
-literal|"\\u218U"
-argument_list|)
-expr_stmt|;
-comment|// "Uacute"
-name|put
-argument_list|(
-literal|"^U"
-argument_list|,
-literal|"\\u219U"
-argument_list|)
-expr_stmt|;
-comment|// "Ucirc"
-name|put
-argument_list|(
-literal|"\"U"
-argument_list|,
-literal|"\\u220U"
-argument_list|)
-expr_stmt|;
-comment|// "Uuml"
-name|put
-argument_list|(
 literal|"'Y"
 argument_list|,
 literal|"\\u221Y"
@@ -581,7 +477,7 @@ name|put
 argument_list|(
 literal|"TH"
 argument_list|,
-literal|"{\\uc2\\u222TH}"
+literal|"\\u222TH"
 argument_list|)
 expr_stmt|;
 comment|// "THORN"
@@ -589,35 +485,11 @@ name|put
 argument_list|(
 literal|"ss"
 argument_list|,
-literal|"{\\uc2\\u223ss}"
+literal|"\\u223ss"
 argument_list|)
 expr_stmt|;
 comment|// "szlig"
 comment|//RTFCHARS.put("ss", "AFFEN"); // "szlig"
-name|put
-argument_list|(
-literal|"`a"
-argument_list|,
-literal|"\\u224a"
-argument_list|)
-expr_stmt|;
-comment|// "agrave"
-name|put
-argument_list|(
-literal|"'a"
-argument_list|,
-literal|"\\u225a"
-argument_list|)
-expr_stmt|;
-comment|// "aacute"
-name|put
-argument_list|(
-literal|"^a"
-argument_list|,
-literal|"\\u226a"
-argument_list|)
-expr_stmt|;
-comment|// "acirc"
 name|put
 argument_list|(
 literal|"~a"
@@ -626,14 +498,6 @@ literal|"\\u227a"
 argument_list|)
 expr_stmt|;
 comment|// "atilde"
-name|put
-argument_list|(
-literal|"\"a"
-argument_list|,
-literal|"\\u228a"
-argument_list|)
-expr_stmt|;
-comment|// "auml"
 name|put
 argument_list|(
 literal|"aa"
@@ -647,7 +511,7 @@ name|put
 argument_list|(
 literal|"ae"
 argument_list|,
-literal|"{\\u230a}"
+literal|"{\\u230ae}"
 argument_list|)
 expr_stmt|;
 comment|// "aelig" \\u230e6
@@ -661,70 +525,6 @@ expr_stmt|;
 comment|// "ccedil"
 name|put
 argument_list|(
-literal|"`e"
-argument_list|,
-literal|"\\u232e"
-argument_list|)
-expr_stmt|;
-comment|// "egrave"
-name|put
-argument_list|(
-literal|"'e"
-argument_list|,
-literal|"\\u233e"
-argument_list|)
-expr_stmt|;
-comment|// "eacute"
-name|put
-argument_list|(
-literal|"^e"
-argument_list|,
-literal|"\\u234e"
-argument_list|)
-expr_stmt|;
-comment|// "ecirc"
-name|put
-argument_list|(
-literal|"\"e"
-argument_list|,
-literal|"\\u235e"
-argument_list|)
-expr_stmt|;
-comment|// "euml"
-name|put
-argument_list|(
-literal|"`i"
-argument_list|,
-literal|"\\u236i"
-argument_list|)
-expr_stmt|;
-comment|// "igrave"
-name|put
-argument_list|(
-literal|"'i"
-argument_list|,
-literal|"\\u237i"
-argument_list|)
-expr_stmt|;
-comment|// "iacute"
-name|put
-argument_list|(
-literal|"^i"
-argument_list|,
-literal|"\\u238i"
-argument_list|)
-expr_stmt|;
-comment|// "icirc"
-name|put
-argument_list|(
-literal|"\"i"
-argument_list|,
-literal|"\\u239i"
-argument_list|)
-expr_stmt|;
-comment|// "iuml"
-name|put
-argument_list|(
 literal|"dh"
 argument_list|,
 literal|"\\u240d"
@@ -733,52 +533,12 @@ expr_stmt|;
 comment|// "eth"
 name|put
 argument_list|(
-literal|"~n"
-argument_list|,
-literal|"\\u241n"
-argument_list|)
-expr_stmt|;
-comment|// "ntilde"
-name|put
-argument_list|(
-literal|"`o"
-argument_list|,
-literal|"\\u242o"
-argument_list|)
-expr_stmt|;
-comment|// "ograve"
-name|put
-argument_list|(
-literal|"'o"
-argument_list|,
-literal|"\\u243o"
-argument_list|)
-expr_stmt|;
-comment|// "oacute"
-name|put
-argument_list|(
-literal|"^o"
-argument_list|,
-literal|"\\u244o"
-argument_list|)
-expr_stmt|;
-comment|// "ocirc"
-name|put
-argument_list|(
 literal|"~o"
 argument_list|,
 literal|"\\u245o"
 argument_list|)
 expr_stmt|;
 comment|// "otilde"
-name|put
-argument_list|(
-literal|"\"o"
-argument_list|,
-literal|"\\u246o"
-argument_list|)
-expr_stmt|;
-comment|// "ouml"
 comment|// According to ISO 8859-1 the "\div" symbol should be placed here
 comment|// (#247).
 comment|// Omitting this, because it is a mathematical symbol.
@@ -790,30 +550,6 @@ literal|"\\u248o"
 argument_list|)
 expr_stmt|;
 comment|// "oslash"
-name|put
-argument_list|(
-literal|"`u"
-argument_list|,
-literal|"\\u249u"
-argument_list|)
-expr_stmt|;
-comment|// "ugrave"
-name|put
-argument_list|(
-literal|"'u"
-argument_list|,
-literal|"\\u250u"
-argument_list|)
-expr_stmt|;
-comment|// "uacute"
-name|put
-argument_list|(
-literal|"^u"
-argument_list|,
-literal|"\\u251u"
-argument_list|)
-expr_stmt|;
-comment|// "ucirc"
 comment|// RTFCHARS.put("\"u", "\\u252"); // "uuml" exists in standard
 comment|// codepage
 name|put
@@ -828,7 +564,7 @@ name|put
 argument_list|(
 literal|"th"
 argument_list|,
-literal|"{\\uc2\\u254th}"
+literal|"\\u254th"
 argument_list|)
 expr_stmt|;
 comment|// "thorn"
@@ -1225,14 +961,6 @@ literal|"\\u304I"
 argument_list|)
 expr_stmt|;
 comment|// "Idot"
-name|put
-argument_list|(
-literal|"i"
-argument_list|,
-literal|"\\u305i"
-argument_list|)
-expr_stmt|;
-comment|// "inodot"
 comment|// Symbol #306 (IJ) has no special Latex command
 comment|// Symbol #307 (ij) has no special Latex command
 name|put
@@ -1451,7 +1179,7 @@ name|put
 argument_list|(
 literal|"OE"
 argument_list|,
-literal|"{\\uc2\\u338OE}"
+literal|"{\\u338OE}"
 argument_list|)
 expr_stmt|;
 comment|// "OElig"
@@ -1459,7 +1187,7 @@ name|put
 argument_list|(
 literal|"oe"
 argument_list|,
-literal|"{\\uc2\\u339oe}"
+literal|"{\\u339oe}"
 argument_list|)
 expr_stmt|;
 comment|// "oelig"
@@ -1801,6 +1529,46 @@ argument_list|)
 expr_stmt|;
 comment|// "zcaron"
 comment|// Symbol #383 (f) has no special Latex command
+block|}
+DECL|method|put (String key, String value)
+specifier|private
+name|void
+name|put
+parameter_list|(
+name|String
+name|key
+parameter_list|,
+name|String
+name|value
+parameter_list|)
+block|{
+name|rtfMap
+operator|.
+name|put
+argument_list|(
+name|key
+argument_list|,
+name|value
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|get (String key)
+specifier|public
+name|String
+name|get
+parameter_list|(
+name|String
+name|key
+parameter_list|)
+block|{
+return|return
+name|rtfMap
+operator|.
+name|get
+argument_list|(
+name|key
+argument_list|)
+return|;
 block|}
 block|}
 end_class

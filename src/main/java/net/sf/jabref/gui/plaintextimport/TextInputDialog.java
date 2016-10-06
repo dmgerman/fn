@@ -1031,7 +1031,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * import from plain text => simple mark/copy/paste into bibtex entry  *  * TODO  *   - change colors and fonts  *   - delete selected text  *   - make textarea editable  *   - create several bibtex entries in dialog  *   - if the dialog works with an existing entry (right click menu item), the cancel option doesn't work well  */
+comment|/**  * import from plain text => simple mark/copy/paste into bibtex entry  *<p>  * TODO  * - change colors and fonts  * - delete selected text  * - make textarea editable  * - create several bibtex entries in dialog  * - if the dialog works with an existing entry (right click menu item), the cancel option doesn't work well  */
 end_comment
 
 begin_class
@@ -1501,7 +1501,21 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"BibTeX source"
+literal|"%0 source"
+argument_list|,
+name|frame
+operator|.
+name|getCurrentBasePanel
+argument_list|()
+operator|.
+name|getBibDatabaseContext
+argument_list|()
+operator|.
+name|getMode
+argument_list|()
+operator|.
+name|getFormattedName
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -3156,7 +3170,7 @@ return|return
 name|okPressed
 return|;
 block|}
-comment|/**      * tries to parse the pasted reference with freecite      * @return true if successful, false otherwise      */
+comment|/**      * tries to parse the pasted reference with freecite      *      * @return true if successful, false otherwise      */
 DECL|method|parseWithFreeCiteAndAddEntries ()
 specifier|private
 name|boolean

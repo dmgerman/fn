@@ -248,7 +248,7 @@ name|logic
 operator|.
 name|importer
 operator|.
-name|Parser
+name|ParseException
 import|;
 end_import
 
@@ -264,7 +264,7 @@ name|logic
 operator|.
 name|importer
 operator|.
-name|ParserException
+name|Parser
 import|;
 end_import
 
@@ -315,20 +315,6 @@ operator|.
 name|l10n
 operator|.
 name|Localization
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|ParseException
 import|;
 end_import
 
@@ -845,7 +831,7 @@ name|InputStream
 name|inputStream
 parameter_list|)
 throws|throws
-name|ParserException
+name|ParseException
 block|{
 name|BufferedReader
 name|reader
@@ -883,7 +869,7 @@ name|Reader
 name|reader
 parameter_list|)
 throws|throws
-name|ParserException
+name|ParseException
 block|{
 try|try
 block|{
@@ -908,7 +894,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|ParserException
+name|ParseException
 argument_list|(
 name|e
 argument_list|)
@@ -927,7 +913,7 @@ name|String
 name|bibtexString
 parameter_list|)
 throws|throws
-name|ParserException
+name|ParseException
 block|{
 return|return
 name|parseEntries

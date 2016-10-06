@@ -82,6 +82,22 @@ name|logic
 operator|.
 name|importer
 operator|.
+name|Importer
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|importer
+operator|.
 name|ParserResult
 import|;
 end_import
@@ -152,7 +168,7 @@ specifier|public
 class|class
 name|MsBibImporter
 extends|extends
-name|ImportFormat
+name|Importer
 block|{
 annotation|@
 name|Override
@@ -278,10 +294,10 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|getFormatName ()
+DECL|method|getName ()
 specifier|public
 name|String
-name|getFormatName
+name|getName
 parameter_list|()
 block|{
 return|return

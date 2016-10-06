@@ -198,7 +198,7 @@ name|Localization
 operator|.
 name|menuTitle
 argument_list|(
-literal|"Recent files"
+literal|"Recent databases"
 argument_list|)
 decl_stmt|;
 name|int
