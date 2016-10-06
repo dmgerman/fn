@@ -749,10 +749,7 @@ throw|throw
 operator|new
 name|FetcherException
 argument_list|(
-name|e
-operator|.
-name|getLocalizedMessage
-argument_list|()
+literal|"Unable to get PubMed ID's."
 argument_list|,
 name|e
 argument_list|)
