@@ -9568,6 +9568,19 @@ name|close
 argument_list|()
 expr_stmt|;
 break|break;
+default|default:
+name|LOGGER
+operator|.
+name|warn
+argument_list|(
+literal|"unknown BasePanelMode: '"
+operator|+
+name|mode
+operator|+
+literal|"', doing nothing"
+argument_list|)
+expr_stmt|;
+break|break;
 block|}
 block|}
 block|}
