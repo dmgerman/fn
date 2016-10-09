@@ -654,6 +654,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Shortcut usage to create a Parser and read the input.      *      * @param in the Reader to read from      * @throws IOException      * @deprecated inline this method      */
+annotation|@
+name|Deprecated
 DECL|method|parse (Reader in, ImportFormatPreferences importFormatPreferences)
 specifier|public
 specifier|static
@@ -765,6 +767,8 @@ parameter_list|,
 name|ImportFormatPreferences
 name|importFormatPreferences
 parameter_list|)
+throws|throws
+name|IOException
 block|{
 name|Collection
 argument_list|<
@@ -772,14 +776,26 @@ name|BibEntry
 argument_list|>
 name|entries
 init|=
+operator|new
 name|BibtexParser
-operator|.
-name|fromString
 argument_list|(
-name|bibtexString
-argument_list|,
 name|importFormatPreferences
 argument_list|)
+operator|.
+name|parse
+argument_list|(
+operator|new
+name|StringReader
+argument_list|(
+name|bibtexString
+argument_list|)
+argument_list|)
+operator|.
+name|getDatabase
+argument_list|()
+operator|.
+name|getEntries
+argument_list|()
 decl_stmt|;
 if|if
 condition|(

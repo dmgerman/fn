@@ -18,6 +18,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|Optional
@@ -357,6 +367,8 @@ specifier|public
 name|void
 name|testAndInAuthorName
 parameter_list|()
+throws|throws
+name|IOException
 block|{
 name|Optional
 argument_list|<
@@ -407,6 +419,8 @@ specifier|public
 name|void
 name|testAndAuthorNames
 parameter_list|()
+throws|throws
+name|IOException
 block|{
 name|String
 name|bibtexString
@@ -462,6 +476,8 @@ specifier|public
 name|void
 name|testSpecialLatexCharacterInAuthorName
 parameter_list|()
+throws|throws
+name|IOException
 block|{
 name|Optional
 argument_list|<
@@ -513,6 +529,8 @@ specifier|public
 name|void
 name|testMakeLabelAndCheckLegalKeys
 parameter_list|()
+throws|throws
+name|IOException
 block|{
 name|Optional
 argument_list|<
@@ -971,6 +989,8 @@ specifier|public
 name|void
 name|testMakeLabelAndCheckLegalKeysAccentGrave
 parameter_list|()
+throws|throws
+name|IOException
 block|{
 name|Optional
 argument_list|<
@@ -1536,6 +1556,8 @@ specifier|public
 name|void
 name|testUniversity
 parameter_list|()
+throws|throws
+name|IOException
 block|{
 name|Optional
 argument_list|<
@@ -1586,6 +1608,8 @@ specifier|public
 name|void
 name|testDepartment
 parameter_list|()
+throws|throws
+name|IOException
 block|{
 name|Optional
 argument_list|<
@@ -1636,6 +1660,8 @@ specifier|public
 name|void
 name|testSchool
 parameter_list|()
+throws|throws
+name|IOException
 block|{
 name|Optional
 argument_list|<
@@ -1686,6 +1712,8 @@ specifier|public
 name|void
 name|testInstituteOfTechnology
 parameter_list|()
+throws|throws
+name|IOException
 block|{
 name|Optional
 argument_list|<
