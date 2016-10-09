@@ -666,7 +666,7 @@ name|void
 name|fromStringRecognizesEntry
 parameter_list|()
 throws|throws
-name|IOException
+name|ParseException
 block|{
 name|List
 argument_list|<
@@ -680,7 +680,7 @@ argument_list|(
 name|importFormatPreferences
 argument_list|)
 operator|.
-name|parse
+name|parseEntries
 argument_list|(
 operator|new
 name|StringReader
@@ -688,12 +688,6 @@ argument_list|(
 literal|"@article{test,author={Ed von Test}}"
 argument_list|)
 argument_list|)
-operator|.
-name|getDatabase
-argument_list|()
-operator|.
-name|getEntries
-argument_list|()
 decl_stmt|;
 name|BibEntry
 name|expected
@@ -746,7 +740,7 @@ name|void
 name|fromStringReturnsEmptyListFromEmptyString
 parameter_list|()
 throws|throws
-name|IOException
+name|ParseException
 block|{
 name|Collection
 argument_list|<
@@ -760,7 +754,7 @@ argument_list|(
 name|importFormatPreferences
 argument_list|)
 operator|.
-name|parse
+name|parseEntries
 argument_list|(
 operator|new
 name|StringReader
@@ -768,12 +762,6 @@ argument_list|(
 literal|""
 argument_list|)
 argument_list|)
-operator|.
-name|getDatabase
-argument_list|()
-operator|.
-name|getEntries
-argument_list|()
 decl_stmt|;
 name|assertNotNull
 argument_list|(
@@ -799,7 +787,7 @@ name|void
 name|fromStringReturnsEmptyListIfNoEntryRecognized
 parameter_list|()
 throws|throws
-name|IOException
+name|ParseException
 block|{
 name|Collection
 argument_list|<
@@ -813,7 +801,7 @@ argument_list|(
 name|importFormatPreferences
 argument_list|)
 operator|.
-name|parse
+name|parseEntries
 argument_list|(
 operator|new
 name|StringReader
@@ -821,12 +809,6 @@ argument_list|(
 literal|"@@article@@{{{{{{}"
 argument_list|)
 argument_list|)
-operator|.
-name|getDatabase
-argument_list|()
-operator|.
-name|getEntries
-argument_list|()
 decl_stmt|;
 name|assertNotNull
 argument_list|(
@@ -852,7 +834,7 @@ name|void
 name|singleFromStringRecognizesEntry
 parameter_list|()
 throws|throws
-name|IOException
+name|ParseException
 block|{
 name|Optional
 argument_list|<
@@ -933,7 +915,7 @@ name|void
 name|singleFromStringRecognizesEntryInMultiple
 parameter_list|()
 throws|throws
-name|IOException
+name|ParseException
 block|{
 name|Optional
 argument_list|<
@@ -1006,7 +988,7 @@ name|void
 name|singleFromStringReturnsEmptyFromEmptyString
 parameter_list|()
 throws|throws
-name|IOException
+name|ParseException
 block|{
 name|Optional
 argument_list|<
@@ -1042,7 +1024,7 @@ name|void
 name|singleFromStringReturnsEmptyIfNoEntryRecognized
 parameter_list|()
 throws|throws
-name|IOException
+name|ParseException
 block|{
 name|Optional
 argument_list|<

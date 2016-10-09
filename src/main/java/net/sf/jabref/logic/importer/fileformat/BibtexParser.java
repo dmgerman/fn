@@ -751,7 +751,7 @@ argument_list|()
 return|;
 block|}
 block|}
-comment|/**      * Parses BibtexEntries from the given string and returns one entry found (or null if none found)      *<p>      * It is undetermined which entry is returned, so use this in case you know there is only one entry in the string.      *      * @param bibtexString      * @return An Optional<BibEntry>. Optional.empty() if non was found or an error occurred.      */
+comment|/**      * Parses BibtexEntries from the given string and returns one entry found (or null if none found)      *<p>      * It is undetermined which entry is returned, so use this in case you know there is only one entry in the string.      *      * @param bibtexString      * @return An Optional<BibEntry>. Optional.empty() if non was found or an error occurred.      * @throws ParseException      */
 DECL|method|singleFromString (String bibtexString, ImportFormatPreferences importFormatPreferences)
 specifier|public
 specifier|static
@@ -768,7 +768,7 @@ name|ImportFormatPreferences
 name|importFormatPreferences
 parameter_list|)
 throws|throws
-name|IOException
+name|ParseException
 block|{
 name|Collection
 argument_list|<
@@ -782,20 +782,10 @@ argument_list|(
 name|importFormatPreferences
 argument_list|)
 operator|.
-name|parse
-argument_list|(
-operator|new
-name|StringReader
+name|parseEntries
 argument_list|(
 name|bibtexString
 argument_list|)
-argument_list|)
-operator|.
-name|getDatabase
-argument_list|()
-operator|.
-name|getEntries
-argument_list|()
 decl_stmt|;
 if|if
 condition|(

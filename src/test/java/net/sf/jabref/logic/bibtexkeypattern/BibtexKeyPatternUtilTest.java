@@ -18,16 +18,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|Optional
@@ -47,6 +37,22 @@ operator|.
 name|importer
 operator|.
 name|ImportFormatPreferences
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|importer
+operator|.
+name|ParseException
 import|;
 end_import
 
@@ -368,7 +374,7 @@ name|void
 name|testAndInAuthorName
 parameter_list|()
 throws|throws
-name|IOException
+name|ParseException
 block|{
 name|Optional
 argument_list|<
@@ -420,7 +426,7 @@ name|void
 name|testAndAuthorNames
 parameter_list|()
 throws|throws
-name|IOException
+name|ParseException
 block|{
 name|String
 name|bibtexString
@@ -477,7 +483,7 @@ name|void
 name|testSpecialLatexCharacterInAuthorName
 parameter_list|()
 throws|throws
-name|IOException
+name|ParseException
 block|{
 name|Optional
 argument_list|<
@@ -530,7 +536,7 @@ name|void
 name|testMakeLabelAndCheckLegalKeys
 parameter_list|()
 throws|throws
-name|IOException
+name|ParseException
 block|{
 name|Optional
 argument_list|<
@@ -990,7 +996,7 @@ name|void
 name|testMakeLabelAndCheckLegalKeysAccentGrave
 parameter_list|()
 throws|throws
-name|IOException
+name|ParseException
 block|{
 name|Optional
 argument_list|<
@@ -1557,7 +1563,7 @@ name|void
 name|testUniversity
 parameter_list|()
 throws|throws
-name|IOException
+name|ParseException
 block|{
 name|Optional
 argument_list|<
@@ -1609,7 +1615,7 @@ name|void
 name|testDepartment
 parameter_list|()
 throws|throws
-name|IOException
+name|ParseException
 block|{
 name|Optional
 argument_list|<
@@ -1661,7 +1667,7 @@ name|void
 name|testSchool
 parameter_list|()
 throws|throws
-name|IOException
+name|ParseException
 block|{
 name|Optional
 argument_list|<
@@ -1713,7 +1719,7 @@ name|void
 name|testInstituteOfTechnology
 parameter_list|()
 throws|throws
-name|IOException
+name|ParseException
 block|{
 name|Optional
 argument_list|<
