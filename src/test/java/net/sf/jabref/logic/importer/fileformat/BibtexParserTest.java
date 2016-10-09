@@ -682,11 +682,7 @@ argument_list|)
 operator|.
 name|parseEntries
 argument_list|(
-operator|new
-name|StringReader
-argument_list|(
 literal|"@article{test,author={Ed von Test}}"
-argument_list|)
 argument_list|)
 decl_stmt|;
 name|BibEntry
@@ -756,11 +752,7 @@ argument_list|)
 operator|.
 name|parseEntries
 argument_list|(
-operator|new
-name|StringReader
-argument_list|(
 literal|""
-argument_list|)
 argument_list|)
 decl_stmt|;
 name|assertNotNull
@@ -803,11 +795,7 @@ argument_list|)
 operator|.
 name|parseEntries
 argument_list|(
-operator|new
-name|StringReader
-argument_list|(
 literal|"@@article@@{{{{{{}"
-argument_list|)
 argument_list|)
 decl_stmt|;
 name|assertNotNull
@@ -10925,6 +10913,8 @@ specifier|public
 name|void
 name|preserveEncodingPrefixInsideEntry
 parameter_list|()
+throws|throws
+name|ParseException
 block|{
 name|List
 argument_list|<
@@ -10932,9 +10922,13 @@ name|BibEntry
 argument_list|>
 name|parsed
 init|=
+operator|new
 name|BibtexParser
+argument_list|(
+name|importFormatPreferences
+argument_list|)
 operator|.
-name|fromString
+name|parseEntries
 argument_list|(
 literal|"@article{test,author={"
 operator|+
@@ -10943,8 +10937,6 @@ operator|.
 name|ENCODING_PREFIX
 operator|+
 literal|"}}"
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|BibEntry
