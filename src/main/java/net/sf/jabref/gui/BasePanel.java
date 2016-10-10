@@ -1460,6 +1460,22 @@ name|jabref
 operator|.
 name|logic
 operator|.
+name|pdf
+operator|.
+name|FileAnnotationCache
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
 name|search
 operator|.
 name|SearchQuery
@@ -2088,6 +2104,12 @@ specifier|final
 name|CitationStyleCache
 name|citationStyleCache
 decl_stmt|;
+DECL|field|annotationCache
+specifier|private
+specifier|final
+name|FileAnnotationCache
+name|annotationCache
+decl_stmt|;
 comment|// To contain instantiated entry editors. This is to save time
 comment|// As most enums, this must not be null
 DECL|field|mode
@@ -2350,6 +2372,14 @@ name|citationStyleCache
 operator|=
 operator|new
 name|CitationStyleCache
+argument_list|(
+name|bibDatabaseContext
+argument_list|)
+expr_stmt|;
+name|annotationCache
+operator|=
+operator|new
+name|FileAnnotationCache
 argument_list|(
 name|bibDatabaseContext
 argument_list|)
@@ -14630,6 +14660,19 @@ parameter_list|()
 block|{
 return|return
 name|citationStyleCache
+return|;
+block|}
+end_function
+
+begin_function
+DECL|method|getAnnotationCache ()
+specifier|public
+name|FileAnnotationCache
+name|getAnnotationCache
+parameter_list|()
+block|{
+return|return
+name|annotationCache
 return|;
 block|}
 end_function
