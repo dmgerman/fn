@@ -78,22 +78,6 @@ name|BibEntry
 import|;
 end_import
 
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|strings
-operator|.
-name|LatexToUnicode
-import|;
-end_import
-
 begin_comment
 comment|/**  * Search rule for regex-based search.  */
 end_comment
@@ -106,17 +90,6 @@ name|RegexBasedSearchRule
 implements|implements
 name|SearchRule
 block|{
-DECL|field|LATEX_TO_UNICODE_FORMATTER
-specifier|private
-specifier|static
-specifier|final
-name|LatexToUnicode
-name|LATEX_TO_UNICODE_FORMATTER
-init|=
-operator|new
-name|LatexToUnicode
-argument_list|()
-decl_stmt|;
 DECL|field|caseSensitive
 specifier|private
 specifier|final

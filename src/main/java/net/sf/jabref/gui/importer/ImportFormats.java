@@ -224,9 +224,7 @@ name|logic
 operator|.
 name|importer
 operator|.
-name|fileformat
-operator|.
-name|ImportFormat
+name|Importer
 import|;
 end_import
 
@@ -465,7 +463,7 @@ parameter_list|)
 block|{
 name|SortedSet
 argument_list|<
-name|ImportFormat
+name|Importer
 argument_list|>
 name|importers
 init|=
@@ -632,7 +630,7 @@ return|return;
 block|}
 name|Optional
 argument_list|<
-name|ImportFormat
+name|Importer
 argument_list|>
 name|format
 init|=

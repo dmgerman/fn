@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|net.sf.jabref.logic.importer.fileformat
+DECL|package|net.sf.jabref.logic.importer
 package|package
 name|net
 operator|.
@@ -11,8 +11,6 @@ operator|.
 name|logic
 operator|.
 name|importer
-operator|.
-name|fileformat
 package|;
 end_package
 
@@ -122,22 +120,6 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|importer
-operator|.
-name|ParserResult
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
 name|util
 operator|.
 name|FileExtensions
@@ -149,15 +131,15 @@ comment|/**  * Role of an importer for JabRef.  */
 end_comment
 
 begin_class
-DECL|class|ImportFormat
+DECL|class|Importer
 specifier|public
 specifier|abstract
 class|class
-name|ImportFormat
+name|Importer
 implements|implements
 name|Comparable
 argument_list|<
-name|ImportFormat
+name|Importer
 argument_list|>
 block|{
 comment|/**      * Using this when I have no database open or when I read      * non bibtex file formats (used by the ImportFormatReader.java)      *      * TODO: Is this field really needed or would calling IdGenerator.next() suffice?      */
@@ -172,7 +154,7 @@ literal|"__ID"
 decl_stmt|;
 comment|/**      * Check whether the source is in the correct format for this importer.      *      * The effect of this method is primarily to avoid unnecessary processing of      * files when searching for a suitable import format. If this method returns      * false, the import routine will move on to the next import format.      *      * Thus the correct behaviour is to return false if it is certain that the file is      * not of the suitable type, and true otherwise. Returning true is the safe choice if not certain.      */
 DECL|method|isRecognizedFormat (BufferedReader input)
-specifier|protected
+specifier|public
 specifier|abstract
 name|boolean
 name|isRecognizedFormat
@@ -220,7 +202,7 @@ block|}
 block|}
 comment|/**      * Parse the database in the source.      *      * This method can be called in two different contexts - either when importing in      * a specified format, or when importing in unknown format. In the latter case,      * JabRef cycles through all available import formats. No error messages or feedback      * is displayed from individual import formats in this case.      *      * If importing in a specified format and an empty database is returned, JabRef reports      * that no entries were found.      *      * This method should never return null.      *      * @param input the input to read from      */
 DECL|method|importDatabase (BufferedReader input)
-specifier|protected
+specifier|public
 specifier|abstract
 name|ParserResult
 name|importDatabase
@@ -380,11 +362,11 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Returns the name of this import format.      *      *<p>The name must be unique.</p>      *      * @return format name, must be unique and not<code>null</code>      */
-DECL|method|getFormatName ()
+DECL|method|getName ()
 specifier|public
 specifier|abstract
 name|String
-name|getFormatName
+name|getName
 parameter_list|()
 function_decl|;
 comment|/**      * Returns the file extensions that this importer can read      * @return {@link FileExtensions} correspoding to the importer      */
@@ -405,7 +387,7 @@ block|{
 name|String
 name|id
 init|=
-name|getFormatName
+name|getName
 argument_list|()
 decl_stmt|;
 name|StringBuilder
@@ -496,7 +478,7 @@ name|hashCode
 parameter_list|()
 block|{
 return|return
-name|getFormatName
+name|getName
 argument_list|()
 operator|.
 name|hashCode
@@ -531,7 +513,7 @@ operator|!
 operator|(
 name|obj
 operator|instanceof
-name|ImportFormat
+name|Importer
 operator|)
 condition|)
 block|{
@@ -539,11 +521,11 @@ return|return
 literal|false
 return|;
 block|}
-name|ImportFormat
+name|Importer
 name|other
 init|=
 operator|(
-name|ImportFormat
+name|Importer
 operator|)
 name|obj
 decl_stmt|;
@@ -554,12 +536,12 @@ name|equals
 argument_list|(
 name|this
 operator|.
-name|getFormatName
+name|getName
 argument_list|()
 argument_list|,
 name|other
 operator|.
-name|getFormatName
+name|getName
 argument_list|()
 argument_list|)
 return|;
@@ -573,30 +555,30 @@ name|toString
 parameter_list|()
 block|{
 return|return
-name|getFormatName
+name|getName
 argument_list|()
 return|;
 block|}
 annotation|@
 name|Override
-DECL|method|compareTo (ImportFormat o)
+DECL|method|compareTo (Importer o)
 specifier|public
 name|int
 name|compareTo
 parameter_list|(
-name|ImportFormat
+name|Importer
 name|o
 parameter_list|)
 block|{
 return|return
-name|getFormatName
+name|getName
 argument_list|()
 operator|.
 name|compareTo
 argument_list|(
 name|o
 operator|.
-name|getFormatName
+name|getName
 argument_list|()
 argument_list|)
 return|;

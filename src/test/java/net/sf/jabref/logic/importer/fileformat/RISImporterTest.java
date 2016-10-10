@@ -158,7 +158,7 @@ name|assertEquals
 argument_list|(
 name|importer
 operator|.
-name|getFormatName
+name|getName
 argument_list|()
 argument_list|,
 literal|"RIS"

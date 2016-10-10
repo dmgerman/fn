@@ -74,20 +74,6 @@ name|jabref
 operator|.
 name|model
 operator|.
-name|ParseException
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
 name|entry
 operator|.
 name|FieldName
@@ -202,8 +188,6 @@ parameter_list|,
 name|Character
 name|keywordSeparator
 parameter_list|)
-throws|throws
-name|ParseException
 block|{
 name|super
 argument_list|(
@@ -252,8 +236,6 @@ name|AbstractGroup
 name|deepCopy
 parameter_list|()
 block|{
-try|try
-block|{
 name|ExplicitGroup
 name|copy
 init|=
@@ -281,29 +263,6 @@ expr_stmt|;
 return|return
 name|copy
 return|;
-block|}
-catch|catch
-parameter_list|(
-name|ParseException
-name|exception
-parameter_list|)
-block|{
-comment|// this should never happen, because the constructor obviously succeeded in creating _this_ instance!
-name|LOGGER
-operator|.
-name|error
-argument_list|(
-literal|"Internal error in ExplicitGroup.deepCopy(). "
-operator|+
-literal|"Please report this on https://github.com/JabRef/jabref/issues"
-argument_list|,
-name|exception
-argument_list|)
-expr_stmt|;
-return|return
-literal|null
-return|;
-block|}
 block|}
 annotation|@
 name|Override

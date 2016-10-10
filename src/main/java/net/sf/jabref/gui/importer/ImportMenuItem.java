@@ -250,7 +250,7 @@ name|logic
 operator|.
 name|importer
 operator|.
-name|ParserResult
+name|Importer
 import|;
 end_import
 
@@ -266,9 +266,7 @@ name|logic
 operator|.
 name|importer
 operator|.
-name|fileformat
-operator|.
-name|ImportFormat
+name|ParserResult
 import|;
 end_import
 
@@ -411,7 +409,7 @@ decl_stmt|;
 DECL|field|importer
 specifier|private
 specifier|final
-name|ImportFormat
+name|Importer
 name|importer
 decl_stmt|;
 DECL|field|importError
@@ -440,7 +438,7 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|ImportMenuItem (JabRefFrame frame, boolean openInNew, ImportFormat importer)
+DECL|method|ImportMenuItem (JabRefFrame frame, boolean openInNew, Importer importer)
 specifier|public
 name|ImportMenuItem
 parameter_list|(
@@ -450,7 +448,7 @@ parameter_list|,
 name|boolean
 name|openInNew
 parameter_list|,
-name|ImportFormat
+name|Importer
 name|importer
 parameter_list|)
 block|{
@@ -469,7 +467,7 @@ argument_list|)
 else|:
 name|importer
 operator|.
-name|getFormatName
+name|getName
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -801,7 +799,7 @@ literal|"Importing in %0 format"
 argument_list|,
 name|importer
 operator|.
-name|getFormatName
+name|getName
 argument_list|()
 argument_list|)
 operator|+
@@ -837,7 +835,7 @@ name|UnknownFormatImport
 argument_list|(
 name|importer
 operator|.
-name|getFormatName
+name|getName
 argument_list|()
 argument_list|,
 name|pr

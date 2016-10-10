@@ -484,7 +484,7 @@ literal|"MSBib"
 argument_list|,
 name|testImporter
 operator|.
-name|getFormatName
+name|getName
 argument_list|()
 argument_list|)
 expr_stmt|;

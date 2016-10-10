@@ -180,6 +180,22 @@ name|logic
 operator|.
 name|importer
 operator|.
+name|Importer
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|importer
+operator|.
 name|ParserResult
 import|;
 end_import
@@ -869,7 +885,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *  * Importer for the MODS format.<br>  * More details about the format can be found here<a href="http://www.loc.gov/standards/mods/">http://www.loc.gov/standards/mods/</a>.<br>  * The newest xml schema can also be found here<a href="www.loc.gov/standards/mods/mods-schemas.html.">www.loc.gov/standards/mods/mods-schemas.html.</a>.  *  */
+comment|/**  * Importer for the MODS format.<br>  * More details about the format can be found here<a href="http://www.loc.gov/standards/mods/">http://www.loc.gov/standards/mods/</a>.<br>  * The newest xml schema can also be found here<a href="www.loc.gov/standards/mods/mods-schemas.html.">www.loc.gov/standards/mods/mods-schemas.html.</a>.  */
 end_comment
 
 begin_class
@@ -878,7 +894,7 @@ specifier|public
 class|class
 name|ModsImporter
 extends|extends
-name|ImportFormat
+name|Importer
 block|{
 DECL|field|LOGGER
 specifier|private
@@ -938,7 +954,7 @@ decl_stmt|;
 annotation|@
 name|Override
 DECL|method|isRecognizedFormat (BufferedReader input)
-specifier|protected
+specifier|public
 name|boolean
 name|isRecognizedFormat
 parameter_list|(
@@ -1817,9 +1833,6 @@ operator|.
 name|KEYWORDS
 argument_list|,
 name|KEYWORD_SEPARATOR
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 expr_stmt|;
 comment|//same goes for authors and notes
@@ -2160,7 +2173,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * Returns an Optional which contains an instance of the given class, if the given element can be cast to this class.      * If the element can not be cast to the given class, then an empty optional will be returned.      *      * @param groupElement The element that should be cast      * @param clazz The class to which groupElement should be cast      * @return An Optional, that contains the groupElement as instance of clazz, if groupElement can be cast to clazz.      *         An empty Optional, if groupElement can not be cast to clazz      */
+comment|/**      * Returns an Optional which contains an instance of the given class, if the given element can be cast to this class.      * If the element can not be cast to the given class, then an empty optional will be returned.      *      * @param groupElement The element that should be cast      * @param clazz        The class to which groupElement should be cast      * @return An Optional, that contains the groupElement as instance of clazz, if groupElement can be cast to clazz.      * An empty Optional, if groupElement can not be cast to clazz      */
 DECL|method|getElement (Object groupElement, Class<T> clazz)
 specifier|private
 parameter_list|<
@@ -3881,10 +3894,10 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|getFormatName ()
+DECL|method|getName ()
 specifier|public
 name|String
-name|getFormatName
+name|getName
 parameter_list|()
 block|{
 return|return

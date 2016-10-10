@@ -702,6 +702,22 @@ name|jabref
 operator|.
 name|logic
 operator|.
+name|importer
+operator|.
+name|Importer
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
 name|journals
 operator|.
 name|JournalAbbreviationLoader
@@ -3991,7 +4007,7 @@ argument_list|(
 literal|"user.home"
 argument_list|)
 decl_stmt|;
-comment|/**      * Set with all custom {@link net.sf.jabref.logic.importer.fileformat.ImportFormat}s      */
+comment|/**      * Set with all custom {@link Importer}s      */
 DECL|field|customImports
 specifier|public
 specifier|final
@@ -9788,16 +9804,6 @@ argument_list|()
 argument_list|,
 name|getFieldContentParserPreferences
 argument_list|()
-argument_list|,
-name|getBoolean
-argument_list|(
-name|USE_UNIT_FORMATTER_ON_SEARCH
-argument_list|)
-argument_list|,
-name|getBoolean
-argument_list|(
-name|USE_CASE_KEEPER_ON_SEARCH
-argument_list|)
 argument_list|,
 name|isKeywordSyncEnabled
 argument_list|()
