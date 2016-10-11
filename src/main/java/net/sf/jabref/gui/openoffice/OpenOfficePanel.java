@@ -5120,11 +5120,6 @@ argument_list|(
 operator|new
 name|UndoableKeyChange
 argument_list|(
-name|panel
-operator|.
-name|getDatabase
-argument_list|()
-argument_list|,
 name|entry
 argument_list|,
 literal|null
