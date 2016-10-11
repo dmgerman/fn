@@ -2957,7 +2957,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"File_annotations"
+literal|"File annotations"
 argument_list|)
 argument_list|,
 name|IconTheme
@@ -2975,7 +2975,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Show_File_annotations"
+literal|"Show file annotations"
 argument_list|)
 argument_list|)
 expr_stmt|;

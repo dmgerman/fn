@@ -816,11 +816,11 @@ operator|new
 name|JButton
 argument_list|()
 decl_stmt|;
-DECL|field|openPdfButton
+DECL|field|openFileButton
 specifier|private
 specifier|final
 name|JButton
-name|openPdfButton
+name|openFileButton
 init|=
 operator|new
 name|JButton
@@ -2062,7 +2062,7 @@ name|gridx
 operator|=
 literal|10
 expr_stmt|;
-name|openPdfButton
+name|openFileButton
 operator|.
 name|setText
 argument_list|(
@@ -2074,7 +2074,7 @@ literal|"Open file"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|openPdfButton
+name|openFileButton
 operator|.
 name|addActionListener
 argument_list|(
@@ -2125,7 +2125,7 @@ name|buttonPanel
 operator|.
 name|add
 argument_list|(
-name|openPdfButton
+name|openFileButton
 argument_list|,
 name|buttonConstraints
 argument_list|)
