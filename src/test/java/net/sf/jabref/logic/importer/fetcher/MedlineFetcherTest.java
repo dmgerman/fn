@@ -1220,7 +1220,7 @@ expr_stmt|;
 comment|//Remove abstract due to copyright);
 name|assertEquals
 argument_list|(
-literal|50
+literal|20
 argument_list|,
 name|entryList
 operator|.

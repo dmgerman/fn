@@ -284,6 +284,22 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|model
 operator|.
 name|entry
@@ -337,7 +353,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Fetch or search from Pubmed http://www.ncbi.nlm.nih.gov/sites/entrez/  */
+comment|/**  * Fetch or search from PubMed<a href=http://www.ncbi.nlm.nih.gov/sites/entrez/>www.ncbi.nlm.nih.gov</a>  * The MedlineFetcher fetches the entries from the PubMed database.  * See<a href=http://help.jabref.org/en/MedlineRIS>help.jabref.org</a> for a detailed documentation of the available fields.  */
 end_comment
 
 begin_class
@@ -394,50 +410,12 @@ argument_list|(
 literal|"<Count>(\\d+)<\\/Count>"
 argument_list|)
 decl_stmt|;
-DECL|field|RET_MAX_PATTERN
-specifier|private
-specifier|static
-specifier|final
-name|Pattern
-name|RET_MAX_PATTERN
-init|=
-name|Pattern
-operator|.
-name|compile
-argument_list|(
-literal|"<RetMax>(\\d+)<\\/RetMax>"
-argument_list|)
-decl_stmt|;
-DECL|field|RET_START_PATTERN
-specifier|private
-specifier|static
-specifier|final
-name|Pattern
-name|RET_START_PATTERN
-init|=
-name|Pattern
-operator|.
-name|compile
-argument_list|(
-literal|"<RetStart>(\\d+)<\\/RetStart>"
-argument_list|)
-decl_stmt|;
-DECL|field|count
+DECL|field|numberOfResultsFound
 specifier|private
 name|int
-name|count
+name|numberOfResultsFound
 decl_stmt|;
-DECL|field|retmax
-specifier|private
-name|int
-name|retmax
-decl_stmt|;
-DECL|field|retstart
-specifier|private
-name|int
-name|retstart
-decl_stmt|;
-comment|/**      * Removes all comma's in a given String      *      * @param query input to remove comma's      * @return input without comma's      */
+comment|/**      * Replaces all commas in a given string with " AND "      *      * @param query input to remove commas      * @return input without commas      */
 DECL|method|replaceCommaWithAND (String query)
 specifier|private
 specifier|static
@@ -466,8 +444,8 @@ literal|" AND "
 argument_list|)
 return|;
 block|}
-comment|/**      * When using 'esearch.fcgi?db=<database>&term=<query>' we will get a list of ID's matching the query.      * Input: Any text query (&term)      * Output: List of UIDs matching the query      *      * @see<a href="https://www.ncbi.nlm.nih.gov/books/NBK25500/">www.ncbi.nlm.nih.gov/books/NBK25500/</a>      */
-DECL|method|getPubMedIdsFromQuery (String query, int start, int pacing)
+comment|/**      * When using 'esearch.fcgi?db=<database>&term=<query>' we will get a list of IDs matching the query.      * Input: Any text query (&term)      * Output: List of UIDs matching the query      *      * @see<a href="https://www.ncbi.nlm.nih.gov/books/NBK25500/">www.ncbi.nlm.nih.gov/books/NBK25500/</a>      */
+DECL|method|getPubMedIdsFromQuery (String query)
 specifier|private
 name|List
 argument_list|<
@@ -477,21 +455,10 @@ name|getPubMedIdsFromQuery
 parameter_list|(
 name|String
 name|query
-parameter_list|,
-name|int
-name|start
-parameter_list|,
-name|int
-name|pacing
 parameter_list|)
 throws|throws
 name|FetcherException
 block|{
-name|boolean
-name|doCount
-init|=
-literal|true
-decl_stmt|;
 name|List
 argument_list|<
 name|String
@@ -511,10 +478,6 @@ init|=
 name|createSearchUrl
 argument_list|(
 name|query
-argument_list|,
-name|start
-argument_list|,
-name|pacing
 argument_list|)
 decl_stmt|;
 name|BufferedReader
@@ -536,6 +499,7 @@ decl_stmt|;
 name|String
 name|inLine
 decl_stmt|;
+comment|//Everything relevant is listed before the IdList. So we break the loop right after the IdList tag closes.
 while|while
 condition|(
 operator|(
@@ -550,6 +514,18 @@ operator|!=
 literal|null
 condition|)
 block|{
+if|if
+condition|(
+name|inLine
+operator|.
+name|contains
+argument_list|(
+literal|"</IdList>"
+argument_list|)
+condition|)
+block|{
+break|break;
+block|}
 name|Matcher
 name|idMatcher
 init|=
@@ -582,72 +558,6 @@ argument_list|)
 expr_stmt|;
 block|}
 name|Matcher
-name|retMaxMatcher
-init|=
-name|RET_MAX_PATTERN
-operator|.
-name|matcher
-argument_list|(
-name|inLine
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|retMaxMatcher
-operator|.
-name|find
-argument_list|()
-condition|)
-block|{
-name|retmax
-operator|=
-name|Integer
-operator|.
-name|parseInt
-argument_list|(
-name|retMaxMatcher
-operator|.
-name|group
-argument_list|(
-literal|1
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-name|Matcher
-name|retStartMatcher
-init|=
-name|RET_START_PATTERN
-operator|.
-name|matcher
-argument_list|(
-name|inLine
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|retStartMatcher
-operator|.
-name|find
-argument_list|()
-condition|)
-block|{
-name|retstart
-operator|=
-name|Integer
-operator|.
-name|parseInt
-argument_list|(
-name|retStartMatcher
-operator|.
-name|group
-argument_list|(
-literal|1
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-name|Matcher
 name|countMatcher
 init|=
 name|COUNT_PATTERN
@@ -659,15 +569,13 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|doCount
-operator|&&
 name|countMatcher
 operator|.
 name|find
 argument_list|()
 condition|)
 block|{
-name|count
+name|numberOfResultsFound
 operator|=
 name|Integer
 operator|.
@@ -680,10 +588,6 @@ argument_list|(
 literal|1
 argument_list|)
 argument_list|)
-expr_stmt|;
-name|doCount
-operator|=
-literal|false
 expr_stmt|;
 block|}
 block|}
@@ -703,7 +607,7 @@ throw|throw
 operator|new
 name|FetcherException
 argument_list|(
-literal|"Unable to get PubMed ID's."
+literal|"Unable to get PubMed IDs"
 argument_list|,
 name|e
 argument_list|)
@@ -862,12 +766,6 @@ parameter_list|)
 throws|throws
 name|FetcherException
 block|{
-specifier|final
-name|int
-name|NUMBER_TO_FETCH
-init|=
-literal|50
-decl_stmt|;
 name|List
 argument_list|<
 name|BibEntry
@@ -904,7 +802,7 @@ argument_list|(
 name|query
 argument_list|)
 decl_stmt|;
-comment|//searching for pubmed id's matching the query
+comment|//searching for pubmed ids matching the query
 name|List
 argument_list|<
 name|String
@@ -914,44 +812,52 @@ init|=
 name|getPubMedIdsFromQuery
 argument_list|(
 name|searchTerm
-argument_list|,
-literal|0
-argument_list|,
-name|NUMBER_TO_FETCH
 argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|count
-operator|==
-literal|0
+name|idList
+operator|.
+name|isEmpty
+argument_list|()
 condition|)
 block|{
 name|LOGGER
 operator|.
 name|info
 argument_list|(
-literal|"No references found"
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"No results found."
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|//pass the id list to fetchMedline to download them. like a id fetcher for mutliple id's
-name|List
-argument_list|<
-name|BibEntry
-argument_list|>
-name|bibs
-init|=
+if|if
+condition|(
+name|numberOfResultsFound
+operator|>
+literal|20
+condition|)
+block|{
+name|LOGGER
+operator|.
+name|info
+argument_list|(
+name|numberOfResultsFound
+operator|+
+literal|" results found. Only 20 relevant results will be fetched by default."
+argument_list|)
+expr_stmt|;
+block|}
+comment|//pass the list of ids to fetchMedline to download them. like a id fetcher for mutliple ids
+name|entryList
+operator|=
 name|fetchMedline
 argument_list|(
 name|idList
-argument_list|)
-decl_stmt|;
-name|entryList
-operator|.
-name|addAll
-argument_list|(
-name|bibs
 argument_list|)
 expr_stmt|;
 return|return
@@ -959,19 +865,13 @@ name|entryList
 return|;
 block|}
 block|}
-DECL|method|createSearchUrl (String term, int start, int pacing)
+DECL|method|createSearchUrl (String term)
 specifier|private
 name|URL
 name|createSearchUrl
 parameter_list|(
 name|String
 name|term
-parameter_list|,
-name|int
-name|start
-parameter_list|,
-name|int
-name|pacing
 parameter_list|)
 throws|throws
 name|URISyntaxException
@@ -1007,34 +907,6 @@ name|uriBuilder
 operator|.
 name|addParameter
 argument_list|(
-literal|"retmax"
-argument_list|,
-name|Integer
-operator|.
-name|toString
-argument_list|(
-name|pacing
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|uriBuilder
-operator|.
-name|addParameter
-argument_list|(
-literal|"retstart"
-argument_list|,
-name|Integer
-operator|.
-name|toString
-argument_list|(
-name|start
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|uriBuilder
-operator|.
-name|addParameter
-argument_list|(
 literal|"sort"
 argument_list|,
 literal|"relevance"
@@ -1059,7 +931,7 @@ name|toURL
 argument_list|()
 return|;
 block|}
-comment|/**      * Fetch and parse an medline item from eutils.ncbi.nlm.nih.gov.      * The E-utilities generate a huge XML file containing all entries for the id's      *      * @param ids A list of ID's to search for.      * @return Will return an empty list on error.      */
+comment|/**      * Fetch and parse an medline item from eutils.ncbi.nlm.nih.gov.      * The E-utilities generate a huge XML file containing all entries for the ids      *      * @param ids A list of IDs to search for.      * @return Will return an empty list on error.      */
 DECL|method|fetchMedline (List<String> ids)
 specifier|private
 name|List
@@ -1079,7 +951,7 @@ name|FetcherException
 block|{
 try|try
 block|{
-comment|//Separate the ID's with a comma to search multiple entries
+comment|//Separate the IDs with a comma to search multiple entries
 name|URL
 name|fetchURL
 init|=
