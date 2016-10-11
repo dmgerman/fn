@@ -104,6 +104,20 @@ name|jabref
 operator|.
 name|gui
 operator|.
+name|BasePanelMode
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
 name|maintable
 operator|.
 name|MainTableDataModel
@@ -565,6 +579,28 @@ expr_stmt|;
 break|break;
 block|}
 comment|// only selects the first match if the selected entries are no hits or no entry is selected
+comment|// and no editor is open (to avoid jumping around when editing an entry)
+if|if
+condition|(
+name|basePanel
+operator|.
+name|getMode
+argument_list|()
+operator|!=
+name|BasePanelMode
+operator|.
+name|SHOWING_EDITOR
+operator|&&
+name|basePanel
+operator|.
+name|getMode
+argument_list|()
+operator|!=
+name|BasePanelMode
+operator|.
+name|WILL_SHOW_EDITOR
+condition|)
+block|{
 name|List
 argument_list|<
 name|BibEntry
@@ -656,6 +692,7 @@ name|i
 argument_list|)
 expr_stmt|;
 break|break;
+block|}
 block|}
 block|}
 block|}
