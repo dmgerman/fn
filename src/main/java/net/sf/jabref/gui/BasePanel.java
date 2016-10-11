@@ -8967,6 +8967,7 @@ name|EntryRemovedEvent
 name|removedEntryEvent
 parameter_list|)
 block|{
+comment|// IMO only used to update the status (found X entries)
 name|frame
 operator|.
 name|getGlobalSearchBar

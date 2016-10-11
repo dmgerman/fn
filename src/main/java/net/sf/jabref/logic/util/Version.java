@@ -141,7 +141,7 @@ specifier|final
 name|String
 name|JABREF_DOWNLOAD_URL
 init|=
-literal|"http://www.fosshub.com/JabRef.html"
+literal|"https://downloads.jabref.org"
 decl_stmt|;
 DECL|field|LOGGER
 specifier|private
