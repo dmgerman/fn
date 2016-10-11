@@ -1190,6 +1190,19 @@ name|visible
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|isVisible ()
+specifier|public
+name|boolean
+name|isVisible
+parameter_list|()
+block|{
+return|return
+name|popup
+operator|.
+name|isVisible
+argument_list|()
+return|;
+block|}
 block|}
 end_class
 
