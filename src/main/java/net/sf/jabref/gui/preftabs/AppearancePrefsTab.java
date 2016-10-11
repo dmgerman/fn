@@ -1228,9 +1228,7 @@ name|FontSelectorDialog
 argument_list|(
 literal|null
 argument_list|,
-name|GUIGlobals
-operator|.
-name|currentFont
+name|usedFont
 argument_list|)
 operator|.
 name|getSelectedFont
