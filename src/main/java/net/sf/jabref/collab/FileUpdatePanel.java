@@ -192,15 +192,6 @@ name|ChangeScanner
 operator|.
 name|DisplayResultCallback
 block|{
-DECL|field|NAME
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|NAME
-init|=
-literal|"fileUpdate"
-decl_stmt|;
 DECL|field|manager
 specifier|private
 specifier|final
@@ -416,7 +407,7 @@ name|unregisterComponent
 argument_list|(
 name|FileUpdatePanel
 operator|.
-name|NAME
+name|class
 argument_list|)
 expr_stmt|;
 block|}
@@ -431,6 +422,20 @@ block|{
 return|return
 literal|0
 return|;
+block|}
+annotation|@
+name|Override
+DECL|method|getToggleAction ()
+specifier|public
+name|ToggleAction
+name|getToggleAction
+parameter_list|()
+block|{
+throw|throw
+operator|new
+name|UnsupportedOperationException
+argument_list|()
+throw|;
 block|}
 comment|/**      * actionPerformed      *      * @param e      *            ActionEvent      */
 annotation|@
