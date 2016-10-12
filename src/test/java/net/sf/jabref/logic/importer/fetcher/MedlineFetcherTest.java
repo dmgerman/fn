@@ -410,6 +410,15 @@ name|entryEndharti
 operator|.
 name|setField
 argument_list|(
+literal|"country"
+argument_list|,
+literal|"England"
+argument_list|)
+expr_stmt|;
+name|entryEndharti
+operator|.
+name|setField
+argument_list|(
 literal|"issn"
 argument_list|,
 literal|"1472-6882"
@@ -482,6 +491,15 @@ name|entryEndharti
 operator|.
 name|setField
 argument_list|(
+literal|"month"
+argument_list|,
+literal|"Sep"
+argument_list|)
+expr_stmt|;
+name|entryEndharti
+operator|.
+name|setField
+argument_list|(
 literal|"pmid"
 argument_list|,
 literal|"27670445"
@@ -511,7 +529,7 @@ name|setField
 argument_list|(
 literal|"revised"
 argument_list|,
-literal|"2016-9-27"
+literal|"2016-10-11"
 argument_list|)
 expr_stmt|;
 name|entryEndharti
@@ -1220,7 +1238,7 @@ expr_stmt|;
 comment|//Remove abstract due to copyright);
 name|assertEquals
 argument_list|(
-literal|20
+literal|50
 argument_list|,
 name|entryList
 operator|.
