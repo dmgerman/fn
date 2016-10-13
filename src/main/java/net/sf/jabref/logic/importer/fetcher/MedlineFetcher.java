@@ -1212,7 +1212,9 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Error while fetching from Medline"
+literal|"Error while fetching from %0"
+argument_list|,
+literal|"Medline"
 argument_list|)
 argument_list|,
 name|e
