@@ -519,15 +519,6 @@ name|TOGGLE_PREVIEW
 init|=
 literal|"togglePreview"
 decl_stmt|;
-DECL|field|TOGGLE_TOOLBAR
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|TOGGLE_TOOLBAR
-init|=
-literal|"toggleToolbar"
-decl_stmt|;
 DECL|field|UNABBREVIATE
 specifier|public
 specifier|static

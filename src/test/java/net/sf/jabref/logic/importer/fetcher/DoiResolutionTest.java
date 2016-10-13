@@ -112,16 +112,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Test
 import|;
 end_import
@@ -276,8 +266,6 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
-name|Ignore
-annotation|@
 name|Test
 DECL|method|notReturnAnythingWhenMultipleLinksAreFound ()
 specifier|public
@@ -287,7 +275,32 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
-comment|// To be implemented
+name|entry
+operator|.
+name|setField
+argument_list|(
+literal|"doi"
+argument_list|,
+literal|"10.1051/0004-6361/201527330; 10.1051/0004-6361/20152711233"
+argument_list|)
+expr_stmt|;
+name|Assert
+operator|.
+name|assertEquals
+argument_list|(
+name|Optional
+operator|.
+name|empty
+argument_list|()
+argument_list|,
+name|finder
+operator|.
+name|findFullText
+argument_list|(
+name|entry
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Test
