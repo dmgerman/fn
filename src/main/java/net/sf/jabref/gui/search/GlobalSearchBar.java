@@ -354,7 +354,7 @@ name|util
 operator|.
 name|component
 operator|.
-name|JTextFieldWithUnfocusedText
+name|JTextFieldWithPlaceholder
 import|;
 end_import
 
@@ -582,11 +582,11 @@ decl_stmt|;
 DECL|field|searchField
 specifier|private
 specifier|final
-name|JTextFieldWithUnfocusedText
+name|JTextFieldWithPlaceholder
 name|searchField
 init|=
 operator|new
-name|JTextFieldWithUnfocusedText
+name|JTextFieldWithPlaceholder
 argument_list|(
 name|Localization
 operator|.

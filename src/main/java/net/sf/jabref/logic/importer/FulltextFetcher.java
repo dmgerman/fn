@@ -85,6 +85,8 @@ name|entry
 parameter_list|)
 throws|throws
 name|IOException
+throws|,
+name|FetcherException
 function_decl|;
 block|}
 end_interface
