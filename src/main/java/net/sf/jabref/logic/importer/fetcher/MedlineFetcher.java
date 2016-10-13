@@ -687,6 +687,13 @@ name|FetcherException
 argument_list|(
 literal|"Unable to get PubMed IDs"
 argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Unable to get PubMed IDs"
+argument_list|)
+argument_list|,
 name|e
 argument_list|)
 throw|;
@@ -702,6 +709,13 @@ operator|new
 name|FetcherException
 argument_list|(
 literal|"Error while parsing ID list"
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Error while parsing ID list"
+argument_list|)
 argument_list|,
 name|e
 argument_list|)
@@ -920,12 +934,7 @@ name|LOGGER
 operator|.
 name|info
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
 literal|"No results found."
-argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
@@ -1166,6 +1175,29 @@ catch|catch
 parameter_list|(
 name|URISyntaxException
 decl||
+name|MalformedURLException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|FetcherException
+argument_list|(
+literal|"Error while generating fetch URL"
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Error while generating fetch URL"
+argument_list|)
+argument_list|,
+name|e
+argument_list|)
+throw|;
+block|}
+catch|catch
+parameter_list|(
 name|IOException
 name|e
 parameter_list|)
@@ -1174,10 +1206,14 @@ throw|throw
 operator|new
 name|FetcherException
 argument_list|(
-name|e
+literal|"Error while fetching from Medline"
+argument_list|,
+name|Localization
 operator|.
-name|getLocalizedMessage
-argument_list|()
+name|lang
+argument_list|(
+literal|"Error while fetching from Medline"
+argument_list|)
 argument_list|,
 name|e
 argument_list|)
