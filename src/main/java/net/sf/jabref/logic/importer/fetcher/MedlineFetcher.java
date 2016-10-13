@@ -377,7 +377,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Fetch or search from PubMed "<a href=http://www.ncbi.nlm.nih.gov/sites/entrez/>www.ncbi.nlm.nih.gov</a>"  * The MedlineFetcher fetches the entries from the PubMed database.  * See "<a href=http://help.jabref.org/en/MedlineRIS>help.jabref.org</a>" for a detailed documentation of the available fields.  */
+comment|/**  * Fetch or search from PubMed<a href="http://www.ncbi.nlm.nih.gov/sites/entrez/">www.ncbi.nlm.nih.gov</a>  * The MedlineFetcher fetches the entries from the PubMed database.  * See<a href="http://help.jabref.org/en/MedlineRIS">help.jabref.org</a> for a detailed documentation of the available fields.  */
 end_comment
 
 begin_class
@@ -504,7 +504,7 @@ name|newFactory
 argument_list|()
 decl_stmt|;
 name|XMLStreamReader
-name|eventReader
+name|streamReader
 init|=
 name|inputFactory
 operator|.
@@ -520,7 +520,7 @@ name|fetchLoop
 label|:
 while|while
 condition|(
-name|eventReader
+name|streamReader
 operator|.
 name|hasNext
 argument_list|()
@@ -529,7 +529,7 @@ block|{
 name|int
 name|event
 init|=
-name|eventReader
+name|streamReader
 operator|.
 name|getEventType
 argument_list|()
@@ -546,7 +546,7 @@ name|START_ELEMENT
 case|:
 if|if
 condition|(
-name|eventReader
+name|streamReader
 operator|.
 name|getName
 argument_list|()
@@ -567,7 +567,7 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-name|eventReader
+name|streamReader
 operator|.
 name|getName
 argument_list|()
@@ -603,7 +603,7 @@ name|Integer
 operator|.
 name|parseInt
 argument_list|(
-name|eventReader
+name|streamReader
 operator|.
 name|getText
 argument_list|()
@@ -623,7 +623,7 @@ name|idList
 operator|.
 name|add
 argument_list|(
-name|eventReader
+name|streamReader
 operator|.
 name|getText
 argument_list|()
@@ -639,7 +639,7 @@ case|:
 comment|//Everything relevant is listed before the IdList. So we break the loop right after the IdList tag closes.
 if|if
 condition|(
-name|eventReader
+name|streamReader
 operator|.
 name|getName
 argument_list|()
@@ -658,13 +658,13 @@ name|fetchLoop
 break|;
 block|}
 block|}
-name|eventReader
+name|streamReader
 operator|.
 name|next
 argument_list|()
 expr_stmt|;
 block|}
-name|eventReader
+name|streamReader
 operator|.
 name|close
 argument_list|()
@@ -939,7 +939,7 @@ if|if
 condition|(
 name|numberOfResultsFound
 operator|>
-literal|50
+name|NUMBER_TO_FETCH
 condition|)
 block|{
 name|LOGGER
