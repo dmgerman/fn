@@ -538,6 +538,14 @@ argument_list|(
 name|extFilter
 argument_list|)
 expr_stmt|;
+comment|// explictly needed for OSX to enable *.* file filter
+name|fileChooser
+operator|.
+name|setAcceptAllFileFilterUsed
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 block|}
 return|return
 name|this

@@ -1764,11 +1764,9 @@ name|pr
 operator|=
 name|OpenDatabase
 operator|.
-name|loadDatabaseOrAutoSave
+name|loadDatabase
 argument_list|(
 name|aLeftOver
-argument_list|,
-literal|false
 argument_list|,
 name|Globals
 operator|.
