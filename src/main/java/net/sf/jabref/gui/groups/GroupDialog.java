@@ -296,20 +296,6 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|BasePanel
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
 name|JabRefFrame
 import|;
 end_import
@@ -930,15 +916,12 @@ name|CardLayout
 argument_list|()
 decl_stmt|;
 comment|/**      * Shows a group add/edit dialog.      *      * @param jabrefFrame The parent frame.      * @param basePanel   The default grouping field.      * @param editedGroup The group being edited, or null if a new group is to be      *                    created.      */
-DECL|method|GroupDialog (JabRefFrame jabrefFrame, BasePanel basePanel, AbstractGroup editedGroup)
+DECL|method|GroupDialog (JabRefFrame jabrefFrame, AbstractGroup editedGroup)
 specifier|public
 name|GroupDialog
 parameter_list|(
 name|JabRefFrame
 name|jabrefFrame
-parameter_list|,
-name|BasePanel
-name|basePanel
 parameter_list|,
 name|AbstractGroup
 name|editedGroup

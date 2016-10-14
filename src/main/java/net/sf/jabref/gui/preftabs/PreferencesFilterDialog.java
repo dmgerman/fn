@@ -38,6 +38,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|awt
+operator|.
+name|FlowLayout
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|List
@@ -312,7 +322,7 @@ argument_list|(
 operator|new
 name|WrapLayout
 argument_list|(
-name|WrapLayout
+name|FlowLayout
 operator|.
 name|LEFT
 argument_list|)

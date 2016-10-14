@@ -112,6 +112,16 @@ name|JScrollPane
 import|;
 end_import
 
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|ScrollPaneConstants
+import|;
+end_import
+
 begin_comment
 comment|/**  * The side pane is displayed at the left side of JabRef and shows instances of  * SidePaneComponents, for instance the GroupSelector, or the SearchManager.  */
 end_comment
@@ -242,7 +252,7 @@ name|weightx
 operator|=
 literal|1
 expr_stmt|;
-comment|/*          * Added Scrollpane to fix:           */
+comment|/*          * Added Scrollpane to fix:          */
 name|JScrollPane
 name|sp
 init|=
@@ -251,11 +261,11 @@ name|JScrollPane
 argument_list|(
 name|mainPanel
 argument_list|,
-name|JScrollPane
+name|ScrollPaneConstants
 operator|.
 name|VERTICAL_SCROLLBAR_AS_NEEDED
 argument_list|,
-name|JScrollPane
+name|ScrollPaneConstants
 operator|.
 name|HORIZONTAL_SCROLLBAR_AS_NEEDED
 argument_list|)

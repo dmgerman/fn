@@ -765,8 +765,6 @@ argument_list|(
 operator|new
 name|EntryEditorPrefsTab
 argument_list|(
-name|frame
-argument_list|,
 name|prefs
 argument_list|)
 argument_list|)
