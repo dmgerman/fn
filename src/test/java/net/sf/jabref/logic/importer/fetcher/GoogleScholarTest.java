@@ -388,7 +388,7 @@ name|assumeFalse
 argument_list|(
 name|DevEnvironment
 operator|.
-name|isCIServer
+name|isCircleCI
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -444,7 +444,7 @@ name|assumeFalse
 argument_list|(
 name|DevEnvironment
 operator|.
-name|isCIServer
+name|isCircleCI
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -485,6 +485,17 @@ parameter_list|()
 throws|throws
 name|FetcherException
 block|{
+comment|// CI server is blocked by Google
+name|Assume
+operator|.
+name|assumeFalse
+argument_list|(
+name|DevEnvironment
+operator|.
+name|isCircleCI
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|entry
 operator|.
 name|setType
@@ -597,6 +608,17 @@ parameter_list|()
 throws|throws
 name|FetcherException
 block|{
+comment|// CI server is blocked by Google
+name|Assume
+operator|.
+name|assumeFalse
+argument_list|(
+name|DevEnvironment
+operator|.
+name|isCircleCI
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|List
 argument_list|<
 name|BibEntry
