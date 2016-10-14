@@ -543,6 +543,11 @@ operator|new
 name|EventBus
 argument_list|()
 decl_stmt|;
+DECL|field|databaseID
+specifier|private
+name|String
+name|databaseID
+decl_stmt|;
 DECL|method|BibDatabase ()
 specifier|public
 name|BibDatabase
@@ -2413,6 +2418,35 @@ operator|::
 name|getEntryByKey
 argument_list|)
 return|;
+block|}
+DECL|method|getDatabaseID ()
+specifier|public
+name|String
+name|getDatabaseID
+parameter_list|()
+block|{
+return|return
+name|this
+operator|.
+name|databaseID
+return|;
+block|}
+comment|/**      * @param databaseID use null to unset the id      */
+DECL|method|setDatabaseID (String databaseID)
+specifier|public
+name|void
+name|setDatabaseID
+parameter_list|(
+name|String
+name|databaseID
+parameter_list|)
+block|{
+name|this
+operator|.
+name|databaseID
+operator|=
+name|databaseID
+expr_stmt|;
 block|}
 DECL|method|getDuplicationChecker ()
 specifier|public

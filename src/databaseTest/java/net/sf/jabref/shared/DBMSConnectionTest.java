@@ -34,6 +34,22 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|shared
+operator|.
+name|exception
+operator|.
+name|InvalidDBMSConnectionPropertiesException
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|junit
@@ -157,6 +173,8 @@ name|testGetConnection
 parameter_list|()
 throws|throws
 name|SQLException
+throws|,
+name|InvalidDBMSConnectionPropertiesException
 block|{
 name|DBMSConnectionProperties
 name|properties
@@ -199,6 +217,8 @@ name|testGetConnectionFail
 parameter_list|()
 throws|throws
 name|SQLException
+throws|,
+name|InvalidDBMSConnectionPropertiesException
 block|{
 operator|new
 name|DBMSConnection
