@@ -45,6 +45,28 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+DECL|method|isCircleCI ()
+specifier|public
+specifier|static
+name|boolean
+name|isCircleCI
+parameter_list|()
+block|{
+comment|// See https://circleci.com/docs/environment-variables
+return|return
+name|Boolean
+operator|.
+name|valueOf
+argument_list|(
+name|System
+operator|.
+name|getenv
+argument_list|(
+literal|"CIRCLECI"
+argument_list|)
+argument_list|)
+return|;
+block|}
 block|}
 end_class
 
