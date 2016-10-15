@@ -294,8 +294,6 @@ name|parserResult
 init|=
 name|generateParserResult
 argument_list|(
-name|entry
-argument_list|,
 name|GroupTreeNode
 operator|.
 name|fromGroup
@@ -346,8 +344,6 @@ name|parserResult
 init|=
 name|generateParserResult
 argument_list|(
-name|entry
-argument_list|,
 name|GroupTreeNode
 operator|.
 name|fromGroup
@@ -432,8 +428,6 @@ name|parserResult
 init|=
 name|generateParserResult
 argument_list|(
-name|entry
-argument_list|,
 name|root
 argument_list|)
 decl_stmt|;
@@ -479,8 +473,6 @@ name|parserResult
 init|=
 name|generateParserResult
 argument_list|(
-name|entry
-argument_list|,
 name|GroupTreeNode
 operator|.
 name|fromGroup
@@ -500,14 +492,11 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|generateParserResult (BibEntry entry, GroupTreeNode groupRoot)
+DECL|method|generateParserResult (GroupTreeNode groupRoot)
 specifier|private
 name|ParserResult
 name|generateParserResult
 parameter_list|(
-name|BibEntry
-name|entry
-parameter_list|,
 name|GroupTreeNode
 name|groupRoot
 parameter_list|)

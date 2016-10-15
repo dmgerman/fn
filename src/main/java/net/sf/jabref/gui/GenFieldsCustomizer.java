@@ -468,12 +468,6 @@ operator|new
 name|GridBagLayout
 argument_list|()
 decl_stmt|;
-DECL|field|parentFrame
-specifier|private
-specifier|final
-name|JabRefFrame
-name|parentFrame
-decl_stmt|;
 DECL|field|revert
 specifier|private
 specifier|final
@@ -505,10 +499,6 @@ argument_list|)
 argument_list|,
 literal|false
 argument_list|)
-expr_stmt|;
-name|parentFrame
-operator|=
-name|frame
 expr_stmt|;
 name|helpBut
 operator|=

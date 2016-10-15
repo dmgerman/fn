@@ -570,6 +570,16 @@ name|javax
 operator|.
 name|swing
 operator|.
+name|SwingConstants
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
 name|SwingUtilities
 import|;
 end_import
@@ -3734,7 +3744,7 @@ name|labelSearchingDirectoryInfo
 operator|.
 name|setHorizontalAlignment
 argument_list|(
-name|JTextField
+name|SwingConstants
 operator|.
 name|CENTER
 argument_list|)
@@ -3763,7 +3773,7 @@ name|labelImportingInfo
 operator|.
 name|setHorizontalAlignment
 argument_list|(
-name|JTextField
+name|SwingConstants
 operator|.
 name|CENTER
 argument_list|)

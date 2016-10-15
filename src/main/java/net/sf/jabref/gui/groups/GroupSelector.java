@@ -104,6 +104,18 @@ name|awt
 operator|.
 name|event
 operator|.
+name|InputEvent
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|awt
+operator|.
+name|event
+operator|.
 name|KeyEvent
 import|;
 end_import
@@ -309,6 +321,16 @@ operator|.
 name|swing
 operator|.
 name|KeyStroke
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|ScrollPaneConstants
 import|;
 end_import
 
@@ -2314,8 +2336,6 @@ name|GroupDialog
 argument_list|(
 name|frame
 argument_list|,
-name|panel
-argument_list|,
 literal|null
 argument_list|)
 decl_stmt|;
@@ -2870,11 +2890,11 @@ name|JScrollPane
 argument_list|(
 name|groupsTree
 argument_list|,
-name|JScrollPane
+name|ScrollPaneConstants
 operator|.
 name|VERTICAL_SCROLLBAR_AS_NEEDED
 argument_list|,
-name|JScrollPane
+name|ScrollPaneConstants
 operator|.
 name|HORIZONTAL_SCROLLBAR_AS_NEEDED
 argument_list|)
@@ -2985,7 +3005,7 @@ name|KeyEvent
 operator|.
 name|VK_UP
 argument_list|,
-name|KeyEvent
+name|InputEvent
 operator|.
 name|CTRL_MASK
 argument_list|)
@@ -3014,7 +3034,7 @@ name|KeyEvent
 operator|.
 name|VK_DOWN
 argument_list|,
-name|KeyEvent
+name|InputEvent
 operator|.
 name|CTRL_MASK
 argument_list|)
@@ -3043,7 +3063,7 @@ name|KeyEvent
 operator|.
 name|VK_LEFT
 argument_list|,
-name|KeyEvent
+name|InputEvent
 operator|.
 name|CTRL_MASK
 argument_list|)
@@ -3072,7 +3092,7 @@ name|KeyEvent
 operator|.
 name|VK_RIGHT
 argument_list|,
-name|KeyEvent
+name|InputEvent
 operator|.
 name|CTRL_MASK
 argument_list|)
@@ -5466,8 +5486,6 @@ name|GroupDialog
 argument_list|(
 name|frame
 argument_list|,
-name|panel
-argument_list|,
 name|oldGroup
 argument_list|)
 decl_stmt|;
@@ -5761,8 +5779,6 @@ name|GroupDialog
 argument_list|(
 name|frame
 argument_list|,
-name|panel
-argument_list|,
 literal|null
 argument_list|)
 decl_stmt|;
@@ -5975,8 +5991,6 @@ operator|new
 name|GroupDialog
 argument_list|(
 name|frame
-argument_list|,
-name|panel
 argument_list|,
 literal|null
 argument_list|)

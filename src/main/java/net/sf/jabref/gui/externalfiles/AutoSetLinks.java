@@ -198,6 +198,16 @@ name|javax
 operator|.
 name|swing
 operator|.
+name|SwingConstants
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
 name|SwingUtilities
 import|;
 end_import
@@ -552,7 +562,7 @@ init|=
 operator|new
 name|JProgressBar
 argument_list|(
-name|JProgressBar
+name|SwingConstants
 operator|.
 name|HORIZONTAL
 argument_list|,

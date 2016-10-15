@@ -118,6 +118,16 @@ name|ListSelectionModel
 import|;
 end_import
 
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|ScrollPaneConstants
+import|;
+end_import
+
 begin_comment
 comment|/**  * Renders possible autocomplete items in form of a simple list.  *  * @param<E> the type of the items  */
 end_comment
@@ -352,7 +362,7 @@ name|scrollPane
 operator|.
 name|setVerticalScrollBarPolicy
 argument_list|(
-name|JScrollPane
+name|ScrollPaneConstants
 operator|.
 name|VERTICAL_SCROLLBAR_NEVER
 argument_list|)
@@ -361,7 +371,7 @@ name|scrollPane
 operator|.
 name|setHorizontalScrollBarPolicy
 argument_list|(
-name|JScrollPane
+name|ScrollPaneConstants
 operator|.
 name|HORIZONTAL_SCROLLBAR_NEVER
 argument_list|)
