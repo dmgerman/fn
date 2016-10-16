@@ -202,7 +202,7 @@ name|org
 operator|.
 name|jbibtex
 operator|.
-name|TokenMgrError
+name|TokenMgrException
 import|;
 end_import
 
@@ -254,6 +254,36 @@ operator|new
 name|BibTeXConverter
 argument_list|()
 decl_stmt|;
+comment|/**      * Generates a Citation based on the given entry and style      * WARNING: the citation is generated with JavaScript which may take some time, better call it in outside the main Thread      */
+DECL|method|generateCitation (BibEntry entry, CitationStyle style)
+specifier|protected
+specifier|static
+name|String
+name|generateCitation
+parameter_list|(
+name|BibEntry
+name|entry
+parameter_list|,
+name|CitationStyle
+name|style
+parameter_list|)
+block|{
+return|return
+name|generateCitation
+argument_list|(
+name|entry
+argument_list|,
+name|style
+operator|.
+name|getSource
+argument_list|()
+argument_list|,
+name|CitationStyleOutputFormat
+operator|.
+name|HTML
+argument_list|)
+return|;
+block|}
 comment|/**      * Generates a Citation based on the given entry and style      * WARNING: the citation is generated with JavaScript which may take some time, better call it in outside the main Thread      */
 DECL|method|generateCitation (BibEntry entry, String style)
 specifier|protected
@@ -439,15 +469,23 @@ name|LOGGER
 operator|.
 name|error
 argument_list|(
-literal|"Could not generate BibEntry Citation"
+literal|"Could not generate BibEntry citation"
 argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
+return|return
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Cannot generate preview based on selected citation style."
+argument_list|)
+return|;
 block|}
 catch|catch
 parameter_list|(
-name|TokenMgrError
+name|TokenMgrException
 name|e
 parameter_list|)
 block|{
@@ -465,6 +503,29 @@ return|return
 operator|new
 name|StringBuilder
 argument_list|()
+operator|.
+name|append
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Cannot generate preview based on selected citation style."
+argument_list|)
+argument_list|)
+operator|.
+name|append
+argument_list|(
+name|outputFormat
+operator|==
+name|CitationStyleOutputFormat
+operator|.
+name|HTML
+condition|?
+literal|"<br>"
+else|:
+literal|"\n"
+argument_list|)
 operator|.
 name|append
 argument_list|(
@@ -501,9 +562,6 @@ name|toString
 argument_list|()
 return|;
 block|}
-return|return
-literal|""
-return|;
 block|}
 block|}
 end_class
