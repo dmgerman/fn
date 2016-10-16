@@ -285,10 +285,7 @@ name|isPresent
 argument_list|()
 condition|)
 block|{
-name|Optional
-argument_list|<
 name|CitationStyle
-argument_list|>
 name|citationStyle
 init|=
 name|basePanel
@@ -302,14 +299,6 @@ operator|.
 name|getCitationStyle
 argument_list|()
 decl_stmt|;
-if|if
-condition|(
-name|citationStyle
-operator|.
-name|isPresent
-argument_list|()
-condition|)
-block|{
 name|previewPane
 operator|.
 name|setText
@@ -334,9 +323,6 @@ literal|": "
 operator|+
 name|citationStyle
 operator|.
-name|get
-argument_list|()
-operator|.
 name|getTitle
 argument_list|()
 operator|+
@@ -345,7 +331,6 @@ operator|+
 literal|"</i>"
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 name|previewPane
 operator|.
