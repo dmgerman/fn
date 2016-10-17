@@ -40,17 +40,6 @@ name|PdfFileFilter
 implements|implements
 name|FileFilter
 block|{
-DECL|field|INSTANCE
-specifier|public
-specifier|static
-specifier|final
-name|PdfFileFilter
-name|INSTANCE
-init|=
-operator|new
-name|PdfFileFilter
-argument_list|()
-decl_stmt|;
 annotation|@
 name|Override
 DECL|method|accept (File file)
@@ -79,6 +68,7 @@ return|;
 block|}
 DECL|method|accept (String path)
 specifier|public
+specifier|static
 name|boolean
 name|accept
 parameter_list|(

@@ -106,6 +106,16 @@ name|OverlayLayout
 import|;
 end_import
 
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|ScrollPaneConstants
+import|;
+end_import
+
 begin_comment
 comment|/**  * Supports an underlying text for JComponent  */
 end_comment
@@ -228,7 +238,7 @@ name|scroller
 operator|.
 name|setVerticalScrollBarPolicy
 argument_list|(
-name|JScrollPane
+name|ScrollPaneConstants
 operator|.
 name|VERTICAL_SCROLLBAR_ALWAYS
 argument_list|)

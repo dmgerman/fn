@@ -1522,13 +1522,14 @@ argument_list|)
 operator|.
 name|ifPresent
 argument_list|(
-name|title
+name|dirtyTitle
 lambda|->
 block|{
 comment|// USe the alt-text and replace image links
+name|String
 name|title
-operator|=
-name|title
+init|=
+name|dirtyTitle
 operator|.
 name|replaceAll
 argument_list|(
@@ -1536,7 +1537,7 @@ literal|"[ ]?img src=[^ ]+ alt=\"([^\"]+)\">[ ]?"
 argument_list|,
 literal|"\\$$1\\$"
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 comment|// Try to sort out most of the /spl / conversions
 comment|// Deal with this specific nested type first
 name|title
@@ -1719,12 +1720,13 @@ argument_list|)
 operator|.
 name|ifPresent
 argument_list|(
-name|author
+name|dirtyAuthor
 lambda|->
 block|{
+name|String
 name|author
-operator|=
-name|author
+init|=
+name|dirtyAuthor
 operator|.
 name|replaceAll
 argument_list|(
@@ -1732,7 +1734,7 @@ literal|"\\s+"
 argument_list|,
 literal|" "
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 comment|//reorder the "Jr." "Sr." etc to the correct ordering
 name|String
 index|[]
@@ -1885,12 +1887,13 @@ argument_list|)
 operator|.
 name|ifPresent
 argument_list|(
-name|month
+name|dirtyMonth
 lambda|->
 block|{
+name|String
 name|month
 operator|=
-name|month
+name|dirtyMonth
 operator|.
 name|replace
 argument_list|(
@@ -3286,14 +3289,15 @@ argument_list|)
 operator|.
 name|ifPresent
 argument_list|(
-name|abstr
+name|dirtyAbstr
 lambda|->
 block|{
 comment|// Try to sort out most of the /spl / conversions
 comment|// Deal with this specific nested type first
+name|String
 name|abstr
-operator|=
-name|abstr
+init|=
+name|dirtyAbstr
 operator|.
 name|replaceAll
 argument_list|(
@@ -3301,7 +3305,7 @@ literal|"/sub /spl infin//"
 argument_list|,
 literal|"\\$_\\\\infty\\$"
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|abstr
 operator|=
 name|abstr

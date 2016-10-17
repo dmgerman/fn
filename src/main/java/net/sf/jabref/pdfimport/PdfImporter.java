@@ -751,13 +751,6 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
-name|PdfFileFilter
-name|pdfFilter
-init|=
-name|PdfFileFilter
-operator|.
-name|INSTANCE
-decl_stmt|;
 for|for
 control|(
 name|String
@@ -769,7 +762,7 @@ block|{
 if|if
 condition|(
 operator|!
-name|pdfFilter
+name|PdfFileFilter
 operator|.
 name|accept
 argument_list|(

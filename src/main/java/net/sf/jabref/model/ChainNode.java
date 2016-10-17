@@ -294,6 +294,14 @@ name|void
 name|removeChild
 parameter_list|()
 block|{
+if|if
+condition|(
+name|child
+operator|!=
+literal|null
+condition|)
+block|{
+comment|// NPE if this is ever called
 name|child
 operator|.
 name|setParent
@@ -301,6 +309,7 @@ argument_list|(
 literal|null
 argument_list|)
 expr_stmt|;
+block|}
 name|child
 operator|=
 literal|null

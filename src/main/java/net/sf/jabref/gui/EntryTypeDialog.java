@@ -546,6 +546,14 @@ decl_stmt|;
 DECL|field|fetcherWorker
 specifier|private
 name|SwingWorker
+argument_list|<
+name|Optional
+argument_list|<
+name|BibEntry
+argument_list|>
+argument_list|,
+name|Void
+argument_list|>
 name|fetcherWorker
 init|=
 operator|new

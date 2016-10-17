@@ -101,11 +101,9 @@ name|CitationStyle
 operator|.
 name|getDefault
 argument_list|()
-operator|.
-name|getSource
-argument_list|()
 argument_list|)
 decl_stmt|;
+comment|// if the default citation style changes this has to be modified
 name|String
 name|expected
 init|=
