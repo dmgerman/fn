@@ -18,7 +18,27 @@ name|java
 operator|.
 name|io
 operator|.
+name|BufferedReader
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
 name|File
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|FileInputStream
 import|;
 end_import
 
@@ -39,6 +59,16 @@ operator|.
 name|io
 operator|.
 name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|InputStreamReader
 import|;
 end_import
 
@@ -712,15 +742,17 @@ literal|".pdf"
 argument_list|)
 condition|)
 block|{
-name|ParserResult
-name|result
+name|BufferedReader
+name|reader
 init|=
-name|BibtexParser
-operator|.
-name|parse
+operator|new
+name|BufferedReader
 argument_list|(
 operator|new
-name|FileReader
+name|InputStreamReader
+argument_list|(
+operator|new
+name|FileInputStream
 argument_list|(
 name|args
 index|[
@@ -728,7 +760,25 @@ literal|0
 index|]
 argument_list|)
 argument_list|,
+name|StandardCharsets
+operator|.
+name|UTF_8
+argument_list|)
+argument_list|)
+decl_stmt|;
+comment|// we need ParserResult as we access result.getDatabase() later
+name|ParserResult
+name|result
+init|=
+operator|new
+name|BibtexParser
+argument_list|(
 name|importFormatPreferences
+argument_list|)
+operator|.
+name|parse
+argument_list|(
+name|reader
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -957,7 +1007,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Print usage information for the command line tool xmpUtil.      *      * @see XMPUtil#main(String[])      */
+comment|/**      * Print usage information for the command line tool xmpUtil.      *      * @see XMPUtilMain#main(String[])      */
 DECL|method|usage ()
 specifier|private
 specifier|static
