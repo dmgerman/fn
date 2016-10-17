@@ -578,7 +578,7 @@ name|setField
 argument_list|(
 literal|"month"
 argument_list|,
-literal|"#sep#"
+literal|"#dec#"
 argument_list|)
 expr_stmt|;
 name|famaeyMcGaughEntry
