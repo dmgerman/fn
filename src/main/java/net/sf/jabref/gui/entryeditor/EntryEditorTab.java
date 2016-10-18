@@ -1186,16 +1186,7 @@ argument_list|,
 name|prompt
 argument_list|)
 expr_stmt|;
-name|bPanel
-operator|.
-name|frame
-argument_list|()
-operator|.
-name|getGlobalSearchBar
-argument_list|()
-operator|.
-name|getSearchQueryHighlightObservable
-argument_list|()
+name|parent
 operator|.
 name|addSearchListener
 argument_list|(

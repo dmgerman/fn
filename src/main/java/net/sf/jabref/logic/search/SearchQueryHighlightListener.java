@@ -36,6 +36,20 @@ name|Pattern
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|eventbus
+operator|.
+name|Subscribe
+import|;
+end_import
+
 begin_comment
 comment|/**  * Every Listener that wants to receive events from a search needs to  * implement this interface  *  * @author Ben  *  */
 end_comment
@@ -49,6 +63,8 @@ interface|interface
 name|SearchQueryHighlightListener
 block|{
 comment|/**      * Pattern with which one can determine what to highlight      *      * @param words null if nothing is searched for      */
+annotation|@
+name|Subscribe
 DECL|method|highlightPattern (Optional<Pattern> highlightPattern)
 name|void
 name|highlightPattern
