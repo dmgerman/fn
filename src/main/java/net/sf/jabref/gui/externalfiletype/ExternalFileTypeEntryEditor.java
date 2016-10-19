@@ -531,7 +531,7 @@ name|get
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|FILE_WORKING_DIRECTORY
+name|WORKING_DIRECTORY
 argument_list|)
 expr_stmt|;
 block|}
@@ -577,7 +577,7 @@ name|put
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|FILE_WORKING_DIRECTORY
+name|WORKING_DIRECTORY
 argument_list|,
 name|applicationDir
 operator|.
