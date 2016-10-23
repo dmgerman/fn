@@ -605,7 +605,7 @@ name|setField
 argument_list|(
 literal|"eid"
 argument_list|,
-literal|"#10"
+literal|"10"
 argument_list|)
 expr_stmt|;
 name|famaeyMcGaughEntry
@@ -623,7 +623,7 @@ name|setField
 argument_list|(
 literal|"pages"
 argument_list|,
-literal|"#10"
+literal|"10"
 argument_list|)
 expr_stmt|;
 name|famaeyMcGaughEntry
