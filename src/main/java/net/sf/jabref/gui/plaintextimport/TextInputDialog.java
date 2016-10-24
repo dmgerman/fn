@@ -502,6 +502,16 @@ name|javax
 operator|.
 name|swing
 operator|.
+name|ScrollPaneConstants
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
 name|border
 operator|.
 name|TitledBorder
@@ -2096,7 +2106,7 @@ name|fieldScroller
 operator|.
 name|setVerticalScrollBarPolicy
 argument_list|(
-name|JScrollPane
+name|ScrollPaneConstants
 operator|.
 name|VERTICAL_SCROLLBAR_AS_NEEDED
 argument_list|)
@@ -2718,7 +2728,7 @@ name|paneScrollPane
 operator|.
 name|setVerticalScrollBarPolicy
 argument_list|(
-name|JScrollPane
+name|ScrollPaneConstants
 operator|.
 name|VERTICAL_SCROLLBAR_ALWAYS
 argument_list|)

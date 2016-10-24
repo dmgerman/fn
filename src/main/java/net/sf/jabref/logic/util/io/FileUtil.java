@@ -572,6 +572,39 @@ argument_list|()
 return|;
 block|}
 block|}
+comment|/**      * Adds an extension to the given file name. The original extension is not replaced. That means,      * "demo.bib", ".sav" gets "demo.bib.sav" and not "demo.sav"      *      * @param path the path to add the extension to      * @param extension the extension to add      * @return the with the modified file name      */
+DECL|method|addExtension (Path path, String extension)
+specifier|public
+specifier|static
+name|Path
+name|addExtension
+parameter_list|(
+name|Path
+name|path
+parameter_list|,
+name|String
+name|extension
+parameter_list|)
+block|{
+name|Path
+name|fileName
+init|=
+name|path
+operator|.
+name|getFileName
+argument_list|()
+decl_stmt|;
+return|return
+name|path
+operator|.
+name|resolveSibling
+argument_list|(
+name|fileName
+operator|+
+name|extension
+argument_list|)
+return|;
+block|}
 comment|/**      * Creates the minimal unique path substring for each file among multiple file paths.      *      * @param paths the file paths      * @return the minimal unique path substring for each file path      */
 DECL|method|uniquePathSubstrings (List<String> paths)
 specifier|public

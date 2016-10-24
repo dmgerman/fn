@@ -74,7 +74,7 @@ name|awt
 operator|.
 name|event
 operator|.
-name|FocusEvent
+name|KeyEvent
 import|;
 end_import
 
@@ -86,7 +86,7 @@ name|awt
 operator|.
 name|event
 operator|.
-name|FocusListener
+name|KeyListener
 import|;
 end_import
 
@@ -111,18 +111,18 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A text field which displays a predefined text (e.g. "Search") if it has not the focus and no text is entered.  * Implementation based on https://gmigdos.wordpress.com/2010/03/30/java-a-custom-jtextfield-for-searching/  */
+comment|/**  * A text field which displays a predefined text (e.g. "Search") if the text field is empty.  * This is similar to a html5 input element with a defined placeholder attribute.  * Implementation based on https://gmigdos.wordpress.com/2010/03/30/java-a-custom-jtextfield-for-searching/  */
 end_comment
 
 begin_class
-DECL|class|JTextFieldWithUnfocusedText
+DECL|class|JTextFieldWithPlaceholder
 specifier|public
 class|class
-name|JTextFieldWithUnfocusedText
+name|JTextFieldWithPlaceholder
 extends|extends
 name|JTextField
 implements|implements
-name|FocusListener
+name|KeyListener
 block|{
 DECL|field|textWhenNotFocused
 specifier|private
@@ -130,12 +130,36 @@ specifier|final
 name|String
 name|textWhenNotFocused
 decl_stmt|;
-DECL|method|JTextFieldWithUnfocusedText (String textWhenNotFocused)
+comment|/**      * Additionally to {@link JTextFieldWithPlaceholder#JTextFieldWithPlaceholder(String)}      * this also sets the initial text of the text field component.      *      * @param content as the text of the textfield      * @param placeholder as the placeholder of the textfield      */
+DECL|method|JTextFieldWithPlaceholder (String content, String placeholder)
 specifier|public
-name|JTextFieldWithUnfocusedText
+name|JTextFieldWithPlaceholder
 parameter_list|(
 name|String
-name|textWhenNotFocused
+name|content
+parameter_list|,
+name|String
+name|placeholder
+parameter_list|)
+block|{
+name|this
+argument_list|(
+name|placeholder
+argument_list|)
+expr_stmt|;
+name|setText
+argument_list|(
+name|content
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * This will create a {@link JTextField} with a placeholder text. The placeholder      * will always be displayed if the text of the {@link JTextField} is empty.      *      * @param placeholder as the placeholder of the textfield      */
+DECL|method|JTextFieldWithPlaceholder (String placeholder)
+specifier|public
+name|JTextFieldWithPlaceholder
+parameter_list|(
+name|String
+name|placeholder
 parameter_list|)
 block|{
 name|super
@@ -159,42 +183,29 @@ name|this
 operator|.
 name|textWhenNotFocused
 operator|=
-name|textWhenNotFocused
-expr_stmt|;
-name|this
-operator|.
-name|addFocusListener
-argument_list|(
-name|this
-argument_list|)
+name|placeholder
 expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|paintComponent (Graphics g)
+DECL|method|paintComponent (Graphics graphics)
 specifier|protected
 name|void
 name|paintComponent
 parameter_list|(
 name|Graphics
-name|g
+name|graphics
 parameter_list|)
 block|{
 name|super
 operator|.
 name|paintComponent
 argument_list|(
-name|g
+name|graphics
 argument_list|)
 expr_stmt|;
 if|if
 condition|(
-operator|!
-name|this
-operator|.
-name|hasFocus
-argument_list|()
-operator|&&
 name|this
 operator|.
 name|getText
@@ -215,7 +226,7 @@ decl_stmt|;
 name|Font
 name|prev
 init|=
-name|g
+name|graphics
 operator|.
 name|getFont
 argument_list|()
@@ -223,12 +234,12 @@ decl_stmt|;
 name|Color
 name|prevColor
 init|=
-name|g
+name|graphics
 operator|.
 name|getColor
 argument_list|()
 decl_stmt|;
-name|g
+name|graphics
 operator|.
 name|setColor
 argument_list|(
@@ -241,9 +252,9 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 name|int
-name|h
+name|textHeight
 init|=
-name|g
+name|graphics
 operator|.
 name|getFontMetrics
 argument_list|()
@@ -259,13 +270,13 @@ operator|(
 operator|(
 name|height
 operator|-
-name|h
+name|textHeight
 operator|)
 operator|/
 literal|2
 operator|)
 operator|+
-name|h
+name|textHeight
 operator|)
 operator|-
 literal|4
@@ -286,7 +297,7 @@ init|=
 operator|(
 name|Graphics2D
 operator|)
-name|g
+name|graphics
 decl_stmt|;
 name|RenderingHints
 name|hints
@@ -327,14 +338,14 @@ argument_list|(
 name|hints
 argument_list|)
 expr_stmt|;
-name|g
+name|graphics
 operator|.
 name|setFont
 argument_list|(
 name|prev
 argument_list|)
 expr_stmt|;
-name|g
+name|graphics
 operator|.
 name|setColor
 argument_list|(
@@ -345,14 +356,25 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|focusGained (FocusEvent e)
+DECL|method|keyTyped (KeyEvent e)
 specifier|public
 name|void
-name|focusGained
+name|keyTyped
 parameter_list|(
-name|FocusEvent
+name|KeyEvent
 name|e
 parameter_list|)
+block|{
+if|if
+condition|(
+name|this
+operator|.
+name|getText
+argument_list|()
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
 block|{
 name|this
 operator|.
@@ -360,22 +382,64 @@ name|repaint
 argument_list|()
 expr_stmt|;
 block|}
+block|}
 annotation|@
 name|Override
-DECL|method|focusLost (FocusEvent e)
+DECL|method|keyPressed (KeyEvent e)
 specifier|public
 name|void
-name|focusLost
+name|keyPressed
 parameter_list|(
-name|FocusEvent
+name|KeyEvent
 name|e
 parameter_list|)
+block|{
+if|if
+condition|(
+name|this
+operator|.
+name|getText
+argument_list|()
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
 block|{
 name|this
 operator|.
 name|repaint
 argument_list|()
 expr_stmt|;
+block|}
+block|}
+annotation|@
+name|Override
+DECL|method|keyReleased (KeyEvent e)
+specifier|public
+name|void
+name|keyReleased
+parameter_list|(
+name|KeyEvent
+name|e
+parameter_list|)
+block|{
+if|if
+condition|(
+name|this
+operator|.
+name|getText
+argument_list|()
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+name|this
+operator|.
+name|repaint
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 block|}
 end_class

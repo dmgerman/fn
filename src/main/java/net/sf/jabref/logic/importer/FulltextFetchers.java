@@ -397,7 +397,9 @@ name|add
 argument_list|(
 operator|new
 name|GoogleScholar
-argument_list|()
+argument_list|(
+name|importFormatPreferences
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -561,6 +563,8 @@ block|}
 catch|catch
 parameter_list|(
 name|IOException
+decl||
+name|FetcherException
 name|e
 parameter_list|)
 block|{

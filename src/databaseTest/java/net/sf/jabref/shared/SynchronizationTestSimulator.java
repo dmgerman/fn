@@ -160,6 +160,22 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|shared
+operator|.
+name|exception
+operator|.
+name|InvalidDBMSConnectionPropertiesException
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|junit
@@ -302,6 +318,8 @@ throws|throws
 name|SQLException
 throws|,
 name|DatabaseNotSupportedException
+throws|,
+name|InvalidDBMSConnectionPropertiesException
 block|{
 name|this
 operator|.

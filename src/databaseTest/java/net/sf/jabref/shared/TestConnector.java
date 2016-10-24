@@ -22,6 +22,22 @@ name|SQLException
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|shared
+operator|.
+name|exception
+operator|.
+name|InvalidDBMSConnectionPropertiesException
+import|;
+end_import
+
 begin_class
 DECL|class|TestConnector
 specifier|public
@@ -45,6 +61,8 @@ name|dbmsType
 parameter_list|)
 throws|throws
 name|SQLException
+throws|,
+name|InvalidDBMSConnectionPropertiesException
 block|{
 name|currentConnectionType
 operator|=

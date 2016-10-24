@@ -882,6 +882,13 @@ operator|.
 name|WILL_SHOW_EDITOR
 operator|)
 operator|&&
+name|panel
+operator|.
+name|getCurrentEditor
+argument_list|()
+operator|!=
+literal|null
+operator|&&
 name|newSelected
 operator|==
 name|panel

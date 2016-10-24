@@ -20,16 +20,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|ArrayList
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|List
 import|;
 end_import
@@ -76,30 +66,34 @@ name|Pattern
 import|;
 end_import
 
-begin_comment
-comment|/**  * @deprecated rewrite this class using the EventBus framework  */
-end_comment
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|eventbus
+operator|.
+name|EventBus
+import|;
+end_import
 
 begin_class
-annotation|@
-name|Deprecated
 DECL|class|SearchQueryHighlightObservable
 specifier|public
 class|class
 name|SearchQueryHighlightObservable
 block|{
-DECL|field|listeners
+DECL|field|eventBus
 specifier|private
 specifier|final
-name|List
-argument_list|<
-name|SearchQueryHighlightListener
-argument_list|>
-name|listeners
+name|EventBus
+name|eventBus
 init|=
 operator|new
-name|ArrayList
-argument_list|<>
+name|EventBus
 argument_list|()
 decl_stmt|;
 DECL|field|pattern
@@ -118,7 +112,7 @@ decl_stmt|;
 comment|/**      * Adds a SearchQueryHighlightListener to the search bar. The added listener is immediately informed about the current search.      * Subscribers will be notified about searches.      *      * @param newListener SearchQueryHighlightListener to be added      */
 DECL|method|addSearchListener (SearchQueryHighlightListener newListener)
 specifier|public
-name|SearchQueryHighlightObservable
+name|void
 name|addSearchListener
 parameter_list|(
 name|SearchQueryHighlightListener
@@ -132,20 +126,9 @@ argument_list|(
 name|newListener
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-operator|!
-name|listeners
+name|eventBus
 operator|.
-name|contains
-argument_list|(
-name|newListener
-argument_list|)
-condition|)
-block|{
-name|listeners
-operator|.
-name|add
+name|register
 argument_list|(
 name|newListener
 argument_list|)
@@ -158,9 +141,29 @@ name|pattern
 argument_list|)
 expr_stmt|;
 block|}
-return|return
-name|this
-return|;
+DECL|method|removeSearchListener (SearchQueryHighlightListener listener)
+specifier|public
+name|void
+name|removeSearchListener
+parameter_list|(
+name|SearchQueryHighlightListener
+name|listener
+parameter_list|)
+block|{
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|listener
+argument_list|)
+expr_stmt|;
+name|eventBus
+operator|.
+name|unregister
+argument_list|(
+name|listener
+argument_list|)
+expr_stmt|;
 block|}
 comment|/**      * Fires an event if a search was started (or cleared)      *      * @param searchQuery the search query      */
 DECL|method|fireSearchlistenerEvent (SearchQuery searchQuery)
@@ -228,22 +231,13 @@ name|update
 parameter_list|()
 block|{
 comment|// Fire an event for every listener
-for|for
-control|(
-name|SearchQueryHighlightListener
-name|s
-range|:
-name|listeners
-control|)
-block|{
-name|s
+name|eventBus
 operator|.
-name|highlightPattern
+name|post
 argument_list|(
 name|pattern
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 comment|// Returns a regular expression pattern in the form (w1)|(w2)| ... wi are escaped if no regular expression search is enabled
 DECL|method|getPatternForWords (List<String> words, boolean useRegex, boolean isCaseSensitive)

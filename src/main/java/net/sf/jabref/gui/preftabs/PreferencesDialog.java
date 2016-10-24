@@ -765,8 +765,6 @@ argument_list|(
 operator|new
 name|EntryEditorPrefsTab
 argument_list|(
-name|frame
-argument_list|,
 name|prefs
 argument_list|)
 argument_list|)
@@ -1332,6 +1330,9 @@ operator|new
 name|FileDialog
 argument_list|(
 name|frame
+argument_list|,
+name|getPrefsExportPath
+argument_list|()
 argument_list|)
 operator|.
 name|withExtension
@@ -1632,6 +1633,25 @@ expr_stmt|;
 name|pack
 argument_list|()
 expr_stmt|;
+block|}
+DECL|method|getPrefsExportPath ()
+specifier|private
+name|String
+name|getPrefsExportPath
+parameter_list|()
+block|{
+return|return
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|get
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|PREFS_EXPORT_PATH
+argument_list|)
+return|;
 block|}
 DECL|method|updateAfterPreferenceChanges ()
 specifier|private
@@ -1938,6 +1958,22 @@ name|prefs
 operator|.
 name|exportPreferences
 argument_list|(
+name|exportFile
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|put
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|PREFS_EXPORT_PATH
+argument_list|,
 name|exportFile
 operator|.
 name|toString

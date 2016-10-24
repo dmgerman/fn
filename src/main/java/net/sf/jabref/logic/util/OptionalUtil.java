@@ -124,10 +124,7 @@ return|;
 block|}
 block|}
 annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"varargs"
-argument_list|)
+name|SafeVarargs
 DECL|method|toList (Optional<T>.... values)
 specifier|public
 specifier|static

@@ -274,6 +274,18 @@ name|swing
 operator|.
 name|event
 operator|.
+name|ListDataEvent
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|event
+operator|.
 name|ListDataListener
 import|;
 end_import
@@ -299,6 +311,18 @@ operator|.
 name|event
 operator|.
 name|ListSelectionListener
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|table
+operator|.
+name|AbstractTableModel
 import|;
 end_import
 
@@ -1931,9 +1955,7 @@ name|bibDatabaseMode
 argument_list|)
 expr_stmt|;
 name|updateTypesForEntries
-argument_list|(
-name|nm
-argument_list|)
+argument_list|()
 expr_stmt|;
 continue|continue;
 block|}
@@ -2134,12 +2156,7 @@ name|typ
 argument_list|)
 expr_stmt|;
 name|updateTypesForEntries
-argument_list|(
-name|typ
-operator|.
-name|getName
 argument_list|()
-argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -2345,14 +2362,7 @@ name|bibDatabaseMode
 argument_list|)
 expr_stmt|;
 name|updateTypesForEntries
-argument_list|(
-name|StringUtil
-operator|.
-name|capitalizeFirst
-argument_list|(
-name|name
-argument_list|)
-argument_list|)
+argument_list|()
 expr_stmt|;
 name|changed
 operator|.
@@ -2599,14 +2609,11 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * Cycle through all databases, and make sure everything is updated with      * the new type customization. This includes making sure all entries have      * a valid type, that no obsolete entry editors are around, and that      * the right-click menus' change type menu is up-to-date.      */
-DECL|method|updateTypesForEntries (String typeName)
+DECL|method|updateTypesForEntries ()
 specifier|private
 name|void
 name|updateTypesForEntries
-parameter_list|(
-name|String
-name|typeName
-parameter_list|)
+parameter_list|()
 block|{
 for|for
 control|(
@@ -2674,12 +2681,6 @@ control|)
 block|{
 operator|(
 operator|(
-name|javax
-operator|.
-name|swing
-operator|.
-name|table
-operator|.
 name|AbstractTableModel
 operator|)
 name|basePanel
@@ -2895,17 +2896,11 @@ name|ListDataListener
 block|{
 annotation|@
 name|Override
-DECL|method|intervalAdded (javax.swing.event.ListDataEvent e)
+DECL|method|intervalAdded (ListDataEvent e)
 specifier|public
 name|void
 name|intervalAdded
 parameter_list|(
-name|javax
-operator|.
-name|swing
-operator|.
-name|event
-operator|.
 name|ListDataEvent
 name|e
 parameter_list|)
@@ -2916,17 +2911,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|intervalRemoved (javax.swing.event.ListDataEvent e)
+DECL|method|intervalRemoved (ListDataEvent e)
 specifier|public
 name|void
 name|intervalRemoved
 parameter_list|(
-name|javax
-operator|.
-name|swing
-operator|.
-name|event
-operator|.
 name|ListDataEvent
 name|e
 parameter_list|)
@@ -2937,17 +2926,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|contentsChanged (javax.swing.event.ListDataEvent e)
+DECL|method|contentsChanged (ListDataEvent e)
 specifier|public
 name|void
 name|contentsChanged
 parameter_list|(
-name|javax
-operator|.
-name|swing
-operator|.
-name|event
-operator|.
 name|ListDataEvent
 name|e
 parameter_list|)

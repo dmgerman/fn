@@ -104,6 +104,18 @@ name|awt
 operator|.
 name|event
 operator|.
+name|InputEvent
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|awt
+operator|.
+name|event
+operator|.
 name|KeyEvent
 import|;
 end_import
@@ -309,6 +321,16 @@ operator|.
 name|swing
 operator|.
 name|KeyStroke
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|ScrollPaneConstants
 import|;
 end_import
 
@@ -549,6 +571,22 @@ operator|.
 name|help
 operator|.
 name|HelpAction
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|keyboard
+operator|.
+name|KeyBinding
 import|;
 end_import
 
@@ -1336,6 +1374,11 @@ operator|new
 name|RemoveFromGroupAction
 argument_list|()
 decl_stmt|;
+DECL|field|toggleAction
+specifier|private
+name|ToggleAction
+name|toggleAction
+decl_stmt|;
 comment|/**      * The first element for each group defines which field to use for the quicksearch. The next two define the name and      * regexp for the group.      */
 DECL|method|GroupSelector (JabRefFrame frame, SidePaneManager manager)
 specifier|public
@@ -1367,6 +1410,44 @@ name|lang
 argument_list|(
 literal|"Groups"
 argument_list|)
+argument_list|)
+expr_stmt|;
+name|toggleAction
+operator|=
+operator|new
+name|ToggleAction
+argument_list|(
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
+literal|"Toggle groups interface"
+argument_list|)
+argument_list|,
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
+literal|"Toggle groups interface"
+argument_list|)
+argument_list|,
+name|Globals
+operator|.
+name|getKeyPrefs
+argument_list|()
+operator|.
+name|getKey
+argument_list|(
+name|KeyBinding
+operator|.
+name|TOGGLE_GROUPS_INTERFACE
+argument_list|)
+argument_list|,
+name|IconTheme
+operator|.
+name|JabRefIcon
+operator|.
+name|TOGGLE_GROUPS
 argument_list|)
 expr_stmt|;
 name|this
@@ -2255,8 +2336,6 @@ name|GroupDialog
 argument_list|(
 name|frame
 argument_list|,
-name|panel
-argument_list|,
 literal|null
 argument_list|)
 decl_stmt|;
@@ -2811,11 +2890,11 @@ name|JScrollPane
 argument_list|(
 name|groupsTree
 argument_list|,
-name|JScrollPane
+name|ScrollPaneConstants
 operator|.
 name|VERTICAL_SCROLLBAR_AS_NEEDED
 argument_list|,
-name|JScrollPane
+name|ScrollPaneConstants
 operator|.
 name|HORIZONTAL_SCROLLBAR_AS_NEEDED
 argument_list|)
@@ -2926,7 +3005,7 @@ name|KeyEvent
 operator|.
 name|VK_UP
 argument_list|,
-name|KeyEvent
+name|InputEvent
 operator|.
 name|CTRL_MASK
 argument_list|)
@@ -2955,7 +3034,7 @@ name|KeyEvent
 operator|.
 name|VK_DOWN
 argument_list|,
-name|KeyEvent
+name|InputEvent
 operator|.
 name|CTRL_MASK
 argument_list|)
@@ -2984,7 +3063,7 @@ name|KeyEvent
 operator|.
 name|VK_LEFT
 argument_list|,
-name|KeyEvent
+name|InputEvent
 operator|.
 name|CTRL_MASK
 argument_list|)
@@ -3013,7 +3092,7 @@ name|KeyEvent
 operator|.
 name|VK_RIGHT
 argument_list|,
-name|KeyEvent
+name|InputEvent
 operator|.
 name|CTRL_MASK
 argument_list|)
@@ -5132,9 +5211,8 @@ name|DISABLED
 argument_list|)
 expr_stmt|;
 block|}
-name|frame
-operator|.
-name|groupToggle
+name|getToggleAction
+argument_list|()
 operator|.
 name|setSelected
 argument_list|(
@@ -5407,8 +5485,6 @@ operator|new
 name|GroupDialog
 argument_list|(
 name|frame
-argument_list|,
-name|panel
 argument_list|,
 name|oldGroup
 argument_list|)
@@ -5703,8 +5779,6 @@ name|GroupDialog
 argument_list|(
 name|frame
 argument_list|,
-name|panel
-argument_list|,
 literal|null
 argument_list|)
 decl_stmt|;
@@ -5917,8 +5991,6 @@ operator|new
 name|GroupDialog
 argument_list|(
 name|frame
-argument_list|,
-name|panel
 argument_list|,
 literal|null
 argument_list|)
@@ -7815,7 +7887,9 @@ argument_list|()
 operator|.
 name|hide
 argument_list|(
-literal|"groups"
+name|GroupSelector
+operator|.
+name|class
 argument_list|)
 expr_stmt|;
 return|return;
@@ -8097,6 +8171,32 @@ literal|null
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
+annotation|@
+name|Override
+DECL|method|grabFocus ()
+specifier|public
+name|void
+name|grabFocus
+parameter_list|()
+block|{
+name|groupsTree
+operator|.
+name|grabFocus
+argument_list|()
+expr_stmt|;
+block|}
+annotation|@
+name|Override
+DECL|method|getToggleAction ()
+specifier|public
+name|ToggleAction
+name|getToggleAction
+parameter_list|()
+block|{
+return|return
+name|toggleAction
+return|;
 block|}
 block|}
 end_class

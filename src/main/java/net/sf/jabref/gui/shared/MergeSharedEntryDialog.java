@@ -114,6 +114,16 @@ name|javax
 operator|.
 name|swing
 operator|.
+name|WindowConstants
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
 name|border
 operator|.
 name|EmptyBorder
@@ -660,7 +670,7 @@ name|mergeDialog
 operator|.
 name|setDefaultCloseOperation
 argument_list|(
-name|JDialog
+name|WindowConstants
 operator|.
 name|DO_NOTHING_ON_CLOSE
 argument_list|)

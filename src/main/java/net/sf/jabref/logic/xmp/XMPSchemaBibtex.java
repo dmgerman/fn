@@ -411,14 +411,19 @@ name|NAMESPACE
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Create schema from an existing XML element.      *      * @param e      *            The existing XML element.      */
-DECL|method|XMPSchemaBibtex (Element e, String namespace)
+comment|/**      * Create schema from an existing XML element.      *      * @param e      *            The existing XML element.      * @param namespace      *            The name space considered. Must currently be there for compatibility reasons despite being unused.      */
+DECL|method|XMPSchemaBibtex (Element e, @SuppressWarnings(R) String namespace)
 specifier|public
 name|XMPSchemaBibtex
 parameter_list|(
 name|Element
 name|e
 parameter_list|,
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 name|String
 name|namespace
 parameter_list|)
@@ -1449,9 +1454,11 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|xmpPreferences
 operator|!=
 literal|null
+operator|)
 operator|&&
 name|xmpPreferences
 operator|.

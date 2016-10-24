@@ -40,22 +40,6 @@ name|jabref
 operator|.
 name|model
 operator|.
-name|database
-operator|.
-name|BibDatabase
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
 name|entry
 operator|.
 name|BibEntry
@@ -96,12 +80,6 @@ specifier|final
 name|BibEntry
 name|entry
 decl_stmt|;
-DECL|field|base
-specifier|private
-specifier|final
-name|BibDatabase
-name|base
-decl_stmt|;
 DECL|field|oldValue
 specifier|private
 specifier|final
@@ -114,13 +92,10 @@ specifier|final
 name|String
 name|newValue
 decl_stmt|;
-DECL|method|UndoableKeyChange (BibDatabase base, BibEntry entry, String oldValue, String newValue)
+DECL|method|UndoableKeyChange (BibEntry entry, String oldValue, String newValue)
 specifier|public
 name|UndoableKeyChange
 parameter_list|(
-name|BibDatabase
-name|base
-parameter_list|,
 name|BibEntry
 name|entry
 parameter_list|,
@@ -131,12 +106,6 @@ name|String
 name|newValue
 parameter_list|)
 block|{
-name|this
-operator|.
-name|base
-operator|=
-name|base
-expr_stmt|;
 name|this
 operator|.
 name|entry
@@ -214,8 +183,9 @@ operator|.
 name|undo
 argument_list|()
 expr_stmt|;
-comment|// Revert the change.
-name|set
+name|entry
+operator|.
+name|setCiteKey
 argument_list|(
 name|oldValue
 argument_list|)
@@ -234,29 +204,11 @@ operator|.
 name|redo
 argument_list|()
 expr_stmt|;
-comment|// Redo the change.
-name|set
+name|entry
+operator|.
+name|setCiteKey
 argument_list|(
 name|newValue
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|set (String to)
-specifier|private
-name|void
-name|set
-parameter_list|(
-name|String
-name|to
-parameter_list|)
-block|{
-name|base
-operator|.
-name|setCiteKeyForEntry
-argument_list|(
-name|entry
-argument_list|,
-name|to
 argument_list|)
 expr_stmt|;
 block|}

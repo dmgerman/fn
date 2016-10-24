@@ -621,6 +621,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|iterator ()
 specifier|public
 name|Iterator
@@ -822,10 +824,13 @@ return|;
 block|}
 if|if
 condition|(
+operator|(
 name|o
 operator|==
 literal|null
+operator|)
 operator|||
+operator|(
 name|getClass
 argument_list|()
 operator|!=
@@ -833,6 +838,7 @@ name|o
 operator|.
 name|getClass
 argument_list|()
+operator|)
 condition|)
 block|{
 return|return
