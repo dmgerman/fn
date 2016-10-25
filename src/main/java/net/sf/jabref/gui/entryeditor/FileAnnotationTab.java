@@ -1006,7 +1006,7 @@ expr_stmt|;
 block|}
 name|tab
 operator|.
-name|setupGui
+name|setUpGui
 argument_list|()
 expr_stmt|;
 name|tab
@@ -1555,10 +1555,10 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|setupGui ()
+DECL|method|setUpGui ()
 specifier|private
 name|void
-name|setupGui
+name|setUpGui
 parameter_list|()
 block|{
 name|JPanel
@@ -1648,7 +1648,7 @@ argument_list|()
 operator|.
 name|columns
 argument_list|(
-literal|"pref:grow, $lcgap, pref:grow"
+literal|"pref, $lcgap, pref:grow"
 argument_list|)
 operator|.
 name|rows
