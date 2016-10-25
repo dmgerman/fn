@@ -1015,6 +1015,13 @@ name|isInitialized
 operator|=
 literal|true
 expr_stmt|;
+name|tab
+operator|.
+name|parent
+operator|.
+name|repaint
+argument_list|()
+expr_stmt|;
 return|return
 name|tab
 return|;

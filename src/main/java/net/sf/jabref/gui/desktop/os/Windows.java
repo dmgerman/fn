@@ -462,6 +462,7 @@ name|IOException
 block|{
 if|if
 condition|(
+operator|!
 name|JabRefPreferences
 operator|.
 name|getInstance
@@ -471,8 +472,11 @@ name|get
 argument_list|(
 name|USE_PDF_READER
 argument_list|)
-operator|!=
+operator|.
+name|equals
+argument_list|(
 name|USE_PDF_READER
+argument_list|)
 condition|)
 block|{
 name|String
