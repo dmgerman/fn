@@ -476,6 +476,20 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|preferences
+operator|.
+name|JabRefPreferences
+import|;
+end_import
+
+begin_import
+import|import
 name|com
 operator|.
 name|jgoodies
@@ -515,6 +529,38 @@ operator|.
 name|fdf
 operator|.
 name|FDFAnnotationHighlight
+import|;
+end_import
+
+begin_import
+import|import static
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|preferences
+operator|.
+name|JabRefPreferences
+operator|.
+name|SUMATRA_PDF_COMMAND
+import|;
+end_import
+
+begin_import
+import|import static
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|preferences
+operator|.
+name|JabRefPreferences
+operator|.
+name|USE_PDF_READER
 import|;
 end_import
 
@@ -2382,6 +2428,36 @@ argument_list|(
 literal|" "
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|JabRefPreferences
+operator|.
+name|getInstance
+argument_list|()
+operator|.
+name|get
+argument_list|(
+name|USE_PDF_READER
+argument_list|)
+operator|.
+name|equals
+argument_list|(
+name|SUMATRA_PDF_COMMAND
+argument_list|)
+condition|)
+block|{
+name|sj
+operator|.
+name|add
+argument_list|(
+literal|"-page "
+operator|+
+name|pageNo
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
 name|sj
 operator|.
 name|add
@@ -2391,6 +2467,7 @@ operator|+
 name|pageNo
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|desktop

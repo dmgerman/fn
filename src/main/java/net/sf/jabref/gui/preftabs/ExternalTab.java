@@ -1560,7 +1560,7 @@ name|get
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|SUMATRA_COMMAND
+name|SUMATRA_PDF_COMMAND
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1735,7 +1735,7 @@ name|put
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|SUMATRA_COMMAND
+name|SUMATRA_PDF_COMMAND
 argument_list|,
 name|sumatraReaderPath
 operator|.

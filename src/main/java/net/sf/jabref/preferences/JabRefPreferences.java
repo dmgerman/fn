@@ -2822,12 +2822,12 @@ name|ADOBE_ACROBAT_COMMAND
 init|=
 literal|"adobeAcrobatCommand"
 decl_stmt|;
-DECL|field|SUMATRA_COMMAND
+DECL|field|SUMATRA_PDF_COMMAND
 specifier|public
 specifier|static
 specifier|final
 name|String
-name|SUMATRA_COMMAND
+name|SUMATRA_PDF_COMMAND
 init|=
 literal|"sumatraCommand"
 decl_stmt|;
@@ -6899,7 +6899,7 @@ name|defaults
 operator|.
 name|put
 argument_list|(
-name|SUMATRA_COMMAND
+name|SUMATRA_PDF_COMMAND
 argument_list|,
 literal|"C:\\Program Files\\SumatraPDF"
 argument_list|)
@@ -6938,7 +6938,7 @@ name|defaults
 operator|.
 name|put
 argument_list|(
-name|SUMATRA_COMMAND
+name|SUMATRA_PDF_COMMAND
 argument_list|,
 literal|""
 argument_list|)
