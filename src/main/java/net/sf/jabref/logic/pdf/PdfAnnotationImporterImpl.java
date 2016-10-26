@@ -32,6 +32,16 @@ name|java
 operator|.
 name|io
 operator|.
+name|File
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
 name|FileNotFoundException
 import|;
 end_import
@@ -63,6 +73,16 @@ operator|.
 name|util
 operator|.
 name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
 import|;
 end_import
 
@@ -357,8 +377,11 @@ name|FileNotFoundException
 name|notFound
 parameter_list|)
 block|{
-name|String
-name|absolutePath
+name|Optional
+argument_list|<
+name|File
+argument_list|>
+name|importedFile
 init|=
 name|FileUtil
 operator|.
@@ -376,6 +399,20 @@ operator|.
 name|getFileDirectoryPreferences
 argument_list|()
 argument_list|)
+decl_stmt|;
+comment|//Check if the file could be loaded
+if|if
+condition|(
+name|importedFile
+operator|.
+name|isPresent
+argument_list|()
+condition|)
+block|{
+name|String
+name|absolutePath
+init|=
+name|importedFile
 operator|.
 name|get
 argument_list|()
@@ -390,6 +427,14 @@ argument_list|(
 name|absolutePath
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+comment|//return empty list to recognize invalid import
+return|return
+name|annotationsList
+return|;
+block|}
 block|}
 block|}
 catch|catch
