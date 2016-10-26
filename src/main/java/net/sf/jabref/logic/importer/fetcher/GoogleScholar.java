@@ -276,6 +276,22 @@ name|jabref
 operator|.
 name|logic
 operator|.
+name|l10n
+operator|.
+name|Localization
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
 name|net
 operator|.
 name|URLDownload
@@ -877,8 +893,6 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|IOException
-decl||
 name|URISyntaxException
 name|e
 parameter_list|)
@@ -895,6 +909,61 @@ argument_list|,
 name|e
 argument_list|)
 throw|;
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|e
+parameter_list|)
+block|{
+comment|// if there are too much requests from the same IP adress google is answering with a 503 and redirecting to a captcha challenge
+comment|// The caught IOException looks for example like this:
+comment|// java.io.IOException: Server returned HTTP response code: 503 for URL: https://ipv4.google.com/sorry/index?continue=https://scholar.google.com/scholar%3Fhl%3Den%26btnG%3DSearch%26q%3Dbpmn&hl=en&q=CGMSBI0NBDkYuqy9wAUiGQDxp4NLQCWbIEY1HjpH5zFJhv4ANPGdWj0
+if|if
+condition|(
+name|e
+operator|.
+name|getMessage
+argument_list|()
+operator|.
+name|contains
+argument_list|(
+literal|"Server returned HTTP response code: 503 for URL"
+argument_list|)
+condition|)
+block|{
+throw|throw
+operator|new
+name|FetcherException
+argument_list|(
+literal|"Fetching from Google Scholar failed."
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"This might be caused by reaching the traffic limitation of Google Scholar (see 'Help' for details)."
+argument_list|)
+argument_list|,
+name|e
+argument_list|)
+throw|;
+block|}
+else|else
+block|{
+throw|throw
+operator|new
+name|FetcherException
+argument_list|(
+literal|"Error while fetching from "
+operator|+
+name|getName
+argument_list|()
+argument_list|,
+name|e
+argument_list|)
+throw|;
+block|}
 block|}
 block|}
 DECL|method|addHitsFromQuery (List<BibEntry> entryList, String queryURL)
