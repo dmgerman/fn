@@ -1611,6 +1611,13 @@ argument_list|()
 decl_stmt|;
 comment|// text area from getting updated. This is used in cases where the source
 comment|// couldn't be parsed, and the user is given the option to edit it.
+DECL|field|lastFieldAccepted
+specifier|private
+name|boolean
+name|lastFieldAccepted
+init|=
+literal|true
+decl_stmt|;
 DECL|field|lastSourceAccepted
 specifier|private
 name|boolean
@@ -1618,8 +1625,7 @@ name|lastSourceAccepted
 init|=
 literal|true
 decl_stmt|;
-comment|// This indicates whether the last
-comment|// attempt
+comment|// This indicates whether the last attempt
 comment|// at parsing the source was successful. It is used to determine whether the
 comment|// dialog should close; it should stay open if the user received an error
 comment|// message about the source, whatever he or she chose to do about it.
@@ -1628,8 +1634,7 @@ specifier|private
 name|String
 name|lastSourceStringAccepted
 decl_stmt|;
-comment|// This is used to prevent double
-comment|// fields.
+comment|// This is used to prevent double fields.
 comment|// These values can be used to calculate the preferred height for the form.
 comment|// reqW starts at 1 because it needs room for the bibtex key field.
 DECL|field|sourceIndex
@@ -7058,8 +7063,29 @@ name|this
 argument_list|)
 expr_stmt|;
 block|}
+else|else
+block|{
+name|panel
+operator|.
+name|runCommand
+argument_list|(
+name|Actions
+operator|.
+name|SAVE
+argument_list|)
+expr_stmt|;
+name|lastSourceAccepted
+operator|=
+literal|true
+expr_stmt|;
+block|}
 block|}
 else|else
+block|{
+if|if
+condition|(
+name|lastFieldAccepted
+condition|)
 block|{
 name|panel
 operator|.
@@ -7070,6 +7096,23 @@ operator|.
 name|this
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+name|panel
+operator|.
+name|runCommand
+argument_list|(
+name|Actions
+operator|.
+name|SAVE
+argument_list|)
+expr_stmt|;
+name|lastFieldAccepted
+operator|=
+literal|true
+expr_stmt|;
+block|}
 block|}
 block|}
 DECL|class|CloseAction
@@ -7134,7 +7177,6 @@ expr_stmt|;
 block|}
 block|}
 DECL|class|StoreFieldAction
-specifier|public
 class|class
 name|StoreFieldAction
 extends|extends
@@ -7313,6 +7355,10 @@ expr_stmt|;
 block|}
 else|else
 block|{
+name|lastFieldAccepted
+operator|=
+literal|false
+expr_stmt|;
 name|textField
 operator|.
 name|setInvalidBackgroundColor
@@ -7899,6 +7945,10 @@ name|IllegalArgumentException
 name|ex
 parameter_list|)
 block|{
+name|lastFieldAccepted
+operator|=
+literal|false
+expr_stmt|;
 name|fieldEditor
 operator|.
 name|setInvalidBackgroundColor
