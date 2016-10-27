@@ -112,6 +112,22 @@ name|jabref
 operator|.
 name|logic
 operator|.
+name|cleanup
+operator|.
+name|Cleanups
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
 name|l10n
 operator|.
 name|Localization
@@ -497,12 +513,9 @@ argument_list|(
 literal|"Run field formatter:"
 argument_list|)
 argument_list|,
-name|JabRefPreferences
+name|Cleanups
 operator|.
-name|CLEANUP_DEFAULT_PRESET
-operator|.
-name|getFormatterCleanups
-argument_list|()
+name|DEFAULT_SAVE_ACTIONS
 argument_list|)
 expr_stmt|;
 name|updateDisplay
