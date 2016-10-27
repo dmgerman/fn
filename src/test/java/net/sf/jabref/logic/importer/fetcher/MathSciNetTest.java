@@ -279,7 +279,7 @@ name|setField
 argument_list|(
 literal|"title"
 argument_list|,
-literal|"Existence and {U}niqueness {T}heorems for the {T}wo-{D}imensional {E}ricksen--{L}eslie {S}ystem"
+literal|"Existence and uniqueness theorems for the two-dimensional {E}ricksen-{L}eslie system"
 argument_list|)
 expr_stmt|;
 name|ratiuEntry
