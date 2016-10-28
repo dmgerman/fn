@@ -126,6 +126,21 @@ argument_list|,
 literal|"F8"
 argument_list|)
 block|,
+DECL|enumConstant|CHECK_INTEGRITY
+name|CHECK_INTEGRITY
+argument_list|(
+literal|"Check integrity"
+argument_list|,
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
+literal|"Check integrity"
+argument_list|)
+argument_list|,
+literal|"ctrl F8"
+argument_list|)
+block|,
 DECL|enumConstant|CLEAR_SEARCH
 name|CLEAR_SEARCH
 argument_list|(
