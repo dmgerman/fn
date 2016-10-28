@@ -95,10 +95,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|ArchitectureTest
+DECL|class|CodeStyleTests
 specifier|public
 class|class
-name|ArchitectureTest
+name|CodeStyleTests
 block|{
 annotation|@
 name|Test
