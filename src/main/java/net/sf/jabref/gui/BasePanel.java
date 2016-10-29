@@ -5948,7 +5948,7 @@ block|}
 end_function
 
 begin_comment
-comment|/**      * Removes the selected entries from the database      * @param cut If false the user will get asked if he really wants to delete the entries, and it will be localized      *            as "deleted".      *            If true it will be localized as "cut"      */
+comment|/**      * Removes the selected entries from the database      * @param cut If false the user will get asked if he really wants to delete the entries, and it will be localized      *            as "deleted".      *            If true the action will be localized as "cut"      */
 end_comment
 
 begin_function
@@ -6030,41 +6030,8 @@ name|compound
 decl_stmt|;
 if|if
 condition|(
-operator|!
 name|cut
 condition|)
-block|{
-name|compound
-operator|=
-operator|new
-name|NamedCompound
-argument_list|(
-operator|(
-name|entries
-operator|.
-name|size
-argument_list|()
-operator|>
-literal|1
-condition|?
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"delete entries"
-argument_list|)
-else|:
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"delete entry"
-argument_list|)
-operator|)
-argument_list|)
-expr_stmt|;
-block|}
-else|else
 block|{
 name|compound
 operator|=
@@ -6091,6 +6058,38 @@ operator|.
 name|lang
 argument_list|(
 literal|"cut entry"
+argument_list|)
+operator|)
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|compound
+operator|=
+operator|new
+name|NamedCompound
+argument_list|(
+operator|(
+name|entries
+operator|.
+name|size
+argument_list|()
+operator|>
+literal|1
+condition|?
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"delete entries"
+argument_list|)
+else|:
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"delete entry"
 argument_list|)
 operator|)
 argument_list|)
@@ -6162,21 +6161,20 @@ name|output
 argument_list|(
 name|formatOutputMessage
 argument_list|(
-operator|!
 name|cut
 condition|?
 name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Deleted"
+literal|"Cut"
 argument_list|)
 else|:
 name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Cut"
+literal|"Deleted"
 argument_list|)
 argument_list|,
 name|entries
