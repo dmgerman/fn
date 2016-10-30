@@ -118,7 +118,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"It seems that the Development stages has been change, please adjust the test"
+literal|"It seems that the development stages have been changed, please adjust the test"
 argument_list|,
 name|Version
 operator|.
