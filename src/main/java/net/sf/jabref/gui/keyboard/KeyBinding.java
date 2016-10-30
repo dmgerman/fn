@@ -111,21 +111,6 @@ argument_list|,
 literal|"alt LEFT"
 argument_list|)
 block|,
-DECL|enumConstant|CLEANUP
-name|CLEANUP
-argument_list|(
-literal|"Cleanup"
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Cleanup entries"
-argument_list|)
-argument_list|,
-literal|"F8"
-argument_list|)
-block|,
 DECL|enumConstant|CHECK_INTEGRITY
 name|CHECK_INTEGRITY
 argument_list|(
@@ -139,6 +124,21 @@ literal|"Check integrity"
 argument_list|)
 argument_list|,
 literal|"ctrl F8"
+argument_list|)
+block|,
+DECL|enumConstant|CLEANUP
+name|CLEANUP
+argument_list|(
+literal|"Cleanup"
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Cleanup entries"
+argument_list|)
+argument_list|,
+literal|"F8"
 argument_list|)
 block|,
 DECL|enumConstant|CLEAR_SEARCH
@@ -876,6 +876,21 @@ argument_list|,
 literal|"ctrl shift O"
 argument_list|)
 block|,
+DECL|enumConstant|OPEN_OPEN_OFFICE_LIBRE_OFFICE_CONNECTION
+name|OPEN_OPEN_OFFICE_LIBRE_OFFICE_CONNECTION
+argument_list|(
+literal|"Open OpenOffice/LibreOffice connection"
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Open OpenOffice/LibreOffice connection"
+argument_list|)
+argument_list|,
+literal|"alt 0"
+argument_list|)
+block|,
 DECL|enumConstant|OPEN_URL_OR_DOI
 name|OPEN_URL_OR_DOI
 argument_list|(
@@ -1310,22 +1325,7 @@ argument_list|)
 argument_list|,
 literal|"F6"
 argument_list|)
-block|,
-DECL|enumConstant|OPEN_OPEN_OFFICE_LIBRE_OFFICE_CONNECTION
-name|OPEN_OPEN_OFFICE_LIBRE_OFFICE_CONNECTION
-argument_list|(
-literal|"Open OpenOffice/LibreOffice connection"
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Open OpenOffice/LibreOffice connection"
-argument_list|)
-argument_list|,
-literal|"alt 0"
-argument_list|)
-block|,;
+block|;
 DECL|field|key
 specifier|private
 specifier|final
