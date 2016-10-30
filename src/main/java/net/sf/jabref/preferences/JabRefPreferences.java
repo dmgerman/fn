@@ -9548,8 +9548,9 @@ block|{
 name|Version
 name|ignoredVersion
 init|=
-operator|new
 name|Version
+operator|.
+name|parse
 argument_list|(
 name|get
 argument_list|(
