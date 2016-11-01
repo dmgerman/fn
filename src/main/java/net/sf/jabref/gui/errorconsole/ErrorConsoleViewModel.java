@@ -66,6 +66,18 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|stream
+operator|.
+name|Collectors
+import|;
+end_import
+
+begin_import
+import|import
 name|javafx
 operator|.
 name|beans
@@ -73,6 +85,16 @@ operator|.
 name|property
 operator|.
 name|ListProperty
+import|;
+end_import
+
+begin_import
+import|import
+name|javafx
+operator|.
+name|collections
+operator|.
+name|ObservableList
 import|;
 end_import
 
@@ -341,33 +363,31 @@ operator|.
 name|allMessagesData
 return|;
 block|}
-comment|/**      * Handler for get of log messages in listview      *      * @return all messages as String      */
-DECL|method|getLogMessagesAsString ()
+comment|/**      * Concatenates the formatted message of the given LogEvents by using the a new line separator      *      * @param selectedEntries as {@link ObservableList<LogEvent>}      * @return all messages as String      */
+DECL|method|getLogMessagesAsString (ObservableList<LogEvent> selectedEntries)
 specifier|private
 name|String
 name|getLogMessagesAsString
-parameter_list|()
+parameter_list|(
+name|ObservableList
+argument_list|<
+name|LogEvent
+argument_list|>
+name|selectedEntries
+parameter_list|)
 block|{
-name|StringBuilder
+name|String
 name|logMessagesContent
 init|=
-operator|new
-name|StringBuilder
-argument_list|()
-decl_stmt|;
-for|for
-control|(
-name|LogEvent
-name|message
-range|:
-name|allMessagesDataproperty
-argument_list|()
-control|)
-block|{
-name|logMessagesContent
+name|selectedEntries
 operator|.
-name|append
+name|stream
+argument_list|()
+operator|.
+name|map
 argument_list|(
+name|message
+lambda|->
 name|message
 operator|.
 name|getMessage
@@ -375,27 +395,50 @@ argument_list|()
 operator|.
 name|getFormattedMessage
 argument_list|()
-operator|+
+argument_list|)
+operator|.
+name|collect
+argument_list|(
+name|Collectors
+operator|.
+name|joining
+argument_list|(
 name|System
 operator|.
 name|lineSeparator
 argument_list|()
 argument_list|)
-expr_stmt|;
-block|}
+argument_list|)
+decl_stmt|;
 return|return
 name|logMessagesContent
-operator|.
-name|toString
-argument_list|()
 return|;
 block|}
-comment|/**      * Handler for copy of Log Entry in clipboard by click of Copy Log Button      */
+comment|/**      * Copies the whole log to the clipboard      */
 DECL|method|copyLog ()
 specifier|public
 name|void
 name|copyLog
 parameter_list|()
+block|{
+name|copyLog
+argument_list|(
+name|allMessagesData
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Copies the selected LogEvents to the Clipboard      *      * @param selectedEntries as ObservableList of LogEvents      */
+DECL|method|copyLog (ObservableList<LogEvent> selectedEntries)
+specifier|public
+name|void
+name|copyLog
+parameter_list|(
+name|ObservableList
+argument_list|<
+name|LogEvent
+argument_list|>
+name|selectedEntries
+parameter_list|)
 block|{
 operator|new
 name|ClipBoardManager
@@ -404,7 +447,9 @@ operator|.
 name|setClipboardContents
 argument_list|(
 name|getLogMessagesAsString
-argument_list|()
+argument_list|(
+name|selectedEntries
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|JabRefGUI
@@ -599,7 +644,9 @@ operator|+
 literal|"</summary>\n```\n"
 operator|+
 name|getLogMessagesAsString
-argument_list|()
+argument_list|(
+name|allMessagesData
+argument_list|)
 operator|+
 literal|"\n```\n</details>"
 operator|)
