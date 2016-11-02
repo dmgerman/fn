@@ -10034,6 +10034,13 @@ name|quality
 operator|.
 name|add
 argument_list|(
+name|massSetField
+argument_list|)
+expr_stmt|;
+name|quality
+operator|.
+name|add
+argument_list|(
 name|makeKeyAction
 argument_list|)
 expr_stmt|;
