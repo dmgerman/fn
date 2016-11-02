@@ -614,7 +614,9 @@ name|model
 operator|.
 name|entry
 operator|.
-name|SpecialFields
+name|specialfields
+operator|.
+name|SpecialField
 import|;
 end_import
 
@@ -767,10 +769,6 @@ operator|.
 name|LogFactory
 import|;
 end_import
-
-begin_comment
-comment|/**  * The central table which displays the bibtex entries.  *  * User: alver  * Date: Oct 12, 2005  * Time: 10:29:39 PM  *  */
-end_comment
 
 begin_class
 DECL|class|MainTable
@@ -2200,9 +2198,12 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|SpecialFields
+name|SpecialField
 operator|.
-name|FIELDNAME_RANKING
+name|RANKING
+operator|.
+name|getFieldName
+argument_list|()
 operator|.
 name|equals
 argument_list|(
@@ -2682,9 +2683,12 @@ argument_list|()
 expr_stmt|;
 if|if
 condition|(
-name|SpecialFields
+name|SpecialField
 operator|.
-name|FIELDNAME_RANKING
+name|RANKING
+operator|.
+name|getFieldName
+argument_list|()
 operator|.
 name|equals
 argument_list|(

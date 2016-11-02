@@ -1,12 +1,14 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|net.sf.jabref.specialfields
+DECL|package|net.sf.jabref.gui.specialfields
 package|package
 name|net
 operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|gui
 operator|.
 name|specialfields
 package|;
@@ -68,11 +70,11 @@ specifier|final
 name|String
 name|actionName
 decl_stmt|;
-DECL|method|SpecialFieldMenuAction (SpecialFieldValue val, JabRefFrame frame)
+DECL|method|SpecialFieldMenuAction (SpecialFieldValueViewModel val, JabRefFrame frame)
 specifier|public
 name|SpecialFieldMenuAction
 parameter_list|(
-name|SpecialFieldValue
+name|SpecialFieldValueViewModel
 name|val
 parameter_list|,
 name|JabRefFrame
@@ -88,7 +90,7 @@ argument_list|()
 argument_list|,
 name|val
 operator|.
-name|getIcon
+name|getSpecialFieldValueIcon
 argument_list|()
 argument_list|)
 expr_stmt|;
