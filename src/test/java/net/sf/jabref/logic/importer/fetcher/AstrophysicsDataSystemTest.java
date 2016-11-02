@@ -174,16 +174,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Test
 import|;
 end_import
@@ -1040,8 +1030,6 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
-name|Ignore
-annotation|@
 name|Test
 DECL|method|testHelpPage ()
 specifier|public
@@ -1064,8 +1052,6 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
-name|Ignore
-annotation|@
 name|Test
 DECL|method|testGetName ()
 specifier|public
@@ -1084,8 +1070,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-annotation|@
-name|Ignore
 annotation|@
 name|Test
 DECL|method|searchByQueryFindsEntry ()
@@ -1122,8 +1106,6 @@ name|fetchedEntries
 argument_list|)
 expr_stmt|;
 block|}
-annotation|@
-name|Ignore
 annotation|@
 name|Test
 DECL|method|searchByEntryFindsEntry ()
@@ -1194,8 +1176,6 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
-name|Ignore
-annotation|@
 name|Test
 DECL|method|testPerformSearchByFamaeyMcGaughEntry ()
 specifier|public
@@ -1249,8 +1229,6 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
-name|Ignore
-annotation|@
 name|Test
 DECL|method|testPerformSearchByIdEmptyDOI ()
 specifier|public
@@ -1285,8 +1263,6 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
-name|Ignore
-annotation|@
 name|Test
 argument_list|(
 name|expected
@@ -1314,8 +1290,6 @@ name|fail
 argument_list|()
 expr_stmt|;
 block|}
-annotation|@
-name|Ignore
 annotation|@
 name|Test
 DECL|method|testPerformSearchBySunWelchEntry ()
@@ -1370,8 +1344,6 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
-name|Ignore
-annotation|@
 name|Test
 DECL|method|testPerformSearchByXiongSunEntry ()
 specifier|public
@@ -1408,8 +1380,6 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
-name|Ignore
-annotation|@
 name|Test
 DECL|method|testPerformSearchByIngersollPollardEntry ()
 specifier|public
@@ -1445,8 +1415,6 @@ name|fetchedEntry
 argument_list|)
 expr_stmt|;
 block|}
-annotation|@
-name|Ignore
 annotation|@
 name|Test
 DECL|method|testPerformSearchByLuceyPaulEntry ()
