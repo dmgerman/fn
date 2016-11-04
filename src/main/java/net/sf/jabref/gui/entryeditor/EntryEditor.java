@@ -4108,18 +4108,11 @@ name|srcString
 expr_stmt|;
 comment|// Set the current Entry to be selected.
 comment|// Fixes the bug of losing selection after, e.g. an autogeneration of a BibTeX key.
-name|SwingUtilities
-operator|.
-name|invokeLater
-argument_list|(
-parameter_list|()
-lambda|->
 name|panel
 operator|.
 name|highlightEntry
 argument_list|(
 name|entry
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -5508,18 +5501,11 @@ operator|.
 name|markBaseChanged
 argument_list|()
 expr_stmt|;
-name|SwingUtilities
-operator|.
-name|invokeLater
-argument_list|(
-parameter_list|()
-lambda|->
 name|panel
 operator|.
 name|highlightEntry
 argument_list|(
 name|entry
-argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
@@ -7430,18 +7416,11 @@ name|isShowing
 argument_list|()
 condition|)
 block|{
-name|SwingUtilities
-operator|.
-name|invokeLater
-argument_list|(
-parameter_list|()
-lambda|->
 name|panel
 operator|.
 name|highlightEntry
 argument_list|(
 name|entry
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

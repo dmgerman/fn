@@ -1024,7 +1024,7 @@ name|getVisiblePanelName
 argument_list|()
 expr_stmt|;
 block|}
-comment|// Get an old or new editor for the entry to edit:
+comment|// Get a new editor for the entry to edit:
 name|EntryEditor
 name|newEditor
 init|=
@@ -1035,19 +1035,6 @@ argument_list|(
 name|newSelected
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
-name|oldEditor
-operator|!=
-literal|null
-condition|)
-block|{
-name|oldEditor
-operator|.
-name|setMovingToDifferentEntry
-argument_list|()
-expr_stmt|;
-block|}
 comment|// Show the new editor unless it was already visible:
 if|if
 condition|(
@@ -1108,6 +1095,15 @@ name|getSelectedRow
 argument_list|()
 argument_list|)
 argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+comment|// if not used destroy the EntryEditor
+name|newEditor
+operator|.
+name|setMovingToDifferentEntry
+argument_list|()
 expr_stmt|;
 block|}
 block|}
