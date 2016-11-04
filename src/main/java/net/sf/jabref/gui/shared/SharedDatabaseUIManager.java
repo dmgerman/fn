@@ -507,16 +507,16 @@ operator|.
 name|closeCurrentTab
 argument_list|()
 expr_stmt|;
-name|OpenSharedDatabaseDialog
-name|openSharedDatabaseDialog
+name|ConnectToSharedDatabaseDialog
+name|connectToSharedDatabaseDialog
 init|=
 operator|new
-name|OpenSharedDatabaseDialog
+name|ConnectToSharedDatabaseDialog
 argument_list|(
 name|jabRefFrame
 argument_list|)
 decl_stmt|;
-name|openSharedDatabaseDialog
+name|connectToSharedDatabaseDialog
 operator|.
 name|setVisible
 argument_list|(
@@ -746,10 +746,10 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Opens a new shared database tab with the given {@link DBMSConnectionProperties}.      *      * @param dbmsConnectionProperties Connection data      * @param raiseTab If<code>true</code> the new tab gets selected.      */
+comment|/**      * Opens a new shared database tab with the given {@link DBMSConnectionProperties}.      *      * @param dbmsConnectionProperties Connection data      * @param raiseTab If<code>true</code> the new tab gets selected.      * @return BasePanel which also used by {@link SaveDatabaseAction}      */
 DECL|method|openNewSharedDatabaseTab (DBMSConnectionProperties dbmsConnectionProperties)
 specifier|public
-name|void
+name|BasePanel
 name|openNewSharedDatabaseTab
 parameter_list|(
 name|DBMSConnectionProperties
@@ -852,6 +852,7 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
+return|return
 name|frame
 operator|.
 name|addTab
@@ -860,7 +861,7 @@ name|bibDatabaseContext
 argument_list|,
 literal|true
 argument_list|)
-expr_stmt|;
+return|;
 block|}
 DECL|method|openSharedDatabaseFromParserResult (ParserResult parserResult)
 specifier|public

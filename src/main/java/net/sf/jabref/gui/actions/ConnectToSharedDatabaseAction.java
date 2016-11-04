@@ -62,7 +62,7 @@ name|gui
 operator|.
 name|shared
 operator|.
-name|OpenSharedDatabaseDialog
+name|ConnectToSharedDatabaseDialog
 import|;
 end_import
 
@@ -87,10 +87,10 @@ comment|/**  * The action concerned with opening a shared database.  */
 end_comment
 
 begin_class
-DECL|class|OpenSharedDatabaseAction
+DECL|class|ConnectToSharedDatabaseAction
 specifier|public
 class|class
-name|OpenSharedDatabaseAction
+name|ConnectToSharedDatabaseAction
 extends|extends
 name|MnemonicAwareAction
 block|{
@@ -100,9 +100,9 @@ specifier|final
 name|JabRefFrame
 name|jabRefFrame
 decl_stmt|;
-DECL|method|OpenSharedDatabaseAction (JabRefFrame jabRefFrame)
+DECL|method|ConnectToSharedDatabaseAction (JabRefFrame jabRefFrame)
 specifier|public
-name|OpenSharedDatabaseAction
+name|ConnectToSharedDatabaseAction
 parameter_list|(
 name|JabRefFrame
 name|jabRefFrame
@@ -127,7 +127,7 @@ name|Localization
 operator|.
 name|menuTitle
 argument_list|(
-literal|"Open shared database"
+literal|"Connect to shared database"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -141,7 +141,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Open shared database"
+literal|"Connect to shared database"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -157,16 +157,16 @@ name|ActionEvent
 name|e
 parameter_list|)
 block|{
-name|OpenSharedDatabaseDialog
-name|openSharedDatabaseDialog
+name|ConnectToSharedDatabaseDialog
+name|connectToSharedDatabaseDialog
 init|=
 operator|new
-name|OpenSharedDatabaseDialog
+name|ConnectToSharedDatabaseDialog
 argument_list|(
 name|jabRefFrame
 argument_list|)
 decl_stmt|;
-name|openSharedDatabaseDialog
+name|connectToSharedDatabaseDialog
 operator|.
 name|setVisible
 argument_list|(
