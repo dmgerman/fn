@@ -580,7 +580,7 @@ name|o
 init|=
 name|entry
 operator|.
-name|getFieldOrAlias
+name|getFieldOrAliasLatexFree
 argument_list|(
 name|aField
 argument_list|)
@@ -714,7 +714,7 @@ operator|-
 name|multiplier
 return|;
 block|}
-comment|// Now we now that both f1 and f2 are != null
+comment|// Now we know that both f1 and f2 are != null
 if|if
 condition|(
 name|fieldType
