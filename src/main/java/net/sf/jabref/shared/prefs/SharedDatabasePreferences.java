@@ -92,7 +92,7 @@ name|gui
 operator|.
 name|shared
 operator|.
-name|OpenSharedDatabaseDialog
+name|ConnectToSharedDatabaseDialog
 import|;
 end_import
 
@@ -155,7 +155,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Stores and reads persistent data for {@link OpenSharedDatabaseDialog}.  */
+comment|/**  * Stores and reads persistent data for {@link ConnectToSharedDatabaseDialog}.  */
 end_comment
 
 begin_class

@@ -131,7 +131,7 @@ import|;
 end_import
 
 begin_comment
-comment|/*  * Focus listener that fires the storeFieldAction when a TextArea loses  * focus.  */
+comment|/**  * Focus listener that fires the storeFieldAction when a TextArea loses focus.  */
 end_comment
 
 begin_class
@@ -141,16 +141,19 @@ name|EntryEditorTabFocusListener
 implements|implements
 name|FocusListener
 block|{
+comment|/** The component this DocumentListener is currently tied to */
 DECL|field|textComponent
 specifier|private
 name|JTextComponent
 name|textComponent
 decl_stmt|;
+comment|/** The listener which gets tied to each TextComponent (and removed) */
 DECL|field|documentListener
 specifier|private
 name|DocumentListener
 name|documentListener
 decl_stmt|;
+comment|/** The EntryEditorTab this FocusListener is currently tied to */
 DECL|field|entryEditorTab
 specifier|private
 specifier|final
@@ -235,13 +238,13 @@ operator|.
 name|getSource
 argument_list|()
 expr_stmt|;
-comment|/**                  * [ 1553552 ] Not properly detecting changes to flag as                  * changed                  */
 name|documentListener
 operator|=
 operator|new
 name|DocumentListener
 argument_list|()
 block|{
+specifier|private
 name|void
 name|fire
 parameter_list|()
@@ -320,9 +323,9 @@ argument_list|(
 name|documentListener
 argument_list|)
 expr_stmt|;
-comment|/**                  * Makes the vertical scroll panel view follow the focus                  */
+comment|// Makes the vertical scroll panel view follow the focus
 name|Component
-name|scrollPane
+name|component
 init|=
 name|textComponent
 operator|.
@@ -334,30 +337,30 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-name|scrollPane
+name|component
 operator|instanceof
 name|JScrollPane
 condition|)
 block|{
 name|JScrollPane
-name|componentPane
+name|scrollPane
 init|=
 operator|(
 name|JScrollPane
 operator|)
-name|scrollPane
+name|component
 decl_stmt|;
 name|Component
-name|cPane
+name|scrollPaneParent
 init|=
-name|componentPane
+name|scrollPane
 operator|.
 name|getParent
 argument_list|()
 decl_stmt|;
 if|if
 condition|(
-name|cPane
+name|scrollPaneParent
 operator|instanceof
 name|JPanel
 condition|)
@@ -368,12 +371,12 @@ init|=
 operator|(
 name|JPanel
 operator|)
-name|cPane
+name|scrollPaneParent
 decl_stmt|;
 name|Rectangle
 name|bounds
 init|=
-name|componentPane
+name|scrollPane
 operator|.
 name|getBounds
 argument_list|()

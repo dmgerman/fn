@@ -64,7 +64,9 @@ name|model
 operator|.
 name|entry
 operator|.
-name|SpecialFields
+name|specialfields
+operator|.
+name|SpecialField
 import|;
 end_import
 
@@ -107,9 +109,12 @@ name|e1
 operator|.
 name|getField
 argument_list|(
-name|SpecialFields
+name|SpecialField
 operator|.
-name|FIELDNAME_RANKING
+name|RANKING
+operator|.
+name|getFieldName
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|Optional
@@ -122,9 +127,12 @@ name|e2
 operator|.
 name|getField
 argument_list|(
-name|SpecialFields
+name|SpecialField
 operator|.
-name|FIELDNAME_RANKING
+name|RANKING
+operator|.
+name|getFieldName
+argument_list|()
 argument_list|)
 decl_stmt|;
 if|if

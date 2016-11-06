@@ -1303,17 +1303,20 @@ name|ENGLISH
 argument_list|)
 return|;
 block|}
-comment|/**      * Returns the contents of the given field or its alias as an Optional      *<p>      * The following aliases are considered (old bibtex<-> new biblatex) based      * on the BibLatex documentation, chapter 2.2.5:<br>      * address<-> location<br>      * annote<-> annotation<br>      * archiveprefix<-> eprinttype<br>      * journal<-> journaltitle<br>      * key<-> sortkey<br>      * pdf<-> file<br      * primaryclass<-> eprintclass<br>      * school<-> institution<br>      * These work bidirectional.<br>      *<p>      * Special attention is paid to dates: (see the BibLatex documentation,      * chapter 2.3.8)      * The fields 'year' and 'month' are used if the 'date'      * field is empty. Conversely, getFieldOrAlias("year") also tries to      * extract the year from the 'date' field (analogously for 'month').      */
-DECL|method|getFieldOrAlias (String name)
-specifier|public
+comment|/**      * Internal method used to get the content of a field (or its alias)      *      * Used by {@link #getFieldOrAlias(String)} and {@link #getFieldOrAliasLatexFree(String)}      *      * @param name name of the field      * @param getFieldInterface      *      * @return determined field value      */
+DECL|method|genericGetFieldOrAlias (String name, GetFieldInterface getFieldInterface)
+specifier|private
 name|Optional
 argument_list|<
 name|String
 argument_list|>
-name|getFieldOrAlias
+name|genericGetFieldOrAlias
 parameter_list|(
 name|String
 name|name
+parameter_list|,
+name|GetFieldInterface
+name|getFieldInterface
 parameter_list|)
 block|{
 name|Optional
@@ -1322,7 +1325,9 @@ name|String
 argument_list|>
 name|fieldValue
 init|=
-name|getField
+name|getFieldInterface
+operator|.
+name|getValueForField
 argument_list|(
 name|toLowerCase
 argument_list|(
@@ -1372,7 +1377,9 @@ literal|null
 condition|)
 block|{
 return|return
-name|getField
+name|getFieldInterface
+operator|.
+name|getValueForField
 argument_list|(
 name|aliasForField
 argument_list|)
@@ -1397,7 +1404,9 @@ name|String
 argument_list|>
 name|year
 init|=
-name|getField
+name|getFieldInterface
+operator|.
+name|getValueForField
 argument_list|(
 name|FieldName
 operator|.
@@ -1421,7 +1430,9 @@ name|MonthUtil
 operator|.
 name|getMonth
 argument_list|(
-name|getField
+name|getFieldInterface
+operator|.
+name|getValueForField
 argument_list|(
 name|FieldName
 operator|.
@@ -1495,7 +1506,9 @@ name|String
 argument_list|>
 name|date
 init|=
-name|getField
+name|getFieldInterface
+operator|.
+name|getValueForField
 argument_list|(
 name|FieldName
 operator|.
@@ -1850,6 +1863,71 @@ name|Optional
 operator|.
 name|empty
 argument_list|()
+return|;
+block|}
+DECL|interface|GetFieldInterface
+specifier|private
+interface|interface
+name|GetFieldInterface
+block|{
+DECL|method|getValueForField (String fieldName)
+name|Optional
+argument_list|<
+name|String
+argument_list|>
+name|getValueForField
+parameter_list|(
+name|String
+name|fieldName
+parameter_list|)
+function_decl|;
+block|}
+comment|/**      * Return the LaTeX-free contents of the given field or its alias an an Optional      *      * For details see also {@link #getFieldOrAlias(String)}      *      * @param name the name of the field      * @return  the stored latex-free content of the field (or its alias)      */
+DECL|method|getFieldOrAliasLatexFree (String name)
+specifier|public
+name|Optional
+argument_list|<
+name|String
+argument_list|>
+name|getFieldOrAliasLatexFree
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+block|{
+return|return
+name|genericGetFieldOrAlias
+argument_list|(
+name|name
+argument_list|,
+name|this
+operator|::
+name|getLatexFreeField
+argument_list|)
+return|;
+block|}
+comment|/**      * Returns the contents of the given field or its alias as an Optional      *<p>      * The following aliases are considered (old bibtex<-> new biblatex) based      * on the BibLatex documentation, chapter 2.2.5:<br>      * address<-> location<br>      * annote<-> annotation<br>      * archiveprefix<-> eprinttype<br>      * journal<-> journaltitle<br>      * key<-> sortkey<br>      * pdf<-> file<br      * primaryclass<-> eprintclass<br>      * school<-> institution<br>      * These work bidirectional.<br>      *<p>      * Special attention is paid to dates: (see the BibLatex documentation,      * chapter 2.3.8)      * The fields 'year' and 'month' are used if the 'date'      * field is empty. Conversely, getFieldOrAlias("year") also tries to      * extract the year from the 'date' field (analogously for 'month').      */
+DECL|method|getFieldOrAlias (String name)
+specifier|public
+name|Optional
+argument_list|<
+name|String
+argument_list|>
+name|getFieldOrAlias
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+block|{
+return|return
+name|genericGetFieldOrAlias
+argument_list|(
+name|name
+argument_list|,
+name|this
+operator|::
+name|getField
+argument_list|)
 return|;
 block|}
 comment|/**      * Sets a number of fields simultaneously. The given HashMap contains field      * names as keys, each mapped to the value to set.      */

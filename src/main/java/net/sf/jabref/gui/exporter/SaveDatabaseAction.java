@@ -685,6 +685,14 @@ specifier|private
 name|boolean
 name|fileLockedError
 decl_stmt|;
+DECL|field|filePath
+specifier|private
+name|Optional
+argument_list|<
+name|Path
+argument_list|>
+name|filePath
+decl_stmt|;
 DECL|field|LOGGER
 specifier|private
 specifier|static
@@ -723,6 +731,35 @@ name|panel
 operator|.
 name|frame
 argument_list|()
+expr_stmt|;
+block|}
+comment|/**      * @param panel BasePanel which contains the database to be saved      * @param filePath Path to the file the database should be saved to      */
+DECL|method|SaveDatabaseAction (BasePanel panel, Path filePath)
+specifier|public
+name|SaveDatabaseAction
+parameter_list|(
+name|BasePanel
+name|panel
+parameter_list|,
+name|Path
+name|filePath
+parameter_list|)
+block|{
+name|this
+argument_list|(
+name|panel
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|filePath
+operator|=
+name|Optional
+operator|.
+name|ofNullable
+argument_list|(
+name|filePath
+argument_list|)
 expr_stmt|;
 block|}
 annotation|@
@@ -792,6 +829,28 @@ operator|.
 name|setSaving
 argument_list|(
 literal|true
+argument_list|)
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|filePath
+operator|.
+name|isPresent
+argument_list|()
+condition|)
+block|{
+comment|// save as directly if the target file location is known
+name|saveAs
+argument_list|(
+name|filePath
+operator|.
+name|get
+argument_list|()
+operator|.
+name|toFile
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -1911,7 +1970,6 @@ name|updateEnabledState
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Run the "Save as" operation. This method offloads the actual save operation to a background thread, but      * still runs synchronously using Spin (the method returns only after completing the operation).      */
 DECL|method|saveAs ()
 specifier|public
 name|void
@@ -1979,8 +2037,8 @@ name|isPresent
 argument_list|()
 condition|)
 block|{
-name|file
-operator|=
+name|saveAs
+argument_list|(
 name|path
 operator|.
 name|get
@@ -1988,6 +2046,7 @@ argument_list|()
 operator|.
 name|toFile
 argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 else|else
@@ -1999,6 +2058,19 @@ expr_stmt|;
 return|return;
 block|}
 block|}
+block|}
+comment|/**      * Run the "Save as" operation. This method offloads the actual save operation to a background thread, but      * still runs synchronously using Spin (the method returns only after completing the operation).      */
+DECL|method|saveAs (File file)
+specifier|public
+name|void
+name|saveAs
+parameter_list|(
+name|File
+name|file
+parameter_list|)
+throws|throws
+name|Throwable
+block|{
 name|BibDatabaseContext
 name|context
 init|=
@@ -2261,8 +2333,6 @@ parameter_list|)
 block|{
 return|return
 operator|(
-operator|(
-operator|(
 name|context
 operator|.
 name|getLocation
@@ -2271,19 +2341,6 @@ operator|==
 name|DatabaseLocation
 operator|.
 name|SHARED
-operator|)
-operator|&&
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getBoolean
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|SHARED_AUTO_SAVE
-argument_list|)
-operator|)
 operator|||
 operator|(
 operator|(
