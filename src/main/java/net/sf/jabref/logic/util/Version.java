@@ -1054,6 +1054,17 @@ name|String
 name|getChangelogUrl
 parameter_list|()
 block|{
+if|if
+condition|(
+name|isDevelopmentVersion
+condition|)
+block|{
+return|return
+literal|"https://github.com/JabRef/jabref/blob/master/CHANGELOG.md#unreleased"
+return|;
+block|}
+else|else
+block|{
 name|StringBuilder
 name|changelogLink
 init|=
@@ -1135,6 +1146,7 @@ operator|.
 name|toString
 argument_list|()
 return|;
+block|}
 block|}
 annotation|@
 name|Override
