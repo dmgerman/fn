@@ -199,7 +199,7 @@ name|put
 argument_list|(
 name|AUTOCOMPLETER_COMPLETE_FIELDS
 argument_list|,
-literal|"author;editor;title;journal;publisher;keywords;crossref"
+literal|"author;editor;title;journal;publisher;keywords"
 argument_list|)
 expr_stmt|;
 block|}
