@@ -92,16 +92,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Objects
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|swing
@@ -218,7 +208,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|autosave
+name|autosaveandbackup
 operator|.
 name|BackupUIManager
 import|;
@@ -429,6 +419,22 @@ operator|.
 name|exception
 operator|.
 name|InvalidDBMSConnectionPropertiesException
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|shared
+operator|.
+name|exception
+operator|.
+name|NotASharedDatabaseException
 import|;
 end_import
 
@@ -886,18 +892,13 @@ block|}
 elseif|else
 if|if
 condition|(
-name|Objects
-operator|.
-name|nonNull
-argument_list|(
 name|pr
 operator|.
 name|getDatabase
 argument_list|()
 operator|.
-name|getDatabaseID
+name|isShared
 argument_list|()
-argument_list|)
 condition|)
 block|{
 try|try
@@ -921,6 +922,8 @@ decl||
 name|DatabaseNotSupportedException
 decl||
 name|InvalidDBMSConnectionPropertiesException
+decl||
+name|NotASharedDatabaseException
 name|e
 parameter_list|)
 block|{
@@ -929,10 +932,8 @@ operator|.
 name|getDatabaseContext
 argument_list|()
 operator|.
-name|setDatabaseFile
-argument_list|(
-literal|null
-argument_list|)
+name|clearDatabaseFile
+argument_list|()
 expr_stmt|;
 comment|// do not open the original file
 name|pr
@@ -940,10 +941,8 @@ operator|.
 name|getDatabase
 argument_list|()
 operator|.
-name|setDatabaseID
-argument_list|(
-literal|null
-argument_list|)
+name|clearSharedDatabaseID
+argument_list|()
 expr_stmt|;
 name|LOGGER
 operator|.

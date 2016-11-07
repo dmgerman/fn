@@ -842,7 +842,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|autosave
+name|autosaveandbackup
 operator|.
 name|AutosaveUIManager
 import|;

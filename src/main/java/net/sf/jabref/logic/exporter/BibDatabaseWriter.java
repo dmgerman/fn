@@ -1109,17 +1109,37 @@ name|getMakeBackup
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|writeDatabaseID
-argument_list|(
+name|Optional
+argument_list|<
+name|String
+argument_list|>
+name|sharedDatabaseIDOptional
+init|=
 name|bibDatabaseContext
 operator|.
 name|getDatabase
 argument_list|()
 operator|.
-name|getDatabaseID
+name|getSharedDatabaseID
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|sharedDatabaseIDOptional
+operator|.
+name|isPresent
+argument_list|()
+condition|)
+block|{
+name|writeDatabaseID
+argument_list|(
+name|sharedDatabaseIDOptional
+operator|.
+name|get
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 comment|// Map to collect entry type definitions that we must save along with entries using them.
 name|Map
 argument_list|<
@@ -1543,14 +1563,14 @@ parameter_list|)
 throws|throws
 name|SaveException
 function_decl|;
-DECL|method|writeDatabaseID (String databaseID)
+DECL|method|writeDatabaseID (String sharedDatabaseID)
 specifier|protected
 specifier|abstract
 name|void
 name|writeDatabaseID
 parameter_list|(
 name|String
-name|databaseID
+name|sharedDatabaseID
 parameter_list|)
 throws|throws
 name|SaveException

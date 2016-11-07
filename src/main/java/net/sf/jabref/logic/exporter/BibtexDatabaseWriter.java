@@ -58,16 +58,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Objects
-import|;
-end_import
-
-begin_import
-import|import
 name|net
 operator|.
 name|sf
@@ -972,28 +962,18 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|writeDatabaseID (String databaseID)
+DECL|method|writeDatabaseID (String sharedDatabaseID)
 specifier|protected
 name|void
 name|writeDatabaseID
 parameter_list|(
 name|String
-name|databaseID
+name|sharedDatabaseID
 parameter_list|)
 throws|throws
 name|SaveException
 block|{
 try|try
-block|{
-if|if
-condition|(
-name|Objects
-operator|.
-name|nonNull
-argument_list|(
-name|databaseID
-argument_list|)
-condition|)
 block|{
 name|StringBuilder
 name|stringBuilder
@@ -1019,7 +999,7 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-name|databaseID
+name|sharedDatabaseID
 argument_list|)
 operator|.
 name|append
@@ -1040,7 +1020,6 @@ name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 catch|catch
 parameter_list|(
