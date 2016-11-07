@@ -202,16 +202,6 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|JEditorPane
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
 name|JOptionPane
 import|;
 end_import
@@ -677,7 +667,7 @@ argument_list|()
 decl_stmt|;
 DECL|field|previewPane
 specifier|private
-name|JEditorPane
+name|JEditorPaneWithHighlighting
 name|previewPane
 decl_stmt|;
 DECL|field|scrollPane
@@ -1083,7 +1073,7 @@ block|{
 name|previewPane
 operator|=
 operator|new
-name|JEditorPane
+name|JEditorPaneWithHighlighting
 argument_list|()
 block|{
 annotation|@
@@ -1746,8 +1736,6 @@ name|orElse
 argument_list|(
 literal|null
 argument_list|)
-argument_list|,
-name|highlightPattern
 argument_list|)
 argument_list|)
 argument_list|)
@@ -1759,6 +1747,9 @@ operator|.
 name|toString
 argument_list|()
 argument_list|)
+expr_stmt|;
+name|markHighlights
+argument_list|()
 expr_stmt|;
 block|}
 elseif|else
@@ -1794,6 +1785,20 @@ name|execute
 argument_list|()
 expr_stmt|;
 block|}
+block|}
+DECL|method|markHighlights ()
+specifier|public
+name|void
+name|markHighlights
+parameter_list|()
+block|{
+name|previewPane
+operator|.
+name|highlightPattern
+argument_list|(
+name|highlightPattern
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|setPreviewLabel (String text)
 specifier|public
