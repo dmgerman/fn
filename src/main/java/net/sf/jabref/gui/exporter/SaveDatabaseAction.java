@@ -1953,18 +1953,6 @@ parameter_list|()
 throws|throws
 name|Throwable
 block|{
-name|File
-name|file
-init|=
-literal|null
-decl_stmt|;
-while|while
-condition|(
-name|file
-operator|==
-literal|null
-condition|)
-block|{
 comment|// configure file dialog
 name|FileDialog
 name|dialog
@@ -2031,7 +2019,6 @@ operator|=
 literal|true
 expr_stmt|;
 return|return;
-block|}
 block|}
 block|}
 comment|/**      * Run the "Save as" operation. This method offloads the actual save operation to a background thread, but      * still runs synchronously using Spin (the method returns only after completing the operation).      */
