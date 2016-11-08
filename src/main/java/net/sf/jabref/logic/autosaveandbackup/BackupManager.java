@@ -357,7 +357,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Backups the given bib database file from {@link BibDatabaseContext} on every {@link BibDatabaseContextChangedEvent}.  * An intelligent {@link ExecutorService} with a {@link BlockingQueue} prevents a high load while making backups and rejects all redundant backup tasks.  */
+comment|/**  * Backups the given bib database file from {@link BibDatabaseContext} on every {@link BibDatabaseContextChangedEvent}.  * An intelligent {@link ExecutorService} with a {@link BlockingQueue} prevents a high load while making backups and rejects all redundant backup tasks.  * This class does not manage the .bak file which is created when opening a database.  */
 end_comment
 
 begin_class
@@ -620,6 +620,16 @@ name|BibDatabaseContextChangedEvent
 name|event
 parameter_list|)
 block|{
+name|startBackupTask
+argument_list|()
+expr_stmt|;
+block|}
+DECL|method|startBackupTask ()
+specifier|private
+name|void
+name|startBackupTask
+parameter_list|()
+block|{
 try|try
 block|{
 name|executor
@@ -679,6 +689,24 @@ argument_list|()
 expr_stmt|;
 try|try
 block|{
+if|if
+condition|(
+name|Files
+operator|.
+name|exists
+argument_list|(
+name|backupPath
+argument_list|)
+operator|&&
+operator|!
+name|Files
+operator|.
+name|isDirectory
+argument_list|(
+name|backupPath
+argument_list|)
+condition|)
+block|{
 name|Files
 operator|.
 name|delete
@@ -686,6 +714,7 @@ argument_list|(
 name|backupPath
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(
@@ -785,6 +814,11 @@ name|backupManager
 operator|.
 name|originalPath
 argument_list|)
+expr_stmt|;
+name|backupManager
+operator|.
+name|startBackupTask
+argument_list|()
 expr_stmt|;
 name|bibDatabaseContext
 operator|.

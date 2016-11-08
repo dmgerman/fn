@@ -751,14 +751,11 @@ parameter_list|()
 block|{
 if|if
 condition|(
-name|Objects
-operator|.
-name|isNull
-argument_list|(
 name|this
 operator|.
 name|bibDatabaseContext
-argument_list|)
+operator|==
+literal|null
 condition|)
 block|{
 name|this

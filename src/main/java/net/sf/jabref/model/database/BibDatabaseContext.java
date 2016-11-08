@@ -657,6 +657,19 @@ operator|=
 name|file
 expr_stmt|;
 block|}
+DECL|method|clearDatabaseFile ()
+specifier|public
+name|void
+name|clearDatabaseFile
+parameter_list|()
+block|{
+name|this
+operator|.
+name|file
+operator|=
+literal|null
+expr_stmt|;
+block|}
 DECL|method|getDatabase ()
 specifier|public
 name|BibDatabase

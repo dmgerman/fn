@@ -48,28 +48,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Optional
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|regex
-operator|.
-name|Pattern
-import|;
-end_import
-
-begin_import
-import|import
 name|net
 operator|.
 name|sf
@@ -497,6 +475,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|/**      * Returns the processed bibtex entry. If the database argument is      * null, no string references will be resolved. Otherwise all valid      * string references will be replaced by the strings' contents. Even      * recursive string references are resolved.      */
 DECL|method|doLayout (BibEntry bibtex, BibDatabase database)
 specifier|public
 name|String
@@ -507,39 +486,6 @@ name|bibtex
 parameter_list|,
 name|BibDatabase
 name|database
-parameter_list|)
-block|{
-return|return
-name|doLayout
-argument_list|(
-name|bibtex
-argument_list|,
-name|database
-argument_list|,
-name|Optional
-operator|.
-name|empty
-argument_list|()
-argument_list|)
-return|;
-block|}
-comment|/**      * Returns the processed bibtex entry. If the database argument is      * null, no string references will be resolved. Otherwise all valid      * string references will be replaced by the strings' contents. Even      * recursive string references are resolved.      */
-DECL|method|doLayout (BibEntry bibtex, BibDatabase database, Optional<Pattern> highlightPattern)
-specifier|public
-name|String
-name|doLayout
-parameter_list|(
-name|BibEntry
-name|bibtex
-parameter_list|,
-name|BibDatabase
-name|database
-parameter_list|,
-name|Optional
-argument_list|<
-name|Pattern
-argument_list|>
-name|highlightPattern
 parameter_list|)
 block|{
 name|StringBuilder
@@ -569,8 +515,6 @@ argument_list|(
 name|bibtex
 argument_list|,
 name|database
-argument_list|,
-name|highlightPattern
 argument_list|)
 decl_stmt|;
 comment|// 2005.05.05 M. Alver

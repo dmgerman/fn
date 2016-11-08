@@ -683,12 +683,22 @@ comment|// ugly hack, the export routine has set a global variable before
 comment|// starting the export, which contains the database's file directory:
 if|if
 condition|(
+operator|(
 name|prefs
 operator|.
 name|getFileDirForDatabase
 argument_list|()
 operator|==
 literal|null
+operator|)
+operator|||
+name|prefs
+operator|.
+name|getFileDirForDatabase
+argument_list|()
+operator|.
+name|isEmpty
+argument_list|()
 condition|)
 block|{
 name|dirs
