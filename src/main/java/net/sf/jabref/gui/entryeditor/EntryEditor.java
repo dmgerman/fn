@@ -2028,6 +2028,16 @@ argument_list|(
 name|optionalFieldsAndAliases
 argument_list|)
 expr_stmt|;
+comment|// Get other deprecated fields
+name|usedOptionalFieldsDeprecated
+operator|.
+name|add
+argument_list|(
+name|FieldName
+operator|.
+name|MONTH
+argument_list|)
+expr_stmt|;
 comment|// Add tabs
 name|EntryEditorTab
 name|optPan2
