@@ -728,7 +728,7 @@ parameter_list|)
 block|{
 name|LOGGER
 operator|.
-name|warn
+name|debug
 argument_list|(
 literal|"Search query invalid"
 argument_list|,
