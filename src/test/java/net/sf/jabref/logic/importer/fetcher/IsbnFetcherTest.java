@@ -477,6 +477,41 @@ literal|"jabref-4-ever"
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * This test searches for a valid ISBN. See https://www.amazon.de/dp/3728128155/?tag=jabref-21      * However, this ISBN is not available on ebook.de. The fetcher should return nothing rather than throwing an exeption.      */
+annotation|@
+name|Test
+DECL|method|searchForValidButNotFoundISBN ()
+specifier|public
+name|void
+name|searchForValidButNotFoundISBN
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|Optional
+argument_list|<
+name|BibEntry
+argument_list|>
+name|fetchedEntry
+init|=
+name|fetcher
+operator|.
+name|performSearchById
+argument_list|(
+literal|"3728128155"
+argument_list|)
+decl_stmt|;
+name|assertEquals
+argument_list|(
+name|Optional
+operator|.
+name|empty
+argument_list|()
+argument_list|,
+name|fetchedEntry
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_class
 
