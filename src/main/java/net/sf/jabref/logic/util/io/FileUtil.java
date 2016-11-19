@@ -494,7 +494,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**      * Returns the extension of a file name or Optional.empty() if the file does not have one (no . in name).      *      * @param fileName      * @return The extension, trimmed and in lowercase.      */
+comment|/**      * Returns the extension of a file name or Optional.empty() if the file does not have one (no "." in name).      *      * @param fileName      * @return The extension (without leading dot), trimmed and in lowercase.      */
 DECL|method|getFileExtension (String fileName)
 specifier|public
 specifier|static
@@ -509,7 +509,7 @@ name|fileName
 parameter_list|)
 block|{
 name|int
-name|pos
+name|dotPosition
 init|=
 name|fileName
 operator|.
@@ -521,13 +521,13 @@ decl_stmt|;
 if|if
 condition|(
 operator|(
-name|pos
+name|dotPosition
 operator|>
 literal|0
 operator|)
 operator|&&
 operator|(
-name|pos
+name|dotPosition
 operator|<
 operator|(
 name|fileName
@@ -549,7 +549,7 @@ name|fileName
 operator|.
 name|substring
 argument_list|(
-name|pos
+name|dotPosition
 operator|+
 literal|1
 argument_list|)
@@ -569,6 +569,52 @@ name|Optional
 operator|.
 name|empty
 argument_list|()
+return|;
+block|}
+block|}
+comment|/**      * Returns the name part of a file name (i.e., everything in front of last ".").      */
+DECL|method|getFileName (String fileNameWithExtension)
+specifier|public
+specifier|static
+name|String
+name|getFileName
+parameter_list|(
+name|String
+name|fileNameWithExtension
+parameter_list|)
+block|{
+name|int
+name|dotPosition
+init|=
+name|fileNameWithExtension
+operator|.
+name|lastIndexOf
+argument_list|(
+literal|'.'
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|dotPosition
+operator|>=
+literal|0
+condition|)
+block|{
+return|return
+name|fileNameWithExtension
+operator|.
+name|substring
+argument_list|(
+literal|0
+argument_list|,
+name|dotPosition
+argument_list|)
+return|;
+block|}
+else|else
+block|{
+return|return
+name|fileNameWithExtension
 return|;
 block|}
 block|}

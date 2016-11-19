@@ -18,16 +18,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|net
 operator|.
 name|URISyntaxException
@@ -277,6 +267,8 @@ specifier|public
 name|void
 name|testImportUnknownFormat
 parameter_list|()
+throws|throws
+name|Exception
 block|{
 name|ImportFormatReader
 operator|.
@@ -314,7 +306,7 @@ name|void
 name|testImportFormatFromFile
 parameter_list|()
 throws|throws
-name|IOException
+name|Exception
 block|{
 name|assertEquals
 argument_list|(

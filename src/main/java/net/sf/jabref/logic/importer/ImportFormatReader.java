@@ -40,18 +40,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|nio
-operator|.
-name|file
-operator|.
-name|Paths
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|List
@@ -450,6 +438,22 @@ name|jabref
 operator|.
 name|logic
 operator|.
+name|l10n
+operator|.
+name|Localization
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
 name|xmp
 operator|.
 name|XMPPreferences
@@ -504,56 +508,12 @@ name|StringUtil
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|commons
-operator|.
-name|logging
-operator|.
-name|Log
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|commons
-operator|.
-name|logging
-operator|.
-name|LogFactory
-import|;
-end_import
-
 begin_class
 DECL|class|ImportFormatReader
 specifier|public
 class|class
 name|ImportFormatReader
 block|{
-DECL|field|LOGGER
-specifier|private
-specifier|static
-specifier|final
-name|Log
-name|LOGGER
-init|=
-name|LogFactory
-operator|.
-name|getLog
-argument_list|(
-name|ImportFormatReader
-operator|.
-name|class
-argument_list|)
-decl_stmt|;
 DECL|field|BIBTEX_FORMAT
 specifier|public
 specifier|static
@@ -780,7 +740,7 @@ name|SilverPlatterImporter
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|/**          * Get custom import formats          */
+comment|// Get custom import formats
 for|for
 control|(
 name|CustomImporter
@@ -864,7 +824,7 @@ name|Path
 name|file
 parameter_list|)
 throws|throws
-name|IOException
+name|ImportException
 block|{
 name|Optional
 argument_list|<
@@ -888,14 +848,23 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|IllegalArgumentException
+name|ImportException
 argument_list|(
-literal|"Unknown import format: "
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Unknown import format"
+argument_list|)
+operator|+
+literal|": "
 operator|+
 name|format
 argument_list|)
 throw|;
 block|}
+try|try
+block|{
 return|return
 name|importer
 operator|.
@@ -912,6 +881,21 @@ name|getEncoding
 argument_list|()
 argument_list|)
 return|;
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|ImportException
+argument_list|(
+name|e
+argument_list|)
+throw|;
+block|}
 block|}
 comment|/**      * All importers.      *<p>      *<p>      * Elements are in default order.      *</p>      *      * @return all custom importers, elements are of type InputFormat      */
 DECL|method|getImportFormats ()
@@ -1075,28 +1059,7 @@ name|parserResult
 expr_stmt|;
 block|}
 block|}
-DECL|method|importUnknownFormat (String filename)
-specifier|public
-name|UnknownFormatImport
-name|importUnknownFormat
-parameter_list|(
-name|String
-name|filename
-parameter_list|)
-block|{
-return|return
-name|importUnknownFormat
-argument_list|(
-name|Paths
-operator|.
-name|get
-argument_list|(
-name|filename
-argument_list|)
-argument_list|)
-return|;
-block|}
-comment|/**      * Tries to import a file by iterating through the available import filters,      * and keeping the import that seems most promising.      *<p/>      * If all fails this method attempts to read this file as bibtex.      *      * @throws IOException      */
+comment|/**      * Tries to import a file by iterating through the available import filters,      * and keeping the import that seems most promising.      *<p/>      * If all fails this method attempts to read this file as bibtex.      *      * @throws ImportException if the import fails (for example, if no suitable importer is found)      */
 DECL|method|importUnknownFormat (Path filePath)
 specifier|public
 name|UnknownFormatImport
@@ -1105,6 +1068,8 @@ parameter_list|(
 name|Path
 name|filePath
 parameter_list|)
+throws|throws
+name|ImportException
 block|{
 name|Objects
 operator|.
@@ -1328,6 +1293,16 @@ argument_list|(
 name|bestResult
 argument_list|)
 decl_stmt|;
+name|parserResult
+operator|.
+name|setFile
+argument_list|(
+name|filePath
+operator|.
+name|toFile
+argument_list|()
+argument_list|)
+expr_stmt|;
 return|return
 operator|new
 name|UnknownFormatImport
@@ -1338,9 +1313,18 @@ name|parserResult
 argument_list|)
 return|;
 block|}
-return|return
-literal|null
-return|;
+throw|throw
+operator|new
+name|ImportException
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Could not find a suitable import format."
+argument_list|)
+argument_list|)
+throw|;
 block|}
 block|}
 end_class

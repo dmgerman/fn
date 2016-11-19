@@ -118,6 +118,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -923,10 +933,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testGetFileExtensionSimpleString ()
+DECL|method|getFileExtensionWithSimpleString ()
 specifier|public
 name|void
-name|testGetFileExtensionSimpleString
+name|getFileExtensionWithSimpleString
 parameter_list|()
 block|{
 name|assertEquals
@@ -947,10 +957,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testGetFileExtensionLowerCaseAndTrimmingString ()
+DECL|method|getFileExtensionTrimsAndReturnsInLowercase ()
 specifier|public
 name|void
-name|testGetFileExtensionLowerCaseAndTrimmingString
+name|getFileExtensionTrimsAndReturnsInLowercase
 parameter_list|()
 block|{
 name|assertEquals
@@ -971,10 +981,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testGetFileExtensionMultipleDotsString ()
+DECL|method|getFileExtensionWithMultipleDotsString ()
 specifier|public
 name|void
-name|testGetFileExtensionMultipleDotsString
+name|getFileExtensionWithMultipleDotsString
 parameter_list|()
 block|{
 name|assertEquals
@@ -995,45 +1005,91 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testGetFileExtensionNoExtensionString ()
+DECL|method|getFileExtensionWithNoDotReturnsEmptyExtension ()
 specifier|public
 name|void
-name|testGetFileExtensionNoExtensionString
+name|getFileExtensionWithNoDotReturnsEmptyExtension
 parameter_list|()
 block|{
-name|assertFalse
+name|assertEquals
 argument_list|(
+name|Optional
+operator|.
+name|empty
+argument_list|()
+argument_list|,
 name|FileUtil
 operator|.
 name|getFileExtension
 argument_list|(
 literal|"JustTextNotASingleDot"
 argument_list|)
-operator|.
-name|isPresent
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testGetFileExtensionNoExtension2String ()
+DECL|method|getFileExtensionWithDotAtStartReturnsEmptyExtension ()
 specifier|public
 name|void
-name|testGetFileExtensionNoExtension2String
+name|getFileExtensionWithDotAtStartReturnsEmptyExtension
 parameter_list|()
 block|{
-name|assertFalse
+name|assertEquals
 argument_list|(
+name|Optional
+operator|.
+name|empty
+argument_list|()
+argument_list|,
 name|FileUtil
 operator|.
 name|getFileExtension
 argument_list|(
 literal|".StartsWithADotIsNotAnExtension"
 argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|getFileNameWithSimpleString ()
+specifier|public
+name|void
+name|getFileNameWithSimpleString
+parameter_list|()
+block|{
+name|assertEquals
+argument_list|(
+literal|"test"
+argument_list|,
+name|FileUtil
 operator|.
-name|isPresent
-argument_list|()
+name|getFileName
+argument_list|(
+literal|"test.pdf"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|getFileNameWithMultipleDotsString ()
+specifier|public
+name|void
+name|getFileNameWithMultipleDotsString
+parameter_list|()
+block|{
+name|assertEquals
+argument_list|(
+literal|"te.st"
+argument_list|,
+name|FileUtil
+operator|.
+name|getFileName
+argument_list|(
+literal|"te.st.PdF  "
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
