@@ -1,8 +1,4 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
-begin_comment
-comment|/*  Copyright (C) 2016 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
-end_comment
-
 begin_package
 DECL|package|net.sf.jabref.gui
 package|package
@@ -79,6 +75,30 @@ operator|.
 name|control
 operator|.
 name|Alert
+import|;
+end_import
+
+begin_import
+import|import
+name|javafx
+operator|.
+name|scene
+operator|.
+name|control
+operator|.
+name|Dialog
+import|;
+end_import
+
+begin_import
+import|import
+name|javafx
+operator|.
+name|scene
+operator|.
+name|control
+operator|.
+name|DialogPane
 import|;
 end_import
 
@@ -171,18 +191,18 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This class shall provide a super class for future dialogs implemented in java fx.  * It mimics the behavior of a swing JDialog which means once a object of this class  * is shown all swing windows will be blocked and stay in the background. Since this  * class extends from a java fx Alert it behaves as a normal dialog towards all  * windows in the java fx thread.  *<p>To create a custom java fx dialog one should extend this class and set a dialog  * pane through the inherited {@link setDialogPane(DialogPane)} method in the constructor.  * The layout of the pane should be define in an external fxml file and loaded it via the  * {@link FXMLLoader}.  *  */
+comment|/**  * This class provides a super class for all dialogs implemented in JavaFX.  * It mimics the behavior of a Swing JDialog which means once a object of this class  * is shown all Swing windows will be blocked and stay in the background. Since this  * class extends from a JavaFX {@link Alert} it behaves as a normal dialog towards all  * windows in the JavaFX thread.  *<p>  * To create a custom JavaFX dialog one should create an instance of this class and set a dialog  * pane through the inherited {@link Dialog#setDialogPane(DialogPane)} method.  * The dialog can be shown via {@link Dialog#show()} or {@link Dialog#showAndWait()}.  *  * The layout of the pane should be defined in an external fxml file and loaded it via the  * {@link FXMLLoader}.  */
 end_comment
 
 begin_class
-DECL|class|FXAlert
+DECL|class|FXDialog
 specifier|public
 class|class
-name|FXAlert
+name|FXDialog
 extends|extends
 name|Alert
 block|{
-comment|/**      * The WindowAdapter will be added to all swing windows once an instance      * of this class is shown and redirects the focus towards this instance.      * It will be removed once the instance of this class gets hidden.      *      */
+comment|/**      * The WindowAdapter will be added to all Swing windows once an instance      * of this class is shown and redirects the focus towards this instance.      * The WindowAdapter will be removed once the instance of this class gets hidden.      *      */
 DECL|field|fxOverSwingHelper
 specifier|private
 specifier|final
@@ -269,9 +289,9 @@ expr_stmt|;
 block|}
 block|}
 decl_stmt|;
-DECL|method|FXAlert (AlertType type, String title, Image image, boolean isModal)
+DECL|method|FXDialog (AlertType type, String title, Image image, boolean isModal)
 specifier|public
-name|FXAlert
+name|FXDialog
 parameter_list|(
 name|AlertType
 name|type
@@ -301,9 +321,9 @@ name|image
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|FXAlert (AlertType type, String title, Image image)
+DECL|method|FXDialog (AlertType type, String title, Image image)
 specifier|public
-name|FXAlert
+name|FXDialog
 parameter_list|(
 name|AlertType
 name|type
@@ -330,9 +350,9 @@ name|image
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|FXAlert (AlertType type, String title, boolean isModal)
+DECL|method|FXDialog (AlertType type, String title, boolean isModal)
 specifier|public
-name|FXAlert
+name|FXDialog
 parameter_list|(
 name|AlertType
 name|type
@@ -357,9 +377,9 @@ name|title
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|FXAlert (AlertType type, String title)
+DECL|method|FXDialog (AlertType type, String title)
 specifier|public
-name|FXAlert
+name|FXDialog
 parameter_list|(
 name|AlertType
 name|type
@@ -379,9 +399,9 @@ name|title
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|FXAlert (AlertType type, boolean isModal)
+DECL|method|FXDialog (AlertType type, boolean isModal)
 specifier|public
-name|FXAlert
+name|FXDialog
 parameter_list|(
 name|AlertType
 name|type
@@ -395,35 +415,21 @@ argument_list|(
 name|type
 argument_list|)
 expr_stmt|;
-name|Image
-name|image
-init|=
-operator|new
-name|Image
+name|setDialogIcon
 argument_list|(
 name|IconTheme
 operator|.
-name|getIconUrl
-argument_list|(
-literal|"jabrefIcon48"
-argument_list|)
-operator|.
-name|toString
+name|getJabRefImageFX
 argument_list|()
-argument_list|)
-decl_stmt|;
-name|setDialogIcon
-argument_list|(
-name|image
 argument_list|)
 expr_stmt|;
 name|Stage
-name|fxDialogWindow
+name|dialogWindow
 init|=
 name|getDialogWindow
 argument_list|()
 decl_stmt|;
-name|fxDialogWindow
+name|dialogWindow
 operator|.
 name|setOnCloseRequest
 argument_list|(
@@ -458,7 +464,7 @@ name|NONE
 argument_list|)
 expr_stmt|;
 block|}
-name|fxDialogWindow
+name|dialogWindow
 operator|.
 name|setOnShown
 argument_list|(
@@ -477,7 +483,7 @@ expr_stmt|;
 block|}
 argument_list|)
 expr_stmt|;
-name|fxDialogWindow
+name|dialogWindow
 operator|.
 name|setOnHiding
 argument_list|(
@@ -489,7 +495,7 @@ literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|fxDialogWindow
+name|dialogWindow
 operator|.
 name|setOnCloseRequest
 argument_list|(
@@ -501,7 +507,7 @@ name|close
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|fxDialogWindow
+name|dialogWindow
 operator|.
 name|getScene
 argument_list|()
@@ -533,7 +539,7 @@ name|evt
 argument_list|)
 condition|)
 block|{
-name|fxDialogWindow
+name|dialogWindow
 operator|.
 name|close
 argument_list|()
@@ -543,9 +549,9 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|FXAlert (AlertType type)
+DECL|method|FXDialog (AlertType type)
 specifier|public
-name|FXAlert
+name|FXDialog
 parameter_list|(
 name|AlertType
 name|type
@@ -556,30 +562,6 @@ argument_list|(
 name|type
 argument_list|,
 literal|true
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|setDialogStyle (String pathToStyleSheet)
-specifier|public
-name|void
-name|setDialogStyle
-parameter_list|(
-name|String
-name|pathToStyleSheet
-parameter_list|)
-block|{
-name|getDialogPane
-argument_list|()
-operator|.
-name|getScene
-argument_list|()
-operator|.
-name|getStylesheets
-argument_list|()
-operator|.
-name|add
-argument_list|(
-name|pathToStyleSheet
 argument_list|)
 expr_stmt|;
 block|}

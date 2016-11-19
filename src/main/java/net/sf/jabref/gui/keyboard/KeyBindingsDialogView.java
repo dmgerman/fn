@@ -60,7 +60,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|FXAlert
+name|FXDialog
 import|;
 end_import
 
@@ -127,11 +127,11 @@ name|KeyBindingPreferences
 name|keyBindingPreferences
 parameter_list|)
 block|{
-name|FXAlert
+name|FXDialog
 name|keyBindingsDialog
 init|=
 operator|new
-name|FXAlert
+name|FXDialog
 argument_list|(
 name|AlertType
 operator|.

@@ -65,13 +65,12 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This class provides static methods to create default  * JavaFX dialogs which will also work on top of swing  * windows. The created dialogs are instances of the  * {@link FXAlert} class. The available dialogs in this class  * are useful for displaying small information graphic dialogs  * rather than complex windows. For more complex dialogs it is  * advised to rather create a new sub class of {@link FXAlert}.  *  */
+comment|/**  * This class provides static methods to create default  * JavaFX dialogs which will also work on top of swing  * windows. The created dialogs are instances of the  * {@link FXDialog} class. The available dialogs in this class  * are useful for displaying small information graphic dialogs  * rather than complex windows. For more complex dialogs it is  * advised to rather create a new sub class of {@link FXDialog}.  *  */
 end_comment
 
 begin_class
 DECL|class|FXDialogs
 specifier|public
-specifier|abstract
 class|class
 name|FXDialogs
 block|{
@@ -89,7 +88,7 @@ name|String
 name|content
 parameter_list|)
 block|{
-name|FXAlert
+name|FXDialog
 name|alert
 init|=
 name|createDialog
@@ -123,7 +122,7 @@ name|String
 name|content
 parameter_list|)
 block|{
-name|FXAlert
+name|FXDialog
 name|alert
 init|=
 name|createDialog
@@ -157,7 +156,7 @@ name|String
 name|content
 parameter_list|)
 block|{
-name|FXAlert
+name|FXDialog
 name|alert
 init|=
 name|createDialog
@@ -194,7 +193,7 @@ name|String
 name|content
 parameter_list|)
 block|{
-name|FXAlert
+name|FXDialog
 name|alert
 init|=
 name|createDialog
@@ -239,7 +238,7 @@ modifier|...
 name|buttonTypes
 parameter_list|)
 block|{
-name|FXAlert
+name|FXDialog
 name|alert
 init|=
 name|createDialog
@@ -289,11 +288,11 @@ modifier|...
 name|buttonTypes
 parameter_list|)
 block|{
-name|FXAlert
+name|FXDialog
 name|alert
 init|=
 operator|new
-name|FXAlert
+name|FXDialog
 argument_list|(
 name|AlertType
 operator|.
@@ -329,7 +328,7 @@ block|}
 DECL|method|createDialog (AlertType type, String title, String content)
 specifier|private
 specifier|static
-name|FXAlert
+name|FXDialog
 name|createDialog
 parameter_list|(
 name|AlertType
@@ -342,11 +341,11 @@ name|String
 name|content
 parameter_list|)
 block|{
-name|FXAlert
+name|FXDialog
 name|alert
 init|=
 operator|new
-name|FXAlert
+name|FXDialog
 argument_list|(
 name|type
 argument_list|,

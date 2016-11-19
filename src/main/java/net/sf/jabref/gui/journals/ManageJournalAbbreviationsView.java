@@ -64,7 +64,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|FXAlert
+name|FXDialog
 import|;
 end_import
 
@@ -132,11 +132,11 @@ name|void
 name|showAndWait
 parameter_list|()
 block|{
-name|FXAlert
+name|FXDialog
 name|journalAbbreviationsDialog
 init|=
 operator|new
-name|FXAlert
+name|FXDialog
 argument_list|(
 name|AlertType
 operator|.
