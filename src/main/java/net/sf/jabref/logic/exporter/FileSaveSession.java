@@ -496,6 +496,10 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+name|FileUtil
+operator|.
+name|isPosixCompilant
+operator|&&
 name|Files
 operator|.
 name|exists
@@ -545,6 +549,13 @@ literal|true
 argument_list|)
 expr_stmt|;
 comment|// Restore file permissions
+if|if
+condition|(
+name|FileUtil
+operator|.
+name|isPosixCompilant
+condition|)
+block|{
 try|try
 block|{
 name|Files
@@ -570,6 +581,7 @@ argument_list|(
 name|exception
 argument_list|)
 throw|;
+block|}
 block|}
 block|}
 finally|finally
