@@ -151,6 +151,20 @@ operator|=
 name|localizedMessage
 expr_stmt|;
 block|}
+DECL|method|JabRefException (Throwable cause)
+specifier|public
+name|JabRefException
+parameter_list|(
+name|Throwable
+name|cause
+parameter_list|)
+block|{
+name|super
+argument_list|(
+name|cause
+argument_list|)
+expr_stmt|;
+block|}
 annotation|@
 name|Override
 DECL|method|getLocalizedMessage ()

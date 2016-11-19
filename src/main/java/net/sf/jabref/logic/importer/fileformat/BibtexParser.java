@@ -1475,7 +1475,7 @@ parameter_list|)
 block|{
 name|LOGGER
 operator|.
-name|warn
+name|debug
 argument_list|(
 literal|"Could not parse entry"
 argument_list|,

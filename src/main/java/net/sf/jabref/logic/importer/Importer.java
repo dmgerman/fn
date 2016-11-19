@@ -275,7 +275,7 @@ return|;
 block|}
 block|}
 DECL|method|getUTF8Reader (Path filePath)
-specifier|public
+specifier|protected
 specifier|static
 name|BufferedReader
 name|getUTF8Reader
@@ -298,7 +298,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|getUTF16Reader (Path filePath)
-specifier|public
+specifier|protected
 specifier|static
 name|BufferedReader
 name|getUTF16Reader

@@ -234,6 +234,22 @@ name|logic
 operator|.
 name|importer
 operator|.
+name|ImportException
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|importer
+operator|.
 name|ImportFormatReader
 import|;
 end_import
@@ -414,7 +430,7 @@ name|importer
 decl_stmt|;
 DECL|field|importError
 specifier|private
-name|IOException
+name|Exception
 name|importError
 decl_stmt|;
 DECL|method|ImportMenuItem (JabRefFrame frame, boolean openInNew)
@@ -780,7 +796,7 @@ name|IMPORT_FORMAT_READER
 operator|.
 name|importUnknownFormat
 argument_list|(
-name|filename
+name|file
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -846,6 +862,8 @@ block|}
 block|}
 catch|catch
 parameter_list|(
+name|ImportException
+decl||
 name|IOException
 name|e
 parameter_list|)

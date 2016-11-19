@@ -14,17 +14,29 @@ name|importer
 package|;
 end_package
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|JabRefException
+import|;
+end_import
+
 begin_class
-DECL|class|ParserException
+DECL|class|ImportException
 specifier|public
 class|class
-name|ParserException
+name|ImportException
 extends|extends
-name|Exception
+name|JabRefException
 block|{
-DECL|method|ParserException (String errorMessage, Exception cause)
+DECL|method|ImportException (String errorMessage, Exception cause)
 specifier|public
-name|ParserException
+name|ImportException
 parameter_list|(
 name|String
 name|errorMessage
@@ -41,9 +53,9 @@ name|cause
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|ParserException (String errorMessage)
+DECL|method|ImportException (String errorMessage)
 specifier|public
-name|ParserException
+name|ImportException
 parameter_list|(
 name|String
 name|errorMessage
@@ -55,9 +67,9 @@ name|errorMessage
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|ParserException (Exception cause)
+DECL|method|ImportException (Exception cause)
 specifier|public
-name|ParserException
+name|ImportException
 parameter_list|(
 name|Exception
 name|cause
