@@ -196,7 +196,21 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|FXDialogs
+name|DialogService
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|FXDialogService
 import|;
 end_import
 
@@ -763,7 +777,14 @@ argument_list|(
 literal|"You must restart JabRef for the new key bindings to work properly."
 argument_list|)
 decl_stmt|;
-name|FXDialogs
+name|DialogService
+name|dialogService
+init|=
+operator|new
+name|FXDialogService
+argument_list|()
+decl_stmt|;
+name|dialogService
 operator|.
 name|showInformationDialogAndWait
 argument_list|(
@@ -817,7 +838,14 @@ operator|.
 name|OK_DONE
 argument_list|)
 decl_stmt|;
-name|FXDialogs
+name|DialogService
+name|dialogService
+init|=
+operator|new
+name|FXDialogService
+argument_list|()
+decl_stmt|;
+name|dialogService
 operator|.
 name|showCustomButtonDialogAndWait
 argument_list|(
