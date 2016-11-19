@@ -994,6 +994,7 @@ return|return
 name|result
 return|;
 block|}
+comment|/**      * Loads the fxml file and returns all used language resources.      */
 DECL|method|getLanguageKeysInFxmlFile (Path path, LocalizationBundle type)
 specifier|private
 specifier|static
@@ -1010,7 +1011,6 @@ name|LocalizationBundle
 name|type
 parameter_list|)
 block|{
-comment|// Load the fxml file and register all used language resources
 name|List
 argument_list|<
 name|String
@@ -1109,7 +1109,6 @@ argument_list|,
 name|registerUsageResourceBundle
 argument_list|)
 decl_stmt|;
-comment|//loader.setBuilderFactory();
 name|loader
 operator|.
 name|load
