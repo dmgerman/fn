@@ -2093,6 +2093,16 @@ argument_list|(
 name|file
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|file
+operator|.
+name|getParent
+argument_list|()
+operator|!=
+literal|null
+condition|)
+block|{
 name|Globals
 operator|.
 name|prefs
@@ -2109,6 +2119,7 @@ name|getParent
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 name|runCommand
 argument_list|()
 expr_stmt|;
