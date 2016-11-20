@@ -252,6 +252,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+comment|/**      * Parses the given data map and returns a new resulting {@link MetaData} instance.      */
 DECL|method|parse (Map<String, String> data, Character keywordSeparator)
 specifier|public
 specifier|static
@@ -272,13 +273,43 @@ parameter_list|)
 throws|throws
 name|ParseException
 block|{
-name|MetaData
-name|metaData
-init|=
+return|return
+name|parse
+argument_list|(
 operator|new
 name|MetaData
 argument_list|()
-decl_stmt|;
+argument_list|,
+name|data
+argument_list|,
+name|keywordSeparator
+argument_list|)
+return|;
+block|}
+comment|/**      * Parses the data map and changes the given {@link MetaData} instance respectively.      */
+DECL|method|parse (MetaData metaData, Map<String, String> data, Character keywordSeparator)
+specifier|public
+specifier|static
+name|MetaData
+name|parse
+parameter_list|(
+name|MetaData
+name|metaData
+parameter_list|,
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
+name|data
+parameter_list|,
+name|Character
+name|keywordSeparator
+parameter_list|)
+throws|throws
+name|ParseException
+block|{
 name|List
 argument_list|<
 name|String

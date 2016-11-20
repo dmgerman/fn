@@ -1441,12 +1441,12 @@ return|return;
 block|}
 try|try
 block|{
-name|metaData
-operator|=
 name|MetaDataParser
 operator|.
 name|parse
 argument_list|(
+name|metaData
+argument_list|,
 name|dbmsProcessor
 operator|.
 name|getSharedMetaData
