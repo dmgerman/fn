@@ -1232,6 +1232,18 @@ expr_stmt|;
 name|dispose
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|fileLocationField
+operator|.
+name|getText
+argument_list|()
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
 try|try
 block|{
 operator|new
@@ -1269,6 +1281,7 @@ argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return;
 comment|// setLoadingConnectButtonText(false) should not be reached regularly.
