@@ -896,18 +896,18 @@ argument_list|()
 throw|;
 block|}
 block|}
-name|synchronizeLocalMetaData
-argument_list|()
-expr_stmt|;
-name|synchronizeLocalDatabase
-argument_list|()
-expr_stmt|;
 name|dbmsProcessor
 operator|.
 name|startNotificationListener
 argument_list|(
 name|this
 argument_list|)
+expr_stmt|;
+name|synchronizeLocalMetaData
+argument_list|()
+expr_stmt|;
+name|synchronizeLocalDatabase
+argument_list|()
 expr_stmt|;
 block|}
 comment|/**      * Synchronizes the local database with shared one.      * Possible update types are removal, update or insert of a {@link BibEntry}.      */
