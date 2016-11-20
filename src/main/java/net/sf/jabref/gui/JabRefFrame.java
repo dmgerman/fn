@@ -3846,6 +3846,27 @@ name|getIcon
 argument_list|()
 argument_list|)
 decl_stmt|;
+DECL|field|manageSelectors
+specifier|private
+specifier|final
+name|AbstractAction
+name|manageSelectors
+init|=
+operator|new
+name|GeneralAction
+argument_list|(
+name|Actions
+operator|.
+name|MANAGE_SELECTORS
+argument_list|,
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
+literal|"Manage content selectors"
+argument_list|)
+argument_list|)
+decl_stmt|;
 DECL|field|copyKey
 specifier|private
 specifier|final
@@ -12429,6 +12450,7 @@ parameter_list|)
 block|{
 return|return
 operator|(
+operator|(
 name|context
 operator|.
 name|getLocation
@@ -12437,6 +12459,7 @@ operator|==
 name|DatabaseLocation
 operator|.
 name|SHARED
+operator|)
 operator|||
 operator|(
 operator|(
@@ -12482,6 +12505,7 @@ name|context
 parameter_list|)
 block|{
 return|return
+operator|(
 name|context
 operator|.
 name|getLocation
@@ -12490,6 +12514,7 @@ operator|==
 name|DatabaseLocation
 operator|.
 name|LOCAL
+operator|)
 operator|&&
 name|context
 operator|.

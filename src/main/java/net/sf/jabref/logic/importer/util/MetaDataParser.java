@@ -347,22 +347,6 @@ argument_list|()
 operator|.
 name|startsWith
 argument_list|(
-literal|"selector_"
-argument_list|)
-condition|)
-block|{
-comment|// Ignore old content selector metadata
-continue|continue;
-block|}
-if|if
-condition|(
-name|entry
-operator|.
-name|getKey
-argument_list|()
-operator|.
-name|startsWith
-argument_list|(
 name|MetaData
 operator|.
 name|PREFIX_KEYPATTERN
