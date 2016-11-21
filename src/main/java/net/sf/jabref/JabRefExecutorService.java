@@ -214,6 +214,15 @@ argument_list|(
 literal|"JabRef CachedThreadPool"
 argument_list|)
 expr_stmt|;
+name|thread
+operator|.
+name|setUncaughtExceptionHandler
+argument_list|(
+operator|new
+name|FallbackExceptionHandler
+argument_list|()
+argument_list|)
+expr_stmt|;
 return|return
 name|thread
 return|;
@@ -488,6 +497,15 @@ operator|+
 literal|" - low prio"
 argument_list|)
 expr_stmt|;
+name|thread
+operator|.
+name|setUncaughtExceptionHandler
+argument_list|(
+operator|new
+name|FallbackExceptionHandler
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|startedThreads
 operator|.
 name|add
@@ -558,6 +576,15 @@ operator|.
 name|setName
 argument_list|(
 literal|"JabRef low prio"
+argument_list|)
+expr_stmt|;
+name|thread
+operator|.
+name|setUncaughtExceptionHandler
+argument_list|(
+operator|new
+name|FallbackExceptionHandler
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|startedThreads
