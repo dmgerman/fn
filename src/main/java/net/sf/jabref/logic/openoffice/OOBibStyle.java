@@ -4027,13 +4027,11 @@ name|String
 argument_list|>
 name|content
 init|=
-name|BibDatabase
+name|entry
 operator|.
-name|getResolvedField
+name|getResolvedFieldOrAlias
 argument_list|(
 name|s
-argument_list|,
-name|entry
 argument_list|,
 name|database
 argument_list|)
