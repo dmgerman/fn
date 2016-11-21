@@ -92,10 +92,10 @@ name|CitationStyleGeneratorTest
 block|{
 annotation|@
 name|Test
-DECL|method|testCarriageReturn ()
+DECL|method|testIgnoreCarriageReturn ()
 specifier|public
 name|void
-name|testCarriageReturn
+name|testIgnoreCarriageReturn
 parameter_list|()
 block|{
 name|BibEntry
@@ -113,7 +113,7 @@ name|FieldName
 operator|.
 name|AUTHOR
 argument_list|,
-literal|"Doe, John and\rDoe, Jane"
+literal|"Doe, John and \rDoe, Jane"
 argument_list|)
 expr_stmt|;
 comment|// if the default citation style changes this has to be modified
