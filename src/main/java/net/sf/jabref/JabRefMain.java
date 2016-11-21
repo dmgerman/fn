@@ -514,6 +514,11 @@ index|[]
 name|args
 parameter_list|)
 block|{
+name|FallbackExceptionHandler
+operator|.
+name|installExceptionHandler
+argument_list|()
+expr_stmt|;
 name|JabRefPreferences
 name|preferences
 init|=
