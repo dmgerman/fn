@@ -3491,6 +3491,40 @@ name|WEST
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Rebuild the field tabs. This is called e.g. when a new content selector      * has been added.      */
+DECL|method|rebuildPanels ()
+specifier|public
+name|void
+name|rebuildPanels
+parameter_list|()
+block|{
+comment|// Remove change listener, because the rebuilding causes meaningless
+comment|// events and trouble:
+name|tabbed
+operator|.
+name|removeChangeListener
+argument_list|(
+name|tabListener
+argument_list|)
+expr_stmt|;
+name|setupFieldPanels
+argument_list|()
+expr_stmt|;
+comment|// Add the change listener again:
+name|tabbed
+operator|.
+name|addChangeListener
+argument_list|(
+name|tabListener
+argument_list|)
+expr_stmt|;
+name|revalidate
+argument_list|()
+expr_stmt|;
+name|repaint
+argument_list|()
+expr_stmt|;
+block|}
 comment|/**      * getExtra checks the field name against InternalBibtexFields.getFieldExtras(name).      * If the name has an entry, the proper component to be shown is created and      * returned. Otherwise, null is returned. In addition, e.g. listeners can be      * added to the field editor, even if no component is returned.      *      * @param editor Field editor      * @return Component to show, or null if none.      */
 DECL|method|getExtra (final FieldEditor editor)
 specifier|public
@@ -5813,6 +5847,37 @@ expr_stmt|;
 block|}
 block|}
 block|}
+DECL|method|updateAllContentSelectors ()
+specifier|public
+name|void
+name|updateAllContentSelectors
+parameter_list|()
+block|{
+if|if
+condition|(
+operator|!
+name|contentSelectors
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+for|for
+control|(
+name|FieldContentSelector
+name|contentSelector
+range|:
+name|contentSelectors
+control|)
+block|{
+name|contentSelector
+operator|.
+name|rebuildComboBox
+argument_list|()
+expr_stmt|;
+block|}
+block|}
+block|}
 comment|/**      * Update the JTextArea when a field has changed.      */
 annotation|@
 name|Subscribe
@@ -6154,36 +6219,6 @@ block|{
 name|handleTypeChange
 argument_list|()
 expr_stmt|;
-block|}
-block|}
-specifier|public
-name|void
-name|updateAllContentSelectors
-parameter_list|()
-block|{
-if|if
-condition|(
-operator|!
-name|contentSelectors
-operator|.
-name|isEmpty
-argument_list|()
-condition|)
-block|{
-for|for
-control|(
-name|FieldContentSelector
-name|contentSelector
-range|:
-name|contentSelectors
-control|)
-block|{
-name|contentSelector
-operator|.
-name|rebuildComboBox
-argument_list|()
-expr_stmt|;
-block|}
 block|}
 block|}
 specifier|private

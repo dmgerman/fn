@@ -2054,7 +2054,8 @@ name|String
 name|s
 range|:
 name|metaData
-control|)
+operator|.
+expr|)
 block|{
 if|if
 condition|(
@@ -2152,12 +2153,12 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-if|if
-condition|(
+control|if
+operator|(
 name|currentField
 operator|==
 literal|null
-condition|)
+operator|)
 block|{
 comment|// if dialog is created for the whole database,
 comment|// select the first field to avoid confusions in GUI usage
@@ -2167,8 +2168,7 @@ name|setSelectedIndex
 argument_list|(
 literal|0
 argument_list|)
-expr_stmt|;
-block|}
+block|;         }
 else|else
 block|{
 comment|// a specific field has been chosen at the constructor
@@ -2201,7 +2201,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-block|}
+control|}
 DECL|method|setupWordSelector ()
 specifier|private
 name|void
