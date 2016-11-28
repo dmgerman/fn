@@ -728,18 +728,8 @@ argument_list|,
 name|metaData
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
-operator|!
-name|saveOrder
-operator|.
-name|isPresent
-argument_list|()
-condition|)
-block|{
 comment|// Take care, using CrossRefEntry-Comparator, that referred entries occur after referring
-comment|// ones. Apart from crossref requirements, entries will be sorted based on their creation order,
-comment|// utilizing the fact that IDs used for entries are increasing, sortable numbers.
+comment|// ones. This is a necessary requirement for BibTeX to be able to resolve referenced entries correctly.
 name|comparators
 operator|.
 name|add
@@ -749,6 +739,16 @@ name|CrossRefEntryComparator
 argument_list|()
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|saveOrder
+operator|.
+name|isPresent
+argument_list|()
+condition|)
+block|{
+comment|// entries will be sorted based on their internal IDs
 name|comparators
 operator|.
 name|add
@@ -761,15 +761,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|comparators
-operator|.
-name|add
-argument_list|(
-operator|new
-name|CrossRefEntryComparator
-argument_list|()
-argument_list|)
-expr_stmt|;
+comment|// use configured sorting strategy
 name|comparators
 operator|.
 name|add
