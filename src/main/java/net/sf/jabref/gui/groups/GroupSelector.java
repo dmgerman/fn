@@ -1376,6 +1376,7 @@ argument_list|()
 decl_stmt|;
 DECL|field|toggleAction
 specifier|private
+specifier|final
 name|ToggleAction
 name|toggleAction
 decl_stmt|;
@@ -2335,6 +2336,8 @@ operator|new
 name|GroupDialog
 argument_list|(
 name|frame
+argument_list|,
+name|panel
 argument_list|,
 literal|null
 argument_list|)
@@ -5516,6 +5519,8 @@ name|GroupDialog
 argument_list|(
 name|frame
 argument_list|,
+name|panel
+argument_list|,
 name|oldGroup
 argument_list|)
 decl_stmt|;
@@ -5809,6 +5814,8 @@ name|GroupDialog
 argument_list|(
 name|frame
 argument_list|,
+name|panel
+argument_list|,
 literal|null
 argument_list|)
 decl_stmt|;
@@ -6021,6 +6028,8 @@ operator|new
 name|GroupDialog
 argument_list|(
 name|frame
+argument_list|,
+name|panel
 argument_list|,
 literal|null
 argument_list|)
