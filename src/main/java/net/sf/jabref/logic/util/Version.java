@@ -854,7 +854,8 @@ argument_list|()
 condition|)
 block|{
 comment|// if the patch numbers are equal compare the development stages
-return|return
+if|if
+condition|(
 name|this
 operator|.
 name|developmentStage
@@ -865,7 +866,36 @@ name|otherVersion
 operator|.
 name|developmentStage
 argument_list|)
+condition|)
+block|{
+return|return
+literal|true
 return|;
+block|}
+elseif|else
+if|if
+condition|(
+name|this
+operator|.
+name|developmentStage
+operator|==
+name|otherVersion
+operator|.
+name|developmentStage
+condition|)
+block|{
+comment|// if the stage is equal check if this version is in development and the other is not
+return|return
+operator|!
+name|this
+operator|.
+name|isDevelopmentVersion
+operator|&&
+name|otherVersion
+operator|.
+name|isDevelopmentVersion
+return|;
+block|}
 block|}
 block|}
 block|}

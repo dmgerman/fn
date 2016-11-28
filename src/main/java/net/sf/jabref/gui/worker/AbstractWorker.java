@@ -85,7 +85,7 @@ name|void
 name|init
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 comment|// Do nothing
 block|}

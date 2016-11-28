@@ -745,7 +745,7 @@ name|void
 name|init
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|success
 operator|=
@@ -1887,7 +1887,7 @@ name|void
 name|runCommand
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 comment|// This part uses Spin's features:
 name|Worker
@@ -1934,7 +1934,7 @@ name|void
 name|save
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|runCommand
 argument_list|()
@@ -1951,7 +1951,7 @@ name|void
 name|saveAs
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 comment|// configure file dialog
 name|FileDialog
@@ -2031,7 +2031,7 @@ name|File
 name|file
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|BibDatabaseContext
 name|context
