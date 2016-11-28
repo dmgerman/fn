@@ -488,6 +488,10 @@ DECL|field|contentSelectors
 specifier|private
 name|ContentSelectors
 name|contentSelectors
+init|=
+operator|new
+name|ContentSelectors
+argument_list|()
 decl_stmt|;
 comment|/**      * Constructs an empty metadata.      */
 DECL|method|MetaData ()
