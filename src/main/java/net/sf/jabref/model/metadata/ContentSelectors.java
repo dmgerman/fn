@@ -50,6 +50,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Objects
 import|;
 end_import
@@ -62,7 +72,8 @@ name|ContentSelectors
 block|{
 DECL|field|contentSelectors
 specifier|private
-name|HashMap
+specifier|final
+name|Map
 argument_list|<
 name|String
 argument_list|,
@@ -222,7 +233,7 @@ return|;
 block|}
 DECL|method|getSelectorData ()
 specifier|public
-name|HashMap
+name|Map
 argument_list|<
 name|String
 argument_list|,
