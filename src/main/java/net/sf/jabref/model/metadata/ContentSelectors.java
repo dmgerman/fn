@@ -220,6 +220,24 @@ return|return
 literal|null
 return|;
 block|}
+DECL|method|getSelectorData ()
+specifier|public
+name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|List
+argument_list|<
+name|String
+argument_list|>
+argument_list|>
+name|getSelectorData
+parameter_list|()
+block|{
+return|return
+name|contentSelectors
+return|;
+block|}
 block|}
 end_class
 
