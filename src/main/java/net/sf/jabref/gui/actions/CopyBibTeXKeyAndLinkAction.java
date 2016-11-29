@@ -183,7 +183,7 @@ name|void
 name|action
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|List
 argument_list|<

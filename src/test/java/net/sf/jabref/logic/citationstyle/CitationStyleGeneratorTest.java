@@ -92,10 +92,10 @@ name|CitationStyleGeneratorTest
 block|{
 annotation|@
 name|Test
-DECL|method|testIgnoreCarriageReturn ()
+DECL|method|testIgnoreNewLine ()
 specifier|public
 name|void
-name|testIgnoreCarriageReturn
+name|testIgnoreNewLine
 parameter_list|()
 block|{
 name|BibEntry
@@ -113,7 +113,7 @@ name|FieldName
 operator|.
 name|AUTHOR
 argument_list|,
-literal|"Doe, John and \rDoe, Jane"
+literal|"Last, First and\nDoe, Jane"
 argument_list|)
 expr_stmt|;
 comment|// if the default citation style changes this has to be modified
@@ -122,7 +122,66 @@ name|expected
 init|=
 literal|"<div class=\"csl-entry\">\n"
 operator|+
-literal|"<div class=\"csl-left-margin\">[1]</div><div class=\"csl-right-inline\">J. Doe and J. Doe, .</div>\n"
+literal|"<div class=\"csl-left-margin\">[1]</div><div class=\"csl-right-inline\">F. Last and J. Doe, .</div>\n"
+operator|+
+literal|"</div>\n"
+decl_stmt|;
+name|String
+name|citation
+init|=
+name|CitationStyleGenerator
+operator|.
+name|generateCitation
+argument_list|(
+name|entry
+argument_list|,
+name|CitationStyle
+operator|.
+name|getDefault
+argument_list|()
+argument_list|)
+decl_stmt|;
+name|assertEquals
+argument_list|(
+name|expected
+argument_list|,
+name|citation
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|testIgnoreCarriageReturnNewLine ()
+specifier|public
+name|void
+name|testIgnoreCarriageReturnNewLine
+parameter_list|()
+block|{
+name|BibEntry
+name|entry
+init|=
+operator|new
+name|BibEntry
+argument_list|()
+decl_stmt|;
+name|entry
+operator|.
+name|setField
+argument_list|(
+name|FieldName
+operator|.
+name|AUTHOR
+argument_list|,
+literal|"Last, First and\r\nDoe, Jane"
+argument_list|)
+expr_stmt|;
+comment|// if the default citation style changes this has to be modified
+name|String
+name|expected
+init|=
+literal|"<div class=\"csl-entry\">\n"
+operator|+
+literal|"<div class=\"csl-left-margin\">[1]</div><div class=\"csl-right-inline\">F. Last and J. Doe, .</div>\n"
 operator|+
 literal|"</div>\n"
 decl_stmt|;
