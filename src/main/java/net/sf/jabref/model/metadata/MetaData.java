@@ -921,24 +921,22 @@ name|contentSelectors
 argument_list|)
 return|;
 block|}
-DECL|method|setContentSelectors (ContentSelectors contentSelectors)
+DECL|method|addContentSelector (ContentSelector contentSelector)
 specifier|public
 name|void
-name|setContentSelectors
+name|addContentSelector
 parameter_list|(
-name|ContentSelectors
-name|contentSelectors
+name|ContentSelector
+name|contentSelector
 parameter_list|)
 block|{
 name|this
 operator|.
 name|contentSelectors
-operator|=
-name|Objects
 operator|.
-name|requireNonNull
+name|addContentSelector
 argument_list|(
-name|contentSelectors
+name|contentSelector
 argument_list|)
 expr_stmt|;
 name|postChange
@@ -977,7 +975,7 @@ block|{
 return|return
 name|contentSelectors
 operator|.
-name|getSelectorsForField
+name|getSelectorValuesForField
 argument_list|(
 name|fieldName
 argument_list|)
