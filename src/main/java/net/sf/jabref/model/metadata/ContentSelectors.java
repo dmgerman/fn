@@ -203,6 +203,24 @@ name|fieldName
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|getContentSelectors ()
+specifier|public
+name|List
+argument_list|<
+name|ContentSelector
+argument_list|>
+name|getContentSelectors
+parameter_list|()
+block|{
+return|return
+name|Collections
+operator|.
+name|unmodifiableList
+argument_list|(
+name|contentSelectors
+argument_list|)
+return|;
+block|}
 DECL|method|parse (String key, String values)
 specifier|public
 specifier|static
@@ -256,20 +274,6 @@ name|key
 argument_list|,
 name|valueList
 argument_list|)
-return|;
-block|}
-DECL|method|getAsStringList ()
-specifier|public
-name|List
-argument_list|<
-name|String
-argument_list|>
-name|getAsStringList
-parameter_list|()
-block|{
-comment|// fixme: do the actual serialization
-return|return
-literal|null
 return|;
 block|}
 DECL|method|getSelectorData ()
