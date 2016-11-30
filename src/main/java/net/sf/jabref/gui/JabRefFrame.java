@@ -10249,6 +10249,13 @@ name|options
 operator|.
 name|add
 argument_list|(
+name|manageSelectors
+argument_list|)
+expr_stmt|;
+name|options
+operator|.
+name|add
+argument_list|(
 name|protectTerms
 argument_list|)
 expr_stmt|;
@@ -11253,6 +11260,8 @@ name|Arrays
 operator|.
 name|asList
 argument_list|(
+name|manageSelectors
+argument_list|,
 name|mergeDatabaseAction
 argument_list|,
 name|newSubDatabaseAction
