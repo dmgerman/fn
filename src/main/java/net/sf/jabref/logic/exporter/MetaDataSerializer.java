@@ -464,8 +464,6 @@ name|MetaData
 operator|.
 name|SELECTOR_META_PREFIX
 operator|+
-literal|"_"
-operator|+
 name|selector
 operator|.
 name|getFieldName
