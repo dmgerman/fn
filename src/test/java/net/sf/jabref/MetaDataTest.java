@@ -490,7 +490,7 @@ name|MetaData
 operator|.
 name|SELECTOR_META_PREFIX
 operator|+
-literal|"_status"
+literal|"status"
 argument_list|,
 literal|"approved;captured;received;status;"
 argument_list|)
