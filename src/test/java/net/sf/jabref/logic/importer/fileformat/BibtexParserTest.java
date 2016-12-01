@@ -10549,7 +10549,7 @@ operator|.
 name|getMetaData
 argument_list|()
 operator|.
-name|getContentSelectors
+name|getContentSelectorValuesForField
 argument_list|(
 literal|"status"
 argument_list|)

@@ -1528,6 +1528,17 @@ name|metaData
 operator|.
 name|defaultFileDirectory
 argument_list|)
+operator|&&
+name|Objects
+operator|.
+name|equals
+argument_list|(
+name|contentSelectors
+argument_list|,
+name|metaData
+operator|.
+name|contentSelectors
+argument_list|)
 return|;
 block|}
 annotation|@
