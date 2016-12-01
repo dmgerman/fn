@@ -237,7 +237,7 @@ argument_list|()
 decl_stmt|;
 name|metaData
 operator|.
-name|getContentSelectors
+name|getContentSelectorValuesForField
 argument_list|(
 name|entry
 operator|.

@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|net.sf.jabref.gui
+DECL|package|net.sf.jabref.gui.contentselector
 package|package
 name|net
 operator|.
@@ -9,6 +9,8 @@ operator|.
 name|jabref
 operator|.
 name|gui
+operator|.
+name|contentselector
 package|;
 end_package
 
@@ -121,6 +123,34 @@ operator|.
 name|swing
 operator|.
 name|KeyStroke
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|BasePanel
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|JabRefFrame
 import|;
 end_import
 
@@ -592,11 +622,11 @@ argument_list|(
 name|e
 lambda|->
 block|{
-name|ContentSelectorDialog2
+name|ContentSelectorDialog
 name|csd
 init|=
 operator|new
-name|ContentSelectorDialog2
+name|ContentSelectorDialog
 argument_list|(
 name|owner
 argument_list|,
@@ -786,7 +816,7 @@ name|item
 range|:
 name|metaData
 operator|.
-name|getContentSelectors
+name|getContentSelectorValuesForField
 argument_list|(
 name|editor
 operator|.
@@ -804,35 +834,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|// Not used since the comboBox is not editable
-comment|//  /**
-comment|//   * Adds a word to the selector (to the JList and to the MetaData), unless it
-comment|//   * is already there
-comment|//   *
-comment|//   * @param newWord
-comment|//   *            String Word to add
-comment|//   */
-comment|//  public void addWord(String newWord) {
-comment|//
-comment|//      Vector items = metaData.getData(Globals.SELECTOR_META_PREFIX + editor.getFieldName());
-comment|//      boolean exists = false;
-comment|//      int pos = -1;
-comment|//      for (int i = 0; i< items.size(); i++) {
-comment|//          String s = (String) items.elementAt(i);
-comment|//          if (s.equals(newWord)) {
-comment|//              exists = true;
-comment|//              break;
-comment|//          }
-comment|//          if (s.toLowerCase().compareTo(newWord.toLowerCase())< 0)
-comment|//              pos = i + 1;
-comment|//      }
-comment|//      if (!exists) {
-comment|//          items.add(Math.max(0, pos), newWord);
-comment|//          // TODO CO: Why is this non-undoable?
-comment|//          panel.markNonUndoableBaseChanged();
-comment|//          panel.updateAllContentSelectors();
-comment|//      }
-comment|//  }
 block|}
 end_class
 

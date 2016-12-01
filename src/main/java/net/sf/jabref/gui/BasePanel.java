@@ -566,6 +566,22 @@ name|jabref
 operator|.
 name|gui
 operator|.
+name|contentselector
+operator|.
+name|ContentSelectorDialog
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
 name|desktop
 operator|.
 name|JabRefDesktop
@@ -5453,11 +5469,11 @@ call|)
 argument_list|()
 operator|->
 block|{
-name|ContentSelectorDialog2
+name|ContentSelectorDialog
 name|csd
 operator|=
 operator|new
-name|ContentSelectorDialog2
+name|ContentSelectorDialog
 argument_list|(
 name|frame
 argument_list|,
@@ -14486,24 +14502,6 @@ return|;
 block|}
 block|}
 end_class
-
-begin_function
-DECL|method|getEntryEditors ()
-specifier|public
-name|Map
-argument_list|<
-name|String
-argument_list|,
-name|EntryEditor
-argument_list|>
-name|getEntryEditors
-parameter_list|()
-block|{
-return|return
-name|entryEditors
-return|;
-block|}
-end_function
 
 begin_comment
 comment|/**      * This method iterates through all existing entry editors in this BasePanel, telling each to update all its      * instances of FieldContentSelector. This is done to ensure that the list of words in each selector is up-to-date      * after the user has made changes in the Manage dialog.      */

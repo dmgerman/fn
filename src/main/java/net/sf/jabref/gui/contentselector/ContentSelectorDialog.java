@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|net.sf.jabref.gui
+DECL|package|net.sf.jabref.gui.contentselector
 package|package
 name|net
 operator|.
@@ -9,6 +9,8 @@ operator|.
 name|jabref
 operator|.
 name|gui
+operator|.
+name|contentselector
 package|;
 end_package
 
@@ -300,6 +302,34 @@ name|jabref
 operator|.
 name|gui
 operator|.
+name|BasePanel
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|JabRefFrame
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
 name|help
 operator|.
 name|HelpAction
@@ -461,9 +491,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|ContentSelectorDialog2
+DECL|class|ContentSelectorDialog
+specifier|public
 class|class
-name|ContentSelectorDialog2
+name|ContentSelectorDialog
 extends|extends
 name|JDialog
 block|{
@@ -855,15 +886,15 @@ name|LogFactory
 operator|.
 name|getLog
 argument_list|(
-name|ContentSelectorDialog2
+name|ContentSelectorDialog
 operator|.
 name|class
 argument_list|)
 decl_stmt|;
 comment|/**      *      * @param owner the parent Window (Dialog or Frame)      * @param frame the JabRef Frame      * @param panel the currently selected BasePanel      * @param modal should this dialog be modal?      * @param fieldName the field this selector is initialized for. May be null.      */
-DECL|method|ContentSelectorDialog2 (Window owner, JabRefFrame frame, BasePanel panel, boolean modal, String fieldName)
+DECL|method|ContentSelectorDialog (Window owner, JabRefFrame frame, BasePanel panel, boolean modal, String fieldName)
 specifier|public
-name|ContentSelectorDialog2
+name|ContentSelectorDialog
 parameter_list|(
 name|Window
 name|owner
@@ -1940,7 +1971,7 @@ argument_list|<>
 argument_list|(
 name|metaData
 operator|.
-name|getContentSelectors
+name|getContentSelectorValuesForField
 argument_list|(
 name|entry
 operator|.
@@ -1967,7 +1998,7 @@ argument_list|()
 operator|&&
 name|metaData
 operator|.
-name|getContentSelectors
+name|getContentSelectorValuesForField
 argument_list|(
 name|entry
 operator|.
@@ -2091,13 +2122,6 @@ name|metaData
 operator|.
 name|getContentSelectors
 argument_list|()
-operator|.
-name|orElse
-argument_list|(
-operator|new
-name|ContentSelectors
-argument_list|()
-argument_list|)
 decl_stmt|;
 for|for
 control|(
@@ -2106,10 +2130,7 @@ name|s
 range|:
 name|selectors
 operator|.
-name|getSelectorData
-argument_list|()
-operator|.
-name|keySet
+name|getFieldNamesWithSelectors
 argument_list|()
 control|)
 block|{
@@ -2294,7 +2315,7 @@ name|s
 range|:
 name|metaData
 operator|.
-name|getContentSelectors
+name|getContentSelectorValuesForField
 argument_list|(
 name|currentField
 argument_list|)

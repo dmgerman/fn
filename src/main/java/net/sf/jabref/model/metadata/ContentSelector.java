@@ -55,7 +55,7 @@ name|String
 argument_list|>
 name|values
 decl_stmt|;
-DECL|method|ContentSelector (String fieldName, List<String> keys)
+DECL|method|ContentSelector (String fieldName, List<String> values)
 specifier|public
 name|ContentSelector
 parameter_list|(
@@ -66,7 +66,7 @@ name|List
 argument_list|<
 name|String
 argument_list|>
-name|keys
+name|values
 parameter_list|)
 block|{
 name|this
@@ -79,7 +79,7 @@ name|this
 operator|.
 name|values
 operator|=
-name|keys
+name|values
 expr_stmt|;
 block|}
 DECL|method|getFieldName ()

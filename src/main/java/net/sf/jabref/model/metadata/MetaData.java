@@ -905,20 +905,28 @@ return|;
 block|}
 DECL|method|getContentSelectors ()
 specifier|public
-name|Optional
-argument_list|<
 name|ContentSelectors
-argument_list|>
 name|getContentSelectors
 parameter_list|()
 block|{
 return|return
-name|Optional
-operator|.
-name|ofNullable
-argument_list|(
 name|contentSelectors
-argument_list|)
+return|;
+block|}
+DECL|method|getContentSelectorList ()
+specifier|public
+name|List
+argument_list|<
+name|ContentSelector
+argument_list|>
+name|getContentSelectorList
+parameter_list|()
+block|{
+return|return
+name|contentSelectors
+operator|.
+name|getContentSelectors
+argument_list|()
 return|;
 block|}
 DECL|method|addContentSelector (ContentSelector contentSelector)
@@ -960,13 +968,13 @@ name|fieldName
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|getContentSelectors (String fieldName)
+DECL|method|getContentSelectorValuesForField (String fieldName)
 specifier|public
 name|List
 argument_list|<
 name|String
 argument_list|>
-name|getContentSelectors
+name|getContentSelectorValuesForField
 parameter_list|(
 name|String
 name|fieldName

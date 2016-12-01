@@ -464,11 +464,7 @@ name|expectedSerialization
 operator|.
 name|put
 argument_list|(
-name|MetaData
-operator|.
-name|SELECTOR_META_PREFIX
-operator|+
-literal|"status"
+literal|"selector_status"
 argument_list|,
 literal|"approved;captured;received;status;"
 argument_list|)

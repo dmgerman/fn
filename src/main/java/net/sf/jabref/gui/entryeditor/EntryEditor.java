@@ -544,20 +544,6 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|FieldContentSelector
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
 name|GUIGlobals
 import|;
 end_import
@@ -617,6 +603,22 @@ operator|.
 name|actions
 operator|.
 name|Actions
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|contentselector
+operator|.
+name|FieldContentSelector
 import|;
 end_import
 
@@ -3658,7 +3660,6 @@ condition|)
 block|{
 comment|// Add controls for switching between abbreviated and full journal names.
 comment|// If this field also has a FieldContentSelector, we need to combine these.
-comment|// If this field also has a FieldContentSelector, we need to combine these.
 return|return
 name|FieldExtraComponents
 operator|.
@@ -3691,7 +3692,7 @@ operator|.
 name|getMetaData
 argument_list|()
 operator|.
-name|getContentSelectors
+name|getContentSelectorValuesForField
 argument_list|(
 name|fieldName
 argument_list|)

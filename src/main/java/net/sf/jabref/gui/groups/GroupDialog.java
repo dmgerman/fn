@@ -310,7 +310,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|FieldContentSelector
+name|JabRefFrame
 import|;
 end_import
 
@@ -324,7 +324,9 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|JabRefFrame
+name|contentselector
+operator|.
+name|FieldContentSelector
 import|;
 end_import
 
