@@ -484,10 +484,13 @@ block|}
 catch|catch
 parameter_list|(
 name|ClassNotFoundException
+decl||
+name|IllegalAccessError
 name|ignored
 parameter_list|)
 block|{
-comment|// Ignored
+comment|// LookAndFeel class does not exist or we don't have rights to access it
+comment|// Ignore it
 block|}
 block|}
 return|return
