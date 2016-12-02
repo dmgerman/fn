@@ -48,6 +48,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Objects
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -609,6 +619,13 @@ name|NameFormatterPreferences
 name|prefs
 parameter_list|)
 block|{
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|prefs
+argument_list|)
+expr_stmt|;
 name|Map
 argument_list|<
 name|String
