@@ -45,7 +45,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Can catch any exceptions occuring on the EDT thread for assertion.  */
+comment|/**  * Can catch any exceptions occurring on the EDT thread for assertion.  */
 end_comment
 
 begin_class

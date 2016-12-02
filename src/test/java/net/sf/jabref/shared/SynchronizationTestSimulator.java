@@ -160,6 +160,22 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|testutils
+operator|.
+name|category
+operator|.
+name|DatabaseTests
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|junit
@@ -195,6 +211,20 @@ operator|.
 name|junit
 operator|.
 name|Test
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|experimental
+operator|.
+name|categories
+operator|.
+name|Category
 import|;
 end_import
 
@@ -255,6 +285,13 @@ annotation|@
 name|RunWith
 argument_list|(
 name|Parameterized
+operator|.
+name|class
+argument_list|)
+annotation|@
+name|Category
+argument_list|(
+name|DatabaseTests
 operator|.
 name|class
 argument_list|)
