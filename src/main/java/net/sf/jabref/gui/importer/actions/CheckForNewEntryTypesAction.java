@@ -196,20 +196,6 @@ name|EntryType
 import|;
 end_import
 
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|preferences
-operator|.
-name|JabRefPreferences
-import|;
-end_import
-
 begin_comment
 comment|/**  * This action checks whether any new custom entry types were loaded from this  * BIB file. If so, an offer to remember these entry types is given.  */
 end_comment
