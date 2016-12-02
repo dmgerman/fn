@@ -390,6 +390,11 @@ name|DevEnvironment
 operator|.
 name|isCircleCI
 argument_list|()
+operator|||
+name|DevEnvironment
+operator|.
+name|isSnapCI
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|entry
@@ -446,6 +451,11 @@ name|DevEnvironment
 operator|.
 name|isCircleCI
 argument_list|()
+operator|||
+name|DevEnvironment
+operator|.
+name|isSnapCI
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|entry
@@ -493,6 +503,11 @@ argument_list|(
 name|DevEnvironment
 operator|.
 name|isCircleCI
+argument_list|()
+operator|||
+name|DevEnvironment
+operator|.
+name|isSnapCI
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -616,6 +631,11 @@ argument_list|(
 name|DevEnvironment
 operator|.
 name|isCircleCI
+argument_list|()
+operator|||
+name|DevEnvironment
+operator|.
+name|isSnapCI
 argument_list|()
 argument_list|)
 expr_stmt|;
