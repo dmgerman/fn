@@ -331,6 +331,10 @@ operator|.
 name|addOrModifyCustomEntryType
 argument_list|(
 name|newArticle
+argument_list|,
+name|BibDatabaseMode
+operator|.
+name|BIBTEX
 argument_list|)
 expr_stmt|;
 comment|// Should not be the same any more

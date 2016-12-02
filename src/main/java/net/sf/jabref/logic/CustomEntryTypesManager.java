@@ -196,6 +196,11 @@ name|type
 operator|.
 name|get
 argument_list|()
+argument_list|,
+name|prefs
+operator|.
+name|getDefaultBibDatabaseMode
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|ALL

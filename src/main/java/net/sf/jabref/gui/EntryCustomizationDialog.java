@@ -2153,6 +2153,8 @@ operator|.
 name|addOrModifyCustomEntryType
 argument_list|(
 name|typ
+argument_list|,
+name|bibDatabaseMode
 argument_list|)
 expr_stmt|;
 name|updateTypesForEntries

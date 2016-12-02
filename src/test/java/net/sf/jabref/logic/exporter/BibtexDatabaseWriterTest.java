@@ -1837,6 +1837,10 @@ literal|"required"
 argument_list|,
 literal|"optional"
 argument_list|)
+argument_list|,
+name|BibDatabaseMode
+operator|.
+name|BIBTEX
 argument_list|)
 expr_stmt|;
 name|BibEntry
