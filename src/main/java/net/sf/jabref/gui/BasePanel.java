@@ -3467,7 +3467,7 @@ argument_list|)
 decl_stmt|;
 name|BibtexKeyPatternUtil
 operator|.
-name|makeLabel
+name|makeAndSetLabel
 argument_list|(
 name|citeKeyPattern
 argument_list|,
@@ -11855,7 +11855,7 @@ condition|)
 block|{
 name|BibtexKeyPatternUtil
 operator|.
-name|makeLabel
+name|makeAndSetLabel
 argument_list|(
 name|bibDatabaseContext
 operator|.

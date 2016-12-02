@@ -3220,7 +3220,7 @@ block|{
 comment|// try to make a new label
 name|BibtexKeyPatternUtil
 operator|.
-name|makeLabel
+name|makeAndSetLabel
 argument_list|(
 name|metaData
 operator|.

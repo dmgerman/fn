@@ -7896,7 +7896,7 @@ block|}
 block|}
 name|BibtexKeyPatternUtil
 operator|.
-name|makeLabel
+name|makeAndSetLabel
 argument_list|(
 name|panel
 operator|.
