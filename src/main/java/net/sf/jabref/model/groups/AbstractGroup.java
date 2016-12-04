@@ -105,26 +105,6 @@ name|AbstractGroup
 implements|implements
 name|SearchMatcher
 block|{
-comment|/**      * Character used for quoting in the string representation.      */
-DECL|field|QUOTE_CHAR
-specifier|public
-specifier|static
-specifier|final
-name|char
-name|QUOTE_CHAR
-init|=
-literal|'\\'
-decl_stmt|;
-comment|/**      * For separating units (e.g. name, which every group has) in the string      * representation      */
-DECL|field|SEPARATOR
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|SEPARATOR
-init|=
-literal|";"
-decl_stmt|;
 comment|/**      * The group's name (every type of group has one).      */
 DECL|field|name
 specifier|private
