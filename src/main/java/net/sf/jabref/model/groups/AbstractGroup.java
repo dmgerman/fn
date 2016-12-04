@@ -40,6 +40,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Objects
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Optional
 import|;
 end_import
@@ -138,7 +148,13 @@ name|name
 operator|=
 name|name
 expr_stmt|;
-name|setHierarchicalContext
+name|this
+operator|.
+name|context
+operator|=
+name|Objects
+operator|.
+name|requireNonNull
 argument_list|(
 name|context
 argument_list|)
@@ -389,32 +405,6 @@ block|{
 return|return
 name|context
 return|;
-block|}
-comment|/**      * Sets the groups's hierarchical context. If context is not a valid      * value, the call is ignored.      */
-DECL|method|setHierarchicalContext (GroupHierarchyType context)
-specifier|public
-name|void
-name|setHierarchicalContext
-parameter_list|(
-name|GroupHierarchyType
-name|context
-parameter_list|)
-block|{
-if|if
-condition|(
-name|context
-operator|==
-literal|null
-condition|)
-block|{
-return|return;
-block|}
-name|this
-operator|.
-name|context
-operator|=
-name|context
-expr_stmt|;
 block|}
 comment|/**      * @return A deep copy of this object.      */
 DECL|method|deepCopy ()

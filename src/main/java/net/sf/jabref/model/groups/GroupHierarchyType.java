@@ -14,31 +14,42 @@ name|groups
 package|;
 end_package
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
 begin_enum
 DECL|enum|GroupHierarchyType
 specifier|public
 enum|enum
 name|GroupHierarchyType
 block|{
-comment|/** Group's contents are independent of its hierarchical position. */
+comment|/**      * Group's contents are independent of its hierarchical position.      */
 DECL|enumConstant|INDEPENDENT
 name|INDEPENDENT
 block|,
-comment|/**      * Group's content is the intersection of its own content with its      * supergroup's content.      */
+comment|/**      * Group's content is the intersection of its own content with its supergroup's content.      */
 DECL|enumConstant|REFINING
 name|REFINING
 block|,
 comment|// INTERSECTION
-comment|/**      * Group's content is the union of its own content with its subgroups'      * content.      */
+comment|/**      * Group's content is the union of its own content with its subgroups' content.      */
 DECL|enumConstant|INCLUDING
 name|INCLUDING
 block|;
 comment|// UNION
-DECL|method|getByNumber (int type)
+comment|/**      * Returns the hierarchy type from its position in this enum.      * If the specified position is out of the enums bounds, then {@link #INDEPENDENT} is returned.      */
+DECL|method|getByNumberOrDefault (int type)
 specifier|public
 specifier|static
 name|GroupHierarchyType
-name|getByNumber
+name|getByNumberOrDefault
 parameter_list|(
 name|int
 name|type
@@ -74,7 +85,7 @@ block|}
 else|else
 block|{
 return|return
-literal|null
+name|INDEPENDENT
 return|;
 block|}
 block|}
