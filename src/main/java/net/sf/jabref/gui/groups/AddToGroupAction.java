@@ -142,7 +142,7 @@ name|model
 operator|.
 name|groups
 operator|.
-name|AbstractGroup
+name|EntriesGroupChange
 import|;
 end_import
 
@@ -158,7 +158,7 @@ name|model
 operator|.
 name|groups
 operator|.
-name|EntriesGroupChange
+name|GroupEntryChanger
 import|;
 end_import
 
@@ -481,7 +481,7 @@ argument_list|)
 decl_stmt|;
 name|List
 argument_list|<
-name|AbstractGroup
+name|GroupEntryChanger
 argument_list|>
 name|affectedGroups
 init|=

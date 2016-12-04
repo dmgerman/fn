@@ -103,7 +103,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A group of BibtexEntries.  */
+comment|/**  * Base class for all groups.  */
 end_comment
 
 begin_class
@@ -115,21 +115,19 @@ name|AbstractGroup
 implements|implements
 name|SearchMatcher
 block|{
-comment|/**      * The group's name (every type of group has one).      */
+comment|/**      * The group's name.      */
 DECL|field|name
 specifier|private
+specifier|final
 name|String
 name|name
 decl_stmt|;
-comment|/**      * The hierarchical context of the group (INDEPENDENT, REFINING, or      * INCLUDING). Defaults to INDEPENDENT, which will be used if and      * only if the context specified in the constructor is invalid.      */
+comment|/**      * The hierarchical context of the group.      */
 DECL|field|context
 specifier|private
+specifier|final
 name|GroupHierarchyType
 name|context
-init|=
-name|GroupHierarchyType
-operator|.
-name|INDEPENDENT
 decl_stmt|;
 DECL|method|AbstractGroup (String name, GroupHierarchyType context)
 specifier|protected
@@ -182,98 +180,6 @@ return|return
 name|name
 return|;
 block|}
-comment|/**      * Sets the group's name.      */
-DECL|method|setName (String name)
-specifier|public
-specifier|final
-name|void
-name|setName
-parameter_list|(
-name|String
-name|name
-parameter_list|)
-block|{
-name|this
-operator|.
-name|name
-operator|=
-name|name
-expr_stmt|;
-block|}
-comment|/**      * @return true if this type of group supports the explicit adding of      * entries.      */
-DECL|method|supportsAdd ()
-specifier|public
-specifier|abstract
-name|boolean
-name|supportsAdd
-parameter_list|()
-function_decl|;
-comment|/**      * @return true if this type of group supports the explicit removal of      * entries.      */
-DECL|method|supportsRemove ()
-specifier|public
-specifier|abstract
-name|boolean
-name|supportsRemove
-parameter_list|()
-function_decl|;
-comment|/**      * Adds the specified entries to this group.      *      * @return If this group or one or more entries was/were modified as a      * result of this operation, an object is returned that allows to      * undo this change. null is returned otherwise.      */
-DECL|method|add (List<BibEntry> entriesToAdd)
-specifier|public
-specifier|abstract
-name|Optional
-argument_list|<
-name|EntriesGroupChange
-argument_list|>
-name|add
-parameter_list|(
-name|List
-argument_list|<
-name|BibEntry
-argument_list|>
-name|entriesToAdd
-parameter_list|)
-function_decl|;
-DECL|method|add (BibEntry entryToAdd)
-specifier|public
-name|Optional
-argument_list|<
-name|EntriesGroupChange
-argument_list|>
-name|add
-parameter_list|(
-name|BibEntry
-name|entryToAdd
-parameter_list|)
-block|{
-return|return
-name|add
-argument_list|(
-name|Collections
-operator|.
-name|singletonList
-argument_list|(
-name|entryToAdd
-argument_list|)
-argument_list|)
-return|;
-block|}
-comment|/**      * Removes the specified entries from this group.      *      * @return If this group or one or more entries was/were modified as a      * result of this operation, an object is returned that allows to      * undo this change. null is returned otherwise.      */
-DECL|method|remove (List<BibEntry> entriesToRemove)
-specifier|public
-specifier|abstract
-name|Optional
-argument_list|<
-name|EntriesGroupChange
-argument_list|>
-name|remove
-parameter_list|(
-name|List
-argument_list|<
-name|BibEntry
-argument_list|>
-name|entriesToRemove
-parameter_list|)
-function_decl|;
 comment|/**      * @return true if this group contains the specified entry, false otherwise.      */
 DECL|method|contains (BibEntry entry)
 specifier|public
