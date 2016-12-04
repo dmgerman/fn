@@ -460,7 +460,7 @@ name|model
 operator|.
 name|groups
 operator|.
-name|KeywordGroup
+name|SimpleKeywordGroup
 import|;
 end_import
 
@@ -10349,9 +10349,13 @@ expr_stmt|;
 name|assertEquals
 argument_list|(
 operator|new
-name|KeywordGroup
+name|SimpleKeywordGroup
 argument_list|(
 literal|"FrÃ©chet"
+argument_list|,
+name|GroupHierarchyType
+operator|.
+name|INDEPENDENT
 argument_list|,
 literal|"keywords"
 argument_list|,
@@ -10359,13 +10363,9 @@ literal|"FrechetSpace"
 argument_list|,
 literal|false
 argument_list|,
-literal|true
-argument_list|,
-name|GroupHierarchyType
-operator|.
-name|INDEPENDENT
-argument_list|,
 literal|','
+argument_list|,
+literal|true
 argument_list|)
 argument_list|,
 name|root
@@ -10385,9 +10385,13 @@ expr_stmt|;
 name|assertEquals
 argument_list|(
 operator|new
-name|KeywordGroup
+name|SimpleKeywordGroup
 argument_list|(
 literal|"Invariant theory"
+argument_list|,
+name|GroupHierarchyType
+operator|.
+name|INDEPENDENT
 argument_list|,
 literal|"keywords"
 argument_list|,
@@ -10395,13 +10399,9 @@ literal|"GIT"
 argument_list|,
 literal|false
 argument_list|,
-literal|false
-argument_list|,
-name|GroupHierarchyType
-operator|.
-name|INDEPENDENT
-argument_list|,
 literal|','
+argument_list|,
+literal|false
 argument_list|)
 argument_list|,
 name|root

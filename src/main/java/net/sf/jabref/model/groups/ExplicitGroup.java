@@ -150,7 +150,7 @@ specifier|public
 class|class
 name|ExplicitGroup
 extends|extends
-name|KeywordGroup
+name|SimpleKeywordGroup
 block|{
 DECL|field|ID
 specifier|public
@@ -209,6 +209,8 @@ name|super
 argument_list|(
 name|name
 argument_list|,
+name|context
+argument_list|,
 name|FieldName
 operator|.
 name|GROUPS
@@ -216,10 +218,6 @@ argument_list|,
 name|name
 argument_list|,
 literal|true
-argument_list|,
-literal|false
-argument_list|,
-name|context
 argument_list|,
 name|keywordSeparator
 argument_list|)

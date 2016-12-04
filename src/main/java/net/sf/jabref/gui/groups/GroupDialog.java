@@ -456,7 +456,7 @@ name|model
 operator|.
 name|groups
 operator|.
-name|KeywordGroup
+name|SearchGroup
 import|;
 end_import
 
@@ -472,7 +472,7 @@ name|model
 operator|.
 name|groups
 operator|.
-name|SearchGroup
+name|SimpleKeywordGroup
 import|;
 end_import
 
@@ -1914,7 +1914,7 @@ comment|// therefore I don't catch anything here
 name|resultingGroup
 operator|=
 operator|new
-name|KeywordGroup
+name|SimpleKeywordGroup
 argument_list|(
 name|nameField
 operator|.
@@ -1922,6 +1922,9 @@ name|getText
 argument_list|()
 operator|.
 name|trim
+argument_list|()
+argument_list|,
+name|getContext
 argument_list|()
 argument_list|,
 name|keywordGroupSearchField
@@ -1945,19 +1948,16 @@ operator|.
 name|isSelected
 argument_list|()
 argument_list|,
-name|keywordGroupRegExp
-operator|.
-name|isSelected
-argument_list|()
-argument_list|,
-name|getContext
-argument_list|()
-argument_list|,
 name|Globals
 operator|.
 name|prefs
 operator|.
 name|getKeywordDelimiter
+argument_list|()
+argument_list|,
+name|keywordGroupRegExp
+operator|.
+name|isSelected
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2128,17 +2128,17 @@ operator|.
 name|getClass
 argument_list|()
 operator|==
-name|KeywordGroup
+name|SimpleKeywordGroup
 operator|.
 name|class
 operator|)
 condition|)
 block|{
-name|KeywordGroup
+name|SimpleKeywordGroup
 name|group
 init|=
 operator|(
-name|KeywordGroup
+name|SimpleKeywordGroup
 operator|)
 name|editedGroup
 decl_stmt|;
