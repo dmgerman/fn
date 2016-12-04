@@ -28,6 +28,18 @@ begin_import
 import|import
 name|java
 operator|.
+name|nio
+operator|.
+name|file
+operator|.
+name|Path
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|ArrayList
@@ -622,7 +634,9 @@ name|bibDatabaseMode
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Get the file where this database was last saved to or loaded from, if any.      *      * @return Optional of the relevant File, or Optional.empty() if none is defined.      */
+comment|/**      * Get the file where this database was last saved to or loaded from, if any.      *      * @return Optional of the relevant File, or Optional.empty() if none is defined.      * @deprecated use {@link #getDatabasePath()} instead      */
+annotation|@
+name|Deprecated
 DECL|method|getDatabaseFile ()
 specifier|public
 name|Optional
@@ -638,6 +652,31 @@ operator|.
 name|ofNullable
 argument_list|(
 name|file
+argument_list|)
+return|;
+block|}
+DECL|method|getDatabasePath ()
+specifier|public
+name|Optional
+argument_list|<
+name|Path
+argument_list|>
+name|getDatabasePath
+parameter_list|()
+block|{
+return|return
+name|Optional
+operator|.
+name|ofNullable
+argument_list|(
+name|file
+argument_list|)
+operator|.
+name|map
+argument_list|(
+name|File
+operator|::
+name|toPath
 argument_list|)
 return|;
 block|}
