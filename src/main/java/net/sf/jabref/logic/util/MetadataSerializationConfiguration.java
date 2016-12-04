@@ -44,6 +44,16 @@ name|GROUP_UNIT_SEPARATOR
 init|=
 literal|";"
 decl_stmt|;
+comment|/**      * Identifier for {@link net.sf.jabref.model.groups.SimpleKeywordGroup}.      */
+DECL|field|KEYWORD_GROUP_ID
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|KEYWORD_GROUP_ID
+init|=
+literal|"KeywordGroup:"
+decl_stmt|;
 block|}
 end_class
 

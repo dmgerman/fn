@@ -461,9 +461,9 @@ name|s
 operator|.
 name|startsWith
 argument_list|(
-name|KeywordGroup
+name|MetadataSerializationConfiguration
 operator|.
-name|ID
+name|KEYWORD_GROUP_ID
 argument_list|)
 condition|)
 block|{
@@ -577,6 +577,19 @@ name|ID
 argument_list|)
 condition|)
 block|{
+if|if
+condition|(
+operator|!
+name|s
+operator|.
+name|startsWith
+argument_list|(
+name|MetadataSerializationConfiguration
+operator|.
+name|KEYWORD_GROUP_ID
+argument_list|)
+condition|)
+block|{
 throw|throw
 operator|new
 name|IllegalArgumentException
@@ -599,9 +612,9 @@ name|s
 operator|.
 name|substring
 argument_list|(
-name|KeywordGroup
+name|MetadataSerializationConfiguration
 operator|.
-name|ID
+name|KEYWORD_GROUP_ID
 operator|.
 name|length
 argument_list|()
@@ -685,7 +698,7 @@ literal|1
 decl_stmt|;
 return|return
 operator|new
-name|KeywordGroup
+name|SimpleKeywordGroup
 argument_list|(
 name|StringUtil
 operator|.
@@ -696,6 +709,13 @@ argument_list|,
 name|MetadataSerializationConfiguration
 operator|.
 name|GROUP_QUOTE_CHAR
+argument_list|)
+argument_list|,
+name|GroupHierarchyType
+operator|.
+name|getByNumberOrDefault
+argument_list|(
+name|context
 argument_list|)
 argument_list|,
 name|StringUtil
@@ -722,20 +742,12 @@ argument_list|)
 argument_list|,
 name|caseSensitive
 argument_list|,
-name|regExp
-argument_list|,
-name|GroupHierarchyType
-operator|.
-name|getByNumberOrDefault
-argument_list|(
-name|context
-argument_list|)
-argument_list|,
 name|keywordSeparator
+argument_list|,
+name|regExp
 argument_list|)
 return|;
 block|}
-DECL|method|explicitGroupFromString (String s, Character keywordSeparator)
 specifier|public
 specifier|static
 name|ExplicitGroup
@@ -855,7 +867,6 @@ name|newGroup
 return|;
 block|}
 comment|/**      * Called only when created fromString.      * JabRef used to store the entries of an explicit group in the serialization, e.g.      *  ExplicitGroup:GroupName\;0\;Key1\;Key2\;;      * This method exists for backwards compatibility.      */
-DECL|method|addLegacyEntryKeys (QuotedStringTokenizer tok, ExplicitGroup group)
 specifier|private
 specifier|static
 name|void
@@ -902,7 +913,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|allEntriesGroupFromString (String s)
 specifier|public
 specifier|static
 name|AbstractGroup
@@ -951,7 +961,6 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Parses s and recreates the SearchGroup from it.      *      * @param s The String representation obtained from      *          SearchGroup.toString(), or null if incompatible      */
-DECL|method|searchGroupFromString (String s)
 specifier|public
 specifier|static
 name|AbstractGroup
