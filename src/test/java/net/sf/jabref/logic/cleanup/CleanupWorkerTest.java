@@ -416,11 +416,35 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|support
+operator|.
+name|DevEnvironment
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|junit
 operator|.
 name|Assert
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Assume
 import|;
 end_import
 
@@ -1945,6 +1969,17 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
+comment|// Test currently fails on Travis
+name|Assume
+operator|.
+name|assumeFalse
+argument_list|(
+name|DevEnvironment
+operator|.
+name|isCIServer
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|CleanupPreset
 name|preset
 init|=

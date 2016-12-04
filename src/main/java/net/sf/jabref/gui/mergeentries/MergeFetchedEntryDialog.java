@@ -317,7 +317,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Dialog for merging Bibtex entry with data fetched from DOI  */
+comment|/**  * Dialog for merging Bibtex entry with fetched data  */
 end_comment
 
 begin_class

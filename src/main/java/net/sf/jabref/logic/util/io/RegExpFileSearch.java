@@ -1549,6 +1549,8 @@ argument_list|,
 name|beforeColon
 argument_list|,
 name|keywordDelimiter
+argument_list|,
+name|database
 argument_list|)
 argument_list|)
 decl_stmt|;

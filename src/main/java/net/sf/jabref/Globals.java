@@ -320,7 +320,7 @@ name|JabRefExecutorService
 operator|.
 name|INSTANCE
 operator|.
-name|executeWithLowPriorityInOwnThread
+name|executeInterruptableTask
 argument_list|(
 name|Globals
 operator|.

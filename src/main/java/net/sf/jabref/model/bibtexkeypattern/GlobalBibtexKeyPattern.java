@@ -56,6 +56,27 @@ operator|=
 name|bibtexKeyPattern
 expr_stmt|;
 block|}
+DECL|method|fromPattern (String pattern)
+specifier|public
+specifier|static
+name|GlobalBibtexKeyPattern
+name|fromPattern
+parameter_list|(
+name|String
+name|pattern
+parameter_list|)
+block|{
+return|return
+operator|new
+name|GlobalBibtexKeyPattern
+argument_list|(
+name|split
+argument_list|(
+name|pattern
+argument_list|)
+argument_list|)
+return|;
+block|}
 annotation|@
 name|Override
 DECL|method|getLastLevelBibtexKeyPattern (String key)

@@ -130,6 +130,13 @@ name|remoteListenerServerThread
 operator|=
 literal|null
 expr_stmt|;
+name|JabRefExecutorService
+operator|.
+name|INSTANCE
+operator|.
+name|stopRemoteThread
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 comment|/**      * Acquire any resources needed for the server.      */
@@ -237,7 +244,7 @@ name|JabRefExecutorService
 operator|.
 name|INSTANCE
 operator|.
-name|executeInOwnThread
+name|manageRemoteThread
 argument_list|(
 name|remoteListenerServerThread
 argument_list|)

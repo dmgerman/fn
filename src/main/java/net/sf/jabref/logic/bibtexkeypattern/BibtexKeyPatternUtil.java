@@ -218,6 +218,22 @@ name|jabref
 operator|.
 name|model
 operator|.
+name|database
+operator|.
+name|BibDatabaseContext
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
 name|entry
 operator|.
 name|AuthorList
@@ -400,28 +416,6 @@ name|CHARS_OF_FIRST
 init|=
 literal|5
 decl_stmt|;
-DECL|field|database
-specifier|private
-specifier|static
-name|BibDatabase
-name|database
-decl_stmt|;
-comment|/**      * Required for LabelPatternUtilTest      *      * @param db the DB to use as global database      */
-DECL|method|setDataBase (BibDatabase db)
-specifier|public
-specifier|static
-name|void
-name|setDataBase
-parameter_list|(
-name|BibDatabase
-name|db
-parameter_list|)
-block|{
-name|database
-operator|=
-name|db
-expr_stmt|;
-block|}
 DECL|method|normalize (String content)
 specifier|private
 specifier|static
@@ -1744,18 +1738,18 @@ name|department
 operator|)
 return|;
 block|}
-comment|/**      * Generates a BibTeX label according to the pattern for a given entry type, and saves the unique label in the      *<code>Bibtexentry</code>.      *      * The given database is used to avoid duplicate keys.      *      * @param citeKeyPattern      * @param dBase a<code>BibDatabase</code>      * @param entry a<code>BibEntry</code>      * @return modified BibEntry      */
-DECL|method|makeLabel (AbstractBibtexKeyPattern citeKeyPattern, BibDatabase dBase, BibEntry entry, BibtexKeyPatternPreferences bibtexKeyPatternPreferences)
+comment|/**      * Generates a BibTeX label according to the pattern for a given entry type, and saves the unique label in the      *<code>Bibtexentry</code>.      *      * The given database is used to avoid duplicate keys.      *      * @param citeKeyPattern      * @param database a<code>BibDatabase</code>      * @param entry a<code>BibEntry</code>      * @return modified BibEntry      */
+DECL|method|makeAndSetLabel (AbstractBibtexKeyPattern citeKeyPattern, BibDatabase database, BibEntry entry, BibtexKeyPatternPreferences bibtexKeyPatternPreferences)
 specifier|public
 specifier|static
 name|void
-name|makeLabel
+name|makeAndSetLabel
 parameter_list|(
 name|AbstractBibtexKeyPattern
 name|citeKeyPattern
 parameter_list|,
 name|BibDatabase
-name|dBase
+name|database
 parameter_list|,
 name|BibEntry
 name|entry
@@ -1764,10 +1758,47 @@ name|BibtexKeyPatternPreferences
 name|bibtexKeyPatternPreferences
 parameter_list|)
 block|{
+name|String
+name|newKey
+init|=
+name|makeLabel
+argument_list|(
+name|citeKeyPattern
+argument_list|,
 name|database
-operator|=
-name|dBase
+argument_list|,
+name|entry
+argument_list|,
+name|bibtexKeyPatternPreferences
+argument_list|)
+decl_stmt|;
+name|entry
+operator|.
+name|setCiteKey
+argument_list|(
+name|newKey
+argument_list|)
 expr_stmt|;
+block|}
+DECL|method|makeLabel (AbstractBibtexKeyPattern citeKeyPattern, BibDatabase database, BibEntry entry, BibtexKeyPatternPreferences bibtexKeyPatternPreferences)
+specifier|private
+specifier|static
+name|String
+name|makeLabel
+parameter_list|(
+name|AbstractBibtexKeyPattern
+name|citeKeyPattern
+parameter_list|,
+name|BibDatabase
+name|database
+parameter_list|,
+name|BibEntry
+name|entry
+parameter_list|,
+name|BibtexKeyPatternPreferences
+name|bibtexKeyPatternPreferences
+parameter_list|)
+block|{
 name|String
 name|key
 decl_stmt|;
@@ -1906,6 +1937,8 @@ name|bibtexKeyPatternPreferences
 operator|.
 name|getKeywordDelimiter
 argument_list|()
+argument_list|,
+name|database
 argument_list|)
 decl_stmt|;
 comment|// apply modifier if present
@@ -2089,6 +2122,9 @@ operator|.
 name|isFirstLetterA
 argument_list|()
 decl_stmt|;
+name|String
+name|newKey
+decl_stmt|;
 if|if
 condition|(
 operator|!
@@ -2101,12 +2137,9 @@ literal|0
 operator|)
 condition|)
 block|{
-name|entry
-operator|.
-name|setCiteKey
-argument_list|(
+name|newKey
+operator|=
 name|key
-argument_list|)
 expr_stmt|;
 block|}
 else|else
@@ -2179,14 +2212,14 @@ operator|>
 literal|0
 condition|)
 do|;
-name|entry
-operator|.
-name|setCiteKey
-argument_list|(
+name|newKey
+operator|=
 name|moddedKey
-argument_list|)
 expr_stmt|;
 block|}
+return|return
+name|newKey
+return|;
 block|}
 comment|/**      * Applies modifiers to a label generated based on a field marker.      * @param label The generated label.      * @param parts String array containing the modifiers.      * @param offset The number of initial items in the modifiers array to skip.      * @return The modified label.      */
 DECL|method|applyModifiers (final String label, final List<String> parts, final int offset)
@@ -2469,7 +2502,7 @@ return|return
 name|resultingLabel
 return|;
 block|}
-DECL|method|makeLabel (BibEntry entry, String value, Character keywordDelimiter)
+DECL|method|makeLabel (BibEntry entry, String value, Character keywordDelimiter, BibDatabase database)
 specifier|public
 specifier|static
 name|String
@@ -2483,6 +2516,9 @@ name|value
 parameter_list|,
 name|Character
 name|keywordDelimiter
+parameter_list|,
+name|BibDatabase
+name|database
 parameter_list|)
 block|{
 name|String
@@ -6576,6 +6612,54 @@ name|newKey
 operator|.
 name|toString
 argument_list|()
+argument_list|)
+return|;
+block|}
+DECL|method|makeLabel (BibDatabaseContext bibDatabaseContext, BibEntry entry, BibtexKeyPatternPreferences bibtexKeyPatternPreferences)
+specifier|public
+specifier|static
+name|String
+name|makeLabel
+parameter_list|(
+name|BibDatabaseContext
+name|bibDatabaseContext
+parameter_list|,
+name|BibEntry
+name|entry
+parameter_list|,
+name|BibtexKeyPatternPreferences
+name|bibtexKeyPatternPreferences
+parameter_list|)
+block|{
+name|AbstractBibtexKeyPattern
+name|citeKeyPattern
+init|=
+name|bibDatabaseContext
+operator|.
+name|getMetaData
+argument_list|()
+operator|.
+name|getCiteKeyPattern
+argument_list|(
+name|bibtexKeyPatternPreferences
+operator|.
+name|getKeyPattern
+argument_list|()
+argument_list|)
+decl_stmt|;
+return|return
+name|makeLabel
+argument_list|(
+name|citeKeyPattern
+argument_list|,
+name|bibDatabaseContext
+operator|.
+name|getDatabase
+argument_list|()
+argument_list|,
+name|entry
+argument_list|,
+name|bibtexKeyPatternPreferences
 argument_list|)
 return|;
 block|}

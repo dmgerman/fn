@@ -2562,7 +2562,7 @@ name|JabRefExecutorService
 operator|.
 name|INSTANCE
 operator|.
-name|executeWithLowPriorityInOwnThreadAndWait
+name|executeInterruptableTaskAndWait
 argument_list|(
 name|scanner
 argument_list|)
