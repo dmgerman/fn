@@ -14,6 +14,38 @@ name|util
 package|;
 end_package
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|groups
+operator|.
+name|AllEntriesGroup
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|groups
+operator|.
+name|SimpleKeywordGroup
+import|;
+end_import
+
 begin_comment
 comment|/**  * Specifies how metadata is read and written.  */
 end_comment
@@ -44,7 +76,7 @@ name|GROUP_UNIT_SEPARATOR
 init|=
 literal|";"
 decl_stmt|;
-comment|/**      * Identifier for {@link net.sf.jabref.model.groups.SimpleKeywordGroup}.      */
+comment|/**      * Identifier for {@link SimpleKeywordGroup}.      */
 DECL|field|KEYWORD_GROUP_ID
 specifier|public
 specifier|static
@@ -53,6 +85,16 @@ name|String
 name|KEYWORD_GROUP_ID
 init|=
 literal|"KeywordGroup:"
+decl_stmt|;
+comment|/**      * Identifier for {@link AllEntriesGroup}.      */
+DECL|field|ALL_ENTRIES_GROUP_ID
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|ALL_ENTRIES_GROUP_ID
+init|=
+literal|"AllEntriesGroup:"
 decl_stmt|;
 block|}
 end_class

@@ -158,6 +158,7 @@ name|context
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Returns the way this group relates to its sub- or supergroup.      */
 DECL|method|getContext ()
 specifier|public
 name|GroupHierarchyType
@@ -209,7 +210,7 @@ name|entry
 argument_list|)
 return|;
 block|}
-comment|/**      * @return true if this group contains any of the specified entries, false      * otherwise.      */
+comment|/**      * @return true if this group contains any of the specified entries, false otherwise.      */
 DECL|method|containsAny (List<BibEntry> entries)
 specifier|public
 name|boolean
@@ -247,7 +248,7 @@ return|return
 literal|false
 return|;
 block|}
-comment|/**      * @return true if this group contains all of the specified entries, false      * otherwise.      */
+comment|/**      * @return true if this group contains all of the specified entries, false otherwise.      */
 DECL|method|containsAll (List<BibEntry> entries)
 specifier|public
 name|boolean
@@ -313,23 +314,6 @@ name|AbstractGroup
 name|deepCopy
 parameter_list|()
 function_decl|;
-comment|// by general AbstractGroup contract, toString() must return
-comment|// something from which this object can be reconstructed
-comment|// using fromString(String).
-comment|// by general AbstractGroup contract, equals() must be implemented
-comment|/**      * Update the group, if necessary, to handle the situation where the group      * is applied to a different BibDatabase than it was created for. This      * is for instance used when updating the group tree due to an external change.      *      * @param db The database to refresh for.      */
-DECL|method|refreshForNewDatabase (BibDatabase db)
-specifier|public
-name|void
-name|refreshForNewDatabase
-parameter_list|(
-name|BibDatabase
-name|db
-parameter_list|)
-block|{
-comment|// Default is to do nothing. Group types that are affected by a change
-comment|// of database must override this method.
-block|}
 block|}
 end_class
 

@@ -436,15 +436,6 @@ control|)
 block|{
 name|node
 operator|.
-name|group
-operator|.
-name|refreshForNewDatabase
-argument_list|(
-name|db
-argument_list|)
-expr_stmt|;
-name|node
-operator|.
 name|refreshGroupsForNewDatabase
 argument_list|(
 name|db

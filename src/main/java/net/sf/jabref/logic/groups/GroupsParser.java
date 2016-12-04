@@ -484,9 +484,9 @@ name|s
 operator|.
 name|startsWith
 argument_list|(
-name|AllEntriesGroup
+name|MetadataSerializationConfiguration
 operator|.
-name|ID
+name|ALL_ENTRIES_GROUP_ID
 argument_list|)
 condition|)
 block|{
@@ -929,9 +929,9 @@ name|s
 operator|.
 name|startsWith
 argument_list|(
-name|AllEntriesGroup
+name|MetadataSerializationConfiguration
 operator|.
-name|ID
+name|ALL_ENTRIES_GROUP_ID
 argument_list|)
 condition|)
 block|{
