@@ -170,13 +170,6 @@ return|return
 name|context
 return|;
 block|}
-DECL|method|getTypeId ()
-specifier|public
-specifier|abstract
-name|String
-name|getTypeId
-parameter_list|()
-function_decl|;
 comment|/**      * Returns this group's name, e.g. for display in a list/tree.      */
 DECL|method|getName ()
 specifier|public

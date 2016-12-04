@@ -522,20 +522,6 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|getTypeId ()
-specifier|public
-name|String
-name|getTypeId
-parameter_list|()
-block|{
-return|return
-name|ExplicitGroup
-operator|.
-name|ID
-return|;
-block|}
-annotation|@
-name|Override
 DECL|method|hashCode ()
 specifier|public
 name|int

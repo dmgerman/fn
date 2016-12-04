@@ -266,20 +266,6 @@ name|regExp
 argument_list|)
 expr_stmt|;
 block|}
-annotation|@
-name|Override
-DECL|method|getTypeId ()
-specifier|public
-name|String
-name|getTypeId
-parameter_list|()
-block|{
-return|return
-name|SearchGroup
-operator|.
-name|ID
-return|;
-block|}
 comment|/**      * Returns a String representation of this object that can be used to      * reconstruct it.      */
 annotation|@
 name|Override
