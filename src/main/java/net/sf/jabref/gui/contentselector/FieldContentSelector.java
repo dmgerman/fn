@@ -801,7 +801,7 @@ operator|.
 name|removeAllItems
 argument_list|()
 expr_stmt|;
-comment|// TODO: CO - What for?
+comment|// To have an empty field as the default for the combobox
 name|comboBox
 operator|.
 name|addItem
