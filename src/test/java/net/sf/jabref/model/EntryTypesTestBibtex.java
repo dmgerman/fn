@@ -154,6 +154,16 @@ name|org
 operator|.
 name|junit
 operator|.
+name|After
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Before
 import|;
 end_import
@@ -274,6 +284,20 @@ argument_list|(
 literal|"optional"
 argument_list|)
 argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|After
+DECL|method|tearDown ()
+specifier|public
+name|void
+name|tearDown
+parameter_list|()
+block|{
+name|EntryTypes
+operator|.
+name|removeAllCustomEntryTypes
+argument_list|()
 expr_stmt|;
 block|}
 annotation|@
