@@ -34,6 +34,22 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|testutils
+operator|.
+name|category
+operator|.
+name|GUITests
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|assertj
@@ -73,6 +89,20 @@ import|;
 end_import
 
 begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|experimental
+operator|.
+name|categories
+operator|.
+name|Category
+import|;
+end_import
+
+begin_import
 import|import static
 name|org
 operator|.
@@ -93,6 +123,13 @@ comment|/**  * This test has been split to work, the other part can be found at 
 end_comment
 
 begin_class
+annotation|@
+name|Category
+argument_list|(
+name|GUITests
+operator|.
+name|class
+argument_list|)
 DECL|class|DialogTest
 specifier|public
 class|class

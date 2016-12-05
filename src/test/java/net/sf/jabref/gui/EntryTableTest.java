@@ -38,6 +38,22 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|testutils
+operator|.
+name|category
+operator|.
+name|GUITests
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|assertj
@@ -84,11 +100,32 @@ name|Test
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|experimental
+operator|.
+name|categories
+operator|.
+name|Category
+import|;
+end_import
+
 begin_comment
 comment|/**  * Specific Use-Case:  * I import a database. Then I doubleclick on the first entry in the table to open the entry editor.  * Then I click on the first entry again, and scroll through all of the lists entries, without having to click  * on the table again.  */
 end_comment
 
 begin_class
+annotation|@
+name|Category
+argument_list|(
+name|GUITests
+operator|.
+name|class
+argument_list|)
 DECL|class|EntryTableTest
 specifier|public
 class|class
