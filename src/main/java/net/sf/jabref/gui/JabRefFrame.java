@@ -12321,14 +12321,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-if|if
-condition|(
-name|readyForBackup
-argument_list|(
-name|context
-argument_list|)
-condition|)
-block|{
 name|BackupManager
 operator|.
 name|start
@@ -12336,7 +12328,6 @@ argument_list|(
 name|context
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 DECL|method|addTab (BibDatabaseContext databaseContext, boolean raisePanel)
 specifier|public
@@ -12425,34 +12416,6 @@ name|LOCAL_AUTO_SAVE
 argument_list|)
 operator|)
 operator|)
-operator|&&
-name|context
-operator|.
-name|getDatabaseFile
-argument_list|()
-operator|.
-name|isPresent
-argument_list|()
-return|;
-block|}
-DECL|method|readyForBackup (BibDatabaseContext context)
-specifier|private
-name|boolean
-name|readyForBackup
-parameter_list|(
-name|BibDatabaseContext
-name|context
-parameter_list|)
-block|{
-return|return
-name|context
-operator|.
-name|getLocation
-argument_list|()
-operator|==
-name|DatabaseLocation
-operator|.
-name|LOCAL
 operator|&&
 name|context
 operator|.
