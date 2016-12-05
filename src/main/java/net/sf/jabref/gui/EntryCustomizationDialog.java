@@ -364,6 +364,20 @@ name|jabref
 operator|.
 name|logic
 operator|.
+name|CustomEntryTypesManager
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
 name|l10n
 operator|.
 name|Localization
@@ -2236,6 +2250,15 @@ block|}
 block|}
 name|updateTables
 argument_list|()
+expr_stmt|;
+name|CustomEntryTypesManager
+operator|.
+name|saveCustomEntryTypes
+argument_list|(
+name|Globals
+operator|.
+name|prefs
+argument_list|)
 expr_stmt|;
 block|}
 DECL|method|typeDeletion (String name)
