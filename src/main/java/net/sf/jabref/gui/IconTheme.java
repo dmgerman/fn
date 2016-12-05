@@ -1216,6 +1216,13 @@ literal|"\uF1E7"
 argument_list|)
 block|,
 comment|/* css: earth */
+DECL|enumConstant|DATE_PICKER
+name|DATE_PICKER
+argument_list|(
+literal|"\uF0ED;"
+argument_list|)
+block|,
+comment|/* css: calendar */
 comment|// STILL MISSING:
 DECL|enumConstant|GROUP_REGULAR
 name|GROUP_REGULAR
