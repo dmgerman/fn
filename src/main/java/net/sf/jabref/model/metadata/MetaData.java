@@ -967,6 +967,9 @@ argument_list|(
 name|fieldName
 argument_list|)
 expr_stmt|;
+name|postChange
+argument_list|()
+expr_stmt|;
 block|}
 DECL|method|getContentSelectorValuesForField (String fieldName)
 specifier|public
