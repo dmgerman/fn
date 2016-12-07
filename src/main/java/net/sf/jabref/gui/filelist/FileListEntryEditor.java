@@ -2013,7 +2013,7 @@ name|dirs
 init|=
 name|databaseContext
 operator|.
-name|getFileDirectory
+name|getFileDirectories
 argument_list|(
 name|Globals
 operator|.
@@ -2386,7 +2386,7 @@ name|this
 operator|.
 name|databaseContext
 operator|.
-name|getFileDirectory
+name|getFileDirectories
 argument_list|(
 name|Globals
 operator|.

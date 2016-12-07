@@ -746,9 +746,7 @@ name|boolean
 name|copy
 parameter_list|()
 block|{
-name|boolean
-name|res
-init|=
+return|return
 name|FileUtil
 operator|.
 name|copyFile
@@ -759,9 +757,6 @@ name|tmpFile
 argument_list|,
 literal|true
 argument_list|)
-decl_stmt|;
-return|return
-name|res
 return|;
 block|}
 comment|/**          * Call the listener method to signal that the file has changed.          */

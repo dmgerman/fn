@@ -58,6 +58,12 @@ specifier|final
 name|String
 name|fileNamePattern
 decl_stmt|;
+DECL|field|fileDirPattern
+specifier|private
+specifier|final
+name|String
+name|fileDirPattern
+decl_stmt|;
 DECL|field|layoutFormatterPreferences
 specifier|private
 specifier|final
@@ -70,12 +76,15 @@ specifier|final
 name|FileDirectoryPreferences
 name|fileDirectoryPreferences
 decl_stmt|;
-DECL|method|CleanupPreferences (String fileNamePattern, LayoutFormatterPreferences layoutFormatterPreferences, FileDirectoryPreferences fileDirectoryPreferences)
+DECL|method|CleanupPreferences (String fileNamePattern, String fileDirPattern, LayoutFormatterPreferences layoutFormatterPreferences, FileDirectoryPreferences fileDirectoryPreferences)
 specifier|public
 name|CleanupPreferences
 parameter_list|(
 name|String
 name|fileNamePattern
+parameter_list|,
+name|String
+name|fileDirPattern
 parameter_list|,
 name|LayoutFormatterPreferences
 name|layoutFormatterPreferences
@@ -89,6 +98,12 @@ operator|.
 name|fileNamePattern
 operator|=
 name|fileNamePattern
+expr_stmt|;
+name|this
+operator|.
+name|fileDirPattern
+operator|=
+name|fileDirPattern
 expr_stmt|;
 name|this
 operator|.
@@ -111,6 +126,16 @@ parameter_list|()
 block|{
 return|return
 name|fileNamePattern
+return|;
+block|}
+DECL|method|getFileDirPattern ()
+specifier|public
+name|String
+name|getFileDirPattern
+parameter_list|()
+block|{
+return|return
+name|fileDirPattern
 return|;
 block|}
 DECL|method|getLayoutFormatterPreferences ()

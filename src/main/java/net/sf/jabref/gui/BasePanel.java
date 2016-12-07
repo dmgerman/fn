@@ -3953,7 +3953,7 @@ argument_list|()
 argument_list|,
 name|bibDatabaseContext
 operator|.
-name|getFileDirectory
+name|getFileDirectories
 argument_list|(
 name|Globals
 operator|.
@@ -13933,7 +13933,7 @@ operator|.
 name|getBibDatabaseContext
 argument_list|()
 operator|.
-name|getFileDirectory
+name|getFileDirectories
 argument_list|(
 name|Globals
 operator|.
