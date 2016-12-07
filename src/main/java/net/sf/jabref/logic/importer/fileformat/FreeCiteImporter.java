@@ -1400,7 +1400,7 @@ expr_stmt|;
 comment|// autogenerate label (BibTeX key)
 name|BibtexKeyPatternUtil
 operator|.
-name|makeLabel
+name|makeAndSetLabel
 argument_list|(
 name|JabRefGUI
 operator|.

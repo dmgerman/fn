@@ -36,22 +36,6 @@ name|model
 operator|.
 name|bibtexkeypattern
 operator|.
-name|AbstractBibtexKeyPattern
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|bibtexkeypattern
-operator|.
 name|DatabaseBibtexKeyPattern
 import|;
 end_import
@@ -223,15 +207,11 @@ argument_list|)
 expr_stmt|;
 name|pattern
 operator|=
-operator|new
 name|GlobalBibtexKeyPattern
-argument_list|(
-name|AbstractBibtexKeyPattern
 operator|.
-name|split
+name|fromPattern
 argument_list|(
 literal|"[auth][year]"
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|bibtexKeyPattern
@@ -273,7 +253,7 @@ parameter_list|()
 block|{
 name|BibtexKeyPatternUtil
 operator|.
-name|makeLabel
+name|makeAndSetLabel
 argument_list|(
 name|bibtexKeyPattern
 argument_list|,
@@ -310,7 +290,7 @@ parameter_list|()
 block|{
 name|BibtexKeyPatternUtil
 operator|.
-name|makeLabel
+name|makeAndSetLabel
 argument_list|(
 name|bibtexKeyPattern
 argument_list|,
@@ -348,7 +328,7 @@ argument_list|)
 expr_stmt|;
 name|BibtexKeyPatternUtil
 operator|.
-name|makeLabel
+name|makeAndSetLabel
 argument_list|(
 name|bibtexKeyPattern
 argument_list|,
@@ -405,7 +385,7 @@ argument_list|)
 expr_stmt|;
 name|BibtexKeyPatternUtil
 operator|.
-name|makeLabel
+name|makeAndSetLabel
 argument_list|(
 name|bibtexKeyPattern
 argument_list|,
@@ -462,7 +442,7 @@ argument_list|)
 expr_stmt|;
 name|BibtexKeyPatternUtil
 operator|.
-name|makeLabel
+name|makeAndSetLabel
 argument_list|(
 name|bibtexKeyPattern
 argument_list|,
@@ -500,7 +480,7 @@ argument_list|)
 expr_stmt|;
 name|BibtexKeyPatternUtil
 operator|.
-name|makeLabel
+name|makeAndSetLabel
 argument_list|(
 name|bibtexKeyPattern
 argument_list|,
@@ -557,7 +537,7 @@ argument_list|)
 expr_stmt|;
 name|BibtexKeyPatternUtil
 operator|.
-name|makeLabel
+name|makeAndSetLabel
 argument_list|(
 name|bibtexKeyPattern
 argument_list|,
@@ -614,7 +594,7 @@ argument_list|)
 expr_stmt|;
 name|BibtexKeyPatternUtil
 operator|.
-name|makeLabel
+name|makeAndSetLabel
 argument_list|(
 name|bibtexKeyPattern
 argument_list|,
@@ -652,7 +632,7 @@ argument_list|)
 expr_stmt|;
 name|BibtexKeyPatternUtil
 operator|.
-name|makeLabel
+name|makeAndSetLabel
 argument_list|(
 name|bibtexKeyPattern
 argument_list|,
@@ -689,7 +669,7 @@ parameter_list|()
 block|{
 name|BibtexKeyPatternUtil
 operator|.
-name|makeLabel
+name|makeAndSetLabel
 argument_list|(
 name|bibtexKeyPattern
 argument_list|,
@@ -792,7 +772,7 @@ argument_list|)
 expr_stmt|;
 name|BibtexKeyPatternUtil
 operator|.
-name|makeLabel
+name|makeAndSetLabel
 argument_list|(
 name|bibtexKeyPattern
 argument_list|,
@@ -829,7 +809,7 @@ parameter_list|()
 block|{
 name|BibtexKeyPatternUtil
 operator|.
-name|makeLabel
+name|makeAndSetLabel
 argument_list|(
 name|bibtexKeyPattern
 argument_list|,
@@ -867,7 +847,7 @@ argument_list|)
 expr_stmt|;
 name|BibtexKeyPatternUtil
 operator|.
-name|makeLabel
+name|makeAndSetLabel
 argument_list|(
 name|bibtexKeyPattern
 argument_list|,
@@ -932,7 +912,7 @@ argument_list|)
 expr_stmt|;
 name|BibtexKeyPatternUtil
 operator|.
-name|makeLabel
+name|makeAndSetLabel
 argument_list|(
 name|bibtexKeyPattern
 argument_list|,
@@ -976,7 +956,7 @@ argument_list|)
 expr_stmt|;
 name|BibtexKeyPatternUtil
 operator|.
-name|makeLabel
+name|makeAndSetLabel
 argument_list|(
 name|bibtexKeyPattern
 argument_list|,
@@ -1020,7 +1000,7 @@ argument_list|)
 expr_stmt|;
 name|BibtexKeyPatternUtil
 operator|.
-name|makeLabel
+name|makeAndSetLabel
 argument_list|(
 name|bibtexKeyPattern
 argument_list|,
@@ -1064,7 +1044,7 @@ argument_list|)
 expr_stmt|;
 name|BibtexKeyPatternUtil
 operator|.
-name|makeLabel
+name|makeAndSetLabel
 argument_list|(
 name|bibtexKeyPattern
 argument_list|,
@@ -1108,7 +1088,7 @@ argument_list|)
 expr_stmt|;
 name|BibtexKeyPatternUtil
 operator|.
-name|makeLabel
+name|makeAndSetLabel
 argument_list|(
 name|bibtexKeyPattern
 argument_list|,
@@ -1152,7 +1132,7 @@ argument_list|)
 expr_stmt|;
 name|BibtexKeyPatternUtil
 operator|.
-name|makeLabel
+name|makeAndSetLabel
 argument_list|(
 name|bibtexKeyPattern
 argument_list|,
@@ -1196,7 +1176,7 @@ argument_list|)
 expr_stmt|;
 name|BibtexKeyPatternUtil
 operator|.
-name|makeLabel
+name|makeAndSetLabel
 argument_list|(
 name|bibtexKeyPattern
 argument_list|,
@@ -1239,7 +1219,7 @@ argument_list|()
 expr_stmt|;
 name|BibtexKeyPatternUtil
 operator|.
-name|makeLabel
+name|makeAndSetLabel
 argument_list|(
 name|bibtexKeyPattern
 argument_list|,
@@ -1288,7 +1268,7 @@ argument_list|)
 expr_stmt|;
 name|BibtexKeyPatternUtil
 operator|.
-name|makeLabel
+name|makeAndSetLabel
 argument_list|(
 name|bibtexKeyPattern
 argument_list|,
@@ -1339,7 +1319,7 @@ argument_list|)
 expr_stmt|;
 name|BibtexKeyPatternUtil
 operator|.
-name|makeLabel
+name|makeAndSetLabel
 argument_list|(
 name|bibtexKeyPattern
 argument_list|,
@@ -1383,7 +1363,7 @@ argument_list|)
 expr_stmt|;
 name|BibtexKeyPatternUtil
 operator|.
-name|makeLabel
+name|makeAndSetLabel
 argument_list|(
 name|bibtexKeyPattern
 argument_list|,
@@ -1427,7 +1407,7 @@ argument_list|)
 expr_stmt|;
 name|BibtexKeyPatternUtil
 operator|.
-name|makeLabel
+name|makeAndSetLabel
 argument_list|(
 name|bibtexKeyPattern
 argument_list|,
@@ -1471,7 +1451,7 @@ argument_list|)
 expr_stmt|;
 name|BibtexKeyPatternUtil
 operator|.
-name|makeLabel
+name|makeAndSetLabel
 argument_list|(
 name|bibtexKeyPattern
 argument_list|,
@@ -1515,7 +1495,7 @@ argument_list|)
 expr_stmt|;
 name|BibtexKeyPatternUtil
 operator|.
-name|makeLabel
+name|makeAndSetLabel
 argument_list|(
 name|bibtexKeyPattern
 argument_list|,
@@ -1559,7 +1539,7 @@ argument_list|)
 expr_stmt|;
 name|BibtexKeyPatternUtil
 operator|.
-name|makeLabel
+name|makeAndSetLabel
 argument_list|(
 name|bibtexKeyPattern
 argument_list|,
@@ -1612,7 +1592,7 @@ argument_list|)
 expr_stmt|;
 name|BibtexKeyPatternUtil
 operator|.
-name|makeLabel
+name|makeAndSetLabel
 argument_list|(
 name|bibtexKeyPattern
 argument_list|,
@@ -1665,7 +1645,7 @@ argument_list|)
 expr_stmt|;
 name|BibtexKeyPatternUtil
 operator|.
-name|makeLabel
+name|makeAndSetLabel
 argument_list|(
 name|bibtexKeyPattern
 argument_list|,
@@ -1718,7 +1698,7 @@ argument_list|)
 expr_stmt|;
 name|BibtexKeyPatternUtil
 operator|.
-name|makeLabel
+name|makeAndSetLabel
 argument_list|(
 name|bibtexKeyPattern
 argument_list|,
@@ -1769,7 +1749,7 @@ argument_list|)
 expr_stmt|;
 name|BibtexKeyPatternUtil
 operator|.
-name|makeLabel
+name|makeAndSetLabel
 argument_list|(
 name|bibtexKeyPattern
 argument_list|,
@@ -1842,7 +1822,7 @@ argument_list|)
 expr_stmt|;
 name|BibtexKeyPatternUtil
 operator|.
-name|makeLabel
+name|makeAndSetLabel
 argument_list|(
 name|bibtexKeyPattern
 argument_list|,
@@ -1895,7 +1875,7 @@ argument_list|)
 expr_stmt|;
 name|BibtexKeyPatternUtil
 operator|.
-name|makeLabel
+name|makeAndSetLabel
 argument_list|(
 name|bibtexKeyPattern
 argument_list|,
@@ -1948,7 +1928,7 @@ argument_list|)
 expr_stmt|;
 name|BibtexKeyPatternUtil
 operator|.
-name|makeLabel
+name|makeAndSetLabel
 argument_list|(
 name|bibtexKeyPattern
 argument_list|,
@@ -1992,7 +1972,7 @@ argument_list|)
 expr_stmt|;
 name|BibtexKeyPatternUtil
 operator|.
-name|makeLabel
+name|makeAndSetLabel
 argument_list|(
 name|bibtexKeyPattern
 argument_list|,
@@ -2036,7 +2016,7 @@ argument_list|)
 expr_stmt|;
 name|BibtexKeyPatternUtil
 operator|.
-name|makeLabel
+name|makeAndSetLabel
 argument_list|(
 name|bibtexKeyPattern
 argument_list|,
@@ -2080,7 +2060,7 @@ argument_list|)
 expr_stmt|;
 name|BibtexKeyPatternUtil
 operator|.
-name|makeLabel
+name|makeAndSetLabel
 argument_list|(
 name|bibtexKeyPattern
 argument_list|,
@@ -2124,7 +2104,7 @@ argument_list|)
 expr_stmt|;
 name|BibtexKeyPatternUtil
 operator|.
-name|makeLabel
+name|makeAndSetLabel
 argument_list|(
 name|bibtexKeyPattern
 argument_list|,
@@ -2168,7 +2148,7 @@ argument_list|)
 expr_stmt|;
 name|BibtexKeyPatternUtil
 operator|.
-name|makeLabel
+name|makeAndSetLabel
 argument_list|(
 name|bibtexKeyPattern
 argument_list|,
@@ -2212,7 +2192,7 @@ argument_list|)
 expr_stmt|;
 name|BibtexKeyPatternUtil
 operator|.
-name|makeLabel
+name|makeAndSetLabel
 argument_list|(
 name|bibtexKeyPattern
 argument_list|,

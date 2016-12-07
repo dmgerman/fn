@@ -112,6 +112,22 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|testutils
+operator|.
+name|category
+operator|.
+name|FetcherTests
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|junit
@@ -127,6 +143,20 @@ operator|.
 name|junit
 operator|.
 name|Test
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|experimental
+operator|.
+name|categories
+operator|.
+name|Category
 import|;
 end_import
 
@@ -167,6 +197,13 @@ import|;
 end_import
 
 begin_class
+annotation|@
+name|Category
+argument_list|(
+name|FetcherTests
+operator|.
+name|class
+argument_list|)
 DECL|class|MedlineFetcherTest
 specifier|public
 class|class
@@ -235,7 +272,7 @@ name|setField
 argument_list|(
 literal|"created"
 argument_list|,
-literal|"2016-9-27"
+literal|"2016-09-27"
 argument_list|)
 expr_stmt|;
 name|entryWijedasa
@@ -352,7 +389,7 @@ name|setField
 argument_list|(
 literal|"revised"
 argument_list|,
-literal|"2016-9-27"
+literal|"2016-09-27"
 argument_list|)
 expr_stmt|;
 name|entryWijedasa
@@ -412,7 +449,7 @@ name|setField
 argument_list|(
 literal|"created"
 argument_list|,
-literal|"2016-9-27"
+literal|"2016-09-27"
 argument_list|)
 expr_stmt|;
 name|entryEndharti
@@ -652,7 +689,7 @@ name|setField
 argument_list|(
 literal|"created"
 argument_list|,
-literal|"2015-9-26"
+literal|"2015-09-26"
 argument_list|)
 expr_stmt|;
 name|bibEntryIchikawa
@@ -688,7 +725,7 @@ name|setField
 argument_list|(
 literal|"revised"
 argument_list|,
-literal|"2015-9-26"
+literal|"2015-09-26"
 argument_list|)
 expr_stmt|;
 name|bibEntryIchikawa
@@ -883,7 +920,7 @@ name|setField
 argument_list|(
 literal|"created"
 argument_list|,
-literal|"2016-2-12"
+literal|"2016-02-12"
 argument_list|)
 expr_stmt|;
 name|bibEntrySari
@@ -955,7 +992,7 @@ name|setField
 argument_list|(
 literal|"revised"
 argument_list|,
-literal|"2016-2-12"
+literal|"2016-02-12"
 argument_list|)
 expr_stmt|;
 name|bibEntrySari

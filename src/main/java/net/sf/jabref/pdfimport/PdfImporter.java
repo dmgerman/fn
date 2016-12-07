@@ -1528,7 +1528,7 @@ argument_list|()
 expr_stmt|;
 name|BibtexKeyPatternUtil
 operator|.
-name|makeLabel
+name|makeAndSetLabel
 argument_list|(
 name|panel
 operator|.

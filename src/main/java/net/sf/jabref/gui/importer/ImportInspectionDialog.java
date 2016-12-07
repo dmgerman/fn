@@ -3577,7 +3577,7 @@ expr_stmt|;
 comment|// Generate a unique key:
 name|BibtexKeyPatternUtil
 operator|.
-name|makeLabel
+name|makeAndSetLabel
 argument_list|(
 name|localMetaData
 operator|.
@@ -3753,7 +3753,7 @@ argument_list|)
 expr_stmt|;
 name|BibtexKeyPatternUtil
 operator|.
-name|makeLabel
+name|makeAndSetLabel
 argument_list|(
 name|localMetaData
 operator|.

@@ -331,11 +331,11 @@ name|JabRefExecutorService
 operator|.
 name|INSTANCE
 operator|.
-name|executeWithLowPriorityInOwnThread
+name|executeInterruptableTask
 argument_list|(
 name|st
 argument_list|,
-literal|"Searcher"
+literal|"DuplicateSearcher"
 argument_list|)
 expr_stmt|;
 name|int

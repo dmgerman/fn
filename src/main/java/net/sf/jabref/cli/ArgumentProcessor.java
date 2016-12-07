@@ -742,6 +742,22 @@ name|apache
 operator|.
 name|commons
 operator|.
+name|lang3
+operator|.
+name|exception
+operator|.
+name|ExceptionUtils
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
 name|logging
 operator|.
 name|Log
@@ -790,9 +806,9 @@ enum|enum
 name|Mode
 block|{
 DECL|enumConstant|INITIAL_START
+DECL|enumConstant|REMOTE_START
 name|INITIAL_START
 block|,
-DECL|enumConstant|REMOTE_START
 name|REMOTE_START
 block|}
 DECL|field|cli
@@ -1570,10 +1586,12 @@ index|]
 operator|+
 literal|"': "
 operator|+
-name|ex
+name|ExceptionUtils
 operator|.
-name|getMessage
-argument_list|()
+name|getStackTrace
+argument_list|(
+name|ex
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -2737,7 +2755,16 @@ name|getDefaultEncoding
 argument_list|()
 argument_list|)
 argument_list|,
-literal|null
+name|pr
+operator|.
+name|getDatabaseContext
+argument_list|()
+operator|.
+name|getDatabase
+argument_list|()
+operator|.
+name|getEntries
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -2769,10 +2796,12 @@ index|]
 operator|+
 literal|"': "
 operator|+
-name|ex
+name|ExceptionUtils
 operator|.
-name|getMessage
-argument_list|()
+name|getStackTrace
+argument_list|(
+name|ex
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -3191,7 +3220,7 @@ block|{
 comment|// try to make a new label
 name|BibtexKeyPatternUtil
 operator|.
-name|makeLabel
+name|makeAndSetLabel
 argument_list|(
 name|metaData
 operator|.

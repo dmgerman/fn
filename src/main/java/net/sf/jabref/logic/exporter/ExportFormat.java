@@ -696,7 +696,6 @@ return|return
 name|reader
 return|;
 block|}
-comment|/**      * Perform the export of {@code database}.      *      * @param databaseContext the database to export from.      * @param file       the file to write the resulting export to      * @param encoding   The encoding of the database      * @param entries    Contains all entries that should be exported.      * @throws IOException if a problem occurred while trying to write to {@code writer}      *                     or read from required resources.      * @throws Exception   if any other error occurred during export.      * @see net.sf.jabref.logic.exporter.IExportFormat#performExport(BibDatabaseContext, String, Charset, List)      */
 annotation|@
 name|Override
 DECL|method|performExport (final BibDatabaseContext databaseContext, final String file, final Charset encoding, List<BibEntry> entries)
