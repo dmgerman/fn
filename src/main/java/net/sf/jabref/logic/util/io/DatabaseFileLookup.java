@@ -258,7 +258,7 @@ name|ofNullable
 argument_list|(
 name|databaseContext
 operator|.
-name|getFileDirectory
+name|getFileDirectories
 argument_list|(
 name|fileDirectoryPreferences
 argument_list|)

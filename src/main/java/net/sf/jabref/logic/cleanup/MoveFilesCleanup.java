@@ -298,7 +298,7 @@ name|paths
 init|=
 name|databaseContext
 operator|.
-name|getFileDirectory
+name|getFileDirectories
 argument_list|(
 name|fileDirectoryPreferences
 argument_list|)

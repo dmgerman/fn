@@ -156,6 +156,12 @@ specifier|final
 name|String
 name|fileNamePattern
 decl_stmt|;
+DECL|field|fileDirPattern
+specifier|private
+specifier|final
+name|String
+name|fileDirPattern
+decl_stmt|;
 DECL|field|prefs
 specifier|private
 specifier|final
@@ -197,6 +203,15 @@ operator|=
 name|cleanupPreferences
 operator|.
 name|getFileNamePattern
+argument_list|()
+expr_stmt|;
+name|this
+operator|.
+name|fileDirPattern
+operator|=
+name|cleanupPreferences
+operator|.
+name|getFileDirPattern
 argument_list|()
 expr_stmt|;
 name|this
@@ -465,6 +480,8 @@ argument_list|,
 name|databaseContext
 argument_list|,
 name|fileNamePattern
+argument_list|,
+name|fileDirPattern
 argument_list|,
 name|prefs
 argument_list|,
