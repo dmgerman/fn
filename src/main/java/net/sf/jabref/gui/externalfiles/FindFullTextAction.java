@@ -362,6 +362,18 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+if|if
+condition|(
+operator|!
+name|basePanel
+operator|.
+name|getSelectedEntries
+argument_list|()
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
 name|basePanel
 operator|.
 name|output
@@ -374,6 +386,17 @@ literal|"Looking for full text document..."
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+name|LOGGER
+operator|.
+name|debug
+argument_list|(
+literal|"No entry selected for fulltext download."
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 annotation|@
 name|Override
