@@ -281,6 +281,36 @@ return|return
 name|rule
 return|;
 block|}
+DECL|method|getSearchExpression ()
+specifier|public
+name|String
+name|getSearchExpression
+parameter_list|()
+block|{
+return|return
+name|query
+return|;
+block|}
+DECL|method|isCaseSensitive ()
+specifier|public
+name|boolean
+name|isCaseSensitive
+parameter_list|()
+block|{
+return|return
+name|caseSensitive
+return|;
+block|}
+DECL|method|isRegularExpression ()
+specifier|public
+name|boolean
+name|isRegularExpression
+parameter_list|()
+block|{
+return|return
+name|regularExpression
+return|;
+block|}
 block|}
 end_class
 

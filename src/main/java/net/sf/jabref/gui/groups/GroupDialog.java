@@ -1989,6 +1989,9 @@ operator|.
 name|trim
 argument_list|()
 argument_list|,
+name|getContext
+argument_list|()
+argument_list|,
 name|searchGroupSearchExpression
 operator|.
 name|getText
@@ -2001,9 +2004,6 @@ name|isCaseSensitive
 argument_list|()
 argument_list|,
 name|isRegex
-argument_list|()
-argument_list|,
-name|getContext
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2273,7 +2273,7 @@ name|setSelected
 argument_list|(
 name|group
 operator|.
-name|isRegExp
+name|isRegularExpression
 argument_list|()
 argument_list|)
 expr_stmt|;
