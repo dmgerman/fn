@@ -117,14 +117,14 @@ name|SearchMatcher
 block|{
 comment|/**      * The group's name.      */
 DECL|field|name
-specifier|private
+specifier|protected
 specifier|final
 name|String
 name|name
 decl_stmt|;
 comment|/**      * The hierarchical context of the group.      */
 DECL|field|context
-specifier|private
+specifier|protected
 specifier|final
 name|GroupHierarchyType
 name|context

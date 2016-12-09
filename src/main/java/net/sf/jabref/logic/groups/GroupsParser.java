@@ -526,9 +526,9 @@ name|s
 operator|.
 name|startsWith
 argument_list|(
-name|ExplicitGroup
+name|MetadataSerializationConfiguration
 operator|.
-name|ID
+name|EXPLICIT_GROUP_ID
 argument_list|)
 condition|)
 block|{
@@ -769,9 +769,9 @@ name|s
 operator|.
 name|startsWith
 argument_list|(
-name|ExplicitGroup
+name|MetadataSerializationConfiguration
 operator|.
-name|ID
+name|EXPLICIT_GROUP_ID
 argument_list|)
 condition|)
 block|{
@@ -797,9 +797,9 @@ name|s
 operator|.
 name|substring
 argument_list|(
-name|ExplicitGroup
+name|MetadataSerializationConfiguration
 operator|.
-name|ID
+name|EXPLICIT_GROUP_ID
 operator|.
 name|length
 argument_list|()

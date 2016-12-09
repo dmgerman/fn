@@ -46,6 +46,22 @@ name|SimpleKeywordGroup
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|groups
+operator|.
+name|ExplicitGroup
+import|;
+end_import
+
 begin_comment
 comment|/**  * Specifies how metadata is read and written.  */
 end_comment
@@ -95,6 +111,16 @@ name|String
 name|ALL_ENTRIES_GROUP_ID
 init|=
 literal|"AllEntriesGroup:"
+decl_stmt|;
+comment|/**      * Identifier for {@link ExplicitGroup}.      */
+DECL|field|EXPLICIT_GROUP_ID
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|EXPLICIT_GROUP_ID
+init|=
+literal|"ExplicitGroup:"
 decl_stmt|;
 block|}
 end_class
