@@ -762,7 +762,7 @@ argument_list|()
 argument_list|,
 name|node
 operator|.
-name|getSearchRule
+name|getSearchMatcher
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -848,7 +848,7 @@ name|matcher
 argument_list|,
 name|node
 operator|.
-name|getSearchRule
+name|getSearchMatcher
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -934,7 +934,7 @@ name|matcher
 argument_list|,
 name|node
 operator|.
-name|getSearchRule
+name|getSearchMatcher
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -956,7 +956,7 @@ argument_list|,
 name|getNodeInSimpleTree
 argument_list|()
 operator|.
-name|numberOfHits
+name|numberOfMatches
 argument_list|(
 name|Collections
 operator|.
@@ -1016,7 +1016,7 @@ literal|1
 argument_list|,
 name|node
 operator|.
-name|numberOfHits
+name|numberOfMatches
 argument_list|(
 name|entries
 argument_list|)
@@ -1073,7 +1073,7 @@ literal|2
 argument_list|,
 name|node
 operator|.
-name|numberOfHits
+name|numberOfMatches
 argument_list|(
 name|entries
 argument_list|)
@@ -1158,7 +1158,7 @@ literal|1
 argument_list|,
 name|node
 operator|.
-name|numberOfHits
+name|numberOfMatches
 argument_list|(
 name|entries
 argument_list|)
@@ -1243,7 +1243,7 @@ literal|2
 argument_list|,
 name|node
 operator|.
-name|numberOfHits
+name|numberOfMatches
 argument_list|(
 name|entries
 argument_list|)
