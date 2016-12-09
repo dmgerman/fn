@@ -58,6 +58,22 @@ name|model
 operator|.
 name|groups
 operator|.
+name|RegexKeywordGroup
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|groups
+operator|.
 name|ExplicitGroup
 import|;
 end_import
@@ -92,7 +108,7 @@ name|GROUP_UNIT_SEPARATOR
 init|=
 literal|";"
 decl_stmt|;
-comment|/**      * Identifier for {@link SimpleKeywordGroup}.      */
+comment|/**      * Identifier for {@link SimpleKeywordGroup} and {@link RegexKeywordGroup}.      */
 DECL|field|KEYWORD_GROUP_ID
 specifier|public
 specifier|static

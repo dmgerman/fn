@@ -1064,25 +1064,6 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-annotation|@
-name|Benchmark
-DECL|method|keywordGroupContainsWord ()
-specifier|public
-name|boolean
-name|keywordGroupContainsWord
-parameter_list|()
-block|{
-return|return
-name|SimpleKeywordGroup
-operator|.
-name|containsWord
-argument_list|(
-literal|"testWord"
-argument_list|,
-literal|"Some longer test string containing testWord the test word"
-argument_list|)
-return|;
-block|}
 DECL|method|main (String[] args)
 specifier|public
 specifier|static

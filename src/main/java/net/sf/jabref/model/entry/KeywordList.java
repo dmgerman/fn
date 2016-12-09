@@ -665,12 +665,12 @@ name|isEmpty
 argument_list|()
 return|;
 block|}
-DECL|method|contains (Object o)
+DECL|method|contains (Keyword o)
 specifier|public
 name|boolean
 name|contains
 parameter_list|(
-name|Object
+name|Keyword
 name|o
 parameter_list|)
 block|{
@@ -683,12 +683,12 @@ name|o
 argument_list|)
 return|;
 block|}
-DECL|method|remove (Object o)
+DECL|method|remove (Keyword o)
 specifier|public
 name|boolean
 name|remove
 parameter_list|(
-name|Object
+name|Keyword
 name|o
 parameter_list|)
 block|{
@@ -698,6 +698,28 @@ operator|.
 name|remove
 argument_list|(
 name|o
+argument_list|)
+return|;
+block|}
+DECL|method|remove (String keywordsString)
+specifier|public
+name|boolean
+name|remove
+parameter_list|(
+name|String
+name|keywordsString
+parameter_list|)
+block|{
+return|return
+name|keywords
+operator|.
+name|remove
+argument_list|(
+operator|new
+name|Keyword
+argument_list|(
+name|keywordsString
+argument_list|)
 argument_list|)
 return|;
 block|}

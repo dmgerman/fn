@@ -54,6 +54,20 @@ name|jabref
 operator|.
 name|model
 operator|.
+name|FieldChange
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
 name|entry
 operator|.
 name|BibEntry
@@ -72,9 +86,9 @@ name|GroupEntryChanger
 block|{
 comment|/**      * Adds the specified entries to this group.      *      * @return If this group or one or more entries was/were modified as a      * result of this operation, a list of changes is returned.      */
 DECL|method|add (List<BibEntry> entriesToAdd)
-name|Optional
+name|List
 argument_list|<
-name|EntriesGroupChange
+name|FieldChange
 argument_list|>
 name|add
 parameter_list|(
@@ -87,9 +101,9 @@ parameter_list|)
 function_decl|;
 DECL|method|add (BibEntry entryToAdd)
 specifier|default
-name|Optional
+name|List
 argument_list|<
-name|EntriesGroupChange
+name|FieldChange
 argument_list|>
 name|add
 parameter_list|(
@@ -111,9 +125,9 @@ return|;
 block|}
 comment|/**      * Removes the specified entries from this group.      *      * @return If this group or one or more entries was/were modified as a      * result of this operation, a list of changes is returned.      */
 DECL|method|remove (List<BibEntry> entriesToRemove)
-name|Optional
+name|List
 argument_list|<
-name|EntriesGroupChange
+name|FieldChange
 argument_list|>
 name|remove
 parameter_list|(
