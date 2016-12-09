@@ -121,6 +121,18 @@ return|return
 name|searchField
 return|;
 block|}
+annotation|@
+name|Override
+DECL|method|isDynamic ()
+specifier|public
+name|boolean
+name|isDynamic
+parameter_list|()
+block|{
+return|return
+literal|true
+return|;
+block|}
 block|}
 end_class
 
