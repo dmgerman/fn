@@ -126,6 +126,8 @@ argument_list|,
 literal|true
 argument_list|,
 name|keywordSeparator
+argument_list|,
+literal|true
 argument_list|)
 expr_stmt|;
 block|}

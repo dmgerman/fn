@@ -787,6 +787,8 @@ argument_list|,
 name|caseSensitive
 argument_list|,
 name|keywordSeparator
+argument_list|,
+literal|false
 argument_list|)
 return|;
 block|}

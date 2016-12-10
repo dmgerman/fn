@@ -88,6 +88,18 @@ name|assertEquals
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertFalse
+import|;
+end_import
+
 begin_class
 DECL|class|ExplicitGroupTest
 specifier|public
@@ -417,6 +429,72 @@ argument_list|(
 name|FieldName
 operator|.
 name|GROUPS
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+comment|// For https://github.com/JabRef/jabref/issues/1873
+DECL|method|containsOnlyMatchesCompletePhraseWithWhitespace ()
+specifier|public
+name|void
+name|containsOnlyMatchesCompletePhraseWithWhitespace
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|entry
+operator|.
+name|setField
+argument_list|(
+name|FieldName
+operator|.
+name|GROUPS
+argument_list|,
+literal|"myExplicitGroup b"
+argument_list|)
+expr_stmt|;
+name|assertFalse
+argument_list|(
+name|group
+operator|.
+name|contains
+argument_list|(
+name|entry
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+comment|// For https://github.com/JabRef/jabref/issues/1873
+DECL|method|containsOnlyMatchesCompletePhraseWithSlash ()
+specifier|public
+name|void
+name|containsOnlyMatchesCompletePhraseWithSlash
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|entry
+operator|.
+name|setField
+argument_list|(
+name|FieldName
+operator|.
+name|GROUPS
+argument_list|,
+literal|"myExplicitGroup/b"
+argument_list|)
+expr_stmt|;
+name|assertFalse
+argument_list|(
+name|group
+operator|.
+name|contains
+argument_list|(
+name|entry
 argument_list|)
 argument_list|)
 expr_stmt|;
