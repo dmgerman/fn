@@ -707,7 +707,7 @@ argument_list|(
 name|getName
 argument_list|()
 argument_list|,
-name|getContext
+name|getHierarchicalContext
 argument_list|()
 argument_list|,
 name|searchField

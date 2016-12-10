@@ -32,6 +32,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Optional
 import|;
 end_import
@@ -73,6 +83,20 @@ operator|.
 name|l10n
 operator|.
 name|Localization
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|FieldChange
 import|;
 end_import
 
@@ -209,9 +233,9 @@ block|{
 return|return;
 comment|// user aborted operation
 block|}
-name|Optional
+name|List
 argument_list|<
-name|EntriesGroupChange
+name|FieldChange
 argument_list|>
 name|undo
 init|=
@@ -227,10 +251,9 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|!
 name|undo
 operator|.
-name|isPresent
+name|isEmpty
 argument_list|()
 condition|)
 block|{
@@ -251,9 +274,6 @@ argument_list|(
 name|mNode
 argument_list|,
 name|undo
-operator|.
-name|get
-argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;

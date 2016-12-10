@@ -159,10 +159,10 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Returns the way this group relates to its sub- or supergroup.      */
-DECL|method|getContext ()
+DECL|method|getHierarchicalContext ()
 specifier|public
 name|GroupHierarchyType
-name|getContext
+name|getHierarchicalContext
 parameter_list|()
 block|{
 return|return
@@ -295,17 +295,6 @@ name|boolean
 name|isDynamic
 parameter_list|()
 function_decl|;
-comment|/**      * Returns the group's hierarchical context.      */
-DECL|method|getHierarchicalContext ()
-specifier|public
-name|GroupHierarchyType
-name|getHierarchicalContext
-parameter_list|()
-block|{
-return|return
-name|context
-return|;
-block|}
 comment|/**      * @return A deep copy of this object.      */
 DECL|method|deepCopy ()
 specifier|public

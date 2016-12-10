@@ -460,6 +460,22 @@ name|model
 operator|.
 name|groups
 operator|.
+name|RegexKeywordGroup
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|groups
+operator|.
 name|SimpleKeywordGroup
 import|;
 end_import
@@ -10364,8 +10380,6 @@ argument_list|,
 literal|false
 argument_list|,
 literal|','
-argument_list|,
-literal|true
 argument_list|)
 argument_list|,
 name|root
@@ -10385,7 +10399,7 @@ expr_stmt|;
 name|assertEquals
 argument_list|(
 operator|new
-name|SimpleKeywordGroup
+name|RegexKeywordGroup
 argument_list|(
 literal|"Invariant theory"
 argument_list|,
@@ -10396,10 +10410,6 @@ argument_list|,
 literal|"keywords"
 argument_list|,
 literal|"GIT"
-argument_list|,
-literal|false
-argument_list|,
-literal|','
 argument_list|,
 literal|false
 argument_list|)
