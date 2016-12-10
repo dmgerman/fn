@@ -184,7 +184,7 @@ name|model
 operator|.
 name|groups
 operator|.
-name|SimpleKeywordGroup
+name|WordKeywordGroup
 import|;
 end_import
 
@@ -413,11 +413,11 @@ name|void
 name|serializeSingleSimpleKeywordGroup
 parameter_list|()
 block|{
-name|SimpleKeywordGroup
+name|WordKeywordGroup
 name|group
 init|=
 operator|new
-name|SimpleKeywordGroup
+name|WordKeywordGroup
 argument_list|(
 literal|"name"
 argument_list|,

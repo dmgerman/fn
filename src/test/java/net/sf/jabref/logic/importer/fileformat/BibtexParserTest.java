@@ -476,7 +476,7 @@ name|model
 operator|.
 name|groups
 operator|.
-name|SimpleKeywordGroup
+name|WordKeywordGroup
 import|;
 end_import
 
@@ -10397,7 +10397,7 @@ expr_stmt|;
 name|assertEquals
 argument_list|(
 operator|new
-name|SimpleKeywordGroup
+name|WordKeywordGroup
 argument_list|(
 literal|"Invariant theory"
 argument_list|,

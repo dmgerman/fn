@@ -499,7 +499,7 @@ parameter_list|)
 block|{
 return|return
 operator|new
-name|SimpleKeywordGroup
+name|WordKeywordGroup
 argument_list|(
 name|name
 argument_list|,
@@ -859,7 +859,7 @@ operator|.
 name|addSubgroup
 argument_list|(
 operator|new
-name|SimpleKeywordGroup
+name|WordKeywordGroup
 argument_list|(
 literal|"node"
 argument_list|,
@@ -916,7 +916,7 @@ operator|.
 name|addSubgroup
 argument_list|(
 operator|new
-name|SimpleKeywordGroup
+name|WordKeywordGroup
 argument_list|(
 literal|"node"
 argument_list|,
@@ -973,7 +973,7 @@ operator|.
 name|addSubgroup
 argument_list|(
 operator|new
-name|SimpleKeywordGroup
+name|WordKeywordGroup
 argument_list|(
 literal|"node"
 argument_list|,
@@ -1001,7 +1001,7 @@ operator|.
 name|addSubgroup
 argument_list|(
 operator|new
-name|SimpleKeywordGroup
+name|WordKeywordGroup
 argument_list|(
 literal|"node"
 argument_list|,
@@ -1058,7 +1058,7 @@ operator|.
 name|addSubgroup
 argument_list|(
 operator|new
-name|SimpleKeywordGroup
+name|WordKeywordGroup
 argument_list|(
 literal|"node"
 argument_list|,
@@ -1086,7 +1086,7 @@ operator|.
 name|addSubgroup
 argument_list|(
 operator|new
-name|SimpleKeywordGroup
+name|WordKeywordGroup
 argument_list|(
 literal|"node"
 argument_list|,

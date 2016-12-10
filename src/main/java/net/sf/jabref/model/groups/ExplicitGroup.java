@@ -71,7 +71,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This group contains entries, which were manually assigned to it.  * Assignments are stored in the {@link FieldName#GROUPS} field.  * Thus, internally, we represent {@link ExplicitGroup} as a special {@link SimpleKeywordGroup} operating on  * {@link FieldName#GROUPS}.  */
+comment|/**  * This group contains entries, which were manually assigned to it.  * Assignments are stored in the {@link FieldName#GROUPS} field.  * Thus, internally, we represent {@link ExplicitGroup} as a special {@link WordKeywordGroup} operating on  * {@link FieldName#GROUPS}.  */
 end_comment
 
 begin_class
@@ -80,7 +80,7 @@ specifier|public
 class|class
 name|ExplicitGroup
 extends|extends
-name|SimpleKeywordGroup
+name|WordKeywordGroup
 block|{
 comment|/**      * Previous versions of JabRef stored the linked entries directly in the "jabref-meta" comment at the end of the      * file. These keys are still parsed and stored in this field.      */
 DECL|field|legacyEntryKeys

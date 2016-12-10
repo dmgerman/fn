@@ -510,7 +510,7 @@ name|model
 operator|.
 name|groups
 operator|.
-name|SimpleKeywordGroup
+name|WordKeywordGroup
 import|;
 end_import
 
@@ -1029,11 +1029,11 @@ range|:
 name|keywords
 control|)
 block|{
-name|SimpleKeywordGroup
+name|WordKeywordGroup
 name|group
 init|=
 operator|new
-name|SimpleKeywordGroup
+name|WordKeywordGroup
 argument_list|(
 name|formatter
 operator|.

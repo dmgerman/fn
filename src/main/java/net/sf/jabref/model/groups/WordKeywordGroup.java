@@ -131,10 +131,10 @@ comment|/**  * Matches entries if a given field contains a specified word.  */
 end_comment
 
 begin_class
-DECL|class|SimpleKeywordGroup
+DECL|class|WordKeywordGroup
 specifier|public
 class|class
-name|SimpleKeywordGroup
+name|WordKeywordGroup
 extends|extends
 name|KeywordGroup
 implements|implements
@@ -161,9 +161,9 @@ specifier|final
 name|boolean
 name|onlySplitWordsAtSeparator
 decl_stmt|;
-DECL|method|SimpleKeywordGroup (String name, GroupHierarchyType context, String searchField, String searchExpression, boolean caseSensitive, Character keywordSeparator, boolean onlySplitWordsAtSeparator)
+DECL|method|WordKeywordGroup (String name, GroupHierarchyType context, String searchField, String searchExpression, boolean caseSensitive, Character keywordSeparator, boolean onlySplitWordsAtSeparator)
 specifier|public
-name|SimpleKeywordGroup
+name|WordKeywordGroup
 parameter_list|(
 name|String
 name|name
@@ -577,7 +577,7 @@ operator|!
 operator|(
 name|o
 operator|instanceof
-name|SimpleKeywordGroup
+name|WordKeywordGroup
 operator|)
 condition|)
 block|{
@@ -585,11 +585,11 @@ return|return
 literal|false
 return|;
 block|}
-name|SimpleKeywordGroup
+name|WordKeywordGroup
 name|other
 init|=
 operator|(
-name|SimpleKeywordGroup
+name|WordKeywordGroup
 operator|)
 name|o
 decl_stmt|;
@@ -775,7 +775,7 @@ parameter_list|()
 block|{
 return|return
 operator|new
-name|SimpleKeywordGroup
+name|WordKeywordGroup
 argument_list|(
 name|getName
 argument_list|()

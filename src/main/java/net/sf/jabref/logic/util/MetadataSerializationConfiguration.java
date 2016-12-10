@@ -90,7 +90,7 @@ name|model
 operator|.
 name|groups
 operator|.
-name|SimpleKeywordGroup
+name|WordKeywordGroup
 import|;
 end_import
 
@@ -124,7 +124,7 @@ name|GROUP_UNIT_SEPARATOR
 init|=
 literal|";"
 decl_stmt|;
-comment|/**      * Identifier for {@link SimpleKeywordGroup} and {@link RegexKeywordGroup}.      */
+comment|/**      * Identifier for {@link WordKeywordGroup} and {@link RegexKeywordGroup}.      */
 DECL|field|KEYWORD_GROUP_ID
 specifier|public
 specifier|static

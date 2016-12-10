@@ -382,7 +382,7 @@ name|model
 operator|.
 name|groups
 operator|.
-name|SimpleKeywordGroup
+name|WordKeywordGroup
 import|;
 end_import
 
@@ -1033,7 +1033,7 @@ name|KeywordGroup
 name|group
 init|=
 operator|new
-name|SimpleKeywordGroup
+name|WordKeywordGroup
 argument_list|(
 literal|"testGroup"
 argument_list|,

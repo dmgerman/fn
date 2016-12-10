@@ -113,24 +113,24 @@ import|;
 end_import
 
 begin_class
-DECL|class|SimpleKeywordGroupTest
+DECL|class|WordKeywordGroupTest
 specifier|public
 class|class
-name|SimpleKeywordGroupTest
+name|WordKeywordGroupTest
 block|{
 DECL|field|testGroup
 specifier|private
-name|SimpleKeywordGroup
+name|WordKeywordGroup
 name|testGroup
 decl_stmt|;
 DECL|field|testCaseSensitiveGroup
 specifier|private
-name|SimpleKeywordGroup
+name|WordKeywordGroup
 name|testCaseSensitiveGroup
 decl_stmt|;
 DECL|field|waterGroup
 specifier|private
-name|SimpleKeywordGroup
+name|WordKeywordGroup
 name|waterGroup
 decl_stmt|;
 DECL|field|entry
@@ -149,7 +149,7 @@ block|{
 name|testGroup
 operator|=
 operator|new
-name|SimpleKeywordGroup
+name|WordKeywordGroup
 argument_list|(
 literal|"name"
 argument_list|,
@@ -171,7 +171,7 @@ expr_stmt|;
 name|testCaseSensitiveGroup
 operator|=
 operator|new
-name|SimpleKeywordGroup
+name|WordKeywordGroup
 argument_list|(
 literal|"name"
 argument_list|,
@@ -193,7 +193,7 @@ expr_stmt|;
 name|waterGroup
 operator|=
 operator|new
-name|SimpleKeywordGroup
+name|WordKeywordGroup
 argument_list|(
 literal|"name"
 argument_list|,

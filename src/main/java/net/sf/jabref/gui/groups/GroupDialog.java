@@ -472,7 +472,7 @@ name|model
 operator|.
 name|groups
 operator|.
-name|SimpleKeywordGroup
+name|WordKeywordGroup
 import|;
 end_import
 
@@ -1963,7 +1963,7 @@ block|{
 name|resultingGroup
 operator|=
 operator|new
-name|SimpleKeywordGroup
+name|WordKeywordGroup
 argument_list|(
 name|nameField
 operator|.
@@ -2175,17 +2175,17 @@ operator|.
 name|getClass
 argument_list|()
 operator|==
-name|SimpleKeywordGroup
+name|WordKeywordGroup
 operator|.
 name|class
 operator|)
 condition|)
 block|{
-name|SimpleKeywordGroup
+name|WordKeywordGroup
 name|group
 init|=
 operator|(
-name|SimpleKeywordGroup
+name|WordKeywordGroup
 operator|)
 name|editedGroup
 decl_stmt|;
@@ -2273,11 +2273,11 @@ name|class
 operator|)
 condition|)
 block|{
-name|SimpleKeywordGroup
+name|WordKeywordGroup
 name|group
 init|=
 operator|(
-name|SimpleKeywordGroup
+name|WordKeywordGroup
 operator|)
 name|editedGroup
 decl_stmt|;

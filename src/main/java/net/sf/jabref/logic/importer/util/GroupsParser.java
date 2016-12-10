@@ -232,7 +232,7 @@ name|model
 operator|.
 name|groups
 operator|.
-name|SimpleKeywordGroup
+name|WordKeywordGroup
 import|;
 end_import
 
@@ -774,7 +774,7 @@ else|else
 block|{
 return|return
 operator|new
-name|SimpleKeywordGroup
+name|WordKeywordGroup
 argument_list|(
 name|name
 argument_list|,
