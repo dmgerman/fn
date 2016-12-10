@@ -128,6 +128,30 @@ argument_list|>
 name|entriesToRemove
 parameter_list|)
 function_decl|;
+DECL|method|remove (BibEntry entryToAdd)
+specifier|default
+name|List
+argument_list|<
+name|FieldChange
+argument_list|>
+name|remove
+parameter_list|(
+name|BibEntry
+name|entryToAdd
+parameter_list|)
+block|{
+return|return
+name|remove
+argument_list|(
+name|Collections
+operator|.
+name|singletonList
+argument_list|(
+name|entryToAdd
+argument_list|)
+argument_list|)
+return|;
+block|}
 block|}
 end_interface
 

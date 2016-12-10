@@ -286,9 +286,7 @@ literal|','
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|GroupTreeNode
-name|node
-init|=
+return|return
 name|parent
 operator|.
 name|addSubgroup
@@ -305,9 +303,6 @@ argument_list|,
 literal|','
 argument_list|)
 argument_list|)
-decl_stmt|;
-return|return
-name|node
 return|;
 block|}
 DECL|method|getNodeInSimpleTree ()
