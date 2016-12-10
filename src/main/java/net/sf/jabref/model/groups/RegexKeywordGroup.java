@@ -243,7 +243,7 @@ operator|!
 operator|(
 name|o
 operator|instanceof
-name|SimpleKeywordGroup
+name|RegexKeywordGroup
 operator|)
 condition|)
 block|{
@@ -251,11 +251,11 @@ return|return
 literal|false
 return|;
 block|}
-name|SimpleKeywordGroup
+name|RegexKeywordGroup
 name|other
 init|=
 operator|(
-name|SimpleKeywordGroup
+name|RegexKeywordGroup
 operator|)
 name|o
 decl_stmt|;

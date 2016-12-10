@@ -10343,7 +10343,7 @@ argument_list|(
 operator|new
 name|AllEntriesGroup
 argument_list|(
-literal|""
+literal|"All entries"
 argument_list|)
 argument_list|,
 name|root
@@ -10365,7 +10365,7 @@ expr_stmt|;
 name|assertEquals
 argument_list|(
 operator|new
-name|SimpleKeywordGroup
+name|RegexKeywordGroup
 argument_list|(
 literal|"FrÃ©chet"
 argument_list|,
@@ -10378,8 +10378,6 @@ argument_list|,
 literal|"FrechetSpace"
 argument_list|,
 literal|false
-argument_list|,
-literal|','
 argument_list|)
 argument_list|,
 name|root
@@ -10399,7 +10397,7 @@ expr_stmt|;
 name|assertEquals
 argument_list|(
 operator|new
-name|RegexKeywordGroup
+name|SimpleKeywordGroup
 argument_list|(
 literal|"Invariant theory"
 argument_list|,
@@ -10412,6 +10410,8 @@ argument_list|,
 literal|"GIT"
 argument_list|,
 literal|false
+argument_list|,
+literal|','
 argument_list|)
 argument_list|,
 name|root

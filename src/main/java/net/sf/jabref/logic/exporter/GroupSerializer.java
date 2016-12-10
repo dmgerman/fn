@@ -771,6 +771,7 @@ name|node
 operator|.
 name|getLevel
 argument_list|()
+argument_list|)
 operator|+
 literal|' '
 operator|+
@@ -780,7 +781,6 @@ name|node
 operator|.
 name|getGroup
 argument_list|()
-argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;

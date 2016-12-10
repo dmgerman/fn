@@ -30,16 +30,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Arrays
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|Collections
 import|;
 end_import
@@ -51,22 +41,6 @@ operator|.
 name|util
 operator|.
 name|List
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
-name|exporter
-operator|.
-name|GroupSerializer
 import|;
 end_import
 
@@ -266,7 +240,8 @@ expr_stmt|;
 block|}
 comment|/**      * Gets the marked node in the following tree of explicit groups:      * Root      *      A ExplicitA, Including      *      A ExplicitParent, Independent (= parent)      *          B ExplicitNode, Refining (<-- this)      */
 DECL|method|getNodeInSimpleTree (GroupTreeNode root)
-specifier|private
+specifier|public
+specifier|static
 name|GroupTreeNode
 name|getNodeInSimpleTree
 parameter_list|(
@@ -351,7 +326,8 @@ return|;
 block|}
 comment|/**      * Gets the marked node in the following tree:      * Root      *      A SearchA      *      A ExplicitA, Including      *      A ExplicitGrandParent (= grand parent)      *          B ExplicitB      *          B KeywordParent (= parent)      *              C KeywordNode (<-- this)      *                  D ExplicitChild (= child)      *              C SearchC      *              C ExplicitC      *              C KeywordC      *          B SearchB      *          B KeywordB      *      A KeywordA      */
 DECL|method|getNodeInComplexTree (GroupTreeNode root)
-specifier|private
+specifier|public
+specifier|static
 name|GroupTreeNode
 name|getNodeInComplexTree
 parameter_list|(
@@ -518,6 +494,7 @@ return|;
 block|}
 DECL|method|getKeywordGroup (String name)
 specifier|private
+specifier|static
 name|AbstractGroup
 name|getKeywordGroup
 parameter_list|(
@@ -547,6 +524,7 @@ return|;
 block|}
 DECL|method|getSearchGroup (String name)
 specifier|private
+specifier|static
 name|AbstractGroup
 name|getSearchGroup
 parameter_list|(
@@ -574,6 +552,7 @@ return|;
 block|}
 DECL|method|getExplict (String name)
 specifier|private
+specifier|static
 name|AbstractGroup
 name|getExplict
 parameter_list|(
@@ -599,7 +578,8 @@ comment|/*     public GroupTreeNode getNodeInComplexTree() {         return getN
 comment|/**      * Gets the marked in the following tree:      * Root      *      A      *      A      *      A (<- this)      *      A      */
 comment|/*     public GroupTreeNode getNodeAsChild(TreeNodeMock root) {         root.addChild(new TreeNodeMock());         root.addChild(new TreeNodeMock());         TreeNodeMock node = new TreeNodeMock();         root.addChild(node);         root.addChild(new TreeNodeMock());         return node;     }     */
 DECL|method|getRoot ()
-specifier|private
+specifier|public
+specifier|static
 name|GroupTreeNode
 name|getRoot
 parameter_list|()
@@ -616,136 +596,6 @@ literal|"All entries"
 argument_list|)
 argument_list|)
 return|;
-block|}
-annotation|@
-name|Test
-DECL|method|getTreeAsStringInSimpleTree ()
-specifier|public
-name|void
-name|getTreeAsStringInSimpleTree
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-name|GroupTreeNode
-name|root
-init|=
-name|getRoot
-argument_list|()
-decl_stmt|;
-name|getNodeInSimpleTree
-argument_list|(
-name|root
-argument_list|)
-expr_stmt|;
-name|List
-argument_list|<
-name|String
-argument_list|>
-name|expected
-init|=
-name|Arrays
-operator|.
-name|asList
-argument_list|(
-literal|"0 AllEntriesGroup:"
-argument_list|,
-literal|"1 ExplicitGroup:ExplicitA;2;"
-argument_list|,
-literal|"1 ExplicitGroup:ExplicitParent;0;"
-argument_list|,
-literal|"2 ExplicitGroup:ExplicitNode;1;"
-argument_list|)
-decl_stmt|;
-name|assertEquals
-argument_list|(
-name|expected
-argument_list|,
-operator|new
-name|GroupSerializer
-argument_list|()
-operator|.
-name|serializeTree
-argument_list|(
-name|root
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-annotation|@
-name|Test
-DECL|method|getTreeAsStringInComplexTree ()
-specifier|public
-name|void
-name|getTreeAsStringInComplexTree
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-name|GroupTreeNode
-name|root
-init|=
-name|getRoot
-argument_list|()
-decl_stmt|;
-name|getNodeInComplexTree
-argument_list|(
-name|root
-argument_list|)
-expr_stmt|;
-name|List
-argument_list|<
-name|String
-argument_list|>
-name|expected
-init|=
-name|Arrays
-operator|.
-name|asList
-argument_list|(
-literal|"0 AllEntriesGroup:"
-argument_list|,
-literal|"1 SearchGroup:SearchA;2;searchExpression;1;0;"
-argument_list|,
-literal|"1 ExplicitGroup:ExplicitA;2;"
-argument_list|,
-literal|"1 ExplicitGroup:ExplicitGrandParent;0;"
-argument_list|,
-literal|"2 ExplicitGroup:ExplicitB;1;"
-argument_list|,
-literal|"2 KeywordGroup:KeywordParent;0;searchField;searchExpression;1;0;"
-argument_list|,
-literal|"3 KeywordGroup:KeywordNode;0;searchField;searchExpression;1;0;"
-argument_list|,
-literal|"4 ExplicitGroup:ExplicitChild;1;"
-argument_list|,
-literal|"3 SearchGroup:SearchC;2;searchExpression;1;0;"
-argument_list|,
-literal|"3 ExplicitGroup:ExplicitC;1;"
-argument_list|,
-literal|"3 KeywordGroup:KeywordC;0;searchField;searchExpression;1;0;"
-argument_list|,
-literal|"2 SearchGroup:SearchB;2;searchExpression;1;0;"
-argument_list|,
-literal|"2 KeywordGroup:KeywordB;0;searchField;searchExpression;1;0;"
-argument_list|,
-literal|"1 KeywordGroup:KeywordA;0;searchField;searchExpression;1;0;"
-argument_list|)
-decl_stmt|;
-name|assertEquals
-argument_list|(
-name|expected
-argument_list|,
-operator|new
-name|GroupSerializer
-argument_list|()
-operator|.
-name|serializeTree
-argument_list|(
-name|root
-argument_list|)
-argument_list|)
-expr_stmt|;
 block|}
 annotation|@
 name|Test

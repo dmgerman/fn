@@ -72,6 +72,16 @@ name|org
 operator|.
 name|junit
 operator|.
+name|Ignore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Test
 import|;
 end_import
@@ -178,6 +188,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Ignore
 DECL|method|testToString ()
 specifier|public
 name|void
@@ -197,6 +209,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Ignore
 DECL|method|testToString2 ()
 specifier|public
 name|void
@@ -207,7 +221,7 @@ name|KeywordGroup
 name|anotherGroup
 init|=
 operator|new
-name|SimpleKeywordGroup
+name|RegexKeywordGroup
 argument_list|(
 literal|"myExplicitGroup"
 argument_list|,
@@ -220,10 +234,6 @@ argument_list|,
 literal|"asdf"
 argument_list|,
 literal|false
-argument_list|,
-literal|','
-argument_list|,
-literal|true
 argument_list|)
 decl_stmt|;
 name|assertEquals

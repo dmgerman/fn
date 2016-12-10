@@ -14,16 +14,6 @@ name|groups
 package|;
 end_package
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Optional
-import|;
-end_import
-
 begin_enum
 DECL|enum|GroupHierarchyType
 specifier|public
