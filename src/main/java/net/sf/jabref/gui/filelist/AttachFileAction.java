@@ -108,10 +108,6 @@ name|FieldName
 import|;
 end_import
 
-begin_comment
-comment|/**  * Created by IntelliJ IDEA.  * User: alver  * Date: 5/24/12  * Time: 8:48 PM  * To change this template use File | Settings | File Templates.  */
-end_comment
-
 begin_class
 DECL|class|AttachFileAction
 specifier|public

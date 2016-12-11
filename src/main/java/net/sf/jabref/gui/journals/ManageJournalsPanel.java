@@ -704,10 +704,6 @@ name|LogFactory
 import|;
 end_import
 
-begin_comment
-comment|/**  * Created by IntelliJ IDEA. User: alver Date: Sep 19, 2005 Time: 7:57:29 PM To browseOld this template use File |  * Settings | File Templates.  */
-end_comment
-
 begin_class
 DECL|class|ManageJournalsPanel
 class|class

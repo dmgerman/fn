@@ -222,10 +222,6 @@ name|LogFactory
 import|;
 end_import
 
-begin_comment
-comment|/**  * Created by IntelliJ IDEA.  * User: alver  * Date: Apr 12, 2008  * Time: 1:46:44 PM  * To change this template use File | Settings | File Templates.  */
-end_comment
-
 begin_class
 DECL|class|RegExpFileSearch
 specifier|public
