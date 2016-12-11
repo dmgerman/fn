@@ -871,10 +871,14 @@ control|(
 name|String
 name|groupNode
 range|:
-name|root
-operator|.
-name|getTreeAsString
+operator|new
+name|GroupSerializer
 argument_list|()
+operator|.
+name|serializeTree
+argument_list|(
+name|root
+argument_list|)
 control|)
 block|{
 name|stringBuilder
