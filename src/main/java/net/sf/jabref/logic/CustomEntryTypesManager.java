@@ -18,27 +18,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|HashMap
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|List
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Map
 import|;
 end_import
 
@@ -120,26 +100,6 @@ specifier|public
 class|class
 name|CustomEntryTypesManager
 block|{
-DECL|field|CUSTOM_TYPES_BY_MODE_MAP
-specifier|public
-specifier|static
-specifier|final
-name|Map
-argument_list|<
-name|BibDatabaseMode
-argument_list|,
-name|List
-argument_list|<
-name|CustomEntryType
-argument_list|>
-argument_list|>
-name|CUSTOM_TYPES_BY_MODE_MAP
-init|=
-operator|new
-name|HashMap
-argument_list|<>
-argument_list|()
-decl_stmt|;
 comment|/**      * Load all custom entry types from preferences. This method is      * called from JabRef when the program starts.      */
 DECL|method|loadCustomEntryTypes (JabRefPreferences prefs)
 specifier|public
@@ -186,17 +146,6 @@ name|BIBTEX
 argument_list|)
 expr_stmt|;
 block|}
-name|CUSTOM_TYPES_BY_MODE_MAP
-operator|.
-name|put
-argument_list|(
-name|BibDatabaseMode
-operator|.
-name|BIBTEX
-argument_list|,
-name|customBibtexTypes
-argument_list|)
-expr_stmt|;
 name|List
 argument_list|<
 name|CustomEntryType
@@ -232,17 +181,6 @@ name|BIBLATEX
 argument_list|)
 expr_stmt|;
 block|}
-name|CUSTOM_TYPES_BY_MODE_MAP
-operator|.
-name|put
-argument_list|(
-name|BibDatabaseMode
-operator|.
-name|BIBLATEX
-argument_list|,
-name|customBiblatexTypes
-argument_list|)
-expr_stmt|;
 block|}
 comment|/**      * Iterate through all entry types, and store those that are      * custom defined to preferences. This method is called from      * JabRefFrame when the program closes.      */
 DECL|method|saveCustomEntryTypes (JabRefPreferences prefs)
