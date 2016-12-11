@@ -76,6 +76,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Enumeration
 import|;
 end_import
@@ -256,11 +266,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|model
 operator|.
-name|groups
-operator|.
-name|GroupDescriptions
+name|FieldChange
 import|;
 end_import
 
@@ -324,7 +332,7 @@ name|model
 operator|.
 name|groups
 operator|.
-name|EntriesGroupChange
+name|ExplicitGroup
 import|;
 end_import
 
@@ -340,7 +348,7 @@ name|model
 operator|.
 name|groups
 operator|.
-name|ExplicitGroup
+name|GroupEntryChanger
 import|;
 end_import
 
@@ -373,22 +381,6 @@ operator|.
 name|groups
 operator|.
 name|KeywordGroup
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|groups
-operator|.
-name|MoveGroupChange
 import|;
 end_import
 
@@ -1197,7 +1189,7 @@ name|append
 argument_list|(
 name|node
 operator|.
-name|numberOfHits
+name|numberOfMatches
 argument_list|(
 name|currentBasePanel
 operator|.
@@ -1452,9 +1444,8 @@ argument_list|()
 operator|.
 name|getGroup
 argument_list|()
-operator|.
-name|supportsAdd
-argument_list|()
+operator|instanceof
+name|GroupEntryChanger
 operator|&&
 operator|!
 name|getNode
@@ -1487,9 +1478,8 @@ argument_list|()
 operator|.
 name|getGroup
 argument_list|()
-operator|.
-name|supportsRemove
-argument_list|()
+operator|instanceof
+name|GroupEntryChanger
 operator|&&
 name|getNode
 argument_list|()
@@ -1805,26 +1795,26 @@ operator|.
 name|getGroup
 argument_list|()
 decl_stmt|;
-name|Optional
+name|List
 argument_list|<
-name|EntriesGroupChange
+name|FieldChange
 argument_list|>
 name|changesRemove
 init|=
-name|Optional
-operator|.
-name|empty
+operator|new
+name|ArrayList
+argument_list|<>
 argument_list|()
 decl_stmt|;
-name|Optional
+name|List
 argument_list|<
-name|EntriesGroupChange
+name|FieldChange
 argument_list|>
 name|changesAdd
 init|=
-name|Optional
-operator|.
-name|empty
+operator|new
+name|ArrayList
+argument_list|<>
 argument_list|()
 decl_stmt|;
 comment|// Sort entries into current members and non-members of the group
@@ -1939,9 +1929,10 @@ block|}
 comment|// Remember undo information
 if|if
 condition|(
+operator|!
 name|changesRemove
 operator|.
-name|isPresent
+name|isEmpty
 argument_list|()
 condition|)
 block|{
@@ -1955,16 +1946,14 @@ argument_list|(
 name|this
 argument_list|,
 name|changesRemove
-operator|.
-name|get
-argument_list|()
 argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|!
 name|changesAdd
 operator|.
-name|isPresent
+name|isEmpty
 argument_list|()
 operator|&&
 operator|(
@@ -1986,9 +1975,6 @@ argument_list|(
 name|this
 argument_list|,
 name|changesAdd
-operator|.
-name|get
-argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2004,9 +1990,10 @@ block|}
 elseif|else
 if|if
 condition|(
+operator|!
 name|changesAdd
 operator|.
-name|isPresent
+name|isEmpty
 argument_list|()
 condition|)
 block|{
@@ -2021,9 +2008,6 @@ argument_list|(
 name|this
 argument_list|,
 name|changesAdd
-operator|.
-name|get
-argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2481,9 +2465,9 @@ block|}
 comment|/**      * Adds the given entries to this node's group.      */
 DECL|method|addEntriesToGroup (List<BibEntry> entries)
 specifier|public
-name|Optional
+name|List
 argument_list|<
-name|EntriesGroupChange
+name|FieldChange
 argument_list|>
 name|addEntriesToGroup
 parameter_list|(
@@ -2500,16 +2484,20 @@ name|node
 operator|.
 name|getGroup
 argument_list|()
-operator|.
-name|supportsAdd
-argument_list|()
+operator|instanceof
+name|GroupEntryChanger
 condition|)
 block|{
 return|return
+operator|(
+operator|(
+name|GroupEntryChanger
+operator|)
 name|node
 operator|.
 name|getGroup
 argument_list|()
+operator|)
 operator|.
 name|add
 argument_list|(
@@ -2520,9 +2508,9 @@ block|}
 else|else
 block|{
 return|return
-name|Optional
+name|Collections
 operator|.
-name|empty
+name|emptyList
 argument_list|()
 return|;
 block|}
@@ -2530,9 +2518,9 @@ block|}
 comment|/**      * Removes the given entries from this node's group.      */
 DECL|method|removeEntriesFromGroup (List<BibEntry> entries)
 specifier|public
-name|Optional
+name|List
 argument_list|<
-name|EntriesGroupChange
+name|FieldChange
 argument_list|>
 name|removeEntriesFromGroup
 parameter_list|(
@@ -2549,16 +2537,20 @@ name|node
 operator|.
 name|getGroup
 argument_list|()
-operator|.
-name|supportsRemove
-argument_list|()
+operator|instanceof
+name|GroupEntryChanger
 condition|)
 block|{
 return|return
+operator|(
+operator|(
+name|GroupEntryChanger
+operator|)
 name|node
 operator|.
 name|getGroup
 argument_list|()
+operator|)
 operator|.
 name|remove
 argument_list|(
@@ -2569,9 +2561,9 @@ block|}
 else|else
 block|{
 return|return
-name|Optional
+name|Collections
 operator|.
-name|empty
+name|emptyList
 argument_list|()
 return|;
 block|}

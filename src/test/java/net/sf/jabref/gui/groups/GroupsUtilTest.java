@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|net.sf.jabref.logic.groups
+DECL|package|net.sf.jabref.gui.groups
 package|package
 name|net
 operator|.
@@ -8,7 +8,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|gui
 operator|.
 name|groups
 package|;
@@ -158,22 +158,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|model
-operator|.
-name|groups
-operator|.
-name|GroupsUtil
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|preferences
 operator|.
 name|JabRefPreferences
@@ -186,31 +170,17 @@ name|org
 operator|.
 name|junit
 operator|.
+name|Assert
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Test
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertEquals
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertTrue
 import|;
 end_import
 
@@ -302,7 +272,7 @@ name|String
 argument_list|>
 name|authorSet
 init|=
-name|GroupsUtil
+name|AutoGroupDialog
 operator|.
 name|findAuthorLastNames
 argument_list|(
@@ -311,6 +281,8 @@ argument_list|,
 name|fieldList
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
 name|authorSet
@@ -321,6 +293,8 @@ literal|"Brewer"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|15
@@ -337,7 +311,7 @@ name|String
 argument_list|>
 name|keywordSet
 init|=
-name|GroupsUtil
+name|AutoGroupDialog
 operator|.
 name|findDeliminatedWordsInField
 argument_list|(
@@ -348,6 +322,8 @@ argument_list|,
 literal|";"
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
 name|keywordSet
@@ -358,6 +334,8 @@ literal|"Brain"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|60
@@ -374,7 +352,7 @@ name|String
 argument_list|>
 name|wordSet
 init|=
-name|GroupsUtil
+name|AutoGroupDialog
 operator|.
 name|findAllWordsInField
 argument_list|(
@@ -385,6 +363,8 @@ argument_list|,
 literal|""
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
 name|wordSet
@@ -395,6 +375,8 @@ literal|"Feb"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
 name|wordSet
@@ -405,6 +387,8 @@ literal|"Mar"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
 name|wordSet
@@ -415,6 +399,8 @@ literal|"May"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
 name|wordSet
@@ -425,6 +411,8 @@ literal|"Jul"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
 name|wordSet
@@ -435,6 +423,8 @@ literal|"Dec"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|5

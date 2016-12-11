@@ -294,16 +294,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Optional
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|Vector
 import|;
 end_import
@@ -372,6 +362,20 @@ name|jabref
 operator|.
 name|model
 operator|.
+name|FieldChange
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
 name|entry
 operator|.
 name|BibEntry
@@ -406,7 +410,7 @@ name|model
 operator|.
 name|groups
 operator|.
-name|EntriesGroupChange
+name|GroupEntryChanger
 import|;
 end_import
 
@@ -423,22 +427,6 @@ operator|.
 name|groups
 operator|.
 name|GroupTreeNode
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|groups
-operator|.
-name|MoveGroupChange
 import|;
 end_import
 
@@ -1019,8 +1007,10 @@ operator|.
 name|getNode
 argument_list|()
 operator|.
-name|supportsAddingEntries
+name|getGroup
 argument_list|()
+operator|instanceof
+name|GroupEntryChanger
 condition|)
 block|{
 comment|// accept: assignment from EntryTable
@@ -1619,13 +1609,17 @@ decl_stmt|;
 if|if
 condition|(
 operator|!
+operator|(
 name|target
 operator|.
 name|getNode
 argument_list|()
 operator|.
-name|supportsAddingEntries
+name|getGroup
 argument_list|()
+operator|instanceof
+name|GroupEntryChanger
+operator|)
 condition|)
 block|{
 comment|// this should never happen, because the same condition
@@ -1731,9 +1725,9 @@ operator|.
 name|storeCurrentEdit
 argument_list|()
 expr_stmt|;
-name|Optional
+name|List
 argument_list|<
-name|EntriesGroupChange
+name|FieldChange
 argument_list|>
 name|undo
 init|=
@@ -1749,9 +1743,10 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|!
 name|undo
 operator|.
-name|isPresent
+name|isEmpty
 argument_list|()
 condition|)
 block|{
@@ -1776,9 +1771,6 @@ argument_list|(
 name|target
 argument_list|,
 name|undo
-operator|.
-name|get
-argument_list|()
 argument_list|)
 argument_list|,
 name|target

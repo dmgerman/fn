@@ -365,19 +365,6 @@ name|root
 argument_list|)
 expr_stmt|;
 block|}
-comment|// the group tree is now appled to a different BibDatabase than it was created
-comment|// for, which affects groups such as ExplicitGroup (which links to BibEntry objects).
-comment|// We must traverse the tree and refresh all groups:
-name|root
-operator|.
-name|refreshGroupsForNewDatabase
-argument_list|(
-name|panel
-operator|.
-name|getDatabase
-argument_list|()
-argument_list|)
-expr_stmt|;
 block|}
 name|undoEdit
 operator|.
@@ -440,13 +427,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-name|tmpGroupRoot
-operator|.
-name|refreshGroupsForNewDatabase
-argument_list|(
-name|secondary
-argument_list|)
-expr_stmt|;
 return|return
 literal|true
 return|;

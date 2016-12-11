@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|net.sf.jabref.model.groups
+DECL|package|net.sf.jabref.model
 package|package
 name|net
 operator|.
@@ -9,8 +9,6 @@ operator|.
 name|jabref
 operator|.
 name|model
-operator|.
-name|groups
 package|;
 end_package
 
