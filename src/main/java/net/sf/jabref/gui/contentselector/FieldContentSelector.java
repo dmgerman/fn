@@ -672,8 +672,7 @@ name|void
 name|selectionMade
 parameter_list|()
 block|{
-comment|// The first element is only for show.
-comment|// CO: Why?
+comment|// The first element is empty to avoid a preselection
 if|if
 condition|(
 name|comboBox
@@ -713,12 +712,15 @@ condition|)
 block|{
 return|return;
 block|}
-comment|// The following is not possible at the moment since the
-comment|// combobox cannot be edited!
-comment|// User edited in a new word. Add it.
-comment|// if (comboBox.getSelectedIndex() == -1)
-comment|// addWord(chosen);
-comment|// TODO: could improve checking as not do add the same item twice
+name|String
+name|currentText
+init|=
+name|editor
+operator|.
+name|getText
+argument_list|()
+decl_stmt|;
+comment|// not the first word and no duplicate -> we need a comma
 if|if
 condition|(
 operator|!
@@ -726,10 +728,15 @@ literal|""
 operator|.
 name|equals
 argument_list|(
-name|editor
+name|currentText
+argument_list|)
+operator|&&
+operator|!
+name|currentText
 operator|.
-name|getText
-argument_list|()
+name|contains
+argument_list|(
+name|chosen
 argument_list|)
 condition|)
 block|{
@@ -745,6 +752,18 @@ name|delimiter
 argument_list|)
 expr_stmt|;
 block|}
+comment|// no duplicate -> add it
+if|if
+condition|(
+operator|!
+name|currentText
+operator|.
+name|contains
+argument_list|(
+name|chosen
+argument_list|)
+condition|)
+block|{
 name|editor
 operator|.
 name|append
@@ -752,6 +771,7 @@ argument_list|(
 name|chosen
 argument_list|)
 expr_stmt|;
+block|}
 name|comboBox
 operator|.
 name|setSelectedIndex
