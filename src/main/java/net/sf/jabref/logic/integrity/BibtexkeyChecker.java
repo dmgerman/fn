@@ -126,6 +126,10 @@ name|StringUtil
 import|;
 end_import
 
+begin_comment
+comment|/**  * Currently only checks the key if there is an author, year, and title present.  */
+end_comment
+
 begin_class
 DECL|class|BibtexkeyChecker
 specifier|public
