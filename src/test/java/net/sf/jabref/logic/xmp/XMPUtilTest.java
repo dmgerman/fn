@@ -7818,7 +7818,7 @@ block|}
 end_function
 
 begin_comment
-comment|/**      * Test whether the command-line client can pick one of several entries from a bibtex file      * @throws IOException      * @throws TransformerException      *      */
+comment|/**      * Test whether the command-line client can pick one of several entries from a bibtex file      * @throws IOException      * @throws TransformerException      */
 end_comment
 
 begin_function

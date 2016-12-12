@@ -1119,13 +1119,10 @@ name|OOBibStyle
 operator|.
 name|class
 operator|.
-name|getResource
+name|getResourceAsStream
 argument_list|(
 name|resourcePath
 argument_list|)
-operator|.
-name|openStream
-argument_list|()
 argument_list|)
 expr_stmt|;
 name|fromResource

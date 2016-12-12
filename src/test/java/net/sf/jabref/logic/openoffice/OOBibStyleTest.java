@@ -312,16 +312,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Test
 import|;
 end_import
@@ -3690,8 +3680,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
 DECL|method|testEmptyStringPropertyAndOxfordComma ()
 specifier|public
 name|void
@@ -3702,36 +3690,13 @@ name|URISyntaxException
 throws|,
 name|IOException
 block|{
-name|String
-name|fileName
-init|=
-name|Paths
-operator|.
-name|get
-argument_list|(
-name|OOBibStyleTest
-operator|.
-name|class
-operator|.
-name|getResource
-argument_list|(
-literal|"test.jstyle"
-argument_list|)
-operator|.
-name|toURI
-argument_list|()
-argument_list|)
-operator|.
-name|toString
-argument_list|()
-decl_stmt|;
 name|OOBibStyle
 name|style
 init|=
 operator|new
 name|OOBibStyle
 argument_list|(
-name|fileName
+literal|"test.jstyle"
 argument_list|,
 name|layoutFormatterPreferences
 argument_list|)
@@ -3833,7 +3798,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"von Beta, Epsilon, and Tau, 2016"
+literal|"von Beta, Epsilon,& Tau, 2016"
 argument_list|,
 name|style
 operator|.
