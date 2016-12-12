@@ -104,6 +104,18 @@ name|String
 name|content
 parameter_list|)
 function_decl|;
+comment|/**      * Create and display error dialog displaying the given exception.      * @param message the error message      * @param exception the exception causing the error      */
+DECL|method|showErrorDialogAndWait (String message, Throwable exception)
+name|void
+name|showErrorDialogAndWait
+parameter_list|(
+name|String
+name|message
+parameter_list|,
+name|Throwable
+name|exception
+parameter_list|)
+function_decl|;
 comment|/**      * This will create and display a new confirmation dialog.      * It will include a blue question icon on the left and      * a OK and Cancel Button. To create a confirmation dialog with custom      * buttons see also {@link #showCustomButtonDialogAndWait(Alert.AlertType, String, String, ButtonType...)}      *      * @return Optional with the pressed Button as ButtonType      */
 DECL|method|showConfirmationDialogAndWait (String title, String content)
 name|Optional
@@ -160,6 +172,15 @@ parameter_list|,
 name|ButtonType
 modifier|...
 name|buttonTypes
+parameter_list|)
+function_decl|;
+comment|/**      * Notify the user in an non-blocking way (i.e., update status message instead of showing a dialog).      * @param message the message to show.      */
+DECL|method|notify (String message)
+name|void
+name|notify
+parameter_list|(
+name|String
+name|message
 parameter_list|)
 function_decl|;
 block|}
