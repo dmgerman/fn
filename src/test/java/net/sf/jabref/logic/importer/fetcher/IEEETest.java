@@ -260,11 +260,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-argument_list|(
-literal|"Fails both locally and on TravisCI"
-argument_list|)
 DECL|method|findByDOI ()
 specifier|public
 name|void
@@ -308,11 +303,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-argument_list|(
-literal|"Fails both locally and on TravisCI"
-argument_list|)
 DECL|method|findByURL ()
 specifier|public
 name|void
@@ -356,11 +346,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-argument_list|(
-literal|"Fails both locally and on TravisCI"
-argument_list|)
 DECL|method|findByOldURL ()
 specifier|public
 name|void
@@ -404,11 +389,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-argument_list|(
-literal|"Fails both locally and on TravisCI"
-argument_list|)
 DECL|method|findByDOIButNotURL ()
 specifier|public
 name|void

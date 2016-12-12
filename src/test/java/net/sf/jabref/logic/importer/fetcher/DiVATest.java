@@ -104,16 +104,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Test
 import|;
 end_import
@@ -250,11 +240,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-argument_list|(
-literal|"Server currently sends 500"
-argument_list|)
 DECL|method|testPerformSearchById ()
 specifier|public
 name|void
