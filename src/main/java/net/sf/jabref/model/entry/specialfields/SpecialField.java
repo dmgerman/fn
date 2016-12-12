@@ -446,7 +446,7 @@ name|of
 argument_list|(
 name|SpecialField
 operator|.
-name|RELEVANCE
+name|READ_STATUS
 argument_list|)
 return|;
 case|case
@@ -459,7 +459,7 @@ name|of
 argument_list|(
 name|SpecialField
 operator|.
-name|READ_STATUS
+name|RELEVANCE
 argument_list|)
 return|;
 case|case
