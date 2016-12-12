@@ -392,7 +392,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// entryFetchers.add(new OAI2Fetcher()); - new arXiv fetcher in place, see below
-comment|// entryFetchers.add(new ScienceDirectFetcher()); currently not working - removed see #409
 name|entryFetchers
 operator|.
 name|add
