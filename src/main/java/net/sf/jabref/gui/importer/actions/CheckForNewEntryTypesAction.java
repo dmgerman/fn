@@ -848,10 +848,10 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Select all customized types to be stored in local preferences."
+literal|"Select all customized types to be stored in local preferences"
 argument_list|)
 operator|+
-literal|"\n"
+literal|":"
 argument_list|)
 decl_stmt|;
 name|selectLabel
@@ -900,8 +900,10 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Currently unknown:"
+literal|"Currently unknown"
 argument_list|)
+operator|+
+literal|":"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -966,8 +968,10 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Different Customization, current settings will be overwritten:"
+literal|"Different Customization, current settings will be overwritten"
 argument_list|)
+operator|+
+literal|":"
 argument_list|)
 argument_list|)
 expr_stmt|;
