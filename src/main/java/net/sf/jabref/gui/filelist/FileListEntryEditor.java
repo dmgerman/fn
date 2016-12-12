@@ -868,6 +868,17 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+name|FormLayout
+name|fileDialog
+init|=
+operator|new
+name|FormLayout
+argument_list|(
+literal|"left:pref, 4dlu, fill:400dlu, 4dlu, fill:pref, 4dlu, fill:pref"
+argument_list|,
+literal|"p, 8dlu, p, 8dlu, p"
+argument_list|)
+decl_stmt|;
 name|FormBuilder
 name|builder
 init|=
@@ -878,13 +889,7 @@ argument_list|()
 operator|.
 name|layout
 argument_list|(
-operator|new
-name|FormLayout
-argument_list|(
-literal|"left:pref, 4dlu, fill:150dlu, 4dlu, fill:pref, 4dlu, fill:pref"
-argument_list|,
-literal|"p, 2dlu, p, 2dlu, p"
-argument_list|)
+name|fileDialog
 argument_list|)
 decl_stmt|;
 name|builder
@@ -920,7 +925,6 @@ argument_list|,
 literal|1
 argument_list|)
 expr_stmt|;
-comment|//final BrowseListener browse = new BrowseListener(frame, link); //TODO: Maybe use browse action
 specifier|final
 name|JButton
 name|browseBut
@@ -1023,7 +1027,7 @@ literal|3
 argument_list|,
 literal|3
 argument_list|,
-literal|3
+literal|5
 argument_list|)
 expr_stmt|;
 name|builder
@@ -1079,7 +1083,7 @@ literal|3
 argument_list|,
 literal|5
 argument_list|,
-literal|3
+literal|5
 argument_list|)
 expr_stmt|;
 if|if
@@ -2013,7 +2017,7 @@ name|dirs
 init|=
 name|databaseContext
 operator|.
-name|getFileDirectory
+name|getFileDirectories
 argument_list|(
 name|Globals
 operator|.
@@ -2386,7 +2390,7 @@ name|this
 operator|.
 name|databaseContext
 operator|.
-name|getFileDirectory
+name|getFileDirectories
 argument_list|(
 name|Globals
 operator|.

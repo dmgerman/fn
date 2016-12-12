@@ -335,7 +335,7 @@ name|setField
 argument_list|(
 literal|"month"
 argument_list|,
-literal|"Sep"
+literal|"#sep#"
 argument_list|)
 expr_stmt|;
 name|entryWijedasa
@@ -566,7 +566,7 @@ name|setField
 argument_list|(
 literal|"month"
 argument_list|,
-literal|"Sep"
+literal|"#sep#"
 argument_list|)
 expr_stmt|;
 name|entryEndharti
@@ -770,7 +770,7 @@ name|setField
 argument_list|(
 literal|"month"
 argument_list|,
-literal|"Dec"
+literal|"#dec#"
 argument_list|)
 expr_stmt|;
 name|bibEntryIchikawa
@@ -974,7 +974,7 @@ name|setField
 argument_list|(
 literal|"month"
 argument_list|,
-literal|"Nov"
+literal|"#nov#"
 argument_list|)
 expr_stmt|;
 name|bibEntrySari

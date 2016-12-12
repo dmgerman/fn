@@ -35,7 +35,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *  * Class for keeping properties of a single BibTeX/BibLatex field  *  */
+comment|/**  * Class for keeping properties of a single BibTeX/BibLatex field  */
 end_comment
 
 begin_class

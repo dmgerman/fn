@@ -2577,7 +2577,7 @@ return|return
 name|data
 return|;
 block|}
-comment|/**      * Clears and sets all shared meta data.      *      * @param metaData JabRef meta data.      * @throws SQLException      */
+comment|/**      * Clears and sets all shared meta data.      *      * @param data JabRef meta data as map      */
 DECL|method|setSharedMetaData (Map<String, String> data)
 specifier|public
 name|void

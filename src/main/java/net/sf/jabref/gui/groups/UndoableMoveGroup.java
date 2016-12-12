@@ -82,22 +82,6 @@ name|GroupTreeNode
 import|;
 end_import
 
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|groups
-operator|.
-name|MoveGroupChange
-import|;
-end_import
-
 begin_comment
 comment|/**  * @author jzieren  *  */
 end_comment
