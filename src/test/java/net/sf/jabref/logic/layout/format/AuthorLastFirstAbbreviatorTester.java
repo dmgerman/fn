@@ -138,7 +138,6 @@ name|result
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Testcase for      * http://sourceforge.net/tracker/index.php?func=detail&aid=1466924&group_id=92314&atid=600306      */
 annotation|@
 name|Test
 annotation|@
@@ -149,7 +148,6 @@ name|void
 name|testJrAuthor
 parameter_list|()
 block|{
-comment|//TODO what should be done here? reimplement it?
 name|Assert
 operator|.
 name|assertEquals
