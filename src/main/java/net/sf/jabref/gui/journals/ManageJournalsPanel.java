@@ -534,22 +534,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
-operator|.
-name|util
-operator|.
-name|GUIUtil
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|logic
 operator|.
 name|help
@@ -719,10 +703,6 @@ operator|.
 name|LogFactory
 import|;
 end_import
-
-begin_comment
-comment|/**  * Created by IntelliJ IDEA. User: alver Date: Sep 19, 2005 Time: 7:57:29 PM To browseOld this template use File |  * Settings | File Templates.  */
-end_comment
 
 begin_class
 DECL|class|ManageJournalsPanel
@@ -1733,13 +1713,6 @@ argument_list|()
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|GUIUtil
-operator|.
-name|correctRowHeight
-argument_list|(
-name|table
-argument_list|)
-expr_stmt|;
 name|JScrollPane
 name|pane
 init|=
@@ -2550,13 +2523,6 @@ operator|new
 name|JTable
 argument_list|(
 name|tableModel
-argument_list|)
-expr_stmt|;
-name|GUIUtil
-operator|.
-name|correctRowHeight
-argument_list|(
-name|userTable
 argument_list|)
 expr_stmt|;
 name|userTable
@@ -4160,13 +4126,6 @@ name|abbreviations
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|GUIUtil
-operator|.
-name|correctRowHeight
-argument_list|(
-name|table
-argument_list|)
-expr_stmt|;
 name|JScrollPane
 name|pane
 init|=

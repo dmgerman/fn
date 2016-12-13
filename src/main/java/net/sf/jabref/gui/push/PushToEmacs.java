@@ -258,10 +258,6 @@ name|LogFactory
 import|;
 end_import
 
-begin_comment
-comment|/**  * Created by IntelliJ IDEA. User: alver Date: Jan 14, 2006 Time: 4:55:23 PM  */
-end_comment
-
 begin_class
 DECL|class|PushToEmacs
 specifier|public

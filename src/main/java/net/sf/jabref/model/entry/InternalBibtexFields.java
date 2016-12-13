@@ -770,7 +770,7 @@ literal|true
 argument_list|,
 name|BibtexSingleField
 operator|.
-name|SMALL_W
+name|LARGE_W
 argument_list|)
 expr_stmt|;
 name|dummy

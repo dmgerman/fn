@@ -2594,7 +2594,7 @@ name|fileDirForDatabase
 operator|=
 name|databaseContext
 operator|.
-name|getFileDirectory
+name|getFileDirectories
 argument_list|(
 name|Globals
 operator|.

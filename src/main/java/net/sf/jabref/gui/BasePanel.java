@@ -3953,7 +3953,7 @@ argument_list|()
 argument_list|,
 name|bibDatabaseContext
 operator|.
-name|getFileDirectory
+name|getFileDirectories
 argument_list|(
 name|Globals
 operator|.
@@ -8861,14 +8861,14 @@ block|}
 end_function
 
 begin_function
-DECL|method|editEntryByKeyAndFocusField (final String bibtexKey, final String fieldName)
+DECL|method|editEntryByIdAndFocusField (final String entryId, final String fieldName)
 specifier|public
 name|void
-name|editEntryByKeyAndFocusField
+name|editEntryByIdAndFocusField
 parameter_list|(
 specifier|final
 name|String
-name|bibtexKey
+name|entryId
 parameter_list|,
 specifier|final
 name|String
@@ -8876,31 +8876,28 @@ name|fieldName
 parameter_list|)
 block|{
 specifier|final
-name|List
+name|Optional
 argument_list|<
 name|BibEntry
 argument_list|>
-name|entries
+name|entry
 init|=
 name|bibDatabaseContext
 operator|.
 name|getDatabase
 argument_list|()
 operator|.
-name|getEntriesByKey
+name|getEntryById
 argument_list|(
-name|bibtexKey
+name|entryId
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
-name|entries
+name|entry
 operator|.
-name|size
-argument_list|()
-operator|==
-literal|1
-condition|)
+name|ifPresent
+argument_list|(
+name|e
+lambda|->
 block|{
 name|mainTable
 operator|.
@@ -8910,12 +8907,7 @@ name|mainTable
 operator|.
 name|findEntry
 argument_list|(
-name|entries
-operator|.
-name|get
-argument_list|(
-literal|0
-argument_list|)
+name|e
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -8930,12 +8922,7 @@ name|editor
 init|=
 name|getEntryEditor
 argument_list|(
-name|entries
-operator|.
-name|get
-argument_list|(
-literal|0
-argument_list|)
+name|e
 argument_list|)
 decl_stmt|;
 name|editor
@@ -8958,6 +8945,8 @@ name|requestFocus
 argument_list|()
 expr_stmt|;
 block|}
+argument_list|)
+expr_stmt|;
 block|}
 end_function
 
@@ -13933,7 +13922,7 @@ operator|.
 name|getBibDatabaseContext
 argument_list|()
 operator|.
-name|getFileDirectory
+name|getFileDirectories
 argument_list|(
 name|Globals
 operator|.

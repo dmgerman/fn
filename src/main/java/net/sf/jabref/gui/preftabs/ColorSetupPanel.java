@@ -248,10 +248,6 @@ name|FormLayout
 import|;
 end_import
 
-begin_comment
-comment|/**  * Created by IntelliJ IDEA.  * User: alver  * Date: Oct 10, 2005  * Time: 4:29:35 PM  * To change this template use File | Settings | File Templates.  */
-end_comment
-
 begin_class
 DECL|class|ColorSetupPanel
 specifier|public

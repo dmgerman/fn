@@ -706,7 +706,7 @@ name|dirsS
 init|=
 name|databaseContext
 operator|.
-name|getFileDirectory
+name|getFileDirectories
 argument_list|(
 name|Globals
 operator|.

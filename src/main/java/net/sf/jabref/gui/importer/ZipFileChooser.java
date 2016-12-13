@@ -284,22 +284,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
-operator|.
-name|util
-operator|.
-name|GUIUtil
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|logic
 operator|.
 name|importer
@@ -533,13 +517,6 @@ literal|0
 argument_list|)
 expr_stmt|;
 block|}
-name|GUIUtil
-operator|.
-name|correctRowHeight
-argument_list|(
-name|table
-argument_list|)
-expr_stmt|;
 comment|// cancel: no entry is selected
 name|JButton
 name|cancelButton

@@ -166,6 +166,8 @@ name|CleanupPreferences
 argument_list|(
 literal|""
 argument_list|,
+literal|""
+argument_list|,
 name|mock
 argument_list|(
 name|LayoutFormatterPreferences

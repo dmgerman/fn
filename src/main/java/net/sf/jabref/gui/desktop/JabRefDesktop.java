@@ -654,7 +654,7 @@ name|dir
 init|=
 name|databaseContext
 operator|.
-name|getFileDirectory
+name|getFileDirectories
 argument_list|(
 name|fieldName
 argument_list|,

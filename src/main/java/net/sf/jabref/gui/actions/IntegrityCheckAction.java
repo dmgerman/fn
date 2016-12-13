@@ -176,6 +176,18 @@ name|swing
 operator|.
 name|table
 operator|.
+name|TableColumnModel
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|table
+operator|.
 name|TableModel
 import|;
 end_import
@@ -231,22 +243,6 @@ operator|.
 name|keyboard
 operator|.
 name|KeyBinding
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|util
-operator|.
-name|GUIUtil
 import|;
 end_import
 
@@ -506,7 +502,7 @@ name|size
 argument_list|()
 index|]
 index|[
-literal|3
+literal|4
 index|]
 decl_stmt|;
 name|int
@@ -535,6 +531,22 @@ operator|.
 name|getEntry
 argument_list|()
 operator|.
+name|getId
+argument_list|()
+expr_stmt|;
+name|model
+index|[
+name|i
+index|]
+index|[
+literal|1
+index|]
+operator|=
+name|message
+operator|.
+name|getEntry
+argument_list|()
+operator|.
 name|getCiteKeyOptional
 argument_list|()
 operator|.
@@ -548,7 +560,7 @@ index|[
 name|i
 index|]
 index|[
-literal|1
+literal|2
 index|]
 operator|=
 name|message
@@ -561,7 +573,7 @@ index|[
 name|i
 index|]
 index|[
-literal|2
+literal|3
 index|]
 operator|=
 name|message
@@ -598,6 +610,8 @@ operator|new
 name|Object
 index|[]
 block|{
+literal|"ID"
+block|,
 name|Localization
 operator|.
 name|lang
@@ -621,6 +635,27 @@ argument_list|)
 block|}
 argument_list|)
 decl_stmt|;
+comment|// hide IDs
+name|TableColumnModel
+name|columnModel
+init|=
+name|table
+operator|.
+name|getColumnModel
+argument_list|()
+decl_stmt|;
+name|columnModel
+operator|.
+name|removeColumn
+argument_list|(
+name|columnModel
+operator|.
+name|getColumn
+argument_list|(
+literal|0
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|RowFilter
 argument_list|<
 name|Object
@@ -662,7 +697,7 @@ name|entry
 operator|.
 name|getStringValue
 argument_list|(
-literal|2
+literal|3
 argument_list|)
 argument_list|)
 return|;
@@ -746,7 +781,7 @@ block|{
 try|try
 block|{
 name|String
-name|citeKey
+name|entryId
 init|=
 operator|(
 name|String
@@ -786,7 +821,7 @@ argument_list|()
 argument_list|)
 index|]
 index|[
-literal|1
+literal|2
 index|]
 decl_stmt|;
 name|frame
@@ -794,9 +829,9 @@ operator|.
 name|getCurrentBasePanel
 argument_list|()
 operator|.
-name|editEntryByKeyAndFocusField
+name|editEntryByIdAndFocusField
 argument_list|(
-name|citeKey
+name|entryId
 argument_list|,
 name|fieldName
 argument_list|)
@@ -814,13 +849,7 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
-name|GUIUtil
-operator|.
-name|correctRowHeight
-argument_list|(
-name|table
-argument_list|)
-expr_stmt|;
+comment|// BibTeX key
 name|table
 operator|.
 name|getColumnModel
@@ -836,6 +865,7 @@ argument_list|(
 literal|100
 argument_list|)
 expr_stmt|;
+comment|// field name
 name|table
 operator|.
 name|getColumnModel
@@ -851,6 +881,7 @@ argument_list|(
 literal|60
 argument_list|)
 expr_stmt|;
+comment|// message
 name|table
 operator|.
 name|getColumnModel

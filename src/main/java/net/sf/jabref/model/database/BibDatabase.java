@@ -855,6 +855,45 @@ return|return
 name|result
 return|;
 block|}
+comment|/**      * Finds the entry with a specified ID.      *      * @param id      * @return The entry that has the given id      */
+DECL|method|getEntryById (String id)
+specifier|public
+specifier|synchronized
+name|Optional
+argument_list|<
+name|BibEntry
+argument_list|>
+name|getEntryById
+parameter_list|(
+name|String
+name|id
+parameter_list|)
+block|{
+return|return
+name|entries
+operator|.
+name|stream
+argument_list|()
+operator|.
+name|filter
+argument_list|(
+name|entry
+lambda|->
+name|entry
+operator|.
+name|getId
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+name|id
+argument_list|)
+argument_list|)
+operator|.
+name|findFirst
+argument_list|()
+return|;
+block|}
 comment|/**      * Inserts the entry, given that its ID is not already in use.      * use Util.createId(...) to make up a unique ID for an entry.      *      * @param entry BibEntry to insert into the database      * @return false if the insert was done without a duplicate warning      * @throws KeyCollisionException thrown if the entry id ({@link BibEntry#getId()}) is already  present in the database      */
 DECL|method|insertEntry (BibEntry entry)
 specifier|public

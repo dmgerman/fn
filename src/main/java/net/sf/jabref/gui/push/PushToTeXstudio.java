@@ -52,10 +52,6 @@ name|JabRefPreferences
 import|;
 end_import
 
-begin_comment
-comment|/**  * Created by IntelliJ IDEA. User: alver Date: Jan 14, 2006 Time: 4:55:23 PM To change this template use File | Settings  * | File Templates.  */
-end_comment
-
 begin_class
 DECL|class|PushToTeXstudio
 specifier|public

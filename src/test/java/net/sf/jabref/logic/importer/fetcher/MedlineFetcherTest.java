@@ -112,6 +112,22 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|testutils
+operator|.
+name|category
+operator|.
+name|FetcherTests
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|junit
@@ -127,6 +143,20 @@ operator|.
 name|junit
 operator|.
 name|Test
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|experimental
+operator|.
+name|categories
+operator|.
+name|Category
 import|;
 end_import
 
@@ -167,6 +197,13 @@ import|;
 end_import
 
 begin_class
+annotation|@
+name|Category
+argument_list|(
+name|FetcherTests
+operator|.
+name|class
+argument_list|)
 DECL|class|MedlineFetcherTest
 specifier|public
 class|class
@@ -298,7 +335,7 @@ name|setField
 argument_list|(
 literal|"month"
 argument_list|,
-literal|"Sep"
+literal|"#sep#"
 argument_list|)
 expr_stmt|;
 name|entryWijedasa
@@ -529,7 +566,7 @@ name|setField
 argument_list|(
 literal|"month"
 argument_list|,
-literal|"Sep"
+literal|"#sep#"
 argument_list|)
 expr_stmt|;
 name|entryEndharti
@@ -733,7 +770,7 @@ name|setField
 argument_list|(
 literal|"month"
 argument_list|,
-literal|"Dec"
+literal|"#dec#"
 argument_list|)
 expr_stmt|;
 name|bibEntryIchikawa
@@ -937,7 +974,7 @@ name|setField
 argument_list|(
 literal|"month"
 argument_list|,
-literal|"Nov"
+literal|"#nov#"
 argument_list|)
 expr_stmt|;
 name|bibEntrySari

@@ -78,6 +78,22 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|testutils
+operator|.
+name|category
+operator|.
+name|FetcherTests
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|junit
@@ -112,7 +128,7 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
+name|Test
 import|;
 end_import
 
@@ -122,11 +138,22 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Test
+name|experimental
+operator|.
+name|categories
+operator|.
+name|Category
 import|;
 end_import
 
 begin_class
+annotation|@
+name|Category
+argument_list|(
+name|FetcherTests
+operator|.
+name|class
+argument_list|)
 DECL|class|IEEETest
 specifier|public
 class|class
@@ -223,11 +250,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-argument_list|(
-literal|"Fails both locally and on TravisCI"
-argument_list|)
 DECL|method|findByDOI ()
 specifier|public
 name|void
@@ -271,11 +293,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-argument_list|(
-literal|"Fails both locally and on TravisCI"
-argument_list|)
 DECL|method|findByURL ()
 specifier|public
 name|void
@@ -319,11 +336,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-argument_list|(
-literal|"Fails both locally and on TravisCI"
-argument_list|)
 DECL|method|findByOldURL ()
 specifier|public
 name|void
@@ -367,11 +379,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-argument_list|(
-literal|"Fails both locally and on TravisCI"
-argument_list|)
 DECL|method|findByDOIButNotURL ()
 specifier|public
 name|void

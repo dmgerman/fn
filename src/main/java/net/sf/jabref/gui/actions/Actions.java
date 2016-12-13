@@ -141,15 +141,6 @@ name|CUT
 init|=
 literal|"cut"
 decl_stmt|;
-DECL|field|DB_CONNECT
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|DB_CONNECT
-init|=
-literal|"dbConnect"
-decl_stmt|;
 DECL|field|DELETE
 specifier|public
 specifier|static

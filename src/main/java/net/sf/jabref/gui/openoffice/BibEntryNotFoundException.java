@@ -14,10 +14,6 @@ name|openoffice
 package|;
 end_package
 
-begin_comment
-comment|/**  * Created by IntelliJ IDEA.  * User: alver  * Date: 16-Dec-2007  * Time: 10:37:23  * To change this template use File | Settings | File Templates.  */
-end_comment
-
 begin_class
 DECL|class|BibEntryNotFoundException
 class|class

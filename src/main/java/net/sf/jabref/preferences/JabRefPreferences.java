@@ -3149,6 +3149,15 @@ name|IMPORT_FILENAMEPATTERN
 init|=
 literal|"importFileNamePattern"
 decl_stmt|;
+DECL|field|IMPORT_FILEDIRPATTERN
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|IMPORT_FILEDIRPATTERN
+init|=
+literal|"importFileDirPattern"
+decl_stmt|;
 DECL|field|NAME_FORMATTER_VALUE
 specifier|public
 specifier|static
@@ -4778,7 +4787,7 @@ name|AUTO_COMPLETE
 argument_list|,
 name|Boolean
 operator|.
-name|TRUE
+name|FALSE
 argument_list|)
 expr_stmt|;
 name|AutoCompletePreferences
@@ -6280,6 +6289,16 @@ name|DEFAULT_FILENAMEPATTERNS
 index|[
 literal|1
 index|]
+argument_list|)
+expr_stmt|;
+comment|//Default empty String to be backwards compatible
+name|defaults
+operator|.
+name|put
+argument_list|(
+name|IMPORT_FILEDIRPATTERN
+argument_list|,
+literal|""
 argument_list|)
 expr_stmt|;
 name|customExports
@@ -10038,6 +10057,11 @@ argument_list|(
 name|get
 argument_list|(
 name|IMPORT_FILENAMEPATTERN
+argument_list|)
+argument_list|,
+name|get
+argument_list|(
+name|IMPORT_FILEDIRPATTERN
 argument_list|)
 argument_list|,
 name|getLayoutFormatterPreferences

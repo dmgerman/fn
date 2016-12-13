@@ -1898,6 +1898,11 @@ operator|instanceof
 name|JAXBElement
 condition|)
 block|{
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
 name|JAXBElement
 argument_list|<
 name|StringPlusLanguage
@@ -2798,6 +2803,11 @@ operator|instanceof
 name|JAXBElement
 condition|)
 block|{
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
 name|JAXBElement
 argument_list|<
 name|StringPlusLanguage
