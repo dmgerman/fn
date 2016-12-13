@@ -96,9 +96,6 @@ literal|"os.name"
 argument_list|,
 name|UNKNOWN_VERSION
 argument_list|)
-operator|.
-name|toLowerCase
-argument_list|()
 decl_stmt|;
 DECL|field|OS_VERSION
 specifier|public

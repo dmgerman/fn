@@ -408,13 +408,7 @@ block|{
 name|getStyleClass
 argument_list|()
 operator|.
-name|clear
-argument_list|()
-expr_stmt|;
-name|getStyleClass
-argument_list|()
-operator|.
-name|add
+name|setAll
 argument_list|(
 name|toStyleClass
 operator|.
