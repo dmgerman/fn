@@ -7872,20 +7872,15 @@ name|t2BibtexString
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|fileWriter
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-block|{
-comment|// First try canh05
+block|}
 name|PrintStream
-name|oldOut
+name|sysOut
 init|=
 name|System
 operator|.
 name|out
 decl_stmt|;
+comment|// First try canh05
 try|try
 init|(
 name|ByteArrayOutputStream
@@ -7936,7 +7931,7 @@ name|System
 operator|.
 name|setOut
 argument_list|(
-name|oldOut
+name|sysOut
 argument_list|)
 expr_stmt|;
 block|}
@@ -7981,7 +7976,6 @@ literal|0
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
 comment|// Now try OezbekC06
 try|try
 init|(
@@ -7993,13 +7987,6 @@ name|ByteArrayOutputStream
 argument_list|()
 init|)
 block|{
-name|PrintStream
-name|oldOut
-init|=
-name|System
-operator|.
-name|out
-decl_stmt|;
 name|System
 operator|.
 name|setOut
@@ -8042,18 +8029,14 @@ name|System
 operator|.
 name|setOut
 argument_list|(
-name|oldOut
+name|sysOut
 argument_list|)
 expr_stmt|;
 block|}
 block|}
 comment|// PDF should be annotated:
-name|List
-argument_list|<
-name|BibEntry
-argument_list|>
 name|l
-init|=
+operator|=
 name|XMPUtil
 operator|.
 name|readXMP
@@ -8062,7 +8045,7 @@ name|pdfFile
 argument_list|,
 name|xmpPreferences
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|Assert
 operator|.
 name|assertEquals
@@ -8088,9 +8071,6 @@ literal|0
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
-finally|finally
-block|{
 if|if
 condition|(
 operator|!
@@ -8110,7 +8090,6 @@ argument_list|(
 literal|"Cannot delete temporary file"
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 end_function
