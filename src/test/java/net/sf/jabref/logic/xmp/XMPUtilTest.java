@@ -7824,8 +7824,6 @@ end_comment
 begin_function
 annotation|@
 name|Test
-annotation|@
-name|Ignore
 DECL|method|testCommandLineByKey ()
 specifier|public
 name|void
@@ -7883,6 +7881,11 @@ argument_list|(
 name|t2BibtexString
 argument_list|()
 argument_list|)
+expr_stmt|;
+name|fileWriter
+operator|.
+name|close
+argument_list|()
 expr_stmt|;
 block|{
 comment|// First try canh05
@@ -8107,6 +8110,7 @@ name|delete
 argument_list|()
 condition|)
 block|{
+comment|// TODO: file is still locked
 name|System
 operator|.
 name|err
