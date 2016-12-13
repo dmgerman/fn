@@ -705,7 +705,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|createEntryTypeSection (BasePanel panel, JMenu menu, String title, java.util.List<? extends EntryType> types)
+DECL|method|createEntryTypeSection (BasePanel panel, JMenu menu, String title, List<? extends EntryType> types)
 specifier|private
 name|void
 name|createEntryTypeSection
@@ -719,10 +719,6 @@ parameter_list|,
 name|String
 name|title
 parameter_list|,
-name|java
-operator|.
-name|util
-operator|.
 name|List
 argument_list|<
 name|?
