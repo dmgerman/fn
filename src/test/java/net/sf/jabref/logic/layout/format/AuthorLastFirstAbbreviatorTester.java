@@ -140,8 +140,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
 DECL|method|testJrAuthor ()
 specifier|public
 name|void
@@ -152,7 +150,7 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-literal|"Other, A. N."
+literal|"Other, Jr., A. N."
 argument_list|,
 name|abbreviate
 argument_list|(
