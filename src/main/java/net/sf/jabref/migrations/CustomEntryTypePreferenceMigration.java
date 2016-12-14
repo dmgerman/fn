@@ -62,7 +62,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|gui
+operator|.
+name|customentrytypes
 operator|.
 name|CustomEntryTypesManager
 import|;
