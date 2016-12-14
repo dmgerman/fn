@@ -130,7 +130,7 @@ operator|new
 name|ManageJournalAbbreviationsView
 argument_list|()
 operator|.
-name|showAndWait
+name|show
 argument_list|()
 argument_list|)
 expr_stmt|;

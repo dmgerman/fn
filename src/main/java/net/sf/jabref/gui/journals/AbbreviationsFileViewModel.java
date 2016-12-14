@@ -74,18 +74,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|nio
-operator|.
-name|file
-operator|.
-name|Paths
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|List
@@ -268,11 +256,11 @@ name|Path
 argument_list|>
 name|path
 decl_stmt|;
-DECL|method|AbbreviationsFileViewModel (String filePath)
+DECL|method|AbbreviationsFileViewModel (Path filePath)
 specifier|public
 name|AbbreviationsFileViewModel
 parameter_list|(
-name|String
+name|Path
 name|filePath
 parameter_list|)
 block|{
@@ -284,12 +272,7 @@ name|Optional
 operator|.
 name|ofNullable
 argument_list|(
-name|Paths
-operator|.
-name|get
-argument_list|(
 name|filePath
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|this
@@ -444,7 +427,7 @@ argument_list|()
 throw|;
 block|}
 block|}
-comment|/**      * This method will write all abbreviations of this abbreviation file to the file on the file system.      * It essentially will check if the current file is a built in list and if not it will call      * {@link AbbreviationWriter#writeOrCreate()}.      *      * @throws IOException      */
+comment|/**      * This method will write all abbreviations of this abbreviation file to the file on the file system.      * It essentially will check if the current file is a built in list and if not it will call      * {@link AbbreviationWriter#writeOrCreate()}.      */
 DECL|method|writeOrCreate ()
 specifier|public
 name|void

@@ -16,6 +16,18 @@ begin_import
 import|import
 name|java
 operator|.
+name|nio
+operator|.
+name|file
+operator|.
+name|Path
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|Optional
@@ -55,6 +67,22 @@ operator|.
 name|control
 operator|.
 name|DialogPane
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|util
+operator|.
+name|FileDialogConfiguration
 import|;
 end_import
 
@@ -114,6 +142,15 @@ name|message
 parameter_list|,
 name|Throwable
 name|exception
+parameter_list|)
+function_decl|;
+comment|/**      * Create and display error dialog displaying the given message.      * @param message the error message      */
+DECL|method|showErrorDialogAndWait (String message)
+name|void
+name|showErrorDialogAndWait
+parameter_list|(
+name|String
+name|message
 parameter_list|)
 function_decl|;
 comment|/**      * This will create and display a new confirmation dialog.      * It will include a blue question icon on the left and      * a OK and Cancel Button. To create a confirmation dialog with custom      * buttons see also {@link #showCustomButtonDialogAndWait(Alert.AlertType, String, String, ButtonType...)}      *      * @return Optional with the pressed Button as ButtonType      */
@@ -181,6 +218,30 @@ name|notify
 parameter_list|(
 name|String
 name|message
+parameter_list|)
+function_decl|;
+comment|/**      * Shows a new file save dialog. The method doesn't return until the      * displayed file save dialog is dismissed. The return value specifies the      * file chosen by the user or an empty {@link Optional} if no selection has been made.      *      * @return the selected file or an empty {@link Optional} if no file has been selected      */
+DECL|method|showSaveDialog (FileDialogConfiguration fileDialogConfiguration)
+name|Optional
+argument_list|<
+name|Path
+argument_list|>
+name|showSaveDialog
+parameter_list|(
+name|FileDialogConfiguration
+name|fileDialogConfiguration
+parameter_list|)
+function_decl|;
+comment|/**      * Shows a new file open dialog. The method doesn't return until the      * displayed open dialog is dismissed. The return value specifies      * the file chosen by the user or an empty {@link Optional} if no selection has been      * made.      *      * @return the selected file or an empty {@link Optional} if no file has been selected      */
+DECL|method|showOpenDialog (FileDialogConfiguration fileDialogConfiguration)
+name|Optional
+argument_list|<
+name|Path
+argument_list|>
+name|showOpenDialog
+parameter_list|(
+name|FileDialogConfiguration
+name|fileDialogConfiguration
 parameter_list|)
 function_decl|;
 block|}
