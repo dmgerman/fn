@@ -142,6 +142,16 @@ end_import
 
 begin_import
 import|import
+name|javafx
+operator|.
+name|stage
+operator|.
+name|FileChooser
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -487,12 +497,9 @@ argument_list|()
 operator|.
 name|map
 argument_list|(
-name|p
-lambda|->
-name|p
-operator|.
+name|Importer
+operator|::
 name|getExtensions
-argument_list|()
 argument_list|)
 operator|.
 name|collect
@@ -524,11 +531,14 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 comment|// Add file filter for all supported types
-name|ImportFileFilter
+name|FileChooser
+operator|.
+name|ExtensionFilter
 name|allImports
 init|=
-operator|new
 name|ImportFileFilter
+operator|.
+name|convert
 argument_list|(
 name|Localization
 operator|.
