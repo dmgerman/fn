@@ -1455,7 +1455,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Name can not be empty"
+literal|"Name cannot be empty"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1481,7 +1481,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Abbreviation can not be empty"
+literal|"Abbreviation cannot be empty"
 argument_list|)
 argument_list|)
 expr_stmt|;
