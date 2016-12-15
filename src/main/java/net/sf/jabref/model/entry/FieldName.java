@@ -1067,6 +1067,15 @@ name|YEARFILED
 init|=
 literal|"yearfiled"
 decl_stmt|;
+DECL|field|MR_NUMBER
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|MR_NUMBER
+init|=
+literal|"mrnumber"
+decl_stmt|;
 comment|// IEEE BSTctl fields
 DECL|field|CTLALT_STRETCH_FACTOR
 specifier|public
