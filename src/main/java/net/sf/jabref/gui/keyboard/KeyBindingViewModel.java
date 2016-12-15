@@ -16,6 +16,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
 name|javafx
 operator|.
 name|beans
@@ -42,6 +52,26 @@ begin_import
 import|import
 name|javafx
 operator|.
+name|collections
+operator|.
+name|FXCollections
+import|;
+end_import
+
+begin_import
+import|import
+name|javafx
+operator|.
+name|collections
+operator|.
+name|ObservableList
+import|;
+end_import
+
+begin_import
+import|import
+name|javafx
+operator|.
 name|scene
 operator|.
 name|input
@@ -59,6 +89,20 @@ operator|.
 name|input
 operator|.
 name|KeyEvent
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|IconTheme
 import|;
 end_import
 
@@ -126,10 +170,44 @@ specifier|final
 name|KeyBindingCategory
 name|category
 decl_stmt|;
-DECL|method|KeyBindingViewModel (KeyBinding keyBinding, String binding)
+DECL|method|getChildren ()
+specifier|public
+name|ObservableList
+argument_list|<
+name|KeyBindingViewModel
+argument_list|>
+name|getChildren
+parameter_list|()
+block|{
+return|return
+name|children
+return|;
+block|}
+DECL|field|children
+specifier|private
+name|ObservableList
+argument_list|<
+name|KeyBindingViewModel
+argument_list|>
+name|children
+init|=
+name|FXCollections
+operator|.
+name|observableArrayList
+argument_list|()
+decl_stmt|;
+DECL|field|keyBindingRepository
+specifier|private
+name|KeyBindingRepository
+name|keyBindingRepository
+decl_stmt|;
+DECL|method|KeyBindingViewModel (KeyBindingRepository keyBindingRepository, KeyBinding keyBinding, String binding)
 specifier|public
 name|KeyBindingViewModel
 parameter_list|(
+name|KeyBindingRepository
+name|keyBindingRepository
+parameter_list|,
 name|KeyBinding
 name|keyBinding
 parameter_list|,
@@ -139,6 +217,8 @@ parameter_list|)
 block|{
 name|this
 argument_list|(
+name|keyBindingRepository
+argument_list|,
 name|keyBinding
 operator|.
 name|getCategory
@@ -160,14 +240,23 @@ name|binding
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|KeyBindingViewModel (KeyBindingCategory category)
+DECL|method|KeyBindingViewModel (KeyBindingRepository keyBindingRepository, KeyBindingCategory category)
 specifier|public
 name|KeyBindingViewModel
 parameter_list|(
+name|KeyBindingRepository
+name|keyBindingRepository
+parameter_list|,
 name|KeyBindingCategory
 name|category
 parameter_list|)
 block|{
+name|this
+operator|.
+name|keyBindingRepository
+operator|=
+name|keyBindingRepository
+expr_stmt|;
 name|this
 operator|.
 name|category
@@ -522,15 +611,12 @@ return|return
 literal|true
 return|;
 block|}
-comment|/**      * This method will reset the key bind of this models KeyBinding object to it's default bind      *      * @param keyBindingRepository as KeyBindingRepository      */
-DECL|method|resetToDefault (KeyBindingRepository keyBindingRepository)
+comment|/**      * This method will reset the key bind of this models KeyBinding object to it's default bind      */
+DECL|method|resetToDefault ()
 specifier|public
 name|void
 name|resetToDefault
-parameter_list|(
-name|KeyBindingRepository
-name|keyBindingRepository
-parameter_list|)
+parameter_list|()
 block|{
 if|if
 condition|(
@@ -566,6 +652,38 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+DECL|method|getIcon ()
+specifier|public
+name|Optional
+argument_list|<
+name|IconTheme
+operator|.
+name|JabRefIcon
+argument_list|>
+name|getIcon
+parameter_list|()
+block|{
+return|return
+name|isCategory
+argument_list|()
+condition|?
+name|Optional
+operator|.
+name|empty
+argument_list|()
+else|:
+name|Optional
+operator|.
+name|of
+argument_list|(
+name|IconTheme
+operator|.
+name|JabRefIcon
+operator|.
+name|CLEANUP_ENTRIES
+argument_list|)
+return|;
 block|}
 block|}
 end_class
