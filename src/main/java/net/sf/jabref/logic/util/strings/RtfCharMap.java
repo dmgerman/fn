@@ -339,7 +339,7 @@ argument_list|,
 literal|"\\'dc"
 argument_list|)
 expr_stmt|;
-comment|// Use UNICODE characters for RTF-Chars which can not be found in the
+comment|// Use UNICODE characters for RTF-Chars which cannot be found in the
 comment|// standard codepage
 name|put
 argument_list|(

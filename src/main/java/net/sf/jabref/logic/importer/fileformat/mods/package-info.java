@@ -28,7 +28,7 @@ comment|// This needs to be in the src/main/java to ensure that the Namespace is
 end_comment
 
 begin_comment
-comment|// this can not be done by a gradle task at the moment
+comment|// this cannot be done by a gradle task at the moment
 end_comment
 
 begin_annotation

@@ -800,7 +800,7 @@ name|LOGGER
 operator|.
 name|warn
 argument_list|(
-literal|"Can not get save session."
+literal|"Cannot get save session."
 argument_list|,
 name|ex
 argument_list|)
