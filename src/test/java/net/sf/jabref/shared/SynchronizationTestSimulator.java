@@ -1031,7 +1031,7 @@ literal|"2016"
 argument_list|)
 expr_stmt|;
 comment|// B also tries to change something
-comment|// B now can not update the shared entry, due to optimistic offline lock.
+comment|// B now cannot update the shared entry, due to optimistic offline lock.
 comment|// In this case an BibEntry merge dialog pops up.
 name|Assert
 operator|.
