@@ -137,6 +137,27 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+DECL|method|preservePercentSign ()
+specifier|public
+name|void
+name|preservePercentSign
+parameter_list|()
+block|{
+name|assertEquals
+argument_list|(
+literal|"\\%"
+argument_list|,
+name|formatter
+operator|.
+name|format
+argument_list|(
+literal|"%"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
 DECL|method|formatExample ()
 specifier|public
 name|void
