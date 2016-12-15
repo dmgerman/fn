@@ -72,6 +72,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|stream
 operator|.
 name|Collectors
@@ -129,12 +139,20 @@ name|initialDirectory
 decl_stmt|;
 DECL|method|getInitialDirectory ()
 specifier|public
+name|Optional
+argument_list|<
 name|Path
+argument_list|>
 name|getInitialDirectory
 parameter_list|()
 block|{
 return|return
+name|Optional
+operator|.
+name|ofNullable
+argument_list|(
 name|initialDirectory
+argument_list|)
 return|;
 block|}
 DECL|method|getDefaultExtension ()

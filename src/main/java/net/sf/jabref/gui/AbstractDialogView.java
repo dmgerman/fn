@@ -114,6 +114,27 @@ operator|.
 name|getView
 argument_list|()
 decl_stmt|;
+comment|// Add our base css file
+name|view
+operator|.
+name|getStylesheets
+argument_list|()
+operator|.
+name|add
+argument_list|(
+name|AbstractDialogView
+operator|.
+name|class
+operator|.
+name|getResource
+argument_list|(
+literal|"Main.css"
+argument_list|)
+operator|.
+name|toExternalForm
+argument_list|()
+argument_list|)
+expr_stmt|;
 comment|// Notify controller about the stage, where it is displayed
 name|view
 operator|.
