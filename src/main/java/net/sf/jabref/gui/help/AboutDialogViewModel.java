@@ -272,7 +272,7 @@ specifier|final
 name|String
 name|licenseUrl
 init|=
-literal|"https://github.com/JabRef/jabref/blob/master/license.md"
+literal|"https://github.com/JabRef/jabref/blob/master/LICENSE.md"
 decl_stmt|;
 DECL|field|changelogUrl
 specifier|private
