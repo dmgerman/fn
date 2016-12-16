@@ -440,6 +440,7 @@ name|getHost
 argument_list|()
 argument_list|)
 operator|&&
+operator|(
 name|this
 operator|.
 name|port
@@ -448,6 +449,7 @@ name|properties
 operator|.
 name|getPort
 argument_list|()
+operator|)
 operator|&&
 name|this
 operator|.

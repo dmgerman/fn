@@ -1374,6 +1374,7 @@ argument_list|()
 decl_stmt|;
 DECL|field|toggleAction
 specifier|private
+specifier|final
 name|ToggleAction
 name|toggleAction
 decl_stmt|;

@@ -430,6 +430,22 @@ name|model
 operator|.
 name|metadata
 operator|.
+name|ContentSelector
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|metadata
+operator|.
 name|MetaData
 import|;
 end_import
@@ -696,12 +712,17 @@ name|md
 operator|.
 name|importGroups
 argument_list|()
+argument_list|,
+name|md
+operator|.
+name|importSelectorWords
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|openIt (boolean importEntries, boolean importStrings, boolean importGroups)
+DECL|method|openIt (boolean importEntries, boolean importStrings, boolean importGroups, boolean importSelectorWords)
 specifier|private
 name|void
 name|openIt
@@ -714,6 +735,9 @@ name|importStrings
 parameter_list|,
 name|boolean
 name|importGroups
+parameter_list|,
+name|boolean
+name|importSelectorWords
 parameter_list|)
 block|{
 if|if
@@ -785,6 +809,8 @@ argument_list|,
 name|importStrings
 argument_list|,
 name|importGroups
+argument_list|,
+name|importSelectorWords
 argument_list|)
 expr_stmt|;
 name|panel
@@ -852,7 +878,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|mergeFromBibtex (JabRefFrame frame, BasePanel panel, ParserResult pr, boolean importEntries, boolean importStrings, boolean importGroups)
+DECL|method|mergeFromBibtex (JabRefFrame frame, BasePanel panel, ParserResult pr, boolean importEntries, boolean importStrings, boolean importGroups, boolean importSelectorWords)
 specifier|private
 specifier|static
 name|void
@@ -875,6 +901,9 @@ name|importStrings
 parameter_list|,
 name|boolean
 name|importGroups
+parameter_list|,
+name|boolean
+name|importSelectorWords
 parameter_list|)
 throws|throws
 name|KeyCollisionException
@@ -1213,6 +1242,37 @@ expr_stmt|;
 block|}
 argument_list|)
 expr_stmt|;
+block|}
+if|if
+condition|(
+name|importSelectorWords
+condition|)
+block|{
+for|for
+control|(
+name|ContentSelector
+name|selector
+range|:
+name|meta
+operator|.
+name|getContentSelectorList
+argument_list|()
+control|)
+block|{
+name|panel
+operator|.
+name|getBibDatabaseContext
+argument_list|()
+operator|.
+name|getMetaData
+argument_list|()
+operator|.
+name|addContentSelector
+argument_list|(
+name|selector
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 name|ce
 operator|.
