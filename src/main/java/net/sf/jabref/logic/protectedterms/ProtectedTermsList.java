@@ -478,7 +478,7 @@ argument_list|(
 name|term
 argument_list|)
 expr_stmt|;
-comment|// Can not add to internal lists
+comment|// Cannot add to internal lists
 if|if
 condition|(
 name|internalList

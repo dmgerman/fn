@@ -820,11 +820,11 @@ block|{
 comment|// Do nothing
 block|}
 decl_stmt|;
-name|RtfSelection
+name|RtfTransferable
 name|rs
 init|=
 operator|new
-name|RtfSelection
+name|RtfTransferable
 argument_list|(
 name|sb
 operator|.

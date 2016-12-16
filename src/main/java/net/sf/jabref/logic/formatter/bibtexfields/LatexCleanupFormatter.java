@@ -216,6 +216,18 @@ argument_list|,
 literal|")$"
 argument_list|)
 expr_stmt|;
+name|newValue
+operator|=
+name|newValue
+operator|.
+name|replace
+argument_list|(
+literal|"%"
+argument_list|,
+literal|"\\%"
+argument_list|)
+expr_stmt|;
+comment|// escape % used for comments in TeX
 return|return
 name|newValue
 return|;

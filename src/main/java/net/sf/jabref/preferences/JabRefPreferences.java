@@ -7701,7 +7701,7 @@ name|LOGGER
 operator|.
 name|warn
 argument_list|(
-literal|"Can not communicate with backing store"
+literal|"Cannot communicate with backing store"
 argument_list|,
 name|ex
 argument_list|)

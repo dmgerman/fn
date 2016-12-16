@@ -116,7 +116,7 @@ specifier|static
 name|ProtectedTermsLoader
 name|protectedTermsLoader
 decl_stmt|;
-comment|/**      * @deprecated use ProtectTermsFormatter(ProtectedTermsLoader) instead      */
+comment|/**      * @Deprecated use ProtectTermsFormatter(ProtectedTermsLoader) instead      */
 annotation|@
 name|Deprecated
 DECL|method|ProtectTermsFormatter ()
