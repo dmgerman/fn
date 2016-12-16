@@ -236,6 +236,7 @@ name|AbstractViewModel
 block|{
 DECL|field|homepageUrl
 specifier|private
+specifier|static
 specifier|final
 name|String
 name|homepageUrl
@@ -244,6 +245,7 @@ literal|"https://www.jabref.org"
 decl_stmt|;
 DECL|field|donationUrl
 specifier|private
+specifier|static
 specifier|final
 name|String
 name|donationUrl
@@ -252,6 +254,7 @@ literal|"https://donations.jabref.org"
 decl_stmt|;
 DECL|field|librariesUrl
 specifier|private
+specifier|static
 specifier|final
 name|String
 name|librariesUrl
@@ -260,6 +263,7 @@ literal|"https://github.com/JabRef/jabref/blob/master/external-libraries.txt"
 decl_stmt|;
 DECL|field|githubUrl
 specifier|private
+specifier|static
 specifier|final
 name|String
 name|githubUrl
@@ -268,6 +272,7 @@ literal|"https://github.com/JabRef/jabref"
 decl_stmt|;
 DECL|field|licenseUrl
 specifier|private
+specifier|static
 specifier|final
 name|String
 name|licenseUrl
