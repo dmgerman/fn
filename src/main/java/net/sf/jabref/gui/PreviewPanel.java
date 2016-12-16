@@ -954,7 +954,12 @@ name|copy
 init|=
 literal|"copy"
 decl_stmt|;
-name|inputMap
+name|getInputMap
+argument_list|(
+name|JComponent
+operator|.
+name|WHEN_FOCUSED
+argument_list|)
 operator|.
 name|put
 argument_list|(
