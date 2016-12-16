@@ -372,7 +372,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Create_entry_based_on_XMP_data"
+literal|"Create_entry_based_on_XMP-metadata"
 argument_list|)
 argument_list|)
 expr_stmt|;

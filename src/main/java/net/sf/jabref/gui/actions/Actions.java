@@ -276,6 +276,15 @@ name|MAKE_KEY
 init|=
 literal|"makeKey"
 decl_stmt|;
+DECL|field|MANAGE_SELECTORS
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|MANAGE_SELECTORS
+init|=
+literal|"manageSelectors"
+decl_stmt|;
 DECL|field|MARK_ENTRIES
 specifier|public
 specifier|static
