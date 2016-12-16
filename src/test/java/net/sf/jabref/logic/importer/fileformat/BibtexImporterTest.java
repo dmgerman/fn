@@ -439,7 +439,7 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-literal|"journaltitle"
+literal|"journal"
 argument_list|)
 argument_list|)
 expr_stmt|;

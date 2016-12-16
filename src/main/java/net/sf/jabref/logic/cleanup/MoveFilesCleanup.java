@@ -558,7 +558,7 @@ name|FieldChange
 argument_list|>
 name|change
 init|=
-name|typedEntry
+name|entry
 operator|.
 name|setFiles
 argument_list|(
