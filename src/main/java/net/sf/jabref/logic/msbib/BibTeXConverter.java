@@ -699,7 +699,7 @@ name|put
 argument_list|(
 name|FieldName
 operator|.
-name|JOURNALTITLE
+name|JOURNAL
 argument_list|,
 name|entry
 operator|.

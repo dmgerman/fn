@@ -55,7 +55,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This class defines entry types for BibLatex support.  * @see http://mirrors.concertpass.com/tex-archive/macros/latex/contrib/biblatex/doc/biblatex.pdf  */
+comment|/**  * This class defines entry types for BibLatex support.  * @see<a href="http://mirrors.concertpass.com/tex-archive/macros/latex/contrib/biblatex/doc/biblatex.pdf">biblatex documentation</a>  */
 end_comment
 
 begin_class
@@ -170,7 +170,16 @@ name|TITLE
 argument_list|,
 name|FieldName
 operator|.
+name|orFields
+argument_list|(
+name|FieldName
+operator|.
+name|JOURNAL
+argument_list|,
+name|FieldName
+operator|.
 name|JOURNALTITLE
+argument_list|)
 argument_list|,
 name|FieldName
 operator|.
