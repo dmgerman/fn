@@ -252,6 +252,9 @@ name|FONT_16
 decl_stmt|;
 comment|/* Colors */
 comment|// JabRef's default colors
+comment|//public static final Color DEFAULT_COLOR = new Color(79, 95, 143); // The purple color of the logo
+comment|//public static final Color DEFAULT_DISABLED_COLOR = new Color(200, 200, 200);
+comment|// Christmas edition
 DECL|field|DEFAULT_COLOR
 specifier|public
 specifier|static
@@ -262,14 +265,9 @@ init|=
 operator|new
 name|Color
 argument_list|(
-literal|79
-argument_list|,
-literal|95
-argument_list|,
-literal|143
+literal|0x155115
 argument_list|)
 decl_stmt|;
-comment|// The purple color of the logo
 DECL|field|DEFAULT_DISABLED_COLOR
 specifier|public
 specifier|static
@@ -280,16 +278,9 @@ init|=
 operator|new
 name|Color
 argument_list|(
-literal|200
-argument_list|,
-literal|200
-argument_list|,
-literal|200
+literal|0x990000
 argument_list|)
 decl_stmt|;
-comment|// Christmas edition
-comment|//public static final Color DEFAULT_COLOR = new Color(0x155115);
-comment|//public static final Color DEFAULT_DISABLED_COLOR = new Color(0x990000);
 DECL|field|DEFAULT_SIZE
 specifier|public
 specifier|static
