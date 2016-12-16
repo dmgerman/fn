@@ -944,7 +944,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Different Customization, current settings will be overwritten"
+literal|"Different customization, current settings will be overwritten"
 argument_list|)
 operator|+
 literal|":"
