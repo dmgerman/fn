@@ -1846,8 +1846,6 @@ init|=
 operator|new
 name|BibEntry
 argument_list|(
-name|DEFAULT_BIBTEXENTRY_ID
-argument_list|,
 name|Type
 argument_list|)
 decl_stmt|;

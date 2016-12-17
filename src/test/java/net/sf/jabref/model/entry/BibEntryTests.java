@@ -264,8 +264,6 @@ init|=
 operator|new
 name|BibEntry
 argument_list|(
-literal|"id"
-argument_list|,
 name|BibtexEntryTypes
 operator|.
 name|ARTICLE
@@ -376,8 +374,6 @@ init|=
 operator|new
 name|BibEntry
 argument_list|(
-literal|"id"
-argument_list|,
 name|BibtexEntryTypes
 operator|.
 name|ARTICLE
@@ -489,8 +485,6 @@ init|=
 operator|new
 name|BibEntry
 argument_list|(
-literal|"id"
-argument_list|,
 name|BibtexEntryTypes
 operator|.
 name|ARTICLE
@@ -526,8 +520,6 @@ init|=
 operator|new
 name|BibEntry
 argument_list|(
-literal|"id"
-argument_list|,
 name|BibtexEntryTypes
 operator|.
 name|ARTICLE
@@ -2309,10 +2301,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testCiteKeyAndID ()
+DECL|method|setCiteKey ()
 specifier|public
 name|void
-name|testCiteKeyAndID
+name|setCiteKey
 parameter_list|()
 block|{
 name|BibEntry
@@ -2410,31 +2402,6 @@ name|getField
 argument_list|(
 literal|"author"
 argument_list|)
-argument_list|)
-expr_stmt|;
-name|String
-name|id
-init|=
-name|IdGenerator
-operator|.
-name|next
-argument_list|()
-decl_stmt|;
-name|be
-operator|.
-name|setId
-argument_list|(
-name|id
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-name|id
-argument_list|,
-name|be
-operator|.
-name|getId
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

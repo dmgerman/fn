@@ -151,9 +151,7 @@ name|mBTE
 operator|=
 operator|new
 name|BibEntry
-argument_list|(
-literal|"testid"
-argument_list|)
+argument_list|()
 expr_stmt|;
 name|mBTE
 operator|.

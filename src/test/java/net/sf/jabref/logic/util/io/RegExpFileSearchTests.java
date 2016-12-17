@@ -340,8 +340,6 @@ init|=
 operator|new
 name|BibEntry
 argument_list|(
-literal|"123"
-argument_list|,
 name|BibtexEntryTypes
 operator|.
 name|ARTICLE
