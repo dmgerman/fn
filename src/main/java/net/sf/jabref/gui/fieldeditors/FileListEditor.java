@@ -2812,16 +2812,18 @@ init|=
 operator|new
 name|ArrayList
 argument_list|<>
-argument_list|(
-name|frame
-operator|.
-name|getCurrentBasePanel
 argument_list|()
+decl_stmt|;
+name|entries
 operator|.
-name|getSelectedEntries
+name|add
+argument_list|(
+name|entryEditor
+operator|.
+name|getEntry
 argument_list|()
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 comment|// filesystem lookup
 name|JDialog
 name|dialog
