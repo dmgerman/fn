@@ -100,8 +100,6 @@ init|=
 operator|new
 name|BibEntry
 argument_list|(
-literal|"id"
-argument_list|,
 name|BibtexEntryTypes
 operator|.
 name|ARTICLE
@@ -175,8 +173,6 @@ init|=
 operator|new
 name|BibEntry
 argument_list|(
-literal|"id"
-argument_list|,
 name|BibtexEntryTypes
 operator|.
 name|ARTICLE
@@ -259,8 +255,6 @@ init|=
 operator|new
 name|BibEntry
 argument_list|(
-literal|"id"
-argument_list|,
 literal|"articlllleeeee"
 argument_list|)
 decl_stmt|;
@@ -302,8 +296,6 @@ init|=
 operator|new
 name|BibEntry
 argument_list|(
-literal|"id"
-argument_list|,
 name|BibtexEntryTypes
 operator|.
 name|INPROCEEDINGS
@@ -352,8 +344,6 @@ init|=
 operator|new
 name|BibEntry
 argument_list|(
-literal|"id"
-argument_list|,
 literal|"articlllleeeee"
 argument_list|)
 decl_stmt|;

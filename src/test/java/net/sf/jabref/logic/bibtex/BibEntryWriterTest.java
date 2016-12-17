@@ -299,8 +299,6 @@ init|=
 operator|new
 name|BibEntry
 argument_list|(
-literal|"1234"
-argument_list|,
 literal|"article"
 argument_list|)
 decl_stmt|;
@@ -2137,8 +2135,6 @@ init|=
 operator|new
 name|BibEntry
 argument_list|(
-literal|"1234"
-argument_list|,
 literal|"article"
 argument_list|)
 decl_stmt|;
@@ -2237,8 +2233,6 @@ init|=
 operator|new
 name|BibEntry
 argument_list|(
-literal|"1234"
-argument_list|,
 literal|"article"
 argument_list|)
 decl_stmt|;

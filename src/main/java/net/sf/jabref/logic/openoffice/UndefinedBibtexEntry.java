@@ -46,22 +46,6 @@ name|FieldName
 import|;
 end_import
 
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|entry
-operator|.
-name|IdGenerator
-import|;
-end_import
-
 begin_comment
 comment|/**  * Subclass of BibEntry for representing entries referenced in a document that can't  * be found in JabRef's current database.  */
 end_comment
@@ -88,14 +72,6 @@ name|String
 name|key
 parameter_list|)
 block|{
-name|super
-argument_list|(
-name|IdGenerator
-operator|.
-name|next
-argument_list|()
-argument_list|)
-expr_stmt|;
 name|this
 operator|.
 name|key

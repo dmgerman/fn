@@ -492,22 +492,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|model
-operator|.
-name|entry
-operator|.
-name|IdGenerator
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|preferences
 operator|.
 name|JabRefPreferences
@@ -1683,14 +1667,6 @@ literal|null
 condition|)
 block|{
 comment|// Only if the dialog was not canceled.
-name|String
-name|id
-init|=
-name|IdGenerator
-operator|.
-name|next
-argument_list|()
-decl_stmt|;
 specifier|final
 name|BibEntry
 name|bibEntry
@@ -1698,8 +1674,6 @@ init|=
 operator|new
 name|BibEntry
 argument_list|(
-name|id
-argument_list|,
 name|type
 operator|.
 name|getName

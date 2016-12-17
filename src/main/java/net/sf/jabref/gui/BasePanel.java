@@ -1844,22 +1844,6 @@ name|model
 operator|.
 name|entry
 operator|.
-name|IdGenerator
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|entry
-operator|.
 name|event
 operator|.
 name|EntryChangedEvent
@@ -4577,22 +4561,12 @@ condition|)
 block|{
 return|return;
 block|}
-name|String
-name|id
-operator|=
-name|IdGenerator
-operator|.
-name|next
-argument_list|()
-argument_list|;
 name|BibEntry
 name|bibEntry
 operator|=
 operator|new
 name|BibEntry
 argument_list|(
-name|id
-argument_list|,
 name|tp
 operator|.
 name|getName
@@ -6419,16 +6393,6 @@ comment|// entries, since the pasted
 comment|// entries must exist
 comment|// independently of the copied
 comment|// ones.
-name|be
-operator|.
-name|setId
-argument_list|(
-name|IdGenerator
-operator|.
-name|next
-argument_list|()
-argument_list|)
-expr_stmt|;
 name|bibDatabaseContext
 operator|.
 name|getDatabase
@@ -8289,14 +8253,6 @@ literal|null
 condition|)
 block|{
 comment|// Only if the dialog was not canceled.
-name|String
-name|id
-init|=
-name|IdGenerator
-operator|.
-name|next
-argument_list|()
-decl_stmt|;
 specifier|final
 name|BibEntry
 name|be
@@ -8304,8 +8260,6 @@ init|=
 operator|new
 name|BibEntry
 argument_list|(
-name|id
-argument_list|,
 name|actualType
 operator|.
 name|getName

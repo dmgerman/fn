@@ -270,9 +270,7 @@ name|e1
 init|=
 operator|new
 name|BibEntry
-argument_list|(
-literal|"1"
-argument_list|)
+argument_list|()
 decl_stmt|;
 name|db
 operator|.
@@ -324,8 +322,6 @@ init|=
 operator|new
 name|BibEntry
 argument_list|(
-literal|"1"
-argument_list|,
 literal|"electronic"
 argument_list|)
 decl_stmt|;

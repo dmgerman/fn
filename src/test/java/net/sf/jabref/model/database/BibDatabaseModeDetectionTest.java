@@ -157,8 +157,6 @@ argument_list|(
 operator|new
 name|BibEntry
 argument_list|(
-literal|"someid"
-argument_list|,
 name|BibLatexEntryTypes
 operator|.
 name|MVBOOK
@@ -202,8 +200,6 @@ init|=
 operator|new
 name|BibEntry
 argument_list|(
-literal|"someid"
-argument_list|,
 name|BibtexEntryTypes
 operator|.
 name|ARTICLE
@@ -268,8 +264,6 @@ init|=
 operator|new
 name|BibEntry
 argument_list|(
-literal|"someid"
-argument_list|,
 name|BibtexEntryTypes
 operator|.
 name|ARTICLE
@@ -293,8 +287,6 @@ init|=
 operator|new
 name|BibEntry
 argument_list|(
-literal|"someid"
-argument_list|,
 name|BibLatexEntryTypes
 operator|.
 name|ARTICLE
@@ -361,8 +353,6 @@ init|=
 operator|new
 name|BibEntry
 argument_list|(
-literal|"someid"
-argument_list|,
 operator|new
 name|CustomEntryType
 argument_list|(
@@ -434,8 +424,6 @@ init|=
 operator|new
 name|BibEntry
 argument_list|(
-literal|"someid"
-argument_list|,
 operator|new
 name|CustomEntryType
 argument_list|(
@@ -466,8 +454,6 @@ init|=
 operator|new
 name|BibEntry
 argument_list|(
-literal|"someid"
-argument_list|,
 name|BibtexEntryTypes
 operator|.
 name|ARTICLE
@@ -482,8 +468,6 @@ init|=
 operator|new
 name|BibEntry
 argument_list|(
-literal|"someid"
-argument_list|,
 name|BibLatexEntryTypes
 operator|.
 name|ARTICLE
@@ -543,8 +527,6 @@ init|=
 operator|new
 name|BibEntry
 argument_list|(
-literal|"someid"
-argument_list|,
 operator|new
 name|CustomEntryType
 argument_list|(
@@ -575,8 +557,6 @@ init|=
 operator|new
 name|BibEntry
 argument_list|(
-literal|"someid"
-argument_list|,
 name|BibtexEntryTypes
 operator|.
 name|ARTICLE
@@ -591,8 +571,6 @@ init|=
 operator|new
 name|BibEntry
 argument_list|(
-literal|"someid"
-argument_list|,
 name|BibLatexEntryTypes
 operator|.
 name|MVBOOK

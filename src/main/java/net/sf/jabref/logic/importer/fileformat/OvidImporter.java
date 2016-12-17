@@ -196,22 +196,6 @@ name|FieldName
 import|;
 end_import
 
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|entry
-operator|.
-name|IdGenerator
-import|;
-end_import
-
 begin_comment
 comment|/**  * Imports an Ovid file.  */
 end_comment
@@ -1784,11 +1768,6 @@ init|=
 operator|new
 name|BibEntry
 argument_list|(
-name|IdGenerator
-operator|.
-name|next
-argument_list|()
-argument_list|,
 name|entryType
 argument_list|)
 decl_stmt|;
