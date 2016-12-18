@@ -275,14 +275,14 @@ name|COMMENTATOR
 init|=
 literal|"commentator"
 decl_stmt|;
-DECL|field|COMMENTS
+DECL|field|COMMENT
 specifier|public
 specifier|static
 specifier|final
 name|String
-name|COMMENTS
+name|COMMENT
 init|=
-literal|"comments"
+literal|"comment"
 decl_stmt|;
 DECL|field|CROSSREF
 specifier|public

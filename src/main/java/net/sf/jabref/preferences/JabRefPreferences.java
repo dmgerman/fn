@@ -966,6 +966,22 @@ name|jabref
 operator|.
 name|model
 operator|.
+name|entry
+operator|.
+name|InternalBibtexFields
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
 name|metadata
 operator|.
 name|FileDirectoryPreferences
@@ -3559,7 +3575,7 @@ argument_list|(
 literal|"user.home"
 argument_list|)
 decl_stmt|;
-comment|/**      * Set with all custom {@link Importer}s      */
+comment|/**      * Set with all custom {@link net.sf.jabref.logic.importer.Importer}s      */
 DECL|field|customImports
 specifier|public
 specifier|final
@@ -6693,6 +6709,26 @@ literal|"General"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|String
+name|fieldNames
+init|=
+name|InternalBibtexFields
+operator|.
+name|DEFAULT_GENERAL_FIELDS
+operator|.
+name|stream
+argument_list|()
+operator|.
+name|collect
+argument_list|(
+name|Collectors
+operator|.
+name|joining
+argument_list|(
+literal|";"
+argument_list|)
+argument_list|)
+decl_stmt|;
 name|defaults
 operator|.
 name|put
@@ -6701,9 +6737,7 @@ name|CUSTOM_TAB_FIELDS
 operator|+
 literal|"_def0"
 argument_list|,
-literal|"crossref;keywords;file;doi;url;"
-operator|+
-literal|"comment;owner;timestamp"
+name|fieldNames
 argument_list|)
 expr_stmt|;
 comment|// Entry editor tab 1:
