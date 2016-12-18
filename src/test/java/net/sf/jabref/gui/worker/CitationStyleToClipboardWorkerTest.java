@@ -151,17 +151,13 @@ block|{
 name|String
 name|expected
 init|=
-literal|"Article (Smith2016)Smith, B.; Jones, B.&amp; Williams, J.Taylor, P. (Ed.)Title of the test entry BibTeX Journal, JabRef Publishing, 2016, 34, 45-67 Abstract:  This entry describes a test scenario which may be useful in JabRef. By providing a test entry it is possible to see how certain things will look in this graphical BIB-file mananger. "
+literal|"Article (Smith2016)Smith, B.; Jones, B.& Williams, J.Taylor, P. (Ed.)Title of the test entry BibTeX Journal, JabRef Publishing, 2016, 34, 45-67 Abstract: This entry describes a test scenario which may be useful in JabRef. By providing a test entry it is possible to see how certain things will look in this graphical BIB-file mananger."
 operator|+
 name|OS
 operator|.
 name|NEWLINE
 operator|+
-literal|"Article (Smith2016)Smith, B.; Jones, B.&amp; Williams, J.Taylor, P. (Ed.)Title of the test entry BibTeX Journal, JabRef Publishing, 2016, 34, 45-67 Abstract:  This entry describes a test scenario which may be useful in JabRef. By providing a test entry it is possible to see how certain things will look in this graphical BIB-file mananger. "
-operator|+
-name|OS
-operator|.
-name|NEWLINE
+literal|"Article (Smith2016)Smith, B.; Jones, B.& Williams, J.Taylor, P. (Ed.)Title of the test entry BibTeX Journal, JabRef Publishing, 2016, 34, 45-67 Abstract: This entry describes a test scenario which may be useful in JabRef. By providing a test entry it is possible to see how certain things will look in this graphical BIB-file mananger."
 decl_stmt|;
 name|String
 name|citation
@@ -1111,10 +1107,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|processHtml ()
+DECL|method|processHtmlAsHtml ()
 specifier|public
 name|void
-name|processHtml
+name|processHtmlAsHtml
 parameter_list|()
 throws|throws
 name|Exception
@@ -1223,6 +1219,87 @@ operator|+
 name|OS
 operator|.
 name|NEWLINE
+decl_stmt|;
+name|String
+name|citation
+init|=
+literal|"<div class=\"csl-entry\">"
+operator|+
+name|OS
+operator|.
+name|NEWLINE
+operator|+
+literal|"<div class=\"csl-left-margin\">[1]</div><div class=\"csl-right-inline\">B. Smith, B. Jones, and J. Williams, âTitle of the test entry,â<i>BibTeX Journal</i>, vol. 34, no. 3, pp. 45â67, Jul. 2016.</div>"
+operator|+
+name|OS
+operator|.
+name|NEWLINE
+operator|+
+literal|"</div>"
+operator|+
+name|OS
+operator|.
+name|NEWLINE
+decl_stmt|;
+name|HtmlTransferable
+name|htmlTransferable
+init|=
+name|CitationStyleToClipboardWorker
+operator|.
+name|processHtml
+argument_list|(
+name|Arrays
+operator|.
+name|asList
+argument_list|(
+name|citation
+argument_list|,
+name|citation
+argument_list|)
+argument_list|)
+decl_stmt|;
+name|Object
+name|actual
+init|=
+name|htmlTransferable
+operator|.
+name|getTransferData
+argument_list|(
+name|DataFlavor
+operator|.
+name|allHtmlFlavor
+argument_list|)
+decl_stmt|;
+name|Assert
+operator|.
+name|assertEquals
+argument_list|(
+name|expected
+argument_list|,
+name|actual
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|processHtmlAsText ()
+specifier|public
+name|void
+name|processHtmlAsText
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|String
+name|expected
+init|=
+literal|"[1] B. Smith, B. Jones, and J. Williams, âTitle of the test entry,â BibTeX Journal , vol. 34, no. 3, pp. 45â67, Jul. 2016."
+operator|+
+name|OS
+operator|.
+name|NEWLINE
+operator|+
+literal|"[1] B. Smith, B. Jones, and J. Williams, âTitle of the test entry,â BibTeX Journal , vol. 34, no. 3, pp. 45â67, Jul. 2016."
 decl_stmt|;
 name|String
 name|citation
