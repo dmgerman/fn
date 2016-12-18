@@ -1986,7 +1986,9 @@ name|hm
 operator|.
 name|put
 argument_list|(
-literal|"comment"
+name|FieldName
+operator|.
+name|COMMENT
 argument_list|,
 name|String
 operator|.

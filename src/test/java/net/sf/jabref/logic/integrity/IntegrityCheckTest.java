@@ -1506,7 +1506,11 @@ name|getPersonNameFields
 argument_list|()
 control|)
 block|{
+comment|// getPersonNameFields returns fields that are available in BibLaTeX only
+comment|// if run without mode, the NoBibtexFieldChecker will complain that "afterword" is a BibLaTeX only field
 name|assertCorrect
+argument_list|(
+name|withMode
 argument_list|(
 name|createContext
 argument_list|(
@@ -1514,9 +1518,16 @@ name|field
 argument_list|,
 literal|""
 argument_list|)
+argument_list|,
+name|BibDatabaseMode
+operator|.
+name|BIBLATEX
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|assertCorrect
+argument_list|(
+name|withMode
 argument_list|(
 name|createContext
 argument_list|(
@@ -1524,9 +1535,16 @@ name|field
 argument_list|,
 literal|"Knuth"
 argument_list|)
+argument_list|,
+name|BibDatabaseMode
+operator|.
+name|BIBLATEX
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|assertCorrect
+argument_list|(
+name|withMode
 argument_list|(
 name|createContext
 argument_list|(
@@ -1534,9 +1552,16 @@ name|field
 argument_list|,
 literal|"   Knuth, Donald E. "
 argument_list|)
+argument_list|,
+name|BibDatabaseMode
+operator|.
+name|BIBLATEX
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|assertCorrect
+argument_list|(
+name|withMode
 argument_list|(
 name|createContext
 argument_list|(
@@ -1544,9 +1569,16 @@ name|field
 argument_list|,
 literal|"Knuth, Donald E. and Kurt Cobain and A. Einstein"
 argument_list|)
+argument_list|,
+name|BibDatabaseMode
+operator|.
+name|BIBLATEX
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|assertCorrect
+argument_list|(
+name|withMode
 argument_list|(
 name|createContext
 argument_list|(
@@ -1554,9 +1586,16 @@ name|field
 argument_list|,
 literal|"Donald E. Knuth and Kurt Cobain and A. Einstein"
 argument_list|)
+argument_list|,
+name|BibDatabaseMode
+operator|.
+name|BIBLATEX
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|assertWrong
+argument_list|(
+name|withMode
 argument_list|(
 name|createContext
 argument_list|(
@@ -1564,9 +1603,16 @@ name|field
 argument_list|,
 literal|", and Kurt Cobain and A. Einstein"
 argument_list|)
+argument_list|,
+name|BibDatabaseMode
+operator|.
+name|BIBLATEX
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|assertWrong
+argument_list|(
+name|withMode
 argument_list|(
 name|createContext
 argument_list|(
@@ -1574,9 +1620,16 @@ name|field
 argument_list|,
 literal|"Donald E. Knuth and Kurt Cobain and ,"
 argument_list|)
+argument_list|,
+name|BibDatabaseMode
+operator|.
+name|BIBLATEX
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|assertWrong
+argument_list|(
+name|withMode
 argument_list|(
 name|createContext
 argument_list|(
@@ -1584,15 +1637,27 @@ name|field
 argument_list|,
 literal|"and Kurt Cobain and A. Einstein"
 argument_list|)
+argument_list|,
+name|BibDatabaseMode
+operator|.
+name|BIBLATEX
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|assertWrong
+argument_list|(
+name|withMode
 argument_list|(
 name|createContext
 argument_list|(
 name|field
 argument_list|,
 literal|"Donald E. Knuth and Kurt Cobain and"
+argument_list|)
+argument_list|,
+name|BibDatabaseMode
+operator|.
+name|BIBLATEX
 argument_list|)
 argument_list|)
 expr_stmt|;
