@@ -330,6 +330,35 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+DECL|method|parseWordsWithBracketsReturnsOneKeyword ()
+specifier|public
+name|void
+name|parseWordsWithBracketsReturnsOneKeyword
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|assertEquals
+argument_list|(
+operator|new
+name|KeywordList
+argument_list|(
+literal|"[a] keyword"
+argument_list|)
+argument_list|,
+name|KeywordList
+operator|.
+name|parse
+argument_list|(
+literal|"[a] keyword"
+argument_list|,
+literal|','
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
 DECL|method|asStringAddsSpaceAfterDelimiter ()
 specifier|public
 name|void
