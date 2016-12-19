@@ -22,7 +22,7 @@ name|java
 operator|.
 name|time
 operator|.
-name|ZonedDateTime
+name|LocalDateTime
 import|;
 end_import
 
@@ -95,7 +95,7 @@ block|{
 return|return
 name|getDateAt
 argument_list|(
-name|ZonedDateTime
+name|LocalDateTime
 operator|.
 name|now
 argument_list|()
@@ -103,12 +103,12 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Creates a readable Date string from the parameter date. The format is set      * in preferences under the key "timeStampFormat".      *      * @return The formatted date string.      */
-DECL|method|getDateAt (ZonedDateTime dateTime)
+DECL|method|getDateAt (LocalDateTime dateTime)
 specifier|public
 name|String
 name|getDateAt
 parameter_list|(
-name|ZonedDateTime
+name|LocalDateTime
 name|dateTime
 parameter_list|)
 block|{
