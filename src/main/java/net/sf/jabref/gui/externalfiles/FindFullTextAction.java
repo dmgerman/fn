@@ -309,7 +309,7 @@ specifier|final
 name|int
 name|warningLimit
 init|=
-literal|10
+literal|5
 decl_stmt|;
 comment|// The minimum number of selected entries to ask the user for confirmation
 DECL|field|basePanel
@@ -480,6 +480,15 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
+literal|"JabRef will send at least one request per entry to a publisher."
+argument_list|)
+operator|+
+literal|"\n"
+operator|+
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Do you still want to continue?"
 argument_list|)
 argument_list|,
@@ -496,7 +505,7 @@ name|OK_CANCEL_OPTION
 argument_list|,
 name|JOptionPane
 operator|.
-name|QUESTION_MESSAGE
+name|WARNING_MESSAGE
 argument_list|,
 literal|null
 argument_list|,
