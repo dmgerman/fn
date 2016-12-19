@@ -164,7 +164,7 @@ specifier|public
 class|class
 name|InternalBibtexFields
 block|{
-comment|/**      * These are the fields JabRef always displays as default      * {@link net.sf.jabref.preferences.JabRefPreferences#setLanguageDependentDefaultValues()}      *      * A user can change them. The change is curently stored in the preferences only and not explicitley exposed as separte preferences object      */
+comment|/**      * These are the fields JabRef always displays as default      * {@link net.sf.jabref.preferences.JabRefPreferences#setLanguageDependentDefaultValues()}      *      * A user can change them. The change is currently stored in the preferences only and not explicitley exposed as separte preferences object      */
 DECL|field|DEFAULT_GENERAL_FIELDS
 specifier|public
 specifier|static
@@ -210,14 +210,6 @@ argument_list|,
 name|FieldName
 operator|.
 name|TIMESTAMP
-argument_list|,
-name|FieldName
-operator|.
-name|ABSTRACT
-argument_list|,
-name|FieldName
-operator|.
-name|REVIEW
 argument_list|)
 decl_stmt|;
 comment|// contains all bibtex-field objects (BibtexSingleField)
