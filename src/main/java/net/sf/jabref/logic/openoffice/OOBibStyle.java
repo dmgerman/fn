@@ -1102,6 +1102,13 @@ argument_list|(
 name|prefs
 argument_list|)
 expr_stmt|;
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|resourcePath
+argument_list|)
+expr_stmt|;
 name|this
 operator|.
 name|encoding
@@ -1542,6 +1549,13 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|stream
+argument_list|)
+expr_stmt|;
 try|try
 init|(
 name|Reader
