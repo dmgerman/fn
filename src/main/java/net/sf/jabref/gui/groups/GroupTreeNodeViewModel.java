@@ -964,16 +964,6 @@ name|JTree
 name|tree
 parameter_list|)
 block|{
-name|tree
-operator|.
-name|collapsePath
-argument_list|(
-name|this
-operator|.
-name|getTreePath
-argument_list|()
-argument_list|)
-expr_stmt|;
 for|for
 control|(
 name|GroupTreeNodeViewModel
@@ -991,6 +981,16 @@ name|tree
 argument_list|)
 expr_stmt|;
 block|}
+name|tree
+operator|.
+name|collapsePath
+argument_list|(
+name|this
+operator|.
+name|getTreePath
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 comment|/** Expand this node and all its children. */
 DECL|method|expandSubtree (JTree tree)
