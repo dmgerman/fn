@@ -187,7 +187,7 @@ block|{
 return|return
 name|HelpFile
 operator|.
-name|FETCHER_ISBN_TO_BIBTEX
+name|FETCHER_ISBN
 return|;
 block|}
 DECL|method|ensureThatIsbnIsValid (String identifier)
