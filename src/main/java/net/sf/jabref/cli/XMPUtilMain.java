@@ -1129,7 +1129,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"To report bugs visit https://github.com/JabRef/jabref/issues"
+literal|"To report bugs visit https://issues.jabref.org"
 argument_list|)
 expr_stmt|;
 block|}
