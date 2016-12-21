@@ -963,7 +963,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Print usage information for the command line tool xmpUtil.      *      * @see XMPUtil#main(String[])      */
+comment|/**      * Print usage information for the command line tool xmpUtil.      *      * @see XMPUtilMain#main(String[])      */
 DECL|method|usage ()
 specifier|private
 specifier|static
