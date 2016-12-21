@@ -293,7 +293,7 @@ block|{
 return|return
 name|HelpFile
 operator|.
-name|FETCHER_DOI_TO_BIBTEX
+name|FETCHER_DOI
 return|;
 block|}
 annotation|@
