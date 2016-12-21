@@ -295,11 +295,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"BibTeX key %0 deviates from generated key %1"
-argument_list|,
-name|key
-argument_list|,
-name|generatedKey
+literal|"BibTeX key deviates from generated key"
 argument_list|)
 argument_list|,
 name|entry
