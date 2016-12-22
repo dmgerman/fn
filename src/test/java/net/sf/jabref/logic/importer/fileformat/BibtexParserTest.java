@@ -378,6 +378,22 @@ name|jabref
 operator|.
 name|model
 operator|.
+name|entry
+operator|.
+name|FieldName
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
 name|groups
 operator|.
 name|AllEntriesGroup
@@ -501,16 +517,6 @@ operator|.
 name|junit
 operator|.
 name|Before
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|Ignore
 import|;
 end_import
 
@@ -5104,77 +5110,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|parseWarnsAboutUnmatchedContentInEntry ()
-specifier|public
-name|void
-name|parseWarnsAboutUnmatchedContentInEntry
-parameter_list|()
-throws|throws
-name|IOException
-block|{
-name|ParserResult
-name|result
-init|=
-name|parser
-operator|.
-name|parse
-argument_list|(
-operator|new
-name|StringReader
-argument_list|(
-literal|"@article{test,author={author bracket }, too much}"
-argument_list|)
-argument_list|)
-decl_stmt|;
-name|assertTrue
-argument_list|(
-literal|"There should be warnings"
-argument_list|,
-name|result
-operator|.
-name|hasWarnings
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|Collection
-argument_list|<
-name|BibEntry
-argument_list|>
-name|c
-init|=
-name|result
-operator|.
-name|getDatabase
-argument_list|()
-operator|.
-name|getEntries
-argument_list|()
-decl_stmt|;
-name|assertEquals
-argument_list|(
-literal|"Size should be zero, but was "
-operator|+
-name|c
-operator|.
-name|size
-argument_list|()
-argument_list|,
-literal|0
-argument_list|,
-name|c
-operator|.
-name|size
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
-annotation|@
-name|Test
-annotation|@
-name|Ignore
-argument_list|(
-literal|"Ignoring because this is an edge case"
-argument_list|)
 DECL|method|parseWarnsAboutUnmatchedContentInEntryWithoutComma ()
 specifier|public
 name|void
@@ -5186,7 +5121,7 @@ block|{
 name|ParserResult
 name|result
 init|=
-name|parser
+name|BibtexParser
 operator|.
 name|parse
 argument_list|(
@@ -5195,6 +5130,71 @@ name|StringReader
 argument_list|(
 literal|"@article{test,author={author bracket } too much}"
 argument_list|)
+argument_list|,
+name|importFormatPreferences
+argument_list|)
+decl_stmt|;
+name|List
+argument_list|<
+name|BibEntry
+argument_list|>
+name|entries
+init|=
+name|result
+operator|.
+name|getDatabase
+argument_list|()
+operator|.
+name|getEntries
+argument_list|()
+decl_stmt|;
+name|assertEquals
+argument_list|(
+name|Optional
+operator|.
+name|of
+argument_list|(
+literal|"author bracket #too##much#"
+argument_list|)
+argument_list|,
+name|entries
+operator|.
+name|get
+argument_list|(
+literal|0
+argument_list|)
+operator|.
+name|getField
+argument_list|(
+literal|"author"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|parseWarnsAboutUnmatchedContentInEntry ()
+specifier|public
+name|void
+name|parseWarnsAboutUnmatchedContentInEntry
+parameter_list|()
+throws|throws
+name|IOException
+block|{
+name|ParserResult
+name|result
+init|=
+name|BibtexParser
+operator|.
+name|parse
+argument_list|(
+operator|new
+name|StringReader
+argument_list|(
+literal|"@article{test,author={author bracket }, too much}"
+argument_list|)
+argument_list|,
+name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|assertTrue
@@ -5207,11 +5207,11 @@ name|hasWarnings
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Collection
+name|List
 argument_list|<
 name|BibEntry
 argument_list|>
-name|c
+name|entries
 init|=
 name|result
 operator|.
@@ -5225,14 +5225,14 @@ name|assertEquals
 argument_list|(
 literal|"Size should be zero, but was "
 operator|+
-name|c
+name|entries
 operator|.
 name|size
 argument_list|()
 argument_list|,
 literal|0
 argument_list|,
-name|c
+name|entries
 operator|.
 name|size
 argument_list|()
@@ -5263,11 +5263,11 @@ literal|"@article{test,author={author @ good}}"
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|Collection
+name|List
 argument_list|<
 name|BibEntry
 argument_list|>
-name|c
+name|entries
 init|=
 name|result
 operator|.
@@ -5277,26 +5277,6 @@ operator|.
 name|getEntries
 argument_list|()
 decl_stmt|;
-name|List
-argument_list|<
-name|BibEntry
-argument_list|>
-name|entries
-init|=
-operator|new
-name|ArrayList
-argument_list|<>
-argument_list|(
-literal|1
-argument_list|)
-decl_stmt|;
-name|entries
-operator|.
-name|addAll
-argument_list|(
-name|c
-argument_list|)
-expr_stmt|;
 name|assertEquals
 argument_list|(
 literal|1
@@ -7964,18 +7944,12 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Test for [2022983]      *      * @author Uwe Kuehn      * @author Andrei Haralevich      */
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-argument_list|(
-literal|"Ignoring, since the parser is not responsible for fixing the content. This should be done later"
-argument_list|)
-DECL|method|parseRemovesTabsInFileField ()
+DECL|method|parsePreservesTabsInAbstractField ()
 specifier|public
 name|void
-name|parseRemovesTabsInFileField
+name|parsePreservesTabsInAbstractField
 parameter_list|()
 throws|throws
 name|IOException
@@ -7983,15 +7957,17 @@ block|{
 name|ParserResult
 name|result
 init|=
-name|parser
+name|BibtexParser
 operator|.
 name|parse
 argument_list|(
 operator|new
 name|StringReader
 argument_list|(
-literal|"@article{canh05,file = {ups  \tsala}}"
+literal|"@article{canh05,abstract = {ups  \tsala}}"
 argument_list|)
+argument_list|,
+name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -8025,30 +8001,26 @@ name|Optional
 operator|.
 name|of
 argument_list|(
-literal|"ups  sala"
+literal|"ups  \tsala"
 argument_list|)
 argument_list|,
 name|e
 operator|.
 name|getField
 argument_list|(
-literal|"file"
+name|FieldName
+operator|.
+name|ABSTRACT
 argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Test for [2022983]      *      * @author Uwe Kuehn      * @author Andrei Haralevich      */
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-argument_list|(
-literal|"Ignoring, since the parser is not responsible for fixing the content. This should be done later"
-argument_list|)
-DECL|method|parseRemovesNewlineInFileField ()
+DECL|method|parsePreservesNewlineInAbstractField ()
 specifier|public
 name|void
-name|parseRemovesNewlineInFileField
+name|parsePreservesNewlineInAbstractField
 parameter_list|()
 throws|throws
 name|IOException
@@ -8056,15 +8028,17 @@ block|{
 name|ParserResult
 name|result
 init|=
-name|parser
+name|BibtexParser
 operator|.
 name|parse
 argument_list|(
 operator|new
 name|StringReader
 argument_list|(
-literal|"@article{canh05,file = {ups \n\tsala}}"
+literal|"@article{canh05,abstract = {ups \nsala}}"
 argument_list|)
+argument_list|,
+name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -8098,14 +8072,22 @@ name|Optional
 operator|.
 name|of
 argument_list|(
-literal|"ups  sala"
+literal|"ups "
+operator|+
+name|OS
+operator|.
+name|NEWLINE
+operator|+
+literal|"sala"
 argument_list|)
 argument_list|,
 name|e
 operator|.
 name|getField
 argument_list|(
-literal|"file"
+name|FieldName
+operator|.
+name|ABSTRACT
 argument_list|)
 argument_list|)
 expr_stmt|;
