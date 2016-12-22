@@ -259,15 +259,6 @@ name|bibEntryBischof2009
 operator|.
 name|setField
 argument_list|(
-literal|"url"
-argument_list|,
-literal|"http://dx.doi.org/10.1109/seaa.2009.21"
-argument_list|)
-expr_stmt|;
-name|bibEntryBischof2009
-operator|.
-name|setField
-argument_list|(
 literal|"year"
 argument_list|,
 literal|"2009"
