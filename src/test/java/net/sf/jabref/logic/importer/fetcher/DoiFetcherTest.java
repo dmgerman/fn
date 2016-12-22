@@ -288,15 +288,6 @@ argument_list|,
 literal|"10.1002/9781118257517"
 argument_list|)
 expr_stmt|;
-name|bibEntryBurd2011
-operator|.
-name|setField
-argument_list|(
-literal|"url"
-argument_list|,
-literal|"http://dx.doi.org/10.1002/9781118257517"
-argument_list|)
-expr_stmt|;
 name|bibEntryDecker2007
 operator|=
 operator|new
@@ -364,15 +355,6 @@ argument_list|(
 literal|"title"
 argument_list|,
 literal|"{BPEL}4Chor: Extending {BPEL} for Modeling Choreographies"
-argument_list|)
-expr_stmt|;
-name|bibEntryDecker2007
-operator|.
-name|setField
-argument_list|(
-literal|"url"
-argument_list|,
-literal|"http://dx.doi.org/10.1109/ICWS.2007.59"
 argument_list|)
 expr_stmt|;
 name|bibEntryDecker2007

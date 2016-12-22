@@ -222,16 +222,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Test
 import|;
 end_import
@@ -332,7 +322,17 @@ block|{
 name|ParserResult
 name|result
 init|=
+operator|new
 name|BibtexParser
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|getInstance
+argument_list|()
+operator|.
+name|getImportFormatPreferences
+argument_list|()
+argument_list|)
 operator|.
 name|parse
 argument_list|(
@@ -341,14 +341,6 @@ name|StringReader
 argument_list|(
 name|s
 argument_list|)
-argument_list|,
-name|JabRefPreferences
-operator|.
-name|getInstance
-argument_list|()
-operator|.
-name|getImportFormatPreferences
-argument_list|()
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -555,38 +547,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-DECL|method|testHTMLCharDoubleLineBreak ()
-specifier|public
-name|void
-name|testHTMLCharDoubleLineBreak
-parameter_list|()
-throws|throws
-name|IOException
-block|{
-name|String
-name|layoutText
-init|=
-name|layout
-argument_list|(
-literal|"\\begin{author}\\format[HTMLChars]{\\author}\\end{author} "
-argument_list|,
-literal|"@other{bla, author={This\nis\na\n\ntext}}"
-argument_list|)
-decl_stmt|;
-name|Assert
-operator|.
-name|assertEquals
-argument_list|(
-literal|"This is a<br>text "
-argument_list|,
-name|layoutText
-argument_list|)
-expr_stmt|;
-block|}
-annotation|@
-name|Test
 DECL|method|testPluginLoading ()
 specifier|public
 name|void
@@ -610,6 +570,36 @@ operator|.
 name|assertEquals
 argument_list|(
 literal|"Joe Doe, Moon Jane"
+argument_list|,
+name|layoutText
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|testHTMLCharDoubleLineBreak ()
+specifier|public
+name|void
+name|testHTMLCharDoubleLineBreak
+parameter_list|()
+throws|throws
+name|IOException
+block|{
+name|String
+name|layoutText
+init|=
+name|layout
+argument_list|(
+literal|"\\begin{author}\\format[HTMLChars]{\\author}\\end{author} "
+argument_list|,
+literal|"@other{bla, author={This\nis\na\n\ntext}}"
+argument_list|)
+decl_stmt|;
+name|Assert
+operator|.
+name|assertEquals
+argument_list|(
+literal|"This is a text "
 argument_list|,
 name|layoutText
 argument_list|)

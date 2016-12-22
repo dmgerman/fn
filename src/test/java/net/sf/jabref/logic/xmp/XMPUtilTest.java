@@ -662,7 +662,7 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
+name|Rule
 import|;
 end_import
 
@@ -676,6 +676,18 @@ name|Test
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|rules
+operator|.
+name|TemporaryFolder
+import|;
+end_import
+
 begin_comment
 comment|/**  * Limitations: The test suite only handles UTF8. Not UTF16.  */
 end_comment
@@ -686,6 +698,17 @@ specifier|public
 class|class
 name|XMPUtilTest
 block|{
+annotation|@
+name|Rule
+DECL|field|tempFolder
+specifier|public
+name|TemporaryFolder
+name|tempFolder
+init|=
+operator|new
+name|TemporaryFolder
+argument_list|()
+decl_stmt|;
 comment|/**      * The PDF file that basically all operations are done upon.      */
 DECL|field|pdfFile
 specifier|private
@@ -942,7 +965,11 @@ block|{
 name|ParserResult
 name|result
 init|=
+operator|new
 name|BibtexParser
+argument_list|(
+name|importFormatPreferences
+argument_list|)
 operator|.
 name|parse
 argument_list|(
@@ -951,8 +978,6 @@ name|StringReader
 argument_list|(
 name|s
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -1419,20 +1444,12 @@ name|COSVisitorException
 block|{
 name|pdfFile
 operator|=
-name|File
+name|tempFolder
 operator|.
-name|createTempFile
+name|newFile
 argument_list|(
-literal|"JabRef"
-argument_list|,
-literal|".pdf"
+literal|"JabRef.pdf"
 argument_list|)
-expr_stmt|;
-comment|// ensure that the file will be deleted upon exit
-name|pdfFile
-operator|.
-name|deleteOnExit
-argument_list|()
 expr_stmt|;
 try|try
 init|(
@@ -7160,13 +7177,11 @@ comment|// First check conversion from .bib to .xmp
 name|File
 name|tempBib
 init|=
-name|File
+name|tempFolder
 operator|.
-name|createTempFile
+name|newFile
 argument_list|(
-literal|"JabRef"
-argument_list|,
-literal|".bib"
+literal|"JabRef.bib"
 argument_list|)
 decl_stmt|;
 try|try
@@ -7309,28 +7324,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-finally|finally
-block|{
-if|if
-condition|(
-operator|!
-name|tempBib
-operator|.
-name|delete
-argument_list|()
-condition|)
-block|{
-name|System
-operator|.
-name|err
-operator|.
-name|println
-argument_list|(
-literal|"Cannot delete temporary file"
-argument_list|)
-expr_stmt|;
-block|}
-block|}
 block|}
 end_function
 
@@ -7435,7 +7428,11 @@ decl_stmt|;
 name|ParserResult
 name|result
 init|=
+operator|new
 name|BibtexParser
+argument_list|(
+name|importFormatPreferences
+argument_list|)
 operator|.
 name|parse
 argument_list|(
@@ -7444,8 +7441,6 @@ name|StringReader
 argument_list|(
 name|bibtex
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -7797,14 +7792,12 @@ block|}
 end_function
 
 begin_comment
-comment|/**      * Test whether the command-line client can pick one of several entries from a bibtex file      * @throws IOException      * @throws TransformerException      *      */
+comment|/**      * Test whether the command-line client can pick one of several entries from a bibtex file      * @throws IOException      * @throws TransformerException      */
 end_comment
 
 begin_function
 annotation|@
 name|Test
-annotation|@
-name|Ignore
 DECL|method|testCommandLineByKey ()
 specifier|public
 name|void
@@ -7818,13 +7811,11 @@ block|{
 name|File
 name|tempBib
 init|=
-name|File
+name|tempFolder
 operator|.
-name|createTempFile
+name|newFile
 argument_list|(
-literal|"JabRef"
-argument_list|,
-literal|".bib"
+literal|"JabRef.bib"
 argument_list|)
 decl_stmt|;
 try|try
@@ -7863,15 +7854,15 @@ name|t2BibtexString
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|{
-comment|// First try canh05
+block|}
 name|PrintStream
-name|oldOut
+name|sysOut
 init|=
 name|System
 operator|.
 name|out
 decl_stmt|;
+comment|// First try canh05
 try|try
 init|(
 name|ByteArrayOutputStream
@@ -7922,7 +7913,7 @@ name|System
 operator|.
 name|setOut
 argument_list|(
-name|oldOut
+name|sysOut
 argument_list|)
 expr_stmt|;
 block|}
@@ -7967,7 +7958,6 @@ literal|0
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
 comment|// Now try OezbekC06
 try|try
 init|(
@@ -7979,13 +7969,6 @@ name|ByteArrayOutputStream
 argument_list|()
 init|)
 block|{
-name|PrintStream
-name|oldOut
-init|=
-name|System
-operator|.
-name|out
-decl_stmt|;
 name|System
 operator|.
 name|setOut
@@ -8028,18 +8011,14 @@ name|System
 operator|.
 name|setOut
 argument_list|(
-name|oldOut
+name|sysOut
 argument_list|)
 expr_stmt|;
 block|}
 block|}
 comment|// PDF should be annotated:
-name|List
-argument_list|<
-name|BibEntry
-argument_list|>
 name|l
-init|=
+operator|=
 name|XMPUtil
 operator|.
 name|readXMP
@@ -8048,7 +8027,7 @@ name|pdfFile
 argument_list|,
 name|xmpPreferences
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|Assert
 operator|.
 name|assertEquals
@@ -8075,29 +8054,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-finally|finally
-block|{
-if|if
-condition|(
-operator|!
-name|tempBib
-operator|.
-name|delete
-argument_list|()
-condition|)
-block|{
-name|System
-operator|.
-name|err
-operator|.
-name|println
-argument_list|(
-literal|"Cannot delete temporary file"
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-block|}
 end_function
 
 begin_comment
@@ -8120,13 +8076,11 @@ block|{
 name|File
 name|tempBib
 init|=
-name|File
+name|tempFolder
 operator|.
-name|createTempFile
+name|newFile
 argument_list|(
-literal|"JabRef"
-argument_list|,
-literal|".bib"
+literal|"JabRef.bib"
 argument_list|)
 decl_stmt|;
 try|try
@@ -8339,28 +8293,6 @@ argument_list|,
 name|b
 argument_list|)
 expr_stmt|;
-block|}
-finally|finally
-block|{
-if|if
-condition|(
-operator|!
-name|tempBib
-operator|.
-name|delete
-argument_list|()
-condition|)
-block|{
-name|System
-operator|.
-name|err
-operator|.
-name|println
-argument_list|(
-literal|"Cannot delete temporary file"
-argument_list|)
-expr_stmt|;
-block|}
 block|}
 block|}
 end_function
@@ -8684,13 +8616,15 @@ block|{
 name|ParserResult
 name|result
 init|=
+operator|new
 name|BibtexParser
+argument_list|(
+name|importFormatPreferences
+argument_list|)
 operator|.
 name|parse
 argument_list|(
 name|fr
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|Assert
