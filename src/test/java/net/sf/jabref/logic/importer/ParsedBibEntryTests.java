@@ -123,6 +123,8 @@ specifier|public
 name|void
 name|testGetPublicationDate
 parameter_list|()
+throws|throws
+name|ParseException
 block|{
 name|Assert
 operator|.

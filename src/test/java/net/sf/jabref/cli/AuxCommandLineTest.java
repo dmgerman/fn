@@ -242,12 +242,9 @@ block|{
 name|ParserResult
 name|result
 init|=
+operator|new
 name|BibtexParser
-operator|.
-name|parse
 argument_list|(
-name|originalReader
-argument_list|,
 name|JabRefPreferences
 operator|.
 name|getInstance
@@ -255,6 +252,11 @@ argument_list|()
 operator|.
 name|getImportFormatPreferences
 argument_list|()
+argument_list|)
+operator|.
+name|parse
+argument_list|(
+name|originalReader
 argument_list|)
 decl_stmt|;
 name|AuxCommandLine
