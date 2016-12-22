@@ -1085,7 +1085,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"To report bugs visit http://jabref.sourceforge.net"
+literal|"To report bugs visit https://issues.jabref.org"
 argument_list|)
 expr_stmt|;
 block|}
