@@ -155,7 +155,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Handling of bibtex fields.  * All bibtex-field related stuff should be placed here!  * Because we can export these informations into additional  * config files -> simple extension and definition of new fields....  *  * TODO:  *  - handling of identically fields with different names  *    e.g. LCCN = lib-congress  *  - group id for each fields, e.g. standard, jurabib, bio....  *  - add a additional properties functionality into the BibtexSingleField class  */
+comment|/**  * Handling of bibtex fields.  * All bibtex-field related stuff should be placed here!  * Because we can export this information into additional  * config files -> simple extension and definition of new fields  *  * TODO:  *  - handling of identically fields with different names (https://github.com/JabRef/jabref/issues/521)  *    e.g. LCCN = lib-congress, journaltitle = journal  *  - group id for each fields, e.g. standard, jurabib, bio, ...  *  - add a additional properties functionality into the BibtexSingleField class  */
 end_comment
 
 begin_class
@@ -164,6 +164,54 @@ specifier|public
 class|class
 name|InternalBibtexFields
 block|{
+comment|/**      * These are the fields JabRef always displays as default      * {@link net.sf.jabref.preferences.JabRefPreferences#setLanguageDependentDefaultValues()}      *      * A user can change them. The change is currently stored in the preferences only and not explicitley exposed as separte preferences object      */
+DECL|field|DEFAULT_GENERAL_FIELDS
+specifier|public
+specifier|static
+specifier|final
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|DEFAULT_GENERAL_FIELDS
+init|=
+name|Arrays
+operator|.
+name|asList
+argument_list|(
+name|FieldName
+operator|.
+name|CROSSREF
+argument_list|,
+name|FieldName
+operator|.
+name|KEYWORDS
+argument_list|,
+name|FieldName
+operator|.
+name|FILE
+argument_list|,
+name|FieldName
+operator|.
+name|DOI
+argument_list|,
+name|FieldName
+operator|.
+name|URL
+argument_list|,
+name|FieldName
+operator|.
+name|COMMENT
+argument_list|,
+name|FieldName
+operator|.
+name|OWNER
+argument_list|,
+name|FieldName
+operator|.
+name|TIMESTAMP
+argument_list|)
+decl_stmt|;
 comment|// contains all bibtex-field objects (BibtexSingleField)
 DECL|field|fieldSet
 specifier|private
@@ -667,8 +715,8 @@ name|BibtexSingleField
 name|dummy
 decl_stmt|;
 comment|// FIRST: all standard fields
-comment|// These are the fields that BibTex might want to treat, so these
-comment|// must conform to BibTex rules.
+comment|// These are the fields that BibTeX might want to treat, so these
+comment|// must conform to BibTeX rules.
 name|add
 argument_list|(
 operator|new
@@ -1561,7 +1609,9 @@ argument_list|(
 operator|new
 name|BibtexSingleField
 argument_list|(
-literal|"comment"
+name|FieldName
+operator|.
+name|COMMENT
 argument_list|,
 literal|false
 argument_list|,

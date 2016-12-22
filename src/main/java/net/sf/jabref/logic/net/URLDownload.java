@@ -591,12 +591,9 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
-name|HttpURLConnection
+name|URLConnection
 name|connection
 init|=
-operator|(
-name|HttpURLConnection
-operator|)
 name|source
 operator|.
 name|openConnection
@@ -676,11 +673,23 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+if|if
+condition|(
+name|connection
+operator|instanceof
+name|HttpURLConnection
+condition|)
+block|{
 comment|// normally, 3xx is redirect
 name|int
 name|status
 init|=
+operator|(
+operator|(
+name|HttpURLConnection
+operator|)
 name|connection
+operator|)
 operator|.
 name|getResponseCode
 argument_list|()
@@ -741,6 +750,7 @@ operator|.
 name|openConnection
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 block|}
 comment|// this does network i/o: GET + read returned headers

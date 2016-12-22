@@ -1986,7 +1986,9 @@ name|hm
 operator|.
 name|put
 argument_list|(
-literal|"comment"
+name|FieldName
+operator|.
+name|COMMENT
 argument_list|,
 name|String
 operator|.
@@ -2005,8 +2007,6 @@ init|=
 operator|new
 name|BibEntry
 argument_list|(
-name|DEFAULT_BIBTEXENTRY_ID
-argument_list|,
 name|bibtexType
 argument_list|)
 decl_stmt|;

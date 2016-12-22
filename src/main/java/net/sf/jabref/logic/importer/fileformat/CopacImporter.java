@@ -504,8 +504,6 @@ init|=
 operator|new
 name|BibEntry
 argument_list|(
-name|DEFAULT_BIBTEXENTRY_ID
-argument_list|,
 literal|"book"
 argument_list|)
 decl_stmt|;

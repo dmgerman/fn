@@ -234,22 +234,6 @@ end_import
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|entry
-operator|.
-name|IdGenerator
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -1909,12 +1893,7 @@ name|be
 init|=
 operator|new
 name|BibEntry
-argument_list|(
-name|IdGenerator
-operator|.
-name|next
 argument_list|()
-argument_list|)
 decl_stmt|;
 name|be
 operator|.

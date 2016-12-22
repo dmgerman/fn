@@ -394,22 +394,6 @@ name|jabref
 operator|.
 name|model
 operator|.
-name|entry
-operator|.
-name|IdGenerator
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
 name|groups
 operator|.
 name|AllEntriesGroup
@@ -508,22 +492,6 @@ name|model
 operator|.
 name|metadata
 operator|.
-name|MetaData
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|metadata
-operator|.
 name|SaveOrderConfig
 import|;
 end_import
@@ -548,7 +516,7 @@ name|org
 operator|.
 name|junit
 operator|.
-name|BeforeClass
+name|Before
 import|;
 end_import
 
@@ -622,15 +590,18 @@ name|BibtexParserTest
 block|{
 DECL|field|importFormatPreferences
 specifier|private
-specifier|static
 name|ImportFormatPreferences
 name|importFormatPreferences
 decl_stmt|;
+DECL|field|parser
+specifier|private
+name|BibtexParser
+name|parser
+decl_stmt|;
 annotation|@
-name|BeforeClass
+name|Before
 DECL|method|setUp ()
 specifier|public
-specifier|static
 name|void
 name|setUp
 parameter_list|()
@@ -645,7 +616,20 @@ operator|.
 name|getImportFormatPreferences
 argument_list|()
 expr_stmt|;
+name|parser
+operator|=
+operator|new
+name|BibtexParser
+argument_list|(
+name|importFormatPreferences
+argument_list|)
+expr_stmt|;
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 annotation|@
 name|Test
 argument_list|(
@@ -663,11 +647,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-operator|new
-name|BibtexParser
-argument_list|(
-name|importFormatPreferences
-argument_list|)
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -682,6 +662,8 @@ specifier|public
 name|void
 name|fromStringRecognizesEntry
 parameter_list|()
+throws|throws
+name|ParseException
 block|{
 name|List
 argument_list|<
@@ -689,13 +671,11 @@ name|BibEntry
 argument_list|>
 name|parsed
 init|=
-name|BibtexParser
+name|parser
 operator|.
-name|fromString
+name|parseEntries
 argument_list|(
 literal|"@article{test,author={Ed von Test}}"
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|BibEntry
@@ -748,6 +728,8 @@ specifier|public
 name|void
 name|fromStringReturnsEmptyListFromEmptyString
 parameter_list|()
+throws|throws
+name|ParseException
 block|{
 name|Collection
 argument_list|<
@@ -755,13 +737,11 @@ name|BibEntry
 argument_list|>
 name|parsed
 init|=
-name|BibtexParser
+name|parser
 operator|.
-name|fromString
+name|parseEntries
 argument_list|(
 literal|""
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|assertNotNull
@@ -787,6 +767,8 @@ specifier|public
 name|void
 name|fromStringReturnsEmptyListIfNoEntryRecognized
 parameter_list|()
+throws|throws
+name|ParseException
 block|{
 name|Collection
 argument_list|<
@@ -794,13 +776,11 @@ name|BibEntry
 argument_list|>
 name|parsed
 init|=
-name|BibtexParser
+name|parser
 operator|.
-name|fromString
+name|parseEntries
 argument_list|(
 literal|"@@article@@{{{{{{}"
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|assertNotNull
@@ -826,6 +806,8 @@ specifier|public
 name|void
 name|singleFromStringRecognizesEntry
 parameter_list|()
+throws|throws
+name|ParseException
 block|{
 name|Optional
 argument_list|<
@@ -905,6 +887,8 @@ specifier|public
 name|void
 name|singleFromStringRecognizesEntryInMultiple
 parameter_list|()
+throws|throws
+name|ParseException
 block|{
 name|Optional
 argument_list|<
@@ -971,11 +955,13 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|singleFromStringReturnsNullFromEmptyString ()
+DECL|method|singleFromStringReturnsEmptyFromEmptyString ()
 specifier|public
 name|void
-name|singleFromStringReturnsNullFromEmptyString
+name|singleFromStringReturnsEmptyFromEmptyString
 parameter_list|()
+throws|throws
+name|ParseException
 block|{
 name|Optional
 argument_list|<
@@ -1005,11 +991,13 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|singleFromStringReturnsNullIfNoEntryRecognized ()
+DECL|method|singleFromStringReturnsEmptyIfNoEntryRecognized ()
 specifier|public
 name|void
-name|singleFromStringReturnsNullIfNoEntryRecognized
+name|singleFromStringReturnsEmptyIfNoEntryRecognized
 parameter_list|()
+throws|throws
+name|ParseException
 block|{
 name|Optional
 argument_list|<
@@ -1050,7 +1038,7 @@ block|{
 name|ParserResult
 name|result
 init|=
-name|BibtexParser
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -1059,8 +1047,6 @@ name|StringReader
 argument_list|(
 literal|"@article{test,author={Ed von Test}}"
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|List
@@ -1167,7 +1153,7 @@ block|{
 name|ParserResult
 name|result
 init|=
-name|BibtexParser
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -1176,8 +1162,6 @@ name|StringReader
 argument_list|(
 literal|"@article{test,author=\"Ed von Test\"}"
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|List
@@ -1284,7 +1268,7 @@ block|{
 name|ParserResult
 name|result
 init|=
-name|BibtexParser
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -1293,8 +1277,6 @@ name|StringReader
 argument_list|(
 literal|"@article{test}"
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|List
@@ -1371,7 +1353,7 @@ block|{
 name|ParserResult
 name|result
 init|=
-name|BibtexParser
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -1380,8 +1362,6 @@ name|StringReader
 argument_list|(
 literal|" @article{test,author={Ed von Test}}"
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|List
@@ -1488,7 +1468,7 @@ block|{
 name|ParserResult
 name|result
 init|=
-name|BibtexParser
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -1497,8 +1477,6 @@ name|StringReader
 argument_list|(
 literal|"@article { test,author={Ed von Test}}"
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|List
@@ -1605,7 +1583,7 @@ block|{
 name|ParserResult
 name|result
 init|=
-name|BibtexParser
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -1614,8 +1592,6 @@ name|StringReader
 argument_list|(
 literal|"@article\n{\ntest,author={Ed von Test}}"
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -1722,7 +1698,7 @@ block|{
 name|ParserResult
 name|result
 init|=
-name|BibtexParser
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -1731,8 +1707,6 @@ name|StringReader
 argument_list|(
 literal|"@unknown{test,author={Ed von Test}}"
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -1828,180 +1802,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|parseReallyUnknownType ()
-specifier|public
-name|void
-name|parseReallyUnknownType
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-name|String
-name|bibtexEntry
-init|=
-literal|"@ReallyUnknownType{test,"
-operator|+
-name|OS
-operator|.
-name|NEWLINE
-operator|+
-literal|" Comment                  = {testentry}"
-operator|+
-name|OS
-operator|.
-name|NEWLINE
-operator|+
-literal|"}"
-decl_stmt|;
-name|Collection
-argument_list|<
-name|BibEntry
-argument_list|>
-name|entries
-init|=
-operator|new
-name|BibtexParser
-argument_list|(
-name|importFormatPreferences
-argument_list|)
-operator|.
-name|parseEntries
-argument_list|(
-name|bibtexEntry
-argument_list|)
-decl_stmt|;
-name|BibEntry
-name|expectedEntry
-init|=
-operator|new
-name|BibEntry
-argument_list|()
-decl_stmt|;
-name|expectedEntry
-operator|.
-name|setType
-argument_list|(
-literal|"Reallyunknowntype"
-argument_list|)
-expr_stmt|;
-name|expectedEntry
-operator|.
-name|setCiteKey
-argument_list|(
-literal|"test"
-argument_list|)
-expr_stmt|;
-name|expectedEntry
-operator|.
-name|setField
-argument_list|(
-literal|"comment"
-argument_list|,
-literal|"testentry"
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-name|Collections
-operator|.
-name|singletonList
-argument_list|(
-name|expectedEntry
-argument_list|)
-argument_list|,
-name|entries
-argument_list|)
-expr_stmt|;
-block|}
-annotation|@
-name|Test
-DECL|method|parseOtherTypeTest ()
-specifier|public
-name|void
-name|parseOtherTypeTest
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-name|String
-name|bibtexEntry
-init|=
-literal|"@Other{test,"
-operator|+
-name|OS
-operator|.
-name|NEWLINE
-operator|+
-literal|" Comment                  = {testentry}"
-operator|+
-name|OS
-operator|.
-name|NEWLINE
-operator|+
-literal|"}"
-decl_stmt|;
-name|Collection
-argument_list|<
-name|BibEntry
-argument_list|>
-name|entries
-init|=
-operator|new
-name|BibtexParser
-argument_list|(
-name|importFormatPreferences
-argument_list|)
-operator|.
-name|parseEntries
-argument_list|(
-name|bibtexEntry
-argument_list|)
-decl_stmt|;
-name|BibEntry
-name|expectedEntry
-init|=
-operator|new
-name|BibEntry
-argument_list|()
-decl_stmt|;
-name|expectedEntry
-operator|.
-name|setType
-argument_list|(
-literal|"Other"
-argument_list|)
-expr_stmt|;
-name|expectedEntry
-operator|.
-name|setCiteKey
-argument_list|(
-literal|"test"
-argument_list|)
-expr_stmt|;
-name|expectedEntry
-operator|.
-name|setField
-argument_list|(
-literal|"comment"
-argument_list|,
-literal|"testentry"
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-name|Collections
-operator|.
-name|singletonList
-argument_list|(
-name|expectedEntry
-argument_list|)
-argument_list|,
-name|entries
-argument_list|)
-expr_stmt|;
-block|}
-annotation|@
-name|Test
 DECL|method|parseRecognizesEntryWithVeryLongType ()
 specifier|public
 name|void
@@ -2013,7 +1813,7 @@ block|{
 name|ParserResult
 name|result
 init|=
-name|BibtexParser
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -2022,8 +1822,6 @@ name|StringReader
 argument_list|(
 literal|"@thisIsALongStringToTestMaybeItIsToLongWhoKnowsNOTme{test,author={Ed von Test}}"
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -2130,7 +1928,7 @@ block|{
 name|ParserResult
 name|result
 init|=
-name|BibtexParser
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -2139,8 +1937,6 @@ name|StringReader
 argument_list|(
 literal|"@article(test,author={Ed von Test})"
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -2384,7 +2180,7 @@ block|{
 name|ParserResult
 name|result
 init|=
-name|BibtexParser
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -2393,8 +2189,6 @@ name|StringReader
 argument_list|(
 literal|"@article{te_st:with-special(characters),author={Ed von Test}}"
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -2491,7 +2285,7 @@ block|{
 name|ParserResult
 name|result
 init|=
-name|BibtexParser
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -2500,8 +2294,6 @@ name|StringReader
 argument_list|(
 literal|"@article{test,author={Ed von Test},}"
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -2608,7 +2400,7 @@ block|{
 name|ParserResult
 name|result
 init|=
-name|BibtexParser
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -2617,8 +2409,6 @@ name|StringReader
 argument_list|(
 literal|"@article{test,author={Ed von T@st}}"
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|List
@@ -2641,11 +2431,6 @@ init|=
 operator|new
 name|BibEntry
 argument_list|(
-name|IdGenerator
-operator|.
-name|next
-argument_list|()
-argument_list|,
 literal|"article"
 argument_list|)
 operator|.
@@ -2719,7 +2504,7 @@ decl_stmt|;
 name|ParserResult
 name|result
 init|=
-name|BibtexParser
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -2728,8 +2513,6 @@ name|StringReader
 argument_list|(
 name|entryWithComment
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|List
@@ -2752,11 +2535,6 @@ init|=
 operator|new
 name|BibEntry
 argument_list|(
-name|IdGenerator
-operator|.
-name|next
-argument_list|()
-argument_list|,
 literal|"article"
 argument_list|)
 operator|.
@@ -3001,7 +2779,7 @@ decl_stmt|;
 name|ParserResult
 name|result
 init|=
-name|BibtexParser
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -3012,8 +2790,6 @@ name|firstEntry
 operator|+
 name|secondEntry
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 for|for
@@ -3085,7 +2861,7 @@ block|{
 name|ParserResult
 name|result
 init|=
-name|BibtexParser
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -3096,8 +2872,6 @@ literal|"@article{canh05}"
 operator|+
 literal|"@inProceedings{foo}"
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|List
@@ -3202,7 +2976,7 @@ block|{
 name|ParserResult
 name|result
 init|=
-name|BibtexParser
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -3211,8 +2985,6 @@ name|StringReader
 argument_list|(
 literal|"@article{test,author={Ed von Test},author={Second Author},author={Third Author}}"
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -3319,7 +3091,7 @@ block|{
 name|ParserResult
 name|result
 init|=
-name|BibtexParser
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -3328,8 +3100,6 @@ name|StringReader
 argument_list|(
 literal|"@article{test,editor={Ed von Test},editor={Second Author},editor={Third Author}}"
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -3437,7 +3207,7 @@ block|{
 name|ParserResult
 name|result
 init|=
-name|BibtexParser
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -3446,8 +3216,6 @@ name|StringReader
 argument_list|(
 literal|"@article{test,Keywords={Test},Keywords={Second Keyword},Keywords={Third Keyword}}"
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -4086,7 +3854,7 @@ block|{
 name|ParserResult
 name|result
 init|=
-name|BibtexParser
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -4095,8 +3863,6 @@ name|StringReader
 argument_list|(
 literal|"@article{test,author=\"Ed von Test\"}"
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -4203,7 +3969,7 @@ block|{
 name|ParserResult
 name|result
 init|=
-name|BibtexParser
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -4212,8 +3978,6 @@ name|StringReader
 argument_list|(
 literal|"@article{test,year = 2005}"
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -4320,7 +4084,7 @@ block|{
 name|ParserResult
 name|result
 init|=
-name|BibtexParser
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -4329,8 +4093,6 @@ name|StringReader
 argument_list|(
 literal|"@article{test,AUTHOR={Ed von Test}}"
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -4438,7 +4200,7 @@ block|{
 name|ParserResult
 name|result
 init|=
-name|BibtexParser
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -4447,8 +4209,6 @@ name|StringReader
 argument_list|(
 literal|"@article{test,file = {D:\\Documents\\literature\\Tansel-PRL2006.pdf}}"
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -4556,7 +4316,7 @@ block|{
 name|ParserResult
 name|result
 init|=
-name|BibtexParser
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -4565,8 +4325,6 @@ name|StringReader
 argument_list|(
 literal|"@article{test,date = {1-4~} # nov}"
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -4752,7 +4510,7 @@ block|{
 name|ParserResult
 name|result
 init|=
-name|BibtexParser
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -4767,8 +4525,6 @@ literal|"Encoding: Cp1252"
 operator|+
 literal|"\n"
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -4877,7 +4633,7 @@ block|{
 name|ParserResult
 name|result
 init|=
-name|BibtexParser
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -4886,8 +4642,6 @@ name|StringReader
 argument_list|(
 literal|"@article{,author={Ed von Test}}"
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|assertTrue
@@ -4961,7 +4715,7 @@ block|{
 name|ParserResult
 name|result
 init|=
-name|BibtexParser
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -4970,8 +4724,6 @@ name|StringReader
 argument_list|(
 literal|"@article{test,author={author missing bracket}"
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|assertTrue
@@ -5021,7 +4773,7 @@ block|{
 name|ParserResult
 name|result
 init|=
-name|BibtexParser
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -5030,8 +4782,6 @@ name|StringReader
 argument_list|(
 literal|"@article{test,review={escaped \\{ bracket}}"
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|assertFalse
@@ -5133,7 +4883,7 @@ block|{
 name|ParserResult
 name|result
 init|=
-name|BibtexParser
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -5142,8 +4892,6 @@ name|StringReader
 argument_list|(
 literal|"@article{test,review={escaped \\} bracket}}"
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|assertFalse
@@ -5245,7 +4993,7 @@ block|{
 name|ParserResult
 name|result
 init|=
-name|BibtexParser
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -5254,8 +5002,6 @@ name|StringReader
 argument_list|(
 literal|"@article{test,author=\"author {missing bracket\"}"
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|assertTrue
@@ -5304,7 +5050,7 @@ block|{
 name|ParserResult
 name|result
 init|=
-name|BibtexParser
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -5313,8 +5059,6 @@ name|StringReader
 argument_list|(
 literal|"@article{test,author={author bracket }}}"
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -5508,7 +5252,7 @@ block|{
 name|ParserResult
 name|result
 init|=
-name|BibtexParser
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -5517,8 +5261,6 @@ name|StringReader
 argument_list|(
 literal|"@article{test,author={author @ good}}"
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|List
@@ -5581,7 +5323,7 @@ block|{
 name|ParserResult
 name|result
 init|=
-name|BibtexParser
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -5590,8 +5332,6 @@ name|StringReader
 argument_list|(
 literal|"@article{test,author=\"author @ good\"}"
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -5698,7 +5438,7 @@ block|{
 name|ParserResult
 name|result
 init|=
-name|BibtexParser
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -5707,8 +5447,6 @@ name|StringReader
 argument_list|(
 literal|"@article{test,author=\"Test {Ed {von} Test}\"}"
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -5816,7 +5554,7 @@ comment|// Quotes in fields of the form key = "value" have to be escaped by putt
 name|ParserResult
 name|result
 init|=
-name|BibtexParser
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -5825,8 +5563,6 @@ name|StringReader
 argument_list|(
 literal|"@article{test,author=\"Test {\" Test}\"}"
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -5933,7 +5669,7 @@ block|{
 name|ParserResult
 name|result
 init|=
-name|BibtexParser
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -5942,8 +5678,6 @@ name|StringReader
 argument_list|(
 literal|"@article{test,author={Ed von Test} year=2005}"
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|assertTrue
@@ -6120,7 +5854,7 @@ block|{
 name|ParserResult
 name|result
 init|=
-name|BibtexParser
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -6129,8 +5863,6 @@ name|StringReader
 argument_list|(
 literal|"@article{test,author={Ed von Test},month={8,}},"
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -6254,7 +5986,7 @@ block|{
 name|ParserResult
 name|result
 init|=
-name|BibtexParser
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -6263,8 +5995,6 @@ name|StringReader
 argument_list|(
 literal|"@preamble{some text and \\latex}"
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -6299,7 +6029,7 @@ block|{
 name|ParserResult
 name|result
 init|=
-name|BibtexParser
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -6308,8 +6038,6 @@ name|StringReader
 argument_list|(
 literal|"@PREAMBLE{some text and \\latex}"
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -6344,7 +6072,7 @@ block|{
 name|ParserResult
 name|result
 init|=
-name|BibtexParser
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -6353,8 +6081,6 @@ name|StringReader
 argument_list|(
 literal|"@preamble {some text and \\latex}"
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -6389,7 +6115,7 @@ block|{
 name|ParserResult
 name|result
 init|=
-name|BibtexParser
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -6398,8 +6124,6 @@ name|StringReader
 argument_list|(
 literal|"@preamble(some text and \\latex)"
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -6434,7 +6158,7 @@ block|{
 name|ParserResult
 name|result
 init|=
-name|BibtexParser
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -6443,8 +6167,6 @@ name|StringReader
 argument_list|(
 literal|"@preamble{\"some text\" # \"and \\latex\"}"
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -6479,7 +6201,7 @@ block|{
 name|ParserResult
 name|result
 init|=
-name|BibtexParser
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -6488,8 +6210,6 @@ name|StringReader
 argument_list|(
 literal|"@string{bourdieu = {Bourdieu, Pierre}}"
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -6565,7 +6285,7 @@ decl_stmt|;
 name|ParserResult
 name|result
 init|=
-name|BibtexParser
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -6582,8 +6302,6 @@ name|OS
 operator|.
 name|NEWLINE
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -6640,7 +6358,7 @@ block|{
 name|ParserResult
 name|result
 init|=
-name|BibtexParser
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -6649,8 +6367,6 @@ name|StringReader
 argument_list|(
 literal|"@string {bourdieu = {Bourdieu, Pierre}}"
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -6717,7 +6433,7 @@ block|{
 name|ParserResult
 name|result
 init|=
-name|BibtexParser
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -6726,8 +6442,6 @@ name|StringReader
 argument_list|(
 literal|"@string(bourdieu = {Bourdieu, Pierre})"
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -6794,7 +6508,7 @@ block|{
 name|ParserResult
 name|result
 init|=
-name|BibtexParser
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -6805,8 +6519,6 @@ literal|"@string{bourdieu = {Bourdieu, Pierre}}"
 operator|+
 literal|"@string{adieu = {Adieu, Pierre}}"
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -7194,7 +6906,7 @@ block|{
 name|ParserResult
 name|result
 init|=
-name|BibtexParser
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -7205,8 +6917,6 @@ literal|"@string{bourdieu = {Bourdieu, Pierre}}"
 operator|+
 literal|"@string{bourdieu = {Other}}"
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|assertTrue
@@ -7244,7 +6954,7 @@ block|{
 name|ParserResult
 name|result
 init|=
-name|BibtexParser
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -7253,8 +6963,6 @@ name|StringReader
 argument_list|(
 literal|"@comment{some text and \\latex}"
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -7287,7 +6995,7 @@ block|{
 name|ParserResult
 name|result
 init|=
-name|BibtexParser
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -7296,8 +7004,6 @@ name|StringReader
 argument_list|(
 literal|"@COMMENT{some text and \\latex}"
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -7330,7 +7036,7 @@ block|{
 name|ParserResult
 name|result
 init|=
-name|BibtexParser
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -7341,8 +7047,6 @@ literal|"@comment{some text and \\latex}"
 operator|+
 literal|"@article{test,author={Ed von Test}}"
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -7449,7 +7153,7 @@ block|{
 name|ParserResult
 name|result
 init|=
-name|BibtexParser
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -7460,8 +7164,6 @@ literal|"@article{test,author={Ed von Test}}"
 operator|+
 literal|"@comment{some text and \\latex}"
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -7568,7 +7270,7 @@ block|{
 name|ParserResult
 name|result
 init|=
-name|BibtexParser
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -7577,8 +7279,6 @@ name|StringReader
 argument_list|(
 literal|"comment{some text and \\latex"
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -7611,7 +7311,7 @@ block|{
 name|ParserResult
 name|result
 init|=
-name|BibtexParser
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -7622,8 +7322,6 @@ literal|"comment{some text and \\latex"
 operator|+
 literal|"@article{test,author={Ed von Test}}"
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -7730,7 +7428,7 @@ block|{
 name|ParserResult
 name|result
 init|=
-name|BibtexParser
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -7741,8 +7439,6 @@ literal|"@article{test,author={Ed von Test}}"
 operator|+
 literal|"comment{some text and \\latex"
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -7849,7 +7545,7 @@ block|{
 name|ParserResult
 name|result
 init|=
-name|BibtexParser
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -7858,8 +7554,6 @@ name|StringReader
 argument_list|(
 literal|"@article{test,a = {a\nb}}"
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -7918,7 +7612,7 @@ block|{
 name|ParserResult
 name|result
 init|=
-name|BibtexParser
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -7931,8 +7625,6 @@ literal|"b = {a\n \nb},"
 operator|+
 literal|"c = {a \n \n b}}"
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -8025,7 +7717,7 @@ block|{
 name|ParserResult
 name|result
 init|=
-name|BibtexParser
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -8034,8 +7726,6 @@ name|StringReader
 argument_list|(
 literal|"@article{test,a = {a\tb}}"
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -8094,7 +7784,7 @@ block|{
 name|ParserResult
 name|result
 init|=
-name|BibtexParser
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -8107,8 +7797,6 @@ literal|"b = {a\t \tb},"
 operator|+
 literal|"c = {a \t \t b}}"
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -8202,7 +7890,7 @@ block|{
 name|ParserResult
 name|result
 init|=
-name|BibtexParser
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -8211,8 +7899,6 @@ name|StringReader
 argument_list|(
 literal|"@article{canh05,file = {ups  sala}}"
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -8420,7 +8106,7 @@ block|{
 name|ParserResult
 name|result
 init|=
-name|BibtexParser
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -8429,8 +8115,6 @@ name|StringReader
 argument_list|(
 literal|"@article{test,author = {H\'{e}lne Fiaux}}"
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|assertFalse
@@ -8533,7 +8217,7 @@ block|{
 name|ParserResult
 name|result
 init|=
-name|BibtexParser
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -8542,8 +8226,6 @@ name|StringReader
 argument_list|(
 literal|"@preamble{some text and \\latex}@article{test,author = {H\'{e}lne Fiaux}}"
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|assertFalse
@@ -8664,7 +8346,7 @@ block|{
 name|ParserResult
 name|result
 init|=
-name|BibtexParser
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -8673,8 +8355,6 @@ name|StringReader
 argument_list|(
 literal|"% Encoding: US-ASCII@preamble{some text and \\latex}"
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|assertFalse
@@ -8722,7 +8402,7 @@ decl_stmt|;
 name|ParserResult
 name|result
 init|=
-name|BibtexParser
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -8731,8 +8411,6 @@ name|StringReader
 argument_list|(
 name|testEntry
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -8799,7 +8477,7 @@ decl_stmt|;
 name|ParserResult
 name|result
 init|=
-name|BibtexParser
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -8816,8 +8494,6 @@ name|OS
 operator|.
 name|NEWLINE
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -8888,7 +8564,7 @@ decl_stmt|;
 name|ParserResult
 name|result
 init|=
-name|BibtexParser
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -8909,8 +8585,6 @@ name|NEWLINE
 operator|+
 name|testEntry
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -8989,7 +8663,7 @@ decl_stmt|;
 name|ParserResult
 name|result
 init|=
-name|BibtexParser
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -9014,8 +8688,6 @@ name|NEWLINE
 operator|+
 name|testEntry
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -9095,7 +8767,7 @@ decl_stmt|;
 name|ParserResult
 name|result
 init|=
-name|BibtexParser
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -9118,8 +8790,6 @@ name|NEWLINE
 operator|+
 name|testEntryTwo
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -9252,7 +8922,7 @@ block|{
 name|ParserResult
 name|result
 init|=
-name|BibtexParser
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -9265,8 +8935,6 @@ name|OS
 operator|.
 name|NEWLINE
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -9301,7 +8969,7 @@ decl_stmt|;
 name|ParserResult
 name|result
 init|=
-name|BibtexParser
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -9328,8 +8996,6 @@ name|OS
 operator|.
 name|NEWLINE
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -9413,7 +9079,7 @@ decl_stmt|;
 name|ParserResult
 name|result
 init|=
-name|BibtexParser
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -9440,8 +9106,6 @@ name|OS
 operator|.
 name|NEWLINE
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -9520,11 +9184,9 @@ block|{
 name|BibtexParser
 name|parser
 init|=
-operator|new
-name|BibtexParser
-argument_list|(
-name|importFormatPreferences
-argument_list|)
+name|this
+operator|.
+name|parser
 decl_stmt|;
 name|ParserResult
 name|parserResult
@@ -9610,210 +9272,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|parseRecognizesDatabaseID ()
-specifier|public
-name|void
-name|parseRecognizesDatabaseID
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-name|BibtexParser
-name|parser
-init|=
-operator|new
-name|BibtexParser
-argument_list|(
-name|importFormatPreferences
-argument_list|)
-decl_stmt|;
-name|String
-name|expectedDatabaseID
-init|=
-literal|"q1w2e3r4t5z6"
-decl_stmt|;
-name|StringBuilder
-name|sharedDatabaseFileContent
-init|=
-operator|new
-name|StringBuilder
-argument_list|()
-operator|.
-name|append
-argument_list|(
-literal|"% DBID: "
-argument_list|)
-operator|.
-name|append
-argument_list|(
-name|expectedDatabaseID
-argument_list|)
-operator|.
-name|append
-argument_list|(
-name|OS
-operator|.
-name|NEWLINE
-argument_list|)
-operator|.
-name|append
-argument_list|(
-literal|"@Article{a}"
-argument_list|)
-decl_stmt|;
-name|ParserResult
-name|parserResult
-init|=
-name|parser
-operator|.
-name|parse
-argument_list|(
-operator|new
-name|StringReader
-argument_list|(
-name|sharedDatabaseFileContent
-operator|.
-name|toString
-argument_list|()
-argument_list|)
-argument_list|)
-decl_stmt|;
-name|String
-name|actualDatabaseID
-init|=
-name|parserResult
-operator|.
-name|getDatabase
-argument_list|()
-operator|.
-name|getSharedDatabaseID
-argument_list|()
-operator|.
-name|get
-argument_list|()
-decl_stmt|;
-name|assertEquals
-argument_list|(
-name|expectedDatabaseID
-argument_list|,
-name|actualDatabaseID
-argument_list|)
-expr_stmt|;
-block|}
-annotation|@
-name|Test
-DECL|method|parseDoesNotRecognizeDatabaseIDasUserComment ()
-specifier|public
-name|void
-name|parseDoesNotRecognizeDatabaseIDasUserComment
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-name|BibtexParser
-name|parser
-init|=
-operator|new
-name|BibtexParser
-argument_list|(
-name|importFormatPreferences
-argument_list|)
-decl_stmt|;
-name|StringBuilder
-name|sharedDatabaseFileContent
-init|=
-operator|new
-name|StringBuilder
-argument_list|()
-operator|.
-name|append
-argument_list|(
-literal|"% Encoding: UTF-8"
-argument_list|)
-operator|.
-name|append
-argument_list|(
-name|OS
-operator|.
-name|NEWLINE
-argument_list|)
-operator|.
-name|append
-argument_list|(
-literal|"% DBID: q1w2e3r4t5z6"
-argument_list|)
-operator|.
-name|append
-argument_list|(
-name|OS
-operator|.
-name|NEWLINE
-argument_list|)
-operator|.
-name|append
-argument_list|(
-literal|"@Article{a}"
-argument_list|)
-decl_stmt|;
-name|ParserResult
-name|parserResult
-init|=
-name|parser
-operator|.
-name|parse
-argument_list|(
-operator|new
-name|StringReader
-argument_list|(
-name|sharedDatabaseFileContent
-operator|.
-name|toString
-argument_list|()
-argument_list|)
-argument_list|)
-decl_stmt|;
-name|List
-argument_list|<
-name|BibEntry
-argument_list|>
-name|entries
-init|=
-name|parserResult
-operator|.
-name|getDatabase
-argument_list|()
-operator|.
-name|getEntries
-argument_list|()
-decl_stmt|;
-name|assertEquals
-argument_list|(
-literal|1
-argument_list|,
-name|entries
-operator|.
-name|size
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|""
-argument_list|,
-name|entries
-operator|.
-name|get
-argument_list|(
-literal|0
-argument_list|)
-operator|.
-name|getUserComments
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
-annotation|@
-name|Test
 DECL|method|integrationTestSaveActions ()
 specifier|public
 name|void
@@ -9825,11 +9283,9 @@ block|{
 name|BibtexParser
 name|parser
 init|=
-operator|new
-name|BibtexParser
-argument_list|(
-name|importFormatPreferences
-argument_list|)
+name|this
+operator|.
+name|parser
 decl_stmt|;
 name|ParserResult
 name|parserResult
@@ -9904,7 +9360,7 @@ block|{
 name|ParserResult
 name|result
 init|=
-name|BibtexParser
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -9913,8 +9369,6 @@ name|StringReader
 argument_list|(
 literal|"@comment{jabref-entrytype: Lecturenotes: req[author;title] opt[language;url]}"
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|Map
@@ -10198,7 +9652,7 @@ block|{
 name|ParserResult
 name|result
 init|=
-name|BibtexParser
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -10207,8 +9661,6 @@ name|StringReader
 argument_list|(
 literal|"@comment{jabref-meta: databaseType:biblatex;}"
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|Optional
@@ -10451,7 +9903,7 @@ block|{
 name|ParserResult
 name|result
 init|=
-name|BibtexParser
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -10460,8 +9912,6 @@ name|StringReader
 argument_list|(
 literal|"@comment{jabref-meta: protectedFlag:true;}"
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|assertTrue
@@ -10478,10 +9928,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|integrationTestOldContentSelectorsAreIgnored ()
+DECL|method|integrationTestContentSelectors ()
 specifier|public
 name|void
-name|integrationTestOldContentSelectorsAreIgnored
+name|integrationTestContentSelectors
 parameter_list|()
 throws|throws
 name|IOException
@@ -10496,21 +9946,433 @@ argument_list|(
 operator|new
 name|StringReader
 argument_list|(
-literal|"@comment{jabref-meta: selector_title:testWord;word2;}"
+literal|"@Comment{jabref-meta: selector_status:approved;captured;received;status;}"
 argument_list|)
 argument_list|,
 name|importFormatPreferences
 argument_list|)
 decl_stmt|;
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|values
+init|=
+operator|new
+name|ArrayList
+argument_list|(
+literal|4
+argument_list|)
+decl_stmt|;
+name|values
+operator|.
+name|add
+argument_list|(
+literal|"approved"
+argument_list|)
+expr_stmt|;
+name|values
+operator|.
+name|add
+argument_list|(
+literal|"captured"
+argument_list|)
+expr_stmt|;
+name|values
+operator|.
+name|add
+argument_list|(
+literal|"received"
+argument_list|)
+expr_stmt|;
+name|values
+operator|.
+name|add
+argument_list|(
+literal|"status"
+argument_list|)
+expr_stmt|;
 name|assertEquals
 argument_list|(
-operator|new
-name|MetaData
-argument_list|()
+name|values
 argument_list|,
 name|result
 operator|.
 name|getMetaData
+argument_list|()
+operator|.
+name|getContentSelectors
+argument_list|()
+operator|.
+name|getSelectorValuesForField
+argument_list|(
+literal|"status"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|parseReallyUnknownType ()
+specifier|public
+name|void
+name|parseReallyUnknownType
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|String
+name|bibtexEntry
+init|=
+literal|"@ReallyUnknownType{test,"
+operator|+
+name|OS
+operator|.
+name|NEWLINE
+operator|+
+literal|" Comment                  = {testentry}"
+operator|+
+name|OS
+operator|.
+name|NEWLINE
+operator|+
+literal|"}"
+decl_stmt|;
+name|Collection
+argument_list|<
+name|BibEntry
+argument_list|>
+name|entries
+init|=
+name|parser
+operator|.
+name|parseEntries
+argument_list|(
+name|bibtexEntry
+argument_list|)
+decl_stmt|;
+name|BibEntry
+name|expectedEntry
+init|=
+operator|new
+name|BibEntry
+argument_list|()
+decl_stmt|;
+name|expectedEntry
+operator|.
+name|setType
+argument_list|(
+literal|"Reallyunknowntype"
+argument_list|)
+expr_stmt|;
+name|expectedEntry
+operator|.
+name|setCiteKey
+argument_list|(
+literal|"test"
+argument_list|)
+expr_stmt|;
+name|expectedEntry
+operator|.
+name|setField
+argument_list|(
+literal|"comment"
+argument_list|,
+literal|"testentry"
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+name|Collections
+operator|.
+name|singletonList
+argument_list|(
+name|expectedEntry
+argument_list|)
+argument_list|,
+name|entries
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|parseOtherTypeTest ()
+specifier|public
+name|void
+name|parseOtherTypeTest
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|String
+name|bibtexEntry
+init|=
+literal|"@Other{test,"
+operator|+
+name|OS
+operator|.
+name|NEWLINE
+operator|+
+literal|" Comment                  = {testentry}"
+operator|+
+name|OS
+operator|.
+name|NEWLINE
+operator|+
+literal|"}"
+decl_stmt|;
+name|Collection
+argument_list|<
+name|BibEntry
+argument_list|>
+name|entries
+init|=
+name|parser
+operator|.
+name|parseEntries
+argument_list|(
+name|bibtexEntry
+argument_list|)
+decl_stmt|;
+name|BibEntry
+name|expectedEntry
+init|=
+operator|new
+name|BibEntry
+argument_list|()
+decl_stmt|;
+name|expectedEntry
+operator|.
+name|setType
+argument_list|(
+literal|"Other"
+argument_list|)
+expr_stmt|;
+name|expectedEntry
+operator|.
+name|setCiteKey
+argument_list|(
+literal|"test"
+argument_list|)
+expr_stmt|;
+name|expectedEntry
+operator|.
+name|setField
+argument_list|(
+literal|"comment"
+argument_list|,
+literal|"testentry"
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+name|Collections
+operator|.
+name|singletonList
+argument_list|(
+name|expectedEntry
+argument_list|)
+argument_list|,
+name|entries
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|parseRecognizesDatabaseID ()
+specifier|public
+name|void
+name|parseRecognizesDatabaseID
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|BibtexParser
+name|parser
+init|=
+name|this
+operator|.
+name|parser
+decl_stmt|;
+name|String
+name|expectedDatabaseID
+init|=
+literal|"q1w2e3r4t5z6"
+decl_stmt|;
+name|StringBuilder
+name|sharedDatabaseFileContent
+init|=
+operator|new
+name|StringBuilder
+argument_list|()
+operator|.
+name|append
+argument_list|(
+literal|"% DBID: "
+argument_list|)
+operator|.
+name|append
+argument_list|(
+name|expectedDatabaseID
+argument_list|)
+operator|.
+name|append
+argument_list|(
+name|OS
+operator|.
+name|NEWLINE
+argument_list|)
+operator|.
+name|append
+argument_list|(
+literal|"@Article{a}"
+argument_list|)
+decl_stmt|;
+name|ParserResult
+name|parserResult
+init|=
+name|parser
+operator|.
+name|parse
+argument_list|(
+operator|new
+name|StringReader
+argument_list|(
+name|sharedDatabaseFileContent
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+argument_list|)
+decl_stmt|;
+name|String
+name|actualDatabaseID
+init|=
+name|parserResult
+operator|.
+name|getDatabase
+argument_list|()
+operator|.
+name|getSharedDatabaseID
+argument_list|()
+operator|.
+name|get
+argument_list|()
+decl_stmt|;
+name|assertEquals
+argument_list|(
+name|expectedDatabaseID
+argument_list|,
+name|actualDatabaseID
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|parseDoesNotRecognizeDatabaseIDasUserComment ()
+specifier|public
+name|void
+name|parseDoesNotRecognizeDatabaseIDasUserComment
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|BibtexParser
+name|parser
+init|=
+name|this
+operator|.
+name|parser
+decl_stmt|;
+name|StringBuilder
+name|sharedDatabaseFileContent
+init|=
+operator|new
+name|StringBuilder
+argument_list|()
+operator|.
+name|append
+argument_list|(
+literal|"% Encoding: UTF-8"
+argument_list|)
+operator|.
+name|append
+argument_list|(
+name|OS
+operator|.
+name|NEWLINE
+argument_list|)
+operator|.
+name|append
+argument_list|(
+literal|"% DBID: q1w2e3r4t5z6"
+argument_list|)
+operator|.
+name|append
+argument_list|(
+name|OS
+operator|.
+name|NEWLINE
+argument_list|)
+operator|.
+name|append
+argument_list|(
+literal|"@Article{a}"
+argument_list|)
+decl_stmt|;
+name|ParserResult
+name|parserResult
+init|=
+name|parser
+operator|.
+name|parse
+argument_list|(
+operator|new
+name|StringReader
+argument_list|(
+name|sharedDatabaseFileContent
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+argument_list|)
+decl_stmt|;
+name|List
+argument_list|<
+name|BibEntry
+argument_list|>
+name|entries
+init|=
+name|parserResult
+operator|.
+name|getDatabase
+argument_list|()
+operator|.
+name|getEntries
+argument_list|()
+decl_stmt|;
+name|assertEquals
+argument_list|(
+literal|1
+argument_list|,
+name|entries
+operator|.
+name|size
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|""
+argument_list|,
+name|entries
+operator|.
+name|get
+argument_list|(
+literal|0
+argument_list|)
+operator|.
+name|getUserComments
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -10591,7 +10453,7 @@ block|{
 name|ParserResult
 name|result
 init|=
-name|BibtexParser
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -10612,8 +10474,6 @@ name|NEWLINE
 operator|+
 literal|"@inProceedings{c}"
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|List
@@ -10782,7 +10642,7 @@ comment|// read in bibtex string
 name|ParserResult
 name|result
 init|=
-name|BibtexParser
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -10791,8 +10651,6 @@ name|StringReader
 argument_list|(
 name|bibtexEntry
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -10958,7 +10816,7 @@ comment|// read in bibtex string
 name|ParserResult
 name|result
 init|=
-name|BibtexParser
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -10967,8 +10825,6 @@ name|StringReader
 argument_list|(
 name|bibtexEntry
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -11090,6 +10946,8 @@ specifier|public
 name|void
 name|preserveEncodingPrefixInsideEntry
 parameter_list|()
+throws|throws
+name|ParseException
 block|{
 name|List
 argument_list|<
@@ -11097,9 +10955,9 @@ name|BibEntry
 argument_list|>
 name|parsed
 init|=
-name|BibtexParser
+name|parser
 operator|.
-name|fromString
+name|parseEntries
 argument_list|(
 literal|"@article{test,author={"
 operator|+
@@ -11108,8 +10966,6 @@ operator|.
 name|ENCODING_PREFIX
 operator|+
 literal|"}}"
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|BibEntry
@@ -11175,7 +11031,7 @@ decl_stmt|;
 name|ParserResult
 name|result
 init|=
-name|BibtexParser
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -11184,8 +11040,6 @@ name|StringReader
 argument_list|(
 name|commentText
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -11258,7 +11112,7 @@ comment|// @formatter:on
 name|ParserResult
 name|result
 init|=
-name|BibtexParser
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -11267,8 +11121,6 @@ name|StringReader
 argument_list|(
 name|bibtexEntry
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -11325,7 +11177,7 @@ decl_stmt|;
 name|ParserResult
 name|result
 init|=
-name|BibtexParser
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -11334,8 +11186,6 @@ name|StringReader
 argument_list|(
 name|commentText
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -11408,7 +11258,7 @@ comment|// @formatter:on
 name|ParserResult
 name|result
 init|=
-name|BibtexParser
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -11417,8 +11267,6 @@ name|StringReader
 argument_list|(
 name|bibtexEntry
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -11525,7 +11373,7 @@ comment|// @formatter:on
 name|ParserResult
 name|result
 init|=
-name|BibtexParser
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -11534,8 +11382,6 @@ name|StringReader
 argument_list|(
 name|bibtexEntry
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -11642,7 +11488,7 @@ comment|// @formatter:on
 name|ParserResult
 name|result
 init|=
-name|BibtexParser
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -11651,8 +11497,6 @@ name|StringReader
 argument_list|(
 name|bibtexEntry
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -11704,7 +11548,7 @@ block|{
 name|ParserResult
 name|result
 init|=
-name|BibtexParser
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -11713,8 +11557,6 @@ name|StringReader
 argument_list|(
 literal|"@preamble{}"
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|assertFalse
@@ -11755,7 +11597,7 @@ block|{
 name|ParserResult
 name|result
 init|=
-name|BibtexParser
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -11764,8 +11606,6 @@ name|StringReader
 argument_list|(
 literal|""
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|assertFalse

@@ -614,29 +614,34 @@ name|IdGenerator
 operator|.
 name|next
 argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
-comment|/**      * Constructs a new BibEntry with the given ID and DEFAULT_TYPE      *      * @param id The ID to be used      */
-DECL|method|BibEntry (String id)
-specifier|public
-name|BibEntry
-parameter_list|(
-name|String
-name|id
-parameter_list|)
-block|{
-name|this
-argument_list|(
-name|id
 argument_list|,
 name|DEFAULT_TYPE
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Constructs a new BibEntry with the given type      *      * @param type The type to set. May be null or empty. In that case, DEFAULT_TYPE is used.      */
+DECL|method|BibEntry (String type)
+specifier|public
+name|BibEntry
+parameter_list|(
+name|String
+name|type
+parameter_list|)
+block|{
+name|this
+argument_list|(
+name|IdGenerator
+operator|.
+name|next
+argument_list|()
+argument_list|,
+name|type
+argument_list|)
+expr_stmt|;
+block|}
 comment|/**      * Constructs a new BibEntry with the given ID and given type      *      * @param id   The ID to be used      * @param type The type to set. May be null or empty. In that case, DEFAULT_TYPE is used.      */
 DECL|method|BibEntry (String id, String type)
-specifier|public
+specifier|private
 name|BibEntry
 parameter_list|(
 name|String
@@ -1906,7 +1911,7 @@ name|getLatexFreeField
 argument_list|)
 return|;
 block|}
-comment|/**      * Returns the contents of the given field or its alias as an Optional      *<p>      * The following aliases are considered (old bibtex<-> new biblatex) based      * on the BibLatex documentation, chapter 2.2.5:<br>      * address<-> location<br>      * annote<-> annotation<br>      * archiveprefix<-> eprinttype<br>      * journal<-> journaltitle<br>      * key<-> sortkey<br>      * pdf<-> file<br      * primaryclass<-> eprintclass<br>      * school<-> institution<br>      * These work bidirectional.<br>      *<p>      * Special attention is paid to dates: (see the BibLatex documentation,      * chapter 2.3.8)      * The fields 'year' and 'month' are used if the 'date'      * field is empty. Conversely, getFieldOrAlias("year") also tries to      * extract the year from the 'date' field (analogously for 'month').      */
+comment|/**      * Returns the contents of the given field or its alias as an Optional      *<p>      * The following aliases are considered (old bibtex<-> new biblatex) based      * on the BibLatex documentation, chapter 2.2.5:<br>      * address<-> location<br>      * annote<-> annotation<br>      * archiveprefix<-> eprinttype<br>      * journal<-> journaltitle<br>      * key<-> sortkey<br>      * pdf<-> file<br      * primaryclass<-> eprintclass<br>      * school<-> institution<br>      * These work bidirectional.<br>      *</p>      *      *<p>      * Special attention is paid to dates: (see the BibLatex documentation,      * chapter 2.3.8)      * The fields 'year' and 'month' are used if the 'date'      * field is empty. Conversely, getFieldOrAlias("year") also tries to      * extract the year from the 'date' field (analogously for 'month').      *</p>      */
 DECL|method|getFieldOrAlias (String name)
 specifier|public
 name|Optional
@@ -2544,7 +2549,7 @@ return|return
 literal|false
 return|;
 block|}
-comment|/**      * Returns a clone of this entry. Useful for copying.      */
+comment|/**      * Returns a clone of this entry. Useful for copying.      * This will set a new ID for the cloned entry to be able to distinguish both copies.      */
 annotation|@
 name|Override
 DECL|method|clone ()
@@ -2559,8 +2564,6 @@ init|=
 operator|new
 name|BibEntry
 argument_list|(
-name|id
-argument_list|,
 name|type
 argument_list|)
 decl_stmt|;
@@ -3794,6 +3797,84 @@ name|latexFreeField
 argument_list|)
 return|;
 block|}
+block|}
+DECL|method|setFiles (List<ParsedFileField> files)
+specifier|public
+name|Optional
+argument_list|<
+name|FieldChange
+argument_list|>
+name|setFiles
+parameter_list|(
+name|List
+argument_list|<
+name|ParsedFileField
+argument_list|>
+name|files
+parameter_list|)
+block|{
+name|Optional
+argument_list|<
+name|String
+argument_list|>
+name|oldValue
+init|=
+name|this
+operator|.
+name|getField
+argument_list|(
+name|FieldName
+operator|.
+name|FILE
+argument_list|)
+decl_stmt|;
+name|String
+name|newValue
+init|=
+name|FileField
+operator|.
+name|getStringRepresentation
+argument_list|(
+name|files
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|oldValue
+operator|.
+name|isPresent
+argument_list|()
+operator|&&
+name|oldValue
+operator|.
+name|get
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+name|newValue
+argument_list|)
+condition|)
+block|{
+return|return
+name|Optional
+operator|.
+name|empty
+argument_list|()
+return|;
+block|}
+return|return
+name|this
+operator|.
+name|setField
+argument_list|(
+name|FieldName
+operator|.
+name|FILE
+argument_list|,
+name|newValue
+argument_list|)
+return|;
 block|}
 block|}
 end_class

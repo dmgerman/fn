@@ -150,6 +150,18 @@ name|assertEquals
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertNotEquals
+import|;
+end_import
+
 begin_class
 annotation|@
 name|Category
@@ -252,7 +264,7 @@ name|setField
 argument_list|(
 literal|"author"
 argument_list|,
-literal|"Joshua Bloch"
+literal|"Bloch, Joshua"
 argument_list|)
 expr_stmt|;
 name|bibEntry
@@ -289,6 +301,15 @@ argument_list|(
 literal|"pagetotal"
 argument_list|,
 literal|"384"
+argument_list|)
+expr_stmt|;
+name|bibEntry
+operator|.
+name|setField
+argument_list|(
+literal|"url"
+argument_list|,
+literal|"http://www.ebook.de/de/product/6441328/joshua_bloch_effective_java.html"
 argument_list|)
 expr_stmt|;
 block|}
@@ -514,13 +535,13 @@ literal|"jabref-4-ever"
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * This test searches for a valid ISBN. See https://www.amazon.de/dp/3728128155/?tag=jabref-21      * However, this ISBN is not available on ebook.de. The fetcher should return nothing rather than throwing an exeption.      */
+comment|/**      * This test searches for a valid ISBN. See https://www.amazon.de/dp/3728128155/?tag=jabref-21      * However, this ISBN is not available on ebook.de. The fetcher should something as it falls back to Chimbori      */
 annotation|@
 name|Test
-DECL|method|searchForValidButNotFoundISBN ()
+DECL|method|searchForIsbnAvailableAtChimboriButNonOnEbookDe ()
 specifier|public
 name|void
-name|searchForValidButNotFoundISBN
+name|searchForIsbnAvailableAtChimboriButNonOnEbookDe
 parameter_list|()
 throws|throws
 name|Exception
@@ -538,7 +559,7 @@ argument_list|(
 literal|"3728128155"
 argument_list|)
 decl_stmt|;
-name|assertEquals
+name|assertNotEquals
 argument_list|(
 name|Optional
 operator|.

@@ -230,11 +230,11 @@ name|assertEquals
 argument_list|(
 name|HelpFile
 operator|.
-name|FETCHER_DIVA_TO_BIBTEX
+name|FETCHER_DIVA
 argument_list|,
 name|HelpFile
 operator|.
-name|FETCHER_DIVA_TO_BIBTEX
+name|FETCHER_DIVA
 argument_list|)
 expr_stmt|;
 block|}

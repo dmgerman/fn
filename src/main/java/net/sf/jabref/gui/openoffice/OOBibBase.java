@@ -522,22 +522,6 @@ end_import
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|entry
-operator|.
-name|IdGenerator
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|sun
@@ -9201,16 +9185,6 @@ operator|.
 name|clone
 argument_list|()
 decl_stmt|;
-name|clonedEntry
-operator|.
-name|setId
-argument_list|(
-name|IdGenerator
-operator|.
-name|next
-argument_list|()
-argument_list|)
-expr_stmt|;
 comment|// Insert a copy of the entry
 name|resultDatabase
 operator|.

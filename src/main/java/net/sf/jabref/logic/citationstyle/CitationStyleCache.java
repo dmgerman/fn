@@ -249,6 +249,13 @@ argument_list|,
 name|this
 operator|.
 name|citationStyle
+operator|.
+name|getSource
+argument_list|()
+argument_list|,
+name|CitationStyleOutputFormat
+operator|.
+name|HTML
 argument_list|)
 expr_stmt|;
 name|citationStylesCache

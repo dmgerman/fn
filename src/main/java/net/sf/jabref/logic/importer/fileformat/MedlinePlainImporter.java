@@ -1548,7 +1548,9 @@ name|fields
 operator|.
 name|put
 argument_list|(
-literal|"comment"
+name|FieldName
+operator|.
+name|COMMENT
 argument_list|,
 name|comment
 argument_list|)
@@ -1560,12 +1562,9 @@ init|=
 operator|new
 name|BibEntry
 argument_list|(
-name|DEFAULT_BIBTEXENTRY_ID
-argument_list|,
 name|type
 argument_list|)
 decl_stmt|;
-comment|// id assumes an existing database so don't
 comment|// Remove empty fields:
 name|fields
 operator|.

@@ -299,8 +299,6 @@ init|=
 operator|new
 name|BibEntry
 argument_list|(
-literal|"1234"
-argument_list|,
 literal|"article"
 argument_list|)
 decl_stmt|;
@@ -671,7 +669,11 @@ comment|// read in bibtex string
 name|ParserResult
 name|result
 init|=
+operator|new
 name|BibtexParser
+argument_list|(
+name|importFormatPreferences
+argument_list|)
 operator|.
 name|parse
 argument_list|(
@@ -680,8 +682,6 @@ name|StringReader
 argument_list|(
 name|bibtexEntry
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -797,7 +797,11 @@ comment|// read in bibtex string
 name|ParserResult
 name|result
 init|=
+operator|new
 name|BibtexParser
+argument_list|(
+name|importFormatPreferences
+argument_list|)
 operator|.
 name|parse
 argument_list|(
@@ -806,8 +810,6 @@ name|StringReader
 argument_list|(
 name|bibtexEntry
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -927,7 +929,11 @@ comment|// read in bibtex string
 name|ParserResult
 name|result
 init|=
+operator|new
 name|BibtexParser
+argument_list|(
+name|importFormatPreferences
+argument_list|)
 operator|.
 name|parse
 argument_list|(
@@ -936,8 +942,6 @@ name|StringReader
 argument_list|(
 name|bibtexEntry
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -1118,7 +1122,11 @@ comment|// read in bibtex string
 name|ParserResult
 name|result
 init|=
+operator|new
 name|BibtexParser
+argument_list|(
+name|importFormatPreferences
+argument_list|)
 operator|.
 name|parse
 argument_list|(
@@ -1127,8 +1135,6 @@ name|StringReader
 argument_list|(
 name|bibtexEntry
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -1319,7 +1325,11 @@ comment|// read in bibtex string
 name|ParserResult
 name|result
 init|=
+operator|new
 name|BibtexParser
+argument_list|(
+name|importFormatPreferences
+argument_list|)
 operator|.
 name|parse
 argument_list|(
@@ -1328,8 +1338,6 @@ name|StringReader
 argument_list|(
 name|expected
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -1504,7 +1512,11 @@ comment|// read in bibtex string
 name|ParserResult
 name|result
 init|=
+operator|new
 name|BibtexParser
+argument_list|(
+name|importFormatPreferences
+argument_list|)
 operator|.
 name|parse
 argument_list|(
@@ -1513,8 +1525,6 @@ name|StringReader
 argument_list|(
 name|bibtexEntry
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -1684,7 +1694,11 @@ comment|// read in bibtex string
 name|ParserResult
 name|result
 init|=
+operator|new
 name|BibtexParser
+argument_list|(
+name|importFormatPreferences
+argument_list|)
 operator|.
 name|parse
 argument_list|(
@@ -1693,8 +1707,6 @@ name|StringReader
 argument_list|(
 name|bibtexEntry
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -1807,7 +1819,11 @@ comment|// read in bibtex string
 name|ParserResult
 name|result
 init|=
+operator|new
 name|BibtexParser
+argument_list|(
+name|importFormatPreferences
+argument_list|)
 operator|.
 name|parse
 argument_list|(
@@ -1816,8 +1832,6 @@ name|StringReader
 argument_list|(
 name|bibtexEntry
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -1978,7 +1992,11 @@ comment|// read in bibtex string
 name|ParserResult
 name|result
 init|=
+operator|new
 name|BibtexParser
+argument_list|(
+name|importFormatPreferences
+argument_list|)
 operator|.
 name|parse
 argument_list|(
@@ -1987,8 +2005,6 @@ name|StringReader
 argument_list|(
 name|bibtexEntry
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -2137,8 +2153,6 @@ init|=
 operator|new
 name|BibEntry
 argument_list|(
-literal|"1234"
-argument_list|,
 literal|"article"
 argument_list|)
 decl_stmt|;
@@ -2237,8 +2251,6 @@ init|=
 operator|new
 name|BibEntry
 argument_list|(
-literal|"1234"
-argument_list|,
 literal|"article"
 argument_list|)
 decl_stmt|;
@@ -2362,7 +2374,11 @@ comment|// read in bibtex string
 name|ParserResult
 name|result
 init|=
+operator|new
 name|BibtexParser
+argument_list|(
+name|importFormatPreferences
+argument_list|)
 operator|.
 name|parse
 argument_list|(
@@ -2371,8 +2387,6 @@ name|StringReader
 argument_list|(
 name|bibtexEntry
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -2494,7 +2508,11 @@ comment|// read in bibtex string
 name|ParserResult
 name|result
 init|=
+operator|new
 name|BibtexParser
+argument_list|(
+name|importFormatPreferences
+argument_list|)
 operator|.
 name|parse
 argument_list|(
@@ -2503,8 +2521,6 @@ name|StringReader
 argument_list|(
 name|bibtexEntry
 argument_list|)
-argument_list|,
-name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|Collection

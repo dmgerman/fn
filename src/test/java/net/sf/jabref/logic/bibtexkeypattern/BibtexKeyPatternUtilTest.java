@@ -52,6 +52,22 @@ name|logic
 operator|.
 name|importer
 operator|.
+name|ParseException
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|importer
+operator|.
 name|fileformat
 operator|.
 name|BibtexParser
@@ -348,6 +364,8 @@ specifier|public
 name|void
 name|testAndInAuthorName
 parameter_list|()
+throws|throws
+name|ParseException
 block|{
 name|Optional
 argument_list|<
@@ -402,6 +420,8 @@ specifier|public
 name|void
 name|testAndAuthorNames
 parameter_list|()
+throws|throws
+name|ParseException
 block|{
 name|String
 name|bibtexString
@@ -461,6 +481,8 @@ specifier|public
 name|void
 name|testSpecialLatexCharacterInAuthorName
 parameter_list|()
+throws|throws
+name|ParseException
 block|{
 name|Optional
 argument_list|<
@@ -516,6 +538,8 @@ specifier|public
 name|void
 name|testMakeLabelAndCheckLegalKeys
 parameter_list|()
+throws|throws
+name|ParseException
 block|{
 name|Optional
 argument_list|<
@@ -1022,6 +1046,8 @@ specifier|public
 name|void
 name|testMakeLabelAndCheckLegalKeysAccentGrave
 parameter_list|()
+throws|throws
+name|ParseException
 block|{
 name|Optional
 argument_list|<
@@ -1607,6 +1633,8 @@ specifier|public
 name|void
 name|testUniversity
 parameter_list|()
+throws|throws
+name|ParseException
 block|{
 name|Optional
 argument_list|<
@@ -1661,6 +1689,8 @@ specifier|public
 name|void
 name|testDepartment
 parameter_list|()
+throws|throws
+name|ParseException
 block|{
 name|Optional
 argument_list|<
@@ -1715,6 +1745,8 @@ specifier|public
 name|void
 name|testSchool
 parameter_list|()
+throws|throws
+name|ParseException
 block|{
 name|Optional
 argument_list|<
@@ -1769,6 +1801,8 @@ specifier|public
 name|void
 name|testInstituteOfTechnology
 parameter_list|()
+throws|throws
+name|ParseException
 block|{
 name|Optional
 argument_list|<
