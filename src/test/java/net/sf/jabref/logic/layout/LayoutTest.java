@@ -573,6 +573,36 @@ name|layoutText
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+DECL|method|testHTMLCharDoubleLineBreak ()
+specifier|public
+name|void
+name|testHTMLCharDoubleLineBreak
+parameter_list|()
+throws|throws
+name|IOException
+block|{
+name|String
+name|layoutText
+init|=
+name|layout
+argument_list|(
+literal|"\\begin{author}\\format[HTMLChars]{\\author}\\end{author} "
+argument_list|,
+literal|"@other{bla, author={This\nis\na\n\ntext}}"
+argument_list|)
+decl_stmt|;
+name|Assert
+operator|.
+name|assertEquals
+argument_list|(
+literal|"This is a text "
+argument_list|,
+name|layoutText
+argument_list|)
+expr_stmt|;
+block|}
 comment|/**      * [ 1495181 ] Dotless i and tilde not handled in preview      *      * @throws Exception      */
 annotation|@
 name|Test
