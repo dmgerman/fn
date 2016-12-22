@@ -260,22 +260,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
-operator|.
-name|worker
-operator|.
-name|Worker
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|logic
 operator|.
 name|autosaveandbackup
@@ -1890,7 +1874,7 @@ throws|throws
 name|Exception
 block|{
 comment|// This part uses Spin's features:
-name|Worker
+name|Runnable
 name|worker
 init|=
 name|getWorker

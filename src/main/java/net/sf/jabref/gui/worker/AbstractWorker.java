@@ -33,14 +33,14 @@ specifier|abstract
 class|class
 name|AbstractWorker
 implements|implements
-name|Worker
+name|Runnable
 implements|,
 name|CallBack
 block|{
 DECL|field|worker
 specifier|private
 specifier|final
-name|Worker
+name|Runnable
 name|worker
 decl_stmt|;
 DECL|field|callBack
@@ -57,7 +57,7 @@ block|{
 name|worker
 operator|=
 operator|(
-name|Worker
+name|Runnable
 operator|)
 name|Spin
 operator|.
@@ -92,7 +92,7 @@ block|}
 comment|/**      * This method returns a wrapped Worker instance of this AbstractWorker.      * whose methods will automatically be run off the EDT (Swing) thread.      */
 DECL|method|getWorker ()
 specifier|public
-name|Worker
+name|Runnable
 name|getWorker
 parameter_list|()
 block|{
