@@ -152,22 +152,6 @@ name|logic
 operator|.
 name|importer
 operator|.
-name|ParseException
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
-name|importer
-operator|.
 name|fileformat
 operator|.
 name|BibtexParser
@@ -248,7 +232,6 @@ name|IdBasedFetcher
 block|{
 DECL|field|preferences
 specifier|private
-specifier|final
 name|ImportFormatPreferences
 name|preferences
 decl_stmt|;
@@ -447,22 +430,6 @@ name|lang
 argument_list|(
 literal|"Invalid URL"
 argument_list|)
-argument_list|,
-name|e
-argument_list|)
-throw|;
-block|}
-catch|catch
-parameter_list|(
-name|ParseException
-name|e
-parameter_list|)
-block|{
-throw|throw
-operator|new
-name|FetcherException
-argument_list|(
-literal|"Could not parse BibTeX entry"
 argument_list|,
 name|e
 argument_list|)

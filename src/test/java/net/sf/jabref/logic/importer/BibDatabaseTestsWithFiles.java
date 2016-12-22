@@ -204,15 +204,13 @@ block|{
 name|ParserResult
 name|result
 init|=
-operator|new
 name|BibtexParser
-argument_list|(
-name|importFormatPreferences
-argument_list|)
 operator|.
 name|parse
 argument_list|(
 name|fr
+argument_list|,
+name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|BibDatabase

@@ -352,15 +352,13 @@ throws|throws
 name|IOException
 block|{
 return|return
-operator|new
 name|BibtexParser
-argument_list|(
-name|importFormatPreferences
-argument_list|)
 operator|.
 name|parse
 argument_list|(
 name|reader
+argument_list|,
+name|importFormatPreferences
 argument_list|)
 return|;
 block|}

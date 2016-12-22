@@ -432,13 +432,16 @@ return|;
 block|}
 comment|/**      * Constructs a INSPIRE query url from slaccitation field      *      * @param slaccitation      * @return query string      *      *         public static String constructUrlFromSlaccitation(String slaccitation) { String cmd = "j"; String key =      *         slaccitation.replaceAll("^%%CITATION = ", "").replaceAll( ";%%$", ""); if (key.matches("^\\w*-\\w*[ /].*"      *         )) cmd = "eprint"; try { key = URLEncoder.encode(key, "UTF-8"); } catch (UnsupportedEncodingException e)      *         { } StringBuffer sb = new StringBuffer("http://").append(INSPIRE_HOST) .append("/");      *         sb.append("spires/find/hep/www").append("?"); sb.append("rawcmd=find+").append(cmd).append("+");      *         sb.append(key); return sb.toString(); }      *      *         /** Construct an INSPIRE query url from eprint field      *      * @param eprint      * @return query string      *      *         public static String constructUrlFromEprint(String eprint) { String key = eprint.replaceAll(" [.*]$",      *         ""); try { key = URLEncoder.encode(key, "UTF-8"); } catch (UnsupportedEncodingException e) { return ""; }      *         StringBuffer sb = new StringBuffer("http://").append(INSPIRE_HOST) .append("/");      *         sb.append("spires/find/hep/www").append("?"); sb.append("rawcmd=find+eprint+"); sb.append(key); return      *         sb.toString(); }      */
 comment|/**      * Import an entry from an OAI2 archive. The BibEntry provided has to have the field OAI2_IDENTIFIER_FIELD set to      * the search string.      *      * @param key The OAI2 key to fetch from ArXiv.      * @return The imported BibEntry or null if none.      */
-DECL|method|importInspireEntries (String key)
+DECL|method|importInspireEntries (String key, OutputPrinter frame)
 specifier|private
 name|BibDatabase
 name|importInspireEntries
 parameter_list|(
 name|String
 name|key
+parameter_list|,
+name|OutputPrinter
+name|frame
 parameter_list|)
 throws|throws
 name|IOException
@@ -506,20 +509,18 @@ block|{
 name|ParserResult
 name|pr
 init|=
-operator|new
 name|BibtexParser
+operator|.
+name|parse
 argument_list|(
+name|reader
+argument_list|,
 name|Globals
 operator|.
 name|prefs
 operator|.
 name|getImportFormatPreferences
 argument_list|()
-argument_list|)
-operator|.
-name|parse
-argument_list|(
-name|reader
 argument_list|)
 decl_stmt|;
 return|return
@@ -619,6 +620,8 @@ init|=
 name|importInspireEntries
 argument_list|(
 name|query
+argument_list|,
+name|status
 argument_list|)
 decl_stmt|;
 name|status

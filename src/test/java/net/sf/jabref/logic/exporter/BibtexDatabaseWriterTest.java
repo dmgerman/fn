@@ -1953,11 +1953,7 @@ decl_stmt|;
 name|ParserResult
 name|result
 init|=
-operator|new
 name|BibtexParser
-argument_list|(
-name|importFormatPreferences
-argument_list|)
 operator|.
 name|parse
 argument_list|(
@@ -1969,6 +1965,8 @@ name|testBibtexFile
 argument_list|,
 name|encoding
 argument_list|)
+argument_list|,
+name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|SavePreferences
@@ -2100,11 +2098,7 @@ decl_stmt|;
 name|ParserResult
 name|result
 init|=
-operator|new
 name|BibtexParser
-argument_list|(
-name|importFormatPreferences
-argument_list|)
 operator|.
 name|parse
 argument_list|(
@@ -2116,6 +2110,8 @@ name|testBibtexFile
 argument_list|,
 name|encoding
 argument_list|)
+argument_list|,
+name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|SavePreferences
@@ -2247,11 +2243,7 @@ decl_stmt|;
 name|ParserResult
 name|result
 init|=
-operator|new
 name|BibtexParser
-argument_list|(
-name|importFormatPreferences
-argument_list|)
 operator|.
 name|parse
 argument_list|(
@@ -2263,6 +2255,8 @@ name|testBibtexFile
 argument_list|,
 name|encoding
 argument_list|)
+argument_list|,
+name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|BibEntry
@@ -2424,11 +2418,7 @@ decl_stmt|;
 name|ParserResult
 name|result
 init|=
-operator|new
 name|BibtexParser
-argument_list|(
-name|importFormatPreferences
-argument_list|)
 operator|.
 name|parse
 argument_list|(
@@ -2440,6 +2430,8 @@ name|testBibtexFile
 argument_list|,
 name|encoding
 argument_list|)
+argument_list|,
+name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 for|for

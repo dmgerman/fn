@@ -114,6 +114,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Deque
 import|;
 end_import
@@ -660,8 +670,6 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Shortcut usage to create a Parser and read the input.      *      * @param in the Reader to read from      * @throws IOException      * @deprecated inline this method      */
-annotation|@
-name|Deprecated
 DECL|method|parse (Reader in, ImportFormatPreferences importFormatPreferences)
 specifier|public
 specifier|static
@@ -690,7 +698,74 @@ name|in
 argument_list|)
 return|;
 block|}
-comment|/**      * Parses BibtexEntries from the given string and returns one entry found (or null if none found)      *<p>      * It is undetermined which entry is returned, so use this in case you know there is only one entry in the string.      *      * @param bibtexString      * @return An Optional<BibEntry>. Optional.empty() if non was found or an error occurred.      * @throws ParseException      */
+comment|/**      * Parses BibtexEntries from the given string and returns the collection of all entries found.      *      * @param bibtexString      * @return Returns returns an empty collection if no entries where found or if an error occurred.      * @deprecated use parseEntries      */
+annotation|@
+name|Deprecated
+DECL|method|fromString (String bibtexString, ImportFormatPreferences importFormatPreferences)
+specifier|public
+specifier|static
+name|List
+argument_list|<
+name|BibEntry
+argument_list|>
+name|fromString
+parameter_list|(
+name|String
+name|bibtexString
+parameter_list|,
+name|ImportFormatPreferences
+name|importFormatPreferences
+parameter_list|)
+block|{
+name|BibtexParser
+name|parser
+init|=
+operator|new
+name|BibtexParser
+argument_list|(
+name|importFormatPreferences
+argument_list|)
+decl_stmt|;
+try|try
+block|{
+return|return
+name|parser
+operator|.
+name|parseEntries
+argument_list|(
+name|bibtexString
+argument_list|)
+return|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{
+name|LOGGER
+operator|.
+name|warn
+argument_list|(
+literal|"BibtexParser.fromString(String): "
+operator|+
+name|e
+operator|.
+name|getMessage
+argument_list|()
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+return|return
+name|Collections
+operator|.
+name|emptyList
+argument_list|()
+return|;
+block|}
+block|}
+comment|/**      * Parses BibtexEntries from the given string and returns one entry found (or null if none found)      *<p>      * It is undetermined which entry is returned, so use this in case you know there is only one entry in the string.      *      * @param bibtexString      * @return An Optional<BibEntry>. Optional.empty() if non was found or an error occurred.      */
 DECL|method|singleFromString (String bibtexString, ImportFormatPreferences importFormatPreferences)
 specifier|public
 specifier|static
@@ -706,8 +781,6 @@ parameter_list|,
 name|ImportFormatPreferences
 name|importFormatPreferences
 parameter_list|)
-throws|throws
-name|ParseException
 block|{
 name|Collection
 argument_list|<
@@ -715,15 +788,13 @@ name|BibEntry
 argument_list|>
 name|entries
 init|=
-operator|new
 name|BibtexParser
-argument_list|(
-name|importFormatPreferences
-argument_list|)
 operator|.
-name|parseEntries
+name|fromString
 argument_list|(
 name|bibtexString
+argument_list|,
+name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 if|if
