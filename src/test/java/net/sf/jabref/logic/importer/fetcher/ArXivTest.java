@@ -560,7 +560,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-comment|// Test for https://github.com/JabRef/jabref/issues/2427
 DECL|method|findByEprintWithPrefix ()
 specifier|public
 name|void
@@ -977,7 +976,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-comment|// Test for https://github.com/JabRef/jabref/issues/2427
 DECL|method|searchEntryByIdWith4DigitsAndPrefix ()
 specifier|public
 name|void
