@@ -835,6 +835,17 @@ parameter_list|)
 throws|throws
 name|FetcherException
 block|{
+name|identifier
+operator|=
+name|identifier
+operator|.
+name|replaceAll
+argument_list|(
+literal|"(?i)arxiv:"
+argument_list|,
+literal|""
+argument_list|)
+expr_stmt|;
 name|List
 argument_list|<
 name|ArXivEntry
@@ -863,7 +874,7 @@ name|entries
 operator|.
 name|size
 argument_list|()
-operator|==
+operator|>=
 literal|1
 condition|)
 block|{
