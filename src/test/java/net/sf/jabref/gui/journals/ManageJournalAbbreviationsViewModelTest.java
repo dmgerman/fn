@@ -140,6 +140,18 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|CatchExceptionsFromThread
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|JabRefException
 import|;
 end_import
@@ -235,6 +247,16 @@ operator|.
 name|junit
 operator|.
 name|Before
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|ClassRule
 import|;
 end_import
 
@@ -353,10 +375,10 @@ comment|/**  * This is the test class of the ManageAbbreviationsViewModel which 
 end_comment
 
 begin_class
-DECL|class|ManageJournalAbbreviationsTest
+DECL|class|ManageJournalAbbreviationsViewModelTest
 specifier|public
 class|class
-name|ManageJournalAbbreviationsTest
+name|ManageJournalAbbreviationsViewModelTest
 block|{
 DECL|field|viewModel
 specifier|private
@@ -372,6 +394,18 @@ name|tempFolder
 init|=
 operator|new
 name|TemporaryFolder
+argument_list|()
+decl_stmt|;
+annotation|@
+name|ClassRule
+DECL|field|catchExceptions
+specifier|public
+specifier|static
+name|CatchExceptionsFromThread
+name|catchExceptions
+init|=
+operator|new
+name|CatchExceptionsFromThread
 argument_list|()
 decl_stmt|;
 DECL|field|emptyTestFile
