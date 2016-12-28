@@ -28,16 +28,6 @@ end_import
 
 begin_import
 import|import
-name|javafx
-operator|.
-name|concurrent
-operator|.
-name|Task
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -92,7 +82,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|/**      * Executes the task on the current thread.      * The code is essentially taken from {@link Task.TaskCallable#call()},      * but adapted to run sequentially.      */
+comment|/**      * Executes the task on the current thread.      * The code is essentially taken from {@link javafx.concurrent.Task.TaskCallable#call()},      * but adapted to run sequentially.      */
 annotation|@
 name|Override
 DECL|method|execute (BackgroundTask<V> task)
@@ -131,19 +121,17 @@ name|run
 argument_list|()
 expr_stmt|;
 block|}
+try|try
+block|{
 specifier|final
 name|V
 name|result
-decl_stmt|;
-try|try
-block|{
-name|result
-operator|=
+init|=
 name|task
 operator|.
 name|call
 argument_list|()
-expr_stmt|;
+decl_stmt|;
 name|Consumer
 argument_list|<
 name|V
