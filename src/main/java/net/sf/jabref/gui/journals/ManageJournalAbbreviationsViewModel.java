@@ -90,30 +90,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|ExecutorService
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|Executors
-import|;
-end_import
-
-begin_import
-import|import
 name|javafx
 operator|.
 name|beans
@@ -182,16 +158,6 @@ end_import
 
 begin_import
 import|import
-name|javafx
-operator|.
-name|concurrent
-operator|.
-name|Task
-import|;
-end_import
-
-begin_import
-import|import
 name|net
 operator|.
 name|sf
@@ -230,6 +196,22 @@ name|gui
 operator|.
 name|util
 operator|.
+name|BackgroundTask
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|util
+operator|.
 name|FileDialogConfiguration
 import|;
 end_import
@@ -246,7 +228,7 @@ name|gui
 operator|.
 name|util
 operator|.
-name|TaskUtil
+name|TaskExecutor
 import|;
 end_import
 
@@ -533,7 +515,13 @@ specifier|final
 name|DialogService
 name|dialogService
 decl_stmt|;
-DECL|method|ManageJournalAbbreviationsViewModel (JabRefPreferences preferences, DialogService dialogService)
+DECL|field|taskExecutor
+specifier|private
+specifier|final
+name|TaskExecutor
+name|taskExecutor
+decl_stmt|;
+DECL|method|ManageJournalAbbreviationsViewModel (JabRefPreferences preferences, DialogService dialogService, TaskExecutor taskExecutor)
 specifier|public
 name|ManageJournalAbbreviationsViewModel
 parameter_list|(
@@ -542,6 +530,9 @@ name|preferences
 parameter_list|,
 name|DialogService
 name|dialogService
+parameter_list|,
+name|TaskExecutor
+name|taskExecutor
 parameter_list|)
 block|{
 name|this
@@ -564,6 +555,17 @@ operator|.
 name|requireNonNull
 argument_list|(
 name|dialogService
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|taskExecutor
+operator|=
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|taskExecutor
 argument_list|)
 expr_stmt|;
 name|abbreviationsCount
@@ -890,12 +892,11 @@ return|;
 block|}
 comment|/**      * This will wrap the built in and ieee abbreviations in pseudo abbreviation files      * and add them to the list of journal abbreviation files.      */
 DECL|method|addBuiltInLists ()
-specifier|public
 name|void
 name|addBuiltInLists
 parameter_list|()
 block|{
-name|Task
+name|BackgroundTask
 argument_list|<
 name|List
 argument_list|<
@@ -904,20 +905,18 @@ argument_list|>
 argument_list|>
 name|loadBuiltIn
 init|=
-name|TaskUtil
+name|BackgroundTask
 operator|.
-name|create
+name|run
 argument_list|(
 name|JournalAbbreviationLoader
 operator|::
 name|getBuiltInAbbreviations
 argument_list|)
-decl_stmt|;
-name|loadBuiltIn
 operator|.
-name|setOnRunning
+name|onRunning
 argument_list|(
-name|event
+parameter_list|()
 lambda|->
 name|isLoading
 operator|.
@@ -926,12 +925,10 @@ argument_list|(
 literal|true
 argument_list|)
 argument_list|)
-expr_stmt|;
-name|loadBuiltIn
 operator|.
-name|setOnSucceeded
+name|onSuccess
 argument_list|(
-name|event
+name|result
 lambda|->
 block|{
 name|isLoading
@@ -940,7 +937,7 @@ name|setValue
 argument_list|(
 literal|false
 argument_list|)
-expr_stmt|;
+argument_list|;
 name|addList
 argument_list|(
 name|Localization
@@ -950,16 +947,23 @@ argument_list|(
 literal|"JabRef built in list"
 argument_list|)
 argument_list|,
-name|loadBuiltIn
-operator|.
-name|getValue
-argument_list|()
+name|result
 argument_list|)
-expr_stmt|;
+argument_list|;
 block|}
+block|)
+operator|.
+name|onFailure
+argument_list|(
+name|dialogService
+operator|::
+name|showErrorDialogAndWait
 argument_list|)
 expr_stmt|;
-name|Task
+end_class
+
+begin_decl_stmt
+name|BackgroundTask
 argument_list|<
 name|List
 argument_list|<
@@ -968,9 +972,9 @@ argument_list|>
 argument_list|>
 name|loadIeee
 init|=
-name|TaskUtil
+name|BackgroundTask
 operator|.
-name|create
+name|run
 argument_list|(
 parameter_list|()
 lambda|->
@@ -1005,12 +1009,10 @@ return|;
 block|}
 block|}
 argument_list|)
-decl_stmt|;
-name|loadIeee
 operator|.
-name|setOnRunning
+name|onRunning
 argument_list|(
-name|event
+parameter_list|()
 lambda|->
 name|isLoading
 operator|.
@@ -1019,12 +1021,10 @@ argument_list|(
 literal|true
 argument_list|)
 argument_list|)
-expr_stmt|;
-name|loadIeee
 operator|.
-name|setOnSucceeded
+name|onSuccess
 argument_list|(
-name|event
+name|result
 lambda|->
 block|{
 name|isLoading
@@ -1033,7 +1033,7 @@ name|setValue
 argument_list|(
 literal|false
 argument_list|)
-expr_stmt|;
+argument_list|;
 name|addList
 argument_list|(
 name|Localization
@@ -1043,45 +1043,46 @@ argument_list|(
 literal|"IEEE built in list"
 argument_list|)
 argument_list|,
-name|loadBuiltIn
+name|result
+argument_list|)
+argument_list|;
+end_decl_stmt
+
+begin_expr_stmt
+unit|})
 operator|.
-name|getValue
-argument_list|()
+name|onFailure
+argument_list|(
+name|dialogService
+operator|::
+name|showErrorDialogAndWait
 argument_list|)
 expr_stmt|;
-block|}
-argument_list|)
-expr_stmt|;
-name|ExecutorService
-name|executorService
-init|=
-name|Executors
+end_expr_stmt
+
+begin_expr_stmt
+name|taskExecutor
 operator|.
-name|newSingleThreadExecutor
-argument_list|()
-decl_stmt|;
-name|executorService
-operator|.
-name|submit
+name|execute
 argument_list|(
 name|loadBuiltIn
 argument_list|)
 expr_stmt|;
-name|executorService
+end_expr_stmt
+
+begin_expr_stmt
+name|taskExecutor
 operator|.
-name|submit
+name|execute
 argument_list|(
 name|loadIeee
 argument_list|)
 expr_stmt|;
-name|executorService
-operator|.
-name|shutdown
-argument_list|()
-expr_stmt|;
-block|}
+end_expr_stmt
+
+begin_function
+unit|}      private
 DECL|method|addList (String name, List<Abbreviation> abbreviations)
-specifier|private
 name|void
 name|addList
 parameter_list|(
@@ -1143,7 +1144,13 @@ name|fileViewModel
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Read all saved file paths and read their abbreviations      */
+end_comment
+
+begin_function
 DECL|method|createFileObjects ()
 specifier|public
 name|void
@@ -1183,7 +1190,13 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * This method shall be used to add a new journal abbreviation file to the      * set of journal abbreviation files. It basically just calls the      * {@link #openFile(Path)}} method      */
+end_comment
+
+begin_function
 DECL|method|addNewFile ()
 specifier|public
 name|void
@@ -1224,7 +1237,13 @@ name|openFile
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Checks whether the file exists or if a new file should be opened.      * The file will be added to the set of journal abbreviation files.      * If the file also exists its abbreviations will be read and written      * to the abbreviations property.      *      * @param filePath to the file      */
+end_comment
+
+begin_function
 DECL|method|openFile (Path filePath)
 specifier|private
 name|void
@@ -1321,6 +1340,9 @@ name|abbreviationsFile
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 DECL|method|openFile ()
 specifier|public
 name|void
@@ -1361,7 +1383,13 @@ name|openFile
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * This method removes the currently selected file from the set of      * journal abbreviation files. This will not remove existing files from      * the file system. The {@code activeFile} property will always change      * to the previous file in the {@code journalFiles} list property, except      * the first file is selected. If so the next file will be selected except if      * there are no more files than the {@code activeFile} property will be set      * to {@code null}.      */
+end_comment
+
+begin_function
 DECL|method|removeCurrentFile ()
 specifier|public
 name|void
@@ -1404,7 +1432,13 @@ expr_stmt|;
 block|}
 block|}
 block|}
+end_function
+
+begin_comment
 comment|/**      * Method to add a new abbreviation to the abbreviations list property.      * It also sets the currentAbbreviation property to the new abbreviation.      *      * @param name         of the abbreviation object      * @param abbreviation of the abbreviation object      */
+end_comment
+
+begin_function
 DECL|method|addAbbreviation (String name, String abbreviation)
 specifier|public
 name|void
@@ -1489,7 +1523,13 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_comment
 comment|/**      * Method to change the currentAbbrevaition property to a new abbreviation.      *      * @param name         of the abbreviation object      * @param abbreviation of the abbreviation object      */
+end_comment
+
+begin_function
 DECL|method|editAbbreviation (String name, String abbreviation)
 specifier|public
 name|void
@@ -1601,7 +1641,13 @@ expr_stmt|;
 block|}
 block|}
 block|}
+end_function
+
+begin_comment
 comment|/**      * Sets the name and the abbreviation of the {@code currentAbbreviation} property      * to the values of the {@code abbreviationsName} and {@code abbreviationsAbbreviation}      * properties.      */
+end_comment
+
+begin_function
 DECL|method|setCurrentAbbreviationNameAndAbbreviationIfValid (String name, String abbreviation)
 specifier|private
 name|void
@@ -1686,7 +1732,13 @@ name|abbreviation
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Method to delete the abbreviation set in the currentAbbreviation property.      * The currentAbbreviationProperty will be set to the previous or next abbreviation      * in the abbreviations property if applicable. Else it will be set to {@code null}      * if there are no abbreviations left.      */
+end_comment
+
+begin_function
 DECL|method|deleteAbbreviation ()
 specifier|public
 name|void
@@ -1807,7 +1859,13 @@ expr_stmt|;
 block|}
 block|}
 block|}
+end_function
+
+begin_comment
 comment|/**      * Calls the {@link AbbreviationsFileViewModel#writeOrCreate()} method for each file      * in the journalFiles property which will overwrite the existing files with      * the content of the abbreviations property of the AbbriviationsFile. Non      * existing files will be created.      */
+end_comment
+
+begin_function
 DECL|method|saveJournalAbbreviationFiles ()
 specifier|public
 name|void
@@ -1850,7 +1908,13 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * This method stores all file paths of the files in the journalFiles property      * to the global JabRef preferences. Pseudo abbreviation files will not be stored.      */
+end_comment
+
+begin_function
 DECL|method|saveExternalFilesList ()
 specifier|public
 name|void
@@ -1926,7 +1990,13 @@ name|extFiles
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * This will set the {@code currentFile} property to the {@link AbbreviationsFileViewModel} object      * that was added to the {@code journalFiles} list property lastly. If there are no files in the list      * property this methode will do nothing as the {@code currentFile} property is already {@code null}.      */
+end_comment
+
+begin_function
 DECL|method|selectLastJournalFile ()
 specifier|public
 name|void
@@ -1964,7 +2034,13 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_comment
 comment|/**      * This method first saves all external files to its internal list, then writes all abbreviations      * to their files and finally updates the abbreviations auto complete. It basically calls      * {@link #saveExternalFilesList()}, {@link #saveJournalAbbreviationFiles() } and finally      * {@link JournalAbbreviationLoader#update(JournalAbbreviationPreferences)}.      */
+end_comment
+
+begin_function
 DECL|method|saveEverythingAndUpdateAutoCompleter ()
 specifier|public
 name|void
@@ -1991,6 +2067,9 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 DECL|method|journalFilesProperty ()
 specifier|public
 name|SimpleListProperty
@@ -2006,6 +2085,9 @@ operator|.
 name|journalFiles
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|abbreviationsProperty ()
 specifier|public
 name|SimpleListProperty
@@ -2021,6 +2103,9 @@ operator|.
 name|abbreviations
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|abbreviationsCountProperty ()
 specifier|public
 name|SimpleIntegerProperty
@@ -2033,6 +2118,9 @@ operator|.
 name|abbreviationsCount
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|currentFileProperty ()
 specifier|public
 name|SimpleObjectProperty
@@ -2048,6 +2136,9 @@ operator|.
 name|currentFile
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|currentAbbreviationProperty ()
 specifier|public
 name|SimpleObjectProperty
@@ -2063,6 +2154,9 @@ operator|.
 name|currentAbbreviation
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|isAbbreviationEditableAndRemovableProperty ()
 specifier|public
 name|SimpleBooleanProperty
@@ -2075,6 +2169,9 @@ operator|.
 name|isAbbreviationEditableAndRemovable
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|isFileRemovableProperty ()
 specifier|public
 name|SimpleBooleanProperty
@@ -2087,6 +2184,9 @@ operator|.
 name|isFileRemovable
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|addAbbreviation ()
 specifier|public
 name|void
@@ -2111,6 +2211,9 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 DECL|method|init ()
 specifier|public
 name|void
@@ -2127,8 +2230,8 @@ name|addBuiltInLists
 argument_list|()
 expr_stmt|;
 block|}
-block|}
-end_class
+end_function
 
+unit|}
 end_unit
 

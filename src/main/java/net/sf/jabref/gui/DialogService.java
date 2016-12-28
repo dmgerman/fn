@@ -86,6 +86,22 @@ name|FileDialogConfiguration
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
+import|;
+end_import
+
 begin_comment
 comment|/**  * This interface provides methods to create dialogs and show them to the user.  */
 end_comment
@@ -144,6 +160,29 @@ name|Throwable
 name|exception
 parameter_list|)
 function_decl|;
+comment|/**      * Create and display error dialog displaying the given exception.      * @param exception the exception causing the error      */
+DECL|method|showErrorDialogAndWait (Exception exception)
+specifier|default
+name|void
+name|showErrorDialogAndWait
+parameter_list|(
+name|Exception
+name|exception
+parameter_list|)
+block|{
+name|showErrorDialogAndWait
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Unhandled exception occurred."
+argument_list|)
+argument_list|,
+name|exception
+argument_list|)
+expr_stmt|;
+block|}
 comment|/**      * Create and display error dialog displaying the given message.      * @param message the error message      */
 DECL|method|showErrorDialogAndWait (String message)
 name|void
