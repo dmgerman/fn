@@ -271,7 +271,7 @@ specifier|final
 name|String
 name|BASIC_SEARCH_URL
 init|=
-literal|"http://www.dblp.org/search/api/"
+literal|"http://dblp.org/search/publ/api"
 decl_stmt|;
 DECL|field|importFormatPreferences
 specifier|private
