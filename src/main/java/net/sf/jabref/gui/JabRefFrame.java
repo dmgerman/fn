@@ -5340,6 +5340,34 @@ argument_list|(
 name|this
 argument_list|)
 decl_stmt|;
+DECL|field|lookupDOIs
+specifier|private
+specifier|final
+name|AbstractAction
+name|lookupDOIs
+init|=
+operator|new
+name|GeneralAction
+argument_list|(
+name|Actions
+operator|.
+name|LOOKUP_DOIS
+argument_list|,
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
+literal|"Look up DOIs"
+argument_list|)
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Look up DOIs"
+argument_list|)
+argument_list|)
+decl_stmt|;
 DECL|field|findUnlinkedFiles
 specifier|private
 specifier|final
@@ -10124,6 +10152,13 @@ name|quality
 operator|.
 name|add
 argument_list|(
+name|lookupDOIs
+argument_list|)
+expr_stmt|;
+name|quality
+operator|.
+name|add
+argument_list|(
 name|downloadFullText
 argument_list|)
 expr_stmt|;
@@ -11391,6 +11426,8 @@ name|sendAsEmail
 argument_list|,
 name|downloadFullText
 argument_list|,
+name|lookupDOIs
+argument_list|,
 name|writeXmpAction
 argument_list|,
 name|openOfficePanel
@@ -11649,6 +11686,8 @@ operator|.
 name|asList
 argument_list|(
 name|downloadFullText
+argument_list|,
+name|lookupDOIs
 argument_list|)
 argument_list|)
 expr_stmt|;
