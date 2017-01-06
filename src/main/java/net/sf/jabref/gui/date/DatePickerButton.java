@@ -504,6 +504,14 @@ name|String
 name|dateString
 parameter_list|)
 block|{
+comment|// unregister DateChangeListener before update to prevent circular calls resulting in IllegalStateExceptions
+name|datePicker
+operator|.
+name|removeDateChangeListener
+argument_list|(
+name|this
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|dateString
@@ -558,6 +566,13 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+name|datePicker
+operator|.
+name|addDateChangeListener
+argument_list|(
+name|this
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 end_class
