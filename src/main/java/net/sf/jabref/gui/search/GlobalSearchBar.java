@@ -2001,12 +2001,12 @@ operator|.
 name|requestFocus
 argument_list|()
 expr_stmt|;
+block|}
 name|searchField
 operator|.
 name|selectAll
 argument_list|()
 expr_stmt|;
-block|}
 block|}
 DECL|method|clearSearch (BasePanel currentBasePanel)
 specifier|private
