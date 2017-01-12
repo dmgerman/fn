@@ -387,6 +387,27 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+DECL|method|testTildeN ()
+specifier|public
+name|void
+name|testTildeN
+parameter_list|()
+block|{
+name|assertEquals
+argument_list|(
+literal|"MontaÃ±a"
+argument_list|,
+name|formatter
+operator|.
+name|format
+argument_list|(
+literal|"Monta\\~{n}a"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_class
 

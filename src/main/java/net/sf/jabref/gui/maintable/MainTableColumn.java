@@ -609,7 +609,12 @@ name|MainTableNameFormatter
 operator|.
 name|formatName
 argument_list|(
+name|toUnicode
+operator|.
+name|format
+argument_list|(
 name|result
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
