@@ -62,16 +62,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Enumeration
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|List
 import|;
 end_import
@@ -916,14 +906,14 @@ expr_stmt|;
 block|}
 comment|// If "expand" is true, all nodes in the tree area expanded
 comment|// otherwise all nodes in the tree are collapsed:
-DECL|method|expandAll (final JTree tree, final boolean expand)
+DECL|method|expandAll (final JTree subtree, final boolean expand)
 specifier|private
 name|void
 name|expandAll
 parameter_list|(
 specifier|final
 name|JTree
-name|tree
+name|subtree
 parameter_list|,
 specifier|final
 name|boolean
@@ -944,7 +934,7 @@ operator|(
 operator|(
 name|TreeNode
 operator|)
-name|tree
+name|subtree
 operator|.
 name|getModel
 argument_list|()
@@ -956,7 +946,7 @@ decl_stmt|;
 comment|// walk through the tree, beginning at the root:
 name|expandAll
 argument_list|(
-name|tree
+name|subtree
 argument_list|,
 operator|new
 name|TreePath
@@ -965,7 +955,7 @@ operator|(
 operator|(
 name|DefaultTreeModel
 operator|)
-name|tree
+name|subtree
 operator|.
 name|getModel
 argument_list|()
@@ -989,14 +979,14 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|expandAll (final JTree tree, final TreePath parent, final boolean expand)
+DECL|method|expandAll (final JTree subtree, final TreePath parent, final boolean expand)
 specifier|private
 name|void
 name|expandAll
 parameter_list|(
 specifier|final
 name|JTree
-name|tree
+name|subtree
 parameter_list|,
 specifier|final
 name|TreePath
@@ -1019,46 +1009,45 @@ operator|.
 name|getLastPathComponent
 argument_list|()
 decl_stmt|;
-if|if
-condition|(
+name|int
+name|numChildren
+init|=
 name|node
 operator|.
 name|getChildCount
 argument_list|()
-operator|>=
+decl_stmt|;
+if|if
+condition|(
+name|numChildren
+operator|>
 literal|0
 condition|)
 block|{
 for|for
 control|(
-name|Enumeration
-argument_list|<
-name|?
-argument_list|>
-name|e
+name|int
+name|i
 init|=
-name|node
-operator|.
-name|children
-argument_list|()
+literal|0
 init|;
-name|e
-operator|.
-name|hasMoreElements
-argument_list|()
+name|i
+operator|<
+name|numChildren
 condition|;
+name|i
+operator|++
 control|)
 block|{
 name|TreeNode
-name|n
+name|child
 init|=
-operator|(
-name|TreeNode
-operator|)
-name|e
+name|node
 operator|.
-name|nextElement
-argument_list|()
+name|getChildAt
+argument_list|(
+name|i
+argument_list|)
 decl_stmt|;
 name|TreePath
 name|path
@@ -1067,12 +1056,12 @@ name|parent
 operator|.
 name|pathByAddingChild
 argument_list|(
-name|n
+name|child
 argument_list|)
 decl_stmt|;
 name|expandAll
 argument_list|(
-name|tree
+name|subtree
 argument_list|,
 name|path
 argument_list|,
@@ -1097,6 +1086,16 @@ expr_stmt|;
 block|}
 else|else
 block|{
+if|if
+condition|(
+name|node
+operator|.
+name|getParent
+argument_list|()
+operator|!=
+literal|null
+condition|)
+block|{
 name|tree
 operator|.
 name|collapsePath
@@ -1104,6 +1103,7 @@ argument_list|(
 name|parent
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 DECL|method|doAddOrRemove ()
