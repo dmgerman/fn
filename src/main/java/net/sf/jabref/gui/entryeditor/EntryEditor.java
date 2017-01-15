@@ -3480,7 +3480,14 @@ range|:
 name|EntryFetchers
 operator|.
 name|getEntryBasedFetchers
+argument_list|(
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getImportFormatPreferences
 argument_list|()
+argument_list|)
 control|)
 block|{
 name|fetcherPopup
