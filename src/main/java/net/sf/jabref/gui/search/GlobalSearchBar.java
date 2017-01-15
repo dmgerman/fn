@@ -2088,6 +2088,13 @@ operator|.
 name|DISABLED
 argument_list|)
 expr_stmt|;
+name|currentBasePanel
+operator|.
+name|setCurrentSearchQuery
+argument_list|(
+literal|null
+argument_list|)
+expr_stmt|;
 block|}
 if|if
 condition|(

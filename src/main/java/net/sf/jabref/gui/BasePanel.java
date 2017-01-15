@@ -2280,10 +2280,19 @@ specifier|private
 name|ContentAutoCompleters
 name|autoCompleters
 decl_stmt|;
+comment|/** the query the user searches when this basepanel is active */
 DECL|field|currentSearchQuery
 specifier|private
+name|Optional
+argument_list|<
 name|SearchQuery
+argument_list|>
 name|currentSearchQuery
+init|=
+name|Optional
+operator|.
+name|empty
+argument_list|()
 decl_stmt|;
 DECL|method|BasePanel (JabRefFrame frame, BibDatabaseContext bibDatabaseContext)
 specifier|public
@@ -14576,7 +14585,10 @@ end_function
 begin_function
 DECL|method|getCurrentSearchQuery ()
 specifier|public
+name|Optional
+argument_list|<
 name|SearchQuery
+argument_list|>
 name|getCurrentSearchQuery
 parameter_list|()
 block|{
@@ -14585,6 +14597,10 @@ name|currentSearchQuery
 return|;
 block|}
 end_function
+
+begin_comment
+comment|/**      * Set the query the user currently searches while this basepanel is active      * @param currentSearchQuery can be null      */
+end_comment
 
 begin_function
 DECL|method|setCurrentSearchQuery (SearchQuery currentSearchQuery)
@@ -14600,7 +14616,12 @@ name|this
 operator|.
 name|currentSearchQuery
 operator|=
+name|Optional
+operator|.
+name|ofNullable
+argument_list|(
 name|currentSearchQuery
+argument_list|)
 expr_stmt|;
 block|}
 end_function
