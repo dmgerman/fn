@@ -230,6 +230,7 @@ name|MathSciNet
 name|fetcher
 decl_stmt|;
 DECL|field|ratiuEntry
+specifier|private
 name|BibEntry
 name|ratiuEntry
 decl_stmt|;
