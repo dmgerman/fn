@@ -30,6 +30,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Arrays
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Collection
 import|;
 end_import
@@ -53,18 +63,6 @@ operator|.
 name|stream
 operator|.
 name|Collectors
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|stream
-operator|.
-name|Stream
 import|;
 end_import
 
@@ -254,9 +252,9 @@ name|flatMap
 argument_list|(
 name|extList
 lambda|->
-name|Stream
+name|Arrays
 operator|.
-name|of
+name|stream
 argument_list|(
 name|extList
 operator|.
