@@ -825,7 +825,7 @@ argument_list|,
 name|getNodeInSimpleTree
 argument_list|()
 operator|.
-name|numberOfMatches
+name|calculateNumberOfMatches
 argument_list|(
 name|Collections
 operator|.
@@ -885,7 +885,7 @@ literal|1
 argument_list|,
 name|node
 operator|.
-name|numberOfMatches
+name|calculateNumberOfMatches
 argument_list|(
 name|entries
 argument_list|)
@@ -942,7 +942,7 @@ literal|2
 argument_list|,
 name|node
 operator|.
-name|numberOfMatches
+name|calculateNumberOfMatches
 argument_list|(
 name|entries
 argument_list|)
@@ -1027,7 +1027,7 @@ literal|1
 argument_list|,
 name|node
 operator|.
-name|numberOfMatches
+name|calculateNumberOfMatches
 argument_list|(
 name|entries
 argument_list|)
@@ -1112,7 +1112,7 @@ literal|2
 argument_list|,
 name|node
 operator|.
-name|numberOfMatches
+name|calculateNumberOfMatches
 argument_list|(
 name|entries
 argument_list|)
