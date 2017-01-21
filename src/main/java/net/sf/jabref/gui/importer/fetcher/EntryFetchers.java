@@ -629,7 +629,7 @@ block|}
 DECL|method|getIdFetchers (ImportFormatPreferences importFormatPreferences)
 specifier|public
 specifier|static
-name|ArrayList
+name|List
 argument_list|<
 name|IdBasedFetcher
 argument_list|>
@@ -746,7 +746,7 @@ block|}
 DECL|method|getEntryBasedFetchers (ImportFormatPreferences importFormatPreferences)
 specifier|public
 specifier|static
-name|ArrayList
+name|List
 argument_list|<
 name|EntryBasedFetcher
 argument_list|>
@@ -773,6 +773,17 @@ name|add
 argument_list|(
 operator|new
 name|AstrophysicsDataSystem
+argument_list|(
+name|importFormatPreferences
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|list
+operator|.
+name|add
+argument_list|(
+operator|new
+name|DoiFetcher
 argument_list|(
 name|importFormatPreferences
 argument_list|)

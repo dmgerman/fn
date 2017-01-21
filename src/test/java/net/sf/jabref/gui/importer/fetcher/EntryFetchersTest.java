@@ -22,16 +22,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|ArrayList
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|List
 import|;
 end_import
@@ -296,7 +286,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|ArrayList
+name|List
 argument_list|<
 name|IdBasedFetcher
 argument_list|>
@@ -387,7 +377,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|ArrayList
+name|List
 argument_list|<
 name|EntryBasedFetcher
 argument_list|>
