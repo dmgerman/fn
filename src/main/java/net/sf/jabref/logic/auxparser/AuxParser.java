@@ -687,6 +687,25 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+name|result
+operator|.
+name|getGeneratedBibDatabase
+argument_list|()
+operator|.
+name|getEntryByKey
+argument_list|(
+name|key
+argument_list|)
+operator|.
+name|isPresent
+argument_list|()
+condition|)
+block|{
+comment|// do nothing, key has already been processed
+block|}
+elseif|else
+if|if
+condition|(
 name|entry
 operator|.
 name|isPresent
