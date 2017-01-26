@@ -3426,6 +3426,8 @@ name|Object
 name|object
 parameter_list|)
 block|{
+try|try
+block|{
 name|this
 operator|.
 name|eventBus
@@ -3435,6 +3437,22 @@ argument_list|(
 name|object
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IllegalArgumentException
+name|e
+parameter_list|)
+block|{
+comment|// occurs if the event source has not been registered, should not prevent shutdown
+name|LOGGER
+operator|.
+name|debug
+argument_list|(
+name|e
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 DECL|method|withField (String field, String value)
 specifier|public

@@ -1309,6 +1309,8 @@ name|Object
 name|listener
 parameter_list|)
 block|{
+try|try
+block|{
 name|this
 operator|.
 name|eventBus
@@ -1318,6 +1320,15 @@ argument_list|(
 name|listener
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IllegalArgumentException
+name|e
+parameter_list|)
+block|{
+comment|// occurs if the event source has not been registered, should not prevent shutdown
+block|}
 block|}
 DECL|method|getDefaultCiteKeyPattern ()
 specifier|private
