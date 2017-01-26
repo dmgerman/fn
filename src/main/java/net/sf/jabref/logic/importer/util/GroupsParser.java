@@ -793,14 +793,14 @@ argument_list|)
 return|;
 block|}
 block|}
-DECL|method|explicitGroupFromString (String s, Character keywordSeparator)
-specifier|public
+DECL|method|explicitGroupFromString (String input, Character keywordSeparator)
+specifier|private
 specifier|static
 name|ExplicitGroup
 name|explicitGroupFromString
 parameter_list|(
 name|String
-name|s
+name|input
 parameter_list|,
 name|Character
 name|keywordSeparator
@@ -811,7 +811,7 @@ block|{
 if|if
 condition|(
 operator|!
-name|s
+name|input
 operator|.
 name|startsWith
 argument_list|(
@@ -827,7 +827,7 @@ name|IllegalArgumentException
 argument_list|(
 literal|"ExplicitGroup cannot be created from \""
 operator|+
-name|s
+name|input
 operator|+
 literal|"\"."
 argument_list|)
@@ -839,7 +839,7 @@ init|=
 operator|new
 name|QuotedStringTokenizer
 argument_list|(
-name|s
+name|input
 operator|.
 name|substring
 argument_list|(
@@ -868,6 +868,8 @@ operator|.
 name|nextToken
 argument_list|()
 decl_stmt|;
+try|try
+block|{
 name|int
 name|context
 init|=
@@ -911,6 +913,23 @@ expr_stmt|;
 return|return
 name|newGroup
 return|;
+block|}
+catch|catch
+parameter_list|(
+name|NumberFormatException
+name|exception
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|ParseException
+argument_list|(
+literal|"Could not parse context in "
+operator|+
+name|input
+argument_list|)
+throw|;
+block|}
 block|}
 comment|/**      * Called only when created fromString.      * JabRef used to store the entries of an explicit group in the serialization, e.g.      *  ExplicitGroup:GroupName\;0\;Key1\;Key2\;;      * This method exists for backwards compatibility.      */
 DECL|method|addLegacyEntryKeys (QuotedStringTokenizer tok, ExplicitGroup group)
@@ -961,7 +980,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|method|allEntriesGroupFromString (String s)
-specifier|public
+specifier|private
 specifier|static
 name|AbstractGroup
 name|allEntriesGroupFromString
@@ -1010,7 +1029,7 @@ return|;
 block|}
 comment|/**      * Parses s and recreates the SearchGroup from it.      *      * @param s The String representation obtained from      *          SearchGroup.toString(), or null if incompatible      */
 DECL|method|searchGroupFromString (String s)
-specifier|public
+specifier|private
 specifier|static
 name|AbstractGroup
 name|searchGroupFromString

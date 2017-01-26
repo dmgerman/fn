@@ -1417,7 +1417,7 @@ if|if
 condition|(
 name|parsedDatabase
 operator|.
-name|isNullResult
+name|isEmpty
 argument_list|()
 condition|)
 block|{

@@ -1617,9 +1617,8 @@ argument_list|)
 expr_stmt|;
 name|result
 operator|=
+operator|new
 name|ParserResult
-operator|.
-name|getNullResult
 argument_list|()
 expr_stmt|;
 name|JOptionPane

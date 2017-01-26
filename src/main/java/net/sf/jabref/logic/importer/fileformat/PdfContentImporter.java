@@ -428,6 +428,12 @@ argument_list|(
 literal|"\\d{4}"
 argument_list|)
 decl_stmt|;
+DECL|field|importFormatPreferences
+specifier|private
+specifier|final
+name|ImportFormatPreferences
+name|importFormatPreferences
+decl_stmt|;
 comment|// input lines into several lines
 DECL|field|lines
 specifier|private
@@ -450,12 +456,6 @@ DECL|field|year
 specifier|private
 name|String
 name|year
-decl_stmt|;
-DECL|field|importFormatPreferences
-specifier|private
-specifier|final
-name|ImportFormatPreferences
-name|importFormatPreferences
 decl_stmt|;
 DECL|method|PdfContentImporter (ImportFormatPreferences importFormatPreferences)
 specifier|public
@@ -2634,12 +2634,9 @@ block|{
 return|return
 name|ParserResult
 operator|.
-name|fromErrorMessage
+name|fromError
 argument_list|(
 name|exception
-operator|.
-name|getLocalizedMessage
-argument_list|()
 argument_list|)
 return|;
 block|}

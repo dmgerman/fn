@@ -1148,12 +1148,9 @@ expr_stmt|;
 return|return
 name|ParserResult
 operator|.
-name|fromErrorMessage
+name|fromError
 argument_list|(
 name|e
-operator|.
-name|getLocalizedMessage
-argument_list|()
 argument_list|)
 return|;
 block|}
