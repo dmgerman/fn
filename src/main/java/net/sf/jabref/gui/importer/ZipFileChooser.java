@@ -339,7 +339,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Dialog to allow users to choose a file contained in a ZIP file.  *  * @author andreas_sf at rudert-home dot de  */
+comment|/**  * Dialog to allow users to choose a file contained in a ZIP file.  */
 end_comment
 
 begin_class
@@ -365,7 +365,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|/**      * New ZIP file chooser.      *      * @param owner  Owner of the file chooser      * @param zipFile  ZIP-Fle to choose from, must be readable      */
+comment|/**      * New ZIP file chooser.      *      * @param importCustomizationDialog  Owner of the file chooser      * @param zipFile  ZIP-Fle to choose from, must be readable      */
 DECL|method|ZipFileChooser (ImportCustomizationDialog importCustomizationDialog, ZipFile zipFile)
 specifier|public
 name|ZipFileChooser
