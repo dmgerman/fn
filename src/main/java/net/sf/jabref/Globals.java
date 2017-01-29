@@ -48,6 +48,20 @@ name|jabref
 operator|.
 name|gui
 operator|.
+name|StateManager
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
 name|keyboard
 operator|.
 name|KeyBindingPreferences
@@ -212,6 +226,17 @@ specifier|public
 specifier|static
 name|ProtectedTermsLoader
 name|protectedTermsLoader
+decl_stmt|;
+comment|/**      * Manager for the state of the GUI.      */
+DECL|field|stateManager
+specifier|public
+specifier|static
+name|StateManager
+name|stateManager
+init|=
+operator|new
+name|StateManager
+argument_list|()
 decl_stmt|;
 comment|// Key binding preferences
 DECL|field|keyPrefs

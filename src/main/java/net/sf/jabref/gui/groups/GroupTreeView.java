@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|net.sf.jabref.gui
+DECL|package|net.sf.jabref.gui.groups
 package|package
 name|net
 operator|.
@@ -9,34 +9,42 @@ operator|.
 name|jabref
 operator|.
 name|gui
+operator|.
+name|groups
 package|;
 end_package
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|AbstractView
+import|;
+end_import
+
 begin_class
-DECL|class|AbstractDialogView
+DECL|class|GroupTreeView
 specifier|public
-specifier|abstract
 class|class
-name|AbstractDialogView
+name|GroupTreeView
 extends|extends
 name|AbstractView
 block|{
-DECL|method|AbstractDialogView ()
+DECL|method|GroupTreeView ()
 specifier|public
-name|AbstractDialogView
+name|GroupTreeView
 parameter_list|()
 block|{
 name|super
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|show ()
-specifier|public
-specifier|abstract
-name|void
-name|show
-parameter_list|()
-function_decl|;
 block|}
 end_class
 

@@ -6298,6 +6298,35 @@ condition|)
 block|{
 return|return;
 block|}
+comment|// Poor-mans binding to global state
+comment|// We need to invoke this in the JavaFX thread as all the listeners sit there
+name|Platform
+operator|.
+name|runLater
+argument_list|(
+parameter_list|()
+lambda|->
+name|Globals
+operator|.
+name|stateManager
+operator|.
+name|activeDatabaseProperty
+argument_list|()
+operator|.
+name|setValue
+argument_list|(
+name|Optional
+operator|.
+name|of
+argument_list|(
+name|currentBasePanel
+operator|.
+name|getBibDatabaseContext
+argument_list|()
+argument_list|)
+argument_list|)
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 operator|new

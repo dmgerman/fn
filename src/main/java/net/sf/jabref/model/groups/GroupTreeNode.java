@@ -94,6 +94,22 @@ name|jabref
 operator|.
 name|model
 operator|.
+name|database
+operator|.
+name|BibDatabase
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
 name|entry
 operator|.
 name|BibEntry
@@ -919,10 +935,10 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Determines the number of entries in the specified list which are matched by this group.      * @param entries list of entries to be searched      * @return number of hits      */
-DECL|method|numberOfMatches (List<BibEntry> entries)
+DECL|method|calculateNumberOfMatches (List<BibEntry> entries)
 specifier|public
 name|int
-name|numberOfMatches
+name|calculateNumberOfMatches
 parameter_list|(
 name|List
 argument_list|<
@@ -967,6 +983,26 @@ block|}
 block|}
 return|return
 name|hits
+return|;
+block|}
+comment|/**      * Determines the number of entries in the specified database which are matched by this group.      * @param database database to be searched      * @return number of hits      */
+DECL|method|calculateNumberOfMatches (BibDatabase database)
+specifier|public
+name|int
+name|calculateNumberOfMatches
+parameter_list|(
+name|BibDatabase
+name|database
+parameter_list|)
+block|{
+return|return
+name|calculateNumberOfMatches
+argument_list|(
+name|database
+operator|.
+name|getEntries
+argument_list|()
+argument_list|)
 return|;
 block|}
 block|}
