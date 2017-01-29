@@ -138,7 +138,7 @@ argument_list|(
 literal|"Cleanup entries"
 argument_list|)
 argument_list|,
-literal|"F8"
+literal|"alt F8"
 argument_list|)
 block|,
 DECL|enumConstant|CLEAR_SEARCH
