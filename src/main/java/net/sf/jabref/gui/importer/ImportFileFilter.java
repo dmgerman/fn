@@ -60,6 +60,16 @@ end_import
 
 begin_import
 import|import
+name|javafx
+operator|.
+name|stage
+operator|.
+name|FileChooser
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -87,16 +97,6 @@ operator|.
 name|util
 operator|.
 name|FileExtensions
-import|;
-end_import
-
-begin_import
-import|import
-name|javafx
-operator|.
-name|stage
-operator|.
-name|FileChooser
 import|;
 end_import
 
