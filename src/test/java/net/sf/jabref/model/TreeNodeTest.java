@@ -3442,6 +3442,7 @@ block|}
 comment|/**      * This is just a dummy class deriving from TreeNode<T> so that we can test the generic class      */
 DECL|class|TreeNodeMock
 specifier|private
+specifier|static
 class|class
 name|TreeNodeMock
 extends|extends

@@ -265,11 +265,11 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"%s %s (%s)"
-argument_list|,
-name|path
+literal|"%s (%s %s)"
 argument_list|,
 name|key
+argument_list|,
+name|path
 argument_list|,
 name|bundle
 argument_list|)

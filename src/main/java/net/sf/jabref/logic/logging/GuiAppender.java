@@ -208,6 +208,12 @@ name|printObject
 operator|=
 literal|true
 argument_list|)
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
+comment|// class is indirectly constructed by log4j
 DECL|class|GuiAppender
 specifier|public
 class|class
@@ -215,19 +221,8 @@ name|GuiAppender
 extends|extends
 name|AbstractAppender
 block|{
-DECL|field|CACHE
-specifier|public
-specifier|static
-specifier|final
-name|Cache
-name|CACHE
-init|=
-operator|new
-name|Cache
-argument_list|()
-decl_stmt|;
 DECL|method|GuiAppender (String name, Filter filter, Layout<? extends Serializable> layout)
-specifier|protected
+specifier|private
 name|GuiAppender
 parameter_list|(
 name|String
@@ -336,6 +331,7 @@ name|layout
 argument_list|)
 return|;
 block|}
+comment|/**      * The log event will be forwarded to the {@link LogMessages} archive.      */
 annotation|@
 name|Override
 DECL|method|append (LogEvent event)
@@ -347,23 +343,14 @@ name|LogEvent
 name|event
 parameter_list|)
 block|{
-name|CACHE
+name|LogMessages
+operator|.
+name|getInstance
+argument_list|()
 operator|.
 name|add
 argument_list|(
-operator|new
-name|String
-argument_list|(
-name|this
-operator|.
-name|getLayout
-argument_list|()
-operator|.
-name|toByteArray
-argument_list|(
 name|event
-argument_list|)
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

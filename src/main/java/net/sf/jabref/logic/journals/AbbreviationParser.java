@@ -609,6 +609,17 @@ argument_list|,
 name|abbrName
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+operator|!
+name|abbreviations
+operator|.
+name|contains
+argument_list|(
+name|abbreviation
+argument_list|)
+condition|)
+block|{
 name|this
 operator|.
 name|abbreviations
@@ -618,6 +629,7 @@ argument_list|(
 name|abbreviation
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 DECL|method|getAbbreviations ()

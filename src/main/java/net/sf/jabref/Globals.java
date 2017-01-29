@@ -64,22 +64,6 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|error
-operator|.
-name|StreamEavesdropper
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
 name|importer
 operator|.
 name|ImportFormatReader
@@ -249,12 +233,6 @@ specifier|static
 name|FileUpdateMonitor
 name|fileUpdateMonitor
 decl_stmt|;
-DECL|field|streamEavesdropper
-specifier|private
-specifier|static
-name|StreamEavesdropper
-name|streamEavesdropper
-decl_stmt|;
 comment|// Key binding preferences
 DECL|method|getKeyPrefs ()
 specifier|public
@@ -301,15 +279,6 @@ argument_list|()
 expr_stmt|;
 name|Globals
 operator|.
-name|streamEavesdropper
-operator|=
-name|StreamEavesdropper
-operator|.
-name|eavesdropOnSystem
-argument_list|()
-expr_stmt|;
-name|Globals
-operator|.
 name|fileUpdateMonitor
 operator|=
 operator|new
@@ -350,17 +319,6 @@ parameter_list|()
 block|{
 return|return
 name|fileUpdateMonitor
-return|;
-block|}
-DECL|method|getStreamEavesdropper ()
-specifier|public
-specifier|static
-name|StreamEavesdropper
-name|getStreamEavesdropper
-parameter_list|()
-block|{
-return|return
-name|streamEavesdropper
 return|;
 block|}
 block|}
