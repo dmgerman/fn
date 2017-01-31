@@ -810,7 +810,7 @@ name|LocalizationParser
 operator|.
 name|find
 argument_list|(
-name|LocalizationBundle
+name|LocalizationBundleForTest
 operator|.
 name|LANG
 argument_list|)
@@ -907,7 +907,7 @@ name|LocalizationParser
 operator|.
 name|find
 argument_list|(
-name|LocalizationBundle
+name|LocalizationBundleForTest
 operator|.
 name|MENU
 argument_list|)
@@ -998,7 +998,7 @@ name|LocalizationParser
 operator|.
 name|findObsolete
 argument_list|(
-name|LocalizationBundle
+name|LocalizationBundleForTest
 operator|.
 name|LANG
 argument_list|)
@@ -1049,7 +1049,7 @@ name|LocalizationParser
 operator|.
 name|findObsolete
 argument_list|(
-name|LocalizationBundle
+name|LocalizationBundleForTest
 operator|.
 name|MENU
 argument_list|)

@@ -15,9 +15,9 @@ package|;
 end_package
 
 begin_enum
-DECL|enum|LocalizationBundle
+DECL|enum|LocalizationBundleForTest
 enum|enum
-name|LocalizationBundle
+name|LocalizationBundleForTest
 block|{
 DECL|enumConstant|LANG
 DECL|enumConstant|MENU

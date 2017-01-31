@@ -248,7 +248,7 @@ specifier|public
 class|class
 name|LocalizationParser
 block|{
-DECL|method|find (LocalizationBundle type)
+DECL|method|find (LocalizationBundleForTest type)
 specifier|public
 specifier|static
 name|SortedSet
@@ -257,7 +257,7 @@ name|LocalizationEntry
 argument_list|>
 name|find
 parameter_list|(
-name|LocalizationBundle
+name|LocalizationBundleForTest
 name|type
 parameter_list|)
 throws|throws
@@ -316,7 +316,7 @@ if|if
 condition|(
 name|type
 operator|==
-name|LocalizationBundle
+name|LocalizationBundleForTest
 operator|.
 name|LANG
 condition|)
@@ -393,7 +393,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|findObsolete (LocalizationBundle type)
+DECL|method|findObsolete (LocalizationBundleForTest type)
 specifier|public
 specifier|static
 name|SortedSet
@@ -402,7 +402,7 @@ name|String
 argument_list|>
 name|findObsolete
 parameter_list|(
-name|LocalizationBundle
+name|LocalizationBundleForTest
 name|type
 parameter_list|)
 throws|throws
@@ -455,7 +455,7 @@ if|if
 condition|(
 name|type
 operator|==
-name|LocalizationBundle
+name|LocalizationBundleForTest
 operator|.
 name|LANG
 condition|)
@@ -504,7 +504,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|findLocalizationEntriesInFiles (LocalizationBundle type)
+DECL|method|findLocalizationEntriesInFiles (LocalizationBundleForTest type)
 specifier|private
 specifier|static
 name|Set
@@ -513,7 +513,7 @@ name|LocalizationEntry
 argument_list|>
 name|findLocalizationEntriesInFiles
 parameter_list|(
-name|LocalizationBundle
+name|LocalizationBundleForTest
 name|type
 parameter_list|)
 throws|throws
@@ -523,7 +523,7 @@ if|if
 condition|(
 name|type
 operator|==
-name|LocalizationBundle
+name|LocalizationBundleForTest
 operator|.
 name|MENU
 condition|)
@@ -573,7 +573,7 @@ name|entriesInFiles
 return|;
 block|}
 block|}
-DECL|method|findLocalizationEntriesInJavaFiles (LocalizationBundle type)
+DECL|method|findLocalizationEntriesInJavaFiles (LocalizationBundleForTest type)
 specifier|private
 specifier|static
 name|Set
@@ -582,7 +582,7 @@ name|LocalizationEntry
 argument_list|>
 name|findLocalizationEntriesInJavaFiles
 parameter_list|(
-name|LocalizationBundle
+name|LocalizationBundleForTest
 name|type
 parameter_list|)
 throws|throws
@@ -632,7 +632,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|findLocalizationEntriesInFxmlFiles (LocalizationBundle type)
+DECL|method|findLocalizationEntriesInFxmlFiles (LocalizationBundleForTest type)
 specifier|private
 specifier|static
 name|Set
@@ -641,7 +641,7 @@ name|LocalizationEntry
 argument_list|>
 name|findLocalizationEntriesInFxmlFiles
 parameter_list|(
-name|LocalizationBundle
+name|LocalizationBundleForTest
 name|type
 parameter_list|)
 throws|throws
@@ -880,7 +880,7 @@ literal|".fxml"
 argument_list|)
 return|;
 block|}
-DECL|method|getLanguageKeysInJavaFile (Path path, LocalizationBundle type)
+DECL|method|getLanguageKeysInJavaFile (Path path, LocalizationBundleForTest type)
 specifier|private
 specifier|static
 name|List
@@ -892,7 +892,7 @@ parameter_list|(
 name|Path
 name|path
 parameter_list|,
-name|LocalizationBundle
+name|LocalizationBundleForTest
 name|type
 parameter_list|)
 block|{
@@ -995,7 +995,7 @@ name|result
 return|;
 block|}
 comment|/**      * Loads the fxml file and returns all used language resources.      */
-DECL|method|getLanguageKeysInFxmlFile (Path path, LocalizationBundle type)
+DECL|method|getLanguageKeysInFxmlFile (Path path, LocalizationBundleForTest type)
 specifier|private
 specifier|static
 name|List
@@ -1007,7 +1007,7 @@ parameter_list|(
 name|Path
 name|path
 parameter_list|,
-name|LocalizationBundle
+name|LocalizationBundleForTest
 name|type
 parameter_list|)
 block|{
@@ -1267,7 +1267,7 @@ argument_list|(
 literal|"QUOTATIONPLACEHOLDER"
 argument_list|)
 decl_stmt|;
-DECL|method|getLanguageKeysInString (String content, LocalizationBundle type)
+DECL|method|getLanguageKeysInString (String content, LocalizationBundleForTest type)
 specifier|public
 specifier|static
 name|List
@@ -1279,7 +1279,7 @@ parameter_list|(
 name|String
 name|content
 parameter_list|,
-name|LocalizationBundle
+name|LocalizationBundleForTest
 name|type
 parameter_list|)
 block|{
@@ -1301,7 +1301,7 @@ if|if
 condition|(
 name|type
 operator|==
-name|LocalizationBundle
+name|LocalizationBundleForTest
 operator|.
 name|LANG
 condition|)
