@@ -5955,6 +5955,15 @@ literal|"Ã"
 argument_list|)
 expr_stmt|;
 comment|// Overwritten by Ãngstrom symbol
+name|LATEX_UNICODE_CONVERSION_MAP
+operator|.
+name|put
+argument_list|(
+literal|"'n"
+argument_list|,
+literal|"Å"
+argument_list|)
+expr_stmt|;
 comment|// Manual additions
 comment|// Support relax to the extent that it is simply removed
 name|LATEX_HTML_CONVERSION_MAP
