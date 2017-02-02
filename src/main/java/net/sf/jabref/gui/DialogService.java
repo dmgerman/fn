@@ -250,6 +250,24 @@ modifier|...
 name|buttonTypes
 parameter_list|)
 function_decl|;
+comment|/**      * Shows a custom dialog and returns the result.      *      * @param dialog dialog to show      * @param<R>    type of result      */
+DECL|method|showCustomDialogAndWait (Dialog<R> dialog)
+parameter_list|<
+name|R
+parameter_list|>
+name|Optional
+argument_list|<
+name|R
+argument_list|>
+name|showCustomDialogAndWait
+parameter_list|(
+name|Dialog
+argument_list|<
+name|R
+argument_list|>
+name|dialog
+parameter_list|)
+function_decl|;
 comment|/**      * Notify the user in an non-blocking way (i.e., update status message instead of showing a dialog).      * @param message the message to show.      */
 DECL|method|notify (String message)
 name|void

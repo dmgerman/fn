@@ -532,6 +532,33 @@ return|;
 block|}
 annotation|@
 name|Override
+DECL|method|showCustomDialogAndWait (Dialog<R> dialog)
+specifier|public
+parameter_list|<
+name|R
+parameter_list|>
+name|Optional
+argument_list|<
+name|R
+argument_list|>
+name|showCustomDialogAndWait
+parameter_list|(
+name|Dialog
+argument_list|<
+name|R
+argument_list|>
+name|dialog
+parameter_list|)
+block|{
+return|return
+name|dialog
+operator|.
+name|showAndWait
+argument_list|()
+return|;
+block|}
+annotation|@
+name|Override
 DECL|method|notify (String message)
 specifier|public
 name|void

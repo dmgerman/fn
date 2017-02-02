@@ -28,16 +28,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Collections
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|Comparator
 import|;
 end_import
@@ -84,6 +74,26 @@ name|Consumer
 import|;
 end_import
 
+begin_import
+import|import
+name|javafx
+operator|.
+name|collections
+operator|.
+name|FXCollections
+import|;
+end_import
+
+begin_import
+import|import
+name|javafx
+operator|.
+name|collections
+operator|.
+name|ObservableList
+import|;
+end_import
+
 begin_comment
 comment|/**  * Represents a node in a tree.  *<p>  * Usually, tree nodes have a value property which allows access to the value stored in the node.  * In contrast to this approach, the TreeNode<T> class is designed to be used as a base class which provides the  * tree traversing functionality via inheritance.  *<p>  * Example usage:  * private class BasicTreeNode extends TreeNode<BasicTreeNode> {  * public BasicTreeNode() {  * super(BasicTreeNode.class);  * }  * }  *<p>  * This class started out as a copy of javax.swing.tree.DefaultMutableTreeNode.  *  * @param<T> the type of the class  */
 end_comment
@@ -112,21 +122,36 @@ name|T
 parameter_list|>
 parameter_list|>
 block|{
+comment|/**      * Array of children, may be empty if this node has no children (but never null)      */
+DECL|field|children
+specifier|private
+specifier|final
+name|ObservableList
+argument_list|<
+name|T
+argument_list|>
+name|children
+decl_stmt|;
 comment|/**      * This node's parent, or null if this node has no parent      */
 DECL|field|parent
 specifier|private
 name|T
 name|parent
 decl_stmt|;
-comment|/**      * Array of children, may be empty if this node has no children (but never null)      */
-DECL|field|children
+comment|/**      * The function which is invoked when something changed in the subtree.      */
+DECL|field|onDescendantChanged
 specifier|private
-specifier|final
-name|List
+name|Consumer
 argument_list|<
 name|T
 argument_list|>
-name|children
+name|onDescendantChanged
+init|=
+name|t
+lambda|->
+block|{
+comment|/* Do nothing */
+block|}
 decl_stmt|;
 comment|/**      * Constructs a tree node without parent and no children.      *      * @param derivingClass class deriving from TreeNode<T>. It should always be "T.class".      *                      We need this parameter since it is hard to get this information by other means.      */
 DECL|method|TreeNode (Class<T> derivingClass)
@@ -146,9 +171,9 @@ literal|null
 expr_stmt|;
 name|children
 operator|=
-operator|new
-name|ArrayList
-argument_list|<>
+name|FXCollections
+operator|.
+name|observableArrayList
 argument_list|()
 expr_stmt|;
 if|if
@@ -1013,7 +1038,7 @@ block|}
 comment|/**      * Gets a forward-order list of this node's children.      *<p>      * The returned list is unmodifiable - use the add and remove methods to modify the nodes children.      * However, changing the nodes children (for example by calling moveTo) is reflected in a change of      * the list returned by getChildren. In other words, getChildren provides a read-only view on the children but      * not a copy.      *      * @return a list of this node's children      */
 DECL|method|getChildren ()
 specifier|public
-name|List
+name|ObservableList
 argument_list|<
 name|T
 argument_list|>
@@ -1021,9 +1046,9 @@ name|getChildren
 parameter_list|()
 block|{
 return|return
-name|Collections
+name|FXCollections
 operator|.
-name|unmodifiableList
+name|unmodifiableObservableList
 argument_list|(
 name|children
 argument_list|)
@@ -1546,21 +1571,6 @@ name|T
 name|copyNode
 parameter_list|()
 function_decl|;
-comment|/**      * The function which is invoked when something changed in the subtree.      */
-DECL|field|onDescendantChanged
-specifier|private
-name|Consumer
-argument_list|<
-name|T
-argument_list|>
-name|onDescendantChanged
-init|=
-name|t
-lambda|->
-block|{
-comment|/* Do nothing */
-block|}
-decl_stmt|;
 comment|/**      * Adds the given function to the list of subscribers which are notified when something changes in the subtree.      *      * The following events are supported (the text in parentheses specifies which node is passed as the source):      *  - addChild (new parent)      *  - removeChild (old parent)      *  - move (old parent and new parent)      * @param subscriber function to be invoked upon a change      */
 DECL|method|subscribeToDescendantChanged (Consumer<T> subscriber)
 specifier|public

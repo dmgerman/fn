@@ -34,6 +34,20 @@ name|jabref
 operator|.
 name|gui
 operator|.
+name|DialogService
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
 name|StateManager
 import|;
 end_import
@@ -102,6 +116,18 @@ name|assertEquals
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|mockito
+operator|.
+name|Mockito
+operator|.
+name|mock
+import|;
+end_import
+
 begin_class
 DECL|class|GroupTreeViewModelTest
 specifier|public
@@ -163,6 +189,13 @@ operator|new
 name|GroupTreeViewModel
 argument_list|(
 name|stateManager
+argument_list|,
+name|mock
+argument_list|(
+name|DialogService
+operator|.
+name|class
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
