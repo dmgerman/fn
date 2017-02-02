@@ -325,6 +325,8 @@ argument_list|,
 literal|"RisImporterTestDoiAndJournalTitle"
 argument_list|,
 literal|"RisImporterTestScopus"
+argument_list|,
+literal|"RisImporterTestScience"
 argument_list|)
 return|;
 block|}
