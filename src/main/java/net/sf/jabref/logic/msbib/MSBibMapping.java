@@ -278,6 +278,17 @@ argument_list|,
 literal|"Comments"
 argument_list|)
 expr_stmt|;
+name|biblatexToMsBib
+operator|.
+name|put
+argument_list|(
+name|FieldName
+operator|.
+name|VOLUMES
+argument_list|,
+literal|"NumberVolumes"
+argument_list|)
+expr_stmt|;
 comment|//biblatexToMsBib.put(FieldName.BOOKTITLE, "ConferenceName");
 comment|//biblatexToMsBib.put(FieldName.PAGES, "Pages");
 name|biblatexToMsBib
@@ -416,6 +427,19 @@ name|biblatexToMsBib
 operator|.
 name|put
 argument_list|(
+name|FieldName
+operator|.
+name|PUBSTATE
+argument_list|,
+name|BIBTEX_PREFIX
+operator|+
+literal|"Pubstate"
+argument_list|)
+expr_stmt|;
+name|biblatexToMsBib
+operator|.
+name|put
+argument_list|(
 literal|"affiliation"
 argument_list|,
 name|BIBTEX_PREFIX
@@ -503,17 +527,6 @@ literal|"Key"
 argument_list|)
 expr_stmt|;
 comment|// MSBib only fields
-name|biblatexToMsBib
-operator|.
-name|put
-argument_list|(
-name|MSBIB_PREFIX
-operator|+
-literal|"numberofvolume"
-argument_list|,
-literal|"NumberVolumes"
-argument_list|)
-expr_stmt|;
 name|biblatexToMsBib
 operator|.
 name|put
