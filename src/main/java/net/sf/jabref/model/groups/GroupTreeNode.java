@@ -1005,6 +1005,26 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+comment|/**      * Returns whether this group matches the specified {@link BibEntry} while taking the hierarchical information      * into account.      */
+DECL|method|matches (BibEntry entry)
+specifier|public
+name|boolean
+name|matches
+parameter_list|(
+name|BibEntry
+name|entry
+parameter_list|)
+block|{
+return|return
+name|getSearchMatcher
+argument_list|()
+operator|.
+name|isMatch
+argument_list|(
+name|entry
+argument_list|)
+return|;
+block|}
 block|}
 end_class
 

@@ -225,6 +225,8 @@ name|GroupNodeViewModel
 argument_list|(
 name|databaseContext
 argument_list|,
+name|stateManager
+argument_list|,
 name|allEntriesGroup
 argument_list|)
 argument_list|,

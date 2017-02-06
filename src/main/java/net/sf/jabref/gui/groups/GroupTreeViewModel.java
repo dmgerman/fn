@@ -437,6 +437,8 @@ operator|.
 name|get
 argument_list|()
 argument_list|,
+name|stateManager
+argument_list|,
 name|root
 argument_list|)
 argument_list|)
@@ -451,6 +453,8 @@ name|newDatabase
 operator|.
 name|get
 argument_list|()
+argument_list|,
+name|stateManager
 argument_list|)
 argument_list|)
 decl_stmt|;
