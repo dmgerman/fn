@@ -334,6 +334,15 @@ name|IdBasedFetcher
 implements|,
 name|EntryBasedFetcher
 block|{
+DECL|field|name
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|name
+init|=
+literal|"DOI"
+decl_stmt|;
 DECL|field|preferences
 specifier|private
 specifier|final
@@ -364,7 +373,9 @@ name|getName
 parameter_list|()
 block|{
 return|return
-literal|"DOI"
+name|DoiFetcher
+operator|.
+name|name
 return|;
 block|}
 annotation|@
