@@ -40,6 +40,18 @@ name|nio
 operator|.
 name|file
 operator|.
+name|Files
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|file
+operator|.
 name|Path
 import|;
 end_import
@@ -400,6 +412,26 @@ argument_list|,
 literal|"Directory must not be null"
 argument_list|)
 expr_stmt|;
+comment|//Dir must be a folder, not a file
+if|if
+condition|(
+operator|!
+name|Files
+operator|.
+name|isDirectory
+argument_list|(
+name|dir
+argument_list|)
+condition|)
+block|{
+name|dir
+operator|=
+name|dir
+operator|.
+name|getParent
+argument_list|()
+expr_stmt|;
+block|}
 name|fileChooser
 operator|=
 operator|new
