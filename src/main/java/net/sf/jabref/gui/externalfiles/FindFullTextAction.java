@@ -761,7 +761,7 @@ name|file
 lambda|->
 block|{
 name|FileListTableModel
-name|tm
+name|fileLinkModel
 init|=
 operator|new
 name|FileListTableModel
@@ -778,19 +778,17 @@ argument_list|)
 operator|.
 name|ifPresent
 argument_list|(
-name|tm
+name|fileLinkModel
 operator|::
 name|setContent
 argument_list|)
 expr_stmt|;
-name|tm
+comment|// add full text file link at first position
+name|fileLinkModel
 operator|.
 name|addEntry
 argument_list|(
-name|tm
-operator|.
-name|getRowCount
-argument_list|()
+literal|0
 argument_list|,
 name|file
 argument_list|)
@@ -798,7 +796,7 @@ expr_stmt|;
 name|String
 name|newValue
 init|=
-name|tm
+name|fileLinkModel
 operator|.
 name|getStringRepresentation
 argument_list|()
