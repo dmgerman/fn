@@ -359,7 +359,7 @@ name|title
 init|=
 name|entry
 operator|.
-name|getField
+name|getLatexFreeField
 argument_list|(
 name|FieldName
 operator|.
