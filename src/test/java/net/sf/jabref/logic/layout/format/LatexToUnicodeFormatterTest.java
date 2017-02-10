@@ -22,6 +22,16 @@ name|org
 operator|.
 name|junit
 operator|.
+name|Ignore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Test
 import|;
 end_import
@@ -140,7 +150,7 @@ block|{
 comment|// See #1464
 name|assertEquals
 argument_list|(
-literal|"text"
+literal|"\uD835\uDC61\uD835\uDC52\uD835\uDC65\uD835\uDC61"
 argument_list|,
 name|formatter
 operator|.
@@ -203,7 +213,7 @@ parameter_list|()
 block|{
 name|assertEquals
 argument_list|(
-literal|"A 32\u00A0mA Î£Î-modulator"
+literal|"A 32 mA Î£Î-modulator"
 argument_list|,
 name|formatter
 operator|.
@@ -292,7 +302,7 @@ parameter_list|()
 block|{
 name|assertEquals
 argument_list|(
-literal|"hÌ§"
+literal|"á¸©"
 argument_list|,
 name|formatter
 operator|.
@@ -303,6 +313,11 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Ignore
+argument_list|(
+literal|"This is not a standard LaTeX command. It is debatable why we should convert this."
+argument_list|)
 annotation|@
 name|Test
 DECL|method|testCombiningAccentsCase2 ()
@@ -326,15 +341,15 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|unknownCommandIsKept ()
+DECL|method|unknownCommandIsIgnored ()
 specifier|public
 name|void
-name|unknownCommandIsKept
+name|unknownCommandIsIgnored
 parameter_list|()
 block|{
 name|assertEquals
 argument_list|(
-literal|"aaaa"
+literal|""
 argument_list|,
 name|formatter
 operator|.
@@ -368,15 +383,15 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|unknownCommandWithEmptyArgumentIsKept ()
+DECL|method|unknownCommandWithEmptyArgumentIsIgnored ()
 specifier|public
 name|void
-name|unknownCommandWithEmptyArgumentIsKept
+name|unknownCommandWithEmptyArgumentIsIgnored
 parameter_list|()
 block|{
 name|assertEquals
 argument_list|(
-literal|"aaaa"
+literal|""
 argument_list|,
 name|formatter
 operator|.
@@ -484,7 +499,7 @@ parameter_list|()
 block|{
 name|assertEquals
 argument_list|(
-literal|"MaliÅski"
+literal|"Mali'nski"
 argument_list|,
 name|formatter
 operator|.

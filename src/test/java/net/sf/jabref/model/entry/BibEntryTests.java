@@ -1205,7 +1205,7 @@ name|Optional
 operator|.
 name|of
 argument_list|(
-literal|"A 32\u00A0mA Î£Î-modulator"
+literal|"A 32 mA Î£Î-modulator"
 argument_list|)
 argument_list|,
 name|emptyEntry

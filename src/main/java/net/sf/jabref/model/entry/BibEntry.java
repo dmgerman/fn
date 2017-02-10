@@ -326,7 +326,7 @@ name|model
 operator|.
 name|strings
 operator|.
-name|LatexToUnicode
+name|LatexToUnicodeAdapter
 import|;
 end_import
 
@@ -551,16 +551,6 @@ init|=
 operator|new
 name|ConcurrentHashMap
 argument_list|<>
-argument_list|()
-decl_stmt|;
-comment|/**      * Used to cleanse field values for internal LaTeX-free storage      */
-DECL|field|unicodeConverter
-specifier|private
-name|LatexToUnicode
-name|unicodeConverter
-init|=
-operator|new
-name|LatexToUnicode
 argument_list|()
 decl_stmt|;
 comment|// Search and grouping status is stored in boolean fields for quick reference:
@@ -3781,7 +3771,7 @@ block|{
 name|String
 name|latexFreeField
 init|=
-name|unicodeConverter
+name|LatexToUnicodeAdapter
 operator|.
 name|format
 argument_list|(
