@@ -605,13 +605,13 @@ condition|)
 block|{
 name|result
 operator|=
-name|MainTableNameFormatter
-operator|.
-name|formatName
-argument_list|(
 name|toUnicode
 operator|.
 name|format
+argument_list|(
+name|MainTableNameFormatter
+operator|.
+name|formatName
 argument_list|(
 name|result
 argument_list|)
