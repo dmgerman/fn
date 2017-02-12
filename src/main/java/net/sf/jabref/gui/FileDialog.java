@@ -432,6 +432,24 @@ name|getParent
 argument_list|()
 expr_stmt|;
 block|}
+comment|//The lines above work also if the dir does not exist at all!
+comment|//NULL is accepted by the filechooser as no inital path
+if|if
+condition|(
+operator|!
+name|Files
+operator|.
+name|exists
+argument_list|(
+name|dir
+argument_list|)
+condition|)
+block|{
+name|dir
+operator|=
+literal|null
+expr_stmt|;
+block|}
 name|fileChooser
 operator|=
 operator|new
