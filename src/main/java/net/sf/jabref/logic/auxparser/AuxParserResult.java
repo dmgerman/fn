@@ -30,6 +30,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Collection
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|HashSet
 import|;
 end_import
@@ -83,6 +93,22 @@ operator|.
 name|database
 operator|.
 name|BibDatabase
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|BibtexString
 import|;
 end_import
 
@@ -145,6 +171,11 @@ DECL|field|crossRefEntriesCount
 specifier|private
 name|int
 name|crossRefEntriesCount
+decl_stmt|;
+DECL|field|insertedStrings
+specifier|private
+name|int
+name|insertedStrings
 decl_stmt|;
 DECL|method|AuxParserResult (BibDatabase masterDatabase)
 specifier|public
@@ -255,6 +286,38 @@ block|{
 name|nestedAuxCount
 operator|++
 expr_stmt|;
+block|}
+DECL|method|insertStrings (Collection<BibtexString> usedStrings)
+specifier|public
+name|void
+name|insertStrings
+parameter_list|(
+name|Collection
+argument_list|<
+name|BibtexString
+argument_list|>
+name|usedStrings
+parameter_list|)
+block|{
+for|for
+control|(
+name|BibtexString
+name|string
+range|:
+name|usedStrings
+control|)
+block|{
+name|auxDatabase
+operator|.
+name|addString
+argument_list|(
+name|string
+argument_list|)
+expr_stmt|;
+name|insertedStrings
+operator|++
+expr_stmt|;
+block|}
 block|}
 comment|/**      * Prints parsing statistics      *      * @param includeMissingEntries      * @return      */
 DECL|method|getInformation (boolean includeMissingEntries)
@@ -399,6 +462,26 @@ operator|.
 name|append
 argument_list|(
 name|crossRefEntriesCount
+argument_list|)
+operator|.
+name|append
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"strings included"
+argument_list|)
+argument_list|)
+operator|.
+name|append
+argument_list|(
+literal|' '
+argument_list|)
+operator|.
+name|append
+argument_list|(
+name|insertedStrings
 argument_list|)
 operator|.
 name|append

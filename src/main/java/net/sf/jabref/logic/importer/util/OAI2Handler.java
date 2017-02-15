@@ -616,7 +616,7 @@ name|setField
 argument_list|(
 name|FieldName
 operator|.
-name|COMMENTS
+name|COMMENT
 argument_list|,
 name|content
 argument_list|)

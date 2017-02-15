@@ -113,7 +113,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Keeps all essential data for establishing a new connection to a DBMS using {@link DBMSConnector}.  */
+comment|/**  * Keeps all essential data for establishing a new connection to a DBMS using {@link DBMSConnection}.  */
 end_comment
 
 begin_class
@@ -440,6 +440,7 @@ name|getHost
 argument_list|()
 argument_list|)
 operator|&&
+operator|(
 name|this
 operator|.
 name|port
@@ -448,6 +449,7 @@ name|properties
 operator|.
 name|getPort
 argument_list|()
+operator|)
 operator|&&
 name|this
 operator|.

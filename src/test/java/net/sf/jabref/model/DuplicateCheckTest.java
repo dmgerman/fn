@@ -62,22 +62,6 @@ end_import
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|entry
-operator|.
-name|IdGenerator
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|junit
@@ -122,10 +106,6 @@ name|assertTrue
 import|;
 end_import
 
-begin_comment
-comment|/**  * Created by IntelliJ IDEA.  * User: alver  * Date: Nov 9, 2007  * Time: 7:04:25 PM  * To change this template use File | Settings | File Templates.  */
-end_comment
-
 begin_class
 DECL|class|DuplicateCheckTest
 specifier|public
@@ -146,11 +126,6 @@ init|=
 operator|new
 name|BibEntry
 argument_list|(
-name|IdGenerator
-operator|.
-name|next
-argument_list|()
-argument_list|,
 name|BibtexEntryTypes
 operator|.
 name|ARTICLE
@@ -165,11 +140,6 @@ init|=
 operator|new
 name|BibEntry
 argument_list|(
-name|IdGenerator
-operator|.
-name|next
-argument_list|()
-argument_list|,
 name|BibtexEntryTypes
 operator|.
 name|ARTICLE

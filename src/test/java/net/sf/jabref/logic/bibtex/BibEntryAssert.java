@@ -435,7 +435,7 @@ name|assertFalse
 argument_list|(
 name|result
 operator|.
-name|isNullResult
+name|isEmpty
 argument_list|()
 argument_list|)
 expr_stmt|;

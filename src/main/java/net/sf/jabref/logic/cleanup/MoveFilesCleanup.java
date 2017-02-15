@@ -298,7 +298,7 @@ name|paths
 init|=
 name|databaseContext
 operator|.
-name|getFileDirectory
+name|getFileDirectories
 argument_list|(
 name|fileDirectoryPreferences
 argument_list|)
@@ -558,7 +558,7 @@ name|FieldChange
 argument_list|>
 name|change
 init|=
-name|typedEntry
+name|entry
 operator|.
 name|setFiles
 argument_list|(

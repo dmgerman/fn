@@ -144,22 +144,6 @@ name|GroupTreeNode
 import|;
 end_import
 
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|strings
-operator|.
-name|StringUtil
-import|;
-end_import
-
 begin_comment
 comment|/**  * Renders a GroupTreeNode using its group's getName() method, rather that its toString() method.  *  * @author jzieren  */
 end_comment
@@ -460,15 +444,7 @@ name|sb
 operator|.
 name|append
 argument_list|(
-name|StringUtil
-operator|.
-name|quoteForHTML
-argument_list|(
-name|viewModel
-operator|.
-name|getText
-argument_list|()
-argument_list|)
+literal|"Group Name"
 argument_list|)
 expr_stmt|;
 if|if

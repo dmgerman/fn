@@ -174,20 +174,6 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|TypedBibEntry
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
 name|help
 operator|.
 name|HelpFile
@@ -336,9 +322,9 @@ name|jabref
 operator|.
 name|model
 operator|.
-name|database
+name|entry
 operator|.
-name|BibDatabaseMode
+name|ArXivIdentifier
 import|;
 end_import
 
@@ -851,7 +837,7 @@ argument_list|()
 return|;
 block|}
 block|}
-DECL|method|searchForEntryById (String identifier)
+DECL|method|searchForEntryById (String id)
 specifier|private
 name|Optional
 argument_list|<
@@ -860,11 +846,40 @@ argument_list|>
 name|searchForEntryById
 parameter_list|(
 name|String
-name|identifier
+name|id
 parameter_list|)
 throws|throws
 name|FetcherException
 block|{
+name|Optional
+argument_list|<
+name|ArXivIdentifier
+argument_list|>
+name|identifier
+init|=
+name|ArXivIdentifier
+operator|.
+name|parse
+argument_list|(
+name|id
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+operator|!
+name|identifier
+operator|.
+name|isPresent
+argument_list|()
+condition|)
+block|{
+return|return
+name|Optional
+operator|.
+name|empty
+argument_list|()
+return|;
+block|}
 name|List
 argument_list|<
 name|ArXivEntry
@@ -880,6 +895,9 @@ operator|.
 name|singletonList
 argument_list|(
 name|identifier
+operator|.
+name|get
+argument_list|()
 argument_list|)
 argument_list|,
 literal|0
@@ -893,7 +911,7 @@ name|entries
 operator|.
 name|size
 argument_list|()
-operator|==
+operator|>=
 literal|1
 condition|)
 block|{
@@ -951,7 +969,7 @@ literal|10
 argument_list|)
 return|;
 block|}
-DECL|method|queryApi (String searchQuery, List<String> ids, int start, int maxResults)
+DECL|method|queryApi (String searchQuery, List<ArXivIdentifier> ids, int start, int maxResults)
 specifier|private
 name|List
 argument_list|<
@@ -964,7 +982,7 @@ name|searchQuery
 parameter_list|,
 name|List
 argument_list|<
-name|String
+name|ArXivIdentifier
 argument_list|>
 name|ids
 parameter_list|,
@@ -1032,7 +1050,7 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Queries the API.      *      * If only {@code searchQuery} is given, then the API will return results for each article that matches the query.      * If only {@code ids} is given, then the API will return results for each article in the list.      * If both {@code searchQuery} and {@code ids} are given, then the API will return each article in      * {@code ids} that matches {@code searchQuery}. This allows the API to act as a results filter.      *      * @param searchQuery the search query used to find articles;      *<a href="http://arxiv.org/help/api/user-manual#query_details">details</a>      * @param ids         a list of arXiv identifiers      * @param start       the index of the first returned result (zero-based)      * @param maxResults  the number of maximal results (has to be smaller than 2000)      * @return the response from the API as a XML document (Atom 1.0)      * @throws FetcherException if there was a problem while building the URL or the API was not accessible      */
-DECL|method|callApi (String searchQuery, List<String> ids, int start, int maxResults)
+DECL|method|callApi (String searchQuery, List<ArXivIdentifier> ids, int start, int maxResults)
 specifier|private
 name|Document
 name|callApi
@@ -1042,7 +1060,7 @@ name|searchQuery
 parameter_list|,
 name|List
 argument_list|<
-name|String
+name|ArXivIdentifier
 argument_list|>
 name|ids
 parameter_list|,
@@ -1122,13 +1140,26 @@ name|addParameter
 argument_list|(
 literal|"id_list"
 argument_list|,
-name|String
+name|ids
 operator|.
-name|join
+name|stream
+argument_list|()
+operator|.
+name|map
+argument_list|(
+name|ArXivIdentifier
+operator|::
+name|getNormalized
+argument_list|)
+operator|.
+name|collect
+argument_list|(
+name|Collectors
+operator|.
+name|joining
 argument_list|(
 literal|","
-argument_list|,
-name|ids
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2261,17 +2292,7 @@ name|ifPresent
 argument_list|(
 name|url
 lambda|->
-operator|(
-operator|new
-name|TypedBibEntry
-argument_list|(
 name|bibEntry
-argument_list|,
-name|BibDatabaseMode
-operator|.
-name|BIBLATEX
-argument_list|)
-operator|)
 operator|.
 name|setFiles
 argument_list|(

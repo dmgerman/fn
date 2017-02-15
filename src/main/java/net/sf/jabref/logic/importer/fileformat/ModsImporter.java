@@ -1184,12 +1184,9 @@ expr_stmt|;
 return|return
 name|ParserResult
 operator|.
-name|fromErrorMessage
+name|fromError
 argument_list|(
 name|e
-operator|.
-name|getLocalizedMessage
-argument_list|()
 argument_list|)
 return|;
 block|}
@@ -1898,6 +1895,11 @@ operator|instanceof
 name|JAXBElement
 condition|)
 block|{
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
 name|JAXBElement
 argument_list|<
 name|StringPlusLanguage
@@ -2173,7 +2175,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * Returns an Optional which contains an instance of the given class, if the given element can be cast to this class.      * If the element can not be cast to the given class, then an empty optional will be returned.      *      * @param groupElement The element that should be cast      * @param clazz        The class to which groupElement should be cast      * @return An Optional, that contains the groupElement as instance of clazz, if groupElement can be cast to clazz.      * An empty Optional, if groupElement can not be cast to clazz      */
+comment|/**      * Returns an Optional which contains an instance of the given class, if the given element can be cast to this class.      * If the element cannot be cast to the given class, then an empty optional will be returned.      *      * @param groupElement The element that should be cast      * @param clazz        The class to which groupElement should be cast      * @return An Optional, that contains the groupElement as instance of clazz, if groupElement can be cast to clazz.      * An empty Optional, if groupElement cannot be cast to clazz      */
 DECL|method|getElement (Object groupElement, Class<T> clazz)
 specifier|private
 parameter_list|<
@@ -2798,6 +2800,11 @@ operator|instanceof
 name|JAXBElement
 condition|)
 block|{
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
 name|JAXBElement
 argument_list|<
 name|StringPlusLanguage

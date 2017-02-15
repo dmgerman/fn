@@ -48,9 +48,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|keyboard
-operator|.
-name|KeyBindingPreferences
+name|StateManager
 import|;
 end_import
 
@@ -62,11 +60,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|gui
 operator|.
-name|error
+name|keyboard
 operator|.
-name|StreamEavesdropper
+name|KeyBindingPreferences
 import|;
 end_import
 
@@ -229,6 +227,17 @@ specifier|static
 name|ProtectedTermsLoader
 name|protectedTermsLoader
 decl_stmt|;
+comment|/**      * Manager for the state of the GUI.      */
+DECL|field|stateManager
+specifier|public
+specifier|static
+name|StateManager
+name|stateManager
+init|=
+operator|new
+name|StateManager
+argument_list|()
+decl_stmt|;
 comment|// Key binding preferences
 DECL|field|keyPrefs
 specifier|private
@@ -248,12 +257,6 @@ specifier|private
 specifier|static
 name|FileUpdateMonitor
 name|fileUpdateMonitor
-decl_stmt|;
-DECL|field|streamEavesdropper
-specifier|private
-specifier|static
-name|StreamEavesdropper
-name|streamEavesdropper
 decl_stmt|;
 comment|// Key binding preferences
 DECL|method|getKeyPrefs ()
@@ -301,15 +304,6 @@ argument_list|()
 expr_stmt|;
 name|Globals
 operator|.
-name|streamEavesdropper
-operator|=
-name|StreamEavesdropper
-operator|.
-name|eavesdropOnSystem
-argument_list|()
-expr_stmt|;
-name|Globals
-operator|.
 name|fileUpdateMonitor
 operator|=
 operator|new
@@ -320,7 +314,7 @@ name|JabRefExecutorService
 operator|.
 name|INSTANCE
 operator|.
-name|executeWithLowPriorityInOwnThread
+name|executeInterruptableTask
 argument_list|(
 name|Globals
 operator|.
@@ -350,17 +344,6 @@ parameter_list|()
 block|{
 return|return
 name|fileUpdateMonitor
-return|;
-block|}
-DECL|method|getStreamEavesdropper ()
-specifier|public
-specifier|static
-name|StreamEavesdropper
-name|getStreamEavesdropper
-parameter_list|()
-block|{
-return|return
-name|streamEavesdropper
 return|;
 block|}
 block|}

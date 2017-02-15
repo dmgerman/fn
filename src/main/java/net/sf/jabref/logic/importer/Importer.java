@@ -142,16 +142,6 @@ argument_list|<
 name|Importer
 argument_list|>
 block|{
-comment|/**      * Using this when I have no database open or when I read      * non bibtex file formats (used by the ImportFormatReader.java)      *      * TODO: Is this field really needed or would calling IdGenerator.next() suffice?      */
-DECL|field|DEFAULT_BIBTEXENTRY_ID
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|DEFAULT_BIBTEXENTRY_ID
-init|=
-literal|"__ID"
-decl_stmt|;
 comment|/**      * Check whether the source is in the correct format for this importer.      *      * The effect of this method is primarily to avoid unnecessary processing of      * files when searching for a suitable import format. If this method returns      * false, the import routine will move on to the next import format.      *      * Thus the correct behaviour is to return false if it is certain that the file is      * not of the suitable type, and true otherwise. Returning true is the safe choice if not certain.      */
 DECL|method|isRecognizedFormat (BufferedReader input)
 specifier|public
@@ -275,7 +265,7 @@ return|;
 block|}
 block|}
 DECL|method|getUTF8Reader (Path filePath)
-specifier|public
+specifier|protected
 specifier|static
 name|BufferedReader
 name|getUTF8Reader
@@ -298,7 +288,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|getUTF16Reader (Path filePath)
-specifier|public
+specifier|protected
 specifier|static
 name|BufferedReader
 name|getUTF16Reader

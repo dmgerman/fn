@@ -76,7 +76,7 @@ name|model
 operator|.
 name|strings
 operator|.
-name|LatexToUnicode
+name|LatexToUnicodeAdapter
 import|;
 end_import
 
@@ -94,16 +94,6 @@ name|LayoutFormatter
 implements|,
 name|Formatter
 block|{
-DECL|field|formatter
-specifier|private
-specifier|final
-name|LatexToUnicode
-name|formatter
-init|=
-operator|new
-name|LatexToUnicode
-argument_list|()
-decl_stmt|;
 annotation|@
 name|Override
 DECL|method|getName ()
@@ -145,7 +135,7 @@ name|inField
 parameter_list|)
 block|{
 return|return
-name|formatter
+name|LatexToUnicodeAdapter
 operator|.
 name|format
 argument_list|(

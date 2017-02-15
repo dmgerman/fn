@@ -242,10 +242,6 @@ name|LogFactory
 import|;
 end_import
 
-begin_comment
-comment|/**  * Created by IntelliJ IDEA. User: alver Date: Mar 7, 2007 Time: 6:55:56 PM To change this template use File | Settings  * | File Templates.  */
-end_comment
-
 begin_class
 DECL|class|PushToVim
 specifier|public

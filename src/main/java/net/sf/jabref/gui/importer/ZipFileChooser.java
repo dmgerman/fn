@@ -284,22 +284,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
-operator|.
-name|util
-operator|.
-name|GUIUtil
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|logic
 operator|.
 name|importer
@@ -355,7 +339,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Dialog to allow users to choose a file contained in a ZIP file.  *  * @author andreas_sf at rudert-home dot de  */
+comment|/**  * Dialog to allow users to choose a file contained in a ZIP file.  */
 end_comment
 
 begin_class
@@ -381,7 +365,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|/**      * New ZIP file chooser.      *      * @param owner  Owner of the file chooser      * @param zipFile  ZIP-Fle to choose from, must be readable      */
+comment|/**      * New ZIP file chooser.      *      * @param importCustomizationDialog  Owner of the file chooser      * @param zipFile  ZIP-Fle to choose from, must be readable      */
 DECL|method|ZipFileChooser (ImportCustomizationDialog importCustomizationDialog, ZipFile zipFile)
 specifier|public
 name|ZipFileChooser
@@ -533,13 +517,6 @@ literal|0
 argument_list|)
 expr_stmt|;
 block|}
-name|GUIUtil
-operator|.
-name|correctRowHeight
-argument_list|(
-name|table
-argument_list|)
-expr_stmt|;
 comment|// cancel: no entry is selected
 name|JButton
 name|cancelButton

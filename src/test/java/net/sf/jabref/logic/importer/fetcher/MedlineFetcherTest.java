@@ -112,6 +112,22 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|testutils
+operator|.
+name|category
+operator|.
+name|FetcherTests
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|junit
@@ -127,6 +143,20 @@ operator|.
 name|junit
 operator|.
 name|Test
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|experimental
+operator|.
+name|categories
+operator|.
+name|Category
 import|;
 end_import
 
@@ -167,6 +197,13 @@ import|;
 end_import
 
 begin_class
+annotation|@
+name|Category
+argument_list|(
+name|FetcherTests
+operator|.
+name|class
+argument_list|)
 DECL|class|MedlineFetcherTest
 specifier|public
 class|class
@@ -226,7 +263,7 @@ name|setField
 argument_list|(
 literal|"author"
 argument_list|,
-literal|"Wijedasa, Lahiru S and Jauhiainen, Jyrki and KÃ¶nÃ¶nen, Mari and Lampela, Maija and Vasander, Harri and LeBlanc, Marie-Claire and Evers, Stephanie and Smith, Thomas E L and Yule, Catherine M and Varkkey, Helena and Lupascu, Massimo and Parish, Faizal and Singleton, Ian and Clements, Gopalasamy R and Aziz, Sheema Abdul and Harrison, Mark E and Cheyne, Susan and Anshari, Gusti Z and Meijaard, Erik and Goldstein, Jenny E and Waldron, Susan and Hergoualc'h, Kristell and Dommain, RenÃ© and Frolking, Steve and Evans, Christopher D and Posa, Mary Rose C and Glaser, Paul H and Suryadiputra, Nyoman and Lubis, Reza and Santika, Truly and Padfield, Rory and Kurnianto, Sofyan and Hadisiswoyo, Panut and Lim, Teck Wyn and Page, Susan E and Gauci, Vincent and van der Meer, Peter J and Buckland, Helen and Garnier, Fabien and Samuel, Marshall K and Choo, Liza Nuriati Lim Kim and O'Reilly, Patrick and Warren, Matthew and Suksuwan, Surin and Sumarga, Elham and Jain, Anuj and Laurance, William F and Couwenberg, John and Joosten, Hans and Vernimmen, Ronald and Hooijer, Aljosja and Malins, Chris and Cochrane, Mark A and Perumal, Balu and Siegert, Florian and Peh, Kelvin S-H and Comeau, Louis-Pierre and Verchot, Louis and Harvey, Charles F and Cobb, Alex and Jaafar, Zeehan and WÃ¶sten, Henk and Manuri, Solichin and MÃ¼ller, Moritz and Giesen, Wim and Phelps, Jacob and Yong, Ding Li and Silvius, Marcel and Wedeux, BÃ©atrice M M and Hoyt, Alison and Osaki, Mitsuru and Takashi, Hirano and Takahashi, Hidenori and Kohyama, Takashi S and Haraguchi, Akira and Nugroho, Nunung P and Coomes, David A and Quoi, Le Phat and Dohong, Alue and Gunawan, Haris and Gaveau, David L A and Langner, Andreas and Lim, Felix K S and Edwards, David P and Giam, Xingli and van der Werf, Guido and Carmenta, Rachel and Verwer, Caspar C and Gibson, Luke and Grandois, Laure and Graham, Laura Linda Bozena and Regalino, Jhanson and Wich, Serge A and Rieley, Jack and Kettridge, Nicholas and Brown, Chloe and Pirard, Romain and Moore, Sam and Ripoll Capilla, B and Ballhorn, Uwe and Ho, Hua Chew and Hoscilo, Agata and Lohberger, Sandra and Evans, Theodore A and Yulianti, Nina and Blackham, Grace and Onrizal and Husson, Simon and Murdiyarso, Daniel and Pangala, Sunita and Cole, Lydia E S and Tacconi, Luca and Segah, Hendrik and Tonoto, Prayoto and Lee, Janice S H and Schmilewski, Gerald and Wulffraat, Stephan and Putra, Erianto Indra and Cattau, Megan E and Clymo, R S and Morrison, Ross and Mujahid, Aazani and Miettinen, Jukka and Liew, Soo Chin and Valpola, Samu and Wilson, David and D'Arcy, Laura and Gerding, Michiel and Sundari, Siti and Thornton, Sara A and Kalisz, Barbara and Chapman, Stephen J and Su, Ahmad Suhaizi Mat and Basuki, Imam and Itoh, Masayuki and Traeholt, Carl and Sloan, Sean and Sayok, Alexander K and Andersen, Roxane"
+literal|"Wijedasa, Lahiru S and Jauhiainen, Jyrki and KÃ¶nÃ¶nen, Mari and Lampela, Maija and Vasander, Harri and Leblanc, Marie-Claire and Evers, Stephanie and Smith, Thomas E L and Yule, Catherine M and Varkkey, Helena and Lupascu, Massimo and Parish, Faizal and Singleton, Ian and Clements, Gopalasamy R and Aziz, Sheema Abdul and Harrison, Mark E and Cheyne, Susan and Anshari, Gusti Z and Meijaard, Erik and Goldstein, Jenny E and Waldron, Susan and Hergoualc'h, Kristell and Dommain, Rene and Frolking, Steve and Evans, Christopher D and Posa, Mary Rose C and Glaser, Paul H and Suryadiputra, Nyoman and Lubis, Reza and Santika, Truly and Padfield, Rory and Kurnianto, Sofyan and Hadisiswoyo, Panut and Lim, Teck Wyn and Page, Susan E and Gauci, Vincent and Van Der Meer, Peter J and Buckland, Helen and Garnier, Fabien and Samuel, Marshall K and Choo, Liza Nuriati Lim Kim and O'Reilly, Patrick and Warren, Matthew and Suksuwan, Surin and Sumarga, Elham and Jain, Anuj and Laurance, William F and Couwenberg, John and Joosten, Hans and Vernimmen, Ronald and Hooijer, Aljosja and Malins, Chris and Cochrane, Mark A and Perumal, Balu and Siegert, Florian and Peh, Kelvin S-H and Comeau, Louis-Pierre and Verchot, Louis and Harvey, Charles F and Cobb, Alex and Jaafar, Zeehan and WÃ¶sten, Henk and Manuri, Solichin and MÃ¼ller, Moritz and Giesen, Wim and Phelps, Jacob and Yong, Ding Li and Silvius, Marcel and Wedeux, BÃ©atrice M M and Hoyt, Alison and Osaki, Mitsuru and Hirano, Takashi and Takahashi, Hidenori and Kohyama, Takashi S and Haraguchi, Akira and Nugroho, Nunung P and Coomes, David A and Quoi, Le Phat and Dohong, Alue and Gunawan, Haris and Gaveau, David L A and Langner, Andreas and Lim, Felix K S and Edwards, David P and Giam, Xingli and Van Der Werf, Guido and Carmenta, Rachel and Verwer, Caspar C and Gibson, Luke and Gandois, Laure and Graham, Laura Linda Bozena and Regalino, Jhanson and Wich, Serge A and Rieley, Jack and Kettridge, Nicholas and Brown, Chloe and Pirard, Romain and Moore, Sam and Capilla, B Ripoll and Ballhorn, Uwe and Ho, Hua Chew and Hoscilo, Agata and Lohberger, Sandra and Evans, Theodore A and Yulianti, Nina and Blackham, Grace and Onrizal and Husson, Simon and Murdiyarso, Daniel and Pangala, Sunita and Cole, Lydia E S and Tacconi, Luca and Segah, Hendrik and Tonoto, Prayoto and Lee, Janice S H and Schmilewski, Gerald and Wulffraat, Stephan and Putra, Erianto Indra and Cattau, Megan E and Clymo, R S and Morrison, Ross and Mujahid, Aazani and Miettinen, Jukka and Liew, Soo Chin and Valpola, Samu and Wilson, David and D'Arcy, Laura and Gerding, Michiel and Sundari, Siti and Thornton, Sara A and Kalisz, Barbara and Chapman, Stephen J and Su, Ahmad Suhaizi Mat and Basuki, Imam and Itoh, Masayuki and Traeholt, Carl and Sloan, Sean and Sayok, Alexander K and Andersen, Roxane"
 argument_list|)
 expr_stmt|;
 name|entryWijedasa
@@ -235,7 +272,7 @@ name|setField
 argument_list|(
 literal|"created"
 argument_list|,
-literal|"2016-9-27"
+literal|"2016-09-27"
 argument_list|)
 expr_stmt|;
 name|entryWijedasa
@@ -287,18 +324,9 @@ name|entryWijedasa
 operator|.
 name|setField
 argument_list|(
-literal|"keywords"
-argument_list|,
-literal|"Acacia; Agriculture; Emissions; Subsidence; Sustainability; Tropical peatlands; oil palm"
-argument_list|)
-expr_stmt|;
-name|entryWijedasa
-operator|.
-name|setField
-argument_list|(
 literal|"month"
 argument_list|,
-literal|"Sep"
+literal|"#sep#"
 argument_list|)
 expr_stmt|;
 name|entryWijedasa
@@ -352,7 +380,7 @@ name|setField
 argument_list|(
 literal|"revised"
 argument_list|,
-literal|"2016-9-27"
+literal|"2017-01-24"
 argument_list|)
 expr_stmt|;
 name|entryWijedasa
@@ -412,7 +440,7 @@ name|setField
 argument_list|(
 literal|"created"
 argument_list|,
-literal|"2016-9-27"
+literal|"2016-09-27"
 argument_list|)
 expr_stmt|;
 name|entryEndharti
@@ -529,7 +557,7 @@ name|setField
 argument_list|(
 literal|"month"
 argument_list|,
-literal|"Sep"
+literal|"#sep#"
 argument_list|)
 expr_stmt|;
 name|entryEndharti
@@ -652,7 +680,7 @@ name|setField
 argument_list|(
 literal|"created"
 argument_list|,
-literal|"2015-9-26"
+literal|"2015-09-26"
 argument_list|)
 expr_stmt|;
 name|bibEntryIchikawa
@@ -688,7 +716,7 @@ name|setField
 argument_list|(
 literal|"revised"
 argument_list|,
-literal|"2015-9-26"
+literal|"2015-09-26"
 argument_list|)
 expr_stmt|;
 name|bibEntryIchikawa
@@ -733,7 +761,7 @@ name|setField
 argument_list|(
 literal|"month"
 argument_list|,
-literal|"Dec"
+literal|"#dec#"
 argument_list|)
 expr_stmt|;
 name|bibEntryIchikawa
@@ -883,7 +911,7 @@ name|setField
 argument_list|(
 literal|"created"
 argument_list|,
-literal|"2016-2-12"
+literal|"2016-02-12"
 argument_list|)
 expr_stmt|;
 name|bibEntrySari
@@ -937,7 +965,7 @@ name|setField
 argument_list|(
 literal|"month"
 argument_list|,
-literal|"Nov"
+literal|"#nov#"
 argument_list|)
 expr_stmt|;
 name|bibEntrySari
@@ -955,7 +983,7 @@ name|setField
 argument_list|(
 literal|"revised"
 argument_list|,
-literal|"2016-2-12"
+literal|"2016-02-12"
 argument_list|)
 expr_stmt|;
 name|bibEntrySari

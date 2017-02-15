@@ -216,7 +216,7 @@ block|{
 return|return
 name|HelpFile
 operator|.
-name|FETCHER_DIVA_TO_BIBTEX
+name|FETCHER_DIVA
 return|;
 block|}
 annotation|@

@@ -28,6 +28,42 @@ begin_import
 import|import
 name|java
 operator|.
+name|nio
+operator|.
+name|file
+operator|.
+name|Files
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|file
+operator|.
+name|Path
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|file
+operator|.
+name|Paths
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|ArrayList
@@ -622,7 +658,9 @@ name|bibDatabaseMode
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Get the file where this database was last saved to or loaded from, if any.      *      * @return Optional of the relevant File, or Optional.empty() if none is defined.      */
+comment|/**      * Get the file where this database was last saved to or loaded from, if any.      *      * @return Optional of the relevant File, or Optional.empty() if none is defined.      * @deprecated use {@link #getDatabasePath()} instead      */
+annotation|@
+name|Deprecated
 DECL|method|getDatabaseFile ()
 specifier|public
 name|Optional
@@ -641,6 +679,31 @@ name|file
 argument_list|)
 return|;
 block|}
+DECL|method|getDatabasePath ()
+specifier|public
+name|Optional
+argument_list|<
+name|Path
+argument_list|>
+name|getDatabasePath
+parameter_list|()
+block|{
+return|return
+name|Optional
+operator|.
+name|ofNullable
+argument_list|(
+name|file
+argument_list|)
+operator|.
+name|map
+argument_list|(
+name|File
+operator|::
+name|toPath
+argument_list|)
+return|;
+block|}
 DECL|method|setDatabaseFile (File file)
 specifier|public
 name|void
@@ -655,6 +718,19 @@ operator|.
 name|file
 operator|=
 name|file
+expr_stmt|;
+block|}
+DECL|method|clearDatabaseFile ()
+specifier|public
+name|void
+name|clearDatabaseFile
+parameter_list|()
+block|{
+name|this
+operator|.
+name|file
+operator|=
+literal|null
 expr_stmt|;
 block|}
 DECL|method|getDatabase ()
@@ -713,20 +789,20 @@ operator|.
 name|BIBLATEX
 return|;
 block|}
-DECL|method|getFileDirectory (FileDirectoryPreferences preferences)
+DECL|method|getFileDirectories (FileDirectoryPreferences preferences)
 specifier|public
 name|List
 argument_list|<
 name|String
 argument_list|>
-name|getFileDirectory
+name|getFileDirectories
 parameter_list|(
 name|FileDirectoryPreferences
 name|preferences
 parameter_list|)
 block|{
 return|return
-name|getFileDirectory
+name|getFileDirectories
 argument_list|(
 name|FieldName
 operator|.
@@ -736,14 +812,71 @@ name|preferences
 argument_list|)
 return|;
 block|}
-comment|/**     * Look up the directory set up for the given field type for this database.     * If no directory is set up, return that defined in global preferences.     * There can be up to three directory definitions for these files:     * the database's metadata can specify a general directory and/or a user-specific directory     * or the preferences can specify one.     *<p>     * The settings are prioritized in the following order and the first defined setting is used:     * 1. metadata user-specific directory     * 2. metadata general directory     * 3. preferences directory     * 4. BIB file directory     *     * @param     * @param fieldName The field type     * @return The default directory for this field type.     */
-DECL|method|getFileDirectory (String fieldName, FileDirectoryPreferences preferences)
+comment|/**      * Returns the first existing file directory from  {@link #getFileDirectories(FileDirectoryPreferences)}      * @param preferences The FileDirectoryPreferences      * @return Optional of Path      */
+DECL|method|getFirstExistingFileDir (FileDirectoryPreferences preferences)
+specifier|public
+name|Optional
+argument_list|<
+name|Path
+argument_list|>
+name|getFirstExistingFileDir
+parameter_list|(
+name|FileDirectoryPreferences
+name|preferences
+parameter_list|)
+block|{
+return|return
+name|getFileDirectories
+argument_list|(
+name|preferences
+argument_list|)
+operator|.
+name|stream
+argument_list|()
+operator|.
+name|filter
+argument_list|(
+name|s
+lambda|->
+operator|!
+name|s
+operator|.
+name|isEmpty
+argument_list|()
+argument_list|)
+operator|.
+name|map
+argument_list|(
+name|p
+lambda|->
+name|Paths
+operator|.
+name|get
+argument_list|(
+name|p
+argument_list|)
+argument_list|)
+operator|.
+name|filter
+argument_list|(
+name|Files
+operator|::
+name|exists
+argument_list|)
+operator|.
+name|findFirst
+argument_list|()
+return|;
+comment|//Filter for empty string, as this would be expanded to the jar-directory with Paths.get()
+block|}
+comment|/**     * Look up the directories set up for the given field type for this database.     * If no directory is set up, return that defined in global preferences.     * There can be up to three directory definitions for these files:     * the database's metadata can specify a general directory and/or a user-specific directory     * or the preferences can specify one.     *<p>     * The settings are prioritized in the following order and the first defined setting is used:     * 1. metadata user-specific directory     * 2. metadata general directory     * 3. preferences directory     * 4. BIB file directory     *     * @param     * @param fieldName The field type     * @return The default directory for this field type.     */
+DECL|method|getFileDirectories (String fieldName, FileDirectoryPreferences preferences)
 specifier|public
 name|List
 argument_list|<
 name|String
 argument_list|>
-name|getFileDirectory
+name|getFileDirectories
 parameter_list|(
 name|String
 name|fieldName
@@ -846,26 +979,43 @@ argument_list|)
 operator|.
 name|ifPresent
 argument_list|(
+name|path
+lambda|->
 name|fileDirs
-operator|::
+operator|.
 name|add
+argument_list|(
+name|path
+operator|.
+name|toAbsolutePath
+argument_list|()
+operator|.
+name|toString
+argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// 4. BIB file directory
-name|getDatabaseFile
+name|getDatabasePath
 argument_list|()
 operator|.
 name|ifPresent
 argument_list|(
-name|databaseFile
+name|dbPath
 lambda|->
 block|{
 name|String
 name|parentDir
 init|=
-name|databaseFile
+name|dbPath
 operator|.
 name|getParent
+argument_list|()
+operator|.
+name|toAbsolutePath
+argument_list|()
+operator|.
+name|toString
 argument_list|()
 decl_stmt|;
 comment|// Check if we should add it as primary file dir (first in the list) or not:

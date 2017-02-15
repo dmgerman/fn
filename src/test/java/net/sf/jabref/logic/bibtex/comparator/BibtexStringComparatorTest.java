@@ -34,22 +34,6 @@ end_import
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|entry
-operator|.
-name|IdGenerator
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|junit
@@ -126,11 +110,6 @@ init|=
 operator|new
 name|BibtexString
 argument_list|(
-name|IdGenerator
-operator|.
-name|next
-argument_list|()
-argument_list|,
 literal|"VLSI"
 argument_list|,
 literal|"Very Large Scale Integration"
@@ -142,11 +121,6 @@ init|=
 operator|new
 name|BibtexString
 argument_list|(
-name|IdGenerator
-operator|.
-name|next
-argument_list|()
-argument_list|,
 literal|"DSP"
 argument_list|,
 literal|"Digital Signal Processing"
@@ -158,11 +132,6 @@ init|=
 operator|new
 name|BibtexString
 argument_list|(
-name|IdGenerator
-operator|.
-name|next
-argument_list|()
-argument_list|,
 literal|"DSP"
 argument_list|,
 literal|"Digital Signal Processing"
@@ -291,11 +260,6 @@ init|=
 operator|new
 name|BibtexString
 argument_list|(
-name|IdGenerator
-operator|.
-name|next
-argument_list|()
-argument_list|,
 literal|"DSPVLSI"
 argument_list|,
 literal|"#VLSI# #DSP#"

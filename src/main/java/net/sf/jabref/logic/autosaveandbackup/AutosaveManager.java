@@ -554,6 +554,8 @@ name|Object
 name|listener
 parameter_list|)
 block|{
+try|try
+block|{
 name|eventBus
 operator|.
 name|unregister
@@ -561,6 +563,22 @@ argument_list|(
 name|listener
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IllegalArgumentException
+name|e
+parameter_list|)
+block|{
+comment|// occurs if the event source has not been registered, should not prevent shutdown
+name|LOGGER
+operator|.
+name|debug
+argument_list|(
+name|e
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_function
 

@@ -1336,12 +1336,9 @@ init|=
 operator|new
 name|BibEntry
 argument_list|(
-name|DEFAULT_BIBTEXENTRY_ID
-argument_list|,
 name|type
 argument_list|)
 decl_stmt|;
-comment|// id assumes an existing database so don't
 comment|// create one here
 name|b
 operator|.

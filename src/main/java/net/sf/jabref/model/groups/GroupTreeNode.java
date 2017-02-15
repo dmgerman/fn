@@ -50,19 +50,37 @@ name|java
 operator|.
 name|util
 operator|.
-name|Optional
+name|stream
+operator|.
+name|Collectors
 import|;
 end_import
 
 begin_import
 import|import
-name|java
+name|net
 operator|.
-name|util
+name|sf
 operator|.
-name|stream
+name|jabref
 operator|.
-name|Collectors
+name|model
+operator|.
+name|FieldChange
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|TreeNode
 import|;
 end_import
 
@@ -186,7 +204,13 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
-name|setGroup
+name|this
+operator|.
+name|group
+operator|=
+name|Objects
+operator|.
+name|requireNonNull
 argument_list|(
 name|group
 argument_list|)
@@ -221,10 +245,9 @@ return|return
 name|group
 return|;
 block|}
-comment|/**      * Associates the specified group with this node.      *      * @param newGroup the new group (has to be non-null)      */
+comment|/**      * Associates the specified group with this node.      *      * @param newGroup the new group (has to be non-null)      * @deprecated use {@link #setGroup(AbstractGroup, boolean, boolean, List)}} instead      */
 annotation|@
 name|Deprecated
-comment|// use other overload
 DECL|method|setGroup (AbstractGroup newGroup)
 specifier|public
 name|void
@@ -246,12 +269,12 @@ name|newGroup
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Associates the specified group with this node while also providing the possibility to modify previous matched      * entries so that they are now matched by the new group.      *      * @param newGroup the new group (has to be non-null)      * @param shouldKeepPreviousAssignments specifies whether previous matched entries should be carried over      * @param entriesInDatabase list of entries in the database      */
-DECL|method|setGroup (AbstractGroup newGroup, boolean shouldKeepPreviousAssignments, List<BibEntry> entriesInDatabase)
+comment|/**      * Associates the specified group with this node while also providing the possibility to modify previous matched      * entries so that they are now matched by the new group.      *      * @param newGroup the new group (has to be non-null)      * @param shouldKeepPreviousAssignments specifies whether previous matched entries should be added to the new group      * @param shouldRemovePreviousAssignments specifies whether previous matched entries should be removed from the old group      * @param entriesInDatabase list of entries in the database      */
+DECL|method|setGroup (AbstractGroup newGroup, boolean shouldKeepPreviousAssignments, boolean shouldRemovePreviousAssignments, List<BibEntry> entriesInDatabase)
 specifier|public
-name|Optional
+name|List
 argument_list|<
-name|EntriesGroupChange
+name|FieldChange
 argument_list|>
 name|setGroup
 parameter_list|(
@@ -260,6 +283,9 @@ name|newGroup
 parameter_list|,
 name|boolean
 name|shouldKeepPreviousAssignments
+parameter_list|,
+name|boolean
+name|shouldRemovePreviousAssignments
 parameter_list|,
 name|List
 argument_list|<
@@ -279,15 +305,44 @@ argument_list|(
 name|newGroup
 argument_list|)
 expr_stmt|;
-comment|// Keep assignments from previous group
-if|if
-condition|(
+name|List
+argument_list|<
+name|FieldChange
+argument_list|>
+name|changes
+init|=
+operator|new
+name|ArrayList
+argument_list|<>
+argument_list|()
+decl_stmt|;
+name|boolean
+name|shouldRemove
+init|=
+name|shouldRemovePreviousAssignments
+operator|&&
+operator|(
+name|oldGroup
+operator|instanceof
+name|GroupEntryChanger
+operator|)
+decl_stmt|;
+name|boolean
+name|shouldAdd
+init|=
 name|shouldKeepPreviousAssignments
 operator|&&
+operator|(
 name|newGroup
-operator|.
-name|supportsAdd
-argument_list|()
+operator|instanceof
+name|GroupEntryChanger
+operator|)
+decl_stmt|;
+if|if
+condition|(
+name|shouldAdd
+operator|||
+name|shouldRemove
 condition|)
 block|{
 name|List
@@ -318,149 +373,70 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|(
-name|oldGroup
-operator|instanceof
-name|ExplicitGroup
-operator|)
-operator|&&
-operator|(
-name|newGroup
-operator|instanceof
-name|ExplicitGroup
-operator|)
+name|shouldRemove
 condition|)
 block|{
-comment|// Rename of explicit group, so remove old group assignment
+name|GroupEntryChanger
+name|entryChanger
+init|=
+operator|(
+name|GroupEntryChanger
+operator|)
 name|oldGroup
+decl_stmt|;
+name|changes
+operator|.
+name|addAll
+argument_list|(
+name|entryChanger
 operator|.
 name|remove
 argument_list|(
 name|entriesMatchedByOldGroup
 argument_list|)
+argument_list|)
 expr_stmt|;
 block|}
-return|return
+if|if
+condition|(
+name|shouldAdd
+condition|)
+block|{
+name|GroupEntryChanger
+name|entryChanger
+init|=
+operator|(
+name|GroupEntryChanger
+operator|)
 name|newGroup
+decl_stmt|;
+name|changes
+operator|.
+name|addAll
+argument_list|(
+name|entryChanger
 operator|.
 name|add
 argument_list|(
 name|entriesMatchedByOldGroup
 argument_list|)
-return|;
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 return|return
-name|Optional
-operator|.
-name|empty
-argument_list|()
+name|changes
 return|;
 block|}
-comment|/**      * Returns a textual representation of this node and its children. This      * representation contains both the tree structure and the textual      * representations of the group associated with each node.      * Every node is one entry in the list of strings.      *      * @return a representation of the tree based at this node as a list of strings      */
-DECL|method|getTreeAsString ()
-specifier|public
-name|List
-argument_list|<
-name|String
-argument_list|>
-name|getTreeAsString
-parameter_list|()
-block|{
-name|List
-argument_list|<
-name|String
-argument_list|>
-name|representation
-init|=
-operator|new
-name|ArrayList
-argument_list|<>
-argument_list|()
-decl_stmt|;
-comment|// Append myself
-name|representation
-operator|.
-name|add
-argument_list|(
-name|this
-operator|.
-name|toString
-argument_list|()
-argument_list|)
-expr_stmt|;
-comment|// Append children
-for|for
-control|(
-name|GroupTreeNode
-name|child
-range|:
-name|getChildren
-argument_list|()
-control|)
-block|{
-name|representation
-operator|.
-name|addAll
-argument_list|(
-name|child
-operator|.
-name|getTreeAsString
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
-return|return
-name|representation
-return|;
-block|}
-comment|/**      * Update all groups, if necessary, to handle the situation where the group      * tree is applied to a different BibDatabase than it was created for. This      * is for instance used when updating the group tree due to an external change.      *      * @param db The database to refresh for.      * @deprecated This method shouldn't be necessary anymore once explicit group memberships are saved directly in the entry.      * TODO: Remove this method.      */
-annotation|@
-name|Deprecated
-DECL|method|refreshGroupsForNewDatabase (BibDatabase db)
-specifier|public
-name|void
-name|refreshGroupsForNewDatabase
-parameter_list|(
-name|BibDatabase
-name|db
-parameter_list|)
-block|{
-for|for
-control|(
-name|GroupTreeNode
-name|node
-range|:
-name|getChildren
-argument_list|()
-control|)
-block|{
-name|node
-operator|.
-name|group
-operator|.
-name|refreshForNewDatabase
-argument_list|(
-name|db
-argument_list|)
-expr_stmt|;
-name|node
-operator|.
-name|refreshGroupsForNewDatabase
-argument_list|(
-name|db
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-comment|/**      * Creates a SearchRule that finds elements contained in this nodes group,      * or the union of those elements in its own group and its      * children's groups (recursively), or the intersection of the elements in      * its own group and its parent's group (depending on the hierarchical settings stored in the involved groups)      *      * @return a SearchRule that finds the desired elements      */
-DECL|method|getSearchRule ()
+comment|/**      * Creates a {@link SearchMatcher} that matches entries of this group and that takes the hierarchical information      * into account. I.e., it finds elements contained in this nodes group,      * or the union of those elements in its own group and its      * children's groups (recursively), or the intersection of the elements in      * its own group and its parent's group (depending on the hierarchical settings stored in the involved groups)      */
+DECL|method|getSearchMatcher ()
 specifier|public
 name|SearchMatcher
-name|getSearchRule
+name|getSearchMatcher
 parameter_list|()
 block|{
 return|return
-name|getSearchRule
+name|getSearchMatcher
 argument_list|(
 name|group
 operator|.
@@ -469,10 +445,10 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|getSearchRule (GroupHierarchyType originalContext)
+DECL|method|getSearchMatcher (GroupHierarchyType originalContext)
 specifier|private
 name|SearchMatcher
-name|getSearchRule
+name|getSearchMatcher
 parameter_list|(
 name|GroupHierarchyType
 name|originalContext
@@ -567,7 +543,7 @@ name|addRule
 argument_list|(
 name|child
 operator|.
-name|getSearchRule
+name|getSearchMatcher
 argument_list|(
 name|originalContext
 argument_list|)
@@ -599,6 +575,7 @@ name|INCLUDING
 operator|)
 condition|)
 block|{
+comment|//noinspection OptionalGetWithoutIsPresent
 name|searchRule
 operator|.
 name|addRule
@@ -609,7 +586,7 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|getSearchRule
+name|getSearchMatcher
 argument_list|(
 name|originalContext
 argument_list|)
@@ -841,7 +818,7 @@ comment|// Add myself if I contain the entries
 name|SearchMatcher
 name|matcher
 init|=
-name|getSearchRule
+name|getSearchMatcher
 argument_list|()
 decl_stmt|;
 for|for
@@ -899,19 +876,6 @@ return|return
 name|groups
 return|;
 block|}
-DECL|method|supportsAddingEntries ()
-specifier|public
-name|boolean
-name|supportsAddingEntries
-parameter_list|()
-block|{
-return|return
-name|group
-operator|.
-name|supportsAdd
-argument_list|()
-return|;
-block|}
 DECL|method|getName ()
 specifier|public
 name|String
@@ -955,33 +919,6 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|toString ()
-specifier|public
-name|String
-name|toString
-parameter_list|()
-block|{
-return|return
-name|String
-operator|.
-name|valueOf
-argument_list|(
-name|this
-operator|.
-name|getLevel
-argument_list|()
-argument_list|)
-operator|+
-literal|' '
-operator|+
-name|group
-operator|.
-name|toString
-argument_list|()
-return|;
-block|}
-annotation|@
-name|Override
 DECL|method|copyNode ()
 specifier|public
 name|GroupTreeNode
@@ -998,10 +935,10 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Determines the number of entries in the specified list which are matched by this group.      * @param entries list of entries to be searched      * @return number of hits      */
-DECL|method|numberOfHits (List<BibEntry> entries)
+DECL|method|calculateNumberOfMatches (List<BibEntry> entries)
 specifier|public
 name|int
-name|numberOfHits
+name|calculateNumberOfMatches
 parameter_list|(
 name|List
 argument_list|<
@@ -1018,7 +955,7 @@ decl_stmt|;
 name|SearchMatcher
 name|matcher
 init|=
-name|getSearchRule
+name|getSearchMatcher
 argument_list|()
 decl_stmt|;
 for|for
@@ -1046,6 +983,46 @@ block|}
 block|}
 return|return
 name|hits
+return|;
+block|}
+comment|/**      * Determines the number of entries in the specified database which are matched by this group.      * @param database database to be searched      * @return number of hits      */
+DECL|method|calculateNumberOfMatches (BibDatabase database)
+specifier|public
+name|int
+name|calculateNumberOfMatches
+parameter_list|(
+name|BibDatabase
+name|database
+parameter_list|)
+block|{
+return|return
+name|calculateNumberOfMatches
+argument_list|(
+name|database
+operator|.
+name|getEntries
+argument_list|()
+argument_list|)
+return|;
+block|}
+comment|/**      * Returns whether this group matches the specified {@link BibEntry} while taking the hierarchical information      * into account.      */
+DECL|method|matches (BibEntry entry)
+specifier|public
+name|boolean
+name|matches
+parameter_list|(
+name|BibEntry
+name|entry
+parameter_list|)
+block|{
+return|return
+name|getSearchMatcher
+argument_list|()
+operator|.
+name|isMatch
+argument_list|(
+name|entry
+argument_list|)
 return|;
 block|}
 block|}

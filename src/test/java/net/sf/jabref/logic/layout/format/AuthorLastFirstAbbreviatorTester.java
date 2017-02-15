@@ -32,16 +32,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Test
 import|;
 end_import
@@ -138,23 +128,19 @@ name|result
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Testcase for      * http://sourceforge.net/tracker/index.php?func=detail&aid=1466924&group_id=92314&atid=600306      */
 annotation|@
 name|Test
-annotation|@
-name|Ignore
 DECL|method|testJrAuthor ()
 specifier|public
 name|void
 name|testJrAuthor
 parameter_list|()
 block|{
-comment|//TODO what should be done here? reimplement it?
 name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-literal|"Other, A. N."
+literal|"Other, Jr., A. N."
 argument_list|,
 name|abbreviate
 argument_list|(

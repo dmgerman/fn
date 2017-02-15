@@ -439,7 +439,7 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-literal|"journaltitle"
+literal|"journal"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -961,7 +961,7 @@ argument_list|()
 argument_list|)
 decl_stmt|;
 name|String
-name|databaseID
+name|sharedDatabaseID
 init|=
 name|importer
 operator|.
@@ -977,14 +977,17 @@ operator|.
 name|getDatabase
 argument_list|()
 operator|.
-name|getDatabaseID
+name|getSharedDatabaseID
+argument_list|()
+operator|.
+name|get
 argument_list|()
 decl_stmt|;
 name|assertEquals
 argument_list|(
 literal|"13ceoc8dm42f5g1iitao3dj2ap"
 argument_list|,
-name|databaseID
+name|sharedDatabaseID
 argument_list|)
 expr_stmt|;
 block|}

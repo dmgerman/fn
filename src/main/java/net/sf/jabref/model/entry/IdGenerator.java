@@ -100,20 +100,6 @@ return|return
 name|result
 return|;
 block|}
-DECL|method|getMinimumIntegerDigits ()
-specifier|public
-specifier|static
-name|int
-name|getMinimumIntegerDigits
-parameter_list|()
-block|{
-return|return
-name|idFormat
-operator|.
-name|getMinimumIntegerDigits
-argument_list|()
-return|;
-block|}
 block|}
 end_class
 

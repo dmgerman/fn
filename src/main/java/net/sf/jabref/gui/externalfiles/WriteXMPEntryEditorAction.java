@@ -475,7 +475,7 @@ operator|.
 name|getBibDatabaseContext
 argument_list|()
 operator|.
-name|getFileDirectory
+name|getFileDirectories
 argument_list|(
 name|FieldName
 operator|.
@@ -510,7 +510,7 @@ operator|.
 name|getBibDatabaseContext
 argument_list|()
 operator|.
-name|getFileDirectory
+name|getFileDirectories
 argument_list|(
 name|Globals
 operator|.

@@ -157,6 +157,8 @@ argument_list|(
 name|listener
 argument_list|)
 expr_stmt|;
+try|try
+block|{
 name|eventBus
 operator|.
 name|unregister
@@ -164,6 +166,15 @@ argument_list|(
 name|listener
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IllegalArgumentException
+name|e
+parameter_list|)
+block|{
+comment|// occurs if the event source has not been registered, should not prevent shutdown
+block|}
 block|}
 comment|/**      * Fires an event if a search was started (or cleared)      *      * @param searchQuery the search query      */
 DECL|method|fireSearchlistenerEvent (SearchQuery searchQuery)

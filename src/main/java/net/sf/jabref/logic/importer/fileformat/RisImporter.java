@@ -1034,7 +1034,51 @@ name|equals
 argument_list|(
 name|tag
 argument_list|)
+operator|&&
+operator|(
+name|fields
+operator|.
+name|get
+argument_list|(
+name|FieldName
+operator|.
+name|JOURNAL
+argument_list|)
+operator|==
+literal|null
 operator|||
+literal|""
+operator|.
+name|equals
+argument_list|(
+name|fields
+operator|.
+name|get
+argument_list|(
+name|FieldName
+operator|.
+name|JOURNAL
+argument_list|)
+argument_list|)
+operator|)
+condition|)
+block|{
+comment|//if there is no journal title, then put second title as journal title
+name|fields
+operator|.
+name|put
+argument_list|(
+name|FieldName
+operator|.
+name|JOURNAL
+argument_list|,
+name|value
+argument_list|)
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
 literal|"JO"
 operator|.
 name|equals
@@ -1043,6 +1087,7 @@ name|tag
 argument_list|)
 condition|)
 block|{
+comment|//if this field appears then this should be the journal title
 name|fields
 operator|.
 name|put
@@ -1982,7 +2027,9 @@ name|fields
 operator|.
 name|put
 argument_list|(
-literal|"comment"
+name|FieldName
+operator|.
+name|COMMENT
 argument_list|,
 name|comment
 argument_list|)
@@ -2008,12 +2055,9 @@ init|=
 operator|new
 name|BibEntry
 argument_list|(
-name|DEFAULT_BIBTEXENTRY_ID
-argument_list|,
 name|type
 argument_list|)
 decl_stmt|;
-comment|// id assumes an existing database so don't
 comment|// Remove empty fields:
 name|fields
 operator|.

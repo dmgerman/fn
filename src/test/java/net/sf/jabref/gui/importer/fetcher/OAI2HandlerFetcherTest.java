@@ -114,11 +114,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|model
+name|testutils
 operator|.
-name|entry
+name|category
 operator|.
-name|IdGenerator
+name|GUITests
 import|;
 end_import
 
@@ -166,6 +166,20 @@ begin_import
 import|import
 name|org
 operator|.
+name|junit
+operator|.
+name|experimental
+operator|.
+name|categories
+operator|.
+name|Category
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|xml
 operator|.
 name|sax
@@ -179,6 +193,13 @@ comment|/**  * Test for OAI2-Handler and Fetcher.  *  * @author Ulrich St&auml;r
 end_comment
 
 begin_class
+annotation|@
+name|Category
+argument_list|(
+name|GUITests
+operator|.
+name|class
+argument_list|)
 DECL|class|OAI2HandlerFetcherTest
 specifier|public
 class|class
@@ -235,11 +256,6 @@ operator|=
 operator|new
 name|BibEntry
 argument_list|(
-name|IdGenerator
-operator|.
-name|next
-argument_list|()
-argument_list|,
 literal|"article"
 argument_list|)
 expr_stmt|;

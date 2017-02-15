@@ -103,7 +103,7 @@ name|String
 name|getExtension
 parameter_list|()
 function_decl|;
-comment|/**      * Perform the export.      *      * @param databaseContext the database to export from.      * @param file      *            The filename to write to.      * @param encoding      *            The encoding to use.      * @param entries      *            (may be null) A list containing all entries that      *            should be exported. If null, all entries will be exported.      * @throws Exception      */
+comment|/**      * Perform the export.      *      * @param databaseContext the database to export from.      * @param file      *            The filename to write to.      * @param encoding      *            The encoding to use.      * @param entries      *             A list containing all entries that      *            should be exported. The list of entries must be non null      * @throws Exception      */
 DECL|method|performExport (BibDatabaseContext databaseContext, String file, Charset encoding, List<BibEntry> entries)
 name|void
 name|performExport
@@ -126,7 +126,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * Perform the Export.      * Gets the path as a java.nio.path instead of a string.      *      * @param databaseContext the database to export from.      * @param file  the Path to the file to write to.The path should be an java.nio.Path      * @param encoding  The encoding to use.      * @param entries (may be null) A list containing all entries that      * should be exported. If null, all entries will be exported.      * @throws Exception      */
+comment|/**      * Perform the Export.      * Gets the path as a java.nio.path instead of a string.      *      * @param databaseContext the database to export from.      * @param file  the Path to the file to write to.The path should be an java.nio.Path      * @param encoding  The encoding to use.      * @param entries  A list containing all entries that      * should be exported. The list of entries must be non null      * @throws Exception      */
 DECL|method|performExport (BibDatabaseContext databaseContext, Path file, Charset encoding, List<BibEntry> entries)
 name|void
 name|performExport

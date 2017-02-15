@@ -205,7 +205,7 @@ name|getLanguageKeysInString
 argument_list|(
 name|code
 argument_list|,
-name|LocalizationBundle
+name|LocalizationBundleForTest
 operator|.
 name|LANG
 argument_list|)

@@ -127,7 +127,7 @@ name|class
 argument_list|)
 decl_stmt|;
 DECL|field|RESOURCE_PREFIX
-specifier|protected
+specifier|public
 specifier|static
 specifier|final
 name|String
@@ -136,13 +136,22 @@ init|=
 literal|"l10n/JabRef"
 decl_stmt|;
 DECL|field|MENU_RESOURCE_PREFIX
-specifier|protected
+specifier|public
 specifier|static
 specifier|final
 name|String
 name|MENU_RESOURCE_PREFIX
 init|=
 literal|"l10n/Menu"
+decl_stmt|;
+DECL|field|BIBTEX
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|BIBTEX
+init|=
+literal|"BibTeX"
 decl_stmt|;
 DECL|field|messages
 specifier|private
@@ -156,6 +165,21 @@ specifier|static
 name|ResourceBundle
 name|menuTitles
 decl_stmt|;
+DECL|method|getMessages ()
+specifier|public
+specifier|static
+name|LocalizationBundle
+name|getMessages
+parameter_list|()
+block|{
+return|return
+operator|new
+name|LocalizationBundle
+argument_list|(
+name|messages
+argument_list|)
+return|;
+block|}
 DECL|method|setLanguage (String language)
 specifier|public
 specifier|static
@@ -325,7 +349,7 @@ expr_stmt|;
 block|}
 comment|/**      * In the translation, %0, ..., %9 is replaced by the respective params given      *      * @param resBundle         the ResourceBundle to use      * @param idForErrorMessage output when translation is not found      * @param key               the key to lookup in resBundle      * @param params            a list of Strings to replace %0, %1, ...      * @return      */
 DECL|method|translate (ResourceBundle resBundle, String idForErrorMessage, String key, String... params)
-specifier|private
+specifier|protected
 specifier|static
 name|String
 name|translate

@@ -61,10 +61,10 @@ decl_stmt|;
 DECL|field|bundle
 specifier|private
 specifier|final
-name|LocalizationBundle
+name|LocalizationBundleForTest
 name|bundle
 decl_stmt|;
-DECL|method|LocalizationEntry (Path path, String key, LocalizationBundle bundle)
+DECL|method|LocalizationEntry (Path path, String key, LocalizationBundleForTest bundle)
 name|LocalizationEntry
 parameter_list|(
 name|Path
@@ -73,7 +73,7 @@ parameter_list|,
 name|String
 name|key
 parameter_list|,
-name|LocalizationBundle
+name|LocalizationBundleForTest
 name|bundle
 parameter_list|)
 block|{
@@ -244,7 +244,7 @@ return|;
 block|}
 DECL|method|getBundle ()
 specifier|public
-name|LocalizationBundle
+name|LocalizationBundleForTest
 name|getBundle
 parameter_list|()
 block|{
@@ -265,11 +265,11 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"%s %s (%s)"
-argument_list|,
-name|path
+literal|"%s (%s %s)"
 argument_list|,
 name|key
+argument_list|,
+name|path
 argument_list|,
 name|bundle
 argument_list|)

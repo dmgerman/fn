@@ -198,6 +198,13 @@ argument_list|(
 literal|3
 argument_list|)
 expr_stmt|;
+comment|// ensure that all SQL drivers are loaded - source: http://stackoverflow.com/a/22384826/873282
+comment|// we use the side effect of getAvailableDBMSTypes() - it loads all available drivers
+name|DBMSConnection
+operator|.
+name|getAvailableDBMSTypes
+argument_list|()
+expr_stmt|;
 name|this
 operator|.
 name|connection

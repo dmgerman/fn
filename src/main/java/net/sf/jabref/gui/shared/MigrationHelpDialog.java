@@ -236,11 +236,11 @@ name|MigrationHelpDialog
 extends|extends
 name|JDialog
 block|{
-DECL|method|MigrationHelpDialog (OpenSharedDatabaseDialog openSharedDatabaseDialog)
+DECL|method|MigrationHelpDialog (ConnectToSharedDatabaseDialog openSharedDatabaseDialog)
 specifier|public
 name|MigrationHelpDialog
 parameter_list|(
-name|OpenSharedDatabaseDialog
+name|ConnectToSharedDatabaseDialog
 name|openSharedDatabaseDialog
 parameter_list|)
 block|{

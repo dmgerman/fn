@@ -309,7 +309,7 @@ specifier|final
 name|int
 name|warningLimit
 init|=
-literal|10
+literal|5
 decl_stmt|;
 comment|// The minimum number of selected entries to ask the user for confirmation
 DECL|field|basePanel
@@ -360,7 +360,19 @@ name|void
 name|init
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
+block|{
+if|if
+condition|(
+operator|!
+name|basePanel
+operator|.
+name|getSelectedEntries
+argument_list|()
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
 block|{
 name|basePanel
 operator|.
@@ -374,6 +386,17 @@ literal|"Looking for full text document..."
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+name|LOGGER
+operator|.
+name|debug
+argument_list|(
+literal|"No entry selected for fulltext download."
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 annotation|@
 name|Override
@@ -457,6 +480,15 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
+literal|"JabRef will send at least one request per entry to a publisher."
+argument_list|)
+operator|+
+literal|"\n"
+operator|+
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Do you still want to continue?"
 argument_list|)
 argument_list|,
@@ -473,7 +505,7 @@ name|OK_CANCEL_OPTION
 argument_list|,
 name|JOptionPane
 operator|.
-name|QUESTION_MESSAGE
+name|WARNING_MESSAGE
 argument_list|,
 literal|null
 argument_list|,
@@ -629,7 +661,7 @@ operator|.
 name|getBibDatabaseContext
 argument_list|()
 operator|.
-name|getFileDirectory
+name|getFileDirectories
 argument_list|(
 name|Globals
 operator|.
@@ -729,7 +761,7 @@ name|file
 lambda|->
 block|{
 name|FileListTableModel
-name|tm
+name|fileLinkModel
 init|=
 operator|new
 name|FileListTableModel
@@ -746,19 +778,17 @@ argument_list|)
 operator|.
 name|ifPresent
 argument_list|(
-name|tm
+name|fileLinkModel
 operator|::
 name|setContent
 argument_list|)
 expr_stmt|;
-name|tm
+comment|// add full text file link at first position
+name|fileLinkModel
 operator|.
 name|addEntry
 argument_list|(
-name|tm
-operator|.
-name|getRowCount
-argument_list|()
+literal|0
 argument_list|,
 name|file
 argument_list|)
@@ -766,7 +796,7 @@ expr_stmt|;
 name|String
 name|newValue
 init|=
-name|tm
+name|fileLinkModel
 operator|.
 name|getStringRepresentation
 argument_list|()

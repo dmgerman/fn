@@ -152,10 +152,6 @@ name|LogFactory
 import|;
 end_import
 
-begin_comment
-comment|/**  * Created by Morten O. Alver, 16 Feb. 2007  */
-end_comment
-
 begin_class
 DECL|class|AutoCompleteListener
 specifier|public
@@ -1388,6 +1384,16 @@ block|}
 comment|// don't do auto completion inside words
 if|if
 condition|(
+operator|!
+operator|(
+name|e
+operator|.
+name|getSource
+argument_list|()
+operator|instanceof
+name|JTextComponent
+operator|)
+operator|||
 operator|!
 name|atEndOfWord
 argument_list|(

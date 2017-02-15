@@ -369,6 +369,26 @@ name|this
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Places the string into the clipboard using a {@link Transferable}.      */
+DECL|method|setTransferableClipboardContents (Transferable transferable)
+specifier|public
+name|void
+name|setTransferableClipboardContents
+parameter_list|(
+name|Transferable
+name|transferable
+parameter_list|)
+block|{
+name|CLIPBOARD
+operator|.
+name|setContents
+argument_list|(
+name|transferable
+argument_list|,
+name|this
+argument_list|)
+expr_stmt|;
+block|}
 comment|/**      * Get the String residing on the clipboard.      *      * @return any text found on the Clipboard; if none found, return an      * empty String.      */
 DECL|method|getClipboardContents ()
 specifier|public

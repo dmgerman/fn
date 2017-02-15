@@ -421,7 +421,7 @@ name|void
 name|init
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|panel
 operator|.
@@ -631,7 +631,7 @@ argument_list|)
 decl_stmt|;
 name|BibtexKeyPatternUtil
 operator|.
-name|makeLabel
+name|makeAndSetLabel
 argument_list|(
 name|panel
 operator|.

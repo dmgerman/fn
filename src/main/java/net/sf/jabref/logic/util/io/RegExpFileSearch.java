@@ -222,10 +222,6 @@ name|LogFactory
 import|;
 end_import
 
-begin_comment
-comment|/**  * Created by IntelliJ IDEA.  * User: alver  * Date: Apr 12, 2008  * Time: 1:46:44 PM  * To change this template use File | Settings | File Templates.  */
-end_comment
-
 begin_class
 DECL|class|RegExpFileSearch
 specifier|public
@@ -1529,13 +1525,11 @@ comment|// If no field value was found, try to interpret it as a key generator f
 name|String
 name|fieldValue
 init|=
-name|BibDatabase
+name|entry
 operator|.
-name|getResolvedField
+name|getResolvedFieldOrAlias
 argument_list|(
 name|beforeColon
-argument_list|,
-name|entry
 argument_list|,
 name|database
 argument_list|)
@@ -1551,6 +1545,8 @@ argument_list|,
 name|beforeColon
 argument_list|,
 name|keywordDelimiter
+argument_list|,
+name|database
 argument_list|)
 argument_list|)
 decl_stmt|;

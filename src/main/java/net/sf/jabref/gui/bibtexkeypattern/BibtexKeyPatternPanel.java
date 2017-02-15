@@ -1637,12 +1637,9 @@ block|{
 name|GlobalBibtexKeyPattern
 name|res
 init|=
-operator|new
 name|GlobalBibtexKeyPattern
-argument_list|(
-name|AbstractBibtexKeyPattern
 operator|.
-name|split
+name|fromPattern
 argument_list|(
 name|JabRefPreferences
 operator|.
@@ -1654,7 +1651,6 @@ argument_list|(
 name|JabRefPreferences
 operator|.
 name|DEFAULT_BIBTEX_KEY_PATTERN
-argument_list|)
 argument_list|)
 argument_list|)
 decl_stmt|;

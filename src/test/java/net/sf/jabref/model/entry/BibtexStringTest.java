@@ -75,30 +75,27 @@ name|test
 parameter_list|()
 block|{
 comment|// Instantiate
-name|String
-name|id
-init|=
-name|IdGenerator
-operator|.
-name|next
-argument_list|()
-decl_stmt|;
 name|BibtexString
 name|bs
 init|=
 operator|new
 name|BibtexString
 argument_list|(
-name|id
-argument_list|,
 literal|"AAA"
 argument_list|,
 literal|"An alternative action"
 argument_list|)
 decl_stmt|;
+name|bs
+operator|.
+name|setId
+argument_list|(
+literal|"ID"
+argument_list|)
+expr_stmt|;
 name|assertEquals
 argument_list|(
-name|id
+literal|"ID"
 argument_list|,
 name|bs
 operator|.
@@ -291,8 +288,6 @@ init|=
 operator|new
 name|BibtexString
 argument_list|(
-literal|"ID"
-argument_list|,
 literal|"SomeName"
 argument_list|,
 literal|null

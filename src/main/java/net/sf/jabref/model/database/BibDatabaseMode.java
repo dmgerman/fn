@@ -90,33 +90,6 @@ name|BIBTEX
 return|;
 block|}
 block|}
-comment|/**      * Returns the {@link BibDatabaseMode} from a given boolean.      *      * @return BIBLATEX if isBibLatex is true, else BIBTEX      */
-DECL|method|fromPreference (boolean isBibLatex)
-specifier|public
-specifier|static
-name|BibDatabaseMode
-name|fromPreference
-parameter_list|(
-name|boolean
-name|isBibLatex
-parameter_list|)
-block|{
-if|if
-condition|(
-name|isBibLatex
-condition|)
-block|{
-return|return
-name|BIBLATEX
-return|;
-block|}
-else|else
-block|{
-return|return
-name|BIBTEX
-return|;
-block|}
-block|}
 comment|/**      * Returns the {@link BibDatabaseMode} that equals the given string. The use of capital and small letters      * in the string doesn't matter.If neither "bibtex" nor "biblatex" is the given string, then an      * {@link IllegalArgumentException} will be thrown.      *      * @return  BIBTEX, if the string is bibtex<br>      *          BIBLATEX, if the string is biblatex<br>      */
 DECL|method|parse (String data)
 specifier|public

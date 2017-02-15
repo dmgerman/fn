@@ -92,7 +92,7 @@ name|gui
 operator|.
 name|shared
 operator|.
-name|OpenSharedDatabaseDialog
+name|ConnectToSharedDatabaseDialog
 import|;
 end_import
 
@@ -155,7 +155,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Stores and reads persistent data for {@link OpenSharedDatabaseDialog}.  */
+comment|/**  * Stores and reads persistent data for {@link ConnectToSharedDatabaseDialog}.  */
 end_comment
 
 begin_class
@@ -279,12 +279,12 @@ name|DEFAULT_NODE
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|SharedDatabasePreferences (String databaseID)
+DECL|method|SharedDatabasePreferences (String sharedDatabaseID)
 specifier|public
 name|SharedDatabasePreferences
 parameter_list|(
 name|String
-name|databaseID
+name|sharedDatabaseID
 parameter_list|)
 block|{
 name|internalPrefs
@@ -308,7 +308,7 @@ argument_list|)
 operator|.
 name|node
 argument_list|(
-name|databaseID
+name|sharedDatabaseID
 argument_list|)
 expr_stmt|;
 block|}
