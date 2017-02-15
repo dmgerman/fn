@@ -9637,14 +9637,14 @@ name|options
 operator|.
 name|add
 argument_list|(
-name|customExpAction
+name|customImpAction
 argument_list|)
 expr_stmt|;
 name|options
 operator|.
 name|add
 argument_list|(
-name|customImpAction
+name|customExpAction
 argument_list|)
 expr_stmt|;
 name|options
