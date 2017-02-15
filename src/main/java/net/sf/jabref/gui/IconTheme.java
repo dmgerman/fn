@@ -655,6 +655,13 @@ literal|"\uf18f"
 argument_list|)
 comment|/*css: content-copy */
 block|,
+DECL|enumConstant|COMMENT
+name|COMMENT
+argument_list|(
+literal|"\uF188"
+argument_list|)
+comment|/*css: comment*/
+block|,
 DECL|enumConstant|REDO
 name|REDO
 argument_list|(
@@ -675,6 +682,13 @@ argument_list|(
 literal|"\uf0c0"
 argument_list|)
 comment|/*css: bookmark */
+block|,
+DECL|enumConstant|MARKER
+name|MARKER
+argument_list|(
+literal|"\uF524"
+argument_list|)
+comment|/*css: marker */
 block|,
 DECL|enumConstant|UNMARK_ENTRIES
 name|UNMARK_ENTRIES
