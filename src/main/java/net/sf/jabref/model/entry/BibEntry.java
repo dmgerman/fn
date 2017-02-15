@@ -699,6 +699,14 @@ argument_list|(
 name|keywordDelimiter
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|newValue
+operator|.
+name|isPresent
+argument_list|()
+condition|)
+block|{
 name|keywordList
 operator|.
 name|replaceAll
@@ -711,6 +719,7 @@ name|get
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|putKeywords
 argument_list|(
