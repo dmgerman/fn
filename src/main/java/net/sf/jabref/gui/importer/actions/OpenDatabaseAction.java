@@ -713,7 +713,7 @@ name|Localization
 operator|.
 name|menuTitle
 argument_list|(
-literal|"Open database"
+literal|"Open library"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -746,7 +746,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Open BibTeX database"
+literal|"Open BibTeX library"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1961,7 +1961,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Opened database"
+literal|"Opened library"
 argument_list|)
 operator|+
 literal|" '"

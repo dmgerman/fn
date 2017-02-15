@@ -465,7 +465,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Group tree could not be parsed. If you save the BibTeX database, all groups will be lost."
+literal|"Group tree could not be parsed. If you save the BibTeX library, all groups will be lost."
 argument_list|)
 argument_list|,
 name|e

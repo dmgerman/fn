@@ -3675,7 +3675,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Database"
+literal|"Library"
 argument_list|)
 return|;
 block|}

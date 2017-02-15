@@ -777,7 +777,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Saving database"
+literal|"Saving library"
 argument_list|)
 operator|+
 literal|"..."
@@ -868,7 +868,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Saved database"
+literal|"Saved library"
 argument_list|)
 operator|+
 literal|" '"
@@ -1311,7 +1311,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Save database"
+literal|"Save library"
 argument_list|)
 argument_list|,
 name|JOptionPane
@@ -1408,7 +1408,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Save database"
+literal|"Save library"
 argument_list|)
 argument_list|,
 name|JOptionPane
@@ -1581,7 +1581,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Save database"
+literal|"Save library"
 argument_list|)
 argument_list|,
 name|JOptionPane
@@ -1648,7 +1648,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Save database"
+literal|"Save library"
 argument_list|)
 argument_list|,
 name|JOptionPane
@@ -2643,14 +2643,14 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Database is protected. Cannot save until external changes have been reviewed."
+literal|"Library is protected. Cannot save until external changes have been reviewed."
 argument_list|)
 argument_list|,
 name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Protected database"
+literal|"Protected library"
 argument_list|)
 argument_list|,
 name|JOptionPane

@@ -191,13 +191,13 @@ block|,
 DECL|enumConstant|CLOSE_DATABASE
 name|CLOSE_DATABASE
 argument_list|(
-literal|"Close database"
+literal|"Close library"
 argument_list|,
 name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Close database"
+literal|"Close library"
 argument_list|)
 argument_list|,
 literal|"ctrl W"
@@ -723,13 +723,13 @@ block|,
 DECL|enumConstant|IMPORT_INTO_CURRENT_DATABASE
 name|IMPORT_INTO_CURRENT_DATABASE
 argument_list|(
-literal|"Import into current database"
+literal|"Import into current library"
 argument_list|,
 name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Import into current database"
+literal|"Import into current library"
 argument_list|)
 argument_list|,
 literal|"ctrl I"
@@ -742,13 +742,13 @@ block|,
 DECL|enumConstant|IMPORT_INTO_NEW_DATABASE
 name|IMPORT_INTO_NEW_DATABASE
 argument_list|(
-literal|"Import into new database"
+literal|"Import into new library"
 argument_list|,
 name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Import into new database"
+literal|"Import into new library"
 argument_list|)
 argument_list|,
 literal|"ctrl alt I"
@@ -1065,13 +1065,13 @@ block|,
 DECL|enumConstant|OPEN_DATABASE
 name|OPEN_DATABASE
 argument_list|(
-literal|"Open database"
+literal|"Open library"
 argument_list|,
 name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Open database"
+literal|"Open library"
 argument_list|)
 argument_list|,
 literal|"ctrl O"
@@ -1388,13 +1388,13 @@ block|,
 DECL|enumConstant|SAVE_DATABASE
 name|SAVE_DATABASE
 argument_list|(
-literal|"Save database"
+literal|"Save library"
 argument_list|,
 name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Save database"
+literal|"Save library"
 argument_list|)
 argument_list|,
 literal|"ctrl S"
@@ -1407,13 +1407,13 @@ block|,
 DECL|enumConstant|SAVE_DATABASE_AS
 name|SAVE_DATABASE_AS
 argument_list|(
-literal|"Save database as ..."
+literal|"Save library as ..."
 argument_list|,
 name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Save database as..."
+literal|"Save library as..."
 argument_list|)
 argument_list|,
 literal|"ctrl shift S"

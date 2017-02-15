@@ -87,7 +87,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Database"
+literal|"Library"
 argument_list|)
 argument_list|)
 argument_list|,

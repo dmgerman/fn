@@ -665,7 +665,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"This database uses outdated file links."
+literal|"This library uses outdated file links."
 argument_list|)
 operator|+
 literal|"<br><br>"

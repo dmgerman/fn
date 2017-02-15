@@ -576,7 +576,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Append database"
+literal|"Append library"
 argument_list|)
 argument_list|,
 literal|true
@@ -805,7 +805,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Imported from database"
+literal|"Imported from library"
 argument_list|)
 operator|+
 literal|" '"
@@ -851,7 +851,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Open database"
+literal|"Open library"
 argument_list|)
 argument_list|,
 name|JOptionPane
@@ -940,7 +940,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Append database"
+literal|"Append library"
 argument_list|)
 argument_list|)
 decl_stmt|;

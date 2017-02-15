@@ -1398,6 +1398,17 @@ name|type
 argument_list|)
 expr_stmt|;
 comment|// autogenerate label (BibTeX key)
+if|if
+condition|(
+name|JabRefGUI
+operator|.
+name|getMainFrame
+argument_list|()
+operator|!=
+literal|null
+condition|)
+block|{
+comment|// only possible in GUI mode
 name|BibtexKeyPatternUtil
 operator|.
 name|makeAndSetLabel
@@ -1446,6 +1457,7 @@ name|getBibtexKeyPatternPreferences
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 name|res
 operator|.
 name|add

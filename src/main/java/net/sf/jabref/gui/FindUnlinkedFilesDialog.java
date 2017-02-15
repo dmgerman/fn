@@ -3653,7 +3653,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"These files are not linked in the active database."
+literal|"These files are not linked in the active library."
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -3708,7 +3708,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Importing into Database..."
+literal|"Importing into Library..."
 argument_list|)
 argument_list|)
 expr_stmt|;

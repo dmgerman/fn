@@ -190,7 +190,7 @@ argument_list|)
 return|;
 block|}
 block|}
-comment|/**      * Parse the database in the source.      *      * This method can be called in two different contexts - either when importing in      * a specified format, or when importing in unknown format. In the latter case,      * JabRef cycles through all available import formats. No error messages or feedback      * is displayed from individual import formats in this case.      *      * If importing in a specified format and an empty database is returned, JabRef reports      * that no entries were found.      *      * This method should never return null.      *      * @param input the input to read from      */
+comment|/**      * Parse the database in the source.      *      * This method can be called in two different contexts - either when importing in      * a specified format, or when importing in unknown format. In the latter case,      * JabRef cycles through all available import formats. No error messages or feedback      * is displayed from individual import formats in this case.      *      * If importing in a specified format and an empty library is returned, JabRef reports      * that no entries were found.      *      * This method should never return null.      *      * @param input the input to read from      */
 DECL|method|importDatabase (BufferedReader input)
 specifier|public
 specifier|abstract

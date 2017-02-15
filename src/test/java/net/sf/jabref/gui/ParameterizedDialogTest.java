@@ -476,7 +476,7 @@ index|[]
 block|{
 literal|"File"
 block|,
-literal|"Open database"
+literal|"Open library"
 block|}
 block|,
 literal|"Open"
@@ -498,7 +498,7 @@ index|[]
 block|{
 literal|"File"
 block|,
-literal|"Open database"
+literal|"Open library"
 block|}
 block|,
 literal|"Open"
@@ -520,10 +520,10 @@ index|[]
 block|{
 literal|"File"
 block|,
-literal|"Append database"
+literal|"Append library"
 block|}
 block|,
-literal|"Append database"
+literal|"Append library"
 block|,
 literal|"Cancel"
 block|,
@@ -542,10 +542,10 @@ index|[]
 block|{
 literal|"File"
 block|,
-literal|"Append database"
+literal|"Append library"
 block|}
 block|,
-literal|"Append database"
+literal|"Append library"
 block|,
 literal|"Close button"
 block|,
@@ -564,7 +564,7 @@ index|[]
 block|{
 literal|"File"
 block|,
-literal|"Save database"
+literal|"Save library"
 block|}
 block|,
 literal|"Save"
@@ -586,7 +586,7 @@ index|[]
 block|{
 literal|"File"
 block|,
-literal|"Save database"
+literal|"Save library"
 block|}
 block|,
 literal|"Save"
@@ -608,7 +608,7 @@ index|[]
 block|{
 literal|"File"
 block|,
-literal|"Save database as..."
+literal|"Save library as..."
 block|}
 block|,
 literal|"Save"
@@ -630,7 +630,7 @@ index|[]
 block|{
 literal|"File"
 block|,
-literal|"Save database as..."
+literal|"Save library as..."
 block|}
 block|,
 literal|"Save"
@@ -696,7 +696,7 @@ index|[]
 block|{
 literal|"File"
 block|,
-literal|"Import into new database"
+literal|"Import into new library"
 block|}
 block|,
 literal|"Open"
@@ -718,7 +718,7 @@ index|[]
 block|{
 literal|"File"
 block|,
-literal|"Import into new database"
+literal|"Import into new library"
 block|}
 block|,
 literal|"Open"
@@ -740,7 +740,7 @@ index|[]
 block|{
 literal|"File"
 block|,
-literal|"Import into current database"
+literal|"Import into current library"
 block|}
 block|,
 literal|"Open"
@@ -762,7 +762,7 @@ index|[]
 block|{
 literal|"File"
 block|,
-literal|"Import into current database"
+literal|"Import into current library"
 block|}
 block|,
 literal|"Open"
@@ -850,10 +850,10 @@ index|[]
 block|{
 literal|"File"
 block|,
-literal|"Database properties"
+literal|"Library properties"
 block|}
 block|,
-literal|"Database properties"
+literal|"Library properties"
 block|,
 literal|"Cancel"
 block|,
@@ -872,10 +872,10 @@ index|[]
 block|{
 literal|"File"
 block|,
-literal|"Database properties"
+literal|"Library properties"
 block|}
 block|,
-literal|"Database properties"
+literal|"Library properties"
 block|,
 literal|"OK"
 block|,
@@ -894,10 +894,10 @@ index|[]
 block|{
 literal|"File"
 block|,
-literal|"Database properties"
+literal|"Library properties"
 block|}
 block|,
-literal|"Database properties"
+literal|"Library properties"
 block|,
 literal|"Close button"
 block|,
@@ -1206,7 +1206,7 @@ block|,
 literal|"Edit strings"
 block|}
 block|,
-literal|"Strings for database: untitled"
+literal|"Strings for library: untitled"
 block|,
 literal|"Close button"
 block|,
@@ -1379,7 +1379,7 @@ index|[]
 block|{
 literal|"Tools"
 block|,
-literal|"New subdatabase based on AUX file..."
+literal|"New sublibrary based on AUX file..."
 block|}
 block|,
 literal|"AUX file import"
@@ -1401,7 +1401,7 @@ index|[]
 block|{
 literal|"Tools"
 block|,
-literal|"New subdatabase based on AUX file..."
+literal|"New sublibrary based on AUX file..."
 block|}
 block|,
 literal|"AUX file import"

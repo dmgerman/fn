@@ -206,7 +206,7 @@ name|Localization
 operator|.
 name|menuTitle
 argument_list|(
-literal|"New subdatabase based on AUX file"
+literal|"New sublibrary based on AUX file"
 argument_list|)
 operator|+
 literal|"..."
@@ -222,7 +222,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"New BibTeX subdatabase"
+literal|"New BibTeX sublibrary"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -330,7 +330,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"New database created."
+literal|"New library created."
 argument_list|)
 argument_list|)
 expr_stmt|;
