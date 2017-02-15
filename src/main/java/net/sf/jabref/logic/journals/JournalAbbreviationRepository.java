@@ -220,6 +220,30 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+DECL|method|JournalAbbreviationRepository (Abbreviation... abbreviations)
+specifier|public
+name|JournalAbbreviationRepository
+parameter_list|(
+name|Abbreviation
+modifier|...
+name|abbreviations
+parameter_list|)
+block|{
+for|for
+control|(
+name|Abbreviation
+name|abbreviation
+range|:
+name|abbreviations
+control|)
+block|{
+name|addEntry
+argument_list|(
+name|abbreviation
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 DECL|method|size ()
 specifier|public
 name|int

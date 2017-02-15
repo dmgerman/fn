@@ -108,6 +108,38 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
+name|journals
+operator|.
+name|Abbreviation
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|journals
+operator|.
+name|JournalAbbreviationRepository
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|model
 operator|.
 name|Defaults
@@ -1272,7 +1304,7 @@ name|void
 name|testJournaltitleChecks
 parameter_list|()
 block|{
-name|assertCorrect
+name|assertWrong
 argument_list|(
 name|withMode
 argument_list|(
@@ -1949,7 +1981,7 @@ name|createContext
 argument_list|(
 name|field
 argument_list|,
-literal|"Proceedings of the"
+literal|"IEEE SW"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1964,6 +1996,35 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+annotation|@
+name|Test
+DECL|method|testJournalIsKnownInAbbreviationList ()
+specifier|public
+name|void
+name|testJournalIsKnownInAbbreviationList
+parameter_list|()
+block|{
+name|assertCorrect
+argument_list|(
+name|createContext
+argument_list|(
+literal|"journal"
+argument_list|,
+literal|"IEEE Software"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertWrong
+argument_list|(
+name|createContext
+argument_list|(
+literal|"journal"
+argument_list|,
+literal|"IEEE Whocares"
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Test
@@ -2956,6 +3017,18 @@ argument_list|()
 argument_list|,
 name|createBibtexKeyPatternPreferences
 argument_list|()
+argument_list|,
+operator|new
+name|JournalAbbreviationRepository
+argument_list|(
+operator|new
+name|Abbreviation
+argument_list|(
+literal|"IEEE Software"
+argument_list|,
+literal|"IEEE SW"
+argument_list|)
+argument_list|)
 argument_list|)
 operator|.
 name|checkBibtexDatabase
@@ -3186,6 +3259,18 @@ argument_list|()
 argument_list|,
 name|createBibtexKeyPatternPreferences
 argument_list|()
+argument_list|,
+operator|new
+name|JournalAbbreviationRepository
+argument_list|(
+operator|new
+name|Abbreviation
+argument_list|(
+literal|"IEEE Software"
+argument_list|,
+literal|"IEEE SW"
+argument_list|)
+argument_list|)
 argument_list|)
 operator|.
 name|checkBibtexDatabase
@@ -3235,6 +3320,18 @@ argument_list|()
 argument_list|,
 name|createBibtexKeyPatternPreferences
 argument_list|()
+argument_list|,
+operator|new
+name|JournalAbbreviationRepository
+argument_list|(
+operator|new
+name|Abbreviation
+argument_list|(
+literal|"IEEE Software"
+argument_list|,
+literal|"IEEE SW"
+argument_list|)
+argument_list|)
 argument_list|)
 operator|.
 name|checkBibtexDatabase
