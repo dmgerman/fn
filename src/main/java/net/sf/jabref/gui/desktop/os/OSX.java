@@ -52,6 +52,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Optional
 import|;
 end_import
@@ -321,6 +331,27 @@ name|absolutePath
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
+annotation|@
+name|Override
+DECL|method|openPdfWithParameters (String filePath, List<String> parameters)
+specifier|public
+name|void
+name|openPdfWithParameters
+parameter_list|(
+name|String
+name|filePath
+parameter_list|,
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|parameters
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+comment|//TODO implement
 block|}
 annotation|@
 name|Override
