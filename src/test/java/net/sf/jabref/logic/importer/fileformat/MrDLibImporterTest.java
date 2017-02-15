@@ -226,13 +226,9 @@ operator|new
 name|BufferedReader
 argument_list|(
 operator|new
-name|BufferedReader
-argument_list|(
-operator|new
 name|StringReader
 argument_list|(
 name|testMin
-argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -242,13 +238,9 @@ operator|new
 name|BufferedReader
 argument_list|(
 operator|new
-name|BufferedReader
-argument_list|(
-operator|new
 name|StringReader
 argument_list|(
 name|testMax
-argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
