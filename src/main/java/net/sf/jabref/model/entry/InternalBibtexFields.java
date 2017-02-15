@@ -3457,14 +3457,14 @@ name|publicFields
 return|;
 block|}
 comment|/**      * returns a List with all fieldnames incl. internal fieldnames      */
-DECL|method|getAllPublicAndInteralFieldNames ()
+DECL|method|getAllPublicAndInternalFieldNames ()
 specifier|public
 specifier|static
 name|List
 argument_list|<
 name|String
 argument_list|>
-name|getAllPublicAndInteralFieldNames
+name|getAllPublicAndInternalFieldNames
 parameter_list|()
 block|{
 comment|//add the internal field names to public fields

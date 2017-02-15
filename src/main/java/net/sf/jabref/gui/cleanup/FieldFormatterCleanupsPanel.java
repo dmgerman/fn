@@ -1398,7 +1398,7 @@ name|fieldNames
 init|=
 name|InternalBibtexFields
 operator|.
-name|getAllPublicAndInteralFieldNames
+name|getAllPublicAndInternalFieldNames
 argument_list|()
 decl_stmt|;
 name|fieldNames
