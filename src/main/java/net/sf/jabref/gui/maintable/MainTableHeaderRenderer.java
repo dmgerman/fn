@@ -66,6 +66,20 @@ name|TableCellRenderer
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|GUIGlobals
+import|;
+end_import
+
 begin_class
 DECL|class|MainTableHeaderRenderer
 specifier|public
@@ -201,6 +215,15 @@ operator|.
 name|setText
 argument_list|(
 name|text
+argument_list|)
+expr_stmt|;
+name|resultFromDelegate
+operator|.
+name|setFont
+argument_list|(
+name|GUIGlobals
+operator|.
+name|currentFont
 argument_list|)
 expr_stmt|;
 block|}

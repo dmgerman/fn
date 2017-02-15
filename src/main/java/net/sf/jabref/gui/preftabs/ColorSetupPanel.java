@@ -310,7 +310,7 @@ name|FormLayout
 argument_list|(
 literal|"30dlu, 4dlu, fill:pref, 4dlu, fill:pref, 8dlu, 30dlu, 4dlu, fill:pref, 4dlu, fill:pref"
 argument_list|,
-literal|"pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref"
+literal|"pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref"
 argument_list|)
 decl_stmt|;
 name|FormBuilder
@@ -681,6 +681,46 @@ literal|"Background color for resolved fields"
 argument_list|)
 argument_list|,
 name|resolvedColorCodes
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|buttons
+operator|.
+name|add
+argument_list|(
+operator|new
+name|ColorButton
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|ICON_ENABLED_COLOR
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Color for enabled icons"
+argument_list|)
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|buttons
+operator|.
+name|add
+argument_list|(
+operator|new
+name|ColorButton
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|ICON_DISABLED_COLOR
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Color for disabled icons"
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
