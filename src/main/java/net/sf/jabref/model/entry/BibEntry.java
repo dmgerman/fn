@@ -901,11 +901,13 @@ name|map
 argument_list|(
 name|resultText
 lambda|->
-name|database
+name|BibDatabase
 operator|.
-name|resolveForStrings
+name|getText
 argument_list|(
 name|resultText
+argument_list|,
+name|database
 argument_list|)
 argument_list|)
 return|;

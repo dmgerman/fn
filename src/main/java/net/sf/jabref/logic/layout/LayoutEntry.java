@@ -2089,11 +2089,13 @@ argument_list|(
 literal|""
 argument_list|)
 else|:
-name|database
+name|BibDatabase
 operator|.
-name|resolveForStrings
+name|getText
 argument_list|(
 name|text
+argument_list|,
+name|database
 argument_list|)
 expr_stmt|;
 comment|// changed section end - arudert
@@ -2649,14 +2651,16 @@ case|:
 name|String
 name|field
 init|=
+name|BibDatabase
+operator|.
+name|getText
+argument_list|(
+name|text
+argument_list|,
 name|databaseContext
 operator|.
 name|getDatabase
 argument_list|()
-operator|.
-name|resolveForStrings
-argument_list|(
-name|text
 argument_list|)
 decl_stmt|;
 if|if
