@@ -603,7 +603,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Write XMP-metadata for all PDFs in current database?"
+literal|"Write XMP-metadata for all PDFs in current library?"
 argument_list|)
 argument_list|,
 name|Localization

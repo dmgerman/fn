@@ -640,7 +640,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Strings for database"
+literal|"Strings for library"
 argument_list|)
 decl_stmt|;
 DECL|method|StringDialog (JabRefFrame frame, BasePanel panel, BibDatabase base)
@@ -2494,7 +2494,7 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-literal|"Save database"
+literal|"Save library"
 argument_list|,
 name|IconTheme
 operator|.
@@ -2516,7 +2516,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Save database"
+literal|"Save library"
 argument_list|)
 argument_list|)
 expr_stmt|;

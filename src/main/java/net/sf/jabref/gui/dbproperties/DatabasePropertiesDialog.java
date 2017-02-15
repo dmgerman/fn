@@ -572,7 +572,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Refuse to save the database before external changes have been reviewed."
+literal|"Refuse to save the library before external changes have been reviewed."
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -607,7 +607,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Database properties"
+literal|"Library properties"
 argument_list|)
 argument_list|,
 literal|true
@@ -925,7 +925,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Database encoding"
+literal|"Library encoding"
 argument_list|)
 argument_list|)
 operator|.
@@ -1151,7 +1151,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Database protection"
+literal|"Library protection"
 argument_list|)
 argument_list|)
 operator|.

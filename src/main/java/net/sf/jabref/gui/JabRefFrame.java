@@ -2626,14 +2626,14 @@ name|Localization
 operator|.
 name|menuTitle
 argument_list|(
-literal|"Save database"
+literal|"Save library"
 argument_list|)
 argument_list|,
 name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Save database"
+literal|"Save library"
 argument_list|)
 argument_list|,
 name|Globals
@@ -2675,14 +2675,14 @@ name|Localization
 operator|.
 name|menuTitle
 argument_list|(
-literal|"Save database as..."
+literal|"Save library as..."
 argument_list|)
 argument_list|,
 name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Save database as..."
+literal|"Save library as..."
 argument_list|)
 argument_list|,
 name|Globals
@@ -3917,14 +3917,14 @@ name|Localization
 operator|.
 name|menuTitle
 argument_list|(
-literal|"Append database"
+literal|"Append library"
 argument_list|)
 argument_list|,
 name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Append contents from a BibTeX database into the currently viewed database"
+literal|"Append contents from a BibTeX library into the currently viewed library"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -5979,7 +5979,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Database properties"
+literal|"Library properties"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -7290,7 +7290,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Unable to save database"
+literal|"Unable to save library"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -12553,7 +12553,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Database '%0' has changed."
+literal|"Library '%0' has changed."
 argument_list|,
 name|filename
 argument_list|)
@@ -12871,7 +12871,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Closed database"
+literal|"Closed library"
 argument_list|)
 operator|+
 literal|'.'
@@ -14478,7 +14478,7 @@ name|Localization
 operator|.
 name|menuTitle
 argument_list|(
-literal|"Database properties"
+literal|"Library properties"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -15023,7 +15023,7 @@ name|Localization
 operator|.
 name|menuTitle
 argument_list|(
-literal|"Close database"
+literal|"Close library"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -15037,7 +15037,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Close the current database"
+literal|"Close the current library"
 argument_list|)
 argument_list|)
 expr_stmt|;

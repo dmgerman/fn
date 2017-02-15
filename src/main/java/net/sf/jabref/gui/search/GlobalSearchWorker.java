@@ -290,7 +290,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Search results in all databases for %0"
+literal|"Search results in all libraries for %0"
 argument_list|,
 name|this
 operator|.

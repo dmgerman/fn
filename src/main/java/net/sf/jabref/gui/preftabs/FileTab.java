@@ -664,7 +664,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Open last edited databases at startup"
+literal|"Open last edited libraries at startup"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -690,7 +690,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Autosave local databases"
+literal|"Autosave local libraries"
 argument_list|)
 argument_list|)
 expr_stmt|;

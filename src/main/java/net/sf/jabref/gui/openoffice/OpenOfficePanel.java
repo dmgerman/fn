@@ -1866,7 +1866,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Your OpenOffice/LibreOffice document references the BibTeX key '%0', which could not be found in your current database."
+literal|"Your OpenOffice/LibreOffice document references the BibTeX key '%0', which could not be found in your current library."
 argument_list|,
 name|unresolvedKeys
 operator|.
@@ -1981,7 +1981,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Your OpenOffice/LibreOffice document references the BibTeX key '%0', which could not be found in your current database."
+literal|"Your OpenOffice/LibreOffice document references the BibTeX key '%0', which could not be found in your current library."
 argument_list|,
 name|ex
 operator|.
@@ -2709,7 +2709,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Your OpenOffice/LibreOffice document references the BibTeX key '%0', which could not be found in your current database."
+literal|"Your OpenOffice/LibreOffice document references the BibTeX key '%0', which could not be found in your current library."
 argument_list|,
 name|unresolvedKeys
 operator|.
@@ -2723,7 +2723,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Unable to generate new database"
+literal|"Unable to generate new library"
 argument_list|)
 argument_list|,
 name|JOptionPane
@@ -2785,7 +2785,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Your OpenOffice/LibreOffice document references the BibTeX key '%0', which could not be found in your current database."
+literal|"Your OpenOffice/LibreOffice document references the BibTeX key '%0', which could not be found in your current library."
 argument_list|,
 name|ex
 operator|.
@@ -5171,7 +5171,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Look up BibTeX entries in all open databases"
+literal|"Look up BibTeX entries in all open libraries"
 argument_list|)
 argument_list|)
 decl_stmt|;

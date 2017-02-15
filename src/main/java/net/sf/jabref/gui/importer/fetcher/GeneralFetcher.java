@@ -1330,7 +1330,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Please open or start a new database before searching"
+literal|"Please open or start a new library before searching"
 argument_list|)
 argument_list|)
 expr_stmt|;

@@ -9000,7 +9000,7 @@ parameter_list|()
 block|{
 name|super
 argument_list|(
-literal|"Save database"
+literal|"Save library"
 argument_list|)
 expr_stmt|;
 block|}

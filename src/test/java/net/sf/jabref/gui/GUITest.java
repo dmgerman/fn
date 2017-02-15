@@ -602,7 +602,7 @@ name|menuItemWithPath
 argument_list|(
 literal|"File"
 argument_list|,
-literal|"Database properties"
+literal|"Library properties"
 argument_list|)
 operator|.
 name|click

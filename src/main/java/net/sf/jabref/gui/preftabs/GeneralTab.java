@@ -766,7 +766,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Mark entries imported into an existing database"
+literal|"Mark entries imported into an existing library"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -779,7 +779,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Unmark all entries before importing new entries into an existing database"
+literal|"Unmark all entries before importing new entries into an existing library"
 argument_list|)
 argument_list|)
 expr_stmt|;

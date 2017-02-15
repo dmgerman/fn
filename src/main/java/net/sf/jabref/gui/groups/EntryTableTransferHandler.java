@@ -676,7 +676,7 @@ argument_list|)
 return|;
 block|}
 block|}
-comment|/**      * This method is called when stuff is drag to the component.      *      * Imports the dropped URL or plain text as a new entry in the current database.      *      */
+comment|/**      * This method is called when stuff is drag to the component.      *      * Imports the dropped URL or plain text as a new entry in the current library.      *      */
 annotation|@
 name|Override
 DECL|method|importData (JComponent comp, Transferable t)
@@ -1626,7 +1626,7 @@ return|return
 literal|true
 return|;
 block|}
-comment|/**      * Take a set of filenames. Those with names indicating BIB files are opened as such if possible. All other files we      * will attempt to import into the current database.      *      * @param fileNames The names of the files to open.      * @param dropRow success status for the operation      */
+comment|/**      * Take a set of filenames. Those with names indicating BIB files are opened as such if possible. All other files we      * will attempt to import into the current library.      *      * @param fileNames The names of the files to open.      * @param dropRow success status for the operation      */
 DECL|method|loadOrImportFiles (List<String> fileNames, int dropRow)
 specifier|private
 name|void
@@ -1890,7 +1890,7 @@ argument_list|(
 name|tmpfile
 argument_list|)
 expr_stmt|;
-comment|// Import into new if entryTable==null, otherwise into current database:
+comment|// Import into new if entryTable==null, otherwise into current library:
 name|ImportMenuItem
 name|importer
 init|=

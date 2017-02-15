@@ -147,7 +147,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"This database contains one or more duplicated BibTeX keys."
+literal|"This library contains one or more duplicated BibTeX keys."
 argument_list|)
 operator|+
 literal|"</p><p>"

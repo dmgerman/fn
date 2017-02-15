@@ -1578,7 +1578,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Do you want to import these as new entries into the current database?"
+literal|"Do you want to import these as new entries into the current library?"
 argument_list|)
 argument_list|)
 decl_stmt|;
