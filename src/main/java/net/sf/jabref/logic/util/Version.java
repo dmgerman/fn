@@ -177,7 +177,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Represents the Application Version with the major and minor number, the full Version String and if it's a developer version  */
+comment|/**  * Represents the Application Version with the major and minor number, the full Version String and if it's a developer  * version  */
 end_comment
 
 begin_class
@@ -292,13 +292,13 @@ specifier|private
 name|boolean
 name|isDevelopmentVersion
 decl_stmt|;
-comment|/** Dummy constructor to create a local object (and  {@link Version#UNKNOWN_VERSION}) */
+comment|/**      * Dummy constructor to create a local object (and  {@link Version#UNKNOWN_VERSION})      */
 DECL|method|Version ()
 specifier|private
 name|Version
 parameter_list|()
-block|{}
-comment|/**      * @param version must be in form of following pattern: {@code (\d+)(\.(\d+))?(\.(\d+))?(-alpha|-beta)?(-?dev)?} (e.g., 3.3; 3.4-dev)      * @return the parsed version or {@link Version#UNKNOWN_VERSION} if an error occurred      */
+block|{     }
+comment|/**      * @param version must be in form of following pattern: {@code (\d+)(\.(\d+))?(\.(\d+))?(-alpha|-beta)?(-?dev)?}      *                (e.g., 3.3; 3.4-dev)      * @return the parsed version or {@link Version#UNKNOWN_VERSION} if an error occurred      */
 DECL|method|parse (String version)
 specifier|public
 specifier|static
@@ -549,7 +549,7 @@ return|return
 name|parsedVersion
 return|;
 block|}
-comment|/**      * Grabs all the available releases from the GitHub repository      *      * @throws IOException      */
+comment|/**      * Grabs all the available releases from the GitHub repository      */
 DECL|method|getAllAvailableVersions ()
 specifier|public
 specifier|static
@@ -583,6 +583,8 @@ argument_list|,
 literal|"UTF-8"
 argument_list|)
 expr_stmt|;
+try|try
+init|(
 name|BufferedReader
 name|rd
 init|=
@@ -598,7 +600,8 @@ name|getInputStream
 argument_list|()
 argument_list|)
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|List
 argument_list|<
 name|Version
@@ -683,6 +686,7 @@ block|}
 return|return
 name|versions
 return|;
+block|}
 block|}
 comment|/**      * @return true if this version is newer than the passed one      */
 DECL|method|isNewerThan (Version otherVersion)
@@ -904,7 +908,7 @@ literal|false
 return|;
 block|}
 comment|/**      * Checks if this version should be updated to one of the given ones.      * Ignoring the other Version if this one is Stable and the other one is not.      *      * @return The version this one should be updated to, or an empty Optional      */
-DECL|method|shouldBeUpdatedTo (List<Version> availableVersions )
+DECL|method|shouldBeUpdatedTo (List<Version> availableVersions)
 specifier|public
 name|Optional
 argument_list|<
@@ -981,7 +985,7 @@ return|return
 name|newerVersion
 return|;
 block|}
-comment|/**      * Checks if this version should be updated to the given one.      * Ignoring the other Version if this one is Stable and the other one is not.      *      * @return True if this version should be updated to the given one      * */
+comment|/**      * Checks if this version should be updated to the given one.      * Ignoring the other Version if this one is Stable and the other one is not.      *      * @return True if this version should be updated to the given one      */
 DECL|method|shouldBeUpdatedTo (Version otherVersion)
 specifier|public
 name|boolean
@@ -1077,7 +1081,7 @@ return|return
 name|isDevelopmentVersion
 return|;
 block|}
-comment|/**      * @return The link to the changelog on GitHub to this specific version      * (https://github.com/JabRef/jabref/blob/vX.X/CHANGELOG.md)      */
+comment|/**      * @return The link to the changelog on GitHub to this specific version (https://github.com/JabRef/jabref/blob/vX.X/CHANGELOG.md)      */
 DECL|method|getChangelogUrl ()
 specifier|public
 name|String
@@ -1303,7 +1307,7 @@ argument_list|,
 literal|3
 argument_list|)
 block|;
-comment|/** describes how stable this stage is, the higher the better */
+comment|/**          * describes how stable this stage is, the higher the better          */
 DECL|field|stability
 specifier|private
 specifier|final
