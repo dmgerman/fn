@@ -150,7 +150,7 @@ block|{
 comment|// See #1464
 name|assertEquals
 argument_list|(
-literal|"\uD835\uDC61\uD835\uDC52\uD835\uDC65\uD835\uDC61"
+literal|"text"
 argument_list|,
 name|formatter
 operator|.

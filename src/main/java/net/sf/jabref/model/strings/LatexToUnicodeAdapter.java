@@ -91,7 +91,7 @@ name|Normalizer
 operator|.
 name|Form
 operator|.
-name|NFC
+name|NFKC
 argument_list|)
 return|;
 block|}
