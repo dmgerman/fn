@@ -256,16 +256,6 @@ name|size
 argument_list|()
 return|;
 block|}
-DECL|method|getInsertedStringsCount ()
-specifier|public
-name|int
-name|getInsertedStringsCount
-parameter_list|()
-block|{
-return|return
-name|insertedStrings
-return|;
-block|}
 comment|/**      * Query the number of extra entries pulled in due to crossrefs from other entries.      *      * @return The number of additional entries pulled in due to crossref      */
 DECL|method|getCrossRefEntriesCount ()
 specifier|public
