@@ -76,11 +76,13 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|model
+name|logic
 operator|.
-name|cleanup
+name|util
 operator|.
-name|Formatter
+name|strings
+operator|.
+name|HTMLUnicodeConversionMaps
 import|;
 end_import
 
@@ -94,9 +96,9 @@ name|jabref
 operator|.
 name|model
 operator|.
-name|strings
+name|cleanup
 operator|.
-name|HTMLUnicodeConversionMaps
+name|Formatter
 import|;
 end_import
 
