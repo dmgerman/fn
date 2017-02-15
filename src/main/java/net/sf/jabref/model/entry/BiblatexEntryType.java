@@ -67,15 +67,15 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Abstract base class for all BibLaTex entry types.  */
+comment|/**  * Abstract base class for all biblatex entry types.  */
 end_comment
 
 begin_class
-DECL|class|BibLatexEntryType
+DECL|class|BiblatexEntryType
 specifier|public
 specifier|abstract
 class|class
-name|BibLatexEntryType
+name|BiblatexEntryType
 implements|implements
 name|EntryType
 block|{
@@ -97,9 +97,9 @@ name|String
 argument_list|>
 name|optionalFields
 decl_stmt|;
-DECL|method|BibLatexEntryType ()
+DECL|method|BiblatexEntryType ()
 specifier|public
-name|BibLatexEntryType
+name|BiblatexEntryType
 parameter_list|()
 block|{
 name|requiredFields

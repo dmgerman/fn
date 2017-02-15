@@ -837,7 +837,7 @@ comment|/**          * Collects file links from the pdf or ps field, and adds th
 DECL|enumConstant|CLEAN_UP_UPGRADE_EXTERNAL_LINKS
 name|CLEAN_UP_UPGRADE_EXTERNAL_LINKS
 block|,
-comment|/**          * Converts to BibLatex format          */
+comment|/**          * Converts to biblatex format          */
 DECL|enumConstant|CONVERT_TO_BIBLATEX
 name|CONVERT_TO_BIBLATEX
 block|,

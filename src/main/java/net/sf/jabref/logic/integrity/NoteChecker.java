@@ -144,7 +144,7 @@ name|bibDatabaseContext
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * BibLaTeX package documentation (Section 4.9.1):      * The BibLaTeX package will automatically capitalize the first word when required at the beginning of a sentence.      * Official BibTeX specification:      * note: Any additional information that can help the reader. The first word should be capitalized.      */
+comment|/**      * biblatex package documentation (Section 4.9.1):      * The biblatex package will automatically capitalize the first word when required at the beginning of a sentence.      * Official BibTeX specification:      * note: Any additional information that can help the reader. The first word should be capitalized.      */
 annotation|@
 name|Override
 DECL|method|checkValue (String value)

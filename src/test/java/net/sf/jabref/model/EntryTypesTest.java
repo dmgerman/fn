@@ -90,7 +90,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibLatexEntryTypes
+name|BiblatexEntryTypes
 import|;
 end_import
 
@@ -341,7 +341,7 @@ operator|.
 name|BIBLATEX
 operator|)
 condition|?
-name|BibLatexEntryTypes
+name|BiblatexEntryTypes
 operator|.
 name|ARTICLE
 else|:
@@ -361,7 +361,7 @@ operator|.
 name|BIBLATEX
 operator|)
 condition|?
-name|BibLatexEntryTypes
+name|BiblatexEntryTypes
 operator|.
 name|MISC
 else|:
@@ -571,7 +571,7 @@ operator|new
 name|ArrayList
 argument_list|<>
 argument_list|(
-name|BibLatexEntryTypes
+name|BiblatexEntryTypes
 operator|.
 name|ALL
 argument_list|)

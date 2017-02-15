@@ -25,7 +25,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An enum which contains the possible {@link BibDatabase} Modes.  * Possible are BibTeX and BibLaTeX.  */
+comment|/**  * An enum which contains the possible {@link BibDatabase} Modes.  * Possible are BibTeX and biblatex.  */
 end_comment
 
 begin_enum
@@ -61,11 +61,11 @@ block|}
 else|else
 block|{
 return|return
-literal|"BibLaTeX"
+literal|"biblatex"
 return|;
 block|}
 block|}
-comment|/**      * Returns the opposite mode of the current mode as {@link BibDatabaseMode}.      *      * @return BibLaTeX if the current mode is BIBTEX, BibTeX else      */
+comment|/**      * Returns the opposite mode of the current mode as {@link BibDatabaseMode}.      *      * @return biblatex if the current mode is BIBTEX, BibTeX else      */
 DECL|method|getOppositeMode ()
 specifier|public
 name|BibDatabaseMode

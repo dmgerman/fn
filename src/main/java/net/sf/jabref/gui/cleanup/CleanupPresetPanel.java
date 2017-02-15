@@ -255,10 +255,10 @@ specifier|private
 name|JCheckBox
 name|cleanUpUpgradeExternalLinks
 decl_stmt|;
-DECL|field|cleanUpBibLatex
+DECL|field|cleanUpBiblatex
 specifier|private
 name|JCheckBox
-name|cleanUpBibLatex
+name|cleanUpBiblatex
 decl_stmt|;
 DECL|field|cleanUpFormatters
 specifier|private
@@ -488,7 +488,7 @@ name|FILE
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|cleanUpBibLatex
+name|cleanUpBiblatex
 operator|=
 operator|new
 name|JCheckBox
@@ -497,7 +497,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Convert to BibLatex format (for example, move the value of the 'journal' field to 'journaltitle')"
+literal|"Convert to biblatex format (for example, move the value of the 'journal' field to 'journaltitle')"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -692,7 +692,7 @@ name|builder
 operator|.
 name|add
 argument_list|(
-name|cleanUpBibLatex
+name|cleanUpBiblatex
 argument_list|)
 operator|.
 name|xyw
@@ -832,7 +832,7 @@ name|isCleanUpUpgradeExternalLinks
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|cleanUpBibLatex
+name|cleanUpBiblatex
 operator|.
 name|setSelected
 argument_list|(
@@ -842,7 +842,7 @@ name|isConvertToBiblatex
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|cleanUpBibLatex
+name|cleanUpBiblatex
 operator|.
 name|setSelected
 argument_list|(
@@ -1043,7 +1043,7 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-name|cleanUpBibLatex
+name|cleanUpBiblatex
 operator|.
 name|isSelected
 argument_list|()

@@ -164,7 +164,7 @@ name|bibDatabaseContext
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Checks, if field contains only an integer or a literal (BibLaTeX mode)      * Checks, if the first letter is capitalized (BibTeX mode)      * BibLaTeX package documentation:      * The edition of a printed publication. This must be an integer, not an ordinal.      * It is also possible to give the edition as a literal string, for example "Third, revised and expanded edition".      * Official BibTeX specification:      * The edition of a book-for example, "Second".      * This should be an ordinal, and should have the first letter capitalized.      */
+comment|/**      * Checks, if field contains only an integer or a literal (biblatex mode)      * Checks, if the first letter is capitalized (BibTeX mode)      * biblatex package documentation:      * The edition of a printed publication. This must be an integer, not an ordinal.      * It is also possible to give the edition as a literal string, for example "Third, revised and expanded edition".      * Official BibTeX specification:      * The edition of a book-for example, "Second".      * This should be an ordinal, and should have the first letter capitalized.      */
 annotation|@
 name|Override
 DECL|method|checkValue (String value)
@@ -179,7 +179,7 @@ name|String
 name|value
 parameter_list|)
 block|{
-comment|//BibLaTeX
+comment|//biblatex
 if|if
 condition|(
 name|bibDatabaseContextEdition

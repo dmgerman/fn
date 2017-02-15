@@ -72,7 +72,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibLatexEntryTypes
+name|BiblatexEntryTypes
 import|;
 end_import
 
@@ -157,7 +157,7 @@ argument_list|(
 operator|new
 name|BibEntry
 argument_list|(
-name|BibLatexEntryTypes
+name|BiblatexEntryTypes
 operator|.
 name|MVBOOK
 operator|.
@@ -287,7 +287,7 @@ init|=
 operator|new
 name|BibEntry
 argument_list|(
-name|BibLatexEntryTypes
+name|BiblatexEntryTypes
 operator|.
 name|ARTICLE
 operator|.
@@ -468,7 +468,7 @@ init|=
 operator|new
 name|BibEntry
 argument_list|(
-name|BibLatexEntryTypes
+name|BiblatexEntryTypes
 operator|.
 name|ARTICLE
 operator|.
@@ -571,7 +571,7 @@ init|=
 operator|new
 name|BibEntry
 argument_list|(
-name|BibLatexEntryTypes
+name|BiblatexEntryTypes
 operator|.
 name|MVBOOK
 operator|.

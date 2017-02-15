@@ -106,7 +106,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibLatexEntryTypes
+name|BiblatexEntryTypes
 import|;
 end_import
 
@@ -522,7 +522,7 @@ name|famaeyMcGaughEntry
 operator|.
 name|setType
 argument_list|(
-name|BibLatexEntryTypes
+name|BiblatexEntryTypes
 operator|.
 name|ARTICLE
 argument_list|)
@@ -654,7 +654,7 @@ name|sunWelchEntry
 operator|.
 name|setType
 argument_list|(
-name|BibLatexEntryTypes
+name|BiblatexEntryTypes
 operator|.
 name|ARTICLE
 argument_list|)
@@ -750,7 +750,7 @@ name|xiongSunEntry
 operator|.
 name|setType
 argument_list|(
-name|BibLatexEntryTypes
+name|BiblatexEntryTypes
 operator|.
 name|ARTICLE
 argument_list|)
@@ -846,7 +846,7 @@ name|ingersollPollardEntry
 operator|.
 name|setType
 argument_list|(
-name|BibLatexEntryTypes
+name|BiblatexEntryTypes
 operator|.
 name|ARTICLE
 argument_list|)
@@ -951,7 +951,7 @@ name|luceyPaulEntry
 operator|.
 name|setType
 argument_list|(
-name|BibLatexEntryTypes
+name|BiblatexEntryTypes
 operator|.
 name|ARTICLE
 argument_list|)

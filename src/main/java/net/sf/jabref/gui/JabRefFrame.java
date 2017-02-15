@@ -13154,7 +13154,7 @@ name|menuTitle
 argument_list|(
 literal|"Switch to %0 mode"
 argument_list|,
-literal|"BibTeX/BibLaTeX"
+literal|"BibTeX/biblatex"
 argument_list|)
 argument_list|)
 expr_stmt|;

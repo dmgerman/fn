@@ -984,7 +984,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 name|boolean
-name|isBibLaTeX
+name|isBiblatex
 init|=
 name|databaseContext
 operator|.
@@ -1000,7 +1000,7 @@ lambda|->
 block|{
 if|if
 condition|(
-name|isBibLaTeX
+name|isBiblatex
 condition|)
 block|{
 operator|(

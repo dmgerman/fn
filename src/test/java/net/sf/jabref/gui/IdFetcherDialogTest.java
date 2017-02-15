@@ -888,7 +888,7 @@ operator|new
 name|Object
 index|[]
 block|{
-literal|"BibLaTeX"
+literal|"biblatex"
 block|,
 literal|"DOI"
 block|,
@@ -910,7 +910,7 @@ operator|new
 name|Object
 index|[]
 block|{
-literal|"BibLaTeX"
+literal|"biblatex"
 block|,
 literal|"ISBN"
 block|,

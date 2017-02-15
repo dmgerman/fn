@@ -144,7 +144,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibLatexEntryTypes
+name|BiblatexEntryTypes
 import|;
 end_import
 
@@ -577,7 +577,7 @@ init|=
 operator|new
 name|InternalEntryTypes
 argument_list|(
-name|BibLatexEntryTypes
+name|BiblatexEntryTypes
 operator|.
 name|MISC
 argument_list|,
@@ -585,7 +585,7 @@ name|Arrays
 operator|.
 name|asList
 argument_list|(
-name|BibLatexEntryTypes
+name|BiblatexEntryTypes
 operator|.
 name|ALL
 argument_list|)
@@ -917,7 +917,7 @@ argument_list|(
 name|entryType
 lambda|->
 operator|!
-name|BibLatexEntryTypes
+name|BiblatexEntryTypes
 operator|.
 name|getType
 argument_list|(
@@ -1147,8 +1147,8 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * Load given custom entry types for BibTeX and BibLatex mode      */
-DECL|method|loadCustomEntryTypes (List<CustomEntryType> customBibtexEntryTypes, List<CustomEntryType> customBibLatexEntryTypes)
+comment|/**      * Load given custom entry types for BibTeX and biblatex mode      */
+DECL|method|loadCustomEntryTypes (List<CustomEntryType> customBibtexEntryTypes, List<CustomEntryType> customBiblatexEntryTypes)
 specifier|public
 specifier|static
 name|void
@@ -1164,7 +1164,7 @@ name|List
 argument_list|<
 name|CustomEntryType
 argument_list|>
-name|customBibLatexEntryTypes
+name|customBiblatexEntryTypes
 parameter_list|)
 block|{
 for|for
@@ -1192,7 +1192,7 @@ control|(
 name|CustomEntryType
 name|type
 range|:
-name|customBibLatexEntryTypes
+name|customBiblatexEntryTypes
 control|)
 block|{
 name|EntryTypes
@@ -1308,11 +1308,11 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|isExclusiveBibLatex (String type)
+DECL|method|isExclusiveBiblatex (String type)
 specifier|public
 specifier|static
 name|boolean
-name|isExclusiveBibLatex
+name|isExclusiveBiblatex
 parameter_list|(
 name|String
 name|type
@@ -1321,7 +1321,7 @@ block|{
 return|return
 name|filterEntryTypesNames
 argument_list|(
-name|BibLatexEntryTypes
+name|BiblatexEntryTypes
 operator|.
 name|ALL
 argument_list|,

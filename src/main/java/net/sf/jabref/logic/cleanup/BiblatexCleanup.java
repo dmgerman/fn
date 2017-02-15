@@ -139,7 +139,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Converts the entry to BibLatex format.  */
+comment|/**  * Converts the entry to biblatex format.  */
 end_comment
 
 begin_class

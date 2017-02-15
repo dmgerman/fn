@@ -129,7 +129,7 @@ if|if
 condition|(
 name|EntryTypes
 operator|.
-name|isExclusiveBibLatex
+name|isExclusiveBiblatex
 argument_list|(
 name|entry
 operator|.

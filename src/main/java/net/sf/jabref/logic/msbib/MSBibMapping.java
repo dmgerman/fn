@@ -62,7 +62,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibLatexEntryTypes
+name|BiblatexEntryTypes
 import|;
 end_import
 
@@ -113,7 +113,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Mapping between Msbib and BibLaTeX  * All Fields:<a href = "https://msdn.microsoft.com/de-de/library/office/documentformat.openxml.bibliography">List of all MSBib fields</a>  *  */
+comment|/**  * Mapping between Msbib and biblatex  * All Fields:<a href = "https://msdn.microsoft.com/de-de/library/office/documentformat.openxml.bibliography">List of all MSBib fields</a>  *  */
 end_comment
 
 begin_class
@@ -697,11 +697,11 @@ literal|"ProductionCompany"
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|getBibLaTeXEntryType (String msbibType)
+DECL|method|getBiblatexEntryType (String msbibType)
 specifier|public
 specifier|static
 name|String
-name|getBibLaTeXEntryType
+name|getBiblatexEntryType
 parameter_list|(
 name|String
 name|msbibType
@@ -741,7 +741,7 @@ name|put
 argument_list|(
 literal|"Book"
 argument_list|,
-name|BibLatexEntryTypes
+name|BiblatexEntryTypes
 operator|.
 name|BOOK
 operator|.
@@ -755,7 +755,7 @@ name|put
 argument_list|(
 literal|"BookSection"
 argument_list|,
-name|BibLatexEntryTypes
+name|BiblatexEntryTypes
 operator|.
 name|BOOK
 operator|.
@@ -769,7 +769,7 @@ name|put
 argument_list|(
 literal|"JournalArticle"
 argument_list|,
-name|BibLatexEntryTypes
+name|BiblatexEntryTypes
 operator|.
 name|ARTICLE
 operator|.
@@ -783,7 +783,7 @@ name|put
 argument_list|(
 literal|"ArticleInAPeriodical"
 argument_list|,
-name|BibLatexEntryTypes
+name|BiblatexEntryTypes
 operator|.
 name|PERIODICAL
 operator|.
@@ -797,7 +797,7 @@ name|put
 argument_list|(
 literal|"ConferenceProceedings"
 argument_list|,
-name|BibLatexEntryTypes
+name|BiblatexEntryTypes
 operator|.
 name|INPROCEEDINGS
 operator|.
@@ -811,7 +811,7 @@ name|put
 argument_list|(
 literal|"Report"
 argument_list|,
-name|BibLatexEntryTypes
+name|BiblatexEntryTypes
 operator|.
 name|TECHREPORT
 operator|.
@@ -825,7 +825,7 @@ name|put
 argument_list|(
 literal|"Patent"
 argument_list|,
-name|BibLatexEntryTypes
+name|BiblatexEntryTypes
 operator|.
 name|PATENT
 operator|.
@@ -839,7 +839,7 @@ name|put
 argument_list|(
 literal|"InternetSite"
 argument_list|,
-name|BibLatexEntryTypes
+name|BiblatexEntryTypes
 operator|.
 name|ONLINE
 operator|.

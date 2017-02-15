@@ -273,7 +273,7 @@ parameter_list|()
 block|{
 comment|// Create entry from menu
 comment|// Structure:
-comment|// {"BibTeX"/"BibLaTeX", "type"}
+comment|// {"BibTeX"/"biblatex", "type"}
 comment|// @formatter:off
 return|return
 name|Arrays
@@ -410,7 +410,7 @@ operator|new
 name|Object
 index|[]
 block|{
-literal|"BibLaTeX"
+literal|"biblatex"
 block|,
 literal|"article"
 block|}
@@ -419,7 +419,7 @@ operator|new
 name|Object
 index|[]
 block|{
-literal|"BibLaTeX"
+literal|"biblatex"
 block|,
 literal|"inbook"
 block|}
@@ -428,7 +428,7 @@ operator|new
 name|Object
 index|[]
 block|{
-literal|"BibLaTeX"
+literal|"biblatex"
 block|,
 literal|"book"
 block|}
@@ -437,7 +437,7 @@ operator|new
 name|Object
 index|[]
 block|{
-literal|"BibLaTeX"
+literal|"biblatex"
 block|,
 literal|"booklet"
 block|}
@@ -446,7 +446,7 @@ operator|new
 name|Object
 index|[]
 block|{
-literal|"BibLaTeX"
+literal|"biblatex"
 block|,
 literal|"incollection"
 block|}
@@ -455,7 +455,7 @@ operator|new
 name|Object
 index|[]
 block|{
-literal|"BibLaTeX"
+literal|"biblatex"
 block|,
 literal|"conference"
 block|}
@@ -464,7 +464,7 @@ operator|new
 name|Object
 index|[]
 block|{
-literal|"BibLaTeX"
+literal|"biblatex"
 block|,
 literal|"inproceedings"
 block|}
@@ -473,7 +473,7 @@ operator|new
 name|Object
 index|[]
 block|{
-literal|"BibLaTeX"
+literal|"biblatex"
 block|,
 literal|"proceedings"
 block|}
@@ -482,7 +482,7 @@ operator|new
 name|Object
 index|[]
 block|{
-literal|"BibLaTeX"
+literal|"biblatex"
 block|,
 literal|"manual"
 block|}
@@ -491,7 +491,7 @@ operator|new
 name|Object
 index|[]
 block|{
-literal|"BibLaTeX"
+literal|"biblatex"
 block|,
 literal|"mastersthesis"
 block|}
@@ -500,7 +500,7 @@ operator|new
 name|Object
 index|[]
 block|{
-literal|"BibLaTeX"
+literal|"biblatex"
 block|,
 literal|"phdthesis"
 block|}
@@ -509,7 +509,7 @@ operator|new
 name|Object
 index|[]
 block|{
-literal|"BibLaTeX"
+literal|"biblatex"
 block|,
 literal|"techreport"
 block|}
@@ -518,7 +518,7 @@ operator|new
 name|Object
 index|[]
 block|{
-literal|"BibLaTeX"
+literal|"biblatex"
 block|,
 literal|"unpublished"
 block|}
@@ -527,7 +527,7 @@ operator|new
 name|Object
 index|[]
 block|{
-literal|"BibLaTeX"
+literal|"biblatex"
 block|,
 literal|"misc"
 block|}

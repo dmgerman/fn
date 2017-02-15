@@ -108,7 +108,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibLatexEntryTypes
+name|BiblatexEntryTypes
 import|;
 end_import
 
@@ -161,7 +161,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This checker checks whether the entry does not contain any field appearing only in BibLaTeX (and not in BibTeX)  */
+comment|/**  * This checker checks whether the entry does not contain any field appearing only in biblatex (and not in BibTeX)  */
 end_comment
 
 begin_class
@@ -216,7 +216,7 @@ argument_list|()
 argument_list|)
 decl_stmt|;
 return|return
-name|BibLatexEntryTypes
+name|BiblatexEntryTypes
 operator|.
 name|ALL
 operator|.
@@ -364,7 +364,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"BibLaTeX field only"
+literal|"biblatex field only"
 argument_list|)
 argument_list|,
 name|entry
