@@ -972,7 +972,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Save database"
+literal|"Save library"
 argument_list|)
 argument_list|,
 name|JOptionPane

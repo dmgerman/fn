@@ -474,7 +474,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Close database"
+literal|"Close library"
 argument_list|)
 block|}
 decl_stmt|;

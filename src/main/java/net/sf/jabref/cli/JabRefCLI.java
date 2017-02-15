@@ -1042,7 +1042,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Subdatabase from AUX"
+literal|"Sublibrary from AUX"
 argument_list|)
 argument_list|,
 name|Localization

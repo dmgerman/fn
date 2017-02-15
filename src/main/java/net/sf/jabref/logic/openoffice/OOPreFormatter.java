@@ -48,7 +48,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|model
+name|logic
+operator|.
+name|util
 operator|.
 name|strings
 operator|.

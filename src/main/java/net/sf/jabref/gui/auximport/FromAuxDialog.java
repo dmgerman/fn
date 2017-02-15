@@ -787,7 +787,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"This feature generates a new database based on which entries "
+literal|"This feature generates a new library based on which entries "
 operator|+
 literal|"are needed in an existing LaTeX document."
 argument_list|)
@@ -800,7 +800,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"You need to select one of your open databases from which to choose "
+literal|"You need to select one of your open libraries from which to choose "
 operator|+
 literal|"entries, as well as the AUX file produced by LaTeX when compiling your document."
 argument_list|)
@@ -1229,7 +1229,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Reference database"
+literal|"Reference library"
 argument_list|)
 operator|+
 literal|":"
@@ -1558,7 +1558,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"empty database"
+literal|"empty library"
 argument_list|)
 argument_list|)
 expr_stmt|;

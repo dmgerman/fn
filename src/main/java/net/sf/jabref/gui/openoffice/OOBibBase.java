@@ -9223,7 +9223,7 @@ name|isPresent
 argument_list|()
 condition|)
 block|{
-comment|// Add it if it is in the current database
+comment|// Add it if it is in the current library
 name|loopDatabase
 operator|.
 name|getEntryByKey

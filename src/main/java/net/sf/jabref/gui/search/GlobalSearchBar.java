@@ -818,7 +818,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Search in all open databases"
+literal|"Search in all open libraries"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1675,7 +1675,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Search results in database %0 for %1"
+literal|"Search results in library %0 for %1"
 argument_list|,
 name|currentBasePanel
 operator|.

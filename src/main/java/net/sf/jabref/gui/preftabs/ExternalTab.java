@@ -589,7 +589,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Note: Use the placeholder %0 for the location of the opened database file."
+literal|"Note: Use the placeholder %0 for the location of the opened library file."
 argument_list|,
 literal|"%DIR"
 argument_list|)

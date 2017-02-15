@@ -2468,7 +2468,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|// Returns a collection of AutoCompleters, which are populated from the current database
+comment|// Returns a collection of AutoCompleters, which are populated from the current library
 DECL|method|getAutoCompleters ()
 specifier|public
 name|ContentAutoCompleters
@@ -7447,7 +7447,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Save database"
+literal|"Save library"
 argument_list|)
 decl_stmt|;
 try|try
@@ -10651,7 +10651,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Saved database"
+literal|"Saved library"
 argument_list|)
 argument_list|)
 condition|)

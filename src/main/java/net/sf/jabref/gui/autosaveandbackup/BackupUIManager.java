@@ -158,7 +158,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Do you want to recover the database from the backup file?"
+literal|"Do you want to recover the library from the backup file?"
 argument_list|)
 argument_list|)
 operator|.

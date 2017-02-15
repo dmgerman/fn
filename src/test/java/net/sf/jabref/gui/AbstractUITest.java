@@ -467,7 +467,7 @@ name|menuItemWithPath
 argument_list|(
 literal|"File"
 argument_list|,
-literal|"Import into new database"
+literal|"Import into new library"
 argument_list|)
 operator|.
 name|click
@@ -570,7 +570,7 @@ name|menuItemWithPath
 argument_list|(
 literal|"File"
 argument_list|,
-literal|"Close database"
+literal|"Close library"
 argument_list|)
 operator|.
 name|click

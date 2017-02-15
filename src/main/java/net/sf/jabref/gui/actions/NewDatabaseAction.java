@@ -195,7 +195,7 @@ name|Localization
 operator|.
 name|menuTitle
 argument_list|(
-literal|"New %0 database"
+literal|"New %0 library"
 argument_list|,
 name|mode
 operator|.
@@ -214,7 +214,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"New %0 database"
+literal|"New %0 library"
 argument_list|,
 name|mode
 operator|.
@@ -275,7 +275,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"New %0 database created."
+literal|"New %0 library created."
 argument_list|,
 name|mode
 operator|.

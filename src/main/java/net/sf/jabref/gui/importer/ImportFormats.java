@@ -400,7 +400,7 @@ name|Localization
 operator|.
 name|menuTitle
 argument_list|(
-literal|"Import into new database"
+literal|"Import into new library"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -436,7 +436,7 @@ name|Localization
 operator|.
 name|menuTitle
 argument_list|(
-literal|"Import into current database"
+literal|"Import into current library"
 argument_list|)
 argument_list|)
 expr_stmt|;

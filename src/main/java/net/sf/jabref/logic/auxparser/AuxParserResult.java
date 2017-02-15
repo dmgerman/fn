@@ -344,7 +344,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"keys_in_database"
+literal|"keys in library"
 argument_list|)
 argument_list|)
 operator|.
@@ -372,7 +372,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"found_in_AUX_file"
+literal|"found in AUX file"
 argument_list|)
 argument_list|)
 operator|.
@@ -424,7 +424,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"not_found"
+literal|"not found"
 argument_list|)
 argument_list|)
 operator|.

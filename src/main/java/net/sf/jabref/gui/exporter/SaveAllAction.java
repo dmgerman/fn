@@ -243,7 +243,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Save all open databases"
+literal|"Save all open libraries"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -288,7 +288,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Saving all databases..."
+literal|"Saving all libraries..."
 argument_list|)
 argument_list|)
 expr_stmt|;

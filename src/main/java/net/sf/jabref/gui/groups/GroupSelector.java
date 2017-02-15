@@ -2342,7 +2342,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Automatically create groups for database."
+literal|"Automatically create groups for library."
 argument_list|)
 argument_list|)
 expr_stmt|;

@@ -752,7 +752,7 @@ comment|// look and feel. This MUST be the first thing to do before loading any 
 name|setLookAndFeel
 argument_list|()
 expr_stmt|;
-comment|// If the option is enabled, open the last edited databases, if any.
+comment|// If the option is enabled, open the last edited libraries, if any.
 if|if
 condition|(
 operator|!

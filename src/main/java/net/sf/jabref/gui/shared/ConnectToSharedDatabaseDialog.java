@@ -729,7 +729,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Database type"
+literal|"Library type"
 argument_list|)
 operator|+
 literal|":"
@@ -776,7 +776,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Database"
+literal|"Library"
 argument_list|)
 operator|+
 literal|":"
@@ -1004,7 +1004,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Automatically save the database to"
+literal|"Automatically save the library to"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -1095,7 +1095,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"You are already connected to a database using entered connection details."
+literal|"You are already connected to a library using entered connection details."
 argument_list|)
 argument_list|,
 name|Localization
@@ -2893,7 +2893,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Database"
+literal|"Library"
 argument_list|)
 argument_list|)
 argument_list|)
