@@ -160,22 +160,6 @@ end_import
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|entry
-operator|.
-name|IdGenerator
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -548,22 +532,12 @@ literal|null
 condition|)
 block|{
 comment|// The string was removed or renamed locally. We guess that it was removed.
-name|String
-name|newId
-init|=
-name|IdGenerator
-operator|.
-name|next
-argument_list|()
-decl_stmt|;
 name|BibtexString
 name|bs
 init|=
 operator|new
 name|BibtexString
 argument_list|(
-name|newId
-argument_list|,
 name|label
 argument_list|,
 name|disk
@@ -672,11 +646,6 @@ init|=
 operator|new
 name|BibtexString
 argument_list|(
-name|IdGenerator
-operator|.
-name|next
-argument_list|()
-argument_list|,
 name|label
 argument_list|,
 name|disk

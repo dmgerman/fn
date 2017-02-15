@@ -36,7 +36,7 @@ name|BibtexString
 implements|implements
 name|Cloneable
 block|{
-comment|/**      * Type of a \@String.      *<p>      * Differentiate a \@String based on its usage:      *<p>      * - {@link #AUTHOR}: prefix "a", for author and editor fields.      * - {@link #INSTITUTION}: prefix "i", for institution and organization      * field      * - {@link #PUBLISHER}: prefix "p", for publisher fields      * - {@link #OTHER}: no prefix, for any field      *<p>      * Examples:      *<p>      * \@String { aKahle    = "Kahle, Brewster " } -> author      * \@String { aStallman = "Stallman, Richard" } -> author      * \@String { iMIT      = "{Massachusetts Institute of Technology ({MIT})}" } -> institution      * \@String { pMIT      = "{Massachusetts Institute of Technology ({MIT}) press}" } -> publisher      * \@String { anct      = "Anecdote" } -> other      * \@String { eg        = "for example" } -> other      * \@String { et        = " and " } -> other      * \@String { lBigMac   = "Big Mac" } -> other      *<p>      * Usage:      *<p>      * \@Misc {      * title       = "The GNU Project"      * author      = aStallman # et # aKahle      * institution = iMIT      * publisher   = pMIT      * note        = "Just " # eg      * }      *      * @author Jan Kubovy<jan@kubovy.eu>      */
+comment|/**      * Type of a \@String.      *<p>      * Differentiate a \@String based on its usage:      *<p>      * - {@link #AUTHOR}: prefix "a", for author and editor fields.      * - {@link #INSTITUTION}: prefix "i", for institution and organization      * field      * - {@link #PUBLISHER}: prefix "p", for publisher fields      * - {@link #OTHER}: no prefix, for any field      *<p>      * Examples:      *<p>      * \@String { aKahle    = "Kahle, Brewster " } -> author      * \@String { aStallman = "Stallman, Richard" } -> author      * \@String { iMIT      = "{Massachusetts Institute of Technology ({MIT})}" } -> institution      * \@String { pMIT      = "{Massachusetts Institute of Technology ({MIT}) press}" } -> publisher      * \@String { anct      = "Anecdote" } -> other      * \@String { eg        = "for example" } -> other      * \@String { et        = " and " } -> other      * \@String { lBigMac   = "Big Mac" } -> other      *<p>      * Usage:      *<p>      * \@Misc {      * title       = "The GNU Project"      * author      = aStallman # et # aKahle      * institution = iMIT      * publisher   = pMIT      * note        = "Just " # eg      * }      */
 DECL|enum|Type
 specifier|public
 enum|enum
@@ -86,19 +86,19 @@ operator|=
 name|prefix
 expr_stmt|;
 block|}
-DECL|method|get (String name)
+DECL|method|get (String key)
 specifier|public
 specifier|static
 name|Type
 name|get
 parameter_list|(
 name|String
-name|name
+name|key
 parameter_list|)
 block|{
 if|if
 condition|(
-name|name
+name|key
 operator|.
 name|length
 argument_list|()
@@ -110,8 +110,9 @@ return|return
 name|OTHER
 return|;
 block|}
-comment|// TODO: Figure out what the next check actually does and replace it with something more sensible
-comment|// Second character is not upper case? What about non-letters?
+comment|// Second character is not upper case
+comment|// aStallman -> AUTHOR
+comment|// asdf -> OTHER
 if|if
 condition|(
 operator|!
@@ -120,7 +121,7 @@ name|String
 operator|.
 name|valueOf
 argument_list|(
-name|name
+name|key
 operator|.
 name|charAt
 argument_list|(
@@ -138,7 +139,7 @@ name|String
 operator|.
 name|valueOf
 argument_list|(
-name|name
+name|key
 operator|.
 name|charAt
 argument_list|(
@@ -175,7 +176,7 @@ name|String
 operator|.
 name|valueOf
 argument_list|(
-name|name
+name|key
 operator|.
 name|charAt
 argument_list|(
@@ -225,13 +226,10 @@ specifier|private
 name|boolean
 name|hasChanged
 decl_stmt|;
-DECL|method|BibtexString (String id, String name, String content)
+DECL|method|BibtexString (String name, String content)
 specifier|public
 name|BibtexString
 parameter_list|(
-name|String
-name|id
-parameter_list|,
 name|String
 name|name
 parameter_list|,
@@ -243,7 +241,10 @@ name|this
 operator|.
 name|id
 operator|=
-name|id
+name|IdGenerator
+operator|.
+name|next
+argument_list|()
 expr_stmt|;
 name|this
 operator|.
@@ -377,26 +378,6 @@ operator|=
 literal|true
 expr_stmt|;
 block|}
-annotation|@
-name|Override
-DECL|method|clone ()
-specifier|public
-name|Object
-name|clone
-parameter_list|()
-block|{
-return|return
-operator|new
-name|BibtexString
-argument_list|(
-name|id
-argument_list|,
-name|name
-argument_list|,
-name|content
-argument_list|)
-return|;
-block|}
 DECL|method|getType ()
 specifier|public
 name|Type
@@ -520,6 +501,36 @@ block|}
 block|}
 return|return
 literal|""
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|clone ()
+specifier|public
+name|Object
+name|clone
+parameter_list|()
+block|{
+name|BibtexString
+name|clone
+init|=
+operator|new
+name|BibtexString
+argument_list|(
+name|name
+argument_list|,
+name|content
+argument_list|)
+decl_stmt|;
+name|clone
+operator|.
+name|setId
+argument_list|(
+name|id
+argument_list|)
+expr_stmt|;
+return|return
+name|clone
 return|;
 block|}
 annotation|@

@@ -617,11 +617,6 @@ init|=
 operator|new
 name|BibtexString
 argument_list|(
-name|IdGenerator
-operator|.
-name|next
-argument_list|()
-argument_list|,
 literal|"DSP"
 argument_list|,
 literal|"Digital Signal Processing"
@@ -724,11 +719,6 @@ init|=
 operator|new
 name|BibtexString
 argument_list|(
-name|IdGenerator
-operator|.
-name|next
-argument_list|()
-argument_list|,
 literal|"DSP"
 argument_list|,
 literal|"Digital Signal Processing"
@@ -839,11 +829,6 @@ init|=
 operator|new
 name|BibtexString
 argument_list|(
-name|IdGenerator
-operator|.
-name|next
-argument_list|()
-argument_list|,
 literal|"DSP"
 argument_list|,
 literal|"Digital Signal Processing"
@@ -898,11 +883,6 @@ init|=
 operator|new
 name|BibtexString
 argument_list|(
-name|IdGenerator
-operator|.
-name|next
-argument_list|()
-argument_list|,
 literal|"DSP"
 argument_list|,
 literal|"Digital Signal Processing"
@@ -920,11 +900,6 @@ operator|=
 operator|new
 name|BibtexString
 argument_list|(
-name|IdGenerator
-operator|.
-name|next
-argument_list|()
-argument_list|,
 literal|"DSP"
 argument_list|,
 literal|"Digital Signal Processor"
@@ -956,27 +931,24 @@ name|void
 name|addSameStringIdTwiceThrowsKeyCollisionException
 parameter_list|()
 block|{
-name|String
-name|id
-init|=
-name|IdGenerator
-operator|.
-name|next
-argument_list|()
-decl_stmt|;
 name|BibtexString
 name|string
 init|=
 operator|new
 name|BibtexString
 argument_list|(
-name|id
-argument_list|,
 literal|"DSP"
 argument_list|,
 literal|"Digital Signal Processing"
 argument_list|)
 decl_stmt|;
+name|string
+operator|.
+name|setId
+argument_list|(
+literal|"duplicateid"
+argument_list|)
+expr_stmt|;
 name|database
 operator|.
 name|addString
@@ -989,11 +961,16 @@ operator|=
 operator|new
 name|BibtexString
 argument_list|(
-name|id
-argument_list|,
 literal|"VLSI"
 argument_list|,
 literal|"Very Large Scale Integration"
+argument_list|)
+expr_stmt|;
+name|string
+operator|.
+name|setId
+argument_list|(
+literal|"duplicateid"
 argument_list|)
 expr_stmt|;
 name|database
@@ -1370,11 +1347,6 @@ init|=
 operator|new
 name|BibtexString
 argument_list|(
-name|IdGenerator
-operator|.
-name|next
-argument_list|()
-argument_list|,
 literal|"AAA"
 argument_list|,
 literal|"#BBB#"
@@ -1392,11 +1364,6 @@ operator|=
 operator|new
 name|BibtexString
 argument_list|(
-name|IdGenerator
-operator|.
-name|next
-argument_list|()
-argument_list|,
 literal|"BBB"
 argument_list|,
 literal|"#AAA#"
@@ -1448,11 +1415,6 @@ init|=
 operator|new
 name|BibtexString
 argument_list|(
-name|IdGenerator
-operator|.
-name|next
-argument_list|()
-argument_list|,
 literal|"AAA"
 argument_list|,
 literal|"#BBB#"
@@ -1470,11 +1432,6 @@ operator|=
 operator|new
 name|BibtexString
 argument_list|(
-name|IdGenerator
-operator|.
-name|next
-argument_list|()
-argument_list|,
 literal|"BBB"
 argument_list|,
 literal|"#CCC#"
@@ -1492,11 +1449,6 @@ operator|=
 operator|new
 name|BibtexString
 argument_list|(
-name|IdGenerator
-operator|.
-name|next
-argument_list|()
-argument_list|,
 literal|"CCC"
 argument_list|,
 literal|"#DDD#"
@@ -1514,11 +1466,6 @@ operator|=
 operator|new
 name|BibtexString
 argument_list|(
-name|IdGenerator
-operator|.
-name|next
-argument_list|()
-argument_list|,
 literal|"DDD"
 argument_list|,
 literal|"#AAA#"
@@ -1615,11 +1562,6 @@ init|=
 operator|new
 name|BibtexString
 argument_list|(
-name|IdGenerator
-operator|.
-name|next
-argument_list|()
-argument_list|,
 literal|"AAA"
 argument_list|,
 literal|"aaa"
@@ -1659,11 +1601,6 @@ init|=
 operator|new
 name|BibtexString
 argument_list|(
-name|IdGenerator
-operator|.
-name|next
-argument_list|()
-argument_list|,
 literal|"AAA"
 argument_list|,
 literal|"aaa"
@@ -1724,11 +1661,6 @@ init|=
 operator|new
 name|BibtexString
 argument_list|(
-name|IdGenerator
-operator|.
-name|next
-argument_list|()
-argument_list|,
 literal|"AAA"
 argument_list|,
 literal|"Some other #BBB#"
@@ -1740,11 +1672,6 @@ init|=
 operator|new
 name|BibtexString
 argument_list|(
-name|IdGenerator
-operator|.
-name|next
-argument_list|()
-argument_list|,
 literal|"BBB"
 argument_list|,
 literal|"Some more text"
@@ -1756,11 +1683,6 @@ init|=
 operator|new
 name|BibtexString
 argument_list|(
-name|IdGenerator
-operator|.
-name|next
-argument_list|()
-argument_list|,
 literal|"CCC"
 argument_list|,
 literal|"Even more text"
@@ -1880,11 +1802,6 @@ init|=
 operator|new
 name|BibtexString
 argument_list|(
-name|IdGenerator
-operator|.
-name|next
-argument_list|()
-argument_list|,
 literal|"AAA"
 argument_list|,
 literal|"Some other text"
@@ -1896,11 +1813,6 @@ init|=
 operator|new
 name|BibtexString
 argument_list|(
-name|IdGenerator
-operator|.
-name|next
-argument_list|()
-argument_list|,
 literal|"BBB"
 argument_list|,
 literal|"Some more text"
@@ -2009,11 +1921,6 @@ init|=
 operator|new
 name|BibtexString
 argument_list|(
-name|IdGenerator
-operator|.
-name|next
-argument_list|()
-argument_list|,
 literal|"AAA"
 argument_list|,
 literal|"Some other text"

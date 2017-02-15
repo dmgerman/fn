@@ -1689,8 +1689,6 @@ argument_list|(
 operator|new
 name|BibtexString
 argument_list|(
-literal|"id"
-argument_list|,
 literal|"name"
 argument_list|,
 literal|"content"
@@ -1766,8 +1764,6 @@ argument_list|(
 operator|new
 name|BibtexString
 argument_list|(
-literal|"id"
-argument_list|,
 literal|"name"
 argument_list|,
 literal|"content"
@@ -2829,8 +2825,6 @@ init|=
 operator|new
 name|BibtexString
 argument_list|(
-literal|"id"
-argument_list|,
 literal|"name"
 argument_list|,
 literal|"content"
@@ -2896,8 +2890,6 @@ init|=
 operator|new
 name|BibtexString
 argument_list|(
-literal|"id"
-argument_list|,
 literal|"name"
 argument_list|,
 literal|"content"
