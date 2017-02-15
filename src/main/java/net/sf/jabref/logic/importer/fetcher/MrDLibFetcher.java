@@ -88,7 +88,27 @@ name|java
 operator|.
 name|util
 operator|.
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
 import|;
 end_import
 
@@ -283,7 +303,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *  This class is responible to get the recommendations from MDL  *  */
+comment|/**  * This class is responible to get the recommendations from MDL  */
 end_comment
 
 begin_class
@@ -379,11 +399,12 @@ parameter_list|)
 throws|throws
 name|FetcherException
 block|{
+name|Optional
+argument_list|<
 name|String
-name|response
+argument_list|>
+name|title
 init|=
-name|makeServerRequest
-argument_list|(
 name|entry
 operator|.
 name|getLatexFreeField
@@ -392,6 +413,21 @@ name|FieldName
 operator|.
 name|TITLE
 argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|title
+operator|.
+name|isPresent
+argument_list|()
+condition|)
+block|{
+name|String
+name|response
+init|=
+name|makeServerRequest
+argument_list|(
+name|title
 operator|.
 name|get
 argument_list|()
@@ -535,7 +571,20 @@ name|getEntries
 argument_list|()
 return|;
 block|}
-comment|/**      * Contact the server with the title of the selected item      * @param query: The query holds the title of the selected entry. Used to make a query to the MDL Server      * @return Returns the server response. This is an XML document as a String.      * @throws FetcherException      */
+else|else
+block|{
+comment|// without a title there is no reason to ask MrDLib
+return|return
+operator|new
+name|ArrayList
+argument_list|<>
+argument_list|(
+literal|0
+argument_list|)
+return|;
+block|}
+block|}
+comment|/**      * Contact the server with the title of the selected item      *      * @param query: The query holds the title of the selected entry. Used to make a query to the MDL Server      * @return Returns the server response. This is an XML document as a String.      */
 DECL|method|makeServerRequest (String queryByTitle)
 specifier|private
 name|String
@@ -622,7 +671,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Constructs the query based on title of the bibentry. Adds statistical stuff to the url.      * @param query: the title of the bib entry.      * @return the string used to make the query at mdl server      */
+comment|/**      * Constructs the query based on title of the bibentry. Adds statistical stuff to the url.      *      * @param query: the title of the bib entry.      * @return the string used to make the query at mdl server      */
 DECL|method|constructQuery (String queryWithTitle)
 specifier|private
 name|String
