@@ -2529,10 +2529,25 @@ comment|// source tab
 name|addSourceTab
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|SHOW_RECOMMENDATIONS
+argument_list|)
+condition|)
+block|{
 comment|//related articles
 name|addRelatedArticlesTab
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 DECL|method|addGeneralTabs ()
 specifier|private

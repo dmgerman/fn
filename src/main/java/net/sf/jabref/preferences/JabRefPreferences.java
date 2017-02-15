@@ -3103,6 +3103,15 @@ name|PUSH_TO_APPLICATION
 init|=
 literal|"pushToApplication"
 decl_stmt|;
+DECL|field|SHOW_RECOMMENDATIONS
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|SHOW_RECOMMENDATIONS
+init|=
+literal|"showRecommendations"
+decl_stmt|;
 comment|/**      * The OpenOffice/LibreOffice connection preferences are:      * OO_PATH main directory for OO/LO installation, used to detect location on Win/OS X when using manual connect      * OO_EXECUTABLE_PATH path to soffice-file      * OO_JARS_PATH directory that contains juh.jar, jurt.jar, ridl.jar, unoil.jar      * OO_SYNC_WHEN_CITING true if the reference list is updated when adding a new citation      * OO_SHOW_PANEL true if the OO panel is shown on startup      * OO_USE_ALL_OPEN_DATABASES true if all databases should be used when citing      * OO_BIBLIOGRAPHY_STYLE_FILE path to the used style file      * OO_EXTERNAL_STYLE_FILES list with paths to external style files      * STYLES_*_* size and position of "Select style" dialog      */
 DECL|field|OO_EXECUTABLE_PATH
 specifier|public
@@ -4747,6 +4756,17 @@ argument_list|(
 name|MERGE_ENTRIES_DIFF_MODE
 argument_list|,
 literal|2
+argument_list|)
+expr_stmt|;
+name|defaults
+operator|.
+name|put
+argument_list|(
+name|SHOW_RECOMMENDATIONS
+argument_list|,
+name|Boolean
+operator|.
+name|TRUE
 argument_list|)
 expr_stmt|;
 name|defaults

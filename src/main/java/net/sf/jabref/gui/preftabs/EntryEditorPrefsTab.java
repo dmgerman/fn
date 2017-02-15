@@ -289,6 +289,12 @@ specifier|final
 name|JCheckBox
 name|autoComplete
 decl_stmt|;
+DECL|field|recommendations
+specifier|private
+specifier|final
+name|JCheckBox
+name|recommendations
+decl_stmt|;
 DECL|field|autoCompBoth
 specifier|private
 specifier|final
@@ -453,6 +459,19 @@ operator|.
 name|lang
 argument_list|(
 literal|"Enable word/name autocompletion"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|recommendations
+operator|=
+operator|new
+name|JCheckBox
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Show recommendations"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -714,7 +733,7 @@ literal|"8dlu, left:pref, 8dlu, fill:150dlu, 4dlu, fill:pref"
 argument_list|,
 comment|// 4dlu, left:pref, 4dlu",
 comment|// rows  1 to 10
-literal|"pref, 6dlu, pref, 6dlu, pref, 6dlu, pref, 6dlu, pref, 6dlu, "
+literal|"pref, 6dlu, pref, 6dlu, pref, 6dlu, pref, 6dlu, pref, 6dlu, pref, 6dlu, "
 operator|+
 comment|// rows 11 to 16
 literal|"pref, 6dlu, pref, 6dlu, pref, 6dlu, "
@@ -844,6 +863,22 @@ argument_list|)
 expr_stmt|;
 name|builder
 operator|.
+name|add
+argument_list|(
+name|recommendations
+argument_list|,
+name|cc
+operator|.
+name|xy
+argument_list|(
+literal|2
+argument_list|,
+literal|13
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|builder
+operator|.
 name|addSeparator
 argument_list|(
 name|Localization
@@ -859,7 +894,7 @@ name|xyw
 argument_list|(
 literal|1
 argument_list|,
-literal|13
+literal|15
 argument_list|,
 literal|5
 argument_list|)
@@ -877,7 +912,7 @@ name|xy
 argument_list|(
 literal|2
 argument_list|,
-literal|15
+literal|17
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -971,7 +1006,7 @@ name|xyw
 argument_list|(
 literal|2
 argument_list|,
-literal|17
+literal|19
 argument_list|,
 literal|3
 argument_list|)
@@ -994,7 +1029,7 @@ name|xyw
 argument_list|(
 literal|2
 argument_list|,
-literal|19
+literal|21
 argument_list|,
 literal|4
 argument_list|)
@@ -1012,7 +1047,7 @@ name|xy
 argument_list|(
 literal|2
 argument_list|,
-literal|20
+literal|22
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1028,7 +1063,7 @@ name|xy
 argument_list|(
 literal|2
 argument_list|,
-literal|21
+literal|23
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1044,7 +1079,7 @@ name|xy
 argument_list|(
 literal|2
 argument_list|,
-literal|22
+literal|24
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1065,7 +1100,7 @@ name|xyw
 argument_list|(
 literal|2
 argument_list|,
-literal|24
+literal|26
 argument_list|,
 literal|4
 argument_list|)
@@ -1083,7 +1118,7 @@ name|xy
 argument_list|(
 literal|2
 argument_list|,
-literal|25
+literal|27
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1099,7 +1134,7 @@ name|xy
 argument_list|(
 literal|2
 argument_list|,
-literal|26
+literal|28
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1115,7 +1150,7 @@ name|xy
 argument_list|(
 literal|2
 argument_list|,
-literal|27
+literal|29
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1299,6 +1334,20 @@ name|EDITOR_EMACS_KEYBINDINGS_REBIND_CF
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|recommendations
+operator|.
+name|setSelected
+argument_list|(
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|SHOW_RECOMMENDATIONS
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|autoComplete
 operator|.
 name|setSelected
@@ -1468,6 +1517,20 @@ operator|.
 name|DEFAULT_SHOW_SOURCE
 argument_list|,
 name|defSource
+operator|.
+name|isSelected
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|prefs
+operator|.
+name|putBoolean
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|SHOW_RECOMMENDATIONS
+argument_list|,
+name|recommendations
 operator|.
 name|isSelected
 argument_list|()
