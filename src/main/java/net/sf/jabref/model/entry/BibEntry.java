@@ -701,11 +701,14 @@ argument_list|)
 decl_stmt|;
 name|keywordList
 operator|.
-name|replaceKeywords
+name|replaceAll
 argument_list|(
 name|keywordsToReplace
 argument_list|,
 name|newValue
+operator|.
+name|get
+argument_list|()
 argument_list|)
 expr_stmt|;
 return|return
