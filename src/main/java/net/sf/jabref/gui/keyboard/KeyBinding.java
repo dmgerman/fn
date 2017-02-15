@@ -777,6 +777,25 @@ operator|.
 name|VIEW
 argument_list|)
 block|,
+DECL|enumConstant|DEFAULT_TABLE_FONT_SIZE
+name|DEFAULT_TABLE_FONT_SIZE
+argument_list|(
+literal|"Default table font size"
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Default table font size"
+argument_list|)
+argument_list|,
+literal|"ctrl 0"
+argument_list|,
+name|KeyBindingCategory
+operator|.
+name|VIEW
+argument_list|)
+block|,
 DECL|enumConstant|MARK_ENTRIES
 name|MARK_ENTRIES
 argument_list|(
