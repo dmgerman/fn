@@ -402,8 +402,21 @@ specifier|final
 name|int
 name|WIDTH_ICON_COL
 init|=
-literal|26
+name|JabRefPreferences
+operator|.
+name|getInstance
+argument_list|()
+operator|.
+name|getInt
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|ICON_SIZE_SMALL
+argument_list|)
+operator|+
+literal|12
 decl_stmt|;
+comment|// add some additional space to improve appearance
 DECL|field|WIDTH_ICON_COL_RANKING
 specifier|public
 specifier|static
@@ -411,7 +424,19 @@ specifier|final
 name|int
 name|WIDTH_ICON_COL_RANKING
 init|=
-literal|80
+literal|5
+operator|*
+name|JabRefPreferences
+operator|.
+name|getInstance
+argument_list|()
+operator|.
+name|getInt
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|ICON_SIZE_SMALL
+argument_list|)
 decl_stmt|;
 comment|// Width of Ranking Icon Column
 DECL|field|MAX_BACK_HISTORY_SIZE
