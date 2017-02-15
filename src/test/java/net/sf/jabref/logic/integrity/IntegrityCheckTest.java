@@ -1548,8 +1548,8 @@ name|getPersonNameFields
 argument_list|()
 control|)
 block|{
-comment|// getPersonNameFields returns fields that are available in BibLaTeX only
-comment|// if run without mode, the NoBibtexFieldChecker will complain that "afterword" is a BibLaTeX only field
+comment|// getPersonNameFields returns fields that are available in biblatex only
+comment|// if run without mode, the NoBibtexFieldChecker will complain that "afterword" is a biblatex only field
 name|assertCorrect
 argument_list|(
 name|withMode

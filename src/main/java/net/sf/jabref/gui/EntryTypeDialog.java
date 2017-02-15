@@ -432,7 +432,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibLatexEntryTypes
+name|BiblatexEntryTypes
 import|;
 end_import
 
@@ -858,9 +858,9 @@ name|add
 argument_list|(
 name|createEntryGroupPanel
 argument_list|(
-literal|"BibLateX"
+literal|"biblatex"
 argument_list|,
-name|BibLatexEntryTypes
+name|BiblatexEntryTypes
 operator|.
 name|ALL
 argument_list|)

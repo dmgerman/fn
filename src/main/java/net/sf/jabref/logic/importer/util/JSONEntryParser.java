@@ -1416,7 +1416,7 @@ argument_list|,
 name|date
 argument_list|)
 expr_stmt|;
-comment|// For BibLatex
+comment|// For biblatex
 name|String
 index|[]
 name|dateparts

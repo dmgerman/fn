@@ -90,7 +90,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibLatexEntryTypes
+name|BiblatexEntryTypes
 import|;
 end_import
 
@@ -252,7 +252,7 @@ name|entryWijedasa
 operator|.
 name|setType
 argument_list|(
-name|BibLatexEntryTypes
+name|BiblatexEntryTypes
 operator|.
 name|ARTICLE
 argument_list|)
@@ -411,7 +411,7 @@ name|entryEndharti
 operator|.
 name|setType
 argument_list|(
-name|BibLatexEntryTypes
+name|BiblatexEntryTypes
 operator|.
 name|ARTICLE
 argument_list|)
@@ -624,7 +624,7 @@ name|bibEntryIchikawa
 operator|.
 name|setType
 argument_list|(
-name|BibLatexEntryTypes
+name|BiblatexEntryTypes
 operator|.
 name|ARTICLE
 argument_list|)
@@ -855,7 +855,7 @@ name|bibEntrySari
 operator|.
 name|setType
 argument_list|(
-name|BibLatexEntryTypes
+name|BiblatexEntryTypes
 operator|.
 name|ARTICLE
 argument_list|)

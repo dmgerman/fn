@@ -89,10 +89,10 @@ argument_list|()
 decl_stmt|;
 annotation|@
 name|Test
-DECL|method|abstractIsNotRecognizedAsBibLaTeXOnlyField ()
+DECL|method|abstractIsNotRecognizedAsBiblatexOnlyField ()
 specifier|public
 name|void
-name|abstractIsNotRecognizedAsBibLaTeXOnlyField
+name|abstractIsNotRecognizedAsBiblatexOnlyField
 parameter_list|()
 block|{
 name|BibEntry
@@ -129,10 +129,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|addressIsNotRecognizedAsBibLaTeXOnlyField ()
+DECL|method|addressIsNotRecognizedAsBiblatexOnlyField ()
 specifier|public
 name|void
-name|addressIsNotRecognizedAsBibLaTeXOnlyField
+name|addressIsNotRecognizedAsBiblatexOnlyField
 parameter_list|()
 block|{
 name|BibEntry
@@ -169,10 +169,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|afterwordIsRecognizedAsBibLaTeXOnlyField ()
+DECL|method|afterwordIsRecognizedAsBiblatexOnlyField ()
 specifier|public
 name|void
-name|afterwordIsRecognizedAsBibLaTeXOnlyField
+name|afterwordIsRecognizedAsBiblatexOnlyField
 parameter_list|()
 block|{
 name|BibEntry
@@ -197,7 +197,7 @@ init|=
 operator|new
 name|IntegrityMessage
 argument_list|(
-literal|"BibLaTeX field only"
+literal|"biblatex field only"
 argument_list|,
 name|entry
 argument_list|,
@@ -232,10 +232,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|arbitraryNonBibLaTeXFieldIsNotRecognizedAsBibLaTeXOnlyField ()
+DECL|method|arbitraryNonBiblatexFieldIsNotRecognizedAsBiblatexOnlyField ()
 specifier|public
 name|void
-name|arbitraryNonBibLaTeXFieldIsNotRecognizedAsBibLaTeXOnlyField
+name|arbitraryNonBiblatexFieldIsNotRecognizedAsBiblatexOnlyField
 parameter_list|()
 block|{
 name|BibEntry
@@ -249,7 +249,7 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"fieldNameNotDefinedInTheBibLaTeXManual"
+literal|"fieldNameNotDefinedInThebiblatexManual"
 argument_list|,
 literal|"test"
 argument_list|)
@@ -272,10 +272,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|commentIsNotRecognizedAsBibLaTeXOnlyField ()
+DECL|method|commentIsNotRecognizedAsBiblatexOnlyField ()
 specifier|public
 name|void
-name|commentIsNotRecognizedAsBibLaTeXOnlyField
+name|commentIsNotRecognizedAsBiblatexOnlyField
 parameter_list|()
 block|{
 name|BibEntry
@@ -312,10 +312,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|instituationIsNotRecognizedAsBibLaTeXOnlyField ()
+DECL|method|instituationIsNotRecognizedAsBiblatexOnlyField ()
 specifier|public
 name|void
-name|instituationIsNotRecognizedAsBibLaTeXOnlyField
+name|instituationIsNotRecognizedAsBiblatexOnlyField
 parameter_list|()
 block|{
 name|BibEntry
@@ -352,10 +352,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|journalIsNotRecognizedAsBibLaTeXOnlyField ()
+DECL|method|journalIsNotRecognizedAsBiblatexOnlyField ()
 specifier|public
 name|void
-name|journalIsNotRecognizedAsBibLaTeXOnlyField
+name|journalIsNotRecognizedAsBiblatexOnlyField
 parameter_list|()
 block|{
 name|BibEntry
@@ -392,10 +392,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|journaltitleIsRecognizedAsBibLaTeXOnlyField ()
+DECL|method|journaltitleIsRecognizedAsBiblatexOnlyField ()
 specifier|public
 name|void
-name|journaltitleIsRecognizedAsBibLaTeXOnlyField
+name|journaltitleIsRecognizedAsBiblatexOnlyField
 parameter_list|()
 block|{
 name|BibEntry
@@ -420,7 +420,7 @@ init|=
 operator|new
 name|IntegrityMessage
 argument_list|(
-literal|"BibLaTeX field only"
+literal|"biblatex field only"
 argument_list|,
 name|entry
 argument_list|,
@@ -455,10 +455,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|keywordsNotRecognizedAsBibLaTeXOnlyField ()
+DECL|method|keywordsNotRecognizedAsBiblatexOnlyField ()
 specifier|public
 name|void
-name|keywordsNotRecognizedAsBibLaTeXOnlyField
+name|keywordsNotRecognizedAsBiblatexOnlyField
 parameter_list|()
 block|{
 name|BibEntry
@@ -495,10 +495,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|locationIsRecognizedAsBibLaTeXOnlyField ()
+DECL|method|locationIsRecognizedAsBiblatexOnlyField ()
 specifier|public
 name|void
-name|locationIsRecognizedAsBibLaTeXOnlyField
+name|locationIsRecognizedAsBiblatexOnlyField
 parameter_list|()
 block|{
 name|BibEntry
@@ -523,7 +523,7 @@ init|=
 operator|new
 name|IntegrityMessage
 argument_list|(
-literal|"BibLaTeX field only"
+literal|"biblatex field only"
 argument_list|,
 name|entry
 argument_list|,
@@ -558,10 +558,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|reviewIsNotRecognizedAsBibLaTeXOnlyField ()
+DECL|method|reviewIsNotRecognizedAsBiblatexOnlyField ()
 specifier|public
 name|void
-name|reviewIsNotRecognizedAsBibLaTeXOnlyField
+name|reviewIsNotRecognizedAsBiblatexOnlyField
 parameter_list|()
 block|{
 name|BibEntry

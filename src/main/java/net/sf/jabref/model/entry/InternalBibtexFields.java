@@ -1704,7 +1704,7 @@ argument_list|(
 name|dummy
 argument_list|)
 expr_stmt|;
-comment|// some BibLatex fields
+comment|// some biblatex fields
 name|dummy
 operator|=
 operator|new

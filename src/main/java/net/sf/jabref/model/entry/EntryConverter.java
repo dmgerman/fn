@@ -47,7 +47,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Converts Entry models from BibTex to BibLaTex and back.  */
+comment|/**  * Converts Entry models from BibTex to biblatex and back.  */
 end_comment
 
 begin_class
@@ -56,7 +56,7 @@ specifier|public
 class|class
 name|EntryConverter
 block|{
-comment|// BibTeX to BibLaTeX
+comment|// BibTeX to biblatex
 DECL|field|FIELD_ALIASES_TEX_TO_LTX
 specifier|public
 specifier|static
@@ -68,7 +68,7 @@ name|String
 argument_list|>
 name|FIELD_ALIASES_TEX_TO_LTX
 decl_stmt|;
-comment|// BibLaTeX to BibTeX
+comment|// biblatex to BibTeX
 DECL|field|FIELD_ALIASES_LTX_TO_TEX
 specifier|public
 specifier|static

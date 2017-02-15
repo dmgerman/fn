@@ -116,7 +116,7 @@ name|type
 lambda|->
 name|EntryTypes
 operator|.
-name|isExclusiveBibLatex
+name|isExclusiveBiblatex
 argument_list|(
 name|type
 operator|.

@@ -70,7 +70,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibLatexEntryTypes
+name|BiblatexEntryTypes
 import|;
 end_import
 
@@ -220,7 +220,7 @@ name|bibEntryBurd2011
 operator|.
 name|setType
 argument_list|(
-name|BibLatexEntryTypes
+name|BiblatexEntryTypes
 operator|.
 name|BOOK
 argument_list|)
@@ -298,7 +298,7 @@ name|bibEntryDecker2007
 operator|.
 name|setType
 argument_list|(
-name|BibLatexEntryTypes
+name|BiblatexEntryTypes
 operator|.
 name|INPROCEEDINGS
 argument_list|)

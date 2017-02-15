@@ -193,7 +193,7 @@ name|bibTexEntryType
 init|=
 name|MSBibMapping
 operator|.
-name|getBibLaTeXEntryType
+name|getBiblatexEntryType
 argument_list|(
 name|entry
 operator|.
