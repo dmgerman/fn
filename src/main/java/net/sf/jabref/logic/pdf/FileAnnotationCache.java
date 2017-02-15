@@ -255,6 +255,9 @@ operator|.
 name|containsKey
 argument_list|(
 name|entry
+operator|.
+name|get
+argument_list|()
 argument_list|)
 condition|)
 block|{
@@ -268,6 +271,9 @@ operator|.
 name|get
 argument_list|(
 name|entry
+operator|.
+name|get
+argument_list|()
 argument_list|)
 argument_list|)
 return|;
