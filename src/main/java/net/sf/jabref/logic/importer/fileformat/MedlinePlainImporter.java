@@ -342,6 +342,18 @@ return|;
 block|}
 annotation|@
 name|Override
+DECL|method|getId ()
+specifier|public
+name|String
+name|getId
+parameter_list|()
+block|{
+return|return
+literal|"medlineplain"
+return|;
+block|}
+annotation|@
+name|Override
 DECL|method|isRecognizedFormat (BufferedReader reader)
 specifier|public
 name|boolean
