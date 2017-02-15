@@ -10661,11 +10661,19 @@ name|void
 name|rebuildAllEntryEditors
 parameter_list|()
 block|{
+if|if
+condition|(
+name|currentEditor
+operator|!=
+literal|null
+condition|)
+block|{
 name|currentEditor
 operator|.
 name|rebuildPanels
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 end_function
 
