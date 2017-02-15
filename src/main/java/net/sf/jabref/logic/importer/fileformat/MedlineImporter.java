@@ -1411,7 +1411,7 @@ name|getName
 parameter_list|()
 block|{
 return|return
-literal|"Medline"
+literal|"Medline/PubMed"
 return|;
 block|}
 annotation|@
