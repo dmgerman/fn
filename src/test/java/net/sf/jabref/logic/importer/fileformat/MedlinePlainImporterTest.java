@@ -1744,7 +1744,7 @@ parameter_list|()
 block|{
 name|assertEquals
 argument_list|(
-literal|"MedlinePlain"
+literal|"Medline/PubMed Plain"
 argument_list|,
 name|importer
 operator|.

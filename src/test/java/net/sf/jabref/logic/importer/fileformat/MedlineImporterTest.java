@@ -310,7 +310,7 @@ parameter_list|()
 block|{
 name|assertEquals
 argument_list|(
-literal|"Medline"
+literal|"Medline/PubMed"
 argument_list|,
 name|importer
 operator|.
