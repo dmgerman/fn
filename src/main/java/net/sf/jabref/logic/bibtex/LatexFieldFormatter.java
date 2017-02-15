@@ -1,8 +1,4 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
-begin_comment
-comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
-end_comment
-
 begin_package
 DECL|package|net.sf.jabref.logic.bibtex
 package|package
@@ -62,13 +58,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|model
 operator|.
-name|util
+name|entry
 operator|.
-name|strings
-operator|.
-name|StringUtil
+name|InternalBibtexFields
 import|;
 end_import
 
@@ -82,9 +76,9 @@ name|jabref
 operator|.
 name|model
 operator|.
-name|entry
+name|strings
 operator|.
-name|InternalBibtexFields
+name|StringUtil
 import|;
 end_import
 
@@ -130,6 +124,24 @@ specifier|private
 specifier|final
 name|FieldContentParser
 name|parser
+decl_stmt|;
+DECL|field|FIELD_START
+specifier|private
+specifier|static
+specifier|final
+name|char
+name|FIELD_START
+init|=
+literal|'{'
+decl_stmt|;
+DECL|field|FIELD_END
+specifier|private
+specifier|static
+specifier|final
+name|char
+name|FIELD_END
+init|=
+literal|'}'
 decl_stmt|;
 DECL|method|LatexFieldFormatter (LatexFieldFormatterPreferences prefs)
 specifier|public
@@ -225,19 +237,13 @@ literal|null
 condition|)
 block|{
 return|return
-name|prefs
-operator|.
-name|getValueDelimiterStartOfValue
-argument_list|()
+name|FIELD_START
 operator|+
 name|String
 operator|.
 name|valueOf
 argument_list|(
-name|prefs
-operator|.
-name|getValueDelimiterEndOfValue
-argument_list|()
+name|FIELD_END
 argument_list|)
 return|;
 block|}
@@ -731,10 +737,7 @@ name|String
 operator|.
 name|valueOf
 argument_list|(
-name|prefs
-operator|.
-name|getValueDelimiterStartOfValue
-argument_list|()
+name|FIELD_START
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -756,10 +759,7 @@ name|stringBuilder
 operator|.
 name|append
 argument_list|(
-name|prefs
-operator|.
-name|getValueDelimiterEndOfValue
-argument_list|()
+name|FIELD_END
 argument_list|)
 expr_stmt|;
 return|return
@@ -788,10 +788,7 @@ name|stringBuilder
 operator|.
 name|append
 argument_list|(
-name|prefs
-operator|.
-name|getValueDelimiterStartOfValue
-argument_list|()
+name|FIELD_START
 argument_list|)
 expr_stmt|;
 name|boolean
@@ -1122,10 +1119,7 @@ name|stringBuilder
 operator|.
 name|append
 argument_list|(
-name|prefs
-operator|.
-name|getValueDelimiterEndOfValue
-argument_list|()
+name|FIELD_END
 argument_list|)
 expr_stmt|;
 block|}
@@ -1202,6 +1196,10 @@ name|prefs
 operator|.
 name|getLineLength
 argument_list|()
+argument_list|,
+name|OS
+operator|.
+name|NEWLINE
 argument_list|)
 argument_list|)
 expr_stmt|;

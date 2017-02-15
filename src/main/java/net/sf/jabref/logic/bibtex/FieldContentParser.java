@@ -1,8 +1,4 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
-begin_comment
-comment|/*  Copyright (C) 2003-2016 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
-end_comment
-
 begin_package
 DECL|package|net.sf.jabref.logic.bibtex
 package|package
@@ -34,6 +30,26 @@ name|java
 operator|.
 name|util
 operator|.
+name|Objects
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|regex
 operator|.
 name|Pattern
@@ -52,9 +68,7 @@ name|logic
 operator|.
 name|util
 operator|.
-name|strings
-operator|.
-name|StringUtil
+name|OS
 import|;
 end_import
 
@@ -74,6 +88,22 @@ name|FieldName
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|strings
+operator|.
+name|StringUtil
+import|;
+end_import
+
 begin_comment
 comment|/**  * This class provides the reformatting needed when reading BibTeX fields formatted  * in JabRef style. The reformatting must undo all formatting done by JabRef when  * writing the same fields.  */
 end_comment
@@ -87,7 +117,7 @@ block|{
 DECL|field|multiLineFields
 specifier|private
 specifier|final
-name|HashSet
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -116,6 +146,13 @@ name|FieldContentParserPreferences
 name|prefs
 parameter_list|)
 block|{
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|prefs
+argument_list|)
+expr_stmt|;
 name|multiLineFields
 operator|=
 operator|new
@@ -181,9 +218,13 @@ comment|// Unify line breaks
 return|return
 name|StringUtil
 operator|.
-name|unifyLineBreaksToConfiguredLineBreaks
+name|unifyLineBreaks
 argument_list|(
 name|fieldContent
+argument_list|,
+name|OS
+operator|.
+name|NEWLINE
 argument_list|)
 return|;
 block|}

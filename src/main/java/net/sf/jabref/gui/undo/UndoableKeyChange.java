@@ -1,8 +1,4 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
-begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
-end_comment
-
 begin_package
 DECL|package|net.sf.jabref.gui.undo
 package|package
@@ -17,18 +13,6 @@ operator|.
 name|undo
 package|;
 end_package
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|undo
-operator|.
-name|AbstractUndoableEdit
-import|;
-end_import
 
 begin_import
 import|import
@@ -56,9 +40,9 @@ name|jabref
 operator|.
 name|model
 operator|.
-name|database
+name|entry
 operator|.
-name|BibDatabase
+name|BibEntry
 import|;
 end_import
 
@@ -72,9 +56,9 @@ name|jabref
 operator|.
 name|model
 operator|.
-name|entry
+name|strings
 operator|.
-name|BibEntry
+name|StringUtil
 import|;
 end_import
 
@@ -88,19 +72,13 @@ specifier|public
 class|class
 name|UndoableKeyChange
 extends|extends
-name|AbstractUndoableEdit
+name|AbstractUndoableJabRefEdit
 block|{
 DECL|field|entry
 specifier|private
 specifier|final
 name|BibEntry
 name|entry
-decl_stmt|;
-DECL|field|base
-specifier|private
-specifier|final
-name|BibDatabase
-name|base
 decl_stmt|;
 DECL|field|oldValue
 specifier|private
@@ -114,13 +92,10 @@ specifier|final
 name|String
 name|newValue
 decl_stmt|;
-DECL|method|UndoableKeyChange (BibDatabase base, BibEntry entry, String oldValue, String newValue)
+DECL|method|UndoableKeyChange (BibEntry entry, String oldValue, String newValue)
 specifier|public
 name|UndoableKeyChange
 parameter_list|(
-name|BibDatabase
-name|base
-parameter_list|,
 name|BibEntry
 name|entry
 parameter_list|,
@@ -131,12 +106,6 @@ name|String
 name|newValue
 parameter_list|)
 block|{
-name|this
-operator|.
-name|base
-operator|=
-name|base
-expr_stmt|;
 name|this
 operator|.
 name|entry
@@ -169,59 +138,35 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"change key"
-argument_list|)
-return|;
-block|}
-annotation|@
-name|Override
-DECL|method|getUndoPresentationName ()
-specifier|public
-name|String
-name|getUndoPresentationName
-parameter_list|()
-block|{
-return|return
+literal|"change key from %0 to %1"
+argument_list|,
+name|StringUtil
+operator|.
+name|boldHTML
+argument_list|(
+name|oldValue
+argument_list|,
 name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Undo"
+literal|"undefined"
 argument_list|)
-operator|+
-literal|": "
-operator|+
+argument_list|)
+argument_list|,
+name|StringUtil
+operator|.
+name|boldHTML
+argument_list|(
+name|newValue
+argument_list|,
 name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"change key"
+literal|"undefined"
 argument_list|)
-return|;
-block|}
-annotation|@
-name|Override
-DECL|method|getRedoPresentationName ()
-specifier|public
-name|String
-name|getRedoPresentationName
-parameter_list|()
-block|{
-return|return
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Redo"
 argument_list|)
-operator|+
-literal|": "
-operator|+
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"change key"
 argument_list|)
 return|;
 block|}
@@ -238,8 +183,9 @@ operator|.
 name|undo
 argument_list|()
 expr_stmt|;
-comment|// Revert the change.
-name|set
+name|entry
+operator|.
+name|setCiteKey
 argument_list|(
 name|oldValue
 argument_list|)
@@ -258,29 +204,11 @@ operator|.
 name|redo
 argument_list|()
 expr_stmt|;
-comment|// Redo the change.
-name|set
+name|entry
+operator|.
+name|setCiteKey
 argument_list|(
 name|newValue
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|set (String to)
-specifier|private
-name|void
-name|set
-parameter_list|(
-name|String
-name|to
-parameter_list|)
-block|{
-name|base
-operator|.
-name|setCiteKeyForEntry
-argument_list|(
-name|entry
-argument_list|,
-name|to
 argument_list|)
 expr_stmt|;
 block|}

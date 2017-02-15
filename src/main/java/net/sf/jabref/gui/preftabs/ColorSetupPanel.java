@@ -1,8 +1,4 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
-begin_comment
-comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
-end_comment
-
 begin_package
 DECL|package|net.sf.jabref.gui.preftabs
 package|package
@@ -114,6 +110,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|swing
@@ -139,6 +145,16 @@ operator|.
 name|swing
 operator|.
 name|JButton
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|JCheckBox
 import|;
 end_import
 
@@ -232,10 +248,6 @@ name|FormLayout
 import|;
 end_import
 
-begin_comment
-comment|/**  * Created by IntelliJ IDEA.  * User: alver  * Date: Oct 10, 2005  * Time: 4:29:35 PM  * To change this template use File | Settings | File Templates.  */
-end_comment
-
 begin_class
 DECL|class|ColorSetupPanel
 specifier|public
@@ -276,10 +288,19 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
-DECL|method|ColorSetupPanel ()
+DECL|method|ColorSetupPanel (JCheckBox colorCodes, JCheckBox resolvedColorCodes, JCheckBox showGrid)
 specifier|public
 name|ColorSetupPanel
-parameter_list|()
+parameter_list|(
+name|JCheckBox
+name|colorCodes
+parameter_list|,
+name|JCheckBox
+name|resolvedColorCodes
+parameter_list|,
+name|JCheckBox
+name|showGrid
+parameter_list|)
 block|{
 name|FormLayout
 name|layout
@@ -289,7 +310,7 @@ name|FormLayout
 argument_list|(
 literal|"30dlu, 4dlu, fill:pref, 4dlu, fill:pref, 8dlu, 30dlu, 4dlu, fill:pref, 4dlu, fill:pref"
 argument_list|,
-literal|"pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref"
+literal|"pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref"
 argument_list|)
 decl_stmt|;
 name|FormBuilder
@@ -406,6 +427,8 @@ name|lang
 argument_list|(
 literal|"Background color for required fields"
 argument_list|)
+argument_list|,
+name|colorCodes
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -448,6 +471,8 @@ name|lang
 argument_list|(
 literal|"Background color for optional fields"
 argument_list|)
+argument_list|,
+name|colorCodes
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -532,6 +557,8 @@ name|lang
 argument_list|(
 literal|"Table grid color"
 argument_list|)
+argument_list|,
+name|showGrid
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -632,6 +659,28 @@ name|lang
 argument_list|(
 literal|"Entry editor invalid field color"
 argument_list|)
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|buttons
+operator|.
+name|add
+argument_list|(
+operator|new
+name|ColorButton
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|TABLE_RESOLVED_FIELD_BACKGROUND
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Background color for resolved fields"
+argument_list|)
+argument_list|,
+name|resolvedColorCodes
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -924,6 +973,23 @@ argument_list|(
 name|chosen
 argument_list|)
 expr_stmt|;
+name|button
+operator|.
+name|getCheckBox
+argument_list|()
+operator|.
+name|ifPresent
+argument_list|(
+name|checkBox
+lambda|->
+name|checkBox
+operator|.
+name|setSelected
+argument_list|(
+literal|true
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 block|}
@@ -958,6 +1024,52 @@ specifier|final
 name|String
 name|name
 decl_stmt|;
+DECL|field|checkBox
+specifier|private
+name|Optional
+argument_list|<
+name|JCheckBox
+argument_list|>
+name|checkBox
+init|=
+name|Optional
+operator|.
+name|empty
+argument_list|()
+decl_stmt|;
+DECL|method|ColorButton (String key, String name, JCheckBox checkBox)
+specifier|public
+name|ColorButton
+parameter_list|(
+name|String
+name|key
+parameter_list|,
+name|String
+name|name
+parameter_list|,
+name|JCheckBox
+name|checkBox
+parameter_list|)
+block|{
+name|this
+argument_list|(
+name|key
+argument_list|,
+name|name
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|checkBox
+operator|=
+name|Optional
+operator|.
+name|of
+argument_list|(
+name|checkBox
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|ColorButton (String key, String name)
 specifier|public
 name|ColorButton
@@ -1175,6 +1287,19 @@ return|return
 name|ColorSetupPanel
 operator|.
 name|ICON_HEIGHT
+return|;
+block|}
+DECL|method|getCheckBox ()
+specifier|public
+name|Optional
+argument_list|<
+name|JCheckBox
+argument_list|>
+name|getCheckBox
+parameter_list|()
+block|{
+return|return
+name|checkBox
 return|;
 block|}
 block|}

@@ -1,8 +1,4 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
-begin_comment
-comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
-end_comment
-
 begin_package
 DECL|package|net.sf.jabref.model
 package|package
@@ -33,6 +29,16 @@ operator|.
 name|util
 operator|.
 name|HashSet
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
 import|;
 end_import
 
@@ -174,7 +180,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|FieldProperties
+name|FieldProperty
 import|;
 end_import
 
@@ -452,10 +458,6 @@ name|bibDatabaseMode
 argument_list|)
 decl_stmt|;
 comment|// The check if they have the same required fields:
-name|java
-operator|.
-name|util
-operator|.
 name|List
 argument_list|<
 name|String
@@ -467,31 +469,13 @@ operator|.
 name|getRequiredFieldsFlat
 argument_list|()
 decl_stmt|;
-name|String
-index|[]
-name|fields
-init|=
-name|var
-operator|.
-name|toArray
-argument_list|(
-operator|new
-name|String
-index|[
-name|var
-operator|.
-name|size
-argument_list|()
-index|]
-argument_list|)
-decl_stmt|;
 name|double
 index|[]
 name|req
 decl_stmt|;
 if|if
 condition|(
-name|fields
+name|var
 operator|==
 literal|null
 condition|)
@@ -516,7 +500,7 @@ name|DuplicateCheck
 operator|.
 name|compareFieldSet
 argument_list|(
-name|fields
+name|var
 argument_list|,
 name|one
 argument_list|,
@@ -558,10 +542,6 @@ name|duplicateThreshold
 return|;
 block|}
 comment|// Close to the threshold value, so we take a look at the optional fields, if any:
-name|java
-operator|.
-name|util
-operator|.
 name|List
 argument_list|<
 name|String
@@ -573,25 +553,9 @@ operator|.
 name|getOptionalFields
 argument_list|()
 decl_stmt|;
-name|fields
-operator|=
-name|optionalFields
-operator|.
-name|toArray
-argument_list|(
-operator|new
-name|String
-index|[
-name|optionalFields
-operator|.
-name|size
-argument_list|()
-index|]
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
-name|fields
+name|optionalFields
 operator|!=
 literal|null
 condition|)
@@ -604,7 +568,7 @@ name|DuplicateCheck
 operator|.
 name|compareFieldSet
 argument_list|(
-name|fields
+name|optionalFields
 argument_list|,
 name|one
 argument_list|,
@@ -681,15 +645,17 @@ operator|.
 name|duplicateThreshold
 return|;
 block|}
-DECL|method|compareFieldSet (String[] fields, BibEntry one, BibEntry two)
+DECL|method|compareFieldSet (List<String> fields, BibEntry one, BibEntry two)
 specifier|private
 specifier|static
 name|double
 index|[]
 name|compareFieldSet
 parameter_list|(
+name|List
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|fields
 parameter_list|,
 name|BibEntry
@@ -850,7 +816,7 @@ name|optionalStringOne
 init|=
 name|one
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|field
 argument_list|)
@@ -863,7 +829,7 @@ name|optionalStringTwo
 init|=
 name|two
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|field
 argument_list|)
@@ -929,14 +895,14 @@ if|if
 condition|(
 name|InternalBibtexFields
 operator|.
-name|getFieldExtras
+name|getFieldProperties
 argument_list|(
 name|field
 argument_list|)
 operator|.
 name|contains
 argument_list|(
-name|FieldProperties
+name|FieldProperty
 operator|.
 name|PERSON_NAMES
 argument_list|)
@@ -1251,7 +1217,7 @@ name|stringOne
 init|=
 name|one
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|field
 argument_list|)
@@ -1264,7 +1230,7 @@ name|stringTwo
 init|=
 name|two
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|field
 argument_list|)

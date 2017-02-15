@@ -109,6 +109,21 @@ literal|"http://dl.acm.org/citation.cfm?id=321811"
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|// malformed Google URL
+name|Assert
+operator|.
+name|assertEquals
+argument_list|(
+literal|"https://www.google.de/urlâ¥"
+argument_list|,
+name|URLUtil
+operator|.
+name|cleanGoogleSearchURL
+argument_list|(
+literal|"https://www.google.de/urlâ¥"
+argument_list|)
+argument_list|)
+expr_stmt|;
 comment|// no queries
 name|Assert
 operator|.

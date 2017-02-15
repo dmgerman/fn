@@ -1,8 +1,4 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
-begin_comment
-comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
-end_comment
-
 begin_package
 DECL|package|net.sf.jabref.gui
 package|package
@@ -210,6 +206,40 @@ end_import
 
 begin_import
 import|import
+name|javafx
+operator|.
+name|scene
+operator|.
+name|Node
+import|;
+end_import
+
+begin_import
+import|import
+name|javafx
+operator|.
+name|scene
+operator|.
+name|image
+operator|.
+name|Image
+import|;
+end_import
+
+begin_import
+import|import
+name|javafx
+operator|.
+name|scene
+operator|.
+name|text
+operator|.
+name|Text
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -253,6 +283,18 @@ specifier|public
 specifier|static
 name|Font
 name|FONT_16
+decl_stmt|;
+DECL|field|FX_FONT
+specifier|public
+specifier|static
+name|javafx
+operator|.
+name|scene
+operator|.
+name|text
+operator|.
+name|Font
+name|FX_FONT
 decl_stmt|;
 comment|/* Colors */
 comment|// JabRef's default colors
@@ -406,6 +448,39 @@ argument_list|,
 literal|16f
 argument_list|)
 expr_stmt|;
+try|try
+init|(
+name|InputStream
+name|stream2
+init|=
+name|FontBasedIcon
+operator|.
+name|class
+operator|.
+name|getResourceAsStream
+argument_list|(
+literal|"/fonts/materialdesignicons-webfont.ttf"
+argument_list|)
+init|)
+block|{
+name|FX_FONT
+operator|=
+name|javafx
+operator|.
+name|scene
+operator|.
+name|text
+operator|.
+name|Font
+operator|.
+name|loadFont
+argument_list|(
+name|stream2
+argument_list|,
+name|DEFAULT_SIZE
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(
@@ -1078,6 +1153,13 @@ literal|"\uf16b"
 argument_list|)
 block|,
 comment|/*css: code-equal */
+DECL|enumConstant|PULL
+name|PULL
+argument_list|(
+literal|"\uf4c2"
+argument_list|)
+block|,
+comment|/*source-pull*/
 DECL|enumConstant|OPEN_IN_NEW_WINDOW
 name|OPEN_IN_NEW_WINDOW
 argument_list|(
@@ -1109,10 +1191,38 @@ comment|/*css: console */
 DECL|enumConstant|FORUM
 name|FORUM
 argument_list|(
-literal|"\uF28C"
+literal|"\uf28c"
 argument_list|)
 block|,
 comment|/* css: forum */
+DECL|enumConstant|FACEBOOK
+name|FACEBOOK
+argument_list|(
+literal|"\uf20c"
+argument_list|)
+block|,
+comment|/* css: facebook */
+DECL|enumConstant|BLOG
+name|BLOG
+argument_list|(
+literal|"\uf46b"
+argument_list|)
+block|,
+comment|/* css: rss */
+DECL|enumConstant|GLOBAL_SEARCH
+name|GLOBAL_SEARCH
+argument_list|(
+literal|"\uF1E7"
+argument_list|)
+block|,
+comment|/* css: earth */
+DECL|enumConstant|DATE_PICKER
+name|DATE_PICKER
+argument_list|(
+literal|"\uF0ED;"
+argument_list|)
+block|,
+comment|/* css: calendar */
 comment|// STILL MISSING:
 DECL|enumConstant|GROUP_REGULAR
 name|GROUP_REGULAR
@@ -1218,6 +1328,37 @@ name|IconTheme
 operator|.
 name|SMALL_SIZE
 argument_list|)
+return|;
+block|}
+DECL|method|getGraphicNode ()
+specifier|public
+name|Node
+name|getGraphicNode
+parameter_list|()
+block|{
+name|Text
+name|graphic
+init|=
+operator|new
+name|Text
+argument_list|(
+name|this
+operator|.
+name|code
+argument_list|)
+decl_stmt|;
+name|graphic
+operator|.
+name|getStyleClass
+argument_list|()
+operator|.
+name|add
+argument_list|(
+literal|"icon"
+argument_list|)
+expr_stmt|;
+return|return
+name|graphic
 return|;
 block|}
 DECL|method|getCode ()
@@ -1556,6 +1697,45 @@ name|getIconUrl
 argument_list|(
 name|name
 argument_list|)
+argument_list|)
+return|;
+block|}
+DECL|method|getJabRefImageFX ()
+specifier|public
+specifier|static
+name|Image
+name|getJabRefImageFX
+parameter_list|()
+block|{
+return|return
+name|getImageFX
+argument_list|(
+literal|"jabrefIcon48"
+argument_list|)
+return|;
+block|}
+comment|/**      * Constructs an {@link Image} for the image representing the given function, in the resource      * file listing images.      *      * @param name The name of the icon, such as "open", "save", "saveAs" etc.      * @return The {@link Image} for the function.      */
+DECL|method|getImageFX (String name)
+specifier|public
+specifier|static
+name|Image
+name|getImageFX
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+block|{
+return|return
+operator|new
+name|Image
+argument_list|(
+name|getIconUrl
+argument_list|(
+name|name
+argument_list|)
+operator|.
+name|toString
+argument_list|()
 argument_list|)
 return|;
 block|}

@@ -40,6 +40,22 @@ name|Localization
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|cleanup
+operator|.
+name|Formatter
+import|;
+end_import
+
 begin_comment
 comment|/**  * It may seem useless, but is needed as a fallback option  */
 end_comment

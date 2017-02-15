@@ -1,8 +1,4 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
-begin_comment
-comment|/*  Copyright (C) 2003-2016 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
-end_comment
-
 begin_package
 DECL|package|net.sf.jabref.logic.exporter
 package|package
@@ -76,6 +72,22 @@ name|Localization
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|layout
+operator|.
+name|LayoutFormatterPreferences
+import|;
+end_import
+
 begin_class
 DECL|class|ExportFormats
 specifier|public
@@ -106,7 +118,7 @@ specifier|static
 name|int
 name|entryNumber
 decl_stmt|;
-DECL|method|initAllExports (Map<String, ExportFormat> customFormats)
+DECL|method|initAllExports (Map<String, ExportFormat> customFormats, LayoutFormatterPreferences layoutPreferences, SavePreferences savePreferences)
 specifier|public
 specifier|static
 name|void
@@ -119,6 +131,12 @@ argument_list|,
 name|ExportFormat
 argument_list|>
 name|customFormats
+parameter_list|,
+name|LayoutFormatterPreferences
+name|layoutPreferences
+parameter_list|,
+name|SavePreferences
+name|savePreferences
 parameter_list|)
 block|{
 name|ExportFormats
@@ -145,6 +163,10 @@ argument_list|,
 literal|null
 argument_list|,
 literal|".html"
+argument_list|,
+name|layoutPreferences
+argument_list|,
+name|savePreferences
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -169,6 +191,10 @@ argument_list|,
 literal|null
 argument_list|,
 literal|".html"
+argument_list|,
+name|layoutPreferences
+argument_list|,
+name|savePreferences
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -188,6 +214,10 @@ argument_list|,
 literal|null
 argument_list|,
 literal|".xml"
+argument_list|,
+name|layoutPreferences
+argument_list|,
+name|savePreferences
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -207,25 +237,10 @@ argument_list|,
 literal|"din1505"
 argument_list|,
 literal|".rtf"
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|ExportFormats
-operator|.
-name|putFormat
-argument_list|(
-operator|new
-name|ExportFormat
-argument_list|(
-literal|"BibTeXML"
 argument_list|,
-literal|"bibtexml"
+name|layoutPreferences
 argument_list|,
-literal|"bibtexml"
-argument_list|,
-literal|null
-argument_list|,
-literal|".xml"
+name|savePreferences
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -245,16 +260,11 @@ argument_list|,
 literal|null
 argument_list|,
 literal|".rdf"
+argument_list|,
+name|layoutPreferences
+argument_list|,
+name|savePreferences
 argument_list|)
-argument_list|)
-expr_stmt|;
-name|ExportFormats
-operator|.
-name|putFormat
-argument_list|(
-operator|new
-name|ModsExportFormat
-argument_list|()
 argument_list|)
 expr_stmt|;
 name|ExportFormats
@@ -278,6 +288,10 @@ argument_list|,
 literal|"tablerefs"
 argument_list|,
 literal|".html"
+argument_list|,
+name|layoutPreferences
+argument_list|,
+name|savePreferences
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -302,6 +316,10 @@ argument_list|,
 literal|"listrefs"
 argument_list|,
 literal|".html"
+argument_list|,
+name|layoutPreferences
+argument_list|,
+name|savePreferences
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -326,6 +344,10 @@ argument_list|,
 literal|"tablerefsabsbib"
 argument_list|,
 literal|".html"
+argument_list|,
+name|layoutPreferences
+argument_list|,
+name|savePreferences
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -345,6 +367,10 @@ argument_list|,
 literal|"harvard"
 argument_list|,
 literal|".rtf"
+argument_list|,
+name|layoutPreferences
+argument_list|,
+name|savePreferences
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -355,7 +381,7 @@ argument_list|(
 operator|new
 name|ExportFormat
 argument_list|(
-literal|"ISO 690"
+literal|"ISO 690 RTF"
 argument_list|,
 literal|"iso690rtf"
 argument_list|,
@@ -364,6 +390,10 @@ argument_list|,
 literal|"iso690rtf"
 argument_list|,
 literal|".rtf"
+argument_list|,
+name|layoutPreferences
+argument_list|,
+name|savePreferences
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -383,6 +413,10 @@ argument_list|,
 literal|"iso690txt"
 argument_list|,
 literal|".txt"
+argument_list|,
+name|layoutPreferences
+argument_list|,
+name|savePreferences
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -402,6 +436,10 @@ argument_list|,
 literal|"endnote"
 argument_list|,
 literal|".txt"
+argument_list|,
+name|layoutPreferences
+argument_list|,
+name|savePreferences
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -421,6 +459,10 @@ argument_list|,
 literal|"openoffice"
 argument_list|,
 literal|".csv"
+argument_list|,
+name|layoutPreferences
+argument_list|,
+name|savePreferences
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -439,6 +481,10 @@ argument_list|,
 literal|"ris"
 argument_list|,
 literal|".ris"
+argument_list|,
+name|layoutPreferences
+argument_list|,
+name|savePreferences
 argument_list|)
 decl_stmt|;
 name|ef
@@ -473,7 +519,20 @@ argument_list|,
 literal|"misq"
 argument_list|,
 literal|".rtf"
+argument_list|,
+name|layoutPreferences
+argument_list|,
+name|savePreferences
 argument_list|)
+argument_list|)
+expr_stmt|;
+name|ExportFormats
+operator|.
+name|putFormat
+argument_list|(
+operator|new
+name|BibTeXMLExportFormat
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|ExportFormats

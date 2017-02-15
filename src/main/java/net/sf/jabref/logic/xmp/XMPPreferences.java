@@ -24,20 +24,6 @@ name|List
 import|;
 end_import
 
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|preferences
-operator|.
-name|JabRefPreferences
-import|;
-end_import
-
 begin_class
 DECL|class|XMPPreferences
 specifier|public
@@ -62,10 +48,10 @@ decl_stmt|;
 DECL|field|keywordSeparator
 specifier|private
 specifier|final
-name|String
+name|Character
 name|keywordSeparator
 decl_stmt|;
-DECL|method|XMPPreferences (boolean useXMPPrivacyFilter, List<String> xmpPrivacyFilter, String keywordSeparator)
+DECL|method|XMPPreferences (boolean useXMPPrivacyFilter, List<String> xmpPrivacyFilter, Character keywordSeparator)
 specifier|public
 name|XMPPreferences
 parameter_list|(
@@ -78,7 +64,7 @@ name|String
 argument_list|>
 name|xmpPrivacyFilter
 parameter_list|,
-name|String
+name|Character
 name|keywordSeparator
 parameter_list|)
 block|{
@@ -100,49 +86,6 @@ name|keywordSeparator
 operator|=
 name|keywordSeparator
 expr_stmt|;
-block|}
-DECL|method|fromPreferences (JabRefPreferences jabrefPreferences)
-specifier|public
-specifier|static
-name|XMPPreferences
-name|fromPreferences
-parameter_list|(
-name|JabRefPreferences
-name|jabrefPreferences
-parameter_list|)
-block|{
-return|return
-operator|new
-name|XMPPreferences
-argument_list|(
-name|jabrefPreferences
-operator|.
-name|getBoolean
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|USE_XMP_PRIVACY_FILTER
-argument_list|)
-argument_list|,
-name|jabrefPreferences
-operator|.
-name|getStringList
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|XMP_PRIVACY_FILTERS
-argument_list|)
-argument_list|,
-name|jabrefPreferences
-operator|.
-name|get
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|KEYWORD_SEPARATOR
-argument_list|)
-argument_list|)
-return|;
 block|}
 DECL|method|isUseXMPPrivacyFilter ()
 specifier|public
@@ -169,7 +112,7 @@ return|;
 block|}
 DECL|method|getKeywordSeparator ()
 specifier|public
-name|String
+name|Character
 name|getKeywordSeparator
 parameter_list|()
 block|{

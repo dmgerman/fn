@@ -1,8 +1,4 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
-begin_comment
-comment|/*  Copyright (C) 2015 JabRef contributors.     Copyright (C) 2015 Oscar Gustafsson.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
-end_comment
-
 begin_package
 DECL|package|net.sf.jabref.gui.push
 package|package
@@ -88,18 +84,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|MetaData
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|gui
 operator|.
 name|BasePanel
@@ -116,9 +100,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|actions
-operator|.
-name|BrowseAction
+name|FileDialog
 import|;
 end_import
 
@@ -167,6 +149,22 @@ operator|.
 name|entry
 operator|.
 name|BibEntry
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|metadata
+operator|.
+name|MetaData
 import|;
 end_import
 
@@ -619,6 +617,11 @@ literal|true
 return|;
 block|}
 comment|/**      * Function to get the command to be executed for pushing keys to be cited      *      * @param keyString String containing the Bibtex keys to be pushed to the application      * @return String array with the command to call and its arguments      */
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 DECL|method|getCommandLine (String keyString)
 specifier|protected
 name|String
@@ -813,16 +816,6 @@ argument_list|,
 literal|1
 argument_list|)
 expr_stmt|;
-name|BrowseAction
-name|action
-init|=
-name|BrowseAction
-operator|.
-name|buildForFile
-argument_list|(
-name|path
-argument_list|)
-decl_stmt|;
 name|JButton
 name|browse
 init|=
@@ -841,7 +834,34 @@ name|browse
 operator|.
 name|addActionListener
 argument_list|(
-name|action
+name|e
+lambda|->
+operator|new
+name|FileDialog
+argument_list|(
+literal|null
+argument_list|)
+operator|.
+name|showDialogAndGetSelectedFile
+argument_list|()
+operator|.
+name|ifPresent
+argument_list|(
+name|f
+lambda|->
+name|path
+operator|.
+name|setText
+argument_list|(
+name|f
+operator|.
+name|toAbsolutePath
+argument_list|()
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|builder

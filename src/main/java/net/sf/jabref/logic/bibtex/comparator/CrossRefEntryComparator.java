@@ -1,8 +1,4 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
-begin_comment
-comment|/*  Copyright (C) 2003-2016 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
-end_comment
-
 begin_package
 DECL|package|net.sf.jabref.logic.bibtex.comparator
 package|package
@@ -91,8 +87,8 @@ name|BibEntry
 name|e2
 parameter_list|)
 block|{
-name|Boolean
-name|b1
+name|boolean
+name|crEntry1
 init|=
 name|e1
 operator|.
@@ -103,8 +99,8 @@ operator|.
 name|CROSSREF
 argument_list|)
 decl_stmt|;
-name|Boolean
-name|b2
+name|boolean
+name|crEntry2
 init|=
 name|e2
 operator|.
@@ -118,37 +114,28 @@ decl_stmt|;
 if|if
 condition|(
 operator|(
-operator|!
-name|b1
-operator|)
+name|crEntry1
 operator|&&
+name|crEntry2
+operator|)
+operator|||
 operator|(
 operator|!
-name|b2
+name|crEntry1
+operator|&&
+operator|!
+name|crEntry2
 operator|)
 condition|)
 block|{
 return|return
 literal|0
 return|;
-comment|// secComparator.compare(e1, e2);
-block|}
-if|if
-condition|(
-name|b1
-operator|&&
-name|b2
-condition|)
-block|{
-return|return
-literal|0
-return|;
-comment|// secComparator.compare(e1, e2);
 block|}
 if|if
 condition|(
 operator|!
-name|b1
+name|crEntry1
 condition|)
 block|{
 return|return

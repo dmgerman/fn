@@ -1,8 +1,4 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
-begin_comment
-comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
-end_comment
-
 begin_package
 DECL|package|net.sf.jabref.logic.layout
 package|package
@@ -52,35 +48,17 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Optional
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|regex
-operator|.
-name|Pattern
-import|;
-end_import
-
-begin_import
-import|import
 name|net
 operator|.
 name|sf
 operator|.
 name|jabref
 operator|.
-name|BibDatabaseContext
+name|model
+operator|.
+name|database
+operator|.
+name|BibDatabase
 import|;
 end_import
 
@@ -96,7 +74,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibDatabase
+name|BibDatabaseContext
 import|;
 end_import
 
@@ -497,6 +475,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|/**      * Returns the processed bibtex entry. If the database argument is      * null, no string references will be resolved. Otherwise all valid      * string references will be replaced by the strings' contents. Even      * recursive string references are resolved.      */
 DECL|method|doLayout (BibEntry bibtex, BibDatabase database)
 specifier|public
 name|String
@@ -507,39 +486,6 @@ name|bibtex
 parameter_list|,
 name|BibDatabase
 name|database
-parameter_list|)
-block|{
-return|return
-name|doLayout
-argument_list|(
-name|bibtex
-argument_list|,
-name|database
-argument_list|,
-name|Optional
-operator|.
-name|empty
-argument_list|()
-argument_list|)
-return|;
-block|}
-comment|/**      * Returns the processed bibtex entry. If the database argument is      * null, no string references will be resolved. Otherwise all valid      * string references will be replaced by the strings' contents. Even      * recursive string references are resolved.      */
-DECL|method|doLayout (BibEntry bibtex, BibDatabase database, Optional<Pattern> highlightPattern)
-specifier|public
-name|String
-name|doLayout
-parameter_list|(
-name|BibEntry
-name|bibtex
-parameter_list|,
-name|BibDatabase
-name|database
-parameter_list|,
-name|Optional
-argument_list|<
-name|Pattern
-argument_list|>
-name|highlightPattern
 parameter_list|)
 block|{
 name|StringBuilder
@@ -569,8 +515,6 @@ argument_list|(
 name|bibtex
 argument_list|,
 name|database
-argument_list|,
-name|highlightPattern
 argument_list|)
 decl_stmt|;
 comment|// 2005.05.05 M. Alver

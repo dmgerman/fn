@@ -185,7 +185,7 @@ name|abbreviation
 range|:
 name|JournalAbbreviationLoader
 operator|.
-name|getOfficialIEEEAbbreviations
+name|getStandardIEEEAbbreviations
 argument_list|()
 control|)
 block|{

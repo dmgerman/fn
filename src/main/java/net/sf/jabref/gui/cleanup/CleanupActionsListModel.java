@@ -86,7 +86,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|model
 operator|.
 name|cleanup
 operator|.
@@ -102,9 +102,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|model
 operator|.
-name|exporter
+name|cleanup
 operator|.
 name|FieldFormatterCleanups
 import|;

@@ -1,8 +1,4 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
-begin_comment
-comment|/*  * Copyright (C) 2003-2016 JabRef contributors.  * This program is free software; you can redistribute it and/or modify  * it under the terms of the GNU General Public License as published by  * the Free Software Foundation; either version 2 of the License, or  * (at your option) any later version.  *  * This program is distributed in the hope that it will be useful,  * but WITHOUT ANY WARRANTY; without even the implied warranty of  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the  * GNU General Public License for more details.  *  * You should have received a copy of the GNU General Public License along  * with this program; if not, write to the Free Software Foundation, Inc.,  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
-end_comment
-
 begin_package
 DECL|package|net.sf.jabref.logic.importer.fetcher
 package|package
@@ -57,6 +53,16 @@ operator|.
 name|util
 operator|.
 name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Locale
 import|;
 end_import
 
@@ -314,7 +320,7 @@ name|doi
 init|=
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -369,6 +375,21 @@ argument_list|(
 name|sciLink
 argument_list|)
 decl_stmt|;
+comment|// pretend to be a browser (agent& referrer)
+name|connection
+operator|.
+name|userAgent
+argument_list|(
+literal|"Mozilla/5.0 (Windows; U; WindowsNT 5.1; en-US; rv1.8.1.6) Gecko/20070725 Firefox/2.0.0.6"
+argument_list|)
+expr_stmt|;
+name|connection
+operator|.
+name|referrer
+argument_list|(
+literal|"http://www.google.com"
+argument_list|)
+expr_stmt|;
 name|connection
 operator|.
 name|followRedirects
@@ -410,7 +431,7 @@ argument_list|()
 operator|.
 name|select
 argument_list|(
-literal|"[href]"
+literal|"a[href]"
 argument_list|)
 decl_stmt|;
 name|List
@@ -444,17 +465,49 @@ name|attr
 argument_list|(
 literal|"abs:href"
 argument_list|)
+operator|.
+name|toLowerCase
+argument_list|(
+name|Locale
+operator|.
+name|ENGLISH
+argument_list|)
 decl_stmt|;
-comment|// Only check if pdf is included in the link
-comment|// See https://github.com/lehner/LocalCopy for scrape ideas
+name|String
+name|hrefText
+init|=
+name|element
+operator|.
+name|text
+argument_list|()
+operator|.
+name|toLowerCase
+argument_list|(
+name|Locale
+operator|.
+name|ENGLISH
+argument_list|)
+decl_stmt|;
+comment|// Only check if pdf is included in the link or inside the text
+comment|// ACM uses tokens without PDF inside the link
+comment|// See https://github.com/lehner/LocalCopy for more scrape ideas
 if|if
 condition|(
+operator|(
 name|href
 operator|.
 name|contains
 argument_list|(
 literal|"pdf"
 argument_list|)
+operator|||
+name|hrefText
+operator|.
+name|contains
+argument_list|(
+literal|"pdf"
+argument_list|)
+operator|)
 operator|&&
 name|MimeTypeDetector
 operator|.

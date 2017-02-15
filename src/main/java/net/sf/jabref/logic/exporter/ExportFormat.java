@@ -1,8 +1,4 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
-begin_comment
-comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
-end_comment
-
 begin_package
 DECL|package|net.sf.jabref.logic.exporter
 package|package
@@ -182,19 +178,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|BibDatabaseContext
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|Globals
+name|JabRefMain
 import|;
 end_import
 
@@ -243,6 +227,22 @@ operator|.
 name|layout
 operator|.
 name|LayoutHelper
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|database
+operator|.
+name|BibDatabaseContext
 import|;
 end_import
 
@@ -334,6 +334,16 @@ name|encoding
 decl_stmt|;
 comment|// If this value is set, it will be used to override
 comment|// the default encoding for the getCurrentBasePanel.
+DECL|field|layoutPreferences
+specifier|private
+name|LayoutFormatterPreferences
+name|layoutPreferences
+decl_stmt|;
+DECL|field|savePreferences
+specifier|private
+name|SavePreferences
+name|savePreferences
+decl_stmt|;
 DECL|field|customExport
 specifier|private
 name|boolean
@@ -416,8 +426,62 @@ operator|=
 name|extension
 expr_stmt|;
 block|}
+comment|/**      * Initialize another export format based on templates stored in dir with      * layoutFile lfFilename.      *      * @param displayName Name to display to the user.      * @param consoleName Name to call this format in the console.      * @param lfFileName  Name of the main layout file.      * @param directory   Directory in which to find the layout file.      * @param extension   Should contain the . (for instance .txt).      * @param layoutPreferences Preferences for layout      * @param savePreferences Preferences for saving      */
+DECL|method|ExportFormat (String displayName, String consoleName, String lfFileName, String directory, String extension, LayoutFormatterPreferences layoutPreferences, SavePreferences savePreferences)
+specifier|public
+name|ExportFormat
+parameter_list|(
+name|String
+name|displayName
+parameter_list|,
+name|String
+name|consoleName
+parameter_list|,
+name|String
+name|lfFileName
+parameter_list|,
+name|String
+name|directory
+parameter_list|,
+name|String
+name|extension
+parameter_list|,
+name|LayoutFormatterPreferences
+name|layoutPreferences
+parameter_list|,
+name|SavePreferences
+name|savePreferences
+parameter_list|)
+block|{
+name|this
+argument_list|(
+name|displayName
+argument_list|,
+name|consoleName
+argument_list|,
+name|lfFileName
+argument_list|,
+name|directory
+argument_list|,
+name|extension
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|layoutPreferences
+operator|=
+name|layoutPreferences
+expr_stmt|;
+name|this
+operator|.
+name|savePreferences
+operator|=
+name|savePreferences
+expr_stmt|;
+block|}
 comment|/**      * Empty default constructor for subclasses      */
 DECL|method|ExportFormat ()
+specifier|protected
 name|ExportFormat
 parameter_list|()
 block|{
@@ -558,7 +622,7 @@ comment|// Try loading as a resource first. This works for files inside the JAR:
 name|URL
 name|reso
 init|=
-name|Globals
+name|JabRefMain
 operator|.
 name|class
 operator|.
@@ -632,7 +696,6 @@ return|return
 name|reader
 return|;
 block|}
-comment|/**      * Perform the export of {@code database}.      *      * @param databaseContext the database to export from.      * @param file       the file to write the resulting export to      * @param encoding   The encoding of the database      * @param entries    Contains all entries that should be exported.      * @throws IOException if a problem occurred while trying to write to {@code writer}      *                     or read from required resources.      * @throws Exception   if any other error occurred during export.      * @see net.sf.jabref.logic.exporter.IExportFormat#performExport(BibDatabaseContext, String, Charset, List)      */
 annotation|@
 name|Override
 DECL|method|performExport (final BibDatabaseContext databaseContext, final String file, final Charset encoding, List<BibEntry> entries)
@@ -737,7 +800,7 @@ name|LOGGER
 operator|.
 name|warn
 argument_list|(
-literal|"Can not get save session."
+literal|"Cannot get save session."
 argument_list|,
 name|ex
 argument_list|)
@@ -779,17 +842,9 @@ init|=
 literal|null
 decl_stmt|;
 comment|// Check if this export filter has bundled name formatters:
-comment|// Set a global field, so all layouts have access to the custom name formatters:
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|customExportNameFormatters
-operator|=
+comment|// Add these to the preferences, so all layouts have access to the custom name formatters:
 name|readFormatterFile
-argument_list|(
-name|lfFileName
-argument_list|)
+argument_list|()
 expr_stmt|;
 name|List
 argument_list|<
@@ -826,18 +881,7 @@ name|LayoutHelper
 argument_list|(
 name|reader
 argument_list|,
-name|LayoutFormatterPreferences
-operator|.
-name|fromPreferences
-argument_list|(
-name|Globals
-operator|.
-name|prefs
-argument_list|,
-name|Globals
-operator|.
-name|journalAbbreviationLoader
-argument_list|)
+name|layoutPreferences
 argument_list|)
 decl_stmt|;
 name|beginLayout
@@ -891,18 +935,6 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/*              * Write database entries; entries will be sorted as they appear on the              * screen, or sorted by author, depending on Preferences. We also supply              * the Set entries - if we are to export only certain entries, it will              * be non-null, and be used to choose entries. Otherwise, it will be              * null, and be ignored.              */
-name|SavePreferences
-name|savePrefs
-init|=
-name|SavePreferences
-operator|.
-name|loadForExportFromPreferences
-argument_list|(
-name|Globals
-operator|.
-name|prefs
-argument_list|)
-decl_stmt|;
 name|List
 argument_list|<
 name|BibEntry
@@ -917,7 +949,7 @@ name|databaseContext
 argument_list|,
 name|entries
 argument_list|,
-name|savePrefs
+name|savePreferences
 argument_list|)
 decl_stmt|;
 comment|// Load default layout
@@ -947,18 +979,7 @@ name|LayoutHelper
 argument_list|(
 name|reader
 argument_list|,
-name|LayoutFormatterPreferences
-operator|.
-name|fromPreferences
-argument_list|(
-name|Globals
-operator|.
-name|prefs
-argument_list|,
-name|Globals
-operator|.
-name|journalAbbreviationLoader
-argument_list|)
+name|layoutPreferences
 argument_list|)
 expr_stmt|;
 name|defLayout
@@ -1096,18 +1117,7 @@ name|LayoutHelper
 argument_list|(
 name|reader
 argument_list|,
-name|LayoutFormatterPreferences
-operator|.
-name|fromPreferences
-argument_list|(
-name|Globals
-operator|.
-name|prefs
-argument_list|,
-name|Globals
-operator|.
-name|journalAbbreviationLoader
-argument_list|)
+name|layoutPreferences
 argument_list|)
 expr_stmt|;
 name|layout
@@ -1161,6 +1171,13 @@ expr_stmt|;
 block|}
 block|}
 comment|// Write the entry
+if|if
+condition|(
+name|layout
+operator|!=
+literal|null
+condition|)
+block|{
 name|ps
 operator|.
 name|write
@@ -1178,6 +1195,7 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|// Print footer
 comment|// changed section - begin (arudert)
@@ -1206,18 +1224,7 @@ name|LayoutHelper
 argument_list|(
 name|reader
 argument_list|,
-name|LayoutFormatterPreferences
-operator|.
-name|fromPreferences
-argument_list|(
-name|Globals
-operator|.
-name|prefs
-argument_list|,
-name|Globals
-operator|.
-name|journalAbbreviationLoader
-argument_list|)
+name|layoutPreferences
 argument_list|)
 expr_stmt|;
 name|endLayout
@@ -1273,13 +1280,10 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// Clear custom name formatters:
-name|Globals
+name|layoutPreferences
 operator|.
-name|prefs
-operator|.
-name|customExportNameFormatters
-operator|=
-literal|null
+name|clearCustomExportNameFormatters
+argument_list|()
 expr_stmt|;
 if|if
 condition|(
@@ -1375,35 +1379,13 @@ name|entries
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * See if there is a name formatter file bundled with this export format. If so, read      * all the name formatters so they can be used by the filter layouts.      *      * @param lfFileName The layout filename.      */
-DECL|method|readFormatterFile (String lfFileName)
+comment|/**      * See if there is a name formatter file bundled with this export format. If so, read      * all the name formatters so they can be used by the filter layouts.      *      */
+DECL|method|readFormatterFile ()
 specifier|private
-specifier|static
-name|Map
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
+name|void
 name|readFormatterFile
-parameter_list|(
-name|String
-name|lfFileName
-parameter_list|)
+parameter_list|()
 block|{
-name|Map
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
-name|formatters
-init|=
-operator|new
-name|HashMap
-argument_list|<>
-argument_list|()
-decl_stmt|;
 name|File
 name|formatterFile
 init|=
@@ -1571,9 +1553,9 @@ operator|+
 literal|1
 argument_list|)
 decl_stmt|;
-name|formatters
+name|layoutPreferences
 operator|.
-name|put
+name|putCustomExportNameFormatter
 argument_list|(
 name|formatterName
 argument_list|,
@@ -1601,9 +1583,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-return|return
-name|formatters
-return|;
 block|}
 DECL|method|finalizeSaveSession (final SaveSession ss, Path file)
 specifier|public

@@ -56,7 +56,7 @@ specifier|public
 class|class
 name|EntryConverter
 block|{
-comment|// BibTex to BibLatex
+comment|// BibTeX to BibLaTeX
 DECL|field|FIELD_ALIASES_TEX_TO_LTX
 specifier|public
 specifier|static
@@ -68,7 +68,7 @@ name|String
 argument_list|>
 name|FIELD_ALIASES_TEX_TO_LTX
 decl_stmt|;
-comment|// BibLatex to BibTex
+comment|// BibLaTeX to BibTeX
 DECL|field|FIELD_ALIASES_LTX_TO_TEX
 specifier|public
 specifier|static

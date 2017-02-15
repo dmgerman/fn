@@ -1,8 +1,4 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
-begin_comment
-comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
-end_comment
-
 begin_package
 DECL|package|net.sf.jabref.logic.exporter
 package|package
@@ -54,6 +50,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Objects
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Optional
 import|;
 end_import
@@ -65,6 +71,38 @@ operator|.
 name|util
 operator|.
 name|TreeMap
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|journals
+operator|.
+name|JournalAbbreviationLoader
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|layout
+operator|.
+name|LayoutFormatterPreferences
 import|;
 end_import
 
@@ -245,7 +283,7 @@ name|comp
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|getCustomExportFormats (JabRefPreferences prefs)
+DECL|method|getCustomExportFormats (JabRefPreferences prefs, JournalAbbreviationLoader loader)
 specifier|public
 name|Map
 argument_list|<
@@ -257,8 +295,25 @@ name|getCustomExportFormats
 parameter_list|(
 name|JabRefPreferences
 name|prefs
+parameter_list|,
+name|JournalAbbreviationLoader
+name|loader
 parameter_list|)
 block|{
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|prefs
+argument_list|)
+expr_stmt|;
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|loader
+argument_list|)
+expr_stmt|;
 name|formats
 operator|.
 name|clear
@@ -267,6 +322,8 @@ expr_stmt|;
 name|readPrefs
 argument_list|(
 name|prefs
+argument_list|,
+name|loader
 argument_list|)
 expr_stmt|;
 return|return
@@ -302,15 +359,32 @@ return|return
 name|sorted
 return|;
 block|}
-DECL|method|readPrefs (JabRefPreferences prefs)
+DECL|method|readPrefs (JabRefPreferences prefs, JournalAbbreviationLoader loader)
 specifier|private
 name|void
 name|readPrefs
 parameter_list|(
 name|JabRefPreferences
 name|prefs
+parameter_list|,
+name|JournalAbbreviationLoader
+name|loader
 parameter_list|)
 block|{
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|prefs
+argument_list|)
+expr_stmt|;
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|loader
+argument_list|)
+expr_stmt|;
 name|formats
 operator|.
 name|clear
@@ -331,6 +405,26 @@ argument_list|<
 name|String
 argument_list|>
 name|s
+decl_stmt|;
+name|LayoutFormatterPreferences
+name|layoutPreferences
+init|=
+name|prefs
+operator|.
+name|getLayoutFormatterPreferences
+argument_list|(
+name|loader
+argument_list|)
+decl_stmt|;
+name|SavePreferences
+name|savePreferences
+init|=
+name|SavePreferences
+operator|.
+name|loadForExportFromPreferences
+argument_list|(
+name|prefs
+argument_list|)
 decl_stmt|;
 while|while
 condition|(
@@ -365,6 +459,10 @@ init|=
 name|createFormat
 argument_list|(
 name|s
+argument_list|,
+name|layoutPreferences
+argument_list|,
+name|savePreferences
 argument_list|)
 decl_stmt|;
 if|if
@@ -432,7 +530,7 @@ operator|++
 expr_stmt|;
 block|}
 block|}
-DECL|method|createFormat (List<String> s)
+DECL|method|createFormat (List<String> s, LayoutFormatterPreferences layoutPreferences, SavePreferences savePreferences)
 specifier|private
 name|Optional
 argument_list|<
@@ -445,6 +543,12 @@ argument_list|<
 name|String
 argument_list|>
 name|s
+parameter_list|,
+name|LayoutFormatterPreferences
+name|layoutPreferences
+parameter_list|,
+name|SavePreferences
+name|savePreferences
 parameter_list|)
 block|{
 if|if
@@ -551,6 +655,10 @@ name|get
 argument_list|(
 literal|2
 argument_list|)
+argument_list|,
+name|layoutPreferences
+argument_list|,
+name|savePreferences
 argument_list|)
 decl_stmt|;
 name|format
@@ -569,7 +677,7 @@ name|format
 argument_list|)
 return|;
 block|}
-DECL|method|addFormat (List<String> s)
+DECL|method|addFormat (List<String> s, LayoutFormatterPreferences layoutPreferences, SavePreferences savePreferences)
 specifier|public
 name|void
 name|addFormat
@@ -579,11 +687,21 @@ argument_list|<
 name|String
 argument_list|>
 name|s
+parameter_list|,
+name|LayoutFormatterPreferences
+name|layoutPreferences
+parameter_list|,
+name|SavePreferences
+name|savePreferences
 parameter_list|)
 block|{
 name|createFormat
 argument_list|(
 name|s
+argument_list|,
+name|layoutPreferences
+argument_list|,
+name|savePreferences
 argument_list|)
 operator|.
 name|ifPresent
@@ -614,7 +732,7 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|remove (List<String> toRemove)
+DECL|method|remove (List<String> toRemove, LayoutFormatterPreferences layoutPreferences, SavePreferences savePreferences)
 specifier|public
 name|void
 name|remove
@@ -624,11 +742,21 @@ argument_list|<
 name|String
 argument_list|>
 name|toRemove
+parameter_list|,
+name|LayoutFormatterPreferences
+name|layoutPreferences
+parameter_list|,
+name|SavePreferences
+name|savePreferences
 parameter_list|)
 block|{
 name|createFormat
 argument_list|(
 name|toRemove
+argument_list|,
+name|layoutPreferences
+argument_list|,
+name|savePreferences
 argument_list|)
 operator|.
 name|ifPresent

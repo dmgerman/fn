@@ -1,8 +1,4 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
-begin_comment
-comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
-end_comment
-
 begin_package
 DECL|package|net.sf.jabref.logic.xmp
 package|package
@@ -100,6 +96,18 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|xml
+operator|.
+name|transform
+operator|.
+name|TransformerException
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -190,23 +198,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|FieldProperties
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|entry
-operator|.
-name|IdGenerator
+name|FieldProperty
 import|;
 end_import
 
@@ -403,14 +395,19 @@ name|NAMESPACE
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Create schema from an existing XML element.      *      * @param e      *            The existing XML element.      */
-DECL|method|XMPSchemaBibtex (Element e, String namespace)
+comment|/**      * Create schema from an existing XML element.      *      * @param e      *            The existing XML element.      * @param namespace      *            The name space considered. Must currently be there for compatibility reasons despite being unused.      */
+DECL|method|XMPSchemaBibtex (Element e, @SuppressWarnings(R) String namespace)
 specifier|public
 name|XMPSchemaBibtex
 parameter_list|(
 name|Element
 name|e
 parameter_list|,
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 name|String
 name|namespace
 parameter_list|)
@@ -1441,9 +1438,11 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|xmpPreferences
 operator|!=
 literal|null
+operator|)
 operator|&&
 name|xmpPreferences
 operator|.
@@ -1486,13 +1485,11 @@ block|{
 name|String
 name|value
 init|=
-name|BibDatabase
+name|entry
 operator|.
-name|getResolvedField
+name|getResolvedFieldOrAlias
 argument_list|(
 name|field
-argument_list|,
-name|entry
 argument_list|,
 name|database
 argument_list|)
@@ -1506,14 +1503,14 @@ if|if
 condition|(
 name|InternalBibtexFields
 operator|.
-name|getFieldExtras
+name|getFieldProperties
 argument_list|(
 name|field
 argument_list|)
 operator|.
 name|contains
 argument_list|(
-name|FieldProperties
+name|FieldProperty
 operator|.
 name|PERSON_NAMES
 argument_list|)
@@ -1540,7 +1537,9 @@ block|}
 block|}
 name|setTextProperty
 argument_list|(
-literal|"entrytype"
+name|BibEntry
+operator|.
+name|TYPE_HEADER
 argument_list|,
 name|entry
 operator|.
@@ -1560,7 +1559,9 @@ name|type
 init|=
 name|getTextProperty
 argument_list|(
-literal|"entrytype"
+name|BibEntry
+operator|.
+name|TYPE_HEADER
 argument_list|)
 decl_stmt|;
 name|BibEntry
@@ -1569,11 +1570,6 @@ init|=
 operator|new
 name|BibEntry
 argument_list|(
-name|IdGenerator
-operator|.
-name|next
-argument_list|()
-argument_list|,
 name|type
 argument_list|)
 decl_stmt|;
@@ -1599,7 +1595,9 @@ name|text
 operator|.
 name|remove
 argument_list|(
-literal|"entrytype"
+name|BibEntry
+operator|.
+name|TYPE_HEADER
 argument_list|)
 expr_stmt|;
 name|e

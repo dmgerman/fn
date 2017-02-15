@@ -1,8 +1,4 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
-begin_comment
-comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
-end_comment
-
 begin_package
 DECL|package|net.sf.jabref.gui.actions
 package|package
@@ -1178,6 +1174,58 @@ argument_list|(
 name|e
 lambda|->
 block|{
+comment|// Check that any field name is set
+name|String
+name|fieldText
+init|=
+operator|(
+name|String
+operator|)
+name|field
+operator|.
+name|getSelectedItem
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+operator|(
+name|fieldText
+operator|==
+literal|null
+operator|)
+operator|||
+name|fieldText
+operator|.
+name|trim
+argument_list|()
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+name|JOptionPane
+operator|.
+name|showMessageDialog
+argument_list|(
+name|diag
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"You must enter at least one field name"
+argument_list|)
+argument_list|,
+literal|""
+argument_list|,
+name|JOptionPane
+operator|.
+name|ERROR_MESSAGE
+argument_list|)
+expr_stmt|;
+return|return;
+comment|// Do not close the dialog.
+block|}
 comment|// Check if the user tries to rename multiple fields:
 if|if
 condition|(
@@ -1193,13 +1241,7 @@ name|fields
 init|=
 name|getFieldNames
 argument_list|(
-operator|(
-name|String
-operator|)
-name|field
-operator|.
-name|getSelectedItem
-argument_list|()
+name|fieldText
 argument_list|)
 decl_stmt|;
 if|if
@@ -1778,7 +1820,7 @@ name|oldVal
 init|=
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|field
 argument_list|)
@@ -1922,7 +1964,7 @@ name|valToMove
 init|=
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|field
 argument_list|)
@@ -1959,7 +2001,7 @@ name|valInNewField
 init|=
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|newField
 argument_list|)

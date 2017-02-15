@@ -1,8 +1,4 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
-begin_comment
-comment|/*  * Copyright (C) 2003-2016 JabRef contributors.  * This program is free software; you can redistribute it and/or modify  * it under the terms of the GNU General Public License as published by  * the Free Software Foundation; either version 2 of the License, or  * (at your option) any later version.  *  * This program is distributed in the hope that it will be useful,  * but WITHOUT ANY WARRANTY; without even the implied warranty of  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the  * GNU General Public License for more details.  *  * You should have received a copy of the GNU General Public License along  * with this program; if not, write to the Free Software Foundation, Inc.,  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
-end_comment
-
 begin_package
 DECL|package|net.sf.jabref.logic.importer
 package|package
@@ -76,22 +72,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|importer
-operator|.
-name|fetcher
-operator|.
-name|CrossRef
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|logic
 operator|.
 name|importer
@@ -117,6 +97,24 @@ operator|.
 name|fetcher
 operator|.
 name|ArXiv
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|importer
+operator|.
+name|fetcher
+operator|.
+name|CrossRef
 import|;
 end_import
 
@@ -326,10 +324,13 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
-DECL|method|FulltextFetchers ()
+DECL|method|FulltextFetchers (ImportFormatPreferences importFormatPreferences)
 specifier|public
 name|FulltextFetchers
-parameter_list|()
+parameter_list|(
+name|ImportFormatPreferences
+name|importFormatPreferences
+parameter_list|)
 block|{
 comment|// Ordering is important, authorities first!
 comment|// Publisher
@@ -375,7 +376,9 @@ name|add
 argument_list|(
 operator|new
 name|ArXiv
-argument_list|()
+argument_list|(
+name|importFormatPreferences
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|finders
@@ -394,7 +397,9 @@ name|add
 argument_list|(
 operator|new
 name|GoogleScholar
-argument_list|()
+argument_list|(
+name|importFormatPreferences
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -449,7 +454,7 @@ name|doi
 init|=
 name|clonedEntry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -558,6 +563,8 @@ block|}
 catch|catch
 parameter_list|(
 name|IOException
+decl||
+name|FetcherException
 name|e
 parameter_list|)
 block|{

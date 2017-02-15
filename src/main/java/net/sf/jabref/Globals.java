@@ -1,8 +1,4 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
-begin_comment
-comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
-end_comment
-
 begin_package
 DECL|package|net.sf.jabref
 package|package
@@ -13,16 +9,6 @@ operator|.
 name|jabref
 package|;
 end_package
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Optional
-import|;
-end_import
 
 begin_import
 import|import
@@ -62,23 +48,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|JabRefFrame
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|exporter
-operator|.
-name|AutoSaveManager
+name|StateManager
 import|;
 end_import
 
@@ -106,6 +76,8 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
 name|importer
 operator|.
 name|ImportFormatReader
@@ -122,9 +94,9 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|error
+name|journals
 operator|.
-name|StreamEavesdropper
+name|JournalAbbreviationLoader
 import|;
 end_import
 
@@ -138,9 +110,9 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|journals
+name|protectedterms
 operator|.
-name|JournalAbbreviationLoader
+name|ProtectedTermsLoader
 import|;
 end_import
 
@@ -248,6 +220,24 @@ specifier|static
 name|JournalAbbreviationLoader
 name|journalAbbreviationLoader
 decl_stmt|;
+comment|/**      * This field is initialized upon startup.      * Only GUI code is allowed to access it, logic code should use dependency injection.      */
+DECL|field|protectedTermsLoader
+specifier|public
+specifier|static
+name|ProtectedTermsLoader
+name|protectedTermsLoader
+decl_stmt|;
+comment|/**      * Manager for the state of the GUI.      */
+DECL|field|stateManager
+specifier|public
+specifier|static
+name|StateManager
+name|stateManager
+init|=
+operator|new
+name|StateManager
+argument_list|()
+decl_stmt|;
 comment|// Key binding preferences
 DECL|field|keyPrefs
 specifier|private
@@ -267,19 +257,6 @@ specifier|private
 specifier|static
 name|FileUpdateMonitor
 name|fileUpdateMonitor
-decl_stmt|;
-DECL|field|streamEavesdropper
-specifier|private
-specifier|static
-name|StreamEavesdropper
-name|streamEavesdropper
-decl_stmt|;
-comment|// Autosave manager
-DECL|field|autoSaveManager
-specifier|private
-specifier|static
-name|AutoSaveManager
-name|autoSaveManager
 decl_stmt|;
 comment|// Key binding preferences
 DECL|method|getKeyPrefs ()
@@ -327,15 +304,6 @@ argument_list|()
 expr_stmt|;
 name|Globals
 operator|.
-name|streamEavesdropper
-operator|=
-name|StreamEavesdropper
-operator|.
-name|eavesdropOnSystem
-argument_list|()
-expr_stmt|;
-name|Globals
-operator|.
 name|fileUpdateMonitor
 operator|=
 operator|new
@@ -346,7 +314,7 @@ name|JabRefExecutorService
 operator|.
 name|INSTANCE
 operator|.
-name|executeWithLowPriorityInOwnThread
+name|executeInterruptableTask
 argument_list|(
 name|Globals
 operator|.
@@ -376,106 +344,6 @@ parameter_list|()
 block|{
 return|return
 name|fileUpdateMonitor
-return|;
-block|}
-DECL|method|getStreamEavesdropper ()
-specifier|public
-specifier|static
-name|StreamEavesdropper
-name|getStreamEavesdropper
-parameter_list|()
-block|{
-return|return
-name|streamEavesdropper
-return|;
-block|}
-comment|// Autosave manager
-DECL|method|startAutoSaveManager (JabRefFrame frame)
-specifier|public
-specifier|static
-name|void
-name|startAutoSaveManager
-parameter_list|(
-name|JabRefFrame
-name|frame
-parameter_list|)
-block|{
-name|Globals
-operator|.
-name|autoSaveManager
-operator|=
-operator|new
-name|AutoSaveManager
-argument_list|(
-name|frame
-argument_list|)
-expr_stmt|;
-name|Globals
-operator|.
-name|autoSaveManager
-operator|.
-name|startAutoSaveTimer
-argument_list|()
-expr_stmt|;
-block|}
-comment|// Stop the autosave manager if it has been started
-DECL|method|stopAutoSaveManager ()
-specifier|public
-specifier|static
-name|void
-name|stopAutoSaveManager
-parameter_list|()
-block|{
-if|if
-condition|(
-name|Globals
-operator|.
-name|autoSaveManager
-operator|!=
-literal|null
-condition|)
-block|{
-name|Globals
-operator|.
-name|autoSaveManager
-operator|.
-name|stopAutoSaveTimer
-argument_list|()
-expr_stmt|;
-name|Globals
-operator|.
-name|autoSaveManager
-operator|.
-name|clearAutoSaves
-argument_list|()
-expr_stmt|;
-name|Globals
-operator|.
-name|autoSaveManager
-operator|=
-literal|null
-expr_stmt|;
-block|}
-block|}
-DECL|method|getAutoSaveManager ()
-specifier|public
-specifier|static
-name|Optional
-argument_list|<
-name|AutoSaveManager
-argument_list|>
-name|getAutoSaveManager
-parameter_list|()
-block|{
-return|return
-name|Optional
-operator|.
-name|ofNullable
-argument_list|(
-name|Globals
-operator|.
-name|autoSaveManager
-argument_list|)
 return|;
 block|}
 block|}

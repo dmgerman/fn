@@ -24,6 +24,10 @@ name|Locale
 import|;
 end_import
 
+begin_comment
+comment|/**  * An enum which contains the possible {@link BibDatabase} Modes.  * Possible are BibTeX and BibLaTeX.  */
+end_comment
+
 begin_enum
 DECL|enum|BibDatabaseMode
 specifier|public
@@ -36,6 +40,7 @@ block|,
 DECL|enumConstant|BIBLATEX
 name|BIBLATEX
 block|;
+comment|/**      * @return the name of the current mode as String      */
 DECL|method|getFormattedName ()
 specifier|public
 name|String
@@ -60,6 +65,7 @@ literal|"BibLaTeX"
 return|;
 block|}
 block|}
+comment|/**      * Returns the opposite mode of the current mode as {@link BibDatabaseMode}.      *      * @return BibLaTeX if the current mode is BIBTEX, BibTeX else      */
 DECL|method|getOppositeMode ()
 specifier|public
 name|BibDatabaseMode
@@ -84,24 +90,7 @@ name|BIBTEX
 return|;
 block|}
 block|}
-DECL|method|fromPreference (boolean isBibLatex)
-specifier|public
-specifier|static
-name|BibDatabaseMode
-name|fromPreference
-parameter_list|(
-name|boolean
-name|isBibLatex
-parameter_list|)
-block|{
-return|return
-name|isBibLatex
-condition|?
-name|BIBLATEX
-else|:
-name|BIBTEX
-return|;
-block|}
+comment|/**      * Returns the {@link BibDatabaseMode} that equals the given string. The use of capital and small letters      * in the string doesn't matter.If neither "bibtex" nor "biblatex" is the given string, then an      * {@link IllegalArgumentException} will be thrown.      *      * @return  BIBTEX, if the string is bibtex<br>      *          BIBLATEX, if the string is biblatex<br>      */
 DECL|method|parse (String data)
 specifier|public
 specifier|static
@@ -128,6 +117,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+comment|/**      * @return The current mode as String in lowercase      */
 DECL|method|getAsString ()
 specifier|public
 name|String

@@ -28,6 +28,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -50,9 +60,25 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|model
 operator|.
-name|config
+name|bibtexkeypattern
+operator|.
+name|GlobalBibtexKeyPattern
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|metadata
 operator|.
 name|SaveOrderConfig
 import|;
@@ -136,6 +162,12 @@ specifier|final
 name|LatexFieldFormatterPreferences
 name|latexFieldFormatterPreferences
 decl_stmt|;
+DECL|field|globalCiteKeyPattern
+specifier|private
+specifier|final
+name|GlobalBibtexKeyPattern
+name|globalCiteKeyPattern
+decl_stmt|;
 DECL|method|SavePreferences ()
 specifier|public
 name|SavePreferences
@@ -162,10 +194,19 @@ argument_list|,
 operator|new
 name|LatexFieldFormatterPreferences
 argument_list|()
+argument_list|,
+operator|new
+name|GlobalBibtexKeyPattern
+argument_list|(
+name|Collections
+operator|.
+name|emptyList
+argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|SavePreferences (Boolean saveInOriginalOrder, SaveOrderConfig saveOrder, Charset encoding, Boolean makeBackup, DatabaseSaveType saveType, Boolean takeMetadataSaveOrderInAccount, Boolean reformatFile, LatexFieldFormatterPreferences latexFieldFormatterPreferences)
+DECL|method|SavePreferences (Boolean saveInOriginalOrder, SaveOrderConfig saveOrder, Charset encoding, Boolean makeBackup, DatabaseSaveType saveType, Boolean takeMetadataSaveOrderInAccount, Boolean reformatFile, LatexFieldFormatterPreferences latexFieldFormatterPreferences, GlobalBibtexKeyPattern globalCiteKeyPattern)
 specifier|public
 name|SavePreferences
 parameter_list|(
@@ -192,6 +233,9 @@ name|reformatFile
 parameter_list|,
 name|LatexFieldFormatterPreferences
 name|latexFieldFormatterPreferences
+parameter_list|,
+name|GlobalBibtexKeyPattern
+name|globalCiteKeyPattern
 parameter_list|)
 block|{
 name|this
@@ -241,6 +285,12 @@ operator|.
 name|latexFieldFormatterPreferences
 operator|=
 name|latexFieldFormatterPreferences
+expr_stmt|;
+name|this
+operator|.
+name|globalCiteKeyPattern
+operator|=
+name|globalCiteKeyPattern
 expr_stmt|;
 block|}
 DECL|method|loadForExportFromPreferences (JabRefPreferences preferences)
@@ -290,24 +340,20 @@ condition|)
 block|{
 name|saveOrder
 operator|=
-name|SaveOrderConfig
-operator|.
-name|loadExportSaveOrderFromPreferences
-argument_list|(
 name|preferences
-argument_list|)
+operator|.
+name|loadExportSaveOrder
+argument_list|()
 expr_stmt|;
 block|}
 else|else
 block|{
 name|saveOrder
 operator|=
-name|SaveOrderConfig
-operator|.
-name|loadTableSaveOrderFromPreferences
-argument_list|(
 name|preferences
-argument_list|)
+operator|.
+name|loadTableSaveOrder
+argument_list|()
 expr_stmt|;
 block|}
 block|}
@@ -358,12 +404,18 @@ decl_stmt|;
 name|LatexFieldFormatterPreferences
 name|latexFieldFormatterPreferences
 init|=
-name|LatexFieldFormatterPreferences
-operator|.
-name|fromPreferences
-argument_list|(
 name|preferences
-argument_list|)
+operator|.
+name|getLatexFieldFormatterPreferences
+argument_list|()
+decl_stmt|;
+name|GlobalBibtexKeyPattern
+name|globalCiteKeyPattern
+init|=
+name|preferences
+operator|.
+name|getKeyPattern
+argument_list|()
 decl_stmt|;
 return|return
 operator|new
@@ -384,6 +436,8 @@ argument_list|,
 name|reformatFile
 argument_list|,
 name|latexFieldFormatterPreferences
+argument_list|,
+name|globalCiteKeyPattern
 argument_list|)
 return|;
 block|}
@@ -454,12 +508,18 @@ decl_stmt|;
 name|LatexFieldFormatterPreferences
 name|latexFieldFormatterPreferences
 init|=
-name|LatexFieldFormatterPreferences
-operator|.
-name|fromPreferences
-argument_list|(
 name|preferences
-argument_list|)
+operator|.
+name|getLatexFieldFormatterPreferences
+argument_list|()
+decl_stmt|;
+name|GlobalBibtexKeyPattern
+name|globalCiteKeyPattern
+init|=
+name|preferences
+operator|.
+name|getKeyPattern
+argument_list|()
 decl_stmt|;
 return|return
 operator|new
@@ -480,6 +540,8 @@ argument_list|,
 name|reformatFile
 argument_list|,
 name|latexFieldFormatterPreferences
+argument_list|,
+name|globalCiteKeyPattern
 argument_list|)
 return|;
 block|}
@@ -513,20 +575,20 @@ return|return
 name|saveInOriginalOrder
 return|;
 block|}
-DECL|method|withSaveInOriginalOrder (Boolean saveInOriginalOrder)
+DECL|method|withSaveInOriginalOrder (Boolean newSaveInOriginalOrder)
 specifier|public
 name|SavePreferences
 name|withSaveInOriginalOrder
 parameter_list|(
 name|Boolean
-name|saveInOriginalOrder
+name|newSaveInOriginalOrder
 parameter_list|)
 block|{
 return|return
 operator|new
 name|SavePreferences
 argument_list|(
-name|saveInOriginalOrder
+name|newSaveInOriginalOrder
 argument_list|,
 name|this
 operator|.
@@ -555,6 +617,8 @@ argument_list|,
 name|this
 operator|.
 name|latexFieldFormatterPreferences
+argument_list|,
+name|globalCiteKeyPattern
 argument_list|)
 return|;
 block|}
@@ -568,13 +632,13 @@ return|return
 name|makeBackup
 return|;
 block|}
-DECL|method|withMakeBackup (Boolean makeBackup)
+DECL|method|withMakeBackup (Boolean newMakeBackup)
 specifier|public
 name|SavePreferences
 name|withMakeBackup
 parameter_list|(
 name|Boolean
-name|makeBackup
+name|newMakeBackup
 parameter_list|)
 block|{
 return|return
@@ -593,7 +657,7 @@ name|this
 operator|.
 name|encoding
 argument_list|,
-name|makeBackup
+name|newMakeBackup
 argument_list|,
 name|this
 operator|.
@@ -610,6 +674,8 @@ argument_list|,
 name|this
 operator|.
 name|latexFieldFormatterPreferences
+argument_list|,
+name|globalCiteKeyPattern
 argument_list|)
 return|;
 block|}
@@ -623,13 +689,13 @@ return|return
 name|encoding
 return|;
 block|}
-DECL|method|withEncoding (Charset encoding)
+DECL|method|withEncoding (Charset newEncoding)
 specifier|public
 name|SavePreferences
 name|withEncoding
 parameter_list|(
 name|Charset
-name|encoding
+name|newEncoding
 parameter_list|)
 block|{
 return|return
@@ -644,7 +710,7 @@ name|this
 operator|.
 name|saveOrder
 argument_list|,
-name|encoding
+name|newEncoding
 argument_list|,
 name|this
 operator|.
@@ -665,6 +731,8 @@ argument_list|,
 name|this
 operator|.
 name|latexFieldFormatterPreferences
+argument_list|,
+name|globalCiteKeyPattern
 argument_list|)
 return|;
 block|}
@@ -678,13 +746,13 @@ return|return
 name|saveType
 return|;
 block|}
-DECL|method|withSaveType (DatabaseSaveType saveType)
+DECL|method|withSaveType (DatabaseSaveType newSaveType)
 specifier|public
 name|SavePreferences
 name|withSaveType
 parameter_list|(
 name|DatabaseSaveType
-name|saveType
+name|newSaveType
 parameter_list|)
 block|{
 return|return
@@ -707,7 +775,7 @@ name|this
 operator|.
 name|makeBackup
 argument_list|,
-name|saveType
+name|newSaveType
 argument_list|,
 name|this
 operator|.
@@ -720,6 +788,8 @@ argument_list|,
 name|this
 operator|.
 name|latexFieldFormatterPreferences
+argument_list|,
+name|globalCiteKeyPattern
 argument_list|)
 return|;
 block|}
@@ -733,13 +803,13 @@ return|return
 name|reformatFile
 return|;
 block|}
-DECL|method|withReformatFile (boolean reformatFile)
+DECL|method|withReformatFile (boolean newReformatFile)
 specifier|public
 name|SavePreferences
 name|withReformatFile
 parameter_list|(
 name|boolean
-name|reformatFile
+name|newReformatFile
 parameter_list|)
 block|{
 return|return
@@ -770,11 +840,13 @@ name|this
 operator|.
 name|takeMetadataSaveOrderInAccount
 argument_list|,
-name|reformatFile
+name|newReformatFile
 argument_list|,
 name|this
 operator|.
 name|latexFieldFormatterPreferences
+argument_list|,
+name|globalCiteKeyPattern
 argument_list|)
 return|;
 block|}
@@ -805,6 +877,16 @@ parameter_list|()
 block|{
 return|return
 name|latexFieldFormatterPreferences
+return|;
+block|}
+DECL|method|getGlobalCiteKeyPattern ()
+specifier|public
+name|GlobalBibtexKeyPattern
+name|getGlobalCiteKeyPattern
+parameter_list|()
+block|{
+return|return
+name|globalCiteKeyPattern
 return|;
 block|}
 DECL|enum|DatabaseSaveType

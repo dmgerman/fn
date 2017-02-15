@@ -1,8 +1,4 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
-begin_comment
-comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
-end_comment
-
 begin_package
 DECL|package|net.sf.jabref.gui.help
 package|package
@@ -52,6 +48,16 @@ end_import
 
 begin_import
 import|import
+name|javafx
+operator|.
+name|application
+operator|.
+name|Platform
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -74,21 +80,12 @@ name|AboutAction
 extends|extends
 name|MnemonicAwareAction
 block|{
-DECL|field|dialog
-specifier|private
-specifier|final
-name|AboutDialog
-name|dialog
-decl_stmt|;
-DECL|method|AboutAction (String title, AboutDialog dialog, String tooltip, Icon iconFile)
+DECL|method|AboutAction (String title, String tooltip, Icon iconFile)
 specifier|public
 name|AboutAction
 parameter_list|(
 name|String
 name|title
-parameter_list|,
-name|AboutDialog
-name|dialog
 parameter_list|,
 name|String
 name|tooltip
@@ -120,12 +117,6 @@ argument_list|,
 name|tooltip
 argument_list|)
 expr_stmt|;
-name|this
-operator|.
-name|dialog
-operator|=
-name|dialog
-expr_stmt|;
 block|}
 annotation|@
 name|Override
@@ -138,11 +129,18 @@ name|ActionEvent
 name|e
 parameter_list|)
 block|{
-name|dialog
+name|Platform
 operator|.
-name|setVisible
+name|runLater
 argument_list|(
-literal|true
+parameter_list|()
+lambda|->
+operator|new
+name|AboutDialogView
+argument_list|()
+operator|.
+name|show
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

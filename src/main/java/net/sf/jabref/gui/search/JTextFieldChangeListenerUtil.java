@@ -28,6 +28,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|beans
+operator|.
+name|PropertyChangeListener
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|Objects

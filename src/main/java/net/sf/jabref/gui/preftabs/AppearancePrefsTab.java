@@ -1,8 +1,4 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
-begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
-end_comment
-
 begin_package
 DECL|package|net.sf.jabref.gui.preftabs
 package|package
@@ -321,6 +317,12 @@ specifier|final
 name|JCheckBox
 name|colorCodes
 decl_stmt|;
+DECL|field|resolvedColorCodes
+specifier|private
+specifier|final
+name|JCheckBox
+name|resolvedColorCodes
+decl_stmt|;
 DECL|field|overrideFonts
 specifier|private
 specifier|final
@@ -338,10 +340,6 @@ specifier|private
 specifier|final
 name|ColorSetupPanel
 name|colorPanel
-init|=
-operator|new
-name|ColorSetupPanel
-argument_list|()
 decl_stmt|;
 DECL|field|usedFont
 specifier|private
@@ -486,10 +484,13 @@ block|}
 catch|catch
 parameter_list|(
 name|ClassNotFoundException
+decl||
+name|IllegalAccessError
 name|ignored
 parameter_list|)
 block|{
-comment|// Ignored
+comment|// LookAndFeel class does not exist or we don't have rights to access it
+comment|// Ignore it
 block|}
 block|}
 return|return
@@ -547,6 +548,19 @@ operator|.
 name|lang
 argument_list|(
 literal|"Color codes for required and optional fields"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|resolvedColorCodes
+operator|=
+operator|new
+name|JCheckBox
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Color code for resolved fields"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -681,6 +695,18 @@ operator|.
 name|isSelected
 argument_list|()
 argument_list|)
+argument_list|)
+expr_stmt|;
+name|colorPanel
+operator|=
+operator|new
+name|ColorSetupPanel
+argument_list|(
+name|colorCodes
+argument_list|,
+name|resolvedColorCodes
+argument_list|,
+name|showGrid
 argument_list|)
 expr_stmt|;
 comment|// only the default L&F shows the the OSX specific first dropdownmenu
@@ -1049,6 +1075,18 @@ name|builder
 operator|.
 name|append
 argument_list|(
+name|resolvedColorCodes
+argument_list|)
+expr_stmt|;
+name|builder
+operator|.
+name|nextLine
+argument_list|()
+expr_stmt|;
+name|builder
+operator|.
+name|append
+argument_list|(
 name|showGrid
 argument_list|)
 expr_stmt|;
@@ -1193,9 +1231,7 @@ name|FontSelectorDialog
 argument_list|(
 literal|null
 argument_list|,
-name|GUIGlobals
-operator|.
-name|currentFont
+name|usedFont
 argument_list|)
 operator|.
 name|getSelectedFont
@@ -1312,6 +1348,20 @@ argument_list|(
 name|JabRefPreferences
 operator|.
 name|TABLE_COLOR_CODES_ON
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|resolvedColorCodes
+operator|.
+name|setSelected
+argument_list|(
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|TABLE_RESOLVED_COLOR_CODES_ON
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1458,12 +1508,14 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|(
 name|customLAF
 operator|.
 name|isSelected
 argument_list|()
 operator|==
 name|useDefaultLAF
+operator|)
 operator|||
 operator|!
 name|currentLAF
@@ -1530,6 +1582,20 @@ operator|.
 name|TABLE_COLOR_CODES_ON
 argument_list|,
 name|colorCodes
+operator|.
+name|isSelected
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|prefs
+operator|.
+name|putBoolean
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|TABLE_RESOLVED_COLOR_CODES_ON
+argument_list|,
+name|resolvedColorCodes
 operator|.
 name|isSelected
 argument_list|()

@@ -48,6 +48,18 @@ name|assertNotEquals
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertNotNull
+import|;
+end_import
+
 begin_class
 DECL|class|BibtexStringTest
 specifier|public
@@ -259,6 +271,36 @@ argument_list|(
 literal|"Oscar Gustafsson"
 argument_list|,
 name|bs2
+operator|.
+name|getContent
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|getContentNeverReturnsNull ()
+specifier|public
+name|void
+name|getContentNeverReturnsNull
+parameter_list|()
+block|{
+name|BibtexString
+name|bs
+init|=
+operator|new
+name|BibtexString
+argument_list|(
+literal|"ID"
+argument_list|,
+literal|"SomeName"
+argument_list|,
+literal|null
+argument_list|)
+decl_stmt|;
+name|assertNotNull
+argument_list|(
+name|bs
 operator|.
 name|getContent
 argument_list|()

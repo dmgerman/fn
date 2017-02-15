@@ -636,6 +636,117 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+DECL|method|testEtAl ()
+specifier|public
+name|void
+name|testEtAl
+parameter_list|()
+block|{
+name|ParamLayoutFormatter
+name|a
+init|=
+operator|new
+name|Authors
+argument_list|()
+decl_stmt|;
+name|a
+operator|.
+name|setArgument
+argument_list|(
+literal|"2,1"
+argument_list|)
+expr_stmt|;
+name|Assert
+operator|.
+name|assertEquals
+argument_list|(
+literal|"B. C. Bruce et al."
+argument_list|,
+name|a
+operator|.
+name|format
+argument_list|(
+literal|"Bruce, Bob Croydon and Charles Kermit von Manson and Jumper, Jolly"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|testEtAlNotEnoughAuthors ()
+specifier|public
+name|void
+name|testEtAlNotEnoughAuthors
+parameter_list|()
+block|{
+name|ParamLayoutFormatter
+name|a
+init|=
+operator|new
+name|Authors
+argument_list|()
+decl_stmt|;
+name|a
+operator|.
+name|setArgument
+argument_list|(
+literal|"2,1"
+argument_list|)
+expr_stmt|;
+name|Assert
+operator|.
+name|assertEquals
+argument_list|(
+literal|"B. C. Bruce and C. K. von Manson"
+argument_list|,
+name|a
+operator|.
+name|format
+argument_list|(
+literal|"Bruce, Bob Croydon and Charles Kermit von Manson"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|testEmptyEtAl ()
+specifier|public
+name|void
+name|testEmptyEtAl
+parameter_list|()
+block|{
+name|ParamLayoutFormatter
+name|a
+init|=
+operator|new
+name|Authors
+argument_list|()
+decl_stmt|;
+name|a
+operator|.
+name|setArgument
+argument_list|(
+literal|"fullname, LastFirst, Comma, 3, etal="
+argument_list|)
+expr_stmt|;
+name|Assert
+operator|.
+name|assertEquals
+argument_list|(
+literal|"Bruce, Bob Croydon"
+argument_list|,
+name|a
+operator|.
+name|format
+argument_list|(
+literal|"Bob Croydon Bruce and Charles Manson and Jolly Jumper and Chuck Chuckles"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_class
 

@@ -1,8 +1,4 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
-begin_comment
-comment|/*  * Copyright (C) 2003-2016 JabRef contributors.  * This program is free software; you can redistribute it and/or modify  * it under the terms of the GNU General Public License as published by  * the Free Software Foundation; either version 2 of the License, or  * (at your option) any later version.  *  * This program is distributed in the hope that it will be useful,  * but WITHOUT ANY WARRANTY; without even the implied warranty of  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the  * GNU General Public License for more details.  *  * You should have received a copy of the GNU General Public License along  * with this program; if not, write to the Free Software Foundation, Inc.,  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
-end_comment
-
 begin_package
 DECL|package|net.sf.jabref.logic.importer.fetcher
 package|package
@@ -176,36 +172,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|importer
-operator|.
-name|fetcher
-operator|.
-name|OAI2Fetcher
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
-name|TypedBibEntry
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|logic
 operator|.
 name|help
@@ -274,7 +240,41 @@ name|logic
 operator|.
 name|importer
 operator|.
+name|ImportFormatPreferences
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|importer
+operator|.
 name|SearchBasedFetcher
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|importer
+operator|.
+name|util
+operator|.
+name|OAI2Handler
 import|;
 end_import
 
@@ -320,29 +320,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
-operator|.
-name|util
-operator|.
-name|strings
-operator|.
-name|StringUtil
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|model
 operator|.
-name|database
+name|entry
 operator|.
-name|BibDatabaseMode
+name|ArXivIdentifier
 import|;
 end_import
 
@@ -412,15 +394,17 @@ end_import
 
 begin_import
 import|import
-name|org
+name|net
 operator|.
-name|apache
+name|sf
 operator|.
-name|commons
+name|jabref
 operator|.
-name|lang3
+name|model
 operator|.
-name|StringUtils
+name|strings
+operator|.
+name|StringUtil
 import|;
 end_import
 
@@ -545,6 +529,27 @@ name|API_URL
 init|=
 literal|"http://export.arxiv.org/api/query"
 decl_stmt|;
+DECL|field|importFormatPreferences
+specifier|private
+specifier|final
+name|ImportFormatPreferences
+name|importFormatPreferences
+decl_stmt|;
+DECL|method|ArXiv (ImportFormatPreferences importFormatPreferences)
+specifier|public
+name|ArXiv
+parameter_list|(
+name|ImportFormatPreferences
+name|importFormatPreferences
+parameter_list|)
+block|{
+name|this
+operator|.
+name|importFormatPreferences
+operator|=
+name|importFormatPreferences
+expr_stmt|;
+block|}
 annotation|@
 name|Override
 DECL|method|findFullText (BibEntry entry)
@@ -577,7 +582,7 @@ name|identifier
 init|=
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -664,7 +669,7 @@ name|doi
 init|=
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -832,7 +837,7 @@ argument_list|()
 return|;
 block|}
 block|}
-DECL|method|searchForEntryById (String identifier)
+DECL|method|searchForEntryById (String id)
 specifier|private
 name|Optional
 argument_list|<
@@ -841,11 +846,40 @@ argument_list|>
 name|searchForEntryById
 parameter_list|(
 name|String
-name|identifier
+name|id
 parameter_list|)
 throws|throws
 name|FetcherException
 block|{
+name|Optional
+argument_list|<
+name|ArXivIdentifier
+argument_list|>
+name|identifier
+init|=
+name|ArXivIdentifier
+operator|.
+name|parse
+argument_list|(
+name|id
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+operator|!
+name|identifier
+operator|.
+name|isPresent
+argument_list|()
+condition|)
+block|{
+return|return
+name|Optional
+operator|.
+name|empty
+argument_list|()
+return|;
+block|}
 name|List
 argument_list|<
 name|ArXivEntry
@@ -861,6 +895,9 @@ operator|.
 name|singletonList
 argument_list|(
 name|identifier
+operator|.
+name|get
+argument_list|()
 argument_list|)
 argument_list|,
 literal|0
@@ -874,7 +911,7 @@ name|entries
 operator|.
 name|size
 argument_list|()
-operator|==
+operator|>=
 literal|1
 condition|)
 block|{
@@ -932,7 +969,7 @@ literal|10
 argument_list|)
 return|;
 block|}
-DECL|method|queryApi (String searchQuery, List<String> ids, int start, int maxResults)
+DECL|method|queryApi (String searchQuery, List<ArXivIdentifier> ids, int start, int maxResults)
 specifier|private
 name|List
 argument_list|<
@@ -945,7 +982,7 @@ name|searchQuery
 parameter_list|,
 name|List
 argument_list|<
-name|String
+name|ArXivIdentifier
 argument_list|>
 name|ids
 parameter_list|,
@@ -1013,7 +1050,7 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Queries the API.      *      * If only {@code searchQuery} is given, then the API will return results for each article that matches the query.      * If only {@code ids} is given, then the API will return results for each article in the list.      * If both {@code searchQuery} and {@code ids} are given, then the API will return each article in      * {@code ids} that matches {@code searchQuery}. This allows the API to act as a results filter.      *      * @param searchQuery the search query used to find articles;      *<a href="http://arxiv.org/help/api/user-manual#query_details">details</a>      * @param ids         a list of arXiv identifiers      * @param start       the index of the first returned result (zero-based)      * @param maxResults  the number of maximal results (has to be smaller than 2000)      * @return the response from the API as a XML document (Atom 1.0)      * @throws FetcherException if there was a problem while building the URL or the API was not accessible      */
-DECL|method|callApi (String searchQuery, List<String> ids, int start, int maxResults)
+DECL|method|callApi (String searchQuery, List<ArXivIdentifier> ids, int start, int maxResults)
 specifier|private
 name|Document
 name|callApi
@@ -1023,7 +1060,7 @@ name|searchQuery
 parameter_list|,
 name|List
 argument_list|<
-name|String
+name|ArXivIdentifier
 argument_list|>
 name|ids
 parameter_list|,
@@ -1065,7 +1102,7 @@ decl_stmt|;
 comment|// The arXiv API has problems with accents, so we remove them (i.e. FrÃ©chet -> Frechet)
 if|if
 condition|(
-name|StringUtils
+name|StringUtil
 operator|.
 name|isNotBlank
 argument_list|(
@@ -1079,7 +1116,7 @@ name|addParameter
 argument_list|(
 literal|"search_query"
 argument_list|,
-name|StringUtils
+name|StringUtil
 operator|.
 name|stripAccents
 argument_list|(
@@ -1103,13 +1140,26 @@ name|addParameter
 argument_list|(
 literal|"id_list"
 argument_list|,
-name|StringUtils
-operator|.
-name|join
-argument_list|(
 name|ids
-argument_list|,
-literal|','
+operator|.
+name|stream
+argument_list|()
+operator|.
+name|map
+argument_list|(
+name|ArXivIdentifier
+operator|::
+name|getNormalized
+argument_list|)
+operator|.
+name|collect
+argument_list|(
+name|Collectors
+operator|.
+name|joining
+argument_list|(
+literal|","
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1428,9 +1478,19 @@ argument_list|()
 operator|.
 name|map
 argument_list|(
-name|ArXivEntry
-operator|::
+parameter_list|(
+name|arXivEntry
+parameter_list|)
+lambda|->
+name|arXivEntry
+operator|.
 name|toBibEntry
+argument_list|(
+name|importFormatPreferences
+operator|.
+name|getKeywordSeparator
+argument_list|()
+argument_list|)
 argument_list|)
 operator|.
 name|collect
@@ -1466,9 +1526,19 @@ argument_list|)
 operator|.
 name|map
 argument_list|(
-name|ArXivEntry
-operator|::
+parameter_list|(
+name|arXivEntry
+parameter_list|)
+lambda|->
+name|arXivEntry
+operator|.
 name|toBibEntry
+argument_list|(
+name|importFormatPreferences
+operator|.
+name|getKeywordSeparator
+argument_list|()
+argument_list|)
 argument_list|)
 return|;
 block|}
@@ -1592,7 +1662,7 @@ argument_list|)
 operator|.
 name|map
 argument_list|(
-name|OAI2Fetcher
+name|OAI2Handler
 operator|::
 name|correctLineBreaks
 argument_list|)
@@ -1635,7 +1705,7 @@ argument_list|)
 operator|.
 name|map
 argument_list|(
-name|OAI2Fetcher
+name|OAI2Handler
 operator|::
 name|correctLineBreaks
 argument_list|)
@@ -2024,11 +2094,14 @@ block|}
 argument_list|)
 return|;
 block|}
-DECL|method|toBibEntry ()
+DECL|method|toBibEntry (Character keywordDelimiter)
 specifier|public
 name|BibEntry
 name|toBibEntry
-parameter_list|()
+parameter_list|(
+name|Character
+name|keywordDelimiter
+parameter_list|)
 block|{
 name|BibEntry
 name|bibEntry
@@ -2065,13 +2138,13 @@ name|FieldName
 operator|.
 name|AUTHOR
 argument_list|,
-name|StringUtils
+name|String
 operator|.
 name|join
 argument_list|(
-name|authorNames
-argument_list|,
 literal|" and "
+argument_list|,
+name|authorNames
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2081,10 +2154,9 @@ name|addKeywords
 argument_list|(
 name|categories
 argument_list|,
-literal|", "
+name|keywordDelimiter
 argument_list|)
 expr_stmt|;
-comment|// TODO: Should use separator value from preferences
 name|getId
 argument_list|()
 operator|.
@@ -2108,7 +2180,7 @@ name|title
 operator|.
 name|ifPresent
 argument_list|(
-name|title
+name|titleContent
 lambda|->
 name|bibEntry
 operator|.
@@ -2118,7 +2190,7 @@ name|FieldName
 operator|.
 name|TITLE
 argument_list|,
-name|title
+name|titleContent
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2126,7 +2198,7 @@ name|doi
 operator|.
 name|ifPresent
 argument_list|(
-name|doi
+name|doiContent
 lambda|->
 name|bibEntry
 operator|.
@@ -2136,7 +2208,7 @@ name|FieldName
 operator|.
 name|DOI
 argument_list|,
-name|doi
+name|doiContent
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2144,7 +2216,7 @@ name|abstractText
 operator|.
 name|ifPresent
 argument_list|(
-name|abstractText
+name|abstractContent
 lambda|->
 name|bibEntry
 operator|.
@@ -2154,7 +2226,7 @@ name|FieldName
 operator|.
 name|ABSTRACT
 argument_list|,
-name|abstractText
+name|abstractContent
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2220,17 +2292,7 @@ name|ifPresent
 argument_list|(
 name|url
 lambda|->
-operator|(
-operator|new
-name|TypedBibEntry
-argument_list|(
 name|bibEntry
-argument_list|,
-name|BibDatabaseMode
-operator|.
-name|BIBLATEX
-argument_list|)
-operator|)
 operator|.
 name|setFiles
 argument_list|(

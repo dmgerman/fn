@@ -136,7 +136,7 @@ name|getStringList
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|RECENT_FILES
+name|RECENT_DATABASES
 argument_list|)
 expr_stmt|;
 block|}
@@ -154,7 +154,7 @@ name|putStringList
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|RECENT_FILES
+name|RECENT_DATABASES
 argument_list|,
 name|oldFileNames
 argument_list|)
@@ -171,11 +171,10 @@ block|{
 name|FileHistory
 name|fh
 init|=
-operator|new
-name|FileHistory
-argument_list|(
 name|prefs
-argument_list|)
+operator|.
+name|getFileHistory
+argument_list|()
 decl_stmt|;
 name|fh
 operator|.
@@ -441,10 +440,12 @@ argument_list|(
 literal|"aa"
 argument_list|)
 expr_stmt|;
-name|fh
+name|prefs
 operator|.
-name|storeHistory
-argument_list|()
+name|storeFileHistory
+argument_list|(
+name|fh
+argument_list|)
 expr_stmt|;
 name|assertArrayEquals
 argument_list|(
@@ -465,7 +466,7 @@ name|getStringList
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|RECENT_FILES
+name|RECENT_DATABASES
 argument_list|)
 operator|.
 name|toArray

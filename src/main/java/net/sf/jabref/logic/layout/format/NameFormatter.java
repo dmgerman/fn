@@ -1,8 +1,4 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
-begin_comment
-comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
-end_comment
-
 begin_package
 DECL|package|net.sf.jabref.logic.layout.format
 package|package
@@ -47,6 +43,16 @@ operator|.
 name|util
 operator|.
 name|Map
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Objects
 import|;
 end_import
 
@@ -127,24 +133,6 @@ init|=
 name|NameFormatter
 operator|.
 name|DEFAULT_FORMAT
-decl_stmt|;
-DECL|field|NAME_FORMATER_KEY
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|NAME_FORMATER_KEY
-init|=
-literal|"nameFormatterNames"
-decl_stmt|;
-DECL|field|NAME_FORMATTER_VALUE
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|NAME_FORMATTER_VALUE
-init|=
-literal|"nameFormatterFormats"
 decl_stmt|;
 DECL|method|format (String toFormat, AuthorList al, String[] formats)
 specifier|private
@@ -631,6 +619,13 @@ name|NameFormatterPreferences
 name|prefs
 parameter_list|)
 block|{
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|prefs
+argument_list|)
+expr_stmt|;
 name|Map
 argument_list|<
 name|String

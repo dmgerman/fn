@@ -36,9 +36,9 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|formatter
+name|l10n
 operator|.
-name|Formatter
+name|Localization
 import|;
 end_import
 
@@ -50,11 +50,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|model
 operator|.
-name|l10n
+name|cleanup
 operator|.
-name|Localization
+name|Formatter
 import|;
 end_import
 

@@ -31,6 +31,7 @@ parameter_list|()
 block|{
 comment|// See http://docs.travis-ci.com/user/environment-variables/#Default-Environment-Variables
 comment|// See https://circleci.com/docs/environment-variables
+comment|// See https://docs.snap-ci.com/environment-variables/
 return|return
 name|Boolean
 operator|.
@@ -41,6 +42,50 @@ operator|.
 name|getenv
 argument_list|(
 literal|"CI"
+argument_list|)
+argument_list|)
+return|;
+block|}
+DECL|method|isCircleCI ()
+specifier|public
+specifier|static
+name|boolean
+name|isCircleCI
+parameter_list|()
+block|{
+comment|// See https://circleci.com/docs/environment-variables
+return|return
+name|Boolean
+operator|.
+name|valueOf
+argument_list|(
+name|System
+operator|.
+name|getenv
+argument_list|(
+literal|"CIRCLECI"
+argument_list|)
+argument_list|)
+return|;
+block|}
+DECL|method|isSnapCI ()
+specifier|public
+specifier|static
+name|boolean
+name|isSnapCI
+parameter_list|()
+block|{
+comment|// See https://docs.snap-ci.com/environment-variables/
+return|return
+name|Boolean
+operator|.
+name|valueOf
+argument_list|(
+name|System
+operator|.
+name|getenv
+argument_list|(
+literal|"SNAP_CI"
 argument_list|)
 argument_list|)
 return|;

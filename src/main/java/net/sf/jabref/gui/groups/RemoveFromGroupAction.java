@@ -1,8 +1,4 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
-begin_comment
-comment|/*  Copyright (C) 2003-2016 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
-end_comment
-
 begin_package
 DECL|package|net.sf.jabref.gui.groups
 package|package
@@ -36,7 +32,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Optional
+name|List
 import|;
 end_import
 
@@ -74,9 +70,9 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|groups
+name|l10n
 operator|.
-name|EntriesGroupChange
+name|Localization
 import|;
 end_import
 
@@ -88,11 +84,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|model
 operator|.
-name|l10n
-operator|.
-name|Localization
+name|FieldChange
 import|;
 end_import
 
@@ -229,9 +223,9 @@ block|{
 return|return;
 comment|// user aborted operation
 block|}
-name|Optional
+name|List
 argument_list|<
-name|EntriesGroupChange
+name|FieldChange
 argument_list|>
 name|undo
 init|=
@@ -247,10 +241,9 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|!
 name|undo
 operator|.
-name|isPresent
+name|isEmpty
 argument_list|()
 condition|)
 block|{
@@ -271,9 +264,6 @@ argument_list|(
 name|mNode
 argument_list|,
 name|undo
-operator|.
-name|get
-argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;

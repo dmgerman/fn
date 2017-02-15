@@ -1,96 +1,4 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
-begin_comment
-comment|/*  Copyright (C) 2004 R. Nagel  Copyright (C) 2015-2016 JabRef Contributors.   All programs in this directory and  subdirectories are published under the GNU General Public License as  described below.   This program is free software; you can redistribute it and/or modify  it under the terms of the GNU General Public License as published by  the Free Software Foundation; either version 2 of the License, or (at  your option) any later version.   This program is distributed in the hope that it will be useful, but  WITHOUT ANY WARRANTY; without even the implied warranty of  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU  General Public License for more details.   You should have received a copy of the GNU General Public License  along with this program; if not, write to the Free Software  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307  USA   Further information about the GNU GPL is available at:  http://www.gnu.org/copyleft/gpl.ja.html   */
-end_comment
-
-begin_comment
-comment|// created by : r.nagel 14.09.2004
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|// function : import from plain text => simple mark/copy/paste into bibtex entry
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|// todo     : - change colors and fonts
-end_comment
-
-begin_comment
-comment|//            - delete selected text
-end_comment
-
-begin_comment
-comment|//            - make textarea editable
-end_comment
-
-begin_comment
-comment|//            - create several bibtex entries in dialog
-end_comment
-
-begin_comment
-comment|//            - if the dialog works with an existing entry (right click menu item)
-end_comment
-
-begin_comment
-comment|//              the cancel option doesn't work well
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|// modified :
-end_comment
-
-begin_comment
-comment|//            28.07.2005
-end_comment
-
-begin_comment
-comment|//            - fix: insert button doesnt work
-end_comment
-
-begin_comment
-comment|//            - append a author with "and"
-end_comment
-
-begin_comment
-comment|//            04.11.2004
-end_comment
-
-begin_comment
-comment|//            - experimental: text-input-area with underlying infotext
-end_comment
-
-begin_comment
-comment|//            02.11.2004
-end_comment
-
-begin_comment
-comment|//            - integrity check, which reports errors and warnings for the fields
-end_comment
-
-begin_comment
-comment|//            22.10.2004
-end_comment
-
-begin_comment
-comment|//            - little help box
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
 begin_package
 DECL|package|net.sf.jabref.gui.plaintextimport
 package|package
@@ -300,9 +208,11 @@ begin_import
 import|import
 name|java
 operator|.
-name|util
+name|nio
 operator|.
-name|ArrayList
+name|file
+operator|.
+name|Path
 import|;
 end_import
 
@@ -312,7 +222,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Collections
+name|ArrayList
 import|;
 end_import
 
@@ -462,16 +372,6 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|JFileChooser
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
 name|JLabel
 import|;
 end_import
@@ -593,6 +493,16 @@ operator|.
 name|swing
 operator|.
 name|ListSelectionModel
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|ScrollPaneConstants
 import|;
 end_import
 
@@ -754,7 +664,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|FileDialogs
+name|FileDialog
 import|;
 end_import
 
@@ -858,36 +768,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|importer
-operator|.
-name|ParserResult
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|importer
-operator|.
-name|fileformat
-operator|.
-name|FreeCiteImporter
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|logic
 operator|.
 name|bibtex
@@ -922,9 +802,27 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|bibtex
+name|importer
 operator|.
-name|LatexFieldFormatterPreferences
+name|ParserResult
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|importer
+operator|.
+name|fileformat
+operator|.
+name|FreeCiteImporter
 import|;
 end_import
 
@@ -941,6 +839,22 @@ operator|.
 name|l10n
 operator|.
 name|Localization
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|util
+operator|.
+name|FileExtensions
 import|;
 end_import
 
@@ -1050,7 +964,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|FieldProperties
+name|FieldProperty
 import|;
 end_import
 
@@ -1125,6 +1039,10 @@ operator|.
 name|LogFactory
 import|;
 end_import
+
+begin_comment
+comment|/**  * import from plain text => simple mark/copy/paste into bibtex entry  *<p>  * TODO  * - change colors and fonts  * - delete selected text  * - make textarea editable  * - create several bibtex entries in dialog  * - if the dialog works with an existing entry (right click menu item), the cancel option doesn't work well  */
+end_comment
 
 begin_class
 DECL|class|TextInputDialog
@@ -1593,7 +1511,21 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"BibTeX source"
+literal|"%0 source"
+argument_list|,
+name|frame
+operator|.
+name|getCurrentBasePanel
+argument_list|()
+operator|.
+name|getBibDatabaseContext
+argument_list|()
+operator|.
+name|getMode
+argument_list|()
+operator|.
+name|getFormattedName
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2174,7 +2106,7 @@ name|fieldScroller
 operator|.
 name|setVerticalScrollBarPolicy
 argument_list|(
-name|JScrollPane
+name|ScrollPaneConstants
 operator|.
 name|VERTICAL_SCROLLBAR_AS_NEEDED
 argument_list|)
@@ -2796,7 +2728,7 @@ name|paneScrollPane
 operator|.
 name|setVerticalScrollBarPolicy
 argument_list|(
-name|JScrollPane
+name|ScrollPaneConstants
 operator|.
 name|VERTICAL_SCROLLBAR_ALWAYS
 argument_list|)
@@ -3121,7 +3053,7 @@ name|old
 init|=
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|fieldName
 argument_list|)
@@ -3140,14 +3072,14 @@ if|if
 condition|(
 name|InternalBibtexFields
 operator|.
-name|getFieldExtras
+name|getFieldProperties
 argument_list|(
 name|fieldName
 argument_list|)
 operator|.
 name|contains
 argument_list|(
-name|FieldProperties
+name|FieldProperty
 operator|.
 name|PERSON_NAMES
 argument_list|)
@@ -3194,12 +3126,8 @@ name|Globals
 operator|.
 name|prefs
 operator|.
-name|get
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|KEYWORD_SEPARATOR
-argument_list|)
+name|getKeywordDelimiter
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -3252,7 +3180,7 @@ return|return
 name|okPressed
 return|;
 block|}
-comment|/**      * tries to parse the pasted reference with freecite      * @return true if successful, false otherwise      */
+comment|/**      * tries to parse the pasted reference with freecite      *      * @return true if successful, false otherwise      */
 DECL|method|parseWithFreeCiteAndAddEntries ()
 specifier|private
 name|boolean
@@ -3264,7 +3192,14 @@ name|fimp
 init|=
 operator|new
 name|FreeCiteImporter
+argument_list|(
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getImportFormatPreferences
 argument_list|()
+argument_list|)
 decl_stmt|;
 name|String
 name|text
@@ -3411,6 +3346,9 @@ argument_list|,
 name|Globals
 operator|.
 name|prefs
+operator|.
+name|getUpdateFieldPreferences
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|boolean
@@ -3494,14 +3432,12 @@ argument_list|(
 operator|new
 name|LatexFieldFormatter
 argument_list|(
-name|LatexFieldFormatterPreferences
-operator|.
-name|fromPreferences
-argument_list|(
 name|Globals
 operator|.
 name|prefs
-argument_list|)
+operator|.
+name|getLatexFieldFormatterPreferences
+argument_list|()
 argument_list|)
 argument_list|,
 literal|false
@@ -3650,23 +3586,15 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-name|List
-argument_list|<
-name|String
-argument_list|>
-name|internalFields
-init|=
-name|InternalBibtexFields
-operator|.
-name|getAllFieldNames
-argument_list|()
-decl_stmt|;
 for|for
 control|(
 name|String
 name|field
 range|:
-name|internalFields
+name|InternalBibtexFields
+operator|.
+name|getAllPublicFieldNames
+argument_list|()
 control|)
 block|{
 if|if
@@ -3897,46 +3825,60 @@ parameter_list|)
 block|{
 try|try
 block|{
-name|String
-name|chosen
+name|FileDialog
+name|dialog
 init|=
-name|FileDialogs
-operator|.
-name|getNewFile
+operator|new
+name|FileDialog
 argument_list|(
 name|frame
-argument_list|,
-literal|null
-argument_list|,
-name|Collections
-operator|.
-name|emptyList
-argument_list|()
-argument_list|,
-literal|".txt"
-argument_list|,
-name|JFileChooser
-operator|.
-name|OPEN_DIALOG
-argument_list|,
-literal|false
 argument_list|)
+operator|.
+name|withExtension
+argument_list|(
+name|FileExtensions
+operator|.
+name|TXT
+argument_list|)
+decl_stmt|;
+name|dialog
+operator|.
+name|setDefaultExtension
+argument_list|(
+name|FileExtensions
+operator|.
+name|TXT
+argument_list|)
+expr_stmt|;
+name|Optional
+argument_list|<
+name|Path
+argument_list|>
+name|path
+init|=
+name|dialog
+operator|.
+name|showDialogAndGetSelectedFile
+argument_list|()
 decl_stmt|;
 if|if
 condition|(
-name|chosen
-operator|!=
-literal|null
+name|path
+operator|.
+name|isPresent
+argument_list|()
 condition|)
 block|{
 name|File
 name|newFile
 init|=
-operator|new
-name|File
-argument_list|(
-name|chosen
-argument_list|)
+name|path
+operator|.
+name|get
+argument_list|()
+operator|.
+name|toFile
+argument_list|()
 decl_stmt|;
 name|document
 operator|.
@@ -4327,7 +4269,7 @@ block|}
 comment|/* This is the only method defined by ListCellRenderer.  We just          * reconfigure the Jlabel each time we're called.          */
 annotation|@
 name|Override
-DECL|method|getListCellRendererComponent ( JList<?> list, Object value, int index, boolean iss, boolean chf)
+DECL|method|getListCellRendererComponent (JList<?> list, Object value, int index, boolean iss, boolean chf)
 specifier|public
 name|Component
 name|getListCellRendererComponent

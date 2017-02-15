@@ -60,9 +60,9 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|formatter
+name|l10n
 operator|.
-name|Formatter
+name|Localization
 import|;
 end_import
 
@@ -74,11 +74,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|model
 operator|.
-name|l10n
+name|cleanup
 operator|.
-name|Localization
+name|Formatter
 import|;
 end_import
 
@@ -97,7 +97,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This class includes sensible defaults for consistent formatting of BibTex page numbers.  *  * From BibTex manual:  * One or more page numbers or range of numbers, such as 42--111 or 7,41,73--97 or 43+  * (the '+' in this last example indicates pages following that don't form a simple range).  * To make it easier to maintain Scribe-compatible databases, the standard styles convert  * a single dash (as in 7-33) to the double dash used in TEX to denote number ranges (as in 7--33).  */
+comment|/**  * This class includes sensible defaults for consistent formatting of BibTeX page numbers.  *  * From BibTeX manual:  * One or more page numbers or range of numbers, such as 42--111 or 7,41,73--97 or 43+  * (the '+' in this last example indicates pages following that don't form a simple range).  * To make it easier to maintain Scribe-compatible databases, the standard styles convert  * a single dash (as in 7-33) to the double dash used in TEX to denote number ranges (as in 7--33).  */
 end_comment
 
 begin_class
@@ -108,6 +108,7 @@ name|NormalizePagesFormatter
 implements|implements
 name|Formatter
 block|{
+comment|// "startpage" and "endpage" are named groups. See http://stackoverflow.com/a/415635/873282 for a documentation
 DECL|field|PAGES_DETECT_PATTERN
 specifier|private
 specifier|static
@@ -119,7 +120,7 @@ name|Pattern
 operator|.
 name|compile
 argument_list|(
-literal|"\\A(\\d+)(?:-{1,2}(\\d+))?\\Z"
+literal|"\\A(?<startpage>(\\d+:)?\\d+)(?:-{1,2}(?<endpage>(\\d+:)?\\d+))?\\Z"
 argument_list|)
 decl_stmt|;
 DECL|field|REJECT_LITERALS
@@ -129,7 +130,7 @@ specifier|final
 name|String
 name|REJECT_LITERALS
 init|=
-literal|"[^a-zA-Z0-9,\\-\\+,]"
+literal|"[^a-zA-Z0-9,\\-\\+,:]"
 decl_stmt|;
 DECL|field|PAGES_REPLACE_PATTERN
 specifier|private
@@ -138,7 +139,7 @@ specifier|final
 name|String
 name|PAGES_REPLACE_PATTERN
 init|=
-literal|"$1--$2"
+literal|"${startpage}--${endpage}"
 decl_stmt|;
 DECL|field|SINGLE_PAGE_REPLACE_PATTERN
 specifier|private
@@ -279,7 +280,7 @@ name|matcher
 operator|.
 name|group
 argument_list|(
-literal|2
+literal|"endpage"
 argument_list|)
 argument_list|)
 condition|)

@@ -1,8 +1,4 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
-begin_comment
-comment|/*  Copyright (C) 2003-2016 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
-end_comment
-
 begin_package
 DECL|package|net.sf.jabref.logic.exporter
 package|package
@@ -1244,7 +1240,9 @@ name|getField
 argument_list|(
 name|e
 argument_list|,
-literal|"assignee"
+name|FieldName
+operator|.
+name|ASSIGNEE
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1323,7 +1321,9 @@ name|getField
 argument_list|(
 name|e
 argument_list|,
-literal|"day"
+name|FieldName
+operator|.
+name|DAY
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1337,7 +1337,9 @@ name|getField
 argument_list|(
 name|e
 argument_list|,
-literal|"dayfiled"
+name|FieldName
+operator|.
+name|DAYFILED
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1464,7 +1466,9 @@ name|getField
 argument_list|(
 name|e
 argument_list|,
-literal|"monthfiled"
+name|FieldName
+operator|.
+name|MONTHFILED
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1478,7 +1482,9 @@ name|getField
 argument_list|(
 name|e
 argument_list|,
-literal|"nationality"
+name|FieldName
+operator|.
+name|NATIONALITY
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1572,7 +1578,9 @@ name|getField
 argument_list|(
 name|e
 argument_list|,
-literal|"revision"
+name|FieldName
+operator|.
+name|REVISION
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1694,7 +1702,9 @@ name|getField
 argument_list|(
 name|e
 argument_list|,
-literal|"yearfiled"
+name|FieldName
+operator|.
+name|YEARFILED
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1845,13 +1855,11 @@ name|field
 parameter_list|)
 block|{
 return|return
-name|BibDatabase
+name|e
 operator|.
-name|getResolvedField
+name|getResolvedFieldOrAlias
 argument_list|(
 name|field
-argument_list|,
-name|e
 argument_list|,
 name|database
 argument_list|)

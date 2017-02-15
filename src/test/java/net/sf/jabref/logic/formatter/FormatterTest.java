@@ -36,13 +36,11 @@ end_import
 
 begin_import
 import|import
-name|net
+name|java
 operator|.
-name|sf
+name|util
 operator|.
-name|jabref
-operator|.
-name|Globals
+name|Collections
 import|;
 end_import
 
@@ -414,9 +412,43 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|preferences
+name|logic
 operator|.
-name|JabRefPreferences
+name|protectedterms
+operator|.
+name|ProtectedTermsLoader
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|protectedterms
+operator|.
+name|ProtectedTermsPreferences
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|cleanup
+operator|.
+name|Formatter
 import|;
 end_import
 
@@ -554,14 +586,38 @@ name|void
 name|setUp
 parameter_list|()
 block|{
-name|Globals
+name|ProtectTermsFormatter
 operator|.
-name|prefs
-operator|=
-name|JabRefPreferences
+name|setProtectedTermsLoader
+argument_list|(
+operator|new
+name|ProtectedTermsLoader
+argument_list|(
+operator|new
+name|ProtectedTermsPreferences
+argument_list|(
+name|ProtectedTermsLoader
 operator|.
-name|getInstance
+name|getInternalLists
 argument_list|()
+argument_list|,
+name|Collections
+operator|.
+name|emptyList
+argument_list|()
+argument_list|,
+name|Collections
+operator|.
+name|emptyList
+argument_list|()
+argument_list|,
+name|Collections
+operator|.
+name|emptyList
+argument_list|()
+argument_list|)
+argument_list|)
+argument_list|)
 expr_stmt|;
 block|}
 annotation|@
@@ -759,7 +815,7 @@ argument_list|>
 name|instancesToTest
 parameter_list|()
 block|{
-comment|// all classes implementing {@link net.sf.jabref.logic.formatter.Formatter}
+comment|// all classes implementing {@link net.sf.jabref.model.cleanup.Formatter}
 comment|// sorted alphabetically
 comment|// Alternative: Use reflection - https://github.com/ronmamo/reflections
 comment|// @formatter:off

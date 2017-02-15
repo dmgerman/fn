@@ -36,40 +36,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Optional
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|regex
-operator|.
-name|Pattern
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|Globals
-import|;
-end_import
-
-begin_import
-import|import
 name|net
 operator|.
 name|sf
@@ -140,16 +106,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Test
 import|;
 end_import
@@ -167,7 +123,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * The test class LayoutEntryTest test the net.sf.jabref.export.layout.LayoutEntry.  * Indirectly the net.sf.jabref.export.layout.Layout is tested too.  *<p/>  * The LayoutEntry creates a human readable String assigned with HTML formatters.  * To test the Highlighting Feature, an instance of LayoutEntry will be instantiated via Layout and LayoutHelper.  * With these instance the doLayout() Method is called several times for each test case.  * To simulate a search, a BibEntry will be created, which will be used by LayoutEntry.  * The definition of the search is set by  *<p/>  * LayoutEntry.setWordsToHighlight(words); and  * Globals.prefs.putBoolean("caseSensitiveSearch", false);  *<p/>  * There are five test cases:  * - The shown result text has no words which should be highlighted.  * - There is one word which will be highlighted ignoring case sensitivity.  * - There are two words which will be highlighted ignoring case sensitivity.  * - There is one word which will be highlighted case sensitivity.  * - There are more words which will be highlighted case sensitivity.  *  * @author Arne  */
+comment|/**  * The test class LayoutEntryTest test the net.sf.jabref.export.layout.LayoutEntry.  * Indirectly the net.sf.jabref.export.layout.Layout is tested too.  *<p/>  * The LayoutEntry creates a human readable String assigned with HTML formatters.  * To test the Highlighting Feature, an instance of LayoutEntry will be instantiated via Layout and LayoutHelper.  * With these instance the doLayout() Method is called several times for each test case.  * To simulate a search, a BibEntry will be created, which will be used by LayoutEntry.  *  * There are five test cases:  * - The shown result text has no words which should be highlighted.  * - There is one word which will be highlighted ignoring case sensitivity.  * - There are two words which will be highlighted ignoring case sensitivity.  * - There is one word which will be highlighted case sensitivity.  * - There are more words which will be highlighted case sensitivity.  *  * @author Arne  */
 end_comment
 
 begin_class
@@ -190,46 +146,12 @@ name|void
 name|setUp
 parameter_list|()
 block|{
-if|if
-condition|(
-name|Globals
-operator|.
-name|prefs
-operator|==
-literal|null
-condition|)
-block|{
-name|Globals
-operator|.
-name|prefs
-operator|=
-name|JabRefPreferences
-operator|.
-name|getInstance
-argument_list|()
-expr_stmt|;
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|putBoolean
-argument_list|(
-literal|"highLightWords"
-argument_list|,
-name|Boolean
-operator|.
-name|TRUE
-argument_list|)
-expr_stmt|;
-block|}
 comment|// create Bibtext Entry
 name|mBTE
 operator|=
 operator|new
 name|BibEntry
-argument_list|(
-literal|"testid"
-argument_list|)
+argument_list|()
 expr_stmt|;
 name|mBTE
 operator|.
@@ -423,7 +345,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// helper Methods
-DECL|method|layout (String layoutFile, BibEntry entry, Optional<Pattern> highlightPattern)
+DECL|method|layout (String layoutFile, BibEntry entry)
 specifier|public
 name|String
 name|layout
@@ -433,12 +355,6 @@ name|layoutFile
 parameter_list|,
 name|BibEntry
 name|entry
-parameter_list|,
-name|Optional
-argument_list|<
-name|Pattern
-argument_list|>
-name|highlightPattern
 parameter_list|)
 throws|throws
 name|IOException
@@ -467,14 +383,13 @@ name|LayoutHelper
 argument_list|(
 name|sr
 argument_list|,
-name|LayoutFormatterPreferences
+name|JabRefPreferences
 operator|.
-name|fromPreferences
+name|getInstance
+argument_list|()
+operator|.
+name|getLayoutFormatterPreferences
 argument_list|(
-name|Globals
-operator|.
-name|prefs
-argument_list|,
 name|mock
 argument_list|(
 name|JournalAbbreviationLoader
@@ -495,399 +410,12 @@ argument_list|(
 name|entry
 argument_list|,
 literal|null
-argument_list|,
-name|highlightPattern
 argument_list|)
 return|;
 block|}
 comment|/*************************/
 comment|/****** tests Cases ******/
 comment|/*************************/
-comment|/**      * @throws Exception      */
-annotation|@
-name|Test
-annotation|@
-name|Ignore
-DECL|method|testNoHighlighting ()
-specifier|public
-name|void
-name|testNoHighlighting
-parameter_list|()
-throws|throws
-name|IOException
-block|{
-comment|// say that this bibtex object was found
-name|mBTE
-operator|.
-name|setSearchHit
-argument_list|(
-literal|true
-argument_list|)
-expr_stmt|;
-name|String
-name|result
-init|=
-name|this
-operator|.
-name|layout
-argument_list|(
-literal|"<font face=\"arial\">\\begin{abstract}<BR><BR><b>Abstract:</b> \\format[HTMLChars]{\\abstract}\\end{abstract}</font>"
-argument_list|,
-name|mBTE
-argument_list|,
-name|Optional
-operator|.
-name|empty
-argument_list|()
-argument_list|)
-decl_stmt|;
-name|String
-name|expecting
-init|=
-literal|"<font face=\"arial\"><BR><BR><b>Abstract:</b> In this paper, we initiate a formal study of security on Android: Google's new open-source platform for mobile devices. Tags: Paper android google Open-Source Devices</font>"
-decl_stmt|;
-name|Assert
-operator|.
-name|assertEquals
-argument_list|(
-name|expecting
-argument_list|,
-name|result
-argument_list|)
-expr_stmt|;
-block|}
-comment|/**      * @throws Exception      */
-annotation|@
-name|Test
-DECL|method|testHighlightingOneWordCaseInsesitive ()
-specifier|public
-name|void
-name|testHighlightingOneWordCaseInsesitive
-parameter_list|()
-throws|throws
-name|IOException
-block|{
-comment|// say that this bibtex object was found
-name|mBTE
-operator|.
-name|setSearchHit
-argument_list|(
-literal|true
-argument_list|)
-expr_stmt|;
-name|Optional
-argument_list|<
-name|Pattern
-argument_list|>
-name|highlightPattern
-init|=
-name|Optional
-operator|.
-name|of
-argument_list|(
-name|Pattern
-operator|.
-name|compile
-argument_list|(
-literal|"(google)"
-argument_list|,
-name|Pattern
-operator|.
-name|CASE_INSENSITIVE
-argument_list|)
-argument_list|)
-decl_stmt|;
-name|String
-name|result
-init|=
-name|this
-operator|.
-name|layout
-argument_list|(
-literal|"<font face=\"arial\">\\begin{abstract}<BR><BR><b>Abstract:</b> \\format[HTMLChars]{\\abstract}\\end{abstract}</font>"
-argument_list|,
-name|mBTE
-argument_list|,
-name|highlightPattern
-argument_list|)
-decl_stmt|;
-name|String
-name|containing
-init|=
-literal|"<span style=\"background-color:#3399FF;\">Google</span>"
-decl_stmt|;
-comment|// check
-name|Assert
-operator|.
-name|assertTrue
-argument_list|(
-literal|"Actual message: "
-operator|+
-name|result
-argument_list|,
-name|result
-operator|.
-name|contains
-argument_list|(
-name|containing
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-comment|/**      * @throws Exception      */
-annotation|@
-name|Test
-DECL|method|testHighlightingTwoWordsCaseInsesitive ()
-specifier|public
-name|void
-name|testHighlightingTwoWordsCaseInsesitive
-parameter_list|()
-throws|throws
-name|IOException
-block|{
-comment|// say that this bibtex object was found
-name|mBTE
-operator|.
-name|setSearchHit
-argument_list|(
-literal|true
-argument_list|)
-expr_stmt|;
-name|Optional
-argument_list|<
-name|Pattern
-argument_list|>
-name|highlightPattern
-init|=
-name|Optional
-operator|.
-name|of
-argument_list|(
-name|Pattern
-operator|.
-name|compile
-argument_list|(
-literal|"(Android|study)"
-argument_list|,
-name|Pattern
-operator|.
-name|CASE_INSENSITIVE
-argument_list|)
-argument_list|)
-decl_stmt|;
-name|String
-name|result
-init|=
-name|this
-operator|.
-name|layout
-argument_list|(
-literal|"<font face=\"arial\">\\begin{abstract}<BR><BR><b>Abstract:</b> \\format[HTMLChars]{\\abstract}\\end{abstract}</font>"
-argument_list|,
-name|mBTE
-argument_list|,
-name|highlightPattern
-argument_list|)
-decl_stmt|;
-name|String
-name|containing
-init|=
-literal|"<span style=\"background-color:#3399FF;\">Android</span>"
-decl_stmt|;
-name|String
-name|containing2
-init|=
-literal|"<span style=\"background-color:#3399FF;\">study</span>"
-decl_stmt|;
-comment|// check
-name|Assert
-operator|.
-name|assertTrue
-argument_list|(
-name|result
-operator|.
-name|contains
-argument_list|(
-name|containing
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|Assert
-operator|.
-name|assertTrue
-argument_list|(
-name|result
-operator|.
-name|contains
-argument_list|(
-name|containing2
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-comment|/**      * @throws Exception      */
-annotation|@
-name|Test
-DECL|method|testHighlightingOneWordCaseSesitive ()
-specifier|public
-name|void
-name|testHighlightingOneWordCaseSesitive
-parameter_list|()
-throws|throws
-name|IOException
-block|{
-comment|// say that this bibtex object was found
-name|mBTE
-operator|.
-name|setSearchHit
-argument_list|(
-literal|true
-argument_list|)
-expr_stmt|;
-name|Optional
-argument_list|<
-name|Pattern
-argument_list|>
-name|highlightPattern
-init|=
-name|Optional
-operator|.
-name|of
-argument_list|(
-name|Pattern
-operator|.
-name|compile
-argument_list|(
-literal|"(google)"
-argument_list|)
-argument_list|)
-decl_stmt|;
-name|String
-name|result
-init|=
-name|this
-operator|.
-name|layout
-argument_list|(
-literal|"<font face=\"arial\">\\begin{abstract}<BR><BR><b>Abstract:</b> \\format[HTMLChars]{\\abstract}\\end{abstract}</font>"
-argument_list|,
-name|mBTE
-argument_list|,
-name|highlightPattern
-argument_list|)
-decl_stmt|;
-name|String
-name|expected
-init|=
-literal|"<font face=\"arial\"><BR><BR><b>Abstract:</b> In this paper, we initiate a formal study of security on Android: Google's new open-source platform for mobile devices. Tags: Paper android<span style=\"background-color:#3399FF;\">google</span> Open-Source Devices</font>"
-decl_stmt|;
-comment|// check
-name|Assert
-operator|.
-name|assertEquals
-argument_list|(
-name|expected
-argument_list|,
-name|result
-argument_list|)
-expr_stmt|;
-block|}
-comment|/**      * @throws Exception      */
-annotation|@
-name|Test
-DECL|method|testHighlightingMoreWordsCaseSesitive ()
-specifier|public
-name|void
-name|testHighlightingMoreWordsCaseSesitive
-parameter_list|()
-throws|throws
-name|IOException
-block|{
-comment|// say that this bibtex object was found
-name|mBTE
-operator|.
-name|setSearchHit
-argument_list|(
-literal|true
-argument_list|)
-expr_stmt|;
-name|Optional
-argument_list|<
-name|Pattern
-argument_list|>
-name|highlightPattern
-init|=
-name|Optional
-operator|.
-name|of
-argument_list|(
-name|Pattern
-operator|.
-name|compile
-argument_list|(
-literal|"(Android|study|Open)"
-argument_list|,
-name|Pattern
-operator|.
-name|CASE_INSENSITIVE
-argument_list|)
-argument_list|)
-decl_stmt|;
-name|String
-name|highlightColor
-init|=
-literal|"#3399FF;"
-decl_stmt|;
-name|String
-name|result
-init|=
-name|this
-operator|.
-name|layout
-argument_list|(
-literal|"<font face=\"arial\">\\begin{abstract}<BR><BR><b>Abstract:</b> \\format[HTMLChars]{\\abstract}\\end{abstract}</font>"
-argument_list|,
-name|mBTE
-argument_list|,
-name|highlightPattern
-argument_list|)
-decl_stmt|;
-name|String
-name|expected
-init|=
-literal|"<font face=\"arial\"><BR><BR><b>Abstract:</b> In this paper, we initiate a formal<span style=\"background-color:"
-operator|+
-name|highlightColor
-operator|+
-literal|"\">study</span> of security on<span style=\"background-color:"
-operator|+
-name|highlightColor
-operator|+
-literal|"\">Android</span>: Google's new<span style=\"background-color:"
-operator|+
-name|highlightColor
-operator|+
-literal|"\">open</span>-source platform for mobile devices. Tags: Paper<span style=\"background-color:"
-operator|+
-name|highlightColor
-operator|+
-literal|"\">android</span> google<span style=\"background-color:"
-operator|+
-name|highlightColor
-operator|+
-literal|"\">Open</span>-Source Devices</font>"
-decl_stmt|;
-comment|// check
-name|Assert
-operator|.
-name|assertEquals
-argument_list|(
-name|expected
-argument_list|,
-name|result
-argument_list|)
-expr_stmt|;
-block|}
 annotation|@
 name|Test
 DECL|method|testParseMethodCalls ()

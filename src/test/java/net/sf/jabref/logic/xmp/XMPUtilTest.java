@@ -290,51 +290,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|cli
 operator|.
 name|XMPUtilMain
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|importer
-operator|.
-name|ParserResult
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|importer
-operator|.
-name|fileformat
-operator|.
-name|BibtexParser
 import|;
 end_import
 
@@ -380,9 +338,43 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|bibtex
+name|importer
 operator|.
-name|LatexFieldFormatterPreferences
+name|ImportFormatPreferences
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|importer
+operator|.
+name|ParserResult
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|importer
+operator|.
+name|fileformat
+operator|.
+name|BibtexParser
 import|;
 end_import
 
@@ -447,22 +439,6 @@ operator|.
 name|entry
 operator|.
 name|BibtexEntryTypes
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|entry
-operator|.
-name|IdGenerator
 import|;
 end_import
 
@@ -686,7 +662,7 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
+name|Rule
 import|;
 end_import
 
@@ -700,6 +676,18 @@ name|Test
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|rules
+operator|.
+name|TemporaryFolder
+import|;
+end_import
+
 begin_comment
 comment|/**  * Limitations: The test suite only handles UTF8. Not UTF16.  */
 end_comment
@@ -710,6 +698,17 @@ specifier|public
 class|class
 name|XMPUtilTest
 block|{
+annotation|@
+name|Rule
+DECL|field|tempFolder
+specifier|public
+name|TemporaryFolder
+name|tempFolder
+init|=
+operator|new
+name|TemporaryFolder
+argument_list|()
+decl_stmt|;
 comment|/**      * The PDF file that basically all operations are done upon.      */
 DECL|field|pdfFile
 specifier|private
@@ -738,6 +737,11 @@ DECL|field|xmpPreferences
 specifier|private
 name|XMPPreferences
 name|xmpPreferences
+decl_stmt|;
+DECL|field|importFormatPreferences
+specifier|private
+name|ImportFormatPreferences
+name|importFormatPreferences
 decl_stmt|;
 comment|/**      * Wrap bibtex-data (<bibtex:author>...) into an rdf:Description.      *      * @param bibtex      * @return      */
 DECL|method|bibtexDescription (String bibtex)
@@ -943,7 +947,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|bibtexString2BibtexEntry (String s)
+DECL|method|bibtexString2BibtexEntry (String s, ImportFormatPreferences importFormatPreferences)
 specifier|public
 specifier|static
 name|BibEntry
@@ -951,6 +955,9 @@ name|bibtexString2BibtexEntry
 parameter_list|(
 name|String
 name|s
+parameter_list|,
+name|ImportFormatPreferences
+name|importFormatPreferences
 parameter_list|)
 throws|throws
 name|IOException
@@ -958,7 +965,11 @@ block|{
 name|ParserResult
 name|result
 init|=
+operator|new
 name|BibtexParser
+argument_list|(
+name|importFormatPreferences
+argument_list|)
 operator|.
 name|parse
 argument_list|(
@@ -1005,7 +1016,7 @@ name|next
 argument_list|()
 return|;
 block|}
-DECL|method|bibtexEntry2BibtexString (BibEntry e)
+DECL|method|bibtexEntry2BibtexString (BibEntry e, JabRefPreferences preferences)
 specifier|public
 specifier|static
 name|String
@@ -1013,6 +1024,9 @@ name|bibtexEntry2BibtexString
 parameter_list|(
 name|BibEntry
 name|e
+parameter_list|,
+name|JabRefPreferences
+name|preferences
 parameter_list|)
 throws|throws
 name|IOException
@@ -1030,14 +1044,10 @@ argument_list|(
 operator|new
 name|LatexFieldFormatter
 argument_list|(
-name|LatexFieldFormatterPreferences
+name|preferences
 operator|.
-name|fromPreferences
-argument_list|(
-name|Globals
-operator|.
-name|prefs
-argument_list|)
+name|getLatexFieldFormatterPreferences
+argument_list|()
 argument_list|)
 argument_list|,
 literal|false
@@ -1103,6 +1113,8 @@ name|bibtexString2BibtexEntry
 argument_list|(
 name|t1BibtexString
 argument_list|()
+argument_list|,
+name|importFormatPreferences
 argument_list|)
 return|;
 block|}
@@ -1147,6 +1159,8 @@ name|bibtexEntry2BibtexString
 argument_list|(
 name|t2BibtexEntry
 argument_list|()
+argument_list|,
+name|prefs
 argument_list|)
 return|;
 block|}
@@ -1162,11 +1176,6 @@ init|=
 operator|new
 name|BibEntry
 argument_list|(
-name|IdGenerator
-operator|.
-name|next
-argument_list|()
-argument_list|,
 name|BibtexEntryTypes
 operator|.
 name|INCOLLECTION
@@ -1342,7 +1351,7 @@ name|setField
 argument_list|(
 literal|"abstract"
 argument_list|,
-literal|"The success of the Linux operating system has demonstrated the viability of an alternative form of software development ï¿½ open source software ï¿½ that challenges traditional assumptions about software markets. Understanding what drives open source developers to participate in open source projects is crucial for assessing the impact of open source software. This article identifies two broad types of motivations that account for their participation in open source projects. The first category includes internal factors such as intrinsic motivation and altruism, and the second category focuses on external rewards such as expected future returns and personal needs. This article also reports the results of a survey administered to open source programmers."
+literal|"The success of the Linux operating system has demonstrated the viability of an alternative form of software developmentâopen source softwareâthat challenges traditional assumptions about software markets. Understanding what drives open source developers to participate in open source projects is crucial for assessing the impact of open source software. This article identifies two broad types of motivations that account for their participation in open source projects. The first category includes internal factors such as intrinsic motivation and altruism, and the second category focuses on external rewards such as expected future returns and personal needs. This article also reports the results of a survey administered to open source programmers."
 argument_list|)
 expr_stmt|;
 return|return
@@ -1364,6 +1373,8 @@ name|bibtexEntry2BibtexString
 argument_list|(
 name|t3BibtexEntry
 argument_list|()
+argument_list|,
+name|prefs
 argument_list|)
 return|;
 block|}
@@ -1414,7 +1425,7 @@ literal|"<bibtex:year>1982</bibtex:year>"
 operator|+
 literal|"<bibtex:month>#jul#</bibtex:month>"
 operator|+
-literal|"<bibtex:abstract>The success of the Linux operating system has demonstrated the viability of an alternative form of software development ï¿½ open source software ï¿½ that challenges traditional assumptions about software markets. Understanding what drives open source developers to participate in open source projects is crucial for assessing the impact of open source software. This article identifies two broad types of motivations that account for their participation in open source projects. The first category includes internal factors such as intrinsic motivation and altruism, and the second category focuses on external rewards such as expected future returns and personal needs. This article also reports the results of a survey administered to open source programmers.</bibtex:abstract>"
+literal|"<bibtex:abstract>The success of the Linux operating system has demonstrated the viability of an alternative form of software developmentâopen source softwareâthat challenges traditional assumptions about software markets. Understanding what drives open source developers to participate in open source projects is crucial for assessing the impact of open source software. This article identifies two broad types of motivations that account for their participation in open source projects. The first category includes internal factors such as intrinsic motivation and altruism, and the second category focuses on external rewards such as expected future returns and personal needs. This article also reports the results of a survey administered to open source programmers.</bibtex:abstract>"
 argument_list|)
 return|;
 block|}
@@ -1433,20 +1444,12 @@ name|COSVisitorException
 block|{
 name|pdfFile
 operator|=
-name|File
+name|tempFolder
 operator|.
-name|createTempFile
+name|newFile
 argument_list|(
-literal|"JabRef"
-argument_list|,
-literal|".pdf"
+literal|"JabRef.pdf"
 argument_list|)
-expr_stmt|;
-comment|// ensure that the file will be deleted upon exit
-name|pdfFile
-operator|.
-name|deleteOnExit
-argument_list|()
 expr_stmt|;
 try|try
 init|(
@@ -1479,37 +1482,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|// Don't forget to initialize the preferences
-if|if
-condition|(
-name|Globals
-operator|.
-name|prefs
-operator|==
-literal|null
-condition|)
-block|{
-name|Globals
-operator|.
-name|prefs
-operator|=
-name|JabRefPreferences
-operator|.
-name|getInstance
-argument_list|()
-expr_stmt|;
-block|}
-name|xmpPreferences
-operator|=
-name|XMPPreferences
-operator|.
-name|fromPreferences
-argument_list|(
-name|Globals
-operator|.
-name|prefs
-argument_list|)
-expr_stmt|;
 comment|// Store Privacy Settings
 name|prefs
 operator|=
@@ -1549,6 +1521,20 @@ literal|"useXmpPrivacyFilter"
 argument_list|,
 literal|false
 argument_list|)
+expr_stmt|;
+name|importFormatPreferences
+operator|=
+name|prefs
+operator|.
+name|getImportFormatPreferences
+argument_list|()
+expr_stmt|;
+name|xmpPreferences
+operator|=
+name|prefs
+operator|.
+name|getXMPPreferences
+argument_list|()
 expr_stmt|;
 block|}
 annotation|@
@@ -1672,11 +1658,16 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
+name|Optional
+operator|.
+name|of
+argument_list|(
 literal|"OezbekC06"
+argument_list|)
 argument_list|,
 name|e
 operator|.
-name|getCiteKey
+name|getCiteKeyOptional
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1693,7 +1684,7 @@ argument_list|)
 argument_list|,
 name|e
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"year"
 argument_list|)
@@ -1712,7 +1703,7 @@ argument_list|)
 argument_list|,
 name|e
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"title"
 argument_list|)
@@ -1821,11 +1812,16 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
+name|Optional
+operator|.
+name|of
+argument_list|(
 literal|"OezbekC06"
+argument_list|)
 argument_list|,
 name|e
 operator|.
-name|getCiteKey
+name|getCiteKeyOptional
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1842,7 +1838,7 @@ argument_list|)
 argument_list|,
 name|e
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"year"
 argument_list|)
@@ -1861,7 +1857,7 @@ argument_list|)
 argument_list|,
 name|e
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"title"
 argument_list|)
@@ -1939,12 +1935,10 @@ name|e
 argument_list|,
 literal|null
 argument_list|,
-name|XMPPreferences
-operator|.
-name|fromPreferences
-argument_list|(
 name|prefs
-argument_list|)
+operator|.
+name|getXMPPreferences
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|List
@@ -1962,12 +1956,10 @@ operator|.
 name|getAbsoluteFile
 argument_list|()
 argument_list|,
-name|XMPPreferences
-operator|.
-name|fromPreferences
-argument_list|(
 name|prefs
-argument_list|)
+operator|.
+name|getXMPPreferences
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|Assert
@@ -2075,12 +2067,10 @@ name|e
 argument_list|,
 literal|null
 argument_list|,
-name|XMPPreferences
-operator|.
-name|fromPreferences
-argument_list|(
 name|prefs
-argument_list|)
+operator|.
+name|getXMPPreferences
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|List
@@ -2098,12 +2088,10 @@ operator|.
 name|getAbsoluteFile
 argument_list|()
 argument_list|,
-name|XMPPreferences
-operator|.
-name|fromPreferences
-argument_list|(
 name|prefs
-argument_list|)
+operator|.
+name|getXMPPreferences
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|Assert
@@ -2304,11 +2292,16 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
+name|Optional
+operator|.
+name|of
+argument_list|(
 literal|"Clarkson06"
+argument_list|)
 argument_list|,
 name|e
 operator|.
-name|getCiteKey
+name|getCiteKeyOptional
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2320,7 +2313,7 @@ literal|"Kelly Clarkson and Ozzy Osbourne"
 argument_list|,
 name|e
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"author"
 argument_list|)
@@ -2337,7 +2330,7 @@ literal|"Huey Duck and Dewey Duck and Louie Duck"
 argument_list|,
 name|e
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"editor"
 argument_list|)
@@ -2751,6 +2744,8 @@ literal|"\n"
 operator|+
 literal|"}"
 argument_list|)
+argument_list|,
+name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -2951,7 +2946,7 @@ literal|"Hallo World this is not an exercise ."
 argument_list|,
 name|e
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"title"
 argument_list|)
@@ -2968,7 +2963,7 @@ literal|"Hallo World this is not an exercise ."
 argument_list|,
 name|e
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"tabs"
 argument_list|)
@@ -2985,7 +2980,7 @@ literal|"\n\nAbstract preserve\n\t Whitespace\n\n"
 argument_list|,
 name|e
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"abstract"
 argument_list|)
@@ -4603,6 +4598,8 @@ literal|"\n"
 operator|+
 literal|"}"
 argument_list|)
+argument_list|,
+name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -4738,12 +4735,12 @@ name|assertEquals
 argument_list|(
 name|expected
 operator|.
-name|getCiteKey
+name|getCiteKeyOptional
 argument_list|()
 argument_list|,
 name|actual
 operator|.
-name|getCiteKey
+name|getCiteKeyOptional
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -4799,7 +4796,7 @@ name|parse
 argument_list|(
 name|expected
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|field
 argument_list|)
@@ -4817,7 +4814,7 @@ name|parse
 argument_list|(
 name|actual
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|field
 argument_list|)
@@ -4848,14 +4845,14 @@ name|field
 argument_list|,
 name|expected
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|field
 argument_list|)
 argument_list|,
 name|actual
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 name|field
 argument_list|)
@@ -4922,6 +4919,8 @@ literal|"@inProceedings{foo,"
 operator|+
 literal|"  author={Norton Bar}}"
 argument_list|)
+argument_list|,
+name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -5188,7 +5187,10 @@ if|if
 condition|(
 name|a
 operator|.
-name|getCiteKey
+name|getCiteKeyOptional
+argument_list|()
+operator|.
+name|get
 argument_list|()
 operator|.
 name|equals
@@ -5215,11 +5217,16 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
+name|Optional
+operator|.
+name|of
+argument_list|(
 literal|"canh05"
+argument_list|)
 argument_list|,
 name|a
 operator|.
-name|getCiteKey
+name|getCiteKeyOptional
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -5231,7 +5238,7 @@ literal|"K. Crowston and H. Annabi"
 argument_list|,
 name|a
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"author"
 argument_list|)
@@ -5248,7 +5255,7 @@ literal|"Title A"
 argument_list|,
 name|a
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"title"
 argument_list|)
@@ -5273,11 +5280,16 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
+name|Optional
+operator|.
+name|of
+argument_list|(
 literal|"foo"
+argument_list|)
 argument_list|,
 name|b
 operator|.
-name|getCiteKey
+name|getCiteKeyOptional
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -5289,7 +5301,7 @@ literal|"Norton Bar"
 argument_list|,
 name|b
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"author"
 argument_list|)
@@ -5401,7 +5413,10 @@ if|if
 condition|(
 name|a
 operator|.
-name|getCiteKey
+name|getCiteKeyOptional
+argument_list|()
+operator|.
+name|get
 argument_list|()
 operator|.
 name|equals
@@ -5549,7 +5564,10 @@ if|if
 condition|(
 name|a
 operator|.
-name|getCiteKey
+name|getCiteKeyOptional
+argument_list|()
+operator|.
+name|get
 argument_list|()
 operator|.
 name|equals
@@ -6158,18 +6176,16 @@ argument_list|)
 expr_stmt|;
 name|Assert
 operator|.
-name|assertEquals
+name|assertTrue
 argument_list|(
-literal|"bibtex/bibtexkey/Clarkson06"
-argument_list|,
 name|dcSchema
 operator|.
 name|getRelationships
 argument_list|()
 operator|.
-name|get
+name|contains
 argument_list|(
-literal|0
+literal|"bibtex/bibtexkey/Clarkson06"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -6467,6 +6483,7 @@ operator|.
 name|fail
 argument_list|()
 expr_stmt|;
+return|return;
 block|}
 name|XMPMetadata
 name|meta
@@ -6686,18 +6703,16 @@ argument_list|)
 expr_stmt|;
 name|Assert
 operator|.
-name|assertEquals
+name|assertTrue
 argument_list|(
-literal|"bibtex/bibtexkey/Clarkson06"
-argument_list|,
 name|dcSchema
 operator|.
 name|getRelationships
 argument_list|()
 operator|.
-name|get
+name|contains
 argument_list|(
-literal|0
+literal|"bibtex/bibtexkey/Clarkson06"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -6829,6 +6844,8 @@ literal|"  timestamp = {2006.05.29},\n"
 operator|+
 literal|"  url = {http://james.howison.name/publications.html}}"
 argument_list|)
+argument_list|,
+name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -7160,13 +7177,11 @@ comment|// First check conversion from .bib to .xmp
 name|File
 name|tempBib
 init|=
-name|File
+name|tempFolder
 operator|.
-name|createTempFile
+name|newFile
 argument_list|(
-literal|"JabRef"
-argument_list|,
-literal|".bib"
+literal|"JabRef.bib"
 argument_list|)
 decl_stmt|;
 try|try
@@ -7309,28 +7324,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-finally|finally
-block|{
-if|if
-condition|(
-operator|!
-name|tempBib
-operator|.
-name|delete
-argument_list|()
-condition|)
-block|{
-name|System
-operator|.
-name|err
-operator|.
-name|println
-argument_list|(
-literal|"Cannot delete temporary file"
-argument_list|)
-expr_stmt|;
-block|}
-block|}
 block|}
 end_function
 
@@ -7435,7 +7428,11 @@ decl_stmt|;
 name|ParserResult
 name|result
 init|=
+operator|new
 name|BibtexParser
+argument_list|(
+name|importFormatPreferences
+argument_list|)
 operator|.
 name|parse
 argument_list|(
@@ -7795,14 +7792,12 @@ block|}
 end_function
 
 begin_comment
-comment|/**      * Test whether the command-line client can pick one of several entries from a bibtex file      * @throws IOException      * @throws TransformerException      *      */
+comment|/**      * Test whether the command-line client can pick one of several entries from a bibtex file      * @throws IOException      * @throws TransformerException      */
 end_comment
 
 begin_function
 annotation|@
 name|Test
-annotation|@
-name|Ignore
 DECL|method|testCommandLineByKey ()
 specifier|public
 name|void
@@ -7816,13 +7811,11 @@ block|{
 name|File
 name|tempBib
 init|=
-name|File
+name|tempFolder
 operator|.
-name|createTempFile
+name|newFile
 argument_list|(
-literal|"JabRef"
-argument_list|,
-literal|".bib"
+literal|"JabRef.bib"
 argument_list|)
 decl_stmt|;
 try|try
@@ -7861,15 +7854,15 @@ name|t2BibtexString
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|{
-comment|// First try canh05
+block|}
 name|PrintStream
-name|oldOut
+name|sysOut
 init|=
 name|System
 operator|.
 name|out
 decl_stmt|;
+comment|// First try canh05
 try|try
 init|(
 name|ByteArrayOutputStream
@@ -7920,7 +7913,7 @@ name|System
 operator|.
 name|setOut
 argument_list|(
-name|oldOut
+name|sysOut
 argument_list|)
 expr_stmt|;
 block|}
@@ -7965,7 +7958,6 @@ literal|0
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
 comment|// Now try OezbekC06
 try|try
 init|(
@@ -7977,13 +7969,6 @@ name|ByteArrayOutputStream
 argument_list|()
 init|)
 block|{
-name|PrintStream
-name|oldOut
-init|=
-name|System
-operator|.
-name|out
-decl_stmt|;
 name|System
 operator|.
 name|setOut
@@ -8026,18 +8011,14 @@ name|System
 operator|.
 name|setOut
 argument_list|(
-name|oldOut
+name|sysOut
 argument_list|)
 expr_stmt|;
 block|}
 block|}
 comment|// PDF should be annotated:
-name|List
-argument_list|<
-name|BibEntry
-argument_list|>
 name|l
-init|=
+operator|=
 name|XMPUtil
 operator|.
 name|readXMP
@@ -8046,7 +8027,7 @@ name|pdfFile
 argument_list|,
 name|xmpPreferences
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|Assert
 operator|.
 name|assertEquals
@@ -8073,29 +8054,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-finally|finally
-block|{
-if|if
-condition|(
-operator|!
-name|tempBib
-operator|.
-name|delete
-argument_list|()
-condition|)
-block|{
-name|System
-operator|.
-name|err
-operator|.
-name|println
-argument_list|(
-literal|"Cannot delete temporary file"
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-block|}
 end_function
 
 begin_comment
@@ -8105,8 +8063,6 @@ end_comment
 begin_function
 annotation|@
 name|Test
-annotation|@
-name|Ignore
 DECL|method|testCommandLineSeveral ()
 specifier|public
 name|void
@@ -8120,13 +8076,11 @@ block|{
 name|File
 name|tempBib
 init|=
-name|File
+name|tempFolder
 operator|.
-name|createTempFile
+name|newFile
 argument_list|(
-literal|"JabRef"
-argument_list|,
-literal|".bib"
+literal|"JabRef.bib"
 argument_list|)
 decl_stmt|;
 try|try
@@ -8277,7 +8231,10 @@ if|if
 condition|(
 name|a
 operator|.
-name|getCiteKey
+name|getCiteKeyOptional
+argument_list|()
+operator|.
+name|get
 argument_list|()
 operator|.
 name|equals
@@ -8336,28 +8293,6 @@ argument_list|,
 name|b
 argument_list|)
 expr_stmt|;
-block|}
-finally|finally
-block|{
-if|if
-condition|(
-operator|!
-name|tempBib
-operator|.
-name|delete
-argument_list|()
-condition|)
-block|{
-name|System
-operator|.
-name|err
-operator|.
-name|println
-argument_list|(
-literal|"Cannot delete temporary file"
-argument_list|)
-expr_stmt|;
-block|}
 block|}
 block|}
 end_function
@@ -8429,6 +8364,8 @@ literal|"\n"
 operator|+
 literal|"}"
 argument_list|)
+argument_list|,
+name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -8541,7 +8478,7 @@ name|parse
 argument_list|(
 name|x
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"author"
 argument_list|)
@@ -8679,7 +8616,11 @@ block|{
 name|ParserResult
 name|result
 init|=
+operator|new
 name|BibtexParser
+argument_list|(
+name|importFormatPreferences
+argument_list|)
 operator|.
 name|parse
 argument_list|(
@@ -8779,7 +8720,7 @@ name|parse
 argument_list|(
 name|b
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"author"
 argument_list|)
@@ -8853,7 +8794,7 @@ name|parse
 argument_list|(
 name|b
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"author"
 argument_list|)
@@ -8892,6 +8833,8 @@ operator|.
 name|fail
 argument_list|()
 expr_stmt|;
+return|return;
+comment|// To avoid warnings
 block|}
 name|XMPMetadata
 name|meta
@@ -9053,7 +8996,7 @@ name|parse
 argument_list|(
 name|b
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"author"
 argument_list|)

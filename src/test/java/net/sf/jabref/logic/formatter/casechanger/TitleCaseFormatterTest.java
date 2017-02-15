@@ -78,10 +78,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|test ()
+DECL|method|eachFirstLetterIsUppercased ()
 specifier|public
 name|void
-name|test
+name|eachFirstLetterIsUppercased
 parameter_list|()
 block|{
 name|Assert
@@ -98,6 +98,38 @@ literal|"upper each first"
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|eachFirstLetterIsUppercasedAndOthersLowercased ()
+specifier|public
+name|void
+name|eachFirstLetterIsUppercasedAndOthersLowercased
+parameter_list|()
+block|{
+name|Assert
+operator|.
+name|assertEquals
+argument_list|(
+literal|"Upper Each First"
+argument_list|,
+name|formatter
+operator|.
+name|format
+argument_list|(
+literal|"upper eACH first"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|eachFirstLetterIsUppercasedAndATralingAndIsAlsoUppercased ()
+specifier|public
+name|void
+name|eachFirstLetterIsUppercasedAndATralingAndIsAlsoUppercased
+parameter_list|()
+block|{
 name|Assert
 operator|.
 name|assertEquals
@@ -112,6 +144,38 @@ literal|"an upper each first and"
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|eachFirstLetterIsUppercasedAndATralingAndIsAlsoCorrectlyCased ()
+specifier|public
+name|void
+name|eachFirstLetterIsUppercasedAndATralingAndIsAlsoCorrectlyCased
+parameter_list|()
+block|{
+name|Assert
+operator|.
+name|assertEquals
+argument_list|(
+literal|"An Upper Each First And"
+argument_list|,
+name|formatter
+operator|.
+name|format
+argument_list|(
+literal|"an upper each first AND"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|eachFirstLetterIsUppercasedButIntermediateAndsAreKeptLowercase ()
+specifier|public
+name|void
+name|eachFirstLetterIsUppercasedButIntermediateAndsAreKeptLowercase
+parameter_list|()
+block|{
 name|Assert
 operator|.
 name|assertEquals
@@ -126,6 +190,38 @@ literal|"an upper each of the and first and"
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|eachFirstLetterIsUppercasedButIntermediateAndsArePutLowercase ()
+specifier|public
+name|void
+name|eachFirstLetterIsUppercasedButIntermediateAndsArePutLowercase
+parameter_list|()
+block|{
+name|Assert
+operator|.
+name|assertEquals
+argument_list|(
+literal|"An Upper Each of the and First And"
+argument_list|,
+name|formatter
+operator|.
+name|format
+argument_list|(
+literal|"an upper each of the AND first and"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|theAfterColonGetsCapitalized ()
+specifier|public
+name|void
+name|theAfterColonGetsCapitalized
+parameter_list|()
+block|{
 name|Assert
 operator|.
 name|assertEquals
@@ -140,6 +236,15 @@ literal|"an upper each of: the and first and"
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|completeWordsInCurlyBracketsIsLeftUnchanged ()
+specifier|public
+name|void
+name|completeWordsInCurlyBracketsIsLeftUnchanged
+parameter_list|()
+block|{
 name|Assert
 operator|.
 name|assertEquals
@@ -154,6 +259,15 @@ literal|"AN UPPER FIRST WITH AND WITHOUT {CURLY} {brackets}"
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|lettersInCurlyBracketsIsLeftUnchanged ()
+specifier|public
+name|void
+name|lettersInCurlyBracketsIsLeftUnchanged
+parameter_list|()
+block|{
 name|Assert
 operator|.
 name|assertEquals
@@ -165,6 +279,52 @@ operator|.
 name|format
 argument_list|(
 literal|"AN UPPER FIRST WITH {A}ND WITHOUT {C}URLY {b}rackets"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|intraWordLettersInCurlyBracketsIsLeftUnchanged ()
+specifier|public
+name|void
+name|intraWordLettersInCurlyBracketsIsLeftUnchanged
+parameter_list|()
+block|{
+name|Assert
+operator|.
+name|assertEquals
+argument_list|(
+literal|"{b}rackets {b}rac{K}ets Brack{E}ts"
+argument_list|,
+name|formatter
+operator|.
+name|format
+argument_list|(
+literal|"{b}RaCKeTS {b}RaC{K}eTS bRaCK{E}ts"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|testTwoExperiencesTitle ()
+specifier|public
+name|void
+name|testTwoExperiencesTitle
+parameter_list|()
+block|{
+name|Assert
+operator|.
+name|assertEquals
+argument_list|(
+literal|"Two Experiences Designing for Effective Security"
+argument_list|,
+name|formatter
+operator|.
+name|format
+argument_list|(
+literal|"Two experiences designing for effective security"
 argument_list|)
 argument_list|)
 expr_stmt|;

@@ -86,6 +86,8 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
 name|importer
 operator|.
 name|fetcher
@@ -482,6 +484,27 @@ name|empty
 argument_list|()
 return|;
 block|}
+block|}
+comment|/**      * Determines whether a DOI is valid or not      *      * @param doi the DOI string      * @return true if DOI is valid, false otherwise      */
+DECL|method|isValid (String doi )
+specifier|public
+specifier|static
+name|boolean
+name|isValid
+parameter_list|(
+name|String
+name|doi
+parameter_list|)
+block|{
+return|return
+name|build
+argument_list|(
+name|doi
+argument_list|)
+operator|.
+name|isPresent
+argument_list|()
+return|;
 block|}
 comment|/**      * Tries to find a DOI inside the given text.      *      * @param text the Text which might contain a DOI      * @return an Optional containing the DOI or an empty Optional      */
 DECL|method|findInText (String text)

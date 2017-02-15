@@ -1,8 +1,4 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
-begin_comment
-comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
-end_comment
-
 begin_package
 DECL|package|net.sf.jabref.gui.autocompleter
 package|package
@@ -1176,6 +1172,36 @@ name|autoCompleter
 operator|=
 name|autoCompleter
 expr_stmt|;
+block|}
+DECL|method|setVisible (boolean visible)
+specifier|public
+name|void
+name|setVisible
+parameter_list|(
+name|boolean
+name|visible
+parameter_list|)
+block|{
+name|popup
+operator|.
+name|setVisible
+argument_list|(
+name|visible
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|isVisible ()
+specifier|public
+name|boolean
+name|isVisible
+parameter_list|()
+block|{
+return|return
+name|popup
+operator|.
+name|isVisible
+argument_list|()
+return|;
 block|}
 block|}
 end_class

@@ -32,7 +32,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|BibDatabaseContext
+name|logic
+operator|.
+name|layout
+operator|.
+name|LayoutFormatterPreferences
 import|;
 end_import
 
@@ -44,11 +48,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|model
 operator|.
-name|journals
+name|database
 operator|.
-name|JournalAbbreviationLoader
+name|BibDatabaseContext
 import|;
 end_import
 
@@ -76,9 +80,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|preferences
+name|model
 operator|.
-name|JabRefPreferences
+name|metadata
+operator|.
+name|FileDirectoryPreferences
 import|;
 end_import
 
@@ -155,17 +161,27 @@ operator|.
 name|class
 argument_list|)
 argument_list|,
+operator|new
+name|CleanupPreferences
+argument_list|(
+literal|""
+argument_list|,
+literal|""
+argument_list|,
 name|mock
 argument_list|(
-name|JournalAbbreviationLoader
+name|LayoutFormatterPreferences
 operator|.
 name|class
 argument_list|)
 argument_list|,
-name|JabRefPreferences
+name|mock
+argument_list|(
+name|FileDirectoryPreferences
 operator|.
-name|getInstance
-argument_list|()
+name|class
+argument_list|)
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -228,7 +244,7 @@ argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"issn"
 argument_list|)
@@ -294,7 +310,7 @@ argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"issn"
 argument_list|)
@@ -360,7 +376,7 @@ argument_list|)
 argument_list|,
 name|entry
 operator|.
-name|getFieldOptional
+name|getField
 argument_list|(
 literal|"issn"
 argument_list|)
