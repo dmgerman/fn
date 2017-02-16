@@ -46,16 +46,6 @@ begin_import
 import|import
 name|org
 operator|.
-name|jabref
-operator|.
-name|JabRefException
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
 name|junit
 operator|.
 name|After
