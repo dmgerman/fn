@@ -8580,7 +8580,7 @@ name|Paths
 operator|.
 name|get
 argument_list|(
-literal|"src/test/resources/net/sf/jabref/util/twente.bib"
+literal|"src/test/resources/org/jabref/util/twente.bib"
 argument_list|)
 argument_list|,
 name|StandardCharsets

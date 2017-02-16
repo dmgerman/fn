@@ -151,7 +151,7 @@ specifier|final
 name|String
 name|filesDirectory
 init|=
-literal|"src/test/resources/net/sf/jabref/imports/unlinkedFilesTestFolder"
+literal|"src/test/resources/org/jabref/imports/unlinkedFilesTestFolder"
 decl_stmt|;
 DECL|field|database
 specifier|private

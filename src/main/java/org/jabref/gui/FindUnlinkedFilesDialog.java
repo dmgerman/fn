@@ -1238,7 +1238,7 @@ specifier|private
 name|boolean
 name|checkBoxWhyIsThereNoGetSelectedStupidSwing
 decl_stmt|;
-comment|/**      * For Unit-testing only.<i>Don't remove!</i><br>      * Used via reflection in {@link net.sf.jabref.importer.DatabaseFileLookup} to construct this      * class.      */
+comment|/**      * For Unit-testing only.<i>Don't remove!</i><br>      * Used via reflection in {@link org.jabref.logic.importer.DatabaseFileLookupTest} to construct this      * class.      */
 annotation|@
 name|SuppressWarnings
 argument_list|(

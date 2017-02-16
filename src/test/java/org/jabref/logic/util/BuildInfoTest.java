@@ -85,7 +85,7 @@ init|=
 operator|new
 name|BuildInfo
 argument_list|(
-literal|"/net/sf/jabref/util/build.properties"
+literal|"/org/jabref/util/build.properties"
 argument_list|)
 decl_stmt|;
 name|assertEquals

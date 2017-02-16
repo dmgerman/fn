@@ -137,7 +137,7 @@ init|=
 operator|new
 name|File
 argument_list|(
-literal|"src/test/resources/net/sf/jabref/customPreferences.xml"
+literal|"src/test/resources/org/jabref/customPreferences.xml"
 argument_list|)
 decl_stmt|;
 name|prefs

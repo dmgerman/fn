@@ -229,7 +229,7 @@ argument_list|(
 operator|new
 name|File
 argument_list|(
-literal|"src/test/resources/net/sf/jabref/logic/bst/abbrv.bst"
+literal|"src/test/resources/org/jabref/logic/bst/abbrv.bst"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -4345,7 +4345,7 @@ argument_list|(
 operator|new
 name|File
 argument_list|(
-literal|"src/test/resources/net/sf/jabref/logic/bst/abbrv.bst"
+literal|"src/test/resources/org/jabref/logic/bst/abbrv.bst"
 argument_list|)
 argument_list|)
 decl_stmt|;

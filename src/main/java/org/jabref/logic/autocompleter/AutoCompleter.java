@@ -67,7 +67,7 @@ name|BibEntry
 name|entry
 parameter_list|)
 function_decl|;
-comment|/**      * States whether the field consists of multiple values (false) or of a single value (true)      *      * Symptom: if false, net.sf.jabref.gui.AutoCompleteListener#getCurrentWord(JTextComponent comp)      * returns current word only, if true, it returns the text beginning from the buffer.      */
+comment|/**      * States whether the field consists of multiple values (false) or of a single value (true)      *      * Symptom: if false, org.jabref.gui.AutoCompleteListener#getCurrentWord(JTextComponent comp)      * returns current word only, if true, it returns the text beginning from the buffer.      */
 DECL|method|isSingleUnitField ()
 name|boolean
 name|isSingleUnitField

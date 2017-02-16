@@ -176,7 +176,7 @@ init|=
 operator|new
 name|FileInputStream
 argument_list|(
-literal|"src/test/resources/net/sf/jabref/util/twente.bib"
+literal|"src/test/resources/org/jabref/util/twente.bib"
 argument_list|)
 init|;
 name|InputStreamReader

@@ -8517,7 +8517,7 @@ comment|// Store the current edit in case this action is called during the editi
 name|storeCurrentEdit
 argument_list|()
 expr_stmt|;
-comment|// This is a partial clone of net.sf.jabref.gui.BasePanel.setupActions().new AbstractWorker() {...}.run()
+comment|// This is a partial clone of org.jabref.gui.BasePanel.setupActions().new AbstractWorker() {...}.run()
 comment|// this updates the table automatically, on close, but not within the tab
 name|Optional
 argument_list|<

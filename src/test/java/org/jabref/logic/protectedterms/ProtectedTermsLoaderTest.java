@@ -323,7 +323,7 @@ name|class
 operator|.
 name|getResource
 argument_list|(
-literal|"/net/sf/jabref/logic/protectedterms/namedterms.terms"
+literal|"/org/jabref/logic/protectedterms/namedterms.terms"
 argument_list|)
 operator|.
 name|toURI
@@ -384,7 +384,7 @@ name|class
 operator|.
 name|getResource
 argument_list|(
-literal|"/net/sf/jabref/logic/protectedterms/namedterms.terms"
+literal|"/org/jabref/logic/protectedterms/namedterms.terms"
 argument_list|)
 operator|.
 name|toURI
@@ -472,7 +472,7 @@ name|class
 operator|.
 name|getResource
 argument_list|(
-literal|"/net/sf/jabref/logic/protectedterms/namedterms.terms"
+literal|"/org/jabref/logic/protectedterms/namedterms.terms"
 argument_list|)
 operator|.
 name|toURI
@@ -530,7 +530,7 @@ name|class
 operator|.
 name|getResource
 argument_list|(
-literal|"/net/sf/jabref/logic/protectedterms/namedterms.terms"
+literal|"/org/jabref/logic/protectedterms/namedterms.terms"
 argument_list|)
 operator|.
 name|toURI
@@ -586,7 +586,7 @@ name|class
 operator|.
 name|getResource
 argument_list|(
-literal|"/net/sf/jabref/logic/protectedterms/namedterms.terms"
+literal|"/org/jabref/logic/protectedterms/namedterms.terms"
 argument_list|)
 operator|.
 name|toURI
@@ -642,7 +642,7 @@ name|class
 operator|.
 name|getResource
 argument_list|(
-literal|"/net/sf/jabref/logic/protectedterms/namedterms.terms"
+literal|"/org/jabref/logic/protectedterms/namedterms.terms"
 argument_list|)
 operator|.
 name|toURI
@@ -698,7 +698,7 @@ name|class
 operator|.
 name|getResource
 argument_list|(
-literal|"/net/sf/jabref/logic/protectedterms/unnamedterms.terms"
+literal|"/org/jabref/logic/protectedterms/unnamedterms.terms"
 argument_list|)
 operator|.
 name|toURI

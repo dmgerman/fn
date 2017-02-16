@@ -2555,7 +2555,7 @@ init|=
 literal|"usePDFReader"
 decl_stmt|;
 comment|// Currently, it is not possible to specify defaults for specific entry types
-comment|// When this should be made possible, the code to inspect is net.sf.jabref.gui.preftabs.BibtexKeyPatternPrefTab.storeSettings() -> LabelPattern keypatterns = getCiteKeyPattern(); etc
+comment|// When this should be made possible, the code to inspect is org.jabref.gui.preftabs.BibtexKeyPatternPrefTab.storeSettings() -> LabelPattern keypatterns = getCiteKeyPattern(); etc
 DECL|field|DEFAULT_BIBTEX_KEY_PATTERN
 specifier|public
 specifier|static
@@ -8513,7 +8513,7 @@ condition|)
 block|{
 comment|// no default value
 comment|// the first entry in the array is the full pattern
-comment|// see net.sf.jabref.logic.labelPattern.BibtexKeyPatternUtil.split(String)
+comment|// see org.jabref.logic.labelPattern.BibtexKeyPatternUtil.split(String)
 name|pre
 operator|.
 name|put

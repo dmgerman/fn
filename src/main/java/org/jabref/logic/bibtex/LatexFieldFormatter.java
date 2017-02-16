@@ -75,7 +75,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Currently the only implementation of net.sf.jabref.exporter.FieldFormatter  *<p>  * Obeys following settings:  * * JabRefPreferences.RESOLVE_STRINGS_ALL_FIELDS  * * JabRefPreferences.DO_NOT_RESOLVE_STRINGS_FOR  * * JabRefPreferences.WRITEFIELD_WRAPFIELD  */
+comment|/**  * Currently the only implementation of org.jabref.exporter.FieldFormatter  *<p>  * Obeys following settings:  * * JabRefPreferences.RESOLVE_STRINGS_ALL_FIELDS  * * JabRefPreferences.DO_NOT_RESOLVE_STRINGS_FOR  * * JabRefPreferences.WRITEFIELD_WRAPFIELD  */
 end_comment
 
 begin_class

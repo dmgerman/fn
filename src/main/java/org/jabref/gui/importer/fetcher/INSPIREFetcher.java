@@ -508,7 +508,6 @@ argument_list|()
 return|;
 block|}
 block|}
-comment|/*      * @see net.sf.jabref.imports.fetcher.EntryFetcher      */
 annotation|@
 name|Override
 DECL|method|getHelpPage ()

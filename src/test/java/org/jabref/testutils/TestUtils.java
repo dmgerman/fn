@@ -47,7 +47,7 @@ specifier|final
 name|String
 name|PATH_TO_TEST_BIBTEX
 init|=
-literal|"src/test/resources/net/sf/jabref/bibtexFiles/test.bib"
+literal|"src/test/resources/org/jabref/bibtexFiles/test.bib"
 decl_stmt|;
 comment|/**      * Initialize JabRef. Can be cleaned up with      * {@link TestUtils#closeJabRef()}      *      * @see TestUtils#closeJabRef()      */
 DECL|method|initJabRef ()

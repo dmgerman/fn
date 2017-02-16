@@ -152,7 +152,7 @@ name|HashSet
 argument_list|<>
 argument_list|()
 expr_stmt|;
-comment|// the following two are also coded in net.sf.jabref.logic.bibtex.LatexFieldFormatter.format(String, String)
+comment|// the following two are also coded in org.jabref.logic.bibtex.LatexFieldFormatter.format(String, String)
 name|multiLineFields
 operator|.
 name|add

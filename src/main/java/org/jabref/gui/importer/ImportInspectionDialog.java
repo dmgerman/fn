@@ -2936,7 +2936,7 @@ name|closeAction
 argument_list|)
 expr_stmt|;
 block|}
-comment|/* (non-Javadoc)      * @see net.sf.jabref.gui.ImportInspection#setProgress(int, int)      */
+comment|/* (non-Javadoc)      * @see package org.jabref.logic.importer.ImportInspector#setProgress(int, int)      */
 annotation|@
 name|Override
 DECL|method|setProgress (int current, int max)
@@ -2990,7 +2990,7 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-comment|/* (non-Javadoc)      * @see net.sf.jabref.gui.ImportInspection#addEntry(net.sf.jabref.BibEntry)      */
+comment|/* (non-Javadoc)      * @see package org.jabref.logic.importer.ImportInspector#addEntry(org.jabref.model.entry.BibEntry)      */
 annotation|@
 name|Override
 DECL|method|addEntry (BibEntry entry)
@@ -3026,7 +3026,6 @@ name|list
 argument_list|)
 expr_stmt|;
 block|}
-comment|/* (non-Javadoc)      * @see net.sf.jabref.gui.ImportInspection#addEntries(java.util.Collection)      */
 DECL|method|addEntries (Collection<BibEntry> entriesToAdd)
 specifier|public
 name|void
@@ -3251,7 +3250,6 @@ name|empty
 argument_list|()
 return|;
 block|}
-comment|/* (non-Javadoc)      * @see net.sf.jabref.gui.ImportInspection#entryListComplete()      */
 DECL|method|entryListComplete ()
 specifier|public
 name|void

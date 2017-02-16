@@ -1093,7 +1093,6 @@ return|return
 name|selection
 return|;
 block|}
-comment|/* (non-Javadoc)     * @see net.sf.jabref.gui.ImportInspection#addEntry(net.sf.jabref.BibEntry)     */
 DECL|method|addEntry (String entryId, JLabel preview)
 specifier|public
 name|void

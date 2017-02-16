@@ -187,7 +187,7 @@ name|DataFlavor
 operator|.
 name|javaJVMLocalObjectMimeType
 operator|+
-literal|";class=net.sf.jabref.gui.groups.TransferableEntrySelection"
+literal|";class=org.jabref.gui.groups.TransferableEntrySelection"
 argument_list|)
 expr_stmt|;
 name|df2
