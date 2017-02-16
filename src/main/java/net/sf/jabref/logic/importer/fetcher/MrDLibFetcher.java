@@ -711,7 +711,7 @@ name|builder
 operator|.
 name|setHost
 argument_list|(
-literal|"api.mrdlib.org"
+literal|"api.mr-dlib.org"
 argument_list|)
 expr_stmt|;
 name|builder
