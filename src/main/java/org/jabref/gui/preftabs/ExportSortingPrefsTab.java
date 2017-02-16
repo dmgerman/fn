@@ -157,9 +157,9 @@ comment|/**  * Preference tab for file sorting options.  */
 end_comment
 
 begin_class
-DECL|class|FileSortTab
+DECL|class|ExportSortingPrefsTab
 class|class
-name|FileSortTab
+name|ExportSortingPrefsTab
 extends|extends
 name|JPanel
 implements|implements
@@ -195,9 +195,9 @@ specifier|final
 name|SaveOrderConfigDisplay
 name|exportOrderPanel
 decl_stmt|;
-DECL|method|FileSortTab (JabRefPreferences prefs)
+DECL|method|ExportSortingPrefsTab (JabRefPreferences prefs)
 specifier|public
-name|FileSortTab
+name|ExportSortingPrefsTab
 parameter_list|(
 name|JabRefPreferences
 name|prefs

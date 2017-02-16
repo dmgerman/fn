@@ -518,7 +518,7 @@ specifier|private
 name|SaveOrderConfig
 name|oldSaveOrderConfig
 decl_stmt|;
-comment|/* The code for "Save sort order" is copied from FileSortTab and slightly updated to fit storing at metadata */
+comment|/* The code for "Save sort order" is copied from ExportSortingPrefsTab and slightly updated to fit storing at metadata */
 DECL|field|saveInOriginalOrder
 specifier|private
 name|JRadioButton
