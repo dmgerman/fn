@@ -15,7 +15,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * This Event is fired from {@link net.sf.jabref.logic.autosaveandbackup.AutosaveManager} in case that a save task is pending.  */
+comment|/**  * This Event is fired from {@link org.jabref.logic.autosaveandbackup.AutosaveManager} in case that a save task is pending.  */
 end_comment
 
 begin_class

@@ -160,7 +160,7 @@ specifier|public
 class|class
 name|InternalBibtexFields
 block|{
-comment|/**      * These are the fields JabRef always displays as default      * {@link net.sf.jabref.preferences.JabRefPreferences#setLanguageDependentDefaultValues()}      *      * A user can change them. The change is currently stored in the preferences only and not explicitley exposed as separte preferences object      */
+comment|/**      * These are the fields JabRef always displays as default      * {@link org.jabref.preferences.JabRefPreferences#setLanguageDependentDefaultValues()}      *      * A user can change them. The change is currently stored in the preferences only and not explicitley exposed as separte preferences object      */
 DECL|field|DEFAULT_GENERAL_FIELDS
 specifier|public
 specifier|static
