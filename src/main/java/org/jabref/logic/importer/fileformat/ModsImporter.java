@@ -960,7 +960,7 @@ name|JAXBContext
 operator|.
 name|newInstance
 argument_list|(
-literal|"net.sf.jabref.logic.importer.fileformat.mods"
+literal|"org.jabref.logic.importer.fileformat.mods"
 argument_list|)
 expr_stmt|;
 block|}

@@ -1464,7 +1464,7 @@ name|JAXBContext
 operator|.
 name|newInstance
 argument_list|(
-literal|"net.sf.jabref.logic.importer.fileformat.medline"
+literal|"org.jabref.logic.importer.fileformat.medline"
 argument_list|)
 decl_stmt|;
 name|XMLInputFactory
