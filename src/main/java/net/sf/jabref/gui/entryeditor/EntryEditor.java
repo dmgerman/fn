@@ -2530,10 +2530,11 @@ comment|// special tabs (like MathSciNet Reviews)
 name|addSpecialTabs
 argument_list|()
 expr_stmt|;
-comment|// source tab
-name|addSourceTab
+comment|// pdf annotations tab
+name|addPdfTab
 argument_list|()
 expr_stmt|;
+comment|//related articles
 if|if
 condition|(
 name|Globals
@@ -2548,13 +2549,12 @@ name|SHOW_RECOMMENDATIONS
 argument_list|)
 condition|)
 block|{
-comment|//related articles
 name|addRelatedArticlesTab
 argument_list|()
 expr_stmt|;
 block|}
-comment|// pdf annotations tab
-name|addPdfTab
+comment|// source tab
+name|addSourceTab
 argument_list|()
 expr_stmt|;
 block|}
