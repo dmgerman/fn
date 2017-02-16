@@ -195,7 +195,7 @@ name|config
 operator|.
 name|getLoggerConfig
 argument_list|(
-literal|"net.sf.jabref"
+literal|"org.jabref"
 argument_list|)
 decl_stmt|;
 name|loggerConfig
