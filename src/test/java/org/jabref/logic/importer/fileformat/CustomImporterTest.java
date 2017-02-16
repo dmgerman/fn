@@ -173,7 +173,7 @@ parameter_list|()
 block|{
 name|assertEquals
 argument_list|(
-literal|"net.sf.jabref.logic.importer.fileformat.CopacImporter"
+literal|"org.jabref.logic.importer.fileformat.CopacImporter"
 argument_list|,
 name|importer
 operator|.
@@ -196,7 +196,7 @@ name|Paths
 operator|.
 name|get
 argument_list|(
-literal|"src/main/java/net/sf/jabref/logic/importer/fileformat/CopacImporter.java"
+literal|"src/main/java/org/jabref/logic/importer/fileformat/CopacImporter.java"
 argument_list|)
 argument_list|,
 name|importer
@@ -220,9 +220,9 @@ name|Arrays
 operator|.
 name|asList
 argument_list|(
-literal|"src/main/java/net/sf/jabref/logic/importer/fileformat/CopacImporter.java"
+literal|"src/main/java/org/jabref/logic/importer/fileformat/CopacImporter.java"
 argument_list|,
-literal|"net.sf.jabref.logic.importer.fileformat.CopacImporter"
+literal|"org.jabref.logic.importer.fileformat.CopacImporter"
 argument_list|)
 argument_list|,
 name|importer
@@ -406,9 +406,9 @@ init|=
 operator|new
 name|CustomImporter
 argument_list|(
-literal|"src/main/java/net/sf/jabref/logic/importer/fileformat/CopacImporter.java"
+literal|"src/main/java/org/jabref/logic/importer/fileformat/CopacImporter.java"
 argument_list|,
-literal|"net.sf.jabref.logic.importer.fileformat.CopacImporter"
+literal|"org.jabref.logic.importer.fileformat.CopacImporter"
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -434,7 +434,7 @@ return|return
 operator|new
 name|CustomImporter
 argument_list|(
-literal|"src/main/java/net/sf/jabref/logic/importer/fileformat/"
+literal|"src/main/java/org/jabref/logic/importer/fileformat/"
 operator|+
 name|importer
 operator|.

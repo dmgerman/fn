@@ -75,7 +75,7 @@ name|Paths
 operator|.
 name|get
 argument_list|(
-literal|"src/test/resources/net/sf/jabref/logic/importer/unlinkedFilesTestFolder/pdfInDatabase.pdf"
+literal|"src/test/resources/org/jabref/logic/importer/unlinkedFilesTestFolder/pdfInDatabase.pdf"
 argument_list|)
 operator|.
 name|toFile
@@ -92,7 +92,7 @@ name|Paths
 operator|.
 name|get
 argument_list|(
-literal|"src/test/resources/net/sf/jabref/logic/importer/unlinkedFilesTestFolder/pdfNotInDatabase.pdf"
+literal|"src/test/resources/org/jabref/logic/importer/unlinkedFilesTestFolder/pdfNotInDatabase.pdf"
 argument_list|)
 operator|.
 name|toFile
@@ -109,7 +109,7 @@ name|Paths
 operator|.
 name|get
 argument_list|(
-literal|"src/test/resources/net/sf/jabref/logic/importer/unlinkedFilesTestFolder"
+literal|"src/test/resources/org/jabref/logic/importer/unlinkedFilesTestFolder"
 argument_list|)
 operator|.
 name|toFile
@@ -143,7 +143,7 @@ name|Paths
 operator|.
 name|get
 argument_list|(
-literal|"src/test/resources/net/sf/jabref/logic/importer/unlinkedFilesTestFolder/null.pdf"
+literal|"src/test/resources/org/jabref/logic/importer/unlinkedFilesTestFolder/null.pdf"
 argument_list|)
 operator|.
 name|toFile
@@ -160,7 +160,7 @@ name|Paths
 operator|.
 name|get
 argument_list|(
-literal|"src/test/resources/net/sf/jabref/util/unlinkedFilesTestBib.bib"
+literal|"src/test/resources/org/jabref/util/unlinkedFilesTestBib.bib"
 argument_list|)
 operator|.
 name|toFile

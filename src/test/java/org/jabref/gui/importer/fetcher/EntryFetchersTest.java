@@ -247,7 +247,7 @@ init|=
 operator|new
 name|Reflections
 argument_list|(
-literal|"net.sf.jabref"
+literal|"org.jabref"
 argument_list|)
 decl_stmt|;
 DECL|field|importFormatPreferences
