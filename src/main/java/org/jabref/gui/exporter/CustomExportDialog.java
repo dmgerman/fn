@@ -218,8 +218,6 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|gui
-operator|.
 name|FileDialog
 import|;
 end_import
@@ -232,8 +230,6 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|gui
-operator|.
 name|JabRefFrame
 import|;
 end_import
@@ -243,8 +239,6 @@ import|import
 name|org
 operator|.
 name|jabref
-operator|.
-name|gui
 operator|.
 name|gui
 operator|.

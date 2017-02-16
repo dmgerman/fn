@@ -152,8 +152,6 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|gui
-operator|.
 name|WrapLayout
 import|;
 end_import

@@ -74,8 +74,6 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|gui
-operator|.
 name|protectedterms
 operator|.
 name|NewProtectedTermsFileDialog

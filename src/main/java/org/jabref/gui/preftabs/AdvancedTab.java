@@ -110,8 +110,6 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|gui
-operator|.
 name|help
 operator|.
 name|HelpAction
@@ -123,8 +121,6 @@ import|import
 name|org
 operator|.
 name|jabref
-operator|.
-name|gui
 operator|.
 name|gui
 operator|.

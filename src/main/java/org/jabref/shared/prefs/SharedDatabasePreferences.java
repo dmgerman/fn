@@ -84,8 +84,6 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|gui
-operator|.
 name|shared
 operator|.
 name|ConnectToSharedDatabaseDialog

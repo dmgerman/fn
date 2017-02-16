@@ -62,8 +62,6 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|gui
-operator|.
 name|ClipBoardManager
 import|;
 end_import

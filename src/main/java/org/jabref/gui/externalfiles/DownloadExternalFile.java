@@ -132,8 +132,6 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|gui
-operator|.
 name|JabRefFrame
 import|;
 end_import
@@ -174,8 +172,6 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|gui
-operator|.
 name|filelist
 operator|.
 name|FileListEntry
@@ -190,8 +186,6 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|gui
-operator|.
 name|filelist
 operator|.
 name|FileListEntryEditor
@@ -203,8 +197,6 @@ import|import
 name|org
 operator|.
 name|jabref
-operator|.
-name|gui
 operator|.
 name|gui
 operator|.

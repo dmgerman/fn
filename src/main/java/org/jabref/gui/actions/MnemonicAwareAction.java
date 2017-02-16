@@ -50,8 +50,6 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|gui
-operator|.
 name|IconTheme
 import|;
 end_import

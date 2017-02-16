@@ -170,8 +170,6 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|gui
-operator|.
 name|JabRefFrame
 import|;
 end_import
@@ -198,8 +196,6 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|gui
-operator|.
 name|push
 operator|.
 name|PushToApplication
@@ -211,8 +207,6 @@ import|import
 name|org
 operator|.
 name|jabref
-operator|.
-name|gui
 operator|.
 name|gui
 operator|.

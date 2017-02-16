@@ -184,8 +184,6 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|gui
-operator|.
 name|help
 operator|.
 name|HelpAction

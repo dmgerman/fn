@@ -200,8 +200,6 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|gui
-operator|.
 name|worker
 operator|.
 name|AbstractWorker

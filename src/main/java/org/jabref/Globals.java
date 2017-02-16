@@ -28,8 +28,6 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|gui
-operator|.
 name|GlobalFocusListener
 import|;
 end_import
@@ -42,8 +40,6 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|gui
-operator|.
 name|StateManager
 import|;
 end_import
@@ -53,8 +49,6 @@ import|import
 name|org
 operator|.
 name|jabref
-operator|.
-name|gui
 operator|.
 name|gui
 operator|.

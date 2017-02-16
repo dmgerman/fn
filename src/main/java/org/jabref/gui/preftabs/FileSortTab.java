@@ -94,8 +94,6 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|gui
-operator|.
 name|SaveOrderConfigDisplay
 import|;
 end_import

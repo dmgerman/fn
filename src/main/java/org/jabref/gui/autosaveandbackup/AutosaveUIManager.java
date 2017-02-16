@@ -20,8 +20,6 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|gui
-operator|.
 name|BasePanel
 import|;
 end_import

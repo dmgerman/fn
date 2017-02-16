@@ -38,8 +38,6 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|gui
-operator|.
 name|search
 operator|.
 name|SearchDisplayMode

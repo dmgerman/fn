@@ -104,8 +104,6 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|gui
-operator|.
 name|JabRefFrame
 import|;
 end_import

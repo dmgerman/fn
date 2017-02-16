@@ -102,8 +102,6 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|gui
-operator|.
 name|IconTheme
 import|;
 end_import
@@ -130,8 +128,6 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|gui
-operator|.
 name|keyboard
 operator|.
 name|KeyBinding
@@ -143,8 +139,6 @@ import|import
 name|org
 operator|.
 name|jabref
-operator|.
-name|gui
 operator|.
 name|gui
 operator|.

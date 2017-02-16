@@ -58,8 +58,6 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|gui
-operator|.
 name|importer
 operator|.
 name|fetcher

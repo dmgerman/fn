@@ -130,8 +130,6 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|gui
-operator|.
 name|keyboard
 operator|.
 name|EmacsKeyBindings

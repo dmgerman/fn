@@ -88,8 +88,6 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|gui
-operator|.
 name|remote
 operator|.
 name|JabRefMessageHandler
