@@ -153,7 +153,7 @@ expr_stmt|;
 name|String
 name|expected
 init|=
-literal|"my proxy host"
+literal|"dummyvalue"
 decl_stmt|;
 name|String
 name|actual
@@ -162,9 +162,7 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-name|JabRefPreferences
-operator|.
-name|PROXY_HOSTNAME
+literal|"dummykey"
 argument_list|)
 decl_stmt|;
 name|assertEquals
