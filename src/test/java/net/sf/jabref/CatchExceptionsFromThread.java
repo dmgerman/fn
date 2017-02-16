@@ -14,6 +14,16 @@ begin_import
 import|import
 name|org
 operator|.
+name|jabref
+operator|.
+name|FallbackExceptionHandler
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|junit
 operator|.
 name|rules

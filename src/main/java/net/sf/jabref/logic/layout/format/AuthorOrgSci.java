@@ -34,9 +34,7 @@ end_import
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
+name|org
 operator|.
 name|jabref
 operator|.
@@ -50,9 +48,7 @@ end_import
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
+name|org
 operator|.
 name|jabref
 operator|.
@@ -65,7 +61,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Will return the Authors to match the OrgSci format:  *   *<ul>  *<li>That is the first author is LastFirst, but all others are FirstLast.</li>  *<li>First names are abbreviated</li>  *<li>Spaces between abbreviated first names are NOT removed. Use  * NoSpaceBetweenAbbreviations to achieve this.</li>  *</ul>  *<p>  * See the testcase for examples.  *</p>  *<p>  * Idea from: http://stuermer.ch/blog/bibliography-reference-management-with-jabref.html  *</p>  *   */
+comment|/**  * Will return the Authors to match the OrgSci format:  *  *<ul>  *<li>That is the first author is LastFirst, but all others are FirstLast.</li>  *<li>First names are abbreviated</li>  *<li>Spaces between abbreviated first names are NOT removed. Use  * NoSpaceBetweenAbbreviations to achieve this.</li>  *</ul>  *<p>  * See the testcase for examples.  *</p>  *<p>  * Idea from: http://stuermer.ch/blog/bibliography-reference-management-with-jabref.html  *</p>  *  */
 end_comment
 
 begin_class

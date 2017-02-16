@@ -34,9 +34,7 @@ end_import
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
+name|org
 operator|.
 name|jabref
 operator|.
@@ -49,7 +47,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *<ul>  *<li>Names are given as first name, von and last name.</li>  *<li>First names will be abbreviated.</li>  *<li>Individual authors separated by comma.</li>  *<li>The and of a list of three or more authors is preceeded by a comma  * (Oxford comma)</li>  *</ul>  *   * @author mkovtun  * @author Christopher Oezbek<oezi@oezi.de>  *   */
+comment|/**  *<ul>  *<li>Names are given as first name, von and last name.</li>  *<li>First names will be abbreviated.</li>  *<li>Individual authors separated by comma.</li>  *<li>The and of a list of three or more authors is preceeded by a comma  * (Oxford comma)</li>  *</ul>  *  * @author mkovtun  * @author Christopher Oezbek<oezi@oezi.de>  *  */
 end_comment
 
 begin_class

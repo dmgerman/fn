@@ -48,9 +48,7 @@ end_import
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
+name|org
 operator|.
 name|jabref
 operator|.
@@ -64,9 +62,7 @@ end_import
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
+name|org
 operator|.
 name|jabref
 operator|.
@@ -80,9 +76,7 @@ end_import
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
+name|org
 operator|.
 name|jabref
 operator|.

@@ -34,9 +34,7 @@ end_import
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
+name|org
 operator|.
 name|jabref
 operator|.
@@ -49,7 +47,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Duplicate of AuthorLastFirstAbbreviator.  *   * @see AuthorLastFirstAbbreviator  *   * @author Carlos Silla  */
+comment|/**  * Duplicate of AuthorLastFirstAbbreviator.  *  * @see AuthorLastFirstAbbreviator  *  * @author Carlos Silla  */
 end_comment
 
 begin_class
@@ -60,7 +58,7 @@ name|AuthorAbbreviator
 implements|implements
 name|LayoutFormatter
 block|{
-comment|/*      * (non-Javadoc)      *       * @see net.sf.jabref.export.layout.LayoutFormatter#format(java.lang.String)      */
+comment|/*      * (non-Javadoc)      *      * @see net.sf.jabref.export.layout.LayoutFormatter#format(java.lang.String)      */
 annotation|@
 name|Override
 DECL|method|format (String fieldText)
