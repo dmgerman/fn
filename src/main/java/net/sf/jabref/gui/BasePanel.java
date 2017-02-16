@@ -2349,9 +2349,7 @@ name|annotationCache
 operator|=
 operator|new
 name|FileAnnotationCache
-argument_list|(
-name|bibDatabaseContext
-argument_list|)
+argument_list|()
 expr_stmt|;
 name|setupMainPanel
 argument_list|()
@@ -12713,6 +12711,19 @@ return|;
 block|}
 end_function
 
+begin_function
+DECL|method|getAnnotationCache ()
+specifier|public
+name|FileAnnotationCache
+name|getAnnotationCache
+parameter_list|()
+block|{
+return|return
+name|annotationCache
+return|;
+block|}
+end_function
+
 begin_class
 DECL|class|SearchAndOpenFile
 specifier|private
@@ -14280,19 +14291,6 @@ expr_stmt|;
 block|}
 block|}
 end_class
-
-begin_function
-DECL|method|getAnnotationCache ()
-specifier|public
-name|FileAnnotationCache
-name|getAnnotationCache
-parameter_list|()
-block|{
-return|return
-name|annotationCache
-return|;
-block|}
-end_function
 
 begin_class
 DECL|class|PrintPreviewAction
