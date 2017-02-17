@@ -669,6 +669,15 @@ operator|.
 name|month
 argument_list|)
 decl_stmt|;
+comment|//if we encouter an invalid month shortname would be null
+if|if
+condition|(
+name|month
+operator|.
+name|isValid
+argument_list|()
+condition|)
+block|{
 name|fieldValues
 operator|.
 name|put
@@ -682,6 +691,21 @@ operator|.
 name|shortName
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+name|fieldValues
+operator|.
+name|put
+argument_list|(
+name|FieldName
+operator|.
+name|MONTH
+argument_list|,
+literal|""
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 if|if
 condition|(
