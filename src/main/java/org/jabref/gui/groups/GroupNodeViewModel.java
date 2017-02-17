@@ -285,6 +285,16 @@ specifier|final
 name|SimpleBooleanProperty
 name|hasChildren
 decl_stmt|;
+DECL|field|expandedProperty
+specifier|private
+specifier|final
+name|SimpleBooleanProperty
+name|expandedProperty
+init|=
+operator|new
+name|SimpleBooleanProperty
+argument_list|()
+decl_stmt|;
 DECL|field|anySelectedEntriesMatched
 specifier|private
 specifier|final
@@ -521,6 +531,16 @@ literal|"All entries"
 argument_list|)
 argument_list|)
 argument_list|)
+return|;
+block|}
+DECL|method|expandedProperty ()
+specifier|public
+name|SimpleBooleanProperty
+name|expandedProperty
+parameter_list|()
+block|{
+return|return
+name|expandedProperty
 return|;
 block|}
 DECL|method|anySelectedEntriesMatchedProperty ()
@@ -999,6 +1019,25 @@ argument_list|(
 name|subgroup
 argument_list|)
 return|;
+block|}
+DECL|method|toggleExpansion ()
+name|void
+name|toggleExpansion
+parameter_list|()
+block|{
+name|expandedProperty
+argument_list|()
+operator|.
+name|set
+argument_list|(
+operator|!
+name|expandedProperty
+argument_list|()
+operator|.
+name|get
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 end_class

@@ -393,6 +393,10 @@ argument_list|,
 name|GroupNodeViewModel
 operator|::
 name|getChildren
+argument_list|,
+name|GroupNodeViewModel
+operator|::
+name|expandedProperty
 argument_list|)
 argument_list|)
 argument_list|)
@@ -516,7 +520,7 @@ argument_list|()
 operator|.
 name|withGraphic
 argument_list|(
-name|viewModel
+name|group
 lambda|->
 block|{
 specifier|final
@@ -540,7 +544,7 @@ expr_stmt|;
 if|if
 condition|(
 operator|!
-name|viewModel
+name|group
 operator|.
 name|isRoot
 argument_list|()
@@ -554,7 +558,7 @@ name|node
 argument_list|,
 name|anySelected
 argument_list|,
-name|viewModel
+name|group
 operator|.
 name|anySelectedEntriesMatchedProperty
 argument_list|()
@@ -568,7 +572,7 @@ name|node
 argument_list|,
 name|allSelected
 argument_list|,
-name|viewModel
+name|group
 operator|.
 name|allSelectedEntriesMatchedProperty
 argument_list|()
@@ -589,7 +593,7 @@ argument_list|()
 operator|.
 name|bind
 argument_list|(
-name|viewModel
+name|group
 operator|.
 name|getHits
 argument_list|()
@@ -731,6 +735,18 @@ return|return
 name|disclosureNode
 return|;
 block|}
+argument_list|)
+operator|.
+name|withOnMouseClickedEvent
+argument_list|(
+name|group
+lambda|->
+name|event
+lambda|->
+name|group
+operator|.
+name|toggleExpansion
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
