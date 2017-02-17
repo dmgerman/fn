@@ -1896,15 +1896,6 @@ name|GROUP_FLOAT_SELECTIONS
 init|=
 literal|"groupFloatSelections"
 decl_stmt|;
-DECL|field|EDIT_GROUP_MEMBERSHIP_MODE
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|EDIT_GROUP_MEMBERSHIP_MODE
-init|=
-literal|"groupEditGroupMembershipMode"
-decl_stmt|;
 DECL|field|KEYWORD_SEPARATOR
 specifier|public
 specifier|static
@@ -3500,6 +3491,17 @@ argument_list|(
 literal|"user.home"
 argument_list|)
 decl_stmt|;
+comment|// solves the issue java.lang.RuntimeException: Internal graphics not initialized yet
+DECL|field|UNSET_MENU_FONT_SIZE
+specifier|private
+specifier|final
+specifier|static
+name|Integer
+name|UNSET_MENU_FONT_SIZE
+init|=
+operator|-
+literal|123
+decl_stmt|;
 comment|// The only instance of this class:
 DECL|field|singleton
 specifier|private
@@ -3573,17 +3575,6 @@ DECL|field|tabList
 specifier|private
 name|EntryEditorTabList
 name|tabList
-decl_stmt|;
-comment|// solves the issue java.lang.RuntimeException: Internal graphics not initialized yet
-DECL|field|UNSET_MENU_FONT_SIZE
-specifier|private
-specifier|final
-specifier|static
-name|Integer
-name|UNSET_MENU_FONT_SIZE
-init|=
-operator|-
-literal|123
 decl_stmt|;
 comment|// The constructor is made private to enforce this as a singleton class:
 DECL|method|JabRefPreferences ()
@@ -4876,17 +4867,6 @@ argument_list|(
 name|KEYWORD_SEPARATOR
 argument_list|,
 literal|", "
-argument_list|)
-expr_stmt|;
-name|defaults
-operator|.
-name|put
-argument_list|(
-name|EDIT_GROUP_MEMBERSHIP_MODE
-argument_list|,
-name|Boolean
-operator|.
-name|FALSE
 argument_list|)
 expr_stmt|;
 name|defaults
