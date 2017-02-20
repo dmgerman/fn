@@ -6886,9 +6886,11 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|activeTab
 operator|instanceof
 name|FileAnnotationTab
+operator|)
 operator|&&
 operator|!
 operator|(
@@ -6973,31 +6975,9 @@ block|}
 comment|// When the tab "Related articles" gets selected, the request to get the recommendations is started.
 if|if
 condition|(
-operator|(
-operator|(
-name|JTabbedPane
-operator|)
-name|event
-operator|.
-name|getSource
-argument_list|()
-operator|)
-operator|.
-name|getSelectedComponent
-argument_list|()
-operator|.
-name|getName
-argument_list|()
-operator|.
-name|equals
-argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Related articles"
-argument_list|)
-argument_list|)
+name|activeTab
+operator|instanceof
+name|EntryEditorTabRelatedArticles
 condition|)
 block|{
 name|relatedArticlesTab
