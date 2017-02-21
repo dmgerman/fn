@@ -437,7 +437,7 @@ name|setField
 argument_list|(
 literal|"author"
 argument_list|,
-literal|"Marlon Dumas and Marcello La Rosa and Jan Mendling and Hajo Reijers"
+literal|"Marlon Dumas and Marcello La Rosa and Jan Mendling and Hajo A. Reijers"
 argument_list|)
 expr_stmt|;
 name|bibEntry
