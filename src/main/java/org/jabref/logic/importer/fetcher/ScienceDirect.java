@@ -329,17 +329,6 @@ argument_list|(
 name|entry
 argument_list|)
 expr_stmt|;
-name|Optional
-argument_list|<
-name|URL
-argument_list|>
-name|pdfLink
-init|=
-name|Optional
-operator|.
-name|empty
-argument_list|()
-decl_stmt|;
 comment|// Try unique DOI first
 name|Optional
 argument_list|<
@@ -388,6 +377,7 @@ name|getDOI
 argument_list|()
 argument_list|)
 decl_stmt|;
+comment|// scrape the web page not as mobile client!
 if|if
 condition|(
 operator|!
@@ -397,7 +387,6 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-comment|// Retrieve PDF link
 name|Document
 name|html
 init|=
@@ -408,6 +397,16 @@ argument_list|(
 name|sciLink
 argument_list|)
 operator|.
+name|userAgent
+argument_list|(
+literal|"Mozilla/5.0 (Windows; U; WindowsNT 5.1; en-US; rv1.8.1.6) Gecko/20070725 Firefox/2.0.0.6"
+argument_list|)
+operator|.
+name|referrer
+argument_list|(
+literal|"http://www.google.com"
+argument_list|)
+operator|.
 name|ignoreHttpErrors
 argument_list|(
 literal|true
@@ -416,6 +415,7 @@ operator|.
 name|get
 argument_list|()
 decl_stmt|;
+comment|// Retrieve PDF link (old page)
 name|Element
 name|link
 init|=
@@ -437,11 +437,15 @@ name|LOGGER
 operator|.
 name|info
 argument_list|(
-literal|"Fulltext PDF found @ ScienceDirect."
+literal|"Fulltext PDF found @ ScienceDirect (old page)."
 argument_list|)
 expr_stmt|;
+name|Optional
+argument_list|<
+name|URL
+argument_list|>
 name|pdfLink
-operator|=
+init|=
 name|Optional
 operator|.
 name|of
@@ -457,7 +461,63 @@ literal|"pdfurl"
 argument_list|)
 argument_list|)
 argument_list|)
+decl_stmt|;
+return|return
+name|pdfLink
+return|;
+block|}
+comment|// Retrieve PDF link (new page)
+name|String
+name|url
+init|=
+name|html
+operator|.
+name|getElementsByClass
+argument_list|(
+literal|"pdf-download-btn-link"
+argument_list|)
+operator|.
+name|attr
+argument_list|(
+literal|"href"
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|url
+operator|!=
+literal|null
+condition|)
+block|{
+name|LOGGER
+operator|.
+name|info
+argument_list|(
+literal|"Fulltext PDF found @ ScienceDirect (new page)."
+argument_list|)
 expr_stmt|;
+name|Optional
+argument_list|<
+name|URL
+argument_list|>
+name|pdfLink
+init|=
+name|Optional
+operator|.
+name|of
+argument_list|(
+operator|new
+name|URL
+argument_list|(
+literal|"http://www.sciencedirect.com"
+operator|+
+name|url
+argument_list|)
+argument_list|)
+decl_stmt|;
+return|return
+name|pdfLink
+return|;
 block|}
 block|}
 block|}
@@ -479,7 +539,10 @@ expr_stmt|;
 block|}
 block|}
 return|return
-name|pdfLink
+name|Optional
+operator|.
+name|empty
+argument_list|()
 return|;
 block|}
 DECL|method|getUrlByDoi (String doi)
