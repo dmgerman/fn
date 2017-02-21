@@ -2155,7 +2155,9 @@ name|annotationCache
 operator|=
 operator|new
 name|FileAnnotationCache
-argument_list|()
+argument_list|(
+name|bibDatabaseContext
+argument_list|)
 expr_stmt|;
 name|setupMainPanel
 argument_list|()

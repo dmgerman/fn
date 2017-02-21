@@ -108,10 +108,10 @@ name|ABBREVIATED_ANNOTATION_NAME_LENGTH
 init|=
 literal|45
 decl_stmt|;
-DECL|field|linkedComment
+DECL|field|linkedAnnotation
 specifier|private
 name|boolean
-name|linkedComment
+name|linkedAnnotation
 decl_stmt|;
 DECL|method|FileAnnotation (final String commentId, final String author, final String date, final int page, final String content, final String annotationType)
 specifier|public
@@ -324,12 +324,12 @@ argument_list|)
 expr_stmt|;
 name|commentToLinkTo
 operator|.
-name|setLinkedComment
+name|setLinkedAnnotation
 argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
-name|linkedComment
+name|linkedAnnotation
 operator|=
 literal|true
 expr_stmt|;
@@ -515,30 +515,30 @@ return|return
 name|annotationType
 return|;
 block|}
-DECL|method|hasLinkedComment ()
+DECL|method|hasLinkedAnnotation ()
 specifier|public
 name|boolean
-name|hasLinkedComment
+name|hasLinkedAnnotation
 parameter_list|()
 block|{
 return|return
-name|linkedComment
+name|linkedAnnotation
 return|;
 block|}
-DECL|method|setLinkedComment (boolean linkedComment)
+DECL|method|setLinkedAnnotation (boolean linkedAnnotation)
 specifier|public
 name|void
-name|setLinkedComment
+name|setLinkedAnnotation
 parameter_list|(
 name|boolean
-name|linkedComment
+name|linkedAnnotation
 parameter_list|)
 block|{
 name|this
 operator|.
-name|linkedComment
+name|linkedAnnotation
 operator|=
-name|linkedComment
+name|linkedAnnotation
 expr_stmt|;
 block|}
 block|}

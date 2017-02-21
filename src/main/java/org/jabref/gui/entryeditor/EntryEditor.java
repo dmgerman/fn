@@ -292,6 +292,18 @@ name|java
 operator|.
 name|util
 operator|.
+name|concurrent
+operator|.
+name|ExecutionException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|stream
 operator|.
 name|Collectors
@@ -1368,21 +1380,21 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|/** A reference to the entry this object works on. */
+comment|/**      * A reference to the entry this object works on.      */
 DECL|field|entry
 specifier|private
 specifier|final
 name|BibEntry
 name|entry
 decl_stmt|;
-comment|/** The currently displayed type */
+comment|/**      * The currently displayed type      */
 DECL|field|displayedBibEntryType
 specifier|private
 specifier|final
 name|String
 name|displayedBibEntryType
 decl_stmt|;
-comment|/** The action concerned with closing the window. */
+comment|/**      * The action concerned with closing the window.      */
 DECL|field|closeAction
 specifier|private
 specifier|final
@@ -1393,7 +1405,7 @@ operator|new
 name|CloseAction
 argument_list|()
 decl_stmt|;
-comment|/** The action that deletes the current entry, and closes the editor. */
+comment|/**      * The action that deletes the current entry, and closes the editor.      */
 DECL|field|deleteAction
 specifier|private
 specifier|final
@@ -1404,7 +1416,7 @@ operator|new
 name|DeleteAction
 argument_list|()
 decl_stmt|;
-comment|/** The action for switching to the next entry. */
+comment|/**      * The action for switching to the next entry.      */
 DECL|field|nextEntryAction
 specifier|private
 specifier|final
@@ -1415,7 +1427,7 @@ operator|new
 name|NextEntryAction
 argument_list|()
 decl_stmt|;
-comment|/** The action for switching to the previous entry. */
+comment|/**      * The action for switching to the previous entry.      */
 DECL|field|prevEntryAction
 specifier|private
 specifier|final
@@ -1426,7 +1438,7 @@ operator|new
 name|PrevEntryAction
 argument_list|()
 decl_stmt|;
-comment|/** The action concerned with storing a field value. */
+comment|/**      * The action concerned with storing a field value.      */
 DECL|field|storeFieldAction
 specifier|private
 specifier|final
@@ -1437,7 +1449,7 @@ operator|new
 name|StoreFieldAction
 argument_list|()
 decl_stmt|;
-comment|/** The action for switching to the next tab */
+comment|/**      * The action for switching to the next tab      */
 DECL|field|switchLeftAction
 specifier|private
 specifier|final
@@ -1448,7 +1460,7 @@ operator|new
 name|SwitchLeftAction
 argument_list|()
 decl_stmt|;
-comment|/** The action for switching to the previous tab */
+comment|/**      * The action for switching to the previous tab      */
 DECL|field|switchRightAction
 specifier|private
 specifier|final
@@ -1459,7 +1471,7 @@ operator|new
 name|SwitchRightAction
 argument_list|()
 decl_stmt|;
-comment|/** The action which generates a BibTeX key for this entry. */
+comment|/**      * The action which generates a BibTeX key for this entry.      */
 DECL|field|generateKeyAction
 specifier|private
 specifier|final
@@ -1491,16 +1503,6 @@ specifier|private
 specifier|final
 name|AbstractAction
 name|writeXmp
-decl_stmt|;
-DECL|field|saveDatabaseAction
-specifier|private
-specifier|final
-name|SaveDatabaseAction
-name|saveDatabaseAction
-init|=
-operator|new
-name|SaveDatabaseAction
-argument_list|()
 decl_stmt|;
 DECL|field|srcPanel
 specifier|private
@@ -1581,7 +1583,7 @@ name|updateSource
 init|=
 literal|true
 decl_stmt|;
-comment|/** Indicates that we are about to go to the next or previous entry */
+comment|/**      * Indicates that we are about to go to the next or previous entry      */
 DECL|field|movingToDifferentEntry
 specifier|private
 name|boolean
@@ -1615,7 +1617,7 @@ name|lastFieldAccepted
 init|=
 literal|true
 decl_stmt|;
-comment|/**      *  This indicates whether the last attempt at parsing the source was successful. It is used to determine whether      *  the dialog should close; it should stay open if the user received an error message about the source,      *  whatever he or she chose to do about it.      */
+comment|/**      * This indicates whether the last attempt at parsing the source was successful. It is used to determine whether      * the dialog should close; it should stay open if the user received an error message about the source,      * whatever he or she chose to do about it.      */
 DECL|field|lastSourceAccepted
 specifier|private
 name|boolean
@@ -1623,13 +1625,13 @@ name|lastSourceAccepted
 init|=
 literal|true
 decl_stmt|;
-comment|/** This is used to prevent double updates after editing source. */
+comment|/**      * This is used to prevent double updates after editing source.      */
 DECL|field|lastSourceStringAccepted
 specifier|private
 name|String
 name|lastSourceStringAccepted
 decl_stmt|;
-comment|/** The index the source panel has in tabbed. */
+comment|/**      * The index the source panel has in tabbed.      */
 DECL|field|sourceIndex
 specifier|private
 name|int
@@ -1680,6 +1682,11 @@ init|=
 operator|new
 name|RedoAction
 argument_list|()
+decl_stmt|;
+DECL|field|saveDatabaseAction
+specifier|private
+name|Action
+name|saveDatabaseAction
 decl_stmt|;
 DECL|field|tabListener
 specifier|private
@@ -2423,7 +2430,7 @@ name|addSpecialTabs
 argument_list|()
 expr_stmt|;
 comment|// pdf annotations tab
-name|addPdfTab
+name|addPDFAnnotationTab
 argument_list|()
 expr_stmt|;
 comment|//related articles
@@ -3160,10 +3167,10 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Add a tab for displaying comments from a PDF      */
-DECL|method|addPdfTab ()
+DECL|method|addPDFAnnotationTab ()
 specifier|private
 name|void
-name|addPdfTab
+name|addPDFAnnotationTab
 parameter_list|()
 block|{
 name|tabbed
@@ -3209,10 +3216,6 @@ operator|new
 name|FileAnnotationTab
 argument_list|(
 name|this
-argument_list|,
-name|panel
-argument_list|,
-name|tabbed
 argument_list|)
 expr_stmt|;
 name|tabbed
@@ -3230,7 +3233,7 @@ name|IconTheme
 operator|.
 name|JabRefIcon
 operator|.
-name|COMMENT
+name|OPTIONAL
 operator|.
 name|getSmallIcon
 argument_list|()
@@ -3428,8 +3431,7 @@ name|put
 argument_list|(
 literal|"store"
 argument_list|,
-name|getStoreFieldAction
-argument_list|()
+name|storeFieldAction
 argument_list|)
 expr_stmt|;
 name|inputMap
@@ -3457,8 +3459,7 @@ name|put
 argument_list|(
 literal|"generateKey"
 argument_list|,
-name|getGenerateKeyAction
-argument_list|()
+name|generateKeyAction
 argument_list|)
 expr_stmt|;
 name|inputMap
@@ -3514,8 +3515,7 @@ name|put
 argument_list|(
 literal|"prev"
 argument_list|,
-name|getPrevEntryAction
-argument_list|()
+name|prevEntryAction
 argument_list|)
 expr_stmt|;
 name|inputMap
@@ -3543,8 +3543,7 @@ name|put
 argument_list|(
 literal|"next"
 argument_list|,
-name|getNextEntryAction
-argument_list|()
+name|nextEntryAction
 argument_list|)
 expr_stmt|;
 name|inputMap
@@ -3628,8 +3627,7 @@ name|put
 argument_list|(
 literal|"help"
 argument_list|,
-name|getHelpAction
-argument_list|()
+name|helpAction
 argument_list|)
 expr_stmt|;
 name|toolBar
@@ -3745,8 +3743,7 @@ name|toolBar
 operator|.
 name|add
 argument_list|(
-name|getGenerateKeyAction
-argument_list|()
+name|generateKeyAction
 argument_list|)
 expr_stmt|;
 name|toolBar
@@ -3927,16 +3924,14 @@ name|toolBar
 operator|.
 name|add
 argument_list|(
-name|getPrevEntryAction
-argument_list|()
+name|prevEntryAction
 argument_list|)
 expr_stmt|;
 name|toolBar
 operator|.
 name|add
 argument_list|(
-name|getNextEntryAction
-argument_list|()
+name|nextEntryAction
 argument_list|)
 expr_stmt|;
 name|toolBar
@@ -3948,8 +3943,7 @@ name|toolBar
 operator|.
 name|add
 argument_list|(
-name|getHelpAction
-argument_list|()
+name|helpAction
 argument_list|)
 expr_stmt|;
 name|Component
@@ -4185,8 +4179,7 @@ name|entry
 argument_list|,
 name|contentSelectors
 argument_list|,
-name|getStoreFieldAction
-argument_list|()
+name|storeFieldAction
 argument_list|)
 return|;
 block|}
@@ -4224,8 +4217,7 @@ name|editor
 argument_list|,
 name|contentSelectors
 argument_list|,
-name|getStoreFieldAction
-argument_list|()
+name|storeFieldAction
 argument_list|)
 return|;
 block|}
@@ -4327,8 +4319,7 @@ name|getSetOwnerExtraComponent
 argument_list|(
 name|editor
 argument_list|,
-name|getStoreFieldAction
-argument_list|()
+name|storeFieldAction
 argument_list|)
 return|;
 block|}
@@ -4910,8 +4901,7 @@ name|put
 argument_list|(
 literal|"store"
 argument_list|,
-name|getStoreFieldAction
-argument_list|()
+name|storeFieldAction
 argument_list|)
 expr_stmt|;
 name|inputMap
@@ -4958,8 +4948,7 @@ name|put
 argument_list|(
 literal|"right"
 argument_list|,
-name|getSwitchRightAction
-argument_list|()
+name|switchRightAction
 argument_list|)
 expr_stmt|;
 name|inputMap
@@ -5006,8 +4995,7 @@ name|put
 argument_list|(
 literal|"left"
 argument_list|,
-name|getSwitchLeftAction
-argument_list|()
+name|switchLeftAction
 argument_list|)
 expr_stmt|;
 name|inputMap
@@ -5035,8 +5023,7 @@ name|put
 argument_list|(
 literal|"help"
 argument_list|,
-name|getHelpAction
-argument_list|()
+name|helpAction
 argument_list|)
 expr_stmt|;
 name|inputMap
@@ -5406,8 +5393,7 @@ name|clearAutoCompleteSuggestion
 argument_list|()
 expr_stmt|;
 block|}
-name|getStoreFieldAction
-argument_list|()
+name|storeFieldAction
 operator|.
 name|actionPerformed
 argument_list|(
@@ -6492,8 +6478,7 @@ name|Object
 name|sourceObject
 parameter_list|)
 block|{
-name|getStoreFieldAction
-argument_list|()
+name|storeFieldAction
 operator|.
 name|actionPerformed
 argument_list|(
@@ -6540,6 +6525,86 @@ name|removeSearchListeners
 argument_list|()
 expr_stmt|;
 block|}
+DECL|method|getGenerateKeyAction ()
+specifier|public
+name|GenerateKeyAction
+name|getGenerateKeyAction
+parameter_list|()
+block|{
+return|return
+name|generateKeyAction
+return|;
+block|}
+DECL|method|getPrevEntryAction ()
+specifier|public
+name|AbstractAction
+name|getPrevEntryAction
+parameter_list|()
+block|{
+return|return
+name|prevEntryAction
+return|;
+block|}
+DECL|method|getNextEntryAction ()
+specifier|public
+name|AbstractAction
+name|getNextEntryAction
+parameter_list|()
+block|{
+return|return
+name|nextEntryAction
+return|;
+block|}
+DECL|method|getStoreFieldAction ()
+specifier|public
+name|StoreFieldAction
+name|getStoreFieldAction
+parameter_list|()
+block|{
+return|return
+name|storeFieldAction
+return|;
+block|}
+DECL|method|getSwitchLeftAction ()
+specifier|public
+name|SwitchLeftAction
+name|getSwitchLeftAction
+parameter_list|()
+block|{
+return|return
+name|switchLeftAction
+return|;
+block|}
+DECL|method|getSwitchRightAction ()
+specifier|public
+name|SwitchRightAction
+name|getSwitchRightAction
+parameter_list|()
+block|{
+return|return
+name|switchRightAction
+return|;
+block|}
+DECL|method|getHelpAction ()
+specifier|public
+name|HelpAction
+name|getHelpAction
+parameter_list|()
+block|{
+return|return
+name|helpAction
+return|;
+block|}
+DECL|method|getSaveDatabaseAction ()
+specifier|public
+name|Action
+name|getSaveDatabaseAction
+parameter_list|()
+block|{
+return|return
+name|saveDatabaseAction
+return|;
+block|}
 DECL|class|TypeButton
 specifier|private
 class|class
@@ -6548,7 +6613,7 @@ extends|extends
 name|JButton
 block|{
 DECL|method|TypeButton ()
-specifier|public
+specifier|private
 name|TypeButton
 parameter_list|()
 block|{
@@ -6622,7 +6687,7 @@ extends|extends
 name|JLabel
 block|{
 DECL|method|TypeLabel (String type)
-specifier|public
+specifier|private
 name|TypeLabel
 parameter_list|(
 name|String
@@ -6906,13 +6971,20 @@ condition|)
 block|{
 comment|//Initialize by getting notes from cache if they are cached
 name|FileAnnotationTab
-operator|.
-name|initializeTab
-argument_list|(
+name|tab
+init|=
 operator|(
 name|FileAnnotationTab
 operator|)
 name|activeTab
+decl_stmt|;
+try|try
+block|{
+name|tab
+operator|.
+name|initializeTab
+argument_list|(
+name|tab
 argument_list|,
 name|panel
 operator|.
@@ -6921,35 +6993,28 @@ argument_list|()
 operator|.
 name|getFromCache
 argument_list|(
-name|Optional
-operator|.
-name|of
-argument_list|(
 name|entry
-argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|panel
+block|}
+catch|catch
+parameter_list|(
+name|ExecutionException
+name|e
+parameter_list|)
+block|{
+name|tab
 operator|.
-name|getAnnotationCache
-argument_list|()
-operator|.
-name|addToCache
+name|initializeTab
 argument_list|(
-name|entry
-argument_list|,
-operator|(
 operator|(
 name|FileAnnotationTab
 operator|)
 name|activeTab
-operator|)
-operator|.
-name|getAllNotes
-argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 if|if
 condition|(
@@ -6992,13 +7057,14 @@ expr_stmt|;
 block|}
 block|}
 DECL|class|DeleteAction
+specifier|private
 class|class
 name|DeleteAction
 extends|extends
 name|AbstractAction
 block|{
 DECL|method|DeleteAction ()
-specifier|public
+specifier|private
 name|DeleteAction
 parameter_list|()
 block|{
@@ -7214,13 +7280,14 @@ block|}
 block|}
 block|}
 DECL|class|CloseAction
+specifier|private
 class|class
 name|CloseAction
 extends|extends
 name|AbstractAction
 block|{
 DECL|method|CloseAction ()
-specifier|public
+specifier|private
 name|CloseAction
 parameter_list|()
 block|{
@@ -7275,6 +7342,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|class|StoreFieldAction
+specifier|public
 class|class
 name|StoreFieldAction
 extends|extends
@@ -8186,13 +8254,14 @@ block|}
 block|}
 block|}
 DECL|class|SwitchLeftAction
+specifier|private
 class|class
 name|SwitchLeftAction
 extends|extends
 name|AbstractAction
 block|{
 DECL|method|SwitchLeftAction ()
-specifier|public
+specifier|private
 name|SwitchLeftAction
 parameter_list|()
 block|{
@@ -8247,13 +8316,14 @@ expr_stmt|;
 block|}
 block|}
 DECL|class|SwitchRightAction
+specifier|private
 class|class
 name|SwitchRightAction
 extends|extends
 name|AbstractAction
 block|{
 DECL|method|SwitchRightAction ()
-specifier|public
+specifier|private
 name|SwitchRightAction
 parameter_list|()
 block|{
@@ -8310,13 +8380,14 @@ expr_stmt|;
 block|}
 block|}
 DECL|class|NextEntryAction
+specifier|private
 class|class
 name|NextEntryAction
 extends|extends
 name|AbstractAction
 block|{
 DECL|method|NextEntryAction ()
-specifier|public
+specifier|private
 name|NextEntryAction
 parameter_list|()
 block|{
@@ -8373,13 +8444,14 @@ expr_stmt|;
 block|}
 block|}
 DECL|class|PrevEntryAction
+specifier|private
 class|class
 name|PrevEntryAction
 extends|extends
 name|AbstractAction
 block|{
 DECL|method|PrevEntryAction ()
-specifier|public
+specifier|private
 name|PrevEntryAction
 parameter_list|()
 block|{
@@ -8436,13 +8508,14 @@ expr_stmt|;
 block|}
 block|}
 DECL|class|GenerateKeyAction
+specifier|private
 class|class
 name|GenerateKeyAction
 extends|extends
 name|AbstractAction
 block|{
 DECL|method|GenerateKeyAction ()
-specifier|public
+specifier|private
 name|GenerateKeyAction
 parameter_list|()
 block|{
@@ -8746,13 +8819,14 @@ expr_stmt|;
 block|}
 block|}
 DECL|class|UndoAction
+specifier|private
 class|class
 name|UndoAction
 extends|extends
 name|AbstractAction
 block|{
 DECL|method|UndoAction ()
-specifier|public
+specifier|private
 name|UndoAction
 parameter_list|()
 block|{
@@ -8803,13 +8877,14 @@ expr_stmt|;
 block|}
 block|}
 DECL|class|RedoAction
+specifier|private
 class|class
 name|RedoAction
 extends|extends
 name|AbstractAction
 block|{
 DECL|method|RedoAction ()
-specifier|public
+specifier|private
 name|RedoAction
 parameter_list|()
 block|{
@@ -8860,13 +8935,14 @@ expr_stmt|;
 block|}
 block|}
 DECL|class|SaveDatabaseAction
+specifier|private
 class|class
 name|SaveDatabaseAction
 extends|extends
 name|AbstractAction
 block|{
 DECL|method|SaveDatabaseAction ()
-specifier|public
+specifier|private
 name|SaveDatabaseAction
 parameter_list|()
 block|{
@@ -9017,86 +9093,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|getNextEntryAction ()
-specifier|public
-name|AbstractAction
-name|getNextEntryAction
-parameter_list|()
-block|{
-return|return
-name|nextEntryAction
-return|;
-block|}
-DECL|method|getPrevEntryAction ()
-specifier|public
-name|AbstractAction
-name|getPrevEntryAction
-parameter_list|()
-block|{
-return|return
-name|prevEntryAction
-return|;
-block|}
-DECL|method|getSwitchLeftAction ()
-specifier|public
-name|SwitchLeftAction
-name|getSwitchLeftAction
-parameter_list|()
-block|{
-return|return
-name|switchLeftAction
-return|;
-block|}
-DECL|method|getSwitchRightAction ()
-specifier|public
-name|SwitchRightAction
-name|getSwitchRightAction
-parameter_list|()
-block|{
-return|return
-name|switchRightAction
-return|;
-block|}
-DECL|method|getSaveDatabaseAction ()
-specifier|public
-name|SaveDatabaseAction
-name|getSaveDatabaseAction
-parameter_list|()
-block|{
-return|return
-name|saveDatabaseAction
-return|;
-block|}
-DECL|method|getHelpAction ()
-specifier|public
-name|HelpAction
-name|getHelpAction
-parameter_list|()
-block|{
-return|return
-name|helpAction
-return|;
-block|}
-DECL|method|getGenerateKeyAction ()
-specifier|public
-name|GenerateKeyAction
-name|getGenerateKeyAction
-parameter_list|()
-block|{
-return|return
-name|generateKeyAction
-return|;
-block|}
-DECL|method|getStoreFieldAction ()
-specifier|public
-name|StoreFieldAction
-name|getStoreFieldAction
-parameter_list|()
-block|{
-return|return
-name|storeFieldAction
-return|;
-block|}
 DECL|class|AutoLinkAction
 specifier|private
 class|class
@@ -9105,7 +9101,7 @@ extends|extends
 name|AbstractAction
 block|{
 DECL|method|AutoLinkAction ()
-specifier|public
+specifier|private
 name|AutoLinkAction
 parameter_list|()
 block|{
