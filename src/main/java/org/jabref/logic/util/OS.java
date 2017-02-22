@@ -12,6 +12,16 @@ name|util
 package|;
 end_package
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Locale
+import|;
+end_import
+
 begin_comment
 comment|/***  * Operating system (OS) detection  */
 end_comment
@@ -40,7 +50,11 @@ literal|"unknown"
 argument_list|)
 operator|.
 name|toLowerCase
-argument_list|()
+argument_list|(
+name|Locale
+operator|.
+name|ROOT
+argument_list|)
 decl_stmt|;
 DECL|field|LINUX
 specifier|public

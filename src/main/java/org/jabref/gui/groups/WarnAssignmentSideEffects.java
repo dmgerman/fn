@@ -54,6 +54,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Locale
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|swing
@@ -198,7 +208,11 @@ name|getSearchField
 argument_list|()
 operator|.
 name|toLowerCase
-argument_list|()
+argument_list|(
+name|Locale
+operator|.
+name|ROOT
+argument_list|)
 decl_stmt|;
 if|if
 condition|(
@@ -384,7 +398,7 @@ name|NO_OPTION
 return|;
 comment|// if (groups instanceof KeywordGroup) {
 comment|// KeywordGroup kg = (KeywordGroup) groups;
-comment|// String field = kg.getSearchField().toLowerCase();
+comment|// String field = kg.getSearchField().toLowerCase(Locale.ROOT);
 comment|// if (field.equals("keywords"))
 comment|// return true; // this is not undesired
 comment|// for (int i = 0; i< GUIGlobals.ALL_FIELDS.length; ++i) {
