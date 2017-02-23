@@ -872,7 +872,7 @@ decl_stmt|;
 comment|//add request header
 name|dl
 operator|.
-name|addParameters
+name|addHeader
 argument_list|(
 literal|"Accept"
 argument_list|,
@@ -881,7 +881,7 @@ argument_list|)
 expr_stmt|;
 name|dl
 operator|.
-name|addParameters
+name|addHeader
 argument_list|(
 literal|"Content-Type"
 argument_list|,

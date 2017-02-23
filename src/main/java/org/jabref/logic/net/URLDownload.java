@@ -304,6 +304,18 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
+operator|.
+name|Entry
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|net
@@ -494,23 +506,17 @@ name|source
 operator|=
 name|source
 expr_stmt|;
-name|addParameters
+name|this
+operator|.
+name|addHeader
 argument_list|(
 literal|"User-Agent"
 argument_list|,
+name|URLDownload
+operator|.
 name|USER_AGENT
 argument_list|)
 expr_stmt|;
-block|}
-DECL|method|getSource ()
-specifier|public
-name|URL
-name|getSource
-parameter_list|()
-block|{
-return|return
-name|source
-return|;
 block|}
 DECL|method|determineMimeType ()
 specifier|public
@@ -524,6 +530,8 @@ comment|// this does not cause a real performance issue as the underlying HTTP/T
 name|URLConnection
 name|urlConnection
 init|=
+name|this
+operator|.
 name|openConnection
 argument_list|()
 decl_stmt|;
@@ -559,10 +567,10 @@ comment|// Ignored
 block|}
 block|}
 block|}
-DECL|method|addParameters (String key, String value)
+DECL|method|addHeader (String key, String value)
 specifier|public
 name|void
-name|addParameters
+name|addHeader
 parameter_list|(
 name|String
 name|key
@@ -571,6 +579,8 @@ name|String
 name|value
 parameter_list|)
 block|{
+name|this
+operator|.
 name|parameters
 operator|.
 name|put
@@ -616,6 +626,8 @@ block|{
 name|URLConnection
 name|connection
 init|=
+name|this
+operator|.
 name|source
 operator|.
 name|openConnection
@@ -623,8 +635,6 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-name|Map
-operator|.
 name|Entry
 argument_list|<
 name|String
@@ -633,6 +643,8 @@ name|String
 argument_list|>
 name|entry
 range|:
+name|this
+operator|.
 name|parameters
 operator|.
 name|entrySet
@@ -658,6 +670,8 @@ block|}
 if|if
 condition|(
 operator|!
+name|this
+operator|.
 name|postData
 operator|.
 name|isEmpty
@@ -690,6 +704,8 @@ name|wr
 operator|.
 name|writeBytes
 argument_list|(
+name|this
+operator|.
 name|postData
 argument_list|)
 expr_stmt|;
@@ -727,29 +743,23 @@ condition|)
 block|{
 if|if
 condition|(
-operator|(
 name|status
 operator|==
 name|HttpURLConnection
 operator|.
 name|HTTP_MOVED_TEMP
-operator|)
 operator|||
-operator|(
 name|status
 operator|==
 name|HttpURLConnection
 operator|.
 name|HTTP_MOVED_PERM
-operator|)
 operator|||
-operator|(
 name|status
 operator|==
 name|HttpURLConnection
 operator|.
 name|HTTP_SEE_OTHER
-operator|)
 condition|)
 block|{
 comment|// get redirect url from "location" header field
@@ -808,6 +818,8 @@ init|=
 operator|new
 name|BufferedInputStream
 argument_list|(
+name|this
+operator|.
 name|openConnection
 argument_list|()
 operator|.
@@ -823,6 +835,8 @@ name|StringWriter
 argument_list|()
 init|)
 block|{
+name|this
+operator|.
 name|copy
 argument_list|(
 name|input
@@ -845,6 +859,8 @@ name|IOException
 name|e
 parameter_list|)
 block|{
+name|URLDownload
+operator|.
 name|LOGGER
 operator|.
 name|warn
@@ -896,6 +912,8 @@ expr_stmt|;
 name|URLConnection
 name|con
 init|=
+name|this
+operator|.
 name|openConnection
 argument_list|()
 decl_stmt|;
@@ -915,6 +933,8 @@ argument_list|()
 operator|.
 name|get
 argument_list|(
+name|this
+operator|.
 name|source
 operator|.
 name|toURI
@@ -928,6 +948,8 @@ name|URISyntaxException
 name|e
 parameter_list|)
 block|{
+name|URLDownload
+operator|.
 name|LOGGER
 operator|.
 name|error
@@ -1043,6 +1065,8 @@ init|=
 operator|new
 name|BufferedInputStream
 argument_list|(
+name|this
+operator|.
 name|openConnection
 argument_list|()
 operator|.
@@ -1071,6 +1095,8 @@ name|IOException
 name|e
 parameter_list|)
 block|{
+name|URLDownload
+operator|.
 name|LOGGER
 operator|.
 name|warn
@@ -1098,6 +1124,8 @@ comment|// Determine file name and extension from source url
 name|String
 name|sourcePath
 init|=
+name|this
+operator|.
 name|source
 operator|.
 name|getPath
@@ -1161,6 +1189,8 @@ argument_list|,
 name|extension
 argument_list|)
 decl_stmt|;
+name|this
+operator|.
 name|downloadToFile
 argument_list|(
 name|file
@@ -1183,15 +1213,17 @@ literal|"URLDownload{"
 operator|+
 literal|"source="
 operator|+
+name|this
+operator|.
 name|source
 operator|+
 literal|'}'
 return|;
 block|}
-DECL|method|fixSSLVerification ()
+DECL|method|bypassSSLVerification ()
 specifier|public
 name|void
-name|fixSSLVerification
+name|bypassSSLVerification
 parameter_list|()
 block|{
 comment|// Create a trust manager that does not validate certificate chains
@@ -1199,9 +1231,6 @@ name|TrustManager
 index|[]
 name|trustAllCerts
 init|=
-operator|new
-name|TrustManager
-index|[]
 block|{
 operator|new
 name|X509TrustManager
@@ -1213,12 +1242,6 @@ specifier|public
 name|void
 name|checkClientTrusted
 parameter_list|(
-name|java
-operator|.
-name|security
-operator|.
-name|cert
-operator|.
 name|X509Certificate
 index|[]
 name|chain
@@ -1226,25 +1249,10 @@ parameter_list|,
 name|String
 name|authType
 parameter_list|)
-throws|throws
-name|java
-operator|.
-name|security
-operator|.
-name|cert
-operator|.
-name|CertificateException
 block|{
-comment|// TODO Auto-generated method stub
 block|}
 function|@Override             public void checkServerTrusted
 parameter_list|(
-name|java
-operator|.
-name|security
-operator|.
-name|cert
-operator|.
 name|X509Certificate
 index|[]
 name|chain
@@ -1252,21 +1260,11 @@ parameter_list|,
 name|String
 name|authType
 parameter_list|)
-throws|throws
-name|java
-operator|.
-name|security
-operator|.
-name|cert
-operator|.
-name|CertificateException
 block|{
-comment|// TODO Auto-generated method stub
 block|}
-function|@Override             public java.security.cert.X509Certificate[] getAcceptedIssuers
+function|@Override             public X509Certificate[] getAcceptedIssuers
 parameter_list|()
 block|{
-comment|// TODO Auto-generated method stub
 return|return
 operator|new
 name|X509Certificate
@@ -1280,7 +1278,7 @@ comment|// Install the all-trusting trust manager
 try|try
 block|{
 name|SSLContext
-name|sc
+name|context
 init|=
 name|SSLContext
 operator|.
@@ -1289,7 +1287,7 @@ argument_list|(
 literal|"TLS"
 argument_list|)
 decl_stmt|;
-name|sc
+name|context
 operator|.
 name|init
 argument_list|(
@@ -1306,7 +1304,7 @@ name|HttpsURLConnection
 operator|.
 name|setDefaultSSLSocketFactory
 argument_list|(
-name|sc
+name|context
 operator|.
 name|getSocketFactory
 argument_list|()
@@ -1323,7 +1321,7 @@ name|LOGGER
 operator|.
 name|error
 argument_list|(
-literal|"SSL problem"
+literal|"A problem occurred when bypassing SSL verification"
 argument_list|,
 name|e
 argument_list|)

@@ -426,7 +426,7 @@ argument_list|)
 decl_stmt|;
 name|download
 operator|.
-name|addParameters
+name|addHeader
 argument_list|(
 literal|"Accept"
 argument_list|,
