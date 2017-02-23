@@ -240,6 +240,9 @@ operator|.
 name|downloadToFile
 argument_list|(
 name|destination
+operator|.
+name|toPath
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|Assert

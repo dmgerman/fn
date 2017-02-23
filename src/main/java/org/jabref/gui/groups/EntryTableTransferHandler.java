@@ -1858,6 +1858,9 @@ operator|.
 name|downloadToFile
 argument_list|(
 name|tmpfile
+operator|.
+name|toPath
+argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// Import into new if entryTable==null, otherwise into current library:

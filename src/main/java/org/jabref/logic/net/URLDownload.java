@@ -405,7 +405,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * URL download to a string.  *<p>  * Example:  * URLDownload dl = new URLDownload(URL);  * String content = dl.downloadToString(ENCODING);  * dl.downloadToFile(FILE); // available in FILE  * String contentType = dl.determineMimeType();  *  * Each call to a public method creates a new HTTP connection. Nothing is cached.  *  * @author Erik Putrycz erik.putrycz-at-nrc-cnrc.gc.ca  * @author Simon Harrer  */
+comment|/**  * URL download to a string.  *<p>  * Example:  * URLDownload dl = new URLDownload(URL);  * String content = dl.downloadToString(ENCODING);  * dl.downloadToFile(Path); // available in FILE  * String contentType = dl.determineMimeType();  *  * Each call to a public method creates a new HTTP connection. Nothing is cached.  *  * @author Erik Putrycz erik.putrycz-at-nrc-cnrc.gc.ca  * @author Simon Harrer  */
 end_comment
 
 begin_class
@@ -1070,29 +1070,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-block|}
-comment|/**      * @deprecated use {@link #downloadToFile(Path)}      */
-annotation|@
-name|Deprecated
-DECL|method|downloadToFile (File destination)
-specifier|public
-name|void
-name|downloadToFile
-parameter_list|(
-name|File
-name|destination
-parameter_list|)
-throws|throws
-name|IOException
-block|{
-name|downloadToFile
-argument_list|(
-name|destination
-operator|.
-name|toPath
-argument_list|()
-argument_list|)
-expr_stmt|;
 block|}
 DECL|method|downloadToFile (Path destination)
 specifier|public

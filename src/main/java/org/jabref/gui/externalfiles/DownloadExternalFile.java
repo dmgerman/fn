@@ -687,6 +687,9 @@ operator|.
 name|downloadToFile
 argument_list|(
 name|tmp
+operator|.
+name|toPath
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
