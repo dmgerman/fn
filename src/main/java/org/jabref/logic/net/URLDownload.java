@@ -421,7 +421,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * URL download to a string.  *<p>  * Example:  * URLDownload dl = new URLDownload(URL);  * String content = dl.downloadToString(ENCODING);  * dl.downloadToFile(Path); // available in FILE  * String contentType = dl.getMimeType();  *  * Each call to a public method creates a new HTTP connection. Nothing is cached.  */
+comment|/**  * URL download to a string.  *<p>  * Example:  * URLDownload dl = new URLDownload(URL);  * String content = dl.downloadToString(ENCODING);  * dl.toFile(Path); // available in FILE  * String contentType = dl.getMimeType();  *  * Each call to a public method creates a new HTTP connection. Nothing is cached.  */
 end_comment
 
 begin_class
@@ -1227,10 +1227,10 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|downloadToFile (Path destination)
+DECL|method|toFile (Path destination)
 specifier|public
 name|void
-name|downloadToFile
+name|toFile
 parameter_list|(
 name|Path
 name|destination
@@ -1290,11 +1290,11 @@ name|e
 throw|;
 block|}
 block|}
-comment|/**      * Downloads the web resource to a temporary file.      *      * @return the path to the downloaded file.      */
-DECL|method|downloadToTemporaryFile ()
+comment|/**      * Downloads the web resource to a temporary file.      *      * @return the path of the temporary file.      */
+DECL|method|toTemporaryFile ()
 specifier|public
 name|Path
-name|downloadToTemporaryFile
+name|toTemporaryFile
 parameter_list|()
 throws|throws
 name|IOException
@@ -1303,8 +1303,6 @@ comment|// Determine file name and extension from source url
 name|String
 name|sourcePath
 init|=
-name|this
-operator|.
 name|source
 operator|.
 name|getPath
@@ -1368,9 +1366,7 @@ argument_list|,
 name|extension
 argument_list|)
 decl_stmt|;
-name|this
-operator|.
-name|downloadToFile
+name|toFile
 argument_list|(
 name|file
 argument_list|)

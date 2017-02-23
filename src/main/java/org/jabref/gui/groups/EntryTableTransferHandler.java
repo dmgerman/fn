@@ -1850,7 +1850,7 @@ argument_list|(
 name|dropLink
 argument_list|)
 operator|.
-name|downloadToFile
+name|toFile
 argument_list|(
 name|tmpfile
 operator|.

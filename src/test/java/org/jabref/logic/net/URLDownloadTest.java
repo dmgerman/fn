@@ -237,7 +237,7 @@ argument_list|)
 decl_stmt|;
 name|dl
 operator|.
-name|downloadToFile
+name|toFile
 argument_list|(
 name|destination
 operator|.
@@ -349,7 +349,7 @@ name|path
 init|=
 name|google
 operator|.
-name|downloadToTemporaryFile
+name|toTemporaryFile
 argument_list|()
 operator|.
 name|toString
@@ -398,7 +398,7 @@ name|path
 init|=
 name|google
 operator|.
-name|downloadToTemporaryFile
+name|toTemporaryFile
 argument_list|()
 operator|.
 name|toString
@@ -454,7 +454,7 @@ name|path
 init|=
 name|ftp
 operator|.
-name|downloadToTemporaryFile
+name|toTemporaryFile
 argument_list|()
 decl_stmt|;
 name|Assert
@@ -493,7 +493,7 @@ name|path
 init|=
 name|ftp
 operator|.
-name|downloadToTemporaryFile
+name|toTemporaryFile
 argument_list|()
 decl_stmt|;
 name|Assert
@@ -532,7 +532,7 @@ name|path
 init|=
 name|ftp
 operator|.
-name|downloadToTemporaryFile
+name|toTemporaryFile
 argument_list|()
 decl_stmt|;
 name|Assert

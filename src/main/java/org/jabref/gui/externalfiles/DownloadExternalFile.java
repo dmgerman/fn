@@ -667,7 +667,7 @@ try|try
 block|{
 name|udlF
 operator|.
-name|downloadToFile
+name|toFile
 argument_list|(
 name|tmp
 operator|.
