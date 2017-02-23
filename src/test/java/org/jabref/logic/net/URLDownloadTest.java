@@ -311,7 +311,7 @@ name|assertTrue
 argument_list|(
 name|dl
 operator|.
-name|determineMimeType
+name|getMimeType
 argument_list|()
 operator|.
 name|startsWith

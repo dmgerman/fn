@@ -582,7 +582,7 @@ name|mimeType
 operator|=
 name|udl
 operator|.
-name|determineMimeType
+name|getMimeType
 argument_list|()
 expr_stmt|;
 comment|// Read MIME type
