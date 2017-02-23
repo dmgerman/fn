@@ -48,16 +48,6 @@ name|java
 operator|.
 name|io
 operator|.
-name|File
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
 name|IOException
 import|;
 end_import
@@ -1009,10 +999,7 @@ block|{
 name|InputStream
 name|monitoredInputStream
 init|=
-name|monitorInputStream
-argument_list|(
 name|in
-argument_list|)
 decl_stmt|;
 name|Reader
 name|r
@@ -1087,8 +1074,6 @@ init|(
 name|InputStream
 name|input
 init|=
-name|monitorInputStream
-argument_list|(
 operator|new
 name|BufferedInputStream
 argument_list|(
@@ -1097,7 +1082,6 @@ argument_list|()
 operator|.
 name|getInputStream
 argument_list|()
-argument_list|)
 argument_list|)
 init|)
 block|{
@@ -1218,19 +1202,6 @@ argument_list|)
 expr_stmt|;
 return|return
 name|file
-return|;
-block|}
-DECL|method|monitorInputStream (InputStream in)
-specifier|protected
-name|InputStream
-name|monitorInputStream
-parameter_list|(
-name|InputStream
-name|in
-parameter_list|)
-block|{
-return|return
-name|in
 return|;
 block|}
 annotation|@

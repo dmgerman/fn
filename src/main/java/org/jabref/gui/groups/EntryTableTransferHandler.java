@@ -366,11 +366,11 @@ name|org
 operator|.
 name|jabref
 operator|.
-name|gui
+name|logic
 operator|.
 name|net
 operator|.
-name|MonitoredURLDownload
+name|URLDownload
 import|;
 end_import
 
@@ -1844,14 +1844,9 @@ operator|.
 name|deleteOnExit
 argument_list|()
 expr_stmt|;
-comment|// System.out.println("Import url: " + dropLink.toString());
-comment|// System.out.println("Temp file: "+tmpfile.getAbsolutePath());
-name|MonitoredURLDownload
-operator|.
-name|buildMonitoredDownload
+operator|new
+name|URLDownload
 argument_list|(
-name|entryTable
-argument_list|,
 name|dropLink
 argument_list|)
 operator|.
