@@ -488,47 +488,16 @@ name|URL
 argument_list|(
 name|source
 argument_list|)
-argument_list|,
-literal|true
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * @param source the URL to download from      * @param validateSSL if set to false, bypasses the SSL vlaidation      * @throws MalformedURLException if no protocol is specified in the source, or an unknown protocol is found      */
-DECL|method|URLDownload (String source, boolean validateSSL)
-specifier|public
-name|URLDownload
-parameter_list|(
-name|String
-name|source
-parameter_list|,
-name|boolean
-name|validateSSL
-parameter_list|)
-throws|throws
-name|MalformedURLException
-block|{
-name|this
-argument_list|(
-operator|new
-name|URL
-argument_list|(
-name|source
-argument_list|)
-argument_list|,
-name|validateSSL
-argument_list|)
-expr_stmt|;
-block|}
-comment|/**      * @param source The URL to download.      * @param validateSSL if set to false, bypasses the SSL vlaidation      */
-DECL|method|URLDownload (URL source, boolean validateSSL)
+comment|/**      * @param source The URL to download.      */
+DECL|method|URLDownload (URL source)
 specifier|public
 name|URLDownload
 parameter_list|(
 name|URL
 name|source
-parameter_list|,
-name|boolean
-name|validateSSL
 parameter_list|)
 block|{
 name|this
@@ -548,16 +517,6 @@ operator|.
 name|USER_AGENT
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-operator|!
-name|validateSSL
-condition|)
-block|{
-name|bypassSSLVerification
-argument_list|()
-expr_stmt|;
-block|}
 block|}
 DECL|method|determineMimeType ()
 specifier|public
@@ -1261,12 +1220,21 @@ operator|+
 literal|'}'
 return|;
 block|}
+comment|/**      * Older java VMs does not automatically trust the zbMATH certificate. In this case the following exception is thrown:      *  sun.security.validator.ValidatorException: PKIX path building failed:      *  sun.security.provider.certpath.SunCertPathBuilderException: unable to find      *  valid certification path to requested target      * JM> 8u101 may trust the certificate by default according to http://stackoverflow.com/a/34111150/873661      *      * We will fix this issue by accepting all (!) certificates. This is ugly; but as JabRef does not rely on      * security-relevant information this is kind of OK (no, actually it is not...).      *      * Taken from http://stackoverflow.com/a/6055903/873661      */
 DECL|method|bypassSSLVerification ()
-specifier|private
+specifier|public
+specifier|static
 name|void
 name|bypassSSLVerification
 parameter_list|()
 block|{
+name|LOGGER
+operator|.
+name|warn
+argument_list|(
+literal|"Fix SSL exceptions by accepting ALL certificates"
+argument_list|)
+expr_stmt|;
 comment|// Create a trust manager that does not validate certificate chains
 name|TrustManager
 index|[]

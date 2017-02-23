@@ -588,10 +588,13 @@ name|constructQuery
 argument_list|(
 name|queryByTitle
 argument_list|)
-argument_list|,
-literal|false
 argument_list|)
 decl_stmt|;
+name|urlDownload
+operator|.
+name|bypassSSLVerification
+argument_list|()
+expr_stmt|;
 name|String
 name|response
 init|=
