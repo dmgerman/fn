@@ -58,11 +58,11 @@ name|org
 operator|.
 name|jabref
 operator|.
-name|logic
+name|model
 operator|.
-name|util
+name|entry
 operator|.
-name|OptionalUtil
+name|BibEntry
 import|;
 end_import
 
@@ -74,9 +74,9 @@ name|jabref
 operator|.
 name|model
 operator|.
-name|entry
+name|util
 operator|.
-name|BibEntry
+name|OptionalUtil
 import|;
 end_import
 
