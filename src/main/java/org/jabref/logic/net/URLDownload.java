@@ -395,7 +395,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * URL download to a string.  *<p>  * Example:  * URLDownload dl = new URLDownload(URL);  * String content = dl.downloadToString(ENCODING);  * dl.downloadToFile(Path); // available in FILE  * String contentType = dl.determineMimeType();  *  * Each call to a public method creates a new HTTP connection. Nothing is cached.  *  * @author Erik Putrycz erik.putrycz-at-nrc-cnrc.gc.ca  * @author Simon Harrer  */
+comment|/**  * URL download to a string.  *<p>  * Example:  * URLDownload dl = new URLDownload(URL);  * String content = dl.downloadToString(ENCODING);  * dl.downloadToFile(Path); // available in FILE  * String contentType = dl.determineMimeType();  *  * Each call to a public method creates a new HTTP connection. Nothing is cached.  */
 end_comment
 
 begin_class
@@ -427,7 +427,7 @@ specifier|final
 name|String
 name|USER_AGENT
 init|=
-literal|"JabRef"
+literal|"Mozilla/5.0 (Windows NT 5.1; rv:31.0) Gecko/20100101 Firefox/31.0"
 decl_stmt|;
 DECL|field|source
 specifier|private
@@ -458,40 +458,6 @@ name|postData
 init|=
 literal|""
 decl_stmt|;
-DECL|method|createURLDownloadWithBrowserUserAgent (String address)
-specifier|public
-specifier|static
-name|URLDownload
-name|createURLDownloadWithBrowserUserAgent
-parameter_list|(
-name|String
-name|address
-parameter_list|)
-throws|throws
-name|MalformedURLException
-block|{
-name|URLDownload
-name|downloader
-init|=
-operator|new
-name|URLDownload
-argument_list|(
-name|address
-argument_list|)
-decl_stmt|;
-name|downloader
-operator|.
-name|addParameters
-argument_list|(
-literal|"User-Agent"
-argument_list|,
-literal|"Mozilla/5.0 (Windows NT 5.1; rv:31.0) Gecko/20100101 Firefox/31.0"
-argument_list|)
-expr_stmt|;
-return|return
-name|downloader
-return|;
-block|}
 comment|/**      * @param address the URL to download from      * @throws MalformedURLException if no protocol is specified in the address, or an unknown protocol is found      */
 DECL|method|URLDownload (String address)
 specifier|public

@@ -964,9 +964,8 @@ block|{
 name|String
 name|content
 init|=
+operator|new
 name|URLDownload
-operator|.
-name|createURLDownloadWithBrowserUserAgent
 argument_list|(
 name|queryURL
 argument_list|)
@@ -1044,9 +1043,8 @@ block|{
 name|String
 name|downloadedContent
 init|=
+operator|new
 name|URLDownload
-operator|.
-name|createURLDownloadWithBrowserUserAgent
 argument_list|(
 name|link
 argument_list|)
@@ -1189,9 +1187,8 @@ block|{
 name|URLDownload
 name|downloader
 init|=
+operator|new
 name|URLDownload
-operator|.
-name|createURLDownloadWithBrowserUserAgent
 argument_list|(
 literal|"https://scholar.google.com"
 argument_list|)
