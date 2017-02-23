@@ -293,7 +293,7 @@ argument_list|(
 name|url
 argument_list|)
 operator|.
-name|downloadToString
+name|asString
 argument_list|(
 name|StandardCharsets
 operator|.

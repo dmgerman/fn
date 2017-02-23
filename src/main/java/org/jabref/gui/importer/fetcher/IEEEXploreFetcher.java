@@ -902,7 +902,7 @@ name|page
 init|=
 name|dl
 operator|.
-name|downloadToString
+name|asString
 argument_list|(
 name|StandardCharsets
 operator|.
@@ -1053,7 +1053,7 @@ name|searchResultsJson
 argument_list|)
 argument_list|)
 operator|.
-name|downloadToString
+name|asString
 argument_list|(
 name|Globals
 operator|.

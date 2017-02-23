@@ -135,7 +135,7 @@ literal|"google.com should contain google"
 argument_list|,
 name|dl
 operator|.
-name|downloadToString
+name|asString
 argument_list|(
 name|StandardCharsets
 operator|.
@@ -180,7 +180,7 @@ literal|"google.com should contain google"
 argument_list|,
 name|dl
 operator|.
-name|downloadToString
+name|asString
 argument_list|(
 name|JabRefPreferences
 operator|.

@@ -433,7 +433,7 @@ name|toURL
 argument_list|()
 argument_list|)
 operator|.
-name|downloadToString
+name|asString
 argument_list|(
 name|StandardCharsets
 operator|.
@@ -500,7 +500,7 @@ operator|+
 name|stampString
 argument_list|)
 operator|.
-name|downloadToString
+name|asString
 argument_list|(
 name|StandardCharsets
 operator|.

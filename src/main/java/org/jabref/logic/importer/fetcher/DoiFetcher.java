@@ -438,7 +438,7 @@ name|bibtexString
 init|=
 name|download
 operator|.
-name|downloadToString
+name|asString
 argument_list|(
 name|StandardCharsets
 operator|.

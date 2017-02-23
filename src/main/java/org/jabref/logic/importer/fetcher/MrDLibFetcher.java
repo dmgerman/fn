@@ -600,7 +600,7 @@ name|response
 init|=
 name|urlDownload
 operator|.
-name|downloadToString
+name|asString
 argument_list|(
 name|StandardCharsets
 operator|.

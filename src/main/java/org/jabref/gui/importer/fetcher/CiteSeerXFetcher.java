@@ -752,7 +752,7 @@ argument_list|(
 name|urlQuery
 argument_list|)
 operator|.
-name|downloadToString
+name|asString
 argument_list|(
 name|Globals
 operator|.
@@ -824,7 +824,7 @@ argument_list|(
 name|urlString
 argument_list|)
 operator|.
-name|downloadToString
+name|asString
 argument_list|(
 name|StandardCharsets
 operator|.

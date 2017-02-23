@@ -970,7 +970,7 @@ argument_list|(
 name|queryURL
 argument_list|)
 operator|.
-name|downloadToString
+name|asString
 argument_list|(
 name|StandardCharsets
 operator|.
@@ -1049,7 +1049,7 @@ argument_list|(
 name|link
 argument_list|)
 operator|.
-name|downloadToString
+name|asString
 argument_list|(
 name|StandardCharsets
 operator|.
