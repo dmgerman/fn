@@ -470,13 +470,13 @@ name|postData
 init|=
 literal|""
 decl_stmt|;
-comment|/**      * @param address the URL to download from      * @throws MalformedURLException if no protocol is specified in the address, or an unknown protocol is found      */
-DECL|method|URLDownload (String address)
+comment|/**      * @param source the URL to download from      * @throws MalformedURLException if no protocol is specified in the source, or an unknown protocol is found      */
+DECL|method|URLDownload (String source)
 specifier|public
 name|URLDownload
 parameter_list|(
 name|String
-name|address
+name|source
 parameter_list|)
 throws|throws
 name|MalformedURLException
@@ -486,18 +486,49 @@ argument_list|(
 operator|new
 name|URL
 argument_list|(
-name|address
+name|source
 argument_list|)
+argument_list|,
+literal|true
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * @param source The URL to download.      */
-DECL|method|URLDownload (URL source)
+comment|/**      * @param source the URL to download from      * @param validateSSL if set to false, bypasses the SSL vlaidation      * @throws MalformedURLException if no protocol is specified in the source, or an unknown protocol is found      */
+DECL|method|URLDownload (String source, boolean validateSSL)
+specifier|public
+name|URLDownload
+parameter_list|(
+name|String
+name|source
+parameter_list|,
+name|boolean
+name|validateSSL
+parameter_list|)
+throws|throws
+name|MalformedURLException
+block|{
+name|this
+argument_list|(
+operator|new
+name|URL
+argument_list|(
+name|source
+argument_list|)
+argument_list|,
+name|validateSSL
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * @param source The URL to download.      * @param validateSSL if set to false, bypasses the SSL vlaidation      */
+DECL|method|URLDownload (URL source, boolean validateSSL)
 specifier|public
 name|URLDownload
 parameter_list|(
 name|URL
 name|source
+parameter_list|,
+name|boolean
+name|validateSSL
 parameter_list|)
 block|{
 name|this
@@ -517,6 +548,16 @@ operator|.
 name|USER_AGENT
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|validateSSL
+condition|)
+block|{
+name|bypassSSLVerification
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 DECL|method|determineMimeType ()
 specifier|public
@@ -1221,7 +1262,7 @@ literal|'}'
 return|;
 block|}
 DECL|method|bypassSSLVerification ()
-specifier|public
+specifier|private
 name|void
 name|bypassSSLVerification
 parameter_list|()
