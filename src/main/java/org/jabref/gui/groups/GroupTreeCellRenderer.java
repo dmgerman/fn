@@ -440,7 +440,10 @@ name|sb
 operator|.
 name|append
 argument_list|(
-literal|"Group Name"
+name|viewModel
+operator|.
+name|getName
+argument_list|()
 argument_list|)
 expr_stmt|;
 if|if
