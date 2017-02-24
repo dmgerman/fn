@@ -140,8 +140,6 @@ name|syncKeywordsFromSpecialFields
 argument_list|(
 name|entry
 argument_list|,
-literal|true
-argument_list|,
 literal|','
 argument_list|)
 expr_stmt|;
@@ -199,8 +197,6 @@ name|syncKeywordsFromSpecialFields
 argument_list|(
 name|entry
 argument_list|,
-literal|true
-argument_list|,
 literal|','
 argument_list|)
 decl_stmt|;
@@ -254,8 +250,6 @@ name|syncKeywordsFromSpecialFields
 argument_list|(
 name|entry
 argument_list|,
-literal|true
-argument_list|,
 literal|','
 argument_list|)
 expr_stmt|;
@@ -303,8 +297,6 @@ operator|.
 name|syncKeywordsFromSpecialFields
 argument_list|(
 name|entry
-argument_list|,
-literal|true
 argument_list|,
 literal|','
 argument_list|)

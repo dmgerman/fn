@@ -200,6 +200,7 @@ parameter_list|)
 block|{
 if|if
 condition|(
+operator|!
 name|Globals
 operator|.
 name|prefs
@@ -208,6 +209,8 @@ name|isKeywordSyncEnabled
 argument_list|()
 condition|)
 block|{
+return|return;
+block|}
 specifier|final
 name|BibEntry
 name|entry
@@ -275,7 +278,6 @@ block|}
 comment|// Don't insert the compound into the undoManager,
 comment|// it would be added before the component which undoes the insertion of the entry and creates heavy problems
 comment|// (which prohibits the undo the deleting multiple entries)
-block|}
 block|}
 block|}
 end_class

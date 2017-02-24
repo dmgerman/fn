@@ -58,16 +58,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Collections
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|Comparator
 import|;
 end_import
@@ -175,6 +165,26 @@ operator|.
 name|stream
 operator|.
 name|Collectors
+import|;
+end_import
+
+begin_import
+import|import
+name|javafx
+operator|.
+name|collections
+operator|.
+name|FXCollections
+import|;
+end_import
+
+begin_import
+import|import
+name|javafx
+operator|.
+name|collections
+operator|.
+name|ObservableList
 import|;
 end_import
 
@@ -424,38 +434,39 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+DECL|field|RESOLVE_CONTENT_PATTERN
+specifier|private
+specifier|static
+specifier|final
+name|Pattern
+name|RESOLVE_CONTENT_PATTERN
+init|=
+name|Pattern
+operator|.
+name|compile
+argument_list|(
+literal|".*#[^#]+#.*"
+argument_list|)
+decl_stmt|;
 comment|/**      * State attributes      */
 DECL|field|entries
 specifier|private
 specifier|final
-name|List
+name|ObservableList
 argument_list|<
 name|BibEntry
 argument_list|>
 name|entries
 init|=
-name|Collections
+name|FXCollections
 operator|.
-name|synchronizedList
+name|synchronizedObservableList
 argument_list|(
-operator|new
-name|ArrayList
-argument_list|<>
+name|FXCollections
+operator|.
+name|observableArrayList
 argument_list|()
 argument_list|)
-decl_stmt|;
-DECL|field|preamble
-specifier|private
-name|String
-name|preamble
-decl_stmt|;
-comment|// All file contents below the last entry in the file
-DECL|field|epilog
-specifier|private
-name|String
-name|epilog
-init|=
-literal|""
 decl_stmt|;
 DECL|field|bibtexStrings
 specifier|private
@@ -509,6 +520,19 @@ operator|new
 name|EventBus
 argument_list|()
 decl_stmt|;
+DECL|field|preamble
+specifier|private
+name|String
+name|preamble
+decl_stmt|;
+comment|// All file contents below the last entry in the file
+DECL|field|epilog
+specifier|private
+name|String
+name|epilog
+init|=
+literal|""
+decl_stmt|;
 DECL|field|sharedDatabaseID
 specifier|private
 name|String
@@ -539,6 +563,50 @@ name|this
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
+comment|/**      * @param toResolve maybenull The text to resolve.      * @param database  maybenull The database to use for resolving the text.      * @return The resolved text or the original text if either the text or the database are null      * @deprecated use  {@link BibDatabase#resolveForStrings(String)}      *      * Returns a text with references resolved according to an optionally given database.      */
+annotation|@
+name|Deprecated
+DECL|method|getText (String toResolve, BibDatabase database)
+specifier|public
+specifier|static
+name|String
+name|getText
+parameter_list|(
+name|String
+name|toResolve
+parameter_list|,
+name|BibDatabase
+name|database
+parameter_list|)
+block|{
+if|if
+condition|(
+operator|(
+name|toResolve
+operator|!=
+literal|null
+operator|)
+operator|&&
+operator|(
+name|database
+operator|!=
+literal|null
+operator|)
+condition|)
+block|{
+return|return
+name|database
+operator|.
+name|resolveForStrings
+argument_list|(
+name|toResolve
+argument_list|)
+return|;
+block|}
+return|return
+name|toResolve
+return|;
 block|}
 comment|/**      * Returns the number of entries.      */
 DECL|method|getEntryCount ()
@@ -620,7 +688,7 @@ return|;
 block|}
 DECL|method|getEntries ()
 specifier|public
-name|List
+name|ObservableList
 argument_list|<
 name|BibEntry
 argument_list|>
@@ -628,9 +696,9 @@ name|getEntries
 parameter_list|()
 block|{
 return|return
-name|Collections
+name|FXCollections
 operator|.
-name|unmodifiableList
+name|unmodifiableObservableList
 argument_list|(
 name|entries
 argument_list|)
@@ -1079,24 +1147,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Sets the database's preamble.      */
-DECL|method|setPreamble (String preamble)
-specifier|public
-specifier|synchronized
-name|void
-name|setPreamble
-parameter_list|(
-name|String
-name|preamble
-parameter_list|)
-block|{
-name|this
-operator|.
-name|preamble
-operator|=
-name|preamble
-expr_stmt|;
-block|}
 comment|/**      * Returns the database's preamble.      * If the preamble text consists only of whitespace, then also an empty optional is returned.      */
 DECL|method|getPreamble ()
 specifier|public
@@ -1136,6 +1186,24 @@ name|preamble
 argument_list|)
 return|;
 block|}
+block|}
+comment|/**      * Sets the database's preamble.      */
+DECL|method|setPreamble (String preamble)
+specifier|public
+specifier|synchronized
+name|void
+name|setPreamble
+parameter_list|(
+name|String
+name|preamble
+parameter_list|)
+block|{
+name|this
+operator|.
+name|preamble
+operator|=
+name|preamble
+expr_stmt|;
 block|}
 comment|/**      * Inserts a Bibtex String.      */
 DECL|method|addString (BibtexString string)
@@ -1923,20 +1991,6 @@ literal|null
 return|;
 block|}
 block|}
-DECL|field|RESOLVE_CONTENT_PATTERN
-specifier|private
-specifier|static
-specifier|final
-name|Pattern
-name|RESOLVE_CONTENT_PATTERN
-init|=
-name|Pattern
-operator|.
-name|compile
-argument_list|(
-literal|".*#[^#]+#.*"
-argument_list|)
-decl_stmt|;
 DECL|method|resolveContent (String result, Set<String> usedIds, Set<String> allUsedIds)
 specifier|private
 name|String
@@ -2193,48 +2247,14 @@ return|return
 name|res
 return|;
 block|}
-comment|/**      * @deprecated use  {@link BibDatabase#resolveForStrings(String)}      *      * Returns a text with references resolved according to an optionally given database.      *      * @param toResolve maybenull The text to resolve.      * @param database  maybenull The database to use for resolving the text.      * @return The resolved text or the original text if either the text or the database are null      */
-annotation|@
-name|Deprecated
-DECL|method|getText (String toResolve, BibDatabase database)
+DECL|method|getEpilog ()
 specifier|public
-specifier|static
 name|String
-name|getText
-parameter_list|(
-name|String
-name|toResolve
-parameter_list|,
-name|BibDatabase
-name|database
-parameter_list|)
-block|{
-if|if
-condition|(
-operator|(
-name|toResolve
-operator|!=
-literal|null
-operator|)
-operator|&&
-operator|(
-name|database
-operator|!=
-literal|null
-operator|)
-condition|)
+name|getEpilog
+parameter_list|()
 block|{
 return|return
-name|database
-operator|.
-name|resolveForStrings
-argument_list|(
-name|toResolve
-argument_list|)
-return|;
-block|}
-return|return
-name|toResolve
+name|epilog
 return|;
 block|}
 DECL|method|setEpilog (String epilog)
@@ -2252,16 +2272,6 @@ name|epilog
 operator|=
 name|epilog
 expr_stmt|;
-block|}
-DECL|method|getEpilog ()
-specifier|public
-name|String
-name|getEpilog
-parameter_list|()
-block|{
-return|return
-name|epilog
-return|;
 block|}
 comment|/**      * Registers an listener object (subscriber) to the internal event bus.      * The following events are posted:      *      *   - {@link EntryAddedEvent}      *   - {@link EntryChangedEvent}      *   - {@link EntryRemovedEvent}      *      * @param listener listener (subscriber) to add      */
 DECL|method|registerListener (Object listener)
@@ -2390,20 +2400,6 @@ name|sharedDatabaseID
 argument_list|)
 return|;
 block|}
-DECL|method|isShared ()
-specifier|public
-name|boolean
-name|isShared
-parameter_list|()
-block|{
-return|return
-name|getSharedDatabaseID
-argument_list|()
-operator|.
-name|isPresent
-argument_list|()
-return|;
-block|}
 DECL|method|setSharedDatabaseID (String sharedDatabaseID)
 specifier|public
 name|void
@@ -2419,6 +2415,20 @@ name|sharedDatabaseID
 operator|=
 name|sharedDatabaseID
 expr_stmt|;
+block|}
+DECL|method|isShared ()
+specifier|public
+name|boolean
+name|isShared
+parameter_list|()
+block|{
+return|return
+name|getSharedDatabaseID
+argument_list|()
+operator|.
+name|isPresent
+argument_list|()
+return|;
 block|}
 DECL|method|clearSharedDatabaseID ()
 specifier|public

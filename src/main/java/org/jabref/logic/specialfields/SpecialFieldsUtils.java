@@ -221,6 +221,11 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// we cannot use "value" here as updateField has side effects: "nullFieldIfValueIsTheSame" nulls the field if value is the same
+if|if
+condition|(
+name|isKeywordSyncEnabled
+condition|)
+block|{
 name|fieldChanges
 operator|.
 name|addAll
@@ -233,17 +238,16 @@ name|field
 argument_list|,
 name|entry
 argument_list|,
-name|isKeywordSyncEnabled
-argument_list|,
 name|keywordDelimiter
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|fieldChanges
 return|;
 block|}
-DECL|method|exportFieldToKeywords (SpecialField specialField, BibEntry entry, boolean isKeywordSyncEnabled, Character keywordDelimiter)
+DECL|method|exportFieldToKeywords (SpecialField specialField, BibEntry entry, Character keywordDelimiter)
 specifier|private
 specifier|static
 name|List
@@ -257,9 +261,6 @@ name|specialField
 parameter_list|,
 name|BibEntry
 name|entry
-parameter_list|,
-name|boolean
-name|isKeywordSyncEnabled
 parameter_list|,
 name|Character
 name|keywordDelimiter
@@ -276,16 +277,6 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
-if|if
-condition|(
-operator|!
-name|isKeywordSyncEnabled
-condition|)
-block|{
-return|return
-name|fieldChanges
-return|;
-block|}
 name|Optional
 argument_list|<
 name|Keyword
@@ -353,7 +344,7 @@ name|fieldChanges
 return|;
 block|}
 comment|/**      * Update keywords according to values of special fields      */
-DECL|method|syncKeywordsFromSpecialFields (BibEntry entry, boolean isKeywordSyncEnabled, Character keywordDelimiter)
+DECL|method|syncKeywordsFromSpecialFields (BibEntry entry, Character keywordDelimiter)
 specifier|public
 specifier|static
 name|List
@@ -364,9 +355,6 @@ name|syncKeywordsFromSpecialFields
 parameter_list|(
 name|BibEntry
 name|entry
-parameter_list|,
-name|boolean
-name|isKeywordSyncEnabled
 parameter_list|,
 name|Character
 name|keywordDelimiter
@@ -405,8 +393,6 @@ argument_list|(
 name|field
 argument_list|,
 name|entry
-argument_list|,
-name|isKeywordSyncEnabled
 argument_list|,
 name|keywordDelimiter
 argument_list|)
@@ -541,7 +527,7 @@ return|return
 name|fieldChanges
 return|;
 block|}
-comment|/**      * updates field values according to keywords      */
+comment|/**      * Updates special field values according to keywords      */
 DECL|method|syncSpecialFieldsFromKeywords (BibEntry entry, Character keywordDelimiter)
 specifier|public
 specifier|static

@@ -466,7 +466,7 @@ name|withText
 argument_list|(
 name|GroupNodeViewModel
 operator|::
-name|getName
+name|getDisplayName
 argument_list|)
 operator|.
 name|withIcon
