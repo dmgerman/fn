@@ -503,10 +503,8 @@ argument_list|(
 name|href
 argument_list|)
 operator|.
-name|isMimeType
-argument_list|(
-literal|"application/pdf"
-argument_list|)
+name|isPdf
+argument_list|()
 condition|)
 block|{
 name|links

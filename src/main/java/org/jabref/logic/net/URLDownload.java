@@ -760,6 +760,21 @@ name|type
 argument_list|)
 return|;
 block|}
+DECL|method|isPdf ()
+specifier|public
+name|boolean
+name|isPdf
+parameter_list|()
+throws|throws
+name|IOException
+block|{
+return|return
+name|isMimeType
+argument_list|(
+literal|"application/pdf"
+argument_list|)
+return|;
+block|}
 DECL|method|addHeader (String key, String value)
 specifier|public
 name|void
