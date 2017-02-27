@@ -434,11 +434,7 @@ argument_list|()
 argument_list|)
 operator|.
 name|asString
-argument_list|(
-name|StandardCharsets
-operator|.
-name|UTF_8
-argument_list|)
+argument_list|()
 decl_stmt|;
 comment|// Try to find the link
 name|Matcher
@@ -501,11 +497,7 @@ name|stampString
 argument_list|)
 operator|.
 name|asString
-argument_list|(
-name|StandardCharsets
-operator|.
-name|UTF_8
-argument_list|)
+argument_list|()
 decl_stmt|;
 comment|// Try to find the direct PDF link
 name|Matcher

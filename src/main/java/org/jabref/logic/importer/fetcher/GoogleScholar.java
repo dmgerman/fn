@@ -971,11 +971,7 @@ name|queryURL
 argument_list|)
 operator|.
 name|asString
-argument_list|(
-name|StandardCharsets
-operator|.
-name|UTF_8
-argument_list|)
+argument_list|()
 decl_stmt|;
 name|Matcher
 name|matcher
@@ -1050,11 +1046,7 @@ name|link
 argument_list|)
 operator|.
 name|asString
-argument_list|(
-name|StandardCharsets
-operator|.
-name|UTF_8
-argument_list|)
+argument_list|()
 decl_stmt|;
 name|BibtexParser
 name|parser

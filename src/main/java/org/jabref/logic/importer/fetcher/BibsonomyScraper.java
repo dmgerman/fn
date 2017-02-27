@@ -294,11 +294,7 @@ name|url
 argument_list|)
 operator|.
 name|asString
-argument_list|(
-name|StandardCharsets
-operator|.
-name|UTF_8
-argument_list|)
+argument_list|()
 decl_stmt|;
 return|return
 name|BibtexParser

@@ -136,11 +136,7 @@ argument_list|,
 name|dl
 operator|.
 name|asString
-argument_list|(
-name|StandardCharsets
-operator|.
-name|UTF_8
-argument_list|)
+argument_list|()
 operator|.
 name|contains
 argument_list|(

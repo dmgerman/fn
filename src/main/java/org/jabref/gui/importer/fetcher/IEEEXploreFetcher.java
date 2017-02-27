@@ -903,11 +903,7 @@ init|=
 name|dl
 operator|.
 name|asString
-argument_list|(
-name|StandardCharsets
-operator|.
-name|UTF_8
-argument_list|)
+argument_list|()
 decl_stmt|;
 comment|//the page can be blank if the search did not work (not sure the exact conditions that lead to this, but declaring it an invalid search for now)
 if|if

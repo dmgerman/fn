@@ -439,11 +439,7 @@ init|=
 name|download
 operator|.
 name|asString
-argument_list|(
-name|StandardCharsets
-operator|.
-name|UTF_8
-argument_list|)
+argument_list|()
 decl_stmt|;
 comment|// BibTeX entry
 name|Optional

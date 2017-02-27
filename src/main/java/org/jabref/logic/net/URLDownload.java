@@ -210,6 +210,18 @@ name|java
 operator|.
 name|nio
 operator|.
+name|charset
+operator|.
+name|StandardCharsets
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
 name|file
 operator|.
 name|Files
@@ -868,6 +880,24 @@ throw|throw
 name|e
 throw|;
 block|}
+block|}
+comment|/**      * Downloads the web resource to a String.      * Uses UTF-8 as encoding.      *      * @return the downloaded string      */
+DECL|method|asString ()
+specifier|public
+name|String
+name|asString
+parameter_list|()
+throws|throws
+name|IOException
+block|{
+return|return
+name|asString
+argument_list|(
+name|StandardCharsets
+operator|.
+name|UTF_8
+argument_list|)
+return|;
 block|}
 DECL|method|getCookieFromUrl ()
 specifier|public

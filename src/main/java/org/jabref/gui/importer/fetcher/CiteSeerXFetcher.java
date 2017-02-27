@@ -825,11 +825,7 @@ name|urlString
 argument_list|)
 operator|.
 name|asString
-argument_list|(
-name|StandardCharsets
-operator|.
-name|UTF_8
-argument_list|)
+argument_list|()
 decl_stmt|;
 comment|// Find title, and create entry if we do. Otherwise assume we did not get an entry:
 name|Matcher
