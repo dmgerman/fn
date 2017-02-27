@@ -58,18 +58,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|nio
-operator|.
-name|charset
-operator|.
-name|StandardCharsets
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|ArrayList
@@ -872,7 +860,7 @@ decl_stmt|;
 comment|//add request header
 name|dl
 operator|.
-name|addParameters
+name|addHeader
 argument_list|(
 literal|"Accept"
 argument_list|,
@@ -881,7 +869,7 @@ argument_list|)
 expr_stmt|;
 name|dl
 operator|.
-name|addParameters
+name|addHeader
 argument_list|(
 literal|"Content-Type"
 argument_list|,
@@ -902,12 +890,8 @@ name|page
 init|=
 name|dl
 operator|.
-name|downloadToString
-argument_list|(
-name|StandardCharsets
-operator|.
-name|UTF_8
-argument_list|)
+name|asString
+argument_list|()
 decl_stmt|;
 comment|//the page can be blank if the search did not work (not sure the exact conditions that lead to this, but declaring it an invalid search for now)
 if|if
@@ -1053,7 +1037,7 @@ name|searchResultsJson
 argument_list|)
 argument_list|)
 operator|.
-name|downloadToString
+name|asString
 argument_list|(
 name|Globals
 operator|.

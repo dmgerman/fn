@@ -752,7 +752,7 @@ argument_list|(
 name|urlQuery
 argument_list|)
 operator|.
-name|downloadToString
+name|asString
 argument_list|(
 name|Globals
 operator|.
@@ -824,12 +824,8 @@ argument_list|(
 name|urlString
 argument_list|)
 operator|.
-name|downloadToString
-argument_list|(
-name|StandardCharsets
-operator|.
-name|UTF_8
-argument_list|)
+name|asString
+argument_list|()
 decl_stmt|;
 comment|// Find title, and create entry if we do. Otherwise assume we did not get an entry:
 name|Matcher
