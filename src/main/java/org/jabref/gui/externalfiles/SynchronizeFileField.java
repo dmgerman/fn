@@ -1197,7 +1197,8 @@ name|httpLink
 init|=
 name|flEntry
 operator|.
-name|link
+name|getLink
+argument_list|()
 operator|.
 name|toLowerCase
 argument_list|(
@@ -1239,7 +1240,8 @@ name|expandFilename
 argument_list|(
 name|flEntry
 operator|.
-name|link
+name|getLink
+argument_list|()
 argument_list|,
 name|dirsS
 argument_list|)
@@ -1299,7 +1301,8 @@ literal|"<HTML>Could not find file '%0'<BR>linked from entry '%1'</HTML>"
 argument_list|,
 name|flEntry
 operator|.
-name|link
+name|getLink
+argument_list|()
 argument_list|,
 name|aSel
 operator|.
@@ -1447,7 +1450,8 @@ name|deleted
 operator|&&
 name|flEntry
 operator|.
-name|type
+name|getType
+argument_list|()
 operator|.
 name|isPresent
 argument_list|()
@@ -1455,7 +1459,8 @@ operator|&&
 operator|(
 name|flEntry
 operator|.
-name|type
+name|getType
+argument_list|()
 operator|.
 name|get
 argument_list|()
@@ -1480,7 +1485,8 @@ literal|"Define '%0'"
 argument_list|,
 name|flEntry
 operator|.
-name|type
+name|getType
+argument_list|()
 operator|.
 name|get
 argument_list|()
@@ -1532,7 +1538,8 @@ literal|"One or more file links are of the type '%0', which is undefined. What d
 argument_list|,
 name|flEntry
 operator|.
-name|type
+name|getType
+argument_list|()
 operator|.
 name|get
 argument_list|()
@@ -1593,7 +1600,8 @@ name|ExternalFileType
 argument_list|(
 name|flEntry
 operator|.
-name|type
+name|getType
+argument_list|()
 operator|.
 name|get
 argument_list|()

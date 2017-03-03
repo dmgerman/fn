@@ -897,11 +897,6 @@ name|IMPORT_FILENAMEPATTERN
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|String
-name|pattern
-init|=
-literal|""
-decl_stmt|;
 name|fileDirPattern
 operator|.
 name|setText

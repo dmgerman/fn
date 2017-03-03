@@ -2738,7 +2738,8 @@ name|File
 argument_list|(
 name|flEntry
 operator|.
-name|link
+name|getLink
+argument_list|()
 argument_list|)
 operator|.
 name|isAbsolute
@@ -2754,7 +2755,8 @@ name|absName
 operator|=
 name|flEntry
 operator|.
-name|link
+name|getLink
+argument_list|()
 expr_stmt|;
 block|}
 else|else
@@ -2771,7 +2773,8 @@ name|expandFilename
 argument_list|(
 name|flEntry
 operator|.
-name|link
+name|getLink
+argument_list|()
 argument_list|,
 name|dirs
 argument_list|)

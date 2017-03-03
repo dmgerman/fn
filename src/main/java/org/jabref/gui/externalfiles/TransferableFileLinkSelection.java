@@ -323,7 +323,8 @@ argument_list|(
 literal|0
 argument_list|)
 operator|.
-name|link
+name|getLink
+argument_list|()
 argument_list|,
 name|dirs
 argument_list|)

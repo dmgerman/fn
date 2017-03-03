@@ -992,7 +992,8 @@ name|File
 argument_list|(
 name|existingEntry
 operator|.
-name|link
+name|getLink
+argument_list|()
 argument_list|)
 operator|.
 name|equals
