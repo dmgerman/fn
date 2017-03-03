@@ -714,6 +714,85 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Removes the specified group and its subgroups (after asking for confirmation).      */
+DECL|method|removeGroupAndSubgroups (GroupNodeViewModel group)
+specifier|public
+name|void
+name|removeGroupAndSubgroups
+parameter_list|(
+name|GroupNodeViewModel
+name|group
+parameter_list|)
+block|{
+name|boolean
+name|confirmed
+init|=
+name|dialogService
+operator|.
+name|showConfirmationDialogAndWait
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Remove group and subgroups"
+argument_list|)
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Remove group \"%0\" and its subgroups?"
+argument_list|,
+name|group
+operator|.
+name|getDisplayName
+argument_list|()
+argument_list|)
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Remove"
+argument_list|)
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|confirmed
+condition|)
+block|{
+comment|// TODO: Add undo
+comment|//final UndoableAddOrRemoveGroup undo = new UndoableAddOrRemoveGroup(groupsRoot, node, UndoableAddOrRemoveGroup.REMOVE_NODE_AND_CHILDREN);
+comment|//panel.getUndoManager().addEdit(undo);
+name|group
+operator|.
+name|getGroupNode
+argument_list|()
+operator|.
+name|removeFromParent
+argument_list|()
+expr_stmt|;
+name|dialogService
+operator|.
+name|notify
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Removed group \"%0\" and its subgroups."
+argument_list|,
+name|group
+operator|.
+name|getDisplayName
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 block|}
 end_class
 
