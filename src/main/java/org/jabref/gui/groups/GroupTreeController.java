@@ -276,6 +276,20 @@ name|EasyBind
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|fxmisc
+operator|.
+name|easybind
+operator|.
+name|monadic
+operator|.
+name|PropertyBinding
+import|;
+end_import
+
 begin_class
 DECL|class|GroupTreeController
 specifier|public
@@ -406,7 +420,7 @@ operator|.
 name|selectedGroupProperty
 argument_list|()
 operator|.
-name|bind
+name|bindBidirectional
 argument_list|(
 name|EasyBind
 operator|.
