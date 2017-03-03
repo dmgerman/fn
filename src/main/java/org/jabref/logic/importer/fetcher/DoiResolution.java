@@ -106,9 +106,9 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|importer
+name|net
 operator|.
-name|MimeTypeDetector
+name|URLDownload
 import|;
 end_import
 
@@ -497,12 +497,14 @@ literal|"pdf"
 argument_list|)
 operator|)
 operator|&&
-name|MimeTypeDetector
-operator|.
-name|isPdfContentType
+operator|new
+name|URLDownload
 argument_list|(
 name|href
 argument_list|)
+operator|.
+name|isPdf
+argument_list|()
 condition|)
 block|{
 name|links

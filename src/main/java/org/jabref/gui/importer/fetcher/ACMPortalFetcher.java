@@ -1065,7 +1065,7 @@ name|page
 init|=
 name|dl
 operator|.
-name|downloadToString
+name|asString
 argument_list|(
 name|Globals
 operator|.
@@ -2404,7 +2404,7 @@ name|page
 init|=
 name|dl
 operator|.
-name|downloadToString
+name|asString
 argument_list|(
 name|Globals
 operator|.

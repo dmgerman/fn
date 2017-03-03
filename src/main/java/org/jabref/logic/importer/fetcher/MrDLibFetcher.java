@@ -72,18 +72,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|nio
-operator|.
-name|charset
-operator|.
-name|StandardCharsets
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|ArrayList
@@ -592,7 +580,7 @@ argument_list|)
 decl_stmt|;
 name|urlDownload
 operator|.
-name|fixSSLVerification
+name|bypassSSLVerification
 argument_list|()
 expr_stmt|;
 name|String
@@ -600,12 +588,8 @@ name|response
 init|=
 name|urlDownload
 operator|.
-name|downloadToString
-argument_list|(
-name|StandardCharsets
-operator|.
-name|UTF_8
-argument_list|)
+name|asString
+argument_list|()
 decl_stmt|;
 comment|//Conversion of< and>
 name|response

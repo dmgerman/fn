@@ -876,7 +876,7 @@ argument_list|(
 name|address
 argument_list|)
 operator|.
-name|downloadToTemporaryFile
+name|toTemporaryFile
 argument_list|()
 expr_stmt|;
 block|}

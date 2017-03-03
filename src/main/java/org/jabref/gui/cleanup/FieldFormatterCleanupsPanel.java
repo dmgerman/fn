@@ -658,7 +658,7 @@ name|FormLayout
 argument_list|(
 literal|"left:pref, 13dlu, left:pref:grow, 4dlu, pref, 4dlu, pref"
 argument_list|,
-literal|"pref, 2dlu, pref, 2dlu, pref, 4dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, fill:pref:grow, 2dlu"
+literal|"pref, 2dlu, pref, 2dlu, pref, 4dlu, pref, 2dlu, fill:pref:grow, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -1362,9 +1362,9 @@ argument_list|(
 operator|new
 name|FormLayout
 argument_list|(
-literal|"left:pref:grow, 4dlu, left:pref:grow, 4dlu, pref:grow, 4dlu, right:pref"
+literal|"left:pref:grow, 4dlu, left:pref:grow, 4dlu, fill:pref:grow, 4dlu, right:pref"
 argument_list|,
-literal|"pref, 2dlu, pref:grow, 2dlu"
+literal|"fill:pref:grow, 2dlu, pref, 2dlu"
 argument_list|)
 argument_list|)
 decl_stmt|;

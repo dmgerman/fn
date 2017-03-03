@@ -38,18 +38,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|nio
-operator|.
-name|charset
-operator|.
-name|StandardCharsets
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|Objects
@@ -433,12 +421,8 @@ name|toURL
 argument_list|()
 argument_list|)
 operator|.
-name|downloadToString
-argument_list|(
-name|StandardCharsets
-operator|.
-name|UTF_8
-argument_list|)
+name|asString
+argument_list|()
 decl_stmt|;
 comment|// Try to find the link
 name|Matcher
@@ -500,12 +484,8 @@ operator|+
 name|stampString
 argument_list|)
 operator|.
-name|downloadToString
-argument_list|(
-name|StandardCharsets
-operator|.
-name|UTF_8
-argument_list|)
+name|asString
+argument_list|()
 decl_stmt|;
 comment|// Try to find the direct PDF link
 name|Matcher

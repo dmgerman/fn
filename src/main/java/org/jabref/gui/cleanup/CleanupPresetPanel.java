@@ -16,6 +16,18 @@ begin_import
 import|import
 name|java
 operator|.
+name|nio
+operator|.
+name|file
+operator|.
+name|Path
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|EnumSet
@@ -29,6 +41,16 @@ operator|.
 name|util
 operator|.
 name|Objects
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
 import|;
 end_import
 
@@ -328,15 +350,28 @@ literal|"Reformat ISSN"
 argument_list|)
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
+name|Optional
+argument_list|<
+name|Path
+argument_list|>
+name|firstExistingDir
+init|=
 name|databaseContext
 operator|.
-name|getMetaData
+name|getFirstExistingFileDir
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|getInstance
 argument_list|()
 operator|.
-name|getDefaultFileDirectory
+name|getFileDirectoryPreferences
 argument_list|()
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|firstExistingDir
 operator|.
 name|isPresent
 argument_list|()
@@ -353,15 +388,12 @@ name|lang
 argument_list|(
 literal|"Move linked files to default file directory %0"
 argument_list|,
-name|databaseContext
-operator|.
-name|getMetaData
-argument_list|()
-operator|.
-name|getDefaultFileDirectory
-argument_list|()
+name|firstExistingDir
 operator|.
 name|get
+argument_list|()
+operator|.
+name|toString
 argument_list|()
 argument_list|)
 argument_list|)
@@ -513,9 +545,9 @@ init|=
 operator|new
 name|FormLayout
 argument_list|(
-literal|"left:15dlu, pref:grow"
+literal|"left:15dlu, fill:pref:grow"
 argument_list|,
-literal|"pref, pref, pref, pref, pref, pref, pref,pref, pref,190dlu, fill:pref:grow,"
+literal|"pref, pref, pref, pref, pref, fill:pref:grow, pref,pref, pref,190dlu, fill:pref:grow,"
 argument_list|)
 decl_stmt|;
 name|FormBuilder
@@ -625,6 +657,10 @@ name|concat
 argument_list|(
 literal|": "
 argument_list|)
+decl_stmt|;
+name|currentPattern
+operator|=
+name|currentPattern
 operator|.
 name|concat
 argument_list|(
@@ -639,7 +675,7 @@ operator|.
 name|IMPORT_FILENAMEPATTERN
 argument_list|)
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|builder
 operator|.
 name|add

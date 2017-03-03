@@ -3519,7 +3519,7 @@ name|void
 name|shortTitle
 parameter_list|()
 block|{
-comment|// veryShortTitle is getTitleWords with "3" as count
+comment|// shortTitle is getTitleWords with "3" as count
 name|int
 name|count
 init|=
