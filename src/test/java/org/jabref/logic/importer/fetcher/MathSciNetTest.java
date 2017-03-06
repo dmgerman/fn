@@ -26,6 +26,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|jabref
@@ -497,7 +507,7 @@ name|fetcher
 operator|.
 name|performSearch
 argument_list|(
-literal|"Two-Dimensional Ericksen Leslie System"
+literal|"Existence and uniqueness theorems Two-Dimensional Ericksen Leslie System"
 argument_list|)
 decl_stmt|;
 name|assertFalse
@@ -518,6 +528,53 @@ name|get
 argument_list|(
 literal|0
 argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|searchByIdFindsEntry ()
+specifier|public
+name|void
+name|searchByIdFindsEntry
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+comment|// CI has no subscription to zbMath and thus gets 401 response
+name|Assume
+operator|.
+name|assumeFalse
+argument_list|(
+name|DevEnvironment
+operator|.
+name|isCIServer
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|Optional
+argument_list|<
+name|BibEntry
+argument_list|>
+name|fetchedEntry
+init|=
+name|fetcher
+operator|.
+name|performSearchById
+argument_list|(
+literal|"3537908"
+argument_list|)
+decl_stmt|;
+name|assertEquals
+argument_list|(
+name|Optional
+operator|.
+name|of
+argument_list|(
+name|ratiuEntry
+argument_list|)
+argument_list|,
+name|fetchedEntry
 argument_list|)
 expr_stmt|;
 block|}
