@@ -385,12 +385,24 @@ block|{
 comment|// insert at desired location
 while|while
 condition|(
+operator|(
 name|level
 operator|<=
 name|cursor
 operator|.
 name|getLevel
 argument_list|()
+operator|)
+operator|&&
+operator|(
+name|cursor
+operator|.
+name|getParent
+argument_list|()
+operator|.
+name|isPresent
+argument_list|()
+operator|)
 condition|)
 block|{
 name|cursor

@@ -5638,7 +5638,8 @@ literal|""
 argument_list|,
 name|fl
 operator|.
-name|link
+name|getLink
+argument_list|()
 argument_list|,
 literal|null
 argument_list|,
@@ -5649,7 +5650,8 @@ argument_list|()
 argument_list|,
 name|fl
 operator|.
-name|type
+name|getType
+argument_list|()
 argument_list|)
 operator|)
 operator|.
@@ -5877,7 +5879,8 @@ name|description
 init|=
 name|flEntry
 operator|.
-name|description
+name|getDescription
+argument_list|()
 decl_stmt|;
 if|if
 condition|(
@@ -5902,7 +5905,8 @@ name|description
 operator|=
 name|flEntry
 operator|.
-name|link
+name|getLink
+argument_list|()
 expr_stmt|;
 block|}
 name|menu
@@ -5923,11 +5927,13 @@ name|description
 argument_list|,
 name|flEntry
 operator|.
-name|link
+name|getLink
+argument_list|()
 argument_list|,
 name|flEntry
 operator|.
-name|type
+name|getType
+argument_list|()
 operator|.
 name|get
 argument_list|()
@@ -5942,7 +5948,8 @@ argument_list|()
 argument_list|,
 name|flEntry
 operator|.
-name|type
+name|getType
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -8426,7 +8433,8 @@ argument_list|(
 literal|0
 argument_list|)
 operator|.
-name|type
+name|getType
+argument_list|()
 operator|.
 name|isPresent
 argument_list|()
@@ -8443,7 +8451,8 @@ argument_list|(
 literal|0
 argument_list|)
 operator|.
-name|type
+name|getType
+argument_list|()
 operator|.
 name|get
 argument_list|()

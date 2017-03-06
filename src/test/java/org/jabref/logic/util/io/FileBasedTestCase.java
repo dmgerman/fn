@@ -896,7 +896,7 @@ argument_list|)
 decl_stmt|;
 name|Set
 argument_list|<
-name|File
+name|Path
 argument_list|>
 name|results
 init|=

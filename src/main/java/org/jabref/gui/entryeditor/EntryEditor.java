@@ -7041,8 +7041,8 @@ comment|// When the tab "Related articles" gets selected, the request to get the
 if|if
 condition|(
 name|activeTab
-operator|instanceof
-name|EntryEditorTabRelatedArticles
+operator|==
+name|relatedArticlePanel
 condition|)
 block|{
 name|relatedArticlesTab

@@ -1615,7 +1615,8 @@ if|if
 condition|(
 name|iEntry
 operator|.
-name|link
+name|getLink
+argument_list|()
 operator|.
 name|equals
 argument_list|(
@@ -1757,11 +1758,13 @@ name|databaseContext
 argument_list|,
 name|flEntry
 operator|.
-name|link
+name|getLink
+argument_list|()
 argument_list|,
 name|flEntry
 operator|.
-name|type
+name|getType
+argument_list|()
 argument_list|)
 return|;
 block|}

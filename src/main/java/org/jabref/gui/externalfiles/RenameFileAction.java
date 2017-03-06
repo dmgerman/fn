@@ -194,7 +194,7 @@ name|logic
 operator|.
 name|cleanup
 operator|.
-name|MoveFilesCleanup
+name|RenamePdfCleanup
 import|;
 end_import
 
@@ -242,15 +242,11 @@ name|ParsedFileField
 import|;
 end_import
 
-begin_comment
-comment|/**  * Action for moving a file that is linked  from an entry in JabRef.  */
-end_comment
-
 begin_class
-DECL|class|MoveFileAction
+DECL|class|RenameFileAction
 specifier|public
 class|class
-name|MoveFileAction
+name|RenameFileAction
 extends|extends
 name|AbstractAction
 block|{
@@ -272,9 +268,9 @@ specifier|final
 name|FileListEditor
 name|editor
 decl_stmt|;
-DECL|method|MoveFileAction (JabRefFrame frame, EntryEditor eEditor, FileListEditor editor)
+DECL|method|RenameFileAction (JabRefFrame frame, EntryEditor eEditor, FileListEditor editor)
 specifier|public
-name|MoveFileAction
+name|RenameFileAction
 parameter_list|(
 name|JabRefFrame
 name|frame
@@ -307,13 +303,13 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|actionPerformed (ActionEvent event)
+DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
 name|actionPerformed
 parameter_list|(
 name|ActionEvent
-name|event
+name|e
 parameter_list|)
 block|{
 name|int
@@ -347,6 +343,14 @@ argument_list|(
 name|selected
 argument_list|)
 decl_stmt|;
+name|ParsedFileField
+name|field
+init|=
+name|entry
+operator|.
+name|toParsedFileField
+argument_list|()
+decl_stmt|;
 comment|// Check if the current file exists:
 name|String
 name|ln
@@ -354,14 +358,6 @@ init|=
 name|entry
 operator|.
 name|getLink
-argument_list|()
-decl_stmt|;
-name|ParsedFileField
-name|field
-init|=
-name|entry
-operator|.
-name|toParsedFileField
 argument_list|()
 decl_stmt|;
 name|boolean
@@ -389,7 +385,6 @@ block|{
 comment|// TODO: notify that this operation cannot be done on remote links
 return|return;
 block|}
-comment|// Get an absolute path representation:
 name|List
 argument_list|<
 name|String
@@ -464,7 +459,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Move file"
+literal|"Rename file"
 argument_list|)
 argument_list|,
 name|JOptionPane
@@ -533,12 +528,14 @@ name|file
 argument_list|)
 condition|)
 block|{
-name|MoveFilesCleanup
-name|moveFiles
+name|RenamePdfCleanup
+name|pdfCleanup
 init|=
 operator|new
-name|MoveFilesCleanup
+name|RenamePdfCleanup
 argument_list|(
+literal|false
+argument_list|,
 name|frame
 operator|.
 name|getCurrentBasePanel
@@ -565,13 +562,6 @@ name|Globals
 operator|.
 name|prefs
 operator|.
-name|getFileDirectoryPreferences
-argument_list|()
-argument_list|,
-name|Globals
-operator|.
-name|prefs
-operator|.
 name|getLayoutFormatterPreferences
 argument_list|(
 name|Globals
@@ -579,7 +569,29 @@ operator|.
 name|journalAbbreviationLoader
 argument_list|)
 argument_list|,
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getFileDirectoryPreferences
+argument_list|()
+argument_list|,
 name|field
+argument_list|)
+decl_stmt|;
+name|String
+name|targetFileName
+init|=
+name|pdfCleanup
+operator|.
+name|getTargetFileName
+argument_list|(
+name|field
+argument_list|,
+name|eEditor
+operator|.
+name|getEntry
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|String
@@ -591,7 +603,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Move file"
+literal|"Rename file"
 argument_list|)
 block|,
 name|Localization
@@ -615,21 +627,18 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Move file to file directory?"
+literal|"Rename file to"
 argument_list|)
 operator|+
 literal|" "
 operator|+
-name|fileDir
-operator|.
-name|get
-argument_list|()
+name|targetFileName
 argument_list|,
 name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Move file"
+literal|"Rename file"
 argument_list|)
 argument_list|,
 name|JOptionPane
@@ -650,6 +659,7 @@ literal|0
 index|]
 argument_list|)
 decl_stmt|;
+comment|//indicates Rename pressed
 if|if
 condition|(
 name|dialogResult
@@ -659,53 +669,17 @@ operator|.
 name|YES_OPTION
 condition|)
 block|{
-name|moveFiles
+name|pdfCleanup
 operator|.
 name|cleanup
 argument_list|(
-operator|(
 name|eEditor
 operator|.
 name|getEntry
 argument_list|()
-operator|)
 argument_list|)
 expr_stmt|;
 block|}
-block|}
-else|else
-block|{
-comment|// File doesn't exist, so we can't move it.
-name|JOptionPane
-operator|.
-name|showMessageDialog
-argument_list|(
-name|frame
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Could not find file '%0'."
-argument_list|,
-name|entry
-operator|.
-name|getLink
-argument_list|()
-argument_list|)
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"File not found"
-argument_list|)
-argument_list|,
-name|JOptionPane
-operator|.
-name|ERROR_MESSAGE
-argument_list|)
-expr_stmt|;
 block|}
 block|}
 block|}

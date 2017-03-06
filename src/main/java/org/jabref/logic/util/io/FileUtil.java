@@ -1878,7 +1878,7 @@ decl_stmt|;
 comment|// First scan directories
 name|Set
 argument_list|<
-name|File
+name|Path
 argument_list|>
 name|filesWithExtension
 init|=
@@ -1918,7 +1918,7 @@ name|nextFile
 label|:
 for|for
 control|(
-name|File
+name|Path
 name|file
 range|:
 name|filesWithExtension
@@ -1929,7 +1929,10 @@ name|name
 init|=
 name|file
 operator|.
-name|getName
+name|getFileName
+argument_list|()
+operator|.
+name|toString
 argument_list|()
 decl_stmt|;
 name|int
@@ -2014,6 +2017,9 @@ operator|.
 name|add
 argument_list|(
 name|file
+operator|.
+name|toFile
+argument_list|()
 argument_list|)
 expr_stmt|;
 continue|continue
@@ -2087,6 +2093,9 @@ operator|.
 name|add
 argument_list|(
 name|file
+operator|.
+name|toFile
+argument_list|()
 argument_list|)
 expr_stmt|;
 continue|continue
