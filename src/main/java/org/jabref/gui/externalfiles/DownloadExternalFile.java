@@ -1026,7 +1026,8 @@ name|File
 argument_list|(
 name|closeEntry
 operator|.
-name|link
+name|getLink
+argument_list|()
 argument_list|)
 else|:
 name|expandFilename
@@ -1035,7 +1036,8 @@ name|directory
 argument_list|,
 name|closeEntry
 operator|.
-name|link
+name|getLink
+argument_list|()
 argument_list|)
 decl_stmt|;
 if|if
@@ -1168,7 +1170,8 @@ name|File
 argument_list|(
 name|fileListEntry
 operator|.
-name|link
+name|getLink
+argument_list|()
 argument_list|)
 else|:
 name|expandFilename
@@ -1177,7 +1180,8 @@ name|directory
 argument_list|,
 name|fileListEntry
 operator|.
-name|link
+name|getLink
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|String
@@ -1283,7 +1287,8 @@ operator|)
 operator|&&
 name|fileListEntry
 operator|.
-name|link
+name|getLink
+argument_list|()
 operator|.
 name|startsWith
 argument_list|(
@@ -1293,7 +1298,8 @@ operator|&&
 operator|(
 name|fileListEntry
 operator|.
-name|link
+name|getLink
+argument_list|()
 operator|.
 name|length
 argument_list|()
@@ -1312,11 +1318,13 @@ name|FileListEntry
 argument_list|(
 name|fileListEntry
 operator|.
-name|description
+name|getDescription
+argument_list|()
 argument_list|,
 name|fileListEntry
 operator|.
-name|link
+name|getLink
+argument_list|()
 operator|.
 name|substring
 argument_list|(
@@ -1328,7 +1336,8 @@ argument_list|)
 argument_list|,
 name|fileListEntry
 operator|.
-name|type
+name|getType
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

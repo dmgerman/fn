@@ -203,7 +203,7 @@ specifier|public
 specifier|static
 name|Set
 argument_list|<
-name|File
+name|Path
 argument_list|>
 name|findFiles
 parameter_list|(
@@ -282,7 +282,7 @@ argument_list|)
 decl_stmt|;
 name|Set
 argument_list|<
-name|File
+name|Path
 argument_list|>
 name|result
 init|=
@@ -303,7 +303,7 @@ try|try
 init|(
 name|Stream
 argument_list|<
-name|File
+name|Path
 argument_list|>
 name|files
 init|=
@@ -322,16 +322,6 @@ name|MAX_VALUE
 argument_list|,
 name|isDirectoryAndContainsExtension
 argument_list|)
-operator|.
-name|map
-argument_list|(
-name|x
-lambda|->
-name|x
-operator|.
-name|toFile
-argument_list|()
-argument_list|)
 init|)
 block|{
 name|result
@@ -348,7 +338,8 @@ name|toSet
 argument_list|()
 argument_list|)
 argument_list|)
-block|;              }
+expr_stmt|;
+block|}
 catch|catch
 parameter_list|(
 name|IOException

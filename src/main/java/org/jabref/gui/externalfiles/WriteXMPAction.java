@@ -832,7 +832,8 @@ condition|(
 operator|(
 name|flEntry
 operator|.
-name|type
+name|getType
+argument_list|()
 operator|.
 name|isPresent
 argument_list|()
@@ -844,7 +845,8 @@ name|equalsIgnoreCase
 argument_list|(
 name|flEntry
 operator|.
-name|type
+name|getType
+argument_list|()
 operator|.
 name|get
 argument_list|()
@@ -860,7 +862,8 @@ name|expandFilename
 argument_list|(
 name|flEntry
 operator|.
-name|link
+name|getLink
+argument_list|()
 argument_list|,
 name|dirs
 argument_list|)

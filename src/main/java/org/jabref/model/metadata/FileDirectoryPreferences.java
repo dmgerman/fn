@@ -195,9 +195,11 @@ decl_stmt|;
 comment|// filter empty paths
 if|if
 condition|(
+operator|(
 name|value
 operator|!=
 literal|null
+operator|)
 operator|&&
 operator|!
 name|value

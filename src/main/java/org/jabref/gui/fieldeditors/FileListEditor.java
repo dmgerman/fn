@@ -478,6 +478,20 @@ name|jabref
 operator|.
 name|gui
 operator|.
+name|externalfiles
+operator|.
+name|RenameFileAction
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
 name|externalfiletype
 operator|.
 name|ExternalFileType
@@ -1590,7 +1604,8 @@ name|get
 argument_list|(
 name|entry
 operator|.
-name|link
+name|getLink
+argument_list|()
 argument_list|)
 operator|.
 name|isAbsolute
@@ -1605,7 +1620,8 @@ name|get
 argument_list|(
 name|entry
 operator|.
-name|link
+name|getLink
+argument_list|()
 argument_list|)
 operator|.
 name|toString
@@ -1644,7 +1660,8 @@ name|folder
 argument_list|,
 name|entry
 operator|.
-name|link
+name|getLink
+argument_list|()
 argument_list|)
 decl_stmt|;
 if|if
@@ -1744,7 +1761,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Move/Rename file"
+literal|"Rename file"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -1760,15 +1777,13 @@ operator|.
 name|addActionListener
 argument_list|(
 operator|new
-name|MoveFileAction
+name|RenameFileAction
 argument_list|(
 name|frame
 argument_list|,
 name|entryEditor
 argument_list|,
 name|this
-argument_list|,
-literal|false
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1805,8 +1820,6 @@ argument_list|,
 name|entryEditor
 argument_list|,
 name|this
-argument_list|,
-literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1879,7 +1892,8 @@ name|databaseContext
 argument_list|,
 name|entry
 operator|.
-name|link
+name|getLink
+argument_list|()
 argument_list|,
 name|Globals
 operator|.
@@ -2033,7 +2047,8 @@ literal|"File permission error while deleting: "
 operator|+
 name|entry
 operator|.
-name|link
+name|getLink
+argument_list|()
 argument_list|,
 name|ex
 argument_list|)
@@ -2228,7 +2243,8 @@ name|getExternalFileTypeByName
 argument_list|(
 name|entry
 operator|.
-name|type
+name|getType
+argument_list|()
 operator|.
 name|get
 argument_list|()
@@ -2245,7 +2261,8 @@ name|databaseContext
 argument_list|,
 name|entry
 operator|.
-name|link
+name|getLink
+argument_list|()
 argument_list|,
 name|type
 operator|.
@@ -2256,7 +2273,8 @@ name|type
 else|:
 name|entry
 operator|.
-name|type
+name|getType
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
