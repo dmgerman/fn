@@ -445,7 +445,11 @@ literal|"TABLE_NAME"
 argument_list|)
 operator|.
 name|toUpperCase
-argument_list|()
+argument_list|(
+name|Locale
+operator|.
+name|ROOT
+argument_list|)
 decl_stmt|;
 name|requiredTables
 operator|.

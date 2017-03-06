@@ -16,6 +16,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Locale
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|jabref
@@ -66,7 +76,11 @@ return|return
 name|fieldText
 operator|.
 name|toUpperCase
-argument_list|()
+argument_list|(
+name|Locale
+operator|.
+name|ROOT
+argument_list|)
 return|;
 block|}
 block|}

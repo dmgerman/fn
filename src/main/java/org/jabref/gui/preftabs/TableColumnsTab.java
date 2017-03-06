@@ -106,6 +106,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Locale
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|swing
@@ -4098,7 +4108,11 @@ argument_list|(
 name|name
 operator|.
 name|toLowerCase
-argument_list|()
+argument_list|(
+name|Locale
+operator|.
+name|ROOT
+argument_list|)
 argument_list|,
 name|i
 argument_list|)
@@ -4309,7 +4323,11 @@ name|i
 argument_list|)
 operator|.
 name|toLowerCase
-argument_list|()
+argument_list|(
+name|Locale
+operator|.
+name|ROOT
+argument_list|)
 decl_stmt|;
 name|int
 name|width
@@ -5111,7 +5129,11 @@ name|getName
 argument_list|()
 operator|.
 name|toLowerCase
-argument_list|()
+argument_list|(
+name|Locale
+operator|.
+name|ROOT
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|nWidths

@@ -16,6 +16,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Locale
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|jabref
@@ -175,7 +185,11 @@ name|trim
 argument_list|()
 operator|.
 name|toUpperCase
-argument_list|()
+argument_list|(
+name|Locale
+operator|.
+name|ROOT
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -213,7 +227,11 @@ name|trim
 argument_list|()
 operator|.
 name|toUpperCase
-argument_list|()
+argument_list|(
+name|Locale
+operator|.
+name|ROOT
+argument_list|)
 expr_stmt|;
 comment|//aÃ±adimos los campos modificados al string final
 name|sb
@@ -272,7 +290,11 @@ name|trim
 argument_list|()
 operator|.
 name|toUpperCase
-argument_list|()
+argument_list|(
+name|Locale
+operator|.
+name|ROOT
+argument_list|)
 operator|+
 literal|' '
 operator|+
@@ -285,7 +307,11 @@ name|trim
 argument_list|()
 operator|.
 name|toUpperCase
-argument_list|()
+argument_list|(
+name|Locale
+operator|.
+name|ROOT
+argument_list|)
 expr_stmt|;
 comment|//aÃ±adimos los campos modificados al string final
 name|sb
@@ -354,7 +380,11 @@ name|trim
 argument_list|()
 operator|.
 name|toUpperCase
-argument_list|()
+argument_list|(
+name|Locale
+operator|.
+name|ROOT
+argument_list|)
 operator|+
 literal|' '
 operator|+
@@ -367,7 +397,11 @@ name|trim
 argument_list|()
 operator|.
 name|toUpperCase
-argument_list|()
+argument_list|(
+name|Locale
+operator|.
+name|ROOT
+argument_list|)
 expr_stmt|;
 comment|//aÃ±adimos los campos modificados al string final
 name|sb
@@ -409,7 +443,11 @@ name|trim
 argument_list|()
 operator|.
 name|toUpperCase
-argument_list|()
+argument_list|(
+name|Locale
+operator|.
+name|ROOT
+argument_list|)
 decl_stmt|;
 comment|// campo 2 nombre
 name|String

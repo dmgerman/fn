@@ -36,6 +36,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Locale
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|jabref
@@ -136,7 +146,11 @@ operator|=
 name|searchString
 operator|.
 name|toLowerCase
-argument_list|()
+argument_list|(
+name|Locale
+operator|.
+name|ROOT
+argument_list|)
 expr_stmt|;
 block|}
 name|List
@@ -189,7 +203,11 @@ operator|=
 name|formattedFieldContent
 operator|.
 name|toLowerCase
-argument_list|()
+argument_list|(
+name|Locale
+operator|.
+name|ROOT
+argument_list|)
 expr_stmt|;
 block|}
 name|Iterator

@@ -90,6 +90,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Locale
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|swing
@@ -3222,7 +3232,11 @@ argument_list|(
 name|word
 operator|.
 name|toLowerCase
-argument_list|()
+argument_list|(
+name|Locale
+operator|.
+name|ROOT
+argument_list|)
 argument_list|)
 expr_stmt|;
 comment|/* actual capitalize code */
@@ -3325,7 +3339,11 @@ argument_list|(
 name|c
 operator|.
 name|toUpperCase
-argument_list|()
+argument_list|(
+name|Locale
+operator|.
+name|ROOT
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -3477,7 +3495,11 @@ argument_list|(
 name|word
 operator|.
 name|toLowerCase
-argument_list|()
+argument_list|(
+name|Locale
+operator|.
+name|ROOT
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|jtc
@@ -3617,7 +3639,11 @@ argument_list|(
 name|word
 operator|.
 name|toUpperCase
-argument_list|()
+argument_list|(
+name|Locale
+operator|.
+name|ROOT
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|jtc

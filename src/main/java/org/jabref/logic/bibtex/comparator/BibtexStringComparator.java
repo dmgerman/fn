@@ -26,6 +26,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Locale
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|jabref
@@ -98,7 +108,11 @@ name|getName
 argument_list|()
 operator|.
 name|toLowerCase
-argument_list|()
+argument_list|(
+name|Locale
+operator|.
+name|ROOT
+argument_list|)
 decl_stmt|;
 name|String
 name|name2
@@ -109,7 +123,11 @@ name|getName
 argument_list|()
 operator|.
 name|toLowerCase
-argument_list|()
+argument_list|(
+name|Locale
+operator|.
+name|ROOT
+argument_list|)
 decl_stmt|;
 name|res
 operator|=
@@ -183,7 +201,11 @@ name|getName
 argument_list|()
 operator|.
 name|toLowerCase
-argument_list|()
+argument_list|(
+name|Locale
+operator|.
+name|ROOT
+argument_list|)
 decl_stmt|;
 name|String
 name|textPre
@@ -194,7 +216,11 @@ name|getContent
 argument_list|()
 operator|.
 name|toLowerCase
-argument_list|()
+argument_list|(
+name|Locale
+operator|.
+name|ROOT
+argument_list|)
 decl_stmt|;
 comment|// If that is the case, reverse the order found:
 if|if
