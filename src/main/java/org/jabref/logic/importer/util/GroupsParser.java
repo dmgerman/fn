@@ -32,6 +32,20 @@ name|jabref
 operator|.
 name|logic
 operator|.
+name|groups
+operator|.
+name|DefaultGroupsFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
 name|importer
 operator|.
 name|ParseException
@@ -93,20 +107,6 @@ operator|.
 name|groups
 operator|.
 name|AbstractGroup
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|groups
-operator|.
-name|AllEntriesGroup
 import|;
 end_import
 
@@ -997,16 +997,10 @@ argument_list|)
 throw|;
 block|}
 return|return
-operator|new
-name|AllEntriesGroup
-argument_list|(
-name|Localization
+name|DefaultGroupsFactory
 operator|.
-name|lang
-argument_list|(
-literal|"All entries"
-argument_list|)
-argument_list|)
+name|getAllEntriesGroup
+argument_list|()
 return|;
 block|}
 comment|/**      * Parses s and recreates the SearchGroup from it.      *      * @param s The String representation obtained from      *          SearchGroup.toString(), or null if incompatible      */

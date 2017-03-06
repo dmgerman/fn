@@ -86,6 +86,18 @@ name|javafx
 operator|.
 name|scene
 operator|.
+name|paint
+operator|.
+name|Paint
+import|;
+end_import
+
+begin_import
+import|import
+name|javafx
+operator|.
+name|scene
+operator|.
 name|text
 operator|.
 name|Text
@@ -237,7 +249,7 @@ return|return
 name|this
 return|;
 block|}
-DECL|method|withIcon (Callback<S, String> toIcon)
+DECL|method|withIcon (Callback<S, String> toIcon, Callback<S, Paint> toColor)
 specifier|public
 name|ViewModelTreeTableCellFactory
 argument_list|<
@@ -254,6 +266,14 @@ argument_list|,
 name|String
 argument_list|>
 name|toIcon
+parameter_list|,
+name|Callback
+argument_list|<
+name|S
+argument_list|,
+name|Paint
+argument_list|>
+name|toColor
 parameter_list|)
 block|{
 name|this
@@ -285,6 +305,18 @@ operator|.
 name|add
 argument_list|(
 literal|"icon"
+argument_list|)
+expr_stmt|;
+name|graphic
+operator|.
+name|setFill
+argument_list|(
+name|toColor
+operator|.
+name|call
+argument_list|(
+name|viewModel
+argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
