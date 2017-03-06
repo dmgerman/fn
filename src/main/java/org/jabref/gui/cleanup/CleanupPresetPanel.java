@@ -96,6 +96,16 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|JScrollPane
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|jabref
@@ -275,6 +285,11 @@ DECL|field|panel
 specifier|private
 name|JPanel
 name|panel
+decl_stmt|;
+DECL|field|scrollPane
+specifier|private
+name|JScrollPane
+name|scrollPane
 decl_stmt|;
 DECL|field|cleanupPreset
 specifier|private
@@ -763,6 +778,37 @@ operator|.
 name|build
 argument_list|()
 expr_stmt|;
+name|scrollPane
+operator|=
+operator|new
+name|JScrollPane
+argument_list|(
+name|panel
+argument_list|)
+expr_stmt|;
+name|scrollPane
+operator|.
+name|setVerticalScrollBarPolicy
+argument_list|(
+name|JScrollPane
+operator|.
+name|VERTICAL_SCROLLBAR_AS_NEEDED
+argument_list|)
+expr_stmt|;
+name|scrollPane
+operator|.
+name|setVisible
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|scrollPane
+operator|.
+name|setBorder
+argument_list|(
+literal|null
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|updateDisplay (CleanupPreset preset)
 specifier|private
@@ -883,14 +929,14 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|getPanel ()
+DECL|method|getScrollPane ()
 specifier|public
-name|JPanel
-name|getPanel
+name|JScrollPane
+name|getScrollPane
 parameter_list|()
 block|{
 return|return
-name|panel
+name|scrollPane
 return|;
 block|}
 DECL|method|getCleanupPreset ()

@@ -815,7 +815,7 @@ argument_list|)
 block|,
 name|presetPanel
 operator|.
-name|getPanel
+name|getScrollPane
 argument_list|()
 block|}
 decl_stmt|;
