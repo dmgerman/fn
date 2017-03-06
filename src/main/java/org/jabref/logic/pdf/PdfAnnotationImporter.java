@@ -156,6 +156,34 @@ name|org
 operator|.
 name|apache
 operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
 name|pdfbox
 operator|.
 name|cos
@@ -300,24 +328,6 @@ name|PDFTextStripperByArea
 import|;
 end_import
 
-begin_import
-import|import static
-name|org
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|importer
-operator|.
-name|actions
-operator|.
-name|OpenDatabaseAction
-operator|.
-name|LOGGER
-import|;
-end_import
-
 begin_class
 DECL|class|PdfAnnotationImporter
 specifier|public
@@ -326,6 +336,22 @@ name|PdfAnnotationImporter
 implements|implements
 name|AnnotationImporter
 block|{
+DECL|field|LOGGER
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOGGER
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|PdfAnnotationImporter
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 comment|/**      * Imports the comments from a pdf specified by its path      *      * @param path a path to a pdf      * @return a list with the all the annotations found in the file of the path      */
 annotation|@
 name|Override
@@ -968,9 +994,9 @@ return|return
 name|annotationsList
 return|;
 block|}
-comment|/**      *      * @param path the absolute path to the pdf file      * @return a PDDocument representing the pdf file      * @throws IOException      */
+comment|/**      *      * @param path the absolute path to the pdf file      * @return a PDDocument representing the pdf file      * @throws IOException if the document cannot be read from path      */
 DECL|method|importPdfFile (final String path)
-specifier|public
+specifier|private
 name|PDDocument
 name|importPdfFile
 parameter_list|(
