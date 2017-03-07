@@ -292,6 +292,22 @@ specifier|public
 class|class
 name|EmacsKeyBindings
 block|{
+DECL|field|LOGGER
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOGGER
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|EmacsKeyBindings
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 DECL|field|KILL_LINE_ACTION
 specifier|private
 specifier|static
@@ -1068,22 +1084,6 @@ name|JEditorPane
 argument_list|()
 block|,     }
 decl_stmt|;
-DECL|field|LOGGER
-specifier|private
-specifier|static
-specifier|final
-name|Log
-name|LOGGER
-init|=
-name|LogFactory
-operator|.
-name|getLog
-argument_list|(
-name|EmacsKeyBindings
-operator|.
-name|class
-argument_list|)
-decl_stmt|;
 comment|/**      * Loads the emacs keybindings for all common<code>JTextComponent</code>s.      *      * The shared keymap instances of the concrete subclasses of      * {@link JTextComponent} are fed with the keybindings.      *      * The original keybindings are stored in a backup array.      */
 DECL|method|load ()
 specifier|public
@@ -1236,7 +1236,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Restores the original keybindings for the concrete subclasses of      * {@link JTextComponent}.      *      */
+comment|/**      * Restores the original keybindings for the concrete subclasses of      * {@link JTextComponent}.      */
 DECL|method|unload ()
 specifier|public
 specifier|static
@@ -3033,7 +3033,7 @@ name|next
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**          * Returns an unmodifiable version of the ring list which contains          * the killed texts.          * @return the content of the kill ring          */
+comment|/**          * Returns an unmodifiable version of the ring list which contains          * the killed texts.          *          * @return the content of the kill ring          */
 DECL|method|getRing ()
 specifier|public
 name|List
@@ -3065,7 +3065,7 @@ name|isEmpty
 argument_list|()
 return|;
 block|}
-comment|/**          * Returns the next text element which is to be yank-popped.          * @return<code>null</code> if the ring is empty          */
+comment|/**          * Returns the next text element which is to be yank-popped.          *          * @return<code>null</code> if the ring is empty          */
 DECL|method|next ()
 specifier|public
 name|String

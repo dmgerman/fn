@@ -3490,7 +3490,7 @@ operator|-
 literal|1
 return|;
 block|}
-comment|/**      * method to check whether a MainTableColumn at the modelIndex refers to the file field (either as a specific      * file extension filter or not)      *      * @param modelIndex model index of the column to check      * @return true if the column shows the "file" field; false otherwise      */
+comment|/**      * Method to check whether a MainTableColumn at the modelIndex refers to the file field (either as a specific      * file extension filter or not)      *      * @param modelIndex model index of the column to check      * @return true if the column shows the "file" field; false otherwise      */
 DECL|method|isFileColumn (int modelIndex)
 specifier|public
 name|boolean
@@ -3788,7 +3788,7 @@ literal|0
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * updateFont      */
+comment|/**      * Repaints the table with the most recent font configuration      */
 DECL|method|updateFont ()
 specifier|public
 name|void
@@ -4736,16 +4736,6 @@ name|number
 argument_list|)
 return|;
 block|}
-block|}
-DECL|method|getTableColumnListener ()
-specifier|public
-name|PersistenceTableColumnListener
-name|getTableColumnListener
-parameter_list|()
-block|{
-return|return
-name|tableColumnListener
-return|;
 block|}
 DECL|method|getMainTableColumn (int modelIndex)
 specifier|public
