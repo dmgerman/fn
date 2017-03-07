@@ -116,6 +116,20 @@ name|org
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
+name|util
+operator|.
+name|OS
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
 name|model
 operator|.
 name|database
@@ -415,6 +429,54 @@ block|}
 comment|// Execute command
 try|try
 block|{
+if|if
+condition|(
+name|OS
+operator|.
+name|OS_X
+condition|)
+block|{
+name|String
+index|[]
+name|commands
+init|=
+name|getCommandLine
+argument_list|(
+name|keyString
+argument_list|)
+decl_stmt|;
+name|Runtime
+operator|.
+name|getRuntime
+argument_list|()
+operator|.
+name|exec
+argument_list|(
+literal|"open -a "
+operator|+
+name|commands
+index|[
+literal|0
+index|]
+operator|+
+literal|" -n --args "
+operator|+
+name|commands
+index|[
+literal|1
+index|]
+operator|+
+literal|" "
+operator|+
+name|commands
+index|[
+literal|2
+index|]
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
 name|Runtime
 operator|.
 name|getRuntime
@@ -428,6 +490,7 @@ name|keyString
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|// In case it did not work
 catch|catch
