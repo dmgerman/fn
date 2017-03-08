@@ -555,7 +555,7 @@ operator|.
 name|journalAbbreviationLoader
 argument_list|)
 operator|.
-name|getFileDirPattern
+name|getFileNamePattern
 argument_list|()
 argument_list|,
 name|Globals
