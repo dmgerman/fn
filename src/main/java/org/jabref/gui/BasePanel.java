@@ -7054,7 +7054,7 @@ argument_list|)
 decl_stmt|;
 name|item
 operator|.
-name|openLink
+name|doClick
 argument_list|()
 expr_stmt|;
 block|}
