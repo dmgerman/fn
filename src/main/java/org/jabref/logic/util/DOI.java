@@ -480,7 +480,7 @@ return|;
 block|}
 block|}
 comment|/**      * Determines whether a DOI is valid or not      *      * @param doi the DOI string      * @return true if DOI is valid, false otherwise      */
-DECL|method|isValid (String doi )
+DECL|method|isValid (String doi)
 specifier|public
 specifier|static
 name|boolean
