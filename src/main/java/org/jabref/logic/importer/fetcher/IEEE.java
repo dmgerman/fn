@@ -114,7 +114,7 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|util
+name|identifier
 operator|.
 name|DOI
 import|;

@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|org.jabref.logic.util
+DECL|package|org.jabref.logic.identifier
 package|package
 name|org
 operator|.
@@ -8,7 +8,7 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|util
+name|identifier
 package|;
 end_package
 
@@ -19,6 +19,20 @@ operator|.
 name|util
 operator|.
 name|Optional
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|identifier
+operator|.
+name|DOI
 import|;
 end_import
 
