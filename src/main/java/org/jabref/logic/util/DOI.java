@@ -162,7 +162,7 @@ argument_list|)
 decl_stmt|;
 comment|// DOI resolver
 DECL|field|RESOLVER
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|URI
