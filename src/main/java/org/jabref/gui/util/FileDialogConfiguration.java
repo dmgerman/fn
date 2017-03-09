@@ -20,6 +20,18 @@ name|nio
 operator|.
 name|file
 operator|.
+name|Files
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|file
+operator|.
 name|Path
 import|;
 end_import
@@ -133,6 +145,20 @@ specifier|final
 name|Path
 name|initialDirectory
 decl_stmt|;
+DECL|field|defaultExtension
+specifier|private
+specifier|final
+name|FileChooser
+operator|.
+name|ExtensionFilter
+name|defaultExtension
+decl_stmt|;
+DECL|field|initialFileName
+specifier|private
+specifier|final
+name|String
+name|initialFileName
+decl_stmt|;
 DECL|method|getInitialDirectory ()
 specifier|public
 name|Optional
@@ -163,14 +189,17 @@ return|return
 name|defaultExtension
 return|;
 block|}
-DECL|field|defaultExtension
-specifier|private
-name|FileChooser
-operator|.
-name|ExtensionFilter
-name|defaultExtension
-decl_stmt|;
-DECL|method|FileDialogConfiguration (Path initialDirectory, List<FileChooser.ExtensionFilter> extensionFilters, FileChooser.ExtensionFilter defaultExtension)
+DECL|method|getInitialFileName ()
+specifier|public
+name|String
+name|getInitialFileName
+parameter_list|()
+block|{
+return|return
+name|initialFileName
+return|;
+block|}
+DECL|method|FileDialogConfiguration (Path initialDirectory, List<FileChooser.ExtensionFilter> extensionFilters, FileChooser.ExtensionFilter defaultExtension, String initialFileName)
 specifier|private
 name|FileDialogConfiguration
 parameter_list|(
@@ -189,6 +218,9 @@ name|FileChooser
 operator|.
 name|ExtensionFilter
 name|defaultExtension
+parameter_list|,
+name|String
+name|initialFileName
 parameter_list|)
 block|{
 name|this
@@ -213,6 +245,12 @@ operator|.
 name|defaultExtension
 operator|=
 name|defaultExtension
+expr_stmt|;
+name|this
+operator|.
+name|initialFileName
+operator|=
+name|initialFileName
 expr_stmt|;
 block|}
 DECL|method|getExtensionFilters ()
@@ -261,6 +299,11 @@ name|FileChooser
 operator|.
 name|ExtensionFilter
 name|defaultExtension
+decl_stmt|;
+DECL|field|initialFileName
+specifier|private
+name|String
+name|initialFileName
 decl_stmt|;
 DECL|method|addExtensionFilter (FileExtensions extension)
 specifier|public
@@ -374,6 +417,8 @@ argument_list|,
 name|extensionFilter
 argument_list|,
 name|defaultExtension
+argument_list|,
+name|initialFileName
 argument_list|)
 return|;
 block|}
@@ -386,6 +431,44 @@ name|Path
 name|directory
 parameter_list|)
 block|{
+comment|//Dir must be a folder, not a file
+if|if
+condition|(
+operator|!
+name|Files
+operator|.
+name|isDirectory
+argument_list|(
+name|directory
+argument_list|)
+condition|)
+block|{
+name|directory
+operator|=
+name|directory
+operator|.
+name|getParent
+argument_list|()
+expr_stmt|;
+block|}
+comment|//The lines above work also if the dir does not exist at all!
+comment|//NULL is accepted by the filechooser as no inital path
+if|if
+condition|(
+operator|!
+name|Files
+operator|.
+name|exists
+argument_list|(
+name|directory
+argument_list|)
+condition|)
+block|{
+name|directory
+operator|=
+literal|null
+expr_stmt|;
+block|}
 name|initialDirectory
 operator|=
 name|directory
@@ -409,6 +492,25 @@ name|toFilter
 argument_list|(
 name|extension
 argument_list|)
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
+DECL|method|withInitialFileName (String initialFileName)
+specifier|public
+name|Builder
+name|withInitialFileName
+parameter_list|(
+name|String
+name|initialFileName
+parameter_list|)
+block|{
+name|this
+operator|.
+name|initialFileName
+operator|=
+name|initialFileName
 expr_stmt|;
 return|return
 name|this

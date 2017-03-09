@@ -808,6 +808,16 @@ name|getDefaultExtension
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|chooser
+operator|.
+name|setInitialFileName
+argument_list|(
+name|fileDialogConfiguration
+operator|.
+name|getInitialFileName
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|fileDialogConfiguration
 operator|.
 name|getInitialDirectory

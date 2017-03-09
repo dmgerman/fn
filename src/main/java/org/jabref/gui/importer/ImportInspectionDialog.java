@@ -7558,6 +7558,8 @@ argument_list|,
 literal|true
 argument_list|,
 name|bibDatabaseContext
+argument_list|,
+literal|true
 argument_list|)
 decl_stmt|;
 name|editor
