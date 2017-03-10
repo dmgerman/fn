@@ -30,9 +30,9 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|l10n
+name|identifier
 operator|.
-name|Localization
+name|ISBN
 import|;
 end_import
 
@@ -44,9 +44,9 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|identifier
+name|l10n
 operator|.
-name|ISBN
+name|Localization
 import|;
 end_import
 
