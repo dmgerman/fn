@@ -38,6 +38,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|concurrent
 operator|.
 name|ConcurrentHashMap
@@ -176,9 +186,33 @@ name|javafx
 operator|.
 name|scene
 operator|.
+name|input
+operator|.
+name|Dragboard
+import|;
+end_import
+
+begin_import
+import|import
+name|javafx
+operator|.
+name|scene
+operator|.
 name|paint
 operator|.
 name|Color
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|DragAndDropDataFormats
 import|;
 end_import
 
@@ -409,6 +443,12 @@ specifier|final
 name|BibDatabaseContext
 name|databaseContext
 decl_stmt|;
+DECL|field|stateManager
+specifier|private
+specifier|final
+name|StateManager
+name|stateManager
+decl_stmt|;
 DECL|field|groupNode
 specifier|private
 specifier|final
@@ -472,6 +512,17 @@ operator|.
 name|requireNonNull
 argument_list|(
 name|databaseContext
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|stateManager
+operator|=
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|stateManager
 argument_list|)
 expr_stmt|;
 name|this
@@ -552,10 +603,6 @@ name|stream
 lambda|->
 name|createSubgroups
 argument_list|(
-name|databaseContext
-argument_list|,
-name|stateManager
-argument_list|,
 name|automaticGroup
 argument_list|,
 name|stream
@@ -876,7 +923,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|createSubgroups (BibDatabaseContext databaseContext, StateManager stateManager, AutomaticGroup automaticGroup, BibEntry entry)
+DECL|method|createSubgroups (AutomaticGroup automaticGroup, BibEntry entry)
 specifier|private
 name|Stream
 argument_list|<
@@ -884,12 +931,6 @@ name|GroupNodeViewModel
 argument_list|>
 name|createSubgroups
 parameter_list|(
-name|BibDatabaseContext
-name|databaseContext
-parameter_list|,
-name|StateManager
-name|stateManager
-parameter_list|,
 name|AutomaticGroup
 name|automaticGroup
 parameter_list|,
@@ -1347,6 +1388,104 @@ name|getDefaultColor
 argument_list|()
 argument_list|)
 return|;
+block|}
+DECL|method|getPath ()
+specifier|public
+name|String
+name|getPath
+parameter_list|()
+block|{
+return|return
+name|groupNode
+operator|.
+name|getPath
+argument_list|()
+return|;
+block|}
+DECL|method|getChildByPath (String pathToSource)
+specifier|public
+name|Optional
+argument_list|<
+name|GroupNodeViewModel
+argument_list|>
+name|getChildByPath
+parameter_list|(
+name|String
+name|pathToSource
+parameter_list|)
+block|{
+return|return
+name|groupNode
+operator|.
+name|getChildByPath
+argument_list|(
+name|pathToSource
+argument_list|)
+operator|.
+name|map
+argument_list|(
+name|child
+lambda|->
+operator|new
+name|GroupNodeViewModel
+argument_list|(
+name|databaseContext
+argument_list|,
+name|stateManager
+argument_list|,
+name|child
+argument_list|)
+argument_list|)
+return|;
+block|}
+comment|/**      * Decides if the content stored in the given {@link Dragboard} can be droped on the given target row      */
+DECL|method|acceptableDrop (Dragboard dragboard)
+specifier|public
+name|boolean
+name|acceptableDrop
+parameter_list|(
+name|Dragboard
+name|dragboard
+parameter_list|)
+block|{
+return|return
+name|dragboard
+operator|.
+name|hasContent
+argument_list|(
+name|DragAndDropDataFormats
+operator|.
+name|GROUP
+argument_list|)
+return|;
+comment|// TODO: we should also check isNodeDescendant
+block|}
+DECL|method|moveTo (GroupNodeViewModel target)
+specifier|public
+name|void
+name|moveTo
+parameter_list|(
+name|GroupNodeViewModel
+name|target
+parameter_list|)
+block|{
+comment|// TODO: Add undo and display message
+comment|//MoveGroupChange undo = new MoveGroupChange(((GroupTreeNodeViewModel)source.getParent()).getNode(),
+comment|//        source.getNode().getPositionInParent(), target.getNode(), target.getChildCount());
+name|getGroupNode
+argument_list|()
+operator|.
+name|moveTo
+argument_list|(
+name|target
+operator|.
+name|getGroupNode
+argument_list|()
+argument_list|)
+expr_stmt|;
+comment|//panel.getUndoManager().addEdit(new UndoableMoveGroup(this.groupsRoot, moveChange));
+comment|//panel.markBaseChanged();
+comment|//frame.output(Localization.lang("Moved group \"%0\".", node.getNode().getGroup().getName()));
 block|}
 block|}
 end_class
