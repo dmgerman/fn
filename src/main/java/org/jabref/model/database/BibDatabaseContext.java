@@ -855,7 +855,7 @@ argument_list|()
 return|;
 comment|//Filter for empty string, as this would be expanded to the jar-directory with Paths.get()
 block|}
-comment|/**     * Look up the directories set up for the given field type for this database.     * If no directory is set up, return that defined in global preferences.     * There can be up to three directory definitions for these files:     * the database's metadata can specify a general directory and/or a user-specific directory     * or the preferences can specify one.     *<p>     * The settings are prioritized in the following order and the first defined setting is used:     * 1. metadata user-specific directory     * 2. metadata general directory     * 3. preferences directory     * 4. BIB file directory     *     * @param     * @param fieldName The field type     * @return The default directory for this field type.     */
+comment|/**     * Look up the directories set up for the given field type for this database.     * If no directory is set up, return that defined in global preferences.     * There can be up to three directory definitions for these files:     * the database's metadata can specify a general directory and/or a user-specific directory     * or the preferences can specify one.     *<p>     * The settings are prioritized in the following order and the first defined setting is used:     * 1. metadata user-specific directory     * 2. metadata general directory     * 3. preferences directory     * 4. BIB file directory     *     * @param fieldName The field type      * @param preferences The fileDirectory preferences      * @return The default directory for this field type.     */
 DECL|method|getFileDirectories (String fieldName, FileDirectoryPreferences preferences)
 specifier|public
 name|List
