@@ -79,7 +79,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * PostOpenAction that checks whether there are warnings about duplicate BibTeX keys, and  * if so, offers to start the duplicate resolving process.  */
+comment|/**  * GUIPostOpenAction that checks whether there are warnings about duplicate BibTeX keys, and  * if so, offers to start the duplicate resolving process.  */
 end_comment
 
 begin_class
@@ -88,7 +88,7 @@ specifier|public
 class|class
 name|HandleDuplicateWarnings
 implements|implements
-name|PostOpenAction
+name|GUIPostOpenAction
 block|{
 annotation|@
 name|Override
