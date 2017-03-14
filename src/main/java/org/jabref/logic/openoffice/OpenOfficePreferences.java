@@ -83,14 +83,14 @@ name|DEFAULT_WINDOWS_PATH
 init|=
 literal|"C:\\Program Files\\OpenOffice.org 4"
 decl_stmt|;
-DECL|field|WINDOWS_EXECUTABLE_SUBPATH
+DECL|field|DEFAULT_WIN_EXECUTABLE
 specifier|public
 specifier|static
 specifier|final
 name|String
-name|WINDOWS_EXECUTABLE_SUBPATH
+name|DEFAULT_WIN_EXECUTABLE
 init|=
-literal|"\\program\\"
+literal|"\\program\\soffice.exe"
 decl_stmt|;
 DECL|field|WINDOWS_EXECUTABLE
 specifier|public

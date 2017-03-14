@@ -5326,7 +5326,7 @@ name|DEFAULT_WINDOWS_PATH
 operator|+
 name|OpenOfficePreferences
 operator|.
-name|WINDOWS_EXECUTABLE_SUBPATH
+name|DEFAULT_WIN_EXECUTABLE
 operator|+
 name|OpenOfficePreferences
 operator|.
