@@ -62,9 +62,9 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|importer
+name|identifier
 operator|.
-name|FulltextFetcher
+name|DOI
 import|;
 end_import
 
@@ -76,9 +76,9 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|identifier
+name|importer
 operator|.
-name|DOI
+name|FulltextFetcher
 import|;
 end_import
 

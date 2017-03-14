@@ -197,7 +197,7 @@ argument_list|()
 operator|.
 name|getResourceAsStream
 argument_list|(
-literal|"/images/icons/JabRef-icon.svg"
+literal|"/icons/jabref.svg"
 argument_list|)
 argument_list|)
 decl_stmt|;

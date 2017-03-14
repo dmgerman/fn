@@ -1176,7 +1176,7 @@ literal|false
 return|;
 block|}
 block|}
-comment|/**      * Converts a relative filename to an absolute one, if necessary. Returns      * null if the file does not exist.<br/>      *<p>      * Uses<ul>      *<li>the default directory associated with the extension of the file</li>      *<li>the standard file directory</li>      *<li>the directory of the BIB file</li>      *</ul>      *      * @param databaseContext The database this file belongs to.      * @param name     The filename, may also be a relative path to the file      */
+comment|/**      * Converts a relative filename to an absolute one, if necessary. Returns an empty optional if the file does not      * exist.<br/>      *<p>      * Uses<ul>      *<li>the default directory associated with the extension of the file</li>      *<li>the standard file directory</li>      *<li>the directory of the BIB file</li>      *</ul>      *      * @param databaseContext The database this file belongs to.      * @param name     The filename, may also be a relative path to the file      */
 DECL|method|expandFilename (final BibDatabaseContext databaseContext, String name, FileDirectoryPreferences fileDirectoryPreferences)
 specifier|public
 specifier|static

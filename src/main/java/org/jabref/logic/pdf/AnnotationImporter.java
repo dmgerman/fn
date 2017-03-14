@@ -16,6 +16,18 @@ begin_import
 import|import
 name|java
 operator|.
+name|nio
+operator|.
+name|file
+operator|.
+name|Path
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|List
@@ -56,7 +68,7 @@ specifier|public
 interface|interface
 name|AnnotationImporter
 block|{
-DECL|method|importAnnotations (final String path, final BibDatabaseContext context)
+DECL|method|importAnnotations (final Path path, final BibDatabaseContext context)
 name|List
 argument_list|<
 name|FileAnnotation
@@ -64,7 +76,7 @@ argument_list|>
 name|importAnnotations
 parameter_list|(
 specifier|final
-name|String
+name|Path
 name|path
 parameter_list|,
 specifier|final

@@ -472,7 +472,7 @@ name|ex
 argument_list|)
 expr_stmt|;
 block|}
-comment|// Try to save file permissions to restore them later (by default: allow everything)
+comment|// Try to save file permissions to restore them later (by default: 664)
 name|Set
 argument_list|<
 name|PosixFilePermission
@@ -481,11 +481,27 @@ name|oldFilePermissions
 init|=
 name|EnumSet
 operator|.
-name|allOf
+name|of
 argument_list|(
 name|PosixFilePermission
 operator|.
-name|class
+name|OWNER_READ
+argument_list|,
+name|PosixFilePermission
+operator|.
+name|OWNER_WRITE
+argument_list|,
+name|PosixFilePermission
+operator|.
+name|GROUP_READ
+argument_list|,
+name|PosixFilePermission
+operator|.
+name|GROUP_WRITE
+argument_list|,
+name|PosixFilePermission
+operator|.
+name|OTHERS_READ
 argument_list|)
 decl_stmt|;
 if|if

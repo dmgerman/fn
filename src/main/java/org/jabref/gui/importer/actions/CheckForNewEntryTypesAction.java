@@ -264,7 +264,7 @@ specifier|public
 class|class
 name|CheckForNewEntryTypesAction
 implements|implements
-name|PostOpenAction
+name|GUIPostOpenAction
 block|{
 annotation|@
 name|Override
