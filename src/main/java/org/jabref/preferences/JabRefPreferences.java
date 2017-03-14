@@ -5342,10 +5342,6 @@ argument_list|,
 name|OpenOfficePreferences
 operator|.
 name|DEFAULT_WINDOWS_PATH
-operator|+
-name|OpenOfficePreferences
-operator|.
-name|WINDOWS_JARS_SUBPATH
 argument_list|)
 expr_stmt|;
 block|}
@@ -5396,10 +5392,6 @@ argument_list|,
 name|OpenOfficePreferences
 operator|.
 name|DEFAULT_OSX_PATH
-operator|+
-name|OpenOfficePreferences
-operator|.
-name|OSX_JARS_SUBPATH
 argument_list|)
 expr_stmt|;
 block|}
