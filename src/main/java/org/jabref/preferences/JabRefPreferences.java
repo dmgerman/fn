@@ -5404,7 +5404,9 @@ name|put
 argument_list|(
 name|OO_PATH
 argument_list|,
-literal|"/opt/openoffice.org3"
+name|OpenOfficePreferences
+operator|.
+name|DEFAULT_LINUX_PATH
 argument_list|)
 expr_stmt|;
 name|defaults
@@ -5413,7 +5415,9 @@ name|put
 argument_list|(
 name|OO_EXECUTABLE_PATH
 argument_list|,
-literal|"/usr/lib/openoffice/program/soffice"
+name|OpenOfficePreferences
+operator|.
+name|DEFAULT_LINUX_EXEC_PATH
 argument_list|)
 expr_stmt|;
 name|defaults
@@ -5422,7 +5426,9 @@ name|put
 argument_list|(
 name|OO_JARS_PATH
 argument_list|,
-literal|"/opt/openoffice.org/basis3.0"
+name|OpenOfficePreferences
+operator|.
+name|DEFAULT_LINUX_JARS
 argument_list|)
 expr_stmt|;
 block|}
