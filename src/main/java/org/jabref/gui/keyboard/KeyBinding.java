@@ -260,6 +260,25 @@ operator|.
 name|EDIT
 argument_list|)
 block|,
+DECL|enumConstant|COPY_TITLE
+name|COPY_TITLE
+argument_list|(
+literal|"Copy title"
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Copy title"
+argument_list|)
+argument_list|,
+literal|"ctrl shift alt T"
+argument_list|,
+name|KeyBindingCategory
+operator|.
+name|EDIT
+argument_list|)
+block|,
 DECL|enumConstant|COPY_CITE_BIBTEX_KEY
 name|COPY_CITE_BIBTEX_KEY
 argument_list|(

@@ -2752,6 +2752,25 @@ operator|+
 literal|"..."
 return|;
 block|}
+comment|/**      * Returns the title of the given BibTeX entry as an Optional.      *      * @return an Optional containing the title of a BibTeX entry in case it exists, otherwise return an empty Optional.      */
+DECL|method|getTitle ()
+specifier|public
+name|Optional
+argument_list|<
+name|String
+argument_list|>
+name|getTitle
+parameter_list|()
+block|{
+return|return
+name|getField
+argument_list|(
+name|FieldName
+operator|.
+name|TITLE
+argument_list|)
+return|;
+block|}
 comment|/**      * Will return the publication date of the given bibtex entry conforming to ISO 8601, i.e. either YYYY or YYYY-MM.      *      * @return will return the publication date of the entry or null if no year was found.      */
 DECL|method|getPublicationDate ()
 specifier|public
