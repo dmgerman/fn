@@ -83,14 +83,14 @@ name|DEFAULT_WINDOWS_PATH
 init|=
 literal|"C:\\Program Files\\OpenOffice.org 4"
 decl_stmt|;
-DECL|field|DEFAULT_WIN_EXECUTABLE
+DECL|field|DEFAULT_WIN_EXEC_PATH
 specifier|public
 specifier|static
 specifier|final
 name|String
-name|DEFAULT_WIN_EXECUTABLE
+name|DEFAULT_WIN_EXEC_PATH
 init|=
-literal|"\\program\\soffice.exe"
+literal|"C:\\Program Files\\OpenOffice.org 4\\program\\soffice.exe"
 decl_stmt|;
 DECL|field|WINDOWS_EXECUTABLE
 specifier|public
@@ -110,14 +110,14 @@ name|DEFAULT_OSX_PATH
 init|=
 literal|"/Applications/OpenOffice.org.app"
 decl_stmt|;
-DECL|field|OSX_EXECUTABLE_SUBPATH
+DECL|field|DEFAULT_OSX_EXEC_PATH
 specifier|public
 specifier|static
 specifier|final
 name|String
-name|OSX_EXECUTABLE_SUBPATH
+name|DEFAULT_OSX_EXEC_PATH
 init|=
-literal|"/Contents/MacOS/"
+literal|"/Applications/OpenOffice.org.app/Contents/MacOS/soffice.bin"
 decl_stmt|;
 DECL|field|OSX_EXECUTABLE
 specifier|public
@@ -127,15 +127,6 @@ name|String
 name|OSX_EXECUTABLE
 init|=
 literal|"soffice.bin"
-decl_stmt|;
-DECL|field|LINUX_EXECUTABLE
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|LINUX_EXECUTABLE
-init|=
-literal|"soffice"
 decl_stmt|;
 DECL|field|DEFAULT_LINUX_PATH
 specifier|public
@@ -163,6 +154,15 @@ name|String
 name|DEFAULT_LINUX_EXEC_PATH
 init|=
 literal|"/usr/lib/openoffice/program/soffice"
+decl_stmt|;
+DECL|field|LINUX_EXECUTABLE
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|LINUX_EXECUTABLE
+init|=
+literal|"soffice"
 decl_stmt|;
 DECL|method|OpenOfficePreferences (JabRefPreferences preferences)
 specifier|public
