@@ -468,13 +468,20 @@ name|GroupNodeViewModel
 name|newValue
 parameter_list|)
 block|{
+comment|//TODO: Can one of this be empty?
 if|if
 condition|(
 name|currentDatabase
+operator|.
+name|get
+argument_list|()
 operator|!=
 name|stateManager
 operator|.
 name|activeDatabaseProperty
+argument_list|()
+operator|.
+name|get
 argument_list|()
 operator|.
 name|get
