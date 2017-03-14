@@ -542,7 +542,7 @@ parameter_list|(
 name|DragSourceDragEvent
 name|dsde
 parameter_list|)
-block|{}
+block|{     }
 annotation|@
 name|Override
 DECL|method|dropActionChanged (DragSourceDragEvent dsde)

@@ -827,6 +827,9 @@ name|Override
 DECL|method|children ()
 specifier|public
 name|Enumeration
+argument_list|<
+name|GroupTreeNodeViewModel
+argument_list|>
 name|children
 parameter_list|()
 block|{
@@ -1274,6 +1277,7 @@ name|entries
 parameter_list|)
 block|{
 return|return
+operator|(
 name|getNode
 argument_list|()
 operator|.
@@ -1281,6 +1285,7 @@ name|getGroup
 argument_list|()
 operator|instanceof
 name|GroupEntryChanger
+operator|)
 operator|&&
 operator|!
 name|getNode
@@ -1308,6 +1313,7 @@ name|entries
 parameter_list|)
 block|{
 return|return
+operator|(
 name|getNode
 argument_list|()
 operator|.
@@ -1315,6 +1321,7 @@ name|getGroup
 argument_list|()
 operator|instanceof
 name|GroupEntryChanger
+operator|)
 operator|&&
 name|getNode
 argument_list|()
