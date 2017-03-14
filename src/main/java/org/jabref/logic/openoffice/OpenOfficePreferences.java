@@ -28,6 +28,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Arrays
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|List
 import|;
 end_import
@@ -59,7 +69,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * The OpenOffice connection preferences are:  * OO_PATH main directory for OO/LO installation, used to detect location on Win/OS X when using manual connect  * OO_EXECUTABLE_PATH path to soffice-file  * OO_JARS_PATH directory that contains juh.jar, jurt.jar, ridl.jar, unoil.jar  * OO_SYNC_WHEN_CITING true if the reference list is updated when adding a new citation  * OO_SHOW_PANEL true if the OO panel is shown on startup  * OO_USE_ALL_OPEN_DATABASES true if all databases should be used when citing  * OO_BIBLIOGRAPHY_STYLE_FILE path to the used style file  * OO_EXTERNAL_STYLE_FILES list with paths to external style files  *  */
+comment|/**  * The OpenOffice connection preferences are:  * OO_PATH main directory for OO/LO installation, used to detect location on Win/OS X when using manual connect  * OO_EXECUTABLE_PATH path to soffice-file  * OO_JARS_PATH directory that contains juh.jar, jurt.jar, ridl.jar, unoil.jar  * OO_SYNC_WHEN_CITING true if the reference list is updated when adding a new citation  * OO_SHOW_PANEL true if the OO panel is shown on startup  * OO_USE_ALL_OPEN_DATABASES true if all databases should be used when citing  * OO_BIBLIOGRAPHY_STYLE_FILE path to the used style file  * OO_EXTERNAL_STYLE_FILES list with paths to external style files  */
 end_comment
 
 begin_class
@@ -163,6 +173,29 @@ name|String
 name|LINUX_EXECUTABLE
 init|=
 literal|"soffice"
+decl_stmt|;
+DECL|field|OO_JARS
+specifier|public
+specifier|static
+specifier|final
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|OO_JARS
+init|=
+name|Arrays
+operator|.
+name|asList
+argument_list|(
+literal|"unoil.jar"
+argument_list|,
+literal|"jurt.jar"
+argument_list|,
+literal|"juh.jar"
+argument_list|,
+literal|"ridl.jar"
+argument_list|)
 decl_stmt|;
 DECL|method|OpenOfficePreferences (JabRefPreferences preferences)
 specifier|public
