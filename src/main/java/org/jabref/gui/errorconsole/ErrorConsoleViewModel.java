@@ -584,7 +584,7 @@ block|{
 name|String
 name|issueTitle
 init|=
-literal|"Automatic Bug Report-"
+literal|"Automatic Bug Report - "
 operator|+
 name|dateFormat
 operator|.
@@ -593,14 +593,15 @@ argument_list|(
 name|date
 argument_list|)
 decl_stmt|;
+comment|// system info
 name|String
-name|issueBody
+name|systemInfo
 init|=
 name|String
 operator|.
 name|format
 argument_list|(
-literal|"JabRef %s%n%s %s %s %nJava %s\n\n"
+literal|"JabRef %s%n%s %s %s %nJava %s"
 argument_list|,
 name|buildInfo
 operator|.
@@ -623,6 +624,52 @@ name|BuildInfo
 operator|.
 name|JAVA_VERSION
 argument_list|)
+decl_stmt|;
+comment|// steps to reproduce
+name|String
+name|howToReproduce
+init|=
+literal|"Steps to reproduce:\n\n1. ...\n2. ...\n3. ..."
+decl_stmt|;
+comment|// log messages
+name|String
+name|issueDetails
+init|=
+literal|"<details>\n"
+operator|+
+literal|"<summary>"
+operator|+
+literal|"Detail information:"
+operator|+
+literal|"</summary>\n\n```\n"
+operator|+
+name|getLogMessagesAsString
+argument_list|(
+name|allMessagesData
+argument_list|)
+operator|+
+literal|"\n```\n\n</details>"
+decl_stmt|;
+name|clipBoardManager
+operator|.
+name|setClipboardContents
+argument_list|(
+name|issueDetails
+argument_list|)
+expr_stmt|;
+comment|// bug report body
+name|String
+name|issueBody
+init|=
+name|systemInfo
+operator|+
+literal|"\n\n"
+operator|+
+name|howToReproduce
+operator|+
+literal|"\n\n"
+operator|+
+literal|"Paste your log details here."
 decl_stmt|;
 name|dialogService
 operator|.
@@ -670,6 +717,15 @@ operator|.
 name|lang
 argument_list|(
 literal|"Please paste this information (with Ctrl+V) in the issue description."
+argument_list|)
+operator|+
+literal|"\n"
+operator|+
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Please also add all steps to reproduce this issue, if possible."
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -720,32 +776,6 @@ argument_list|()
 operator|.
 name|toString
 argument_list|()
-argument_list|)
-expr_stmt|;
-comment|// Append log messages in issue description
-name|String
-name|issueDetails
-init|=
-literal|"<details>\n"
-operator|+
-literal|"<summary>"
-operator|+
-literal|"Detail information:"
-operator|+
-literal|"</summary>\n\n```\n"
-operator|+
-name|getLogMessagesAsString
-argument_list|(
-name|allMessagesData
-argument_list|)
-operator|+
-literal|"\n```\n\n</details>"
-decl_stmt|;
-name|clipBoardManager
-operator|.
-name|setClipboardContents
-argument_list|(
-name|issueDetails
 argument_list|)
 expr_stmt|;
 block|}
