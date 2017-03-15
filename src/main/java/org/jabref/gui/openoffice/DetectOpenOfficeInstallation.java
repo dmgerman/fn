@@ -380,10 +380,10 @@ operator|=
 name|preferences
 expr_stmt|;
 block|}
-DECL|method|runDetection ()
+DECL|method|isInstalled ()
 specifier|public
 name|boolean
-name|runDetection
+name|isInstalled
 parameter_list|()
 block|{
 name|foundPaths
