@@ -1183,7 +1183,7 @@ argument_list|(
 operator|new
 name|FormLayout
 argument_list|(
-literal|"left:pref"
+literal|"pref:grow"
 argument_list|,
 literal|"pref, 2dlu, pref, 4dlu, pref"
 argument_list|)
