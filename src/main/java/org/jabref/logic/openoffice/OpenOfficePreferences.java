@@ -398,10 +398,10 @@ name|path
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|getOOPath ()
+DECL|method|getInstallationPath ()
 specifier|public
 name|String
-name|getOOPath
+name|getInstallationPath
 parameter_list|()
 block|{
 return|return

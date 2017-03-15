@@ -2932,11 +2932,11 @@ condition|(
 name|auto
 condition|)
 block|{
-name|AutoDetectPaths
+name|DetectOpenOfficeInstallation
 name|adp
 init|=
 operator|new
-name|AutoDetectPaths
+name|DetectOpenOfficeInstallation
 argument_list|(
 name|diag
 argument_list|,
@@ -2947,7 +2947,7 @@ if|if
 condition|(
 name|adp
 operator|.
-name|runAutodetection
+name|runDetection
 argument_list|()
 condition|)
 block|{
@@ -2963,28 +2963,6 @@ name|diag
 operator|.
 name|dispose
 argument_list|()
-expr_stmt|;
-block|}
-elseif|else
-if|if
-condition|(
-name|adp
-operator|.
-name|canceled
-argument_list|()
-condition|)
-block|{
-name|frame
-operator|.
-name|setStatus
-argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Operation canceled."
-argument_list|)
-argument_list|)
 expr_stmt|;
 block|}
 else|else
@@ -3027,7 +3005,7 @@ name|installationPath
 operator|=
 name|preferences
 operator|.
-name|getOOPath
+name|getInstallationPath
 argument_list|()
 expr_stmt|;
 name|executablePath
@@ -3056,7 +3034,7 @@ name|installationPath
 operator|=
 name|preferences
 operator|.
-name|getOOPath
+name|getInstallationPath
 argument_list|()
 expr_stmt|;
 name|executablePath
@@ -3144,9 +3122,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|// Add OO JARs to the classpath
 try|try
 block|{
+comment|// Add OO JARs to the classpath
 name|loadOpenOfficeJars
 argument_list|(
 name|installationPath
@@ -3158,7 +3136,7 @@ name|JDialog
 name|progressDialog
 init|=
 operator|new
-name|AutoDetectPaths
+name|DetectOpenOfficeInstallation
 argument_list|(
 name|diag
 argument_list|,
@@ -3182,8 +3160,6 @@ name|lang
 argument_list|(
 literal|"Please wait..."
 argument_list|)
-argument_list|,
-literal|false
 argument_list|)
 decl_stmt|;
 name|getWorker
@@ -3507,9 +3483,7 @@ throw|throw
 operator|new
 name|IOException
 argument_list|(
-literal|"File not found inside OpenOffice installation path: "
-operator|+
-name|jarFile
+literal|"Required Open Office Jars not found inside installation path."
 argument_list|)
 throw|;
 block|}
@@ -3789,7 +3763,7 @@ name|setText
 argument_list|(
 name|preferences
 operator|.
-name|getOOPath
+name|getInstallationPath
 argument_list|()
 argument_list|)
 expr_stmt|;
