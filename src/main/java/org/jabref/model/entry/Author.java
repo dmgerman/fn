@@ -32,6 +32,20 @@ name|Optional
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|strings
+operator|.
+name|StringUtil
+import|;
+end_import
+
 begin_comment
 comment|/**  * This is an immutable class that keeps information regarding single  * author. It is just a container for the information, with very simple  * methods to access it.  *<p>  * Current usage: only methods<code>getLastOnly</code>,  *<code>getFirstLast</code>, and<code>getLastFirst</code> are used;  * all other methods are provided for completeness.  */
 end_comment
@@ -804,9 +818,12 @@ parameter_list|)
 block|{
 if|if
 condition|(
+name|StringUtil
+operator|.
+name|isBlank
+argument_list|(
 name|name
-operator|==
-literal|null
+argument_list|)
 condition|)
 block|{
 return|return

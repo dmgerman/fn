@@ -1,12 +1,14 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|org.jabref.logic.identifier
+DECL|package|org.jabref.model.entry.identifier
 package|package
 name|org
 operator|.
 name|jabref
 operator|.
-name|logic
+name|model
+operator|.
+name|entry
 operator|.
 name|identifier
 package|;
@@ -80,36 +82,6 @@ begin_import
 import|import
 name|org
 operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
-name|importer
-operator|.
-name|fetcher
-operator|.
-name|CrossRef
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|entry
-operator|.
-name|BibEntry
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
 name|apache
 operator|.
 name|commons
@@ -135,14 +107,14 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Class for working with Digital object identifiers (DOIs)  *  * @see https://en.wikipedia.org/wiki/Digital_object_identifier  */
+comment|/**  * Class for working with Eprint identifiers  *  * @see https://arxiv.org/help/arxiv_identifier  * @see https://arxiv.org/hypertex/bibstyles/  */
 end_comment
 
 begin_class
-DECL|class|DOI
+DECL|class|Eprint
 specifier|public
 class|class
-name|DOI
+name|Eprint
 block|{
 DECL|field|LOGGER
 specifier|private
@@ -155,14 +127,13 @@ name|LogFactory
 operator|.
 name|getLog
 argument_list|(
-name|DOI
+name|Eprint
 operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|// DOI resolver
 DECL|field|RESOLVER
-specifier|private
+specifier|public
 specifier|static
 specifier|final
 name|URI
@@ -172,80 +143,59 @@ name|URI
 operator|.
 name|create
 argument_list|(
-literal|"http://doi.org"
+literal|"http://arxiv.org"
 argument_list|)
 decl_stmt|;
 comment|// DOI
-DECL|field|doi
+DECL|field|eprint
 specifier|private
 specifier|final
 name|String
-name|doi
+name|eprint
 decl_stmt|;
 comment|// Regex
-comment|// (see http://www.doi.org/doi_handbook/2_Numbering.html)
-DECL|field|DOI_EXP
+comment|// (see https://arxiv.org/help/arxiv_identifier)
+DECL|field|EPRINT_EXP
 specifier|private
 specifier|static
 specifier|final
 name|String
-name|DOI_EXP
+name|EPRINT_EXP
 init|=
 literal|""
 operator|+
-literal|"(?:urn:)?"
-comment|// optional urn
-operator|+
-literal|"(?:doi:)?"
-comment|// optional doi
+literal|"(?:arXiv:)?"
+comment|// optional prefix
 operator|+
 literal|"("
 comment|// begin group \1
 operator|+
-literal|"10"
-comment|// directory indicator
+literal|"\\d{4}"
+comment|// YYMM
 operator|+
-literal|"(?:\\.[0-9]+)+"
-comment|// registrant codes
-operator|+
-literal|"[/:]"
+literal|"\\."
 comment|// divider
 operator|+
-literal|"(?:.+)"
-comment|// suffix alphanumeric string
+literal|"\\d{4,5}"
+comment|// number
 operator|+
-literal|")"
-decl_stmt|;
-comment|// end group \1
-DECL|field|FIND_DOI_EXP
-specifier|private
-specifier|static
-specifier|final
-name|String
-name|FIND_DOI_EXP
-init|=
-literal|""
+literal|"(v\\d+)?"
+comment|// optional version
 operator|+
-literal|"(?:urn:)?"
-comment|// optional urn
+literal|"|"
+comment|// old id
 operator|+
-literal|"(?:doi:)?"
-comment|// optional doi
+literal|".+"
+comment|// archive
 operator|+
-literal|"("
-comment|// begin group \1
+literal|"(\\.\\w{2})?"
+comment|// optional subject class
 operator|+
-literal|"10"
-comment|// directory indicator
-operator|+
-literal|"(?:\\.[0-9]+)+"
-comment|// registrant codes
-operator|+
-literal|"[/:]"
+literal|"\\/"
 comment|// divider
 operator|+
-literal|"(?:[^\\s]+)"
-comment|// suffix alphanumeric without space
+literal|"\\d{7}"
+comment|// number
 operator|+
 literal|")"
 decl_stmt|;
@@ -259,15 +209,15 @@ name|HTTP_EXP
 init|=
 literal|"https?://[^\\s]+?"
 operator|+
-name|DOI_EXP
+name|EPRINT_EXP
 decl_stmt|;
 comment|// Pattern
-DECL|field|EXACT_DOI_PATT
+DECL|field|EXACT_EPRINT_PATT
 specifier|private
 specifier|static
 specifier|final
 name|Pattern
-name|EXACT_DOI_PATT
+name|EXACT_EPRINT_PATT
 init|=
 name|Pattern
 operator|.
@@ -275,7 +225,7 @@ name|compile
 argument_list|(
 literal|"^(?:https?://[^\\s]+?)?"
 operator|+
-name|DOI_EXP
+name|EPRINT_EXP
 operator|+
 literal|"$"
 argument_list|,
@@ -284,47 +234,27 @@ operator|.
 name|CASE_INSENSITIVE
 argument_list|)
 decl_stmt|;
-DECL|field|DOI_PATT
-specifier|private
-specifier|static
-specifier|final
-name|Pattern
-name|DOI_PATT
-init|=
-name|Pattern
-operator|.
-name|compile
-argument_list|(
-literal|"(?:https?://[^\\s]+?)?"
-operator|+
-name|FIND_DOI_EXP
-argument_list|,
-name|Pattern
-operator|.
-name|CASE_INSENSITIVE
-argument_list|)
-decl_stmt|;
-comment|/**      * Creates a DOI from various schemes including URL, URN, and plain DOIs.      *      * @param doi the DOI string      * @throws NullPointerException if DOI is null      * @throws IllegalArgumentException if doi does not include a valid DOI      * @return an instance of the DOI class      */
-DECL|method|DOI (String doi)
+comment|/**      * Creates a Eprint from various schemes including URL.      *      * @param eprint the Eprint identifier string      * @throws NullPointerException if eprint is null      * @throws IllegalArgumentException if eprint does not include a valid Eprint identifier      * @return an instance of the Eprint class      */
+DECL|method|Eprint (String eprint)
 specifier|public
-name|DOI
+name|Eprint
 parameter_list|(
 name|String
-name|doi
+name|eprint
 parameter_list|)
 block|{
 name|Objects
 operator|.
 name|requireNonNull
 argument_list|(
-name|doi
+name|eprint
 argument_list|)
 expr_stmt|;
 comment|// Remove whitespace
 name|String
-name|trimmedDoi
+name|trimmedId
 init|=
-name|doi
+name|eprint
 operator|.
 name|trim
 argument_list|()
@@ -332,7 +262,7 @@ decl_stmt|;
 comment|// HTTP URL decoding
 if|if
 condition|(
-name|doi
+name|eprint
 operator|.
 name|matches
 argument_list|(
@@ -349,10 +279,10 @@ init|=
 operator|new
 name|URI
 argument_list|(
-name|trimmedDoi
+name|trimmedId
 argument_list|)
 decl_stmt|;
-name|trimmedDoi
+name|trimmedId
 operator|=
 name|url
 operator|.
@@ -382,9 +312,9 @@ throw|throw
 operator|new
 name|IllegalArgumentException
 argument_list|(
-name|doi
+name|eprint
 operator|+
-literal|" is not a valid HTTP DOI."
+literal|" is not a valid HTTP Eprint identifier."
 argument_list|)
 throw|;
 block|}
@@ -393,11 +323,11 @@ comment|// Extract DOI
 name|Matcher
 name|matcher
 init|=
-name|EXACT_DOI_PATT
+name|EXACT_EPRINT_PATT
 operator|.
 name|matcher
 argument_list|(
-name|trimmedDoi
+name|trimmedId
 argument_list|)
 decl_stmt|;
 if|if
@@ -411,7 +341,7 @@ block|{
 comment|// match only group \1
 name|this
 operator|.
-name|doi
+name|eprint
 operator|=
 name|matcher
 operator|.
@@ -427,25 +357,25 @@ throw|throw
 operator|new
 name|IllegalArgumentException
 argument_list|(
-name|trimmedDoi
+name|trimmedId
 operator|+
-literal|" is not a valid DOI."
+literal|" is not a valid Eprint identifier."
 argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Creates an Optional<DOI> from various schemes including URL, URN, and plain DOIs.      *      * Useful for suppressing the<c>IllegalArgumentException</c> of the Constructor      * and checking for Optional.isPresent() instead.      *      * @param doi the DOI string      * @return an Optional containing the DOI or an empty Optional      */
-DECL|method|build (String doi)
+comment|/**      * Creates an Optional<Eprint> from various schemes including URL.      *      * Useful for suppressing the<c>IllegalArgumentException</c> of the Constructor      * and checking for Optional.isPresent() instead.      *      * @param eprint the Eprint string      * @return an Optional containing the Eprint or an empty Optional      */
+DECL|method|build (String eprint)
 specifier|public
 specifier|static
 name|Optional
 argument_list|<
-name|DOI
+name|Eprint
 argument_list|>
 name|build
 parameter_list|(
 name|String
-name|doi
+name|eprint
 parameter_list|)
 block|{
 try|try
@@ -456,9 +386,9 @@ operator|.
 name|ofNullable
 argument_list|(
 operator|new
-name|DOI
+name|Eprint
 argument_list|(
-name|doi
+name|eprint
 argument_list|)
 argument_list|)
 return|;
@@ -479,129 +409,7 @@ argument_list|()
 return|;
 block|}
 block|}
-comment|/**      * Determines whether a DOI is valid or not      *      * @param doi the DOI string      * @return true if DOI is valid, false otherwise      */
-DECL|method|isValid (String doi)
-specifier|public
-specifier|static
-name|boolean
-name|isValid
-parameter_list|(
-name|String
-name|doi
-parameter_list|)
-block|{
-return|return
-name|build
-argument_list|(
-name|doi
-argument_list|)
-operator|.
-name|isPresent
-argument_list|()
-return|;
-block|}
-comment|/**      * Tries to find a DOI inside the given text.      *      * @param text the Text which might contain a DOI      * @return an Optional containing the DOI or an empty Optional      */
-DECL|method|findInText (String text)
-specifier|public
-specifier|static
-name|Optional
-argument_list|<
-name|DOI
-argument_list|>
-name|findInText
-parameter_list|(
-name|String
-name|text
-parameter_list|)
-block|{
-name|Optional
-argument_list|<
-name|DOI
-argument_list|>
-name|result
-init|=
-name|Optional
-operator|.
-name|empty
-argument_list|()
-decl_stmt|;
-name|Matcher
-name|matcher
-init|=
-name|DOI_PATT
-operator|.
-name|matcher
-argument_list|(
-name|text
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|matcher
-operator|.
-name|find
-argument_list|()
-condition|)
-block|{
-comment|// match only group \1
-name|result
-operator|=
-name|Optional
-operator|.
-name|of
-argument_list|(
-operator|new
-name|DOI
-argument_list|(
-name|matcher
-operator|.
-name|group
-argument_list|(
-literal|1
-argument_list|)
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-return|return
-name|result
-return|;
-block|}
-comment|/**      * Tries to retrieve a DOI for an existing BibEntry.      *      * @param entry the BibteX entry      * @return an Optional containing the DOI or an empty Optional      */
-DECL|method|fromBibEntry (BibEntry entry)
-specifier|public
-specifier|static
-name|Optional
-argument_list|<
-name|DOI
-argument_list|>
-name|fromBibEntry
-parameter_list|(
-name|BibEntry
-name|entry
-parameter_list|)
-block|{
-return|return
-name|CrossRef
-operator|.
-name|findDOI
-argument_list|(
-name|entry
-argument_list|)
-return|;
-block|}
-comment|/**      * Return the plain DOI      *      * @return the plain DOI value.      */
-DECL|method|getDOI ()
-specifier|public
-name|String
-name|getDOI
-parameter_list|()
-block|{
-return|return
-name|doi
-return|;
-block|}
-comment|/**      * Return a URI presentation for the DOI      *      * @return an encoded URI representation of the DOI      */
+comment|/**      * Return a URI presentation for the Eprint identifier      *      * @return an encoded URI representation of the Eprint identifier      */
 DECL|method|getURI ()
 specifier|public
 name|Optional
@@ -629,9 +437,9 @@ operator|.
 name|getHost
 argument_list|()
 argument_list|,
-literal|"/"
+literal|"/abs/"
 operator|+
-name|doi
+name|eprint
 argument_list|,
 literal|null
 argument_list|)
@@ -656,7 +464,7 @@ name|LOGGER
 operator|.
 name|error
 argument_list|(
-name|doi
+name|eprint
 operator|+
 literal|" could not be encoded as URI."
 argument_list|,
@@ -671,7 +479,7 @@ argument_list|()
 return|;
 block|}
 block|}
-comment|/**      * Return an ASCII URL presentation for the DOI      *      * @return an encoded URL representation of the DOI      */
+comment|/**      * Return an ASCII URL presentation for the Eprint identifier      *      * @return an encoded URL representation of the Eprint identifier      */
 DECL|method|getURIAsASCIIString ()
 specifier|public
 name|String
@@ -693,6 +501,17 @@ name|orElse
 argument_list|(
 literal|""
 argument_list|)
+return|;
+block|}
+comment|/**      * Return the plain Eprint identifier      *      * @return the plain Eprint value.      */
+DECL|method|getEprint ()
+specifier|public
+name|String
+name|getEprint
+parameter_list|()
+block|{
+return|return
+name|eprint
 return|;
 block|}
 block|}

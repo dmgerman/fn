@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|org.jabref.model.entry
+DECL|package|org.jabref.model.entry.identifier
 package|package
 name|org
 operator|.
@@ -9,6 +9,8 @@ operator|.
 name|model
 operator|.
 name|entry
+operator|.
+name|identifier
 package|;
 end_package
 

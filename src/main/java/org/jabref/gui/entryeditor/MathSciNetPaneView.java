@@ -68,6 +68,8 @@ name|model
 operator|.
 name|entry
 operator|.
+name|identifier
+operator|.
 name|MathSciNetId
 import|;
 end_import
