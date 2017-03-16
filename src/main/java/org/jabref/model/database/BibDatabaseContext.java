@@ -194,16 +194,16 @@ specifier|final
 name|BibDatabase
 name|database
 decl_stmt|;
-DECL|field|metaData
-specifier|private
-name|MetaData
-name|metaData
-decl_stmt|;
 DECL|field|defaults
 specifier|private
 specifier|final
 name|Defaults
 name|defaults
+decl_stmt|;
+DECL|field|metaData
+specifier|private
+name|MetaData
+name|metaData
 decl_stmt|;
 comment|/** The file where this database was last saved to. */
 DECL|field|file
@@ -665,6 +665,22 @@ name|file
 argument_list|)
 return|;
 block|}
+DECL|method|setDatabaseFile (File file)
+specifier|public
+name|void
+name|setDatabaseFile
+parameter_list|(
+name|File
+name|file
+parameter_list|)
+block|{
+name|this
+operator|.
+name|file
+operator|=
+name|file
+expr_stmt|;
+block|}
 DECL|method|getDatabasePath ()
 specifier|public
 name|Optional
@@ -689,22 +705,6 @@ operator|::
 name|toPath
 argument_list|)
 return|;
-block|}
-DECL|method|setDatabaseFile (File file)
-specifier|public
-name|void
-name|setDatabaseFile
-parameter_list|(
-name|File
-name|file
-parameter_list|)
-block|{
-name|this
-operator|.
-name|file
-operator|=
-name|file
-expr_stmt|;
 block|}
 DECL|method|clearDatabaseFile ()
 specifier|public
@@ -1240,6 +1240,28 @@ name|DatabaseLocation
 operator|.
 name|SHARED
 expr_stmt|;
+block|}
+annotation|@
+name|Override
+DECL|method|toString ()
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+literal|"BibDatabaseContext{"
+operator|+
+literal|"file="
+operator|+
+name|file
+operator|+
+literal|", location="
+operator|+
+name|location
+operator|+
+literal|'}'
+return|;
 block|}
 DECL|method|convertToLocalDatabase ()
 specifier|public

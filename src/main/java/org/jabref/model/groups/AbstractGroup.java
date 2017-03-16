@@ -198,6 +198,46 @@ name|context
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
+DECL|method|toString ()
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+literal|"AbstractGroup{"
+operator|+
+literal|"name='"
+operator|+
+name|name
+operator|+
+literal|'\''
+operator|+
+literal|", context="
+operator|+
+name|context
+operator|+
+literal|", color="
+operator|+
+name|color
+operator|+
+literal|", isExpanded="
+operator|+
+name|isExpanded
+operator|+
+literal|", description="
+operator|+
+name|description
+operator|+
+literal|", iconCode="
+operator|+
+name|iconCode
+operator|+
+literal|'}'
+return|;
+block|}
 DECL|method|getColor ()
 specifier|public
 name|Optional

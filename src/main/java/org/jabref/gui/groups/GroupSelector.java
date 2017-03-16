@@ -608,20 +608,6 @@ name|org
 operator|.
 name|jabref
 operator|.
-name|gui
-operator|.
-name|worker
-operator|.
-name|AbstractWorker
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
 name|logic
 operator|.
 name|groups
@@ -3685,7 +3671,7 @@ name|get
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|/*final MatcherSet searchRules = MatcherSets                 .build(andCb.isSelected() ? MatcherSets.MatcherType.AND : MatcherSets.MatcherType.OR);          for(GroupTreeNodeViewModel node : getLeafsOfSelection()) {             SearchMatcher searchRule = node.getNode().getSearchMatcher();             searchRules.addRule(searchRule);         }         SearchMatcher searchRule = invCb.isSelected() ? new NotMatcher(searchRules) : searchRules;         GroupingWorker worker = new GroupingWorker(searchRule);         worker.getWorker().run();         worker.getCallBack().update();         */
+comment|/*final MatcherSet searchRules = MatcherSets                 .build(andCb.isSelected() ? MatcherSets.MatcherType.AND : MatcherSets.MatcherType.OR);          for (GroupTreeNodeViewModel node : getLeafsOfSelection()) {             SearchMatcher searchRule = node.getNode().getSearchMatcher();             searchRules.addRule(searchRule);         }         SearchMatcher searchRule = invCb.isSelected() ? new NotMatcher(searchRules) : searchRules;         GroupingWorker worker = new GroupingWorker(searchRule);         worker.getWorker().run();         worker.getCallBack().update();         */
 block|}
 DECL|method|updateShownEntriesAccordingToSelectedGroups (Optional<GroupTreeNode> selectedGroup)
 specifier|private
@@ -3733,16 +3719,10 @@ argument_list|)
 decl_stmt|;
 name|worker
 operator|.
-name|getWorker
-argument_list|()
-operator|.
 name|run
 argument_list|()
 expr_stmt|;
 name|worker
-operator|.
-name|getCallBack
-argument_list|()
 operator|.
 name|update
 argument_list|()
@@ -5394,8 +5374,6 @@ block|}
 DECL|class|GroupingWorker
 class|class
 name|GroupingWorker
-extends|extends
-name|AbstractWorker
 block|{
 DECL|field|matcher
 specifier|private
@@ -5445,8 +5423,6 @@ name|isSelected
 argument_list|()
 expr_stmt|;
 block|}
-annotation|@
-name|Override
 DECL|method|run ()
 specifier|public
 name|void
@@ -5501,8 +5477,6 @@ expr_stmt|;
 block|}
 block|}
 block|}
-annotation|@
-name|Override
 DECL|method|update ()
 specifier|public
 name|void

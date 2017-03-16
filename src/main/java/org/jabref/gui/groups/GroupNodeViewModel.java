@@ -18,6 +18,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Map
 import|;
 end_import
@@ -29,6 +39,16 @@ operator|.
 name|util
 operator|.
 name|Objects
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
 import|;
 end_import
 
@@ -176,9 +196,33 @@ name|javafx
 operator|.
 name|scene
 operator|.
+name|input
+operator|.
+name|Dragboard
+import|;
+end_import
+
+begin_import
+import|import
+name|javafx
+operator|.
+name|scene
+operator|.
 name|paint
 operator|.
 name|Color
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|DragAndDropDataFormats
 import|;
 end_import
 
@@ -258,6 +302,18 @@ name|jabref
 operator|.
 name|model
 operator|.
+name|FieldChange
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
 name|database
 operator|.
 name|BibDatabaseContext
@@ -319,6 +375,20 @@ operator|.
 name|groups
 operator|.
 name|AutomaticGroup
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|groups
+operator|.
+name|GroupEntryChanger
 import|;
 end_import
 
@@ -409,6 +479,12 @@ specifier|final
 name|BibDatabaseContext
 name|databaseContext
 decl_stmt|;
+DECL|field|stateManager
+specifier|private
+specifier|final
+name|StateManager
+name|stateManager
+decl_stmt|;
 DECL|field|groupNode
 specifier|private
 specifier|final
@@ -472,6 +548,17 @@ operator|.
 name|requireNonNull
 argument_list|(
 name|databaseContext
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|stateManager
+operator|=
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|stateManager
 argument_list|)
 expr_stmt|;
 name|this
@@ -552,10 +639,6 @@ name|stream
 lambda|->
 name|createSubgroups
 argument_list|(
-name|databaseContext
-argument_list|,
-name|stateManager
-argument_list|,
 name|automaticGroup
 argument_list|,
 name|stream
@@ -876,7 +959,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|createSubgroups (BibDatabaseContext databaseContext, StateManager stateManager, AutomaticGroup automaticGroup, BibEntry entry)
+DECL|method|createSubgroups (AutomaticGroup automaticGroup, BibEntry entry)
 specifier|private
 name|Stream
 argument_list|<
@@ -884,12 +967,6 @@ name|GroupNodeViewModel
 argument_list|>
 name|createSubgroups
 parameter_list|(
-name|BibDatabaseContext
-name|databaseContext
-parameter_list|,
-name|StateManager
-name|stateManager
-parameter_list|,
 name|AutomaticGroup
 name|automaticGroup
 parameter_list|,
@@ -923,6 +1000,38 @@ name|child
 argument_list|)
 argument_list|)
 return|;
+block|}
+DECL|method|addEntriesToGroup (List<BibEntry> entries)
+specifier|public
+name|List
+argument_list|<
+name|FieldChange
+argument_list|>
+name|addEntriesToGroup
+parameter_list|(
+name|List
+argument_list|<
+name|BibEntry
+argument_list|>
+name|entries
+parameter_list|)
+block|{
+comment|// TODO: warn if assignment has undesired side effects (modifies a field != keywords)
+comment|//if (!WarnAssignmentSideEffects.warnAssignmentSideEffects(group, groupSelector.frame))
+comment|//{
+comment|//    return; // user aborted operation
+comment|//}
+return|return
+name|groupNode
+operator|.
+name|addEntriesToGroup
+argument_list|(
+name|entries
+argument_list|)
+return|;
+comment|// TODO: Store undo
+comment|// if (!undo.isEmpty()) {
+comment|// groupSelector.concludeAssignment(UndoableChangeEntriesOfGroup.getUndoableEdit(target, undo), target.getNode(), assignedEntries);
 block|}
 DECL|method|expandedProperty ()
 specifier|public
@@ -1032,15 +1141,20 @@ name|this
 operator|==
 name|o
 condition|)
+block|{
 return|return
 literal|true
 return|;
+block|}
 if|if
 condition|(
+operator|(
 name|o
 operator|==
 literal|null
+operator|)
 operator|||
+operator|(
 name|getClass
 argument_list|()
 operator|!=
@@ -1048,10 +1162,13 @@ name|o
 operator|.
 name|getClass
 argument_list|()
+operator|)
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 name|GroupNodeViewModel
 name|that
 init|=
@@ -1072,9 +1189,11 @@ operator|.
 name|groupNode
 argument_list|)
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 return|return
 literal|true
 return|;
@@ -1347,6 +1466,130 @@ name|getDefaultColor
 argument_list|()
 argument_list|)
 return|;
+block|}
+DECL|method|getPath ()
+specifier|public
+name|String
+name|getPath
+parameter_list|()
+block|{
+return|return
+name|groupNode
+operator|.
+name|getPath
+argument_list|()
+return|;
+block|}
+DECL|method|getChildByPath (String pathToSource)
+specifier|public
+name|Optional
+argument_list|<
+name|GroupNodeViewModel
+argument_list|>
+name|getChildByPath
+parameter_list|(
+name|String
+name|pathToSource
+parameter_list|)
+block|{
+return|return
+name|groupNode
+operator|.
+name|getChildByPath
+argument_list|(
+name|pathToSource
+argument_list|)
+operator|.
+name|map
+argument_list|(
+name|child
+lambda|->
+operator|new
+name|GroupNodeViewModel
+argument_list|(
+name|databaseContext
+argument_list|,
+name|stateManager
+argument_list|,
+name|child
+argument_list|)
+argument_list|)
+return|;
+block|}
+comment|/**      * Decides if the content stored in the given {@link Dragboard} can be droped on the given target row.      * Currently, the following sources are allowed:      *  - another group (will be added as subgroup on drop)      *  - entries if the group implements {@link GroupEntryChanger} (will be assigned to group on drop)      */
+DECL|method|acceptableDrop (Dragboard dragboard)
+specifier|public
+name|boolean
+name|acceptableDrop
+parameter_list|(
+name|Dragboard
+name|dragboard
+parameter_list|)
+block|{
+comment|// TODO: we should also check isNodeDescendant
+name|boolean
+name|canDropOtherGroup
+init|=
+name|dragboard
+operator|.
+name|hasContent
+argument_list|(
+name|DragAndDropDataFormats
+operator|.
+name|GROUP
+argument_list|)
+decl_stmt|;
+name|boolean
+name|canDropEntries
+init|=
+name|dragboard
+operator|.
+name|hasContent
+argument_list|(
+name|DragAndDropDataFormats
+operator|.
+name|ENTRIES
+argument_list|)
+operator|&&
+name|groupNode
+operator|.
+name|getGroup
+argument_list|()
+operator|instanceof
+name|GroupEntryChanger
+decl_stmt|;
+return|return
+name|canDropOtherGroup
+operator|||
+name|canDropEntries
+return|;
+block|}
+DECL|method|moveTo (GroupNodeViewModel target)
+specifier|public
+name|void
+name|moveTo
+parameter_list|(
+name|GroupNodeViewModel
+name|target
+parameter_list|)
+block|{
+comment|// TODO: Add undo and display message
+comment|//MoveGroupChange undo = new MoveGroupChange(((GroupTreeNodeViewModel)source.getParent()).getNode(),
+comment|//        source.getNode().getPositionInParent(), target.getNode(), target.getChildCount());
+name|getGroupNode
+argument_list|()
+operator|.
+name|moveTo
+argument_list|(
+name|target
+operator|.
+name|getGroupNode
+argument_list|()
+argument_list|)
+expr_stmt|;
+comment|//panel.getUndoManager().addEdit(new UndoableMoveGroup(this.groupsRoot, moveChange));
+comment|//panel.markBaseChanged();
+comment|//frame.output(Localization.lang("Moved group \"%0\".", node.getNode().getGroup().getName()));
 block|}
 block|}
 end_class

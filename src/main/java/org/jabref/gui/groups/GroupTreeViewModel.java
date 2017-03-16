@@ -468,6 +468,26 @@ name|GroupNodeViewModel
 name|newValue
 parameter_list|)
 block|{
+if|if
+condition|(
+operator|!
+name|currentDatabase
+operator|.
+name|equals
+argument_list|(
+name|stateManager
+operator|.
+name|activeDatabaseProperty
+argument_list|()
+operator|.
+name|getValue
+argument_list|()
+argument_list|)
+condition|)
+block|{
+comment|// Switch of database occurred -> do nothing
+return|return;
+block|}
 name|currentDatabase
 operator|.
 name|ifPresent
@@ -509,6 +529,22 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Opens "New Group Dialog" and add the resulting group to the root      */
+DECL|method|addNewGroupToRoot ()
+specifier|public
+name|void
+name|addNewGroupToRoot
+parameter_list|()
+block|{
+name|addNewSubgroup
+argument_list|(
+name|rootGroup
+operator|.
+name|get
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 comment|/**      * Gets invoked if the user changes the active database.      * We need to get the new group tree and update the view      */
 DECL|method|onActiveDatabaseChanged (Optional<BibDatabaseContext> newDatabase)
 specifier|private
@@ -522,10 +558,6 @@ argument_list|>
 name|newDatabase
 parameter_list|)
 block|{
-name|currentDatabase
-operator|=
-name|newDatabase
-expr_stmt|;
 if|if
 condition|(
 name|newDatabase
@@ -629,21 +661,9 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-block|}
-comment|/**      * Opens "New Group Dialog" and add the resulting group to the root      */
-DECL|method|addNewGroupToRoot ()
-specifier|public
-name|void
-name|addNewGroupToRoot
-parameter_list|()
-block|{
-name|addNewSubgroup
-argument_list|(
-name|rootGroup
-operator|.
-name|get
-argument_list|()
-argument_list|)
+name|currentDatabase
+operator|=
+name|newDatabase
 expr_stmt|;
 block|}
 comment|/**      * Opens "New Group Dialog" and add the resulting group to the specified group      */

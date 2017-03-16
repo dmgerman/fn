@@ -398,6 +398,13 @@ name|Transferable
 implements|,
 name|TreeNode
 block|{
+DECL|field|FLAVOR
+specifier|public
+specifier|static
+specifier|final
+name|DataFlavor
+name|FLAVOR
+decl_stmt|;
 DECL|field|LOGGER
 specifier|private
 specifier|static
@@ -454,13 +461,6 @@ name|Icon
 name|GROUP_REGULAR_ICON
 init|=
 literal|null
-decl_stmt|;
-DECL|field|FLAVOR
-specifier|public
-specifier|static
-specifier|final
-name|DataFlavor
-name|FLAVOR
 decl_stmt|;
 DECL|field|FLAVORS
 specifier|private
@@ -537,6 +537,21 @@ specifier|final
 name|GroupTreeNode
 name|node
 decl_stmt|;
+DECL|method|GroupTreeNodeViewModel (GroupTreeNode node)
+specifier|public
+name|GroupTreeNodeViewModel
+parameter_list|(
+name|GroupTreeNode
+name|node
+parameter_list|)
+block|{
+name|this
+operator|.
+name|node
+operator|=
+name|node
+expr_stmt|;
+block|}
 annotation|@
 name|Override
 DECL|method|toString ()
@@ -580,21 +595,6 @@ operator|.
 name|toString
 argument_list|()
 return|;
-block|}
-DECL|method|GroupTreeNodeViewModel (GroupTreeNode node)
-specifier|public
-name|GroupTreeNodeViewModel
-parameter_list|(
-name|GroupTreeNode
-name|node
-parameter_list|)
-block|{
-name|this
-operator|.
-name|node
-operator|=
-name|node
-expr_stmt|;
 block|}
 annotation|@
 name|Override
@@ -827,6 +827,9 @@ name|Override
 DECL|method|children ()
 specifier|public
 name|Enumeration
+argument_list|<
+name|GroupTreeNodeViewModel
+argument_list|>
 name|children
 parameter_list|()
 block|{
@@ -1274,6 +1277,7 @@ name|entries
 parameter_list|)
 block|{
 return|return
+operator|(
 name|getNode
 argument_list|()
 operator|.
@@ -1281,6 +1285,7 @@ name|getGroup
 argument_list|()
 operator|instanceof
 name|GroupEntryChanger
+operator|)
 operator|&&
 operator|!
 name|getNode
@@ -1308,6 +1313,7 @@ name|entries
 parameter_list|)
 block|{
 return|return
+operator|(
 name|getNode
 argument_list|()
 operator|.
@@ -1315,6 +1321,7 @@ name|getGroup
 argument_list|()
 operator|instanceof
 name|GroupEntryChanger
+operator|)
 operator|&&
 name|getNode
 argument_list|()
@@ -2313,42 +2320,14 @@ argument_list|>
 name|entries
 parameter_list|)
 block|{
-if|if
-condition|(
-name|node
-operator|.
-name|getGroup
-argument_list|()
-operator|instanceof
-name|GroupEntryChanger
-condition|)
-block|{
 return|return
-operator|(
-operator|(
-name|GroupEntryChanger
-operator|)
 name|node
 operator|.
-name|getGroup
-argument_list|()
-operator|)
-operator|.
-name|add
+name|addEntriesToGroup
 argument_list|(
 name|entries
 argument_list|)
 return|;
-block|}
-else|else
-block|{
-return|return
-name|Collections
-operator|.
-name|emptyList
-argument_list|()
-return|;
-block|}
 block|}
 comment|/**      * Removes the given entries from this node's group.      */
 DECL|method|removeEntriesFromGroup (List<BibEntry> entries)
