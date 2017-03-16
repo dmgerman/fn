@@ -1469,7 +1469,7 @@ name|OS
 operator|.
 name|NEWLINE
 operator|+
-literal|"1 ExplicitGroup:test\\;2\\;;"
+literal|"1 StaticGroup:test\\;2\\;1\\;\\;\\;\\;;"
 operator|+
 name|OS
 operator|.
@@ -1598,7 +1598,7 @@ name|OS
 operator|.
 name|NEWLINE
 operator|+
-literal|"1 ExplicitGroup:test\\;2\\;;"
+literal|"1 StaticGroup:test\\;2\\;1\\;\\;\\;\\;;"
 operator|+
 name|OS
 operator|.

@@ -36,6 +36,34 @@ name|model
 operator|.
 name|groups
 operator|.
+name|AutomaticKeywordGroup
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|groups
+operator|.
+name|AutomaticPersonsGroup
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|groups
+operator|.
 name|ExplicitGroup
 import|;
 end_import
@@ -132,6 +160,16 @@ name|ALL_ENTRIES_GROUP_ID
 init|=
 literal|"AllEntriesGroup:"
 decl_stmt|;
+comment|/**      * Old identifier for {@link ExplicitGroup} (explicitly contained a list of {@link      * org.jabref.model.entry.BibEntry}).      */
+DECL|field|LEGACY_EXPLICIT_GROUP_ID
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|LEGACY_EXPLICIT_GROUP_ID
+init|=
+literal|"ExplicitGroup:"
+decl_stmt|;
 comment|/**      * Identifier for {@link ExplicitGroup}.      */
 DECL|field|EXPLICIT_GROUP_ID
 specifier|public
@@ -140,7 +178,7 @@ specifier|final
 name|String
 name|EXPLICIT_GROUP_ID
 init|=
-literal|"ExplicitGroup:"
+literal|"StaticGroup:"
 decl_stmt|;
 comment|/**      * Identifier for {@link SearchGroup}.      */
 DECL|field|SEARCH_GROUP_ID
@@ -151,6 +189,26 @@ name|String
 name|SEARCH_GROUP_ID
 init|=
 literal|"SearchGroup:"
+decl_stmt|;
+comment|/**      * Identifier for {@link AutomaticPersonsGroup}.      */
+DECL|field|AUTOMATIC_PERSONS_GROUP_ID
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|AUTOMATIC_PERSONS_GROUP_ID
+init|=
+literal|"AutomaticPersonsGroup:"
+decl_stmt|;
+comment|/**      * Identifier for {@link AutomaticKeywordGroup}.      */
+DECL|field|AUTOMATIC_KEYWORD_GROUP_ID
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|AUTOMATIC_KEYWORD_GROUP_ID
+init|=
+literal|"AutomaticKeywordGroup:"
 decl_stmt|;
 block|}
 end_class

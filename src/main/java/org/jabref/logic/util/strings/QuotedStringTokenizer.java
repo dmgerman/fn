@@ -194,29 +194,9 @@ condition|)
 block|{
 comment|// unit finished
 comment|// advance index until next token or end
-do|do
-block|{
 operator|++
 name|index
 expr_stmt|;
-block|}
-do|while
-condition|(
-name|index
-operator|<
-name|contentLength
-operator|&&
-name|isDelimiter
-argument_list|(
-name|content
-operator|.
-name|charAt
-argument_list|(
-name|index
-argument_list|)
-argument_list|)
-condition|)
-do|;
 return|return
 name|stringBuilder
 operator|.
