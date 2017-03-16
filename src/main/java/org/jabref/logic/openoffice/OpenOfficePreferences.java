@@ -127,7 +127,7 @@ specifier|final
 name|String
 name|DEFAULT_OSX_EXEC_PATH
 init|=
-literal|"/Applications/OpenOffice.org.app/Contents/MacOS/soffice.bin"
+literal|"/Applications/OpenOffice.org.app/Contents/MacOS/soffice"
 decl_stmt|;
 DECL|field|OSX_EXECUTABLE
 specifier|public
