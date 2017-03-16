@@ -14,6 +14,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|jabref
@@ -35,15 +45,25 @@ DECL|interface|IdFetcher
 specifier|public
 interface|interface
 name|IdFetcher
+parameter_list|<
+name|T
+parameter_list|>
+extends|extends
+name|WebFetcher
 block|{
-comment|/**      * Looks for an identifier based on the information stored in the given {@link BibEntry} and      * then updates the {@link BibEntry} with the found id.      *      * @param entry the {@link BibEntry} for which an identifier should be found      * @return an updated {@link BibEntry} containing the identifier (if an ID was found, otherwise the {@link BibEntry}      *         is left unchanged)      */
-DECL|method|updateIdentfier (BibEntry entry)
-name|BibEntry
-name|updateIdentfier
+comment|/**      * Looks for an identifier based on the information stored in the given {@link BibEntry}.      *      * @param entry the {@link BibEntry} for which an identifier should be found      * @return the identifier (if an ID was found, otherwise an empty {@link Optional})      */
+DECL|method|findIdentifier (BibEntry entry)
+name|Optional
+argument_list|<
+name|T
+argument_list|>
+name|findIdentifier
 parameter_list|(
 name|BibEntry
 name|entry
 parameter_list|)
+throws|throws
+name|FetcherException
 function_decl|;
 block|}
 end_interface

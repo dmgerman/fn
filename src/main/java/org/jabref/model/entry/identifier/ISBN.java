@@ -1,12 +1,14 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|org.jabref.logic.identifier
+DECL|package|org.jabref.model.entry.identifier
 package|package
 name|org
 operator|.
 name|jabref
 operator|.
-name|logic
+name|model
+operator|.
+name|entry
 operator|.
 name|identifier
 package|;

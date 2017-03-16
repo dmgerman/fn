@@ -308,6 +308,22 @@ name|jabref
 operator|.
 name|model
 operator|.
+name|entry
+operator|.
+name|identifier
+operator|.
+name|DOI
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
 name|strings
 operator|.
 name|LatexToUnicodeAdapter
@@ -392,22 +408,6 @@ name|BibEntry
 implements|implements
 name|Cloneable
 block|{
-DECL|field|LOGGER
-specifier|private
-specifier|static
-specifier|final
-name|Log
-name|LOGGER
-init|=
-name|LogFactory
-operator|.
-name|getLog
-argument_list|(
-name|BibEntry
-operator|.
-name|class
-argument_list|)
-decl_stmt|;
 DECL|field|TYPE_HEADER
 specifier|public
 specifier|static
@@ -435,6 +435,15 @@ name|KEY_FIELD
 init|=
 literal|"bibtexkey"
 decl_stmt|;
+DECL|field|DEFAULT_TYPE
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|DEFAULT_TYPE
+init|=
+literal|"misc"
+decl_stmt|;
 DECL|field|ID_FIELD
 specifier|protected
 specifier|static
@@ -444,14 +453,21 @@ name|ID_FIELD
 init|=
 literal|"id"
 decl_stmt|;
-DECL|field|DEFAULT_TYPE
-specifier|public
+DECL|field|LOGGER
+specifier|private
 specifier|static
 specifier|final
-name|String
-name|DEFAULT_TYPE
+name|Log
+name|LOGGER
 init|=
-literal|"misc"
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|BibEntry
+operator|.
+name|class
+argument_list|)
 decl_stmt|;
 DECL|field|REMOVE_TRAILING_WHITESPACE
 specifier|private
@@ -467,36 +483,11 @@ argument_list|(
 literal|"\\s+$"
 argument_list|)
 decl_stmt|;
-DECL|field|id
-specifier|private
-name|String
-name|id
-decl_stmt|;
 DECL|field|sharedBibEntryData
 specifier|private
 specifier|final
 name|SharedBibEntryData
 name|sharedBibEntryData
-decl_stmt|;
-DECL|field|type
-specifier|private
-name|String
-name|type
-decl_stmt|;
-DECL|field|fields
-specifier|private
-name|Map
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
-name|fields
-init|=
-operator|new
-name|ConcurrentHashMap
-argument_list|<>
-argument_list|()
 decl_stmt|;
 comment|/**      * Map to store the words in every field      */
 DECL|field|fieldsAsWords
@@ -535,6 +526,41 @@ name|ConcurrentHashMap
 argument_list|<>
 argument_list|()
 decl_stmt|;
+DECL|field|eventBus
+specifier|private
+specifier|final
+name|EventBus
+name|eventBus
+init|=
+operator|new
+name|EventBus
+argument_list|()
+decl_stmt|;
+DECL|field|id
+specifier|private
+name|String
+name|id
+decl_stmt|;
+DECL|field|type
+specifier|private
+name|String
+name|type
+decl_stmt|;
+DECL|field|fields
+specifier|private
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
+name|fields
+init|=
+operator|new
+name|ConcurrentHashMap
+argument_list|<>
+argument_list|()
+decl_stmt|;
 comment|// Search and grouping status is stored in boolean fields for quick reference:
 DECL|field|searchHit
 specifier|private
@@ -563,16 +589,6 @@ DECL|field|changed
 specifier|private
 name|boolean
 name|changed
-decl_stmt|;
-DECL|field|eventBus
-specifier|private
-specifier|final
-name|EventBus
-name|eventBus
-init|=
-operator|new
-name|EventBus
-argument_list|()
 decl_stmt|;
 comment|/**      * Constructs a new BibEntry. The internal ID is set to IdGenerator.next()      */
 DECL|method|BibEntry ()
@@ -903,6 +919,17 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+comment|/**      * Returns this entry's ID.      */
+DECL|method|getId ()
+specifier|public
+name|String
+name|getId
+parameter_list|()
+block|{
+return|return
+name|id
+return|;
+block|}
 comment|/**      * Sets this entry's ID, provided the database containing it      * doesn't veto the change.      *      * @param id The ID to be used      */
 DECL|method|setId (String id)
 specifier|public
@@ -959,35 +986,6 @@ operator|=
 literal|true
 expr_stmt|;
 block|}
-comment|/**      * Returns this entry's ID.      */
-DECL|method|getId ()
-specifier|public
-name|String
-name|getId
-parameter_list|()
-block|{
-return|return
-name|id
-return|;
-block|}
-comment|/**      * Sets the cite key AKA citation key AKA BibTeX key.      * Note: This is<emph>not</emph> the internal Id of this entry. The internal Id is always present, whereas the BibTeX key might not be present.      *      * @param newCiteKey The cite key to set. Must not be null; use {@link #clearCiteKey()} to remove the cite key.      */
-DECL|method|setCiteKey (String newCiteKey)
-specifier|public
-name|void
-name|setCiteKey
-parameter_list|(
-name|String
-name|newCiteKey
-parameter_list|)
-block|{
-name|setField
-argument_list|(
-name|KEY_FIELD
-argument_list|,
-name|newCiteKey
-argument_list|)
-expr_stmt|;
-block|}
 comment|/**      * Returns the cite key AKA citation key AKA BibTeX key, or null if it is not set.      * Note: this is<emph>not</emph> the internal Id of this entry. The internal Id is always present, whereas the BibTeX key might not be present.      */
 annotation|@
 name|Deprecated
@@ -1005,6 +1003,24 @@ argument_list|(
 name|KEY_FIELD
 argument_list|)
 return|;
+block|}
+comment|/**      * Sets the cite key AKA citation key AKA BibTeX key. Note: This is<emph>not</emph> the internal Id of this entry.      * The internal Id is always present, whereas the BibTeX key might not be present.      *      * @param newCiteKey The cite key to set. Must not be null; use {@link #clearCiteKey()} to remove the cite key.      */
+DECL|method|setCiteKey (String newCiteKey)
+specifier|public
+name|void
+name|setCiteKey
+parameter_list|(
+name|String
+name|newCiteKey
+parameter_list|)
+block|{
+name|setField
+argument_list|(
+name|KEY_FIELD
+argument_list|,
+name|newCiteKey
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|getCiteKeyOptional ()
 specifier|public
@@ -1056,6 +1072,27 @@ block|{
 return|return
 name|type
 return|;
+block|}
+comment|/**      * Sets this entry's type.      */
+DECL|method|setType (EntryType type)
+specifier|public
+name|void
+name|setType
+parameter_list|(
+name|EntryType
+name|type
+parameter_list|)
+block|{
+name|this
+operator|.
+name|setType
+argument_list|(
+name|type
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 comment|/**      * Sets this entry's type.      */
 DECL|method|setType (String type, EntryEventSource eventSource)
@@ -1165,27 +1202,6 @@ argument_list|,
 name|EntryEventSource
 operator|.
 name|LOCAL
-argument_list|)
-expr_stmt|;
-block|}
-comment|/**      * Sets this entry's type.      */
-DECL|method|setType (EntryType type)
-specifier|public
-name|void
-name|setType
-parameter_list|(
-name|EntryType
-name|type
-parameter_list|)
-block|{
-name|this
-operator|.
-name|setType
-argument_list|(
-name|type
-operator|.
-name|getName
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -1854,22 +1870,30 @@ name|empty
 argument_list|()
 return|;
 block|}
-DECL|interface|GetFieldInterface
-specifier|private
-interface|interface
-name|GetFieldInterface
-block|{
-DECL|method|getValueForField (String fieldName)
+DECL|method|getDOI ()
+specifier|public
 name|Optional
 argument_list|<
-name|String
+name|DOI
 argument_list|>
-name|getValueForField
-parameter_list|(
-name|String
-name|fieldName
-parameter_list|)
-function_decl|;
+name|getDOI
+parameter_list|()
+block|{
+return|return
+name|getField
+argument_list|(
+name|FieldName
+operator|.
+name|DOI
+argument_list|)
+operator|.
+name|flatMap
+argument_list|(
+name|DOI
+operator|::
+name|build
+argument_list|)
+return|;
 block|}
 comment|/**      * Return the LaTeX-free contents of the given field or its alias an an Optional      *      * For details see also {@link #getFieldOrAlias(String)}      *      * @param name the name of the field      * @return  the stored latex-free content of the field (or its alias)      */
 DECL|method|getFieldOrAliasLatexFree (String name)
@@ -2752,6 +2776,25 @@ operator|+
 literal|"..."
 return|;
 block|}
+comment|/**      * Returns the title of the given BibTeX entry as an Optional.      *      * @return an Optional containing the title of a BibTeX entry in case it exists, otherwise return an empty Optional.      */
+DECL|method|getTitle ()
+specifier|public
+name|Optional
+argument_list|<
+name|String
+argument_list|>
+name|getTitle
+parameter_list|()
+block|{
+return|return
+name|getField
+argument_list|(
+name|FieldName
+operator|.
+name|TITLE
+argument_list|)
+return|;
+block|}
 comment|/**      * Will return the publication date of the given bibtex entry conforming to ISO 8601, i.e. either YYYY or YYYY-MM.      *      * @return will return the publication date of the entry or null if no year was found.      */
 DECL|method|getPublicationDate ()
 specifier|public
@@ -2862,6 +2905,16 @@ return|return
 name|year
 return|;
 block|}
+DECL|method|getParsedSerialization ()
+specifier|public
+name|String
+name|getParsedSerialization
+parameter_list|()
+block|{
+return|return
+name|parsedSerialization
+return|;
+block|}
 DECL|method|setParsedSerialization (String parsedSerialization)
 specifier|public
 name|void
@@ -2881,16 +2934,6 @@ name|parsedSerialization
 operator|=
 name|parsedSerialization
 expr_stmt|;
-block|}
-DECL|method|getParsedSerialization ()
-specifier|public
-name|String
-name|getParsedSerialization
-parameter_list|()
-block|{
-return|return
-name|parsedSerialization
-return|;
 block|}
 DECL|method|setCommentsBeforeEntry (String parsedComments)
 specifier|public
@@ -3877,6 +3920,23 @@ argument_list|,
 name|newValue
 argument_list|)
 return|;
+block|}
+DECL|interface|GetFieldInterface
+specifier|private
+interface|interface
+name|GetFieldInterface
+block|{
+DECL|method|getValueForField (String fieldName)
+name|Optional
+argument_list|<
+name|String
+argument_list|>
+name|getValueForField
+parameter_list|(
+name|String
+name|fieldName
+parameter_list|)
+function_decl|;
 block|}
 block|}
 end_class

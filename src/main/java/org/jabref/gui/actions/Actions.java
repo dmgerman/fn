@@ -175,6 +175,15 @@ name|COPY_KEY_AND_LINK
 init|=
 literal|"copyKeyAndLink"
 decl_stmt|;
+DECL|field|COPY_TITLE
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|COPY_TITLE
+init|=
+literal|"copyTitle"
+decl_stmt|;
 DECL|field|CUT
 specifier|public
 specifier|static

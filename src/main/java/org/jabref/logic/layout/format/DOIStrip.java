@@ -22,9 +22,9 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|identifier
+name|layout
 operator|.
-name|DOI
+name|LayoutFormatter
 import|;
 end_import
 
@@ -34,11 +34,13 @@ name|org
 operator|.
 name|jabref
 operator|.
-name|logic
+name|model
 operator|.
-name|layout
+name|entry
 operator|.
-name|LayoutFormatter
+name|identifier
+operator|.
+name|DOI
 import|;
 end_import
 

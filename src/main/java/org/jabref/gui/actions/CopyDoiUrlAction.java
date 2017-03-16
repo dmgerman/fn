@@ -86,9 +86,9 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|identifier
+name|l10n
 operator|.
-name|DOI
+name|Localization
 import|;
 end_import
 
@@ -98,11 +98,13 @@ name|org
 operator|.
 name|jabref
 operator|.
-name|logic
+name|model
 operator|.
-name|l10n
+name|entry
 operator|.
-name|Localization
+name|identifier
+operator|.
+name|DOI
 import|;
 end_import
 
