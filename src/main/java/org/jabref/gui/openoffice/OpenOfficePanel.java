@@ -1120,11 +1120,6 @@ specifier|private
 name|boolean
 name|dialogOkPressed
 decl_stmt|;
-DECL|field|executablePath
-specifier|private
-name|String
-name|executablePath
-decl_stmt|;
 DECL|field|connectException
 specifier|private
 name|IOException
