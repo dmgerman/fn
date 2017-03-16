@@ -136,7 +136,7 @@ specifier|final
 name|String
 name|OSX_EXECUTABLE
 init|=
-literal|"soffice.bin"
+literal|"soffice"
 decl_stmt|;
 DECL|field|DEFAULT_LINUX_PATH
 specifier|public
