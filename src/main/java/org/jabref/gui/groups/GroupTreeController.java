@@ -1464,6 +1464,10 @@ name|getSelection
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|success
+operator|=
+literal|true
+expr_stmt|;
 block|}
 name|event
 operator|.
