@@ -5412,7 +5412,7 @@ name|OO_JARS_PATH
 argument_list|,
 name|OpenOfficePreferences
 operator|.
-name|DEFAULT_LINUX_JARS
+name|DEFAULT_LINUX_PATH
 argument_list|)
 expr_stmt|;
 block|}
