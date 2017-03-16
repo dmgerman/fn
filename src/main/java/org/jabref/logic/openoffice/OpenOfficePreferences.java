@@ -145,16 +145,7 @@ specifier|final
 name|String
 name|DEFAULT_LINUX_PATH
 init|=
-literal|"/opt/openoffice.org3"
-decl_stmt|;
-DECL|field|DEFAULT_LINUX_JARS
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|DEFAULT_LINUX_JARS
-init|=
-literal|"/opt/openoffice.org/basis3.0"
+literal|"/opt/openoffice4"
 decl_stmt|;
 DECL|field|DEFAULT_LINUX_EXEC_PATH
 specifier|public
@@ -163,7 +154,7 @@ specifier|final
 name|String
 name|DEFAULT_LINUX_EXEC_PATH
 init|=
-literal|"/usr/lib/openoffice/program/soffice"
+literal|"/opt/openoffice4/program/soffice"
 decl_stmt|;
 DECL|field|LINUX_EXECUTABLE
 specifier|public
