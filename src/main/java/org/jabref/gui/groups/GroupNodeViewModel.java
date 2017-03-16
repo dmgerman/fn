@@ -18,16 +18,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Collections
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|List
 import|;
 end_import
@@ -1011,7 +1001,6 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|//Copy pasted from GroupTreeNodeModel
 DECL|method|addEntriesToGroup (List<BibEntry> entries)
 specifier|public
 name|List
@@ -1027,42 +1016,22 @@ argument_list|>
 name|entries
 parameter_list|)
 block|{
-if|if
-condition|(
-name|groupNode
-operator|.
-name|getGroup
-argument_list|()
-operator|instanceof
-name|GroupEntryChanger
-condition|)
-block|{
+comment|// TODO: warn if assignment has undesired side effects (modifies a field != keywords)
+comment|//if (!WarnAssignmentSideEffects.warnAssignmentSideEffects(group, groupSelector.frame))
+comment|//{
+comment|//    return; // user aborted operation
+comment|//}
 return|return
-operator|(
-operator|(
-name|GroupEntryChanger
-operator|)
 name|groupNode
 operator|.
-name|getGroup
-argument_list|()
-operator|)
-operator|.
-name|add
+name|addEntriesToGroup
 argument_list|(
 name|entries
 argument_list|)
 return|;
-block|}
-else|else
-block|{
-return|return
-name|Collections
-operator|.
-name|emptyList
-argument_list|()
-return|;
-block|}
+comment|// TODO: Store undo
+comment|// if (!undo.isEmpty()) {
+comment|// groupSelector.concludeAssignment(UndoableChangeEntriesOfGroup.getUndoableEdit(target, undo), target.getNode(), assignedEntries);
 block|}
 DECL|method|expandedProperty ()
 specifier|public
@@ -1547,7 +1516,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**      * Decides if the content stored in the given {@link Dragboard} can be droped on the given target row      */
+comment|/**      * Decides if the content stored in the given {@link Dragboard} can be droped on the given target row.      * Currently, the following sources are allowed:      *  - another group (will be added as subgroup on drop)      *  - entries if the group implements {@link GroupEntryChanger} (will be assigned to group on drop)      */
 DECL|method|acceptableDrop (Dragboard dragboard)
 specifier|public
 name|boolean
@@ -1557,7 +1526,10 @@ name|Dragboard
 name|dragboard
 parameter_list|)
 block|{
-return|return
+comment|// TODO: we should also check isNodeDescendant
+name|boolean
+name|canDropOtherGroup
+init|=
 name|dragboard
 operator|.
 name|hasContent
@@ -1566,17 +1538,31 @@ name|DragAndDropDataFormats
 operator|.
 name|GROUP
 argument_list|)
-operator|||
+decl_stmt|;
+name|boolean
+name|canDropEntries
+init|=
 name|dragboard
 operator|.
 name|hasContent
 argument_list|(
-name|TransferableEntrySelection
+name|DragAndDropDataFormats
 operator|.
-name|DATAFORMAT
+name|ENTRIES
 argument_list|)
+operator|&&
+name|groupNode
+operator|.
+name|getGroup
+argument_list|()
+operator|instanceof
+name|GroupEntryChanger
+decl_stmt|;
+return|return
+name|canDropOtherGroup
+operator|||
+name|canDropEntries
 return|;
-comment|// TODO: we should also check isNodeDescendant
 block|}
 DECL|method|moveTo (GroupNodeViewModel target)
 specifier|public

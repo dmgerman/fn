@@ -468,24 +468,21 @@ name|GroupNodeViewModel
 name|newValue
 parameter_list|)
 block|{
-comment|//TODO: Can one of this be empty?
 if|if
 condition|(
+operator|!
 name|currentDatabase
 operator|.
-name|get
-argument_list|()
-operator|!=
+name|equals
+argument_list|(
 name|stateManager
 operator|.
 name|activeDatabaseProperty
 argument_list|()
 operator|.
-name|get
+name|getValue
 argument_list|()
-operator|.
-name|get
-argument_list|()
+argument_list|)
 condition|)
 block|{
 comment|// Switch of database occurred -> do nothing

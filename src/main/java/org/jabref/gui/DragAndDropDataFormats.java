@@ -45,6 +45,19 @@ argument_list|(
 literal|"dnd/org.jabref.model.groups.GroupTreeNode"
 argument_list|)
 decl_stmt|;
+DECL|field|ENTRIES
+specifier|public
+specifier|static
+specifier|final
+name|DataFormat
+name|ENTRIES
+init|=
+operator|new
+name|DataFormat
+argument_list|(
+literal|"application/x-java-jvm-local-objectref"
+argument_list|)
+decl_stmt|;
 block|}
 end_class
 
