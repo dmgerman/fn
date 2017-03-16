@@ -78,6 +78,20 @@ name|gui
 operator|.
 name|util
 operator|.
+name|DirectoryDialogConfiguration
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|util
+operator|.
 name|FileDialogConfiguration
 import|;
 end_import
@@ -284,27 +298,39 @@ name|message
 parameter_list|)
 function_decl|;
 comment|/**      * Shows a new file save dialog. The method doesn't return until the      * displayed file save dialog is dismissed. The return value specifies the      * file chosen by the user or an empty {@link Optional} if no selection has been made.      *      * @return the selected file or an empty {@link Optional} if no file has been selected      */
-DECL|method|showSaveDialog (FileDialogConfiguration fileDialogConfiguration)
+DECL|method|showFileSaveDialog (FileDialogConfiguration fileDialogConfiguration)
 name|Optional
 argument_list|<
 name|Path
 argument_list|>
-name|showSaveDialog
+name|showFileSaveDialog
 parameter_list|(
 name|FileDialogConfiguration
 name|fileDialogConfiguration
 parameter_list|)
 function_decl|;
 comment|/**      * Shows a new file open dialog. The method doesn't return until the      * displayed open dialog is dismissed. The return value specifies      * the file chosen by the user or an empty {@link Optional} if no selection has been      * made.      *      * @return the selected file or an empty {@link Optional} if no file has been selected      */
-DECL|method|showOpenDialog (FileDialogConfiguration fileDialogConfiguration)
+DECL|method|showFileOpenDialog (FileDialogConfiguration fileDialogConfiguration)
 name|Optional
 argument_list|<
 name|Path
 argument_list|>
-name|showOpenDialog
+name|showFileOpenDialog
 parameter_list|(
 name|FileDialogConfiguration
 name|fileDialogConfiguration
+parameter_list|)
+function_decl|;
+comment|/**      * Shows a new directory selection dialog. The method doesn't return until the      * displayed open dialog is dismissed. The return value specifies      * the file chosen by the user or an empty {@link Optional} if no selection has been      * made.      *      * @return the selected directory or an empty {@link Optional} if no directory has been selected      */
+DECL|method|showDirectorySelectionDialog (DirectoryDialogConfiguration directoryDialogConfiguration)
+name|Optional
+argument_list|<
+name|Path
+argument_list|>
+name|showDirectorySelectionDialog
+parameter_list|(
+name|DirectoryDialogConfiguration
+name|directoryDialogConfiguration
 parameter_list|)
 function_decl|;
 block|}

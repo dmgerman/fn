@@ -1234,7 +1234,7 @@ argument_list|()
 decl_stmt|;
 name|dialogService
 operator|.
-name|showSaveDialog
+name|showFileSaveDialog
 argument_list|(
 name|fileDialogConfiguration
 argument_list|)
@@ -1380,7 +1380,7 @@ argument_list|()
 decl_stmt|;
 name|dialogService
 operator|.
-name|showOpenDialog
+name|showFileOpenDialog
 argument_list|(
 name|fileDialogConfiguration
 argument_list|)
