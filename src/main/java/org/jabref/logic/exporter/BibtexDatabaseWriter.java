@@ -78,6 +78,20 @@ name|logic
 operator|.
 name|bibtex
 operator|.
+name|InvalidFieldValueException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|bibtex
+operator|.
 name|LatexFieldFormatter
 import|;
 end_import
@@ -224,6 +238,15 @@ argument_list|<
 name|E
 argument_list|>
 block|{
+DECL|field|DATABASE_ID_PREFIX
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|DATABASE_ID_PREFIX
+init|=
+literal|"DBID:"
+decl_stmt|;
 DECL|field|STRING_PREFIX
 specifier|private
 specifier|static
@@ -250,15 +273,6 @@ name|String
 name|PREAMBLE_PREFIX
 init|=
 literal|"@Preamble"
-decl_stmt|;
-DECL|field|DATABASE_ID_PREFIX
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|DATABASE_ID_PREFIX
-init|=
-literal|"DBID:"
 decl_stmt|;
 DECL|method|BibtexDatabaseWriter (SaveSessionFactory<E> saveSessionFactory)
 specifier|public
@@ -739,17 +753,15 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|IllegalArgumentException
+name|InvalidFieldValueException
 name|ex
 parameter_list|)
 block|{
 throw|throw
 operator|new
-name|IllegalArgumentException
+name|SaveException
 argument_list|(
-literal|"The # character is not allowed in BibTeX strings unless escaped as in '\\#'.\n"
-operator|+
-literal|"Before saving, please edit any strings containing the # character."
+name|ex
 argument_list|)
 throw|;
 block|}

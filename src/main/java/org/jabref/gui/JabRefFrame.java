@@ -11310,6 +11310,15 @@ operator|.
 name|getName
 argument_list|()
 argument_list|)
+operator|&&
+name|uniqPath
+operator|.
+name|contains
+argument_list|(
+name|File
+operator|.
+name|separator
+argument_list|)
 condition|)
 block|{
 comment|// remove filename

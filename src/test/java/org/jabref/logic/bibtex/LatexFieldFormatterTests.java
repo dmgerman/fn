@@ -113,6 +113,8 @@ specifier|public
 name|void
 name|normalizeNewlineInAbstractField
 parameter_list|()
+throws|throws
+name|Exception
 block|{
 name|String
 name|fieldName
@@ -191,6 +193,8 @@ specifier|public
 name|void
 name|preserveNewlineInAbstractField
 parameter_list|()
+throws|throws
+name|Exception
 block|{
 name|String
 name|fieldName
@@ -249,6 +253,8 @@ specifier|public
 name|void
 name|preserveMultipleNewlinesInAbstractField
 parameter_list|()
+throws|throws
+name|Exception
 block|{
 name|String
 name|fieldName
@@ -311,6 +317,8 @@ specifier|public
 name|void
 name|preserveNewlineInReviewField
 parameter_list|()
+throws|throws
+name|Exception
 block|{
 name|String
 name|fieldName
@@ -426,7 +434,7 @@ name|Test
 argument_list|(
 name|expected
 operator|=
-name|IllegalArgumentException
+name|InvalidFieldValueException
 operator|.
 name|class
 argument_list|)
@@ -435,6 +443,8 @@ specifier|public
 name|void
 name|reportUnbalancedBracing
 parameter_list|()
+throws|throws
+name|Exception
 block|{
 name|String
 name|unbalanced
@@ -456,7 +466,7 @@ name|Test
 argument_list|(
 name|expected
 operator|=
-name|IllegalArgumentException
+name|InvalidFieldValueException
 operator|.
 name|class
 argument_list|)
@@ -465,6 +475,8 @@ specifier|public
 name|void
 name|reportUnbalancedBracingWithEscapedBraces
 parameter_list|()
+throws|throws
+name|Exception
 block|{
 name|String
 name|unbalanced
@@ -488,6 +500,8 @@ specifier|public
 name|void
 name|tolerateBalancedBrace
 parameter_list|()
+throws|throws
+name|Exception
 block|{
 name|String
 name|text
@@ -520,6 +534,8 @@ specifier|public
 name|void
 name|tolerateEscapeCharacters
 parameter_list|()
+throws|throws
+name|Exception
 block|{
 name|String
 name|text
