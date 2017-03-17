@@ -817,7 +817,7 @@ block|}
 DECL|method|getIdFetchers ()
 specifier|public
 specifier|static
-name|ArrayList
+name|List
 argument_list|<
 name|IdFetcher
 argument_list|>
