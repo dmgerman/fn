@@ -274,15 +274,6 @@ name|FORWARD
 init|=
 literal|"forward"
 decl_stmt|;
-DECL|field|LOOKUP_DOIS
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|LOOKUP_DOIS
-init|=
-literal|"lookupDOIs"
-decl_stmt|;
 DECL|field|MAKE_KEY
 specifier|public
 specifier|static

@@ -118,7 +118,7 @@ name|logic
 operator|.
 name|importer
 operator|.
-name|WebFetchers
+name|IdFetcher
 import|;
 end_import
 
@@ -172,23 +172,9 @@ name|model
 operator|.
 name|entry
 operator|.
-name|FieldName
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|entry
-operator|.
 name|identifier
 operator|.
-name|DOI
+name|Identifier
 import|;
 end_import
 
@@ -221,10 +207,15 @@ import|;
 end_import
 
 begin_class
-DECL|class|LookupDOIsWorker
+DECL|class|LookupIdentifiersWorker
 specifier|public
 class|class
-name|LookupDOIsWorker
+name|LookupIdentifiersWorker
+parameter_list|<
+name|T
+extends|extends
+name|Identifier
+parameter_list|>
 extends|extends
 name|AbstractWorker
 block|{
@@ -233,6 +224,15 @@ specifier|private
 specifier|final
 name|JabRefFrame
 name|frame
+decl_stmt|;
+DECL|field|fetcher
+specifier|private
+specifier|final
+name|IdFetcher
+argument_list|<
+name|T
+argument_list|>
+name|fetcher
 decl_stmt|;
 DECL|field|message
 specifier|private
@@ -250,17 +250,23 @@ name|LogFactory
 operator|.
 name|getLog
 argument_list|(
-name|LookupDOIsWorker
+name|LookupIdentifiersWorker
 operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|method|LookupDOIsWorker (JabRefFrame frame)
+DECL|method|LookupIdentifiersWorker (JabRefFrame frame, IdFetcher<T> fetcher)
 specifier|public
-name|LookupDOIsWorker
+name|LookupIdentifiersWorker
 parameter_list|(
 name|JabRefFrame
 name|frame
+parameter_list|,
+name|IdFetcher
+argument_list|<
+name|T
+argument_list|>
+name|fetcher
 parameter_list|)
 block|{
 name|this
@@ -272,6 +278,17 @@ operator|.
 name|requireNonNull
 argument_list|(
 name|frame
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|fetcher
+operator|=
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|fetcher
 argument_list|)
 expr_stmt|;
 block|}
@@ -339,7 +356,12 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Look up DOIs"
+literal|"Look up %0"
+argument_list|,
+name|fetcher
+operator|.
+name|getIdentifierName
+argument_list|()
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -372,7 +394,12 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Looking up DOIs... - entry %0 out of %1 - found %2"
+literal|"Looking up %0... - entry %1 out of %2 - found %3"
+argument_list|,
+name|fetcher
+operator|.
+name|getIdentifierName
+argument_list|()
 argument_list|,
 name|Integer
 operator|.
@@ -392,24 +419,11 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-operator|!
-name|bibEntry
-operator|.
-name|hasField
-argument_list|(
-name|FieldName
-operator|.
-name|DOI
-argument_list|)
-condition|)
-block|{
 name|Optional
 argument_list|<
-name|DOI
+name|T
 argument_list|>
-name|doi
+name|identifier
 init|=
 name|Optional
 operator|.
@@ -418,16 +432,9 @@ argument_list|()
 decl_stmt|;
 try|try
 block|{
-name|doi
+name|identifier
 operator|=
-name|WebFetchers
-operator|.
-name|getIdFetcherForIdentifier
-argument_list|(
-name|DOI
-operator|.
-name|class
-argument_list|)
+name|fetcher
 operator|.
 name|findIdentifier
 argument_list|(
@@ -445,7 +452,12 @@ name|LOGGER
 operator|.
 name|error
 argument_list|(
-literal|"Could not fetch doi"
+literal|"Could not fetch "
+operator|+
+name|fetcher
+operator|.
+name|getIdentifierName
+argument_list|()
 argument_list|,
 name|e
 argument_list|)
@@ -453,10 +465,24 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-name|doi
+name|identifier
 operator|.
 name|isPresent
 argument_list|()
+operator|&&
+operator|!
+name|bibEntry
+operator|.
+name|hasField
+argument_list|(
+name|identifier
+operator|.
+name|get
+argument_list|()
+operator|.
+name|getDefaultField
+argument_list|()
+argument_list|)
 condition|)
 block|{
 name|Optional
@@ -469,16 +495,20 @@ name|bibEntry
 operator|.
 name|setField
 argument_list|(
-name|FieldName
-operator|.
-name|DOI
-argument_list|,
-name|doi
+name|identifier
 operator|.
 name|get
 argument_list|()
 operator|.
-name|getDOI
+name|getDefaultField
+argument_list|()
+argument_list|,
+name|identifier
+operator|.
+name|get
+argument_list|()
+operator|.
+name|getNormalized
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -515,7 +545,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Looking up DOIs... - entry %0 out of %1 - found %2"
+literal|"Looking up %0... - entry %1 out of %2 - found %3"
 argument_list|,
 name|Integer
 operator|.
@@ -535,7 +565,6 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 block|}
@@ -573,7 +602,12 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Determined_DOIs_for_%0_entries"
+literal|"Determined %0 for %1 entries"
+argument_list|,
+name|fetcher
+operator|.
+name|getIdentifierName
+argument_list|()
 argument_list|,
 name|Integer
 operator|.
