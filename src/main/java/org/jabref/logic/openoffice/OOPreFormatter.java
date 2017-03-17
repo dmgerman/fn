@@ -67,7 +67,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This formatter preprocesses JabRef fields before they are run through the layout of the  * bibliography style. It handles translation of LaTeX italic/bold commands into HTML tags.  *  * @version $Revision: 2568 $ ($Date: 2008-01-15 18:40:26 +0100 (Tue, 15 Jan 2008) $)  */
+comment|/**  * This formatter preprocesses JabRef fields before they are run through the layout of the  * bibliography style. It handles translation of LaTeX italic/bold commands into HTML tags.  */
 end_comment
 
 begin_class

@@ -18,7 +18,17 @@ name|java
 operator|.
 name|util
 operator|.
-name|EnumSet
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
 import|;
 end_import
 
@@ -29,16 +39,6 @@ operator|.
 name|util
 operator|.
 name|Optional
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Set
 import|;
 end_import
 
@@ -472,7 +472,7 @@ expr_stmt|;
 block|}
 comment|// Do the layout for this entry:
 name|String
-name|lText
+name|formattedText
 init|=
 name|layout
 operator|.
@@ -524,7 +524,7 @@ name|text
 argument_list|,
 name|cursor
 argument_list|,
-name|lText
+name|formattedText
 argument_list|,
 name|parStyle
 argument_list|)
@@ -614,20 +614,16 @@ name|parStyle
 argument_list|)
 throw|;
 block|}
-name|Set
+name|List
 argument_list|<
 name|Formatting
 argument_list|>
 name|formatting
 init|=
-name|EnumSet
-operator|.
-name|noneOf
-argument_list|(
-name|Formatting
-operator|.
-name|class
-argument_list|)
+operator|new
+name|ArrayList
+argument_list|<>
+argument_list|()
 decl_stmt|;
 comment|// We need to extract formatting. Use a simple regexp search iteration:
 name|int
@@ -656,7 +652,7 @@ argument_list|()
 condition|)
 block|{
 name|String
-name|ss
+name|currentSubstring
 init|=
 name|lText
 operator|.
@@ -673,7 +669,7 @@ decl_stmt|;
 if|if
 condition|(
 operator|!
-name|ss
+name|currentSubstring
 operator|.
 name|isEmpty
 argument_list|()
@@ -687,7 +683,7 @@ name|text
 argument_list|,
 name|cursor
 argument_list|,
-name|ss
+name|currentSubstring
 argument_list|,
 name|formatting
 argument_list|)
@@ -1128,7 +1124,7 @@ name|collapseToEnd
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|insertTextAtCurrentLocation (XText text, XTextCursor cursor, String string, Set<Formatting> formatting)
+DECL|method|insertTextAtCurrentLocation (XText text, XTextCursor cursor, String string, List<Formatting> formatting)
 specifier|public
 specifier|static
 name|void
@@ -1143,7 +1139,7 @@ parameter_list|,
 name|String
 name|string
 parameter_list|,
-name|Set
+name|List
 argument_list|<
 name|Formatting
 argument_list|>
