@@ -28,6 +28,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Arrays
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|List
 import|;
 end_import
@@ -59,7 +69,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * The OpenOffice connection preferences are:  * OO_PATH main directory for OO/LO installation, used to detect location on Win/OS X when using manual connect  * OO_EXECUTABLE_PATH path to soffice-file  * OO_JARS_PATH directory that contains juh.jar, jurt.jar, ridl.jar, unoil.jar  * OO_SYNC_WHEN_CITING true if the reference list is updated when adding a new citation  * OO_SHOW_PANEL true if the OO panel is shown on startup  * OO_USE_ALL_OPEN_DATABASES true if all databases should be used when citing  * OO_BIBLIOGRAPHY_STYLE_FILE path to the used style file  * OO_EXTERNAL_STYLE_FILES list with paths to external style files  *  */
+comment|/**  * The OpenOffice connection preferences are:  * OO_PATH main directory for OO/LO installation, used to detect location on Win/OS X when using manual connect  * OO_EXECUTABLE_PATH path to soffice-file  * OO_JARS_PATH directory that contains juh.jar, jurt.jar, ridl.jar, unoil.jar  * OO_SYNC_WHEN_CITING true if the reference list is updated when adding a new citation  * OO_SHOW_PANEL true if the OO panel is shown on startup  * OO_USE_ALL_OPEN_DATABASES true if all databases should be used when citing  * OO_BIBLIOGRAPHY_STYLE_FILE path to the used style file  * OO_EXTERNAL_STYLE_FILES list with paths to external style files  */
 end_comment
 
 begin_class
@@ -83,14 +93,14 @@ name|DEFAULT_WINDOWS_PATH
 init|=
 literal|"C:\\Program Files\\OpenOffice.org 4"
 decl_stmt|;
-DECL|field|WINDOWS_EXECUTABLE_SUBPATH
+DECL|field|DEFAULT_WIN_EXEC_PATH
 specifier|public
 specifier|static
 specifier|final
 name|String
-name|WINDOWS_EXECUTABLE_SUBPATH
+name|DEFAULT_WIN_EXEC_PATH
 init|=
-literal|"\\program\\"
+literal|"C:\\Program Files\\OpenOffice.org 4\\program\\soffice.exe"
 decl_stmt|;
 DECL|field|WINDOWS_EXECUTABLE
 specifier|public
@@ -101,15 +111,6 @@ name|WINDOWS_EXECUTABLE
 init|=
 literal|"soffice.exe"
 decl_stmt|;
-DECL|field|WINDOWS_JARS_SUBPATH
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|WINDOWS_JARS_SUBPATH
-init|=
-literal|"\\program\\classes"
-decl_stmt|;
 DECL|field|DEFAULT_OSX_PATH
 specifier|public
 specifier|static
@@ -119,14 +120,14 @@ name|DEFAULT_OSX_PATH
 init|=
 literal|"/Applications/OpenOffice.org.app"
 decl_stmt|;
-DECL|field|OSX_EXECUTABLE_SUBPATH
+DECL|field|DEFAULT_OSX_EXEC_PATH
 specifier|public
 specifier|static
 specifier|final
 name|String
-name|OSX_EXECUTABLE_SUBPATH
+name|DEFAULT_OSX_EXEC_PATH
 init|=
-literal|"/Contents/MacOS/"
+literal|"/Applications/OpenOffice.org.app/Contents/MacOS/soffice"
 decl_stmt|;
 DECL|field|OSX_EXECUTABLE
 specifier|public
@@ -135,16 +136,25 @@ specifier|final
 name|String
 name|OSX_EXECUTABLE
 init|=
-literal|"soffice.bin"
+literal|"soffice"
 decl_stmt|;
-DECL|field|OSX_JARS_SUBPATH
+DECL|field|DEFAULT_LINUX_PATH
 specifier|public
 specifier|static
 specifier|final
 name|String
-name|OSX_JARS_SUBPATH
+name|DEFAULT_LINUX_PATH
 init|=
-literal|"/Contents/Resources/java"
+literal|"/opt/openoffice4"
+decl_stmt|;
+DECL|field|DEFAULT_LINUX_EXEC_PATH
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|DEFAULT_LINUX_EXEC_PATH
+init|=
+literal|"/opt/openoffice4/program/soffice"
 decl_stmt|;
 DECL|field|LINUX_EXECUTABLE
 specifier|public
@@ -154,6 +164,29 @@ name|String
 name|LINUX_EXECUTABLE
 init|=
 literal|"soffice"
+decl_stmt|;
+DECL|field|OO_JARS
+specifier|public
+specifier|static
+specifier|final
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|OO_JARS
+init|=
+name|Arrays
+operator|.
+name|asList
+argument_list|(
+literal|"unoil.jar"
+argument_list|,
+literal|"jurt.jar"
+argument_list|,
+literal|"juh.jar"
+argument_list|,
+literal|"ridl.jar"
+argument_list|)
 decl_stmt|;
 DECL|method|OpenOfficePreferences (JabRefPreferences preferences)
 specifier|public
@@ -215,32 +248,11 @@ name|hasKey
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|OO_JARS_PATH
-argument_list|)
-operator|&&
-name|preferences
-operator|.
-name|hasKey
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|OO_EXECUTABLE_PATH
+name|OO_PATH
 argument_list|)
 condition|)
 block|{
 return|return
-operator|new
-name|File
-argument_list|(
-name|getJarsPath
-argument_list|()
-argument_list|,
-literal|"jurt.jar"
-argument_list|)
-operator|.
-name|exists
-argument_list|()
-operator|&&
 operator|new
 name|File
 argument_list|(
@@ -377,10 +389,10 @@ name|path
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|getOOPath ()
+DECL|method|getInstallationPath ()
 specifier|public
 name|String
-name|getOOPath
+name|getInstallationPath
 parameter_list|()
 block|{
 return|return

@@ -28,6 +28,30 @@ begin_import
 import|import
 name|java
 operator|.
+name|nio
+operator|.
+name|file
+operator|.
+name|Path
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|file
+operator|.
+name|Paths
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|List
@@ -115,6 +139,33 @@ name|String
 name|directoryName
 parameter_list|)
 function_decl|;
+comment|/**      * Returns the path to the system's applications folder.      *      * @return the path to the applications folder.      */
+DECL|method|getApplicationDirectory ()
+name|Path
+name|getApplicationDirectory
+parameter_list|()
+function_decl|;
+comment|/**      * Returns the path to the system's user directory.      *      * @return the path to the user directory.      */
+DECL|method|getUserDirectory ()
+specifier|default
+name|Path
+name|getUserDirectory
+parameter_list|()
+block|{
+return|return
+name|Paths
+operator|.
+name|get
+argument_list|(
+name|System
+operator|.
+name|getProperty
+argument_list|(
+literal|"user.home"
+argument_list|)
+argument_list|)
+return|;
+block|}
 block|}
 end_interface
 
