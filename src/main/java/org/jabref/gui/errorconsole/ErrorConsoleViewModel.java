@@ -572,6 +572,22 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Clears the current log      */
+DECL|method|clearLog ()
+specifier|public
+name|void
+name|clearLog
+parameter_list|()
+block|{
+name|LogMessages
+operator|.
+name|getInstance
+argument_list|()
+operator|.
+name|clear
+argument_list|()
+expr_stmt|;
+block|}
 comment|/**      * Opens a new issue on GitHub and copies log to clipboard.      */
 DECL|method|reportIssue ()
 specifier|public

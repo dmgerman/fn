@@ -166,6 +166,18 @@ name|copy
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|clear ()
+specifier|public
+name|void
+name|clear
+parameter_list|()
+block|{
+name|messages
+operator|.
+name|clear
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 end_class
 

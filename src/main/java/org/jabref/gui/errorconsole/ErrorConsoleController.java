@@ -288,6 +288,13 @@ specifier|private
 name|Button
 name|copyLogButton
 decl_stmt|;
+DECL|field|clearLogButton
+annotation|@
+name|FXML
+specifier|private
+name|Button
+name|clearLogButton
+decl_stmt|;
 DECL|field|createIssueButton
 annotation|@
 name|FXML
@@ -753,6 +760,23 @@ block|{
 name|viewModel
 operator|.
 name|copyLog
+argument_list|()
+expr_stmt|;
+block|}
+end_function
+
+begin_function
+annotation|@
+name|FXML
+DECL|method|clearLog ()
+specifier|private
+name|void
+name|clearLog
+parameter_list|()
+block|{
+name|viewModel
+operator|.
+name|clearLog
 argument_list|()
 expr_stmt|;
 block|}
