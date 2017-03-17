@@ -1,10 +1,8 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|net.sf.jabref.gui.worker
+DECL|package|org.jabref.gui.worker
 package|package
-name|net
-operator|.
-name|sf
+name|org
 operator|.
 name|jabref
 operator|.
@@ -46,9 +44,7 @@ end_import
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
+name|org
 operator|.
 name|jabref
 operator|.
@@ -60,9 +56,7 @@ end_import
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
+name|org
 operator|.
 name|jabref
 operator|.
@@ -74,9 +68,7 @@ end_import
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
+name|org
 operator|.
 name|jabref
 operator|.
@@ -90,9 +82,7 @@ end_import
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
+name|org
 operator|.
 name|jabref
 operator|.
@@ -106,9 +96,35 @@ end_import
 
 begin_import
 import|import
-name|net
+name|org
 operator|.
-name|sf
+name|jabref
+operator|.
+name|logic
+operator|.
+name|importer
+operator|.
+name|FetcherException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|importer
+operator|.
+name|WebFetchers
+import|;
+end_import
+
+begin_import
+import|import
+name|org
 operator|.
 name|jabref
 operator|.
@@ -122,25 +138,7 @@ end_import
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
-name|util
-operator|.
-name|DOI
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
+name|org
 operator|.
 name|jabref
 operator|.
@@ -152,9 +150,7 @@ end_import
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
+name|org
 operator|.
 name|jabref
 operator|.
@@ -168,9 +164,7 @@ end_import
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
+name|org
 operator|.
 name|jabref
 operator|.
@@ -179,6 +173,22 @@ operator|.
 name|entry
 operator|.
 name|FieldName
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|identifier
+operator|.
+name|DOI
 import|;
 end_import
 
@@ -401,13 +411,46 @@ name|DOI
 argument_list|>
 name|doi
 init|=
+name|Optional
+operator|.
+name|empty
+argument_list|()
+decl_stmt|;
+try|try
+block|{
+name|doi
+operator|=
+name|WebFetchers
+operator|.
+name|getIdFetcherForIdentifier
+argument_list|(
 name|DOI
 operator|.
-name|fromBibEntry
+name|class
+argument_list|)
+operator|.
+name|findIdentifier
 argument_list|(
 name|bibEntry
 argument_list|)
-decl_stmt|;
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|FetcherException
+name|e
+parameter_list|)
+block|{
+name|LOGGER
+operator|.
+name|error
+argument_list|(
+literal|"Could not fetch doi"
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+block|}
 if|if
 condition|(
 name|doi
