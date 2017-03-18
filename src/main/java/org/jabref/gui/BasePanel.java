@@ -7384,65 +7384,14 @@ expr_stmt|;
 block|}
 else|else
 block|{
-comment|// This part uses Spin's features:
-name|Runnable
-name|wrk
-init|=
-operator|(
+name|runWorker
+argument_list|(
 operator|(
 name|AbstractWorker
 operator|)
 name|o
-operator|)
-operator|.
-name|getWorker
-argument_list|()
-decl_stmt|;
-comment|// The Worker returned by getWorker() has been wrapped
-comment|// by Spin.off(), which makes its methods be run in
-comment|// a different thread from the EDT.
-name|CallBack
-name|clb
-init|=
-operator|(
-operator|(
-name|AbstractWorker
-operator|)
-name|o
-operator|)
-operator|.
-name|getCallBack
-argument_list|()
-decl_stmt|;
-operator|(
-operator|(
-name|AbstractWorker
-operator|)
-name|o
-operator|)
-operator|.
-name|init
-argument_list|()
+argument_list|)
 expr_stmt|;
-comment|// This method runs in this same thread, the EDT.
-comment|// Useful for initial GUI actions, like printing a message.
-comment|// The CallBack returned by getCallBack() has been wrapped
-comment|// by Spin.over(), which makes its methods be run on
-comment|// the EDT.
-name|wrk
-operator|.
-name|run
-argument_list|()
-expr_stmt|;
-comment|// Runs the potentially time-consuming action
-comment|// without freezing the GUI. The magic is that THIS line
-comment|// of execution will not continue until run() is finished.
-name|clb
-operator|.
-name|update
-argument_list|()
-expr_stmt|;
-comment|// Runs the update() method on the EDT.
 block|}
 block|}
 catch|catch
@@ -7474,6 +7423,66 @@ name|ex
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+end_function
+
+begin_function
+DECL|method|runWorker (AbstractWorker worker)
+specifier|public
+specifier|static
+name|void
+name|runWorker
+parameter_list|(
+name|AbstractWorker
+name|worker
+parameter_list|)
+throws|throws
+name|Exception
+block|{
+comment|// This part uses Spin's features:
+name|Runnable
+name|wrk
+init|=
+name|worker
+operator|.
+name|getWorker
+argument_list|()
+decl_stmt|;
+comment|// The Worker returned by getWorker() has been wrapped
+comment|// by Spin.off(), which makes its methods be run in
+comment|// a different thread from the EDT.
+name|CallBack
+name|clb
+init|=
+name|worker
+operator|.
+name|getCallBack
+argument_list|()
+decl_stmt|;
+name|worker
+operator|.
+name|init
+argument_list|()
+expr_stmt|;
+comment|// This method runs in this same thread, the EDT.
+comment|// Useful for initial GUI actions, like printing a message.
+comment|// The CallBack returned by getCallBack() has been wrapped
+comment|// by Spin.over(), which makes its methods be run on
+comment|// the EDT.
+name|wrk
+operator|.
+name|run
+argument_list|()
+expr_stmt|;
+comment|// Runs the potentially time-consuming action
+comment|// without freezing the GUI. The magic is that THIS line
+comment|// of execution will not continue until run() is finished.
+name|clb
+operator|.
+name|update
+argument_list|()
+expr_stmt|;
+comment|// Runs the update() method on the EDT.
 block|}
 end_function
 

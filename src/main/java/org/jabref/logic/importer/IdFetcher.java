@@ -36,6 +36,22 @@ name|BibEntry
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|identifier
+operator|.
+name|Identifier
+import|;
+end_import
+
 begin_comment
 comment|/**  * Looks for article identifier based on already present bibliographic information.  */
 end_comment
@@ -47,6 +63,8 @@ interface|interface
 name|IdFetcher
 parameter_list|<
 name|T
+extends|extends
+name|Identifier
 parameter_list|>
 extends|extends
 name|WebFetcher
@@ -64,6 +82,12 @@ name|entry
 parameter_list|)
 throws|throws
 name|FetcherException
+function_decl|;
+comment|/**      * Returns the name of the identifier that is returned by this fetcher.      */
+DECL|method|getIdentifierName ()
+name|String
+name|getIdentifierName
+parameter_list|()
 function_decl|;
 block|}
 end_interface

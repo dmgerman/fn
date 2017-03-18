@@ -1444,6 +1444,18 @@ name|empty
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
+DECL|method|getIdentifierName ()
+specifier|public
+name|String
+name|getIdentifierName
+parameter_list|()
+block|{
+return|return
+literal|"DOI"
+return|;
+block|}
 block|}
 end_class
 

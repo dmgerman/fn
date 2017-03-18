@@ -1259,7 +1259,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Lookup DOI"
+literal|"Look up DOI"
 argument_list|)
 argument_list|)
 decl_stmt|;

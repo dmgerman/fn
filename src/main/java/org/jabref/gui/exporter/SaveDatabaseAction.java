@@ -222,20 +222,6 @@ name|org
 operator|.
 name|jabref
 operator|.
-name|gui
-operator|.
-name|worker
-operator|.
-name|CallBack
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
 name|logic
 operator|.
 name|autosaveandbackup
@@ -1815,44 +1801,13 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-comment|// This part uses Spin's features:
-name|Runnable
-name|worker
-init|=
-name|getWorker
-argument_list|()
-decl_stmt|;
-comment|// The Worker returned by getWorker() has been wrapped
-comment|// by Spin.off(), which makes its methods be run in
-comment|// a different thread from the EDT.
-name|CallBack
-name|callback
-init|=
-name|getCallBack
-argument_list|()
-decl_stmt|;
-name|init
-argument_list|()
-expr_stmt|;
-comment|// This method runs in this same thread, the EDT.
-comment|// Useful for initial GUI actions, like printing a message.
-comment|// The CallBack returned by getCallBack() has been wrapped
-comment|// by Spin.over(), which makes its methods be run on
-comment|// the EDT.
-name|worker
+name|BasePanel
 operator|.
-name|run
-argument_list|()
+name|runWorker
+argument_list|(
+name|this
+argument_list|)
 expr_stmt|;
-comment|// Runs the potentially time-consuming action
-comment|// without freezing the GUI. The magic is that THIS line
-comment|// of execution will not continue until run() is finished.
-name|callback
-operator|.
-name|update
-argument_list|()
-expr_stmt|;
-comment|// Runs the update() method on the EDT.
 block|}
 DECL|method|save ()
 specifier|public
