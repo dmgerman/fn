@@ -1201,9 +1201,11 @@ name|addAuthor
 argument_list|(
 name|author
 operator|.
-name|getString
+name|optString
 argument_list|(
 literal|"given"
+argument_list|,
+literal|""
 argument_list|)
 argument_list|,
 literal|""
@@ -1212,9 +1214,11 @@ literal|""
 argument_list|,
 name|author
 operator|.
-name|getString
+name|optString
 argument_list|(
 literal|"family"
+argument_list|,
+literal|""
 argument_list|)
 argument_list|,
 literal|""
