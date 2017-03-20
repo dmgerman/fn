@@ -42,20 +42,6 @@ name|jabref
 operator|.
 name|model
 operator|.
-name|database
-operator|.
-name|BibDatabaseContext
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
 name|pdf
 operator|.
 name|FileAnnotation
@@ -68,7 +54,7 @@ specifier|public
 interface|interface
 name|AnnotationImporter
 block|{
-DECL|method|importAnnotations (final Path path, final BibDatabaseContext context)
+DECL|method|importAnnotations (final Path path)
 name|List
 argument_list|<
 name|FileAnnotation
@@ -78,10 +64,6 @@ parameter_list|(
 specifier|final
 name|Path
 name|path
-parameter_list|,
-specifier|final
-name|BibDatabaseContext
-name|context
 parameter_list|)
 function_decl|;
 block|}

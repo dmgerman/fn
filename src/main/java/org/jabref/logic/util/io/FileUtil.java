@@ -1394,7 +1394,7 @@ name|empty
 argument_list|()
 return|;
 block|}
-comment|/**      * Converts a relative filename to an absolute one, if necessary. Returns      * null if the file does not exist.      */
+comment|/**      * Converts a relative filename to an absolute one, if necessary. Returns      * an empty optional if the file does not exist.      */
 DECL|method|expandFilename (String filename, String dir)
 specifier|private
 specifier|static
