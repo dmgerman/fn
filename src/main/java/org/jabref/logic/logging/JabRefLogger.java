@@ -142,11 +142,6 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|method|JabRefLogger ()
-specifier|private
-name|JabRefLogger
-parameter_list|()
-block|{     }
 DECL|method|setDebug ()
 specifier|public
 specifier|static

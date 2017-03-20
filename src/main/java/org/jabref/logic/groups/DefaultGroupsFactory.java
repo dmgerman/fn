@@ -46,11 +46,6 @@ specifier|public
 class|class
 name|DefaultGroupsFactory
 block|{
-DECL|method|DefaultGroupsFactory ()
-specifier|private
-name|DefaultGroupsFactory
-parameter_list|()
-block|{     }
 DECL|method|getAllEntriesGroup ()
 specifier|public
 specifier|static

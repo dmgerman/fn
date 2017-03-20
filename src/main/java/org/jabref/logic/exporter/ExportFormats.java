@@ -112,11 +112,6 @@ specifier|static
 name|int
 name|entryNumber
 decl_stmt|;
-DECL|method|ExportFormats ()
-specifier|private
-name|ExportFormats
-parameter_list|()
-block|{     }
 DECL|method|initAllExports (Map<String, ExportFormat> customFormats, LayoutFormatterPreferences layoutPreferences, SavePreferences savePreferences)
 specifier|public
 specifier|static

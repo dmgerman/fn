@@ -151,11 +151,6 @@ name|MSBIB_PREFIX
 init|=
 literal|"msbib-"
 decl_stmt|;
-DECL|method|BibTeXConverter ()
-specifier|private
-name|BibTeXConverter
-parameter_list|()
-block|{     }
 comment|/**      * Converts an {@link MSBibEntry} to a {@link BibEntry} for import      * @param entry The MsBibEntry to convert      * @return The bib entry      */
 DECL|method|convert (MSBibEntry entry)
 specifier|public

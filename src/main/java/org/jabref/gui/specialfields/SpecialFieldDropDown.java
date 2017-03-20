@@ -186,11 +186,6 @@ specifier|public
 class|class
 name|SpecialFieldDropDown
 block|{
-DECL|method|SpecialFieldDropDown ()
-specifier|private
-name|SpecialFieldDropDown
-parameter_list|()
-block|{     }
 DECL|method|generateSpecialFieldButtonWithDropDown (SpecialField field, JabRefFrame frame)
 specifier|public
 specifier|static

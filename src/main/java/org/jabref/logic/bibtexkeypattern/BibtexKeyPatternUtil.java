@@ -408,11 +408,6 @@ name|CHARS_OF_FIRST
 init|=
 literal|5
 decl_stmt|;
-DECL|method|BibtexKeyPatternUtil ()
-specifier|private
-name|BibtexKeyPatternUtil
-parameter_list|()
-block|{     }
 DECL|method|normalize (String content)
 specifier|private
 specifier|static

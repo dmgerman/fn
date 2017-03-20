@@ -163,11 +163,6 @@ specifier|static
 name|ResourceBundle
 name|menuTitles
 decl_stmt|;
-DECL|method|Localization ()
-specifier|private
-name|Localization
-parameter_list|()
-block|{     }
 DECL|method|getMessages ()
 specifier|public
 specifier|static

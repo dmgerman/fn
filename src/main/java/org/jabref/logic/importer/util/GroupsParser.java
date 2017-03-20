@@ -260,11 +260,6 @@ specifier|public
 class|class
 name|GroupsParser
 block|{
-DECL|method|GroupsParser ()
-specifier|private
-name|GroupsParser
-parameter_list|()
-block|{     }
 DECL|method|importGroups (List<String> orderedData, Character keywordSeparator)
 specifier|public
 specifier|static

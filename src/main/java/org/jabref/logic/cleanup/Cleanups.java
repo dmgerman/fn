@@ -604,11 +604,6 @@ name|recommendedBiblatexFormatters
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|Cleanups ()
-specifier|private
-name|Cleanups
-parameter_list|()
-block|{     }
 DECL|method|getAvailableFormatters ()
 specifier|public
 specifier|static

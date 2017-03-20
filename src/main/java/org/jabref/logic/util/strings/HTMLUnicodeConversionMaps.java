@@ -5985,11 +5985,6 @@ literal|""
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|HTMLUnicodeConversionMaps ()
-specifier|private
-name|HTMLUnicodeConversionMaps
-parameter_list|()
-block|{     }
 DECL|method|cleanLaTeX (String escapedString)
 specifier|private
 specifier|static

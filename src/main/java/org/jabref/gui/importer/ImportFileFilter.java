@@ -97,11 +97,6 @@ DECL|class|ImportFileFilter
 class|class
 name|ImportFileFilter
 block|{
-DECL|method|ImportFileFilter ()
-specifier|private
-name|ImportFileFilter
-parameter_list|()
-block|{     }
 DECL|method|convert (Importer format)
 specifier|public
 specifier|static

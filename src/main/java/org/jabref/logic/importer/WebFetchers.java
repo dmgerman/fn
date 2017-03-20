@@ -312,11 +312,6 @@ specifier|public
 class|class
 name|WebFetchers
 block|{
-DECL|method|WebFetchers ()
-specifier|private
-name|WebFetchers
-parameter_list|()
-block|{     }
 DECL|method|getIdBasedFetcherForField (String field, ImportFormatPreferences preferences)
 specifier|public
 specifier|static

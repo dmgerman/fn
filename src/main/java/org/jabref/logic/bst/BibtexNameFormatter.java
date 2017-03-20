@@ -92,11 +92,6 @@ specifier|public
 class|class
 name|BibtexNameFormatter
 block|{
-DECL|method|BibtexNameFormatter ()
-specifier|private
-name|BibtexNameFormatter
-parameter_list|()
-block|{     }
 DECL|method|formatName (String authorsNameList, int whichName, String formatString, Warn warn)
 specifier|public
 specifier|static

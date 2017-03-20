@@ -70,11 +70,6 @@ specifier|public
 class|class
 name|FileField
 block|{
-DECL|method|FileField ()
-specifier|private
-name|FileField
-parameter_list|()
-block|{     }
 DECL|method|parse (String value)
 specifier|public
 specifier|static

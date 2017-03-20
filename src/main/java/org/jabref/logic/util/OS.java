@@ -126,11 +126,6 @@ operator|.
 name|lineSeparator
 argument_list|()
 decl_stmt|;
-DECL|method|OS ()
-specifier|private
-name|OS
-parameter_list|()
-block|{     }
 block|}
 end_class
 

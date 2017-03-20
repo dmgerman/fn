@@ -1161,11 +1161,6 @@ argument_list|,
 name|MISC
 argument_list|)
 decl_stmt|;
-DECL|method|BibtexEntryTypes ()
-specifier|private
-name|BibtexEntryTypes
-parameter_list|()
-block|{     }
 DECL|method|getType (String name)
 specifier|public
 specifier|static

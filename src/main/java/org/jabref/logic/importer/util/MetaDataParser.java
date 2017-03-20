@@ -252,11 +252,6 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|method|MetaDataParser ()
-specifier|private
-name|MetaDataParser
-parameter_list|()
-block|{     }
 comment|/**      * Parses the given data map and returns a new resulting {@link MetaData} instance.      */
 DECL|method|parse (Map<String, String> data, Character keywordSeparator)
 specifier|public

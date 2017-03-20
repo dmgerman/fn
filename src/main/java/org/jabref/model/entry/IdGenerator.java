@@ -73,11 +73,6 @@ specifier|static
 name|int
 name|idCounter
 decl_stmt|;
-DECL|method|IdGenerator ()
-specifier|private
-name|IdGenerator
-parameter_list|()
-block|{     }
 DECL|method|next ()
 specifier|public
 specifier|static

@@ -582,11 +582,6 @@ specifier|public
 class|class
 name|FieldExtraComponents
 block|{
-DECL|method|FieldExtraComponents ()
-specifier|private
-name|FieldExtraComponents
-parameter_list|()
-block|{     }
 DECL|field|LOGGER
 specifier|private
 specifier|static

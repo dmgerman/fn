@@ -160,11 +160,6 @@ index|]
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|Encodings ()
-specifier|private
-name|Encodings
-parameter_list|()
-block|{     }
 block|}
 end_class
 

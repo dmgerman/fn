@@ -182,11 +182,6 @@ name|Globals
 operator|.
 name|prefs
 decl_stmt|;
-DECL|method|CustomEntryTypePreferenceMigration ()
-specifier|private
-name|CustomEntryTypePreferenceMigration
-parameter_list|()
-block|{     }
 DECL|method|upgradeStoredCustomEntryTypes (BibDatabaseMode defaultBibDatabaseMode)
 specifier|static
 name|void

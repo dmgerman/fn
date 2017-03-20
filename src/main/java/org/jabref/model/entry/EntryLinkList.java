@@ -72,11 +72,6 @@ name|SEPARATOR
 init|=
 literal|","
 decl_stmt|;
-DECL|method|EntryLinkList ()
-specifier|private
-name|EntryLinkList
-parameter_list|()
-block|{     }
 DECL|method|parse (String fieldValue, BibDatabase database)
 specifier|public
 specifier|static

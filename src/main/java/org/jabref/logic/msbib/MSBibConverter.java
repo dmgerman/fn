@@ -94,11 +94,6 @@ name|BIBTEX_PREFIX
 init|=
 literal|"BIBTEX_"
 decl_stmt|;
-DECL|method|MSBibConverter ()
-specifier|private
-name|MSBibConverter
-parameter_list|()
-block|{     }
 DECL|method|convert (BibEntry entry)
 specifier|public
 specifier|static
