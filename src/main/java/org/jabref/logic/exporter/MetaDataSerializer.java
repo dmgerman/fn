@@ -190,6 +190,11 @@ specifier|public
 class|class
 name|MetaDataSerializer
 block|{
+DECL|method|MetaDataSerializer ()
+specifier|private
+name|MetaDataSerializer
+parameter_list|()
+block|{     }
 comment|/**      * Writes all data in the format<key, serialized data>.      */
 DECL|method|getSerializedStringMap (MetaData metaData, GlobalBibtexKeyPattern globalCiteKeyPattern)
 specifier|public
@@ -810,12 +815,14 @@ block|}
 block|}
 if|if
 condition|(
+operator|(
 name|citeKeyPattern
 operator|.
 name|getDefaultValue
 argument_list|()
 operator|!=
 literal|null
+operator|)
 operator|&&
 operator|!
 name|citeKeyPattern

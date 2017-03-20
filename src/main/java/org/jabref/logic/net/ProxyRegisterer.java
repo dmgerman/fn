@@ -18,6 +18,11 @@ specifier|public
 class|class
 name|ProxyRegisterer
 block|{
+DECL|method|ProxyRegisterer ()
+specifier|private
+name|ProxyRegisterer
+parameter_list|()
+block|{     }
 DECL|method|register (ProxyPreferences proxyPrefs)
 specifier|public
 specifier|static

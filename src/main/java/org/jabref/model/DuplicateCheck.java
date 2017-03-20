@@ -395,6 +395,11 @@ literal|2.
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|DuplicateCheck ()
+specifier|private
+name|DuplicateCheck
+parameter_list|()
+block|{     }
 comment|/**      * Checks if the two entries represent the same publication.      *      * @param one BibEntry      * @param two BibEntry      * @return boolean      */
 DECL|method|isDuplicate (BibEntry one, BibEntry two, BibDatabaseMode bibDatabaseMode)
 specifier|public

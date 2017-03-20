@@ -416,6 +416,11 @@ literal|false
 return|;
 block|}
 block|}
+DECL|method|MonthUtil ()
+specifier|private
+name|MonthUtil
+parameter_list|()
+block|{     }
 comment|/**      * Find month by number      *      * @param number 1-12 is valid      * @return if valid number -> month.isValid() == true, else otherwise      */
 DECL|method|getMonthByNumber (int number)
 specifier|public

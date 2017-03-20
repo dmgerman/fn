@@ -198,6 +198,11 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+DECL|method|FileFinder ()
+specifier|private
+name|FileFinder
+parameter_list|()
+block|{     }
 DECL|method|findFiles (List<String> extensions, List<File> directories)
 specifier|public
 specifier|static

@@ -188,6 +188,11 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+DECL|method|BibsonomyScraper ()
+specifier|private
+name|BibsonomyScraper
+parameter_list|()
+block|{     }
 comment|/**      * Return a BibEntry by looking up the given url from the BibSonomy scraper.      * @param entryUrl      * @return      */
 DECL|method|getEntry (String entryUrl, ImportFormatPreferences importFormatPreferences)
 specifier|public

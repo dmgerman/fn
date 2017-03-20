@@ -129,6 +129,11 @@ literal|124
 block|}
 decl_stmt|;
 comment|// @formatter:on
+DECL|method|FileNameCleaner ()
+specifier|private
+name|FileNameCleaner
+parameter_list|()
+block|{     }
 comment|/**      * Replaces illegal characters in given fileName by '_'      *      * @param badFileName the fileName to clean      * @return a clean filename      */
 DECL|method|cleanFileName (String badFileName)
 specifier|public

@@ -677,9 +677,7 @@ name|ACTIVATED
 operator|)
 condition|)
 block|{
-operator|new
 name|JabRefDesktop
-argument_list|()
 operator|.
 name|openBrowser
 argument_list|(

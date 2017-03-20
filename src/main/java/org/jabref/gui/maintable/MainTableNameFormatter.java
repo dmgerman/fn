@@ -54,6 +54,11 @@ specifier|public
 class|class
 name|MainTableNameFormatter
 block|{
+DECL|method|MainTableNameFormatter ()
+specifier|private
+name|MainTableNameFormatter
+parameter_list|()
+block|{}
 comment|/**      * Format a name field for the table, according to user preferences.      *      * @param nameToFormat The contents of the name field.      * @return The formatted name field.      */
 DECL|method|formatName (final String nameToFormat)
 specifier|public

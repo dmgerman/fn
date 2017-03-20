@@ -148,6 +148,11 @@ specifier|public
 class|class
 name|WarnAssignmentSideEffects
 block|{
+DECL|method|WarnAssignmentSideEffects ()
+specifier|private
+name|WarnAssignmentSideEffects
+parameter_list|()
+block|{     }
 comment|/**      * Warns the user of undesired side effects of an explicit assignment/removal of entries to/from this group.      * Currently there are four types of groups: AllEntriesGroup, SearchGroup - do not support explicit assignment.      * ExplicitGroup and KeywordGroup - this modifies entries upon assignment/removal.      * Modifications are acceptable unless they affect a standard field (such as "author") besides the "keywords" or "groups' field.      *      * @param parent The Component used as a parent when displaying a confirmation dialog.      * @return true if the assignment has no undesired side effects, or the user chose to perform it anyway. false      * otherwise (this indicates that the user has aborted the assignment).      */
 DECL|method|warnAssignmentSideEffects (List<AbstractGroup> groups, Component parent)
 specifier|public

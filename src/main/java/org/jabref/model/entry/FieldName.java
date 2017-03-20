@@ -1264,6 +1264,11 @@ name|HashMap
 argument_list|<>
 argument_list|()
 decl_stmt|;
+DECL|method|FieldName ()
+specifier|private
+name|FieldName
+parameter_list|()
+block|{     }
 DECL|method|orFields (String... fields)
 specifier|public
 specifier|static

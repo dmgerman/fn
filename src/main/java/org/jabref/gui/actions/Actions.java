@@ -598,6 +598,11 @@ name|PRINT_PREVIEW
 init|=
 literal|"printPreview"
 decl_stmt|;
+DECL|method|Actions ()
+specifier|private
+name|Actions
+parameter_list|()
+block|{     }
 block|}
 end_class
 

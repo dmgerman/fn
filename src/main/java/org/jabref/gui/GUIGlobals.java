@@ -429,6 +429,11 @@ init|=
 literal|10
 decl_stmt|;
 comment|// The maximum number of "Back" operations stored.
+DECL|method|GUIGlobals ()
+specifier|private
+name|GUIGlobals
+parameter_list|()
+block|{     }
 DECL|method|getTableIcon (String fieldType)
 specifier|public
 specifier|static

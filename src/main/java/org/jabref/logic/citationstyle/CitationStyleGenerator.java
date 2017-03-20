@@ -249,6 +249,11 @@ operator|new
 name|BibTeXConverter
 argument_list|()
 decl_stmt|;
+DECL|method|CitationStyleGenerator ()
+specifier|private
+name|CitationStyleGenerator
+parameter_list|()
+block|{     }
 comment|/**      * WARNING: the citation is generated using JavaScript which may take some time, better call it from outside the main Thread      * Generates a Citation based on the given entry and style      */
 DECL|method|generateCitation (BibEntry entry, CitationStyle style)
 specifier|protected

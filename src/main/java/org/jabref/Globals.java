@@ -236,6 +236,11 @@ specifier|static
 name|FileUpdateMonitor
 name|fileUpdateMonitor
 decl_stmt|;
+DECL|method|Globals ()
+specifier|private
+name|Globals
+parameter_list|()
+block|{     }
 comment|// Key binding preferences
 DECL|method|getKeyPrefs ()
 specifier|public

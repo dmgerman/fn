@@ -288,6 +288,11 @@ specifier|public
 class|class
 name|XMPUtilMain
 block|{
+DECL|method|XMPUtilMain ()
+specifier|private
+name|XMPUtilMain
+parameter_list|()
+block|{     }
 comment|/**      * Command-line tool for working with XMP-data.      *      * Read or write XMP-metadata from or to pdf file.      *      * Usage:      *<dl>      *<dd>Read from PDF and print as bibtex:</dd>      *<dt>xmpUtil PDF</dt>      *<dd>Read from PDF and print raw XMP:</dd>      *<dt>xmpUtil -x PDF</dt>      *<dd>Write the entry in BIB given by KEY to the PDF:</dd>      *<dt>xmpUtil KEY BIB PDF</dt>      *<dd>Write all entries in BIB to the PDF:</dd>      *<dt>xmpUtil BIB PDF</dt>      *</dl>      *      * @param args      *            Command line strings passed to utility.      * @throws IOException      *             If any of the given files could not be read or written.      * @throws TransformerException      *             If the given BibEntry is malformed.      */
 DECL|method|main (String[] args)
 specifier|public

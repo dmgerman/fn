@@ -1084,6 +1084,11 @@ name|JEditorPane
 argument_list|()
 block|,     }
 decl_stmt|;
+DECL|method|EmacsKeyBindings ()
+specifier|private
+name|EmacsKeyBindings
+parameter_list|()
+block|{     }
 comment|/**      * Loads the emacs keybindings for all common<code>JTextComponent</code>s.      *      * The shared keymap instances of the concrete subclasses of      * {@link JTextComponent} are fed with the keybindings.      *      * The original keybindings are stored in a backup array.      */
 DECL|method|load ()
 specifier|public

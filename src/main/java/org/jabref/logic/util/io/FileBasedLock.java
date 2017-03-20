@@ -165,6 +165,11 @@ name|LOCKFILE_CRITICAL_AGE
 init|=
 literal|60000
 decl_stmt|;
+DECL|method|FileBasedLock ()
+specifier|private
+name|FileBasedLock
+parameter_list|()
+block|{     }
 comment|/**      * This method checks whether there is a lock file for the given file. If      * there is, it waits for 500 ms. This is repeated until the lock is gone      * or we have waited the maximum number of times.      *      * @param file The file to check the lock for.      * @param maxWaitCount The maximum number of times to wait.      * @return true if the lock file is gone, false if it is still there.      */
 DECL|method|waitForFileLock (Path file, int maxWaitCount)
 specifier|private

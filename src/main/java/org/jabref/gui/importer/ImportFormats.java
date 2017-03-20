@@ -314,6 +314,11 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+DECL|method|ImportFormats ()
+specifier|private
+name|ImportFormats
+parameter_list|()
+block|{     }
 comment|/**      * Create an AbstractAction for performing an Import operation.      * @param frame The JabRefFrame of this JabRef instance.      * @param openInNew Indicate whether the action should open into a new database or      *  into the currently open one.      * @return The action.      */
 DECL|method|getImportAction (JabRefFrame frame, boolean openInNew)
 specifier|public

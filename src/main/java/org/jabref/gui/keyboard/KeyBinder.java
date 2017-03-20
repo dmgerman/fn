@@ -78,6 +78,11 @@ specifier|public
 class|class
 name|KeyBinder
 block|{
+DECL|method|KeyBinder ()
+specifier|private
+name|KeyBinder
+parameter_list|()
+block|{     }
 comment|/**      * Binds ESC-Key to cancel button      *      * @param rootPane     the pane to bind the action to. Typically, this variable is retrieved by this.getRootPane();      * @param cancelAction the action to bind      */
 DECL|method|bindCloseDialogKeyToCancelAction (JRootPane rootPane, Action cancelAction)
 specifier|public

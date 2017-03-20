@@ -54,6 +54,11 @@ name|SEPARATOR
 init|=
 literal|','
 decl_stmt|;
+DECL|method|AbstractParamLayoutFormatter ()
+specifier|protected
+name|AbstractParamLayoutFormatter
+parameter_list|()
+block|{     }
 comment|/**      * Parse an argument string and return the parts of the argument. The parts are      * separated by commas, and escaped commas are reduced to literal commas.      * @param arg The argument string.      * @return A list of strings representing the parts of the argument.      */
 DECL|method|parseArgument (String arg)
 specifier|protected
