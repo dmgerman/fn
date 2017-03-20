@@ -90,6 +90,11 @@ specifier|public
 class|class
 name|CanonicalBibtexEntry
 block|{
+DECL|method|CanonicalBibtexEntry ()
+specifier|private
+name|CanonicalBibtexEntry
+parameter_list|()
+block|{     }
 comment|/**      * This returns a canonical BibTeX serialization. Special characters such as "{" or "&" are NOT escaped, but written      * as is      *      * Serializes all fields, even the JabRef internal ones. Does NOT serialize "KEY_FIELD" as field, but as key      */
 DECL|method|getCanonicalRepresentation (BibEntry e)
 specifier|public

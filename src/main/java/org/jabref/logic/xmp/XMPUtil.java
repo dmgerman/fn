@@ -662,6 +662,11 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+DECL|method|XMPUtil ()
+specifier|private
+name|XMPUtil
+parameter_list|()
+block|{     }
 comment|/**      * Convenience method for readXMP(File).      *      * @param filename      *            The filename from which to open the file.      * @return BibtexEntryies found in the PDF or an empty list      * @throws IOException      */
 DECL|method|readXMP (String filename, XMPPreferences xmpPreferences)
 specifier|public

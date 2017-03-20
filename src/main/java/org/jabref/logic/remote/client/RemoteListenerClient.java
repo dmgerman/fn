@@ -123,6 +123,11 @@ name|TIMEOUT
 init|=
 literal|2000
 decl_stmt|;
+DECL|method|RemoteListenerClient ()
+specifier|private
+name|RemoteListenerClient
+parameter_list|()
+block|{     }
 comment|/**      * Attempt to send command line arguments to already running JabRef instance.      *      * @param args Command line arguments.      * @return true if successful, false otherwise.      */
 DECL|method|sendToActiveJabRefInstance (String[] args, int remoteServerPort)
 specifier|public

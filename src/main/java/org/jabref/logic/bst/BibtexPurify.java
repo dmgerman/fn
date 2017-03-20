@@ -22,6 +22,11 @@ specifier|public
 class|class
 name|BibtexPurify
 block|{
+DECL|method|BibtexPurify ()
+specifier|private
+name|BibtexPurify
+parameter_list|()
+block|{     }
 comment|/**      *      * @param toPurify      * @param warn      *            may-be-null      * @return      */
 DECL|method|purify (String toPurify, Warn warn)
 specifier|public

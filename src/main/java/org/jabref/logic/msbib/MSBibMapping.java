@@ -687,6 +687,11 @@ literal|"ProductionCompany"
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|MSBibMapping ()
+specifier|private
+name|MSBibMapping
+parameter_list|()
+block|{     }
 DECL|method|getBiblatexEntryType (String msbibType)
 specifier|public
 specifier|static

@@ -336,6 +336,11 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+DECL|method|ExportAction ()
+specifier|private
+name|ExportAction
+parameter_list|()
+block|{     }
 comment|/**      * Create an AbstractAction for performing an export operation.      *      * @param frame      *            The JabRefFrame of this JabRef instance.      * @param selectedOnly      *            true indicates that only selected entries should be exported,      *            false indicates that all entries should be exported.      * @return The action.      */
 DECL|method|getExportAction (JabRefFrame frame, boolean selectedOnly)
 specifier|public

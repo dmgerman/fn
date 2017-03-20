@@ -244,6 +244,11 @@ literal|"zh"
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|Languages ()
+specifier|private
+name|Languages
+parameter_list|()
+block|{     }
 DECL|method|convertToSupportedLocale (String language)
 specifier|public
 specifier|static

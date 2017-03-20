@@ -476,6 +476,11 @@ argument_list|(
 literal|"posix"
 argument_list|)
 decl_stmt|;
+DECL|method|FileUtil ()
+specifier|private
+name|FileUtil
+parameter_list|()
+block|{     }
 comment|/**      * Returns the extension of a file or Optional.empty() if the file does not have one (no . in name).      *      * @param file      * @return The extension, trimmed and in lowercase.      */
 DECL|method|getFileExtension (File file)
 specifier|public

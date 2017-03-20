@@ -560,6 +560,11 @@ argument_list|(
 literal|"[a-z]+://.*"
 argument_list|)
 decl_stmt|;
+DECL|method|JabRefDesktop ()
+specifier|private
+name|JabRefDesktop
+parameter_list|()
+block|{     }
 comment|/**      * Open a http/pdf/ps viewer for the given link string.      */
 DECL|method|openExternalViewer (BibDatabaseContext databaseContext, String initialLink, String initialFieldName)
 specifier|public

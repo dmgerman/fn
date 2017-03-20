@@ -46,6 +46,11 @@ specifier|public
 class|class
 name|TestEntry
 block|{
+DECL|method|TestEntry ()
+specifier|private
+name|TestEntry
+parameter_list|()
+block|{     }
 DECL|method|getTestEntry ()
 specifier|public
 specifier|static

@@ -277,6 +277,11 @@ name|FIELD_ALIASES_LTX_TO_TEX
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|EntryConverter ()
+specifier|private
+name|EntryConverter
+parameter_list|()
+block|{     }
 block|}
 end_class
 

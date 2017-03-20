@@ -100,6 +100,11 @@ specifier|public
 class|class
 name|UpdateField
 block|{
+DECL|method|UpdateField ()
+specifier|private
+name|UpdateField
+parameter_list|()
+block|{     }
 comment|/**      * Updating a field will result in the entry being reformatted on save      *      * @param be         BibEntry      * @param field      Field name      * @param newValue   New field value      */
 DECL|method|updateField (BibEntry be, String field, String newValue)
 specifier|public

@@ -66,6 +66,11 @@ specifier|public
 class|class
 name|BibDatabaseModeDetection
 block|{
+DECL|method|BibDatabaseModeDetection ()
+specifier|private
+name|BibDatabaseModeDetection
+parameter_list|()
+block|{     }
 comment|/**      * Tries to infer the database type by examining a BibDatabase database.      *      * All checks are based on the case-insensitive comparison of entry tag names.      * Only standard BibTex and Biblatex entry types are considered in the decision process.      *      * 1. Check if any of the entries is a type exclusive to Biblatex      * 2. Check if any exclusive Biblatex fields are present      * 3. Otherwise return BibTex      *      * @param database a BibDatabase database      * @return the inferred database type      */
 DECL|method|inferMode (BibDatabase database)
 specifier|public

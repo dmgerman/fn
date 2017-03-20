@@ -94,6 +94,11 @@ specifier|public
 class|class
 name|UndoableChangeEntriesOfGroup
 block|{
+DECL|method|UndoableChangeEntriesOfGroup ()
+specifier|private
+name|UndoableChangeEntriesOfGroup
+parameter_list|()
+block|{     }
 DECL|method|getUndoableEdit (GroupTreeNodeViewModel node, List<FieldChange> changes)
 specifier|public
 specifier|static

@@ -154,6 +154,11 @@ specifier|public
 class|class
 name|JTextFieldChangeListenerUtil
 block|{
+DECL|method|JTextFieldChangeListenerUtil ()
+specifier|private
+name|JTextFieldChangeListenerUtil
+parameter_list|()
+block|{     }
 comment|/**      * Installs a listener to receive notification when the text of any      * {@code JTextComponent} is changed. Internally, it installs a      * {@link DocumentListener} on the text component's {@link Document},      * and a {@link PropertyChangeListener} on the text component to detect      * if the {@code Document} itself is replaced.      *      * Taken from      *      * @param text any text component, such as a {@link JTextField}      *        or {@link JTextArea}      * @param changeListener a listener to receive {@link ChangeEvent}s      *        when the text is changed; the source object for the events      *        will be the text component      * @throws NullPointerException if either parameter is null      */
 DECL|method|addChangeListener (JTextComponent text, ChangeListener changeListener)
 specifier|public

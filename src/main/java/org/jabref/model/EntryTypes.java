@@ -607,6 +607,11 @@ name|ALL
 argument_list|)
 argument_list|)
 decl_stmt|;
+DECL|method|EntryTypes ()
+specifier|private
+name|EntryTypes
+parameter_list|()
+block|{     }
 comment|/**      * This method returns the BibtexEntryType for the name of a type,      * or null if it does not exist.      */
 DECL|method|getType (String name, BibDatabaseMode type)
 specifier|public
@@ -1240,13 +1245,17 @@ parameter_list|)
 block|{
 if|if
 condition|(
+operator|(
 name|type1
 operator|==
 literal|null
+operator|)
 operator|&&
+operator|(
 name|type2
 operator|==
 literal|null
+operator|)
 condition|)
 block|{
 return|return
@@ -1256,13 +1265,17 @@ block|}
 elseif|else
 if|if
 condition|(
+operator|(
 name|type1
 operator|==
 literal|null
+operator|)
 operator|||
+operator|(
 name|type2
 operator|==
 literal|null
+operator|)
 condition|)
 block|{
 return|return
@@ -1270,6 +1283,7 @@ literal|false
 return|;
 block|}
 else|else
+block|{
 return|return
 name|type1
 operator|.
@@ -1323,6 +1337,7 @@ name|getSecondaryOptionalFields
 argument_list|()
 argument_list|)
 return|;
+block|}
 block|}
 DECL|method|isExclusiveBiblatex (String type)
 specifier|public

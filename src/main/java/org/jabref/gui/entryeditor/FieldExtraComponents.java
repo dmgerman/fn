@@ -598,6 +598,11 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+DECL|method|FieldExtraComponents ()
+specifier|private
+name|FieldExtraComponents
+parameter_list|()
+block|{     }
 DECL|field|ABBREVIATION_TOOLTIP_TEXT
 specifier|private
 specifier|static
