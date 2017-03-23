@@ -911,25 +911,6 @@ name|toString
 argument_list|()
 return|;
 block|}
-catch|catch
-parameter_list|(
-name|IOException
-name|e
-parameter_list|)
-block|{
-name|LOGGER
-operator|.
-name|warn
-argument_list|(
-literal|"Could not copy input"
-argument_list|,
-name|e
-argument_list|)
-expr_stmt|;
-throw|throw
-name|e
-throw|;
-block|}
 block|}
 comment|/**      * Downloads the web resource to a String.      * Uses UTF-8 as encoding.      *      * @return the downloaded string      */
 DECL|method|asString ()
