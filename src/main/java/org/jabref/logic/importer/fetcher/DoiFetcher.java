@@ -492,7 +492,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Invalid URL"
+literal|"Connection error"
 argument_list|)
 argument_list|,
 name|e
