@@ -632,6 +632,7 @@ operator|new
 name|BibEntry
 argument_list|()
 decl_stmt|;
+comment|// CrossRef entry will only include { "title": "A break in the clouds", "subtitle": "towards a cloud definition" }
 name|entry
 operator|.
 name|setField
