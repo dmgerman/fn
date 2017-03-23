@@ -917,7 +917,7 @@ name|item
 operator|.
 name|optJSONArray
 argument_list|(
-literal|"title"
+literal|"subtitle"
 argument_list|)
 argument_list|)
 operator|.
