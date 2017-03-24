@@ -58,6 +58,20 @@ name|BibEntry
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|lang3
+operator|.
+name|StringUtils
+import|;
+end_import
+
 begin_comment
 comment|/**  * Search rule for contain-based search.  */
 end_comment
@@ -153,6 +167,15 @@ name|ROOT
 argument_list|)
 expr_stmt|;
 block|}
+name|searchString
+operator|=
+name|StringUtils
+operator|.
+name|stripAccents
+argument_list|(
+name|searchString
+argument_list|)
+expr_stmt|;
 name|List
 argument_list|<
 name|String
@@ -182,6 +205,10 @@ block|{
 name|String
 name|formattedFieldContent
 init|=
+name|StringUtils
+operator|.
+name|stripAccents
+argument_list|(
 name|bibEntry
 operator|.
 name|getLatexFreeField
@@ -191,6 +218,7 @@ argument_list|)
 operator|.
 name|get
 argument_list|()
+argument_list|)
 decl_stmt|;
 if|if
 condition|(
