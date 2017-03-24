@@ -44,11 +44,6 @@ name|JabRefException
 extends|extends
 name|Exception
 block|{
-DECL|field|localizedMessage
-specifier|private
-name|String
-name|localizedMessage
-decl_stmt|;
 DECL|field|LOGGER
 specifier|private
 specifier|static
@@ -64,6 +59,11 @@ name|JabRefException
 operator|.
 name|class
 argument_list|)
+decl_stmt|;
+DECL|field|localizedMessage
+specifier|private
+name|String
+name|localizedMessage
 decl_stmt|;
 DECL|method|JabRefException (String message)
 specifier|public
@@ -180,7 +180,7 @@ condition|)
 block|{
 name|LOGGER
 operator|.
-name|warn
+name|debug
 argument_list|(
 literal|"No localized message exception message defined. Falling back to getMessage()."
 argument_list|)
