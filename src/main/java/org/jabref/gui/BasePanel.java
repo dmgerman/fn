@@ -432,6 +432,16 @@ end_import
 
 begin_import
 import|import
+name|javafx
+operator|.
+name|application
+operator|.
+name|Platform
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|jabref
@@ -2295,6 +2305,63 @@ literal|true
 expr_stmt|;
 block|}
 block|}
+block|}
+DECL|method|runWorker (AbstractWorker worker)
+specifier|public
+specifier|static
+name|void
+name|runWorker
+parameter_list|(
+name|AbstractWorker
+name|worker
+parameter_list|)
+throws|throws
+name|Exception
+block|{
+comment|// This part uses Spin's features:
+name|Runnable
+name|wrk
+init|=
+name|worker
+operator|.
+name|getWorker
+argument_list|()
+decl_stmt|;
+comment|// The Worker returned by getWorker() has been wrapped
+comment|// by Spin.off(), which makes its methods be run in
+comment|// a different thread from the EDT.
+name|CallBack
+name|clb
+init|=
+name|worker
+operator|.
+name|getCallBack
+argument_list|()
+decl_stmt|;
+name|worker
+operator|.
+name|init
+argument_list|()
+expr_stmt|;
+comment|// This method runs in this same thread, the EDT.
+comment|// Useful for initial GUI actions, like printing a message.
+comment|// The CallBack returned by getCallBack() has been wrapped
+comment|// by Spin.over(), which makes its methods be run on
+comment|// the EDT.
+name|wrk
+operator|.
+name|run
+argument_list|()
+expr_stmt|;
+comment|// Runs the potentially time-consuming action
+comment|// without freezing the GUI. The magic is that THIS line
+comment|// of execution will not continue until run() is finished.
+name|clb
+operator|.
+name|update
+argument_list|()
+expr_stmt|;
+comment|// Runs the update() method on the EDT.
 block|}
 comment|// Returns a collection of AutoCompleters, which are populated from the current library
 DECL|method|getAutoCompleters ()
@@ -7427,66 +7494,6 @@ block|}
 end_function
 
 begin_function
-DECL|method|runWorker (AbstractWorker worker)
-specifier|public
-specifier|static
-name|void
-name|runWorker
-parameter_list|(
-name|AbstractWorker
-name|worker
-parameter_list|)
-throws|throws
-name|Exception
-block|{
-comment|// This part uses Spin's features:
-name|Runnable
-name|wrk
-init|=
-name|worker
-operator|.
-name|getWorker
-argument_list|()
-decl_stmt|;
-comment|// The Worker returned by getWorker() has been wrapped
-comment|// by Spin.off(), which makes its methods be run in
-comment|// a different thread from the EDT.
-name|CallBack
-name|clb
-init|=
-name|worker
-operator|.
-name|getCallBack
-argument_list|()
-decl_stmt|;
-name|worker
-operator|.
-name|init
-argument_list|()
-expr_stmt|;
-comment|// This method runs in this same thread, the EDT.
-comment|// Useful for initial GUI actions, like printing a message.
-comment|// The CallBack returned by getCallBack() has been wrapped
-comment|// by Spin.over(), which makes its methods be run on
-comment|// the EDT.
-name|wrk
-operator|.
-name|run
-argument_list|()
-expr_stmt|;
-comment|// Runs the potentially time-consuming action
-comment|// without freezing the GUI. The magic is that THIS line
-comment|// of execution will not continue until run() is finished.
-name|clb
-operator|.
-name|update
-argument_list|()
-expr_stmt|;
-comment|// Runs the update() method on the EDT.
-block|}
-end_function
-
-begin_function
 DECL|method|saveDatabase (File file, boolean selectedOnly, Charset enc, SavePreferences.DatabaseSaveType saveType)
 specifier|private
 name|boolean
@@ -8770,6 +8777,12 @@ name|addSelectionListener
 argument_list|(
 name|listEvent
 lambda|->
+name|Platform
+operator|.
+name|runLater
+argument_list|(
+parameter_list|()
+lambda|->
 name|Globals
 operator|.
 name|stateManager
@@ -8780,6 +8793,7 @@ name|mainTable
 operator|.
 name|getSelectedEntries
 argument_list|()
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
