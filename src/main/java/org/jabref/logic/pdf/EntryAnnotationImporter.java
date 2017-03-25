@@ -399,7 +399,7 @@ name|put
 argument_list|(
 name|file
 operator|.
-name|toString
+name|getName
 argument_list|()
 argument_list|,
 name|importer
