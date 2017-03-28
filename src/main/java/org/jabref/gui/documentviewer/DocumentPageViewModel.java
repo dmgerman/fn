@@ -43,6 +43,14 @@ name|Image
 name|render
 parameter_list|()
 function_decl|;
+comment|/**      * Get the page number of the current page in the document.      */
+DECL|method|getPageNumber ()
+specifier|public
+specifier|abstract
+name|int
+name|getPageNumber
+parameter_list|()
+function_decl|;
 block|}
 end_class
 

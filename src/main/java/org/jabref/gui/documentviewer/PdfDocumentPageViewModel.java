@@ -110,12 +110,21 @@ specifier|final
 name|PDPage
 name|page
 decl_stmt|;
-DECL|method|PdfDocumentPageViewModel (PDPage page)
+DECL|field|pageNumber
+specifier|private
+specifier|final
+name|int
+name|pageNumber
+decl_stmt|;
+DECL|method|PdfDocumentPageViewModel (PDPage page, int pageNumber)
 specifier|public
 name|PdfDocumentPageViewModel
 parameter_list|(
 name|PDPage
 name|page
+parameter_list|,
+name|int
+name|pageNumber
 parameter_list|)
 block|{
 name|this
@@ -128,6 +137,12 @@ name|requireNonNull
 argument_list|(
 name|page
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|pageNumber
+operator|=
+name|pageNumber
 expr_stmt|;
 block|}
 comment|// Taken from http://stackoverflow.com/a/9417836/873661
@@ -276,6 +291,18 @@ return|return
 literal|null
 return|;
 block|}
+block|}
+annotation|@
+name|Override
+DECL|method|getPageNumber ()
+specifier|public
+name|int
+name|getPageNumber
+parameter_list|()
+block|{
+return|return
+name|pageNumber
+return|;
 block|}
 block|}
 end_class

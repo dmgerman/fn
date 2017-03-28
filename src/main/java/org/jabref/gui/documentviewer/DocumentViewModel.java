@@ -16,6 +16,30 @@ begin_import
 import|import
 name|javafx
 operator|.
+name|beans
+operator|.
+name|property
+operator|.
+name|IntegerProperty
+import|;
+end_import
+
+begin_import
+import|import
+name|javafx
+operator|.
+name|beans
+operator|.
+name|property
+operator|.
+name|SimpleIntegerProperty
+import|;
+end_import
+
+begin_import
+import|import
+name|javafx
+operator|.
 name|collections
 operator|.
 name|ObservableList
@@ -29,6 +53,15 @@ specifier|abstract
 class|class
 name|DocumentViewModel
 block|{
+DECL|field|maxPages
+specifier|private
+name|IntegerProperty
+name|maxPages
+init|=
+operator|new
+name|SimpleIntegerProperty
+argument_list|()
+decl_stmt|;
 DECL|method|getPages ()
 specifier|public
 specifier|abstract
@@ -39,6 +72,29 @@ argument_list|>
 name|getPages
 parameter_list|()
 function_decl|;
+DECL|method|getMaxPages ()
+specifier|public
+name|int
+name|getMaxPages
+parameter_list|()
+block|{
+return|return
+name|maxPages
+operator|.
+name|get
+argument_list|()
+return|;
+block|}
+DECL|method|maxPagesProperty ()
+specifier|public
+name|IntegerProperty
+name|maxPagesProperty
+parameter_list|()
+block|{
+return|return
+name|maxPages
+return|;
+block|}
 block|}
 end_class
 
