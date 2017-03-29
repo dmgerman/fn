@@ -92,6 +92,22 @@ name|PDPage
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|pdfbox
+operator|.
+name|pdmodel
+operator|.
+name|common
+operator|.
+name|PDRectangle
+import|;
+end_import
+
 begin_comment
 comment|/**  * Represents the view model of a pdf page backed by a {@link PDPage}.  */
 end_comment
@@ -233,11 +249,17 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|render ()
+DECL|method|render (int width, int height)
 specifier|public
 name|Image
 name|render
-parameter_list|()
+parameter_list|(
+name|int
+name|width
+parameter_list|,
+name|int
+name|height
+parameter_list|)
 block|{
 try|try
 block|{
@@ -271,9 +293,9 @@ name|resize
 argument_list|(
 name|image
 argument_list|,
-literal|600
+name|width
 argument_list|,
-literal|800
+name|height
 argument_list|)
 argument_list|,
 literal|null
@@ -302,6 +324,34 @@ parameter_list|()
 block|{
 return|return
 name|pageNumber
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|getAspectRatio ()
+specifier|public
+name|double
+name|getAspectRatio
+parameter_list|()
+block|{
+name|PDRectangle
+name|mediaBox
+init|=
+name|page
+operator|.
+name|getMediaBox
+argument_list|()
+decl_stmt|;
+return|return
+name|mediaBox
+operator|.
+name|getWidth
+argument_list|()
+operator|/
+name|mediaBox
+operator|.
+name|getHeight
+argument_list|()
 return|;
 block|}
 block|}

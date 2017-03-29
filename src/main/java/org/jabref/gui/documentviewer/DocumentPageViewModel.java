@@ -35,13 +35,19 @@ specifier|abstract
 class|class
 name|DocumentPageViewModel
 block|{
-comment|/**      * Renders this page and returns an image representation of itself.      */
-DECL|method|render ()
+comment|/**      * Renders this page and returns an image representation of itself.      * @param width      * @param height      */
+DECL|method|render (int width, int height)
 specifier|public
 specifier|abstract
 name|Image
 name|render
-parameter_list|()
+parameter_list|(
+name|int
+name|width
+parameter_list|,
+name|int
+name|height
+parameter_list|)
 function_decl|;
 comment|/**      * Get the page number of the current page in the document.      */
 DECL|method|getPageNumber ()
@@ -49,6 +55,14 @@ specifier|public
 specifier|abstract
 name|int
 name|getPageNumber
+parameter_list|()
+function_decl|;
+comment|/**      * Calculates the aspect ratio (width / height) of the page.      */
+DECL|method|getAspectRatio ()
+specifier|public
+specifier|abstract
+name|double
+name|getAspectRatio
 parameter_list|()
 function_decl|;
 block|}
