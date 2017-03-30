@@ -747,7 +747,7 @@ return|return
 name|result
 return|;
 block|}
-DECL|method|addAuthor (Map<String, String> map, String type, List<PersonName> authors)
+DECL|method|addAuthor (Map<String, String> map, String type, List<MsBibAuthor> authors)
 specifier|private
 specifier|static
 name|void
@@ -766,7 +766,7 @@ name|type
 parameter_list|,
 name|List
 argument_list|<
-name|PersonName
+name|MsBibAuthor
 argument_list|>
 name|authors
 parameter_list|)
@@ -790,9 +790,9 @@ argument_list|()
 operator|.
 name|map
 argument_list|(
-name|PersonName
+name|MsBibAuthor
 operator|::
-name|getFullname
+name|getLastFirst
 argument_list|)
 operator|.
 name|collect
