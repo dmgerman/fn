@@ -107,7 +107,7 @@ operator|=
 name|callable
 expr_stmt|;
 block|}
-DECL|method|run (Callable<V> callable)
+DECL|method|wrap (Callable<V> callable)
 specifier|public
 specifier|static
 parameter_list|<
@@ -117,7 +117,7 @@ name|BackgroundTask
 argument_list|<
 name|V
 argument_list|>
-name|run
+name|wrap
 parameter_list|(
 name|Callable
 argument_list|<
@@ -257,6 +257,23 @@ expr_stmt|;
 return|return
 name|this
 return|;
+block|}
+DECL|method|executeWith (TaskExecutor taskExecutor)
+specifier|public
+name|void
+name|executeWith
+parameter_list|(
+name|TaskExecutor
+name|taskExecutor
+parameter_list|)
+block|{
+name|taskExecutor
+operator|.
+name|execute
+argument_list|(
+name|this
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 end_class

@@ -116,16 +116,6 @@ begin_import
 import|import
 name|javafx
 operator|.
-name|application
-operator|.
-name|Platform
-import|;
-end_import
-
-begin_import
-import|import
-name|javafx
-operator|.
 name|beans
 operator|.
 name|binding
@@ -260,7 +250,35 @@ name|gui
 operator|.
 name|util
 operator|.
+name|BackgroundTask
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|util
+operator|.
 name|BindingsHelper
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|util
+operator|.
+name|TaskExecutor
 import|;
 end_import
 
@@ -525,7 +543,13 @@ specifier|final
 name|BooleanBinding
 name|allSelectedEntriesMatched
 decl_stmt|;
-DECL|method|GroupNodeViewModel (BibDatabaseContext databaseContext, StateManager stateManager, GroupTreeNode groupNode)
+DECL|field|taskExecutor
+specifier|private
+specifier|final
+name|TaskExecutor
+name|taskExecutor
+decl_stmt|;
+DECL|method|GroupNodeViewModel (BibDatabaseContext databaseContext, StateManager stateManager, TaskExecutor taskExecutor, GroupTreeNode groupNode)
 specifier|public
 name|GroupNodeViewModel
 parameter_list|(
@@ -534,6 +558,9 @@ name|databaseContext
 parameter_list|,
 name|StateManager
 name|stateManager
+parameter_list|,
+name|TaskExecutor
+name|taskExecutor
 parameter_list|,
 name|GroupTreeNode
 name|groupNode
@@ -548,6 +575,17 @@ operator|.
 name|requireNonNull
 argument_list|(
 name|databaseContext
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|taskExecutor
+operator|=
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|taskExecutor
 argument_list|)
 expr_stmt|;
 name|this
@@ -718,6 +756,8 @@ name|databaseContext
 argument_list|,
 name|stateManager
 argument_list|,
+name|taskExecutor
+argument_list|,
 name|child
 argument_list|)
 argument_list|)
@@ -846,7 +886,7 @@ name|matched
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|GroupNodeViewModel (BibDatabaseContext databaseContext, StateManager stateManager, AbstractGroup group)
+DECL|method|GroupNodeViewModel (BibDatabaseContext databaseContext, StateManager stateManager, TaskExecutor taskExecutor, AbstractGroup group)
 specifier|public
 name|GroupNodeViewModel
 parameter_list|(
@@ -855,6 +895,9 @@ name|databaseContext
 parameter_list|,
 name|StateManager
 name|stateManager
+parameter_list|,
+name|TaskExecutor
+name|taskExecutor
 parameter_list|,
 name|AbstractGroup
 name|group
@@ -865,6 +908,8 @@ argument_list|(
 name|databaseContext
 argument_list|,
 name|stateManager
+argument_list|,
+name|taskExecutor
 argument_list|,
 operator|new
 name|GroupTreeNode
@@ -932,7 +977,7 @@ operator|==
 literal|null
 return|;
 block|}
-DECL|method|getAllEntriesGroup (BibDatabaseContext newDatabase, StateManager stateManager)
+DECL|method|getAllEntriesGroup (BibDatabaseContext newDatabase, StateManager stateManager, TaskExecutor taskExecutor)
 specifier|static
 name|GroupNodeViewModel
 name|getAllEntriesGroup
@@ -942,6 +987,9 @@ name|newDatabase
 parameter_list|,
 name|StateManager
 name|stateManager
+parameter_list|,
+name|TaskExecutor
+name|taskExecutor
 parameter_list|)
 block|{
 return|return
@@ -951,6 +999,8 @@ argument_list|(
 name|newDatabase
 argument_list|,
 name|stateManager
+argument_list|,
+name|taskExecutor
 argument_list|,
 name|DefaultGroupsFactory
 operator|.
@@ -995,6 +1045,8 @@ argument_list|(
 name|databaseContext
 argument_list|,
 name|stateManager
+argument_list|,
+name|taskExecutor
 argument_list|,
 name|child
 argument_list|)
@@ -1341,15 +1393,12 @@ block|{
 comment|// We calculate the new hit value
 comment|// We could be more intelligent and try to figure out the new number of hits based on the entry change
 comment|// for example, a previously matched entry gets removed -> hits = hits - 1
-operator|new
-name|Thread
+name|BackgroundTask
+operator|.
+name|wrap
 argument_list|(
 parameter_list|()
 lambda|->
-block|{
-name|int
-name|newHits
-init|=
 name|groupNode
 operator|.
 name|calculateNumberOfMatches
@@ -1359,26 +1408,19 @@ operator|.
 name|getDatabase
 argument_list|()
 argument_list|)
-decl_stmt|;
-name|Platform
+argument_list|)
 operator|.
-name|runLater
+name|onSuccess
 argument_list|(
-parameter_list|()
-lambda|->
 name|hits
-operator|.
+operator|::
 name|setValue
-argument_list|(
-name|newHits
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
 argument_list|)
 operator|.
-name|start
-argument_list|()
+name|executeWith
+argument_list|(
+name|taskExecutor
+argument_list|)
 expr_stmt|;
 block|}
 DECL|method|addSubgroup (AbstractGroup subgroup)
@@ -1510,6 +1552,8 @@ argument_list|(
 name|databaseContext
 argument_list|,
 name|stateManager
+argument_list|,
+name|taskExecutor
 argument_list|,
 name|child
 argument_list|)

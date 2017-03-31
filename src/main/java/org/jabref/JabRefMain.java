@@ -864,11 +864,9 @@ literal|"Arguments passed on to running JabRef instance. Shutting down."
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|JabRefExecutorService
+name|Globals
 operator|.
-name|INSTANCE
-operator|.
-name|shutdownEverything
+name|shutdownThreadPools
 argument_list|()
 expr_stmt|;
 return|return;
@@ -925,11 +923,9 @@ name|shouldShutDown
 argument_list|()
 condition|)
 block|{
-name|JabRefExecutorService
+name|Globals
 operator|.
-name|INSTANCE
-operator|.
-name|shutdownEverything
+name|shutdownThreadPools
 argument_list|()
 expr_stmt|;
 return|return;

@@ -203,6 +203,16 @@ expr_stmt|;
 block|}
 block|}
 block|}
+annotation|@
+name|Override
+DECL|method|shutdown ()
+specifier|public
+name|void
+name|shutdown
+parameter_list|()
+block|{
+comment|// Nothing to do here
+block|}
 block|}
 end_class
 

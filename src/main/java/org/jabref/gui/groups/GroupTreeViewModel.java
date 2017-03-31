@@ -146,6 +146,20 @@ name|org
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
+name|util
+operator|.
+name|TaskExecutor
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
 name|logic
 operator|.
 name|l10n
@@ -258,6 +272,12 @@ specifier|final
 name|DialogService
 name|dialogService
 decl_stmt|;
+DECL|field|taskExecutor
+specifier|private
+specifier|final
+name|TaskExecutor
+name|taskExecutor
+decl_stmt|;
 DECL|field|filterPredicate
 specifier|private
 specifier|final
@@ -293,7 +313,7 @@ name|BibDatabaseContext
 argument_list|>
 name|currentDatabase
 decl_stmt|;
-DECL|method|GroupTreeViewModel (StateManager stateManager, DialogService dialogService)
+DECL|method|GroupTreeViewModel (StateManager stateManager, DialogService dialogService, TaskExecutor taskExecutor)
 specifier|public
 name|GroupTreeViewModel
 parameter_list|(
@@ -302,6 +322,9 @@ name|stateManager
 parameter_list|,
 name|DialogService
 name|dialogService
+parameter_list|,
+name|TaskExecutor
+name|taskExecutor
 parameter_list|)
 block|{
 name|this
@@ -324,6 +347,17 @@ operator|.
 name|requireNonNull
 argument_list|(
 name|dialogService
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|taskExecutor
+operator|=
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|taskExecutor
 argument_list|)
 expr_stmt|;
 comment|// Register listener
@@ -599,6 +633,8 @@ argument_list|()
 argument_list|,
 name|stateManager
 argument_list|,
+name|taskExecutor
+argument_list|,
 name|root
 argument_list|)
 argument_list|)
@@ -615,6 +651,8 @@ name|get
 argument_list|()
 argument_list|,
 name|stateManager
+argument_list|,
+name|taskExecutor
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -654,6 +692,8 @@ name|get
 argument_list|()
 argument_list|,
 name|stateManager
+argument_list|,
+name|taskExecutor
 argument_list|,
 name|selectedGroup
 argument_list|)

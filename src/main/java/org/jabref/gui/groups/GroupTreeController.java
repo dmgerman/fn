@@ -340,6 +340,20 @@ name|gui
 operator|.
 name|util
 operator|.
+name|TaskExecutor
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|util
+operator|.
 name|ViewModelTreeTableCellFactory
 import|;
 end_import
@@ -520,6 +534,13 @@ specifier|private
 name|DialogService
 name|dialogService
 decl_stmt|;
+DECL|field|taskExecutor
+annotation|@
+name|Inject
+specifier|private
+name|TaskExecutor
+name|taskExecutor
+decl_stmt|;
 annotation|@
 name|FXML
 DECL|method|initialize ()
@@ -536,6 +557,8 @@ argument_list|(
 name|stateManager
 argument_list|,
 name|dialogService
+argument_list|,
+name|taskExecutor
 argument_list|)
 expr_stmt|;
 comment|// Set-up bindings
