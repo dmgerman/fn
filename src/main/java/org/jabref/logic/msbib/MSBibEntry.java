@@ -1957,6 +1957,17 @@ name|document
 argument_list|,
 name|rootNode
 argument_list|,
+literal|"Day"
+argument_list|,
+name|day
+argument_list|)
+expr_stmt|;
+name|addField
+argument_list|(
+name|document
+argument_list|,
+name|rootNode
+argument_list|,
 literal|"JournalName"
 argument_list|,
 name|journalName

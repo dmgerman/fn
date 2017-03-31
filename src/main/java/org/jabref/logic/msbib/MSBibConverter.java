@@ -417,7 +417,7 @@ expr_stmt|;
 block|}
 name|result
 operator|.
-name|journalName
+name|day
 operator|=
 name|entry
 operator|.
@@ -425,7 +425,7 @@ name|getFieldOrAlias
 argument_list|(
 name|FieldName
 operator|.
-name|JOURNAL
+name|DAY
 argument_list|)
 operator|.
 name|orElse
@@ -486,6 +486,24 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
+name|result
+operator|.
+name|journalName
+operator|=
+name|entry
+operator|.
+name|getFieldOrAlias
+argument_list|(
+name|FieldName
+operator|.
+name|JOURNAL
+argument_list|)
+operator|.
+name|orElse
+argument_list|(
+literal|null
+argument_list|)
+expr_stmt|;
 comment|// Value must be converted
 comment|//Currently only english is supported
 name|entry
