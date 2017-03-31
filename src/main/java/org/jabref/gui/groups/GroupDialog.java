@@ -3331,6 +3331,25 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|GroupDialog (AbstractGroup editedGroup)
+specifier|public
+name|GroupDialog
+parameter_list|(
+name|AbstractGroup
+name|editedGroup
+parameter_list|)
+block|{
+name|this
+argument_list|(
+name|JabRefGUI
+operator|.
+name|getMainFrame
+argument_list|()
+argument_list|,
+name|editedGroup
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|formatRegExException (String regExp, Exception e)
 specifier|private
 specifier|static
