@@ -125,6 +125,13 @@ name|Path
 name|directory
 parameter_list|)
 block|{
+name|directory
+operator|=
+name|directory
+operator|.
+name|toAbsolutePath
+argument_list|()
+expr_stmt|;
 comment|//Dir must be a folder, not a file
 if|if
 condition|(
