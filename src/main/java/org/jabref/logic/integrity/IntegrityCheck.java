@@ -430,7 +430,7 @@ operator|.
 name|addAll
 argument_list|(
 operator|new
-name|BibtexkeyChecker
+name|BibtexKeyChecker
 argument_list|()
 operator|.
 name|check
