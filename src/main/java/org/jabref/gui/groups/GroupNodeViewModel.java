@@ -1476,11 +1476,13 @@ argument_list|(
 name|searchString
 argument_list|)
 operator|||
+name|StringUtil
+operator|.
+name|containsIgnoreCase
+argument_list|(
 name|getDisplayName
 argument_list|()
-operator|.
-name|contains
-argument_list|(
+argument_list|,
 name|searchString
 argument_list|)
 return|;

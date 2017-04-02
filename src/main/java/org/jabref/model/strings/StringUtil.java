@@ -3317,6 +3317,30 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+DECL|method|containsIgnoreCase (String text, String searchString)
+specifier|public
+specifier|static
+name|boolean
+name|containsIgnoreCase
+parameter_list|(
+name|String
+name|text
+parameter_list|,
+name|String
+name|searchString
+parameter_list|)
+block|{
+return|return
+name|StringUtils
+operator|.
+name|containsIgnoreCase
+argument_list|(
+name|text
+argument_list|,
+name|searchString
+argument_list|)
+return|;
+block|}
 block|}
 end_class
 
