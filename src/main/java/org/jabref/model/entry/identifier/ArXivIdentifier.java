@@ -34,11 +34,27 @@ name|Optional
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|FieldName
+import|;
+end_import
+
 begin_class
 DECL|class|ArXivIdentifier
 specifier|public
 class|class
 name|ArXivIdentifier
+implements|implements
+name|Identifier
 block|{
 DECL|field|identifier
 specifier|private
@@ -177,6 +193,22 @@ name|hashCode
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
+DECL|method|getDefaultField ()
+specifier|public
+name|String
+name|getDefaultField
+parameter_list|()
+block|{
+return|return
+name|FieldName
+operator|.
+name|EPRINT
+return|;
+block|}
+annotation|@
+name|Override
 DECL|method|getNormalized ()
 specifier|public
 name|String

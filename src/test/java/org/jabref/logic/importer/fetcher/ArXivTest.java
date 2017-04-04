@@ -130,6 +130,22 @@ name|org
 operator|.
 name|jabref
 operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|identifier
+operator|.
+name|ArXivIdentifier
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
 name|testutils
 operator|.
 name|category
@@ -424,10 +440,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|noIdentifierPresent ()
+DECL|method|findFullTextForEmptyEntryResultsEmptyOptional ()
 specifier|public
 name|void
-name|noIdentifierPresent
+name|findFullTextForEmptyEntryResultsEmptyOptional
 parameter_list|()
 throws|throws
 name|IOException
@@ -457,10 +473,10 @@ name|NullPointerException
 operator|.
 name|class
 argument_list|)
-DECL|method|rejectNullParameter ()
+DECL|method|findFullTextRejectsNullParameter ()
 specifier|public
 name|void
-name|rejectNullParameter
+name|findFullTextRejectsNullParameter
 parameter_list|()
 throws|throws
 name|IOException
@@ -480,10 +496,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|findByDOI ()
+DECL|method|findFullTextByDOI ()
 specifier|public
 name|void
-name|findByDOI
+name|findFullTextByDOI
 parameter_list|()
 throws|throws
 name|IOException
@@ -534,10 +550,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|findByEprint ()
+DECL|method|findFullTextByEprint ()
 specifier|public
 name|void
-name|findByEprint
+name|findFullTextByEprint
 parameter_list|()
 throws|throws
 name|IOException
@@ -575,10 +591,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|findByEprintWithPrefix ()
+DECL|method|findFullTextByEprintWithPrefix ()
 specifier|public
 name|void
-name|findByEprintWithPrefix
+name|findFullTextByEprintWithPrefix
 parameter_list|()
 throws|throws
 name|IOException
@@ -616,10 +632,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|findByEprintWithUnknownDOI ()
+DECL|method|findFullTextByEprintWithUnknownDOI ()
 specifier|public
 name|void
-name|findByEprintWithUnknownDOI
+name|findFullTextByEprintWithUnknownDOI
 parameter_list|()
 throws|throws
 name|IOException
@@ -666,10 +682,101 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|notFoundByUnknownDOI ()
+DECL|method|findFullTextByTitle ()
 specifier|public
 name|void
-name|notFoundByUnknownDOI
+name|findFullTextByTitle
+parameter_list|()
+throws|throws
+name|IOException
+block|{
+name|entry
+operator|.
+name|setField
+argument_list|(
+literal|"title"
+argument_list|,
+literal|"Pause Point Spectra in DNA Constant-Force Unzipping"
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+name|Optional
+operator|.
+name|of
+argument_list|(
+operator|new
+name|URL
+argument_list|(
+literal|"http://arxiv.org/pdf/cond-mat/0406246v1"
+argument_list|)
+argument_list|)
+argument_list|,
+name|finder
+operator|.
+name|findFullText
+argument_list|(
+name|entry
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|findFullTextByTitleAndPartOfAuthor ()
+specifier|public
+name|void
+name|findFullTextByTitleAndPartOfAuthor
+parameter_list|()
+throws|throws
+name|IOException
+block|{
+name|entry
+operator|.
+name|setField
+argument_list|(
+literal|"title"
+argument_list|,
+literal|"Pause Point Spectra in DNA Constant-Force Unzipping"
+argument_list|)
+expr_stmt|;
+name|entry
+operator|.
+name|setField
+argument_list|(
+literal|"author"
+argument_list|,
+literal|"Weeks and Lucks"
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+name|Optional
+operator|.
+name|of
+argument_list|(
+operator|new
+name|URL
+argument_list|(
+literal|"http://arxiv.org/pdf/cond-mat/0406246v1"
+argument_list|)
+argument_list|)
+argument_list|,
+name|finder
+operator|.
+name|findFullText
+argument_list|(
+name|entry
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|notFindFullTextByUnknownDOI ()
+specifier|public
+name|void
+name|notFindFullTextByUnknownDOI
 parameter_list|()
 throws|throws
 name|IOException
@@ -701,10 +808,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|notFoundByUnknownId ()
+DECL|method|notFindFullTextByUnknownId ()
 specifier|public
 name|void
-name|notFoundByUnknownId
+name|notFindFullTextByUnknownId
 parameter_list|()
 throws|throws
 name|IOException
@@ -736,10 +843,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|findByDOINotAvailableInCatalog ()
+DECL|method|findFullTextByDOINotAvailableInCatalog ()
 specifier|public
 name|void
-name|findByDOINotAvailableInCatalog
+name|findFullTextByDOINotAvailableInCatalog
 parameter_list|()
 throws|throws
 name|IOException
@@ -1136,6 +1243,43 @@ operator|.
 name|performSearchById
 argument_list|(
 literal|"123412345"
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|searchIdentifierForSlicePaper ()
+specifier|public
+name|void
+name|searchIdentifierForSlicePaper
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|sliceTheoremPaper
+operator|.
+name|clearField
+argument_list|(
+name|FieldName
+operator|.
+name|EPRINT
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+name|ArXivIdentifier
+operator|.
+name|parse
+argument_list|(
+literal|"1405.2249v1"
+argument_list|)
+argument_list|,
+name|finder
+operator|.
+name|findIdentifier
+argument_list|(
+name|sliceTheoremPaper
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
