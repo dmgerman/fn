@@ -342,7 +342,9 @@ name|org
 operator|.
 name|jabref
 operator|.
-name|model
+name|logic
+operator|.
+name|bibtex
 operator|.
 name|DuplicateCheck
 import|;

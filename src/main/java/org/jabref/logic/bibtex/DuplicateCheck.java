@@ -1,12 +1,14 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|org.jabref.model
+DECL|package|org.jabref.logic.bibtex
 package|package
 name|org
 operator|.
 name|jabref
 operator|.
-name|model
+name|logic
+operator|.
+name|bibtex
 package|;
 end_package
 
@@ -93,6 +95,18 @@ operator|.
 name|strings
 operator|.
 name|StringSimilarity
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|EntryTypes
 import|;
 end_import
 
@@ -415,8 +429,8 @@ DECL|method|DuplicateCheck ()
 specifier|private
 name|DuplicateCheck
 parameter_list|()
-block|{     }
-comment|/**      * Checks if the two entries represent the same publication.      *      * @param one BibEntry      * @param two BibEntry      * @return boolean      */
+block|{}
+comment|/**      * Checks if the two entries represent the same publication.      *      * Requirements:      * 1. Equal entry type      *      * @param one BibEntry      * @param two BibEntry      * @return boolean      */
 DECL|method|isDuplicate (BibEntry one, BibEntry two, BibDatabaseMode bibDatabaseMode)
 specifier|public
 specifier|static
@@ -433,7 +447,7 @@ name|BibDatabaseMode
 name|bibDatabaseMode
 parameter_list|)
 block|{
-comment|// First check if they are of the same type - a necessary condition:
+comment|// same entry type
 if|if
 condition|(
 operator|!
