@@ -87,7 +87,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * String constants for BibTeX entry field names  *  */
+comment|/**  * String constants for BibTeX entry field names  */
 end_comment
 
 begin_class
@@ -1475,25 +1475,14 @@ block|}
 DECL|method|getNotTextFieldNames ()
 specifier|public
 specifier|static
-name|ArrayList
-name|getNotTextFieldNames
-parameter_list|()
-block|{
-name|ArrayList
+name|List
 argument_list|<
 name|String
 argument_list|>
-name|notTextFieldNames
-init|=
-operator|new
-name|ArrayList
-argument_list|<>
-argument_list|()
-decl_stmt|;
-name|notTextFieldNames
-operator|.
-name|addAll
-argument_list|(
+name|getNotTextFieldNames
+parameter_list|()
+block|{
+return|return
 name|Arrays
 operator|.
 name|asList
@@ -1534,10 +1523,47 @@ name|FieldName
 operator|.
 name|YEAR
 argument_list|)
-argument_list|)
-expr_stmt|;
+return|;
+block|}
+DECL|method|getIdentifierFieldNames ()
+specifier|public
+specifier|static
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|getIdentifierFieldNames
+parameter_list|()
+block|{
 return|return
-name|notTextFieldNames
+name|Arrays
+operator|.
+name|asList
+argument_list|(
+name|FieldName
+operator|.
+name|DOI
+argument_list|,
+name|FieldName
+operator|.
+name|ISBN
+argument_list|,
+name|FieldName
+operator|.
+name|ISSN
+argument_list|,
+name|FieldName
+operator|.
+name|ISRN
+argument_list|,
+name|FieldName
+operator|.
+name|EPRINT
+argument_list|,
+name|FieldName
+operator|.
+name|PMID
+argument_list|)
 return|;
 block|}
 block|}
