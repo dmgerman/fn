@@ -430,7 +430,7 @@ specifier|private
 name|DuplicateCheck
 parameter_list|()
 block|{}
-comment|/**      * Checks if the two entries represent the same publication.      *      * Requirements:      * 1. Equal entry type      *      * @param one BibEntry      * @param two BibEntry      * @return boolean      */
+comment|/**      * Checks if the two entries represent the same publication.      *      * Requirements:      * 1. Equal entry type      *      * Checks:      * 1. Equal identifier (DOI)      *      * @param one BibEntry      * @param two BibEntry      * @return boolean      */
 DECL|method|isDuplicate (BibEntry one, BibEntry two, BibDatabaseMode bibDatabaseMode)
 specifier|public
 specifier|static
@@ -467,6 +467,27 @@ condition|)
 block|{
 return|return
 literal|false
+return|;
+block|}
+comment|// same identifier
+if|if
+condition|(
+name|compareSingleField
+argument_list|(
+name|FieldName
+operator|.
+name|DOI
+argument_list|,
+name|one
+argument_list|,
+name|two
+argument_list|)
+operator|==
+literal|1
+condition|)
+block|{
+return|return
+literal|true
 return|;
 block|}
 name|EntryType
