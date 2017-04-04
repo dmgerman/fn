@@ -267,7 +267,7 @@ name|ChangeListener
 name|changeListener
 parameter_list|)
 block|{
-comment|/* Cancelation of the search from outside! */
+comment|/* Cancellation of the search from outside! */
 if|if
 condition|(
 operator|(

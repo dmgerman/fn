@@ -927,7 +927,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * GUI Dialog for the feature "Find unlinked files".  *  * @author Nosh&Dan  * @version 25.11.2008 | 23:13:29  *  */
+comment|/**  * GUI Dialog for the feature "Find unlinked files".  */
 end_comment
 
 begin_class
@@ -1102,10 +1102,10 @@ specifier|private
 name|JButton
 name|buttonOptionSelectAll
 decl_stmt|;
-DECL|field|buttonOptionUnselectAll
+DECL|field|buttonOptionDeselectAll
 specifier|private
 name|JButton
-name|buttonOptionUnselectAll
+name|buttonOptionDeselectAll
 decl_stmt|;
 DECL|field|buttonOptionExpandAll
 specifier|private
@@ -3457,20 +3457,20 @@ argument_list|(
 name|actionSelectAll
 argument_list|)
 expr_stmt|;
-name|buttonOptionUnselectAll
+name|buttonOptionDeselectAll
 operator|=
 operator|new
 name|JButton
 argument_list|()
 expr_stmt|;
-name|buttonOptionUnselectAll
+name|buttonOptionDeselectAll
 operator|.
 name|setMnemonic
 argument_list|(
 literal|'U'
 argument_list|)
 expr_stmt|;
-name|buttonOptionUnselectAll
+name|buttonOptionDeselectAll
 operator|.
 name|setAction
 argument_list|(
@@ -4433,7 +4433,7 @@ name|gbl
 argument_list|,
 name|panelOptions
 argument_list|,
-name|buttonOptionUnselectAll
+name|buttonOptionDeselectAll
 argument_list|,
 name|GridBagConstraints
 operator|.

@@ -402,6 +402,7 @@ name|e
 parameter_list|)
 block|{
 comment|// TODO: Catch HTTP Response 401 errors and report that user has no rights to access resource
+comment|// TODO catch 503 service unavailable and alert user
 throw|throw
 operator|new
 name|FetcherException

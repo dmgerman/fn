@@ -502,7 +502,7 @@ return|return
 name|res
 return|;
 block|}
-comment|/**      * Internal Version of findFile, which also accepts a current directory to      * base the search on.      *      */
+comment|/**      * Internal Version of findFile, which also accepts a current directory to      * base the search on.      */
 DECL|method|findFile (BibEntry entry, String directory, String file, String extensionRegExp, Character keywordDelimiter)
 specifier|private
 specifier|static

@@ -54,7 +54,7 @@ operator|new
 name|Levenshtein
 argument_list|()
 decl_stmt|;
-comment|// edit distance threshold for entry title comnparison
+comment|// edit distance threshold for entry title comparison
 DECL|field|METRIC_THRESHOLD
 specifier|private
 specifier|final
@@ -88,7 +88,7 @@ name|METRIC_THRESHOLD
 return|;
 block|}
 DECL|method|editDistanceIgnoreCase (String a, String b)
-specifier|private
+specifier|public
 name|double
 name|editDistanceIgnoreCase
 parameter_list|(
@@ -99,7 +99,7 @@ name|String
 name|b
 parameter_list|)
 block|{
-comment|// TODO: locale is dependent on the language of the strings?!
+comment|// TODO: Locale is dependent on the language of the strings. English is a good denominator.
 return|return
 name|METRIC_DISTANCE
 operator|.
