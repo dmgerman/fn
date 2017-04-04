@@ -869,6 +869,12 @@ operator|.
 name|shutdownThreadPools
 argument_list|()
 expr_stmt|;
+comment|// needed to tell JavaFx to stop
+name|Platform
+operator|.
+name|exit
+argument_list|()
+expr_stmt|;
 return|return;
 block|}
 block|}
