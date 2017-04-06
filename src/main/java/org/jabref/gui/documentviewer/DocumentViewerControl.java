@@ -358,7 +358,7 @@ operator|.
 name|getStyleClass
 argument_list|()
 operator|.
-name|setAll
+name|add
 argument_list|(
 literal|"document-viewer"
 argument_list|)
@@ -895,7 +895,7 @@ operator|.
 name|getStyleClass
 argument_list|()
 operator|.
-name|setAll
+name|add
 argument_list|(
 literal|"page"
 argument_list|)
