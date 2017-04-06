@@ -220,16 +220,6 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|JDialog
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
 name|JFrame
 import|;
 end_import
@@ -315,6 +305,18 @@ operator|.
 name|gui
 operator|.
 name|IconTheme
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|JabRefDialog
 import|;
 end_import
 
@@ -1971,7 +1973,7 @@ specifier|static
 class|class
 name|OptionsDialog
 extends|extends
-name|JDialog
+name|JabRefDialog
 block|{
 DECL|field|ok
 specifier|private
@@ -2137,6 +2139,10 @@ literal|"Synchronize file links"
 argument_list|)
 argument_list|,
 literal|true
+argument_list|,
+name|OptionsDialog
+operator|.
+name|class
 argument_list|)
 expr_stmt|;
 name|this

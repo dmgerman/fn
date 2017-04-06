@@ -196,16 +196,6 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|JDialog
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
 name|JLabel
 import|;
 end_import
@@ -530,7 +520,7 @@ specifier|public
 class|class
 name|EntryTypeDialog
 extends|extends
-name|JDialog
+name|JabRefDialog
 implements|implements
 name|ActionListener
 block|{
@@ -629,6 +619,10 @@ argument_list|(
 name|frame
 argument_list|,
 literal|true
+argument_list|,
+name|EntryTypeDialog
+operator|.
+name|class
 argument_list|)
 expr_stmt|;
 name|this

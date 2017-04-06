@@ -184,16 +184,6 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|JDialog
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
 name|JOptionPane
 import|;
 end_import
@@ -291,6 +281,18 @@ operator|.
 name|gui
 operator|.
 name|FileDialog
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|JabRefDialog
 import|;
 end_import
 
@@ -444,7 +446,7 @@ specifier|public
 class|class
 name|ImportCustomizationDialog
 extends|extends
-name|JDialog
+name|JabRefDialog
 block|{
 DECL|field|LOGGER
 specifier|private
@@ -526,6 +528,10 @@ literal|"Manage custom imports"
 argument_list|)
 argument_list|,
 literal|false
+argument_list|,
+name|ImportCustomizationDialog
+operator|.
+name|class
 argument_list|)
 expr_stmt|;
 name|ImportTableModel

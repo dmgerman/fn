@@ -70,16 +70,6 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|JDialog
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
 name|JPanel
 import|;
 end_import
@@ -200,7 +190,7 @@ specifier|public
 class|class
 name|DuplicateResolverDialog
 extends|extends
-name|JDialog
+name|JabRefDialog
 block|{
 DECL|enum|DuplicateResolverType
 specifier|public
@@ -360,6 +350,10 @@ literal|"Possible duplicate entries"
 argument_list|)
 argument_list|,
 literal|true
+argument_list|,
+name|DuplicateResolverDialog
+operator|.
+name|class
 argument_list|)
 expr_stmt|;
 name|this
@@ -407,6 +401,10 @@ literal|"Possible duplicate entries"
 argument_list|)
 argument_list|,
 literal|true
+argument_list|,
+name|DuplicateResolverDialog
+operator|.
+name|class
 argument_list|)
 expr_stmt|;
 name|this

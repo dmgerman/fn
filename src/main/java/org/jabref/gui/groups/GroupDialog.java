@@ -196,16 +196,6 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|JDialog
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
 name|JLabel
 import|;
 end_import
@@ -323,6 +313,18 @@ operator|.
 name|gui
 operator|.
 name|Dialog
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|JabRefDialog
 import|;
 end_import
 
@@ -625,7 +627,7 @@ DECL|class|GroupDialog
 class|class
 name|GroupDialog
 extends|extends
-name|JDialog
+name|JabRefDialog
 implements|implements
 name|Dialog
 argument_list|<
@@ -1163,6 +1165,10 @@ literal|"Edit group"
 argument_list|)
 argument_list|,
 literal|true
+argument_list|,
+name|GroupDialog
+operator|.
+name|class
 argument_list|)
 expr_stmt|;
 comment|// set default values (overwritten if editedGroup != null)

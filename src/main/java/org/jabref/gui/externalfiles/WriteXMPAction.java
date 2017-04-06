@@ -160,16 +160,6 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|JDialog
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
 name|JFrame
 import|;
 end_import
@@ -253,6 +243,18 @@ operator|.
 name|gui
 operator|.
 name|BasePanel
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|JabRefDialog
 import|;
 end_import
 
@@ -1279,7 +1281,7 @@ DECL|class|OptionsDialog
 class|class
 name|OptionsDialog
 extends|extends
-name|JDialog
+name|JabRefDialog
 block|{
 DECL|field|okButton
 specifier|private
@@ -1346,6 +1348,10 @@ literal|"Writing XMP-metadata for selected entries..."
 argument_list|)
 argument_list|,
 literal|false
+argument_list|,
+name|OptionsDialog
+operator|.
+name|class
 argument_list|)
 expr_stmt|;
 name|okButton

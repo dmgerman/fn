@@ -156,16 +156,6 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|JDialog
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
 name|JPanel
 import|;
 end_import
@@ -331,7 +321,7 @@ DECL|class|PreambleEditor
 class|class
 name|PreambleEditor
 extends|extends
-name|JDialog
+name|JabRefDialog
 block|{
 comment|// A reference to the entry this object works on.
 DECL|field|database
@@ -410,6 +400,10 @@ block|{
 name|super
 argument_list|(
 name|baseFrame
+argument_list|,
+name|PreambleEditor
+operator|.
+name|class
 argument_list|)
 expr_stmt|;
 name|this

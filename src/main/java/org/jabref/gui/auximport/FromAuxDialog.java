@@ -132,16 +132,6 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|JDialog
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
 name|JLabel
 import|;
 end_import
@@ -237,6 +227,18 @@ operator|.
 name|gui
 operator|.
 name|FileDialog
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|JabRefDialog
 import|;
 end_import
 
@@ -388,7 +390,7 @@ specifier|public
 class|class
 name|FromAuxDialog
 extends|extends
-name|JDialog
+name|JabRefDialog
 block|{
 DECL|field|statusPanel
 specifier|private
@@ -519,6 +521,10 @@ argument_list|,
 name|title
 argument_list|,
 name|modal
+argument_list|,
+name|FromAuxDialog
+operator|.
+name|class
 argument_list|)
 expr_stmt|;
 name|parentTabbedPane

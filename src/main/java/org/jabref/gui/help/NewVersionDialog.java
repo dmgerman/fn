@@ -80,16 +80,6 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|JDialog
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
 name|JFrame
 import|;
 end_import
@@ -133,6 +123,18 @@ operator|.
 name|jabref
 operator|.
 name|Globals
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|JabRefDialog
 import|;
 end_import
 
@@ -196,7 +198,7 @@ specifier|public
 class|class
 name|NewVersionDialog
 extends|extends
-name|JDialog
+name|JabRefDialog
 block|{
 DECL|method|NewVersionDialog (JFrame frame, Version currentVersion, Version latestVersion)
 specifier|public
@@ -215,6 +217,10 @@ block|{
 name|super
 argument_list|(
 name|frame
+argument_list|,
+name|NewVersionDialog
+operator|.
+name|class
 argument_list|)
 expr_stmt|;
 name|setTitle
