@@ -145,21 +145,21 @@ argument_list|<
 name|Keyword
 argument_list|>
 block|{
-DECL|field|keywords
+DECL|field|keywordChains
 specifier|private
 specifier|final
 name|List
 argument_list|<
 name|Keyword
 argument_list|>
-name|keywords
+name|keywordChains
 decl_stmt|;
 DECL|method|KeywordList ()
 specifier|public
 name|KeywordList
 parameter_list|()
 block|{
-name|keywords
+name|keywordChains
 operator|=
 operator|new
 name|ArrayList
@@ -167,7 +167,7 @@ argument_list|<>
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|KeywordList (Collection<Keyword> keywords)
+DECL|method|KeywordList (Collection<Keyword> keywordChains)
 specifier|public
 name|KeywordList
 parameter_list|(
@@ -175,19 +175,19 @@ name|Collection
 argument_list|<
 name|Keyword
 argument_list|>
-name|keywords
+name|keywordChains
 parameter_list|)
 block|{
 name|this
 operator|.
-name|keywords
+name|keywordChains
 operator|=
 operator|new
 name|ArrayList
 argument_list|<>
 argument_list|()
 expr_stmt|;
-name|keywords
+name|keywordChains
 operator|.
 name|forEach
 argument_list|(
@@ -197,7 +197,7 @@ name|add
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|KeywordList (List<String> keywords)
+DECL|method|KeywordList (List<String> keywordChains)
 specifier|public
 name|KeywordList
 parameter_list|(
@@ -205,12 +205,12 @@ name|List
 argument_list|<
 name|String
 argument_list|>
-name|keywords
+name|keywordChains
 parameter_list|)
 block|{
 name|this
 argument_list|(
-name|keywords
+name|keywordChains
 operator|.
 name|stream
 argument_list|()
@@ -232,13 +232,13 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|KeywordList (String... keywords)
+DECL|method|KeywordList (String... keywordChains)
 specifier|public
 name|KeywordList
 parameter_list|(
 name|String
 modifier|...
-name|keywords
+name|keywordChains
 parameter_list|)
 block|{
 name|this
@@ -247,7 +247,7 @@ name|Arrays
 operator|.
 name|stream
 argument_list|(
-name|keywords
+name|keywordChains
 argument_list|)
 operator|.
 name|map
@@ -267,8 +267,27 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * @param keywordString a String of keywords      * @return an parsed list containing the keywords      */
-DECL|method|parse (String keywordString, Character delimiter)
+DECL|method|KeywordList (Keyword... keywordChains)
+specifier|public
+name|KeywordList
+parameter_list|(
+name|Keyword
+modifier|...
+name|keywordChains
+parameter_list|)
+block|{
+name|this
+argument_list|(
+name|Arrays
+operator|.
+name|asList
+argument_list|(
+name|keywordChains
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|parse (String keywordString, Character delimiter, Character hierarchicalDelimiter)
 specifier|public
 specifier|static
 name|KeywordList
@@ -279,6 +298,9 @@ name|keywordString
 parameter_list|,
 name|Character
 name|delimiter
+parameter_list|,
+name|Character
+name|hierarchicalDelimiter
 parameter_list|)
 block|{
 if|if
@@ -297,15 +319,11 @@ name|KeywordList
 argument_list|()
 return|;
 block|}
-name|List
-argument_list|<
-name|String
-argument_list|>
-name|keywords
+name|KeywordList
+name|keywordList
 init|=
 operator|new
-name|ArrayList
-argument_list|<>
+name|KeywordList
 argument_list|()
 decl_stmt|;
 name|StringTokenizer
@@ -331,29 +349,67 @@ argument_list|()
 condition|)
 block|{
 name|String
-name|word
+name|chain
 init|=
 name|tok
 operator|.
 name|nextToken
 argument_list|()
-operator|.
-name|trim
-argument_list|()
 decl_stmt|;
-name|keywords
+name|Keyword
+name|chainRoot
+init|=
+name|Keyword
+operator|.
+name|of
+argument_list|(
+name|chain
+operator|.
+name|split
+argument_list|(
+name|hierarchicalDelimiter
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+argument_list|)
+decl_stmt|;
+name|keywordList
 operator|.
 name|add
 argument_list|(
-name|word
+name|chainRoot
 argument_list|)
 expr_stmt|;
 block|}
 return|return
-operator|new
+name|keywordList
+return|;
+block|}
+comment|/**      * @param keywordString a String of keywordChains      * @return an parsed list containing the keywordChains      */
+DECL|method|parse (String keywordString, Character delimiter)
+specifier|public
+specifier|static
 name|KeywordList
+name|parse
+parameter_list|(
+name|String
+name|keywordString
+parameter_list|,
+name|Character
+name|delimiter
+parameter_list|)
+block|{
+return|return
+name|parse
 argument_list|(
-name|keywords
+name|keywordString
+argument_list|,
+name|delimiter
+argument_list|,
+name|Keyword
+operator|.
+name|DEFAULT_HIERARCHICAL_DELIMITER
 argument_list|)
 return|;
 block|}
@@ -369,7 +425,7 @@ name|KeywordList
 argument_list|(
 name|this
 operator|.
-name|keywords
+name|keywordChains
 argument_list|)
 return|;
 block|}
@@ -392,7 +448,7 @@ argument_list|(
 name|newValue
 argument_list|)
 expr_stmt|;
-comment|// Remove keywords which should be replaced
+comment|// Remove keywordChains which should be replaced
 name|int
 name|foundPosition
 init|=
@@ -411,7 +467,7 @@ block|{
 name|int
 name|pos
 init|=
-name|keywords
+name|keywordChains
 operator|.
 name|indexOf
 argument_list|(
@@ -429,7 +485,7 @@ name|foundPosition
 operator|=
 name|pos
 expr_stmt|;
-name|keywords
+name|keywordChains
 operator|.
 name|remove
 argument_list|(
@@ -455,7 +511,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|keywords
+name|keywordChains
 operator|.
 name|add
 argument_list|(
@@ -475,13 +531,13 @@ name|KeywordList
 name|keywordsToRemove
 parameter_list|)
 block|{
-name|keywords
+name|keywordChains
 operator|.
 name|removeAll
 argument_list|(
 name|keywordsToRemove
 operator|.
-name|keywords
+name|keywordChains
 argument_list|)
 expr_stmt|;
 block|}
@@ -505,10 +561,10 @@ block|{
 return|return
 literal|false
 return|;
-comment|// Don't add duplicate keywords
+comment|// Don't add duplicate keywordChains
 block|}
 return|return
-name|keywords
+name|keywordChains
 operator|.
 name|add
 argument_list|(
@@ -527,7 +583,7 @@ name|delimiter
 parameter_list|)
 block|{
 return|return
-name|keywords
+name|keywordChains
 operator|.
 name|stream
 argument_list|()
@@ -583,7 +639,7 @@ name|iterator
 parameter_list|()
 block|{
 return|return
-name|keywords
+name|keywordChains
 operator|.
 name|iterator
 argument_list|()
@@ -596,7 +652,7 @@ name|size
 parameter_list|()
 block|{
 return|return
-name|keywords
+name|keywordChains
 operator|.
 name|size
 argument_list|()
@@ -609,7 +665,7 @@ name|isEmpty
 parameter_list|()
 block|{
 return|return
-name|keywords
+name|keywordChains
 operator|.
 name|isEmpty
 argument_list|()
@@ -625,7 +681,7 @@ name|o
 parameter_list|)
 block|{
 return|return
-name|keywords
+name|keywordChains
 operator|.
 name|contains
 argument_list|(
@@ -643,7 +699,7 @@ name|o
 parameter_list|)
 block|{
 return|return
-name|keywords
+name|keywordChains
 operator|.
 name|remove
 argument_list|(
@@ -661,7 +717,7 @@ name|keywordsString
 parameter_list|)
 block|{
 return|return
-name|keywords
+name|keywordChains
 operator|.
 name|remove
 argument_list|(
@@ -682,13 +738,13 @@ name|KeywordList
 name|keywordsToAdd
 parameter_list|)
 block|{
-name|keywords
+name|keywordChains
 operator|.
 name|addAll
 argument_list|(
 name|keywordsToAdd
 operator|.
-name|keywords
+name|keywordChains
 argument_list|)
 expr_stmt|;
 block|}
@@ -701,13 +757,13 @@ name|KeywordList
 name|keywordToRetain
 parameter_list|)
 block|{
-name|keywords
+name|keywordChains
 operator|.
 name|retainAll
 argument_list|(
 name|keywordToRetain
 operator|.
-name|keywords
+name|keywordChains
 argument_list|)
 expr_stmt|;
 block|}
@@ -717,7 +773,7 @@ name|void
 name|clear
 parameter_list|()
 block|{
-name|keywords
+name|keywordChains
 operator|.
 name|clear
 argument_list|()
@@ -733,7 +789,7 @@ name|index
 parameter_list|)
 block|{
 return|return
-name|keywords
+name|keywordChains
 operator|.
 name|get
 argument_list|(
@@ -751,7 +807,7 @@ name|stream
 parameter_list|()
 block|{
 return|return
-name|keywords
+name|keywordChains
 operator|.
 name|stream
 argument_list|()
@@ -782,7 +838,7 @@ name|toStringList
 parameter_list|()
 block|{
 return|return
-name|keywords
+name|keywordChains
 operator|.
 name|stream
 argument_list|()
@@ -861,11 +917,11 @@ name|Objects
 operator|.
 name|equals
 argument_list|(
-name|keywords
+name|keywordChains
 argument_list|,
 name|keywords1
 operator|.
-name|keywords
+name|keywordChains
 argument_list|)
 return|;
 block|}
@@ -882,7 +938,7 @@ name|Objects
 operator|.
 name|hash
 argument_list|(
-name|keywords
+name|keywordChains
 argument_list|)
 return|;
 block|}

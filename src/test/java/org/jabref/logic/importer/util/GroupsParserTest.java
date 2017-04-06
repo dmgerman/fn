@@ -514,6 +514,8 @@ argument_list|,
 literal|"keywords"
 argument_list|,
 literal|','
+argument_list|,
+literal|'>'
 argument_list|)
 decl_stmt|;
 name|AbstractGroup
@@ -523,7 +525,7 @@ name|GroupsParser
 operator|.
 name|fromString
 argument_list|(
-literal|"AutomaticKeywordGroup:myAutomaticGroup;0;keywords;,;1;;;;"
+literal|"AutomaticKeywordGroup:myAutomaticGroup;0;keywords;,;>;1;;;;"
 argument_list|,
 literal|','
 argument_list|)
