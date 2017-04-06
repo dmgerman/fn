@@ -689,6 +689,48 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+DECL|method|testPreservationOfSingleUnderscore ()
+specifier|public
+name|void
+name|testPreservationOfSingleUnderscore
+parameter_list|()
+block|{
+name|assertEquals
+argument_list|(
+literal|"Lorem ipsum_lorem ipsum"
+argument_list|,
+name|formatter
+operator|.
+name|format
+argument_list|(
+literal|"Lorem ipsum_lorem ipsum"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|testConversionOfUnderscoreWithBraces ()
+specifier|public
+name|void
+name|testConversionOfUnderscoreWithBraces
+parameter_list|()
+block|{
+name|assertEquals
+argument_list|(
+literal|"Lorem ipsum_(lorem ipsum)"
+argument_list|,
+name|formatter
+operator|.
+name|format
+argument_list|(
+literal|"Lorem ipsum_{lorem ipsum}"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_class
 
