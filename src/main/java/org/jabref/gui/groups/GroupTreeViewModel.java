@@ -18,6 +18,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Comparator
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|List
 import|;
 end_import
@@ -348,6 +358,36 @@ argument_list|<
 name|BibDatabaseContext
 argument_list|>
 name|currentDatabase
+decl_stmt|;
+DECL|field|compAlphabetIgnoreCase
+specifier|private
+specifier|final
+name|Comparator
+argument_list|<
+name|GroupTreeNode
+argument_list|>
+name|compAlphabetIgnoreCase
+init|=
+parameter_list|(
+name|GroupTreeNode
+name|v1
+parameter_list|,
+name|GroupTreeNode
+name|v2
+parameter_list|)
+lambda|->
+name|v1
+operator|.
+name|getName
+argument_list|()
+operator|.
+name|compareToIgnoreCase
+argument_list|(
+name|v2
+operator|.
+name|getName
+argument_list|()
+argument_list|)
 decl_stmt|;
 DECL|method|GroupTreeViewModel (StateManager stateManager, DialogService dialogService, TaskExecutor taskExecutor)
 specifier|public
@@ -1280,6 +1320,28 @@ decl_stmt|;
 comment|// TODO: Add undo
 comment|// if (!undo.isEmpty()) {
 comment|//    mPanel.getUndoManager().addEdit(UndoableChangeEntriesOfGroup.getUndoableEdit(mNode, undo));
+block|}
+DECL|method|sortAlphabeticallyRecursive (GroupNodeViewModel group)
+specifier|public
+name|void
+name|sortAlphabeticallyRecursive
+parameter_list|(
+name|GroupNodeViewModel
+name|group
+parameter_list|)
+block|{
+name|group
+operator|.
+name|getGroupNode
+argument_list|()
+operator|.
+name|sortChildren
+argument_list|(
+name|compAlphabetIgnoreCase
+argument_list|,
+literal|true
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 end_class
