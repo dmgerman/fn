@@ -88,6 +88,101 @@ specifier|public
 class|class
 name|AuthorListParser
 block|{
+DECL|field|TOKEN_GROUP_LENGTH
+specifier|private
+specifier|static
+specifier|final
+name|int
+name|TOKEN_GROUP_LENGTH
+init|=
+literal|4
+decl_stmt|;
+comment|// number of entries for a token
+comment|// the following are offsets of an entry in a group of entries for one token
+DECL|field|OFFSET_TOKEN
+specifier|private
+specifier|static
+specifier|final
+name|int
+name|OFFSET_TOKEN
+init|=
+literal|0
+decl_stmt|;
+comment|// String -- token itself;
+DECL|field|OFFSET_TOKEN_ABBR
+specifier|private
+specifier|static
+specifier|final
+name|int
+name|OFFSET_TOKEN_ABBR
+init|=
+literal|1
+decl_stmt|;
+comment|// String -- token abbreviation;
+DECL|field|OFFSET_TOKEN_TERM
+specifier|private
+specifier|static
+specifier|final
+name|int
+name|OFFSET_TOKEN_TERM
+init|=
+literal|2
+decl_stmt|;
+comment|// Character -- token terminator (either " " or
+comment|// "-") comma)
+comment|// Token types (returned by getToken procedure)
+DECL|field|TOKEN_EOF
+specifier|private
+specifier|static
+specifier|final
+name|int
+name|TOKEN_EOF
+init|=
+literal|0
+decl_stmt|;
+DECL|field|TOKEN_AND
+specifier|private
+specifier|static
+specifier|final
+name|int
+name|TOKEN_AND
+init|=
+literal|1
+decl_stmt|;
+DECL|field|TOKEN_COMMA
+specifier|private
+specifier|static
+specifier|final
+name|int
+name|TOKEN_COMMA
+init|=
+literal|2
+decl_stmt|;
+DECL|field|TOKEN_WORD
+specifier|private
+specifier|static
+specifier|final
+name|int
+name|TOKEN_WORD
+init|=
+literal|3
+decl_stmt|;
+comment|// Constant HashSet containing names of TeX special characters
+DECL|field|TEX_NAMES
+specifier|private
+specifier|static
+specifier|final
+name|Set
+argument_list|<
+name|String
+argument_list|>
+name|TEX_NAMES
+init|=
+operator|new
+name|HashSet
+argument_list|<>
+argument_list|()
+decl_stmt|;
 comment|/** the raw bibtex author/editor field */
 DECL|field|original
 specifier|private
@@ -124,23 +219,6 @@ specifier|private
 name|boolean
 name|tokenCase
 decl_stmt|;
-comment|// Constant HashSet containing names of TeX special characters
-DECL|field|TEX_NAMES
-specifier|private
-specifier|static
-specifier|final
-name|Set
-argument_list|<
-name|String
-argument_list|>
-name|TEX_NAMES
-init|=
-operator|new
-name|HashSet
-argument_list|<>
-argument_list|()
-decl_stmt|;
-comment|// and static constructor to initialize it
 static|static
 block|{
 name|TEX_NAMES
@@ -228,85 +306,6 @@ literal|"j"
 argument_list|)
 expr_stmt|;
 block|}
-DECL|field|TOKEN_GROUP_LENGTH
-specifier|private
-specifier|static
-specifier|final
-name|int
-name|TOKEN_GROUP_LENGTH
-init|=
-literal|4
-decl_stmt|;
-comment|// number of entries for a token
-comment|// the following are offsets of an entry in a group of entries for one token
-DECL|field|OFFSET_TOKEN
-specifier|private
-specifier|static
-specifier|final
-name|int
-name|OFFSET_TOKEN
-init|=
-literal|0
-decl_stmt|;
-comment|// String -- token itself;
-DECL|field|OFFSET_TOKEN_ABBR
-specifier|private
-specifier|static
-specifier|final
-name|int
-name|OFFSET_TOKEN_ABBR
-init|=
-literal|1
-decl_stmt|;
-comment|// String -- token abbreviation;
-DECL|field|OFFSET_TOKEN_TERM
-specifier|private
-specifier|static
-specifier|final
-name|int
-name|OFFSET_TOKEN_TERM
-init|=
-literal|2
-decl_stmt|;
-comment|// Character -- token terminator (either " " or
-comment|// "-") comma)
-comment|// Token types (returned by getToken procedure)
-DECL|field|TOKEN_EOF
-specifier|private
-specifier|static
-specifier|final
-name|int
-name|TOKEN_EOF
-init|=
-literal|0
-decl_stmt|;
-DECL|field|TOKEN_AND
-specifier|private
-specifier|static
-specifier|final
-name|int
-name|TOKEN_AND
-init|=
-literal|1
-decl_stmt|;
-DECL|field|TOKEN_COMMA
-specifier|private
-specifier|static
-specifier|final
-name|int
-name|TOKEN_COMMA
-init|=
-literal|2
-decl_stmt|;
-DECL|field|TOKEN_WORD
-specifier|private
-specifier|static
-specifier|final
-name|int
-name|TOKEN_WORD
-init|=
-literal|3
-decl_stmt|;
 comment|/**      * Parses the String containing person names and returns a list of person information.      *      * @param listOfNames the String containing the person names to be parsed      * @return a parsed list of persons      */
 DECL|method|parse (String listOfNames)
 specifier|public
