@@ -340,7 +340,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|FileField
+name|FileFieldWriter
 import|;
 end_import
 
@@ -873,7 +873,7 @@ name|setField
 argument_list|(
 literal|"file"
 argument_list|,
-name|FileField
+name|FileFieldWriter
 operator|.
 name|getStringRepresentation
 argument_list|(
@@ -1798,7 +1798,7 @@ name|setField
 argument_list|(
 literal|"file"
 argument_list|,
-name|FileField
+name|FileFieldWriter
 operator|.
 name|getStringRepresentation
 argument_list|(
@@ -1839,7 +1839,7 @@ name|Optional
 operator|.
 name|of
 argument_list|(
-name|FileField
+name|FileFieldWriter
 operator|.
 name|getStringRepresentation
 argument_list|(
@@ -1916,7 +1916,7 @@ name|setField
 argument_list|(
 literal|"file"
 argument_list|,
-name|FileField
+name|FileFieldWriter
 operator|.
 name|getStringRepresentation
 argument_list|(
@@ -1957,7 +1957,7 @@ name|Optional
 operator|.
 name|of
 argument_list|(
-name|FileField
+name|FileFieldWriter
 operator|.
 name|getStringRepresentation
 argument_list|(
@@ -2041,7 +2041,7 @@ name|setField
 argument_list|(
 literal|"file"
 argument_list|,
-name|FileField
+name|FileFieldWriter
 operator|.
 name|getStringRepresentation
 argument_list|(
@@ -2079,7 +2079,7 @@ name|Optional
 operator|.
 name|of
 argument_list|(
-name|FileField
+name|FileFieldWriter
 operator|.
 name|getStringRepresentation
 argument_list|(

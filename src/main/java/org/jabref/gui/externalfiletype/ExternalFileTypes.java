@@ -118,7 +118,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|FileField
+name|FileFieldWriter
 import|;
 end_import
 
@@ -1609,7 +1609,7 @@ name|JabRefPreferences
 operator|.
 name|EXTERNAL_FILE_TYPES
 argument_list|,
-name|FileField
+name|FileFieldWriter
 operator|.
 name|encodeStringArray
 argument_list|(

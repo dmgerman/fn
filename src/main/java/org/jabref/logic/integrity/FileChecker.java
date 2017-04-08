@@ -108,7 +108,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|FileField
+name|FileFieldParser
 import|;
 end_import
 
@@ -204,7 +204,7 @@ name|ParsedFileField
 argument_list|>
 name|parsedFileFields
 init|=
-name|FileField
+name|FileFieldParser
 operator|.
 name|parse
 argument_list|(

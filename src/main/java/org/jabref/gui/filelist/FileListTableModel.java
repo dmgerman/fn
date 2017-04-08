@@ -164,7 +164,21 @@ name|model
 operator|.
 name|entry
 operator|.
-name|FileField
+name|FileFieldParser
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|FileFieldWriter
 import|;
 end_import
 
@@ -588,7 +602,7 @@ name|ParsedFileField
 argument_list|>
 name|fields
 init|=
-name|FileField
+name|FileFieldParser
 operator|.
 name|parse
 argument_list|(
@@ -958,7 +972,7 @@ operator|++
 expr_stmt|;
 block|}
 return|return
-name|FileField
+name|FileFieldWriter
 operator|.
 name|encodeStringArray
 argument_list|(

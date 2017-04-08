@@ -106,7 +106,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|FileField
+name|FileFieldWriter
 import|;
 end_import
 
@@ -187,21 +187,16 @@ name|ParsedFileField
 argument_list|>
 name|fileList
 init|=
-name|FileField
+name|entry
 operator|.
-name|parse
-argument_list|(
-name|oldValue
-operator|.
-name|get
+name|getFiles
 argument_list|()
-argument_list|)
 decl_stmt|;
 comment|// Parsing automatically moves a single description to link, so we just need to write the fileList back again
 name|String
 name|newValue
 init|=
-name|FileField
+name|FileFieldWriter
 operator|.
 name|getStringRepresentation
 argument_list|(

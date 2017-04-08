@@ -126,7 +126,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|FileField
+name|FileFieldWriter
 import|;
 end_import
 
@@ -250,17 +250,10 @@ name|ParsedFileField
 argument_list|>
 name|fileList
 init|=
-operator|new
-name|ArrayList
-argument_list|<>
-argument_list|(
-name|FileField
+name|entry
 operator|.
-name|parse
-argument_list|(
-name|oldFileContent
-argument_list|)
-argument_list|)
+name|getFiles
+argument_list|()
 decl_stmt|;
 name|int
 name|oldItemCount
@@ -398,7 +391,7 @@ block|{
 name|String
 name|newValue
 init|=
-name|FileField
+name|FileFieldWriter
 operator|.
 name|getStringRepresentation
 argument_list|(

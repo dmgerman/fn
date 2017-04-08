@@ -212,18 +212,6 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|TypedBibEntry
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
 name|util
 operator|.
 name|io
@@ -598,13 +586,13 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|setCurrentEntry (BibEntry rawEntry)
+DECL|method|setCurrentEntry (BibEntry entry)
 specifier|private
 name|void
 name|setCurrentEntry
 parameter_list|(
 name|BibEntry
-name|rawEntry
+name|entry
 parameter_list|)
 block|{
 name|stateManager
@@ -617,17 +605,6 @@ argument_list|(
 name|database
 lambda|->
 block|{
-name|TypedBibEntry
-name|entry
-init|=
-operator|new
-name|TypedBibEntry
-argument_list|(
-name|rawEntry
-argument_list|,
-name|database
-argument_list|)
-decl_stmt|;
 name|List
 argument_list|<
 name|ParsedFileField

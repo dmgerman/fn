@@ -148,18 +148,6 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|TypedBibEntry
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
 name|layout
 operator|.
 name|LayoutFormatterPreferences
@@ -550,17 +538,6 @@ name|emptyList
 argument_list|()
 return|;
 block|}
-name|TypedBibEntry
-name|typedEntry
-init|=
-operator|new
-name|TypedBibEntry
-argument_list|(
-name|entry
-argument_list|,
-name|databaseContext
-argument_list|)
-decl_stmt|;
 name|List
 argument_list|<
 name|ParsedFileField
@@ -592,7 +569,7 @@ expr_stmt|;
 comment|//Add all other except the current selected file
 name|newFileList
 operator|=
-name|typedEntry
+name|entry
 operator|.
 name|getFiles
 argument_list|()
@@ -633,7 +610,7 @@ argument_list|()
 expr_stmt|;
 name|fileList
 operator|=
-name|typedEntry
+name|entry
 operator|.
 name|getFiles
 argument_list|()
