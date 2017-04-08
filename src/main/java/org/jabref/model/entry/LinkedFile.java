@@ -119,20 +119,20 @@ import|;
 end_import
 
 begin_class
-DECL|class|ParsedFileField
+DECL|class|LinkedFile
 specifier|public
 class|class
-name|ParsedFileField
+name|LinkedFile
 block|{
 DECL|field|NULL_OBJECT
 specifier|private
 specifier|static
 specifier|final
-name|ParsedFileField
+name|LinkedFile
 name|NULL_OBJECT
 init|=
 operator|new
-name|ParsedFileField
+name|LinkedFile
 argument_list|(
 literal|""
 argument_list|,
@@ -159,9 +159,9 @@ specifier|final
 name|String
 name|fileType
 decl_stmt|;
-DECL|method|ParsedFileField (String description, String link, String fileType)
+DECL|method|LinkedFile (String description, String link, String fileType)
 specifier|public
-name|ParsedFileField
+name|LinkedFile
 parameter_list|(
 name|String
 name|description
@@ -207,9 +207,9 @@ name|fileType
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|ParsedFileField (String description, URL link, String fileType)
+DECL|method|LinkedFile (String description, URL link, String fileType)
 specifier|public
-name|ParsedFileField
+name|LinkedFile
 parameter_list|(
 name|String
 name|description
@@ -295,14 +295,14 @@ if|if
 condition|(
 name|o
 operator|instanceof
-name|ParsedFileField
+name|LinkedFile
 condition|)
 block|{
-name|ParsedFileField
+name|LinkedFile
 name|that
 init|=
 operator|(
-name|ParsedFileField
+name|LinkedFile
 operator|)
 name|o
 decl_stmt|;

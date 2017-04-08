@@ -168,7 +168,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|ParsedFileField
+name|LinkedFile
 import|;
 end_import
 
@@ -503,11 +503,11 @@ name|exists
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|ParsedFileField
+name|LinkedFile
 name|fileField
 init|=
 operator|new
-name|ParsedFileField
+name|LinkedFile
 argument_list|(
 literal|""
 argument_list|,
@@ -597,7 +597,7 @@ operator|.
 name|getStringRepresentation
 argument_list|(
 operator|new
-name|ParsedFileField
+name|LinkedFile
 argument_list|(
 literal|""
 argument_list|,
@@ -665,11 +665,11 @@ name|exists
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|ParsedFileField
+name|LinkedFile
 name|fileField
 init|=
 operator|new
-name|ParsedFileField
+name|LinkedFile
 argument_list|(
 literal|""
 argument_list|,
@@ -696,7 +696,7 @@ operator|.
 name|asList
 argument_list|(
 operator|new
-name|ParsedFileField
+name|LinkedFile
 argument_list|(
 literal|""
 argument_list|,
@@ -708,7 +708,7 @@ argument_list|,
 name|fileField
 argument_list|,
 operator|new
-name|ParsedFileField
+name|LinkedFile
 argument_list|(
 literal|""
 argument_list|,
@@ -788,7 +788,7 @@ operator|.
 name|asList
 argument_list|(
 operator|new
-name|ParsedFileField
+name|LinkedFile
 argument_list|(
 literal|""
 argument_list|,
@@ -798,7 +798,7 @@ literal|""
 argument_list|)
 argument_list|,
 operator|new
-name|ParsedFileField
+name|LinkedFile
 argument_list|(
 literal|""
 argument_list|,
@@ -811,7 +811,7 @@ literal|""
 argument_list|)
 argument_list|,
 operator|new
-name|ParsedFileField
+name|LinkedFile
 argument_list|(
 literal|""
 argument_list|,
@@ -883,11 +883,11 @@ name|exists
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|ParsedFileField
+name|LinkedFile
 name|fileField
 init|=
 operator|new
-name|ParsedFileField
+name|LinkedFile
 argument_list|(
 literal|""
 argument_list|,
@@ -999,7 +999,7 @@ operator|.
 name|getStringRepresentation
 argument_list|(
 operator|new
-name|ParsedFileField
+name|LinkedFile
 argument_list|(
 literal|""
 argument_list|,

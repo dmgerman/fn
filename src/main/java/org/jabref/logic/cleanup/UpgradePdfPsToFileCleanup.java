@@ -140,7 +140,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|ParsedFileField
+name|LinkedFile
 import|;
 end_import
 
@@ -246,7 +246,7 @@ argument_list|)
 decl_stmt|;
 name|List
 argument_list|<
-name|ParsedFileField
+name|LinkedFile
 argument_list|>
 name|fileList
 init|=
@@ -318,11 +318,11 @@ argument_list|(
 name|o
 argument_list|)
 decl_stmt|;
-name|ParsedFileField
+name|LinkedFile
 name|flEntry
 init|=
 operator|new
-name|ParsedFileField
+name|LinkedFile
 argument_list|(
 name|f
 operator|.

@@ -360,7 +360,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|ParsedFileField
+name|LinkedFile
 import|;
 end_import
 
@@ -2582,7 +2582,7 @@ operator|.
 name|singletonList
 argument_list|(
 operator|new
-name|ParsedFileField
+name|LinkedFile
 argument_list|(
 literal|"online"
 argument_list|,

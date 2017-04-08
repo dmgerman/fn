@@ -228,7 +228,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|ParsedFileField
+name|LinkedFile
 import|;
 end_import
 
@@ -288,7 +288,7 @@ DECL|field|files
 specifier|private
 name|ListProperty
 argument_list|<
-name|ParsedFileField
+name|LinkedFile
 argument_list|>
 name|files
 init|=
@@ -523,7 +523,7 @@ DECL|method|filesProperty ()
 specifier|public
 name|ListProperty
 argument_list|<
-name|ParsedFileField
+name|LinkedFile
 argument_list|>
 name|filesProperty
 parameter_list|()
@@ -591,7 +591,7 @@ lambda|->
 block|{
 name|List
 argument_list|<
-name|ParsedFileField
+name|LinkedFile
 argument_list|>
 name|linkedFiles
 init|=
@@ -661,12 +661,12 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-DECL|method|switchToFile (ParsedFileField file)
+DECL|method|switchToFile (LinkedFile file)
 specifier|public
 name|void
 name|switchToFile
 parameter_list|(
-name|ParsedFileField
+name|LinkedFile
 name|file
 parameter_list|)
 block|{

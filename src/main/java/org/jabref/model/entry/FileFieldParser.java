@@ -53,7 +53,7 @@ specifier|public
 specifier|static
 name|List
 argument_list|<
-name|ParsedFileField
+name|LinkedFile
 argument_list|>
 name|parse
 parameter_list|(
@@ -87,7 +87,7 @@ return|;
 block|}
 name|List
 argument_list|<
-name|ParsedFileField
+name|LinkedFile
 argument_list|>
 name|files
 init|=
@@ -394,7 +394,7 @@ block|}
 DECL|method|convert (List<String> entry)
 specifier|private
 specifier|static
-name|ParsedFileField
+name|LinkedFile
 name|convert
 parameter_list|(
 name|List
@@ -423,11 +423,11 @@ literal|""
 argument_list|)
 expr_stmt|;
 block|}
-name|ParsedFileField
+name|LinkedFile
 name|field
 init|=
 operator|new
-name|ParsedFileField
+name|LinkedFile
 argument_list|(
 name|entry
 operator|.
@@ -483,7 +483,7 @@ block|{
 name|field
 operator|=
 operator|new
-name|ParsedFileField
+name|LinkedFile
 argument_list|(
 literal|""
 argument_list|,
@@ -528,7 +528,7 @@ block|{
 name|field
 operator|=
 operator|new
-name|ParsedFileField
+name|LinkedFile
 argument_list|(
 literal|""
 argument_list|,

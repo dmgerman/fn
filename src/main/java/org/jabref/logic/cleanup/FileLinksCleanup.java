@@ -120,7 +120,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|ParsedFileField
+name|LinkedFile
 import|;
 end_import
 
@@ -183,7 +183,7 @@ return|;
 block|}
 name|List
 argument_list|<
-name|ParsedFileField
+name|LinkedFile
 argument_list|>
 name|fileList
 init|=

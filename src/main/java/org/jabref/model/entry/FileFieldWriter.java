@@ -65,7 +65,7 @@ specifier|private
 name|FileFieldWriter
 parameter_list|()
 block|{     }
-DECL|method|getStringRepresentation (List<ParsedFileField> fields)
+DECL|method|getStringRepresentation (List<LinkedFile> fields)
 specifier|public
 specifier|static
 name|String
@@ -73,7 +73,7 @@ name|getStringRepresentation
 parameter_list|(
 name|List
 argument_list|<
-name|ParsedFileField
+name|LinkedFile
 argument_list|>
 name|fields
 parameter_list|)
@@ -100,7 +100,7 @@ literal|0
 decl_stmt|;
 for|for
 control|(
-name|ParsedFileField
+name|LinkedFile
 name|entry
 range|:
 name|fields
@@ -142,13 +142,13 @@ name|array
 argument_list|)
 return|;
 block|}
-DECL|method|getStringRepresentation (ParsedFileField field)
+DECL|method|getStringRepresentation (LinkedFile field)
 specifier|public
 specifier|static
 name|String
 name|getStringRepresentation
 parameter_list|(
-name|ParsedFileField
+name|LinkedFile
 name|field
 parameter_list|)
 block|{

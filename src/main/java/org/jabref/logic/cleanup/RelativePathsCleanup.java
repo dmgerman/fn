@@ -152,7 +152,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|ParsedFileField
+name|LinkedFile
 import|;
 end_import
 
@@ -240,7 +240,7 @@ parameter_list|)
 block|{
 name|List
 argument_list|<
-name|ParsedFileField
+name|LinkedFile
 argument_list|>
 name|fileList
 init|=
@@ -251,7 +251,7 @@ argument_list|()
 decl_stmt|;
 name|List
 argument_list|<
-name|ParsedFileField
+name|LinkedFile
 argument_list|>
 name|newFileList
 init|=
@@ -267,7 +267,7 @@ literal|false
 decl_stmt|;
 for|for
 control|(
-name|ParsedFileField
+name|LinkedFile
 name|fileEntry
 range|:
 name|fileList
@@ -305,7 +305,7 @@ operator|.
 name|toString
 argument_list|()
 decl_stmt|;
-name|ParsedFileField
+name|LinkedFile
 name|newFileEntry
 init|=
 name|fileEntry
@@ -324,7 +324,7 @@ block|{
 name|newFileEntry
 operator|=
 operator|new
-name|ParsedFileField
+name|LinkedFile
 argument_list|(
 name|fileEntry
 operator|.

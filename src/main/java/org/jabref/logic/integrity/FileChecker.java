@@ -120,7 +120,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|ParsedFileField
+name|LinkedFile
 import|;
 end_import
 
@@ -198,9 +198,9 @@ parameter_list|)
 block|{
 name|List
 argument_list|<
-name|ParsedFileField
+name|LinkedFile
 argument_list|>
-name|parsedFileFields
+name|linkedFiles
 init|=
 name|FileFieldParser
 operator|.
@@ -233,10 +233,10 @@ argument_list|)
 decl_stmt|;
 for|for
 control|(
-name|ParsedFileField
+name|LinkedFile
 name|file
 range|:
-name|parsedFileFields
+name|linkedFiles
 control|)
 block|{
 name|Optional

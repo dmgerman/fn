@@ -176,7 +176,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|ParsedFileField
+name|LinkedFile
 import|;
 end_import
 
@@ -596,7 +596,7 @@ expr_stmt|;
 block|}
 name|List
 argument_list|<
-name|ParsedFileField
+name|LinkedFile
 argument_list|>
 name|fields
 init|=
@@ -620,7 +620,7 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-name|ParsedFileField
+name|LinkedFile
 name|entry
 range|:
 name|fields
@@ -766,12 +766,12 @@ name|getIconLabel
 argument_list|()
 return|;
 block|}
-DECL|method|decodeEntry (ParsedFileField entry, boolean deduceUnknownType)
+DECL|method|decodeEntry (LinkedFile entry, boolean deduceUnknownType)
 specifier|private
 name|FileListEntry
 name|decodeEntry
 parameter_list|(
-name|ParsedFileField
+name|LinkedFile
 name|entry
 parameter_list|,
 name|boolean

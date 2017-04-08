@@ -224,7 +224,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|ParsedFileField
+name|LinkedFile
 import|;
 end_import
 
@@ -345,7 +345,7 @@ name|unsuccessfulRenames
 decl_stmt|;
 DECL|field|singleFieldCleanup
 specifier|private
-name|ParsedFileField
+name|LinkedFile
 name|singleFieldCleanup
 decl_stmt|;
 DECL|method|RenamePdfCleanup (boolean onlyRelativePaths, BibDatabaseContext databaseContext, String fileNamePattern, LayoutFormatterPreferences layoutPrefs, FileDirectoryPreferences fileDirectoryPreferences)
@@ -414,7 +414,7 @@ operator|=
 name|fileDirectoryPreferences
 expr_stmt|;
 block|}
-DECL|method|RenamePdfCleanup (boolean onlyRelativePaths, BibDatabaseContext databaseContext, String fileNamePattern, LayoutFormatterPreferences layoutPrefs, FileDirectoryPreferences fileDirectoryPreferences, ParsedFileField singleField)
+DECL|method|RenamePdfCleanup (boolean onlyRelativePaths, BibDatabaseContext databaseContext, String fileNamePattern, LayoutFormatterPreferences layoutPrefs, FileDirectoryPreferences fileDirectoryPreferences, LinkedFile singleField)
 specifier|public
 name|RenamePdfCleanup
 parameter_list|(
@@ -433,7 +433,7 @@ parameter_list|,
 name|FileDirectoryPreferences
 name|fileDirectoryPreferences
 parameter_list|,
-name|ParsedFileField
+name|LinkedFile
 name|singleField
 parameter_list|)
 block|{
@@ -473,13 +473,13 @@ parameter_list|)
 block|{
 name|List
 argument_list|<
-name|ParsedFileField
+name|LinkedFile
 argument_list|>
 name|newFileList
 decl_stmt|;
 name|List
 argument_list|<
-name|ParsedFileField
+name|LinkedFile
 argument_list|>
 name|fileList
 decl_stmt|;
@@ -555,7 +555,7 @@ literal|false
 decl_stmt|;
 for|for
 control|(
-name|ParsedFileField
+name|LinkedFile
 name|flEntry
 range|:
 name|fileList
@@ -891,7 +891,7 @@ operator|.
 name|add
 argument_list|(
 operator|new
-name|ParsedFileField
+name|LinkedFile
 argument_list|(
 name|description
 argument_list|,
@@ -968,12 +968,12 @@ name|emptyList
 argument_list|()
 return|;
 block|}
-DECL|method|getTargetFileName (ParsedFileField flEntry, BibEntry entry)
+DECL|method|getTargetFileName (LinkedFile flEntry, BibEntry entry)
 specifier|public
 name|String
 name|getTargetFileName
 parameter_list|(
-name|ParsedFileField
+name|LinkedFile
 name|flEntry
 parameter_list|,
 name|BibEntry

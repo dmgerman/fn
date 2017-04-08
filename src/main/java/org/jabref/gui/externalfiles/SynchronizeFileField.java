@@ -544,7 +544,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|ParsedFileField
+name|LinkedFile
 import|;
 end_import
 
@@ -1142,7 +1142,7 @@ argument_list|(
 name|j
 argument_list|)
 decl_stmt|;
-name|ParsedFileField
+name|LinkedFile
 name|field
 init|=
 name|flEntry

@@ -92,7 +92,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|ParsedFileField
+name|LinkedFile
 import|;
 end_import
 
@@ -159,7 +159,7 @@ DECL|method|getFilteredFileList ()
 specifier|private
 name|List
 argument_list|<
-name|ParsedFileField
+name|LinkedFile
 argument_list|>
 name|getFilteredFileList
 parameter_list|()
@@ -252,8 +252,8 @@ decl_stmt|;
 comment|//import annotationsOfFiles if the selected files are valid which is checked in getFilteredFileList()
 for|for
 control|(
-name|ParsedFileField
-name|parsedFileField
+name|LinkedFile
+name|linkedFile
 range|:
 name|this
 operator|.
@@ -261,7 +261,7 @@ name|getFilteredFileList
 argument_list|()
 control|)
 block|{
-name|parsedFileField
+name|linkedFile
 operator|.
 name|findIn
 argument_list|(

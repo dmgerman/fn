@@ -136,7 +136,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|ParsedFileField
+name|LinkedFile
 import|;
 end_import
 
@@ -236,7 +236,7 @@ argument_list|)
 decl_stmt|;
 name|List
 argument_list|<
-name|ParsedFileField
+name|LinkedFile
 argument_list|>
 name|files
 init|=
@@ -255,7 +255,7 @@ argument_list|()
 condition|)
 block|{
 comment|// Find the default directory for this field type, if any:
-name|ParsedFileField
+name|LinkedFile
 name|firstFile
 init|=
 name|files

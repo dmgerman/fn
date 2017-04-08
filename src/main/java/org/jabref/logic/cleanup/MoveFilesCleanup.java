@@ -224,7 +224,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|ParsedFileField
+name|LinkedFile
 import|;
 end_import
 
@@ -334,7 +334,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|singleFileFieldCleanup
 specifier|private
-name|ParsedFileField
+name|LinkedFile
 name|singleFileFieldCleanup
 decl_stmt|;
 DECL|method|MoveFilesCleanup (BibDatabaseContext databaseContext, String fileDirPattern, FileDirectoryPreferences fileDirectoryPreferences, LayoutFormatterPreferences layoutPrefs)
@@ -399,7 +399,7 @@ name|layoutPrefs
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|MoveFilesCleanup (BibDatabaseContext databaseContext, String fileDirPattern, FileDirectoryPreferences fileDirectoryPreferences, LayoutFormatterPreferences prefs, ParsedFileField field)
+DECL|method|MoveFilesCleanup (BibDatabaseContext databaseContext, String fileDirPattern, FileDirectoryPreferences fileDirectoryPreferences, LayoutFormatterPreferences prefs, LinkedFile field)
 specifier|public
 name|MoveFilesCleanup
 parameter_list|(
@@ -415,7 +415,7 @@ parameter_list|,
 name|LayoutFormatterPreferences
 name|prefs
 parameter_list|,
-name|ParsedFileField
+name|LinkedFile
 name|field
 parameter_list|)
 block|{
@@ -537,13 +537,13 @@ return|;
 block|}
 name|List
 argument_list|<
-name|ParsedFileField
+name|LinkedFile
 argument_list|>
 name|fileList
 decl_stmt|;
 name|List
 argument_list|<
-name|ParsedFileField
+name|LinkedFile
 argument_list|>
 name|newFileList
 decl_stmt|;
@@ -620,7 +620,7 @@ literal|false
 decl_stmt|;
 for|for
 control|(
-name|ParsedFileField
+name|LinkedFile
 name|fileEntry
 range|:
 name|fileList
@@ -830,7 +830,7 @@ operator|.
 name|toString
 argument_list|()
 decl_stmt|;
-name|ParsedFileField
+name|LinkedFile
 name|newFileEntry
 init|=
 name|fileEntry
@@ -852,7 +852,7 @@ block|{
 name|newFileEntry
 operator|=
 operator|new
-name|ParsedFileField
+name|LinkedFile
 argument_list|(
 name|fileEntry
 operator|.

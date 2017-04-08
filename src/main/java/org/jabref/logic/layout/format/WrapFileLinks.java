@@ -114,7 +114,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|ParsedFileField
+name|LinkedFile
 import|;
 end_import
 
@@ -562,7 +562,7 @@ decl_stmt|;
 comment|// Build the list containing the links:
 name|List
 argument_list|<
-name|ParsedFileField
+name|LinkedFile
 argument_list|>
 name|fileList
 init|=
@@ -581,7 +581,7 @@ decl_stmt|;
 comment|// counter for relevant iterations
 for|for
 control|(
-name|ParsedFileField
+name|LinkedFile
 name|flEntry
 range|:
 name|fileList

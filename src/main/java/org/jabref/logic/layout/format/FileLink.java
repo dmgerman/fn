@@ -62,7 +62,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|ParsedFileField
+name|LinkedFile
 import|;
 end_import
 
@@ -172,7 +172,7 @@ return|;
 block|}
 name|List
 argument_list|<
-name|ParsedFileField
+name|LinkedFile
 argument_list|>
 name|fileList
 init|=
@@ -183,7 +183,7 @@ argument_list|(
 name|field
 argument_list|)
 decl_stmt|;
-name|ParsedFileField
+name|LinkedFile
 name|link
 init|=
 literal|null
@@ -223,7 +223,7 @@ block|{
 comment|// A file type is specified:
 for|for
 control|(
-name|ParsedFileField
+name|LinkedFile
 name|flEntry
 range|:
 name|fileList

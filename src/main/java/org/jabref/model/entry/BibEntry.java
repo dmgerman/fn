@@ -3932,7 +3932,7 @@ argument_list|)
 return|;
 block|}
 block|}
-DECL|method|setFiles (List<ParsedFileField> files)
+DECL|method|setFiles (List<LinkedFile> files)
 specifier|public
 name|Optional
 argument_list|<
@@ -3942,7 +3942,7 @@ name|setFiles
 parameter_list|(
 name|List
 argument_list|<
-name|ParsedFileField
+name|LinkedFile
 argument_list|>
 name|files
 parameter_list|)
@@ -4015,7 +4015,7 @@ DECL|method|getFiles ()
 specifier|public
 name|List
 argument_list|<
-name|ParsedFileField
+name|LinkedFile
 argument_list|>
 name|getFiles
 parameter_list|()

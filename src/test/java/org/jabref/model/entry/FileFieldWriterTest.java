@@ -141,7 +141,7 @@ operator|.
 name|singletonList
 argument_list|(
 operator|new
-name|ParsedFileField
+name|LinkedFile
 argument_list|(
 literal|"Desc"
 argument_list|,
@@ -180,7 +180,7 @@ operator|.
 name|singletonList
 argument_list|(
 operator|new
-name|ParsedFileField
+name|LinkedFile
 argument_list|(
 literal|""
 argument_list|,
@@ -224,7 +224,7 @@ operator|.
 name|singletonList
 argument_list|(
 operator|new
-name|ParsedFileField
+name|LinkedFile
 argument_list|(
 literal|""
 argument_list|,
@@ -249,7 +249,7 @@ operator|.
 name|asList
 argument_list|(
 operator|new
-name|ParsedFileField
+name|LinkedFile
 argument_list|(
 literal|""
 argument_list|,
@@ -259,7 +259,7 @@ literal|""
 argument_list|)
 argument_list|,
 operator|new
-name|ParsedFileField
+name|LinkedFile
 argument_list|(
 literal|""
 argument_list|,
@@ -298,7 +298,7 @@ operator|.
 name|singletonList
 argument_list|(
 operator|new
-name|ParsedFileField
+name|LinkedFile
 argument_list|(
 literal|"test:;"
 argument_list|,
@@ -337,7 +337,7 @@ operator|.
 name|singletonList
 argument_list|(
 operator|new
-name|ParsedFileField
+name|LinkedFile
 argument_list|(
 literal|"test&#44;st:;"
 argument_list|,
@@ -376,7 +376,7 @@ operator|.
 name|singletonList
 argument_list|(
 operator|new
-name|ParsedFileField
+name|LinkedFile
 argument_list|(
 literal|"desc"
 argument_list|,
@@ -425,7 +425,7 @@ operator|.
 name|singletonList
 argument_list|(
 operator|new
-name|ParsedFileField
+name|LinkedFile
 argument_list|(
 literal|""
 argument_list|,
@@ -450,7 +450,7 @@ operator|.
 name|singletonList
 argument_list|(
 operator|new
-name|ParsedFileField
+name|LinkedFile
 argument_list|(
 literal|""
 argument_list|,
@@ -475,7 +475,7 @@ operator|.
 name|singletonList
 argument_list|(
 operator|new
-name|ParsedFileField
+name|LinkedFile
 argument_list|(
 literal|""
 argument_list|,
@@ -514,7 +514,7 @@ operator|.
 name|singletonList
 argument_list|(
 operator|new
-name|ParsedFileField
+name|LinkedFile
 argument_list|(
 literal|"desc"
 argument_list|,
