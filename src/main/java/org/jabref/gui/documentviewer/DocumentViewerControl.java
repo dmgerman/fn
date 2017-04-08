@@ -946,7 +946,7 @@ name|generateImage
 init|=
 name|BackgroundTask
 operator|.
-name|run
+name|wrap
 argument_list|(
 parameter_list|()
 lambda|->
@@ -1138,7 +1138,7 @@ name|generateImage
 init|=
 name|BackgroundTask
 operator|.
-name|run
+name|wrap
 argument_list|(
 parameter_list|()
 lambda|->
