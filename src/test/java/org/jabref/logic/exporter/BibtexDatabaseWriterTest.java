@@ -1457,7 +1457,7 @@ name|OS
 operator|.
 name|NEWLINE
 operator|+
-literal|"@Comment{jabref-meta: groupstree:"
+literal|"@Comment{jabref-meta: grouping:"
 operator|+
 name|OS
 operator|.
@@ -1586,7 +1586,7 @@ name|OS
 operator|.
 name|NEWLINE
 operator|+
-literal|"@Comment{jabref-meta: groupstree:"
+literal|"@Comment{jabref-meta: grouping:"
 operator|+
 name|OS
 operator|.

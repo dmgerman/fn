@@ -458,16 +458,6 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|JDialog
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
 name|JLabel
 import|;
 end_import
@@ -927,7 +917,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * GUI Dialog for the feature "Find unlinked files".  *  * @author Nosh&Dan  * @version 25.11.2008 | 23:13:29  *  */
+comment|/**  * GUI Dialog for the feature "Find unlinked files".  */
 end_comment
 
 begin_class
@@ -936,7 +926,7 @@ specifier|public
 class|class
 name|FindUnlinkedFilesDialog
 extends|extends
-name|JDialog
+name|JabRefDialog
 block|{
 DECL|field|LOGGER
 specifier|private
@@ -1102,10 +1092,10 @@ specifier|private
 name|JButton
 name|buttonOptionSelectAll
 decl_stmt|;
-DECL|field|buttonOptionUnselectAll
+DECL|field|buttonOptionDeselectAll
 specifier|private
 name|JButton
-name|buttonOptionUnselectAll
+name|buttonOptionDeselectAll
 decl_stmt|;
 DECL|field|buttonOptionExpandAll
 specifier|private
@@ -1238,19 +1228,6 @@ specifier|private
 name|boolean
 name|checkBoxWhyIsThereNoGetSelectedStupidSwing
 decl_stmt|;
-comment|/**      * For Unit-testing only.<i>Don't remove!</i><br>      * Used via reflection in {@link org.jabref.logic.importer.DatabaseFileLookupTest} to construct this      * class.      */
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unused"
-argument_list|)
-DECL|method|FindUnlinkedFilesDialog ()
-specifier|private
-name|FindUnlinkedFilesDialog
-parameter_list|()
-block|{
-comment|//intended
-block|}
 DECL|method|FindUnlinkedFilesDialog (Frame owner, JabRefFrame frame, BasePanel panel)
 specifier|public
 name|FindUnlinkedFilesDialog
@@ -1277,6 +1254,10 @@ literal|"Find unlinked files"
 argument_list|)
 argument_list|,
 literal|true
+argument_list|,
+name|FindUnlinkedFilesDialog
+operator|.
+name|class
 argument_list|)
 expr_stmt|;
 name|this
@@ -3457,20 +3438,20 @@ argument_list|(
 name|actionSelectAll
 argument_list|)
 expr_stmt|;
-name|buttonOptionUnselectAll
+name|buttonOptionDeselectAll
 operator|=
 operator|new
 name|JButton
 argument_list|()
 expr_stmt|;
-name|buttonOptionUnselectAll
+name|buttonOptionDeselectAll
 operator|.
 name|setMnemonic
 argument_list|(
 literal|'U'
 argument_list|)
 expr_stmt|;
-name|buttonOptionUnselectAll
+name|buttonOptionDeselectAll
 operator|.
 name|setAction
 argument_list|(
@@ -4433,7 +4414,7 @@ name|gbl
 argument_list|,
 name|panelOptions
 argument_list|,
-name|buttonOptionUnselectAll
+name|buttonOptionDeselectAll
 argument_list|,
 name|GridBagConstraints
 operator|.

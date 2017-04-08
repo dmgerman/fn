@@ -198,6 +198,12 @@ specifier|final
 name|String
 name|year
 decl_stmt|;
+DECL|field|azureInstrumentationKey
+specifier|private
+specifier|final
+name|String
+name|azureInstrumentationKey
+decl_stmt|;
 DECL|method|BuildInfo ()
 specifier|public
 name|BuildInfo
@@ -327,6 +333,17 @@ argument_list|,
 literal|""
 argument_list|)
 expr_stmt|;
+name|azureInstrumentationKey
+operator|=
+name|properties
+operator|.
+name|getProperty
+argument_list|(
+literal|"azureInstrumentationKey"
+argument_list|,
+literal|""
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|getVersion ()
 specifier|public
@@ -366,6 +383,16 @@ parameter_list|()
 block|{
 return|return
 name|year
+return|;
+block|}
+DECL|method|getAzureInstrumentationKey ()
+specifier|public
+name|String
+name|getAzureInstrumentationKey
+parameter_list|()
+block|{
+return|return
+name|azureInstrumentationKey
 return|;
 block|}
 block|}

@@ -248,7 +248,7 @@ name|setField
 argument_list|(
 literal|"url"
 argument_list|,
-literal|"https://www.amazon.com/Effective-Java-Joshua-Bloch-ebook/dp/B00B8V09HY%3FSubscriptionId%3D0JYN1NVW651KCA56C102%26tag%3Dtechkie-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3DB00B8V09HY"
+literal|"https://www.amazon.com/Effective-Java-Joshua-Bloch-ebook/dp/B00B8V09HY?SubscriptionId=0JYN1NVW651KCA56C102&tag=techkie-20&linkCode=xm2&camp=2025&creative=165953&creativeASIN=B00B8V09HY"
 argument_list|)
 expr_stmt|;
 name|fetcher
@@ -455,7 +455,7 @@ name|setField
 argument_list|(
 literal|"url"
 argument_list|,
-literal|"https://www.amazon.com/Fundamentals-Business-Process-Management-Marlon/dp/3642434738%3FSubscriptionId%3D0JYN1NVW651KCA56C102%26tag%3Dtechkie-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3D3642434738"
+literal|"https://www.amazon.com/Fundamentals-Business-Process-Management-Marlon/dp/3642434738?SubscriptionId=0JYN1NVW651KCA56C102&tag=techkie-20&linkCode=xm2&camp=2025&creative=165953&creativeASIN=3642434738"
 argument_list|)
 expr_stmt|;
 name|Optional

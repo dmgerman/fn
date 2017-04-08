@@ -138,9 +138,9 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|l10n
+name|bibtex
 operator|.
-name|Localization
+name|DuplicateCheck
 import|;
 end_import
 
@@ -150,9 +150,11 @@ name|org
 operator|.
 name|jabref
 operator|.
-name|model
+name|logic
 operator|.
-name|DuplicateCheck
+name|l10n
+operator|.
+name|Localization
 import|;
 end_import
 

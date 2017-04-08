@@ -447,7 +447,9 @@ init|=
 name|WebFetchers
 operator|.
 name|getIdFetchers
-argument_list|()
+argument_list|(
+name|importFormatPreferences
+argument_list|)
 decl_stmt|;
 name|Set
 argument_list|<

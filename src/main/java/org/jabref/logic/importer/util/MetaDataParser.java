@@ -549,6 +549,11 @@ name|MetaData
 operator|.
 name|GROUPSTREE
 case|:
+case|case
+name|MetaData
+operator|.
+name|GROUPSTREE_LEGACY
+case|:
 name|metaData
 operator|.
 name|setGroups

@@ -38,16 +38,6 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|JDialog
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
 name|JOptionPane
 import|;
 end_import
@@ -71,6 +61,18 @@ operator|.
 name|gui
 operator|.
 name|BasePanel
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|JabRefDialog
 import|;
 end_import
 
@@ -250,7 +252,7 @@ specifier|public
 class|class
 name|MergeEntriesDialog
 extends|extends
-name|JDialog
+name|JabRefDialog
 block|{
 DECL|field|panel
 specifier|private
@@ -309,6 +311,10 @@ argument_list|,
 name|MERGE_ENTRIES
 argument_list|,
 literal|true
+argument_list|,
+name|MergeEntriesDialog
+operator|.
+name|class
 argument_list|)
 expr_stmt|;
 name|this

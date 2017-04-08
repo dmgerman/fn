@@ -106,7 +106,7 @@ name|Pattern
 operator|.
 name|compile
 argument_list|(
-literal|"^[A-Z]"
+literal|"^[^a-z]"
 argument_list|)
 operator|.
 name|asPredicate

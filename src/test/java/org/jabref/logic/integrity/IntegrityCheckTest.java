@@ -919,6 +919,23 @@ name|createContext
 argument_list|(
 literal|"note"
 argument_list|,
+literal|"\\url{someurl}"
+argument_list|)
+argument_list|,
+name|BibDatabaseMode
+operator|.
+name|BIBTEX
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertCorrect
+argument_list|(
+name|withMode
+argument_list|(
+name|createContext
+argument_list|(
+literal|"note"
+argument_list|,
 literal|"lorem ipsum"
 argument_list|)
 argument_list|,
@@ -980,6 +997,23 @@ argument_list|(
 literal|"howpublished"
 argument_list|,
 literal|"lorem ipsum"
+argument_list|)
+argument_list|,
+name|BibDatabaseMode
+operator|.
+name|BIBTEX
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertCorrect
+argument_list|(
+name|withMode
+argument_list|(
+name|createContext
+argument_list|(
+literal|"howpublished"
+argument_list|,
+literal|"\\url{someurl}"
 argument_list|)
 argument_list|,
 name|BibDatabaseMode
