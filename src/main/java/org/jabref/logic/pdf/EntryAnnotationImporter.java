@@ -48,16 +48,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Locale
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|Map
 import|;
 end_import
@@ -202,7 +192,7 @@ expr_stmt|;
 block|}
 comment|/**      * Filter files with a web address containing "www."      *      * @return a list of file parsed files      */
 DECL|method|getFilteredFileList ()
-specifier|public
+specifier|private
 name|List
 argument_list|<
 name|ParsedFileField
@@ -225,19 +215,17 @@ name|parsedFileField
 lambda|->
 name|parsedFileField
 operator|.
-name|getLink
+name|getExtension
 argument_list|()
 operator|.
-name|toLowerCase
+name|equals
 argument_list|(
-name|Locale
+name|Optional
 operator|.
-name|ROOT
+name|of
+argument_list|(
+literal|"pdf"
 argument_list|)
-operator|.
-name|endsWith
-argument_list|(
-literal|".pdf"
 argument_list|)
 argument_list|)
 operator|.
@@ -248,13 +236,8 @@ lambda|->
 operator|!
 name|parsedFileField
 operator|.
-name|getLink
+name|isOnlineLink
 argument_list|()
-operator|.
-name|contains
-argument_list|(
-literal|"www."
-argument_list|)
 argument_list|)
 operator|.
 name|collect
