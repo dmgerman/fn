@@ -28,16 +28,6 @@ name|java
 operator|.
 name|io
 operator|.
-name|File
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
 name|IOException
 import|;
 end_import
@@ -69,6 +59,18 @@ operator|.
 name|net
 operator|.
 name|URISyntaxException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|file
+operator|.
+name|Path
 import|;
 end_import
 
@@ -487,7 +489,7 @@ argument_list|)
 decl_stmt|;
 name|List
 argument_list|<
-name|File
+name|Path
 argument_list|>
 name|fileList
 init|=
@@ -518,7 +520,7 @@ argument_list|)
 decl_stmt|;
 for|for
 control|(
-name|File
+name|Path
 name|f
 range|:
 name|fileList
@@ -530,7 +532,10 @@ name|add
 argument_list|(
 name|f
 operator|.
-name|getPath
+name|toAbsolutePath
+argument_list|()
+operator|.
+name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -547,7 +552,7 @@ name|openFolderAndSelectFile
 argument_list|(
 name|f
 operator|.
-name|getAbsolutePath
+name|toAbsolutePath
 argument_list|()
 argument_list|)
 expr_stmt|;

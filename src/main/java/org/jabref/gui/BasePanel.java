@@ -1754,6 +1754,20 @@ name|org
 operator|.
 name|jabref
 operator|.
+name|model
+operator|.
+name|util
+operator|.
+name|FileHelper
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
 name|preferences
 operator|.
 name|JabRefPreferences
@@ -3996,7 +4010,7 @@ block|{
 specifier|final
 name|List
 argument_list|<
-name|File
+name|Path
 argument_list|>
 name|files
 init|=
@@ -4025,7 +4039,7 @@ decl_stmt|;
 for|for
 control|(
 specifier|final
-name|File
+name|Path
 name|f
 range|:
 name|files
@@ -4039,7 +4053,7 @@ name|openFolderAndSelectFile
 argument_list|(
 name|f
 operator|.
-name|getAbsolutePath
+name|toAbsolutePath
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -13038,7 +13052,7 @@ name|String
 argument_list|>
 name|extension
 init|=
-name|FileUtil
+name|FileHelper
 operator|.
 name|getFileExtension
 argument_list|(

@@ -60,18 +60,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|nio
-operator|.
-name|file
-operator|.
-name|Paths
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|List
@@ -194,12 +182,12 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|openFolderAndSelectFile (String filePath)
+DECL|method|openFolderAndSelectFile (Path filePath)
 specifier|public
 name|void
 name|openFolderAndSelectFile
 parameter_list|(
-name|String
+name|Path
 name|filePath
 parameter_list|)
 throws|throws
@@ -208,12 +196,7 @@ block|{
 name|File
 name|file
 init|=
-name|Paths
-operator|.
-name|get
-argument_list|(
 name|filePath
-argument_list|)
 operator|.
 name|toAbsolutePath
 argument_list|()

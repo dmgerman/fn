@@ -160,6 +160,18 @@ begin_import
 import|import
 name|java
 operator|.
+name|nio
+operator|.
+name|file
+operator|.
+name|Path
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|ArrayList
@@ -380,13 +392,11 @@ name|org
 operator|.
 name|jabref
 operator|.
-name|logic
+name|model
 operator|.
 name|util
 operator|.
-name|io
-operator|.
-name|FileUtil
+name|FileHelper
 import|;
 end_import
 
@@ -713,14 +723,14 @@ literal|"unchecked"
 argument_list|)
 name|List
 argument_list|<
-name|File
+name|Path
 argument_list|>
-name|l
+name|files
 init|=
 operator|(
 name|List
 argument_list|<
-name|File
+name|Path
 argument_list|>
 operator|)
 name|t
@@ -735,7 +745,7 @@ decl_stmt|;
 return|return
 name|handleDraggedFiles
 argument_list|(
-name|l
+name|files
 argument_list|,
 name|dropRow
 argument_list|)
@@ -1265,7 +1275,7 @@ specifier|public
 specifier|static
 name|List
 argument_list|<
-name|File
+name|Path
 argument_list|>
 name|getFilesFromDraggedFilesString
 parameter_list|(
@@ -1294,7 +1304,7 @@ argument_list|)
 decl_stmt|;
 name|List
 argument_list|<
-name|File
+name|Path
 argument_list|>
 name|files
 init|=
@@ -1449,6 +1459,9 @@ operator|.
 name|add
 argument_list|(
 name|f
+operator|.
+name|toPath
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -1486,14 +1499,14 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Handle a List containing File objects for a set of files to import.      *      * @param files A List containing File instances pointing to files.      * @param dropRow @param dropRow The row in the table where the files were dragged.      * @return success status for the operation      */
-DECL|method|handleDraggedFiles (List<File> files, final int dropRow)
+DECL|method|handleDraggedFiles (List<Path> files, final int dropRow)
 specifier|private
 name|boolean
 name|handleDraggedFiles
 parameter_list|(
 name|List
 argument_list|<
-name|File
+name|Path
 argument_list|>
 name|files
 parameter_list|,
@@ -1516,7 +1529,7 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-name|File
+name|Path
 name|file
 range|:
 name|files
@@ -1528,7 +1541,10 @@ name|add
 argument_list|(
 name|file
 operator|.
-name|getAbsolutePath
+name|toAbsolutePath
+argument_list|()
+operator|.
+name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1660,7 +1676,7 @@ name|String
 argument_list|>
 name|extension
 init|=
-name|FileUtil
+name|FileHelper
 operator|.
 name|getFileExtension
 argument_list|(
