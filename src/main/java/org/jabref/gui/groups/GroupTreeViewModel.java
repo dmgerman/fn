@@ -66,6 +66,26 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|SwingUtilities
+import|;
+end_import
+
+begin_import
+import|import
+name|javafx
+operator|.
+name|application
+operator|.
+name|Platform
+import|;
+end_import
+
+begin_import
+import|import
 name|javafx
 operator|.
 name|beans
@@ -792,6 +812,13 @@ name|GroupNodeViewModel
 name|parent
 parameter_list|)
 block|{
+name|SwingUtilities
+operator|.
+name|invokeLater
+argument_list|(
+parameter_list|()
+lambda|->
+block|{
 name|Optional
 argument_list|<
 name|AbstractGroup
@@ -850,6 +877,9 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
+argument_list|)
+expr_stmt|;
+block|}
 comment|/**      * Opens "Edit Group Dialog" and changes the given group to the edited one.      */
 DECL|method|editGroup (GroupNodeViewModel oldGroup)
 specifier|public
@@ -859,6 +889,13 @@ parameter_list|(
 name|GroupNodeViewModel
 name|oldGroup
 parameter_list|)
+block|{
+name|SwingUtilities
+operator|.
+name|invokeLater
+argument_list|(
+parameter_list|()
+lambda|->
 block|{
 name|Optional
 argument_list|<
@@ -888,6 +925,13 @@ operator|.
 name|ifPresent
 argument_list|(
 name|group
+lambda|->
+block|{
+name|Platform
+operator|.
+name|runLater
+argument_list|(
+parameter_list|()
 lambda|->
 block|{
 comment|// TODO: Keep assignments
@@ -991,6 +1035,12 @@ operator|.
 name|getName
 argument_list|()
 argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+argument_list|)
+expr_stmt|;
+block|}
 argument_list|)
 expr_stmt|;
 block|}
