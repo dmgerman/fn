@@ -32,6 +32,30 @@ name|List
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|strings
+operator|.
+name|StringUtil
+import|;
+end_import
+
 begin_comment
 comment|/**  * Utility class for everything related to months.  */
 end_comment
@@ -528,7 +552,9 @@ operator|.
 name|NULL_OBJECT
 return|;
 block|}
-comment|/**      * This method accepts three types of months given:      * - Single and Double Digit months from 1 to 12 (01 to 12)      * - 3 Digit BibTex strings (jan, feb, mar...)      * - Full English Month identifiers.      *      * @param value the given value      * @return the corresponding Month instance      */
+comment|/**      * @deprecated use {@link #parse(String)} instead      */
+annotation|@
+name|Deprecated
 DECL|method|getMonth (String value)
 specifier|public
 specifier|static
@@ -539,17 +565,49 @@ name|String
 name|value
 parameter_list|)
 block|{
-if|if
-condition|(
-name|value
-operator|==
-literal|null
-condition|)
-block|{
 return|return
+name|parse
+argument_list|(
+name|value
+argument_list|)
+operator|.
+name|orElse
+argument_list|(
 name|MonthUtil
 operator|.
 name|NULL_OBJECT
+argument_list|)
+return|;
+block|}
+comment|/**      * This method accepts three types of months:      * - Single and Double Digit months from 1 to 12 (01 to 12)      * - 3 Digit BibTex strings (jan, feb, mar...) possibly with # prepended      * - Full English Month identifiers.      *      * @param value the given value      * @return the corresponding Month instance      */
+DECL|method|parse (String value)
+specifier|public
+specifier|static
+name|Optional
+argument_list|<
+name|Month
+argument_list|>
+name|parse
+parameter_list|(
+name|String
+name|value
+parameter_list|)
+block|{
+if|if
+condition|(
+name|StringUtil
+operator|.
+name|isBlank
+argument_list|(
+name|value
+argument_list|)
+condition|)
+block|{
+return|return
+name|Optional
+operator|.
+name|empty
+argument_list|()
 return|;
 block|}
 comment|// Much more liberal matching covering most known abbreviations etc.
@@ -609,7 +667,12 @@ argument_list|()
 condition|)
 block|{
 return|return
+name|Optional
+operator|.
+name|of
+argument_list|(
 name|month
+argument_list|)
 return|;
 block|}
 try|try
@@ -625,11 +688,16 @@ name|value
 argument_list|)
 decl_stmt|;
 return|return
+name|Optional
+operator|.
+name|of
+argument_list|(
 name|MonthUtil
 operator|.
 name|getMonthByNumber
 argument_list|(
 name|number
+argument_list|)
 argument_list|)
 return|;
 block|}
@@ -640,9 +708,10 @@ name|e
 parameter_list|)
 block|{
 return|return
-name|MonthUtil
+name|Optional
 operator|.
-name|NULL_OBJECT
+name|empty
+argument_list|()
 return|;
 block|}
 block|}
