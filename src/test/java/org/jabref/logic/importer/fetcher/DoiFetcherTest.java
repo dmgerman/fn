@@ -237,7 +237,7 @@ name|setField
 argument_list|(
 literal|"publisher"
 argument_list|,
-literal|"Wiley-Blackwell"
+literal|"Wiley Publishing, Inc."
 argument_list|)
 expr_stmt|;
 name|bibEntryBurd2011
@@ -333,7 +333,7 @@ name|setField
 argument_list|(
 literal|"publisher"
 argument_list|,
-literal|"Institute of Electrical and Electronics Engineers ({IEEE})"
+literal|"{IEEE}"
 argument_list|)
 expr_stmt|;
 name|bibEntryDecker2007
