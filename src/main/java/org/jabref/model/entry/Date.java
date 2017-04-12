@@ -421,8 +421,6 @@ argument_list|)
 decl_stmt|;
 name|Optional
 argument_list|<
-name|MonthUtil
-operator|.
 name|Month
 argument_list|>
 name|month
@@ -431,7 +429,7 @@ name|monthValue
 operator|.
 name|flatMap
 argument_list|(
-name|MonthUtil
+name|Month
 operator|::
 name|parse
 argument_list|)
@@ -497,7 +495,8 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|number
+name|getNumber
+argument_list|()
 argument_list|,
 name|day
 operator|.
@@ -527,7 +526,8 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|number
+name|getNumber
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

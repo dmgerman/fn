@@ -348,7 +348,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|MonthUtil
+name|Month
 import|;
 end_import
 
@@ -1701,15 +1701,13 @@ operator|>
 literal|4
 condition|)
 block|{
-name|entry
-operator|.
-name|setField
-argument_list|(
-name|FieldName
-operator|.
-name|MONTH
-argument_list|,
-name|MonthUtil
+name|Optional
+argument_list|<
+name|Month
+argument_list|>
+name|month
+init|=
+name|Month
 operator|.
 name|getMonthByIndex
 argument_list|(
@@ -1722,8 +1720,14 @@ operator|.
 name|MONTH
 argument_list|)
 argument_list|)
+decl_stmt|;
+name|month
 operator|.
-name|bibtexFormat
+name|ifPresent
+argument_list|(
+name|entry
+operator|::
+name|setMonth
 argument_list|)
 expr_stmt|;
 block|}

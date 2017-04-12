@@ -306,7 +306,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|MonthUtil
+name|Month
 import|;
 end_import
 
@@ -2071,38 +2071,34 @@ block|}
 block|}
 comment|// If we get to this point, the string has obviously not been defined locally.
 comment|// Check if one of the standard BibTeX month strings has been used:
-name|MonthUtil
-operator|.
+name|Optional
+argument_list|<
 name|Month
+argument_list|>
 name|month
 init|=
-name|MonthUtil
+name|Month
 operator|.
 name|getMonthByShortName
 argument_list|(
 name|label
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
-name|month
-operator|.
-name|isValid
-argument_list|()
-condition|)
-block|{
 return|return
 name|month
 operator|.
-name|fullName
-return|;
-block|}
-else|else
-block|{
-return|return
+name|map
+argument_list|(
+name|Month
+operator|::
+name|getFullName
+argument_list|)
+operator|.
+name|orElse
+argument_list|(
 literal|null
+argument_list|)
 return|;
-block|}
 block|}
 DECL|method|resolveContent (String result, Set<String> usedIds, Set<String> allUsedIds)
 specifier|private
