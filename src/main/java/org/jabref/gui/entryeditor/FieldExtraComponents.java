@@ -132,18 +132,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|Executors
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|swing
@@ -245,6 +233,16 @@ operator|.
 name|jabref
 operator|.
 name|Globals
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|JabRefExecutorService
 import|;
 end_import
 
@@ -1413,10 +1411,9 @@ argument_list|(
 name|actionEvent
 lambda|->
 block|{
-name|Executors
+name|JabRefExecutorService
 operator|.
-name|newSingleThreadExecutor
-argument_list|()
+name|INSTANCE
 operator|.
 name|execute
 argument_list|(
