@@ -262,6 +262,20 @@ name|org
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
+name|groups
+operator|.
+name|DefaultGroupsFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
 name|preferences
 operator|.
 name|JabRefPreferences
@@ -1794,22 +1808,19 @@ block|,
 comment|/* css: label-outline */
 DECL|enumConstant|ALL_ENTRIES_GROUP_ICON
 name|ALL_ENTRIES_GROUP_ICON
-argument_list|(
-literal|"\uF1B8"
-argument_list|)
-block|,
-comment|/* css: database */
+parameter_list|(
+name|DefaultGroupsFactory
+operator|.
+name|ALL_ENTRIES_GROUP_DEFAULT_ICON
+parameter_list|)
+operator|,
 comment|// STILL MISSING:
 DECL|enumConstant|GROUP_REGULAR
-name|GROUP_REGULAR
-argument_list|(
-literal|"\uF4E6"
-argument_list|,
-name|Color
-operator|.
-name|RED
-argument_list|)
-block|;
+constructor|GROUP_REGULAR("\uF4E6"
+operator|,
+constructor|Color.RED
+block|)
+enum|;
 DECL|field|code
 specifier|private
 specifier|final
@@ -1958,6 +1969,9 @@ name|code
 return|;
 block|}
 block|}
+end_class
+
+begin_class
 DECL|class|FontBasedIcon
 specifier|public
 specifier|static
@@ -2278,8 +2292,8 @@ argument_list|)
 return|;
 block|}
 block|}
-block|}
 end_class
 
+unit|}
 end_unit
 
