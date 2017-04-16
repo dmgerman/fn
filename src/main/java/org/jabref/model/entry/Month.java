@@ -57,7 +57,7 @@ literal|"01"
 argument_list|,
 literal|"#jan#"
 argument_list|,
-literal|0
+literal|1
 argument_list|)
 block|,
 DECL|enumConstant|FEBRUARY
@@ -71,7 +71,7 @@ literal|"02"
 argument_list|,
 literal|"#feb#"
 argument_list|,
-literal|1
+literal|2
 argument_list|)
 block|,
 DECL|enumConstant|MARCH
@@ -85,7 +85,7 @@ literal|"03"
 argument_list|,
 literal|"#mar#"
 argument_list|,
-literal|2
+literal|3
 argument_list|)
 block|,
 DECL|enumConstant|APRIL
@@ -99,7 +99,7 @@ literal|"04"
 argument_list|,
 literal|"#apr#"
 argument_list|,
-literal|3
+literal|4
 argument_list|)
 block|,
 DECL|enumConstant|MAY
@@ -113,7 +113,7 @@ literal|"05"
 argument_list|,
 literal|"#may#"
 argument_list|,
-literal|4
+literal|5
 argument_list|)
 block|,
 DECL|enumConstant|JUNE
@@ -127,7 +127,7 @@ literal|"06"
 argument_list|,
 literal|"#jun#"
 argument_list|,
-literal|5
+literal|6
 argument_list|)
 block|,
 DECL|enumConstant|JULY
@@ -141,7 +141,7 @@ literal|"07"
 argument_list|,
 literal|"#jul#"
 argument_list|,
-literal|6
+literal|7
 argument_list|)
 block|,
 DECL|enumConstant|AUGUST
@@ -155,7 +155,7 @@ literal|"08"
 argument_list|,
 literal|"#aug#"
 argument_list|,
-literal|7
+literal|8
 argument_list|)
 block|,
 DECL|enumConstant|SEPTEMBER
@@ -169,7 +169,7 @@ literal|"09"
 argument_list|,
 literal|"#sep#"
 argument_list|,
-literal|8
+literal|9
 argument_list|)
 block|,
 DECL|enumConstant|OCTOBER
@@ -183,7 +183,7 @@ literal|"10"
 argument_list|,
 literal|"#oct#"
 argument_list|,
-literal|9
+literal|10
 argument_list|)
 block|,
 DECL|enumConstant|NOVEMBER
@@ -197,7 +197,7 @@ literal|"11"
 argument_list|,
 literal|"#nov#"
 argument_list|,
-literal|10
+literal|11
 argument_list|)
 block|,
 DECL|enumConstant|DECEMBER
@@ -211,7 +211,7 @@ literal|"12"
 argument_list|,
 literal|"#dec#"
 argument_list|,
-literal|11
+literal|12
 argument_list|)
 block|;
 DECL|field|fullName
@@ -238,13 +238,13 @@ specifier|final
 name|String
 name|bibtexFormat
 decl_stmt|;
-DECL|field|index
+DECL|field|number
 specifier|private
 specifier|final
 name|int
-name|index
+name|number
 decl_stmt|;
-DECL|method|Month (String fullName, String shortName, String twoDigitNumber, String bibtexFormat, int index)
+DECL|method|Month (String fullName, String shortName, String twoDigitNumber, String bibtexFormat, int number)
 name|Month
 parameter_list|(
 name|String
@@ -260,7 +260,7 @@ name|String
 name|bibtexFormat
 parameter_list|,
 name|int
-name|index
+name|number
 parameter_list|)
 block|{
 name|this
@@ -289,9 +289,9 @@ name|bibtexFormat
 expr_stmt|;
 name|this
 operator|.
-name|index
+name|number
 operator|=
-name|index
+name|number
 expr_stmt|;
 block|}
 comment|/**      * Find month by one-based number.      * If the number is not in the valid range, then an empty Optional is returned.      *      * @param number 1-12 is valid      */
@@ -306,31 +306,6 @@ name|getMonthByNumber
 parameter_list|(
 name|int
 name|number
-parameter_list|)
-block|{
-return|return
-name|Month
-operator|.
-name|getMonthByIndex
-argument_list|(
-name|number
-operator|-
-literal|1
-argument_list|)
-return|;
-block|}
-comment|/**      * Find month by zero-based index.      * If the index is not in the valid range, then an empty Optional is returned.      *      * @param index 0-11 is valid      */
-DECL|method|getMonthByIndex (int index)
-specifier|public
-specifier|static
-name|Optional
-argument_list|<
-name|Month
-argument_list|>
-name|getMonthByIndex
-parameter_list|(
-name|int
-name|index
 parameter_list|)
 block|{
 for|for
@@ -348,9 +323,9 @@ if|if
 condition|(
 name|month
 operator|.
-name|index
+name|number
 operator|==
-name|index
+name|number
 condition|)
 block|{
 return|return
@@ -573,16 +548,6 @@ return|return
 name|bibtexFormat
 return|;
 block|}
-DECL|method|getIndex ()
-specifier|public
-name|int
-name|getIndex
-parameter_list|()
-block|{
-return|return
-name|index
-return|;
-block|}
 DECL|method|getNumber ()
 specifier|public
 name|int
@@ -590,9 +555,7 @@ name|getNumber
 parameter_list|()
 block|{
 return|return
-name|index
-operator|+
-literal|1
+name|number
 return|;
 block|}
 DECL|method|getFullName ()
