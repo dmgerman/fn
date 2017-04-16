@@ -4800,11 +4800,25 @@ name|srcString
 expr_stmt|;
 comment|// Set the current Entry to be selected.
 comment|// Fixes the bug of losing selection after, e.g. an autogeneration of a BibTeX key.
+comment|// This is also important for the "select all"-action (else it will always select the first entry except it is already)
+name|SwingUtilities
+operator|.
+name|invokeLater
+argument_list|(
+parameter_list|()
+lambda|->
+block|{
 name|panel
 operator|.
-name|highlightEntry
+name|getMainTable
+argument_list|()
+operator|.
+name|ensureVisible
 argument_list|(
 name|entry
+argument_list|)
+expr_stmt|;
+block|}
 argument_list|)
 expr_stmt|;
 block|}
@@ -8366,6 +8380,7 @@ expr_stmt|;
 block|}
 comment|// Make sure we scroll to the entry if it moved in the table.
 comment|// Should only be done if this editor is currently showing:
+comment|// don't select the current entry again (eg use BasePanel#highlightEntry} in case another entry was selected)
 if|if
 condition|(
 operator|!
@@ -8375,11 +8390,24 @@ name|isShowing
 argument_list|()
 condition|)
 block|{
+name|SwingUtilities
+operator|.
+name|invokeLater
+argument_list|(
+parameter_list|()
+lambda|->
+block|{
 name|panel
 operator|.
-name|highlightEntry
+name|getMainTable
+argument_list|()
+operator|.
+name|ensureVisible
 argument_list|(
 name|entry
+argument_list|)
+expr_stmt|;
+block|}
 argument_list|)
 expr_stmt|;
 block|}
