@@ -404,12 +404,7 @@ name|getSelectedEntries
 parameter_list|()
 block|{
 return|return
-name|FXCollections
-operator|.
-name|unmodifiableObservableList
-argument_list|(
 name|selectedEntries
-argument_list|)
 return|;
 block|}
 DECL|method|setSelectedEntries (List<BibEntry> newSelectedEntries)
@@ -426,12 +421,7 @@ parameter_list|)
 block|{
 name|selectedEntries
 operator|.
-name|clear
-argument_list|()
-expr_stmt|;
-name|selectedEntries
-operator|.
-name|addAll
+name|setAll
 argument_list|(
 name|newSelectedEntries
 argument_list|)
@@ -508,6 +498,22 @@ argument_list|(
 name|database
 argument_list|)
 expr_stmt|;
+block|}
+DECL|method|getActiveDatabase ()
+specifier|public
+name|Optional
+argument_list|<
+name|BibDatabaseContext
+argument_list|>
+name|getActiveDatabase
+parameter_list|()
+block|{
+return|return
+name|activeDatabase
+operator|.
+name|get
+argument_list|()
+return|;
 block|}
 DECL|method|getEntriesInCurrentDatabase ()
 specifier|public

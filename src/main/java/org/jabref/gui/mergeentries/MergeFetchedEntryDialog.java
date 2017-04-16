@@ -90,16 +90,6 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|JDialog
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
 name|JSeparator
 import|;
 end_import
@@ -113,6 +103,18 @@ operator|.
 name|gui
 operator|.
 name|BasePanel
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|JabRefDialog
 import|;
 end_import
 
@@ -306,7 +308,7 @@ specifier|public
 class|class
 name|MergeFetchedEntryDialog
 extends|extends
-name|JDialog
+name|JabRefDialog
 block|{
 DECL|field|panel
 specifier|private
@@ -395,6 +397,10 @@ name|type
 argument_list|)
 argument_list|,
 literal|true
+argument_list|,
+name|MergeFetchedEntryDialog
+operator|.
+name|class
 argument_list|)
 expr_stmt|;
 name|this

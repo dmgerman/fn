@@ -231,7 +231,7 @@ name|setField
 argument_list|(
 literal|"publisher"
 argument_list|,
-literal|"Institute of Electrical and Electronics Engineers ({IEEE})"
+literal|"{IEEE}"
 argument_list|)
 expr_stmt|;
 name|bibEntryBischof2009

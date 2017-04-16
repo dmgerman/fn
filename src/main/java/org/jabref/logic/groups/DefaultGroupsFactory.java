@@ -46,6 +46,15 @@ specifier|public
 class|class
 name|DefaultGroupsFactory
 block|{
+DECL|field|ALL_ENTRIES_GROUP_DEFAULT_ICON
+specifier|public
+specifier|static
+name|String
+name|ALL_ENTRIES_GROUP_DEFAULT_ICON
+init|=
+literal|"\uF1B8"
+decl_stmt|;
+comment|/* css: database */
 DECL|method|DefaultGroupsFactory ()
 specifier|private
 name|DefaultGroupsFactory
@@ -76,20 +85,7 @@ name|group
 operator|.
 name|setIconCode
 argument_list|(
-name|org
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|IconTheme
-operator|.
-name|JabRefIcon
-operator|.
-name|ALL_ENTRIES_GROUP_ICON
-operator|.
-name|getCode
-argument_list|()
+name|ALL_ENTRIES_GROUP_DEFAULT_ICON
 argument_list|)
 expr_stmt|;
 return|return
