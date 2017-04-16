@@ -480,6 +480,24 @@ operator|new
 name|ContentSelectors
 argument_list|()
 decl_stmt|;
+DECL|field|unkownMetaData
+specifier|private
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|List
+argument_list|<
+name|String
+argument_list|>
+argument_list|>
+name|unkownMetaData
+init|=
+operator|new
+name|HashMap
+argument_list|<>
+argument_list|()
+decl_stmt|;
 comment|/**      * Constructs an empty metadata.      */
 DECL|method|MetaData ()
 specifier|public
@@ -642,7 +660,7 @@ return|return
 name|bibtexKeyPattern
 return|;
 block|}
-comment|/**      * Updates the stored key patterns to the given key patterns.      *      * @param bibtexKeyPattern the key patterns to update to.<br />      *                     A reference to this object is stored internally and is returned at getCiteKeyPattern();      */
+comment|/**      * Updates the stored key patterns to the given key patterns.      *      * @param bibtexKeyPattern the key patterns to update to.<br /> A reference to this object is stored internally and      *                         is returned at getCiteKeyPattern();      */
 DECL|method|setCiteKeyPattern (AbstractBibtexKeyPattern bibtexKeyPattern)
 specifier|public
 name|void
@@ -1371,6 +1389,68 @@ argument_list|(
 name|userFileDirectory
 argument_list|)
 return|;
+block|}
+DECL|method|getUnknownMetaData ()
+specifier|public
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|List
+argument_list|<
+name|String
+argument_list|>
+argument_list|>
+name|getUnknownMetaData
+parameter_list|()
+block|{
+return|return
+name|Collections
+operator|.
+name|unmodifiableMap
+argument_list|(
+name|unkownMetaData
+argument_list|)
+return|;
+block|}
+DECL|method|putUnkownMetaDataItem (String key, List<String> value)
+specifier|public
+name|void
+name|putUnkownMetaDataItem
+parameter_list|(
+name|String
+name|key
+parameter_list|,
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|value
+parameter_list|)
+block|{
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|key
+argument_list|)
+expr_stmt|;
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|value
+argument_list|)
+expr_stmt|;
+name|unkownMetaData
+operator|.
+name|put
+argument_list|(
+name|key
+argument_list|,
+name|value
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Override
