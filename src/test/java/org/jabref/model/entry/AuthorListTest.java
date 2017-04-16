@@ -42,10 +42,6 @@ name|Test
 import|;
 end_import
 
-begin_comment
-comment|/**  * @author Christopher Oezbek<oezi@oezi.de>  * @version 0.1 - Still fails for stuff in AuthorList that is ambiguous  * @see AuthorList Class tested.  */
-end_comment
-
 begin_class
 DECL|class|AuthorListTest
 specifier|public
@@ -4623,6 +4619,155 @@ operator|.
 name|parse
 argument_list|(
 literal|"H{e}lene Fiaux"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * This tests the issue described at https://github.com/JabRef/jabref/pull/2669#issuecomment-288519458      */
+annotation|@
+name|Test
+DECL|method|correctNamesWithOneComma ()
+specifier|public
+name|void
+name|correctNamesWithOneComma
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|Author
+name|expected
+init|=
+operator|new
+name|Author
+argument_list|(
+literal|"Alexander der GroÃe"
+argument_list|,
+literal|"A. d. G."
+argument_list|,
+literal|null
+argument_list|,
+literal|"Canon der Barbar"
+argument_list|,
+literal|null
+argument_list|)
+decl_stmt|;
+name|Assert
+operator|.
+name|assertEquals
+argument_list|(
+operator|new
+name|AuthorList
+argument_list|(
+name|expected
+argument_list|)
+argument_list|,
+name|AuthorList
+operator|.
+name|parse
+argument_list|(
+literal|"Canon der Barbar, Alexander der GroÃe"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|expected
+operator|=
+operator|new
+name|Author
+argument_list|(
+literal|"Alexander H. G."
+argument_list|,
+literal|"A. H. G."
+argument_list|,
+literal|null
+argument_list|,
+literal|"Rinnooy Kan"
+argument_list|,
+literal|null
+argument_list|)
+expr_stmt|;
+name|Assert
+operator|.
+name|assertEquals
+argument_list|(
+operator|new
+name|AuthorList
+argument_list|(
+name|expected
+argument_list|)
+argument_list|,
+name|AuthorList
+operator|.
+name|parse
+argument_list|(
+literal|"Rinnooy Kan, Alexander H. G."
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|expected
+operator|=
+operator|new
+name|Author
+argument_list|(
+literal|"Alexander Hendrik George"
+argument_list|,
+literal|"A. H. G."
+argument_list|,
+literal|null
+argument_list|,
+literal|"Rinnooy Kan"
+argument_list|,
+literal|null
+argument_list|)
+expr_stmt|;
+name|Assert
+operator|.
+name|assertEquals
+argument_list|(
+operator|new
+name|AuthorList
+argument_list|(
+name|expected
+argument_list|)
+argument_list|,
+name|AuthorList
+operator|.
+name|parse
+argument_list|(
+literal|"Rinnooy Kan, Alexander Hendrik George"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|expected
+operator|=
+operator|new
+name|Author
+argument_list|(
+literal|"JosÃ© MarÃ­a"
+argument_list|,
+literal|"J. M."
+argument_list|,
+literal|null
+argument_list|,
+literal|"Rodriguez Fernandez"
+argument_list|,
+literal|null
+argument_list|)
+expr_stmt|;
+name|Assert
+operator|.
+name|assertEquals
+argument_list|(
+operator|new
+name|AuthorList
+argument_list|(
+name|expected
+argument_list|)
+argument_list|,
+name|AuthorList
+operator|.
+name|parse
+argument_list|(
+literal|"Rodriguez Fernandez, JosÃ© MarÃ­a"
 argument_list|)
 argument_list|)
 expr_stmt|;
