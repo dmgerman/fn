@@ -82,6 +82,11 @@ specifier|public
 class|class
 name|BackupUIManager
 block|{
+DECL|method|BackupUIManager ()
+specifier|private
+name|BackupUIManager
+parameter_list|()
+block|{     }
 DECL|method|showRestoreBackupDialog (JFrame frame, Path originalPath)
 specifier|public
 specifier|static

@@ -250,6 +250,11 @@ specifier|public
 class|class
 name|CrossrefFetcherEvaluator
 block|{
+DECL|method|CrossrefFetcherEvaluator ()
+specifier|private
+name|CrossrefFetcherEvaluator
+parameter_list|()
+block|{     }
 DECL|method|main (String[] args)
 specifier|public
 specifier|static

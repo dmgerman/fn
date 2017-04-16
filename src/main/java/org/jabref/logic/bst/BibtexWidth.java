@@ -977,6 +977,11 @@ literal|500
 expr_stmt|;
 block|}
 block|}
+DECL|method|BibtexWidth ()
+specifier|private
+name|BibtexWidth
+parameter_list|()
+block|{     }
 DECL|method|getSpecialCharWidth (char[] c, int pos)
 specifier|private
 specifier|static

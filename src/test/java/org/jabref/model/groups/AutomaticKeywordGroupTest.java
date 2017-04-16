@@ -99,6 +99,8 @@ argument_list|,
 literal|"keywords"
 argument_list|,
 literal|','
+argument_list|,
+literal|'>'
 argument_list|)
 decl_stmt|;
 name|BibEntry
@@ -141,7 +143,7 @@ literal|"A"
 argument_list|,
 name|GroupHierarchyType
 operator|.
-name|INDEPENDENT
+name|INCLUDING
 argument_list|,
 literal|"keywords"
 argument_list|,
@@ -171,7 +173,7 @@ literal|"B"
 argument_list|,
 name|GroupHierarchyType
 operator|.
-name|INDEPENDENT
+name|INCLUDING
 argument_list|,
 literal|"keywords"
 argument_list|,

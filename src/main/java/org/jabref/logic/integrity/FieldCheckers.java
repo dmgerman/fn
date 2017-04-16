@@ -124,6 +124,11 @@ specifier|public
 class|class
 name|FieldCheckers
 block|{
+DECL|method|FieldCheckers ()
+specifier|private
+name|FieldCheckers
+parameter_list|()
+block|{     }
 DECL|method|getAll (BibDatabaseContext databaseContext, FileDirectoryPreferences fileDirectoryPreferences)
 specifier|static
 name|List

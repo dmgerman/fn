@@ -170,16 +170,6 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|JDialog
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
 name|JLabel
 import|;
 end_import
@@ -303,7 +293,7 @@ DECL|class|ReplaceStringDialog
 class|class
 name|ReplaceStringDialog
 extends|extends
-name|JDialog
+name|JabRefDialog
 block|{
 DECL|field|fieldsField
 specifier|private
@@ -447,6 +437,10 @@ literal|"Replace string"
 argument_list|)
 argument_list|,
 literal|true
+argument_list|,
+name|ReplaceStringDialog
+operator|.
+name|class
 argument_list|)
 expr_stmt|;
 name|ButtonGroup

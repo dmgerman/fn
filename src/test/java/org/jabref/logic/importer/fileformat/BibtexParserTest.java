@@ -4572,10 +4572,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|parseWarnsAboutEntryWithoutBibtexKey ()
+DECL|method|parseNotWarnsAboutEntryWithoutBibtexKey ()
 specifier|public
 name|void
-name|parseWarnsAboutEntryWithoutBibtexKey
+name|parseNotWarnsAboutEntryWithoutBibtexKey
 parameter_list|()
 throws|throws
 name|IOException
@@ -4594,7 +4594,7 @@ literal|"@article{,author={Ed von Test}}"
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|assertTrue
+name|assertFalse
 argument_list|(
 name|result
 operator|.

@@ -312,6 +312,11 @@ specifier|public
 class|class
 name|WebFetchers
 block|{
+DECL|method|WebFetchers ()
+specifier|private
+name|WebFetchers
+parameter_list|()
+block|{     }
 DECL|method|getIdBasedFetcherForField (String field, ImportFormatPreferences preferences)
 specifier|public
 specifier|static
@@ -814,7 +819,7 @@ return|return
 name|list
 return|;
 block|}
-DECL|method|getIdFetchers ()
+DECL|method|getIdFetchers (ImportFormatPreferences importFormatPreferences)
 specifier|public
 specifier|static
 name|List
@@ -822,7 +827,10 @@ argument_list|<
 name|IdFetcher
 argument_list|>
 name|getIdFetchers
-parameter_list|()
+parameter_list|(
+name|ImportFormatPreferences
+name|importFormatPreferences
+parameter_list|)
 block|{
 name|ArrayList
 argument_list|<
@@ -842,6 +850,17 @@ argument_list|(
 operator|new
 name|CrossRef
 argument_list|()
+argument_list|)
+expr_stmt|;
+name|list
+operator|.
+name|add
+argument_list|(
+operator|new
+name|ArXiv
+argument_list|(
+name|importFormatPreferences
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|list

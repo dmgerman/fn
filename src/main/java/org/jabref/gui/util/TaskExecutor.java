@@ -47,6 +47,12 @@ argument_list|>
 name|task
 parameter_list|)
 function_decl|;
+comment|/**      * Shutdown the task executor.      */
+DECL|method|shutdown ()
+name|void
+name|shutdown
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

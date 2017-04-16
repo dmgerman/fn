@@ -208,6 +208,11 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+DECL|method|OpenDatabase ()
+specifier|private
+name|OpenDatabase
+parameter_list|()
+block|{     }
 comment|/**      * Load database (bib-file)      *      * @param name Name of the BIB-file to open      * @return ParserResult which never is null      */
 DECL|method|loadDatabase (String name, ImportFormatPreferences importFormatPreferences)
 specifier|public

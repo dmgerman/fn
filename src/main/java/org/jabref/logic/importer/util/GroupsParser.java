@@ -260,6 +260,11 @@ specifier|public
 class|class
 name|GroupsParser
 block|{
+DECL|method|GroupsParser ()
+specifier|private
+name|GroupsParser
+parameter_list|()
+block|{     }
 DECL|method|importGroups (List<String> orderedData, Character keywordSeparator)
 specifier|public
 specifier|static
@@ -915,7 +920,20 @@ name|GROUP_QUOTE_CHAR
 argument_list|)
 decl_stmt|;
 name|Character
-name|separator
+name|delimiter
+init|=
+name|tok
+operator|.
+name|nextToken
+argument_list|()
+operator|.
+name|charAt
+argument_list|(
+literal|0
+argument_list|)
+decl_stmt|;
+name|Character
+name|hierarchicalDelimiter
 init|=
 name|tok
 operator|.
@@ -939,7 +957,9 @@ name|context
 argument_list|,
 name|field
 argument_list|,
-name|separator
+name|delimiter
+argument_list|,
+name|hierarchicalDelimiter
 argument_list|)
 decl_stmt|;
 name|addGroupDetails

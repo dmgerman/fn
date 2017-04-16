@@ -140,6 +140,11 @@ name|HTML_END
 init|=
 literal|"</body></html>"
 decl_stmt|;
+DECL|method|DiffHighlighting ()
+specifier|private
+name|DiffHighlighting
+parameter_list|()
+block|{     }
 DECL|method|generateDiffHighlighting (String baseString, String modifiedString, String separator)
 specifier|public
 specifier|static

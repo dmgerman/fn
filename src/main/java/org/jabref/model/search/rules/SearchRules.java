@@ -34,6 +34,11 @@ specifier|public
 class|class
 name|SearchRules
 block|{
+DECL|method|SearchRules ()
+specifier|private
+name|SearchRules
+parameter_list|()
+block|{     }
 comment|/**      * Returns the appropriate search rule that fits best to the given parameter.      */
 DECL|method|getSearchRuleByQuery (String query, boolean caseSensitive, boolean regex)
 specifier|public

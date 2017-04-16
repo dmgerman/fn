@@ -183,7 +183,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Search class for files.<br>  *<br>  * This class provides some functionality to search in a {@link BibDatabase} for  * files.<br>   * @author Nosh&Dan  */
+comment|/**  * Search class for files.<br>  *<br>  * This class provides some functionality to search in a {@link BibDatabase} for  * files.<br>  */
 end_comment
 
 begin_class

@@ -86,6 +86,11 @@ specifier|public
 class|class
 name|SearchDescribers
 block|{
+DECL|method|SearchDescribers ()
+specifier|private
+name|SearchDescribers
+parameter_list|()
+block|{     }
 comment|/**      * Get the search describer for a given search rule and a given search query.      *      * @param searchRule the rule that encodes the search logic      * @param query      the search query      * @return the search describer to turn the search into something human understandable      */
 DECL|method|getSearchDescriberFor (SearchRule searchRule, String query)
 specifier|public

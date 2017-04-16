@@ -562,6 +562,11 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
+DECL|method|Formatters ()
+specifier|private
+name|Formatters
+parameter_list|()
+block|{     }
 DECL|method|getFormatterForModifier (String modifier)
 specifier|public
 specifier|static

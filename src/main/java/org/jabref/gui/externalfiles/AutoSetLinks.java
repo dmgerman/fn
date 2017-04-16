@@ -424,6 +424,11 @@ specifier|public
 class|class
 name|AutoSetLinks
 block|{
+DECL|method|AutoSetLinks ()
+specifier|private
+name|AutoSetLinks
+parameter_list|()
+block|{     }
 comment|/**      * Shortcut method if links are set without using the GUI      *      * @param entries  the entries for which links should be set      * @param databaseContext the database for which links are set      */
 DECL|method|autoSetLinks (List<BibEntry> entries, BibDatabaseContext databaseContext)
 specifier|public

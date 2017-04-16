@@ -78,6 +78,11 @@ specifier|public
 class|class
 name|BibDatabases
 block|{
+DECL|method|BibDatabases ()
+specifier|private
+name|BibDatabases
+parameter_list|()
+block|{     }
 comment|/**      * Gets a collection of bibentries and sets an ID for every entry. After that      * all entries will be inserted into a new BibDatabase.      *      * @param bibentries a collection that contains {@link BibEntry}      * @return BibDatabase that contains the entries      */
 DECL|method|createDatabase (Collection<BibEntry> bibentries)
 specifier|public

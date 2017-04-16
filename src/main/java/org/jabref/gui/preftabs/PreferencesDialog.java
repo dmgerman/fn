@@ -164,16 +164,6 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|JDialog
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
 name|JList
 import|;
 end_import
@@ -259,6 +249,18 @@ operator|.
 name|gui
 operator|.
 name|GUIGlobals
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|JabRefDialog
 import|;
 end_import
 
@@ -476,7 +478,7 @@ specifier|public
 class|class
 name|PreferencesDialog
 extends|extends
-name|JDialog
+name|JabRefDialog
 block|{
 DECL|field|LOGGER
 specifier|private
@@ -594,6 +596,10 @@ literal|"JabRef preferences"
 argument_list|)
 argument_list|,
 literal|false
+argument_list|,
+name|PreferencesDialog
+operator|.
+name|class
 argument_list|)
 expr_stmt|;
 name|JabRefPreferences

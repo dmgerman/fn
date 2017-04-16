@@ -92,6 +92,11 @@ specifier|public
 class|class
 name|CustomEntryTypesManager
 block|{
+DECL|method|CustomEntryTypesManager ()
+specifier|private
+name|CustomEntryTypesManager
+parameter_list|()
+block|{     }
 comment|/**      * Iterate through all entry types, and store those that are      * custom defined to preferences. This method is called from      * JabRefFrame when the program closes.      */
 DECL|method|saveCustomEntryTypes (JabRefPreferences prefs)
 specifier|public

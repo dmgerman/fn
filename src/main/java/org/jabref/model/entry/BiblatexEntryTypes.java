@@ -6471,6 +6471,11 @@ argument_list|,
 name|IEEETRANBSTCTL
 argument_list|)
 decl_stmt|;
+DECL|method|BiblatexEntryTypes ()
+specifier|private
+name|BiblatexEntryTypes
+parameter_list|()
+block|{     }
 DECL|method|getType (String name)
 specifier|public
 specifier|static

@@ -210,6 +210,11 @@ name|AUTOMATIC_KEYWORD_GROUP_ID
 init|=
 literal|"AutomaticKeywordGroup:"
 decl_stmt|;
+DECL|method|MetadataSerializationConfiguration ()
+specifier|private
+name|MetadataSerializationConfiguration
+parameter_list|()
+block|{     }
 block|}
 end_class
 

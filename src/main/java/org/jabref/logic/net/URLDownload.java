@@ -459,13 +459,13 @@ name|class
 argument_list|)
 decl_stmt|;
 DECL|field|USER_AGENT
-specifier|private
+specifier|public
 specifier|static
 specifier|final
 name|String
 name|USER_AGENT
 init|=
-literal|"Mozilla/5.0 (Windows NT 5.1; rv:31.0) Gecko/20100101 Firefox/31.0"
+literal|"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36"
 decl_stmt|;
 DECL|field|source
 specifier|private
@@ -910,25 +910,6 @@ operator|.
 name|toString
 argument_list|()
 return|;
-block|}
-catch|catch
-parameter_list|(
-name|IOException
-name|e
-parameter_list|)
-block|{
-name|LOGGER
-operator|.
-name|warn
-argument_list|(
-literal|"Could not copy input"
-argument_list|,
-name|e
-argument_list|)
-expr_stmt|;
-throw|throw
-name|e
-throw|;
 block|}
 block|}
 comment|/**      * Downloads the web resource to a String.      * Uses UTF-8 as encoding.      *      * @return the downloaded string      */

@@ -271,6 +271,11 @@ argument_list|(
 literal|"\\[.*?\\]"
 argument_list|)
 decl_stmt|;
+DECL|method|RegExpFileSearch ()
+specifier|private
+name|RegExpFileSearch
+parameter_list|()
+block|{     }
 comment|/**      * Search for file links for a set of entries using regexp. Lists of extensions and directories      * are given.      * @param entries The entries to search for.      * @param extensions The extensions that are acceptable.      * @param directories The root directories to search.      * @param regExp The expression deciding which names are acceptable.      * @param keywordDelimiter      * @return A map linking each given entry to a list of files matching the given criteria.      */
 DECL|method|findFilesForSet (List<BibEntry> entries, List<String> extensions, List<File> directories, String regExp, Character keywordDelimiter)
 specifier|public
@@ -497,7 +502,7 @@ return|return
 name|res
 return|;
 block|}
-comment|/**      * Internal Version of findFile, which also accepts a current directory to      * base the search on.      *      */
+comment|/**      * Internal Version of findFile, which also accepts a current directory to      * base the search on.      */
 DECL|method|findFile (BibEntry entry, String directory, String file, String extensionRegExp, Character keywordDelimiter)
 specifier|private
 specifier|static

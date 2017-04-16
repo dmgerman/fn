@@ -164,6 +164,11 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+DECL|method|PreferencesMigrations ()
+specifier|private
+name|PreferencesMigrations
+parameter_list|()
+block|{     }
 comment|/**      * Migrate all preferences from net/sf/jabref to org/jabref      */
 DECL|method|upgradePrefsToOrgJabRef ()
 specifier|public

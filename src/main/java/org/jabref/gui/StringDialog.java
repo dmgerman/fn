@@ -202,16 +202,6 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|JDialog
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
 name|JOptionPane
 import|;
 end_import
@@ -551,7 +541,7 @@ DECL|class|StringDialog
 class|class
 name|StringDialog
 extends|extends
-name|JDialog
+name|JabRefDialog
 block|{
 DECL|field|STRINGS_TITLE
 specifier|private
@@ -640,6 +630,10 @@ block|{
 name|super
 argument_list|(
 name|frame
+argument_list|,
+name|StringDialog
+operator|.
+name|class
 argument_list|)
 expr_stmt|;
 name|this

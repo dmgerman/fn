@@ -252,6 +252,11 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+DECL|method|MetaDataParser ()
+specifier|private
+name|MetaDataParser
+parameter_list|()
+block|{     }
 comment|/**      * Parses the given data map and returns a new resulting {@link MetaData} instance.      */
 DECL|method|parse (Map<String, String> data, Character keywordSeparator)
 specifier|public
@@ -544,6 +549,11 @@ name|MetaData
 operator|.
 name|GROUPSTREE
 case|:
+case|case
+name|MetaData
+operator|.
+name|GROUPSTREE_LEGACY
+case|:
 name|metaData
 operator|.
 name|setGroups
@@ -683,14 +693,20 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 break|break;
-case|case
-literal|"groupsversion"
-case|:
-case|case
-literal|"groups"
-case|:
-comment|// These keys were used in previous JabRef versions, we will not support them anymore -> ignored
-break|break;
+default|default:
+comment|// Keep meta data items that we do not know in the file
+name|metaData
+operator|.
+name|putUnkownMetaDataItem
+argument_list|(
+name|entry
+operator|.
+name|getKey
+argument_list|()
+argument_list|,
+name|value
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 if|if

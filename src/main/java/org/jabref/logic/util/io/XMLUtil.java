@@ -264,6 +264,11 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+DECL|method|XMLUtil ()
+specifier|private
+name|XMLUtil
+parameter_list|()
+block|{     }
 comment|/**      * Prints out the document to standard out. Used to generate files for test cases.      */
 DECL|method|printDocument (Document doc)
 specifier|public

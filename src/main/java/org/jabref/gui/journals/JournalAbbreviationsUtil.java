@@ -80,6 +80,11 @@ specifier|public
 class|class
 name|JournalAbbreviationsUtil
 block|{
+DECL|method|JournalAbbreviationsUtil ()
+specifier|private
+name|JournalAbbreviationsUtil
+parameter_list|()
+block|{     }
 DECL|method|getTableModel (Collection<Abbreviation> abbreviations)
 specifier|public
 specifier|static

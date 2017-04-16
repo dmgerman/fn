@@ -88,6 +88,11 @@ specifier|public
 class|class
 name|GroupDescriptions
 block|{
+DECL|method|GroupDescriptions ()
+specifier|private
+name|GroupDescriptions
+parameter_list|()
+block|{     }
 DECL|method|getDescriptionForPreview (String field, String expr, boolean caseSensitive, boolean regExp)
 specifier|public
 specifier|static

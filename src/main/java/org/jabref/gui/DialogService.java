@@ -200,7 +200,7 @@ name|String
 name|message
 parameter_list|)
 function_decl|;
-comment|/**      * This will create and display a new confirmation dialog.      * It will include a blue question icon on the left and      * a OK and Cancel Button. To create a confirmation dialog with custom      * buttons see also {@link #showCustomButtonDialogAndWait(Alert.AlertType, String, String, ButtonType...)}      *      * @return true if the use clicked "OK" otherwise false      */
+comment|/**      * This will create and display a new confirmation dialog.      * It will include a blue question icon on the left and      * a OK and Cancel button. To create a confirmation dialog with custom      * buttons see also {@link #showCustomButtonDialogAndWait(Alert.AlertType, String, String, ButtonType...)}      *      * @return true if the use clicked "OK" otherwise false      */
 DECL|method|showConfirmationDialogAndWait (String title, String content)
 name|boolean
 name|showConfirmationDialogAndWait
@@ -212,7 +212,7 @@ name|String
 name|content
 parameter_list|)
 function_decl|;
-comment|/**      * Create and display a new confirmation dialog.      * It will include a blue question icon on the left and      * a OK (with given label) and Cancel Button. To create a confirmation dialog with custom      * buttons see also {@link #showCustomButtonDialogAndWait(Alert.AlertType, String, String, ButtonType...)}      *      * @return true if the use clicked "OK" otherwise false      */
+comment|/**      * Create and display a new confirmation dialog.      * It will include a blue question icon on the left and      * a OK (with given label) and Cancel button. To create a confirmation dialog with custom      * buttons see also {@link #showCustomButtonDialogAndWait(Alert.AlertType, String, String, ButtonType...)}      *      * @return true if the use clicked "OK" otherwise false      */
 DECL|method|showConfirmationDialogAndWait (String title, String content, String okButtonLabel)
 name|boolean
 name|showConfirmationDialogAndWait
@@ -225,6 +225,24 @@ name|content
 parameter_list|,
 name|String
 name|okButtonLabel
+parameter_list|)
+function_decl|;
+comment|/**      * Create and display a new confirmation dialog.      * It will include a blue question icon on the left and      * a OK (with given label) and Cancel (also with given label) button. To create a confirmation dialog with custom      * buttons see also {@link #showCustomButtonDialogAndWait(Alert.AlertType, String, String, ButtonType...)}      *      * @return true if the use clicked "OK" otherwise false      */
+DECL|method|showConfirmationDialogAndWait (String title, String content, String okButtonLabel, String cancelButtonLabel)
+name|boolean
+name|showConfirmationDialogAndWait
+parameter_list|(
+name|String
+name|title
+parameter_list|,
+name|String
+name|content
+parameter_list|,
+name|String
+name|okButtonLabel
+parameter_list|,
+name|String
+name|cancelButtonLabel
 parameter_list|)
 function_decl|;
 comment|/**      * This will create and display a new dialog of the specified      * {@link Alert.AlertType} but with user defined buttons as optional      * {@link ButtonType}s.      *      * @return Optional with the pressed Button as ButtonType      */

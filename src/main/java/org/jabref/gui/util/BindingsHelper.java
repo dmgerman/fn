@@ -124,6 +124,11 @@ specifier|public
 class|class
 name|BindingsHelper
 block|{
+DECL|method|BindingsHelper ()
+specifier|private
+name|BindingsHelper
+parameter_list|()
+block|{     }
 DECL|method|any (ObservableList<T> source, Predicate<T> predicate)
 specifier|public
 specifier|static

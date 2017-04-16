@@ -122,6 +122,11 @@ specifier|public
 class|class
 name|ParserResultWarningDialog
 block|{
+DECL|method|ParserResultWarningDialog ()
+specifier|private
+name|ParserResultWarningDialog
+parameter_list|()
+block|{     }
 comment|/**      * Shows a dialog with the warnings from an import or open of a file      *      * @param parserResult - ParserResult for the current import/open      * @param jabRefFrame - the JabRefFrame      */
 DECL|method|showParserResultWarningDialog (final ParserResult parserResult, final JabRefFrame jabRefFrame)
 specifier|public

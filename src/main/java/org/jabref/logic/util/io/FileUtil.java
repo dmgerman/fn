@@ -476,6 +476,11 @@ argument_list|(
 literal|"posix"
 argument_list|)
 decl_stmt|;
+DECL|method|FileUtil ()
+specifier|private
+name|FileUtil
+parameter_list|()
+block|{     }
 comment|/**      * Returns the extension of a file or Optional.empty() if the file does not have one (no . in name).      *      * @param file      * @return The extension, trimmed and in lowercase.      */
 DECL|method|getFileExtension (File file)
 specifier|public
@@ -1389,7 +1394,7 @@ name|empty
 argument_list|()
 return|;
 block|}
-comment|/**      * Converts a relative filename to an absolute one, if necessary. Returns      * null if the file does not exist.      */
+comment|/**      * Converts a relative filename to an absolute one, if necessary. Returns      * an empty optional if the file does not exist.      */
 DECL|method|expandFilename (String filename, String dir)
 specifier|private
 specifier|static
@@ -2503,6 +2508,54 @@ expr_stmt|;
 block|}
 return|return
 name|files
+return|;
+block|}
+DECL|method|toPath (ParsedFileField parsedFileField, BibDatabaseContext database, FileDirectoryPreferences directoryPreferences)
+specifier|public
+specifier|static
+name|Optional
+argument_list|<
+name|Path
+argument_list|>
+name|toPath
+parameter_list|(
+name|ParsedFileField
+name|parsedFileField
+parameter_list|,
+name|BibDatabaseContext
+name|database
+parameter_list|,
+name|FileDirectoryPreferences
+name|directoryPreferences
+parameter_list|)
+block|{
+name|Optional
+argument_list|<
+name|File
+argument_list|>
+name|path
+init|=
+name|expandFilename
+argument_list|(
+name|database
+argument_list|,
+name|parsedFileField
+operator|.
+name|getLink
+argument_list|()
+argument_list|,
+name|directoryPreferences
+argument_list|)
+decl_stmt|;
+return|return
+name|path
+operator|.
+name|map
+argument_list|(
+name|File
+operator|::
+name|toPath
+argument_list|)
 return|;
 block|}
 block|}

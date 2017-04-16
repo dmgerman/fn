@@ -22,6 +22,11 @@ specifier|public
 class|class
 name|BibtexTextPrefix
 block|{
+DECL|method|BibtexTextPrefix ()
+specifier|private
+name|BibtexTextPrefix
+parameter_list|()
+block|{     }
 comment|/**      *      * @param numOfChars      * @param toPrefix      * @param warn may-be-null      * @return      */
 DECL|method|textPrefix (int inNumOfChars, String toPrefix, Warn warn)
 specifier|public

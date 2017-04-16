@@ -408,6 +408,11 @@ name|CHARS_OF_FIRST
 init|=
 literal|5
 decl_stmt|;
+DECL|method|BibtexKeyPatternUtil ()
+specifier|private
+name|BibtexKeyPatternUtil
+parameter_list|()
+block|{     }
 DECL|method|normalize (String content)
 specifier|private
 specifier|static
@@ -2542,7 +2547,16 @@ block|{
 comment|/*                  * For label code "auth...": if there is no author, but there                  * are editor(s) (e.g. for an Edited Book), use the editor(s)                  * instead. (saw27@mrao.cam.ac.uk). This is what most people                  * want, but in case somebody really needs a field which expands                  * to nothing if there is no author (e.g. someone who uses both                  * "auth" and "ed" in the same label), we provide an alternative                  * form "pureauth..." which does not do this fallback                  * substitution of editor.                  */
 name|String
 name|authString
-init|=
+decl_stmt|;
+if|if
+condition|(
+name|database
+operator|!=
+literal|null
+condition|)
+block|{
+name|authString
+operator|=
 name|entry
 operator|.
 name|getField
@@ -2571,7 +2585,27 @@ name|orElse
 argument_list|(
 literal|""
 argument_list|)
-decl_stmt|;
+expr_stmt|;
+block|}
+else|else
+block|{
+name|authString
+operator|=
+name|entry
+operator|.
+name|getField
+argument_list|(
+name|FieldName
+operator|.
+name|AUTHOR
+argument_list|)
+operator|.
+name|orElse
+argument_list|(
+literal|""
+argument_list|)
+expr_stmt|;
+block|}
 if|if
 condition|(
 name|val
@@ -2600,6 +2634,13 @@ name|authString
 operator|.
 name|isEmpty
 argument_list|()
+condition|)
+block|{
+if|if
+condition|(
+name|database
+operator|!=
+literal|null
 condition|)
 block|{
 name|authString
@@ -2633,6 +2674,26 @@ argument_list|(
 literal|""
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+name|authString
+operator|=
+name|entry
+operator|.
+name|getField
+argument_list|(
+name|FieldName
+operator|.
+name|EDITOR
+argument_list|)
+operator|.
+name|orElse
+argument_list|(
+literal|""
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 comment|// Gather all author-related checks, so we don't
 comment|// have to check all the time.

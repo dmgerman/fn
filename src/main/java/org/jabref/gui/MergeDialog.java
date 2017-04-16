@@ -138,16 +138,6 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|JDialog
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
 name|JPanel
 import|;
 end_import
@@ -200,7 +190,7 @@ specifier|public
 class|class
 name|MergeDialog
 extends|extends
-name|JDialog
+name|JabRefDialog
 block|{
 DECL|field|panel1
 specifier|private
@@ -338,6 +328,10 @@ argument_list|,
 name|title
 argument_list|,
 name|modal
+argument_list|,
+name|MergeDialog
+operator|.
+name|class
 argument_list|)
 expr_stmt|;
 name|jbInit

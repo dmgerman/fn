@@ -52,6 +52,11 @@ specifier|public
 class|class
 name|GenerateCharacterTable
 block|{
+DECL|method|GenerateCharacterTable ()
+specifier|private
+name|GenerateCharacterTable
+parameter_list|()
+block|{     }
 DECL|method|main (String[] args)
 specifier|public
 specifier|static

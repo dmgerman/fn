@@ -502,6 +502,11 @@ argument_list|,
 name|STANDARD
 argument_list|)
 decl_stmt|;
+DECL|method|IEEETranEntryTypes ()
+specifier|private
+name|IEEETranEntryTypes
+parameter_list|()
+block|{     }
 DECL|method|getType (String name)
 specifier|public
 specifier|static
