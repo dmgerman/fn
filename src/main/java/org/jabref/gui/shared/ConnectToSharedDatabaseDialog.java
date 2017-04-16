@@ -1061,7 +1061,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"You are already connected to a library using entered connection details."
+literal|"You are already connected to a database using entered connection details."
 argument_list|)
 argument_list|,
 name|Localization

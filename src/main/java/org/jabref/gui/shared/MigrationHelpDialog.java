@@ -261,7 +261,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Entered library has obsolete structure and is no longer supported."
+literal|"Entered database has obsolete structure and is no longer supported."
 argument_list|)
 decl_stmt|;
 name|JLabel
@@ -289,7 +289,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Click here to learn about the migration of pre-3.6 libraries."
+literal|"Click here to learn about the migration of pre-3.6 databases."
 argument_list|)
 decl_stmt|;
 name|JLabel
@@ -324,7 +324,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"However, a new library was created alongside the pre-3.6 one."
+literal|"However, a new database was created alongside the pre-3.6 one."
 argument_list|)
 decl_stmt|;
 name|JLabel
