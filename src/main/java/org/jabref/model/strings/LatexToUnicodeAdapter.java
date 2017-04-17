@@ -151,7 +151,7 @@ name|Normalizer
 operator|.
 name|Form
 operator|.
-name|NFKC
+name|NFC
 argument_list|)
 expr_stmt|;
 return|return
