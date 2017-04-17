@@ -151,7 +151,7 @@ name|map
 argument_list|(
 name|Month
 operator|::
-name|getBibtexFormat
+name|getJabRefFormat
 argument_list|)
 operator|.
 name|orElse

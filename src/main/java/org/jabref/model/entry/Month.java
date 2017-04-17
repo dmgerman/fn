@@ -37,7 +37,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Represents a month object.  */
+comment|/**  * Represents a Month of the Year.  */
 end_comment
 
 begin_enum
@@ -53,11 +53,7 @@ literal|"January"
 argument_list|,
 literal|"jan"
 argument_list|,
-literal|"01"
-argument_list|,
-literal|"#jan#"
-argument_list|,
-literal|0
+literal|1
 argument_list|)
 block|,
 DECL|enumConstant|FEBRUARY
@@ -67,11 +63,7 @@ literal|"February"
 argument_list|,
 literal|"feb"
 argument_list|,
-literal|"02"
-argument_list|,
-literal|"#feb#"
-argument_list|,
-literal|1
+literal|2
 argument_list|)
 block|,
 DECL|enumConstant|MARCH
@@ -81,11 +73,7 @@ literal|"March"
 argument_list|,
 literal|"mar"
 argument_list|,
-literal|"03"
-argument_list|,
-literal|"#mar#"
-argument_list|,
-literal|2
+literal|3
 argument_list|)
 block|,
 DECL|enumConstant|APRIL
@@ -95,11 +83,7 @@ literal|"April"
 argument_list|,
 literal|"apr"
 argument_list|,
-literal|"04"
-argument_list|,
-literal|"#apr#"
-argument_list|,
-literal|3
+literal|4
 argument_list|)
 block|,
 DECL|enumConstant|MAY
@@ -109,11 +93,7 @@ literal|"May"
 argument_list|,
 literal|"may"
 argument_list|,
-literal|"05"
-argument_list|,
-literal|"#may#"
-argument_list|,
-literal|4
+literal|5
 argument_list|)
 block|,
 DECL|enumConstant|JUNE
@@ -123,11 +103,7 @@ literal|"June"
 argument_list|,
 literal|"jun"
 argument_list|,
-literal|"06"
-argument_list|,
-literal|"#jun#"
-argument_list|,
-literal|5
+literal|6
 argument_list|)
 block|,
 DECL|enumConstant|JULY
@@ -137,11 +113,7 @@ literal|"July"
 argument_list|,
 literal|"jul"
 argument_list|,
-literal|"07"
-argument_list|,
-literal|"#jul#"
-argument_list|,
-literal|6
+literal|7
 argument_list|)
 block|,
 DECL|enumConstant|AUGUST
@@ -151,11 +123,7 @@ literal|"August"
 argument_list|,
 literal|"aug"
 argument_list|,
-literal|"08"
-argument_list|,
-literal|"#aug#"
-argument_list|,
-literal|7
+literal|8
 argument_list|)
 block|,
 DECL|enumConstant|SEPTEMBER
@@ -165,11 +133,7 @@ literal|"September"
 argument_list|,
 literal|"sep"
 argument_list|,
-literal|"09"
-argument_list|,
-literal|"#sep#"
-argument_list|,
-literal|8
+literal|9
 argument_list|)
 block|,
 DECL|enumConstant|OCTOBER
@@ -179,11 +143,7 @@ literal|"October"
 argument_list|,
 literal|"oct"
 argument_list|,
-literal|"10"
-argument_list|,
-literal|"#oct#"
-argument_list|,
-literal|9
+literal|10
 argument_list|)
 block|,
 DECL|enumConstant|NOVEMBER
@@ -193,11 +153,7 @@ literal|"November"
 argument_list|,
 literal|"nov"
 argument_list|,
-literal|"11"
-argument_list|,
-literal|"#nov#"
-argument_list|,
-literal|10
+literal|11
 argument_list|)
 block|,
 DECL|enumConstant|DECEMBER
@@ -207,11 +163,7 @@ literal|"December"
 argument_list|,
 literal|"dec"
 argument_list|,
-literal|"12"
-argument_list|,
-literal|"#dec#"
-argument_list|,
-literal|11
+literal|12
 argument_list|)
 block|;
 DECL|field|fullName
@@ -232,19 +184,13 @@ specifier|final
 name|String
 name|twoDigitNumber
 decl_stmt|;
-DECL|field|bibtexFormat
-specifier|private
-specifier|final
-name|String
-name|bibtexFormat
-decl_stmt|;
-DECL|field|index
+DECL|field|number
 specifier|private
 specifier|final
 name|int
-name|index
+name|number
 decl_stmt|;
-DECL|method|Month (String fullName, String shortName, String twoDigitNumber, String bibtexFormat, int index)
+DECL|method|Month (String fullName, String shortName, int number)
 name|Month
 parameter_list|(
 name|String
@@ -253,14 +199,8 @@ parameter_list|,
 name|String
 name|shortName
 parameter_list|,
-name|String
-name|twoDigitNumber
-parameter_list|,
-name|String
-name|bibtexFormat
-parameter_list|,
 name|int
-name|index
+name|number
 parameter_list|)
 block|{
 name|this
@@ -279,19 +219,20 @@ name|this
 operator|.
 name|twoDigitNumber
 operator|=
-name|twoDigitNumber
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"%02d"
+argument_list|,
+name|number
+argument_list|)
 expr_stmt|;
 name|this
 operator|.
-name|bibtexFormat
+name|number
 operator|=
-name|bibtexFormat
-expr_stmt|;
-name|this
-operator|.
-name|index
-operator|=
-name|index
+name|number
 expr_stmt|;
 block|}
 comment|/**      * Find month by one-based number.      * If the number is not in the valid range, then an empty Optional is returned.      *      * @param number 1-12 is valid      */
@@ -306,31 +247,6 @@ name|getMonthByNumber
 parameter_list|(
 name|int
 name|number
-parameter_list|)
-block|{
-return|return
-name|Month
-operator|.
-name|getMonthByIndex
-argument_list|(
-name|number
-operator|-
-literal|1
-argument_list|)
-return|;
-block|}
-comment|/**      * Find month by zero-based index.      * If the index is not in the valid range, then an empty Optional is returned.      *      * @param index 0-11 is valid      */
-DECL|method|getMonthByIndex (int index)
-specifier|public
-specifier|static
-name|Optional
-argument_list|<
-name|Month
-argument_list|>
-name|getMonthByIndex
-parameter_list|(
-name|int
-name|index
 parameter_list|)
 block|{
 for|for
@@ -348,9 +264,9 @@ if|if
 condition|(
 name|month
 operator|.
-name|index
+name|number
 operator|==
-name|index
+name|number
 condition|)
 block|{
 return|return
@@ -424,7 +340,7 @@ name|empty
 argument_list|()
 return|;
 block|}
-comment|/**      * This method accepts three types of months:      * - Single and Double Digit months from 1 to 12 (01 to 12)      * - 3 Digit BibTex strings (jan, feb, mar...) possibly with # prepended      * - Full English Month identifiers.      *      * @param value the given value      * @return the corresponding Month instance      */
+comment|/**      * This method accepts three types of months:      * - Single and Double Digit months from 1 to 12 (01 to 12)      * - 3 Digit BibTeX strings (jan, feb, mar...) possibly with # prepended      * - Full English Month identifiers.      *      * @param value the given value      * @return the corresponding Month instance      */
 DECL|method|parse (String value)
 specifier|public
 specifier|static
@@ -553,6 +469,7 @@ argument_list|()
 return|;
 block|}
 block|}
+comment|/**      * Returns the name of a Month in a short (3-letter) format. (jan, feb, mar, ...)      *      * @return 3-letter identifier for a Month      */
 DECL|method|getShortName ()
 specifier|public
 name|String
@@ -563,26 +480,25 @@ return|return
 name|shortName
 return|;
 block|}
-DECL|method|getBibtexFormat ()
+comment|/**      * Returns the month in JabRef format. The format is the short 3-digit name surrounded by a '#'.      * Example: #jan#, #feb#, etc.      *      * See https://github.com/JabRef/jabref/issues/263#issuecomment-151246595 for a discussion on that thing.      * This seems to be an<em>invalid</em> format in terms of plain BiBTeX, but a<em>valid</em> format in the case of JabRef      *      * @return Month in JabRef format      */
+DECL|method|getJabRefFormat ()
 specifier|public
 name|String
-name|getBibtexFormat
+name|getJabRefFormat
 parameter_list|()
 block|{
 return|return
-name|bibtexFormat
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"#%s#"
+argument_list|,
+name|shortName
+argument_list|)
 return|;
 block|}
-DECL|method|getIndex ()
-specifier|public
-name|int
-name|getIndex
-parameter_list|()
-block|{
-return|return
-name|index
-return|;
-block|}
+comment|/**      * Returns the number of the Month in a 1-indexed fashion: 1 -> January, 2 -> February etc.      * @return number of the month in the Year      */
 DECL|method|getNumber ()
 specifier|public
 name|int
@@ -590,11 +506,10 @@ name|getNumber
 parameter_list|()
 block|{
 return|return
-name|index
-operator|+
-literal|1
+name|number
 return|;
 block|}
+comment|/**      * Returns the name of the long in unabbreviated english.      * @return Month      */
 DECL|method|getFullName ()
 specifier|public
 name|String
@@ -605,6 +520,7 @@ return|return
 name|fullName
 return|;
 block|}
+comment|/**      * Returns the number of the Month in a 1-indexed fashion using exactly two digits: 01 -> January, 02 -> February...      * @return number of the month in the Year with two digits      */
 DECL|method|getTwoDigitNumber ()
 specifier|public
 name|String
