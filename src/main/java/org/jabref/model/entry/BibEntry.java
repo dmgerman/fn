@@ -68,16 +68,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|ArrayList
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|Calendar
 import|;
 end_import
@@ -1084,6 +1074,26 @@ name|type
 return|;
 block|}
 comment|/**      * Sets this entry's type.      */
+DECL|method|setType (String type)
+specifier|public
+name|void
+name|setType
+parameter_list|(
+name|String
+name|type
+parameter_list|)
+block|{
+name|setType
+argument_list|(
+name|type
+argument_list|,
+name|EntryEventSource
+operator|.
+name|LOCAL
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Sets this entry's type.      */
 DECL|method|setType (EntryType type)
 specifier|public
 name|void
@@ -1192,26 +1202,6 @@ name|oldType
 argument_list|,
 name|eventSource
 argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-comment|/**      * Sets this entry's type.      */
-DECL|method|setType (String type)
-specifier|public
-name|void
-name|setType
-parameter_list|(
-name|String
-name|type
-parameter_list|)
-block|{
-name|setType
-argument_list|(
-name|type
-argument_list|,
-name|EntryEventSource
-operator|.
-name|LOCAL
 argument_list|)
 expr_stmt|;
 block|}
@@ -4044,9 +4034,9 @@ argument_list|()
 condition|)
 block|{
 return|return
-operator|new
-name|ArrayList
-argument_list|<>
+name|Collections
+operator|.
+name|emptyList
 argument_list|()
 return|;
 block|}

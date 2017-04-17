@@ -118,6 +118,10 @@ name|FileHelper
 import|;
 end_import
 
+begin_comment
+comment|/**  * Represents the link to an external file (e.g. associated PDF file).  */
+end_comment
+
 begin_class
 DECL|class|LinkedFile
 specifier|public

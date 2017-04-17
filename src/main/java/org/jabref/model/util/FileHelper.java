@@ -110,18 +110,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|regex
-operator|.
-name|Pattern
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|jabref
@@ -154,34 +142,6 @@ specifier|public
 class|class
 name|FileHelper
 block|{
-DECL|field|SLASH
-specifier|private
-specifier|static
-specifier|final
-name|Pattern
-name|SLASH
-init|=
-name|Pattern
-operator|.
-name|compile
-argument_list|(
-literal|"/"
-argument_list|)
-decl_stmt|;
-DECL|field|BACKSLASH
-specifier|private
-specifier|static
-specifier|final
-name|Pattern
-name|BACKSLASH
-init|=
-name|Pattern
-operator|.
-name|compile
-argument_list|(
-literal|"\\\\"
-argument_list|)
-decl_stmt|;
 comment|/**      * Returns the extension of a file or Optional.empty() if the file does not have one (no . in name).      *      * @param file      * @return The extension, trimmed and in lowercase.      */
 DECL|method|getFileExtension (File file)
 specifier|public
@@ -355,12 +315,11 @@ argument_list|(
 name|fileDirectoryPreferences
 argument_list|)
 decl_stmt|;
-comment|// Include the directory of the BIB file:
 name|List
 argument_list|<
 name|String
 argument_list|>
-name|al
+name|searchDirectories
 init|=
 operator|new
 name|ArrayList
@@ -378,7 +337,7 @@ block|{
 if|if
 condition|(
 operator|!
-name|al
+name|searchDirectories
 operator|.
 name|contains
 argument_list|(
@@ -386,7 +345,7 @@ name|dir
 argument_list|)
 condition|)
 block|{
-name|al
+name|searchDirectories
 operator|.
 name|add
 argument_list|(
@@ -406,7 +365,7 @@ block|{
 if|if
 condition|(
 operator|!
-name|al
+name|searchDirectories
 operator|.
 name|contains
 argument_list|(
@@ -414,7 +373,7 @@ name|aFileDir
 argument_list|)
 condition|)
 block|{
-name|al
+name|searchDirectories
 operator|.
 name|add
 argument_list|(
@@ -428,7 +387,7 @@ name|expandFilename
 argument_list|(
 name|name
 argument_list|,
-name|al
+name|searchDirectories
 argument_list|)
 return|;
 block|}
