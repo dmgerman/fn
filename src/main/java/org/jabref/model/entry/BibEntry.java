@@ -619,7 +619,7 @@ name|MONTH
 argument_list|,
 name|parsedMonth
 operator|.
-name|getBibtexFormat
+name|getJabRefFormat
 argument_list|()
 argument_list|)
 return|;

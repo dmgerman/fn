@@ -480,11 +480,11 @@ return|return
 name|shortName
 return|;
 block|}
-comment|/**      * Returns the month in BibTeX format. The format is the short 3-digit name surrounded by a '#'.      * Example: #jan#, #feb#, etc.      *      * @return Month in BibTeX format      */
-DECL|method|getBibtexFormat ()
+comment|/**      * Returns the month in JabRef format. The format is the short 3-digit name surrounded by a '#'.      * Example: #jan#, #feb#, etc.      *      * See https://github.com/JabRef/jabref/issues/263#issuecomment-151246595 for a discussion on that thing.      * This seems to be an<em>invalid</em> format in terms of plain BiBTeX, but a<em>valid</em> format in the case of JabRef      *      * @return Month in JabRef format      */
+DECL|method|getJabRefFormat ()
 specifier|public
 name|String
-name|getBibtexFormat
+name|getJabRefFormat
 parameter_list|()
 block|{
 return|return

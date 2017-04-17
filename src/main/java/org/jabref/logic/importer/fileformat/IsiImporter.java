@@ -2088,7 +2088,7 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|getBibtexFormat
+name|getJabRefFormat
 argument_list|()
 return|;
 block|}
@@ -2141,7 +2141,7 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|getBibtexFormat
+name|getJabRefFormat
 argument_list|()
 return|;
 block|}

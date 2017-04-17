@@ -2305,7 +2305,7 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|getBibtexFormat
+name|getJabRefFormat
 argument_list|()
 argument_list|)
 expr_stmt|;
