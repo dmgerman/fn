@@ -36,6 +36,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|jabref
@@ -72,7 +82,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|MonthUtil
+name|Month
 import|;
 end_import
 
@@ -1434,15 +1444,13 @@ literal|0
 index|]
 argument_list|)
 expr_stmt|;
-name|entry
-operator|.
-name|setField
-argument_list|(
-name|FieldName
-operator|.
-name|MONTH
-argument_list|,
-name|MonthUtil
+name|Optional
+argument_list|<
+name|Month
+argument_list|>
+name|month
+init|=
+name|Month
 operator|.
 name|getMonthByNumber
 argument_list|(
@@ -1456,8 +1464,14 @@ literal|1
 index|]
 argument_list|)
 argument_list|)
+decl_stmt|;
+name|month
 operator|.
-name|bibtexFormat
+name|ifPresent
+argument_list|(
+name|entry
+operator|::
+name|setMonth
 argument_list|)
 expr_stmt|;
 block|}

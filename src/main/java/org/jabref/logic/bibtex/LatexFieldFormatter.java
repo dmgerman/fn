@@ -482,6 +482,7 @@ name|fieldName
 argument_list|)
 return|;
 block|}
+comment|/**      * This method handles # in the field content to get valid bibtex strings      *      * For instance,<code>#jan# - #feb#</code> gets<code>jan #{ - } # feb</code> (see @link{org.jabref.logic.bibtex.LatexFieldFormatterTests#makeHashEnclosedWordsRealStringsInMonthField()})      */
 DECL|method|formatAndResolveStrings (String content, String fieldName)
 specifier|private
 name|String
@@ -767,7 +768,6 @@ name|pos1
 operator|+
 literal|1
 expr_stmt|;
-comment|//if (tell++> 10) System.exit(0);
 block|}
 block|}
 return|return
@@ -1113,7 +1113,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-comment|// Or simply the end of this command altogether:
+comment|// Or simply the end of this command alltogether:
 name|commandName
 operator|.
 name|delete
