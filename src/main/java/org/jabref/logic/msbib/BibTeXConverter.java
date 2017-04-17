@@ -687,7 +687,7 @@ name|MONTH
 argument_list|,
 name|parsedMonth
 operator|.
-name|getBibtexFormat
+name|getTwoDigitNumber
 argument_list|()
 argument_list|)
 argument_list|)
