@@ -585,7 +585,7 @@ DECL|method|getMonth ()
 specifier|public
 name|Optional
 argument_list|<
-name|Integer
+name|Month
 argument_list|>
 name|getMonth
 parameter_list|()
@@ -596,6 +596,13 @@ argument_list|(
 name|ChronoField
 operator|.
 name|MONTH_OF_YEAR
+argument_list|)
+operator|.
+name|flatMap
+argument_list|(
+name|Month
+operator|::
+name|getMonthByNumber
 argument_list|)
 return|;
 block|}
