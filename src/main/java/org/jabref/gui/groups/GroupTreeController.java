@@ -1838,7 +1838,7 @@ literal|"Add selected entries to this group"
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|removeSubgroups
+name|addEntries
 operator|.
 name|setOnAction
 argument_list|(
@@ -1866,7 +1866,7 @@ literal|"Remove selected entries from this group"
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|removeSubgroups
+name|removeEntries
 operator|.
 name|setOnAction
 argument_list|(

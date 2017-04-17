@@ -675,6 +675,27 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+DECL|method|testOneCommaUntouched ()
+specifier|public
+name|void
+name|testOneCommaUntouched
+parameter_list|()
+block|{
+name|assertEquals
+argument_list|(
+literal|"Canon der Barbar, Alexander der GroÃe"
+argument_list|,
+name|formatter
+operator|.
+name|format
+argument_list|(
+literal|"Canon der Barbar, Alexander der GroÃe"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
 DECL|method|testAvoidNameAffixes ()
 specifier|public
 name|void
@@ -683,13 +704,13 @@ parameter_list|()
 block|{
 name|assertEquals
 argument_list|(
-literal|"der Barbar, Canon and der GroÃe, Alexander"
+literal|"der Barbar, Canon and der GroÃe, Alexander and der Alexander, Peter"
 argument_list|,
 name|formatter
 operator|.
 name|format
 argument_list|(
-literal|"Canon der Barbar, Alexander der GroÃe"
+literal|"Canon der Barbar, Alexander der GroÃe, Peter der Alexander"
 argument_list|)
 argument_list|)
 expr_stmt|;
