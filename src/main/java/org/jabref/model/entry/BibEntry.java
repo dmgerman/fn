@@ -1030,26 +1030,6 @@ name|type
 return|;
 block|}
 comment|/**      * Sets this entry's type.      */
-DECL|method|setType (String type)
-specifier|public
-name|void
-name|setType
-parameter_list|(
-name|String
-name|type
-parameter_list|)
-block|{
-name|setType
-argument_list|(
-name|type
-argument_list|,
-name|EntryEventSource
-operator|.
-name|LOCAL
-argument_list|)
-expr_stmt|;
-block|}
-comment|/**      * Sets this entry's type.      */
 DECL|method|setType (EntryType type)
 specifier|public
 name|void
@@ -1067,6 +1047,26 @@ name|type
 operator|.
 name|getName
 argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Sets this entry's type.      */
+DECL|method|setType (String type)
+specifier|public
+name|void
+name|setType
+parameter_list|(
+name|String
+name|type
+parameter_list|)
+block|{
+name|setType
+argument_list|(
+name|type
+argument_list|,
+name|EntryEventSource
+operator|.
+name|LOCAL
 argument_list|)
 expr_stmt|;
 block|}
@@ -1545,9 +1545,9 @@ argument_list|()
 operator|.
 name|map
 argument_list|(
-name|Object
+name|Month
 operator|::
-name|toString
+name|getJabRefFormat
 argument_list|)
 return|;
 block|}
