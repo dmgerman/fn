@@ -6545,7 +6545,7 @@ argument_list|()
 decl_stmt|;
 name|scheduler
 operator|.
-name|scheduleWithFixedDelay
+name|schedule
 argument_list|(
 parameter_list|()
 lambda|->
@@ -6557,8 +6557,6 @@ name|this
 operator|::
 name|showTrackingNotification
 argument_list|)
-argument_list|,
-literal|1
 argument_list|,
 literal|1
 argument_list|,

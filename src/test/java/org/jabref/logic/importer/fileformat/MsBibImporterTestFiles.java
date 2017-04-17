@@ -244,10 +244,10 @@ name|Parameterized
 operator|.
 name|class
 argument_list|)
-DECL|class|MsBibImporterTestfiles
+DECL|class|MsBibImporterTestFiles
 specifier|public
 class|class
-name|MsBibImporterTestfiles
+name|MsBibImporterTestFiles
 block|{
 annotation|@
 name|Parameter
@@ -277,7 +277,7 @@ name|Paths
 operator|.
 name|get
 argument_list|(
-name|MsBibImporterTestfiles
+name|MsBibImporterTestFiles
 operator|.
 name|class
 operator|.
@@ -328,7 +328,7 @@ name|Paths
 operator|.
 name|get
 argument_list|(
-name|MsBibImporterTestfiles
+name|MsBibImporterTestFiles
 operator|.
 name|class
 operator|.
