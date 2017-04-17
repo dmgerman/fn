@@ -148,7 +148,7 @@ block|{
 comment|// See #1464
 name|assertEquals
 argument_list|(
-literal|"text"
+literal|"\uD835\uDC61\uD835\uDC52\uD835\uDC65\uD835\uDC61"
 argument_list|,
 name|formatter
 operator|.
@@ -741,7 +741,7 @@ parameter_list|()
 block|{
 name|assertEquals
 argument_list|(
-literal|"1st"
+literal|"1Ë¢áµ"
 argument_list|,
 name|formatter
 operator|.
@@ -762,7 +762,7 @@ parameter_list|()
 block|{
 name|assertEquals
 argument_list|(
-literal|"2nd"
+literal|"2â¿áµ"
 argument_list|,
 name|formatter
 operator|.
@@ -783,7 +783,7 @@ parameter_list|()
 block|{
 name|assertEquals
 argument_list|(
-literal|"3rd"
+literal|"3Ê³áµ"
 argument_list|,
 name|formatter
 operator|.
@@ -804,7 +804,7 @@ parameter_list|()
 block|{
 name|assertEquals
 argument_list|(
-literal|"4th"
+literal|"4áµÊ°"
 argument_list|,
 name|formatter
 operator|.
@@ -825,7 +825,7 @@ parameter_list|()
 block|{
 name|assertEquals
 argument_list|(
-literal|"9th"
+literal|"9áµÊ°"
 argument_list|,
 name|formatter
 operator|.
