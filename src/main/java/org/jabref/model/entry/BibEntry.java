@@ -1030,6 +1030,26 @@ name|type
 return|;
 block|}
 comment|/**      * Sets this entry's type.      */
+DECL|method|setType (String type)
+specifier|public
+name|void
+name|setType
+parameter_list|(
+name|String
+name|type
+parameter_list|)
+block|{
+name|setType
+argument_list|(
+name|type
+argument_list|,
+name|EntryEventSource
+operator|.
+name|LOCAL
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Sets this entry's type.      */
 DECL|method|setType (EntryType type)
 specifier|public
 name|void
@@ -1047,26 +1067,6 @@ name|type
 operator|.
 name|getName
 argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
-comment|/**      * Sets this entry's type.      */
-DECL|method|setType (String type)
-specifier|public
-name|void
-name|setType
-parameter_list|(
-name|String
-name|type
-parameter_list|)
-block|{
-name|setType
-argument_list|(
-name|type
-argument_list|,
-name|EntryEventSource
-operator|.
-name|LOCAL
 argument_list|)
 expr_stmt|;
 block|}
@@ -3673,6 +3673,31 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
+DECL|method|getMonth ()
+specifier|public
+name|Optional
+argument_list|<
+name|Month
+argument_list|>
+name|getMonth
+parameter_list|()
+block|{
+return|return
+name|getFieldOrAlias
+argument_list|(
+name|FieldName
+operator|.
+name|MONTH
+argument_list|)
+operator|.
+name|flatMap
+argument_list|(
+name|Month
+operator|::
+name|parse
+argument_list|)
+return|;
 block|}
 DECL|interface|GetFieldInterface
 specifier|private
