@@ -250,10 +250,15 @@ name|LinkedFile
 argument_list|>
 name|fileList
 init|=
+operator|new
+name|ArrayList
+argument_list|<>
+argument_list|(
 name|entry
 operator|.
 name|getFiles
 argument_list|()
+argument_list|)
 decl_stmt|;
 name|int
 name|oldItemCount
