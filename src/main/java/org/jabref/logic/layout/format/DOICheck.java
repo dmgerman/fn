@@ -106,7 +106,7 @@ block|}
 return|return
 name|DOI
 operator|.
-name|build
+name|parse
 argument_list|(
 name|result
 argument_list|)

@@ -1756,16 +1756,6 @@ comment|// Do nothing
 block|}
 annotation|@
 name|Override
-DECL|method|updateFont ()
-specifier|public
-name|void
-name|updateFont
-parameter_list|()
-block|{
-comment|// Do nothing
-block|}
-annotation|@
-name|Override
 DECL|method|paste (String textToInsert)
 specifier|public
 name|void
@@ -2396,16 +2386,6 @@ DECL|method|setInvalidBackgroundColor ()
 specifier|public
 name|void
 name|setInvalidBackgroundColor
-parameter_list|()
-block|{
-comment|// Do nothing
-block|}
-annotation|@
-name|Override
-DECL|method|updateFontColor ()
-specifier|public
-name|void
-name|updateFontColor
 parameter_list|()
 block|{
 comment|// Do nothing

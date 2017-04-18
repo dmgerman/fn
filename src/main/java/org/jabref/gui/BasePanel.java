@@ -9826,24 +9826,6 @@ name|be
 argument_list|)
 expr_stmt|;
 block|}
-else|else
-block|{
-comment|// The correct entry is already being shown. Make sure the editor
-comment|// is updated.
-operator|(
-operator|(
-name|EntryEditor
-operator|)
-name|splitPane
-operator|.
-name|getBottomComponent
-argument_list|()
-operator|)
-operator|.
-name|updateAllFields
-argument_list|()
-expr_stmt|;
-block|}
 return|return;
 block|}
 name|String
@@ -10461,11 +10443,6 @@ argument_list|()
 argument_list|)
 condition|)
 block|{
-name|currentEditor
-operator|.
-name|updateAllFields
-argument_list|()
-expr_stmt|;
 name|currentEditor
 operator|.
 name|updateSource

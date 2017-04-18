@@ -185,6 +185,15 @@ argument_list|,
 name|progress
 argument_list|)
 expr_stmt|;
+name|mathSciNetId
+operator|.
+name|getExternalURI
+argument_list|()
+operator|.
+name|ifPresent
+argument_list|(
+name|url
+lambda|->
 name|browser
 operator|.
 name|getEngine
@@ -192,10 +201,11 @@ argument_list|()
 operator|.
 name|load
 argument_list|(
-name|mathSciNetId
+name|url
 operator|.
-name|getItemUrl
+name|toASCIIString
 argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Hide progress indicator if finished (over 70% loaded)

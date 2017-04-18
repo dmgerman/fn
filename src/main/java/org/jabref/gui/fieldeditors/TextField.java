@@ -681,26 +681,8 @@ expr_stmt|;
 block|}
 block|}
 block|}
-annotation|@
-name|Override
-DECL|method|updateFontColor ()
-specifier|public
-name|void
-name|updateFontColor
-parameter_list|()
-block|{
-name|setForeground
-argument_list|(
-name|GUIGlobals
-operator|.
-name|editorTextColor
-argument_list|)
-expr_stmt|;
-block|}
-annotation|@
-name|Override
 DECL|method|updateFont ()
-specifier|public
+specifier|private
 name|void
 name|updateFont
 parameter_list|()

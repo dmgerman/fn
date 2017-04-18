@@ -326,35 +326,6 @@ parameter_list|)
 block|{
 comment|//do nothing
 block|}
-comment|/**      * Place a String on the clipboard, and make this class the      * owner of the Clipboard's contents.      */
-DECL|method|setClipboardContents (String aString)
-specifier|public
-name|void
-name|setClipboardContents
-parameter_list|(
-name|String
-name|aString
-parameter_list|)
-block|{
-name|StringSelection
-name|stringSelection
-init|=
-operator|new
-name|StringSelection
-argument_list|(
-name|aString
-argument_list|)
-decl_stmt|;
-name|CLIPBOARD
-operator|.
-name|setContents
-argument_list|(
-name|stringSelection
-argument_list|,
-name|this
-argument_list|)
-expr_stmt|;
-block|}
 comment|/**      * Places the string into the clipboard using a {@link Transferable}.      */
 DECL|method|setTransferableClipboardContents (Transferable transferable)
 specifier|public
@@ -456,6 +427,35 @@ block|}
 return|return
 name|result
 return|;
+block|}
+comment|/**      * Place a String on the clipboard, and make this class the      * owner of the Clipboard's contents.      */
+DECL|method|setClipboardContents (String aString)
+specifier|public
+name|void
+name|setClipboardContents
+parameter_list|(
+name|String
+name|aString
+parameter_list|)
+block|{
+name|StringSelection
+name|stringSelection
+init|=
+operator|new
+name|StringSelection
+argument_list|(
+name|aString
+argument_list|)
+decl_stmt|;
+name|CLIPBOARD
+operator|.
+name|setContents
+argument_list|(
+name|stringSelection
+argument_list|,
+name|this
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|extractBibEntriesFromClipboard ()
 specifier|public
@@ -604,7 +604,7 @@ if|if
 condition|(
 name|DOI
 operator|.
-name|build
+name|parse
 argument_list|(
 name|data
 argument_list|)

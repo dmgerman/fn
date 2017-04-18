@@ -317,7 +317,7 @@ name|flatMap
 argument_list|(
 name|DOI
 operator|::
-name|build
+name|parse
 argument_list|)
 decl_stmt|;
 if|if

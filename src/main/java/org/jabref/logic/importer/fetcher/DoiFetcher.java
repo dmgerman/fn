@@ -374,7 +374,7 @@ name|doi
 init|=
 name|DOI
 operator|.
-name|build
+name|parse
 argument_list|(
 name|identifier
 argument_list|)

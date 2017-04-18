@@ -466,9 +466,6 @@ block|}
 comment|// Set focus to editor component after changing its text:
 name|editor
 operator|.
-name|getTextComponent
-argument_list|()
-operator|.
 name|requestFocus
 argument_list|()
 expr_stmt|;

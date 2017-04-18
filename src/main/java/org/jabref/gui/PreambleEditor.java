@@ -576,14 +576,8 @@ literal|""
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|setupJTextComponent
-argument_list|(
-operator|(
-name|TextArea
-operator|)
-name|editor
-argument_list|)
-expr_stmt|;
+comment|// TODO: Reenable this
+comment|//setupJTextComponent((TextArea) editor);
 name|gbl
 operator|.
 name|setConstraints
@@ -874,6 +868,30 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|getFieldEditor ()
+specifier|public
+name|FieldEditor
+name|getFieldEditor
+parameter_list|()
+block|{
+return|return
+name|editor
+return|;
+block|}
+DECL|method|storeCurrentEdit ()
+specifier|public
+name|void
+name|storeCurrentEdit
+parameter_list|()
+block|{
+name|storeFieldAction
+operator|.
+name|actionPerformed
+argument_list|(
+literal|null
+argument_list|)
+expr_stmt|;
+block|}
 DECL|class|FieldListener
 specifier|private
 class|class
@@ -1069,9 +1087,6 @@ if|if
 condition|(
 name|editor
 operator|.
-name|getTextComponent
-argument_list|()
-operator|.
 name|hasFocus
 argument_list|()
 condition|)
@@ -1253,30 +1268,6 @@ name|dispose
 argument_list|()
 expr_stmt|;
 block|}
-block|}
-DECL|method|getFieldEditor ()
-specifier|public
-name|FieldEditor
-name|getFieldEditor
-parameter_list|()
-block|{
-return|return
-name|editor
-return|;
-block|}
-DECL|method|storeCurrentEdit ()
-specifier|public
-name|void
-name|storeCurrentEdit
-parameter_list|()
-block|{
-name|storeFieldAction
-operator|.
-name|actionPerformed
-argument_list|(
-literal|null
-argument_list|)
-expr_stmt|;
 block|}
 block|}
 end_class

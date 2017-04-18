@@ -24,16 +24,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|awt
-operator|.
-name|Container
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|swing
@@ -89,10 +79,41 @@ parameter_list|()
 function_decl|;
 comment|/*      * Returns the text component itself.      */
 DECL|method|getTextComponent ()
-name|JComponent
+name|Object
 name|getTextComponent
 parameter_list|()
 function_decl|;
+DECL|method|hasFocus ()
+specifier|default
+name|boolean
+name|hasFocus
+parameter_list|()
+block|{
+if|if
+condition|(
+name|getTextComponent
+argument_list|()
+operator|instanceof
+name|JComponent
+condition|)
+block|{
+return|return
+operator|(
+operator|(
+name|JComponent
+operator|)
+name|getTextComponent
+argument_list|()
+operator|)
+operator|.
+name|hasFocus
+argument_list|()
+return|;
+block|}
+return|return
+literal|false
+return|;
+block|}
 DECL|method|getLabel ()
 name|JLabel
 name|getLabel
@@ -129,11 +150,6 @@ name|Color
 name|color
 parameter_list|)
 function_decl|;
-DECL|method|updateFontColor ()
-name|void
-name|updateFontColor
-parameter_list|()
-function_decl|;
 DECL|method|getText ()
 name|String
 name|getText
@@ -156,11 +172,6 @@ name|String
 name|text
 parameter_list|)
 function_decl|;
-DECL|method|getParent ()
-name|Container
-name|getParent
-parameter_list|()
-function_decl|;
 DECL|method|requestFocus ()
 name|void
 name|requestFocus
@@ -173,11 +184,6 @@ parameter_list|(
 name|boolean
 name|enabled
 parameter_list|)
-function_decl|;
-DECL|method|updateFont ()
-name|void
-name|updateFont
-parameter_list|()
 function_decl|;
 comment|/**      * paste text into component, it should also take some selected text into      * account      */
 DECL|method|paste (String textToInsert)

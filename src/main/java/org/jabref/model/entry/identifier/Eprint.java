@@ -82,6 +82,20 @@ begin_import
 import|import
 name|org
 operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|FieldName
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|apache
 operator|.
 name|commons
@@ -115,7 +129,23 @@ DECL|class|Eprint
 specifier|public
 class|class
 name|Eprint
+implements|implements
+name|Identifier
 block|{
+DECL|field|RESOLVER
+specifier|public
+specifier|static
+specifier|final
+name|URI
+name|RESOLVER
+init|=
+name|URI
+operator|.
+name|create
+argument_list|(
+literal|"http://arxiv.org"
+argument_list|)
+decl_stmt|;
 DECL|field|LOGGER
 specifier|private
 specifier|static
@@ -131,27 +161,6 @@ name|Eprint
 operator|.
 name|class
 argument_list|)
-decl_stmt|;
-DECL|field|RESOLVER
-specifier|public
-specifier|static
-specifier|final
-name|URI
-name|RESOLVER
-init|=
-name|URI
-operator|.
-name|create
-argument_list|(
-literal|"http://arxiv.org"
-argument_list|)
-decl_stmt|;
-comment|// DOI
-DECL|field|eprint
-specifier|private
-specifier|final
-name|String
-name|eprint
 decl_stmt|;
 comment|// Regex
 comment|// (see https://arxiv.org/help/arxiv_identifier)
@@ -233,6 +242,13 @@ name|Pattern
 operator|.
 name|CASE_INSENSITIVE
 argument_list|)
+decl_stmt|;
+comment|// DOI
+DECL|field|eprint
+specifier|private
+specifier|final
+name|String
+name|eprint
 decl_stmt|;
 comment|/**      * Creates a Eprint from various schemes including URL.      *      * @param eprint the Eprint identifier string      * @throws NullPointerException if eprint is null      * @throws IllegalArgumentException if eprint does not include a valid Eprint identifier      * @return an instance of the Eprint class      */
 DECL|method|Eprint (String eprint)
@@ -410,13 +426,15 @@ return|;
 block|}
 block|}
 comment|/**      * Return a URI presentation for the Eprint identifier      *      * @return an encoded URI representation of the Eprint identifier      */
-DECL|method|getURI ()
+annotation|@
+name|Override
+DECL|method|getExternalURI ()
 specifier|public
 name|Optional
 argument_list|<
 name|URI
 argument_list|>
-name|getURI
+name|getExternalURI
 parameter_list|()
 block|{
 try|try
@@ -487,7 +505,7 @@ name|getURIAsASCIIString
 parameter_list|()
 block|{
 return|return
-name|getURI
+name|getExternalURI
 argument_list|()
 operator|.
 name|map
@@ -508,6 +526,32 @@ DECL|method|getEprint ()
 specifier|public
 name|String
 name|getEprint
+parameter_list|()
+block|{
+return|return
+name|eprint
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|getDefaultField ()
+specifier|public
+name|String
+name|getDefaultField
+parameter_list|()
+block|{
+return|return
+name|FieldName
+operator|.
+name|EPRINT
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|getNormalized ()
+specifier|public
+name|String
+name|getNormalized
 parameter_list|()
 block|{
 return|return

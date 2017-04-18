@@ -945,7 +945,7 @@ name|flatMap
 argument_list|(
 name|DOI
 operator|::
-name|build
+name|parse
 argument_list|)
 operator|.
 name|map

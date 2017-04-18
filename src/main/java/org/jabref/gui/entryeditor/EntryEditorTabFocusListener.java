@@ -137,6 +137,13 @@ name|EntryEditorTabFocusListener
 implements|implements
 name|FocusListener
 block|{
+comment|/**      * The EntryEditorTab this FocusListener is currently tied to      */
+DECL|field|entryEditorTab
+specifier|private
+specifier|final
+name|EntryEditorTab
+name|entryEditorTab
+decl_stmt|;
 comment|/** The component this DocumentListener is currently tied to */
 DECL|field|textComponent
 specifier|private
@@ -148,13 +155,6 @@ DECL|field|documentListener
 specifier|private
 name|DocumentListener
 name|documentListener
-decl_stmt|;
-comment|/** The EntryEditorTab this FocusListener is currently tied to */
-DECL|field|entryEditorTab
-specifier|private
-specifier|final
-name|EntryEditorTab
-name|entryEditorTab
 decl_stmt|;
 DECL|method|EntryEditorTabFocusListener (final EntryEditorTab entryEditorTab)
 specifier|public
@@ -388,19 +388,8 @@ block|}
 block|}
 block|}
 block|}
-name|entryEditorTab
-operator|.
-name|setActive
-argument_list|(
-operator|(
-name|FieldEditor
-operator|)
-name|event
-operator|.
-name|getSource
-argument_list|()
-argument_list|)
-expr_stmt|;
+comment|// TODO: Reenable this
+comment|//entryEditorTab.setActive((FieldEditor) event.getSource());
 block|}
 annotation|@
 name|Override
