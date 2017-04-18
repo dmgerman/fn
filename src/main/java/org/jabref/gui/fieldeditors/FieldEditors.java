@@ -132,7 +132,7 @@ specifier|public
 class|class
 name|FieldEditors
 block|{
-DECL|method|getForField (String fieldName, TaskExecutor taskExecutor, DialogService dialogService, JournalAbbreviationLoader journalAbbreviationLoader, JournalAbbreviationPreferences journalAbbreviationPreferences)
+DECL|method|getForField (String fieldName, TaskExecutor taskExecutor, DialogService dialogService, JournalAbbreviationLoader journalAbbreviationLoader, JournalAbbreviationPreferences journalAbbreviationPreferences, JabRefPreferences preferences)
 specifier|public
 specifier|static
 name|FieldEditorFX
@@ -152,6 +152,9 @@ name|journalAbbreviationLoader
 parameter_list|,
 name|JournalAbbreviationPreferences
 name|journalAbbreviationPreferences
+parameter_list|,
+name|JabRefPreferences
+name|preferences
 parameter_list|)
 block|{
 specifier|final
@@ -306,7 +309,15 @@ name|OWNER
 argument_list|)
 condition|)
 block|{
-comment|//return FieldExtraComponents.getSetOwnerExtraComponent(editor, storeFieldAction);
+return|return
+operator|new
+name|OwnerEditor
+argument_list|(
+name|fieldName
+argument_list|,
+name|preferences
+argument_list|)
+return|;
 block|}
 elseif|else
 if|if

@@ -986,6 +986,10 @@ name|prefs
 operator|.
 name|getJournalAbbreviationPreferences
 argument_list|()
+argument_list|,
+name|Globals
+operator|.
+name|prefs
 argument_list|)
 decl_stmt|;
 name|editors
