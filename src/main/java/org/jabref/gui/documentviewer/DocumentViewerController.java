@@ -190,7 +190,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|ParsedFileField
+name|LinkedFile
 import|;
 end_import
 
@@ -218,7 +218,7 @@ name|FXML
 specifier|private
 name|ComboBox
 argument_list|<
-name|ParsedFileField
+name|LinkedFile
 argument_list|>
 name|fileChoice
 decl_stmt|;
@@ -414,20 +414,20 @@ parameter_list|()
 block|{
 name|ViewModelListCellFactory
 argument_list|<
-name|ParsedFileField
+name|LinkedFile
 argument_list|>
 name|cellFactory
 init|=
 operator|new
 name|ViewModelListCellFactory
 argument_list|<
-name|ParsedFileField
+name|LinkedFile
 argument_list|>
 argument_list|()
 operator|.
 name|withText
 argument_list|(
-name|ParsedFileField
+name|LinkedFile
 operator|::
 name|getLink
 argument_list|)

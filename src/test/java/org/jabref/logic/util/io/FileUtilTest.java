@@ -172,6 +172,20 @@ name|org
 operator|.
 name|jabref
 operator|.
+name|model
+operator|.
+name|util
+operator|.
+name|FileHelper
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
 name|preferences
 operator|.
 name|JabRefPreferences
@@ -797,7 +811,7 @@ name|assertEquals
 argument_list|(
 literal|"pdf"
 argument_list|,
-name|FileUtil
+name|FileHelper
 operator|.
 name|getFileExtension
 argument_list|(
@@ -825,7 +839,7 @@ name|assertEquals
 argument_list|(
 literal|"pdf"
 argument_list|,
-name|FileUtil
+name|FileHelper
 operator|.
 name|getFileExtension
 argument_list|(
@@ -853,7 +867,7 @@ name|assertEquals
 argument_list|(
 literal|"pdf"
 argument_list|,
-name|FileUtil
+name|FileHelper
 operator|.
 name|getFileExtension
 argument_list|(
@@ -879,7 +893,7 @@ parameter_list|()
 block|{
 name|assertFalse
 argument_list|(
-name|FileUtil
+name|FileHelper
 operator|.
 name|getFileExtension
 argument_list|(
@@ -905,7 +919,7 @@ parameter_list|()
 block|{
 name|assertFalse
 argument_list|(
-name|FileUtil
+name|FileHelper
 operator|.
 name|getFileExtension
 argument_list|(
@@ -933,7 +947,7 @@ name|assertEquals
 argument_list|(
 literal|"pdf"
 argument_list|,
-name|FileUtil
+name|FileHelper
 operator|.
 name|getFileExtension
 argument_list|(
@@ -957,7 +971,7 @@ name|assertEquals
 argument_list|(
 literal|"pdf"
 argument_list|,
-name|FileUtil
+name|FileHelper
 operator|.
 name|getFileExtension
 argument_list|(
@@ -981,7 +995,7 @@ name|assertEquals
 argument_list|(
 literal|"pdf"
 argument_list|,
-name|FileUtil
+name|FileHelper
 operator|.
 name|getFileExtension
 argument_list|(
@@ -1008,7 +1022,7 @@ operator|.
 name|empty
 argument_list|()
 argument_list|,
-name|FileUtil
+name|FileHelper
 operator|.
 name|getFileExtension
 argument_list|(
@@ -1032,7 +1046,7 @@ operator|.
 name|empty
 argument_list|()
 argument_list|,
-name|FileUtil
+name|FileHelper
 operator|.
 name|getFileExtension
 argument_list|(

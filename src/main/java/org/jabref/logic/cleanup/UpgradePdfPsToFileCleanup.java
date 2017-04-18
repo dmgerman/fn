@@ -126,7 +126,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|FileField
+name|FileFieldWriter
 import|;
 end_import
 
@@ -140,7 +140,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|ParsedFileField
+name|LinkedFile
 import|;
 end_import
 
@@ -246,7 +246,7 @@ argument_list|)
 decl_stmt|;
 name|List
 argument_list|<
-name|ParsedFileField
+name|LinkedFile
 argument_list|>
 name|fileList
 init|=
@@ -254,12 +254,10 @@ operator|new
 name|ArrayList
 argument_list|<>
 argument_list|(
-name|FileField
+name|entry
 operator|.
-name|parse
-argument_list|(
-name|oldFileContent
-argument_list|)
+name|getFiles
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|int
@@ -325,11 +323,11 @@ argument_list|(
 name|o
 argument_list|)
 decl_stmt|;
-name|ParsedFileField
+name|LinkedFile
 name|flEntry
 init|=
 operator|new
-name|ParsedFileField
+name|LinkedFile
 argument_list|(
 name|f
 operator|.
@@ -398,7 +396,7 @@ block|{
 name|String
 name|newValue
 init|=
-name|FileField
+name|FileFieldWriter
 operator|.
 name|getStringRepresentation
 argument_list|(

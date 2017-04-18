@@ -18,16 +18,6 @@ name|java
 operator|.
 name|io
 operator|.
-name|File
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
 name|IOException
 import|;
 end_import
@@ -148,18 +138,6 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|TypedBibEntry
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
 name|layout
 operator|.
 name|LayoutFormatterPreferences
@@ -246,7 +224,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|ParsedFileField
+name|LinkedFile
 import|;
 end_import
 
@@ -261,6 +239,20 @@ operator|.
 name|metadata
 operator|.
 name|FileDirectoryPreferences
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|util
+operator|.
+name|FileHelper
 import|;
 end_import
 
@@ -353,7 +345,7 @@ name|unsuccessfulRenames
 decl_stmt|;
 DECL|field|singleFieldCleanup
 specifier|private
-name|ParsedFileField
+name|LinkedFile
 name|singleFieldCleanup
 decl_stmt|;
 DECL|method|RenamePdfCleanup (boolean onlyRelativePaths, BibDatabaseContext databaseContext, String fileNamePattern, LayoutFormatterPreferences layoutPrefs, FileDirectoryPreferences fileDirectoryPreferences)
@@ -422,7 +414,7 @@ operator|=
 name|fileDirectoryPreferences
 expr_stmt|;
 block|}
-DECL|method|RenamePdfCleanup (boolean onlyRelativePaths, BibDatabaseContext databaseContext, String fileNamePattern, LayoutFormatterPreferences layoutPrefs, FileDirectoryPreferences fileDirectoryPreferences, ParsedFileField singleField)
+DECL|method|RenamePdfCleanup (boolean onlyRelativePaths, BibDatabaseContext databaseContext, String fileNamePattern, LayoutFormatterPreferences layoutPrefs, FileDirectoryPreferences fileDirectoryPreferences, LinkedFile singleField)
 specifier|public
 name|RenamePdfCleanup
 parameter_list|(
@@ -441,7 +433,7 @@ parameter_list|,
 name|FileDirectoryPreferences
 name|fileDirectoryPreferences
 parameter_list|,
-name|ParsedFileField
+name|LinkedFile
 name|singleField
 parameter_list|)
 block|{
@@ -479,26 +471,15 @@ name|BibEntry
 name|entry
 parameter_list|)
 block|{
-name|TypedBibEntry
-name|typedEntry
-init|=
-operator|new
-name|TypedBibEntry
-argument_list|(
-name|entry
-argument_list|,
-name|databaseContext
-argument_list|)
-decl_stmt|;
 name|List
 argument_list|<
-name|ParsedFileField
+name|LinkedFile
 argument_list|>
 name|newFileList
 decl_stmt|;
 name|List
 argument_list|<
-name|ParsedFileField
+name|LinkedFile
 argument_list|>
 name|fileList
 decl_stmt|;
@@ -520,7 +501,7 @@ argument_list|)
 expr_stmt|;
 name|newFileList
 operator|=
-name|typedEntry
+name|entry
 operator|.
 name|getFiles
 argument_list|()
@@ -561,7 +542,7 @@ argument_list|()
 expr_stmt|;
 name|fileList
 operator|=
-name|typedEntry
+name|entry
 operator|.
 name|getFiles
 argument_list|()
@@ -574,7 +555,7 @@ literal|false
 decl_stmt|;
 for|for
 control|(
-name|ParsedFileField
+name|LinkedFile
 name|flEntry
 range|:
 name|fileList
@@ -619,25 +600,13 @@ name|Path
 argument_list|>
 name|expandedOldFile
 init|=
-name|FileUtil
+name|flEntry
 operator|.
-name|expandFilename
+name|findIn
 argument_list|(
-name|realOldFilename
-argument_list|,
 name|databaseContext
-operator|.
-name|getFileDirectories
-argument_list|(
+argument_list|,
 name|fileDirectoryPreferences
-argument_list|)
-argument_list|)
-operator|.
-name|map
-argument_list|(
-name|File
-operator|::
-name|toPath
 argument_list|)
 decl_stmt|;
 if|if
@@ -922,7 +891,7 @@ operator|.
 name|add
 argument_list|(
 operator|new
-name|ParsedFileField
+name|LinkedFile
 argument_list|(
 name|description
 argument_list|,
@@ -999,12 +968,12 @@ name|emptyList
 argument_list|()
 return|;
 block|}
-DECL|method|getTargetFileName (ParsedFileField flEntry, BibEntry entry)
+DECL|method|getTargetFileName (LinkedFile flEntry, BibEntry entry)
 specifier|public
 name|String
 name|getTargetFileName
 parameter_list|(
-name|ParsedFileField
+name|LinkedFile
 name|flEntry
 parameter_list|,
 name|BibEntry
@@ -1055,7 +1024,7 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-name|FileUtil
+name|FileHelper
 operator|.
 name|getFileExtension
 argument_list|(

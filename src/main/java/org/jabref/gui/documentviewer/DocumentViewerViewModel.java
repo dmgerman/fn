@@ -210,34 +210,6 @@ name|org
 operator|.
 name|jabref
 operator|.
-name|logic
-operator|.
-name|TypedBibEntry
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
-name|util
-operator|.
-name|io
-operator|.
-name|FileUtil
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
 name|model
 operator|.
 name|entry
@@ -256,7 +228,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|ParsedFileField
+name|LinkedFile
 import|;
 end_import
 
@@ -316,7 +288,7 @@ DECL|field|files
 specifier|private
 name|ListProperty
 argument_list|<
-name|ParsedFileField
+name|LinkedFile
 argument_list|>
 name|files
 init|=
@@ -551,7 +523,7 @@ DECL|method|filesProperty ()
 specifier|public
 name|ListProperty
 argument_list|<
-name|ParsedFileField
+name|LinkedFile
 argument_list|>
 name|filesProperty
 parameter_list|()
@@ -598,13 +570,13 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|setCurrentEntry (BibEntry rawEntry)
+DECL|method|setCurrentEntry (BibEntry entry)
 specifier|private
 name|void
 name|setCurrentEntry
 parameter_list|(
 name|BibEntry
-name|rawEntry
+name|entry
 parameter_list|)
 block|{
 name|stateManager
@@ -617,20 +589,9 @@ argument_list|(
 name|database
 lambda|->
 block|{
-name|TypedBibEntry
-name|entry
-init|=
-operator|new
-name|TypedBibEntry
-argument_list|(
-name|rawEntry
-argument_list|,
-name|database
-argument_list|)
-decl_stmt|;
 name|List
 argument_list|<
-name|ParsedFileField
+name|LinkedFile
 argument_list|>
 name|linkedFiles
 init|=
@@ -700,12 +661,12 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-DECL|method|switchToFile (ParsedFileField file)
+DECL|method|switchToFile (LinkedFile file)
 specifier|public
 name|void
 name|switchToFile
 parameter_list|(
-name|ParsedFileField
+name|LinkedFile
 name|file
 parameter_list|)
 block|{
@@ -725,12 +686,10 @@ name|ifPresent
 argument_list|(
 name|database
 lambda|->
-name|FileUtil
-operator|.
-name|toPath
-argument_list|(
 name|file
-argument_list|,
+operator|.
+name|findIn
+argument_list|(
 name|database
 argument_list|,
 name|Globals

@@ -340,7 +340,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|FileField
+name|FileFieldWriter
 import|;
 end_import
 
@@ -354,7 +354,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|ParsedFileField
+name|LinkedFile
 import|;
 end_import
 
@@ -851,11 +851,11 @@ operator|.
 name|newFile
 argument_list|()
 decl_stmt|;
-name|ParsedFileField
+name|LinkedFile
 name|fileField
 init|=
 operator|new
-name|ParsedFileField
+name|LinkedFile
 argument_list|(
 literal|""
 argument_list|,
@@ -873,7 +873,7 @@ name|setField
 argument_list|(
 literal|"file"
 argument_list|,
-name|FileField
+name|FileFieldWriter
 operator|.
 name|getStringRepresentation
 argument_list|(
@@ -1776,11 +1776,11 @@ operator|new
 name|BibEntry
 argument_list|()
 decl_stmt|;
-name|ParsedFileField
+name|LinkedFile
 name|fileField
 init|=
 operator|new
-name|ParsedFileField
+name|LinkedFile
 argument_list|(
 literal|""
 argument_list|,
@@ -1798,7 +1798,7 @@ name|setField
 argument_list|(
 literal|"file"
 argument_list|,
-name|FileField
+name|FileFieldWriter
 operator|.
 name|getStringRepresentation
 argument_list|(
@@ -1815,11 +1815,11 @@ argument_list|,
 name|entry
 argument_list|)
 expr_stmt|;
-name|ParsedFileField
+name|LinkedFile
 name|newFileField
 init|=
 operator|new
-name|ParsedFileField
+name|LinkedFile
 argument_list|(
 literal|""
 argument_list|,
@@ -1839,7 +1839,7 @@ name|Optional
 operator|.
 name|of
 argument_list|(
-name|FileField
+name|FileFieldWriter
 operator|.
 name|getStringRepresentation
 argument_list|(
@@ -1894,11 +1894,11 @@ operator|new
 name|BibEntry
 argument_list|()
 decl_stmt|;
-name|ParsedFileField
+name|LinkedFile
 name|fileField
 init|=
 operator|new
-name|ParsedFileField
+name|LinkedFile
 argument_list|(
 literal|""
 argument_list|,
@@ -1916,7 +1916,7 @@ name|setField
 argument_list|(
 literal|"file"
 argument_list|,
-name|FileField
+name|FileFieldWriter
 operator|.
 name|getStringRepresentation
 argument_list|(
@@ -1933,11 +1933,11 @@ argument_list|,
 name|entry
 argument_list|)
 expr_stmt|;
-name|ParsedFileField
+name|LinkedFile
 name|newFileField
 init|=
 operator|new
-name|ParsedFileField
+name|LinkedFile
 argument_list|(
 literal|""
 argument_list|,
@@ -1957,7 +1957,7 @@ name|Optional
 operator|.
 name|of
 argument_list|(
-name|FileField
+name|FileFieldWriter
 operator|.
 name|getStringRepresentation
 argument_list|(
@@ -2019,11 +2019,11 @@ argument_list|(
 literal|"Toot"
 argument_list|)
 expr_stmt|;
-name|ParsedFileField
+name|LinkedFile
 name|fileField
 init|=
 operator|new
-name|ParsedFileField
+name|LinkedFile
 argument_list|(
 literal|""
 argument_list|,
@@ -2041,7 +2041,7 @@ name|setField
 argument_list|(
 literal|"file"
 argument_list|,
-name|FileField
+name|FileFieldWriter
 operator|.
 name|getStringRepresentation
 argument_list|(
@@ -2058,11 +2058,11 @@ argument_list|,
 name|entry
 argument_list|)
 expr_stmt|;
-name|ParsedFileField
+name|LinkedFile
 name|newFileField
 init|=
 operator|new
-name|ParsedFileField
+name|LinkedFile
 argument_list|(
 literal|""
 argument_list|,
@@ -2079,7 +2079,7 @@ name|Optional
 operator|.
 name|of
 argument_list|(
-name|FileField
+name|FileFieldWriter
 operator|.
 name|getStringRepresentation
 argument_list|(

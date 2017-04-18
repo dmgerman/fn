@@ -18,16 +18,6 @@ name|java
 operator|.
 name|io
 operator|.
-name|File
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
 name|IOException
 import|;
 end_import
@@ -137,18 +127,6 @@ operator|.
 name|stream
 operator|.
 name|Collectors
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
-name|TypedBibEntry
 import|;
 end_import
 
@@ -246,7 +224,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|ParsedFileField
+name|LinkedFile
 import|;
 end_import
 
@@ -261,6 +239,20 @@ operator|.
 name|metadata
 operator|.
 name|FileDirectoryPreferences
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|util
+operator|.
+name|FileHelper
 import|;
 end_import
 
@@ -342,7 +334,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|singleFileFieldCleanup
 specifier|private
-name|ParsedFileField
+name|LinkedFile
 name|singleFileFieldCleanup
 decl_stmt|;
 DECL|method|MoveFilesCleanup (BibDatabaseContext databaseContext, String fileDirPattern, FileDirectoryPreferences fileDirectoryPreferences, LayoutFormatterPreferences layoutPrefs)
@@ -407,7 +399,7 @@ name|layoutPrefs
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|MoveFilesCleanup (BibDatabaseContext databaseContext, String fileDirPattern, FileDirectoryPreferences fileDirectoryPreferences, LayoutFormatterPreferences prefs, ParsedFileField field)
+DECL|method|MoveFilesCleanup (BibDatabaseContext databaseContext, String fileDirPattern, FileDirectoryPreferences fileDirectoryPreferences, LayoutFormatterPreferences prefs, LinkedFile field)
 specifier|public
 name|MoveFilesCleanup
 parameter_list|(
@@ -423,7 +415,7 @@ parameter_list|,
 name|LayoutFormatterPreferences
 name|prefs
 parameter_list|,
-name|ParsedFileField
+name|LinkedFile
 name|field
 parameter_list|)
 block|{
@@ -518,20 +510,13 @@ name|Path
 argument_list|>
 name|targetDirectory
 init|=
-name|FileUtil
+name|FileHelper
 operator|.
 name|expandFilename
 argument_list|(
 name|defaultFileDirectory
 argument_list|,
 name|paths
-argument_list|)
-operator|.
-name|map
-argument_list|(
-name|File
-operator|::
-name|toPath
 argument_list|)
 decl_stmt|;
 if|if
@@ -550,26 +535,15 @@ name|emptyList
 argument_list|()
 return|;
 block|}
-name|TypedBibEntry
-name|typedEntry
-init|=
-operator|new
-name|TypedBibEntry
-argument_list|(
-name|entry
-argument_list|,
-name|databaseContext
-argument_list|)
-decl_stmt|;
 name|List
 argument_list|<
-name|ParsedFileField
+name|LinkedFile
 argument_list|>
 name|fileList
 decl_stmt|;
 name|List
 argument_list|<
-name|ParsedFileField
+name|LinkedFile
 argument_list|>
 name|newFileList
 decl_stmt|;
@@ -592,7 +566,7 @@ expr_stmt|;
 comment|//Add all other except the current selected file
 name|newFileList
 operator|=
-name|typedEntry
+name|entry
 operator|.
 name|getFiles
 argument_list|()
@@ -633,7 +607,7 @@ argument_list|()
 expr_stmt|;
 name|fileList
 operator|=
-name|typedEntry
+name|entry
 operator|.
 name|getFiles
 argument_list|()
@@ -646,7 +620,7 @@ literal|false
 decl_stmt|;
 for|for
 control|(
-name|ParsedFileField
+name|LinkedFile
 name|fileEntry
 range|:
 name|fileList
@@ -662,16 +636,14 @@ argument_list|()
 decl_stmt|;
 name|Optional
 argument_list|<
-name|File
+name|Path
 argument_list|>
 name|oldFile
 init|=
-name|FileUtil
+name|fileEntry
 operator|.
-name|expandFilename
+name|findIn
 argument_list|(
-name|oldFileName
-argument_list|,
 name|paths
 argument_list|)
 decl_stmt|;
@@ -684,13 +656,15 @@ name|isPresent
 argument_list|()
 operator|||
 operator|!
+name|Files
+operator|.
+name|exists
+argument_list|(
 name|oldFile
 operator|.
 name|get
 argument_list|()
-operator|.
-name|exists
-argument_list|()
+argument_list|)
 condition|)
 block|{
 name|newFileList
@@ -755,7 +729,7 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|getName
+name|getFileName
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -827,9 +801,6 @@ name|oldFile
 operator|.
 name|get
 argument_list|()
-operator|.
-name|toPath
-argument_list|()
 argument_list|,
 name|newTargetFile
 argument_list|,
@@ -859,7 +830,7 @@ operator|.
 name|toString
 argument_list|()
 decl_stmt|;
-name|ParsedFileField
+name|LinkedFile
 name|newFileEntry
 init|=
 name|fileEntry
@@ -881,7 +852,7 @@ block|{
 name|newFileEntry
 operator|=
 operator|new
-name|ParsedFileField
+name|LinkedFile
 argument_list|(
 name|fileEntry
 operator|.

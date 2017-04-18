@@ -56,7 +56,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|ParsedFileField
+name|LinkedFile
 import|;
 end_import
 
@@ -304,13 +304,13 @@ return|;
 block|}
 DECL|method|toParsedFileField ()
 specifier|public
-name|ParsedFileField
+name|LinkedFile
 name|toParsedFileField
 parameter_list|()
 block|{
 return|return
 operator|new
-name|ParsedFileField
+name|LinkedFile
 argument_list|(
 name|getDescription
 argument_list|()

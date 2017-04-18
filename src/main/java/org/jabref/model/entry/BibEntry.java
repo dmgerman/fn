@@ -3530,7 +3530,7 @@ argument_list|)
 return|;
 block|}
 block|}
-DECL|method|setFiles (List<ParsedFileField> files)
+DECL|method|setFiles (List<LinkedFile> files)
 specifier|public
 name|Optional
 argument_list|<
@@ -3540,7 +3540,7 @@ name|setFiles
 parameter_list|(
 name|List
 argument_list|<
-name|ParsedFileField
+name|LinkedFile
 argument_list|>
 name|files
 parameter_list|)
@@ -3563,7 +3563,7 @@ decl_stmt|;
 name|String
 name|newValue
 init|=
-name|FileField
+name|FileFieldWriter
 operator|.
 name|getStringRepresentation
 argument_list|(
@@ -3605,6 +3605,58 @@ operator|.
 name|FILE
 argument_list|,
 name|newValue
+argument_list|)
+return|;
+block|}
+comment|/**      * Gets a list of linked files.      *      * @return the list of linked files, is never null but can be empty      */
+DECL|method|getFiles ()
+specifier|public
+name|List
+argument_list|<
+name|LinkedFile
+argument_list|>
+name|getFiles
+parameter_list|()
+block|{
+comment|//Extract the path
+name|Optional
+argument_list|<
+name|String
+argument_list|>
+name|oldValue
+init|=
+name|getField
+argument_list|(
+name|FieldName
+operator|.
+name|FILE
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+operator|!
+name|oldValue
+operator|.
+name|isPresent
+argument_list|()
+condition|)
+block|{
+return|return
+name|Collections
+operator|.
+name|emptyList
+argument_list|()
+return|;
+block|}
+return|return
+name|FileFieldParser
+operator|.
+name|parse
+argument_list|(
+name|oldValue
+operator|.
+name|get
+argument_list|()
 argument_list|)
 return|;
 block|}
