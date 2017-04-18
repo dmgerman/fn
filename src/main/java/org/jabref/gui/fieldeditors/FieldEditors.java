@@ -215,7 +215,15 @@ name|EXTERNAL
 argument_list|)
 condition|)
 block|{
-comment|//return FieldExtraComponents.getExternalExtraComponent(panel, editor);
+return|return
+operator|new
+name|UrlEditor
+argument_list|(
+name|fieldName
+argument_list|,
+name|dialogService
+argument_list|)
+return|;
 block|}
 elseif|else
 if|if
