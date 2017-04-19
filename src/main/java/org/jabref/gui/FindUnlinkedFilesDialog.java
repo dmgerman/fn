@@ -982,6 +982,22 @@ argument_list|(
 literal|"Searches for unlinked PDF files on the file system"
 argument_list|)
 decl_stmt|;
+DECL|field|LOGGER
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOGGER
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|FindUnlinkedFilesDialog
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 DECL|field|GLOBAL_PREFS_WORKING_DIRECTORY_KEY
 specifier|private
 specifier|static

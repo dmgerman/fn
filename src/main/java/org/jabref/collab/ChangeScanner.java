@@ -539,6 +539,15 @@ operator|.
 name|TITLE
 block|}
 decl_stmt|;
+DECL|field|MATCH_THRESHOLD
+specifier|private
+specifier|static
+specifier|final
+name|double
+name|MATCH_THRESHOLD
+init|=
+literal|0.4
+decl_stmt|;
 DECL|field|file
 specifier|private
 specifier|final
@@ -578,15 +587,6 @@ DECL|field|metadataInTemp
 specifier|private
 name|MetaData
 name|metadataInTemp
-decl_stmt|;
-DECL|field|MATCH_THRESHOLD
-specifier|private
-specifier|static
-specifier|final
-name|double
-name|MATCH_THRESHOLD
-init|=
-literal|0.4
 decl_stmt|;
 comment|/**      * We create an ArrayList to hold the changes we find. These will be added in the form      * of UndoEdit objects. We instantiate these so that the changes found in the file on disk      * can be reproduced in memory by calling redo() on them. REDO, not UNDO!      */
 DECL|field|changes

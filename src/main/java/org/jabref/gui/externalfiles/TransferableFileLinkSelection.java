@@ -210,6 +210,20 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+DECL|field|fileList
+specifier|private
+specifier|final
+name|List
+argument_list|<
+name|File
+argument_list|>
+name|fileList
+init|=
+operator|new
+name|ArrayList
+argument_list|<>
+argument_list|()
+decl_stmt|;
 DECL|method|TransferableFileLinkSelection (BasePanel panel, List<BibEntry> selection)
 specifier|public
 name|TransferableFileLinkSelection

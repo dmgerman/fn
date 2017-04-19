@@ -178,15 +178,6 @@ name|TransferableBibtexEntry
 implements|implements
 name|Transferable
 block|{
-DECL|field|data
-specifier|private
-specifier|final
-name|List
-argument_list|<
-name|BibEntry
-argument_list|>
-name|data
-decl_stmt|;
 DECL|field|entryFlavor
 specifier|public
 specifier|static
@@ -203,6 +194,15 @@ name|class
 argument_list|,
 literal|"JabRef entry"
 argument_list|)
+decl_stmt|;
+DECL|field|data
+specifier|private
+specifier|final
+name|List
+argument_list|<
+name|BibEntry
+argument_list|>
+name|data
 decl_stmt|;
 DECL|method|TransferableBibtexEntry (List<BibEntry> bes)
 specifier|public

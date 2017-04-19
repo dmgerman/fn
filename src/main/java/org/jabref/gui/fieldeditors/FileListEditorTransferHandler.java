@@ -269,6 +269,22 @@ name|FileListEditorTransferHandler
 extends|extends
 name|TransferHandler
 block|{
+DECL|field|LOGGER
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOGGER
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|FileListEditorTransferHandler
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 DECL|field|urlFlavor
 specifier|private
 name|DataFlavor
@@ -302,22 +318,6 @@ DECL|field|droppedFileHandler
 specifier|private
 name|DroppedFileHandler
 name|droppedFileHandler
-decl_stmt|;
-DECL|field|LOGGER
-specifier|private
-specifier|static
-specifier|final
-name|Log
-name|LOGGER
-init|=
-name|LogFactory
-operator|.
-name|getLog
-argument_list|(
-name|FileListEditorTransferHandler
-operator|.
-name|class
-argument_list|)
 decl_stmt|;
 comment|/**      *      * @param frame      * @param entryContainer      * @param textTransferHandler is an instance of javax.swing.plaf.basic.BasicTextUI.TextTransferHandler. That class is not visible. Therefore, we have to "cheat"      */
 DECL|method|FileListEditorTransferHandler (JabRefFrame frame, EntryContainer entryContainer, TransferHandler textTransferHandler)

@@ -1,6 +1,7 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
 DECL|package|org.jabref.gui.fieldeditors
+DECL|package|org.jabref.gui.fieldeditors
 package|package
 name|org
 operator|.
@@ -264,6 +265,7 @@ end_comment
 
 begin_class
 DECL|class|TextField
+DECL|class|TextField
 specifier|public
 class|class
 name|TextField
@@ -272,6 +274,7 @@ name|JTextFieldWithPlaceholder
 implements|implements
 name|FieldEditor
 block|{
+DECL|field|LOGGER
 DECL|field|LOGGER
 specifier|private
 specifier|static
@@ -289,11 +292,13 @@ name|class
 argument_list|)
 decl_stmt|;
 DECL|field|fieldName
+DECL|field|fieldName
 specifier|private
 specifier|final
 name|String
 name|fieldName
 decl_stmt|;
+DECL|field|label
 DECL|field|label
 specifier|private
 specifier|final
@@ -301,15 +306,18 @@ name|JLabel
 name|label
 decl_stmt|;
 DECL|field|undo
+DECL|field|undo
 specifier|private
 name|UndoManager
 name|undo
 decl_stmt|;
 DECL|field|autoCompleteListener
+DECL|field|autoCompleteListener
 specifier|private
 name|AutoCompleteListener
 name|autoCompleteListener
 decl_stmt|;
+DECL|method|TextField (String fieldName, String content, boolean changeColorOnFocus)
 DECL|method|TextField (String fieldName, String content, boolean changeColorOnFocus)
 specifier|public
 name|TextField
@@ -336,6 +344,7 @@ literal|""
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|TextField (String fieldName, String content, boolean changeColorOnFocus, String title)
 DECL|method|TextField (String fieldName, String content, boolean changeColorOnFocus, String title)
 specifier|public
 name|TextField
@@ -450,6 +459,7 @@ block|}
 annotation|@
 name|Override
 DECL|method|setText (String t)
+DECL|method|setText (String t)
 specifier|public
 name|void
 name|setText
@@ -482,6 +492,7 @@ block|}
 annotation|@
 name|Override
 DECL|method|append (String text)
+DECL|method|append (String text)
 specifier|public
 name|void
 name|append
@@ -502,6 +513,7 @@ block|}
 annotation|@
 name|Override
 DECL|method|getFieldName ()
+DECL|method|getFieldName ()
 specifier|public
 name|String
 name|getFieldName
@@ -514,6 +526,7 @@ block|}
 annotation|@
 name|Override
 DECL|method|getLabel ()
+DECL|method|getLabel ()
 specifier|public
 name|JLabel
 name|getLabel
@@ -525,6 +538,7 @@ return|;
 block|}
 annotation|@
 name|Override
+DECL|method|setLabelColor (Color color)
 DECL|method|setLabelColor (Color color)
 specifier|public
 name|void
@@ -552,6 +566,7 @@ block|}
 annotation|@
 name|Override
 DECL|method|getPane ()
+DECL|method|getPane ()
 specifier|public
 name|JComponent
 name|getPane
@@ -564,6 +579,7 @@ block|}
 annotation|@
 name|Override
 DECL|method|getTextComponent ()
+DECL|method|getTextComponent ()
 specifier|public
 name|JComponent
 name|getTextComponent
@@ -575,6 +591,7 @@ return|;
 block|}
 annotation|@
 name|Override
+DECL|method|setActiveBackgroundColor ()
 DECL|method|setActiveBackgroundColor ()
 specifier|public
 name|void
@@ -592,6 +609,7 @@ block|}
 annotation|@
 name|Override
 DECL|method|setValidBackgroundColor ()
+DECL|method|setValidBackgroundColor ()
 specifier|public
 name|void
 name|setValidBackgroundColor
@@ -608,6 +626,7 @@ block|}
 annotation|@
 name|Override
 DECL|method|setInvalidBackgroundColor ()
+DECL|method|setInvalidBackgroundColor ()
 specifier|public
 name|void
 name|setInvalidBackgroundColor
@@ -621,6 +640,7 @@ name|invalidFieldBackgroundColor
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|setBackgroundColor (Color color)
 DECL|method|setBackgroundColor (Color color)
 specifier|private
 name|void
@@ -681,81 +701,120 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|updateFont ()
+operator|<<
+operator|<<
+operator|<<
+operator|<
+name|HEAD
 specifier|private
 name|void
 name|updateFont
-parameter_list|()
+argument_list|()
 block|{
+operator|==
+operator|==
+operator|==
+operator|=
+expr|@
+name|Override
+specifier|public
+name|void
+name|updateFontColor
+argument_list|()
+block|{
+name|setForeground
+argument_list|(
+name|GUIGlobals
+operator|.
+name|editorTextColor
+argument_list|)
+block|;     }
+expr|@
+name|Override
+specifier|public
+name|void
+name|updateFont
+argument_list|()
+block|{
+operator|>>>
+operator|>>>
+operator|>
+name|Fix
+name|checkstyle
+name|warnings
+DECL|method|setFont (GUIGlobals.currentFont)
+DECL|method|setFont (GUIGlobals.currentFont)
 name|setFont
 argument_list|(
 name|GUIGlobals
 operator|.
 name|currentFont
 argument_list|)
-expr_stmt|;
-block|}
-annotation|@
+block|;     }
+expr|@
 name|Override
 comment|// Only replaces selected text if found
+DECL|method|paste (String textToInsert)
 DECL|method|paste (String textToInsert)
 specifier|public
 name|void
 name|paste
-parameter_list|(
+argument_list|(
 name|String
 name|textToInsert
-parameter_list|)
+argument_list|)
 block|{
 name|replaceSelection
 argument_list|(
 name|textToInsert
 argument_list|)
-expr_stmt|;
-block|}
-annotation|@
+block|;     }
+expr|@
 name|Override
+DECL|method|undo ()
 DECL|method|undo ()
 specifier|public
 name|void
 name|undo
-parameter_list|()
+argument_list|()
 block|{
 comment|// Nothing
 block|}
-annotation|@
+expr|@
 name|Override
+DECL|method|redo ()
 DECL|method|redo ()
 specifier|public
 name|void
 name|redo
-parameter_list|()
+argument_list|()
 block|{
 comment|// Nothing
 block|}
-annotation|@
+expr|@
 name|Override
+DECL|method|setAutoCompleteListener (AutoCompleteListener listener)
 DECL|method|setAutoCompleteListener (AutoCompleteListener listener)
 specifier|public
 name|void
 name|setAutoCompleteListener
-parameter_list|(
+argument_list|(
 name|AutoCompleteListener
 name|listener
-parameter_list|)
+argument_list|)
 block|{
 name|autoCompleteListener
 operator|=
 name|listener
-expr_stmt|;
-block|}
-annotation|@
+block|;     }
+expr|@
 name|Override
+DECL|method|clearAutoCompleteSuggestion ()
 DECL|method|clearAutoCompleteSuggestion ()
 specifier|public
 name|void
 name|clearAutoCompleteSuggestion
-parameter_list|()
+argument_list|()
 block|{
 if|if
 condition|(
@@ -774,10 +833,11 @@ expr_stmt|;
 block|}
 block|}
 DECL|method|setupPasteListener ()
+DECL|method|setupPasteListener ()
 specifier|private
 name|void
 name|setupPasteListener
-parameter_list|()
+argument_list|()
 block|{
 comment|//register "Paste" action
 name|getActionMap
@@ -795,7 +855,7 @@ argument_list|(
 name|this
 argument_list|)
 argument_list|)
-expr_stmt|;
+block|;
 comment|// Bind paste command to KeyBinds.PASTE
 name|getInputMap
 argument_list|()
@@ -826,26 +886,26 @@ name|Actions
 operator|.
 name|PASTE
 argument_list|)
-expr_stmt|;
-block|}
+block|;     }
+DECL|method|setupUndoRedo ()
 DECL|method|setupUndoRedo ()
 specifier|private
 name|void
 name|setupUndoRedo
-parameter_list|()
+argument_list|()
 block|{
 name|undo
 operator|=
 operator|new
 name|UndoManager
 argument_list|()
-expr_stmt|;
+block|;
 name|Document
 name|doc
-init|=
+operator|=
 name|getDocument
 argument_list|()
-decl_stmt|;
+block|;
 comment|// Listen for undo and redo events
 name|doc
 operator|.
@@ -863,7 +923,7 @@ name|getEdit
 argument_list|()
 argument_list|)
 argument_list|)
-expr_stmt|;
+block|;
 comment|// Create an undo action and add it to the text component
 name|getActionMap
 argument_list|()
@@ -905,6 +965,9 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+end_class
+
+begin_catch
 catch|catch
 parameter_list|(
 name|CannotUndoException
@@ -913,11 +976,18 @@ parameter_list|)
 block|{
 comment|// Ignored
 block|}
-block|}
-block|}
-argument_list|)
-expr_stmt|;
+end_catch
+
+begin_empty_stmt
+unit|}         })
+empty_stmt|;
+end_empty_stmt
+
+begin_comment
 comment|// Bind the undo action to ctl-Z
+end_comment
+
+begin_expr_stmt
 name|getInputMap
 argument_list|()
 operator|.
@@ -946,7 +1016,13 @@ argument_list|,
 literal|"Undo"
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_comment
 comment|// Create a redo action and add it to the text component
+end_comment
+
+begin_expr_stmt
 name|getActionMap
 argument_list|()
 operator|.
@@ -1001,7 +1077,13 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_comment
 comment|// Bind the redo action to ctl-Y
+end_comment
+
+begin_expr_stmt
 name|getInputMap
 argument_list|()
 operator|.
@@ -1030,9 +1112,8 @@ argument_list|,
 literal|"Redo"
 argument_list|)
 expr_stmt|;
-block|}
-block|}
-end_class
+end_expr_stmt
 
+unit|} }
 end_unit
 

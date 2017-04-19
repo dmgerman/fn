@@ -67,6 +67,20 @@ name|MatcherSet
 implements|implements
 name|SearchMatcher
 block|{
+DECL|field|matchers
+specifier|protected
+specifier|final
+name|List
+argument_list|<
+name|SearchMatcher
+argument_list|>
+name|matchers
+init|=
+operator|new
+name|Vector
+argument_list|<>
+argument_list|()
+decl_stmt|;
 annotation|@
 name|Override
 DECL|method|equals (Object o)
@@ -142,20 +156,6 @@ name|hashCode
 argument_list|()
 return|;
 block|}
-DECL|field|matchers
-specifier|protected
-specifier|final
-name|List
-argument_list|<
-name|SearchMatcher
-argument_list|>
-name|matchers
-init|=
-operator|new
-name|Vector
-argument_list|<>
-argument_list|()
-decl_stmt|;
 DECL|method|addRule (SearchMatcher newRule)
 specifier|public
 name|void

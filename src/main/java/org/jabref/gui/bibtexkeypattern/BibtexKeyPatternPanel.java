@@ -361,12 +361,6 @@ operator|new
 name|GridBagConstraints
 argument_list|()
 decl_stmt|;
-DECL|field|help
-specifier|private
-specifier|final
-name|HelpAction
-name|help
-decl_stmt|;
 comment|// default pattern
 DECL|field|defaultPat
 specifier|protected
@@ -377,6 +371,12 @@ init|=
 operator|new
 name|JTextField
 argument_list|()
+decl_stmt|;
+DECL|field|help
+specifier|private
+specifier|final
+name|HelpAction
+name|help
 decl_stmt|;
 comment|// one field for each type
 DECL|field|textFields

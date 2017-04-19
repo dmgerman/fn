@@ -310,6 +310,15 @@ name|MergeFetchedEntryDialog
 extends|extends
 name|JabRefDialog
 block|{
+DECL|field|MARGIN
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|MARGIN
+init|=
+literal|"5px"
+decl_stmt|;
 DECL|field|panel
 specifier|private
 specifier|final
@@ -353,15 +362,6 @@ specifier|private
 specifier|final
 name|String
 name|type
-decl_stmt|;
-DECL|field|MARGIN
-specifier|private
-specifier|static
-specifier|final
-name|String
-name|MARGIN
-init|=
-literal|"5px"
 decl_stmt|;
 DECL|method|MergeFetchedEntryDialog (BasePanel panel, BibEntry originalEntry, BibEntry fetchedEntry, String type)
 specifier|public

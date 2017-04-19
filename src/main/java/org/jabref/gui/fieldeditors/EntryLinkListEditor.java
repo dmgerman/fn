@@ -546,6 +546,15 @@ name|JTable
 implements|implements
 name|FieldEditor
 block|{
+DECL|field|layoutFormat
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|layoutFormat
+init|=
+literal|"\\begin{author}\\format[Authors(2,1),LatexToUnicode]{\\author}\\end{author}\\begin{title}, \"\\format[LatexToUnicode]{\\title}\"\\end{title}\\begin{year}, \\year\\end{year}"
+decl_stmt|;
 DECL|field|LOGGER
 specifier|private
 specifier|static
@@ -657,15 +666,6 @@ operator|.
 name|getSmallIcon
 argument_list|()
 argument_list|)
-decl_stmt|;
-DECL|field|layoutFormat
-specifier|private
-specifier|static
-specifier|final
-name|String
-name|layoutFormat
-init|=
-literal|"\\begin{author}\\format[Authors(2,1),LatexToUnicode]{\\author}\\end{author}\\begin{title}, \"\\format[LatexToUnicode]{\\title}\"\\end{title}\\begin{year}, \\year\\end{year}"
 decl_stmt|;
 DECL|method|EntryLinkListEditor (JabRefFrame frame, BibDatabaseContext databaseContext, String fieldName, String content, EntryEditor entryEditor, boolean singleEntry)
 specifier|public
@@ -2390,22 +2390,46 @@ parameter_list|()
 block|{
 comment|// Do nothing
 block|}
+operator|<<
+operator|<<
+operator|<<
+operator|<
+name|HEAD
+operator|==
+operator|==
+operator|==
+operator|=
+expr|@
+name|Override
+specifier|public
+name|void
+name|updateFontColor
+argument_list|()
+block|{
+comment|// Do nothing
+block|}
+operator|>>>
+operator|>>>
+operator|>
+name|Fix
+name|checkstyle
+name|warnings
 DECL|class|EntryLinkListTableModel
 specifier|private
-class|class
+name|class
 name|EntryLinkListTableModel
-extends|extends
+expr|extends
 name|DefaultTableModel
 block|{
 DECL|field|internalList
 specifier|private
-specifier|final
+name|final
 name|List
 argument_list|<
 name|ParsedEntryLink
 argument_list|>
 name|internalList
-init|=
+operator|=
 name|Collections
 operator|.
 name|synchronizedList
@@ -2415,29 +2439,28 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 argument_list|)
-decl_stmt|;
+block|;
 DECL|method|EntryLinkListTableModel (List<ParsedEntryLink> originalList)
 specifier|public
 name|EntryLinkListTableModel
-parameter_list|(
+argument_list|(
 name|List
 argument_list|<
 name|ParsedEntryLink
 argument_list|>
 name|originalList
-parameter_list|)
+argument_list|)
 block|{
 name|addEntries
 argument_list|(
 name|originalList
 argument_list|)
-expr_stmt|;
-block|}
+block|;         }
 DECL|method|getText ()
 specifier|public
 name|String
 name|getText
-parameter_list|()
+argument_list|()
 block|{
 synchronized|synchronized
 init|(
@@ -2463,13 +2486,13 @@ DECL|method|addEntries (List<ParsedEntryLink> newList)
 specifier|public
 name|void
 name|addEntries
-parameter_list|(
+argument_list|(
 name|List
 argument_list|<
 name|ParsedEntryLink
 argument_list|>
 name|newList
-parameter_list|)
+argument_list|)
 block|{
 name|internalList
 operator|.
@@ -2477,7 +2500,7 @@ name|addAll
 argument_list|(
 name|newList
 argument_list|)
-expr_stmt|;
+block|;
 if|if
 condition|(
 name|SwingUtilities
@@ -2504,6 +2527,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+end_class
+
+begin_function
 DECL|method|setContent (List<ParsedEntryLink> newList)
 specifier|public
 name|void
@@ -2554,6 +2580,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Override
 DECL|method|getColumnCount ()
@@ -2566,6 +2595,9 @@ return|return
 literal|2
 return|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Override
 DECL|method|getRowCount ()
@@ -2598,6 +2630,9 @@ argument_list|()
 return|;
 block|}
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Override
 DECL|method|getColumnClass (int columnIndex)
@@ -2618,6 +2653,9 @@ operator|.
 name|class
 return|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Override
 DECL|method|getValueAt (int rowIndex, int columnIndex)
@@ -2697,6 +2735,9 @@ return|;
 block|}
 block|}
 block|}
+end_function
+
+begin_function
 DECL|method|getEntry (int index)
 specifier|public
 name|ParsedEntryLink
@@ -2721,6 +2762,9 @@ argument_list|)
 return|;
 block|}
 block|}
+end_function
+
+begin_function
 DECL|method|removeEntry (int index)
 specifier|public
 name|void
@@ -2771,6 +2815,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_function
 DECL|method|isEmpty ()
 specifier|public
 name|boolean
@@ -2784,7 +2831,13 @@ name|isEmpty
 argument_list|()
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**          * Add an entry to the table model, and fire a change event. The change event          * is fired on the event dispatch thread.          * @param index The row index to insert the entry at.          * @param entry The entry to insert.          */
+end_comment
+
+begin_function
 DECL|method|addEntry (final int index, final ParsedEntryLink entry)
 specifier|public
 name|void
@@ -2840,6 +2893,9 @@ expr_stmt|;
 block|}
 block|}
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Override
 DECL|method|isCellEditable (int row, int column)
@@ -2862,6 +2918,9 @@ literal|0
 operator|)
 return|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Override
 DECL|method|setValueAt (Object aValue, int rowIndex, int columnIndex)
@@ -2942,9 +3001,11 @@ block|}
 block|}
 block|}
 block|}
-block|}
+end_function
+
+begin_function
+unit|}      private
 DECL|method|formatEntry (BibEntry entry, BibDatabase database)
-specifier|private
 specifier|static
 name|String
 name|formatEntry
@@ -3021,8 +3082,8 @@ return|return
 literal|""
 return|;
 block|}
-block|}
-end_class
+end_function
 
+unit|}
 end_unit
 

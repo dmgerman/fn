@@ -86,6 +86,20 @@ operator|new
 name|LogMessages
 argument_list|()
 decl_stmt|;
+DECL|field|messages
+specifier|private
+specifier|final
+name|ObservableList
+argument_list|<
+name|LogEvent
+argument_list|>
+name|messages
+init|=
+name|FXCollections
+operator|.
+name|observableArrayList
+argument_list|()
+decl_stmt|;
 DECL|method|LogMessages ()
 specifier|private
 name|LogMessages
@@ -102,20 +116,6 @@ return|return
 name|instance
 return|;
 block|}
-DECL|field|messages
-specifier|private
-specifier|final
-name|ObservableList
-argument_list|<
-name|LogEvent
-argument_list|>
-name|messages
-init|=
-name|FXCollections
-operator|.
-name|observableArrayList
-argument_list|()
-decl_stmt|;
 DECL|method|getMessages ()
 specifier|public
 name|ObservableList

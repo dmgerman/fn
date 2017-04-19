@@ -3521,12 +3521,6 @@ specifier|final
 name|CustomImportList
 name|customImports
 decl_stmt|;
-DECL|field|prefs
-specifier|private
-specifier|final
-name|Preferences
-name|prefs
-decl_stmt|;
 comment|// The following field is used as a global variable during the export of a database.
 comment|// By setting this field to the path of the database's default file directory, formatters
 comment|// that should resolve external file paths can access this field. This is an ugly hack
@@ -3539,6 +3533,12 @@ argument_list|<
 name|String
 argument_list|>
 name|fileDirForDatabase
+decl_stmt|;
+DECL|field|prefs
+specifier|private
+specifier|final
+name|Preferences
+name|prefs
 decl_stmt|;
 DECL|field|keyPattern
 specifier|private

@@ -202,6 +202,22 @@ name|SpecialFieldAction
 implements|implements
 name|BaseAction
 block|{
+DECL|field|LOGGER
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOGGER
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|SpecialFieldAction
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 DECL|field|frame
 specifier|private
 specifier|final
@@ -231,22 +247,6 @@ specifier|private
 specifier|final
 name|String
 name|undoText
-decl_stmt|;
-DECL|field|LOGGER
-specifier|private
-specifier|static
-specifier|final
-name|Log
-name|LOGGER
-init|=
-name|LogFactory
-operator|.
-name|getLog
-argument_list|(
-name|SpecialFieldAction
-operator|.
-name|class
-argument_list|)
 decl_stmt|;
 comment|/**      * @param nullFieldIfValueIsTheSame - false also causes that doneTextPattern has two place holders %0 for the value and %1 for the sum of entries      */
 DECL|method|SpecialFieldAction ( JabRefFrame frame, SpecialField specialField, String value, boolean nullFieldIfValueIsTheSame, String undoText)

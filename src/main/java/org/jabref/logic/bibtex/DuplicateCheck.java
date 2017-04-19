@@ -260,6 +260,15 @@ specifier|public
 class|class
 name|DuplicateCheck
 block|{
+DECL|field|duplicateThreshold
+specifier|public
+specifier|static
+name|double
+name|duplicateThreshold
+init|=
+literal|0.75
+decl_stmt|;
+comment|// The overall threshold to signal a duplicate pair
 DECL|field|LOGGER
 specifier|private
 specifier|static
@@ -322,15 +331,6 @@ name|EMPTY_IN_BOTH
 init|=
 literal|4
 decl_stmt|;
-DECL|field|duplicateThreshold
-specifier|public
-specifier|static
-name|double
-name|duplicateThreshold
-init|=
-literal|0.75
-decl_stmt|;
-comment|// The overall threshold to signal a duplicate pair
 comment|// Non-required fields are investigated only if the required fields give a value within
 comment|// the doubt range of the threshold:
 DECL|field|DOUBT_RANGE
@@ -429,7 +429,7 @@ DECL|method|DuplicateCheck ()
 specifier|private
 name|DuplicateCheck
 parameter_list|()
-block|{}
+block|{ }
 comment|/**      * Checks if the two entries represent the same publication.      *      * @param one BibEntry      * @param two BibEntry      * @return boolean      */
 DECL|method|isDuplicate (BibEntry one, BibEntry two, BibDatabaseMode bibDatabaseMode)
 specifier|public

@@ -618,6 +618,11 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
+operator|<<
+operator|<<
+operator|<<
+operator|<
+name|HEAD
 for|for
 control|(
 name|LinkedFile
@@ -626,6 +631,24 @@ range|:
 name|fields
 control|)
 block|{
+operator|==
+operator|==
+operator|==
+operator|=
+for|for
+control|(
+name|ParsedFileField
+name|entry
+range|:
+name|fields
+control|)
+block|{
+operator|>>>
+operator|>>>
+operator|>
+name|Fix
+name|checkstyle
+name|warnings
 if|if
 condition|(
 name|entry
@@ -698,7 +721,6 @@ literal|null
 return|;
 block|}
 comment|/**      * Convenience method for finding a label corresponding to the type of the      * first file link in the given field content. The difference between using      * this method and using setContent() on an instance of FileListTableModel      * is a slight optimization: with this method, parsing is discontinued after      * the first entry has been found.      * @param content The file field content, as fed to this class' setContent() method.      * @return A JLabel set up with no text and the icon of the first entry's file type,      *  or null if no entry was found or the entry had no icon.      */
-DECL|method|getFirstLabel (String content)
 specifier|public
 specifier|static
 name|JLabel
@@ -766,7 +788,6 @@ name|getIconLabel
 argument_list|()
 return|;
 block|}
-DECL|method|decodeEntry (LinkedFile entry, boolean deduceUnknownType)
 specifier|private
 name|FileListEntry
 name|decodeEntry
@@ -916,7 +937,6 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Transform the file list shown in the table into a flat string representable      * as a BibTeX field:      * @return String representation.      */
-DECL|method|getStringRepresentation ()
 specifier|public
 name|String
 name|getStringRepresentation
@@ -980,7 +1000,6 @@ return|;
 block|}
 block|}
 comment|/**      * Transform the file list shown in the table into a HTML string representation      * suitable for displaying the contents in a tooltip.      * @return Tooltip representation.      */
-DECL|method|getToolTipHTMLRepresentation ()
 specifier|public
 name|String
 name|getToolTipHTMLRepresentation

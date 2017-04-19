@@ -266,7 +266,7 @@ DECL|method|JabRefExecutorService ()
 specifier|private
 name|JabRefExecutorService
 parameter_list|()
-block|{}
+block|{ }
 annotation|@
 name|Override
 DECL|method|execute (Runnable command)

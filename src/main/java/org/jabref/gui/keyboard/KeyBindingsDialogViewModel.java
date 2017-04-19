@@ -140,35 +140,6 @@ name|KeyBindingsDialogViewModel
 extends|extends
 name|AbstractViewModel
 block|{
-DECL|field|keyBindingPreferences
-specifier|private
-specifier|final
-name|KeyBindingPreferences
-name|keyBindingPreferences
-decl_stmt|;
-DECL|field|keyBindingRepository
-specifier|private
-name|KeyBindingRepository
-name|keyBindingRepository
-decl_stmt|;
-DECL|field|dialogService
-specifier|private
-name|DialogService
-name|dialogService
-decl_stmt|;
-DECL|method|selectedKeyBindingProperty ()
-specifier|public
-name|ObjectProperty
-argument_list|<
-name|KeyBindingViewModel
-argument_list|>
-name|selectedKeyBindingProperty
-parameter_list|()
-block|{
-return|return
-name|selectedKeyBinding
-return|;
-block|}
 DECL|field|selectedKeyBinding
 specifier|private
 specifier|final
@@ -197,19 +168,22 @@ name|SimpleObjectProperty
 argument_list|<>
 argument_list|()
 decl_stmt|;
-DECL|method|rootKeyBindingProperty ()
-specifier|public
-name|ObjectProperty
-argument_list|<
-name|KeyBindingViewModel
-argument_list|>
-name|rootKeyBindingProperty
-parameter_list|()
-block|{
-return|return
-name|rootKeyBinding
-return|;
-block|}
+DECL|field|keyBindingPreferences
+specifier|private
+specifier|final
+name|KeyBindingPreferences
+name|keyBindingPreferences
+decl_stmt|;
+DECL|field|keyBindingRepository
+specifier|private
+name|KeyBindingRepository
+name|keyBindingRepository
+decl_stmt|;
+DECL|field|dialogService
+specifier|private
+name|DialogService
+name|dialogService
+decl_stmt|;
 DECL|method|KeyBindingsDialogViewModel (KeyBindingPreferences keyBindingPreferences, DialogService dialogService)
 specifier|public
 name|KeyBindingsDialogViewModel
@@ -257,6 +231,32 @@ expr_stmt|;
 name|populateTable
 argument_list|()
 expr_stmt|;
+block|}
+DECL|method|selectedKeyBindingProperty ()
+specifier|public
+name|ObjectProperty
+argument_list|<
+name|KeyBindingViewModel
+argument_list|>
+name|selectedKeyBindingProperty
+parameter_list|()
+block|{
+return|return
+name|selectedKeyBinding
+return|;
+block|}
+DECL|method|rootKeyBindingProperty ()
+specifier|public
+name|ObjectProperty
+argument_list|<
+name|KeyBindingViewModel
+argument_list|>
+name|rootKeyBindingProperty
+parameter_list|()
+block|{
+return|return
+name|rootKeyBinding
+return|;
 block|}
 comment|/**      * Read all keybindings from the keybinding repository and create table keybinding models for them      */
 DECL|method|populateTable ()

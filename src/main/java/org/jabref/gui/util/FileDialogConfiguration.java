@@ -159,46 +159,6 @@ specifier|final
 name|String
 name|initialFileName
 decl_stmt|;
-DECL|method|getInitialDirectory ()
-specifier|public
-name|Optional
-argument_list|<
-name|Path
-argument_list|>
-name|getInitialDirectory
-parameter_list|()
-block|{
-return|return
-name|Optional
-operator|.
-name|ofNullable
-argument_list|(
-name|initialDirectory
-argument_list|)
-return|;
-block|}
-DECL|method|getDefaultExtension ()
-specifier|public
-name|FileChooser
-operator|.
-name|ExtensionFilter
-name|getDefaultExtension
-parameter_list|()
-block|{
-return|return
-name|defaultExtension
-return|;
-block|}
-DECL|method|getInitialFileName ()
-specifier|public
-name|String
-name|getInitialFileName
-parameter_list|()
-block|{
-return|return
-name|initialFileName
-return|;
-block|}
 DECL|method|FileDialogConfiguration (Path initialDirectory, List<FileChooser.ExtensionFilter> extensionFilters, FileChooser.ExtensionFilter defaultExtension, String initialFileName)
 specifier|private
 name|FileDialogConfiguration
@@ -252,6 +212,46 @@ name|initialFileName
 operator|=
 name|initialFileName
 expr_stmt|;
+block|}
+DECL|method|getInitialDirectory ()
+specifier|public
+name|Optional
+argument_list|<
+name|Path
+argument_list|>
+name|getInitialDirectory
+parameter_list|()
+block|{
+return|return
+name|Optional
+operator|.
+name|ofNullable
+argument_list|(
+name|initialDirectory
+argument_list|)
+return|;
+block|}
+DECL|method|getDefaultExtension ()
+specifier|public
+name|FileChooser
+operator|.
+name|ExtensionFilter
+name|getDefaultExtension
+parameter_list|()
+block|{
+return|return
+name|defaultExtension
+return|;
+block|}
+DECL|method|getInitialFileName ()
+specifier|public
+name|String
+name|getInitialFileName
+parameter_list|()
+block|{
+return|return
+name|initialFileName
+return|;
 block|}
 DECL|method|getExtensionFilters ()
 specifier|public
