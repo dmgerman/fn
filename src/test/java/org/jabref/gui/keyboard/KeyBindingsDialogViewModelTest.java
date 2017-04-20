@@ -68,7 +68,7 @@ name|jabref
 operator|.
 name|preferences
 operator|.
-name|JabRefPreferences
+name|PreferencesService
 import|;
 end_import
 
@@ -165,11 +165,6 @@ specifier|private
 name|KeyBindingsDialogViewModel
 name|model
 decl_stmt|;
-DECL|field|keyBindingsPreferences
-specifier|private
-name|KeyBindingPreferences
-name|keyBindingsPreferences
-decl_stmt|;
 DECL|field|keyBindingRepository
 specifier|private
 name|KeyBindingRepository
@@ -188,34 +183,11 @@ name|void
 name|setUp
 parameter_list|()
 block|{
-name|JabRefPreferences
-name|mockedPreferences
-init|=
-name|mock
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|class
-argument_list|)
-decl_stmt|;
-name|keyBindingsPreferences
-operator|=
-operator|new
-name|KeyBindingPreferences
-argument_list|(
-name|mockedPreferences
-argument_list|)
-expr_stmt|;
 name|keyBindingRepository
 operator|=
 operator|new
 name|KeyBindingRepository
-argument_list|(
-name|keyBindingsPreferences
-operator|.
-name|getKeyBindings
 argument_list|()
-argument_list|)
 expr_stmt|;
 name|dialogService
 operator|=
@@ -231,9 +203,16 @@ operator|=
 operator|new
 name|KeyBindingsDialogViewModel
 argument_list|(
-name|keyBindingsPreferences
+name|keyBindingRepository
 argument_list|,
 name|dialogService
+argument_list|,
+name|mock
+argument_list|(
+name|PreferencesService
+operator|.
+name|class
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -281,7 +260,7 @@ argument_list|)
 decl_stmt|;
 name|assertFalse
 argument_list|(
-name|keyBindingsPreferences
+name|keyBindingRepository
 operator|.
 name|checkKeyCombinationEquality
 argument_list|(
@@ -322,7 +301,7 @@ argument_list|)
 decl_stmt|;
 name|assertFalse
 argument_list|(
-name|keyBindingsPreferences
+name|keyBindingRepository
 operator|.
 name|checkKeyCombinationEquality
 argument_list|(
@@ -339,7 +318,7 @@ argument_list|()
 expr_stmt|;
 name|assertFalse
 argument_list|(
-name|keyBindingsPreferences
+name|keyBindingRepository
 operator|.
 name|checkKeyCombinationEquality
 argument_list|(
@@ -398,7 +377,7 @@ argument_list|)
 decl_stmt|;
 name|assertFalse
 argument_list|(
-name|keyBindingsPreferences
+name|keyBindingRepository
 operator|.
 name|checkKeyCombinationEquality
 argument_list|(
@@ -439,7 +418,7 @@ argument_list|)
 decl_stmt|;
 name|assertTrue
 argument_list|(
-name|keyBindingsPreferences
+name|keyBindingRepository
 operator|.
 name|checkKeyCombinationEquality
 argument_list|(
@@ -456,7 +435,7 @@ argument_list|()
 expr_stmt|;
 name|assertTrue
 argument_list|(
-name|keyBindingsPreferences
+name|keyBindingRepository
 operator|.
 name|checkKeyCombinationEquality
 argument_list|(
@@ -529,7 +508,7 @@ argument_list|)
 decl_stmt|;
 name|assertFalse
 argument_list|(
-name|keyBindingsPreferences
+name|keyBindingRepository
 operator|.
 name|checkKeyCombinationEquality
 argument_list|(
@@ -609,7 +588,7 @@ argument_list|)
 decl_stmt|;
 name|assertFalse
 argument_list|(
-name|keyBindingsPreferences
+name|keyBindingRepository
 operator|.
 name|checkKeyCombinationEquality
 argument_list|(
@@ -650,7 +629,7 @@ argument_list|)
 decl_stmt|;
 name|assertTrue
 argument_list|(
-name|keyBindingsPreferences
+name|keyBindingRepository
 operator|.
 name|checkKeyCombinationEquality
 argument_list|(
@@ -662,7 +641,7 @@ argument_list|)
 expr_stmt|;
 name|assertFalse
 argument_list|(
-name|keyBindingsPreferences
+name|keyBindingRepository
 operator|.
 name|checkKeyCombinationEquality
 argument_list|(
@@ -719,7 +698,7 @@ argument_list|)
 decl_stmt|;
 name|assertFalse
 argument_list|(
-name|keyBindingsPreferences
+name|keyBindingRepository
 operator|.
 name|checkKeyCombinationEquality
 argument_list|(
@@ -745,7 +724,7 @@ argument_list|()
 expr_stmt|;
 name|assertTrue
 argument_list|(
-name|keyBindingsPreferences
+name|keyBindingRepository
 operator|.
 name|checkKeyCombinationEquality
 argument_list|(
@@ -802,7 +781,7 @@ argument_list|)
 decl_stmt|;
 name|assertFalse
 argument_list|(
-name|keyBindingsPreferences
+name|keyBindingRepository
 operator|.
 name|checkKeyCombinationEquality
 argument_list|(
@@ -828,7 +807,7 @@ argument_list|()
 expr_stmt|;
 name|assertTrue
 argument_list|(
-name|keyBindingsPreferences
+name|keyBindingRepository
 operator|.
 name|checkKeyCombinationEquality
 argument_list|(
@@ -887,7 +866,7 @@ argument_list|)
 decl_stmt|;
 name|assertFalse
 argument_list|(
-name|keyBindingsPreferences
+name|keyBindingRepository
 operator|.
 name|checkKeyCombinationEquality
 argument_list|(
@@ -913,7 +892,7 @@ argument_list|()
 expr_stmt|;
 name|assertTrue
 argument_list|(
-name|keyBindingsPreferences
+name|keyBindingRepository
 operator|.
 name|checkKeyCombinationEquality
 argument_list|(
@@ -937,7 +916,7 @@ argument_list|()
 expr_stmt|;
 name|assertFalse
 argument_list|(
-name|keyBindingsPreferences
+name|keyBindingRepository
 operator|.
 name|checkKeyCombinationEquality
 argument_list|(
@@ -1009,7 +988,7 @@ argument_list|)
 decl_stmt|;
 name|assertFalse
 argument_list|(
-name|keyBindingsPreferences
+name|keyBindingRepository
 operator|.
 name|checkKeyCombinationEquality
 argument_list|(
@@ -1035,7 +1014,7 @@ argument_list|()
 expr_stmt|;
 name|assertTrue
 argument_list|(
-name|keyBindingsPreferences
+name|keyBindingRepository
 operator|.
 name|checkKeyCombinationEquality
 argument_list|(
@@ -1059,7 +1038,7 @@ argument_list|()
 expr_stmt|;
 name|assertFalse
 argument_list|(
-name|keyBindingsPreferences
+name|keyBindingRepository
 operator|.
 name|checkKeyCombinationEquality
 argument_list|(

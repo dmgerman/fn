@@ -248,6 +248,20 @@ name|jabref
 operator|.
 name|model
 operator|.
+name|bibtexkeypattern
+operator|.
+name|GlobalBibtexKeyPattern
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
 name|cleanup
 operator|.
 name|FieldFormatterCleanup
@@ -452,18 +466,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|preferences
-operator|.
-name|JabRefPreferences
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -497,6 +499,16 @@ import|;
 end_import
 
 begin_import
+import|import
+name|org
+operator|.
+name|mockito
+operator|.
+name|Answers
+import|;
+end_import
+
+begin_import
 import|import static
 name|org
 operator|.
@@ -505,6 +517,18 @@ operator|.
 name|Assert
 operator|.
 name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|mockito
+operator|.
+name|Mockito
+operator|.
+name|mock
 import|;
 end_import
 
@@ -542,11 +566,6 @@ specifier|private
 name|ImportFormatPreferences
 name|importFormatPreferences
 decl_stmt|;
-DECL|field|prefs
-specifier|private
-name|JabRefPreferences
-name|prefs
-decl_stmt|;
 annotation|@
 name|Before
 DECL|method|setUp ()
@@ -555,13 +574,6 @@ name|void
 name|setUp
 parameter_list|()
 block|{
-name|prefs
-operator|=
-name|JabRefPreferences
-operator|.
-name|getInstance
-argument_list|()
-expr_stmt|;
 comment|// Write to a string instead of to a file
 name|databaseWriter
 operator|=
@@ -606,10 +618,16 @@ argument_list|)
 expr_stmt|;
 name|importFormatPreferences
 operator|=
-name|prefs
+name|mock
+argument_list|(
+name|ImportFormatPreferences
 operator|.
-name|getImportFormatPreferences
-argument_list|()
+name|class
+argument_list|,
+name|Answers
+operator|.
+name|RETURNS_DEEP_STUBS
+argument_list|)
 expr_stmt|;
 block|}
 annotation|@
@@ -1233,10 +1251,12 @@ init|=
 operator|new
 name|DatabaseBibtexKeyPattern
 argument_list|(
-name|prefs
+name|mock
+argument_list|(
+name|GlobalBibtexKeyPattern
 operator|.
-name|getKeyPattern
-argument_list|()
+name|class
+argument_list|)
 argument_list|)
 decl_stmt|;
 name|bibtexKeyPattern
@@ -1321,10 +1341,12 @@ init|=
 operator|new
 name|DatabaseBibtexKeyPattern
 argument_list|(
-name|prefs
+name|mock
+argument_list|(
+name|GlobalBibtexKeyPattern
 operator|.
-name|getKeyPattern
-argument_list|()
+name|class
+argument_list|)
 argument_list|)
 decl_stmt|;
 name|bibtexKeyPattern
@@ -3251,10 +3273,12 @@ init|=
 operator|new
 name|DatabaseBibtexKeyPattern
 argument_list|(
-name|prefs
+name|mock
+argument_list|(
+name|GlobalBibtexKeyPattern
 operator|.
-name|getKeyPattern
-argument_list|()
+name|class
+argument_list|)
 argument_list|)
 decl_stmt|;
 name|pattern

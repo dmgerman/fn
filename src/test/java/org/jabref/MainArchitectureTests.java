@@ -202,11 +202,20 @@ name|Parameterized
 operator|.
 name|class
 argument_list|)
-DECL|class|ArchitectureTests
+DECL|class|MainArchitectureTests
 specifier|public
 class|class
-name|ArchitectureTests
+name|MainArchitectureTests
 block|{
+DECL|field|CLASS_ORG_JABREF_GLOBALS
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|CLASS_ORG_JABREF_GLOBALS
+init|=
+literal|"org.jabref.Globals"
+decl_stmt|;
 DECL|field|PACKAGE_JAVAX_SWING
 specifier|private
 specifier|static
@@ -260,15 +269,6 @@ name|String
 name|PACKAGE_ORG_JABREF_MODEL
 init|=
 literal|"org.jabref.model"
-decl_stmt|;
-DECL|field|CLASS_ORG_JABREF_GLOBALS
-specifier|private
-specifier|static
-specifier|final
-name|String
-name|CLASS_ORG_JABREF_GLOBALS
-init|=
-literal|"org.jabref.Globals"
 decl_stmt|;
 DECL|field|EXCEPTION_PACKAGE_JAVA_AWT_GEOM
 specifier|private
@@ -331,9 +331,9 @@ argument_list|>
 argument_list|>
 name|exceptions
 decl_stmt|;
-DECL|method|ArchitectureTests (String firstPackage, String secondPackage)
+DECL|method|MainArchitectureTests (String firstPackage, String secondPackage)
 specifier|public
-name|ArchitectureTests
+name|MainArchitectureTests
 parameter_list|(
 name|String
 name|firstPackage

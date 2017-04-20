@@ -569,7 +569,7 @@ name|setField
 argument_list|(
 literal|"month"
 argument_list|,
-literal|"#dec#"
+literal|"#sep#"
 argument_list|)
 expr_stmt|;
 name|famaeyMcGaughEntry
@@ -1081,7 +1081,7 @@ name|fetcher
 operator|.
 name|performSearch
 argument_list|(
-literal|"Diez slice theorem"
+literal|"Diez slice theorem Lie"
 argument_list|)
 decl_stmt|;
 name|assertEquals

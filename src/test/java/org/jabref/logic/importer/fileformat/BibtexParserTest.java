@@ -452,18 +452,6 @@ begin_import
 import|import
 name|org
 operator|.
-name|jabref
-operator|.
-name|preferences
-operator|.
-name|JabRefPreferences
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
 name|junit
 operator|.
 name|Before
@@ -477,6 +465,16 @@ operator|.
 name|junit
 operator|.
 name|Test
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|mockito
+operator|.
+name|Answers
 import|;
 end_import
 
@@ -528,6 +526,30 @@ name|assertTrue
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|mockito
+operator|.
+name|Mockito
+operator|.
+name|mock
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|mockito
+operator|.
+name|Mockito
+operator|.
+name|when
+import|;
+end_import
+
 begin_comment
 comment|/**  * Test the BibtexParser  */
 end_comment
@@ -558,13 +580,29 @@ parameter_list|()
 block|{
 name|importFormatPreferences
 operator|=
-name|JabRefPreferences
+name|mock
+argument_list|(
+name|ImportFormatPreferences
 operator|.
-name|getInstance
-argument_list|()
+name|class
+argument_list|,
+name|Answers
 operator|.
-name|getImportFormatPreferences
+name|RETURNS_DEEP_STUBS
+argument_list|)
+expr_stmt|;
+name|when
+argument_list|(
+name|importFormatPreferences
+operator|.
+name|getKeywordSeparator
 argument_list|()
+argument_list|)
+operator|.
+name|thenReturn
+argument_list|(
+literal|','
+argument_list|)
 expr_stmt|;
 name|parser
 operator|=
@@ -7829,14 +7867,35 @@ block|}
 comment|/**      * Test for [2022983]      *      * @author Uwe Kuehn      * @author Andrei Haralevich      */
 annotation|@
 name|Test
-DECL|method|parsePreservesMultipleSpacesInFileField ()
+DECL|method|parsePreservesMultipleSpacesInNonWrappableField ()
 specifier|public
 name|void
-name|parsePreservesMultipleSpacesInFileField
+name|parsePreservesMultipleSpacesInNonWrappableField
 parameter_list|()
 throws|throws
 name|IOException
 block|{
+name|when
+argument_list|(
+name|importFormatPreferences
+operator|.
+name|getFieldContentParserPreferences
+argument_list|()
+operator|.
+name|getNonWrappableFields
+argument_list|()
+argument_list|)
+operator|.
+name|thenReturn
+argument_list|(
+name|Collections
+operator|.
+name|singletonList
+argument_list|(
+literal|"file"
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|ParserResult
 name|result
 init|=
@@ -7849,6 +7908,8 @@ name|StringReader
 argument_list|(
 literal|"@article{canh05,file = {ups  sala}}"
 argument_list|)
+argument_list|,
+name|importFormatPreferences
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -9535,13 +9596,12 @@ decl_stmt|;
 name|GlobalBibtexKeyPattern
 name|pattern
 init|=
-name|JabRefPreferences
+name|mock
+argument_list|(
+name|GlobalBibtexKeyPattern
 operator|.
-name|getInstance
-argument_list|()
-operator|.
-name|getKeyPattern
-argument_list|()
+name|class
+argument_list|)
 decl_stmt|;
 name|AbstractBibtexKeyPattern
 name|bibtexKeyPattern

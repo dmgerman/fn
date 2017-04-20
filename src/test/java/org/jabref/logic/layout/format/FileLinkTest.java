@@ -32,18 +32,6 @@ begin_import
 import|import
 name|org
 operator|.
-name|jabref
-operator|.
-name|preferences
-operator|.
-name|JabRefPreferences
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
 name|junit
 operator|.
 name|Before
@@ -72,6 +60,18 @@ name|assertEquals
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|mockito
+operator|.
+name|Mockito
+operator|.
+name|mock
+import|;
+end_import
+
 begin_class
 DECL|class|FileLinkTest
 specifier|public
@@ -95,13 +95,12 @@ name|Exception
 block|{
 name|prefs
 operator|=
-name|JabRefPreferences
+name|mock
+argument_list|(
+name|FileLinkPreferences
 operator|.
-name|getInstance
-argument_list|()
-operator|.
-name|getFileLinkPreferences
-argument_list|()
+name|class
+argument_list|)
 expr_stmt|;
 block|}
 annotation|@

@@ -42,7 +42,7 @@ name|gui
 operator|.
 name|keyboard
 operator|.
-name|KeyBindingPreferences
+name|KeyBindingRepository
 import|;
 end_import
 
@@ -57,6 +57,20 @@ operator|.
 name|util
 operator|.
 name|TaskExecutor
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|journals
+operator|.
+name|JournalAbbreviationLoader
 import|;
 end_import
 
@@ -218,7 +232,7 @@ if|if
 condition|(
 name|clazz
 operator|==
-name|KeyBindingPreferences
+name|KeyBindingRepository
 operator|.
 name|class
 condition|)
@@ -228,6 +242,22 @@ name|Globals
 operator|.
 name|getKeyPrefs
 argument_list|()
+return|;
+block|}
+elseif|else
+if|if
+condition|(
+name|clazz
+operator|==
+name|JournalAbbreviationLoader
+operator|.
+name|class
+condition|)
+block|{
+return|return
+name|Globals
+operator|.
+name|journalAbbreviationLoader
 return|;
 block|}
 elseif|else

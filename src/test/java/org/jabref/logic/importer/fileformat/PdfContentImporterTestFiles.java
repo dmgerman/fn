@@ -120,11 +120,11 @@ name|org
 operator|.
 name|jabref
 operator|.
-name|model
+name|logic
 operator|.
-name|entry
+name|importer
 operator|.
-name|BibEntry
+name|ImportFormatPreferences
 import|;
 end_import
 
@@ -134,9 +134,11 @@ name|org
 operator|.
 name|jabref
 operator|.
-name|preferences
+name|model
 operator|.
-name|JabRefPreferences
+name|entry
+operator|.
+name|BibEntry
 import|;
 end_import
 
@@ -199,6 +201,18 @@ operator|.
 name|Parameterized
 operator|.
 name|Parameters
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|mockito
+operator|.
+name|Mockito
+operator|.
+name|mock
 import|;
 end_import
 
@@ -304,13 +318,12 @@ init|=
 operator|new
 name|PdfContentImporter
 argument_list|(
-name|JabRefPreferences
+name|mock
+argument_list|(
+name|ImportFormatPreferences
 operator|.
-name|getInstance
-argument_list|()
-operator|.
-name|getImportFormatPreferences
-argument_list|()
+name|class
+argument_list|)
 argument_list|)
 decl_stmt|;
 name|Path
