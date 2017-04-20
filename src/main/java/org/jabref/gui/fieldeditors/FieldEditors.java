@@ -64,6 +64,34 @@ name|org
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
+name|journals
+operator|.
+name|JournalAbbreviationLoader
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|journals
+operator|.
+name|JournalAbbreviationPreferences
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
 name|model
 operator|.
 name|entry
@@ -104,7 +132,7 @@ specifier|public
 class|class
 name|FieldEditors
 block|{
-DECL|method|getForField (String fieldName, TaskExecutor taskExecutor, DialogService dialogService)
+DECL|method|getForField (String fieldName, TaskExecutor taskExecutor, DialogService dialogService, JournalAbbreviationLoader journalAbbreviationLoader, JournalAbbreviationPreferences journalAbbreviationPreferences, JabRefPreferences preferences)
 specifier|public
 specifier|static
 name|FieldEditorFX
@@ -118,6 +146,15 @@ name|taskExecutor
 parameter_list|,
 name|DialogService
 name|dialogService
+parameter_list|,
+name|JournalAbbreviationLoader
+name|journalAbbreviationLoader
+parameter_list|,
+name|JournalAbbreviationPreferences
+name|journalAbbreviationPreferences
+parameter_list|,
+name|JabRefPreferences
+name|preferences
 parameter_list|)
 block|{
 specifier|final
@@ -181,7 +218,15 @@ name|EXTERNAL
 argument_list|)
 condition|)
 block|{
-comment|//return FieldExtraComponents.getExternalExtraComponent(panel, editor);
+return|return
+operator|new
+name|UrlEditor
+argument_list|(
+name|fieldName
+argument_list|,
+name|dialogService
+argument_list|)
+return|;
 block|}
 elseif|else
 if|if
@@ -196,11 +241,17 @@ name|JOURNAL_NAME
 argument_list|)
 condition|)
 block|{
-comment|// Add controls for switching between abbreviated and full journal names.
-comment|// If this field also has a FieldContentSelector, we need to combine these.
-comment|//return FieldExtraComponents.getJournalExtraComponent(frame, panel, editor, entry, contentSelectors, storeFieldAction);
-comment|//} else if (!panel.getBibDatabaseContext().getMetaData().getContentSelectorValuesForField(fieldName).isEmpty()) {
-comment|//return FieldExtraComponents.getSelectorExtraComponent(frame, panel, editor, contentSelectors, storeFieldAction);
+return|return
+operator|new
+name|JournalEditor
+argument_list|(
+name|fieldName
+argument_list|,
+name|journalAbbreviationLoader
+argument_list|,
+name|journalAbbreviationPreferences
+argument_list|)
+return|;
 block|}
 elseif|else
 if|if
@@ -258,7 +309,15 @@ name|OWNER
 argument_list|)
 condition|)
 block|{
-comment|//return FieldExtraComponents.getSetOwnerExtraComponent(editor, storeFieldAction);
+return|return
+operator|new
+name|OwnerEditor
+argument_list|(
+name|fieldName
+argument_list|,
+name|preferences
+argument_list|)
+return|;
 block|}
 elseif|else
 if|if
