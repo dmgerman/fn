@@ -1010,6 +1010,10 @@ expr_stmt|;
 if|if
 condition|(
 name|annotations
+operator|==
+literal|null
+operator|||
+name|annotations
 operator|.
 name|isEmpty
 argument_list|()
