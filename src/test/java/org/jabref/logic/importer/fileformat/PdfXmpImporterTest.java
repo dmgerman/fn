@@ -134,11 +134,11 @@ name|org
 operator|.
 name|jabref
 operator|.
-name|model
+name|logic
 operator|.
-name|entry
+name|xmp
 operator|.
-name|BibEntry
+name|XMPPreferences
 import|;
 end_import
 
@@ -148,9 +148,11 @@ name|org
 operator|.
 name|jabref
 operator|.
-name|preferences
+name|model
 operator|.
-name|JabRefPreferences
+name|entry
+operator|.
+name|BibEntry
 import|;
 end_import
 
@@ -220,6 +222,18 @@ name|assertTrue
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|mockito
+operator|.
+name|Mockito
+operator|.
+name|mock
+import|;
+end_import
+
 begin_class
 DECL|class|PdfXmpImporterTest
 specifier|public
@@ -244,13 +258,12 @@ operator|=
 operator|new
 name|PdfXmpImporter
 argument_list|(
-name|JabRefPreferences
+name|mock
+argument_list|(
+name|XMPPreferences
 operator|.
-name|getInstance
-argument_list|()
-operator|.
-name|getXMPPreferences
-argument_list|()
+name|class
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

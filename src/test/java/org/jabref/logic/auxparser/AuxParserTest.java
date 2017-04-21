@@ -158,18 +158,6 @@ begin_import
 import|import
 name|org
 operator|.
-name|jabref
-operator|.
-name|preferences
-operator|.
-name|JabRefPreferences
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
 name|junit
 operator|.
 name|After
@@ -193,6 +181,16 @@ operator|.
 name|junit
 operator|.
 name|Test
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|mockito
+operator|.
+name|Answers
 import|;
 end_import
 
@@ -232,6 +230,18 @@ name|assertTrue
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|mockito
+operator|.
+name|Mockito
+operator|.
+name|mock
+import|;
+end_import
+
 begin_class
 DECL|class|AuxParserTest
 specifier|public
@@ -253,13 +263,16 @@ parameter_list|()
 block|{
 name|importFormatPreferences
 operator|=
-name|JabRefPreferences
+name|mock
+argument_list|(
+name|ImportFormatPreferences
 operator|.
-name|getInstance
-argument_list|()
+name|class
+argument_list|,
+name|Answers
 operator|.
-name|getImportFormatPreferences
-argument_list|()
+name|RETURNS_DEEP_STUBS
+argument_list|)
 expr_stmt|;
 block|}
 annotation|@

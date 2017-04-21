@@ -100,7 +100,11 @@ name|org
 operator|.
 name|jabref
 operator|.
-name|Globals
+name|logic
+operator|.
+name|importer
+operator|.
+name|ImportDataTest
 import|;
 end_import
 
@@ -114,7 +118,7 @@ name|logic
 operator|.
 name|importer
 operator|.
-name|ImportDataTest
+name|ImportFormatPreferences
 import|;
 end_import
 
@@ -173,18 +177,6 @@ operator|.
 name|entry
 operator|.
 name|BibEntry
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|preferences
-operator|.
-name|JabRefPreferences
 import|;
 end_import
 
@@ -256,6 +248,18 @@ name|Category
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|mockito
+operator|.
+name|Mockito
+operator|.
+name|mock
+import|;
+end_import
+
 begin_class
 annotation|@
 name|Category
@@ -277,17 +281,7 @@ specifier|public
 name|void
 name|setUp
 parameter_list|()
-block|{
-name|Globals
-operator|.
-name|prefs
-operator|=
-name|JabRefPreferences
-operator|.
-name|getInstance
-argument_list|()
-expr_stmt|;
-block|}
+block|{      }
 annotation|@
 name|Test
 DECL|method|testGetCreator ()
@@ -402,12 +396,12 @@ init|=
 operator|new
 name|BibtexParser
 argument_list|(
-name|Globals
+name|mock
+argument_list|(
+name|ImportFormatPreferences
 operator|.
-name|prefs
-operator|.
-name|getImportFormatPreferences
-argument_list|()
+name|class
+argument_list|)
 argument_list|)
 operator|.
 name|parse

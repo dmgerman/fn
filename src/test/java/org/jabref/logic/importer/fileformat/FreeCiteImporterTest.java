@@ -72,6 +72,20 @@ name|jabref
 operator|.
 name|logic
 operator|.
+name|importer
+operator|.
+name|ImportFormatPreferences
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
 name|util
 operator|.
 name|FileExtensions
@@ -89,18 +103,6 @@ operator|.
 name|entry
 operator|.
 name|BibEntry
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|preferences
-operator|.
-name|JabRefPreferences
 import|;
 end_import
 
@@ -136,6 +138,18 @@ name|assertEquals
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|mockito
+operator|.
+name|Mockito
+operator|.
+name|mock
+import|;
+end_import
+
 begin_class
 DECL|class|FreeCiteImporterTest
 specifier|public
@@ -160,13 +174,12 @@ operator|=
 operator|new
 name|FreeCiteImporter
 argument_list|(
-name|JabRefPreferences
+name|mock
+argument_list|(
+name|ImportFormatPreferences
 operator|.
-name|getInstance
-argument_list|()
-operator|.
-name|getImportFormatPreferences
-argument_list|()
+name|class
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

@@ -74,7 +74,7 @@ name|gui
 operator|.
 name|keyboard
 operator|.
-name|KeyBindingPreferences
+name|KeyBindingRepository
 import|;
 end_import
 
@@ -328,11 +328,11 @@ name|StateManager
 argument_list|()
 decl_stmt|;
 comment|// Key binding preferences
-DECL|field|keyPrefs
+DECL|field|keyBindingRepository
 specifier|private
 specifier|static
-name|KeyBindingPreferences
-name|keyPrefs
+name|KeyBindingRepository
+name|keyBindingRepository
 decl_stmt|;
 comment|// Background tasks
 DECL|field|focusListener
@@ -362,28 +362,27 @@ comment|// Key binding preferences
 DECL|method|getKeyPrefs ()
 specifier|public
 specifier|static
-name|KeyBindingPreferences
+name|KeyBindingRepository
 name|getKeyPrefs
 parameter_list|()
 block|{
 if|if
 condition|(
-name|keyPrefs
+name|keyBindingRepository
 operator|==
 literal|null
 condition|)
 block|{
-name|keyPrefs
+name|keyBindingRepository
 operator|=
-operator|new
-name|KeyBindingPreferences
-argument_list|(
 name|prefs
-argument_list|)
+operator|.
+name|getKeyBindingRepository
+argument_list|()
 expr_stmt|;
 block|}
 return|return
-name|keyPrefs
+name|keyBindingRepository
 return|;
 block|}
 comment|// Background tasks
