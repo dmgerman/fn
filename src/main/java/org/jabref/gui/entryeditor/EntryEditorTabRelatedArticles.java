@@ -280,20 +280,6 @@ name|onFocus
 init|=
 literal|true
 decl_stmt|;
-comment|/**      * Access related acticles delivered by Mr. DLib.      * @return the list of BibEntries, representing the related articles deliverd by MR. DLib      */
-DECL|method|getRelatedArticles ()
-specifier|public
-name|List
-argument_list|<
-name|BibEntry
-argument_list|>
-name|getRelatedArticles
-parameter_list|()
-block|{
-return|return
-name|relatedArticles
-return|;
-block|}
 comment|/**      * Takes the selected entry, runs a request to Mr. DLib and returns the recommendations as a JEditorPane      * @param selectedEntry The entry selected by the user      */
 DECL|method|EntryEditorTabRelatedArticles (BibEntry selectedEntry)
 specifier|public
@@ -329,6 +315,20 @@ expr_stmt|;
 name|setDefaultContent
 argument_list|()
 expr_stmt|;
+block|}
+comment|/**      * Access related acticles delivered by Mr. DLib.      * @return the list of BibEntries, representing the related articles deliverd by MR. DLib      */
+DECL|method|getRelatedArticles ()
+specifier|public
+name|List
+argument_list|<
+name|BibEntry
+argument_list|>
+name|getRelatedArticles
+parameter_list|()
+block|{
+return|return
+name|relatedArticles
+return|;
 block|}
 comment|/**      * Takes a List of HTML snippets stored in the field "html_representation" of a list of bibentries and sets it in the JEditorPane      *      * @param list of bib entries having a field html_representation      */
 DECL|method|setHtmlText (List<BibEntry> list)

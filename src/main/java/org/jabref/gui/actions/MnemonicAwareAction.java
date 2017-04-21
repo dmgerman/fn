@@ -71,7 +71,7 @@ DECL|method|MnemonicAwareAction ()
 specifier|public
 name|MnemonicAwareAction
 parameter_list|()
-block|{}
+block|{ }
 DECL|method|MnemonicAwareAction (Icon icon)
 specifier|public
 name|MnemonicAwareAction

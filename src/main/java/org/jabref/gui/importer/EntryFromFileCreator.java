@@ -195,12 +195,6 @@ name|EntryFromFileCreator
 implements|implements
 name|FileFilter
 block|{
-DECL|field|externalFileType
-specifier|protected
-specifier|final
-name|ExternalFileType
-name|externalFileType
-decl_stmt|;
 DECL|field|MIN_PATH_TOKEN_LENGTH
 specifier|private
 specifier|static
@@ -209,6 +203,12 @@ name|int
 name|MIN_PATH_TOKEN_LENGTH
 init|=
 literal|4
+decl_stmt|;
+DECL|field|externalFileType
+specifier|protected
+specifier|final
+name|ExternalFileType
+name|externalFileType
 decl_stmt|;
 comment|/**      * Constructor.<br>      * Forces subclasses to provide an {@link ExternalFileType} instance, which      * they build on.      *      * @param externalFileType      */
 DECL|method|EntryFromFileCreator (ExternalFileType externalFileType)

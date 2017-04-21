@@ -714,7 +714,7 @@ name|boolean
 name|useIsoFormat
 parameter_list|)
 block|{
-comment|/*         ((JTextArea) editor).addMouseListener(new MouseAdapter() {              @Override             public void mouseClicked(MouseEvent e) {                 if (e.getClickCount() == 2) {// double click                     String date = "";                     if(useIsoFormat) {                         date = DateTimeFormatter.ISO_DATE.format(LocalDate.now());                     } else {                         date = DateTimeFormatter.ofPattern(Globals.prefs.get(JabRefPreferences.TIME_STAMP_FORMAT)).format(                                 LocalDateTime.now());                     }                     editor.setText(date);                 }             }         });         */
+comment|/*         ((JTextArea) editor).addMouseListener(new MouseAdapter() {             @Override             public void mouseClicked(MouseEvent e) {                 if (e.getClickCount() == 2) {// double click                     String date = "";                     if(useIsoFormat) {                         date = DateTimeFormatter.ISO_DATE.format(LocalDate.now());                     } else {                         date = DateTimeFormatter.ofPattern(Globals.prefs.get(JabRefPreferences.TIME_STAMP_FORMAT)).format(                                 LocalDateTime.now());                     }                     editor.setText(date);                 }             }         });         */
 comment|// insert a datepicker, if the extras field contains this command
 if|if
 condition|(
@@ -732,7 +732,7 @@ argument_list|,
 name|useIsoFormat
 argument_list|)
 decl_stmt|;
-comment|/*             // register a DocumentListener on the underlying text document which notifies the DatePicker which date is currently set             ((JTextArea) editor).getDocument().addDocumentListener(new DocumentListener() {                  @Override                 public void insertUpdate(DocumentEvent e) {                     datePicker.updateDatePickerDate(editor.getText());                 }                  @Override                 public void removeUpdate(DocumentEvent e) {                     datePicker.updateDatePickerDate(editor.getText());                 }                  @Override                 public void changedUpdate(DocumentEvent e) {                     datePicker.updateDatePickerDate(editor.getText());                 }             });             */
+comment|/*             // register a DocumentListener on the underlying text document which notifies the DatePicker which date is currently set             ((JTextArea) editor).getDocument().addDocumentListener(new DocumentListener() {                 @Override                 public void insertUpdate(DocumentEvent e) {                     datePicker.updateDatePickerDate(editor.getText());                 }                 @Override                 public void removeUpdate(DocumentEvent e) {                     datePicker.updateDatePickerDate(editor.getText());                 }                 @Override                 public void changedUpdate(DocumentEvent e) {                     datePicker.updateDatePickerDate(editor.getText());                 }             });             */
 return|return
 name|Optional
 operator|.

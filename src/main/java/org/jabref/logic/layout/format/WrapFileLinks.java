@@ -166,7 +166,6 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|// Define codes for the various escape sequences that can be inserted:
 DECL|field|STRING
 specifier|private
 specifier|static

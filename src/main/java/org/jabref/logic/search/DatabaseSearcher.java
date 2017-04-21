@@ -134,18 +134,6 @@ specifier|public
 class|class
 name|DatabaseSearcher
 block|{
-DECL|field|query
-specifier|private
-specifier|final
-name|SearchQuery
-name|query
-decl_stmt|;
-DECL|field|database
-specifier|private
-specifier|final
-name|BibDatabase
-name|database
-decl_stmt|;
 DECL|field|LOGGER
 specifier|private
 specifier|static
@@ -161,6 +149,18 @@ name|DatabaseSearcher
 operator|.
 name|class
 argument_list|)
+decl_stmt|;
+DECL|field|query
+specifier|private
+specifier|final
+name|SearchQuery
+name|query
+decl_stmt|;
+DECL|field|database
+specifier|private
+specifier|final
+name|BibDatabase
+name|database
 decl_stmt|;
 DECL|method|DatabaseSearcher (SearchQuery query, BibDatabase database)
 specifier|public

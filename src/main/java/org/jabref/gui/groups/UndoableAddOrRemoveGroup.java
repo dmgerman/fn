@@ -71,6 +71,36 @@ name|UndoableAddOrRemoveGroup
 extends|extends
 name|AbstractUndoableJabRefEdit
 block|{
+comment|/** Adding of a single node (group). */
+DECL|field|ADD_NODE
+specifier|public
+specifier|static
+specifier|final
+name|int
+name|ADD_NODE
+init|=
+literal|0
+decl_stmt|;
+comment|/** Removal of a single node. Children, if any, are kept. */
+DECL|field|REMOVE_NODE_KEEP_CHILDREN
+specifier|public
+specifier|static
+specifier|final
+name|int
+name|REMOVE_NODE_KEEP_CHILDREN
+init|=
+literal|1
+decl_stmt|;
+comment|/** Removal of a node and all of its children. */
+DECL|field|REMOVE_NODE_AND_CHILDREN
+specifier|public
+specifier|static
+specifier|final
+name|int
+name|REMOVE_NODE_AND_CHILDREN
+init|=
+literal|2
+decl_stmt|;
 comment|/** The root of the global groups tree */
 DECL|field|m_groupsRootHandle
 specifier|private
@@ -108,36 +138,6 @@ specifier|private
 specifier|final
 name|int
 name|m_editType
-decl_stmt|;
-comment|/** Adding of a single node (group). */
-DECL|field|ADD_NODE
-specifier|public
-specifier|static
-specifier|final
-name|int
-name|ADD_NODE
-init|=
-literal|0
-decl_stmt|;
-comment|/** Removal of a single node. Children, if any, are kept. */
-DECL|field|REMOVE_NODE_KEEP_CHILDREN
-specifier|public
-specifier|static
-specifier|final
-name|int
-name|REMOVE_NODE_KEEP_CHILDREN
-init|=
-literal|1
-decl_stmt|;
-comment|/** Removal of a node and all of its children. */
-DECL|field|REMOVE_NODE_AND_CHILDREN
-specifier|public
-specifier|static
-specifier|final
-name|int
-name|REMOVE_NODE_AND_CHILDREN
-init|=
-literal|2
 decl_stmt|;
 comment|/**      * Creates an object that can undo/redo an edit event.      *      * @param groupsRoot      *            The global groups root.      * @param editType      *            The type of editing (ADD_NODE, REMOVE_NODE_KEEP_CHILDREN,      *            REMOVE_NODE_AND_CHILDREN)      * @param editedNode      *            The edited node (which was added or will be removed). The node      *            must be a descendant of node<b>groupsRoot</b>! This means      *            that, in case of adding, you first have to add it to the tree,      *            then call this constructor. When removing, you first have to      *            call this constructor, then remove the node.      */
 DECL|method|UndoableAddOrRemoveGroup (GroupTreeNodeViewModel groupsRoot, GroupTreeNodeViewModel editedNode, int editType)

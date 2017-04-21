@@ -316,6 +316,12 @@ specifier|public
 class|class
 name|IconTheme
 block|{
+DECL|field|FONT
+specifier|public
+specifier|static
+name|Font
+name|FONT
+decl_stmt|;
 comment|/**      * JabRef's default color      */
 DECL|field|DEFAULT_COLOR
 specifier|public
@@ -405,12 +411,6 @@ argument_list|)
 argument_list|,
 literal|"/images/external/"
 argument_list|)
-decl_stmt|;
-DECL|field|FONT
-specifier|public
-specifier|static
-name|Font
-name|FONT
 decl_stmt|;
 comment|// Christmas edition
 comment|//public static final Color DEFAULT_COLOR = new Color(0x155115);

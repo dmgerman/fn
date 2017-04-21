@@ -208,6 +208,23 @@ name|JPanel
 implements|implements
 name|PrefsTab
 block|{
+DECL|field|DEFAULT_FILENAMEPATTERNS
+specifier|public
+specifier|static
+specifier|final
+name|String
+index|[]
+name|DEFAULT_FILENAMEPATTERNS
+init|=
+operator|new
+name|String
+index|[]
+block|{
+literal|"\\bibtexkey"
+block|,
+literal|"\\bibtexkey\\begin{title} - \\format[RemoveBrackets]{\\title}\\end{title}"
+block|}
+decl_stmt|;
 DECL|field|DEFAULT_STYLE
 specifier|public
 specifier|static
@@ -235,23 +252,6 @@ literal|"bibtexkey"
 block|,
 literal|"bibtexkey - title"
 block|,}
-decl_stmt|;
-DECL|field|DEFAULT_FILENAMEPATTERNS
-specifier|public
-specifier|static
-specifier|final
-name|String
-index|[]
-name|DEFAULT_FILENAMEPATTERNS
-init|=
-operator|new
-name|String
-index|[]
-block|{
-literal|"\\bibtexkey"
-block|,
-literal|"\\bibtexkey\\begin{title} - \\format[RemoveBrackets]{\\title}\\end{title}"
-block|}
 decl_stmt|;
 DECL|field|prefs
 specifier|private
