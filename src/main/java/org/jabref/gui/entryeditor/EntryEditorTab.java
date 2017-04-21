@@ -981,6 +981,21 @@ argument_list|,
 operator|new
 name|FXDialogService
 argument_list|()
+argument_list|,
+name|Globals
+operator|.
+name|journalAbbreviationLoader
+argument_list|,
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getJournalAbbreviationPreferences
+argument_list|()
+argument_list|,
+name|Globals
+operator|.
+name|prefs
 argument_list|)
 decl_stmt|;
 name|editors
@@ -994,6 +1009,7 @@ argument_list|)
 expr_stmt|;
 comment|/*             // TODO: Reenable this             if (i == 0) {                 activeField = fieldEditor;             }             */
 comment|/*             // TODO: Reenable this             if (!compressed) {                 fieldEditor.getPane().setPreferredSize(new Dimension(100, Math.max(defaultHeight, wHeight)));             }             */
+comment|/*             // TODO: Reenable content selector             if (!panel.getBibDatabaseContext().getMetaData().getContentSelectorValuesForField(editor.getFieldName()).isEmpty()) {                 FieldContentSelector ws = new FieldContentSelector(frame, panel, frame, editor, storeFieldAction, false,                         ", ");                 contentSelectors.add(ws);                 controls.add(ws, BorderLayout.NORTH);             }             //} else if (!panel.getBibDatabaseContext().getMetaData().getContentSelectorValuesForField(fieldName).isEmpty()) {             //return FieldExtraComponents.getSelectorExtraComponent(frame, panel, editor, contentSelectors, storeFieldAction);              */
 name|builder
 operator|.
 name|append

@@ -144,7 +144,7 @@ name|when
 argument_list|(
 name|prefs
 operator|.
-name|isUseIEEEAbbreviations
+name|useIEEEAbbreviations
 argument_list|()
 argument_list|)
 operator|.
@@ -186,7 +186,7 @@ name|when
 argument_list|(
 name|prefs
 operator|.
-name|isUseIEEEAbbreviations
+name|useIEEEAbbreviations
 argument_list|()
 argument_list|)
 operator|.

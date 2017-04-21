@@ -176,7 +176,7 @@ name|gui
 operator|.
 name|keyboard
 operator|.
-name|KeyBindingPreferences
+name|KeyBindingRepository
 import|;
 end_import
 
@@ -504,11 +504,11 @@ argument_list|()
 operator|.
 name|setOnKeyPressed
 argument_list|(
-name|evt
+name|event
 lambda|->
 block|{
-name|KeyBindingPreferences
-name|keyPreferences
+name|KeyBindingRepository
+name|keyBindingRepository
 init|=
 name|Globals
 operator|.
@@ -517,7 +517,7 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-name|keyPreferences
+name|keyBindingRepository
 operator|.
 name|checkKeyCombinationEquality
 argument_list|(
@@ -525,7 +525,7 @@ name|KeyBinding
 operator|.
 name|CLOSE_DIALOG
 argument_list|,
-name|evt
+name|event
 argument_list|)
 condition|)
 block|{

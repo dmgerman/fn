@@ -298,7 +298,7 @@ name|jabref
 operator|.
 name|preferences
 operator|.
-name|JabRefPreferences
+name|PreferencesService
 import|;
 end_import
 
@@ -327,18 +327,6 @@ operator|.
 name|logging
 operator|.
 name|LogFactory
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|jabref
-operator|.
-name|Globals
-operator|.
-name|journalAbbreviationLoader
 import|;
 end_import
 
@@ -504,7 +492,7 @@ decl_stmt|;
 DECL|field|preferences
 specifier|private
 specifier|final
-name|JabRefPreferences
+name|PreferencesService
 name|preferences
 decl_stmt|;
 DECL|field|dialogService
@@ -519,11 +507,23 @@ specifier|final
 name|TaskExecutor
 name|taskExecutor
 decl_stmt|;
-DECL|method|ManageJournalAbbreviationsViewModel (JabRefPreferences preferences, DialogService dialogService, TaskExecutor taskExecutor)
+DECL|field|abbreviationsPreferences
+specifier|private
+specifier|final
+name|JournalAbbreviationPreferences
+name|abbreviationsPreferences
+decl_stmt|;
+DECL|field|journalAbbreviationLoader
+specifier|private
+specifier|final
+name|JournalAbbreviationLoader
+name|journalAbbreviationLoader
+decl_stmt|;
+DECL|method|ManageJournalAbbreviationsViewModel (PreferencesService preferences, DialogService dialogService, TaskExecutor taskExecutor, JournalAbbreviationLoader journalAbbreviationLoader)
 specifier|public
 name|ManageJournalAbbreviationsViewModel
 parameter_list|(
-name|JabRefPreferences
+name|PreferencesService
 name|preferences
 parameter_list|,
 name|DialogService
@@ -531,6 +531,9 @@ name|dialogService
 parameter_list|,
 name|TaskExecutor
 name|taskExecutor
+parameter_list|,
+name|JournalAbbreviationLoader
+name|journalAbbreviationLoader
 parameter_list|)
 block|{
 name|this
@@ -565,6 +568,26 @@ name|requireNonNull
 argument_list|(
 name|taskExecutor
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|journalAbbreviationLoader
+operator|=
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|journalAbbreviationLoader
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|abbreviationsPreferences
+operator|=
+name|preferences
+operator|.
+name|getJournalAbbreviationPreferences
+argument_list|()
 expr_stmt|;
 name|abbreviationsCount
 operator|.
@@ -978,14 +1001,10 @@ lambda|->
 block|{
 if|if
 condition|(
-name|preferences
+name|abbreviationsPreferences
 operator|.
-name|getBoolean
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|USE_IEEE_ABRV
-argument_list|)
+name|useIEEEAbbreviations
+argument_list|()
 condition|)
 block|{
 return|return
@@ -1145,14 +1164,10 @@ name|String
 argument_list|>
 name|externalFiles
 init|=
-name|preferences
+name|abbreviationsPreferences
 operator|.
-name|getStringList
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|EXTERNAL_JOURNAL_LISTS
-argument_list|)
+name|getExternalJournalLists
+argument_list|()
 decl_stmt|;
 name|externalFiles
 operator|.
@@ -1898,7 +1913,7 @@ end_comment
 
 begin_function
 DECL|method|saveExternalFilesList ()
-specifier|public
+specifier|private
 name|void
 name|saveExternalFilesList
 parameter_list|()
@@ -1960,14 +1975,10 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
-name|preferences
+name|abbreviationsPreferences
 operator|.
-name|putStringList
+name|setExternalJournalLists
 argument_list|(
-name|JabRefPreferences
-operator|.
-name|EXTERNAL_JOURNAL_LISTS
-argument_list|,
 name|extFiles
 argument_list|)
 expr_stmt|;
@@ -2040,12 +2051,14 @@ name|journalAbbreviationLoader
 operator|.
 name|update
 argument_list|(
-name|JournalAbbreviationPreferences
-operator|.
-name|fromPreferences
-argument_list|(
-name|preferences
+name|abbreviationsPreferences
 argument_list|)
+expr_stmt|;
+name|preferences
+operator|.
+name|storeJournalAbbreviationPreferences
+argument_list|(
+name|abbreviationsPreferences
 argument_list|)
 expr_stmt|;
 block|}

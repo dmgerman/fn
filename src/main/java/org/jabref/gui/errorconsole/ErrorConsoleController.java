@@ -252,7 +252,7 @@ name|gui
 operator|.
 name|keyboard
 operator|.
-name|KeyBindingPreferences
+name|KeyBindingRepository
 import|;
 end_import
 
@@ -340,12 +340,12 @@ specifier|private
 name|BuildInfo
 name|buildInfo
 decl_stmt|;
-DECL|field|keyBindingPreferences
+DECL|field|keyBindingRepository
 annotation|@
 name|Inject
 specifier|private
-name|KeyBindingPreferences
-name|keyBindingPreferences
+name|KeyBindingRepository
+name|keyBindingRepository
 decl_stmt|;
 annotation|@
 name|FXML
@@ -711,7 +711,7 @@ parameter_list|)
 block|{
 if|if
 condition|(
-name|keyBindingPreferences
+name|keyBindingRepository
 operator|.
 name|checkKeyCombinationEquality
 argument_list|(
