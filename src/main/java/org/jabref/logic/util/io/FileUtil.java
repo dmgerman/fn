@@ -388,6 +388,22 @@ argument_list|(
 literal|"posix"
 argument_list|)
 decl_stmt|;
+DECL|field|LOGGER
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOGGER
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|FileUtil
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 DECL|method|FileUtil ()
 specifier|private
 name|FileUtil

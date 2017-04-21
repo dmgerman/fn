@@ -928,22 +928,6 @@ name|FindUnlinkedFilesDialog
 extends|extends
 name|JabRefDialog
 block|{
-DECL|field|LOGGER
-specifier|private
-specifier|static
-specifier|final
-name|Log
-name|LOGGER
-init|=
-name|LogFactory
-operator|.
-name|getLog
-argument_list|(
-name|FindUnlinkedFilesDialog
-operator|.
-name|class
-argument_list|)
-decl_stmt|;
 comment|/**      * Keys to be used for referencing this Action.      */
 DECL|field|ACTION_COMMAND
 specifier|public

@@ -614,12 +614,6 @@ specifier|final
 name|BasePanel
 name|basePanel
 decl_stmt|;
-comment|// UGLY HACK to have a pointer to the fileListEditor to call autoSetLinks()
-DECL|field|fileListEditor
-specifier|public
-name|FileListEditor
-name|fileListEditor
-decl_stmt|;
 DECL|field|activeField
 specifier|private
 name|FieldEditorFX

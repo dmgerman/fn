@@ -1,7 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
 DECL|package|org.jabref.gui.filelist
-DECL|package|org.jabref.gui.filelist
 package|package
 name|org
 operator|.
@@ -611,12 +610,10 @@ end_comment
 
 begin_class
 DECL|class|FileListEntryEditor
-DECL|class|FileListEntryEditor
 specifier|public
 class|class
 name|FileListEntryEditor
 block|{
-DECL|field|REMOTE_LINK_PATTERN
 DECL|field|REMOTE_LINK_PATTERN
 specifier|private
 specifier|static
@@ -631,7 +628,6 @@ argument_list|(
 literal|"[a-z]+://.*"
 argument_list|)
 decl_stmt|;
-DECL|field|LOGGER
 DECL|field|LOGGER
 specifier|private
 specifier|static
@@ -649,12 +645,10 @@ name|class
 argument_list|)
 decl_stmt|;
 DECL|field|diag
-DECL|field|diag
 specifier|private
 name|JDialog
 name|diag
 decl_stmt|;
-DECL|field|link
 DECL|field|link
 specifier|private
 specifier|final
@@ -666,7 +660,6 @@ name|JTextField
 argument_list|()
 decl_stmt|;
 DECL|field|description
-DECL|field|description
 specifier|private
 specifier|final
 name|JTextField
@@ -676,7 +669,6 @@ operator|new
 name|JTextField
 argument_list|()
 decl_stmt|;
-DECL|field|ok
 DECL|field|ok
 specifier|private
 specifier|final
@@ -695,7 +687,6 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|types
-DECL|field|types
 specifier|private
 specifier|final
 name|JComboBox
@@ -704,7 +695,6 @@ name|ExternalFileType
 argument_list|>
 name|types
 decl_stmt|;
-DECL|field|prog
 DECL|field|prog
 specifier|private
 specifier|final
@@ -719,7 +709,17 @@ operator|.
 name|HORIZONTAL
 argument_list|)
 decl_stmt|;
-DECL|field|downloadLabel
+comment|//Do not make this variable final, as then the lambda action listener will fail on compile
+DECL|field|frame
+specifier|private
+name|JabRefFrame
+name|frame
+decl_stmt|;
+DECL|field|showSaveDialog
+specifier|private
+name|boolean
+name|showSaveDialog
+decl_stmt|;
 DECL|field|downloadLabel
 specifier|private
 specifier|final
@@ -737,74 +737,6 @@ literal|"Downloading..."
 argument_list|)
 argument_list|)
 decl_stmt|;
-DECL|field|externalConfirm
-DECL|field|externalConfirm
-specifier|private
-name|ConfirmCloseFileListEntryEditor
-name|externalConfirm
-decl_stmt|;
-DECL|field|entry
-DECL|field|entry
-specifier|private
-name|FileListEntry
-name|entry
-decl_stmt|;
-comment|//Do not make this variable final, as then the lambda action listener will fail on compiÃ¶e
-DECL|field|databaseContext
-DECL|field|databaseContext
-specifier|private
-name|BibDatabaseContext
-name|databaseContext
-decl_stmt|;
-DECL|field|okPressed
-DECL|field|okPressed
-specifier|private
-name|boolean
-name|okPressed
-decl_stmt|;
-DECL|field|okDisabledExternally
-DECL|field|okDisabledExternally
-specifier|private
-name|boolean
-name|okDisabledExternally
-decl_stmt|;
-DECL|field|openBrowseWhenShown
-DECL|field|openBrowseWhenShown
-specifier|private
-name|boolean
-name|openBrowseWhenShown
-decl_stmt|;
-operator|<<
-operator|<<
-operator|<<
-operator|<
-name|HEAD
-operator|==
-operator|==
-operator|==
-operator|=
-specifier|private
-name|boolean
-name|dontOpenBrowseUntilDisposed
-expr_stmt|;
-comment|//Do not make this variable final, as then the lambda action listener will fail on compile
-specifier|private
-name|JabRefFrame
-name|frame
-decl_stmt|;
-operator|>>>
-operator|>>>
-operator|>
-name|Fix
-name|checkstyle
-name|warnings
-DECL|field|showSaveDialog
-DECL|field|showSaveDialog
-specifier|private
-name|boolean
-name|showSaveDialog
-expr_stmt|;
-DECL|field|browsePressed
 DECL|field|browsePressed
 specifier|private
 specifier|final
@@ -827,11 +759,11 @@ argument_list|()
 decl_stmt|;
 name|Optional
 argument_list|<
-name|File
+name|Path
 argument_list|>
 name|file
 init|=
-name|FileUtil
+name|FileHelper
 operator|.
 name|expandFilename
 argument_list|(
@@ -849,33 +781,17 @@ name|getFileDirectoryPreferences
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|String
+name|Path
 name|workingDir
-decl_stmt|;
-comment|// no file set yet or found
-if|if
-condition|(
+init|=
 name|file
 operator|.
-name|isPresent
-argument_list|()
-condition|)
-block|{
-name|workingDir
-operator|=
-name|file
+name|orElse
+argument_list|(
+name|Paths
 operator|.
 name|get
-argument_list|()
-operator|.
-name|getPath
-argument_list|()
-expr_stmt|;
-block|}
-else|else
-block|{
-name|workingDir
-operator|=
+argument_list|(
 name|Globals
 operator|.
 name|prefs
@@ -886,8 +802,9 @@ name|JabRefPreferences
 operator|.
 name|WORKING_DIRECTORY
 argument_list|)
-expr_stmt|;
-block|}
+argument_list|)
+argument_list|)
+decl_stmt|;
 name|String
 name|fileName
 init|=
@@ -915,12 +832,7 @@ argument_list|()
 operator|.
 name|withInitialDirectory
 argument_list|(
-name|Paths
-operator|.
-name|get
-argument_list|(
 name|workingDir
-argument_list|)
 argument_list|)
 operator|.
 name|withInitialFileName
@@ -1069,7 +981,42 @@ argument_list|)
 expr_stmt|;
 block|}
 decl_stmt|;
-DECL|method|FileListEntryEditor (JabRefFrame frame, FileListEntry entry, boolean showProgressBar, boolean showOpenButton, BibDatabaseContext databaseContext, boolean showSaveDialog)
+DECL|field|externalConfirm
+specifier|private
+name|ConfirmCloseFileListEntryEditor
+name|externalConfirm
+decl_stmt|;
+DECL|field|entry
+specifier|private
+name|FileListEntry
+name|entry
+decl_stmt|;
+comment|//Do not make this variable final, as then the lambda action listener will fail on compiÃ¶e
+DECL|field|databaseContext
+specifier|private
+name|BibDatabaseContext
+name|databaseContext
+decl_stmt|;
+DECL|field|okPressed
+specifier|private
+name|boolean
+name|okPressed
+decl_stmt|;
+DECL|field|okDisabledExternally
+specifier|private
+name|boolean
+name|okDisabledExternally
+decl_stmt|;
+DECL|field|openBrowseWhenShown
+specifier|private
+name|boolean
+name|openBrowseWhenShown
+decl_stmt|;
+DECL|field|dontOpenBrowseUntilDisposed
+specifier|private
+name|boolean
+name|dontOpenBrowseUntilDisposed
+decl_stmt|;
 DECL|method|FileListEntryEditor (JabRefFrame frame, FileListEntry entry, boolean showProgressBar, boolean showOpenButton, BibDatabaseContext databaseContext, boolean showSaveDialog)
 specifier|public
 name|FileListEntryEditor
@@ -1113,7 +1060,6 @@ operator|=
 name|showSaveDialog
 expr_stmt|;
 block|}
-DECL|method|FileListEntryEditor (JabRefFrame frame, FileListEntry entry, boolean showProgressBar, boolean showOpenButton, BibDatabaseContext databaseContext)
 DECL|method|FileListEntryEditor (JabRefFrame frame, FileListEntry entry, boolean showProgressBar, boolean showOpenButton, BibDatabaseContext databaseContext)
 specifier|public
 name|FileListEntryEditor
@@ -1895,7 +1841,6 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|checkExtension ()
-DECL|method|checkExtension ()
 specifier|private
 name|void
 name|checkExtension
@@ -2016,7 +1961,6 @@ expr_stmt|;
 block|}
 block|}
 DECL|method|openFile ()
-DECL|method|openFile ()
 specifier|private
 name|void
 name|openFile
@@ -2081,7 +2025,6 @@ block|}
 block|}
 block|}
 DECL|method|setExternalConfirm (ConfirmCloseFileListEntryEditor eC)
-DECL|method|setExternalConfirm (ConfirmCloseFileListEntryEditor eC)
 specifier|public
 name|void
 name|setExternalConfirm
@@ -2097,7 +2040,6 @@ operator|=
 name|eC
 expr_stmt|;
 block|}
-DECL|method|setOkEnabled (boolean enabled)
 DECL|method|setOkEnabled (boolean enabled)
 specifier|public
 name|void
@@ -2121,7 +2063,6 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|getProgressBar ()
-DECL|method|getProgressBar ()
 specifier|public
 name|JProgressBar
 name|getProgressBar
@@ -2132,7 +2073,6 @@ name|prog
 return|;
 block|}
 DECL|method|getProgressBarLabel ()
-DECL|method|getProgressBarLabel ()
 specifier|public
 name|JLabel
 name|getProgressBarLabel
@@ -2142,7 +2082,6 @@ return|return
 name|downloadLabel
 return|;
 block|}
-DECL|method|setEntry (FileListEntry entry)
 DECL|method|setEntry (FileListEntry entry)
 specifier|public
 name|void
@@ -2164,7 +2103,6 @@ name|entry
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|setVisible (boolean visible, boolean openBrowse)
 DECL|method|setVisible (boolean visible, boolean openBrowse)
 specifier|public
 name|void
@@ -2248,7 +2186,6 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|isVisible ()
-DECL|method|isVisible ()
 specifier|public
 name|boolean
 name|isVisible
@@ -2267,7 +2204,6 @@ name|isVisible
 argument_list|()
 return|;
 block|}
-DECL|method|setValues (FileListEntry entry)
 DECL|method|setValues (FileListEntry entry)
 specifier|private
 name|void
@@ -2413,7 +2349,6 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-DECL|method|storeSettings (FileListEntry listEntry)
 DECL|method|storeSettings (FileListEntry listEntry)
 specifier|private
 name|void
@@ -2674,7 +2609,6 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|okPressed ()
-DECL|method|okPressed ()
 specifier|public
 name|boolean
 name|okPressed
@@ -2684,264 +2618,6 @@ return|return
 name|okPressed
 return|;
 block|}
-operator|<<
-operator|<<
-operator|<<
-operator|<
-name|HEAD
-specifier|private
-name|final
-name|ActionListener
-name|browsePressed
-operator|=
-name|e
-lambda|->
-block|{
-name|String
-name|fileText
-init|=
-name|link
-operator|.
-name|getText
-argument_list|()
-operator|.
-name|trim
-argument_list|()
-decl_stmt|;
-name|Optional
-argument_list|<
-name|Path
-argument_list|>
-name|file
-init|=
-name|FileHelper
-operator|.
-name|expandFilename
-argument_list|(
-name|this
-operator|.
-name|databaseContext
-argument_list|,
-name|fileText
-argument_list|,
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getFileDirectoryPreferences
-argument_list|()
-argument_list|)
-decl_stmt|;
-name|Path
-name|workingDir
-init|=
-name|file
-operator|.
-name|orElse
-argument_list|(
-name|Paths
-operator|.
-name|get
-argument_list|(
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|get
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|WORKING_DIRECTORY
-argument_list|)
-argument_list|)
-argument_list|)
-decl_stmt|;
-name|String
-name|fileName
-init|=
-name|Paths
-operator|.
-name|get
-argument_list|(
-name|fileText
-argument_list|)
-operator|.
-name|getFileName
-argument_list|()
-operator|.
-name|toString
-argument_list|()
-decl_stmt|;
-name|FileDialogConfiguration
-name|fileDialogConfiguration
-init|=
-operator|new
-name|FileDialogConfiguration
-operator|.
-name|Builder
-argument_list|()
-operator|.
-name|withInitialDirectory
-argument_list|(
-name|workingDir
-argument_list|)
-operator|.
-name|withInitialFileName
-argument_list|(
-name|fileName
-argument_list|)
-operator|.
-name|build
-argument_list|()
-decl_stmt|;
-name|DialogService
-name|ds
-init|=
-operator|new
-name|FXDialogService
-argument_list|()
-decl_stmt|;
-name|Optional
-argument_list|<
-name|Path
-argument_list|>
-name|path
-decl_stmt|;
-if|if
-condition|(
-name|showSaveDialog
-condition|)
-block|{
-name|path
-operator|=
-name|DefaultTaskExecutor
-operator|.
-name|runInJavaFXThread
-argument_list|(
-parameter_list|()
-lambda|->
-name|ds
-operator|.
-name|showFileSaveDialog
-argument_list|(
-name|fileDialogConfiguration
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-name|path
-operator|=
-name|DefaultTaskExecutor
-operator|.
-name|runInJavaFXThread
-argument_list|(
-parameter_list|()
-lambda|->
-name|ds
-operator|.
-name|showFileOpenDialog
-argument_list|(
-name|fileDialogConfiguration
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-name|path
-operator|.
-name|ifPresent
-argument_list|(
-name|selection
-lambda|->
-block|{
-name|File
-name|newFile
-init|=
-name|selection
-operator|.
-name|toFile
-argument_list|()
-decl_stmt|;
-comment|// Store the directory for next time:
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|put
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|WORKING_DIRECTORY
-argument_list|,
-name|newFile
-operator|.
-name|getPath
-argument_list|()
-argument_list|)
-expr_stmt|;
-comment|// If the file is below the file directory, make the path relative:
-name|List
-argument_list|<
-name|String
-argument_list|>
-name|fileDirs
-init|=
-name|this
-operator|.
-name|databaseContext
-operator|.
-name|getFileDirectories
-argument_list|(
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getFileDirectoryPreferences
-argument_list|()
-argument_list|)
-decl_stmt|;
-name|newFile
-operator|=
-name|FileUtil
-operator|.
-name|shortenFileName
-argument_list|(
-name|newFile
-argument_list|,
-name|fileDirs
-argument_list|)
-expr_stmt|;
-name|link
-operator|.
-name|setText
-argument_list|(
-name|newFile
-operator|.
-name|getPath
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|link
-operator|.
-name|requestFocus
-argument_list|()
-expr_stmt|;
-block|}
-argument_list|)
-expr_stmt|;
-block|}
-expr_stmt|;
-operator|==
-operator|==
-operator|==
-operator|=
-operator|>>>
-operator|>>>
-operator|>
-name|Fix
-name|checkstyle
-name|warnings
 block|}
 end_class
 
