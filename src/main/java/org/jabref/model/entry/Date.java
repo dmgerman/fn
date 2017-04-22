@@ -624,6 +624,21 @@ name|DAY_OF_MONTH
 argument_list|)
 return|;
 block|}
+DECL|method|toLocalDate ()
+specifier|public
+name|LocalDate
+name|toLocalDate
+parameter_list|()
+block|{
+return|return
+name|LocalDate
+operator|.
+name|from
+argument_list|(
+name|date
+argument_list|)
+return|;
+block|}
 annotation|@
 name|Override
 DECL|method|equals (Object o)

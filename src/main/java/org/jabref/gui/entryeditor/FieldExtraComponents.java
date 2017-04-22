@@ -150,20 +150,6 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|date
-operator|.
-name|DatePickerButton
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
 name|entryeditor
 operator|.
 name|EntryEditor
@@ -693,67 +679,6 @@ argument_list|(
 name|ws
 argument_list|)
 return|;
-block|}
-comment|/**      * Set up field such that double click inserts the current date      * If isDataPicker is True, a button with a data picker is returned      *      * @param editor reference to the FieldEditor to display the date value      * @param useDatePicker shows a DatePickerButton if true      * @param useIsoFormat if true ISO format is always used      * @return      */
-DECL|method|getDateTimeExtraComponent (FieldEditor editor, boolean useDatePicker, boolean useIsoFormat)
-specifier|public
-specifier|static
-name|Optional
-argument_list|<
-name|JComponent
-argument_list|>
-name|getDateTimeExtraComponent
-parameter_list|(
-name|FieldEditor
-name|editor
-parameter_list|,
-name|boolean
-name|useDatePicker
-parameter_list|,
-name|boolean
-name|useIsoFormat
-parameter_list|)
-block|{
-comment|/*         ((JTextArea) editor).addMouseListener(new MouseAdapter() {             @Override             public void mouseClicked(MouseEvent e) {                 if (e.getClickCount() == 2) {// double click                     String date = "";                     if(useIsoFormat) {                         date = DateTimeFormatter.ISO_DATE.format(LocalDate.now());                     } else {                         date = DateTimeFormatter.ofPattern(Globals.prefs.get(JabRefPreferences.TIME_STAMP_FORMAT)).format(                                 LocalDateTime.now());                     }                     editor.setText(date);                 }             }         });         */
-comment|// insert a datepicker, if the extras field contains this command
-if|if
-condition|(
-name|useDatePicker
-condition|)
-block|{
-name|DatePickerButton
-name|datePicker
-init|=
-operator|new
-name|DatePickerButton
-argument_list|(
-name|editor
-argument_list|,
-name|useIsoFormat
-argument_list|)
-decl_stmt|;
-comment|/*             // register a DocumentListener on the underlying text document which notifies the DatePicker which date is currently set             ((JTextArea) editor).getDocument().addDocumentListener(new DocumentListener() {                 @Override                 public void insertUpdate(DocumentEvent e) {                     datePicker.updateDatePickerDate(editor.getText());                 }                 @Override                 public void removeUpdate(DocumentEvent e) {                     datePicker.updateDatePickerDate(editor.getText());                 }                 @Override                 public void changedUpdate(DocumentEvent e) {                     datePicker.updateDatePickerDate(editor.getText());                 }             });             */
-return|return
-name|Optional
-operator|.
-name|of
-argument_list|(
-name|datePicker
-operator|.
-name|getDatePicker
-argument_list|()
-argument_list|)
-return|;
-block|}
-else|else
-block|{
-return|return
-name|Optional
-operator|.
-name|empty
-argument_list|()
-return|;
-block|}
 block|}
 comment|/**      * Return a dropdown list with the alternatives for editor type fields      *      * @param fieldEditor      * @param entryEditor      * @return      */
 DECL|method|getEditorTypeExtraComponent (FieldEditor fieldEditor, EntryEditor entryEditor)
