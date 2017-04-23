@@ -150,12 +150,6 @@ argument_list|(
 literal|"None"
 argument_list|)
 block|;
-DECL|field|name
-specifier|private
-specifier|final
-name|String
-name|name
-decl_stmt|;
 DECL|field|LOGGER
 specifier|private
 specifier|static
@@ -172,6 +166,12 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+DECL|field|name
+specifier|private
+specifier|final
+name|String
+name|name
+decl_stmt|;
 DECL|method|FileAnnotationType (String name)
 name|FileAnnotationType
 parameter_list|(
@@ -187,11 +187,11 @@ name|name
 expr_stmt|;
 block|}
 comment|/**      * Determines the FileAnnotationType of a raw PDAnnotation. Returns 'UNKNOWN' if the type is currently not in our      * list of FileAnnotationTypes.      *      * @param annotation the raw PDAnnotation      * @return The determined FileAnnotationType      */
-DECL|method|parseFileAnnotationType (PDAnnotation annotation)
+DECL|method|parse (PDAnnotation annotation)
 specifier|public
 specifier|static
 name|FileAnnotationType
-name|parseFileAnnotationType
+name|parse
 parameter_list|(
 name|PDAnnotation
 name|annotation

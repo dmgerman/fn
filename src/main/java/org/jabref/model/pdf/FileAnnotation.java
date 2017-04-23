@@ -285,7 +285,7 @@ argument_list|()
 argument_list|,
 name|FileAnnotationType
 operator|.
-name|parseFileAnnotationType
+name|parse
 argument_list|(
 name|annotation
 argument_list|)
@@ -345,7 +345,7 @@ argument_list|()
 argument_list|,
 name|FileAnnotationType
 operator|.
-name|parseFileAnnotationType
+name|parse
 argument_list|(
 name|annotation
 argument_list|)
