@@ -490,6 +490,22 @@ specifier|public
 class|class
 name|PdfImporter
 block|{
+DECL|field|LOGGER
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOGGER
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|PdfImporter
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 DECL|field|frame
 specifier|private
 specifier|final
@@ -513,22 +529,6 @@ specifier|private
 specifier|final
 name|int
 name|dropRow
-decl_stmt|;
-DECL|field|LOGGER
-specifier|private
-specifier|static
-specifier|final
-name|Log
-name|LOGGER
-init|=
-name|LogFactory
-operator|.
-name|getLog
-argument_list|(
-name|PdfImporter
-operator|.
-name|class
-argument_list|)
 decl_stmt|;
 comment|/**      * Creates the PdfImporter      *      * @param frame the JabRef frame      * @param panel the panel to use      * @param entryTable the entry table to work on      * @param dropRow the row the entry is dropped to. May be -1 to indicate that no row is selected.      */
 DECL|method|PdfImporter (JabRefFrame frame, BasePanel panel, MainTable entryTable, int dropRow)

@@ -50,15 +50,6 @@ specifier|public
 class|class
 name|FileHistory
 block|{
-DECL|field|history
-specifier|private
-specifier|final
-name|LinkedList
-argument_list|<
-name|String
-argument_list|>
-name|history
-decl_stmt|;
 DECL|field|HISTORY_SIZE
 specifier|private
 specifier|static
@@ -67,6 +58,15 @@ name|int
 name|HISTORY_SIZE
 init|=
 literal|8
+decl_stmt|;
+DECL|field|history
+specifier|private
+specifier|final
+name|LinkedList
+argument_list|<
+name|String
+argument_list|>
+name|history
 decl_stmt|;
 DECL|method|FileHistory (List<String> fileList)
 specifier|public

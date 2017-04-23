@@ -16,6 +16,18 @@ begin_import
 import|import
 name|java
 operator|.
+name|time
+operator|.
+name|format
+operator|.
+name|DateTimeFormatter
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|Set
@@ -171,7 +183,7 @@ argument_list|(
 name|fieldName
 argument_list|)
 decl_stmt|;
-comment|// TODO: Implement this
+comment|// TODO: Implement all of them
 if|if
 condition|(
 name|Globals
@@ -200,10 +212,56 @@ name|DATE
 argument_list|)
 condition|)
 block|{
-comment|// timestamp or a other field with datepicker command
-comment|// double click AND datefield => insert the current date (today)
-comment|//return FieldExtraComponents.getDateTimeExtraComponent(editor,
-comment|//        fieldExtras.contains(FieldProperty.DATE), fieldExtras.contains(FieldProperty.ISO_DATE));
+if|if
+condition|(
+name|fieldExtras
+operator|.
+name|contains
+argument_list|(
+name|FieldProperty
+operator|.
+name|ISO_DATE
+argument_list|)
+condition|)
+block|{
+return|return
+operator|new
+name|DateEditor
+argument_list|(
+name|fieldName
+argument_list|,
+name|DateTimeFormatter
+operator|.
+name|ISO_DATE
+argument_list|)
+return|;
+block|}
+else|else
+block|{
+return|return
+operator|new
+name|DateEditor
+argument_list|(
+name|fieldName
+argument_list|,
+name|DateTimeFormatter
+operator|.
+name|ofPattern
+argument_list|(
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|get
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|TIME_STAMP_FORMAT
+argument_list|)
+argument_list|)
+argument_list|)
+return|;
+block|}
 block|}
 elseif|else
 if|if

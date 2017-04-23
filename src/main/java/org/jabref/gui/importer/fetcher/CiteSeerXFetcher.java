@@ -320,11 +320,6 @@ argument_list|(
 literal|"<a class=\"remove doc_details\" href=\"(.*)\">"
 argument_list|)
 decl_stmt|;
-DECL|field|stopFetching
-specifier|private
-name|boolean
-name|stopFetching
-decl_stmt|;
 DECL|field|BASE_PATTERN
 specifier|private
 specifier|static
@@ -444,6 +439,11 @@ name|CiteSeerXFetcher
 operator|.
 name|class
 argument_list|)
+decl_stmt|;
+DECL|field|stopFetching
+specifier|private
+name|boolean
+name|stopFetching
 decl_stmt|;
 annotation|@
 name|Override

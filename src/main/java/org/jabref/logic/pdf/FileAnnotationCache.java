@@ -150,6 +150,22 @@ specifier|public
 class|class
 name|FileAnnotationCache
 block|{
+DECL|field|LOGGER
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOGGER
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|FileAnnotation
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 comment|//cache size in entries
 DECL|field|CACHE_SIZE
 specifier|private
@@ -178,22 +194,6 @@ argument_list|>
 argument_list|>
 argument_list|>
 name|annotationCache
-decl_stmt|;
-DECL|field|LOGGER
-specifier|private
-specifier|static
-specifier|final
-name|Log
-name|LOGGER
-init|=
-name|LogFactory
-operator|.
-name|getLog
-argument_list|(
-name|FileAnnotation
-operator|.
-name|class
-argument_list|)
 decl_stmt|;
 DECL|method|FileAnnotationCache (BibDatabaseContext context)
 specifier|public

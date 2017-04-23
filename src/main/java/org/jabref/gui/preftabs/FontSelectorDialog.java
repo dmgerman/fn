@@ -312,6 +312,21 @@ name|FontSelectorDialog
 extends|extends
 name|JabRefDialog
 block|{
+comment|/**      * For some reason the default Java fonts show up in the      * list with .bold, .bolditalic, and .italic extensions.      */
+DECL|field|HIDEFONTS
+specifier|private
+specifier|static
+specifier|final
+name|String
+index|[]
+name|HIDEFONTS
+init|=
+block|{
+literal|".bold"
+block|,
+literal|".italic"
+block|}
+decl_stmt|;
 DECL|field|PLAIN
 specifier|private
 specifier|static
@@ -472,21 +487,6 @@ specifier|private
 specifier|final
 name|JLabel
 name|preview
-decl_stmt|;
-comment|/**      * For some reason the default Java fonts show up in the      * list with .bold, .bolditalic, and .italic extensions.      */
-DECL|field|HIDEFONTS
-specifier|private
-specifier|static
-specifier|final
-name|String
-index|[]
-name|HIDEFONTS
-init|=
-block|{
-literal|".bold"
-block|,
-literal|".italic"
-block|}
 decl_stmt|;
 DECL|method|FontSelectorDialog (Component comp, Font font)
 specifier|public

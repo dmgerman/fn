@@ -78,12 +78,6 @@ specifier|public
 class|class
 name|OpenOfficePreferences
 block|{
-DECL|field|preferences
-specifier|private
-specifier|final
-name|JabRefPreferences
-name|preferences
-decl_stmt|;
 DECL|field|DEFAULT_WINDOWS_PATH
 specifier|public
 specifier|static
@@ -187,6 +181,12 @@ literal|"juh.jar"
 argument_list|,
 literal|"ridl.jar"
 argument_list|)
+decl_stmt|;
+DECL|field|preferences
+specifier|private
+specifier|final
+name|JabRefPreferences
+name|preferences
 decl_stmt|;
 DECL|method|OpenOfficePreferences (JabRefPreferences preferences)
 specifier|public

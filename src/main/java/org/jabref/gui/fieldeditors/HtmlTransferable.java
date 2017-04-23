@@ -181,18 +181,6 @@ argument_list|,
 name|TEXT_FLAVOR
 argument_list|)
 decl_stmt|;
-DECL|field|htmlText
-specifier|private
-specifier|final
-name|String
-name|htmlText
-decl_stmt|;
-DECL|field|plainText
-specifier|private
-specifier|final
-name|String
-name|plainText
-decl_stmt|;
 DECL|field|HTML_NEWLINE
 specifier|private
 specifier|static
@@ -248,6 +236,18 @@ name|compile
 argument_list|(
 literal|"[ ]{2,}"
 argument_list|)
+decl_stmt|;
+DECL|field|htmlText
+specifier|private
+specifier|final
+name|String
+name|htmlText
+decl_stmt|;
+DECL|field|plainText
+specifier|private
+specifier|final
+name|String
+name|plainText
 decl_stmt|;
 DECL|method|HtmlTransferable (String html)
 specifier|public

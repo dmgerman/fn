@@ -456,6 +456,15 @@ specifier|public
 class|class
 name|URLDownload
 block|{
+DECL|field|USER_AGENT
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|USER_AGENT
+init|=
+literal|"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36"
+decl_stmt|;
 DECL|field|LOGGER
 specifier|private
 specifier|static
@@ -471,15 +480,6 @@ name|URLDownload
 operator|.
 name|class
 argument_list|)
-decl_stmt|;
-DECL|field|USER_AGENT
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|USER_AGENT
-init|=
-literal|"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36"
 decl_stmt|;
 DECL|field|source
 specifier|private
@@ -1265,7 +1265,7 @@ literal|0
 index|]
 return|;
 block|}
-function|}};
+function|} };
 comment|// Install the all-trusting trust manager
 try|try
 block|{

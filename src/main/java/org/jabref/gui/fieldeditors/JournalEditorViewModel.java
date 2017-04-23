@@ -24,42 +24,6 @@ end_import
 
 begin_import
 import|import
-name|javafx
-operator|.
-name|beans
-operator|.
-name|property
-operator|.
-name|SimpleStringProperty
-import|;
-end_import
-
-begin_import
-import|import
-name|javafx
-operator|.
-name|beans
-operator|.
-name|property
-operator|.
-name|StringProperty
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|AbstractViewModel
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|jabref
@@ -120,7 +84,7 @@ specifier|public
 class|class
 name|JournalEditorViewModel
 extends|extends
-name|AbstractViewModel
+name|AbstractEditorViewModel
 block|{
 DECL|field|journalAbbreviationLoader
 specifier|private
@@ -133,15 +97,6 @@ specifier|private
 specifier|final
 name|JournalAbbreviationPreferences
 name|journalAbbreviationPreferences
-decl_stmt|;
-DECL|field|text
-specifier|private
-name|StringProperty
-name|text
-init|=
-operator|new
-name|SimpleStringProperty
-argument_list|()
 decl_stmt|;
 DECL|method|JournalEditorViewModel (JournalAbbreviationLoader journalAbbreviationLoader, JournalAbbreviationPreferences journalAbbreviationPreferences)
 specifier|public
@@ -166,16 +121,6 @@ name|journalAbbreviationPreferences
 operator|=
 name|journalAbbreviationPreferences
 expr_stmt|;
-block|}
-DECL|method|textProperty ()
-specifier|public
-name|StringProperty
-name|textProperty
-parameter_list|()
-block|{
-return|return
-name|text
-return|;
 block|}
 DECL|method|toggleAbbreviation ()
 specifier|public

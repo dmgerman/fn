@@ -236,6 +236,15 @@ name|FieldTextMenu
 implements|implements
 name|MouseListener
 block|{
+DECL|field|MAX_PASTE_PREVIEW_LENGTH
+specifier|private
+specifier|static
+specifier|final
+name|int
+name|MAX_PASTE_PREVIEW_LENGTH
+init|=
+literal|20
+decl_stmt|;
 DECL|field|field
 specifier|private
 specifier|final
@@ -274,15 +283,6 @@ DECL|field|protectedTermsMenu
 specifier|private
 name|ProtectedTermsMenu
 name|protectedTermsMenu
-decl_stmt|;
-DECL|field|MAX_PASTE_PREVIEW_LENGTH
-specifier|private
-specifier|static
-specifier|final
-name|int
-name|MAX_PASTE_PREVIEW_LENGTH
-init|=
-literal|20
 decl_stmt|;
 DECL|method|FieldTextMenu (FieldEditor fieldComponent)
 specifier|public

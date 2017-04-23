@@ -2885,13 +2885,24 @@ block|}
 block|}
 block|}
 block|}
-comment|/**      * Manages all killed (cut) text pieces in a ring which is accessible      * through {@link YankPopAction}.      *<p>      * Also provides an unmodifiable copy of all cut pieces.      */
 DECL|class|KillRing
 specifier|public
 specifier|static
 class|class
 name|KillRing
 block|{
+comment|/**          * Manages all killed (cut) text pieces in a ring which is accessible          * through {@link YankPopAction}.          *<p>          * Also provides an unmodifiable copy of all cut pieces.          */
+DECL|field|INSTANCE
+specifier|private
+specifier|static
+specifier|final
+name|KillRing
+name|INSTANCE
+init|=
+operator|new
+name|KillRing
+argument_list|()
+decl_stmt|;
 DECL|field|jtc
 specifier|private
 name|JTextComponent
@@ -2922,17 +2933,6 @@ init|=
 name|ring
 operator|.
 name|iterator
-argument_list|()
-decl_stmt|;
-DECL|field|INSTANCE
-specifier|private
-specifier|static
-specifier|final
-name|KillRing
-name|INSTANCE
-init|=
-operator|new
-name|KillRing
 argument_list|()
 decl_stmt|;
 DECL|method|getInstance ()

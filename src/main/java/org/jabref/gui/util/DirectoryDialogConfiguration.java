@@ -58,6 +58,21 @@ specifier|final
 name|Path
 name|initialDirectory
 decl_stmt|;
+DECL|method|DirectoryDialogConfiguration (Path initialDirectory)
+specifier|private
+name|DirectoryDialogConfiguration
+parameter_list|(
+name|Path
+name|initialDirectory
+parameter_list|)
+block|{
+name|this
+operator|.
+name|initialDirectory
+operator|=
+name|initialDirectory
+expr_stmt|;
+block|}
 DECL|method|getInitialDirectory ()
 specifier|public
 name|Optional
@@ -75,21 +90,6 @@ argument_list|(
 name|initialDirectory
 argument_list|)
 return|;
-block|}
-DECL|method|DirectoryDialogConfiguration (Path initialDirectory)
-specifier|private
-name|DirectoryDialogConfiguration
-parameter_list|(
-name|Path
-name|initialDirectory
-parameter_list|)
-block|{
-name|this
-operator|.
-name|initialDirectory
-operator|=
-name|initialDirectory
-expr_stmt|;
 block|}
 DECL|class|Builder
 specifier|public

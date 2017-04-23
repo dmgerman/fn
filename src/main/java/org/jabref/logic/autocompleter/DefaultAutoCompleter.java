@@ -57,12 +57,6 @@ name|DefaultAutoCompleter
 extends|extends
 name|AbstractAutoCompleter
 block|{
-DECL|field|fieldName
-specifier|private
-specifier|final
-name|String
-name|fieldName
-decl_stmt|;
 DECL|field|SEPARATING_CHARS
 specifier|private
 specifier|static
@@ -71,6 +65,12 @@ name|String
 name|SEPARATING_CHARS
 init|=
 literal|";,\n "
+decl_stmt|;
+DECL|field|fieldName
+specifier|private
+specifier|final
+name|String
+name|fieldName
 decl_stmt|;
 comment|/**      * @see AutoCompleterFactory      */
 DECL|method|DefaultAutoCompleter (String fieldName, AutoCompletePreferences preferences)

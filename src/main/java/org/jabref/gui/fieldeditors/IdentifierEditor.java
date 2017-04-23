@@ -263,14 +263,14 @@ argument_list|(
 name|this
 argument_list|)
 expr_stmt|;
-name|viewModel
+name|textArea
 operator|.
 name|textProperty
 argument_list|()
 operator|.
-name|bind
+name|bindBidirectional
 argument_list|(
-name|textArea
+name|viewModel
 operator|.
 name|textProperty
 argument_list|()
@@ -355,7 +355,7 @@ argument_list|(
 name|entry
 argument_list|)
 expr_stmt|;
-name|textArea
+name|viewModel
 operator|.
 name|bindToEntry
 argument_list|(

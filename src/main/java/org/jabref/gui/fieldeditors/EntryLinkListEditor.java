@@ -546,6 +546,15 @@ name|JTable
 implements|implements
 name|FieldEditor
 block|{
+DECL|field|layoutFormat
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|layoutFormat
+init|=
+literal|"\\begin{author}\\format[Authors(2,1),LatexToUnicode]{\\author}\\end{author}\\begin{title}, \"\\format[LatexToUnicode]{\\title}\"\\end{title}\\begin{year}, \\year\\end{year}"
+decl_stmt|;
 DECL|field|LOGGER
 specifier|private
 specifier|static
@@ -657,15 +666,6 @@ operator|.
 name|getSmallIcon
 argument_list|()
 argument_list|)
-decl_stmt|;
-DECL|field|layoutFormat
-specifier|private
-specifier|static
-specifier|final
-name|String
-name|layoutFormat
-init|=
-literal|"\\begin{author}\\format[Authors(2,1),LatexToUnicode]{\\author}\\end{author}\\begin{title}, \"\\format[LatexToUnicode]{\\title}\"\\end{title}\\begin{year}, \\year\\end{year}"
 decl_stmt|;
 DECL|method|EntryLinkListEditor (JabRefFrame frame, BibDatabaseContext databaseContext, String fieldName, String content, EntryEditor entryEditor, boolean singleEntry)
 specifier|public

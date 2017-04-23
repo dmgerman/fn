@@ -97,6 +97,11 @@ specifier|abstract
 class|class
 name|SaveSession
 block|{
+DECL|field|backup
+specifier|protected
+name|boolean
+name|backup
+decl_stmt|;
 DECL|field|encoding
 specifier|protected
 specifier|final
@@ -122,11 +127,6 @@ operator|new
 name|ArrayList
 argument_list|<>
 argument_list|()
-decl_stmt|;
-DECL|field|backup
-specifier|protected
-name|boolean
-name|backup
 decl_stmt|;
 DECL|method|SaveSession (Charset encoding, boolean backup, VerifyingWriter writer)
 specifier|protected

@@ -155,6 +155,13 @@ specifier|final
 class|class
 name|ExternalFileTypes
 block|{
+comment|// The only instance of this class:
+DECL|field|singleton
+specifier|private
+specifier|static
+name|ExternalFileTypes
+name|singleton
+decl_stmt|;
 comment|// This String is used in the encoded list in prefs of external file type
 comment|// modifications, in order to indicate a removed default file type:
 DECL|field|FILE_TYPE_REMOVED_FLAG
@@ -210,13 +217,15 @@ name|getSmallIcon
 argument_list|()
 argument_list|)
 decl_stmt|;
-comment|// The only instance of this class:
-DECL|field|singleton
+DECL|method|ExternalFileTypes ()
 specifier|private
-specifier|static
 name|ExternalFileTypes
-name|singleton
-decl_stmt|;
+parameter_list|()
+block|{
+name|updateExternalFileTypes
+argument_list|()
+expr_stmt|;
+block|}
 DECL|method|getInstance ()
 specifier|public
 specifier|static
@@ -247,15 +256,6 @@ name|ExternalFileTypes
 operator|.
 name|singleton
 return|;
-block|}
-DECL|method|ExternalFileTypes ()
-specifier|private
-name|ExternalFileTypes
-parameter_list|()
-block|{
-name|updateExternalFileTypes
-argument_list|()
-expr_stmt|;
 block|}
 DECL|method|getDefaultExternalFileTypes ()
 specifier|public

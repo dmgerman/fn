@@ -185,6 +185,21 @@ DECL|class|MSBibEntry
 class|class
 name|MSBibEntry
 block|{
+comment|/**      * Allows 20.3-2007|||20/3-  2007 etc.      *<b>(\d{1,2})\s?[.,-/]\s?(\d{1,2})\s?[.,-/]\s?(\d{2,4})</b>      * 1-2 DIGITS SPACE SEPERATOR SPACE 1-2 DIGITS SPACE SEPERATOR SPACE 2-4 DIGITS      */
+DECL|field|DATE_PATTERN
+specifier|private
+specifier|static
+specifier|final
+name|Pattern
+name|DATE_PATTERN
+init|=
+name|Pattern
+operator|.
+name|compile
+argument_list|(
+literal|"(\\d{1,2})\\s*[.,-/]\\s*(\\d{1,2})\\s*[.,-/]\\s*(\\d{2,4})"
+argument_list|)
+decl_stmt|;
 comment|// MSBib fields and values
 DECL|field|fields
 specifier|public
@@ -418,21 +433,6 @@ operator|.
 name|compile
 argument_list|(
 literal|"\\b(\\w+)\\s?[,]?\\s?(\\w*)\\s?[,]?\\s?(\\w*)\\b"
-argument_list|)
-decl_stmt|;
-comment|/**      * Allows 20.3-2007|||20/3-  2007 etc.      *<b>(\d{1,2})\s?[.,-/]\s?(\d{1,2})\s?[.,-/]\s?(\d{2,4})</b>      * 1-2 DIGITS SPACE SEPERATOR SPACE 1-2 DIGITS SPACE SEPERATOR SPACE 2-4 DIGITS      */
-DECL|field|DATE_PATTERN
-specifier|private
-specifier|static
-specifier|final
-name|Pattern
-name|DATE_PATTERN
-init|=
-name|Pattern
-operator|.
-name|compile
-argument_list|(
-literal|"(\\d{1,2})\\s*[.,-/]\\s*(\\d{1,2})\\s*[.,-/]\\s*(\\d{2,4})"
 argument_list|)
 decl_stmt|;
 DECL|method|MSBibEntry ()

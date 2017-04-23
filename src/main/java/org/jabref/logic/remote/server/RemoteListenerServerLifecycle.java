@@ -84,11 +84,6 @@ name|RemoteListenerServerLifecycle
 implements|implements
 name|AutoCloseable
 block|{
-DECL|field|remoteListenerServerThread
-specifier|private
-name|RemoteListenerServerThread
-name|remoteListenerServerThread
-decl_stmt|;
 DECL|field|LOGGER
 specifier|private
 specifier|static
@@ -104,6 +99,11 @@ name|RemoteListenerServerLifecycle
 operator|.
 name|class
 argument_list|)
+decl_stmt|;
+DECL|field|remoteListenerServerThread
+specifier|private
+name|RemoteListenerServerThread
+name|remoteListenerServerThread
 decl_stmt|;
 DECL|method|stop ()
 specifier|public

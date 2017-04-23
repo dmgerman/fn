@@ -517,6 +517,12 @@ DECL|class|EntryEditorTab
 class|class
 name|EntryEditorTab
 block|{
+comment|// UGLY HACK to have a pointer to the fileListEditor to call autoSetLinks()
+DECL|field|fileListEditor
+specifier|public
+name|FileListEditor
+name|fileListEditor
+decl_stmt|;
 DECL|field|panel
 specifier|private
 specifier|final
@@ -607,12 +613,6 @@ specifier|private
 specifier|final
 name|BasePanel
 name|basePanel
-decl_stmt|;
-comment|// UGLY HACK to have a pointer to the fileListEditor to call autoSetLinks()
-DECL|field|fileListEditor
-specifier|public
-name|FileListEditor
-name|fileListEditor
 decl_stmt|;
 DECL|field|activeField
 specifier|private
@@ -1590,7 +1590,7 @@ literal|false
 return|;
 block|}
 comment|// TODO: Reenable or probably better delete this
-comment|/*         FieldEditor fieldEditor = editors.get(field);         if (fieldEditor.getText().equals(content)){             return true;         }          // trying to preserve current edit position (fixes SF bug #1285)         if(fieldEditor.getTextComponent() instanceof JTextComponent) {             int initialCaretPosition = ((JTextComponent) fieldEditor).getCaretPosition();             fieldEditor.setText(content);             int textLength = fieldEditor.getText().length();             if(initialCaretPosition<textLength) {                 ((JTextComponent) fieldEditor).setCaretPosition(initialCaretPosition);             } else {                 ((JTextComponent) fieldEditor).setCaretPosition(textLength);             }         } else {             fieldEditor.setText(content);         }         */
+comment|/*         FieldEditor fieldEditor = editors.get(field);         if (fieldEditor.getText().equals(content)) {             return true;         }          // trying to preserve current edit position (fixes SF bug #1285)         if (fieldEditor.getTextComponent() instanceof JTextComponent) {             int initialCaretPosition = ((JTextComponent) fieldEditor).getCaretPosition();             fieldEditor.setText(content);             int textLength = fieldEditor.getText().length();             if (initialCaretPosition< textLength) {                 ((JTextComponent) fieldEditor).setCaretPosition(initialCaretPosition);             } else {                 ((JTextComponent) fieldEditor).setCaretPosition(textLength);             }         } else {             fieldEditor.setText(content);         }         */
 return|return
 literal|true
 return|;
