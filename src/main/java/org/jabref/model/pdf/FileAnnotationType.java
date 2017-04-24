@@ -138,6 +138,12 @@ argument_list|(
 literal|"Link"
 argument_list|)
 block|,
+DECL|enumConstant|INK
+name|INK
+argument_list|(
+literal|"Ink"
+argument_list|)
+block|,
 DECL|enumConstant|UNKNOWN
 name|UNKNOWN
 argument_list|(
