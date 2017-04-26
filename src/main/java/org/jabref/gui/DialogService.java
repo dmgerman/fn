@@ -28,6 +28,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Optional
 import|;
 end_import
@@ -65,6 +75,16 @@ operator|.
 name|control
 operator|.
 name|DialogPane
+import|;
+end_import
+
+begin_import
+import|import
+name|javafx
+operator|.
+name|stage
+operator|.
+name|FileChooser
 import|;
 end_import
 
@@ -339,6 +359,18 @@ name|FileDialogConfiguration
 name|fileDialogConfiguration
 parameter_list|)
 function_decl|;
+comment|/**      * Shows a new file open dialog. The method doesn't return until the      * displayed open dialog is dismissed. The return value specifies      * the files chosen by the user or an empty {@link List} if no selection has been      * made.      *      * @return the selected files or an empty {@link List} if no file has been selected      */
+DECL|method|showFileOpenDialogAndGetMultipleFiles (FileDialogConfiguration fileDialogConfiguration)
+name|List
+argument_list|<
+name|Path
+argument_list|>
+name|showFileOpenDialogAndGetMultipleFiles
+parameter_list|(
+name|FileDialogConfiguration
+name|fileDialogConfiguration
+parameter_list|)
+function_decl|;
 comment|/**      * Shows a new directory selection dialog. The method doesn't return until the      * displayed open dialog is dismissed. The return value specifies      * the file chosen by the user or an empty {@link Optional} if no selection has been      * made.      *      * @return the selected directory or an empty {@link Optional} if no directory has been selected      */
 DECL|method|showDirectorySelectionDialog (DirectoryDialogConfiguration directoryDialogConfiguration)
 name|Optional
@@ -349,6 +381,15 @@ name|showDirectorySelectionDialog
 parameter_list|(
 name|DirectoryDialogConfiguration
 name|directoryDialogConfiguration
+parameter_list|)
+function_decl|;
+comment|/**      * Gets the configured {@link FileChooser}, should only be necessary in rare use cases.      * For normal usage use the show-Methods which directly return the selected file(s)      * @param fileDialogConfiguration      * @return A configured instance of the {@link FileChooser}      */
+DECL|method|getConfiguredFileChooser (FileDialogConfiguration fileDialogConfiguration)
+name|FileChooser
+name|getConfiguredFileChooser
+parameter_list|(
+name|FileDialogConfiguration
+name|fileDialogConfiguration
 parameter_list|)
 function_decl|;
 block|}
