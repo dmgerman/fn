@@ -900,6 +900,15 @@ argument_list|,
 literal|"application/json"
 argument_list|)
 expr_stmt|;
+name|dl
+operator|.
+name|addHeader
+argument_list|(
+literal|"Referer"
+argument_list|,
+literal|"http://ieeexplore.ieee.org/search/searchresult.jsp"
+argument_list|)
+expr_stmt|;
 comment|// set post data
 name|dl
 operator|.
