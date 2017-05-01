@@ -206,20 +206,6 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|actions
-operator|.
-name|PasteAction
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
 name|util
 operator|.
 name|component
@@ -385,23 +371,6 @@ name|void
 name|setupPasteListener
 parameter_list|()
 block|{
-comment|//register "Paste" action
-name|getActionMap
-argument_list|()
-operator|.
-name|put
-argument_list|(
-name|Actions
-operator|.
-name|PASTE
-argument_list|,
-operator|new
-name|PasteAction
-argument_list|(
-name|this
-argument_list|)
-argument_list|)
-expr_stmt|;
 comment|// Bind paste command to KeyBinds.PASTE
 name|getInputMap
 argument_list|()

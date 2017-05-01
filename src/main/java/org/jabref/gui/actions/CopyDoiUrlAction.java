@@ -46,13 +46,13 @@ end_import
 
 begin_import
 import|import
-name|javax
+name|javafx
 operator|.
-name|swing
+name|scene
 operator|.
-name|text
+name|control
 operator|.
-name|JTextComponent
+name|TextArea
 import|;
 end_import
 
@@ -122,7 +122,7 @@ name|AbstractAction
 block|{
 DECL|field|component
 specifier|private
-name|JTextComponent
+name|TextArea
 name|component
 init|=
 literal|null
@@ -157,11 +157,11 @@ operator|=
 name|identifier
 expr_stmt|;
 block|}
-DECL|method|CopyDoiUrlAction (JTextComponent component)
+DECL|method|CopyDoiUrlAction (TextArea component)
 specifier|public
 name|CopyDoiUrlAction
 parameter_list|(
-name|JTextComponent
+name|TextArea
 name|component
 parameter_list|)
 block|{
