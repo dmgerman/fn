@@ -282,16 +282,16 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|field|message
-specifier|private
-name|String
-name|message
-decl_stmt|;
 DECL|field|frame
 specifier|private
 specifier|final
 name|JabRefFrame
 name|frame
+decl_stmt|;
+DECL|field|message
+specifier|private
+name|String
+name|message
 decl_stmt|;
 DECL|method|SendAsEMailAction (JabRefFrame frame)
 specifier|public
@@ -507,7 +507,7 @@ operator|.
 name|getBibDatabaseContext
 argument_list|()
 operator|.
-name|getFileDirectories
+name|getFileDirectoriesAsPaths
 argument_list|(
 name|Globals
 operator|.

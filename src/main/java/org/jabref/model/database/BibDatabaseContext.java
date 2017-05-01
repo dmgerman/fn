@@ -100,6 +100,18 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|stream
+operator|.
+name|Collectors
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|jabref
@@ -789,6 +801,58 @@ operator|.
 name|BIBLATEX
 return|;
 block|}
+DECL|method|getFileDirectoriesAsPaths (FileDirectoryPreferences preferences)
+specifier|public
+name|List
+argument_list|<
+name|Path
+argument_list|>
+name|getFileDirectoriesAsPaths
+parameter_list|(
+name|FileDirectoryPreferences
+name|preferences
+parameter_list|)
+block|{
+comment|// Filter for empty string, as this would be expanded to the jar-directory with Paths.get()
+return|return
+name|getFileDirectories
+argument_list|(
+name|preferences
+argument_list|)
+operator|.
+name|stream
+argument_list|()
+operator|.
+name|filter
+argument_list|(
+name|s
+lambda|->
+operator|!
+name|s
+operator|.
+name|isEmpty
+argument_list|()
+argument_list|)
+operator|.
+name|map
+argument_list|(
+name|Paths
+operator|::
+name|get
+argument_list|)
+operator|.
+name|collect
+argument_list|(
+name|Collectors
+operator|.
+name|toList
+argument_list|()
+argument_list|)
+return|;
+block|}
+comment|/**      * @deprecated use {@link #getFileDirectoriesAsPaths(FileDirectoryPreferences)} instead      */
+annotation|@
+name|Deprecated
 DECL|method|getFileDirectories (FileDirectoryPreferences preferences)
 specifier|public
 name|List
@@ -826,36 +890,13 @@ name|preferences
 parameter_list|)
 block|{
 return|return
-name|getFileDirectories
+name|getFileDirectoriesAsPaths
 argument_list|(
 name|preferences
 argument_list|)
 operator|.
 name|stream
 argument_list|()
-operator|.
-name|filter
-argument_list|(
-name|s
-lambda|->
-operator|!
-name|s
-operator|.
-name|isEmpty
-argument_list|()
-argument_list|)
-operator|.
-name|map
-argument_list|(
-name|p
-lambda|->
-name|Paths
-operator|.
-name|get
-argument_list|(
-name|p
-argument_list|)
-argument_list|)
 operator|.
 name|filter
 argument_list|(
@@ -867,7 +908,6 @@ operator|.
 name|findFirst
 argument_list|()
 return|;
-comment|//Filter for empty string, as this would be expanded to the jar-directory with Paths.get()
 block|}
 comment|/**     * Look up the directories set up for the given field type for this database.     * If no directory is set up, return that defined in global preferences.     * There can be up to three directory definitions for these files:     * the database's metadata can specify a general directory and/or a user-specific directory     * or the preferences can specify one.     *<p>     * The settings are prioritized in the following order and the first defined setting is used:     * 1. metadata user-specific directory     * 2. metadata general directory     * 3. preferences directory     * 4. BIB file directory     *     * @param fieldName The field type      * @param preferences The fileDirectory preferences      * @return The default directory for this field type.     */
 DECL|method|getFileDirectories (String fieldName, FileDirectoryPreferences preferences)

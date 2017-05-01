@@ -193,7 +193,7 @@ specifier|private
 specifier|final
 name|List
 argument_list|<
-name|String
+name|Path
 argument_list|>
 name|possibleFilePaths
 decl_stmt|;
@@ -224,7 +224,7 @@ name|ofNullable
 argument_list|(
 name|databaseContext
 operator|.
-name|getFileDirectories
+name|getFileDirectoriesAsPaths
 argument_list|(
 name|fileDirectoryPreferences
 argument_list|)

@@ -1455,7 +1455,7 @@ name|get
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|REG_EXP_SEARCH_EXPRESSION_KEY
+name|AUTOLINK_REG_EXP_SEARCH_EXPRESSION_KEY
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1790,7 +1790,7 @@ name|put
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|REG_EXP_SEARCH_EXPRESSION_KEY
+name|AUTOLINK_REG_EXP_SEARCH_EXPRESSION_KEY
 argument_list|,
 name|regExpTextField
 operator|.

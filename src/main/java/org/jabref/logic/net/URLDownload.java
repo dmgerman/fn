@@ -558,10 +558,135 @@ name|USER_AGENT
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|getMimeType ()
+comment|/**      * Older java VMs does not automatically trust the zbMATH certificate. In this case the following exception is      * thrown: sun.security.validator.ValidatorException: PKIX path building failed:      * sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested      * target JM> 8u101 may trust the certificate by default according to http://stackoverflow.com/a/34111150/873661      *      * We will fix this issue by accepting all (!) certificates. This is ugly; but as JabRef does not rely on      * security-relevant information this is kind of OK (no, actually it is not...).      *      * Taken from http://stackoverflow.com/a/6055903/873661      */
+DECL|method|bypassSSLVerification ()
 specifier|public
+specifier|static
+name|void
+name|bypassSSLVerification
+parameter_list|()
+block|{
+name|LOGGER
+operator|.
+name|warn
+argument_list|(
+literal|"Fix SSL exceptions by accepting ALL certificates"
+argument_list|)
+expr_stmt|;
+comment|// Create a trust manager that does not validate certificate chains
+name|TrustManager
+index|[]
+name|trustAllCerts
+init|=
+block|{
+operator|new
+name|X509TrustManager
+argument_list|()
+block|{
+annotation|@
+name|Override
+specifier|public
+name|void
+name|checkClientTrusted
+parameter_list|(
+name|X509Certificate
+index|[]
+name|chain
+parameter_list|,
 name|String
-name|getMimeType
+name|authType
+parameter_list|)
+block|{
+block|}
+function|@Override             public void checkServerTrusted
+parameter_list|(
+name|X509Certificate
+index|[]
+name|chain
+parameter_list|,
+name|String
+name|authType
+parameter_list|)
+block|{
+block|}
+function|@Override             public X509Certificate[] getAcceptedIssuers
+parameter_list|()
+block|{
+return|return
+operator|new
+name|X509Certificate
+index|[
+literal|0
+index|]
+return|;
+block|}
+function|}};
+comment|// Install the all-trusting trust manager
+try|try
+block|{
+name|SSLContext
+name|context
+init|=
+name|SSLContext
+operator|.
+name|getInstance
+argument_list|(
+literal|"TLS"
+argument_list|)
+decl_stmt|;
+name|context
+operator|.
+name|init
+argument_list|(
+literal|null
+argument_list|,
+name|trustAllCerts
+argument_list|,
+operator|new
+name|SecureRandom
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|HttpsURLConnection
+operator|.
+name|setDefaultSSLSocketFactory
+argument_list|(
+name|context
+operator|.
+name|getSocketFactory
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{
+name|LOGGER
+operator|.
+name|error
+argument_list|(
+literal|"A problem occurred when bypassing SSL verification"
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+DECL|method|getSource ()
+specifier|public
+name|URL
+name|getSource
+parameter_list|()
+block|{
+return|return
+name|source
+return|;
+block|}
+DECL|method|getMimeType ()
+function|public String getMimeType
 parameter_list|()
 throws|throws
 name|IOException
@@ -772,9 +897,7 @@ literal|""
 return|;
 block|}
 DECL|method|isMimeType (String type)
-specifier|public
-name|boolean
-name|isMimeType
+function|public boolean isMimeType
 parameter_list|(
 name|String
 name|type
@@ -810,9 +933,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|isPdf ()
-specifier|public
-name|boolean
-name|isPdf
+function|public boolean isPdf
 parameter_list|()
 throws|throws
 name|IOException
@@ -825,9 +946,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|addHeader (String key, String value)
-specifier|public
-name|void
-name|addHeader
+function|public void addHeader
 parameter_list|(
 name|String
 name|key
@@ -849,9 +968,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|setPostData (String postData)
-specifier|public
-name|void
-name|setPostData
+function|public void setPostData
 parameter_list|(
 name|String
 name|postData
@@ -874,9 +991,7 @@ block|}
 block|}
 comment|/**      * Downloads the web resource to a String.      *      * @param encoding the desired String encoding      * @return the downloaded string      */
 DECL|method|asString (Charset encoding)
-specifier|public
-name|String
-name|asString
+function|public String asString
 parameter_list|(
 name|Charset
 name|encoding
@@ -928,9 +1043,7 @@ block|}
 block|}
 comment|/**      * Downloads the web resource to a String.      * Uses UTF-8 as encoding.      *      * @return the downloaded string      */
 DECL|method|asString ()
-specifier|public
-name|String
-name|asString
+function|public String asString
 parameter_list|()
 throws|throws
 name|IOException
@@ -945,12 +1058,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|getCookieFromUrl ()
-specifier|public
-name|List
-argument_list|<
-name|HttpCookie
-argument_list|>
-name|getCookieFromUrl
+function|public List<HttpCookie> getCookieFromUrl
 parameter_list|()
 throws|throws
 name|IOException
@@ -1036,9 +1144,7 @@ block|}
 block|}
 comment|/**      * Downloads the web resource to a file.      *      * @param destination the destination file path.      */
 DECL|method|toFile (Path destination)
-specifier|public
-name|void
-name|toFile
+function|public void toFile
 parameter_list|(
 name|Path
 name|destination
@@ -1098,11 +1204,49 @@ name|e
 throw|;
 block|}
 block|}
+comment|/**      * Takes the web resource as the source for a monitored input stream.      */
+DECL|method|asInputStream ()
+function|public ProgressInputStream asInputStream
+parameter_list|()
+throws|throws
+name|IOException
+block|{
+name|URLConnection
+name|urlConnection
+init|=
+name|this
+operator|.
+name|openConnection
+argument_list|()
+decl_stmt|;
+name|long
+name|fileSize
+init|=
+name|urlConnection
+operator|.
+name|getContentLength
+argument_list|()
+decl_stmt|;
+return|return
+operator|new
+name|ProgressInputStream
+argument_list|(
+operator|new
+name|BufferedInputStream
+argument_list|(
+name|urlConnection
+operator|.
+name|getInputStream
+argument_list|()
+argument_list|)
+argument_list|,
+name|fileSize
+argument_list|)
+return|;
+block|}
 comment|/**      * Downloads the web resource to a temporary file.      *      * @return the path of the temporary file.      */
 DECL|method|toTemporaryFile ()
-specifier|public
-name|Path
-name|toTemporaryFile
+function|public Path toTemporaryFile
 parameter_list|()
 throws|throws
 name|IOException
@@ -1183,12 +1327,8 @@ return|return
 name|file
 return|;
 block|}
-annotation|@
-name|Override
+function|@Override     public String toString
 DECL|method|toString ()
-specifier|public
-name|String
-name|toString
 parameter_list|()
 block|{
 return|return
@@ -1203,127 +1343,8 @@ operator|+
 literal|'}'
 return|;
 block|}
-comment|/**      * Older java VMs does not automatically trust the zbMATH certificate. In this case the following exception is thrown:      *  sun.security.validator.ValidatorException: PKIX path building failed:      *  sun.security.provider.certpath.SunCertPathBuilderException: unable to find      *  valid certification path to requested target      * JM> 8u101 may trust the certificate by default according to http://stackoverflow.com/a/34111150/873661      *      * We will fix this issue by accepting all (!) certificates. This is ugly; but as JabRef does not rely on      * security-relevant information this is kind of OK (no, actually it is not...).      *      * Taken from http://stackoverflow.com/a/6055903/873661      */
-DECL|method|bypassSSLVerification ()
-specifier|public
-specifier|static
-name|void
-name|bypassSSLVerification
-parameter_list|()
-block|{
-name|LOGGER
-operator|.
-name|warn
-argument_list|(
-literal|"Fix SSL exceptions by accepting ALL certificates"
-argument_list|)
-expr_stmt|;
-comment|// Create a trust manager that does not validate certificate chains
-name|TrustManager
-index|[]
-name|trustAllCerts
-init|=
-block|{
-operator|new
-name|X509TrustManager
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|checkClientTrusted
-parameter_list|(
-name|X509Certificate
-index|[]
-name|chain
-parameter_list|,
-name|String
-name|authType
-parameter_list|)
-block|{
-block|}
-function|@Override             public void checkServerTrusted
-parameter_list|(
-name|X509Certificate
-index|[]
-name|chain
-parameter_list|,
-name|String
-name|authType
-parameter_list|)
-block|{
-block|}
-function|@Override             public X509Certificate[] getAcceptedIssuers
-parameter_list|()
-block|{
-return|return
-operator|new
-name|X509Certificate
-index|[
-literal|0
-index|]
-return|;
-block|}
-function|} };
-comment|// Install the all-trusting trust manager
-try|try
-block|{
-name|SSLContext
-name|context
-init|=
-name|SSLContext
-operator|.
-name|getInstance
-argument_list|(
-literal|"TLS"
-argument_list|)
-decl_stmt|;
-name|context
-operator|.
-name|init
-argument_list|(
-literal|null
-argument_list|,
-name|trustAllCerts
-argument_list|,
-operator|new
-name|SecureRandom
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|HttpsURLConnection
-operator|.
-name|setDefaultSSLSocketFactory
-argument_list|(
-name|context
-operator|.
-name|getSocketFactory
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|Exception
-name|e
-parameter_list|)
-block|{
-name|LOGGER
-operator|.
-name|error
-argument_list|(
-literal|"A problem occurred when bypassing SSL verification"
-argument_list|,
-name|e
-argument_list|)
-expr_stmt|;
-block|}
-block|}
 DECL|method|copy (InputStream in, Writer out, Charset encoding)
-specifier|private
-name|void
-name|copy
+function|private void copy
 parameter_list|(
 name|InputStream
 name|in

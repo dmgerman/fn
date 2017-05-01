@@ -14,6 +14,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
 name|javafx
 operator|.
 name|beans
@@ -95,6 +105,14 @@ argument_list|(
 literal|""
 argument_list|)
 decl_stmt|;
+DECL|field|entry
+specifier|protected
+name|Optional
+argument_list|<
+name|BibEntry
+argument_list|>
+name|entry
+decl_stmt|;
 DECL|method|textProperty ()
 specifier|public
 name|StringProperty
@@ -117,6 +135,17 @@ name|BibEntry
 name|entry
 parameter_list|)
 block|{
+name|this
+operator|.
+name|entry
+operator|=
+name|Optional
+operator|.
+name|ofNullable
+argument_list|(
+name|entry
+argument_list|)
+expr_stmt|;
 name|BindingsHelper
 operator|.
 name|bindBidirectional

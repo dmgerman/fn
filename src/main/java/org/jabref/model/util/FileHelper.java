@@ -16,16 +16,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
-operator|.
-name|File
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|nio
 operator|.
 name|file
@@ -143,7 +133,7 @@ class|class
 name|FileHelper
 block|{
 comment|/**      * Returns the extension of a file or Optional.empty() if the file does not have one (no . in name).      *      * @param file      * @return The extension, trimmed and in lowercase.      */
-DECL|method|getFileExtension (File file)
+DECL|method|getFileExtension (Path file)
 specifier|public
 specifier|static
 name|Optional
@@ -152,7 +142,7 @@ name|String
 argument_list|>
 name|getFileExtension
 parameter_list|(
-name|File
+name|Path
 name|file
 parameter_list|)
 block|{
@@ -161,7 +151,7 @@ name|getFileExtension
 argument_list|(
 name|file
 operator|.
-name|getName
+name|toString
 argument_list|()
 argument_list|)
 return|;
@@ -391,7 +381,9 @@ name|searchDirectories
 argument_list|)
 return|;
 block|}
-comment|/**      * Converts a relative filename to an absolute one, if necessary. Returns      * null if the file does not exist.      *<p>      * Will look in each of the given dirs starting from the beginning and      * returning the first found file to match if any.      */
+comment|/**      * Converts a relative filename to an absolute one, if necessary. Returns      * null if the file does not exist.      *<p>      * Will look in each of the given dirs starting from the beginning and      * returning the first found file to match if any.      *      * @deprecated use {@link #expandFilenameAsPath(String, List)} instead      */
+annotation|@
+name|Deprecated
 DECL|method|expandFilename (String name, List<String> directories)
 specifier|public
 specifier|static
@@ -419,13 +411,6 @@ range|:
 name|directories
 control|)
 block|{
-if|if
-condition|(
-name|dir
-operator|!=
-literal|null
-condition|)
-block|{
 name|Optional
 argument_list|<
 name|Path
@@ -436,7 +421,12 @@ name|expandFilename
 argument_list|(
 name|name
 argument_list|,
+name|Paths
+operator|.
+name|get
+argument_list|(
 name|dir
+argument_list|)
 argument_list|)
 decl_stmt|;
 if|if
@@ -452,6 +442,65 @@ name|result
 return|;
 block|}
 block|}
+return|return
+name|Optional
+operator|.
+name|empty
+argument_list|()
+return|;
+block|}
+DECL|method|expandFilenameAsPath (String name, List<Path> directories)
+specifier|public
+specifier|static
+name|Optional
+argument_list|<
+name|Path
+argument_list|>
+name|expandFilenameAsPath
+parameter_list|(
+name|String
+name|name
+parameter_list|,
+name|List
+argument_list|<
+name|Path
+argument_list|>
+name|directories
+parameter_list|)
+block|{
+for|for
+control|(
+name|Path
+name|directory
+range|:
+name|directories
+control|)
+block|{
+name|Optional
+argument_list|<
+name|Path
+argument_list|>
+name|result
+init|=
+name|expandFilename
+argument_list|(
+name|name
+argument_list|,
+name|directory
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|result
+operator|.
+name|isPresent
+argument_list|()
+condition|)
+block|{
+return|return
+name|result
+return|;
+block|}
 block|}
 return|return
 name|Optional
@@ -461,7 +510,7 @@ argument_list|()
 return|;
 block|}
 comment|/**      * Converts a relative filename to an absolute one, if necessary. Returns      * an empty optional if the file does not exist.      */
-DECL|method|expandFilename (String filename, String directoryName)
+DECL|method|expandFilename (String filename, Path directory)
 specifier|private
 specifier|static
 name|Optional
@@ -473,8 +522,8 @@ parameter_list|(
 name|String
 name|filename
 parameter_list|,
-name|String
-name|directoryName
+name|Path
+name|directory
 parameter_list|)
 block|{
 name|Objects
@@ -488,7 +537,7 @@ name|Objects
 operator|.
 name|requireNonNull
 argument_list|(
-name|directoryName
+name|directory
 argument_list|)
 expr_stmt|;
 name|Path
@@ -520,16 +569,6 @@ name|file
 argument_list|)
 return|;
 block|}
-name|Path
-name|directory
-init|=
-name|Paths
-operator|.
-name|get
-argument_list|(
-name|directoryName
-argument_list|)
-decl_stmt|;
 name|Path
 name|resolvedFile
 init|=

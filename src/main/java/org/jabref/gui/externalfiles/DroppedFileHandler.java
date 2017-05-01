@@ -1016,8 +1016,9 @@ name|FileUtil
 operator|.
 name|shortenFileName
 argument_list|(
-operator|new
-name|File
+name|Paths
+operator|.
+name|get
 argument_list|(
 name|fileName
 argument_list|)
@@ -1027,7 +1028,7 @@ operator|.
 name|getBibDatabaseContext
 argument_list|()
 operator|.
-name|getFileDirectories
+name|getFileDirectoriesAsPaths
 argument_list|(
 name|Globals
 operator|.
@@ -1304,8 +1305,9 @@ name|FileUtil
 operator|.
 name|shortenFileName
 argument_list|(
-operator|new
-name|File
+name|Paths
+operator|.
+name|get
 argument_list|(
 name|fileName
 argument_list|)
@@ -1315,7 +1317,7 @@ operator|.
 name|getBibDatabaseContext
 argument_list|()
 operator|.
-name|getFileDirectories
+name|getFileDirectoriesAsPaths
 argument_list|(
 name|Globals
 operator|.
@@ -1749,8 +1751,9 @@ name|FileUtil
 operator|.
 name|shortenFileName
 argument_list|(
-operator|new
-name|File
+name|Paths
+operator|.
+name|get
 argument_list|(
 name|fileName
 argument_list|)
@@ -1760,7 +1763,7 @@ operator|.
 name|getBibDatabaseContext
 argument_list|()
 operator|.
-name|getFileDirectories
+name|getFileDirectoriesAsPaths
 argument_list|(
 name|Globals
 operator|.
@@ -2615,7 +2618,7 @@ block|{
 comment|// For comparison, find the absolute filename:
 name|List
 argument_list|<
-name|String
+name|Path
 argument_list|>
 name|dirs
 init|=
@@ -2624,7 +2627,7 @@ operator|.
 name|getBibDatabaseContext
 argument_list|()
 operator|.
-name|getFileDirectories
+name|getFileDirectoriesAsPaths
 argument_list|(
 name|Globals
 operator|.
@@ -2669,7 +2672,7 @@ name|file
 init|=
 name|FileHelper
 operator|.
-name|expandFilename
+name|expandFilenameAsPath
 argument_list|(
 name|filename
 argument_list|,

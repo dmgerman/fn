@@ -482,13 +482,13 @@ return|;
 block|}
 name|List
 argument_list|<
-name|String
+name|Path
 argument_list|>
 name|paths
 init|=
 name|databaseContext
 operator|.
-name|getFileDirectories
+name|getFileDirectoriesAsPaths
 argument_list|(
 name|fileDirectoryPreferences
 argument_list|)
@@ -512,7 +512,7 @@ name|targetDirectory
 init|=
 name|FileHelper
 operator|.
-name|expandFilename
+name|expandFilenameAsPath
 argument_list|(
 name|defaultFileDirectory
 argument_list|,

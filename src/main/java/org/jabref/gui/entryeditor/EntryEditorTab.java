@@ -364,20 +364,6 @@ name|gui
 operator|.
 name|fieldeditors
 operator|.
-name|FileListEditor
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|fieldeditors
-operator|.
 name|TextField
 import|;
 end_import
@@ -517,12 +503,6 @@ DECL|class|EntryEditorTab
 class|class
 name|EntryEditorTab
 block|{
-comment|// UGLY HACK to have a pointer to the fileListEditor to call autoSetLinks()
-DECL|field|fileListEditor
-specifier|public
-name|FileListEditor
-name|fileListEditor
-decl_stmt|;
 DECL|field|panel
 specifier|private
 specifier|final
@@ -958,7 +938,7 @@ argument_list|)
 decl_stmt|;
 comment|// TODO: Reenable/migrate this
 comment|// Store the editor for later reference:
-comment|/*             FieldEditor fieldEditor;             int defaultHeight;             int wHeight = (int) (50.0 * InternalBibtexFields.getFieldWeight(field));             if (InternalBibtexFields.getFieldProperties(field).contains(FieldProperty.FILE_EDITOR)) {                 fieldEditor = new FileListEditor(frame, bPanel.getBibDatabaseContext(), field, null, parent);                  fileListEditor = (FileListEditor) fieldEditor;                  defaultHeight = 0;             } else if (InternalBibtexFields.getFieldProperties(field).contains(FieldProperty.SINGLE_ENTRY_LINK)) {                 fieldEditor = new EntryLinkListEditor(frame, bPanel.getBibDatabaseContext(), field, null, parent,                         true);                 defaultHeight = 0;             } else if (InternalBibtexFields.getFieldProperties(field).contains(FieldProperty.MULTIPLE_ENTRY_LINK)) {                 fieldEditor = new EntryLinkListEditor(frame, bPanel.getBibDatabaseContext(), field, null, parent,                         false);                 defaultHeight = 0;             } else {                 fieldEditor = new TextArea(field, null, getPrompt(field));                 //parent.addSearchListener((TextArea) fieldEditor);                 defaultHeight = fieldEditor.getPane().getPreferredSize().height;             }              Optional<JComponent> extra = parent.getExtra(fieldEditor);              // Add autocompleter listener, if required for this field:             /*             AutoCompleter<String> autoCompleter = bPanel.getAutoCompleters().get(field);             AutoCompleteListener autoCompleteListener = null;             if (autoCompleter != null) {                 autoCompleteListener = new AutoCompleteListener(autoCompleter);             }             setupJTextComponent(fieldEditor.getTextComponent(), autoCompleteListener);             fieldEditor.setAutoCompleteListener(autoCompleteListener);             */
+comment|/*             FieldEditor fieldEditor;             int defaultHeight;             int wHeight = (int) (50.0 * InternalBibtexFields.getFieldWeight(field));             if (InternalBibtexFields.getFieldProperties(field).contains(FieldProperty.SINGLE_ENTRY_LINK)) {                 fieldEditor = new EntryLinkListEditor(frame, bPanel.getBibDatabaseContext(), field, null, parent,                         true);                 defaultHeight = 0;             } else if (InternalBibtexFields.getFieldProperties(field).contains(FieldProperty.MULTIPLE_ENTRY_LINK)) {                 fieldEditor = new EntryLinkListEditor(frame, bPanel.getBibDatabaseContext(), field, null, parent,                         false);                 defaultHeight = 0;             } else {                 fieldEditor = new TextArea(field, null, getPrompt(field));                 //parent.addSearchListener((TextArea) fieldEditor);                 defaultHeight = fieldEditor.getPane().getPreferredSize().height;             }              Optional<JComponent> extra = parent.getExtra(fieldEditor);              // Add autocompleter listener, if required for this field:             /*             AutoCompleter<String> autoCompleter = bPanel.getAutoCompleters().get(field);             AutoCompleteListener autoCompleteListener = null;             if (autoCompleter != null) {                 autoCompleteListener = new AutoCompleteListener(autoCompleter);             }             setupJTextComponent(fieldEditor.getTextComponent(), autoCompleteListener);             fieldEditor.setAutoCompleteListener(autoCompleteListener);             */
 name|FieldEditorFX
 name|fieldEditor
 init|=
@@ -990,6 +970,11 @@ argument_list|,
 name|Globals
 operator|.
 name|prefs
+argument_list|,
+name|bPanel
+operator|.
+name|getBibDatabaseContext
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|editors
@@ -1337,11 +1322,18 @@ name|values
 argument_list|()
 control|)
 block|{
+name|DefaultTaskExecutor
+operator|.
+name|runInJavaFXThread
+argument_list|(
+parameter_list|()
+lambda|->
 name|editor
 operator|.
 name|bindToEntry
 argument_list|(
 name|entry
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -1472,7 +1464,7 @@ name|markBaseChanged
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Only sets the activeField variable but does not focus it.      *<p>      * If you want to focus it call {@link #focus()} afterwards.      *      * @param fieldEditor      */
+comment|/**      * Only sets the activeField variable but does not focus it.      *<p>      * If you want to focus it call {@link #focus()} afterwards.      */
 comment|// TODO: Reenable or delete this
 comment|//public void setActive(FieldEditor fieldEditor) {
 comment|//    activeField = fieldEditor;

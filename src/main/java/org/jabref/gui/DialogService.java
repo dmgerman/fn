@@ -140,6 +140,20 @@ specifier|public
 interface|interface
 name|DialogService
 block|{
+DECL|method|showInputDialogAndWait (String title, String content)
+name|Optional
+argument_list|<
+name|String
+argument_list|>
+name|showInputDialogAndWait
+parameter_list|(
+name|String
+name|title
+parameter_list|,
+name|String
+name|content
+parameter_list|)
+function_decl|;
 comment|/**      * This will create and display a new information dialog.      * It will include a blue information icon on the left and      * a single OK Button. To create an information dialog with custom      * buttons see also {@link #showCustomButtonDialogAndWait(Alert.AlertType, String, String, ButtonType...)}      */
 DECL|method|showInformationDialogAndWait (String title, String content)
 name|void
