@@ -50,18 +50,6 @@ name|javafx
 operator|.
 name|scene
 operator|.
-name|control
-operator|.
-name|DatePicker
-import|;
-end_import
-
-begin_import
-import|import
-name|javafx
-operator|.
-name|scene
-operator|.
 name|layout
 operator|.
 name|HBox
@@ -79,6 +67,22 @@ operator|.
 name|util
 operator|.
 name|ControlHelper
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|util
+operator|.
+name|component
+operator|.
+name|TemporalAccessorPicker
 import|;
 end_import
 
@@ -123,7 +127,7 @@ DECL|field|datePicker
 annotation|@
 name|FXML
 specifier|private
-name|DatePicker
+name|TemporalAccessorPicker
 name|datePicker
 decl_stmt|;
 DECL|method|DateEditor (String fieldName, DateTimeFormatter dateFormatter)
@@ -162,7 +166,7 @@ argument_list|)
 expr_stmt|;
 name|datePicker
 operator|.
-name|setConverter
+name|setStringConverter
 argument_list|(
 name|viewModel
 operator|.

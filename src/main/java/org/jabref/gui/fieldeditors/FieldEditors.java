@@ -249,7 +249,10 @@ name|fieldName
 argument_list|,
 name|DateTimeFormatter
 operator|.
-name|ISO_DATE
+name|ofPattern
+argument_list|(
+literal|"[uuuu][-MM][-dd]"
+argument_list|)
 argument_list|)
 return|;
 block|}

@@ -18,7 +18,9 @@ name|java
 operator|.
 name|time
 operator|.
-name|LocalDate
+name|format
+operator|.
+name|DateTimeFormatter
 import|;
 end_import
 
@@ -30,7 +32,19 @@ name|time
 operator|.
 name|format
 operator|.
-name|DateTimeFormatter
+name|DateTimeParseException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|time
+operator|.
+name|temporal
+operator|.
+name|TemporalAccessor
 import|;
 end_import
 
@@ -105,7 +119,7 @@ DECL|method|getDateToStringConverter ()
 specifier|public
 name|StringConverter
 argument_list|<
-name|LocalDate
+name|TemporalAccessor
 argument_list|>
 name|getDateToStringConverter
 parameter_list|()
@@ -114,7 +128,7 @@ return|return
 operator|new
 name|StringConverter
 argument_list|<
-name|LocalDate
+name|TemporalAccessor
 argument_list|>
 argument_list|()
 block|{
@@ -124,7 +138,7 @@ specifier|public
 name|String
 name|toString
 parameter_list|(
-name|LocalDate
+name|TemporalAccessor
 name|date
 parameter_list|)
 block|{
@@ -154,7 +168,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|LocalDate
+name|TemporalAccessor
 name|fromString
 parameter_list|(
 name|String
@@ -171,6 +185,23 @@ name|string
 argument_list|)
 condition|)
 block|{
+try|try
+block|{
+return|return
+name|dateFormatter
+operator|.
+name|parse
+argument_list|(
+name|string
+argument_list|)
+return|;
+block|}
+catch|catch
+parameter_list|(
+name|DateTimeParseException
+name|exception
+parameter_list|)
+block|{
 comment|// We accept all kinds of dates (not just in the format specified)
 return|return
 name|Date
@@ -184,7 +215,7 @@ name|map
 argument_list|(
 name|Date
 operator|::
-name|toLocalDate
+name|toTemporalAccessor
 argument_list|)
 operator|.
 name|orElse
@@ -192,6 +223,7 @@ argument_list|(
 literal|null
 argument_list|)
 return|;
+block|}
 block|}
 else|else
 block|{

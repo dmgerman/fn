@@ -624,19 +624,14 @@ name|DAY_OF_MONTH
 argument_list|)
 return|;
 block|}
-DECL|method|toLocalDate ()
+DECL|method|toTemporalAccessor ()
 specifier|public
-name|LocalDate
-name|toLocalDate
+name|TemporalAccessor
+name|toTemporalAccessor
 parameter_list|()
 block|{
 return|return
-name|LocalDate
-operator|.
-name|from
-argument_list|(
 name|date
-argument_list|)
 return|;
 block|}
 annotation|@
