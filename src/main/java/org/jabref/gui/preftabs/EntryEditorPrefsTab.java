@@ -459,7 +459,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Show recommendations"
+literal|"Show 'Related_Articles' tab"
 argument_list|)
 argument_list|)
 expr_stmt|;
