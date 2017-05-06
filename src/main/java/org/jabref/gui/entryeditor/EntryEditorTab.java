@@ -975,6 +975,11 @@ name|bPanel
 operator|.
 name|getBibDatabaseContext
 argument_list|()
+argument_list|,
+name|entry
+operator|.
+name|getType
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|editors

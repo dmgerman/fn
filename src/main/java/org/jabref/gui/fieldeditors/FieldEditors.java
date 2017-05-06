@@ -158,7 +158,7 @@ specifier|public
 class|class
 name|FieldEditors
 block|{
-DECL|method|getForField (String fieldName, TaskExecutor taskExecutor, DialogService dialogService, JournalAbbreviationLoader journalAbbreviationLoader, JournalAbbreviationPreferences journalAbbreviationPreferences, JabRefPreferences preferences, BibDatabaseContext databaseContext)
+DECL|method|getForField (String fieldName, TaskExecutor taskExecutor, DialogService dialogService, JournalAbbreviationLoader journalAbbreviationLoader, JournalAbbreviationPreferences journalAbbreviationPreferences, JabRefPreferences preferences, BibDatabaseContext databaseContext, String entryType)
 specifier|public
 specifier|static
 name|FieldEditorFX
@@ -184,6 +184,9 @@ name|preferences
 parameter_list|,
 name|BibDatabaseContext
 name|databaseContext
+parameter_list|,
+name|String
+name|entryType
 parameter_list|)
 block|{
 specifier|final
@@ -200,7 +203,6 @@ argument_list|(
 name|fieldName
 argument_list|)
 decl_stmt|;
-comment|// TODO: Implement all of them
 if|if
 condition|(
 name|Globals
@@ -437,7 +439,18 @@ name|YES_NO
 argument_list|)
 condition|)
 block|{
-comment|//return FieldExtraComponents.getYesNoExtraComponent(editor, this);
+return|return
+operator|new
+name|OptionEditor
+argument_list|<>
+argument_list|(
+name|fieldName
+argument_list|,
+operator|new
+name|YesNoEditorViewModel
+argument_list|()
+argument_list|)
+return|;
 block|}
 elseif|else
 if|if
@@ -452,7 +465,23 @@ name|MONTH
 argument_list|)
 condition|)
 block|{
-comment|//return FieldExtraComponents.getMonthExtraComponent(editor, this, frame.getCurrentBasePanel().getBibDatabaseContext().getMode());
+return|return
+operator|new
+name|OptionEditor
+argument_list|<>
+argument_list|(
+name|fieldName
+argument_list|,
+operator|new
+name|MonthEditorViewModel
+argument_list|(
+name|databaseContext
+operator|.
+name|getMode
+argument_list|()
+argument_list|)
+argument_list|)
+return|;
 block|}
 elseif|else
 if|if
@@ -467,7 +496,18 @@ name|GENDER
 argument_list|)
 condition|)
 block|{
-comment|//return FieldExtraComponents.getGenderExtraComponent(editor, this);
+return|return
+operator|new
+name|OptionEditor
+argument_list|<>
+argument_list|(
+name|fieldName
+argument_list|,
+operator|new
+name|GenderEditorViewModel
+argument_list|()
+argument_list|)
+return|;
 block|}
 elseif|else
 if|if
@@ -482,7 +522,18 @@ name|EDITOR_TYPE
 argument_list|)
 condition|)
 block|{
-comment|//return FieldExtraComponents.getEditorTypeExtraComponent(editor, this);
+return|return
+operator|new
+name|OptionEditor
+argument_list|<>
+argument_list|(
+name|fieldName
+argument_list|,
+operator|new
+name|EditorTypeEditorViewModel
+argument_list|()
+argument_list|)
+return|;
 block|}
 elseif|else
 if|if
@@ -497,7 +548,18 @@ name|PAGINATION
 argument_list|)
 condition|)
 block|{
-comment|//return FieldExtraComponents.getPaginationExtraComponent(editor, this);
+return|return
+operator|new
+name|OptionEditor
+argument_list|<>
+argument_list|(
+name|fieldName
+argument_list|,
+operator|new
+name|PaginationEditorViewModel
+argument_list|()
+argument_list|)
+return|;
 block|}
 elseif|else
 if|if
@@ -512,7 +574,44 @@ name|TYPE
 argument_list|)
 condition|)
 block|{
-comment|//return FieldExtraComponents.getTypeExtraComponent(editor, this, "patent".equalsIgnoreCase(entry.getType()));
+if|if
+condition|(
+literal|"patent"
+operator|.
+name|equalsIgnoreCase
+argument_list|(
+name|entryType
+argument_list|)
+condition|)
+block|{
+return|return
+operator|new
+name|OptionEditor
+argument_list|<>
+argument_list|(
+name|fieldName
+argument_list|,
+operator|new
+name|PatentTypeEditorViewModel
+argument_list|()
+argument_list|)
+return|;
+block|}
+else|else
+block|{
+return|return
+operator|new
+name|OptionEditor
+argument_list|<>
+argument_list|(
+name|fieldName
+argument_list|,
+operator|new
+name|TypeEditorViewModel
+argument_list|()
+argument_list|)
+return|;
+block|}
 block|}
 comment|// default
 return|return
