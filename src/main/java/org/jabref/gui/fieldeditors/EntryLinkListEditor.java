@@ -28,16 +28,6 @@ name|java
 operator|.
 name|awt
 operator|.
-name|Color
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|awt
-operator|.
 name|Component
 import|;
 end_import
@@ -185,16 +175,6 @@ operator|.
 name|swing
 operator|.
 name|JComponent
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|JLabel
 import|;
 end_import
 
@@ -571,12 +551,6 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|field|label
-specifier|private
-specifier|final
-name|FieldNameLabel
-name|label
-decl_stmt|;
 DECL|field|frame
 specifier|private
 specifier|final
@@ -719,14 +693,6 @@ operator|.
 name|singleEntry
 operator|=
 name|singleEntry
-expr_stmt|;
-name|label
-operator|=
-operator|new
-name|FieldNameLabel
-argument_list|(
-name|fieldName
-argument_list|)
 expr_stmt|;
 name|tableModel
 operator|=
@@ -1407,6 +1373,84 @@ name|updateButtonStates
 argument_list|()
 expr_stmt|;
 block|}
+DECL|method|formatEntry (BibEntry entry, BibDatabase database)
+specifier|private
+specifier|static
+name|String
+name|formatEntry
+parameter_list|(
+name|BibEntry
+name|entry
+parameter_list|,
+name|BibDatabase
+name|database
+parameter_list|)
+block|{
+name|StringReader
+name|sr
+init|=
+operator|new
+name|StringReader
+argument_list|(
+name|layoutFormat
+argument_list|)
+decl_stmt|;
+try|try
+block|{
+name|Layout
+name|layout
+init|=
+operator|new
+name|LayoutHelper
+argument_list|(
+name|sr
+argument_list|,
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getLayoutFormatterPreferences
+argument_list|(
+name|Globals
+operator|.
+name|journalAbbreviationLoader
+argument_list|)
+argument_list|)
+operator|.
+name|getLayoutFromText
+argument_list|()
+decl_stmt|;
+return|return
+name|layout
+operator|.
+name|doLayout
+argument_list|(
+name|entry
+argument_list|,
+name|database
+argument_list|)
+return|;
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|e
+parameter_list|)
+block|{
+name|LOGGER
+operator|.
+name|warn
+argument_list|(
+literal|"Problem generating entry layout"
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+block|}
+return|return
+literal|""
+return|;
+block|}
 DECL|method|jumpToEntry ()
 specifier|private
 name|void
@@ -1659,37 +1703,6 @@ block|{
 return|return
 name|this
 return|;
-block|}
-annotation|@
-name|Override
-DECL|method|getLabel ()
-specifier|public
-name|JLabel
-name|getLabel
-parameter_list|()
-block|{
-return|return
-name|label
-return|;
-block|}
-annotation|@
-name|Override
-DECL|method|setLabelColor (Color color)
-specifier|public
-name|void
-name|setLabelColor
-parameter_list|(
-name|Color
-name|color
-parameter_list|)
-block|{
-name|label
-operator|.
-name|setForeground
-argument_list|(
-name|color
-argument_list|)
-expr_stmt|;
 block|}
 annotation|@
 name|Override
@@ -2090,6 +2103,79 @@ name|adjustColumnWidth
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
+DECL|method|undo ()
+specifier|public
+name|void
+name|undo
+parameter_list|()
+block|{
+comment|// Do nothing
+block|}
+annotation|@
+name|Override
+DECL|method|redo ()
+specifier|public
+name|void
+name|redo
+parameter_list|()
+block|{
+comment|// Do nothing
+block|}
+annotation|@
+name|Override
+DECL|method|setAutoCompleteListener (AutoCompleteListener listener)
+specifier|public
+name|void
+name|setAutoCompleteListener
+parameter_list|(
+name|AutoCompleteListener
+name|listener
+parameter_list|)
+block|{
+comment|// Do nothing
+block|}
+annotation|@
+name|Override
+DECL|method|clearAutoCompleteSuggestion ()
+specifier|public
+name|void
+name|clearAutoCompleteSuggestion
+parameter_list|()
+block|{
+comment|// Do nothing
+block|}
+annotation|@
+name|Override
+DECL|method|setActiveBackgroundColor ()
+specifier|public
+name|void
+name|setActiveBackgroundColor
+parameter_list|()
+block|{
+comment|// Do nothing
+block|}
+annotation|@
+name|Override
+DECL|method|setValidBackgroundColor ()
+specifier|public
+name|void
+name|setValidBackgroundColor
+parameter_list|()
+block|{
+comment|// Do nothing
+block|}
+annotation|@
+name|Override
+DECL|method|setInvalidBackgroundColor ()
+specifier|public
+name|void
+name|setInvalidBackgroundColor
+parameter_list|()
+block|{
+comment|// Do nothing
+block|}
 DECL|class|TableClickListener
 class|class
 name|TableClickListener
@@ -2316,79 +2402,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-block|}
-annotation|@
-name|Override
-DECL|method|undo ()
-specifier|public
-name|void
-name|undo
-parameter_list|()
-block|{
-comment|// Do nothing
-block|}
-annotation|@
-name|Override
-DECL|method|redo ()
-specifier|public
-name|void
-name|redo
-parameter_list|()
-block|{
-comment|// Do nothing
-block|}
-annotation|@
-name|Override
-DECL|method|setAutoCompleteListener (AutoCompleteListener listener)
-specifier|public
-name|void
-name|setAutoCompleteListener
-parameter_list|(
-name|AutoCompleteListener
-name|listener
-parameter_list|)
-block|{
-comment|// Do nothing
-block|}
-annotation|@
-name|Override
-DECL|method|clearAutoCompleteSuggestion ()
-specifier|public
-name|void
-name|clearAutoCompleteSuggestion
-parameter_list|()
-block|{
-comment|// Do nothing
-block|}
-annotation|@
-name|Override
-DECL|method|setActiveBackgroundColor ()
-specifier|public
-name|void
-name|setActiveBackgroundColor
-parameter_list|()
-block|{
-comment|// Do nothing
-block|}
-annotation|@
-name|Override
-DECL|method|setValidBackgroundColor ()
-specifier|public
-name|void
-name|setValidBackgroundColor
-parameter_list|()
-block|{
-comment|// Do nothing
-block|}
-annotation|@
-name|Override
-DECL|method|setInvalidBackgroundColor ()
-specifier|public
-name|void
-name|setInvalidBackgroundColor
-parameter_list|()
-block|{
-comment|// Do nothing
 block|}
 DECL|class|EntryLinkListTableModel
 specifier|private
@@ -2942,84 +2955,6 @@ block|}
 block|}
 block|}
 block|}
-block|}
-DECL|method|formatEntry (BibEntry entry, BibDatabase database)
-specifier|private
-specifier|static
-name|String
-name|formatEntry
-parameter_list|(
-name|BibEntry
-name|entry
-parameter_list|,
-name|BibDatabase
-name|database
-parameter_list|)
-block|{
-name|StringReader
-name|sr
-init|=
-operator|new
-name|StringReader
-argument_list|(
-name|layoutFormat
-argument_list|)
-decl_stmt|;
-try|try
-block|{
-name|Layout
-name|layout
-init|=
-operator|new
-name|LayoutHelper
-argument_list|(
-name|sr
-argument_list|,
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getLayoutFormatterPreferences
-argument_list|(
-name|Globals
-operator|.
-name|journalAbbreviationLoader
-argument_list|)
-argument_list|)
-operator|.
-name|getLayoutFromText
-argument_list|()
-decl_stmt|;
-return|return
-name|layout
-operator|.
-name|doLayout
-argument_list|(
-name|entry
-argument_list|,
-name|database
-argument_list|)
-return|;
-block|}
-catch|catch
-parameter_list|(
-name|IOException
-name|e
-parameter_list|)
-block|{
-name|LOGGER
-operator|.
-name|warn
-argument_list|(
-literal|"Problem generating entry layout"
-argument_list|,
-name|e
-argument_list|)
-expr_stmt|;
-block|}
-return|return
-literal|""
-return|;
 block|}
 block|}
 end_class

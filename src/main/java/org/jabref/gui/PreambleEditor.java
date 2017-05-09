@@ -578,28 +578,8 @@ argument_list|)
 expr_stmt|;
 comment|// TODO: Reenable this
 comment|//setupJTextComponent((TextArea) editor);
-name|gbl
-operator|.
-name|setConstraints
-argument_list|(
-name|editor
-operator|.
-name|getLabel
-argument_list|()
-argument_list|,
-name|con
-argument_list|)
-expr_stmt|;
-name|pan
-operator|.
-name|add
-argument_list|(
-name|editor
-operator|.
-name|getLabel
-argument_list|()
-argument_list|)
-expr_stmt|;
+comment|//gbl.setConstraints(editor.getLabel(), con);
+comment|//pan.add(editor.getLabel());
 name|con
 operator|.
 name|weightx
@@ -1042,42 +1022,11 @@ argument_list|(
 name|toSet
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-operator|(
-name|toSet
-operator|==
-literal|null
-operator|)
-operator|||
-name|toSet
-operator|.
-name|isEmpty
-argument_list|()
-condition|)
-block|{
-name|editor
-operator|.
-name|setLabelColor
-argument_list|(
-name|GUIGlobals
-operator|.
-name|NULL_FIELD_COLOR
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-name|editor
-operator|.
-name|setLabelColor
-argument_list|(
-name|GUIGlobals
-operator|.
-name|ENTRY_EDITOR_LABEL_COLOR
-argument_list|)
-expr_stmt|;
-block|}
+comment|//if ((toSet == null) || toSet.isEmpty()) {
+comment|//    editor.setLabelColor(GUIGlobals.NULL_FIELD_COLOR);
+comment|//} else {
+comment|//    editor.setLabelColor(GUIGlobals.ENTRY_EDITOR_LABEL_COLOR);
+comment|//}
 name|editor
 operator|.
 name|setValidBackgroundColor

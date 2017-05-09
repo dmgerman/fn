@@ -34,16 +34,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|JLabel
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|jabref
@@ -114,11 +104,6 @@ return|return
 literal|false
 return|;
 block|}
-DECL|method|getLabel ()
-name|JLabel
-name|getLabel
-parameter_list|()
-function_decl|;
 DECL|method|setActiveBackgroundColor ()
 name|void
 name|setActiveBackgroundColor
@@ -133,14 +118,6 @@ DECL|method|setInvalidBackgroundColor ()
 name|void
 name|setInvalidBackgroundColor
 parameter_list|()
-function_decl|;
-DECL|method|setLabelColor (Color color)
-name|void
-name|setLabelColor
-parameter_list|(
-name|Color
-name|color
-parameter_list|)
 function_decl|;
 DECL|method|setBackground (Color color)
 name|void
