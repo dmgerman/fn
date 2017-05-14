@@ -120,6 +120,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Objects
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Optional
 import|;
 end_import
@@ -621,7 +631,7 @@ specifier|private
 name|boolean
 name|updating
 decl_stmt|;
-DECL|method|EntryEditorTab (JabRefFrame frame, BasePanel basePanel, List<String> fields, EntryEditor parent, boolean addKeyField, boolean compressed, String tabTitle)
+DECL|method|EntryEditorTab (JabRefFrame frame, BasePanel basePanel, List<String> fields, EntryEditor parent, boolean addKeyField, boolean compressed, String tabTitle, BibEntry entry)
 specifier|public
 name|EntryEditorTab
 parameter_list|(
@@ -648,8 +658,22 @@ name|compressed
 parameter_list|,
 name|String
 name|tabTitle
+parameter_list|,
+name|BibEntry
+name|entry
 parameter_list|)
 block|{
+name|this
+operator|.
+name|entry
+operator|=
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|entry
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|fields

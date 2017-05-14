@@ -1724,7 +1724,12 @@ name|this
 operator|.
 name|entry
 operator|=
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
 name|entry
+argument_list|)
 expr_stmt|;
 name|entry
 operator|.
@@ -2168,6 +2173,8 @@ name|lang
 argument_list|(
 literal|"Optional fields 2"
 argument_list|)
+argument_list|,
+name|entry
 argument_list|)
 decl_stmt|;
 name|tabbed
@@ -2250,6 +2257,8 @@ name|lang
 argument_list|(
 literal|"Deprecated fields"
 argument_list|)
+argument_list|,
+name|entry
 argument_list|)
 expr_stmt|;
 name|tabbed
@@ -2519,6 +2528,8 @@ name|getTabName
 argument_list|(
 name|i
 argument_list|)
+argument_list|,
+name|entry
 argument_list|)
 decl_stmt|;
 name|tabbed
@@ -2776,6 +2787,8 @@ name|lang
 argument_list|(
 literal|"Other fields"
 argument_list|)
+argument_list|,
+name|entry
 argument_list|)
 decl_stmt|;
 name|tabbed
@@ -2866,6 +2879,8 @@ name|lang
 argument_list|(
 literal|"Required fields"
 argument_list|)
+argument_list|,
+name|entry
 argument_list|)
 decl_stmt|;
 name|tabbed
@@ -3055,6 +3070,8 @@ name|lang
 argument_list|(
 literal|"Optional fields"
 argument_list|)
+argument_list|,
+name|entry
 argument_list|)
 decl_stmt|;
 name|tabbed
