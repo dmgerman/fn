@@ -1425,6 +1425,20 @@ comment|// TODO: Add undo
 comment|// NamedCompound undoAll = new NamedCompound(Localization.lang("change assignment of entries"));
 comment|// if (!undoAdd.isEmpty()) { undo.addEdit(UndoableChangeEntriesOfGroup.getUndoableEdit(node, undoAdd)); }
 comment|// panel.getUndoManager().addEdit(undoAll);
+comment|// TODO Display massages
+comment|//if (undo == null) {
+comment|//    frame.output(Localization.lang("The group \"%0\" already contains the selection.",
+comment|//            node.getGroup().getName()));
+comment|//    return;
+comment|//}
+comment|// panel.getUndoManager().addEdit(undo);
+comment|// final String groupName = node.getGroup().getName();
+comment|// if (assignedEntries == 1) {
+comment|//    frame.output(Localization.lang("Assigned 1 entry to group \"%0\".", groupName));
+comment|// } else {
+comment|//    frame.output(Localization.lang("Assigned %0 entries to group \"%1\".", String.valueOf(assignedEntries),
+comment|//            groupName));
+comment|//}
 block|}
 DECL|method|removeSelectedEntries (GroupNodeViewModel group)
 specifier|public

@@ -2127,6 +2127,21 @@ argument_list|(
 name|sortAlphabetically
 argument_list|)
 expr_stmt|;
+comment|// TODO: Disable some actions under certain conditions
+comment|//if (group.canBeEdited()) {
+comment|//editGroupPopupAction.setEnabled(false);
+comment|//addGroupPopupAction.setEnabled(false);
+comment|//removeGroupAndSubgroupsPopupAction.setEnabled(false);
+comment|//removeGroupKeepSubgroupsPopupAction.setEnabled(false);
+comment|//} else {
+comment|//editGroupPopupAction.setEnabled(true);
+comment|//addGroupPopupAction.setEnabled(true);
+comment|//addGroupPopupAction.setNode(node);
+comment|//removeGroupAndSubgroupsPopupAction.setEnabled(true);
+comment|//removeGroupKeepSubgroupsPopupAction.setEnabled(true);
+comment|//}
+comment|//sortSubmenu.setEnabled(!node.isLeaf());
+comment|//removeSubgroupsPopupAction.setEnabled(!node.isLeaf());
 return|return
 name|menu
 return|;
