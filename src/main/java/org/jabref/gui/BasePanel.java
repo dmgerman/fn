@@ -13073,7 +13073,7 @@ argument_list|(
 name|bibDatabaseContext
 argument_list|)
 operator|.
-name|ifPresent
+name|forEach
 argument_list|(
 name|selectedGroup
 lambda|->
