@@ -117,7 +117,7 @@ specifier|final
 name|String
 name|DATE_TIME_STRING_WITH_TIME_ZONE
 init|=
-literal|"^D:\\d{14}\\+.+"
+literal|"^D:\\d{14}.+"
 decl_stmt|;
 DECL|field|ANNOTATION_DATE_FORMAT
 specifier|private
