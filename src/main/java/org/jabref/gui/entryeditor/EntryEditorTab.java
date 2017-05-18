@@ -1445,16 +1445,6 @@ return|return
 literal|""
 return|;
 block|}
-DECL|method|getEntry ()
-specifier|private
-name|BibEntry
-name|getEntry
-parameter_list|()
-block|{
-return|return
-name|entry
-return|;
-block|}
 DECL|method|setEntry (BibEntry entry)
 specifier|public
 name|void
@@ -1481,18 +1471,11 @@ name|values
 argument_list|()
 control|)
 block|{
-name|DefaultTaskExecutor
-operator|.
-name|runInJavaFXThread
-argument_list|(
-parameter_list|()
-lambda|->
 name|editor
 operator|.
 name|bindToEntry
 argument_list|(
 name|entry
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -1512,13 +1495,6 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * Only sets the activeField variable but does not focus it.      *<p>      * If you want to focus it call {@link #focus()} afterwards.      */
-comment|// TODO: Reenable or delete this
-comment|//public void setActive(FieldEditor fieldEditor) {
-comment|//    activeField = fieldEditor;
-comment|//}
-comment|//public FieldEditor getActive() {
-comment|//    return activeField;
-comment|//}
 DECL|method|setActive (String fieldName)
 specifier|public
 name|void
@@ -1586,20 +1562,6 @@ name|requestFocus
 argument_list|()
 expr_stmt|;
 block|}
-block|}
-comment|/**      * Reset all fields from the data in the BibEntry.      */
-DECL|method|updateAll ()
-specifier|public
-name|void
-name|updateAll
-parameter_list|()
-block|{
-name|setEntry
-argument_list|(
-name|getEntry
-argument_list|()
-argument_list|)
-expr_stmt|;
 block|}
 DECL|method|updateField (String field, String content)
 specifier|public
