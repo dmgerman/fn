@@ -580,20 +580,17 @@ operator|=
 name|panel
 expr_stmt|;
 block|}
-DECL|method|mergeFromBibtex (JabRefFrame frame, BasePanel panel, ParserResult pr, boolean importEntries, boolean importStrings, boolean importGroups, boolean importSelectorWords)
+DECL|method|mergeFromBibtex (BasePanel panel, ParserResult parserResult, boolean importEntries, boolean importStrings, boolean importGroups, boolean importSelectorWords)
 specifier|private
 specifier|static
 name|void
 name|mergeFromBibtex
 parameter_list|(
-name|JabRefFrame
-name|frame
-parameter_list|,
 name|BasePanel
 name|panel
 parameter_list|,
 name|ParserResult
-name|pr
+name|parserResult
 parameter_list|,
 name|boolean
 name|importEntries
@@ -613,7 +610,7 @@ block|{
 name|BibDatabase
 name|fromDatabase
 init|=
-name|pr
+name|parserResult
 operator|.
 name|getDatabase
 argument_list|()
@@ -665,7 +662,7 @@ decl_stmt|;
 name|MetaData
 name|meta
 init|=
-name|pr
+name|parserResult
 operator|.
 name|getMetaData
 argument_list|()
@@ -716,7 +713,7 @@ argument_list|()
 control|)
 block|{
 name|BibEntry
-name|be
+name|entry
 init|=
 operator|(
 name|BibEntry
@@ -730,7 +727,7 @@ name|UpdateField
 operator|.
 name|setAutomaticFields
 argument_list|(
-name|be
+name|entry
 argument_list|,
 name|overwriteOwner
 argument_list|,
@@ -748,14 +745,14 @@ name|database
 operator|.
 name|insertEntry
 argument_list|(
-name|be
+name|entry
 argument_list|)
 expr_stmt|;
 name|appendedEntries
 operator|.
 name|add
 argument_list|(
-name|be
+name|entry
 argument_list|)
 expr_stmt|;
 name|originalEntries
@@ -774,7 +771,7 @@ name|UndoableInsertEntry
 argument_list|(
 name|database
 argument_list|,
-name|be
+name|entry
 argument_list|,
 name|panel
 argument_list|)
@@ -1054,7 +1051,7 @@ argument_list|()
 expr_stmt|;
 specifier|final
 name|MergeDialog
-name|md
+name|dialog
 init|=
 operator|new
 name|MergeDialog
@@ -1071,14 +1068,14 @@ argument_list|,
 literal|true
 argument_list|)
 decl_stmt|;
-name|md
+name|dialog
 operator|.
 name|setLocationRelativeTo
 argument_list|(
 name|panel
 argument_list|)
 expr_stmt|;
-name|md
+name|dialog
 operator|.
 name|setVisible
 argument_list|(
@@ -1087,7 +1084,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|md
+name|dialog
 operator|.
 name|isOkPressed
 argument_list|()
@@ -1127,7 +1124,7 @@ name|build
 argument_list|()
 decl_stmt|;
 name|DialogService
-name|ds
+name|dialogService
 init|=
 operator|new
 name|FXDialogService
@@ -1145,7 +1142,7 @@ name|runInJavaFXThread
 argument_list|(
 parameter_list|()
 lambda|->
-name|ds
+name|dialogService
 operator|.
 name|showFileOpenDialogAndGetMultipleFiles
 argument_list|(
@@ -1182,22 +1179,22 @@ parameter_list|()
 lambda|->
 name|openIt
 argument_list|(
-name|md
+name|dialog
 operator|.
 name|importEntries
 argument_list|()
 argument_list|,
-name|md
+name|dialog
 operator|.
 name|importStrings
 argument_list|()
 argument_list|,
-name|md
+name|dialog
 operator|.
 name|importGroups
 argument_list|()
 argument_list|,
-name|md
+name|dialog
 operator|.
 name|importSelectorWords
 argument_list|()
@@ -1265,7 +1262,7 @@ argument_list|)
 expr_stmt|;
 comment|// Should this be done _after_ we know it was successfully opened?
 name|ParserResult
-name|pr
+name|parserResult
 init|=
 name|OpenDatabase
 operator|.
@@ -1288,11 +1285,9 @@ name|AppendDatabaseAction
 operator|.
 name|mergeFromBibtex
 argument_list|(
-name|frame
-argument_list|,
 name|panel
 argument_list|,
-name|pr
+name|parserResult
 argument_list|,
 name|importEntries
 argument_list|,
