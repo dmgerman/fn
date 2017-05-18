@@ -13312,16 +13312,6 @@ return|return
 name|sidePaneManager
 return|;
 block|}
-DECL|method|getGroupSelector ()
-specifier|public
-name|GroupSelector
-name|getGroupSelector
-parameter_list|()
-block|{
-return|return
-name|groupSelector
-return|;
-block|}
 DECL|method|setPreviewToggle (boolean enabled)
 specifier|public
 name|void
