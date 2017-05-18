@@ -4800,55 +4800,6 @@ name|isEnabled
 argument_list|()
 return|;
 block|}
-comment|/**      * Sets the enabled status of all text fields of the entry editor.      */
-annotation|@
-name|Override
-DECL|method|setEnabled (boolean enabled)
-specifier|public
-name|void
-name|setEnabled
-parameter_list|(
-name|boolean
-name|enabled
-parameter_list|)
-block|{
-for|for
-control|(
-name|Object
-name|tab
-range|:
-name|tabs
-control|)
-block|{
-if|if
-condition|(
-name|tab
-operator|instanceof
-name|EntryEditorTab
-condition|)
-block|{
-operator|(
-operator|(
-name|EntryEditorTab
-operator|)
-name|tab
-operator|)
-operator|.
-name|setEnabled
-argument_list|(
-name|enabled
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-name|source
-operator|.
-name|setEnabled
-argument_list|(
-name|enabled
-argument_list|)
-expr_stmt|;
-block|}
 comment|/**      * Makes sure the current edit is stored.      */
 DECL|method|storeCurrentEdit ()
 specifier|public

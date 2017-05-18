@@ -9853,12 +9853,6 @@ argument_list|(
 name|be
 argument_list|)
 expr_stmt|;
-name|setEntryEditorEnabled
-argument_list|(
-literal|true
-argument_list|)
-expr_stmt|;
-comment|// Make sure it is enabled.
 block|}
 end_function
 
