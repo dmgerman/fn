@@ -663,9 +663,9 @@ else|else
 block|{
 name|children
 operator|=
-name|EasyBind
+name|BindingsHelper
 operator|.
-name|map
+name|mapBacked
 argument_list|(
 name|groupNode
 operator|.
