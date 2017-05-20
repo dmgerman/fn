@@ -241,10 +241,10 @@ comment|/**  * The groups side pane.  * This class is just a Swing wrapper aroun
 end_comment
 
 begin_class
-DECL|class|GroupSelector
+DECL|class|GroupSidePane
 specifier|public
 class|class
-name|GroupSelector
+name|GroupSidePane
 extends|extends
 name|SidePaneComponent
 block|{
@@ -261,9 +261,9 @@ name|ToggleAction
 name|toggleAction
 decl_stmt|;
 comment|/**      * The first element for each group defines which field to use for the quicksearch. The next two define the name and      * regexp for the group.      */
-DECL|method|GroupSelector (JabRefFrame frame, SidePaneManager manager)
+DECL|method|GroupSidePane (JabRefFrame frame, SidePaneManager manager)
 specifier|public
-name|GroupSelector
+name|GroupSidePane
 parameter_list|(
 name|JabRefFrame
 name|frame
@@ -663,7 +663,7 @@ argument_list|()
 operator|.
 name|hide
 argument_list|(
-name|GroupSelector
+name|GroupSidePane
 operator|.
 name|class
 argument_list|)

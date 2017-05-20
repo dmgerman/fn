@@ -1016,7 +1016,7 @@ name|gui
 operator|.
 name|groups
 operator|.
-name|GroupSelector
+name|GroupSidePane
 import|;
 end_import
 
@@ -5515,10 +5515,10 @@ specifier|private
 name|OpenOfficePanel
 name|openOfficePanel
 decl_stmt|;
-DECL|field|groupSelector
+DECL|field|groupSidePane
 specifier|private
-name|GroupSelector
-name|groupSelector
+name|GroupSidePane
+name|groupSidePane
 decl_stmt|;
 DECL|field|previousTabCount
 specifier|private
@@ -6381,7 +6381,7 @@ operator|.
 name|updateLayout
 argument_list|()
 expr_stmt|;
-name|groupSelector
+name|groupSidePane
 operator|.
 name|getToggleAction
 argument_list|()
@@ -6392,7 +6392,7 @@ name|sidePaneManager
 operator|.
 name|isComponentVisible
 argument_list|(
-name|GroupSelector
+name|GroupSidePane
 operator|.
 name|class
 argument_list|)
@@ -6892,10 +6892,10 @@ argument_list|(
 name|this
 argument_list|)
 expr_stmt|;
-name|groupSelector
+name|groupSidePane
 operator|=
 operator|new
-name|GroupSelector
+name|GroupSidePane
 argument_list|(
 name|this
 argument_list|,
@@ -6926,7 +6926,7 @@ name|sidePaneManager
 operator|.
 name|register
 argument_list|(
-name|groupSelector
+name|groupSidePane
 argument_list|)
 expr_stmt|;
 block|}
@@ -9269,7 +9269,7 @@ argument_list|(
 operator|new
 name|JCheckBoxMenuItem
 argument_list|(
-name|groupSelector
+name|groupSidePane
 operator|.
 name|getToggleAction
 argument_list|()
@@ -9292,14 +9292,14 @@ name|sidePaneManager
 operator|.
 name|register
 argument_list|(
-name|groupSelector
+name|groupSidePane
 argument_list|)
 expr_stmt|;
 name|sidePaneManager
 operator|.
 name|show
 argument_list|(
-name|GroupSelector
+name|GroupSidePane
 operator|.
 name|class
 argument_list|)
@@ -9448,7 +9448,7 @@ argument_list|(
 operator|new
 name|JCheckBoxMenuItem
 argument_list|(
-name|groupSelector
+name|groupSidePane
 operator|.
 name|getToggleAction
 argument_list|()
@@ -10701,7 +10701,7 @@ argument_list|(
 operator|new
 name|JToggleButton
 argument_list|(
-name|groupSelector
+name|groupSidePane
 operator|.
 name|getToggleAction
 argument_list|()
@@ -10857,7 +10857,7 @@ name|editPreamble
 argument_list|,
 name|editStrings
 argument_list|,
-name|groupSelector
+name|groupSidePane
 operator|.
 name|getToggleAction
 argument_list|()

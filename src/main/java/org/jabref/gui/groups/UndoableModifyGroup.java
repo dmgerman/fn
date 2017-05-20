@@ -85,11 +85,11 @@ name|UndoableModifyGroup
 extends|extends
 name|AbstractUndoableJabRefEdit
 block|{
-DECL|field|groupSelector
+DECL|field|groupSidePane
 specifier|private
 specifier|final
-name|GroupSelector
-name|groupSelector
+name|GroupSidePane
+name|groupSidePane
 decl_stmt|;
 DECL|field|m_oldGroupBackup
 specifier|private
@@ -119,11 +119,11 @@ argument_list|>
 name|m_pathToNode
 decl_stmt|;
 comment|/**      * @param node      *            The node which still contains the old group.      * @param newGroup      *            The new group to replace the one currently stored in<b>node      *</b>.      */
-DECL|method|UndoableModifyGroup (GroupSelector gs, GroupTreeNodeViewModel groupsRoot, GroupTreeNodeViewModel node, AbstractGroup newGroup)
+DECL|method|UndoableModifyGroup (GroupSidePane gs, GroupTreeNodeViewModel groupsRoot, GroupTreeNodeViewModel node, AbstractGroup newGroup)
 specifier|public
 name|UndoableModifyGroup
 parameter_list|(
-name|GroupSelector
+name|GroupSidePane
 name|gs
 parameter_list|,
 name|GroupTreeNodeViewModel
@@ -136,7 +136,7 @@ name|AbstractGroup
 name|newGroup
 parameter_list|)
 block|{
-name|groupSelector
+name|groupSidePane
 operator|=
 name|gs
 expr_stmt|;
