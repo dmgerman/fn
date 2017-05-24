@@ -106,6 +106,37 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+argument_list|(
+name|expected
+operator|=
+name|NullPointerException
+operator|.
+name|class
+argument_list|)
+DECL|method|parseDateNull ()
+specifier|public
+name|void
+name|parseDateNull
+parameter_list|()
+block|{
+name|assertEquals
+argument_list|(
+name|Optional
+operator|.
+name|empty
+argument_list|()
+argument_list|,
+name|Date
+operator|.
+name|parse
+argument_list|(
+literal|null
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_class
 
