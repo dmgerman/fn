@@ -112,6 +112,20 @@ name|jabref
 operator|.
 name|logic
 operator|.
+name|cleanup
+operator|.
+name|MoveFieldCleanup
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
 name|formatter
 operator|.
 name|bibtexfields
@@ -1086,7 +1100,7 @@ argument_list|(
 name|entry
 argument_list|)
 expr_stmt|;
-comment|// Remove url to ADS page
+comment|// Remove ADS note
 operator|new
 name|FieldFormatterCleanup
 argument_list|(
@@ -1102,14 +1116,15 @@ argument_list|(
 name|entry
 argument_list|)
 expr_stmt|;
+comment|// Move adsurl to url field
 operator|new
-name|FieldFormatterCleanup
+name|MoveFieldCleanup
 argument_list|(
 literal|"adsurl"
 argument_list|,
-operator|new
-name|ClearFormatter
-argument_list|()
+name|FieldName
+operator|.
+name|URL
 argument_list|)
 operator|.
 name|cleanup
