@@ -308,9 +308,7 @@ block|{
 return|return
 operator|new
 name|TreeCollector
-argument_list|<
-name|T
-argument_list|>
+argument_list|<>
 argument_list|(
 name|TreeNode
 operator|::
