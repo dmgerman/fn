@@ -82,7 +82,7 @@ name|jabref
 operator|.
 name|preferences
 operator|.
-name|JabRefPreferences
+name|PreferencesService
 import|;
 end_import
 
@@ -216,7 +216,7 @@ if|if
 condition|(
 name|clazz
 operator|==
-name|JabRefPreferences
+name|PreferencesService
 operator|.
 name|class
 condition|)
