@@ -101,7 +101,7 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-literal|"http://doi.org/10.1000/ISBN1-900512-44-0"
+literal|"https://doi.org/10.1000/ISBN1-900512-44-0"
 argument_list|,
 name|lf
 operator|.
@@ -115,7 +115,7 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-literal|"http://doi.org/10.1000/ISBN1-900512-44-0"
+literal|"https://doi.org/10.1000/ISBN1-900512-44-0"
 argument_list|,
 name|lf
 operator|.
@@ -129,7 +129,7 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-literal|"http://doi.org/10.1000/ISBN1-900512-44-0"
+literal|"https://doi.org/10.1000/ISBN1-900512-44-0"
 argument_list|,
 name|lf
 operator|.
@@ -143,7 +143,7 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-literal|"http://doi.org/10.1145/354401.354407"
+literal|"https://doi.org/10.1145/354401.354407"
 argument_list|,
 name|lf
 operator|.
@@ -157,7 +157,7 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-literal|"http://doi.org/10.1145/354401.354407"
+literal|"https://doi.org/10.1145/354401.354407"
 argument_list|,
 name|lf
 operator|.
@@ -172,7 +172,7 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-literal|"http://doi.org/10.1145/354401.354407"
+literal|"https://doi.org/10.1145/354401.354407"
 argument_list|,
 name|lf
 operator|.
