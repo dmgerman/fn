@@ -444,8 +444,9 @@ block|{
 name|String
 name|query
 init|=
-literal|"geiger harrer -wirtz betsy$ softw.trends"
+literal|"geiger harrer betsy$ softw.trends"
 decl_stmt|;
+comment|//-wirtz Negative operators do no longer work,  see issue https://github.com/JabRef/jabref/issues/2890
 name|List
 argument_list|<
 name|BibEntry

@@ -160,7 +160,7 @@ name|URI
 operator|.
 name|create
 argument_list|(
-literal|"http://doi.org"
+literal|"https://doi.org"
 argument_list|)
 decl_stmt|;
 comment|// Regex
