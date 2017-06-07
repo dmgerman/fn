@@ -583,25 +583,6 @@ operator|.
 name|VIEW
 argument_list|)
 block|,
-DECL|enumConstant|ENTRY_EDITOR_STORE_FIELD
-name|ENTRY_EDITOR_STORE_FIELD
-argument_list|(
-literal|"Entry editor, store field"
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Entry editor, store field"
-argument_list|)
-argument_list|,
-literal|"alt S"
-argument_list|,
-name|KeyBindingCategory
-operator|.
-name|TOOLS
-argument_list|)
-block|,
 DECL|enumConstant|FILE_LIST_EDITOR_MOVE_ENTRY_DOWN
 name|FILE_LIST_EDITOR_MOVE_ENTRY_DOWN
 argument_list|(

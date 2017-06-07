@@ -941,12 +941,6 @@ return|return;
 block|}
 try|try
 block|{
-comment|// Make sure the current edit is stored
-name|panel
-operator|.
-name|storeCurrentEdit
-argument_list|()
-expr_stmt|;
 comment|// If set in preferences, generate missing BibTeX keys
 name|panel
 operator|.

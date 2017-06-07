@@ -6307,9 +6307,6 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-name|storeCurrentEdit
-argument_list|()
-expr_stmt|;
 comment|// Collect all non-null titles.
 name|List
 argument_list|<
@@ -6521,9 +6518,6 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-name|storeCurrentEdit
-argument_list|()
-expr_stmt|;
 name|List
 argument_list|<
 name|String
@@ -6734,9 +6728,6 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-name|storeCurrentEdit
-argument_list|()
-expr_stmt|;
 name|List
 argument_list|<
 name|String
@@ -6940,9 +6931,6 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-name|storeCurrentEdit
-argument_list|()
-expr_stmt|;
 comment|// OK: in a future version, this string should be configurable to allow arbitrary exports
 name|StringReader
 name|sr
@@ -8875,11 +8863,11 @@ case|:
 case|case
 name|WILL_SHOW_EDITOR
 case|:
+name|entryEditorClosing
+argument_list|(
 name|getCurrentEditor
 argument_list|()
-operator|.
-name|close
-argument_list|()
+argument_list|)
 expr_stmt|;
 break|break;
 default|default:
@@ -9808,7 +9796,7 @@ name|getBottomComponent
 argument_list|()
 operator|)
 operator|.
-name|getVisiblePanelName
+name|getVisibleTabName
 argument_list|()
 expr_stmt|;
 block|}
@@ -9837,7 +9825,7 @@ condition|)
 block|{
 name|entryEditor
 operator|.
-name|setVisiblePanel
+name|setVisibleTab
 argument_list|(
 name|visName
 argument_list|)
@@ -9870,10 +9858,6 @@ name|BibEntry
 name|entry
 parameter_list|)
 block|{
-comment|// We must instantiate a new editor. First make sure the old one stores its last edit:
-name|storeCurrentEdit
-argument_list|()
-expr_stmt|;
 comment|// Then start the new one:
 return|return
 operator|new
@@ -10370,6 +10354,7 @@ condition|)
 block|{
 if|if
 condition|(
+operator|!
 name|currentEditor
 operator|.
 name|getDisplayedBibEntryType
@@ -10386,14 +10371,6 @@ name|getType
 argument_list|()
 argument_list|)
 condition|)
-block|{
-name|currentEditor
-operator|.
-name|updateSource
-argument_list|()
-expr_stmt|;
-block|}
-else|else
 block|{
 comment|// The entry has changed type, so we must get a new editor.
 name|newEntryShowing
@@ -10419,44 +10396,6 @@ name|newEditor
 argument_list|)
 expr_stmt|;
 block|}
-block|}
-block|}
-end_function
-
-begin_comment
-comment|/**      * If an entry editor is showing, make sure its currently focused field stores its changes, if any.      */
-end_comment
-
-begin_function
-DECL|method|storeCurrentEdit ()
-specifier|public
-name|void
-name|storeCurrentEdit
-parameter_list|()
-block|{
-if|if
-condition|(
-name|isShowingEditor
-argument_list|()
-condition|)
-block|{
-specifier|final
-name|EntryEditor
-name|editor
-init|=
-operator|(
-name|EntryEditor
-operator|)
-name|splitPane
-operator|.
-name|getBottomComponent
-argument_list|()
-decl_stmt|;
-name|editor
-operator|.
-name|storeCurrentEdit
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 end_function
@@ -10585,29 +10524,6 @@ expr_stmt|;
 name|markBaseChanged
 argument_list|()
 expr_stmt|;
-block|}
-end_function
-
-begin_function
-DECL|method|rebuildAllEntryEditors ()
-specifier|public
-name|void
-name|rebuildAllEntryEditors
-parameter_list|()
-block|{
-if|if
-condition|(
-name|currentEditor
-operator|!=
-literal|null
-condition|)
-block|{
-name|currentEditor
-operator|.
-name|rebuildPanels
-argument_list|()
-expr_stmt|;
-block|}
 block|}
 end_function
 
@@ -13257,12 +13173,6 @@ name|storeCurrentEdit
 argument_list|()
 expr_stmt|;
 block|}
-else|else
-block|{
-name|storeCurrentEdit
-argument_list|()
-expr_stmt|;
-block|}
 block|}
 name|getUndoManager
 argument_list|()
@@ -13748,31 +13658,6 @@ operator|.
 name|getFocused
 argument_list|()
 decl_stmt|;
-if|if
-condition|(
-operator|(
-name|focused
-operator|!=
-literal|null
-operator|)
-operator|&&
-operator|(
-name|focused
-operator|instanceof
-name|FieldEditor
-operator|)
-operator|&&
-name|focused
-operator|.
-name|hasFocus
-argument_list|()
-condition|)
-block|{
-comment|// User is currently editing a field:
-name|storeCurrentEdit
-argument_list|()
-expr_stmt|;
-block|}
 name|getUndoManager
 argument_list|()
 operator|.

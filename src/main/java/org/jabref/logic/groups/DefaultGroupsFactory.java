@@ -40,6 +40,22 @@ name|AllEntriesGroup
 import|;
 end_import
 
+begin_import
+import|import
+name|de
+operator|.
+name|jensd
+operator|.
+name|fx
+operator|.
+name|glyphs
+operator|.
+name|materialdesignicons
+operator|.
+name|MaterialDesignIcon
+import|;
+end_import
+
 begin_class
 DECL|class|DefaultGroupsFactory
 specifier|public
@@ -49,12 +65,13 @@ block|{
 DECL|field|ALL_ENTRIES_GROUP_DEFAULT_ICON
 specifier|public
 specifier|static
-name|String
+name|MaterialDesignIcon
 name|ALL_ENTRIES_GROUP_DEFAULT_ICON
 init|=
-literal|"\uF1B8"
+name|MaterialDesignIcon
+operator|.
+name|DATABASE
 decl_stmt|;
-comment|/* css: database */
 DECL|method|DefaultGroupsFactory ()
 specifier|private
 name|DefaultGroupsFactory
@@ -86,6 +103,9 @@ operator|.
 name|setIconCode
 argument_list|(
 name|ALL_ENTRIES_GROUP_DEFAULT_ICON
+operator|.
+name|unicode
+argument_list|()
 argument_list|)
 expr_stmt|;
 return|return
