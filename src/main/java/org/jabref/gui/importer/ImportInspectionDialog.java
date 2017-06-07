@@ -2220,6 +2220,17 @@ name|bibDatabaseContext
 operator|!=
 literal|null
 operator|)
+operator|&&
+name|bibDatabaseContext
+operator|.
+name|getMetaData
+argument_list|()
+operator|.
+name|getGroups
+argument_list|()
+operator|.
+name|isPresent
+argument_list|()
 condition|)
 block|{
 name|GroupTreeNode
