@@ -1606,7 +1606,7 @@ name|BIBLATEX
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|assertCorrect
+name|assertWrong
 argument_list|(
 name|withMode
 argument_list|(
@@ -1623,7 +1623,7 @@ name|BIBLATEX
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|assertCorrect
+name|assertWrong
 argument_list|(
 name|withMode
 argument_list|(

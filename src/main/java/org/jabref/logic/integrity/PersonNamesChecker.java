@@ -46,6 +46,20 @@ name|Localization
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|AuthorList
+import|;
+end_import
+
 begin_class
 DECL|class|PersonNamesChecker
 specifier|public
@@ -142,6 +156,60 @@ operator|.
 name|lang
 argument_list|(
 literal|"should end with a name"
+argument_list|)
+argument_list|)
+return|;
+block|}
+comment|// Check that the value is in one of the two standard BibTeX formats:
+comment|//  Last, First and ...
+comment|//  First Last and ...
+name|AuthorList
+name|authorList
+init|=
+name|AuthorList
+operator|.
+name|parse
+argument_list|(
+name|value
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+operator|!
+name|authorList
+operator|.
+name|getAsLastFirstNamesWithAnd
+argument_list|(
+literal|false
+argument_list|)
+operator|.
+name|equals
+argument_list|(
+name|value
+argument_list|)
+operator|&&
+operator|!
+name|authorList
+operator|.
+name|getAsFirstLastNamesWithAnd
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+name|value
+argument_list|)
+condition|)
+block|{
+return|return
+name|Optional
+operator|.
+name|of
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Names are not in the standard BibTeX format."
 argument_list|)
 argument_list|)
 return|;
