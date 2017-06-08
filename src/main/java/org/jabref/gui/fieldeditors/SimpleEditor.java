@@ -139,13 +139,6 @@ operator|new
 name|EditorTextArea
 argument_list|()
 decl_stmt|;
-name|textArea
-operator|.
-name|prefHeight
-argument_list|(
-literal|0
-argument_list|)
-expr_stmt|;
 name|HBox
 operator|.
 name|setHgrow
