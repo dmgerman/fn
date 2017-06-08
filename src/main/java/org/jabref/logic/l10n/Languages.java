@@ -94,6 +94,24 @@ name|LANGUAGES
 operator|.
 name|put
 argument_list|(
+literal|"Bahasa Indonesia"
+argument_list|,
+literal|"in"
+argument_list|)
+expr_stmt|;
+name|LANGUAGES
+operator|.
+name|put
+argument_list|(
+literal|"Brazilian Portuguese"
+argument_list|,
+literal|"pt_BR"
+argument_list|)
+expr_stmt|;
+name|LANGUAGES
+operator|.
+name|put
+argument_list|(
 literal|"Dansk"
 argument_list|,
 literal|"da"
@@ -130,27 +148,9 @@ name|LANGUAGES
 operator|.
 name|put
 argument_list|(
-literal|"Persian (ÙØ§Ø±Ø³Û)"
-argument_list|,
-literal|"fa"
-argument_list|)
-expr_stmt|;
-name|LANGUAGES
-operator|.
-name|put
-argument_list|(
 literal|"FranÃ§ais"
 argument_list|,
 literal|"fr"
-argument_list|)
-expr_stmt|;
-name|LANGUAGES
-operator|.
-name|put
-argument_list|(
-literal|"Bahasa Indonesia"
-argument_list|,
-literal|"in"
 argument_list|)
 expr_stmt|;
 name|LANGUAGES
@@ -193,9 +193,9 @@ name|LANGUAGES
 operator|.
 name|put
 argument_list|(
-literal|"Brazilian Portuguese"
+literal|"Persian (ÙØ§Ø±Ø³Û)"
 argument_list|,
-literal|"pt_BR"
+literal|"fa"
 argument_list|)
 expr_stmt|;
 name|LANGUAGES
@@ -205,6 +205,15 @@ argument_list|(
 literal|"Russian"
 argument_list|,
 literal|"ru"
+argument_list|)
+expr_stmt|;
+name|LANGUAGES
+operator|.
+name|put
+argument_list|(
+literal|"Simplified Chinese"
+argument_list|,
+literal|"zh"
 argument_list|)
 expr_stmt|;
 name|LANGUAGES
@@ -238,9 +247,9 @@ name|LANGUAGES
 operator|.
 name|put
 argument_list|(
-literal|"Simplified Chinese"
+literal|"ÎµÎ»Î»Î·Î½Î¹ÎºÎ¬"
 argument_list|,
-literal|"zh"
+literal|"el"
 argument_list|)
 expr_stmt|;
 block|}
