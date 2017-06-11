@@ -550,14 +550,14 @@ argument_list|(
 name|filename
 argument_list|)
 decl_stmt|;
+comment|//Explicitly check for an empty String, as File.exists returns true on that empty path, because it maps to the default jar location
+comment|// if we then call toAbsoluteDir, it would always return the jar-location folder. This is not what we want here
 if|if
 condition|(
-name|Files
+name|filename
 operator|.
-name|exists
-argument_list|(
-name|file
-argument_list|)
+name|isEmpty
+argument_list|()
 condition|)
 block|{
 return|return
@@ -565,7 +565,7 @@ name|Optional
 operator|.
 name|of
 argument_list|(
-name|file
+name|directory
 argument_list|)
 return|;
 block|}
