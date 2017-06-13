@@ -445,6 +445,7 @@ name|activeField
 decl_stmt|;
 DECL|field|entry
 specifier|private
+specifier|final
 name|BibEntry
 name|entry
 decl_stmt|;
@@ -711,7 +712,7 @@ control|)
 block|{
 comment|// TODO: Reenable/migrate this
 comment|// Store the editor for later reference:
-comment|/*             FieldEditor fieldEditor;             int defaultHeight;             int wHeight = (int) (50.0 * InternalBibtexFields.getFieldWeight(field));             if (InternalBibtexFields.getFieldProperties(field).contains(FieldProperty.SINGLE_ENTRY_LINK)) {                 fieldEditor = new EntryLinkListEditor(frame, bPanel.getBibDatabaseContext(), field, null, parent,                         true);                 defaultHeight = 0;             } else if (InternalBibtexFields.getFieldProperties(field).contains(FieldProperty.MULTIPLE_ENTRY_LINK)) {                 fieldEditor = new EntryLinkListEditor(frame, bPanel.getBibDatabaseContext(), field, null, parent,                         false);                 defaultHeight = 0;             } else {                 fieldEditor = new TextArea(field, null, getPrompt(field));                 //parent.addSearchListener((TextArea) fieldEditor);                 defaultHeight = fieldEditor.getPane().getPreferredSize().height;             }                          Optional<JComponent> extra = parent.getExtra(fieldEditor);                          // Add autocompleter listener, if required for this field:             /*             AutoCompleter<String> autoCompleter = bPanel.getAutoCompleters().get(field);             AutoCompleteListener autoCompleteListener = null;             if (autoCompleter != null) {                 autoCompleteListener = new AutoCompleteListener(autoCompleter);             }             setupJTextComponent(fieldEditor.getTextComponent(), autoCompleteListener);             fieldEditor.setAutoCompleteListener(autoCompleteListener);             */
+comment|/*             FieldEditor fieldEditor;             int defaultHeight;             int wHeight = (int) (50.0 * InternalBibtexFields.getFieldWeight(field));             if (InternalBibtexFields.getFieldProperties(field).contains(FieldProperty.SINGLE_ENTRY_LINK)) {                 fieldEditor = new EntryLinkListEditor(frame, bPanel.getBibDatabaseContext(), field, null, parent,                         true);                 defaultHeight = 0;             } else if (InternalBibtexFields.getFieldProperties(field).contains(FieldProperty.MULTIPLE_ENTRY_LINK)) {                 fieldEditor = new EntryLinkListEditor(frame, bPanel.getBibDatabaseContext(), field, null, parent,                         false);                 defaultHeight = 0;             } else {                 fieldEditor = new TextArea(field, null, getPrompt(field));                 //parent.addSearchListener((TextArea) fieldEditor);                 defaultHeight = fieldEditor.getPane().getPreferredSize().height;             }              Optional<JComponent> extra = parent.getExtra(fieldEditor);              // Add autocompleter listener, if required for this field:             /*             AutoCompleter<String> autoCompleter = bPanel.getAutoCompleters().get(field);             AutoCompleteListener autoCompleteListener = null;             if (autoCompleter != null) {                 autoCompleteListener = new AutoCompleteListener(autoCompleter);             }             setupJTextComponent(fieldEditor.getTextComponent(), autoCompleteListener);             fieldEditor.setAutoCompleteListener(autoCompleteListener);             */
 name|FieldEditorFX
 name|fieldEditor
 init|=
@@ -1434,7 +1435,7 @@ literal|false
 return|;
 block|}
 comment|// TODO: Reenable or probably better delete this
-comment|/*         FieldEditor fieldEditor = editors.get(field);         if (fieldEditor.getText().equals(content)) {             return true;         }                  // trying to preserve current edit position (fixes SF bug #1285)         if (fieldEditor.getTextComponent() instanceof JTextComponent) {             int initialCaretPosition = ((JTextComponent) fieldEditor).getCaretPosition();             fieldEditor.setText(content);             int textLength = fieldEditor.getText().length();             if (initialCaretPosition< textLength) {                 ((JTextComponent) fieldEditor).setCaretPosition(initialCaretPosition);             } else {                 ((JTextComponent) fieldEditor).setCaretPosition(textLength);             }         } else {             fieldEditor.setText(content);         }         */
+comment|/*         FieldEditor fieldEditor = editors.get(field);         if (fieldEditor.getText().equals(content)) {             return true;         }          // trying to preserve current edit position (fixes SF bug #1285)         if (fieldEditor.getTextComponent() instanceof JTextComponent) {             int initialCaretPosition = ((JTextComponent) fieldEditor).getCaretPosition();             fieldEditor.setText(content);             int textLength = fieldEditor.getText().length();             if (initialCaretPosition< textLength) {                 ((JTextComponent) fieldEditor).setCaretPosition(initialCaretPosition);             } else {                 ((JTextComponent) fieldEditor).setCaretPosition(textLength);             }         } else {             fieldEditor.setText(content);         }         */
 return|return
 literal|true
 return|;
@@ -1473,11 +1474,19 @@ name|void
 name|requestFocus
 parameter_list|()
 block|{
+if|if
+condition|(
+name|activeField
+operator|!=
+literal|null
+condition|)
+block|{
 name|activeField
 operator|.
 name|requestFocus
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 annotation|@
 name|Override
