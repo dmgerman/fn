@@ -1353,9 +1353,7 @@ name|find
 argument_list|(
 name|actualDirectory
 argument_list|,
-name|Integer
-operator|.
-name|MAX_VALUE
+literal|1
 argument_list|,
 parameter_list|(
 name|path
