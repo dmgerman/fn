@@ -287,6 +287,8 @@ class|class
 name|Builder
 block|{
 DECL|field|extensionFilter
+specifier|private
+specifier|final
 name|List
 argument_list|<
 name|FileChooser
@@ -443,6 +445,21 @@ name|Path
 name|directory
 parameter_list|)
 block|{
+if|if
+condition|(
+name|directory
+operator|==
+literal|null
+condition|)
+block|{
+comment|//It could be that somehow the path is null, for example if it got deleted in the meantime
+name|initialDirectory
+operator|=
+literal|null
+expr_stmt|;
+block|}
+else|else
+block|{
 comment|//Dir must be a folder, not a file
 if|if
 condition|(
@@ -485,6 +502,7 @@ name|initialDirectory
 operator|=
 name|directory
 expr_stmt|;
+block|}
 return|return
 name|this
 return|;
@@ -498,6 +516,13 @@ name|String
 name|directory
 parameter_list|)
 block|{
+if|if
+condition|(
+name|directory
+operator|!=
+literal|null
+condition|)
+block|{
 name|withInitialDirectory
 argument_list|(
 name|Paths
@@ -508,6 +533,14 @@ name|directory
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+name|initialDirectory
+operator|=
+literal|null
+expr_stmt|;
+block|}
 return|return
 name|this
 return|;
