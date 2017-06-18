@@ -142,6 +142,7 @@ literal|""
 decl_stmt|;
 DECL|field|children
 specifier|private
+specifier|final
 name|ObservableList
 argument_list|<
 name|KeyBindingViewModel
@@ -155,6 +156,7 @@ argument_list|()
 decl_stmt|;
 DECL|field|keyBindingRepository
 specifier|private
+specifier|final
 name|KeyBindingRepository
 name|keyBindingRepository
 decl_stmt|;
@@ -521,7 +523,7 @@ condition|)
 block|{
 name|modifiers
 operator|=
-literal|"ctrl "
+literal|"ctrl+"
 expr_stmt|;
 block|}
 if|if
@@ -534,7 +536,7 @@ condition|)
 block|{
 name|modifiers
 operator|+=
-literal|"shift "
+literal|"shift+"
 expr_stmt|;
 block|}
 if|if
@@ -547,7 +549,7 @@ condition|)
 block|{
 name|modifiers
 operator|+=
-literal|"alt "
+literal|"alt+"
 expr_stmt|;
 block|}
 comment|// if no modifier keys are pressed, only special keys can be shortcuts

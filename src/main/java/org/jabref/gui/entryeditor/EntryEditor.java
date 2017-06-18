@@ -2648,7 +2648,9 @@ name|String
 name|getVisibleTabName
 parameter_list|()
 block|{
-return|return
+name|Tab
+name|selectedTab
+init|=
 name|tabbed
 operator|.
 name|getSelectionModel
@@ -2656,9 +2658,23 @@ argument_list|()
 operator|.
 name|getSelectedItem
 argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|selectedTab
+operator|!=
+literal|null
+condition|)
+block|{
+return|return
+name|selectedTab
 operator|.
 name|getText
 argument_list|()
+return|;
+block|}
+return|return
+literal|""
 return|;
 block|}
 DECL|method|setVisibleTab (String name)

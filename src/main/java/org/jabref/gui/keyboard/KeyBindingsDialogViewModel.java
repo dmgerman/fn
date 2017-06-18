@@ -194,6 +194,7 @@ argument_list|()
 decl_stmt|;
 DECL|field|dialogService
 specifier|private
+specifier|final
 name|DialogService
 name|dialogService
 decl_stmt|;

@@ -88,16 +88,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Test
 import|;
 end_import
@@ -333,8 +323,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
 DECL|method|testSpecialKeysValidKeyBindingIsSaved ()
 specifier|public
 name|void
@@ -544,8 +532,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
 DECL|method|testRandomNewKeyKeyBindingInRepository ()
 specifier|public
 name|void
@@ -645,9 +631,17 @@ name|keyBindingRepository
 operator|.
 name|checkKeyCombinationEquality
 argument_list|(
+name|KeyCombination
+operator|.
+name|valueOf
+argument_list|(
 name|KeyBinding
 operator|.
 name|CLEANUP
+operator|.
+name|getDefaultBinding
+argument_list|()
+argument_list|)
 argument_list|,
 name|shortcutKeyEvent
 argument_list|)
@@ -822,8 +816,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
 DECL|method|testSetAllKeyBindingsToDefault ()
 specifier|public
 name|void
@@ -931,8 +923,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
 DECL|method|testSetSingleKeyBindingToDefault ()
 specifier|public
 name|void

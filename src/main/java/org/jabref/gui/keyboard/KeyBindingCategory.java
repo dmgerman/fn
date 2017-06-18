@@ -33,9 +33,9 @@ enum|enum
 name|KeyBindingCategory
 block|{
 DECL|enumConstant|FILE
+DECL|enumConstant|Localization.lang
 name|FILE
 argument_list|(
-DECL|enumConstant|Localization.lang
 name|Localization
 operator|.
 name|lang
@@ -45,9 +45,9 @@ argument_list|)
 argument_list|)
 block|,
 DECL|enumConstant|EDIT
+DECL|enumConstant|Localization.lang
 name|EDIT
 argument_list|(
-DECL|enumConstant|Localization.lang
 name|Localization
 operator|.
 name|lang
@@ -57,9 +57,9 @@ argument_list|)
 argument_list|)
 block|,
 DECL|enumConstant|SEARCH
+DECL|enumConstant|Localization.lang
 name|SEARCH
 argument_list|(
-DECL|enumConstant|Localization.lang
 name|Localization
 operator|.
 name|lang
@@ -69,9 +69,9 @@ argument_list|)
 argument_list|)
 block|,
 DECL|enumConstant|VIEW
+DECL|enumConstant|Localization.lang
 name|VIEW
 argument_list|(
-DECL|enumConstant|Localization.lang
 name|Localization
 operator|.
 name|lang
@@ -89,12 +89,13 @@ name|BIBTEX
 parameter_list|)
 operator|,
 DECL|enumConstant|QUALITY
-constructor|QUALITY(             Localization.lang("Quality"
 DECL|enumConstant|Localization.lang
+constructor|QUALITY(Localization.lang("Quality"
 block|)
 end_enum
 
 begin_operator
+DECL|enumConstant|QUALITY
 DECL|enumConstant|Localization.lang
 unit|)
 operator|,
@@ -102,9 +103,9 @@ end_operator
 
 begin_expr_stmt
 DECL|enumConstant|TOOLS
+DECL|enumConstant|Localization.lang
 name|TOOLS
 argument_list|(
-DECL|enumConstant|Localization.lang
 name|Localization
 operator|.
 name|lang
