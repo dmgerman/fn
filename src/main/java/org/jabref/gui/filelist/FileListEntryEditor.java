@@ -516,6 +516,20 @@ name|jabref
 operator|.
 name|model
 operator|.
+name|entry
+operator|.
+name|LinkedFile
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
 name|util
 operator|.
 name|FileHelper
@@ -744,7 +758,7 @@ name|externalConfirm
 decl_stmt|;
 DECL|field|entry
 specifier|private
-name|FileListEntry
+name|LinkedFile
 name|entry
 decl_stmt|;
 comment|//Do not make this variable final, as then the lambda action listener will fail on compiÃ¶e
@@ -1009,14 +1023,11 @@ specifier|private
 name|boolean
 name|dontOpenBrowseUntilDisposed
 decl_stmt|;
-DECL|method|FileListEntryEditor (JabRefFrame frame, FileListEntry entry, boolean showProgressBar, boolean showOpenButton, BibDatabaseContext databaseContext, boolean showSaveDialog)
+DECL|method|FileListEntryEditor (LinkedFile entry, boolean showProgressBar, boolean showOpenButton, BibDatabaseContext databaseContext, boolean showSaveDialog)
 specifier|public
 name|FileListEntryEditor
 parameter_list|(
-name|JabRefFrame
-name|frame
-parameter_list|,
-name|FileListEntry
+name|LinkedFile
 name|entry
 parameter_list|,
 name|boolean
@@ -1034,8 +1045,6 @@ parameter_list|)
 block|{
 name|this
 argument_list|(
-name|frame
-argument_list|,
 name|entry
 argument_list|,
 name|showProgressBar
@@ -1052,14 +1061,11 @@ operator|=
 name|showSaveDialog
 expr_stmt|;
 block|}
-DECL|method|FileListEntryEditor (JabRefFrame frame, FileListEntry entry, boolean showProgressBar, boolean showOpenButton, BibDatabaseContext databaseContext)
+DECL|method|FileListEntryEditor (LinkedFile entry, boolean showProgressBar, boolean showOpenButton, BibDatabaseContext databaseContext)
 specifier|public
 name|FileListEntryEditor
 parameter_list|(
-name|JabRefFrame
-name|frame
-parameter_list|,
-name|FileListEntry
+name|LinkedFile
 name|entry
 parameter_list|,
 name|boolean
@@ -1695,16 +1701,24 @@ name|diag
 operator|=
 operator|new
 name|JDialog
+argument_list|()
+expr_stmt|;
+name|diag
+operator|.
+name|setTitle
 argument_list|(
-name|frame
-argument_list|,
 name|Localization
 operator|.
 name|lang
 argument_list|(
 literal|"Select files"
 argument_list|)
-argument_list|,
+argument_list|)
+expr_stmt|;
+name|diag
+operator|.
+name|setModal
+argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
@@ -1746,13 +1760,6 @@ name|diag
 operator|.
 name|pack
 argument_list|()
-expr_stmt|;
-name|diag
-operator|.
-name|setLocationRelativeTo
-argument_list|(
-name|frame
-argument_list|)
 expr_stmt|;
 name|diag
 operator|.
@@ -2074,12 +2081,12 @@ return|return
 name|downloadLabel
 return|;
 block|}
-DECL|method|setEntry (FileListEntry entry)
+DECL|method|setEntry (LinkedFile entry)
 specifier|public
 name|void
 name|setEntry
 parameter_list|(
-name|FileListEntry
+name|LinkedFile
 name|entry
 parameter_list|)
 block|{
@@ -2196,12 +2203,12 @@ name|isVisible
 argument_list|()
 return|;
 block|}
-DECL|method|setValues (FileListEntry entry)
+DECL|method|setValues (LinkedFile entry)
 specifier|private
 name|void
 name|setValues
 parameter_list|(
-name|FileListEntry
+name|LinkedFile
 name|entry
 parameter_list|)
 block|{
@@ -2272,24 +2279,34 @@ literal|1
 argument_list|)
 expr_stmt|;
 comment|// See what is a reasonable selection for the type combobox:
+name|Optional
+argument_list|<
+name|ExternalFileType
+argument_list|>
+name|fileType
+init|=
+name|ExternalFileTypes
+operator|.
+name|getInstance
+argument_list|()
+operator|.
+name|fromLinkedFile
+argument_list|(
+name|entry
+argument_list|,
+literal|false
+argument_list|)
+decl_stmt|;
 if|if
 condition|(
-operator|(
-name|entry
-operator|.
-name|getType
-argument_list|()
+name|fileType
 operator|.
 name|isPresent
 argument_list|()
-operator|)
 operator|&&
 operator|!
 operator|(
-name|entry
-operator|.
-name|getType
-argument_list|()
+name|fileType
 operator|.
 name|get
 argument_list|()
@@ -2302,10 +2319,7 @@ name|types
 operator|.
 name|setSelectedItem
 argument_list|(
-name|entry
-operator|.
-name|getType
-argument_list|()
+name|fileType
 operator|.
 name|get
 argument_list|()
@@ -2341,12 +2355,12 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-DECL|method|storeSettings (FileListEntry listEntry)
+DECL|method|storeSettings (LinkedFile listEntry)
 specifier|private
 name|void
 name|storeSettings
 parameter_list|(
-name|FileListEntry
+name|LinkedFile
 name|listEntry
 parameter_list|)
 block|{
@@ -2582,14 +2596,12 @@ argument_list|)
 expr_stmt|;
 name|listEntry
 operator|.
-name|setType
-argument_list|(
-name|Optional
-operator|.
-name|ofNullable
+name|setFileType
 argument_list|(
 name|type
-argument_list|)
+operator|.
+name|getName
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|listEntry

@@ -174,20 +174,6 @@ name|gui
 operator|.
 name|filelist
 operator|.
-name|FileListEntry
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|filelist
-operator|.
 name|FileListEntryEditor
 import|;
 end_import
@@ -275,6 +261,20 @@ operator|.
 name|entry
 operator|.
 name|BibEntry
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|LinkedFile
 import|;
 end_import
 
@@ -1239,11 +1239,11 @@ argument_list|,
 name|suggestedName
 argument_list|)
 decl_stmt|;
-name|FileListEntry
+name|LinkedFile
 name|fileListEntry
 init|=
 operator|new
-name|FileListEntry
+name|LinkedFile
 argument_list|(
 literal|""
 argument_list|,
@@ -1253,6 +1253,18 @@ name|getCanonicalPath
 argument_list|()
 argument_list|,
 name|suggestedType
+operator|.
+name|map
+argument_list|(
+name|ExternalFileType
+operator|::
+name|getName
+argument_list|)
+operator|.
+name|orElse
+argument_list|(
+literal|""
+argument_list|)
 argument_list|)
 decl_stmt|;
 name|editor
@@ -1260,8 +1272,6 @@ operator|=
 operator|new
 name|FileListEntryEditor
 argument_list|(
-name|frame
-argument_list|,
 name|fileListEntry
 argument_list|,
 literal|true
@@ -1597,7 +1607,7 @@ block|{
 name|fileListEntry
 operator|=
 operator|new
-name|FileListEntry
+name|LinkedFile
 argument_list|(
 name|fileListEntry
 operator|.
@@ -1619,7 +1629,7 @@ argument_list|)
 argument_list|,
 name|fileListEntry
 operator|.
-name|getType
+name|getFileType
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1898,11 +1908,11 @@ specifier|public
 interface|interface
 name|DownloadCallback
 block|{
-DECL|method|downloadComplete (FileListEntry file)
+DECL|method|downloadComplete (LinkedFile file)
 name|void
 name|downloadComplete
 parameter_list|(
-name|FileListEntry
+name|LinkedFile
 name|file
 parameter_list|)
 function_decl|;

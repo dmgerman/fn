@@ -1746,9 +1746,10 @@ init|=
 operator|new
 name|FileListEntryEditor
 argument_list|(
-name|frame
-argument_list|,
 name|flEntry
+operator|.
+name|toParsedFileField
+argument_list|()
 argument_list|,
 literal|false
 argument_list|,

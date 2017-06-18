@@ -147,19 +147,16 @@ argument_list|)
 decl_stmt|;
 DECL|field|description
 specifier|private
-specifier|final
 name|String
 name|description
 decl_stmt|;
 DECL|field|link
 specifier|private
-specifier|final
 name|String
 name|link
 decl_stmt|;
 DECL|field|fileType
 specifier|private
-specifier|final
 name|String
 name|fileType
 decl_stmt|;
@@ -253,6 +250,22 @@ return|return
 name|fileType
 return|;
 block|}
+DECL|method|setFileType (String fileType)
+specifier|public
+name|void
+name|setFileType
+parameter_list|(
+name|String
+name|fileType
+parameter_list|)
+block|{
+name|this
+operator|.
+name|fileType
+operator|=
+name|fileType
+expr_stmt|;
+block|}
 DECL|method|getDescription ()
 specifier|public
 name|String
@@ -263,6 +276,22 @@ return|return
 name|description
 return|;
 block|}
+DECL|method|setDescription (String description)
+specifier|public
+name|void
+name|setDescription
+parameter_list|(
+name|String
+name|description
+parameter_list|)
+block|{
+name|this
+operator|.
+name|description
+operator|=
+name|description
+expr_stmt|;
+block|}
 DECL|method|getLink ()
 specifier|public
 name|String
@@ -272,6 +301,22 @@ block|{
 return|return
 name|link
 return|;
+block|}
+DECL|method|setLink (String link)
+specifier|public
+name|void
+name|setLink
+parameter_list|(
+name|String
+name|link
+parameter_list|)
+block|{
+name|this
+operator|.
+name|link
+operator|=
+name|link
+expr_stmt|;
 block|}
 annotation|@
 name|Override

@@ -866,9 +866,17 @@ argument_list|()
 operator|.
 name|map
 argument_list|(
-name|LinkedFileViewModel
-operator|::
+name|linkedFile
+lambda|->
 operator|new
+name|LinkedFileViewModel
+argument_list|(
+name|linkedFile
+argument_list|,
+name|entry
+argument_list|,
+name|databaseContext
+argument_list|)
 argument_list|)
 operator|.
 name|collect
@@ -1014,6 +1022,10 @@ operator|new
 name|LinkedFileViewModel
 argument_list|(
 name|newLinkedFile
+argument_list|,
+name|entry
+argument_list|,
+name|databaseContext
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1271,6 +1283,10 @@ name|newFile
 argument_list|,
 name|dirs
 argument_list|)
+argument_list|,
+name|entry
+argument_list|,
+name|databaseContext
 argument_list|)
 decl_stmt|;
 name|newLinkedFile
@@ -1297,14 +1313,6 @@ name|void
 name|fetchFulltext
 parameter_list|()
 block|{
-if|if
-condition|(
-name|entry
-operator|.
-name|isPresent
-argument_list|()
-condition|)
-block|{
 name|FulltextFetchers
 name|fetcher
 init|=
@@ -1330,9 +1338,6 @@ operator|.
 name|findFullTextPDF
 argument_list|(
 name|entry
-operator|.
-name|get
-argument_list|()
 argument_list|)
 argument_list|)
 operator|.
@@ -1394,19 +1399,21 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-block|)
+end_class
+
+begin_expr_stmt
+unit|)
 operator|.
 name|executeWith
 argument_list|(
 name|taskExecutor
 argument_list|)
 expr_stmt|;
-end_class
+end_expr_stmt
 
 begin_function
-unit|}     }
+unit|}      public
 DECL|method|addFromURL ()
-specifier|public
 name|void
 name|addFromURL
 parameter_list|()
@@ -1579,6 +1586,10 @@ name|url
 argument_list|,
 name|suggestedTypeName
 argument_list|)
+argument_list|,
+name|entry
+argument_list|,
+name|databaseContext
 argument_list|)
 decl_stmt|;
 name|files
@@ -1644,6 +1655,10 @@ operator|new
 name|LinkedFileViewModel
 argument_list|(
 name|newLinkedFile
+argument_list|,
+name|entry
+argument_list|,
+name|databaseContext
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2008,9 +2023,6 @@ name|getDatabase
 argument_list|()
 argument_list|,
 name|entry
-operator|.
-name|get
-argument_list|()
 argument_list|,
 name|Globals
 operator|.
@@ -2094,6 +2106,40 @@ block|}
 return|return
 name|plannedName
 return|;
+block|}
+end_function
+
+begin_function
+DECL|method|deleteFile (LinkedFileViewModel file)
+specifier|public
+name|void
+name|deleteFile
+parameter_list|(
+name|LinkedFileViewModel
+name|file
+parameter_list|)
+block|{
+name|boolean
+name|deleteSuccessful
+init|=
+name|file
+operator|.
+name|delete
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|deleteSuccessful
+condition|)
+block|{
+name|files
+operator|.
+name|remove
+argument_list|(
+name|file
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_function
 

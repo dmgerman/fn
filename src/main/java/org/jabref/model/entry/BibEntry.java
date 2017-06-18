@@ -1079,26 +1079,6 @@ name|type
 return|;
 block|}
 comment|/**      * Sets this entry's type.      */
-DECL|method|setType (String type)
-specifier|public
-name|void
-name|setType
-parameter_list|(
-name|String
-name|type
-parameter_list|)
-block|{
-name|setType
-argument_list|(
-name|type
-argument_list|,
-name|EntryEventSource
-operator|.
-name|LOCAL
-argument_list|)
-expr_stmt|;
-block|}
-comment|/**      * Sets this entry's type.      */
 DECL|method|setType (EntryType type)
 specifier|public
 name|void
@@ -1116,6 +1096,26 @@ name|type
 operator|.
 name|getName
 argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Sets this entry's type.      */
+DECL|method|setType (String type)
+specifier|public
+name|void
+name|setType
+parameter_list|(
+name|String
+name|type
+parameter_list|)
+block|{
+name|setType
+argument_list|(
+name|type
+argument_list|,
+name|EntryEventSource
+operator|.
+name|LOCAL
 argument_list|)
 expr_stmt|;
 block|}
@@ -3825,6 +3825,41 @@ argument_list|(
 name|fields
 argument_list|,
 name|fieldName
+argument_list|)
+return|;
+block|}
+DECL|method|addFile (LinkedFile file)
+specifier|public
+name|Optional
+argument_list|<
+name|FieldChange
+argument_list|>
+name|addFile
+parameter_list|(
+name|LinkedFile
+name|file
+parameter_list|)
+block|{
+name|List
+argument_list|<
+name|LinkedFile
+argument_list|>
+name|linkedFiles
+init|=
+name|getFiles
+argument_list|()
+decl_stmt|;
+name|linkedFiles
+operator|.
+name|add
+argument_list|(
+name|file
+argument_list|)
+expr_stmt|;
+return|return
+name|setFiles
+argument_list|(
+name|linkedFiles
 argument_list|)
 return|;
 block|}

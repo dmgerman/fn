@@ -14,11 +14,13 @@ end_package
 
 begin_import
 import|import
-name|javafx
+name|java
 operator|.
-name|event
+name|util
 operator|.
-name|EventHandler
+name|function
+operator|.
+name|BiConsumer
 import|;
 end_import
 
@@ -29,6 +31,18 @@ operator|.
 name|scene
 operator|.
 name|Node
+import|;
+end_import
+
+begin_import
+import|import
+name|javafx
+operator|.
+name|scene
+operator|.
+name|control
+operator|.
+name|ContextMenu
 import|;
 end_import
 
@@ -218,16 +232,13 @@ name|toTooltip
 decl_stmt|;
 DECL|field|toOnMouseClickedEvent
 specifier|private
-name|Callback
+name|BiConsumer
 argument_list|<
 name|T
 argument_list|,
-name|EventHandler
-argument_list|<
 name|?
 super|super
 name|MouseEvent
-argument_list|>
 argument_list|>
 name|toOnMouseClickedEvent
 decl_stmt|;
@@ -240,6 +251,16 @@ argument_list|,
 name|String
 argument_list|>
 name|toStyleClass
+decl_stmt|;
+DECL|field|toContextMenu
+specifier|private
+name|Callback
+argument_list|<
+name|T
+argument_list|,
+name|ContextMenu
+argument_list|>
+name|toContextMenu
 decl_stmt|;
 DECL|method|withText (Callback<T, String> toText)
 specifier|public
@@ -435,6 +456,33 @@ return|return
 name|this
 return|;
 block|}
+DECL|method|withContextMenu (Callback<T, ContextMenu> toContextMenu)
+specifier|public
+name|ViewModelListCellFactory
+argument_list|<
+name|T
+argument_list|>
+name|withContextMenu
+parameter_list|(
+name|Callback
+argument_list|<
+name|T
+argument_list|,
+name|ContextMenu
+argument_list|>
+name|toContextMenu
+parameter_list|)
+block|{
+name|this
+operator|.
+name|toContextMenu
+operator|=
+name|toContextMenu
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
 DECL|method|withStyleClass (Callback<T, String> toStyleClass)
 specifier|public
 name|ViewModelListCellFactory
@@ -462,7 +510,7 @@ return|return
 name|this
 return|;
 block|}
-DECL|method|withOnMouseClickedEvent ( Callback<T, EventHandler<? super MouseEvent>> toOnMouseClickedEvent)
+DECL|method|withOnMouseClickedEvent ( BiConsumer<T, ? super MouseEvent> toOnMouseClickedEvent)
 specifier|public
 name|ViewModelListCellFactory
 argument_list|<
@@ -470,16 +518,13 @@ name|T
 argument_list|>
 name|withOnMouseClickedEvent
 parameter_list|(
-name|Callback
+name|BiConsumer
 argument_list|<
 name|T
 argument_list|,
-name|EventHandler
-argument_list|<
 name|?
 super|super
 name|MouseEvent
-argument_list|>
 argument_list|>
 name|toOnMouseClickedEvent
 parameter_list|)
@@ -624,11 +669,15 @@ condition|)
 block|{
 name|setOnMouseClicked
 argument_list|(
+name|event
+lambda|->
 name|toOnMouseClickedEvent
 operator|.
-name|call
+name|accept
 argument_list|(
 name|viewModel
+argument_list|,
+name|event
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -691,6 +740,24 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+if|if
+condition|(
+name|toContextMenu
+operator|!=
+literal|null
+condition|)
+block|{
+name|setContextMenu
+argument_list|(
+name|toContextMenu
+operator|.
+name|call
+argument_list|(
+name|viewModel
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 name|getListView
