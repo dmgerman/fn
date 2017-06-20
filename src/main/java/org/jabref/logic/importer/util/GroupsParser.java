@@ -1776,7 +1776,7 @@ argument_list|)
 expr_stmt|;
 name|group
 operator|.
-name|setIconCode
+name|setIconName
 argument_list|(
 name|tokenizer
 operator|.

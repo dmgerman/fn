@@ -2820,7 +2820,7 @@ argument_list|)
 expr_stmt|;
 name|resultingGroup
 operator|.
-name|setIconCode
+name|setIconName
 argument_list|(
 name|iconField
 operator|.
@@ -3024,7 +3024,7 @@ name|setText
 argument_list|(
 name|editedGroup
 operator|.
-name|getIconCode
+name|getIconName
 argument_list|()
 operator|.
 name|orElse

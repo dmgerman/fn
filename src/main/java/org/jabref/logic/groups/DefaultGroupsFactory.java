@@ -100,11 +100,11 @@ argument_list|)
 decl_stmt|;
 name|group
 operator|.
-name|setIconCode
+name|setIconName
 argument_list|(
 name|ALL_ENTRIES_GROUP_DEFAULT_ICON
 operator|.
-name|unicode
+name|name
 argument_list|()
 argument_list|)
 expr_stmt|;

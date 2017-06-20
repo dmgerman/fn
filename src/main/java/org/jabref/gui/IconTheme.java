@@ -2226,6 +2226,40 @@ block|}
 end_expr_stmt
 
 begin_function
+DECL|method|getUnderlyingIcons ()
+specifier|public
+name|List
+argument_list|<
+name|MaterialDesignIcon
+argument_list|>
+name|getUnderlyingIcons
+parameter_list|()
+block|{
+return|return
+name|icons
+return|;
+block|}
+end_function
+
+begin_function
+DECL|method|getUnderlyingIcon ()
+specifier|public
+name|MaterialDesignIcon
+name|getUnderlyingIcon
+parameter_list|()
+block|{
+return|return
+name|icons
+operator|.
+name|get
+argument_list|(
+literal|0
+argument_list|)
+return|;
+block|}
+end_function
+
+begin_function
 DECL|method|getSmallIcon ()
 specifier|public
 name|FontBasedIcon

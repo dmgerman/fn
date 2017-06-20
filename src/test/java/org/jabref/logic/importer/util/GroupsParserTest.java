@@ -416,10 +416,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|fromStringParsesExplicitGroupWithIconAndDesrcitpion ()
+DECL|method|fromStringParsesExplicitGroupWithIconAndDescription ()
 specifier|public
 name|void
-name|fromStringParsesExplicitGroupWithIconAndDesrcitpion
+name|fromStringParsesExplicitGroupWithIconAndDescription
 parameter_list|()
 throws|throws
 name|Exception
@@ -441,7 +441,7 @@ argument_list|)
 decl_stmt|;
 name|expected
 operator|.
-name|setIconCode
+name|setIconName
 argument_list|(
 literal|"test icon"
 argument_list|)

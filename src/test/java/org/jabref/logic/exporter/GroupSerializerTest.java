@@ -409,7 +409,7 @@ argument_list|)
 decl_stmt|;
 name|group
 operator|.
-name|setIconCode
+name|setIconName
 argument_list|(
 literal|"test icon"
 argument_list|)
