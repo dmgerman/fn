@@ -1175,6 +1175,7 @@ name|getCode
 argument_list|()
 argument_list|)
 return|;
+comment|/*         Optional<String> iconCode = groupNode.getGroup().getIconCode();                  if (StringUtil.isBlank(iconCode)) {             return "";         }         if (iconCode.isPresent()) {             MaterialDesignIcon icon = EnumUtils.getEnum(MaterialDesignIcon.class, iconCode.get().toUpperCase(Locale.ENGLISH));             if (icon != null) {                 return icon.unicode();             } else {                 return iconCode.get();             }         }                  return IconTheme.JabRefIcon.DEFAULT_GROUP_ICON.getCode();         */
 block|}
 DECL|method|getChildren ()
 specifier|public
@@ -1423,12 +1424,14 @@ operator|.
 name|ENTRIES
 argument_list|)
 operator|&&
+operator|(
 name|groupNode
 operator|.
 name|getGroup
 argument_list|()
 operator|instanceof
 name|GroupEntryChanger
+operator|)
 decl_stmt|;
 return|return
 name|canDropOtherGroup
