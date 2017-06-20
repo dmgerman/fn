@@ -894,7 +894,7 @@ name|withIcon
 argument_list|(
 name|GroupNodeViewModel
 operator|::
-name|getIconCode
+name|getIcon
 argument_list|,
 name|GroupNodeViewModel
 operator|::

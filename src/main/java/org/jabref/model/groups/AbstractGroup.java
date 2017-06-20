@@ -156,13 +156,13 @@ operator|.
 name|empty
 argument_list|()
 decl_stmt|;
-DECL|field|iconCode
+DECL|field|iconName
 specifier|protected
 name|Optional
 argument_list|<
 name|String
 argument_list|>
-name|iconCode
+name|iconName
 init|=
 name|Optional
 operator|.
@@ -231,9 +231,9 @@ literal|", description="
 operator|+
 name|description
 operator|+
-literal|", iconCode="
+literal|", iconName="
 operator|+
-name|iconCode
+name|iconName
 operator|+
 literal|'}'
 return|;
@@ -366,6 +366,27 @@ return|return
 name|color
 return|;
 block|}
+DECL|method|setColor (Color color)
+specifier|public
+name|void
+name|setColor
+parameter_list|(
+name|Color
+name|color
+parameter_list|)
+block|{
+name|this
+operator|.
+name|color
+operator|=
+name|Optional
+operator|.
+name|of
+argument_list|(
+name|color
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|setColor (String colorString)
 specifier|public
 name|void
@@ -406,27 +427,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-block|}
-DECL|method|setColor (Color color)
-specifier|public
-name|void
-name|setColor
-parameter_list|(
-name|Color
-name|color
-parameter_list|)
-block|{
-name|this
-operator|.
-name|color
-operator|=
-name|Optional
-operator|.
-name|of
-argument_list|(
-name|color
-argument_list|)
-expr_stmt|;
 block|}
 DECL|method|isExpanded ()
 specifier|public
@@ -486,39 +486,62 @@ name|description
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|getIconCode ()
+DECL|method|getIconName ()
 specifier|public
 name|Optional
 argument_list|<
 name|String
 argument_list|>
-name|getIconCode
+name|getIconName
 parameter_list|()
 block|{
 return|return
-name|iconCode
+name|iconName
 return|;
 block|}
-DECL|method|setIconCode (String iconCode)
+DECL|method|setIconName (String iconName)
 specifier|public
 name|void
-name|setIconCode
+name|setIconName
 parameter_list|(
 name|String
-name|iconCode
+name|iconName
 parameter_list|)
+block|{
+if|if
+condition|(
+name|StringUtil
+operator|.
+name|isBlank
+argument_list|(
+name|iconName
+argument_list|)
+condition|)
 block|{
 name|this
 operator|.
-name|iconCode
+name|iconName
+operator|=
+name|Optional
+operator|.
+name|empty
+argument_list|()
+expr_stmt|;
+block|}
+else|else
+block|{
+name|this
+operator|.
+name|iconName
 operator|=
 name|Optional
 operator|.
 name|of
 argument_list|(
-name|iconCode
+name|iconName
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|/**      * Returns the way this group relates to its sub- or supergroup.      */
 DECL|method|getHierarchicalContext ()

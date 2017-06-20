@@ -257,12 +257,12 @@ name|Objects
 operator|.
 name|equals
 argument_list|(
-name|getIconCode
+name|getIconName
 argument_list|()
 argument_list|,
 name|other
 operator|.
-name|getIconCode
+name|getIconName
 argument_list|()
 argument_list|)
 operator|&&
@@ -368,7 +368,7 @@ name|context
 argument_list|,
 name|legacyEntryKeys
 argument_list|,
-name|iconCode
+name|iconName
 argument_list|,
 name|color
 argument_list|,

@@ -782,7 +782,7 @@ name|append
 argument_list|(
 name|group
 operator|.
-name|getIconCode
+name|getIconName
 argument_list|()
 operator|.
 name|orElse
