@@ -132,6 +132,20 @@ name|org
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
+name|util
+operator|.
+name|OpenHyperlinksInExternalBrowser
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
 name|logic
 operator|.
 name|importer
@@ -377,6 +391,29 @@ argument_list|)
 expr_stmt|;
 end_class
 
+begin_expr_stmt
+name|browser
+operator|.
+name|getEngine
+argument_list|()
+operator|.
+name|getLoadWorker
+argument_list|()
+operator|.
+name|stateProperty
+argument_list|()
+operator|.
+name|addListener
+argument_list|(
+operator|new
+name|OpenHyperlinksInExternalBrowser
+argument_list|(
+name|browser
+argument_list|)
+argument_list|)
+expr_stmt|;
+end_expr_stmt
+
 begin_return
 return|return
 name|root
@@ -514,7 +551,7 @@ name|htmlContent
 operator|.
 name|append
 argument_list|(
-literal|"<a href='http://mr-dlib.org/information-for-users/information-about-mr-dlib-for-jabref-users/#'>"
+literal|"<a href='http://mr-dlib.org/information-for-users/information-about-mr-dlib-for-jabref-users/#' target=\"_blank\">"
 argument_list|)
 expr_stmt|;
 name|htmlContent
