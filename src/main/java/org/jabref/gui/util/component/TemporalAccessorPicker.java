@@ -194,10 +194,7 @@ operator|new
 name|SimpleObjectProperty
 argument_list|<>
 argument_list|(
-name|LocalDateTime
-operator|.
-name|now
-argument_list|()
+literal|null
 argument_list|)
 decl_stmt|;
 DECL|field|defaultFormatter
