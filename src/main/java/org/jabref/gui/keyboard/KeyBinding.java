@@ -431,6 +431,25 @@ operator|.
 name|BIBTEX
 argument_list|)
 block|,
+DECL|enumConstant|DOWNLOAD_FULL_TEXT
+name|DOWNLOAD_FULL_TEXT
+argument_list|(
+literal|"Look up full text documents"
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Look up full text documents"
+argument_list|)
+argument_list|,
+literal|"alt+F7"
+argument_list|,
+name|KeyBindingCategory
+operator|.
+name|QUALITY
+argument_list|)
+block|,
 DECL|enumConstant|EDIT_ENTRY
 name|EDIT_ENTRY
 argument_list|(

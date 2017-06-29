@@ -5001,11 +5001,16 @@ argument_list|(
 literal|"Look up full text documents"
 argument_list|)
 argument_list|,
-name|Localization
+name|Globals
 operator|.
-name|lang
+name|getKeyPrefs
+argument_list|()
+operator|.
+name|getKey
 argument_list|(
-literal|"Look up full text documents"
+name|KeyBinding
+operator|.
+name|DOWNLOAD_FULL_TEXT
 argument_list|)
 argument_list|)
 decl_stmt|;
