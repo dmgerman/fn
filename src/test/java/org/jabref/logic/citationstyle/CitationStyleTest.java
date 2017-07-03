@@ -117,9 +117,9 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-name|citation
-argument_list|,
 name|expected
+argument_list|,
+name|citation
 argument_list|)
 expr_stmt|;
 block|}

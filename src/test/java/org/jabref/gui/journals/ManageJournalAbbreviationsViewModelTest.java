@@ -657,6 +657,8 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
+literal|0
+argument_list|,
 name|viewModel
 operator|.
 name|journalFilesProperty
@@ -664,14 +666,14 @@ argument_list|()
 operator|.
 name|size
 argument_list|()
-argument_list|,
-literal|0
 argument_list|)
 expr_stmt|;
 name|Assert
 operator|.
 name|assertEquals
 argument_list|(
+literal|0
+argument_list|,
 name|viewModel
 operator|.
 name|abbreviationsProperty
@@ -679,8 +681,6 @@ argument_list|()
 operator|.
 name|size
 argument_list|()
-argument_list|,
-literal|0
 argument_list|)
 expr_stmt|;
 block|}

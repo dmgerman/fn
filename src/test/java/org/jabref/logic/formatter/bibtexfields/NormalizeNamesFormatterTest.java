@@ -491,6 +491,8 @@ parameter_list|()
 block|{
 name|assertEquals
 argument_list|(
+literal|"Einstein, Albert and Turing, Alan"
+argument_list|,
 name|formatter
 operator|.
 name|format
@@ -500,8 +502,6 @@ operator|.
 name|getExampleInput
 argument_list|()
 argument_list|)
-argument_list|,
-literal|"Einstein, Albert and Turing, Alan"
 argument_list|)
 expr_stmt|;
 block|}
