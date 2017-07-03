@@ -1532,6 +1532,22 @@ name|consume
 argument_list|()
 expr_stmt|;
 break|break;
+case|case
+name|CLOSE_ENTRY_EDITOR
+case|:
+name|closeAction
+operator|.
+name|actionPerformed
+argument_list|(
+literal|null
+argument_list|)
+expr_stmt|;
+name|event
+operator|.
+name|consume
+argument_list|()
+expr_stmt|;
+break|break;
 default|default:
 comment|// Pass other keys to children
 block|}

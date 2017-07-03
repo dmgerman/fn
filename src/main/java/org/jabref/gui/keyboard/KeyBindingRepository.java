@@ -377,7 +377,7 @@ name|keyBinding
 argument_list|,
 name|keyBinding
 operator|.
-name|getDefaultBinding
+name|getDefaultKeyBinding
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -568,7 +568,7 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|getDefaultBinding
+name|getDefaultKeyBinding
 argument_list|()
 return|;
 block|}
@@ -681,7 +681,7 @@ name|b
 lambda|->
 name|b
 operator|.
-name|getKey
+name|getConstant
 argument_list|()
 operator|.
 name|equals
@@ -720,7 +720,7 @@ name|b
 argument_list|,
 name|b
 operator|.
-name|getDefaultBinding
+name|getDefaultKeyBinding
 argument_list|()
 argument_list|)
 argument_list|)
@@ -750,7 +750,7 @@ name|b
 argument_list|,
 name|b
 operator|.
-name|getDefaultBinding
+name|getDefaultKeyBinding
 argument_list|()
 argument_list|)
 argument_list|)
@@ -838,7 +838,7 @@ name|get
 argument_list|(
 name|bindName
 operator|.
-name|getKey
+name|getConstant
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -889,7 +889,7 @@ name|get
 argument_list|(
 name|bindName
 operator|.
-name|getKey
+name|getConstant
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -1114,7 +1114,7 @@ name|map
 argument_list|(
 name|KeyBinding
 operator|::
-name|getKey
+name|getConstant
 argument_list|)
 operator|.
 name|collect

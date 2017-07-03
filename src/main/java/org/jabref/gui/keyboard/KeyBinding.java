@@ -234,7 +234,7 @@ argument_list|(
 literal|"Close entry editor"
 argument_list|)
 argument_list|,
-literal|"ESCAPE"
+literal|"Esc"
 argument_list|,
 name|KeyBindingCategory
 operator|.
@@ -1704,11 +1704,11 @@ operator|.
 name|TOOLS
 argument_list|)
 block|;
-DECL|field|key
+DECL|field|constant
 specifier|private
 specifier|final
 name|String
-name|key
+name|constant
 decl_stmt|;
 DECL|field|localization
 specifier|private
@@ -1728,17 +1728,17 @@ specifier|final
 name|KeyBindingCategory
 name|category
 decl_stmt|;
-DECL|method|KeyBinding (String key, String localization, String defaultBinding, KeyBindingCategory category)
+DECL|method|KeyBinding (String constantName, String localization, String defaultKeyBinding, KeyBindingCategory category)
 name|KeyBinding
 parameter_list|(
 name|String
-name|key
+name|constantName
 parameter_list|,
 name|String
 name|localization
 parameter_list|,
 name|String
-name|defaultBinding
+name|defaultKeyBinding
 parameter_list|,
 name|KeyBindingCategory
 name|category
@@ -1746,9 +1746,9 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|key
+name|constant
 operator|=
-name|key
+name|constantName
 expr_stmt|;
 name|this
 operator|.
@@ -1760,7 +1760,7 @@ name|this
 operator|.
 name|defaultBinding
 operator|=
-name|defaultBinding
+name|defaultKeyBinding
 expr_stmt|;
 name|this
 operator|.
@@ -1769,14 +1769,15 @@ operator|=
 name|category
 expr_stmt|;
 block|}
-DECL|method|getKey ()
+comment|/**      * This method returns the enum constant value      * @return      */
+DECL|method|getConstant ()
 specifier|public
 name|String
-name|getKey
+name|getConstant
 parameter_list|()
 block|{
 return|return
-name|key
+name|constant
 return|;
 block|}
 DECL|method|getLocalization ()
@@ -1789,10 +1790,11 @@ return|return
 name|localization
 return|;
 block|}
-DECL|method|getDefaultBinding ()
+comment|/**      * This method returns the default key binding, the key(s) which are assigned      * @return The default key binding      */
+DECL|method|getDefaultKeyBinding ()
 specifier|public
 name|String
-name|getDefaultBinding
+name|getDefaultKeyBinding
 parameter_list|()
 block|{
 return|return

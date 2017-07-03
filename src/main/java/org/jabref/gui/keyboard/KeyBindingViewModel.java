@@ -629,7 +629,7 @@ init|=
 name|getKeyBinding
 argument_list|()
 operator|.
-name|getKey
+name|getConstant
 argument_list|()
 decl_stmt|;
 name|keyBindingRepository
