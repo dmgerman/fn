@@ -2648,11 +2648,22 @@ name|String
 name|parsedComments
 parameter_list|)
 block|{
+comment|// delete trailing whitespaces (between entry and text)
 name|this
 operator|.
 name|commentsBeforeEntry
 operator|=
+name|REMOVE_TRAILING_WHITESPACE
+operator|.
+name|matcher
+argument_list|(
 name|parsedComments
+argument_list|)
+operator|.
+name|replaceFirst
+argument_list|(
+literal|""
+argument_list|)
 expr_stmt|;
 block|}
 DECL|method|hasChanged ()
@@ -3108,6 +3119,17 @@ name|entry
 operator|.
 name|fields
 argument_list|)
+operator|&&
+name|Objects
+operator|.
+name|equals
+argument_list|(
+name|commentsBeforeEntry
+argument_list|,
+name|entry
+operator|.
+name|commentsBeforeEntry
+argument_list|)
 return|;
 block|}
 annotation|@
@@ -3215,19 +3237,8 @@ name|String
 name|getUserComments
 parameter_list|()
 block|{
-comment|// delete trailing whitespaces (between entry and text) from stored serialization
 return|return
-name|REMOVE_TRAILING_WHITESPACE
-operator|.
-name|matcher
-argument_list|(
 name|commentsBeforeEntry
-argument_list|)
-operator|.
-name|replaceFirst
-argument_list|(
-literal|""
-argument_list|)
 return|;
 block|}
 DECL|method|getEntryLinkList (String fieldName, BibDatabase database)

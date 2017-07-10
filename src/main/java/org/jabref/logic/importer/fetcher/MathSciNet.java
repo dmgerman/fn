@@ -866,6 +866,14 @@ argument_list|(
 name|entry
 argument_list|)
 expr_stmt|;
+comment|// Remove comments: MathSciNet prepends a<pre> html tag
+name|entry
+operator|.
+name|setCommentsBeforeEntry
+argument_list|(
+literal|""
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 end_class
