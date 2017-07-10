@@ -578,6 +578,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|files
 specifier|private
+specifier|final
 name|ListProperty
 argument_list|<
 name|LinkedFileViewModel
@@ -600,6 +601,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|fulltextLookupInProgress
 specifier|private
+specifier|final
 name|BooleanProperty
 name|fulltextLookupInProgress
 init|=
@@ -611,16 +613,19 @@ argument_list|)
 decl_stmt|;
 DECL|field|dialogService
 specifier|private
+specifier|final
 name|DialogService
 name|dialogService
 decl_stmt|;
 DECL|field|databaseContext
 specifier|private
+specifier|final
 name|BibDatabaseContext
 name|databaseContext
 decl_stmt|;
 DECL|field|taskExecutor
 specifier|private
+specifier|final
 name|TaskExecutor
 name|taskExecutor
 decl_stmt|;
@@ -2140,6 +2145,26 @@ name|file
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+end_function
+
+begin_function
+DECL|method|removeFileLink (LinkedFileViewModel file)
+specifier|public
+name|void
+name|removeFileLink
+parameter_list|(
+name|LinkedFileViewModel
+name|file
+parameter_list|)
+block|{
+name|files
+operator|.
+name|remove
+argument_list|(
+name|file
+argument_list|)
+expr_stmt|;
 block|}
 end_function
 
