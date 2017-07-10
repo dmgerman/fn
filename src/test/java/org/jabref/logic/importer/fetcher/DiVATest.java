@@ -358,6 +358,24 @@ argument_list|,
 literal|"2007"
 argument_list|)
 expr_stmt|;
+name|entry
+operator|.
+name|setField
+argument_list|(
+literal|"abstract"
+argument_list|,
+literal|"Lower bounds for problems related to realizing multiplication by constants with shifts, adders, and subtracters are presented. These lower bounds are straightforwardly calculated and have applications in proving the optimality of solutions obtained by heuristics. "
+argument_list|)
+expr_stmt|;
+name|entry
+operator|.
+name|setField
+argument_list|(
+literal|"doi"
+argument_list|,
+literal|"10.1109/TCSII.2007.903212"
+argument_list|)
+expr_stmt|;
 name|assertEquals
 argument_list|(
 name|Optional
