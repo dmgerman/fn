@@ -260,11 +260,12 @@ specifier|public
 class|class
 name|DuplicateCheck
 block|{
-DECL|field|duplicateThreshold
-specifier|public
+DECL|field|DUPLICATE_THRESHOLD
+specifier|private
 specifier|static
+specifier|final
 name|double
-name|duplicateThreshold
+name|DUPLICATE_THRESHOLD
 init|=
 literal|0.75
 decl_stmt|;
@@ -429,7 +430,7 @@ DECL|method|DuplicateCheck ()
 specifier|private
 name|DuplicateCheck
 parameter_list|()
-block|{ }
+block|{     }
 comment|/**      * Checks if the two entries represent the same publication.      *      * @param one BibEntry      * @param two BibEntry      * @return boolean      */
 DECL|method|isDuplicate (BibEntry one, BibEntry two, BibDatabaseMode bibDatabaseMode)
 specifier|public
@@ -447,10 +448,9 @@ name|BibDatabaseMode
 name|bibDatabaseMode
 parameter_list|)
 block|{
-comment|// same identifier
 if|if
 condition|(
-name|hasSameIdentifier
+name|haveSameIdentifier
 argument_list|(
 name|one
 argument_list|,
@@ -477,6 +477,20 @@ name|two
 operator|.
 name|getType
 argument_list|()
+argument_list|)
+condition|)
+block|{
+return|return
+literal|false
+return|;
+block|}
+if|if
+condition|(
+name|haveDifferentEditions
+argument_list|(
+name|one
+argument_list|,
+name|two
 argument_list|)
 condition|)
 block|{
@@ -563,7 +577,7 @@ index|]
 operator|-
 name|DuplicateCheck
 operator|.
-name|duplicateThreshold
+name|DUPLICATE_THRESHOLD
 argument_list|)
 operator|>
 name|DuplicateCheck
@@ -580,7 +594,7 @@ index|]
 operator|>=
 name|DuplicateCheck
 operator|.
-name|duplicateThreshold
+name|DUPLICATE_THRESHOLD
 return|;
 block|}
 comment|// Close to the threshold value, so we take a look at the optional fields, if any:
@@ -673,7 +687,7 @@ name|totValue
 operator|>=
 name|DuplicateCheck
 operator|.
-name|duplicateThreshold
+name|DUPLICATE_THRESHOLD
 return|;
 block|}
 return|return
@@ -684,14 +698,94 @@ index|]
 operator|>=
 name|DuplicateCheck
 operator|.
-name|duplicateThreshold
+name|DUPLICATE_THRESHOLD
 return|;
 block|}
-DECL|method|hasSameIdentifier (BibEntry one, BibEntry two)
+DECL|method|haveDifferentEditions (BibEntry one, BibEntry two)
 specifier|private
 specifier|static
 name|boolean
-name|hasSameIdentifier
+name|haveDifferentEditions
+parameter_list|(
+name|BibEntry
+name|one
+parameter_list|,
+name|BibEntry
+name|two
+parameter_list|)
+block|{
+if|if
+condition|(
+name|one
+operator|.
+name|getField
+argument_list|(
+name|FieldName
+operator|.
+name|EDITION
+argument_list|)
+operator|.
+name|isPresent
+argument_list|()
+operator|&&
+name|two
+operator|.
+name|getField
+argument_list|(
+name|FieldName
+operator|.
+name|EDITION
+argument_list|)
+operator|.
+name|isPresent
+argument_list|()
+condition|)
+block|{
+if|if
+condition|(
+operator|!
+name|one
+operator|.
+name|getField
+argument_list|(
+name|FieldName
+operator|.
+name|EDITION
+argument_list|)
+operator|.
+name|get
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+name|two
+operator|.
+name|getField
+argument_list|(
+name|FieldName
+operator|.
+name|EDITION
+argument_list|)
+operator|.
+name|get
+argument_list|()
+argument_list|)
+condition|)
+block|{
+return|return
+literal|true
+return|;
+block|}
+block|}
+return|return
+literal|false
+return|;
+block|}
+DECL|method|haveSameIdentifier (BibEntry one, BibEntry two)
+specifier|private
+specifier|static
+name|boolean
+name|haveSameIdentifier
 parameter_list|(
 name|BibEntry
 name|one
@@ -791,37 +885,19 @@ block|{
 name|double
 name|weight
 decl_stmt|;
-if|if
-condition|(
-name|DuplicateCheck
-operator|.
-name|FIELD_WEIGHTS
-operator|.
-name|containsKey
-argument_list|(
-name|field
-argument_list|)
-condition|)
-block|{
 name|weight
 operator|=
 name|DuplicateCheck
 operator|.
 name|FIELD_WEIGHTS
 operator|.
-name|get
+name|getOrDefault
 argument_list|(
 name|field
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-name|weight
-operator|=
+argument_list|,
 literal|1.0
+argument_list|)
 expr_stmt|;
-block|}
 name|totWeights
 operator|+=
 name|weight
@@ -1408,7 +1484,7 @@ name|size
 argument_list|()
 return|;
 block|}
-comment|/**      * Goes through all entries in the given database, and if at least one of      * them is a duplicate of the given entry, as per      * Util.isDuplicate(BibEntry, BibEntry), the duplicate is returned.      * The search is terminated when the first duplicate is found.      *      * @param database The database to search.      * @param entry    The entry of which we are looking for duplicates.      * @return The first duplicate entry found. null if no duplicates are found.      */
+comment|/**      * Goes through all entries in the given database, and if at least one of      * them is a duplicate of the given entry, as per      * Util.isDuplicate(BibEntry, BibEntry), the duplicate is returned.      * The search is terminated when the first duplicate is found.      *      * @param database The database to search.      * @param entry    The entry of which we are looking for duplicates.      * @return The first duplicate entry found. Empty Optional if no duplicates are found.      */
 DECL|method|containsDuplicate (BibDatabase database, BibEntry entry, BibDatabaseMode bibDatabaseMode)
 specifier|public
 specifier|static
@@ -1472,7 +1548,7 @@ argument_list|()
 return|;
 comment|// No duplicate found.
 block|}
-comment|/**      * Compare two strings on the basis of word-by-word correlation analysis.      *      * @param s1       The first string      * @param s2       The second string      * @return a value in the interval [0, 1] indicating the degree of match.      */
+comment|/**      * Compare two strings on the basis of word-by-word correlation analysis.      *      * @param s1 The first string      * @param s2 The second string      * @return a value in the interval [0, 1] indicating the degree of match.      */
 DECL|method|correlateByWords (String s1, String s2)
 specifier|public
 specifier|static
@@ -1591,38 +1667,38 @@ operator|-
 name|missRate
 return|;
 block|}
-comment|/**      * Calculates the similarity (a number within 0 and 1) between two strings.      * http://stackoverflow.com/questions/955110/similarity-string-comparison-in-java      */
-DECL|method|similarity (String s1, String s2)
+comment|/*      * Calculates the similarity (a number within 0 and 1) between two strings.      * http://stackoverflow.com/questions/955110/similarity-string-comparison-in-java      */
+DECL|method|similarity (String first, String second)
 specifier|private
 specifier|static
 name|double
 name|similarity
 parameter_list|(
 name|String
-name|s1
+name|first
 parameter_list|,
 name|String
-name|s2
+name|second
 parameter_list|)
 block|{
 name|String
 name|longer
 init|=
-name|s1
+name|first
 decl_stmt|;
 name|String
 name|shorter
 init|=
-name|s2
+name|second
 decl_stmt|;
 if|if
 condition|(
-name|s1
+name|first
 operator|.
 name|length
 argument_list|()
 operator|<
-name|s2
+name|second
 operator|.
 name|length
 argument_list|()
@@ -1630,11 +1706,11 @@ condition|)
 block|{
 name|longer
 operator|=
-name|s2
+name|second
 expr_stmt|;
 name|shorter
 operator|=
-name|s1
+name|first
 expr_stmt|;
 block|}
 name|int
