@@ -431,7 +431,7 @@ specifier|static
 class|class
 name|LookAndFeel
 block|{
-DECL|field|looks
+DECL|field|LOOKS
 specifier|private
 specifier|static
 specifier|final
@@ -439,7 +439,7 @@ name|List
 argument_list|<
 name|String
 argument_list|>
-name|looks
+name|LOOKS
 init|=
 name|Arrays
 operator|.
@@ -486,7 +486,7 @@ control|(
 name|String
 name|l
 range|:
-name|looks
+name|LOOKS
 control|)
 block|{
 try|try

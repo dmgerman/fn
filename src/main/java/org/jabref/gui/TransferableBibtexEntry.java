@@ -178,12 +178,12 @@ name|TransferableBibtexEntry
 implements|implements
 name|Transferable
 block|{
-DECL|field|entryFlavor
+DECL|field|ENTRY_FLAVOR
 specifier|public
 specifier|static
 specifier|final
 name|DataFlavor
-name|entryFlavor
+name|ENTRY_FLAVOR
 init|=
 operator|new
 name|DataFlavor
@@ -238,7 +238,7 @@ index|[]
 block|{
 name|TransferableBibtexEntry
 operator|.
-name|entryFlavor
+name|ENTRY_FLAVOR
 block|,
 name|DataFlavor
 operator|.
@@ -264,7 +264,7 @@ name|equals
 argument_list|(
 name|TransferableBibtexEntry
 operator|.
-name|entryFlavor
+name|ENTRY_FLAVOR
 argument_list|)
 operator|||
 name|flavor
@@ -298,7 +298,7 @@ name|equals
 argument_list|(
 name|TransferableBibtexEntry
 operator|.
-name|entryFlavor
+name|ENTRY_FLAVOR
 argument_list|)
 condition|)
 block|{

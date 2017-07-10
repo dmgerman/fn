@@ -142,7 +142,7 @@ argument_list|<>
 argument_list|()
 decl_stmt|;
 comment|// Avoid partition where these values are contained
-DECL|field|avoidTermsInLowerCase
+DECL|field|AVOID_TERMS_IN_LOWER_CASE
 specifier|private
 specifier|final
 specifier|static
@@ -150,7 +150,7 @@ name|Collection
 argument_list|<
 name|String
 argument_list|>
-name|avoidTermsInLowerCase
+name|AVOID_TERMS_IN_LOWER_CASE
 init|=
 name|Arrays
 operator|.
@@ -551,7 +551,7 @@ control|)
 block|{
 if|if
 condition|(
-name|avoidTermsInLowerCase
+name|AVOID_TERMS_IN_LOWER_CASE
 operator|.
 name|contains
 argument_list|(
@@ -1179,7 +1179,7 @@ return|return
 name|authorsNatbib
 return|;
 block|}
-comment|/**      * Returns the list of authors separated by commas with last name only; If      * the list consists of two or more authors, "and" is inserted before the      * last author's name.      *<p>      *<p>      *<ul>      *<li> "John Smith" ==> "Smith"</li>      *<li> "John Smith and Black Brown, Peter" ==> "Smith and Black Brown"</li>      *<li> "John von Neumann and John Smith and Black Brown, Peter" ==> "von      * Neumann, Smith and Black Brown".</li>      *</ul>      *      * @param oxfordComma Whether to put a comma before the and at the end.      * @return formatted list of authors.      * @see<a href="http://en.wikipedia.org/wiki/Serial_comma">serial comma for an detailed explaination about the Oxford comma.</a>      */
+comment|/**      * Returns the list of authors separated by commas with last name only; If      * the list consists of two or more authors, "and" is inserted before the      * last author's name.      *<p>      *<p>      *<ul>      *<li> "John Smith" ==> "Smith"</li>      *<li> "John Smith and Black Brown, Peter" ==> "Smith and Black Brown"</li>      *<li> "John von Neumann and John Smith and Black Brown, Peter" ==> "von      * Neumann, Smith and Black Brown".</li>      *</ul>      *      * @param oxfordComma Whether to put a comma before the and at the end.      * @return formatted list of authors.      * @see<a href="http://en.wikipedia.org/wiki/Serial_comma">serial comma for an detailed explaination about the      * Oxford comma.</a>      */
 DECL|method|getAsLastNames (boolean oxfordComma)
 specifier|public
 name|String
@@ -1351,7 +1351,7 @@ name|abbrInt
 index|]
 return|;
 block|}
-comment|/**      * Returns the list of authors separated by commas with first names after      * last name; first names are abbreviated or not depending on parameter. If      * the list consists of three or more authors, "and" is inserted before the      * last author's name.      *<p>      *<p>      *<ul>      *<li> "John Smith" ==> "Smith, John" or "Smith, J."</li>      *<li> "John Smith and Black Brown, Peter" ==> "Smith, John and Black      * Brown, Peter" or "Smith, J. and Black Brown, P."</li>      *<li> "John von Neumann and John Smith and Black Brown, Peter" ==> "von      * Neumann, John, Smith, John and Black Brown, Peter" or "von Neumann, J.,      * Smith, J. and Black Brown, P.".</li>      *</ul>      *      * @param abbreviate  whether to abbreivate first names.      * @param oxfordComma Whether to put a comma before the and at the end.      * @return formatted list of authors.      * @see<a href="http://en.wikipedia.org/wiki/Serial_comma">serial comma for an detailed explaination about the Oxford comma.</a>      */
+comment|/**      * Returns the list of authors separated by commas with first names after      * last name; first names are abbreviated or not depending on parameter. If      * the list consists of three or more authors, "and" is inserted before the      * last author's name.      *<p>      *<p>      *<ul>      *<li> "John Smith" ==> "Smith, John" or "Smith, J."</li>      *<li> "John Smith and Black Brown, Peter" ==> "Smith, John and Black      * Brown, Peter" or "Smith, J. and Black Brown, P."</li>      *<li> "John von Neumann and John Smith and Black Brown, Peter" ==> "von      * Neumann, John, Smith, John and Black Brown, Peter" or "von Neumann, J.,      * Smith, J. and Black Brown, P.".</li>      *</ul>      *      * @param abbreviate  whether to abbreivate first names.      * @param oxfordComma Whether to put a comma before the and at the end.      * @return formatted list of authors.      * @see<a href="http://en.wikipedia.org/wiki/Serial_comma">serial comma for an detailed explaination about the      * Oxford comma.</a>      */
 DECL|method|getAsLastFirstNames (boolean abbreviate, boolean oxfordComma)
 specifier|public
 name|String
@@ -1754,7 +1754,7 @@ name|abbrInt
 index|]
 return|;
 block|}
-comment|/**      * Returns the list of authors separated by commas with first names before      * last name; first names are abbreviated or not depending on parameter. If      * the list consists of three or more authors, "and" is inserted before the      * last author's name.      *<p>      *<ul>      *<li>"John Smith" ==> "John Smith" or "J. Smith"</li>      *<li>"John Smith and Black Brown, Peter" ==> "John Smith and Peter Black      * Brown" or "J. Smith and P. Black Brown"</li>      *<li> "John von Neumann and John Smith and Black Brown, Peter" ==> "John      * von Neumann, John Smith and Peter Black Brown" or "J. von Neumann, J.      * Smith and P. Black Brown"</li>      *</ul>      *      * @param abbr        whether to abbreivate first names.      * @param oxfordComma Whether to put a comma before the and at the end.      * @return formatted list of authors.      * @see<a href="http://en.wikipedia.org/wiki/Serial_comma">serial comma for an detailed explaination about the Oxford comma.</a>      */
+comment|/**      * Returns the list of authors separated by commas with first names before      * last name; first names are abbreviated or not depending on parameter. If      * the list consists of three or more authors, "and" is inserted before the      * last author's name.      *<p>      *<ul>      *<li>"John Smith" ==> "John Smith" or "J. Smith"</li>      *<li>"John Smith and Black Brown, Peter" ==> "John Smith and Peter Black      * Brown" or "J. Smith and P. Black Brown"</li>      *<li> "John von Neumann and John Smith and Black Brown, Peter" ==> "John      * von Neumann, John Smith and Peter Black Brown" or "J. von Neumann, J.      * Smith and P. Black Brown"</li>      *</ul>      *      * @param abbr        whether to abbreivate first names.      * @param oxfordComma Whether to put a comma before the and at the end.      * @return formatted list of authors.      * @see<a href="http://en.wikipedia.org/wiki/Serial_comma">serial comma for an detailed explaination about the      * Oxford comma.</a>      */
 DECL|method|getAsFirstLastNames (boolean abbr, boolean oxfordComma)
 specifier|public
 name|String

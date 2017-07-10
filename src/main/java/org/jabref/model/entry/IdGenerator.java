@@ -32,16 +32,16 @@ specifier|public
 class|class
 name|IdGenerator
 block|{
-DECL|field|idFormat
+DECL|field|ID_FORMAT
 specifier|private
 specifier|static
 specifier|final
 name|NumberFormat
-name|idFormat
+name|ID_FORMAT
 decl_stmt|;
 static|static
 block|{
-name|idFormat
+name|ID_FORMAT
 operator|=
 name|NumberFormat
 operator|.
@@ -50,7 +50,7 @@ argument_list|()
 expr_stmt|;
 name|IdGenerator
 operator|.
-name|idFormat
+name|ID_FORMAT
 operator|.
 name|setMinimumIntegerDigits
 argument_list|(
@@ -59,7 +59,7 @@ argument_list|)
 expr_stmt|;
 name|IdGenerator
 operator|.
-name|idFormat
+name|ID_FORMAT
 operator|.
 name|setGroupingUsed
 argument_list|(
@@ -89,7 +89,7 @@ block|{
 name|String
 name|result
 init|=
-name|idFormat
+name|ID_FORMAT
 operator|.
 name|format
 argument_list|(

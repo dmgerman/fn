@@ -147,12 +147,12 @@ name|ProtectedTermsMenu
 extends|extends
 name|Menu
 block|{
-DECL|field|formatter
+DECL|field|FORMATTER
 specifier|private
 specifier|static
 specifier|final
 name|ProtectTermsFormatter
-name|formatter
+name|FORMATTER
 init|=
 operator|new
 name|ProtectTermsFormatter
@@ -281,7 +281,7 @@ name|opener
 operator|.
 name|setText
 argument_list|(
-name|formatter
+name|FORMATTER
 operator|.
 name|format
 argument_list|(

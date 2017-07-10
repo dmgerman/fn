@@ -172,7 +172,7 @@ specifier|public
 class|class
 name|ProtectedTermsLoader
 block|{
-DECL|field|internalLists
+DECL|field|INTERNAL_LISTS
 specifier|private
 specifier|static
 specifier|final
@@ -182,7 +182,7 @@ name|String
 argument_list|,
 name|String
 argument_list|>
-name|internalLists
+name|INTERNAL_LISTS
 init|=
 operator|new
 name|HashMap
@@ -221,7 +221,7 @@ argument_list|()
 decl_stmt|;
 static|static
 block|{
-name|internalLists
+name|INTERNAL_LISTS
 operator|.
 name|put
 argument_list|(
@@ -235,7 +235,7 @@ literal|"Months and weekdays in English"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|internalLists
+name|INTERNAL_LISTS
 operator|.
 name|put
 argument_list|(
@@ -249,7 +249,7 @@ literal|"Countries and territories in English"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|internalLists
+name|INTERNAL_LISTS
 operator|.
 name|put
 argument_list|(
@@ -293,7 +293,7 @@ operator|new
 name|ArrayList
 argument_list|<>
 argument_list|(
-name|internalLists
+name|INTERNAL_LISTS
 operator|.
 name|keySet
 argument_list|()
@@ -328,7 +328,7 @@ control|)
 block|{
 if|if
 condition|(
-name|internalLists
+name|INTERNAL_LISTS
 operator|.
 name|containsKey
 argument_list|(
@@ -344,7 +344,7 @@ name|readProtectedTermsListFromResource
 argument_list|(
 name|filename
 argument_list|,
-name|internalLists
+name|INTERNAL_LISTS
 operator|.
 name|get
 argument_list|(
@@ -384,7 +384,7 @@ control|)
 block|{
 if|if
 condition|(
-name|internalLists
+name|INTERNAL_LISTS
 operator|.
 name|containsKey
 argument_list|(
@@ -414,7 +414,7 @@ name|readProtectedTermsListFromResource
 argument_list|(
 name|filename
 argument_list|,
-name|internalLists
+name|INTERNAL_LISTS
 operator|.
 name|get
 argument_list|(
@@ -448,7 +448,7 @@ control|(
 name|String
 name|filename
 range|:
-name|internalLists
+name|INTERNAL_LISTS
 operator|.
 name|keySet
 argument_list|()
@@ -488,7 +488,7 @@ name|readProtectedTermsListFromResource
 argument_list|(
 name|filename
 argument_list|,
-name|internalLists
+name|INTERNAL_LISTS
 operator|.
 name|get
 argument_list|(

@@ -283,12 +283,12 @@ operator|new
 name|ImportFormatReader
 argument_list|()
 decl_stmt|;
-DECL|field|taskExecutor
+DECL|field|TASK_EXECUTOR
 specifier|public
 specifier|static
 specifier|final
 name|TaskExecutor
-name|taskExecutor
+name|TASK_EXECUTOR
 init|=
 operator|new
 name|DefaultTaskExecutor
@@ -664,7 +664,7 @@ name|void
 name|shutdownThreadPools
 parameter_list|()
 block|{
-name|taskExecutor
+name|TASK_EXECUTOR
 operator|.
 name|shutdown
 argument_list|()

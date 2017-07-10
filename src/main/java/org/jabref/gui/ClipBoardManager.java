@@ -496,7 +496,7 @@ name|isDataFlavorSupported
 argument_list|(
 name|TransferableBibtexEntry
 operator|.
-name|entryFlavor
+name|ENTRY_FLAVOR
 argument_list|)
 condition|)
 block|{
@@ -526,7 +526,7 @@ name|getTransferData
 argument_list|(
 name|TransferableBibtexEntry
 operator|.
-name|entryFlavor
+name|ENTRY_FLAVOR
 argument_list|)
 decl_stmt|;
 name|result

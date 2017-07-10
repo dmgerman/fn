@@ -77,7 +77,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * String constants for BibTeX entry field names  *  */
+comment|/**  * String constants for BibTeX entry field names  */
 end_comment
 
 begin_class
@@ -1237,7 +1237,7 @@ init|=
 literal|"__markedentry"
 decl_stmt|;
 comment|// Map to hold alternative display names
-DECL|field|displayNames
+DECL|field|DISPLAY_NAMES
 specifier|private
 specifier|static
 specifier|final
@@ -1247,7 +1247,7 @@ name|String
 argument_list|,
 name|String
 argument_list|>
-name|displayNames
+name|DISPLAY_NAMES
 init|=
 operator|new
 name|HashMap
@@ -1311,7 +1311,7 @@ return|;
 block|}
 static|static
 block|{
-name|displayNames
+name|DISPLAY_NAMES
 operator|.
 name|put
 argument_list|(
@@ -1322,7 +1322,7 @@ argument_list|,
 literal|"DOI"
 argument_list|)
 expr_stmt|;
-name|displayNames
+name|DISPLAY_NAMES
 operator|.
 name|put
 argument_list|(
@@ -1333,7 +1333,7 @@ argument_list|,
 literal|"ISBN"
 argument_list|)
 expr_stmt|;
-name|displayNames
+name|DISPLAY_NAMES
 operator|.
 name|put
 argument_list|(
@@ -1344,7 +1344,7 @@ argument_list|,
 literal|"ISRN"
 argument_list|)
 expr_stmt|;
-name|displayNames
+name|DISPLAY_NAMES
 operator|.
 name|put
 argument_list|(
@@ -1355,7 +1355,7 @@ argument_list|,
 literal|"ISSN"
 argument_list|)
 expr_stmt|;
-name|displayNames
+name|DISPLAY_NAMES
 operator|.
 name|put
 argument_list|(
@@ -1366,7 +1366,7 @@ argument_list|,
 literal|"PMID"
 argument_list|)
 expr_stmt|;
-name|displayNames
+name|DISPLAY_NAMES
 operator|.
 name|put
 argument_list|(
@@ -1377,7 +1377,7 @@ argument_list|,
 literal|"PS"
 argument_list|)
 expr_stmt|;
-name|displayNames
+name|DISPLAY_NAMES
 operator|.
 name|put
 argument_list|(
@@ -1388,7 +1388,7 @@ argument_list|,
 literal|"PDF"
 argument_list|)
 expr_stmt|;
-name|displayNames
+name|DISPLAY_NAMES
 operator|.
 name|put
 argument_list|(
@@ -1399,7 +1399,7 @@ argument_list|,
 literal|"URI"
 argument_list|)
 expr_stmt|;
-name|displayNames
+name|DISPLAY_NAMES
 operator|.
 name|put
 argument_list|(
@@ -1436,7 +1436,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|displayNames
+name|DISPLAY_NAMES
 operator|.
 name|containsKey
 argument_list|(
@@ -1445,7 +1445,7 @@ argument_list|)
 condition|)
 block|{
 return|return
-name|displayNames
+name|DISPLAY_NAMES
 operator|.
 name|get
 argument_list|(

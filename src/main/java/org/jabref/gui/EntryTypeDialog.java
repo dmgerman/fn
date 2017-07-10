@@ -1275,7 +1275,7 @@ name|setSelectedItem
 argument_list|(
 name|DoiFetcher
 operator|.
-name|name
+name|NAME
 argument_list|)
 expr_stmt|;
 name|generateButton

@@ -314,12 +314,12 @@ specifier|public
 class|class
 name|FileUtil
 block|{
-DECL|field|isPosixCompilant
+DECL|field|IS_POSIX_COMPILANT
 specifier|public
 specifier|static
 specifier|final
 name|boolean
-name|isPosixCompilant
+name|IS_POSIX_COMPILANT
 init|=
 name|FileSystems
 operator|.
@@ -401,7 +401,7 @@ name|fileNameWithExtension
 return|;
 block|}
 block|}
-comment|/**      * Adds an extension to the given file name. The original extension is not replaced. That means,      * "demo.bib", ".sav" gets "demo.bib.sav" and not "demo.sav"      *      * @param path the path to add the extension to      * @param extension the extension to add      * @return the with the modified file name      */
+comment|/**      * Adds an extension to the given file name. The original extension is not replaced. That means,      * "demo.bib", ".sav" gets "demo.bib.sav" and not "demo.sav"      *      * @param path      the path to add the extension to      * @param extension the extension to add      * @return the with the modified file name      */
 DECL|method|addExtension (Path path, String extension)
 specifier|public
 specifier|static
@@ -734,7 +734,7 @@ return|return
 name|pathSubstrings
 return|;
 block|}
-comment|/**      * Copies a file.      *      * @param pathToSourceFile      Path Source file      * @param pathToDestinationFile Path Destination file      * @param replaceExisting       boolean Determines whether the copy goes on even if the file exists.      * @return boolean Whether the copy succeeded, or was stopped due to the file already existing.      * @throws IOException      */
+comment|/**      * Copies a file.      *      * @param pathToSourceFile      Path Source file      * @param pathToDestinationFile Path Destination file      * @param replaceExisting       boolean Determines whether the copy goes on even if the file exists.      * @return boolean Whether the copy succeeded, or was stopped due to the file already existing.      */
 DECL|method|copyFile (Path pathToSourceFile, Path pathToDestinationFile, boolean replaceExisting)
 specifier|public
 specifier|static
@@ -862,7 +862,7 @@ literal|false
 argument_list|)
 return|;
 block|}
-comment|/**      * Renames a given file      *      * @param fromFile The source filename to rename      * @param toFile   The target fileName      * @param replaceExisting Wether to replace existing files or not      * @return True if the rename was successful, false if an exception occurred      *      */
+comment|/**      * Renames a given file      *      * @param fromFile        The source filename to rename      * @param toFile          The target fileName      * @param replaceExisting Wether to replace existing files or not      * @return True if the rename was successful, false if an exception occurred      */
 DECL|method|renameFile (Path fromFile, Path toFile, boolean replaceExisting)
 specifier|public
 specifier|static
@@ -1011,7 +1011,7 @@ return|return
 name|file
 return|;
 block|}
-comment|/**      * Returns the list of linked files. The files have the absolute filename      *      * @param bes list of BibTeX entries      * @param fileDirs list of directories to try for expansion      *      * @return list of files. May be empty      */
+comment|/**      * Returns the list of linked files. The files have the absolute filename      *      * @param bes      list of BibTeX entries      * @param fileDirs list of directories to try for expansion      * @return list of files. May be empty      */
 DECL|method|getListOfLinkedFiles (List<BibEntry> bes, List<Path> fileDirs)
 specifier|public
 specifier|static
@@ -1229,7 +1229,7 @@ return|return
 name|targetName
 return|;
 block|}
-comment|/**      * Finds a file inside a directory structure.      * Will also look for the file inside nested directories.      *      * @param filename the name of the file that should be found      * @param rootDirectory the rootDirectory that will be searched      * @return the path to the first file that matches the defined conditions      */
+comment|/**      * Finds a file inside a directory structure.      * Will also look for the file inside nested directories.      *      * @param filename      the name of the file that should be found      * @param rootDirectory the rootDirectory that will be searched      * @return the path to the first file that matches the defined conditions      */
 DECL|method|find (String filename, Path rootDirectory)
 specifier|public
 specifier|static
@@ -1312,7 +1312,7 @@ name|empty
 argument_list|()
 return|;
 block|}
-comment|/**      * Finds a file inside a list of directory structures.      * Will also look for the file inside nested directories.      *      * @param filename the name of the file that should be found      * @param directories the directories that will be searched      * @return a list including all found paths to files that match the defined conditions      */
+comment|/**      * Finds a file inside a list of directory structures.      * Will also look for the file inside nested directories.      *      * @param filename    the name of the file that should be found      * @param directories the directories that will be searched      * @return a list including all found paths to files that match the defined conditions      */
 DECL|method|find (String filename, List<Path> directories)
 specifier|public
 specifier|static

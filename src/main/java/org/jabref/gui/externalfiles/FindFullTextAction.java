@@ -280,12 +280,12 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|field|warningLimit
+DECL|field|WARNING_LIMIT
 specifier|private
 specifier|static
 specifier|final
 name|int
-name|warningLimit
+name|WARNING_LIMIT
 init|=
 literal|5
 decl_stmt|;
@@ -394,7 +394,7 @@ operator|.
 name|size
 argument_list|()
 operator|>=
-name|warningLimit
+name|WARNING_LIMIT
 condition|)
 block|{
 name|String
