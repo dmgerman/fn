@@ -32,20 +32,6 @@ name|JComponent
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|autocompleter
-operator|.
-name|AutoCompleteListener
-import|;
-end_import
-
 begin_comment
 comment|/**  * FieldEditors is a common interface between the TextField and TextArea.  */
 end_comment
@@ -185,19 +171,6 @@ function_decl|;
 DECL|method|redo ()
 name|void
 name|redo
-parameter_list|()
-function_decl|;
-DECL|method|setAutoCompleteListener (AutoCompleteListener listener)
-name|void
-name|setAutoCompleteListener
-parameter_list|(
-name|AutoCompleteListener
-name|listener
-parameter_list|)
-function_decl|;
-DECL|method|clearAutoCompleteSuggestion ()
-name|void
-name|clearAutoCompleteSuggestion
 parameter_list|()
 function_decl|;
 block|}

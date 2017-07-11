@@ -180,6 +180,18 @@ name|jabref
 operator|.
 name|gui
 operator|.
+name|AbstractViewModel
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
 name|DialogService
 import|;
 end_import
@@ -400,7 +412,7 @@ specifier|public
 class|class
 name|LinkedFileViewModel
 extends|extends
-name|AbstractEditorViewModel
+name|AbstractViewModel
 block|{
 DECL|field|LOGGER
 specifier|private
@@ -476,6 +488,12 @@ init|=
 operator|new
 name|FXDialogService
 argument_list|()
+decl_stmt|;
+DECL|field|entry
+specifier|private
+specifier|final
+name|BibEntry
+name|entry
 decl_stmt|;
 DECL|method|LinkedFileViewModel (LinkedFile linkedFile, BibEntry entry, BibDatabaseContext databaseContext)
 specifier|public

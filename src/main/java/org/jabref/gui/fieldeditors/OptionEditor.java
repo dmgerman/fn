@@ -115,12 +115,6 @@ name|HBox
 implements|implements
 name|FieldEditorFX
 block|{
-DECL|field|fieldName
-specifier|private
-specifier|final
-name|String
-name|fieldName
-decl_stmt|;
 DECL|field|viewModel
 annotation|@
 name|FXML
@@ -155,12 +149,6 @@ argument_list|>
 name|viewModel
 parameter_list|)
 block|{
-name|this
-operator|.
-name|fieldName
-operator|=
-name|fieldName
-expr_stmt|;
 name|this
 operator|.
 name|viewModel
@@ -261,8 +249,6 @@ name|viewModel
 operator|.
 name|bindToEntry
 argument_list|(
-name|fieldName
-argument_list|,
 name|entry
 argument_list|)
 expr_stmt|;

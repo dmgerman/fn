@@ -14,6 +14,20 @@ end_package
 
 begin_import
 import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|autocompleter
+operator|.
+name|AutoCompleteSuggestionProvider
+import|;
+end_import
+
+begin_import
+import|import
 name|com
 operator|.
 name|google
@@ -68,11 +82,27 @@ argument_list|(
 literal|2
 argument_list|)
 decl_stmt|;
-DECL|method|YesNoEditorViewModel ()
+DECL|method|YesNoEditorViewModel (String fieldName, AutoCompleteSuggestionProvider<?> suggestionProvider)
 specifier|public
 name|YesNoEditorViewModel
-parameter_list|()
+parameter_list|(
+name|String
+name|fieldName
+parameter_list|,
+name|AutoCompleteSuggestionProvider
+argument_list|<
+name|?
+argument_list|>
+name|suggestionProvider
+parameter_list|)
 block|{
+name|super
+argument_list|(
+name|fieldName
+argument_list|,
+name|suggestionProvider
+argument_list|)
+expr_stmt|;
 name|itemMap
 operator|.
 name|put

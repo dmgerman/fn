@@ -740,20 +740,6 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|autocompleter
-operator|.
-name|AutoCompleter
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
 name|bibtex
 operator|.
 name|InvalidFieldValueException
@@ -4257,41 +4243,8 @@ operator|.
 name|setValidBackgroundColor
 argument_list|()
 expr_stmt|;
-comment|// See if we need to update an AutoCompleter instance:
-name|AutoCompleter
-argument_list|<
-name|String
-argument_list|>
-name|aComp
-init|=
-name|panel
-operator|.
-name|getAutoCompleters
-argument_list|()
-operator|.
-name|get
-argument_list|(
-name|fieldEditor
-operator|.
-name|getFieldName
-argument_list|()
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|aComp
-operator|!=
-literal|null
-condition|)
-block|{
-name|aComp
-operator|.
-name|addBibtexEntry
-argument_list|(
-name|entry
-argument_list|)
-expr_stmt|;
-block|}
+comment|//TODO: See if we need to update an AutoCompleter instance:
+comment|/*                         AutoCompleter<String> aComp = panel.getSuggestionProviders().get(fieldEditor.getFieldName());                         if (aComp != null) {                             aComp.addBibtexEntry(entry);                         }                         */
 comment|// Add an UndoableFieldChange to the baseframe's undoManager.
 name|UndoableFieldChange
 name|undoableFieldChange

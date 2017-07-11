@@ -206,6 +206,20 @@ name|jabref
 operator|.
 name|gui
 operator|.
+name|autocompleter
+operator|.
+name|AutoCompleteSuggestionProvider
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
 name|externalfiles
 operator|.
 name|DownloadExternalFile
@@ -629,10 +643,19 @@ specifier|final
 name|TaskExecutor
 name|taskExecutor
 decl_stmt|;
-DECL|method|LinkedFilesEditorViewModel (DialogService dialogService, BibDatabaseContext databaseContext, TaskExecutor taskExecutor)
+DECL|method|LinkedFilesEditorViewModel (String fieldName, AutoCompleteSuggestionProvider<?> suggestionProvider, DialogService dialogService, BibDatabaseContext databaseContext, TaskExecutor taskExecutor)
 specifier|public
 name|LinkedFilesEditorViewModel
 parameter_list|(
+name|String
+name|fieldName
+parameter_list|,
+name|AutoCompleteSuggestionProvider
+argument_list|<
+name|?
+argument_list|>
+name|suggestionProvider
+parameter_list|,
 name|DialogService
 name|dialogService
 parameter_list|,
@@ -643,6 +666,13 @@ name|TaskExecutor
 name|taskExecutor
 parameter_list|)
 block|{
+name|super
+argument_list|(
+name|fieldName
+argument_list|,
+name|suggestionProvider
+argument_list|)
+expr_stmt|;
 name|this
 operator|.
 name|dialogService
@@ -1040,14 +1070,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|bindToEntry (String fieldName, BibEntry entry)
+DECL|method|bindToEntry (BibEntry entry)
 specifier|public
 name|void
 name|bindToEntry
 parameter_list|(
-name|String
-name|fieldName
-parameter_list|,
 name|BibEntry
 name|entry
 parameter_list|)
@@ -1056,8 +1083,6 @@ name|super
 operator|.
 name|bindToEntry
 argument_list|(
-name|fieldName
-argument_list|,
 name|entry
 argument_list|)
 expr_stmt|;

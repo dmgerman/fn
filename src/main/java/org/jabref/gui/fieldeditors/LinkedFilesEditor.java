@@ -248,6 +248,20 @@ name|jabref
 operator|.
 name|gui
 operator|.
+name|autocompleter
+operator|.
+name|AutoCompleteSuggestionProvider
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
 name|keyboard
 operator|.
 name|KeyBinding
@@ -382,12 +396,6 @@ name|HBox
 implements|implements
 name|FieldEditorFX
 block|{
-DECL|field|fieldName
-specifier|private
-specifier|final
-name|String
-name|fieldName
-decl_stmt|;
 DECL|field|viewModel
 annotation|@
 name|FXML
@@ -406,7 +414,7 @@ name|LinkedFileViewModel
 argument_list|>
 name|listView
 decl_stmt|;
-DECL|method|LinkedFilesEditor (String fieldName, DialogService dialogService, BibDatabaseContext databaseContext, TaskExecutor taskExecutor)
+DECL|method|LinkedFilesEditor (String fieldName, DialogService dialogService, BibDatabaseContext databaseContext, TaskExecutor taskExecutor, AutoCompleteSuggestionProvider<?> suggestionProvider)
 specifier|public
 name|LinkedFilesEditor
 parameter_list|(
@@ -421,14 +429,14 @@ name|databaseContext
 parameter_list|,
 name|TaskExecutor
 name|taskExecutor
+parameter_list|,
+name|AutoCompleteSuggestionProvider
+argument_list|<
+name|?
+argument_list|>
+name|suggestionProvider
 parameter_list|)
 block|{
-name|this
-operator|.
-name|fieldName
-operator|=
-name|fieldName
-expr_stmt|;
 name|this
 operator|.
 name|viewModel
@@ -436,6 +444,10 @@ operator|=
 operator|new
 name|LinkedFilesEditorViewModel
 argument_list|(
+name|fieldName
+argument_list|,
+name|suggestionProvider
+argument_list|,
 name|dialogService
 argument_list|,
 name|databaseContext
@@ -812,8 +824,6 @@ name|viewModel
 operator|.
 name|bindToEntry
 argument_list|(
-name|fieldName
-argument_list|,
 name|entry
 argument_list|)
 expr_stmt|;

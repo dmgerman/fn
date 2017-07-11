@@ -1,12 +1,12 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|org.jabref.logic.autocompleter
+DECL|package|org.jabref.gui.autocompleter
 package|package
 name|org
 operator|.
 name|jabref
 operator|.
-name|logic
+name|gui
 operator|.
 name|autocompleter
 package|;
@@ -19,6 +19,16 @@ operator|.
 name|util
 operator|.
 name|Objects
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|StringTokenizer
 import|;
 end_import
 
@@ -37,38 +47,45 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Delivers possible completions for a given string.  * Stores the full original value of one field of the given BibtexEntries.  *  * @author kahlert, cordes  */
+comment|/**  * Stores all words in the given field which are separated by SEPARATING_CHARS.  */
 end_comment
 
 begin_class
-DECL|class|EntireFieldAutoCompleter
+DECL|class|WordSuggestionProvider
+specifier|public
 class|class
-name|EntireFieldAutoCompleter
+name|WordSuggestionProvider
 extends|extends
-name|AbstractAutoCompleter
+name|StringSuggestionProvider
+implements|implements
+name|AutoCompleteSuggestionProvider
+argument_list|<
+name|String
+argument_list|>
 block|{
+DECL|field|SEPARATING_CHARS
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|SEPARATING_CHARS
+init|=
+literal|";,\n "
+decl_stmt|;
 DECL|field|fieldName
 specifier|private
 specifier|final
 name|String
 name|fieldName
 decl_stmt|;
-comment|/**      * @see AutoCompleterFactory      */
-DECL|method|EntireFieldAutoCompleter (String fieldName, AutoCompletePreferences preferences)
-name|EntireFieldAutoCompleter
+DECL|method|WordSuggestionProvider (String fieldName)
+specifier|public
+name|WordSuggestionProvider
 parameter_list|(
 name|String
 name|fieldName
-parameter_list|,
-name|AutoCompletePreferences
-name|preferences
 parameter_list|)
 block|{
-name|super
-argument_list|(
-name|preferences
-argument_list|)
-expr_stmt|;
 name|this
 operator|.
 name|fieldName
@@ -83,23 +100,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|isSingleUnitField ()
-specifier|public
-name|boolean
-name|isSingleUnitField
-parameter_list|()
-block|{
-return|return
-literal|true
-return|;
-block|}
-comment|/**      * {@inheritDoc}      * Stores the full original value of the given field.      */
-annotation|@
-name|Override
-DECL|method|addBibtexEntry (BibEntry entry)
+DECL|method|indexEntry (BibEntry entry)
 specifier|public
 name|void
-name|addBibtexEntry
+name|indexEntry
 parameter_list|(
 name|BibEntry
 name|entry
@@ -125,13 +129,36 @@ name|ifPresent
 argument_list|(
 name|fieldValue
 lambda|->
-name|addItemToIndex
+block|{
+name|StringTokenizer
+name|tok
+init|=
+operator|new
+name|StringTokenizer
 argument_list|(
 name|fieldValue
+argument_list|,
+name|SEPARATING_CHARS
+argument_list|)
+decl_stmt|;
+while|while
+condition|(
+name|tok
 operator|.
-name|trim
+name|hasMoreTokens
+argument_list|()
+condition|)
+block|{
+name|addPossibleSuggestions
+argument_list|(
+name|tok
+operator|.
+name|nextToken
 argument_list|()
 argument_list|)
+expr_stmt|;
+block|}
+block|}
 argument_list|)
 expr_stmt|;
 block|}
