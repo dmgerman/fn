@@ -28,6 +28,18 @@ name|javafx
 operator|.
 name|beans
 operator|.
+name|binding
+operator|.
+name|ObjectBinding
+import|;
+end_import
+
+begin_import
+import|import
+name|javafx
+operator|.
+name|beans
+operator|.
 name|property
 operator|.
 name|SimpleStringProperty
@@ -153,6 +165,14 @@ name|?
 argument_list|>
 name|suggestionProvider
 decl_stmt|;
+DECL|field|fieldBinding
+specifier|private
+name|ObjectBinding
+argument_list|<
+name|String
+argument_list|>
+name|fieldBinding
+decl_stmt|;
 DECL|method|AbstractEditorViewModel (String fieldName, AutoCompleteSuggestionProvider<?> suggestionProvider)
 specifier|public
 name|AbstractEditorViewModel
@@ -205,6 +225,16 @@ name|entry
 operator|=
 name|entry
 expr_stmt|;
+comment|// We need to keep a reference to the binding since it otherwise gets discarded
+name|fieldBinding
+operator|=
+name|entry
+operator|.
+name|getFieldBinding
+argument_list|(
+name|fieldName
+argument_list|)
+expr_stmt|;
 name|BindingsHelper
 operator|.
 name|bindBidirectional
@@ -214,12 +244,7 @@ operator|.
 name|textProperty
 argument_list|()
 argument_list|,
-name|entry
-operator|.
-name|getFieldBinding
-argument_list|(
-name|fieldName
-argument_list|)
+name|fieldBinding
 argument_list|,
 name|newValue
 lambda|->
