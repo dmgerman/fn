@@ -220,6 +220,11 @@ argument_list|,
 name|viewModel
 operator|::
 name|complete
+argument_list|,
+name|viewModel
+operator|.
+name|getAutoCompletionStrategy
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

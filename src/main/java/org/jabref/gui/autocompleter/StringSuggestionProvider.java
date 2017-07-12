@@ -24,20 +24,6 @@ end_import
 
 begin_import
 import|import
-name|impl
-operator|.
-name|org
-operator|.
-name|controlsfx
-operator|.
-name|autocompletion
-operator|.
-name|SuggestionProvider
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|controlsfx
