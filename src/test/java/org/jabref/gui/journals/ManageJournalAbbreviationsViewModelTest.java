@@ -3349,15 +3349,15 @@ argument_list|)
 expr_stmt|;
 name|expected
 operator|=
+literal|"EntryEntry = EE"
+operator|+
+name|NEWLINE
+operator|+
 literal|"Abbreviations = Abb"
 operator|+
 name|NEWLINE
 operator|+
 literal|"Test Entry = TE"
-operator|+
-name|NEWLINE
-operator|+
-literal|"MoreEntries = ME"
 operator|+
 name|NEWLINE
 operator|+
