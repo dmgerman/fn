@@ -1616,6 +1616,22 @@ name|database
 operator|.
 name|event
 operator|.
+name|BibDatabaseContextChangedEvent
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|database
+operator|.
+name|event
+operator|.
 name|EntryAddedEvent
 import|;
 end_import
@@ -2154,6 +2170,26 @@ name|bibDatabaseContext
 operator|=
 name|bibDatabaseContext
 expr_stmt|;
+name|bibDatabaseContext
+operator|.
+name|getDatabase
+argument_list|()
+operator|.
+name|registerListener
+argument_list|(
+name|this
+argument_list|)
+expr_stmt|;
+name|bibDatabaseContext
+operator|.
+name|getMetaData
+argument_list|()
+operator|.
+name|registerListener
+argument_list|(
+name|this
+argument_list|)
+expr_stmt|;
 name|this
 operator|.
 name|sidePaneManager
@@ -2367,6 +2403,23 @@ name|update
 argument_list|()
 expr_stmt|;
 comment|// Runs the update() method on the EDT.
+block|}
+annotation|@
+name|Subscribe
+DECL|method|listen (BibDatabaseContextChangedEvent event)
+specifier|public
+name|void
+name|listen
+parameter_list|(
+name|BibDatabaseContextChangedEvent
+name|event
+parameter_list|)
+block|{
+name|this
+operator|.
+name|markBaseChanged
+argument_list|()
+expr_stmt|;
 block|}
 comment|/**      * Returns a collection of suggestion providers, which are populated from the current library.      */
 DECL|method|getSuggestionProviders ()
