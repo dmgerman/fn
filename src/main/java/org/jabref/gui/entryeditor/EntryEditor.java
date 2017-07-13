@@ -168,16 +168,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|HashSet
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|List
 import|;
 end_import
@@ -199,16 +189,6 @@ operator|.
 name|util
 operator|.
 name|Optional
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Set
 import|;
 end_import
 
@@ -503,20 +483,6 @@ operator|.
 name|actions
 operator|.
 name|Actions
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|contentselector
-operator|.
-name|FieldContentSelector
 import|;
 end_import
 
@@ -1112,20 +1078,6 @@ specifier|private
 specifier|final
 name|BasePanel
 name|panel
-decl_stmt|;
-DECL|field|contentSelectors
-specifier|private
-specifier|final
-name|Set
-argument_list|<
-name|FieldContentSelector
-argument_list|>
-name|contentSelectors
-init|=
-operator|new
-name|HashSet
-argument_list|<>
-argument_list|()
 decl_stmt|;
 DECL|field|helpAction
 specifier|private
@@ -2664,8 +2616,6 @@ name|WEST
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * getExtra checks the field name against InternalBibtexFields.getFieldExtras(name).      * If the name has an entry, the proper component to be shown is created and      * returned. Otherwise, null is returned. In addition, e.g. listeners can be      * added to the field editor, even if no component is returned.      *      * @return Component to show, or null if none.      */
-comment|/*     public Optional<JComponent> getExtra(final FieldEditor editor) {         final String fieldName = editor.getFieldName();          final Set<FieldProperty> fieldExtras = InternalBibtexFields.getFieldProperties(fieldName);          if (!panel.getBibDatabaseContext().getMetaData().getContentSelectorValuesForField(fieldName).isEmpty()) {             return FieldExtraComponents.getSelectorExtraComponent(frame, panel, editor, contentSelectors,                     storeFieldAction);         }         return Optional.empty();     }     */
 DECL|method|addSearchListener (SearchQueryHighlightListener listener)
 name|void
 name|addSearchListener
@@ -2934,37 +2884,6 @@ expr_stmt|;
 name|fieldsEditorTab
 operator|.
 name|focus
-argument_list|()
-expr_stmt|;
-block|}
-block|}
-block|}
-DECL|method|updateAllContentSelectors ()
-specifier|public
-name|void
-name|updateAllContentSelectors
-parameter_list|()
-block|{
-if|if
-condition|(
-operator|!
-name|contentSelectors
-operator|.
-name|isEmpty
-argument_list|()
-condition|)
-block|{
-for|for
-control|(
-name|FieldContentSelector
-name|contentSelector
-range|:
-name|contentSelectors
-control|)
-block|{
-name|contentSelector
-operator|.
-name|rebuildComboBox
 argument_list|()
 expr_stmt|;
 block|}

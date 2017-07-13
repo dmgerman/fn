@@ -12379,25 +12379,6 @@ block|}
 end_function
 
 begin_comment
-comment|/**      * This method iterates through all existing entry editors in this BasePanel, telling each to update all its      * instances of FieldContentSelector. This is done to ensure that the list of words in each selector is up-to-date      * after the user has made changes in the Manage dialog.      */
-end_comment
-
-begin_function
-DECL|method|updateAllContentSelectors ()
-specifier|public
-name|void
-name|updateAllContentSelectors
-parameter_list|()
-block|{
-name|currentEditor
-operator|.
-name|updateAllContentSelectors
-argument_list|()
-expr_stmt|;
-block|}
-end_function
-
-begin_comment
 comment|/**      * Set the preview active state for all BasePanel instances.      */
 end_comment
 

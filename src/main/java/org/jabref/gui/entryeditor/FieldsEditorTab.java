@@ -779,7 +779,6 @@ argument_list|)
 expr_stmt|;
 comment|/*             // TODO: Reenable this             if (i == 0) {                 activeField = fieldEditor;             }             */
 comment|/*             // TODO: Reenable this             if (!compressed) {                 fieldEditor.getPane().setPreferredSize(new Dimension(100, Math.max(defaultHeight, wHeight)));             }             */
-comment|/*             // TODO: Reenable content selector             if (!panel.getBibDatabaseContext().getMetaData().getContentSelectorValuesForField(editor.getFieldName()).isEmpty()) {                 FieldContentSelector ws = new FieldContentSelector(frame, panel, frame, editor, storeFieldAction, false,                         ", ");                 contentSelectors.add(ws);                 controls.add(ws, BorderLayout.NORTH);             }             //} else if (!panel.getBibDatabaseContext().getMetaData().getContentSelectorValuesForField(fieldName).isEmpty()) {             //return FieldExtraComponents.getSelectorExtraComponent(frame, panel, editor, contentSelectors, storeFieldAction);              */
 name|labels
 operator|.
 name|add

@@ -44,11 +44,15 @@ end_import
 
 begin_import
 import|import
-name|javafx
+name|org
 operator|.
-name|util
+name|jabref
 operator|.
-name|Callback
+name|model
+operator|.
+name|entry
+operator|.
+name|BibEntry
 import|;
 end_import
 
@@ -76,16 +80,9 @@ specifier|public
 class|class
 name|ContentSelectorSuggestionProvider
 implements|implements
-name|Callback
-argument_list|<
-name|AutoCompletionBinding
-operator|.
-name|ISuggestionRequest
-argument_list|,
-name|Collection
+name|AutoCompleteSuggestionProvider
 argument_list|<
 name|String
-argument_list|>
 argument_list|>
 block|{
 DECL|field|suggestionProvider
@@ -163,6 +160,13 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|suggestionProvider
+operator|!=
+literal|null
+condition|)
+block|{
 name|suggestions
 operator|.
 name|addAll
@@ -175,6 +179,7 @@ name|request
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 name|suggestions
 operator|.
 name|addAll
@@ -185,6 +190,25 @@ expr_stmt|;
 return|return
 name|suggestions
 return|;
+block|}
+annotation|@
+name|Override
+DECL|method|indexEntry (BibEntry entry)
+specifier|public
+name|void
+name|indexEntry
+parameter_list|(
+name|BibEntry
+name|entry
+parameter_list|)
+block|{
+name|suggestionProvider
+operator|.
+name|indexEntry
+argument_list|(
+name|entry
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 end_class
