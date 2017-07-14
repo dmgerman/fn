@@ -596,6 +596,11 @@ operator|.
 name|upgradeStoredCustomEntryTypes
 argument_list|()
 expr_stmt|;
+name|PreferencesMigrations
+operator|.
+name|upgradeKeyBindingsToJavaFX
+argument_list|()
+expr_stmt|;
 comment|// Update handling of special fields based on preferences
 name|InternalBibtexFields
 operator|.

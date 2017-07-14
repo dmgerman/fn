@@ -3251,6 +3251,25 @@ name|VERSION_IGNORED_UPDATE
 init|=
 literal|"versionIgnoreUpdate"
 decl_stmt|;
+comment|//KeyBindings - keys - public because needed for pref migration
+DECL|field|BINDINGS
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|BINDINGS
+init|=
+literal|"bindings"
+decl_stmt|;
+DECL|field|BIND_NAMES
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|BIND_NAMES
+init|=
+literal|"bindNames"
+decl_stmt|;
 comment|// User
 DECL|field|USER_ID
 specifier|private
@@ -3287,24 +3306,6 @@ name|String
 name|USE_IEEE_ABRV
 init|=
 literal|"useIEEEAbrv"
-decl_stmt|;
-DECL|field|BINDINGS
-specifier|private
-specifier|static
-specifier|final
-name|String
-name|BINDINGS
-init|=
-literal|"bindings"
-decl_stmt|;
-DECL|field|BIND_NAMES
-specifier|private
-specifier|static
-specifier|final
-name|String
-name|BIND_NAMES
-init|=
-literal|"bindNames"
 decl_stmt|;
 comment|// Telemetry collection
 DECL|field|COLLECT_TELEMETRY
