@@ -1142,7 +1142,7 @@ specifier|private
 name|boolean
 name|movingToDifferentEntry
 decl_stmt|;
-DECL|method|EntryEditor (JabRefFrame frame, BasePanel panel, BibEntry entry)
+DECL|method|EntryEditor (JabRefFrame frame, BasePanel panel, BibEntry entry, String lastTabName)
 specifier|public
 name|EntryEditor
 parameter_list|(
@@ -1154,6 +1154,9 @@ name|panel
 parameter_list|,
 name|BibEntry
 name|entry
+parameter_list|,
+name|String
+name|lastTabName
 parameter_list|)
 block|{
 name|this
@@ -1351,7 +1354,9 @@ parameter_list|()
 lambda|->
 block|{
 name|addTabs
-argument_list|()
+argument_list|(
+name|lastTabName
+argument_list|)
 expr_stmt|;
 name|container
 operator|.
@@ -1417,6 +1422,57 @@ argument_list|)
 expr_stmt|;
 name|setupKeyBindings
 argument_list|()
+expr_stmt|;
+block|}
+DECL|method|selectLastUsedTab (String lastTabName)
+specifier|private
+name|void
+name|selectLastUsedTab
+parameter_list|(
+name|String
+name|lastTabName
+parameter_list|)
+block|{
+name|tabbed
+operator|.
+name|getTabs
+argument_list|()
+operator|.
+name|stream
+argument_list|()
+operator|.
+name|filter
+argument_list|(
+name|tab
+lambda|->
+name|lastTabName
+operator|.
+name|equals
+argument_list|(
+name|tab
+operator|.
+name|getText
+argument_list|()
+argument_list|)
+argument_list|)
+operator|.
+name|findFirst
+argument_list|()
+operator|.
+name|ifPresent
+argument_list|(
+name|tab
+lambda|->
+name|tabbed
+operator|.
+name|getSelectionModel
+argument_list|()
+operator|.
+name|select
+argument_list|(
+name|tab
+argument_list|)
+argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Set-up key bindings specific for the entry editor.      */
@@ -1549,11 +1605,14 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|addTabs ()
+DECL|method|addTabs (String lastTabName)
 specifier|private
 name|void
 name|addTabs
-parameter_list|()
+parameter_list|(
+name|String
+name|lastTabName
+parameter_list|)
 block|{
 name|EntryType
 name|type
@@ -1900,6 +1959,14 @@ operator|.
 name|select
 argument_list|(
 name|sourceTab
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|selectLastUsedTab
+argument_list|(
+name|lastTabName
 argument_list|)
 expr_stmt|;
 block|}

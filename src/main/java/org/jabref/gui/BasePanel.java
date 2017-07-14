@@ -2125,7 +2125,7 @@ specifier|private
 name|SuggestionProviders
 name|suggestionProviders
 decl_stmt|;
-comment|/** the query the user searches when this basepanel is active */
+comment|// the query the user searches when this BasePanel is active
 DECL|field|currentSearchQuery
 specifier|private
 name|Optional
@@ -5638,7 +5638,7 @@ end_expr_stmt
 
 begin_comment
 unit|}
-comment|/**      * Generates and copies citations based on the selected entries to the clipboard      * @param outputFormat the desired {@link CitationStyleOutputFormat}      */
+comment|/**      * Generates and copies citations based on the selected entries to the clipboard      *      * @param outputFormat the desired {@link CitationStyleOutputFormat}      */
 end_comment
 
 begin_function
@@ -5875,7 +5875,7 @@ block|}
 end_function
 
 begin_comment
-comment|/**      * Removes the selected entries from the database      * @param cut If false the user will get asked if he really wants to delete the entries, and it will be localized      *            as "deleted".      *            If true the action will be localized as "cut"      */
+comment|/**      * Removes the selected entries from the database      *      * @param cut If false the user will get asked if he really wants to delete the entries, and it will be localized as      *            "deleted". If true the action will be localized as "cut"      */
 end_comment
 
 begin_function
@@ -9775,14 +9775,14 @@ block|}
 end_function
 
 begin_function
-DECL|method|showEntry (final BibEntry be)
+DECL|method|showEntry (final BibEntry bibEntry)
 specifier|public
 name|void
 name|showEntry
 parameter_list|(
 specifier|final
 name|BibEntry
-name|be
+name|bibEntry
 parameter_list|)
 block|{
 if|if
@@ -9790,7 +9790,7 @@ condition|(
 name|getShowing
 argument_list|()
 operator|==
-name|be
+name|bibEntry
 condition|)
 block|{
 if|if
@@ -9815,7 +9815,7 @@ argument_list|)
 expr_stmt|;
 name|showEntry
 argument_list|(
-name|be
+name|bibEntry
 argument_list|)
 expr_stmt|;
 block|}
@@ -9859,16 +9859,9 @@ comment|// We must instantiate a new editor.
 name|EntryEditor
 name|entryEditor
 init|=
-operator|new
-name|EntryEditor
+name|getEntryEditor
 argument_list|(
-name|frame
-argument_list|,
-name|BasePanel
-operator|.
-name|this
-argument_list|,
-name|be
+name|bibEntry
 argument_list|)
 decl_stmt|;
 if|if
@@ -9893,14 +9886,14 @@ argument_list|)
 expr_stmt|;
 name|newEntryShowing
 argument_list|(
-name|be
+name|bibEntry
 argument_list|)
 expr_stmt|;
 block|}
 end_function
 
 begin_comment
-comment|/**      * Get an entry editor ready to edit the given entry. If an appropriate editor is already cached, it will be updated      * and returned.      *      * @param entry The entry to be edited.      * @return A suitable entry editor.      */
+comment|/**      * Get an entry editor ready to edit the given entry.      *      * @param entry The entry to be edited.      * @return A suitable entry editor.      */
 end_comment
 
 begin_function
@@ -9913,7 +9906,26 @@ name|BibEntry
 name|entry
 parameter_list|)
 block|{
-comment|// Then start the new one:
+name|String
+name|lastTabName
+init|=
+literal|""
+decl_stmt|;
+if|if
+condition|(
+name|currentEditor
+operator|!=
+literal|null
+condition|)
+block|{
+name|lastTabName
+operator|=
+name|currentEditor
+operator|.
+name|getVisibleTabName
+argument_list|()
+expr_stmt|;
+block|}
 return|return
 operator|new
 name|EntryEditor
@@ -9925,6 +9937,8 @@ operator|.
 name|this
 argument_list|,
 name|entry
+argument_list|,
+name|lastTabName
 argument_list|)
 return|;
 block|}
@@ -11283,7 +11297,7 @@ block|}
 end_function
 
 begin_comment
-comment|/**      * Activates or deactivates the entry preview, depending on the argument. When deactivating, makes sure that any      * visible preview is hidden.      *      * @param enabled      */
+comment|/**      * Activates or deactivates the entry preview, depending on the argument. When deactivating, makes sure that any      * visible preview is hidden.      */
 end_comment
 
 begin_function
