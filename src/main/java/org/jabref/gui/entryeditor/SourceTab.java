@@ -565,6 +565,10 @@ parameter_list|)
 block|{
 if|if
 condition|(
+name|codeArea
+operator|!=
+literal|null
+operator|&&
 name|this
 operator|.
 name|entry
