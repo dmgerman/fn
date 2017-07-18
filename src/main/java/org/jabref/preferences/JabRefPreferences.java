@@ -3819,15 +3819,6 @@ name|defaults
 operator|.
 name|put
 argument_list|(
-name|FONT_FAMILY
-argument_list|,
-literal|"Arial"
-argument_list|)
-expr_stmt|;
-name|defaults
-operator|.
-name|put
-argument_list|(
 name|WIN_LOOK_AND_FEEL
 argument_list|,
 literal|"com.jgoodies.looks.windows.WindowsLookAndFeel"
