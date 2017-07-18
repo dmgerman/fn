@@ -1,10 +1,12 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|org.jabref
+DECL|package|org.jabref.architecture
 package|package
 name|org
 operator|.
 name|jabref
+operator|.
+name|architecture
 package|;
 end_package
 
@@ -179,6 +181,8 @@ import|import static
 name|org
 operator|.
 name|jabref
+operator|.
+name|architecture
 operator|.
 name|MainArchitectureTests
 operator|.

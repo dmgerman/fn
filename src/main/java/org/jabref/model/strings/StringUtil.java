@@ -108,6 +108,18 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|architecture
+operator|.
+name|ApacheCommonsLang3Allowed
+import|;
+end_import
+
+begin_import
+import|import
 name|com
 operator|.
 name|google
@@ -135,6 +147,11 @@ import|;
 end_import
 
 begin_class
+annotation|@
+name|ApacheCommonsLang3Allowed
+argument_list|(
+literal|"There is no equivalent in Google's Guava"
+argument_list|)
 DECL|class|StringUtil
 specifier|public
 class|class
@@ -2981,6 +2998,7 @@ name|string
 argument_list|)
 return|;
 block|}
+comment|/**      * Checks if a CharSequence is not empty (""), not null and not whitespace only.      */
 DECL|method|isNotBlank (String string)
 specifier|public
 specifier|static
@@ -2991,6 +3009,7 @@ name|String
 name|string
 parameter_list|)
 block|{
+comment|// No Guava equivalent existing
 return|return
 name|StringUtils
 operator|.
@@ -3198,6 +3217,11 @@ name|toString
 argument_list|()
 return|;
 block|}
+annotation|@
+name|ApacheCommonsLang3Allowed
+argument_list|(
+literal|"No Guava equivalent existing - see https://stackoverflow.com/q/3322152/873282 for a list of other implementations"
+argument_list|)
 DECL|method|stripAccents (String searchQuery)
 specifier|public
 specifier|static
@@ -3317,6 +3341,11 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+annotation|@
+name|ApacheCommonsLang3Allowed
+argument_list|(
+literal|"No direct Guava equivalent existing - see https://stackoverflow.com/q/16560635/873282"
+argument_list|)
 DECL|method|containsIgnoreCase (String text, String searchString)
 specifier|public
 specifier|static
