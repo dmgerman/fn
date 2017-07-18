@@ -1876,9 +1876,6 @@ name|panel
 operator|.
 name|getBibDatabaseContext
 argument_list|()
-operator|.
-name|getMode
-argument_list|()
 argument_list|,
 name|entry
 argument_list|)
