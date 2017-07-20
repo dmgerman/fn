@@ -57,7 +57,7 @@ name|TitleParser
 block|{
 DECL|field|buffer
 specifier|private
-name|StringBuffer
+name|StringBuilder
 name|buffer
 decl_stmt|;
 DECL|field|wordStart
@@ -285,7 +285,7 @@ expr_stmt|;
 name|buffer
 operator|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 expr_stmt|;
 block|}
