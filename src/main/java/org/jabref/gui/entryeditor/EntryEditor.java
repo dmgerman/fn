@@ -1332,6 +1332,18 @@ case|:
 case|case
 name|SELECT_ALL
 case|:
+case|case
+name|ENTRY_EDITOR_NEXT_PANEL
+case|:
+case|case
+name|ENTRY_EDITOR_NEXT_PANEL_2
+case|:
+case|case
+name|ENTRY_EDITOR_PREVIOUS_PANEL
+case|:
+case|case
+name|ENTRY_EDITOR_PREVIOUS_PANEL_2
+case|:
 name|e
 operator|.
 name|consume
@@ -1488,7 +1500,7 @@ name|addEventFilter
 argument_list|(
 name|KeyEvent
 operator|.
-name|ANY
+name|KEY_PRESSED
 argument_list|,
 name|event
 lambda|->
