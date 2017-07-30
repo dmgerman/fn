@@ -2415,10 +2415,17 @@ name|BibDatabaseContextChangedEvent
 name|event
 parameter_list|)
 block|{
+name|SwingUtilities
+operator|.
+name|invokeLater
+argument_list|(
+parameter_list|()
+lambda|->
 name|this
 operator|.
 name|markBaseChanged
 argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Returns a collection of suggestion providers, which are populated from the current library.      */
