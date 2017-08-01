@@ -13139,6 +13139,14 @@ condition|)
 block|{
 comment|// User is currently editing a field:
 comment|// Check if it is the preamble:
+name|FieldEditor
+name|fieldEditor
+init|=
+operator|(
+name|FieldEditor
+operator|)
+name|focused
+decl_stmt|;
 if|if
 condition|(
 operator|(
@@ -13148,12 +13156,15 @@ literal|null
 operator|)
 operator|&&
 operator|(
-name|focused
-operator|==
+name|fieldEditor
+operator|.
+name|equals
+argument_list|(
 name|preambleEditor
 operator|.
 name|getFieldEditor
 argument_list|()
+argument_list|)
 operator|)
 condition|)
 block|{
