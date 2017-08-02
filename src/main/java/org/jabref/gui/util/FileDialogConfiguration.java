@@ -482,8 +482,15 @@ expr_stmt|;
 block|}
 comment|//The lines above work also if the dir does not exist at all!
 comment|//NULL is accepted by the filechooser as no inital path
+comment|//Explicit null check, if somehow the parent is null, as Files.exists throws an NPE otherwise
 if|if
 condition|(
+operator|(
+name|directory
+operator|!=
+literal|null
+operator|)
+operator|&&
 operator|!
 name|Files
 operator|.
