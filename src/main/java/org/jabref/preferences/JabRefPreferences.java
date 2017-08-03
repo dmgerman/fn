@@ -4466,7 +4466,7 @@ name|put
 argument_list|(
 name|PREFS_EXPORT_PATH
 argument_list|,
-name|WORKING_DIRECTORY
+name|USER_HOME
 argument_list|)
 expr_stmt|;
 name|defaults

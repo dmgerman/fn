@@ -362,6 +362,7 @@ comment|// Key binding preferences
 DECL|method|getKeyPrefs ()
 specifier|public
 specifier|static
+specifier|synchronized
 name|KeyBindingRepository
 name|getKeyPrefs
 parameter_list|()

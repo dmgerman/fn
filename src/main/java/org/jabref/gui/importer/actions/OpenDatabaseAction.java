@@ -1152,7 +1152,7 @@ operator|.
 name|getBibDatabaseContext
 argument_list|()
 operator|.
-name|getDatabaseFile
+name|getDatabasePath
 argument_list|()
 operator|.
 name|isPresent
@@ -1164,7 +1164,7 @@ operator|.
 name|getBibDatabaseContext
 argument_list|()
 operator|.
-name|getDatabaseFile
+name|getDatabasePath
 argument_list|()
 operator|.
 name|get
