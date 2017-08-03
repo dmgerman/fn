@@ -378,6 +378,9 @@ name|toString
 argument_list|()
 argument_list|)
 operator|.
+name|sorted
+argument_list|()
+operator|.
 name|collect
 argument_list|(
 name|Collectors
@@ -393,11 +396,12 @@ argument_list|(
 name|imagesReferencedFromProperties
 argument_list|)
 expr_stmt|;
+comment|// JabRef-icon-256.png currently used in snapcraft only
 name|assertEquals
 argument_list|(
 literal|"Images are in the folder that are unused"
 argument_list|,
-literal|"[red.png]"
+literal|"[JabRef-icon-256.png, red.png]"
 argument_list|,
 name|fileNamesInFolder
 operator|.
