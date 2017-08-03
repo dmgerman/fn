@@ -393,6 +393,26 @@ operator|.
 name|EDIT
 argument_list|)
 block|,
+comment|//We have to put Entry Editor Previous before, because otherwise the decrease font size is found first
+DECL|enumConstant|ENTRY_EDITOR_PREVIOUS_PANEL_2
+name|ENTRY_EDITOR_PREVIOUS_PANEL_2
+argument_list|(
+literal|"Entry editor, previous panel 2"
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Entry editor, previous panel 2"
+argument_list|)
+argument_list|,
+literal|"ctrl+MINUS"
+argument_list|,
+name|KeyBindingCategory
+operator|.
+name|VIEW
+argument_list|)
+block|,
 DECL|enumConstant|DECREASE_TABLE_FONT_SIZE
 name|DECREASE_TABLE_FONT_SIZE
 argument_list|(
@@ -577,25 +597,6 @@ literal|"Entry editor, previous panel"
 argument_list|)
 argument_list|,
 literal|"ctrl+shift+TAB"
-argument_list|,
-name|KeyBindingCategory
-operator|.
-name|VIEW
-argument_list|)
-block|,
-DECL|enumConstant|ENTRY_EDITOR_PREVIOUS_PANEL_2
-name|ENTRY_EDITOR_PREVIOUS_PANEL_2
-argument_list|(
-literal|"Entry editor, previous panel 2"
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Entry editor, previous panel 2"
-argument_list|)
-argument_list|,
-literal|"ctrl+MINUS"
 argument_list|,
 name|KeyBindingCategory
 operator|.

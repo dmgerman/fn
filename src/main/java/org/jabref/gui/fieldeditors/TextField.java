@@ -168,20 +168,6 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|autocompleter
-operator|.
-name|AutoCompleteListener
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
 name|util
 operator|.
 name|component
@@ -258,11 +244,6 @@ DECL|field|undo
 specifier|private
 name|UndoManager
 name|undo
-decl_stmt|;
-DECL|field|autoCompleteListener
-specifier|private
-name|AutoCompleteListener
-name|autoCompleteListener
 decl_stmt|;
 DECL|method|TextField (String fieldName, String content, boolean changeColorOnFocus)
 specifier|public
@@ -615,46 +596,6 @@ name|redo
 parameter_list|()
 block|{
 comment|// Nothing
-block|}
-annotation|@
-name|Override
-DECL|method|setAutoCompleteListener (AutoCompleteListener listener)
-specifier|public
-name|void
-name|setAutoCompleteListener
-parameter_list|(
-name|AutoCompleteListener
-name|listener
-parameter_list|)
-block|{
-name|autoCompleteListener
-operator|=
-name|listener
-expr_stmt|;
-block|}
-annotation|@
-name|Override
-DECL|method|clearAutoCompleteSuggestion ()
-specifier|public
-name|void
-name|clearAutoCompleteSuggestion
-parameter_list|()
-block|{
-if|if
-condition|(
-name|autoCompleteListener
-operator|!=
-literal|null
-condition|)
-block|{
-name|autoCompleteListener
-operator|.
-name|clearCurrentSuggestion
-argument_list|(
-name|this
-argument_list|)
-expr_stmt|;
-block|}
 block|}
 DECL|method|setupPasteListener ()
 specifier|private

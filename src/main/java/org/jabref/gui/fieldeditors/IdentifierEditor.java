@@ -140,6 +140,20 @@ name|jabref
 operator|.
 name|gui
 operator|.
+name|autocompleter
+operator|.
+name|AutoCompleteSuggestionProvider
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
 name|fieldeditors
 operator|.
 name|contextmenu
@@ -228,12 +242,6 @@ name|HBox
 implements|implements
 name|FieldEditorFX
 block|{
-DECL|field|fieldName
-specifier|private
-specifier|final
-name|String
-name|fieldName
-decl_stmt|;
 DECL|field|viewModel
 annotation|@
 name|FXML
@@ -270,7 +278,7 @@ name|BibEntry
 argument_list|>
 name|entry
 decl_stmt|;
-DECL|method|IdentifierEditor (String fieldName, TaskExecutor taskExecutor, DialogService dialogService)
+DECL|method|IdentifierEditor (String fieldName, TaskExecutor taskExecutor, DialogService dialogService, AutoCompleteSuggestionProvider<?> suggestionProvider)
 specifier|public
 name|IdentifierEditor
 parameter_list|(
@@ -282,14 +290,14 @@ name|taskExecutor
 parameter_list|,
 name|DialogService
 name|dialogService
+parameter_list|,
+name|AutoCompleteSuggestionProvider
+argument_list|<
+name|?
+argument_list|>
+name|suggestionProvider
 parameter_list|)
 block|{
-name|this
-operator|.
-name|fieldName
-operator|=
-name|fieldName
-expr_stmt|;
 name|this
 operator|.
 name|viewModel
@@ -298,6 +306,8 @@ operator|new
 name|IdentifierEditorViewModel
 argument_list|(
 name|fieldName
+argument_list|,
+name|suggestionProvider
 argument_list|,
 name|taskExecutor
 argument_list|,
@@ -462,8 +472,6 @@ name|viewModel
 operator|.
 name|bindToEntry
 argument_list|(
-name|fieldName
-argument_list|,
 name|entry
 argument_list|)
 expr_stmt|;

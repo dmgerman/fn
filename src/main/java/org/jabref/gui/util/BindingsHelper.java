@@ -194,22 +194,6 @@ name|Node
 import|;
 end_import
 
-begin_import
-import|import
-name|net
-operator|.
-name|corda
-operator|.
-name|client
-operator|.
-name|jfx
-operator|.
-name|utils
-operator|.
-name|MappedList
-import|;
-end_import
-
 begin_comment
 comment|/**  * Helper methods for javafx binding.  * Some methods are taken from https://bugs.openjdk.java.net/browse/JDK-8134679  */
 end_comment
@@ -410,10 +394,7 @@ name|A
 parameter_list|,
 name|B
 parameter_list|>
-name|ObservableList
-argument_list|<
-name|B
-argument_list|>
+name|MappedList
 name|mapBacked
 parameter_list|(
 name|ObservableList
@@ -439,8 +420,6 @@ argument_list|(
 name|source
 argument_list|,
 name|mapper
-operator|::
-name|apply
 argument_list|)
 return|;
 block|}

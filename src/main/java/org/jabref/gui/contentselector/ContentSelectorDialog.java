@@ -811,6 +811,20 @@ name|HashMap
 argument_list|<>
 argument_list|()
 decl_stmt|;
+DECL|field|removedFields
+specifier|private
+specifier|final
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|removedFields
+init|=
+operator|new
+name|ArrayList
+argument_list|<>
+argument_list|()
+decl_stmt|;
 DECL|field|wordListModel
 specifier|private
 name|DefaultListModel
@@ -826,7 +840,6 @@ argument_list|()
 decl_stmt|;
 DECL|field|wordList
 specifier|private
-specifier|final
 name|JList
 argument_list|<
 name|String
@@ -842,7 +855,6 @@ argument_list|)
 decl_stmt|;
 DECL|field|wPane
 specifier|private
-specifier|final
 name|JScrollPane
 name|wPane
 init|=
@@ -851,20 +863,6 @@ name|JScrollPane
 argument_list|(
 name|wordList
 argument_list|)
-decl_stmt|;
-DECL|field|removedFields
-specifier|private
-specifier|final
-name|List
-argument_list|<
-name|String
-argument_list|>
-name|removedFields
-init|=
-operator|new
-name|ArrayList
-argument_list|<>
-argument_list|()
 decl_stmt|;
 DECL|field|currentField
 specifier|private
@@ -1823,12 +1821,6 @@ name|applyChanges
 parameter_list|()
 block|{
 name|boolean
-name|changedFieldSet
-init|=
-literal|false
-decl_stmt|;
-comment|// Watch if we need to rebuild entry editors
-name|boolean
 name|anythingChanged
 init|=
 literal|false
@@ -1851,10 +1843,6 @@ name|clearContentSelectors
 argument_list|(
 name|fieldName
 argument_list|)
-expr_stmt|;
-name|changedFieldSet
-operator|=
-literal|true
 expr_stmt|;
 name|anythingChanged
 operator|=
@@ -2063,7 +2051,7 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-name|changedFieldSet
+name|anythingChanged
 operator|=
 literal|true
 expr_stmt|;
@@ -2090,32 +2078,17 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|// Update all selectors in the current BasePanel.
-if|if
-condition|(
-name|changedFieldSet
-condition|)
-block|{
-comment|// TODO: We have added or removed content selectors, update the entry editor
-block|}
-elseif|else
 if|if
 condition|(
 name|anythingChanged
 condition|)
 block|{
-comment|// Enough to update the content selectors, if anything changed
+comment|// Update all selectors in the current BasePanel.
 name|panel
 operator|.
-name|updateAllContentSelectors
+name|setupMainPanel
 argument_list|()
 expr_stmt|;
-block|}
-if|if
-condition|(
-name|anythingChanged
-condition|)
-block|{
 comment|// Mark the database updated so changes are not lost
 name|panel
 operator|.
@@ -2123,22 +2096,6 @@ name|markNonUndoableBaseChanged
 argument_list|()
 expr_stmt|;
 block|}
-name|panel
-operator|.
-name|getAutoCompleters
-argument_list|()
-operator|.
-name|addContentSelectorValuesToAutoCompleters
-argument_list|(
-name|panel
-operator|.
-name|getBibDatabaseContext
-argument_list|()
-operator|.
-name|getMetaData
-argument_list|()
-argument_list|)
-expr_stmt|;
 block|}
 comment|/**      * Set the contents of the field selector list.      *      */
 DECL|method|setupFieldSelector ()

@@ -132,6 +132,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|HashSet
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|LinkedList
 import|;
 end_import
@@ -153,6 +163,16 @@ operator|.
 name|util
 operator|.
 name|Objects
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
 import|;
 end_import
 
@@ -213,16 +233,18 @@ decl_stmt|;
 DECL|field|abbreviations
 specifier|private
 specifier|final
-name|List
+name|Set
 argument_list|<
 name|Abbreviation
 argument_list|>
 name|abbreviations
 init|=
 operator|new
-name|LinkedList
+name|HashSet
 argument_list|<>
-argument_list|()
+argument_list|(
+literal|5000
+argument_list|)
 decl_stmt|;
 DECL|method|readJournalListFromResource (String resourceFileName)
 specifier|public
@@ -607,17 +629,6 @@ argument_list|,
 name|abbrName
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
-operator|!
-name|abbreviations
-operator|.
-name|contains
-argument_list|(
-name|abbreviation
-argument_list|)
-condition|)
-block|{
 name|this
 operator|.
 name|abbreviations
@@ -627,7 +638,6 @@ argument_list|(
 name|abbreviation
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 DECL|method|getAbbreviations ()

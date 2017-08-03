@@ -64,6 +64,20 @@ name|jabref
 operator|.
 name|gui
 operator|.
+name|autocompleter
+operator|.
+name|AutoCompleteSuggestionProvider
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
 name|util
 operator|.
 name|ControlHelper
@@ -138,12 +152,6 @@ name|HBox
 implements|implements
 name|FieldEditorFX
 block|{
-DECL|field|fieldName
-specifier|private
-specifier|final
-name|String
-name|fieldName
-decl_stmt|;
 DECL|field|viewModel
 annotation|@
 name|FXML
@@ -161,7 +169,7 @@ name|ParsedEntryLink
 argument_list|>
 name|linkedEntriesBar
 decl_stmt|;
-DECL|method|LinkedEntriesEditor (String fieldName, BibDatabaseContext databaseContext)
+DECL|method|LinkedEntriesEditor (String fieldName, BibDatabaseContext databaseContext, AutoCompleteSuggestionProvider<?> suggestionProvider)
 specifier|public
 name|LinkedEntriesEditor
 parameter_list|(
@@ -170,14 +178,14 @@ name|fieldName
 parameter_list|,
 name|BibDatabaseContext
 name|databaseContext
+parameter_list|,
+name|AutoCompleteSuggestionProvider
+argument_list|<
+name|?
+argument_list|>
+name|suggestionProvider
 parameter_list|)
 block|{
-name|this
-operator|.
-name|fieldName
-operator|=
-name|fieldName
-expr_stmt|;
 name|this
 operator|.
 name|viewModel
@@ -185,6 +193,10 @@ operator|=
 operator|new
 name|LinkedEntriesEditorViewModel
 argument_list|(
+name|fieldName
+argument_list|,
+name|suggestionProvider
+argument_list|,
 name|databaseContext
 argument_list|)
 expr_stmt|;
@@ -264,8 +276,6 @@ name|viewModel
 operator|.
 name|bindToEntry
 argument_list|(
-name|fieldName
-argument_list|,
 name|entry
 argument_list|)
 expr_stmt|;

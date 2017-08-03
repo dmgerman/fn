@@ -646,17 +646,15 @@ end_import
 
 begin_import
 import|import
-name|org
+name|com
 operator|.
-name|apache
+name|google
 operator|.
-name|commons
+name|common
 operator|.
-name|lang3
+name|base
 operator|.
-name|exception
-operator|.
-name|ExceptionUtils
+name|Throwables
 import|;
 end_import
 
@@ -1932,9 +1930,9 @@ index|]
 operator|+
 literal|"': "
 operator|+
-name|ExceptionUtils
+name|Throwables
 operator|.
-name|getStackTrace
+name|getStackTraceAsString
 argument_list|(
 name|ex
 argument_list|)
@@ -3122,9 +3120,9 @@ index|]
 operator|+
 literal|"': "
 operator|+
-name|ExceptionUtils
+name|Throwables
 operator|.
-name|getStackTrace
+name|getStackTraceAsString
 argument_list|(
 name|ex
 argument_list|)

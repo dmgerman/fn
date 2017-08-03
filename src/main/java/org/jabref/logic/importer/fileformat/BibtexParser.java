@@ -2498,9 +2498,6 @@ expr_stmt|;
 return|return
 name|parseBracketedText
 argument_list|()
-operator|.
-name|toString
-argument_list|()
 return|;
 block|}
 DECL|method|parseEntry (String entryType)
@@ -3793,17 +3790,17 @@ block|}
 block|}
 DECL|method|parseBracketedText ()
 specifier|private
-name|StringBuffer
+name|String
 name|parseBracketedText
 parameter_list|()
 throws|throws
 name|IOException
 block|{
-name|StringBuffer
+name|StringBuilder
 name|value
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 name|consume
@@ -3999,6 +3996,9 @@ argument_list|)
 expr_stmt|;
 return|return
 name|value
+operator|.
+name|toString
+argument_list|()
 return|;
 block|}
 DECL|method|isClosingBracketNext ()

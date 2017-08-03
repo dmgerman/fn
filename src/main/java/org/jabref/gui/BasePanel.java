@@ -538,6 +538,62 @@ name|jabref
 operator|.
 name|gui
 operator|.
+name|autocompleter
+operator|.
+name|AutoCompletePreferences
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|autocompleter
+operator|.
+name|AutoCompleteUpdater
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|autocompleter
+operator|.
+name|PersonNameSuggestionProvider
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|autocompleter
+operator|.
+name|SuggestionProviders
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
 name|bibtexkeypattern
 operator|.
 name|SearchFixDuplicateLabels
@@ -1186,62 +1242,6 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|autocompleter
-operator|.
-name|AutoCompletePreferences
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
-name|autocompleter
-operator|.
-name|AutoCompleter
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
-name|autocompleter
-operator|.
-name|AutoCompleterFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
-name|autocompleter
-operator|.
-name|ContentAutoCompleters
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
 name|bibtexkeypattern
 operator|.
 name|BibtexKeyPatternUtil
@@ -1616,6 +1616,22 @@ name|database
 operator|.
 name|event
 operator|.
+name|BibDatabaseContextChangedEvent
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|database
+operator|.
+name|event
+operator|.
 name|EntryAddedEvent
 import|;
 end_import
@@ -1675,6 +1691,20 @@ operator|.
 name|entry
 operator|.
 name|FieldName
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|InternalBibtexFields
 import|;
 end_import
 
@@ -2042,10 +2072,7 @@ decl_stmt|;
 comment|// AutoCompleter used in the search bar
 DECL|field|searchAutoCompleter
 specifier|private
-name|AutoCompleter
-argument_list|<
-name|String
-argument_list|>
+name|PersonNameSuggestionProvider
 name|searchAutoCompleter
 decl_stmt|;
 DECL|field|baseChanged
@@ -2093,12 +2120,12 @@ specifier|private
 name|StringDialog
 name|stringDialog
 decl_stmt|;
-DECL|field|autoCompleters
+DECL|field|suggestionProviders
 specifier|private
-name|ContentAutoCompleters
-name|autoCompleters
+name|SuggestionProviders
+name|suggestionProviders
 decl_stmt|;
-comment|/** the query the user searches when this basepanel is active */
+comment|// the query the user searches when this BasePanel is active
 DECL|field|currentSearchQuery
 specifier|private
 name|Optional
@@ -2142,6 +2169,26 @@ operator|.
 name|bibDatabaseContext
 operator|=
 name|bibDatabaseContext
+expr_stmt|;
+name|bibDatabaseContext
+operator|.
+name|getDatabase
+argument_list|()
+operator|.
+name|registerListener
+argument_list|(
+name|this
+argument_list|)
+expr_stmt|;
+name|bibDatabaseContext
+operator|.
+name|getMetaData
+argument_list|()
+operator|.
+name|registerListener
+argument_list|(
+name|this
+argument_list|)
 expr_stmt|;
 name|this
 operator|.
@@ -2357,15 +2404,39 @@ argument_list|()
 expr_stmt|;
 comment|// Runs the update() method on the EDT.
 block|}
-comment|// Returns a collection of AutoCompleters, which are populated from the current library
-DECL|method|getAutoCompleters ()
+annotation|@
+name|Subscribe
+DECL|method|listen (BibDatabaseContextChangedEvent event)
 specifier|public
-name|ContentAutoCompleters
-name|getAutoCompleters
+name|void
+name|listen
+parameter_list|(
+name|BibDatabaseContextChangedEvent
+name|event
+parameter_list|)
+block|{
+name|SwingUtilities
+operator|.
+name|invokeLater
+argument_list|(
+parameter_list|()
+lambda|->
+name|this
+operator|.
+name|markBaseChanged
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Returns a collection of suggestion providers, which are populated from the current library.      */
+DECL|method|getSuggestionProviders ()
+specifier|public
+name|SuggestionProviders
+name|getSuggestionProviders
 parameter_list|()
 block|{
 return|return
-name|autoCompleters
+name|suggestionProviders
 return|;
 block|}
 DECL|method|getTabTitle ()
@@ -5574,7 +5645,7 @@ end_expr_stmt
 
 begin_comment
 unit|}
-comment|/**      * Generates and copies citations based on the selected entries to the clipboard      * @param outputFormat the desired {@link CitationStyleOutputFormat}      */
+comment|/**      * Generates and copies citations based on the selected entries to the clipboard      *      * @param outputFormat the desired {@link CitationStyleOutputFormat}      */
 end_comment
 
 begin_function
@@ -5811,7 +5882,7 @@ block|}
 end_function
 
 begin_comment
-comment|/**      * Removes the selected entries from the database      * @param cut If false the user will get asked if he really wants to delete the entries, and it will be localized      *            as "deleted".      *            If true the action will be localized as "cut"      */
+comment|/**      * Removes the selected entries from the database      *      * @param cut If false the user will get asked if he really wants to delete the entries, and it will be localized as      *            "deleted". If true the action will be localized as "cut"      */
 end_comment
 
 begin_function
@@ -9362,76 +9433,9 @@ name|SearchAutoCompleteListener
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|AutoCompletePreferences
-name|autoCompletePreferences
-init|=
-operator|new
-name|AutoCompletePreferences
-argument_list|(
-name|Globals
-operator|.
-name|prefs
-argument_list|)
-decl_stmt|;
-comment|// Set up AutoCompleters for this panel:
-if|if
-condition|(
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getBoolean
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|AUTO_COMPLETE
-argument_list|)
-condition|)
-block|{
-name|autoCompleters
-operator|=
-operator|new
-name|ContentAutoCompleters
-argument_list|(
-name|getDatabase
-argument_list|()
-argument_list|,
-name|bibDatabaseContext
-operator|.
-name|getMetaData
-argument_list|()
-argument_list|,
-name|autoCompletePreferences
-argument_list|,
-name|Globals
-operator|.
-name|journalAbbreviationLoader
-argument_list|)
-expr_stmt|;
-comment|// ensure that the autocompleters are in sync with entries
-name|this
-operator|.
-name|getDatabase
-argument_list|()
-operator|.
-name|registerListener
-argument_list|(
-operator|new
-name|AutoCompleteListener
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-comment|// create empty ContentAutoCompleters() if autoCompletion is deactivated
-name|autoCompleters
-operator|=
-operator|new
-name|ContentAutoCompleters
+name|setupAutoCompletion
 argument_list|()
 expr_stmt|;
-block|}
 comment|// restore floating search result
 comment|// (needed if preferences have been changed which causes a recreation of the main table)
 if|if
@@ -9474,6 +9478,84 @@ expr_stmt|;
 block|}
 end_function
 
+begin_comment
+comment|/**      * Set up auto completion for this database      */
+end_comment
+
+begin_function
+DECL|method|setupAutoCompletion ()
+specifier|private
+name|void
+name|setupAutoCompletion
+parameter_list|()
+block|{
+name|AutoCompletePreferences
+name|autoCompletePreferences
+init|=
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getAutoCompletePreferences
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|autoCompletePreferences
+operator|.
+name|shouldAutoComplete
+argument_list|()
+condition|)
+block|{
+name|suggestionProviders
+operator|=
+operator|new
+name|SuggestionProviders
+argument_list|(
+name|autoCompletePreferences
+argument_list|,
+name|Globals
+operator|.
+name|journalAbbreviationLoader
+argument_list|)
+expr_stmt|;
+name|suggestionProviders
+operator|.
+name|indexDatabase
+argument_list|(
+name|getDatabase
+argument_list|()
+argument_list|)
+expr_stmt|;
+comment|// Ensure that the suggestion providers are in sync with entries
+name|this
+operator|.
+name|getDatabase
+argument_list|()
+operator|.
+name|registerListener
+argument_list|(
+operator|new
+name|AutoCompleteUpdater
+argument_list|(
+name|suggestionProviders
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+comment|// Create empty suggestion providers if auto completion is deactivated
+name|suggestionProviders
+operator|=
+operator|new
+name|SuggestionProviders
+argument_list|()
+expr_stmt|;
+block|}
+block|}
+end_function
+
 begin_function
 DECL|method|updateSearchManager ()
 specifier|public
@@ -9501,36 +9583,16 @@ name|void
 name|instantiateSearchAutoCompleter
 parameter_list|()
 block|{
-name|AutoCompletePreferences
-name|autoCompletePreferences
-init|=
-operator|new
-name|AutoCompletePreferences
-argument_list|(
-name|Globals
-operator|.
-name|prefs
-argument_list|)
-decl_stmt|;
-name|AutoCompleterFactory
-name|autoCompleterFactory
-init|=
-operator|new
-name|AutoCompleterFactory
-argument_list|(
-name|autoCompletePreferences
-argument_list|,
-name|Globals
-operator|.
-name|journalAbbreviationLoader
-argument_list|)
-decl_stmt|;
 name|searchAutoCompleter
 operator|=
-name|autoCompleterFactory
+operator|new
+name|PersonNameSuggestionProvider
+argument_list|(
+name|InternalBibtexFields
 operator|.
-name|getPersonAutoCompleter
+name|getPersonNameFields
 argument_list|()
+argument_list|)
 expr_stmt|;
 for|for
 control|(
@@ -9548,7 +9610,7 @@ control|)
 block|{
 name|searchAutoCompleter
 operator|.
-name|addBibtexEntry
+name|indexEntry
 argument_list|(
 name|entry
 argument_list|)
@@ -9720,14 +9782,14 @@ block|}
 end_function
 
 begin_function
-DECL|method|showEntry (final BibEntry be)
+DECL|method|showEntry (final BibEntry bibEntry)
 specifier|public
 name|void
 name|showEntry
 parameter_list|(
 specifier|final
 name|BibEntry
-name|be
+name|bibEntry
 parameter_list|)
 block|{
 if|if
@@ -9735,7 +9797,7 @@ condition|(
 name|getShowing
 argument_list|()
 operator|==
-name|be
+name|bibEntry
 condition|)
 block|{
 if|if
@@ -9760,7 +9822,7 @@ argument_list|)
 expr_stmt|;
 name|showEntry
 argument_list|(
-name|be
+name|bibEntry
 argument_list|)
 expr_stmt|;
 block|}
@@ -9804,16 +9866,9 @@ comment|// We must instantiate a new editor.
 name|EntryEditor
 name|entryEditor
 init|=
-operator|new
-name|EntryEditor
+name|getEntryEditor
 argument_list|(
-name|frame
-argument_list|,
-name|BasePanel
-operator|.
-name|this
-argument_list|,
-name|be
+name|bibEntry
 argument_list|)
 decl_stmt|;
 if|if
@@ -9838,14 +9893,14 @@ argument_list|)
 expr_stmt|;
 name|newEntryShowing
 argument_list|(
-name|be
+name|bibEntry
 argument_list|)
 expr_stmt|;
 block|}
 end_function
 
 begin_comment
-comment|/**      * Get an entry editor ready to edit the given entry. If an appropriate editor is already cached, it will be updated      * and returned.      *      * @param entry The entry to be edited.      * @return A suitable entry editor.      */
+comment|/**      * Get an entry editor ready to edit the given entry.      *      * @param entry The entry to be edited.      * @return A suitable entry editor.      */
 end_comment
 
 begin_function
@@ -9858,7 +9913,26 @@ name|BibEntry
 name|entry
 parameter_list|)
 block|{
-comment|// Then start the new one:
+name|String
+name|lastTabName
+init|=
+literal|""
+decl_stmt|;
+if|if
+condition|(
+name|currentEditor
+operator|!=
+literal|null
+condition|)
+block|{
+name|lastTabName
+operator|=
+name|currentEditor
+operator|.
+name|getVisibleTabName
+argument_list|()
+expr_stmt|;
+block|}
 return|return
 operator|new
 name|EntryEditor
@@ -9870,6 +9944,8 @@ operator|.
 name|this
 argument_list|,
 name|entry
+argument_list|,
+name|lastTabName
 argument_list|)
 return|;
 block|}
@@ -11228,7 +11304,7 @@ block|}
 end_function
 
 begin_comment
-comment|/**      * Activates or deactivates the entry preview, depending on the argument. When deactivating, makes sure that any      * visible preview is hidden.      *      * @param enabled      */
+comment|/**      * Activates or deactivates the entry preview, depending on the argument. When deactivating, makes sure that any      * visible preview is hidden.      */
 end_comment
 
 begin_function
@@ -12324,25 +12400,6 @@ block|}
 end_function
 
 begin_comment
-comment|/**      * This method iterates through all existing entry editors in this BasePanel, telling each to update all its      * instances of FieldContentSelector. This is done to ensure that the list of words in each selector is up-to-date      * after the user has made changes in the Manage dialog.      */
-end_comment
-
-begin_function
-DECL|method|updateAllContentSelectors ()
-specifier|public
-name|void
-name|updateAllContentSelectors
-parameter_list|()
-block|{
-name|currentEditor
-operator|.
-name|updateAllContentSelectors
-argument_list|()
-expr_stmt|;
-block|}
-end_function
-
-begin_comment
 comment|/**      * Set the preview active state for all BasePanel instances.      */
 end_comment
 
@@ -12915,7 +12972,7 @@ parameter_list|)
 block|{
 name|searchAutoCompleter
 operator|.
-name|addBibtexEntry
+name|indexEntry
 argument_list|(
 name|addedEntryEvent
 operator|.
@@ -12937,72 +12994,7 @@ parameter_list|)
 block|{
 name|searchAutoCompleter
 operator|.
-name|addBibtexEntry
-argument_list|(
-name|entryChangedEvent
-operator|.
-name|getBibEntry
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-end_class
-
-begin_comment
-comment|/**      * Ensures that auto completers are up to date when entries are changed AKA Let the auto completer, if any, harvest      * words from the entry      */
-end_comment
-
-begin_class
-DECL|class|AutoCompleteListener
-specifier|private
-class|class
-name|AutoCompleteListener
-block|{
-annotation|@
-name|Subscribe
-DECL|method|listen (EntryAddedEvent addedEntryEvent)
-specifier|public
-name|void
-name|listen
-parameter_list|(
-name|EntryAddedEvent
-name|addedEntryEvent
-parameter_list|)
-block|{
-name|BasePanel
-operator|.
-name|this
-operator|.
-name|autoCompleters
-operator|.
-name|addEntry
-argument_list|(
-name|addedEntryEvent
-operator|.
-name|getBibEntry
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
-annotation|@
-name|Subscribe
-DECL|method|listen (EntryChangedEvent entryChangedEvent)
-specifier|public
-name|void
-name|listen
-parameter_list|(
-name|EntryChangedEvent
-name|entryChangedEvent
-parameter_list|)
-block|{
-name|BasePanel
-operator|.
-name|this
-operator|.
-name|autoCompleters
-operator|.
-name|addEntry
+name|indexEntry
 argument_list|(
 name|entryChangedEvent
 operator|.
@@ -13061,9 +13053,7 @@ name|getGlobalSearchBar
 argument_list|()
 operator|.
 name|setDontSelectSearchBar
-argument_list|(
-literal|true
-argument_list|)
+argument_list|()
 expr_stmt|;
 name|frame
 operator|.
@@ -13149,6 +13139,14 @@ condition|)
 block|{
 comment|// User is currently editing a field:
 comment|// Check if it is the preamble:
+name|FieldEditor
+name|fieldEditor
+init|=
+operator|(
+name|FieldEditor
+operator|)
+name|focused
+decl_stmt|;
 if|if
 condition|(
 operator|(
@@ -13158,12 +13156,15 @@ literal|null
 operator|)
 operator|&&
 operator|(
-name|focused
-operator|==
+name|fieldEditor
+operator|.
+name|equals
+argument_list|(
 name|preambleEditor
 operator|.
 name|getFieldEditor
 argument_list|()
+argument_list|)
 operator|)
 condition|)
 block|{

@@ -96,20 +96,6 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|autocompleter
-operator|.
-name|AutoCompleteListener
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
 name|util
 operator|.
 name|DefaultTaskExecutor
@@ -188,11 +174,6 @@ DECL|field|fieldName
 specifier|private
 name|String
 name|fieldName
-decl_stmt|;
-DECL|field|autoCompleteListener
-specifier|private
-name|AutoCompleteListener
-name|autoCompleteListener
 decl_stmt|;
 DECL|method|TextArea (String fieldName, String content)
 specifier|public
@@ -575,32 +556,6 @@ name|redo
 parameter_list|()
 block|{
 comment|// Nothing
-block|}
-annotation|@
-name|Override
-DECL|method|setAutoCompleteListener (AutoCompleteListener listener)
-specifier|public
-name|void
-name|setAutoCompleteListener
-parameter_list|(
-name|AutoCompleteListener
-name|listener
-parameter_list|)
-block|{
-name|autoCompleteListener
-operator|=
-name|listener
-expr_stmt|;
-block|}
-annotation|@
-name|Override
-DECL|method|clearAutoCompleteSuggestion ()
-specifier|public
-name|void
-name|clearAutoCompleteSuggestion
-parameter_list|()
-block|{
-comment|/*         if (autoCompleteListener != null) {             autoCompleteListener.clearCurrentSuggestion(this);         }         */
 block|}
 annotation|@
 name|Override

@@ -329,80 +329,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testSorting ()
-specifier|public
-name|void
-name|testSorting
-parameter_list|()
-block|{
-name|JournalAbbreviationRepository
-name|repository
-init|=
-operator|new
-name|JournalAbbreviationRepository
-argument_list|()
-decl_stmt|;
-name|repository
-operator|.
-name|addEntry
-argument_list|(
-operator|new
-name|Abbreviation
-argument_list|(
-literal|"Long Name"
-argument_list|,
-literal|"L. N."
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|repository
-operator|.
-name|addEntry
-argument_list|(
-operator|new
-name|Abbreviation
-argument_list|(
-literal|"A Long Name"
-argument_list|,
-literal|"AL. N."
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"A Long Name"
-argument_list|,
-name|repository
-operator|.
-name|getAbbreviations
-argument_list|()
-operator|.
-name|first
-argument_list|()
-operator|.
-name|getName
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"Long Name"
-argument_list|,
-name|repository
-operator|.
-name|getAbbreviations
-argument_list|()
-operator|.
-name|last
-argument_list|()
-operator|.
-name|getName
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
-annotation|@
-name|Test
 DECL|method|testDuplicates ()
 specifier|public
 name|void
@@ -502,40 +428,6 @@ name|repository
 operator|.
 name|size
 argument_list|()
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"L N"
-argument_list|,
-name|repository
-operator|.
-name|getNextAbbreviation
-argument_list|(
-literal|"L. N."
-argument_list|)
-operator|.
-name|orElse
-argument_list|(
-literal|"WRONG"
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"New Long Name"
-argument_list|,
-name|repository
-operator|.
-name|getNextAbbreviation
-argument_list|(
-literal|"L N"
-argument_list|)
-operator|.
-name|orElse
-argument_list|(
-literal|"WRONG"
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

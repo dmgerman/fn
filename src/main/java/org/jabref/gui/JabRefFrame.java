@@ -6373,8 +6373,6 @@ operator|.
 name|setSearchTerm
 argument_list|(
 name|content
-argument_list|,
-literal|true
 argument_list|)
 expr_stmt|;
 block|}

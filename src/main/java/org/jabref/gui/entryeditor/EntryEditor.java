@@ -168,16 +168,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|HashSet
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|List
 import|;
 end_import
@@ -199,16 +189,6 @@ operator|.
 name|util
 operator|.
 name|Optional
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Set
 import|;
 end_import
 
@@ -514,20 +494,6 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|contentselector
-operator|.
-name|FieldContentSelector
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
 name|externalfiles
 operator|.
 name|WriteXMPEntryEditorAction
@@ -729,20 +695,6 @@ operator|.
 name|logic
 operator|.
 name|TypedBibEntry
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
-name|autocompleter
-operator|.
-name|AutoCompleter
 import|;
 end_import
 
@@ -1127,20 +1079,6 @@ specifier|final
 name|BasePanel
 name|panel
 decl_stmt|;
-DECL|field|contentSelectors
-specifier|private
-specifier|final
-name|Set
-argument_list|<
-name|FieldContentSelector
-argument_list|>
-name|contentSelectors
-init|=
-operator|new
-name|HashSet
-argument_list|<>
-argument_list|()
-decl_stmt|;
 DECL|field|helpAction
 specifier|private
 specifier|final
@@ -1204,7 +1142,7 @@ specifier|private
 name|boolean
 name|movingToDifferentEntry
 decl_stmt|;
-DECL|method|EntryEditor (JabRefFrame frame, BasePanel panel, BibEntry entry)
+DECL|method|EntryEditor (JabRefFrame frame, BasePanel panel, BibEntry entry, String lastTabName)
 specifier|public
 name|EntryEditor
 parameter_list|(
@@ -1216,6 +1154,9 @@ name|panel
 parameter_list|,
 name|BibEntry
 name|entry
+parameter_list|,
+name|String
+name|lastTabName
 parameter_list|)
 block|{
 name|this
@@ -1391,6 +1332,18 @@ case|:
 case|case
 name|SELECT_ALL
 case|:
+case|case
+name|ENTRY_EDITOR_NEXT_PANEL
+case|:
+case|case
+name|ENTRY_EDITOR_NEXT_PANEL_2
+case|:
+case|case
+name|ENTRY_EDITOR_PREVIOUS_PANEL
+case|:
+case|case
+name|ENTRY_EDITOR_PREVIOUS_PANEL_2
+case|:
 name|e
 operator|.
 name|consume
@@ -1413,7 +1366,9 @@ parameter_list|()
 lambda|->
 block|{
 name|addTabs
-argument_list|()
+argument_list|(
+name|lastTabName
+argument_list|)
 expr_stmt|;
 name|container
 operator|.
@@ -1481,6 +1436,57 @@ name|setupKeyBindings
 argument_list|()
 expr_stmt|;
 block|}
+DECL|method|selectLastUsedTab (String lastTabName)
+specifier|private
+name|void
+name|selectLastUsedTab
+parameter_list|(
+name|String
+name|lastTabName
+parameter_list|)
+block|{
+name|tabbed
+operator|.
+name|getTabs
+argument_list|()
+operator|.
+name|stream
+argument_list|()
+operator|.
+name|filter
+argument_list|(
+name|tab
+lambda|->
+name|lastTabName
+operator|.
+name|equals
+argument_list|(
+name|tab
+operator|.
+name|getText
+argument_list|()
+argument_list|)
+argument_list|)
+operator|.
+name|findFirst
+argument_list|()
+operator|.
+name|ifPresent
+argument_list|(
+name|tab
+lambda|->
+name|tabbed
+operator|.
+name|getSelectionModel
+argument_list|()
+operator|.
+name|select
+argument_list|(
+name|tab
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 comment|/**      * Set-up key bindings specific for the entry editor.      */
 DECL|method|setupKeyBindings ()
 specifier|private
@@ -1494,7 +1500,7 @@ name|addEventFilter
 argument_list|(
 name|KeyEvent
 operator|.
-name|ANY
+name|KEY_PRESSED
 argument_list|,
 name|event
 lambda|->
@@ -1611,11 +1617,14 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|addTabs ()
+DECL|method|addTabs (String lastTabName)
 specifier|private
 name|void
 name|addTabs
-parameter_list|()
+parameter_list|(
+name|String
+name|lastTabName
+parameter_list|)
 block|{
 name|EntryType
 name|type
@@ -1899,9 +1908,6 @@ name|panel
 operator|.
 name|getBibDatabaseContext
 argument_list|()
-operator|.
-name|getMode
-argument_list|()
 argument_list|,
 name|entry
 argument_list|)
@@ -1982,6 +1988,14 @@ operator|.
 name|select
 argument_list|(
 name|sourceTab
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|selectLastUsedTab
+argument_list|(
+name|lastTabName
 argument_list|)
 expr_stmt|;
 block|}
@@ -2698,8 +2712,6 @@ name|WEST
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * getExtra checks the field name against InternalBibtexFields.getFieldExtras(name).      * If the name has an entry, the proper component to be shown is created and      * returned. Otherwise, null is returned. In addition, e.g. listeners can be      * added to the field editor, even if no component is returned.      *      * @return Component to show, or null if none.      */
-comment|/*     public Optional<JComponent> getExtra(final FieldEditor editor) {         final String fieldName = editor.getFieldName();          final Set<FieldProperty> fieldExtras = InternalBibtexFields.getFieldProperties(fieldName);          if (!panel.getBibDatabaseContext().getMetaData().getContentSelectorValuesForField(fieldName).isEmpty()) {             return FieldExtraComponents.getSelectorExtraComponent(frame, panel, editor, contentSelectors,                     storeFieldAction);         }         return Optional.empty();     }     */
 DECL|method|addSearchListener (SearchQueryHighlightListener listener)
 name|void
 name|addSearchListener
@@ -2968,37 +2980,6 @@ expr_stmt|;
 name|fieldsEditorTab
 operator|.
 name|focus
-argument_list|()
-expr_stmt|;
-block|}
-block|}
-block|}
-DECL|method|updateAllContentSelectors ()
-specifier|public
-name|void
-name|updateAllContentSelectors
-parameter_list|()
-block|{
-if|if
-condition|(
-operator|!
-name|contentSelectors
-operator|.
-name|isEmpty
-argument_list|()
-condition|)
-block|{
-for|for
-control|(
-name|FieldContentSelector
-name|contentSelector
-range|:
-name|contentSelectors
-control|)
-block|{
-name|contentSelector
-operator|.
-name|rebuildComboBox
 argument_list|()
 expr_stmt|;
 block|}
@@ -4277,41 +4258,8 @@ operator|.
 name|setValidBackgroundColor
 argument_list|()
 expr_stmt|;
-comment|// See if we need to update an AutoCompleter instance:
-name|AutoCompleter
-argument_list|<
-name|String
-argument_list|>
-name|aComp
-init|=
-name|panel
-operator|.
-name|getAutoCompleters
-argument_list|()
-operator|.
-name|get
-argument_list|(
-name|fieldEditor
-operator|.
-name|getFieldName
-argument_list|()
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|aComp
-operator|!=
-literal|null
-condition|)
-block|{
-name|aComp
-operator|.
-name|addBibtexEntry
-argument_list|(
-name|entry
-argument_list|)
-expr_stmt|;
-block|}
+comment|//TODO: See if we need to update an AutoCompleter instance:
+comment|/*                         AutoCompleter<String> aComp = panel.getSuggestionProviders().get(fieldEditor.getFieldName());                         if (aComp != null) {                             aComp.addBibtexEntry(entry);                         }                         */
 comment|// Add an UndoableFieldChange to the baseframe's undoManager.
 name|UndoableFieldChange
 name|undoableFieldChange

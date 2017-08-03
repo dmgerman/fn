@@ -746,7 +746,7 @@ argument_list|()
 operator|.
 name|withEncoding
 argument_list|(
-name|Charsets
+name|StandardCharsets
 operator|.
 name|US_ASCII
 argument_list|)
@@ -857,7 +857,7 @@ argument_list|()
 operator|.
 name|withEncoding
 argument_list|(
-name|Charsets
+name|StandardCharsets
 operator|.
 name|US_ASCII
 argument_list|)
@@ -1019,7 +1019,7 @@ argument_list|()
 operator|.
 name|withEncoding
 argument_list|(
-name|Charsets
+name|StandardCharsets
 operator|.
 name|US_ASCII
 argument_list|)
@@ -1181,7 +1181,7 @@ argument_list|()
 operator|.
 name|withEncoding
 argument_list|(
-name|Charsets
+name|StandardCharsets
 operator|.
 name|US_ASCII
 argument_list|)
@@ -1330,7 +1330,7 @@ argument_list|()
 operator|.
 name|withEncoding
 argument_list|(
-name|Charsets
+name|StandardCharsets
 operator|.
 name|US_ASCII
 argument_list|)
@@ -1530,7 +1530,7 @@ argument_list|()
 operator|.
 name|withEncoding
 argument_list|(
-name|Charsets
+name|StandardCharsets
 operator|.
 name|US_ASCII
 argument_list|)
@@ -1720,7 +1720,7 @@ argument_list|()
 operator|.
 name|withEncoding
 argument_list|(
-name|Charsets
+name|StandardCharsets
 operator|.
 name|US_ASCII
 argument_list|)

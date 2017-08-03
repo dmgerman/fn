@@ -194,6 +194,20 @@ begin_import
 import|import
 name|com
 operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|StandardSystemProperty
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
 name|microsoft
 operator|.
 name|applicationinsights
@@ -225,20 +239,6 @@ operator|.
 name|telemetry
 operator|.
 name|SessionState
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|commons
-operator|.
-name|lang3
-operator|.
-name|SystemUtils
 import|;
 end_import
 
@@ -362,6 +362,7 @@ comment|// Key binding preferences
 DECL|method|getKeyPrefs ()
 specifier|public
 specifier|static
+specifier|synchronized
 name|KeyBindingRepository
 name|getKeyPrefs
 parameter_list|()
@@ -531,9 +532,12 @@ name|put
 argument_list|(
 literal|"Java version"
 argument_list|,
-name|SystemUtils
+name|StandardSystemProperty
 operator|.
-name|JAVA_RUNTIME_VERSION
+name|JAVA_VERSION
+operator|.
+name|value
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|telemetryClient
@@ -583,9 +587,12 @@ argument_list|()
 operator|.
 name|setOperatingSystem
 argument_list|(
-name|SystemUtils
+name|StandardSystemProperty
 operator|.
 name|OS_NAME
+operator|.
+name|value
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|telemetryClient
@@ -598,9 +605,12 @@ argument_list|()
 operator|.
 name|setOperatingSystemVersion
 argument_list|(
-name|SystemUtils
+name|StandardSystemProperty
 operator|.
 name|OS_VERSION
+operator|.
+name|value
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|telemetryClient

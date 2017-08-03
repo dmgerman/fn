@@ -28,6 +28,20 @@ name|org
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
+name|autocompleter
+operator|.
+name|AutoCompleteSuggestionProvider
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
 name|logic
 operator|.
 name|journals
@@ -98,10 +112,19 @@ specifier|final
 name|JournalAbbreviationPreferences
 name|journalAbbreviationPreferences
 decl_stmt|;
-DECL|method|JournalEditorViewModel (JournalAbbreviationLoader journalAbbreviationLoader, JournalAbbreviationPreferences journalAbbreviationPreferences)
+DECL|method|JournalEditorViewModel (String fieldName, AutoCompleteSuggestionProvider<?> suggestionProvider, JournalAbbreviationLoader journalAbbreviationLoader, JournalAbbreviationPreferences journalAbbreviationPreferences)
 specifier|public
 name|JournalEditorViewModel
 parameter_list|(
+name|String
+name|fieldName
+parameter_list|,
+name|AutoCompleteSuggestionProvider
+argument_list|<
+name|?
+argument_list|>
+name|suggestionProvider
+parameter_list|,
 name|JournalAbbreviationLoader
 name|journalAbbreviationLoader
 parameter_list|,
@@ -109,6 +132,13 @@ name|JournalAbbreviationPreferences
 name|journalAbbreviationPreferences
 parameter_list|)
 block|{
+name|super
+argument_list|(
+name|fieldName
+argument_list|,
+name|suggestionProvider
+argument_list|)
+expr_stmt|;
 name|this
 operator|.
 name|journalAbbreviationLoader

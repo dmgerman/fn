@@ -110,7 +110,7 @@ name|entry
 decl_stmt|;
 DECL|field|authors
 specifier|private
-name|StringBuffer
+name|StringBuilder
 name|authors
 decl_stmt|;
 DECL|field|keyname
@@ -125,7 +125,7 @@ name|forenames
 decl_stmt|;
 DECL|field|characters
 specifier|private
-name|StringBuffer
+name|StringBuilder
 name|characters
 decl_stmt|;
 DECL|method|OAI2Handler (BibEntry be)
@@ -156,7 +156,7 @@ block|{
 name|authors
 operator|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 expr_stmt|;
 block|}
@@ -217,7 +217,7 @@ block|{
 name|characters
 operator|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 expr_stmt|;
 block|}

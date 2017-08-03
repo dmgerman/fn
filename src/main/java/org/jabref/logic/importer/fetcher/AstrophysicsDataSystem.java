@@ -1132,6 +1132,14 @@ argument_list|(
 name|entry
 argument_list|)
 expr_stmt|;
+comment|// The fetcher adds some garbage (number of found entries etc before)
+name|entry
+operator|.
+name|setCommentsBeforeEntry
+argument_list|(
+literal|""
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 end_class

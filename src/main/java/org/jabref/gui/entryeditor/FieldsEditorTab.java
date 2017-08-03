@@ -438,16 +438,16 @@ specifier|final
 name|BasePanel
 name|basePanel
 decl_stmt|;
-DECL|field|activeField
-specifier|private
-name|FieldEditorFX
-name|activeField
-decl_stmt|;
 DECL|field|entry
 specifier|private
 specifier|final
 name|BibEntry
 name|entry
+decl_stmt|;
+DECL|field|activeField
+specifier|private
+name|FieldEditorFX
+name|activeField
 decl_stmt|;
 DECL|method|FieldsEditorTab (JabRefFrame frame, BasePanel basePanel, List<String> fields, EntryEditor parent, boolean addKeyField, boolean compressed, BibEntry entry)
 specifier|public
@@ -712,7 +712,7 @@ control|)
 block|{
 comment|// TODO: Reenable/migrate this
 comment|// Store the editor for later reference:
-comment|/*             FieldEditor fieldEditor;             int defaultHeight;             int wHeight = (int) (50.0 * InternalBibtexFields.getFieldWeight(field));             if (InternalBibtexFields.getFieldProperties(field).contains(FieldProperty.SINGLE_ENTRY_LINK)) {                 fieldEditor = new EntryLinkListEditor(frame, bPanel.getBibDatabaseContext(), field, null, parent,                         true);                 defaultHeight = 0;             } else if (InternalBibtexFields.getFieldProperties(field).contains(FieldProperty.MULTIPLE_ENTRY_LINK)) {                 fieldEditor = new EntryLinkListEditor(frame, bPanel.getBibDatabaseContext(), field, null, parent,                         false);                 defaultHeight = 0;             } else {                 fieldEditor = new TextArea(field, null, getPrompt(field));                 //parent.addSearchListener((TextArea) fieldEditor);                 defaultHeight = fieldEditor.getPane().getPreferredSize().height;             }              Optional<JComponent> extra = parent.getExtra(fieldEditor);              // Add autocompleter listener, if required for this field:             /*             AutoCompleter<String> autoCompleter = bPanel.getAutoCompleters().get(field);             AutoCompleteListener autoCompleteListener = null;             if (autoCompleter != null) {                 autoCompleteListener = new AutoCompleteListener(autoCompleter);             }             setupJTextComponent(fieldEditor.getTextComponent(), autoCompleteListener);             fieldEditor.setAutoCompleteListener(autoCompleteListener);             */
+comment|/*             FieldEditor fieldEditor;             int defaultHeight;             int wHeight = (int) (50.0 * InternalBibtexFields.getFieldWeight(field));             if (InternalBibtexFields.getFieldProperties(field).contains(FieldProperty.SINGLE_ENTRY_LINK)) {                 fieldEditor = new EntryLinkListEditor(frame, bPanel.getBibDatabaseContext(), field, null, parent,                         true);                 defaultHeight = 0;             } else if (InternalBibtexFields.getFieldProperties(field).contains(FieldProperty.MULTIPLE_ENTRY_LINK)) {                 fieldEditor = new EntryLinkListEditor(frame, bPanel.getBibDatabaseContext(), field, null, parent,                         false);                 defaultHeight = 0;             } else {                 fieldEditor = new TextArea(field, null, getPrompt(field));                 //parent.addSearchListener((TextArea) fieldEditor);                 defaultHeight = fieldEditor.getPane().getPreferredSize().height;             }              Optional<JComponent> extra = parent.getExtra(fieldEditor);             */
 name|FieldEditorFX
 name|fieldEditor
 init|=
@@ -754,6 +754,11 @@ name|entry
 operator|.
 name|getType
 argument_list|()
+argument_list|,
+name|bPanel
+operator|.
+name|getSuggestionProviders
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|fieldEditor
@@ -774,7 +779,6 @@ argument_list|)
 expr_stmt|;
 comment|/*             // TODO: Reenable this             if (i == 0) {                 activeField = fieldEditor;             }             */
 comment|/*             // TODO: Reenable this             if (!compressed) {                 fieldEditor.getPane().setPreferredSize(new Dimension(100, Math.max(defaultHeight, wHeight)));             }             */
-comment|/*             // TODO: Reenable content selector             if (!panel.getBibDatabaseContext().getMetaData().getContentSelectorValuesForField(editor.getFieldName()).isEmpty()) {                 FieldContentSelector ws = new FieldContentSelector(frame, panel, frame, editor, storeFieldAction, false,                         ", ");                 contentSelectors.add(ws);                 controls.add(ws, BorderLayout.NORTH);             }             //} else if (!panel.getBibDatabaseContext().getMetaData().getContentSelectorValuesForField(fieldName).isEmpty()) {             //return FieldExtraComponents.getSelectorExtraComponent(frame, panel, editor, contentSelectors, storeFieldAction);              */
 name|labels
 operator|.
 name|add

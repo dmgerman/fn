@@ -44,6 +44,20 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|autocompleter
+operator|.
+name|AutoCompleteSuggestionProvider
+import|;
+end_import
+
+begin_import
+import|import
 name|com
 operator|.
 name|google
@@ -75,6 +89,28 @@ argument_list|<
 name|T
 argument_list|>
 block|{
+DECL|method|MapBasedEditorViewModel (String fieldName, AutoCompleteSuggestionProvider<?> suggestionProvider)
+specifier|public
+name|MapBasedEditorViewModel
+parameter_list|(
+name|String
+name|fieldName
+parameter_list|,
+name|AutoCompleteSuggestionProvider
+argument_list|<
+name|?
+argument_list|>
+name|suggestionProvider
+parameter_list|)
+block|{
+name|super
+argument_list|(
+name|fieldName
+argument_list|,
+name|suggestionProvider
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|getItemMap ()
 specifier|protected
 specifier|abstract
