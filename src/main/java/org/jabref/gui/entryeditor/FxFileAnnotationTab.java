@@ -568,11 +568,7 @@ operator|.
 name|panel
 operator|=
 name|setupPanel
-argument_list|(
-name|frame
-argument_list|,
-name|basePanel
-argument_list|)
+argument_list|()
 expr_stmt|;
 name|setText
 argument_list|(
@@ -584,7 +580,6 @@ literal|"File annotations"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// TODO: rename in "File annotations"
 name|setTooltip
 argument_list|(
 operator|new
@@ -612,17 +607,11 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|setupPanel (JabRefFrame frame, BasePanel basePanel)
+DECL|method|setupPanel ()
 specifier|private
 name|Region
 name|setupPanel
-parameter_list|(
-name|JabRefFrame
-name|frame
-parameter_list|,
-name|BasePanel
-name|basePanel
-parameter_list|)
+parameter_list|()
 block|{
 name|GridPane
 name|gridPane
