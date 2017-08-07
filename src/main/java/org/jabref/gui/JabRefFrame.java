@@ -11947,6 +11947,12 @@ operator|.
 name|getTelemetryClient
 argument_list|()
 operator|.
+name|ifPresent
+argument_list|(
+name|client
+lambda|->
+name|client
+operator|.
 name|trackEvent
 argument_list|(
 literal|"OpenNewDatabase"
@@ -11954,6 +11960,7 @@ argument_list|,
 name|properties
 argument_list|,
 name|measurements
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
