@@ -84,7 +84,31 @@ name|beans
 operator|.
 name|property
 operator|.
+name|ObjectProperty
+import|;
+end_import
+
+begin_import
+import|import
+name|javafx
+operator|.
+name|beans
+operator|.
+name|property
+operator|.
 name|SimpleListProperty
+import|;
+end_import
+
+begin_import
+import|import
+name|javafx
+operator|.
+name|beans
+operator|.
+name|property
+operator|.
+name|SimpleObjectProperty
 import|;
 end_import
 
@@ -270,6 +294,20 @@ name|observableArrayList
 argument_list|()
 argument_list|)
 decl_stmt|;
+DECL|field|currentAnnotation
+specifier|private
+specifier|final
+name|ObjectProperty
+argument_list|<
+name|FileAnnotationViewModel
+argument_list|>
+name|currentAnnotation
+init|=
+operator|new
+name|SimpleObjectProperty
+argument_list|<>
+argument_list|()
+decl_stmt|;
 DECL|field|fileAnnotations
 specifier|private
 name|Map
@@ -359,6 +397,19 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|currentAnnotationProperty ()
+specifier|public
+name|ObjectProperty
+argument_list|<
+name|FileAnnotationViewModel
+argument_list|>
+name|currentAnnotationProperty
+parameter_list|()
+block|{
+return|return
+name|currentAnnotation
+return|;
+block|}
 DECL|method|annotationsProperty ()
 specifier|public
 name|ListProperty
@@ -394,6 +445,13 @@ name|FileAnnotationViewModel
 name|newAnnotation
 parameter_list|)
 block|{
+name|currentAnnotation
+operator|.
+name|set
+argument_list|(
+name|newAnnotation
+argument_list|)
+expr_stmt|;
 comment|/*         currentAuthor.setValue(newValue.getAuthor());         currentPage.setValue(newValue.getPage());         currentDate.setValue(newValue.getTimeModified().toString());         currentContent.setValue(getContentOrNA(newValue.getContent()));         currentMarking.setValue(getMarking(newValue));         */
 block|}
 DECL|method|setupRightSide ()

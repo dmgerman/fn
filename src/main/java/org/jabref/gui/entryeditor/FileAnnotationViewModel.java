@@ -24,6 +24,30 @@ end_import
 
 begin_import
 import|import
+name|javafx
+operator|.
+name|beans
+operator|.
+name|property
+operator|.
+name|SimpleStringProperty
+import|;
+end_import
+
+begin_import
+import|import
+name|javafx
+operator|.
+name|beans
+operator|.
+name|property
+operator|.
+name|StringProperty
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|jabref
@@ -72,6 +96,15 @@ name|FileAnnotationViewModel
 extends|extends
 name|FileAnnotation
 block|{
+DECL|field|author
+specifier|private
+name|StringProperty
+name|author
+init|=
+operator|new
+name|SimpleStringProperty
+argument_list|()
+decl_stmt|;
 DECL|method|FileAnnotationViewModel (FileAnnotation annotation)
 specifier|public
 name|FileAnnotationViewModel
@@ -128,6 +161,27 @@ name|empty
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|author
+operator|.
+name|set
+argument_list|(
+name|annotation
+operator|.
+name|getContent
+argument_list|()
+argument_list|)
+expr_stmt|;
+comment|// Use content just for test, since some annotations don't have an author
+block|}
+DECL|method|authorProperty ()
+specifier|public
+name|StringProperty
+name|authorProperty
+parameter_list|()
+block|{
+return|return
+name|author
+return|;
 block|}
 annotation|@
 name|Override
