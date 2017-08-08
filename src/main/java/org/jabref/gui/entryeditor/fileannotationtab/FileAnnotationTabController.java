@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|org.jabref.gui.entryeditor
+DECL|package|org.jabref.gui.entryeditor.fileannotationtab
 package|package
 name|org
 operator|.
@@ -9,6 +9,8 @@ operator|.
 name|gui
 operator|.
 name|entryeditor
+operator|.
+name|fileannotationtab
 package|;
 end_package
 
@@ -231,40 +233,40 @@ argument_list|<
 name|FileAnnotationTabViewModel
 argument_list|>
 block|{
-DECL|field|files
 annotation|@
 name|FXML
+DECL|field|files
 name|ComboBox
 argument_list|<
 name|String
 argument_list|>
 name|files
 decl_stmt|;
-DECL|field|annotationList
 annotation|@
 name|FXML
+DECL|field|annotationList
 name|ListView
 argument_list|<
 name|FileAnnotationViewModel
 argument_list|>
 name|annotationList
 decl_stmt|;
-DECL|field|author
 annotation|@
 name|FXML
+DECL|field|author
 name|Label
 name|author
 decl_stmt|;
-DECL|field|fileAnnotationCache
 annotation|@
 name|Inject
+DECL|field|fileAnnotationCache
 specifier|private
 name|FileAnnotationCache
 name|fileAnnotationCache
 decl_stmt|;
-DECL|field|entry
 annotation|@
 name|Inject
+DECL|field|entry
 specifier|private
 name|BibEntry
 name|entry
@@ -468,8 +470,10 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Page: "
+literal|"Page"
 argument_list|)
+operator|+
+literal|": "
 operator|+
 name|Integer
 operator|.
@@ -497,8 +501,10 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Author: "
+literal|"Author"
 argument_list|)
+operator|+
+literal|": "
 operator|+
 name|annotation
 operator|.

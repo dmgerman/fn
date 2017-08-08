@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|org.jabref.gui.entryeditor
+DECL|package|org.jabref.gui.entryeditor.fileannotationtab
 package|package
 name|org
 operator|.
@@ -9,6 +9,8 @@ operator|.
 name|gui
 operator|.
 name|entryeditor
+operator|.
+name|fileannotationtab
 package|;
 end_package
 
@@ -203,6 +205,20 @@ operator|.
 name|gui
 operator|.
 name|AbstractViewModel
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
 import|;
 end_import
 
@@ -476,7 +492,12 @@ argument_list|,
 operator|new
 name|Label
 argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Author"
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -515,7 +536,12 @@ argument_list|,
 operator|new
 name|Label
 argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Page"
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -554,7 +580,12 @@ argument_list|,
 operator|new
 name|Label
 argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Date"
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -593,7 +624,12 @@ argument_list|,
 operator|new
 name|Label
 argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Content"
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -646,7 +682,12 @@ argument_list|,
 operator|new
 name|Label
 argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Marking"
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;

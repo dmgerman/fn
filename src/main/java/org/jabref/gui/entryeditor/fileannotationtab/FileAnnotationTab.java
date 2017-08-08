@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|org.jabref.gui.entryeditor
+DECL|package|org.jabref.gui.entryeditor.fileannotationtab
 package|package
 name|org
 operator|.
@@ -9,6 +9,8 @@ operator|.
 name|gui
 operator|.
 name|entryeditor
+operator|.
+name|fileannotationtab
 package|;
 end_package
 
@@ -326,6 +328,34 @@ name|org
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
+name|entryeditor
+operator|.
+name|EntryEditor
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|entryeditor
+operator|.
+name|EntryEditorTab
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
 name|logic
 operator|.
 name|l10n
@@ -436,6 +466,7 @@ end_import
 
 begin_class
 DECL|class|FileAnnotationTab
+specifier|public
 class|class
 name|FileAnnotationTab
 extends|extends
@@ -778,6 +809,7 @@ argument_list|>
 name|listModel
 decl_stmt|;
 DECL|method|FileAnnotationTab (BibEntry entry, EntryEditor parent, FileAnnotationCache cache)
+specifier|public
 name|FileAnnotationTab
 parameter_list|(
 name|BibEntry
