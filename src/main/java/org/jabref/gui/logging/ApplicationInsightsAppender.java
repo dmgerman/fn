@@ -424,9 +424,16 @@ operator|.
 name|getTelemetryClient
 argument_list|()
 operator|.
+name|ifPresent
+argument_list|(
+name|client
+lambda|->
+name|client
+operator|.
 name|track
 argument_list|(
 name|telemetry
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
