@@ -340,6 +340,16 @@ name|org
 operator|.
 name|jabref
 operator|.
+name|Globals
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
 name|gui
 operator|.
 name|AbstractController
@@ -678,6 +688,22 @@ name|taskExecutor
 argument_list|)
 expr_stmt|;
 comment|// Set-up groups tree
+name|groupTree
+operator|.
+name|setStyle
+argument_list|(
+literal|"-fx-font-size: "
+operator|+
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getFontSizeFX
+argument_list|()
+operator|+
+literal|"pt;"
+argument_list|)
+expr_stmt|;
 name|groupTree
 operator|.
 name|getSelectionModel

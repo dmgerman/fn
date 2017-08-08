@@ -7222,6 +7222,22 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|getFontSizeFX ()
+specifier|public
+name|int
+name|getFontSizeFX
+parameter_list|()
+block|{
+comment|// Decrease font size by 3 since JavaFX has default font size of 9, while Swing uses 12
+return|return
+name|getInt
+argument_list|(
+name|MENU_FONT_SIZE
+argument_list|)
+operator|-
+literal|3
+return|;
+block|}
 DECL|method|getUser ()
 specifier|public
 name|String
