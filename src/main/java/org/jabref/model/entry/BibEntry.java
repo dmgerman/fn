@@ -18,6 +18,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Collection
 import|;
 end_import
@@ -3673,7 +3683,7 @@ name|newValue
 argument_list|)
 return|;
 block|}
-comment|/**      * Gets a list of linked files.      *      * @return the list of linked files, is never null but can be empty      */
+comment|/**      * Gets a list of linked files.      *      * @return the list of linked files, is never null but can be empty.      * Changes to the underlying list will have no effect on the entry itself. Use {@link #addFile(LinkedFile)}      */
 DECL|method|getFiles ()
 specifier|public
 name|List
@@ -3707,11 +3717,12 @@ argument_list|()
 condition|)
 block|{
 return|return
-name|Collections
-operator|.
-name|emptyList
+operator|new
+name|ArrayList
+argument_list|<>
 argument_list|()
 return|;
+comment|//Return new ArrayList because emptyList is immutable
 block|}
 return|return
 name|FileFieldParser
