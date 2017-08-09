@@ -184,6 +184,16 @@ name|newValue
 parameter_list|)
 lambda|->
 block|{
+if|if
+condition|(
+name|newValue
+operator|.
+name|getWindow
+argument_list|()
+operator|instanceof
+name|Stage
+condition|)
+block|{
 name|Stage
 name|stage
 init|=
@@ -217,6 +227,7 @@ name|stage
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 argument_list|)

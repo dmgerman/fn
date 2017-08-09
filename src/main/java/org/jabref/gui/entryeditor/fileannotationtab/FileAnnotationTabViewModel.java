@@ -666,6 +666,7 @@ name|FileAnnotationViewModel
 name|getCurrentAnnotation
 parameter_list|()
 block|{
+comment|//TODO: It has to be initialized! NPE
 return|return
 name|currentAnnotation
 operator|.
