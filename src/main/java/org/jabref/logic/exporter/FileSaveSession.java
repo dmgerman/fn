@@ -508,7 +508,7 @@ if|if
 condition|(
 name|FileUtil
 operator|.
-name|isPosixCompilant
+name|IS_POSIX_COMPILANT
 operator|&&
 name|Files
 operator|.
@@ -563,7 +563,7 @@ if|if
 condition|(
 name|FileUtil
 operator|.
-name|isPosixCompilant
+name|IS_POSIX_COMPILANT
 condition|)
 block|{
 try|try

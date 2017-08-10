@@ -113,12 +113,6 @@ argument_list|<
 name|CustomImporter
 argument_list|>
 block|{
-DECL|field|prefs
-specifier|private
-specifier|final
-name|JabRefPreferences
-name|prefs
-decl_stmt|;
 DECL|field|LOGGER
 specifier|private
 specifier|static
@@ -134,6 +128,12 @@ name|CustomImportList
 operator|.
 name|class
 argument_list|)
+decl_stmt|;
+DECL|field|prefs
+specifier|private
+specifier|final
+name|JabRefPreferences
+name|prefs
 decl_stmt|;
 DECL|method|CustomImportList (JabRefPreferences prefs)
 specifier|public

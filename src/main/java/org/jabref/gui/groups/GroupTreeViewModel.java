@@ -18,6 +18,26 @@ name|java
 operator|.
 name|util
 operator|.
+name|Comparator
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Objects
 import|;
 end_import
@@ -46,6 +66,38 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|stream
+operator|.
+name|Collectors
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|SwingUtilities
+import|;
+end_import
+
+begin_import
+import|import
+name|javafx
+operator|.
+name|application
+operator|.
+name|Platform
+import|;
+end_import
+
+begin_import
+import|import
 name|javafx
 operator|.
 name|beans
@@ -64,7 +116,31 @@ name|beans
 operator|.
 name|property
 operator|.
+name|ListProperty
+import|;
+end_import
+
+begin_import
+import|import
+name|javafx
+operator|.
+name|beans
+operator|.
+name|property
+operator|.
 name|ObjectProperty
+import|;
+end_import
+
+begin_import
+import|import
+name|javafx
+operator|.
+name|beans
+operator|.
+name|property
+operator|.
+name|SimpleListProperty
 import|;
 end_import
 
@@ -101,6 +177,26 @@ operator|.
 name|property
 operator|.
 name|StringProperty
+import|;
+end_import
+
+begin_import
+import|import
+name|javafx
+operator|.
+name|collections
+operator|.
+name|FXCollections
+import|;
+end_import
+
+begin_import
+import|import
+name|javafx
+operator|.
+name|collections
+operator|.
+name|ObservableList
 import|;
 end_import
 
@@ -146,11 +242,37 @@ name|org
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
+name|util
+operator|.
+name|TaskExecutor
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
 name|logic
 operator|.
 name|l10n
 operator|.
 name|Localization
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|FieldChange
 import|;
 end_import
 
@@ -179,6 +301,20 @@ operator|.
 name|groups
 operator|.
 name|AbstractGroup
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|groups
+operator|.
+name|ExplicitGroup
 import|;
 end_import
 
@@ -232,19 +368,24 @@ name|SimpleObjectProperty
 argument_list|<>
 argument_list|()
 decl_stmt|;
-DECL|field|selectedGroup
+DECL|field|selectedGroups
 specifier|private
 specifier|final
-name|ObjectProperty
+name|ListProperty
 argument_list|<
 name|GroupNodeViewModel
 argument_list|>
-name|selectedGroup
+name|selectedGroups
 init|=
 operator|new
-name|SimpleObjectProperty
+name|SimpleListProperty
 argument_list|<>
+argument_list|(
+name|FXCollections
+operator|.
+name|observableArrayList
 argument_list|()
+argument_list|)
 decl_stmt|;
 DECL|field|stateManager
 specifier|private
@@ -257,6 +398,12 @@ specifier|private
 specifier|final
 name|DialogService
 name|dialogService
+decl_stmt|;
+DECL|field|taskExecutor
+specifier|private
+specifier|final
+name|TaskExecutor
+name|taskExecutor
 decl_stmt|;
 DECL|field|filterPredicate
 specifier|private
@@ -285,6 +432,36 @@ operator|new
 name|SimpleStringProperty
 argument_list|()
 decl_stmt|;
+DECL|field|compAlphabetIgnoreCase
+specifier|private
+specifier|final
+name|Comparator
+argument_list|<
+name|GroupTreeNode
+argument_list|>
+name|compAlphabetIgnoreCase
+init|=
+parameter_list|(
+name|GroupTreeNode
+name|v1
+parameter_list|,
+name|GroupTreeNode
+name|v2
+parameter_list|)
+lambda|->
+name|v1
+operator|.
+name|getName
+argument_list|()
+operator|.
+name|compareToIgnoreCase
+argument_list|(
+name|v2
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+decl_stmt|;
 DECL|field|currentDatabase
 specifier|private
 name|Optional
@@ -293,7 +470,7 @@ name|BibDatabaseContext
 argument_list|>
 name|currentDatabase
 decl_stmt|;
-DECL|method|GroupTreeViewModel (StateManager stateManager, DialogService dialogService)
+DECL|method|GroupTreeViewModel (StateManager stateManager, DialogService dialogService, TaskExecutor taskExecutor)
 specifier|public
 name|GroupTreeViewModel
 parameter_list|(
@@ -302,6 +479,9 @@ name|stateManager
 parameter_list|,
 name|DialogService
 name|dialogService
+parameter_list|,
+name|TaskExecutor
+name|taskExecutor
 parameter_list|)
 block|{
 name|this
@@ -326,6 +506,17 @@ argument_list|(
 name|dialogService
 argument_list|)
 expr_stmt|;
+name|this
+operator|.
+name|taskExecutor
+operator|=
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|taskExecutor
+argument_list|)
+expr_stmt|;
 comment|// Register listener
 name|stateManager
 operator|.
@@ -348,7 +539,7 @@ name|newValue
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|selectedGroup
+name|selectedGroups
 operator|.
 name|addListener
 argument_list|(
@@ -419,17 +610,17 @@ return|return
 name|rootGroup
 return|;
 block|}
-DECL|method|selectedGroupProperty ()
+DECL|method|selectedGroupsProperty ()
 specifier|public
-name|ObjectProperty
+name|ListProperty
 argument_list|<
 name|GroupNodeViewModel
 argument_list|>
-name|selectedGroupProperty
+name|selectedGroupsProperty
 parameter_list|()
 block|{
 return|return
-name|selectedGroup
+name|selectedGroups
 return|;
 block|}
 DECL|method|filterPredicateProperty ()
@@ -459,12 +650,15 @@ name|filterText
 return|;
 block|}
 comment|/**      * Gets invoked if the user selects a different group.      * We need to notify the {@link StateManager} about this change so that the main table gets updated.      */
-DECL|method|onSelectedGroupChanged (GroupNodeViewModel newValue)
+DECL|method|onSelectedGroupChanged (ObservableList<GroupNodeViewModel> newValue)
 specifier|private
 name|void
 name|onSelectedGroupChanged
 parameter_list|(
+name|ObservableList
+argument_list|<
 name|GroupNodeViewModel
+argument_list|>
 name|newValue
 parameter_list|)
 block|{
@@ -504,7 +698,7 @@ condition|)
 block|{
 name|stateManager
 operator|.
-name|clearSelectedGroup
+name|clearSelectedGroups
 argument_list|(
 name|database
 argument_list|)
@@ -514,14 +708,29 @@ else|else
 block|{
 name|stateManager
 operator|.
-name|setSelectedGroup
+name|setSelectedGroups
 argument_list|(
 name|database
 argument_list|,
 name|newValue
 operator|.
-name|getGroupNode
+name|stream
 argument_list|()
+operator|.
+name|map
+argument_list|(
+name|GroupNodeViewModel
+operator|::
+name|getGroupNode
+argument_list|)
+operator|.
+name|collect
+argument_list|(
+name|Collectors
+operator|.
+name|toList
+argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -599,6 +808,8 @@ argument_list|()
 argument_list|,
 name|stateManager
 argument_list|,
+name|taskExecutor
+argument_list|,
 name|root
 argument_list|)
 argument_list|)
@@ -615,6 +826,8 @@ name|get
 argument_list|()
 argument_list|,
 name|stateManager
+argument_list|,
+name|taskExecutor
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -625,6 +838,12 @@ argument_list|(
 name|newRoot
 argument_list|)
 expr_stmt|;
+name|this
+operator|.
+name|selectedGroups
+operator|.
+name|setAll
+argument_list|(
 name|stateManager
 operator|.
 name|getSelectedGroup
@@ -635,16 +854,13 @@ name|get
 argument_list|()
 argument_list|)
 operator|.
-name|ifPresent
+name|stream
+argument_list|()
+operator|.
+name|map
 argument_list|(
 name|selectedGroup
 lambda|->
-name|this
-operator|.
-name|selectedGroup
-operator|.
-name|setValue
-argument_list|(
 operator|new
 name|GroupNodeViewModel
 argument_list|(
@@ -655,8 +871,18 @@ argument_list|()
 argument_list|,
 name|stateManager
 argument_list|,
+name|taskExecutor
+argument_list|,
 name|selectedGroup
 argument_list|)
+argument_list|)
+operator|.
+name|collect
+argument_list|(
+name|Collectors
+operator|.
+name|toList
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -675,6 +901,13 @@ parameter_list|(
 name|GroupNodeViewModel
 name|parent
 parameter_list|)
+block|{
+name|SwingUtilities
+operator|.
+name|invokeLater
+argument_list|(
+parameter_list|()
+lambda|->
 block|{
 name|Optional
 argument_list|<
@@ -730,9 +963,391 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|writeGroupChangesToMetaData
+argument_list|()
+expr_stmt|;
 block|}
 argument_list|)
 expr_stmt|;
+block|}
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|writeGroupChangesToMetaData ()
+specifier|private
+name|void
+name|writeGroupChangesToMetaData
+parameter_list|()
+block|{
+name|currentDatabase
+operator|.
+name|get
+argument_list|()
+operator|.
+name|getMetaData
+argument_list|()
+operator|.
+name|setGroups
+argument_list|(
+name|rootGroup
+operator|.
+name|get
+argument_list|()
+operator|.
+name|getGroupNode
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Opens "Edit Group Dialog" and changes the given group to the edited one.      */
+DECL|method|editGroup (GroupNodeViewModel oldGroup)
+specifier|public
+name|void
+name|editGroup
+parameter_list|(
+name|GroupNodeViewModel
+name|oldGroup
+parameter_list|)
+block|{
+name|SwingUtilities
+operator|.
+name|invokeLater
+argument_list|(
+parameter_list|()
+lambda|->
+block|{
+name|Optional
+argument_list|<
+name|AbstractGroup
+argument_list|>
+name|newGroup
+init|=
+name|dialogService
+operator|.
+name|showCustomDialogAndWait
+argument_list|(
+operator|new
+name|GroupDialog
+argument_list|(
+name|oldGroup
+operator|.
+name|getGroupNode
+argument_list|()
+operator|.
+name|getGroup
+argument_list|()
+argument_list|)
+argument_list|)
+decl_stmt|;
+name|newGroup
+operator|.
+name|ifPresent
+argument_list|(
+name|group
+lambda|->
+block|{
+name|Platform
+operator|.
+name|runLater
+argument_list|(
+parameter_list|()
+lambda|->
+block|{
+comment|// TODO: Keep assignments
+name|boolean
+name|keepPreviousAssignments
+init|=
+name|dialogService
+operator|.
+name|showConfirmationDialogAndWait
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Change of Grouping Method"
+argument_list|)
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Assign the original group's entries to this group?"
+argument_list|)
+argument_list|)
+decl_stmt|;
+comment|//        WarnAssignmentSideEffects.warnAssignmentSideEffects(newGroup, panel.frame());
+name|boolean
+name|removePreviousAssignents
+init|=
+operator|(
+name|oldGroup
+operator|.
+name|getGroupNode
+argument_list|()
+operator|.
+name|getGroup
+argument_list|()
+operator|instanceof
+name|ExplicitGroup
+operator|)
+operator|&&
+operator|(
+name|group
+operator|instanceof
+name|ExplicitGroup
+operator|)
+decl_stmt|;
+name|List
+argument_list|<
+name|FieldChange
+argument_list|>
+name|addChange
+init|=
+name|oldGroup
+operator|.
+name|getGroupNode
+argument_list|()
+operator|.
+name|setGroup
+argument_list|(
+name|group
+argument_list|,
+name|keepPreviousAssignments
+argument_list|,
+name|removePreviousAssignents
+argument_list|,
+name|stateManager
+operator|.
+name|getEntriesInCurrentDatabase
+argument_list|()
+argument_list|)
+decl_stmt|;
+comment|// TODO: Add undo
+comment|// Store undo information.
+comment|// AbstractUndoableEdit undoAddPreviousEntries = null;
+comment|// UndoableModifyGroup undo = new UndoableModifyGroup(GroupSelector.this, groupsRoot, node, newGroup);
+comment|// if (undoAddPreviousEntries == null) {
+comment|//    panel.getUndoManager().addEdit(undo);
+comment|//} else {
+comment|//    NamedCompound nc = new NamedCompound("Modify Group");
+comment|//    nc.addEdit(undo);
+comment|//    nc.addEdit(undoAddPreviousEntries);
+comment|//    nc.end();/
+comment|//      panel.getUndoManager().addEdit(nc);
+comment|//}
+comment|//if (!addChange.isEmpty()) {
+comment|//    undoAddPreviousEntries = UndoableChangeEntriesOfGroup.getUndoableEdit(null, addChange);
+comment|//}
+name|dialogService
+operator|.
+name|notify
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Modified group \"%0\"."
+argument_list|,
+name|group
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|writeGroupChangesToMetaData
+argument_list|()
+expr_stmt|;
+block|}
+argument_list|)
+expr_stmt|;
+block|}
+argument_list|)
+expr_stmt|;
+block|}
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|removeSubgroups (GroupNodeViewModel group)
+specifier|public
+name|void
+name|removeSubgroups
+parameter_list|(
+name|GroupNodeViewModel
+name|group
+parameter_list|)
+block|{
+name|boolean
+name|confirmation
+init|=
+name|dialogService
+operator|.
+name|showConfirmationDialogAndWait
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Remove subgroups"
+argument_list|)
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Remove all subgroups of \"%0\"?"
+argument_list|,
+name|group
+operator|.
+name|getDisplayName
+argument_list|()
+argument_list|)
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|confirmation
+condition|)
+block|{
+comment|/// TODO: Add undo
+comment|//final UndoableModifySubtree undo = new UndoableModifySubtree(getGroupTreeRoot(), node, "Remove subgroups");
+comment|//panel.getUndoManager().addEdit(undo);
+name|group
+operator|.
+name|getGroupNode
+argument_list|()
+operator|.
+name|removeAllChildren
+argument_list|()
+expr_stmt|;
+name|dialogService
+operator|.
+name|notify
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Removed all subgroups of group \"%0\"."
+argument_list|,
+name|group
+operator|.
+name|getDisplayName
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|writeGroupChangesToMetaData
+argument_list|()
+expr_stmt|;
+block|}
+block|}
+DECL|method|removeGroupKeepSubgroups (GroupNodeViewModel group)
+specifier|public
+name|void
+name|removeGroupKeepSubgroups
+parameter_list|(
+name|GroupNodeViewModel
+name|group
+parameter_list|)
+block|{
+name|boolean
+name|confirmation
+init|=
+name|dialogService
+operator|.
+name|showConfirmationDialogAndWait
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Remove group"
+argument_list|)
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Remove group \"%0\"?"
+argument_list|,
+name|group
+operator|.
+name|getDisplayName
+argument_list|()
+argument_list|)
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|confirmation
+condition|)
+block|{
+comment|// TODO: Add undo
+comment|//final UndoableAddOrRemoveGroup undo = new UndoableAddOrRemoveGroup(groupsRoot, node, UndoableAddOrRemoveGroup.REMOVE_NODE_KEEP_CHILDREN);
+comment|//panel.getUndoManager().addEdit(undo);
+name|GroupTreeNode
+name|groupNode
+init|=
+name|group
+operator|.
+name|getGroupNode
+argument_list|()
+decl_stmt|;
+name|groupNode
+operator|.
+name|getParent
+argument_list|()
+operator|.
+name|ifPresent
+argument_list|(
+name|parent
+lambda|->
+name|groupNode
+operator|.
+name|moveAllChildrenTo
+argument_list|(
+name|parent
+argument_list|,
+name|parent
+operator|.
+name|getIndexOfChild
+argument_list|(
+name|groupNode
+argument_list|)
+operator|.
+name|get
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|groupNode
+operator|.
+name|removeFromParent
+argument_list|()
+expr_stmt|;
+name|dialogService
+operator|.
+name|notify
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Removed group \"%0\"."
+argument_list|,
+name|group
+operator|.
+name|getDisplayName
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|writeGroupChangesToMetaData
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 comment|/**      * Removes the specified group and its subgroups (after asking for confirmation).      */
 DECL|method|removeGroupAndSubgroups (GroupNodeViewModel group)
@@ -811,7 +1426,117 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|writeGroupChangesToMetaData
+argument_list|()
+expr_stmt|;
 block|}
+block|}
+DECL|method|addSelectedEntries (GroupNodeViewModel group)
+specifier|public
+name|void
+name|addSelectedEntries
+parameter_list|(
+name|GroupNodeViewModel
+name|group
+parameter_list|)
+block|{
+comment|// TODO: Warn
+comment|// if (!WarnAssignmentSideEffects.warnAssignmentSideEffects(node.getNode().getGroup(), panel.frame())) {
+comment|//    return; // user aborted operation
+name|List
+argument_list|<
+name|FieldChange
+argument_list|>
+name|addChange
+init|=
+name|group
+operator|.
+name|getGroupNode
+argument_list|()
+operator|.
+name|addEntriesToGroup
+argument_list|(
+name|stateManager
+operator|.
+name|getSelectedEntries
+argument_list|()
+argument_list|)
+decl_stmt|;
+comment|// TODO: Add undo
+comment|// NamedCompound undoAll = new NamedCompound(Localization.lang("change assignment of entries"));
+comment|// if (!undoAdd.isEmpty()) { undo.addEdit(UndoableChangeEntriesOfGroup.getUndoableEdit(node, undoAdd)); }
+comment|// panel.getUndoManager().addEdit(undoAll);
+comment|// TODO Display massages
+comment|//if (undo == null) {
+comment|//    frame.output(Localization.lang("The group \"%0\" already contains the selection.",
+comment|//            node.getGroup().getName()));
+comment|//    return;
+comment|//}
+comment|// panel.getUndoManager().addEdit(undo);
+comment|// final String groupName = node.getGroup().getName();
+comment|// if (assignedEntries == 1) {
+comment|//    frame.output(Localization.lang("Assigned 1 entry to group \"%0\".", groupName));
+comment|// } else {
+comment|//    frame.output(Localization.lang("Assigned %0 entries to group \"%1\".", String.valueOf(assignedEntries),
+comment|//            groupName));
+comment|//}
+block|}
+DECL|method|removeSelectedEntries (GroupNodeViewModel group)
+specifier|public
+name|void
+name|removeSelectedEntries
+parameter_list|(
+name|GroupNodeViewModel
+name|group
+parameter_list|)
+block|{
+comment|// TODO: warn if assignment has undesired side effects (modifies a field != keywords)
+comment|// if (!WarnAssignmentSideEffects.warnAssignmentSideEffects(mNode.getNode().getGroup(), mPanel.frame())) {
+comment|//    return; // user aborted operation
+name|List
+argument_list|<
+name|FieldChange
+argument_list|>
+name|removeChange
+init|=
+name|group
+operator|.
+name|getGroupNode
+argument_list|()
+operator|.
+name|removeEntriesFromGroup
+argument_list|(
+name|stateManager
+operator|.
+name|getSelectedEntries
+argument_list|()
+argument_list|)
+decl_stmt|;
+comment|// TODO: Add undo
+comment|// if (!undo.isEmpty()) {
+comment|//    mPanel.getUndoManager().addEdit(UndoableChangeEntriesOfGroup.getUndoableEdit(mNode, undo));
+block|}
+DECL|method|sortAlphabeticallyRecursive (GroupNodeViewModel group)
+specifier|public
+name|void
+name|sortAlphabeticallyRecursive
+parameter_list|(
+name|GroupNodeViewModel
+name|group
+parameter_list|)
+block|{
+name|group
+operator|.
+name|getGroupNode
+argument_list|()
+operator|.
+name|sortChildren
+argument_list|(
+name|compAlphabetIgnoreCase
+argument_list|,
+literal|true
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 end_class

@@ -44,7 +44,7 @@ argument_list|(
 literal|"Abbreviate journal names"
 argument_list|)
 argument_list|,
-literal|"ctrl alt A"
+literal|"ctrl+alt+A"
 argument_list|,
 name|KeyBindingCategory
 operator|.
@@ -63,7 +63,7 @@ argument_list|(
 literal|"Autogenerate BibTeX keys"
 argument_list|)
 argument_list|,
-literal|"ctrl G"
+literal|"ctrl+G"
 argument_list|,
 name|KeyBindingCategory
 operator|.
@@ -82,7 +82,7 @@ argument_list|(
 literal|"Accept"
 argument_list|)
 argument_list|,
-literal|"ctrl ENTER"
+literal|"ctrl+ENTER"
 argument_list|,
 name|KeyBindingCategory
 operator|.
@@ -120,7 +120,7 @@ argument_list|(
 literal|"Back"
 argument_list|)
 argument_list|,
-literal|"alt LEFT"
+literal|"alt+LEFT"
 argument_list|,
 name|KeyBindingCategory
 operator|.
@@ -139,7 +139,7 @@ argument_list|(
 literal|"Check integrity"
 argument_list|)
 argument_list|,
-literal|"ctrl F8"
+literal|"ctrl+F8"
 argument_list|,
 name|KeyBindingCategory
 operator|.
@@ -158,7 +158,7 @@ argument_list|(
 literal|"Cleanup entries"
 argument_list|)
 argument_list|,
-literal|"alt F8"
+literal|"alt+F8"
 argument_list|,
 name|KeyBindingCategory
 operator|.
@@ -196,7 +196,7 @@ argument_list|(
 literal|"Close library"
 argument_list|)
 argument_list|,
-literal|"ctrl W"
+literal|"ctrl+W"
 argument_list|,
 name|KeyBindingCategory
 operator|.
@@ -234,7 +234,7 @@ argument_list|(
 literal|"Close entry editor"
 argument_list|)
 argument_list|,
-literal|"ESCAPE"
+literal|"Esc"
 argument_list|,
 name|KeyBindingCategory
 operator|.
@@ -253,7 +253,7 @@ argument_list|(
 literal|"Copy"
 argument_list|)
 argument_list|,
-literal|"ctrl C"
+literal|"ctrl+C"
 argument_list|,
 name|KeyBindingCategory
 operator|.
@@ -272,7 +272,7 @@ argument_list|(
 literal|"Copy title"
 argument_list|)
 argument_list|,
-literal|"ctrl shift alt T"
+literal|"ctrl+shift+alt+T"
 argument_list|,
 name|KeyBindingCategory
 operator|.
@@ -291,7 +291,7 @@ argument_list|(
 literal|"Copy \\cite{BibTeX key}"
 argument_list|)
 argument_list|,
-literal|"ctrl K"
+literal|"ctrl+K"
 argument_list|,
 name|KeyBindingCategory
 operator|.
@@ -310,7 +310,7 @@ argument_list|(
 literal|"Copy BibTeX key"
 argument_list|)
 argument_list|,
-literal|"ctrl shift K"
+literal|"ctrl+shift+K"
 argument_list|,
 name|KeyBindingCategory
 operator|.
@@ -329,7 +329,7 @@ argument_list|(
 literal|"Copy BibTeX key and title"
 argument_list|)
 argument_list|,
-literal|"ctrl shift alt K"
+literal|"ctrl+shift+alt+K"
 argument_list|,
 name|KeyBindingCategory
 operator|.
@@ -348,7 +348,7 @@ argument_list|(
 literal|"Copy BibTeX key and link"
 argument_list|)
 argument_list|,
-literal|"ctrl alt K"
+literal|"ctrl+alt+K"
 argument_list|,
 name|KeyBindingCategory
 operator|.
@@ -367,7 +367,7 @@ argument_list|(
 literal|"Copy preview"
 argument_list|)
 argument_list|,
-literal|"ctrl shift C"
+literal|"ctrl+shift+C"
 argument_list|,
 name|KeyBindingCategory
 operator|.
@@ -386,11 +386,31 @@ argument_list|(
 literal|"Cut"
 argument_list|)
 argument_list|,
-literal|"ctrl X"
+literal|"ctrl+X"
 argument_list|,
 name|KeyBindingCategory
 operator|.
 name|EDIT
+argument_list|)
+block|,
+comment|//We have to put Entry Editor Previous before, because otherwise the decrease font size is found first
+DECL|enumConstant|ENTRY_EDITOR_PREVIOUS_PANEL_2
+name|ENTRY_EDITOR_PREVIOUS_PANEL_2
+argument_list|(
+literal|"Entry editor, previous panel 2"
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Entry editor, previous panel 2"
+argument_list|)
+argument_list|,
+literal|"ctrl+MINUS"
+argument_list|,
+name|KeyBindingCategory
+operator|.
+name|VIEW
 argument_list|)
 block|,
 DECL|enumConstant|DECREASE_TABLE_FONT_SIZE
@@ -405,7 +425,7 @@ argument_list|(
 literal|"Decrease table font size"
 argument_list|)
 argument_list|,
-literal|"ctrl MINUS"
+literal|"ctrl+MINUS"
 argument_list|,
 name|KeyBindingCategory
 operator|.
@@ -431,6 +451,25 @@ operator|.
 name|BIBTEX
 argument_list|)
 block|,
+DECL|enumConstant|DOWNLOAD_FULL_TEXT
+name|DOWNLOAD_FULL_TEXT
+argument_list|(
+literal|"Look up full text documents"
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Look up full text documents"
+argument_list|)
+argument_list|,
+literal|"alt+F7"
+argument_list|,
+name|KeyBindingCategory
+operator|.
+name|QUALITY
+argument_list|)
+block|,
 DECL|enumConstant|EDIT_ENTRY
 name|EDIT_ENTRY
 argument_list|(
@@ -443,7 +482,7 @@ argument_list|(
 literal|"Edit entry"
 argument_list|)
 argument_list|,
-literal|"ctrl E"
+literal|"ctrl+E"
 argument_list|,
 name|KeyBindingCategory
 operator|.
@@ -462,7 +501,7 @@ argument_list|(
 literal|"Edit strings"
 argument_list|)
 argument_list|,
-literal|"ctrl T"
+literal|"ctrl+T"
 argument_list|,
 name|KeyBindingCategory
 operator|.
@@ -481,7 +520,7 @@ argument_list|(
 literal|"Entry editor, next entry"
 argument_list|)
 argument_list|,
-literal|"ctrl shift DOWN"
+literal|"ctrl+shift+DOWN"
 argument_list|,
 name|KeyBindingCategory
 operator|.
@@ -500,7 +539,7 @@ argument_list|(
 literal|"Entry editor, next panel"
 argument_list|)
 argument_list|,
-literal|"ctrl TAB"
+literal|"ctrl+TAB"
 argument_list|,
 name|KeyBindingCategory
 operator|.
@@ -519,7 +558,7 @@ argument_list|(
 literal|"Entry editor, next panel 2"
 argument_list|)
 argument_list|,
-literal|"ctrl PLUS"
+literal|"ctrl+PLUS"
 argument_list|,
 name|KeyBindingCategory
 operator|.
@@ -538,7 +577,7 @@ argument_list|(
 literal|"Entry editor, previous entry"
 argument_list|)
 argument_list|,
-literal|"ctrl shift UP"
+literal|"ctrl+shift+UP"
 argument_list|,
 name|KeyBindingCategory
 operator|.
@@ -557,49 +596,11 @@ argument_list|(
 literal|"Entry editor, previous panel"
 argument_list|)
 argument_list|,
-literal|"ctrl shift TAB"
+literal|"ctrl+shift+TAB"
 argument_list|,
 name|KeyBindingCategory
 operator|.
 name|VIEW
-argument_list|)
-block|,
-DECL|enumConstant|ENTRY_EDITOR_PREVIOUS_PANEL_2
-name|ENTRY_EDITOR_PREVIOUS_PANEL_2
-argument_list|(
-literal|"Entry editor, previous panel 2"
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Entry editor, previous panel 2"
-argument_list|)
-argument_list|,
-literal|"ctrl MINUS"
-argument_list|,
-name|KeyBindingCategory
-operator|.
-name|VIEW
-argument_list|)
-block|,
-DECL|enumConstant|ENTRY_EDITOR_STORE_FIELD
-name|ENTRY_EDITOR_STORE_FIELD
-argument_list|(
-literal|"Entry editor, store field"
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Entry editor, store field"
-argument_list|)
-argument_list|,
-literal|"alt S"
-argument_list|,
-name|KeyBindingCategory
-operator|.
-name|TOOLS
 argument_list|)
 block|,
 DECL|enumConstant|FILE_LIST_EDITOR_MOVE_ENTRY_DOWN
@@ -614,7 +615,7 @@ argument_list|(
 literal|"File list editor, move entry down"
 argument_list|)
 argument_list|,
-literal|"ctrl DOWN"
+literal|"ctrl+DOWN"
 argument_list|,
 name|KeyBindingCategory
 operator|.
@@ -633,7 +634,7 @@ argument_list|(
 literal|"File list editor, move entry up"
 argument_list|)
 argument_list|,
-literal|"ctrl UP"
+literal|"ctrl+UP"
 argument_list|,
 name|KeyBindingCategory
 operator|.
@@ -652,7 +653,7 @@ argument_list|(
 literal|"Find unlinked files"
 argument_list|)
 argument_list|,
-literal|"shift F7"
+literal|"shift+F7"
 argument_list|,
 name|KeyBindingCategory
 operator|.
@@ -671,7 +672,7 @@ argument_list|(
 literal|"Focus entry table"
 argument_list|)
 argument_list|,
-literal|"alt 1"
+literal|"alt+1"
 argument_list|,
 name|KeyBindingCategory
 operator|.
@@ -690,7 +691,7 @@ argument_list|(
 literal|"Forward"
 argument_list|)
 argument_list|,
-literal|"alt RIGHT"
+literal|"alt+RIGHT"
 argument_list|,
 name|KeyBindingCategory
 operator|.
@@ -709,7 +710,7 @@ argument_list|(
 literal|"Search globally"
 argument_list|)
 argument_list|,
-literal|"ctrl shift F"
+literal|"ctrl+shift+F"
 argument_list|,
 name|KeyBindingCategory
 operator|.
@@ -747,7 +748,7 @@ argument_list|(
 literal|"Import into current library"
 argument_list|)
 argument_list|,
-literal|"ctrl I"
+literal|"ctrl+I"
 argument_list|,
 name|KeyBindingCategory
 operator|.
@@ -766,7 +767,7 @@ argument_list|(
 literal|"Import into new library"
 argument_list|)
 argument_list|,
-literal|"ctrl alt I"
+literal|"ctrl+alt+I"
 argument_list|,
 name|KeyBindingCategory
 operator|.
@@ -785,7 +786,7 @@ argument_list|(
 literal|"Increase table font size"
 argument_list|)
 argument_list|,
-literal|"ctrl PLUS"
+literal|"ctrl+PLUS"
 argument_list|,
 name|KeyBindingCategory
 operator|.
@@ -804,7 +805,7 @@ argument_list|(
 literal|"Default table font size"
 argument_list|)
 argument_list|,
-literal|"ctrl 0"
+literal|"ctrl+0"
 argument_list|,
 name|KeyBindingCategory
 operator|.
@@ -823,7 +824,7 @@ argument_list|(
 literal|"Mark entries"
 argument_list|)
 argument_list|,
-literal|"ctrl M"
+literal|"ctrl+M"
 argument_list|,
 name|KeyBindingCategory
 operator|.
@@ -842,7 +843,7 @@ argument_list|(
 literal|"New article"
 argument_list|)
 argument_list|,
-literal|"ctrl shift A"
+literal|"ctrl+shift+A"
 argument_list|,
 name|KeyBindingCategory
 operator|.
@@ -861,7 +862,7 @@ argument_list|(
 literal|"New book"
 argument_list|)
 argument_list|,
-literal|"ctrl shift B"
+literal|"ctrl+shift+B"
 argument_list|,
 name|KeyBindingCategory
 operator|.
@@ -880,7 +881,7 @@ argument_list|(
 literal|"New entry"
 argument_list|)
 argument_list|,
-literal|"ctrl N"
+literal|"ctrl+N"
 argument_list|,
 name|KeyBindingCategory
 operator|.
@@ -899,7 +900,7 @@ argument_list|(
 literal|"New from plain text"
 argument_list|)
 argument_list|,
-literal|"ctrl shift N"
+literal|"ctrl+shift+N"
 argument_list|,
 name|KeyBindingCategory
 operator|.
@@ -918,7 +919,7 @@ argument_list|(
 literal|"New inbook"
 argument_list|)
 argument_list|,
-literal|"ctrl shift I"
+literal|"ctrl+shift+I"
 argument_list|,
 name|KeyBindingCategory
 operator|.
@@ -937,7 +938,7 @@ argument_list|(
 literal|"New mastersthesis"
 argument_list|)
 argument_list|,
-literal|"ctrl shift M"
+literal|"ctrl+shift+M"
 argument_list|,
 name|KeyBindingCategory
 operator|.
@@ -956,7 +957,7 @@ argument_list|(
 literal|"New phdthesis"
 argument_list|)
 argument_list|,
-literal|"ctrl shift T"
+literal|"ctrl+shift+T"
 argument_list|,
 name|KeyBindingCategory
 operator|.
@@ -975,7 +976,7 @@ argument_list|(
 literal|"New proceedings"
 argument_list|)
 argument_list|,
-literal|"ctrl shift P"
+literal|"ctrl+shift+P"
 argument_list|,
 name|KeyBindingCategory
 operator|.
@@ -994,7 +995,7 @@ argument_list|(
 literal|"New unpublished"
 argument_list|)
 argument_list|,
-literal|"ctrl shift U"
+literal|"ctrl+shift+U"
 argument_list|,
 name|KeyBindingCategory
 operator|.
@@ -1013,7 +1014,7 @@ argument_list|(
 literal|"New technical report"
 argument_list|)
 argument_list|,
-literal|"ctrl shift R"
+literal|"ctrl+shift+R"
 argument_list|,
 name|KeyBindingCategory
 operator|.
@@ -1051,7 +1052,7 @@ argument_list|(
 literal|"Next tab"
 argument_list|)
 argument_list|,
-literal|"ctrl PAGE_DOWN"
+literal|"ctrl+PAGE_DOWN"
 argument_list|,
 name|KeyBindingCategory
 operator|.
@@ -1070,7 +1071,7 @@ argument_list|(
 literal|"Open terminal here"
 argument_list|)
 argument_list|,
-literal|"ctrl shift L"
+literal|"ctrl+shift+L"
 argument_list|,
 name|KeyBindingCategory
 operator|.
@@ -1089,7 +1090,7 @@ argument_list|(
 literal|"Open library"
 argument_list|)
 argument_list|,
-literal|"ctrl O"
+literal|"ctrl+O"
 argument_list|,
 name|KeyBindingCategory
 operator|.
@@ -1127,7 +1128,7 @@ argument_list|(
 literal|"Open folder"
 argument_list|)
 argument_list|,
-literal|"ctrl shift O"
+literal|"ctrl+shift+O"
 argument_list|,
 name|KeyBindingCategory
 operator|.
@@ -1146,7 +1147,7 @@ argument_list|(
 literal|"Open OpenOffice/LibreOffice connection"
 argument_list|)
 argument_list|,
-literal|"alt 0"
+literal|"alt+0"
 argument_list|,
 name|KeyBindingCategory
 operator|.
@@ -1184,7 +1185,7 @@ argument_list|(
 literal|"Paste"
 argument_list|)
 argument_list|,
-literal|"ctrl V"
+literal|"ctrl+V"
 argument_list|,
 name|KeyBindingCategory
 operator|.
@@ -1203,7 +1204,7 @@ argument_list|(
 literal|"Pull changes from shared database"
 argument_list|)
 argument_list|,
-literal|"ctrl shift R"
+literal|"ctrl+shift+R"
 argument_list|,
 name|KeyBindingCategory
 operator|.
@@ -1222,7 +1223,7 @@ argument_list|(
 literal|"Preamble editor, store changes"
 argument_list|)
 argument_list|,
-literal|"alt S"
+literal|"alt+S"
 argument_list|,
 name|KeyBindingCategory
 operator|.
@@ -1241,7 +1242,7 @@ argument_list|(
 literal|"Previous preview layout"
 argument_list|)
 argument_list|,
-literal|"shift F9"
+literal|"shift+F9"
 argument_list|,
 name|KeyBindingCategory
 operator|.
@@ -1260,7 +1261,7 @@ argument_list|(
 literal|"Previous tab"
 argument_list|)
 argument_list|,
-literal|"ctrl PAGE_UP"
+literal|"ctrl+PAGE_UP"
 argument_list|,
 name|KeyBindingCategory
 operator|.
@@ -1279,7 +1280,7 @@ argument_list|(
 literal|"Push to application"
 argument_list|)
 argument_list|,
-literal|"ctrl L"
+literal|"ctrl+L"
 argument_list|,
 name|KeyBindingCategory
 operator|.
@@ -1298,7 +1299,7 @@ argument_list|(
 literal|"Quit JabRef"
 argument_list|)
 argument_list|,
-literal|"ctrl Q"
+literal|"ctrl+Q"
 argument_list|,
 name|KeyBindingCategory
 operator|.
@@ -1317,7 +1318,7 @@ argument_list|(
 literal|"Redo"
 argument_list|)
 argument_list|,
-literal|"ctrl Y"
+literal|"ctrl+Y"
 argument_list|,
 name|KeyBindingCategory
 operator|.
@@ -1336,7 +1337,7 @@ argument_list|(
 literal|"Refresh OpenOffice/LibreOffice"
 argument_list|)
 argument_list|,
-literal|"ctrl alt O"
+literal|"ctrl+alt+O"
 argument_list|,
 name|KeyBindingCategory
 operator|.
@@ -1355,7 +1356,7 @@ argument_list|(
 literal|"Replace string"
 argument_list|)
 argument_list|,
-literal|"ctrl R"
+literal|"ctrl+R"
 argument_list|,
 name|KeyBindingCategory
 operator|.
@@ -1374,7 +1375,7 @@ argument_list|(
 literal|"Resolve duplicate BibTeX keys"
 argument_list|)
 argument_list|,
-literal|"ctrl shift D"
+literal|"ctrl+shift+D"
 argument_list|,
 name|KeyBindingCategory
 operator|.
@@ -1393,7 +1394,7 @@ argument_list|(
 literal|"Save all"
 argument_list|)
 argument_list|,
-literal|"ctrl alt S"
+literal|"ctrl+alt+S"
 argument_list|,
 name|KeyBindingCategory
 operator|.
@@ -1412,7 +1413,7 @@ argument_list|(
 literal|"Save library"
 argument_list|)
 argument_list|,
-literal|"ctrl S"
+literal|"ctrl+S"
 argument_list|,
 name|KeyBindingCategory
 operator|.
@@ -1431,7 +1432,7 @@ argument_list|(
 literal|"Save library as..."
 argument_list|)
 argument_list|,
-literal|"ctrl shift S"
+literal|"ctrl+shift+S"
 argument_list|,
 name|KeyBindingCategory
 operator|.
@@ -1450,7 +1451,7 @@ argument_list|(
 literal|"Search"
 argument_list|)
 argument_list|,
-literal|"ctrl F"
+literal|"ctrl+F"
 argument_list|,
 name|KeyBindingCategory
 operator|.
@@ -1469,7 +1470,7 @@ argument_list|(
 literal|"Select all"
 argument_list|)
 argument_list|,
-literal|"ctrl A"
+literal|"ctrl+A"
 argument_list|,
 name|KeyBindingCategory
 operator|.
@@ -1526,7 +1527,7 @@ argument_list|(
 literal|"String dialog, add string"
 argument_list|)
 argument_list|,
-literal|"ctrl N"
+literal|"ctrl+N"
 argument_list|,
 name|KeyBindingCategory
 operator|.
@@ -1545,7 +1546,7 @@ argument_list|(
 literal|"String dialog, remove string"
 argument_list|)
 argument_list|,
-literal|"shift DELETE"
+literal|"shift+DELETE"
 argument_list|,
 name|KeyBindingCategory
 operator|.
@@ -1564,7 +1565,7 @@ argument_list|(
 literal|"Synchronize files"
 argument_list|)
 argument_list|,
-literal|"ctrl shift F7"
+literal|"ctrl+shift+F7"
 argument_list|,
 name|KeyBindingCategory
 operator|.
@@ -1583,7 +1584,7 @@ argument_list|(
 literal|"Toggle entry preview"
 argument_list|)
 argument_list|,
-literal|"alt 2"
+literal|"alt+2"
 argument_list|,
 name|KeyBindingCategory
 operator|.
@@ -1602,7 +1603,7 @@ argument_list|(
 literal|"Toggle groups interface"
 argument_list|)
 argument_list|,
-literal|"alt 3"
+literal|"alt+3"
 argument_list|,
 name|KeyBindingCategory
 operator|.
@@ -1621,7 +1622,7 @@ argument_list|(
 literal|"Unabbreviate"
 argument_list|)
 argument_list|,
-literal|"ctrl alt shift A"
+literal|"ctrl+alt+shift+A"
 argument_list|,
 name|KeyBindingCategory
 operator|.
@@ -1640,7 +1641,7 @@ argument_list|(
 literal|"Undo"
 argument_list|)
 argument_list|,
-literal|"ctrl Z"
+literal|"ctrl+Z"
 argument_list|,
 name|KeyBindingCategory
 operator|.
@@ -1659,7 +1660,7 @@ argument_list|(
 literal|"Unmark entries"
 argument_list|)
 argument_list|,
-literal|"ctrl shift M"
+literal|"ctrl+shift+M"
 argument_list|,
 name|KeyBindingCategory
 operator|.
@@ -1678,7 +1679,7 @@ argument_list|(
 literal|"Web search"
 argument_list|)
 argument_list|,
-literal|"alt 4"
+literal|"alt+4"
 argument_list|,
 name|KeyBindingCategory
 operator|.
@@ -1704,11 +1705,11 @@ operator|.
 name|TOOLS
 argument_list|)
 block|;
-DECL|field|key
+DECL|field|constant
 specifier|private
 specifier|final
 name|String
-name|key
+name|constant
 decl_stmt|;
 DECL|field|localization
 specifier|private
@@ -1728,17 +1729,17 @@ specifier|final
 name|KeyBindingCategory
 name|category
 decl_stmt|;
-DECL|method|KeyBinding (String key, String localization, String defaultBinding, KeyBindingCategory category)
+DECL|method|KeyBinding (String constantName, String localization, String defaultKeyBinding, KeyBindingCategory category)
 name|KeyBinding
 parameter_list|(
 name|String
-name|key
+name|constantName
 parameter_list|,
 name|String
 name|localization
 parameter_list|,
 name|String
-name|defaultBinding
+name|defaultKeyBinding
 parameter_list|,
 name|KeyBindingCategory
 name|category
@@ -1746,9 +1747,9 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|key
+name|constant
 operator|=
-name|key
+name|constantName
 expr_stmt|;
 name|this
 operator|.
@@ -1760,7 +1761,7 @@ name|this
 operator|.
 name|defaultBinding
 operator|=
-name|defaultBinding
+name|defaultKeyBinding
 expr_stmt|;
 name|this
 operator|.
@@ -1769,14 +1770,15 @@ operator|=
 name|category
 expr_stmt|;
 block|}
-DECL|method|getKey ()
+comment|/**      * This method returns the enum constant value      * @return      */
+DECL|method|getConstant ()
 specifier|public
 name|String
-name|getKey
+name|getConstant
 parameter_list|()
 block|{
 return|return
-name|key
+name|constant
 return|;
 block|}
 DECL|method|getLocalization ()
@@ -1789,10 +1791,11 @@ return|return
 name|localization
 return|;
 block|}
-DECL|method|getDefaultBinding ()
+comment|/**      * This method returns the default key binding, the key(s) which are assigned      * @return The default key binding      */
+DECL|method|getDefaultKeyBinding ()
 specifier|public
 name|String
-name|getDefaultBinding
+name|getDefaultKeyBinding
 parameter_list|()
 block|{
 return|return

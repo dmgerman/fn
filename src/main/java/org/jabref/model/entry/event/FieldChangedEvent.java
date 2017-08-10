@@ -70,7 +70,14 @@ specifier|final
 name|String
 name|oldValue
 decl_stmt|;
-comment|/**      * @param bibEntry Affected BibEntry object      * @param fieldName Name of field which has been changed      * @param newValue new field value      * @param newValue old field value      * @param location location Location affected by this event      */
+DECL|field|delta
+specifier|private
+name|int
+name|delta
+init|=
+literal|0
+decl_stmt|;
+comment|/**      * @param bibEntry  Affected BibEntry object      * @param fieldName Name of field which has been changed      * @param newValue  new field value      * @param newValue  old field value      * @param location  location Location affected by this event      */
 DECL|method|FieldChangedEvent (BibEntry bibEntry, String fieldName, String newValue, String oldValue, EntryEventSource location)
 specifier|public
 name|FieldChangedEvent
@@ -116,8 +123,17 @@ name|oldValue
 operator|=
 name|oldValue
 expr_stmt|;
+name|delta
+operator|=
+name|computeDelta
+argument_list|(
+name|oldValue
+argument_list|,
+name|newValue
+argument_list|)
+expr_stmt|;
 block|}
-comment|/**      * @param bibEntry Affected BibEntry object      * @param fieldName Name of field which has been changed      * @param newValue new field value      */
+comment|/**      * @param bibEntry  Affected BibEntry object      * @param fieldName Name of field which has been changed      * @param newValue  new field value      */
 DECL|method|FieldChangedEvent (BibEntry bibEntry, String fieldName, String newValue, String oldValue)
 specifier|public
 name|FieldChangedEvent
@@ -158,8 +174,17 @@ name|oldValue
 operator|=
 name|oldValue
 expr_stmt|;
+name|delta
+operator|=
+name|computeDelta
+argument_list|(
+name|oldValue
+argument_list|,
+name|newValue
+argument_list|)
+expr_stmt|;
 block|}
-comment|/**      * @param bibEntry Affected BibEntry object      * @param fieldName Name of field which has been changed      * @param newValue new field value      * @param location location Location affected by this event      */
+comment|/**      * @param bibEntry  Affected BibEntry object      * @param fieldName Name of field which has been changed      * @param newValue  new field value      * @param location  location Location affected by this event      */
 DECL|method|FieldChangedEvent (FieldChange fieldChange, EntryEventSource location)
 specifier|public
 name|FieldChangedEvent
@@ -208,6 +233,15 @@ operator|.
 name|getOldValue
 argument_list|()
 expr_stmt|;
+name|delta
+operator|=
+name|computeDelta
+argument_list|(
+name|oldValue
+argument_list|,
+name|newValue
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|FieldChangedEvent (FieldChange fieldChange)
 specifier|public
@@ -226,6 +260,87 @@ operator|.
 name|LOCAL
 argument_list|)
 expr_stmt|;
+block|}
+DECL|method|computeDelta (String oldValue, String newValue)
+specifier|private
+name|int
+name|computeDelta
+parameter_list|(
+name|String
+name|oldValue
+parameter_list|,
+name|String
+name|newValue
+parameter_list|)
+block|{
+if|if
+condition|(
+name|oldValue
+operator|==
+name|newValue
+condition|)
+block|{
+return|return
+literal|0
+return|;
+block|}
+elseif|else
+if|if
+condition|(
+name|oldValue
+operator|==
+literal|null
+operator|&&
+name|newValue
+operator|!=
+literal|null
+condition|)
+block|{
+return|return
+name|newValue
+operator|.
+name|length
+argument_list|()
+return|;
+block|}
+elseif|else
+if|if
+condition|(
+name|newValue
+operator|==
+literal|null
+operator|&&
+name|oldValue
+operator|!=
+literal|null
+condition|)
+block|{
+return|return
+name|oldValue
+operator|.
+name|length
+argument_list|()
+return|;
+block|}
+else|else
+block|{
+return|return
+name|Math
+operator|.
+name|abs
+argument_list|(
+name|newValue
+operator|.
+name|length
+argument_list|()
+operator|-
+name|oldValue
+operator|.
+name|length
+argument_list|()
+argument_list|)
+return|;
+block|}
 block|}
 DECL|method|getFieldName ()
 specifier|public
@@ -255,6 +370,16 @@ parameter_list|()
 block|{
 return|return
 name|oldValue
+return|;
+block|}
+DECL|method|getDelta ()
+specifier|public
+name|int
+name|getDelta
+parameter_list|()
+block|{
+return|return
+name|delta
 return|;
 block|}
 block|}

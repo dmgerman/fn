@@ -895,7 +895,7 @@ argument_list|(
 literal|"title"
 argument_list|)
 operator|.
-name|getString
+name|optString
 argument_list|(
 literal|0
 argument_list|)
@@ -917,7 +917,7 @@ name|item
 operator|.
 name|optJSONArray
 argument_list|(
-literal|"title"
+literal|"subtitle"
 argument_list|)
 argument_list|)
 operator|.

@@ -431,6 +431,15 @@ name|diezSliceTheoremEntry
 operator|.
 name|setField
 argument_list|(
+literal|"url"
+argument_list|,
+literal|"http://adsabs.harvard.edu/abs/2014arXiv1405.2249D"
+argument_list|)
+expr_stmt|;
+name|diezSliceTheoremEntry
+operator|.
+name|setField
+argument_list|(
 literal|"abstract"
 argument_list|,
 literal|"A general slice theorem for the action of a Fr$\\backslash$'echet Lie group on a"
@@ -569,7 +578,7 @@ name|setField
 argument_list|(
 literal|"month"
 argument_list|,
-literal|"#dec#"
+literal|"#sep#"
 argument_list|)
 expr_stmt|;
 name|famaeyMcGaughEntry
@@ -624,6 +633,15 @@ argument_list|(
 literal|"keywords"
 argument_list|,
 literal|"astronomical observations, Newtonian limit, equations of motion, extragalactic astronomy, cosmology, theories of gravity, fundamental physics, astrophysics"
+argument_list|)
+expr_stmt|;
+name|famaeyMcGaughEntry
+operator|.
+name|setField
+argument_list|(
+literal|"url"
+argument_list|,
+literal|"http://adsabs.harvard.edu/abs/2012LRR....15...10F"
 argument_list|)
 expr_stmt|;
 name|sunWelchEntry
@@ -722,6 +740,15 @@ argument_list|,
 literal|"2012"
 argument_list|)
 expr_stmt|;
+name|sunWelchEntry
+operator|.
+name|setField
+argument_list|(
+literal|"url"
+argument_list|,
+literal|"http://adsabs.harvard.edu/abs/2012NatMa..11...44S"
+argument_list|)
+expr_stmt|;
 name|xiongSunEntry
 operator|=
 operator|new
@@ -816,6 +843,15 @@ argument_list|(
 literal|"year"
 argument_list|,
 literal|"2007"
+argument_list|)
+expr_stmt|;
+name|xiongSunEntry
+operator|.
+name|setField
+argument_list|(
+literal|"url"
+argument_list|,
+literal|"http://adsabs.harvard.edu/abs/2007ITGRS..45..879X"
 argument_list|)
 expr_stmt|;
 name|ingersollPollardEntry
@@ -923,6 +959,15 @@ argument_list|,
 literal|"1982"
 argument_list|)
 expr_stmt|;
+name|ingersollPollardEntry
+operator|.
+name|setField
+argument_list|(
+literal|"url"
+argument_list|,
+literal|"http://adsabs.harvard.edu/abs/1982Icar...52...62I"
+argument_list|)
+expr_stmt|;
 name|luceyPaulEntry
 operator|=
 operator|new
@@ -1019,6 +1064,15 @@ argument_list|,
 literal|"2000"
 argument_list|)
 expr_stmt|;
+name|luceyPaulEntry
+operator|.
+name|setField
+argument_list|(
+literal|"url"
+argument_list|,
+literal|"http://adsabs.harvard.edu/abs/2000JGR...10520297L"
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Test
@@ -1081,7 +1135,7 @@ name|fetcher
 operator|.
 name|performSearch
 argument_list|(
-literal|"Diez slice theorem"
+literal|"Diez slice theorem Lie"
 argument_list|)
 decl_stmt|;
 name|assertEquals

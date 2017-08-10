@@ -202,9 +202,9 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|journals
+name|layout
 operator|.
-name|JournalAbbreviationLoader
+name|LayoutFormatterPreferences
 import|;
 end_import
 
@@ -340,7 +340,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|FileField
+name|FileFieldWriter
 import|;
 end_import
 
@@ -354,7 +354,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|ParsedFileField
+name|LinkedFile
 import|;
 end_import
 
@@ -383,18 +383,6 @@ operator|.
 name|metadata
 operator|.
 name|MetaData
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|preferences
-operator|.
-name|JabRefPreferences
 import|;
 end_import
 
@@ -609,14 +597,6 @@ literal|true
 argument_list|)
 expr_stmt|;
 comment|//Biblocation as Primary overwrites all other dirs
-name|JabRefPreferences
-name|prefs
-init|=
-name|JabRefPreferences
-operator|.
-name|getInstance
-argument_list|()
-decl_stmt|;
 name|worker
 operator|=
 operator|new
@@ -627,31 +607,16 @@ argument_list|,
 operator|new
 name|CleanupPreferences
 argument_list|(
-name|JabRefPreferences
-operator|.
-name|getInstance
-argument_list|()
-operator|.
-name|get
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|IMPORT_FILENAMEPATTERN
-argument_list|)
+literal|"\\bibtexkey"
 argument_list|,
 literal|""
 argument_list|,
 comment|//empty fileDirPattern for backwards compatibility
-name|prefs
-operator|.
-name|getLayoutFormatterPreferences
-argument_list|(
 name|mock
 argument_list|(
-name|JournalAbbreviationLoader
+name|LayoutFormatterPreferences
 operator|.
 name|class
-argument_list|)
 argument_list|)
 argument_list|,
 name|fileDirPrefs
@@ -851,11 +816,11 @@ operator|.
 name|newFile
 argument_list|()
 decl_stmt|;
-name|ParsedFileField
+name|LinkedFile
 name|fileField
 init|=
 operator|new
-name|ParsedFileField
+name|LinkedFile
 argument_list|(
 literal|""
 argument_list|,
@@ -873,7 +838,7 @@ name|setField
 argument_list|(
 literal|"file"
 argument_list|,
-name|FileField
+name|FileFieldWriter
 operator|.
 name|getStringRepresentation
 argument_list|(
@@ -1776,11 +1741,11 @@ operator|new
 name|BibEntry
 argument_list|()
 decl_stmt|;
-name|ParsedFileField
+name|LinkedFile
 name|fileField
 init|=
 operator|new
-name|ParsedFileField
+name|LinkedFile
 argument_list|(
 literal|""
 argument_list|,
@@ -1798,7 +1763,7 @@ name|setField
 argument_list|(
 literal|"file"
 argument_list|,
-name|FileField
+name|FileFieldWriter
 operator|.
 name|getStringRepresentation
 argument_list|(
@@ -1815,11 +1780,11 @@ argument_list|,
 name|entry
 argument_list|)
 expr_stmt|;
-name|ParsedFileField
+name|LinkedFile
 name|newFileField
 init|=
 operator|new
-name|ParsedFileField
+name|LinkedFile
 argument_list|(
 literal|""
 argument_list|,
@@ -1839,7 +1804,7 @@ name|Optional
 operator|.
 name|of
 argument_list|(
-name|FileField
+name|FileFieldWriter
 operator|.
 name|getStringRepresentation
 argument_list|(
@@ -1894,11 +1859,11 @@ operator|new
 name|BibEntry
 argument_list|()
 decl_stmt|;
-name|ParsedFileField
+name|LinkedFile
 name|fileField
 init|=
 operator|new
-name|ParsedFileField
+name|LinkedFile
 argument_list|(
 literal|""
 argument_list|,
@@ -1916,7 +1881,7 @@ name|setField
 argument_list|(
 literal|"file"
 argument_list|,
-name|FileField
+name|FileFieldWriter
 operator|.
 name|getStringRepresentation
 argument_list|(
@@ -1933,11 +1898,11 @@ argument_list|,
 name|entry
 argument_list|)
 expr_stmt|;
-name|ParsedFileField
+name|LinkedFile
 name|newFileField
 init|=
 operator|new
-name|ParsedFileField
+name|LinkedFile
 argument_list|(
 literal|""
 argument_list|,
@@ -1957,7 +1922,7 @@ name|Optional
 operator|.
 name|of
 argument_list|(
-name|FileField
+name|FileFieldWriter
 operator|.
 name|getStringRepresentation
 argument_list|(
@@ -2019,11 +1984,11 @@ argument_list|(
 literal|"Toot"
 argument_list|)
 expr_stmt|;
-name|ParsedFileField
+name|LinkedFile
 name|fileField
 init|=
 operator|new
-name|ParsedFileField
+name|LinkedFile
 argument_list|(
 literal|""
 argument_list|,
@@ -2041,7 +2006,7 @@ name|setField
 argument_list|(
 literal|"file"
 argument_list|,
-name|FileField
+name|FileFieldWriter
 operator|.
 name|getStringRepresentation
 argument_list|(
@@ -2058,11 +2023,11 @@ argument_list|,
 name|entry
 argument_list|)
 expr_stmt|;
-name|ParsedFileField
+name|LinkedFile
 name|newFileField
 init|=
 operator|new
-name|ParsedFileField
+name|LinkedFile
 argument_list|(
 literal|""
 argument_list|,
@@ -2079,7 +2044,7 @@ name|Optional
 operator|.
 name|of
 argument_list|(
-name|FileField
+name|FileFieldWriter
 operator|.
 name|getStringRepresentation
 argument_list|(

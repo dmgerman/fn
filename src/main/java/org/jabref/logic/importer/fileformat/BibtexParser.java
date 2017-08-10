@@ -1295,63 +1295,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-elseif|else
-if|if
-condition|(
-operator|!
-name|entry
-operator|.
-name|getCiteKeyOptional
-argument_list|()
-operator|.
-name|isPresent
-argument_list|()
-operator|||
-name|entry
-operator|.
-name|getCiteKeyOptional
-argument_list|()
-operator|.
-name|get
-argument_list|()
-operator|.
-name|isEmpty
-argument_list|()
-condition|)
-block|{
-name|parserResult
-operator|.
-name|addWarning
-argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Empty BibTeX key"
-argument_list|)
-operator|+
-literal|": "
-operator|+
-name|entry
-operator|.
-name|getAuthorTitleYear
-argument_list|(
-literal|40
-argument_list|)
-operator|+
-literal|" ("
-operator|+
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Grouping may not work for this entry."
-argument_list|)
-operator|+
-literal|")"
-argument_list|)
-expr_stmt|;
-block|}
 block|}
 catch|catch
 parameter_list|(
@@ -2554,9 +2497,6 @@ argument_list|()
 expr_stmt|;
 return|return
 name|parseBracketedText
-argument_list|()
-operator|.
-name|toString
 argument_list|()
 return|;
 block|}
@@ -3850,17 +3790,17 @@ block|}
 block|}
 DECL|method|parseBracketedText ()
 specifier|private
-name|StringBuffer
+name|String
 name|parseBracketedText
 parameter_list|()
 throws|throws
 name|IOException
 block|{
-name|StringBuffer
+name|StringBuilder
 name|value
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 name|consume
@@ -4056,6 +3996,9 @@ argument_list|)
 expr_stmt|;
 return|return
 name|value
+operator|.
+name|toString
+argument_list|()
 return|;
 block|}
 DECL|method|isClosingBracketNext ()

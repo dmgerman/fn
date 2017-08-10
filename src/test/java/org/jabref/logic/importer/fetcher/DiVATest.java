@@ -44,11 +44,11 @@ name|org
 operator|.
 name|jabref
 operator|.
-name|model
+name|logic
 operator|.
-name|entry
+name|importer
 operator|.
-name|BibEntry
+name|ImportFormatPreferences
 import|;
 end_import
 
@@ -58,9 +58,11 @@ name|org
 operator|.
 name|jabref
 operator|.
-name|preferences
+name|model
 operator|.
-name|JabRefPreferences
+name|entry
+operator|.
+name|BibEntry
 import|;
 end_import
 
@@ -113,6 +115,16 @@ import|;
 end_import
 
 begin_import
+import|import
+name|org
+operator|.
+name|mockito
+operator|.
+name|Answers
+import|;
+end_import
+
+begin_import
 import|import static
 name|org
 operator|.
@@ -148,6 +160,18 @@ name|assertTrue
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|mockito
+operator|.
+name|Mockito
+operator|.
+name|mock
+import|;
+end_import
+
 begin_class
 annotation|@
 name|Category
@@ -179,13 +203,16 @@ operator|=
 operator|new
 name|DiVA
 argument_list|(
-name|JabRefPreferences
+name|mock
+argument_list|(
+name|ImportFormatPreferences
 operator|.
-name|getInstance
-argument_list|()
+name|class
+argument_list|,
+name|Answers
 operator|.
-name|getImportFormatPreferences
-argument_list|()
+name|RETURNS_DEEP_STUBS
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -329,6 +356,24 @@ argument_list|(
 literal|"year"
 argument_list|,
 literal|"2007"
+argument_list|)
+expr_stmt|;
+name|entry
+operator|.
+name|setField
+argument_list|(
+literal|"abstract"
+argument_list|,
+literal|"Lower bounds for problems related to realizing multiplication by constants with shifts, adders, and subtracters are presented. These lower bounds are straightforwardly calculated and have applications in proving the optimality of solutions obtained by heuristics. "
+argument_list|)
+expr_stmt|;
+name|entry
+operator|.
+name|setField
+argument_list|(
+literal|"doi"
+argument_list|,
+literal|"10.1109/TCSII.2007.903212"
 argument_list|)
 expr_stmt|;
 name|assertEquals

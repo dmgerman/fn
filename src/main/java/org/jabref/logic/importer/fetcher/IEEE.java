@@ -366,7 +366,7 @@ name|flatMap
 argument_list|(
 name|DOI
 operator|::
-name|build
+name|parse
 argument_list|)
 decl_stmt|;
 if|if
@@ -394,7 +394,7 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|getURI
+name|getExternalURI
 argument_list|()
 operator|.
 name|isPresent
@@ -413,7 +413,7 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|getURI
+name|getExternalURI
 argument_list|()
 operator|.
 name|get

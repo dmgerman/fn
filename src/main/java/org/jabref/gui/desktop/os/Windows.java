@@ -442,12 +442,12 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|openFolderAndSelectFile (String filePath)
+DECL|method|openFolderAndSelectFile (Path filePath)
 specifier|public
 name|void
 name|openFolderAndSelectFile
 parameter_list|(
-name|String
+name|Path
 name|filePath
 parameter_list|)
 throws|throws
@@ -461,6 +461,9 @@ argument_list|,
 literal|"/select,"
 argument_list|,
 name|filePath
+operator|.
+name|toString
+argument_list|()
 argument_list|)
 operator|.
 name|start

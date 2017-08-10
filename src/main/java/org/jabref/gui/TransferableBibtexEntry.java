@@ -178,21 +178,12 @@ name|TransferableBibtexEntry
 implements|implements
 name|Transferable
 block|{
-DECL|field|data
-specifier|private
-specifier|final
-name|List
-argument_list|<
-name|BibEntry
-argument_list|>
-name|data
-decl_stmt|;
-DECL|field|entryFlavor
+DECL|field|ENTRY_FLAVOR
 specifier|public
 specifier|static
 specifier|final
 name|DataFlavor
-name|entryFlavor
+name|ENTRY_FLAVOR
 init|=
 operator|new
 name|DataFlavor
@@ -203,6 +194,15 @@ name|class
 argument_list|,
 literal|"JabRef entry"
 argument_list|)
+decl_stmt|;
+DECL|field|data
+specifier|private
+specifier|final
+name|List
+argument_list|<
+name|BibEntry
+argument_list|>
+name|data
 decl_stmt|;
 DECL|method|TransferableBibtexEntry (List<BibEntry> bes)
 specifier|public
@@ -238,7 +238,7 @@ index|[]
 block|{
 name|TransferableBibtexEntry
 operator|.
-name|entryFlavor
+name|ENTRY_FLAVOR
 block|,
 name|DataFlavor
 operator|.
@@ -264,7 +264,7 @@ name|equals
 argument_list|(
 name|TransferableBibtexEntry
 operator|.
-name|entryFlavor
+name|ENTRY_FLAVOR
 argument_list|)
 operator|||
 name|flavor
@@ -298,7 +298,7 @@ name|equals
 argument_list|(
 name|TransferableBibtexEntry
 operator|.
-name|entryFlavor
+name|ENTRY_FLAVOR
 argument_list|)
 condition|)
 block|{

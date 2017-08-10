@@ -321,7 +321,7 @@ name|flatMap
 argument_list|(
 name|DOI
 operator|::
-name|build
+name|parse
 argument_list|)
 decl_stmt|;
 if|if
@@ -370,7 +370,9 @@ name|connection
 operator|.
 name|userAgent
 argument_list|(
-literal|"Mozilla/5.0 (Windows; U; WindowsNT 5.1; en-US; rv1.8.1.6) Gecko/20070725 Firefox/2.0.0.6"
+name|URLDownload
+operator|.
+name|USER_AGENT
 argument_list|)
 expr_stmt|;
 name|connection

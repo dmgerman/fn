@@ -20,6 +20,18 @@ name|org
 operator|.
 name|jabref
 operator|.
+name|architecture
+operator|.
+name|ApacheCommonsLang3Allowed
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
 name|logic
 operator|.
 name|l10n
@@ -71,6 +83,11 @@ import|;
 end_import
 
 begin_class
+annotation|@
+name|ApacheCommonsLang3Allowed
+argument_list|(
+literal|"There is no equivalent in Google's Guava"
+argument_list|)
 DECL|class|HtmlToUnicodeFormatter
 specifier|public
 class|class

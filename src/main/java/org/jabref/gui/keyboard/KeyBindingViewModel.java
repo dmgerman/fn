@@ -140,6 +140,26 @@ name|realBinding
 init|=
 literal|""
 decl_stmt|;
+DECL|field|children
+specifier|private
+specifier|final
+name|ObservableList
+argument_list|<
+name|KeyBindingViewModel
+argument_list|>
+name|children
+init|=
+name|FXCollections
+operator|.
+name|observableArrayList
+argument_list|()
+decl_stmt|;
+DECL|field|keyBindingRepository
+specifier|private
+specifier|final
+name|KeyBindingRepository
+name|keyBindingRepository
+decl_stmt|;
 DECL|field|displayName
 specifier|private
 specifier|final
@@ -165,37 +185,6 @@ specifier|private
 specifier|final
 name|KeyBindingCategory
 name|category
-decl_stmt|;
-DECL|method|getChildren ()
-specifier|public
-name|ObservableList
-argument_list|<
-name|KeyBindingViewModel
-argument_list|>
-name|getChildren
-parameter_list|()
-block|{
-return|return
-name|children
-return|;
-block|}
-DECL|field|children
-specifier|private
-name|ObservableList
-argument_list|<
-name|KeyBindingViewModel
-argument_list|>
-name|children
-init|=
-name|FXCollections
-operator|.
-name|observableArrayList
-argument_list|()
-decl_stmt|;
-DECL|field|keyBindingRepository
-specifier|private
-name|KeyBindingRepository
-name|keyBindingRepository
 decl_stmt|;
 DECL|method|KeyBindingViewModel (KeyBindingRepository keyBindingRepository, KeyBinding keyBinding, String binding)
 specifier|public
@@ -262,6 +251,19 @@ expr_stmt|;
 name|setDisplayName
 argument_list|()
 expr_stmt|;
+block|}
+DECL|method|getChildren ()
+specifier|public
+name|ObservableList
+argument_list|<
+name|KeyBindingViewModel
+argument_list|>
+name|getChildren
+parameter_list|()
+block|{
+return|return
+name|children
+return|;
 block|}
 DECL|method|getKeyBinding ()
 specifier|public
@@ -521,7 +523,7 @@ condition|)
 block|{
 name|modifiers
 operator|=
-literal|"ctrl "
+literal|"ctrl+"
 expr_stmt|;
 block|}
 if|if
@@ -534,7 +536,7 @@ condition|)
 block|{
 name|modifiers
 operator|+=
-literal|"shift "
+literal|"shift+"
 expr_stmt|;
 block|}
 if|if
@@ -547,7 +549,7 @@ condition|)
 block|{
 name|modifiers
 operator|+=
-literal|"alt "
+literal|"alt+"
 expr_stmt|;
 block|}
 comment|// if no modifier keys are pressed, only special keys can be shortcuts
@@ -627,7 +629,7 @@ init|=
 name|getKeyBinding
 argument_list|()
 operator|.
-name|getKey
+name|getConstant
 argument_list|()
 decl_stmt|;
 name|keyBindingRepository

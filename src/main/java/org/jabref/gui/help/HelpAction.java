@@ -275,7 +275,7 @@ extends|extends
 name|MnemonicAwareAction
 block|{
 comment|/**      * New languages of the help have to be added here      */
-DECL|field|avaiableLangFiles
+DECL|field|AVAIABLE_LANG_FILES
 specifier|private
 specifier|static
 specifier|final
@@ -283,7 +283,7 @@ name|Set
 argument_list|<
 name|String
 argument_list|>
-name|avaiableLangFiles
+name|AVAIABLE_LANG_FILES
 init|=
 name|Stream
 operator|.
@@ -703,7 +703,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|avaiableLangFiles
+name|AVAIABLE_LANG_FILES
 operator|.
 name|contains
 argument_list|(

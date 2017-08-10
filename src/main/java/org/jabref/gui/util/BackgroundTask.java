@@ -89,6 +89,11 @@ name|Exception
 argument_list|>
 name|onException
 decl_stmt|;
+DECL|field|onFinished
+specifier|private
+name|Runnable
+name|onFinished
+decl_stmt|;
 DECL|method|BackgroundTask (Callable<V> callable)
 specifier|private
 name|BackgroundTask
@@ -107,7 +112,7 @@ operator|=
 name|callable
 expr_stmt|;
 block|}
-DECL|method|run (Callable<V> callable)
+DECL|method|wrap (Callable<V> callable)
 specifier|public
 specifier|static
 parameter_list|<
@@ -117,7 +122,7 @@ name|BackgroundTask
 argument_list|<
 name|V
 argument_list|>
-name|run
+name|wrap
 parameter_list|(
 name|Callable
 argument_list|<
@@ -135,6 +140,81 @@ name|callable
 argument_list|)
 return|;
 block|}
+DECL|method|chain (Runnable first, Consumer<T> second)
+specifier|private
+specifier|static
+parameter_list|<
+name|T
+parameter_list|>
+name|Consumer
+argument_list|<
+name|T
+argument_list|>
+name|chain
+parameter_list|(
+name|Runnable
+name|first
+parameter_list|,
+name|Consumer
+argument_list|<
+name|T
+argument_list|>
+name|second
+parameter_list|)
+block|{
+if|if
+condition|(
+name|first
+operator|!=
+literal|null
+condition|)
+block|{
+if|if
+condition|(
+name|second
+operator|!=
+literal|null
+condition|)
+block|{
+return|return
+name|result
+lambda|->
+block|{
+name|first
+operator|.
+name|run
+argument_list|()
+expr_stmt|;
+name|second
+operator|.
+name|accept
+argument_list|(
+name|result
+argument_list|)
+expr_stmt|;
+block|}
+return|;
+block|}
+else|else
+block|{
+return|return
+name|result
+lambda|->
+name|first
+operator|.
+name|run
+argument_list|()
+return|;
+block|}
+block|}
+else|else
+block|{
+return|return
+name|second
+return|;
+block|}
+block|}
+comment|/**      * Sets the {@link Runnable} that is invoked after the task is started.      */
 DECL|method|onRunning (Runnable onRunning)
 specifier|public
 name|BackgroundTask
@@ -157,6 +237,7 @@ return|return
 name|this
 return|;
 block|}
+comment|/**      * Sets the {@link Consumer} that is invoked after the task is successfully finished.      */
 DECL|method|onSuccess (Consumer<V> onSuccess)
 specifier|public
 name|BackgroundTask
@@ -183,7 +264,6 @@ name|this
 return|;
 block|}
 DECL|method|call ()
-specifier|public
 name|V
 name|call
 parameter_list|()
@@ -198,7 +278,6 @@ argument_list|()
 return|;
 block|}
 DECL|method|getOnRunning ()
-specifier|public
 name|Runnable
 name|getOnRunning
 parameter_list|()
@@ -208,7 +287,6 @@ name|onRunning
 return|;
 block|}
 DECL|method|getOnSuccess ()
-specifier|public
 name|Consumer
 argument_list|<
 name|V
@@ -217,11 +295,15 @@ name|getOnSuccess
 parameter_list|()
 block|{
 return|return
+name|chain
+argument_list|(
+name|onFinished
+argument_list|,
 name|onSuccess
+argument_list|)
 return|;
 block|}
 DECL|method|getOnException ()
-specifier|public
 name|Consumer
 argument_list|<
 name|Exception
@@ -230,7 +312,12 @@ name|getOnException
 parameter_list|()
 block|{
 return|return
+name|chain
+argument_list|(
+name|onFinished
+argument_list|,
 name|onException
+argument_list|)
 return|;
 block|}
 DECL|method|onFailure (Consumer<Exception> onException)
@@ -253,6 +340,46 @@ operator|.
 name|onException
 operator|=
 name|onException
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
+DECL|method|executeWith (TaskExecutor taskExecutor)
+specifier|public
+name|void
+name|executeWith
+parameter_list|(
+name|TaskExecutor
+name|taskExecutor
+parameter_list|)
+block|{
+name|taskExecutor
+operator|.
+name|execute
+argument_list|(
+name|this
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Sets the {@link Runnable} that is invoked after the task is finished, irrespectively if it was successful or      * failed with an error.      */
+DECL|method|onFinished (Runnable onFinished)
+specifier|public
+name|BackgroundTask
+argument_list|<
+name|V
+argument_list|>
+name|onFinished
+parameter_list|(
+name|Runnable
+name|onFinished
+parameter_list|)
+block|{
+name|this
+operator|.
+name|onFinished
+operator|=
+name|onFinished
 expr_stmt|;
 return|return
 name|this

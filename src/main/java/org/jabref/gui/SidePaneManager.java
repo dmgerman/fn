@@ -1007,7 +1007,7 @@ parameter_list|)
 block|{
 name|LOGGER
 operator|.
-name|error
+name|debug
 argument_list|(
 literal|"Following side pane could not be found: "
 operator|+
@@ -1025,7 +1025,7 @@ parameter_list|)
 block|{
 name|LOGGER
 operator|.
-name|error
+name|debug
 argument_list|(
 literal|"Following Class is no side pane: '"
 operator|+
@@ -1043,7 +1043,7 @@ parameter_list|)
 block|{
 name|LOGGER
 operator|.
-name|info
+name|debug
 argument_list|(
 literal|"Invalid number format for side pane component '"
 operator|+

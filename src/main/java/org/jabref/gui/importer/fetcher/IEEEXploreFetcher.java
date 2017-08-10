@@ -344,6 +344,20 @@ name|jabref
 operator|.
 name|logic
 operator|.
+name|journals
+operator|.
+name|JournalAbbreviationPreferences
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
 name|l10n
 operator|.
 name|Localization
@@ -717,16 +731,16 @@ argument_list|,
 literal|false
 argument_list|)
 decl_stmt|;
-DECL|field|shouldContinue
-specifier|private
-name|boolean
-name|shouldContinue
-decl_stmt|;
 DECL|field|abbreviationLoader
 specifier|private
 specifier|final
 name|JournalAbbreviationLoader
 name|abbreviationLoader
+decl_stmt|;
+DECL|field|shouldContinue
+specifier|private
+name|boolean
+name|shouldContinue
 decl_stmt|;
 DECL|method|IEEEXploreFetcher (JournalAbbreviationLoader abbreviationLoader)
 specifier|public
@@ -884,6 +898,15 @@ argument_list|(
 literal|"Content-Type"
 argument_list|,
 literal|"application/json"
+argument_list|)
+expr_stmt|;
+name|dl
+operator|.
+name|addHeader
+argument_list|(
+literal|"Referer"
+argument_list|,
+literal|"http://ieeexplore.ieee.org/search/searchresult.jsp"
 argument_list|)
 expr_stmt|;
 comment|// set post data
@@ -2915,18 +2938,22 @@ operator|.
 name|trim
 argument_list|()
 expr_stmt|;
-if|if
-condition|(
+name|JournalAbbreviationPreferences
+name|journalAbbreviationPreferences
+init|=
 name|Globals
 operator|.
 name|prefs
 operator|.
-name|getBoolean
-argument_list|(
-name|JabRefPreferences
+name|getJournalAbbreviationPreferences
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|journalAbbreviationPreferences
 operator|.
-name|USE_IEEE_ABRV
-argument_list|)
+name|useIEEEAbbreviations
+argument_list|()
 condition|)
 block|{
 name|fullName
@@ -2935,12 +2962,7 @@ name|abbreviationLoader
 operator|.
 name|getRepository
 argument_list|(
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getJournalAbbreviationPreferences
-argument_list|()
+name|journalAbbreviationPreferences
 argument_list|)
 operator|.
 name|getMedlineAbbreviation
@@ -3494,6 +3516,6 @@ name|entry
 return|;
 end_return
 
-unit|}   }
+unit|}  }
 end_unit
 

@@ -96,14 +96,14 @@ name|CanonicalBibtexEntry
 parameter_list|()
 block|{     }
 comment|/**      * This returns a canonical BibTeX serialization. Special characters such as "{" or "&" are NOT escaped, but written      * as is      *      * Serializes all fields, even the JabRef internal ones. Does NOT serialize "KEY_FIELD" as field, but as key      */
-DECL|method|getCanonicalRepresentation (BibEntry e)
+DECL|method|getCanonicalRepresentation (BibEntry entry)
 specifier|public
 specifier|static
 name|String
 name|getCanonicalRepresentation
 parameter_list|(
 name|BibEntry
-name|e
+name|entry
 parameter_list|)
 block|{
 name|StringBuilder
@@ -113,11 +113,21 @@ operator|new
 name|StringBuilder
 argument_list|()
 decl_stmt|;
+name|sb
+operator|.
+name|append
+argument_list|(
+name|entry
+operator|.
+name|getUserComments
+argument_list|()
+argument_list|)
+expr_stmt|;
 comment|// generate first line: type and bibtex key
 name|String
 name|citeKey
 init|=
-name|e
+name|entry
 operator|.
 name|getCiteKeyOptional
 argument_list|()
@@ -137,7 +147,7 @@ name|format
 argument_list|(
 literal|"@%s{%s,"
 argument_list|,
-name|e
+name|entry
 operator|.
 name|getType
 argument_list|()
@@ -194,7 +204,7 @@ name|String
 argument_list|>
 name|field
 range|:
-name|e
+name|entry
 operator|.
 name|getFieldMap
 argument_list|()

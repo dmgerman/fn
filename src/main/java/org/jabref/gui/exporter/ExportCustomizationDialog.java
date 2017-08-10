@@ -150,16 +150,6 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|JDialog
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
 name|JPanel
 import|;
 end_import
@@ -223,6 +213,18 @@ operator|.
 name|jabref
 operator|.
 name|Globals
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|JabRefDialog
 import|;
 end_import
 
@@ -374,7 +376,7 @@ specifier|public
 class|class
 name|ExportCustomizationDialog
 extends|extends
-name|JDialog
+name|JabRefDialog
 block|{
 comment|// Column widths for export customization dialog table:
 DECL|field|COL_0_WIDTH
@@ -425,6 +427,10 @@ literal|"Manage custom exports"
 argument_list|)
 argument_list|,
 literal|false
+argument_list|,
+name|ExportCustomizationDialog
+operator|.
+name|class
 argument_list|)
 expr_stmt|;
 name|DefaultEventTableModel

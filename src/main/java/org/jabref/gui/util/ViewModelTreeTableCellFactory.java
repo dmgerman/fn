@@ -128,6 +128,40 @@ name|StringUtil
 import|;
 end_import
 
+begin_import
+import|import
+name|de
+operator|.
+name|jensd
+operator|.
+name|fx
+operator|.
+name|glyphs
+operator|.
+name|materialdesignicons
+operator|.
+name|MaterialDesignIcon
+import|;
+end_import
+
+begin_import
+import|import
+name|de
+operator|.
+name|jensd
+operator|.
+name|fx
+operator|.
+name|glyphs
+operator|.
+name|materialdesignicons
+operator|.
+name|utils
+operator|.
+name|MaterialDesignIconFactory
+import|;
+end_import
+
 begin_comment
 comment|/**  * Constructs a {@link TreeTableCell} based on the view model of the row and a bunch of specified converter methods.  *  * @param<S> view model  * @param<T> cell value  */
 end_comment
@@ -263,7 +297,7 @@ return|return
 name|this
 return|;
 block|}
-DECL|method|withIcon (Callback<S, String> toIcon, Callback<S, Paint> toColor)
+DECL|method|withIcon (Callback<S, MaterialDesignIcon> toIcon, Callback<S, Paint> toColor)
 specifier|public
 name|ViewModelTreeTableCellFactory
 argument_list|<
@@ -277,7 +311,7 @@ name|Callback
 argument_list|<
 name|S
 argument_list|,
-name|String
+name|MaterialDesignIcon
 argument_list|>
 name|toIcon
 parameter_list|,
@@ -300,8 +334,12 @@ block|{
 name|Text
 name|graphic
 init|=
-operator|new
-name|Text
+name|MaterialDesignIconFactory
+operator|.
+name|get
+argument_list|()
+operator|.
+name|createIcon
 argument_list|(
 name|toIcon
 operator|.
@@ -311,16 +349,6 @@ name|viewModel
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|graphic
-operator|.
-name|getStyleClass
-argument_list|()
-operator|.
-name|add
-argument_list|(
-literal|"icon"
-argument_list|)
-expr_stmt|;
 name|graphic
 operator|.
 name|setFill

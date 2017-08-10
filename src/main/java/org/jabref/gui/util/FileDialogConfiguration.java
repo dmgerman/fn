@@ -40,6 +40,18 @@ begin_import
 import|import
 name|java
 operator|.
+name|nio
+operator|.
+name|file
+operator|.
+name|Paths
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|ArrayList
@@ -159,46 +171,6 @@ specifier|final
 name|String
 name|initialFileName
 decl_stmt|;
-DECL|method|getInitialDirectory ()
-specifier|public
-name|Optional
-argument_list|<
-name|Path
-argument_list|>
-name|getInitialDirectory
-parameter_list|()
-block|{
-return|return
-name|Optional
-operator|.
-name|ofNullable
-argument_list|(
-name|initialDirectory
-argument_list|)
-return|;
-block|}
-DECL|method|getDefaultExtension ()
-specifier|public
-name|FileChooser
-operator|.
-name|ExtensionFilter
-name|getDefaultExtension
-parameter_list|()
-block|{
-return|return
-name|defaultExtension
-return|;
-block|}
-DECL|method|getInitialFileName ()
-specifier|public
-name|String
-name|getInitialFileName
-parameter_list|()
-block|{
-return|return
-name|initialFileName
-return|;
-block|}
 DECL|method|FileDialogConfiguration (Path initialDirectory, List<FileChooser.ExtensionFilter> extensionFilters, FileChooser.ExtensionFilter defaultExtension, String initialFileName)
 specifier|private
 name|FileDialogConfiguration
@@ -253,6 +225,46 @@ operator|=
 name|initialFileName
 expr_stmt|;
 block|}
+DECL|method|getInitialDirectory ()
+specifier|public
+name|Optional
+argument_list|<
+name|Path
+argument_list|>
+name|getInitialDirectory
+parameter_list|()
+block|{
+return|return
+name|Optional
+operator|.
+name|ofNullable
+argument_list|(
+name|initialDirectory
+argument_list|)
+return|;
+block|}
+DECL|method|getDefaultExtension ()
+specifier|public
+name|FileChooser
+operator|.
+name|ExtensionFilter
+name|getDefaultExtension
+parameter_list|()
+block|{
+return|return
+name|defaultExtension
+return|;
+block|}
+DECL|method|getInitialFileName ()
+specifier|public
+name|String
+name|getInitialFileName
+parameter_list|()
+block|{
+return|return
+name|initialFileName
+return|;
+block|}
 DECL|method|getExtensionFilters ()
 specifier|public
 name|List
@@ -275,6 +287,8 @@ class|class
 name|Builder
 block|{
 DECL|field|extensionFilter
+specifier|private
+specifier|final
 name|List
 argument_list|<
 name|FileChooser
@@ -431,6 +445,21 @@ name|Path
 name|directory
 parameter_list|)
 block|{
+if|if
+condition|(
+name|directory
+operator|==
+literal|null
+condition|)
+block|{
+comment|//It could be that somehow the path is null, for example if it got deleted in the meantime
+name|initialDirectory
+operator|=
+literal|null
+expr_stmt|;
+block|}
+else|else
+block|{
 comment|//Dir must be a folder, not a file
 if|if
 condition|(
@@ -453,8 +482,15 @@ expr_stmt|;
 block|}
 comment|//The lines above work also if the dir does not exist at all!
 comment|//NULL is accepted by the filechooser as no inital path
+comment|//Explicit null check, if somehow the parent is null, as Files.exists throws an NPE otherwise
 if|if
 condition|(
+operator|(
+name|directory
+operator|!=
+literal|null
+operator|)
+operator|&&
 operator|!
 name|Files
 operator|.
@@ -473,6 +509,45 @@ name|initialDirectory
 operator|=
 name|directory
 expr_stmt|;
+block|}
+return|return
+name|this
+return|;
+block|}
+DECL|method|withInitialDirectory (String directory)
+specifier|public
+name|Builder
+name|withInitialDirectory
+parameter_list|(
+name|String
+name|directory
+parameter_list|)
+block|{
+if|if
+condition|(
+name|directory
+operator|!=
+literal|null
+condition|)
+block|{
+name|withInitialDirectory
+argument_list|(
+name|Paths
+operator|.
+name|get
+argument_list|(
+name|directory
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|initialDirectory
+operator|=
+literal|null
+expr_stmt|;
+block|}
 return|return
 name|this
 return|;

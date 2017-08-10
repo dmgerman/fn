@@ -32,6 +32,34 @@ specifier|public
 class|class
 name|OS
 block|{
+comment|// File separator obtained from system
+DECL|field|FILE_SEPARATOR
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|FILE_SEPARATOR
+init|=
+name|System
+operator|.
+name|getProperty
+argument_list|(
+literal|"file.separator"
+argument_list|)
+decl_stmt|;
+comment|// Newlines
+comment|// will be overridden in initialization due to feature #857 @ JabRef.java
+DECL|field|NEWLINE
+specifier|public
+specifier|static
+name|String
+name|NEWLINE
+init|=
+name|System
+operator|.
+name|lineSeparator
+argument_list|()
+decl_stmt|;
 comment|// https://commons.apache.org/proper/commons-lang/javadocs/api-2.6/org/apache/commons/lang/SystemUtils.html
 DECL|field|OS_NAME
 specifier|private
@@ -97,34 +125,6 @@ name|startsWith
 argument_list|(
 literal|"mac"
 argument_list|)
-decl_stmt|;
-comment|// File separator obtained from system
-DECL|field|FILE_SEPARATOR
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|FILE_SEPARATOR
-init|=
-name|System
-operator|.
-name|getProperty
-argument_list|(
-literal|"file.separator"
-argument_list|)
-decl_stmt|;
-comment|// Newlines
-comment|// will be overridden in initialization due to feature #857 @ JabRef.java
-DECL|field|NEWLINE
-specifier|public
-specifier|static
-name|String
-name|NEWLINE
-init|=
-name|System
-operator|.
-name|lineSeparator
-argument_list|()
 decl_stmt|;
 DECL|method|OS ()
 specifier|private

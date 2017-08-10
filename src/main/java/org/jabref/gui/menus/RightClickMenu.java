@@ -2024,42 +2024,6 @@ name|this
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|areMultipleEntriesSelected ()
-specifier|private
-name|boolean
-name|areMultipleEntriesSelected
-parameter_list|()
-block|{
-return|return
-name|panel
-operator|.
-name|getMainTable
-argument_list|()
-operator|.
-name|getSelectedRowCount
-argument_list|()
-operator|>
-literal|1
-return|;
-block|}
-DECL|method|areExactlyTwoEntriesSelected ()
-specifier|private
-name|boolean
-name|areExactlyTwoEntriesSelected
-parameter_list|()
-block|{
-return|return
-name|panel
-operator|.
-name|getMainTable
-argument_list|()
-operator|.
-name|getSelectedRowCount
-argument_list|()
-operator|==
-literal|2
-return|;
-block|}
 comment|/**      * Remove all types from the menu.      * Then cycle through all available values, and add them.      */
 DECL|method|populateSpecialFieldMenu (JMenu menu, SpecialField field, JabRefFrame frame)
 specifier|public
@@ -2136,6 +2100,42 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+DECL|method|areMultipleEntriesSelected ()
+specifier|private
+name|boolean
+name|areMultipleEntriesSelected
+parameter_list|()
+block|{
+return|return
+name|panel
+operator|.
+name|getMainTable
+argument_list|()
+operator|.
+name|getSelectedRowCount
+argument_list|()
+operator|>
+literal|1
+return|;
+block|}
+DECL|method|areExactlyTwoEntriesSelected ()
+specifier|private
+name|boolean
+name|areExactlyTwoEntriesSelected
+parameter_list|()
+block|{
+return|return
+name|panel
+operator|.
+name|getMainTable
+argument_list|()
+operator|.
+name|getSelectedRowCount
+argument_list|()
+operator|==
+literal|2
+return|;
+block|}
 comment|/**      * Set the dynamic contents of "Add to group ..." submenu.      */
 annotation|@
 name|Override
@@ -2148,11 +2148,6 @@ name|PopupMenuEvent
 name|e
 parameter_list|)
 block|{
-name|panel
-operator|.
-name|storeCurrentEdit
-argument_list|()
-expr_stmt|;
 name|boolean
 name|groupsPresent
 init|=

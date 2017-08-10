@@ -90,9 +90,9 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|l10n
+name|bibtex
 operator|.
-name|Localization
+name|DuplicateCheck
 import|;
 end_import
 
@@ -102,9 +102,11 @@ name|org
 operator|.
 name|jabref
 operator|.
-name|model
+name|logic
 operator|.
-name|DuplicateCheck
+name|l10n
+operator|.
+name|Localization
 import|;
 end_import
 
@@ -171,6 +173,22 @@ name|EntryDeleteChange
 extends|extends
 name|Change
 block|{
+DECL|field|LOGGER
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOGGER
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|EntryDeleteChange
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 DECL|field|memEntry
 specifier|private
 specifier|final
@@ -188,22 +206,6 @@ specifier|private
 specifier|final
 name|JScrollPane
 name|sp
-decl_stmt|;
-DECL|field|LOGGER
-specifier|private
-specifier|static
-specifier|final
-name|Log
-name|LOGGER
-init|=
-name|LogFactory
-operator|.
-name|getLog
-argument_list|(
-name|EntryDeleteChange
-operator|.
-name|class
-argument_list|)
 decl_stmt|;
 DECL|method|EntryDeleteChange (BibEntry memEntry, BibEntry tmpEntry)
 specifier|public

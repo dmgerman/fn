@@ -60,17 +60,15 @@ end_import
 
 begin_import
 import|import
-name|org
+name|com
 operator|.
-name|apache
+name|google
 operator|.
-name|commons
+name|common
 operator|.
-name|lang3
+name|base
 operator|.
-name|exception
-operator|.
-name|ExceptionUtils
+name|Throwables
 import|;
 end_import
 
@@ -258,9 +256,9 @@ argument_list|)
 operator|.
 name|map
 argument_list|(
-name|ExceptionUtils
+name|Throwables
 operator|::
-name|getStackTrace
+name|getStackTraceAsString
 argument_list|)
 return|;
 block|}

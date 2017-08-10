@@ -40,6 +40,18 @@ begin_import
 import|import
 name|java
 operator|.
+name|nio
+operator|.
+name|file
+operator|.
+name|Paths
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|Optional
@@ -58,6 +70,21 @@ specifier|final
 name|Path
 name|initialDirectory
 decl_stmt|;
+DECL|method|DirectoryDialogConfiguration (Path initialDirectory)
+specifier|private
+name|DirectoryDialogConfiguration
+parameter_list|(
+name|Path
+name|initialDirectory
+parameter_list|)
+block|{
+name|this
+operator|.
+name|initialDirectory
+operator|=
+name|initialDirectory
+expr_stmt|;
+block|}
 DECL|method|getInitialDirectory ()
 specifier|public
 name|Optional
@@ -75,21 +102,6 @@ argument_list|(
 name|initialDirectory
 argument_list|)
 return|;
-block|}
-DECL|method|DirectoryDialogConfiguration (Path initialDirectory)
-specifier|private
-name|DirectoryDialogConfiguration
-parameter_list|(
-name|Path
-name|initialDirectory
-parameter_list|)
-block|{
-name|this
-operator|.
-name|initialDirectory
-operator|=
-name|initialDirectory
-expr_stmt|;
 block|}
 DECL|class|Builder
 specifier|public
@@ -125,6 +137,13 @@ name|Path
 name|directory
 parameter_list|)
 block|{
+name|directory
+operator|=
+name|directory
+operator|.
+name|toAbsolutePath
+argument_list|()
+expr_stmt|;
 comment|//Dir must be a folder, not a file
 if|if
 condition|(
@@ -166,6 +185,29 @@ block|}
 name|initialDirectory
 operator|=
 name|directory
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
+DECL|method|withInitialDirectory (String directory)
+specifier|public
+name|Builder
+name|withInitialDirectory
+parameter_list|(
+name|String
+name|directory
+parameter_list|)
+block|{
+name|withInitialDirectory
+argument_list|(
+name|Paths
+operator|.
+name|get
+argument_list|(
+name|directory
+argument_list|)
+argument_list|)
 expr_stmt|;
 return|return
 name|this

@@ -81,7 +81,7 @@ block|}
 return|return
 name|DOI
 operator|.
-name|build
+name|parse
 argument_list|(
 name|fieldText
 argument_list|)

@@ -16,33 +16,37 @@ end_package
 
 begin_import
 import|import
-name|javax
+name|javafx
 operator|.
-name|swing
+name|beans
 operator|.
-name|JMenu
+name|property
+operator|.
+name|StringProperty
 import|;
 end_import
 
 begin_import
 import|import
-name|javax
+name|javafx
 operator|.
-name|swing
+name|scene
 operator|.
-name|JMenuItem
+name|control
+operator|.
+name|Menu
 import|;
 end_import
 
 begin_import
 import|import
-name|javax
+name|javafx
 operator|.
-name|swing
+name|scene
 operator|.
-name|text
+name|control
 operator|.
-name|JTextComponent
+name|MenuItem
 import|;
 end_import
 
@@ -89,23 +93,22 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * @author Oscar Gustafsson  *  * Menu to show up on right-click in a text field for converting text formats  */
+comment|/**  * Menu to show up on right-click in a text field for converting text formats  */
 end_comment
 
 begin_class
 DECL|class|ConversionMenu
-specifier|public
 class|class
 name|ConversionMenu
 extends|extends
-name|JMenu
+name|Menu
 block|{
-DECL|method|ConversionMenu (JTextComponent opener)
+DECL|method|ConversionMenu (StringProperty text)
 specifier|public
 name|ConversionMenu
 parameter_list|(
-name|JTextComponent
-name|opener
+name|StringProperty
+name|text
 parameter_list|)
 block|{
 name|super
@@ -118,7 +121,7 @@ literal|"Convert"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// create menu items, one for each case changer
+comment|// create menu items, one for each converter
 for|for
 control|(
 name|Formatter
@@ -129,11 +132,11 @@ operator|.
 name|CONVERTERS
 control|)
 block|{
-name|JMenuItem
+name|MenuItem
 name|menuItem
 init|=
 operator|new
-name|JMenuItem
+name|MenuItem
 argument_list|(
 name|converter
 operator|.
@@ -141,39 +144,33 @@ name|getName
 argument_list|()
 argument_list|)
 decl_stmt|;
+comment|//menuItem.setToolTipText(converter.getDescription());
 name|menuItem
 operator|.
-name|setToolTipText
+name|setOnAction
 argument_list|(
-name|converter
-operator|.
-name|getDescription
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|menuItem
-operator|.
-name|addActionListener
-argument_list|(
-name|e
+name|event
 lambda|->
-name|opener
+name|text
 operator|.
-name|setText
+name|set
 argument_list|(
 name|converter
 operator|.
 name|format
 argument_list|(
-name|opener
+name|text
 operator|.
-name|getText
+name|get
 argument_list|()
 argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
 name|this
+operator|.
+name|getItems
+argument_list|()
 operator|.
 name|add
 argument_list|(

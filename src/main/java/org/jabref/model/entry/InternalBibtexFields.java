@@ -208,24 +208,6 @@ operator|.
 name|TIMESTAMP
 argument_list|)
 decl_stmt|;
-comment|// contains all bibtex-field objects (BibtexSingleField)
-DECL|field|fieldSet
-specifier|private
-specifier|final
-name|Map
-argument_list|<
-name|String
-argument_list|,
-name|BibtexSingleField
-argument_list|>
-name|fieldSet
-decl_stmt|;
-comment|// the name with the current time stamp field, needed in case we want to change it
-DECL|field|timeStampField
-specifier|private
-name|String
-name|timeStampField
-decl_stmt|;
 comment|// Lists of fields with special properties
 DECL|field|INTEGER_FIELDS
 specifier|private
@@ -691,6 +673,24 @@ name|FieldName
 operator|.
 name|TIMESTAMP
 argument_list|)
+decl_stmt|;
+comment|// contains all bibtex-field objects (BibtexSingleField)
+DECL|field|fieldSet
+specifier|private
+specifier|final
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|BibtexSingleField
+argument_list|>
+name|fieldSet
+decl_stmt|;
+comment|// the name with the current time stamp field, needed in case we want to change it
+DECL|field|timeStampField
+specifier|private
+name|String
+name|timeStampField
 decl_stmt|;
 DECL|method|InternalBibtexFields (String timeStampFieldName)
 specifier|private

@@ -48,21 +48,21 @@ name|java
 operator|.
 name|nio
 operator|.
-name|file
+name|charset
 operator|.
-name|Path
+name|StandardCharsets
 import|;
 end_import
 
 begin_import
 import|import
-name|org
+name|java
 operator|.
-name|jabref
+name|nio
 operator|.
-name|preferences
+name|file
 operator|.
-name|JabRefPreferences
+name|Path
 import|;
 end_import
 
@@ -166,13 +166,9 @@ name|dl
 operator|.
 name|asString
 argument_list|(
-name|JabRefPreferences
+name|StandardCharsets
 operator|.
-name|getInstance
-argument_list|()
-operator|.
-name|getDefaultEncoding
-argument_list|()
+name|UTF_8
 argument_list|)
 operator|.
 name|contains

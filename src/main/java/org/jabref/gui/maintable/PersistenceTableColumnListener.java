@@ -138,6 +138,15 @@ name|PersistenceTableColumnListener
 implements|implements
 name|TableColumnModelListener
 block|{
+DECL|field|RECEIVED_NULL_EVENT
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|RECEIVED_NULL_EVENT
+init|=
+literal|" received null event"
+decl_stmt|;
 DECL|field|SIMPLE_CLASS_NAME
 specifier|private
 specifier|static
@@ -159,15 +168,6 @@ specifier|private
 specifier|final
 name|MainTable
 name|mainTable
-decl_stmt|;
-DECL|field|RECEIVED_NULL_EVENT
-specifier|private
-specifier|static
-specifier|final
-name|String
-name|RECEIVED_NULL_EVENT
-init|=
-literal|" received null event"
 decl_stmt|;
 comment|/**      * @param mainTable      */
 DECL|method|PersistenceTableColumnListener (final MainTable mainTable)

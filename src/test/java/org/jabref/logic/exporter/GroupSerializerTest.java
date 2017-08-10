@@ -409,7 +409,7 @@ argument_list|)
 decl_stmt|;
 name|group
 operator|.
-name|setIconCode
+name|setIconName
 argument_list|(
 literal|"test icon"
 argument_list|)
@@ -782,6 +782,8 @@ argument_list|,
 literal|"keywords"
 argument_list|,
 literal|','
+argument_list|,
+literal|'>'
 argument_list|)
 decl_stmt|;
 name|List
@@ -808,7 +810,7 @@ name|Collections
 operator|.
 name|singletonList
 argument_list|(
-literal|"0 AutomaticKeywordGroup:myAutomaticGroup;0;keywords;,;1;;;;"
+literal|"0 AutomaticKeywordGroup:myAutomaticGroup;0;keywords;,;>;1;;;;"
 argument_list|)
 argument_list|,
 name|serialization

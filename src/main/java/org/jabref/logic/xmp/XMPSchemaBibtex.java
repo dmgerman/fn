@@ -809,7 +809,7 @@ argument_list|(
 literal|0
 argument_list|)
 decl_stmt|;
-name|StringBuffer
+name|StringBuilder
 name|seq
 init|=
 literal|null
@@ -865,7 +865,7 @@ block|{
 name|seq
 operator|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 expr_stmt|;
 block|}

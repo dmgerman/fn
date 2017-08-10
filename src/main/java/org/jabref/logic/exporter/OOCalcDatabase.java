@@ -261,15 +261,6 @@ DECL|class|OOCalcDatabase
 class|class
 name|OOCalcDatabase
 block|{
-DECL|field|entries
-specifier|private
-specifier|final
-name|List
-argument_list|<
-name|BibEntry
-argument_list|>
-name|entries
-decl_stmt|;
 DECL|field|LOGGER
 specifier|private
 specifier|static
@@ -285,6 +276,15 @@ name|OOCalcDatabase
 operator|.
 name|class
 argument_list|)
+decl_stmt|;
+DECL|field|entries
+specifier|private
+specifier|final
+name|List
+argument_list|<
+name|BibEntry
+argument_list|>
+name|entries
 decl_stmt|;
 DECL|method|OOCalcDatabase (BibDatabase bibtex, List<BibEntry> entries)
 specifier|public

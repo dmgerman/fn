@@ -115,6 +115,8 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
+literal|1
+argument_list|,
 name|database
 operator|.
 name|getDuplicationChecker
@@ -124,8 +126,6 @@ name|getNumberOfKeyOccurrences
 argument_list|(
 literal|"AAA"
 argument_list|)
-argument_list|,
-literal|1
 argument_list|)
 expr_stmt|;
 block|}
@@ -160,6 +160,8 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
+literal|1
+argument_list|,
 name|database
 operator|.
 name|getDuplicationChecker
@@ -169,8 +171,6 @@ name|getNumberOfKeyOccurrences
 argument_list|(
 literal|"AAA"
 argument_list|)
-argument_list|,
-literal|1
 argument_list|)
 expr_stmt|;
 name|database
@@ -182,6 +182,8 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
+literal|0
+argument_list|,
 name|database
 operator|.
 name|getDuplicationChecker
@@ -191,8 +193,6 @@ name|getNumberOfKeyOccurrences
 argument_list|(
 literal|"AAA"
 argument_list|)
-argument_list|,
-literal|0
 argument_list|)
 expr_stmt|;
 block|}
@@ -227,6 +227,8 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
+literal|1
+argument_list|,
 name|database
 operator|.
 name|getDuplicationChecker
@@ -236,8 +238,6 @@ name|getNumberOfKeyOccurrences
 argument_list|(
 literal|"AAA"
 argument_list|)
-argument_list|,
-literal|1
 argument_list|)
 expr_stmt|;
 name|entry
@@ -249,6 +249,8 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
+literal|0
+argument_list|,
 name|database
 operator|.
 name|getDuplicationChecker
@@ -258,12 +260,12 @@ name|getNumberOfKeyOccurrences
 argument_list|(
 literal|"AAA"
 argument_list|)
-argument_list|,
-literal|0
 argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
+literal|1
+argument_list|,
 name|database
 operator|.
 name|getDuplicationChecker
@@ -273,8 +275,6 @@ name|getNumberOfKeyOccurrences
 argument_list|(
 literal|"BBB"
 argument_list|)
-argument_list|,
-literal|1
 argument_list|)
 expr_stmt|;
 block|}
@@ -330,6 +330,8 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
+literal|1
+argument_list|,
 name|database
 operator|.
 name|getDuplicationChecker
@@ -339,12 +341,12 @@ name|getNumberOfKeyOccurrences
 argument_list|(
 literal|"AAA"
 argument_list|)
-argument_list|,
-literal|1
 argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
+literal|1
+argument_list|,
 name|database
 operator|.
 name|getDuplicationChecker
@@ -354,8 +356,6 @@ name|getNumberOfKeyOccurrences
 argument_list|(
 literal|"BBB"
 argument_list|)
-argument_list|,
-literal|1
 argument_list|)
 expr_stmt|;
 name|entry1
@@ -367,6 +367,8 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
+literal|2
+argument_list|,
 name|database
 operator|.
 name|getDuplicationChecker
@@ -376,12 +378,12 @@ name|getNumberOfKeyOccurrences
 argument_list|(
 literal|"AAA"
 argument_list|)
-argument_list|,
-literal|2
 argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
+literal|0
+argument_list|,
 name|database
 operator|.
 name|getDuplicationChecker
@@ -391,8 +393,6 @@ name|getNumberOfKeyOccurrences
 argument_list|(
 literal|"BBB"
 argument_list|)
-argument_list|,
-literal|0
 argument_list|)
 expr_stmt|;
 block|}
@@ -469,6 +469,8 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
+literal|3
+argument_list|,
 name|database
 operator|.
 name|getDuplicationChecker
@@ -478,8 +480,6 @@ name|getNumberOfKeyOccurrences
 argument_list|(
 literal|"AAA"
 argument_list|)
-argument_list|,
-literal|3
 argument_list|)
 expr_stmt|;
 name|database
@@ -491,6 +491,8 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
+literal|2
+argument_list|,
 name|database
 operator|.
 name|getDuplicationChecker
@@ -500,8 +502,6 @@ name|getNumberOfKeyOccurrences
 argument_list|(
 literal|"AAA"
 argument_list|)
-argument_list|,
-literal|2
 argument_list|)
 expr_stmt|;
 name|database
@@ -513,6 +513,8 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
+literal|1
+argument_list|,
 name|database
 operator|.
 name|getDuplicationChecker
@@ -522,8 +524,6 @@ name|getNumberOfKeyOccurrences
 argument_list|(
 literal|"AAA"
 argument_list|)
-argument_list|,
-literal|1
 argument_list|)
 expr_stmt|;
 name|database
@@ -535,6 +535,8 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
+literal|0
+argument_list|,
 name|database
 operator|.
 name|getDuplicationChecker
@@ -544,8 +546,6 @@ name|getNumberOfKeyOccurrences
 argument_list|(
 literal|"AAA"
 argument_list|)
-argument_list|,
-literal|0
 argument_list|)
 expr_stmt|;
 block|}
@@ -580,6 +580,8 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
+literal|0
+argument_list|,
 name|database
 operator|.
 name|getDuplicationChecker
@@ -589,8 +591,6 @@ name|getNumberOfKeyOccurrences
 argument_list|(
 literal|""
 argument_list|)
-argument_list|,
-literal|0
 argument_list|)
 expr_stmt|;
 block|}
@@ -625,6 +625,8 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
+literal|1
+argument_list|,
 name|database
 operator|.
 name|getDuplicationChecker
@@ -634,8 +636,6 @@ name|getNumberOfKeyOccurrences
 argument_list|(
 literal|"AAA"
 argument_list|)
-argument_list|,
-literal|1
 argument_list|)
 expr_stmt|;
 name|entry
@@ -654,6 +654,8 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
+literal|0
+argument_list|,
 name|database
 operator|.
 name|getDuplicationChecker
@@ -663,8 +665,6 @@ name|getNumberOfKeyOccurrences
 argument_list|(
 literal|"AAA"
 argument_list|)
-argument_list|,
-literal|0
 argument_list|)
 expr_stmt|;
 block|}

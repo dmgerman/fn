@@ -106,15 +106,6 @@ specifier|public
 class|class
 name|FieldContentParser
 block|{
-DECL|field|multiLineFields
-specifier|private
-specifier|final
-name|Set
-argument_list|<
-name|String
-argument_list|>
-name|multiLineFields
-decl_stmt|;
 comment|// 's' matches a space, tab, new line, carriage return.
 DECL|field|WHITESPACE
 specifier|private
@@ -129,6 +120,15 @@ name|compile
 argument_list|(
 literal|"\\s+"
 argument_list|)
+decl_stmt|;
+DECL|field|multiLineFields
+specifier|private
+specifier|final
+name|Set
+argument_list|<
+name|String
+argument_list|>
+name|multiLineFields
 decl_stmt|;
 DECL|method|FieldContentParser (FieldContentParserPreferences prefs)
 specifier|public

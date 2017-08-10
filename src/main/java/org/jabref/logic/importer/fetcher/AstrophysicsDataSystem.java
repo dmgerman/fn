@@ -112,6 +112,20 @@ name|jabref
 operator|.
 name|logic
 operator|.
+name|cleanup
+operator|.
+name|MoveFieldCleanup
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
 name|formatter
 operator|.
 name|bibtexfields
@@ -291,6 +305,20 @@ operator|.
 name|l10n
 operator|.
 name|Localization
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|net
+operator|.
+name|URLDownload
 import|;
 end_import
 
@@ -891,7 +919,9 @@ name|setRequestProperty
 argument_list|(
 literal|"User-Agent"
 argument_list|,
-literal|"Mozilla/5.0 (Windows NT 5.1; rv:31.0) Gecko/20100101 Firefox/31.0"
+name|URLDownload
+operator|.
+name|USER_AGENT
 argument_list|)
 expr_stmt|;
 try|try
@@ -1070,7 +1100,7 @@ argument_list|(
 name|entry
 argument_list|)
 expr_stmt|;
-comment|// Remove url to ADS page
+comment|// Remove ADS note
 operator|new
 name|FieldFormatterCleanup
 argument_list|(
@@ -1086,19 +1116,28 @@ argument_list|(
 name|entry
 argument_list|)
 expr_stmt|;
+comment|// Move adsurl to url field
 operator|new
-name|FieldFormatterCleanup
+name|MoveFieldCleanup
 argument_list|(
 literal|"adsurl"
 argument_list|,
-operator|new
-name|ClearFormatter
-argument_list|()
+name|FieldName
+operator|.
+name|URL
 argument_list|)
 operator|.
 name|cleanup
 argument_list|(
 name|entry
+argument_list|)
+expr_stmt|;
+comment|// The fetcher adds some garbage (number of found entries etc before)
+name|entry
+operator|.
+name|setCommentsBeforeEntry
+argument_list|(
+literal|""
 argument_list|)
 expr_stmt|;
 block|}

@@ -292,12 +292,12 @@ name|IdBasedFetcher
 implements|,
 name|EntryBasedFetcher
 block|{
-DECL|field|name
+DECL|field|NAME
 specifier|public
 specifier|static
 specifier|final
 name|String
-name|name
+name|NAME
 init|=
 literal|"DOI"
 decl_stmt|;
@@ -333,7 +333,7 @@ block|{
 return|return
 name|DoiFetcher
 operator|.
-name|name
+name|NAME
 return|;
 block|}
 annotation|@
@@ -374,7 +374,7 @@ name|doi
 init|=
 name|DOI
 operator|.
-name|build
+name|parse
 argument_list|(
 name|identifier
 argument_list|)
@@ -492,7 +492,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Invalid URL"
+literal|"Connection error"
 argument_list|)
 argument_list|,
 name|e

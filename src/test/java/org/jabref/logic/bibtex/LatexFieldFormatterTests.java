@@ -14,15 +14,11 @@ end_package
 
 begin_import
 import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|logic
+name|java
 operator|.
 name|util
 operator|.
-name|OS
+name|Collections
 import|;
 end_import
 
@@ -32,9 +28,11 @@ name|org
 operator|.
 name|jabref
 operator|.
-name|preferences
+name|logic
 operator|.
-name|JabRefPreferences
+name|util
+operator|.
+name|OS
 import|;
 end_import
 
@@ -59,6 +57,16 @@ import|;
 end_import
 
 begin_import
+import|import
+name|org
+operator|.
+name|mockito
+operator|.
+name|Answers
+import|;
+end_import
+
+begin_import
 import|import static
 name|org
 operator|.
@@ -67,6 +75,18 @@ operator|.
 name|Assert
 operator|.
 name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|mockito
+operator|.
+name|Mockito
+operator|.
+name|mock
 import|;
 end_import
 
@@ -96,13 +116,16 @@ operator|=
 operator|new
 name|LatexFieldFormatter
 argument_list|(
-name|JabRefPreferences
+name|mock
+argument_list|(
+name|LatexFieldFormatterPreferences
 operator|.
-name|getInstance
-argument_list|()
+name|class
+argument_list|,
+name|Answers
 operator|.
-name|getLatexFieldFormatterPreferences
-argument_list|()
+name|RETURNS_DEEP_STUBS
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -557,6 +580,93 @@ argument_list|(
 name|text
 argument_list|,
 literal|"anyfield"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|hashEnclosedWordsGetRealStringsInMonthField ()
+specifier|public
+name|void
+name|hashEnclosedWordsGetRealStringsInMonthField
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|String
+name|text
+init|=
+literal|"#jan# - #feb#"
+decl_stmt|;
+name|assertEquals
+argument_list|(
+literal|"jan #{ - } # feb"
+argument_list|,
+name|formatter
+operator|.
+name|format
+argument_list|(
+name|text
+argument_list|,
+literal|"month"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|hashEnclosedWordsGetRealStringsInMonthFieldBecauseMonthIsStandardField ()
+specifier|public
+name|void
+name|hashEnclosedWordsGetRealStringsInMonthFieldBecauseMonthIsStandardField
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|LatexFieldFormatterPreferences
+name|latexFieldFormatterPreferences
+init|=
+operator|new
+name|LatexFieldFormatterPreferences
+argument_list|(
+literal|false
+argument_list|,
+name|Collections
+operator|.
+name|emptyList
+argument_list|()
+argument_list|,
+operator|new
+name|FieldContentParserPreferences
+argument_list|()
+argument_list|)
+decl_stmt|;
+name|LatexFieldFormatter
+name|formatter
+init|=
+operator|new
+name|LatexFieldFormatter
+argument_list|(
+name|latexFieldFormatterPreferences
+argument_list|)
+decl_stmt|;
+name|String
+name|text
+init|=
+literal|"#jan# - #feb#"
+decl_stmt|;
+name|assertEquals
+argument_list|(
+literal|"jan #{ - } # feb"
+argument_list|,
+name|formatter
+operator|.
+name|format
+argument_list|(
+name|text
+argument_list|,
+literal|"month"
 argument_list|)
 argument_list|)
 expr_stmt|;

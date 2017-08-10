@@ -24,45 +24,11 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|awt
-operator|.
-name|Container
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|swing
 operator|.
 name|JComponent
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|JLabel
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|autocompleter
-operator|.
-name|AutoCompleteListener
 import|;
 end_import
 
@@ -89,15 +55,41 @@ parameter_list|()
 function_decl|;
 comment|/*      * Returns the text component itself.      */
 DECL|method|getTextComponent ()
-name|JComponent
+name|Object
 name|getTextComponent
 parameter_list|()
 function_decl|;
-DECL|method|getLabel ()
-name|JLabel
-name|getLabel
+DECL|method|hasFocus ()
+specifier|default
+name|boolean
+name|hasFocus
 parameter_list|()
-function_decl|;
+block|{
+if|if
+condition|(
+name|getTextComponent
+argument_list|()
+operator|instanceof
+name|JComponent
+condition|)
+block|{
+return|return
+operator|(
+operator|(
+name|JComponent
+operator|)
+name|getTextComponent
+argument_list|()
+operator|)
+operator|.
+name|hasFocus
+argument_list|()
+return|;
+block|}
+return|return
+literal|false
+return|;
+block|}
 DECL|method|setActiveBackgroundColor ()
 name|void
 name|setActiveBackgroundColor
@@ -113,14 +105,6 @@ name|void
 name|setInvalidBackgroundColor
 parameter_list|()
 function_decl|;
-DECL|method|setLabelColor (Color color)
-name|void
-name|setLabelColor
-parameter_list|(
-name|Color
-name|color
-parameter_list|)
-function_decl|;
 DECL|method|setBackground (Color color)
 name|void
 name|setBackground
@@ -128,11 +112,6 @@ parameter_list|(
 name|Color
 name|color
 parameter_list|)
-function_decl|;
-DECL|method|updateFontColor ()
-name|void
-name|updateFontColor
-parameter_list|()
 function_decl|;
 DECL|method|getText ()
 name|String
@@ -156,11 +135,6 @@ name|String
 name|text
 parameter_list|)
 function_decl|;
-DECL|method|getParent ()
-name|Container
-name|getParent
-parameter_list|()
-function_decl|;
 DECL|method|requestFocus ()
 name|void
 name|requestFocus
@@ -173,11 +147,6 @@ parameter_list|(
 name|boolean
 name|enabled
 parameter_list|)
-function_decl|;
-DECL|method|updateFont ()
-name|void
-name|updateFont
-parameter_list|()
 function_decl|;
 comment|/**      * paste text into component, it should also take some selected text into      * account      */
 DECL|method|paste (String textToInsert)
@@ -202,19 +171,6 @@ function_decl|;
 DECL|method|redo ()
 name|void
 name|redo
-parameter_list|()
-function_decl|;
-DECL|method|setAutoCompleteListener (AutoCompleteListener listener)
-name|void
-name|setAutoCompleteListener
-parameter_list|(
-name|AutoCompleteListener
-name|listener
-parameter_list|)
-function_decl|;
-DECL|method|clearAutoCompleteSuggestion ()
-name|void
-name|clearAutoCompleteSuggestion
 parameter_list|()
 function_decl|;
 block|}

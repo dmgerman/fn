@@ -160,7 +160,7 @@ name|URI
 operator|.
 name|create
 argument_list|(
-literal|"http://doi.org"
+literal|"https://doi.org"
 argument_list|)
 decl_stmt|;
 comment|// Regex
@@ -423,14 +423,14 @@ throw|;
 block|}
 block|}
 comment|/**      * Creates an Optional<DOI> from various schemes including URL, URN, and plain DOIs.      *      * Useful for suppressing the<c>IllegalArgumentException</c> of the Constructor      * and checking for Optional.isPresent() instead.      *      * @param doi the DOI string      * @return an Optional containing the DOI or an empty Optional      */
-DECL|method|build (String doi)
+DECL|method|parse (String doi)
 specifier|public
 specifier|static
 name|Optional
 argument_list|<
 name|DOI
 argument_list|>
-name|build
+name|parse
 parameter_list|(
 name|String
 name|doi
@@ -479,7 +479,7 @@ name|doi
 parameter_list|)
 block|{
 return|return
-name|build
+name|parse
 argument_list|(
 name|doi
 argument_list|)
@@ -587,13 +587,15 @@ name|doi
 return|;
 block|}
 comment|/**      * Return a URI presentation for the DOI      *      * @return an encoded URI representation of the DOI      */
-DECL|method|getURI ()
+annotation|@
+name|Override
+DECL|method|getExternalURI ()
 specifier|public
 name|Optional
 argument_list|<
 name|URI
 argument_list|>
-name|getURI
+name|getExternalURI
 parameter_list|()
 block|{
 try|try
@@ -664,7 +666,7 @@ name|getURIAsASCIIString
 parameter_list|()
 block|{
 return|return
-name|getURI
+name|getExternalURI
 argument_list|()
 operator|.
 name|map

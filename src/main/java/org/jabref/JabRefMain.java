@@ -539,14 +539,14 @@ expr_stmt|;
 block|}
 name|Globals
 operator|.
-name|startBackgroundTasks
-argument_list|()
-expr_stmt|;
-name|Globals
-operator|.
 name|prefs
 operator|=
 name|preferences
+expr_stmt|;
+name|Globals
+operator|.
+name|startBackgroundTasks
+argument_list|()
 expr_stmt|;
 name|Localization
 operator|.
@@ -596,6 +596,11 @@ operator|.
 name|upgradeStoredCustomEntryTypes
 argument_list|()
 expr_stmt|;
+name|PreferencesMigrations
+operator|.
+name|upgradeKeyBindingsToJavaFX
+argument_list|()
+expr_stmt|;
 comment|// Update handling of special fields based on preferences
 name|InternalBibtexFields
 operator|.
@@ -622,12 +627,11 @@ name|Globals
 operator|.
 name|prefs
 operator|.
-name|get
-argument_list|(
-name|JabRefPreferences
+name|getTimestampPreferences
+argument_list|()
 operator|.
-name|TIME_STAMP_FIELD
-argument_list|)
+name|getTimestampField
+argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// Update which fields should be treated as numeric, based on preferences:
@@ -864,11 +868,15 @@ literal|"Arguments passed on to running JabRef instance. Shutting down."
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|JabRefExecutorService
+name|Globals
 operator|.
-name|INSTANCE
+name|shutdownThreadPools
+argument_list|()
+expr_stmt|;
+comment|// needed to tell JavaFx to stop
+name|Platform
 operator|.
-name|shutdownEverything
+name|exit
 argument_list|()
 expr_stmt|;
 return|return;
@@ -925,11 +933,9 @@ name|shouldShutDown
 argument_list|()
 condition|)
 block|{
-name|JabRefExecutorService
+name|Globals
 operator|.
-name|INSTANCE
-operator|.
-name|shutdownEverything
+name|shutdownThreadPools
 argument_list|()
 expr_stmt|;
 return|return;

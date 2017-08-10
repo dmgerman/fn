@@ -18,16 +18,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|ArrayList
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|Arrays
 import|;
 end_import
@@ -87,7 +77,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * String constants for BibTeX entry field names  *  */
+comment|/**  * String constants for BibTeX entry field names  */
 end_comment
 
 begin_class
@@ -1247,7 +1237,7 @@ init|=
 literal|"__markedentry"
 decl_stmt|;
 comment|// Map to hold alternative display names
-DECL|field|displayNames
+DECL|field|DISPLAY_NAMES
 specifier|private
 specifier|static
 specifier|final
@@ -1257,7 +1247,7 @@ name|String
 argument_list|,
 name|String
 argument_list|>
-name|displayNames
+name|DISPLAY_NAMES
 init|=
 operator|new
 name|HashMap
@@ -1321,7 +1311,7 @@ return|;
 block|}
 static|static
 block|{
-name|displayNames
+name|DISPLAY_NAMES
 operator|.
 name|put
 argument_list|(
@@ -1332,7 +1322,7 @@ argument_list|,
 literal|"DOI"
 argument_list|)
 expr_stmt|;
-name|displayNames
+name|DISPLAY_NAMES
 operator|.
 name|put
 argument_list|(
@@ -1343,7 +1333,7 @@ argument_list|,
 literal|"ISBN"
 argument_list|)
 expr_stmt|;
-name|displayNames
+name|DISPLAY_NAMES
 operator|.
 name|put
 argument_list|(
@@ -1354,7 +1344,7 @@ argument_list|,
 literal|"ISRN"
 argument_list|)
 expr_stmt|;
-name|displayNames
+name|DISPLAY_NAMES
 operator|.
 name|put
 argument_list|(
@@ -1365,7 +1355,7 @@ argument_list|,
 literal|"ISSN"
 argument_list|)
 expr_stmt|;
-name|displayNames
+name|DISPLAY_NAMES
 operator|.
 name|put
 argument_list|(
@@ -1376,7 +1366,7 @@ argument_list|,
 literal|"PMID"
 argument_list|)
 expr_stmt|;
-name|displayNames
+name|DISPLAY_NAMES
 operator|.
 name|put
 argument_list|(
@@ -1387,7 +1377,7 @@ argument_list|,
 literal|"PS"
 argument_list|)
 expr_stmt|;
-name|displayNames
+name|DISPLAY_NAMES
 operator|.
 name|put
 argument_list|(
@@ -1398,7 +1388,7 @@ argument_list|,
 literal|"PDF"
 argument_list|)
 expr_stmt|;
-name|displayNames
+name|DISPLAY_NAMES
 operator|.
 name|put
 argument_list|(
@@ -1409,7 +1399,7 @@ argument_list|,
 literal|"URI"
 argument_list|)
 expr_stmt|;
-name|displayNames
+name|DISPLAY_NAMES
 operator|.
 name|put
 argument_list|(
@@ -1446,7 +1436,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|displayNames
+name|DISPLAY_NAMES
 operator|.
 name|containsKey
 argument_list|(
@@ -1455,7 +1445,7 @@ argument_list|)
 condition|)
 block|{
 return|return
-name|displayNames
+name|DISPLAY_NAMES
 operator|.
 name|get
 argument_list|(
@@ -1475,25 +1465,14 @@ block|}
 DECL|method|getNotTextFieldNames ()
 specifier|public
 specifier|static
-name|ArrayList
-name|getNotTextFieldNames
-parameter_list|()
-block|{
-name|ArrayList
+name|List
 argument_list|<
 name|String
 argument_list|>
-name|notTextFieldNames
-init|=
-operator|new
-name|ArrayList
-argument_list|<>
-argument_list|()
-decl_stmt|;
-name|notTextFieldNames
-operator|.
-name|addAll
-argument_list|(
+name|getNotTextFieldNames
+parameter_list|()
+block|{
+return|return
 name|Arrays
 operator|.
 name|asList
@@ -1534,10 +1513,35 @@ name|FieldName
 operator|.
 name|YEAR
 argument_list|)
-argument_list|)
-expr_stmt|;
+return|;
+block|}
+DECL|method|getIdentifierFieldNames ()
+specifier|public
+specifier|static
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|getIdentifierFieldNames
+parameter_list|()
+block|{
 return|return
-name|notTextFieldNames
+name|Arrays
+operator|.
+name|asList
+argument_list|(
+name|FieldName
+operator|.
+name|DOI
+argument_list|,
+name|FieldName
+operator|.
+name|EPRINT
+argument_list|,
+name|FieldName
+operator|.
+name|PMID
+argument_list|)
 return|;
 block|}
 block|}

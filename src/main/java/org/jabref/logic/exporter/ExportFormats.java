@@ -88,6 +88,13 @@ specifier|public
 class|class
 name|ExportFormats
 block|{
+comment|// Global variable that is used for counting output entries when exporting:
+DECL|field|entryNumber
+specifier|public
+specifier|static
+name|int
+name|entryNumber
+decl_stmt|;
 DECL|field|EXPORT_FORMATS
 specifier|private
 specifier|static
@@ -104,13 +111,6 @@ operator|new
 name|TreeMap
 argument_list|<>
 argument_list|()
-decl_stmt|;
-comment|// Global variable that is used for counting output entries when exporting:
-DECL|field|entryNumber
-specifier|public
-specifier|static
-name|int
-name|entryNumber
 decl_stmt|;
 DECL|method|ExportFormats ()
 specifier|private

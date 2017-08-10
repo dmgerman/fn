@@ -88,6 +88,101 @@ specifier|public
 class|class
 name|AuthorListParser
 block|{
+DECL|field|TOKEN_GROUP_LENGTH
+specifier|private
+specifier|static
+specifier|final
+name|int
+name|TOKEN_GROUP_LENGTH
+init|=
+literal|4
+decl_stmt|;
+comment|// number of entries for a token
+comment|// the following are offsets of an entry in a group of entries for one token
+DECL|field|OFFSET_TOKEN
+specifier|private
+specifier|static
+specifier|final
+name|int
+name|OFFSET_TOKEN
+init|=
+literal|0
+decl_stmt|;
+comment|// String -- token itself;
+DECL|field|OFFSET_TOKEN_ABBR
+specifier|private
+specifier|static
+specifier|final
+name|int
+name|OFFSET_TOKEN_ABBR
+init|=
+literal|1
+decl_stmt|;
+comment|// String -- token abbreviation;
+DECL|field|OFFSET_TOKEN_TERM
+specifier|private
+specifier|static
+specifier|final
+name|int
+name|OFFSET_TOKEN_TERM
+init|=
+literal|2
+decl_stmt|;
+comment|// Character -- token terminator (either " " or
+comment|// "-") comma)
+comment|// Token types (returned by getToken procedure)
+DECL|field|TOKEN_EOF
+specifier|private
+specifier|static
+specifier|final
+name|int
+name|TOKEN_EOF
+init|=
+literal|0
+decl_stmt|;
+DECL|field|TOKEN_AND
+specifier|private
+specifier|static
+specifier|final
+name|int
+name|TOKEN_AND
+init|=
+literal|1
+decl_stmt|;
+DECL|field|TOKEN_COMMA
+specifier|private
+specifier|static
+specifier|final
+name|int
+name|TOKEN_COMMA
+init|=
+literal|2
+decl_stmt|;
+DECL|field|TOKEN_WORD
+specifier|private
+specifier|static
+specifier|final
+name|int
+name|TOKEN_WORD
+init|=
+literal|3
+decl_stmt|;
+comment|// Constant HashSet containing names of TeX special characters
+DECL|field|TEX_NAMES
+specifier|private
+specifier|static
+specifier|final
+name|Set
+argument_list|<
+name|String
+argument_list|>
+name|TEX_NAMES
+init|=
+operator|new
+name|HashSet
+argument_list|<>
+argument_list|()
+decl_stmt|;
 comment|/** the raw bibtex author/editor field */
 DECL|field|original
 specifier|private
@@ -124,23 +219,6 @@ specifier|private
 name|boolean
 name|tokenCase
 decl_stmt|;
-comment|// Constant HashSet containing names of TeX special characters
-DECL|field|TEX_NAMES
-specifier|private
-specifier|static
-specifier|final
-name|Set
-argument_list|<
-name|String
-argument_list|>
-name|TEX_NAMES
-init|=
-operator|new
-name|HashSet
-argument_list|<>
-argument_list|()
-decl_stmt|;
-comment|// and static constructor to initialize it
 static|static
 block|{
 name|TEX_NAMES
@@ -228,85 +306,6 @@ literal|"j"
 argument_list|)
 expr_stmt|;
 block|}
-DECL|field|TOKEN_GROUP_LENGTH
-specifier|private
-specifier|static
-specifier|final
-name|int
-name|TOKEN_GROUP_LENGTH
-init|=
-literal|4
-decl_stmt|;
-comment|// number of entries for a token
-comment|// the following are offsets of an entry in a group of entries for one token
-DECL|field|OFFSET_TOKEN
-specifier|private
-specifier|static
-specifier|final
-name|int
-name|OFFSET_TOKEN
-init|=
-literal|0
-decl_stmt|;
-comment|// String -- token itself;
-DECL|field|OFFSET_TOKEN_ABBR
-specifier|private
-specifier|static
-specifier|final
-name|int
-name|OFFSET_TOKEN_ABBR
-init|=
-literal|1
-decl_stmt|;
-comment|// String -- token abbreviation;
-DECL|field|OFFSET_TOKEN_TERM
-specifier|private
-specifier|static
-specifier|final
-name|int
-name|OFFSET_TOKEN_TERM
-init|=
-literal|2
-decl_stmt|;
-comment|// Character -- token terminator (either " " or
-comment|// "-") comma)
-comment|// Token types (returned by getToken procedure)
-DECL|field|TOKEN_EOF
-specifier|private
-specifier|static
-specifier|final
-name|int
-name|TOKEN_EOF
-init|=
-literal|0
-decl_stmt|;
-DECL|field|TOKEN_AND
-specifier|private
-specifier|static
-specifier|final
-name|int
-name|TOKEN_AND
-init|=
-literal|1
-decl_stmt|;
-DECL|field|TOKEN_COMMA
-specifier|private
-specifier|static
-specifier|final
-name|int
-name|TOKEN_COMMA
-init|=
-literal|2
-decl_stmt|;
-DECL|field|TOKEN_WORD
-specifier|private
-specifier|static
-specifier|final
-name|int
-name|TOKEN_WORD
-init|=
-literal|3
-decl_stmt|;
 comment|/**      * Parses the String containing person names and returns a list of person information.      *      * @param listOfNames the String containing the person names to be parsed      * @return a parsed list of persons      */
 DECL|method|parse (String listOfNames)
 specifier|public
@@ -1376,7 +1375,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * Parses the next token.      *<p>      * The string being parsed is stored in global variable<CODE>orig</CODE>,      * and position which parsing has to start from is stored in global variable      *<CODE>token_end</CODE>; thus,<CODE>token_end</CODE> has to be set      * to 0 before the first invocation. Procedure updates<CODE>token_end</CODE>;      * thus, subsequent invocations do not require any additional variable      * settings.      *<p>      * The type of the token is returned; if it is<CODE>TOKEN_WORD</CODE>,      * additional information is given in global variables<CODE>token_start</CODE>,      *<CODE>token_end</CODE>,<CODE>token_abbr</CODE>,<CODE>token_term</CODE>,      * and<CODE>token_case</CODE>; namely:<CODE>orig.substring(token_start,token_end)</CODE>      * is the thext of the token,<CODE>orig.substring(token_start,token_abbr)</CODE>      * is the token abbreviation,<CODE>token_term</CODE> contains token      * terminator (space or dash), and<CODE>token_case</CODE> is<CODE>true</CODE>,      * if token is upper-case and<CODE>false</CODE> if token is lower-case.      *      * @return<CODE>TOKEN_EOF</CODE> -- no more tokens,<CODE>TOKEN_COMMA</CODE> --      * token is comma,<CODE>TOKEN_AND</CODE> -- token is the word      * "and" (or "And", or "aND", etc.) or a colon,<CODE>TOKEN_WORD</CODE> --      * token is a word; additional information is given in global      * variables<CODE>token_start</CODE>,<CODE>token_end</CODE>,      *<CODE>token_abbr</CODE>,<CODE>token_term</CODE>, and      *<CODE>token_case</CODE>.      */
+comment|/**      * Parses the next token.      *<p>      * The string being parsed is stored in global variable<CODE>orig</CODE>,      * and position which parsing has to start from is stored in global variable      *<CODE>token_end</CODE>; thus,<CODE>token_end</CODE> has to be set      * to 0 before the first invocation. Procedure updates<CODE>token_end</CODE>;      * thus, subsequent invocations do not require any additional variable      * settings.      *<p>      * The type of the token is returned; if it is<CODE>TOKEN_WORD</CODE>,      * additional information is given in global variables<CODE>token_start</CODE>,      *<CODE>token_end</CODE>,<CODE>token_abbr</CODE>,<CODE>token_term</CODE>,      * and<CODE>token_case</CODE>; namely:<CODE>orig.substring(token_start,token_end)</CODE>      * is the text of the token,<CODE>orig.substring(token_start,token_abbr)</CODE>      * is the token abbreviation,<CODE>token_term</CODE> contains token      * terminator (space or dash), and<CODE>token_case</CODE> is<CODE>true</CODE>,      * if token is upper-case and<CODE>false</CODE> if token is lower-case.      *      * @return<CODE>TOKEN_EOF</CODE> -- no more tokens,<CODE>TOKEN_COMMA</CODE> --      * token is comma,<CODE>TOKEN_AND</CODE> -- token is the word      * "and" (or "And", or "aND", etc.) or a semicolon,<CODE>TOKEN_WORD</CODE> --      * token is a word; additional information is given in global      * variables<CODE>token_start</CODE>,<CODE>token_end</CODE>,      *<CODE>token_abbr</CODE>,<CODE>token_term</CODE>, and      *<CODE>token_case</CODE>.      */
 DECL|method|getToken ()
 specifier|private
 name|int
@@ -1475,7 +1474,7 @@ return|return
 name|TOKEN_COMMA
 return|;
 block|}
-comment|// Colon is considered to separate names like "and"
+comment|// Semicolon is considered to separate names like "and"
 if|if
 condition|(
 name|original

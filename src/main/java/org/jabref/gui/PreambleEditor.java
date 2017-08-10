@@ -156,16 +156,6 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|JDialog
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
 name|JPanel
 import|;
 end_import
@@ -331,7 +321,7 @@ DECL|class|PreambleEditor
 class|class
 name|PreambleEditor
 extends|extends
-name|JDialog
+name|JabRefDialog
 block|{
 comment|// A reference to the entry this object works on.
 DECL|field|database
@@ -410,6 +400,10 @@ block|{
 name|super
 argument_list|(
 name|baseFrame
+argument_list|,
+name|PreambleEditor
+operator|.
+name|class
 argument_list|)
 expr_stmt|;
 name|this
@@ -582,36 +576,10 @@ literal|""
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|setupJTextComponent
-argument_list|(
-operator|(
-name|TextArea
-operator|)
-name|editor
-argument_list|)
-expr_stmt|;
-name|gbl
-operator|.
-name|setConstraints
-argument_list|(
-name|editor
-operator|.
-name|getLabel
-argument_list|()
-argument_list|,
-name|con
-argument_list|)
-expr_stmt|;
-name|pan
-operator|.
-name|add
-argument_list|(
-name|editor
-operator|.
-name|getLabel
-argument_list|()
-argument_list|)
-expr_stmt|;
+comment|// TODO: Reenable this
+comment|//setupJTextComponent((TextArea) editor);
+comment|//gbl.setConstraints(editor.getLabel(), con);
+comment|//pan.add(editor.getLabel());
 name|con
 operator|.
 name|weightx
@@ -880,6 +848,30 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|getFieldEditor ()
+specifier|public
+name|FieldEditor
+name|getFieldEditor
+parameter_list|()
+block|{
+return|return
+name|editor
+return|;
+block|}
+DECL|method|storeCurrentEdit ()
+specifier|public
+name|void
+name|storeCurrentEdit
+parameter_list|()
+block|{
+name|storeFieldAction
+operator|.
+name|actionPerformed
+argument_list|(
+literal|null
+argument_list|)
+expr_stmt|;
+block|}
 DECL|class|FieldListener
 specifier|private
 class|class
@@ -1030,42 +1022,11 @@ argument_list|(
 name|toSet
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-operator|(
-name|toSet
-operator|==
-literal|null
-operator|)
-operator|||
-name|toSet
-operator|.
-name|isEmpty
-argument_list|()
-condition|)
-block|{
-name|editor
-operator|.
-name|setLabelColor
-argument_list|(
-name|GUIGlobals
-operator|.
-name|NULL_FIELD_COLOR
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-name|editor
-operator|.
-name|setLabelColor
-argument_list|(
-name|GUIGlobals
-operator|.
-name|ENTRY_EDITOR_LABEL_COLOR
-argument_list|)
-expr_stmt|;
-block|}
+comment|//if ((toSet == null) || toSet.isEmpty()) {
+comment|//    editor.setLabelColor(GUIGlobals.NULL_FIELD_COLOR);
+comment|//} else {
+comment|//    editor.setLabelColor(GUIGlobals.ENTRY_EDITOR_LABEL_COLOR);
+comment|//}
 name|editor
 operator|.
 name|setValidBackgroundColor
@@ -1074,9 +1035,6 @@ expr_stmt|;
 if|if
 condition|(
 name|editor
-operator|.
-name|getTextComponent
-argument_list|()
 operator|.
 name|hasFocus
 argument_list|()
@@ -1259,30 +1217,6 @@ name|dispose
 argument_list|()
 expr_stmt|;
 block|}
-block|}
-DECL|method|getFieldEditor ()
-specifier|public
-name|FieldEditor
-name|getFieldEditor
-parameter_list|()
-block|{
-return|return
-name|editor
-return|;
-block|}
-DECL|method|storeCurrentEdit ()
-specifier|public
-name|void
-name|storeCurrentEdit
-parameter_list|()
-block|{
-name|storeFieldAction
-operator|.
-name|actionPerformed
-argument_list|(
-literal|null
-argument_list|)
-expr_stmt|;
 block|}
 block|}
 end_class

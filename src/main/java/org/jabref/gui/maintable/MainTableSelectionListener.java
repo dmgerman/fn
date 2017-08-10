@@ -654,6 +654,22 @@ name|BibEntry
 argument_list|>
 name|tableRows
 decl_stmt|;
+comment|// Register the last character pressed to quick jump in the table. Together
+comment|// with storing the last row number jumped to, this is used to let multiple
+comment|// key strokes cycle between all entries starting with the same letter:
+DECL|field|lastPressed
+specifier|private
+specifier|final
+name|int
+index|[]
+name|lastPressed
+init|=
+operator|new
+name|int
+index|[
+literal|20
+index|]
+decl_stmt|;
 DECL|field|preview
 specifier|private
 name|PreviewPanel
@@ -685,22 +701,6 @@ name|boolean
 name|enabled
 init|=
 literal|true
-decl_stmt|;
-comment|// Register the last character pressed to quick jump in the table. Together
-comment|// with storing the last row number jumped to, this is used to let multiple
-comment|// key strokes cycle between all entries starting with the same letter:
-DECL|field|lastPressed
-specifier|private
-specifier|final
-name|int
-index|[]
-name|lastPressed
-init|=
-operator|new
-name|int
-index|[
-literal|20
-index|]
 decl_stmt|;
 DECL|field|lastPressedCount
 specifier|private
@@ -976,7 +976,7 @@ name|visName
 operator|=
 name|oldEditor
 operator|.
-name|getVisiblePanelName
+name|getVisibleTabName
 argument_list|()
 expr_stmt|;
 block|}
@@ -1022,7 +1022,7 @@ condition|)
 block|{
 name|newEditor
 operator|.
-name|setVisiblePanel
+name|setVisibleTab
 argument_list|(
 name|visName
 argument_list|)

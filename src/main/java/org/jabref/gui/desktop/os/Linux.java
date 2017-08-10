@@ -401,12 +401,12 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|openFolderAndSelectFile (String filePath)
+DECL|method|openFolderAndSelectFile (Path filePath)
 specifier|public
 name|void
 name|openFolderAndSelectFile
 parameter_list|(
-name|String
+name|Path
 name|filePath
 parameter_list|)
 throws|throws
@@ -473,12 +473,7 @@ name|cmd
 operator|=
 literal|"xdg-open "
 operator|+
-name|Paths
-operator|.
-name|get
-argument_list|(
 name|filePath
-argument_list|)
 operator|.
 name|toAbsolutePath
 argument_list|()

@@ -91,12 +91,12 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-DECL|method|openFolderAndSelectFile (String filePath)
+DECL|method|openFolderAndSelectFile (Path file)
 name|void
 name|openFolderAndSelectFile
 parameter_list|(
-name|String
-name|filePath
+name|Path
+name|file
 parameter_list|)
 throws|throws
 name|IOException

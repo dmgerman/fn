@@ -103,7 +103,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Mapping between Msbib and biblatex  * All Fields:<a href = "https://msdn.microsoft.com/de-de/library/office/documentformat.openxml.bibliography">List of all MSBib fields</a>  *  */
+comment|/**  * Mapping between Msbib and biblatex All Fields:<a href = "https://msdn.microsoft.com/de-de/library/office/documentformat.openxml.bibliography">List  * of all MSBib fields</a>  */
 end_comment
 
 begin_class
@@ -130,7 +130,7 @@ name|MSBIB_PREFIX
 init|=
 literal|"msbib-"
 decl_stmt|;
-DECL|field|biblatexToMsBib
+DECL|field|BIBLATEX_TO_MS_BIB
 specifier|private
 specifier|static
 specifier|final
@@ -140,7 +140,7 @@ name|String
 argument_list|,
 name|String
 argument_list|>
-name|biblatexToMsBib
+name|BIBLATEX_TO_MS_BIB
 init|=
 name|HashBiMap
 operator|.
@@ -149,7 +149,7 @@ argument_list|()
 decl_stmt|;
 static|static
 block|{
-name|biblatexToMsBib
+name|BIBLATEX_TO_MS_BIB
 operator|.
 name|put
 argument_list|(
@@ -160,7 +160,7 @@ argument_list|,
 literal|"Tag"
 argument_list|)
 expr_stmt|;
-name|biblatexToMsBib
+name|BIBLATEX_TO_MS_BIB
 operator|.
 name|put
 argument_list|(
@@ -171,7 +171,7 @@ argument_list|,
 literal|"Title"
 argument_list|)
 expr_stmt|;
-name|biblatexToMsBib
+name|BIBLATEX_TO_MS_BIB
 operator|.
 name|put
 argument_list|(
@@ -182,7 +182,7 @@ argument_list|,
 literal|"Year"
 argument_list|)
 expr_stmt|;
-name|biblatexToMsBib
+name|BIBLATEX_TO_MS_BIB
 operator|.
 name|put
 argument_list|(
@@ -193,7 +193,7 @@ argument_list|,
 literal|"Comments"
 argument_list|)
 expr_stmt|;
-name|biblatexToMsBib
+name|BIBLATEX_TO_MS_BIB
 operator|.
 name|put
 argument_list|(
@@ -204,7 +204,7 @@ argument_list|,
 literal|"Volume"
 argument_list|)
 expr_stmt|;
-name|biblatexToMsBib
+name|BIBLATEX_TO_MS_BIB
 operator|.
 name|put
 argument_list|(
@@ -215,7 +215,7 @@ argument_list|,
 literal|"LCID"
 argument_list|)
 expr_stmt|;
-name|biblatexToMsBib
+name|BIBLATEX_TO_MS_BIB
 operator|.
 name|put
 argument_list|(
@@ -226,7 +226,7 @@ argument_list|,
 literal|"Edition"
 argument_list|)
 expr_stmt|;
-name|biblatexToMsBib
+name|BIBLATEX_TO_MS_BIB
 operator|.
 name|put
 argument_list|(
@@ -237,7 +237,7 @@ argument_list|,
 literal|"Publisher"
 argument_list|)
 expr_stmt|;
-name|biblatexToMsBib
+name|BIBLATEX_TO_MS_BIB
 operator|.
 name|put
 argument_list|(
@@ -248,7 +248,7 @@ argument_list|,
 literal|"BookTitle"
 argument_list|)
 expr_stmt|;
-name|biblatexToMsBib
+name|BIBLATEX_TO_MS_BIB
 operator|.
 name|put
 argument_list|(
@@ -257,7 +257,7 @@ argument_list|,
 literal|"ShortTitle"
 argument_list|)
 expr_stmt|;
-name|biblatexToMsBib
+name|BIBLATEX_TO_MS_BIB
 operator|.
 name|put
 argument_list|(
@@ -268,7 +268,7 @@ argument_list|,
 literal|"Comments"
 argument_list|)
 expr_stmt|;
-name|biblatexToMsBib
+name|BIBLATEX_TO_MS_BIB
 operator|.
 name|put
 argument_list|(
@@ -279,9 +279,7 @@ argument_list|,
 literal|"NumberVolumes"
 argument_list|)
 expr_stmt|;
-comment|//biblatexToMsBib.put(FieldName.BOOKTITLE, "ConferenceName");
-comment|//biblatexToMsBib.put(FieldName.PAGES, "Pages");
-name|biblatexToMsBib
+name|BIBLATEX_TO_MS_BIB
 operator|.
 name|put
 argument_list|(
@@ -292,7 +290,7 @@ argument_list|,
 literal|"ChapterNumber"
 argument_list|)
 expr_stmt|;
-name|biblatexToMsBib
+name|BIBLATEX_TO_MS_BIB
 operator|.
 name|put
 argument_list|(
@@ -303,7 +301,7 @@ argument_list|,
 literal|"Issue"
 argument_list|)
 expr_stmt|;
-name|biblatexToMsBib
+name|BIBLATEX_TO_MS_BIB
 operator|.
 name|put
 argument_list|(
@@ -314,7 +312,7 @@ argument_list|,
 literal|"Department"
 argument_list|)
 expr_stmt|;
-name|biblatexToMsBib
+name|BIBLATEX_TO_MS_BIB
 operator|.
 name|put
 argument_list|(
@@ -325,7 +323,7 @@ argument_list|,
 literal|"Institution"
 argument_list|)
 expr_stmt|;
-name|biblatexToMsBib
+name|BIBLATEX_TO_MS_BIB
 operator|.
 name|put
 argument_list|(
@@ -336,7 +334,7 @@ argument_list|,
 literal|"DOI"
 argument_list|)
 expr_stmt|;
-name|biblatexToMsBib
+name|BIBLATEX_TO_MS_BIB
 operator|.
 name|put
 argument_list|(
@@ -348,7 +346,7 @@ literal|"URL"
 argument_list|)
 expr_stmt|;
 comment|// BibTeX/Biblatex only fields
-name|biblatexToMsBib
+name|BIBLATEX_TO_MS_BIB
 operator|.
 name|put
 argument_list|(
@@ -361,7 +359,7 @@ operator|+
 literal|"Series"
 argument_list|)
 expr_stmt|;
-name|biblatexToMsBib
+name|BIBLATEX_TO_MS_BIB
 operator|.
 name|put
 argument_list|(
@@ -374,7 +372,7 @@ operator|+
 literal|"Abstract"
 argument_list|)
 expr_stmt|;
-name|biblatexToMsBib
+name|BIBLATEX_TO_MS_BIB
 operator|.
 name|put
 argument_list|(
@@ -387,7 +385,7 @@ operator|+
 literal|"KeyWords"
 argument_list|)
 expr_stmt|;
-name|biblatexToMsBib
+name|BIBLATEX_TO_MS_BIB
 operator|.
 name|put
 argument_list|(
@@ -400,7 +398,7 @@ operator|+
 literal|"CrossRef"
 argument_list|)
 expr_stmt|;
-name|biblatexToMsBib
+name|BIBLATEX_TO_MS_BIB
 operator|.
 name|put
 argument_list|(
@@ -413,7 +411,7 @@ operator|+
 literal|"HowPublished"
 argument_list|)
 expr_stmt|;
-name|biblatexToMsBib
+name|BIBLATEX_TO_MS_BIB
 operator|.
 name|put
 argument_list|(
@@ -426,7 +424,7 @@ operator|+
 literal|"Pubstate"
 argument_list|)
 expr_stmt|;
-name|biblatexToMsBib
+name|BIBLATEX_TO_MS_BIB
 operator|.
 name|put
 argument_list|(
@@ -437,7 +435,7 @@ operator|+
 literal|"Affiliation"
 argument_list|)
 expr_stmt|;
-name|biblatexToMsBib
+name|BIBLATEX_TO_MS_BIB
 operator|.
 name|put
 argument_list|(
@@ -448,7 +446,7 @@ operator|+
 literal|"Contents"
 argument_list|)
 expr_stmt|;
-name|biblatexToMsBib
+name|BIBLATEX_TO_MS_BIB
 operator|.
 name|put
 argument_list|(
@@ -459,7 +457,7 @@ operator|+
 literal|"Copyright"
 argument_list|)
 expr_stmt|;
-name|biblatexToMsBib
+name|BIBLATEX_TO_MS_BIB
 operator|.
 name|put
 argument_list|(
@@ -470,7 +468,7 @@ operator|+
 literal|"Price"
 argument_list|)
 expr_stmt|;
-name|biblatexToMsBib
+name|BIBLATEX_TO_MS_BIB
 operator|.
 name|put
 argument_list|(
@@ -481,7 +479,7 @@ operator|+
 literal|"Size"
 argument_list|)
 expr_stmt|;
-name|biblatexToMsBib
+name|BIBLATEX_TO_MS_BIB
 operator|.
 name|put
 argument_list|(
@@ -492,7 +490,7 @@ operator|+
 literal|"InType"
 argument_list|)
 expr_stmt|;
-name|biblatexToMsBib
+name|BIBLATEX_TO_MS_BIB
 operator|.
 name|put
 argument_list|(
@@ -503,7 +501,7 @@ operator|+
 literal|"Paper"
 argument_list|)
 expr_stmt|;
-name|biblatexToMsBib
+name|BIBLATEX_TO_MS_BIB
 operator|.
 name|put
 argument_list|(
@@ -517,7 +515,7 @@ literal|"Key"
 argument_list|)
 expr_stmt|;
 comment|// MSBib only fields
-name|biblatexToMsBib
+name|BIBLATEX_TO_MS_BIB
 operator|.
 name|put
 argument_list|(
@@ -528,7 +526,7 @@ argument_list|,
 literal|"PeriodicalTitle"
 argument_list|)
 expr_stmt|;
-name|biblatexToMsBib
+name|BIBLATEX_TO_MS_BIB
 operator|.
 name|put
 argument_list|(
@@ -541,7 +539,7 @@ argument_list|,
 literal|"Day"
 argument_list|)
 expr_stmt|;
-name|biblatexToMsBib
+name|BIBLATEX_TO_MS_BIB
 operator|.
 name|put
 argument_list|(
@@ -552,7 +550,7 @@ argument_list|,
 literal|"Accessed"
 argument_list|)
 expr_stmt|;
-name|biblatexToMsBib
+name|BIBLATEX_TO_MS_BIB
 operator|.
 name|put
 argument_list|(
@@ -563,7 +561,7 @@ argument_list|,
 literal|"Medium"
 argument_list|)
 expr_stmt|;
-name|biblatexToMsBib
+name|BIBLATEX_TO_MS_BIB
 operator|.
 name|put
 argument_list|(
@@ -574,7 +572,7 @@ argument_list|,
 literal|"RecordingNumber"
 argument_list|)
 expr_stmt|;
-name|biblatexToMsBib
+name|BIBLATEX_TO_MS_BIB
 operator|.
 name|put
 argument_list|(
@@ -585,7 +583,7 @@ argument_list|,
 literal|"Theater"
 argument_list|)
 expr_stmt|;
-name|biblatexToMsBib
+name|BIBLATEX_TO_MS_BIB
 operator|.
 name|put
 argument_list|(
@@ -596,7 +594,7 @@ argument_list|,
 literal|"Distributor"
 argument_list|)
 expr_stmt|;
-name|biblatexToMsBib
+name|BIBLATEX_TO_MS_BIB
 operator|.
 name|put
 argument_list|(
@@ -607,7 +605,7 @@ argument_list|,
 literal|"Broadcaster"
 argument_list|)
 expr_stmt|;
-name|biblatexToMsBib
+name|BIBLATEX_TO_MS_BIB
 operator|.
 name|put
 argument_list|(
@@ -618,7 +616,7 @@ argument_list|,
 literal|"Station"
 argument_list|)
 expr_stmt|;
-name|biblatexToMsBib
+name|BIBLATEX_TO_MS_BIB
 operator|.
 name|put
 argument_list|(
@@ -631,7 +629,7 @@ argument_list|,
 literal|"Type"
 argument_list|)
 expr_stmt|;
-name|biblatexToMsBib
+name|BIBLATEX_TO_MS_BIB
 operator|.
 name|put
 argument_list|(
@@ -642,7 +640,7 @@ argument_list|,
 literal|"Court"
 argument_list|)
 expr_stmt|;
-name|biblatexToMsBib
+name|BIBLATEX_TO_MS_BIB
 operator|.
 name|put
 argument_list|(
@@ -653,7 +651,7 @@ argument_list|,
 literal|"Reporter"
 argument_list|)
 expr_stmt|;
-name|biblatexToMsBib
+name|BIBLATEX_TO_MS_BIB
 operator|.
 name|put
 argument_list|(
@@ -664,7 +662,7 @@ argument_list|,
 literal|"CaseNumber"
 argument_list|)
 expr_stmt|;
-name|biblatexToMsBib
+name|BIBLATEX_TO_MS_BIB
 operator|.
 name|put
 argument_list|(
@@ -675,7 +673,7 @@ argument_list|,
 literal|"AbbreviatedCaseNumber"
 argument_list|)
 expr_stmt|;
-name|biblatexToMsBib
+name|BIBLATEX_TO_MS_BIB
 operator|.
 name|put
 argument_list|(
@@ -1091,7 +1089,7 @@ name|Misc
 argument_list|)
 return|;
 block|}
-comment|/**      * Only English is supported<br>      *<a href="http://www.microsoft.com/globaldev/reference/lcid-all.mspx">All LCID codes</a>      * @param language The language to transform      * @return Returns 0 for English      */
+comment|/**      * Only English is supported<br>      *<a href="http://www.microsoft.com/globaldev/reference/lcid-all.mspx">All LCID codes</a>      *      * @param language The language to transform      * @return Returns 0 for English      */
 DECL|method|getLCID (String language)
 specifier|public
 specifier|static
@@ -1108,7 +1106,7 @@ return|return
 literal|0
 return|;
 block|}
-comment|/**      * Only English is supported<br>      *<a href="http://www.microsoft.com/globaldev/reference/lcid-all.mspx">All LCID codes</a>      * @param language      * @return Returns english      */
+comment|/**      * Only English is supported<br>      *<a href="http://www.microsoft.com/globaldev/reference/lcid-all.mspx">All LCID codes</a>      *      * @return Returns english      */
 DECL|method|getLanguage (int LCID)
 specifier|public
 specifier|static
@@ -1135,7 +1133,7 @@ name|bibtexFieldName
 parameter_list|)
 block|{
 return|return
-name|biblatexToMsBib
+name|BIBLATEX_TO_MS_BIB
 operator|.
 name|get
 argument_list|(
@@ -1154,7 +1152,7 @@ name|msbibFieldName
 parameter_list|)
 block|{
 return|return
-name|biblatexToMsBib
+name|BIBLATEX_TO_MS_BIB
 operator|.
 name|inverse
 argument_list|()

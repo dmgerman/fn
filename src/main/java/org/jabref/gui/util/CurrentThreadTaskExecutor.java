@@ -28,6 +28,20 @@ begin_import
 import|import
 name|org
 operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|externalfiles
+operator|.
+name|FileDownloadTask
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|apache
 operator|.
 name|commons
@@ -202,6 +216,33 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
+annotation|@
+name|Override
+DECL|method|execute (FileDownloadTask downloadTask)
+specifier|public
+name|void
+name|execute
+parameter_list|(
+name|FileDownloadTask
+name|downloadTask
+parameter_list|)
+block|{
+name|downloadTask
+operator|.
+name|run
+argument_list|()
+expr_stmt|;
+block|}
+annotation|@
+name|Override
+DECL|method|shutdown ()
+specifier|public
+name|void
+name|shutdown
+parameter_list|()
+block|{
+comment|// Nothing to do here
 block|}
 block|}
 end_class

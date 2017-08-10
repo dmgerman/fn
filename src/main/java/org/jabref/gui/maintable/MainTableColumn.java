@@ -607,6 +607,16 @@ condition|(
 name|result
 operator|!=
 literal|null
+operator|&&
+operator|!
+name|BibEntry
+operator|.
+name|KEY_FIELD
+operator|.
+name|equals
+argument_list|(
+name|columnName
+argument_list|)
 condition|)
 block|{
 name|result

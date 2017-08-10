@@ -36,6 +36,20 @@ name|Localization
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|strings
+operator|.
+name|StringUtil
+import|;
+end_import
+
 begin_class
 DECL|class|BracketChecker
 specifier|public
@@ -58,6 +72,23 @@ name|String
 name|value
 parameter_list|)
 block|{
+if|if
+condition|(
+name|StringUtil
+operator|.
+name|isBlank
+argument_list|(
+name|value
+argument_list|)
+condition|)
+block|{
+return|return
+name|Optional
+operator|.
+name|empty
+argument_list|()
+return|;
+block|}
 comment|// metaphor: integer-based stack (push + / pop -)
 name|int
 name|counter

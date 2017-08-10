@@ -230,7 +230,7 @@ name|model
 operator|.
 name|metadata
 operator|.
-name|MetaData
+name|FileDirectoryPreferences
 import|;
 end_import
 
@@ -240,9 +240,11 @@ name|org
 operator|.
 name|jabref
 operator|.
-name|preferences
+name|model
 operator|.
-name|JabRefPreferences
+name|metadata
+operator|.
+name|MetaData
 import|;
 end_import
 
@@ -321,6 +323,18 @@ operator|.
 name|Matchers
 operator|.
 name|any
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|mockito
+operator|.
+name|Mockito
+operator|.
+name|mock
 import|;
 end_import
 
@@ -919,6 +933,23 @@ name|createContext
 argument_list|(
 literal|"note"
 argument_list|,
+literal|"\\url{someurl}"
+argument_list|)
+argument_list|,
+name|BibDatabaseMode
+operator|.
+name|BIBTEX
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertCorrect
+argument_list|(
+name|withMode
+argument_list|(
+name|createContext
+argument_list|(
+literal|"note"
+argument_list|,
 literal|"lorem ipsum"
 argument_list|)
 argument_list|,
@@ -980,6 +1011,23 @@ argument_list|(
 literal|"howpublished"
 argument_list|,
 literal|"lorem ipsum"
+argument_list|)
+argument_list|,
+name|BibDatabaseMode
+operator|.
+name|BIBTEX
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertCorrect
+argument_list|(
+name|withMode
+argument_list|(
+name|createContext
+argument_list|(
+literal|"howpublished"
+argument_list|,
+literal|"\\url{someurl}"
 argument_list|)
 argument_list|,
 name|BibDatabaseMode
@@ -1558,7 +1606,7 @@ name|BIBLATEX
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|assertCorrect
+name|assertWrong
 argument_list|(
 name|withMode
 argument_list|(
@@ -1575,7 +1623,7 @@ name|BIBLATEX
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|assertCorrect
+name|assertWrong
 argument_list|(
 name|withMode
 argument_list|(
@@ -2011,8 +2059,6 @@ block|{
 name|MetaData
 name|metaData
 init|=
-name|Mockito
-operator|.
 name|mock
 argument_list|(
 name|MetaData
@@ -2981,13 +3027,12 @@ name|IntegrityCheck
 argument_list|(
 name|context
 argument_list|,
-name|JabRefPreferences
+name|mock
+argument_list|(
+name|FileDirectoryPreferences
 operator|.
-name|getInstance
-argument_list|()
-operator|.
-name|getFileDirectoryPreferences
-argument_list|()
+name|class
+argument_list|)
 argument_list|,
 name|createBibtexKeyPatternPreferences
 argument_list|()
@@ -3223,13 +3268,12 @@ name|IntegrityCheck
 argument_list|(
 name|context
 argument_list|,
-name|JabRefPreferences
+name|mock
+argument_list|(
+name|FileDirectoryPreferences
 operator|.
-name|getInstance
-argument_list|()
-operator|.
-name|getFileDirectoryPreferences
-argument_list|()
+name|class
+argument_list|)
 argument_list|,
 name|createBibtexKeyPatternPreferences
 argument_list|()
@@ -3284,13 +3328,12 @@ name|IntegrityCheck
 argument_list|(
 name|context
 argument_list|,
-name|JabRefPreferences
+name|mock
+argument_list|(
+name|FileDirectoryPreferences
 operator|.
-name|getInstance
-argument_list|()
-operator|.
-name|getFileDirectoryPreferences
-argument_list|()
+name|class
+argument_list|)
 argument_list|,
 name|createBibtexKeyPatternPreferences
 argument_list|()
