@@ -76,10 +76,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|test ()
+DECL|method|spacesReplacedCorrectly ()
 specifier|public
 name|void
-name|test
+name|spacesReplacedCorrectly
 parameter_list|()
 block|{
 name|String
@@ -108,6 +108,27 @@ literal|"replace all spaces"
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|protectedSpacesNotReplacedInSingleProtectedBlock ()
+specifier|public
+name|void
+name|protectedSpacesNotReplacedInSingleProtectedBlock
+parameter_list|()
+block|{
+name|String
+name|regexInput
+init|=
+literal|"(\" \",\"-\")"
+decl_stmt|;
+name|formatter
+operator|.
+name|setRegex
+argument_list|(
+name|regexInput
+argument_list|)
+expr_stmt|;
 name|Assert
 operator|.
 name|assertEquals
@@ -119,6 +140,146 @@ operator|.
 name|format
 argument_list|(
 literal|"replace spaces {not these ones}"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|protectedSpacesNotReplacedInTwoProtectedBlocks ()
+specifier|public
+name|void
+name|protectedSpacesNotReplacedInTwoProtectedBlocks
+parameter_list|()
+block|{
+name|String
+name|regexInput
+init|=
+literal|"(\" \",\"-\")"
+decl_stmt|;
+name|formatter
+operator|.
+name|setRegex
+argument_list|(
+name|regexInput
+argument_list|)
+expr_stmt|;
+name|Assert
+operator|.
+name|assertEquals
+argument_list|(
+literal|"replace-spaces-{not these ones}-{or these ones}-but-these-ones"
+argument_list|,
+name|formatter
+operator|.
+name|format
+argument_list|(
+literal|"replace spaces {not these ones} {or these ones} but these ones"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|escapedBracesAreNotReplaced ()
+specifier|public
+name|void
+name|escapedBracesAreNotReplaced
+parameter_list|()
+block|{
+name|String
+name|regexInput
+init|=
+literal|"(\" \",\"-\")"
+decl_stmt|;
+name|formatter
+operator|.
+name|setRegex
+argument_list|(
+name|regexInput
+argument_list|)
+expr_stmt|;
+name|Assert
+operator|.
+name|assertEquals
+argument_list|(
+literal|"replace-spaces-\\{-these-ones\\}-and-these-ones"
+argument_list|,
+name|formatter
+operator|.
+name|format
+argument_list|(
+literal|"replace spaces \\{ these ones\\} and these ones"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|escapedBracesAreNotReplacedInTwoCases ()
+specifier|public
+name|void
+name|escapedBracesAreNotReplacedInTwoCases
+parameter_list|()
+block|{
+name|String
+name|regexInput
+init|=
+literal|"(\" \",\"-\")"
+decl_stmt|;
+name|formatter
+operator|.
+name|setRegex
+argument_list|(
+name|regexInput
+argument_list|)
+expr_stmt|;
+name|Assert
+operator|.
+name|assertEquals
+argument_list|(
+literal|"replace-spaces-\\{-these-ones\\},-these-ones,-and-\\{-these-ones\\}"
+argument_list|,
+name|formatter
+operator|.
+name|format
+argument_list|(
+literal|"replace spaces \\{ these ones\\}, these ones, and \\{ these ones\\}"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|escapedBracesAreNotReplacedAndProtectionStillWorks ()
+specifier|public
+name|void
+name|escapedBracesAreNotReplacedAndProtectionStillWorks
+parameter_list|()
+block|{
+name|String
+name|regexInput
+init|=
+literal|"(\" \",\"-\")"
+decl_stmt|;
+name|formatter
+operator|.
+name|setRegex
+argument_list|(
+name|regexInput
+argument_list|)
+expr_stmt|;
+name|Assert
+operator|.
+name|assertEquals
+argument_list|(
+literal|"replace-spaces-{not these ones},-these-ones,-and-\\{-these-ones\\}"
+argument_list|,
+name|formatter
+operator|.
+name|format
+argument_list|(
+literal|"replace spaces {not these ones}, these ones, and \\{ these ones\\}"
 argument_list|)
 argument_list|)
 expr_stmt|;
