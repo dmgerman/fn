@@ -32,6 +32,20 @@ name|org
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
+name|integrity
+operator|.
+name|FieldCheckers
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
 name|preferences
 operator|.
 name|JabRefPreferences
@@ -52,7 +66,7 @@ specifier|final
 name|JabRefPreferences
 name|preferences
 decl_stmt|;
-DECL|method|OwnerEditorViewModel (String fieldName, AutoCompleteSuggestionProvider<?> suggestionProvider, JabRefPreferences preferences)
+DECL|method|OwnerEditorViewModel (String fieldName, AutoCompleteSuggestionProvider<?> suggestionProvider, JabRefPreferences preferences, FieldCheckers fieldCheckers)
 specifier|public
 name|OwnerEditorViewModel
 parameter_list|(
@@ -67,6 +81,9 @@ name|suggestionProvider
 parameter_list|,
 name|JabRefPreferences
 name|preferences
+parameter_list|,
+name|FieldCheckers
+name|fieldCheckers
 parameter_list|)
 block|{
 name|super
@@ -74,6 +91,8 @@ argument_list|(
 name|fieldName
 argument_list|,
 name|suggestionProvider
+argument_list|,
+name|fieldCheckers
 argument_list|)
 expr_stmt|;
 name|this

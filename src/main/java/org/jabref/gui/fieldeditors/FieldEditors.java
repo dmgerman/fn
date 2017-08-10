@@ -130,6 +130,20 @@ name|jabref
 operator|.
 name|logic
 operator|.
+name|integrity
+operator|.
+name|FieldCheckers
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
 name|journals
 operator|.
 name|JournalAbbreviationLoader
@@ -334,6 +348,20 @@ name|getMetaData
 argument_list|()
 argument_list|)
 decl_stmt|;
+name|FieldCheckers
+name|fieldCheckers
+init|=
+operator|new
+name|FieldCheckers
+argument_list|(
+name|databaseContext
+argument_list|,
+name|preferences
+operator|.
+name|getFileDirectoryPreferences
+argument_list|()
+argument_list|)
+decl_stmt|;
 if|if
 condition|(
 name|Globals
@@ -387,6 +415,8 @@ literal|"[uuuu][-MM][-dd]"
 argument_list|)
 argument_list|,
 name|suggestionProvider
+argument_list|,
+name|fieldCheckers
 argument_list|)
 return|;
 block|}
@@ -414,6 +444,8 @@ argument_list|()
 argument_list|)
 argument_list|,
 name|suggestionProvider
+argument_list|,
+name|fieldCheckers
 argument_list|)
 return|;
 block|}
@@ -440,6 +472,8 @@ argument_list|,
 name|dialogService
 argument_list|,
 name|suggestionProvider
+argument_list|,
+name|fieldCheckers
 argument_list|)
 return|;
 block|}
@@ -467,6 +501,8 @@ argument_list|,
 name|journalAbbreviationPreferences
 argument_list|,
 name|suggestionProvider
+argument_list|,
+name|fieldCheckers
 argument_list|)
 return|;
 block|}
@@ -512,6 +548,8 @@ argument_list|,
 name|dialogService
 argument_list|,
 name|suggestionProvider
+argument_list|,
+name|fieldCheckers
 argument_list|)
 return|;
 block|}
@@ -537,6 +575,8 @@ argument_list|,
 name|preferences
 argument_list|,
 name|suggestionProvider
+argument_list|,
+name|fieldCheckers
 argument_list|)
 return|;
 block|}
@@ -566,6 +606,8 @@ argument_list|,
 name|taskExecutor
 argument_list|,
 name|suggestionProvider
+argument_list|,
+name|fieldCheckers
 argument_list|)
 return|;
 block|}
@@ -595,6 +637,8 @@ argument_list|(
 name|fieldName
 argument_list|,
 name|suggestionProvider
+argument_list|,
+name|fieldCheckers
 argument_list|)
 argument_list|)
 return|;
@@ -630,6 +674,8 @@ name|databaseContext
 operator|.
 name|getMode
 argument_list|()
+argument_list|,
+name|fieldCheckers
 argument_list|)
 argument_list|)
 return|;
@@ -660,6 +706,8 @@ argument_list|(
 name|fieldName
 argument_list|,
 name|suggestionProvider
+argument_list|,
+name|fieldCheckers
 argument_list|)
 argument_list|)
 return|;
@@ -690,6 +738,8 @@ argument_list|(
 name|fieldName
 argument_list|,
 name|suggestionProvider
+argument_list|,
+name|fieldCheckers
 argument_list|)
 argument_list|)
 return|;
@@ -720,6 +770,8 @@ argument_list|(
 name|fieldName
 argument_list|,
 name|suggestionProvider
+argument_list|,
+name|fieldCheckers
 argument_list|)
 argument_list|)
 return|;
@@ -760,6 +812,8 @@ argument_list|(
 name|fieldName
 argument_list|,
 name|suggestionProvider
+argument_list|,
+name|fieldCheckers
 argument_list|)
 argument_list|)
 return|;
@@ -779,6 +833,8 @@ argument_list|(
 name|fieldName
 argument_list|,
 name|suggestionProvider
+argument_list|,
+name|fieldCheckers
 argument_list|)
 argument_list|)
 return|;
@@ -815,6 +871,8 @@ argument_list|,
 name|databaseContext
 argument_list|,
 name|suggestionProvider
+argument_list|,
+name|fieldCheckers
 argument_list|)
 return|;
 block|}
@@ -843,6 +901,8 @@ name|preferences
 operator|.
 name|getAutoCompletePreferences
 argument_list|()
+argument_list|,
+name|fieldCheckers
 argument_list|)
 return|;
 block|}
@@ -854,6 +914,8 @@ argument_list|(
 name|fieldName
 argument_list|,
 name|suggestionProvider
+argument_list|,
+name|fieldCheckers
 argument_list|)
 return|;
 block|}

@@ -78,6 +78,20 @@ name|org
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
+name|integrity
+operator|.
+name|FieldCheckers
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
 name|model
 operator|.
 name|entry
@@ -114,7 +128,7 @@ specifier|final
 name|DateTimeFormatter
 name|dateFormatter
 decl_stmt|;
-DECL|method|DateEditorViewModel (String fieldName, AutoCompleteSuggestionProvider<?> suggestionProvider, DateTimeFormatter dateFormatter)
+DECL|method|DateEditorViewModel (String fieldName, AutoCompleteSuggestionProvider<?> suggestionProvider, DateTimeFormatter dateFormatter, FieldCheckers fieldCheckers)
 specifier|public
 name|DateEditorViewModel
 parameter_list|(
@@ -129,6 +143,9 @@ name|suggestionProvider
 parameter_list|,
 name|DateTimeFormatter
 name|dateFormatter
+parameter_list|,
+name|FieldCheckers
+name|fieldCheckers
 parameter_list|)
 block|{
 name|super
@@ -136,6 +153,8 @@ argument_list|(
 name|fieldName
 argument_list|,
 name|suggestionProvider
+argument_list|,
+name|fieldCheckers
 argument_list|)
 expr_stmt|;
 name|this

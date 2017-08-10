@@ -200,6 +200,20 @@ name|jabref
 operator|.
 name|logic
 operator|.
+name|integrity
+operator|.
+name|FieldCheckers
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
 name|l10n
 operator|.
 name|Localization
@@ -331,7 +345,7 @@ specifier|private
 name|DialogService
 name|dialogService
 decl_stmt|;
-DECL|method|IdentifierEditorViewModel (String fieldName, AutoCompleteSuggestionProvider<?> suggestionProvider, TaskExecutor taskExecutor, DialogService dialogService)
+DECL|method|IdentifierEditorViewModel (String fieldName, AutoCompleteSuggestionProvider<?> suggestionProvider, TaskExecutor taskExecutor, DialogService dialogService, FieldCheckers fieldCheckers)
 specifier|public
 name|IdentifierEditorViewModel
 parameter_list|(
@@ -349,6 +363,9 @@ name|taskExecutor
 parameter_list|,
 name|DialogService
 name|dialogService
+parameter_list|,
+name|FieldCheckers
+name|fieldCheckers
 parameter_list|)
 block|{
 name|super
@@ -356,6 +373,8 @@ argument_list|(
 name|fieldName
 argument_list|,
 name|suggestionProvider
+argument_list|,
+name|fieldCheckers
 argument_list|)
 expr_stmt|;
 name|this
