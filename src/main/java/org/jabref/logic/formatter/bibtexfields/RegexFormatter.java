@@ -458,15 +458,20 @@ name|rex
 parameter_list|)
 block|{
 comment|// formatting is like ("exp1","exp2"), we want to remove (" and ")
+name|String
+name|rexToSet
+init|=
 name|rex
+decl_stmt|;
+name|rexToSet
 operator|=
-name|rex
+name|rexToSet
 operator|.
 name|substring
 argument_list|(
 literal|2
 argument_list|,
-name|rex
+name|rexToSet
 operator|.
 name|length
 argument_list|()
@@ -478,7 +483,7 @@ name|String
 index|[]
 name|parts
 init|=
-name|rex
+name|rexToSet
 operator|.
 name|split
 argument_list|(
