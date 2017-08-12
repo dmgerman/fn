@@ -196,6 +196,18 @@ parameter_list|()
 block|{     }
 annotation|@
 name|Override
+DECL|method|notifyAboutFocus ()
+specifier|public
+name|void
+name|notifyAboutFocus
+parameter_list|()
+block|{
+name|initialize
+argument_list|()
+expr_stmt|;
+block|}
+annotation|@
+name|Override
 DECL|method|initialize ()
 specifier|protected
 name|void
