@@ -188,14 +188,6 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|requestFocus ()
-specifier|public
-name|void
-name|requestFocus
-parameter_list|()
-block|{     }
-annotation|@
-name|Override
 DECL|method|notifyAboutFocus ()
 specifier|public
 name|void
