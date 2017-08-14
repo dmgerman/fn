@@ -1532,8 +1532,15 @@ argument_list|()
 argument_list|)
 condition|)
 block|{
+name|DefaultTaskExecutor
+operator|.
+name|runInJavaFXThread
+argument_list|(
+parameter_list|()
+lambda|->
 name|rebuildOtherFieldsTab
 argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 block|}

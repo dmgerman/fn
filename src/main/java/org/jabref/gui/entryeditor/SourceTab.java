@@ -704,6 +704,24 @@ argument_list|()
 argument_list|)
 condition|)
 block|{
+name|DefaultTaskExecutor
+operator|.
+name|runInJavaFXThread
+argument_list|(
+parameter_list|()
+lambda|->
+name|updateSourcePane
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+DECL|method|updateSourcePane ()
+specifier|private
+name|void
+name|updateSourcePane
+parameter_list|()
+block|{
 try|try
 block|{
 name|codeArea
@@ -765,7 +783,6 @@ argument_list|,
 name|ex
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 DECL|method|createSourceEditor (BibEntry entry, BibDatabaseMode mode)
@@ -869,11 +886,8 @@ name|runInJavaFXThread
 argument_list|(
 parameter_list|()
 lambda|->
-block|{
 name|storeSource
 argument_list|()
-expr_stmt|;
-block|}
 argument_list|)
 expr_stmt|;
 block|}
