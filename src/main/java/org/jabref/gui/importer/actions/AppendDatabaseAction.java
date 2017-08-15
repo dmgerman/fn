@@ -694,12 +694,11 @@ name|Globals
 operator|.
 name|prefs
 operator|.
-name|getBoolean
-argument_list|(
-name|JabRefPreferences
+name|getTimestampPreferences
+argument_list|()
 operator|.
-name|OVERWRITE_TIME_STAMP
-argument_list|)
+name|overwriteTimestamp
+argument_list|()
 decl_stmt|;
 for|for
 control|(

@@ -627,12 +627,11 @@ name|Globals
 operator|.
 name|prefs
 operator|.
-name|get
-argument_list|(
-name|JabRefPreferences
+name|getTimestampPreferences
+argument_list|()
 operator|.
-name|TIME_STAMP_FIELD
-argument_list|)
+name|getTimestampField
+argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// Update which fields should be treated as numeric, based on preferences:

@@ -54,6 +54,20 @@ name|AutoCompletionStrategy
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|integrity
+operator|.
+name|FieldCheckers
+import|;
+end_import
+
 begin_class
 DECL|class|SimpleEditorViewModel
 specifier|public
@@ -62,7 +76,7 @@ name|SimpleEditorViewModel
 extends|extends
 name|AbstractEditorViewModel
 block|{
-DECL|method|SimpleEditorViewModel (String fieldName, AutoCompleteSuggestionProvider<?> suggestionProvider)
+DECL|method|SimpleEditorViewModel (String fieldName, AutoCompleteSuggestionProvider<?> suggestionProvider, FieldCheckers fieldCheckers)
 specifier|public
 name|SimpleEditorViewModel
 parameter_list|(
@@ -74,6 +88,9 @@ argument_list|<
 name|?
 argument_list|>
 name|suggestionProvider
+parameter_list|,
+name|FieldCheckers
+name|fieldCheckers
 parameter_list|)
 block|{
 name|super
@@ -81,6 +98,8 @@ argument_list|(
 name|fieldName
 argument_list|,
 name|suggestionProvider
+argument_list|,
+name|fieldCheckers
 argument_list|)
 expr_stmt|;
 block|}

@@ -360,6 +360,20 @@ name|jabref
 operator|.
 name|logic
 operator|.
+name|integrity
+operator|.
+name|FieldCheckers
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
 name|l10n
 operator|.
 name|Localization
@@ -643,7 +657,7 @@ specifier|final
 name|TaskExecutor
 name|taskExecutor
 decl_stmt|;
-DECL|method|LinkedFilesEditorViewModel (String fieldName, AutoCompleteSuggestionProvider<?> suggestionProvider, DialogService dialogService, BibDatabaseContext databaseContext, TaskExecutor taskExecutor)
+DECL|method|LinkedFilesEditorViewModel (String fieldName, AutoCompleteSuggestionProvider<?> suggestionProvider, DialogService dialogService, BibDatabaseContext databaseContext, TaskExecutor taskExecutor, FieldCheckers fieldCheckers)
 specifier|public
 name|LinkedFilesEditorViewModel
 parameter_list|(
@@ -664,6 +678,9 @@ name|databaseContext
 parameter_list|,
 name|TaskExecutor
 name|taskExecutor
+parameter_list|,
+name|FieldCheckers
+name|fieldCheckers
 parameter_list|)
 block|{
 name|super
@@ -671,6 +688,8 @@ argument_list|(
 name|fieldName
 argument_list|,
 name|suggestionProvider
+argument_list|,
+name|fieldCheckers
 argument_list|)
 expr_stmt|;
 name|this

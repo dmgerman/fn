@@ -318,6 +318,20 @@ name|jabref
 operator|.
 name|logic
 operator|.
+name|integrity
+operator|.
+name|FieldCheckers
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
 name|l10n
 operator|.
 name|Localization
@@ -414,7 +428,7 @@ name|LinkedFileViewModel
 argument_list|>
 name|listView
 decl_stmt|;
-DECL|method|LinkedFilesEditor (String fieldName, DialogService dialogService, BibDatabaseContext databaseContext, TaskExecutor taskExecutor, AutoCompleteSuggestionProvider<?> suggestionProvider)
+DECL|method|LinkedFilesEditor (String fieldName, DialogService dialogService, BibDatabaseContext databaseContext, TaskExecutor taskExecutor, AutoCompleteSuggestionProvider<?> suggestionProvider, FieldCheckers fieldCheckers)
 specifier|public
 name|LinkedFilesEditor
 parameter_list|(
@@ -435,6 +449,9 @@ argument_list|<
 name|?
 argument_list|>
 name|suggestionProvider
+parameter_list|,
+name|FieldCheckers
+name|fieldCheckers
 parameter_list|)
 block|{
 name|this
@@ -453,6 +470,8 @@ argument_list|,
 name|databaseContext
 argument_list|,
 name|taskExecutor
+argument_list|,
+name|fieldCheckers
 argument_list|)
 expr_stmt|;
 name|ControlHelper
@@ -907,6 +926,22 @@ operator|new
 name|ContextMenu
 argument_list|()
 decl_stmt|;
+name|menu
+operator|.
+name|setStyle
+argument_list|(
+literal|"-fx-font-size: "
+operator|+
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getFontSizeFX
+argument_list|()
+operator|+
+literal|"pt;"
+argument_list|)
+expr_stmt|;
 name|MenuItem
 name|edit
 init|=

@@ -18,6 +18,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Collection
 import|;
 end_import
@@ -255,6 +265,22 @@ operator|.
 name|event
 operator|.
 name|EntryEventSource
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|event
+operator|.
+name|FieldAddedOrRemovedEvent
 import|;
 end_import
 
@@ -1840,6 +1866,13 @@ argument_list|(
 literal|null
 argument_list|)
 decl_stmt|;
+name|boolean
+name|isNewField
+init|=
+name|oldValue
+operator|==
+literal|null
+decl_stmt|;
 if|if
 condition|(
 name|value
@@ -1917,6 +1950,27 @@ argument_list|,
 name|value
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|isNewField
+condition|)
+block|{
+name|eventBus
+operator|.
+name|post
+argument_list|(
+operator|new
+name|FieldAddedOrRemovedEvent
+argument_list|(
+name|change
+argument_list|,
+name|eventSource
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
 name|eventBus
 operator|.
 name|post
@@ -1930,6 +1984,7 @@ name|eventSource
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|Optional
 operator|.
@@ -2156,7 +2211,7 @@ operator|.
 name|post
 argument_list|(
 operator|new
-name|FieldChangedEvent
+name|FieldAddedOrRemovedEvent
 argument_list|(
 name|change
 argument_list|,
@@ -3673,7 +3728,7 @@ name|newValue
 argument_list|)
 return|;
 block|}
-comment|/**      * Gets a list of linked files.      *      * @return the list of linked files, is never null but can be empty      */
+comment|/**      * Gets a list of linked files.      *      * @return the list of linked files, is never null but can be empty.      * Changes to the underlying list will have no effect on the entry itself. Use {@link #addFile(LinkedFile)}      */
 DECL|method|getFiles ()
 specifier|public
 name|List
@@ -3707,11 +3762,12 @@ argument_list|()
 condition|)
 block|{
 return|return
-name|Collections
-operator|.
-name|emptyList
+operator|new
+name|ArrayList
+argument_list|<>
 argument_list|()
 return|;
+comment|//Return new ArrayList because emptyList is immutable
 block|}
 return|return
 name|FileFieldParser
