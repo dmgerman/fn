@@ -35,7 +35,7 @@ name|Tab
 block|{
 comment|/**      * Used for lazy-loading of the tab content.      */
 DECL|field|isInitialized
-specifier|private
+specifier|protected
 name|boolean
 name|isInitialized
 init|=

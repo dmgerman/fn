@@ -79,7 +79,7 @@ return|return
 literal|"sentence_case"
 return|;
 block|}
-comment|/**      * Converts the first character of the first word of the given string to upper case (and the remaining characters of the first word to lower case), but does not change anything if word starts with "{"      */
+comment|/**      * Converts the first character of the first word of the given string to upper case (and the remaining characters of the first word to lower case) and changes other words to lower case, but does not change anything if word starts with "{"      */
 annotation|@
 name|Override
 DECL|method|format (String input)

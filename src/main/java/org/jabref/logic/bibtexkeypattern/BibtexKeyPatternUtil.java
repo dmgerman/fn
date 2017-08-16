@@ -4261,14 +4261,11 @@ name|title
 parameter_list|)
 block|{
 return|return
-name|keepLettersAndDigitsOnly
-argument_list|(
 name|getTitleWordsWithSpaces
 argument_list|(
 name|number
 argument_list|,
 name|title
-argument_list|)
 argument_list|)
 return|;
 block|}
