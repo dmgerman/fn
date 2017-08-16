@@ -1215,6 +1215,11 @@ specifier|private
 name|EntryType
 name|entryType
 decl_stmt|;
+DECL|field|sourceTab
+specifier|private
+name|SourceTab
+name|sourceTab
+decl_stmt|;
 DECL|method|EntryEditor (JabRefFrame frame, BasePanel panel, BibEntry entry, String lastTabName)
 specifier|public
 name|EntryEditor
@@ -2200,9 +2205,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Source tab
-name|SourceTab
 name|sourceTab
-init|=
+operator|=
 operator|new
 name|SourceTab
 argument_list|(
@@ -2212,7 +2216,7 @@ name|entry
 argument_list|,
 name|movingToDifferentEntry
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|tabs
 operator|.
 name|add
@@ -3296,6 +3300,21 @@ argument_list|(
 name|this
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|sourceTab
+operator|!=
+literal|null
+condition|)
+block|{
+name|this
+operator|.
+name|sourceTab
+operator|.
+name|deregisterListeners
+argument_list|()
+expr_stmt|;
+block|}
 name|removeSearchListeners
 argument_list|()
 expr_stmt|;
