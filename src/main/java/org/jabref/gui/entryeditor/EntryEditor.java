@@ -3287,6 +3287,15 @@ name|void
 name|unregisterListeners
 parameter_list|()
 block|{
+name|this
+operator|.
+name|entry
+operator|.
+name|unregisterListener
+argument_list|(
+name|this
+argument_list|)
+expr_stmt|;
 name|removeSearchListeners
 argument_list|()
 expr_stmt|;

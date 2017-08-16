@@ -3778,7 +3778,7 @@ literal|3
 decl_stmt|;
 name|assertEquals
 argument_list|(
-literal|"applicationmigrationeffort"
+literal|"application migration effort"
 argument_list|,
 name|BibtexKeyPatternUtil
 operator|.
@@ -3792,7 +3792,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"BPELconformancein"
+literal|"BPEL conformance in"
 argument_list|,
 name|BibtexKeyPatternUtil
 operator|.
@@ -3806,7 +3806,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"ProcessViewingPatterns"
+literal|"Process Viewing Patterns"
 argument_list|,
 name|BibtexKeyPatternUtil
 operator|.
@@ -3820,7 +3820,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"BPMNConformancein"
+literal|"BPMN Conformance in"
 argument_list|,
 name|BibtexKeyPatternUtil
 operator|.
@@ -3834,7 +3834,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"TheDifferenceBetween"
+literal|"The Difference Between"
 argument_list|,
 name|BibtexKeyPatternUtil
 operator|.
@@ -3848,7 +3848,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"CloudComputingThe"
+literal|"Cloud Computing: The"
 argument_list|,
 name|BibtexKeyPatternUtil
 operator|.
@@ -3862,7 +3862,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"TowardsChoreographybased"
+literal|"Towards Choreography based"
 argument_list|,
 name|BibtexKeyPatternUtil
 operator|.
@@ -3876,7 +3876,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"OntheMeasurement"
+literal|"On the Measurement"
 argument_list|,
 name|BibtexKeyPatternUtil
 operator|.
@@ -4486,7 +4486,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"GreenSchedulingof"
+literal|"Green Scheduling of"
 argument_list|,
 name|BibtexKeyPatternUtil
 operator|.
