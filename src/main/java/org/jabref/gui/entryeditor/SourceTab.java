@@ -716,6 +716,22 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+DECL|method|deregisterListeners ()
+specifier|public
+name|void
+name|deregisterListeners
+parameter_list|()
+block|{
+name|this
+operator|.
+name|entry
+operator|.
+name|unregisterListener
+argument_list|(
+name|this
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|updateSourcePane ()
 specifier|private
 name|void
