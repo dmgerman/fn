@@ -582,6 +582,15 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
+DECL|field|REGEX
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|REGEX
+init|=
+literal|"regex"
+decl_stmt|;
 DECL|field|LENGTH_OF_REGEX_PREFIX
 specifier|private
 specifier|static
@@ -589,7 +598,10 @@ specifier|final
 name|int
 name|LENGTH_OF_REGEX_PREFIX
 init|=
-literal|5
+name|REGEX
+operator|.
+name|length
+argument_list|()
 decl_stmt|;
 DECL|method|Formatters ()
 specifier|private
