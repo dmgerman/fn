@@ -22,6 +22,18 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|function
+operator|.
+name|Function
+import|;
+end_import
+
+begin_import
+import|import
 name|javafx
 operator|.
 name|scene
@@ -81,8 +93,31 @@ specifier|public
 name|AbstractView
 parameter_list|()
 block|{
+name|this
+argument_list|(
+name|f
+lambda|->
+literal|null
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|AbstractView (Function<String, Object> injectionContext)
+specifier|public
+name|AbstractView
+parameter_list|(
+name|Function
+argument_list|<
+name|String
+argument_list|,
+name|Object
+argument_list|>
+name|injectionContext
+parameter_list|)
+block|{
 name|super
-argument_list|()
+argument_list|(
+name|injectionContext
+argument_list|)
 expr_stmt|;
 comment|// Set resource bundle to internal localizations
 name|bundle
@@ -149,6 +184,16 @@ name|newValue
 parameter_list|)
 lambda|->
 block|{
+if|if
+condition|(
+name|newValue
+operator|.
+name|getWindow
+argument_list|()
+operator|instanceof
+name|Stage
+condition|)
+block|{
 name|Stage
 name|stage
 init|=
@@ -182,6 +227,7 @@ name|stage
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 argument_list|)
