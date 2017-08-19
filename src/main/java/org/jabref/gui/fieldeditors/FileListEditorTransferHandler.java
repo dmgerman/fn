@@ -513,6 +513,8 @@ name|javaFileListFlavor
 argument_list|)
 condition|)
 block|{
+comment|// javaFileListFlavor returns a list of java.io.File (as the string *File* in File indicates) and not a list of java.nio.file
+comment|// There is no DataFlavor.javaPathListFlavor, so we have to deal with java.io.File
 annotation|@
 name|SuppressWarnings
 argument_list|(
@@ -550,12 +552,9 @@ argument_list|()
 operator|.
 name|map
 argument_list|(
-name|file
-lambda|->
-name|file
-operator|.
+name|File
+operator|::
 name|toPath
-argument_list|()
 argument_list|)
 operator|.
 name|collect
