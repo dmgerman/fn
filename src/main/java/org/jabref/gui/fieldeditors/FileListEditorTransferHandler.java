@@ -78,6 +78,16 @@ name|java
 operator|.
 name|io
 operator|.
+name|File
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
 name|IOException
 import|;
 end_import
@@ -121,6 +131,18 @@ operator|.
 name|util
 operator|.
 name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|stream
+operator|.
+name|Collectors
 import|;
 end_import
 
@@ -319,7 +341,7 @@ specifier|private
 name|DroppedFileHandler
 name|droppedFileHandler
 decl_stmt|;
-comment|/**      *      * @param frame      * @param entryContainer      * @param textTransferHandler is an instance of javax.swing.plaf.basic.BasicTextUI.TextTransferHandler. That class is not visible. Therefore, we have to "cheat"      */
+comment|/**      * @param textTransferHandler is an instance of javax.swing.plaf.basic.BasicTextUI.TextTransferHandler. That class      *                            is not visible. Therefore, we have to "cheat"      */
 DECL|method|FileListEditorTransferHandler (JabRefFrame frame, EntryContainer entryContainer, TransferHandler textTransferHandler)
 specifier|public
 name|FileListEditorTransferHandler
@@ -386,7 +408,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Overridden to indicate which types of drags are supported (only LINK + COPY).      * COPY is supported as no support disables CTRL+C (copy of text)      */
+comment|/**      * Overridden to indicate which types of drags are supported (only LINK + COPY). COPY is supported as no support      * disables CTRL+C (copy of text)      */
 annotation|@
 name|Override
 DECL|method|getSourceActions (JComponent c)
@@ -498,14 +520,14 @@ literal|"unchecked"
 argument_list|)
 name|List
 argument_list|<
-name|Path
+name|File
 argument_list|>
 name|transferedFiles
 init|=
 operator|(
 name|List
 argument_list|<
-name|Path
+name|File
 argument_list|>
 operator|)
 name|t
@@ -522,9 +544,31 @@ operator|.
 name|addAll
 argument_list|(
 name|transferedFiles
+operator|.
+name|stream
+argument_list|()
+operator|.
+name|map
+argument_list|(
+name|file
+lambda|->
+name|file
+operator|.
+name|toPath
+argument_list|()
+argument_list|)
+operator|.
+name|collect
+argument_list|(
+name|Collectors
+operator|.
+name|toList
+argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+elseif|else
 if|if
 condition|(
 name|t
@@ -550,16 +594,15 @@ argument_list|)
 decl_stmt|;
 name|LOGGER
 operator|.
-name|debug
+name|warn
 argument_list|(
-literal|"URL: "
+literal|"Dropped URL, which is currently not implemented "
 operator|+
 name|dropLink
 argument_list|)
 expr_stmt|;
 block|}
-comment|// This is used when one or more files are pasted from the file manager
-comment|// under Gnome. The data consists of the file paths, one file per line:
+elseif|else
 if|if
 condition|(
 name|t
@@ -570,6 +613,8 @@ name|stringFlavor
 argument_list|)
 condition|)
 block|{
+comment|// This is used when one or more files are pasted from the file manager
+comment|// under Gnome. The data consists of the file paths, one file per line:
 name|String
 name|dropStr
 init|=
@@ -593,6 +638,16 @@ name|getFilesFromDraggedFilesString
 argument_list|(
 name|dropStr
 argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|LOGGER
+operator|.
+name|warn
+argument_list|(
+literal|"Dropped something, which we currently cannot handle"
 argument_list|)
 expr_stmt|;
 block|}
