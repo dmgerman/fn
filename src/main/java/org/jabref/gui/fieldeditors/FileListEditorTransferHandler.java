@@ -78,6 +78,16 @@ name|java
 operator|.
 name|io
 operator|.
+name|File
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
 name|IOException
 import|;
 end_import
@@ -120,7 +130,29 @@ name|java
 operator|.
 name|util
 operator|.
+name|Arrays
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|stream
+operator|.
+name|Collectors
 import|;
 end_import
 
@@ -285,16 +317,11 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|field|urlFlavor
-specifier|private
-name|DataFlavor
-name|urlFlavor
-decl_stmt|;
-DECL|field|stringFlavor
+DECL|field|URL_FLAVOR
 specifier|private
 specifier|final
 name|DataFlavor
-name|stringFlavor
+name|URL_FLAVOR
 decl_stmt|;
 DECL|field|frame
 specifier|private
@@ -319,7 +346,7 @@ specifier|private
 name|DroppedFileHandler
 name|droppedFileHandler
 decl_stmt|;
-comment|/**      *      * @param frame      * @param entryContainer      * @param textTransferHandler is an instance of javax.swing.plaf.basic.BasicTextUI.TextTransferHandler. That class is not visible. Therefore, we have to "cheat"      */
+comment|/**      * @param textTransferHandler is an instance of javax.swing.plaf.basic.BasicTextUI.TextTransferHandler. That class      *                            is not visible. Therefore, we have to "cheat"      */
 DECL|method|FileListEditorTransferHandler (JabRefFrame frame, EntryContainer entryContainer, TransferHandler textTransferHandler)
 specifier|public
 name|FileListEditorTransferHandler
@@ -352,12 +379,21 @@ name|textTransferHandler
 operator|=
 name|textTransferHandler
 expr_stmt|;
-name|stringFlavor
+name|URL_FLAVOR
 operator|=
-name|DataFlavor
-operator|.
-name|stringFlavor
+name|getUrlFlavor
+argument_list|()
 expr_stmt|;
+block|}
+DECL|method|getUrlFlavor ()
+specifier|private
+name|DataFlavor
+name|getUrlFlavor
+parameter_list|()
+block|{
+name|DataFlavor
+name|urlFlavor
+decl_stmt|;
 try|try
 block|{
 name|urlFlavor
@@ -384,9 +420,16 @@ argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
+name|urlFlavor
+operator|=
+literal|null
+expr_stmt|;
 block|}
+return|return
+name|urlFlavor
+return|;
 block|}
-comment|/**      * Overridden to indicate which types of drags are supported (only LINK + COPY).      * COPY is supported as no support disables CTRL+C (copy of text)      */
+comment|/**      * Overridden to indicate which types of drags are supported (only LINK + COPY). COPY is supported as no support      * disables CTRL+C (copy of text)      */
 annotation|@
 name|Override
 DECL|method|getSourceActions (JComponent c)
@@ -451,7 +494,7 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|importData (JComponent comp, Transferable t)
+DECL|method|importData (JComponent comp, Transferable transferable)
 specifier|public
 name|boolean
 name|importData
@@ -460,7 +503,7 @@ name|JComponent
 name|comp
 parameter_list|,
 name|Transferable
-name|t
+name|transferable
 parameter_list|)
 block|{
 comment|// If the drop target is the main table, we want to record which
@@ -481,7 +524,7 @@ decl_stmt|;
 comment|// This flavor is used for dragged file links in Windows:
 if|if
 condition|(
-name|t
+name|transferable
 operator|.
 name|isDataFlavorSupported
 argument_list|(
@@ -491,6 +534,8 @@ name|javaFileListFlavor
 argument_list|)
 condition|)
 block|{
+comment|// javaFileListFlavor returns a list of java.io.File (as the string *File* in File indicates) and not a list of java.nio.file
+comment|// There is no DataFlavor.javaPathListFlavor, so we have to deal with java.io.File
 annotation|@
 name|SuppressWarnings
 argument_list|(
@@ -498,17 +543,17 @@ literal|"unchecked"
 argument_list|)
 name|List
 argument_list|<
-name|Path
+name|File
 argument_list|>
 name|transferedFiles
 init|=
 operator|(
 name|List
 argument_list|<
-name|Path
+name|File
 argument_list|>
 operator|)
-name|t
+name|transferable
 operator|.
 name|getTransferData
 argument_list|(
@@ -522,16 +567,35 @@ operator|.
 name|addAll
 argument_list|(
 name|transferedFiles
+operator|.
+name|stream
+argument_list|()
+operator|.
+name|map
+argument_list|(
+name|File
+operator|::
+name|toPath
+argument_list|)
+operator|.
+name|collect
+argument_list|(
+name|Collectors
+operator|.
+name|toList
+argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+elseif|else
 if|if
 condition|(
-name|t
+name|transferable
 operator|.
 name|isDataFlavorSupported
 argument_list|(
-name|urlFlavor
+name|URL_FLAVOR
 argument_list|)
 condition|)
 block|{
@@ -541,45 +605,50 @@ init|=
 operator|(
 name|URL
 operator|)
-name|t
+name|transferable
 operator|.
 name|getTransferData
 argument_list|(
-name|urlFlavor
+name|URL_FLAVOR
 argument_list|)
 decl_stmt|;
 name|LOGGER
 operator|.
-name|debug
+name|warn
 argument_list|(
-literal|"URL: "
+literal|"Dropped URL, which is currently not implemented "
 operator|+
 name|dropLink
 argument_list|)
 expr_stmt|;
 block|}
-comment|// This is used when one or more files are pasted from the file manager
-comment|// under Gnome. The data consists of the file paths, one file per line:
+elseif|else
 if|if
 condition|(
-name|t
+name|transferable
 operator|.
 name|isDataFlavorSupported
 argument_list|(
+name|DataFlavor
+operator|.
 name|stringFlavor
 argument_list|)
 condition|)
 block|{
+comment|// This is used when one or more files are pasted from the file manager
+comment|// under Gnome. The data consists of the file paths, one file per line:
 name|String
 name|dropStr
 init|=
 operator|(
 name|String
 operator|)
-name|t
+name|transferable
 operator|.
 name|getTransferData
 argument_list|(
+name|DataFlavor
+operator|.
 name|stringFlavor
 argument_list|)
 decl_stmt|;
@@ -593,6 +662,16 @@ name|getFilesFromDraggedFilesString
 argument_list|(
 name|dropStr
 argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|LOGGER
+operator|.
+name|warn
+argument_list|(
+literal|"Dropped something, which we currently cannot handle"
 argument_list|)
 expr_stmt|;
 block|}
@@ -753,63 +832,24 @@ begin_comment
 comment|// all supported flavors failed
 end_comment
 
-begin_decl_stmt
-name|StringBuilder
-name|logMessage
-init|=
-operator|new
-name|StringBuilder
-argument_list|(
-literal|"Cannot transfer input:"
-argument_list|)
-decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
-name|DataFlavor
-index|[]
-name|inflavs
-init|=
-name|t
-operator|.
-name|getTransferDataFlavors
-argument_list|()
-decl_stmt|;
-end_decl_stmt
-
-begin_for
-for|for
-control|(
-name|DataFlavor
-name|inflav
-range|:
-name|inflavs
-control|)
-block|{
-name|logMessage
-operator|.
-name|append
-argument_list|(
-literal|' '
-argument_list|)
-operator|.
-name|append
-argument_list|(
-name|inflav
-argument_list|)
-expr_stmt|;
-block|}
-end_for
+begin_comment
+comment|// log the flavors to support debugging
+end_comment
 
 begin_expr_stmt
 name|LOGGER
 operator|.
 name|warn
 argument_list|(
-name|logMessage
+literal|"Cannot transfer input: "
+operator|+
+name|dataFlavorsToString
+argument_list|(
+name|transferable
 operator|.
-name|toString
+name|getTransferDataFlavors
 argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 end_expr_stmt
@@ -820,13 +860,54 @@ literal|false
 return|;
 end_return
 
+begin_function
+unit|}      private
+DECL|method|dataFlavorsToString (DataFlavor[] transferFlavors)
+name|String
+name|dataFlavorsToString
+parameter_list|(
+name|DataFlavor
+index|[]
+name|transferFlavors
+parameter_list|)
+block|{
+return|return
+name|Arrays
+operator|.
+name|stream
+argument_list|(
+name|transferFlavors
+argument_list|)
+operator|.
+name|map
+argument_list|(
+name|dataFlavor
+lambda|->
+name|dataFlavor
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+operator|.
+name|collect
+argument_list|(
+name|Collectors
+operator|.
+name|joining
+argument_list|(
+literal|" "
+argument_list|)
+argument_list|)
+return|;
+block|}
+end_function
+
 begin_comment
-unit|}
-comment|/**      * This method is called to query whether the transfer can be imported.      *      * Will return true for urls, strings, javaFileLists      */
+comment|/**      * This method is called to query whether the transfer can be imported.      *      *  @return<code>true</code> for urls, strings, javaFileLists,<code>false</code> otherwise      */
 end_comment
 
 begin_function
-unit|@
+annotation|@
 name|Override
 DECL|method|canImport (JComponent comp, DataFlavor[] transferFlavors)
 specifier|public
@@ -856,13 +937,15 @@ name|inflav
 operator|.
 name|match
 argument_list|(
-name|urlFlavor
+name|URL_FLAVOR
 argument_list|)
 operator|||
 name|inflav
 operator|.
 name|match
 argument_list|(
+name|DataFlavor
+operator|.
 name|stringFlavor
 argument_list|)
 operator|||
@@ -882,6 +965,18 @@ return|;
 block|}
 block|}
 comment|// nope, never heard of this type
+name|LOGGER
+operator|.
+name|debug
+argument_list|(
+literal|"Unknown data transfer flavor: "
+operator|+
+name|dataFlavorsToString
+argument_list|(
+name|transferFlavors
+argument_list|)
+argument_list|)
+expr_stmt|;
 return|return
 literal|false
 return|;
