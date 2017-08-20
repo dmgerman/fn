@@ -317,16 +317,11 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|field|urlFlavor
-specifier|private
-name|DataFlavor
-name|urlFlavor
-decl_stmt|;
-DECL|field|stringFlavor
+DECL|field|URL_FLAVOR
 specifier|private
 specifier|final
 name|DataFlavor
-name|stringFlavor
+name|URL_FLAVOR
 decl_stmt|;
 DECL|field|frame
 specifier|private
@@ -384,12 +379,21 @@ name|textTransferHandler
 operator|=
 name|textTransferHandler
 expr_stmt|;
-name|stringFlavor
+name|URL_FLAVOR
 operator|=
-name|DataFlavor
-operator|.
-name|stringFlavor
+name|getUrlFlavor
+argument_list|()
 expr_stmt|;
+block|}
+DECL|method|getUrlFlavor ()
+specifier|private
+name|DataFlavor
+name|getUrlFlavor
+parameter_list|()
+block|{
+name|DataFlavor
+name|urlFlavor
+decl_stmt|;
 try|try
 block|{
 name|urlFlavor
@@ -416,7 +420,14 @@ argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
+name|urlFlavor
+operator|=
+literal|null
+expr_stmt|;
 block|}
+return|return
+name|urlFlavor
+return|;
 block|}
 comment|/**      * Overridden to indicate which types of drags are supported (only LINK + COPY). COPY is supported as no support      * disables CTRL+C (copy of text)      */
 annotation|@
@@ -584,7 +595,7 @@ name|transferable
 operator|.
 name|isDataFlavorSupported
 argument_list|(
-name|urlFlavor
+name|URL_FLAVOR
 argument_list|)
 condition|)
 block|{
@@ -598,7 +609,7 @@ name|transferable
 operator|.
 name|getTransferData
 argument_list|(
-name|urlFlavor
+name|URL_FLAVOR
 argument_list|)
 decl_stmt|;
 name|LOGGER
@@ -618,6 +629,8 @@ name|transferable
 operator|.
 name|isDataFlavorSupported
 argument_list|(
+name|DataFlavor
+operator|.
 name|stringFlavor
 argument_list|)
 condition|)
@@ -634,6 +647,8 @@ name|transferable
 operator|.
 name|getTransferData
 argument_list|(
+name|DataFlavor
+operator|.
 name|stringFlavor
 argument_list|)
 decl_stmt|;
@@ -818,7 +833,7 @@ comment|// all supported flavors failed
 end_comment
 
 begin_comment
-comment|// log the flavours to support debugging
+comment|// log the flavors to support debugging
 end_comment
 
 begin_expr_stmt
@@ -826,14 +841,42 @@ name|LOGGER
 operator|.
 name|warn
 argument_list|(
-name|Arrays
-operator|.
-name|stream
+literal|"Cannot transfer input: "
+operator|+
+name|dataFlavorsToString
 argument_list|(
 name|transferable
 operator|.
 name|getTransferDataFlavors
 argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
+end_expr_stmt
+
+begin_return
+return|return
+literal|false
+return|;
+end_return
+
+begin_function
+unit|}      private
+DECL|method|dataFlavorsToString (DataFlavor[] transferFlavors)
+name|String
+name|dataFlavorsToString
+parameter_list|(
+name|DataFlavor
+index|[]
+name|transferFlavors
+parameter_list|)
+block|{
+return|return
+name|Arrays
+operator|.
+name|stream
+argument_list|(
+name|transferFlavors
 argument_list|)
 operator|.
 name|map
@@ -853,29 +896,18 @@ operator|.
 name|joining
 argument_list|(
 literal|" "
-argument_list|,
-literal|"Cannot transfer input: "
-argument_list|,
-literal|""
 argument_list|)
 argument_list|)
-argument_list|)
-expr_stmt|;
-end_expr_stmt
-
-begin_return
-return|return
-literal|false
 return|;
-end_return
+block|}
+end_function
 
 begin_comment
-unit|}
-comment|/**      * This method is called to query whether the transfer can be imported.      *      * Will return true for urls, strings, javaFileLists      */
+comment|/**      * This method is called to query whether the transfer can be imported.      *      *  @return<code>true</code> for urls, strings, javaFileLists,<code>false</code> otherwise      */
 end_comment
 
 begin_function
-unit|@
+annotation|@
 name|Override
 DECL|method|canImport (JComponent comp, DataFlavor[] transferFlavors)
 specifier|public
@@ -905,13 +937,15 @@ name|inflav
 operator|.
 name|match
 argument_list|(
-name|urlFlavor
+name|URL_FLAVOR
 argument_list|)
 operator|||
 name|inflav
 operator|.
 name|match
 argument_list|(
+name|DataFlavor
+operator|.
 name|stringFlavor
 argument_list|)
 operator|||
@@ -931,6 +965,18 @@ return|;
 block|}
 block|}
 comment|// nope, never heard of this type
+name|LOGGER
+operator|.
+name|debug
+argument_list|(
+literal|"Unknown data transfer flavor: "
+operator|+
+name|dataFlavorsToString
+argument_list|(
+name|transferFlavors
+argument_list|)
+argument_list|)
+expr_stmt|;
 return|return
 literal|false
 return|;
