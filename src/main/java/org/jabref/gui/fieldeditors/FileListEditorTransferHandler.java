@@ -130,6 +130,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Arrays
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|List
 import|;
 end_import
@@ -473,7 +483,7 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|importData (JComponent comp, Transferable t)
+DECL|method|importData (JComponent comp, Transferable transferable)
 specifier|public
 name|boolean
 name|importData
@@ -482,7 +492,7 @@ name|JComponent
 name|comp
 parameter_list|,
 name|Transferable
-name|t
+name|transferable
 parameter_list|)
 block|{
 comment|// If the drop target is the main table, we want to record which
@@ -503,7 +513,7 @@ decl_stmt|;
 comment|// This flavor is used for dragged file links in Windows:
 if|if
 condition|(
-name|t
+name|transferable
 operator|.
 name|isDataFlavorSupported
 argument_list|(
@@ -532,7 +542,7 @@ argument_list|<
 name|File
 argument_list|>
 operator|)
-name|t
+name|transferable
 operator|.
 name|getTransferData
 argument_list|(
@@ -570,7 +580,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|t
+name|transferable
 operator|.
 name|isDataFlavorSupported
 argument_list|(
@@ -584,7 +594,7 @@ init|=
 operator|(
 name|URL
 operator|)
-name|t
+name|transferable
 operator|.
 name|getTransferData
 argument_list|(
@@ -604,7 +614,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|t
+name|transferable
 operator|.
 name|isDataFlavorSupported
 argument_list|(
@@ -620,7 +630,7 @@ init|=
 operator|(
 name|String
 operator|)
-name|t
+name|transferable
 operator|.
 name|getTransferData
 argument_list|(
@@ -807,63 +817,48 @@ begin_comment
 comment|// all supported flavors failed
 end_comment
 
-begin_decl_stmt
-name|StringBuilder
-name|logMessage
-init|=
-operator|new
-name|StringBuilder
-argument_list|(
-literal|"Cannot transfer input:"
-argument_list|)
-decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
-name|DataFlavor
-index|[]
-name|inflavs
-init|=
-name|t
-operator|.
-name|getTransferDataFlavors
-argument_list|()
-decl_stmt|;
-end_decl_stmt
-
-begin_for
-for|for
-control|(
-name|DataFlavor
-name|inflav
-range|:
-name|inflavs
-control|)
-block|{
-name|logMessage
-operator|.
-name|append
-argument_list|(
-literal|' '
-argument_list|)
-operator|.
-name|append
-argument_list|(
-name|inflav
-argument_list|)
-expr_stmt|;
-block|}
-end_for
+begin_comment
+comment|// log the flavours to support debugging
+end_comment
 
 begin_expr_stmt
 name|LOGGER
 operator|.
 name|warn
 argument_list|(
-name|logMessage
+name|Arrays
+operator|.
+name|stream
+argument_list|(
+name|transferable
+operator|.
+name|getTransferDataFlavors
+argument_list|()
+argument_list|)
+operator|.
+name|map
+argument_list|(
+name|dataFlavor
+lambda|->
+name|dataFlavor
 operator|.
 name|toString
 argument_list|()
+argument_list|)
+operator|.
+name|collect
+argument_list|(
+name|Collectors
+operator|.
+name|joining
+argument_list|(
+literal|" "
+argument_list|,
+literal|"Cannot transfer input: "
+argument_list|,
+literal|""
+argument_list|)
+argument_list|)
 argument_list|)
 expr_stmt|;
 end_expr_stmt
