@@ -251,7 +251,7 @@ name|addToContextMenu
 argument_list|(
 name|EditorMenus
 operator|.
-name|getDefaultMenu
+name|getNameMenu
 argument_list|(
 name|textArea
 argument_list|)
