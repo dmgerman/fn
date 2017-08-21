@@ -508,6 +508,20 @@ name|jabref
 operator|.
 name|gui
 operator|.
+name|customjfx
+operator|.
+name|CustomJFXPanel
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
 name|entryeditor
 operator|.
 name|fileannotationtab
@@ -837,6 +851,20 @@ operator|.
 name|search
 operator|.
 name|SearchQueryHighlightListener
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|util
+operator|.
+name|OS
 import|;
 end_import
 
@@ -1219,6 +1247,7 @@ decl_stmt|;
 comment|/**      * Indicates that we are about to go to the next or previous entry      */
 DECL|field|movingToDifferentEntry
 specifier|private
+specifier|final
 name|BooleanProperty
 name|movingToDifferentEntry
 init|=
@@ -1228,6 +1257,7 @@ argument_list|()
 decl_stmt|;
 DECL|field|entryType
 specifier|private
+specifier|final
 name|EntryType
 name|entryType
 decl_stmt|;
@@ -1342,6 +1372,14 @@ argument_list|()
 expr_stmt|;
 name|container
 operator|=
+name|OS
+operator|.
+name|LINUX
+condition|?
+operator|new
+name|CustomJFXPanel
+argument_list|()
+else|:
 operator|new
 name|JFXPanel
 argument_list|()
