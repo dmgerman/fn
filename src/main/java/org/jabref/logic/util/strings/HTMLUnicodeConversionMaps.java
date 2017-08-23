@@ -2615,12 +2615,12 @@ comment|// Dollar
 block|{
 literal|"37"
 block|,
-literal|"percnt"
+literal|"#37"
 block|,
 literal|"\\%"
 block|}
 block|,
-comment|// Percent
+comment|// Percent (&percnt; is not displayed correctly in the entry preview)
 block|{
 literal|"39"
 block|,
