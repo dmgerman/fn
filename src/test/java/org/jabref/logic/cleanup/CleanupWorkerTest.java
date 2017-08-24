@@ -583,6 +583,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+comment|//Biblocation as Primary overwrites all other dirs
 name|when
 argument_list|(
 name|fileDirPrefs
@@ -596,7 +597,6 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
-comment|//Biblocation as Primary overwrites all other dirs
 name|worker
 operator|=
 operator|new
@@ -604,6 +604,7 @@ name|CleanupWorker
 argument_list|(
 name|context
 argument_list|,
+comment|//empty fileDirPattern for backwards compatibility
 operator|new
 name|CleanupPreferences
 argument_list|(
@@ -611,7 +612,6 @@ literal|"\\bibtexkey"
 argument_list|,
 literal|""
 argument_list|,
-comment|//empty fileDirPattern for backwards compatibility
 name|mock
 argument_list|(
 name|LayoutFormatterPreferences

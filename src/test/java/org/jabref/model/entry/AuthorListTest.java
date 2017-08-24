@@ -49,11 +49,6 @@ class|class
 name|AuthorListTest
 block|{
 annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unused"
-argument_list|)
-annotation|@
 name|Test
 DECL|method|testFixAuthorNatbib ()
 specifier|public
@@ -135,19 +130,7 @@ name|AuthorList
 operator|.
 name|fixAuthorNatbib
 argument_list|(
-literal|"John von Neumann"
-operator|+
-operator|(
-literal|0
-operator|==
-literal|1
-condition|?
-literal|""
-else|:
-literal|" and "
-operator|)
-operator|+
-literal|"John Smith and Black Brown, Peter"
+literal|"John von Neumann and John Smith and Black Brown, Peter"
 argument_list|)
 argument_list|)
 argument_list|)
@@ -204,11 +187,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unused"
-argument_list|)
 annotation|@
 name|Test
 DECL|method|testFixAuthorFirstNameFirstCommas ()
@@ -312,19 +290,7 @@ name|AuthorList
 operator|.
 name|fixAuthorFirstNameFirstCommas
 argument_list|(
-literal|"John von Neumann"
-operator|+
-operator|(
-literal|0
-operator|==
-literal|1
-condition|?
-literal|""
-else|:
-literal|" and "
-operator|)
-operator|+
-literal|"John Smith and Black Brown, Peter"
+literal|"John von Neumann and John Smith and Black Brown, Peter"
 argument_list|,
 literal|true
 argument_list|,
@@ -520,19 +486,7 @@ name|AuthorList
 operator|.
 name|fixAuthorFirstNameFirstCommas
 argument_list|(
-literal|"John von Neumann"
-operator|+
-operator|(
-literal|0
-operator|==
-literal|1
-condition|?
-literal|""
-else|:
-literal|" and "
-operator|)
-operator|+
-literal|"John Smith and Black Brown, Peter"
+literal|"John von Neumann and John Smith and Black Brown, Peter"
 argument_list|,
 literal|true
 argument_list|,
@@ -635,11 +589,6 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unused"
-argument_list|)
-annotation|@
 name|Test
 DECL|method|testFixAuthorFirstNameFirst ()
 specifier|public
@@ -721,29 +670,12 @@ name|AuthorList
 operator|.
 name|fixAuthorFirstNameFirst
 argument_list|(
-literal|"John von Neumann"
-operator|+
-operator|(
-literal|0
-operator|==
-literal|1
-condition|?
-literal|""
-else|:
-literal|" and "
-operator|)
-operator|+
-literal|"John Smith and Black Brown, Peter"
+literal|"John von Neumann and John Smith and Black Brown, Peter"
 argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unused"
-argument_list|)
 annotation|@
 name|Test
 DECL|method|testFixAuthorLastNameFirstCommasNoComma ()
@@ -846,19 +778,7 @@ name|AuthorList
 operator|.
 name|fixAuthorLastNameFirstCommas
 argument_list|(
-literal|"John von Neumann"
-operator|+
-operator|(
-literal|0
-operator|==
-literal|1
-condition|?
-literal|""
-else|:
-literal|" and "
-operator|)
-operator|+
-literal|"John Smith and Black Brown, Peter"
+literal|"John von Neumann and John Smith and Black Brown, Peter"
 argument_list|,
 literal|true
 argument_list|,
@@ -979,11 +899,6 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unused"
-argument_list|)
-annotation|@
 name|Test
 DECL|method|testFixAuthorLastNameFirstCommasOxfordComma ()
 specifier|public
@@ -1085,19 +1000,7 @@ name|AuthorList
 operator|.
 name|fixAuthorLastNameFirstCommas
 argument_list|(
-literal|"John von Neumann"
-operator|+
-operator|(
-literal|0
-operator|==
-literal|1
-condition|?
-literal|""
-else|:
-literal|" and "
-operator|)
-operator|+
-literal|"John Smith and Black Brown, Peter"
+literal|"John von Neumann and John Smith and Black Brown, Peter"
 argument_list|,
 literal|true
 argument_list|,
@@ -1218,11 +1121,6 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unused"
-argument_list|)
-annotation|@
 name|Test
 DECL|method|testFixAuthorLastNameFirst ()
 specifier|public
@@ -1304,19 +1202,7 @@ name|AuthorList
 operator|.
 name|fixAuthorLastNameFirst
 argument_list|(
-literal|"John von Neumann"
-operator|+
-operator|(
-literal|0
-operator|==
-literal|1
-condition|?
-literal|""
-else|:
-literal|" and "
-operator|)
-operator|+
-literal|"John Smith and Black Brown, Peter"
+literal|"John von Neumann and John Smith and Black Brown, Peter"
 argument_list|)
 argument_list|)
 argument_list|)
@@ -1405,19 +1291,7 @@ name|AuthorList
 operator|.
 name|fixAuthorLastNameFirst
 argument_list|(
-literal|"John von Neumann"
-operator|+
-operator|(
-literal|0
-operator|==
-literal|1
-condition|?
-literal|""
-else|:
-literal|" and "
-operator|)
-operator|+
-literal|"John Smith and Black Brown, Peter"
+literal|"John von Neumann and John Smith and Black Brown, Peter"
 argument_list|,
 literal|false
 argument_list|)
@@ -1508,19 +1382,7 @@ name|AuthorList
 operator|.
 name|fixAuthorLastNameFirst
 argument_list|(
-literal|"John von Neumann"
-operator|+
-operator|(
-literal|0
-operator|==
-literal|1
-condition|?
-literal|""
-else|:
-literal|" and "
-operator|)
-operator|+
-literal|"John Smith and Black Brown, Peter"
+literal|"John von Neumann and John Smith and Black Brown, Peter"
 argument_list|,
 literal|true
 argument_list|)
@@ -1528,11 +1390,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unused"
-argument_list|)
 annotation|@
 name|Test
 DECL|method|testFixAuthorLastNameOnlyCommas ()
@@ -1609,19 +1466,7 @@ name|AuthorList
 operator|.
 name|fixAuthorLastNameOnlyCommas
 argument_list|(
-literal|"John von Neumann"
-operator|+
-operator|(
-literal|0
-operator|==
-literal|1
-condition|?
-literal|""
-else|:
-literal|" and "
-operator|)
-operator|+
-literal|"John Smith and Black Brown, Peter"
+literal|"John von Neumann and John Smith and Black Brown, Peter"
 argument_list|,
 literal|false
 argument_list|)
@@ -1712,19 +1557,7 @@ name|AuthorList
 operator|.
 name|fixAuthorLastNameOnlyCommas
 argument_list|(
-literal|"John von Neumann"
-operator|+
-operator|(
-literal|0
-operator|==
-literal|1
-condition|?
-literal|""
-else|:
-literal|" and "
-operator|)
-operator|+
-literal|"John Smith and Black Brown, Peter"
+literal|"John von Neumann and John Smith and Black Brown, Peter"
 argument_list|,
 literal|true
 argument_list|)

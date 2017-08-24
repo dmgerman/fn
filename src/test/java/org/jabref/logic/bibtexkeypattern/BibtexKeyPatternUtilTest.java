@@ -3279,6 +3279,8 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testPagePrefix ()
 specifier|public
 name|void
@@ -3299,7 +3301,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"L"
+literal|"L--"
 argument_list|,
 name|BibtexKeyPatternUtil
 operator|.
@@ -3383,7 +3385,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|""
+literal|"--"
 argument_list|,
 name|BibtexKeyPatternUtil
 operator|.

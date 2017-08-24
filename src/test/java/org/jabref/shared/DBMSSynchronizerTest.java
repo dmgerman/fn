@@ -1236,12 +1236,12 @@ argument_list|(
 name|modifiedBibEntry
 argument_list|)
 expr_stmt|;
+comment|//testing point
 name|dbmsSynchronizer
 operator|.
 name|synchronizeLocalDatabase
 argument_list|()
 expr_stmt|;
-comment|// testing point
 name|Assert
 operator|.
 name|assertEquals

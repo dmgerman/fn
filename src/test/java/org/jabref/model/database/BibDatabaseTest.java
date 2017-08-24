@@ -1959,6 +1959,8 @@ name|usedStrings
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|preambleIsEmptyIfNotSet ()
 specifier|public
 name|void

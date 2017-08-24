@@ -456,6 +456,7 @@ name|void
 name|simulateEntryInsertionAndManualPull
 parameter_list|()
 block|{
+comment|//client A inserts an entry
 name|clientContextA
 operator|.
 name|getDatabase
@@ -469,7 +470,7 @@ literal|1
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// client A inserts an entry
+comment|//client A inserts another entry
 name|clientContextA
 operator|.
 name|getDatabase
@@ -483,7 +484,7 @@ literal|2
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// client A inserts another entry
+comment|//client B pulls the changes
 name|clientContextB
 operator|.
 name|getDBMSSynchronizer
@@ -492,7 +493,6 @@ operator|.
 name|pullChanges
 argument_list|()
 expr_stmt|;
-comment|// client B pulls the changes
 name|Assert
 operator|.
 name|assertEquals
@@ -531,6 +531,7 @@ argument_list|(
 literal|1
 argument_list|)
 decl_stmt|;
+comment|//client A inserts an entry
 name|clientContextA
 operator|.
 name|getDatabase
@@ -541,7 +542,7 @@ argument_list|(
 name|bibEntry
 argument_list|)
 expr_stmt|;
-comment|// client A inserts an entry
+comment|//client A changes the entry
 name|bibEntry
 operator|.
 name|setField
@@ -551,7 +552,7 @@ argument_list|,
 literal|"custom value"
 argument_list|)
 expr_stmt|;
-comment|// client A changes the entry
+comment|//client B pulls the changes
 name|bibEntry
 operator|.
 name|clearField
@@ -567,7 +568,6 @@ operator|.
 name|pullChanges
 argument_list|()
 expr_stmt|;
-comment|// client B pulls the changes
 name|Assert
 operator|.
 name|assertEquals
@@ -606,6 +606,7 @@ argument_list|(
 literal|1
 argument_list|)
 decl_stmt|;
+comment|//client A inserts an entry
 name|clientContextA
 operator|.
 name|getDatabase
@@ -616,7 +617,7 @@ argument_list|(
 name|bibEntry
 argument_list|)
 expr_stmt|;
-comment|// client A inserts an entry
+comment|//client B pulls the entry
 name|clientContextB
 operator|.
 name|getDBMSSynchronizer
@@ -625,7 +626,6 @@ operator|.
 name|pullChanges
 argument_list|()
 expr_stmt|;
-comment|// client B pulls the entry
 name|Assert
 operator|.
 name|assertFalse
@@ -679,6 +679,7 @@ name|getEntries
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|//client A removes the entry
 name|clientContextA
 operator|.
 name|getDatabase
@@ -689,7 +690,7 @@ argument_list|(
 name|bibEntry
 argument_list|)
 expr_stmt|;
-comment|// client A removes the entry
+comment|//client B pulls the change
 name|clientContextB
 operator|.
 name|getDBMSSynchronizer
@@ -698,7 +699,6 @@ operator|.
 name|pullChanges
 argument_list|()
 expr_stmt|;
-comment|// client B pulls the change
 name|Assert
 operator|.
 name|assertTrue
@@ -748,6 +748,7 @@ argument_list|(
 literal|1
 argument_list|)
 decl_stmt|;
+comment|//client A inserts an entry
 name|clientContextA
 operator|.
 name|getDatabase
@@ -758,7 +759,7 @@ argument_list|(
 name|bibEntryOfClientA
 argument_list|)
 expr_stmt|;
-comment|// client A inserts an entry
+comment|//client B pulls the entry
 name|clientContextB
 operator|.
 name|getDBMSSynchronizer
@@ -767,7 +768,6 @@ operator|.
 name|pullChanges
 argument_list|()
 expr_stmt|;
-comment|// client B pulls the entry
 name|Assert
 operator|.
 name|assertFalse
@@ -821,6 +821,7 @@ name|getEntries
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|//client A removes the entry
 name|clientContextA
 operator|.
 name|getDatabase
@@ -831,7 +832,6 @@ argument_list|(
 name|bibEntryOfClientA
 argument_list|)
 expr_stmt|;
-comment|// client A removes the entry
 name|Assert
 operator|.
 name|assertFalse
@@ -858,6 +858,7 @@ name|getSharedEntryNotPresentEvent
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|//client B tries to update the entry
 name|BibEntry
 name|bibEntryOfClientB
 init|=
@@ -874,7 +875,6 @@ argument_list|(
 literal|0
 argument_list|)
 decl_stmt|;
-comment|// client B tries to update the entry
 name|bibEntryOfClientB
 operator|.
 name|setField
@@ -927,6 +927,7 @@ argument_list|(
 literal|1
 argument_list|)
 decl_stmt|;
+comment|//client A inserts an entry
 name|clientContextA
 operator|.
 name|getDatabase
@@ -937,7 +938,7 @@ argument_list|(
 name|bibEntryOfClientA
 argument_list|)
 expr_stmt|;
-comment|// client A inserts an entry
+comment|//client B pulls the entry
 name|clientContextB
 operator|.
 name|getDBMSSynchronizer
@@ -946,7 +947,7 @@ operator|.
 name|pullChanges
 argument_list|()
 expr_stmt|;
-comment|// client B pulls the entry
+comment|//A now increases the version number
 name|bibEntryOfClientA
 operator|.
 name|setField
@@ -956,7 +957,6 @@ argument_list|,
 literal|"2001"
 argument_list|)
 expr_stmt|;
-comment|// A now increases the version number
 comment|// B does nothing here, so there is no event occurrence
 comment|// B now tries to update the entry
 name|Assert
@@ -1001,6 +1001,7 @@ argument_list|(
 literal|0
 argument_list|)
 decl_stmt|;
+comment|//B also tries to change something
 name|bibEntryOfClientB
 operator|.
 name|setField
@@ -1010,7 +1011,6 @@ argument_list|,
 literal|"2016"
 argument_list|)
 expr_stmt|;
-comment|// B also tries to change something
 comment|// B now cannot update the shared entry, due to optimistic offline lock.
 comment|// In this case an BibEntry merge dialog pops up.
 name|Assert

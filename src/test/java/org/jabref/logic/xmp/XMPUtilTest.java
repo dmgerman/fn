@@ -1444,6 +1444,7 @@ name|PDDocument
 argument_list|()
 init|)
 block|{
+comment|//Need page to open in Acrobat
 name|pdf
 operator|.
 name|addPage
@@ -1453,7 +1454,6 @@ name|PDPage
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// Need page to open in Acrobat
 name|pdf
 operator|.
 name|save

@@ -755,6 +755,7 @@ argument_list|(
 name|bibEntry
 argument_list|)
 expr_stmt|;
+comment|//simulate older version
 name|bibEntry
 operator|.
 name|getSharedBibEntryData
@@ -765,7 +766,6 @@ argument_list|(
 literal|0
 argument_list|)
 expr_stmt|;
-comment|// simulate older version
 name|bibEntry
 operator|.
 name|setField
@@ -808,6 +808,7 @@ argument_list|(
 name|expectedBibEntry
 argument_list|)
 expr_stmt|;
+comment|//simulate older version
 name|expectedBibEntry
 operator|.
 name|getSharedBibEntryData
@@ -818,7 +819,6 @@ argument_list|(
 literal|0
 argument_list|)
 expr_stmt|;
-comment|// simulate older version
 name|dbmsProcessor
 operator|.
 name|updateEntry
