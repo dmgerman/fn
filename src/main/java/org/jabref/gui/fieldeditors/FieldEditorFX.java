@@ -68,6 +68,17 @@ name|requestFocus
 argument_list|()
 expr_stmt|;
 block|}
+comment|/**      * Returns relative size of the field editor in terms of display space.      *      * A value of 1 means that the editor gets exactly as much space as all other regular editors.      * A value of 2 means that the editor gets twice as much space as regular editors.      *      * @return the relative weight of the editor in terms of display space      */
+DECL|method|getWeight ()
+specifier|default
+name|double
+name|getWeight
+parameter_list|()
+block|{
+return|return
+literal|1
+return|;
+block|}
 block|}
 end_interface
 

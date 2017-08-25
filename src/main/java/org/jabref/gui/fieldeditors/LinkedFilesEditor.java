@@ -1290,6 +1290,18 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
+DECL|method|getWeight ()
+specifier|public
+name|double
+name|getWeight
+parameter_list|()
+block|{
+return|return
+literal|2
+return|;
+block|}
 block|}
 end_class
 
