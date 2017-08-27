@@ -583,7 +583,7 @@ parameter_list|()
 lambda|->
 name|ds
 operator|.
-name|showFileOpenDialog
+name|showFileSaveDialog
 argument_list|(
 name|fileDialogConfiguration
 argument_list|)
