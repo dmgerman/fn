@@ -2044,6 +2044,20 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|close ()
+specifier|public
+name|void
+name|close
+parameter_list|()
+block|{
+name|closeAction
+operator|.
+name|actionPerformed
+argument_list|(
+literal|null
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|addTabs (String lastTabName)
 specifier|private
 name|void
