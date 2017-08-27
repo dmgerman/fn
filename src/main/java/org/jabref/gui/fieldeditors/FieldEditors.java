@@ -378,9 +378,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|Globals
-operator|.
-name|prefs
+name|preferences
 operator|.
 name|getTimestampPreferences
 argument_list|()
@@ -488,6 +486,8 @@ argument_list|,
 name|suggestionProvider
 argument_list|,
 name|fieldCheckers
+argument_list|,
+name|preferences
 argument_list|)
 return|;
 block|}
@@ -512,7 +512,7 @@ name|fieldName
 argument_list|,
 name|journalAbbreviationLoader
 argument_list|,
-name|journalAbbreviationPreferences
+name|preferences
 argument_list|,
 name|suggestionProvider
 argument_list|,
@@ -564,6 +564,8 @@ argument_list|,
 name|suggestionProvider
 argument_list|,
 name|fieldCheckers
+argument_list|,
+name|preferences
 argument_list|)
 return|;
 block|}
@@ -912,9 +914,6 @@ argument_list|,
 name|suggestionProvider
 argument_list|,
 name|preferences
-operator|.
-name|getAutoCompletePreferences
-argument_list|()
 argument_list|,
 name|fieldCheckers
 argument_list|)
@@ -942,6 +941,8 @@ argument_list|,
 name|suggestionProvider
 argument_list|,
 name|fieldCheckers
+argument_list|,
+name|preferences
 argument_list|)
 return|;
 block|}
@@ -955,6 +956,8 @@ argument_list|,
 name|suggestionProvider
 argument_list|,
 name|fieldCheckers
+argument_list|,
+name|preferences
 argument_list|)
 return|;
 block|}

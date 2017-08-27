@@ -2977,6 +2977,15 @@ name|SHOW_RECOMMENDATIONS
 init|=
 literal|"showRecommendations"
 decl_stmt|;
+DECL|field|VALIDATE_IN_ENTRY_EDITOR
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|VALIDATE_IN_ENTRY_EDITOR
+init|=
+literal|"validateInEntryEditor"
+decl_stmt|;
 comment|// Dropped file handler
 DECL|field|DROPPEDFILEHANDLER_RENAME
 specifier|public
@@ -4755,6 +4764,17 @@ argument_list|,
 name|Boolean
 operator|.
 name|TRUE
+argument_list|)
+expr_stmt|;
+name|defaults
+operator|.
+name|put
+argument_list|(
+name|VALIDATE_IN_ENTRY_EDITOR
+argument_list|,
+name|Boolean
+operator|.
+name|FALSE
 argument_list|)
 expr_stmt|;
 name|defaults

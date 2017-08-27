@@ -156,20 +156,6 @@ name|org
 operator|.
 name|jabref
 operator|.
-name|logic
-operator|.
-name|journals
-operator|.
-name|JournalAbbreviationPreferences
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
 name|model
 operator|.
 name|entry
@@ -180,19 +166,13 @@ end_import
 
 begin_import
 import|import
-name|de
+name|org
 operator|.
-name|saxsys
+name|jabref
 operator|.
-name|mvvmfx
+name|preferences
 operator|.
-name|utils
-operator|.
-name|validation
-operator|.
-name|visualization
-operator|.
-name|ControlsFxVisualizer
+name|JabRefPreferences
 import|;
 end_import
 
@@ -228,7 +208,7 @@ name|BibEntry
 argument_list|>
 name|entry
 decl_stmt|;
-DECL|method|JournalEditor (String fieldName, JournalAbbreviationLoader journalAbbreviationLoader, JournalAbbreviationPreferences journalAbbreviationPreferences, AutoCompleteSuggestionProvider<?> suggestionProvider, FieldCheckers fieldCheckers)
+DECL|method|JournalEditor (String fieldName, JournalAbbreviationLoader journalAbbreviationLoader, JabRefPreferences preferences, AutoCompleteSuggestionProvider<?> suggestionProvider, FieldCheckers fieldCheckers)
 specifier|public
 name|JournalEditor
 parameter_list|(
@@ -238,8 +218,8 @@ parameter_list|,
 name|JournalAbbreviationLoader
 name|journalAbbreviationLoader
 parameter_list|,
-name|JournalAbbreviationPreferences
-name|journalAbbreviationPreferences
+name|JabRefPreferences
+name|preferences
 parameter_list|,
 name|AutoCompleteSuggestionProvider
 argument_list|<
@@ -264,7 +244,10 @@ name|suggestionProvider
 argument_list|,
 name|journalAbbreviationLoader
 argument_list|,
-name|journalAbbreviationPreferences
+name|preferences
+operator|.
+name|getJournalAbbreviationPreferences
+argument_list|()
 argument_list|,
 name|fieldCheckers
 argument_list|)
@@ -312,16 +295,13 @@ operator|::
 name|complete
 argument_list|)
 expr_stmt|;
-name|ControlsFxVisualizer
-name|validationVisualizer
-init|=
 operator|new
-name|ControlsFxVisualizer
-argument_list|()
-decl_stmt|;
-name|validationVisualizer
+name|EditorValidator
+argument_list|(
+name|preferences
+argument_list|)
 operator|.
-name|initVisualization
+name|configureValidation
 argument_list|(
 name|viewModel
 operator|.

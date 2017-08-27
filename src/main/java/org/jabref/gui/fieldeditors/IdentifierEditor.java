@@ -248,19 +248,13 @@ end_import
 
 begin_import
 import|import
-name|de
+name|org
 operator|.
-name|saxsys
+name|jabref
 operator|.
-name|mvvmfx
+name|preferences
 operator|.
-name|utils
-operator|.
-name|validation
-operator|.
-name|visualization
-operator|.
-name|ControlsFxVisualizer
+name|JabRefPreferences
 import|;
 end_import
 
@@ -310,7 +304,7 @@ name|BibEntry
 argument_list|>
 name|entry
 decl_stmt|;
-DECL|method|IdentifierEditor (String fieldName, TaskExecutor taskExecutor, DialogService dialogService, AutoCompleteSuggestionProvider<?> suggestionProvider, FieldCheckers fieldCheckers)
+DECL|method|IdentifierEditor (String fieldName, TaskExecutor taskExecutor, DialogService dialogService, AutoCompleteSuggestionProvider<?> suggestionProvider, FieldCheckers fieldCheckers, JabRefPreferences preferences)
 specifier|public
 name|IdentifierEditor
 parameter_list|(
@@ -331,6 +325,9 @@ name|suggestionProvider
 parameter_list|,
 name|FieldCheckers
 name|fieldCheckers
+parameter_list|,
+name|JabRefPreferences
+name|preferences
 parameter_list|)
 block|{
 name|this
@@ -472,16 +469,13 @@ argument_list|(
 name|menuItems
 argument_list|)
 expr_stmt|;
-name|ControlsFxVisualizer
-name|validationVisualizer
-init|=
 operator|new
-name|ControlsFxVisualizer
-argument_list|()
-decl_stmt|;
-name|validationVisualizer
+name|EditorValidator
+argument_list|(
+name|preferences
+argument_list|)
 operator|.
-name|initVisualization
+name|configureValidation
 argument_list|(
 name|viewModel
 operator|.

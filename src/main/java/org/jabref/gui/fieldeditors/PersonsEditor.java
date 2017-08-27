@@ -66,20 +66,6 @@ name|gui
 operator|.
 name|autocompleter
 operator|.
-name|AutoCompletePreferences
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|autocompleter
-operator|.
 name|AutoCompleteSuggestionProvider
 import|;
 end_import
@@ -144,19 +130,13 @@ end_import
 
 begin_import
 import|import
-name|de
+name|org
 operator|.
-name|saxsys
+name|jabref
 operator|.
-name|mvvmfx
+name|preferences
 operator|.
-name|utils
-operator|.
-name|validation
-operator|.
-name|visualization
-operator|.
-name|ControlsFxVisualizer
+name|JabRefPreferences
 import|;
 end_import
 
@@ -178,7 +158,7 @@ specifier|final
 name|PersonsEditorViewModel
 name|viewModel
 decl_stmt|;
-DECL|method|PersonsEditor (String fieldName, AutoCompleteSuggestionProvider<?> suggestionProvider, AutoCompletePreferences autoCompletePreferences, FieldCheckers fieldCheckers)
+DECL|method|PersonsEditor (String fieldName, AutoCompleteSuggestionProvider<?> suggestionProvider, JabRefPreferences preferences, FieldCheckers fieldCheckers)
 specifier|public
 name|PersonsEditor
 parameter_list|(
@@ -191,8 +171,8 @@ name|?
 argument_list|>
 name|suggestionProvider
 parameter_list|,
-name|AutoCompletePreferences
-name|autoCompletePreferences
+name|JabRefPreferences
+name|preferences
 parameter_list|,
 name|FieldCheckers
 name|fieldCheckers
@@ -209,7 +189,10 @@ name|fieldName
 argument_list|,
 name|suggestionProvider
 argument_list|,
-name|autoCompletePreferences
+name|preferences
+operator|.
+name|getAutoCompletePreferences
+argument_list|()
 argument_list|,
 name|fieldCheckers
 argument_list|)
@@ -288,16 +271,13 @@ name|getAutoCompletionStrategy
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|ControlsFxVisualizer
-name|validationVisualizer
-init|=
 operator|new
-name|ControlsFxVisualizer
-argument_list|()
-decl_stmt|;
-name|validationVisualizer
+name|EditorValidator
+argument_list|(
+name|preferences
+argument_list|)
 operator|.
-name|initVisualization
+name|configureValidation
 argument_list|(
 name|viewModel
 operator|.
