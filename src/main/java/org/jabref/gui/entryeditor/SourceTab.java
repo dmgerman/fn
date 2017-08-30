@@ -416,6 +416,18 @@ name|CodeArea
 import|;
 end_import
 
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|undo
+operator|.
+name|UndoManager
+import|;
+end_import
+
 begin_class
 DECL|class|SourceTab
 specifier|public
@@ -467,6 +479,11 @@ DECL|field|movingToDifferentEntry
 specifier|private
 name|BooleanProperty
 name|movingToDifferentEntry
+decl_stmt|;
+DECL|field|undoManager
+specifier|private
+name|UndoManager
+name|undoManager
 decl_stmt|;
 DECL|method|SourceTab (BasePanel panel, BibEntry entry, BooleanProperty movingToDifferentEntry)
 specifier|public
@@ -563,6 +580,15 @@ operator|.
 name|getGraphicNode
 argument_list|()
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|undoManager
+operator|=
+name|panel
+operator|.
+name|getUndoManager
+argument_list|()
 expr_stmt|;
 block|}
 DECL|method|getSourceString (BibEntry entry, BibDatabaseMode type)
@@ -1385,6 +1411,13 @@ name|compound
 operator|.
 name|end
 argument_list|()
+expr_stmt|;
+name|undoManager
+operator|.
+name|addEdit
+argument_list|(
+name|compound
+argument_list|)
 expr_stmt|;
 block|}
 catch|catch

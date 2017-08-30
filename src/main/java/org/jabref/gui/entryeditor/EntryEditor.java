@@ -5226,6 +5226,12 @@ name|ActionEvent
 name|e
 parameter_list|)
 block|{
+name|DefaultTaskExecutor
+operator|.
+name|runInJavaFXThread
+argument_list|(
+parameter_list|()
+lambda|->
 name|panel
 operator|.
 name|runCommand
@@ -5233,6 +5239,7 @@ argument_list|(
 name|Actions
 operator|.
 name|UNDO
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
