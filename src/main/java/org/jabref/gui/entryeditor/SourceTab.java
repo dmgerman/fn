@@ -64,6 +64,18 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|undo
+operator|.
+name|UndoManager
+import|;
+end_import
+
+begin_import
+import|import
 name|javafx
 operator|.
 name|beans
@@ -413,18 +425,6 @@ operator|.
 name|richtext
 operator|.
 name|CodeArea
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|undo
-operator|.
-name|UndoManager
 import|;
 end_import
 
