@@ -5343,7 +5343,33 @@ argument_list|(
 literal|"Automatically set file links for this entry"
 argument_list|)
 operator|+
-literal|" (Alt-F)"
+name|Globals
+operator|.
+name|getKeyPrefs
+argument_list|()
+operator|.
+name|get
+argument_list|(
+name|KeyBinding
+operator|.
+name|AUTOMATICALLY_LINK_FILES
+argument_list|)
+operator|.
+name|map
+argument_list|(
+name|b
+lambda|->
+literal|" ("
+operator|+
+name|b
+operator|+
+literal|")"
+argument_list|)
+operator|.
+name|orElse
+argument_list|(
+literal|""
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
