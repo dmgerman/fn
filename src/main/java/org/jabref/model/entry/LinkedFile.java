@@ -16,6 +16,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|io
+operator|.
+name|Serializable
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|net
 operator|.
 name|URL
@@ -119,7 +129,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Represents the link to an external file (e.g. associated PDF file).  */
+comment|/**  * Represents the link to an external file (e.g. associated PDF file).  * This class is {@link Serializable} which is needed for drag and drop in gui  */
 end_comment
 
 begin_class
@@ -127,6 +137,8 @@ DECL|class|LinkedFile
 specifier|public
 class|class
 name|LinkedFile
+implements|implements
+name|Serializable
 block|{
 DECL|field|NULL_OBJECT
 specifier|private
