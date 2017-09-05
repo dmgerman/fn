@@ -802,7 +802,7 @@ name|LOGGER
 operator|.
 name|error
 argument_list|(
-literal|"Could not create necessary target directoires for renaming"
+literal|"Could not create necessary target directories for renaming"
 argument_list|,
 name|e
 argument_list|)

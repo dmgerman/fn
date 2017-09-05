@@ -609,6 +609,9 @@ name|this
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|postChange
+argument_list|()
+expr_stmt|;
 block|}
 comment|/**      * @return the stored label patterns      */
 DECL|method|getCiteKeyPattern (GlobalBibtexKeyPattern globalPattern)
