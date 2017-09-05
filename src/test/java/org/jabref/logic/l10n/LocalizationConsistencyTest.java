@@ -1473,7 +1473,22 @@ argument_list|)
 throw|;
 block|}
 comment|//parse object "properties" to find any spaces
-comment|//if there is any space replace it with an underscore
+name|assertEquals
+argument_list|(
+literal|"There are invalid characters, space(s), in the localization properties file"
+argument_list|,
+name|properties
+operator|.
+name|replace
+argument_list|(
+literal|" "
+argument_list|,
+literal|""
+argument_list|)
+argument_list|,
+name|properties
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 block|}
