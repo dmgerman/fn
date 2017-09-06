@@ -1369,8 +1369,6 @@ specifier|public
 name|void
 name|localisationTestForInvalidStrings
 parameter_list|()
-throws|throws
-name|IOException
 block|{
 for|for
 control|(
@@ -1444,39 +1442,37 @@ name|entrySet
 argument_list|()
 control|)
 block|{
-name|String
-name|expectedKeyEqualsKey
-init|=
-name|String
-operator|.
-name|format
+name|assertTrue
 argument_list|(
-literal|"%s=%s"
-argument_list|,
+literal|"Found an invalid character in the "
+operator|+
+name|lang
+operator|+
+literal|" localization of "
+operator|+
+name|bundle
+operator|+
+literal|" : The "
+operator|+
 name|entry
 operator|.
 name|getKey
 argument_list|()
-argument_list|,
+operator|.
+name|toString
+argument_list|()
+operator|+
+literal|" : "
+operator|+
 name|entry
 operator|.
-name|getKey
+name|getValue
 argument_list|()
-argument_list|)
-decl_stmt|;
-name|String
-name|actualKeyEqualsValue
-init|=
-name|String
 operator|.
-name|format
-argument_list|(
-literal|"%s=%s"
-argument_list|,
-name|entry
-operator|.
-name|getKey
+name|toString
 argument_list|()
+operator|+
+literal|" contains a space!"
 argument_list|,
 name|entry
 operator|.
@@ -1486,43 +1482,10 @@ operator|.
 name|toString
 argument_list|()
 operator|.
-name|replace
+name|contains
 argument_list|(
 literal|" "
-argument_list|,
-literal|""
 argument_list|)
-argument_list|)
-decl_stmt|;
-name|assertEquals
-argument_list|(
-literal|"Found an invalid character in the "
-operator|+
-name|lang
-operator|+
-literal|"localization of"
-operator|+
-name|bundle
-operator|+
-literal|": The "
-operator|+
-name|entry
-operator|.
-name|getKey
-argument_list|()
-operator|.
-name|toString
-argument_list|()
-operator|+
-literal|":"
-operator|+
-name|expectedKeyEqualsKey
-operator|+
-literal|" contains a space!"
-argument_list|,
-name|expectedKeyEqualsKey
-argument_list|,
-name|actualKeyEqualsValue
 argument_list|)
 expr_stmt|;
 block|}
