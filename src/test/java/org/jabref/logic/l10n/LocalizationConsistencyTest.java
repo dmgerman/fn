@@ -248,19 +248,7 @@ name|junit
 operator|.
 name|Assert
 operator|.
-name|assertEquals
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertTrue
+name|*
 import|;
 end_import
 
@@ -1442,7 +1430,7 @@ name|entrySet
 argument_list|()
 control|)
 block|{
-name|assertTrue
+name|assertFalse
 argument_list|(
 literal|"Found an invalid character in the "
 operator|+
@@ -1488,7 +1476,7 @@ literal|" "
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|assertTrue
+name|assertFalse
 argument_list|(
 literal|"Found an invalid character in the "
 operator|+
