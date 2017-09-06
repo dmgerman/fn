@@ -1364,10 +1364,10 @@ block|}
 block|}
 annotation|@
 name|Test
-DECL|method|localisationTestForInvalidStrings ()
+DECL|method|localizationTestForInvalidStrings ()
 specifier|public
 name|void
-name|localisationTestForInvalidStrings
+name|localizationTestForInvalidStrings
 parameter_list|()
 block|{
 for|for
@@ -1452,16 +1452,6 @@ literal|" localization of "
 operator|+
 name|bundle
 operator|+
-literal|" : The "
-operator|+
-name|entry
-operator|.
-name|getKey
-argument_list|()
-operator|.
-name|toString
-argument_list|()
-operator|+
 literal|" : "
 operator|+
 name|entry
@@ -1472,11 +1462,57 @@ operator|.
 name|toString
 argument_list|()
 operator|+
+literal|" At key : "
+operator|+
+name|entry
+operator|.
+name|getKey
+argument_list|()
+operator|.
+name|toString
+argument_list|()
+operator|+
 literal|" contains a space!"
 argument_list|,
 name|entry
 operator|.
 name|getValue
+argument_list|()
+operator|.
+name|toString
+argument_list|()
+operator|.
+name|contains
+argument_list|(
+literal|" "
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+literal|"Found an invalid character in the "
+operator|+
+name|lang
+operator|+
+literal|" localization of "
+operator|+
+name|bundle
+operator|+
+literal|" : The key : "
+operator|+
+name|entry
+operator|.
+name|getKey
+argument_list|()
+operator|.
+name|toString
+argument_list|()
+operator|+
+literal|" contains a space!"
+argument_list|,
+name|entry
+operator|.
+name|getKey
 argument_list|()
 operator|.
 name|toString
