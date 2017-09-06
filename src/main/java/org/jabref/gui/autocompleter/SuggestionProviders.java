@@ -375,7 +375,7 @@ condition|)
 block|{
 return|return
 operator|new
-name|BibEntrySuggestionProvider
+name|ParsedEntryLinkSuggestionProvider
 argument_list|()
 return|;
 block|}

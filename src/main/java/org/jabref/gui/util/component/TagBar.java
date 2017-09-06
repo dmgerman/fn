@@ -307,9 +307,22 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|getInputTextField ()
+specifier|public
+name|TextField
+name|getInputTextField
+parameter_list|()
+block|{
+return|return
+name|inputTextField
+return|;
+block|}
 DECL|method|getTags ()
 specifier|public
 name|ObservableList
+argument_list|<
+name|T
+argument_list|>
 name|getTags
 parameter_list|()
 block|{
@@ -574,9 +587,11 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|newTag
 operator|!=
 literal|null
+operator|)
 operator|&&
 operator|!
 name|tags
