@@ -248,7 +248,31 @@ name|junit
 operator|.
 name|Assert
 operator|.
-name|*
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertFalse
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
 import|;
 end_import
 
@@ -1400,18 +1424,7 @@ argument_list|,
 name|lang
 argument_list|)
 decl_stmt|;
-comment|// read in
-name|Properties
-name|textKeys
-init|=
-name|LocalizationParser
-operator|.
-name|getProperties
-argument_list|(
-name|propertyFilePath
-argument_list|)
-decl_stmt|;
-comment|//parse object "textKeys" to find any spaces
+comment|// find any spaces
 for|for
 control|(
 name|Map
@@ -1424,7 +1437,12 @@ name|Object
 argument_list|>
 name|entry
 range|:
-name|textKeys
+name|LocalizationParser
+operator|.
+name|getProperties
+argument_list|(
+name|propertyFilePath
+argument_list|)
 operator|.
 name|entrySet
 argument_list|()
@@ -1432,25 +1450,15 @@ control|)
 block|{
 name|assertFalse
 argument_list|(
-literal|"Found an invalid character in the "
+literal|"Found an invalid character in the '"
 operator|+
 name|lang
 operator|+
-literal|" localization of "
+literal|"' localization of '"
 operator|+
 name|bundle
 operator|+
-literal|" : "
-operator|+
-name|entry
-operator|.
-name|getValue
-argument_list|()
-operator|.
-name|toString
-argument_list|()
-operator|+
-literal|" At key : "
+literal|"': The key of "
 operator|+
 name|entry
 operator|.
@@ -1460,11 +1468,18 @@ operator|.
 name|toString
 argument_list|()
 operator|+
+literal|"="
+operator|+
+name|entry
+operator|.
+name|getValue
+argument_list|()
+operator|+
 literal|" contains a space!"
 argument_list|,
 name|entry
 operator|.
-name|getValue
+name|getKey
 argument_list|()
 operator|.
 name|toString
@@ -1478,15 +1493,15 @@ argument_list|)
 expr_stmt|;
 name|assertFalse
 argument_list|(
-literal|"Found an invalid character in the "
+literal|"Found an invalid character in the '"
 operator|+
 name|lang
 operator|+
-literal|" localization of "
+literal|"' localization of '"
 operator|+
 name|bundle
 operator|+
-literal|" : The key : "
+literal|"': The value of "
 operator|+
 name|entry
 operator|.
@@ -1496,11 +1511,18 @@ operator|.
 name|toString
 argument_list|()
 operator|+
+literal|"="
+operator|+
+name|entry
+operator|.
+name|getValue
+argument_list|()
+operator|+
 literal|" contains a space!"
 argument_list|,
 name|entry
 operator|.
-name|getKey
+name|getValue
 argument_list|()
 operator|.
 name|toString
