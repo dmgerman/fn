@@ -107,7 +107,7 @@ specifier|final
 name|JournalAbbreviationPreferences
 name|journalAbbreviationPreferences
 decl_stmt|;
-DECL|method|AutoCompletePreferences (boolean shouldAutoComplete, AutoCompleteFirstNameMode firstNameMode, boolean onlyCompleteLastFirst, boolean onlyCompleteFirstLast, List<String> completeNames, JournalAbbreviationPreferences journalAbbreviationPreferences)
+DECL|method|AutoCompletePreferences (boolean shouldAutoComplete, AutoCompleteFirstNameMode firstNameMode, boolean onlyCompleteLastFirst, boolean onlyCompleteFirstLast, List<String> completeFields, JournalAbbreviationPreferences journalAbbreviationPreferences)
 specifier|public
 name|AutoCompletePreferences
 parameter_list|(
@@ -127,7 +127,7 @@ name|List
 argument_list|<
 name|String
 argument_list|>
-name|completeNames
+name|completeFields
 parameter_list|,
 name|JournalAbbreviationPreferences
 name|journalAbbreviationPreferences
@@ -161,7 +161,7 @@ name|this
 operator|.
 name|completeFields
 operator|=
-name|completeNames
+name|completeFields
 expr_stmt|;
 name|this
 operator|.
@@ -275,7 +275,7 @@ operator|=
 name|onlyCompleteFirstLast
 expr_stmt|;
 block|}
-comment|/**      * Returns the list of fields for which autcomplete is enabled      * @return List of field names      */
+comment|/**      * Returns the list of fields for which autocomplete is enabled      * @return List of field names      */
 DECL|method|getCompleteFields ()
 specifier|public
 name|List

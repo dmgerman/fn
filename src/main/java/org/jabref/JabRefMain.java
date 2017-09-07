@@ -603,7 +603,7 @@ argument_list|()
 expr_stmt|;
 name|PreferencesMigrations
 operator|.
-name|addCrossRefFieldToAutocomplete
+name|addCrossRefRelatedFieldsForAutoComplete
 argument_list|()
 expr_stmt|;
 comment|// Update handling of special fields based on preferences
