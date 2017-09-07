@@ -194,7 +194,7 @@ name|completeFields
 init|=
 name|preferences
 operator|.
-name|getCompleteNames
+name|getCompleteFields
 argument_list|()
 decl_stmt|;
 for|for

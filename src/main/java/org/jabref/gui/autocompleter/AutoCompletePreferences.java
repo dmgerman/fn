@@ -93,16 +93,17 @@ specifier|private
 name|boolean
 name|onlyCompleteFirstLast
 decl_stmt|;
-DECL|field|completeNames
+DECL|field|completeFields
 specifier|private
 name|List
 argument_list|<
 name|String
 argument_list|>
-name|completeNames
+name|completeFields
 decl_stmt|;
 DECL|field|journalAbbreviationPreferences
 specifier|private
+specifier|final
 name|JournalAbbreviationPreferences
 name|journalAbbreviationPreferences
 decl_stmt|;
@@ -158,7 +159,7 @@ name|onlyCompleteFirstLast
 expr_stmt|;
 name|this
 operator|.
-name|completeNames
+name|completeFields
 operator|=
 name|completeNames
 expr_stmt|;
@@ -274,36 +275,37 @@ operator|=
 name|onlyCompleteFirstLast
 expr_stmt|;
 block|}
-DECL|method|getCompleteNames ()
+comment|/**      * Returns the list of fields for which autcomplete is enabled      * @return List of field names      */
+DECL|method|getCompleteFields ()
 specifier|public
 name|List
 argument_list|<
 name|String
 argument_list|>
-name|getCompleteNames
+name|getCompleteFields
 parameter_list|()
 block|{
 return|return
-name|completeNames
+name|completeFields
 return|;
 block|}
-DECL|method|setCompleteNames (List<String> completeNames)
+DECL|method|setCompleteFields (List<String> completeFields)
 specifier|public
 name|void
-name|setCompleteNames
+name|setCompleteFields
 parameter_list|(
 name|List
 argument_list|<
 name|String
 argument_list|>
-name|completeNames
+name|completeFields
 parameter_list|)
 block|{
 name|this
 operator|.
-name|completeNames
+name|completeFields
 operator|=
-name|completeNames
+name|completeFields
 expr_stmt|;
 block|}
 DECL|method|setCompleteNames (String input)
@@ -315,7 +317,7 @@ name|String
 name|input
 parameter_list|)
 block|{
-name|setCompleteNames
+name|setCompleteFields
 argument_list|(
 name|Arrays
 operator|.
@@ -338,7 +340,7 @@ name|getCompleteNamesAsString
 parameter_list|()
 block|{
 return|return
-name|completeNames
+name|completeFields
 operator|.
 name|stream
 argument_list|()
