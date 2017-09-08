@@ -375,10 +375,9 @@ condition|)
 block|{
 return|return
 operator|new
-name|ParsedEntryLinkSuggestionProvider
+name|BibEntrySuggestionProvider
 argument_list|()
 return|;
-comment|//BibTexSuggestionProvider can't be used here, because it would insert the whole entry as string and it can't be used with the ParsedEntyLink type StringConverter together
 block|}
 elseif|else
 if|if
