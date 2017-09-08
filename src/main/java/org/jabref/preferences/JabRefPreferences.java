@@ -1027,15 +1027,6 @@ name|EMACS_ADDITIONAL_PARAMETERS
 init|=
 literal|"emacsParameters"
 decl_stmt|;
-DECL|field|LATEX_EDITOR_PATH
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|LATEX_EDITOR_PATH
-init|=
-literal|"latexEditorPath"
-decl_stmt|;
 comment|/* contents of the defaults HashMap that are defined in this class.      * There are more default parameters in this map which belong to separate preference classes.     */
 DECL|field|TEXSTUDIO_PATH
 specifier|public
@@ -3742,25 +3733,6 @@ argument_list|(
 literal|"WinEdt"
 argument_list|,
 literal|"WinEdt Team\\WinEdt"
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|defaults
-operator|.
-name|put
-argument_list|(
-name|LATEX_EDITOR_PATH
-argument_list|,
-name|JabRefDesktop
-operator|.
-name|getNativeDesktop
-argument_list|()
-operator|.
-name|detectProgramPath
-argument_list|(
-literal|"LEd"
-argument_list|,
-literal|"LEd"
 argument_list|)
 argument_list|)
 expr_stmt|;

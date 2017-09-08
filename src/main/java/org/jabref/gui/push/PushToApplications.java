@@ -74,15 +74,6 @@ operator|.
 name|add
 argument_list|(
 operator|new
-name|PushToLatexEditor
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|applications
-operator|.
-name|add
-argument_list|(
-operator|new
 name|PushToLyx
 argument_list|()
 argument_list|)
