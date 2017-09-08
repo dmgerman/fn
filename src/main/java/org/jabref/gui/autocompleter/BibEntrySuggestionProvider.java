@@ -72,6 +72,7 @@ end_comment
 
 begin_class
 DECL|class|BibEntrySuggestionProvider
+specifier|public
 class|class
 name|BibEntrySuggestionProvider
 extends|extends
