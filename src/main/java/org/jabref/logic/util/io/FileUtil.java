@@ -138,6 +138,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Locale
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Objects
 import|;
 end_import
@@ -334,6 +344,15 @@ argument_list|(
 literal|"posix"
 argument_list|)
 decl_stmt|;
+DECL|field|MAXIMUM_FILE_NAME_LENGTH
+specifier|public
+specifier|static
+specifier|final
+name|int
+name|MAXIMUM_FILE_NAME_LENGTH
+init|=
+literal|255
+decl_stmt|;
 DECL|field|LOGGER
 specifier|private
 specifier|static
@@ -355,6 +374,112 @@ specifier|private
 name|FileUtil
 parameter_list|()
 block|{     }
+comment|/**      * Returns the extension of a file name or Optional.empty() if the file does not have one (no "." in name).      *      * @return The extension (without leading dot), trimmed and in lowercase.      */
+DECL|method|getFileExtension (String fileName)
+specifier|public
+specifier|static
+name|Optional
+argument_list|<
+name|String
+argument_list|>
+name|getFileExtension
+parameter_list|(
+name|String
+name|fileName
+parameter_list|)
+block|{
+name|int
+name|dotPosition
+init|=
+name|fileName
+operator|.
+name|lastIndexOf
+argument_list|(
+literal|'.'
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+operator|(
+name|dotPosition
+operator|>
+literal|0
+operator|)
+operator|&&
+operator|(
+name|dotPosition
+operator|<
+operator|(
+name|fileName
+operator|.
+name|length
+argument_list|()
+operator|-
+literal|1
+operator|)
+operator|)
+condition|)
+block|{
+return|return
+name|Optional
+operator|.
+name|of
+argument_list|(
+name|fileName
+operator|.
+name|substring
+argument_list|(
+name|dotPosition
+operator|+
+literal|1
+argument_list|)
+operator|.
+name|trim
+argument_list|()
+operator|.
+name|toLowerCase
+argument_list|(
+name|Locale
+operator|.
+name|ROOT
+argument_list|)
+argument_list|)
+return|;
+block|}
+else|else
+block|{
+return|return
+name|Optional
+operator|.
+name|empty
+argument_list|()
+return|;
+block|}
+block|}
+comment|/**      * Returns the extension of a file or Optional.empty() if the file does not have one (no . in name).      *      * @return The extension, trimmed and in lowercase.      */
+DECL|method|getFileExtension (File file)
+specifier|public
+specifier|static
+name|Optional
+argument_list|<
+name|String
+argument_list|>
+name|getFileExtension
+parameter_list|(
+name|File
+name|file
+parameter_list|)
+block|{
+return|return
+name|getFileExtension
+argument_list|(
+name|file
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+return|;
+block|}
 comment|/**      * Returns the name part of a file name (i.e., everything in front of last ".").      */
 DECL|method|getFileName (String fileNameWithExtension)
 specifier|public
@@ -401,7 +526,104 @@ name|fileNameWithExtension
 return|;
 block|}
 block|}
-comment|/**      * Adds an extension to the given file name. The original extension is not replaced. That means,      * "demo.bib", ".sav" gets "demo.bib.sav" and not "demo.sav"      *      * @param path      the path to add the extension to      * @param extension the extension to add      * @return the with the modified file name      */
+comment|/**      * Returns a valid filename for most operating systems.      *      * Currently, only the length is restricted to 255 chars, see MAXIMUM_FILE_NAME_LENGTH.      */
+DECL|method|getValidFileName (String fileName)
+specifier|public
+specifier|static
+name|String
+name|getValidFileName
+parameter_list|(
+name|String
+name|fileName
+parameter_list|)
+block|{
+name|String
+name|nameWithoutExtension
+init|=
+name|getFileName
+argument_list|(
+name|fileName
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|nameWithoutExtension
+operator|.
+name|length
+argument_list|()
+operator|>
+name|MAXIMUM_FILE_NAME_LENGTH
+condition|)
+block|{
+name|Optional
+argument_list|<
+name|String
+argument_list|>
+name|extension
+init|=
+name|getFileExtension
+argument_list|(
+name|fileName
+argument_list|)
+decl_stmt|;
+name|String
+name|shortName
+init|=
+name|nameWithoutExtension
+operator|.
+name|substring
+argument_list|(
+literal|0
+argument_list|,
+name|MAXIMUM_FILE_NAME_LENGTH
+argument_list|)
+decl_stmt|;
+name|LOGGER
+operator|.
+name|info
+argument_list|(
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"Truncated the too long filename '%s' (%d characters) to '%s'."
+argument_list|,
+name|fileName
+argument_list|,
+name|fileName
+operator|.
+name|length
+argument_list|()
+argument_list|,
+name|shortName
+argument_list|)
+argument_list|)
+expr_stmt|;
+return|return
+name|extension
+operator|.
+name|map
+argument_list|(
+name|s
+lambda|->
+name|shortName
+operator|+
+literal|"."
+operator|+
+name|s
+argument_list|)
+operator|.
+name|orElse
+argument_list|(
+name|shortName
+argument_list|)
+return|;
+block|}
+return|return
+name|fileName
+return|;
+block|}
+comment|/**      * Adds an extension to the given file name. The original extension is not replaced. That means, "demo.bib", ".sav"      * gets "demo.bib.sav" and not "demo.sav"      *      * @param path      the path to add the extension to      * @param extension the extension to add      * @return the with the modified file name      */
 DECL|method|addExtension (Path path, String extension)
 specifier|public
 specifier|static
@@ -949,7 +1171,7 @@ literal|false
 return|;
 block|}
 block|}
-comment|/**      * Converts an absolute file to a relative one, if possible.      * Returns the parameter file itself if no shortening is possible      *<p>      * This method works correctly only if dirs are sorted decent in their length      * i.e. /home/user/literature/important before /home/user/literature      *      * @param file the file to be shortened      * @param dirs directories to check      */
+comment|/**      * Converts an absolute file to a relative one, if possible. Returns the parameter file itself if no shortening is      * possible.      *<p>      * This method works correctly only if dirs are sorted decent in their length i.e. /home/user/literature/important before /home/user/literature.      *      * @param file the file to be shortened      * @param dirs directories to check      */
 DECL|method|shortenFileName (Path file, List<Path> dirs)
 specifier|public
 specifier|static
@@ -1229,7 +1451,7 @@ return|return
 name|targetName
 return|;
 block|}
-comment|/**      * Finds a file inside a directory structure.      * Will also look for the file inside nested directories.      *      * @param filename      the name of the file that should be found      * @param rootDirectory the rootDirectory that will be searched      * @return the path to the first file that matches the defined conditions      */
+comment|/**      * Finds a file inside a directory structure. Will also look for the file inside nested directories.      *      * @param filename      the name of the file that should be found      * @param rootDirectory the rootDirectory that will be searched      * @return the path to the first file that matches the defined conditions      */
 DECL|method|find (String filename, Path rootDirectory)
 specifier|public
 specifier|static
@@ -1312,7 +1534,7 @@ name|empty
 argument_list|()
 return|;
 block|}
-comment|/**      * Finds a file inside a list of directory structures.      * Will also look for the file inside nested directories.      *      * @param filename    the name of the file that should be found      * @param directories the directories that will be searched      * @return a list including all found paths to files that match the defined conditions      */
+comment|/**      * Finds a file inside a list of directory structures. Will also look for the file inside nested directories.      *      * @param filename    the name of the file that should be found      * @param directories the directories that will be searched      * @return a list including all found paths to files that match the defined conditions      */
 DECL|method|find (String filename, List<Path> directories)
 specifier|public
 specifier|static
