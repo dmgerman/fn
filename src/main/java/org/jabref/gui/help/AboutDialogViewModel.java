@@ -277,6 +277,16 @@ specifier|final
 name|String
 name|versionInfo
 decl_stmt|;
+DECL|field|environmentInfo
+specifier|private
+specifier|final
+name|ReadOnlyStringWrapper
+name|environmentInfo
+init|=
+operator|new
+name|ReadOnlyStringWrapper
+argument_list|()
+decl_stmt|;
 DECL|field|logger
 specifier|private
 specifier|final
@@ -655,6 +665,16 @@ name|get
 argument_list|()
 return|;
 block|}
+DECL|method|getVersionInfo ()
+specifier|public
+name|String
+name|getVersionInfo
+parameter_list|()
+block|{
+return|return
+name|versionInfo
+return|;
+block|}
 DECL|method|developersProperty ()
 specifier|public
 name|ReadOnlyStringProperty
@@ -728,6 +748,19 @@ parameter_list|()
 block|{
 return|return
 name|license
+operator|.
+name|get
+argument_list|()
+return|;
+block|}
+DECL|method|getEnvironmentInfo ()
+specifier|public
+name|String
+name|getEnvironmentInfo
+parameter_list|()
+block|{
+return|return
+name|environmentInfo
 operator|.
 name|get
 argument_list|()
