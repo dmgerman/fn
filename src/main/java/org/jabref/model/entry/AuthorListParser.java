@@ -183,42 +183,6 @@ name|HashSet
 argument_list|<>
 argument_list|()
 decl_stmt|;
-comment|/** the raw bibtex author/editor field */
-DECL|field|original
-specifier|private
-name|String
-name|original
-decl_stmt|;
-comment|/** index of the start in original, for example to point to 'abc' in 'abc xyz', tokenStart=2 */
-DECL|field|tokenStart
-specifier|private
-name|int
-name|tokenStart
-decl_stmt|;
-comment|/** index of the end in original, for example to point to 'abc' in 'abc xyz', tokenEnd=5 */
-DECL|field|tokenEnd
-specifier|private
-name|int
-name|tokenEnd
-decl_stmt|;
-comment|/** end of token abbreviation (always: tokenStart< tokenAbbr<= tokenEnd), only valid if getToken returns TOKEN_WORD */
-DECL|field|tokenAbbr
-specifier|private
-name|int
-name|tokenAbbr
-decl_stmt|;
-comment|/** either space of dash */
-DECL|field|tokenTerm
-specifier|private
-name|char
-name|tokenTerm
-decl_stmt|;
-comment|/** true if upper-case token, false if lower-case */
-DECL|field|tokenCase
-specifier|private
-name|boolean
-name|tokenCase
-decl_stmt|;
 static|static
 block|{
 name|TEX_NAMES
@@ -306,6 +270,42 @@ literal|"j"
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * the raw bibtex author/editor field      */
+DECL|field|original
+specifier|private
+name|String
+name|original
+decl_stmt|;
+comment|/**      * index of the start in original, for example to point to 'abc' in 'abc xyz', tokenStart=2      */
+DECL|field|tokenStart
+specifier|private
+name|int
+name|tokenStart
+decl_stmt|;
+comment|/**      * index of the end in original, for example to point to 'abc' in 'abc xyz', tokenEnd=5      */
+DECL|field|tokenEnd
+specifier|private
+name|int
+name|tokenEnd
+decl_stmt|;
+comment|/**      * end of token abbreviation (always: tokenStart< tokenAbbrEnd<= tokenEnd), only valid if getToken returns      * TOKEN_WORD      */
+DECL|field|tokenAbbrEnd
+specifier|private
+name|int
+name|tokenAbbrEnd
+decl_stmt|;
+comment|/**      * either space of dash      */
+DECL|field|tokenTerm
+specifier|private
+name|char
+name|tokenTerm
+decl_stmt|;
+comment|/**      * true if upper-case token, false if lower-case      */
+DECL|field|tokenCase
+specifier|private
+name|boolean
+name|tokenCase
+decl_stmt|;
 comment|/**      * Parses the String containing person names and returns a list of person information.      *      * @param listOfNames the String containing the person names to be parsed      * @return a parsed list of persons      */
 DECL|method|parse (String listOfNames)
 specifier|public
@@ -521,7 +521,7 @@ name|substring
 argument_list|(
 name|tokenStart
 argument_list|,
-name|tokenAbbr
+name|tokenAbbrEnd
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -608,6 +608,37 @@ argument_list|)
 condition|)
 block|{
 comment|// We are in a first name which contained a hyphen
+break|break;
+block|}
+name|int
+name|thisTermToken
+init|=
+name|previousTermToken
+operator|+
+name|TOKEN_GROUP_LENGTH
+decl_stmt|;
+if|if
+condition|(
+operator|(
+name|thisTermToken
+operator|>=
+literal|0
+operator|)
+operator|&&
+name|tokens
+operator|.
+name|get
+argument_list|(
+name|thisTermToken
+argument_list|)
+operator|.
+name|equals
+argument_list|(
+literal|'-'
+argument_list|)
+condition|)
+block|{
+comment|// We are in a name which contained a hyphen
 break|break;
 block|}
 name|vonStart
@@ -871,8 +902,7 @@ block|}
 block|}
 else|else
 block|{
-comment|// commas are present: it affects only 'first part' and
-comment|// 'junior part'
+comment|// commas are present: it affects only 'first part' and 'junior part'
 name|firstPartEnd
 operator|=
 name|tokens
@@ -1494,7 +1524,7 @@ return|return
 name|TOKEN_AND
 return|;
 block|}
-name|tokenAbbr
+name|tokenAbbrEnd
 operator|=
 operator|-
 literal|1
@@ -1559,7 +1589,7 @@ condition|(
 name|firstLetterIsFound
 operator|&&
 operator|(
-name|tokenAbbr
+name|tokenAbbrEnd
 operator|<
 literal|0
 operator|)
@@ -1579,7 +1609,7 @@ operator|)
 operator|)
 condition|)
 block|{
-name|tokenAbbr
+name|tokenAbbrEnd
 operator|=
 name|tokenEnd
 expr_stmt|;
@@ -1777,12 +1807,12 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-name|tokenAbbr
+name|tokenAbbrEnd
 operator|<
 literal|0
 condition|)
 block|{
-name|tokenAbbr
+name|tokenAbbrEnd
 operator|=
 name|tokenEnd
 expr_stmt|;
