@@ -1415,11 +1415,26 @@ block|{
 comment|// TODO: Add undo
 comment|//final UndoableAddOrRemoveGroup undo = new UndoableAddOrRemoveGroup(groupsRoot, node, UndoableAddOrRemoveGroup.REMOVE_NODE_AND_CHILDREN);
 comment|//panel.getUndoManager().addEdit(undo);
+comment|// only remove explicit groups from the entries, keyword groups should not be deleted
+if|if
+condition|(
+name|group
+operator|.
+name|getGroupNode
+argument_list|()
+operator|.
+name|getGroup
+argument_list|()
+operator|instanceof
+name|ExplicitGroup
+condition|)
+block|{
 name|removeGroupsAndSubGroupsFromEntries
 argument_list|(
 name|group
 argument_list|)
 expr_stmt|;
+block|}
 name|group
 operator|.
 name|getGroupNode
