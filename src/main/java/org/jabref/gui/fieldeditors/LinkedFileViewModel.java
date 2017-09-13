@@ -1150,7 +1150,10 @@ condition|(
 name|confirm
 condition|)
 block|{
+name|Optional
+argument_list|<
 name|Path
+argument_list|>
 name|fileConflictCheck
 init|=
 name|pdfCleanup
@@ -1164,9 +1167,11 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|!
 name|fileConflictCheck
-operator|==
-literal|null
+operator|.
+name|isPresent
+argument_list|()
 condition|)
 block|{
 name|pdfCleanup
@@ -1226,6 +1231,9 @@ operator|.
 name|renameFile
 argument_list|(
 name|fileConflictCheck
+operator|.
+name|get
+argument_list|()
 argument_list|,
 name|file
 operator|.

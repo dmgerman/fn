@@ -1026,7 +1026,10 @@ block|}
 comment|/**Check to see if a file already exists in the target directory.  Search is not case sensitive.     *     * @param flEntry     * @param entry     * @return First identified path that matches an existing file.  This name can be used in subsequent calls to override the existing file.     */
 DECL|method|fileAlreadyExists (LinkedFile flEntry, BibEntry entry)
 specifier|public
+name|Optional
+argument_list|<
 name|Path
+argument_list|>
 name|fileAlreadyExists
 parameter_list|(
 name|LinkedFile
@@ -1086,7 +1089,10 @@ argument_list|()
 decl_stmt|;
 comment|//Check if file already exists in directory with different case.
 comment|//This is necessary because other entries may have such a file.
+name|Optional
+argument_list|<
 name|Path
+argument_list|>
 name|matchedByDiffCase
 init|=
 literal|null
@@ -1134,9 +1140,6 @@ argument_list|)
 operator|.
 name|findFirst
 argument_list|()
-operator|.
-name|get
-argument_list|()
 expr_stmt|;
 block|}
 catch|catch
@@ -1155,33 +1158,9 @@ name|e
 argument_list|)
 expr_stmt|;
 block|}
-if|if
-condition|(
-operator|!
-name|Files
-operator|.
-name|exists
-argument_list|(
-name|targetFilePath
-argument_list|)
-operator|&&
-operator|(
-name|matchedByDiffCase
-operator|==
-literal|null
-operator|)
-condition|)
-block|{
-return|return
-literal|null
-return|;
-block|}
-else|else
-block|{
 return|return
 name|matchedByDiffCase
 return|;
-block|}
 block|}
 block|}
 end_class
