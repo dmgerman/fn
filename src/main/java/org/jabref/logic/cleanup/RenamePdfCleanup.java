@@ -1095,7 +1095,10 @@ name|Path
 argument_list|>
 name|matchedByDiffCase
 init|=
-literal|null
+name|Optional
+operator|.
+name|empty
+argument_list|()
 decl_stmt|;
 try|try
 init|(
