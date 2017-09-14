@@ -1451,7 +1451,6 @@ expr_stmt|;
 block|}
 block|}
 DECL|method|removeGroupsAndSubGroupsFromEntries (GroupNodeViewModel group)
-specifier|private
 name|void
 name|removeGroupsAndSubGroupsFromEntries
 parameter_list|(
