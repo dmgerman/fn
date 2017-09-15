@@ -1049,14 +1049,6 @@ argument_list|,
 name|entry
 argument_list|)
 decl_stmt|;
-name|Optional
-argument_list|<
-name|Path
-argument_list|>
-name|matchedByDiffCase
-init|=
-literal|null
-decl_stmt|;
 comment|// The .get() is legal without check because the method will always return a value.
 name|Path
 name|targetFilePath
@@ -1098,6 +1090,14 @@ argument_list|()
 decl_stmt|;
 comment|//Check if file already exists in directory with different case.
 comment|//This is necessary because other entries may have such a file.
+name|Optional
+argument_list|<
+name|Path
+argument_list|>
+name|matchedByDiffCase
+init|=
+literal|null
+decl_stmt|;
 try|try
 init|(
 name|Stream
