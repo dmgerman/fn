@@ -548,7 +548,7 @@ name|be
 operator|.
 name|getField
 argument_list|(
-literal|"comments"
+literal|"comment"
 argument_list|)
 argument_list|)
 expr_stmt|;
