@@ -1023,14 +1023,14 @@ return|return
 name|unsuccessfulRenames
 return|;
 block|}
-comment|/**Check to see if a file already exists in the target directory.  Search is not case sensitive.     *     * @param flEntry     * @param entry     * @return First identified path that matches an existing file.  This name can be used in subsequent calls to override the existing file.     */
-DECL|method|fileAlreadyExists (LinkedFile flEntry, BibEntry entry)
+comment|/**     * Check to see if a file already exists in the target directory.  Search is not case sensitive.     * @param flEntry     * @param entry     * @return First identified path that matches an existing file.  This name can be used in subsequent calls to override the existing file.     */
+DECL|method|findExistingFile (LinkedFile flEntry, BibEntry entry)
 specifier|public
 name|Optional
 argument_list|<
 name|Path
 argument_list|>
-name|fileAlreadyExists
+name|findExistingFile
 parameter_list|(
 name|LinkedFile
 name|flEntry
@@ -1049,6 +1049,15 @@ argument_list|,
 name|entry
 argument_list|)
 decl_stmt|;
+name|Optional
+argument_list|<
+name|Path
+argument_list|>
+name|matchedByDiffCase
+init|=
+literal|null
+decl_stmt|;
+comment|// The .get() is legal without check because the method will always return a value.
 name|Path
 name|targetFilePath
 init|=
@@ -1089,14 +1098,6 @@ argument_list|()
 decl_stmt|;
 comment|//Check if file already exists in directory with different case.
 comment|//This is necessary because other entries may have such a file.
-name|Optional
-argument_list|<
-name|Path
-argument_list|>
-name|matchedByDiffCase
-init|=
-literal|null
-decl_stmt|;
 try|try
 init|(
 name|Stream
