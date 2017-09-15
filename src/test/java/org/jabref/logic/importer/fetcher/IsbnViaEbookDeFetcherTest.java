@@ -461,7 +461,7 @@ name|setField
 argument_list|(
 literal|"author"
 argument_list|,
-literal|"Dumas, Marlon and Rosa, Marcello La and Mendling, Jan and Reijers, Hajo"
+literal|"Dumas, Marlon and Rosa, Marcello La and Mendling, Jan and Reijers, Hajo A."
 argument_list|)
 expr_stmt|;
 name|bibEntry
@@ -506,7 +506,7 @@ name|setField
 argument_list|(
 literal|"url"
 argument_list|,
-literal|"http://www.ebook.de/de/product/23955263/marlon_dumas_marcello_la_rosa_jan_mendling_hajo_reijers_fundamentals_of_business_process_management.html"
+literal|"http://www.ebook.de/de/product/23955263/marlon_dumas_marcello_la_rosa_jan_mendling_hajo_a_reijers_fundamentals_of_business_process_management.html"
 argument_list|)
 expr_stmt|;
 name|Optional
