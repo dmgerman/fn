@@ -1163,13 +1163,7 @@ argument_list|,
 operator|new
 name|FileListEntry
 argument_list|(
-name|toLink
-operator|.
-name|getFileName
-argument_list|()
-operator|.
-name|toString
-argument_list|()
+literal|""
 argument_list|,
 name|FileUtil
 operator|.
