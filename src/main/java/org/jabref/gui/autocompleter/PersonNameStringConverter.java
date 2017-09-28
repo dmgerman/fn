@@ -282,10 +282,8 @@ block|}
 return|return
 name|author
 operator|.
-name|getLastFirst
-argument_list|(
-literal|false
-argument_list|)
+name|getLastOnly
+argument_list|()
 return|;
 block|}
 annotation|@
