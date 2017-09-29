@@ -202,6 +202,12 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+DECL|field|cl
+specifier|private
+specifier|final
+name|CommandLine
+name|cl
+decl_stmt|;
 DECL|field|leftOver
 specifier|private
 name|List
@@ -209,12 +215,6 @@ argument_list|<
 name|String
 argument_list|>
 name|leftOver
-decl_stmt|;
-DECL|field|cl
-specifier|private
-specifier|final
-name|CommandLine
-name|cl
 decl_stmt|;
 DECL|method|JabRefCLI (String[] args)
 specifier|public
@@ -289,6 +289,43 @@ name|RuntimeException
 argument_list|()
 throw|;
 block|}
+block|}
+DECL|method|getExportMatchesSyntax ()
+specifier|public
+specifier|static
+name|String
+name|getExportMatchesSyntax
+parameter_list|()
+block|{
+return|return
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"[%s]searchTerm,outputFile: %s[,%s]"
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"field"
+argument_list|)
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"file"
+argument_list|)
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"exportFormat"
+argument_list|)
+argument_list|)
+return|;
 block|}
 DECL|method|isHelp ()
 specifier|public
@@ -785,6 +822,25 @@ operator|.
 name|lang
 argument_list|(
 literal|"Show debug level messages"
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|// The "-console" option is handled by the install4j launcher
+name|options
+operator|.
+name|addOption
+argument_list|(
+literal|null
+argument_list|,
+literal|"console"
+argument_list|,
+literal|false
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Show console output (only necessary when the launcher is used)"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1338,7 +1394,7 @@ name|importFormatsList
 operator|+
 name|outFormatsList
 operator|+
-literal|"\nPlease report issues at https://github.com/JabRef/jabref/issues"
+literal|"\nPlease report issues at https://github.com/JabRef/jabref/issues."
 decl_stmt|;
 name|HelpFormatter
 name|formatter
@@ -1397,43 +1453,6 @@ parameter_list|()
 block|{
 return|return
 name|leftOver
-return|;
-block|}
-DECL|method|getExportMatchesSyntax ()
-specifier|public
-specifier|static
-name|String
-name|getExportMatchesSyntax
-parameter_list|()
-block|{
-return|return
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"[%s]searchTerm,outputFile: %s[,%s]"
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"field"
-argument_list|)
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"file"
-argument_list|)
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"exportFormat"
-argument_list|)
-argument_list|)
 return|;
 block|}
 block|}
