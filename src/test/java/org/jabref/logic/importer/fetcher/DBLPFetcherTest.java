@@ -375,7 +375,7 @@ name|setField
 argument_list|(
 literal|"biburl"
 argument_list|,
-literal|"http://dblp.dagstuhl.de/rec/bib/journals/stt/GeigerHL16"
+literal|"http://dblp.org/rec/bib/journals/stt/GeigerHL16"
 argument_list|)
 expr_stmt|;
 name|entry
