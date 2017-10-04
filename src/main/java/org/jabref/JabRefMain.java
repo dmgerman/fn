@@ -593,6 +593,11 @@ argument_list|()
 expr_stmt|;
 name|PreferencesMigrations
 operator|.
+name|upgradeImportFileAndDirePatterns
+argument_list|()
+expr_stmt|;
+name|PreferencesMigrations
+operator|.
 name|upgradeStoredCustomEntryTypes
 argument_list|()
 expr_stmt|;

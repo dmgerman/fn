@@ -608,7 +608,7 @@ comment|//empty fileDirPattern for backwards compatibility
 operator|new
 name|CleanupPreferences
 argument_list|(
-literal|"\\bibtexkey"
+literal|"[bibtexkey]"
 argument_list|,
 literal|""
 argument_list|,

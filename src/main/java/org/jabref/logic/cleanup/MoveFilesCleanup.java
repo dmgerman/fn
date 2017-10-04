@@ -320,12 +320,6 @@ specifier|final
 name|FileDirectoryPreferences
 name|fileDirectoryPreferences
 decl_stmt|;
-DECL|field|layoutPrefs
-specifier|private
-specifier|final
-name|LayoutFormatterPreferences
-name|layoutPrefs
-decl_stmt|;
 DECL|field|fileDirPattern
 specifier|private
 specifier|final
@@ -337,6 +331,7 @@ specifier|private
 name|LinkedFile
 name|singleFileFieldCleanup
 decl_stmt|;
+comment|// FIXME: remove unused parameter 'layoutPrefs' later S.G.
 DECL|method|MoveFilesCleanup (BibDatabaseContext databaseContext, String fileDirPattern, FileDirectoryPreferences fileDirectoryPreferences, LayoutFormatterPreferences layoutPrefs)
 specifier|public
 name|MoveFilesCleanup
@@ -385,17 +380,6 @@ operator|.
 name|requireNonNull
 argument_list|(
 name|fileDirectoryPreferences
-argument_list|)
-expr_stmt|;
-name|this
-operator|.
-name|layoutPrefs
-operator|=
-name|Objects
-operator|.
-name|requireNonNull
-argument_list|(
-name|layoutPrefs
 argument_list|)
 expr_stmt|;
 block|}
@@ -694,7 +678,7 @@ name|targetDirName
 operator|=
 name|FileUtil
 operator|.
-name|createFileNameFromPattern
+name|createDirNameFromPattern
 argument_list|(
 name|databaseContext
 operator|.
@@ -704,8 +688,6 @@ argument_list|,
 name|entry
 argument_list|,
 name|fileDirPattern
-argument_list|,
-name|layoutPrefs
 argument_list|)
 expr_stmt|;
 block|}

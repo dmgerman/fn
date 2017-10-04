@@ -220,9 +220,9 @@ operator|new
 name|String
 index|[]
 block|{
-literal|"\\bibtexkey"
+literal|"[bibtexkey]"
 block|,
-literal|"\\bibtexkey\\begin{title} - \\format[RemoveBrackets]{\\title}\\end{title}"
+literal|"[bibtexkey] - [title]"
 block|}
 decl_stmt|;
 DECL|field|DEFAULT_STYLE

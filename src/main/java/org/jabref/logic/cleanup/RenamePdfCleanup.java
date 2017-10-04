@@ -342,12 +342,6 @@ specifier|final
 name|String
 name|fileNamePattern
 decl_stmt|;
-DECL|field|layoutPreferences
-specifier|private
-specifier|final
-name|LayoutFormatterPreferences
-name|layoutPreferences
-decl_stmt|;
 DECL|field|fileDirectoryPreferences
 specifier|private
 specifier|final
@@ -364,6 +358,8 @@ specifier|private
 name|LinkedFile
 name|singleFieldCleanup
 decl_stmt|;
+comment|// FIXME: (S.G.) remove unused constructor argument 'layoutPreferences' later; for now,
+comment|// however, the argument is retained in order not to change the class interface:
 DECL|method|RenamePdfCleanup (boolean onlyRelativePaths, BibDatabaseContext databaseContext, String fileNamePattern, LayoutFormatterPreferences layoutPreferences, FileDirectoryPreferences fileDirectoryPreferences)
 specifier|public
 name|RenamePdfCleanup
@@ -410,17 +406,6 @@ operator|.
 name|requireNonNull
 argument_list|(
 name|fileNamePattern
-argument_list|)
-expr_stmt|;
-name|this
-operator|.
-name|layoutPreferences
-operator|=
-name|Objects
-operator|.
-name|requireNonNull
-argument_list|(
-name|layoutPreferences
 argument_list|)
 expr_stmt|;
 name|this
@@ -1066,8 +1051,6 @@ argument_list|,
 name|entry
 argument_list|,
 name|fileNamePattern
-argument_list|,
-name|layoutPreferences
 argument_list|)
 operator|.
 name|trim

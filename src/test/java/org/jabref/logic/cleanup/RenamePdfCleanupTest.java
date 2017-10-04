@@ -410,7 +410,7 @@ block|{
 name|String
 name|fileNamePattern
 init|=
-literal|"\\bibtexkey"
+literal|"[bibtexkey]"
 decl_stmt|;
 name|File
 name|tempFile
@@ -530,7 +530,7 @@ block|{
 name|String
 name|fileNamePattern
 init|=
-literal|"\\bibtexkey - \\title"
+literal|"[bibtexkey] - [fulltitle]"
 decl_stmt|;
 name|File
 name|tempFile
@@ -674,7 +674,7 @@ block|{
 name|String
 name|fileNamePattern
 init|=
-literal|"\\bibtexkey - \\title"
+literal|"[bibtexkey] - [fulltitle]"
 decl_stmt|;
 name|File
 name|tempFile
@@ -803,7 +803,7 @@ block|{
 name|String
 name|fileNamePattern
 init|=
-literal|"\\bibtexkey\\begin{title} - \\format[RemoveBrackets]{\\title}\\end{title}"
+literal|"[bibtexkey] - [fulltitle]"
 decl_stmt|;
 name|testFolder
 operator|.
@@ -921,7 +921,7 @@ block|{
 name|String
 name|fileNamePattern
 init|=
-literal|"\\bibtexkey\\begin{title} - \\format[RemoveBrackets]{\\title}\\end{title}"
+literal|"[bibtexkey] - [fulltitle]"
 decl_stmt|;
 name|testFolder
 operator|.
@@ -1041,7 +1041,7 @@ block|{
 name|String
 name|fileNamePattern
 init|=
-literal|"\\bibtexkey\\begin{title} - \\format[RemoveBrackets]{\\title}\\end{title}"
+literal|"[bibtexkey] - [fulltitle]"
 decl_stmt|;
 name|testFolder
 operator|.
