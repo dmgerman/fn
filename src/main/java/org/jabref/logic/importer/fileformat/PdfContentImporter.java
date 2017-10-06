@@ -1139,6 +1139,36 @@ throw|;
 block|}
 annotation|@
 name|Override
+DECL|method|importDatabase (String data)
+specifier|public
+name|ParserResult
+name|importDatabase
+parameter_list|(
+name|String
+name|data
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|data
+argument_list|)
+expr_stmt|;
+throw|throw
+operator|new
+name|UnsupportedOperationException
+argument_list|(
+literal|"PdfContentImporter does not support importDatabase(String data)."
+operator|+
+literal|"Instead use importDatabase(Path filePath, Charset defaultEncoding)."
+argument_list|)
+throw|;
+block|}
+annotation|@
+name|Override
 DECL|method|importDatabase (Path filePath, Charset defaultEncoding)
 specifier|public
 name|ParserResult

@@ -254,10 +254,10 @@ name|NullPointerException
 operator|.
 name|class
 argument_list|)
-DECL|method|testNullImportUnknownFormat ()
+DECL|method|testNullImportUnknownFormatPath ()
 specifier|public
 name|void
-name|testNullImportUnknownFormat
+name|testNullImportUnknownFormatPath
 parameter_list|()
 throws|throws
 name|Exception
@@ -266,6 +266,40 @@ name|reader
 operator|.
 name|importUnknownFormat
 argument_list|(
+operator|(
+name|Path
+operator|)
+literal|null
+argument_list|)
+expr_stmt|;
+name|fail
+argument_list|()
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+argument_list|(
+name|expected
+operator|=
+name|NullPointerException
+operator|.
+name|class
+argument_list|)
+DECL|method|testNullImportUnknownFormatString ()
+specifier|public
+name|void
+name|testNullImportUnknownFormatString
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|reader
+operator|.
+name|importUnknownFormat
+argument_list|(
+operator|(
+name|String
+operator|)
 literal|null
 argument_list|)
 expr_stmt|;

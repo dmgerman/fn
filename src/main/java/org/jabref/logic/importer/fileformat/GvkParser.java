@@ -2335,6 +2335,17 @@ name|Element
 name|e
 parameter_list|)
 block|{
+if|if
+condition|(
+name|e
+operator|==
+literal|null
+condition|)
+block|{
+return|return
+literal|null
+return|;
+block|}
 name|NodeList
 name|children
 init|=
