@@ -5233,6 +5233,14 @@ name|getBibtexKeyPatternPreferences
 argument_list|()
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|entry
+operator|.
+name|hasCiteKey
+argument_list|()
+condition|)
+block|{
 comment|// Store undo information:
 name|panel
 operator|.
@@ -5292,6 +5300,7 @@ operator|.
 name|markBaseChanged
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 block|}
 DECL|class|UndoAction
