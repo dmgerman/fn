@@ -6563,6 +6563,13 @@ name|void
 name|run
 parameter_list|()
 block|{
+name|SwingUtilities
+operator|.
+name|invokeLater
+argument_list|(
+parameter_list|()
+lambda|->
+block|{
 name|DefaultTaskExecutor
 operator|.
 name|runInJavaFXThread
@@ -6572,6 +6579,9 @@ operator|.
 name|this
 operator|::
 name|showTrackingNotification
+argument_list|)
+expr_stmt|;
+block|}
 argument_list|)
 expr_stmt|;
 block|}
