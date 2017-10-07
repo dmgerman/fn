@@ -948,6 +948,11 @@ operator|.
 name|shutdownThreadPools
 argument_list|()
 expr_stmt|;
+name|Platform
+operator|.
+name|exit
+argument_list|()
+expr_stmt|;
 return|return;
 block|}
 comment|// If not, start GUI
