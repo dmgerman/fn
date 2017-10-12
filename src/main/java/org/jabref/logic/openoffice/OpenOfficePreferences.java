@@ -85,7 +85,7 @@ specifier|final
 name|String
 name|DEFAULT_WINDOWS_PATH
 init|=
-literal|"C:\\Program Files\\OpenOffice.org 4"
+literal|"C:\\Program Files\\LibreOffice 5"
 decl_stmt|;
 DECL|field|DEFAULT_WIN_EXEC_PATH
 specifier|public
@@ -94,7 +94,7 @@ specifier|final
 name|String
 name|DEFAULT_WIN_EXEC_PATH
 init|=
-literal|"C:\\Program Files\\OpenOffice.org 4\\program\\soffice.exe"
+literal|"C:\\Program Files\\LibreOffice 5\\program"
 decl_stmt|;
 DECL|field|WINDOWS_EXECUTABLE
 specifier|public
@@ -139,7 +139,7 @@ specifier|final
 name|String
 name|DEFAULT_LINUX_PATH
 init|=
-literal|"/opt/openoffice4"
+literal|"/usr/lib/libreoffice"
 decl_stmt|;
 DECL|field|DEFAULT_LINUX_EXEC_PATH
 specifier|public
@@ -148,7 +148,7 @@ specifier|final
 name|String
 name|DEFAULT_LINUX_EXEC_PATH
 init|=
-literal|"/opt/openoffice4/program/soffice"
+literal|"/usr/lib/libreoffice/program/soffice"
 decl_stmt|;
 DECL|field|LINUX_EXECUTABLE
 specifier|public
