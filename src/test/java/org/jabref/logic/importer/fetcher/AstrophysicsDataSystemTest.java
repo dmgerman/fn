@@ -442,65 +442,35 @@ name|setField
 argument_list|(
 literal|"abstract"
 argument_list|,
-literal|"A general slice theorem for the action of a Fr$\\backslash$'echet Lie group on a"
+literal|"A general slice theorem for the action of a Fr$\\backslash$'echet Lie group on a "
 operator|+
-name|NEWLINE
+literal|"Fr$\\backslash$'echet manifolds is established. The Nash-Moser theorem provides the "
 operator|+
-literal|"Fr$\\backslash$'echet manifolds is established. The Nash-Moser theorem provides the"
+literal|"fundamental tool to generalize the result of Palais to this "
 operator|+
-name|NEWLINE
+literal|"infinite-dimensional setting. The presented slice theorem is illustrated "
 operator|+
-literal|"fundamental tool to generalize the result of Palais to this"
+literal|"by its application to gauge theories: the action of the gauge "
 operator|+
-name|NEWLINE
+literal|"transformation group admits smooth slices at every point and thus the "
 operator|+
-literal|"infinite-dimensional setting. The presented slice theorem is illustrated"
+literal|"gauge orbit space is stratified by Fr$\\backslash$'echet manifolds. Furthermore, a "
 operator|+
-name|NEWLINE
+literal|"covariant and symplectic formulation of classical field theory is "
 operator|+
-literal|"by its application to gauge theories: the action of the gauge"
+literal|"proposed and extensively discussed. At the root of this novel framework "
 operator|+
-name|NEWLINE
+literal|"is the incorporation of field degrees of freedom F and spacetime M into "
 operator|+
-literal|"transformation group admits smooth slices at every point and thus the"
+literal|"the product manifold F * M. The induced bigrading of differential forms "
 operator|+
-name|NEWLINE
+literal|"is used in order to carry over the usual symplectic theory to this new "
 operator|+
-literal|"gauge orbit space is stratified by Fr$\\backslash$'echet manifolds. Furthermore, a"
+literal|"setting. The examples of the Klein-Gordon field and general Yang-Mills "
 operator|+
-name|NEWLINE
-operator|+
-literal|"covariant and symplectic formulation of classical field theory is"
-operator|+
-name|NEWLINE
-operator|+
-literal|"proposed and extensively discussed. At the root of this novel framework"
-operator|+
-name|NEWLINE
-operator|+
-literal|"is the incorporation of field degrees of freedom F and spacetime M into"
-operator|+
-name|NEWLINE
-operator|+
-literal|"the product manifold F * M. The induced bigrading of differential forms"
-operator|+
-name|NEWLINE
-operator|+
-literal|"is used in order to carry over the usual symplectic theory to this new"
-operator|+
-name|NEWLINE
-operator|+
-literal|"setting. The examples of the Klein-Gordon field and general Yang-Mills"
-operator|+
-name|NEWLINE
-operator|+
-literal|"theory illustrate that the presented approach conveniently handles the"
-operator|+
-name|NEWLINE
+literal|"theory illustrate that the presented approach conveniently handles the "
 operator|+
 literal|"occurring symmetries."
-operator|+
-name|NEWLINE
 argument_list|)
 expr_stmt|;
 name|famaeyMcGaughEntry
