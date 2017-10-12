@@ -70,6 +70,22 @@ begin_import
 import|import
 name|org
 operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|formatter
+operator|.
+name|bibtexfields
+operator|.
+name|RemoveNewlinesFormatter
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|apache
 operator|.
 name|commons
@@ -573,11 +589,19 @@ return|return
 literal|""
 return|;
 block|}
+comment|// remove line breaks
 return|return
+operator|new
+name|RemoveNewlinesFormatter
+argument_list|()
+operator|.
+name|format
+argument_list|(
 name|content
 operator|.
 name|trim
 argument_list|()
+argument_list|)
 return|;
 block|}
 comment|/**      * Abbreviate annotation names when they are longer than {@code ABBREVIATED_ANNOTATION_NAME_LENGTH} chars      *      * @param annotationName annotation to be shortened      * @return the abbreviated name      */
