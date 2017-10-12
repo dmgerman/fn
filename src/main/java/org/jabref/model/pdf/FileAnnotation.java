@@ -590,18 +590,37 @@ literal|""
 return|;
 block|}
 comment|// remove line breaks
-return|return
-operator|new
-name|RemoveNewlinesFormatter
-argument_list|()
-operator|.
-name|format
-argument_list|(
+name|String
+name|processedContent
+init|=
 name|content
+operator|.
+name|replace
+argument_list|(
+literal|"\r\n"
+argument_list|,
+literal|" "
+argument_list|)
+operator|.
+name|replace
+argument_list|(
+literal|"\n"
+argument_list|,
+literal|" "
+argument_list|)
+operator|.
+name|replace
+argument_list|(
+literal|"\r"
+argument_list|,
+literal|" "
+argument_list|)
+decl_stmt|;
+return|return
+name|processedContent
 operator|.
 name|trim
 argument_list|()
-argument_list|)
 return|;
 block|}
 comment|/**      * Abbreviate annotation names when they are longer than {@code ABBREVIATED_ANNOTATION_NAME_LENGTH} chars      *      * @param annotationName annotation to be shortened      * @return the abbreviated name      */
