@@ -128,6 +128,13 @@ argument_list|,
 literal|" "
 argument_list|)
 operator|.
+name|replace
+argument_list|(
+literal|"\r"
+argument_list|,
+literal|" "
+argument_list|)
+operator|.
 name|trim
 argument_list|()
 return|;
