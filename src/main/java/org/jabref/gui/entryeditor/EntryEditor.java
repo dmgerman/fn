@@ -1667,10 +1667,17 @@ name|EntryChangedEvent
 name|event
 parameter_list|)
 block|{
+name|DefaultTaskExecutor
+operator|.
+name|runInJavaFXThread
+argument_list|(
+parameter_list|()
+lambda|->
 name|sourceTab
 operator|.
 name|updateSourcePane
 argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 DECL|method|rebuildOtherFieldsTab ()
