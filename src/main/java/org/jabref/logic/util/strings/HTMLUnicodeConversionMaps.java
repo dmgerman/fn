@@ -1671,6 +1671,14 @@ literal|"$\\textendash$"
 block|}
 block|,
 block|{
+literal|"8212"
+block|,
+literal|"mdash"
+block|,
+literal|"$\\textemdash$"
+block|}
+block|,
+block|{
 literal|"8226"
 block|,
 literal|"bull"
