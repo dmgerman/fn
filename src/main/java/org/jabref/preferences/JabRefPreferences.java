@@ -1109,6 +1109,15 @@ name|WIN_LOOK_AND_FEEL
 init|=
 literal|"lookAndFeel"
 decl_stmt|;
+DECL|field|FX_FONT_RENDERING_TWEAK
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|FX_FONT_RENDERING_TWEAK
+init|=
+literal|"fxFontRenderingTweak"
+decl_stmt|;
 DECL|field|LANGUAGE
 specifier|public
 specifier|static
@@ -3862,6 +3871,18 @@ literal|"emacsclient"
 argument_list|)
 expr_stmt|;
 block|}
+name|defaults
+operator|.
+name|put
+argument_list|(
+name|FX_FONT_RENDERING_TWEAK
+argument_list|,
+name|OS
+operator|.
+name|LINUX
+argument_list|)
+expr_stmt|;
+comment|//we turn this on per default on Linux
 name|defaults
 operator|.
 name|put
