@@ -4643,7 +4643,7 @@ name|setValidBackgroundColor
 argument_list|()
 expr_stmt|;
 comment|//TODO: See if we need to update an AutoCompleter instance:
-comment|/*                         AutoCompleter<String> aComp = panel.getSuggestionProviders().get(fieldEditor.getFieldName());                         if (aComp != null) {                             aComp.addBibtexEntry(entry);                         }                         */
+comment|/*                         AutoCompleter<String> aComp = panel.getSuggestionProviders().get(fieldEditor.getName());                         if (aComp != null) {                             aComp.addBibtexEntry(entry);                         }                         */
 comment|// Add an UndoableFieldChange to the baseframe's undoManager.
 name|UndoableFieldChange
 name|undoableFieldChange
