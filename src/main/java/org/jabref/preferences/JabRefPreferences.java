@@ -3700,6 +3700,24 @@ argument_list|(
 name|PREFS_BASE_CLASS
 argument_list|)
 expr_stmt|;
+comment|// Since some of the preference settings themselves use localized strings, we cannot set the language after
+comment|// the initialization of the preferences in main
+comment|// Otherwise that language framework will be instantiated and more importantly, statically initialized preferences
+comment|// like the SearchDisplayMode will never be translated.
+name|Localization
+operator|.
+name|setLanguage
+argument_list|(
+name|prefs
+operator|.
+name|get
+argument_list|(
+name|LANGUAGE
+argument_list|,
+literal|"en"
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|SearchPreferences
 operator|.
 name|putDefaults

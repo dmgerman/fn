@@ -3232,14 +3232,14 @@ name|Localization
 operator|.
 name|menuTitle
 argument_list|(
-literal|"Pull_changes_from_shared_database"
+literal|"Pull changes from shared database"
 argument_list|)
 argument_list|,
 name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Pull_changes_from_shared_database"
+literal|"Pull changes from shared database"
 argument_list|)
 argument_list|,
 name|Globals
