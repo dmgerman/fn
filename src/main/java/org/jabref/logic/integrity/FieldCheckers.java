@@ -265,7 +265,9 @@ name|field
 argument_list|,
 operator|new
 name|PersonNamesChecker
-argument_list|()
+argument_list|(
+name|databaseContext
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
