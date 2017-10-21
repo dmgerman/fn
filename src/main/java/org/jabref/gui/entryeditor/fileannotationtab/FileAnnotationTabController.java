@@ -16,6 +16,18 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|file
+operator|.
+name|Path
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|inject
@@ -196,6 +208,20 @@ name|gui
 operator|.
 name|util
 operator|.
+name|FileUpdateMonitor
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|util
+operator|.
 name|ViewModelListCellFactory
 import|;
 end_import
@@ -271,7 +297,7 @@ DECL|field|files
 specifier|public
 name|ComboBox
 argument_list|<
-name|String
+name|Path
 argument_list|>
 name|files
 decl_stmt|;
@@ -335,6 +361,13 @@ name|BibEntry
 name|entry
 decl_stmt|;
 annotation|@
+name|Inject
+DECL|field|fileMonitor
+specifier|private
+name|FileUpdateMonitor
+name|fileMonitor
+decl_stmt|;
+annotation|@
 name|FXML
 DECL|method|initialize ()
 specifier|public
@@ -350,6 +383,8 @@ argument_list|(
 name|fileAnnotationCache
 argument_list|,
 name|entry
+argument_list|,
+name|fileMonitor
 argument_list|)
 expr_stmt|;
 comment|// Set-up files list
@@ -784,21 +819,6 @@ operator|::
 name|markingProperty
 argument_list|)
 argument_list|)
-expr_stmt|;
-block|}
-DECL|method|reloadAnnotations (ActionEvent event)
-specifier|public
-name|void
-name|reloadAnnotations
-parameter_list|(
-name|ActionEvent
-name|event
-parameter_list|)
-block|{
-name|viewModel
-operator|.
-name|reloadAnnotations
-argument_list|()
 expr_stmt|;
 block|}
 DECL|method|copy (ActionEvent event)

@@ -554,6 +554,12 @@ specifier|final
 name|File
 name|file
 decl_stmt|;
+DECL|field|tempFile
+specifier|private
+specifier|final
+name|Path
+name|tempFile
+decl_stmt|;
 DECL|field|databaseInMemory
 specifier|private
 specifier|final
@@ -607,7 +613,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 comment|//  NamedCompound edit = new NamedCompound("Merged external changes")
-DECL|method|ChangeScanner (JabRefFrame frame, BasePanel bp, File file)
+DECL|method|ChangeScanner (JabRefFrame frame, BasePanel bp, File file, Path tempFile)
 specifier|public
 name|ChangeScanner
 parameter_list|(
@@ -619,6 +625,9 @@ name|bp
 parameter_list|,
 name|File
 name|file
+parameter_list|,
+name|Path
+name|tempFile
 parameter_list|)
 block|{
 name|this
@@ -660,6 +669,12 @@ name|file
 operator|=
 name|file
 expr_stmt|;
+name|this
+operator|.
+name|tempFile
+operator|=
+name|tempFile
+expr_stmt|;
 block|}
 annotation|@
 name|Override
@@ -672,22 +687,6 @@ block|{
 try|try
 block|{
 comment|// Parse the temporary file.
-name|Path
-name|tempFile
-init|=
-name|Globals
-operator|.
-name|getFileUpdateMonitor
-argument_list|()
-operator|.
-name|getTempFile
-argument_list|(
-name|panel
-operator|.
-name|fileMonitorHandle
-argument_list|()
-argument_list|)
-decl_stmt|;
 name|ImportFormatPreferences
 name|importFormatPreferences
 init|=
@@ -1241,18 +1240,7 @@ name|ss
 operator|.
 name|commit
 argument_list|(
-name|Globals
-operator|.
-name|getFileUpdateMonitor
-argument_list|()
-operator|.
-name|getTempFile
-argument_list|(
-name|panel
-operator|.
-name|fileMonitorHandle
-argument_list|()
-argument_list|)
+name|tempFile
 argument_list|)
 expr_stmt|;
 block|}

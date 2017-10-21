@@ -478,10 +478,8 @@ argument_list|)
 expr_stmt|;
 name|panel
 operator|.
-name|setUpdatedExternally
-argument_list|(
-literal|false
-argument_list|)
+name|markExternalChangesAsResolved
+argument_list|()
 expr_stmt|;
 block|}
 block|}
