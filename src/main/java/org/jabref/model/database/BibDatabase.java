@@ -657,34 +657,45 @@ name|isEmpty
 argument_list|()
 return|;
 block|}
-comment|/**      * Returns an EntrySorter with the sorted entries from this base,      * sorted by the given Comparator.      */
-DECL|method|getSorter (Comparator<BibEntry> comp)
+comment|/**      * Returns the list of entries sorted by the given comparator.      */
+DECL|method|getEntriesSorted (Comparator<BibEntry> comparator)
 specifier|public
 specifier|synchronized
-name|EntrySorter
-name|getSorter
+name|List
+argument_list|<
+name|BibEntry
+argument_list|>
+name|getEntriesSorted
 parameter_list|(
 name|Comparator
 argument_list|<
 name|BibEntry
 argument_list|>
-name|comp
+name|comparator
 parameter_list|)
 block|{
-return|return
-operator|new
-name|EntrySorter
-argument_list|(
+name|List
+argument_list|<
+name|BibEntry
+argument_list|>
+name|entriesSorted
+init|=
 operator|new
 name|ArrayList
 argument_list|<>
 argument_list|(
-name|getEntries
-argument_list|()
+name|entries
 argument_list|)
-argument_list|,
-name|comp
+decl_stmt|;
+name|entriesSorted
+operator|.
+name|sort
+argument_list|(
+name|comparator
 argument_list|)
+expr_stmt|;
+return|return
+name|entriesSorted
 return|;
 block|}
 comment|/**      * Returns whether an entry with the given ID exists (-> entry_type + hashcode).      */
