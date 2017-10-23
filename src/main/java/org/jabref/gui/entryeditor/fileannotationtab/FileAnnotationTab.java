@@ -110,21 +110,12 @@ specifier|final
 name|FileAnnotationCache
 name|fileAnnotationCache
 decl_stmt|;
-DECL|field|entry
-specifier|private
-specifier|final
-name|BibEntry
-name|entry
-decl_stmt|;
-DECL|method|FileAnnotationTab (FileAnnotationCache cache, BibEntry entry)
+DECL|method|FileAnnotationTab (FileAnnotationCache cache)
 specifier|public
 name|FileAnnotationTab
 parameter_list|(
 name|FileAnnotationCache
 name|cache
-parameter_list|,
-name|BibEntry
-name|entry
 parameter_list|)
 block|{
 name|this
@@ -132,12 +123,6 @@ operator|.
 name|fileAnnotationCache
 operator|=
 name|cache
-expr_stmt|;
-name|this
-operator|.
-name|entry
-operator|=
-name|entry
 expr_stmt|;
 name|setText
 argument_list|(
@@ -166,11 +151,14 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|shouldShow ()
+DECL|method|shouldShow (BibEntry entry)
 specifier|public
 name|boolean
 name|shouldShow
-parameter_list|()
+parameter_list|(
+name|BibEntry
+name|entry
+parameter_list|)
 block|{
 return|return
 name|entry
@@ -188,23 +176,14 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|notifyAboutFocus ()
-specifier|public
-name|void
-name|notifyAboutFocus
-parameter_list|()
-block|{
-name|initialize
-argument_list|()
-expr_stmt|;
-block|}
-annotation|@
-name|Override
-DECL|method|initialize ()
+DECL|method|bindToEntry (BibEntry entry)
 specifier|protected
 name|void
-name|initialize
-parameter_list|()
+name|bindToEntry
+parameter_list|(
+name|BibEntry
+name|entry
+parameter_list|)
 block|{
 name|setContent
 argument_list|(

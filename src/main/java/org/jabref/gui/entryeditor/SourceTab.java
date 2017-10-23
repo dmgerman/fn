@@ -458,12 +458,6 @@ specifier|final
 name|BibDatabaseMode
 name|mode
 decl_stmt|;
-DECL|field|entry
-specifier|private
-specifier|final
-name|BibEntry
-name|entry
-decl_stmt|;
 DECL|field|panel
 specifier|private
 specifier|final
@@ -485,15 +479,12 @@ specifier|private
 name|UndoManager
 name|undoManager
 decl_stmt|;
-DECL|method|SourceTab (BasePanel panel, BibEntry entry, BooleanProperty movingToDifferentEntry)
+DECL|method|SourceTab (BasePanel panel, BooleanProperty movingToDifferentEntry)
 specifier|public
 name|SourceTab
 parameter_list|(
 name|BasePanel
 name|panel
-parameter_list|,
-name|BibEntry
-name|entry
 parameter_list|,
 name|BooleanProperty
 name|movingToDifferentEntry
@@ -510,12 +501,6 @@ argument_list|()
 operator|.
 name|getMode
 argument_list|()
-expr_stmt|;
-name|this
-operator|.
-name|entry
-operator|=
-name|entry
 expr_stmt|;
 name|this
 operator|.
@@ -657,11 +642,14 @@ name|toString
 argument_list|()
 return|;
 block|}
-DECL|method|updateSourcePane ()
+DECL|method|updateSourcePane (BibEntry entry)
 specifier|public
 name|void
 name|updateSourcePane
-parameter_list|()
+parameter_list|(
+name|BibEntry
+name|entry
+parameter_list|)
 block|{
 if|if
 condition|(
@@ -800,7 +788,9 @@ name|focused
 condition|)
 block|{
 name|storeSource
-argument_list|()
+argument_list|(
+name|entry
+argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -836,7 +826,9 @@ argument_list|(
 parameter_list|()
 lambda|->
 name|storeSource
-argument_list|()
+argument_list|(
+name|entry
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -943,11 +935,14 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|shouldShow ()
+DECL|method|shouldShow (BibEntry entry)
 specifier|public
 name|boolean
 name|shouldShow
-parameter_list|()
+parameter_list|(
+name|BibEntry
+name|entry
+parameter_list|)
 block|{
 return|return
 literal|true
@@ -955,11 +950,14 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|initialize ()
+DECL|method|bindToEntry (BibEntry entry)
 specifier|protected
 name|void
-name|initialize
-parameter_list|()
+name|bindToEntry
+parameter_list|(
+name|BibEntry
+name|entry
+parameter_list|)
 block|{
 name|this
 operator|.
@@ -974,11 +972,14 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|storeSource ()
+DECL|method|storeSource (BibEntry entry)
 specifier|private
 name|void
 name|storeSource
-parameter_list|()
+parameter_list|(
+name|BibEntry
+name|entry
+parameter_list|)
 block|{
 if|if
 condition|(

@@ -124,26 +124,35 @@ name|MathSciNetTab
 extends|extends
 name|EntryEditorTab
 block|{
-DECL|field|mathSciNetId
+DECL|method|MathSciNetTab ()
+specifier|public
+name|MathSciNetTab
+parameter_list|()
+block|{
+name|setText
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"MathSciNet Review"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|getMathSciNetId (BibEntry entry)
 specifier|private
 name|Optional
 argument_list|<
 name|MathSciNetId
 argument_list|>
-name|mathSciNetId
-decl_stmt|;
-DECL|method|MathSciNetTab (BibEntry entry)
-specifier|public
-name|MathSciNetTab
+name|getMathSciNetId
 parameter_list|(
 name|BibEntry
 name|entry
 parameter_list|)
 block|{
-name|this
-operator|.
-name|mathSciNetId
-operator|=
+return|return
 name|entry
 operator|.
 name|getField
@@ -159,23 +168,16 @@ name|MathSciNetId
 operator|::
 name|parse
 argument_list|)
-expr_stmt|;
-name|setText
-argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"MathSciNet Review"
-argument_list|)
-argument_list|)
-expr_stmt|;
+return|;
 block|}
-DECL|method|getPane ()
+DECL|method|getPane (BibEntry entry)
 specifier|private
 name|StackPane
 name|getPane
-parameter_list|()
+parameter_list|(
+name|BibEntry
+name|entry
+parameter_list|)
 block|{
 name|StackPane
 name|root
@@ -252,6 +254,17 @@ argument_list|,
 name|progress
 argument_list|)
 expr_stmt|;
+name|Optional
+argument_list|<
+name|MathSciNetId
+argument_list|>
+name|mathSciNetId
+init|=
+name|getMathSciNetId
+argument_list|(
+name|entry
+argument_list|)
+decl_stmt|;
 name|mathSciNetId
 operator|.
 name|flatMap
@@ -329,14 +342,20 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|shouldShow ()
+DECL|method|shouldShow (BibEntry entry)
 specifier|public
 name|boolean
 name|shouldShow
-parameter_list|()
+parameter_list|(
+name|BibEntry
+name|entry
+parameter_list|)
 block|{
 return|return
-name|mathSciNetId
+name|getMathSciNetId
+argument_list|(
+name|entry
+argument_list|)
 operator|.
 name|isPresent
 argument_list|()
@@ -344,16 +363,21 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|initialize ()
+DECL|method|bindToEntry (BibEntry entry)
 specifier|protected
 name|void
-name|initialize
-parameter_list|()
+name|bindToEntry
+parameter_list|(
+name|BibEntry
+name|entry
+parameter_list|)
 block|{
 name|setContent
 argument_list|(
 name|getPane
-argument_list|()
+argument_list|(
+name|entry
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
