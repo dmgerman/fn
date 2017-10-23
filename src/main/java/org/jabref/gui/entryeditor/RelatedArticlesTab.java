@@ -562,7 +562,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"What_is_Mr._DLib?"
+literal|"What is Mr. DLib?"
 argument_list|)
 argument_list|)
 expr_stmt|;

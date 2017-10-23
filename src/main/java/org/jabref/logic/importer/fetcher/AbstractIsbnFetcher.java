@@ -211,7 +211,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Invalid_ISBN:_'%0'."
+literal|"Invalid ISBN: '%0'."
 argument_list|,
 name|identifier
 argument_list|)

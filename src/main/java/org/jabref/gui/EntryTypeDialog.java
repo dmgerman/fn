@@ -2251,7 +2251,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Fetcher_'%0'_did_not_find_an_entry_for_id_'%1'."
+literal|"Fetcher '%0' did not find an entry for id '%1'."
 argument_list|,
 name|fetcher
 operator|.

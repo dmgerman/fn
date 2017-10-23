@@ -822,7 +822,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Connection_to_%0_server_established."
+literal|"Connection to %0 server established."
 argument_list|,
 name|dbmsConnectionProperties
 operator|.
@@ -1025,7 +1025,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Connection_to_%0_server_established."
+literal|"Connection to %0 server established."
 argument_list|,
 name|dbmsConnectionProperties
 operator|.

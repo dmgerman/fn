@@ -255,7 +255,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"regular_expression"
+literal|"regular expression"
 argument_list|)
 return|;
 block|}
