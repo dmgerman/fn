@@ -1,10 +1,12 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|org.jabref.collab
+DECL|package|org.jabref.gui.collab
 package|package
 name|org
 operator|.
 name|jabref
+operator|.
+name|gui
 operator|.
 name|collab
 package|;
@@ -99,11 +101,11 @@ import|;
 end_import
 
 begin_class
-DECL|class|PreambleChange
+DECL|class|PreambleChangeViewModel
 class|class
-name|PreambleChange
+name|PreambleChangeViewModel
 extends|extends
-name|Change
+name|ChangeViewModel
 block|{
 DECL|field|mem
 specifier|private
@@ -139,9 +141,9 @@ argument_list|(
 name|tp
 argument_list|)
 decl_stmt|;
-DECL|method|PreambleChange (String mem, String disk)
+DECL|method|PreambleChangeViewModel (String mem, String disk)
 specifier|public
-name|PreambleChange
+name|PreambleChangeViewModel
 parameter_list|(
 name|String
 name|mem

@@ -1,10 +1,12 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|org.jabref.collab
+DECL|package|org.jabref.gui.collab
 package|package
 name|org
 operator|.
 name|jabref
+operator|.
+name|gui
 operator|.
 name|collab
 package|;
@@ -315,7 +317,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|selected
 specifier|private
-name|Change
+name|ChangeViewModel
 name|selected
 decl_stmt|;
 DECL|field|infoShown
@@ -652,7 +654,7 @@ argument_list|)
 decl_stmt|;
 name|Enumeration
 argument_list|<
-name|Change
+name|ChangeViewModel
 argument_list|>
 name|enumer
 init|=
@@ -668,7 +670,7 @@ literal|false
 decl_stmt|;
 for|for
 control|(
-name|Change
+name|ChangeViewModel
 name|c
 range|:
 name|Collections
@@ -852,13 +854,13 @@ if|if
 condition|(
 name|o
 operator|instanceof
-name|Change
+name|ChangeViewModel
 condition|)
 block|{
 name|selected
 operator|=
 operator|(
-name|Change
+name|ChangeViewModel
 operator|)
 name|o
 expr_stmt|;

@@ -1,10 +1,12 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|org.jabref.collab
+DECL|package|org.jabref.gui.collab
 package|package
 name|org
 operator|.
 name|jabref
+operator|.
+name|gui
 operator|.
 name|collab
 package|;
@@ -73,10 +75,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|Change
+DECL|class|ChangeViewModel
 specifier|abstract
 class|class
-name|Change
+name|ChangeViewModel
 extends|extends
 name|DefaultMutableTreeNode
 block|{
@@ -92,8 +94,8 @@ name|accepted
 init|=
 literal|true
 decl_stmt|;
-DECL|method|Change ()
-name|Change
+DECL|method|ChangeViewModel ()
+name|ChangeViewModel
 parameter_list|()
 block|{
 name|name
@@ -101,8 +103,8 @@ operator|=
 literal|""
 expr_stmt|;
 block|}
-DECL|method|Change (String name)
-name|Change
+DECL|method|ChangeViewModel (String name)
+name|ChangeViewModel
 parameter_list|(
 name|String
 name|name
@@ -171,14 +173,14 @@ operator|(
 name|getParent
 argument_list|()
 operator|instanceof
-name|Change
+name|ChangeViewModel
 operator|)
 condition|)
 block|{
 return|return
 operator|(
 operator|(
-name|Change
+name|ChangeViewModel
 operator|)
 name|getParent
 argument_list|()

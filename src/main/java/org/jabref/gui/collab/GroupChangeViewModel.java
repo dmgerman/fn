@@ -1,10 +1,12 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|org.jabref.collab
+DECL|package|org.jabref.gui.collab
 package|package
 name|org
 operator|.
 name|jabref
+operator|.
+name|gui
 operator|.
 name|collab
 package|;
@@ -141,11 +143,11 @@ import|;
 end_import
 
 begin_class
-DECL|class|GroupChange
+DECL|class|GroupChangeViewModel
 class|class
-name|GroupChange
+name|GroupChangeViewModel
 extends|extends
-name|Change
+name|ChangeViewModel
 block|{
 DECL|field|changedGroups
 specifier|private
@@ -159,9 +161,9 @@ specifier|final
 name|GroupTreeNode
 name|tmpGroupRoot
 decl_stmt|;
-DECL|method|GroupChange (GroupTreeNode changedGroups, GroupTreeNode tmpGroupRoot)
+DECL|method|GroupChangeViewModel (GroupTreeNode changedGroups, GroupTreeNode tmpGroupRoot)
 specifier|public
-name|GroupChange
+name|GroupChangeViewModel
 parameter_list|(
 name|GroupTreeNode
 name|changedGroups

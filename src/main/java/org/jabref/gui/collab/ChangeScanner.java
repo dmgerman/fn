@@ -1,10 +1,12 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|org.jabref.collab
+DECL|package|org.jabref.gui.collab
 package|package
 name|org
 operator|.
 name|jabref
+operator|.
+name|gui
 operator|.
 name|collab
 package|;
@@ -1309,7 +1311,7 @@ operator|.
 name|add
 argument_list|(
 operator|new
-name|MetaDataChange
+name|MetaDataChangeViewModel
 argument_list|(
 name|inMemory
 argument_list|,
@@ -1337,7 +1339,7 @@ operator|.
 name|add
 argument_list|(
 operator|new
-name|MetaDataChange
+name|MetaDataChangeViewModel
 argument_list|(
 name|inMemory
 argument_list|,
@@ -1802,7 +1804,7 @@ operator|.
 name|add
 argument_list|(
 operator|new
-name|EntryChange
+name|EntryChangeViewModel
 argument_list|(
 name|bestFit
 argument_list|(
@@ -1837,7 +1839,7 @@ operator|.
 name|add
 argument_list|(
 operator|new
-name|EntryDeleteChange
+name|EntryDeleteChangeViewModel
 argument_list|(
 name|bestFit
 argument_list|(
@@ -1975,7 +1977,7 @@ operator|.
 name|add
 argument_list|(
 operator|new
-name|EntryAddChange
+name|EntryAddChangeViewModel
 argument_list|(
 name|diskSorter
 operator|.
@@ -2174,7 +2176,7 @@ operator|.
 name|add
 argument_list|(
 operator|new
-name|PreambleChange
+name|PreambleChangeViewModel
 argument_list|(
 name|mem
 argument_list|,
@@ -2202,7 +2204,7 @@ operator|.
 name|add
 argument_list|(
 operator|new
-name|PreambleChange
+name|PreambleChangeViewModel
 argument_list|(
 name|mem
 argument_list|,
@@ -2405,7 +2407,7 @@ operator|.
 name|add
 argument_list|(
 operator|new
-name|StringChange
+name|StringChangeViewModel
 argument_list|(
 name|mem
 operator|.
@@ -2442,7 +2444,7 @@ operator|.
 name|add
 argument_list|(
 operator|new
-name|StringChange
+name|StringChangeViewModel
 argument_list|(
 literal|null
 argument_list|,
@@ -2661,7 +2663,7 @@ operator|.
 name|add
 argument_list|(
 operator|new
-name|StringNameChange
+name|StringNameChangeViewModel
 argument_list|(
 name|bsMem
 argument_list|,
@@ -2757,7 +2759,7 @@ operator|.
 name|add
 argument_list|(
 operator|new
-name|StringRemoveChange
+name|StringRemoveChangeViewModel
 argument_list|(
 name|tmp
 argument_list|,
@@ -2816,7 +2818,7 @@ operator|.
 name|add
 argument_list|(
 operator|new
-name|StringAddChange
+name|StringAddChangeViewModel
 argument_list|(
 name|disk
 argument_list|)
@@ -3005,7 +3007,7 @@ operator|.
 name|add
 argument_list|(
 operator|new
-name|GroupChange
+name|GroupChangeViewModel
 argument_list|(
 name|groupsDisk
 operator|.
@@ -3042,7 +3044,7 @@ operator|.
 name|add
 argument_list|(
 operator|new
-name|GroupChange
+name|GroupChangeViewModel
 argument_list|(
 name|groupsDisk
 operator|.

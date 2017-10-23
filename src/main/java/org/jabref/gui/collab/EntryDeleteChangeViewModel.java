@@ -1,10 +1,12 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|org.jabref.collab
+DECL|package|org.jabref.gui.collab
 package|package
 name|org
 operator|.
 name|jabref
+operator|.
+name|gui
 operator|.
 name|collab
 package|;
@@ -167,11 +169,11 @@ import|;
 end_import
 
 begin_class
-DECL|class|EntryDeleteChange
+DECL|class|EntryDeleteChangeViewModel
 class|class
-name|EntryDeleteChange
+name|EntryDeleteChangeViewModel
 extends|extends
-name|Change
+name|ChangeViewModel
 block|{
 DECL|field|LOGGER
 specifier|private
@@ -184,7 +186,7 @@ name|LogFactory
 operator|.
 name|getLog
 argument_list|(
-name|EntryDeleteChange
+name|EntryDeleteChangeViewModel
 operator|.
 name|class
 argument_list|)
@@ -207,9 +209,9 @@ specifier|final
 name|JScrollPane
 name|sp
 decl_stmt|;
-DECL|method|EntryDeleteChange (BibEntry memEntry, BibEntry tmpEntry)
+DECL|method|EntryDeleteChangeViewModel (BibEntry memEntry, BibEntry tmpEntry)
 specifier|public
-name|EntryDeleteChange
+name|EntryDeleteChangeViewModel
 parameter_list|(
 name|BibEntry
 name|memEntry
