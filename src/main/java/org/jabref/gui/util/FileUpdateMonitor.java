@@ -432,6 +432,9 @@ name|directory
 init|=
 name|file
 operator|.
+name|toAbsolutePath
+argument_list|()
+operator|.
 name|getParent
 argument_list|()
 decl_stmt|;
