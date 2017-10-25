@@ -199,21 +199,12 @@ argument_list|(
 name|tp
 argument_list|)
 decl_stmt|;
-DECL|field|tmpString
-specifier|private
-specifier|final
-name|BibtexString
-name|tmpString
-decl_stmt|;
-DECL|method|StringRemoveChangeViewModel (BibtexString string, BibtexString tmpString, BibtexString inMem)
+DECL|method|StringRemoveChangeViewModel (BibtexString string, BibtexString inMem)
 specifier|public
 name|StringRemoveChangeViewModel
 parameter_list|(
 name|BibtexString
 name|string
-parameter_list|,
-name|BibtexString
-name|tmpString
 parameter_list|,
 name|BibtexString
 name|inMem
@@ -237,12 +228,6 @@ argument_list|()
 operator|+
 literal|'\''
 argument_list|)
-expr_stmt|;
-name|this
-operator|.
-name|tmpString
-operator|=
-name|tmpString
 expr_stmt|;
 name|this
 operator|.
@@ -390,7 +375,7 @@ name|secondary
 operator|.
 name|removeString
 argument_list|(
-name|tmpString
+name|string
 operator|.
 name|getId
 argument_list|()

@@ -66,6 +66,22 @@ name|jabref
 operator|.
 name|logic
 operator|.
+name|bibtex
+operator|.
+name|comparator
+operator|.
+name|MetaDataDiff
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
 name|l10n
 operator|.
 name|Localization
@@ -145,15 +161,15 @@ specifier|final
 name|MetaData
 name|newMetaData
 decl_stmt|;
-DECL|method|MetaDataChangeViewModel (MetaData originalMetaData, MetaData newMetaData)
+DECL|method|MetaDataChangeViewModel (MetaData originalMetaData, MetaDataDiff metaDataDiff)
 specifier|public
 name|MetaDataChangeViewModel
 parameter_list|(
 name|MetaData
 name|originalMetaData
 parameter_list|,
-name|MetaData
-name|newMetaData
+name|MetaDataDiff
+name|metaDataDiff
 parameter_list|)
 block|{
 name|super
@@ -176,7 +192,10 @@ name|this
 operator|.
 name|newMetaData
 operator|=
-name|newMetaData
+name|metaDataDiff
+operator|.
+name|getNewMetaData
+argument_list|()
 expr_stmt|;
 name|infoPane
 operator|.

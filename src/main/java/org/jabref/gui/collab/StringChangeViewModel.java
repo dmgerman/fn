@@ -199,12 +199,6 @@ specifier|final
 name|BibtexString
 name|string
 decl_stmt|;
-DECL|field|mem
-specifier|private
-specifier|final
-name|String
-name|mem
-decl_stmt|;
 DECL|field|disk
 specifier|private
 specifier|final
@@ -245,7 +239,7 @@ specifier|final
 name|BibtexString
 name|tmpString
 decl_stmt|;
-DECL|method|StringChangeViewModel (BibtexString string, BibtexString tmpString, String label, String mem, String disk)
+DECL|method|StringChangeViewModel (BibtexString string, BibtexString tmpString, String disk)
 specifier|public
 name|StringChangeViewModel
 parameter_list|(
@@ -254,12 +248,6 @@ name|string
 parameter_list|,
 name|BibtexString
 name|tmpString
-parameter_list|,
-name|String
-name|label
-parameter_list|,
-name|String
-name|mem
 parameter_list|,
 name|String
 name|disk
@@ -276,7 +264,10 @@ argument_list|)
 operator|+
 literal|": '"
 operator|+
-name|label
+name|tmpString
+operator|.
+name|getName
+argument_list|()
 operator|+
 literal|'\''
 argument_list|)
@@ -297,13 +288,10 @@ name|this
 operator|.
 name|label
 operator|=
-name|label
-expr_stmt|;
-name|this
+name|tmpString
 operator|.
-name|mem
-operator|=
-name|mem
+name|getName
+argument_list|()
 expr_stmt|;
 name|this
 operator|.
@@ -589,6 +577,14 @@ block|}
 block|}
 else|else
 block|{
+name|String
+name|mem
+init|=
+name|string
+operator|.
+name|getContent
+argument_list|()
+decl_stmt|;
 name|string
 operator|.
 name|setContent

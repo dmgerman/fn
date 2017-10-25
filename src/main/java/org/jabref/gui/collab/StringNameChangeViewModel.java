@@ -223,7 +223,7 @@ specifier|final
 name|BibtexString
 name|tmpString
 decl_stmt|;
-DECL|method|StringNameChangeViewModel (BibtexString string, BibtexString tmpString, String mem, String tmp, String disk, String content)
+DECL|method|StringNameChangeViewModel (BibtexString string, BibtexString tmpString, String mem, String disk)
 specifier|public
 name|StringNameChangeViewModel
 parameter_list|(
@@ -237,13 +237,7 @@ name|String
 name|mem
 parameter_list|,
 name|String
-name|tmp
-parameter_list|,
-name|String
 name|disk
-parameter_list|,
-name|String
-name|content
 parameter_list|)
 block|{
 name|super
@@ -257,7 +251,10 @@ argument_list|)
 operator|+
 literal|": '"
 operator|+
-name|tmp
+name|tmpString
+operator|.
+name|getName
+argument_list|()
 operator|+
 literal|'\''
 argument_list|)
@@ -278,7 +275,10 @@ name|this
 operator|.
 name|content
 operator|=
-name|content
+name|tmpString
+operator|.
+name|getContent
+argument_list|()
 expr_stmt|;
 name|this
 operator|.
