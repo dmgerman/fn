@@ -2335,8 +2335,6 @@ operator|new
 name|SourceTab
 argument_list|(
 name|panel
-argument_list|,
-name|movingToDifferentEntry
 argument_list|)
 expr_stmt|;
 name|tabs
