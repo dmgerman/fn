@@ -1,10 +1,12 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|org.jabref.collab
+DECL|package|org.jabref.gui.collab
 package|package
 name|org
 operator|.
 name|jabref
+operator|.
+name|gui
 operator|.
 name|collab
 package|;
@@ -66,7 +68,7 @@ name|gui
 operator|.
 name|undo
 operator|.
-name|UndoableInsertString
+name|UndoableRemoveString
 import|;
 end_import
 
@@ -95,20 +97,6 @@ operator|.
 name|database
 operator|.
 name|BibDatabase
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|database
-operator|.
-name|KeyCollisionException
 import|;
 end_import
 
@@ -155,11 +143,11 @@ import|;
 end_import
 
 begin_class
-DECL|class|StringAddChange
+DECL|class|StringRemoveChangeViewModel
 class|class
-name|StringAddChange
+name|StringRemoveChangeViewModel
 extends|extends
-name|Change
+name|ChangeViewModel
 block|{
 DECL|field|LOGGER
 specifier|private
@@ -172,7 +160,7 @@ name|LogFactory
 operator|.
 name|getLog
 argument_list|(
-name|StringAddChange
+name|StringRemoveChangeViewModel
 operator|.
 name|class
 argument_list|)
@@ -182,6 +170,12 @@ specifier|private
 specifier|final
 name|BibtexString
 name|string
+decl_stmt|;
+DECL|field|inMem
+specifier|private
+specifier|final
+name|BibtexString
+name|inMem
 decl_stmt|;
 DECL|field|tp
 specifier|private
@@ -205,12 +199,15 @@ argument_list|(
 name|tp
 argument_list|)
 decl_stmt|;
-DECL|method|StringAddChange (BibtexString string)
+DECL|method|StringRemoveChangeViewModel (BibtexString string, BibtexString inMem)
 specifier|public
-name|StringAddChange
+name|StringRemoveChangeViewModel
 parameter_list|(
 name|BibtexString
 name|string
+parameter_list|,
+name|BibtexString
+name|inMem
 parameter_list|)
 block|{
 name|super
@@ -219,7 +216,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Added string"
+literal|"Removed string"
 argument_list|)
 operator|+
 literal|": '"
@@ -238,6 +235,13 @@ name|string
 operator|=
 name|string
 expr_stmt|;
+name|this
+operator|.
+name|inMem
+operator|=
+name|inMem
+expr_stmt|;
+comment|// Holds the version in memory. Check if it has been modified...?
 name|tp
 operator|.
 name|setText
@@ -248,7 +252,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Added string"
+literal|"Removed string"
 argument_list|)
 operator|+
 literal|"</H2><H3>"
@@ -304,40 +308,6 @@ name|NamedCompound
 name|undoEdit
 parameter_list|)
 block|{
-if|if
-condition|(
-name|panel
-operator|.
-name|getDatabase
-argument_list|()
-operator|.
-name|hasStringLabel
-argument_list|(
-name|string
-operator|.
-name|getName
-argument_list|()
-argument_list|)
-condition|)
-block|{
-comment|// The name to change to is already in the database, so we can't comply.
-name|LOGGER
-operator|.
-name|info
-argument_list|(
-literal|"Cannot add string '"
-operator|+
-name|string
-operator|.
-name|getName
-argument_list|()
-operator|+
-literal|"' because the name "
-operator|+
-literal|"is already in use."
-argument_list|)
-expr_stmt|;
-block|}
 try|try
 block|{
 name|panel
@@ -345,9 +315,12 @@ operator|.
 name|getDatabase
 argument_list|()
 operator|.
-name|addString
+name|removeString
 argument_list|(
-name|string
+name|inMem
+operator|.
+name|getId
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|undoEdit
@@ -355,7 +328,7 @@ operator|.
 name|addEdit
 argument_list|(
 operator|new
-name|UndoableInsertString
+name|UndoableRemoveString
 argument_list|(
 name|panel
 argument_list|,
@@ -371,7 +344,7 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|KeyCollisionException
+name|Exception
 name|ex
 parameter_list|)
 block|{
@@ -397,56 +370,17 @@ name|ex
 argument_list|)
 expr_stmt|;
 block|}
-try|try
-block|{
+comment|// Update tmp database:
 name|secondary
 operator|.
-name|addString
-argument_list|(
-operator|new
-name|BibtexString
+name|removeString
 argument_list|(
 name|string
 operator|.
-name|getName
+name|getId
 argument_list|()
-argument_list|,
-name|string
-operator|.
-name|getContent
-argument_list|()
-argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|KeyCollisionException
-name|ex
-parameter_list|)
-block|{
-name|LOGGER
-operator|.
-name|info
-argument_list|(
-literal|"Error: could not add string '"
-operator|+
-name|string
-operator|.
-name|getName
-argument_list|()
-operator|+
-literal|"' to tmp database: "
-operator|+
-name|ex
-operator|.
-name|getMessage
-argument_list|()
-argument_list|,
-name|ex
-argument_list|)
-expr_stmt|;
-block|}
 return|return
 literal|true
 return|;

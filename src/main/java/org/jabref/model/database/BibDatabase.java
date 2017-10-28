@@ -657,34 +657,45 @@ name|isEmpty
 argument_list|()
 return|;
 block|}
-comment|/**      * Returns an EntrySorter with the sorted entries from this base,      * sorted by the given Comparator.      */
-DECL|method|getSorter (Comparator<BibEntry> comp)
+comment|/**      * Returns the list of entries sorted by the given comparator.      */
+DECL|method|getEntriesSorted (Comparator<BibEntry> comparator)
 specifier|public
 specifier|synchronized
-name|EntrySorter
-name|getSorter
+name|List
+argument_list|<
+name|BibEntry
+argument_list|>
+name|getEntriesSorted
 parameter_list|(
 name|Comparator
 argument_list|<
 name|BibEntry
 argument_list|>
-name|comp
+name|comparator
 parameter_list|)
 block|{
-return|return
-operator|new
-name|EntrySorter
-argument_list|(
+name|List
+argument_list|<
+name|BibEntry
+argument_list|>
+name|entriesSorted
+init|=
 operator|new
 name|ArrayList
 argument_list|<>
 argument_list|(
-name|getEntries
-argument_list|()
+name|entries
 argument_list|)
-argument_list|,
-name|comp
+decl_stmt|;
+name|entriesSorted
+operator|.
+name|sort
+argument_list|(
+name|comparator
 argument_list|)
+expr_stmt|;
+return|return
+name|entriesSorted
 return|;
 block|}
 comment|/**      * Returns whether an entry with the given ID exists (-> entry_type + hashcode).      */
@@ -1455,6 +1466,58 @@ name|id
 argument_list|)
 return|;
 block|}
+comment|/**      * Returns the string with the given name.      */
+DECL|method|getStringByName (String name)
+specifier|public
+name|Optional
+argument_list|<
+name|BibtexString
+argument_list|>
+name|getStringByName
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+block|{
+for|for
+control|(
+name|BibtexString
+name|string
+range|:
+name|getStringValues
+argument_list|()
+control|)
+block|{
+if|if
+condition|(
+name|string
+operator|.
+name|getName
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+name|name
+argument_list|)
+condition|)
+block|{
+return|return
+name|Optional
+operator|.
+name|of
+argument_list|(
+name|string
+argument_list|)
+return|;
+block|}
+block|}
+return|return
+name|Optional
+operator|.
+name|empty
+argument_list|()
+return|;
+block|}
 comment|/**      * Returns the number of strings.      */
 DECL|method|getStringCount ()
 specifier|public
@@ -1506,44 +1569,6 @@ literal|""
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
-comment|/**      * Copies all Strings from another BibDatabase.      *      * @param database another BibDatabase      */
-DECL|method|copyStrings (BibDatabase database)
-specifier|public
-name|void
-name|copyStrings
-parameter_list|(
-name|BibDatabase
-name|database
-parameter_list|)
-block|{
-for|for
-control|(
-name|String
-name|key
-range|:
-name|database
-operator|.
-name|getStringKeySet
-argument_list|()
-control|)
-block|{
-name|BibtexString
-name|string
-init|=
-name|database
-operator|.
-name|getString
-argument_list|(
-name|key
-argument_list|)
-decl_stmt|;
-name|addString
-argument_list|(
-name|string
-argument_list|)
-expr_stmt|;
-block|}
 block|}
 comment|/**      * Returns true if a string with the given label already exists.      */
 DECL|method|hasStringLabel (String label)
