@@ -20,6 +20,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|List
 import|;
 end_import
@@ -31,16 +41,6 @@ operator|.
 name|util
 operator|.
 name|Objects
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Vector
 import|;
 end_import
 
@@ -77,7 +77,7 @@ argument_list|>
 name|matchers
 init|=
 operator|new
-name|Vector
+name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
@@ -105,10 +105,13 @@ return|;
 block|}
 if|if
 condition|(
+operator|(
 name|o
 operator|==
 literal|null
+operator|)
 operator|||
+operator|(
 name|getClass
 argument_list|()
 operator|!=
@@ -116,6 +119,7 @@ name|o
 operator|.
 name|getClass
 argument_list|()
+operator|)
 condition|)
 block|{
 return|return
@@ -131,10 +135,12 @@ operator|)
 name|o
 decl_stmt|;
 return|return
-name|matchers
+name|Objects
 operator|.
 name|equals
 argument_list|(
+name|matchers
+argument_list|,
 name|that
 operator|.
 name|matchers
@@ -150,10 +156,12 @@ name|hashCode
 parameter_list|()
 block|{
 return|return
-name|matchers
+name|Objects
 operator|.
-name|hashCode
-argument_list|()
+name|hash
+argument_list|(
+name|matchers
+argument_list|)
 return|;
 block|}
 DECL|method|addRule (SearchMatcher newRule)
