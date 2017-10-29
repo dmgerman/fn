@@ -988,6 +988,8 @@ name|ce
 argument_list|,
 name|changedEntries
 argument_list|,
+literal|null
+argument_list|,
 name|panel
 operator|.
 name|getBibDatabaseContext
