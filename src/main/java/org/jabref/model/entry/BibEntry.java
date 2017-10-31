@@ -3948,6 +3948,21 @@ name|linkedFiles
 argument_list|)
 return|;
 block|}
+DECL|method|getFieldsObservable ()
+specifier|public
+name|ObservableMap
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
+name|getFieldsObservable
+parameter_list|()
+block|{
+return|return
+name|fields
+return|;
+block|}
 DECL|interface|GetFieldInterface
 specifier|private
 interface|interface
