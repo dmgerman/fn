@@ -1012,7 +1012,7 @@ argument_list|)
 expr_stmt|;
 name|progressDialog
 operator|.
-name|showAndWait
+name|show
 argument_list|()
 expr_stmt|;
 block|}
