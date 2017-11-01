@@ -207,7 +207,7 @@ argument_list|>
 argument_list|>
 name|annotationCache
 decl_stmt|;
-comment|/**      * Creates an empty fil annotation cache. Required to allow the annotation cache to be injected into views without      * hitting the bug https://github.com/AdamBien/afterburner.fx/issues/71.      */
+comment|/**      * Creates an empty fil annotation cache. Required to allow the annotation cache to be injected into views without      * hitting the bug https://github.com/AdamBien/afterburner.fx/issues/71 .      */
 DECL|method|FileAnnotationCache ()
 specifier|public
 name|FileAnnotationCache
