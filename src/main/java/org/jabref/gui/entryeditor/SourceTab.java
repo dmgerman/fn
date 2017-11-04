@@ -138,7 +138,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|BasePanel
+name|IconTheme
 import|;
 end_import
 
@@ -150,7 +150,9 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|IconTheme
+name|undo
+operator|.
+name|CountingUndoManager
 import|;
 end_import
 
@@ -274,6 +276,20 @@ name|jabref
 operator|.
 name|logic
 operator|.
+name|bibtex
+operator|.
+name|LatexFieldFormatterPreferences
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
 name|importer
 operator|.
 name|ParserResult
@@ -321,6 +337,20 @@ operator|.
 name|database
 operator|.
 name|BibDatabase
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|database
+operator|.
+name|BibDatabaseContext
 import|;
 end_import
 
@@ -486,6 +516,12 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+DECL|field|fieldFormatterPreferences
+specifier|private
+specifier|final
+name|LatexFieldFormatterPreferences
+name|fieldFormatterPreferences
+decl_stmt|;
 DECL|field|mode
 specifier|private
 specifier|final
@@ -523,22 +559,25 @@ argument_list|(
 name|sourceIsValid
 argument_list|)
 decl_stmt|;
-DECL|method|SourceTab (BasePanel panel)
+DECL|method|SourceTab (BibDatabaseContext bibDatabaseContext, CountingUndoManager undoManager, LatexFieldFormatterPreferences fieldFormatterPreferences)
 specifier|public
 name|SourceTab
 parameter_list|(
-name|BasePanel
-name|panel
+name|BibDatabaseContext
+name|bibDatabaseContext
+parameter_list|,
+name|CountingUndoManager
+name|undoManager
+parameter_list|,
+name|LatexFieldFormatterPreferences
+name|fieldFormatterPreferences
 parameter_list|)
 block|{
 name|this
 operator|.
 name|mode
 operator|=
-name|panel
-operator|.
-name|getBibDatabaseContext
-argument_list|()
+name|bibDatabaseContext
 operator|.
 name|getMode
 argument_list|()
@@ -599,13 +638,16 @@ name|this
 operator|.
 name|undoManager
 operator|=
-name|panel
+name|undoManager
+expr_stmt|;
+name|this
 operator|.
-name|getUndoManager
-argument_list|()
+name|fieldFormatterPreferences
+operator|=
+name|fieldFormatterPreferences
 expr_stmt|;
 block|}
-DECL|method|getSourceString (BibEntry entry, BibDatabaseMode type)
+DECL|method|getSourceString (BibEntry entry, BibDatabaseMode type, LatexFieldFormatterPreferences fieldFormatterPreferences)
 specifier|private
 specifier|static
 name|String
@@ -616,6 +658,9 @@ name|entry
 parameter_list|,
 name|BibDatabaseMode
 name|type
+parameter_list|,
+name|LatexFieldFormatterPreferences
+name|fieldFormatterPreferences
 parameter_list|)
 throws|throws
 name|IOException
@@ -636,12 +681,7 @@ name|LatexFieldFormatter
 operator|.
 name|buildIgnoreHashes
 argument_list|(
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getLatexFieldFormatterPreferences
-argument_list|()
+name|fieldFormatterPreferences
 argument_list|)
 decl_stmt|;
 operator|new
@@ -846,7 +886,7 @@ name|this
 operator|.
 name|setContent
 argument_list|(
-name|notificationPane
+name|codeArea
 argument_list|)
 expr_stmt|;
 comment|// Store source for every change in the source code
@@ -895,6 +935,8 @@ argument_list|(
 name|entry
 argument_list|,
 name|mode
+argument_list|,
+name|fieldFormatterPreferences
 argument_list|)
 argument_list|)
 expr_stmt|;
