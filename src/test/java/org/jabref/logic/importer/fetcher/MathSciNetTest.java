@@ -486,7 +486,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-comment|// CI has no subscription to zbMath and thus gets 401 response
+comment|// CI has no subscription to MathSciNet and thus gets 401 response
 name|Assume
 operator|.
 name|assumeFalse
@@ -526,7 +526,7 @@ name|fetchedEntries
 operator|.
 name|get
 argument_list|(
-literal|0
+literal|1
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -541,7 +541,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-comment|// CI has no subscription to zbMath and thus gets 401 response
+comment|// CI has no subscription to MathSciNet and thus gets 401 response
 name|Assume
 operator|.
 name|assumeFalse
