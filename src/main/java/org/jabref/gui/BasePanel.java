@@ -2121,8 +2121,16 @@ argument_list|()
 decl_stmt|;
 DECL|field|changeMonitor
 specifier|private
+name|Optional
+argument_list|<
 name|DatabaseChangeMonitor
+argument_list|>
 name|changeMonitor
+init|=
+name|Optional
+operator|.
+name|empty
+argument_list|()
 decl_stmt|;
 DECL|method|BasePanel (JabRefFrame frame, BibDatabaseContext bibDatabaseContext)
 specifier|public
@@ -2284,6 +2292,10 @@ block|{
 comment|// Register so we get notifications about outside changes to the file.
 name|changeMonitor
 operator|=
+name|Optional
+operator|.
+name|of
+argument_list|(
 operator|new
 name|DatabaseChangeMonitor
 argument_list|(
@@ -2295,6 +2307,7 @@ name|getFileUpdateMonitor
 argument_list|()
 argument_list|,
 name|this
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -11550,8 +11563,12 @@ parameter_list|()
 block|{
 name|changeMonitor
 operator|.
+name|ifPresent
+argument_list|(
+name|DatabaseChangeMonitor
+operator|::
 name|unregister
-argument_list|()
+argument_list|)
 expr_stmt|;
 comment|// Check if there is a FileUpdatePanel for this BasePanel being shown. If so,
 comment|// remove it:
@@ -11654,8 +11671,17 @@ block|{
 return|return
 name|changeMonitor
 operator|.
+name|map
+argument_list|(
+name|DatabaseChangeMonitor
+operator|::
 name|hasBeenModifiedExternally
-argument_list|()
+argument_list|)
+operator|.
+name|orElse
+argument_list|(
+literal|false
+argument_list|)
 return|;
 block|}
 end_function
@@ -11669,8 +11695,12 @@ parameter_list|()
 block|{
 name|changeMonitor
 operator|.
+name|ifPresent
+argument_list|(
+name|DatabaseChangeMonitor
+operator|::
 name|markExternalChangesAsResolved
-argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 end_function
@@ -12304,11 +12334,19 @@ parameter_list|()
 block|{
 name|changeMonitor
 operator|.
+name|ifPresent
+argument_list|(
+name|DatabaseChangeMonitor
+operator|::
 name|unregister
-argument_list|()
+argument_list|)
 expr_stmt|;
 name|changeMonitor
 operator|=
+name|Optional
+operator|.
+name|of
+argument_list|(
 operator|new
 name|DatabaseChangeMonitor
 argument_list|(
@@ -12320,6 +12358,7 @@ name|getFileUpdateMonitor
 argument_list|()
 argument_list|,
 name|this
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -12334,8 +12373,12 @@ parameter_list|()
 block|{
 name|changeMonitor
 operator|.
+name|ifPresent
+argument_list|(
+name|DatabaseChangeMonitor
+operator|::
 name|markAsSaved
-argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 end_function
@@ -12350,8 +12393,17 @@ block|{
 return|return
 name|changeMonitor
 operator|.
+name|map
+argument_list|(
+name|DatabaseChangeMonitor
+operator|::
 name|getTempFile
-argument_list|()
+argument_list|)
+operator|.
+name|orElse
+argument_list|(
+literal|null
+argument_list|)
 return|;
 block|}
 end_function
