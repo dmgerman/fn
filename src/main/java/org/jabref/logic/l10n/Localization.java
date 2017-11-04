@@ -265,7 +265,9 @@ name|LOGGER
 operator|.
 name|error
 argument_list|(
-literal|"Messages are not initialized."
+literal|"Messages are not initialized before accessing "
+operator|+
+name|key
 argument_list|)
 expr_stmt|;
 name|setLanguage

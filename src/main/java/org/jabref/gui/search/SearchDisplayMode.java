@@ -14,6 +14,18 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|function
+operator|.
+name|Supplier
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|jabref
@@ -37,10 +49,10 @@ enum|enum
 name|SearchDisplayMode
 block|{
 DECL|enumConstant|FLOAT
-DECL|enumConstant|Localization.lang
-DECL|enumConstant|Localization.lang
 name|FLOAT
 argument_list|(
+parameter_list|()
+lambda|->
 name|Localization
 operator|.
 name|lang
@@ -48,6 +60,8 @@ argument_list|(
 literal|"Float"
 argument_list|)
 argument_list|,
+parameter_list|()
+lambda|->
 name|Localization
 operator|.
 name|lang
@@ -57,10 +71,10 @@ argument_list|)
 argument_list|)
 block|,
 DECL|enumConstant|FILTER
-DECL|enumConstant|Localization.lang
-DECL|enumConstant|Localization.lang
 name|FILTER
 argument_list|(
+parameter_list|()
+lambda|->
 name|Localization
 operator|.
 name|lang
@@ -68,6 +82,8 @@ argument_list|(
 literal|"Filter"
 argument_list|)
 argument_list|,
+parameter_list|()
+lambda|->
 name|Localization
 operator|.
 name|lang
@@ -79,22 +95,35 @@ block|;
 DECL|field|displayName
 specifier|private
 specifier|final
+name|Supplier
+argument_list|<
 name|String
+argument_list|>
 name|displayName
 decl_stmt|;
 DECL|field|toolTipText
 specifier|private
 specifier|final
+name|Supplier
+argument_list|<
 name|String
+argument_list|>
 name|toolTipText
 decl_stmt|;
-DECL|method|SearchDisplayMode (String displayName, String toolTipText)
+comment|/**      * We have to use supplier for the localized text so that language changes are correctly reflected.      */
+DECL|method|SearchDisplayMode (Supplier<String> displayName, Supplier<String> toolTipText)
 name|SearchDisplayMode
 parameter_list|(
+name|Supplier
+argument_list|<
 name|String
+argument_list|>
 name|displayName
 parameter_list|,
+name|Supplier
+argument_list|<
 name|String
+argument_list|>
 name|toolTipText
 parameter_list|)
 block|{
@@ -119,6 +148,9 @@ parameter_list|()
 block|{
 return|return
 name|displayName
+operator|.
+name|get
+argument_list|()
 return|;
 block|}
 DECL|method|getToolTipText ()
@@ -129,6 +161,9 @@ parameter_list|()
 block|{
 return|return
 name|toolTipText
+operator|.
+name|get
+argument_list|()
 return|;
 block|}
 block|}
