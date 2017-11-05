@@ -374,6 +374,13 @@ name|preferences
 operator|.
 name|getFileDirectoryPreferences
 argument_list|()
+argument_list|,
+name|journalAbbreviationLoader
+operator|.
+name|getRepository
+argument_list|(
+name|journalAbbreviationPreferences
+argument_list|)
 argument_list|)
 decl_stmt|;
 if|if
