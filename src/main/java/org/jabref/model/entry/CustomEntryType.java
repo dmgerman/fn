@@ -18,7 +18,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|ArrayList
+name|Arrays
 import|;
 end_import
 
@@ -28,7 +28,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Arrays
+name|Collection
 import|;
 end_import
 
@@ -48,7 +48,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|List
+name|LinkedHashSet
 import|;
 end_import
 
@@ -69,6 +69,16 @@ operator|.
 name|util
 operator|.
 name|Optional
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
 import|;
 end_import
 
@@ -140,7 +150,7 @@ decl_stmt|;
 DECL|field|required
 specifier|private
 specifier|final
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -149,7 +159,7 @@ decl_stmt|;
 DECL|field|optional
 specifier|private
 specifier|final
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -158,32 +168,32 @@ decl_stmt|;
 DECL|field|primaryOptional
 specifier|private
 specifier|final
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
 name|primaryOptional
 decl_stmt|;
-DECL|method|CustomEntryType (String name, List<String> required, List<String> primaryOptional, List<String> secondaryOptional)
+DECL|method|CustomEntryType (String name, Collection<String> required, Collection<String> primaryOptional, Collection<String> secondaryOptional)
 specifier|public
 name|CustomEntryType
 parameter_list|(
 name|String
 name|name
 parameter_list|,
-name|List
+name|Collection
 argument_list|<
 name|String
 argument_list|>
 name|required
 parameter_list|,
-name|List
+name|Collection
 argument_list|<
 name|String
 argument_list|>
 name|primaryOptional
 parameter_list|,
-name|List
+name|Collection
 argument_list|<
 name|String
 argument_list|>
@@ -205,13 +215,23 @@ name|this
 operator|.
 name|primaryOptional
 operator|=
+operator|new
+name|LinkedHashSet
+argument_list|<>
+argument_list|(
 name|primaryOptional
+argument_list|)
 expr_stmt|;
 name|this
 operator|.
 name|required
 operator|=
+operator|new
+name|LinkedHashSet
+argument_list|<>
+argument_list|(
 name|required
+argument_list|)
 expr_stmt|;
 name|this
 operator|.
@@ -236,25 +256,25 @@ name|collect
 argument_list|(
 name|Collectors
 operator|.
-name|toList
+name|toSet
 argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|CustomEntryType (String name, List<String> required, List<String> optional)
+DECL|method|CustomEntryType (String name, Collection<String> required, Collection<String> optional)
 specifier|public
 name|CustomEntryType
 parameter_list|(
 name|String
 name|name
 parameter_list|,
-name|List
+name|Collection
 argument_list|<
 name|String
 argument_list|>
 name|required
 parameter_list|,
-name|List
+name|Collection
 argument_list|<
 name|String
 argument_list|>
@@ -276,19 +296,34 @@ name|this
 operator|.
 name|required
 operator|=
+operator|new
+name|LinkedHashSet
+argument_list|<>
+argument_list|(
 name|required
+argument_list|)
 expr_stmt|;
 name|this
 operator|.
 name|optional
 operator|=
+operator|new
+name|LinkedHashSet
+argument_list|<>
+argument_list|(
 name|optional
+argument_list|)
 expr_stmt|;
 name|this
 operator|.
 name|primaryOptional
 operator|=
+operator|new
+name|LinkedHashSet
+argument_list|<>
+argument_list|(
 name|optional
+argument_list|)
 expr_stmt|;
 block|}
 DECL|method|CustomEntryType (String name, String required, String optional)
@@ -596,7 +631,7 @@ annotation|@
 name|Override
 DECL|method|getOptionalFields ()
 specifier|public
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -606,7 +641,7 @@ block|{
 return|return
 name|Collections
 operator|.
-name|unmodifiableList
+name|unmodifiableSet
 argument_list|(
 name|optional
 argument_list|)
@@ -616,7 +651,7 @@ annotation|@
 name|Override
 DECL|method|getRequiredFields ()
 specifier|public
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -626,7 +661,7 @@ block|{
 return|return
 name|Collections
 operator|.
-name|unmodifiableList
+name|unmodifiableSet
 argument_list|(
 name|required
 argument_list|)
@@ -636,7 +671,7 @@ annotation|@
 name|Override
 DECL|method|getPrimaryOptionalFields ()
 specifier|public
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -646,7 +681,7 @@ block|{
 return|return
 name|Collections
 operator|.
-name|unmodifiableList
+name|unmodifiableSet
 argument_list|(
 name|primaryOptional
 argument_list|)
@@ -656,21 +691,21 @@ annotation|@
 name|Override
 DECL|method|getSecondaryOptionalFields ()
 specifier|public
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
 name|getSecondaryOptionalFields
 parameter_list|()
 block|{
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
 name|result
 init|=
 operator|new
-name|ArrayList
+name|LinkedHashSet
 argument_list|<>
 argument_list|(
 name|optional
@@ -686,7 +721,7 @@ expr_stmt|;
 return|return
 name|Collections
 operator|.
-name|unmodifiableList
+name|unmodifiableSet
 argument_list|(
 name|result
 argument_list|)

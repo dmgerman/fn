@@ -38,7 +38,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|HashSet
+name|Collection
 import|;
 end_import
 
@@ -48,7 +48,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|List
+name|HashSet
 import|;
 end_import
 
@@ -555,7 +555,7 @@ name|bibDatabaseMode
 argument_list|)
 decl_stmt|;
 comment|// Write required fields first.
-name|List
+name|Collection
 argument_list|<
 name|String
 argument_list|>

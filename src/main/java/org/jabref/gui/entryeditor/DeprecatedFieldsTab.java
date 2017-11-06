@@ -18,7 +18,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|List
+name|Collection
 import|;
 end_import
 
@@ -185,7 +185,7 @@ annotation|@
 name|Override
 DECL|method|determineFieldsToShow (BibEntry entry, EntryType entryType)
 specifier|protected
-name|List
+name|Collection
 argument_list|<
 name|String
 argument_list|>

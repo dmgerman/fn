@@ -18,6 +18,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Collection
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|List
 import|;
 end_import
@@ -56,7 +66,7 @@ name|void
 name|ctlTypeContainsYesNoFields
 parameter_list|()
 block|{
-name|List
+name|Collection
 argument_list|<
 name|String
 argument_list|>

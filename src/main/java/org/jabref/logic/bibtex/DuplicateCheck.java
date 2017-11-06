@@ -18,6 +18,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Collection
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|HashMap
 import|;
 end_import
@@ -29,16 +39,6 @@ operator|.
 name|util
 operator|.
 name|HashSet
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
 import|;
 end_import
 
@@ -514,7 +514,7 @@ name|bibDatabaseMode
 argument_list|)
 decl_stmt|;
 comment|// The check if they have the same required fields:
-name|List
+name|Collection
 argument_list|<
 name|String
 argument_list|>
@@ -598,7 +598,7 @@ name|DUPLICATE_THRESHOLD
 return|;
 block|}
 comment|// Close to the threshold value, so we take a look at the optional fields, if any:
-name|List
+name|Collection
 argument_list|<
 name|String
 argument_list|>
@@ -844,14 +844,14 @@ return|return
 literal|false
 return|;
 block|}
-DECL|method|compareFieldSet (List<String> fields, BibEntry one, BibEntry two)
+DECL|method|compareFieldSet (Collection<String> fields, BibEntry one, BibEntry two)
 specifier|private
 specifier|static
 name|double
 index|[]
 name|compareFieldSet
 parameter_list|(
-name|List
+name|Collection
 argument_list|<
 name|String
 argument_list|>

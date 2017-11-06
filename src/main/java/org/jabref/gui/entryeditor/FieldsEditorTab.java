@@ -28,6 +28,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Collection
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|LinkedHashMap
 import|;
 end_import
@@ -636,7 +646,7 @@ name|getMode
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|List
+name|Collection
 argument_list|<
 name|String
 argument_list|>
@@ -1099,7 +1109,7 @@ return|return
 name|scrollPane
 return|;
 block|}
-DECL|method|setRegularRowLayout (GridPane gridPane, List<String> fields, int rows)
+DECL|method|setRegularRowLayout (GridPane gridPane, Collection<String> fields, int rows)
 specifier|private
 name|void
 name|setRegularRowLayout
@@ -1107,7 +1117,7 @@ parameter_list|(
 name|GridPane
 name|gridPane
 parameter_list|,
-name|List
+name|Collection
 argument_list|<
 name|String
 argument_list|>
@@ -1560,7 +1570,7 @@ block|}
 DECL|method|determineFieldsToShow (BibEntry entry, EntryType entryType)
 specifier|protected
 specifier|abstract
-name|List
+name|Collection
 argument_list|<
 name|String
 argument_list|>

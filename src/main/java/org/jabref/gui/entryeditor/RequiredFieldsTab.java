@@ -18,7 +18,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|ArrayList
+name|Collection
 import|;
 end_import
 
@@ -28,7 +28,17 @@ name|java
 operator|.
 name|util
 operator|.
-name|List
+name|LinkedHashSet
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
 import|;
 end_import
 
@@ -195,7 +205,7 @@ annotation|@
 name|Override
 DECL|method|determineFieldsToShow (BibEntry entry, EntryType entryType)
 specifier|protected
-name|List
+name|Collection
 argument_list|<
 name|String
 argument_list|>
@@ -208,14 +218,14 @@ name|EntryType
 name|entryType
 parameter_list|)
 block|{
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
 name|fields
 init|=
 operator|new
-name|ArrayList
+name|LinkedHashSet
 argument_list|<>
 argument_list|()
 decl_stmt|;
