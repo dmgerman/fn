@@ -197,6 +197,10 @@ name|URL
 argument_list|,
 name|FieldName
 operator|.
+name|GROUPS
+argument_list|,
+name|FieldName
+operator|.
 name|COMMENT
 argument_list|,
 name|FieldName
