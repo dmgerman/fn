@@ -65,17 +65,31 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Removes all line breaks in the string.  */
+comment|/**  * Removes all hyphenated line breaks in the string.  */
 end_comment
 
 begin_class
-DECL|class|RemoveNewlinesFormatter
+DECL|class|RemoveHyphenatedNewlinesFormatter
 specifier|public
 class|class
-name|RemoveNewlinesFormatter
+name|RemoveHyphenatedNewlinesFormatter
 implements|implements
 name|Formatter
 block|{
+DECL|field|HYPHENATED_WORDS
+specifier|private
+specifier|static
+specifier|final
+name|Pattern
+name|HYPHENATED_WORDS
+init|=
+name|Pattern
+operator|.
+name|compile
+argument_list|(
+literal|"(-\r\n|-\n|-\r)"
+argument_list|)
+decl_stmt|;
 DECL|field|LINEBREAKS
 specifier|private
 specifier|static
@@ -135,6 +149,20 @@ operator|.
 name|requireNonNull
 argument_list|(
 name|value
+argument_list|)
+expr_stmt|;
+name|value
+operator|=
+name|HYPHENATED_WORDS
+operator|.
+name|matcher
+argument_list|(
+name|value
+argument_list|)
+operator|.
+name|replaceAll
+argument_list|(
+literal|""
 argument_list|)
 expr_stmt|;
 name|value
