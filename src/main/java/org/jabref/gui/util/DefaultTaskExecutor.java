@@ -174,10 +174,12 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|field|executor
+DECL|field|EXECUTOR
 specifier|private
+specifier|static
+specifier|final
 name|ExecutorService
-name|executor
+name|EXECUTOR
 init|=
 name|Executors
 operator|.
@@ -286,7 +288,7 @@ argument_list|>
 name|task
 parameter_list|)
 block|{
-name|executor
+name|EXECUTOR
 operator|.
 name|submit
 argument_list|(
@@ -308,7 +310,7 @@ name|FileDownloadTask
 name|downloadTask
 parameter_list|)
 block|{
-name|executor
+name|EXECUTOR
 operator|.
 name|submit
 argument_list|(
@@ -324,7 +326,7 @@ name|void
 name|shutdown
 parameter_list|()
 block|{
-name|executor
+name|EXECUTOR
 operator|.
 name|shutdownNow
 argument_list|()

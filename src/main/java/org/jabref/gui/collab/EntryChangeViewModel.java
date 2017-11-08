@@ -1,10 +1,12 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|org.jabref.collab
+DECL|package|org.jabref.gui.collab
 package|package
 name|org
 operator|.
 name|jabref
+operator|.
+name|gui
 operator|.
 name|collab
 package|;
@@ -215,11 +217,11 @@ import|;
 end_import
 
 begin_class
-DECL|class|EntryChange
+DECL|class|EntryChangeViewModel
 class|class
-name|EntryChange
+name|EntryChangeViewModel
 extends|extends
-name|Change
+name|ChangeViewModel
 block|{
 DECL|field|LOGGER
 specifier|private
@@ -232,14 +234,14 @@ name|LogFactory
 operator|.
 name|getLog
 argument_list|(
-name|EntryChange
+name|EntryChangeViewModel
 operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|method|EntryChange (BibEntry memEntry, BibEntry tmpEntry, BibEntry diskEntry)
+DECL|method|EntryChangeViewModel (BibEntry memEntry, BibEntry tmpEntry, BibEntry diskEntry)
 specifier|public
-name|EntryChange
+name|EntryChangeViewModel
 parameter_list|(
 name|BibEntry
 name|memEntry
@@ -485,7 +487,7 @@ comment|// Modified externally.
 name|add
 argument_list|(
 operator|new
-name|FieldChange
+name|FieldChangeViewModel
 argument_list|(
 name|field
 argument_list|,
@@ -590,7 +592,7 @@ comment|// Added externally.
 name|add
 argument_list|(
 operator|new
-name|FieldChange
+name|FieldChangeViewModel
 argument_list|(
 name|field
 argument_list|,
@@ -648,7 +650,7 @@ literal|true
 decl_stmt|;
 name|Enumeration
 argument_list|<
-name|Change
+name|ChangeViewModel
 argument_list|>
 name|e
 init|=
@@ -657,7 +659,7 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-name|Change
+name|ChangeViewModel
 name|c
 range|:
 name|Collections
@@ -722,12 +724,12 @@ name|name
 argument_list|)
 return|;
 block|}
-DECL|class|FieldChange
+DECL|class|FieldChangeViewModel
 specifier|static
 class|class
-name|FieldChange
+name|FieldChangeViewModel
 extends|extends
-name|Change
+name|ChangeViewModel
 block|{
 DECL|field|entry
 specifier|private
@@ -781,9 +783,9 @@ argument_list|(
 name|tp
 argument_list|)
 decl_stmt|;
-DECL|method|FieldChange (String field, BibEntry memEntry, BibEntry tmpEntry, String inMem, String onTmp, String onDisk)
+DECL|method|FieldChangeViewModel (String field, BibEntry memEntry, BibEntry tmpEntry, String inMem, String onTmp, String onDisk)
 specifier|public
-name|FieldChange
+name|FieldChangeViewModel
 parameter_list|(
 name|String
 name|field

@@ -872,6 +872,20 @@ name|jabref
 operator|.
 name|gui
 operator|.
+name|copyfiles
+operator|.
+name|CopyFilesAction
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
 name|customentrytypes
 operator|.
 name|EntryCustomizationDialog
@@ -3232,14 +3246,14 @@ name|Localization
 operator|.
 name|menuTitle
 argument_list|(
-literal|"Pull_changes_from_shared_database"
+literal|"Pull changes from shared database"
 argument_list|)
 argument_list|,
 name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Pull_changes_from_shared_database"
+literal|"Pull changes from shared database"
 argument_list|)
 argument_list|,
 name|Globals
@@ -4834,6 +4848,16 @@ operator|.
 name|UNABBREVIATE
 argument_list|)
 argument_list|)
+decl_stmt|;
+DECL|field|exportLinkedFiles
+specifier|private
+specifier|final
+name|AbstractAction
+name|exportLinkedFiles
+init|=
+operator|new
+name|CopyFilesAction
+argument_list|()
 decl_stmt|;
 DECL|field|manageJournals
 specifier|private
@@ -8669,6 +8693,13 @@ argument_list|)
 expr_stmt|;
 name|file
 operator|.
+name|add
+argument_list|(
+name|exportLinkedFiles
+argument_list|)
+expr_stmt|;
+name|file
+operator|.
 name|addSeparator
 argument_list|()
 expr_stmt|;
@@ -11143,6 +11174,8 @@ argument_list|(
 name|downloadFullText
 argument_list|,
 name|lookupIdentifiers
+argument_list|,
+name|exportLinkedFiles
 argument_list|)
 argument_list|)
 expr_stmt|;

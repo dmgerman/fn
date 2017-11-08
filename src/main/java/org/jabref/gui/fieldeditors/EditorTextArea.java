@@ -44,6 +44,18 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|function
+operator|.
+name|Supplier
+import|;
+end_import
+
+begin_import
+import|import
 name|javafx
 operator|.
 name|fxml
@@ -268,15 +280,18 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Adds the given list of menu items to the context menu.      */
-DECL|method|addToContextMenu (List<MenuItem> items)
+comment|/**      * Adds the given list of menu items to the context menu. The usage of {@link Supplier} prevents that the menus need      * to be instantiated at this point. They are populated when the user needs them which prevents many unnecessary      * allocations when the main table is just scrolled with the entry editor open.      */
+DECL|method|addToContextMenu (Supplier<List<MenuItem>> items)
 specifier|public
 name|void
 name|addToContextMenu
 parameter_list|(
+name|Supplier
+argument_list|<
 name|List
 argument_list|<
 name|MenuItem
+argument_list|>
 argument_list|>
 name|items
 parameter_list|)
@@ -317,6 +332,9 @@ argument_list|(
 literal|0
 argument_list|,
 name|items
+operator|.
+name|get
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

@@ -46,6 +46,16 @@ begin_import
 import|import
 name|javafx
 operator|.
+name|concurrent
+operator|.
+name|Task
+import|;
+end_import
+
+begin_import
+import|import
+name|javafx
+operator|.
 name|scene
 operator|.
 name|control
@@ -127,6 +137,18 @@ operator|.
 name|l10n
 operator|.
 name|Localization
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|controlsfx
+operator|.
+name|dialog
+operator|.
+name|ProgressDialog
 import|;
 end_import
 
@@ -338,6 +360,21 @@ argument_list|<
 name|R
 argument_list|>
 name|dialog
+parameter_list|)
+function_decl|;
+comment|/**      * Constructs and shows a canceable {@link ProgressDialog}. Clicking cancel will cancel the underlying service and close the dialog      * @param task The {@link Task} which executes the work and for which to show the dialog      */
+DECL|method|showCanceableProgressDialogAndWait (Task<V> task)
+parameter_list|<
+name|V
+parameter_list|>
+name|void
+name|showCanceableProgressDialogAndWait
+parameter_list|(
+name|Task
+argument_list|<
+name|V
+argument_list|>
+name|task
 parameter_list|)
 function_decl|;
 comment|/**      * Notify the user in an non-blocking way (i.e., update status message instead of showing a dialog).      * @param message the message to show.      */

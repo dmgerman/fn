@@ -437,7 +437,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Error_while_fetching_from_%0"
+literal|"Error while fetching from %0"
 argument_list|,
 literal|"Mr.DLib"
 argument_list|)

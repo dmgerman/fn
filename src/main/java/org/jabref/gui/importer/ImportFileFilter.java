@@ -218,6 +218,15 @@ argument_list|()
 argument_list|)
 argument_list|)
 operator|.
+name|map
+argument_list|(
+name|ending
+lambda|->
+literal|"*."
+operator|+
+name|ending
+argument_list|)
+operator|.
 name|collect
 argument_list|(
 name|Collectors

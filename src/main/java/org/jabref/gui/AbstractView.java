@@ -187,6 +187,10 @@ block|{
 if|if
 condition|(
 name|newValue
+operator|!=
+literal|null
+operator|&&
+name|newValue
 operator|.
 name|getWindow
 argument_list|()

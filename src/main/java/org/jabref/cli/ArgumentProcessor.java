@@ -3603,7 +3603,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"No meta data present in BIB_file. Cannot regenerate BibTeX keys"
+literal|"No meta data present in BIB file. Cannot regenerate BibTeX keys"
 argument_list|)
 argument_list|)
 expr_stmt|;

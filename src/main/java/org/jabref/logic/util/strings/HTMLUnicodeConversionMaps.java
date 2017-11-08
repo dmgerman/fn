@@ -1663,6 +1663,22 @@ block|,
 comment|// greek pi symbol, U+03D6 ISOgrk3
 comment|/* General Punctuation */
 block|{
+literal|"8211"
+block|,
+literal|"ndash"
+block|,
+literal|"$\\textendash$"
+block|}
+block|,
+block|{
+literal|"8212"
+block|,
+literal|"mdash"
+block|,
+literal|"$\\textemdash$"
+block|}
+block|,
+block|{
 literal|"8226"
 block|,
 literal|"bull"

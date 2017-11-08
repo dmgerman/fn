@@ -470,7 +470,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Invalid_DOI:_'%0'."
+literal|"Invalid DOI: '%0'."
 argument_list|,
 name|identifier
 argument_list|)

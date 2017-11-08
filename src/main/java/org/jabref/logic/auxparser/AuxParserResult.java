@@ -530,7 +530,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"nested_AUX_files"
+literal|"nested AUX files"
 argument_list|)
 argument_list|)
 operator|.

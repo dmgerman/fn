@@ -464,7 +464,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Show 'Related_Articles' tab"
+literal|"Show 'Related Articles' tab"
 argument_list|)
 argument_list|)
 expr_stmt|;

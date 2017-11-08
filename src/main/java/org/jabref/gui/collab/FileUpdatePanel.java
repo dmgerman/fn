@@ -1,10 +1,12 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|org.jabref.collab
+DECL|package|org.jabref.gui.collab
 package|package
 name|org
 operator|.
 name|jabref
+operator|.
+name|gui
 operator|.
 name|collab
 package|;
@@ -478,10 +480,8 @@ argument_list|)
 expr_stmt|;
 name|panel
 operator|.
-name|setUpdatedExternally
-argument_list|(
-literal|false
-argument_list|)
+name|markExternalChangesAsResolved
+argument_list|()
 expr_stmt|;
 block|}
 block|}

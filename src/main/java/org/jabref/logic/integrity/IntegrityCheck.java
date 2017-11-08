@@ -310,6 +310,8 @@ argument_list|(
 name|bibDatabaseContext
 argument_list|,
 name|fileDirectoryPreferences
+argument_list|,
+name|journalAbbreviationRepository
 argument_list|)
 decl_stmt|;
 for|for

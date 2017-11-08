@@ -656,6 +656,16 @@ range|:
 name|directories
 control|)
 block|{
+if|if
+condition|(
+name|Files
+operator|.
+name|exists
+argument_list|(
+name|directory
+argument_list|)
+condition|)
+block|{
 try|try
 init|(
 name|Stream
@@ -709,6 +719,7 @@ argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 return|return

@@ -126,6 +126,18 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|function
+operator|.
+name|Supplier
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|jabref
@@ -180,7 +192,10 @@ name|Map
 argument_list|<
 name|String
 argument_list|,
+name|Supplier
+argument_list|<
 name|String
+argument_list|>
 argument_list|>
 name|INTERNAL_LISTS
 init|=
@@ -227,6 +242,8 @@ name|put
 argument_list|(
 literal|"/protectedterms/months_weekdays.terms"
 argument_list|,
+parameter_list|()
+lambda|->
 name|Localization
 operator|.
 name|lang
@@ -241,6 +258,8 @@ name|put
 argument_list|(
 literal|"/protectedterms/countries_territories.terms"
 argument_list|,
+parameter_list|()
+lambda|->
 name|Localization
 operator|.
 name|lang
@@ -255,6 +274,8 @@ name|put
 argument_list|(
 literal|"/protectedterms/electrical_engineering.terms"
 argument_list|,
+parameter_list|()
+lambda|->
 name|Localization
 operator|.
 name|lang
@@ -350,6 +371,9 @@ name|get
 argument_list|(
 name|filename
 argument_list|)
+operator|.
+name|get
+argument_list|()
 argument_list|,
 literal|true
 argument_list|)
@@ -420,6 +444,9 @@ name|get
 argument_list|(
 name|filename
 argument_list|)
+operator|.
+name|get
+argument_list|()
 argument_list|,
 literal|false
 argument_list|)
@@ -494,6 +521,9 @@ name|get
 argument_list|(
 name|filename
 argument_list|)
+operator|.
+name|get
+argument_list|()
 argument_list|,
 literal|true
 argument_list|)

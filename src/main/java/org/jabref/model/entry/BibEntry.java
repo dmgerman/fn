@@ -2229,12 +2229,12 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Determines whether this entry has all the given fields present. If a non-null      * database argument is given, this method will try to look up missing fields in      * entries linked by the "crossref" field, if any.      *      * @param allFields An array of field names to be checked.      * @param database  The database in which to look up crossref'd entries, if any. This      *                  argument can be null, meaning that no attempt will be made to follow crossrefs.      * @return true if all fields are set or could be resolved, false otherwise.      */
-DECL|method|allFieldsPresent (List<String> allFields, BibDatabase database)
+DECL|method|allFieldsPresent (Collection<String> allFields, BibDatabase database)
 specifier|public
 name|boolean
 name|allFieldsPresent
 parameter_list|(
-name|List
+name|Collection
 argument_list|<
 name|String
 argument_list|>
@@ -3946,6 +3946,21 @@ name|setFiles
 argument_list|(
 name|linkedFiles
 argument_list|)
+return|;
+block|}
+DECL|method|getFieldsObservable ()
+specifier|public
+name|ObservableMap
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
+name|getFieldsObservable
+parameter_list|()
+block|{
+return|return
+name|fields
 return|;
 block|}
 DECL|interface|GetFieldInterface

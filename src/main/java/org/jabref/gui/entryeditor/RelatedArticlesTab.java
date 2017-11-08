@@ -204,26 +204,20 @@ name|RelatedArticlesTab
 extends|extends
 name|EntryEditorTab
 block|{
-DECL|field|entry
+DECL|field|preferences
 specifier|private
 specifier|final
-name|BibEntry
-name|entry
+name|JabRefPreferences
+name|preferences
 decl_stmt|;
-DECL|method|RelatedArticlesTab (BibEntry entry)
+DECL|method|RelatedArticlesTab (JabRefPreferences preferences)
 specifier|public
 name|RelatedArticlesTab
 parameter_list|(
-name|BibEntry
-name|entry
+name|JabRefPreferences
+name|preferences
 parameter_list|)
 block|{
-name|this
-operator|.
-name|entry
-operator|=
-name|entry
-expr_stmt|;
 name|setText
 argument_list|(
 name|Localization
@@ -247,6 +241,12 @@ literal|"Related articles"
 argument_list|)
 argument_list|)
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|preferences
+operator|=
+name|preferences
 expr_stmt|;
 block|}
 DECL|method|getPane (BibEntry entry)
@@ -562,7 +562,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"What_is_Mr._DLib?"
+literal|"What is Mr. DLib?"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -592,16 +592,17 @@ end_function
 begin_function
 annotation|@
 name|Override
-DECL|method|shouldShow ()
+DECL|method|shouldShow (BibEntry entry)
 specifier|public
 name|boolean
 name|shouldShow
-parameter_list|()
+parameter_list|(
+name|BibEntry
+name|entry
+parameter_list|)
 block|{
 return|return
-name|Globals
-operator|.
-name|prefs
+name|preferences
 operator|.
 name|getBoolean
 argument_list|(
@@ -616,11 +617,14 @@ end_function
 begin_function
 annotation|@
 name|Override
-DECL|method|initialize ()
+DECL|method|bindToEntry (BibEntry entry)
 specifier|protected
 name|void
-name|initialize
-parameter_list|()
+name|bindToEntry
+parameter_list|(
+name|BibEntry
+name|entry
+parameter_list|)
 block|{
 name|setContent
 argument_list|(

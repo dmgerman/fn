@@ -548,20 +548,8 @@ operator|.
 name|startBackgroundTasks
 argument_list|()
 expr_stmt|;
-name|Localization
-operator|.
-name|setLanguage
-argument_list|(
-name|preferences
-operator|.
-name|get
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|LANGUAGE
-argument_list|)
-argument_list|)
-expr_stmt|;
+comment|// Note that the language was already set during the initialization of the preferences and it is safe to
+comment|// call the next function.
 name|Globals
 operator|.
 name|prefs

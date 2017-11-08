@@ -38,6 +38,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|LinkedHashSet
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|List
 import|;
 end_import
@@ -49,6 +59,16 @@ operator|.
 name|util
 operator|.
 name|Optional
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
 import|;
 end_import
 
@@ -75,7 +95,7 @@ argument_list|()
 block|{
 specifier|private
 specifier|final
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -83,7 +103,11 @@ name|primaryOptionalFields
 init|=
 name|Collections
 operator|.
-name|unmodifiableList
+name|unmodifiableSet
+argument_list|(
+operator|new
+name|LinkedHashSet
+argument_list|<>
 argument_list|(
 name|Arrays
 operator|.
@@ -152,6 +176,7 @@ argument_list|,
 name|FieldName
 operator|.
 name|URLDATE
+argument_list|)
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -339,7 +364,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -365,7 +390,7 @@ argument_list|()
 block|{
 specifier|private
 specifier|final
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -373,7 +398,11 @@ name|primaryOptionalFields
 init|=
 name|Collections
 operator|.
-name|unmodifiableList
+name|unmodifiableSet
+argument_list|(
+operator|new
+name|LinkedHashSet
+argument_list|<>
 argument_list|(
 name|Arrays
 operator|.
@@ -454,6 +483,7 @@ argument_list|,
 name|FieldName
 operator|.
 name|URLDATE
+argument_list|)
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -652,7 +682,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -678,7 +708,7 @@ argument_list|()
 block|{
 specifier|private
 specifier|final
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -686,7 +716,11 @@ name|primaryOptionalFields
 init|=
 name|Collections
 operator|.
-name|unmodifiableList
+name|unmodifiableSet
+argument_list|(
+operator|new
+name|LinkedHashSet
+argument_list|<>
 argument_list|(
 name|Arrays
 operator|.
@@ -743,6 +777,7 @@ argument_list|,
 name|FieldName
 operator|.
 name|URLDATE
+argument_list|)
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -913,7 +948,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -939,7 +974,7 @@ argument_list|()
 block|{
 specifier|private
 specifier|final
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -947,7 +982,11 @@ name|primaryOptionalFields
 init|=
 name|Collections
 operator|.
-name|unmodifiableList
+name|unmodifiableSet
+argument_list|(
+operator|new
+name|LinkedHashSet
+argument_list|<>
 argument_list|(
 name|Arrays
 operator|.
@@ -1036,6 +1075,7 @@ argument_list|,
 name|FieldName
 operator|.
 name|URLDATE
+argument_list|)
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -1246,7 +1286,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -1285,7 +1325,7 @@ comment|// Same fields as "INBOOK" according to Biblatex 1.0:
 annotation|@
 name|Override
 specifier|public
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -1304,7 +1344,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -1323,7 +1363,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -1367,7 +1407,7 @@ comment|// Same fields as "INBOOK" according to Biblatex 1.0:
 annotation|@
 name|Override
 specifier|public
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -1386,7 +1426,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -1405,7 +1445,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -1436,7 +1476,7 @@ argument_list|()
 block|{
 specifier|private
 specifier|final
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -1444,7 +1484,11 @@ name|primaryOptionalFields
 init|=
 name|Collections
 operator|.
-name|unmodifiableList
+name|unmodifiableSet
+argument_list|(
+operator|new
+name|LinkedHashSet
+argument_list|<>
 argument_list|(
 name|Arrays
 operator|.
@@ -1493,6 +1537,7 @@ argument_list|,
 name|FieldName
 operator|.
 name|URLDATE
+argument_list|)
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -1620,7 +1665,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -1646,7 +1691,7 @@ argument_list|()
 block|{
 specifier|private
 specifier|final
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -1654,7 +1699,11 @@ name|primaryOptionalFields
 init|=
 name|Collections
 operator|.
-name|unmodifiableList
+name|unmodifiableSet
+argument_list|(
+operator|new
+name|LinkedHashSet
+argument_list|<>
 argument_list|(
 name|Arrays
 operator|.
@@ -1731,6 +1780,7 @@ argument_list|,
 name|FieldName
 operator|.
 name|URLDATE
+argument_list|)
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -1925,7 +1975,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -1951,7 +2001,7 @@ argument_list|()
 block|{
 specifier|private
 specifier|final
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -1959,7 +2009,11 @@ name|primaryOptionalFields
 init|=
 name|Collections
 operator|.
-name|unmodifiableList
+name|unmodifiableSet
+argument_list|(
+operator|new
+name|LinkedHashSet
+argument_list|<>
 argument_list|(
 name|Arrays
 operator|.
@@ -2012,6 +2066,7 @@ argument_list|,
 name|FieldName
 operator|.
 name|URLDATE
+argument_list|)
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -2178,7 +2233,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -2204,7 +2259,7 @@ argument_list|()
 block|{
 specifier|private
 specifier|final
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -2212,7 +2267,11 @@ name|primaryOptionalFields
 init|=
 name|Collections
 operator|.
-name|unmodifiableList
+name|unmodifiableSet
+argument_list|(
+operator|new
+name|LinkedHashSet
+argument_list|<>
 argument_list|(
 name|Arrays
 operator|.
@@ -2297,6 +2356,7 @@ argument_list|,
 name|FieldName
 operator|.
 name|URLDATE
+argument_list|)
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -2503,7 +2563,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -2542,7 +2602,7 @@ comment|// Treated as alias of "INCOLLECTION" according to Biblatex 1.0:
 annotation|@
 name|Override
 specifier|public
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -2561,7 +2621,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -2580,7 +2640,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -2611,7 +2671,7 @@ argument_list|()
 block|{
 specifier|private
 specifier|final
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -2619,7 +2679,11 @@ name|primaryOptionalFields
 init|=
 name|Collections
 operator|.
-name|unmodifiableList
+name|unmodifiableSet
+argument_list|(
+operator|new
+name|LinkedHashSet
+argument_list|<>
 argument_list|(
 name|Arrays
 operator|.
@@ -2676,6 +2740,7 @@ argument_list|,
 name|FieldName
 operator|.
 name|URLDATE
+argument_list|)
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -2827,7 +2892,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -2853,7 +2918,7 @@ argument_list|()
 block|{
 specifier|private
 specifier|final
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -2861,7 +2926,11 @@ name|primaryOptionalFields
 init|=
 name|Collections
 operator|.
-name|unmodifiableList
+name|unmodifiableSet
+argument_list|(
+operator|new
+name|LinkedHashSet
+argument_list|<>
 argument_list|(
 name|Arrays
 operator|.
@@ -2906,6 +2975,7 @@ argument_list|,
 name|FieldName
 operator|.
 name|URLDATE
+argument_list|)
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -3033,7 +3103,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -3059,7 +3129,7 @@ argument_list|()
 block|{
 specifier|private
 specifier|final
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -3067,7 +3137,11 @@ name|primaryOptionalFields
 init|=
 name|Collections
 operator|.
-name|unmodifiableList
+name|unmodifiableSet
+argument_list|(
+operator|new
+name|LinkedHashSet
+argument_list|<>
 argument_list|(
 name|Arrays
 operator|.
@@ -3092,6 +3166,7 @@ argument_list|,
 name|FieldName
 operator|.
 name|URLDATE
+argument_list|)
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -3191,7 +3266,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -3217,7 +3292,7 @@ argument_list|()
 block|{
 specifier|private
 specifier|final
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -3225,7 +3300,11 @@ name|primaryOptionalFields
 init|=
 name|Collections
 operator|.
-name|unmodifiableList
+name|unmodifiableSet
+argument_list|(
+operator|new
+name|LinkedHashSet
+argument_list|<>
 argument_list|(
 name|Arrays
 operator|.
@@ -3266,6 +3345,7 @@ argument_list|,
 name|FieldName
 operator|.
 name|URLDATE
+argument_list|)
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -3380,7 +3460,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -3406,7 +3486,7 @@ argument_list|()
 block|{
 specifier|private
 specifier|final
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -3414,7 +3494,11 @@ name|primaryOptionalFields
 init|=
 name|Collections
 operator|.
-name|unmodifiableList
+name|unmodifiableSet
+argument_list|(
+operator|new
+name|LinkedHashSet
+argument_list|<>
 argument_list|(
 name|Arrays
 operator|.
@@ -3459,6 +3543,7 @@ argument_list|,
 name|FieldName
 operator|.
 name|URLDATE
+argument_list|)
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -3593,7 +3678,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -3632,7 +3717,7 @@ comment|// Treated as alias of "ARTICLE" according to Biblatex 1.0:
 annotation|@
 name|Override
 specifier|public
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -3651,7 +3736,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -3670,7 +3755,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -3701,7 +3786,7 @@ argument_list|()
 block|{
 specifier|private
 specifier|final
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -3709,7 +3794,11 @@ name|primaryOptionalFields
 init|=
 name|Collections
 operator|.
-name|unmodifiableList
+name|unmodifiableSet
+argument_list|(
+operator|new
+name|LinkedHashSet
+argument_list|<>
 argument_list|(
 name|Arrays
 operator|.
@@ -3786,6 +3875,7 @@ argument_list|,
 name|FieldName
 operator|.
 name|URLDATE
+argument_list|)
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -3964,7 +4054,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -3990,7 +4080,7 @@ argument_list|()
 block|{
 specifier|private
 specifier|final
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -3998,7 +4088,11 @@ name|primaryOptionalFields
 init|=
 name|Collections
 operator|.
-name|unmodifiableList
+name|unmodifiableSet
+argument_list|(
+operator|new
+name|LinkedHashSet
+argument_list|<>
 argument_list|(
 name|Arrays
 operator|.
@@ -4075,6 +4169,7 @@ argument_list|,
 name|FieldName
 operator|.
 name|URLDATE
+argument_list|)
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -4221,7 +4316,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -4247,7 +4342,7 @@ argument_list|()
 block|{
 specifier|private
 specifier|final
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -4255,7 +4350,11 @@ name|primaryOptionalFields
 init|=
 name|Collections
 operator|.
-name|unmodifiableList
+name|unmodifiableSet
+argument_list|(
+operator|new
+name|LinkedHashSet
+argument_list|<>
 argument_list|(
 name|Arrays
 operator|.
@@ -4336,6 +4435,7 @@ argument_list|,
 name|FieldName
 operator|.
 name|URLDATE
+argument_list|)
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -4522,7 +4622,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -4561,7 +4661,7 @@ comment|// Treated as alias of "COLLECTION" according to Biblatex 1.0:
 annotation|@
 name|Override
 specifier|public
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -4580,7 +4680,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -4599,7 +4699,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -4643,7 +4743,7 @@ comment|// Treated as alias of "MVCOLLECTION" according to Biblatex 1.0:
 annotation|@
 name|Override
 specifier|public
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -4662,7 +4762,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -4681,7 +4781,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -4725,7 +4825,7 @@ comment|// Treated as alias of "INCOLLECTION" according to Biblatex 1.0:
 annotation|@
 name|Override
 specifier|public
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -4744,7 +4844,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -4763,7 +4863,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -4794,7 +4894,7 @@ argument_list|()
 block|{
 specifier|private
 specifier|final
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -4802,7 +4902,11 @@ name|primaryOptionalFields
 init|=
 name|Collections
 operator|.
-name|unmodifiableList
+name|unmodifiableSet
+argument_list|(
+operator|new
+name|LinkedHashSet
+argument_list|<>
 argument_list|(
 name|Arrays
 operator|.
@@ -4859,6 +4963,7 @@ argument_list|,
 name|FieldName
 operator|.
 name|URLDATE
+argument_list|)
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -4993,7 +5098,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -5056,7 +5161,7 @@ argument_list|()
 block|{
 specifier|private
 specifier|final
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -5064,7 +5169,11 @@ name|primaryOptionalFields
 init|=
 name|Collections
 operator|.
-name|unmodifiableList
+name|unmodifiableSet
+argument_list|(
+operator|new
+name|LinkedHashSet
+argument_list|<>
 argument_list|(
 name|Arrays
 operator|.
@@ -5113,6 +5222,7 @@ argument_list|,
 name|FieldName
 operator|.
 name|URLDATE
+argument_list|)
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -5239,7 +5349,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -5265,7 +5375,7 @@ argument_list|()
 block|{
 specifier|private
 specifier|final
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -5273,7 +5383,11 @@ name|primaryOptionalFields
 init|=
 name|Collections
 operator|.
-name|unmodifiableList
+name|unmodifiableSet
+argument_list|(
+operator|new
+name|LinkedHashSet
+argument_list|<>
 argument_list|(
 name|Arrays
 operator|.
@@ -5302,6 +5416,7 @@ argument_list|,
 name|FieldName
 operator|.
 name|URLDATE
+argument_list|)
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -5392,7 +5507,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -5432,7 +5547,7 @@ comment|// Treated as alias of "INPROCEEDINGS" according to Biblatex 1.0:
 annotation|@
 name|Override
 specifier|public
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -5451,7 +5566,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -5470,7 +5585,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -5514,7 +5629,7 @@ comment|// Treated as alias of "ONLINE" according to Biblatex 1.0:
 annotation|@
 name|Override
 specifier|public
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -5533,7 +5648,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -5552,7 +5667,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -5583,7 +5698,7 @@ argument_list|()
 block|{
 specifier|private
 specifier|final
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -5591,7 +5706,11 @@ name|primaryOptionalFields
 init|=
 name|Collections
 operator|.
-name|unmodifiableList
+name|unmodifiableSet
+argument_list|(
+operator|new
+name|LinkedHashSet
+argument_list|<>
 argument_list|(
 name|Arrays
 operator|.
@@ -5644,6 +5763,7 @@ argument_list|,
 name|FieldName
 operator|.
 name|URLDATE
+argument_list|)
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -5771,7 +5891,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -5797,7 +5917,7 @@ argument_list|()
 block|{
 specifier|private
 specifier|final
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -5805,7 +5925,11 @@ name|primaryOptionalFields
 init|=
 name|Collections
 operator|.
-name|unmodifiableList
+name|unmodifiableSet
+argument_list|(
+operator|new
+name|LinkedHashSet
+argument_list|<>
 argument_list|(
 name|Arrays
 operator|.
@@ -5858,6 +5982,7 @@ argument_list|,
 name|FieldName
 operator|.
 name|URLDATE
+argument_list|)
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -5985,7 +6110,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -6011,7 +6136,7 @@ argument_list|()
 block|{
 specifier|private
 specifier|final
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -6019,7 +6144,11 @@ name|primaryOptionalFields
 init|=
 name|Collections
 operator|.
-name|unmodifiableList
+name|unmodifiableSet
+argument_list|(
+operator|new
+name|LinkedHashSet
+argument_list|<>
 argument_list|(
 name|Arrays
 operator|.
@@ -6080,6 +6209,7 @@ argument_list|,
 name|FieldName
 operator|.
 name|URLDATE
+argument_list|)
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -6215,7 +6345,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -6254,7 +6384,7 @@ comment|// Treated as alias of "ONLINE" according to Biblatex 1.0:
 annotation|@
 name|Override
 specifier|public
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -6273,7 +6403,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -6292,7 +6422,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>

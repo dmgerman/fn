@@ -2014,7 +2014,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"The_link_has_been_copied_to_the_clipboard."
+literal|"The link has been copied to the clipboard."
 argument_list|)
 decl_stmt|;
 name|JabRefGUI

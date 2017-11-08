@@ -18,16 +18,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|ArrayList
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|Arrays
 import|;
 end_import
@@ -48,7 +38,17 @@ name|java
 operator|.
 name|util
 operator|.
-name|List
+name|LinkedHashSet
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
 import|;
 end_import
 
@@ -80,7 +80,7 @@ block|{
 DECL|field|requiredFields
 specifier|private
 specifier|final
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -89,7 +89,7 @@ decl_stmt|;
 DECL|field|optionalFields
 specifier|private
 specifier|final
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -103,14 +103,14 @@ block|{
 name|requiredFields
 operator|=
 operator|new
-name|ArrayList
+name|LinkedHashSet
 argument_list|<>
 argument_list|()
 expr_stmt|;
 name|optionalFields
 operator|=
 operator|new
-name|ArrayList
+name|LinkedHashSet
 argument_list|<>
 argument_list|()
 expr_stmt|;
@@ -163,7 +163,7 @@ annotation|@
 name|Override
 DECL|method|getOptionalFields ()
 specifier|public
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -173,7 +173,7 @@ block|{
 return|return
 name|Collections
 operator|.
-name|unmodifiableList
+name|unmodifiableSet
 argument_list|(
 name|optionalFields
 argument_list|)
@@ -183,7 +183,7 @@ annotation|@
 name|Override
 DECL|method|getRequiredFields ()
 specifier|public
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -193,7 +193,7 @@ block|{
 return|return
 name|Collections
 operator|.
-name|unmodifiableList
+name|unmodifiableSet
 argument_list|(
 name|requiredFields
 argument_list|)
@@ -227,7 +227,7 @@ annotation|@
 name|Override
 DECL|method|getPrimaryOptionalFields ()
 specifier|public
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -243,7 +243,7 @@ annotation|@
 name|Override
 DECL|method|getSecondaryOptionalFields ()
 specifier|public
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -272,7 +272,7 @@ name|collect
 argument_list|(
 name|Collectors
 operator|.
-name|toList
+name|toSet
 argument_list|()
 argument_list|)
 return|;

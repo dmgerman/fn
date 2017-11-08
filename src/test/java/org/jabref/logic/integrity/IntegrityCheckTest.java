@@ -2003,7 +2003,17 @@ name|createContext
 argument_list|(
 name|field
 argument_list|,
-literal|"IEEE SW"
+literal|"IEEE Software"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertCorrect
+argument_list|(
+name|createContext
+argument_list|(
+name|field
+argument_list|,
+literal|""
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2013,7 +2023,7 @@ name|createContext
 argument_list|(
 name|field
 argument_list|,
-literal|"Proc. of the"
+literal|"IEEE SW"
 argument_list|)
 argument_list|)
 expr_stmt|;

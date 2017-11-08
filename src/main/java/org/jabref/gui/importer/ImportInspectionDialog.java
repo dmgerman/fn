@@ -7747,8 +7747,6 @@ name|autoSetLinks
 argument_list|(
 name|entry
 argument_list|,
-name|localModel
-argument_list|,
 name|bibDatabaseContext
 argument_list|,
 name|e

@@ -357,8 +357,6 @@ name|nc
 argument_list|,
 literal|null
 argument_list|,
-literal|null
-argument_list|,
 name|JabRefGUI
 operator|.
 name|getMainFrame

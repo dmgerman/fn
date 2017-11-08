@@ -10,6 +10,18 @@ name|gui
 package|;
 end_package
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|function
+operator|.
+name|Function
+import|;
+end_import
+
 begin_class
 DECL|class|AbstractDialogView
 specifier|public
@@ -26,6 +38,25 @@ parameter_list|()
 block|{
 name|super
 argument_list|()
+expr_stmt|;
+block|}
+DECL|method|AbstractDialogView (Function<String, Object> injectionContext)
+specifier|public
+name|AbstractDialogView
+parameter_list|(
+name|Function
+argument_list|<
+name|String
+argument_list|,
+name|Object
+argument_list|>
+name|injectionContext
+parameter_list|)
+block|{
+name|super
+argument_list|(
+name|injectionContext
+argument_list|)
 expr_stmt|;
 block|}
 DECL|method|show ()

@@ -18,16 +18,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|ArrayList
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|Arrays
 import|;
 end_import
@@ -48,7 +38,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|HashSet
+name|LinkedHashSet
 import|;
 end_import
 
@@ -119,7 +109,7 @@ parameter_list|()
 function_decl|;
 comment|/**      * Returns all supported optional field names.      *      * @return a List of optional field name Strings      */
 DECL|method|getOptionalFields ()
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -128,7 +118,7 @@ parameter_list|()
 function_decl|;
 comment|/**      * Returns all required field names.      * If fields have an OR relationship the name includes both field names divided by /, e.g. author/editor.      * If you need all required fields as sole entities use @see{getRequiredFieldsFlat} .      *      * @return a List of required field name Strings      */
 DECL|method|getRequiredFields ()
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -138,7 +128,7 @@ function_decl|;
 comment|/**      * Returns all required field names.      * No OR relationships are captured here.      *      * @return a List of required field name Strings      */
 DECL|method|getRequiredFieldsFlat ()
 specifier|default
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -189,16 +179,21 @@ decl_stmt|;
 return|return
 name|Collections
 operator|.
-name|unmodifiableList
+name|unmodifiableSet
+argument_list|(
+operator|new
+name|LinkedHashSet
+argument_list|<>
 argument_list|(
 name|requiredFlat
+argument_list|)
 argument_list|)
 return|;
 block|}
 comment|/**      * Returns all defined (required& optional) fields.      * No OR relationships are captured here.      *      * @return a List of all defined field name Strings      */
 DECL|method|getAllFields ()
 specifier|default
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -239,15 +234,20 @@ decl_stmt|;
 return|return
 name|Collections
 operator|.
-name|unmodifiableList
+name|unmodifiableSet
+argument_list|(
+operator|new
+name|LinkedHashSet
+argument_list|<>
 argument_list|(
 name|allFields
+argument_list|)
 argument_list|)
 return|;
 block|}
 comment|/**      * TODO: move inside GUI      */
 DECL|method|getPrimaryOptionalFields ()
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -256,7 +256,7 @@ parameter_list|()
 function_decl|;
 comment|/**      * TODO: move inside GUI      */
 DECL|method|getSecondaryOptionalFields ()
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -265,7 +265,7 @@ parameter_list|()
 function_decl|;
 DECL|method|getDeprecatedFields ()
 specifier|default
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -279,7 +279,7 @@ argument_list|>
 name|deprecatedFields
 init|=
 operator|new
-name|HashSet
+name|LinkedHashSet
 argument_list|<>
 argument_list|(
 name|EntryConverter
@@ -317,31 +317,26 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 return|return
-operator|new
-name|ArrayList
-argument_list|<>
-argument_list|(
 name|deprecatedFields
-argument_list|)
 return|;
 block|}
 DECL|method|getSecondaryOptionalNotDeprecatedFields ()
 specifier|default
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
 name|getSecondaryOptionalNotDeprecatedFields
 parameter_list|()
 block|{
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
 name|optionalFieldsNotPrimaryOrDeprecated
 init|=
 operator|new
-name|ArrayList
+name|LinkedHashSet
 argument_list|<>
 argument_list|(
 name|getSecondaryOptionalFields
@@ -377,7 +372,7 @@ argument_list|>
 name|optionalFieldsAndAliases
 init|=
 operator|new
-name|HashSet
+name|LinkedHashSet
 argument_list|<>
 argument_list|()
 decl_stmt|;

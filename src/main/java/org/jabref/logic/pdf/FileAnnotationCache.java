@@ -16,6 +16,18 @@ begin_import
 import|import
 name|java
 operator|.
+name|nio
+operator|.
+name|file
+operator|.
+name|Path
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|List
@@ -185,7 +197,7 @@ name|BibEntry
 argument_list|,
 name|Map
 argument_list|<
-name|String
+name|Path
 argument_list|,
 name|List
 argument_list|<
@@ -195,7 +207,7 @@ argument_list|>
 argument_list|>
 name|annotationCache
 decl_stmt|;
-comment|/**      * Creates an empty fil annotation cache. Required to allow the annotation cache to be injected into views without      * hitting the bug https://github.com/AdamBien/afterburner.fx/issues/71.      */
+comment|/**      * Creates an empty fil annotation cache. Required to allow the annotation cache to be injected into views without      * hitting the bug https://github.com/AdamBien/afterburner.fx/issues/71 .      */
 DECL|method|FileAnnotationCache ()
 specifier|public
 name|FileAnnotationCache
@@ -230,7 +242,7 @@ name|BibEntry
 argument_list|,
 name|Map
 argument_list|<
-name|String
+name|Path
 argument_list|,
 name|List
 argument_list|<
@@ -245,7 +257,7 @@ name|Override
 specifier|public
 name|Map
 argument_list|<
-name|String
+name|Path
 argument_list|,
 name|List
 argument_list|<
@@ -282,7 +294,7 @@ DECL|method|getFromCache (BibEntry entry)
 specifier|public
 name|Map
 argument_list|<
-name|String
+name|Path
 argument_list|,
 name|List
 argument_list|<
