@@ -90,20 +90,6 @@ argument_list|(
 literal|"(-\r\n|-\n|-\r)"
 argument_list|)
 decl_stmt|;
-DECL|field|LINEBREAKS
-specifier|private
-specifier|static
-specifier|final
-name|Pattern
-name|LINEBREAKS
-init|=
-name|Pattern
-operator|.
-name|compile
-argument_list|(
-literal|"(\r?\n|\r)"
-argument_list|)
-decl_stmt|;
 annotation|@
 name|Override
 DECL|method|getName ()
@@ -117,7 +103,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Remove line breaks"
+literal|"Remove hyphenated line breaks"
 argument_list|)
 return|;
 block|}
@@ -130,7 +116,7 @@ name|getKey
 parameter_list|()
 block|{
 return|return
-literal|"remove_newlines"
+literal|"remove_hyphenated_newlines"
 return|;
 block|}
 annotation|@
@@ -165,20 +151,6 @@ argument_list|(
 literal|""
 argument_list|)
 expr_stmt|;
-name|value
-operator|=
-name|LINEBREAKS
-operator|.
-name|matcher
-argument_list|(
-name|value
-argument_list|)
-operator|.
-name|replaceAll
-argument_list|(
-literal|" "
-argument_list|)
-expr_stmt|;
 return|return
 name|value
 operator|.
@@ -199,7 +171,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Removes all line breaks in the field content."
+literal|"Removes all hyphenated line breaks in the field content."
 argument_list|)
 return|;
 block|}
@@ -212,7 +184,7 @@ name|getExampleInput
 parameter_list|()
 block|{
 return|return
-literal|"In \n CDMA"
+literal|"Gimme shel-\nter"
 return|;
 block|}
 block|}
