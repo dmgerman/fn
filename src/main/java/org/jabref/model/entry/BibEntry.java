@@ -1038,20 +1038,24 @@ block|}
 comment|/**      * Sets the cite key AKA citation key AKA BibTeX key. Note: This is<emph>not</emph> the internal Id of this entry.      * The internal Id is always present, whereas the BibTeX key might not be present.      *      * @param newCiteKey The cite key to set. Must not be null; use {@link #clearCiteKey()} to remove the cite key.      */
 DECL|method|setCiteKey (String newCiteKey)
 specifier|public
-name|void
+name|Optional
+argument_list|<
+name|FieldChange
+argument_list|>
 name|setCiteKey
 parameter_list|(
 name|String
 name|newCiteKey
 parameter_list|)
 block|{
+return|return
 name|setField
 argument_list|(
 name|KEY_FIELD
 argument_list|,
 name|newCiteKey
 argument_list|)
-expr_stmt|;
+return|;
 block|}
 DECL|method|getCiteKeyOptional ()
 specifier|public

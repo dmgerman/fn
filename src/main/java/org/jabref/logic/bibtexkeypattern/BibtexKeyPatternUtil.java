@@ -44,6 +44,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|jabref
@@ -53,6 +63,18 @@ operator|.
 name|util
 operator|.
 name|BracketedPattern
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|FieldChange
 import|;
 end_import
 
@@ -201,7 +223,10 @@ comment|/**      * Generates a BibTeX label according to the pattern for a given
 DECL|method|makeAndSetLabel (AbstractBibtexKeyPattern citeKeyPattern, BibDatabase database, BibEntry entry, BibtexKeyPatternPreferences bibtexKeyPatternPreferences)
 specifier|public
 specifier|static
-name|void
+name|Optional
+argument_list|<
+name|FieldChange
+argument_list|>
 name|makeAndSetLabel
 parameter_list|(
 name|AbstractBibtexKeyPattern
@@ -231,13 +256,14 @@ argument_list|,
 name|bibtexKeyPatternPreferences
 argument_list|)
 decl_stmt|;
+return|return
 name|entry
 operator|.
 name|setCiteKey
 argument_list|(
 name|newKey
 argument_list|)
-expr_stmt|;
+return|;
 block|}
 DECL|method|makeLabel (AbstractBibtexKeyPattern citeKeyPattern, BibDatabase database, BibEntry entry, BibtexKeyPatternPreferences bibtexKeyPatternPreferences)
 specifier|private

@@ -86,6 +86,18 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|undo
+operator|.
+name|UndoManager
+import|;
+end_import
+
+begin_import
+import|import
 name|javafx
 operator|.
 name|geometry
@@ -449,7 +461,12 @@ specifier|final
 name|BibDatabaseContext
 name|databaseContext
 decl_stmt|;
-DECL|method|FieldsEditorTab (boolean compressed, BibDatabaseContext databaseContext, SuggestionProviders suggestionProviders)
+DECL|field|undoManager
+specifier|private
+name|UndoManager
+name|undoManager
+decl_stmt|;
+DECL|method|FieldsEditorTab (boolean compressed, BibDatabaseContext databaseContext, SuggestionProviders suggestionProviders, UndoManager undoManager)
 specifier|public
 name|FieldsEditorTab
 parameter_list|(
@@ -461,6 +478,9 @@ name|databaseContext
 parameter_list|,
 name|SuggestionProviders
 name|suggestionProviders
+parameter_list|,
+name|UndoManager
+name|undoManager
 parameter_list|)
 block|{
 name|this
@@ -480,6 +500,12 @@ operator|.
 name|suggestionProviders
 operator|=
 name|suggestionProviders
+expr_stmt|;
+name|this
+operator|.
+name|undoManager
+operator|=
+name|undoManager
 expr_stmt|;
 block|}
 DECL|method|addColumn (GridPane gridPane, int columnIndex, List<Label> nodes)
@@ -597,7 +623,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|setupPanel (BibEntry entry, boolean compressed, SuggestionProviders suggestionProviders)
+DECL|method|setupPanel (BibEntry entry, boolean compressed, SuggestionProviders suggestionProviders, UndoManager undoManager)
 specifier|private
 name|Region
 name|setupPanel
@@ -610,6 +636,9 @@ name|compressed
 parameter_list|,
 name|SuggestionProviders
 name|suggestionProviders
+parameter_list|,
+name|UndoManager
+name|undoManager
 parameter_list|)
 block|{
 name|editors
@@ -707,6 +736,8 @@ name|getType
 argument_list|()
 argument_list|,
 name|suggestionProviders
+argument_list|,
+name|undoManager
 argument_list|)
 decl_stmt|;
 name|fieldEditor
@@ -1559,6 +1590,8 @@ argument_list|,
 name|isCompressed
 argument_list|,
 name|suggestionProviders
+argument_list|,
+name|undoManager
 argument_list|)
 decl_stmt|;
 name|setContent
