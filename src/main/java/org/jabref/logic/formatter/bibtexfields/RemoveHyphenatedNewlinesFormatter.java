@@ -65,29 +65,29 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Removes all line breaks in the string.  */
+comment|/**  * Removes all hyphenated line breaks in the string.  */
 end_comment
 
 begin_class
-DECL|class|RemoveNewlinesFormatter
+DECL|class|RemoveHyphenatedNewlinesFormatter
 specifier|public
 class|class
-name|RemoveNewlinesFormatter
+name|RemoveHyphenatedNewlinesFormatter
 implements|implements
 name|Formatter
 block|{
-DECL|field|LINEBREAKS
+DECL|field|HYPHENATED_WORDS
 specifier|private
 specifier|static
 specifier|final
 name|Pattern
-name|LINEBREAKS
+name|HYPHENATED_WORDS
 init|=
 name|Pattern
 operator|.
 name|compile
 argument_list|(
-literal|"(\r?\n|\r)"
+literal|"(-\r\n|-\n|-\r)"
 argument_list|)
 decl_stmt|;
 annotation|@
@@ -103,7 +103,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Remove line breaks"
+literal|"Remove hyphenated line breaks"
 argument_list|)
 return|;
 block|}
@@ -116,7 +116,7 @@ name|getKey
 parameter_list|()
 block|{
 return|return
-literal|"remove_newlines"
+literal|"remove_hyphenated_newlines"
 return|;
 block|}
 annotation|@
@@ -139,7 +139,7 @@ argument_list|)
 expr_stmt|;
 name|value
 operator|=
-name|LINEBREAKS
+name|HYPHENATED_WORDS
 operator|.
 name|matcher
 argument_list|(
@@ -148,7 +148,7 @@ argument_list|)
 operator|.
 name|replaceAll
 argument_list|(
-literal|" "
+literal|""
 argument_list|)
 expr_stmt|;
 return|return
@@ -171,7 +171,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Removes all line breaks in the field content."
+literal|"Removes all hyphenated line breaks in the field content."
 argument_list|)
 return|;
 block|}
@@ -184,7 +184,7 @@ name|getExampleInput
 parameter_list|()
 block|{
 return|return
-literal|"In \n CDMA"
+literal|"Gimme shel-\nter"
 return|;
 block|}
 block|}
