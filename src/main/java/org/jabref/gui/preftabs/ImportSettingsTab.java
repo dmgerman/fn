@@ -351,7 +351,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Create_blank_entry_linking_the_PDF"
+literal|"Create blank entry linking the PDF"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -364,7 +364,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Create_entry_based_on_XMP-metadata"
+literal|"Create entry based on XMP-metadata"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -377,7 +377,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Create_entry_based_on_content"
+literal|"Create entry based on content"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -390,7 +390,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Only_attach_PDF"
+literal|"Only attach PDF"
 argument_list|)
 argument_list|)
 expr_stmt|;

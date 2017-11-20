@@ -753,12 +753,6 @@ argument_list|,
 name|another_database
 argument_list|)
 expr_stmt|;
-comment|// The control should not reach this point, exception should be triggered:
-assert|assert
-operator|(
-literal|false
-operator|)
-assert|;
 block|}
 annotation|@
 name|Test
@@ -769,10 +763,10 @@ name|NullPointerException
 operator|.
 name|class
 argument_list|)
-DECL|method|brachetedExpressionDefaultConstructorTest ()
+DECL|method|bracketedExpressionDefaultConstructorTest ()
 specifier|public
 name|void
-name|brachetedExpressionDefaultConstructorTest
+name|bracketedExpressionDefaultConstructorTest
 parameter_list|()
 block|{
 name|BibDatabase
@@ -798,12 +792,6 @@ argument_list|,
 name|another_database
 argument_list|)
 expr_stmt|;
-comment|// The control should not reach this point, exception should be triggered:
-assert|assert
-operator|(
-literal|false
-operator|)
-assert|;
 block|}
 annotation|@
 name|Test

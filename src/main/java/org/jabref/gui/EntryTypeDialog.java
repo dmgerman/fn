@@ -1565,7 +1565,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"ID-based_entry_generator"
+literal|"ID-based entry generator"
 argument_list|)
 argument_list|)
 argument_list|)
