@@ -112,7 +112,7 @@ name|testutils
 operator|.
 name|category
 operator|.
-name|FetcherTests
+name|FetcherTest
 import|;
 end_import
 
@@ -212,7 +212,7 @@ begin_class
 annotation|@
 name|Category
 argument_list|(
-name|FetcherTests
+name|FetcherTest
 operator|.
 name|class
 argument_list|)

@@ -13,10 +13,10 @@ package|;
 end_package
 
 begin_interface
-DECL|interface|GUITests
+DECL|interface|FetcherTest
 specifier|public
 interface|interface
-name|GUITests
+name|FetcherTest
 block|{ }
 end_interface
 

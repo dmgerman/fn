@@ -290,7 +290,7 @@ name|testutils
 operator|.
 name|category
 operator|.
-name|DatabaseTests
+name|DatabaseTest
 import|;
 end_import
 
@@ -300,7 +300,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|After
+name|jupiter
+operator|.
+name|api
+operator|.
+name|AfterEach
 import|;
 end_import
 
@@ -310,7 +314,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|BeforeEach
 import|;
 end_import
 
@@ -320,55 +328,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Before
-import|;
-end_import
-
-begin_import
-import|import
-name|org
+name|jupiter
 operator|.
-name|junit
+name|api
 operator|.
 name|Test
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|experimental
-operator|.
-name|categories
-operator|.
-name|Category
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|runner
-operator|.
-name|RunWith
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|runners
-operator|.
-name|Parameterized
 import|;
 end_import
 
@@ -400,21 +364,41 @@ name|Parameters
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
+operator|.
+name|assertTrue
+import|;
+end_import
+
 begin_class
 annotation|@
-name|RunWith
-argument_list|(
-name|Parameterized
-operator|.
-name|class
-argument_list|)
-annotation|@
-name|Category
-argument_list|(
-name|DatabaseTests
-operator|.
-name|class
-argument_list|)
+name|DatabaseTest
 DECL|class|DBMSSynchronizerTest
 specifier|public
 class|class
@@ -453,7 +437,7 @@ name|DBMSType
 name|dbmsType
 decl_stmt|;
 annotation|@
-name|Before
+name|BeforeEach
 DECL|method|setUp ()
 specifier|public
 name|void
@@ -613,8 +597,6 @@ operator|.
 name|getSharedEntries
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -625,8 +607,6 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|expectedEntry
@@ -703,8 +683,6 @@ operator|.
 name|getSharedEntries
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -715,8 +693,6 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|expectedEntry
@@ -739,8 +715,6 @@ literal|"author"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"The nano processor1"
@@ -796,8 +770,6 @@ operator|.
 name|getSharedEntries
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -808,8 +780,6 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|bibEntry
@@ -836,8 +806,6 @@ operator|.
 name|getSharedEntries
 argument_list|()
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|0
@@ -873,8 +841,6 @@ operator|.
 name|getSharedEntries
 argument_list|()
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -885,8 +851,6 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|bibEntry
@@ -968,8 +932,6 @@ operator|.
 name|getSharedMetaData
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|expectedMap
@@ -998,8 +960,6 @@ operator|.
 name|initializeDatabases
 argument_list|()
 expr_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|dbmsProcessor
@@ -1013,8 +973,6 @@ operator|.
 name|initializeDatabases
 argument_list|()
 expr_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|dbmsProcessor
@@ -1077,8 +1035,6 @@ literal|1
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|bibDatabase
@@ -1095,8 +1051,6 @@ operator|.
 name|synchronizeLocalDatabase
 argument_list|()
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|expectedBibEntries
@@ -1143,8 +1097,6 @@ operator|.
 name|synchronizeLocalDatabase
 argument_list|()
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|expectedBibEntries
@@ -1183,8 +1135,6 @@ argument_list|(
 name|bibEntry
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -1242,8 +1192,6 @@ operator|.
 name|synchronizeLocalDatabase
 argument_list|()
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|bibDatabase
@@ -1326,8 +1274,6 @@ operator|.
 name|applyMetaData
 argument_list|()
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"wirthlin, michael j1"
@@ -1404,7 +1350,7 @@ name|bibEntry
 return|;
 block|}
 annotation|@
-name|After
+name|AfterEach
 DECL|method|clear ()
 specifier|public
 name|void
