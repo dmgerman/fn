@@ -398,6 +398,19 @@ name|fetcher
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|getFetchers ()
+specifier|public
+name|List
+argument_list|<
+name|FulltextFetcher
+argument_list|>
+name|getFetchers
+parameter_list|()
+block|{
+return|return
+name|finders
+return|;
+block|}
 DECL|method|findFullTextPDF (BibEntry entry)
 specifier|public
 name|Optional

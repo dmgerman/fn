@@ -1,14 +1,12 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|org.jabref.testutils.category
+DECL|package|org.jabref.support
 package|package
 name|org
 operator|.
 name|jabref
 operator|.
-name|testutils
-operator|.
-name|category
+name|support
 package|;
 end_package
 
@@ -21,18 +19,6 @@ operator|.
 name|annotation
 operator|.
 name|ElementType
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|lang
-operator|.
-name|annotation
-operator|.
-name|Inherited
 import|;
 end_import
 
@@ -82,7 +68,9 @@ name|jupiter
 operator|.
 name|api
 operator|.
-name|Tag
+name|extension
+operator|.
+name|ExtendWith
 import|;
 end_import
 
@@ -90,6 +78,8 @@ begin_annotation_defn
 annotation|@
 name|Target
 argument_list|(
+name|value
+operator|=
 block|{
 name|ElementType
 operator|.
@@ -108,17 +98,23 @@ operator|.
 name|RUNTIME
 argument_list|)
 annotation|@
-name|Inherited
-annotation|@
-name|Tag
+name|ExtendWith
 argument_list|(
-literal|"FetcherTest"
+name|CIServerCondition
+operator|.
+name|class
 argument_list|)
-DECL|annotation|FetcherTest
+DECL|annotation|DisabledOnCIServer
 specifier|public
 annotation_defn|@interface
-name|FetcherTest
-block|{ }
+name|DisabledOnCIServer
+block|{
+DECL|method|value ()
+name|String
+name|value
+parameter_list|()
+function_decl|;
+block|}
 end_annotation_defn
 
 end_unit
