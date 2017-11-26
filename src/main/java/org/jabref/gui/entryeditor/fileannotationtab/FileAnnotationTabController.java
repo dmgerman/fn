@@ -496,34 +496,7 @@ name|newValue
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|annotationList
-operator|.
-name|getSelectionModel
-argument_list|()
-operator|.
-name|selectedItemProperty
-argument_list|()
-operator|.
-name|addListener
-argument_list|(
-parameter_list|(
-name|observable
-parameter_list|,
-name|oldValue
-parameter_list|,
-name|newValue
-parameter_list|)
-lambda|->
-name|grid
-operator|.
-name|setDisable
-argument_list|(
-name|newValue
-operator|==
-literal|null
-argument_list|)
-argument_list|)
-expr_stmt|;
+comment|//annotationList.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> grid.setDisable(newValue == null));
 name|ViewModelListCellFactory
 argument_list|<
 name|FileAnnotationViewModel
@@ -874,7 +847,19 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
-comment|//grid.disableProperty().bind(Bindings.and(viewModel.isAnnotationsEmpty(), false));
+name|grid
+operator|.
+name|disableProperty
+argument_list|()
+operator|.
+name|bind
+argument_list|(
+name|viewModel
+operator|.
+name|isAnnotationsEmpty
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|copy (ActionEvent event)
 specifier|public
