@@ -496,7 +496,6 @@ name|newValue
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//annotationList.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> grid.setDisable(newValue == null));
 name|ViewModelListCellFactory
 argument_list|<
 name|FileAnnotationViewModel
@@ -838,13 +837,6 @@ name|FileAnnotationViewModel
 operator|::
 name|markingProperty
 argument_list|)
-argument_list|)
-expr_stmt|;
-name|grid
-operator|.
-name|setDisable
-argument_list|(
-literal|true
 argument_list|)
 expr_stmt|;
 name|grid
