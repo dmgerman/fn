@@ -396,6 +396,24 @@ name|SimpleObjectProperty
 argument_list|<>
 argument_list|()
 decl_stmt|;
+DECL|field|annotaionEmpty
+specifier|private
+specifier|final
+name|ObjectProperty
+argument_list|<
+name|Boolean
+argument_list|>
+name|annotaionEmpty
+init|=
+operator|new
+name|SimpleObjectProperty
+argument_list|<
+name|Boolean
+argument_list|>
+argument_list|(
+literal|null
+argument_list|)
+decl_stmt|;
 DECL|field|cache
 specifier|private
 specifier|final
@@ -513,6 +531,19 @@ parameter_list|()
 block|{
 return|return
 name|currentAnnotation
+return|;
+block|}
+DECL|method|isAnnotationsEmpty ()
+specifier|public
+name|boolean
+name|isAnnotationsEmpty
+parameter_list|()
+block|{
+return|return
+name|annotations
+operator|.
+name|isEmpty
+argument_list|()
 return|;
 block|}
 DECL|method|annotationsProperty ()
