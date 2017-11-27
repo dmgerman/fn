@@ -1,12 +1,12 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|org.jabref.logic.search.rules.describer
+DECL|package|org.jabref.gui.search.rules.describer
 package|package
 name|org
 operator|.
 name|jabref
 operator|.
-name|logic
+name|gui
 operator|.
 name|search
 operator|.
@@ -15,6 +15,20 @@ operator|.
 name|describer
 package|;
 end_package
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|search
+operator|.
+name|SearchQuery
+import|;
+end_import
 
 begin_import
 import|import
@@ -64,22 +78,6 @@ name|RegexBasedSearchRule
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|search
-operator|.
-name|rules
-operator|.
-name|SearchRule
-import|;
-end_import
-
 begin_class
 DECL|class|SearchDescribers
 specifier|public
@@ -91,23 +89,23 @@ specifier|private
 name|SearchDescribers
 parameter_list|()
 block|{     }
-comment|/**      * Get the search describer for a given search rule and a given search query.      *      * @param searchRule the rule that encodes the search logic      * @param query      the search query      * @return the search describer to turn the search into something human understandable      */
-DECL|method|getSearchDescriberFor (SearchRule searchRule, String query)
+comment|/**      * Get the search describer for a given search query.      *      * @param searchQuery the search query      * @return the search describer to turn the search into something human understandable      */
+DECL|method|getSearchDescriberFor (SearchQuery searchQuery)
 specifier|public
 specifier|static
 name|SearchDescriber
 name|getSearchDescriberFor
 parameter_list|(
-name|SearchRule
-name|searchRule
-parameter_list|,
-name|String
-name|query
+name|SearchQuery
+name|searchQuery
 parameter_list|)
 block|{
 if|if
 condition|(
-name|searchRule
+name|searchQuery
+operator|.
+name|getRule
+argument_list|()
 operator|instanceof
 name|GrammarBasedSearchRule
 condition|)
@@ -118,7 +116,10 @@ init|=
 operator|(
 name|GrammarBasedSearchRule
 operator|)
-name|searchRule
+name|searchQuery
+operator|.
+name|getRule
+argument_list|()
 decl_stmt|;
 return|return
 operator|new
@@ -144,7 +145,10 @@ block|}
 elseif|else
 if|if
 condition|(
-name|searchRule
+name|searchQuery
+operator|.
+name|getRule
+argument_list|()
 operator|instanceof
 name|ContainBasedSearchRule
 condition|)
@@ -155,7 +159,10 @@ init|=
 operator|(
 name|ContainBasedSearchRule
 operator|)
-name|searchRule
+name|searchQuery
+operator|.
+name|getRule
+argument_list|()
 decl_stmt|;
 return|return
 operator|new
@@ -168,14 +175,20 @@ argument_list|()
 argument_list|,
 literal|false
 argument_list|,
-name|query
+name|searchQuery
+operator|.
+name|getQuery
+argument_list|()
 argument_list|)
 return|;
 block|}
 elseif|else
 if|if
 condition|(
-name|searchRule
+name|searchQuery
+operator|.
+name|getRule
+argument_list|()
 operator|instanceof
 name|RegexBasedSearchRule
 condition|)
@@ -186,7 +199,10 @@ init|=
 operator|(
 name|RegexBasedSearchRule
 operator|)
-name|searchRule
+name|searchQuery
+operator|.
+name|getRule
+argument_list|()
 decl_stmt|;
 return|return
 operator|new
@@ -199,7 +215,10 @@ argument_list|()
 argument_list|,
 literal|true
 argument_list|,
-name|query
+name|searchQuery
+operator|.
+name|getQuery
+argument_list|()
 argument_list|)
 return|;
 block|}
@@ -211,11 +230,17 @@ name|IllegalStateException
 argument_list|(
 literal|"Cannot find a describer for searchRule "
 operator|+
-name|searchRule
+name|searchQuery
+operator|.
+name|getRule
+argument_list|()
 operator|+
 literal|" and query "
 operator|+
-name|query
+name|searchQuery
+operator|.
+name|getQuery
+argument_list|()
 argument_list|)
 throw|;
 block|}
