@@ -407,9 +407,7 @@ name|annotaionEmpty
 init|=
 operator|new
 name|SimpleObjectProperty
-argument_list|<
-name|Boolean
-argument_list|>
+argument_list|<>
 argument_list|(
 literal|null
 argument_list|)
@@ -446,11 +444,13 @@ name|currentFile
 decl_stmt|;
 DECL|field|fileMonitor
 specifier|private
+specifier|final
 name|FileUpdateMonitor
 name|fileMonitor
 decl_stmt|;
 DECL|field|fileListener
 specifier|private
+specifier|final
 name|FileUpdateListener
 name|fileListener
 init|=
@@ -695,6 +695,7 @@ operator|.
 name|isEmpty
 argument_list|()
 condition|)
+block|{
 name|annotaionEmpty
 operator|.
 name|setValue
@@ -702,7 +703,9 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|annotaionEmpty
 operator|.
 name|setValue
@@ -710,6 +713,7 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+block|}
 try|try
 block|{
 name|fileMonitor
