@@ -2335,6 +2335,22 @@ literal|true
 expr_stmt|;
 block|}
 block|}
+name|this
+operator|.
+name|getDatabase
+argument_list|()
+operator|.
+name|registerListener
+argument_list|(
+operator|new
+name|UpdateTimestampListener
+argument_list|(
+name|Globals
+operator|.
+name|prefs
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|runWorker (AbstractWorker worker)
 specifier|public
