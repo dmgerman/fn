@@ -396,14 +396,14 @@ name|SimpleObjectProperty
 argument_list|<>
 argument_list|()
 decl_stmt|;
-DECL|field|annotaionEmpty
+DECL|field|annotationEmpty
 specifier|private
 specifier|final
 name|ObjectProperty
 argument_list|<
 name|Boolean
 argument_list|>
-name|annotaionEmpty
+name|annotationEmpty
 init|=
 operator|new
 name|SimpleObjectProperty
@@ -543,7 +543,7 @@ name|isAnnotationsEmpty
 parameter_list|()
 block|{
 return|return
-name|annotaionEmpty
+name|annotationEmpty
 return|;
 block|}
 DECL|method|annotationsProperty ()
@@ -696,7 +696,7 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-name|annotaionEmpty
+name|annotationEmpty
 operator|.
 name|setValue
 argument_list|(
@@ -706,7 +706,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|annotaionEmpty
+name|annotationEmpty
 operator|.
 name|setValue
 argument_list|(
