@@ -2847,6 +2847,16 @@ operator|.
 name|getDateCreated
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|medlineCitation
+operator|.
+name|getDateCreated
+argument_list|()
+operator|!=
+literal|null
+condition|)
+block|{
 name|fields
 operator|.
 name|put
@@ -2872,6 +2882,7 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 name|fields
 operator|.
 name|put
