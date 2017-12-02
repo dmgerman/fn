@@ -579,6 +579,29 @@ argument_list|(
 literal|false
 argument_list|)
 decl_stmt|;
+DECL|method|isCanWriteXMPMetadata ()
+specifier|public
+name|boolean
+name|isCanWriteXMPMetadata
+parameter_list|()
+block|{
+return|return
+name|canWriteXMPMetadata
+operator|.
+name|get
+argument_list|()
+return|;
+block|}
+DECL|method|canWriteXMPMetadataProperty ()
+specifier|public
+name|BooleanProperty
+name|canWriteXMPMetadataProperty
+parameter_list|()
+block|{
+return|return
+name|canWriteXMPMetadata
+return|;
+block|}
 DECL|field|canWriteXMPMetadata
 specifier|private
 specifier|final
@@ -2059,6 +2082,7 @@ name|void
 name|writeXMPMetadata
 parameter_list|()
 block|{
+comment|// Localization.lang("Writing XMP-metadata...")
 name|BackgroundTask
 argument_list|<
 name|Void
@@ -2151,6 +2175,7 @@ return|;
 block|}
 argument_list|)
 decl_stmt|;
+comment|// Localization.lang("Finished writing XMP-metadata.")
 comment|// TODO: Show progress
 name|taskExecutor
 operator|.

@@ -22,20 +22,6 @@ name|Task
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|externalfiles
-operator|.
-name|FileDownloadTask
-import|;
-end_import
-
 begin_comment
 comment|/**  * An object that executes submitted {@link Task}s. This  * interface provides a way of decoupling task submission from the  * mechanics of how each task will be run, including details of thread  * use, scheduling, thread pooling, etc.  */
 end_comment
@@ -59,15 +45,6 @@ argument_list|<
 name|V
 argument_list|>
 name|task
-parameter_list|)
-function_decl|;
-comment|/**      * Runs the given download task.      *      * @param downloadTask the task to run      */
-DECL|method|execute (FileDownloadTask downloadTask)
-name|void
-name|execute
-parameter_list|(
-name|FileDownloadTask
-name|downloadTask
 parameter_list|)
 function_decl|;
 comment|/**      * Shutdown the task executor.      */
