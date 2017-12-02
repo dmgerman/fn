@@ -2103,7 +2103,9 @@ name|entry
 argument_list|)
 return|;
 block|}
-comment|/**      * Try to write the given BibTexEntry in the XMP-stream of the given      * PDF-file.      *      * Throws an IOException if the file cannot be read or written, so the user      * can remove a lock or cancel the operation.      *      * The method will overwrite existing BibTeX-XMP-data, but keep other      * existing metadata.      *      * This is a convenience method for writeXMP(File, Collection).      *      * @param file     The file to write to.      * @param entry    The entry to write.      * @param database maybenull An optional database which the given bibtex entries belong to, which will be used to      *                 resolve strings. If the database is null the strings will not be resolved.      * @throws TransformerException If the entry was malformed or unsupported.      * @throws IOException          If the file could not be written to or could not be found.      */
+comment|/**      * Try to write the given BibTexEntry in the XMP-stream of the given      * PDF-file.      *      * Throws an IOException if the file cannot be read or written, so the user      * can remove a lock or cancel the operation.      *      * The method will overwrite existing BibTeX-XMP-data, but keep other      * existing metadata.      *      * This is a convenience method for writeXMP(File, Collection).      *      * @param file     The file to write to.      * @param entry    The entry to write.      * @param database maybenull An optional database which the given bibtex entries belong to, which will be used to      *                 resolve strings. If the database is null the strings will not be resolved.      * @throws TransformerException If the entry was malformed or unsupported.      * @throws IOException          If the file could not be written to or could not be found.      * @deprecated use overlood {@link #writeXMP(Path, BibEntry, BibDatabase, XMPPreferences)} instead      */
+annotation|@
+name|Deprecated
 DECL|method|writeXMP (File file, BibEntry entry, BibDatabase database, XMPPreferences xmpPreferences)
 specifier|public
 specifier|static
@@ -2156,6 +2158,44 @@ argument_list|,
 name|database
 argument_list|,
 literal|true
+argument_list|,
+name|xmpPreferences
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|writeXMP (Path file, BibEntry entry, BibDatabase database, XMPPreferences xmpPreferences)
+specifier|public
+specifier|static
+name|void
+name|writeXMP
+parameter_list|(
+name|Path
+name|file
+parameter_list|,
+name|BibEntry
+name|entry
+parameter_list|,
+name|BibDatabase
+name|database
+parameter_list|,
+name|XMPPreferences
+name|xmpPreferences
+parameter_list|)
+throws|throws
+name|IOException
+throws|,
+name|TransformerException
+block|{
+name|writeXMP
+argument_list|(
+name|file
+operator|.
+name|toFile
+argument_list|()
+argument_list|,
+name|entry
+argument_list|,
+name|database
 argument_list|,
 name|xmpPreferences
 argument_list|)

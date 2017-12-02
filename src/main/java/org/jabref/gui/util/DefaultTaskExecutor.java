@@ -301,25 +301,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|execute (FileDownloadTask downloadTask)
-specifier|public
-name|void
-name|execute
-parameter_list|(
-name|FileDownloadTask
-name|downloadTask
-parameter_list|)
-block|{
-name|EXECUTOR
-operator|.
-name|submit
-argument_list|(
-name|downloadTask
-argument_list|)
-expr_stmt|;
-block|}
-annotation|@
-name|Override
 DECL|method|shutdown ()
 specifier|public
 name|void

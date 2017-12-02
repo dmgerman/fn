@@ -900,6 +900,8 @@ argument_list|,
 name|entry
 argument_list|,
 name|databaseContext
+argument_list|,
+name|taskExecutor
 argument_list|)
 return|;
 block|}
@@ -961,6 +963,8 @@ argument_list|,
 name|entry
 argument_list|,
 name|databaseContext
+argument_list|,
+name|taskExecutor
 argument_list|)
 argument_list|)
 operator|.
@@ -1111,6 +1115,8 @@ argument_list|,
 name|entry
 argument_list|,
 name|databaseContext
+argument_list|,
+name|taskExecutor
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1269,6 +1275,8 @@ argument_list|,
 name|entry
 argument_list|,
 name|databaseContext
+argument_list|,
+name|taskExecutor
 argument_list|)
 decl_stmt|;
 name|newLinkedFile
@@ -1571,6 +1579,8 @@ argument_list|,
 name|entry
 argument_list|,
 name|databaseContext
+argument_list|,
+name|taskExecutor
 argument_list|)
 decl_stmt|;
 name|files
@@ -1640,6 +1650,8 @@ argument_list|,
 name|entry
 argument_list|,
 name|databaseContext
+argument_list|,
+name|taskExecutor
 argument_list|)
 argument_list|)
 expr_stmt|;
