@@ -466,6 +466,14 @@ specifier|private
 name|UndoManager
 name|undoManager
 decl_stmt|;
+DECL|field|fields
+specifier|private
+name|Collection
+argument_list|<
+name|String
+argument_list|>
+name|fields
+decl_stmt|;
 DECL|method|FieldsEditorTab (boolean compressed, BibDatabaseContext databaseContext, SuggestionProviders suggestionProviders, UndoManager undoManager)
 specifier|public
 name|FieldsEditorTab
@@ -646,17 +654,6 @@ operator|.
 name|clear
 argument_list|()
 expr_stmt|;
-name|List
-argument_list|<
-name|Label
-argument_list|>
-name|labels
-init|=
-operator|new
-name|ArrayList
-argument_list|<>
-argument_list|()
-decl_stmt|;
 name|EntryType
 name|entryType
 init|=
@@ -675,18 +672,25 @@ name|getMode
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|Collection
-argument_list|<
-name|String
-argument_list|>
 name|fields
-init|=
+operator|=
 name|determineFieldsToShow
 argument_list|(
 name|entry
 argument_list|,
 name|entryType
 argument_list|)
+expr_stmt|;
+name|List
+argument_list|<
+name|Label
+argument_list|>
+name|labels
+init|=
+operator|new
+name|ArrayList
+argument_list|<>
+argument_list|()
 decl_stmt|;
 for|for
 control|(
@@ -1021,8 +1025,6 @@ name|setRegularRowLayout
 argument_list|(
 name|gridPane
 argument_list|,
-name|fields
-argument_list|,
 name|rows
 argument_list|)
 expr_stmt|;
@@ -1075,16 +1077,6 @@ literal|";"
 argument_list|)
 expr_stmt|;
 block|}
-name|gridPane
-operator|.
-name|getStylesheets
-argument_list|()
-operator|.
-name|add
-argument_list|(
-literal|"org/jabref/gui/entryeditor/EntryEditor.css"
-argument_list|)
-expr_stmt|;
 comment|// Warp everything in a scroll-pane
 name|ScrollPane
 name|scrollPane
@@ -1140,19 +1132,13 @@ return|return
 name|scrollPane
 return|;
 block|}
-DECL|method|setRegularRowLayout (GridPane gridPane, Collection<String> fields, int rows)
+DECL|method|setRegularRowLayout (GridPane gridPane, int rows)
 specifier|private
 name|void
 name|setRegularRowLayout
 parameter_list|(
 name|GridPane
 name|gridPane
-parameter_list|,
-name|Collection
-argument_list|<
-name|String
-argument_list|>
-name|fields
 parameter_list|,
 name|int
 name|rows
@@ -1616,6 +1602,19 @@ name|EntryType
 name|entryType
 parameter_list|)
 function_decl|;
+DECL|method|getShownFields ()
+specifier|public
+name|Collection
+argument_list|<
+name|String
+argument_list|>
+name|getShownFields
+parameter_list|()
+block|{
+return|return
+name|fields
+return|;
+block|}
 block|}
 end_class
 
