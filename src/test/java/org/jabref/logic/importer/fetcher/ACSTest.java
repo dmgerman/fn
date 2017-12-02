@@ -66,7 +66,7 @@ name|jabref
 operator|.
 name|support
 operator|.
-name|DevEnvironment
+name|DisabledOnCIServer
 import|;
 end_import
 
@@ -80,7 +80,7 @@ name|testutils
 operator|.
 name|category
 operator|.
-name|FetcherTests
+name|FetcherTest
 import|;
 end_import
 
@@ -90,7 +90,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|BeforeEach
 import|;
 end_import
 
@@ -100,54 +104,34 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assume
-import|;
-end_import
-
-begin_import
-import|import
-name|org
+name|jupiter
 operator|.
-name|junit
-operator|.
-name|Before
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
+name|api
 operator|.
 name|Test
 import|;
 end_import
 
 begin_import
-import|import
+import|import static
 name|org
 operator|.
 name|junit
 operator|.
-name|experimental
+name|jupiter
 operator|.
-name|categories
+name|api
 operator|.
-name|Category
+name|Assertions
+operator|.
+name|assertEquals
 import|;
 end_import
 
 begin_class
 annotation|@
-name|Category
-argument_list|(
-name|FetcherTests
-operator|.
-name|class
-argument_list|)
+name|FetcherTest
 DECL|class|ACSTest
-specifier|public
 class|class
 name|ACSTest
 block|{
@@ -162,9 +146,8 @@ name|BibEntry
 name|entry
 decl_stmt|;
 annotation|@
-name|Before
+name|BeforeEach
 DECL|method|setUp ()
-specifier|public
 name|void
 name|setUp
 parameter_list|()
@@ -184,83 +167,18 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|doiNotPresent ()
-specifier|public
-name|void
-name|doiNotPresent
-parameter_list|()
-throws|throws
-name|IOException
-block|{
-name|Assert
-operator|.
-name|assertEquals
-argument_list|(
-name|Optional
-operator|.
-name|empty
-argument_list|()
-argument_list|,
-name|finder
-operator|.
-name|findFullText
-argument_list|(
-name|entry
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
 annotation|@
-name|Test
+name|DisabledOnCIServer
 argument_list|(
-name|expected
-operator|=
-name|NullPointerException
-operator|.
-name|class
+literal|"CI server is unreliable"
 argument_list|)
-DECL|method|rejectNullParameter ()
-specifier|public
-name|void
-name|rejectNullParameter
-parameter_list|()
-throws|throws
-name|IOException
-block|{
-name|finder
-operator|.
-name|findFullText
-argument_list|(
-literal|null
-argument_list|)
-expr_stmt|;
-name|Assert
-operator|.
-name|fail
-argument_list|()
-expr_stmt|;
-block|}
-annotation|@
-name|Test
 DECL|method|findByDOI ()
-specifier|public
 name|void
 name|findByDOI
 parameter_list|()
 throws|throws
 name|IOException
 block|{
-comment|// CI server is unreliable
-name|Assume
-operator|.
-name|assumeFalse
-argument_list|(
-name|DevEnvironment
-operator|.
-name|isCIServer
-argument_list|()
-argument_list|)
-expr_stmt|;
 name|entry
 operator|.
 name|setField
@@ -270,8 +188,6 @@ argument_list|,
 literal|"10.1021/bk-2006-STYG.ch014"
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -296,25 +212,18 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|DisabledOnCIServer
+argument_list|(
+literal|"CI server is unreliable"
+argument_list|)
 DECL|method|notFoundByDOI ()
-specifier|public
 name|void
 name|notFoundByDOI
 parameter_list|()
 throws|throws
 name|IOException
 block|{
-comment|// CI server is unreliable
-name|Assume
-operator|.
-name|assumeFalse
-argument_list|(
-name|DevEnvironment
-operator|.
-name|isCIServer
-argument_list|()
-argument_list|)
-expr_stmt|;
 name|entry
 operator|.
 name|setField
@@ -324,8 +233,6 @@ argument_list|,
 literal|"10.1021/bk-2006-WWW.ch014"
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional

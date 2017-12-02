@@ -444,9 +444,19 @@ condition|)
 block|{
 name|cmd
 operator|=
-literal|"nautilus "
+literal|"nautilus"
 operator|+
 name|filePath
+operator|.
+name|toString
+argument_list|()
+operator|.
+name|replace
+argument_list|(
+literal|" "
+argument_list|,
+literal|"\\ "
+argument_list|)
 expr_stmt|;
 block|}
 elseif|else
@@ -465,6 +475,16 @@ operator|=
 literal|"dolphin --select "
 operator|+
 name|filePath
+operator|.
+name|toString
+argument_list|()
+operator|.
+name|replace
+argument_list|(
+literal|" "
+argument_list|,
+literal|"\\ "
+argument_list|)
 expr_stmt|;
 block|}
 else|else

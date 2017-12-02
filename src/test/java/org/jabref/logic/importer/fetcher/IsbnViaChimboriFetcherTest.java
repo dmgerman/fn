@@ -90,7 +90,7 @@ name|testutils
 operator|.
 name|category
 operator|.
-name|FetcherTests
+name|FetcherTest
 import|;
 end_import
 
@@ -178,7 +178,7 @@ begin_class
 annotation|@
 name|Category
 argument_list|(
-name|FetcherTests
+name|FetcherTest
 operator|.
 name|class
 argument_list|)
@@ -227,7 +227,7 @@ name|setField
 argument_list|(
 literal|"title"
 argument_list|,
-literal|"Effective Java (Java Series)"
+literal|"Effective Java (2nd Edition)"
 argument_list|)
 expr_stmt|;
 name|bibEntry
@@ -236,7 +236,7 @@ name|setField
 argument_list|(
 literal|"publisher"
 argument_list|,
-literal|"Addison-Wesley Professional"
+literal|"Addison-Wesley"
 argument_list|)
 expr_stmt|;
 name|bibEntry
@@ -272,7 +272,7 @@ name|setField
 argument_list|(
 literal|"url"
 argument_list|,
-literal|"https://www.amazon.com/Effective-Java-Joshua-Bloch-ebook/dp/B00B8V09HY?SubscriptionId=0JYN1NVW651KCA56C102&tag=techkie-20&linkCode=xm2&camp=2025&creative=165953&creativeASIN=B00B8V09HY"
+literal|"https://www.amazon.com/Effective-Java-2nd-Joshua-Bloch/dp/0321356683?SubscriptionId=0JYN1NVW651KCA56C102&tag=techkie-20&linkCode=xm2&camp=2025&creative=165953&creativeASIN=0321356683"
 argument_list|)
 expr_stmt|;
 name|fetcher

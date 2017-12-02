@@ -26,6 +26,18 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|regex
+operator|.
+name|Pattern
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|jabref
@@ -64,6 +76,20 @@ name|RemoveNewlinesFormatter
 implements|implements
 name|Formatter
 block|{
+DECL|field|LINEBREAKS
+specifier|private
+specifier|static
+specifier|final
+name|Pattern
+name|LINEBREAKS
+init|=
+name|Pattern
+operator|.
+name|compile
+argument_list|(
+literal|"(\r?\n|\r)"
+argument_list|)
+decl_stmt|;
 annotation|@
 name|Override
 DECL|method|getName ()
@@ -111,22 +137,22 @@ argument_list|(
 name|value
 argument_list|)
 expr_stmt|;
+name|value
+operator|=
+name|LINEBREAKS
+operator|.
+name|matcher
+argument_list|(
+name|value
+argument_list|)
+operator|.
+name|replaceAll
+argument_list|(
+literal|" "
+argument_list|)
+expr_stmt|;
 return|return
 name|value
-operator|.
-name|replace
-argument_list|(
-literal|"\r\n"
-argument_list|,
-literal|" "
-argument_list|)
-operator|.
-name|replace
-argument_list|(
-literal|"\n"
-argument_list|,
-literal|" "
-argument_list|)
 operator|.
 name|trim
 argument_list|()

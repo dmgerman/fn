@@ -498,6 +498,13 @@ name|HashMap
 argument_list|<>
 argument_list|()
 decl_stmt|;
+DECL|field|isEventPropagationEnabled
+specifier|private
+name|boolean
+name|isEventPropagationEnabled
+init|=
+literal|true
+decl_stmt|;
 comment|/**      * Constructs an empty metadata.      */
 DECL|method|MetaData ()
 specifier|public
@@ -1201,6 +1208,11 @@ name|void
 name|postChange
 parameter_list|()
 block|{
+if|if
+condition|(
+name|isEventPropagationEnabled
+condition|)
+block|{
 name|eventBus
 operator|.
 name|post
@@ -1212,6 +1224,7 @@ name|this
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|/**      * Returns the encoding used during parsing.      */
 DECL|method|getEncoding ()
@@ -1288,6 +1301,23 @@ name|postChange
 argument_list|()
 expr_stmt|;
 block|}
+block|}
+comment|/**      * If disabled {@link MetaDataChangedEvent} will not be posted.      */
+DECL|method|setEventPropagation (boolean enabled)
+specifier|public
+name|void
+name|setEventPropagation
+parameter_list|(
+name|boolean
+name|enabled
+parameter_list|)
+block|{
+name|this
+operator|.
+name|isEventPropagationEnabled
+operator|=
+name|enabled
+expr_stmt|;
 block|}
 DECL|method|registerListener (Object listener)
 specifier|public

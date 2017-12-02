@@ -20,7 +20,7 @@ name|testutils
 operator|.
 name|category
 operator|.
-name|DatabaseTests
+name|DatabaseTest
 import|;
 end_import
 
@@ -30,42 +30,49 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
-import|;
-end_import
-
-begin_import
-import|import
-name|org
+name|jupiter
 operator|.
-name|junit
+name|api
 operator|.
 name|Test
 import|;
 end_import
 
 begin_import
-import|import
+import|import static
 name|org
 operator|.
 name|junit
 operator|.
-name|experimental
+name|jupiter
 operator|.
-name|categories
+name|api
 operator|.
-name|Category
+name|Assertions
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
+operator|.
+name|assertFalse
 import|;
 end_import
 
 begin_class
 annotation|@
-name|Category
-argument_list|(
-name|DatabaseTests
-operator|.
-name|class
-argument_list|)
+name|DatabaseTest
 DECL|class|DBMSTypeTest
 specifier|public
 class|class
@@ -79,8 +86,6 @@ name|void
 name|testToString
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"MySQL"
@@ -93,8 +98,6 @@ name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Oracle"
@@ -107,8 +110,6 @@ name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"PostgreSQL"
@@ -130,8 +131,6 @@ name|void
 name|testGetDriverClassPath
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"com.mysql.jdbc.Driver"
@@ -144,8 +143,6 @@ name|getDriverClassPath
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"oracle.jdbc.driver.OracleDriver"
@@ -158,8 +155,6 @@ name|getDriverClassPath
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"com.impossibl.postgres.jdbc.PGDriver"
@@ -181,8 +176,6 @@ name|void
 name|testFromString
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|DBMSType
@@ -200,8 +193,6 @@ name|get
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|DBMSType
@@ -219,8 +210,6 @@ name|get
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|DBMSType
@@ -238,8 +227,6 @@ name|get
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertFalse
 argument_list|(
 name|DBMSType
@@ -262,8 +249,6 @@ name|void
 name|testGetUrl
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"jdbc:mysql://localhost:3306/xe"
@@ -282,8 +267,6 @@ literal|"xe"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"jdbc:oracle:thin:@localhost:1521:xe"
@@ -302,8 +285,6 @@ literal|"xe"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"jdbc:pgsql://localhost:5432/xe"
@@ -331,8 +312,6 @@ name|void
 name|testGetDefaultPort
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|3306
@@ -345,8 +324,6 @@ name|getDefaultPort
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|5432
@@ -359,8 +336,6 @@ name|getDefaultPort
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|1521

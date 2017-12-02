@@ -150,7 +150,7 @@ name|testutils
 operator|.
 name|category
 operator|.
-name|DatabaseTests
+name|DatabaseTest
 import|;
 end_import
 
@@ -160,7 +160,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|After
+name|jupiter
+operator|.
+name|api
+operator|.
+name|AfterEach
 import|;
 end_import
 
@@ -170,7 +174,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|BeforeEach
 import|;
 end_import
 
@@ -180,55 +188,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Before
-import|;
-end_import
-
-begin_import
-import|import
-name|org
+name|jupiter
 operator|.
-name|junit
+name|api
 operator|.
 name|Test
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|experimental
-operator|.
-name|categories
-operator|.
-name|Category
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|runner
-operator|.
-name|RunWith
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|runners
-operator|.
-name|Parameterized
 import|;
 end_import
 
@@ -260,21 +224,89 @@ name|Parameters
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
+operator|.
+name|assertFalse
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
+operator|.
+name|assertNotNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
+operator|.
+name|assertNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
+operator|.
+name|assertTrue
+import|;
+end_import
+
 begin_class
 annotation|@
-name|RunWith
-argument_list|(
-name|Parameterized
-operator|.
-name|class
-argument_list|)
-annotation|@
-name|Category
-argument_list|(
-name|DatabaseTests
-operator|.
-name|class
-argument_list|)
+name|DatabaseTest
 DECL|class|SynchronizationTestSimulator
 specifier|public
 class|class
@@ -309,7 +341,7 @@ name|DBMSType
 name|dbmsType
 decl_stmt|;
 annotation|@
-name|Before
+name|BeforeEach
 DECL|method|setUp ()
 specifier|public
 name|void
@@ -493,8 +525,6 @@ operator|.
 name|pullChanges
 argument_list|()
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|clientContextA
@@ -568,8 +598,6 @@ operator|.
 name|pullChanges
 argument_list|()
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|clientContextA
@@ -626,8 +654,6 @@ operator|.
 name|pullChanges
 argument_list|()
 expr_stmt|;
-name|Assert
-operator|.
 name|assertFalse
 argument_list|(
 name|clientContextA
@@ -642,8 +668,6 @@ name|isEmpty
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertFalse
 argument_list|(
 name|clientContextB
@@ -658,8 +682,6 @@ name|isEmpty
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|clientContextA
@@ -699,8 +721,6 @@ operator|.
 name|pullChanges
 argument_list|()
 expr_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|clientContextA
@@ -715,8 +735,6 @@ name|isEmpty
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|clientContextB
@@ -768,8 +786,6 @@ operator|.
 name|pullChanges
 argument_list|()
 expr_stmt|;
-name|Assert
-operator|.
 name|assertFalse
 argument_list|(
 name|clientContextA
@@ -784,8 +800,6 @@ name|isEmpty
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertFalse
 argument_list|(
 name|clientContextB
@@ -800,8 +814,6 @@ name|isEmpty
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|clientContextA
@@ -832,8 +844,6 @@ argument_list|(
 name|bibEntryOfClientA
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertFalse
 argument_list|(
 name|clientContextB
@@ -848,8 +858,6 @@ name|isEmpty
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertNull
 argument_list|(
 name|eventListenerB
@@ -885,8 +893,6 @@ literal|"2009"
 argument_list|)
 expr_stmt|;
 comment|// here a new SharedEntryNotPresentEvent has been thrown. In this case the user B would get an pop-up window.
-name|Assert
-operator|.
 name|assertNotNull
 argument_list|(
 name|eventListenerB
@@ -895,8 +901,6 @@ name|getSharedEntryNotPresentEvent
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|bibEntryOfClientB
@@ -959,8 +963,6 @@ argument_list|)
 expr_stmt|;
 comment|// B does nothing here, so there is no event occurrence
 comment|// B now tries to update the entry
-name|Assert
-operator|.
 name|assertFalse
 argument_list|(
 name|clientContextB
@@ -975,8 +977,6 @@ name|isEmpty
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertNull
 argument_list|(
 name|eventListenerB
@@ -1013,8 +1013,6 @@ argument_list|)
 expr_stmt|;
 comment|// B now cannot update the shared entry, due to optimistic offline lock.
 comment|// In this case an BibEntry merge dialog pops up.
-name|Assert
-operator|.
 name|assertNotNull
 argument_list|(
 name|eventListenerB
@@ -1105,7 +1103,7 @@ name|bibEntry
 return|;
 block|}
 annotation|@
-name|After
+name|AfterEach
 DECL|method|clear ()
 specifier|public
 name|void

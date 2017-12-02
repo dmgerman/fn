@@ -48,7 +48,7 @@ name|testutils
 operator|.
 name|category
 operator|.
-name|DatabaseTests
+name|DatabaseTest
 import|;
 end_import
 
@@ -66,28 +66,9 @@ name|Subscribe
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|experimental
-operator|.
-name|categories
-operator|.
-name|Category
-import|;
-end_import
-
 begin_class
 annotation|@
-name|Category
-argument_list|(
-name|DatabaseTests
-operator|.
-name|class
-argument_list|)
+name|DatabaseTest
 DECL|class|SynchronizationTestEventListener
 specifier|public
 class|class

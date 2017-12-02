@@ -98,7 +98,7 @@ name|jabref
 operator|.
 name|support
 operator|.
-name|DevEnvironment
+name|DisabledOnCIServer
 import|;
 end_import
 
@@ -112,7 +112,7 @@ name|testutils
 operator|.
 name|category
 operator|.
-name|FetcherTests
+name|FetcherTest
 import|;
 end_import
 
@@ -122,7 +122,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assume
+name|jupiter
+operator|.
+name|api
+operator|.
+name|BeforeEach
 import|;
 end_import
 
@@ -132,31 +136,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Before
-import|;
-end_import
-
-begin_import
-import|import
-name|org
+name|jupiter
 operator|.
-name|junit
+name|api
 operator|.
 name|Test
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|experimental
-operator|.
-name|categories
-operator|.
-name|Category
 import|;
 end_import
 
@@ -198,14 +182,8 @@ end_import
 
 begin_class
 annotation|@
-name|Category
-argument_list|(
-name|FetcherTests
-operator|.
-name|class
-argument_list|)
+name|FetcherTest
 DECL|class|zbMATHTest
-specifier|public
 class|class
 name|zbMATHTest
 block|{
@@ -220,9 +198,8 @@ name|BibEntry
 name|donaldsonEntry
 decl_stmt|;
 annotation|@
-name|Before
+name|BeforeEach
 DECL|method|setUp ()
-specifier|public
 name|void
 name|setUp
 parameter_list|()
@@ -389,25 +366,18 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|DisabledOnCIServer
+argument_list|(
+literal|"CI server has no subscription to zbMath and thus gets 401 response"
+argument_list|)
 DECL|method|searchByQueryFindsEntry ()
-specifier|public
 name|void
 name|searchByQueryFindsEntry
 parameter_list|()
 throws|throws
 name|Exception
 block|{
-comment|// CI has no subscription to zbMath and thus gets 401 response
-name|Assume
-operator|.
-name|assumeFalse
-argument_list|(
-name|DevEnvironment
-operator|.
-name|isCIServer
-argument_list|()
-argument_list|)
-expr_stmt|;
 name|List
 argument_list|<
 name|BibEntry
