@@ -14,16 +14,6 @@ end_package
 
 begin_import
 import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|JOptionPane
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|jabref
@@ -87,6 +77,16 @@ operator|.
 name|entry
 operator|.
 name|FieldName
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|*
 import|;
 end_import
 
@@ -178,10 +178,7 @@ name|JOptionPane
 operator|.
 name|showMessageDialog
 argument_list|(
-name|basePanel
-operator|.
-name|frame
-argument_list|()
+literal|null
 argument_list|,
 name|Localization
 operator|.
