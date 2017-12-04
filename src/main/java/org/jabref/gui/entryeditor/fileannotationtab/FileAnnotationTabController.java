@@ -726,7 +726,7 @@ name|Font
 argument_list|(
 literal|"System Bold"
 argument_list|,
-literal|14
+literal|15
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -734,7 +734,7 @@ name|marking
 operator|.
 name|setPrefWidth
 argument_list|(
-literal|100
+literal|250
 argument_list|)
 expr_stmt|;
 name|author
