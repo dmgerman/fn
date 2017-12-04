@@ -118,18 +118,6 @@ name|scene
 operator|.
 name|control
 operator|.
-name|Control
-import|;
-end_import
-
-begin_import
-import|import
-name|javafx
-operator|.
-name|scene
-operator|.
-name|control
-operator|.
 name|Label
 import|;
 end_import
@@ -170,6 +158,10 @@ name|TextArea
 import|;
 end_import
 
+begin_comment
+comment|//import javafx.scene.layout.*;
+end_comment
+
 begin_import
 import|import
 name|javafx
@@ -178,7 +170,31 @@ name|scene
 operator|.
 name|layout
 operator|.
-name|*
+name|GridPane
+import|;
+end_import
+
+begin_import
+import|import
+name|javafx
+operator|.
+name|scene
+operator|.
+name|layout
+operator|.
+name|ColumnConstraints
+import|;
+end_import
+
+begin_import
+import|import
+name|javafx
+operator|.
+name|scene
+operator|.
+name|layout
+operator|.
+name|RowConstraints
 import|;
 end_import
 
@@ -191,18 +207,6 @@ operator|.
 name|text
 operator|.
 name|Font
-import|;
-end_import
-
-begin_import
-import|import
-name|javafx
-operator|.
-name|scene
-operator|.
-name|text
-operator|.
-name|Text
 import|;
 end_import
 
@@ -717,7 +721,6 @@ name|getPage
 argument_list|()
 argument_list|)
 decl_stmt|;
-comment|//marking.getStyleClass().setAll("marking");
 name|marking
 operator|.
 name|setFont
@@ -779,6 +782,7 @@ argument_list|(
 literal|30
 argument_list|)
 expr_stmt|;
+comment|// add alignment for text in the list
 name|marking
 operator|.
 name|setTextAlignment
@@ -895,7 +899,6 @@ argument_list|,
 literal|1
 argument_list|)
 expr_stmt|;
-comment|/*                     VBox node = new VBox();                      Text text = new Text();                     text.setText(annotation.getContent());                     text.getStyleClass().setAll("text");                      HBox details = new HBox();                     details.getStyleClass().setAll("details");                     Text page = new Text();                     page.setText(Localization.lang("Page") + ": " + annotation.getPage());                     details.getChildren().addAll(page);                      node.getChildren().addAll(text, details);                     node.setMaxWidth(Control.USE_PREF_SIZE);*/
 return|return
 name|node
 return|;
@@ -981,9 +984,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// Set-up details pane
-comment|//author.textProperty().bind(EasyBind.select(viewModel.currentAnnotationProperty()).selectObject(FileAnnotationViewModel::authorProperty));
-comment|//page.textProperty().bind(EasyBind.select(viewModel.currentAnnotationProperty()).selectObject(FileAnnotationViewModel::pageProperty));
-comment|//date.textProperty().bind(EasyBind.select(viewModel.currentAnnotationProperty()).selectObject(FileAnnotationViewModel::dateProperty));
 name|content
 operator|.
 name|textProperty
