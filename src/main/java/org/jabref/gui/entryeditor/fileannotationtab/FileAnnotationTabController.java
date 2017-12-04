@@ -158,10 +158,6 @@ name|TextArea
 import|;
 end_import
 
-begin_comment
-comment|//import javafx.scene.layout.*;
-end_comment
-
 begin_import
 import|import
 name|javafx
