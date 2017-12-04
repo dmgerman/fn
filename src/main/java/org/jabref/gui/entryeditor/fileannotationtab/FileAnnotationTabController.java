@@ -178,7 +178,7 @@ name|scene
 operator|.
 name|layout
 operator|.
-name|ColumnConstraints
+name|RowConstraints
 import|;
 end_import
 
@@ -190,7 +190,7 @@ name|scene
 operator|.
 name|layout
 operator|.
-name|RowConstraints
+name|ColumnConstraints
 import|;
 end_import
 
