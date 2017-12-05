@@ -1602,6 +1602,13 @@ name|String
 name|fieldName
 parameter_list|)
 block|{
+name|DefaultTaskExecutor
+operator|.
+name|runInJavaFXThread
+argument_list|(
+parameter_list|()
+lambda|->
+block|{
 for|for
 control|(
 name|Tab
@@ -1664,6 +1671,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 end_class
