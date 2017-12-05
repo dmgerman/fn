@@ -6000,6 +6000,26 @@ argument_list|,
 literal|""
 argument_list|)
 expr_stmt|;
+comment|// Support a special version of apostrophe
+name|LATEX_HTML_CONVERSION_MAP
+operator|.
+name|put
+argument_list|(
+literal|"{\\textquotesingle}"
+argument_list|,
+literal|"&apos;"
+argument_list|)
+expr_stmt|;
+name|LATEX_UNICODE_CONVERSION_MAP
+operator|.
+name|put
+argument_list|(
+literal|"{\\textquotesingle}"
+argument_list|,
+literal|"'"
+argument_list|)
+expr_stmt|;
+comment|// apostrophe, U+00027
 block|}
 DECL|method|HTMLUnicodeConversionMaps ()
 specifier|private
