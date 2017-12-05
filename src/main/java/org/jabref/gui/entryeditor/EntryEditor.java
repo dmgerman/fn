@@ -1294,6 +1294,7 @@ name|sourceTab
 decl_stmt|;
 DECL|field|typeLabel
 specifier|private
+specifier|final
 name|TypeLabel
 name|typeLabel
 decl_stmt|;
@@ -3183,6 +3184,13 @@ name|String
 name|fieldName
 parameter_list|)
 block|{
+name|DefaultTaskExecutor
+operator|.
+name|runInJavaFXThread
+argument_list|(
+parameter_list|()
+lambda|->
+block|{
 for|for
 control|(
 name|Tab
@@ -3249,6 +3257,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|setMovingToDifferentEntry ()
 specifier|public
