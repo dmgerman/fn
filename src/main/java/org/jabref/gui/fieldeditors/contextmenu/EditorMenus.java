@@ -158,20 +158,6 @@ name|org
 operator|.
 name|jabref
 operator|.
-name|gui
-operator|.
-name|fieldeditors
-operator|.
-name|EditorTextArea
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
 name|logic
 operator|.
 name|formatter
@@ -197,7 +183,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Provides context menus for the text fields of the entry editor. Note that we use {@link Supplier} to prevent an early  * instantiation of the menus. Therefore, they are attached to each text field but instantiation happens on the first  * right-click of the user in that field. The late instantiation is done by {@link  * EditorTextArea#addToContextMenu(java.util.function.Supplier)}.  */
+comment|/**  * Provides context menus for the text fields of the entry editor. Note that we use {@link Supplier} to prevent an early  * instantiation of the menus. Therefore, they are attached to each text field but instantiation happens on the first  * right-click of the user in that field. The late instantiation is done by {@link  * org.jabref.gui.fieldeditors.EditorTextArea#addToContextMenu(java.util.function.Supplier)}.  */
 end_comment
 
 begin_class
