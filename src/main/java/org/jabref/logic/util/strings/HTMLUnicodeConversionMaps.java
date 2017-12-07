@@ -6005,7 +6005,7 @@ name|LATEX_HTML_CONVERSION_MAP
 operator|.
 name|put
 argument_list|(
-literal|"{\\textquotesingle}"
+literal|"textquotesingle"
 argument_list|,
 literal|"&apos;"
 argument_list|)
@@ -6014,7 +6014,7 @@ name|LATEX_UNICODE_CONVERSION_MAP
 operator|.
 name|put
 argument_list|(
-literal|"{\\textquotesingle}"
+literal|"textquotesingle"
 argument_list|,
 literal|"'"
 argument_list|)
