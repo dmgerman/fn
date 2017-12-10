@@ -32,6 +32,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Collection
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Collections
 import|;
 end_import
@@ -43,16 +53,6 @@ operator|.
 name|util
 operator|.
 name|List
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Map
 import|;
 end_import
 
@@ -70,6 +70,20 @@ name|BibEntry
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|Multimap
+import|;
+end_import
+
 begin_interface
 DECL|interface|FileFinder
 specifier|public
@@ -78,14 +92,11 @@ name|FileFinder
 block|{
 comment|/**      * Finds all files in the given directories that are probably associated with the given entries and have one of the      * passed extensions.      *      * @param entries     The entries to search for.      * @param directories The root directories to search.      * @param extensions  The extensions that are acceptable.      */
 DECL|method|findAssociatedFiles (List<BibEntry> entries, List<Path> directories, List<String> extensions)
-name|Map
+name|Multimap
 argument_list|<
 name|BibEntry
 argument_list|,
-name|List
-argument_list|<
 name|Path
-argument_list|>
 argument_list|>
 name|findAssociatedFiles
 parameter_list|(
@@ -110,7 +121,7 @@ parameter_list|)
 function_decl|;
 DECL|method|findAssociatedFiles (BibEntry entry, List<Path> directories, List<String> extensions)
 specifier|default
-name|List
+name|Collection
 argument_list|<
 name|Path
 argument_list|>
@@ -132,17 +143,7 @@ argument_list|>
 name|extensions
 parameter_list|)
 block|{
-name|Map
-argument_list|<
-name|BibEntry
-argument_list|,
-name|List
-argument_list|<
-name|Path
-argument_list|>
-argument_list|>
-name|associatedFiles
-init|=
+return|return
 name|findAssociatedFiles
 argument_list|(
 name|Collections
@@ -156,18 +157,10 @@ name|directories
 argument_list|,
 name|extensions
 argument_list|)
-decl_stmt|;
-return|return
-name|associatedFiles
 operator|.
-name|getOrDefault
+name|get
 argument_list|(
 name|entry
-argument_list|,
-name|Collections
-operator|.
-name|emptyList
-argument_list|()
 argument_list|)
 return|;
 block|}
