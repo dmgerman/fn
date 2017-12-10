@@ -1283,7 +1283,7 @@ name|fileName
 init|=
 name|FileUtil
 operator|.
-name|getFileName
+name|getBaseName
 argument_list|(
 name|fileNameWithExtension
 argument_list|)

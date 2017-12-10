@@ -12583,7 +12583,7 @@ name|getAutoLinkPreferences
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|List
+name|Collection
 argument_list|<
 name|Path
 argument_list|>
@@ -12614,10 +12614,11 @@ name|file
 init|=
 name|files
 operator|.
-name|get
-argument_list|(
-literal|0
-argument_list|)
+name|iterator
+argument_list|()
+operator|.
+name|next
+argument_list|()
 decl_stmt|;
 name|Optional
 argument_list|<

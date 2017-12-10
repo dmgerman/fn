@@ -3370,6 +3370,31 @@ name|searchString
 argument_list|)
 return|;
 block|}
+DECL|method|contains (String string, char character)
+specifier|public
+specifier|static
+name|boolean
+name|contains
+parameter_list|(
+name|String
+name|string
+parameter_list|,
+name|char
+name|character
+parameter_list|)
+block|{
+return|return
+name|string
+operator|.
+name|indexOf
+argument_list|(
+name|character
+argument_list|)
+operator|!=
+operator|-
+literal|1
+return|;
+block|}
 block|}
 end_class
 

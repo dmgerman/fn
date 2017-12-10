@@ -44,6 +44,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Collection
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Collections
 import|;
 end_import
@@ -392,7 +402,7 @@ literal|','
 argument_list|)
 decl_stmt|;
 comment|//when
-name|List
+name|Collection
 argument_list|<
 name|Path
 argument_list|>
@@ -480,7 +490,7 @@ literal|','
 argument_list|)
 decl_stmt|;
 comment|//when
-name|List
+name|Collection
 argument_list|<
 name|Path
 argument_list|>
@@ -616,7 +626,7 @@ literal|','
 argument_list|)
 decl_stmt|;
 comment|//when
-name|List
+name|Collection
 argument_list|<
 name|Path
 argument_list|>
@@ -734,7 +744,7 @@ literal|','
 argument_list|)
 decl_stmt|;
 comment|//when
-name|List
+name|Collection
 argument_list|<
 name|Path
 argument_list|>
@@ -852,7 +862,7 @@ literal|','
 argument_list|)
 decl_stmt|;
 comment|//when
-name|List
+name|Collection
 argument_list|<
 name|Path
 argument_list|>

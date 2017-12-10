@@ -139,7 +139,7 @@ argument_list|()
 return|;
 block|}
 DECL|method|getBibtexDatabase (ImportFormatPreferences importFormatPreferences)
-specifier|public
+specifier|private
 specifier|static
 name|BibDatabase
 name|getBibtexDatabase

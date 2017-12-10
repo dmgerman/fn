@@ -184,7 +184,7 @@ argument_list|)
 decl_stmt|;
 comment|// All single characters that we can use for extending a key to make it unique:
 DECL|field|CHARS
-specifier|private
+specifier|public
 specifier|static
 specifier|final
 name|String

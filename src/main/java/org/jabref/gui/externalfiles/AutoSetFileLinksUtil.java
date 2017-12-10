@@ -62,6 +62,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Collection
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|List
 import|;
 end_import
@@ -447,7 +457,7 @@ argument_list|(
 name|autoLinkPreferences
 argument_list|)
 decl_stmt|;
-name|List
+name|Collection
 argument_list|<
 name|Path
 argument_list|>
