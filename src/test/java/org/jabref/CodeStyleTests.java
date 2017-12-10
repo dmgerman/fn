@@ -165,7 +165,7 @@ literal|"Thus think twice if you add something to StringUtil."
 argument_list|,
 name|lineCount
 operator|<=
-literal|722
+literal|726
 argument_list|)
 expr_stmt|;
 block|}

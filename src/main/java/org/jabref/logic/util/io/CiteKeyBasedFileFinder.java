@@ -475,6 +475,20 @@ block|}
 block|}
 return|return
 name|result
+operator|.
+name|stream
+argument_list|()
+operator|.
+name|sorted
+argument_list|()
+operator|.
+name|collect
+argument_list|(
+name|Collectors
+operator|.
+name|toList
+argument_list|()
+argument_list|)
 return|;
 block|}
 DECL|method|matches (String filename, String citeKey)

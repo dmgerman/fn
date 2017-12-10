@@ -735,9 +735,9 @@ name|Arrays
 operator|.
 name|asList
 argument_list|(
-name|pdfFile
-argument_list|,
 name|secondPdfFile
+argument_list|,
+name|pdfFile
 argument_list|)
 argument_list|,
 name|results
