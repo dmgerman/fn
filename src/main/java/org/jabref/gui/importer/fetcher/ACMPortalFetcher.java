@@ -537,7 +537,7 @@ specifier|final
 name|String
 name|START_URL
 init|=
-literal|"http://portal.acm.org/"
+literal|"https://portal.acm.org/"
 decl_stmt|;
 DECL|field|SEARCH_URL_PART
 specifier|private

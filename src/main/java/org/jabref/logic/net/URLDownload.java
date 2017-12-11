@@ -463,7 +463,7 @@ specifier|final
 name|String
 name|USER_AGENT
 init|=
-literal|"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36"
+literal|"Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:56.0) Gecko/20100101 Firefox/56.0"
 decl_stmt|;
 DECL|field|LOGGER
 specifier|private
@@ -736,9 +736,11 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|(
 name|contentType
 operator|!=
 literal|null
+operator|)
 operator|&&
 operator|!
 name|contentType
@@ -801,9 +803,11 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|(
 name|contentType
 operator|!=
 literal|null
+operator|)
 operator|&&
 operator|!
 name|contentType
@@ -860,9 +864,11 @@ argument_list|()
 expr_stmt|;
 if|if
 condition|(
+operator|(
 name|contentType
 operator|!=
 literal|null
+operator|)
 operator|&&
 operator|!
 name|contentType
@@ -1546,23 +1552,29 @@ condition|)
 block|{
 if|if
 condition|(
+operator|(
 name|status
 operator|==
 name|HttpURLConnection
 operator|.
 name|HTTP_MOVED_TEMP
+operator|)
 operator|||
+operator|(
 name|status
 operator|==
 name|HttpURLConnection
 operator|.
 name|HTTP_MOVED_PERM
+operator|)
 operator|||
+operator|(
 name|status
 operator|==
 name|HttpURLConnection
 operator|.
 name|HTTP_SEE_OTHER
+operator|)
 condition|)
 block|{
 comment|// get redirect url from "location" header field
