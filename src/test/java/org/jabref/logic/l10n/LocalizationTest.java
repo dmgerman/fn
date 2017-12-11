@@ -117,6 +117,13 @@ argument_list|(
 name|locale
 argument_list|)
 expr_stmt|;
+name|Localization
+operator|.
+name|setLanguage
+argument_list|(
+literal|"en"
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Test
