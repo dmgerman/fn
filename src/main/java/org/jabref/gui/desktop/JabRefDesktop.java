@@ -2257,7 +2257,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Error_occured_while_executing_the_command_\"%0\"."
+literal|"Error occured while executing the command \"%0\"."
 argument_list|,
 name|commandLoggingText
 argument_list|)

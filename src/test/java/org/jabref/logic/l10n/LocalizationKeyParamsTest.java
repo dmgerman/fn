@@ -101,6 +101,24 @@ argument_list|,
 operator|new
 name|LocalizationKeyParams
 argument_list|(
+literal|"What \n : %e %c %0 %1"
+argument_list|,
+literal|"a"
+argument_list|,
+literal|"b"
+argument_list|)
+operator|.
+name|replacePlaceholders
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"What \n : %e %c_a b"
+argument_list|,
+operator|new
+name|LocalizationKeyParams
+argument_list|(
 literal|"What \n : %e %c_%0 %1"
 argument_list|,
 literal|"a"
