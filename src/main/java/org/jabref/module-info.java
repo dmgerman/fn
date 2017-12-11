@@ -57,6 +57,15 @@ name|google
 operator|.
 name|common
 decl_stmt|;
+name|requires
+name|ridl
+decl_stmt|;
+name|requires
+name|unoil
+decl_stmt|;
+name|requires
+name|juh
+decl_stmt|;
 block|}
 end_decl_stmt
 
