@@ -6007,7 +6007,7 @@ name|put
 argument_list|(
 literal|"textquotesingle"
 argument_list|,
-literal|"&apos;"
+literal|"&#39;"
 argument_list|)
 expr_stmt|;
 name|LATEX_UNICODE_CONVERSION_MAP
