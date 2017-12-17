@@ -98,6 +98,20 @@ name|org
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
+name|util
+operator|.
+name|OS
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
 name|preferences
 operator|.
 name|PreferencesService
@@ -115,20 +129,6 @@ operator|.
 name|api
 operator|.
 name|BeforeEach
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|jupiter
-operator|.
-name|api
-operator|.
-name|Disabled
 import|;
 end_import
 
@@ -207,6 +207,22 @@ operator|.
 name|Assertions
 operator|.
 name|assertTrue
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assumptions
+operator|.
+name|assumeFalse
 import|;
 end_import
 
@@ -723,17 +739,19 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Disabled
-argument_list|(
-literal|"This test fails on MacOs. Need to investigate!"
-argument_list|)
 DECL|method|testSaveNewKeyBindingsToPreferences ()
 specifier|public
 name|void
 name|testSaveNewKeyBindingsToPreferences
 parameter_list|()
 block|{
+name|assumeFalse
+argument_list|(
+name|OS
+operator|.
+name|OS_X
+argument_list|)
+expr_stmt|;
 name|setKeyBindingViewModel
 argument_list|(
 name|KeyBinding
@@ -894,17 +912,19 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Disabled
-argument_list|(
-literal|"This test fails on MacOs. Need to investigate!"
-argument_list|)
 DECL|method|testSetAllKeyBindingsToDefault ()
 specifier|public
 name|void
 name|testSetAllKeyBindingsToDefault
 parameter_list|()
 block|{
+name|assumeFalse
+argument_list|(
+name|OS
+operator|.
+name|OS_X
+argument_list|)
+expr_stmt|;
 name|setKeyBindingViewModel
 argument_list|(
 name|KeyBinding
@@ -1119,17 +1139,19 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Disabled
-argument_list|(
-literal|"This test fails on MacOs. Need to investigate!"
-argument_list|)
 DECL|method|testSetSingleKeyBindingToDefault ()
 specifier|public
 name|void
 name|testSetSingleKeyBindingToDefault
 parameter_list|()
 block|{
+name|assumeFalse
+argument_list|(
+name|OS
+operator|.
+name|OS_X
+argument_list|)
+expr_stmt|;
 name|KeyBindingViewModel
 name|viewModel
 init|=
@@ -1244,17 +1266,19 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Disabled
-argument_list|(
-literal|"This test fails on MacOs. Need to investigate!"
-argument_list|)
 DECL|method|testConversionAwtKeyEventJavafxKeyEvent ()
 specifier|public
 name|void
 name|testConversionAwtKeyEventJavafxKeyEvent
 parameter_list|()
 block|{
+name|assumeFalse
+argument_list|(
+name|OS
+operator|.
+name|OS_X
+argument_list|)
+expr_stmt|;
 name|java
 operator|.
 name|awt

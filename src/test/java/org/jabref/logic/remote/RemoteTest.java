@@ -100,13 +100,13 @@ begin_import
 import|import
 name|org
 operator|.
-name|junit
+name|jabref
 operator|.
-name|jupiter
+name|logic
 operator|.
-name|api
+name|util
 operator|.
-name|Disabled
+name|OS
 import|;
 end_import
 
@@ -185,6 +185,22 @@ operator|.
 name|Assertions
 operator|.
 name|fail
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assumptions
+operator|.
+name|assumeFalse
 import|;
 end_import
 
@@ -450,11 +466,6 @@ block|}
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Disabled
-argument_list|(
-literal|"This test fails on MacOs. Need to investigate!"
-argument_list|)
 DECL|method|testPortAlreadyInUse ()
 specifier|public
 name|void
@@ -463,6 +474,13 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
+name|assumeFalse
+argument_list|(
+name|OS
+operator|.
+name|OS_X
+argument_list|)
+expr_stmt|;
 specifier|final
 name|int
 name|port
