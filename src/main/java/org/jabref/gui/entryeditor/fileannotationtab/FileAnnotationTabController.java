@@ -166,6 +166,18 @@ name|scene
 operator|.
 name|layout
 operator|.
+name|ColumnConstraints
+import|;
+end_import
+
+begin_import
+import|import
+name|javafx
+operator|.
+name|scene
+operator|.
+name|layout
+operator|.
 name|GridPane
 import|;
 end_import
@@ -179,18 +191,6 @@ operator|.
 name|layout
 operator|.
 name|RowConstraints
-import|;
-end_import
-
-begin_import
-import|import
-name|javafx
-operator|.
-name|scene
-operator|.
-name|layout
-operator|.
-name|ColumnConstraints
 import|;
 end_import
 
