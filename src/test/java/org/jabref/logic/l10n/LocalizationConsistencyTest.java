@@ -445,10 +445,10 @@ block|}
 block|}
 annotation|@
 name|Test
-DECL|method|allFilesMustHaveSameKeys ()
+DECL|method|nonEnglishFilesMustHaveSubsetOfKeys ()
 specifier|public
 name|void
-name|allFilesMustHaveSameKeys
+name|nonEnglishFilesMustHaveSubsetOfKeys
 parameter_list|()
 block|{
 for|for
@@ -555,26 +555,7 @@ name|lang
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|List
-argument_list|<
-name|String
-argument_list|>
-name|missing
-init|=
-operator|new
-name|ArrayList
-argument_list|<>
-argument_list|(
-name|englishKeys
-argument_list|)
-decl_stmt|;
-name|missing
-operator|.
-name|removeAll
-argument_list|(
-name|nonEnglishKeys
-argument_list|)
-expr_stmt|;
+comment|// we do not check for missing keys as Crowdin adds them automatically
 name|List
 argument_list|<
 name|String
@@ -593,20 +574,6 @@ operator|.
 name|removeAll
 argument_list|(
 name|englishKeys
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"Missing keys of "
-operator|+
-name|lang
-argument_list|,
-name|Collections
-operator|.
-name|emptyList
-argument_list|()
-argument_list|,
-name|missing
 argument_list|)
 expr_stmt|;
 name|assertEquals
