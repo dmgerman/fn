@@ -1,12 +1,12 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|org.jabref.logic.search.rules.describer
+DECL|package|org.jabref.gui.search.rules.describer
 package|package
 name|org
 operator|.
 name|jabref
 operator|.
-name|logic
+name|gui
 operator|.
 name|search
 operator|.
@@ -15,6 +15,18 @@ operator|.
 name|describer
 package|;
 end_package
+
+begin_import
+import|import
+name|javafx
+operator|.
+name|scene
+operator|.
+name|text
+operator|.
+name|TextFlow
+import|;
+end_import
 
 begin_interface
 annotation|@
@@ -25,7 +37,7 @@ interface|interface
 name|SearchDescriber
 block|{
 DECL|method|getDescription ()
-name|String
+name|TextFlow
 name|getDescription
 parameter_list|()
 function_decl|;

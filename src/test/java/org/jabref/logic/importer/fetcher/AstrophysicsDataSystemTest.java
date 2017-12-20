@@ -138,7 +138,7 @@ name|testutils
 operator|.
 name|category
 operator|.
-name|FetcherTests
+name|FetcherTest
 import|;
 end_import
 
@@ -173,22 +173,6 @@ operator|.
 name|categories
 operator|.
 name|Category
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
-name|util
-operator|.
-name|OS
-operator|.
-name|NEWLINE
 import|;
 end_import
 
@@ -244,7 +228,7 @@ begin_class
 annotation|@
 name|Category
 argument_list|(
-name|FetcherTests
+name|FetcherTest
 operator|.
 name|class
 argument_list|)

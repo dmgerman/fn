@@ -166,6 +166,16 @@ name|javax
 operator|.
 name|swing
 operator|.
+name|BoxLayout
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
 name|JButton
 import|;
 end_import
@@ -526,18 +536,6 @@ name|LogFactory
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|jdesktop
-operator|.
-name|swingx
-operator|.
-name|VerticalLayout
-import|;
-end_import
-
 begin_comment
 comment|/**  * Dialog that prompts the user to choose a type for an entry.  * Returns null if canceled.  */
 end_comment
@@ -759,8 +757,14 @@ operator|.
 name|setLayout
 argument_list|(
 operator|new
-name|VerticalLayout
-argument_list|()
+name|BoxLayout
+argument_list|(
+name|panel
+argument_list|,
+name|BoxLayout
+operator|.
+name|Y_AXIS
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if

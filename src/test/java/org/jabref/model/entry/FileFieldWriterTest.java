@@ -763,7 +763,7 @@ argument_list|)
 decl_stmt|;
 name|assertEquals
 argument_list|(
-literal|"test:X\\:\\\\Users\\\\abc.pdf:PDF"
+literal|"test:X\\:/Users/abc.pdf:PDF"
 argument_list|,
 name|FileFieldWriter
 operator|.

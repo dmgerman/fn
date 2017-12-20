@@ -771,6 +771,9 @@ name|updatedExternally
 operator|=
 literal|false
 expr_stmt|;
+name|markAsSaved
+argument_list|()
+expr_stmt|;
 block|}
 DECL|method|markAsSaved ()
 specifier|public

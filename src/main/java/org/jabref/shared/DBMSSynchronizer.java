@@ -521,6 +521,7 @@ name|keywordSeparator
 decl_stmt|;
 DECL|field|globalCiteKeyPattern
 specifier|private
+specifier|final
 name|GlobalBibtexKeyPattern
 name|globalCiteKeyPattern
 decl_stmt|;
@@ -618,6 +619,13 @@ name|checkCurrentConnection
 argument_list|()
 condition|)
 block|{
+name|synchronizeLocalMetaData
+argument_list|()
+expr_stmt|;
+name|synchronizeLocalDatabase
+argument_list|()
+expr_stmt|;
+comment|// Pull changes for the case that there were some
 name|dbmsProcessor
 operator|.
 name|insertEntry
@@ -628,13 +636,6 @@ name|getBibEntry
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|synchronizeLocalMetaData
-argument_list|()
-expr_stmt|;
-name|synchronizeLocalDatabase
-argument_list|()
-expr_stmt|;
-comment|// Pull changes for the case that there were some
 block|}
 block|}
 comment|/**      * Listening method. Updates an existing shared {@link BibEntry}.      *      * @param event {@link FieldChangedEvent} object      */
@@ -1397,6 +1398,13 @@ return|return;
 block|}
 try|try
 block|{
+name|metaData
+operator|.
+name|setEventPropagation
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 name|MetaDataParser
 operator|.
 name|parse
@@ -1409,6 +1417,13 @@ name|getSharedMetaData
 argument_list|()
 argument_list|,
 name|keywordSeparator
+argument_list|)
+expr_stmt|;
+name|metaData
+operator|.
+name|setEventPropagation
+argument_list|(
+literal|true
 argument_list|)
 expr_stmt|;
 block|}

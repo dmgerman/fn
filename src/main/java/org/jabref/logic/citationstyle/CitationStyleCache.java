@@ -164,6 +164,7 @@ name|citationStyle
 decl_stmt|;
 DECL|field|citationStyleCache
 specifier|private
+specifier|final
 name|LoadingCache
 argument_list|<
 name|BibEntry
@@ -240,8 +241,6 @@ parameter_list|(
 name|BibEntry
 name|entry
 parameter_list|)
-throws|throws
-name|Exception
 block|{
 return|return
 name|CitationStyleGenerator

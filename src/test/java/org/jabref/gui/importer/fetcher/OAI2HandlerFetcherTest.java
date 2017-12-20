@@ -110,7 +110,7 @@ name|testutils
 operator|.
 name|category
 operator|.
-name|GUITests
+name|GUITest
 import|;
 end_import
 
@@ -188,7 +188,7 @@ begin_class
 annotation|@
 name|Category
 argument_list|(
-name|GUITests
+name|GUITest
 operator|.
 name|class
 argument_list|)
