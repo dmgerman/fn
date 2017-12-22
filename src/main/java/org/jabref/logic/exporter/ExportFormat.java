@@ -226,6 +226,20 @@ name|org
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
+name|util
+operator|.
+name|FileExtensions
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
 name|model
 operator|.
 name|database
@@ -335,7 +349,7 @@ name|directory
 decl_stmt|;
 DECL|field|extension
 specifier|private
-name|String
+name|FileExtensions
 name|extension
 decl_stmt|;
 DECL|field|encoding
@@ -361,7 +375,7 @@ name|boolean
 name|customExport
 decl_stmt|;
 comment|/**      * Initialize another export format based on templates stored in dir with      * layoutFile lfFilename.      *      * @param displayName Name to display to the user.      * @param consoleName Name to call this format in the console.      * @param lfFileName  Name of the main layout file.      * @param directory   Directory in which to find the layout file.      * @param extension   Should contain the . (for instance .txt).      */
-DECL|method|ExportFormat (String displayName, String consoleName, String lfFileName, String directory, String extension)
+DECL|method|ExportFormat (String displayName, String consoleName, String lfFileName, String directory, FileExtensions extension)
 specifier|public
 name|ExportFormat
 parameter_list|(
@@ -377,7 +391,7 @@ parameter_list|,
 name|String
 name|directory
 parameter_list|,
-name|String
+name|FileExtensions
 name|extension
 parameter_list|)
 block|{
@@ -413,7 +427,7 @@ name|extension
 expr_stmt|;
 block|}
 comment|/**      * Initialize another export format based on templates stored in dir with      * layoutFile lfFilename.      *      * @param displayName Name to display to the user.      * @param consoleName Name to call this format in the console.      * @param lfFileName  Name of the main layout file.      * @param directory   Directory in which to find the layout file.      * @param extension   Should contain the . (for instance .txt).      * @param layoutPreferences Preferences for layout      * @param savePreferences Preferences for saving      */
-DECL|method|ExportFormat (String displayName, String consoleName, String lfFileName, String directory, String extension, LayoutFormatterPreferences layoutPreferences, SavePreferences savePreferences)
+DECL|method|ExportFormat (String displayName, String consoleName, String lfFileName, String directory, FileExtensions extension, LayoutFormatterPreferences layoutPreferences, SavePreferences savePreferences)
 specifier|public
 name|ExportFormat
 parameter_list|(
@@ -429,7 +443,7 @@ parameter_list|,
 name|String
 name|directory
 parameter_list|,
-name|String
+name|FileExtensions
 name|extension
 parameter_list|,
 name|LayoutFormatterPreferences
@@ -538,7 +552,7 @@ annotation|@
 name|Override
 DECL|method|getExtension ()
 specifier|public
-name|String
+name|FileExtensions
 name|getExtension
 parameter_list|()
 block|{

@@ -82,6 +82,20 @@ name|LayoutFormatterPreferences
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|util
+operator|.
+name|FileExtensions
+import|;
+end_import
+
 begin_class
 DECL|class|ExportFormats
 specifier|public
@@ -161,7 +175,9 @@ literal|"html"
 argument_list|,
 literal|null
 argument_list|,
-literal|".html"
+name|FileExtensions
+operator|.
+name|HTML
 argument_list|,
 name|layoutPreferences
 argument_list|,
@@ -189,7 +205,9 @@ literal|"simplehtml"
 argument_list|,
 literal|null
 argument_list|,
-literal|".html"
+name|FileExtensions
+operator|.
+name|HTML
 argument_list|,
 name|layoutPreferences
 argument_list|,
@@ -212,7 +230,9 @@ literal|"docbook"
 argument_list|,
 literal|null
 argument_list|,
-literal|".xml"
+name|FileExtensions
+operator|.
+name|XML
 argument_list|,
 name|layoutPreferences
 argument_list|,
@@ -235,7 +255,9 @@ literal|"din1505winword"
 argument_list|,
 literal|"din1505"
 argument_list|,
-literal|".rtf"
+name|FileExtensions
+operator|.
+name|RTF
 argument_list|,
 name|layoutPreferences
 argument_list|,
@@ -258,7 +280,9 @@ literal|"bibordf"
 argument_list|,
 literal|null
 argument_list|,
-literal|".rdf"
+name|FileExtensions
+operator|.
+name|RDF
 argument_list|,
 name|layoutPreferences
 argument_list|,
@@ -286,7 +310,9 @@ literal|"tablerefs"
 argument_list|,
 literal|"tablerefs"
 argument_list|,
-literal|".html"
+name|FileExtensions
+operator|.
+name|HTML
 argument_list|,
 name|layoutPreferences
 argument_list|,
@@ -314,7 +340,9 @@ literal|"listrefs"
 argument_list|,
 literal|"listrefs"
 argument_list|,
-literal|".html"
+name|FileExtensions
+operator|.
+name|HTML
 argument_list|,
 name|layoutPreferences
 argument_list|,
@@ -342,7 +370,9 @@ literal|"tablerefsabsbib"
 argument_list|,
 literal|"tablerefsabsbib"
 argument_list|,
-literal|".html"
+name|FileExtensions
+operator|.
+name|HTML
 argument_list|,
 name|layoutPreferences
 argument_list|,
@@ -365,7 +395,9 @@ literal|"harvard"
 argument_list|,
 literal|"harvard"
 argument_list|,
-literal|".rtf"
+name|FileExtensions
+operator|.
+name|RDF
 argument_list|,
 name|layoutPreferences
 argument_list|,
@@ -388,7 +420,9 @@ literal|"iso690RTF"
 argument_list|,
 literal|"iso690rtf"
 argument_list|,
-literal|".rtf"
+name|FileExtensions
+operator|.
+name|RTF
 argument_list|,
 name|layoutPreferences
 argument_list|,
@@ -411,7 +445,9 @@ literal|"iso690"
 argument_list|,
 literal|"iso690txt"
 argument_list|,
-literal|".txt"
+name|FileExtensions
+operator|.
+name|TXT
 argument_list|,
 name|layoutPreferences
 argument_list|,
@@ -434,7 +470,9 @@ literal|"EndNote"
 argument_list|,
 literal|"endnote"
 argument_list|,
-literal|".txt"
+name|FileExtensions
+operator|.
+name|TXT
 argument_list|,
 name|layoutPreferences
 argument_list|,
@@ -457,7 +495,9 @@ literal|"openoffice-csv"
 argument_list|,
 literal|"openoffice"
 argument_list|,
-literal|".csv"
+name|FileExtensions
+operator|.
+name|CSV
 argument_list|,
 name|layoutPreferences
 argument_list|,
@@ -479,7 +519,9 @@ literal|"ris"
 argument_list|,
 literal|"ris"
 argument_list|,
-literal|".ris"
+name|FileExtensions
+operator|.
+name|RIS
 argument_list|,
 name|layoutPreferences
 argument_list|,
@@ -517,7 +559,9 @@ literal|"misq"
 argument_list|,
 literal|"misq"
 argument_list|,
-literal|".rtf"
+name|FileExtensions
+operator|.
+name|RTF
 argument_list|,
 name|layoutPreferences
 argument_list|,
@@ -591,7 +635,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Build a string listing of all available export formats.      *      * @param maxLineLength      *            The max line length before a line break must be added.      * @param linePrefix      *            If a line break is added, this prefix will be inserted at the      *            beginning of the next line.      * @return The string describing available formats.      */
+comment|/**      * Build a string listing of all available export formats.      *      * @param maxLineLength The max line length before a line break must be added.      * @param linePrefix    If a line break is added, this prefix will be inserted at the      *                      beginning of the next line.      * @return The string describing available formats.      */
 DECL|method|getConsoleExportList (int maxLineLength, int firstLineSubtr, String linePrefix)
 specifier|public
 specifier|static
@@ -713,7 +757,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * Get a Map of all export formats.      * @return A Map containing all export formats, mapped to their console names.      */
+comment|/**      * Get a Map of all export formats.      *      * @return A Map containing all export formats, mapped to their console names.      */
 DECL|method|getExportFormats ()
 specifier|public
 specifier|static
@@ -738,7 +782,7 @@ name|EXPORT_FORMATS
 argument_list|)
 return|;
 block|}
-comment|/**      * Look up the named export format.      *      * @param consoleName      *            The export name given in the JabRef console help information.      * @return The ExportFormat, or null if no exportformat with that name is      *         registered.      */
+comment|/**      * Look up the named export format.      *      * @param consoleName The export name given in the JabRef console help information.      * @return The ExportFormat, or null if no exportformat with that name is      * registered.      */
 DECL|method|getExportFormat (String consoleName)
 specifier|public
 specifier|static
@@ -755,6 +799,75 @@ operator|.
 name|EXPORT_FORMATS
 operator|.
 name|get
+argument_list|(
+name|consoleName
+argument_list|)
+return|;
+block|}
+DECL|method|getFileExtension (String consoleName)
+specifier|public
+specifier|static
+name|FileExtensions
+name|getFileExtension
+parameter_list|(
+name|String
+name|consoleName
+parameter_list|)
+block|{
+if|if
+condition|(
+name|checkExportFormatExisit
+argument_list|(
+name|consoleName
+argument_list|)
+condition|)
+block|{
+name|ExportFormat
+name|exportFormat
+init|=
+operator|(
+name|ExportFormat
+operator|)
+name|EXPORT_FORMATS
+operator|.
+name|get
+argument_list|(
+name|consoleName
+argument_list|)
+decl_stmt|;
+return|return
+name|exportFormat
+operator|.
+name|getExtension
+argument_list|()
+return|;
+block|}
+else|else
+block|{
+return|return
+name|FileExtensions
+operator|.
+name|DEFAULT
+return|;
+block|}
+block|}
+DECL|method|checkExportFormatExisit (String consoleName)
+specifier|private
+specifier|static
+name|boolean
+name|checkExportFormatExisit
+parameter_list|(
+name|String
+name|consoleName
+parameter_list|)
+block|{
+return|return
+name|EXPORT_FORMATS
+operator|.
+name|keySet
+argument_list|()
+operator|.
+name|contains
 argument_list|(
 name|consoleName
 argument_list|)
