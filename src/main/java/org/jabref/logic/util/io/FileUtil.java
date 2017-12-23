@@ -312,6 +312,20 @@ name|apache
 operator|.
 name|commons
 operator|.
+name|io
+operator|.
+name|FilenameUtils
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
 name|logging
 operator|.
 name|Log
@@ -495,50 +509,24 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Returns the name part of a file name (i.e., everything in front of last ".").      */
-DECL|method|getFileName (String fileNameWithExtension)
+DECL|method|getBaseName (String fileNameWithExtension)
 specifier|public
 specifier|static
 name|String
-name|getFileName
+name|getBaseName
 parameter_list|(
 name|String
 name|fileNameWithExtension
 parameter_list|)
 block|{
-name|int
-name|dotPosition
-init|=
-name|fileNameWithExtension
-operator|.
-name|lastIndexOf
-argument_list|(
-literal|'.'
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|dotPosition
-operator|>=
-literal|0
-condition|)
-block|{
 return|return
-name|fileNameWithExtension
+name|FilenameUtils
 operator|.
-name|substring
+name|getBaseName
 argument_list|(
-literal|0
-argument_list|,
-name|dotPosition
+name|fileNameWithExtension
 argument_list|)
 return|;
-block|}
-else|else
-block|{
-return|return
-name|fileNameWithExtension
-return|;
-block|}
 block|}
 comment|/**      * Returns a valid filename for most operating systems.      *      * Currently, only the length is restricted to 255 chars, see MAXIMUM_FILE_NAME_LENGTH.      */
 DECL|method|getValidFileName (String fileName)
@@ -554,7 +542,7 @@ block|{
 name|String
 name|nameWithoutExtension
 init|=
-name|getFileName
+name|getBaseName
 argument_list|(
 name|fileName
 argument_list|)
