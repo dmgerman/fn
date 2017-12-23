@@ -529,7 +529,7 @@ parameter_list|()
 block|{
 name|assertEquals
 argument_list|(
-literal|"&apos;"
+literal|"&#39;"
 argument_list|,
 name|layout
 operator|.

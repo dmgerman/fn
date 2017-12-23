@@ -82,14 +82,14 @@ name|assertLocalizationKeyParsing
 argument_list|(
 literal|"Localization.lang(\"one per line\")"
 argument_list|,
-literal|"one_per_line"
+literal|"one\\ per\\ line"
 argument_list|)
 expr_stmt|;
 name|assertLocalizationKeyParsing
 argument_list|(
 literal|"Localization.lang(\n            \"Copy \\\\cite{BibTeX key}\")"
 argument_list|,
-literal|"Copy_\\cite{BibTeX_key}"
+literal|"Copy\\ \\cite{BibTeX\\ key}"
 argument_list|)
 expr_stmt|;
 name|assertLocalizationKeyParsing
@@ -100,9 +100,9 @@ name|Arrays
 operator|.
 name|asList
 argument_list|(
-literal|"two_per_line"
+literal|"two\\ per\\ line"
 argument_list|,
-literal|"two_per_line"
+literal|"two\\ per\\ line"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -110,42 +110,42 @@ name|assertLocalizationKeyParsing
 argument_list|(
 literal|"Localization.lang(\"multi \" + \n\"line\")"
 argument_list|,
-literal|"multi_line"
+literal|"multi\\ line"
 argument_list|)
 expr_stmt|;
 name|assertLocalizationKeyParsing
 argument_list|(
 literal|"Localization.lang(\"one per line with var\", var)"
 argument_list|,
-literal|"one_per_line_with_var"
+literal|"one\\ per\\ line\\ with\\ var"
 argument_list|)
 expr_stmt|;
 name|assertLocalizationKeyParsing
 argument_list|(
 literal|"Localization.lang(\"Search %0\", \"Springer\")"
 argument_list|,
-literal|"Search_%0"
+literal|"Search\\ %0"
 argument_list|)
 expr_stmt|;
 name|assertLocalizationKeyParsing
 argument_list|(
 literal|"Localization.lang(\"Reset preferences (key1,key2,... or 'all')\")"
 argument_list|,
-literal|"Reset_preferences_(key1,key2,..._or_'all')"
+literal|"Reset\\ preferences\\ (key1,key2,...\\ or\\ 'all')"
 argument_list|)
 expr_stmt|;
 name|assertLocalizationKeyParsing
 argument_list|(
 literal|"Localization.lang(\"Multiple entries selected. Do you want to change the type of all these to '%0'?\")"
 argument_list|,
-literal|"Multiple_entries_selected._Do_you_want_to_change_the_type_of_all_these_to_'%0'?"
+literal|"Multiple\\ entries\\ selected.\\ Do\\ you\\ want\\ to\\ change\\ the\\ type\\ of\\ all\\ these\\ to\\ '%0'?"
 argument_list|)
 expr_stmt|;
 name|assertLocalizationKeyParsing
 argument_list|(
 literal|"Localization.lang(\"Run fetcher, e.g. \\\"--fetch=Medline:cancer\\\"\");"
 argument_list|,
-literal|"Run_fetcher,_e.g._\"--fetch\\=Medline\\:cancer\""
+literal|"Run\\ fetcher,\\ e.g.\\ \"--fetch\\=Medline\\:cancer\""
 argument_list|)
 expr_stmt|;
 block|}

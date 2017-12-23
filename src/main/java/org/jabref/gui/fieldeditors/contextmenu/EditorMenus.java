@@ -223,7 +223,7 @@ operator|new
 name|ArrayList
 argument_list|<>
 argument_list|(
-literal|5
+literal|6
 argument_list|)
 decl_stmt|;
 name|menuItems
@@ -281,6 +281,17 @@ argument_list|(
 operator|new
 name|SeparatorMenuItem
 argument_list|()
+argument_list|)
+expr_stmt|;
+name|menuItems
+operator|.
+name|add
+argument_list|(
+operator|new
+name|ClearField
+argument_list|(
+name|textArea
+argument_list|)
 argument_list|)
 expr_stmt|;
 return|return

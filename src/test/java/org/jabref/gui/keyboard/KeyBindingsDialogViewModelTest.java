@@ -98,6 +98,20 @@ name|org
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
+name|util
+operator|.
+name|OS
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
 name|preferences
 operator|.
 name|PreferencesService
@@ -110,7 +124,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Before
+name|jupiter
+operator|.
+name|api
+operator|.
+name|BeforeEach
 import|;
 end_import
 
@@ -119,6 +137,10 @@ import|import
 name|org
 operator|.
 name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
 operator|.
 name|Test
 import|;
@@ -130,7 +152,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
 operator|.
 name|assertEquals
 import|;
@@ -142,7 +168,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
 operator|.
 name|assertFalse
 import|;
@@ -154,7 +184,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
 operator|.
 name|assertNull
 import|;
@@ -166,9 +200,29 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
 operator|.
 name|assertTrue
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assumptions
+operator|.
+name|assumeFalse
 import|;
 end_import
 
@@ -185,7 +239,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Test class for the keybindings dialog view model  *  */
+comment|/**  * Test class for the keybindings dialog view model  */
 end_comment
 
 begin_class
@@ -204,13 +258,8 @@ specifier|private
 name|KeyBindingRepository
 name|keyBindingRepository
 decl_stmt|;
-DECL|field|dialogService
-specifier|private
-name|DialogService
-name|dialogService
-decl_stmt|;
 annotation|@
-name|Before
+name|BeforeEach
 DECL|method|setUp ()
 specifier|public
 name|void
@@ -223,15 +272,6 @@ operator|new
 name|KeyBindingRepository
 argument_list|()
 expr_stmt|;
-name|dialogService
-operator|=
-name|mock
-argument_list|(
-name|DialogService
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
 name|model
 operator|=
 operator|new
@@ -239,7 +279,12 @@ name|KeyBindingsDialogViewModel
 argument_list|(
 name|keyBindingRepository
 argument_list|,
-name|dialogService
+name|mock
+argument_list|(
+name|DialogService
+operator|.
+name|class
+argument_list|)
 argument_list|,
 name|mock
 argument_list|(
@@ -700,6 +745,13 @@ name|void
 name|testSaveNewKeyBindingsToPreferences
 parameter_list|()
 block|{
+name|assumeFalse
+argument_list|(
+name|OS
+operator|.
+name|OS_X
+argument_list|)
+expr_stmt|;
 name|setKeyBindingViewModel
 argument_list|(
 name|KeyBinding
@@ -866,6 +918,13 @@ name|void
 name|testSetAllKeyBindingsToDefault
 parameter_list|()
 block|{
+name|assumeFalse
+argument_list|(
+name|OS
+operator|.
+name|OS_X
+argument_list|)
+expr_stmt|;
 name|setKeyBindingViewModel
 argument_list|(
 name|KeyBinding
@@ -1086,6 +1145,13 @@ name|void
 name|testSetSingleKeyBindingToDefault
 parameter_list|()
 block|{
+name|assumeFalse
+argument_list|(
+name|OS
+operator|.
+name|OS_X
+argument_list|)
+expr_stmt|;
 name|KeyBindingViewModel
 name|viewModel
 init|=
@@ -1206,6 +1272,13 @@ name|void
 name|testConversionAwtKeyEventJavafxKeyEvent
 parameter_list|()
 block|{
+name|assumeFalse
+argument_list|(
+name|OS
+operator|.
+name|OS_X
+argument_list|)
+expr_stmt|;
 name|java
 operator|.
 name|awt

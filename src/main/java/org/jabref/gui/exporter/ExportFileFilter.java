@@ -58,6 +58,20 @@ name|IExportFormat
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|util
+operator|.
+name|FileExtensions
+import|;
+end_import
+
 begin_comment
 comment|/**  * File filter that lets the user choose export format while choosing file to  * export to. Contains a reference to the ExportFormat in question.  */
 end_comment
@@ -84,7 +98,7 @@ decl_stmt|;
 DECL|field|extension
 specifier|private
 specifier|final
-name|String
+name|FileExtensions
 name|extension
 decl_stmt|;
 DECL|field|name
@@ -144,7 +158,7 @@ return|;
 block|}
 DECL|method|getExtension ()
 specifier|public
-name|String
+name|FileExtensions
 name|getExtension
 parameter_list|()
 block|{
@@ -193,6 +207,12 @@ operator|.
 name|endsWith
 argument_list|(
 name|extension
+operator|.
+name|getExtensionsAsList
+argument_list|()
+operator|.
+name|toString
+argument_list|()
 argument_list|)
 return|;
 block|}
