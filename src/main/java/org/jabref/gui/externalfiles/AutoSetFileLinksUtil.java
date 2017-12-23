@@ -627,7 +627,7 @@ name|shortenFileName
 argument_list|(
 name|foundFile
 argument_list|,
-name|dirs
+name|directories
 argument_list|)
 operator|.
 name|toString
