@@ -795,7 +795,7 @@ operator|::
 name|updateSelection
 argument_list|)
 expr_stmt|;
-comment|// We try to to prevent publishing changes in the searchfield directly to the search task that takes some time
+comment|// We try to to prevent publishing changes in the search field directly to the search task that takes some time
 comment|// for larger group structures.
 specifier|final
 name|Timer
@@ -817,9 +817,9 @@ lambda|->
 block|{
 name|LOGGER
 operator|.
-name|info
+name|debug
 argument_list|(
-literal|"Run Search "
+literal|"Run group search "
 operator|+
 name|searchField
 operator|.
