@@ -41,11 +41,11 @@ specifier|final
 name|int
 name|previewCyclePosition
 decl_stmt|;
-DECL|field|previewPanelHeight
+DECL|field|previewPanelDividerPosition
 specifier|private
 specifier|final
-name|int
-name|previewPanelHeight
+name|Number
+name|previewPanelDividerPosition
 decl_stmt|;
 DECL|field|previewPanelEnabled
 specifier|private
@@ -65,7 +65,7 @@ specifier|final
 name|String
 name|previewStyleDefault
 decl_stmt|;
-DECL|method|PreviewPreferences (List<String> previewCycle, int previeCyclePosition, int previewPanelHeight, boolean previewPanelEnabled, String previewStyle, String previewStyleDefault)
+DECL|method|PreviewPreferences (List<String> previewCycle, int previeCyclePosition, Number previewPanelDividerPosition, boolean previewPanelEnabled, String previewStyle, String previewStyleDefault)
 specifier|public
 name|PreviewPreferences
 parameter_list|(
@@ -78,8 +78,8 @@ parameter_list|,
 name|int
 name|previeCyclePosition
 parameter_list|,
-name|int
-name|previewPanelHeight
+name|Number
+name|previewPanelDividerPosition
 parameter_list|,
 name|boolean
 name|previewPanelEnabled
@@ -105,9 +105,9 @@ name|previeCyclePosition
 expr_stmt|;
 name|this
 operator|.
-name|previewPanelHeight
+name|previewPanelDividerPosition
 operator|=
-name|previewPanelHeight
+name|previewPanelDividerPosition
 expr_stmt|;
 name|this
 operator|.
@@ -151,14 +151,14 @@ return|return
 name|previewCyclePosition
 return|;
 block|}
-DECL|method|getPreviewPanelHeight ()
+DECL|method|getPreviewPanelDividerPosition ()
 specifier|public
-name|int
-name|getPreviewPanelHeight
+name|Number
+name|getPreviewPanelDividerPosition
 parameter_list|()
 block|{
 return|return
-name|previewPanelHeight
+name|previewPanelDividerPosition
 return|;
 block|}
 DECL|method|isPreviewPanelEnabled ()
@@ -224,10 +224,10 @@ specifier|private
 name|int
 name|previeCyclePosition
 decl_stmt|;
-DECL|field|previewPanelHeight
+DECL|field|previewPanelDividerPosition
 specifier|private
-name|int
-name|previewPanelHeight
+name|Number
+name|previewPanelDividerPosition
 decl_stmt|;
 DECL|field|previewPanelEnabled
 specifier|private
@@ -273,11 +273,11 @@ argument_list|()
 expr_stmt|;
 name|this
 operator|.
-name|previewPanelHeight
+name|previewPanelDividerPosition
 operator|=
 name|previewPreferences
 operator|.
-name|getPreviewPanelHeight
+name|getPreviewPanelDividerPosition
 argument_list|()
 expr_stmt|;
 name|this
@@ -372,20 +372,20 @@ return|return
 name|this
 return|;
 block|}
-DECL|method|withPreviewPanelHeight (int previewPanelHeight)
+DECL|method|withPreviewPanelDividerPosition (Number previewPanelDividerPosition)
 specifier|public
 name|Builder
-name|withPreviewPanelHeight
+name|withPreviewPanelDividerPosition
 parameter_list|(
-name|int
-name|previewPanelHeight
+name|Number
+name|previewPanelDividerPosition
 parameter_list|)
 block|{
 name|this
 operator|.
-name|previewPanelHeight
+name|previewPanelDividerPosition
 operator|=
-name|previewPanelHeight
+name|previewPanelDividerPosition
 expr_stmt|;
 return|return
 name|this
@@ -443,7 +443,7 @@ name|previewCycle
 argument_list|,
 name|previeCyclePosition
 argument_list|,
-name|previewPanelHeight
+name|previewPanelDividerPosition
 argument_list|,
 name|previewPanelEnabled
 argument_list|,

@@ -78,6 +78,16 @@ name|java
 operator|.
 name|awt
 operator|.
+name|Panel
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|awt
+operator|.
 name|RenderingHints
 import|;
 end_import
@@ -1060,7 +1070,7 @@ specifier|public
 class|class
 name|EntryEditor
 extends|extends
-name|JPanel
+name|Panel
 implements|implements
 name|EntryContainer
 block|{
