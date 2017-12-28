@@ -56,6 +56,16 @@ begin_import
 import|import
 name|javafx
 operator|.
+name|print
+operator|.
+name|PrinterJob
+import|;
+end_import
+
+begin_import
+import|import
+name|javafx
+operator|.
 name|scene
 operator|.
 name|control
@@ -441,6 +451,15 @@ name|getConfiguredFileChooser
 parameter_list|(
 name|FileDialogConfiguration
 name|fileDialogConfiguration
+parameter_list|)
+function_decl|;
+comment|/**      * Displays a Print Dialog. Allow the user to update job state such as printer and settings. These changes will be      * available in the appropriate properties after the print dialog has returned. The print dialog is also used to      * confirm the user wants to proceed with printing.      *      * @param job the print job to customize      * @return false if the user opts to cancel printing      */
+DECL|method|showPrintDialog (PrinterJob job)
+name|boolean
+name|showPrintDialog
+parameter_list|(
+name|PrinterJob
+name|job
 parameter_list|)
 function_decl|;
 block|}

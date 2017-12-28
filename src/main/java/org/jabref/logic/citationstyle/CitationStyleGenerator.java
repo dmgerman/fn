@@ -239,9 +239,15 @@ argument_list|,
 name|outputFormat
 argument_list|)
 operator|.
-name|get
+name|stream
+argument_list|()
+operator|.
+name|findFirst
+argument_list|()
+operator|.
+name|orElse
 argument_list|(
-literal|0
+literal|""
 argument_list|)
 return|;
 block|}
