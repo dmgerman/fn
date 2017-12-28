@@ -396,6 +396,15 @@ name|getRepository
 argument_list|(
 name|journalAbbreviationPreferences
 argument_list|)
+argument_list|,
+name|preferences
+operator|.
+name|getBoolean
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|ENFORCE_LEGAL_BIBTEX_KEY
+argument_list|)
 argument_list|)
 decl_stmt|;
 if|if

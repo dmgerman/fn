@@ -653,10 +653,7 @@ name|menu
 argument_list|,
 name|Localization
 operator|.
-name|lang
-argument_list|(
-literal|"BibTeX"
-argument_list|)
+name|BIBTEX
 argument_list|,
 name|BibtexEntryTypes
 operator|.
@@ -683,12 +680,7 @@ name|populateSubMenu
 argument_list|(
 name|menu
 argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
 literal|"IEEETran"
-argument_list|)
 argument_list|,
 name|IEEETranEntryTypes
 operator|.

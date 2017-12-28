@@ -28,16 +28,6 @@ name|org
 operator|.
 name|jabref
 operator|.
-name|Globals
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
 name|logic
 operator|.
 name|bibtexkeypattern
@@ -60,18 +50,6 @@ name|Localization
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|preferences
-operator|.
-name|JabRefPreferences
-import|;
-end_import
-
 begin_comment
 comment|/**  * Makes sure the key is legal  */
 end_comment
@@ -84,6 +62,27 @@ name|ValidBibtexKeyChecker
 implements|implements
 name|ValueChecker
 block|{
+DECL|field|enforceLegalKey
+specifier|private
+specifier|final
+name|boolean
+name|enforceLegalKey
+decl_stmt|;
+DECL|method|ValidBibtexKeyChecker (boolean enforceLegalKey)
+specifier|public
+name|ValidBibtexKeyChecker
+parameter_list|(
+name|boolean
+name|enforceLegalKey
+parameter_list|)
+block|{
+name|this
+operator|.
+name|enforceLegalKey
+operator|=
+name|enforceLegalKey
+expr_stmt|;
+block|}
 annotation|@
 name|Override
 DECL|method|checkValue (String value)
@@ -107,16 +106,7 @@ name|checkLegalKey
 argument_list|(
 name|value
 argument_list|,
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getBoolean
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|ENFORCE_LEGAL_BIBTEX_KEY
-argument_list|)
+name|enforceLegalKey
 argument_list|)
 decl_stmt|;
 if|if
