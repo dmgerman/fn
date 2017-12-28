@@ -34,6 +34,18 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|undo
+operator|.
+name|UndoManager
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|jabref
@@ -117,7 +129,7 @@ name|String
 argument_list|>
 name|fields
 decl_stmt|;
-DECL|method|UserDefinedFieldsTab (String name, List<String> fields, BibDatabaseContext databaseContext, SuggestionProviders suggestionProviders)
+DECL|method|UserDefinedFieldsTab (String name, List<String> fields, BibDatabaseContext databaseContext, SuggestionProviders suggestionProviders, UndoManager undoManager)
 specifier|public
 name|UserDefinedFieldsTab
 parameter_list|(
@@ -135,6 +147,9 @@ name|databaseContext
 parameter_list|,
 name|SuggestionProviders
 name|suggestionProviders
+parameter_list|,
+name|UndoManager
+name|undoManager
 parameter_list|)
 block|{
 name|super
@@ -144,6 +159,8 @@ argument_list|,
 name|databaseContext
 argument_list|,
 name|suggestionProviders
+argument_list|,
+name|undoManager
 argument_list|)
 expr_stmt|;
 name|this

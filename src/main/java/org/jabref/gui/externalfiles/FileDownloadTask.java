@@ -60,11 +60,15 @@ end_import
 
 begin_import
 import|import
-name|javafx
+name|org
 operator|.
-name|concurrent
+name|jabref
 operator|.
-name|Task
+name|gui
+operator|.
+name|util
+operator|.
+name|BackgroundTask
 import|;
 end_import
 
@@ -114,7 +118,7 @@ specifier|public
 class|class
 name|FileDownloadTask
 extends|extends
-name|Task
+name|BackgroundTask
 argument_list|<
 name|Void
 argument_list|>

@@ -156,7 +156,13 @@ specifier|final
 name|JournalAbbreviationRepository
 name|journalAbbreviationRepository
 decl_stmt|;
-DECL|method|IntegrityCheck (BibDatabaseContext bibDatabaseContext, FileDirectoryPreferences fileDirectoryPreferences, BibtexKeyPatternPreferences bibtexKeyPatternPreferences, JournalAbbreviationRepository journalAbbreviationRepository )
+DECL|field|enforceLegalKey
+specifier|private
+specifier|final
+name|boolean
+name|enforceLegalKey
+decl_stmt|;
+DECL|method|IntegrityCheck (BibDatabaseContext bibDatabaseContext, FileDirectoryPreferences fileDirectoryPreferences, BibtexKeyPatternPreferences bibtexKeyPatternPreferences, JournalAbbreviationRepository journalAbbreviationRepository, boolean enforceLegalKey)
 specifier|public
 name|IntegrityCheck
 parameter_list|(
@@ -171,6 +177,9 @@ name|bibtexKeyPatternPreferences
 parameter_list|,
 name|JournalAbbreviationRepository
 name|journalAbbreviationRepository
+parameter_list|,
+name|boolean
+name|enforceLegalKey
 parameter_list|)
 block|{
 name|this
@@ -216,6 +225,12 @@ name|requireNonNull
 argument_list|(
 name|journalAbbreviationRepository
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|enforceLegalKey
+operator|=
+name|enforceLegalKey
 expr_stmt|;
 block|}
 DECL|method|checkBibtexDatabase ()
@@ -312,6 +327,8 @@ argument_list|,
 name|fileDirectoryPreferences
 argument_list|,
 name|journalAbbreviationRepository
+argument_list|,
+name|enforceLegalKey
 argument_list|)
 decl_stmt|;
 for|for
@@ -519,6 +536,25 @@ argument_list|(
 name|bibDatabaseContext
 argument_list|,
 name|bibtexKeyPatternPreferences
+argument_list|)
+operator|.
+name|check
+argument_list|(
+name|entry
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|result
+operator|.
+name|addAll
+argument_list|(
+operator|new
+name|BibtexKeyDuplicationChecker
+argument_list|(
+name|bibDatabaseContext
+operator|.
+name|getDatabase
+argument_list|()
 argument_list|)
 operator|.
 name|check

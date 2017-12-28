@@ -46,6 +46,18 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|undo
+operator|.
+name|UndoManager
+import|;
+end_import
+
+begin_import
+import|import
 name|javafx
 operator|.
 name|scene
@@ -156,7 +168,7 @@ name|OtherFieldsTab
 extends|extends
 name|FieldsEditorTab
 block|{
-DECL|method|OtherFieldsTab (BibDatabaseContext databaseContext, SuggestionProviders suggestionProviders)
+DECL|method|OtherFieldsTab (BibDatabaseContext databaseContext, SuggestionProviders suggestionProviders, UndoManager undoManager)
 specifier|public
 name|OtherFieldsTab
 parameter_list|(
@@ -165,6 +177,9 @@ name|databaseContext
 parameter_list|,
 name|SuggestionProviders
 name|suggestionProviders
+parameter_list|,
+name|UndoManager
+name|undoManager
 parameter_list|)
 block|{
 name|super
@@ -174,6 +189,8 @@ argument_list|,
 name|databaseContext
 argument_list|,
 name|suggestionProviders
+argument_list|,
+name|undoManager
 argument_list|)
 expr_stmt|;
 name|setText

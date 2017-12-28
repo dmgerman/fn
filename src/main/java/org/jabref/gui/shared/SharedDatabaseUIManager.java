@@ -631,7 +631,7 @@ name|entryEditor
 init|=
 name|panel
 operator|.
-name|getCurrentEditor
+name|getEntryEditor
 argument_list|()
 decl_stmt|;
 name|panel
