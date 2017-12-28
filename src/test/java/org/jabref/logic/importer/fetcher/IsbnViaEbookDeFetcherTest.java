@@ -443,7 +443,7 @@ name|setField
 argument_list|(
 literal|"publisher"
 argument_list|,
-literal|"Springer"
+literal|"Springer Berlin Heidelberg"
 argument_list|)
 expr_stmt|;
 name|bibEntry
