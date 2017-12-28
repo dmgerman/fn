@@ -1455,7 +1455,7 @@ literal|"test"
 argument_list|,
 name|FileUtil
 operator|.
-name|getFileName
+name|getBaseName
 argument_list|(
 literal|"test.pdf"
 argument_list|)
@@ -1476,7 +1476,7 @@ literal|"te.st"
 argument_list|,
 name|FileUtil
 operator|.
-name|getFileName
+name|getBaseName
 argument_list|(
 literal|"te.st.PdF  "
 argument_list|)

@@ -68,6 +68,18 @@ name|util
 operator|.
 name|concurrent
 operator|.
+name|Future
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
 name|FutureTask
 import|;
 end_import
@@ -276,7 +288,10 @@ specifier|public
 parameter_list|<
 name|V
 parameter_list|>
-name|void
+name|Future
+argument_list|<
+name|?
+argument_list|>
 name|execute
 parameter_list|(
 name|BackgroundTask
@@ -286,6 +301,7 @@ argument_list|>
 name|task
 parameter_list|)
 block|{
+return|return
 name|EXECUTOR
 operator|.
 name|submit
@@ -295,7 +311,7 @@ argument_list|(
 name|task
 argument_list|)
 argument_list|)
-expr_stmt|;
+return|;
 block|}
 annotation|@
 name|Override

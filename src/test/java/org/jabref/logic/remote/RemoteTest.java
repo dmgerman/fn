@@ -100,9 +100,13 @@ begin_import
 import|import
 name|org
 operator|.
-name|junit
+name|jabref
 operator|.
-name|Assert
+name|logic
+operator|.
+name|util
+operator|.
+name|OS
 import|;
 end_import
 
@@ -112,7 +116,91 @@ name|org
 operator|.
 name|junit
 operator|.
+name|jupiter
+operator|.
+name|api
+operator|.
 name|Test
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
+operator|.
+name|assertFalse
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
+operator|.
+name|fail
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assumptions
+operator|.
+name|assumeFalse
 import|;
 end_import
 
@@ -152,8 +240,6 @@ name|RemoteListenerServerLifecycle
 argument_list|()
 init|)
 block|{
-name|Assert
-operator|.
 name|assertFalse
 argument_list|(
 name|server
@@ -168,8 +254,6 @@ name|openAndStart
 argument_list|(
 name|msg
 lambda|->
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|message
@@ -180,8 +264,6 @@ argument_list|,
 name|port
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|server
@@ -190,8 +272,6 @@ name|isOpen
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|RemoteListenerClient
@@ -214,8 +294,6 @@ operator|.
 name|stop
 argument_list|()
 expr_stmt|;
-name|Assert
-operator|.
 name|assertFalse
 argument_list|(
 name|server
@@ -256,8 +334,6 @@ name|RemoteListenerServerLifecycle
 argument_list|()
 init|)
 block|{
-name|Assert
-operator|.
 name|assertFalse
 argument_list|(
 name|server
@@ -266,8 +342,6 @@ name|isOpen
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|server
@@ -281,8 +355,6 @@ operator|.
 name|stop
 argument_list|()
 expr_stmt|;
-name|Assert
-operator|.
 name|assertFalse
 argument_list|(
 name|server
@@ -291,8 +363,6 @@ name|isOpen
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|server
@@ -307,8 +377,6 @@ name|open
 argument_list|(
 name|msg
 lambda|->
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|message
@@ -319,8 +387,6 @@ argument_list|,
 name|port
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|server
@@ -329,8 +395,6 @@ name|isOpen
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|server
@@ -344,8 +408,6 @@ operator|.
 name|start
 argument_list|()
 expr_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|server
@@ -354,8 +416,6 @@ name|isOpen
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertFalse
 argument_list|(
 name|server
@@ -364,8 +424,6 @@ name|isNotStartedBefore
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|RemoteListenerClient
@@ -388,8 +446,6 @@ operator|.
 name|stop
 argument_list|()
 expr_stmt|;
-name|Assert
-operator|.
 name|assertFalse
 argument_list|(
 name|server
@@ -398,8 +454,6 @@ name|isOpen
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|server
@@ -420,6 +474,13 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
+name|assumeFalse
+argument_list|(
+name|OS
+operator|.
+name|OS_X
+argument_list|)
+expr_stmt|;
 specifier|final
 name|int
 name|port
@@ -438,8 +499,6 @@ name|port
 argument_list|)
 init|)
 block|{
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|socket
@@ -458,8 +517,6 @@ name|RemoteListenerServerLifecycle
 argument_list|()
 init|)
 block|{
-name|Assert
-operator|.
 name|assertFalse
 argument_list|(
 name|server
@@ -474,8 +531,6 @@ name|openAndStart
 argument_list|(
 name|msg
 lambda|->
-name|Assert
-operator|.
 name|fail
 argument_list|(
 literal|"should not happen"
@@ -484,8 +539,6 @@ argument_list|,
 name|port
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertFalse
 argument_list|(
 name|server
@@ -501,8 +554,6 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-name|Assert
-operator|.
 name|fail
 argument_list|(
 literal|"Exception: "
@@ -536,8 +587,6 @@ name|message
 init|=
 literal|"MYMESSAGE"
 decl_stmt|;
-name|Assert
-operator|.
 name|assertFalse
 argument_list|(
 name|RemoteListenerClient
@@ -658,8 +707,6 @@ argument_list|(
 literal|100
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertFalse
 argument_list|(
 name|RemoteListenerClient

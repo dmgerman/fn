@@ -30,6 +30,18 @@ name|java
 operator|.
 name|util
 operator|.
+name|concurrent
+operator|.
+name|Future
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|function
 operator|.
 name|Consumer
@@ -500,20 +512,24 @@ return|;
 block|}
 DECL|method|executeWith (TaskExecutor taskExecutor)
 specifier|public
-name|void
+name|Future
+argument_list|<
+name|?
+argument_list|>
 name|executeWith
 parameter_list|(
 name|TaskExecutor
 name|taskExecutor
 parameter_list|)
 block|{
+return|return
 name|taskExecutor
 operator|.
 name|execute
 argument_list|(
 name|this
 argument_list|)
-expr_stmt|;
+return|;
 block|}
 comment|/**      * Sets the {@link Runnable} that is invoked after the task is finished, irrespectively if it was successful or      * failed with an error.      */
 DECL|method|onFinished (Runnable onFinished)

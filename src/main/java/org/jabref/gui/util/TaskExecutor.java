@@ -14,6 +14,18 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|Future
+import|;
+end_import
+
+begin_import
+import|import
 name|javafx
 operator|.
 name|concurrent
@@ -32,12 +44,15 @@ specifier|public
 interface|interface
 name|TaskExecutor
 block|{
-comment|/**      * Runs the given task.      *      * @param task the task to run      * @param<V>  type of return value of the task      */
+comment|/**      * Runs the given task and returns a Future representing that task.      *      * @param<V>  type of return value of the task      * @param task the task to run      */
 DECL|method|execute (BackgroundTask<V> task)
 parameter_list|<
 name|V
 parameter_list|>
-name|void
+name|Future
+argument_list|<
+name|?
+argument_list|>
 name|execute
 parameter_list|(
 name|BackgroundTask

@@ -40,6 +40,20 @@ name|org
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
+name|util
+operator|.
+name|FileExtensions
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
 name|model
 operator|.
 name|database
@@ -81,7 +95,7 @@ name|getDisplayName
 parameter_list|()
 function_decl|;
 DECL|method|getExtension ()
-name|String
+name|FileExtensions
 name|getExtension
 parameter_list|()
 function_decl|;

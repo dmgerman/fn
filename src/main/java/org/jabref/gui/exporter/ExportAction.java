@@ -573,6 +573,12 @@ name|eff
 operator|.
 name|getExtension
 argument_list|()
+operator|.
+name|getExtensionsAsList
+argument_list|()
+operator|.
+name|toString
+argument_list|()
 argument_list|)
 condition|)
 block|{

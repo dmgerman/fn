@@ -364,6 +364,20 @@ name|org
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
+name|util
+operator|.
+name|DefaultTaskExecutor
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
 name|logic
 operator|.
 name|l10n
@@ -2822,6 +2836,14 @@ argument_list|,
 name|newValue
 argument_list|)
 decl_stmt|;
+comment|// make sure that the update runs in the Java FX thread to avoid exception in listeners
+name|DefaultTaskExecutor
+operator|.
+name|runInJavaFXThread
+argument_list|(
+parameter_list|()
+lambda|->
+block|{
 name|entry
 operator|.
 name|setField
@@ -2831,6 +2853,9 @@ operator|.
 name|FILE
 argument_list|,
 name|newValue
+argument_list|)
+expr_stmt|;
+block|}
 argument_list|)
 expr_stmt|;
 if|if

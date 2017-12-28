@@ -188,6 +188,16 @@ name|BibtexKeyPatternUtil
 extends|extends
 name|BracketedPattern
 block|{
+comment|// All single characters that we can use for extending a key to make it unique:
+DECL|field|CHARS
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|CHARS
+init|=
+literal|"abcdefghijklmnopqrstuvwxyz"
+decl_stmt|;
 DECL|field|LOGGER
 specifier|private
 specifier|static
@@ -203,16 +213,6 @@ name|BibtexKeyPatternUtil
 operator|.
 name|class
 argument_list|)
-decl_stmt|;
-comment|// All single characters that we can use for extending a key to make it unique:
-DECL|field|CHARS
-specifier|private
-specifier|static
-specifier|final
-name|String
-name|CHARS
-init|=
-literal|"abcdefghijklmnopqrstuvwxyz"
 decl_stmt|;
 DECL|method|BibtexKeyPatternUtil ()
 specifier|private

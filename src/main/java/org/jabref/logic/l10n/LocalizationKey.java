@@ -65,13 +65,6 @@ return|return
 name|this
 operator|.
 name|key
-operator|.
-name|replace
-argument_list|(
-literal|" "
-argument_list|,
-literal|"_"
-argument_list|)
 return|;
 block|}
 DECL|method|getPropertiesKey ()
@@ -90,7 +83,7 @@ name|replace
 argument_list|(
 literal|" "
 argument_list|,
-literal|"_"
+literal|"\\ "
 argument_list|)
 operator|.
 name|replace
@@ -142,7 +135,7 @@ name|key
 operator|.
 name|replace
 argument_list|(
-literal|"_"
+literal|"\\ "
 argument_list|,
 literal|" "
 argument_list|)

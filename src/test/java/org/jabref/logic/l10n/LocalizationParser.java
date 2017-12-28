@@ -1632,7 +1632,7 @@ name|languagePropertyKey
 operator|.
 name|endsWith
 argument_list|(
-literal|"_"
+literal|" "
 argument_list|)
 condition|)
 block|{

@@ -1007,7 +1007,7 @@ return|;
 block|}
 block|}
 DECL|method|getKeyCombination (KeyBinding bindName)
-specifier|private
+specifier|public
 name|KeyCombination
 name|getKeyCombination
 parameter_list|(
