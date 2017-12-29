@@ -730,7 +730,7 @@ name|JButton
 argument_list|(
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|OPEN_IN_NEW_WINDOW
 operator|.
@@ -849,7 +849,7 @@ name|JToggleButton
 argument_list|(
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|GLOBAL_SEARCH
 operator|.
@@ -1018,14 +1018,14 @@ name|setDisabledIcon
 argument_list|(
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|OPEN_IN_NEW_WINDOW
 operator|.
-name|getSmallIcon
+name|disabled
 argument_list|()
 operator|.
-name|createDisabledIcon
+name|getSmallIcon
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1079,7 +1079,7 @@ name|JToggleButton
 argument_list|(
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|REG_EX
 operator|.
@@ -1134,7 +1134,7 @@ name|JToggleButton
 argument_list|(
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|CASE_SENSITIVE
 operator|.

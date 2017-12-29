@@ -938,7 +938,7 @@ argument_list|)
 argument_list|,
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|EXPORT_TO_CLIPBOARD
 operator|.
@@ -965,7 +965,7 @@ argument_list|)
 argument_list|,
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|COPY
 operator|.
@@ -1001,7 +1001,7 @@ argument_list|)
 argument_list|,
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|PASTE
 operator|.
@@ -1032,7 +1032,7 @@ argument_list|)
 argument_list|,
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|CUT
 operator|.
@@ -1063,7 +1063,7 @@ argument_list|)
 argument_list|,
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|DELETE_ENTRY
 operator|.
@@ -1095,7 +1095,7 @@ argument_list|)
 argument_list|,
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|PRINTED
 operator|.
@@ -1137,7 +1137,7 @@ argument_list|)
 argument_list|,
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|EMAIL
 operator|.
@@ -1177,7 +1177,7 @@ name|setIcon
 argument_list|(
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|MARK_ENTRIES
 operator|.
@@ -1242,7 +1242,7 @@ argument_list|)
 argument_list|,
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|MARK_ENTRIES
 operator|.
@@ -1278,7 +1278,7 @@ argument_list|)
 argument_list|,
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|UNMARK_ENTRIES
 operator|.
@@ -1353,7 +1353,7 @@ argument_list|)
 argument_list|,
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|MARK_ENTRIES
 operator|.
@@ -1397,7 +1397,7 @@ argument_list|)
 argument_list|,
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|UNMARK_ENTRIES
 operator|.
@@ -1773,7 +1773,7 @@ argument_list|)
 argument_list|,
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|WWW
 operator|.
@@ -1884,7 +1884,7 @@ argument_list|)
 argument_list|,
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|ATTACH_FILE
 operator|.
@@ -1934,7 +1934,7 @@ literal|"..."
 argument_list|,
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|MERGE_ENTRIES
 operator|.
@@ -2401,7 +2401,7 @@ block|}
 return|return
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|FILE
 operator|.

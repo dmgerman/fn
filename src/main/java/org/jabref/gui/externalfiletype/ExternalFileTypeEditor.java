@@ -500,7 +500,7 @@ name|JButton
 argument_list|(
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|ADD_NOBOX
 operator|.
@@ -519,7 +519,7 @@ name|JButton
 argument_list|(
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|REMOVE_NOBOX
 operator|.
@@ -538,7 +538,7 @@ name|JButton
 argument_list|(
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|EDIT
 operator|.
@@ -845,12 +845,9 @@ literal|"new"
 argument_list|,
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|FILE
-operator|.
-name|getSmallIcon
-argument_list|()
 argument_list|)
 decl_stmt|;
 comment|// Show the file type editor:

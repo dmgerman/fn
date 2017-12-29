@@ -1237,7 +1237,7 @@ name|connectImage
 init|=
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|CONNECT_OPEN_OFFICE
 operator|.
@@ -1317,7 +1317,7 @@ name|JButton
 argument_list|(
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|OPEN
 operator|.
@@ -1357,7 +1357,7 @@ name|JButton
 argument_list|(
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|REFRESH
 operator|.

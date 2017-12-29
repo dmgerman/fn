@@ -2182,7 +2182,7 @@ argument_list|)
 argument_list|,
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|FACEBOOK
 operator|.
@@ -2191,7 +2191,7 @@ argument_list|()
 argument_list|,
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|FACEBOOK
 operator|.
@@ -2226,7 +2226,7 @@ argument_list|)
 argument_list|,
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|BLOG
 operator|.
@@ -2235,7 +2235,7 @@ argument_list|()
 argument_list|,
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|BLOG
 operator|.
@@ -2322,7 +2322,7 @@ argument_list|)
 argument_list|,
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|GITHUB
 operator|.
@@ -2331,7 +2331,7 @@ argument_list|()
 argument_list|,
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|GITHUB
 operator|.
@@ -2366,7 +2366,7 @@ argument_list|)
 argument_list|,
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|DONATE
 operator|.
@@ -2375,7 +2375,7 @@ argument_list|()
 argument_list|,
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|DONATE
 operator|.
@@ -2410,7 +2410,7 @@ argument_list|)
 argument_list|,
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|FORUM
 operator|.
@@ -2419,7 +2419,7 @@ argument_list|()
 argument_list|,
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|FORUM
 operator|.
@@ -2539,7 +2539,7 @@ argument_list|)
 argument_list|,
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|EDIT_ENTRY
 operator|.
@@ -2628,7 +2628,7 @@ argument_list|)
 argument_list|,
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|SAVE
 operator|.
@@ -2829,7 +2829,7 @@ argument_list|)
 argument_list|,
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|UNDO
 operator|.
@@ -2878,7 +2878,7 @@ argument_list|)
 argument_list|,
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|REDO
 operator|.
@@ -2927,7 +2927,7 @@ argument_list|)
 argument_list|,
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|RIGHT
 operator|.
@@ -2976,7 +2976,7 @@ argument_list|)
 argument_list|,
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|LEFT
 operator|.
@@ -3025,7 +3025,7 @@ argument_list|)
 argument_list|,
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|DELETE_ENTRY
 operator|.
@@ -3074,7 +3074,7 @@ argument_list|)
 argument_list|,
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|COPY
 operator|.
@@ -3123,7 +3123,7 @@ argument_list|)
 argument_list|,
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|PASTE
 operator|.
@@ -3172,7 +3172,7 @@ argument_list|)
 argument_list|,
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|CUT
 operator|.
@@ -3221,7 +3221,7 @@ argument_list|)
 argument_list|,
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|CONSOLE
 operator|.
@@ -3270,7 +3270,7 @@ argument_list|)
 argument_list|,
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|PULL
 operator|.
@@ -3319,7 +3319,7 @@ argument_list|)
 argument_list|,
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|MARK_ENTRIES
 operator|.
@@ -3386,7 +3386,7 @@ argument_list|)
 argument_list|,
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|UNMARK_ENTRIES
 operator|.
@@ -3483,7 +3483,7 @@ argument_list|()
 argument_list|,
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|RELEVANCE
 operator|.
@@ -3559,7 +3559,7 @@ argument_list|()
 argument_list|,
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|QUALITY_ASSURED
 operator|.
@@ -3635,7 +3635,7 @@ argument_list|()
 argument_list|,
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|PRINTED
 operator|.
@@ -3684,7 +3684,7 @@ argument_list|)
 argument_list|,
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|SEARCH
 operator|.
@@ -4076,7 +4076,7 @@ argument_list|)
 argument_list|,
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|EDIT_STRINGS
 operator|.
@@ -4276,7 +4276,7 @@ argument_list|)
 argument_list|,
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|TOGGLE_ENTRY_PREVIEW
 operator|.
@@ -4392,7 +4392,7 @@ argument_list|)
 argument_list|,
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|MAKE_KEY
 operator|.
@@ -4521,7 +4521,7 @@ argument_list|)
 argument_list|,
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|FILE
 operator|.
@@ -4570,7 +4570,7 @@ argument_list|)
 argument_list|,
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|WWW
 operator|.
@@ -4600,7 +4600,7 @@ argument_list|)
 argument_list|,
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|FIND_DUPLICATES
 operator|.
@@ -4698,7 +4698,7 @@ argument_list|)
 argument_list|,
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|EXPORT_TO_CLIPBOARD
 operator|.
@@ -4942,7 +4942,7 @@ argument_list|)
 argument_list|,
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|CLEANUP_ENTRIES
 operator|.
@@ -4981,7 +4981,7 @@ argument_list|)
 argument_list|,
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|MERGE_ENTRIES
 operator|.
@@ -5114,7 +5114,7 @@ argument_list|)
 argument_list|,
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|EMAIL
 operator|.
