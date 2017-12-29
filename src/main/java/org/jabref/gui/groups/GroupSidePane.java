@@ -336,7 +336,7 @@ name|manager
 argument_list|,
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|TOGGLE_GROUPS
 operator|.
@@ -463,7 +463,7 @@ argument_list|)
 argument_list|,
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|TOGGLE_GROUPS
 argument_list|)

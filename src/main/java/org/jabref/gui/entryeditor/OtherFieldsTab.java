@@ -221,7 +221,7 @@ name|setGraphic
 argument_list|(
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|OPTIONAL
 operator|.

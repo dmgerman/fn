@@ -344,7 +344,7 @@ name|helpPage
 argument_list|,
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|HELP
 operator|.
@@ -435,7 +435,7 @@ name|helpPage
 argument_list|,
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|HELP
 operator|.
@@ -505,7 +505,7 @@ name|helpPage
 argument_list|,
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|HELP
 operator|.

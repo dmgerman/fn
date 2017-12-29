@@ -1013,7 +1013,7 @@ name|JLabel
 argument_list|(
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|FILE
 operator|.
@@ -1032,7 +1032,7 @@ name|JLabel
 argument_list|(
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|WWW
 operator|.
@@ -3416,6 +3416,9 @@ argument_list|()
 operator|.
 name|getIcon
 argument_list|()
+operator|.
+name|getSmallIcon
+argument_list|()
 argument_list|,
 name|p
 operator|.
@@ -3795,6 +3798,9 @@ argument_list|()
 operator|.
 name|getIcon
 argument_list|()
+operator|.
+name|getSmallIcon
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -3806,7 +3812,7 @@ name|setIcon
 argument_list|(
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|FILE
 operator|.

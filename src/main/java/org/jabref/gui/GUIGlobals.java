@@ -599,7 +599,7 @@ name|JLabel
 argument_list|(
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|PDF_FILE
 operator|.
@@ -641,7 +641,7 @@ name|JLabel
 argument_list|(
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|WWW
 operator|.
@@ -683,7 +683,7 @@ name|JLabel
 argument_list|(
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|WWW
 operator|.
@@ -723,7 +723,7 @@ name|JLabel
 argument_list|(
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|WWW
 operator|.
@@ -765,7 +765,7 @@ name|JLabel
 argument_list|(
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|DOI
 operator|.
@@ -814,7 +814,7 @@ name|JLabel
 argument_list|(
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|FILE
 operator|.
@@ -856,7 +856,7 @@ name|JLabel
 argument_list|(
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|FOLDER
 operator|.
@@ -896,7 +896,7 @@ name|JLabel
 argument_list|(
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|FILE
 operator|.
@@ -951,6 +951,9 @@ argument_list|(
 name|fileType
 operator|.
 name|getIcon
+argument_list|()
+operator|.
+name|getSmallIcon
 argument_list|()
 argument_list|)
 expr_stmt|;

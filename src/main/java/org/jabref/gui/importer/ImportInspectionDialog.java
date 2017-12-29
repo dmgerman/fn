@@ -1807,7 +1807,7 @@ name|JLabel
 argument_list|(
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|DUPLICATE
 operator|.
@@ -1826,7 +1826,7 @@ name|JLabel
 argument_list|(
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|FILE
 operator|.
@@ -1845,7 +1845,7 @@ name|JLabel
 argument_list|(
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|WWW
 operator|.
@@ -5592,7 +5592,7 @@ argument_list|)
 argument_list|,
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|DELETE_ENTRY
 operator|.
@@ -6349,6 +6349,9 @@ name|get
 argument_list|()
 operator|.
 name|getIcon
+argument_list|()
+operator|.
+name|getSmallIcon
 argument_list|()
 argument_list|,
 name|panel
@@ -8492,6 +8495,9 @@ name|get
 argument_list|()
 operator|.
 name|getIcon
+argument_list|()
+operator|.
+name|getSmallIcon
 argument_list|()
 argument_list|)
 expr_stmt|;

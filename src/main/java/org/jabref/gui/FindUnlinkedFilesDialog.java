@@ -5626,6 +5626,9 @@ argument_list|()
 operator|.
 name|getIcon
 argument_list|()
+operator|.
+name|getSmallIcon
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

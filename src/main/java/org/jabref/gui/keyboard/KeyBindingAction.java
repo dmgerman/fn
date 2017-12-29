@@ -113,7 +113,7 @@ name|SMALL_ICON
 argument_list|,
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|KEY_BINDINGS
 operator|.

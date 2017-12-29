@@ -1408,7 +1408,7 @@ literal|"Save library"
 argument_list|,
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|SAVE
 operator|.
@@ -2259,7 +2259,7 @@ literal|"New string"
 argument_list|,
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|ADD
 operator|.
@@ -2545,7 +2545,7 @@ literal|"Remove selected strings"
 argument_list|,
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|REMOVE
 operator|.
@@ -2803,7 +2803,7 @@ literal|"Undo"
 argument_list|,
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|UNDO
 operator|.
@@ -2865,7 +2865,7 @@ literal|"Redo"
 argument_list|,
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|REDO
 operator|.

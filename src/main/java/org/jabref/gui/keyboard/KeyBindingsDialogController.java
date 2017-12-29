@@ -124,7 +124,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|IconTheme
+name|JabRefIcon
 import|;
 end_import
 
@@ -427,8 +427,6 @@ argument_list|()
 operator|.
 name|map
 argument_list|(
-name|IconTheme
-operator|.
 name|JabRefIcon
 operator|::
 name|getGraphicNode
