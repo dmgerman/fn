@@ -2047,15 +2047,9 @@ specifier|final
 name|BasePanel
 name|panel
 init|=
-operator|(
-name|BasePanel
-operator|)
 name|frame
 operator|.
-name|getTabbedPane
-argument_list|()
-operator|.
-name|getSelectedComponent
+name|getCurrentBasePanel
 argument_list|()
 decl_stmt|;
 name|ImportInspectionDialog

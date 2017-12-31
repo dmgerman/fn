@@ -581,7 +581,10 @@ operator|.
 name|getMainTable
 argument_list|()
 operator|.
-name|getSelectedRowCount
+name|getSelectedEntries
+argument_list|()
+operator|.
+name|size
 argument_list|()
 operator|==
 literal|1
@@ -594,7 +597,7 @@ operator|.
 name|getMainTable
 argument_list|()
 operator|.
-name|getSelected
+name|getSelectedEntries
 argument_list|()
 operator|.
 name|get
@@ -2133,7 +2136,10 @@ operator|.
 name|getMainTable
 argument_list|()
 operator|.
-name|getSelectedRowCount
+name|getSelectedEntries
+argument_list|()
+operator|.
+name|size
 argument_list|()
 operator|>
 literal|1
@@ -2151,7 +2157,10 @@ operator|.
 name|getMainTable
 argument_list|()
 operator|.
-name|getSelectedRowCount
+name|getSelectedEntries
+argument_list|()
+operator|.
+name|size
 argument_list|()
 operator|==
 literal|2
@@ -2274,7 +2283,10 @@ operator|.
 name|getMainTable
 argument_list|()
 operator|.
-name|getSelectedRowCount
+name|getSelectedEntries
+argument_list|()
+operator|.
+name|size
 argument_list|()
 operator|==
 literal|1
@@ -2288,7 +2300,7 @@ operator|.
 name|getMainTable
 argument_list|()
 operator|.
-name|getSelected
+name|getSelectedEntries
 argument_list|()
 operator|.
 name|get
@@ -2328,7 +2340,10 @@ operator|.
 name|getMainTable
 argument_list|()
 operator|.
-name|getSelectedRowCount
+name|getSelectedEntries
+argument_list|()
+operator|.
+name|size
 argument_list|()
 operator|==
 literal|1
@@ -2342,7 +2357,7 @@ operator|.
 name|getMainTable
 argument_list|()
 operator|.
-name|getSelected
+name|getSelectedEntries
 argument_list|()
 operator|.
 name|get

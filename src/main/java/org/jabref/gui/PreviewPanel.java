@@ -1964,7 +1964,7 @@ name|ifPresent
 argument_list|(
 name|BasePanel
 operator|::
-name|hideBottomComponent
+name|closeBottomPane
 argument_list|)
 expr_stmt|;
 block|}

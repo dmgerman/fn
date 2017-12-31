@@ -725,9 +725,6 @@ operator|.
 name|showMessageDialog
 argument_list|(
 name|frame
-operator|.
-name|getCurrentBasePanel
-argument_list|()
 argument_list|,
 name|Localization
 operator|.

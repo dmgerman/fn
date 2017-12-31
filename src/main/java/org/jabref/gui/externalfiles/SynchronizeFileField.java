@@ -1642,14 +1642,6 @@ argument_list|(
 name|fileTypes
 argument_list|)
 expr_stmt|;
-name|panel
-operator|.
-name|getMainTable
-argument_list|()
-operator|.
-name|repaint
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 else|else

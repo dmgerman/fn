@@ -328,16 +328,6 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|JTable
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
 name|UIManager
 import|;
 end_import
@@ -4111,9 +4101,9 @@ name|put
 argument_list|(
 name|AUTO_RESIZE_MODE
 argument_list|,
-name|JTable
+name|Boolean
 operator|.
-name|AUTO_RESIZE_ALL_COLUMNS
+name|TRUE
 argument_list|)
 expr_stmt|;
 name|defaults
@@ -4122,7 +4112,7 @@ name|put
 argument_list|(
 name|ENTRY_EDITOR_HEIGHT
 argument_list|,
-literal|400
+literal|0.75
 argument_list|)
 expr_stmt|;
 name|defaults
@@ -7877,7 +7867,8 @@ parameter_list|)
 block|{
 return|return
 operator|(
-name|double
+operator|(
+name|Number
 operator|)
 name|defaults
 operator|.
@@ -7885,6 +7876,10 @@ name|get
 argument_list|(
 name|key
 argument_list|)
+operator|)
+operator|.
+name|doubleValue
+argument_list|()
 return|;
 block|}
 DECL|method|put (String key, String value)
@@ -9935,10 +9930,10 @@ argument_list|(
 name|CYCLE_PREVIEW
 argument_list|)
 decl_stmt|;
-name|int
+name|double
 name|panelHeight
 init|=
-name|getInt
+name|getDouble
 argument_list|(
 name|PREVIEW_PANEL_HEIGHT
 argument_list|)

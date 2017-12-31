@@ -795,10 +795,7 @@ operator|.
 name|frame
 argument_list|()
 operator|.
-name|getTabbedPane
-argument_list|()
-operator|.
-name|setSelectedComponent
+name|showBasePanel
 argument_list|(
 name|panel
 argument_list|)
@@ -1127,7 +1124,10 @@ operator|.
 name|getTabbedPane
 argument_list|()
 operator|.
-name|getTabCount
+name|getTabs
+argument_list|()
+operator|.
+name|size
 argument_list|()
 condition|;
 name|i
@@ -1317,10 +1317,7 @@ argument_list|)
 expr_stmt|;
 name|frame
 operator|.
-name|getTabbedPane
-argument_list|()
-operator|.
-name|setSelectedComponent
+name|showBasePanel
 argument_list|(
 name|toRaise
 argument_list|)

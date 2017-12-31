@@ -105,7 +105,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Constructs a {@link TableCell} based on the value of the cell and a bunch of specified converter methods.  *  * @param<S> view model  * @param<T> cell value  */
+comment|/**  * Constructs a {@link TableCell} based on the value of the cell and a bunch of specified converter methods.  *  * @param<S> view model of table row  * @param<T> cell value  */
 end_comment
 
 begin_class

@@ -2818,7 +2818,7 @@ argument_list|()
 expr_stmt|;
 name|basePanel
 operator|.
-name|highlightEntry
+name|clearAndSelect
 argument_list|(
 name|entry
 argument_list|)
