@@ -148,10 +148,13 @@ name|HashMap
 argument_list|<>
 argument_list|()
 decl_stmt|;
-DECL|method|CellFactory ()
+DECL|method|CellFactory (ExternalFileTypes externalFileTypes)
 specifier|public
 name|CellFactory
-parameter_list|()
+parameter_list|(
+name|ExternalFileTypes
+name|externalFileTypes
+parameter_list|)
 block|{
 name|Node
 name|label
@@ -343,10 +346,7 @@ control|(
 name|ExternalFileType
 name|fileType
 range|:
-name|ExternalFileTypes
-operator|.
-name|getInstance
-argument_list|()
+name|externalFileTypes
 operator|.
 name|getExternalFileTypeSelection
 argument_list|()

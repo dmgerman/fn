@@ -649,6 +649,23 @@ name|UndoManager
 name|undoManager
 parameter_list|)
 block|{
+comment|// The preferences might be not initialized in tests -> return empty node
+comment|// TODO: Replace this ugly workaround by proper injection propagation
+if|if
+condition|(
+name|Globals
+operator|.
+name|prefs
+operator|==
+literal|null
+condition|)
+block|{
+return|return
+operator|new
+name|Region
+argument_list|()
+return|;
+block|}
 name|editors
 operator|.
 name|clear

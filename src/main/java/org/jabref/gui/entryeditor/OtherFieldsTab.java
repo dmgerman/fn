@@ -74,16 +74,6 @@ name|org
 operator|.
 name|jabref
 operator|.
-name|Globals
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
 name|gui
 operator|.
 name|IconTheme
@@ -168,7 +158,16 @@ name|OtherFieldsTab
 extends|extends
 name|FieldsEditorTab
 block|{
-DECL|method|OtherFieldsTab (BibDatabaseContext databaseContext, SuggestionProviders suggestionProviders, UndoManager undoManager)
+DECL|field|customTabFieldNames
+specifier|private
+specifier|final
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|customTabFieldNames
+decl_stmt|;
+DECL|method|OtherFieldsTab (BibDatabaseContext databaseContext, SuggestionProviders suggestionProviders, UndoManager undoManager, List<String> customTabFieldNames)
 specifier|public
 name|OtherFieldsTab
 parameter_list|(
@@ -180,6 +179,12 @@ name|suggestionProviders
 parameter_list|,
 name|UndoManager
 name|undoManager
+parameter_list|,
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|customTabFieldNames
 parameter_list|)
 block|{
 name|super
@@ -228,6 +233,12 @@ operator|.
 name|getGraphicNode
 argument_list|()
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|customTabFieldNames
+operator|=
+name|customTabFieldNames
 expr_stmt|;
 block|}
 annotation|@
@@ -341,12 +352,7 @@ name|otherFields
 operator|.
 name|removeAll
 argument_list|(
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getCustomTabFieldNames
-argument_list|()
+name|customTabFieldNames
 argument_list|)
 expr_stmt|;
 return|return

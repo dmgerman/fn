@@ -3629,7 +3629,15 @@ decl_stmt|;
 comment|// Object containing info about customized entry editor tabs.
 DECL|field|tabList
 specifier|private
-name|EntryEditorTabList
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|List
+argument_list|<
+name|String
+argument_list|>
+argument_list|>
 name|tabList
 decl_stmt|;
 comment|// The constructor is made private to enforce this as a singleton class:
@@ -9087,7 +9095,15 @@ block|}
 block|}
 DECL|method|getEntryEditorTabList ()
 specifier|public
-name|EntryEditorTabList
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|List
+argument_list|<
+name|String
+argument_list|>
+argument_list|>
 name|getEntryEditorTabList
 parameter_list|()
 block|{
@@ -9114,9 +9130,12 @@ parameter_list|()
 block|{
 name|tabList
 operator|=
-operator|new
 name|EntryEditorTabList
-argument_list|()
+operator|.
+name|create
+argument_list|(
+name|this
+argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Exports Preferences to an XML file.      *      * @param filename String File to export to      */

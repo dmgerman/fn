@@ -554,7 +554,12 @@ name|typeMenu
 init|=
 operator|new
 name|ChangeEntryTypeMenu
+argument_list|(
+name|Globals
+operator|.
+name|getKeyPrefs
 argument_list|()
+argument_list|)
 operator|.
 name|getChangeEntryTypeMenu
 argument_list|(
