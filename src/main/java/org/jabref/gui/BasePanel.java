@@ -1824,6 +1824,18 @@ name|EasyBind
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|fxmisc
+operator|.
+name|easybind
+operator|.
+name|Subscription
+import|;
+end_import
+
 begin_class
 DECL|class|BasePanel
 specifier|public
@@ -2045,6 +2057,11 @@ DECL|field|suggestionProviders
 specifier|private
 name|SuggestionProviders
 name|suggestionProviders
+decl_stmt|;
+DECL|field|dividerPositionSubscription
+specifier|private
+name|Subscription
+name|dividerPositionSubscription
 decl_stmt|;
 comment|// the query the user searches when this BasePanel is active
 DECL|field|currentSearchQuery
@@ -2292,6 +2309,8 @@ name|prefs
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|this
+operator|.
 name|entryEditor
 operator|=
 operator|new
@@ -2828,13 +2847,12 @@ name|Actions
 operator|.
 name|COPY
 argument_list|,
-call|(
+operator|(
 name|BaseAction
-call|)
-argument_list|()
-operator|->
+operator|)
+name|this
+operator|::
 name|copy
-argument_list|()
 argument_list|)
 expr_stmt|;
 name|actions
@@ -2901,13 +2919,12 @@ name|Actions
 operator|.
 name|PASTE
 argument_list|,
-call|(
+operator|(
 name|BaseAction
-call|)
-argument_list|()
-operator|->
+operator|)
+name|this
+operator|::
 name|paste
-argument_list|()
 argument_list|)
 expr_stmt|;
 name|actions
@@ -8789,6 +8806,9 @@ argument_list|()
 expr_stmt|;
 block|}
 comment|// Saves the divider position as soon as it changes
+comment|// We need to keep a reference to the subscription, otherwise the binding gets garbage collected
+name|dividerPositionSubscription
+operator|=
 name|EasyBind
 operator|.
 name|monadic
