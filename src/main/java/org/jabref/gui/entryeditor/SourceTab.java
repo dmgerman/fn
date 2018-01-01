@@ -126,16 +126,6 @@ name|org
 operator|.
 name|jabref
 operator|.
-name|Globals
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
 name|gui
 operator|.
 name|IconTheme
@@ -398,6 +388,18 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|preferences
+operator|.
+name|JabRefPreferences
+import|;
+end_import
+
+begin_import
+import|import
 name|de
 operator|.
 name|saxsys
@@ -528,6 +530,12 @@ specifier|final
 name|BibDatabaseMode
 name|mode
 decl_stmt|;
+DECL|field|preferences
+specifier|private
+specifier|final
+name|JabRefPreferences
+name|preferences
+decl_stmt|;
 DECL|field|undoManager
 specifier|private
 name|UndoManager
@@ -559,7 +567,7 @@ argument_list|(
 name|sourceIsValid
 argument_list|)
 decl_stmt|;
-DECL|method|SourceTab (BibDatabaseContext bibDatabaseContext, CountingUndoManager undoManager, LatexFieldFormatterPreferences fieldFormatterPreferences)
+DECL|method|SourceTab (BibDatabaseContext bibDatabaseContext, CountingUndoManager undoManager, LatexFieldFormatterPreferences fieldFormatterPreferences, JabRefPreferences preferences)
 specifier|public
 name|SourceTab
 parameter_list|(
@@ -571,6 +579,9 @@ name|undoManager
 parameter_list|,
 name|LatexFieldFormatterPreferences
 name|fieldFormatterPreferences
+parameter_list|,
+name|JabRefPreferences
+name|preferences
 parameter_list|)
 block|{
 name|this
@@ -645,6 +656,12 @@ operator|.
 name|fieldFormatterPreferences
 operator|=
 name|fieldFormatterPreferences
+expr_stmt|;
+name|this
+operator|.
+name|preferences
+operator|=
+name|preferences
 expr_stmt|;
 block|}
 DECL|method|getSourceString (BibEntry entry, BibDatabaseMode type, LatexFieldFormatterPreferences fieldFormatterPreferences)
@@ -742,9 +759,7 @@ name|setStyle
 argument_list|(
 literal|"-fx-font-size: "
 operator|+
-name|Globals
-operator|.
-name|prefs
+name|preferences
 operator|.
 name|getFontSizeFX
 argument_list|()
@@ -1001,6 +1016,10 @@ parameter_list|)
 block|{
 if|if
 condition|(
+name|currentEntry
+operator|==
+literal|null
+operator|||
 name|text
 operator|.
 name|isEmpty
@@ -1015,9 +1034,7 @@ init|=
 operator|new
 name|BibtexParser
 argument_list|(
-name|Globals
-operator|.
-name|prefs
+name|preferences
 operator|.
 name|getImportFormatPreferences
 argument_list|()
@@ -1325,9 +1342,7 @@ comment|// Test if the field is legally set.
 operator|new
 name|LatexFieldFormatter
 argument_list|(
-name|Globals
-operator|.
-name|prefs
+name|preferences
 operator|.
 name|getLatexFieldFormatterPreferences
 argument_list|()
