@@ -582,6 +582,13 @@ expr_stmt|;
 block|}
 block|}
 argument_list|)
+operator|.
+name|withContextMenu
+argument_list|(
+name|RightClickMenu
+operator|::
+name|create
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
