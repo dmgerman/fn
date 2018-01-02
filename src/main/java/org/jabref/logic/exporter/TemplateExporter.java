@@ -110,18 +110,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|nio
-operator|.
-name|file
-operator|.
-name|Paths
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|ArrayList
@@ -230,7 +218,7 @@ name|logic
 operator|.
 name|util
 operator|.
-name|FileExtensions
+name|FileType
 import|;
 end_import
 
@@ -295,12 +283,12 @@ comment|/**  * Base class for export formats based on templates.  */
 end_comment
 
 begin_class
-DECL|class|ExportFormat
+DECL|class|TemplateExporter
 specifier|public
 class|class
-name|ExportFormat
-implements|implements
-name|IExportFormat
+name|TemplateExporter
+extends|extends
+name|Exporter
 block|{
 DECL|field|LAYOUT_PREFIX
 specifier|private
@@ -322,62 +310,50 @@ name|LogFactory
 operator|.
 name|getLog
 argument_list|(
-name|ExportFormat
+name|TemplateExporter
 operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|field|displayName
-specifier|private
-name|String
-name|displayName
-decl_stmt|;
-DECL|field|consoleName
-specifier|private
-name|String
-name|consoleName
-decl_stmt|;
 DECL|field|lfFileName
 specifier|private
+specifier|final
 name|String
 name|lfFileName
 decl_stmt|;
 DECL|field|directory
 specifier|private
+specifier|final
 name|String
 name|directory
 decl_stmt|;
-DECL|field|extension
+DECL|field|layoutPreferences
 specifier|private
-name|FileExtensions
-name|extension
+specifier|final
+name|LayoutFormatterPreferences
+name|layoutPreferences
+decl_stmt|;
+DECL|field|savePreferences
+specifier|private
+specifier|final
+name|SavePreferences
+name|savePreferences
 decl_stmt|;
 DECL|field|encoding
 specifier|private
 name|Charset
 name|encoding
 decl_stmt|;
-comment|// If this value is set, it will be used to override
-comment|// the default encoding for the getCurrentBasePanel.
-DECL|field|layoutPreferences
-specifier|private
-name|LayoutFormatterPreferences
-name|layoutPreferences
-decl_stmt|;
-DECL|field|savePreferences
-specifier|private
-name|SavePreferences
-name|savePreferences
-decl_stmt|;
+comment|// If this value is set, it will be used to override the default encoding for the getCurrentBasePanel.
 DECL|field|customExport
 specifier|private
 name|boolean
 name|customExport
 decl_stmt|;
 comment|/**      * Initialize another export format based on templates stored in dir with      * layoutFile lfFilename.      *      * @param displayName Name to display to the user.      * @param consoleName Name to call this format in the console.      * @param lfFileName  Name of the main layout file.      * @param directory   Directory in which to find the layout file.      * @param extension   Should contain the . (for instance .txt).      */
-DECL|method|ExportFormat (String displayName, String consoleName, String lfFileName, String directory, FileExtensions extension)
+DECL|method|TemplateExporter (String displayName, String consoleName, String lfFileName, String directory, FileType extension)
 specifier|public
-name|ExportFormat
+name|TemplateExporter
 parameter_list|(
 name|String
 name|displayName
@@ -391,66 +367,8 @@ parameter_list|,
 name|String
 name|directory
 parameter_list|,
-name|FileExtensions
+name|FileType
 name|extension
-parameter_list|)
-block|{
-name|this
-operator|.
-name|displayName
-operator|=
-name|displayName
-expr_stmt|;
-name|this
-operator|.
-name|consoleName
-operator|=
-name|consoleName
-expr_stmt|;
-name|this
-operator|.
-name|lfFileName
-operator|=
-name|lfFileName
-expr_stmt|;
-name|this
-operator|.
-name|directory
-operator|=
-name|directory
-expr_stmt|;
-name|this
-operator|.
-name|extension
-operator|=
-name|extension
-expr_stmt|;
-block|}
-comment|/**      * Initialize another export format based on templates stored in dir with      * layoutFile lfFilename.      *      * @param displayName Name to display to the user.      * @param consoleName Name to call this format in the console.      * @param lfFileName  Name of the main layout file.      * @param directory   Directory in which to find the layout file.      * @param extension   Should contain the . (for instance .txt).      * @param layoutPreferences Preferences for layout      * @param savePreferences Preferences for saving      */
-DECL|method|ExportFormat (String displayName, String consoleName, String lfFileName, String directory, FileExtensions extension, LayoutFormatterPreferences layoutPreferences, SavePreferences savePreferences)
-specifier|public
-name|ExportFormat
-parameter_list|(
-name|String
-name|displayName
-parameter_list|,
-name|String
-name|consoleName
-parameter_list|,
-name|String
-name|lfFileName
-parameter_list|,
-name|String
-name|directory
-parameter_list|,
-name|FileExtensions
-name|extension
-parameter_list|,
-name|LayoutFormatterPreferences
-name|layoutPreferences
-parameter_list|,
-name|SavePreferences
-name|savePreferences
 parameter_list|)
 block|{
 name|this
@@ -464,10 +382,68 @@ argument_list|,
 name|directory
 argument_list|,
 name|extension
+argument_list|,
+literal|null
+argument_list|,
+literal|null
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Initialize another export format based on templates stored in dir with      * layoutFile lfFilename.      *      * @param displayName Name to display to the user.      * @param consoleName Name to call this format in the console.      * @param lfFileName  Name of the main layout file.      * @param directory   Directory in which to find the layout file.      * @param extension   Should contain the . (for instance .txt).      * @param layoutPreferences Preferences for layout      * @param savePreferences Preferences for saving      */
+DECL|method|TemplateExporter (String displayName, String consoleName, String lfFileName, String directory, FileType extension, LayoutFormatterPreferences layoutPreferences, SavePreferences savePreferences)
+specifier|public
+name|TemplateExporter
+parameter_list|(
+name|String
+name|displayName
+parameter_list|,
+name|String
+name|consoleName
+parameter_list|,
+name|String
+name|lfFileName
+parameter_list|,
+name|String
+name|directory
+parameter_list|,
+name|FileType
+name|extension
+parameter_list|,
+name|LayoutFormatterPreferences
+name|layoutPreferences
+parameter_list|,
+name|SavePreferences
+name|savePreferences
+parameter_list|)
+block|{
+name|super
+argument_list|(
+name|consoleName
+argument_list|,
+name|displayName
+argument_list|,
+name|extension
 argument_list|)
 expr_stmt|;
 name|this
 operator|.
+name|lfFileName
+operator|=
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|lfFileName
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|directory
+operator|=
+name|directory
+expr_stmt|;
+name|this
+operator|.
 name|layoutPreferences
 operator|=
 name|layoutPreferences
@@ -478,14 +454,6 @@ name|savePreferences
 operator|=
 name|savePreferences
 expr_stmt|;
-block|}
-comment|/**      * Empty default constructor for subclasses      */
-DECL|method|ExportFormat ()
-specifier|protected
-name|ExportFormat
-parameter_list|()
-block|{
-comment|// intentionally empty
 block|}
 comment|/**      * Indicate whether this is a custom export. A custom export looks for its      * layout files using a normal file path, while a built-in export looks in      * the classpath.      *      * @param custom true to indicate a custom export format.      */
 DECL|method|setCustomExport (boolean custom)
@@ -504,37 +472,11 @@ operator|=
 name|custom
 expr_stmt|;
 block|}
-comment|/**      * @see IExportFormat#getConsoleName()      */
-annotation|@
-name|Override
-DECL|method|getConsoleName ()
-specifier|public
-name|String
-name|getConsoleName
-parameter_list|()
-block|{
-return|return
-name|consoleName
-return|;
-block|}
-comment|/**      * @see IExportFormat#getDisplayName()      */
-annotation|@
-name|Override
-DECL|method|getDisplayName ()
-specifier|public
-name|String
-name|getDisplayName
-parameter_list|()
-block|{
-return|return
-name|displayName
-return|;
-block|}
 comment|/**      * Set an encoding which will be used in preference to the default value      * obtained from the basepanel.      *      * @param encoding The name of the encoding to use.      */
-DECL|method|setEncoding (Charset encoding)
+DECL|method|withEncoding (Charset encoding)
 specifier|public
-name|void
-name|setEncoding
+name|TemplateExporter
+name|withEncoding
 parameter_list|(
 name|Charset
 name|encoding
@@ -546,21 +488,11 @@ name|encoding
 operator|=
 name|encoding
 expr_stmt|;
-block|}
-comment|/**      * @see IExportFormat#getExtension()      */
-annotation|@
-name|Override
-DECL|method|getExtension ()
-specifier|public
-name|FileExtensions
-name|getExtension
-parameter_list|()
-block|{
 return|return
-name|extension
+name|this
 return|;
 block|}
-comment|/**      * This method should return a reader from which the given layout file can      * be read.      *<p>      *<p>      * Subclasses of ExportFormat are free to override and provide their own      * implementation.      *      * @param filename the filename      * @return a newly created reader      * @throws IOException if the reader could not be created      */
+comment|/**      * This method should return a reader from which the given layout file can      * be read.      *<p>      *<p>      * Subclasses of TemplateExporter are free to override and provide their own      * implementation.      *      * @param filename the filename      * @return a newly created reader      * @throws IOException if the reader could not be created      */
 DECL|method|getReader (String filename)
 specifier|private
 name|Reader
@@ -698,17 +630,17 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|performExport (final BibDatabaseContext databaseContext, final String file, final Charset encoding, List<BibEntry> entries)
+DECL|method|export (final BibDatabaseContext databaseContext, final Path file, final Charset encoding, List<BibEntry> entries)
 specifier|public
 name|void
-name|performExport
+name|export
 parameter_list|(
 specifier|final
 name|BibDatabaseContext
 name|databaseContext
 parameter_list|,
 specifier|final
-name|String
+name|Path
 name|file
 parameter_list|,
 specifier|final
@@ -749,18 +681,8 @@ block|{
 comment|// Do not export if no entries to export -- avoids exports with only template text
 return|return;
 block|}
-name|Path
-name|outFile
-init|=
-name|Paths
-operator|.
-name|get
-argument_list|(
-name|file
-argument_list|)
-decl_stmt|;
 name|SaveSession
-name|ss
+name|saveSession
 init|=
 literal|null
 decl_stmt|;
@@ -775,7 +697,7 @@ condition|)
 block|{
 try|try
 block|{
-name|ss
+name|saveSession
 operator|=
 operator|new
 name|FileSaveSession
@@ -809,12 +731,12 @@ block|}
 block|}
 if|if
 condition|(
-name|ss
+name|saveSession
 operator|==
 literal|null
 condition|)
 block|{
-name|ss
+name|saveSession
 operator|=
 operator|new
 name|FileSaveSession
@@ -830,7 +752,7 @@ init|(
 name|VerifyingWriter
 name|ps
 init|=
-name|ss
+name|saveSession
 operator|.
 name|getWriter
 argument_list|()
@@ -1041,7 +963,7 @@ decl_stmt|;
 name|Layout
 name|layout
 decl_stmt|;
-name|ExportFormats
+name|ExporterFactory
 operator|.
 name|entryNumber
 operator|=
@@ -1055,7 +977,7 @@ range|:
 name|sorted
 control|)
 block|{
-name|ExportFormats
+name|ExporterFactory
 operator|.
 name|entryNumber
 operator|++
@@ -1325,11 +1247,11 @@ name|sb
 argument_list|)
 expr_stmt|;
 block|}
-name|finalizeSaveSession
+name|saveSession
+operator|.
+name|finalize
 argument_list|(
-name|ss
-argument_list|,
-name|outFile
+name|file
 argument_list|)
 expr_stmt|;
 block|}
@@ -1538,67 +1460,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-block|}
-DECL|method|finalizeSaveSession (final SaveSession ss, Path file)
-specifier|public
-name|void
-name|finalizeSaveSession
-parameter_list|(
-specifier|final
-name|SaveSession
-name|ss
-parameter_list|,
-name|Path
-name|file
-parameter_list|)
-throws|throws
-name|SaveException
-throws|,
-name|IOException
-block|{
-name|ss
-operator|.
-name|getWriter
-argument_list|()
-operator|.
-name|flush
-argument_list|()
-expr_stmt|;
-name|ss
-operator|.
-name|getWriter
-argument_list|()
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-if|if
-condition|(
-operator|!
-name|ss
-operator|.
-name|getWriter
-argument_list|()
-operator|.
-name|couldEncodeAll
-argument_list|()
-condition|)
-block|{
-name|LOGGER
-operator|.
-name|warn
-argument_list|(
-literal|"Could not encode..."
-argument_list|)
-expr_stmt|;
-block|}
-name|ss
-operator|.
-name|commit
-argument_list|(
-name|file
-argument_list|)
-expr_stmt|;
 block|}
 block|}
 end_class

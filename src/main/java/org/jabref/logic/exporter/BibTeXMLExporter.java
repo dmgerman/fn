@@ -62,6 +62,18 @@ begin_import
 import|import
 name|java
 operator|.
+name|nio
+operator|.
+name|file
+operator|.
+name|Path
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|Arrays
@@ -514,7 +526,7 @@ name|logic
 operator|.
 name|util
 operator|.
-name|FileExtensions
+name|FileType
 import|;
 end_import
 
@@ -579,12 +591,12 @@ comment|/**  * Export format for the BibTeXML format.  */
 end_comment
 
 begin_class
-DECL|class|BibTeXMLExportFormat
+DECL|class|BibTeXMLExporter
 specifier|public
 class|class
-name|BibTeXMLExportFormat
+name|BibTeXMLExporter
 extends|extends
-name|ExportFormat
+name|Exporter
 block|{
 DECL|field|BIBTEXML_NAMESPACE_URI
 specifier|private
@@ -617,7 +629,7 @@ name|LogFactory
 operator|.
 name|getLog
 argument_list|(
-name|BibTeXMLExportFormat
+name|BibTeXMLExporter
 operator|.
 name|class
 argument_list|)
@@ -627,22 +639,18 @@ specifier|private
 name|JAXBContext
 name|context
 decl_stmt|;
-DECL|method|BibTeXMLExportFormat ()
+DECL|method|BibTeXMLExporter ()
 specifier|public
-name|BibTeXMLExportFormat
+name|BibTeXMLExporter
 parameter_list|()
 block|{
 name|super
 argument_list|(
-literal|"BibTeXML"
-argument_list|,
 literal|"bibtexml"
 argument_list|,
-literal|null
+literal|"BibTeXML"
 argument_list|,
-literal|null
-argument_list|,
-name|FileExtensions
+name|FileType
 operator|.
 name|XML
 argument_list|)
@@ -650,17 +658,17 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|performExport (final BibDatabaseContext databaseContext, final String resultFile, final Charset encoding, List<BibEntry> entries)
+DECL|method|export (final BibDatabaseContext databaseContext, final Path resultFile, final Charset encoding, List<BibEntry> entries)
 specifier|public
 name|void
-name|performExport
+name|export
 parameter_list|(
 specifier|final
 name|BibDatabaseContext
 name|databaseContext
 parameter_list|,
 specifier|final
-name|String
+name|Path
 name|resultFile
 parameter_list|,
 specifier|final
@@ -730,14 +738,9 @@ argument_list|()
 operator|.
 name|ifPresent
 argument_list|(
-name|citeKey
-lambda|->
 name|entry
-operator|.
+operator|::
 name|setId
-argument_list|(
-name|citeKey
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|String
@@ -997,7 +1000,7 @@ name|resultFile
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|createMarshallerAndWriteToFile (File file, String resultFile)
+DECL|method|createMarshallerAndWriteToFile (File file, Path resultFile)
 specifier|private
 name|void
 name|createMarshallerAndWriteToFile
@@ -1005,7 +1008,7 @@ parameter_list|(
 name|File
 name|file
 parameter_list|,
-name|String
+name|Path
 name|resultFile
 parameter_list|)
 throws|throws
@@ -1059,15 +1062,10 @@ name|marshal
 argument_list|(
 name|file
 argument_list|,
-operator|new
-name|java
-operator|.
-name|io
-operator|.
-name|File
-argument_list|(
 name|resultFile
-argument_list|)
+operator|.
+name|toFile
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -1676,7 +1674,7 @@ block|{
 return|return
 name|Arrays
 operator|.
-name|asList
+name|stream
 argument_list|(
 name|entryType
 operator|.
@@ -1686,9 +1684,6 @@ operator|.
 name|getDeclaredMethods
 argument_list|()
 argument_list|)
-operator|.
-name|stream
-argument_list|()
 operator|.
 name|filter
 argument_list|(

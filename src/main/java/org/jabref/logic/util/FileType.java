@@ -44,6 +44,18 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|stream
+operator|.
+name|Collectors
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|jabref
@@ -57,16 +69,15 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This enum contains all kind of file extensions for open and save dialogs.  *  * Important: Enter the extension without a dot! The dot is added implicitly.  */
+comment|/**  * This enum contains a list of file types used in open and save dialogs.  *  * @implNote Enter the extensions without a dot! The dot is added implicitly.  */
 end_comment
 
 begin_enum
-DECL|enum|FileExtensions
+DECL|enum|FileType
 specifier|public
 enum|enum
-name|FileExtensions
+name|FileType
 block|{
-comment|//important: No dot before the extension!
 DECL|enumConstant|BIBTEX_DB
 DECL|enumConstant|String.format
 name|BIBTEX_DB
@@ -653,12 +664,12 @@ argument_list|,
 literal|"default"
 argument_list|)
 block|;
-DECL|field|extension
+DECL|field|extensions
 specifier|private
 specifier|final
 name|String
 index|[]
-name|extension
+name|extensions
 decl_stmt|;
 DECL|field|description
 specifier|private
@@ -666,50 +677,37 @@ specifier|final
 name|String
 name|description
 decl_stmt|;
-DECL|method|FileExtensions (String description, String... extension)
-specifier|private
-name|FileExtensions
+DECL|method|FileType (String description, String... extensions)
+name|FileType
 parameter_list|(
 name|String
 name|description
 parameter_list|,
 name|String
 modifier|...
-name|extension
+name|extensions
 parameter_list|)
 block|{
 name|this
 operator|.
-name|extension
+name|description
 operator|=
-name|extension
+name|description
 expr_stmt|;
 name|this
 operator|.
-name|description
+name|extensions
 operator|=
-name|description
+name|extensions
 expr_stmt|;
 block|}
-comment|//Array because a) is varags and b) gets passed as varags parameter to FileExtensionNameFilter
 DECL|method|getExtensions ()
-specifier|public
-name|String
-index|[]
-name|getExtensions
-parameter_list|()
-block|{
-return|return
-name|extension
-return|;
-block|}
-DECL|method|getExtensionsAsList ()
 specifier|public
 name|List
 argument_list|<
 name|String
 argument_list|>
-name|getExtensionsAsList
+name|getExtensions
 parameter_list|()
 block|{
 return|return
@@ -717,7 +715,7 @@ name|Arrays
 operator|.
 name|asList
 argument_list|(
-name|extension
+name|extensions
 argument_list|)
 return|;
 block|}
@@ -747,7 +745,7 @@ control|(
 name|String
 name|ext
 range|:
-name|extension
+name|extensions
 control|)
 block|{
 name|sj
@@ -776,13 +774,47 @@ block|{
 return|return
 literal|"."
 operator|+
-name|extension
+name|extensions
 index|[
 literal|0
 index|]
 operator|.
 name|trim
 argument_list|()
+return|;
+block|}
+DECL|method|getExtensionsWithDot ()
+specifier|public
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|getExtensionsWithDot
+parameter_list|()
+block|{
+return|return
+name|getExtensions
+argument_list|()
+operator|.
+name|stream
+argument_list|()
+operator|.
+name|map
+argument_list|(
+name|extension
+lambda|->
+literal|"."
+operator|+
+name|extension
+argument_list|)
+operator|.
+name|collect
+argument_list|(
+name|Collectors
+operator|.
+name|toList
+argument_list|()
+argument_list|)
 return|;
 block|}
 block|}

@@ -110,7 +110,7 @@ name|logic
 operator|.
 name|util
 operator|.
-name|FileExtensions
+name|FileType
 import|;
 end_import
 
@@ -185,13 +185,13 @@ argument_list|()
 decl_stmt|;
 name|assertEquals
 argument_list|(
-name|FileExtensions
+name|FileType
 operator|.
 name|MSBIB
 argument_list|,
 name|importer
 operator|.
-name|getExtensions
+name|getFileType
 argument_list|()
 argument_list|)
 expr_stmt|;

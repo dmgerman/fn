@@ -18,16 +18,6 @@ name|java
 operator|.
 name|io
 operator|.
-name|File
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
 name|IOException
 import|;
 end_import
@@ -51,6 +41,18 @@ operator|.
 name|charset
 operator|.
 name|Charset
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|file
+operator|.
+name|Path
 import|;
 end_import
 
@@ -676,7 +678,7 @@ name|logic
 operator|.
 name|util
 operator|.
-name|FileExtensions
+name|FileType
 import|;
 end_import
 
@@ -723,15 +725,15 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * ExportFormat for exporting in MODS XML format.  */
+comment|/**  * TemplateExporter for exporting in MODS XML format.  */
 end_comment
 
 begin_class
-DECL|class|ModsExportFormat
+DECL|class|ModsExporter
 class|class
-name|ModsExportFormat
+name|ModsExporter
 extends|extends
-name|ExportFormat
+name|Exporter
 block|{
 DECL|field|MODS_NAMESPACE_URI
 specifier|protected
@@ -774,22 +776,18 @@ specifier|private
 name|JAXBContext
 name|context
 decl_stmt|;
-DECL|method|ModsExportFormat ()
+DECL|method|ModsExporter ()
 specifier|public
-name|ModsExportFormat
+name|ModsExporter
 parameter_list|()
 block|{
 name|super
 argument_list|(
-literal|"MODS"
-argument_list|,
 literal|"mods"
 argument_list|,
-literal|null
+literal|"MODS"
 argument_list|,
-literal|null
-argument_list|,
-name|FileExtensions
+name|FileType
 operator|.
 name|XML
 argument_list|)
@@ -797,17 +795,17 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|performExport (final BibDatabaseContext databaseContext, final String file, final Charset encoding, List<BibEntry> entries)
+DECL|method|export (final BibDatabaseContext databaseContext, final Path file, final Charset encoding, List<BibEntry> entries)
 specifier|public
 name|void
-name|performExport
+name|export
 parameter_list|(
 specifier|final
 name|BibDatabaseContext
 name|databaseContext
 parameter_list|,
 specifier|final
-name|String
+name|Path
 name|file
 parameter_list|,
 specifier|final
@@ -1324,12 +1322,12 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|createMarshallerAndWriteToFile (String file, JAXBElement<ModsCollectionDefinition> jaxbElement)
+DECL|method|createMarshallerAndWriteToFile (Path file, JAXBElement<ModsCollectionDefinition> jaxbElement)
 specifier|private
 name|void
 name|createMarshallerAndWriteToFile
 parameter_list|(
-name|String
+name|Path
 name|file
 parameter_list|,
 name|JAXBElement
@@ -1400,11 +1398,10 @@ name|marshal
 argument_list|(
 name|jaxbElement
 argument_list|,
-operator|new
-name|File
-argument_list|(
 name|file
-argument_list|)
+operator|.
+name|toFile
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

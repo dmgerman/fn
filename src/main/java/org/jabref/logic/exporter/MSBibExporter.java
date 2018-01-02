@@ -54,7 +54,7 @@ name|nio
 operator|.
 name|file
 operator|.
-name|Paths
+name|Path
 import|;
 end_import
 
@@ -190,7 +190,7 @@ name|logic
 operator|.
 name|util
 operator|.
-name|FileExtensions
+name|FileType
 import|;
 end_import
 
@@ -223,32 +223,28 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * ExportFormat for exporting in MSBIB XML format.  */
+comment|/**  * TemplateExporter for exporting in MSBIB XML format.  */
 end_comment
 
 begin_class
-DECL|class|MSBibExportFormat
+DECL|class|MSBibExporter
 class|class
-name|MSBibExportFormat
+name|MSBibExporter
 extends|extends
-name|ExportFormat
+name|Exporter
 block|{
-DECL|method|MSBibExportFormat ()
+DECL|method|MSBibExporter ()
 specifier|public
-name|MSBibExportFormat
+name|MSBibExporter
 parameter_list|()
 block|{
 name|super
 argument_list|(
-literal|"MS Office 2007"
-argument_list|,
 literal|"MSBib"
 argument_list|,
-literal|null
+literal|"MS Office 2007"
 argument_list|,
-literal|null
-argument_list|,
-name|FileExtensions
+name|FileType
 operator|.
 name|XML
 argument_list|)
@@ -256,17 +252,17 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|performExport (final BibDatabaseContext databaseContext, final String file, final Charset encoding, List<BibEntry> entries)
+DECL|method|export (final BibDatabaseContext databaseContext, final Path file, final Charset encoding, List<BibEntry> entries)
 specifier|public
 name|void
-name|performExport
+name|export
 parameter_list|(
 specifier|final
 name|BibDatabaseContext
 name|databaseContext
 parameter_list|,
 specifier|final
-name|String
+name|Path
 name|file
 parameter_list|,
 specifier|final
@@ -412,22 +408,17 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|Error
+name|SaveException
 argument_list|(
 name|e
 argument_list|)
 throw|;
 block|}
-name|finalizeSaveSession
-argument_list|(
 name|session
-argument_list|,
-name|Paths
 operator|.
-name|get
+name|finalize
 argument_list|(
 name|file
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

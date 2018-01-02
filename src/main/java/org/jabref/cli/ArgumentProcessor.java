@@ -254,7 +254,7 @@ name|logic
 operator|.
 name|exporter
 operator|.
-name|ExportFormat
+name|Exporter
 import|;
 end_import
 
@@ -268,7 +268,7 @@ name|logic
 operator|.
 name|exporter
 operator|.
-name|ExportFormats
+name|ExporterFactory
 import|;
 end_import
 
@@ -283,20 +283,6 @@ operator|.
 name|exporter
 operator|.
 name|FileSaveSession
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
-name|exporter
-operator|.
-name|IExportFormat
 import|;
 end_import
 
@@ -339,6 +325,20 @@ operator|.
 name|exporter
 operator|.
 name|SaveSession
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|exporter
+operator|.
+name|TemplateExporter
 import|;
 end_import
 
@@ -1740,7 +1740,7 @@ break|break;
 case|case
 literal|2
 case|:
-comment|//default ExportFormat: HTML table (with Abstract& BibTeX)
+comment|//default exporter: HTML table (with Abstract& BibTeX)
 name|formatName
 operator|=
 literal|"tablerefsabsbib"
@@ -1795,21 +1795,28 @@ literal|false
 return|;
 block|}
 comment|//export new database
-name|IExportFormat
-name|format
+name|Optional
+argument_list|<
+name|Exporter
+argument_list|>
+name|exporter
 init|=
-name|ExportFormats
+name|Globals
 operator|.
-name|getExportFormat
+name|exportFactory
+operator|.
+name|getExporterByName
 argument_list|(
 name|formatName
 argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|format
-operator|==
-literal|null
+operator|!
+name|exporter
+operator|.
+name|isPresent
+argument_list|()
 condition|)
 block|{
 name|System
@@ -1833,7 +1840,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-comment|// We have an ExportFormat instance:
+comment|// We have an TemplateExporter instance:
 try|try
 block|{
 name|System
@@ -1857,16 +1864,24 @@ literal|1
 index|]
 argument_list|)
 expr_stmt|;
-name|format
+name|exporter
 operator|.
-name|performExport
+name|get
+argument_list|()
+operator|.
+name|export
 argument_list|(
 name|databaseContext
 argument_list|,
+name|Paths
+operator|.
+name|get
+argument_list|(
 name|data
 index|[
 literal|1
 index|]
+argument_list|)
 argument_list|,
 name|databaseContext
 operator|.
@@ -2985,12 +3000,17 @@ literal|0
 index|]
 argument_list|)
 expr_stmt|;
-name|IExportFormat
-name|format
+name|Optional
+argument_list|<
+name|Exporter
+argument_list|>
+name|exporter
 init|=
-name|ExportFormats
+name|Globals
 operator|.
-name|getExportFormat
+name|exportFactory
+operator|.
+name|getExporterByName
 argument_list|(
 name|data
 index|[
@@ -3000,9 +3020,11 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|format
-operator|==
-literal|null
+operator|!
+name|exporter
+operator|.
+name|isPresent
+argument_list|()
 condition|)
 block|{
 name|System
@@ -3029,22 +3051,30 @@ expr_stmt|;
 block|}
 else|else
 block|{
-comment|// We have an ExportFormat instance:
+comment|// We have an exporter:
 try|try
 block|{
-name|format
+name|exporter
 operator|.
-name|performExport
+name|get
+argument_list|()
+operator|.
+name|export
 argument_list|(
 name|pr
 operator|.
 name|getDatabaseContext
 argument_list|()
 argument_list|,
+name|Paths
+operator|.
+name|get
+argument_list|(
 name|data
 index|[
 literal|0
 index|]
+argument_list|)
 argument_list|,
 name|pr
 operator|.
@@ -3171,9 +3201,9 @@ name|Map
 argument_list|<
 name|String
 argument_list|,
-name|ExportFormat
+name|TemplateExporter
 argument_list|>
-name|customFormats
+name|customExporters
 init|=
 name|Globals
 operator|.
@@ -3218,11 +3248,15 @@ operator|.
 name|prefs
 argument_list|)
 decl_stmt|;
-name|ExportFormats
+name|Globals
 operator|.
-name|initAllExports
+name|exportFactory
+operator|=
+name|ExporterFactory
+operator|.
+name|create
 argument_list|(
-name|customFormats
+name|customExporters
 argument_list|,
 name|layoutPreferences
 argument_list|,
