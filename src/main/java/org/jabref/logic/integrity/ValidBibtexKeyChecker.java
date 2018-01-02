@@ -32,7 +32,7 @@ name|logic
 operator|.
 name|bibtexkeypattern
 operator|.
-name|BibtexKeyPatternUtil
+name|BibtexKeyGenerator
 import|;
 end_import
 
@@ -100,9 +100,9 @@ block|{
 name|String
 name|cleaned
 init|=
-name|BibtexKeyPatternUtil
+name|BibtexKeyGenerator
 operator|.
-name|checkLegalKey
+name|cleanKey
 argument_list|(
 name|value
 argument_list|,
@@ -111,12 +111,6 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|(
-name|cleaned
-operator|==
-literal|null
-operator|)
-operator|||
 name|cleaned
 operator|.
 name|equals

@@ -96,7 +96,7 @@ name|logic
 operator|.
 name|bibtexkeypattern
 operator|.
-name|BibtexKeyPatternUtil
+name|BibtexKeyGenerator
 import|;
 end_import
 
@@ -1460,9 +1460,9 @@ name|BibEntry
 operator|.
 name|KEY_FIELD
 argument_list|,
-name|BibtexKeyPatternUtil
+name|BibtexKeyGenerator
 operator|.
-name|checkLegalKey
+name|cleanKey
 argument_list|(
 name|val
 argument_list|,

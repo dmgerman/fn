@@ -8566,7 +8566,7 @@ condition|)
 block|{
 comment|// no default value
 comment|// the first entry in the array is the full pattern
-comment|// see org.jabref.logic.labelPattern.BibtexKeyPatternUtil.split(String)
+comment|// see org.jabref.logic.labelPattern.BibtexKeyGenerator.split(String)
 name|pre
 operator|.
 name|put

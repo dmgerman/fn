@@ -570,7 +570,7 @@ name|logic
 operator|.
 name|bibtexkeypattern
 operator|.
-name|BibtexKeyPatternPreferences
+name|BibtexKeyGenerator
 import|;
 end_import
 
@@ -584,7 +584,7 @@ name|logic
 operator|.
 name|bibtexkeypattern
 operator|.
-name|BibtexKeyPatternUtil
+name|BibtexKeyPatternPreferences
 import|;
 end_import
 
@@ -4904,37 +4904,26 @@ argument_list|()
 condition|)
 block|{
 comment|// Generate key
-name|BibtexKeyPatternUtil
-operator|.
-name|makeAndSetLabel
+operator|new
+name|BibtexKeyGenerator
 argument_list|(
 name|panel
 operator|.
 name|getBibDatabaseContext
 argument_list|()
+argument_list|,
+name|prefs
+argument_list|)
 operator|.
-name|getMetaData
-argument_list|()
-operator|.
-name|getCiteKeyPattern
+name|generateAndSetKey
 argument_list|(
-name|prefs
-operator|.
-name|getKeyPattern
-argument_list|()
-argument_list|)
-argument_list|,
-name|panel
-operator|.
-name|getDatabase
-argument_list|()
-argument_list|,
 name|entry
-argument_list|,
-name|prefs
 argument_list|)
-expr_stmt|;
-comment|// Add undo change
+operator|.
+name|ifPresent
+argument_list|(
+name|change
+lambda|->
 name|undoCompound
 operator|.
 name|addEdit
@@ -4942,17 +4931,8 @@ argument_list|(
 operator|new
 name|UndoableKeyChange
 argument_list|(
-name|entry
-argument_list|,
-literal|null
-argument_list|,
-name|entry
-operator|.
-name|getCiteKeyOptional
-argument_list|()
-operator|.
-name|get
-argument_list|()
+name|change
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
