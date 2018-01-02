@@ -441,7 +441,7 @@ block|{
 return|return
 name|Optional
 operator|.
-name|ofNullable
+name|of
 argument_list|(
 operator|new
 name|DOI

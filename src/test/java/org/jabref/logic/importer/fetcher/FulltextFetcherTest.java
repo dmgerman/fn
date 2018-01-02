@@ -58,7 +58,7 @@ name|logic
 operator|.
 name|importer
 operator|.
-name|FulltextFetchers
+name|ImportFormatPreferences
 import|;
 end_import
 
@@ -72,7 +72,7 @@ name|logic
 operator|.
 name|importer
 operator|.
-name|ImportFormatPreferences
+name|WebFetchers
 import|;
 end_import
 
@@ -180,8 +180,9 @@ name|fetcherProvider
 parameter_list|()
 block|{
 return|return
-operator|new
-name|FulltextFetchers
+name|WebFetchers
+operator|.
+name|getFullTextFetchers
 argument_list|(
 name|mock
 argument_list|(
@@ -190,9 +191,6 @@ operator|.
 name|class
 argument_list|)
 argument_list|)
-operator|.
-name|getFetchers
-argument_list|()
 return|;
 block|}
 annotation|@
