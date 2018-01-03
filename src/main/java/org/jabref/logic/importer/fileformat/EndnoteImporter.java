@@ -96,7 +96,7 @@ name|logic
 operator|.
 name|bibtexkeypattern
 operator|.
-name|BibtexKeyPatternUtil
+name|BibtexKeyGenerator
 import|;
 end_import
 
@@ -152,7 +152,7 @@ name|logic
 operator|.
 name|util
 operator|.
-name|FileExtensions
+name|FileType
 import|;
 end_import
 
@@ -282,14 +282,14 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|getExtensions ()
+DECL|method|getFileType ()
 specifier|public
-name|FileExtensions
-name|getExtensions
+name|FileType
+name|getFileType
 parameter_list|()
 block|{
 return|return
-name|FileExtensions
+name|FileType
 operator|.
 name|ENDNOTE
 return|;
@@ -1460,9 +1460,9 @@ name|BibEntry
 operator|.
 name|KEY_FIELD
 argument_list|,
-name|BibtexKeyPatternUtil
+name|BibtexKeyGenerator
 operator|.
-name|checkLegalKey
+name|cleanKey
 argument_list|(
 name|val
 argument_list|,

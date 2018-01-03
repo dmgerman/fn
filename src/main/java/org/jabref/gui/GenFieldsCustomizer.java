@@ -260,7 +260,7 @@ name|logic
 operator|.
 name|bibtexkeypattern
 operator|.
-name|BibtexKeyPatternUtil
+name|BibtexKeyGenerator
 import|;
 end_import
 
@@ -1140,9 +1140,9 @@ block|}
 name|String
 name|testString
 init|=
-name|BibtexKeyPatternUtil
+name|BibtexKeyGenerator
 operator|.
-name|checkLegalKey
+name|cleanKey
 argument_list|(
 name|parts
 index|[

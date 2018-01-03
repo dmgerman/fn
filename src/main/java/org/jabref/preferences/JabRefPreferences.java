@@ -3843,7 +3843,7 @@ name|put
 argument_list|(
 name|WIN_LOOK_AND_FEEL
 argument_list|,
-literal|"com.jgoodies.looks.windows.WindowsLookAndFeel"
+literal|"com.sun.java.swing.plaf.windows.WindowsLookAndFeel"
 argument_list|)
 expr_stmt|;
 name|defaults
@@ -3874,7 +3874,7 @@ name|put
 argument_list|(
 name|WIN_LOOK_AND_FEEL
 argument_list|,
-literal|"com.jgoodies.plaf.plastic.Plastic3DLookAndFeel"
+literal|"javax.swing.plaf.nimbus.NimbusLookAndFeel"
 argument_list|)
 expr_stmt|;
 name|defaults
@@ -8635,7 +8635,7 @@ condition|)
 block|{
 comment|// no default value
 comment|// the first entry in the array is the full pattern
-comment|// see org.jabref.logic.labelPattern.BibtexKeyPatternUtil.split(String)
+comment|// see org.jabref.logic.labelPattern.BibtexKeyGenerator.split(String)
 name|pre
 operator|.
 name|put

@@ -796,7 +796,7 @@ name|logic
 operator|.
 name|util
 operator|.
-name|FileExtensions
+name|FileType
 import|;
 end_import
 
@@ -3913,14 +3913,14 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|getExtensions ()
+DECL|method|getFileType ()
 specifier|public
-name|FileExtensions
-name|getExtensions
+name|FileType
+name|getFileType
 parameter_list|()
 block|{
 return|return
-name|FileExtensions
+name|FileType
 operator|.
 name|MODS
 return|;

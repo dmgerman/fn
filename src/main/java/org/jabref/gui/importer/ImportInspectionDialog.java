@@ -954,7 +954,7 @@ name|logic
 operator|.
 name|bibtexkeypattern
 operator|.
-name|BibtexKeyPatternUtil
+name|BibtexKeyGenerator
 import|;
 end_import
 
@@ -3528,9 +3528,8 @@ name|entry
 argument_list|)
 expr_stmt|;
 comment|// Generate a unique key:
-name|BibtexKeyPatternUtil
-operator|.
-name|makeAndSetLabel
+operator|new
+name|BibtexKeyGenerator
 argument_list|(
 name|localMetaData
 operator|.
@@ -3549,14 +3548,17 @@ argument_list|)
 argument_list|,
 name|database
 argument_list|,
-name|entry
-argument_list|,
 name|Globals
 operator|.
 name|prefs
 operator|.
 name|getBibtexKeyPatternPreferences
 argument_list|()
+argument_list|)
+operator|.
+name|generateAndSetKey
+argument_list|(
+name|entry
 argument_list|)
 expr_stmt|;
 comment|// Remove the entry from the database again, since we only added it in
@@ -3704,9 +3706,8 @@ argument_list|(
 name|entry
 argument_list|)
 expr_stmt|;
-name|BibtexKeyPatternUtil
-operator|.
-name|makeAndSetLabel
+operator|new
+name|BibtexKeyGenerator
 argument_list|(
 name|localMetaData
 operator|.
@@ -3725,14 +3726,17 @@ argument_list|)
 argument_list|,
 name|database
 argument_list|,
-name|entry
-argument_list|,
 name|Globals
 operator|.
 name|prefs
 operator|.
 name|getBibtexKeyPatternPreferences
 argument_list|()
+argument_list|)
+operator|.
+name|generateAndSetKey
+argument_list|(
+name|entry
 argument_list|)
 expr_stmt|;
 comment|// Add the generated key to our list:   -- TODO: Why??

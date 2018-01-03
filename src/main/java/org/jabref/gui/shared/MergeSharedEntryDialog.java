@@ -190,9 +190,11 @@ name|jabref
 operator|.
 name|model
 operator|.
-name|entry
+name|database
 operator|.
-name|BibEntry
+name|shared
+operator|.
+name|DatabaseSynchronizer
 import|;
 end_import
 
@@ -202,9 +204,11 @@ name|org
 operator|.
 name|jabref
 operator|.
-name|shared
+name|model
 operator|.
-name|DBMSSynchronizer
+name|entry
+operator|.
+name|BibEntry
 import|;
 end_import
 
@@ -223,7 +227,7 @@ decl_stmt|;
 DECL|field|dbmsSynchronizer
 specifier|private
 specifier|final
-name|DBMSSynchronizer
+name|DatabaseSynchronizer
 name|dbmsSynchronizer
 decl_stmt|;
 DECL|field|localBibEntry
@@ -250,14 +254,14 @@ specifier|final
 name|MergeEntries
 name|mergeEntries
 decl_stmt|;
-DECL|method|MergeSharedEntryDialog (JabRefFrame jabRefFrame, DBMSSynchronizer dbmsSynchronizer, BibEntry localBibEntry, BibEntry sharedBibEntry, BibDatabaseMode bibDatabaseMode)
+DECL|method|MergeSharedEntryDialog (JabRefFrame jabRefFrame, DatabaseSynchronizer dbmsSynchronizer, BibEntry localBibEntry, BibEntry sharedBibEntry, BibDatabaseMode bibDatabaseMode)
 specifier|public
 name|MergeSharedEntryDialog
 parameter_list|(
 name|JabRefFrame
 name|jabRefFrame
 parameter_list|,
-name|DBMSSynchronizer
+name|DatabaseSynchronizer
 name|dbmsSynchronizer
 parameter_list|,
 name|BibEntry

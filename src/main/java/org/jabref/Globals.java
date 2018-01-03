@@ -126,6 +126,20 @@ name|jabref
 operator|.
 name|logic
 operator|.
+name|exporter
+operator|.
+name|ExporterFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
 name|importer
 operator|.
 name|ImportFormatReader
@@ -338,6 +352,12 @@ init|=
 operator|new
 name|StateManager
 argument_list|()
+decl_stmt|;
+DECL|field|exportFactory
+specifier|public
+specifier|static
+name|ExporterFactory
+name|exportFactory
 decl_stmt|;
 comment|// Key binding preferences
 DECL|field|keyBindingRepository

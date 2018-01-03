@@ -322,7 +322,7 @@ name|logic
 operator|.
 name|bibtexkeypattern
 operator|.
-name|BibtexKeyPatternUtil
+name|BibtexKeyGenerator
 import|;
 end_import
 
@@ -2107,29 +2107,16 @@ block|}
 else|else
 block|{
 comment|// Regenerate CiteKey of imported BibEntry
-name|BibtexKeyPatternUtil
-operator|.
-name|makeAndSetLabel
+operator|new
+name|BibtexKeyGenerator
 argument_list|(
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getBibtexKeyPatternPreferences
-argument_list|()
-operator|.
-name|getKeyPattern
-argument_list|()
-argument_list|,
 name|frame
 operator|.
 name|getCurrentBasePanel
 argument_list|()
 operator|.
-name|getDatabase
+name|getBibDatabaseContext
 argument_list|()
-argument_list|,
-name|bibEntry
 argument_list|,
 name|Globals
 operator|.
@@ -2137,6 +2124,11 @@ name|prefs
 operator|.
 name|getBibtexKeyPatternPreferences
 argument_list|()
+argument_list|)
+operator|.
+name|generateAndSetKey
+argument_list|(
+name|bibEntry
 argument_list|)
 expr_stmt|;
 comment|// Update Timestamps

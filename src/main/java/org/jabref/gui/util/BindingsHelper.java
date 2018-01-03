@@ -447,6 +447,11 @@ parameter_list|,
 name|B
 parameter_list|>
 name|MappedList
+argument_list|<
+name|B
+argument_list|,
+name|A
+argument_list|>
 name|mapBacked
 parameter_list|(
 name|ObservableList

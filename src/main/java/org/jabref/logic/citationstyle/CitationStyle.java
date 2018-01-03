@@ -266,7 +266,7 @@ name|logic
 operator|.
 name|util
 operator|.
-name|FileExtensions
+name|FileType
 import|;
 end_import
 
@@ -521,7 +521,10 @@ comment|/**      * Creates an CitationStyle instance out of the style string    
 DECL|method|createCitationStyleFromSource (final String source, final String filename)
 specifier|private
 specifier|static
+name|Optional
+argument_list|<
 name|CitationStyle
+argument_list|>
 name|createCitationStyleFromSource
 parameter_list|(
 specifier|final
@@ -656,6 +659,10 @@ name|getData
 argument_list|()
 decl_stmt|;
 return|return
+name|Optional
+operator|.
+name|of
+argument_list|(
 operator|new
 name|CitationStyle
 argument_list|(
@@ -664,6 +671,7 @@ argument_list|,
 name|title
 argument_list|,
 name|source
+argument_list|)
 argument_list|)
 return|;
 block|}
@@ -689,7 +697,10 @@ expr_stmt|;
 block|}
 block|}
 return|return
-literal|null
+name|Optional
+operator|.
+name|empty
+argument_list|()
 return|;
 block|}
 DECL|method|stripInvalidProlog (String source)
@@ -744,7 +755,10 @@ comment|/**      * Loads the CitationStyle from the given file      */
 DECL|method|createCitationStyleFromFile (final String styleFile)
 specifier|public
 specifier|static
+name|Optional
+argument_list|<
 name|CitationStyle
+argument_list|>
 name|createCitationStyleFromFile
 parameter_list|(
 specifier|final
@@ -771,7 +785,10 @@ name|styleFile
 argument_list|)
 expr_stmt|;
 return|return
-literal|null
+name|Optional
+operator|.
+name|empty
+argument_list|()
 return|;
 block|}
 try|try
@@ -903,7 +920,10 @@ argument_list|)
 expr_stmt|;
 block|}
 return|return
-literal|null
+name|Optional
+operator|.
+name|empty
+argument_list|()
 return|;
 block|}
 comment|/**      * Provides the default citation style which is currently IEEE      * @return default citation style      */
@@ -918,6 +938,19 @@ return|return
 name|createCitationStyleFromFile
 argument_list|(
 name|DEFAULT
+argument_list|)
+operator|.
+name|orElse
+argument_list|(
+operator|new
+name|CitationStyle
+argument_list|(
+literal|""
+argument_list|,
+literal|"Empty"
+argument_list|,
+literal|""
+argument_list|)
 argument_list|)
 return|;
 block|}
@@ -1137,9 +1170,6 @@ name|allStyles
 control|)
 block|{
 name|CitationStyle
-name|citationStyle
-init|=
-name|CitationStyle
 operator|.
 name|createCitationStyleFromFile
 argument_list|(
@@ -1151,22 +1181,14 @@ operator|.
 name|toString
 argument_list|()
 argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|citationStyle
-operator|!=
-literal|null
-condition|)
-block|{
-name|STYLES
 operator|.
-name|add
+name|ifPresent
 argument_list|(
-name|citationStyle
+name|STYLES
+operator|::
+name|add
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 return|return
@@ -1210,17 +1232,15 @@ name|styleFile
 parameter_list|)
 block|{
 return|return
-name|Arrays
-operator|.
-name|stream
-argument_list|(
-name|FileExtensions
+name|FileType
 operator|.
 name|CITATION_STYLE
 operator|.
 name|getExtensions
 argument_list|()
-argument_list|)
+operator|.
+name|stream
+argument_list|()
 operator|.
 name|anyMatch
 argument_list|(
