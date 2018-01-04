@@ -2630,7 +2630,7 @@ case|case
 name|DATABASE_COL
 case|:
 block|{
-name|int
+name|Double
 name|width
 init|=
 name|InternalBibtexFields
@@ -2652,13 +2652,16 @@ operator|.
 name|setPreferredWidth
 argument_list|(
 name|width
+operator|.
+name|intValue
+argument_list|()
 argument_list|)
 expr_stmt|;
 break|break;
 block|}
 default|default:
 block|{
-name|int
+name|Double
 name|width
 init|=
 name|InternalBibtexFields
@@ -2683,6 +2686,9 @@ operator|.
 name|setPreferredWidth
 argument_list|(
 name|width
+operator|.
+name|intValue
+argument_list|()
 argument_list|)
 expr_stmt|;
 break|break;

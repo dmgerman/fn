@@ -11498,10 +11498,14 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|bf
+name|DefaultTaskExecutor
 operator|.
+name|runInJavaFXThread
+argument_list|(
+name|bf
+operator|::
 name|setupMainPanel
-argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 block|}
