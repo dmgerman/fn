@@ -979,20 +979,24 @@ block|}
 comment|/**      * Sets the cite key AKA citation key AKA BibTeX key. Note: This is<emph>not</emph> the internal Id of this entry.      * The internal Id is always present, whereas the BibTeX key might not be present.      *      * @param newCiteKey The cite key to set. Must not be null; use {@link #clearCiteKey()} to remove the cite key.      */
 DECL|method|setCiteKey (String newCiteKey)
 specifier|public
-name|void
+name|Optional
+argument_list|<
+name|FieldChange
+argument_list|>
 name|setCiteKey
 parameter_list|(
 name|String
 name|newCiteKey
 parameter_list|)
 block|{
+return|return
 name|setField
 argument_list|(
 name|KEY_FIELD
 argument_list|,
 name|newCiteKey
 argument_list|)
-expr_stmt|;
+return|;
 block|}
 DECL|method|getCiteKeyOptional ()
 specifier|public
@@ -1048,13 +1052,17 @@ block|}
 comment|/**      * Sets this entry's type.      */
 DECL|method|setType (EntryType type)
 specifier|public
-name|void
+name|Optional
+argument_list|<
+name|FieldChange
+argument_list|>
 name|setType
 parameter_list|(
 name|EntryType
 name|type
 parameter_list|)
 block|{
+return|return
 name|this
 operator|.
 name|setType
@@ -1064,18 +1072,22 @@ operator|.
 name|getName
 argument_list|()
 argument_list|)
-expr_stmt|;
+return|;
 block|}
 comment|/**      * Sets this entry's type.      */
 DECL|method|setType (String type)
 specifier|public
-name|void
+name|Optional
+argument_list|<
+name|FieldChange
+argument_list|>
 name|setType
 parameter_list|(
 name|String
 name|type
 parameter_list|)
 block|{
+return|return
 name|setType
 argument_list|(
 name|type
@@ -1084,12 +1096,15 @@ name|EntryEventSource
 operator|.
 name|LOCAL
 argument_list|)
-expr_stmt|;
+return|;
 block|}
 comment|/**      * Sets this entry's type.      */
 DECL|method|setType (String type, EntryEventSource eventSource)
 specifier|public
-name|void
+name|Optional
+argument_list|<
+name|FieldChange
+argument_list|>
 name|setType
 parameter_list|(
 name|String
@@ -1137,9 +1152,23 @@ argument_list|(
 literal|null
 argument_list|)
 decl_stmt|;
-comment|// We set the type before throwing the changeEvent, to enable
-comment|// the change listener to access the new value if the change
-comment|// sets off a change in database sorting etc.
+if|if
+condition|(
+name|newType
+operator|.
+name|equals
+argument_list|(
+name|oldType
+argument_list|)
+condition|)
+block|{
+return|return
+name|Optional
+operator|.
+name|empty
+argument_list|()
+return|;
+block|}
 name|this
 operator|.
 name|type
@@ -1157,6 +1186,21 @@ name|changed
 operator|=
 literal|true
 expr_stmt|;
+name|FieldChange
+name|change
+init|=
+operator|new
+name|FieldChange
+argument_list|(
+name|this
+argument_list|,
+name|TYPE_HEADER
+argument_list|,
+name|oldType
+argument_list|,
+name|newType
+argument_list|)
+decl_stmt|;
 name|eventBus
 operator|.
 name|post
@@ -1164,18 +1208,20 @@ argument_list|(
 operator|new
 name|FieldChangedEvent
 argument_list|(
-name|this
-argument_list|,
-name|TYPE_HEADER
-argument_list|,
-name|newType
-argument_list|,
-name|oldType
+name|change
 argument_list|,
 name|eventSource
 argument_list|)
 argument_list|)
 expr_stmt|;
+return|return
+name|Optional
+operator|.
+name|of
+argument_list|(
+name|change
+argument_list|)
+return|;
 block|}
 comment|/**      * Returns an set containing the names of all fields that are      * set for this particular entry.      *      * @return a set of existing field names      */
 DECL|method|getFieldNames ()

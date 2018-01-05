@@ -138,7 +138,7 @@ name|logic
 operator|.
 name|util
 operator|.
-name|FileExtensions
+name|FileType
 import|;
 end_import
 
@@ -770,13 +770,13 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-name|FileExtensions
+name|FileType
 operator|.
 name|REPEC
 argument_list|,
 name|testImporter
 operator|.
-name|getExtensions
+name|getFileType
 argument_list|()
 argument_list|)
 expr_stmt|;

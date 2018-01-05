@@ -178,7 +178,7 @@ name|logic
 operator|.
 name|bibtexkeypattern
 operator|.
-name|BibtexKeyPatternUtil
+name|BibtexKeyGenerator
 import|;
 end_import
 
@@ -531,9 +531,9 @@ argument_list|)
 decl_stmt|;
 return|return
 operator|!
-name|BibtexKeyPatternUtil
+name|BibtexKeyGenerator
 operator|.
-name|CHARS
+name|APPENDIX_CHARACTERS
 operator|.
 name|contains
 argument_list|(

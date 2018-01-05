@@ -207,7 +207,12 @@ name|this
 operator|.
 name|citationStyle
 operator|=
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
 name|citationStyle
+argument_list|)
 expr_stmt|;
 name|citationStyleCache
 operator|=

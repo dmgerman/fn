@@ -430,7 +430,7 @@ name|logic
 operator|.
 name|util
 operator|.
-name|FileExtensions
+name|FileType
 import|;
 end_import
 
@@ -743,14 +743,14 @@ argument_list|()
 operator|.
 name|addExtensionFilter
 argument_list|(
-name|FileExtensions
+name|FileType
 operator|.
 name|CLASS
 argument_list|)
 operator|.
 name|withDefaultExtension
 argument_list|(
-name|FileExtensions
+name|FileType
 operator|.
 name|JAR
 argument_list|)
@@ -994,11 +994,11 @@ name|EnumSet
 operator|.
 name|of
 argument_list|(
-name|FileExtensions
+name|FileType
 operator|.
 name|ZIP
 argument_list|,
-name|FileExtensions
+name|FileType
 operator|.
 name|JAR
 argument_list|)
@@ -1006,7 +1006,7 @@ argument_list|)
 operator|.
 name|withDefaultExtension
 argument_list|(
-name|FileExtensions
+name|FileType
 operator|.
 name|JAR
 argument_list|)

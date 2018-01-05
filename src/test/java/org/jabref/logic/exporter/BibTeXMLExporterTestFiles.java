@@ -422,7 +422,7 @@ name|tempFile
 decl_stmt|;
 DECL|field|bibtexmlExportFormat
 specifier|public
-name|BibTeXMLExportFormat
+name|BibTeXMLExporter
 name|bibtexmlExportFormat
 decl_stmt|;
 DECL|field|testImporter
@@ -599,7 +599,7 @@ expr_stmt|;
 name|bibtexmlExportFormat
 operator|=
 operator|new
-name|BibTeXMLExportFormat
+name|BibTeXMLExporter
 argument_list|()
 expr_stmt|;
 name|tempFile
@@ -695,13 +695,13 @@ argument_list|()
 decl_stmt|;
 name|bibtexmlExportFormat
 operator|.
-name|performExport
+name|export
 argument_list|(
 name|databaseContext
 argument_list|,
 name|tempFile
 operator|.
-name|getPath
+name|toPath
 argument_list|()
 argument_list|,
 name|charset

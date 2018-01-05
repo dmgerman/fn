@@ -158,7 +158,7 @@ name|ValueChecker
 argument_list|>
 name|fieldChecker
 decl_stmt|;
-DECL|method|FieldCheckers (BibDatabaseContext databaseContext, FileDirectoryPreferences fileDirectoryPreferences, JournalAbbreviationRepository abbreviationRepository)
+DECL|method|FieldCheckers (BibDatabaseContext databaseContext, FileDirectoryPreferences fileDirectoryPreferences, JournalAbbreviationRepository abbreviationRepository, boolean enforceLegalKey)
 specifier|public
 name|FieldCheckers
 parameter_list|(
@@ -170,6 +170,9 @@ name|fileDirectoryPreferences
 parameter_list|,
 name|JournalAbbreviationRepository
 name|abbreviationRepository
+parameter_list|,
+name|boolean
+name|enforceLegalKey
 parameter_list|)
 block|{
 name|fieldChecker
@@ -181,10 +184,12 @@ argument_list|,
 name|fileDirectoryPreferences
 argument_list|,
 name|abbreviationRepository
+argument_list|,
+name|enforceLegalKey
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|getAllMap (BibDatabaseContext databaseContext, FileDirectoryPreferences fileDirectoryPreferences, JournalAbbreviationRepository abbreviationRepository)
+DECL|method|getAllMap (BibDatabaseContext databaseContext, FileDirectoryPreferences fileDirectoryPreferences, JournalAbbreviationRepository abbreviationRepository, boolean enforceLegalKey)
 specifier|private
 specifier|static
 name|Multimap
@@ -203,6 +208,9 @@ name|fileDirectoryPreferences
 parameter_list|,
 name|JournalAbbreviationRepository
 name|abbreviationRepository
+parameter_list|,
+name|boolean
+name|enforceLegalKey
 parameter_list|)
 block|{
 name|ArrayListMultimap
@@ -493,6 +501,21 @@ argument_list|,
 operator|new
 name|YearChecker
 argument_list|()
+argument_list|)
+expr_stmt|;
+name|fieldCheckers
+operator|.
+name|put
+argument_list|(
+name|FieldName
+operator|.
+name|KEY
+argument_list|,
+operator|new
+name|ValidBibtexKeyChecker
+argument_list|(
+name|enforceLegalKey
+argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
