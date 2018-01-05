@@ -8600,14 +8600,62 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// TODO: Register these actions globally
-comment|/*         String clearSearch = "clearSearch";         mainTable.getInputMap().put(Globals.getKeyPrefs().getKey(KeyBinding.CLEAR_SEARCH), clearSearch);         mainTable.getActionMap().put(clearSearch, new AbstractAction() {              @Override             public void actionPerformed(ActionEvent e) {                 // need to close these here, b/c this action overshadows the responsible actions when the main table is selected                 switch (mode) {                     case SHOWING_NOTHING:                         frame.getGlobalSearchBar().endSearch();                         break;                     case SHOWING_PREVIEW:                         getPreviewPanel().close();                         break;                     case SHOWING_EDITOR:                     case WILL_SHOW_EDITOR:                         entryEditorClosing(getEntryEditor());                         break;                     default:                         LOGGER.warn("unknown BasePanelMode: '" + mode + "', doing nothing");                         break;                 }             }         });          mainTable.getActionMap().put(Actions.CUT, new AbstractAction() {              @Override             public void actionPerformed(ActionEvent e) {                 try {                     runCommand(Actions.CUT);                 } catch (Throwable ex) {                     LOGGER.warn("Could not cut", ex);                 }             }         });         mainTable.getActionMap().put(Actions.COPY, new AbstractAction() {              @Override             public void actionPerformed(ActionEvent e) {                 try {                     runCommand(Actions.COPY);                 } catch (Throwable ex) {                     LOGGER.warn("Could not copy", ex);                 }             }         });         mainTable.getActionMap().put(Actions.PASTE, new AbstractAction() {              @Override             public void actionPerformed(ActionEvent e) {                 try {                     runCommand(Actions.PASTE);                 } catch (Throwable ex) {                     LOGGER.warn("Could not paste", ex);                 }             }         });          mainTable.addKeyListener(new KeyAdapter() {              @Override             public void keyPressed(KeyEvent e) {                 final int keyCode = e.getKeyCode();                  if (e.isControlDown()) {                     switch (keyCode) {                         case KeyEvent.VK_PAGE_DOWN:                             frame.nextTab.actionPerformed(null);                             e.consume();                             break;                         case KeyEvent.VK_PAGE_UP:                             frame.prevTab.actionPerformed(null);                             e.consume();                             break;                         default:                             break;                     }                 } else if (keyCode == KeyEvent.VK_ENTER) {                     e.consume();                     try {                         runCommand(Actions.EDIT);                     } catch (Throwable ex) {                         LOGGER.warn("Could not run action based on key press", ex);                     }                 }             }         });         */
+comment|// Update entry editor and preview according to selected entries
+name|mainTable
+operator|.
+name|addSelectionListener
+argument_list|(
+name|event
+lambda|->
+name|mainTable
+operator|.
+name|getSelectedEntries
+argument_list|()
+operator|.
+name|stream
+argument_list|()
+operator|.
+name|findFirst
+argument_list|()
+operator|.
+name|ifPresent
+argument_list|(
+name|entry
+lambda|->
+block|{
+name|preview
+operator|.
+name|setEntry
+argument_list|(
+name|entry
+argument_list|)
+argument_list|;
+name|entryEditor
+operator|.
+name|setEntry
+argument_list|(
+name|entry
+argument_list|)
+argument_list|;
 block|}
 end_function
 
+begin_empty_stmt
+unit|)         )
+empty_stmt|;
+end_empty_stmt
+
+begin_comment
+comment|// TODO: Register these actions globally
+end_comment
+
+begin_comment
+comment|/*         String clearSearch = "clearSearch";         mainTable.getInputMap().put(Globals.getKeyPrefs().getKey(KeyBinding.CLEAR_SEARCH), clearSearch);         mainTable.getActionMap().put(clearSearch, new AbstractAction() {              @Override             public void actionPerformed(ActionEvent e) {                 // need to close these here, b/c this action overshadows the responsible actions when the main table is selected                 switch (mode) {                     case SHOWING_NOTHING:                         frame.getGlobalSearchBar().endSearch();                         break;                     case SHOWING_PREVIEW:                         getPreviewPanel().close();                         break;                     case SHOWING_EDITOR:                     case WILL_SHOW_EDITOR:                         entryEditorClosing(getEntryEditor());                         break;                     default:                         LOGGER.warn("unknown BasePanelMode: '" + mode + "', doing nothing");                         break;                 }             }         });          mainTable.getActionMap().put(Actions.CUT, new AbstractAction() {              @Override             public void actionPerformed(ActionEvent e) {                 try {                     runCommand(Actions.CUT);                 } catch (Throwable ex) {                     LOGGER.warn("Could not cut", ex);                 }             }         });         mainTable.getActionMap().put(Actions.COPY, new AbstractAction() {              @Override             public void actionPerformed(ActionEvent e) {                 try {                     runCommand(Actions.COPY);                 } catch (Throwable ex) {                     LOGGER.warn("Could not copy", ex);                 }             }         });         mainTable.getActionMap().put(Actions.PASTE, new AbstractAction() {              @Override             public void actionPerformed(ActionEvent e) {                 try {                     runCommand(Actions.PASTE);                 } catch (Throwable ex) {                     LOGGER.warn("Could not paste", ex);                 }             }         });          mainTable.addKeyListener(new KeyAdapter() {              @Override             public void keyPressed(KeyEvent e) {                 final int keyCode = e.getKeyCode();                  if (e.isControlDown()) {                     switch (keyCode) {                         case KeyEvent.VK_PAGE_DOWN:                             frame.nextTab.actionPerformed(null);                             e.consume();                             break;                         case KeyEvent.VK_PAGE_UP:                             frame.prevTab.actionPerformed(null);                             e.consume();                             break;                         default:                             break;                     }                 } else if (keyCode == KeyEvent.VK_ENTER) {                     e.consume();                     try {                         runCommand(Actions.EDIT);                     } catch (Throwable ex) {                         LOGGER.warn("Could not run action based on key press", ex);                     }                 }             }         });         */
+end_comment
+
 begin_function
+unit|}      public
 DECL|method|setupMainPanel ()
-specifier|public
 name|void
 name|setupMainPanel
 parameter_list|()
