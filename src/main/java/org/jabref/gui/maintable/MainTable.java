@@ -627,7 +627,7 @@ name|setItems
 argument_list|(
 name|model
 operator|.
-name|getTableRows
+name|getEntriesFiltered
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -782,7 +782,7 @@ block|{
 return|return
 name|model
 operator|.
-name|getTableRows
+name|getEntriesFiltered
 argument_list|()
 operator|.
 name|get
@@ -855,7 +855,7 @@ block|{
 return|return
 name|model
 operator|.
-name|getTableRows
+name|getEntriesFiltered
 argument_list|()
 operator|.
 name|stream
@@ -1035,7 +1035,7 @@ name|of
 argument_list|(
 name|model
 operator|.
-name|getTableRows
+name|getEntriesFiltered
 argument_list|()
 operator|.
 name|get
@@ -1061,32 +1061,6 @@ name|empty
 argument_list|()
 return|;
 block|}
-block|}
-DECL|method|showFloatSearch ()
-specifier|public
-name|void
-name|showFloatSearch
-parameter_list|()
-block|{
-name|this
-operator|.
-name|getTableModel
-argument_list|()
-operator|.
-name|updateSearchState
-argument_list|(
-name|MainTableDataModel
-operator|.
-name|DisplayOption
-operator|.
-name|FLOAT
-argument_list|)
-expr_stmt|;
-name|scrollTo
-argument_list|(
-literal|0
-argument_list|)
-expr_stmt|;
 block|}
 comment|/**      * Repaints the table with the most recent font configuration      */
 DECL|method|updateFont ()

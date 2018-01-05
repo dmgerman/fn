@@ -8532,19 +8532,6 @@ argument_list|()
 operator|.
 name|registerListener
 argument_list|(
-name|tableModel
-operator|.
-name|getListSynchronizer
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|bibDatabaseContext
-operator|.
-name|getDatabase
-argument_list|()
-operator|.
-name|registerListener
-argument_list|(
 name|SpecialFieldDatabaseChangeListener
 operator|.
 name|getInstance
@@ -8679,31 +8666,8 @@ name|adjustSplitter
 argument_list|()
 expr_stmt|;
 comment|// restore last splitting state (before mainTable is created as creation affects the stored size of the entryEditors)
-comment|// check whether a mainTable already existed and a floatSearch was active
-name|boolean
-name|floatSearchActive
-init|=
-operator|(
-name|mainTable
-operator|!=
-literal|null
-operator|)
-operator|&&
-operator|(
-name|this
-operator|.
-name|tableModel
-operator|.
-name|getSearchState
-argument_list|()
-operator|==
-name|MainTableDataModel
-operator|.
-name|DisplayOption
-operator|.
-name|FLOAT
-operator|)
-decl_stmt|;
+comment|// TODO: check whether a mainTable already existed and a floatSearch was active
+comment|//boolean floatSearchActive = (mainTable != null)&& (this.tableModel.getSearchState() == MainTableDataModel.DisplayOption.FLOAT);
 name|createMainTable
 argument_list|()
 expr_stmt|;
@@ -8799,19 +8763,11 @@ expr_stmt|;
 name|setupAutoCompletion
 argument_list|()
 expr_stmt|;
-comment|// restore floating search result
+comment|// TODO: restore floating search result
 comment|// (needed if preferences have been changed which causes a recreation of the main table)
-if|if
-condition|(
-name|floatSearchActive
-condition|)
-block|{
-name|mainTable
-operator|.
-name|showFloatSearch
-argument_list|()
-expr_stmt|;
-block|}
+comment|//if (floatSearchActive) {
+comment|//    mainTable.showFloatSearch();
+comment|//}
 comment|// Saves the divider position as soon as it changes
 comment|// We need to keep a reference to the subscription, otherwise the binding gets garbage collected
 name|dividerPositionSubscription
