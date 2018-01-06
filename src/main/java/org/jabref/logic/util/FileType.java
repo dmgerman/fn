@@ -139,9 +139,41 @@ argument_list|,
 literal|"xml"
 argument_list|)
 block|,
-DECL|enumConstant|BILBIOSCAPE
+DECL|enumConstant|BIBTEXML_XML_ONLY
 DECL|enumConstant|Localization.lang
-name|BILBIOSCAPE
+name|BIBTEXML_XML_ONLY
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"%0 file"
+argument_list|,
+literal|"BibTeXML"
+argument_list|)
+argument_list|,
+literal|"xml"
+argument_list|)
+block|,
+DECL|enumConstant|BIBORDF
+DECL|enumConstant|Localization.lang
+name|BIBORDF
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"%0 file"
+argument_list|,
+literal|"Bib 0"
+argument_list|)
+argument_list|,
+literal|"rdf"
+argument_list|)
+block|,
+DECL|enumConstant|BIBLIOSCAPE
+DECL|enumConstant|Localization.lang
+name|BIBLIOSCAPE
 argument_list|(
 name|Localization
 operator|.
@@ -187,6 +219,38 @@ argument_list|,
 literal|"csl"
 argument_list|)
 block|,
+DECL|enumConstant|DOCBOOK
+DECL|enumConstant|Localization.lang
+name|DOCBOOK
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"%0 file"
+argument_list|,
+literal|"Docbook 4.4"
+argument_list|)
+argument_list|,
+literal|"xml"
+argument_list|)
+block|,
+DECL|enumConstant|DIN_1505
+DECL|enumConstant|Localization.lang
+name|DIN_1505
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"%0 file"
+argument_list|,
+literal|"DIN 1505"
+argument_list|)
+argument_list|,
+literal|"rtf"
+argument_list|)
+block|,
 DECL|enumConstant|ENDNOTE
 DECL|enumConstant|Localization.lang
 name|ENDNOTE
@@ -205,6 +269,23 @@ argument_list|,
 literal|"enw"
 argument_list|)
 block|,
+DECL|enumConstant|ENDNOTE_TXT
+DECL|enumConstant|Localization.lang
+name|ENDNOTE_TXT
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"%0 file"
+argument_list|,
+literal|"Endnote"
+argument_list|)
+argument_list|,
+literal|"txt"
+argument_list|)
+block|,
+comment|//for export
 DECL|enumConstant|FREECITE
 DECL|enumConstant|Localization.lang
 name|FREECITE
@@ -221,6 +302,85 @@ argument_list|,
 literal|"txt"
 argument_list|,
 literal|"xml"
+argument_list|)
+block|,
+DECL|enumConstant|HARVARD_RTF
+DECL|enumConstant|Localization.lang
+name|HARVARD_RTF
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"%0 file"
+argument_list|,
+literal|"Harvard"
+argument_list|)
+argument_list|,
+literal|"rtf"
+argument_list|)
+block|,
+DECL|enumConstant|HTML_LIST
+DECL|enumConstant|Localization.lang
+name|HTML_LIST
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"%0 file"
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"HTML list"
+argument_list|)
+argument_list|)
+argument_list|,
+literal|"html"
+argument_list|)
+block|,
+DECL|enumConstant|HTML_TABLE
+DECL|enumConstant|Localization.lang
+name|HTML_TABLE
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"%0 file"
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"HTML table"
+argument_list|)
+argument_list|)
+argument_list|,
+literal|"html"
+argument_list|)
+block|,
+DECL|enumConstant|HTML_TABLE_WITH_ABSTRACT
+DECL|enumConstant|Localization.lang
+name|HTML_TABLE_WITH_ABSTRACT
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"%0 file"
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"HTML table (with Abstract& BibTeX)"
+argument_list|)
+argument_list|)
+argument_list|,
+literal|"html"
 argument_list|)
 block|,
 DECL|enumConstant|INSPEC
@@ -253,6 +413,38 @@ literal|"ISI"
 argument_list|)
 argument_list|,
 literal|"isi"
+argument_list|,
+literal|"txt"
+argument_list|)
+block|,
+DECL|enumConstant|ISO_690_RTF
+DECL|enumConstant|Localization.lang
+name|ISO_690_RTF
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"%0 file"
+argument_list|,
+literal|"ISO 690"
+argument_list|)
+argument_list|,
+literal|"rtf"
+argument_list|)
+block|,
+DECL|enumConstant|ISO_690_TXT
+DECL|enumConstant|Localization.lang
+name|ISO_690_TXT
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"%0 file"
+argument_list|,
+literal|"ISO 690"
+argument_list|)
 argument_list|,
 literal|"txt"
 argument_list|)
@@ -293,6 +485,22 @@ argument_list|,
 literal|"txt"
 argument_list|)
 block|,
+DECL|enumConstant|MIS_QUARTERLY
+DECL|enumConstant|Localization.lang
+name|MIS_QUARTERLY
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"%0 file"
+argument_list|,
+literal|"MIS Quarterly"
+argument_list|)
+argument_list|,
+literal|"rtf"
+argument_list|)
+block|,
 DECL|enumConstant|MODS
 DECL|enumConstant|Localization.lang
 name|MODS
@@ -319,10 +527,26 @@ name|lang
 argument_list|(
 literal|"%0 file"
 argument_list|,
-literal|"MSBib"
+literal|"MS Office 2007 bib"
 argument_list|)
 argument_list|,
 literal|"xml"
+argument_list|)
+block|,
+DECL|enumConstant|OO_LO
+DECL|enumConstant|Localization.lang
+name|OO_LO
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"%0 file"
+argument_list|,
+literal|"OpenOffice/LibreOffice"
+argument_list|)
+argument_list|,
+literal|"csv"
 argument_list|)
 block|,
 DECL|enumConstant|OVID
@@ -413,6 +637,27 @@ argument_list|,
 literal|"dat"
 argument_list|,
 literal|"txt"
+argument_list|)
+block|,
+DECL|enumConstant|SIMPLE_HTML
+DECL|enumConstant|Localization.lang
+name|SIMPLE_HTML
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"%0 file"
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Simple HTML"
+argument_list|)
+argument_list|)
+argument_list|,
+literal|"html"
 argument_list|)
 block|,
 DECL|enumConstant|XMP
@@ -582,7 +827,12 @@ name|lang
 argument_list|(
 literal|"%0 file"
 argument_list|,
-literal|"ODS"
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"OpenDocument spreadsheet"
+argument_list|)
 argument_list|)
 argument_list|,
 literal|"ods"
@@ -598,7 +848,7 @@ name|lang
 argument_list|(
 literal|"%0 file"
 argument_list|,
-literal|"SXC"
+literal|"OpenOffice/LibreOffice Calc"
 argument_list|)
 argument_list|,
 literal|"sxc"

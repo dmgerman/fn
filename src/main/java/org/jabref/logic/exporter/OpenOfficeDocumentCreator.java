@@ -400,7 +400,12 @@ name|super
 argument_list|(
 literal|"oocalc"
 argument_list|,
-literal|"OpenOffice/LibreOffice Calc"
+name|FileType
+operator|.
+name|SXC
+operator|.
+name|getDescription
+argument_list|()
 argument_list|,
 name|FileType
 operator|.

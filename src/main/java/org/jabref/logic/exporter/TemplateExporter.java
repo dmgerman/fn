@@ -455,6 +455,51 @@ operator|=
 name|savePreferences
 expr_stmt|;
 block|}
+comment|/**      * Initialize another export format based on templates stored in dir with      * layoutFile lfFilename.      * The display name is automatically derived from the FileType      *      *      * @param consoleName Name to call this format in the console.      * @param lfFileName  Name of the main layout file.      * @param directory   Directory in which to find the layout file.      * @param extension   Should contain the . (for instance .txt).      * @param layoutPreferences Preferences for layout      * @param savePreferences Preferences for saving      */
+DECL|method|TemplateExporter (String consoleName, String lfFileName, String directory, FileType extension, LayoutFormatterPreferences layoutPreferences, SavePreferences savePreferences)
+specifier|public
+name|TemplateExporter
+parameter_list|(
+name|String
+name|consoleName
+parameter_list|,
+name|String
+name|lfFileName
+parameter_list|,
+name|String
+name|directory
+parameter_list|,
+name|FileType
+name|extension
+parameter_list|,
+name|LayoutFormatterPreferences
+name|layoutPreferences
+parameter_list|,
+name|SavePreferences
+name|savePreferences
+parameter_list|)
+block|{
+name|this
+argument_list|(
+name|extension
+operator|.
+name|getDescription
+argument_list|()
+argument_list|,
+name|consoleName
+argument_list|,
+name|lfFileName
+argument_list|,
+name|directory
+argument_list|,
+name|extension
+argument_list|,
+name|layoutPreferences
+argument_list|,
+name|savePreferences
+argument_list|)
+expr_stmt|;
+block|}
 comment|/**      * Indicate whether this is a custom export. A custom export looks for its      * layout files using a normal file path, while a built-in export looks in      * the classpath.      *      * @param custom true to indicate a custom export format.      */
 DECL|method|setCustomExport (boolean custom)
 specifier|public

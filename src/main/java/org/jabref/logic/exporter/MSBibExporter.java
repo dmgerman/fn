@@ -242,11 +242,16 @@ name|super
 argument_list|(
 literal|"MSBib"
 argument_list|,
-literal|"MS Office 2007"
+name|FileType
+operator|.
+name|MSBIB
+operator|.
+name|getDescription
+argument_list|()
 argument_list|,
 name|FileType
 operator|.
-name|XML
+name|MSBIB
 argument_list|)
 expr_stmt|;
 block|}

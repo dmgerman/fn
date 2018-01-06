@@ -106,20 +106,6 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|l10n
-operator|.
-name|Localization
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
 name|layout
 operator|.
 name|LayoutFormatterPreferences
@@ -159,9 +145,9 @@ class|class
 name|ExporterFactory
 block|{
 comment|/**      * Global variable that is used for counting output entries when exporting:      *      * @deprecated find a better way to do this      */
+DECL|field|entryNumber
 annotation|@
 name|Deprecated
-DECL|field|entryNumber
 specifier|public
 specifier|static
 name|int
@@ -239,8 +225,6 @@ argument_list|(
 operator|new
 name|TemplateExporter
 argument_list|(
-literal|"HTML"
-argument_list|,
 literal|"html"
 argument_list|,
 literal|"html"
@@ -264,13 +248,6 @@ argument_list|(
 operator|new
 name|TemplateExporter
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Simple HTML"
-argument_list|)
-argument_list|,
 literal|"simplehtml"
 argument_list|,
 literal|"simplehtml"
@@ -279,7 +256,7 @@ literal|null
 argument_list|,
 name|FileType
 operator|.
-name|HTML
+name|SIMPLE_HTML
 argument_list|,
 name|layoutPreferences
 argument_list|,
@@ -294,8 +271,6 @@ argument_list|(
 operator|new
 name|TemplateExporter
 argument_list|(
-literal|"DocBook 4.4"
-argument_list|,
 literal|"docbook"
 argument_list|,
 literal|"docbook"
@@ -304,7 +279,7 @@ literal|null
 argument_list|,
 name|FileType
 operator|.
-name|XML
+name|DOCBOOK
 argument_list|,
 name|layoutPreferences
 argument_list|,
@@ -319,8 +294,6 @@ argument_list|(
 operator|new
 name|TemplateExporter
 argument_list|(
-literal|"DIN 1505"
-argument_list|,
 literal|"din1505"
 argument_list|,
 literal|"din1505winword"
@@ -329,7 +302,7 @@ literal|"din1505"
 argument_list|,
 name|FileType
 operator|.
-name|RTF
+name|DIN_1505
 argument_list|,
 name|layoutPreferences
 argument_list|,
@@ -344,8 +317,6 @@ argument_list|(
 operator|new
 name|TemplateExporter
 argument_list|(
-literal|"BibO RDF"
-argument_list|,
 literal|"bibordf"
 argument_list|,
 literal|"bibordf"
@@ -354,7 +325,7 @@ literal|null
 argument_list|,
 name|FileType
 operator|.
-name|RDF
+name|BIBORDF
 argument_list|,
 name|layoutPreferences
 argument_list|,
@@ -369,13 +340,6 @@ argument_list|(
 operator|new
 name|TemplateExporter
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"HTML table"
-argument_list|)
-argument_list|,
 literal|"tablerefs"
 argument_list|,
 literal|"tablerefs"
@@ -384,7 +348,7 @@ literal|"tablerefs"
 argument_list|,
 name|FileType
 operator|.
-name|HTML
+name|HTML_TABLE
 argument_list|,
 name|layoutPreferences
 argument_list|,
@@ -399,13 +363,6 @@ argument_list|(
 operator|new
 name|TemplateExporter
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"HTML list"
-argument_list|)
-argument_list|,
 literal|"listrefs"
 argument_list|,
 literal|"listrefs"
@@ -414,7 +371,7 @@ literal|"listrefs"
 argument_list|,
 name|FileType
 operator|.
-name|HTML
+name|HTML_LIST
 argument_list|,
 name|layoutPreferences
 argument_list|,
@@ -429,13 +386,6 @@ argument_list|(
 operator|new
 name|TemplateExporter
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"HTML table (with Abstract& BibTeX)"
-argument_list|)
-argument_list|,
 literal|"tablerefsabsbib"
 argument_list|,
 literal|"tablerefsabsbib"
@@ -444,7 +394,7 @@ literal|"tablerefsabsbib"
 argument_list|,
 name|FileType
 operator|.
-name|HTML
+name|HTML_TABLE_WITH_ABSTRACT
 argument_list|,
 name|layoutPreferences
 argument_list|,
@@ -459,8 +409,6 @@ argument_list|(
 operator|new
 name|TemplateExporter
 argument_list|(
-literal|"Harvard RTF"
-argument_list|,
 literal|"harvard"
 argument_list|,
 literal|"harvard"
@@ -469,7 +417,7 @@ literal|"harvard"
 argument_list|,
 name|FileType
 operator|.
-name|RDF
+name|HARVARD_RTF
 argument_list|,
 name|layoutPreferences
 argument_list|,
@@ -484,8 +432,6 @@ argument_list|(
 operator|new
 name|TemplateExporter
 argument_list|(
-literal|"ISO 690 RTF"
-argument_list|,
 literal|"iso690rtf"
 argument_list|,
 literal|"iso690RTF"
@@ -494,7 +440,7 @@ literal|"iso690rtf"
 argument_list|,
 name|FileType
 operator|.
-name|RTF
+name|ISO_690_RTF
 argument_list|,
 name|layoutPreferences
 argument_list|,
@@ -509,8 +455,6 @@ argument_list|(
 operator|new
 name|TemplateExporter
 argument_list|(
-literal|"ISO 690"
-argument_list|,
 literal|"iso690txt"
 argument_list|,
 literal|"iso690"
@@ -519,7 +463,7 @@ literal|"iso690txt"
 argument_list|,
 name|FileType
 operator|.
-name|TXT
+name|ISO_690_TXT
 argument_list|,
 name|layoutPreferences
 argument_list|,
@@ -534,8 +478,6 @@ argument_list|(
 operator|new
 name|TemplateExporter
 argument_list|(
-literal|"Endnote"
-argument_list|,
 literal|"endnote"
 argument_list|,
 literal|"EndNote"
@@ -544,7 +486,7 @@ literal|"endnote"
 argument_list|,
 name|FileType
 operator|.
-name|TXT
+name|ENDNOTE_TXT
 argument_list|,
 name|layoutPreferences
 argument_list|,
@@ -559,8 +501,6 @@ argument_list|(
 operator|new
 name|TemplateExporter
 argument_list|(
-literal|"OpenOffice/LibreOffice CSV"
-argument_list|,
 literal|"oocsv"
 argument_list|,
 literal|"openoffice-csv"
@@ -569,7 +509,7 @@ literal|"openoffice"
 argument_list|,
 name|FileType
 operator|.
-name|CSV
+name|OO_LO
 argument_list|,
 name|layoutPreferences
 argument_list|,
@@ -584,8 +524,6 @@ argument_list|(
 operator|new
 name|TemplateExporter
 argument_list|(
-literal|"RIS"
-argument_list|,
 literal|"ris"
 argument_list|,
 literal|"ris"
@@ -616,8 +554,6 @@ argument_list|(
 operator|new
 name|TemplateExporter
 argument_list|(
-literal|"MIS Quarterly"
-argument_list|,
 literal|"misq"
 argument_list|,
 literal|"misq"
@@ -626,7 +562,7 @@ literal|"misq"
 argument_list|,
 name|FileType
 operator|.
-name|RTF
+name|MIS_QUARTERLY
 argument_list|,
 name|layoutPreferences
 argument_list|,
