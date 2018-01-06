@@ -10614,11 +10614,6 @@ argument_list|()
 decl_stmt|;
 name|showAndEdit
 argument_list|(
-literal|null
-argument_list|)
-expr_stmt|;
-name|showAndEdit
-argument_list|(
 name|currentEntry
 argument_list|)
 expr_stmt|;
