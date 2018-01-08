@@ -485,7 +485,11 @@ argument_list|(
 name|FXCollections
 operator|.
 name|observableArrayList
-argument_list|()
+argument_list|(
+name|BibEntry
+operator|::
+name|getObservables
+argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|bibtexStrings
