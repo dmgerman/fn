@@ -2063,6 +2063,15 @@ name|SuggestionProviders
 name|suggestionProviders
 decl_stmt|;
 DECL|field|dividerPositionSubscription
+annotation|@
+name|SuppressWarnings
+argument_list|(
+block|{
+literal|"FieldCanBeLocal"
+block|,
+literal|"unused"
+block|}
+argument_list|)
 specifier|private
 name|Subscription
 name|dividerPositionSubscription
