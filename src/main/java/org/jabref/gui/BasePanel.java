@@ -460,6 +460,20 @@ name|gui
 operator|.
 name|actions
 operator|.
+name|CleanupAction
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|actions
+operator|.
 name|CopyBibTeXKeyAndLinkAction
 import|;
 end_import
@@ -2741,8 +2755,19 @@ argument_list|(
 name|this
 argument_list|)
 decl_stmt|;
-comment|// TODO
-comment|//CleanupAction cleanUpAction = new CleanupAction(this, Globals.prefs);
+name|CleanupAction
+name|cleanUpAction
+init|=
+operator|new
+name|CleanupAction
+argument_list|(
+name|this
+argument_list|,
+name|Globals
+operator|.
+name|prefs
+argument_list|)
+decl_stmt|;
 name|actions
 operator|.
 name|put
@@ -3581,9 +3606,19 @@ begin_comment
 comment|// The action for cleaning up entry.
 end_comment
 
-begin_comment
-comment|//actions.put(Actions.CLEANUP, cleanUpAction);
-end_comment
+begin_expr_stmt
+name|actions
+operator|.
+name|put
+argument_list|(
+name|Actions
+operator|.
+name|CLEANUP
+argument_list|,
+name|cleanUpAction
+argument_list|)
+expr_stmt|;
+end_expr_stmt
 
 begin_expr_stmt
 name|actions
