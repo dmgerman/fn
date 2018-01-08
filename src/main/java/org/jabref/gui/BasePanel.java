@@ -10647,6 +10647,15 @@ parameter_list|)
 block|{
 if|if
 condition|(
+name|position
+operator|==
+literal|null
+condition|)
+block|{
+return|return;
+block|}
+if|if
+condition|(
 name|mode
 operator|==
 name|BasePanelMode

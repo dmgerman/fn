@@ -8389,6 +8389,13 @@ name|String
 name|toolTip
 parameter_list|)
 block|{
+name|DefaultTaskExecutor
+operator|.
+name|runInJavaFXThread
+argument_list|(
+parameter_list|()
+lambda|->
+block|{
 name|Tab
 name|tab
 init|=
@@ -8413,6 +8420,9 @@ name|Tooltip
 argument_list|(
 name|toolTip
 argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 argument_list|)
 expr_stmt|;
 block|}
