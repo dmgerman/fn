@@ -8672,7 +8672,7 @@ block|}
 end_function
 
 begin_empty_stmt
-unit|)         )
+unit|))
 empty_stmt|;
 end_empty_stmt
 
@@ -9161,6 +9161,13 @@ name|BibEntry
 name|entry
 parameter_list|)
 block|{
+name|DefaultTaskExecutor
+operator|.
+name|runInJavaFXThread
+argument_list|(
+parameter_list|()
+lambda|->
+block|{
 name|showBottomPane
 argument_list|(
 name|BasePanelMode
@@ -9193,6 +9200,9 @@ name|entryEditor
 operator|.
 name|requestFocus
 argument_list|()
+expr_stmt|;
+block|}
+argument_list|)
 expr_stmt|;
 block|}
 end_function
