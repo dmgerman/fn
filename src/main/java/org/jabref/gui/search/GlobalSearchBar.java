@@ -1982,6 +1982,19 @@ argument_list|>
 name|searchCompleter
 parameter_list|)
 block|{
+if|if
+condition|(
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getAutoCompletePreferences
+argument_list|()
+operator|.
+name|shouldAutoComplete
+argument_list|()
+condition|)
+block|{
 name|AutoCompletionTextInputBinding
 operator|.
 name|autoComplete
@@ -2007,6 +2020,7 @@ name|AppendPersonNamesStrategy
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 DECL|method|getSearchQueryHighlightObservable ()
 specifier|public

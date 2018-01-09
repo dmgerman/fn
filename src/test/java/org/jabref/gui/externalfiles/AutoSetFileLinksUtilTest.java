@@ -384,6 +384,8 @@ specifier|public
 name|void
 name|test
 parameter_list|()
+throws|throws
+name|Exception
 block|{
 comment|//Due to mocking the externalFileType class, the file extension will not be found
 name|List

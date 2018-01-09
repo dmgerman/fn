@@ -11810,6 +11810,8 @@ name|getAutoLinkPreferences
 argument_list|()
 argument_list|)
 decl_stmt|;
+try|try
+block|{
 name|List
 argument_list|<
 name|Path
@@ -11870,8 +11872,6 @@ name|isPresent
 argument_list|()
 condition|)
 block|{
-try|try
-block|{
 name|JabRefDesktop
 operator|.
 name|openExternalFileAnyFormat
@@ -11901,12 +11901,23 @@ literal|'.'
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+block|}
 catch|catch
 parameter_list|(
 name|IOException
 name|ex
 parameter_list|)
 block|{
+name|LOGGER
+operator|.
+name|error
+argument_list|(
+literal|"Problems with finding/or opening files "
+argument_list|,
+name|ex
+argument_list|)
+expr_stmt|;
 name|basePanel
 operator|.
 name|output
@@ -11926,8 +11937,6 @@ name|getMessage
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
-block|}
 block|}
 block|}
 block|}
