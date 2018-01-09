@@ -273,9 +273,9 @@ import|;
 end_import
 
 begin_class
-DECL|class|ColumnFactory
+DECL|class|MainTableColumnFactory
 class|class
-name|ColumnFactory
+name|MainTableColumnFactory
 block|{
 DECL|field|STYLE_ICON
 specifier|private
@@ -310,9 +310,9 @@ specifier|final
 name|CellFactory
 name|cellFactory
 decl_stmt|;
-DECL|method|ColumnFactory (BibDatabase database, ColumnPreferences preferences, ExternalFileTypes externalFileTypes)
+DECL|method|MainTableColumnFactory (BibDatabase database, ColumnPreferences preferences, ExternalFileTypes externalFileTypes)
 specifier|public
-name|ColumnFactory
+name|MainTableColumnFactory
 parameter_list|(
 name|BibDatabase
 name|database
@@ -511,28 +511,34 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// Add columns for other file types
-for|for
-control|(
-name|String
-name|column
-range|:
+name|columns
+operator|.
+name|addAll
+argument_list|(
 name|preferences
 operator|.
 name|getExtraFileColumns
 argument_list|()
-control|)
-block|{
-name|columns
 operator|.
-name|add
+name|stream
+argument_list|()
+operator|.
+name|map
 argument_list|(
+name|this
+operator|::
 name|createExtraFileColumn
+argument_list|)
+operator|.
+name|collect
 argument_list|(
-name|column
+name|Collectors
+operator|.
+name|toList
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
 comment|// Add 'normal' bibtex fields as configured in the preferences
 name|columns
 operator|.

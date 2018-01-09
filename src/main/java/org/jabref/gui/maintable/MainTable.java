@@ -523,7 +523,7 @@ operator|.
 name|addAll
 argument_list|(
 operator|new
-name|ColumnFactory
+name|MainTableColumnFactory
 argument_list|(
 name|database
 argument_list|,

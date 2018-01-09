@@ -42,7 +42,7 @@ specifier|public
 class|class
 name|BibtexSingleField
 block|{
-comment|// TODO: This constant should be moved to the gui package, probably to ColumnFactory
+comment|// TODO: This constant should be moved to the gui package, probably to MainTableColumnFactory
 DECL|field|DEFAULT_FIELD_LENGTH
 specifier|public
 specifier|static

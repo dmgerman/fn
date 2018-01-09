@@ -22,16 +22,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Map
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|swing
@@ -406,7 +396,7 @@ specifier|private
 name|boolean
 name|offerSetFileDir
 decl_stmt|;
-comment|/**      * Collect file links from the given set of fields, and add them to the list contained in the field      * GUIGlobals.FILE_FIELD.      *      * @param database The database to modify.      * @param fields   The fields to find links in.      * @return A CompoundEdit specifying the undo operation for the whole operation.      */
+comment|/**      * Collect file links from the given set of fields, and add them to the list contained in the field      * GUIGlobals.FILE_FIELD.      *      * @param database The database to modify.      * @return A CompoundEdit specifying the undo operation for the whole operation.      */
 DECL|method|upgradePdfPsToFile (BibDatabase database)
 specifier|private
 specifier|static
@@ -1447,18 +1437,11 @@ parameter_list|()
 block|{
 for|for
 control|(
-name|Map
-operator|.
-name|Entry
-argument_list|<
-name|String
-argument_list|,
 name|List
 argument_list|<
 name|String
 argument_list|>
-argument_list|>
-name|tab
+name|fields
 range|:
 name|Globals
 operator|.
@@ -1467,7 +1450,7 @@ operator|.
 name|getEntryEditorTabList
 argument_list|()
 operator|.
-name|entrySet
+name|values
 argument_list|()
 control|)
 block|{
@@ -1476,10 +1459,7 @@ control|(
 name|String
 name|field
 range|:
-name|tab
-operator|.
-name|getValue
-argument_list|()
+name|fields
 control|)
 block|{
 if|if
