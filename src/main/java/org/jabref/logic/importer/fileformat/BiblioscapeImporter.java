@@ -199,7 +199,7 @@ block|{
 return|return
 name|FileType
 operator|.
-name|BILBIOSCAPE
+name|BIBLIOSCAPE
 return|;
 block|}
 annotation|@

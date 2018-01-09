@@ -167,7 +167,7 @@ name|assertEquals
 argument_list|(
 name|FileType
 operator|.
-name|BILBIOSCAPE
+name|BIBLIOSCAPE
 argument_list|,
 name|importer
 operator|.
