@@ -603,9 +603,9 @@ name|this
 operator|.
 name|setColumnResizePolicy
 argument_list|(
-name|TableView
-operator|.
-name|CONSTRAINED_RESIZE_POLICY
+operator|new
+name|SmartConstrainedResizePolicy
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
