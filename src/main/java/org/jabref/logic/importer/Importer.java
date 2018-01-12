@@ -128,7 +128,7 @@ name|logic
 operator|.
 name|util
 operator|.
-name|FileExtensions
+name|FileType
 import|;
 end_import
 
@@ -453,15 +453,15 @@ name|String
 name|getName
 parameter_list|()
 function_decl|;
-comment|/**      * Returns the file extensions that this importer can read      * @return {@link FileExtensions} correspoding to the importer      */
-DECL|method|getExtensions ()
+comment|/**      * Returns the type of files that this importer can read      * @return {@link FileType} corresponding to the importer      */
+DECL|method|getFileType ()
 specifier|public
 specifier|abstract
-name|FileExtensions
-name|getExtensions
+name|FileType
+name|getFileType
 parameter_list|()
 function_decl|;
-comment|/**      * Returns a one-word ID which identifies this import format.      * Used for example, to identify the format when used from the command line.      *      * @return ID, must be unique and not<code>null</code>      */
+comment|/**      * Returns a one-word ID which identifies this importer.      * Used for example, to identify the importer when used from the command line.      *      * @return ID, must be unique and not<code>null</code>      */
 DECL|method|getId ()
 specifier|public
 name|String

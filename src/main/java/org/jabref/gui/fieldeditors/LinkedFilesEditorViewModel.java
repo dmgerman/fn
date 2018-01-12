@@ -1243,6 +1243,8 @@ name|getInstance
 argument_list|()
 argument_list|)
 decl_stmt|;
+try|try
+block|{
 name|List
 argument_list|<
 name|LinkedFile
@@ -1289,6 +1291,23 @@ operator|.
 name|add
 argument_list|(
 name|newLinkedFile
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|e
+parameter_list|)
+block|{
+name|dialogService
+operator|.
+name|showErrorDialogAndWait
+argument_list|(
+literal|"Error accessing the file system"
+argument_list|,
+name|e
 argument_list|)
 expr_stmt|;
 block|}

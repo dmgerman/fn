@@ -411,6 +411,8 @@ parameter_list|(
 name|BibEntry
 name|entry
 parameter_list|)
+throws|throws
+name|IOException
 block|{
 name|List
 argument_list|<

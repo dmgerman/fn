@@ -625,10 +625,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|getExtensionsDoesNotReturnNull ()
+DECL|method|getFileTypeDoesNotReturnNull ()
 specifier|public
 name|void
-name|getExtensionsDoesNotReturnNull
+name|getFileTypeDoesNotReturnNull
 parameter_list|()
 block|{
 name|Assert
@@ -637,7 +637,7 @@ name|assertNotNull
 argument_list|(
 name|format
 operator|.
-name|getExtensions
+name|getFileType
 argument_list|()
 argument_list|)
 expr_stmt|;

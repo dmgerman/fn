@@ -100,16 +100,6 @@ end_import
 
 begin_import
 import|import
-name|javafx
-operator|.
-name|stage
-operator|.
-name|FileChooser
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|jabref
@@ -222,7 +212,7 @@ name|String
 name|content
 parameter_list|)
 function_decl|;
-comment|/**      * Create and display error dialog displaying the given exception.      * @param message the error message      * @param exception the exception causing the error      */
+comment|/**      * Create and display error dialog displaying the given exception.      *      * @param message   the error message      * @param exception the exception causing the error      */
 DECL|method|showErrorDialogAndWait (String message, Throwable exception)
 name|void
 name|showErrorDialogAndWait
@@ -234,7 +224,7 @@ name|Throwable
 name|exception
 parameter_list|)
 function_decl|;
-comment|/**      * Create and display error dialog displaying the given exception.      * @param exception the exception causing the error      */
+comment|/**      * Create and display error dialog displaying the given exception.      *      * @param exception the exception causing the error      */
 DECL|method|showErrorDialogAndWait (Exception exception)
 specifier|default
 name|void
@@ -257,7 +247,7 @@ name|exception
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Create and display error dialog displaying the given message.      * @param message the error message      */
+comment|/**      * Create and display error dialog displaying the given message.      *      * @param message the error message      */
 DECL|method|showErrorDialogAndWait (String message)
 name|void
 name|showErrorDialogAndWait
@@ -372,7 +362,7 @@ argument_list|>
 name|dialog
 parameter_list|)
 function_decl|;
-comment|/**      * Constructs and shows a canceable {@link ProgressDialog}. Clicking cancel will cancel the underlying service and close the dialog      * @param task The {@link Task} which executes the work and for which to show the dialog      */
+comment|/**      * Constructs and shows a canceable {@link ProgressDialog}. Clicking cancel will cancel the underlying service and close the dialog      *      * @param task The {@link Task} which executes the work and for which to show the dialog      */
 DECL|method|showCanceableProgressDialogAndWait (Task<V> task)
 parameter_list|<
 name|V
@@ -387,7 +377,7 @@ argument_list|>
 name|task
 parameter_list|)
 function_decl|;
-comment|/**      * Notify the user in an non-blocking way (i.e., update status message instead of showing a dialog).      * @param message the message to show.      */
+comment|/**      * Notify the user in an non-blocking way (i.e., update status message instead of showing a dialog).      *      * @param message the message to show.      */
 DECL|method|notify (String message)
 name|void
 name|notify
@@ -396,7 +386,7 @@ name|String
 name|message
 parameter_list|)
 function_decl|;
-comment|/**      * Shows a new file save dialog. The method doesn't return until the      * displayed file save dialog is dismissed. The return value specifies the      * file chosen by the user or an empty {@link Optional} if no selection has been made.      *      * @return the selected file or an empty {@link Optional} if no file has been selected      */
+comment|/**      * Shows a new file save dialog. The method doesn't return until the      * displayed file save dialog is dismissed. The return value specifies the      * file chosen by the user or an empty {@link Optional} if no selection has been made.      * After a file was selected, the given file dialog configuration is updated with the selected extension type (if any).      *      * @return the selected file or an empty {@link Optional} if no file has been selected      */
 DECL|method|showFileSaveDialog (FileDialogConfiguration fileDialogConfiguration)
 name|Optional
 argument_list|<
@@ -408,7 +398,7 @@ name|FileDialogConfiguration
 name|fileDialogConfiguration
 parameter_list|)
 function_decl|;
-comment|/**      * Shows a new file open dialog. The method doesn't return until the      * displayed open dialog is dismissed. The return value specifies      * the file chosen by the user or an empty {@link Optional} if no selection has been      * made.      *      * @return the selected file or an empty {@link Optional} if no file has been selected      */
+comment|/**      * Shows a new file open dialog. The method doesn't return until the      * displayed open dialog is dismissed. The return value specifies      * the file chosen by the user or an empty {@link Optional} if no selection has been      * made.      * After a file was selected, the given file dialog configuration is updated with the selected extension type (if any).      *      * @return the selected file or an empty {@link Optional} if no file has been selected      */
 DECL|method|showFileOpenDialog (FileDialogConfiguration fileDialogConfiguration)
 name|Optional
 argument_list|<
@@ -442,15 +432,6 @@ name|showDirectorySelectionDialog
 parameter_list|(
 name|DirectoryDialogConfiguration
 name|directoryDialogConfiguration
-parameter_list|)
-function_decl|;
-comment|/**      * Gets the configured {@link FileChooser}, should only be necessary in rare use cases.      * For normal usage use the show-Methods which directly return the selected file(s)      * @param fileDialogConfiguration      * @return A configured instance of the {@link FileChooser}      */
-DECL|method|getConfiguredFileChooser (FileDialogConfiguration fileDialogConfiguration)
-name|FileChooser
-name|getConfiguredFileChooser
-parameter_list|(
-name|FileDialogConfiguration
-name|fileDialogConfiguration
 parameter_list|)
 function_decl|;
 comment|/**      * Displays a Print Dialog. Allow the user to update job state such as printer and settings. These changes will be      * available in the appropriate properties after the print dialog has returned. The print dialog is also used to      * confirm the user wants to proceed with printing.      *      * @param job the print job to customize      * @return false if the user opts to cancel printing      */

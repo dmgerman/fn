@@ -317,6 +317,8 @@ specifier|public
 name|void
 name|testFindFiles
 parameter_list|()
+throws|throws
+name|Exception
 block|{
 comment|//given
 name|BibEntry
@@ -435,6 +437,8 @@ specifier|public
 name|void
 name|testYearAuthFirspageFindFiles
 parameter_list|()
+throws|throws
+name|Exception
 block|{
 comment|//given
 name|List
@@ -523,6 +527,8 @@ specifier|public
 name|void
 name|testAuthorWithDiacritics
 parameter_list|()
+throws|throws
+name|Exception
 block|{
 comment|//given
 name|BibEntry
@@ -659,6 +665,8 @@ specifier|public
 name|void
 name|testFindFileInSubdirectory
 parameter_list|()
+throws|throws
+name|Exception
 block|{
 comment|//given
 name|BibEntry
@@ -777,6 +785,8 @@ specifier|public
 name|void
 name|testFindFileNonRecursive
 parameter_list|()
+throws|throws
+name|Exception
 block|{
 comment|//given
 name|BibEntry

@@ -272,7 +272,7 @@ name|logic
 operator|.
 name|exporter
 operator|.
-name|ExportFormats
+name|ExporterFactory
 import|;
 end_import
 
@@ -1189,21 +1189,16 @@ name|empty
 argument_list|()
 expr_stmt|;
 name|CitationStyle
-name|citationStyle
-init|=
-name|CitationStyle
 operator|.
 name|createCitationStyleFromFile
 argument_list|(
 name|style
 argument_list|)
-decl_stmt|;
-if|if
-condition|(
+operator|.
+name|ifPresent
+argument_list|(
 name|citationStyle
-operator|!=
-literal|null
-condition|)
+lambda|->
 block|{
 name|basePanel
 operator|.
@@ -1239,6 +1234,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 else|else
@@ -1500,7 +1497,7 @@ name|void
 name|update
 parameter_list|()
 block|{
-name|ExportFormats
+name|ExporterFactory
 operator|.
 name|entryNumber
 operator|=
