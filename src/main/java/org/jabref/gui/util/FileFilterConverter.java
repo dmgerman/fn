@@ -360,6 +360,9 @@ name|importer
 lambda|->
 name|importer
 operator|.
+name|getFileType
+argument_list|()
+operator|.
 name|getDescription
 argument_list|()
 operator|.
