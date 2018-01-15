@@ -2066,6 +2066,15 @@ name|FACEBOOK
 argument_list|)
 operator|,
 comment|/* css: facebook */
+DECL|enumConstant|TWITTER
+name|TWITTER
+argument_list|(
+name|MaterialDesignIcon
+operator|.
+name|TWITTER
+argument_list|)
+operator|,
+comment|/* css: twitter */
 DECL|enumConstant|BLOG
 name|BLOG
 argument_list|(
