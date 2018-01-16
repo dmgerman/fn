@@ -445,156 +445,6 @@ block|}
 block|}
 annotation|@
 name|Test
-DECL|method|nonEnglishFilesMustHaveSubsetOfKeys ()
-specifier|public
-name|void
-name|nonEnglishFilesMustHaveSubsetOfKeys
-parameter_list|()
-block|{
-for|for
-control|(
-name|String
-name|bundle
-range|:
-name|Arrays
-operator|.
-name|asList
-argument_list|(
-literal|"JabRef"
-argument_list|,
-literal|"Menu"
-argument_list|)
-control|)
-block|{
-name|Set
-argument_list|<
-name|String
-argument_list|>
-name|englishKeys
-init|=
-name|LocalizationParser
-operator|.
-name|getKeysInPropertiesFile
-argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"/l10n/%s_%s.properties"
-argument_list|,
-name|bundle
-argument_list|,
-literal|"en"
-argument_list|)
-argument_list|)
-decl_stmt|;
-name|List
-argument_list|<
-name|String
-argument_list|>
-name|nonEnglishLanguages
-init|=
-name|Languages
-operator|.
-name|LANGUAGES
-operator|.
-name|values
-argument_list|()
-operator|.
-name|stream
-argument_list|()
-operator|.
-name|filter
-argument_list|(
-name|l
-lambda|->
-operator|!
-literal|"en"
-operator|.
-name|equals
-argument_list|(
-name|l
-argument_list|)
-argument_list|)
-operator|.
-name|collect
-argument_list|(
-name|Collectors
-operator|.
-name|toList
-argument_list|()
-argument_list|)
-decl_stmt|;
-for|for
-control|(
-name|String
-name|lang
-range|:
-name|nonEnglishLanguages
-control|)
-block|{
-name|Set
-argument_list|<
-name|String
-argument_list|>
-name|nonEnglishKeys
-init|=
-name|LocalizationParser
-operator|.
-name|getKeysInPropertiesFile
-argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"/l10n/%s_%s.properties"
-argument_list|,
-name|bundle
-argument_list|,
-name|lang
-argument_list|)
-argument_list|)
-decl_stmt|;
-comment|// we do not check for missing keys as Crowdin adds them automatically
-name|List
-argument_list|<
-name|String
-argument_list|>
-name|obsolete
-init|=
-operator|new
-name|ArrayList
-argument_list|<>
-argument_list|(
-name|nonEnglishKeys
-argument_list|)
-decl_stmt|;
-name|obsolete
-operator|.
-name|removeAll
-argument_list|(
-name|englishKeys
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"Obsolete keys of "
-operator|+
-name|lang
-argument_list|,
-name|Collections
-operator|.
-name|emptyList
-argument_list|()
-argument_list|,
-name|obsolete
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-block|}
-annotation|@
-name|Test
 DECL|method|ensureNoDuplicates ()
 specifier|public
 name|void
@@ -1100,9 +950,7 @@ name|assertEquals
 argument_list|(
 literal|"DETECTED LANGUAGE KEYS WHICH ARE NOT IN THE ENGLISH LANGUAGE FILE\n"
 operator|+
-literal|"1. PASTE THESE INTO THE ENGLISH LANGUAGE FILE\n"
-operator|+
-literal|"2. EXECUTE: gradlew localizationUpdate\n"
+literal|"PASTE THESE INTO THE ENGLISH LANGUAGE FILE\n"
 operator|+
 name|missingKeys
 operator|.
@@ -1187,9 +1035,7 @@ name|assertEquals
 argument_list|(
 literal|"DETECTED LANGUAGE KEYS WHICH ARE NOT IN THE ENGLISH MENU FILE\n"
 operator|+
-literal|"1. PASTE THESE INTO THE ENGLISH MENU FILE\n"
-operator|+
-literal|"2. EXECUTE: gradlew localizationUpdate\n"
+literal|"PASTE THESE INTO THE ENGLISH MENU FILE\n"
 operator|+
 name|missingKeys
 operator|.
@@ -1274,8 +1120,6 @@ operator|+
 literal|"1. CHECK IF THE KEY IS REALLY NOT USED ANYMORE\n"
 operator|+
 literal|"2. REMOVE THESE FROM THE ENGLISH LANGUAGE FILE\n"
-operator|+
-literal|"3. EXECUTE: gradlew localizationUpdate\n"
 argument_list|,
 name|Collections
 operator|.
@@ -1325,8 +1169,6 @@ operator|+
 literal|"1. CHECK IF THE KEY IS REALLY NOT USED ANYMORE\n"
 operator|+
 literal|"2. REMOVE THESE FROM THE ENGLISH MENU FILE\n"
-operator|+
-literal|"3. EXECUTE: gradlew localizationUpdate\n"
 argument_list|,
 name|Collections
 operator|.
