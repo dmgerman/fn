@@ -18,6 +18,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|nio
 operator|.
 name|file
@@ -79,6 +89,8 @@ name|String
 argument_list|>
 name|extensions
 parameter_list|)
+throws|throws
+name|IOException
 function_decl|;
 block|}
 end_interface

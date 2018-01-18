@@ -4786,7 +4786,7 @@ name|VALIDATE_IN_ENTRY_EDITOR
 argument_list|,
 name|Boolean
 operator|.
-name|FALSE
+name|TRUE
 argument_list|)
 expr_stmt|;
 name|defaults
@@ -7095,7 +7095,7 @@ name|CleanupPreset
 operator|.
 name|CleanupStep
 argument_list|>
-name|deactivedJobs
+name|deactivatedJobs
 init|=
 name|EnumSet
 operator|.
@@ -7106,6 +7106,12 @@ operator|.
 name|CleanupStep
 operator|.
 name|CLEAN_UP_UPGRADE_EXTERNAL_LINKS
+argument_list|,
+name|CleanupPreset
+operator|.
+name|CleanupStep
+operator|.
+name|MOVE_PDF
 argument_list|,
 name|CleanupPreset
 operator|.
@@ -7130,7 +7136,7 @@ name|EnumSet
 operator|.
 name|complementOf
 argument_list|(
-name|deactivedJobs
+name|deactivatedJobs
 argument_list|)
 argument_list|,
 name|Cleanups

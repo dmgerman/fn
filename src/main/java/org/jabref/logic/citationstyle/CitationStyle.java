@@ -36,6 +36,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|io
+operator|.
+name|UncheckedIOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|net
 operator|.
 name|URISyntaxException
@@ -217,6 +227,18 @@ operator|.
 name|stream
 operator|.
 name|Collectors
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|stream
+operator|.
+name|Stream
 import|;
 end_import
 
@@ -926,7 +948,7 @@ name|empty
 argument_list|()
 return|;
 block|}
-comment|/**      * Provides the default citation style which is currently IEEE      * @return default citation style      */
+comment|/**      * Provides the default citation style which is currently IEEE      *      * @return default citation style      */
 DECL|method|getDefault ()
 specifier|public
 specifier|static
@@ -954,7 +976,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**      * Provides the citation styles that come with JabRef.      * @return list of available citation styles      */
+comment|/**      * Provides the citation styles that come with JabRef.      *      * @return list of available citation styles      */
 DECL|method|discoverCitationStyles ()
 specifier|public
 specifier|static
@@ -1113,11 +1135,13 @@ literal|null
 argument_list|)
 init|)
 block|{
-name|List
+try|try
+init|(
+name|Stream
 argument_list|<
 name|Path
 argument_list|>
-name|allStyles
+name|stylefileStream
 init|=
 name|Files
 operator|.
@@ -1152,6 +1176,14 @@ argument_list|(
 literal|"csl"
 argument_list|)
 argument_list|)
+init|)
+block|{
+for|for
+control|(
+name|Path
+name|style
+range|:
+name|stylefileStream
 operator|.
 name|collect
 argument_list|(
@@ -1160,13 +1192,6 @@ operator|.
 name|toList
 argument_list|()
 argument_list|)
-decl_stmt|;
-for|for
-control|(
-name|Path
-name|style
-range|:
-name|allStyles
 control|)
 block|{
 name|CitationStyle
@@ -1191,12 +1216,29 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+catch|catch
+parameter_list|(
+name|UncheckedIOException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|IOException
+argument_list|(
+name|e
+argument_list|)
+throw|;
+block|}
+block|}
 return|return
 name|STYLES
 return|;
 block|}
 catch|catch
 parameter_list|(
+name|UncheckedIOException
+decl||
 name|IOException
 decl||
 name|URISyntaxException
@@ -1220,7 +1262,13 @@ name|emptyList
 argument_list|()
 return|;
 block|}
+end_class
+
+begin_comment
 comment|/**      * Checks if the given style file is a CitationStyle      */
+end_comment
+
+begin_function
 DECL|method|isCitationStyleFile (String styleFile)
 specifier|public
 specifier|static
@@ -1250,6 +1298,9 @@ name|endsWith
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|getTitle ()
 specifier|public
 name|String
@@ -1260,6 +1311,9 @@ return|return
 name|title
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|getSource ()
 specifier|public
 name|String
@@ -1270,6 +1324,9 @@ return|return
 name|source
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|getFilePath ()
 specifier|public
 name|String
@@ -1280,6 +1337,9 @@ return|return
 name|filePath
 return|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Override
 DECL|method|toString ()
@@ -1292,6 +1352,9 @@ return|return
 name|title
 return|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Override
 DECL|method|equals (Object o)
@@ -1358,6 +1421,9 @@ name|source
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Override
 DECL|method|hashCode ()
@@ -1375,8 +1441,8 @@ name|source
 argument_list|)
 return|;
 block|}
-block|}
-end_class
+end_function
 
+unit|}
 end_unit
 

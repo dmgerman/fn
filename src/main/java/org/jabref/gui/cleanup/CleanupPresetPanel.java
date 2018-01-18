@@ -438,6 +438,7 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+comment|// Since the directory does not exist, we cannot move it to there. So, this option is not checked - regardless of the presets stored in the preferences.
 name|cleanUpMovePDF
 operator|.
 name|setSelected
