@@ -2464,6 +2464,13 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+name|addressToSplit
+operator|.
+name|contains
+argument_list|(
+literal|","
+argument_list|)
+operator|&&
 name|matcher
 operator|.
 name|matches

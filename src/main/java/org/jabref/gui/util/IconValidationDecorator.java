@@ -235,7 +235,7 @@ argument_list|()
 return|;
 block|}
 DECL|method|createDecorationNode (ValidationMessage message)
-specifier|private
+specifier|public
 name|Node
 name|createDecorationNode
 parameter_list|(
