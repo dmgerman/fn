@@ -825,6 +825,33 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+DECL|method|parseSingleEntry (String bibtexString)
+specifier|public
+name|Optional
+argument_list|<
+name|BibEntry
+argument_list|>
+name|parseSingleEntry
+parameter_list|(
+name|String
+name|bibtexString
+parameter_list|)
+throws|throws
+name|ParseException
+block|{
+return|return
+name|parseEntries
+argument_list|(
+name|bibtexString
+argument_list|)
+operator|.
+name|stream
+argument_list|()
+operator|.
+name|findFirst
+argument_list|()
+return|;
+block|}
 comment|/**      * Will parse the BibTex-Data found when reading from reader. Ignores any encoding supplied in the file by      * "Encoding: myEncoding".      *<p>      * The reader will be consumed.      *<p>      * Multiple calls to parse() return the same results      *      * @return ParserResult      * @throws IOException      */
 DECL|method|parse (Reader in)
 specifier|public

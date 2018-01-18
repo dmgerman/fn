@@ -81,14 +81,14 @@ import|;
 end_import
 
 begin_class
-DECL|class|BiblatexCleanupTest
+DECL|class|ConvertToBiblatexCleanupTest
 specifier|public
 class|class
-name|BiblatexCleanupTest
+name|ConvertToBiblatexCleanupTest
 block|{
 DECL|field|worker
 specifier|private
-name|BiblatexCleanup
+name|ConvertToBiblatexCleanup
 name|worker
 decl_stmt|;
 annotation|@
@@ -102,16 +102,16 @@ block|{
 name|worker
 operator|=
 operator|new
-name|BiblatexCleanup
+name|ConvertToBiblatexCleanup
 argument_list|()
 expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|convertToBiblatexMovesYearMonthToDate ()
+DECL|method|cleanupMovesYearMonthToDate ()
 specifier|public
 name|void
-name|convertToBiblatexMovesYearMonthToDate
+name|cleanupMovesYearMonthToDate
 parameter_list|()
 block|{
 name|BibEntry
@@ -208,10 +208,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|convertToBiblatexDateAlreadyPresent ()
+DECL|method|cleanupWithDateAlreadyPresentDoesNothing ()
 specifier|public
 name|void
-name|convertToBiblatexDateAlreadyPresent
+name|cleanupWithDateAlreadyPresentDoesNothing
 parameter_list|()
 block|{
 name|BibEntry
@@ -315,6 +315,76 @@ argument_list|(
 name|FieldName
 operator|.
 name|DATE
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|cleanupMovesJournalToJournaltitle ()
+specifier|public
+name|void
+name|cleanupMovesJournalToJournaltitle
+parameter_list|()
+block|{
+name|BibEntry
+name|entry
+init|=
+operator|new
+name|BibEntry
+argument_list|()
+operator|.
+name|withField
+argument_list|(
+literal|"journal"
+argument_list|,
+literal|"Best of JabRef"
+argument_list|)
+decl_stmt|;
+name|worker
+operator|.
+name|cleanup
+argument_list|(
+name|entry
+argument_list|)
+expr_stmt|;
+name|Assert
+operator|.
+name|assertEquals
+argument_list|(
+name|Optional
+operator|.
+name|empty
+argument_list|()
+argument_list|,
+name|entry
+operator|.
+name|getField
+argument_list|(
+name|FieldName
+operator|.
+name|JOURNAL
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|Assert
+operator|.
+name|assertEquals
+argument_list|(
+name|Optional
+operator|.
+name|of
+argument_list|(
+literal|"Best of JabRef"
+argument_list|)
+argument_list|,
+name|entry
+operator|.
+name|getField
+argument_list|(
+name|FieldName
+operator|.
+name|JOURNALTITLE
 argument_list|)
 argument_list|)
 expr_stmt|;

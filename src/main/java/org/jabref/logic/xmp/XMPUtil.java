@@ -2818,8 +2818,12 @@ block|{
 comment|/*                  * Year + Month -> Date                  *                  * Field: dc:date                  *                  * Type: seq Date                  *                  * Category: External                  *                  * Description: Date(s) that something interesting happened to                  * the resource.                  *                  * Bibtex-Fields used: year, month                  */
 name|entry
 operator|.
-name|getPublicationDate
-argument_list|()
+name|getFieldOrAlias
+argument_list|(
+name|FieldName
+operator|.
+name|DATE
+argument_list|)
 operator|.
 name|ifPresent
 argument_list|(

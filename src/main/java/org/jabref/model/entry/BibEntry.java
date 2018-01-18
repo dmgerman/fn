@@ -2637,7 +2637,7 @@ DECL|method|getPublicationDate ()
 specifier|public
 name|Optional
 argument_list|<
-name|String
+name|Date
 argument_list|>
 name|getPublicationDate
 parameter_list|()
@@ -2648,6 +2648,13 @@ argument_list|(
 name|FieldName
 operator|.
 name|DATE
+argument_list|)
+operator|.
+name|flatMap
+argument_list|(
+name|Date
+operator|::
+name|parse
 argument_list|)
 return|;
 block|}
