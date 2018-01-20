@@ -38,11 +38,6 @@ decl_stmt|;
 name|requires
 name|jgoodies
 operator|.
-name|looks
-decl_stmt|;
-name|requires
-name|jgoodies
-operator|.
 name|forms
 decl_stmt|;
 name|requires
