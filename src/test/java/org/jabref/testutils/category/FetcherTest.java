@@ -118,7 +118,9 @@ DECL|annotation|FetcherTest
 specifier|public
 annotation_defn|@interface
 name|FetcherTest
-block|{ }
+block|{
+comment|//empty
+block|}
 end_annotation_defn
 
 end_unit
