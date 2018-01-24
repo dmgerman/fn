@@ -537,6 +537,8 @@ argument_list|,
 name|layoutPreferences
 argument_list|,
 name|savePreferences
+argument_list|,
+literal|true
 argument_list|)
 operator|.
 name|withEncoding
