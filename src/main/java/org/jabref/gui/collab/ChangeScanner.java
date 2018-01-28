@@ -907,6 +907,11 @@ name|toFile
 argument_list|()
 argument_list|,
 name|importFormatPreferences
+argument_list|,
+name|Globals
+operator|.
+name|getFileUpdateMonitor
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|databaseInTemp
@@ -926,6 +931,11 @@ argument_list|(
 name|file
 argument_list|,
 name|importFormatPreferences
+argument_list|,
+name|Globals
+operator|.
+name|getFileUpdateMonitor
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|BibDatabaseContext

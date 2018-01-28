@@ -96,6 +96,34 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|util
+operator|.
+name|FileUpdateListener
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|util
+operator|.
+name|FileUpdateMonitor
+import|;
+end_import
+
+begin_import
+import|import
 name|com
 operator|.
 name|google
@@ -147,12 +175,14 @@ comment|/**  * This class monitors a set of files for changes. Upon detecting a 
 end_comment
 
 begin_class
-DECL|class|FileUpdateMonitor
+DECL|class|DefaultFileUpdateMonitor
 specifier|public
 class|class
-name|FileUpdateMonitor
+name|DefaultFileUpdateMonitor
 implements|implements
 name|Runnable
+implements|,
+name|FileUpdateMonitor
 block|{
 DECL|field|LOGGER
 specifier|private
@@ -165,7 +195,7 @@ name|LoggerFactory
 operator|.
 name|getLogger
 argument_list|(
-name|FileUpdateMonitor
+name|DefaultFileUpdateMonitor
 operator|.
 name|class
 argument_list|)
@@ -403,7 +433,8 @@ name|fileUpdated
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Add a new file to monitor.      *      * @param file The file to monitor.      * @throws IOException if the file does not exist.      */
+annotation|@
+name|Override
 DECL|method|addListenerForFile (Path file, FileUpdateListener listener)
 specifier|public
 name|void
@@ -451,7 +482,8 @@ name|listener
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Removes a listener from the monitor.      *      * @param path The path to remove.      */
+annotation|@
+name|Override
 DECL|method|removeListener (Path path, FileUpdateListener listener)
 specifier|public
 name|void

@@ -206,6 +206,20 @@ begin_import
 import|import
 name|org
 operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|util
+operator|.
+name|FileUpdateMonitor
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|slf4j
 operator|.
 name|Logger
@@ -244,15 +258,30 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|method|MetaDataParser ()
+DECL|field|fileMonitor
 specifier|private
+specifier|static
+name|FileUpdateMonitor
+name|fileMonitor
+decl_stmt|;
+DECL|method|MetaDataParser (FileUpdateMonitor fileMonitor)
+specifier|public
 name|MetaDataParser
-parameter_list|()
-block|{     }
+parameter_list|(
+name|FileUpdateMonitor
+name|fileMonitor
+parameter_list|)
+block|{
+name|MetaDataParser
+operator|.
+name|fileMonitor
+operator|=
+name|fileMonitor
+expr_stmt|;
+block|}
 comment|/**      * Parses the given data map and returns a new resulting {@link MetaData} instance.      */
 DECL|method|parse (Map<String, String> data, Character keywordSeparator)
 specifier|public
-specifier|static
 name|MetaData
 name|parse
 parameter_list|(
@@ -286,7 +315,6 @@ block|}
 comment|/**      * Parses the data map and changes the given {@link MetaData} instance respectively.      */
 DECL|method|parse (MetaData metaData, Map<String, String> data, Character keywordSeparator)
 specifier|public
-specifier|static
 name|MetaData
 name|parse
 parameter_list|(
@@ -557,6 +585,8 @@ argument_list|(
 name|value
 argument_list|,
 name|keywordSeparator
+argument_list|,
+name|fileMonitor
 argument_list|)
 argument_list|)
 expr_stmt|;

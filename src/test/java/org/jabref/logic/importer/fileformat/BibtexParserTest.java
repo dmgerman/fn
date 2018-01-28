@@ -476,6 +476,34 @@ begin_import
 import|import
 name|org
 operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|util
+operator|.
+name|DummyFileUpdateMonitor
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|util
+operator|.
+name|FileUpdateMonitor
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|junit
 operator|.
 name|Before
@@ -594,6 +622,15 @@ specifier|private
 name|BibtexParser
 name|parser
 decl_stmt|;
+DECL|field|fileMonitor
+specifier|private
+name|FileUpdateMonitor
+name|fileMonitor
+init|=
+operator|new
+name|DummyFileUpdateMonitor
+argument_list|()
+decl_stmt|;
 annotation|@
 name|Before
 DECL|method|setUp ()
@@ -634,6 +671,10 @@ operator|new
 name|BibtexParser
 argument_list|(
 name|importFormatPreferences
+argument_list|,
+operator|new
+name|DummyFileUpdateMonitor
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -838,6 +879,8 @@ operator|+
 literal|"  title = {Title A}}\n"
 argument_list|,
 name|importFormatPreferences
+argument_list|,
+name|fileMonitor
 argument_list|)
 decl_stmt|;
 name|BibEntry
@@ -923,6 +966,8 @@ operator|+
 literal|"  author={Norton Bar}}"
 argument_list|,
 name|importFormatPreferences
+argument_list|,
+name|fileMonitor
 argument_list|)
 decl_stmt|;
 name|assertTrue
@@ -988,6 +1033,8 @@ argument_list|(
 literal|""
 argument_list|,
 name|importFormatPreferences
+argument_list|,
+name|fileMonitor
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -1024,6 +1071,8 @@ argument_list|(
 literal|"@@article@@{{{{{{}"
 argument_list|,
 name|importFormatPreferences
+argument_list|,
+name|fileMonitor
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -2075,6 +2124,8 @@ literal|"}"
 argument_list|)
 argument_list|,
 name|importFormatPreferences
+argument_list|,
+name|fileMonitor
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -2636,6 +2687,8 @@ literal|"  author={Norton Bar}}"
 argument_list|)
 argument_list|,
 name|importFormatPreferences
+argument_list|,
+name|fileMonitor
 argument_list|)
 decl_stmt|;
 name|List
@@ -3389,6 +3442,8 @@ literal|"}))"
 argument_list|)
 argument_list|,
 name|importFormatPreferences
+argument_list|,
+name|fileMonitor
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -3658,6 +3713,8 @@ literal|"}))"
 argument_list|)
 argument_list|,
 name|importFormatPreferences
+argument_list|,
+name|fileMonitor
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -4482,6 +4539,8 @@ literal|"}))"
 argument_list|)
 argument_list|,
 name|importFormatPreferences
+argument_list|,
+name|fileMonitor
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -4596,6 +4655,8 @@ literal|"  author={Norton Bar}}"
 argument_list|)
 argument_list|,
 name|importFormatPreferences
+argument_list|,
+name|fileMonitor
 argument_list|)
 decl_stmt|;
 name|List
@@ -5144,6 +5205,8 @@ literal|"@article{test,author={author bracket } too much}"
 argument_list|)
 argument_list|,
 name|importFormatPreferences
+argument_list|,
+name|fileMonitor
 argument_list|)
 decl_stmt|;
 name|List
@@ -5207,6 +5270,8 @@ literal|"@article{test,author={author bracket }, too much}"
 argument_list|)
 argument_list|,
 name|importFormatPreferences
+argument_list|,
+name|fileMonitor
 argument_list|)
 decl_stmt|;
 name|assertTrue
@@ -5751,6 +5816,8 @@ literal|"@article{test,author={Ed von Test}}"
 argument_list|)
 argument_list|,
 name|importFormatPreferences
+argument_list|,
+name|fileMonitor
 argument_list|)
 decl_stmt|;
 name|assertTrue
@@ -6690,6 +6757,8 @@ literal|"}"
 argument_list|)
 argument_list|,
 name|importFormatPreferences
+argument_list|,
+name|fileMonitor
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -7934,6 +8003,8 @@ literal|"@article{canh05,file = {ups  sala}}"
 argument_list|)
 argument_list|,
 name|importFormatPreferences
+argument_list|,
+name|fileMonitor
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -8003,6 +8074,8 @@ literal|"@article{canh05,abstract = {ups  \tsala}}"
 argument_list|)
 argument_list|,
 name|importFormatPreferences
+argument_list|,
+name|fileMonitor
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -8074,6 +8147,8 @@ literal|"@article{canh05,abstract = {ups \nsala}}"
 argument_list|)
 argument_list|,
 name|importFormatPreferences
+argument_list|,
+name|fileMonitor
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -9534,6 +9609,8 @@ literal|"@Comment{jabref-meta: saveOrderConfig:specified;author;false;year;true;
 argument_list|)
 argument_list|,
 name|importFormatPreferences
+argument_list|,
+name|fileMonitor
 argument_list|)
 decl_stmt|;
 name|Optional
@@ -9625,6 +9702,8 @@ literal|"@comment{jabref-meta: keypatterndefault:test;}"
 argument_list|)
 argument_list|,
 name|importFormatPreferences
+argument_list|,
+name|fileMonitor
 argument_list|)
 decl_stmt|;
 name|GlobalBibtexKeyPattern
@@ -9792,6 +9871,8 @@ literal|"}"
 argument_list|)
 argument_list|,
 name|importFormatPreferences
+argument_list|,
+name|fileMonitor
 argument_list|)
 decl_stmt|;
 name|GroupTreeNode
@@ -9994,6 +10075,8 @@ literal|"@Comment{jabref-meta: selector_status:approved;captured;received;status
 argument_list|)
 argument_list|,
 name|importFormatPreferences
+argument_list|,
+name|fileMonitor
 argument_list|)
 decl_stmt|;
 name|List
@@ -10447,6 +10530,8 @@ literal|"@comment{jabref-meta: fileDirectory-defaultOwner-user:D:\\\\Documents;}
 argument_list|)
 argument_list|,
 name|importFormatPreferences
+argument_list|,
+name|fileMonitor
 argument_list|)
 decl_stmt|;
 name|assertEquals

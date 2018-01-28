@@ -1804,6 +1804,31 @@ return|return
 name|files
 return|;
 block|}
+comment|/**      * Creates a string representation of the given path that should work on all systems.      * This method should be used when a path needs to be stored in the bib file or preferences.      */
+DECL|method|toPortableString (Path path)
+specifier|public
+specifier|static
+name|String
+name|toPortableString
+parameter_list|(
+name|Path
+name|path
+parameter_list|)
+block|{
+return|return
+name|path
+operator|.
+name|toString
+argument_list|()
+operator|.
+name|replace
+argument_list|(
+literal|'\\'
+argument_list|,
+literal|'/'
+argument_list|)
+return|;
+block|}
 block|}
 end_class
 

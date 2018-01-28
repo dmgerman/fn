@@ -100,6 +100,20 @@ name|BibEntry
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|util
+operator|.
+name|DummyFileUpdateMonitor
+import|;
+end_import
+
 begin_class
 DECL|class|BibtexTestData
 specifier|public
@@ -190,6 +204,10 @@ operator|new
 name|BibtexParser
 argument_list|(
 name|importFormatPreferences
+argument_list|,
+operator|new
+name|DummyFileUpdateMonitor
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|ParserResult
