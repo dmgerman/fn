@@ -217,7 +217,16 @@ name|setField
 argument_list|(
 literal|"publisher"
 argument_list|,
-literal|"Addison Wesley"
+literal|"ADDISON WESLEY PUB CO INC"
+argument_list|)
+expr_stmt|;
+name|bibEntry
+operator|.
+name|setField
+argument_list|(
+literal|"pagetotal"
+argument_list|,
+literal|"416"
 argument_list|)
 expr_stmt|;
 name|bibEntry
@@ -244,7 +253,7 @@ name|setField
 argument_list|(
 literal|"date"
 argument_list|,
-literal|"2018-01-11"
+literal|"2018-01-06"
 argument_list|)
 expr_stmt|;
 name|bibEntry
