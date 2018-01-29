@@ -188,6 +188,20 @@ name|jabref
 operator|.
 name|gui
 operator|.
+name|keyboard
+operator|.
+name|KeyBindingRepository
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
 name|renderer
 operator|.
 name|CompleteRenderer
@@ -483,7 +497,7 @@ static|static
 block|{
 comment|//MainTable.updateRenderers();
 block|}
-DECL|method|MainTable (MainTableDataModel model, JabRefFrame frame, BasePanel panel, BibDatabase database, MainTablePreferences preferences, ExternalFileTypes externalFileTypes)
+DECL|method|MainTable (MainTableDataModel model, JabRefFrame frame, BasePanel panel, BibDatabase database, MainTablePreferences preferences, ExternalFileTypes externalFileTypes, KeyBindingRepository keyBindingRepository)
 specifier|public
 name|MainTable
 parameter_list|(
@@ -504,6 +518,9 @@ name|preferences
 parameter_list|,
 name|ExternalFileTypes
 name|externalFileTypes
+parameter_list|,
+name|KeyBindingRepository
+name|keyBindingRepository
 parameter_list|)
 block|{
 name|super
@@ -585,9 +602,23 @@ argument_list|)
 operator|.
 name|withContextMenu
 argument_list|(
+name|entry1
+lambda|->
 name|RightClickMenu
-operator|::
+operator|.
 name|create
+argument_list|(
+name|entry1
+argument_list|,
+name|keyBindingRepository
+argument_list|,
+name|panel
+argument_list|,
+name|Globals
+operator|.
+name|getKeyPrefs
+argument_list|()
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;

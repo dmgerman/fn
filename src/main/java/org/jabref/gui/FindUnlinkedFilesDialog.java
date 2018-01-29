@@ -947,15 +947,6 @@ extends|extends
 name|JabRefDialog
 block|{
 comment|/**      * Keys to be used for referencing this Action.      */
-DECL|field|ACTION_COMMAND
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|ACTION_COMMAND
-init|=
-literal|"findUnlinkedFiles"
-decl_stmt|;
 DECL|field|ACTION_MENU_TITLE
 specifier|public
 specifier|static

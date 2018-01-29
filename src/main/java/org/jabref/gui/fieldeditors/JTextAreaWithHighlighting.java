@@ -535,6 +535,9 @@ argument_list|(
 name|Actions
 operator|.
 name|REDO
+operator|.
+name|name
+argument_list|()
 argument_list|)
 block|{
 annotation|@

@@ -1963,7 +1963,7 @@ specifier|private
 specifier|final
 name|Map
 argument_list|<
-name|String
+name|Actions
 argument_list|,
 name|Object
 argument_list|>
@@ -3154,9 +3154,9 @@ name|actions
 operator|.
 name|put
 argument_list|(
-name|FindUnlinkedFilesDialog
+name|Actions
 operator|.
-name|ACTION_COMMAND
+name|findUnlinkedFiles
 argument_list|,
 call|(
 name|BaseAction
@@ -4859,7 +4859,7 @@ literal|0
 argument_list|)
 argument_list|)
 operator|.
-name|getActionName
+name|getCommand
 argument_list|()
 argument_list|,
 operator|new
@@ -4911,7 +4911,7 @@ literal|0
 argument_list|)
 argument_list|)
 operator|.
-name|getActionName
+name|getCommand
 argument_list|()
 argument_list|,
 operator|new
@@ -4963,7 +4963,7 @@ literal|0
 argument_list|)
 argument_list|)
 operator|.
-name|getActionName
+name|getCommand
 argument_list|()
 argument_list|,
 operator|new
@@ -5018,7 +5018,7 @@ argument_list|(
 name|prio
 argument_list|)
 operator|.
-name|getActionName
+name|getCommand
 argument_list|()
 argument_list|,
 operator|new
@@ -5066,7 +5066,7 @@ argument_list|(
 name|rank
 argument_list|)
 operator|.
-name|getActionName
+name|getCommand
 argument_list|()
 argument_list|,
 operator|new
@@ -5114,7 +5114,7 @@ argument_list|(
 name|status
 argument_list|)
 operator|.
-name|getActionName
+name|getCommand
 argument_list|()
 argument_list|,
 operator|new
@@ -7331,18 +7331,18 @@ block|}
 end_function
 
 begin_comment
-comment|/**      * This method is called from JabRefFrame if a database specific action is requested by the user. Runs the command      * if it is defined, or prints an error message to the standard error stream.      *      * @param _command The name of the command to run.      */
+comment|/**      * This method is called from JabRefFrame if a database specific action is requested by the user. Runs the command      * if it is defined, or prints an error message to the standard error stream.      *      * @param command The name of the command to run.      */
 end_comment
 
 begin_function
-DECL|method|runCommand (final String _command)
+DECL|method|runCommand (final Actions command)
 specifier|public
 name|void
 name|runCommand
 parameter_list|(
 specifier|final
-name|String
-name|_command
+name|Actions
+name|command
 parameter_list|)
 block|{
 if|if
@@ -7352,7 +7352,7 @@ name|actions
 operator|.
 name|containsKey
 argument_list|(
-name|_command
+name|command
 argument_list|)
 condition|)
 block|{
@@ -7362,7 +7362,7 @@ name|info
 argument_list|(
 literal|"No action defined for '"
 operator|+
-name|_command
+name|command
 operator|+
 literal|'\''
 argument_list|)
@@ -7376,7 +7376,7 @@ name|actions
 operator|.
 name|get
 argument_list|(
-name|_command
+name|command
 argument_list|)
 decl_stmt|;
 try|try
@@ -8604,6 +8604,11 @@ name|getTablePreferences
 argument_list|()
 argument_list|,
 name|externalFileTypes
+argument_list|,
+name|Globals
+operator|.
+name|getKeyPrefs
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|mainTable

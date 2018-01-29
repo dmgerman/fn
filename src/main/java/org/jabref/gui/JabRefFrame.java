@@ -1268,20 +1268,6 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|maintable
-operator|.
-name|RightClickMenu
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
 name|menus
 operator|.
 name|ChangeEntryTypeMenu
@@ -3528,7 +3514,7 @@ literal|0
 argument_list|)
 argument_list|)
 operator|.
-name|getActionName
+name|getCommand
 argument_list|()
 argument_list|,
 operator|new
@@ -3604,7 +3590,7 @@ literal|0
 argument_list|)
 argument_list|)
 operator|.
-name|getActionName
+name|getCommand
 argument_list|()
 argument_list|,
 operator|new
@@ -3680,7 +3666,7 @@ literal|0
 argument_list|)
 argument_list|)
 operator|.
-name|getActionName
+name|getCommand
 argument_list|()
 argument_list|,
 operator|new
@@ -5261,9 +5247,9 @@ init|=
 operator|new
 name|GeneralAction
 argument_list|(
-name|FindUnlinkedFilesDialog
+name|Actions
 operator|.
-name|ACTION_COMMAND
+name|findUnlinkedFiles
 argument_list|,
 name|FindUnlinkedFilesDialog
 operator|.
@@ -9084,19 +9070,7 @@ operator|new
 name|JMenu
 argument_list|()
 expr_stmt|;
-name|RightClickMenu
-operator|.
-name|populateSpecialFieldMenu
-argument_list|(
-name|rankSubMenu
-argument_list|,
-name|SpecialField
-operator|.
-name|RANKING
-argument_list|,
-name|this
-argument_list|)
-expr_stmt|;
+comment|// TODO RightClickMenu.createSpecialFieldMenu(rankSubMenu, SpecialField.RANKING, this);
 name|edit
 operator|.
 name|add
@@ -9181,19 +9155,7 @@ operator|new
 name|JMenu
 argument_list|()
 expr_stmt|;
-name|RightClickMenu
-operator|.
-name|populateSpecialFieldMenu
-argument_list|(
-name|rankSubMenu
-argument_list|,
-name|SpecialField
-operator|.
-name|PRIORITY
-argument_list|,
-name|this
-argument_list|)
-expr_stmt|;
+comment|// TODO RightClickMenu.createSpecialFieldMenu(rankSubMenu, SpecialField.PRIORITY, this);
 name|edit
 operator|.
 name|add
@@ -9252,19 +9214,7 @@ operator|new
 name|JMenu
 argument_list|()
 expr_stmt|;
-name|RightClickMenu
-operator|.
-name|populateSpecialFieldMenu
-argument_list|(
-name|rankSubMenu
-argument_list|,
-name|SpecialField
-operator|.
-name|READ_STATUS
-argument_list|,
-name|this
-argument_list|)
-expr_stmt|;
+comment|// TODO RightClickMenu.createSpecialFieldMenu(rankSubMenu, SpecialField.READ_STATUS, this);
 name|edit
 operator|.
 name|add
@@ -13949,14 +13899,14 @@ block|{
 DECL|field|command
 specifier|private
 specifier|final
-name|String
+name|Actions
 name|command
 decl_stmt|;
-DECL|method|GeneralAction (String command, String text)
+DECL|method|GeneralAction (Actions command, String text)
 specifier|public
 name|GeneralAction
 parameter_list|(
-name|String
+name|Actions
 name|command
 parameter_list|,
 name|String
@@ -13979,11 +13929,11 @@ name|text
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|GeneralAction (String command, String text, String description)
+DECL|method|GeneralAction (Actions command, String text, String description)
 specifier|public
 name|GeneralAction
 parameter_list|(
-name|String
+name|Actions
 name|command
 parameter_list|,
 name|String
@@ -14018,11 +13968,11 @@ name|description
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|GeneralAction (String command, String text, Icon icon)
+DECL|method|GeneralAction (Actions command, String text, Icon icon)
 specifier|public
 name|GeneralAction
 parameter_list|(
-name|String
+name|Actions
 name|command
 parameter_list|,
 name|String
@@ -14053,11 +14003,11 @@ name|text
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|GeneralAction (String command, String text, String description, Icon icon)
+DECL|method|GeneralAction (Actions command, String text, String description, Icon icon)
 specifier|public
 name|GeneralAction
 parameter_list|(
-name|String
+name|Actions
 name|command
 parameter_list|,
 name|String
@@ -14100,11 +14050,11 @@ name|description
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|GeneralAction (String command, String text, KeyStroke key)
+DECL|method|GeneralAction (Actions command, String text, KeyStroke key)
 specifier|public
 name|GeneralAction
 parameter_list|(
-name|String
+name|Actions
 name|command
 parameter_list|,
 name|String
@@ -14139,11 +14089,11 @@ name|key
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|GeneralAction (String command, String text, String description, KeyStroke key)
+DECL|method|GeneralAction (Actions command, String text, String description, KeyStroke key)
 specifier|public
 name|GeneralAction
 parameter_list|(
-name|String
+name|Actions
 name|command
 parameter_list|,
 name|String
@@ -14190,11 +14140,11 @@ name|key
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|GeneralAction (String command, String text, String description, KeyStroke key, Icon icon)
+DECL|method|GeneralAction (Actions command, String text, String description, KeyStroke key, Icon icon)
 specifier|public
 name|GeneralAction
 parameter_list|(
-name|String
+name|Actions
 name|command
 parameter_list|,
 name|String
@@ -14603,14 +14553,14 @@ block|{
 DECL|field|command
 specifier|private
 specifier|final
-name|String
+name|Actions
 name|command
 decl_stmt|;
-DECL|method|EditAction (String command, String menuTitle, String description, KeyStroke key, Icon icon)
+DECL|method|EditAction (Actions command, String menuTitle, String description, KeyStroke key, Icon icon)
 specifier|public
 name|EditAction
 parameter_list|(
-name|String
+name|Actions
 name|command
 parameter_list|,
 name|String
@@ -14735,6 +14685,9 @@ argument_list|,
 literal|0
 argument_list|,
 name|command
+operator|.
+name|name
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
