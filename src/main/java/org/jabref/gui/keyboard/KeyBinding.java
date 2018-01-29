@@ -165,25 +165,6 @@ operator|.
 name|QUALITY
 argument_list|)
 block|,
-DECL|enumConstant|CLEAR_SEARCH
-name|CLEAR_SEARCH
-argument_list|(
-literal|"Clear search"
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Clear search"
-argument_list|)
-argument_list|,
-literal|"ESCAPE"
-argument_list|,
-name|KeyBindingCategory
-operator|.
-name|SEARCH
-argument_list|)
-block|,
 DECL|enumConstant|CLOSE_DATABASE
 name|CLOSE_DATABASE
 argument_list|(
@@ -234,7 +215,7 @@ argument_list|(
 literal|"Close entry editor"
 argument_list|)
 argument_list|,
-literal|"Esc"
+literal|"ESCAPE"
 argument_list|,
 name|KeyBindingCategory
 operator|.

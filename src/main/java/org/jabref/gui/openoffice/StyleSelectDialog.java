@@ -1004,7 +1004,7 @@ name|JButton
 argument_list|(
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|ADD_NOBOX
 operator|.
@@ -1023,7 +1023,7 @@ name|JButton
 argument_list|(
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|REMOVE_NOBOX
 operator|.
@@ -1292,6 +1292,18 @@ argument_list|(
 literal|null
 argument_list|,
 literal|null
+argument_list|,
+name|Globals
+operator|.
+name|getKeyPrefs
+argument_list|()
+argument_list|,
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getPreviewPreferences
+argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// Use the test entry from the Preview settings tab in Preferences:

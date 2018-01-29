@@ -1296,7 +1296,7 @@ decl_stmt|;
 comment|// Error occured during processing of an entry. Highlight it!
 name|panel
 operator|.
-name|highlightEntry
+name|clearAndSelect
 argument_list|(
 name|entry
 argument_list|)
@@ -1822,11 +1822,6 @@ block|{
 name|runCommand
 argument_list|()
 expr_stmt|;
-name|frame
-operator|.
-name|updateEnabledState
-argument_list|()
-expr_stmt|;
 block|}
 DECL|method|saveAs ()
 specifier|public
@@ -2180,11 +2175,6 @@ name|getPath
 argument_list|()
 argument_list|)
 argument_list|)
-expr_stmt|;
-name|frame
-operator|.
-name|updateEnabledState
-argument_list|()
 expr_stmt|;
 block|}
 DECL|method|readyForAutosave (BibDatabaseContext context)

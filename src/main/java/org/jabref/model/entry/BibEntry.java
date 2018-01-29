@@ -162,6 +162,16 @@ name|javafx
 operator|.
 name|beans
 operator|.
+name|Observable
+import|;
+end_import
+
+begin_import
+import|import
+name|javafx
+operator|.
+name|beans
+operator|.
 name|binding
 operator|.
 name|Bindings
@@ -4032,6 +4042,23 @@ parameter_list|()
 block|{
 return|return
 name|fields
+return|;
+block|}
+comment|/**      * Returns a list of observables that represent the data of the entry.      */
+DECL|method|getObservables ()
+specifier|public
+name|Observable
+index|[]
+name|getObservables
+parameter_list|()
+block|{
+return|return
+operator|new
+name|Observable
+index|[]
+block|{
+name|fields
+block|}
 return|;
 block|}
 DECL|interface|GetFieldInterface

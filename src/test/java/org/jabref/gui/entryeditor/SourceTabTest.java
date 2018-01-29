@@ -102,6 +102,20 @@ name|org
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
+name|importer
+operator|.
+name|ImportFormatPreferences
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
 name|model
 operator|.
 name|database
@@ -142,18 +156,6 @@ begin_import
 import|import
 name|org
 operator|.
-name|jabref
-operator|.
-name|preferences
-operator|.
-name|JabRefPreferences
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
 name|fxmisc
 operator|.
 name|richtext
@@ -168,6 +170,10 @@ name|org
 operator|.
 name|junit
 operator|.
+name|jupiter
+operator|.
+name|api
+operator|.
 name|Test
 import|;
 end_import
@@ -176,9 +182,27 @@ begin_import
 import|import
 name|org
 operator|.
-name|mockito
+name|junit
 operator|.
-name|Answers
+name|jupiter
+operator|.
+name|api
+operator|.
+name|extension
+operator|.
+name|ExtendWith
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|testfx
+operator|.
+name|api
+operator|.
+name|FxRobot
 import|;
 end_import
 
@@ -190,9 +214,23 @@ name|testfx
 operator|.
 name|framework
 operator|.
-name|junit
+name|junit5
 operator|.
-name|ApplicationTest
+name|ApplicationExtension
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|testfx
+operator|.
+name|framework
+operator|.
+name|junit5
+operator|.
+name|Start
 import|;
 end_import
 
@@ -209,12 +247,17 @@ import|;
 end_import
 
 begin_class
-DECL|class|EntryEditorTest
+annotation|@
+name|ExtendWith
+argument_list|(
+name|ApplicationExtension
+operator|.
+name|class
+argument_list|)
+DECL|class|SourceTabTest
 specifier|public
 class|class
-name|EntryEditorTest
-extends|extends
-name|ApplicationTest
+name|SourceTabTest
 block|{
 DECL|field|stage
 specifier|private
@@ -242,17 +285,15 @@ name|SourceTab
 name|sourceTab
 decl_stmt|;
 annotation|@
-name|Override
-DECL|method|start (Stage stage)
+name|Start
+DECL|method|onStart (Stage stage)
 specifier|public
 name|void
-name|start
+name|onStart
 parameter_list|(
 name|Stage
 name|stage
 parameter_list|)
-throws|throws
-name|Exception
 block|{
 name|area
 operator|=
@@ -267,20 +308,6 @@ argument_list|(
 literal|"some example\n text to go here\n across a couple of \n lines...."
 argument_list|)
 expr_stmt|;
-name|JabRefPreferences
-name|preferences
-init|=
-name|mock
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|class
-argument_list|,
-name|Answers
-operator|.
-name|RETURNS_DEEP_STUBS
-argument_list|)
-decl_stmt|;
 name|sourceTab
 operator|=
 operator|new
@@ -298,7 +325,12 @@ operator|new
 name|LatexFieldFormatterPreferences
 argument_list|()
 argument_list|,
-name|preferences
+name|mock
+argument_list|(
+name|ImportFormatPreferences
+operator|.
+name|class
+argument_list|)
 argument_list|,
 operator|new
 name|DummyFileUpdateMonitor
@@ -387,11 +419,13 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|switchingFromSourceTabDoesNotThrowException ()
-specifier|public
+DECL|method|switchingFromSourceTabDoesNotThrowException (FxRobot robot)
 name|void
 name|switchingFromSourceTabDoesNotThrowException
-parameter_list|()
+parameter_list|(
+name|FxRobot
+name|robot
+parameter_list|)
 throws|throws
 name|Exception
 block|{
@@ -412,6 +446,8 @@ literal|"testvalue"
 argument_list|)
 expr_stmt|;
 comment|// Update source editor
+name|robot
+operator|.
 name|interact
 argument_list|(
 parameter_list|()
@@ -427,6 +463,8 @@ literal|2
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|robot
+operator|.
 name|interact
 argument_list|(
 parameter_list|()
@@ -439,6 +477,8 @@ name|entry
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|robot
+operator|.
 name|clickOn
 argument_list|(
 literal|1200
@@ -446,12 +486,16 @@ argument_list|,
 literal|500
 argument_list|)
 expr_stmt|;
+name|robot
+operator|.
 name|interrupt
 argument_list|(
 literal|100
 argument_list|)
 expr_stmt|;
 comment|// Switch to different tab& update entry
+name|robot
+operator|.
 name|interact
 argument_list|(
 parameter_list|()
@@ -467,6 +511,8 @@ literal|1
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|robot
+operator|.
 name|interact
 argument_list|(
 parameter_list|()
@@ -479,6 +525,8 @@ literal|600
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|robot
+operator|.
 name|interact
 argument_list|(
 parameter_list|()
@@ -494,6 +542,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// No exception should be thrown
+name|robot
+operator|.
 name|interrupt
 argument_list|(
 literal|100

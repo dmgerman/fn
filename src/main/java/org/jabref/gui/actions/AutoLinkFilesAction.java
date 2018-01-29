@@ -201,7 +201,7 @@ name|SMALL_ICON
 argument_list|,
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|AUTO_FILE_LINK
 operator|.
@@ -217,7 +217,7 @@ name|LARGE_ICON_KEY
 argument_list|,
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|AUTO_FILE_LINK
 operator|.

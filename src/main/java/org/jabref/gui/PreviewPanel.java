@@ -314,6 +314,20 @@ name|logic
 operator|.
 name|layout
 operator|.
+name|LayoutFormatterPreferences
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|layout
+operator|.
 name|LayoutHelper
 import|;
 end_import
@@ -565,8 +579,8 @@ operator|.
 name|empty
 argument_list|()
 decl_stmt|;
-comment|/**      * @param panel           (may be null) Only set this if the preview is associated to the main window.      * @param databaseContext (may be null) Used for resolving pdf directories for links.      */
-DECL|method|PreviewPanel (BasePanel panel, BibDatabaseContext databaseContext)
+comment|/**      * @param preferences      * @param panel           (may be null) Only set this if the preview is associated to the main window.      * @param databaseContext (may be null) Used for resolving pdf directories for links.      */
+DECL|method|PreviewPanel (BasePanel panel, BibDatabaseContext databaseContext, KeyBindingRepository keyBindingRepository, PreviewPreferences preferences)
 specifier|public
 name|PreviewPanel
 parameter_list|(
@@ -575,6 +589,12 @@ name|panel
 parameter_list|,
 name|BibDatabaseContext
 name|databaseContext
+parameter_list|,
+name|KeyBindingRepository
+name|keyBindingRepository
+parameter_list|,
+name|PreviewPreferences
+name|preferences
 parameter_list|)
 block|{
 name|this
@@ -619,18 +639,8 @@ name|this
 operator|.
 name|keyBindingRepository
 operator|=
-name|Globals
-operator|.
-name|getKeyPrefs
-argument_list|()
+name|keyBindingRepository
 expr_stmt|;
-name|DefaultTaskExecutor
-operator|.
-name|runInJavaFXThread
-argument_list|(
-parameter_list|()
-lambda|->
-block|{
 comment|// Set up scroll pane for preview pane
 name|setFitToHeight
 argument_list|(
@@ -738,9 +748,8 @@ name|createKeyBindings
 argument_list|()
 expr_stmt|;
 name|updateLayout
-argument_list|()
-expr_stmt|;
-block|}
+argument_list|(
+name|preferences
 argument_list|)
 expr_stmt|;
 block|}
@@ -843,7 +852,7 @@ argument_list|)
 argument_list|,
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|COPY
 operator|.
@@ -890,7 +899,7 @@ argument_list|)
 argument_list|,
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|PRINTED
 operator|.
@@ -1144,16 +1153,8 @@ name|style
 init|=
 name|previewPreferences
 operator|.
-name|getPreviewCycle
+name|getCurrentPreviewStyle
 argument_list|()
-operator|.
-name|get
-argument_list|(
-name|previewPreferences
-operator|.
-name|getPreviewCyclePosition
-argument_list|()
-argument_list|)
 decl_stmt|;
 if|if
 condition|(
@@ -1238,6 +1239,11 @@ name|previewPreferences
 operator|.
 name|getPreviewStyle
 argument_list|()
+argument_list|,
+name|previewPreferences
+operator|.
+name|getLayoutFormatterPreferences
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|basePanel
@@ -1271,30 +1277,16 @@ name|update
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|updateLayout ()
-specifier|public
-name|void
-name|updateLayout
-parameter_list|()
-block|{
-name|updateLayout
-argument_list|(
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getPreviewPreferences
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|updatePreviewLayout (String layoutFile)
+DECL|method|updatePreviewLayout (String layoutFile, LayoutFormatterPreferences layoutFormatterPreferences)
 specifier|private
 name|void
 name|updatePreviewLayout
 parameter_list|(
 name|String
 name|layoutFile
+parameter_list|,
+name|LayoutFormatterPreferences
+name|layoutFormatterPreferences
 parameter_list|)
 block|{
 name|StringReader
@@ -1326,16 +1318,7 @@ name|LayoutHelper
 argument_list|(
 name|sr
 argument_list|,
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getLayoutFormatterPreferences
-argument_list|(
-name|Globals
-operator|.
-name|journalAbbreviationLoader
-argument_list|)
+name|layoutFormatterPreferences
 argument_list|)
 operator|.
 name|getLayoutFromText
@@ -1823,6 +1806,17 @@ expr_stmt|;
 name|updatePreviewLayout
 argument_list|(
 name|layout
+argument_list|,
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getLayoutFormatterPreferences
+argument_list|(
+name|Globals
+operator|.
+name|journalAbbreviationLoader
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -1953,7 +1947,7 @@ name|ifPresent
 argument_list|(
 name|BasePanel
 operator|::
-name|hideBottomComponent
+name|closeBottomPane
 argument_list|)
 expr_stmt|;
 block|}

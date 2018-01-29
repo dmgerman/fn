@@ -380,7 +380,7 @@ name|GROUP_REFINING_ICON
 init|=
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|GROUP_REFINING
 operator|.
@@ -396,7 +396,7 @@ name|GROUP_INCLUDING_ICON
 init|=
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|GROUP_INCLUDING
 operator|.

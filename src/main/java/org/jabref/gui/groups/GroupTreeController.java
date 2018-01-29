@@ -954,10 +954,6 @@ argument_list|(
 name|GroupNodeViewModel
 operator|::
 name|getIcon
-argument_list|,
-name|GroupNodeViewModel
-operator|::
-name|getColor
 argument_list|)
 operator|.
 name|withTooltip

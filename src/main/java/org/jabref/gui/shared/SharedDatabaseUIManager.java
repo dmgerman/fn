@@ -577,11 +577,6 @@ argument_list|()
 expr_stmt|;
 name|jabRefFrame
 operator|.
-name|updateEnabledState
-argument_list|()
-expr_stmt|;
-name|jabRefFrame
-operator|.
 name|output
 argument_list|(
 name|Localization
@@ -770,7 +765,7 @@ parameter_list|()
 lambda|->
 name|panel
 operator|.
-name|hideBottomComponent
+name|closeBottomPane
 argument_list|()
 argument_list|)
 expr_stmt|;

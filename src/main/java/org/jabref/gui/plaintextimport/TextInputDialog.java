@@ -3651,7 +3651,7 @@ argument_list|)
 argument_list|,
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|PASTE
 operator|.
@@ -3791,7 +3791,7 @@ argument_list|)
 argument_list|,
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|OPEN
 operator|.
@@ -4015,7 +4015,7 @@ argument_list|)
 argument_list|,
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|NEW
 operator|.
@@ -4203,7 +4203,7 @@ name|okIcon
 init|=
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|PLAIN_TEXT_IMPORT_DONE
 operator|.
@@ -4218,7 +4218,7 @@ name|needIcon
 init|=
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|PLAIN_TEXT_IMPORT_TODO
 operator|.
