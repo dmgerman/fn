@@ -120,7 +120,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Before
+name|jupiter
+operator|.
+name|api
+operator|.
+name|BeforeEach
 import|;
 end_import
 
@@ -129,22 +133,12 @@ import|import
 name|org
 operator|.
 name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
 operator|.
 name|Test
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|experimental
-operator|.
-name|categories
-operator|.
-name|Category
 import|;
 end_import
 
@@ -154,7 +148,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
 operator|.
 name|assertEquals
 import|;
@@ -166,9 +164,13 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
 operator|.
-name|assertTrue
+name|api
+operator|.
+name|Assertions
+operator|.
+name|assertThrows
 import|;
 end_import
 
@@ -178,20 +180,19 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
 operator|.
-name|fail
+name|api
+operator|.
+name|Assertions
+operator|.
+name|assertTrue
 import|;
 end_import
 
 begin_class
 annotation|@
-name|Category
-argument_list|(
 name|FetcherTest
-operator|.
-name|class
-argument_list|)
 DECL|class|MedlineFetcherTest
 specifier|public
 class|class
@@ -217,7 +218,7 @@ decl_stmt|,
 name|bibEntrySari
 decl_stmt|;
 annotation|@
-name|Before
+name|BeforeEach
 DECL|method|setUp ()
 specifier|public
 name|void
@@ -377,7 +378,7 @@ name|setField
 argument_list|(
 literal|"revised"
 argument_list|,
-literal|"2017-02-17"
+literal|"2018-01-23"
 argument_list|)
 expr_stmt|;
 name|entryWijedasa
@@ -1348,14 +1349,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-argument_list|(
-name|expected
-operator|=
-name|FetcherException
-operator|.
-name|class
-argument_list|)
-comment|//caused by Optional.of(entry.get(0))
 DECL|method|testInvalidSearchTermCauseIndexOutOfBoundsException ()
 specifier|public
 name|void
@@ -1364,15 +1357,21 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|assertThrows
+argument_list|(
+name|FetcherException
+operator|.
+name|class
+argument_list|,
+parameter_list|()
+lambda|->
 name|fetcher
 operator|.
 name|performSearchById
 argument_list|(
 literal|"this.is.a.invalid.search.term.for.the.medline.fetcher"
 argument_list|)
-expr_stmt|;
-name|fail
-argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 annotation|@

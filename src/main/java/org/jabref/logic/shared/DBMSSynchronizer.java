@@ -436,6 +436,20 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|util
+operator|.
+name|FileUpdateMonitor
+import|;
+end_import
+
+begin_import
+import|import
 name|com
 operator|.
 name|google
@@ -466,13 +480,9 @@ begin_import
 import|import
 name|org
 operator|.
-name|apache
+name|slf4j
 operator|.
-name|commons
-operator|.
-name|logging
-operator|.
-name|Log
+name|Logger
 import|;
 end_import
 
@@ -480,13 +490,9 @@ begin_import
 import|import
 name|org
 operator|.
-name|apache
+name|slf4j
 operator|.
-name|commons
-operator|.
-name|logging
-operator|.
-name|LogFactory
+name|LoggerFactory
 import|;
 end_import
 
@@ -506,12 +512,12 @@ DECL|field|LOGGER
 specifier|private
 specifier|static
 specifier|final
-name|Log
+name|Logger
 name|LOGGER
 init|=
-name|LogFactory
+name|LoggerFactory
 operator|.
-name|getLog
+name|getLogger
 argument_list|(
 name|DBMSSynchronizer
 operator|.
@@ -568,7 +574,12 @@ specifier|final
 name|GlobalBibtexKeyPattern
 name|globalCiteKeyPattern
 decl_stmt|;
-DECL|method|DBMSSynchronizer (BibDatabaseContext bibDatabaseContext, Character keywordSeparator, GlobalBibtexKeyPattern globalCiteKeyPattern)
+DECL|field|fileMonitor
+specifier|private
+name|FileUpdateMonitor
+name|fileMonitor
+decl_stmt|;
+DECL|method|DBMSSynchronizer (BibDatabaseContext bibDatabaseContext, Character keywordSeparator, GlobalBibtexKeyPattern globalCiteKeyPattern, FileUpdateMonitor fileMonitor)
 specifier|public
 name|DBMSSynchronizer
 parameter_list|(
@@ -580,6 +591,9 @@ name|keywordSeparator
 parameter_list|,
 name|GlobalBibtexKeyPattern
 name|globalCiteKeyPattern
+parameter_list|,
+name|FileUpdateMonitor
+name|fileMonitor
 parameter_list|)
 block|{
 name|this
@@ -610,6 +624,12 @@ name|bibDatabaseContext
 operator|.
 name|getMetaData
 argument_list|()
+expr_stmt|;
+name|this
+operator|.
+name|fileMonitor
+operator|=
+name|fileMonitor
 expr_stmt|;
 name|this
 operator|.
@@ -1468,6 +1488,15 @@ literal|false
 argument_list|)
 expr_stmt|;
 name|MetaDataParser
+name|parser
+init|=
+operator|new
+name|MetaDataParser
+argument_list|(
+name|fileMonitor
+argument_list|)
+decl_stmt|;
+name|parser
 operator|.
 name|parse
 argument_list|(

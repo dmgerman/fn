@@ -474,6 +474,28 @@ name|String
 name|description
 parameter_list|)
 block|{
+if|if
+condition|(
+name|StringUtil
+operator|.
+name|isBlank
+argument_list|(
+name|description
+argument_list|)
+condition|)
+block|{
+name|this
+operator|.
+name|description
+operator|=
+name|Optional
+operator|.
+name|empty
+argument_list|()
+expr_stmt|;
+block|}
+else|else
+block|{
 name|this
 operator|.
 name|description
@@ -485,6 +507,7 @@ argument_list|(
 name|description
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 DECL|method|getIconName ()
 specifier|public

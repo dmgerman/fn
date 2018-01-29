@@ -14,6 +14,20 @@ name|exception
 package|;
 end_package
 
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|shared
+operator|.
+name|DBMSConnectionProperties
+import|;
+end_import
+
 begin_comment
 comment|/**  * This exception is thrown in case that {@link DBMSConnectionProperties} does not provide all data needed for a connection.  */
 end_comment

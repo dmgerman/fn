@@ -206,13 +206,13 @@ begin_import
 import|import
 name|org
 operator|.
-name|apache
+name|jabref
 operator|.
-name|commons
+name|model
 operator|.
-name|logging
+name|util
 operator|.
-name|Log
+name|FileUpdateMonitor
 import|;
 end_import
 
@@ -220,13 +220,19 @@ begin_import
 import|import
 name|org
 operator|.
-name|apache
+name|slf4j
 operator|.
-name|commons
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
 operator|.
-name|logging
+name|slf4j
 operator|.
-name|LogFactory
+name|LoggerFactory
 import|;
 end_import
 
@@ -240,27 +246,42 @@ DECL|field|LOGGER
 specifier|private
 specifier|static
 specifier|final
-name|Log
+name|Logger
 name|LOGGER
 init|=
-name|LogFactory
+name|LoggerFactory
 operator|.
-name|getLog
+name|getLogger
 argument_list|(
 name|MetaDataParser
 operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|method|MetaDataParser ()
+DECL|field|fileMonitor
 specifier|private
+specifier|static
+name|FileUpdateMonitor
+name|fileMonitor
+decl_stmt|;
+DECL|method|MetaDataParser (FileUpdateMonitor fileMonitor)
+specifier|public
 name|MetaDataParser
-parameter_list|()
-block|{     }
+parameter_list|(
+name|FileUpdateMonitor
+name|fileMonitor
+parameter_list|)
+block|{
+name|MetaDataParser
+operator|.
+name|fileMonitor
+operator|=
+name|fileMonitor
+expr_stmt|;
+block|}
 comment|/**      * Parses the given data map and returns a new resulting {@link MetaData} instance.      */
 DECL|method|parse (Map<String, String> data, Character keywordSeparator)
 specifier|public
-specifier|static
 name|MetaData
 name|parse
 parameter_list|(
@@ -294,7 +315,6 @@ block|}
 comment|/**      * Parses the data map and changes the given {@link MetaData} instance respectively.      */
 DECL|method|parse (MetaData metaData, Map<String, String> data, Character keywordSeparator)
 specifier|public
-specifier|static
 name|MetaData
 name|parse
 parameter_list|(
@@ -565,6 +585,8 @@ argument_list|(
 name|value
 argument_list|,
 name|keywordSeparator
+argument_list|,
+name|fileMonitor
 argument_list|)
 argument_list|)
 expr_stmt|;

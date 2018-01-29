@@ -501,6 +501,11 @@ operator|new
 name|BibtexParser
 argument_list|(
 name|importFormatPreferences
+argument_list|,
+name|Globals
+operator|.
+name|getFileUpdateMonitor
+argument_list|()
 argument_list|)
 operator|.
 name|parse
@@ -702,6 +707,11 @@ operator|new
 name|BibtexParser
 argument_list|(
 name|importFormatPreferences
+argument_list|,
+name|Globals
+operator|.
+name|getFileUpdateMonitor
+argument_list|()
 argument_list|)
 operator|.
 name|parse
@@ -836,6 +846,11 @@ operator|new
 name|BibtexParser
 argument_list|(
 name|importFormatPreferences
+argument_list|,
+name|Globals
+operator|.
+name|getFileUpdateMonitor
+argument_list|()
 argument_list|)
 operator|.
 name|parse

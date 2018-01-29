@@ -106,6 +106,20 @@ name|model
 operator|.
 name|groups
 operator|.
+name|TexGroup
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|groups
+operator|.
 name|WordKeywordGroup
 import|;
 end_import
@@ -209,6 +223,16 @@ name|String
 name|AUTOMATIC_KEYWORD_GROUP_ID
 init|=
 literal|"AutomaticKeywordGroup:"
+decl_stmt|;
+comment|/**      * Identifier for {@link TexGroup}.      */
+DECL|field|TEX_GROUP_ID
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|TEX_GROUP_ID
+init|=
+literal|"TexGroup:"
 decl_stmt|;
 DECL|method|MetadataSerializationConfiguration ()
 specifier|private
