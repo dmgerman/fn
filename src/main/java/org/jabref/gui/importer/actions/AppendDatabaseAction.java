@@ -1071,7 +1071,7 @@ name|dialog
 operator|.
 name|setLocationRelativeTo
 argument_list|(
-name|panel
+name|frame
 argument_list|)
 expr_stmt|;
 name|dialog
@@ -1337,7 +1337,7 @@ name|JOptionPane
 operator|.
 name|showMessageDialog
 argument_list|(
-name|panel
+name|frame
 argument_list|,
 name|ex
 operator|.

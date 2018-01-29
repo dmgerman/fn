@@ -172,16 +172,6 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|JTabbedPane
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
 name|JTextArea
 import|;
 end_import
@@ -193,6 +183,18 @@ operator|.
 name|swing
 operator|.
 name|JTextField
+import|;
+end_import
+
+begin_import
+import|import
+name|javafx
+operator|.
+name|scene
+operator|.
+name|control
+operator|.
+name|TabPane
 import|;
 end_import
 
@@ -530,7 +532,7 @@ comment|// all open databases from JabRefFrame
 DECL|field|parentTabbedPane
 specifier|private
 specifier|final
-name|JTabbedPane
+name|TabPane
 name|parentTabbedPane
 decl_stmt|;
 DECL|field|generatePressed
@@ -549,7 +551,7 @@ specifier|final
 name|JabRefFrame
 name|parentFrame
 decl_stmt|;
-DECL|method|FromAuxDialog (JabRefFrame frame, String title, boolean modal, JTabbedPane viewedDBs)
+DECL|method|FromAuxDialog (JabRefFrame frame, String title, boolean modal, TabPane viewedDBs)
 specifier|public
 name|FromAuxDialog
 parameter_list|(
@@ -562,7 +564,7 @@ parameter_list|,
 name|boolean
 name|modal
 parameter_list|,
-name|JTabbedPane
+name|TabPane
 name|viewedDBs
 parameter_list|)
 block|{
@@ -1022,7 +1024,10 @@ name|len
 init|=
 name|parentTabbedPane
 operator|.
-name|getTabCount
+name|getTabs
+argument_list|()
+operator|.
+name|size
 argument_list|()
 decl_stmt|;
 name|int
@@ -1052,10 +1057,16 @@ name|addItem
 argument_list|(
 name|parentTabbedPane
 operator|.
-name|getTitleAt
+name|getTabs
+argument_list|()
+operator|.
+name|get
 argument_list|(
 name|i
 argument_list|)
+operator|.
+name|getText
+argument_list|()
 argument_list|)
 expr_stmt|;
 if|if
@@ -1483,13 +1494,19 @@ name|BasePanel
 operator|)
 name|parentTabbedPane
 operator|.
-name|getComponentAt
+name|getTabs
+argument_list|()
+operator|.
+name|get
 argument_list|(
 name|dbChooser
 operator|.
 name|getSelectedIndex
 argument_list|()
 argument_list|)
+operator|.
+name|getContent
+argument_list|()
 decl_stmt|;
 name|notFoundList
 operator|.

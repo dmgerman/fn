@@ -2728,7 +2728,7 @@ block|}
 DECL|method|getFieldLength (String name)
 specifier|public
 specifier|static
-name|int
+name|Double
 name|getFieldLength
 parameter_list|(
 name|String

@@ -104,6 +104,18 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|JabRefIcon
+import|;
+end_import
+
+begin_import
+import|import
 name|com
 operator|.
 name|google
@@ -425,15 +437,9 @@ name|isCategory
 parameter_list|()
 block|{
 return|return
-operator|(
 name|keyBinding
 operator|==
 literal|null
-operator|)
-condition|?
-literal|true
-else|:
-literal|false
 return|;
 block|}
 comment|/**      * Sets a a new key bind to this objects key binding object if      * the given key event is a valid combination of keys.      *      * @param evt as KeyEvent      * @return true if the KeyEvent is a valid binding, false else      */
@@ -655,8 +661,6 @@ DECL|method|getIcon ()
 specifier|public
 name|Optional
 argument_list|<
-name|IconTheme
-operator|.
 name|JabRefIcon
 argument_list|>
 name|getIcon
@@ -677,7 +681,7 @@ name|of
 argument_list|(
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|CLEANUP_ENTRIES
 argument_list|)

@@ -442,7 +442,7 @@ name|sidePaneManager
 argument_list|,
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|WWW
 operator|.
@@ -828,7 +828,7 @@ argument_list|)
 argument_list|,
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|WWW
 argument_list|)

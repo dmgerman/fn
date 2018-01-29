@@ -244,7 +244,7 @@ name|super
 argument_list|(
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|ADD_ENTRY
 operator|.

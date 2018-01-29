@@ -878,7 +878,7 @@ literal|"Delete row"
 argument_list|,
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|REMOVE_NOBOX
 operator|.
@@ -1030,7 +1030,7 @@ literal|"Add row"
 argument_list|,
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|ADD_NOBOX
 operator|.

@@ -320,12 +320,9 @@ literal|"pdfSmall"
 argument_list|,
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|PDF_FILE
-operator|.
-name|getSmallIcon
-argument_list|()
 argument_list|)
 return|;
 block|}

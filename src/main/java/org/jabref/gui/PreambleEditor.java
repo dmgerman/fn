@@ -1071,7 +1071,7 @@ literal|"Undo"
 argument_list|,
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|UNDO
 operator|.
@@ -1128,7 +1128,7 @@ literal|"Redo"
 argument_list|,
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|REDO
 operator|.

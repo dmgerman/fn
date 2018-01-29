@@ -94,16 +94,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|SwingUtilities
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|jabref
@@ -254,35 +244,8 @@ operator|=
 name|frame
 expr_stmt|;
 comment|/*          * Change by Morten Alver 2005.12.04: By postponing the updating of the          * side pane components, we get rid of the annoying latency when          * switching tabs:          */
-name|frame
-operator|.
-name|getTabbedPane
-argument_list|()
-operator|.
-name|addChangeListener
-argument_list|(
-name|event
-lambda|->
-name|SwingUtilities
-operator|.
-name|invokeLater
-argument_list|(
-parameter_list|()
-lambda|->
-name|setActiveBasePanel
-argument_list|(
-name|SidePaneManager
-operator|.
-name|this
-operator|.
-name|frame
-operator|.
-name|getCurrentBasePanel
-argument_list|()
-argument_list|)
-argument_list|)
-argument_list|)
-expr_stmt|;
+comment|//frame.getTabbedPane().addChangeListener(event -> SwingUtilities.invokeLater(
+comment|//        () -> setActiveBasePanel(SidePaneManager.this.frame.getCurrentBasePanel())));
 name|sidep
 operator|=
 operator|new
@@ -620,16 +583,7 @@ operator|.
 name|getMainTable
 argument_list|()
 decl_stmt|;
-name|mainTable
-operator|.
-name|setSelected
-argument_list|(
-name|mainTable
-operator|.
-name|getSelectedRow
-argument_list|()
-argument_list|)
-expr_stmt|;
+comment|//mainTable.setSelected(mainTable.getSelectedRow());
 name|mainTable
 operator|.
 name|requestFocus

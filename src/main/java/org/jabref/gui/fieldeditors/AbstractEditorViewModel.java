@@ -498,9 +498,6 @@ operator|.
 name|getMainFrame
 argument_list|()
 operator|.
-name|getCurrentBasePanel
-argument_list|()
-operator|.
 name|getUndoManager
 argument_list|()
 decl_stmt|;

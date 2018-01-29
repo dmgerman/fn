@@ -1108,7 +1108,9 @@ literal|false
 argument_list|)
 return|;
 block|}
-comment|/**      * Renames a given file      *      * @param fromFile        The source filename to rename      * @param toFile          The target fileName      * @param replaceExisting Wether to replace existing files or not      * @return True if the rename was successful, false if an exception occurred      */
+comment|/**      * Renames a given file      *      * @param fromFile        The source filename to rename      * @param toFile          The target fileName      * @param replaceExisting Wether to replace existing files or not      * @return True if the rename was successful, false if an exception occurred      * @deprecated Use {@link #renameFileWithException(Path, Path, boolean)} instead and handle exception properly      */
+annotation|@
+name|Deprecated
 DECL|method|renameFile (Path fromFile, Path toFile, boolean replaceExisting)
 specifier|public
 specifier|static

@@ -24,16 +24,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Objects
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|swing
@@ -314,12 +304,7 @@ name|this
 operator|.
 name|preferences
 operator|=
-name|Objects
-operator|.
-name|requireNonNull
-argument_list|(
 name|preferences
-argument_list|)
 expr_stmt|;
 block|}
 annotation|@

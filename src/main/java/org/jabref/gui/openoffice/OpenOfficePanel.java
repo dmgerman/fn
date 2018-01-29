@@ -240,16 +240,6 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|JComponent
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
 name|JDialog
 import|;
 end_import
@@ -459,20 +449,6 @@ operator|.
 name|help
 operator|.
 name|HelpAction
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|keyboard
-operator|.
-name|KeyBinding
 import|;
 end_import
 
@@ -1237,7 +1213,7 @@ name|connectImage
 init|=
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|CONNECT_OPEN_OFFICE
 operator|.
@@ -1317,7 +1293,7 @@ name|JButton
 argument_list|(
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|OPEN
 operator|.
@@ -1357,7 +1333,7 @@ name|JButton
 argument_list|(
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|REFRESH
 operator|.
@@ -2627,50 +2603,7 @@ operator|.
 name|CENTER
 argument_list|)
 expr_stmt|;
-name|frame
-operator|.
-name|getTabbedPane
-argument_list|()
-operator|.
-name|getInputMap
-argument_list|(
-name|JComponent
-operator|.
-name|WHEN_IN_FOCUSED_WINDOW
-argument_list|)
-operator|.
-name|put
-argument_list|(
-name|Globals
-operator|.
-name|getKeyPrefs
-argument_list|()
-operator|.
-name|getKey
-argument_list|(
-name|KeyBinding
-operator|.
-name|REFRESH_OO
-argument_list|)
-argument_list|,
-literal|"Refresh OO"
-argument_list|)
-expr_stmt|;
-name|frame
-operator|.
-name|getTabbedPane
-argument_list|()
-operator|.
-name|getActionMap
-argument_list|()
-operator|.
-name|put
-argument_list|(
-literal|"Refresh OO"
-argument_list|,
-name|updateAction
-argument_list|)
-expr_stmt|;
+comment|/*         frame.getTabbedPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)                 .put(Globals.getKeyPrefs().getKey(KeyBinding.REFRESH_OO), "Refresh OO");         frame.getTabbedPane().getActionMap().put("Refresh OO", updateAction);         */
 block|}
 DECL|method|exportEntries ()
 specifier|private
