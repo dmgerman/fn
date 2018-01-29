@@ -1924,10 +1924,6 @@ specifier|private
 specifier|final
 name|CountingUndoManager
 name|undoManager
-init|=
-operator|new
-name|CountingUndoManager
-argument_list|()
 decl_stmt|;
 DECL|field|previousEntries
 specifier|private
@@ -2177,6 +2173,15 @@ name|requireNonNull
 argument_list|(
 name|externalFileTypes
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|undoManager
+operator|=
+name|frame
+operator|.
+name|getUndoManager
+argument_list|()
 expr_stmt|;
 name|bibDatabaseContext
 operator|.
@@ -4868,6 +4873,8 @@ argument_list|(
 name|SpecialField
 operator|.
 name|RELEVANCE
+argument_list|,
+name|undoManager
 argument_list|)
 operator|.
 name|getSpecialFieldAction
@@ -4920,6 +4927,8 @@ argument_list|(
 name|SpecialField
 operator|.
 name|QUALITY
+argument_list|,
+name|undoManager
 argument_list|)
 operator|.
 name|getSpecialFieldAction
@@ -4972,6 +4981,8 @@ argument_list|(
 name|SpecialField
 operator|.
 name|PRINTED
+argument_list|,
+name|undoManager
 argument_list|)
 operator|.
 name|getSpecialFieldAction
@@ -5027,6 +5038,8 @@ argument_list|(
 name|SpecialField
 operator|.
 name|PRIORITY
+argument_list|,
+name|undoManager
 argument_list|)
 operator|.
 name|getSpecialFieldAction
@@ -5075,6 +5088,8 @@ argument_list|(
 name|SpecialField
 operator|.
 name|RANKING
+argument_list|,
+name|undoManager
 argument_list|)
 operator|.
 name|getSpecialFieldAction
@@ -5123,6 +5138,8 @@ argument_list|(
 name|SpecialField
 operator|.
 name|READ_STATUS
+argument_list|,
+name|undoManager
 argument_list|)
 operator|.
 name|getSpecialFieldAction
@@ -8594,9 +8611,6 @@ argument_list|,
 name|this
 argument_list|,
 name|bibDatabaseContext
-operator|.
-name|getDatabase
-argument_list|()
 argument_list|,
 name|preferences
 operator|.

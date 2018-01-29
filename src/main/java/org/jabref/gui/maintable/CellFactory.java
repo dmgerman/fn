@@ -34,6 +34,18 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|undo
+operator|.
+name|UndoManager
+import|;
+end_import
+
+begin_import
+import|import
 name|javafx
 operator|.
 name|scene
@@ -148,12 +160,15 @@ name|HashMap
 argument_list|<>
 argument_list|()
 decl_stmt|;
-DECL|method|CellFactory (ExternalFileTypes externalFileTypes)
+DECL|method|CellFactory (ExternalFileTypes externalFileTypes, UndoManager undoManager)
 specifier|public
 name|CellFactory
 parameter_list|(
 name|ExternalFileTypes
 name|externalFileTypes
+parameter_list|,
+name|UndoManager
+name|undoManager
 parameter_list|)
 block|{
 name|Node
@@ -385,6 +400,8 @@ argument_list|(
 name|SpecialField
 operator|.
 name|RELEVANCE
+argument_list|,
+name|undoManager
 argument_list|)
 decl_stmt|;
 name|label
@@ -421,6 +438,8 @@ argument_list|(
 name|SpecialField
 operator|.
 name|QUALITY
+argument_list|,
+name|undoManager
 argument_list|)
 decl_stmt|;
 name|label
@@ -458,6 +477,8 @@ argument_list|(
 name|SpecialField
 operator|.
 name|RANKING
+argument_list|,
+name|undoManager
 argument_list|)
 decl_stmt|;
 name|label
@@ -495,6 +516,8 @@ argument_list|(
 name|SpecialField
 operator|.
 name|PRIORITY
+argument_list|,
+name|undoManager
 argument_list|)
 decl_stmt|;
 name|label
@@ -532,6 +555,8 @@ argument_list|(
 name|SpecialField
 operator|.
 name|READ_STATUS
+argument_list|,
+name|undoManager
 argument_list|)
 decl_stmt|;
 name|label
@@ -569,6 +594,8 @@ argument_list|(
 name|SpecialField
 operator|.
 name|PRINTED
+argument_list|,
+name|undoManager
 argument_list|)
 decl_stmt|;
 name|label

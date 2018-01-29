@@ -1969,15 +1969,14 @@ name|BasePanel
 name|panel
 parameter_list|)
 block|{
-name|SpecialFieldViewModel
 name|viewModel
-init|=
+operator|=
 operator|new
 name|SpecialFieldViewModel
 argument_list|(
 name|field
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|Menu
 name|menu
 init|=

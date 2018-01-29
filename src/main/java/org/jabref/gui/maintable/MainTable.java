@@ -272,7 +272,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibDatabase
+name|BibDatabaseContext
 import|;
 end_import
 
@@ -497,7 +497,7 @@ static|static
 block|{
 comment|//MainTable.updateRenderers();
 block|}
-DECL|method|MainTable (MainTableDataModel model, JabRefFrame frame, BasePanel panel, BibDatabase database, MainTablePreferences preferences, ExternalFileTypes externalFileTypes, KeyBindingRepository keyBindingRepository)
+DECL|method|MainTable (MainTableDataModel model, JabRefFrame frame, BasePanel panel, BibDatabaseContext database, MainTablePreferences preferences, ExternalFileTypes externalFileTypes, KeyBindingRepository keyBindingRepository)
 specifier|public
 name|MainTable
 parameter_list|(
@@ -510,7 +510,7 @@ parameter_list|,
 name|BasePanel
 name|panel
 parameter_list|,
-name|BibDatabase
+name|BibDatabaseContext
 name|database
 parameter_list|,
 name|MainTablePreferences
@@ -550,6 +550,11 @@ name|getColumnPreferences
 argument_list|()
 argument_list|,
 name|externalFileTypes
+argument_list|,
+name|panel
+operator|.
+name|getUndoManager
+argument_list|()
 argument_list|)
 operator|.
 name|createColumns

@@ -1422,6 +1422,20 @@ name|jabref
 operator|.
 name|gui
 operator|.
+name|undo
+operator|.
+name|CountingUndoManager
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
 name|util
 operator|.
 name|DefaultTaskExecutor
@@ -5607,6 +5621,16 @@ DECL|field|newSpec
 specifier|private
 name|JMenu
 name|newSpec
+decl_stmt|;
+DECL|field|undoManager
+specifier|private
+specifier|final
+name|CountingUndoManager
+name|undoManager
+init|=
+operator|new
+name|CountingUndoManager
+argument_list|()
 decl_stmt|;
 DECL|method|JabRefFrame ()
 specifier|public
@@ -13634,6 +13658,16 @@ parameter_list|()
 block|{
 return|return
 name|globalSearchBar
+return|;
+block|}
+DECL|method|getUndoManager ()
+specifier|public
+name|CountingUndoManager
+name|getUndoManager
+parameter_list|()
+block|{
+return|return
+name|undoManager
 return|;
 block|}
 DECL|class|MyGlassPane
