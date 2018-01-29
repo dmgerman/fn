@@ -254,10 +254,10 @@ name|ApplicationExtension
 operator|.
 name|class
 argument_list|)
-DECL|class|EntryEditorTest
+DECL|class|SourceTabTest
 specifier|public
 class|class
-name|EntryEditorTest
+name|SourceTabTest
 block|{
 DECL|field|stage
 specifier|private
@@ -331,6 +331,10 @@ name|ImportFormatPreferences
 operator|.
 name|class
 argument_list|)
+argument_list|,
+operator|new
+name|DummyFileUpdateMonitor
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|pane

@@ -258,7 +258,7 @@ specifier|final
 name|String
 name|CLASS_ORG_JABREF_ENTRY_EDITOR_TEST
 init|=
-literal|"EntryEditorTest"
+literal|"SourceTabTest"
 decl_stmt|;
 DECL|field|forbiddenPackage
 specifier|private
