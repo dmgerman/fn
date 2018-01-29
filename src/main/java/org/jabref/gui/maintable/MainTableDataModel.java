@@ -50,6 +50,16 @@ name|javafx
 operator|.
 name|collections
 operator|.
+name|FXCollections
+import|;
+end_import
+
+begin_import
+import|import
+name|javafx
+operator|.
+name|collections
+operator|.
 name|ObservableList
 import|;
 end_import
@@ -63,18 +73,6 @@ operator|.
 name|transformation
 operator|.
 name|FilteredList
-import|;
-end_import
-
-begin_import
-import|import
-name|javafx
-operator|.
-name|collections
-operator|.
-name|transformation
-operator|.
-name|SortedList
 import|;
 end_import
 
@@ -197,7 +195,7 @@ block|{
 DECL|field|entries
 specifier|private
 specifier|final
-name|SortedList
+name|ObservableList
 argument_list|<
 name|BibEntryTableViewModel
 argument_list|>
@@ -283,9 +281,9 @@ expr_stmt|;
 comment|// We need to wrap the list since otherwise sorting in the table does not work
 name|entries
 operator|=
-operator|new
-name|SortedList
-argument_list|<>
+name|FXCollections
+operator|.
+name|synchronizedObservableList
 argument_list|(
 name|entriesFiltered
 argument_list|)
@@ -496,7 +494,7 @@ return|;
 block|}
 DECL|method|getEntriesFiltered ()
 specifier|public
-name|SortedList
+name|ObservableList
 argument_list|<
 name|BibEntryTableViewModel
 argument_list|>

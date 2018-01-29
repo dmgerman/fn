@@ -90,9 +90,7 @@ name|javafx
 operator|.
 name|collections
 operator|.
-name|transformation
-operator|.
-name|SortedList
+name|ObservableList
 import|;
 end_import
 
@@ -625,7 +623,7 @@ operator|.
 name|MULTIPLE
 argument_list|)
 expr_stmt|;
-name|SortedList
+name|ObservableList
 argument_list|<
 name|BibEntryTableViewModel
 argument_list|>
@@ -644,19 +642,7 @@ name|entries
 argument_list|)
 expr_stmt|;
 comment|// Enable sorting
-name|entries
-operator|.
-name|comparatorProperty
-argument_list|()
-operator|.
-name|bind
-argument_list|(
-name|this
-operator|.
-name|comparatorProperty
-argument_list|()
-argument_list|)
-expr_stmt|;
+comment|//entries.comparatorProperty().bind(this.comparatorProperty());
 comment|// TODO: Cannot add focus listener as it is expecting an swing component
 comment|//addFocusListener(Globals.getFocusListener());
 name|this
