@@ -438,6 +438,20 @@ begin_import
 import|import
 name|org
 operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|util
+operator|.
+name|FileUpdateMonitor
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|fxmisc
 operator|.
 name|easybind
@@ -499,6 +513,12 @@ name|EntryEditorTab
 argument_list|>
 name|tabs
 decl_stmt|;
+DECL|field|fileMonitor
+specifier|private
+specifier|final
+name|FileUpdateMonitor
+name|fileMonitor
+decl_stmt|;
 comment|/**      * A reference to the entry this editor works on.      */
 DECL|field|entry
 specifier|private
@@ -544,7 +564,7 @@ specifier|final
 name|EntryEditorPreferences
 name|preferences
 decl_stmt|;
-DECL|method|EntryEditor (BasePanel panel, EntryEditorPreferences preferences)
+DECL|method|EntryEditor (BasePanel panel, EntryEditorPreferences preferences, FileUpdateMonitor fileMonitor)
 specifier|public
 name|EntryEditor
 parameter_list|(
@@ -553,6 +573,9 @@ name|panel
 parameter_list|,
 name|EntryEditorPreferences
 name|preferences
+parameter_list|,
+name|FileUpdateMonitor
+name|fileMonitor
 parameter_list|)
 block|{
 name|this
@@ -589,6 +612,12 @@ name|requireNonNull
 argument_list|(
 name|preferences
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|fileMonitor
+operator|=
+name|fileMonitor
 expr_stmt|;
 name|ControlHelper
 operator|.
@@ -1146,10 +1175,7 @@ operator|.
 name|getImportFormatPreferences
 argument_list|()
 argument_list|,
-name|Globals
-operator|.
-name|getFileUpdateMonitor
-argument_list|()
+name|fileMonitor
 argument_list|)
 expr_stmt|;
 name|tabs

@@ -209,7 +209,7 @@ block|{
 return|return
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|ERROR
 operator|.
@@ -226,7 +226,7 @@ block|{
 return|return
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|WARNING
 operator|.

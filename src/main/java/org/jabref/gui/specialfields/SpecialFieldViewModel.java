@@ -84,18 +84,6 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|IconTheme
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
 name|JabRefFrame
 import|;
 end_import
@@ -137,20 +125,6 @@ operator|.
 name|undo
 operator|.
 name|UndoableFieldChange
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
-name|l10n
-operator|.
-name|Localization
 import|;
 end_import
 
@@ -232,6 +206,12 @@ specifier|public
 class|class
 name|SpecialFieldViewModel
 block|{
+DECL|field|field
+specifier|private
+specifier|final
+name|SpecialField
+name|field
+decl_stmt|;
 DECL|field|undoManager
 specifier|private
 name|UndoManager
@@ -271,12 +251,6 @@ name|undoManager
 argument_list|)
 expr_stmt|;
 block|}
-DECL|field|field
-specifier|private
-specifier|final
-name|SpecialField
-name|field
-decl_stmt|;
 DECL|method|getField ()
 specifier|public
 name|SpecialField
@@ -349,9 +323,7 @@ argument_list|()
 operator|.
 name|map
 argument_list|(
-name|IconTheme
-operator|.
-name|JabRefIcons
+name|JabRefIcon
 operator|::
 name|getSmallIcon
 argument_list|)

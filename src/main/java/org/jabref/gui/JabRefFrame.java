@@ -1838,6 +1838,18 @@ begin_import
 import|import
 name|org
 operator|.
+name|fxmisc
+operator|.
+name|easybind
+operator|.
+name|EasyBind
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|slf4j
 operator|.
 name|Logger
@@ -1851,18 +1863,6 @@ operator|.
 name|slf4j
 operator|.
 name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|fxmisc
-operator|.
-name|easybind
-operator|.
-name|EasyBind
 import|;
 end_import
 
@@ -2271,7 +2271,7 @@ argument_list|()
 argument_list|,
 name|IconTheme
 operator|.
-name|JabRefIcosn
+name|JabRefIcons
 operator|.
 name|FACEBOOK
 operator|.
