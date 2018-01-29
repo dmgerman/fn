@@ -1,12 +1,12 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|org.jabref.gui.util
+DECL|package|org.jabref.model.util
 package|package
 name|org
 operator|.
 name|jabref
 operator|.
-name|gui
+name|model
 operator|.
 name|util
 package|;

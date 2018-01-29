@@ -112,6 +112,34 @@ begin_import
 import|import
 name|org
 operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|util
+operator|.
+name|DummyFileUpdateMonitor
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|util
+operator|.
+name|FileUpdateMonitor
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|junit
 operator|.
 name|Before
@@ -348,6 +376,15 @@ specifier|static
 name|ImportFormatPreferences
 name|importFormatPreferences
 decl_stmt|;
+DECL|field|fileMonitor
+specifier|private
+name|FileUpdateMonitor
+name|fileMonitor
+init|=
+operator|new
+name|DummyFileUpdateMonitor
+argument_list|()
+decl_stmt|;
 annotation|@
 name|Before
 DECL|method|setUp ()
@@ -393,6 +430,8 @@ argument_list|(
 literal|"@ARTICLE{kohn, author={Simon Holland}}"
 argument_list|,
 name|importFormatPreferences
+argument_list|,
+name|fileMonitor
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -550,6 +589,8 @@ argument_list|(
 name|bibtexString
 argument_list|,
 name|importFormatPreferences
+argument_list|,
+name|fileMonitor
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -702,6 +743,8 @@ argument_list|(
 literal|"@ARTICLE{kohn, author={Simon Popovi\\v{c}ov\\'{a}}}"
 argument_list|,
 name|importFormatPreferences
+argument_list|,
+name|fileMonitor
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -757,6 +800,8 @@ argument_list|(
 literal|"@ARTICLE{kohn, author={Andreas KÃ¶ning}, year={2000}}"
 argument_list|,
 name|importFormatPreferences
+argument_list|,
+name|fileMonitor
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -796,6 +841,8 @@ argument_list|(
 literal|"@ARTICLE{kohn, author={Andreas ÃÃ¶ning}, year={2000}}"
 argument_list|,
 name|importFormatPreferences
+argument_list|,
+name|fileMonitor
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -835,6 +882,8 @@ argument_list|(
 literal|"@ARTICLE{kohn, author={Andreas ÃÃ¶ning}, year={2000}}"
 argument_list|,
 name|importFormatPreferences
+argument_list|,
+name|fileMonitor
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -874,6 +923,8 @@ argument_list|(
 literal|"@ARTICLE{kohn, author={Andreas ÃÃ¶ning}, year={2000}}"
 argument_list|,
 name|importFormatPreferences
+argument_list|,
+name|fileMonitor
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -913,6 +964,8 @@ argument_list|(
 literal|"@ARTICLE{kohn, author={Andreas Ä¹Ã¶ning}, year={2000}}"
 argument_list|,
 name|importFormatPreferences
+argument_list|,
+name|fileMonitor
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -952,6 +1005,8 @@ argument_list|(
 literal|"@ARTICLE{kohn, author={Andreas ÅÃ¶ning}, year={2000}}"
 argument_list|,
 name|importFormatPreferences
+argument_list|,
+name|fileMonitor
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -991,6 +1046,8 @@ argument_list|(
 literal|"@ARTICLE{kohn, author={Andreas ÃÃ¶ning}, year={2000}}"
 argument_list|,
 name|importFormatPreferences
+argument_list|,
+name|fileMonitor
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -1030,6 +1087,8 @@ argument_list|(
 literal|"@ARTICLE{kohn, author={Andreas ÅÃ¶ning}, year={2000}}"
 argument_list|,
 name|importFormatPreferences
+argument_list|,
+name|fileMonitor
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -1069,6 +1128,8 @@ argument_list|(
 literal|"@ARTICLE{kohn, author={Andreas ÅÃ¶ning}, year={2000}}"
 argument_list|,
 name|importFormatPreferences
+argument_list|,
+name|fileMonitor
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -1108,6 +1169,8 @@ argument_list|(
 literal|"@ARTICLE{kohn, author={Andreas ÃÃ¶ning}, year={2000}}"
 argument_list|,
 name|importFormatPreferences
+argument_list|,
+name|fileMonitor
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -1147,6 +1210,8 @@ argument_list|(
 literal|"@ARTICLE{kohn, author={Andreas ÃÃ¶ning}, year={2000}}"
 argument_list|,
 name|importFormatPreferences
+argument_list|,
+name|fileMonitor
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -1186,6 +1251,8 @@ argument_list|(
 literal|"@ARTICLE{kohn, author={Andreas Å¹Ã¶ning}, year={2000}}"
 argument_list|,
 name|importFormatPreferences
+argument_list|,
+name|fileMonitor
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -1241,6 +1308,8 @@ argument_list|(
 literal|"@ARTICLE{kohn, author={Andreas ÃÃ¶ning}, year={2000}}"
 argument_list|,
 name|importFormatPreferences
+argument_list|,
+name|fileMonitor
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -1280,6 +1349,8 @@ argument_list|(
 literal|"@ARTICLE{kohn, author={Andreas ÃÃ¶ning}, year={2000}}"
 argument_list|,
 name|importFormatPreferences
+argument_list|,
+name|fileMonitor
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -1319,6 +1390,8 @@ argument_list|(
 literal|"@ARTICLE{kohn, author={Andreas ÃÃ¶ning}, year={2000}}"
 argument_list|,
 name|importFormatPreferences
+argument_list|,
+name|fileMonitor
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -1358,6 +1431,8 @@ argument_list|(
 literal|"@ARTICLE{kohn, author={Andreas ÃÃ¶ning}, year={2000}}"
 argument_list|,
 name|importFormatPreferences
+argument_list|,
+name|fileMonitor
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -1397,6 +1472,8 @@ argument_list|(
 literal|"@ARTICLE{kohn, author={Andreas ÃÃ¶ning}, year={2000}}"
 argument_list|,
 name|importFormatPreferences
+argument_list|,
+name|fileMonitor
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -1818,6 +1895,8 @@ argument_list|(
 literal|"@ARTICLE{kohn, author={{Link{\\\"{o}}ping University}}}"
 argument_list|,
 name|importFormatPreferences
+argument_list|,
+name|fileMonitor
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -1970,6 +2049,8 @@ argument_list|(
 literal|"@ARTICLE{kohn, author={{Link{\\\"{o}}ping University, Department of Electrical Engineering}}}"
 argument_list|,
 name|importFormatPreferences
+argument_list|,
+name|fileMonitor
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -2122,6 +2203,8 @@ argument_list|(
 literal|"@ARTICLE{kohn, author={{Link{\\\"{o}}ping University, School of Computer Engineering}}}"
 argument_list|,
 name|importFormatPreferences
+argument_list|,
+name|fileMonitor
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -2274,6 +2357,8 @@ argument_list|(
 literal|"@ARTICLE{kohn, author={{Massachusetts Institute of Technology}}}"
 argument_list|,
 name|importFormatPreferences
+argument_list|,
+name|fileMonitor
 argument_list|)
 decl_stmt|;
 name|assertEquals

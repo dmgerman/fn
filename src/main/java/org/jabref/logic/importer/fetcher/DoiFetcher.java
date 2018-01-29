@@ -282,6 +282,20 @@ name|DOI
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|util
+operator|.
+name|DummyFileUpdateMonitor
+import|;
+end_import
+
 begin_class
 DECL|class|DoiFetcher
 specifier|public
@@ -445,6 +459,10 @@ argument_list|(
 name|bibtexString
 argument_list|,
 name|preferences
+argument_list|,
+operator|new
+name|DummyFileUpdateMonitor
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|fetchedEntry

@@ -86,7 +86,7 @@ name|gui
 operator|.
 name|util
 operator|.
-name|DefaultTaskExecutor
+name|DefaultFileUpdateMonitor
 import|;
 end_import
 
@@ -100,7 +100,7 @@ name|gui
 operator|.
 name|util
 operator|.
-name|FileUpdateMonitor
+name|DefaultTaskExecutor
 import|;
 end_import
 
@@ -201,6 +201,20 @@ operator|.
 name|util
 operator|.
 name|BuildInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|util
+operator|.
+name|FileUpdateMonitor
 import|;
 end_import
 
@@ -376,7 +390,7 @@ decl_stmt|;
 DECL|field|fileUpdateMonitor
 specifier|private
 specifier|static
-name|FileUpdateMonitor
+name|DefaultFileUpdateMonitor
 name|fileUpdateMonitor
 decl_stmt|;
 DECL|field|telemetryClient
@@ -439,7 +453,7 @@ operator|.
 name|fileUpdateMonitor
 operator|=
 operator|new
-name|FileUpdateMonitor
+name|DefaultFileUpdateMonitor
 argument_list|()
 expr_stmt|;
 name|JabRefExecutorService

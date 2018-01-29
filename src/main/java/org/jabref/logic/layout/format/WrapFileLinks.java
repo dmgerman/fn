@@ -134,34 +134,6 @@ name|FileHelper
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|commons
-operator|.
-name|logging
-operator|.
-name|Log
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|commons
-operator|.
-name|logging
-operator|.
-name|LogFactory
-import|;
-end_import
-
 begin_comment
 comment|/**  * This formatter iterates over all file links, or all file links of a specified  * type, outputting a format string given as the first argument. The format string  * can contain a number of escape sequences indicating file link information to  * be inserted into the string.  *<p/>  * This formatter can take an optional second argument specifying the name of a file  * type. If specified, the iteration will only include those files with a file type  * matching the given name (case-insensitively). If specified as an empty argument,  * all file links will be included.  *<p/>  * After the second argument, pairs of additional arguments can be added in order to  * specify regular expression replacements to be done upon the inserted link information  * before insertion into the output string. A non-paired argument will be ignored.  * In order to specify replacements without filtering on file types, use an empty second  * argument.  *<p/>  *<p/>  *<p/>  * The escape sequences for embedding information are as follows:  *<p/>  * \i   : This inserts the iteration index (starting from 1), and can be useful if  * the output list of files should be enumerated.  * \p   : This inserts the file path of the file link. Relative links below your file directory  *        will be expanded to their absolute path.  * \r   : This inserts the file path without expanding relative links.  * \f   : This inserts the name of the file link's type.  * \x   : This inserts the file's extension, if any.  * \d   : This inserts the file link's description, if any.  *<p/>  * For instance, an entry could contain a file link to the file "/home/john/report.pdf"  * of the "PDF" type with description "John's final report".  *<p/>  * Using the WrapFileLinks formatter with the following argument:  *<p/>  * \format[WrapFileLinks(\i. \d (\p))]{\file}  *<p/>  * would give the following output:  * 1. John's final report (/home/john/report.pdf)  *<p/>  * If the entry contained a second file link to the file "/home/john/draft.txt" of the  * "Text file" type with description 'An early "draft"', the output would be as follows:  * 1. John's final report (/home/john/report.pdf)  * 2. An early "draft" (/home/john/draft.txt)  *<p/>  * If the formatter was called with a second argument, the list would be filtered.  * For instance:  * \format[WrapFileLinks(\i. \d (\p),text file)]{\file}  *<p/>  * would show only the text file:  * 1. An early "draft" (/home/john/draft.txt)  *<p/>  * If we wanted this output to be part of an XML styled output, the quotes in the  * file description could cause problems. Adding two additional arguments to translate  * the quotes into XML characters solves this:  * \format[WrapFileLinks(\i. \d (\p),text file,",&quot;)]{\file}  *<p/>  * would give the following output:  * 1. An early&quot;draft&quot; (/home/john/draft.txt)  *  * Additional pairs of replacements can be added.  */
 end_comment
@@ -174,22 +146,6 @@ name|WrapFileLinks
 extends|extends
 name|AbstractParamLayoutFormatter
 block|{
-DECL|field|LOGGER
-specifier|private
-specifier|static
-specifier|final
-name|Log
-name|LOGGER
-init|=
-name|LogFactory
-operator|.
-name|getLog
-argument_list|(
-name|WrapFileLinks
-operator|.
-name|class
-argument_list|)
-decl_stmt|;
 DECL|field|STRING
 specifier|private
 specifier|static
@@ -997,7 +953,7 @@ break|break;
 case|case
 name|RELATIVE_FILE_PATH
 case|:
-comment|/*                          * Stumbled over this while investigating                          *                          * https://sourceforge.net/tracker/index.php?func=detail&aid=1469903&group_id=92314&atid=600306                          */
+comment|/*                              * Stumbled over this while investigating                              *                              * https://sourceforge.net/tracker/index.php?func=detail&aid=1469903&group_id=92314&atid=600306                              */
 name|sb
 operator|.
 name|append

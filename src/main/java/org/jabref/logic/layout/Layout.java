@@ -90,13 +90,9 @@ begin_import
 import|import
 name|org
 operator|.
-name|apache
+name|slf4j
 operator|.
-name|commons
-operator|.
-name|logging
-operator|.
-name|Log
+name|Logger
 import|;
 end_import
 
@@ -104,13 +100,9 @@ begin_import
 import|import
 name|org
 operator|.
-name|apache
+name|slf4j
 operator|.
-name|commons
-operator|.
-name|logging
-operator|.
-name|LogFactory
+name|LoggerFactory
 import|;
 end_import
 
@@ -128,12 +120,12 @@ DECL|field|LOGGER
 specifier|private
 specifier|static
 specifier|final
-name|Log
+name|Logger
 name|LOGGER
 init|=
-name|LogFactory
+name|LoggerFactory
 operator|.
-name|getLog
+name|getLogger
 argument_list|(
 name|Layout
 operator|.
@@ -481,7 +473,7 @@ name|database
 parameter_list|)
 block|{
 name|StringBuilder
-name|sb
+name|builder
 init|=
 operator|new
 name|StringBuilder
@@ -509,10 +501,8 @@ argument_list|,
 name|database
 argument_list|)
 decl_stmt|;
-comment|// 2005.05.05 M. Alver
 comment|// The following change means we treat null fields as "". This is to fix the
-comment|// problem of whitespace disappearing after missing fields. Hoping there are
-comment|// no side effects.
+comment|// problem of whitespace disappearing after missing fields.
 if|if
 condition|(
 name|fieldText
@@ -525,7 +515,7 @@ operator|=
 literal|""
 expr_stmt|;
 block|}
-name|sb
+name|builder
 operator|.
 name|append
 argument_list|(
@@ -534,7 +524,7 @@ argument_list|)
 expr_stmt|;
 block|}
 return|return
-name|sb
+name|builder
 operator|.
 name|toString
 argument_list|()

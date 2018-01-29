@@ -344,13 +344,9 @@ begin_import
 import|import
 name|org
 operator|.
-name|apache
+name|slf4j
 operator|.
-name|commons
-operator|.
-name|logging
-operator|.
-name|Log
+name|Logger
 import|;
 end_import
 
@@ -358,13 +354,9 @@ begin_import
 import|import
 name|org
 operator|.
-name|apache
+name|slf4j
 operator|.
-name|commons
-operator|.
-name|logging
-operator|.
-name|LogFactory
+name|LoggerFactory
 import|;
 end_import
 
@@ -407,12 +399,12 @@ DECL|field|LOGGER
 specifier|private
 specifier|static
 specifier|final
-name|Log
+name|Logger
 name|LOGGER
 init|=
-name|LogFactory
+name|LoggerFactory
 operator|.
-name|getLog
+name|getLogger
 argument_list|(
 name|FileUtil
 operator|.
@@ -1812,6 +1804,31 @@ expr_stmt|;
 block|}
 return|return
 name|files
+return|;
+block|}
+comment|/**      * Creates a string representation of the given path that should work on all systems.      * This method should be used when a path needs to be stored in the bib file or preferences.      */
+DECL|method|toPortableString (Path path)
+specifier|public
+specifier|static
+name|String
+name|toPortableString
+parameter_list|(
+name|Path
+name|path
+parameter_list|)
+block|{
+return|return
+name|path
+operator|.
+name|toString
+argument_list|()
+operator|.
+name|replace
+argument_list|(
+literal|'\\'
+argument_list|,
+literal|'/'
+argument_list|)
 return|;
 block|}
 block|}

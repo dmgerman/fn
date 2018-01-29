@@ -424,6 +424,28 @@ name|getBoolean
 argument_list|(
 name|JabRefPreferences
 operator|.
+name|CLEANUP_CONVERT_TO_BIBTEX
+argument_list|)
+condition|)
+block|{
+name|activeJobs
+operator|.
+name|add
+argument_list|(
+name|CleanupStep
+operator|.
+name|CONVERT_TO_BIBTEX
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|preferences
+operator|.
+name|getBoolean
+argument_list|(
+name|JabRefPreferences
+operator|.
 name|CLEANUP_FIX_FILE_LINKS
 argument_list|)
 condition|)
@@ -592,6 +614,21 @@ name|CONVERT_TO_BIBLATEX
 argument_list|)
 return|;
 block|}
+DECL|method|isConvertToBibtex ()
+specifier|public
+name|boolean
+name|isConvertToBibtex
+parameter_list|()
+block|{
+return|return
+name|isActive
+argument_list|(
+name|CleanupStep
+operator|.
+name|CONVERT_TO_BIBTEX
+argument_list|)
+return|;
+block|}
 DECL|method|isRenamePdfOnlyRelativePaths ()
 specifier|public
 name|boolean
@@ -750,6 +787,22 @@ name|putBoolean
 argument_list|(
 name|JabRefPreferences
 operator|.
+name|CLEANUP_CONVERT_TO_BIBTEX
+argument_list|,
+name|isActive
+argument_list|(
+name|CleanupStep
+operator|.
+name|CONVERT_TO_BIBTEX
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|preferences
+operator|.
+name|putBoolean
+argument_list|(
+name|JabRefPreferences
+operator|.
 name|CLEANUP_FIX_FILE_LINKS
 argument_list|,
 name|isActive
@@ -832,6 +885,10 @@ block|,
 comment|/**          * Converts to biblatex format          */
 DECL|enumConstant|CONVERT_TO_BIBLATEX
 name|CONVERT_TO_BIBLATEX
+block|,
+comment|/**          * Converts to bibtex format          */
+DECL|enumConstant|CONVERT_TO_BIBTEX
+name|CONVERT_TO_BIBTEX
 block|,
 DECL|enumConstant|MOVE_PDF
 name|MOVE_PDF

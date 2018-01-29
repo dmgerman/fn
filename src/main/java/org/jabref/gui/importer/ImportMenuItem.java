@@ -849,6 +849,11 @@ operator|.
 name|importUnknownFormat
 argument_list|(
 name|filename
+argument_list|,
+name|Globals
+operator|.
+name|getFileUpdateMonitor
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;

@@ -1145,6 +1145,11 @@ name|preferences
 operator|.
 name|getImportFormatPreferences
 argument_list|()
+argument_list|,
+name|Globals
+operator|.
+name|getFileUpdateMonitor
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|tabs

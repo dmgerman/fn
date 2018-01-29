@@ -701,7 +701,7 @@ name|FieldName
 operator|.
 name|DATE
 argument_list|,
-literal|"2017-11-10"
+literal|"2018-01-19"
 argument_list|)
 expr_stmt|;
 name|delgado2017
@@ -745,7 +745,7 @@ name|FieldName
 operator|.
 name|URL
 argument_list|,
-literal|"https://eprint.iacr.org/2017/1095/20171110:183926"
+literal|"https://eprint.iacr.org/2017/1095/20180119:113352"
 argument_list|)
 expr_stmt|;
 name|delgado2017
@@ -756,7 +756,7 @@ name|FieldName
 operator|.
 name|VERSION
 argument_list|,
-literal|"20171110:183926"
+literal|"20180119:113352"
 argument_list|)
 expr_stmt|;
 name|delgado2017
