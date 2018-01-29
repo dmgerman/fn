@@ -558,11 +558,6 @@ argument_list|(
 name|extensions
 argument_list|)
 operator|.
-name|withDefaultExtension
-argument_list|(
-name|allImports
-argument_list|)
-operator|.
 name|withInitialDirectory
 argument_list|(
 name|Globals

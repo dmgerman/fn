@@ -48,6 +48,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|io
+operator|.
+name|UncheckedIOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|nio
 operator|.
 name|file
@@ -203,6 +213,18 @@ operator|.
 name|stream
 operator|.
 name|Collectors
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|stream
+operator|.
+name|Stream
 import|;
 end_import
 
@@ -1348,7 +1370,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**      * Determines filename provided by an entry in a database      *      * @param database        the database, where the entry is located      * @param entry           the entry to which the file should be linked to      * @param fileNamePattern the filename pattern      * @param prefs           the layout preferences      * @return a suggested fileName      *      * @Deprecated use String createFileNameFromPattern(BibDatabase database, BibEntry entry, String fileNamePattern ) instead.      */
+comment|/**      * Determines filename provided by an entry in a database      *      * @param database        the database, where the entry is located      * @param entry           the entry to which the file should be linked to      * @param fileNamePattern the filename pattern      * @param prefs           the layout preferences      * @return a suggested fileName      * @Deprecated use String createFileNameFromPattern(BibDatabase database, BibEntry entry, String fileNamePattern ) instead.      */
 annotation|@
 name|Deprecated
 DECL|method|createFileNameFromPattern (BibDatabase database, BibEntry entry, String fileNamePattern, LayoutFormatterPreferences prefs)
@@ -1506,10 +1528,6 @@ block|{
 name|String
 name|targetName
 init|=
-literal|null
-decl_stmt|;
-name|targetName
-operator|=
 name|BracketedPattern
 operator|.
 name|expandBrackets
@@ -1522,7 +1540,7 @@ name|entry
 argument_list|,
 name|database
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 if|if
 condition|(
 operator|(
@@ -1660,14 +1678,23 @@ name|rootDirectory
 parameter_list|)
 block|{
 try|try
-block|{
-return|return
+init|(
+name|Stream
+argument_list|<
+name|Path
+argument_list|>
+name|pathStream
+init|=
 name|Files
 operator|.
 name|walk
 argument_list|(
 name|rootDirectory
 argument_list|)
+init|)
+block|{
+return|return
+name|pathStream
 operator|.
 name|filter
 argument_list|(
@@ -1700,6 +1727,8 @@ return|;
 block|}
 catch|catch
 parameter_list|(
+name|UncheckedIOException
+decl||
 name|IOException
 name|ex
 parameter_list|)
