@@ -68,6 +68,18 @@ end_import
 
 begin_import
 import|import
+name|javafx
+operator|.
+name|collections
+operator|.
+name|transformation
+operator|.
+name|SortedList
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|jabref
@@ -182,14 +194,14 @@ specifier|public
 class|class
 name|MainTableDataModel
 block|{
-DECL|field|entriesFiltered
+DECL|field|entries
 specifier|private
 specifier|final
-name|FilteredList
+name|SortedList
 argument_list|<
 name|BibEntryTableViewModel
 argument_list|>
-name|entriesFiltered
+name|entries
 decl_stmt|;
 DECL|method|MainTableDataModel (BibDatabaseContext context)
 specifier|public
@@ -213,8 +225,12 @@ operator|.
 name|getEntries
 argument_list|()
 decl_stmt|;
+name|FilteredList
+argument_list|<
+name|BibEntryTableViewModel
+argument_list|>
 name|entriesFiltered
-operator|=
+init|=
 operator|new
 name|FilteredList
 argument_list|<>
@@ -230,7 +246,7 @@ operator|::
 operator|new
 argument_list|)
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|entriesFiltered
 operator|.
 name|predicateProperty
@@ -262,6 +278,16 @@ operator|.
 name|activeSearchQueryProperty
 argument_list|()
 argument_list|)
+argument_list|)
+expr_stmt|;
+comment|// We need to wrap the list since otherwise sorting in the table does not work
+name|entries
+operator|=
+operator|new
+name|SortedList
+argument_list|<>
+argument_list|(
+name|entriesFiltered
 argument_list|)
 expr_stmt|;
 block|}
@@ -470,7 +496,7 @@ return|;
 block|}
 DECL|method|getEntriesFiltered ()
 specifier|public
-name|ObservableList
+name|SortedList
 argument_list|<
 name|BibEntryTableViewModel
 argument_list|>
@@ -478,7 +504,7 @@ name|getEntriesFiltered
 parameter_list|()
 block|{
 return|return
-name|entriesFiltered
+name|entries
 return|;
 block|}
 block|}
