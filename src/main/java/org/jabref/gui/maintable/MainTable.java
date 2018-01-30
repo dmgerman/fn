@@ -642,7 +642,16 @@ name|entries
 argument_list|)
 expr_stmt|;
 comment|// Enable sorting
-comment|//entries.comparatorProperty().bind(this.comparatorProperty());
+name|model
+operator|.
+name|bindComparator
+argument_list|(
+name|this
+operator|.
+name|comparatorProperty
+argument_list|()
+argument_list|)
+expr_stmt|;
 comment|// TODO: Cannot add focus listener as it is expecting an swing component
 comment|//addFocusListener(Globals.getFocusListener());
 name|this
