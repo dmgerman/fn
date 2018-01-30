@@ -322,7 +322,7 @@ operator|new
 name|SortedList
 argument_list|<>
 argument_list|(
-name|entriesViewModel
+name|entriesFiltered
 argument_list|)
 expr_stmt|;
 block|}
