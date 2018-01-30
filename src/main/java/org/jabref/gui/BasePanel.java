@@ -2276,6 +2276,19 @@ name|GroupTreeListener
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|// ensure that all entry changes mark the panel as changed
+name|this
+operator|.
+name|bibDatabaseContext
+operator|.
+name|getDatabase
+argument_list|()
+operator|.
+name|registerListener
+argument_list|(
+name|this
+argument_list|)
+expr_stmt|;
 name|Optional
 argument_list|<
 name|File
@@ -12174,6 +12187,26 @@ expr_stmt|;
 block|}
 block|}
 end_class
+
+begin_function
+annotation|@
+name|Subscribe
+DECL|method|listen (EntryChangedEvent entryChangedEvent)
+specifier|public
+name|void
+name|listen
+parameter_list|(
+name|EntryChangedEvent
+name|entryChangedEvent
+parameter_list|)
+block|{
+name|this
+operator|.
+name|markBaseChanged
+argument_list|()
+expr_stmt|;
+block|}
+end_function
 
 begin_class
 DECL|class|UndoAction
