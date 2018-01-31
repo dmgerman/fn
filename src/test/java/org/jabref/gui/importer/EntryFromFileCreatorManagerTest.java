@@ -38,16 +38,6 @@ name|java
 operator|.
 name|io
 operator|.
-name|FileNotFoundException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
 name|IOException
 import|;
 end_import
@@ -177,6 +167,20 @@ operator|.
 name|entry
 operator|.
 name|BibEntry
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|util
+operator|.
+name|DummyFileUpdateMonitor
 import|;
 end_import
 
@@ -359,8 +363,6 @@ name|void
 name|testAddEntrysFromFiles
 parameter_list|()
 throws|throws
-name|FileNotFoundException
-throws|,
 name|IOException
 block|{
 try|try
@@ -402,6 +404,10 @@ name|ImportFormatPreferences
 operator|.
 name|class
 argument_list|)
+argument_list|,
+operator|new
+name|DummyFileUpdateMonitor
+argument_list|()
 argument_list|)
 operator|.
 name|parse

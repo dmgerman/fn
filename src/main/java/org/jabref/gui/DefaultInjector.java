@@ -56,7 +56,7 @@ name|gui
 operator|.
 name|util
 operator|.
-name|FileUpdateMonitor
+name|DefaultFileUpdateMonitor
 import|;
 end_import
 
@@ -287,7 +287,7 @@ if|if
 condition|(
 name|clazz
 operator|==
-name|FileUpdateMonitor
+name|DefaultFileUpdateMonitor
 operator|.
 name|class
 condition|)

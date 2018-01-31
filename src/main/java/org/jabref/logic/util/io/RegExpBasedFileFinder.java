@@ -204,7 +204,7 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|util
+name|bibtexkeypattern
 operator|.
 name|BracketedPattern
 import|;

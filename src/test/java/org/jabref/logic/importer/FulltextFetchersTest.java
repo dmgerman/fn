@@ -72,7 +72,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|After
+name|jupiter
+operator|.
+name|api
+operator|.
+name|AfterEach
 import|;
 end_import
 
@@ -82,7 +86,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Before
+name|jupiter
+operator|.
+name|api
+operator|.
+name|BeforeEach
 import|;
 end_import
 
@@ -91,6 +99,10 @@ import|import
 name|org
 operator|.
 name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
 operator|.
 name|Test
 import|;
@@ -102,7 +114,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
 operator|.
 name|assertEquals
 import|;
@@ -120,7 +136,7 @@ name|BibEntry
 name|entry
 decl_stmt|;
 annotation|@
-name|Before
+name|BeforeEach
 DECL|method|setUp ()
 specifier|public
 name|void
@@ -135,7 +151,7 @@ argument_list|()
 expr_stmt|;
 block|}
 annotation|@
-name|After
+name|AfterEach
 DECL|method|tearDown ()
 specifier|public
 name|void

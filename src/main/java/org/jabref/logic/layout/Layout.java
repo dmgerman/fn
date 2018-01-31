@@ -473,7 +473,7 @@ name|database
 parameter_list|)
 block|{
 name|StringBuilder
-name|sb
+name|builder
 init|=
 operator|new
 name|StringBuilder
@@ -501,10 +501,8 @@ argument_list|,
 name|database
 argument_list|)
 decl_stmt|;
-comment|// 2005.05.05 M. Alver
 comment|// The following change means we treat null fields as "". This is to fix the
-comment|// problem of whitespace disappearing after missing fields. Hoping there are
-comment|// no side effects.
+comment|// problem of whitespace disappearing after missing fields.
 if|if
 condition|(
 name|fieldText
@@ -517,7 +515,7 @@ operator|=
 literal|""
 expr_stmt|;
 block|}
-name|sb
+name|builder
 operator|.
 name|append
 argument_list|(
@@ -526,7 +524,7 @@ argument_list|)
 expr_stmt|;
 block|}
 return|return
-name|sb
+name|builder
 operator|.
 name|toString
 argument_list|()

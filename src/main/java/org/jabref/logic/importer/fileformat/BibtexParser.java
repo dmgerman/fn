@@ -458,6 +458,20 @@ begin_import
 import|import
 name|org
 operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|util
+operator|.
+name|FileUpdateMonitor
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|slf4j
 operator|.
 name|Logger
@@ -574,12 +588,20 @@ specifier|private
 name|ParserResult
 name|parserResult
 decl_stmt|;
-DECL|method|BibtexParser (ImportFormatPreferences importFormatPreferences)
+DECL|field|metaDataParser
+specifier|private
+name|MetaDataParser
+name|metaDataParser
+decl_stmt|;
+DECL|method|BibtexParser (ImportFormatPreferences importFormatPreferences, FileUpdateMonitor fileMonitor)
 specifier|public
 name|BibtexParser
 parameter_list|(
 name|ImportFormatPreferences
 name|importFormatPreferences
+parameter_list|,
+name|FileUpdateMonitor
+name|fileMonitor
 parameter_list|)
 block|{
 name|this
@@ -604,11 +626,19 @@ name|getFieldContentParserPreferences
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|metaDataParser
+operator|=
+operator|new
+name|MetaDataParser
+argument_list|(
+name|fileMonitor
+argument_list|)
+expr_stmt|;
 block|}
-comment|/**      * Shortcut usage to create a Parser and read the input.      *      * @param in the Reader to read from      * @throws IOException      * @deprecated inline this method      */
+comment|/**      * Shortcut usage to create a Parser and read the input.      *      * @param in the Reader to read from      * @param fileMonitor      * @throws IOException      * @deprecated inline this method      */
 annotation|@
 name|Deprecated
-DECL|method|parse (Reader in, ImportFormatPreferences importFormatPreferences)
+DECL|method|parse (Reader in, ImportFormatPreferences importFormatPreferences, FileUpdateMonitor fileMonitor)
 specifier|public
 specifier|static
 name|ParserResult
@@ -619,6 +649,9 @@ name|in
 parameter_list|,
 name|ImportFormatPreferences
 name|importFormatPreferences
+parameter_list|,
+name|FileUpdateMonitor
+name|fileMonitor
 parameter_list|)
 throws|throws
 name|IOException
@@ -628,6 +661,8 @@ operator|new
 name|BibtexParser
 argument_list|(
 name|importFormatPreferences
+argument_list|,
+name|fileMonitor
 argument_list|)
 operator|.
 name|parse
@@ -636,8 +671,8 @@ name|in
 argument_list|)
 return|;
 block|}
-comment|/**      * Parses BibtexEntries from the given string and returns one entry found (or null if none found)      *<p>      * It is undetermined which entry is returned, so use this in case you know there is only one entry in the string.      *      * @param bibtexString      * @return An Optional<BibEntry>. Optional.empty() if non was found or an error occurred.      * @throws ParseException      */
-DECL|method|singleFromString (String bibtexString, ImportFormatPreferences importFormatPreferences)
+comment|/**      * Parses BibtexEntries from the given string and returns one entry found (or null if none found)      *<p>      * It is undetermined which entry is returned, so use this in case you know there is only one entry in the string.      *      * @param bibtexString      * @param fileMonitor      * @return An Optional<BibEntry>. Optional.empty() if non was found or an error occurred.      * @throws ParseException      */
+DECL|method|singleFromString (String bibtexString, ImportFormatPreferences importFormatPreferences, FileUpdateMonitor fileMonitor)
 specifier|public
 specifier|static
 name|Optional
@@ -651,6 +686,9 @@ name|bibtexString
 parameter_list|,
 name|ImportFormatPreferences
 name|importFormatPreferences
+parameter_list|,
+name|FileUpdateMonitor
+name|fileMonitor
 parameter_list|)
 throws|throws
 name|ParseException
@@ -665,6 +703,8 @@ operator|new
 name|BibtexParser
 argument_list|(
 name|importFormatPreferences
+argument_list|,
+name|fileMonitor
 argument_list|)
 operator|.
 name|parseEntries
@@ -1176,7 +1216,7 @@ name|parserResult
 operator|.
 name|setMetaData
 argument_list|(
-name|MetaDataParser
+name|metaDataParser
 operator|.
 name|parse
 argument_list|(

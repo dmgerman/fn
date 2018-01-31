@@ -148,6 +148,20 @@ name|FileType
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|util
+operator|.
+name|FileUpdateMonitor
+import|;
+end_import
+
 begin_comment
 comment|/**  * This importer exists only to enable `--importToOpen someEntry.bib`  *  * It is NOT intended to import a BIB file. This is done via the option action, which treats the metadata fields  * The metadata is not required to be read here, as this class is NOT called at --import  */
 end_comment
@@ -176,12 +190,20 @@ specifier|final
 name|ImportFormatPreferences
 name|importFormatPreferences
 decl_stmt|;
-DECL|method|BibtexImporter (ImportFormatPreferences importFormatPreferences)
+DECL|field|fileMonitor
+specifier|private
+name|FileUpdateMonitor
+name|fileMonitor
+decl_stmt|;
+DECL|method|BibtexImporter (ImportFormatPreferences importFormatPreferences, FileUpdateMonitor fileMonitor)
 specifier|public
 name|BibtexImporter
 parameter_list|(
 name|ImportFormatPreferences
 name|importFormatPreferences
+parameter_list|,
+name|FileUpdateMonitor
+name|fileMonitor
 parameter_list|)
 block|{
 name|this
@@ -189,6 +211,12 @@ operator|.
 name|importFormatPreferences
 operator|=
 name|importFormatPreferences
+expr_stmt|;
+name|this
+operator|.
+name|fileMonitor
+operator|=
+name|fileMonitor
 expr_stmt|;
 block|}
 comment|/**      * @return true as we have no effective way to decide whether a file is in bibtex format or not. See      *         https://github.com/JabRef/jabref/pull/379#issuecomment-158685726 for more details.      */
@@ -344,6 +372,8 @@ operator|new
 name|BibtexParser
 argument_list|(
 name|importFormatPreferences
+argument_list|,
+name|fileMonitor
 argument_list|)
 operator|.
 name|parse

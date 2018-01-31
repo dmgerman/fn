@@ -466,15 +466,29 @@ end_import
 
 begin_import
 import|import
-name|com
+name|org
 operator|.
-name|google
+name|jabref
 operator|.
-name|common
+name|model
 operator|.
-name|base
+name|util
 operator|.
-name|Charsets
+name|DummyFileUpdateMonitor
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|util
+operator|.
+name|FileUpdateMonitor
 import|;
 end_import
 
@@ -565,6 +579,15 @@ DECL|field|importFormatPreferences
 specifier|private
 name|ImportFormatPreferences
 name|importFormatPreferences
+decl_stmt|;
+DECL|field|fileMonitor
+specifier|private
+name|FileUpdateMonitor
+name|fileMonitor
+init|=
+operator|new
+name|DummyFileUpdateMonitor
+argument_list|()
 decl_stmt|;
 annotation|@
 name|Before
@@ -1941,6 +1964,8 @@ operator|new
 name|BibtexParser
 argument_list|(
 name|importFormatPreferences
+argument_list|,
+name|fileMonitor
 argument_list|)
 operator|.
 name|parse
@@ -2088,6 +2113,8 @@ operator|new
 name|BibtexParser
 argument_list|(
 name|importFormatPreferences
+argument_list|,
+name|fileMonitor
 argument_list|)
 operator|.
 name|parse
@@ -2235,6 +2262,8 @@ operator|new
 name|BibtexParser
 argument_list|(
 name|importFormatPreferences
+argument_list|,
+name|fileMonitor
 argument_list|)
 operator|.
 name|parse
@@ -2412,6 +2441,8 @@ operator|new
 name|BibtexParser
 argument_list|(
 name|importFormatPreferences
+argument_list|,
+name|fileMonitor
 argument_list|)
 operator|.
 name|parse
@@ -2585,6 +2616,8 @@ operator|new
 name|BibtexParser
 argument_list|(
 name|importFormatPreferences
+argument_list|,
+name|fileMonitor
 argument_list|)
 operator|.
 name|parse
@@ -4157,6 +4190,8 @@ operator|new
 name|BibtexParser
 argument_list|(
 name|importFormatPreferences
+argument_list|,
+name|fileMonitor
 argument_list|)
 operator|.
 name|parse

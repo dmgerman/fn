@@ -1421,6 +1421,11 @@ name|prefs
 operator|.
 name|getXMPPreferences
 argument_list|()
+argument_list|,
+name|Globals
+operator|.
+name|getFileUpdateMonitor
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|customImporterTable
@@ -1892,6 +1897,11 @@ operator|.
 name|prefs
 operator|.
 name|getXMPPreferences
+argument_list|()
+argument_list|,
+name|Globals
+operator|.
+name|getFileUpdateMonitor
 argument_list|()
 argument_list|)
 expr_stmt|;

@@ -392,6 +392,20 @@ name|org
 operator|.
 name|jabref
 operator|.
+name|model
+operator|.
+name|util
+operator|.
+name|FileUpdateMonitor
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
 name|preferences
 operator|.
 name|JabRefPreferences
@@ -559,7 +573,12 @@ argument_list|(
 name|sourceIsValid
 argument_list|)
 decl_stmt|;
-DECL|method|SourceTab (BibDatabaseContext bibDatabaseContext, CountingUndoManager undoManager, LatexFieldFormatterPreferences fieldFormatterPreferences, JabRefPreferences preferences)
+DECL|field|fileMonitor
+specifier|private
+name|FileUpdateMonitor
+name|fileMonitor
+decl_stmt|;
+DECL|method|SourceTab (BibDatabaseContext bibDatabaseContext, CountingUndoManager undoManager, LatexFieldFormatterPreferences fieldFormatterPreferences, JabRefPreferences preferences, FileUpdateMonitor fileMonitor)
 specifier|public
 name|SourceTab
 parameter_list|(
@@ -574,6 +593,9 @@ name|fieldFormatterPreferences
 parameter_list|,
 name|JabRefPreferences
 name|preferences
+parameter_list|,
+name|FileUpdateMonitor
+name|fileMonitor
 parameter_list|)
 block|{
 name|this
@@ -654,6 +676,12 @@ operator|.
 name|preferences
 operator|=
 name|preferences
+expr_stmt|;
+name|this
+operator|.
+name|fileMonitor
+operator|=
+name|fileMonitor
 expr_stmt|;
 block|}
 DECL|method|getSourceString (BibEntry entry, BibDatabaseMode type, LatexFieldFormatterPreferences fieldFormatterPreferences)
@@ -1030,6 +1058,8 @@ name|preferences
 operator|.
 name|getImportFormatPreferences
 argument_list|()
+argument_list|,
+name|fileMonitor
 argument_list|)
 decl_stmt|;
 try|try

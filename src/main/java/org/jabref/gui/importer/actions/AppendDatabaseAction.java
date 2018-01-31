@@ -1272,6 +1272,11 @@ name|prefs
 operator|.
 name|getImportFormatPreferences
 argument_list|()
+argument_list|,
+name|Globals
+operator|.
+name|getFileUpdateMonitor
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|AppendDatabaseAction
