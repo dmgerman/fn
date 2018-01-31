@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|org.jabref.logic.util
+DECL|package|org.jabref.logic.bibtexkeypattern
 package|package
 name|org
 operator|.
@@ -8,7 +8,7 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|util
+name|bibtexkeypattern
 package|;
 end_package
 
@@ -2571,7 +2571,6 @@ block|}
 block|}
 comment|/**      * Applies modifiers to a label generated based on a field marker.      * @param label The generated label.      * @param parts String array containing the modifiers.      * @param offset The number of initial items in the modifiers array to skip.      * @return The modified label.      */
 DECL|method|applyModifiers (final String label, final List<String> parts, final int offset)
-specifier|public
 specifier|static
 name|String
 name|applyModifiers
@@ -2597,16 +2596,6 @@ name|resultingLabel
 init|=
 name|label
 decl_stmt|;
-if|if
-condition|(
-name|parts
-operator|.
-name|size
-argument_list|()
-operator|>
-name|offset
-condition|)
-block|{
 for|for
 control|(
 name|int
@@ -2742,7 +2731,7 @@ argument_list|()
 operator|.
 name|format
 argument_list|(
-name|label
+name|resultingLabel
 argument_list|)
 expr_stmt|;
 block|}
@@ -2783,8 +2772,7 @@ literal|")"
 argument_list|)
 condition|)
 block|{
-comment|// Alternate text modifier in parentheses. Should be inserted if
-comment|// the label is empty:
+comment|// Alternate text modifier in parentheses. Should be inserted if the label is empty
 if|if
 condition|(
 name|label
@@ -2819,23 +2807,20 @@ literal|1
 argument_list|)
 expr_stmt|;
 block|}
-else|else
-block|{
-name|resultingLabel
-operator|=
-name|label
-expr_stmt|;
-block|}
 block|}
 else|else
 block|{
-comment|// LOGGER.info("Key generator warning: unknown modifier '"
-comment|//        + modifier + "'.");
-name|resultingLabel
-operator|=
-name|label
+name|LOGGER
+operator|.
+name|warn
+argument_list|(
+literal|"Key generator warning: unknown modifier '"
+operator|+
+name|modifier
+operator|+
+literal|"'."
+argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 block|}

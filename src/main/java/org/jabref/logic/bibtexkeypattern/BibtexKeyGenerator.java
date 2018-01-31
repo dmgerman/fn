@@ -68,20 +68,6 @@ name|org
 operator|.
 name|jabref
 operator|.
-name|logic
-operator|.
-name|util
-operator|.
-name|BracketedPattern
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
 name|model
 operator|.
 name|FieldChange
@@ -349,7 +335,7 @@ name|bibtexKeyPatternPreferences
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|generateKey (BibEntry entry, String value)
+DECL|method|generateKey (BibEntry entry, String pattern)
 specifier|static
 name|String
 name|generateKey
@@ -358,7 +344,7 @@ name|BibEntry
 name|entry
 parameter_list|,
 name|String
-name|value
+name|pattern
 parameter_list|)
 block|{
 return|return
@@ -366,7 +352,7 @@ name|generateKey
 argument_list|(
 name|entry
 argument_list|,
-name|value
+name|pattern
 argument_list|,
 operator|new
 name|BibDatabase
@@ -374,7 +360,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|generateKey (BibEntry entry, String value, BibDatabase database)
+DECL|method|generateKey (BibEntry entry, String pattern, BibDatabase database)
 specifier|static
 name|String
 name|generateKey
@@ -383,7 +369,7 @@ name|BibEntry
 name|entry
 parameter_list|,
 name|String
-name|value
+name|pattern
 parameter_list|,
 name|BibDatabase
 name|database
@@ -407,7 +393,7 @@ name|setDefaultValue
 argument_list|(
 literal|"["
 operator|+
-name|value
+name|pattern
 operator|+
 literal|"]"
 argument_list|)
