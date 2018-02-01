@@ -188,7 +188,7 @@ name|JButton
 argument_list|(
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|CLOSE
 operator|.
@@ -284,7 +284,7 @@ name|JButton
 argument_list|(
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|UP
 operator|.
@@ -334,7 +334,7 @@ name|JButton
 argument_list|(
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|DOWN
 operator|.
@@ -652,7 +652,7 @@ name|ToggleAction
 extends|extends
 name|MnemonicAwareAction
 block|{
-DECL|method|ToggleAction (String text, String description, KeyStroke key, IconTheme.JabRefIcon icon)
+DECL|method|ToggleAction (String text, String description, KeyStroke key, JabRefIcon icon)
 specifier|public
 name|ToggleAction
 parameter_list|(
@@ -665,8 +665,6 @@ parameter_list|,
 name|KeyStroke
 name|key
 parameter_list|,
-name|IconTheme
-operator|.
 name|JabRefIcon
 name|icon
 parameter_list|)

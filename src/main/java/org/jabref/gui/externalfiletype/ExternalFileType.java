@@ -28,16 +28,6 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|Icon
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
 name|JLabel
 import|;
 end_import
@@ -51,6 +41,18 @@ operator|.
 name|gui
 operator|.
 name|IconTheme
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|JabRefIcon
 import|;
 end_import
 
@@ -96,7 +98,7 @@ name|mimeType
 decl_stmt|;
 DECL|field|icon
 specifier|private
-name|Icon
+name|JabRefIcon
 name|icon
 decl_stmt|;
 DECL|field|label
@@ -109,7 +111,7 @@ operator|new
 name|JLabel
 argument_list|()
 decl_stmt|;
-DECL|method|ExternalFileType (String name, String extension, String mimeType, String openWith, String iconName, Icon icon)
+DECL|method|ExternalFileType (String name, String extension, String mimeType, String openWith, String iconName, JabRefIcon icon)
 specifier|public
 name|ExternalFileType
 parameter_list|(
@@ -128,7 +130,7 @@ parameter_list|,
 name|String
 name|iconName
 parameter_list|,
-name|Icon
+name|JabRefIcon
 name|icon
 parameter_list|)
 block|{
@@ -253,9 +255,6 @@ decl_stmt|;
 name|String
 name|iconName
 decl_stmt|;
-name|Icon
-name|icon
-decl_stmt|;
 if|if
 condition|(
 name|val
@@ -311,17 +310,15 @@ index|]
 expr_stmt|;
 block|}
 comment|// set icon to default first
+name|JabRefIcon
 name|icon
-operator|=
+init|=
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|FILE
-operator|.
-name|getSmallIcon
-argument_list|()
-expr_stmt|;
+decl_stmt|;
 comment|// check whether there is another icon defined for this file type
 for|for
 control|(
@@ -597,7 +594,7 @@ return|;
 block|}
 DECL|method|getIcon ()
 specifier|public
-name|Icon
+name|JabRefIcon
 name|getIcon
 parameter_list|()
 block|{
@@ -605,12 +602,12 @@ return|return
 name|icon
 return|;
 block|}
-DECL|method|setIcon (Icon icon)
+DECL|method|setIcon (JabRefIcon icon)
 specifier|public
 name|void
 name|setIcon
 parameter_list|(
-name|Icon
+name|JabRefIcon
 name|icon
 parameter_list|)
 block|{
@@ -627,6 +624,9 @@ argument_list|(
 name|this
 operator|.
 name|icon
+operator|.
+name|getSmallIcon
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

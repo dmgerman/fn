@@ -708,6 +708,11 @@ condition|(
 name|newValue
 operator|==
 literal|null
+operator|||
+name|newValue
+operator|.
+name|isEmpty
+argument_list|()
 condition|)
 block|{
 name|stateManager

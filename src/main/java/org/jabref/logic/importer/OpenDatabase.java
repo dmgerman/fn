@@ -162,13 +162,13 @@ begin_import
 import|import
 name|org
 operator|.
-name|apache
+name|jabref
 operator|.
-name|commons
+name|model
 operator|.
-name|logging
+name|util
 operator|.
-name|Log
+name|FileUpdateMonitor
 import|;
 end_import
 
@@ -176,13 +176,19 @@ begin_import
 import|import
 name|org
 operator|.
-name|apache
+name|slf4j
 operator|.
-name|commons
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
 operator|.
-name|logging
+name|slf4j
 operator|.
-name|LogFactory
+name|LoggerFactory
 import|;
 end_import
 
@@ -196,12 +202,12 @@ DECL|field|LOGGER
 specifier|public
 specifier|static
 specifier|final
-name|Log
+name|Logger
 name|LOGGER
 init|=
-name|LogFactory
+name|LoggerFactory
 operator|.
-name|getLog
+name|getLogger
 argument_list|(
 name|OpenDatabase
 operator|.
@@ -213,8 +219,8 @@ specifier|private
 name|OpenDatabase
 parameter_list|()
 block|{     }
-comment|/**      * Load database (bib-file)      *      * @param name Name of the BIB-file to open      * @return ParserResult which never is null      */
-DECL|method|loadDatabase (String name, ImportFormatPreferences importFormatPreferences)
+comment|/**      * Load database (bib-file)      *      * @param name Name of the BIB-file to open      * @param fileMonitor      * @return ParserResult which never is null      */
+DECL|method|loadDatabase (String name, ImportFormatPreferences importFormatPreferences, FileUpdateMonitor fileMonitor)
 specifier|public
 specifier|static
 name|ParserResult
@@ -225,6 +231,9 @@ name|name
 parameter_list|,
 name|ImportFormatPreferences
 name|importFormatPreferences
+parameter_list|,
+name|FileUpdateMonitor
+name|fileMonitor
 parameter_list|)
 block|{
 name|File
@@ -353,6 +362,8 @@ argument_list|(
 name|file
 argument_list|,
 name|importFormatPreferences
+argument_list|,
+name|fileMonitor
 argument_list|)
 decl_stmt|;
 name|pr
@@ -432,7 +443,7 @@ return|;
 block|}
 block|}
 comment|/**      * Opens a new database.      */
-DECL|method|loadDatabase (File fileToOpen, ImportFormatPreferences importFormatPreferences)
+DECL|method|loadDatabase (File fileToOpen, ImportFormatPreferences importFormatPreferences, FileUpdateMonitor fileMonitor)
 specifier|public
 specifier|static
 name|ParserResult
@@ -443,6 +454,9 @@ name|fileToOpen
 parameter_list|,
 name|ImportFormatPreferences
 name|importFormatPreferences
+parameter_list|,
+name|FileUpdateMonitor
+name|fileMonitor
 parameter_list|)
 throws|throws
 name|IOException
@@ -454,6 +468,8 @@ operator|new
 name|BibtexImporter
 argument_list|(
 name|importFormatPreferences
+argument_list|,
+name|fileMonitor
 argument_list|)
 operator|.
 name|importDatabase

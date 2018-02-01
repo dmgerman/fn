@@ -424,7 +424,7 @@ name|JLabel
 argument_list|(
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|FILE
 operator|.
@@ -1577,6 +1577,9 @@ argument_list|(
 name|entry
 operator|.
 name|getIcon
+argument_list|()
+operator|.
+name|getSmallIcon
 argument_list|()
 argument_list|)
 expr_stmt|;

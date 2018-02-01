@@ -24,7 +24,7 @@ name|logic
 operator|.
 name|exporter
 operator|.
-name|ExportFormats
+name|ExporterFactory
 import|;
 end_import
 
@@ -83,7 +83,7 @@ name|String
 operator|.
 name|valueOf
 argument_list|(
-name|ExportFormats
+name|ExporterFactory
 operator|.
 name|entryNumber
 argument_list|)

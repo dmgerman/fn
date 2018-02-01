@@ -918,6 +918,15 @@ name|SHORTEDITOR
 init|=
 literal|"shorteditor"
 decl_stmt|;
+DECL|field|SHORTTITLE
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|SHORTTITLE
+init|=
+literal|"shorttitle"
+decl_stmt|;
 DECL|field|SORTNAME
 specifier|public
 specifier|static

@@ -316,6 +316,8 @@ literal|"RisImporterTest5b"
 argument_list|,
 literal|"RisImporterTest6"
 argument_list|,
+literal|"RisImporterTest7"
+argument_list|,
 literal|"RisImporterTestDoiAndJournalTitle"
 argument_list|,
 literal|"RisImporterTestScopus"

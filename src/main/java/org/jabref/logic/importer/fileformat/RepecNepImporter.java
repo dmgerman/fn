@@ -136,7 +136,7 @@ name|logic
 operator|.
 name|util
 operator|.
-name|FileExtensions
+name|FileType
 import|;
 end_import
 
@@ -186,13 +186,9 @@ begin_import
 import|import
 name|org
 operator|.
-name|apache
+name|slf4j
 operator|.
-name|commons
-operator|.
-name|logging
-operator|.
-name|Log
+name|Logger
 import|;
 end_import
 
@@ -200,13 +196,9 @@ begin_import
 import|import
 name|org
 operator|.
-name|apache
+name|slf4j
 operator|.
-name|commons
-operator|.
-name|logging
-operator|.
-name|LogFactory
+name|LoggerFactory
 import|;
 end_import
 
@@ -226,12 +218,12 @@ DECL|field|LOGGER
 specifier|private
 specifier|static
 specifier|final
-name|Log
+name|Logger
 name|LOGGER
 init|=
-name|LogFactory
+name|LoggerFactory
 operator|.
-name|getLog
+name|getLogger
 argument_list|(
 name|RepecNepImporter
 operator|.
@@ -334,14 +326,14 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|getExtensions ()
+DECL|method|getFileType ()
 specifier|public
-name|FileExtensions
-name|getExtensions
+name|FileType
+name|getFileType
 parameter_list|()
 block|{
 return|return
-name|FileExtensions
+name|FileType
 operator|.
 name|REPEC
 return|;

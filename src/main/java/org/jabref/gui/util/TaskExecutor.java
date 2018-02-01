@@ -14,25 +14,23 @@ end_package
 
 begin_import
 import|import
-name|javafx
+name|java
+operator|.
+name|util
 operator|.
 name|concurrent
 operator|.
-name|Task
+name|Future
 import|;
 end_import
 
 begin_import
 import|import
-name|org
+name|javafx
 operator|.
-name|jabref
+name|concurrent
 operator|.
-name|gui
-operator|.
-name|externalfiles
-operator|.
-name|FileDownloadTask
+name|Task
 import|;
 end_import
 
@@ -46,12 +44,15 @@ specifier|public
 interface|interface
 name|TaskExecutor
 block|{
-comment|/**      * Runs the given task.      *      * @param task the task to run      * @param<V>  type of return value of the task      */
+comment|/**      * Runs the given task and returns a Future representing that task.      *      * @param<V>  type of return value of the task      * @param task the task to run      */
 DECL|method|execute (BackgroundTask<V> task)
 parameter_list|<
 name|V
 parameter_list|>
-name|void
+name|Future
+argument_list|<
+name|?
+argument_list|>
 name|execute
 parameter_list|(
 name|BackgroundTask
@@ -59,15 +60,6 @@ argument_list|<
 name|V
 argument_list|>
 name|task
-parameter_list|)
-function_decl|;
-comment|/**      * Runs the given download task.      *      * @param downloadTask the task to run      */
-DECL|method|execute (FileDownloadTask downloadTask)
-name|void
-name|execute
-parameter_list|(
-name|FileDownloadTask
-name|downloadTask
 parameter_list|)
 function_decl|;
 comment|/**      * Shutdown the task executor.      */

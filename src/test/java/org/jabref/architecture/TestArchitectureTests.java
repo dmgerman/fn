@@ -134,6 +134,18 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|stream
+operator|.
+name|Stream
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|junit
@@ -239,6 +251,15 @@ name|CLASS_ORG_JABREF_UPDATE_TIMESTAMP_LISTENER_TEST
 init|=
 literal|"UpdateTimestampListenerTest"
 decl_stmt|;
+DECL|field|CLASS_ORG_JABREF_ENTRY_EDITOR_TEST
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|CLASS_ORG_JABREF_ENTRY_EDITOR_TEST
+init|=
+literal|"SourceTabTest"
+decl_stmt|;
 DECL|field|forbiddenPackage
 specifier|private
 specifier|final
@@ -295,6 +316,13 @@ operator|.
 name|add
 argument_list|(
 name|CLASS_ORG_JABREF_UPDATE_TIMESTAMP_LISTENER_TEST
+argument_list|)
+expr_stmt|;
+name|exceptions
+operator|.
+name|add
+argument_list|(
+name|CLASS_ORG_JABREF_ENTRY_EDITOR_TEST
 argument_list|)
 expr_stmt|;
 block|}
@@ -397,11 +425,13 @@ name|exception
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|List
+try|try
+init|(
+name|Stream
 argument_list|<
 name|Path
 argument_list|>
-name|files
+name|pathStream
 init|=
 name|Files
 operator|.
@@ -414,6 +444,15 @@ argument_list|(
 literal|"src/test/"
 argument_list|)
 argument_list|)
+init|)
+block|{
+name|List
+argument_list|<
+name|Path
+argument_list|>
+name|files
+init|=
+name|pathStream
 operator|.
 name|filter
 argument_list|(
@@ -470,11 +509,9 @@ return|;
 block|}
 block|}
 block|)
-operator|.
-name|filter
-argument_list|(
-name|p
-lambda|->
+function|.filter
+parameter_list|(
+function|p ->
 block|{
 try|try
 block|{
@@ -510,7 +547,7 @@ literal|false
 return|;
 block|}
 block|}
-argument_list|)
+block|)
 operator|.
 name|collect
 argument_list|(
@@ -541,6 +578,6 @@ argument_list|)
 expr_stmt|;
 end_expr_stmt
 
-unit|} }
+unit|}     } }
 end_unit
 

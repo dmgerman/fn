@@ -217,7 +217,7 @@ name|manager
 argument_list|,
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|SAVE
 operator|.

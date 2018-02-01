@@ -114,7 +114,7 @@ name|logic
 operator|.
 name|util
 operator|.
-name|FileExtensions
+name|FileType
 import|;
 end_import
 
@@ -129,6 +129,20 @@ operator|.
 name|entry
 operator|.
 name|BibEntry
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|util
+operator|.
+name|DummyFileUpdateMonitor
 import|;
 end_import
 
@@ -236,6 +250,10 @@ name|Answers
 operator|.
 name|RETURNS_DEEP_STUBS
 argument_list|)
+argument_list|,
+operator|new
+name|DummyFileUpdateMonitor
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -915,13 +933,13 @@ parameter_list|()
 block|{
 name|assertEquals
 argument_list|(
-name|FileExtensions
+name|FileType
 operator|.
 name|BIBTEX_DB
 argument_list|,
 name|importer
 operator|.
-name|getExtensions
+name|getFileType
 argument_list|()
 argument_list|)
 expr_stmt|;

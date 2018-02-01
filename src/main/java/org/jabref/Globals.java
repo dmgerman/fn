@@ -86,6 +86,20 @@ name|gui
 operator|.
 name|util
 operator|.
+name|DefaultFileUpdateMonitor
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|util
+operator|.
 name|DefaultTaskExecutor
 import|;
 end_import
@@ -100,7 +114,7 @@ name|gui
 operator|.
 name|util
 operator|.
-name|FileUpdateMonitor
+name|TaskExecutor
 import|;
 end_import
 
@@ -110,11 +124,11 @@ name|org
 operator|.
 name|jabref
 operator|.
-name|gui
+name|logic
 operator|.
-name|util
+name|exporter
 operator|.
-name|TaskExecutor
+name|ExporterFactory
 import|;
 end_import
 
@@ -187,6 +201,20 @@ operator|.
 name|util
 operator|.
 name|BuildInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|util
+operator|.
+name|FileUpdateMonitor
 import|;
 end_import
 
@@ -339,6 +367,12 @@ operator|new
 name|StateManager
 argument_list|()
 decl_stmt|;
+DECL|field|exportFactory
+specifier|public
+specifier|static
+name|ExporterFactory
+name|exportFactory
+decl_stmt|;
 comment|// Key binding preferences
 DECL|field|keyBindingRepository
 specifier|private
@@ -356,7 +390,7 @@ decl_stmt|;
 DECL|field|fileUpdateMonitor
 specifier|private
 specifier|static
-name|FileUpdateMonitor
+name|DefaultFileUpdateMonitor
 name|fileUpdateMonitor
 decl_stmt|;
 DECL|field|telemetryClient
@@ -419,7 +453,7 @@ operator|.
 name|fileUpdateMonitor
 operator|=
 operator|new
-name|FileUpdateMonitor
+name|DefaultFileUpdateMonitor
 argument_list|()
 expr_stmt|;
 name|JabRefExecutorService

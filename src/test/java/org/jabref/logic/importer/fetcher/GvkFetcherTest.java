@@ -126,7 +126,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Before
+name|jupiter
+operator|.
+name|api
+operator|.
+name|BeforeEach
 import|;
 end_import
 
@@ -135,22 +139,12 @@ import|import
 name|org
 operator|.
 name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
 operator|.
 name|Test
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|experimental
-operator|.
-name|categories
-operator|.
-name|Category
 import|;
 end_import
 
@@ -160,7 +154,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
 operator|.
 name|assertEquals
 import|;
@@ -172,7 +170,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
 operator|.
 name|assertTrue
 import|;
@@ -180,12 +182,7 @@ end_import
 
 begin_class
 annotation|@
-name|Category
-argument_list|(
 name|FetcherTest
-operator|.
-name|class
-argument_list|)
 DECL|class|GvkFetcherTest
 specifier|public
 class|class
@@ -207,7 +204,7 @@ name|BibEntry
 name|bibEntryPPN66391437X
 decl_stmt|;
 annotation|@
-name|Before
+name|BeforeEach
 DECL|method|setUp ()
 specifier|public
 name|void
@@ -488,8 +485,6 @@ specifier|public
 name|void
 name|simpleSearchQueryStringCorrect
 parameter_list|()
-throws|throws
-name|FetcherException
 block|{
 name|String
 name|query
@@ -561,8 +556,6 @@ specifier|public
 name|void
 name|complexSearchQueryStringCorrect
 parameter_list|()
-throws|throws
-name|FetcherException
 block|{
 name|String
 name|query

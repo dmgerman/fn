@@ -266,6 +266,21 @@ return|return
 name|JAVA_VERSION
 return|;
 block|}
+DECL|method|getJavaInstallationDirectory ()
+specifier|public
+name|String
+name|getJavaInstallationDirectory
+parameter_list|()
+block|{
+return|return
+name|System
+operator|.
+name|getProperty
+argument_list|(
+literal|"java.home"
+argument_list|)
+return|;
+block|}
 block|}
 end_class
 

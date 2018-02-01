@@ -448,7 +448,7 @@ name|setGraphic
 argument_list|(
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|OPEN
 operator|.
@@ -462,7 +462,7 @@ name|setGraphic
 argument_list|(
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|NEW
 operator|.
@@ -476,7 +476,7 @@ name|setGraphic
 argument_list|(
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|CLOSE
 operator|.
@@ -627,7 +627,7 @@ block|{
 return|return
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|ADD
 operator|.
@@ -645,7 +645,7 @@ argument_list|()
 condition|?
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|EDIT
 operator|.
@@ -729,7 +729,7 @@ block|{
 return|return
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|DELETE_ENTRY
 operator|.

@@ -120,7 +120,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Before
+name|jupiter
+operator|.
+name|api
+operator|.
+name|BeforeEach
 import|;
 end_import
 
@@ -129,22 +133,12 @@ import|import
 name|org
 operator|.
 name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
 operator|.
 name|Test
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|experimental
-operator|.
-name|categories
-operator|.
-name|Category
 import|;
 end_import
 
@@ -154,7 +148,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
 operator|.
 name|assertEquals
 import|;
@@ -166,9 +164,13 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
 operator|.
-name|assertTrue
+name|api
+operator|.
+name|Assertions
+operator|.
+name|assertThrows
 import|;
 end_import
 
@@ -178,20 +180,19 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
 operator|.
-name|fail
+name|api
+operator|.
+name|Assertions
+operator|.
+name|assertTrue
 import|;
 end_import
 
 begin_class
 annotation|@
-name|Category
-argument_list|(
 name|FetcherTest
-operator|.
-name|class
-argument_list|)
 DECL|class|MedlineFetcherTest
 specifier|public
 class|class
@@ -217,7 +218,7 @@ decl_stmt|,
 name|bibEntrySari
 decl_stmt|;
 annotation|@
-name|Before
+name|BeforeEach
 DECL|method|setUp ()
 specifier|public
 name|void
@@ -252,15 +253,6 @@ argument_list|(
 literal|"author"
 argument_list|,
 literal|"Wijedasa, Lahiru S and Jauhiainen, Jyrki and KÃ¶nÃ¶nen, Mari and Lampela, Maija and Vasander, Harri and Leblanc, Marie-Claire and Evers, Stephanie and Smith, Thomas E L and Yule, Catherine M and Varkkey, Helena and Lupascu, Massimo and Parish, Faizal and Singleton, Ian and Clements, Gopalasamy R and Aziz, Sheema Abdul and Harrison, Mark E and Cheyne, Susan and Anshari, Gusti Z and Meijaard, Erik and Goldstein, Jenny E and Waldron, Susan and Hergoualc'h, Kristell and Dommain, Rene and Frolking, Steve and Evans, Christopher D and Posa, Mary Rose C and Glaser, Paul H and Suryadiputra, Nyoman and Lubis, Reza and Santika, Truly and Padfield, Rory and Kurnianto, Sofyan and Hadisiswoyo, Panut and Lim, Teck Wyn and Page, Susan E and Gauci, Vincent and Van Der Meer, Peter J and Buckland, Helen and Garnier, Fabien and Samuel, Marshall K and Choo, Liza Nuriati Lim Kim and O'Reilly, Patrick and Warren, Matthew and Suksuwan, Surin and Sumarga, Elham and Jain, Anuj and Laurance, William F and Couwenberg, John and Joosten, Hans and Vernimmen, Ronald and Hooijer, Aljosja and Malins, Chris and Cochrane, Mark A and Perumal, Balu and Siegert, Florian and Peh, Kelvin S-H and Comeau, Louis-Pierre and Verchot, Louis and Harvey, Charles F and Cobb, Alex and Jaafar, Zeehan and WÃ¶sten, Henk and Manuri, Solichin and MÃ¼ller, Moritz and Giesen, Wim and Phelps, Jacob and Yong, Ding Li and Silvius, Marcel and Wedeux, BÃ©atrice M M and Hoyt, Alison and Osaki, Mitsuru and Hirano, Takashi and Takahashi, Hidenori and Kohyama, Takashi S and Haraguchi, Akira and Nugroho, Nunung P and Coomes, David A and Quoi, Le Phat and Dohong, Alue and Gunawan, Haris and Gaveau, David L A and Langner, Andreas and Lim, Felix K S and Edwards, David P and Giam, Xingli and Van Der Werf, Guido and Carmenta, Rachel and Verwer, Caspar C and Gibson, Luke and Gandois, Laure and Graham, Laura Linda Bozena and Regalino, Jhanson and Wich, Serge A and Rieley, Jack and Kettridge, Nicholas and Brown, Chloe and Pirard, Romain and Moore, Sam and Capilla, B Ripoll and Ballhorn, Uwe and Ho, Hua Chew and Hoscilo, Agata and Lohberger, Sandra and Evans, Theodore A and Yulianti, Nina and Blackham, Grace and Onrizal and Husson, Simon and Murdiyarso, Daniel and Pangala, Sunita and Cole, Lydia E S and Tacconi, Luca and Segah, Hendrik and Tonoto, Prayoto and Lee, Janice S H and Schmilewski, Gerald and Wulffraat, Stephan and Putra, Erianto Indra and Cattau, Megan E and Clymo, R S and Morrison, Ross and Mujahid, Aazani and Miettinen, Jukka and Liew, Soo Chin and Valpola, Samu and Wilson, David and D'Arcy, Laura and Gerding, Michiel and Sundari, Siti and Thornton, Sara A and Kalisz, Barbara and Chapman, Stephen J and Su, Ahmad Suhaizi Mat and Basuki, Imam and Itoh, Masayuki and Traeholt, Carl and Sloan, Sean and Sayok, Alexander K and Andersen, Roxane"
-argument_list|)
-expr_stmt|;
-name|entryWijedasa
-operator|.
-name|setField
-argument_list|(
-literal|"created"
-argument_list|,
-literal|"2016-09-27"
 argument_list|)
 expr_stmt|;
 name|entryWijedasa
@@ -386,7 +378,7 @@ name|setField
 argument_list|(
 literal|"revised"
 argument_list|,
-literal|"2017-02-17"
+literal|"2018-01-23"
 argument_list|)
 expr_stmt|;
 name|entryWijedasa
@@ -447,15 +439,6 @@ argument_list|(
 literal|"author"
 argument_list|,
 literal|"Endharti, Agustina Tri and Wulandari, Adisti and Listyana, Anik and Norahmawati, Eviana and Permana, Sofy"
-argument_list|)
-expr_stmt|;
-name|entryEndharti
-operator|.
-name|setField
-argument_list|(
-literal|"created"
-argument_list|,
-literal|"2016-09-27"
 argument_list|)
 expr_stmt|;
 name|entryEndharti
@@ -693,15 +676,6 @@ name|bibEntryIchikawa
 operator|.
 name|setField
 argument_list|(
-literal|"created"
-argument_list|,
-literal|"2015-09-26"
-argument_list|)
-expr_stmt|;
-name|bibEntryIchikawa
-operator|.
-name|setField
-argument_list|(
 literal|"doi"
 argument_list|,
 literal|"10.1016/j.parint.2015.07.004"
@@ -918,15 +892,6 @@ argument_list|(
 literal|"country"
 argument_list|,
 literal|"Thailand"
-argument_list|)
-expr_stmt|;
-name|bibEntrySari
-operator|.
-name|setField
-argument_list|(
-literal|"created"
-argument_list|,
-literal|"2016-02-12"
 argument_list|)
 expr_stmt|;
 name|bibEntrySari
@@ -1384,14 +1349,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-argument_list|(
-name|expected
-operator|=
-name|FetcherException
-operator|.
-name|class
-argument_list|)
-comment|//caused by Optional.of(entry.get(0))
 DECL|method|testInvalidSearchTermCauseIndexOutOfBoundsException ()
 specifier|public
 name|void
@@ -1400,15 +1357,21 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|assertThrows
+argument_list|(
+name|FetcherException
+operator|.
+name|class
+argument_list|,
+parameter_list|()
+lambda|->
 name|fetcher
 operator|.
 name|performSearchById
 argument_list|(
 literal|"this.is.a.invalid.search.term.for.the.medline.fetcher"
 argument_list|)
-expr_stmt|;
-name|fail
-argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 annotation|@

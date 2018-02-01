@@ -910,13 +910,9 @@ begin_import
 import|import
 name|org
 operator|.
-name|apache
+name|slf4j
 operator|.
-name|commons
-operator|.
-name|logging
-operator|.
-name|Log
+name|Logger
 import|;
 end_import
 
@@ -924,13 +920,9 @@ begin_import
 import|import
 name|org
 operator|.
-name|apache
+name|slf4j
 operator|.
-name|commons
-operator|.
-name|logging
-operator|.
-name|LogFactory
+name|LoggerFactory
 import|;
 end_import
 
@@ -947,15 +939,6 @@ extends|extends
 name|JabRefDialog
 block|{
 comment|/**      * Keys to be used for referencing this Action.      */
-DECL|field|ACTION_COMMAND
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|ACTION_COMMAND
-init|=
-literal|"findUnlinkedFiles"
-decl_stmt|;
 DECL|field|ACTION_MENU_TITLE
 specifier|public
 specifier|static
@@ -988,12 +971,12 @@ DECL|field|LOGGER
 specifier|private
 specifier|static
 specifier|final
-name|Log
+name|Logger
 name|LOGGER
 init|=
-name|LogFactory
+name|LoggerFactory
 operator|.
-name|getLog
+name|getLogger
 argument_list|(
 name|FindUnlinkedFilesDialog
 operator|.
@@ -5625,6 +5608,9 @@ name|getExternalFileType
 argument_list|()
 operator|.
 name|getIcon
+argument_list|()
+operator|.
+name|getSmallIcon
 argument_list|()
 argument_list|)
 expr_stmt|;

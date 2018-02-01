@@ -1252,6 +1252,13 @@ name|KEY_FIELD
 argument_list|,
 literal|true
 argument_list|)
+operator|.
+name|withProperties
+argument_list|(
+name|FieldProperty
+operator|.
+name|KEY
+argument_list|)
 expr_stmt|;
 name|dummy
 operator|.
@@ -2721,7 +2728,7 @@ block|}
 DECL|method|getFieldLength (String name)
 specifier|public
 specifier|static
-name|int
+name|Double
 name|getFieldLength
 parameter_list|(
 name|String

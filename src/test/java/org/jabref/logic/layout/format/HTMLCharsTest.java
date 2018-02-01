@@ -521,6 +521,27 @@ block|}
 comment|/*      * Is missing a lot of test cases for the individual chars...      */
 annotation|@
 name|Test
+DECL|method|testQuoteSingle ()
+specifier|public
+name|void
+name|testQuoteSingle
+parameter_list|()
+block|{
+name|assertEquals
+argument_list|(
+literal|"&#39;"
+argument_list|,
+name|layout
+operator|.
+name|format
+argument_list|(
+literal|"{\\textquotesingle}"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
 DECL|method|unknownCommandIsKept ()
 specifier|public
 name|void

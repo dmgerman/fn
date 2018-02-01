@@ -48,6 +48,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|io
+operator|.
+name|UncheckedIOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|nio
 operator|.
 name|file
@@ -89,6 +99,18 @@ operator|.
 name|file
 operator|.
 name|StandardCopyOption
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|file
+operator|.
+name|StandardOpenOption
 import|;
 end_import
 
@@ -208,6 +230,32 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|stream
+operator|.
+name|Stream
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|bibtexkeypattern
+operator|.
+name|BracketedPattern
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|jabref
@@ -245,20 +293,6 @@ operator|.
 name|layout
 operator|.
 name|LayoutHelper
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
-name|util
-operator|.
-name|BracketedPattern
 import|;
 end_import
 
@@ -312,9 +346,9 @@ name|apache
 operator|.
 name|commons
 operator|.
-name|logging
+name|io
 operator|.
-name|Log
+name|FilenameUtils
 import|;
 end_import
 
@@ -322,13 +356,19 @@ begin_import
 import|import
 name|org
 operator|.
-name|apache
+name|slf4j
 operator|.
-name|commons
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
 operator|.
-name|logging
+name|slf4j
 operator|.
-name|LogFactory
+name|LoggerFactory
 import|;
 end_import
 
@@ -371,12 +411,12 @@ DECL|field|LOGGER
 specifier|private
 specifier|static
 specifier|final
-name|Log
+name|Logger
 name|LOGGER
 init|=
-name|LogFactory
+name|LoggerFactory
 operator|.
-name|getLog
+name|getLogger
 argument_list|(
 name|FileUtil
 operator|.
@@ -495,50 +535,24 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Returns the name part of a file name (i.e., everything in front of last ".").      */
-DECL|method|getFileName (String fileNameWithExtension)
+DECL|method|getBaseName (String fileNameWithExtension)
 specifier|public
 specifier|static
 name|String
-name|getFileName
+name|getBaseName
 parameter_list|(
 name|String
 name|fileNameWithExtension
 parameter_list|)
 block|{
-name|int
-name|dotPosition
-init|=
-name|fileNameWithExtension
-operator|.
-name|lastIndexOf
-argument_list|(
-literal|'.'
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|dotPosition
-operator|>=
-literal|0
-condition|)
-block|{
 return|return
-name|fileNameWithExtension
+name|FilenameUtils
 operator|.
-name|substring
+name|getBaseName
 argument_list|(
-literal|0
-argument_list|,
-name|dotPosition
+name|fileNameWithExtension
 argument_list|)
 return|;
-block|}
-else|else
-block|{
-return|return
-name|fileNameWithExtension
-return|;
-block|}
 block|}
 comment|/**      * Returns a valid filename for most operating systems.      *      * Currently, only the length is restricted to 255 chars, see MAXIMUM_FILE_NAME_LENGTH.      */
 DECL|method|getValidFileName (String fileName)
@@ -554,7 +568,7 @@ block|{
 name|String
 name|nameWithoutExtension
 init|=
-name|getFileName
+name|getBaseName
 argument_list|(
 name|fileName
 argument_list|)
@@ -1036,21 +1050,35 @@ return|;
 block|}
 try|try
 block|{
-return|return
+comment|// Preserve Hard Links with OpenOption defaults included for clarity
 name|Files
 operator|.
-name|copy
+name|write
 argument_list|(
-name|pathToSourceFile
-argument_list|,
 name|pathToDestinationFile
 argument_list|,
-name|StandardCopyOption
+name|Files
 operator|.
-name|REPLACE_EXISTING
+name|readAllBytes
+argument_list|(
+name|pathToSourceFile
 argument_list|)
-operator|!=
-literal|null
+argument_list|,
+name|StandardOpenOption
+operator|.
+name|CREATE
+argument_list|,
+name|StandardOpenOption
+operator|.
+name|WRITE
+argument_list|,
+name|StandardOpenOption
+operator|.
+name|TRUNCATE_EXISTING
+argument_list|)
+expr_stmt|;
+return|return
+literal|true
 return|;
 block|}
 catch|catch
@@ -1098,7 +1126,9 @@ literal|false
 argument_list|)
 return|;
 block|}
-comment|/**      * Renames a given file      *      * @param fromFile        The source filename to rename      * @param toFile          The target fileName      * @param replaceExisting Wether to replace existing files or not      * @return True if the rename was successful, false if an exception occurred      */
+comment|/**      * Renames a given file      *      * @param fromFile        The source filename to rename      * @param toFile          The target fileName      * @param replaceExisting Wether to replace existing files or not      * @return True if the rename was successful, false if an exception occurred      * @deprecated Use {@link #renameFileWithException(Path, Path, boolean)} instead and handle exception properly      */
+annotation|@
+name|Deprecated
 DECL|method|renameFile (Path fromFile, Path toFile, boolean replaceExisting)
 specifier|public
 specifier|static
@@ -1358,7 +1388,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**      * Determines filename provided by an entry in a database      *      * @param database        the database, where the entry is located      * @param entry           the entry to which the file should be linked to      * @param fileNamePattern the filename pattern      * @param prefs           the layout preferences      * @return a suggested fileName      *      * @Deprecated use String createFileNameFromPattern(BibDatabase database, BibEntry entry, String fileNamePattern ) instead.      */
+comment|/**      * Determines filename provided by an entry in a database      *      * @param database        the database, where the entry is located      * @param entry           the entry to which the file should be linked to      * @param fileNamePattern the filename pattern      * @param prefs           the layout preferences      * @return a suggested fileName      * @Deprecated use String createFileNameFromPattern(BibDatabase database, BibEntry entry, String fileNamePattern ) instead.      */
 annotation|@
 name|Deprecated
 DECL|method|createFileNameFromPattern (BibDatabase database, BibEntry entry, String fileNamePattern, LayoutFormatterPreferences prefs)
@@ -1516,10 +1546,6 @@ block|{
 name|String
 name|targetName
 init|=
-literal|null
-decl_stmt|;
-name|targetName
-operator|=
 name|BracketedPattern
 operator|.
 name|expandBrackets
@@ -1532,7 +1558,7 @@ name|entry
 argument_list|,
 name|database
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 if|if
 condition|(
 operator|(
@@ -1670,14 +1696,23 @@ name|rootDirectory
 parameter_list|)
 block|{
 try|try
-block|{
-return|return
+init|(
+name|Stream
+argument_list|<
+name|Path
+argument_list|>
+name|pathStream
+init|=
 name|Files
 operator|.
 name|walk
 argument_list|(
 name|rootDirectory
 argument_list|)
+init|)
+block|{
+return|return
+name|pathStream
 operator|.
 name|filter
 argument_list|(
@@ -1710,6 +1745,8 @@ return|;
 block|}
 catch|catch
 parameter_list|(
+name|UncheckedIOException
+decl||
 name|IOException
 name|ex
 parameter_list|)
@@ -1793,6 +1830,31 @@ expr_stmt|;
 block|}
 return|return
 name|files
+return|;
+block|}
+comment|/**      * Creates a string representation of the given path that should work on all systems.      * This method should be used when a path needs to be stored in the bib file or preferences.      */
+DECL|method|toPortableString (Path path)
+specifier|public
+specifier|static
+name|String
+name|toPortableString
+parameter_list|(
+name|Path
+name|path
+parameter_list|)
+block|{
+return|return
+name|path
+operator|.
+name|toString
+argument_list|()
+operator|.
+name|replace
+argument_list|(
+literal|'\\'
+argument_list|,
+literal|'/'
+argument_list|)
 return|;
 block|}
 block|}

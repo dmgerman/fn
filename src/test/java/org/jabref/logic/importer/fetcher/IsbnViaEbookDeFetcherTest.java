@@ -100,7 +100,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Before
+name|jupiter
+operator|.
+name|api
+operator|.
+name|BeforeEach
 import|;
 end_import
 
@@ -109,22 +113,12 @@ import|import
 name|org
 operator|.
 name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
 operator|.
 name|Test
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|experimental
-operator|.
-name|categories
-operator|.
-name|Category
 import|;
 end_import
 
@@ -144,7 +138,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
 operator|.
 name|assertEquals
 import|;
@@ -164,12 +162,7 @@ end_import
 
 begin_class
 annotation|@
-name|Category
-argument_list|(
 name|FetcherTest
-operator|.
-name|class
-argument_list|)
 DECL|class|IsbnViaEbookDeFetcherTest
 specifier|public
 class|class
@@ -178,7 +171,7 @@ extends|extends
 name|AbstractIsbnFetcherTest
 block|{
 annotation|@
-name|Before
+name|BeforeEach
 DECL|method|setUp ()
 specifier|public
 name|void
@@ -206,7 +199,7 @@ name|setField
 argument_list|(
 literal|"bibtexkey"
 argument_list|,
-literal|"9780321356680"
+literal|"9780134685991"
 argument_list|)
 expr_stmt|;
 name|bibEntry
@@ -224,7 +217,16 @@ name|setField
 argument_list|(
 literal|"publisher"
 argument_list|,
-literal|"Addison Wesley"
+literal|"ADDISON WESLEY PUB CO INC"
+argument_list|)
+expr_stmt|;
+name|bibEntry
+operator|.
+name|setField
+argument_list|(
+literal|"pagetotal"
+argument_list|,
+literal|"416"
 argument_list|)
 expr_stmt|;
 name|bibEntry
@@ -233,7 +235,7 @@ name|setField
 argument_list|(
 literal|"year"
 argument_list|,
-literal|"2008"
+literal|"2018"
 argument_list|)
 expr_stmt|;
 name|bibEntry
@@ -251,7 +253,7 @@ name|setField
 argument_list|(
 literal|"date"
 argument_list|,
-literal|"2008-05-08"
+literal|"2018-01-06"
 argument_list|)
 expr_stmt|;
 name|bibEntry
@@ -260,7 +262,7 @@ name|setField
 argument_list|(
 literal|"ean"
 argument_list|,
-literal|"9780321356680"
+literal|"9780134685991"
 argument_list|)
 expr_stmt|;
 name|bibEntry
@@ -269,16 +271,7 @@ name|setField
 argument_list|(
 literal|"isbn"
 argument_list|,
-literal|"0321356683"
-argument_list|)
-expr_stmt|;
-name|bibEntry
-operator|.
-name|setField
-argument_list|(
-literal|"pagetotal"
-argument_list|,
-literal|"384"
+literal|"0134685997"
 argument_list|)
 expr_stmt|;
 name|bibEntry
@@ -287,7 +280,7 @@ name|setField
 argument_list|(
 literal|"url"
 argument_list|,
-literal|"http://www.ebook.de/de/product/6441328/joshua_bloch_effective_java.html"
+literal|"http://www.ebook.de/de/product/28983211/joshua_bloch_effective_java.html"
 argument_list|)
 expr_stmt|;
 name|fetcher
@@ -375,7 +368,45 @@ name|fetcher
 operator|.
 name|performSearchById
 argument_list|(
-literal|"0321356683"
+literal|"0134685997"
+argument_list|)
+decl_stmt|;
+name|assertEquals
+argument_list|(
+name|Optional
+operator|.
+name|of
+argument_list|(
+name|bibEntry
+argument_list|)
+argument_list|,
+name|fetchedEntry
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+annotation|@
+name|Override
+DECL|method|searchByIdSuccessfulWithLongISBN ()
+specifier|public
+name|void
+name|searchByIdSuccessfulWithLongISBN
+parameter_list|()
+throws|throws
+name|FetcherException
+block|{
+name|Optional
+argument_list|<
+name|BibEntry
+argument_list|>
+name|fetchedEntry
+init|=
+name|fetcher
+operator|.
+name|performSearchById
+argument_list|(
+literal|"0134685997"
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -443,7 +474,7 @@ name|setField
 argument_list|(
 literal|"publisher"
 argument_list|,
-literal|"Springer"
+literal|"Springer Berlin Heidelberg"
 argument_list|)
 expr_stmt|;
 name|bibEntry

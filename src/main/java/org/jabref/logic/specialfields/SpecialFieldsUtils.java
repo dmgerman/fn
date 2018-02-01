@@ -210,14 +210,9 @@ argument_list|)
 operator|.
 name|ifPresent
 argument_list|(
-name|fieldChange
-lambda|->
 name|fieldChanges
-operator|.
+operator|::
 name|add
-argument_list|(
-name|fieldChange
-argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// we cannot use "value" here as updateField has side effects: "nullFieldIfValueIsTheSame" nulls the field if value is the same
@@ -526,17 +521,9 @@ argument_list|)
 operator|.
 name|ifPresent
 argument_list|(
-name|fieldChange
-lambda|->
-block|{
 name|fieldChanges
-operator|.
+operator|::
 name|add
-argument_list|(
-name|fieldChange
-argument_list|)
-expr_stmt|;
-block|}
 argument_list|)
 expr_stmt|;
 return|return

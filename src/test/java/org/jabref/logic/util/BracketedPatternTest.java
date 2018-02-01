@@ -18,6 +18,20 @@ name|org
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
+name|bibtexkeypattern
+operator|.
+name|BracketedPattern
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
 name|model
 operator|.
 name|database
@@ -110,7 +124,19 @@ name|junit
 operator|.
 name|Assert
 operator|.
-name|*
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertNotEquals
 import|;
 end_import
 

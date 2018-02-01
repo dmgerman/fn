@@ -247,7 +247,7 @@ name|ARROW_ICON
 init|=
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|DOWN
 operator|.
