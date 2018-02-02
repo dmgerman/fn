@@ -4340,13 +4340,6 @@ argument_list|)
 block|;
 name|etd
 operator|.
-name|setLocationRelativeTo
-argument_list|(
-name|frame
-argument_list|)
-block|;
-name|etd
-operator|.
 name|setVisible
 argument_list|(
 literal|true
@@ -4390,13 +4383,6 @@ argument_list|(
 name|frame
 argument_list|,
 name|bibEntry
-argument_list|)
-argument_list|;
-name|tidialog
-operator|.
-name|setLocationRelativeTo
-argument_list|(
-name|frame
 argument_list|)
 argument_list|;
 name|tidialog

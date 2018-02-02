@@ -1063,13 +1063,6 @@ argument_list|)
 decl_stmt|;
 name|dialog
 operator|.
-name|setLocationRelativeTo
-argument_list|(
-name|frame
-argument_list|)
-expr_stmt|;
-name|dialog
-operator|.
 name|setVisible
 argument_list|(
 literal|true
@@ -1336,7 +1329,7 @@ name|JOptionPane
 operator|.
 name|showMessageDialog
 argument_list|(
-name|frame
+literal|null
 argument_list|,
 name|ex
 operator|.

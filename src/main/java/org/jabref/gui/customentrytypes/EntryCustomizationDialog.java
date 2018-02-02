@@ -642,6 +642,20 @@ name|Collectors
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|jgoodies
+operator|.
+name|forms
+operator|.
+name|builder
+operator|.
+name|ButtonBarBuilder
+import|;
+end_import
+
 begin_class
 DECL|class|EntryCustomizationDialog
 specifier|public
