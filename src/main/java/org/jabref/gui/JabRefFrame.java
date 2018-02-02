@@ -7758,6 +7758,11 @@ argument_list|,
 name|tabbedPane
 argument_list|)
 expr_stmt|;
+name|setCenter
+argument_list|(
+name|splitPane
+argument_list|)
+expr_stmt|;
 name|UIManager
 operator|.
 name|put
@@ -11967,14 +11972,6 @@ argument_list|(
 name|databaseContext
 argument_list|)
 expr_stmt|;
-return|return
-name|DefaultTaskExecutor
-operator|.
-name|runInJavaFXThread
-argument_list|(
-parameter_list|()
-lambda|->
-block|{
 name|BasePanel
 name|bp
 init|=
@@ -12009,9 +12006,6 @@ argument_list|)
 expr_stmt|;
 return|return
 name|bp
-return|;
-block|}
-argument_list|)
 return|;
 block|}
 DECL|method|readyForAutosave (BibDatabaseContext context)
