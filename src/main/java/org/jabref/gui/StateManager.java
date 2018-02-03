@@ -344,22 +344,6 @@ name|empty
 argument_list|()
 argument_list|)
 decl_stmt|;
-DECL|method|activeSearchQueryProperty ()
-specifier|public
-name|ObjectProperty
-argument_list|<
-name|Optional
-argument_list|<
-name|SearchQuery
-argument_list|>
-argument_list|>
-name|activeSearchQueryProperty
-parameter_list|()
-block|{
-return|return
-name|activeSearchQuery
-return|;
-block|}
 DECL|method|StateManager ()
 specifier|public
 name|StateManager
@@ -416,6 +400,22 @@ parameter_list|()
 block|{
 return|return
 name|activeDatabase
+return|;
+block|}
+DECL|method|activeSearchQueryProperty ()
+specifier|public
+name|ObjectProperty
+argument_list|<
+name|Optional
+argument_list|<
+name|SearchQuery
+argument_list|>
+argument_list|>
+name|activeSearchQueryProperty
+parameter_list|()
+block|{
+return|return
+name|activeSearchQuery
 return|;
 block|}
 DECL|method|activeGroupProperty ()

@@ -8268,8 +8268,7 @@ name|registerListener
 argument_list|(
 name|SpecialFieldDatabaseChangeListener
 operator|.
-name|getInstance
-argument_list|()
+name|INSTANCE
 argument_list|)
 expr_stmt|;
 name|mainTable
