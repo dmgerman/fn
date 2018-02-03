@@ -369,6 +369,16 @@ name|ProtectedTermsLoader
 name|protectedTermsLoader
 decl_stmt|;
 comment|/**      * Manager for the state of the GUI.      */
+DECL|field|clipboardManager
+specifier|public
+specifier|static
+name|ClipBoardManager
+name|clipboardManager
+init|=
+operator|new
+name|ClipBoardManager
+argument_list|()
+decl_stmt|;
 DECL|field|stateManager
 specifier|public
 specifier|static
@@ -410,16 +420,6 @@ specifier|private
 specifier|static
 name|TelemetryClient
 name|telemetryClient
-decl_stmt|;
-DECL|field|clipboardManager
-specifier|public
-specifier|static
-name|ClipBoardManager
-name|clipboardManager
-init|=
-operator|new
-name|ClipBoardManager
-argument_list|()
 decl_stmt|;
 DECL|method|Globals ()
 specifier|private

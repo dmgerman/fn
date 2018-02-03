@@ -1976,6 +1976,17 @@ specifier|final
 name|ExternalFileTypes
 name|externalFileTypes
 decl_stmt|;
+DECL|field|entryEditor
+specifier|private
+specifier|final
+name|EntryEditor
+name|entryEditor
+decl_stmt|;
+DECL|field|mainTable
+specifier|private
+name|MainTable
+name|mainTable
+decl_stmt|;
 comment|// To contain instantiated entry editors. This is to save time
 comment|// As most enums, this must not be null
 DECL|field|mode
@@ -1986,12 +1997,6 @@ init|=
 name|BasePanelMode
 operator|.
 name|SHOWING_NOTHING
-decl_stmt|;
-DECL|field|entryEditor
-specifier|private
-specifier|final
-name|EntryEditor
-name|entryEditor
 decl_stmt|;
 DECL|field|splitPane
 specifier|private
@@ -2020,11 +2025,6 @@ name|boolean
 name|nonUndoableChange
 decl_stmt|;
 comment|// Used to track whether the base has changed since last save.
-DECL|field|mainTable
-specifier|public
-name|MainTable
-name|mainTable
-decl_stmt|;
 DECL|field|showing
 specifier|private
 name|BibEntry
