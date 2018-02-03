@@ -46,6 +46,18 @@ name|jabref
 operator|.
 name|gui
 operator|.
+name|ClipBoardManager
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
 name|GlobalFocusListener
 import|;
 end_import
@@ -398,6 +410,16 @@ specifier|private
 specifier|static
 name|TelemetryClient
 name|telemetryClient
+decl_stmt|;
+DECL|field|clipboardManager
+specifier|public
+specifier|static
+name|ClipBoardManager
+name|clipboardManager
+init|=
+operator|new
+name|ClipBoardManager
+argument_list|()
 decl_stmt|;
 DECL|method|Globals ()
 specifier|private

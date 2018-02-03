@@ -763,8 +763,6 @@ argument_list|(
 name|database
 argument_list|,
 name|entry
-argument_list|,
-name|panel
 argument_list|)
 argument_list|)
 expr_stmt|;
