@@ -10079,10 +10079,17 @@ name|entry
 argument_list|)
 expr_stmt|;
 block|}
+name|DefaultTaskExecutor
+operator|.
+name|runInJavaFXThread
+argument_list|(
+parameter_list|()
+lambda|->
 name|entryEditor
 operator|.
 name|requestFocus
 argument_list|()
+argument_list|)
 expr_stmt|;
 name|adjustSplitter
 argument_list|()
