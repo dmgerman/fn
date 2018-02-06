@@ -380,6 +380,23 @@ name|getDOI
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|// https with % divider
+name|Assert
+operator|.
+name|assertEquals
+argument_list|(
+literal|"10.2307/1990888"
+argument_list|,
+operator|new
+name|DOI
+argument_list|(
+literal|"https://dx.doi.org/10.2307%2F1990888"
+argument_list|)
+operator|.
+name|getDOI
+argument_list|()
+argument_list|)
+expr_stmt|;
 comment|// other domains
 name|Assert
 operator|.
