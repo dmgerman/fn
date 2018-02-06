@@ -1101,9 +1101,9 @@ name|language
 parameter_list|)
 block|{
 comment|// TODO: add language to LCID mapping
-comment|// 0 is English
+comment|// 0x0409 is American English
 return|return
-literal|0
+literal|0x0409
 return|;
 block|}
 comment|/**      * Only English is supported<br>      *<a href="http://www.microsoft.com/globaldev/reference/lcid-all.mspx">All LCID codes</a>      *      * @return Returns english      */
