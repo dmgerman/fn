@@ -310,7 +310,7 @@ name|logic
 operator|.
 name|util
 operator|.
-name|FileExtensions
+name|FileType
 import|;
 end_import
 
@@ -338,6 +338,20 @@ name|model
 operator|.
 name|entry
 operator|.
+name|BibtexEntryTypes
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
 name|FieldName
 import|;
 end_import
@@ -346,13 +360,9 @@ begin_import
 import|import
 name|org
 operator|.
-name|apache
+name|slf4j
 operator|.
-name|commons
-operator|.
-name|logging
-operator|.
-name|Log
+name|Logger
 import|;
 end_import
 
@@ -360,13 +370,9 @@ begin_import
 import|import
 name|org
 operator|.
-name|apache
+name|slf4j
 operator|.
-name|commons
-operator|.
-name|logging
-operator|.
-name|LogFactory
+name|LoggerFactory
 import|;
 end_import
 
@@ -386,12 +392,12 @@ DECL|field|LOGGER
 specifier|private
 specifier|static
 specifier|final
-name|Log
+name|Logger
 name|LOGGER
 init|=
-name|LogFactory
+name|LoggerFactory
 operator|.
-name|getLog
+name|getLogger
 argument_list|(
 name|BibTeXMLImporter
 operator|.
@@ -453,14 +459,14 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|getExtensions ()
+DECL|method|getFileType ()
 specifier|public
-name|FileExtensions
-name|getExtensions
+name|FileType
+name|getFileType
 parameter_list|()
 block|{
 return|return
-name|FileExtensions
+name|FileType
 operator|.
 name|BIBTEXML
 return|;
@@ -647,7 +653,9 @@ name|bibEntry
 operator|.
 name|setType
 argument_list|(
-literal|"article"
+name|BibtexEntryTypes
+operator|.
+name|ARTICLE
 argument_list|)
 expr_stmt|;
 name|parse
@@ -676,7 +684,9 @@ name|bibEntry
 operator|.
 name|setType
 argument_list|(
-literal|"book"
+name|BibtexEntryTypes
+operator|.
+name|BOOK
 argument_list|)
 expr_stmt|;
 name|parse
@@ -705,7 +715,9 @@ name|bibEntry
 operator|.
 name|setType
 argument_list|(
-literal|"booklet"
+name|BibtexEntryTypes
+operator|.
+name|BOOKLET
 argument_list|)
 expr_stmt|;
 name|parse
@@ -734,7 +746,9 @@ name|bibEntry
 operator|.
 name|setType
 argument_list|(
-literal|"conference"
+name|BibtexEntryTypes
+operator|.
+name|CONFERENCE
 argument_list|)
 expr_stmt|;
 name|parse
@@ -763,7 +777,9 @@ name|bibEntry
 operator|.
 name|setType
 argument_list|(
-literal|"inbook"
+name|BibtexEntryTypes
+operator|.
+name|INBOOK
 argument_list|)
 expr_stmt|;
 name|parseInbook
@@ -792,7 +808,9 @@ name|bibEntry
 operator|.
 name|setType
 argument_list|(
-literal|"incollection"
+name|BibtexEntryTypes
+operator|.
+name|INCOLLECTION
 argument_list|)
 expr_stmt|;
 name|Incollection
@@ -856,7 +874,9 @@ name|bibEntry
 operator|.
 name|setType
 argument_list|(
-literal|"inproceedings"
+name|BibtexEntryTypes
+operator|.
+name|INPROCEEDINGS
 argument_list|)
 expr_stmt|;
 name|parse
@@ -885,7 +905,9 @@ name|bibEntry
 operator|.
 name|setType
 argument_list|(
-literal|"manual"
+name|BibtexEntryTypes
+operator|.
+name|MANUAL
 argument_list|)
 expr_stmt|;
 name|parse
@@ -914,7 +936,9 @@ name|bibEntry
 operator|.
 name|setType
 argument_list|(
-literal|"mastersthesis"
+name|BibtexEntryTypes
+operator|.
+name|MASTERSTHESIS
 argument_list|)
 expr_stmt|;
 name|parse
@@ -943,7 +967,9 @@ name|bibEntry
 operator|.
 name|setType
 argument_list|(
-literal|"misc"
+name|BibtexEntryTypes
+operator|.
+name|MISC
 argument_list|)
 expr_stmt|;
 name|parse
@@ -972,7 +998,9 @@ name|bibEntry
 operator|.
 name|setType
 argument_list|(
-literal|"phdthesis"
+name|BibtexEntryTypes
+operator|.
+name|PHDTHESIS
 argument_list|)
 expr_stmt|;
 name|parse
@@ -1001,7 +1029,9 @@ name|bibEntry
 operator|.
 name|setType
 argument_list|(
-literal|"proceedings"
+name|BibtexEntryTypes
+operator|.
+name|PROCEEDINGS
 argument_list|)
 expr_stmt|;
 name|parse
@@ -1030,7 +1060,9 @@ name|bibEntry
 operator|.
 name|setType
 argument_list|(
-literal|"techreport"
+name|BibtexEntryTypes
+operator|.
+name|TECHREPORT
 argument_list|)
 expr_stmt|;
 name|parse
@@ -1059,7 +1091,9 @@ name|bibEntry
 operator|.
 name|setType
 argument_list|(
-literal|"unpublished"
+name|BibtexEntryTypes
+operator|.
+name|UNPUBLISHED
 argument_list|)
 expr_stmt|;
 name|parse

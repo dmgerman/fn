@@ -66,7 +66,7 @@ name|jabref
 operator|.
 name|support
 operator|.
-name|DevEnvironment
+name|DisabledOnCIServer
 import|;
 end_import
 
@@ -90,7 +90,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|BeforeEach
 import|;
 end_import
 
@@ -100,54 +104,34 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assume
-import|;
-end_import
-
-begin_import
-import|import
-name|org
+name|jupiter
 operator|.
-name|junit
-operator|.
-name|Before
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
+name|api
 operator|.
 name|Test
 import|;
 end_import
 
 begin_import
-import|import
+import|import static
 name|org
 operator|.
 name|junit
 operator|.
-name|experimental
+name|jupiter
 operator|.
-name|categories
+name|api
 operator|.
-name|Category
+name|Assertions
+operator|.
+name|assertEquals
 import|;
 end_import
 
 begin_class
 annotation|@
-name|Category
-argument_list|(
 name|FetcherTest
-operator|.
-name|class
-argument_list|)
 DECL|class|DoiResolutionTest
-specifier|public
 class|class
 name|DoiResolutionTest
 block|{
@@ -162,9 +146,8 @@ name|BibEntry
 name|entry
 decl_stmt|;
 annotation|@
-name|Before
+name|BeforeEach
 DECL|method|setUp ()
-specifier|public
 name|void
 name|setUp
 parameter_list|()
@@ -184,83 +167,18 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-argument_list|(
-name|expected
-operator|=
-name|NullPointerException
-operator|.
-name|class
-argument_list|)
-DECL|method|rejectNullParameter ()
-specifier|public
-name|void
-name|rejectNullParameter
-parameter_list|()
-throws|throws
-name|IOException
-block|{
-name|finder
-operator|.
-name|findFullText
-argument_list|(
-literal|null
-argument_list|)
-expr_stmt|;
-name|Assert
-operator|.
-name|fail
-argument_list|()
-expr_stmt|;
-block|}
 annotation|@
-name|Test
-DECL|method|doiNotPresent ()
-specifier|public
-name|void
-name|doiNotPresent
-parameter_list|()
-throws|throws
-name|IOException
-block|{
-name|Assert
-operator|.
-name|assertEquals
+name|DisabledOnCIServer
 argument_list|(
-name|Optional
-operator|.
-name|empty
-argument_list|()
-argument_list|,
-name|finder
-operator|.
-name|findFullText
-argument_list|(
-name|entry
+literal|"CI server is blocked"
 argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-annotation|@
-name|Test
 DECL|method|findByDOI ()
-specifier|public
 name|void
 name|findByDOI
 parameter_list|()
 throws|throws
 name|IOException
 block|{
-comment|// CI server is blocked
-name|Assume
-operator|.
-name|assumeFalse
-argument_list|(
-name|DevEnvironment
-operator|.
-name|isCIServer
-argument_list|()
-argument_list|)
-expr_stmt|;
 name|entry
 operator|.
 name|setField
@@ -270,8 +188,6 @@ argument_list|,
 literal|"10.1051/0004-6361/201527330"
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -297,7 +213,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|notReturnAnythingWhenMultipleLinksAreFound ()
-specifier|public
 name|void
 name|notReturnAnythingWhenMultipleLinksAreFound
 parameter_list|()
@@ -313,8 +228,6 @@ argument_list|,
 literal|"10.1051/0004-6361/201527330; 10.1051/0004-6361/20152711233"
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -333,25 +246,18 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|DisabledOnCIServer
+argument_list|(
+literal|"CI server is blocked"
+argument_list|)
 DECL|method|notFoundByDOI ()
-specifier|public
 name|void
 name|notFoundByDOI
 parameter_list|()
 throws|throws
 name|IOException
 block|{
-comment|// CI server is blocked
-name|Assume
-operator|.
-name|assumeFalse
-argument_list|(
-name|DevEnvironment
-operator|.
-name|isCIServer
-argument_list|()
-argument_list|)
-expr_stmt|;
 name|entry
 operator|.
 name|setField
@@ -361,8 +267,6 @@ argument_list|,
 literal|"10.1186/unknown-doi"
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional

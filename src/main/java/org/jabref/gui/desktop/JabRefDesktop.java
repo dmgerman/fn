@@ -518,13 +518,9 @@ begin_import
 import|import
 name|org
 operator|.
-name|apache
+name|slf4j
 operator|.
-name|commons
-operator|.
-name|logging
-operator|.
-name|Log
+name|Logger
 import|;
 end_import
 
@@ -532,13 +528,9 @@ begin_import
 import|import
 name|org
 operator|.
-name|apache
+name|slf4j
 operator|.
-name|commons
-operator|.
-name|logging
-operator|.
-name|LogFactory
+name|LoggerFactory
 import|;
 end_import
 
@@ -556,12 +548,12 @@ DECL|field|LOGGER
 specifier|private
 specifier|static
 specifier|final
-name|Log
+name|Logger
 name|LOGGER
 init|=
-name|LogFactory
+name|LoggerFactory
 operator|.
-name|getLog
+name|getLogger
 argument_list|(
 name|JabRefDesktop
 operator|.
@@ -2257,7 +2249,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Error_occured_while_executing_the_command_\"%0\"."
+literal|"Error occured while executing the command \"%0\"."
 argument_list|,
 name|commandLoggingText
 argument_list|)

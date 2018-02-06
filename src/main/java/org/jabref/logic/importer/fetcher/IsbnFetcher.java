@@ -240,6 +240,13 @@ name|isPresent
 argument_list|()
 condition|)
 block|{
+name|LOGGER
+operator|.
+name|debug
+argument_list|(
+literal|"No entry found at ebook.de try chimbori.com"
+argument_list|)
+expr_stmt|;
 name|IsbnViaChimboriFetcher
 name|isbnViaChimboriFetcher
 init|=

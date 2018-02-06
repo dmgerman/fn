@@ -156,7 +156,7 @@ name|logic
 operator|.
 name|util
 operator|.
-name|FileExtensions
+name|FileType
 import|;
 end_import
 
@@ -180,7 +180,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Before
+name|jupiter
+operator|.
+name|api
+operator|.
+name|BeforeEach
 import|;
 end_import
 
@@ -189,6 +193,10 @@ import|import
 name|org
 operator|.
 name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
 operator|.
 name|Test
 import|;
@@ -210,7 +218,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
 operator|.
 name|assertEquals
 import|;
@@ -222,7 +234,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
 operator|.
 name|assertFalse
 import|;
@@ -234,7 +250,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
 operator|.
 name|assertTrue
 import|;
@@ -264,7 +284,7 @@ name|EndnoteImporter
 name|importer
 decl_stmt|;
 annotation|@
-name|Before
+name|BeforeEach
 DECL|method|setUp ()
 specifier|public
 name|void
@@ -337,13 +357,13 @@ parameter_list|()
 block|{
 name|assertEquals
 argument_list|(
-name|FileExtensions
+name|FileType
 operator|.
 name|ENDNOTE
 argument_list|,
 name|importer
 operator|.
-name|getExtensions
+name|getFileType
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -401,7 +421,7 @@ decl_stmt|;
 for|for
 control|(
 name|String
-name|str
+name|string
 range|:
 name|list
 control|)
@@ -419,7 +439,7 @@ name|class
 operator|.
 name|getResource
 argument_list|(
-name|str
+name|string
 argument_list|)
 operator|.
 name|toURI
@@ -486,7 +506,7 @@ decl_stmt|;
 for|for
 control|(
 name|String
-name|str
+name|string
 range|:
 name|list
 control|)
@@ -504,7 +524,7 @@ name|class
 operator|.
 name|getResource
 argument_list|(
-name|str
+name|string
 argument_list|)
 operator|.
 name|toURI
@@ -594,7 +614,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 name|BibEntry
-name|be0
+name|first
 init|=
 name|bibEntries
 operator|.
@@ -607,7 +627,7 @@ name|assertEquals
 argument_list|(
 literal|"misc"
 argument_list|,
-name|be0
+name|first
 operator|.
 name|getType
 argument_list|()
@@ -622,7 +642,7 @@ argument_list|(
 literal|"testA0 and testA1"
 argument_list|)
 argument_list|,
-name|be0
+name|first
 operator|.
 name|getField
 argument_list|(
@@ -639,7 +659,7 @@ argument_list|(
 literal|"testE0 and testE1"
 argument_list|)
 argument_list|,
-name|be0
+name|first
 operator|.
 name|getField
 argument_list|(
@@ -656,7 +676,7 @@ argument_list|(
 literal|"testT"
 argument_list|)
 argument_list|,
-name|be0
+name|first
 operator|.
 name|getField
 argument_list|(
@@ -665,7 +685,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 name|BibEntry
-name|be1
+name|second
 init|=
 name|bibEntries
 operator|.
@@ -678,7 +698,7 @@ name|assertEquals
 argument_list|(
 literal|"misc"
 argument_list|,
-name|be1
+name|second
 operator|.
 name|getType
 argument_list|()
@@ -693,7 +713,7 @@ argument_list|(
 literal|"testC"
 argument_list|)
 argument_list|,
-name|be1
+name|second
 operator|.
 name|getField
 argument_list|(
@@ -710,7 +730,7 @@ argument_list|(
 literal|"testB2"
 argument_list|)
 argument_list|,
-name|be1
+name|second
 operator|.
 name|getField
 argument_list|(
@@ -727,7 +747,7 @@ argument_list|(
 literal|"test8"
 argument_list|)
 argument_list|,
-name|be1
+name|second
 operator|.
 name|getField
 argument_list|(
@@ -744,7 +764,7 @@ argument_list|(
 literal|"test7"
 argument_list|)
 argument_list|,
-name|be1
+name|second
 operator|.
 name|getField
 argument_list|(
@@ -761,7 +781,7 @@ argument_list|(
 literal|"testJ"
 argument_list|)
 argument_list|,
-name|be1
+name|second
 operator|.
 name|getField
 argument_list|(
@@ -778,7 +798,7 @@ argument_list|(
 literal|"testD"
 argument_list|)
 argument_list|,
-name|be1
+name|second
 operator|.
 name|getField
 argument_list|(
@@ -787,7 +807,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 name|BibEntry
-name|be2
+name|third
 init|=
 name|bibEntries
 operator|.
@@ -800,7 +820,7 @@ name|assertEquals
 argument_list|(
 literal|"article"
 argument_list|,
-name|be2
+name|third
 operator|.
 name|getType
 argument_list|()
@@ -815,7 +835,7 @@ argument_list|(
 literal|"testB0"
 argument_list|)
 argument_list|,
-name|be2
+name|third
 operator|.
 name|getField
 argument_list|(
@@ -824,7 +844,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 name|BibEntry
-name|be3
+name|fourth
 init|=
 name|bibEntries
 operator|.
@@ -837,7 +857,7 @@ name|assertEquals
 argument_list|(
 literal|"book"
 argument_list|,
-name|be3
+name|fourth
 operator|.
 name|getType
 argument_list|()
@@ -852,7 +872,7 @@ argument_list|(
 literal|"testI0"
 argument_list|)
 argument_list|,
-name|be3
+name|fourth
 operator|.
 name|getField
 argument_list|(
@@ -869,7 +889,7 @@ argument_list|(
 literal|"testB1"
 argument_list|)
 argument_list|,
-name|be3
+name|fourth
 operator|.
 name|getField
 argument_list|(
@@ -878,7 +898,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 name|BibEntry
-name|be4
+name|fifth
 init|=
 name|bibEntries
 operator|.
@@ -891,7 +911,7 @@ name|assertEquals
 argument_list|(
 literal|"mastersthesis"
 argument_list|,
-name|be4
+name|fifth
 operator|.
 name|getType
 argument_list|()
@@ -906,7 +926,7 @@ argument_list|(
 literal|"testX"
 argument_list|)
 argument_list|,
-name|be4
+name|fifth
 operator|.
 name|getField
 argument_list|(
@@ -923,7 +943,7 @@ argument_list|(
 literal|"testF"
 argument_list|)
 argument_list|,
-name|be4
+name|fifth
 operator|.
 name|getField
 argument_list|(
@@ -940,7 +960,7 @@ argument_list|(
 literal|"testR"
 argument_list|)
 argument_list|,
-name|be4
+name|fifth
 operator|.
 name|getField
 argument_list|(
@@ -957,7 +977,7 @@ argument_list|(
 literal|"testK"
 argument_list|)
 argument_list|,
-name|be4
+name|fifth
 operator|.
 name|getField
 argument_list|(
@@ -974,7 +994,7 @@ argument_list|(
 literal|"testO1"
 argument_list|)
 argument_list|,
-name|be4
+name|fifth
 operator|.
 name|getField
 argument_list|(
@@ -991,7 +1011,7 @@ argument_list|(
 literal|"testN"
 argument_list|)
 argument_list|,
-name|be4
+name|fifth
 operator|.
 name|getField
 argument_list|(
@@ -1008,7 +1028,7 @@ argument_list|(
 literal|"testP"
 argument_list|)
 argument_list|,
-name|be4
+name|fifth
 operator|.
 name|getField
 argument_list|(
@@ -1025,7 +1045,7 @@ argument_list|(
 literal|"testI1"
 argument_list|)
 argument_list|,
-name|be4
+name|fifth
 operator|.
 name|getField
 argument_list|(
@@ -1042,7 +1062,7 @@ argument_list|(
 literal|"testU"
 argument_list|)
 argument_list|,
-name|be4
+name|fifth
 operator|.
 name|getField
 argument_list|(
@@ -1059,7 +1079,7 @@ argument_list|(
 literal|"testV"
 argument_list|)
 argument_list|,
-name|be4
+name|fifth
 operator|.
 name|getField
 argument_list|(
@@ -1079,7 +1099,7 @@ throws|throws
 name|IOException
 block|{
 name|String
-name|s
+name|medlineString
 init|=
 literal|"%O Artn\\\\s testO\n%A testA,\n%E testE0, testE1"
 decl_stmt|;
@@ -1099,7 +1119,7 @@ argument_list|(
 operator|new
 name|StringReader
 argument_list|(
-name|s
+name|medlineString
 argument_list|)
 argument_list|)
 argument_list|)
@@ -1109,6 +1129,16 @@ argument_list|()
 operator|.
 name|getEntries
 argument_list|()
+decl_stmt|;
+name|BibEntry
+name|entry
+init|=
+name|bibEntries
+operator|.
+name|get
+argument_list|(
+literal|0
+argument_list|)
 decl_stmt|;
 name|assertEquals
 argument_list|(
@@ -1120,21 +1150,11 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|BibEntry
-name|be
-init|=
-name|bibEntries
-operator|.
-name|get
-argument_list|(
-literal|0
-argument_list|)
-decl_stmt|;
 name|assertEquals
 argument_list|(
 literal|"misc"
 argument_list|,
-name|be
+name|entry
 operator|.
 name|getType
 argument_list|()
@@ -1149,7 +1169,7 @@ argument_list|(
 literal|"testA"
 argument_list|)
 argument_list|,
-name|be
+name|entry
 operator|.
 name|getField
 argument_list|(
@@ -1166,7 +1186,7 @@ argument_list|(
 literal|"testE0, testE1"
 argument_list|)
 argument_list|,
-name|be
+name|entry
 operator|.
 name|getField
 argument_list|(
@@ -1183,7 +1203,7 @@ argument_list|(
 literal|"testO"
 argument_list|)
 argument_list|,
-name|be
+name|entry
 operator|.
 name|getField
 argument_list|(
@@ -1247,18 +1267,8 @@ operator|.
 name|getEntries
 argument_list|()
 decl_stmt|;
-name|assertEquals
-argument_list|(
-literal|1
-argument_list|,
-name|bibEntries
-operator|.
-name|size
-argument_list|()
-argument_list|)
-expr_stmt|;
 name|BibEntry
-name|be
+name|entry
 init|=
 name|bibEntries
 operator|.
@@ -1269,9 +1279,19 @@ argument_list|)
 decl_stmt|;
 name|assertEquals
 argument_list|(
+literal|1
+argument_list|,
+name|bibEntries
+operator|.
+name|size
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
 literal|"book"
 argument_list|,
-name|be
+name|entry
 operator|.
 name|getType
 argument_list|()
@@ -1286,7 +1306,7 @@ argument_list|(
 literal|"Heidelberg"
 argument_list|)
 argument_list|,
-name|be
+name|entry
 operator|.
 name|getField
 argument_list|(
@@ -1303,7 +1323,7 @@ argument_list|(
 literal|"PreiÃel, RenÃ© and Stachmann, BjÃ¸rn"
 argument_list|)
 argument_list|,
-name|be
+name|entry
 operator|.
 name|getField
 argument_list|(
@@ -1320,7 +1340,7 @@ argument_list|(
 literal|"3., aktualisierte und erweiterte Auflage"
 argument_list|)
 argument_list|,
-name|be
+name|entry
 operator|.
 name|getField
 argument_list|(
@@ -1337,7 +1357,7 @@ argument_list|(
 literal|"Versionsverwaltung"
 argument_list|)
 argument_list|,
-name|be
+name|entry
 operator|.
 name|getField
 argument_list|(
@@ -1354,7 +1374,7 @@ argument_list|(
 literal|"XX, 327"
 argument_list|)
 argument_list|,
-name|be
+name|entry
 operator|.
 name|getField
 argument_list|(
@@ -1371,7 +1391,7 @@ argument_list|(
 literal|"dpunkt.verlag"
 argument_list|)
 argument_list|,
-name|be
+name|entry
 operator|.
 name|getField
 argument_list|(
@@ -1388,7 +1408,7 @@ argument_list|(
 literal|"Git : dezentrale Versionsverwaltung im Team : Grundlagen und Workflows"
 argument_list|)
 argument_list|,
-name|be
+name|entry
 operator|.
 name|getField
 argument_list|(
@@ -1405,7 +1425,7 @@ argument_list|(
 literal|"http://d-nb.info/107601965X"
 argument_list|)
 argument_list|,
-name|be
+name|entry
 operator|.
 name|getField
 argument_list|(
@@ -1422,7 +1442,7 @@ argument_list|(
 literal|"2016"
 argument_list|)
 argument_list|,
-name|be
+name|entry
 operator|.
 name|getField
 argument_list|(

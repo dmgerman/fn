@@ -976,13 +976,9 @@ begin_import
 import|import
 name|org
 operator|.
-name|apache
+name|slf4j
 operator|.
-name|commons
-operator|.
-name|logging
-operator|.
-name|Log
+name|Logger
 import|;
 end_import
 
@@ -990,13 +986,9 @@ begin_import
 import|import
 name|org
 operator|.
-name|apache
+name|slf4j
 operator|.
-name|commons
-operator|.
-name|logging
-operator|.
-name|LogFactory
+name|LoggerFactory
 import|;
 end_import
 
@@ -2887,6 +2879,15 @@ name|CLEANUP_CONVERT_TO_BIBLATEX
 init|=
 literal|"CleanUpConvertToBiblatex"
 decl_stmt|;
+DECL|field|CLEANUP_CONVERT_TO_BIBTEX
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|CLEANUP_CONVERT_TO_BIBTEX
+init|=
+literal|"CleanUpConvertToBibtex"
+decl_stmt|;
 DECL|field|CLEANUP_FIX_FILE_LINKS
 specifier|public
 specifier|static
@@ -3401,12 +3402,12 @@ DECL|field|LOGGER
 specifier|private
 specifier|static
 specifier|final
-name|Log
+name|Logger
 name|LOGGER
 init|=
-name|LogFactory
+name|LoggerFactory
 operator|.
-name|getLog
+name|getLogger
 argument_list|(
 name|JabRefPreferences
 operator|.
@@ -3845,7 +3846,7 @@ name|put
 argument_list|(
 name|WIN_LOOK_AND_FEEL
 argument_list|,
-literal|"com.jgoodies.looks.windows.WindowsLookAndFeel"
+literal|"com.sun.java.swing.plaf.windows.WindowsLookAndFeel"
 argument_list|)
 expr_stmt|;
 name|defaults
@@ -3876,7 +3877,7 @@ name|put
 argument_list|(
 name|WIN_LOOK_AND_FEEL
 argument_list|,
-literal|"com.jgoodies.plaf.plastic.Plastic3DLookAndFeel"
+literal|"javax.swing.plaf.nimbus.NimbusLookAndFeel"
 argument_list|)
 expr_stmt|;
 name|defaults
@@ -4786,7 +4787,7 @@ name|VALIDATE_IN_ENTRY_EDITOR
 argument_list|,
 name|Boolean
 operator|.
-name|FALSE
+name|TRUE
 argument_list|)
 expr_stmt|;
 name|defaults
@@ -4830,7 +4831,7 @@ name|AUTO_COMPLETE
 argument_list|,
 name|Boolean
 operator|.
-name|TRUE
+name|FALSE
 argument_list|)
 expr_stmt|;
 name|defaults
@@ -7095,7 +7096,7 @@ name|CleanupPreset
 operator|.
 name|CleanupStep
 argument_list|>
-name|deactivedJobs
+name|deactivatedJobs
 init|=
 name|EnumSet
 operator|.
@@ -7111,6 +7112,12 @@ name|CleanupPreset
 operator|.
 name|CleanupStep
 operator|.
+name|MOVE_PDF
+argument_list|,
+name|CleanupPreset
+operator|.
+name|CleanupStep
+operator|.
 name|RENAME_PDF_ONLY_RELATIVE_PATHS
 argument_list|,
 name|CleanupPreset
@@ -7118,6 +7125,12 @@ operator|.
 name|CleanupStep
 operator|.
 name|CONVERT_TO_BIBLATEX
+argument_list|,
+name|CleanupPreset
+operator|.
+name|CleanupStep
+operator|.
+name|CONVERT_TO_BIBTEX
 argument_list|)
 decl_stmt|;
 name|CleanupPreset
@@ -7130,7 +7143,7 @@ name|EnumSet
 operator|.
 name|complementOf
 argument_list|(
-name|deactivedJobs
+name|deactivatedJobs
 argument_list|)
 argument_list|,
 name|Cleanups
@@ -7231,6 +7244,18 @@ argument_list|,
 name|preset
 operator|.
 name|isConvertToBiblatex
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|storage
+operator|.
+name|put
+argument_list|(
+name|CLEANUP_CONVERT_TO_BIBTEX
+argument_list|,
+name|preset
+operator|.
+name|isConvertToBibtex
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -8566,7 +8591,7 @@ condition|)
 block|{
 comment|// no default value
 comment|// the first entry in the array is the full pattern
-comment|// see org.jabref.logic.labelPattern.BibtexKeyPatternUtil.split(String)
+comment|// see org.jabref.logic.labelPattern.BibtexKeyGenerator.split(String)
 name|pre
 operator|.
 name|put

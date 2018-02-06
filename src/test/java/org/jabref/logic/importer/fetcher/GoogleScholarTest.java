@@ -156,7 +156,7 @@ name|jabref
 operator|.
 name|support
 operator|.
-name|DevEnvironment
+name|DisabledOnCIServer
 import|;
 end_import
 
@@ -180,7 +180,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|BeforeEach
 import|;
 end_import
 
@@ -190,41 +194,27 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assume
-import|;
-end_import
-
-begin_import
-import|import
-name|org
+name|jupiter
 operator|.
-name|junit
-operator|.
-name|Before
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
+name|api
 operator|.
 name|Test
 import|;
 end_import
 
 begin_import
-import|import
+import|import static
 name|org
 operator|.
 name|junit
 operator|.
-name|experimental
+name|jupiter
 operator|.
-name|categories
+name|api
 operator|.
-name|Category
+name|Assertions
+operator|.
+name|assertEquals
 import|;
 end_import
 
@@ -254,14 +244,8 @@ end_import
 
 begin_class
 annotation|@
-name|Category
-argument_list|(
 name|FetcherTest
-operator|.
-name|class
-argument_list|)
 DECL|class|GoogleScholarTest
-specifier|public
 class|class
 name|GoogleScholarTest
 block|{
@@ -276,9 +260,8 @@ name|BibEntry
 name|entry
 decl_stmt|;
 annotation|@
-name|Before
+name|BeforeEach
 DECL|method|setUp ()
-specifier|public
 name|void
 name|setUp
 parameter_list|()
@@ -328,70 +311,12 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-argument_list|(
-name|expected
-operator|=
-name|NullPointerException
-operator|.
-name|class
-argument_list|)
-DECL|method|rejectNullParameter ()
-specifier|public
-name|void
-name|rejectNullParameter
-parameter_list|()
-throws|throws
-name|IOException
-throws|,
-name|FetcherException
-block|{
-name|finder
-operator|.
-name|findFullText
-argument_list|(
-literal|null
-argument_list|)
-expr_stmt|;
-name|Assert
-operator|.
-name|fail
-argument_list|()
-expr_stmt|;
-block|}
 annotation|@
-name|Test
-DECL|method|requiresEntryTitle ()
-specifier|public
-name|void
-name|requiresEntryTitle
-parameter_list|()
-throws|throws
-name|IOException
-throws|,
-name|FetcherException
-block|{
-name|Assert
-operator|.
-name|assertEquals
+name|DisabledOnCIServer
 argument_list|(
-name|Optional
-operator|.
-name|empty
-argument_list|()
-argument_list|,
-name|finder
-operator|.
-name|findFullText
-argument_list|(
-name|entry
+literal|"CI server is blocked by Google"
 argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-annotation|@
-name|Test
 DECL|method|linkFound ()
-specifier|public
 name|void
 name|linkFound
 parameter_list|()
@@ -400,17 +325,6 @@ name|IOException
 throws|,
 name|FetcherException
 block|{
-comment|// CI server is blocked by Google
-name|Assume
-operator|.
-name|assumeFalse
-argument_list|(
-name|DevEnvironment
-operator|.
-name|isCIServer
-argument_list|()
-argument_list|)
-expr_stmt|;
 name|entry
 operator|.
 name|setField
@@ -420,8 +334,6 @@ argument_list|,
 literal|"Towards Application Portability in Platform as a Service"
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -446,8 +358,12 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|DisabledOnCIServer
+argument_list|(
+literal|"CI server is blocked by Google"
+argument_list|)
 DECL|method|noLinkFound ()
-specifier|public
 name|void
 name|noLinkFound
 parameter_list|()
@@ -456,17 +372,6 @@ name|IOException
 throws|,
 name|FetcherException
 block|{
-comment|// CI server is blocked by Google
-name|Assume
-operator|.
-name|assumeFalse
-argument_list|(
-name|DevEnvironment
-operator|.
-name|isCIServer
-argument_list|()
-argument_list|)
-expr_stmt|;
 name|entry
 operator|.
 name|setField
@@ -476,8 +381,6 @@ argument_list|,
 literal|"Pro WF: Windows Workflow in NET 3.5"
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -496,25 +399,18 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|DisabledOnCIServer
+argument_list|(
+literal|"CI server is blocked by Google"
+argument_list|)
 DECL|method|findSingleEntry ()
-specifier|public
 name|void
 name|findSingleEntry
 parameter_list|()
 throws|throws
 name|FetcherException
 block|{
-comment|// CI server is blocked by Google
-name|Assume
-operator|.
-name|assumeFalse
-argument_list|(
-name|DevEnvironment
-operator|.
-name|isCIServer
-argument_list|()
-argument_list|)
-expr_stmt|;
 name|entry
 operator|.
 name|setType
@@ -602,8 +498,6 @@ argument_list|(
 literal|"info:RExzBa3OlkQJ:scholar.google.com"
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Collections
@@ -619,25 +513,18 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|DisabledOnCIServer
+argument_list|(
+literal|"CI server is blocked by Google"
+argument_list|)
 DECL|method|find20Entries ()
-specifier|public
 name|void
 name|find20Entries
 parameter_list|()
 throws|throws
 name|FetcherException
 block|{
-comment|// CI server is blocked by Google
-name|Assume
-operator|.
-name|assumeFalse
-argument_list|(
-name|DevEnvironment
-operator|.
-name|isCIServer
-argument_list|()
-argument_list|)
-expr_stmt|;
 name|List
 argument_list|<
 name|BibEntry
@@ -651,8 +538,6 @@ argument_list|(
 literal|"random test string"
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|20

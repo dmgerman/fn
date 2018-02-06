@@ -322,7 +322,7 @@ name|logic
 operator|.
 name|bibtexkeypattern
 operator|.
-name|BibtexKeyPatternUtil
+name|BibtexKeyGenerator
 import|;
 end_import
 
@@ -512,13 +512,9 @@ begin_import
 import|import
 name|org
 operator|.
-name|apache
+name|slf4j
 operator|.
-name|commons
-operator|.
-name|logging
-operator|.
-name|Log
+name|Logger
 import|;
 end_import
 
@@ -526,13 +522,9 @@ begin_import
 import|import
 name|org
 operator|.
-name|apache
+name|slf4j
 operator|.
-name|commons
-operator|.
-name|logging
-operator|.
-name|LogFactory
+name|LoggerFactory
 import|;
 end_import
 
@@ -554,12 +546,12 @@ DECL|field|LOGGER
 specifier|private
 specifier|static
 specifier|final
-name|Log
+name|Logger
 name|LOGGER
 init|=
-name|LogFactory
+name|LoggerFactory
 operator|.
-name|getLog
+name|getLogger
 argument_list|(
 name|EntryTypeDialog
 operator|.
@@ -1894,6 +1886,17 @@ operator|.
 name|trim
 argument_list|()
 expr_stmt|;
+name|searchID
+operator|=
+name|searchID
+operator|.
+name|replaceAll
+argument_list|(
+literal|" "
+argument_list|,
+literal|""
+argument_list|)
+expr_stmt|;
 name|fetcher
 operator|=
 name|WebFetchers
@@ -2113,29 +2116,16 @@ block|}
 else|else
 block|{
 comment|// Regenerate CiteKey of imported BibEntry
-name|BibtexKeyPatternUtil
-operator|.
-name|makeAndSetLabel
+operator|new
+name|BibtexKeyGenerator
 argument_list|(
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getBibtexKeyPatternPreferences
-argument_list|()
-operator|.
-name|getKeyPattern
-argument_list|()
-argument_list|,
 name|frame
 operator|.
 name|getCurrentBasePanel
 argument_list|()
 operator|.
-name|getDatabase
+name|getBibDatabaseContext
 argument_list|()
-argument_list|,
-name|bibEntry
 argument_list|,
 name|Globals
 operator|.
@@ -2143,6 +2133,11 @@ name|prefs
 operator|.
 name|getBibtexKeyPatternPreferences
 argument_list|()
+argument_list|)
+operator|.
+name|generateAndSetKey
+argument_list|(
+name|bibEntry
 argument_list|)
 expr_stmt|;
 comment|// Update Timestamps

@@ -114,7 +114,7 @@ name|logic
 operator|.
 name|util
 operator|.
-name|FileExtensions
+name|FileType
 import|;
 end_import
 
@@ -136,9 +136,13 @@ begin_import
 import|import
 name|org
 operator|.
-name|junit
+name|jabref
 operator|.
-name|Before
+name|model
+operator|.
+name|util
+operator|.
+name|DummyFileUpdateMonitor
 import|;
 end_import
 
@@ -147,6 +151,24 @@ import|import
 name|org
 operator|.
 name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
+operator|.
+name|BeforeEach
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
 operator|.
 name|Test
 import|;
@@ -168,7 +190,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
 operator|.
 name|assertEquals
 import|;
@@ -180,7 +206,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
 operator|.
 name|assertTrue
 import|;
@@ -214,7 +244,7 @@ name|BibtexImporter
 name|importer
 decl_stmt|;
 annotation|@
-name|Before
+name|BeforeEach
 DECL|method|setUp ()
 specifier|public
 name|void
@@ -236,6 +266,10 @@ name|Answers
 operator|.
 name|RETURNS_DEEP_STUBS
 argument_list|)
+argument_list|,
+operator|new
+name|DummyFileUpdateMonitor
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -915,13 +949,13 @@ parameter_list|()
 block|{
 name|assertEquals
 argument_list|(
-name|FileExtensions
+name|FileType
 operator|.
 name|BIBTEX_DB
 argument_list|,
 name|importer
 operator|.
-name|getExtensions
+name|getFileType
 argument_list|()
 argument_list|)
 expr_stmt|;

@@ -18,6 +18,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|List
 import|;
 end_import
@@ -186,9 +196,9 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|l10n
+name|groups
 operator|.
-name|Localization
+name|DefaultGroupsFactory
 import|;
 end_import
 
@@ -200,9 +210,9 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|util
+name|l10n
 operator|.
-name|OS
+name|Localization
 import|;
 end_import
 
@@ -491,16 +501,9 @@ expr_stmt|;
 name|JFXPanel
 name|groupsPane
 init|=
-name|OS
-operator|.
-name|LINUX
-condition|?
-operator|new
 name|CustomJFXPanel
-argument_list|()
-else|:
-operator|new
-name|JFXPanel
+operator|.
+name|create
 argument_list|()
 decl_stmt|;
 name|add
@@ -623,8 +626,23 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-comment|// No selected group, nothing to do
-return|return;
+comment|// No selected group, show all entries
+name|selectedGroups
+operator|=
+name|Collections
+operator|.
+name|singletonList
+argument_list|(
+operator|new
+name|GroupTreeNode
+argument_list|(
+name|DefaultGroupsFactory
+operator|.
+name|getAllEntriesGroup
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 specifier|final
 name|MatcherSet

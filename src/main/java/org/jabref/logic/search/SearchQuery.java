@@ -62,24 +62,6 @@ name|org
 operator|.
 name|jabref
 operator|.
-name|logic
-operator|.
-name|search
-operator|.
-name|rules
-operator|.
-name|describer
-operator|.
-name|SearchDescribers
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
 name|model
 operator|.
 name|entry
@@ -214,12 +196,6 @@ specifier|final
 name|SearchRule
 name|rule
 decl_stmt|;
-DECL|field|description
-specifier|private
-specifier|final
-name|String
-name|description
-decl_stmt|;
 DECL|method|SearchQuery (String query, boolean caseSensitive, boolean regularExpression)
 specifier|public
 name|SearchQuery
@@ -271,22 +247,6 @@ name|caseSensitive
 argument_list|,
 name|regularExpression
 argument_list|)
-expr_stmt|;
-name|this
-operator|.
-name|description
-operator|=
-name|SearchDescribers
-operator|.
-name|getSearchDescriberFor
-argument_list|(
-name|rule
-argument_list|,
-name|query
-argument_list|)
-operator|.
-name|getDescription
-argument_list|()
 expr_stmt|;
 block|}
 annotation|@
@@ -544,16 +504,6 @@ return|return
 name|regularExpression
 return|;
 block|}
-DECL|method|getDescription ()
-specifier|public
-name|String
-name|getDescription
-parameter_list|()
-block|{
-return|return
-name|description
-return|;
-block|}
 comment|/**      * Returns a list of words this query searches for.      * The returned strings can be a regular expression.      */
 DECL|method|getSearchWords ()
 specifier|public
@@ -598,6 +548,16 @@ name|getWords
 argument_list|()
 return|;
 block|}
+block|}
+DECL|method|getRule ()
+specifier|public
+name|SearchRule
+name|getRule
+parameter_list|()
+block|{
+return|return
+name|rule
+return|;
 block|}
 block|}
 end_class

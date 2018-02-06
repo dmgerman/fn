@@ -54,12 +54,26 @@ name|logic
 operator|.
 name|exporter
 operator|.
-name|IExportFormat
+name|Exporter
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|util
+operator|.
+name|FileType
 import|;
 end_import
 
 begin_comment
-comment|/**  * File filter that lets the user choose export format while choosing file to  * export to. Contains a reference to the ExportFormat in question.  */
+comment|/**  * File filter that lets the user choose export format while choosing file to  * export to. Contains a reference to the TemplateExporter in question.  */
 end_comment
 
 begin_class
@@ -78,13 +92,13 @@ block|{
 DECL|field|format
 specifier|private
 specifier|final
-name|IExportFormat
+name|Exporter
 name|format
 decl_stmt|;
 DECL|field|extension
 specifier|private
 specifier|final
-name|String
+name|FileType
 name|extension
 decl_stmt|;
 DECL|field|name
@@ -93,11 +107,11 @@ specifier|final
 name|String
 name|name
 decl_stmt|;
-DECL|method|ExportFileFilter (IExportFormat format)
+DECL|method|ExportFileFilter (Exporter format)
 specifier|public
 name|ExportFileFilter
 parameter_list|(
-name|IExportFormat
+name|Exporter
 name|format
 parameter_list|)
 block|{
@@ -113,7 +127,7 @@ name|extension
 operator|=
 name|format
 operator|.
-name|getExtension
+name|getFileType
 argument_list|()
 expr_stmt|;
 name|this
@@ -134,7 +148,7 @@ expr_stmt|;
 block|}
 DECL|method|getExportFormat ()
 specifier|public
-name|IExportFormat
+name|Exporter
 name|getExportFormat
 parameter_list|()
 block|{
@@ -144,7 +158,7 @@ return|;
 block|}
 DECL|method|getExtension ()
 specifier|public
-name|String
+name|FileType
 name|getExtension
 parameter_list|()
 block|{
@@ -193,6 +207,12 @@ operator|.
 name|endsWith
 argument_list|(
 name|extension
+operator|.
+name|getExtensions
+argument_list|()
+operator|.
+name|toString
+argument_list|()
 argument_list|)
 return|;
 block|}

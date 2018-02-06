@@ -295,6 +295,12 @@ specifier|final
 name|JCheckBox
 name|recommendations
 decl_stmt|;
+DECL|field|validation
+specifier|private
+specifier|final
+name|JCheckBox
+name|validation
+decl_stmt|;
 DECL|field|autoCompBoth
 specifier|private
 specifier|final
@@ -465,6 +471,19 @@ operator|.
 name|lang
 argument_list|(
 literal|"Show 'Related Articles' tab"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|validation
+operator|=
+operator|new
+name|JCheckBox
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Show validation messages"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -705,13 +724,13 @@ literal|"8dlu, left:pref, 8dlu, fill:150dlu, 4dlu, fill:pref"
 argument_list|,
 comment|// 4dlu, left:pref, 4dlu",
 comment|// rows  1 to 10
-literal|"pref, 6dlu, pref, 6dlu, pref, 6dlu, pref, 6dlu, pref, 6dlu, pref, 6dlu, "
+literal|"pref, 6dlu, pref, 6dlu, pref, 6dlu, pref, 6dlu, pref, 6dlu, pref, 6dlu, pref, 6dlu,"
 operator|+
 comment|// rows 11 to 16
 literal|"pref, 6dlu, pref, 6dlu, pref, 6dlu, "
 operator|+
 comment|// rows 17 to 27
-literal|"pref, 6dlu, pref, pref, pref, pref, 6dlu, pref, pref, pref, pref"
+literal|"pref, 6dlu, pref, pref, pref, pref, 6dlu, pref, pref, pref, pref, pref"
 argument_list|)
 decl_stmt|;
 name|DefaultFormBuilder
@@ -851,6 +870,22 @@ argument_list|)
 expr_stmt|;
 name|builder
 operator|.
+name|add
+argument_list|(
+name|validation
+argument_list|,
+name|cc
+operator|.
+name|xy
+argument_list|(
+literal|2
+argument_list|,
+literal|15
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|builder
+operator|.
 name|addSeparator
 argument_list|(
 name|Localization
@@ -866,7 +901,7 @@ name|xyw
 argument_list|(
 literal|1
 argument_list|,
-literal|15
+literal|17
 argument_list|,
 literal|5
 argument_list|)
@@ -884,7 +919,7 @@ name|xy
 argument_list|(
 literal|2
 argument_list|,
-literal|17
+literal|19
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -948,7 +983,7 @@ name|xyw
 argument_list|(
 literal|2
 argument_list|,
-literal|19
+literal|21
 argument_list|,
 literal|3
 argument_list|)
@@ -971,7 +1006,7 @@ name|xyw
 argument_list|(
 literal|2
 argument_list|,
-literal|21
+literal|23
 argument_list|,
 literal|4
 argument_list|)
@@ -989,7 +1024,7 @@ name|xy
 argument_list|(
 literal|2
 argument_list|,
-literal|22
+literal|24
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1005,7 +1040,7 @@ name|xy
 argument_list|(
 literal|2
 argument_list|,
-literal|23
+literal|25
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1021,7 +1056,7 @@ name|xy
 argument_list|(
 literal|2
 argument_list|,
-literal|24
+literal|26
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1042,7 +1077,7 @@ name|xyw
 argument_list|(
 literal|2
 argument_list|,
-literal|26
+literal|29
 argument_list|,
 literal|4
 argument_list|)
@@ -1060,7 +1095,7 @@ name|xy
 argument_list|(
 literal|2
 argument_list|,
-literal|27
+literal|30
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1076,7 +1111,7 @@ name|xy
 argument_list|(
 literal|2
 argument_list|,
-literal|28
+literal|31
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1092,7 +1127,7 @@ name|xy
 argument_list|(
 literal|2
 argument_list|,
-literal|29
+literal|32
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1406,6 +1441,20 @@ name|isSelected
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|validation
+operator|.
+name|setSelected
+argument_list|(
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|VALIDATE_IN_ENTRY_EDITOR
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Override
@@ -1452,6 +1501,20 @@ operator|.
 name|SHOW_RECOMMENDATIONS
 argument_list|,
 name|recommendations
+operator|.
+name|isSelected
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|prefs
+operator|.
+name|putBoolean
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|VALIDATE_IN_ENTRY_EDITOR
+argument_list|,
+name|validation
 operator|.
 name|isSelected
 argument_list|()

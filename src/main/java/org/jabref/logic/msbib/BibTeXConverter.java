@@ -335,8 +335,6 @@ name|addAuthor
 argument_list|(
 name|fieldValues
 argument_list|,
-name|MSBIB_PREFIX
-operator|+
 name|FieldName
 operator|.
 name|BOOKAUTHOR
@@ -363,8 +361,6 @@ name|addAuthor
 argument_list|(
 name|fieldValues
 argument_list|,
-name|MSBIB_PREFIX
-operator|+
 name|FieldName
 operator|.
 name|TRANSLATOR

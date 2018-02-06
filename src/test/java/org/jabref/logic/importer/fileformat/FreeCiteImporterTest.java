@@ -88,7 +88,7 @@ name|logic
 operator|.
 name|util
 operator|.
-name|FileExtensions
+name|FileType
 import|;
 end_import
 
@@ -110,13 +110,13 @@ begin_import
 import|import
 name|org
 operator|.
-name|jabref
+name|junit
 operator|.
-name|testutils
+name|jupiter
 operator|.
-name|category
+name|api
 operator|.
-name|FetcherTest
+name|BeforeEach
 import|;
 end_import
 
@@ -126,31 +126,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Before
-import|;
-end_import
-
-begin_import
-import|import
-name|org
+name|jupiter
 operator|.
-name|junit
+name|api
 operator|.
 name|Test
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|experimental
-operator|.
-name|categories
-operator|.
-name|Category
 import|;
 end_import
 
@@ -160,7 +140,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
 operator|.
 name|assertEquals
 import|;
@@ -179,13 +163,6 @@ import|;
 end_import
 
 begin_class
-annotation|@
-name|Category
-argument_list|(
-name|FetcherTest
-operator|.
-name|class
-argument_list|)
 DECL|class|FreeCiteImporterTest
 specifier|public
 class|class
@@ -197,7 +174,7 @@ name|FreeCiteImporter
 name|importer
 decl_stmt|;
 annotation|@
-name|Before
+name|BeforeEach
 DECL|method|setUp ()
 specifier|public
 name|void
@@ -265,16 +242,6 @@ operator|.
 name|getEntries
 argument_list|()
 decl_stmt|;
-name|assertEquals
-argument_list|(
-literal|1
-argument_list|,
-name|bibEntries
-operator|.
-name|size
-argument_list|()
-argument_list|)
-expr_stmt|;
 name|BibEntry
 name|bibEntry
 init|=
@@ -285,6 +252,16 @@ argument_list|(
 literal|0
 argument_list|)
 decl_stmt|;
+name|assertEquals
+argument_list|(
+literal|1
+argument_list|,
+name|bibEntries
+operator|.
+name|size
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|assertEquals
 argument_list|(
 name|bibEntry
@@ -332,13 +309,13 @@ parameter_list|()
 block|{
 name|assertEquals
 argument_list|(
-name|FileExtensions
+name|FileType
 operator|.
 name|FREECITE
 argument_list|,
 name|importer
 operator|.
-name|getExtensions
+name|getFileType
 argument_list|()
 argument_list|)
 expr_stmt|;

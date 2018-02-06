@@ -108,7 +108,7 @@ name|logic
 operator|.
 name|util
 operator|.
-name|FileExtensions
+name|FileType
 import|;
 end_import
 
@@ -443,7 +443,7 @@ argument_list|()
 operator|.
 name|withDefaultExtension
 argument_list|(
-name|FileExtensions
+name|FileType
 operator|.
 name|BIBTEX_DB
 argument_list|)
@@ -458,7 +458,7 @@ name|filter
 init|=
 name|toFilter
 argument_list|(
-name|FileExtensions
+name|FileType
 operator|.
 name|BIBTEX_DB
 argument_list|)
@@ -490,7 +490,7 @@ parameter_list|()
 block|{
 name|EnumSet
 argument_list|<
-name|FileExtensions
+name|FileType
 argument_list|>
 name|extensions
 init|=
@@ -498,7 +498,7 @@ name|EnumSet
 operator|.
 name|allOf
 argument_list|(
-name|FileExtensions
+name|FileType
 operator|.
 name|class
 argument_list|)
@@ -566,14 +566,14 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|toFilter (FileExtensions extension)
+DECL|method|toFilter (FileType extension)
 specifier|private
 name|FileChooser
 operator|.
 name|ExtensionFilter
 name|toFilter
 parameter_list|(
-name|FileExtensions
+name|FileType
 name|extension
 parameter_list|)
 block|{
@@ -590,7 +590,7 @@ argument_list|()
 argument_list|,
 name|extension
 operator|.
-name|getExtensionsAsList
+name|getExtensions
 argument_list|()
 operator|.
 name|stream

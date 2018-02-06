@@ -251,7 +251,7 @@ block|}
 comment|// Duplicate: also added as BookTitle
 name|entry
 operator|.
-name|getField
+name|getLatexFreeField
 argument_list|(
 name|FieldName
 operator|.
@@ -271,7 +271,7 @@ argument_list|)
 expr_stmt|;
 name|entry
 operator|.
-name|getField
+name|getLatexFreeField
 argument_list|(
 name|FieldName
 operator|.
@@ -295,7 +295,7 @@ argument_list|)
 expr_stmt|;
 name|entry
 operator|.
-name|getField
+name|getLatexFreeField
 argument_list|(
 name|MSBIB_PREFIX
 operator|+
@@ -330,7 +330,7 @@ name|albumTitle
 operator|=
 name|entry
 operator|.
-name|getField
+name|getLatexFreeField
 argument_list|(
 name|FieldName
 operator|.
@@ -360,7 +360,7 @@ name|broadcastTitle
 operator|=
 name|entry
 operator|.
-name|getField
+name|getLatexFreeField
 argument_list|(
 name|FieldName
 operator|.
@@ -379,7 +379,7 @@ name|number
 operator|=
 name|entry
 operator|.
-name|getField
+name|getLatexFreeField
 argument_list|(
 name|FieldName
 operator|.
@@ -410,7 +410,7 @@ name|patentNumber
 operator|=
 name|entry
 operator|.
-name|getField
+name|getLatexFreeField
 argument_list|(
 name|FieldName
 operator|.
@@ -435,7 +435,7 @@ name|day
 operator|=
 name|entry
 operator|.
-name|getFieldOrAlias
+name|getFieldOrAliasLatexFree
 argument_list|(
 name|FieldName
 operator|.
@@ -480,7 +480,7 @@ condition|(
 operator|!
 name|entry
 operator|.
-name|getField
+name|getLatexFreeField
 argument_list|(
 name|FieldName
 operator|.
@@ -497,7 +497,7 @@ name|year
 operator|=
 name|entry
 operator|.
-name|getFieldOrAlias
+name|getFieldOrAliasLatexFree
 argument_list|(
 name|FieldName
 operator|.
@@ -516,7 +516,7 @@ name|journalName
 operator|=
 name|entry
 operator|.
-name|getFieldOrAlias
+name|getFieldOrAliasLatexFree
 argument_list|(
 name|FieldName
 operator|.
@@ -532,7 +532,7 @@ comment|// Value must be converted
 comment|//Currently only english is supported
 name|entry
 operator|.
-name|getField
+name|getLatexFreeField
 argument_list|(
 name|FieldName
 operator|.
@@ -574,7 +574,7 @@ argument_list|()
 decl_stmt|;
 name|entry
 operator|.
-name|getField
+name|getLatexFreeField
 argument_list|(
 name|FieldName
 operator|.
@@ -597,7 +597,7 @@ argument_list|)
 expr_stmt|;
 name|entry
 operator|.
-name|getField
+name|getLatexFreeField
 argument_list|(
 name|FieldName
 operator|.
@@ -620,7 +620,7 @@ argument_list|)
 expr_stmt|;
 name|entry
 operator|.
-name|getField
+name|getLatexFreeField
 argument_list|(
 literal|"lccn"
 argument_list|)
@@ -641,7 +641,7 @@ argument_list|)
 expr_stmt|;
 name|entry
 operator|.
-name|getField
+name|getLatexFreeField
 argument_list|(
 literal|"mrnumber"
 argument_list|)
@@ -692,7 +692,7 @@ name|address
 operator|=
 name|entry
 operator|.
-name|getFieldOrAlias
+name|getFieldOrAliasLatexFree
 argument_list|(
 name|FieldName
 operator|.
@@ -708,7 +708,7 @@ if|if
 condition|(
 name|entry
 operator|.
-name|getField
+name|getLatexFreeField
 argument_list|(
 name|FieldName
 operator|.
@@ -725,7 +725,7 @@ name|thesisType
 operator|=
 name|entry
 operator|.
-name|getField
+name|getLatexFreeField
 argument_list|(
 name|FieldName
 operator|.
@@ -848,7 +848,7 @@ name|internetSiteTitle
 operator|=
 name|entry
 operator|.
-name|getField
+name|getLatexFreeField
 argument_list|(
 name|FieldName
 operator|.
@@ -892,7 +892,7 @@ name|publicationTitle
 operator|=
 name|entry
 operator|.
-name|getField
+name|getLatexFreeField
 argument_list|(
 name|FieldName
 operator|.
@@ -907,7 +907,7 @@ expr_stmt|;
 block|}
 name|entry
 operator|.
-name|getField
+name|getLatexFreeField
 argument_list|(
 name|FieldName
 operator|.
@@ -930,7 +930,7 @@ argument_list|)
 expr_stmt|;
 name|entry
 operator|.
-name|getField
+name|getLatexFreeField
 argument_list|(
 name|FieldName
 operator|.
@@ -948,6 +948,29 @@ operator|=
 name|getAuthors
 argument_list|(
 name|editors
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|entry
+operator|.
+name|getLatexFreeField
+argument_list|(
+name|FieldName
+operator|.
+name|TRANSLATOR
+argument_list|)
+operator|.
+name|ifPresent
+argument_list|(
+name|translator
+lambda|->
+name|result
+operator|.
+name|translators
+operator|=
+name|getAuthors
+argument_list|(
+name|translator
 argument_list|)
 argument_list|)
 expr_stmt|;

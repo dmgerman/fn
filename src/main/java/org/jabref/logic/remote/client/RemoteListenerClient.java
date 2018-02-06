@@ -68,13 +68,9 @@ begin_import
 import|import
 name|org
 operator|.
-name|apache
+name|slf4j
 operator|.
-name|commons
-operator|.
-name|logging
-operator|.
-name|Log
+name|Logger
 import|;
 end_import
 
@@ -82,13 +78,9 @@ begin_import
 import|import
 name|org
 operator|.
-name|apache
+name|slf4j
 operator|.
-name|commons
-operator|.
-name|logging
-operator|.
-name|LogFactory
+name|LoggerFactory
 import|;
 end_import
 
@@ -102,12 +94,12 @@ DECL|field|LOGGER
 specifier|private
 specifier|static
 specifier|final
-name|Log
+name|Logger
 name|LOGGER
 init|=
-name|LogFactory
+name|LoggerFactory
 operator|.
-name|getLog
+name|getLogger
 argument_list|(
 name|RemoteListenerClient
 operator|.
@@ -212,7 +204,7 @@ name|remoteServerPort
 argument_list|)
 decl_stmt|;
 name|String
-name|error
+name|errorMessage
 init|=
 name|Localization
 operator|.
@@ -223,13 +215,11 @@ argument_list|,
 name|port
 argument_list|)
 decl_stmt|;
-name|System
+name|LOGGER
 operator|.
-name|out
-operator|.
-name|println
-argument_list|(
 name|error
+argument_list|(
+name|errorMessage
 argument_list|)
 expr_stmt|;
 return|return

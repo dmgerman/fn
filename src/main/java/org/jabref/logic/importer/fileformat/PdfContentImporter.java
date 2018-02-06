@@ -238,7 +238,7 @@ name|logic
 operator|.
 name|util
 operator|.
-name|FileExtensions
+name|FileType
 import|;
 end_import
 
@@ -1085,26 +1085,27 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|isRecognizedFormat (BufferedReader reader)
+DECL|method|isRecognizedFormat (BufferedReader input)
 specifier|public
 name|boolean
 name|isRecognizedFormat
 parameter_list|(
 name|BufferedReader
-name|reader
+name|input
 parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|Objects
-operator|.
-name|requireNonNull
-argument_list|(
-name|reader
-argument_list|)
-expr_stmt|;
 return|return
-literal|false
+name|input
+operator|.
+name|readLine
+argument_list|()
+operator|.
+name|startsWith
+argument_list|(
+literal|"%PDF"
+argument_list|)
 return|;
 block|}
 annotation|@
@@ -3082,14 +3083,14 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|getExtensions ()
+DECL|method|getFileType ()
 specifier|public
-name|FileExtensions
-name|getExtensions
+name|FileType
+name|getFileType
 parameter_list|()
 block|{
 return|return
-name|FileExtensions
+name|FileType
 operator|.
 name|PDF_CONTENT
 return|;

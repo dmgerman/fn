@@ -92,6 +92,9 @@ name|MULTILINE_TEXT
 block|,
 DECL|enumConstant|VERBATIM
 name|VERBATIM
+block|,
+DECL|enumConstant|KEY
+name|KEY
 block|}
 end_enum
 

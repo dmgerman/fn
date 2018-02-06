@@ -370,6 +370,20 @@ begin_import
 import|import
 name|org
 operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|util
+operator|.
+name|DummyFileUpdateMonitor
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|junit
 operator|.
 name|Assert
@@ -625,10 +639,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|getExtensionsDoesNotReturnNull ()
+DECL|method|getFileTypeDoesNotReturnNull ()
 specifier|public
 name|void
-name|getExtensionsDoesNotReturnNull
+name|getFileTypeDoesNotReturnNull
 parameter_list|()
 block|{
 name|Assert
@@ -637,7 +651,7 @@ name|assertNotNull
 argument_list|(
 name|format
 operator|.
-name|getExtensions
+name|getFileType
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -828,6 +842,10 @@ operator|new
 name|BibtexImporter
 argument_list|(
 name|importFormatPreferences
+argument_list|,
+operator|new
+name|DummyFileUpdateMonitor
+argument_list|()
 argument_list|)
 block|}
 argument_list|,

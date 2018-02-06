@@ -110,7 +110,7 @@ name|logic
 operator|.
 name|util
 operator|.
-name|FileExtensions
+name|FileType
 import|;
 end_import
 
@@ -134,6 +134,10 @@ name|org
 operator|.
 name|junit
 operator|.
+name|jupiter
+operator|.
+name|api
+operator|.
 name|Test
 import|;
 end_import
@@ -144,7 +148,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
 operator|.
 name|assertEquals
 import|;
@@ -156,7 +164,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
 operator|.
 name|assertFalse
 import|;
@@ -185,13 +197,13 @@ argument_list|()
 decl_stmt|;
 name|assertEquals
 argument_list|(
-name|FileExtensions
+name|FileType
 operator|.
 name|MSBIB
 argument_list|,
 name|importer
 operator|.
-name|getExtensions
+name|getFileType
 argument_list|()
 argument_list|)
 expr_stmt|;

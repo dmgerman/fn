@@ -235,11 +235,11 @@ operator|=
 name|entry
 expr_stmt|;
 block|}
-DECL|method|SaveException (Exception base)
+DECL|method|SaveException (Throwable base)
 specifier|public
 name|SaveException
 parameter_list|(
-name|Exception
+name|Throwable
 name|base
 parameter_list|)
 block|{
@@ -257,11 +257,11 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|SaveException (Exception base, BibEntry entry)
+DECL|method|SaveException (Throwable base, BibEntry entry)
 specifier|public
 name|SaveException
 parameter_list|(
-name|Exception
+name|Throwable
 name|base
 parameter_list|,
 name|BibEntry

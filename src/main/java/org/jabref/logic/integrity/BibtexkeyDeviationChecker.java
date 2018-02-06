@@ -62,7 +62,7 @@ name|logic
 operator|.
 name|bibtexkeypattern
 operator|.
-name|BibtexKeyPatternPreferences
+name|BibtexKeyGenerator
 import|;
 end_import
 
@@ -76,7 +76,7 @@ name|logic
 operator|.
 name|bibtexkeypattern
 operator|.
-name|BibtexKeyPatternUtil
+name|BibtexKeyPatternPreferences
 import|;
 end_import
 
@@ -245,15 +245,17 @@ comment|// generate new key
 name|String
 name|generatedKey
 init|=
-name|BibtexKeyPatternUtil
-operator|.
-name|makeLabel
+operator|new
+name|BibtexKeyGenerator
 argument_list|(
 name|bibDatabaseContext
 argument_list|,
-name|entry
-argument_list|,
 name|bibtexKeyPatternPreferences
+argument_list|)
+operator|.
+name|generateKey
+argument_list|(
+name|entry
 argument_list|)
 decl_stmt|;
 if|if

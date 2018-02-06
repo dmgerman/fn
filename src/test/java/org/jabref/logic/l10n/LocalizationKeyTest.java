@@ -59,7 +59,7 @@ argument_list|)
 decl_stmt|;
 name|assertEquals
 argument_list|(
-literal|"\\#test\\!_\\:_\\="
+literal|"\\#test\\!\\ \\:\\ \\="
 argument_list|,
 name|localizationKey
 operator|.
@@ -69,7 +69,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"#test!_:_="
+literal|"#test! : ="
 argument_list|,
 name|localizationKey
 operator|.
@@ -84,6 +84,34 @@ argument_list|,
 name|localizationKey
 operator|.
 name|getTranslationValue
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|underscoreIsPreserved ()
+specifier|public
+name|void
+name|underscoreIsPreserved
+parameter_list|()
+block|{
+name|LocalizationKey
+name|localizationKey
+init|=
+operator|new
+name|LocalizationKey
+argument_list|(
+literal|"test_with_underscore"
+argument_list|)
+decl_stmt|;
+name|assertEquals
+argument_list|(
+literal|"test_with_underscore"
+argument_list|,
+name|localizationKey
+operator|.
+name|getPropertiesKey
 argument_list|()
 argument_list|)
 expr_stmt|;
