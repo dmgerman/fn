@@ -97,6 +97,7 @@ specifier|private
 name|BibtexNameFormatter
 parameter_list|()
 block|{     }
+comment|/**      * Formats the nth author of the author name list by a given format string      *      * @param authorsNameList The string from an author field      * @param whichName index of the list, starting with 1      * @param formatString TODO      * @param warn collects the warnings, may-be-null      * @return      */
 DECL|method|formatName (String authorsNameList, int whichName, String formatString, Warn warn)
 specifier|public
 specifier|static
@@ -181,7 +182,7 @@ name|warn
 argument_list|)
 return|;
 block|}
-comment|/**      *      * @param author      * @param format      * @param warn may-be-null      * @return      */
+comment|/**      * @param warn collects the warnings, may-be-null      */
 DECL|method|formatName (Author author, String format, Warn warn)
 specifier|public
 specifier|static
