@@ -26,7 +26,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|AfterClass
+name|jupiter
+operator|.
+name|api
+operator|.
+name|AfterAll
 import|;
 end_import
 
@@ -36,7 +40,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|BeforeClass
+name|jupiter
+operator|.
+name|api
+operator|.
+name|BeforeAll
 import|;
 end_import
 
@@ -45,6 +53,10 @@ import|import
 name|org
 operator|.
 name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
 operator|.
 name|Test
 import|;
@@ -56,7 +68,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
 operator|.
 name|assertTrue
 import|;
@@ -75,7 +91,7 @@ name|String
 name|previousValue
 decl_stmt|;
 annotation|@
-name|BeforeClass
+name|BeforeAll
 DECL|method|savePreferenceLastFocus ()
 specifier|public
 specifier|static
@@ -99,7 +115,7 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
-name|AfterClass
+name|AfterAll
 DECL|method|restorePreferenceLastFocus ()
 specifier|public
 specifier|static
