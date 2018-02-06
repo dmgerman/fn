@@ -181,7 +181,7 @@ operator|+
 literal|"(?:\\.[0-9]+)+"
 comment|// registrant codes
 operator|+
-literal|"[/:]"
+literal|"[/:%]"
 comment|// divider
 operator|+
 literal|"(?:.+)"
