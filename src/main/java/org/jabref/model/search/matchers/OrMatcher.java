@@ -28,22 +28,8 @@ name|BibEntry
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|search
-operator|.
-name|SearchMatcher
-import|;
-end_import
-
 begin_comment
-comment|/**  * Subclass of MatcherSet that ANDs or ORs between its rules, returning 0 or  * 1.  */
+comment|/**  * A set of matchers that returns true if any matcher matches the given entry.  */
 end_comment
 
 begin_class
@@ -56,49 +42,32 @@ name|MatcherSet
 block|{
 annotation|@
 name|Override
-DECL|method|isMatch (BibEntry bibEntry)
+DECL|method|isMatch (BibEntry entry)
 specifier|public
 name|boolean
 name|isMatch
 parameter_list|(
 name|BibEntry
-name|bibEntry
+name|entry
 parameter_list|)
 block|{
-name|int
-name|score
-init|=
-literal|0
-decl_stmt|;
-comment|// We let each rule add a maximum of 1 to the score.
-for|for
-control|(
-name|SearchMatcher
-name|rule
-range|:
+return|return
 name|matchers
-control|)
-block|{
-if|if
-condition|(
+operator|.
+name|stream
+argument_list|()
+operator|.
+name|anyMatch
+argument_list|(
+name|rule
+lambda|->
 name|rule
 operator|.
 name|isMatch
 argument_list|(
-name|bibEntry
+name|entry
 argument_list|)
-condition|)
-block|{
-name|score
-operator|++
-expr_stmt|;
-block|}
-block|}
-comment|// OR rule demands score> 0.
-return|return
-name|score
-operator|>
-literal|0
+argument_list|)
 return|;
 block|}
 block|}
