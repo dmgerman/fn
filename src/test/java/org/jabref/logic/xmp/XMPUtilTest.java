@@ -766,6 +766,11 @@ specifier|private
 name|ImportFormatPreferences
 name|importFormatPreferences
 decl_stmt|;
+DECL|field|parser
+specifier|private
+name|BibtexParser
+name|parser
+decl_stmt|;
 comment|/**      * Wrap bibtex-data (<bibtex:author>...) into an rdf:Description.      *      * @param bibtex      * @return      */
 DECL|method|bibtexDescription (String bibtex)
 specifier|public
@@ -1568,6 +1573,16 @@ operator|.
 name|thenReturn
 argument_list|(
 literal|','
+argument_list|)
+expr_stmt|;
+name|parser
+operator|=
+operator|new
+name|BibtexParser
+argument_list|(
+name|importFormatPreferences
+argument_list|,
+name|fileMonitor
 argument_list|)
 expr_stmt|;
 block|}
@@ -2716,7 +2731,7 @@ block|{
 name|ParserResult
 name|result
 init|=
-name|BibtexParser
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -2755,10 +2770,6 @@ literal|"\n"
 operator|+
 literal|"}"
 argument_list|)
-argument_list|,
-name|importFormatPreferences
-argument_list|,
-name|fileMonitor
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -4572,7 +4583,7 @@ block|{
 name|ParserResult
 name|result
 init|=
-name|BibtexParser
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -4611,10 +4622,6 @@ literal|"\n"
 operator|+
 literal|"}"
 argument_list|)
-argument_list|,
-name|importFormatPreferences
-argument_list|,
-name|fileMonitor
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -4917,7 +4924,7 @@ block|{
 name|ParserResult
 name|result
 init|=
-name|BibtexParser
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -4934,10 +4941,6 @@ literal|"@inProceedings{foo,"
 operator|+
 literal|"  author={Norton Bar}}"
 argument_list|)
-argument_list|,
-name|importFormatPreferences
-argument_list|,
-name|fileMonitor
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -6838,7 +6841,7 @@ block|{
 name|ParserResult
 name|result
 init|=
-name|BibtexParser
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -6861,10 +6864,6 @@ literal|"  timestamp = {2006.05.29},\n"
 operator|+
 literal|"  url = {http://james.howison.name/publications.html}}"
 argument_list|)
-argument_list|,
-name|importFormatPreferences
-argument_list|,
-name|fileMonitor
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -8338,7 +8337,7 @@ block|{
 name|ParserResult
 name|original
 init|=
-name|BibtexParser
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -8385,10 +8384,6 @@ literal|"\n"
 operator|+
 literal|"}"
 argument_list|)
-argument_list|,
-name|importFormatPreferences
-argument_list|,
-name|fileMonitor
 argument_list|)
 decl_stmt|;
 name|Collection

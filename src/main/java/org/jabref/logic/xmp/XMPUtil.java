@@ -4145,15 +4145,7 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|LOGGER
-operator|.
-name|error
-argument_list|(
-literal|"XMP reading failed"
-argument_list|,
-name|e
-argument_list|)
-expr_stmt|;
+comment|// happens if no metadata is found, no reason to log the exception
 return|return
 literal|false
 return|;
@@ -4221,15 +4213,7 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|LOGGER
-operator|.
-name|error
-argument_list|(
-literal|"XMP reading failed"
-argument_list|,
-name|e
-argument_list|)
-expr_stmt|;
+comment|// happens if no metadata is found, no reason to log the exception
 return|return
 literal|false
 return|;
