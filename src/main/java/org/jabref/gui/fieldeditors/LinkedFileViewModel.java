@@ -498,6 +498,20 @@ name|LoggerFactory
 import|;
 end_import
 
+begin_import
+import|import static
+name|javafx
+operator|.
+name|scene
+operator|.
+name|control
+operator|.
+name|ButtonBar
+operator|.
+name|ButtonData
+import|;
+end_import
+
 begin_class
 DECL|class|LinkedFileViewModel
 specifier|public
@@ -588,10 +602,6 @@ specifier|private
 specifier|final
 name|DialogService
 name|dialogService
-init|=
-operator|new
-name|FXDialogService
-argument_list|()
 decl_stmt|;
 DECL|field|entry
 specifier|private
@@ -623,6 +633,42 @@ name|taskExecutor
 parameter_list|)
 block|{
 name|this
+argument_list|(
+name|linkedFile
+argument_list|,
+name|entry
+argument_list|,
+name|databaseContext
+argument_list|,
+name|taskExecutor
+argument_list|,
+operator|new
+name|FXDialogService
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|LinkedFileViewModel (LinkedFile linkedFile, BibEntry entry, BibDatabaseContext databaseContext, TaskExecutor taskExecutor, DialogService dialogService)
+specifier|protected
+name|LinkedFileViewModel
+parameter_list|(
+name|LinkedFile
+name|linkedFile
+parameter_list|,
+name|BibEntry
+name|entry
+parameter_list|,
+name|BibDatabaseContext
+name|databaseContext
+parameter_list|,
+name|TaskExecutor
+name|taskExecutor
+parameter_list|,
+name|DialogService
+name|dialogService
+parameter_list|)
+block|{
+name|this
 operator|.
 name|linkedFile
 operator|=
@@ -645,6 +691,12 @@ operator|.
 name|taskExecutor
 operator|=
 name|taskExecutor
+expr_stmt|;
+name|this
+operator|.
+name|dialogService
+operator|=
+name|dialogService
 expr_stmt|;
 name|downloadOngoing
 operator|.
@@ -1820,6 +1872,10 @@ name|lang
 argument_list|(
 literal|"Remove from entry"
 argument_list|)
+argument_list|,
+name|ButtonData
+operator|.
+name|YES
 argument_list|)
 decl_stmt|;
 if|if
@@ -1880,9 +1936,9 @@ argument_list|(
 literal|"Delete the selected file permanently from disk, or just remove the file from the entry? Pressing Delete will delete the file permanently from disk."
 argument_list|)
 argument_list|,
-name|deleteFromEntry
-argument_list|,
 name|removeFromEntry
+argument_list|,
+name|deleteFromEntry
 argument_list|,
 name|ButtonType
 operator|.
@@ -2002,7 +2058,7 @@ argument_list|)
 expr_stmt|;
 block|}
 return|return
-literal|true
+literal|false
 return|;
 block|}
 DECL|method|edit ()
