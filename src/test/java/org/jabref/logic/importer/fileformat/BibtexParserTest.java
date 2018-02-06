@@ -2153,10 +2153,6 @@ literal|"small = 1234,\n"
 operator|+
 literal|"}"
 argument_list|)
-argument_list|,
-name|importFormatPreferences
-argument_list|,
-name|fileMonitor
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -2793,7 +2789,7 @@ expr_stmt|;
 name|ParserResult
 name|result
 init|=
-name|BibtexParser
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -2810,10 +2806,6 @@ literal|"@inProceedings{foo,"
 operator|+
 literal|"  author={Norton Bar}}"
 argument_list|)
-argument_list|,
-name|importFormatPreferences
-argument_list|,
-name|fileMonitor
 argument_list|)
 decl_stmt|;
 name|List
@@ -3470,10 +3462,6 @@ literal|"\n"
 operator|+
 literal|"}))"
 argument_list|)
-argument_list|,
-name|importFormatPreferences
-argument_list|,
-name|fileMonitor
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -3741,10 +3729,6 @@ literal|"\n"
 operator|+
 literal|"}))"
 argument_list|)
-argument_list|,
-name|importFormatPreferences
-argument_list|,
-name|fileMonitor
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -4565,10 +4549,6 @@ literal|"\n"
 operator|+
 literal|"}))"
 argument_list|)
-argument_list|,
-name|importFormatPreferences
-argument_list|,
-name|fileMonitor
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -4681,10 +4661,6 @@ literal|"@inProceedings{canh05,"
 operator|+
 literal|"  author={Norton Bar}}"
 argument_list|)
-argument_list|,
-name|importFormatPreferences
-argument_list|,
-name|fileMonitor
 argument_list|)
 decl_stmt|;
 name|List
@@ -5230,10 +5206,6 @@ name|StringReader
 argument_list|(
 literal|"@article{test,author={author bracket } too much}"
 argument_list|)
-argument_list|,
-name|importFormatPreferences
-argument_list|,
-name|fileMonitor
 argument_list|)
 decl_stmt|;
 name|List
@@ -5295,10 +5267,6 @@ name|StringReader
 argument_list|(
 literal|"@article{test,author={author bracket }, too much}"
 argument_list|)
-argument_list|,
-name|importFormatPreferences
-argument_list|,
-name|fileMonitor
 argument_list|)
 decl_stmt|;
 name|List
@@ -5841,10 +5809,6 @@ literal|"@article{test,author={author missing bracket}"
 operator|+
 literal|"@article{test,author={Ed von Test}}"
 argument_list|)
-argument_list|,
-name|importFormatPreferences
-argument_list|,
-name|fileMonitor
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -6754,7 +6718,7 @@ block|{
 name|ParserResult
 name|result
 init|=
-name|BibtexParser
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -6781,10 +6745,6 @@ literal|"	Year = 2002"
 operator|+
 literal|"}"
 argument_list|)
-argument_list|,
-name|importFormatPreferences
-argument_list|,
-name|fileMonitor
 argument_list|)
 decl_stmt|;
 name|BibtexString
@@ -8015,10 +7975,21 @@ literal|"file"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|BibtexParser
+name|parser
+init|=
+operator|new
+name|BibtexParser
+argument_list|(
+name|importFormatPreferences
+argument_list|,
+name|fileMonitor
+argument_list|)
+decl_stmt|;
 name|ParserResult
 name|result
 init|=
-name|BibtexParser
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -8027,10 +7998,6 @@ name|StringReader
 argument_list|(
 literal|"@article{canh05,file = {ups  sala}}"
 argument_list|)
-argument_list|,
-name|importFormatPreferences
-argument_list|,
-name|fileMonitor
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -8098,10 +8065,6 @@ name|StringReader
 argument_list|(
 literal|"@article{canh05,abstract = {ups  \tsala}}"
 argument_list|)
-argument_list|,
-name|importFormatPreferences
-argument_list|,
-name|fileMonitor
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -8171,10 +8134,6 @@ name|StringReader
 argument_list|(
 literal|"@article{canh05,abstract = {ups \nsala}}"
 argument_list|)
-argument_list|,
-name|importFormatPreferences
-argument_list|,
-name|fileMonitor
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -9608,7 +9567,7 @@ block|{
 name|ParserResult
 name|result
 init|=
-name|BibtexParser
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -9617,10 +9576,6 @@ name|StringReader
 argument_list|(
 literal|"@Comment{jabref-meta: saveOrderConfig:specified;author;false;year;true;abstract;false;}"
 argument_list|)
-argument_list|,
-name|importFormatPreferences
-argument_list|,
-name|fileMonitor
 argument_list|)
 decl_stmt|;
 name|Optional
@@ -9710,10 +9665,6 @@ name|NEWLINE
 operator|+
 literal|"@comment{jabref-meta: keypatterndefault:test;}"
 argument_list|)
-argument_list|,
-name|importFormatPreferences
-argument_list|,
-name|fileMonitor
 argument_list|)
 decl_stmt|;
 name|GlobalBibtexKeyPattern
@@ -9879,10 +9830,6 @@ literal|"1 ExplicitGroup:TestGroup\\;0\\;Key1\\;Key2\\;;"
 operator|+
 literal|"}"
 argument_list|)
-argument_list|,
-name|importFormatPreferences
-argument_list|,
-name|fileMonitor
 argument_list|)
 decl_stmt|;
 name|GroupTreeNode
@@ -10083,10 +10030,6 @@ name|StringReader
 argument_list|(
 literal|"@Comment{jabref-meta: selector_status:approved;captured;received;status;}"
 argument_list|)
-argument_list|,
-name|importFormatPreferences
-argument_list|,
-name|fileMonitor
 argument_list|)
 decl_stmt|;
 name|List
@@ -10524,10 +10467,6 @@ literal|"@comment{jabref-meta: fileDirectory:\\\\Literature\\\\;}"
 operator|+
 literal|"@comment{jabref-meta: fileDirectory-defaultOwner-user:D:\\\\Documents;}"
 argument_list|)
-argument_list|,
-name|importFormatPreferences
-argument_list|,
-name|fileMonitor
 argument_list|)
 decl_stmt|;
 name|assertEquals

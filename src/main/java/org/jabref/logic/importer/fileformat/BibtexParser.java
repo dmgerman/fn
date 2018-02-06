@@ -635,42 +635,6 @@ name|fileMonitor
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Shortcut usage to create a Parser and read the input.      *      * @param in the Reader to read from      * @param fileMonitor      * @throws IOException      * @deprecated inline this method      */
-annotation|@
-name|Deprecated
-DECL|method|parse (Reader in, ImportFormatPreferences importFormatPreferences, FileUpdateMonitor fileMonitor)
-specifier|public
-specifier|static
-name|ParserResult
-name|parse
-parameter_list|(
-name|Reader
-name|in
-parameter_list|,
-name|ImportFormatPreferences
-name|importFormatPreferences
-parameter_list|,
-name|FileUpdateMonitor
-name|fileMonitor
-parameter_list|)
-throws|throws
-name|IOException
-block|{
-return|return
-operator|new
-name|BibtexParser
-argument_list|(
-name|importFormatPreferences
-argument_list|,
-name|fileMonitor
-argument_list|)
-operator|.
-name|parse
-argument_list|(
-name|in
-argument_list|)
-return|;
-block|}
 comment|/**      * Parses BibtexEntries from the given string and returns one entry found (or null if none found)      *<p>      * It is undetermined which entry is returned, so use this in case you know there is only one entry in the string.      *      * @param bibtexString      * @param fileMonitor      * @return An Optional<BibEntry>. Optional.empty() if non was found or an error occurred.      * @throws ParseException      */
 DECL|method|singleFromString (String bibtexString, ImportFormatPreferences importFormatPreferences, FileUpdateMonitor fileMonitor)
 specifier|public
