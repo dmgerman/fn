@@ -632,7 +632,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"#gs_ggsW%s a"
+literal|"div[data-rp=%S] div.gs_or_ggsm a"
 argument_list|,
 name|i
 argument_list|)
