@@ -949,7 +949,7 @@ lambda|->
 block|{
 name|DefaultTaskExecutor
 operator|.
-name|runInJavaFXThread
+name|runAndWaitInJavaFXThread
 argument_list|(
 parameter_list|()
 lambda|->
