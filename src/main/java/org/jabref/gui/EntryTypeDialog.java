@@ -1886,6 +1886,17 @@ operator|.
 name|trim
 argument_list|()
 expr_stmt|;
+name|searchID
+operator|=
+name|searchID
+operator|.
+name|replaceAll
+argument_list|(
+literal|" "
+argument_list|,
+literal|""
+argument_list|)
+expr_stmt|;
 name|fetcher
 operator|=
 name|WebFetchers
