@@ -395,10 +395,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|deleteWhenFilePathNotPresentReturnsFalse ()
+DECL|method|deleteWhenFilePathNotPresentReturnsTrue ()
 specifier|public
 name|void
-name|deleteWhenFilePathNotPresentReturnsFalse
+name|deleteWhenFilePathNotPresentReturnsTrue
 parameter_list|()
 block|{
 comment|// Making this a spy, so we can inject an empty optional without digging into the implementation
@@ -472,7 +472,7 @@ operator|.
 name|delete
 argument_list|()
 decl_stmt|;
-name|assertFalse
+name|assertTrue
 argument_list|(
 name|removed
 argument_list|)
