@@ -1848,22 +1848,15 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|delete ()
+DECL|method|delete (FileDirectoryPreferences prefs)
 specifier|public
 name|boolean
 name|delete
-parameter_list|()
-block|{
+parameter_list|(
 name|FileDirectoryPreferences
 name|prefs
-init|=
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getFileDirectoryPreferences
-argument_list|()
-decl_stmt|;
+parameter_list|)
+block|{
 name|Optional
 argument_list|<
 name|Path
