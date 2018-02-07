@@ -110,7 +110,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Test
+name|jupiter
+operator|.
+name|api
+operator|.
+name|BeforeEach
 import|;
 end_import
 
@@ -124,7 +128,7 @@ name|jupiter
 operator|.
 name|api
 operator|.
-name|BeforeEach
+name|Test
 import|;
 end_import
 
