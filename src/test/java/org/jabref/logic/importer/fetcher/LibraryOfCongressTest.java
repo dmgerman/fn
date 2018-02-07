@@ -30,6 +30,20 @@ name|org
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
+name|importer
+operator|.
+name|ImportFormatPreferences
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
 name|model
 operator|.
 name|entry
@@ -67,6 +81,16 @@ import|;
 end_import
 
 begin_import
+import|import
+name|org
+operator|.
+name|mockito
+operator|.
+name|Answers
+import|;
+end_import
+
+begin_import
 import|import static
 name|org
 operator|.
@@ -79,6 +103,18 @@ operator|.
 name|Assertions
 operator|.
 name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|mockito
+operator|.
+name|Mockito
+operator|.
+name|mock
 import|;
 end_import
 
@@ -98,7 +134,18 @@ name|fetcher
 init|=
 operator|new
 name|LibraryOfCongress
-argument_list|()
+argument_list|(
+name|mock
+argument_list|(
+name|ImportFormatPreferences
+operator|.
+name|class
+argument_list|,
+name|Answers
+operator|.
+name|RETURNS_DEEP_STUBS
+argument_list|)
+argument_list|)
 decl_stmt|;
 annotation|@
 name|Test

@@ -218,6 +218,20 @@ name|logic
 operator|.
 name|importer
 operator|.
+name|ImportFormatPreferences
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|importer
+operator|.
 name|Importer
 import|;
 end_import
@@ -830,18 +844,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|preferences
-operator|.
-name|JabRefPreferences
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -904,26 +906,6 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|field|KEYWORD_SEPARATOR
-specifier|private
-specifier|static
-specifier|final
-name|String
-name|KEYWORD_SEPARATOR
-init|=
-name|JabRefPreferences
-operator|.
-name|getInstance
-argument_list|()
-operator|.
-name|getImportFormatPreferences
-argument_list|()
-operator|.
-name|getKeywordSeparator
-argument_list|()
-operator|+
-literal|" "
-decl_stmt|;
 DECL|field|MODS_PATTERN
 specifier|private
 specifier|static
@@ -938,11 +920,35 @@ argument_list|(
 literal|"<mods .*>"
 argument_list|)
 decl_stmt|;
+DECL|field|keywordSeparator
+specifier|private
+specifier|final
+name|String
+name|keywordSeparator
+decl_stmt|;
 DECL|field|context
 specifier|private
 name|JAXBContext
 name|context
 decl_stmt|;
+DECL|method|ModsImporter (ImportFormatPreferences importFormatPreferences)
+specifier|public
+name|ModsImporter
+parameter_list|(
+name|ImportFormatPreferences
+name|importFormatPreferences
+parameter_list|)
+block|{
+name|keywordSeparator
+operator|=
+name|importFormatPreferences
+operator|.
+name|getKeywordSeparator
+argument_list|()
+operator|+
+literal|" "
+expr_stmt|;
+block|}
 annotation|@
 name|Override
 DECL|method|isRecognizedFormat (BufferedReader input)
@@ -1821,7 +1827,9 @@ name|FieldName
 operator|.
 name|KEYWORDS
 argument_list|,
-name|KEYWORD_SEPARATOR
+name|this
+operator|.
+name|keywordSeparator
 argument_list|)
 expr_stmt|;
 comment|//same goes for authors and notes
