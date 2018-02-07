@@ -124,6 +124,14 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|setLongText
+argument_list|(
+name|action
+operator|.
+name|getDescription
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|JabRefAction (ActionsFX action, Command command, KeyBindingRepository keyBindingRepository)
 specifier|public

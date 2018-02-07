@@ -172,9 +172,6 @@ block|,
 DECL|enumConstant|SAVE_AS
 name|SAVE_AS
 block|,
-DECL|enumConstant|SAVE_SELECTED_AS
-name|SAVE_SELECTED_AS
-block|,
 DECL|enumConstant|SAVE_SELECTED_AS_PLAIN
 name|SAVE_SELECTED_AS_PLAIN
 block|,
