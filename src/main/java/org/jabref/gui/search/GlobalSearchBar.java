@@ -2348,6 +2348,15 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
+name|SearchTextField
+operator|.
+name|switchSearchColor
+argument_list|(
+name|searchField
+argument_list|,
+name|grammarBasedSearch
+argument_list|)
+expr_stmt|;
 name|Tooltip
 name|tooltip
 init|=
