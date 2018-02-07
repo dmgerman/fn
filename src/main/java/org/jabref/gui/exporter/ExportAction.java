@@ -693,7 +693,7 @@ name|LAST_USED_EXPORT
 argument_list|,
 name|format
 operator|.
-name|getId
+name|getDescription
 argument_list|()
 argument_list|)
 expr_stmt|;
