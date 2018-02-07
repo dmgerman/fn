@@ -174,16 +174,6 @@ name|org
 operator|.
 name|jabref
 operator|.
-name|JabRefMain
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
 name|logic
 operator|.
 name|layout
@@ -677,7 +667,7 @@ comment|// Try loading as a resource first. This works for files inside the JAR:
 name|URL
 name|reso
 init|=
-name|JabRefMain
+name|TemplateExporter
 operator|.
 name|class
 operator|.

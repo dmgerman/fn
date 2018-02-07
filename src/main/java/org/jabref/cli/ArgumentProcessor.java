@@ -628,6 +628,18 @@ name|jabref
 operator|.
 name|preferences
 operator|.
+name|SavePreferencesFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|preferences
+operator|.
 name|SearchPreferences
 import|;
 end_import
@@ -2463,7 +2475,7 @@ expr_stmt|;
 name|SavePreferences
 name|prefs
 init|=
-name|SavePreferences
+name|SavePreferencesFactory
 operator|.
 name|loadForSaveFromPreferences
 argument_list|(
@@ -2733,7 +2745,7 @@ expr_stmt|;
 name|SavePreferences
 name|prefs
 init|=
-name|SavePreferences
+name|SavePreferencesFactory
 operator|.
 name|loadForSaveFromPreferences
 argument_list|(
@@ -3262,7 +3274,7 @@ decl_stmt|;
 name|SavePreferences
 name|savePreferences
 init|=
-name|SavePreferences
+name|SavePreferencesFactory
 operator|.
 name|loadForExportFromPreferences
 argument_list|(

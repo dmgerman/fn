@@ -308,6 +308,18 @@ name|jabref
 operator|.
 name|preferences
 operator|.
+name|ExporterFactoryFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|preferences
+operator|.
 name|JabRefPreferences
 import|;
 end_import
@@ -448,7 +460,7 @@ name|Globals
 operator|.
 name|exportFactory
 operator|=
-name|ExporterFactory
+name|ExporterFactoryFactory
 operator|.
 name|create
 argument_list|(

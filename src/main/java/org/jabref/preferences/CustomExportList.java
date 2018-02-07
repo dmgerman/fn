@@ -468,7 +468,7 @@ decl_stmt|;
 name|SavePreferences
 name|savePreferences
 init|=
-name|SavePreferences
+name|SavePreferencesFactory
 operator|.
 name|loadForExportFromPreferences
 argument_list|(
