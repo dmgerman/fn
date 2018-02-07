@@ -15,12 +15,18 @@ package|;
 end_package
 
 begin_import
-import|import
+import|import static
 name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
+operator|.
+name|*
 import|;
 end_import
 
@@ -29,6 +35,10 @@ import|import
 name|org
 operator|.
 name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
 operator|.
 name|Test
 import|;
@@ -49,8 +59,6 @@ name|void
 name|testFormatThreeAuthors
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"von Neumann et al."
@@ -75,8 +83,6 @@ name|void
 name|testFormatTwoAuthors
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"von Neumann and Smith"

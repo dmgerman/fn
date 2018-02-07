@@ -76,16 +76,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Before
 import|;
 end_import
@@ -95,6 +85,10 @@ import|import
 name|org
 operator|.
 name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
 operator|.
 name|Test
 import|;
@@ -113,6 +107,38 @@ operator|.
 name|AutoCompleterUtil
 operator|.
 name|getRequest
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
+operator|.
+name|assertThrows
 import|;
 end_import
 
@@ -153,21 +179,20 @@ specifier|private
 name|BibEntry
 name|entry
 decl_stmt|;
-annotation|@
-name|Test
-argument_list|(
-name|expected
-operator|=
-name|NullPointerException
-operator|.
-name|class
-argument_list|)
 DECL|method|initAutoCompleterWithNullFieldThrowsException ()
 specifier|public
 name|void
 name|initAutoCompleterWithNullFieldThrowsException
 parameter_list|()
 block|{
+name|assertThrows
+argument_list|(
+name|NullPointerException
+operator|.
+name|class
+argument_list|,
+parameter_list|()
+lambda|->
 operator|new
 name|PersonNameSuggestionProvider
 argument_list|(
@@ -175,6 +200,7 @@ operator|(
 name|String
 operator|)
 literal|null
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -238,8 +264,6 @@ operator|)
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Collections
@@ -284,8 +308,6 @@ operator|)
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Collections
@@ -337,8 +359,6 @@ operator|)
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Collections
@@ -399,8 +419,6 @@ operator|)
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Collections
@@ -445,8 +463,6 @@ operator|)
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Collections
@@ -493,8 +509,6 @@ operator|)
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Collections
@@ -541,8 +555,6 @@ operator|)
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Collections
@@ -556,21 +568,20 @@ name|result
 argument_list|)
 expr_stmt|;
 block|}
-annotation|@
-name|Test
-argument_list|(
-name|expected
-operator|=
-name|NullPointerException
-operator|.
-name|class
-argument_list|)
 DECL|method|completeNullThrowsException ()
 specifier|public
 name|void
 name|completeNullThrowsException
 parameter_list|()
 block|{
+name|assertThrows
+argument_list|(
+name|NullPointerException
+operator|.
+name|class
+argument_list|,
+parameter_list|()
+lambda|->
 name|autoCompleter
 operator|.
 name|call
@@ -580,6 +591,7 @@ argument_list|(
 operator|(
 literal|null
 operator|)
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -617,8 +629,6 @@ operator|)
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Collections
@@ -703,8 +713,6 @@ operator|)
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Arrays
@@ -753,8 +761,6 @@ operator|)
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Collections
@@ -801,8 +807,6 @@ operator|)
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Collections
@@ -882,8 +886,6 @@ operator|)
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Collections
@@ -963,8 +965,6 @@ operator|)
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Collections
@@ -1044,8 +1044,6 @@ operator|)
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Collections
@@ -1125,8 +1123,6 @@ operator|)
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Collections
@@ -1189,8 +1185,6 @@ operator|)
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Collections

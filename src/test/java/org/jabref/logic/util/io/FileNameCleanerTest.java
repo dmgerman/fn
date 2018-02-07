@@ -20,17 +20,27 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Test
 import|;
 end_import
 
 begin_import
-import|import
+import|import static
 name|org
 operator|.
 name|junit
 operator|.
-name|Test
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
+operator|.
+name|assertEquals
 import|;
 end_import
 
@@ -48,8 +58,6 @@ name|void
 name|testCleanFileName
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"legalFilename.txt"
@@ -62,8 +70,6 @@ literal|"legalFilename.txt"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"illegalFilename______.txt"
@@ -85,8 +91,6 @@ name|void
 name|testCleanDirectoryName
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"legalFilename.txt"
@@ -99,8 +103,6 @@ literal|"legalFilename.txt"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"subdir/legalFilename.txt"
@@ -113,8 +115,6 @@ literal|"subdir/legalFilename.txt"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"illegalFilename/_____.txt"
@@ -136,8 +136,6 @@ name|void
 name|testCleanDirectoryNameForWindows
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"legalFilename.txt"
@@ -150,8 +148,6 @@ literal|"legalFilename.txt"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"subdir\\legalFilename.txt"
@@ -164,8 +160,6 @@ literal|"subdir\\legalFilename.txt"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"illegalFilename\\_____.txt"

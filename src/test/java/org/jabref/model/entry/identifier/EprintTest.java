@@ -20,17 +20,43 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Test
 import|;
 end_import
 
 begin_import
-import|import
+import|import static
 name|org
 operator|.
 name|junit
 operator|.
-name|Test
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
+operator|.
+name|assertThrows
 import|;
 end_import
 
@@ -48,8 +74,6 @@ name|void
 name|acceptPlainEprint
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"0706.0001"
@@ -73,8 +97,6 @@ name|void
 name|acceptLegacyEprint
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"astro-ph.GT/1234567"
@@ -89,8 +111,6 @@ name|getEprint
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"math/1234567"
@@ -114,8 +134,6 @@ name|void
 name|acceptPlainEprintWithVersion
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"0706.0001v1"
@@ -139,8 +157,6 @@ name|void
 name|ignoreLeadingAndTrailingWhitespaces
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"0706.0001v1"
@@ -156,47 +172,47 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-annotation|@
-name|Test
-argument_list|(
-name|expected
-operator|=
-name|IllegalArgumentException
-operator|.
-name|class
-argument_list|)
 DECL|method|rejectEmbeddedEprint ()
 specifier|public
 name|void
 name|rejectEmbeddedEprint
 parameter_list|()
 block|{
+name|assertThrows
+argument_list|(
+name|IllegalArgumentException
+operator|.
+name|class
+argument_list|,
+parameter_list|()
+lambda|->
 operator|new
 name|Eprint
 argument_list|(
 literal|"other stuff 0706.0001v1 end"
 argument_list|)
+argument_list|)
 expr_stmt|;
 block|}
-annotation|@
-name|Test
-argument_list|(
-name|expected
-operator|=
-name|IllegalArgumentException
-operator|.
-name|class
-argument_list|)
 DECL|method|rejectInvalidEprint ()
 specifier|public
 name|void
 name|rejectInvalidEprint
 parameter_list|()
 block|{
+name|assertThrows
+argument_list|(
+name|IllegalArgumentException
+operator|.
+name|class
+argument_list|,
+parameter_list|()
+lambda|->
 operator|new
 name|Eprint
 argument_list|(
 literal|"https://thisisnouri"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -208,8 +224,6 @@ name|void
 name|acceptArxivPrefix
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"0706.0001v1"
@@ -234,8 +248,6 @@ name|acceptURLEprint
 parameter_list|()
 block|{
 comment|// http
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"0706.0001v1"
@@ -251,8 +263,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// https
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"0706.0001v1"
@@ -268,8 +278,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// other domains
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"0706.0001v1"
@@ -293,8 +301,6 @@ name|void
 name|constructCorrectURLForEprint
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"http://arxiv.org/abs/0706.0001v1"

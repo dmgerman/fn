@@ -18,17 +18,59 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Test
 import|;
 end_import
 
 begin_import
-import|import
+import|import static
 name|org
 operator|.
 name|junit
 operator|.
-name|Test
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
+operator|.
+name|assertFalse
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
+operator|.
+name|assertTrue
 import|;
 end_import
 
@@ -49,8 +91,6 @@ throws|throws
 name|Exception
 block|{
 comment|// empty text
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|""
@@ -63,8 +103,6 @@ literal|""
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|" "
@@ -78,8 +116,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// no URL
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"this is no url!"
@@ -93,8 +129,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// no Google search URL
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"http://dl.acm.org/citation.cfm?id=321811"
@@ -108,8 +142,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// malformed Google URL
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"https://www.google.de/urlâ¥"
@@ -123,8 +155,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// no queries
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"https://www.google.de/url"
@@ -137,8 +167,6 @@ literal|"https://www.google.de/url"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"https://www.google.de/url?"
@@ -152,8 +180,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// no multiple queries
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"https://www.google.de/url?key=value"
@@ -167,8 +193,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// no key values
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"https://www.google.de/url?key"
@@ -181,8 +205,6 @@ literal|"https://www.google.de/url?key"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"https://www.google.de/url?url"
@@ -195,8 +217,6 @@ literal|"https://www.google.de/url?url"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"https://www.google.de/url?key="
@@ -210,8 +230,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// no url param
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"https://www.google.de/url?key=value&key2=value2"
@@ -225,8 +243,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// no url param value
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"https://www.google.de/url?url="
@@ -240,8 +256,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// url param value no URL
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"https://www.google.de/url?url=this+is+no+url"
@@ -255,8 +269,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Http
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"http://moz.com/ugc/the-ultimate-guide-to-the-google-search-parameters"
@@ -270,8 +282,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Https
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"https://moz.com/ugc/the-ultimate-guide-to-the-google-search-parameters"
@@ -285,8 +295,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// root domain
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"https://moz.com/ugc/the-ultimate-guide-to-the-google-search-parameters"
@@ -300,8 +308,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// foreign domain
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"https://moz.com/ugc/the-ultimate-guide-to-the-google-search-parameters"
@@ -315,8 +321,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// foreign domain co.uk
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"https://moz.com/ugc/the-ultimate-guide-to-the-google-search-parameters"
@@ -330,8 +334,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// accept ftp results
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"ftp://moz.com/ugc/the-ultimate-guide-to-the-google-search-parameters"
@@ -353,8 +355,6 @@ name|void
 name|isURLshouldAcceptValidURL
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|URLUtil
@@ -365,8 +365,6 @@ literal|"http://www.google.com"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|URLUtil
@@ -386,8 +384,6 @@ name|void
 name|isURLshouldRejectInvalidURL
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertFalse
 argument_list|(
 name|URLUtil
@@ -398,8 +394,6 @@ literal|"www.google.com"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertFalse
 argument_list|(
 name|URLUtil

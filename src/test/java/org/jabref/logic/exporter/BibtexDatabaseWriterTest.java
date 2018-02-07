@@ -498,7 +498,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Before
+name|jupiter
+operator|.
+name|api
+operator|.
+name|BeforeEach
 import|;
 end_import
 
@@ -507,6 +511,10 @@ import|import
 name|org
 operator|.
 name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
 operator|.
 name|Test
 import|;
@@ -528,9 +536,29 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
 operator|.
 name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
+operator|.
+name|assertThrows
 import|;
 end_import
 
@@ -582,6 +610,7 @@ name|importFormatPreferences
 decl_stmt|;
 DECL|field|fileMonitor
 specifier|private
+specifier|final
 name|FileUpdateMonitor
 name|fileMonitor
 init|=
@@ -590,7 +619,7 @@ name|DummyFileUpdateMonitor
 argument_list|()
 decl_stmt|;
 annotation|@
-name|Before
+name|BeforeEach
 DECL|method|setUp ()
 specifier|public
 name|void
@@ -655,13 +684,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-argument_list|(
-name|expected
-operator|=
-name|NullPointerException
-operator|.
-name|class
-argument_list|)
 DECL|method|writeWithNullContextThrowsException ()
 specifier|public
 name|void
@@ -670,6 +692,14 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|assertThrows
+argument_list|(
+name|NullPointerException
+operator|.
+name|class
+argument_list|,
+parameter_list|()
+lambda|->
 name|databaseWriter
 operator|.
 name|savePartOfDatabase
@@ -685,17 +715,9 @@ operator|new
 name|SavePreferences
 argument_list|()
 argument_list|)
+argument_list|)
 expr_stmt|;
 block|}
-annotation|@
-name|Test
-argument_list|(
-name|expected
-operator|=
-name|NullPointerException
-operator|.
-name|class
-argument_list|)
 DECL|method|writeWithNullEntriesThrowsException ()
 specifier|public
 name|void
@@ -704,6 +726,14 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|assertThrows
+argument_list|(
+name|NullPointerException
+operator|.
+name|class
+argument_list|,
+parameter_list|()
+lambda|->
 name|databaseWriter
 operator|.
 name|savePartOfDatabase
@@ -716,17 +746,9 @@ operator|new
 name|SavePreferences
 argument_list|()
 argument_list|)
+argument_list|)
 expr_stmt|;
 block|}
-annotation|@
-name|Test
-argument_list|(
-name|expected
-operator|=
-name|NullPointerException
-operator|.
-name|class
-argument_list|)
 DECL|method|writeWithNullPreferencesThrowsException ()
 specifier|public
 name|void
@@ -735,6 +757,14 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|assertThrows
+argument_list|(
+name|NullPointerException
+operator|.
+name|class
+argument_list|,
+parameter_list|()
+lambda|->
 name|databaseWriter
 operator|.
 name|savePartOfDatabase
@@ -747,6 +777,7 @@ name|emptyList
 argument_list|()
 argument_list|,
 literal|null
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

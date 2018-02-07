@@ -334,6 +334,7 @@ name|secondPackage
 decl_stmt|;
 DECL|field|exceptions
 specifier|private
+specifier|final
 name|Map
 argument_list|<
 name|String

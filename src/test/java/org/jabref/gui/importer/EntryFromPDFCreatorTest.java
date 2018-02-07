@@ -102,7 +102,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|BeforeEach
 import|;
 end_import
 
@@ -112,7 +116,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Before
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Disabled
 import|;
 end_import
 
@@ -122,31 +130,59 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
+name|jupiter
 operator|.
-name|junit
+name|api
 operator|.
 name|Test
 import|;
 end_import
 
 begin_import
-import|import
+import|import static
 name|org
 operator|.
 name|junit
 operator|.
-name|experimental
+name|jupiter
 operator|.
-name|categories
+name|api
 operator|.
-name|Category
+name|Assertions
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
+operator|.
+name|assertFalse
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
+operator|.
+name|assertTrue
 import|;
 end_import
 
@@ -164,12 +200,7 @@ end_import
 
 begin_class
 annotation|@
-name|Category
-argument_list|(
 name|GUITest
-operator|.
-name|class
-argument_list|)
 DECL|class|EntryFromPDFCreatorTest
 specifier|public
 class|class
@@ -181,7 +212,7 @@ name|EntryFromPDFCreator
 name|entryCreator
 decl_stmt|;
 annotation|@
-name|Before
+name|BeforeEach
 DECL|method|setUp ()
 specifier|public
 name|void
@@ -217,8 +248,6 @@ name|void
 name|testPDFFileFilter
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|entryCreator
@@ -233,8 +262,6 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|entryCreator
@@ -249,8 +276,6 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertFalse
 argument_list|(
 name|entryCreator
@@ -291,8 +316,6 @@ argument_list|,
 literal|false
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertFalse
 argument_list|(
 name|entry
@@ -305,7 +328,7 @@ block|}
 annotation|@
 name|Test
 annotation|@
-name|Ignore
+name|Disabled
 comment|//Can't mock basepanel and maintable
 DECL|method|testCreationOfEntryNotInDatabase ()
 specifier|public
@@ -330,8 +353,6 @@ argument_list|,
 literal|false
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|entry
@@ -340,8 +361,6 @@ name|isPresent
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|entry
@@ -363,8 +382,6 @@ literal|":PDF"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional

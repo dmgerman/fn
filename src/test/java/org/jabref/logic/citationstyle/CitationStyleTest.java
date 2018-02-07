@@ -32,17 +32,43 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Test
 import|;
 end_import
 
 begin_import
-import|import
+import|import static
 name|org
 operator|.
 name|junit
 operator|.
-name|Test
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
+operator|.
+name|assertNotNull
 import|;
 end_import
 
@@ -62,8 +88,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|Assert
-operator|.
 name|assertNotNull
 argument_list|(
 name|CitationStyle
@@ -113,8 +137,6 @@ literal|"<i>BibTeX Journal</i>, vol. 34, no. 3, pp. 45â67, Jul. 2016.</div>
 operator|+
 literal|"</div>\n"
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|expected

@@ -186,51 +186,7 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Test
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|runner
-operator|.
-name|RunWith
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|mockito
-operator|.
-name|Mock
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|mockito
-operator|.
-name|runners
-operator|.
-name|MockitoJUnitRunner
 import|;
 end_import
 
@@ -274,6 +230,66 @@ begin_import
 import|import static
 name|org
 operator|.
+name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
+operator|.
+name|assertNotNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|mockito
+operator|.
+name|Mockito
+operator|.
+name|mock
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
 name|mockito
 operator|.
 name|Mockito
@@ -283,25 +299,32 @@ import|;
 end_import
 
 begin_class
-annotation|@
-name|RunWith
-argument_list|(
-name|MockitoJUnitRunner
-operator|.
-name|class
-argument_list|)
 DECL|class|XMPSchemaBibtexTest
 specifier|public
 class|class
 name|XMPSchemaBibtexTest
 block|{
-annotation|@
-name|Mock
 DECL|field|prefs
 specifier|private
 name|ImportFormatPreferences
 name|prefs
 decl_stmt|;
+DECL|method|setUp ()
+specifier|public
+name|void
+name|setUp
+parameter_list|()
+block|{
+name|prefs
+operator|=
+name|mock
+argument_list|(
+name|ImportFormatPreferences
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|assertEqualsBibtexEntry (BibEntry e, BibEntry x)
 specifier|public
 name|void
@@ -314,22 +337,16 @@ name|BibEntry
 name|x
 parameter_list|)
 block|{
-name|Assert
-operator|.
 name|assertNotNull
 argument_list|(
 name|e
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertNotNull
 argument_list|(
 name|x
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|e
@@ -343,8 +360,6 @@ name|getCiteKeyOptional
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|e
@@ -358,8 +373,6 @@ name|getType
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|e
@@ -390,8 +403,6 @@ name|getFieldNames
 argument_list|()
 control|)
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|e
@@ -437,8 +448,6 @@ argument_list|(
 name|xmp
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertNotNull
 argument_list|(
 name|bibtex
@@ -447,8 +456,6 @@ name|getElement
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"rdf:Description"
@@ -513,8 +520,6 @@ argument_list|,
 literal|"bibtex"
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|e
@@ -525,8 +530,6 @@ name|getElement
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"rdf:Description"
@@ -594,8 +597,6 @@ argument_list|(
 literal|"bibtex:author"
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -616,8 +617,6 @@ argument_list|(
 literal|"rdf:li"
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|2
@@ -628,8 +627,6 @@ name|getLength
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Tom DeMarco"
@@ -650,8 +647,6 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Kent Beck"
@@ -685,8 +680,6 @@ argument_list|(
 literal|"author"
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|2
@@ -697,8 +690,6 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Tom DeMarco"
@@ -711,8 +702,6 @@ literal|0
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Kent Beck"
@@ -769,8 +758,6 @@ operator|.
 name|getElement
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"The advanced Flux-Compensation for Delawney-Separation"
@@ -783,8 +770,6 @@ literal|"bibtex:title"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"The advanced Flux-Compensation for Delawney-Separation"
@@ -813,8 +798,6 @@ operator|.
 name|getElement
 argument_list|()
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"The advanced Flux-Correlation for Delawney-Separation"
@@ -827,8 +810,6 @@ literal|"bibtex:title"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"The advanced Flux-Correlation for Delawney-Separation"
@@ -850,8 +831,6 @@ argument_list|,
 literal|"   The abstract\n can go \n \n on several \n lines with \n many \n\n empty ones in \n between."
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"   The abstract\n can go \n \n on several \n lines with \n many \n\n empty ones in \n between."
@@ -923,8 +902,6 @@ argument_list|(
 literal|"author"
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|2
@@ -935,8 +912,6 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|l
@@ -964,8 +939,6 @@ literal|"Tom DeMarco"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|l
@@ -1017,8 +990,6 @@ argument_list|(
 literal|"author"
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -1029,8 +1000,6 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|l
@@ -1071,8 +1040,6 @@ argument_list|(
 literal|"author"
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -1083,8 +1050,6 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|l
@@ -1125,8 +1090,6 @@ argument_list|(
 literal|"author"
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|2
@@ -1137,8 +1100,6 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|l
@@ -1154,8 +1115,6 @@ literal|"Tom DeMarco"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|l
@@ -1195,8 +1154,6 @@ argument_list|(
 literal|"author"
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|0
@@ -1266,8 +1223,6 @@ argument_list|(
 literal|"author"
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|2
@@ -1278,8 +1233,6 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Tom DeMarco"
@@ -1292,8 +1245,6 @@ literal|0
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Kent Beck"
@@ -1330,8 +1281,6 @@ argument_list|(
 literal|"author"
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -1342,8 +1291,6 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|l
@@ -1384,8 +1331,6 @@ argument_list|(
 literal|"author"
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -1396,8 +1341,6 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|l
@@ -1438,8 +1381,6 @@ argument_list|(
 literal|"author"
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|2
@@ -1450,8 +1391,6 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|l
@@ -1467,8 +1406,6 @@ literal|"Kent Beck"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|l
@@ -1508,8 +1445,6 @@ argument_list|(
 literal|"author"
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|0
@@ -1609,8 +1544,6 @@ argument_list|,
 literal|"bibtex"
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|5
@@ -1621,8 +1554,6 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|s
@@ -1633,8 +1564,6 @@ literal|"title"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|s
@@ -1645,8 +1574,6 @@ literal|"author"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"BlaBla Ta Ta Hello World"
@@ -1659,8 +1586,6 @@ literal|"title"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"BlaBla Ta Ta\nHello World"
@@ -1673,8 +1598,6 @@ literal|"abstract"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"BlaBla Ta Ta\nHello World"
@@ -1687,8 +1610,6 @@ literal|"review"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"BlaBla Ta Ta\nHello World"
@@ -1701,8 +1622,6 @@ literal|"note"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Mickey Mouse and James Bond"
@@ -1850,8 +1769,6 @@ argument_list|)
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Beach sand convolution by surf-wave optimzation"

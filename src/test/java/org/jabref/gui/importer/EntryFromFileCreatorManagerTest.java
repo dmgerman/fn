@@ -204,26 +204,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|Before
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Ignore
 import|;
 end_import
@@ -234,21 +214,91 @@ name|org
 operator|.
 name|junit
 operator|.
+name|jupiter
+operator|.
+name|api
+operator|.
 name|Test
 import|;
 end_import
 
 begin_import
-import|import
+import|import static
 name|org
 operator|.
 name|junit
 operator|.
-name|experimental
+name|jupiter
 operator|.
-name|categories
+name|api
 operator|.
-name|Category
+name|Assertions
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
+operator|.
+name|assertFalse
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
+operator|.
+name|assertNotNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
+operator|.
+name|assertNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
+operator|.
+name|assertTrue
 import|;
 end_import
 
@@ -266,26 +316,12 @@ end_import
 
 begin_class
 annotation|@
-name|Category
-argument_list|(
 name|GUITest
-operator|.
-name|class
-argument_list|)
 DECL|class|EntryFromFileCreatorManagerTest
 specifier|public
 class|class
 name|EntryFromFileCreatorManagerTest
 block|{
-comment|// Needed to initialize ExternalFileTypes
-annotation|@
-name|Before
-DECL|method|setUp ()
-specifier|public
-name|void
-name|setUp
-parameter_list|()
-block|{      }
 annotation|@
 name|Test
 DECL|method|testGetCreator ()
@@ -313,8 +349,6 @@ operator|.
 name|NOT_EXISTING_PDF
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertNull
 argument_list|(
 name|creator
@@ -331,15 +365,11 @@ operator|.
 name|FILE_IN_DATABASE
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertNotNull
 argument_list|(
 name|creator
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|creator
@@ -479,8 +509,6 @@ literal|true
 argument_list|)
 decl_stmt|;
 comment|/**              * One file doesn't exist, so adding it as an entry should lead to an error message.              */
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -572,15 +600,11 @@ literal|true
 expr_stmt|;
 block|}
 block|}
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|file1Found
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertFalse
 argument_list|(
 name|file2Found

@@ -20,7 +20,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|BeforeEach
 import|;
 end_import
 
@@ -30,17 +34,27 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Before
-import|;
-end_import
-
-begin_import
-import|import
-name|org
+name|jupiter
 operator|.
-name|junit
+name|api
 operator|.
 name|Test
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
+operator|.
+name|assertEquals
 import|;
 end_import
 
@@ -60,7 +74,7 @@ name|NormalizeDateFormatter
 name|formatter
 decl_stmt|;
 annotation|@
-name|Before
+name|BeforeEach
 DECL|method|setUp ()
 specifier|public
 name|void
@@ -82,8 +96,6 @@ name|void
 name|formatDateYYYYMM0D
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"2015-11-08"
@@ -105,8 +117,6 @@ name|void
 name|formatDateYYYYM0D
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"2015-01-08"
@@ -128,8 +138,6 @@ name|void
 name|formatDateYYYYMD
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"2015-01-08"
@@ -151,8 +159,6 @@ name|void
 name|formatDateYYYYMM
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"2015-11"
@@ -174,8 +180,6 @@ name|void
 name|formatDateYYYYM
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"2015-01"
@@ -197,8 +201,6 @@ name|void
 name|formatDateMMYY
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"2015-11"
@@ -220,8 +222,6 @@ name|void
 name|formatDateMYY
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"2015-01"
@@ -243,8 +243,6 @@ name|void
 name|formatDate0MYY
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"2015-01"
@@ -266,8 +264,6 @@ name|void
 name|formatDateMMYYYY
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"2015-11"
@@ -289,8 +285,6 @@ name|void
 name|formatDateMYYYY
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"2015-01"
@@ -312,8 +306,6 @@ name|void
 name|formatDate0MYYYY
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"2015-01"
@@ -335,8 +327,6 @@ name|void
 name|formatDateMMMDDCommaYYYY
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"2015-11-08"
@@ -358,8 +348,6 @@ name|void
 name|formatDateMMMDCommaYYYY
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"2015-11-08"
@@ -381,8 +369,6 @@ name|void
 name|formatDateMMMCommaYYYY
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"2015-11"
@@ -404,8 +390,6 @@ name|void
 name|formatDate0DdotMMdotYYYY
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"2015-11-08"
@@ -427,8 +411,6 @@ name|void
 name|formatDateDdotMMdotYYYY
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"2015-11-08"
@@ -450,8 +432,6 @@ name|void
 name|formatDateDDdotMMdotYYYY
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"2015-11-15"
@@ -473,8 +453,6 @@ name|void
 name|formatDate0Ddot0MdotYYYY
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"2015-01-08"
@@ -496,8 +474,6 @@ name|void
 name|formatDateDdot0MdotYYYY
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"2015-01-08"
@@ -519,8 +495,6 @@ name|void
 name|formatDateDDdot0MdotYYYY
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"2015-01-15"
@@ -542,8 +516,6 @@ name|void
 name|formatDate0DdotMdotYYYY
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"2015-01-08"
@@ -565,8 +537,6 @@ name|void
 name|formatDateDdotMdotYYYY
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"2015-01-08"
@@ -588,8 +558,6 @@ name|void
 name|formatDateDDdotMdotYYYY
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"2015-01-15"
@@ -611,8 +579,6 @@ name|void
 name|formatExample
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"2003-11-29"
