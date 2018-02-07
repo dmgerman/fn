@@ -1492,7 +1492,10 @@ operator|.
 name|getName
 argument_list|()
 argument_list|,
-literal|""
+name|fileType
+operator|.
+name|getExtension
+argument_list|()
 argument_list|,
 literal|""
 argument_list|,
