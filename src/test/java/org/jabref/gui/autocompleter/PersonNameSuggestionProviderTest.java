@@ -572,6 +572,8 @@ name|result
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|completeNullThrowsException ()
 specifier|public
 name|void

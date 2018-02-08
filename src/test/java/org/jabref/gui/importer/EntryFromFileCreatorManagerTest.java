@@ -204,7 +204,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Disabled
 import|;
 end_import
 
@@ -386,7 +390,7 @@ block|}
 annotation|@
 name|Test
 annotation|@
-name|Ignore
+name|Disabled
 DECL|method|testAddEntrysFromFiles ()
 specifier|public
 name|void
