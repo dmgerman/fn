@@ -186,6 +186,24 @@ name|org
 operator|.
 name|junit
 operator|.
+name|jupiter
+operator|.
+name|api
+operator|.
+name|BeforeEach
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
+operator|.
 name|Test
 import|;
 end_import
@@ -309,10 +327,12 @@ specifier|private
 name|ImportFormatPreferences
 name|prefs
 decl_stmt|;
-DECL|method|setUp ()
+annotation|@
+name|BeforeEach
+DECL|method|setup ()
 specifier|public
 name|void
-name|setUp
+name|setup
 parameter_list|()
 block|{
 name|prefs

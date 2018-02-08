@@ -108,17 +108,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Before
-import|;
-end_import
-
-begin_import
-import|import
-name|org
+name|jupiter
 operator|.
-name|junit
+name|api
 operator|.
-name|Test
+name|BeforeEach
 import|;
 end_import
 
@@ -133,6 +127,20 @@ operator|.
 name|api
 operator|.
 name|Disabled
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Test
 import|;
 end_import
 
@@ -269,7 +277,7 @@ name|Charset
 name|encoding
 decl_stmt|;
 annotation|@
-name|Before
+name|BeforeEach
 DECL|method|setUp ()
 specifier|public
 name|void

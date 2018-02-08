@@ -62,7 +62,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Test
+name|jupiter
+operator|.
+name|api
+operator|.
+name|BeforeEach
 import|;
 end_import
 
@@ -76,7 +80,7 @@ name|jupiter
 operator|.
 name|api
 operator|.
-name|BeforeEach
+name|Test
 import|;
 end_import
 
@@ -558,15 +562,6 @@ name|result
 argument_list|)
 expr_stmt|;
 block|}
-annotation|@
-name|Test
-argument_list|(
-name|expected
-operator|=
-name|NullPointerException
-operator|.
-name|class
-argument_list|)
 DECL|method|completeNullThrowsException ()
 specifier|public
 name|void
@@ -596,15 +591,22 @@ argument_list|(
 name|entry
 argument_list|)
 expr_stmt|;
+name|assertThrows
+argument_list|(
+name|NullPointerException
+operator|.
+name|class
+argument_list|,
+parameter_list|()
+lambda|->
 name|autoCompleter
 operator|.
 name|call
 argument_list|(
 name|getRequest
 argument_list|(
-operator|(
 literal|null
-operator|)
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
