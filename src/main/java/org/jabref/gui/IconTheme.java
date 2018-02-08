@@ -2101,6 +2101,22 @@ operator|.
 name|ALL_ENTRIES_GROUP_DEFAULT_ICON
 argument_list|)
 operator|,
+DECL|enumConstant|IMPORT_EXPORT
+name|IMPORT_EXPORT
+argument_list|(
+name|MaterialDesignIcon
+operator|.
+name|SWAP_VERTICAL
+argument_list|)
+operator|,
+DECL|enumConstant|CLOSE_JABREF
+name|CLOSE_JABREF
+argument_list|(
+name|MaterialDesignIcon
+operator|.
+name|GLASSDOOR
+argument_list|)
+operator|,
 comment|// STILL MISSING:
 DECL|enumConstant|GROUP_REGULAR
 name|GROUP_REGULAR

@@ -264,41 +264,34 @@ name|JabRefPreferences
 import|;
 end_import
 
-begin_import
-import|import
-name|de
-operator|.
-name|saxsys
-operator|.
-name|mvvmfx
-operator|.
-name|utils
-operator|.
-name|commands
-operator|.
-name|CommandBase
-import|;
-end_import
+begin_comment
+comment|/**  * Perform import operation  */
+end_comment
 
 begin_class
-DECL|class|ImportFormats
+DECL|class|ImportCommand
 specifier|public
 class|class
-name|ImportFormats
+name|ImportCommand
 extends|extends
 name|SimpleCommand
 block|{
-DECL|method|ImportFormats ()
+DECL|field|frame
+specifier|private
+specifier|final
+name|JabRefFrame
+name|frame
+decl_stmt|;
+DECL|field|openInNew
+specifier|private
+specifier|final
+name|boolean
+name|openInNew
+decl_stmt|;
+comment|/**      * @param openInNew Indicate whether the entries should import into a new database or into the currently open one.      */
+DECL|method|ImportCommand (JabRefFrame frame, boolean openInNew)
 specifier|public
-name|ImportFormats
-parameter_list|()
-block|{     }
-comment|/**      * Create an AbstractAction for performing an Import operation.      * @param frame The JabRefFrame of this JabRef instance.      * @param openInNew Indicate whether the action should open into a new database or      *  into the currently open one.      * @return The action.      */
-DECL|method|getImportAction (JabRefFrame frame, boolean openInNew)
-specifier|public
-specifier|static
-name|CommandBase
-name|getImportAction
+name|ImportCommand
 parameter_list|(
 name|JabRefFrame
 name|frame
@@ -307,13 +300,22 @@ name|boolean
 name|openInNew
 parameter_list|)
 block|{
-return|return
-operator|new
-name|SimpleCommand
-argument_list|()
-block|{
+name|this
+operator|.
+name|frame
+operator|=
+name|frame
+expr_stmt|;
+name|this
+operator|.
+name|openInNew
+operator|=
+name|openInNew
+expr_stmt|;
+block|}
 annotation|@
 name|Override
+DECL|method|execute ()
 specifier|public
 name|void
 name|execute
@@ -448,6 +450,7 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|doImport (Path file, SortedSet<Importer> importers, FileChooser.ExtensionFilter selectedExtensionFilter)
 specifier|private
 name|void
 name|doImport
@@ -582,9 +585,6 @@ name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
-block|}
-return|;
 block|}
 block|}
 end_class

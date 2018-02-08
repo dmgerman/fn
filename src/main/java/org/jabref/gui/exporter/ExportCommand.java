@@ -16,18 +16,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|awt
-operator|.
-name|event
-operator|.
-name|ActionEvent
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|nio
 operator|.
 name|file
@@ -67,26 +55,6 @@ operator|.
 name|stream
 operator|.
 name|Collectors
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|AbstractAction
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|Action
 import|;
 end_import
 
@@ -166,7 +134,7 @@ name|gui
 operator|.
 name|actions
 operator|.
-name|MnemonicAwareAction
+name|SimpleCommand
 import|;
 end_import
 
@@ -344,11 +312,17 @@ name|LoggerFactory
 import|;
 end_import
 
+begin_comment
+comment|/**  * Performs an export action  */
+end_comment
+
 begin_class
-DECL|class|ExportAction
+DECL|class|ExportCommand
 specifier|public
 class|class
-name|ExportAction
+name|ExportCommand
+extends|extends
+name|SimpleCommand
 block|{
 DECL|field|LOGGER
 specifier|private
@@ -361,47 +335,27 @@ name|LoggerFactory
 operator|.
 name|getLogger
 argument_list|(
-name|ExportAction
+name|ExportCommand
 operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|method|ExportAction ()
-specifier|private
-name|ExportAction
-parameter_list|()
-block|{     }
-comment|/**      * Create an AbstractAction for performing an export operation.      *      * @param frame      *            The JabRefFrame of this JabRef instance.      * @param selectedOnly      *            true indicates that only selected entries should be exported,      *            false indicates that all entries should be exported.      * @return The action.      */
-DECL|method|getExportAction (JabRefFrame frame, boolean selectedOnly)
-specifier|public
-specifier|static
-name|AbstractAction
-name|getExportAction
-parameter_list|(
-name|JabRefFrame
-name|frame
-parameter_list|,
-name|boolean
-name|selectedOnly
-parameter_list|)
-block|{
-class|class
-name|InternalExportAction
-extends|extends
-name|MnemonicAwareAction
-block|{
+DECL|field|frame
 specifier|private
 specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
+DECL|field|selectedOnly
 specifier|private
 specifier|final
 name|boolean
 name|selectedOnly
 decl_stmt|;
+comment|/**      * @param selectedOnly true if only the selected entries should be exported, otherwise all entries are exported      */
+DECL|method|ExportCommand (JabRefFrame frame, boolean selectedOnly)
 specifier|public
-name|InternalExportAction
+name|ExportCommand
 parameter_list|(
 name|JabRefFrame
 name|frame
@@ -421,40 +375,15 @@ operator|.
 name|selectedOnly
 operator|=
 name|selectedOnly
-expr_stmt|;
-name|putValue
-argument_list|(
-name|Action
-operator|.
-name|NAME
-argument_list|,
-name|selectedOnly
-condition|?
-name|Localization
-operator|.
-name|menuTitle
-argument_list|(
-literal|"Export selected entries"
-argument_list|)
-else|:
-name|Localization
-operator|.
-name|menuTitle
-argument_list|(
-literal|"Export"
-argument_list|)
-argument_list|)
 expr_stmt|;
 block|}
 annotation|@
 name|Override
+DECL|method|execute ()
 specifier|public
 name|void
-name|actionPerformed
-parameter_list|(
-name|ActionEvent
-name|e
-parameter_list|)
+name|execute
+parameter_list|()
 block|{
 name|Globals
 operator|.
@@ -476,8 +405,6 @@ expr_stmt|;
 name|FileDialogConfiguration
 name|fileDialogConfiguration
 init|=
-name|ExportAction
-operator|.
 name|createExportFileChooser
 argument_list|(
 name|Globals
@@ -540,6 +467,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|export (Path file, FileChooser.ExtensionFilter selectedExtensionFilter, List<Exporter> exporters)
 specifier|private
 name|void
 name|export
@@ -1001,17 +929,6 @@ operator|.
 name|update
 argument_list|()
 expr_stmt|;
-block|}
-block|}
-return|return
-operator|new
-name|InternalExportAction
-argument_list|(
-name|frame
-argument_list|,
-name|selectedOnly
-argument_list|)
-return|;
 block|}
 DECL|method|createExportFileChooser (ExporterFactory exportFactory, String currentDir)
 specifier|private

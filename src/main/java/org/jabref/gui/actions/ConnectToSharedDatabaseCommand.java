@@ -14,28 +14,6 @@ end_package
 
 begin_import
 import|import
-name|java
-operator|.
-name|awt
-operator|.
-name|event
-operator|.
-name|ActionEvent
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|Action
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|jabref
@@ -60,31 +38,17 @@ name|ConnectToSharedDatabaseDialog
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
-name|l10n
-operator|.
-name|Localization
-import|;
-end_import
-
 begin_comment
-comment|/**  * The action concerned with opening a shared database.  */
+comment|/**  * Opens a shared database.  */
 end_comment
 
 begin_class
-DECL|class|ConnectToSharedDatabaseAction
+DECL|class|ConnectToSharedDatabaseCommand
 specifier|public
 class|class
-name|ConnectToSharedDatabaseAction
+name|ConnectToSharedDatabaseCommand
 extends|extends
-name|MnemonicAwareAction
+name|SimpleCommand
 block|{
 DECL|field|jabRefFrame
 specifier|private
@@ -92,62 +56,28 @@ specifier|final
 name|JabRefFrame
 name|jabRefFrame
 decl_stmt|;
-DECL|method|ConnectToSharedDatabaseAction (JabRefFrame jabRefFrame)
+DECL|method|ConnectToSharedDatabaseCommand (JabRefFrame jabRefFrame)
 specifier|public
-name|ConnectToSharedDatabaseAction
+name|ConnectToSharedDatabaseCommand
 parameter_list|(
 name|JabRefFrame
 name|jabRefFrame
 parameter_list|)
 block|{
-name|super
-argument_list|()
-expr_stmt|;
 name|this
 operator|.
 name|jabRefFrame
 operator|=
 name|jabRefFrame
 expr_stmt|;
-name|putValue
-argument_list|(
-name|Action
-operator|.
-name|NAME
-argument_list|,
-name|Localization
-operator|.
-name|menuTitle
-argument_list|(
-literal|"Connect to shared database"
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|putValue
-argument_list|(
-name|Action
-operator|.
-name|SHORT_DESCRIPTION
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Connect to shared database"
-argument_list|)
-argument_list|)
-expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|actionPerformed (ActionEvent e)
+DECL|method|execute ()
 specifier|public
 name|void
-name|actionPerformed
-parameter_list|(
-name|ActionEvent
-name|e
-parameter_list|)
+name|execute
+parameter_list|()
 block|{
 name|ConnectToSharedDatabaseDialog
 name|connectToSharedDatabaseDialog
