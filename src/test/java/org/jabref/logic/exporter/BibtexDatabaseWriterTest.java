@@ -718,6 +718,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|writeWithNullEntriesThrowsException ()
 specifier|public
 name|void
@@ -749,6 +751,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|writeWithNullPreferencesThrowsException ()
 specifier|public
 name|void

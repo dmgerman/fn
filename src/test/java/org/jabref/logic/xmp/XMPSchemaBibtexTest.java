@@ -329,10 +329,10 @@ name|prefs
 decl_stmt|;
 annotation|@
 name|BeforeEach
-DECL|method|setup ()
+DECL|method|setUp ()
 specifier|public
 name|void
-name|setup
+name|setUp
 parameter_list|()
 block|{
 name|prefs

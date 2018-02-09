@@ -478,6 +478,8 @@ name|parsed
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|fromStringThrowsParseExceptionForNotEscapedGroupName ()
 specifier|public
 name|void
@@ -905,6 +907,8 @@ name|parsed
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|fromStringUnknownGroupThrowsException ()
 specifier|public
 name|void

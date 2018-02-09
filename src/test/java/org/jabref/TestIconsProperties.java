@@ -267,8 +267,6 @@ operator|.
 name|isEmpty
 argument_list|()
 argument_list|,
-parameter_list|()
-lambda|->
 literal|"There must be loaded properties after loading "
 operator|+
 name|iconsPropertiesPath
@@ -331,8 +329,6 @@ name|value
 argument_list|)
 argument_list|)
 argument_list|,
-parameter_list|()
-lambda|->
 literal|"Referenced image ("
 operator|+
 name|name

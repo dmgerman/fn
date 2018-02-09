@@ -126,20 +126,6 @@ name|jupiter
 operator|.
 name|api
 operator|.
-name|Disabled
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|jupiter
-operator|.
-name|api
-operator|.
 name|Test
 import|;
 end_import
@@ -317,6 +303,8 @@ operator|.
 name|UTF_8
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|throwNPEWithNullPreferences ()
 specifier|public
 name|void
@@ -350,6 +338,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|throwNPEWithNullLayoutPreferences ()
 specifier|public
 name|void
@@ -388,6 +378,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|throwNPEWithNullCharset ()
 specifier|public
 name|void
@@ -896,11 +888,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Disabled
-argument_list|(
-literal|"This tests the preferences that are mocked away"
-argument_list|)
 DECL|method|testInitalizeWithOneExternalFileRemoveStyleUpdatesPreferences ()
 specifier|public
 name|void
@@ -1026,7 +1013,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-name|assertTrue
+comment|//As the prefs are mocked away, the getExternalStyles still returns the initial one
+name|assertFalse
 argument_list|(
 name|preferences
 operator|.
@@ -1139,6 +1127,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testAddNullStyleThrowsNPE ()
 specifier|public
 name|void
@@ -1333,15 +1323,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Disabled
-argument_list|(
-literal|"This tests the preferences that are mocked away"
-argument_list|)
-DECL|method|testGtDefaultUsedStyleWhenIncorrect ()
+DECL|method|testGetDefaultUsedStyleWhenIncorrect ()
 specifier|public
 name|void
-name|testGtDefaultUsedStyleWhenIncorrect
+name|testGetDefaultUsedStyleWhenIncorrect
 parameter_list|()
 block|{
 name|when
@@ -1394,18 +1379,6 @@ argument_list|,
 name|style
 operator|.
 name|getPath
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-name|StyleLoader
-operator|.
-name|DEFAULT_AUTHORYEAR_STYLE_PATH
-argument_list|,
-name|preferences
-operator|.
-name|getCurrentStyle
 argument_list|()
 argument_list|)
 expr_stmt|;

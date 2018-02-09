@@ -169,8 +169,6 @@ name|lineCount
 operator|<=
 literal|722
 argument_list|,
-parameter_list|()
-lambda|->
 literal|"StringUtil increased in size. "
 operator|+
 literal|"We try to keep this class as small as possible. "
