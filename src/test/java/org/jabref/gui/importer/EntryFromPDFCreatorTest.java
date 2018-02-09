@@ -60,6 +60,20 @@ name|org
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
+name|externalfiletype
+operator|.
+name|ExternalFileTypes
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
 name|logic
 operator|.
 name|importer
@@ -135,6 +149,16 @@ operator|.
 name|api
 operator|.
 name|Test
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|mockito
+operator|.
+name|Answers
 import|;
 end_import
 
@@ -224,7 +248,18 @@ name|entryCreator
 operator|=
 operator|new
 name|EntryFromPDFCreator
-argument_list|()
+argument_list|(
+name|mock
+argument_list|(
+name|ExternalFileTypes
+operator|.
+name|class
+argument_list|,
+name|Answers
+operator|.
+name|RETURNS_DEEP_STUBS
+argument_list|)
+argument_list|)
 expr_stmt|;
 comment|// Needed for PdfImporter - still not enough
 name|JabRefGUI

@@ -172,6 +172,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|rejectEmbeddedEprint ()
 specifier|public
 name|void
@@ -194,6 +196,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|rejectInvalidEprint ()
 specifier|public
 name|void

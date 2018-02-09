@@ -258,26 +258,34 @@ name|EntryFromPDFCreator
 extends|extends
 name|EntryFromFileCreator
 block|{
-DECL|method|EntryFromPDFCreator ()
+DECL|method|EntryFromPDFCreator (ExternalFileTypes externalFileTypes)
 specifier|public
 name|EntryFromPDFCreator
-parameter_list|()
+parameter_list|(
+name|ExternalFileTypes
+name|externalFileTypes
+parameter_list|)
 block|{
 name|super
 argument_list|(
 name|EntryFromPDFCreator
 operator|.
 name|getPDFExternalFileType
-argument_list|()
+argument_list|(
+name|externalFileTypes
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|getPDFExternalFileType ()
+DECL|method|getPDFExternalFileType (ExternalFileTypes externalFileTypes)
 specifier|private
 specifier|static
 name|ExternalFileType
 name|getPDFExternalFileType
-parameter_list|()
+parameter_list|(
+name|ExternalFileTypes
+name|externalFileTypes
+parameter_list|)
 block|{
 name|Optional
 argument_list|<
@@ -285,10 +293,7 @@ name|ExternalFileType
 argument_list|>
 name|pdfFileType
 init|=
-name|ExternalFileTypes
-operator|.
-name|getInstance
-argument_list|()
+name|externalFileTypes
 operator|.
 name|getExternalFileTypeByExt
 argument_list|(
