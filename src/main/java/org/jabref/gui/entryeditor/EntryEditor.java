@@ -747,7 +747,7 @@ name|void
 name|setupKeyBindings
 parameter_list|()
 block|{
-name|tabbed
+name|this
 operator|.
 name|addEventHandler
 argument_list|(
