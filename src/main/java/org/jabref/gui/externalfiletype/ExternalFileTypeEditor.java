@@ -576,7 +576,7 @@ name|EditListener
 argument_list|()
 decl_stmt|;
 DECL|method|ExternalFileTypeEditor (JFrame frame)
-specifier|private
+specifier|public
 name|ExternalFileTypeEditor
 parameter_list|(
 name|JFrame
