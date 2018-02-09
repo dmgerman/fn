@@ -761,7 +761,9 @@ name|mainFrame
 operator|=
 operator|new
 name|JabRefFrame
-argument_list|()
+argument_list|(
+name|mainStage
+argument_list|)
 expr_stmt|;
 comment|// Add all bibDatabases databases to the frame:
 name|boolean

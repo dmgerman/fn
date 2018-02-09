@@ -10783,17 +10783,16 @@ operator|::
 name|unregister
 argument_list|)
 expr_stmt|;
-comment|// Check if there is a FileUpdatePanel for this BasePanel being shown. If so,
-comment|// remove it:
+comment|// Check if there is a FileUpdatePanel for this BasePanel being shown. If so remove it:
 if|if
 condition|(
 name|sidePaneManager
 operator|.
-name|hasComponent
+name|isComponentVisible
 argument_list|(
-name|FileUpdatePanel
+name|SidePaneType
 operator|.
-name|class
+name|FILE_UPDATE_NOTIFICATION
 argument_list|)
 condition|)
 block|{
@@ -10807,9 +10806,9 @@ name|sidePaneManager
 operator|.
 name|getComponent
 argument_list|(
-name|FileUpdatePanel
+name|SidePaneType
 operator|.
-name|class
+name|FILE_UPDATE_NOTIFICATION
 argument_list|)
 decl_stmt|;
 if|if
@@ -10824,11 +10823,11 @@ condition|)
 block|{
 name|sidePaneManager
 operator|.
-name|hideComponent
+name|hide
 argument_list|(
-name|FileUpdatePanel
+name|SidePaneType
 operator|.
-name|class
+name|FILE_UPDATE_NOTIFICATION
 argument_list|)
 expr_stmt|;
 block|}
