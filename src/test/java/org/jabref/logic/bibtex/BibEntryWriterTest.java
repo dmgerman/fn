@@ -2410,13 +2410,13 @@ name|actual
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|writeThrowsErrorIfFieldContainsUnbalancedBraces ()
 specifier|public
 name|void
 name|writeThrowsErrorIfFieldContainsUnbalancedBraces
 parameter_list|()
-throws|throws
-name|IOException
 block|{
 name|StringWriter
 name|stringWriter

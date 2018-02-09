@@ -227,6 +227,8 @@ name|class
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|constructorChecksThatClassImplementsCorrectInterface ()
 specifier|public
 name|void

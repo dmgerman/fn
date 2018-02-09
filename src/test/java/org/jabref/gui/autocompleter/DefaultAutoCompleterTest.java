@@ -143,6 +143,8 @@ specifier|private
 name|WordSuggestionProvider
 name|autoCompleter
 decl_stmt|;
+annotation|@
+name|Test
 DECL|method|initAutoCompleterWithNullFieldThrowsException ()
 specifier|public
 name|void

@@ -206,9 +206,9 @@ specifier|public
 class|class
 name|MimeTypeDetectorTest
 block|{
+DECL|field|wireMockRule
 annotation|@
 name|Rule
-DECL|field|wireMockRule
 specifier|public
 name|WireMockRule
 name|wireMockRule
