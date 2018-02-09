@@ -421,11 +421,7 @@ condition|)
 block|{
 return|return;
 block|}
-name|parentFrame
-operator|.
-name|showPreferencesDialog
-argument_list|()
-expr_stmt|;
+comment|//  parentFrame.showPreferencesDialog();
 block|}
 annotation|@
 name|Override
