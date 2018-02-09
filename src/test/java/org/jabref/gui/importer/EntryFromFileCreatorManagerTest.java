@@ -373,6 +373,8 @@ class|class
 name|EntryFromFileCreatorManagerTest
 block|{
 DECL|field|prefs
+specifier|private
+specifier|final
 name|ImportFormatPreferences
 name|prefs
 init|=
@@ -388,6 +390,7 @@ name|RETURNS_DEEP_STUBS
 argument_list|)
 decl_stmt|;
 DECL|field|externalFileTypes
+specifier|private
 name|ExternalFileTypes
 name|externalFileTypes
 decl_stmt|;

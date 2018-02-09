@@ -266,13 +266,6 @@ name|regexInput
 init|=
 literal|"(\" \",\"-\")"
 decl_stmt|;
-name|formatter
-operator|.
-name|setRegex
-argument_list|(
-name|regexInput
-argument_list|)
-expr_stmt|;
 name|assertEquals
 argument_list|(
 literal|"replace-spaces-{not these ones},-these-ones,-and-\\{-these-ones\\}"
