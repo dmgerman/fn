@@ -399,10 +399,10 @@ comment|/**  *  * This action goes through all selected entries in the BasePanel
 end_comment
 
 begin_class
-DECL|class|WriteXMPAction
+DECL|class|WriteXMPActionWorker
 specifier|public
 class|class
-name|WriteXMPAction
+name|WriteXMPActionWorker
 extends|extends
 name|AbstractWorker
 block|{
@@ -458,9 +458,9 @@ specifier|private
 name|int
 name|errors
 decl_stmt|;
-DECL|method|WriteXMPAction (BasePanel panel)
+DECL|method|WriteXMPActionWorker (BasePanel panel)
 specifier|public
-name|WriteXMPAction
+name|WriteXMPActionWorker
 parameter_list|(
 name|BasePanel
 name|panel

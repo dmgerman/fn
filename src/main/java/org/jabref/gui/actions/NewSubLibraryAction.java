@@ -14,28 +14,6 @@ end_package
 
 begin_import
 import|import
-name|java
-operator|.
-name|awt
-operator|.
-name|event
-operator|.
-name|ActionEvent
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|Action
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|jabref
@@ -65,18 +43,6 @@ operator|.
 name|gui
 operator|.
 name|BasePanelPreferences
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|IconTheme
 import|;
 end_import
 
@@ -165,12 +131,12 @@ comment|/**  * The action concerned with generate a new (sub-)database from late
 end_comment
 
 begin_class
-DECL|class|NewSubDatabaseAction
+DECL|class|NewSubLibraryAction
 specifier|public
 class|class
-name|NewSubDatabaseAction
+name|NewSubLibraryAction
 extends|extends
-name|MnemonicAwareAction
+name|SimpleCommand
 block|{
 DECL|field|jabRefFrame
 specifier|private
@@ -178,75 +144,29 @@ specifier|final
 name|JabRefFrame
 name|jabRefFrame
 decl_stmt|;
-DECL|method|NewSubDatabaseAction (JabRefFrame jabRefFrame)
+DECL|method|NewSubLibraryAction (JabRefFrame jabRefFrame)
 specifier|public
-name|NewSubDatabaseAction
+name|NewSubLibraryAction
 parameter_list|(
 name|JabRefFrame
 name|jabRefFrame
 parameter_list|)
 block|{
-name|super
-argument_list|(
-name|IconTheme
-operator|.
-name|JabRefIcons
-operator|.
-name|NEW
-operator|.
-name|getIcon
-argument_list|()
-argument_list|)
-expr_stmt|;
 name|this
 operator|.
 name|jabRefFrame
 operator|=
 name|jabRefFrame
 expr_stmt|;
-name|putValue
-argument_list|(
-name|Action
-operator|.
-name|NAME
-argument_list|,
-name|Localization
-operator|.
-name|menuTitle
-argument_list|(
-literal|"New sublibrary based on AUX file"
-argument_list|)
-operator|+
-literal|"..."
-argument_list|)
-expr_stmt|;
-name|putValue
-argument_list|(
-name|Action
-operator|.
-name|SHORT_DESCRIPTION
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"New BibTeX sublibrary"
-argument_list|)
-argument_list|)
-expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|actionPerformed (ActionEvent e)
+DECL|method|execute ()
 specifier|public
 name|void
-name|actionPerformed
-parameter_list|(
-name|ActionEvent
-name|e
-parameter_list|)
+name|execute
+parameter_list|()
 block|{
-comment|// Create a new, empty, database.
 name|FromAuxDialog
 name|dialog
 init|=

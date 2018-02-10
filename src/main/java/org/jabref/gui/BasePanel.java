@@ -684,7 +684,7 @@ name|gui
 operator|.
 name|externalfiles
 operator|.
-name|WriteXMPAction
+name|WriteXMPActionWorker
 import|;
 end_import
 
@@ -5329,7 +5329,7 @@ operator|.
 name|WRITE_XMP
 argument_list|,
 operator|new
-name|WriteXMPAction
+name|WriteXMPActionWorker
 argument_list|(
 name|this
 argument_list|)

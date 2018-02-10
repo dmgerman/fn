@@ -886,7 +886,7 @@ name|gui
 operator|.
 name|actions
 operator|.
-name|NewSubDatabaseAction
+name|NewSubLibraryAction
 import|;
 end_import
 
@@ -971,6 +971,20 @@ operator|.
 name|actions
 operator|.
 name|SortTabsAction
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|actions
+operator|.
+name|WriteXMPAction
 import|;
 end_import
 
@@ -1904,18 +1918,6 @@ comment|// with a unique command string. This causes the appropriate
 comment|// BasePanel's runCommand() method to be called with that command.
 comment|// Note: GeneralAction's constructor automatically gets translations
 comment|// for the name and message strings.
-DECL|field|newSubDatabaseAction
-specifier|private
-specifier|final
-name|AbstractAction
-name|newSubDatabaseAction
-init|=
-operator|new
-name|NewSubDatabaseAction
-argument_list|(
-name|this
-argument_list|)
-decl_stmt|;
 DECL|field|jabrefWebPageAction
 specifier|private
 specifier|final
@@ -3425,46 +3427,6 @@ name|MAKE_KEY
 operator|.
 name|getIcon
 argument_list|()
-argument_list|)
-decl_stmt|;
-DECL|field|writeXmpAction
-specifier|private
-specifier|final
-name|AbstractAction
-name|writeXmpAction
-init|=
-operator|new
-name|GeneralAction
-argument_list|(
-name|Actions
-operator|.
-name|WRITE_XMP
-argument_list|,
-name|Localization
-operator|.
-name|menuTitle
-argument_list|(
-literal|"Write XMP-metadata to PDFs"
-argument_list|)
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Will write XMP-metadata to the PDFs linked from selected entries."
-argument_list|)
-argument_list|,
-name|Globals
-operator|.
-name|getKeyPrefs
-argument_list|()
-operator|.
-name|getKey
-argument_list|(
-name|KeyBinding
-operator|.
-name|WRITE_XMP
-argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|openFolder
@@ -7322,7 +7284,7 @@ name|createMenuItem
 argument_list|(
 name|ActionsFX
 operator|.
-name|undo
+name|UNDO
 argument_list|,
 operator|new
 name|OldDatabaseCommandWrapper
@@ -7345,7 +7307,7 @@ name|createMenuItem
 argument_list|(
 name|ActionsFX
 operator|.
-name|redo
+name|REDO
 argument_list|,
 operator|new
 name|OldDatabaseCommandWrapper
@@ -7597,7 +7559,7 @@ name|createMenuItem
 argument_list|(
 name|ActionsFX
 operator|.
-name|sendAsEmail
+name|SEND_AS_EMAIL
 argument_list|,
 operator|new
 name|OldDatabaseCommandWrapper
@@ -7635,7 +7597,7 @@ name|createMenuItem
 argument_list|(
 name|ActionsFX
 operator|.
-name|manageKeywords
+name|MANAGE_KEYWORDS
 argument_list|,
 operator|new
 name|ManageKeywordsAction
@@ -7650,7 +7612,7 @@ name|createMenuItem
 argument_list|(
 name|ActionsFX
 operator|.
-name|replaceAll
+name|REPLACE_ALL
 argument_list|,
 operator|new
 name|OldDatabaseCommandWrapper
@@ -7673,12 +7635,51 @@ name|createMenuItem
 argument_list|(
 name|ActionsFX
 operator|.
-name|massSetField
+name|MASS_SET_FIELDS
 argument_list|,
 operator|new
 name|MassSetFieldAction
 argument_list|(
 name|this
+argument_list|)
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|tools
+operator|.
+name|getItems
+argument_list|()
+operator|.
+name|addAll
+argument_list|(
+name|factory
+operator|.
+name|createMenuItem
+argument_list|(
+name|ActionsFX
+operator|.
+name|NEW_SUB_LIBRARY_FROM_AUX
+argument_list|,
+operator|new
+name|NewSubLibraryAction
+argument_list|(
+name|this
+argument_list|)
+argument_list|)
+argument_list|,
+name|factory
+operator|.
+name|createMenuItem
+argument_list|(
+name|ActionsFX
+operator|.
+name|WRITE_XMP
+argument_list|,
+operator|new
+name|WriteXMPAction
+argument_list|(
+name|getCurrentBasePanel
+argument_list|()
 argument_list|)
 argument_list|)
 argument_list|)
@@ -7827,7 +7828,7 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|/* factory.createMenuItem(ActionsFX., new OldDatabaseCommandWrapper(Actions., this, Globals.stateManager)),          search.add(normalSearch);         search.addSeparator();         search.add(new JCheckBoxMenuItem(generalFetcher.getToggleCommand()));         if (prefs.getBoolean(JabRefPreferences.WEB_SEARCH_VISIBLE)) {             sidePaneManager.register(generalFetcher);             sidePaneManager.show(GeneralFetcher.class);         }         mb.add(search);          groups.add(new JCheckBoxMenuItem(groupSidePane.getToggleCommand()));          groups.addSeparator();         groups.add(addToGroup);         groups.add(removeFromGroup);         groups.add(moveToGroup);         mb.add(groups);          view.add(getBackAction());         view.add(getForwardAction());         view.add(focusTable);         view.add(nextTab);         view.add(prevTab);         view.add(sortTabs);         view.addSeparator();         view.add(increaseFontSize);         view.add(decreseFontSize);         view.add(defaultFontSize);         view.addSeparator();         view.add(new JCheckBoxMenuItem(toggleToolbar));         view.add(new JCheckBoxMenuItem(enableToggle(generalFetcher.getToggleCommand())));         view.add(new JCheckBoxMenuItem(groupSidePane.getToggleCommand()));         view.add(new JCheckBoxMenuItem(togglePreview));         view.add(showPdvViewer);         view.add(getNextPreviewStyleAction());         view.add(getPreviousPreviewStyleAction());          mb.add(view);          library.add(newEntryAction);          for (NewEntryAction a : newSpecificEntryAction) {             newSpec.add(a);         }         library.add(newSpec);          library.add(plainTextImport);         library.addSeparator();         library.add(editEntry);         library.add(editPreamble);         library.add(editStrings);         library.addSeparator();         library.add(customizeAction);         library.addSeparator();         library.add(deleteEntry);         library.add(databaseProperties),         newSpec = JabRefFrame.subMenu(Localization.menuTitle("New entry by type..."));         mb.add(library);          quality.add(dupliCheck);         quality.add(mergeEntries);         quality.addSeparator();         quality.add(resolveDuplicateKeys);         quality.add(checkIntegrity);         quality.add(cleanupEntries);         quality.add(massSetField);         quality.add(makeKeyAction);         quality.addSeparator();         quality.add(autoSetFile);         quality.add(findUnlinkedFiles);         quality.add(autoLinkFile);          for (IdFetcher fetcher : WebFetchers.getIdFetchers(Globals.prefs.getImportFormatPreferences())) {             lookupIdentifiers.add(new LookupIdentifierAction(this, fetcher));         }         quality.add(lookupIdentifiers);         quality.add(downloadFullText);         mb.add(quality);          tools.add(newSubDatabaseAction);         tools.add(writeXmpAction);         tools.add(new JCheckBoxMenuItem(openOfficePanel.getToggleCommand()));         tools.add(pushExternalButton.getMenuAction());         tools.addSeparator();         tools.add(openFolder);         tools.add(openFile);         tools.add(openUrl);         tools.add(openConsole);         tools.addSeparator();         file.add(exportLinkedFiles),          tools.add(abbreviateIso);         tools.add(abbreviateMedline);         tools.add(unabbreviate);         mb.add(tools);          options.add(showPrefs);          AbstractAction genFieldsCustomization = new GenFieldsCustomizationAction();         AbstractAction protectTerms = new ProtectedTermsAction();         options.add(genFieldsCustomization);         options.add(customImpAction);         options.add(customExpAction);         options.add(customFileTypesAction);         options.add(manageJournals);         options.add(keyBindingAction);         options.add(protectTerms);         options.add(manageSelectors);         mb.add(options);          help.add(this.help);         help.add(openForumAction);         help.addSeparator();         help.add(errorConsole);         help.addSeparator();         help.add(new SearchForUpdateAction());         JMenu webMenu = JabRefFrame.subMenu(Localization.menuTitle("JabRef resources"));         webMenu.add(jabrefWebPageAction);         webMenu.add(jabrefBlogAction);         webMenu.add(jabrefFacebookAction);         webMenu.add(jabrefTwitterAction);         webMenu.addSeparator();         webMenu.add(forkMeOnGitHubAction);         webMenu.add(developmentVersionAction);         webMenu.add(changeLogAction);         webMenu.addSeparator();         webMenu.add(donationAction);         help.add(webMenu);         help.add(about);         mb.add(help);          createDisabledIconsForMenuEntries(mb);         */
+comment|/*         factory.createMenuItem(ActionsFX., new OldDatabaseCommandWrapper(Actions., this, Globals.stateManager)),          search.add(normalSearch);         search.addSeparator();         search.add(new JCheckBoxMenuItem(generalFetcher.getToggleCommand()));         if (prefs.getBoolean(JabRefPreferences.WEB_SEARCH_VISIBLE)) {             sidePaneManager.register(generalFetcher);             sidePaneManager.show(GeneralFetcher.class);         }         mb.add(search);          groups.add(new JCheckBoxMenuItem(groupSidePane.getToggleCommand()));          groups.addSeparator();         groups.add(addToGroup);         groups.add(removeFromGroup);         groups.add(moveToGroup);         mb.add(groups);          view.add(getBackAction());         view.add(getForwardAction());         view.add(focusTable);         view.add(nextTab);         view.add(prevTab);         view.add(sortTabs);         view.addSeparator();         view.add(increaseFontSize);         view.add(decreseFontSize);         view.add(defaultFontSize);         view.addSeparator();         view.add(new JCheckBoxMenuItem(toggleToolbar));         view.add(new JCheckBoxMenuItem(enableToggle(generalFetcher.getToggleCommand())));         view.add(new JCheckBoxMenuItem(groupSidePane.getToggleCommand()));         view.add(new JCheckBoxMenuItem(togglePreview));         view.add(showPdvViewer);         view.add(getNextPreviewStyleAction());         view.add(getPreviousPreviewStyleAction());          mb.add(view);          library.add(newEntryAction);          for (NewEntryAction a : newSpecificEntryAction) {             newSpec.add(a);         }         library.add(newSpec);          library.add(plainTextImport);         library.addSeparator();         library.add(editEntry);         library.add(editPreamble);         library.add(editStrings);         library.addSeparator();         library.add(customizeAction);         library.addSeparator();         library.add(deleteEntry);         library.add(databaseProperties),         newSpec = JabRefFrame.subMenu(Localization.menuTitle("New entry by type..."));         mb.add(library);          quality.add(dupliCheck);         quality.add(mergeEntries);         quality.addSeparator();         quality.add(resolveDuplicateKeys);         quality.add(checkIntegrity);         quality.add(cleanupEntries);         quality.add(massSetField);         quality.add(makeKeyAction);         quality.addSeparator();         quality.add(autoSetFile);         quality.add(findUnlinkedFiles);         quality.add(autoLinkFile);          for (IdFetcher fetcher : WebFetchers.getIdFetchers(Globals.prefs.getImportFormatPreferences())) {             lookupIdentifiers.add(new LookupIdentifierAction(this, fetcher));         }         quality.add(lookupIdentifiers);         quality.add(downloadFullText);         mb.add(quality);          tools.add(newSubDatabaseAction);         tools.add(writeXmpAction);         tools.add(new JCheckBoxMenuItem(openOfficePanel.getToggleCommand()));         tools.add(pushExternalButton.getMenuAction());         tools.addSeparator();         tools.add(openFolder);         tools.add(openFile);         tools.add(openUrl);         tools.add(openConsole);         tools.addSeparator();         file.add(exportLinkedFiles),          tools.add(abbreviateIso);         tools.add(abbreviateMedline);         tools.add(unabbreviate);         mb.add(tools);          options.add(showPrefs);          AbstractAction genFieldsCustomization = new GenFieldsCustomizationAction();         AbstractAction protectTerms = new ProtectedTermsAction();         options.add(genFieldsCustomization);         options.add(customImpAction);         options.add(customExpAction);         options.add(customFileTypesAction);         options.add(manageJournals);         options.add(keyBindingAction);         options.add(protectTerms);         options.add(manageSelectors);         mb.add(options);          help.add(this.help);         help.add(openForumAction);         help.addSeparator();         help.add(errorConsole);         help.addSeparator();         help.add(new SearchForUpdateAction());         JMenu webMenu = JabRefFrame.subMenu(Localization.menuTitle("JabRef resources"));         webMenu.add(jabrefWebPageAction);         webMenu.add(jabrefBlogAction);         webMenu.add(jabrefFacebookAction);         webMenu.add(jabrefTwitterAction);         webMenu.addSeparator();         webMenu.add(forkMeOnGitHubAction);         webMenu.add(developmentVersionAction);         webMenu.add(changeLogAction);         webMenu.addSeparator();         webMenu.add(donationAction);         help.add(webMenu);         help.add(about);         mb.add(help);          createDisabledIconsForMenuEntries(mb);         */
 name|MenuBar
 name|menu
 init|=

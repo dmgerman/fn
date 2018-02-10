@@ -537,7 +537,7 @@ block|{
 return|return
 name|ActionsFX
 operator|.
-name|toggleWebSearch
+name|TOGGLE_WEB_SEARCH
 return|;
 block|}
 annotation|@

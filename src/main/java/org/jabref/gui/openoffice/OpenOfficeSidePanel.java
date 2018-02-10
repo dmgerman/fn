@@ -259,7 +259,7 @@ block|{
 return|return
 name|ActionsFX
 operator|.
-name|toggleOpenOffice
+name|TOOGLE_OO
 return|;
 block|}
 annotation|@

@@ -245,7 +245,7 @@ block|{
 return|return
 name|ActionsFX
 operator|.
-name|toggleGroups
+name|TOGGLE_GROUPS
 return|;
 block|}
 annotation|@
