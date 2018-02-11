@@ -64,17 +64,43 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Test
 import|;
 end_import
 
 begin_import
-import|import
+import|import static
 name|org
 operator|.
 name|junit
 operator|.
-name|Test
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
+operator|.
+name|assertTrue
 import|;
 end_import
 
@@ -117,8 +143,6 @@ operator|.
 name|NORMAL
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Regular"
@@ -132,8 +156,6 @@ name|getStyle
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|testText
@@ -174,8 +196,6 @@ operator|.
 name|BOLD
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"tooltip-text-bold"
@@ -189,8 +209,6 @@ name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|testText
@@ -231,8 +249,6 @@ operator|.
 name|ITALIC
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"tooltip-text-italic"
@@ -246,8 +262,6 @@ name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|testText
@@ -288,8 +302,6 @@ operator|.
 name|MONOSPACED
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"tooltip-text-monospaced"
@@ -303,8 +315,6 @@ name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|testText
@@ -355,8 +365,6 @@ argument_list|(
 name|text
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"<b>"
@@ -408,8 +416,6 @@ argument_list|(
 name|text
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"<i>"
@@ -461,8 +467,6 @@ argument_list|(
 name|text
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"<kbd>"
@@ -524,8 +528,6 @@ argument_list|(
 name|text
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"<b><kbd>"
@@ -577,8 +579,6 @@ argument_list|(
 name|text
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"this<br>is a<br>test text"
@@ -636,8 +636,6 @@ argument_list|(
 name|test
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|TextFlowEqualityHelper
@@ -734,8 +732,6 @@ name|BOLD
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|TextFlowEqualityHelper
@@ -832,8 +828,6 @@ name|BOLD
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|TextFlowEqualityHelper
@@ -942,8 +936,6 @@ name|BOLD
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|TextFlowEqualityHelper

@@ -80,7 +80,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Before
+name|jupiter
+operator|.
+name|api
+operator|.
+name|BeforeEach
 import|;
 end_import
 
@@ -90,29 +94,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Rule
-import|;
-end_import
-
-begin_import
-import|import
-name|org
+name|jupiter
 operator|.
-name|junit
+name|api
 operator|.
 name|Test
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|rules
-operator|.
-name|ExpectedException
 import|;
 end_import
 
@@ -122,7 +108,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
 operator|.
 name|assertEquals
 import|;
@@ -158,18 +148,6 @@ specifier|public
 class|class
 name|UpdateTimestampListenerTest
 block|{
-annotation|@
-name|Rule
-DECL|field|thrown
-specifier|public
-name|ExpectedException
-name|thrown
-init|=
-name|ExpectedException
-operator|.
-name|none
-argument_list|()
-decl_stmt|;
 DECL|field|database
 specifier|private
 name|BibDatabase
@@ -191,7 +169,7 @@ name|TimestampPreferences
 name|timestampPreferencesMock
 decl_stmt|;
 annotation|@
-name|Before
+name|BeforeEach
 DECL|method|setUp ()
 specifier|public
 name|void
@@ -331,8 +309,6 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"Initial timestamp not set correctly"
-argument_list|,
 name|Optional
 operator|.
 name|of
@@ -346,6 +322,8 @@ name|getField
 argument_list|(
 name|timestampField
 argument_list|)
+argument_list|,
+literal|"Initial timestamp not set correctly"
 argument_list|)
 expr_stmt|;
 name|database
@@ -370,8 +348,6 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"Timestamp not set correctly after entry changed"
-argument_list|,
 name|Optional
 operator|.
 name|of
@@ -385,6 +361,8 @@ name|getField
 argument_list|(
 name|timestampField
 argument_list|)
+argument_list|,
+literal|"Timestamp not set correctly after entry changed"
 argument_list|)
 expr_stmt|;
 block|}
@@ -470,8 +448,6 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"Initial timestamp not set correctly"
-argument_list|,
 name|Optional
 operator|.
 name|of
@@ -485,6 +461,8 @@ name|getField
 argument_list|(
 name|timestampField
 argument_list|)
+argument_list|,
+literal|"Initial timestamp not set correctly"
 argument_list|)
 expr_stmt|;
 name|database
@@ -509,8 +487,6 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"New timestamp set after entry changed even though updates were disabled"
-argument_list|,
 name|Optional
 operator|.
 name|of
@@ -524,6 +500,8 @@ name|getField
 argument_list|(
 name|timestampField
 argument_list|)
+argument_list|,
+literal|"New timestamp set after entry changed even though updates were disabled"
 argument_list|)
 expr_stmt|;
 block|}

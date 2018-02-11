@@ -72,17 +72,43 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Test
 import|;
 end_import
 
 begin_import
-import|import
+import|import static
 name|org
 operator|.
 name|junit
 operator|.
-name|Test
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
+operator|.
+name|assertNotNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
+operator|.
+name|assertTrue
 import|;
 end_import
 
@@ -115,12 +141,8 @@ literal|"http://www.google.com"
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
-literal|"google.com should contain google"
-argument_list|,
 name|dl
 operator|.
 name|asString
@@ -130,6 +152,8 @@ name|contains
 argument_list|(
 literal|"Google"
 argument_list|)
+argument_list|,
+literal|"google.com should contain google"
 argument_list|)
 expr_stmt|;
 block|}
@@ -156,12 +180,8 @@ literal|"http://www.google.com"
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
-literal|"google.com should contain google"
-argument_list|,
 name|dl
 operator|.
 name|asString
@@ -175,6 +195,8 @@ name|contains
 argument_list|(
 literal|"Google"
 argument_list|)
+argument_list|,
+literal|"google.com should contain google"
 argument_list|)
 expr_stmt|;
 block|}
@@ -225,16 +247,14 @@ name|toPath
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
-literal|"file must exist"
-argument_list|,
 name|destination
 operator|.
 name|exists
 argument_list|()
+argument_list|,
+literal|"file must exist"
 argument_list|)
 expr_stmt|;
 block|}
@@ -285,8 +305,6 @@ literal|"http://www.google.com"
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|dl
@@ -335,18 +353,16 @@ operator|.
 name|toString
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
-name|path
-argument_list|,
 name|path
 operator|.
 name|endsWith
 argument_list|(
 literal|".tmp"
 argument_list|)
+argument_list|,
+name|path
 argument_list|)
 expr_stmt|;
 block|}
@@ -384,12 +400,8 @@ operator|.
 name|toString
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
-name|path
-argument_list|,
 name|path
 operator|.
 name|contains
@@ -403,6 +415,8 @@ name|endsWith
 argument_list|(
 literal|".md"
 argument_list|)
+argument_list|,
+name|path
 argument_list|)
 expr_stmt|;
 block|}
@@ -437,8 +451,6 @@ operator|.
 name|toTemporaryFile
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertNotNull
 argument_list|(
 name|path
@@ -476,8 +488,6 @@ operator|.
 name|toTemporaryFile
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertNotNull
 argument_list|(
 name|path
@@ -515,8 +525,6 @@ operator|.
 name|toTemporaryFile
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertNotNull
 argument_list|(
 name|path

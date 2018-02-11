@@ -134,6 +134,10 @@ name|org
 operator|.
 name|junit
 operator|.
+name|jupiter
+operator|.
+name|api
+operator|.
 name|Test
 import|;
 end_import
@@ -144,7 +148,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
 operator|.
 name|assertEquals
 import|;
@@ -156,7 +164,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
 operator|.
 name|assertFalse
 import|;
@@ -168,7 +180,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
 operator|.
 name|assertTrue
 import|;
@@ -243,10 +259,6 @@ expr_stmt|;
 block|}
 name|assertFalse
 argument_list|(
-literal|"There must be loaded properties after loading "
-operator|+
-name|iconsPropertiesPath
-argument_list|,
 name|properties
 operator|.
 name|entrySet
@@ -254,6 +266,10 @@ argument_list|()
 operator|.
 name|isEmpty
 argument_list|()
+argument_list|,
+literal|"There must be loaded properties after loading "
+operator|+
+name|iconsPropertiesPath
 argument_list|)
 expr_stmt|;
 comment|// check that each key references an existing file
@@ -299,18 +315,6 @@ argument_list|()
 decl_stmt|;
 name|assertTrue
 argument_list|(
-literal|"Referenced image ("
-operator|+
-name|name
-operator|+
-literal|" --> "
-operator|+
-name|value
-operator|+
-literal|" does not exist in folder "
-operator|+
-name|folder
-argument_list|,
 name|Files
 operator|.
 name|exists
@@ -324,6 +328,18 @@ argument_list|,
 name|value
 argument_list|)
 argument_list|)
+argument_list|,
+literal|"Referenced image ("
+operator|+
+name|name
+operator|+
+literal|" --> "
+operator|+
+name|value
+operator|+
+literal|" does not exist in folder "
+operator|+
+name|folder
 argument_list|)
 expr_stmt|;
 block|}
@@ -430,14 +446,14 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"Images are in the folder that are unused"
-argument_list|,
 literal|"[red.png]"
 argument_list|,
 name|fileNamesInFolder
 operator|.
 name|toString
 argument_list|()
+argument_list|,
+literal|"Images are in the folder that are unused"
 argument_list|)
 expr_stmt|;
 block|}

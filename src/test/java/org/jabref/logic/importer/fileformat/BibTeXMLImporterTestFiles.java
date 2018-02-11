@@ -93,6 +93,11 @@ name|FILE_ENDING
 init|=
 literal|".xml"
 decl_stmt|;
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 DECL|method|fileNames ()
 specifier|private
 specifier|static
@@ -139,6 +144,11 @@ name|stream
 argument_list|()
 return|;
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 DECL|method|nonBibTeXMLfileNames ()
 specifier|private
 specifier|static

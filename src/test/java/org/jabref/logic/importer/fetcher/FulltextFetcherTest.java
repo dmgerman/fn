@@ -169,6 +169,11 @@ DECL|class|FulltextFetcherTest
 class|class
 name|FulltextFetcherTest
 block|{
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 DECL|method|fetcherProvider ()
 specifier|private
 specifier|static

@@ -182,7 +182,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Before
+name|jupiter
+operator|.
+name|api
+operator|.
+name|BeforeEach
 import|;
 end_import
 
@@ -191,6 +195,10 @@ import|import
 name|org
 operator|.
 name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
 operator|.
 name|Test
 import|;
@@ -212,7 +220,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
 operator|.
 name|assertEquals
 import|;
@@ -224,7 +236,27 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
+operator|.
+name|assertThrows
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
 operator|.
 name|assertTrue
 import|;
@@ -261,6 +293,7 @@ name|writer
 decl_stmt|;
 DECL|field|fileMonitor
 specifier|private
+specifier|final
 name|FileUpdateMonitor
 name|fileMonitor
 init|=
@@ -269,7 +302,7 @@ name|DummyFileUpdateMonitor
 argument_list|()
 decl_stmt|;
 annotation|@
-name|Before
+name|BeforeEach
 DECL|method|setUpWriter ()
 specifier|public
 name|void
@@ -2379,20 +2412,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-argument_list|(
-name|expected
-operator|=
-name|IOException
-operator|.
-name|class
-argument_list|)
 DECL|method|writeThrowsErrorIfFieldContainsUnbalancedBraces ()
 specifier|public
 name|void
 name|writeThrowsErrorIfFieldContainsUnbalancedBraces
 parameter_list|()
-throws|throws
-name|IOException
 block|{
 name|StringWriter
 name|stringWriter
@@ -2419,6 +2443,14 @@ argument_list|,
 literal|"some text with unbalanced { braces"
 argument_list|)
 expr_stmt|;
+name|assertThrows
+argument_list|(
+name|IOException
+operator|.
+name|class
+argument_list|,
+parameter_list|()
+lambda|->
 name|writer
 operator|.
 name|write
@@ -2430,6 +2462,7 @@ argument_list|,
 name|BibDatabaseMode
 operator|.
 name|BIBTEX
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

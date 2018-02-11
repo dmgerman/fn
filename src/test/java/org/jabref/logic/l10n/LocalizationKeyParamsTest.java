@@ -18,6 +18,10 @@ name|org
 operator|.
 name|junit
 operator|.
+name|jupiter
+operator|.
+name|api
+operator|.
 name|Test
 import|;
 end_import
@@ -28,9 +32,29 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
 operator|.
 name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
+operator|.
+name|assertThrows
 import|;
 end_import
 
@@ -133,19 +157,20 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-argument_list|(
-name|expected
-operator|=
-name|IllegalStateException
-operator|.
-name|class
-argument_list|)
 DECL|method|testTooManyParams ()
 specifier|public
 name|void
 name|testTooManyParams
 parameter_list|()
 block|{
+name|assertThrows
+argument_list|(
+name|IllegalStateException
+operator|.
+name|class
+argument_list|,
+parameter_list|()
+lambda|->
 operator|new
 name|LocalizationKeyParams
 argument_list|(
@@ -184,6 +209,7 @@ argument_list|,
 literal|"0"
 argument_list|,
 literal|"0"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

@@ -336,9 +336,9 @@ specifier|private
 name|DBMSProcessor
 name|dbmsProcessor
 decl_stmt|;
+DECL|field|dbmsType
 annotation|@
 name|Parameter
-DECL|field|dbmsType
 specifier|public
 name|DBMSType
 name|dbmsType
