@@ -566,6 +566,22 @@ name|jabref
 operator|.
 name|logic
 operator|.
+name|importer
+operator|.
+name|fetcher
+operator|.
+name|DoiFetcher
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
 name|journals
 operator|.
 name|JournalAbbreviationLoader
@@ -3296,6 +3312,16 @@ name|AUTOCOMPLETER_COMPLETE_FIELDS
 init|=
 literal|"autoCompleteFields"
 decl_stmt|;
+comment|// Id Entry Generator Preferences
+DECL|field|ID_ENTRY_GENERATOR
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|ID_ENTRY_GENERATOR
+init|=
+literal|"idEntryGenerator"
+decl_stmt|;
 comment|// Auto completion
 DECL|field|AUTO_COMPLETE
 specifier|private
@@ -3792,6 +3818,18 @@ argument_list|,
 name|Boolean
 operator|.
 name|FALSE
+argument_list|)
+expr_stmt|;
+comment|// Set DOI to be the default ID entry generator
+name|defaults
+operator|.
+name|put
+argument_list|(
+name|ID_ENTRY_GENERATOR
+argument_list|,
+name|DoiFetcher
+operator|.
+name|NAME
 argument_list|)
 expr_stmt|;
 if|if
