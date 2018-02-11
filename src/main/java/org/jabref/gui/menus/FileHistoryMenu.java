@@ -50,16 +50,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|JOptionPane
-import|;
-end_import
-
-begin_import
-import|import
 name|javafx
 operator|.
 name|scene
@@ -89,6 +79,18 @@ operator|.
 name|jabref
 operator|.
 name|JabRefExecutorService
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|DialogService
 import|;
 end_import
 
@@ -172,6 +174,12 @@ specifier|final
 name|JabRefPreferences
 name|preferences
 decl_stmt|;
+DECL|field|dialogService
+specifier|private
+specifier|final
+name|DialogService
+name|dialogService
+decl_stmt|;
 DECL|method|FileHistoryMenu (JabRefPreferences preferences, JabRefFrame frame)
 specifier|public
 name|FileHistoryMenu
@@ -204,6 +212,15 @@ operator|.
 name|preferences
 operator|=
 name|preferences
+expr_stmt|;
+name|this
+operator|.
+name|dialogService
+operator|=
+name|frame
+operator|.
+name|getDialogService
+argument_list|()
 expr_stmt|;
 name|history
 operator|=
@@ -407,11 +424,16 @@ name|fileToOpen
 argument_list|)
 condition|)
 block|{
-name|JOptionPane
+name|dialogService
 operator|.
-name|showMessageDialog
+name|showErrorDialogAndWait
 argument_list|(
-literal|null
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"File not found"
+argument_list|)
 argument_list|,
 name|Localization
 operator|.
@@ -426,17 +448,6 @@ name|fileToOpen
 operator|.
 name|getFileName
 argument_list|()
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Error"
-argument_list|)
-argument_list|,
-name|JOptionPane
-operator|.
-name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
 name|history

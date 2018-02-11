@@ -3201,19 +3201,10 @@ argument_list|()
 condition|)
 block|{
 comment|// None selected. Inform the user to select entries first.
-name|JOptionPane
+name|dialogService
 operator|.
-name|showMessageDialog
+name|showWarningDialogAndWait
 argument_list|(
-literal|null
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"First select the entries you want keys to be generated for."
-argument_list|)
-argument_list|,
 name|Localization
 operator|.
 name|lang
@@ -3221,9 +3212,12 @@ argument_list|(
 literal|"Autogenerate BibTeX keys"
 argument_list|)
 argument_list|,
-name|JOptionPane
+name|Localization
 operator|.
-name|INFORMATION_MESSAGE
+name|lang
+argument_list|(
+literal|"First select the entries you want keys to be generated for."
+argument_list|)
 argument_list|)
 expr_stmt|;
 return|return;
@@ -7553,11 +7547,11 @@ name|ex
 argument_list|)
 expr_stmt|;
 block|}
-name|JOptionPane
+name|dialogService
 operator|.
-name|showMessageDialog
+name|showErrorDialogAndWait
 argument_list|(
-literal|null
+name|SAVE_DATABASE
 argument_list|,
 name|Localization
 operator|.
@@ -7565,19 +7559,8 @@ name|lang
 argument_list|(
 literal|"Could not save file."
 argument_list|)
-operator|+
-literal|"\n"
-operator|+
+argument_list|,
 name|ex
-operator|.
-name|getMessage
-argument_list|()
-argument_list|,
-name|SAVE_DATABASE
-argument_list|,
-name|JOptionPane
-operator|.
-name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
 throw|throw

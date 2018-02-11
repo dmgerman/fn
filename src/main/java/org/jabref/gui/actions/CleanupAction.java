@@ -62,6 +62,18 @@ name|jabref
 operator|.
 name|gui
 operator|.
+name|DialogService
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
 name|JabRefFrame
 import|;
 end_import
@@ -252,6 +264,12 @@ specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
+DECL|field|dialogService
+specifier|private
+specifier|final
+name|DialogService
+name|dialogService
+decl_stmt|;
 comment|/**      * Global variable to count unsuccessful renames      */
 DECL|field|unsuccessfulRenames
 specifier|private
@@ -305,6 +323,15 @@ operator|.
 name|preferences
 operator|=
 name|preferences
+expr_stmt|;
+name|this
+operator|.
+name|dialogService
+operator|=
+name|frame
+operator|.
+name|getDialogService
+argument_list|()
 expr_stmt|;
 block|}
 annotation|@
@@ -664,11 +691,16 @@ literal|0
 condition|)
 block|{
 comment|//Rename failed for at least one entry
-name|JOptionPane
+name|dialogService
 operator|.
-name|showMessageDialog
+name|showErrorDialogAndWait
 argument_list|(
-literal|null
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Autogenerate PDF Names"
+argument_list|)
 argument_list|,
 name|Localization
 operator|.
@@ -683,17 +715,6 @@ argument_list|(
 name|unsuccessfulRenames
 argument_list|)
 argument_list|)
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Autogenerate PDF Names"
-argument_list|)
-argument_list|,
-name|JOptionPane
-operator|.
-name|INFORMATION_MESSAGE
 argument_list|)
 expr_stmt|;
 block|}

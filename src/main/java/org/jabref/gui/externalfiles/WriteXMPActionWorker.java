@@ -196,16 +196,6 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|JOptionPane
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
 name|JPanel
 import|;
 end_import
@@ -280,7 +270,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|JabRefDialog
+name|DialogService
 import|;
 end_import
 
@@ -292,7 +282,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|JabRefFrame
+name|JabRefDialog
 import|;
 end_import
 
@@ -412,12 +402,6 @@ specifier|final
 name|BasePanel
 name|panel
 decl_stmt|;
-DECL|field|frame
-specifier|private
-specifier|final
-name|JabRefFrame
-name|frame
-decl_stmt|;
 DECL|field|entries
 specifier|private
 name|Collection
@@ -458,6 +442,12 @@ specifier|private
 name|int
 name|errors
 decl_stmt|;
+DECL|field|dialogService
+specifier|private
+specifier|final
+name|DialogService
+name|dialogService
+decl_stmt|;
 DECL|method|WriteXMPActionWorker (BasePanel panel)
 specifier|public
 name|WriteXMPActionWorker
@@ -474,11 +464,14 @@ name|panel
 expr_stmt|;
 name|this
 operator|.
-name|frame
+name|dialogService
 operator|=
 name|panel
 operator|.
 name|frame
+argument_list|()
+operator|.
+name|getDialogService
 argument_list|()
 expr_stmt|;
 block|}
@@ -528,19 +521,10 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-name|JOptionPane
+name|dialogService
 operator|.
-name|showMessageDialog
+name|showErrorDialogAndWait
 argument_list|(
-literal|null
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"This operation requires one or more entries to be selected."
-argument_list|)
-argument_list|,
 name|Localization
 operator|.
 name|lang
@@ -548,9 +532,12 @@ argument_list|(
 literal|"Write XMP-metadata"
 argument_list|)
 argument_list|,
-name|JOptionPane
+name|Localization
 operator|.
-name|ERROR_MESSAGE
+name|lang
+argument_list|(
+literal|"This operation requires one or more entries to be selected."
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|goOn
@@ -561,22 +548,13 @@ return|return;
 block|}
 else|else
 block|{
-name|int
-name|response
+name|boolean
+name|confirm
 init|=
-name|JOptionPane
+name|dialogService
 operator|.
-name|showConfirmDialog
+name|showConfirmationDialogAndWait
 argument_list|(
-literal|null
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Write XMP-metadata for all PDFs in current library?"
-argument_list|)
-argument_list|,
 name|Localization
 operator|.
 name|lang
@@ -584,22 +562,17 @@ argument_list|(
 literal|"Write XMP-metadata"
 argument_list|)
 argument_list|,
-name|JOptionPane
+name|Localization
 operator|.
-name|YES_NO_CANCEL_OPTION
-argument_list|,
-name|JOptionPane
-operator|.
-name|QUESTION_MESSAGE
+name|lang
+argument_list|(
+literal|"Write XMP-metadata for all PDFs in current library?"
+argument_list|)
 argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|response
-operator|!=
-name|JOptionPane
-operator|.
-name|YES_OPTION
+name|confirm
 condition|)
 block|{
 name|goOn

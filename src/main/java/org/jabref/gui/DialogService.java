@@ -247,6 +247,21 @@ name|exception
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Create and display error dialog displaying the given exception.      *      * @param exception the exception causing the error      */
+DECL|method|showErrorDialogAndWait (String title, String content, Throwable exception)
+name|void
+name|showErrorDialogAndWait
+parameter_list|(
+name|String
+name|title
+parameter_list|,
+name|String
+name|content
+parameter_list|,
+name|Throwable
+name|exception
+parameter_list|)
+function_decl|;
 comment|/**      * Create and display error dialog displaying the given message.      *      * @param message the error message      */
 DECL|method|showErrorDialogAndWait (String message)
 name|void
