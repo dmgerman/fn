@@ -3187,6 +3187,12 @@ operator|new
 name|CountingUndoManager
 argument_list|()
 decl_stmt|;
+DECL|field|dialogService
+specifier|private
+specifier|final
+name|DialogService
+name|dialogService
+decl_stmt|;
 DECL|method|JabRefFrame (Stage mainStage)
 specifier|public
 name|JabRefFrame
@@ -3200,6 +3206,14 @@ operator|.
 name|mainStage
 operator|=
 name|mainStage
+expr_stmt|;
+name|this
+operator|.
+name|dialogService
+operator|=
+operator|new
+name|FXDialogService
+argument_list|()
 expr_stmt|;
 name|init
 argument_list|()
@@ -4231,13 +4245,6 @@ name|shouldCollectTelemetry
 argument_list|()
 condition|)
 block|{
-name|DialogService
-name|dialogService
-init|=
-operator|new
-name|FXDialogService
-argument_list|()
-decl_stmt|;
 name|boolean
 name|shouldCollect
 init|=
@@ -9829,6 +9836,16 @@ parameter_list|()
 block|{
 return|return
 name|undoManager
+return|;
+block|}
+DECL|method|getDialogService ()
+specifier|public
+name|DialogService
+name|getDialogService
+parameter_list|()
+block|{
+return|return
+name|dialogService
 return|;
 block|}
 DECL|class|MyGlassPane

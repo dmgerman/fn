@@ -54,6 +54,18 @@ name|jabref
 operator|.
 name|gui
 operator|.
+name|DialogService
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
 name|IconTheme
 import|;
 end_import
@@ -136,7 +148,7 @@ name|OptionalFields2Tab
 extends|extends
 name|FieldsEditorTab
 block|{
-DECL|method|OptionalFields2Tab (BibDatabaseContext databaseContext, SuggestionProviders suggestionProviders, UndoManager undoManager)
+DECL|method|OptionalFields2Tab (BibDatabaseContext databaseContext, SuggestionProviders suggestionProviders, UndoManager undoManager, DialogService dialogService)
 specifier|public
 name|OptionalFields2Tab
 parameter_list|(
@@ -148,6 +160,9 @@ name|suggestionProviders
 parameter_list|,
 name|UndoManager
 name|undoManager
+parameter_list|,
+name|DialogService
+name|dialogService
 parameter_list|)
 block|{
 name|super
@@ -159,6 +174,8 @@ argument_list|,
 name|suggestionProviders
 argument_list|,
 name|undoManager
+argument_list|,
+name|dialogService
 argument_list|)
 expr_stmt|;
 name|setText

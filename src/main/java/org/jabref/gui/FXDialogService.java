@@ -288,6 +288,14 @@ name|FXDialogService
 implements|implements
 name|DialogService
 block|{
+comment|/**      * @deprecated try not to initialize a new dialog service but reuse the one constructed in {@link org.jabref.JabRefMain}.      */
+annotation|@
+name|Deprecated
+DECL|method|FXDialogService ()
+specifier|public
+name|FXDialogService
+parameter_list|()
+block|{     }
 DECL|method|createDialog (AlertType type, String title, String content)
 specifier|private
 specifier|static

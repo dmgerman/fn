@@ -579,8 +579,8 @@ operator|.
 name|empty
 argument_list|()
 decl_stmt|;
-comment|/**      * @param preferences      * @param panel           (may be null) Only set this if the preview is associated to the main window.      * @param databaseContext (may be null) Used for resolving pdf directories for links.      */
-DECL|method|PreviewPanel (BasePanel panel, BibDatabaseContext databaseContext, KeyBindingRepository keyBindingRepository, PreviewPreferences preferences)
+comment|/**      * @param panel           (may be null) Only set this if the preview is associated to the main window.      * @param databaseContext (may be null) Used for resolving pdf directories for links.      * @param preferences      * @param dialogService      */
+DECL|method|PreviewPanel (BasePanel panel, BibDatabaseContext databaseContext, KeyBindingRepository keyBindingRepository, PreviewPreferences preferences, DialogService dialogService)
 specifier|public
 name|PreviewPanel
 parameter_list|(
@@ -595,6 +595,9 @@ name|keyBindingRepository
 parameter_list|,
 name|PreviewPreferences
 name|preferences
+parameter_list|,
+name|DialogService
+name|dialogService
 parameter_list|)
 block|{
 name|this
@@ -621,18 +624,16 @@ argument_list|)
 expr_stmt|;
 name|this
 operator|.
+name|dialogService
+operator|=
+name|dialogService
+expr_stmt|;
+name|this
+operator|.
 name|clipBoardManager
 operator|=
 operator|new
 name|ClipBoardManager
-argument_list|()
-expr_stmt|;
-name|this
-operator|.
-name|dialogService
-operator|=
-operator|new
-name|FXDialogService
 argument_list|()
 expr_stmt|;
 name|this

@@ -1243,6 +1243,11 @@ name|prefs
 operator|.
 name|getPreviewPreferences
 argument_list|()
+argument_list|,
+name|frame
+operator|.
+name|getDialogService
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|sortedEntries

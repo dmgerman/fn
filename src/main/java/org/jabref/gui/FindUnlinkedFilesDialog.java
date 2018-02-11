@@ -2928,8 +2928,9 @@ decl_stmt|;
 name|DialogService
 name|ds
 init|=
-operator|new
-name|FXDialogService
+name|frame
+operator|.
+name|getDialogService
 argument_list|()
 decl_stmt|;
 comment|/**          * Stores the selected directory.          */

@@ -356,18 +356,6 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|FXDialogService
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
 name|IconTheme
 import|;
 end_import
@@ -3582,10 +3570,11 @@ argument_list|()
 decl_stmt|;
 specifier|final
 name|DialogService
-name|dirDialog
+name|dialogService
 init|=
-operator|new
-name|FXDialogService
+name|frame
+operator|.
+name|getDialogService
 argument_list|()
 decl_stmt|;
 name|DirectoryDialogConfiguration
@@ -3626,13 +3615,6 @@ argument_list|()
 argument_list|)
 operator|.
 name|build
-argument_list|()
-decl_stmt|;
-name|DialogService
-name|fileDialog
-init|=
-operator|new
-name|FXDialogService
 argument_list|()
 decl_stmt|;
 comment|// Path fields
@@ -3682,7 +3664,7 @@ name|runInJavaFXThread
 argument_list|(
 parameter_list|()
 lambda|->
-name|dirDialog
+name|dialogService
 operator|.
 name|showDirectorySelectionDialog
 argument_list|(
@@ -3755,7 +3737,7 @@ name|runInJavaFXThread
 argument_list|(
 parameter_list|()
 lambda|->
-name|fileDialog
+name|dialogService
 operator|.
 name|showFileOpenDialog
 argument_list|(
@@ -3828,7 +3810,7 @@ name|runInJavaFXThread
 argument_list|(
 parameter_list|()
 lambda|->
-name|dirDialog
+name|dialogService
 operator|.
 name|showDirectorySelectionDialog
 argument_list|(

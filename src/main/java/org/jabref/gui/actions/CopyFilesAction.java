@@ -106,18 +106,6 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|FXDialogService
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
 name|JabRefFrame
 import|;
 end_import
@@ -245,10 +233,6 @@ specifier|private
 specifier|final
 name|DialogService
 name|dialogService
-init|=
-operator|new
-name|FXDialogService
-argument_list|()
 decl_stmt|;
 DECL|field|databaseContext
 specifier|private
@@ -282,6 +266,15 @@ operator|.
 name|frame
 operator|=
 name|frame
+expr_stmt|;
+name|this
+operator|.
+name|dialogService
+operator|=
+name|frame
+operator|.
+name|getDialogService
+argument_list|()
 expr_stmt|;
 block|}
 DECL|method|startServiceAndshowProgessDialog (Task<List<CopyFilesResultItemViewModel>> exportService)

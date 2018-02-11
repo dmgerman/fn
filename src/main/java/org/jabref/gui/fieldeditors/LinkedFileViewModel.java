@@ -246,18 +246,6 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|FXDialogService
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
 name|IconTheme
 import|;
 end_import
@@ -596,10 +584,6 @@ specifier|private
 specifier|final
 name|DialogService
 name|dialogService
-init|=
-operator|new
-name|FXDialogService
-argument_list|()
 decl_stmt|;
 DECL|field|entry
 specifier|private
@@ -613,7 +597,7 @@ specifier|final
 name|TaskExecutor
 name|taskExecutor
 decl_stmt|;
-DECL|method|LinkedFileViewModel (LinkedFile linkedFile, BibEntry entry, BibDatabaseContext databaseContext, TaskExecutor taskExecutor)
+DECL|method|LinkedFileViewModel (LinkedFile linkedFile, BibEntry entry, BibDatabaseContext databaseContext, DialogService dialogService, TaskExecutor taskExecutor)
 specifier|public
 name|LinkedFileViewModel
 parameter_list|(
@@ -625,6 +609,9 @@ name|entry
 parameter_list|,
 name|BibDatabaseContext
 name|databaseContext
+parameter_list|,
+name|DialogService
+name|dialogService
 parameter_list|,
 name|TaskExecutor
 name|taskExecutor
@@ -647,6 +634,12 @@ operator|.
 name|entry
 operator|=
 name|entry
+expr_stmt|;
+name|this
+operator|.
+name|dialogService
+operator|=
+name|dialogService
 expr_stmt|;
 name|this
 operator|.

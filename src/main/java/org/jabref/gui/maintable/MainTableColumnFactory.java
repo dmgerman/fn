@@ -162,6 +162,18 @@ name|jabref
 operator|.
 name|gui
 operator|.
+name|DialogService
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
 name|GUIGlobals
 import|;
 end_import
@@ -444,7 +456,13 @@ specifier|final
 name|UndoManager
 name|undoManager
 decl_stmt|;
-DECL|method|MainTableColumnFactory (BibDatabaseContext database, ColumnPreferences preferences, ExternalFileTypes externalFileTypes, UndoManager undoManager)
+DECL|field|dialogService
+specifier|private
+specifier|final
+name|DialogService
+name|dialogService
+decl_stmt|;
+DECL|method|MainTableColumnFactory (BibDatabaseContext database, ColumnPreferences preferences, ExternalFileTypes externalFileTypes, UndoManager undoManager, DialogService dialogService)
 specifier|public
 name|MainTableColumnFactory
 parameter_list|(
@@ -459,6 +477,9 @@ name|externalFileTypes
 parameter_list|,
 name|UndoManager
 name|undoManager
+parameter_list|,
+name|DialogService
+name|dialogService
 parameter_list|)
 block|{
 name|this
@@ -493,6 +514,12 @@ name|requireNonNull
 argument_list|(
 name|externalFileTypes
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|dialogService
+operator|=
+name|dialogService
 expr_stmt|;
 name|this
 operator|.
@@ -1554,6 +1581,8 @@ argument_list|()
 argument_list|,
 name|database
 argument_list|,
+name|dialogService
+argument_list|,
 name|Globals
 operator|.
 name|TASK_EXECUTOR
@@ -1642,6 +1671,8 @@ name|getEntry
 argument_list|()
 argument_list|,
 name|database
+argument_list|,
+name|dialogService
 argument_list|,
 name|Globals
 operator|.

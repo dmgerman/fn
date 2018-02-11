@@ -220,6 +220,18 @@ name|jabref
 operator|.
 name|gui
 operator|.
+name|DialogService
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
 name|GUIGlobals
 import|;
 end_import
@@ -564,7 +576,13 @@ specifier|final
 name|EntryEditorPreferences
 name|preferences
 decl_stmt|;
-DECL|method|EntryEditor (BasePanel panel, EntryEditorPreferences preferences, FileUpdateMonitor fileMonitor)
+DECL|field|dialogService
+specifier|private
+specifier|final
+name|DialogService
+name|dialogService
+decl_stmt|;
+DECL|method|EntryEditor (BasePanel panel, EntryEditorPreferences preferences, FileUpdateMonitor fileMonitor, DialogService dialogService)
 specifier|public
 name|EntryEditor
 parameter_list|(
@@ -576,6 +594,9 @@ name|preferences
 parameter_list|,
 name|FileUpdateMonitor
 name|fileMonitor
+parameter_list|,
+name|DialogService
+name|dialogService
 parameter_list|)
 block|{
 name|this
@@ -618,6 +639,12 @@ operator|.
 name|fileMonitor
 operator|=
 name|fileMonitor
+expr_stmt|;
+name|this
+operator|.
+name|dialogService
+operator|=
+name|dialogService
 expr_stmt|;
 name|ControlHelper
 operator|.
@@ -969,6 +996,8 @@ name|getSuggestionProviders
 argument_list|()
 argument_list|,
 name|undoManager
+argument_list|,
+name|dialogService
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -991,6 +1020,8 @@ name|getSuggestionProviders
 argument_list|()
 argument_list|,
 name|undoManager
+argument_list|,
+name|dialogService
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1012,6 +1043,8 @@ name|getSuggestionProviders
 argument_list|()
 argument_list|,
 name|undoManager
+argument_list|,
+name|dialogService
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1033,6 +1066,8 @@ name|getSuggestionProviders
 argument_list|()
 argument_list|,
 name|undoManager
+argument_list|,
+name|dialogService
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1060,6 +1095,8 @@ name|preferences
 operator|.
 name|getCustomTabFieldNames
 argument_list|()
+argument_list|,
+name|dialogService
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1116,6 +1153,8 @@ name|getSuggestionProviders
 argument_list|()
 argument_list|,
 name|undoManager
+argument_list|,
+name|dialogService
 argument_list|)
 argument_list|)
 expr_stmt|;

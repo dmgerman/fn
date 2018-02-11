@@ -521,6 +521,11 @@ name|panel
 operator|.
 name|getUndoManager
 argument_list|()
+argument_list|,
+name|frame
+operator|.
+name|getDialogService
+argument_list|()
 argument_list|)
 operator|.
 name|createColumns
