@@ -37,9 +37,6 @@ block|,
 DECL|enumConstant|AUTO_SET_FILE
 name|AUTO_SET_FILE
 block|,
-DECL|enumConstant|BACK
-name|BACK
-block|,
 DECL|enumConstant|CLEANUP
 name|CLEANUP
 block|,
@@ -99,12 +96,6 @@ name|EDIT_STRINGS
 block|,
 DECL|enumConstant|EXPORT_TO_CLIPBOARD
 name|EXPORT_TO_CLIPBOARD
-block|,
-DECL|enumConstant|FOCUS_TABLE
-name|FOCUS_TABLE
-block|,
-DECL|enumConstant|FORWARD
-name|FORWARD
 block|,
 DECL|enumConstant|MAKE_KEY
 name|MAKE_KEY

@@ -108,25 +108,6 @@ operator|.
 name|QUALITY
 argument_list|)
 block|,
-DECL|enumConstant|BACK
-name|BACK
-argument_list|(
-literal|"Back"
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Back"
-argument_list|)
-argument_list|,
-literal|"alt+LEFT"
-argument_list|,
-name|KeyBindingCategory
-operator|.
-name|VIEW
-argument_list|)
-block|,
 DECL|enumConstant|CHECK_INTEGRITY
 name|CHECK_INTEGRITY
 argument_list|(
@@ -660,25 +641,6 @@ operator|.
 name|VIEW
 argument_list|)
 block|,
-DECL|enumConstant|FORWARD
-name|FORWARD
-argument_list|(
-literal|"Forward"
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Forward"
-argument_list|)
-argument_list|,
-literal|"alt+RIGHT"
-argument_list|,
-name|KeyBindingCategory
-operator|.
-name|VIEW
-argument_list|)
-block|,
 DECL|enumConstant|GLOBAL_SEARCH
 name|GLOBAL_SEARCH
 argument_list|(
@@ -1021,16 +983,16 @@ operator|.
 name|VIEW
 argument_list|)
 block|,
-DECL|enumConstant|NEXT_TAB
-name|NEXT_TAB
+DECL|enumConstant|NEXT_LIBRARY
+name|NEXT_LIBRARY
 argument_list|(
-literal|"Next tab"
+literal|"Next library"
 argument_list|,
 name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Next tab"
+literal|"Next library"
 argument_list|)
 argument_list|,
 literal|"ctrl+PAGE_DOWN"
@@ -1230,16 +1192,16 @@ operator|.
 name|VIEW
 argument_list|)
 block|,
-DECL|enumConstant|PREVIOUS_TAB
-name|PREVIOUS_TAB
+DECL|enumConstant|PREVIOUS_LIBRARY
+name|PREVIOUS_LIBRARY
 argument_list|(
-literal|"Previous tab"
+literal|"Previous library"
 argument_list|,
 name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Previous tab"
+literal|"Previous library"
 argument_list|)
 argument_list|,
 literal|"ctrl+PAGE_UP"
