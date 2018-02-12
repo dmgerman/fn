@@ -1346,20 +1346,6 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|help
-operator|.
-name|HelpFile
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
 name|importer
 operator|.
 name|OutputPrinter
@@ -1878,46 +1864,6 @@ comment|// with a unique command string. This causes the appropriate
 comment|// BasePanel's runCommand() method to be called with that command.
 comment|// Note: GeneralAction's constructor automatically gets translations
 comment|// for the name and message strings.
-DECL|field|help
-specifier|private
-specifier|final
-name|AbstractAction
-name|help
-init|=
-operator|new
-name|HelpAction
-argument_list|(
-name|Localization
-operator|.
-name|menuTitle
-argument_list|(
-literal|"Online help"
-argument_list|)
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Online help"
-argument_list|)
-argument_list|,
-name|HelpFile
-operator|.
-name|CONTENTS
-argument_list|,
-name|Globals
-operator|.
-name|getKeyPrefs
-argument_list|()
-operator|.
-name|getKey
-argument_list|(
-name|KeyBinding
-operator|.
-name|HELP
-argument_list|)
-argument_list|)
-decl_stmt|;
 DECL|field|deleteEntry
 specifier|private
 specifier|final
@@ -7213,7 +7159,20 @@ argument_list|()
 operator|.
 name|addAll
 argument_list|(
-comment|//TODO: This. helpAction
+name|factory
+operator|.
+name|createMenuItem
+argument_list|(
+name|ActionsFX
+operator|.
+name|HELP
+argument_list|,
+name|HelpAction
+operator|.
+name|getCommand
+argument_list|()
+argument_list|)
+argument_list|,
 name|factory
 operator|.
 name|createMenuItem
