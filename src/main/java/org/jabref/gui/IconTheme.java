@@ -1331,7 +1331,7 @@ name|ADVANCED_SEARCH
 argument_list|(
 name|Color
 operator|.
-name|ORANGE
+name|CYAN
 argument_list|,
 name|MaterialDesignIcon
 operator|.
