@@ -226,16 +226,6 @@ name|javafx
 operator|.
 name|scene
 operator|.
-name|Node
-import|;
-end_import
-
-begin_import
-import|import
-name|javafx
-operator|.
-name|scene
-operator|.
 name|Scene
 import|;
 end_import
