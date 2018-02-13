@@ -1340,6 +1340,19 @@ name|super
 argument_list|(
 name|jabrefFrame
 argument_list|,
+operator|(
+name|editedGroup
+operator|==
+literal|null
+operator|)
+condition|?
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Add group"
+argument_list|)
+else|:
 name|Localization
 operator|.
 name|lang
