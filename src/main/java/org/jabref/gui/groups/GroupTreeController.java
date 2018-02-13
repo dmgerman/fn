@@ -1457,15 +1457,10 @@ block|{
 name|GroupNodeViewModel
 name|groupToEdit
 init|=
-name|EasyBind
-operator|.
-name|monadic
-argument_list|(
 name|row
 operator|.
 name|itemProperty
 argument_list|()
-argument_list|)
 operator|.
 name|getValue
 argument_list|()
