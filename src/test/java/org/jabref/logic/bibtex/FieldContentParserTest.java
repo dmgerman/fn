@@ -91,11 +91,6 @@ specifier|private
 name|FieldContentParser
 name|parser
 decl_stmt|;
-DECL|field|prefs
-specifier|private
-name|FieldContentParserPreferences
-name|prefs
-decl_stmt|;
 annotation|@
 name|BeforeEach
 DECL|method|setUp ()
@@ -106,8 +101,9 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|FieldContentParserPreferences
 name|prefs
-operator|=
+init|=
 operator|new
 name|FieldContentParserPreferences
 argument_list|(
@@ -116,7 +112,7 @@ operator|.
 name|emptyList
 argument_list|()
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|parser
 operator|=
 operator|new
