@@ -119,9 +119,10 @@ name|void
 name|setUp
 parameter_list|()
 block|{
+name|formatter
+operator|=
+operator|new
 name|ProtectTermsFormatter
-operator|.
-name|setProtectedTermsLoader
 argument_list|(
 operator|new
 name|ProtectedTermsLoader
@@ -151,12 +152,6 @@ argument_list|()
 argument_list|)
 argument_list|)
 argument_list|)
-expr_stmt|;
-name|formatter
-operator|=
-operator|new
-name|ProtectTermsFormatter
-argument_list|()
 expr_stmt|;
 block|}
 annotation|@

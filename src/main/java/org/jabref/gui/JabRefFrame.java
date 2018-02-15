@@ -14786,10 +14786,6 @@ argument_list|(
 name|JabRefFrame
 operator|.
 name|this
-argument_list|,
-name|Globals
-operator|.
-name|protectedTermsLoader
 argument_list|)
 decl_stmt|;
 name|protectTermsDialog
