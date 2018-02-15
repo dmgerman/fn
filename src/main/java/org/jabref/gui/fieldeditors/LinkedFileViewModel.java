@@ -2159,7 +2159,13 @@ argument_list|()
 condition|)
 block|{
 comment|// TODO: Print error message
-comment|// Localization.lang("PDF does not exist");
+name|LOGGER
+operator|.
+name|warn
+argument_list|(
+literal|"PDF does not exist!"
+argument_list|)
+expr_stmt|;
 block|}
 else|else
 block|{
@@ -2199,7 +2205,24 @@ name|ex
 parameter_list|)
 block|{
 comment|// TODO: Print error message
-comment|// Localization.lang("Error while writing") + " '" + file.toString() + "': " + ex;
+name|LOGGER
+operator|.
+name|warn
+argument_list|(
+literal|"Error while writing"
+operator|+
+literal|" '"
+operator|+
+name|file
+operator|.
+name|toString
+argument_list|()
+operator|+
+literal|"': "
+operator|+
+name|ex
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 return|return
