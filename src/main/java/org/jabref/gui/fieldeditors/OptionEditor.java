@@ -135,13 +135,10 @@ name|T
 argument_list|>
 name|comboBox
 decl_stmt|;
-DECL|method|OptionEditor (String fieldName, OptionEditorViewModel<T> viewModel)
+DECL|method|OptionEditor (OptionEditorViewModel<T> viewModel)
 specifier|public
 name|OptionEditor
 parameter_list|(
-name|String
-name|fieldName
-parameter_list|,
 name|OptionEditorViewModel
 argument_list|<
 name|T

@@ -248,15 +248,12 @@ specifier|public
 class|class
 name|GroupSerializer
 block|{
-DECL|method|serializeAllEntriesGroup (AllEntriesGroup group)
+DECL|method|serializeAllEntriesGroup ()
 specifier|private
 specifier|static
 name|String
 name|serializeAllEntriesGroup
-parameter_list|(
-name|AllEntriesGroup
-name|group
-parameter_list|)
+parameter_list|()
 block|{
 return|return
 name|MetadataSerializationConfiguration
@@ -950,12 +947,7 @@ condition|)
 block|{
 return|return
 name|serializeAllEntriesGroup
-argument_list|(
-operator|(
-name|AllEntriesGroup
-operator|)
-name|group
-argument_list|)
+argument_list|()
 return|;
 block|}
 elseif|else

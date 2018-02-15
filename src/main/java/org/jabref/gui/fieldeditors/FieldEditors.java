@@ -668,8 +668,6 @@ operator|new
 name|OptionEditor
 argument_list|<>
 argument_list|(
-name|fieldName
-argument_list|,
 operator|new
 name|YesNoEditorViewModel
 argument_list|(
@@ -700,8 +698,6 @@ operator|new
 name|OptionEditor
 argument_list|<>
 argument_list|(
-name|fieldName
-argument_list|,
 operator|new
 name|MonthEditorViewModel
 argument_list|(
@@ -737,8 +733,6 @@ operator|new
 name|OptionEditor
 argument_list|<>
 argument_list|(
-name|fieldName
-argument_list|,
 operator|new
 name|GenderEditorViewModel
 argument_list|(
@@ -769,8 +763,6 @@ operator|new
 name|OptionEditor
 argument_list|<>
 argument_list|(
-name|fieldName
-argument_list|,
 operator|new
 name|EditorTypeEditorViewModel
 argument_list|(
@@ -801,8 +793,6 @@ operator|new
 name|OptionEditor
 argument_list|<>
 argument_list|(
-name|fieldName
-argument_list|,
 operator|new
 name|PaginationEditorViewModel
 argument_list|(
@@ -843,8 +833,6 @@ operator|new
 name|OptionEditor
 argument_list|<>
 argument_list|(
-name|fieldName
-argument_list|,
 operator|new
 name|PatentTypeEditorViewModel
 argument_list|(
@@ -864,8 +852,6 @@ operator|new
 name|OptionEditor
 argument_list|<>
 argument_list|(
-name|fieldName
-argument_list|,
 operator|new
 name|TypeEditorViewModel
 argument_list|(
