@@ -359,7 +359,9 @@ parameter_list|,
 name|ResourceBundle
 name|resources
 parameter_list|)
-block|{      }
+block|{
+comment|// not needed
+block|}
 block|}
 end_class
 
