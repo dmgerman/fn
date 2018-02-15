@@ -66,6 +66,14 @@ specifier|protected
 name|BibEntry
 name|currentEntry
 decl_stmt|;
+comment|/**      * Needed to track for which type of entry this tab was build and to rebuild it if the type changes      */
+DECL|field|currentEntryType
+specifier|private
+name|String
+name|currentEntryType
+init|=
+literal|""
+decl_stmt|;
 comment|/**      * Decide whether to show this tab for the given entry.      */
 DECL|method|shouldShow (BibEntry entry)
 specifier|public
@@ -116,11 +124,29 @@ name|equals
 argument_list|(
 name|currentEntry
 argument_list|)
+operator|||
+operator|!
+name|currentEntryType
+operator|.
+name|equals
+argument_list|(
+name|entry
+operator|.
+name|getType
+argument_list|()
+argument_list|)
 condition|)
 block|{
 name|currentEntry
 operator|=
 name|entry
+expr_stmt|;
+name|currentEntryType
+operator|=
+name|entry
+operator|.
+name|getType
+argument_list|()
 expr_stmt|;
 name|DefaultTaskExecutor
 operator|.
