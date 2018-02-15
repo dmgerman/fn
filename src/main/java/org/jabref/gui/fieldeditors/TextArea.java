@@ -284,7 +284,9 @@ parameter_list|(
 name|Color
 name|color
 parameter_list|)
-block|{      }
+block|{
+comment|//not needed
+block|}
 annotation|@
 name|Override
 DECL|method|getPane ()
@@ -473,7 +475,9 @@ parameter_list|(
 name|String
 name|text
 parameter_list|)
-block|{      }
+block|{
+comment|// not needed
+block|}
 annotation|@
 name|Override
 DECL|method|setEnabled (boolean enabled)
@@ -484,7 +488,9 @@ parameter_list|(
 name|boolean
 name|enabled
 parameter_list|)
-block|{      }
+block|{
+comment|// not needed
+block|}
 annotation|@
 name|Override
 DECL|method|paste (String textToInsert)
@@ -537,7 +543,9 @@ specifier|public
 name|void
 name|requestFocus
 parameter_list|()
-block|{      }
+block|{
+comment|// not needed
+block|}
 block|}
 end_class
 
