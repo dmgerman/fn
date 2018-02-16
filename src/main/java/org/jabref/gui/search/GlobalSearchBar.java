@@ -1247,6 +1247,16 @@ literal|700
 decl_stmt|;
 name|searchField
 operator|.
+name|getStyleClass
+argument_list|()
+operator|.
+name|add
+argument_list|(
+literal|"search-field"
+argument_list|)
+expr_stmt|;
+name|searchField
+operator|.
 name|setMinWidth
 argument_list|(
 literal|200
