@@ -255,7 +255,7 @@ name|String
 name|fileName
 parameter_list|)
 throws|throws
-name|IOException
+name|Exception
 block|{
 name|ImporterTestEngine
 operator|.

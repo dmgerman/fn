@@ -52,6 +52,34 @@ begin_import
 import|import
 name|org
 operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|importer
+operator|.
+name|ImportFormatPreferences
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
+operator|.
+name|BeforeEach
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|junit
 operator|.
 name|jupiter
@@ -78,11 +106,35 @@ name|MethodSource
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|mockito
+operator|.
+name|Mockito
+operator|.
+name|mock
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|mockito
+operator|.
+name|Mockito
+operator|.
+name|when
+import|;
+end_import
+
 begin_class
-DECL|class|BibTeXMLImporterTestFiles
+DECL|class|EndnoteXmlImporterTestFiles
 specifier|public
 class|class
-name|BibTeXMLImporterTestFiles
+name|EndnoteXmlImporterTestFiles
 block|{
 DECL|field|FILE_ENDING
 specifier|private
@@ -93,11 +145,11 @@ name|FILE_ENDING
 init|=
 literal|".xml"
 decl_stmt|;
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unused"
-argument_list|)
+DECL|field|preferences
+specifier|private
+name|ImportFormatPreferences
+name|preferences
+decl_stmt|;
 DECL|method|fileNames ()
 specifier|private
 specifier|static
@@ -122,7 +174,7 @@ name|name
 operator|.
 name|startsWith
 argument_list|(
-literal|"BibTeXMLImporterTest"
+literal|"EndnoteXmlImporterTest"
 argument_list|)
 operator|&&
 name|name
@@ -144,19 +196,14 @@ name|stream
 argument_list|()
 return|;
 block|}
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unused"
-argument_list|)
-DECL|method|nonBibTeXMLfileNames ()
+DECL|method|invalidFileNames ()
 specifier|private
 specifier|static
 name|Stream
 argument_list|<
 name|String
 argument_list|>
-name|nonBibTeXMLfileNames
+name|invalidFileNames
 parameter_list|()
 throws|throws
 name|IOException
@@ -174,7 +221,7 @@ name|name
 operator|.
 name|startsWith
 argument_list|(
-literal|"BibTeXMLImporterTest"
+literal|"EndnoteXmlImporterTest"
 argument_list|)
 decl_stmt|;
 return|return
@@ -190,6 +237,36 @@ argument_list|()
 return|;
 block|}
 annotation|@
+name|BeforeEach
+DECL|method|setUp ()
+name|void
+name|setUp
+parameter_list|()
+block|{
+name|preferences
+operator|=
+name|mock
+argument_list|(
+name|ImportFormatPreferences
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|when
+argument_list|(
+name|preferences
+operator|.
+name|getKeywordSeparator
+argument_list|()
+argument_list|)
+operator|.
+name|thenReturn
+argument_list|(
+literal|';'
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
 name|ParameterizedTest
 annotation|@
 name|MethodSource
@@ -197,7 +274,6 @@ argument_list|(
 literal|"fileNames"
 argument_list|)
 DECL|method|testIsRecognizedFormat (String fileName)
-specifier|public
 name|void
 name|testIsRecognizedFormat
 parameter_list|(
@@ -212,8 +288,10 @@ operator|.
 name|testIsRecognizedFormat
 argument_list|(
 operator|new
-name|BibTeXMLImporter
-argument_list|()
+name|EndnoteXmlImporter
+argument_list|(
+name|preferences
+argument_list|)
 argument_list|,
 name|fileName
 argument_list|)
@@ -224,10 +302,9 @@ name|ParameterizedTest
 annotation|@
 name|MethodSource
 argument_list|(
-literal|"nonBibTeXMLfileNames"
+literal|"invalidFileNames"
 argument_list|)
 DECL|method|testIsNotRecognizedFormat (String fileName)
-specifier|public
 name|void
 name|testIsNotRecognizedFormat
 parameter_list|(
@@ -242,8 +319,10 @@ operator|.
 name|testIsNotRecognizedFormat
 argument_list|(
 operator|new
-name|BibTeXMLImporter
-argument_list|()
+name|EndnoteXmlImporter
+argument_list|(
+name|preferences
+argument_list|)
 argument_list|,
 name|fileName
 argument_list|)
@@ -257,7 +336,6 @@ argument_list|(
 literal|"fileNames"
 argument_list|)
 DECL|method|testImportEntries (String fileName)
-specifier|public
 name|void
 name|testImportEntries
 parameter_list|(
@@ -272,8 +350,10 @@ operator|.
 name|testImportEntries
 argument_list|(
 operator|new
-name|BibTeXMLImporter
-argument_list|()
+name|EndnoteXmlImporter
+argument_list|(
+name|preferences
+argument_list|)
 argument_list|,
 name|fileName
 argument_list|,
