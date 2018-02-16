@@ -882,20 +882,6 @@ name|gui
 operator|.
 name|mergeentries
 operator|.
-name|MergeEntriesDialog
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|mergeentries
-operator|.
 name|MergeWithFetchedEntryAction
 import|;
 end_import
@@ -3101,47 +3087,9 @@ unit|})
 empty_stmt|;
 end_empty_stmt
 
-begin_expr_stmt
-name|actions
-operator|.
-name|put
-argument_list|(
-name|Actions
-operator|.
-name|findUnlinkedFiles
-argument_list|,
-call|(
-name|BaseAction
-call|)
-argument_list|()
-operator|->
-block|{
-name|final
-name|FindUnlinkedFilesDialog
-name|dialog
-operator|=
-operator|new
-name|FindUnlinkedFilesDialog
-argument_list|(
-literal|null
-argument_list|,
-name|frame
-argument_list|,
-name|BasePanel
-operator|.
-name|this
-argument_list|)
-block|;
-name|dialog
-operator|.
-name|setVisible
-argument_list|(
-literal|true
-argument_list|)
-block|;         }
-argument_list|)
-expr_stmt|;
-end_expr_stmt
+begin_comment
+comment|/*   actions.put(Actions.findUnlinkedFiles, (BaseAction) () -> {             final FindUnlinkedFilesDialog dialog = new FindUnlinkedFilesDialog(null, frame, BasePanel.this);             dialog.setVisible(true);         });*/
+end_comment
 
 begin_comment
 comment|// The action for auto-generating keys.
@@ -3559,30 +3507,9 @@ argument_list|)
 expr_stmt|;
 end_expr_stmt
 
-begin_expr_stmt
-name|actions
-operator|.
-name|put
-argument_list|(
-name|Actions
-operator|.
-name|MERGE_ENTRIES
-argument_list|,
-call|(
-name|BaseAction
-call|)
-argument_list|()
-operator|->
-operator|new
-name|MergeEntriesDialog
-argument_list|(
-name|BasePanel
-operator|.
-name|this
-argument_list|)
-argument_list|)
-expr_stmt|;
-end_expr_stmt
+begin_comment
+comment|//actions.put(Actions.MERGE_ENTRIES, (BaseAction) () -> new MergeEntriesDialog(BasePanel.this));
+end_comment
 
 begin_expr_stmt
 name|actions
@@ -4331,37 +4258,9 @@ unit|})
 empty_stmt|;
 end_empty_stmt
 
-begin_expr_stmt
-name|actions
-operator|.
-name|put
-argument_list|(
-name|Actions
-operator|.
-name|DUPLI_CHECK
-argument_list|,
-call|(
-name|BaseAction
-call|)
-argument_list|()
-operator|->
-name|JabRefExecutorService
-operator|.
-name|INSTANCE
-operator|.
-name|execute
-argument_list|(
-operator|new
-name|DuplicateSearch
-argument_list|(
-name|BasePanel
-operator|.
-name|this
-argument_list|)
-argument_list|)
-argument_list|)
-expr_stmt|;
-end_expr_stmt
+begin_comment
+comment|/*     actions.put(Actions.DUPLI_CHECK,                 (BaseAction) () -> JabRefExecutorService.INSTANCE.execute(new DuplicateSearch(BasePanel.this)));         */
+end_comment
 
 begin_expr_stmt
 name|actions

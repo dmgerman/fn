@@ -32,6 +32,18 @@ name|jabref
 operator|.
 name|gui
 operator|.
+name|JabRefFrame
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
 name|dbproperties
 operator|.
 name|DatabasePropertiesDialog
@@ -57,19 +69,22 @@ specifier|final
 name|BasePanel
 name|basePanel
 decl_stmt|;
-DECL|method|LibraryPropertiesAction (BasePanel basePanel)
+DECL|method|LibraryPropertiesAction (JabRefFrame jabrefFrame)
 specifier|public
 name|LibraryPropertiesAction
 parameter_list|(
-name|BasePanel
-name|basePanel
+name|JabRefFrame
+name|jabrefFrame
 parameter_list|)
 block|{
 name|this
 operator|.
 name|basePanel
 operator|=
-name|basePanel
+name|jabrefFrame
+operator|.
+name|getCurrentBasePanel
+argument_list|()
 expr_stmt|;
 block|}
 annotation|@

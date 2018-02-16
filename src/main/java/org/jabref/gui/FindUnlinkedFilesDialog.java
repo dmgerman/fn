@@ -1233,7 +1233,7 @@ specifier|private
 name|boolean
 name|checkBoxWhyIsThereNoGetSelectedStupidSwing
 decl_stmt|;
-DECL|method|FindUnlinkedFilesDialog (Frame owner, JabRefFrame frame, BasePanel panel)
+DECL|method|FindUnlinkedFilesDialog (Frame owner, JabRefFrame frame)
 specifier|public
 name|FindUnlinkedFilesDialog
 parameter_list|(
@@ -1242,9 +1242,6 @@ name|owner
 parameter_list|,
 name|JabRefFrame
 name|frame
-parameter_list|,
-name|BasePanel
-name|panel
 parameter_list|)
 block|{
 name|super
@@ -1276,7 +1273,10 @@ argument_list|()
 expr_stmt|;
 name|databaseContext
 operator|=
-name|panel
+name|frame
+operator|.
+name|getCurrentBasePanel
+argument_list|()
 operator|.
 name|getDatabaseContext
 argument_list|()
