@@ -368,6 +368,7 @@ argument_list|(
 name|abbreviation
 argument_list|)
 expr_stmt|;
+comment|// Abbreviation equality is tested on name only, so we might have to remove an old abbreviation
 if|if
 condition|(
 name|abbreviations
@@ -378,37 +379,10 @@ name|abbreviation
 argument_list|)
 condition|)
 block|{
-name|Abbreviation
-name|previous
-init|=
-name|getAbbreviation
-argument_list|(
-name|abbreviation
-operator|.
-name|getName
-argument_list|()
-argument_list|)
-operator|.
-name|get
-argument_list|()
-decl_stmt|;
 name|abbreviations
 operator|.
 name|remove
 argument_list|(
-name|previous
-argument_list|)
-expr_stmt|;
-name|LOGGER
-operator|.
-name|info
-argument_list|(
-literal|"Duplicate journal abbreviation - old one will be overwritten by new one\nOLD: "
-operator|+
-name|previous
-operator|+
-literal|"\nNEW: "
-operator|+
 name|abbreviation
 argument_list|)
 expr_stmt|;
