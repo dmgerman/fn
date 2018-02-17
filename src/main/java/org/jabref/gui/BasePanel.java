@@ -3142,11 +3142,6 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
-name|frame
-operator|.
-name|block
-argument_list|()
-expr_stmt|;
 name|output
 argument_list|(
 name|formatOutputMessage
@@ -3418,11 +3413,6 @@ condition|(
 name|canceled
 condition|)
 block|{
-name|frame
-operator|.
-name|unblock
-argument_list|()
-expr_stmt|;
 return|return;
 block|}
 name|markBaseChanged
@@ -3449,11 +3439,6 @@ argument_list|,
 name|numSelected
 argument_list|)
 argument_list|)
-expr_stmt|;
-name|frame
-operator|.
-name|unblock
-argument_list|()
 expr_stmt|;
 block|}
 block|}
@@ -4894,13 +4879,6 @@ name|setPreviewActiveBasePanels
 argument_list|(
 name|enabled
 argument_list|)
-argument_list|)
-block|;
-name|frame
-operator|.
-name|setPreviewToggle
-argument_list|(
-name|enabled
 argument_list|)
 block|;         }
 argument_list|)
@@ -7037,14 +7015,6 @@ name|Throwable
 name|ex
 parameter_list|)
 block|{
-comment|// If the action has blocked the JabRefFrame before crashing, we need to unblock it.
-comment|// The call to unblock will simply hide the glasspane, so there is no harm in calling
-comment|// it even if the frame hasn't been blocked.
-name|frame
-operator|.
-name|unblock
-argument_list|()
-expr_stmt|;
 name|LOGGER
 operator|.
 name|error
@@ -7089,11 +7059,6 @@ block|{
 name|SaveSession
 name|session
 decl_stmt|;
-name|frame
-operator|.
-name|block
-argument_list|()
-expr_stmt|;
 specifier|final
 name|String
 name|SAVE_DATABASE
@@ -7302,14 +7267,6 @@ argument_list|(
 literal|"rt"
 argument_list|)
 throw|;
-block|}
-finally|finally
-block|{
-name|frame
-operator|.
-name|unblock
-argument_list|()
-expr_stmt|;
 block|}
 name|boolean
 name|commit

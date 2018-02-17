@@ -1092,12 +1092,6 @@ block|{
 name|SaveSession
 name|session
 decl_stmt|;
-comment|// block user input
-name|frame
-operator|.
-name|block
-argument_list|()
-expr_stmt|;
 try|try
 block|{
 name|SavePreferences
@@ -1330,15 +1324,6 @@ argument_list|(
 literal|"rt"
 argument_list|)
 throw|;
-block|}
-finally|finally
-block|{
-comment|// re-enable user input
-name|frame
-operator|.
-name|unblock
-argument_list|()
-expr_stmt|;
 block|}
 comment|// handle encoding problems
 name|boolean

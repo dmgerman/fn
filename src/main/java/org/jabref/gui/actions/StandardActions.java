@@ -1818,6 +1818,18 @@ operator|.
 name|PREFERENCES
 argument_list|)
 block|,
+DECL|enumConstant|MANAGE_CITE_KEY_PATTERNS
+DECL|enumConstant|Localization.lang
+name|MANAGE_CITE_KEY_PATTERNS
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"BibTeX key patterns"
+argument_list|)
+argument_list|)
+block|,
 DECL|enumConstant|TOGGLE_PREVIEW
 DECL|enumConstant|Localization.lang
 DECL|enumConstant|IconTheme.JabRefIcons.TOGGLE_ENTRY_PREVIEW

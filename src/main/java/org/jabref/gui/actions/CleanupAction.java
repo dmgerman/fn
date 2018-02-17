@@ -393,11 +393,6 @@ literal|true
 expr_stmt|;
 return|return;
 block|}
-name|frame
-operator|.
-name|block
-argument_list|()
-expr_stmt|;
 name|panel
 operator|.
 name|output
@@ -676,11 +671,6 @@ condition|(
 name|canceled
 condition|)
 block|{
-name|frame
-operator|.
-name|unblock
-argument_list|()
-expr_stmt|;
 return|return;
 block|}
 if|if
@@ -795,11 +785,6 @@ name|output
 argument_list|(
 name|message
 argument_list|)
-expr_stmt|;
-name|frame
-operator|.
-name|unblock
-argument_list|()
 expr_stmt|;
 block|}
 DECL|method|showDialog (CleanupPresetPanel presetPanel)
