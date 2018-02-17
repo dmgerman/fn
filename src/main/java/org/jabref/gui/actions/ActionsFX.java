@@ -2248,23 +2248,6 @@ operator|.
 name|AUTOGENERATE_BIBTEX_KEYS
 argument_list|)
 block|,
-DECL|enumConstant|SYNCHRONIZE_FILE_LINKS
-DECL|enumConstant|Localization.lang
-DECL|enumConstant|KeyBinding.SYNCHRONIZE_FILES
-name|SYNCHRONIZE_FILE_LINKS
-argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Synchronize file links"
-argument_list|)
-argument_list|,
-name|KeyBinding
-operator|.
-name|SYNCHRONIZE_FILES
-argument_list|)
-block|,
 DECL|enumConstant|DOWNLOAD_FULL_TEXT
 DECL|enumConstant|Localization.menuTitle
 DECL|enumConstant|KeyBinding.DOWNLOAD_FULL_TEXT
