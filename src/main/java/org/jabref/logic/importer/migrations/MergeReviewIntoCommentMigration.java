@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|org.jabref.logic.importer
+DECL|package|org.jabref.logic.importer.migrations
 package|package
 name|org
 operator|.
@@ -9,6 +9,8 @@ operator|.
 name|logic
 operator|.
 name|importer
+operator|.
+name|migrations
 package|;
 end_package
 
@@ -52,9 +54,9 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|l10n
+name|importer
 operator|.
-name|Localization
+name|ParserResult
 import|;
 end_import
 
@@ -64,9 +66,11 @@ name|org
 operator|.
 name|jabref
 operator|.
-name|migrations
+name|logic
 operator|.
-name|PostOpenMigration
+name|l10n
+operator|.
+name|Localization
 import|;
 end_import
 
@@ -123,8 +127,6 @@ DECL|class|MergeReviewIntoCommentMigration
 specifier|public
 class|class
 name|MergeReviewIntoCommentMigration
-implements|implements
-name|PostOpenMigration
 block|{
 DECL|field|LOGGER
 specifier|public
@@ -142,8 +144,46 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-annotation|@
-name|Override
+DECL|method|needsMigration (ParserResult parserResult)
+specifier|public
+specifier|static
+name|boolean
+name|needsMigration
+parameter_list|(
+name|ParserResult
+name|parserResult
+parameter_list|)
+block|{
+return|return
+name|parserResult
+operator|.
+name|getDatabase
+argument_list|()
+operator|.
+name|getEntries
+argument_list|()
+operator|.
+name|stream
+argument_list|()
+operator|.
+name|anyMatch
+argument_list|(
+name|bibEntry
+lambda|->
+name|bibEntry
+operator|.
+name|getField
+argument_list|(
+name|FieldName
+operator|.
+name|REVIEW
+argument_list|)
+operator|.
+name|isPresent
+argument_list|()
+argument_list|)
+return|;
+block|}
 DECL|method|performMigration (ParserResult parserResult)
 specifier|public
 name|void

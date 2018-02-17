@@ -36,7 +36,7 @@ name|logic
 operator|.
 name|importer
 operator|.
-name|MergeReviewIntoCommentMigration
+name|ParserResult
 import|;
 end_import
 
@@ -50,7 +50,9 @@ name|logic
 operator|.
 name|importer
 operator|.
-name|ParserResult
+name|migrations
+operator|.
+name|MergeReviewIntoCommentMigration
 import|;
 end_import
 
@@ -74,16 +76,12 @@ name|parserResult
 parameter_list|)
 block|{
 return|return
-operator|!
 name|MergeReviewIntoCommentMigration
 operator|.
-name|collectConflicts
+name|needsMigration
 argument_list|(
 name|parserResult
 argument_list|)
-operator|.
-name|isEmpty
-argument_list|()
 return|;
 block|}
 annotation|@
@@ -100,6 +98,20 @@ name|ParserResult
 name|parserResult
 parameter_list|)
 block|{
+name|MergeReviewIntoCommentMigration
+name|migration
+init|=
+operator|new
+name|MergeReviewIntoCommentMigration
+argument_list|()
+decl_stmt|;
+name|migration
+operator|.
+name|performMigration
+argument_list|(
+name|parserResult
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 operator|new
@@ -119,9 +131,7 @@ argument_list|)
 argument_list|)
 condition|)
 block|{
-operator|new
-name|MergeReviewIntoCommentMigration
-argument_list|()
+name|migration
 operator|.
 name|performConflictingMigration
 argument_list|(

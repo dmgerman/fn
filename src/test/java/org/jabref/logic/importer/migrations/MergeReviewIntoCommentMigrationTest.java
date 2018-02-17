@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|org.jabref.logic.importer
+DECL|package|org.jabref.logic.importer.migrations
 package|package
 name|org
 operator|.
@@ -9,6 +9,8 @@ operator|.
 name|logic
 operator|.
 name|importer
+operator|.
+name|migrations
 package|;
 end_package
 
@@ -19,6 +21,20 @@ operator|.
 name|util
 operator|.
 name|Collections
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|importer
+operator|.
+name|ParserResult
 import|;
 end_import
 

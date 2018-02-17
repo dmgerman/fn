@@ -38,7 +38,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Arrays
+name|Collections
 import|;
 end_import
 
@@ -545,16 +545,12 @@ name|PostOpenMigration
 argument_list|>
 name|postOpenMigrations
 init|=
-name|Arrays
+name|Collections
 operator|.
-name|asList
+name|singletonList
 argument_list|(
 operator|new
 name|ConvertLegacyExplicitGroups
-argument_list|()
-argument_list|,
-operator|new
-name|MergeReviewIntoCommentMigration
 argument_list|()
 argument_list|)
 decl_stmt|;
