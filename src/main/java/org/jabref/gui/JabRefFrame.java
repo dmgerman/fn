@@ -720,20 +720,6 @@ name|gui
 operator|.
 name|actions
 operator|.
-name|ActionsFX
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|actions
-operator|.
 name|AutoLinkFilesAction
 import|;
 end_import
@@ -1127,6 +1113,20 @@ operator|.
 name|actions
 operator|.
 name|SimpleCommand
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|actions
+operator|.
+name|StandardActions
 import|;
 end_import
 
@@ -2584,11 +2584,6 @@ DECL|field|rankSubMenu
 specifier|private
 name|JMenu
 name|rankSubMenu
-decl_stmt|;
-DECL|field|pushExternalButton
-specifier|private
-name|PushToApplicationButton
-name|pushExternalButton
 decl_stmt|;
 DECL|field|pushApplications
 specifier|private
@@ -4421,19 +4416,6 @@ operator|new
 name|PushToApplications
 argument_list|()
 expr_stmt|;
-name|pushExternalButton
-operator|=
-operator|new
-name|PushToApplicationButton
-argument_list|(
-name|this
-argument_list|,
-name|pushApplications
-operator|.
-name|getApplications
-argument_list|()
-argument_list|)
-expr_stmt|;
 comment|//createToolBar();
 name|BorderPane
 name|head
@@ -4908,7 +4890,7 @@ name|factory
 operator|.
 name|createIconButton
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|NEW_LIBRARY_BIBLATEX
 argument_list|,
@@ -4932,7 +4914,7 @@ name|factory
 operator|.
 name|createIconButton
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|NEW_LIBRARY_BIBTEX
 argument_list|,
@@ -4960,7 +4942,7 @@ name|factory
 operator|.
 name|createIconButton
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|OPEN_LIBRARY
 argument_list|,
@@ -4975,7 +4957,7 @@ name|factory
 operator|.
 name|createIconButton
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|SAVE_LIBRARY
 argument_list|,
@@ -5052,7 +5034,7 @@ name|factory
 operator|.
 name|createIconButton
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|NEW_ENTRY
 argument_list|,
@@ -5516,7 +5498,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|NEW_LIBRARY_BIBTEX
 argument_list|,
@@ -5535,7 +5517,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|NEW_LIBRARY_BIBLATEX
 argument_list|,
@@ -5554,7 +5536,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|OPEN_LIBRARY
 argument_list|,
@@ -5566,7 +5548,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|SAVE_LIBRARY
 argument_list|,
@@ -5589,7 +5571,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|SAVE_LIBRARY_AS
 argument_list|,
@@ -5612,7 +5594,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|SAVE_ALL
 argument_list|,
@@ -5627,7 +5609,7 @@ name|factory
 operator|.
 name|createSubMenu
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|IMPORT_EXPORT
 argument_list|,
@@ -5635,7 +5617,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|MERGE_DATABASE
 argument_list|,
@@ -5659,7 +5641,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|IMPORT_INTO_CURRENT_LIBRARY
 argument_list|,
@@ -5676,7 +5658,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|IMPORT_INTO_NEW_LIBRARY
 argument_list|,
@@ -5693,7 +5675,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|EXPORT_ALL
 argument_list|,
@@ -5710,7 +5692,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|EXPORT_SELECTED
 argument_list|,
@@ -5727,7 +5709,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|SAVE_SELECTED_AS_PLAIN_BIBTEX
 argument_list|,
@@ -5755,7 +5737,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|CONNECT_TO_SHARED_DB
 argument_list|,
@@ -5770,7 +5752,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|PULL_CHANGES_FROM_SHARED_DB
 argument_list|,
@@ -5803,7 +5785,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|CLOSE_LIBRARY
 argument_list|,
@@ -5816,7 +5798,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|QUIT
 argument_list|,
@@ -5837,7 +5819,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|UNDO
 argument_list|,
@@ -5860,7 +5842,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|REDO
 argument_list|,
@@ -5887,7 +5869,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|CUT
 argument_list|,
@@ -5904,7 +5886,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|DELETE_ENTRY
 argument_list|,
@@ -5921,7 +5903,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|COPY
 argument_list|,
@@ -5938,7 +5920,7 @@ name|factory
 operator|.
 name|createSubMenu
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|COPY_MORE
 argument_list|,
@@ -5946,7 +5928,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|COPY_TITLE
 argument_list|,
@@ -5969,7 +5951,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|COPY_KEY
 argument_list|,
@@ -5992,7 +5974,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|COPY_CITE_KEY
 argument_list|,
@@ -6015,7 +5997,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|COPY_KEY_AND_TITLE
 argument_list|,
@@ -6038,7 +6020,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|COPY_KEY_AND_LINK
 argument_list|,
@@ -6061,7 +6043,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|COPY_CITATION_PREVIEW
 argument_list|,
@@ -6084,7 +6066,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|EXPORT_SELECTED_TO_CLIPBOARD
 argument_list|,
@@ -6108,7 +6090,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|PASTE
 argument_list|,
@@ -6129,7 +6111,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|SEND_AS_EMAIL
 argument_list|,
@@ -6166,7 +6148,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|MANAGE_KEYWORDS
 argument_list|,
@@ -6181,7 +6163,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|REPLACE_ALL
 argument_list|,
@@ -6204,7 +6186,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|MASS_SET_FIELDS
 argument_list|,
@@ -6227,7 +6209,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|NEW_ARTICLE
 argument_list|,
@@ -6246,7 +6228,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|NEW_ENTRY
 argument_list|,
@@ -6261,7 +6243,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|NEW_ENTRY_FROM_PLAINTEX
 argument_list|,
@@ -6287,7 +6269,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|LIBRARY_PROPERTIES
 argument_list|,
@@ -6302,7 +6284,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|EDIT_PREAMBLE
 argument_list|,
@@ -6325,7 +6307,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|EDIT_STRINGS
 argument_list|,
@@ -6352,7 +6334,7 @@ name|factory
 operator|.
 name|createSubMenu
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|LOOKUP_DOC_IDENTIFIER
 argument_list|)
@@ -6389,7 +6371,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|LOOKUP_DOC_IDENTIFIER
 argument_list|,
@@ -6416,7 +6398,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|FIND_DUPLICATES
 argument_list|,
@@ -6431,7 +6413,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|MERGE_ENTRIES
 argument_list|,
@@ -6450,7 +6432,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|RESOLVE_DUPLICATE_KEYS
 argument_list|,
@@ -6473,7 +6455,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|CHECK_INTEGRITY
 argument_list|,
@@ -6488,7 +6470,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|CLEANUP_ENTRIES
 argument_list|,
@@ -6511,7 +6493,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|GENERATE_CITE_KEY
 argument_list|,
@@ -6538,7 +6520,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|SYNCHRONIZE_FILE_LINKS
 argument_list|,
@@ -6561,7 +6543,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|SET_FILE_LINKS
 argument_list|,
@@ -6574,7 +6556,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|DOWNLOAD_FULL_TEXT
 argument_list|,
@@ -6597,7 +6579,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|FIND_UNLINKED_FILES
 argument_list|,
@@ -6688,7 +6670,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|TOGGLE_PREVIEW
 argument_list|,
@@ -6711,7 +6693,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|EDIT_ENTRY
 argument_list|,
@@ -6734,7 +6716,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|SHOW_PDV_VIEWER
 argument_list|,
@@ -6751,7 +6733,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|SELECT_ALL
 argument_list|,
@@ -6778,7 +6760,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|NEXT_PREVIEW_STYLE
 argument_list|,
@@ -6801,7 +6783,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|PREVIOUS_PREVIEW_STYLE
 argument_list|,
@@ -6821,6 +6803,20 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|PushToApplicationButton
+name|pushToExternal
+init|=
+operator|new
+name|PushToApplicationButton
+argument_list|(
+name|this
+argument_list|,
+name|pushApplications
+operator|.
+name|getApplications
+argument_list|()
+argument_list|)
+decl_stmt|;
 name|tools
 operator|.
 name|getItems
@@ -6832,7 +6828,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|NEW_SUB_LIBRARY_FROM_AUX
 argument_list|,
@@ -6847,7 +6843,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|WRITE_XMP
 argument_list|,
@@ -6881,13 +6877,23 @@ name|getToggleCommand
 argument_list|()
 argument_list|)
 argument_list|,
-comment|//TODO: Push Entries
-comment|// tools.add(pushExternalButton.getMenuAction());
 name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|pushToExternal
+operator|.
+name|getMenuAction
+argument_list|()
+argument_list|,
+name|pushToExternal
+argument_list|)
+argument_list|,
+name|factory
+operator|.
+name|createMenuItem
+argument_list|(
+name|StandardActions
 operator|.
 name|OPEN_FOLDER
 argument_list|,
@@ -6910,7 +6916,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|OPEN_FILE
 argument_list|,
@@ -6933,7 +6939,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|OPEN_URL
 argument_list|,
@@ -6956,7 +6962,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|OPEN_CONSOLE
 argument_list|,
@@ -6979,7 +6985,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|COPY_LINKED_FILES
 argument_list|,
@@ -6994,7 +7000,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|ABBREVIATE_ISO
 argument_list|,
@@ -7017,7 +7023,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|ABBREVIATE_MEDLINE
 argument_list|,
@@ -7040,7 +7046,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|UNABBREVIATE
 argument_list|,
@@ -7071,7 +7077,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|SHOW_PREFS
 argument_list|,
@@ -7086,7 +7092,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|SETUP_GENERAL_FIELDS
 argument_list|,
@@ -7101,7 +7107,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|MANAGE_CUSTOM_IMPORTS
 argument_list|,
@@ -7116,7 +7122,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|MANAGE_CUSTOM_EXPORTS
 argument_list|,
@@ -7131,7 +7137,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|MANAGE_EXTERNAL_FILETYPES
 argument_list|,
@@ -7144,7 +7150,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|MANAGE_JOURNALS
 argument_list|,
@@ -7157,7 +7163,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|CUSTOMIZE_KEYBINDING
 argument_list|,
@@ -7170,7 +7176,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|MANAGE_PROTECTED_TERMS
 argument_list|,
@@ -7189,7 +7195,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|MANAGE_CONTENT_SELECTORS
 argument_list|,
@@ -7220,7 +7226,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|HELP
 argument_list|,
@@ -7234,7 +7240,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|OPEN_FORUM
 argument_list|,
@@ -7253,7 +7259,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|ERROR_CONSOLE
 argument_list|,
@@ -7270,7 +7276,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|SEARCH_FOR_UPDATES
 argument_list|,
@@ -7283,7 +7289,7 @@ name|factory
 operator|.
 name|createSubMenu
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|WEB_MENU
 argument_list|,
@@ -7291,7 +7297,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|OPEN_WEBPAGE
 argument_list|,
@@ -7306,7 +7312,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|OPEN_BLOG
 argument_list|,
@@ -7321,7 +7327,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|OPEN_FACEBOOK
 argument_list|,
@@ -7336,7 +7342,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|OPEN_TWITTER
 argument_list|,
@@ -7355,7 +7361,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|FORK_ME
 argument_list|,
@@ -7370,7 +7376,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|OPEN_DEV_VERSION_LINK
 argument_list|,
@@ -7385,7 +7391,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|OPEN_CHANGELOG
 argument_list|,
@@ -7404,7 +7410,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|DONATE
 argument_list|,
@@ -7420,7 +7426,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|ABOUT
 argument_list|,

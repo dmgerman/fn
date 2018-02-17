@@ -14,11 +14,13 @@ end_package
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|swing
+name|jabref
 operator|.
-name|Icon
+name|gui
+operator|.
+name|IconTheme
 import|;
 end_import
 
@@ -30,7 +32,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|IconTheme
+name|JabRefIcon
 import|;
 end_import
 
@@ -76,17 +78,16 @@ annotation|@
 name|Override
 DECL|method|getIcon ()
 specifier|public
-name|Icon
+name|JabRefIcon
 name|getIcon
 parameter_list|()
 block|{
 return|return
 name|IconTheme
 operator|.
-name|getImage
-argument_list|(
-literal|"texmaker"
-argument_list|)
+name|JabRefIcons
+operator|.
+name|APPLICATION_TEXMAKER
 return|;
 block|}
 annotation|@
