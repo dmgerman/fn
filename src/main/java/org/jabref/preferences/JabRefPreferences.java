@@ -7569,7 +7569,7 @@ literal|"Abstract"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// Entry editor tab 2: Review Field - used for research comments, etc.
+comment|// Entry editor tab 2: Comments Field - used for research comments, etc.
 name|defaults
 operator|.
 name|put
@@ -7580,7 +7580,7 @@ literal|"_def2"
 argument_list|,
 name|FieldName
 operator|.
-name|REVIEW
+name|COMMENT
 argument_list|)
 expr_stmt|;
 name|defaults
@@ -7595,7 +7595,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Review"
+literal|"Comments"
 argument_list|)
 argument_list|)
 expr_stmt|;

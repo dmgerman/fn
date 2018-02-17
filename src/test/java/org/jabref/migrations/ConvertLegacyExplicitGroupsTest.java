@@ -1,16 +1,12 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|org.jabref.logic.importer.util
+DECL|package|org.jabref.migrations
 package|package
 name|org
 operator|.
 name|jabref
 operator|.
-name|logic
-operator|.
-name|importer
-operator|.
-name|util
+name|migrations
 package|;
 end_package
 
@@ -170,7 +166,7 @@ name|ConvertLegacyExplicitGroupsTest
 block|{
 DECL|field|action
 specifier|private
-name|PostOpenAction
+name|PostOpenMigration
 name|action
 decl_stmt|;
 DECL|field|entry
@@ -259,7 +255,7 @@ argument_list|)
 decl_stmt|;
 name|action
 operator|.
-name|performAction
+name|performMigration
 argument_list|(
 name|parserResult
 argument_list|)
@@ -307,7 +303,7 @@ argument_list|)
 decl_stmt|;
 name|action
 operator|.
-name|performAction
+name|performMigration
 argument_list|(
 name|parserResult
 argument_list|)
@@ -384,7 +380,7 @@ argument_list|)
 decl_stmt|;
 name|action
 operator|.
-name|performAction
+name|performMigration
 argument_list|(
 name|parserResult
 argument_list|)

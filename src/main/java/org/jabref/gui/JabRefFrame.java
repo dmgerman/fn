@@ -844,20 +844,6 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|autosaveandbackup
-operator|.
-name|AutosaveUIManager
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
 name|bibtexkeypattern
 operator|.
 name|BibtexKeyPatternDialog
@@ -903,6 +889,20 @@ operator|.
 name|dbproperties
 operator|.
 name|DatabasePropertiesDialog
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|dialogs
+operator|.
+name|AutosaveUIManager
 import|;
 end_import
 
@@ -8100,7 +8100,7 @@ name|i
 argument_list|)
 return|;
 block|}
-comment|/**      * Returns a list of BasePanel.      *      */
+comment|/**      * Returns a list of BasePanel.      */
 DECL|method|getBasePanelList ()
 specifier|public
 name|List
@@ -10088,13 +10088,13 @@ name|mb
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|addParserResult (ParserResult pr, boolean focusPanel)
+DECL|method|addParserResult (ParserResult parserResult, boolean focusPanel)
 specifier|public
 name|void
 name|addParserResult
 parameter_list|(
 name|ParserResult
-name|pr
+name|parserResult
 parameter_list|,
 name|boolean
 name|focusPanel
@@ -10102,7 +10102,7 @@ parameter_list|)
 block|{
 if|if
 condition|(
-name|pr
+name|parserResult
 operator|.
 name|toOpenTab
 argument_list|()
@@ -10123,9 +10123,11 @@ literal|null
 condition|)
 block|{
 comment|// There is no open tab to add to, so we create a new tab:
+name|panel
+operator|=
 name|addTab
 argument_list|(
-name|pr
+name|parserResult
 operator|.
 name|getDatabaseContext
 argument_list|()
@@ -10133,6 +10135,20 @@ argument_list|,
 name|focusPanel
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|parserResult
+operator|.
+name|wasChangedOnMigration
+argument_list|()
+condition|)
+block|{
+name|panel
+operator|.
+name|markBaseChanged
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 else|else
 block|{
@@ -10146,7 +10162,7 @@ operator|new
 name|ArrayList
 argument_list|<>
 argument_list|(
-name|pr
+name|parserResult
 operator|.
 name|getDatabase
 argument_list|()
@@ -10195,7 +10211,7 @@ argument_list|()
 operator|.
 name|equals
 argument_list|(
-name|pr
+name|parserResult
 operator|.
 name|getFile
 argument_list|()
@@ -10226,16 +10242,33 @@ expr_stmt|;
 block|}
 else|else
 block|{
+name|BasePanel
+name|basePanel
+init|=
 name|addTab
 argument_list|(
-name|pr
+name|parserResult
 operator|.
 name|getDatabaseContext
 argument_list|()
 argument_list|,
 name|focusPanel
 argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|parserResult
+operator|.
+name|wasChangedOnMigration
+argument_list|()
+condition|)
+block|{
+name|basePanel
+operator|.
+name|markBaseChanged
+argument_list|()
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}
@@ -11817,7 +11850,7 @@ block|}
 block|}
 DECL|method|addTab (BasePanel basePanel, boolean raisePanel)
 specifier|public
-name|void
+name|BasePanel
 name|addTab
 parameter_list|(
 name|BasePanel
@@ -11921,6 +11954,9 @@ argument_list|(
 name|basePanel
 argument_list|)
 expr_stmt|;
+return|return
+name|basePanel
+return|;
 block|}
 DECL|method|trackOpenNewDatabase (BasePanel basePanel)
 specifier|private
@@ -12020,7 +12056,7 @@ name|databaseContext
 argument_list|)
 expr_stmt|;
 name|BasePanel
-name|bp
+name|basePanel
 init|=
 operator|new
 name|BasePanel
@@ -12034,13 +12070,13 @@ argument_list|)
 decl_stmt|;
 name|addTab
 argument_list|(
-name|bp
+name|basePanel
 argument_list|,
 name|raisePanel
 argument_list|)
 expr_stmt|;
 return|return
-name|bp
+name|basePanel
 return|;
 block|}
 DECL|method|readyForAutosave (BibDatabaseContext context)
@@ -12679,7 +12715,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Return a boolean, if the selected entry have file      * @param selectEntryList A selected entries list of the current base pane      * @return true, if the selected entry contains file.      * false, if multiple entries are selected or the selected entry doesn't contains file      */
+comment|/**      * Return a boolean, if the selected entry have file      *      * @param selectEntryList A selected entries list of the current base pane      * @return true, if the selected entry contains file.      * false, if multiple entries are selected or the selected entry doesn't contains file      */
 DECL|method|isExistFile (List<BibEntry> selectEntryList)
 specifier|private
 name|boolean
@@ -12730,7 +12766,7 @@ return|return
 literal|false
 return|;
 block|}
-comment|/**      * Return a boolean, if the selected entry have url or doi      * @param selectEntryList A selected entries list of the current base pane      * @return true, if the selected entry contains url or doi.      * false, if multiple entries are selected or the selected entry doesn't contains url or doi      */
+comment|/**      * Return a boolean, if the selected entry have url or doi      *      * @param selectEntryList A selected entries list of the current base pane      * @return true, if the selected entry contains url or doi.      * false, if multiple entries are selected or the selected entry doesn't contains url or doi      */
 DECL|method|isExistURLorDOI (List<BibEntry> selectEntryList)
 specifier|private
 name|boolean
@@ -14413,9 +14449,9 @@ name|description
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|actionPerformed (ActionEvent e)
 annotation|@
 name|Override
+DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
 name|actionPerformed

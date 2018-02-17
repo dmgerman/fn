@@ -184,7 +184,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|autosaveandbackup
+name|dialogs
 operator|.
 name|BackupUIManager
 import|;

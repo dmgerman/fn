@@ -1029,7 +1029,7 @@ argument_list|()
 operator|.
 name|add
 argument_list|(
-name|previousPreviewLayout
+name|nextPreviewLayout
 argument_list|)
 expr_stmt|;
 name|menu
@@ -1039,7 +1039,7 @@ argument_list|()
 operator|.
 name|add
 argument_list|(
-name|nextPreviewLayout
+name|previousPreviewLayout
 argument_list|)
 expr_stmt|;
 return|return
