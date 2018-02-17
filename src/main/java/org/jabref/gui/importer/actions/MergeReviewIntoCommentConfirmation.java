@@ -135,10 +135,7 @@ argument_list|>
 name|conflicts
 parameter_list|)
 block|{
-name|List
-argument_list|<
 name|String
-argument_list|>
 name|bibKeys
 init|=
 name|conflicts
@@ -171,8 +168,10 @@ name|collect
 argument_list|(
 name|Collectors
 operator|.
-name|toList
-argument_list|()
+name|joining
+argument_list|(
+literal|",\n"
+argument_list|)
 argument_list|)
 decl_stmt|;
 name|int
@@ -184,14 +183,7 @@ name|showConfirmDialog
 argument_list|(
 name|panel
 argument_list|,
-name|String
-operator|.
-name|join
-argument_list|(
-literal|",\n"
-argument_list|,
 name|bibKeys
-argument_list|)
 operator|+
 literal|" "
 operator|+
