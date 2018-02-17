@@ -619,7 +619,17 @@ argument_list|()
 decl_stmt|;
 static|static
 block|{
-comment|// Add the action for checking for new custom entry types loaded from the BIB file:
+comment|// Warning for migrating the Review into the Comment field
+name|POST_OPEN_ACTIONS
+operator|.
+name|add
+argument_list|(
+operator|new
+name|MergeReviewIntoComment
+argument_list|()
+argument_list|)
+expr_stmt|;
+comment|// Check for new custom entry types loaded from the BIB file:
 name|POST_OPEN_ACTIONS
 operator|.
 name|add
@@ -629,7 +639,7 @@ name|CheckForNewEntryTypesAction
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// Add the action for the new external file handling system in version 2.3:
+comment|// External file handling system in version 2.3:
 name|POST_OPEN_ACTIONS
 operator|.
 name|add
@@ -639,7 +649,7 @@ name|FileLinksUpgradeWarning
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// Add the action for warning about and handling duplicate BibTeX keys:
+comment|// Warning about and handling duplicate BibTeX keys:
 name|POST_OPEN_ACTIONS
 operator|.
 name|add

@@ -1,12 +1,14 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|org.jabref.migrations
+DECL|package|org.jabref.logic.importer
 package|package
 name|org
 operator|.
 name|jabref
 operator|.
-name|migrations
+name|logic
+operator|.
+name|importer
 package|;
 end_package
 
@@ -17,20 +19,6 @@ operator|.
 name|util
 operator|.
 name|Collections
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
-name|importer
-operator|.
-name|ParserResult
 import|;
 end_import
 
@@ -135,13 +123,13 @@ import|;
 end_import
 
 begin_class
-DECL|class|MergeReviewIntoCommentTest
+DECL|class|MergeReviewIntoCommentMigrationTest
 class|class
-name|MergeReviewIntoCommentTest
+name|MergeReviewIntoCommentMigrationTest
 block|{
 DECL|field|action
 specifier|private
-name|MergeReviewIntoComment
+name|MergeReviewIntoCommentMigration
 name|action
 decl_stmt|;
 annotation|@
@@ -155,7 +143,7 @@ block|{
 name|action
 operator|=
 operator|new
-name|MergeReviewIntoComment
+name|MergeReviewIntoCommentMigration
 argument_list|()
 expr_stmt|;
 block|}
@@ -365,7 +353,7 @@ name|Test
 annotation|@
 name|Disabled
 argument_list|(
-literal|"Re-enable if the MergeReviewIntoComment.mergeCommentFieldIfPresent() does not block and wait for user input."
+literal|"Re-enable if the MergeReviewIntoCommentMigration.mergeCommentFieldIfPresent() does not block and wait for user input."
 argument_list|)
 DECL|method|reviewAndCommentField ()
 specifier|public

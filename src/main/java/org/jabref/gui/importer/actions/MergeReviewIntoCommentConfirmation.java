@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|org.jabref.gui.dialogs
+DECL|package|org.jabref.gui.importer.actions
 package|package
 name|org
 operator|.
@@ -8,7 +8,9 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|dialogs
+name|importer
+operator|.
+name|actions
 package|;
 end_package
 
@@ -60,6 +62,18 @@ name|org
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
+name|BasePanel
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
 name|logic
 operator|.
 name|l10n
@@ -83,11 +97,32 @@ import|;
 end_import
 
 begin_class
-DECL|class|MergeReviewIntoCommentUIManager
+DECL|class|MergeReviewIntoCommentConfirmation
 specifier|public
 class|class
-name|MergeReviewIntoCommentUIManager
+name|MergeReviewIntoCommentConfirmation
 block|{
+DECL|field|panel
+specifier|private
+specifier|final
+name|BasePanel
+name|panel
+decl_stmt|;
+DECL|method|MergeReviewIntoCommentConfirmation (BasePanel panel)
+specifier|public
+name|MergeReviewIntoCommentConfirmation
+parameter_list|(
+name|BasePanel
+name|panel
+parameter_list|)
+block|{
+name|this
+operator|.
+name|panel
+operator|=
+name|panel
+expr_stmt|;
+block|}
 DECL|method|askUserForMerge (List<BibEntry> conflicts)
 specifier|public
 name|boolean
@@ -147,7 +182,7 @@ name|JOptionPane
 operator|.
 name|showConfirmDialog
 argument_list|(
-literal|null
+name|panel
 argument_list|,
 name|String
 operator|.
