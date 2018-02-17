@@ -938,35 +938,6 @@ name|FindUnlinkedFilesDialog
 extends|extends
 name|JabRefDialog
 block|{
-comment|/**      * Keys to be used for referencing this Action.      */
-DECL|field|ACTION_MENU_TITLE
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|ACTION_MENU_TITLE
-init|=
-name|Localization
-operator|.
-name|menuTitle
-argument_list|(
-literal|"Find unlinked files..."
-argument_list|)
-decl_stmt|;
-DECL|field|ACTION_SHORT_DESCRIPTION
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|ACTION_SHORT_DESCRIPTION
-init|=
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Searches for unlinked PDF files on the file system"
-argument_list|)
-decl_stmt|;
 DECL|field|LOGGER
 specifier|private
 specifier|static

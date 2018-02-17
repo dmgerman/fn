@@ -249,9 +249,6 @@ name|setReadStatusToSkimmed
 block|,
 DECL|enumConstant|toggleRelevance
 name|toggleRelevance
-block|,
-DECL|enumConstant|findUnlinkedFiles
-name|findUnlinkedFiles
 block|}
 end_enum
 
