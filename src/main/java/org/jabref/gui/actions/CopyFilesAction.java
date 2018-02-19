@@ -304,13 +304,24 @@ operator|.
 name|run
 argument_list|()
 expr_stmt|;
-comment|//Run kinda blocks, so we just show the result dialog wgeb run is ready
+name|exportService
+operator|.
+name|setOnSucceeded
+argument_list|(
+parameter_list|(
+name|e
+parameter_list|)
+lambda|->
+block|{
 name|showDialog
 argument_list|(
 name|exportService
 operator|.
 name|getValue
 argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 argument_list|)
 expr_stmt|;
 block|}

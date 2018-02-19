@@ -6823,7 +6823,7 @@ argument_list|,
 operator|new
 name|OpenBrowserAction
 argument_list|(
-literal|"https://discourse.jabref.org/"
+literal|"http://discourse.jabref.org/"
 argument_list|)
 argument_list|)
 argument_list|,

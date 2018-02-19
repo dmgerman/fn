@@ -66,6 +66,13 @@ argument_list|(
 literal|null
 argument_list|)
 expr_stmt|;
+name|editor
+operator|.
+name|setVisible
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 block|}
