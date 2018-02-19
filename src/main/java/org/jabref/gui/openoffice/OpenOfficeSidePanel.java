@@ -126,7 +126,21 @@ name|gui
 operator|.
 name|actions
 operator|.
-name|ActionsFX
+name|Action
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|actions
+operator|.
+name|StandardActions
 import|;
 end_import
 
@@ -252,12 +266,12 @@ annotation|@
 name|Override
 DECL|method|getToggleAction ()
 specifier|public
-name|ActionsFX
+name|Action
 name|getToggleAction
 parameter_list|()
 block|{
 return|return
-name|ActionsFX
+name|StandardActions
 operator|.
 name|TOOGLE_OO
 return|;

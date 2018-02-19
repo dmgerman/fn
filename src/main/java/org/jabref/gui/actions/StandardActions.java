@@ -89,10 +89,12 @@ import|;
 end_import
 
 begin_enum
-DECL|enum|ActionsFX
+DECL|enum|StandardActions
 specifier|public
 enum|enum
-name|ActionsFX
+name|StandardActions
+implements|implements
+name|Action
 block|{
 DECL|enumConstant|COPY_MORE
 DECL|enumConstant|Localization.lang
@@ -1816,6 +1818,18 @@ operator|.
 name|PREFERENCES
 argument_list|)
 block|,
+DECL|enumConstant|MANAGE_CITE_KEY_PATTERNS
+DECL|enumConstant|Localization.lang
+name|MANAGE_CITE_KEY_PATTERNS
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"BibTeX key patterns"
+argument_list|)
+argument_list|)
+block|,
 DECL|enumConstant|TOGGLE_PREVIEW
 DECL|enumConstant|Localization.lang
 DECL|enumConstant|IconTheme.JabRefIcons.TOGGLE_ENTRY_PREVIEW
@@ -2203,7 +2217,7 @@ name|Localization
 operator|.
 name|menuTitle
 argument_list|(
-literal|"Look up document identifier..."
+literal|"Look up document identifier"
 argument_list|)
 argument_list|)
 block|,
@@ -2637,8 +2651,8 @@ name|KeyBinding
 argument_list|>
 name|keyBinding
 decl_stmt|;
-DECL|method|ActionsFX (String text)
-name|ActionsFX
+DECL|method|StandardActions (String text)
+name|StandardActions
 parameter_list|(
 name|String
 name|text
@@ -2652,8 +2666,8 @@ literal|""
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|ActionsFX (String text, IconTheme.JabRefIcons icon)
-name|ActionsFX
+DECL|method|StandardActions (String text, IconTheme.JabRefIcons icon)
+name|StandardActions
 parameter_list|(
 name|String
 name|text
@@ -2697,8 +2711,8 @@ name|empty
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|ActionsFX (String text, IconTheme.JabRefIcons icon, KeyBinding keyBinding)
-name|ActionsFX
+DECL|method|StandardActions (String text, IconTheme.JabRefIcons icon, KeyBinding keyBinding)
+name|StandardActions
 parameter_list|(
 name|String
 name|text
@@ -2747,8 +2761,8 @@ name|keyBinding
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|ActionsFX (String text, String description, IconTheme.JabRefIcons icon)
-name|ActionsFX
+DECL|method|StandardActions (String text, String description, IconTheme.JabRefIcons icon)
+name|StandardActions
 parameter_list|(
 name|String
 name|text
@@ -2795,8 +2809,8 @@ name|empty
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|ActionsFX (String text, String description, IconTheme.JabRefIcons icon, KeyBinding keyBinding)
-name|ActionsFX
+DECL|method|StandardActions (String text, String description, IconTheme.JabRefIcons icon, KeyBinding keyBinding)
+name|StandardActions
 parameter_list|(
 name|String
 name|text
@@ -2848,8 +2862,8 @@ name|keyBinding
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|ActionsFX (String text, KeyBinding keyBinding)
-name|ActionsFX
+DECL|method|StandardActions (String text, KeyBinding keyBinding)
+name|StandardActions
 parameter_list|(
 name|String
 name|text
@@ -2891,8 +2905,8 @@ name|empty
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|ActionsFX (String text, String description)
-name|ActionsFX
+DECL|method|StandardActions (String text, String description)
+name|StandardActions
 parameter_list|(
 name|String
 name|text
@@ -2932,8 +2946,8 @@ name|empty
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|ActionsFX (String text, String description, KeyBinding keyBinding)
-name|ActionsFX
+DECL|method|StandardActions (String text, String description, KeyBinding keyBinding)
+name|StandardActions
 parameter_list|(
 name|String
 name|text
@@ -2978,6 +2992,8 @@ name|keyBinding
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|getIcon ()
 specifier|public
 name|Optional
@@ -2991,6 +3007,8 @@ return|return
 name|icon
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getKeyBinding ()
 specifier|public
 name|Optional
@@ -3004,6 +3022,8 @@ return|return
 name|keyBinding
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getText ()
 specifier|public
 name|String
@@ -3014,6 +3034,8 @@ return|return
 name|text
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getDescription ()
 specifier|public
 name|String

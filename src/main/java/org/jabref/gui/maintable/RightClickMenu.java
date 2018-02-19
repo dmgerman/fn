@@ -140,7 +140,7 @@ name|gui
 operator|.
 name|actions
 operator|.
-name|ActionsFX
+name|OldCommandWrapper
 import|;
 end_import
 
@@ -154,7 +154,7 @@ name|gui
 operator|.
 name|actions
 operator|.
-name|OldCommandWrapper
+name|StandardActions
 import|;
 end_import
 
@@ -392,7 +392,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|COPY
 argument_list|,
@@ -434,7 +434,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|PASTE
 argument_list|,
@@ -461,7 +461,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|CUT
 argument_list|,
@@ -488,7 +488,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|DELETE
 argument_list|,
@@ -527,7 +527,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|SEND_AS_EMAIL
 argument_list|,
@@ -807,7 +807,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|OPEN_FOLDER
 argument_list|,
@@ -829,7 +829,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|OPEN_EXTERNAL_FILE
 argument_list|,
@@ -851,7 +851,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|OPEN_URL
 argument_list|,
@@ -917,7 +917,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|MERGE_WITH_FETCHED_ENTRY
 argument_list|,
@@ -939,7 +939,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|ADD_FILE_LINK
 argument_list|,
@@ -961,7 +961,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|MERGE_ENTRIES
 argument_list|,
@@ -995,7 +995,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|ADD_TO_GROUP
 argument_list|,
@@ -1017,7 +1017,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|REMOVE_FROM_GROUP
 argument_list|,
@@ -1039,7 +1039,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|MOVE_TO_GROUP
 argument_list|,
@@ -1513,7 +1513,7 @@ name|factory
 operator|.
 name|createMenu
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|COPY_MORE
 argument_list|)
@@ -1529,7 +1529,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|COPY_TITLE
 argument_list|,
@@ -1556,7 +1556,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|COPY_KEY
 argument_list|,
@@ -1583,7 +1583,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|COPY_CITE_KEY
 argument_list|,
@@ -1610,7 +1610,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|COPY_KEY_AND_TITLE
 argument_list|,
@@ -1637,7 +1637,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|COPY_KEY_AND_LINK
 argument_list|,
@@ -1701,7 +1701,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|COPY_CITATION_HTML
 argument_list|,
@@ -1724,7 +1724,7 @@ name|factory
 operator|.
 name|createMenu
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|COPY_CITATION_MORE
 argument_list|)
@@ -1740,7 +1740,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|COPY_CITATION_TEXT
 argument_list|,
@@ -1767,7 +1767,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|COPY_CITATION_RTF
 argument_list|,
@@ -1794,7 +1794,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|COPY_CITATION_ASCII_DOC
 argument_list|,
@@ -1821,7 +1821,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|COPY_CITATION_XSLFO
 argument_list|,
@@ -1861,7 +1861,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|COPY_CITATION_PREVIEW
 argument_list|,
@@ -1889,7 +1889,7 @@ name|factory
 operator|.
 name|createMenuItem
 argument_list|(
-name|ActionsFX
+name|StandardActions
 operator|.
 name|EXPORT_TO_CLIPBOARD
 argument_list|,

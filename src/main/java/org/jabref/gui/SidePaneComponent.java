@@ -90,7 +90,7 @@ name|gui
 operator|.
 name|actions
 operator|.
-name|ActionsFX
+name|Action
 import|;
 end_import
 
@@ -290,7 +290,7 @@ comment|/**      * @return the action to toggle this {@link SidePaneComponent}  
 DECL|method|getToggleAction ()
 specifier|public
 specifier|abstract
-name|ActionsFX
+name|Action
 name|getToggleAction
 parameter_list|()
 function_decl|;

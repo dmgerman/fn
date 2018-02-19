@@ -719,11 +719,6 @@ condition|)
 block|{
 name|frame
 operator|.
-name|block
-argument_list|()
-expr_stmt|;
-name|frame
-operator|.
 name|output
 argument_list|(
 name|Localization
@@ -1148,7 +1143,7 @@ argument_list|(
 literal|"Import"
 argument_list|)
 argument_list|,
-name|openInNew
+literal|false
 argument_list|)
 decl_stmt|;
 name|diag
@@ -1183,11 +1178,6 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-name|frame
-operator|.
-name|unblock
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 DECL|method|mergeImportResults (List<ImportFormatReader.UnknownFormatImport> imports)

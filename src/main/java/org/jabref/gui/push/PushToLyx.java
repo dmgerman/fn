@@ -68,16 +68,6 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|Icon
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
 name|JLabel
 import|;
 end_import
@@ -133,6 +123,18 @@ operator|.
 name|gui
 operator|.
 name|IconTheme
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|JabRefIcon
 import|;
 end_import
 
@@ -266,17 +268,16 @@ annotation|@
 name|Override
 DECL|method|getIcon ()
 specifier|public
-name|Icon
+name|JabRefIcon
 name|getIcon
 parameter_list|()
 block|{
 return|return
 name|IconTheme
 operator|.
-name|getImage
-argument_list|(
-literal|"lyx"
-argument_list|)
+name|JabRefIcons
+operator|.
+name|APPLICATION_LYX
 return|;
 block|}
 annotation|@

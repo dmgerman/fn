@@ -103,7 +103,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Helper class to create and style controls according to an {@link ActionsFX}.  */
+comment|/**  * Helper class to create and style controls according to an {@link Action}.  */
 end_comment
 
 begin_class
@@ -137,42 +137,8 @@ name|keyBindingRepository
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|configureMenuItem (ActionsFX action, Command command, MenuItem menuItem)
-specifier|public
-name|MenuItem
-name|configureMenuItem
-parameter_list|(
-name|ActionsFX
-name|action
-parameter_list|,
-name|Command
-name|command
-parameter_list|,
-name|MenuItem
-name|menuItem
-parameter_list|)
-block|{
-return|return
-name|ActionUtils
-operator|.
-name|configureMenuItem
-argument_list|(
-operator|new
-name|JabRefAction
-argument_list|(
-name|action
-argument_list|,
-name|command
-argument_list|,
-name|keyBindingRepository
-argument_list|)
-argument_list|,
-name|menuItem
-argument_list|)
-return|;
-block|}
 comment|/**      * For some reason the graphic is not set correctly by the {@link ActionUtils} class, so we have to fix this by hand      */
-DECL|method|setGraphic (MenuItem node, ActionsFX action)
+DECL|method|setGraphic (MenuItem node, Action action)
 specifier|private
 specifier|static
 name|void
@@ -181,7 +147,7 @@ parameter_list|(
 name|MenuItem
 name|node
 parameter_list|,
-name|ActionsFX
+name|Action
 name|action
 parameter_list|)
 block|{
@@ -214,12 +180,46 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|createMenuItem (ActionsFX action, Command command)
+DECL|method|configureMenuItem (Action action, Command command, MenuItem menuItem)
+specifier|public
+name|MenuItem
+name|configureMenuItem
+parameter_list|(
+name|Action
+name|action
+parameter_list|,
+name|Command
+name|command
+parameter_list|,
+name|MenuItem
+name|menuItem
+parameter_list|)
+block|{
+return|return
+name|ActionUtils
+operator|.
+name|configureMenuItem
+argument_list|(
+operator|new
+name|JabRefAction
+argument_list|(
+name|action
+argument_list|,
+name|command
+argument_list|,
+name|keyBindingRepository
+argument_list|)
+argument_list|,
+name|menuItem
+argument_list|)
+return|;
+block|}
+DECL|method|createMenuItem (Action action, Command command)
 specifier|public
 name|MenuItem
 name|createMenuItem
 parameter_list|(
-name|ActionsFX
+name|Action
 name|action
 parameter_list|,
 name|Command
@@ -255,12 +255,12 @@ return|return
 name|menuItem
 return|;
 block|}
-DECL|method|createMenu (ActionsFX action)
+DECL|method|createMenu (Action action)
 specifier|public
 name|Menu
 name|createMenu
 parameter_list|(
-name|ActionsFX
+name|Action
 name|action
 parameter_list|)
 block|{
@@ -292,12 +292,12 @@ return|return
 name|menu
 return|;
 block|}
-DECL|method|createSubMenu (ActionsFX action, MenuItem... children)
+DECL|method|createSubMenu (Action action, MenuItem... children)
 specifier|public
 name|Menu
 name|createSubMenu
 parameter_list|(
-name|ActionsFX
+name|Action
 name|action
 parameter_list|,
 name|MenuItem
@@ -327,12 +327,12 @@ return|return
 name|menu
 return|;
 block|}
-DECL|method|createIconButton (ActionsFX action, Command command)
+DECL|method|createIconButton (Action action, Command command)
 specifier|public
 name|Button
 name|createIconButton
 parameter_list|(
-name|ActionsFX
+name|Action
 name|action
 parameter_list|,
 name|Command

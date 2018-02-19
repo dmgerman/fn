@@ -212,7 +212,7 @@ name|gui
 operator|.
 name|push
 operator|.
-name|PushToApplicationButton
+name|PushToApplicationSettingsDialog
 import|;
 end_import
 
@@ -1377,6 +1377,9 @@ name|pt
 operator|.
 name|getIcon
 argument_list|()
+operator|.
+name|getIcon
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|button
@@ -1385,7 +1388,7 @@ name|addActionListener
 argument_list|(
 name|e
 lambda|->
-name|PushToApplicationButton
+name|PushToApplicationSettingsDialog
 operator|.
 name|showSettingsDialog
 argument_list|(

@@ -34,9 +34,6 @@ block|,
 DECL|enumConstant|ADD_TO_GROUP
 name|ADD_TO_GROUP
 block|,
-DECL|enumConstant|AUTO_SET_FILE
-name|AUTO_SET_FILE
-block|,
 DECL|enumConstant|CLEANUP
 name|CLEANUP
 block|,
@@ -135,9 +132,6 @@ name|OPEN_URL
 block|,
 DECL|enumConstant|PASTE
 name|PASTE
-block|,
-DECL|enumConstant|PLAIN_TEXT_IMPORT
-name|PLAIN_TEXT_IMPORT
 block|,
 DECL|enumConstant|PREVIOUS_PREVIEW_STYLE
 name|PREVIOUS_PREVIEW_STYLE

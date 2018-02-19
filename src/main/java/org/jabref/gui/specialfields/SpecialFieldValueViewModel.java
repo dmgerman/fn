@@ -74,6 +74,20 @@ name|gui
 operator|.
 name|actions
 operator|.
+name|Action
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|actions
+operator|.
 name|Actions
 import|;
 end_import
@@ -88,7 +102,7 @@ name|gui
 operator|.
 name|actions
 operator|.
-name|ActionsFX
+name|StandardActions
 import|;
 end_import
 
@@ -600,7 +614,7 @@ block|}
 block|}
 DECL|method|getAction ()
 specifier|public
-name|ActionsFX
+name|Action
 name|getAction
 parameter_list|()
 block|{
@@ -613,7 +627,7 @@ case|case
 name|PRINTED
 case|:
 return|return
-name|ActionsFX
+name|StandardActions
 operator|.
 name|TOGGLE_PRINTED
 return|;
@@ -621,7 +635,7 @@ case|case
 name|CLEAR_PRIORITY
 case|:
 return|return
-name|ActionsFX
+name|StandardActions
 operator|.
 name|CLEAR_PRIORITY
 return|;
@@ -629,7 +643,7 @@ case|case
 name|PRIORITY_HIGH
 case|:
 return|return
-name|ActionsFX
+name|StandardActions
 operator|.
 name|PRIORITY_HIGH
 return|;
@@ -637,7 +651,7 @@ case|case
 name|PRIORITY_MEDIUM
 case|:
 return|return
-name|ActionsFX
+name|StandardActions
 operator|.
 name|PRIORITY_MEDIUM
 return|;
@@ -645,7 +659,7 @@ case|case
 name|PRIORITY_LOW
 case|:
 return|return
-name|ActionsFX
+name|StandardActions
 operator|.
 name|PRIORITY_LOW
 return|;
@@ -653,7 +667,7 @@ case|case
 name|QUALITY_ASSURED
 case|:
 return|return
-name|ActionsFX
+name|StandardActions
 operator|.
 name|QUALITY_ASSURED
 return|;
@@ -661,7 +675,7 @@ case|case
 name|CLEAR_RANK
 case|:
 return|return
-name|ActionsFX
+name|StandardActions
 operator|.
 name|CLEAR_RANK
 return|;
@@ -669,7 +683,7 @@ case|case
 name|RANK_1
 case|:
 return|return
-name|ActionsFX
+name|StandardActions
 operator|.
 name|RANK_1
 return|;
@@ -677,7 +691,7 @@ case|case
 name|RANK_2
 case|:
 return|return
-name|ActionsFX
+name|StandardActions
 operator|.
 name|RANK_2
 return|;
@@ -685,7 +699,7 @@ case|case
 name|RANK_3
 case|:
 return|return
-name|ActionsFX
+name|StandardActions
 operator|.
 name|RANK_3
 return|;
@@ -693,7 +707,7 @@ case|case
 name|RANK_4
 case|:
 return|return
-name|ActionsFX
+name|StandardActions
 operator|.
 name|RANK_4
 return|;
@@ -701,7 +715,7 @@ case|case
 name|RANK_5
 case|:
 return|return
-name|ActionsFX
+name|StandardActions
 operator|.
 name|RANK_5
 return|;
@@ -709,7 +723,7 @@ case|case
 name|CLEAR_READ_STATUS
 case|:
 return|return
-name|ActionsFX
+name|StandardActions
 operator|.
 name|CLEAR_READ_STATUS
 return|;
@@ -717,7 +731,7 @@ case|case
 name|READ
 case|:
 return|return
-name|ActionsFX
+name|StandardActions
 operator|.
 name|READ
 return|;
@@ -725,7 +739,7 @@ case|case
 name|SKIMMED
 case|:
 return|return
-name|ActionsFX
+name|StandardActions
 operator|.
 name|SKIMMED
 return|;
@@ -733,7 +747,7 @@ case|case
 name|RELEVANT
 case|:
 return|return
-name|ActionsFX
+name|StandardActions
 operator|.
 name|RELEVANT
 return|;

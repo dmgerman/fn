@@ -1092,12 +1092,6 @@ block|{
 name|SaveSession
 name|session
 decl_stmt|;
-comment|// block user input
-name|frame
-operator|.
-name|block
-argument_list|()
-expr_stmt|;
 try|try
 block|{
 name|SavePreferences
@@ -1330,15 +1324,6 @@ argument_list|(
 literal|"rt"
 argument_list|)
 throw|;
-block|}
-finally|finally
-block|{
-comment|// re-enable user input
-name|frame
-operator|.
-name|unblock
-argument_list|()
-expr_stmt|;
 block|}
 comment|// handle encoding problems
 name|boolean
@@ -1849,7 +1834,7 @@ name|build
 argument_list|()
 decl_stmt|;
 name|DialogService
-name|ds
+name|dialogService
 init|=
 name|frame
 operator|.
@@ -1862,18 +1847,11 @@ name|Path
 argument_list|>
 name|path
 init|=
-name|DefaultTaskExecutor
-operator|.
-name|runInJavaFXThread
-argument_list|(
-parameter_list|()
-lambda|->
-name|ds
+name|dialogService
 operator|.
 name|showFileSaveDialog
 argument_list|(
 name|fileDialogConfiguration
-argument_list|)
 argument_list|)
 decl_stmt|;
 if|if
