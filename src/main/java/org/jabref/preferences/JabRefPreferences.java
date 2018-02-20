@@ -2607,7 +2607,7 @@ specifier|final
 name|String
 name|SIDE_PANE_WIDTH
 init|=
-literal|"sidePaneWidth"
+literal|"sidePaneWidthFX"
 decl_stmt|;
 DECL|field|LAST_USED_EXPORT
 specifier|public
@@ -6023,8 +6023,7 @@ name|put
 argument_list|(
 name|SIDE_PANE_WIDTH
 argument_list|,
-operator|-
-literal|1
+literal|0.15
 argument_list|)
 expr_stmt|;
 name|defaults
