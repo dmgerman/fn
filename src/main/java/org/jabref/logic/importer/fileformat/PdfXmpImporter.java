@@ -134,7 +134,7 @@ name|logic
 operator|.
 name|xmp
 operator|.
-name|XMPPreferences
+name|XmpPreferences
 import|;
 end_import
 
@@ -148,7 +148,21 @@ name|logic
 operator|.
 name|xmp
 operator|.
-name|XMPUtil
+name|XmpUtilReader
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|xmp
+operator|.
+name|XmpUtilShared
 import|;
 end_import
 
@@ -167,14 +181,14 @@ block|{
 DECL|field|xmpPreferences
 specifier|private
 specifier|final
-name|XMPPreferences
+name|XmpPreferences
 name|xmpPreferences
 decl_stmt|;
-DECL|method|PdfXmpImporter (XMPPreferences xmpPreferences)
+DECL|method|PdfXmpImporter (XmpPreferences xmpPreferences)
 specifier|public
 name|PdfXmpImporter
 parameter_list|(
-name|XMPPreferences
+name|XmpPreferences
 name|xmpPreferences
 parameter_list|)
 block|{
@@ -303,9 +317,9 @@ return|return
 operator|new
 name|ParserResult
 argument_list|(
-name|XMPUtil
+name|XmpUtilReader
 operator|.
-name|readXMP
+name|readXmp
 argument_list|(
 name|filePath
 argument_list|,
@@ -379,7 +393,7 @@ name|filePath
 argument_list|)
 expr_stmt|;
 return|return
-name|XMPUtil
+name|XmpUtilShared
 operator|.
 name|hasMetadata
 argument_list|(

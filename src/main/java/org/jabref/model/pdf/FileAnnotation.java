@@ -306,7 +306,7 @@ name|this
 argument_list|(
 name|annotation
 operator|.
-name|getDictionary
+name|getCOSObject
 argument_list|()
 operator|.
 name|getString
@@ -366,7 +366,7 @@ name|this
 argument_list|(
 name|annotation
 operator|.
-name|getDictionary
+name|getCOSObject
 argument_list|()
 operator|.
 name|getString

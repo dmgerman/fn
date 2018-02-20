@@ -23,10 +23,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|XMPPreferences
+DECL|class|XmpPreferences
 specifier|public
 class|class
-name|XMPPreferences
+name|XmpPreferences
 block|{
 DECL|field|useXMPPrivacyFilter
 specifier|private
@@ -49,9 +49,9 @@ specifier|final
 name|Character
 name|keywordSeparator
 decl_stmt|;
-DECL|method|XMPPreferences (boolean useXMPPrivacyFilter, List<String> xmpPrivacyFilter, Character keywordSeparator)
+DECL|method|XmpPreferences (boolean useXMPPrivacyFilter, List<String> xmpPrivacyFilter, Character keywordSeparator)
 specifier|public
-name|XMPPreferences
+name|XmpPreferences
 parameter_list|(
 name|boolean
 name|useXMPPrivacyFilter

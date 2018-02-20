@@ -412,7 +412,7 @@ name|logic
 operator|.
 name|xmp
 operator|.
-name|XMPUtil
+name|XmpUtilReader
 import|;
 end_import
 
@@ -1473,9 +1473,9 @@ try|try
 block|{
 name|xmpEntriesInFile
 operator|=
-name|XMPUtil
+name|XmpUtilReader
 operator|.
-name|readXMP
+name|readXmp
 argument_list|(
 name|fileName
 argument_list|,

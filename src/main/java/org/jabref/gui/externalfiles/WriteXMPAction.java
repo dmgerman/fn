@@ -336,7 +336,7 @@ name|logic
 operator|.
 name|xmp
 operator|.
-name|XMPUtil
+name|XmpUtilWriter
 import|;
 end_import
 
@@ -818,14 +818,11 @@ condition|)
 block|{
 try|try
 block|{
-name|XMPUtil
+name|XmpUtilWriter
 operator|.
-name|writeXMP
+name|writeXmp
 argument_list|(
 name|file
-operator|.
-name|toFile
-argument_list|()
 argument_list|,
 name|entry
 argument_list|,
