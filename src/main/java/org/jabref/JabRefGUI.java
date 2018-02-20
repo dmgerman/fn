@@ -390,20 +390,6 @@ name|logic
 operator|.
 name|util
 operator|.
-name|OS
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
-name|util
-operator|.
 name|Version
 import|;
 end_import
@@ -675,24 +661,6 @@ name|Stage
 name|mainStage
 parameter_list|)
 block|{
-comment|// This property is set to make the Mac OSX Java VM move the menu bar to the top of the screen
-if|if
-condition|(
-name|OS
-operator|.
-name|OS_X
-condition|)
-block|{
-name|System
-operator|.
-name|setProperty
-argument_list|(
-literal|"apple.laf.useScreenMenuBar"
-argument_list|,
-literal|"true"
-argument_list|)
-expr_stmt|;
-block|}
 comment|// Set antialiasing on everywhere. This only works in JRE>= 1.5.
 comment|// Or... it doesn't work, period.
 comment|// TODO test and maybe remove this! I found this commented out with no additional info ( payload@lavabit.com )

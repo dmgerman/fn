@@ -7053,6 +7053,13 @@ argument_list|,
 name|help
 argument_list|)
 expr_stmt|;
+name|menu
+operator|.
+name|setUseSystemMenuBar
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 return|return
 name|menu
 return|;
