@@ -200,6 +200,16 @@ name|javax
 operator|.
 name|swing
 operator|.
+name|JFrame
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
 name|JOptionPane
 import|;
 end_import
@@ -392,7 +402,7 @@ specifier|public
 class|class
 name|MassSetFieldAction
 extends|extends
-name|MnemonicAwareAction
+name|SimpleCommand
 block|{
 DECL|field|frame
 specifier|private
@@ -478,22 +488,6 @@ name|JabRefFrame
 name|frame
 parameter_list|)
 block|{
-name|putValue
-argument_list|(
-name|Action
-operator|.
-name|NAME
-argument_list|,
-name|Localization
-operator|.
-name|menuTitle
-argument_list|(
-literal|"Set/clear/append/rename fields"
-argument_list|)
-operator|+
-literal|"..."
-argument_list|)
-expr_stmt|;
 name|this
 operator|.
 name|frame
@@ -512,7 +506,10 @@ operator|=
 operator|new
 name|JDialog
 argument_list|(
-name|frame
+operator|(
+name|JFrame
+operator|)
+literal|null
 argument_list|,
 name|Localization
 operator|.
@@ -1561,14 +1558,11 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|actionPerformed (ActionEvent e)
+DECL|method|execute ()
 specifier|public
 name|void
-name|actionPerformed
-parameter_list|(
-name|ActionEvent
-name|e
-parameter_list|)
+name|execute
+parameter_list|()
 block|{
 name|BasePanel
 name|bp
@@ -1630,13 +1624,6 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|diag
-operator|.
-name|setLocationRelativeTo
-argument_list|(
-name|frame
-argument_list|)
-expr_stmt|;
 name|diag
 operator|.
 name|setVisible

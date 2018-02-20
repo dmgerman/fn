@@ -186,18 +186,6 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|FXDialogService
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
 name|JabRefFrame
 import|;
 end_import
@@ -699,8 +687,9 @@ decl_stmt|;
 name|DialogService
 name|ds
 init|=
-operator|new
-name|FXDialogService
+name|frame
+operator|.
+name|getDialogService
 argument_list|()
 decl_stmt|;
 name|filenames
@@ -728,11 +717,6 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-name|frame
-operator|.
-name|block
-argument_list|()
-expr_stmt|;
 name|frame
 operator|.
 name|output
@@ -1039,7 +1023,7 @@ name|JOptionPane
 operator|.
 name|showMessageDialog
 argument_list|(
-name|frame
+literal|null
 argument_list|,
 name|Localization
 operator|.
@@ -1067,7 +1051,7 @@ name|JOptionPane
 operator|.
 name|showMessageDialog
 argument_list|(
-name|frame
+literal|null
 argument_list|,
 name|importError
 operator|.
@@ -1159,7 +1143,7 @@ argument_list|(
 literal|"Import"
 argument_list|)
 argument_list|,
-name|openInNew
+literal|false
 argument_list|)
 decl_stmt|;
 name|diag
@@ -1182,13 +1166,6 @@ argument_list|()
 expr_stmt|;
 name|diag
 operator|.
-name|setLocationRelativeTo
-argument_list|(
-name|frame
-argument_list|)
-expr_stmt|;
-name|diag
-operator|.
 name|setVisible
 argument_list|(
 literal|true
@@ -1201,11 +1178,6 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-name|frame
-operator|.
-name|unblock
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 DECL|method|mergeImportResults (List<ImportFormatReader.UnknownFormatImport> imports)

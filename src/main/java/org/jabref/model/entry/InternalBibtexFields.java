@@ -151,7 +151,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Handling of bibtex fields.  * All bibtex-field related stuff should be placed here!  * Because we can export this information into additional  * config files -> simple extension and definition of new fields  *  * TODO:  *  - handling of identically fields with different names (https://github.com/JabRef/jabref/issues/521)  *    e.g. LCCN = lib-congress, journaltitle = journal  *  - group id for each fields, e.g. standard, jurabib, bio, ...  *  - add a additional properties functionality into the BibtexSingleField class  */
+comment|/**  * Handling of bibtex fields.  * All bibtex-field related stuff should be placed here!  * Because we can export this information into additional  * config files -> simple extension and definition of new fields  *  * TODO:  * - handling of identically fields with different names (https://github.com/JabRef/jabref/issues/521)  * e.g. LCCN = lib-congress, journaltitle = journal  * - group id for each fields, e.g. standard, jurabib, bio, ...  * - add a additional properties functionality into the BibtexSingleField class  */
 end_comment
 
 begin_class
@@ -198,10 +198,6 @@ argument_list|,
 name|FieldName
 operator|.
 name|GROUPS
-argument_list|,
-name|FieldName
-operator|.
-name|COMMENT
 argument_list|,
 name|FieldName
 operator|.

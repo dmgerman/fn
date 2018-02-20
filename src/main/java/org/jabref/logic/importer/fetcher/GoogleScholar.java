@@ -632,7 +632,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"#gs_ggsW%s a"
+literal|"div[data-rp=%S] div.gs_or_ggsm a"
 argument_list|,
 name|i
 argument_list|)
@@ -649,7 +649,7 @@ literal|null
 condition|)
 block|{
 name|String
-name|s
+name|target
 init|=
 name|link
 operator|.
@@ -669,8 +669,17 @@ literal|""
 operator|.
 name|equals
 argument_list|(
-name|s
+name|target
 argument_list|)
+operator|&&
+operator|new
+name|URLDownload
+argument_list|(
+name|target
+argument_list|)
+operator|.
+name|isPdf
+argument_list|()
 condition|)
 block|{
 comment|// TODO: check title inside pdf + length?
@@ -681,7 +690,7 @@ name|info
 argument_list|(
 literal|"Fulltext PDF found @ Google: "
 operator|+
-name|s
+name|target
 argument_list|)
 expr_stmt|;
 name|pdfLink
@@ -693,7 +702,7 @@ argument_list|(
 operator|new
 name|URL
 argument_list|(
-name|s
+name|target
 argument_list|)
 argument_list|)
 expr_stmt|;

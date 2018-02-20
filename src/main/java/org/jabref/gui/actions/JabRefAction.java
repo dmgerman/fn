@@ -42,8 +42,15 @@ name|Command
 import|;
 end_import
 
-begin_import
-import|import
+begin_comment
+comment|/**  * Wrapper around one of our actions from {@link Action} to convert them to controlsfx {@link org.controlsfx.control.action.Action}.  */
+end_comment
+
+begin_class
+DECL|class|JabRefAction
+class|class
+name|JabRefAction
+extends|extends
 name|org
 operator|.
 name|controlsfx
@@ -53,25 +60,12 @@ operator|.
 name|action
 operator|.
 name|Action
-import|;
-end_import
-
-begin_comment
-comment|/**  * Wrapper around one of our actions from {@link ActionsFX} to convert them to controlsfx {@link Action}.  */
-end_comment
-
-begin_class
-DECL|class|JabRefAction
-class|class
-name|JabRefAction
-extends|extends
-name|Action
 block|{
-DECL|method|JabRefAction (ActionsFX action, KeyBindingRepository keyBindingRepository)
+DECL|method|JabRefAction (Action action, KeyBindingRepository keyBindingRepository)
 specifier|public
 name|JabRefAction
 parameter_list|(
-name|ActionsFX
+name|Action
 name|action
 parameter_list|,
 name|KeyBindingRepository
@@ -124,12 +118,20 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|setLongText
+argument_list|(
+name|action
+operator|.
+name|getDescription
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
-DECL|method|JabRefAction (ActionsFX action, Command command, KeyBindingRepository keyBindingRepository)
+DECL|method|JabRefAction (Action action, Command command, KeyBindingRepository keyBindingRepository)
 specifier|public
 name|JabRefAction
 parameter_list|(
-name|ActionsFX
+name|Action
 name|action
 parameter_list|,
 name|Command

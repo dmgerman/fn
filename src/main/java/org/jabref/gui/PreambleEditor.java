@@ -399,7 +399,7 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|baseFrame
+literal|null
 argument_list|,
 name|PreambleEditor
 operator|.

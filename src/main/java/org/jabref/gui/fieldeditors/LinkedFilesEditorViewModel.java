@@ -893,6 +893,8 @@ name|entry
 argument_list|,
 name|databaseContext
 argument_list|,
+name|dialogService
+argument_list|,
 name|taskExecutor
 argument_list|)
 return|;
@@ -955,6 +957,8 @@ argument_list|,
 name|entry
 argument_list|,
 name|databaseContext
+argument_list|,
+name|dialogService
 argument_list|,
 name|taskExecutor
 argument_list|)
@@ -1107,6 +1111,8 @@ argument_list|,
 name|entry
 argument_list|,
 name|databaseContext
+argument_list|,
+name|dialogService
 argument_list|,
 name|taskExecutor
 argument_list|)
@@ -1269,6 +1275,8 @@ argument_list|,
 name|entry
 argument_list|,
 name|databaseContext
+argument_list|,
+name|dialogService
 argument_list|,
 name|taskExecutor
 argument_list|)
@@ -1591,6 +1599,8 @@ name|entry
 argument_list|,
 name|databaseContext
 argument_list|,
+name|dialogService
+argument_list|,
 name|taskExecutor
 argument_list|)
 decl_stmt|;
@@ -1649,6 +1659,8 @@ argument_list|,
 name|entry
 argument_list|,
 name|databaseContext
+argument_list|,
+name|dialogService
 argument_list|,
 name|taskExecutor
 argument_list|)
@@ -2133,7 +2145,14 @@ init|=
 name|file
 operator|.
 name|delete
+argument_list|(
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getFileDirectoryPreferences
 argument_list|()
+argument_list|)
 decl_stmt|;
 if|if
 condition|(

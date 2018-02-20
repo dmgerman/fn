@@ -64,6 +64,37 @@ name|FILE
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|UnknownExternalFileType (String name, String extension)
+specifier|public
+name|UnknownExternalFileType
+parameter_list|(
+name|String
+name|name
+parameter_list|,
+name|String
+name|extension
+parameter_list|)
+block|{
+name|super
+argument_list|(
+name|name
+argument_list|,
+name|extension
+argument_list|,
+literal|""
+argument_list|,
+literal|""
+argument_list|,
+literal|"unknown"
+argument_list|,
+name|IconTheme
+operator|.
+name|JabRefIcons
+operator|.
+name|FILE
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_class
 

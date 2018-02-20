@@ -229,7 +229,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Importer for the ISI Web of Science, INSPEC and Medline format.  *<p>  * Documentation about ISI WOS format:  *<p>  *<ul>  *<li>http://wos.isitrial.com/help/helpprn.html</li>  *</ul>  *<p>  *<ul>  *<li>Check compatibility with other ISI2Bib tools like:  * http://www-lab.imr.tohoku.ac.jp/~t-nissie/computer/software/isi/ or  * http://www.tug.org/tex-archive/biblio/bibtex/utils/isi2bibtex/isi2bibtex or  * http://web.mit.edu/emilio/www/utils.html</li>  *<li>Deal with capitalization correctly</li>  *</ul>  */
+comment|/**  * Importer for the ISI Web of Science, INSPEC and Medline format.  *<p>  * Documentation about ISI WOS format:  *<p>  *<ul>  *<li>https://web.archive.org/web/20131031052339/http://wos.isitrial.com/help/helpprn.html</li>  *</ul>  *<p>  *<ul>  *<li>Deal with capitalization correctly</li>  *</ul>  */
 end_comment
 
 begin_class
@@ -1993,35 +1993,14 @@ name|String
 name|value
 parameter_list|)
 block|{
-name|int
-name|lastDash
-init|=
-name|value
-operator|.
-name|lastIndexOf
-argument_list|(
-literal|'-'
-argument_list|)
-decl_stmt|;
 return|return
 name|value
 operator|.
-name|substring
+name|replace
 argument_list|(
-literal|0
+literal|"-"
 argument_list|,
-name|lastDash
-argument_list|)
-operator|+
 literal|"--"
-operator|+
-name|value
-operator|.
-name|substring
-argument_list|(
-name|lastDash
-operator|+
-literal|1
 argument_list|)
 return|;
 block|}

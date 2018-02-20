@@ -156,7 +156,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|BeforeEach
 import|;
 end_import
 
@@ -166,15 +170,9 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Before
-import|;
-end_import
-
-begin_import
-import|import
-name|org
+name|jupiter
 operator|.
-name|junit
+name|api
 operator|.
 name|Test
 import|;
@@ -187,6 +185,22 @@ operator|.
 name|mockito
 operator|.
 name|Answers
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
+operator|.
+name|assertEquals
 import|;
 end_import
 
@@ -233,7 +247,7 @@ name|layoutFormatterPreferences
 decl_stmt|;
 comment|/**      * Initialize Preferences.      */
 annotation|@
-name|Before
+name|BeforeEach
 DECL|method|setUp ()
 specifier|public
 name|void
@@ -346,8 +360,6 @@ operator|.
 name|getEntries
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -443,8 +455,6 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Unknown"
@@ -457,8 +467,6 @@ literal|"@unknown{bla, author={This\nis\na\ntext}}"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Article"
@@ -471,8 +479,6 @@ literal|"@article{bla, author={This\nis\na\ntext}}"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Misc"
@@ -506,8 +512,6 @@ argument_list|,
 literal|"@other{bla, author={This\nis\na\ntext}}"
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"This is a text "
@@ -524,8 +528,6 @@ argument_list|,
 literal|"@other{bla, author={This\nis\na\ntext}}"
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"This is a text"
@@ -554,8 +556,6 @@ argument_list|,
 literal|"@other{bla, author={Joe Doe and Jane, Moon}}"
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Joe Doe, Moon Jane"
@@ -584,8 +584,6 @@ argument_list|,
 literal|"@other{bla, author={This\nis\na\n\ntext}}"
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"This is a text "
@@ -616,8 +614,6 @@ name|t1BibtexString
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"<font face=\"arial\"><BR><BR><b>Abstract:</b>&ntilde;&ntilde;&iacute;&imath;&imath;</font>"
@@ -674,8 +670,6 @@ argument_list|,
 literal|"@other{bla, file={Test file:encrypted.pdf:PDF}}"
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"1. Test file ("

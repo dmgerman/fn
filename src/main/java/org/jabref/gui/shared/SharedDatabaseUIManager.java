@@ -489,7 +489,7 @@ name|JOptionPane
 operator|.
 name|showOptionDialog
 argument_list|(
-name|jabRefFrame
+literal|null
 argument_list|,
 name|Localization
 operator|.
@@ -727,7 +727,7 @@ name|JOptionPane
 operator|.
 name|showMessageDialog
 argument_list|(
-name|jabRefFrame
+literal|null
 argument_list|,
 name|Localization
 operator|.

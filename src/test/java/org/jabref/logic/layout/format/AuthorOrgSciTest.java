@@ -29,12 +29,18 @@ import|;
 end_import
 
 begin_import
-import|import
+import|import static
 name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
+operator|.
+name|*
 import|;
 end_import
 
@@ -43,6 +49,10 @@ import|import
 name|org
 operator|.
 name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
 operator|.
 name|Test
 import|;
@@ -69,8 +79,6 @@ operator|new
 name|AuthorOrgSci
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Flynn, J., S. Gartska"
@@ -83,8 +91,6 @@ literal|"John Flynn and Sabine Gartska"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Garvin, D. A."
@@ -97,8 +103,6 @@ literal|"David A. Garvin"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Makridakis, S., S. C. Wheelwright, V. E. McGee"
@@ -135,8 +139,6 @@ name|NoSpaceBetweenAbbreviations
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Flynn, J., S. Gartska"
@@ -149,8 +151,6 @@ literal|"John Flynn and Sabine Gartska"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Garvin, D.A."
@@ -163,8 +163,6 @@ literal|"David A. Garvin"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Makridakis, S., S.C. Wheelwright, V.E. McGee"

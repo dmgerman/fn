@@ -488,7 +488,7 @@ name|JOptionPane
 operator|.
 name|showOptionDialog
 argument_list|(
-name|frame
+literal|null
 argument_list|,
 name|list
 argument_list|,

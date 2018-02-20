@@ -86,7 +86,7 @@ name|pdfbox
 operator|.
 name|pdmodel
 operator|.
-name|PDPage
+name|PDPageTree
 import|;
 end_import
 
@@ -148,15 +148,7 @@ argument_list|>
 name|getPages
 parameter_list|()
 block|{
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
-name|List
-argument_list|<
-name|PDPage
-argument_list|>
+name|PDPageTree
 name|pages
 init|=
 name|document
@@ -164,10 +156,9 @@ operator|.
 name|getDocumentCatalog
 argument_list|()
 operator|.
-name|getAllPages
+name|getPages
 argument_list|()
 decl_stmt|;
-comment|// There is apparently no neat way to get the page number from a PDPage...thus this old-style for loop
 name|List
 argument_list|<
 name|PdfDocumentPageViewModel
@@ -179,6 +170,7 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
+comment|// There is apparently no neat way to get the page number from a PDPage...thus this old-style for loop
 for|for
 control|(
 name|int
@@ -190,7 +182,7 @@ name|i
 operator|<
 name|pages
 operator|.
-name|size
+name|getCount
 argument_list|()
 condition|;
 name|i
@@ -214,6 +206,8 @@ argument_list|,
 name|i
 operator|+
 literal|1
+argument_list|,
+name|document
 argument_list|)
 argument_list|)
 expr_stmt|;

@@ -28,16 +28,6 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|Icon
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
 name|JPanel
 import|;
 end_import
@@ -51,6 +41,18 @@ operator|.
 name|gui
 operator|.
 name|BasePanel
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|JabRefIcon
 import|;
 end_import
 
@@ -122,7 +124,7 @@ name|getTooltip
 parameter_list|()
 function_decl|;
 DECL|method|getIcon ()
-name|Icon
+name|JabRefIcon
 name|getIcon
 parameter_list|()
 function_decl|;

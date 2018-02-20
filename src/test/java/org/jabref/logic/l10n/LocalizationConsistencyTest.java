@@ -226,15 +226,9 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
-import|;
-end_import
-
-begin_import
-import|import
-name|org
+name|jupiter
 operator|.
-name|junit
+name|api
 operator|.
 name|Test
 import|;
@@ -246,7 +240,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
 operator|.
 name|assertEquals
 import|;
@@ -258,7 +256,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
 operator|.
 name|assertTrue
 import|;
@@ -407,17 +409,10 @@ expr_stmt|;
 block|}
 block|}
 block|}
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
-literal|"There are some localization files that are not present in org.jabref.logic.l10n.Languages or vice versa!"
-argument_list|,
 name|Collections
 operator|.
-expr|<
-name|String
-operator|>
 name|emptySet
 argument_list|()
 argument_list|,
@@ -439,6 +434,8 @@ argument_list|)
 argument_list|,
 name|localizationFiles
 argument_list|)
+argument_list|,
+literal|"There are some localization files that are not present in org.jabref.logic.l10n.Languages or vice versa!"
 argument_list|)
 expr_stmt|;
 block|}
@@ -564,6 +561,13 @@ argument_list|()
 decl_stmt|;
 name|assertEquals
 argument_list|(
+name|Collections
+operator|.
+name|emptyList
+argument_list|()
+argument_list|,
+name|duplicates
+argument_list|,
 literal|"Duplicate keys inside bundle "
 operator|+
 name|bundle
@@ -571,13 +575,6 @@ operator|+
 literal|"_"
 operator|+
 name|lang
-argument_list|,
-name|Collections
-operator|.
-name|emptyList
-argument_list|()
-argument_list|,
-name|duplicates
 argument_list|)
 expr_stmt|;
 block|}
@@ -853,10 +850,14 @@ name|toList
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
+name|Collections
+operator|.
+name|EMPTY_LIST
+argument_list|,
+name|quotedEntries
+argument_list|,
 literal|"Language keys must not be used quoted in code! Use \"This is a message\" instead of \"This_is_a_message\".\n"
 operator|+
 literal|"Please correct the following entries:\n"
@@ -895,12 +896,6 @@ operator|.
 name|toList
 argument_list|()
 argument_list|)
-argument_list|,
-name|Collections
-operator|.
-name|EMPTY_LIST
-argument_list|,
-name|quotedEntries
 argument_list|)
 expr_stmt|;
 block|}
@@ -948,6 +943,13 @@ argument_list|)
 decl_stmt|;
 name|assertEquals
 argument_list|(
+name|Collections
+operator|.
+name|emptyList
+argument_list|()
+argument_list|,
+name|missingKeys
+argument_list|,
 literal|"DETECTED LANGUAGE KEYS WHICH ARE NOT IN THE ENGLISH LANGUAGE FILE\n"
 operator|+
 literal|"PASTE THESE INTO THE ENGLISH LANGUAGE FILE\n"
@@ -993,16 +995,6 @@ operator|.
 name|toList
 argument_list|()
 argument_list|)
-argument_list|,
-name|Collections
-operator|.
-expr|<
-name|LocalizationEntry
-operator|>
-name|emptyList
-argument_list|()
-argument_list|,
-name|missingKeys
 argument_list|)
 expr_stmt|;
 block|}
@@ -1033,6 +1025,13 @@ argument_list|)
 decl_stmt|;
 name|assertEquals
 argument_list|(
+name|Collections
+operator|.
+name|emptySet
+argument_list|()
+argument_list|,
+name|missingKeys
+argument_list|,
 literal|"DETECTED LANGUAGE KEYS WHICH ARE NOT IN THE ENGLISH MENU FILE\n"
 operator|+
 literal|"PASTE THESE INTO THE ENGLISH MENU FILE\n"
@@ -1071,16 +1070,6 @@ operator|.
 name|toList
 argument_list|()
 argument_list|)
-argument_list|,
-name|Collections
-operator|.
-expr|<
-name|LocalizationEntry
-operator|>
-name|emptySet
-argument_list|()
-argument_list|,
-name|missingKeys
 argument_list|)
 expr_stmt|;
 block|}
@@ -1111,6 +1100,13 @@ argument_list|)
 decl_stmt|;
 name|assertEquals
 argument_list|(
+name|Collections
+operator|.
+name|emptySet
+argument_list|()
+argument_list|,
+name|obsoleteKeys
+argument_list|,
 literal|"Obsolete keys found in language properties file: "
 operator|+
 name|obsoleteKeys
@@ -1120,16 +1116,6 @@ operator|+
 literal|"1. CHECK IF THE KEY IS REALLY NOT USED ANYMORE\n"
 operator|+
 literal|"2. REMOVE THESE FROM THE ENGLISH LANGUAGE FILE\n"
-argument_list|,
-name|Collections
-operator|.
-expr|<
-name|String
-operator|>
-name|emptySet
-argument_list|()
-argument_list|,
-name|obsoleteKeys
 argument_list|)
 expr_stmt|;
 block|}
@@ -1160,6 +1146,13 @@ argument_list|)
 decl_stmt|;
 name|assertEquals
 argument_list|(
+name|Collections
+operator|.
+name|emptySet
+argument_list|()
+argument_list|,
+name|obsoleteKeys
+argument_list|,
 literal|"Obsolete keys found in the menu properties file: "
 operator|+
 name|obsoleteKeys
@@ -1169,16 +1162,6 @@ operator|+
 literal|"1. CHECK IF THE KEY IS REALLY NOT USED ANYMORE\n"
 operator|+
 literal|"2. REMOVE THESE FROM THE ENGLISH MENU FILE\n"
-argument_list|,
-name|Collections
-operator|.
-expr|<
-name|String
-operator|>
-name|emptySet
-argument_list|()
-argument_list|,
-name|obsoleteKeys
 argument_list|)
 expr_stmt|;
 block|}
@@ -1221,13 +1204,6 @@ control|)
 block|{
 name|assertTrue
 argument_list|(
-literal|"Illegal localization parameter found. Must include a String with potential concatenation or replacement parameters. Illegal parameter: Localization.lang("
-operator|+
-name|e
-operator|.
-name|getKey
-argument_list|()
-argument_list|,
 name|e
 operator|.
 name|getKey
@@ -1247,6 +1223,13 @@ name|endsWith
 argument_list|(
 literal|"\""
 argument_list|)
+argument_list|,
+literal|"Illegal localization parameter found. Must include a String with potential concatenation or replacement parameters. Illegal parameter: Localization.lang("
+operator|+
+name|e
+operator|.
+name|getKey
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -1271,13 +1254,6 @@ control|)
 block|{
 name|assertTrue
 argument_list|(
-literal|"Illegal localization parameter found. Must include a String with potential concatenation or replacement parameters. Illegal parameter: Localization.lang("
-operator|+
-name|e
-operator|.
-name|getKey
-argument_list|()
-argument_list|,
 name|e
 operator|.
 name|getKey
@@ -1297,6 +1273,13 @@ name|endsWith
 argument_list|(
 literal|"\""
 argument_list|)
+argument_list|,
+literal|"Illegal localization parameter found. Must include a String with potential concatenation or replacement parameters. Illegal parameter: Localization.lang("
+operator|+
+name|e
+operator|.
+name|getKey
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

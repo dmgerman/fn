@@ -108,7 +108,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Before
+name|jupiter
+operator|.
+name|api
+operator|.
+name|BeforeEach
 import|;
 end_import
 
@@ -118,15 +122,9 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
+name|jupiter
 operator|.
-name|junit
+name|api
 operator|.
 name|Test
 import|;
@@ -148,7 +146,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
 operator|.
 name|assertEquals
 import|;
@@ -160,7 +162,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
 operator|.
 name|assertFalse
 import|;
@@ -172,9 +178,13 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
 operator|.
-name|assertTrue
+name|api
+operator|.
+name|Assertions
+operator|.
+name|assertThrows
 import|;
 end_import
 
@@ -184,9 +194,13 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
 operator|.
-name|fail
+name|api
+operator|.
+name|Assertions
+operator|.
+name|assertTrue
 import|;
 end_import
 
@@ -249,7 +263,7 @@ name|Charset
 name|encoding
 decl_stmt|;
 annotation|@
-name|Before
+name|BeforeEach
 DECL|method|setUp ()
 specifier|public
 name|void
@@ -291,19 +305,20 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-argument_list|(
-name|expected
-operator|=
-name|NullPointerException
-operator|.
-name|class
-argument_list|)
 DECL|method|throwNPEWithNullPreferences ()
 specifier|public
 name|void
 name|throwNPEWithNullPreferences
 parameter_list|()
 block|{
+name|assertThrows
+argument_list|(
+name|NullPointerException
+operator|.
+name|class
+argument_list|,
+parameter_list|()
+lambda|->
 name|loader
 operator|=
 operator|new
@@ -320,26 +335,25 @@ operator|.
 name|class
 argument_list|)
 argument_list|)
-expr_stmt|;
-name|fail
-argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 annotation|@
 name|Test
-argument_list|(
-name|expected
-operator|=
-name|NullPointerException
-operator|.
-name|class
-argument_list|)
 DECL|method|throwNPEWithNullLayoutPreferences ()
 specifier|public
 name|void
 name|throwNPEWithNullLayoutPreferences
 parameter_list|()
 block|{
+name|assertThrows
+argument_list|(
+name|NullPointerException
+operator|.
+name|class
+argument_list|,
+parameter_list|()
+lambda|->
 name|loader
 operator|=
 operator|new
@@ -361,26 +375,25 @@ operator|.
 name|class
 argument_list|)
 argument_list|)
-expr_stmt|;
-name|fail
-argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 annotation|@
 name|Test
-argument_list|(
-name|expected
-operator|=
-name|NullPointerException
-operator|.
-name|class
-argument_list|)
 DECL|method|throwNPEWithNullCharset ()
 specifier|public
 name|void
 name|throwNPEWithNullCharset
 parameter_list|()
 block|{
+name|assertThrows
+argument_list|(
+name|NullPointerException
+operator|.
+name|class
+argument_list|,
+parameter_list|()
+lambda|->
 name|loader
 operator|=
 operator|new
@@ -397,9 +410,7 @@ name|layoutPreferences
 argument_list|,
 literal|null
 argument_list|)
-expr_stmt|;
-name|fail
-argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 annotation|@
@@ -877,11 +888,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-argument_list|(
-literal|"This tests the preferences that are mocked away"
-argument_list|)
 DECL|method|testInitalizeWithOneExternalFileRemoveStyleUpdatesPreferences ()
 specifier|public
 name|void
@@ -1007,7 +1013,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-name|assertTrue
+comment|//As the prefs are mocked away, the getExternalStyles still returns the initial one
+name|assertFalse
 argument_list|(
 name|preferences
 operator|.
@@ -1122,13 +1129,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-argument_list|(
-name|expected
-operator|=
-name|NullPointerException
-operator|.
-name|class
-argument_list|)
 DECL|method|testAddNullStyleThrowsNPE ()
 specifier|public
 name|void
@@ -1147,15 +1147,21 @@ argument_list|,
 name|encoding
 argument_list|)
 expr_stmt|;
+name|assertThrows
+argument_list|(
+name|NullPointerException
+operator|.
+name|class
+argument_list|,
+parameter_list|()
+lambda|->
 name|loader
 operator|.
 name|addStyleIfValid
 argument_list|(
 literal|null
 argument_list|)
-expr_stmt|;
-name|fail
-argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 annotation|@
@@ -1317,15 +1323,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-argument_list|(
-literal|"This tests the preferences that are mocked away"
-argument_list|)
-DECL|method|testGtDefaultUsedStyleWhenIncorrect ()
+DECL|method|testGetDefaultUsedStyleWhenIncorrect ()
 specifier|public
 name|void
-name|testGtDefaultUsedStyleWhenIncorrect
+name|testGetDefaultUsedStyleWhenIncorrect
 parameter_list|()
 block|{
 name|when
@@ -1378,18 +1379,6 @@ argument_list|,
 name|style
 operator|.
 name|getPath
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-name|StyleLoader
-operator|.
-name|DEFAULT_AUTHORYEAR_STYLE_PATH
-argument_list|,
-name|preferences
-operator|.
-name|getCurrentStyle
 argument_list|()
 argument_list|)
 expr_stmt|;

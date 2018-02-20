@@ -218,6 +218,16 @@ name|javax
 operator|.
 name|swing
 operator|.
+name|JFrame
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
 name|JMenuItem
 import|;
 end_import
@@ -369,18 +379,6 @@ operator|.
 name|gui
 operator|.
 name|DialogService
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|FXDialogService
 import|;
 end_import
 
@@ -939,15 +937,12 @@ specifier|final
 name|ProtectedTermsLoader
 name|loader
 decl_stmt|;
-DECL|method|ProtectedTermsDialog (JabRefFrame frame, ProtectedTermsLoader loader)
+DECL|method|ProtectedTermsDialog (JabRefFrame frame)
 specifier|public
 name|ProtectedTermsDialog
 parameter_list|(
 name|JabRefFrame
 name|frame
-parameter_list|,
-name|ProtectedTermsLoader
-name|loader
 parameter_list|)
 block|{
 name|this
@@ -965,12 +960,9 @@ name|this
 operator|.
 name|loader
 operator|=
-name|Objects
+name|Globals
 operator|.
-name|requireNonNull
-argument_list|(
-name|loader
-argument_list|)
+name|protectedTermsLoader
 expr_stmt|;
 name|init
 argument_list|()
@@ -1118,7 +1110,10 @@ operator|=
 operator|new
 name|JDialog
 argument_list|(
-name|frame
+operator|(
+name|JFrame
+operator|)
+literal|null
 argument_list|,
 name|Localization
 operator|.
@@ -2985,8 +2980,9 @@ decl_stmt|;
 name|DialogService
 name|ds
 init|=
-operator|new
-name|FXDialogService
+name|frame
+operator|.
+name|getDialogService
 argument_list|()
 decl_stmt|;
 name|browse

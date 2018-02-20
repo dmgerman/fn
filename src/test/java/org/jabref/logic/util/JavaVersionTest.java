@@ -38,17 +38,43 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Test
 import|;
 end_import
 
 begin_import
-import|import
+import|import static
 name|org
 operator|.
 name|junit
 operator|.
-name|Test
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
+operator|.
+name|assertFalse
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
+operator|.
+name|assertTrue
 import|;
 end_import
 
@@ -251,8 +277,6 @@ argument_list|(
 name|versionString
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertFalse
 argument_list|(
 name|java8
@@ -281,8 +305,6 @@ argument_list|(
 name|version9String
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|java9
@@ -293,8 +315,6 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// For impossible comparisons we assume it's not java 9
-name|Assert
-operator|.
 name|assertFalse
 argument_list|(
 name|nullCheck
@@ -303,8 +323,6 @@ name|isJava9
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertFalse
 argument_list|(
 name|noSenseCheck
@@ -342,8 +360,6 @@ range|:
 name|java
 control|)
 block|{
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|java8
@@ -364,8 +380,6 @@ argument_list|(
 name|version8
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|java8Example
@@ -377,8 +391,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Check if we optimistically return true if we cannot determine the result
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|java8Example
@@ -389,8 +401,6 @@ literal|null
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|nullCheck
@@ -401,8 +411,6 @@ name|version8
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|noSenseCheck
@@ -413,8 +421,6 @@ name|version8
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|java8Example
@@ -434,8 +440,6 @@ range|:
 name|java9
 control|)
 block|{
-name|Assert
-operator|.
 name|assertFalse
 argument_list|(
 name|java8Example
@@ -456,8 +460,6 @@ argument_list|(
 name|version9
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|java9

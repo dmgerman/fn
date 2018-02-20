@@ -90,16 +90,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|SwingUtilities
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|jabref
@@ -150,18 +140,6 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|FXDialogService
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
 name|JabRefFrame
 import|;
 end_import
@@ -174,9 +152,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|autosaveandbackup
-operator|.
-name|AutosaveUIManager
+name|SidePaneType
 import|;
 end_import
 
@@ -202,9 +178,9 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|collab
+name|dialogs
 operator|.
-name|FileUpdatePanel
+name|AutosaveUIManager
 import|;
 end_import
 
@@ -1116,12 +1092,6 @@ block|{
 name|SaveSession
 name|session
 decl_stmt|;
-comment|// block user input
-name|frame
-operator|.
-name|block
-argument_list|()
-expr_stmt|;
 try|try
 block|{
 name|SavePreferences
@@ -1216,7 +1186,7 @@ name|JOptionPane
 operator|.
 name|showMessageDialog
 argument_list|(
-name|frame
+literal|null
 argument_list|,
 name|Localization
 operator|.
@@ -1318,7 +1288,7 @@ name|JOptionPane
 operator|.
 name|showMessageDialog
 argument_list|(
-name|frame
+literal|null
 argument_list|,
 name|Localization
 operator|.
@@ -1354,15 +1324,6 @@ argument_list|(
 literal|"rt"
 argument_list|)
 throw|;
-block|}
-finally|finally
-block|{
-comment|// re-enable user input
-name|frame
-operator|.
-name|unblock
-argument_list|()
-expr_stmt|;
 block|}
 comment|// handle encoding problems
 name|boolean
@@ -1500,7 +1461,7 @@ name|JOptionPane
 operator|.
 name|showOptionDialog
 argument_list|(
-name|frame
+literal|null
 argument_list|,
 name|builder
 operator|.
@@ -1565,7 +1526,7 @@ name|JOptionPane
 operator|.
 name|showInputDialog
 argument_list|(
-name|frame
+literal|null
 argument_list|,
 name|Localization
 operator|.
@@ -1873,10 +1834,11 @@ name|build
 argument_list|()
 decl_stmt|;
 name|DialogService
-name|ds
+name|dialogService
 init|=
-operator|new
-name|FXDialogService
+name|frame
+operator|.
+name|getDialogService
 argument_list|()
 decl_stmt|;
 name|Optional
@@ -1885,18 +1847,11 @@ name|Path
 argument_list|>
 name|path
 init|=
-name|DefaultTaskExecutor
-operator|.
-name|runInJavaFXThread
-argument_list|(
-parameter_list|()
-lambda|->
-name|ds
+name|dialogService
 operator|.
 name|showFileSaveDialog
 argument_list|(
 name|fileDialogConfiguration
-argument_list|)
 argument_list|)
 decl_stmt|;
 if|if
@@ -2338,10 +2293,7 @@ name|JOptionPane
 operator|.
 name|showOptionDialog
 argument_list|(
-name|panel
-operator|.
-name|frame
-argument_list|()
+literal|null
 argument_list|,
 name|Localization
 operator|.
@@ -2513,9 +2465,9 @@ operator|.
 name|markExternalChangesAsResolved
 argument_list|()
 expr_stmt|;
-name|SwingUtilities
+name|DefaultTaskExecutor
 operator|.
-name|invokeLater
+name|runInJavaFXThread
 argument_list|(
 parameter_list|()
 lambda|->
@@ -2526,9 +2478,9 @@ argument_list|()
 operator|.
 name|hide
 argument_list|(
-name|FileUpdatePanel
+name|SidePaneType
 operator|.
-name|class
+name|FILE_UPDATE_NOTIFICATION
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2572,7 +2524,7 @@ name|JOptionPane
 operator|.
 name|showMessageDialog
 argument_list|(
-name|frame
+literal|null
 argument_list|,
 name|Localization
 operator|.
@@ -2612,9 +2564,9 @@ argument_list|()
 operator|.
 name|hide
 argument_list|(
-name|FileUpdatePanel
+name|SidePaneType
 operator|.
-name|class
+name|FILE_UPDATE_NOTIFICATION
 argument_list|)
 expr_stmt|;
 block|}

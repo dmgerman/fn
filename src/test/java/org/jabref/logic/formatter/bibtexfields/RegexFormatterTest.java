@@ -20,7 +20,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|BeforeEach
 import|;
 end_import
 
@@ -30,17 +34,27 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Before
-import|;
-end_import
-
-begin_import
-import|import
-name|org
+name|jupiter
 operator|.
-name|junit
+name|api
 operator|.
 name|Test
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
+operator|.
+name|assertEquals
 import|;
 end_import
 
@@ -60,7 +74,7 @@ name|RegexFormatter
 name|formatter
 decl_stmt|;
 annotation|@
-name|Before
+name|BeforeEach
 DECL|method|setUp ()
 specifier|public
 name|void
@@ -94,8 +108,6 @@ argument_list|(
 name|regexInput
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"replace-all-spaces"
@@ -129,8 +141,6 @@ argument_list|(
 name|regexInput
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"replace-spaces-{not these ones}"
@@ -164,8 +174,6 @@ argument_list|(
 name|regexInput
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"replace-spaces-{not these ones}-{or these ones}-but-these-ones"
@@ -199,8 +207,6 @@ argument_list|(
 name|regexInput
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"replace-spaces-\\{-these-ones\\}-and-these-ones"
@@ -234,8 +240,6 @@ argument_list|(
 name|regexInput
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"replace-spaces-\\{-these-ones\\},-these-ones,-and-\\{-these-ones\\}"
@@ -262,15 +266,6 @@ name|regexInput
 init|=
 literal|"(\" \",\"-\")"
 decl_stmt|;
-name|formatter
-operator|.
-name|setRegex
-argument_list|(
-name|regexInput
-argument_list|)
-expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"replace-spaces-{not these ones},-these-ones,-and-\\{-these-ones\\}"
@@ -292,8 +287,6 @@ name|void
 name|formatExample
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Please-replace-the-spaces"

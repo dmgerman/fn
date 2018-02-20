@@ -110,27 +110,7 @@ name|testutils
 operator|.
 name|category
 operator|.
-name|GUITest
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|Before
+name|FetcherTest
 import|;
 end_import
 
@@ -150,7 +130,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Test
+name|jupiter
+operator|.
+name|api
+operator|.
+name|BeforeEach
 import|;
 end_import
 
@@ -160,11 +144,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|experimental
+name|jupiter
 operator|.
-name|categories
+name|api
 operator|.
-name|Category
+name|Test
 import|;
 end_import
 
@@ -180,18 +164,61 @@ name|SAXException
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
+operator|.
+name|assertNotNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
+operator|.
+name|assertTrue
+import|;
+end_import
+
 begin_comment
 comment|/**  * Test for OAI2-Handler and Fetcher.  *  * @author Ulrich St&auml;rk  * @author Christian Kopf  * @author Christopher Oezbek  */
 end_comment
 
 begin_class
 annotation|@
-name|Category
-argument_list|(
-name|GUITest
-operator|.
-name|class
-argument_list|)
+name|FetcherTest
 DECL|class|OAI2HandlerFetcherTest
 specifier|public
 class|class
@@ -218,7 +245,7 @@ name|SAXParser
 name|saxParser
 decl_stmt|;
 annotation|@
-name|Before
+name|BeforeEach
 DECL|method|setUp ()
 specifier|public
 name|void
@@ -268,8 +295,6 @@ name|void
 name|testCorrectLineBreaks
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Test this"
@@ -282,8 +307,6 @@ literal|"Test\nthis"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Test this"
@@ -296,8 +319,6 @@ literal|"Test \n this"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Test\nthis"
@@ -310,8 +331,6 @@ literal|"Test\n\nthis"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Test\nthis"
@@ -324,8 +343,6 @@ literal|"Test\n    \nthis"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Test\nthis"
@@ -368,8 +385,6 @@ argument_list|,
 name|handler
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -387,8 +402,6 @@ literal|"eprint"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -406,8 +419,6 @@ literal|"author"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -425,8 +436,6 @@ literal|"journal"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -444,8 +453,6 @@ literal|"volume"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -463,8 +470,6 @@ literal|"year"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -484,8 +489,6 @@ argument_list|)
 expr_stmt|;
 comment|// Citekey is only generated if the user says so in the import
 comment|// inspection dialog.
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -499,8 +502,6 @@ name|getCiteKeyOptional
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -518,8 +519,6 @@ literal|"title"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|be
@@ -533,8 +532,6 @@ name|isPresent
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -552,8 +549,6 @@ literal|"comment"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -615,8 +610,6 @@ argument_list|,
 name|handler
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -664,8 +657,6 @@ argument_list|,
 name|handler
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -699,8 +690,6 @@ operator|new
 name|OAI2Fetcher
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"http://export.arxiv.org/oai2?verb=GetRecord&identifier=oai%3AarXiv.org%3Ahep-ph%2F0408155&metadataPrefix=arXiv"
@@ -713,8 +702,6 @@ literal|"hep-ph/0408155"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"http://export.arxiv.org/oai2?verb=GetRecord&identifier=oai%3AarXiv.org%3Amath%2F0612188&metadataPrefix=arXiv"
@@ -736,8 +723,6 @@ name|void
 name|testFixKey
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|""
@@ -750,8 +735,6 @@ literal|""
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"test"
@@ -764,8 +747,6 @@ literal|"test"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"math/0601001"
@@ -778,8 +759,6 @@ literal|"math.RA/0601001"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"math/0601001"
@@ -792,8 +771,6 @@ literal|"math.QA/0601001"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"hep-ph/0408155"
@@ -806,8 +783,6 @@ literal|"hep-ph/0408155"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"0709.3040v1"
@@ -820,8 +795,6 @@ literal|"arXiv:0709.3040v1"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|""
@@ -868,15 +841,11 @@ argument_list|(
 literal|"math.RA/0612188"
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertNotNull
 argument_list|(
 name|be
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -894,8 +863,6 @@ literal|"eprint"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -913,8 +880,6 @@ literal|"title"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -932,8 +897,6 @@ literal|"author"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -976,15 +939,11 @@ argument_list|(
 literal|"astro-ph/0702080"
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertNotNull
 argument_list|(
 name|be
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -1002,8 +961,6 @@ literal|"eprint"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -1046,15 +1003,11 @@ argument_list|(
 literal|"math.QA/0601001"
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertNotNull
 argument_list|(
 name|be
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -1097,15 +1050,11 @@ argument_list|(
 literal|"hep-ph/0408155"
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertNotNull
 argument_list|(
 name|be
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -1147,15 +1096,11 @@ argument_list|(
 literal|"0709.3040"
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertNotNull
 argument_list|(
 name|be
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -1173,8 +1118,6 @@ literal|"year"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional

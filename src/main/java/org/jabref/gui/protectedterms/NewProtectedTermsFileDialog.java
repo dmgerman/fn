@@ -460,7 +460,10 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|mainFrame
+operator|(
+name|JFrame
+operator|)
+literal|null
 argument_list|,
 name|Localization
 operator|.
@@ -476,10 +479,6 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
-name|parent
-operator|=
-name|mainFrame
-expr_stmt|;
 name|this
 operator|.
 name|loader
@@ -488,11 +487,6 @@ name|loader
 expr_stmt|;
 name|setupDialog
 argument_list|()
-expr_stmt|;
-name|setLocationRelativeTo
-argument_list|(
-name|mainFrame
-argument_list|)
 expr_stmt|;
 block|}
 DECL|method|setupDialog ()

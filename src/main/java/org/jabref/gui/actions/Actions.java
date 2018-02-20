@@ -34,12 +34,6 @@ block|,
 DECL|enumConstant|ADD_TO_GROUP
 name|ADD_TO_GROUP
 block|,
-DECL|enumConstant|AUTO_SET_FILE
-name|AUTO_SET_FILE
-block|,
-DECL|enumConstant|BACK
-name|BACK
-block|,
 DECL|enumConstant|CLEANUP
 name|CLEANUP
 block|,
@@ -100,12 +94,6 @@ block|,
 DECL|enumConstant|EXPORT_TO_CLIPBOARD
 name|EXPORT_TO_CLIPBOARD
 block|,
-DECL|enumConstant|FOCUS_TABLE
-name|FOCUS_TABLE
-block|,
-DECL|enumConstant|FORWARD
-name|FORWARD
-block|,
 DECL|enumConstant|MAKE_KEY
 name|MAKE_KEY
 block|,
@@ -145,9 +133,6 @@ block|,
 DECL|enumConstant|PASTE
 name|PASTE
 block|,
-DECL|enumConstant|PLAIN_TEXT_IMPORT
-name|PLAIN_TEXT_IMPORT
-block|,
 DECL|enumConstant|PREVIOUS_PREVIEW_STYLE
 name|PREVIOUS_PREVIEW_STYLE
 block|,
@@ -171,9 +156,6 @@ name|SAVE
 block|,
 DECL|enumConstant|SAVE_AS
 name|SAVE_AS
-block|,
-DECL|enumConstant|SAVE_SELECTED_AS
-name|SAVE_SELECTED_AS
 block|,
 DECL|enumConstant|SAVE_SELECTED_AS_PLAIN
 name|SAVE_SELECTED_AS_PLAIN
@@ -261,9 +243,6 @@ name|setReadStatusToSkimmed
 block|,
 DECL|enumConstant|toggleRelevance
 name|toggleRelevance
-block|,
-DECL|enumConstant|findUnlinkedFiles
-name|findUnlinkedFiles
 block|}
 end_enum
 

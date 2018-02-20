@@ -429,13 +429,13 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|findFullTextRejectsNullParameter ()
 specifier|public
 name|void
 name|findFullTextRejectsNullParameter
 parameter_list|()
-throws|throws
-name|IOException
 block|{
 name|assertThrows
 argument_list|(

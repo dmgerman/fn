@@ -76,17 +76,27 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Test
 import|;
 end_import
 
 begin_import
-import|import
+import|import static
 name|org
 operator|.
 name|junit
 operator|.
-name|Test
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
+operator|.
+name|assertTrue
 import|;
 end_import
 
@@ -153,19 +163,17 @@ operator|.
 name|size
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
+name|lineCount
+operator|<=
+literal|722
+argument_list|,
 literal|"StringUtil increased in size. "
 operator|+
 literal|"We try to keep this class as small as possible. "
 operator|+
 literal|"Thus think twice if you add something to StringUtil."
-argument_list|,
-name|lineCount
-operator|<=
-literal|722
 argument_list|)
 expr_stmt|;
 block|}

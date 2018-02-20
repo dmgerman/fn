@@ -170,6 +170,16 @@ name|javax
 operator|.
 name|swing
 operator|.
+name|JFrame
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
 name|JLabel
 import|;
 end_import
@@ -427,7 +437,10 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|parent
+operator|(
+name|JFrame
+operator|)
+literal|null
 argument_list|,
 name|Localization
 operator|.
@@ -1217,13 +1230,6 @@ argument_list|)
 expr_stmt|;
 name|pack
 argument_list|()
-expr_stmt|;
-name|this
-operator|.
-name|setLocationRelativeTo
-argument_list|(
-name|parent
-argument_list|)
 expr_stmt|;
 block|}
 DECL|method|okPressed ()

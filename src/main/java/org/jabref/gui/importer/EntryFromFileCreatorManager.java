@@ -262,10 +262,13 @@ name|EntryFromFileCreator
 argument_list|>
 name|entryCreators
 decl_stmt|;
-DECL|method|EntryFromFileCreatorManager ()
+DECL|method|EntryFromFileCreatorManager (ExternalFileTypes externalFilesTypes)
 specifier|public
 name|EntryFromFileCreatorManager
-parameter_list|()
+parameter_list|(
+name|ExternalFileTypes
+name|externalFilesTypes
+parameter_list|)
 block|{
 name|entryCreators
 operator|=
@@ -282,7 +285,9 @@ name|add
 argument_list|(
 operator|new
 name|EntryFromPDFCreator
-argument_list|()
+argument_list|(
+name|externalFilesTypes
+argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// add a creator for each ExternalFileType if there is no specialized
@@ -293,10 +298,7 @@ name|ExternalFileType
 argument_list|>
 name|fileTypes
 init|=
-name|ExternalFileTypes
-operator|.
-name|getInstance
-argument_list|()
+name|externalFilesTypes
 operator|.
 name|getExternalFileTypeSelection
 argument_list|()

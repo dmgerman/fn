@@ -42,7 +42,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Before
+name|jupiter
+operator|.
+name|api
+operator|.
+name|BeforeEach
 import|;
 end_import
 
@@ -51,6 +55,10 @@ import|import
 name|org
 operator|.
 name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
 operator|.
 name|Test
 import|;
@@ -62,7 +70,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
 operator|.
 name|assertEquals
 import|;
@@ -79,13 +91,8 @@ specifier|private
 name|FieldContentParser
 name|parser
 decl_stmt|;
-DECL|field|prefs
-specifier|private
-name|FieldContentParserPreferences
-name|prefs
-decl_stmt|;
 annotation|@
-name|Before
+name|BeforeEach
 DECL|method|setUp ()
 specifier|public
 name|void
@@ -94,8 +101,9 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|FieldContentParserPreferences
 name|prefs
-operator|=
+init|=
 operator|new
 name|FieldContentParserPreferences
 argument_list|(
@@ -104,7 +112,7 @@ operator|.
 name|emptyList
 argument_list|()
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|parser
 operator|=
 operator|new

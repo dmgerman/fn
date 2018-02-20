@@ -360,7 +360,7 @@ name|logic
 operator|.
 name|xmp
 operator|.
-name|XMPUtil
+name|XmpUtilShared
 import|;
 end_import
 
@@ -750,7 +750,7 @@ expr_stmt|;
 if|if
 condition|(
 operator|!
-name|XMPUtil
+name|XmpUtilShared
 operator|.
 name|hasMetadata
 argument_list|(
@@ -776,13 +776,6 @@ name|disableXMPChoice
 argument_list|()
 expr_stmt|;
 block|}
-name|importDialog
-operator|.
-name|setLocationRelativeTo
-argument_list|(
-name|frame
-argument_list|)
-expr_stmt|;
 name|importDialog
 operator|.
 name|showDialog
@@ -1039,9 +1032,6 @@ name|getEntries
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|BibEntry
-name|entry
-decl_stmt|;
 if|if
 condition|(
 name|localRes
@@ -1072,16 +1062,14 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
-comment|// only one entry is imported
+for|for
+control|(
+name|BibEntry
 name|entry
-operator|=
+range|:
 name|localRes
-operator|.
-name|get
-argument_list|(
-literal|0
-argument_list|)
-expr_stmt|;
+control|)
+block|{
 comment|// insert entry to database and link file
 name|panel
 operator|.
@@ -1193,6 +1181,7 @@ argument_list|(
 name|entry
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 DECL|method|createNewBlankEntry (String fileName)
 specifier|private
@@ -1488,14 +1477,6 @@ argument_list|(
 name|frame
 argument_list|)
 decl_stmt|;
-comment|// We want to center the dialog, to make it look nicer.
-name|etd
-operator|.
-name|setLocationRelativeTo
-argument_list|(
-name|frame
-argument_list|)
-expr_stmt|;
 name|etd
 operator|.
 name|setVisible

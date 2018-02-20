@@ -62,6 +62,18 @@ name|jabref
 operator|.
 name|gui
 operator|.
+name|DialogService
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
 name|JabRefFrame
 import|;
 end_import
@@ -252,6 +264,12 @@ specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
+DECL|field|dialogService
+specifier|private
+specifier|final
+name|DialogService
+name|dialogService
+decl_stmt|;
 comment|/**      * Global variable to count unsuccessful renames      */
 DECL|field|unsuccessfulRenames
 specifier|private
@@ -306,6 +324,15 @@ name|preferences
 operator|=
 name|preferences
 expr_stmt|;
+name|this
+operator|.
+name|dialogService
+operator|=
+name|frame
+operator|.
+name|getDialogService
+argument_list|()
+expr_stmt|;
 block|}
 annotation|@
 name|Override
@@ -339,7 +366,7 @@ name|JOptionPane
 operator|.
 name|showMessageDialog
 argument_list|(
-name|frame
+literal|null
 argument_list|,
 name|Localization
 operator|.
@@ -366,11 +393,6 @@ literal|true
 expr_stmt|;
 return|return;
 block|}
-name|frame
-operator|.
-name|block
-argument_list|()
-expr_stmt|;
 name|panel
 operator|.
 name|output
@@ -518,7 +540,7 @@ name|JOptionPane
 operator|.
 name|showConfirmDialog
 argument_list|(
-name|frame
+literal|null
 argument_list|,
 name|cbm
 argument_list|,
@@ -649,11 +671,6 @@ condition|(
 name|canceled
 condition|)
 block|{
-name|frame
-operator|.
-name|unblock
-argument_list|()
-expr_stmt|;
 return|return;
 block|}
 if|if
@@ -664,11 +681,16 @@ literal|0
 condition|)
 block|{
 comment|//Rename failed for at least one entry
-name|JOptionPane
+name|dialogService
 operator|.
-name|showMessageDialog
+name|showErrorDialogAndWait
 argument_list|(
-name|frame
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Autogenerate PDF Names"
+argument_list|)
 argument_list|,
 name|Localization
 operator|.
@@ -683,17 +705,6 @@ argument_list|(
 name|unsuccessfulRenames
 argument_list|)
 argument_list|)
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Autogenerate PDF Names"
-argument_list|)
-argument_list|,
-name|JOptionPane
-operator|.
-name|INFORMATION_MESSAGE
 argument_list|)
 expr_stmt|;
 block|}
@@ -775,11 +786,6 @@ argument_list|(
 name|message
 argument_list|)
 expr_stmt|;
-name|frame
-operator|.
-name|unblock
-argument_list|()
-expr_stmt|;
 block|}
 DECL|method|showDialog (CleanupPresetPanel presetPanel)
 specifier|private
@@ -823,7 +829,7 @@ name|JOptionPane
 operator|.
 name|showConfirmDialog
 argument_list|(
-name|frame
+literal|null
 argument_list|,
 name|messages
 argument_list|,

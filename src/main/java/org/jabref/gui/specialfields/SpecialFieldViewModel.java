@@ -110,7 +110,21 @@ name|gui
 operator|.
 name|actions
 operator|.
-name|ActionsFX
+name|Action
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|actions
+operator|.
+name|StandardActions
 import|;
 end_import
 
@@ -369,7 +383,7 @@ return|;
 block|}
 DECL|method|getAction ()
 specifier|public
-name|ActionsFX
+name|Action
 name|getAction
 parameter_list|()
 block|{
@@ -382,7 +396,7 @@ case|case
 name|PRINTED
 case|:
 return|return
-name|ActionsFX
+name|StandardActions
 operator|.
 name|PRINTED
 return|;
@@ -390,7 +404,7 @@ case|case
 name|PRIORITY
 case|:
 return|return
-name|ActionsFX
+name|StandardActions
 operator|.
 name|PRIORITY
 return|;
@@ -398,7 +412,7 @@ case|case
 name|QUALITY
 case|:
 return|return
-name|ActionsFX
+name|StandardActions
 operator|.
 name|QUALITY
 return|;
@@ -406,7 +420,7 @@ case|case
 name|RANKING
 case|:
 return|return
-name|ActionsFX
+name|StandardActions
 operator|.
 name|RANKING
 return|;
@@ -414,7 +428,7 @@ case|case
 name|READ_STATUS
 case|:
 return|return
-name|ActionsFX
+name|StandardActions
 operator|.
 name|READ_STATUS
 return|;
@@ -422,7 +436,7 @@ case|case
 name|RELEVANCE
 case|:
 return|return
-name|ActionsFX
+name|StandardActions
 operator|.
 name|RELEVANCE
 return|;

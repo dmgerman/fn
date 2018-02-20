@@ -28,17 +28,27 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Test
 import|;
 end_import
 
 begin_import
-import|import
+import|import static
 name|org
 operator|.
 name|junit
 operator|.
-name|Test
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
+operator|.
+name|assertEquals
 import|;
 end_import
 
@@ -56,8 +66,6 @@ name|void
 name|parseCorrectlyByShortName
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -77,8 +85,6 @@ literal|"jan"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -98,8 +104,6 @@ literal|"feb"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -119,8 +123,6 @@ literal|"mar"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -140,8 +142,6 @@ literal|"apr"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -161,8 +161,6 @@ literal|"may"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -182,8 +180,6 @@ literal|"jun"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -203,8 +199,6 @@ literal|"jul"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -224,8 +218,6 @@ literal|"aug"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -245,8 +237,6 @@ literal|"sep"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -266,8 +256,6 @@ literal|"oct"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -287,8 +275,6 @@ literal|"nov"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -317,8 +303,6 @@ name|void
 name|parseCorrectlyByBibtexName
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -338,8 +322,6 @@ literal|"#jan#"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -359,8 +341,6 @@ literal|"#feb#"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -380,8 +360,6 @@ literal|"#mar#"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -401,8 +379,6 @@ literal|"#apr#"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -422,8 +398,6 @@ literal|"#may#"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -443,8 +417,6 @@ literal|"#jun#"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -464,8 +436,6 @@ literal|"#jul#"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -485,8 +455,6 @@ literal|"#aug#"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -506,8 +474,6 @@ literal|"#sep#"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -527,8 +493,6 @@ literal|"#oct#"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -548,8 +512,6 @@ literal|"#nov#"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -578,8 +540,6 @@ name|void
 name|parseCorrectlyByFullName
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -599,8 +559,6 @@ literal|"January"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -620,8 +578,6 @@ literal|"February"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -641,8 +597,6 @@ literal|"March"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -662,8 +616,6 @@ literal|"April"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -683,8 +635,6 @@ literal|"May"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -704,8 +654,6 @@ literal|"June"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -725,8 +673,6 @@ literal|"July"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -746,8 +692,6 @@ literal|"August"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -767,8 +711,6 @@ literal|"September"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -788,8 +730,6 @@ literal|"October"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -809,8 +749,6 @@ literal|"November"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -839,8 +777,6 @@ name|void
 name|parseCorrectlyByTwoDigitNumber
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -860,8 +796,6 @@ literal|"01"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -881,8 +815,6 @@ literal|"02"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -902,8 +834,6 @@ literal|"03"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -923,8 +853,6 @@ literal|"04"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -944,8 +872,6 @@ literal|"05"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -965,8 +891,6 @@ literal|"06"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -986,8 +910,6 @@ literal|"07"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -1007,8 +929,6 @@ literal|"08"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -1028,8 +948,6 @@ literal|"09"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -1049,8 +967,6 @@ literal|"10"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -1070,8 +986,6 @@ literal|"11"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -1100,8 +1014,6 @@ name|void
 name|parseCorrectlyByNumber
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -1121,8 +1033,6 @@ literal|"1"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -1142,8 +1052,6 @@ literal|"2"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -1163,8 +1071,6 @@ literal|"3"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -1184,8 +1090,6 @@ literal|"4"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -1205,8 +1109,6 @@ literal|"5"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -1226,8 +1128,6 @@ literal|"6"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -1247,8 +1147,6 @@ literal|"7"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -1268,8 +1166,6 @@ literal|"8"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -1289,8 +1185,6 @@ literal|"9"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -1310,8 +1204,6 @@ literal|"10"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -1331,8 +1223,6 @@ literal|"11"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -1361,8 +1251,6 @@ name|void
 name|parseReturnsEmptyOptionalForInvalidInput
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -1378,8 +1266,6 @@ literal|";lkjasdf"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -1395,8 +1281,6 @@ literal|"3.2"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -1412,8 +1296,6 @@ literal|"#test#"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -1438,8 +1320,6 @@ name|void
 name|parseReturnsEmptyOptionalForEmptyInput
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional

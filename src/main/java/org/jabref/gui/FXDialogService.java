@@ -288,6 +288,14 @@ name|FXDialogService
 implements|implements
 name|DialogService
 block|{
+comment|/**      * @deprecated try not to initialize a new dialog service but reuse the one constructed in {@link org.jabref.JabRefMain}.      */
+annotation|@
+name|Deprecated
+DECL|method|FXDialogService ()
+specifier|public
+name|FXDialogService
+parameter_list|()
+block|{     }
 DECL|method|createDialog (AlertType type, String title, String content)
 specifier|private
 specifier|static
@@ -522,6 +530,52 @@ operator|.
 name|setHeaderText
 argument_list|(
 name|message
+argument_list|)
+expr_stmt|;
+name|exceptionDialog
+operator|.
+name|showAndWait
+argument_list|()
+expr_stmt|;
+block|}
+annotation|@
+name|Override
+DECL|method|showErrorDialogAndWait (String title, String content, Throwable exception)
+specifier|public
+name|void
+name|showErrorDialogAndWait
+parameter_list|(
+name|String
+name|title
+parameter_list|,
+name|String
+name|content
+parameter_list|,
+name|Throwable
+name|exception
+parameter_list|)
+block|{
+name|ExceptionDialog
+name|exceptionDialog
+init|=
+operator|new
+name|ExceptionDialog
+argument_list|(
+name|exception
+argument_list|)
+decl_stmt|;
+name|exceptionDialog
+operator|.
+name|setHeaderText
+argument_list|(
+name|title
+argument_list|)
+expr_stmt|;
+name|exceptionDialog
+operator|.
+name|setContentText
+argument_list|(
+name|content
 argument_list|)
 expr_stmt|;
 name|exceptionDialog

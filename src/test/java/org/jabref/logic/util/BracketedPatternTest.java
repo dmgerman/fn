@@ -102,7 +102,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Before
+name|jupiter
+operator|.
+name|api
+operator|.
+name|BeforeEach
 import|;
 end_import
 
@@ -111,6 +115,10 @@ import|import
 name|org
 operator|.
 name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
 operator|.
 name|Test
 import|;
@@ -122,7 +130,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
 operator|.
 name|assertEquals
 import|;
@@ -134,9 +146,29 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
 operator|.
 name|assertNotEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
+operator|.
+name|assertThrows
 import|;
 end_import
 
@@ -162,7 +194,7 @@ name|BibEntry
 name|dbentry
 decl_stmt|;
 annotation|@
-name|Before
+name|BeforeEach
 DECL|method|setUp ()
 specifier|public
 name|void
@@ -736,13 +768,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-argument_list|(
-name|expected
-operator|=
-name|NullPointerException
-operator|.
-name|class
-argument_list|)
 DECL|method|nullBibentryBracketExpansionTest ()
 specifier|public
 name|void
@@ -768,6 +793,14 @@ argument_list|(
 literal|"[year]_[auth]_[firstpage]"
 argument_list|)
 decl_stmt|;
+name|assertThrows
+argument_list|(
+name|NullPointerException
+operator|.
+name|class
+argument_list|,
+parameter_list|()
+lambda|->
 name|pattern
 operator|.
 name|expand
@@ -778,17 +811,11 @@ literal|';'
 argument_list|,
 name|another_database
 argument_list|)
+argument_list|)
 expr_stmt|;
 block|}
 annotation|@
 name|Test
-argument_list|(
-name|expected
-operator|=
-name|NullPointerException
-operator|.
-name|class
-argument_list|)
 DECL|method|bracketedExpressionDefaultConstructorTest ()
 specifier|public
 name|void
@@ -807,6 +834,14 @@ operator|new
 name|BracketedPattern
 argument_list|()
 decl_stmt|;
+name|assertThrows
+argument_list|(
+name|NullPointerException
+operator|.
+name|class
+argument_list|,
+parameter_list|()
+lambda|->
 name|pattern
 operator|.
 name|expand
@@ -816,6 +851,7 @@ argument_list|,
 literal|';'
 argument_list|,
 name|another_database
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

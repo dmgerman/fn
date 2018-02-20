@@ -671,7 +671,7 @@ init|=
 operator|new
 name|ChangeDisplayDialog
 argument_list|(
-name|frame
+literal|null
 argument_list|,
 name|panel
 argument_list|,
@@ -683,13 +683,6 @@ argument_list|,
 name|changes
 argument_list|)
 decl_stmt|;
-name|changeDialog
-operator|.
-name|setLocationRelativeTo
-argument_list|(
-name|frame
-argument_list|)
-expr_stmt|;
 name|changeDialog
 operator|.
 name|setVisible
@@ -730,7 +723,7 @@ name|JOptionPane
 operator|.
 name|showMessageDialog
 argument_list|(
-name|frame
+literal|null
 argument_list|,
 name|Localization
 operator|.

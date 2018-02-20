@@ -178,10 +178,7 @@ name|JOptionPane
 operator|.
 name|showMessageDialog
 argument_list|(
-name|basePanel
-operator|.
-name|frame
-argument_list|()
+literal|null
 argument_list|,
 name|Localization
 operator|.

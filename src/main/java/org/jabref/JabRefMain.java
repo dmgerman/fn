@@ -40,16 +40,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|SwingUtilities
-import|;
-end_import
-
-begin_import
-import|import
 name|javafx
 operator|.
 name|application
@@ -115,22 +105,6 @@ operator|.
 name|exporter
 operator|.
 name|ExporterFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
-name|formatter
-operator|.
-name|casechanger
-operator|.
-name|ProtectTermsFormatter
 import|;
 end_import
 
@@ -430,39 +404,6 @@ name|arguments
 argument_list|)
 expr_stmt|;
 block|}
-annotation|@
-name|Override
-DECL|method|start (Stage mainStage)
-specifier|public
-name|void
-name|start
-parameter_list|(
-name|Stage
-name|mainStage
-parameter_list|)
-throws|throws
-name|Exception
-block|{
-name|Platform
-operator|.
-name|setImplicitExit
-argument_list|(
-literal|false
-argument_list|)
-expr_stmt|;
-name|SwingUtilities
-operator|.
-name|invokeLater
-argument_list|(
-parameter_list|()
-lambda|->
-name|start
-argument_list|(
-name|arguments
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
 comment|/**      * Tests if we are running an acceptable Java and terminates JabRef when we are sure the version is not supported.      * This test uses the requirements for the Java version as specified in<code>gradle.build</code>. It is possible to      * define a minimum version including the built number and to indicate whether Java 9 can be use (which it currently      * can't). It tries to compare this version number to the version of the currently running JVM. The check is      * optimistic and will rather return true even if we could not exactly determine the version.      *<p>      * Note: Users with an very old version like 1.6 will not profit from this since class versions are incompatible and      * JabRef won't even start. Currently, JabRef won't start with Java 9 either, but the warning that it cannot be used      * with this version is helpful anyway to prevent users to update from an old 1.8 directly to version 9. Additionally,      * we soon might have a JabRef that does start with Java 9 but is not perfectly compatible. Therefore, we should leave      * the Java 9 check alive.      */
 DECL|method|ensureCorrectJavaVersion ()
 specifier|private
@@ -613,7 +554,7 @@ name|JOptionPane
 operator|.
 name|showMessageDialog
 argument_list|(
-name|frame
+literal|null
 argument_list|,
 name|versionError
 argument_list|,
@@ -650,16 +591,18 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|start (String[] args)
-specifier|private
-specifier|static
+annotation|@
+name|Override
+DECL|method|start (Stage mainStage)
+specifier|public
 name|void
 name|start
 parameter_list|(
-name|String
-index|[]
-name|args
+name|Stage
+name|mainStage
 parameter_list|)
+throws|throws
+name|Exception
 block|{
 name|FallbackExceptionHandler
 operator|.
@@ -924,15 +867,6 @@ name|getProtectedTermsPreferences
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|ProtectTermsFormatter
-operator|.
-name|setProtectedTermsLoader
-argument_list|(
-name|Globals
-operator|.
-name|protectedTermsLoader
-argument_list|)
-expr_stmt|;
 comment|// Check for running JabRef
 name|RemotePreferences
 name|remotePreferences
@@ -986,7 +920,7 @@ name|RemoteListenerClient
 operator|.
 name|sendToActiveJabRefInstance
 argument_list|(
-name|args
+name|arguments
 argument_list|,
 name|remotePreferences
 operator|.
@@ -1056,7 +990,7 @@ init|=
 operator|new
 name|ArgumentProcessor
 argument_list|(
-name|args
+name|arguments
 argument_list|,
 name|ArgumentProcessor
 operator|.
@@ -1087,15 +1021,11 @@ expr_stmt|;
 return|return;
 block|}
 comment|// If not, start GUI
-name|SwingUtilities
-operator|.
-name|invokeLater
-argument_list|(
-parameter_list|()
-lambda|->
 operator|new
 name|JabRefGUI
 argument_list|(
+name|mainStage
+argument_list|,
 name|argumentProcessor
 operator|.
 name|getParserResults
@@ -1105,7 +1035,6 @@ name|argumentProcessor
 operator|.
 name|isBlank
 argument_list|()
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

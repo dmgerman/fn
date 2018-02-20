@@ -20,7 +20,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|BeforeEach
 import|;
 end_import
 
@@ -30,17 +34,27 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Before
-import|;
-end_import
-
-begin_import
-import|import
-name|org
+name|jupiter
 operator|.
-name|junit
+name|api
 operator|.
 name|Test
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
+operator|.
+name|assertEquals
 import|;
 end_import
 
@@ -60,7 +74,7 @@ name|TitleCaseFormatter
 name|formatter
 decl_stmt|;
 annotation|@
-name|Before
+name|BeforeEach
 DECL|method|setUp ()
 specifier|public
 name|void
@@ -82,8 +96,6 @@ name|void
 name|eachFirstLetterIsUppercased
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Upper Each First"
@@ -105,8 +117,6 @@ name|void
 name|eachFirstLetterIsUppercasedAndOthersLowercased
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Upper Each First"
@@ -128,8 +138,6 @@ name|void
 name|eachFirstLetterIsUppercasedAndATralingAndIsAlsoUppercased
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"An Upper Each First And"
@@ -151,8 +159,6 @@ name|void
 name|eachFirstLetterIsUppercasedAndATralingAndIsAlsoCorrectlyCased
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"An Upper Each First And"
@@ -174,8 +180,6 @@ name|void
 name|eachFirstLetterIsUppercasedButIntermediateAndsAreKeptLowercase
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"An Upper Each of the and First And"
@@ -197,8 +201,6 @@ name|void
 name|eachFirstLetterIsUppercasedButIntermediateAndsArePutLowercase
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"An Upper Each of the and First And"
@@ -220,8 +222,6 @@ name|void
 name|theAfterColonGetsCapitalized
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"An Upper Each of: The and First And"
@@ -243,8 +243,6 @@ name|void
 name|completeWordsInCurlyBracketsIsLeftUnchanged
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"An Upper First with and without {CURLY} {brackets}"
@@ -266,8 +264,6 @@ name|void
 name|lettersInCurlyBracketsIsLeftUnchanged
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"An Upper First with {A}nd without {C}urly {b}rackets"
@@ -289,8 +285,6 @@ name|void
 name|intraWordLettersInCurlyBracketsIsLeftUnchanged
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"{b}rackets {b}rac{K}ets Brack{E}ts"
@@ -312,8 +306,6 @@ name|void
 name|testTwoExperiencesTitle
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Two Experiences Designing for Effective Security"
@@ -335,8 +327,6 @@ name|void
 name|formatExample
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"{BPMN} Conformance in Open Source Engines"

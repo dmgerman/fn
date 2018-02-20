@@ -154,6 +154,16 @@ name|javax
 operator|.
 name|swing
 operator|.
+name|JFrame
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
 name|JOptionPane
 import|;
 end_import
@@ -562,7 +572,10 @@ operator|=
 operator|new
 name|JDialog
 argument_list|(
-name|frame
+operator|(
+name|JFrame
+operator|)
+literal|null
 argument_list|,
 name|Localization
 operator|.
@@ -838,7 +851,7 @@ name|JOptionPane
 operator|.
 name|showMessageDialog
 argument_list|(
-name|frame
+literal|null
 argument_list|,
 name|Localization
 operator|.

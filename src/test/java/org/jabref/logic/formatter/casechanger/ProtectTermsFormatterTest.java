@@ -58,7 +58,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Before
+name|jupiter
+operator|.
+name|api
+operator|.
+name|BeforeEach
 import|;
 end_import
 
@@ -67,6 +71,10 @@ import|import
 name|org
 operator|.
 name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
 operator|.
 name|Test
 import|;
@@ -78,7 +86,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
 operator|.
 name|assertEquals
 import|;
@@ -100,16 +112,17 @@ name|ProtectTermsFormatter
 name|formatter
 decl_stmt|;
 annotation|@
-name|Before
+name|BeforeEach
 DECL|method|setUp ()
 specifier|public
 name|void
 name|setUp
 parameter_list|()
 block|{
+name|formatter
+operator|=
+operator|new
 name|ProtectTermsFormatter
-operator|.
-name|setProtectedTermsLoader
 argument_list|(
 operator|new
 name|ProtectedTermsLoader
@@ -139,12 +152,6 @@ argument_list|()
 argument_list|)
 argument_list|)
 argument_list|)
-expr_stmt|;
-name|formatter
-operator|=
-operator|new
-name|ProtectTermsFormatter
-argument_list|()
 expr_stmt|;
 block|}
 annotation|@

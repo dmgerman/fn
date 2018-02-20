@@ -228,7 +228,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|FXDialogService
+name|DialogService
 import|;
 end_import
 
@@ -462,7 +462,13 @@ name|String
 argument_list|>
 name|fields
 decl_stmt|;
-DECL|method|FieldsEditorTab (boolean compressed, BibDatabaseContext databaseContext, SuggestionProviders suggestionProviders, UndoManager undoManager)
+DECL|field|dialogService
+specifier|private
+specifier|final
+name|DialogService
+name|dialogService
+decl_stmt|;
+DECL|method|FieldsEditorTab (boolean compressed, BibDatabaseContext databaseContext, SuggestionProviders suggestionProviders, UndoManager undoManager, DialogService dialogService)
 specifier|public
 name|FieldsEditorTab
 parameter_list|(
@@ -477,6 +483,9 @@ name|suggestionProviders
 parameter_list|,
 name|UndoManager
 name|undoManager
+parameter_list|,
+name|DialogService
+name|dialogService
 parameter_list|)
 block|{
 name|this
@@ -502,6 +511,12 @@ operator|.
 name|undoManager
 operator|=
 name|undoManager
+expr_stmt|;
+name|this
+operator|.
+name|dialogService
+operator|=
+name|dialogService
 expr_stmt|;
 block|}
 DECL|method|addColumn (GridPane gridPane, int columnIndex, List<Label> nodes)
@@ -681,9 +696,7 @@ name|Globals
 operator|.
 name|TASK_EXECUTOR
 argument_list|,
-operator|new
-name|FXDialogService
-argument_list|()
+name|dialogService
 argument_list|,
 name|Globals
 operator|.

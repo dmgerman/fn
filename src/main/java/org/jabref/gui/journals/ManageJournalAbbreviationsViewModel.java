@@ -511,6 +511,13 @@ specifier|final
 name|JournalAbbreviationLoader
 name|journalAbbreviationLoader
 decl_stmt|;
+DECL|field|shouldWriteLists
+specifier|private
+name|boolean
+name|shouldWriteLists
+init|=
+literal|false
+decl_stmt|;
 DECL|method|ManageJournalAbbreviationsViewModel (PreferencesService preferences, DialogService dialogService, TaskExecutor taskExecutor, JournalAbbreviationLoader journalAbbreviationLoader)
 specifier|public
 name|ManageJournalAbbreviationsViewModel
@@ -1510,6 +1517,10 @@ argument_list|(
 name|abbreviationViewModel
 argument_list|)
 expr_stmt|;
+name|shouldWriteLists
+operator|=
+literal|true
+expr_stmt|;
 block|}
 block|}
 end_function
@@ -1720,6 +1731,10 @@ argument_list|(
 name|abbreviation
 argument_list|)
 expr_stmt|;
+name|shouldWriteLists
+operator|=
+literal|true
+expr_stmt|;
 block|}
 end_function
 
@@ -1844,6 +1859,10 @@ name|remove
 argument_list|(
 name|index
 argument_list|)
+expr_stmt|;
+name|shouldWriteLists
+operator|=
+literal|true
 expr_stmt|;
 block|}
 block|}
@@ -2035,9 +2054,19 @@ block|{
 name|saveExternalFilesList
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+name|shouldWriteLists
+condition|)
+block|{
 name|saveJournalAbbreviationFiles
 argument_list|()
 expr_stmt|;
+name|shouldWriteLists
+operator|=
+literal|false
+expr_stmt|;
+block|}
 comment|// Update journal abbreviation loader
 name|journalAbbreviationLoader
 operator|.

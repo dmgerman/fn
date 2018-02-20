@@ -14,40 +14,6 @@ end_package
 
 begin_import
 import|import
-name|java
-operator|.
-name|awt
-operator|.
-name|event
-operator|.
-name|ActionEvent
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|Action
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|IconTheme
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|jabref
@@ -113,7 +79,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * The action concerned with opening a new database.  */
+comment|/**  * Create a new, empty, database.  */
 end_comment
 
 begin_class
@@ -122,7 +88,7 @@ specifier|public
 class|class
 name|NewDatabaseAction
 extends|extends
-name|MnemonicAwareAction
+name|SimpleCommand
 block|{
 DECL|field|jabRefFrame
 specifier|private
@@ -147,18 +113,6 @@ name|BibDatabaseMode
 name|mode
 parameter_list|)
 block|{
-name|super
-argument_list|(
-name|IconTheme
-operator|.
-name|JabRefIcons
-operator|.
-name|NEW
-operator|.
-name|getIcon
-argument_list|()
-argument_list|)
-expr_stmt|;
 name|this
 operator|.
 name|jabRefFrame
@@ -170,58 +124,16 @@ operator|.
 name|mode
 operator|=
 name|mode
-expr_stmt|;
-name|putValue
-argument_list|(
-name|Action
-operator|.
-name|NAME
-argument_list|,
-name|Localization
-operator|.
-name|menuTitle
-argument_list|(
-literal|"New %0 library"
-argument_list|,
-name|mode
-operator|.
-name|getFormattedName
-argument_list|()
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|putValue
-argument_list|(
-name|Action
-operator|.
-name|SHORT_DESCRIPTION
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"New %0 library"
-argument_list|,
-name|mode
-operator|.
-name|getFormattedName
-argument_list|()
-argument_list|)
-argument_list|)
 expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|actionPerformed (ActionEvent e)
+DECL|method|execute ()
 specifier|public
 name|void
-name|actionPerformed
-parameter_list|(
-name|ActionEvent
-name|e
-parameter_list|)
+name|execute
+parameter_list|()
 block|{
-comment|// Create a new, empty, database.
 name|BibDatabaseContext
 name|bibDatabaseContext
 init|=

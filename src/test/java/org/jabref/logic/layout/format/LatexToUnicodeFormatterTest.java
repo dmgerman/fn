@@ -20,7 +20,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Disabled
 import|;
 end_import
 
@@ -29,6 +33,10 @@ import|import
 name|org
 operator|.
 name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
 operator|.
 name|Test
 import|;
@@ -40,7 +48,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
 operator|.
 name|assertEquals
 import|;
@@ -439,7 +451,7 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
-name|Ignore
+name|Disabled
 argument_list|(
 literal|"This is not a standard LaTeX command. It is debatable why we should convert this."
 argument_list|)

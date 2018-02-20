@@ -412,7 +412,7 @@ name|logic
 operator|.
 name|xmp
 operator|.
-name|XMPUtil
+name|XmpUtilReader
 import|;
 end_import
 
@@ -1473,9 +1473,9 @@ try|try
 block|{
 name|xmpEntriesInFile
 operator|=
-name|XMPUtil
+name|XmpUtilReader
 operator|.
-name|readXMP
+name|readXmp
 argument_list|(
 name|fileName
 argument_list|,
@@ -1646,7 +1646,7 @@ name|JOptionPane
 operator|.
 name|showConfirmDialog
 argument_list|(
-name|frame
+literal|null
 argument_list|,
 name|contentPanel
 argument_list|,
@@ -2413,7 +2413,7 @@ name|JOptionPane
 operator|.
 name|showConfirmDialog
 argument_list|(
-name|frame
+literal|null
 argument_list|,
 name|messages
 argument_list|,
@@ -2952,7 +2952,7 @@ name|JOptionPane
 operator|.
 name|showConfirmDialog
 argument_list|(
-name|frame
+literal|null
 argument_list|,
 name|Localization
 operator|.
@@ -3064,7 +3064,7 @@ name|JOptionPane
 operator|.
 name|showMessageDialog
 argument_list|(
-name|frame
+literal|null
 argument_list|,
 name|Localization
 operator|.
@@ -3267,7 +3267,7 @@ name|JOptionPane
 operator|.
 name|showConfirmDialog
 argument_list|(
-name|frame
+literal|null
 argument_list|,
 name|Localization
 operator|.

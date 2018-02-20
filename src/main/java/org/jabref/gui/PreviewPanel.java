@@ -531,19 +531,6 @@ operator|.
 name|empty
 argument_list|()
 decl_stmt|;
-DECL|field|highlightPattern
-specifier|private
-name|Optional
-argument_list|<
-name|Pattern
-argument_list|>
-name|highlightPattern
-init|=
-name|Optional
-operator|.
-name|empty
-argument_list|()
-decl_stmt|;
 comment|/**      * If a database is set, the preview will attempt to resolve strings in the previewed entry using that database.      */
 DECL|field|databaseContext
 specifier|private
@@ -579,8 +566,8 @@ operator|.
 name|empty
 argument_list|()
 decl_stmt|;
-comment|/**      * @param preferences      * @param panel           (may be null) Only set this if the preview is associated to the main window.      * @param databaseContext (may be null) Used for resolving pdf directories for links.      */
-DECL|method|PreviewPanel (BasePanel panel, BibDatabaseContext databaseContext, KeyBindingRepository keyBindingRepository, PreviewPreferences preferences)
+comment|/**      * @param panel           (may be null) Only set this if the preview is associated to the main window.      * @param databaseContext (may be null) Used for resolving pdf directories for links.      * @param preferences      * @param dialogService      */
+DECL|method|PreviewPanel (BasePanel panel, BibDatabaseContext databaseContext, KeyBindingRepository keyBindingRepository, PreviewPreferences preferences, DialogService dialogService)
 specifier|public
 name|PreviewPanel
 parameter_list|(
@@ -595,6 +582,9 @@ name|keyBindingRepository
 parameter_list|,
 name|PreviewPreferences
 name|preferences
+parameter_list|,
+name|DialogService
+name|dialogService
 parameter_list|)
 block|{
 name|this
@@ -621,18 +611,16 @@ argument_list|)
 expr_stmt|;
 name|this
 operator|.
+name|dialogService
+operator|=
+name|dialogService
+expr_stmt|;
+name|this
+operator|.
 name|clipBoardManager
 operator|=
 operator|new
 name|ClipBoardManager
-argument_list|()
-expr_stmt|;
-name|this
-operator|.
-name|dialogService
-operator|=
-operator|new
-name|FXDialogService
 argument_list|()
 expr_stmt|;
 name|this
@@ -925,7 +913,7 @@ name|MenuItem
 argument_list|(
 name|Localization
 operator|.
-name|menuTitleFX
+name|menuTitle
 argument_list|(
 literal|"Previous preview layout"
 argument_list|)
@@ -969,7 +957,7 @@ name|MenuItem
 argument_list|(
 name|Localization
 operator|.
-name|menuTitleFX
+name|menuTitle
 argument_list|(
 literal|"Next preview layout"
 argument_list|)
@@ -1051,7 +1039,7 @@ argument_list|()
 operator|.
 name|add
 argument_list|(
-name|previousPreviewLayout
+name|nextPreviewLayout
 argument_list|)
 expr_stmt|;
 name|menu
@@ -1061,7 +1049,7 @@ argument_list|()
 operator|.
 name|add
 argument_list|(
-name|nextPreviewLayout
+name|previousPreviewLayout
 argument_list|)
 expr_stmt|;
 return|return
@@ -1771,12 +1759,6 @@ name|newPattern
 parameter_list|)
 block|{
 comment|// TODO: Implement that search phrases are highlighted
-name|this
-operator|.
-name|highlightPattern
-operator|=
-name|newPattern
-expr_stmt|;
 name|update
 argument_list|()
 expr_stmt|;

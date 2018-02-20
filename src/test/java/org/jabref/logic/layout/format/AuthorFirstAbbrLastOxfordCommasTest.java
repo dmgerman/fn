@@ -29,12 +29,18 @@ import|;
 end_import
 
 begin_import
-import|import
+import|import static
 name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
+operator|.
+name|*
 import|;
 end_import
 
@@ -43,6 +49,10 @@ import|import
 name|org
 operator|.
 name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
 operator|.
 name|Test
 import|;
@@ -71,8 +81,6 @@ name|AuthorFirstAbbrLastOxfordCommas
 argument_list|()
 decl_stmt|;
 comment|// Empty case
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|""
@@ -86,8 +94,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Single Names
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"V. S. Someone"
@@ -101,8 +107,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Two names
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"J. von Neumann and P. Black Brown"
@@ -116,8 +120,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Three names
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"J. von Neumann, J. Smith, and P. Black Brown"
@@ -130,8 +132,6 @@ literal|"von Neumann, John and Smith, John and Black Brown, Peter"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"J. von Neumann, J. Smith, and P. Black Brown"

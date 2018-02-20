@@ -317,6 +317,7 @@ literal|"en"
 argument_list|)
 expr_stmt|;
 block|}
+comment|// Remove& sign, which is not used by JavaFX to signify the shortcut
 return|return
 name|lookup
 argument_list|(
@@ -324,31 +325,6 @@ name|localizedMenuTitles
 argument_list|,
 literal|"menu item"
 argument_list|,
-name|key
-argument_list|,
-name|params
-argument_list|)
-return|;
-block|}
-comment|/**      * Return the translated string for usage in JavaFX menus.      *      * @implNote This is only a temporary workaround. In the long term, the& sign should be removed from the language      * files.      */
-DECL|method|menuTitleFX (String key, String... params)
-specifier|public
-specifier|static
-name|String
-name|menuTitleFX
-parameter_list|(
-name|String
-name|key
-parameter_list|,
-name|String
-modifier|...
-name|params
-parameter_list|)
-block|{
-comment|// Remove& sign, which is not used by JavaFX to signify the shortcut
-return|return
-name|menuTitle
-argument_list|(
 name|key
 argument_list|,
 name|params

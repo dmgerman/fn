@@ -134,6 +134,10 @@ name|org
 operator|.
 name|junit
 operator|.
+name|jupiter
+operator|.
+name|api
+operator|.
 name|Test
 import|;
 end_import
@@ -144,7 +148,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
 operator|.
 name|assertEquals
 import|;
@@ -156,7 +164,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
 operator|.
 name|assertFalse
 import|;

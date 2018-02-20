@@ -218,6 +218,16 @@ name|javax
 operator|.
 name|swing
 operator|.
+name|JFrame
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
 name|JLabel
 import|;
 end_import
@@ -1338,7 +1348,10 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|jabrefFrame
+operator|(
+name|JFrame
+operator|)
+literal|null
 argument_list|,
 name|Localization
 operator|.
@@ -2623,11 +2636,6 @@ argument_list|()
 expr_stmt|;
 name|setLayoutForSelectedGroup
 argument_list|()
-expr_stmt|;
-name|setLocationRelativeTo
-argument_list|(
-name|jabrefFrame
-argument_list|)
 expr_stmt|;
 comment|// add listeners
 name|ItemListener

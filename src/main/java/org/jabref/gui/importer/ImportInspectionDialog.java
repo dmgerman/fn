@@ -1923,7 +1923,7 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|frame
+literal|null
 argument_list|,
 name|ImportInspectionDialog
 operator|.
@@ -2004,6 +2004,11 @@ operator|.
 name|prefs
 operator|.
 name|getPreviewPreferences
+argument_list|()
+argument_list|,
+name|frame
+operator|.
+name|getDialogService
 argument_list|()
 argument_list|)
 argument_list|)
@@ -7498,7 +7503,7 @@ name|JOptionPane
 operator|.
 name|showConfirmDialog
 argument_list|(
-name|frame
+literal|null
 argument_list|,
 name|Localization
 operator|.
@@ -7726,7 +7731,7 @@ name|JOptionPane
 operator|.
 name|showConfirmDialog
 argument_list|(
-name|frame
+literal|null
 argument_list|,
 name|Localization
 operator|.

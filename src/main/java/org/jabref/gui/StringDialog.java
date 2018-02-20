@@ -629,7 +629,7 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|frame
+literal|null
 argument_list|,
 name|StringDialog
 operator|.

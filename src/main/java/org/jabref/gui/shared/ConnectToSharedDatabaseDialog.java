@@ -258,6 +258,16 @@ name|javax
 operator|.
 name|swing
 operator|.
+name|JFrame
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
 name|JLabel
 import|;
 end_import
@@ -363,18 +373,6 @@ operator|.
 name|gui
 operator|.
 name|DialogService
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|FXDialogService
 import|;
 end_import
 
@@ -1068,7 +1066,10 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|frame
+operator|(
+name|JFrame
+operator|)
+literal|null
 argument_list|,
 name|Localization
 operator|.
@@ -1102,11 +1103,6 @@ argument_list|()
 expr_stmt|;
 name|pack
 argument_list|()
-expr_stmt|;
-name|setLocationRelativeTo
-argument_list|(
-name|frame
-argument_list|)
 expr_stmt|;
 block|}
 DECL|method|openSharedDatabase ()
@@ -3176,8 +3172,9 @@ decl_stmt|;
 name|DialogService
 name|ds
 init|=
-operator|new
-name|FXDialogService
+name|frame
+operator|.
+name|getDialogService
 argument_list|()
 decl_stmt|;
 name|Optional

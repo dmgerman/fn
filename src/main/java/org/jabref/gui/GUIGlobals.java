@@ -257,16 +257,6 @@ argument_list|(
 literal|"untitled"
 argument_list|)
 decl_stmt|;
-DECL|field|MAX_BACK_HISTORY_SIZE
-specifier|public
-specifier|static
-specifier|final
-name|int
-name|MAX_BACK_HISTORY_SIZE
-init|=
-literal|10
-decl_stmt|;
-comment|// The maximum number of "Back" operations stored.
 comment|//	Colors.
 DECL|field|ENTRY_EDITOR_LABEL_COLOR
 specifier|public

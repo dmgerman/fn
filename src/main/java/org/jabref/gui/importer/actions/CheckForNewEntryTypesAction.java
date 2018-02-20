@@ -607,10 +607,7 @@ name|JOptionPane
 operator|.
 name|showConfirmDialog
 argument_list|(
-name|panel
-operator|.
-name|frame
-argument_list|()
+literal|null
 argument_list|,
 name|checkboxPanel
 argument_list|,

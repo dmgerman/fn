@@ -18,17 +18,27 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Test
 import|;
 end_import
 
 begin_import
-import|import
+import|import static
 name|org
 operator|.
 name|junit
 operator|.
-name|Test
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
+operator|.
+name|assertEquals
 import|;
 end_import
 
@@ -56,8 +66,6 @@ name|String
 name|string
 parameter_list|)
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|i
@@ -151,8 +159,6 @@ name|void
 name|testGetCharWidth
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|500
@@ -165,8 +171,6 @@ literal|'0'
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|361
@@ -179,8 +183,6 @@ literal|'I'
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|500
@@ -193,8 +195,6 @@ literal|'~'
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|500
@@ -207,8 +207,6 @@ literal|'}'
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|278

@@ -1605,8 +1605,6 @@ operator|new
 name|OpenDatabaseAction
 argument_list|(
 name|frame
-argument_list|,
-literal|false
 argument_list|)
 decl_stmt|;
 name|List

@@ -254,6 +254,16 @@ name|javax
 operator|.
 name|swing
 operator|.
+name|JFrame
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
 name|JList
 import|;
 end_import
@@ -704,7 +714,10 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|frame
+operator|(
+name|JFrame
+operator|)
+literal|null
 argument_list|,
 name|Localization
 operator|.
@@ -2377,7 +2390,7 @@ name|JOptionPane
 operator|.
 name|showConfirmDialog
 argument_list|(
-name|frame
+literal|null
 argument_list|,
 name|Localization
 operator|.

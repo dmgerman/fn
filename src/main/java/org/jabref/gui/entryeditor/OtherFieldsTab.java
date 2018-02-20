@@ -76,6 +76,18 @@ name|jabref
 operator|.
 name|gui
 operator|.
+name|DialogService
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
 name|IconTheme
 import|;
 end_import
@@ -167,7 +179,7 @@ name|String
 argument_list|>
 name|customTabFieldNames
 decl_stmt|;
-DECL|method|OtherFieldsTab (BibDatabaseContext databaseContext, SuggestionProviders suggestionProviders, UndoManager undoManager, List<String> customTabFieldNames)
+DECL|method|OtherFieldsTab (BibDatabaseContext databaseContext, SuggestionProviders suggestionProviders, UndoManager undoManager, List<String> customTabFieldNames, DialogService dialogService)
 specifier|public
 name|OtherFieldsTab
 parameter_list|(
@@ -185,6 +197,9 @@ argument_list|<
 name|String
 argument_list|>
 name|customTabFieldNames
+parameter_list|,
+name|DialogService
+name|dialogService
 parameter_list|)
 block|{
 name|super
@@ -196,6 +211,8 @@ argument_list|,
 name|suggestionProviders
 argument_list|,
 name|undoManager
+argument_list|,
+name|dialogService
 argument_list|)
 expr_stmt|;
 name|setText
