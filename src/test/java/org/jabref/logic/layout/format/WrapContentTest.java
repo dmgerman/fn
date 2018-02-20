@@ -29,12 +29,18 @@ import|;
 end_import
 
 begin_import
-import|import
+import|import static
 name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
+operator|.
+name|*
 import|;
 end_import
 
@@ -43,6 +49,10 @@ import|import
 name|org
 operator|.
 name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
 operator|.
 name|Test
 import|;
@@ -76,8 +86,6 @@ argument_list|(
 literal|"<,>"
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"<Bob>"
@@ -113,8 +121,6 @@ argument_list|(
 literal|",:"
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Bob:"
@@ -150,8 +156,6 @@ argument_list|(
 literal|"Content: ,"
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Content: Bob"
@@ -187,8 +191,6 @@ argument_list|(
 literal|"Name\\,Field\\,,\\,Author"
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Name,Field,Bob,Author"
@@ -224,8 +226,6 @@ argument_list|(
 literal|"Eds.,Ed."
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|null
@@ -261,8 +261,6 @@ argument_list|(
 literal|"Eds.,Ed."
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|""
@@ -291,8 +289,6 @@ operator|new
 name|WrapContent
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Bob Bruce and Jolly Jumper"
@@ -328,8 +324,6 @@ argument_list|(
 literal|"Eds."
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Bob Bruce and Jolly Jumper"

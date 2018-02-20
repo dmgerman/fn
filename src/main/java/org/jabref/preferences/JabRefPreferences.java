@@ -568,6 +568,22 @@ name|jabref
 operator|.
 name|logic
 operator|.
+name|importer
+operator|.
+name|fetcher
+operator|.
+name|DoiFetcher
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
 name|journals
 operator|.
 name|JournalAbbreviationLoader
@@ -844,7 +860,7 @@ name|logic
 operator|.
 name|xmp
 operator|.
-name|XMPPreferences
+name|XmpPreferences
 import|;
 end_import
 
@@ -3298,6 +3314,16 @@ name|AUTOCOMPLETER_COMPLETE_FIELDS
 init|=
 literal|"autoCompleteFields"
 decl_stmt|;
+comment|// Id Entry Generator Preferences
+DECL|field|ID_ENTRY_GENERATOR
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|ID_ENTRY_GENERATOR
+init|=
+literal|"idEntryGenerator"
+decl_stmt|;
 comment|// Auto completion
 DECL|field|AUTO_COMPLETE
 specifier|private
@@ -3802,6 +3828,18 @@ argument_list|,
 name|Boolean
 operator|.
 name|FALSE
+argument_list|)
+expr_stmt|;
+comment|// Set DOI to be the default ID entry generator
+name|defaults
+operator|.
+name|put
+argument_list|(
+name|ID_ENTRY_GENERATOR
+argument_list|,
+name|DoiFetcher
+operator|.
+name|NAME
 argument_list|)
 expr_stmt|;
 if|if
@@ -7696,7 +7734,7 @@ literal|"Abstract"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// Entry editor tab 2: Review Field - used for research comments, etc.
+comment|// Entry editor tab 2: Comments Field - used for research comments, etc.
 name|defaults
 operator|.
 name|put
@@ -7707,7 +7745,7 @@ literal|"_def2"
 argument_list|,
 name|FieldName
 operator|.
-name|REVIEW
+name|COMMENT
 argument_list|)
 expr_stmt|;
 name|defaults
@@ -7722,7 +7760,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Review"
+literal|"Comments"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -9940,13 +9978,13 @@ return|;
 block|}
 DECL|method|getXMPPreferences ()
 specifier|public
-name|XMPPreferences
+name|XmpPreferences
 name|getXMPPreferences
 parameter_list|()
 block|{
 return|return
 operator|new
-name|XMPPreferences
+name|XmpPreferences
 argument_list|(
 name|getBoolean
 argument_list|(

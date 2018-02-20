@@ -204,7 +204,7 @@ name|remoteServerPort
 argument_list|)
 decl_stmt|;
 name|String
-name|error
+name|errorMessage
 init|=
 name|Localization
 operator|.
@@ -215,13 +215,11 @@ argument_list|,
 name|port
 argument_list|)
 decl_stmt|;
-name|System
+name|LOGGER
 operator|.
-name|out
-operator|.
-name|println
-argument_list|(
 name|error
+argument_list|(
+name|errorMessage
 argument_list|)
 expr_stmt|;
 return|return

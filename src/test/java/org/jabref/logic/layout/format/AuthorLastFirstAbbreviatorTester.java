@@ -15,12 +15,18 @@ package|;
 end_package
 
 begin_import
-import|import
+import|import static
 name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
+operator|.
+name|*
 import|;
 end_import
 
@@ -29,6 +35,10 @@ import|import
 name|org
 operator|.
 name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
 operator|.
 name|Test
 import|;
@@ -53,8 +63,6 @@ name|void
 name|testOneAuthorSimpleName
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Abbreviator Test"
@@ -77,8 +85,6 @@ name|void
 name|testOneAuthorCommonName
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Abbreviator Test"
@@ -114,8 +120,6 @@ name|expectedResult
 init|=
 literal|"Lastname, N. M. and Sobrenome, N. N."
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Abbreviator Test"
@@ -134,8 +138,6 @@ name|void
 name|testJrAuthor
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Other, Jr., A. N."
@@ -155,8 +157,6 @@ name|void
 name|testFormat
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|""
@@ -167,8 +167,6 @@ literal|""
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Someone, V. S."
@@ -179,8 +177,6 @@ literal|"Someone, Van Something"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Smith, J."
@@ -191,8 +187,6 @@ literal|"Smith, John"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"von Neumann, J. and Smith, J. and Black Brown, P."

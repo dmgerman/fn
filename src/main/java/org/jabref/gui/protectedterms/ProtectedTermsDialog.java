@@ -937,15 +937,12 @@ specifier|final
 name|ProtectedTermsLoader
 name|loader
 decl_stmt|;
-DECL|method|ProtectedTermsDialog (JabRefFrame frame, ProtectedTermsLoader loader)
+DECL|method|ProtectedTermsDialog (JabRefFrame frame)
 specifier|public
 name|ProtectedTermsDialog
 parameter_list|(
 name|JabRefFrame
 name|frame
-parameter_list|,
-name|ProtectedTermsLoader
-name|loader
 parameter_list|)
 block|{
 name|this
@@ -963,12 +960,9 @@ name|this
 operator|.
 name|loader
 operator|=
-name|Objects
+name|Globals
 operator|.
-name|requireNonNull
-argument_list|(
-name|loader
-argument_list|)
+name|protectedTermsLoader
 expr_stmt|;
 name|init
 argument_list|()

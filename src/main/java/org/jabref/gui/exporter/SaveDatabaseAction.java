@@ -164,9 +164,9 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|autosaveandbackup
+name|collab
 operator|.
-name|AutosaveUIManager
+name|ChangeScanner
 import|;
 end_import
 
@@ -178,9 +178,9 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|collab
+name|dialogs
 operator|.
-name|ChangeScanner
+name|AutosaveUIManager
 import|;
 end_import
 

@@ -111,8 +111,6 @@ operator|new
 name|ProtectedTermsDialog
 argument_list|(
 name|jabRefFrame
-argument_list|,
-name|termsLoader
 argument_list|)
 decl_stmt|;
 name|protectTermsDialog

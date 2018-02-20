@@ -531,19 +531,6 @@ operator|.
 name|empty
 argument_list|()
 decl_stmt|;
-DECL|field|highlightPattern
-specifier|private
-name|Optional
-argument_list|<
-name|Pattern
-argument_list|>
-name|highlightPattern
-init|=
-name|Optional
-operator|.
-name|empty
-argument_list|()
-decl_stmt|;
 comment|/**      * If a database is set, the preview will attempt to resolve strings in the previewed entry using that database.      */
 DECL|field|databaseContext
 specifier|private
@@ -1052,7 +1039,7 @@ argument_list|()
 operator|.
 name|add
 argument_list|(
-name|previousPreviewLayout
+name|nextPreviewLayout
 argument_list|)
 expr_stmt|;
 name|menu
@@ -1062,7 +1049,7 @@ argument_list|()
 operator|.
 name|add
 argument_list|(
-name|nextPreviewLayout
+name|previousPreviewLayout
 argument_list|)
 expr_stmt|;
 return|return
@@ -1772,12 +1759,6 @@ name|newPattern
 parameter_list|)
 block|{
 comment|// TODO: Implement that search phrases are highlighted
-name|this
-operator|.
-name|highlightPattern
-operator|=
-name|newPattern
-expr_stmt|;
 name|update
 argument_list|()
 expr_stmt|;

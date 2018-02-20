@@ -192,6 +192,22 @@ name|importer
 operator|.
 name|fileformat
 operator|.
+name|EndnoteXmlImporter
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|importer
+operator|.
+name|fileformat
+operator|.
 name|FreeCiteImporter
 import|;
 end_import
@@ -412,7 +428,7 @@ name|logic
 operator|.
 name|xmp
 operator|.
-name|XMPPreferences
+name|XmpPreferences
 import|;
 end_import
 
@@ -507,7 +523,7 @@ specifier|private
 name|ImportFormatPreferences
 name|importFormatPreferences
 decl_stmt|;
-DECL|method|resetImportFormats (ImportFormatPreferences newImportFormatPreferences, XMPPreferences xmpPreferences, FileUpdateMonitor fileMonitor)
+DECL|method|resetImportFormats (ImportFormatPreferences newImportFormatPreferences, XmpPreferences xmpPreferences, FileUpdateMonitor fileMonitor)
 specifier|public
 name|void
 name|resetImportFormats
@@ -515,7 +531,7 @@ parameter_list|(
 name|ImportFormatPreferences
 name|newImportFormatPreferences
 parameter_list|,
-name|XMPPreferences
+name|XmpPreferences
 name|xmpPreferences
 parameter_list|,
 name|FileUpdateMonitor
@@ -579,6 +595,17 @@ name|add
 argument_list|(
 operator|new
 name|EndnoteImporter
+argument_list|(
+name|importFormatPreferences
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|formats
+operator|.
+name|add
+argument_list|(
+operator|new
+name|EndnoteXmlImporter
 argument_list|(
 name|importFormatPreferences
 argument_list|)

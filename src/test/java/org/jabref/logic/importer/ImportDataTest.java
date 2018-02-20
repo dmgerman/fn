@@ -40,17 +40,43 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Test
 import|;
 end_import
 
 begin_import
-import|import
+import|import static
 name|org
 operator|.
 name|junit
 operator|.
-name|Test
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
+operator|.
+name|assertFalse
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
+operator|.
+name|assertTrue
 import|;
 end_import
 
@@ -175,8 +201,6 @@ name|void
 name|testTestingEnvironment
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|ImportDataTest
@@ -187,8 +211,6 @@ name|exists
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|ImportDataTest
@@ -199,8 +221,6 @@ name|isDirectory
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|ImportDataTest
@@ -211,8 +231,6 @@ name|exists
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|ImportDataTest
@@ -223,8 +241,6 @@ name|isFile
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|ImportDataTest
@@ -235,8 +251,6 @@ name|exists
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|ImportDataTest
@@ -256,8 +270,6 @@ name|void
 name|testOpenNotExistingDirectory
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertFalse
 argument_list|(
 name|ImportDataTest
@@ -268,8 +280,6 @@ name|exists
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertFalse
 argument_list|(
 name|ImportDataTest

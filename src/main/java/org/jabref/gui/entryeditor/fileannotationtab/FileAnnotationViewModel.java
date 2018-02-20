@@ -606,10 +606,10 @@ name|toString
 argument_list|()
 return|;
 block|}
-DECL|method|getDescription ()
+DECL|method|getMarking ()
 specifier|public
 name|String
-name|getDescription
+name|getMarking
 parameter_list|()
 block|{
 return|return

@@ -29,12 +29,18 @@ import|;
 end_import
 
 begin_import
-import|import
+import|import static
 name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
+operator|.
+name|*
 import|;
 end_import
 
@@ -43,6 +49,10 @@ import|import
 name|org
 operator|.
 name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
 operator|.
 name|Test
 import|;
@@ -69,8 +79,6 @@ operator|new
 name|Authors
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"B. C. Bruce, C. Manson and J. Jumper"
@@ -106,8 +114,6 @@ argument_list|(
 literal|"fullname, LastFirst, Comma, Comma"
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Bruce, Bob Croydon, Jumper, Jolly"
@@ -143,8 +149,6 @@ argument_list|(
 literal|"initials"
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"B. C. Bruce and J. Jumper"
@@ -180,8 +184,6 @@ argument_list|(
 literal|"fullname, LastFirst, Comma"
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Bruce, Bob Croydon, Manson, Charles and Jumper, Jolly"
@@ -217,8 +219,6 @@ argument_list|(
 literal|"fullname, LastFirst, Comma, 2"
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Bruce, Bob Croydon et al."
@@ -254,8 +254,6 @@ argument_list|(
 literal|"fullname, LastFirst, Comma, 3"
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Bruce, Bob Croydon et al."
@@ -291,8 +289,6 @@ argument_list|(
 literal|"fullname, LastFirst, Comma, 3, 2"
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Bruce, Bob Croydon, Manson, Charles et al."
@@ -328,8 +324,6 @@ argument_list|(
 literal|"fullname, LastFirst, Comma, 3, etal= and a few more"
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Bruce, Bob Croydon and a few more"
@@ -358,8 +352,6 @@ operator|new
 name|Authors
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|""
@@ -395,8 +387,6 @@ argument_list|(
 literal|"Oxford"
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"B. C. Bruce, C. Manson, and J. Jumper"
@@ -432,8 +422,6 @@ argument_list|(
 literal|"FullName,Oxford"
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Bob Croydon Bruce, Charles Manson, and Jolly Jumper"
@@ -469,8 +457,6 @@ argument_list|(
 literal|"FullName,Comma,Comma"
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Bob Croydon Bruce, Charles Manson, Jolly Jumper"
@@ -506,8 +492,6 @@ argument_list|(
 literal|"FullName,Amp"
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Bob Croydon Bruce, Charles Manson& Jolly Jumper"
@@ -543,8 +527,6 @@ argument_list|(
 literal|"LastName"
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Bruce, von Manson and Jumper"
@@ -580,8 +562,6 @@ argument_list|(
 literal|"MiddleInitial"
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Bob C. Bruce, Charles K. von Manson and Jolly Jumper"
@@ -617,8 +597,6 @@ argument_list|(
 literal|"NoPeriod"
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"B C Bruce, C K von Manson and J Jumper"
@@ -654,8 +632,6 @@ argument_list|(
 literal|"2,1"
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"B. C. Bruce et al."
@@ -691,8 +667,6 @@ argument_list|(
 literal|"2,1"
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"B. C. Bruce and C. K. von Manson"
@@ -728,8 +702,6 @@ argument_list|(
 literal|"fullname, LastFirst, Comma, 3, etal="
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Bruce, Bob Croydon"

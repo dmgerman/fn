@@ -153,7 +153,8 @@ name|converter
 range|:
 name|Formatters
 operator|.
-name|CONVERTERS
+name|getConverters
+argument_list|()
 control|)
 block|{
 name|CustomMenuItem

@@ -29,12 +29,18 @@ import|;
 end_import
 
 begin_import
-import|import
+import|import static
 name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
+operator|.
+name|*
 import|;
 end_import
 
@@ -43,6 +49,10 @@ import|import
 name|org
 operator|.
 name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
 operator|.
 name|Test
 import|;
@@ -71,8 +81,6 @@ name|AuthorAndsCommaReplacer
 argument_list|()
 decl_stmt|;
 comment|// Empty case
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|""
@@ -86,8 +94,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Single Names don't change
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Someone, Van Something"
@@ -101,8 +107,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Two names just an&
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"John von Neumann& Peter Black Brown"
@@ -116,8 +120,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Three names put a comma:
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"von Neumann, John, Smith, John& Black Brown, Peter"

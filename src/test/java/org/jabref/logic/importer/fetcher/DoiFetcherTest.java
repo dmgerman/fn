@@ -501,6 +501,8 @@ name|fetchedEntry
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testPerformSearchEmptyDOI ()
 specifier|public
 name|void
@@ -524,6 +526,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testPerformSearchInvalidDOI ()
 specifier|public
 name|void

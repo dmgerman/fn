@@ -30,17 +30,43 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Test
 import|;
 end_import
 
 begin_import
-import|import
+import|import static
 name|org
 operator|.
 name|junit
 operator|.
-name|Test
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
+operator|.
+name|assertThrows
 import|;
 end_import
 
@@ -58,8 +84,6 @@ name|void
 name|acceptPlainDoi
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"10.1006/jmbi.1998.2354"
@@ -74,8 +98,6 @@ name|getDOI
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"10.231/JIM.0b013e31820bab4c"
@@ -90,8 +112,6 @@ name|getDOI
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"10.1002/(SICI)1522-2594(199911)42:5<952::AID-MRM16>3.0.CO;2-S"
@@ -106,8 +126,6 @@ name|getDOI
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"10.1126/sciadv.1500214"
@@ -131,8 +149,6 @@ name|void
 name|ignoreLeadingAndTrailingWhitespaces
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"10.1006/jmbi.1998.2354"
@@ -150,35 +166,30 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-argument_list|(
-name|expected
-operator|=
-name|IllegalArgumentException
-operator|.
-name|class
-argument_list|)
 DECL|method|rejectEmbeddedDoi ()
 specifier|public
 name|void
 name|rejectEmbeddedDoi
 parameter_list|()
 block|{
+name|assertThrows
+argument_list|(
+name|IllegalArgumentException
+operator|.
+name|class
+argument_list|,
+parameter_list|()
+lambda|->
 operator|new
 name|DOI
 argument_list|(
 literal|"other stuff 10.1006/jmbi.1998.2354 end"
 argument_list|)
+argument_list|)
 expr_stmt|;
 block|}
 annotation|@
 name|Test
-argument_list|(
-name|expected
-operator|=
-name|IllegalArgumentException
-operator|.
-name|class
-argument_list|)
 DECL|method|rejectInvalidDirectoryIndicator ()
 specifier|public
 name|void
@@ -186,44 +197,48 @@ name|rejectInvalidDirectoryIndicator
 parameter_list|()
 block|{
 comment|// wrong directory indicator
+name|assertThrows
+argument_list|(
+name|IllegalArgumentException
+operator|.
+name|class
+argument_list|,
+parameter_list|()
+lambda|->
 operator|new
 name|DOI
 argument_list|(
 literal|"12.1006/jmbi.1998.2354 end"
 argument_list|)
+argument_list|)
 expr_stmt|;
 block|}
 annotation|@
 name|Test
-argument_list|(
-name|expected
-operator|=
-name|IllegalArgumentException
-operator|.
-name|class
-argument_list|)
 DECL|method|rejectInvalidDoiUri ()
 specifier|public
 name|void
 name|rejectInvalidDoiUri
 parameter_list|()
 block|{
+name|assertThrows
+argument_list|(
+name|IllegalArgumentException
+operator|.
+name|class
+argument_list|,
+parameter_list|()
+lambda|->
 operator|new
 name|DOI
 argument_list|(
 literal|"https://thisisnouri"
 argument_list|)
+argument_list|)
 expr_stmt|;
 block|}
 annotation|@
 name|Test
-argument_list|(
-name|expected
-operator|=
-name|IllegalArgumentException
-operator|.
-name|class
-argument_list|)
 DECL|method|rejectMissingDivider ()
 specifier|public
 name|void
@@ -231,10 +246,19 @@ name|rejectMissingDivider
 parameter_list|()
 block|{
 comment|// missing divider
+name|assertThrows
+argument_list|(
+name|IllegalArgumentException
+operator|.
+name|class
+argument_list|,
+parameter_list|()
+lambda|->
 operator|new
 name|DOI
 argument_list|(
 literal|"10.1006jmbi.1998.2354 end"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -247,8 +271,6 @@ name|acceptDoiPrefix
 parameter_list|()
 block|{
 comment|// Doi prefix
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"10.1006/jmbi.1998.2354"
@@ -272,8 +294,6 @@ name|void
 name|acceptURNPrefix
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"10.123/456"
@@ -288,8 +308,6 @@ name|getDOI
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"10.123/456"
@@ -304,8 +322,6 @@ name|getDOI
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"10.123/456"
@@ -321,8 +337,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// : is also allowed as divider, will be replaced by RESOLVER
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"10.123:456ABC/zyz"
@@ -347,8 +361,6 @@ name|acceptURLDoi
 parameter_list|()
 block|{
 comment|// http
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"10.1006/jmbi.1998.2354"
@@ -364,8 +376,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// https
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"10.1006/jmbi.1998.2354"
@@ -380,9 +390,22 @@ name|getDOI
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// other domains
-name|Assert
+comment|// https with % divider
+name|assertEquals
+argument_list|(
+literal|"10.2307/1990888"
+argument_list|,
+operator|new
+name|DOI
+argument_list|(
+literal|"https://dx.doi.org/10.2307%2F1990888"
+argument_list|)
 operator|.
+name|getDOI
+argument_list|()
+argument_list|)
+expr_stmt|;
+comment|// other domains
 name|assertEquals
 argument_list|(
 literal|"10.1145/1294928.1294933"
@@ -397,8 +420,6 @@ name|getDOI
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"10.1145/1294928.1294933"
@@ -413,8 +434,6 @@ name|getDOI
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"10.1145/1294928.1294933"
@@ -429,8 +448,6 @@ name|getDOI
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"10.1145/1294928.1294933"
@@ -445,8 +462,6 @@ name|getDOI
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"10.1007/978-3-642-15618-2_19"
@@ -461,8 +476,6 @@ name|getDOI
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"10.1007/978-3-642-15618-2_19"
@@ -477,8 +490,6 @@ name|getDOI
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"10.1007/978-3-642-15618-2_19"
@@ -493,8 +504,6 @@ name|getDOI
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"10.1007/978-3-642-15618-2_19"
@@ -509,8 +518,6 @@ name|getDOI
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"10.4108/ICST.COLLABORATECOM2009.8275"
@@ -525,8 +532,6 @@ name|getDOI
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"10.1109/MIC.2012.43"
@@ -552,8 +557,6 @@ parameter_list|()
 block|{
 comment|// See http://www.doi.org/doi_handbook/2_Numbering.html#2.5.2.4
 comment|// % -> (%25)
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"10.1006/rwei.1999%.0001"
@@ -569,8 +572,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// " -> (%22)
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"10.1006/rwei.1999\".0001"
@@ -586,8 +587,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// # -> (%23)
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"10.1006/rwei.1999#.0001"
@@ -603,8 +602,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// SPACE -> (%20)
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"10.1006/rwei.1999 .0001"
@@ -620,8 +617,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// ? -> (%3F)
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"10.1006/rwei.1999?.0001"
@@ -647,8 +642,6 @@ parameter_list|()
 block|{
 comment|// See http://www.doi.org/doi_handbook/2_Numbering.html#2.5.2.4
 comment|// % -> (%25)
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"https://doi.org/10.1006/rwei.1999%25.0001"
@@ -664,8 +657,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// " -> (%22)
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"https://doi.org/10.1006/rwei.1999%22.0001"
@@ -681,8 +672,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// # -> (%23)
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"https://doi.org/10.1006/rwei.1999%23.0001"
@@ -698,8 +687,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// SPACE -> (%20)
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"https://doi.org/10.1006/rwei.1999%20.0001"
@@ -715,8 +702,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// ? -> (%3F)
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"https://doi.org/10.1006/rwei.1999%3F.0001"
@@ -741,8 +726,6 @@ name|constructCorrectURLForDoi
 parameter_list|()
 block|{
 comment|// add / to RESOLVER url if missing
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"https://doi.org/10.1006/jmbi.1998.2354"
@@ -757,8 +740,6 @@ name|getURIAsASCIIString
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"https://doi.org/10.1006/jmbi.1998.2354"
@@ -773,8 +754,6 @@ name|getURIAsASCIIString
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"https://doi.org/10.1109/VLHCC.2004.20"
@@ -798,8 +777,6 @@ name|void
 name|findDoiInsideArbitraryText
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"10.1006/jmbi.1998.2354"
@@ -827,8 +804,6 @@ name|void
 name|noDOIFoundInsideArbitraryText
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional

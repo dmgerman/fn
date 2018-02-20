@@ -414,7 +414,7 @@ name|logic
 operator|.
 name|xmp
 operator|.
-name|XMPUtil
+name|XmpUtilWriter
 import|;
 end_import
 
@@ -478,6 +478,20 @@ begin_import
 import|import
 name|org
 operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|metadata
+operator|.
+name|FileDirectoryPreferences
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|slf4j
 operator|.
 name|Logger
@@ -491,6 +505,20 @@ operator|.
 name|slf4j
 operator|.
 name|LoggerFactory
+import|;
+end_import
+
+begin_import
+import|import static
+name|javafx
+operator|.
+name|scene
+operator|.
+name|control
+operator|.
+name|ButtonBar
+operator|.
+name|ButtonData
 import|;
 end_import
 
@@ -1872,11 +1900,14 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|delete ()
+DECL|method|delete (FileDirectoryPreferences prefs)
 specifier|public
 name|boolean
 name|delete
-parameter_list|()
+parameter_list|(
+name|FileDirectoryPreferences
+name|prefs
+parameter_list|)
 block|{
 name|Optional
 argument_list|<
@@ -1890,14 +1921,34 @@ name|findIn
 argument_list|(
 name|databaseContext
 argument_list|,
-name|Globals
-operator|.
 name|prefs
-operator|.
-name|getFileDirectoryPreferences
-argument_list|()
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+operator|!
+name|file
+operator|.
+name|isPresent
+argument_list|()
+condition|)
+block|{
+name|LOGGER
+operator|.
+name|warn
+argument_list|(
+literal|"Could not find file "
+operator|+
+name|linkedFile
+operator|.
+name|getLink
+argument_list|()
+argument_list|)
+expr_stmt|;
+return|return
+literal|true
+return|;
+block|}
 name|ButtonType
 name|removeFromEntry
 init|=
@@ -1910,16 +1961,12 @@ name|lang
 argument_list|(
 literal|"Remove from entry"
 argument_list|)
+argument_list|,
+name|ButtonData
+operator|.
+name|YES
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
-name|file
-operator|.
-name|isPresent
-argument_list|()
-condition|)
-block|{
 name|ButtonType
 name|deleteFromEntry
 init|=
@@ -1970,9 +2017,9 @@ argument_list|(
 literal|"Delete the selected file permanently from disk, or just remove the file from the entry? Pressing Delete will delete the file permanently from disk."
 argument_list|)
 argument_list|,
-name|deleteFromEntry
-argument_list|,
 name|removeFromEntry
+argument_list|,
+name|deleteFromEntry
 argument_list|,
 name|ButtonType
 operator|.
@@ -2069,30 +2116,11 @@ argument_list|,
 name|ex
 argument_list|)
 expr_stmt|;
+block|}
+block|}
+block|}
 return|return
 literal|false
-return|;
-block|}
-block|}
-block|}
-block|}
-else|else
-block|{
-name|LOGGER
-operator|.
-name|warn
-argument_list|(
-literal|"Could not find file "
-operator|+
-name|linkedFile
-operator|.
-name|getLink
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
-return|return
-literal|true
 return|;
 block|}
 DECL|method|edit ()
@@ -2189,9 +2217,9 @@ else|else
 block|{
 try|try
 block|{
-name|XMPUtil
+name|XmpUtilWriter
 operator|.
-name|writeXMP
+name|writeXmp
 argument_list|(
 name|file
 operator|.

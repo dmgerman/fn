@@ -272,6 +272,13 @@ specifier|private
 name|boolean
 name|toOpenTab
 decl_stmt|;
+DECL|field|changedOnMigration
+specifier|private
+name|boolean
+name|changedOnMigration
+init|=
+literal|false
+decl_stmt|;
 DECL|method|ParserResult ()
 specifier|public
 name|ParserResult
@@ -864,6 +871,32 @@ operator|new
 name|ParserResult
 argument_list|()
 return|;
+block|}
+DECL|method|wasChangedOnMigration ()
+specifier|public
+name|boolean
+name|wasChangedOnMigration
+parameter_list|()
+block|{
+return|return
+name|changedOnMigration
+return|;
+block|}
+DECL|method|setChangedOnMigration (boolean wasChangedOnMigration)
+specifier|public
+name|void
+name|setChangedOnMigration
+parameter_list|(
+name|boolean
+name|wasChangedOnMigration
+parameter_list|)
+block|{
+name|this
+operator|.
+name|changedOnMigration
+operator|=
+name|wasChangedOnMigration
+expr_stmt|;
 block|}
 block|}
 end_class

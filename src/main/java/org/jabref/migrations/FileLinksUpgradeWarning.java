@@ -482,7 +482,7 @@ return|return
 name|ce
 return|;
 block|}
-comment|/**      * This method should be performed if the major/minor versions recorded in the ParserResult      * are less than or equal to 2.2.      * @param pr      * @return true if the file was written by a jabref version<=2.2      */
+comment|/**      * This method should be performed if the major/minor versions recorded in the ParserResult      * are less than or equal to 2.2.      *      * @return true if the file was written by a jabref version<=2.2      */
 annotation|@
 name|Override
 DECL|method|isActionNecessary (ParserResult pr)
@@ -597,7 +597,7 @@ name|isThereSomethingToBeDone
 argument_list|()
 return|;
 block|}
-comment|/**      * This method presents a dialog box explaining and offering to make the      * changes. If the user confirms, the changes are performed.      * @param panel      * @param parserResult      */
+comment|/*      * This method presents a dialog box explaining and offering to make the      * changes. If the user confirms, the changes are performed.      */
 annotation|@
 name|Override
 DECL|method|performAction (BasePanel panel, ParserResult parserResult)
@@ -1176,7 +1176,7 @@ operator|||
 name|offerSetFileDir
 return|;
 block|}
-comment|/**      * Check the database to find out whether any of a set of fields are used      * for any of the entries.      * @param database The BIB database.      * @param fields The set of fields to look for.      * @return true if at least one of the given fields is set in at least one entry,      *  false otherwise.      */
+comment|/**      * Check the database to find out whether any of a set of fields are used      * for any of the entries.      *      * @param database The BIB database.      * @param fields   The set of fields to look for.      * @return true if at least one of the given fields is set in at least one entry,      * false otherwise.      */
 DECL|method|linksFound (BibDatabase database, String[] fields)
 specifier|private
 name|boolean
@@ -1229,7 +1229,7 @@ return|return
 literal|false
 return|;
 block|}
-comment|/**      * This method performs the actual changes.      * @param panel      * @param pr      * @param fileDir The path to the file directory to set, or null if it should not be set.      */
+comment|/**      * This method performs the actual changes.      *      * @param fileDir The path to the file directory to set, or null if it should not be set.      */
 DECL|method|makeChanges (BasePanel panel, ParserResult pr, boolean upgradePrefs, boolean upgradeDatabase, String fileDir)
 specifier|private
 name|void

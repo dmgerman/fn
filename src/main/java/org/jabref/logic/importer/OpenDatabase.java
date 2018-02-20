@@ -38,7 +38,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Arrays
+name|Collections
 import|;
 end_import
 
@@ -65,38 +65,6 @@ operator|.
 name|fileformat
 operator|.
 name|BibtexImporter
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
-name|importer
-operator|.
-name|util
-operator|.
-name|ConvertLegacyExplicitGroups
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
-name|importer
-operator|.
-name|util
-operator|.
-name|PostOpenAction
 import|;
 end_import
 
@@ -141,6 +109,30 @@ operator|.
 name|io
 operator|.
 name|FileBasedLock
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|migrations
+operator|.
+name|ConvertLegacyExplicitGroups
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|migrations
+operator|.
+name|PostOpenMigration
 import|;
 end_import
 
@@ -219,7 +211,7 @@ specifier|private
 name|OpenDatabase
 parameter_list|()
 block|{     }
-comment|/**      * Load database (bib-file)      *      * @param name Name of the BIB-file to open      * @param fileMonitor      * @return ParserResult which never is null      */
+comment|/**      * Load database (bib-file)      *      * @param name Name of the BIB-file to open      * @return ParserResult which never is null      */
 DECL|method|loadDatabase (String name, ImportFormatPreferences importFormatPreferences, FileUpdateMonitor fileMonitor)
 specifier|public
 specifier|static
@@ -528,7 +520,7 @@ literal|"Synchronized special fields based on keywords"
 argument_list|)
 expr_stmt|;
 block|}
-name|applyPostActions
+name|performLoadDatabaseMigrations
 argument_list|(
 name|result
 argument_list|)
@@ -537,11 +529,11 @@ return|return
 name|result
 return|;
 block|}
-DECL|method|applyPostActions (ParserResult parserResult)
+DECL|method|performLoadDatabaseMigrations (ParserResult parserResult)
 specifier|private
 specifier|static
 name|void
-name|applyPostActions
+name|performLoadDatabaseMigrations
 parameter_list|(
 name|ParserResult
 name|parserResult
@@ -549,13 +541,13 @@ parameter_list|)
 block|{
 name|List
 argument_list|<
-name|PostOpenAction
+name|PostOpenMigration
 argument_list|>
-name|actions
+name|postOpenMigrations
 init|=
-name|Arrays
+name|Collections
 operator|.
-name|asList
+name|singletonList
 argument_list|(
 operator|new
 name|ConvertLegacyExplicitGroups
@@ -564,15 +556,15 @@ argument_list|)
 decl_stmt|;
 for|for
 control|(
-name|PostOpenAction
-name|action
+name|PostOpenMigration
+name|migration
 range|:
-name|actions
+name|postOpenMigrations
 control|)
 block|{
-name|action
+name|migration
 operator|.
-name|performAction
+name|performMigration
 argument_list|(
 name|parserResult
 argument_list|)

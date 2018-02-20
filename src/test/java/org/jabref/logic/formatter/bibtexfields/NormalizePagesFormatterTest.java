@@ -20,7 +20,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|BeforeEach
 import|;
 end_import
 
@@ -30,17 +34,27 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Before
-import|;
-end_import
-
-begin_import
-import|import
-name|org
+name|jupiter
 operator|.
-name|junit
+name|api
 operator|.
 name|Test
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
+operator|.
+name|assertEquals
 import|;
 end_import
 
@@ -60,7 +74,7 @@ name|NormalizePagesFormatter
 name|formatter
 decl_stmt|;
 annotation|@
-name|Before
+name|BeforeEach
 DECL|method|setUp ()
 specifier|public
 name|void
@@ -82,8 +96,6 @@ name|void
 name|formatSinglePageResultsInNoChange
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"1"
@@ -105,8 +117,6 @@ name|void
 name|formatPageNumbers
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"1--2"
@@ -128,8 +138,6 @@ name|void
 name|formatPageNumbersCommaSeparated
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"1,2,3"
@@ -151,8 +159,6 @@ name|void
 name|formatPageNumbersPlusRange
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"43+"
@@ -174,8 +180,6 @@ name|void
 name|ignoreWhitespaceInPageNumbers
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"1--2"
@@ -197,8 +201,6 @@ name|void
 name|removeWhitespaceSinglePage
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"1"
@@ -220,8 +222,6 @@ name|void
 name|removeWhitespacePageRange
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"1--2"
@@ -243,8 +243,6 @@ name|void
 name|ignoreWhitespaceInPageNumbersWithDoubleDash
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"43--103"
@@ -266,8 +264,6 @@ name|void
 name|keepCorrectlyFormattedPageNumbers
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"1--2"
@@ -289,8 +285,6 @@ name|void
 name|formatPageNumbersRemoveUnexpectedLiterals
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"1--2"
@@ -312,8 +306,6 @@ name|void
 name|formatPageNumbersRegexNotMatching
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"12"
@@ -335,8 +327,6 @@ name|void
 name|doNotRemoveLetters
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"R1-R50"
@@ -358,8 +348,6 @@ name|void
 name|replaceLongDashWithDoubleDash
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"1--50"
@@ -381,8 +369,6 @@ name|void
 name|removePagePrefix
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"50"
@@ -404,8 +390,6 @@ name|void
 name|removePagesPrefix
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"50"
@@ -428,8 +412,6 @@ name|formatACMPages
 parameter_list|()
 block|{
 comment|// This appears in https://doi.org/10.1145/1658373.1658375
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"2:1--2:33"
@@ -452,8 +434,6 @@ name|keepFormattedACMPages
 parameter_list|()
 block|{
 comment|// This appears in https://doi.org/10.1145/1658373.1658375
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"2:1--2:33"
@@ -475,8 +455,6 @@ name|void
 name|formatExample
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"1--2"

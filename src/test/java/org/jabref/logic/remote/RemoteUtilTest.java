@@ -18,17 +18,43 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Test
 import|;
 end_import
 
 begin_import
-import|import
+import|import static
 name|org
 operator|.
 name|junit
 operator|.
-name|Test
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
+operator|.
+name|assertFalse
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
+operator|.
+name|assertTrue
 import|;
 end_import
 
@@ -46,12 +72,8 @@ name|void
 name|rejectPortNumberBelowZero
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertFalse
 argument_list|(
-literal|"Port number must be non negative."
-argument_list|,
 name|RemoteUtil
 operator|.
 name|isUserPort
@@ -59,6 +81,8 @@ argument_list|(
 operator|-
 literal|55
 argument_list|)
+argument_list|,
+literal|"Port number must be non negative."
 argument_list|)
 expr_stmt|;
 block|}
@@ -70,32 +94,28 @@ name|void
 name|rejectReservedSystemPorts
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertFalse
 argument_list|(
-literal|"Port number must be outside reserved system range (0-1023)."
-argument_list|,
 name|RemoteUtil
 operator|.
 name|isUserPort
 argument_list|(
 literal|0
 argument_list|)
+argument_list|,
+literal|"Port number must be outside reserved system range (0-1023)."
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertFalse
 argument_list|(
-literal|"Port number must be outside reserved system range (0-1023)."
-argument_list|,
 name|RemoteUtil
 operator|.
 name|isUserPort
 argument_list|(
 literal|1023
 argument_list|)
+argument_list|,
+literal|"Port number must be outside reserved system range (0-1023)."
 argument_list|)
 expr_stmt|;
 block|}
@@ -108,18 +128,16 @@ name|rejectPortsAbove16Bits
 parameter_list|()
 block|{
 comment|// 2 ^ 16 - 1 => 65535
-name|Assert
-operator|.
 name|assertFalse
 argument_list|(
-literal|"Port number should be below 65535."
-argument_list|,
 name|RemoteUtil
 operator|.
 name|isUserPort
 argument_list|(
 literal|65536
 argument_list|)
+argument_list|,
+literal|"Port number should be below 65535."
 argument_list|)
 expr_stmt|;
 block|}
@@ -132,32 +150,28 @@ name|acceptPortsAboveSystemPorts
 parameter_list|()
 block|{
 comment|// ports 1024 -> 65535
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
-literal|"Port number in between 1024 and 65535 should be valid."
-argument_list|,
 name|RemoteUtil
 operator|.
 name|isUserPort
 argument_list|(
 literal|1024
 argument_list|)
+argument_list|,
+literal|"Port number in between 1024 and 65535 should be valid."
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
-literal|"Port number in between 1024 and 65535 should be valid."
-argument_list|,
 name|RemoteUtil
 operator|.
 name|isUserPort
 argument_list|(
 literal|65535
 argument_list|)
+argument_list|,
+literal|"Port number in between 1024 and 65535 should be valid."
 argument_list|)
 expr_stmt|;
 block|}
