@@ -763,8 +763,6 @@ name|entry
 operator|.
 name|get
 argument_list|()
-argument_list|,
-name|panel
 argument_list|)
 argument_list|)
 expr_stmt|;

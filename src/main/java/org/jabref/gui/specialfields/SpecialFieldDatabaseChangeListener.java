@@ -42,49 +42,15 @@ name|Subscribe
 import|;
 end_import
 
-begin_class
-DECL|class|SpecialFieldDatabaseChangeListener
+begin_enum
+DECL|enum|SpecialFieldDatabaseChangeListener
 specifier|public
-class|class
+enum|enum
 name|SpecialFieldDatabaseChangeListener
 block|{
-DECL|field|INSTANCE
-specifier|private
-specifier|static
-name|SpecialFieldDatabaseChangeListener
+DECL|enumConstant|INSTANCE
 name|INSTANCE
-decl_stmt|;
-DECL|method|getInstance ()
-specifier|public
-specifier|static
-name|SpecialFieldDatabaseChangeListener
-name|getInstance
-parameter_list|()
-block|{
-if|if
-condition|(
-name|SpecialFieldDatabaseChangeListener
-operator|.
-name|INSTANCE
-operator|==
-literal|null
-condition|)
-block|{
-name|SpecialFieldDatabaseChangeListener
-operator|.
-name|INSTANCE
-operator|=
-operator|new
-name|SpecialFieldDatabaseChangeListener
-argument_list|()
-expr_stmt|;
-block|}
-return|return
-name|SpecialFieldDatabaseChangeListener
-operator|.
-name|INSTANCE
-return|;
-block|}
+block|;
 annotation|@
 name|Subscribe
 DECL|method|listen (EntryAddedEvent event)
@@ -97,10 +63,10 @@ name|event
 parameter_list|)
 block|{
 comment|// TODO
-comment|/*         if (!Globals.prefs.isKeywordSyncEnabled()) {             return;         }           final BibEntry entry = event.getBibEntry();         // NamedCompount code similar to SpecialFieldUpdateListener         NamedCompound nc = new NamedCompound(Localization.lang("Synchronized special fields based on keywords"));         List<FieldChange> changes = SpecialFieldsUtils.syncSpecialFieldsFromKeywords(entry, Globals.prefs.getKeywordDelimiter());         for (FieldChange change: changes) {             nc.addEdit(new UndoableFieldChange(change));         }         // Don't insert the compound into the undoManager,         // it would be added before the component which undoes the insertion of the entry and creates heavy problems         // (which prohibits the undo the deleting multiple entries)         */
 block|}
+comment|/*     if (!Globals.prefs.isKeywordSyncEnabled()) {         return;     }      final BibEntry entry = event.getBibEntry();     // NamedCompount code similar to SpecialFieldUpdateListener     NamedCompound nc = new NamedCompound(Localization.lang("Synchronized special fields based on keywords"));     List<FieldChange> changes = SpecialFieldsUtils.syncSpecialFieldsFromKeywords(entry, Globals.prefs.getKeywordDelimiter());     for (FieldChange change: changes) {         nc.addEdit(new UndoableFieldChange(change));     }     // Don't insert the compound into the undoManager,     // it would be added before the component which undoes the insertion of the entry and creates heavy problems     // (which prohibits the undo the deleting multiple entries)     */
 block|}
-end_class
+end_enum
 
 end_unit
 

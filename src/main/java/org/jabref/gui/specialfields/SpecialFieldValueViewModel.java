@@ -142,16 +142,6 @@ specifier|public
 class|class
 name|SpecialFieldValueViewModel
 block|{
-DECL|method|getValue ()
-specifier|public
-name|SpecialFieldValue
-name|getValue
-parameter_list|()
-block|{
-return|return
-name|value
-return|;
-block|}
 DECL|field|value
 specifier|private
 specifier|final
@@ -179,6 +169,16 @@ name|value
 operator|=
 name|value
 expr_stmt|;
+block|}
+DECL|method|getValue ()
+specifier|public
+name|SpecialFieldValue
+name|getValue
+parameter_list|()
+block|{
+return|return
+name|value
+return|;
 block|}
 DECL|method|getSpecialFieldValueIcon ()
 specifier|public

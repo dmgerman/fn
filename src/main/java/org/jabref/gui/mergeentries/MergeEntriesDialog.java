@@ -612,8 +612,6 @@ name|getDatabase
 argument_list|()
 argument_list|,
 name|mergedEntry
-argument_list|,
-name|panel
 argument_list|)
 argument_list|)
 expr_stmt|;
