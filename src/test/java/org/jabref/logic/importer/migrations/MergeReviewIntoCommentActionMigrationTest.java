@@ -153,9 +153,9 @@ import|;
 end_import
 
 begin_class
-DECL|class|MergeReviewIntoCommentMigrationTest
+DECL|class|MergeReviewIntoCommentActionMigrationTest
 class|class
-name|MergeReviewIntoCommentMigrationTest
+name|MergeReviewIntoCommentActionMigrationTest
 block|{
 DECL|field|action
 specifier|private

@@ -97,10 +97,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|MergeReviewIntoCommentConfirmation
+DECL|class|MergeReviewIntoCommentConfirmationDialog
 specifier|public
 class|class
-name|MergeReviewIntoCommentConfirmation
+name|MergeReviewIntoCommentConfirmationDialog
 block|{
 DECL|field|panel
 specifier|private
@@ -108,9 +108,9 @@ specifier|final
 name|BasePanel
 name|panel
 decl_stmt|;
-DECL|method|MergeReviewIntoCommentConfirmation (BasePanel panel)
+DECL|method|MergeReviewIntoCommentConfirmationDialog (BasePanel panel)
 specifier|public
-name|MergeReviewIntoCommentConfirmation
+name|MergeReviewIntoCommentConfirmationDialog
 parameter_list|(
 name|BasePanel
 name|panel

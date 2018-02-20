@@ -629,7 +629,7 @@ argument_list|(
 comment|// Migrations:
 comment|// Warning for migrating the Review into the Comment field
 operator|new
-name|MergeReviewIntoComment
+name|MergeReviewIntoCommentAction
 argument_list|()
 argument_list|,
 comment|// External file handling system in version 2.3:
