@@ -1973,13 +1973,13 @@ name|NEW_ENTRY
 argument_list|)
 block|,
 DECL|enumConstant|NEW_ARTICLE
-DECL|enumConstant|Localization.menuTitle
+DECL|enumConstant|Localization.lang
 DECL|enumConstant|IconTheme.JabRefIcons.ADD_ENTRY
 name|NEW_ARTICLE
 argument_list|(
 name|Localization
 operator|.
-name|menuTitle
+name|lang
 argument_list|(
 literal|"New article"
 argument_list|)
@@ -2161,14 +2161,14 @@ name|AUTOGENERATE_BIBTEX_KEYS
 argument_list|)
 block|,
 DECL|enumConstant|FIND_UNLINKED_FILES
-DECL|enumConstant|Localization.menuTitle
+DECL|enumConstant|Localization.lang
 DECL|enumConstant|Localization.lang
 DECL|enumConstant|KeyBinding.FIND_UNLINKED_FILES
 name|FIND_UNLINKED_FILES
 argument_list|(
 name|Localization
 operator|.
-name|menuTitle
+name|lang
 argument_list|(
 literal|"Find unlinked files"
 argument_list|)
@@ -2210,12 +2210,12 @@ name|AUTOMATICALLY_LINK_FILES
 argument_list|)
 block|,
 DECL|enumConstant|LOOKUP_DOC_IDENTIFIER
-DECL|enumConstant|Localization.menuTitle
+DECL|enumConstant|Localization.lang
 name|LOOKUP_DOC_IDENTIFIER
 argument_list|(
 name|Localization
 operator|.
-name|menuTitle
+name|lang
 argument_list|(
 literal|"Look up document identifier"
 argument_list|)
