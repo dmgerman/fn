@@ -149,6 +149,12 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|!
+name|conflicts
+operator|.
+name|isEmpty
+argument_list|()
+operator|&&
 operator|new
 name|MergeReviewIntoCommentConfirmationDialog
 argument_list|(
