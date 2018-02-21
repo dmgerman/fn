@@ -168,6 +168,15 @@ name|add
 argument_list|(
 name|FieldName
 operator|.
+name|COMMENT
+argument_list|)
+expr_stmt|;
+name|multiLineFields
+operator|.
+name|add
+argument_list|(
+name|FieldName
+operator|.
 name|REVIEW
 argument_list|)
 expr_stmt|;
