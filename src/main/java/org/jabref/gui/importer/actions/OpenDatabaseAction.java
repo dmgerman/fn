@@ -266,9 +266,9 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|externalfiletype
+name|dialogs
 operator|.
-name|ExternalFileTypes
+name|BackupUIManager
 import|;
 end_import
 
@@ -280,9 +280,9 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|dialogs
+name|externalfiletype
 operator|.
-name|BackupUIManager
+name|ExternalFileTypes
 import|;
 end_import
 

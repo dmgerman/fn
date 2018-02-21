@@ -468,9 +468,9 @@ name|jabref
 operator|.
 name|model
 operator|.
-name|strings
+name|metadata
 operator|.
-name|StringUtil
+name|FileDirectoryPreferences
 import|;
 end_import
 
@@ -482,9 +482,9 @@ name|jabref
 operator|.
 name|model
 operator|.
-name|metadata
+name|strings
 operator|.
-name|FileDirectoryPreferences
+name|StringUtil
 import|;
 end_import
 

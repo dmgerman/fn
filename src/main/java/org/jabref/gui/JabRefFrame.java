@@ -1714,6 +1714,16 @@ name|BorderPane
 implements|implements
 name|OutputPrinter
 block|{
+comment|// Frame titles.
+DECL|field|FRAME_TITLE
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|FRAME_TITLE
+init|=
+literal|"JabRef"
+decl_stmt|;
 DECL|field|LOGGER
 specifier|private
 specifier|static
@@ -1729,16 +1739,6 @@ name|JabRefFrame
 operator|.
 name|class
 argument_list|)
-decl_stmt|;
-comment|// Frame titles.
-DECL|field|FRAME_TITLE
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|FRAME_TITLE
-init|=
-literal|"JabRef"
 decl_stmt|;
 DECL|field|splitPane
 specifier|private
