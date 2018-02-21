@@ -1415,7 +1415,7 @@ argument_list|,
 name|currentResults
 argument_list|)
 expr_stmt|;
-comment|// Clears search on ESC
+comment|// Clears search on ESC& select first entry, if available
 name|searchField
 operator|.
 name|setOnKeyPressed
@@ -1436,7 +1436,26 @@ operator|.
 name|ESCAPE
 condition|)
 block|{
+name|MainTable
+name|currentTable
+init|=
+name|frame
+operator|.
+name|getCurrentBasePanel
+argument_list|()
+operator|.
+name|getMainTable
+argument_list|()
+decl_stmt|;
 name|clearSearch
+argument_list|()
+expr_stmt|;
+name|currentTable
+operator|.
+name|getSelectionModel
+argument_list|()
+operator|.
+name|selectFirst
 argument_list|()
 expr_stmt|;
 block|}
