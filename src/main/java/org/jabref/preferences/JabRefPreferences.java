@@ -1198,7 +1198,7 @@ specifier|final
 name|String
 name|ENTRY_EDITOR_HEIGHT
 init|=
-literal|"entryEditorHeight"
+literal|"entryEditorHeightFX"
 decl_stmt|;
 DECL|field|AUTO_RESIZE_MODE
 specifier|public
@@ -3551,7 +3551,7 @@ specifier|final
 name|String
 name|PREVIEW_PANEL_HEIGHT
 init|=
-literal|"previewPanelHeight"
+literal|"previewPanelHeightFX"
 decl_stmt|;
 DECL|field|PREVIEW_STYLE
 specifier|private
@@ -4171,7 +4171,7 @@ name|put
 argument_list|(
 name|ENTRY_EDITOR_HEIGHT
 argument_list|,
-literal|0.75
+literal|0.65
 argument_list|)
 expr_stmt|;
 name|defaults
@@ -6603,7 +6603,7 @@ name|put
 argument_list|(
 name|PREVIEW_PANEL_HEIGHT
 argument_list|,
-literal|200
+literal|0.65
 argument_list|)
 expr_stmt|;
 name|defaults
