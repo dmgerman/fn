@@ -3203,11 +3203,21 @@ name|void
 name|refreshTitleAndTabs
 parameter_list|()
 block|{
+name|DefaultTaskExecutor
+operator|.
+name|runInJavaFXThread
+argument_list|(
+parameter_list|()
+lambda|->
+block|{
 name|setWindowTitle
 argument_list|()
 expr_stmt|;
 name|updateAllTabTitles
 argument_list|()
+expr_stmt|;
+block|}
+argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Sets the title of the main window.      */
