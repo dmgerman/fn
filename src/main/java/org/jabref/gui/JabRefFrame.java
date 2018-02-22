@@ -9052,6 +9052,13 @@ name|BasePanel
 name|panel
 parameter_list|)
 block|{
+name|DefaultTaskExecutor
+operator|.
+name|runInJavaFXThread
+argument_list|(
+parameter_list|()
+lambda|->
+block|{
 name|panel
 operator|.
 name|cleanUp
@@ -9088,6 +9095,9 @@ expr_stmt|;
 comment|// update tab titles
 name|updateAllTabTitles
 argument_list|()
+expr_stmt|;
+block|}
+argument_list|)
 expr_stmt|;
 block|}
 DECL|method|closeCurrentTab ()
