@@ -269,14 +269,6 @@ block|{
 name|JFXPanel
 name|container
 init|=
-name|OS
-operator|.
-name|LINUX
-condition|?
-operator|new
-name|CustomJFXPanel
-argument_list|()
-else|:
 operator|new
 name|JFXPanel
 argument_list|()
