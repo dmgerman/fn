@@ -543,7 +543,12 @@ name|FileChooser
 operator|.
 name|ExtensionFilter
 argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Any file"
+argument_list|)
 argument_list|,
 literal|"*.*"
 argument_list|)
