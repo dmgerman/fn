@@ -160,16 +160,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|jupiter
 operator|.
 name|api
@@ -221,6 +211,22 @@ operator|.
 name|provider
 operator|.
 name|MethodSource
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
+operator|.
+name|assertEquals
 import|;
 end_import
 
@@ -614,6 +620,7 @@ parameter_list|(
 name|s
 parameter_list|)
 lambda|->
+operator|(
 name|s
 operator|.
 name|startsWith
@@ -622,6 +629,16 @@ literal|"import "
 operator|+
 name|secondPackage
 argument_list|)
+operator|||
+name|s
+operator|.
+name|startsWith
+argument_list|(
+literal|"import static "
+operator|+
+name|secondPackage
+argument_list|)
+operator|)
 operator|&&
 name|exceptions
 operator|.
@@ -806,20 +823,18 @@ expr_stmt|;
 end_class
 
 begin_expr_stmt
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
-literal|"The following classes are not allowed to depend on "
-operator|+
-name|secondPackage
-argument_list|,
 name|Collections
 operator|.
 name|emptyList
 argument_list|()
 argument_list|,
 name|files
+argument_list|,
+literal|"The following classes are not allowed to depend on "
+operator|+
+name|secondPackage
 argument_list|)
 expr_stmt|;
 end_expr_stmt
