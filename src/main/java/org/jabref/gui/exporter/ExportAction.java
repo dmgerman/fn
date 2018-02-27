@@ -712,9 +712,6 @@ operator|.
 name|getParent
 argument_list|()
 operator|.
-name|getFileName
-argument_list|()
-operator|.
 name|toString
 argument_list|()
 argument_list|)
