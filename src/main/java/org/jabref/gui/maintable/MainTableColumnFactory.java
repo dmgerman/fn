@@ -806,11 +806,11 @@ operator|.
 name|FIELD_SEPARATOR
 argument_list|)
 decl_stmt|;
-name|StringTableColumn
+name|NormalTableColumn
 name|column
 init|=
 operator|new
-name|StringTableColumn
+name|NormalTableColumn
 argument_list|(
 name|columnName
 argument_list|,

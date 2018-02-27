@@ -1200,15 +1200,6 @@ init|=
 literal|"timestamp"
 decl_stmt|;
 comment|// Not the actual field name, but the default value
-DECL|field|NUMBER_COL
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|NUMBER_COL
-init|=
-literal|"#"
-decl_stmt|;
 DECL|field|GROUPS
 specifier|public
 specifier|static

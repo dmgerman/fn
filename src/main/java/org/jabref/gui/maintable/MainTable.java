@@ -632,7 +632,7 @@ decl_stmt|;
 comment|// needed to activate/deactivate the listener
 DECL|field|tableColumnListener
 specifier|private
-name|PersistenceTableColumnListener
+name|PersistenceVisualStateTable
 name|tableColumnListener
 decl_stmt|;
 DECL|field|model
@@ -937,9 +937,17 @@ expr_stmt|;
 block|}
 comment|// TODO: Tooltip for column header
 comment|/*         @Override         public String getToolTipText(MouseEvent event) {         int index = columnModel.getColumnIndexAtX(event.getX());         int realIndex = columnModel.getColumn(index).getModelIndex();         MainTableColumn column = tableFormat.getTableColumn(realIndex);         return column.getDisplayName();         }          */
-comment|// TODO: store column widths
-comment|//this.tableColumnListener = new PersistenceTableColumnListener(this);
-comment|//setWidths();
+comment|// Store visual state
+operator|new
+name|PersistenceVisualStateTable
+argument_list|(
+name|this
+argument_list|,
+name|Globals
+operator|.
+name|prefs
+argument_list|)
+expr_stmt|;
 comment|// TODO: enable DnD
 comment|//setDragEnabled(true);
 comment|//TransferHandler xfer = new EntryTableTransferHandler(this, frame, panel);
