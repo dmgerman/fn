@@ -447,7 +447,7 @@ name|pureauthTest
 parameter_list|()
 block|{
 name|BibDatabase
-name|another_database
+name|anotherDatabase
 init|=
 operator|new
 name|BibDatabase
@@ -472,7 +472,7 @@ name|expand
 argument_list|(
 name|bibentry
 argument_list|,
-name|another_database
+name|anotherDatabase
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -486,7 +486,7 @@ name|pureauthNoAuthorTest
 parameter_list|()
 block|{
 name|BibDatabase
-name|another_database
+name|anotherDatabase
 init|=
 operator|new
 name|BibDatabase
@@ -520,7 +520,7 @@ name|expand
 argument_list|(
 name|bibentry
 argument_list|,
-name|another_database
+name|anotherDatabase
 argument_list|)
 argument_list|)
 expr_stmt|;
