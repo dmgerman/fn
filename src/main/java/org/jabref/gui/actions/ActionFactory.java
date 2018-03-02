@@ -60,6 +60,18 @@ end_import
 
 begin_import
 import|import
+name|javafx
+operator|.
+name|scene
+operator|.
+name|control
+operator|.
+name|Tooltip
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|jabref
@@ -371,6 +383,20 @@ operator|.
 name|add
 argument_list|(
 literal|"flatButton"
+argument_list|)
+expr_stmt|;
+name|button
+operator|.
+name|setTooltip
+argument_list|(
+operator|new
+name|Tooltip
+argument_list|(
+name|action
+operator|.
+name|getDescription
+argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// For some reason the graphic is not set correctly, so let's fix this
