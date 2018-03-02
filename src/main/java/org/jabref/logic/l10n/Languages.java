@@ -252,6 +252,15 @@ argument_list|,
 literal|"el"
 argument_list|)
 expr_stmt|;
+name|LANGUAGES
+operator|.
+name|put
+argument_list|(
+literal|"Tagalog/Filipino"
+argument_list|,
+literal|"tl"
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|Languages ()
 specifier|private
