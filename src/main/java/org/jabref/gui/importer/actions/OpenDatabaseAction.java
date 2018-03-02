@@ -677,6 +677,8 @@ expr_stmt|;
 block|}
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|execute ()
 specifier|public
 name|void
@@ -1443,7 +1445,10 @@ name|BackupUIManager
 operator|.
 name|showRestoreBackupDialog
 argument_list|(
-literal|null
+name|frame
+operator|.
+name|getDialogService
+argument_list|()
 argument_list|,
 name|fileToLoad
 argument_list|)

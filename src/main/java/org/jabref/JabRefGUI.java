@@ -192,6 +192,18 @@ name|jabref
 operator|.
 name|gui
 operator|.
+name|FXDialogService
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
 name|GUIGlobals
 import|;
 end_import
@@ -708,7 +720,9 @@ argument_list|)
 condition|)
 block|{
 name|openLastEditedDatabases
-argument_list|()
+argument_list|(
+name|mainStage
+argument_list|)
 expr_stmt|;
 block|}
 name|GUIGlobals
@@ -1279,11 +1293,14 @@ literal|"Finished adding panels"
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|openLastEditedDatabases ()
+DECL|method|openLastEditedDatabases (Stage mainStage)
 specifier|private
 name|void
 name|openLastEditedDatabases
-parameter_list|()
+parameter_list|(
+name|Stage
+name|mainStage
+parameter_list|)
 block|{
 if|if
 condition|(
@@ -1371,7 +1388,11 @@ name|BackupUIManager
 operator|.
 name|showRestoreBackupDialog
 argument_list|(
-literal|null
+operator|new
+name|FXDialogService
+argument_list|(
+name|mainStage
+argument_list|)
 argument_list|,
 name|dbFile
 operator|.

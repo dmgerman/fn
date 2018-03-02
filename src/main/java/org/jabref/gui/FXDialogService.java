@@ -348,7 +348,7 @@ specifier|final
 name|Window
 name|mainWindow
 decl_stmt|;
-comment|/**      * @deprecated try not to initialize a new dialog service but reuse the one constructed in {@link org.jabref.JabRefMain}.      */
+comment|/**      * @deprecated try not to initialize a new dialog service but reuse the one constructed in {@link org.jabref.gui.JabRefFrame}.      */
 annotation|@
 name|Deprecated
 DECL|method|FXDialogService ()
