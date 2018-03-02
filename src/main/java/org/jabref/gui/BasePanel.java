@@ -2861,8 +2861,6 @@ operator|::
 name|cut
 argument_list|)
 expr_stmt|;
-comment|//when you modify this action be sure to adjust Actions.CUT,
-comment|//they are the same except of the Localization, delete confirmation and Actions.COPY call
 name|actions
 operator|.
 name|put
@@ -9605,18 +9603,6 @@ argument_list|)
 condition|)
 block|{
 name|String
-name|msg
-decl_stmt|;
-name|msg
-operator|=
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Really delete the selected entry?"
-argument_list|)
-expr_stmt|;
-name|String
 name|title
 init|=
 name|Localization
@@ -9626,6 +9612,36 @@ argument_list|(
 literal|"Delete entry"
 argument_list|)
 decl_stmt|;
+name|String
+name|message
+init|=
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Really delete the selected entry?"
+argument_list|)
+decl_stmt|;
+name|String
+name|okButton
+init|=
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Delete entry"
+argument_list|)
+decl_stmt|;
+name|String
+name|cancelButton
+init|=
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Keep entry"
+argument_list|)
+decl_stmt|;
 if|if
 condition|(
 name|numberOfEntries
@@ -9633,7 +9649,16 @@ operator|>
 literal|1
 condition|)
 block|{
-name|msg
+name|title
+operator|=
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Delete multiple entries"
+argument_list|)
+expr_stmt|;
+name|message
 operator|=
 name|Localization
 operator|.
@@ -9649,23 +9674,37 @@ name|numberOfEntries
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|title
+name|okButton
 operator|=
 name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Delete multiple entries"
+literal|"Delete entries"
+argument_list|)
+expr_stmt|;
+name|cancelButton
+operator|=
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Keep entries"
 argument_list|)
 expr_stmt|;
 block|}
-name|CheckBoxMessage
-name|cb
-init|=
-operator|new
-name|CheckBoxMessage
+return|return
+name|dialogService
+operator|.
+name|showConfirmationDialogWithOptOutAndWait
 argument_list|(
-name|msg
+name|title
+argument_list|,
+name|message
+argument_list|,
+name|okButton
+argument_list|,
+name|cancelButton
 argument_list|,
 name|Localization
 operator|.
@@ -9674,39 +9713,8 @@ argument_list|(
 literal|"Disable this confirmation dialog"
 argument_list|)
 argument_list|,
-literal|false
-argument_list|)
-decl_stmt|;
-name|int
-name|answer
-init|=
-name|JOptionPane
-operator|.
-name|showConfirmDialog
-argument_list|(
-literal|null
-argument_list|,
-name|cb
-argument_list|,
-name|title
-argument_list|,
-name|JOptionPane
-operator|.
-name|YES_NO_OPTION
-argument_list|,
-name|JOptionPane
-operator|.
-name|QUESTION_MESSAGE
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|cb
-operator|.
-name|isSelected
-argument_list|()
-condition|)
-block|{
+name|optOut
+lambda|->
 name|Globals
 operator|.
 name|prefs
@@ -9717,16 +9725,10 @@ name|JabRefPreferences
 operator|.
 name|CONFIRM_DELETE
 argument_list|,
-literal|false
+operator|!
+name|optOut
 argument_list|)
-expr_stmt|;
-block|}
-return|return
-name|answer
-operator|==
-name|JOptionPane
-operator|.
-name|YES_OPTION
+argument_list|)
 return|;
 block|}
 else|else
