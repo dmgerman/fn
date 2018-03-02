@@ -202,6 +202,16 @@ end_import
 
 begin_import
 import|import
+name|javafx
+operator|.
+name|stage
+operator|.
+name|Window
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|jabref
@@ -288,6 +298,12 @@ name|FXDialogService
 implements|implements
 name|DialogService
 block|{
+DECL|field|mainWindow
+specifier|private
+specifier|final
+name|Window
+name|mainWindow
+decl_stmt|;
 comment|/**      * @deprecated try not to initialize a new dialog service but reuse the one constructed in {@link org.jabref.JabRefMain}.      */
 annotation|@
 name|Deprecated
@@ -295,7 +311,28 @@ DECL|method|FXDialogService ()
 specifier|public
 name|FXDialogService
 parameter_list|()
-block|{     }
+block|{
+name|this
+argument_list|(
+literal|null
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|FXDialogService (Window mainWindow)
+specifier|public
+name|FXDialogService
+parameter_list|(
+name|Window
+name|mainWindow
+parameter_list|)
+block|{
+name|this
+operator|.
+name|mainWindow
+operator|=
+name|mainWindow
+expr_stmt|;
+block|}
 DECL|method|createDialog (AlertType type, String title, String content)
 specifier|private
 specifier|static
@@ -1131,7 +1168,7 @@ name|chooser
 operator|.
 name|showSaveDialog
 argument_list|(
-literal|null
+name|mainWindow
 argument_list|)
 decl_stmt|;
 name|Optional
@@ -1196,7 +1233,7 @@ name|chooser
 operator|.
 name|showOpenDialog
 argument_list|(
-literal|null
+name|mainWindow
 argument_list|)
 decl_stmt|;
 name|Optional
@@ -1261,7 +1298,7 @@ name|chooser
 operator|.
 name|showDialog
 argument_list|(
-literal|null
+name|mainWindow
 argument_list|)
 decl_stmt|;
 return|return
@@ -1312,7 +1349,7 @@ name|chooser
 operator|.
 name|showOpenMultipleDialog
 argument_list|(
-literal|null
+name|mainWindow
 argument_list|)
 decl_stmt|;
 return|return
@@ -1473,7 +1510,7 @@ name|job
 operator|.
 name|showPrintDialog
 argument_list|(
-literal|null
+name|mainWindow
 argument_list|)
 return|;
 block|}

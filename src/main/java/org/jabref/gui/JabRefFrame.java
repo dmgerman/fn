@@ -2460,7 +2460,9 @@ name|dialogService
 operator|=
 operator|new
 name|FXDialogService
-argument_list|()
+argument_list|(
+name|mainStage
+argument_list|)
 expr_stmt|;
 name|init
 argument_list|()
