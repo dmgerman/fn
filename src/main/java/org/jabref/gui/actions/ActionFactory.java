@@ -385,20 +385,6 @@ argument_list|(
 literal|"flatButton"
 argument_list|)
 expr_stmt|;
-name|button
-operator|.
-name|setTooltip
-argument_list|(
-operator|new
-name|Tooltip
-argument_list|(
-name|action
-operator|.
-name|getDescription
-argument_list|()
-argument_list|)
-argument_list|)
-expr_stmt|;
 comment|// For some reason the graphic is not set correctly, so let's fix this
 name|button
 operator|.
