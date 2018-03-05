@@ -272,18 +272,6 @@ name|jabref
 operator|.
 name|model
 operator|.
-name|FieldChange
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
 name|database
 operator|.
 name|BibDatabaseContext
@@ -969,16 +957,13 @@ argument_list|(
 name|group
 lambda|->
 block|{
-name|GroupTreeNode
-name|newGroupNode
-init|=
 name|parent
 operator|.
 name|addSubgroup
 argument_list|(
 name|group
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 comment|// TODO: Add undo
 comment|//UndoableAddOrRemoveGroup undo = new UndoableAddOrRemoveGroup(parent, new GroupTreeNodeViewModel(newGroupNode), UndoableAddOrRemoveGroup.ADD_NODE);
 comment|//panel.getUndoManager().addEdit(undo);
@@ -1136,12 +1121,6 @@ operator|instanceof
 name|ExplicitGroup
 operator|)
 decl_stmt|;
-name|List
-argument_list|<
-name|FieldChange
-argument_list|>
-name|addChange
-init|=
 name|oldGroup
 operator|.
 name|getGroupNode
@@ -1160,7 +1139,7 @@ operator|.
 name|getEntriesInCurrentDatabase
 argument_list|()
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 comment|// TODO: Add undo
 comment|// Store undo information.
 comment|// AbstractUndoableEdit undoAddPreviousEntries = null;
@@ -1561,12 +1540,6 @@ block|{
 comment|// TODO: Warn
 comment|// if (!WarnAssignmentSideEffects.warnAssignmentSideEffects(node.getNode().getGroup(), panel.frame())) {
 comment|//    return; // user aborted operation
-name|List
-argument_list|<
-name|FieldChange
-argument_list|>
-name|addChange
-init|=
 name|group
 operator|.
 name|getGroupNode
@@ -1579,7 +1552,7 @@ operator|.
 name|getSelectedEntries
 argument_list|()
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 comment|// TODO: Add undo
 comment|// NamedCompound undoAll = new NamedCompound(Localization.lang("change assignment of entries"));
 comment|// if (!undoAdd.isEmpty()) { undo.addEdit(UndoableChangeEntriesOfGroup.getUndoableEdit(node, undoAdd)); }
@@ -1611,12 +1584,6 @@ block|{
 comment|// TODO: warn if assignment has undesired side effects (modifies a field != keywords)
 comment|// if (!WarnAssignmentSideEffects.warnAssignmentSideEffects(mNode.getNode().getGroup(), mPanel.frame())) {
 comment|//    return; // user aborted operation
-name|List
-argument_list|<
-name|FieldChange
-argument_list|>
-name|removeChange
-init|=
 name|group
 operator|.
 name|getGroupNode
@@ -1629,7 +1596,7 @@ operator|.
 name|getSelectedEntries
 argument_list|()
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 comment|// TODO: Add undo
 comment|// if (!undo.isEmpty()) {
 comment|//    mPanel.getUndoManager().addEdit(UndoableChangeEntriesOfGroup.getUndoableEdit(mNode, undo));

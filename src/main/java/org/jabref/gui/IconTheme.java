@@ -472,27 +472,6 @@ argument_list|,
 literal|"/images/external/"
 argument_list|)
 decl_stmt|;
-comment|// Christmas edition
-comment|//public static final Color DEFAULT_COLOR = new Color(0x155115);
-comment|//public static final Color DEFAULT_DISABLED_COLOR = new Color(0x990000);
-DECL|field|FONT_16
-specifier|private
-specifier|static
-name|Font
-name|FONT_16
-decl_stmt|;
-DECL|field|FX_FONT
-specifier|private
-specifier|static
-name|javafx
-operator|.
-name|scene
-operator|.
-name|text
-operator|.
-name|Font
-name|FX_FONT
-decl_stmt|;
 static|static
 block|{
 try|try
@@ -517,56 +496,6 @@ argument_list|,
 name|stream
 argument_list|)
 expr_stmt|;
-name|FONT_16
-operator|=
-name|FONT
-operator|.
-name|deriveFont
-argument_list|(
-name|Font
-operator|.
-name|PLAIN
-argument_list|,
-literal|16f
-argument_list|)
-expr_stmt|;
-try|try
-init|(
-name|InputStream
-name|stream2
-init|=
-name|getMaterialDesignIconsStream
-argument_list|()
-init|)
-block|{
-name|FX_FONT
-operator|=
-name|javafx
-operator|.
-name|scene
-operator|.
-name|text
-operator|.
-name|Font
-operator|.
-name|loadFont
-argument_list|(
-name|stream2
-argument_list|,
-name|JabRefPreferences
-operator|.
-name|getInstance
-argument_list|()
-operator|.
-name|getInt
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|ICON_SIZE_LARGE
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
 block|}
 catch|catch
 parameter_list|(
@@ -663,9 +592,9 @@ literal|"jabrefIcon48"
 argument_list|)
 return|;
 block|}
-comment|/**      * Constructs an {@link Image} for the image representing the given function, in the resource      * file listing images.      *      * @param name The name of the icon, such as "open", "save", "saveAs" etc.      * @return The {@link Image} for the function.      */
+comment|/*      * Constructs an {@link Image} for the image representing the given function, in the resource      * file listing images.      *      * @param name The name of the icon, such as "open", "save", "saveAs" etc.      * @return The {@link Image} for the function.      */
 DECL|method|getImageFX (String name)
-specifier|public
+specifier|private
 specifier|static
 name|Image
 name|getImageFX

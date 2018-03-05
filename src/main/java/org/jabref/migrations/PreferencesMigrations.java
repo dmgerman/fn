@@ -235,13 +235,6 @@ name|void
 name|upgradePrefsToOrgJabRef
 parameter_list|()
 block|{
-name|JabRefPreferences
-name|prefs
-init|=
-name|Globals
-operator|.
-name|prefs
-decl_stmt|;
 name|Preferences
 name|mainPrefsNode
 init|=

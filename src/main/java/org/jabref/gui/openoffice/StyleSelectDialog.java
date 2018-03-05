@@ -38,16 +38,6 @@ name|java
 operator|.
 name|awt
 operator|.
-name|Rectangle
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|awt
-operator|.
 name|event
 operator|.
 name|ActionEvent
@@ -1016,24 +1006,6 @@ DECL|field|removeAction
 specifier|private
 name|ActionListener
 name|removeAction
-decl_stmt|;
-DECL|field|toRect
-specifier|private
-specifier|final
-name|Rectangle
-name|toRect
-init|=
-operator|new
-name|Rectangle
-argument_list|(
-literal|0
-argument_list|,
-literal|0
-argument_list|,
-literal|1
-argument_list|,
-literal|1
-argument_list|)
 decl_stmt|;
 DECL|field|ok
 specifier|private
@@ -2576,7 +2548,7 @@ block|}
 end_function
 
 begin_comment
-comment|/**      * Get the currently selected style.      * @return the selected style, or empty if no style is selected.      */
+comment|/**      * Get the currently selected style.      *      * @return the selected style, or empty if no style is selected.      */
 end_comment
 
 begin_function

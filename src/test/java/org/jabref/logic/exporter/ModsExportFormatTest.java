@@ -235,11 +235,6 @@ specifier|private
 name|BibDatabaseContext
 name|databaseContext
 decl_stmt|;
-DECL|field|bibtexImporter
-specifier|private
-name|BibtexImporter
-name|bibtexImporter
-decl_stmt|;
 DECL|field|tempFile
 specifier|private
 name|Path
@@ -255,11 +250,6 @@ init|=
 operator|new
 name|TemporaryFolder
 argument_list|()
-decl_stmt|;
-DECL|field|importFile
-specifier|private
-name|Path
-name|importFile
 decl_stmt|;
 annotation|@
 name|Before
@@ -289,8 +279,6 @@ operator|new
 name|ModsExporter
 argument_list|()
 expr_stmt|;
-name|bibtexImporter
-operator|=
 operator|new
 name|BibtexImporter
 argument_list|(
@@ -320,8 +308,6 @@ operator|.
 name|toPath
 argument_list|()
 expr_stmt|;
-name|importFile
-operator|=
 name|Paths
 operator|.
 name|get

@@ -11328,17 +11328,6 @@ parameter_list|()
 block|{
 try|try
 block|{
-name|JComponent
-name|focused
-init|=
-name|Globals
-operator|.
-name|getFocusListener
-argument_list|()
-operator|.
-name|getFocused
-argument_list|()
-decl_stmt|;
 name|getUndoManager
 argument_list|()
 operator|.
