@@ -60,18 +60,6 @@ end_import
 
 begin_import
 import|import
-name|javafx
-operator|.
-name|scene
-operator|.
-name|control
-operator|.
-name|Tooltip
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|jabref
