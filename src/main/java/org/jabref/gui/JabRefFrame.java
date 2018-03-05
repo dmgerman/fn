@@ -4799,6 +4799,17 @@ argument_list|)
 argument_list|)
 argument_list|)
 decl_stmt|;
+name|HBox
+operator|.
+name|setHgrow
+argument_list|(
+name|globalSearchBar
+argument_list|,
+name|Priority
+operator|.
+name|ALWAYS
+argument_list|)
+expr_stmt|;
 name|ToolBar
 name|toolBar
 init|=
