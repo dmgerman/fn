@@ -80,16 +80,6 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|JOptionPane
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
 name|SwingUtilities
 import|;
 end_import
@@ -719,19 +709,13 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|JOptionPane
+name|frame
 operator|.
-name|showMessageDialog
-argument_list|(
-literal|null
-argument_list|,
-name|Localization
+name|getDialogService
+argument_list|()
 operator|.
-name|lang
+name|showInformationDialogAndWait
 argument_list|(
-literal|"No actual changes found."
-argument_list|)
-argument_list|,
 name|Localization
 operator|.
 name|lang
@@ -739,9 +723,12 @@ argument_list|(
 literal|"External changes"
 argument_list|)
 argument_list|,
-name|JOptionPane
+name|Localization
 operator|.
-name|INFORMATION_MESSAGE
+name|lang
+argument_list|(
+literal|"No actual changes found."
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|fup

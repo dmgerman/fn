@@ -583,6 +583,9 @@ name|JabRefGUI
 operator|.
 name|getMainFrame
 argument_list|()
+operator|.
+name|getDialogService
+argument_list|()
 argument_list|,
 name|loader
 argument_list|)

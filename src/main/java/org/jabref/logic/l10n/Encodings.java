@@ -68,8 +68,9 @@ name|String
 index|[]
 name|ENCODINGS_DISPLAYNAMES
 decl_stmt|;
-static|static
-block|{
+DECL|field|encodingsList
+specifier|private
+specifier|static
 name|List
 argument_list|<
 name|Charset
@@ -98,6 +99,13 @@ name|toList
 argument_list|()
 argument_list|)
 decl_stmt|;
+DECL|method|Encodings ()
+specifier|private
+name|Encodings
+parameter_list|()
+block|{     }
+static|static
+block|{
 name|List
 argument_list|<
 name|String
@@ -160,11 +168,20 @@ index|]
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|Encodings ()
-specifier|private
-name|Encodings
+DECL|method|getCharsets ()
+specifier|public
+specifier|static
+name|List
+argument_list|<
+name|Charset
+argument_list|>
+name|getCharsets
 parameter_list|()
-block|{     }
+block|{
+return|return
+name|encodingsList
+return|;
+block|}
 block|}
 end_class
 

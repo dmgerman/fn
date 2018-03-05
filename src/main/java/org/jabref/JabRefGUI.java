@@ -192,6 +192,18 @@ name|jabref
 operator|.
 name|gui
 operator|.
+name|DialogService
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
 name|FXDialogService
 import|;
 end_import
@@ -525,6 +537,12 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
+DECL|field|dialogService
+specifier|private
+specifier|final
+name|DialogService
+name|dialogService
+decl_stmt|;
 DECL|field|focusedFile
 specifier|private
 specifier|final
@@ -559,6 +577,16 @@ operator|.
 name|isBlank
 operator|=
 name|isBlank
+expr_stmt|;
+name|this
+operator|.
+name|dialogService
+operator|=
+operator|new
+name|FXDialogService
+argument_list|(
+name|mainStage
+argument_list|)
 expr_stmt|;
 comment|// passed file (we take the first one) should be focused
 name|focusedFile
@@ -720,9 +748,7 @@ argument_list|)
 condition|)
 block|{
 name|openLastEditedDatabases
-argument_list|(
-name|mainStage
-argument_list|)
+argument_list|()
 expr_stmt|;
 block|}
 name|GUIGlobals
@@ -1132,8 +1158,6 @@ block|{
 name|String
 name|message
 init|=
-literal|"<html>"
-operator|+
 name|Localization
 operator|.
 name|lang
@@ -1152,23 +1176,17 @@ name|getName
 argument_list|()
 argument_list|)
 operator|+
-literal|"<p>"
+literal|"\n"
 operator|+
 name|pr
 operator|.
 name|getErrorMessage
 argument_list|()
-operator|+
-literal|"</html>"
 decl_stmt|;
-name|JOptionPane
+name|dialogService
 operator|.
-name|showMessageDialog
+name|showErrorDialogAndWait
 argument_list|(
-literal|null
-argument_list|,
-name|message
-argument_list|,
 name|Localization
 operator|.
 name|lang
@@ -1176,9 +1194,7 @@ argument_list|(
 literal|"Error opening file"
 argument_list|)
 argument_list|,
-name|JOptionPane
-operator|.
-name|ERROR_MESSAGE
+name|message
 argument_list|)
 expr_stmt|;
 block|}
@@ -1293,14 +1309,11 @@ literal|"Finished adding panels"
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|openLastEditedDatabases (Stage mainStage)
+DECL|method|openLastEditedDatabases ()
 specifier|private
 name|void
 name|openLastEditedDatabases
-parameter_list|(
-name|Stage
-name|mainStage
-parameter_list|)
+parameter_list|()
 block|{
 if|if
 condition|(
@@ -1388,11 +1401,7 @@ name|BackupUIManager
 operator|.
 name|showRestoreBackupDialog
 argument_list|(
-operator|new
-name|FXDialogService
-argument_list|(
-name|mainStage
-argument_list|)
+name|dialogService
 argument_list|,
 name|dbFile
 operator|.
@@ -1688,31 +1697,6 @@ name|systemLookFeel
 argument_list|)
 expr_stmt|;
 comment|// notify the user
-name|JOptionPane
-operator|.
-name|showMessageDialog
-argument_list|(
-literal|null
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Unable to find the requested look and feel and thus the default one is used."
-argument_list|)
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Warning"
-argument_list|)
-argument_list|,
-name|JOptionPane
-operator|.
-name|WARNING_MESSAGE
-argument_list|)
-expr_stmt|;
 name|LOGGER
 operator|.
 name|warn
@@ -1720,6 +1704,25 @@ argument_list|(
 literal|"Unable to find requested look and feel"
 argument_list|,
 name|e
+argument_list|)
+expr_stmt|;
+name|dialogService
+operator|.
+name|showWarningDialogAndWait
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Warning"
+argument_list|)
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Unable to find the requested look and feel and thus the default one is used."
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

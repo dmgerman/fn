@@ -274,16 +274,6 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|JOptionPane
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
 name|JPanel
 import|;
 end_import
@@ -886,6 +876,11 @@ operator|=
 operator|new
 name|EntryTypeList
 argument_list|(
+name|frame
+operator|.
+name|getDialogService
+argument_list|()
+argument_list|,
 name|entryTypes
 argument_list|,
 name|bibDatabaseMode
@@ -2383,26 +2378,16 @@ name|isPresent
 argument_list|()
 condition|)
 block|{
-name|int
-name|reply
+name|boolean
+name|deleteCustomClicked
 init|=
-name|JOptionPane
+name|frame
 operator|.
-name|showConfirmDialog
-argument_list|(
-literal|null
-argument_list|,
-name|Localization
+name|getDialogService
+argument_list|()
 operator|.
-name|lang
+name|showConfirmationDialogAndWait
 argument_list|(
-literal|"All entries of this "
-operator|+
-literal|"type will be declared "
-operator|+
-literal|"typeless. Continue?"
-argument_list|)
-argument_list|,
 name|Localization
 operator|.
 name|lang
@@ -2421,22 +2406,36 @@ argument_list|)
 operator|+
 literal|'\''
 argument_list|,
-name|JOptionPane
+name|Localization
 operator|.
-name|YES_NO_OPTION
+name|lang
+argument_list|(
+literal|"All entries of this "
+operator|+
+literal|"type will be declared "
+operator|+
+literal|"typeless. Continue?"
+argument_list|)
 argument_list|,
-name|JOptionPane
+name|Localization
 operator|.
-name|WARNING_MESSAGE
+name|lang
+argument_list|(
+literal|"Delete custom format"
+argument_list|)
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Cancel"
+argument_list|)
 argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|reply
-operator|!=
-name|JOptionPane
-operator|.
-name|YES_OPTION
+operator|!
+name|deleteCustomClicked
 condition|)
 block|{
 return|return;

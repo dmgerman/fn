@@ -3889,7 +3889,12 @@ name|pushApplications
 operator|=
 operator|new
 name|PushToApplications
+argument_list|(
+name|this
+operator|.
+name|getDialogService
 argument_list|()
+argument_list|)
 expr_stmt|;
 name|BorderPane
 name|head

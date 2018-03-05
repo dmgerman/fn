@@ -238,16 +238,6 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|JOptionPane
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
 name|JPopupMenu
 import|;
 end_import
@@ -1511,19 +1501,13 @@ literal|0
 operator|)
 condition|)
 block|{
-name|JOptionPane
+name|frame
 operator|.
-name|showMessageDialog
-argument_list|(
-name|diag
-argument_list|,
-name|Localization
+name|getDialogService
+argument_list|()
 operator|.
-name|lang
+name|showErrorDialogAndWait
 argument_list|(
-literal|"You must select a valid style file."
-argument_list|)
-argument_list|,
 name|Localization
 operator|.
 name|lang
@@ -1531,9 +1515,12 @@ argument_list|(
 literal|"Style selection"
 argument_list|)
 argument_list|,
-name|JOptionPane
+name|Localization
 operator|.
-name|ERROR_MESSAGE
+name|lang
+argument_list|(
+literal|"You must select a valid style file."
+argument_list|)
 argument_list|)
 expr_stmt|;
 return|return;
@@ -2171,12 +2158,19 @@ end_expr_stmt
 begin_expr_stmt
 unit|)
 operator|&&
-operator|(
-name|JOptionPane
+name|frame
 operator|.
-name|showConfirmDialog
+name|getDialogService
+argument_list|()
+operator|.
+name|showConfirmationDialogAndWait
 argument_list|(
-name|diag
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Remove style"
+argument_list|)
 argument_list|,
 name|Localization
 operator|.
@@ -2192,15 +2186,13 @@ argument_list|(
 literal|"Remove style"
 argument_list|)
 argument_list|,
-name|JOptionPane
+name|Localization
 operator|.
-name|YES_NO_OPTION
+name|lang
+argument_list|(
+literal|"Cancel"
 argument_list|)
-operator|==
-name|JOptionPane
-operator|.
-name|YES_OPTION
-operator|)
+argument_list|)
 end_expr_stmt
 
 begin_block

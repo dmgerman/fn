@@ -238,16 +238,6 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|JOptionPane
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
 name|JPopupMenu
 import|;
 end_import
@@ -1072,6 +1062,11 @@ argument_list|(
 name|diag
 argument_list|,
 name|loader
+argument_list|,
+name|frame
+operator|.
+name|getDialogService
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|newDialog
@@ -1971,12 +1966,19 @@ end_expr_stmt
 begin_expr_stmt
 unit|)
 operator|&&
-operator|(
-name|JOptionPane
+name|frame
 operator|.
-name|showConfirmDialog
+name|getDialogService
+argument_list|()
+operator|.
+name|showConfirmationDialogAndWait
 argument_list|(
-name|diag
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Remove protected terms file"
+argument_list|)
 argument_list|,
 name|Localization
 operator|.
@@ -1992,15 +1994,13 @@ argument_list|(
 literal|"Remove protected terms file"
 argument_list|)
 argument_list|,
-name|JOptionPane
+name|Localization
 operator|.
-name|YES_NO_OPTION
+name|lang
+argument_list|(
+literal|"Cancel"
 argument_list|)
-operator|==
-name|JOptionPane
-operator|.
-name|YES_OPTION
-operator|)
+argument_list|)
 end_expr_stmt
 
 begin_block

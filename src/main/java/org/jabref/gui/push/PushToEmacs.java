@@ -48,16 +48,6 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|JOptionPane
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
 name|JPanel
 import|;
 end_import
@@ -101,6 +91,18 @@ operator|.
 name|gui
 operator|.
 name|BasePanel
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|DialogService
 import|;
 end_import
 
@@ -268,6 +270,20 @@ argument_list|(
 literal|30
 argument_list|)
 decl_stmt|;
+DECL|method|PushToEmacs (DialogService dialogService)
+specifier|public
+name|PushToEmacs
+parameter_list|(
+name|DialogService
+name|dialogService
+parameter_list|)
+block|{
+name|super
+argument_list|(
+name|dialogService
+argument_list|)
+expr_stmt|;
+block|}
 annotation|@
 name|Override
 DECL|method|getApplicationName ()
@@ -831,37 +847,27 @@ condition|(
 name|couldNotConnect
 condition|)
 block|{
-name|JOptionPane
+name|dialogService
 operator|.
-name|showMessageDialog
+name|showErrorDialogAndWait
 argument_list|(
-literal|null
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Error pushing entries"
+argument_list|)
 argument_list|,
-literal|"<HTML>"
-operator|+
 name|Localization
 operator|.
 name|lang
 argument_list|(
 literal|"Could not connect to a running gnuserv process. Make sure that "
 operator|+
-literal|"Emacs or XEmacs is running,<BR>and that the server has been started "
+literal|"Emacs or XEmacs is running, and that the server has been started "
 operator|+
 literal|"(by running the command 'server-start'/'gnuserv-start')."
 argument_list|)
-operator|+
-literal|"</HTML>"
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Error"
-argument_list|)
-argument_list|,
-name|JOptionPane
-operator|.
-name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
 block|}
@@ -871,11 +877,16 @@ condition|(
 name|couldNotCall
 condition|)
 block|{
-name|JOptionPane
+name|dialogService
 operator|.
-name|showMessageDialog
+name|showErrorDialogAndWait
 argument_list|(
-literal|null
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Error pushing entries"
+argument_list|)
 argument_list|,
 name|Localization
 operator|.
@@ -885,17 +896,6 @@ literal|"Could not run the gnuclient/emacsclient program. Make sure you have "
 operator|+
 literal|"the emacsclient/gnuclient program installed and available in the PATH."
 argument_list|)
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Error"
-argument_list|)
-argument_list|,
-name|JOptionPane
-operator|.
-name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
 block|}

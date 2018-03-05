@@ -130,16 +130,6 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|JOptionPane
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
 name|JPanel
 import|;
 end_import
@@ -173,6 +163,18 @@ operator|.
 name|UIManager
 operator|.
 name|LookAndFeelInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|DialogService
 import|;
 end_import
 
@@ -438,6 +440,12 @@ specifier|final
 name|JCheckBox
 name|fxFontTweaksLAF
 decl_stmt|;
+DECL|field|dialogService
+specifier|private
+specifier|final
+name|DialogService
+name|dialogService
+decl_stmt|;
 DECL|class|LookAndFeel
 specifier|static
 class|class
@@ -482,14 +490,23 @@ return|;
 block|}
 block|}
 comment|/**      * Customization of appearance parameters.      *      * @param prefs a<code>JabRefPreferences</code> value      */
-DECL|method|AppearancePrefsTab (JabRefPreferences prefs)
+DECL|method|AppearancePrefsTab (DialogService dialogService, JabRefPreferences prefs)
 specifier|public
 name|AppearancePrefsTab
 parameter_list|(
+name|DialogService
+name|dialogService
+parameter_list|,
 name|JabRefPreferences
 name|prefs
 parameter_list|)
 block|{
+name|this
+operator|.
+name|dialogService
+operator|=
+name|dialogService
+expr_stmt|;
 name|this
 operator|.
 name|prefs
@@ -2112,19 +2129,10 @@ condition|(
 name|isRestartRequired
 condition|)
 block|{
-name|JOptionPane
+name|dialogService
 operator|.
-name|showMessageDialog
+name|showWarningDialogAndWait
 argument_list|(
-literal|null
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Some appearance settings you changed require to restart JabRef to come into effect."
-argument_list|)
-argument_list|,
 name|Localization
 operator|.
 name|lang
@@ -2132,9 +2140,12 @@ argument_list|(
 literal|"Settings"
 argument_list|)
 argument_list|,
-name|JOptionPane
+name|Localization
 operator|.
-name|WARNING_MESSAGE
+name|lang
+argument_list|(
+literal|"Some appearance settings you changed require to restart JabRef to come into effect."
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -2200,11 +2211,11 @@ name|NumberFormatException
 name|ex
 parameter_list|)
 block|{
-name|JOptionPane
+name|dialogService
 operator|.
-name|showMessageDialog
+name|showErrorDialogAndWait
 argument_list|(
-literal|null
+name|errorTitle
 argument_list|,
 name|Localization
 operator|.
@@ -2218,12 +2229,6 @@ operator|+
 name|fieldName
 operator|+
 literal|"'"
-argument_list|,
-name|errorTitle
-argument_list|,
-name|JOptionPane
-operator|.
-name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
 return|return

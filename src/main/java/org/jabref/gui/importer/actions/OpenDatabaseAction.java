@@ -162,16 +162,6 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|JOptionPane
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
 name|SwingUtilities
 import|;
 end_import
@@ -1304,17 +1294,23 @@ operator|)
 condition|)
 block|{
 comment|// The lock file is fairly old, so we can offer to "steal" the file:
-name|int
-name|answer
+name|boolean
+name|overWriteFileLockPressed
 init|=
-name|JOptionPane
+name|frame
 operator|.
-name|showConfirmDialog
+name|getDialogService
+argument_list|()
+operator|.
+name|showConfirmationDialogAndWait
 argument_list|(
-literal|null
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"File locked"
+argument_list|)
 argument_list|,
-literal|"<html>"
-operator|+
 name|Localization
 operator|.
 name|lang
@@ -1335,7 +1331,7 @@ argument_list|(
 literal|"File is locked by another JabRef instance."
 argument_list|)
 operator|+
-literal|"<p>"
+literal|"\n"
 operator|+
 name|Localization
 operator|.
@@ -1348,21 +1344,20 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"File locked"
+literal|"Overwrite file lock"
 argument_list|)
 argument_list|,
-name|JOptionPane
+name|Localization
 operator|.
-name|YES_NO_OPTION
+name|lang
+argument_list|(
+literal|"Cancel"
+argument_list|)
 argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|answer
-operator|==
-name|JOptionPane
-operator|.
-name|YES_OPTION
+name|overWriteFileLockPressed
 condition|)
 block|{
 name|FileBasedLock
@@ -1390,11 +1385,19 @@ name|file
 argument_list|)
 condition|)
 block|{
-name|JOptionPane
+name|frame
 operator|.
-name|showMessageDialog
+name|getDialogService
+argument_list|()
+operator|.
+name|showErrorDialogAndWait
 argument_list|(
-literal|null
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Error"
+argument_list|)
 argument_list|,
 name|Localization
 operator|.
@@ -1415,17 +1418,6 @@ name|lang
 argument_list|(
 literal|"File is locked by another JabRef instance."
 argument_list|)
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Error"
-argument_list|)
-argument_list|,
-name|JOptionPane
-operator|.
-name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
 return|return;
@@ -1544,11 +1536,19 @@ argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
-name|JOptionPane
+name|frame
 operator|.
-name|showMessageDialog
+name|getDialogService
+argument_list|()
+operator|.
+name|showErrorDialogAndWait
 argument_list|(
-literal|null
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Connection error"
+argument_list|)
 argument_list|,
 name|e
 operator|.
@@ -1563,17 +1563,6 @@ name|lang
 argument_list|(
 literal|"A local copy will be opened."
 argument_list|)
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Connection error"
-argument_list|)
-argument_list|,
-name|JOptionPane
-operator|.
-name|WARNING_MESSAGE
 argument_list|)
 expr_stmt|;
 block|}

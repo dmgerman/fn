@@ -48,16 +48,6 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|JOptionPane
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
 name|JPanel
 import|;
 end_import
@@ -101,6 +91,18 @@ operator|.
 name|gui
 operator|.
 name|BasePanel
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|DialogService
 import|;
 end_import
 
@@ -254,6 +256,20 @@ argument_list|(
 literal|30
 argument_list|)
 decl_stmt|;
+DECL|method|PushToVim (DialogService dialogService)
+specifier|public
+name|PushToVim
+parameter_list|(
+name|DialogService
+name|dialogService
+parameter_list|)
+block|{
+name|super
+argument_list|(
+name|dialogService
+argument_list|)
+expr_stmt|;
+block|}
 annotation|@
 name|Override
 DECL|method|getApplicationName ()
@@ -694,35 +710,23 @@ condition|(
 name|couldNotConnect
 condition|)
 block|{
-name|JOptionPane
+name|dialogService
 operator|.
-name|showMessageDialog
+name|showErrorDialogAndWait
 argument_list|(
-literal|null
-argument_list|,
-literal|"<HTML>"
-operator|+
 name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Could not connect to Vim server. Make sure that "
-operator|+
-literal|"Vim is running<BR>with correct server name."
+literal|"Error pushing entries"
 argument_list|)
-operator|+
-literal|"</HTML>"
 argument_list|,
 name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Error"
+literal|"Could not connect to Vim server. Make sure that Vim is running with correct server name."
 argument_list|)
-argument_list|,
-name|JOptionPane
-operator|.
-name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
 block|}
@@ -732,11 +736,16 @@ condition|(
 name|couldNotCall
 condition|)
 block|{
-name|JOptionPane
+name|dialogService
 operator|.
-name|showMessageDialog
+name|showErrorDialogAndWait
 argument_list|(
-literal|null
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Error pushing entries"
+argument_list|)
 argument_list|,
 name|Localization
 operator|.
@@ -744,17 +753,6 @@ name|lang
 argument_list|(
 literal|"Could not run the 'vim' program."
 argument_list|)
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Error"
-argument_list|)
-argument_list|,
-name|JOptionPane
-operator|.
-name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
 block|}

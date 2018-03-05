@@ -28,6 +28,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Collection
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|List
 import|;
 end_import
@@ -106,7 +116,31 @@ name|scene
 operator|.
 name|control
 operator|.
+name|ChoiceDialog
+import|;
+end_import
+
+begin_import
+import|import
+name|javafx
+operator|.
+name|scene
+operator|.
+name|control
+operator|.
 name|DialogPane
+import|;
+end_import
+
+begin_import
+import|import
+name|javafx
+operator|.
+name|scene
+operator|.
+name|control
+operator|.
+name|TextInputDialog
 import|;
 end_import
 
@@ -174,6 +208,37 @@ specifier|public
 interface|interface
 name|DialogService
 block|{
+comment|/**      * This will create and display new {@link ChoiceDialog} of type T with a default choice and a collection of possible choices     */
+DECL|method|showChoiceDialogAndWait (String title, String content, String okButtonLabel, T defaultChoice, Collection<T> choices)
+parameter_list|<
+name|T
+parameter_list|>
+name|Optional
+argument_list|<
+name|T
+argument_list|>
+name|showChoiceDialogAndWait
+parameter_list|(
+name|String
+name|title
+parameter_list|,
+name|String
+name|content
+parameter_list|,
+name|String
+name|okButtonLabel
+parameter_list|,
+name|T
+name|defaultChoice
+parameter_list|,
+name|Collection
+argument_list|<
+name|T
+argument_list|>
+name|choices
+parameter_list|)
+function_decl|;
+comment|/**      * This will create and display new {@link TextInputDialog} with a text fields to enter data      */
 DECL|method|showInputDialogAndWait (String title, String content)
 name|Optional
 argument_list|<

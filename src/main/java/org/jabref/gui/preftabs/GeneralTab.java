@@ -142,16 +142,6 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|JOptionPane
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
 name|JPanel
 import|;
 end_import
@@ -173,6 +163,18 @@ operator|.
 name|jabref
 operator|.
 name|Globals
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|DialogService
 import|;
 end_import
 
@@ -461,6 +463,12 @@ name|BibDatabaseMode
 argument_list|>
 name|biblatexMode
 decl_stmt|;
+DECL|field|dialogService
+specifier|private
+specifier|final
+name|DialogService
+name|dialogService
+decl_stmt|;
 DECL|class|DefaultBibModeRenderer
 specifier|public
 class|class
@@ -527,10 +535,13 @@ name|this
 return|;
 block|}
 block|}
-DECL|method|GeneralTab (JabRefPreferences prefs)
+DECL|method|GeneralTab (DialogService dialogService, JabRefPreferences prefs)
 specifier|public
 name|GeneralTab
 parameter_list|(
+name|DialogService
+name|dialogService
+parameter_list|,
 name|JabRefPreferences
 name|prefs
 parameter_list|)
@@ -540,6 +551,12 @@ operator|.
 name|prefs
 operator|=
 name|prefs
+expr_stmt|;
+name|this
+operator|.
+name|dialogService
+operator|=
+name|dialogService
 expr_stmt|;
 name|setLayout
 argument_list|(
@@ -1611,11 +1628,16 @@ name|isSelected
 argument_list|()
 condition|)
 block|{
-name|JOptionPane
+name|dialogService
 operator|.
-name|showMessageDialog
+name|showInformationDialogAndWait
 argument_list|(
-literal|null
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Memory stick mode"
+argument_list|)
 argument_list|,
 name|Localization
 operator|.
@@ -1625,17 +1647,6 @@ literal|"To disable the memory stick mode"
 operator|+
 literal|" rename or remove the jabref.xml file in the same folder as JabRef."
 argument_list|)
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Memory stick mode"
-argument_list|)
-argument_list|,
-name|JOptionPane
-operator|.
-name|INFORMATION_MESSAGE
 argument_list|)
 expr_stmt|;
 block|}
@@ -1854,11 +1865,16 @@ name|setLanguageDependentDefaultValues
 argument_list|()
 expr_stmt|;
 comment|// Warn about restart needed:
-name|JOptionPane
+name|dialogService
 operator|.
-name|showMessageDialog
+name|showWarningDialogAndWait
 argument_list|(
-literal|null
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Changed language settings"
+argument_list|)
 argument_list|,
 name|Localization
 operator|.
@@ -1881,17 +1897,6 @@ argument_list|(
 literal|"You must restart JabRef for this to come into effect."
 argument_list|)
 argument_list|)
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Changed language settings"
-argument_list|)
-argument_list|,
-name|JOptionPane
-operator|.
-name|WARNING_MESSAGE
 argument_list|)
 expr_stmt|;
 block|}
@@ -1924,19 +1929,10 @@ name|IllegalArgumentException
 name|ex2
 parameter_list|)
 block|{
-name|JOptionPane
+name|dialogService
 operator|.
-name|showMessageDialog
+name|showErrorDialogAndWait
 argument_list|(
-literal|null
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"The chosen date format for new entries is not valid"
-argument_list|)
-argument_list|,
 name|Localization
 operator|.
 name|lang
@@ -1944,9 +1940,12 @@ argument_list|(
 literal|"Invalid date format"
 argument_list|)
 argument_list|,
-name|JOptionPane
+name|Localization
 operator|.
-name|ERROR_MESSAGE
+name|lang
+argument_list|(
+literal|"The chosen date format for new entries is not valid"
+argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
