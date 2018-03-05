@@ -755,25 +755,6 @@ operator|.
 name|VIEW
 argument_list|)
 block|,
-DECL|enumConstant|MARK_ENTRIES
-name|MARK_ENTRIES
-argument_list|(
-literal|"Mark entries"
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Mark entries"
-argument_list|)
-argument_list|,
-literal|"ctrl+M"
-argument_list|,
-name|KeyBindingCategory
-operator|.
-name|EDIT
-argument_list|)
-block|,
 DECL|enumConstant|NEW_ARTICLE
 name|NEW_ARTICLE
 argument_list|(
@@ -1585,25 +1566,6 @@ literal|"Undo"
 argument_list|)
 argument_list|,
 literal|"ctrl+Z"
-argument_list|,
-name|KeyBindingCategory
-operator|.
-name|EDIT
-argument_list|)
-block|,
-DECL|enumConstant|UNMARK_ENTRIES
-name|UNMARK_ENTRIES
-argument_list|(
-literal|"Unmark entries"
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Unmark entries"
-argument_list|)
-argument_list|,
-literal|"ctrl+shift+M"
 argument_list|,
 name|KeyBindingCategory
 operator|.

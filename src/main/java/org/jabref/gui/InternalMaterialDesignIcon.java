@@ -532,6 +532,27 @@ name|icons
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
+DECL|method|withColor (Color color)
+specifier|public
+name|JabRefIcon
+name|withColor
+parameter_list|(
+name|Color
+name|color
+parameter_list|)
+block|{
+return|return
+operator|new
+name|InternalMaterialDesignIcon
+argument_list|(
+name|color
+argument_list|,
+name|icons
+argument_list|)
+return|;
+block|}
 DECL|method|getCode ()
 specifier|public
 name|String

@@ -1424,28 +1424,12 @@ operator|.
 name|UNDO
 argument_list|)
 operator|,
-DECL|enumConstant|MARK_ENTRIES
-name|MARK_ENTRIES
-argument_list|(
-name|MaterialDesignIcon
-operator|.
-name|BOOKMARK
-argument_list|)
-operator|,
 DECL|enumConstant|MARKER
 name|MARKER
 argument_list|(
 name|MaterialDesignIcon
 operator|.
 name|MARKER
-argument_list|)
-operator|,
-DECL|enumConstant|UNMARK_ENTRIES
-name|UNMARK_ENTRIES
-argument_list|(
-name|MaterialDesignIcon
-operator|.
-name|BOOKMARK_OUTLINE
 argument_list|)
 operator|,
 DECL|enumConstant|REFRESH
@@ -2336,6 +2320,14 @@ name|CALENDAR
 argument_list|)
 operator|,
 comment|/* css: calendar */
+DECL|enumConstant|DEFAULT_GROUP_ICON_COLORED
+name|DEFAULT_GROUP_ICON_COLORED
+argument_list|(
+name|MaterialDesignIcon
+operator|.
+name|CHECKBOX_BLANK_CIRCLE
+argument_list|)
+operator|,
 DECL|enumConstant|DEFAULT_GROUP_ICON
 name|DEFAULT_GROUP_ICON
 argument_list|(
@@ -2344,7 +2336,6 @@ operator|.
 name|LABEL_OUTLINE
 argument_list|)
 operator|,
-comment|/* css: label-outline */
 DECL|enumConstant|ALL_ENTRIES_GROUP_ICON
 name|ALL_ENTRIES_GROUP_ICON
 argument_list|(
@@ -2367,19 +2358,6 @@ argument_list|(
 name|MaterialDesignIcon
 operator|.
 name|GLASSDOOR
-argument_list|)
-operator|,
-comment|// STILL MISSING:
-DECL|enumConstant|GROUP_REGULAR
-name|GROUP_REGULAR
-argument_list|(
-name|Color
-operator|.
-name|RED
-argument_list|,
-name|MaterialDesignIcon
-operator|.
-name|SYNC
 argument_list|)
 expr_stmt|;
 end_class
@@ -2517,6 +2495,35 @@ return|;
 block|}
 end_function
 
+begin_function
+annotation|@
+name|Override
+DECL|method|withColor (javafx.scene.paint.Color color)
+specifier|public
+name|JabRefIcon
+name|withColor
+parameter_list|(
+name|javafx
+operator|.
+name|scene
+operator|.
+name|paint
+operator|.
+name|Color
+name|color
+parameter_list|)
+block|{
+return|return
+name|icon
+operator|.
+name|withColor
+argument_list|(
+name|color
+argument_list|)
+return|;
+block|}
+end_function
+
 begin_class
 DECL|class|InternalFileIcon
 specifier|private
@@ -2605,6 +2612,31 @@ operator|new
 name|NotImplementedException
 argument_list|(
 literal|"Cannot create disabled version of a file-based icon"
+argument_list|)
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|withColor (javafx.scene.paint.Color color)
+specifier|public
+name|JabRefIcon
+name|withColor
+parameter_list|(
+name|javafx
+operator|.
+name|scene
+operator|.
+name|paint
+operator|.
+name|Color
+name|color
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|(
+literal|"Cannot create colored version of a file-based icon"
 argument_list|)
 throw|;
 block|}

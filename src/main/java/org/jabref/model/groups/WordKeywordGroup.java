@@ -324,7 +324,7 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|add (List<BibEntry> entriesToAdd)
+DECL|method|add (Collection<BibEntry> entriesToAdd)
 specifier|public
 name|List
 argument_list|<
@@ -332,7 +332,7 @@ name|FieldChange
 argument_list|>
 name|add
 parameter_list|(
-name|List
+name|Collection
 argument_list|<
 name|BibEntry
 argument_list|>

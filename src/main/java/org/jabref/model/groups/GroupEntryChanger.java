@@ -18,6 +18,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Collection
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Collections
 import|;
 end_import
@@ -69,14 +79,14 @@ interface|interface
 name|GroupEntryChanger
 block|{
 comment|/**      * Adds the specified entries to this group.      *      * @return If this group or one or more entries was/were modified as a      * result of this operation, a list of changes is returned.      */
-DECL|method|add (List<BibEntry> entriesToAdd)
+DECL|method|add (Collection<BibEntry> entriesToAdd)
 name|List
 argument_list|<
 name|FieldChange
 argument_list|>
 name|add
 parameter_list|(
-name|List
+name|Collection
 argument_list|<
 name|BibEntry
 argument_list|>

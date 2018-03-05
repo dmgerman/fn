@@ -380,7 +380,7 @@ argument_list|)
 decl_stmt|;
 name|assertFalse
 argument_list|(
-name|keyBindingRepository
+name|KeyBindingRepository
 operator|.
 name|checkKeyCombinationEquality
 argument_list|(
@@ -495,7 +495,7 @@ argument_list|)
 decl_stmt|;
 name|assertTrue
 argument_list|(
-name|keyBindingRepository
+name|KeyBindingRepository
 operator|.
 name|checkKeyCombinationEquality
 argument_list|(
@@ -704,7 +704,7 @@ argument_list|)
 decl_stmt|;
 name|assertTrue
 argument_list|(
-name|keyBindingRepository
+name|KeyBindingRepository
 operator|.
 name|checkKeyCombinationEquality
 argument_list|(
@@ -716,7 +716,7 @@ argument_list|)
 expr_stmt|;
 name|assertFalse
 argument_list|(
-name|keyBindingRepository
+name|KeyBindingRepository
 operator|.
 name|checkKeyCombinationEquality
 argument_list|(
@@ -839,7 +839,7 @@ name|setKeyBindingViewModel
 argument_list|(
 name|KeyBinding
 operator|.
-name|UNMARK_ENTRIES
+name|ABBREVIATE
 argument_list|)
 expr_stmt|;
 name|KeyEvent
@@ -877,7 +877,7 @@ name|checkKeyCombinationEquality
 argument_list|(
 name|KeyBinding
 operator|.
-name|UNMARK_ENTRIES
+name|ABBREVIATE
 argument_list|,
 name|shortcutKeyEvent
 argument_list|)
@@ -903,7 +903,7 @@ name|checkKeyCombinationEquality
 argument_list|(
 name|KeyBinding
 operator|.
-name|UNMARK_ENTRIES
+name|ABBREVIATE
 argument_list|,
 name|shortcutKeyEvent
 argument_list|)
