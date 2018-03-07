@@ -97,16 +97,19 @@ name|Exporter
 block|{
 DECL|field|id
 specifier|private
+specifier|final
 name|String
 name|id
 decl_stmt|;
 DECL|field|displayName
 specifier|private
+specifier|final
 name|String
 name|displayName
 decl_stmt|;
 DECL|field|fileType
 specifier|private
+specifier|final
 name|FileType
 name|fileType
 decl_stmt|;
@@ -174,6 +177,18 @@ parameter_list|()
 block|{
 return|return
 name|fileType
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|toString ()
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+name|displayName
 return|;
 block|}
 comment|/**      * Performs the export.      *      * @param databaseContext the database to export from      * @param file            the file to write to      * @param encoding        the encoding to use      * @param entries         a list containing all entries that should be exported      */

@@ -208,7 +208,7 @@ specifier|public
 interface|interface
 name|DialogService
 block|{
-comment|/**      * This will create and display new {@link ChoiceDialog} of type T with a default choice and a collection of possible choices     */
+comment|/**      * This will create and display new {@link ChoiceDialog} of type T with a default choice (can be null) and a collection of possible choices     */
 DECL|method|showChoiceDialogAndWait (String title, String content, String okButtonLabel, T defaultChoice, Collection<T> choices)
 parameter_list|<
 name|T
