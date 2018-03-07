@@ -402,19 +402,10 @@ argument_list|()
 condition|)
 block|{
 comment|// None selected. Inform the user to select entries first.
-name|JOptionPane
+name|dialogService
 operator|.
-name|showMessageDialog
+name|showInformationDialogAndWait
 argument_list|(
-literal|null
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"First select entries to clean up."
-argument_list|)
-argument_list|,
 name|Localization
 operator|.
 name|lang
@@ -422,9 +413,12 @@ argument_list|(
 literal|"Cleanup entry"
 argument_list|)
 argument_list|,
-name|JOptionPane
+name|Localization
 operator|.
-name|INFORMATION_MESSAGE
+name|lang
+argument_list|(
+literal|"First select entries to clean up."
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|canceled

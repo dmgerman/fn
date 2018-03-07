@@ -858,6 +858,20 @@ name|gui
 operator|.
 name|mergeentries
 operator|.
+name|MergeEntriesDialog
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|mergeentries
+operator|.
 name|MergeWithFetchedEntryAction
 import|;
 end_import
@@ -3448,9 +3462,32 @@ argument_list|)
 expr_stmt|;
 end_expr_stmt
 
-begin_comment
-comment|//actions.put(Actions.MERGE_ENTRIES, (BaseAction) () -> new MergeEntriesDialog(BasePanel.this));
-end_comment
+begin_expr_stmt
+name|actions
+operator|.
+name|put
+argument_list|(
+name|Actions
+operator|.
+name|MERGE_ENTRIES
+argument_list|,
+call|(
+name|BaseAction
+call|)
+argument_list|()
+operator|->
+operator|new
+name|MergeEntriesDialog
+argument_list|(
+name|BasePanel
+operator|.
+name|this
+argument_list|,
+name|dialogService
+argument_list|)
+argument_list|)
+expr_stmt|;
+end_expr_stmt
 
 begin_expr_stmt
 name|actions
