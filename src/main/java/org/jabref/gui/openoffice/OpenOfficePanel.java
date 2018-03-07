@@ -270,16 +270,6 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|JOptionPane
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
 name|JPanel
 import|;
 end_import
@@ -2835,6 +2825,11 @@ argument_list|(
 name|diag
 argument_list|,
 name|preferences
+argument_list|,
+name|frame
+operator|.
+name|getDialogService
+argument_list|()
 argument_list|)
 decl_stmt|;
 if|if
@@ -2920,6 +2915,11 @@ argument_list|(
 name|diag
 argument_list|,
 name|preferences
+argument_list|,
+name|frame
+operator|.
+name|getDialogService
+argument_list|()
 argument_list|)
 operator|.
 name|showProgressDialog
@@ -4223,11 +4223,25 @@ name|isConnectedToDocument
 argument_list|()
 condition|)
 block|{
-name|JOptionPane
+name|DefaultTaskExecutor
 operator|.
-name|showMessageDialog
+name|runInJavaFXThread
 argument_list|(
-literal|null
+parameter_list|()
+lambda|->
+name|frame
+operator|.
+name|getDialogService
+argument_list|()
+operator|.
+name|showErrorDialogAndWait
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Error pushing entries"
+argument_list|)
 argument_list|,
 name|Localization
 operator|.
@@ -4237,17 +4251,7 @@ literal|"Not connected to any Writer document. Please"
 operator|+
 literal|" make sure a document is open, and use the 'Select Writer document' button to connect to it."
 argument_list|)
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Error"
 argument_list|)
-argument_list|,
-name|JOptionPane
-operator|.
-name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
 return|return;
@@ -4417,19 +4421,19 @@ name|FileNotFoundException
 name|ex
 parameter_list|)
 block|{
-name|JOptionPane
+name|DefaultTaskExecutor
 operator|.
-name|showMessageDialog
+name|runInJavaFXThread
 argument_list|(
-literal|null
-argument_list|,
-name|Localization
+parameter_list|()
+lambda|->
+name|frame
 operator|.
-name|lang
+name|getDialogService
+argument_list|()
+operator|.
+name|showErrorDialogAndWait
 argument_list|(
-literal|"You must select either a valid style file, or use one of the default styles."
-argument_list|)
-argument_list|,
 name|Localization
 operator|.
 name|lang
@@ -4437,9 +4441,13 @@ argument_list|(
 literal|"No valid style file defined"
 argument_list|)
 argument_list|,
-name|JOptionPane
+name|Localization
 operator|.
-name|ERROR_MESSAGE
+name|lang
+argument_list|(
+literal|"You must select either a valid style file, or use one of the default styles."
+argument_list|)
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|LOGGER
@@ -4765,6 +4773,12 @@ name|void
 name|showConnectionLostErrorMessage
 parameter_list|()
 block|{
+name|DefaultTaskExecutor
+operator|.
+name|runInJavaFXThread
+argument_list|(
+parameter_list|()
+lambda|->
 name|frame
 operator|.
 name|getDialogService
@@ -4788,6 +4802,7 @@ operator|+
 literal|"Please make sure OpenOffice/LibreOffice is running, and try to reconnect."
 argument_list|)
 argument_list|)
+argument_list|)
 expr_stmt|;
 block|}
 DECL|method|reportUndefinedParagraphFormat (UndefinedParagraphFormatException ex)
@@ -4799,6 +4814,12 @@ name|UndefinedParagraphFormatException
 name|ex
 parameter_list|)
 block|{
+name|DefaultTaskExecutor
+operator|.
+name|runInJavaFXThread
+argument_list|(
+parameter_list|()
+lambda|->
 name|frame
 operator|.
 name|getDialogService
@@ -4836,6 +4857,7 @@ argument_list|(
 literal|"The paragraph format is controlled by the property 'ReferenceParagraphFormat' or 'ReferenceHeaderParagraphFormat' in the style file."
 argument_list|)
 argument_list|)
+argument_list|)
 expr_stmt|;
 block|}
 DECL|method|reportUndefinedCharacterFormat (UndefinedCharacterFormatException ex)
@@ -4847,6 +4869,12 @@ name|UndefinedCharacterFormatException
 name|ex
 parameter_list|)
 block|{
+name|DefaultTaskExecutor
+operator|.
+name|runInJavaFXThread
+argument_list|(
+parameter_list|()
+lambda|->
 name|frame
 operator|.
 name|getDialogService
@@ -4882,6 +4910,7 @@ operator|.
 name|lang
 argument_list|(
 literal|"The character format is controlled by the citation property 'CitationCharacterFormat' in the style file."
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
