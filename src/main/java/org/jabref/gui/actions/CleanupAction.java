@@ -34,6 +34,16 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|SwingUtilities
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|jabref
@@ -411,6 +421,13 @@ name|void
 name|run
 parameter_list|()
 block|{
+name|SwingUtilities
+operator|.
+name|invokeLater
+argument_list|(
+parameter_list|()
+lambda|->
+block|{
 if|if
 condition|(
 name|canceled
@@ -497,6 +514,12 @@ block|{
 name|boolean
 name|autogeneratePressed
 init|=
+name|DefaultTaskExecutor
+operator|.
+name|runInJavaFXThread
+argument_list|(
+parameter_list|()
+lambda|->
 name|dialogService
 operator|.
 name|showConfirmationDialogWithOptOutAndWait
@@ -550,6 +573,7 @@ name|ASK_AUTO_NAMING_PDFS_AGAIN
 argument_list|,
 operator|!
 name|optOut
+argument_list|)
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -629,6 +653,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Override

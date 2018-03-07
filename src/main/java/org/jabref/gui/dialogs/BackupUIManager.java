@@ -42,6 +42,20 @@ name|org
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
+name|util
+operator|.
+name|DefaultTaskExecutor
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
 name|logic
 operator|.
 name|autosaveandbackup
@@ -153,6 +167,12 @@ decl_stmt|;
 name|boolean
 name|restoreClicked
 init|=
+name|DefaultTaskExecutor
+operator|.
+name|runInJavaFXThread
+argument_list|(
+parameter_list|()
+lambda|->
 name|dialogService
 operator|.
 name|showConfirmationDialogAndWait
@@ -178,6 +198,7 @@ operator|.
 name|lang
 argument_list|(
 literal|"Ignore backup"
+argument_list|)
 argument_list|)
 argument_list|)
 decl_stmt|;
