@@ -405,12 +405,15 @@ name|runInJavaFXThread
 argument_list|(
 parameter_list|()
 lambda|->
+block|{
 name|dialogService
 operator|.
 name|showCanceableProgressDialogAndWait
 argument_list|(
 name|exportService
 argument_list|)
+expr_stmt|;
+block|}
 argument_list|)
 expr_stmt|;
 name|exportService
@@ -418,13 +421,13 @@ operator|.
 name|run
 argument_list|()
 expr_stmt|;
-comment|//Run kinda blocks, so we just show the result dialog wgeb run is ready
 name|DefaultTaskExecutor
 operator|.
 name|runInJavaFXThread
 argument_list|(
 parameter_list|()
 lambda|->
+block|{
 name|showDialog
 argument_list|(
 name|exportService
@@ -432,6 +435,8 @@ operator|.
 name|getValue
 argument_list|()
 argument_list|)
+expr_stmt|;
+block|}
 argument_list|)
 expr_stmt|;
 block|}
