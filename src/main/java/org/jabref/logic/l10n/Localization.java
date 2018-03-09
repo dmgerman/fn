@@ -987,6 +987,8 @@ operator|=
 name|lookupMap
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|handleGetObject (String key)
 specifier|public
 specifier|final
@@ -1005,9 +1007,19 @@ name|key
 argument_list|)
 expr_stmt|;
 return|return
+name|Optional
+operator|.
+name|ofNullable
+argument_list|(
 name|lookup
 operator|.
 name|get
+argument_list|(
+name|key
+argument_list|)
+argument_list|)
+operator|.
+name|orElse
 argument_list|(
 name|key
 argument_list|)
@@ -1065,19 +1077,9 @@ name|String
 name|key
 parameter_list|)
 block|{
+comment|// Pretend we have every key
 return|return
-operator|(
-name|key
-operator|!=
-literal|null
-operator|)
-operator|&&
-name|lookup
-operator|.
-name|containsKey
-argument_list|(
-name|key
-argument_list|)
+literal|true
 return|;
 block|}
 block|}
