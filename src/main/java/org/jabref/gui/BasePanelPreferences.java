@@ -255,12 +255,10 @@ init|=
 operator|new
 name|BasePanelPreferences
 argument_list|(
-name|MainTablePreferences
-operator|.
-name|from
-argument_list|(
 name|preferences
-argument_list|)
+operator|.
+name|getMainTablePreferences
+argument_list|()
 argument_list|,
 name|preferences
 operator|.

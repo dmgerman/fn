@@ -30,6 +30,18 @@ name|Node
 import|;
 end_import
 
+begin_import
+import|import
+name|javafx
+operator|.
+name|scene
+operator|.
+name|paint
+operator|.
+name|Color
+import|;
+end_import
+
 begin_interface
 DECL|interface|JabRefIcon
 specifier|public
@@ -55,6 +67,14 @@ DECL|method|disabled ()
 name|JabRefIcon
 name|disabled
 parameter_list|()
+function_decl|;
+DECL|method|withColor (Color color)
+name|JabRefIcon
+name|withColor
+parameter_list|(
+name|Color
+name|color
+parameter_list|)
 function_decl|;
 block|}
 end_interface

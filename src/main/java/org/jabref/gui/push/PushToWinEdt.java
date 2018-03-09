@@ -20,6 +20,18 @@ name|jabref
 operator|.
 name|gui
 operator|.
+name|DialogService
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
 name|IconTheme
 import|;
 end_import
@@ -58,6 +70,20 @@ name|AbstractPushToApplication
 implements|implements
 name|PushToApplication
 block|{
+DECL|method|PushToWinEdt (DialogService dialogService)
+specifier|public
+name|PushToWinEdt
+parameter_list|(
+name|DialogService
+name|dialogService
+parameter_list|)
+block|{
+name|super
+argument_list|(
+name|dialogService
+argument_list|)
+expr_stmt|;
+block|}
 annotation|@
 name|Override
 DECL|method|getApplicationName ()

@@ -122,6 +122,18 @@ name|jabref
 operator|.
 name|gui
 operator|.
+name|DialogService
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
 name|IconTheme
 import|;
 end_import
@@ -252,6 +264,20 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+DECL|method|PushToLyx (DialogService dialogService)
+specifier|public
+name|PushToLyx
+parameter_list|(
+name|DialogService
+name|dialogService
+parameter_list|)
+block|{
+name|super
+argument_list|(
+name|dialogService
+argument_list|)
+expr_stmt|;
+block|}
 annotation|@
 name|Override
 DECL|method|getApplicationName ()

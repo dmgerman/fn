@@ -60,16 +60,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|JOptionPane
-import|;
-end_import
-
-begin_import
-import|import
 name|javafx
 operator|.
 name|stage
@@ -528,13 +518,22 @@ argument_list|)
 condition|)
 block|{
 comment|// Warn that the file exists:
-if|if
-condition|(
-name|JOptionPane
+name|boolean
+name|overwriteFilePressed
+init|=
+name|frame
 operator|.
-name|showConfirmDialog
+name|getDialogService
+argument_list|()
+operator|.
+name|showConfirmationDialogAndWait
 argument_list|(
-literal|null
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Export"
+argument_list|)
 argument_list|,
 name|Localization
 operator|.
@@ -555,17 +554,21 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Export"
+literal|"Overwrite file"
 argument_list|)
 argument_list|,
-name|JOptionPane
+name|Localization
 operator|.
-name|OK_CANCEL_OPTION
+name|lang
+argument_list|(
+literal|"Cancel"
 argument_list|)
-operator|!=
-name|JOptionPane
-operator|.
-name|OK_OPTION
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+operator|!
+name|overwriteFilePressed
 condition|)
 block|{
 return|return;
@@ -870,11 +873,19 @@ name|errorMessage
 argument_list|)
 expr_stmt|;
 comment|// Need to warn the user that saving failed!
-name|JOptionPane
+name|frame
 operator|.
-name|showMessageDialog
+name|getDialogService
+argument_list|()
+operator|.
+name|showErrorDialogAndWait
 argument_list|(
-literal|null
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Save library"
+argument_list|)
 argument_list|,
 name|Localization
 operator|.
@@ -886,17 +897,6 @@ operator|+
 literal|"\n"
 operator|+
 name|errorMessage
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Save library"
-argument_list|)
-argument_list|,
-name|JOptionPane
-operator|.
-name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
 block|}

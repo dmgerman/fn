@@ -70,16 +70,6 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|JOptionPane
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
 name|SwingUtilities
 import|;
 end_import
@@ -288,19 +278,13 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-name|JOptionPane
+name|frame
 operator|.
-name|showMessageDialog
-argument_list|(
-literal|null
-argument_list|,
-name|Localization
+name|getDialogService
+argument_list|()
 operator|.
-name|lang
+name|showErrorDialogAndWait
 argument_list|(
-literal|"This operation requires one or more entries to be selected."
-argument_list|)
-argument_list|,
 operator|(
 name|String
 operator|)
@@ -311,9 +295,12 @@ operator|.
 name|NAME
 argument_list|)
 argument_list|,
-name|JOptionPane
+name|Localization
 operator|.
-name|ERROR_MESSAGE
+name|lang
+argument_list|(
+literal|"This operation requires one or more entries to be selected."
+argument_list|)
 argument_list|)
 expr_stmt|;
 return|return;
@@ -363,19 +350,13 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-name|JOptionPane
+name|frame
 operator|.
-name|showMessageDialog
-argument_list|(
-literal|null
-argument_list|,
-name|Localization
+name|getDialogService
+argument_list|()
 operator|.
-name|lang
+name|showErrorDialogAndWait
 argument_list|(
-literal|"This operation requires all selected entries to have BibTeX keys defined."
-argument_list|)
-argument_list|,
 operator|(
 name|String
 operator|)
@@ -386,9 +367,12 @@ operator|.
 name|NAME
 argument_list|)
 argument_list|,
-name|JOptionPane
+name|Localization
 operator|.
-name|ERROR_MESSAGE
+name|lang
+argument_list|(
+literal|"This operation requires all selected entries to have BibTeX keys defined."
+argument_list|)
 argument_list|)
 expr_stmt|;
 return|return;

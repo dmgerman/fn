@@ -28,6 +28,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Collection
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Collections
 import|;
 end_import
@@ -814,6 +824,32 @@ return|return
 name|groups
 return|;
 block|}
+comment|/**      * Determines all groups in the subtree starting at this node which contain the given entry.      */
+DECL|method|getMatchingGroups (BibEntry entry)
+specifier|public
+name|List
+argument_list|<
+name|GroupTreeNode
+argument_list|>
+name|getMatchingGroups
+parameter_list|(
+name|BibEntry
+name|entry
+parameter_list|)
+block|{
+return|return
+name|getMatchingGroups
+argument_list|(
+name|Collections
+operator|.
+name|singletonList
+argument_list|(
+name|entry
+argument_list|)
+argument_list|)
+return|;
+block|}
+comment|/**      * Determines all groups in the subtree starting at this node which contain at least one of the given entries.      */
 DECL|method|getMatchingGroups (List<BibEntry> entries)
 specifier|public
 name|List
@@ -1268,7 +1304,7 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Adds the specified entries to this group.      * If the group does not support explicit adding of entries (i.e., does not implement {@link GroupEntryChanger}),      * then no action is performed.      */
-DECL|method|addEntriesToGroup (List<BibEntry> entries)
+DECL|method|addEntriesToGroup (Collection<BibEntry> entries)
 specifier|public
 name|List
 argument_list|<
@@ -1276,7 +1312,7 @@ name|FieldChange
 argument_list|>
 name|addEntriesToGroup
 parameter_list|(
-name|List
+name|Collection
 argument_list|<
 name|BibEntry
 argument_list|>

@@ -114,6 +114,7 @@ name|ActionFactory
 block|{
 DECL|field|keyBindingRepository
 specifier|private
+specifier|final
 name|KeyBindingRepository
 name|keyBindingRepository
 decl_stmt|;

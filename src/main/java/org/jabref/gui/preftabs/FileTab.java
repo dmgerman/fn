@@ -188,7 +188,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|JabRefFrame
+name|DialogService
 import|;
 end_import
 
@@ -363,12 +363,6 @@ specifier|final
 name|JabRefPreferences
 name|prefs
 decl_stmt|;
-DECL|field|frame
-specifier|private
-specifier|final
-name|JabRefFrame
-name|frame
-decl_stmt|;
 DECL|field|backup
 specifier|private
 specifier|final
@@ -496,12 +490,12 @@ specifier|final
 name|JTextField
 name|regExpTextField
 decl_stmt|;
-DECL|method|FileTab (JabRefFrame frame, JabRefPreferences prefs)
+DECL|method|FileTab (DialogService dialogService, JabRefPreferences prefs)
 specifier|public
 name|FileTab
 parameter_list|(
-name|JabRefFrame
-name|frame
+name|DialogService
+name|dialogService
 parameter_list|,
 name|JabRefPreferences
 name|prefs
@@ -512,12 +506,6 @@ operator|.
 name|prefs
 operator|=
 name|prefs
-expr_stmt|;
-name|this
-operator|.
-name|frame
-operator|=
-name|frame
 expr_stmt|;
 name|fileDir
 operator|=
@@ -1068,10 +1056,7 @@ name|runInJavaFXThread
 argument_list|(
 parameter_list|()
 lambda|->
-name|frame
-operator|.
-name|getDialogService
-argument_list|()
+name|dialogService
 operator|.
 name|showDirectorySelectionDialog
 argument_list|(

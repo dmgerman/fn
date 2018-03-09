@@ -100,9 +100,6 @@ block|,
 DECL|enumConstant|MANAGE_SELECTORS
 name|MANAGE_SELECTORS
 block|,
-DECL|enumConstant|MARK_ENTRIES
-name|MARK_ENTRIES
-block|,
 DECL|enumConstant|MERGE_DATABASE
 name|MERGE_DATABASE
 block|,
@@ -183,12 +180,6 @@ name|UNABBREVIATE
 block|,
 DECL|enumConstant|UNDO
 name|UNDO
-block|,
-DECL|enumConstant|UNMARK_ALL
-name|UNMARK_ALL
-block|,
-DECL|enumConstant|UNMARK_ENTRIES
-name|UNMARK_ENTRIES
 block|,
 DECL|enumConstant|WRITE_XMP
 name|WRITE_XMP

@@ -101,7 +101,7 @@ name|regexInput
 init|=
 literal|"(\" \",\"-\")"
 decl_stmt|;
-name|formatter
+name|RegexFormatter
 operator|.
 name|setRegex
 argument_list|(
@@ -134,7 +134,7 @@ name|regexInput
 init|=
 literal|"(\" \",\"-\")"
 decl_stmt|;
-name|formatter
+name|RegexFormatter
 operator|.
 name|setRegex
 argument_list|(
@@ -167,7 +167,7 @@ name|regexInput
 init|=
 literal|"(\" \",\"-\")"
 decl_stmt|;
-name|formatter
+name|RegexFormatter
 operator|.
 name|setRegex
 argument_list|(
@@ -200,7 +200,7 @@ name|regexInput
 init|=
 literal|"(\" \",\"-\")"
 decl_stmt|;
-name|formatter
+name|RegexFormatter
 operator|.
 name|setRegex
 argument_list|(
@@ -233,7 +233,7 @@ name|regexInput
 init|=
 literal|"(\" \",\"-\")"
 decl_stmt|;
-name|formatter
+name|RegexFormatter
 operator|.
 name|setRegex
 argument_list|(
@@ -261,11 +261,6 @@ name|void
 name|escapedBracesAreNotReplacedAndProtectionStillWorks
 parameter_list|()
 block|{
-name|String
-name|regexInput
-init|=
-literal|"(\" \",\"-\")"
-decl_stmt|;
 name|assertEquals
 argument_list|(
 literal|"replace-spaces-{not these ones},-these-ones,-and-\\{-these-ones\\}"

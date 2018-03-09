@@ -176,31 +176,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|FXDialogService
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
 name|JabRefDialog
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|JabRefFrame
 import|;
 end_import
 
@@ -398,12 +374,13 @@ specifier|final
 name|ProtectedTermsLoader
 name|loader
 decl_stmt|;
-DECL|field|parent
+DECL|field|dialogService
 specifier|private
-name|JFrame
-name|parent
+specifier|final
+name|DialogService
+name|dialogService
 decl_stmt|;
-DECL|method|NewProtectedTermsFileDialog (JDialog parent, ProtectedTermsLoader loader)
+DECL|method|NewProtectedTermsFileDialog (JDialog parent, ProtectedTermsLoader loader, DialogService dialogService)
 specifier|public
 name|NewProtectedTermsFileDialog
 parameter_list|(
@@ -412,6 +389,9 @@ name|parent
 parameter_list|,
 name|ProtectedTermsLoader
 name|loader
+parameter_list|,
+name|DialogService
+name|dialogService
 parameter_list|)
 block|{
 name|super
@@ -438,6 +418,12 @@ name|loader
 operator|=
 name|loader
 expr_stmt|;
+name|this
+operator|.
+name|dialogService
+operator|=
+name|dialogService
+expr_stmt|;
 name|setupDialog
 argument_list|()
 expr_stmt|;
@@ -447,12 +433,12 @@ name|parent
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|NewProtectedTermsFileDialog (JabRefFrame mainFrame, ProtectedTermsLoader loader)
+DECL|method|NewProtectedTermsFileDialog (DialogService dialogService, ProtectedTermsLoader loader)
 specifier|public
 name|NewProtectedTermsFileDialog
 parameter_list|(
-name|JabRefFrame
-name|mainFrame
+name|DialogService
+name|dialogService
 parameter_list|,
 name|ProtectedTermsLoader
 name|loader
@@ -484,6 +470,12 @@ operator|.
 name|loader
 operator|=
 name|loader
+expr_stmt|;
+name|this
+operator|.
+name|dialogService
+operator|=
+name|dialogService
 expr_stmt|;
 name|setupDialog
 argument_list|()
@@ -549,13 +541,6 @@ operator|.
 name|build
 argument_list|()
 decl_stmt|;
-name|DialogService
-name|ds
-init|=
-operator|new
-name|FXDialogService
-argument_list|()
-decl_stmt|;
 name|browse
 operator|.
 name|addActionListener
@@ -575,7 +560,7 @@ name|runInJavaFXThread
 argument_list|(
 parameter_list|()
 lambda|->
-name|ds
+name|dialogService
 operator|.
 name|showFileSaveDialog
 argument_list|(

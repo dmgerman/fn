@@ -90,16 +90,6 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|JOptionPane
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
 name|SwingUtilities
 import|;
 end_import
@@ -132,7 +122,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|JabRefFrame
+name|DialogService
 import|;
 end_import
 
@@ -336,12 +326,6 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|field|frame
-specifier|private
-specifier|final
-name|JabRefFrame
-name|frame
-decl_stmt|;
 DECL|field|databaseContext
 specifier|private
 specifier|final
@@ -353,6 +337,12 @@ specifier|private
 specifier|final
 name|BibEntry
 name|entry
+decl_stmt|;
+DECL|field|dialogService
+specifier|private
+specifier|final
+name|DialogService
+name|dialogService
 decl_stmt|;
 DECL|field|editor
 specifier|private
@@ -369,12 +359,12 @@ specifier|private
 name|boolean
 name|dontShowDialog
 decl_stmt|;
-DECL|method|DownloadExternalFile (JabRefFrame frame, BibDatabaseContext databaseContext, BibEntry entry)
+DECL|method|DownloadExternalFile (DialogService dialogService, BibDatabaseContext databaseContext, BibEntry entry)
 specifier|public
 name|DownloadExternalFile
 parameter_list|(
-name|JabRefFrame
-name|frame
+name|DialogService
+name|dialogService
 parameter_list|,
 name|BibDatabaseContext
 name|databaseContext
@@ -385,9 +375,9 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|frame
+name|dialogService
 operator|=
-name|frame
+name|dialogService
 expr_stmt|;
 name|this
 operator|.
@@ -700,15 +690,22 @@ name|dontShowDialog
 operator|=
 literal|false
 expr_stmt|;
-specifier|final
+name|Optional
+argument_list|<
 name|String
+argument_list|>
 name|res
 init|=
-name|JOptionPane
+name|dialogService
 operator|.
-name|showInputDialog
+name|showInputDialogAndWait
 argument_list|(
-name|frame
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Download file"
+argument_list|)
 argument_list|,
 name|Localization
 operator|.
@@ -720,23 +717,12 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|(
-name|res
-operator|==
-literal|null
-operator|)
-operator|||
 name|res
 operator|.
-name|trim
-argument_list|()
-operator|.
-name|isEmpty
+name|isPresent
 argument_list|()
 condition|)
 block|{
-return|return;
-block|}
 name|URL
 name|url
 decl_stmt|;
@@ -748,6 +734,9 @@ operator|new
 name|URL
 argument_list|(
 name|res
+operator|.
+name|get
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -757,19 +746,10 @@ name|MalformedURLException
 name|ex1
 parameter_list|)
 block|{
-name|JOptionPane
+name|dialogService
 operator|.
-name|showMessageDialog
+name|showErrorDialogAndWait
 argument_list|(
-literal|null
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Invalid URL"
-argument_list|)
-argument_list|,
 name|Localization
 operator|.
 name|lang
@@ -777,9 +757,12 @@ argument_list|(
 literal|"Download file"
 argument_list|)
 argument_list|,
-name|JOptionPane
+name|Localization
 operator|.
-name|ERROR_MESSAGE
+name|lang
+argument_list|(
+literal|"Invalid URL"
+argument_list|)
 argument_list|)
 expr_stmt|;
 return|return;
@@ -791,6 +774,7 @@ argument_list|,
 name|callback
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|/**      * Start a download.      *      * @param callback The object to which the filename should be reported when download      *                 is complete.      */
 DECL|method|download (URL url, final DownloadCallback callback)
@@ -866,11 +850,31 @@ name|IOException
 name|ex
 parameter_list|)
 block|{
-name|JOptionPane
+name|LOGGER
 operator|.
-name|showMessageDialog
+name|info
 argument_list|(
-literal|null
+literal|"Error while downloading "
+operator|+
+literal|"'"
+operator|+
+name|res
+operator|+
+literal|"'"
+argument_list|,
+name|ex
+argument_list|)
+expr_stmt|;
+name|dialogService
+operator|.
+name|showErrorDialogAndWait
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Download file"
+argument_list|)
 argument_list|,
 name|Localization
 operator|.
@@ -885,30 +889,6 @@ name|ex
 operator|.
 name|getMessage
 argument_list|()
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Download file"
-argument_list|)
-argument_list|,
-name|JOptionPane
-operator|.
-name|ERROR_MESSAGE
-argument_list|)
-expr_stmt|;
-name|LOGGER
-operator|.
-name|info
-argument_list|(
-literal|"Error while downloading "
-operator|+
-literal|"'"
-operator|+
-name|res
-operator|+
-literal|"'"
 argument_list|,
 name|ex
 argument_list|)
@@ -983,11 +963,31 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
-name|JOptionPane
+name|LOGGER
 operator|.
-name|showMessageDialog
+name|info
 argument_list|(
-literal|null
+literal|"Error while downloading "
+operator|+
+literal|"'"
+operator|+
+name|urlF
+operator|+
+literal|"'"
+argument_list|,
+name|e2
+argument_list|)
+expr_stmt|;
+name|dialogService
+operator|.
+name|showErrorDialogAndWait
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Download file"
+argument_list|)
 argument_list|,
 name|Localization
 operator|.
@@ -1002,32 +1002,6 @@ name|e2
 operator|.
 name|getMessage
 argument_list|()
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Download file"
-argument_list|)
-argument_list|,
-name|JOptionPane
-operator|.
-name|ERROR_MESSAGE
-argument_list|)
-expr_stmt|;
-name|LOGGER
-operator|.
-name|info
-argument_list|(
-literal|"Error while downloading "
-operator|+
-literal|"'"
-operator|+
-name|urlF
-operator|+
-literal|"'"
-argument_list|,
-name|e2
 argument_list|)
 expr_stmt|;
 return|return;
@@ -1333,19 +1307,10 @@ name|isDirectory
 argument_list|()
 condition|)
 block|{
-name|JOptionPane
+name|dialogService
 operator|.
-name|showMessageDialog
+name|showErrorDialogAndWait
 argument_list|(
-literal|null
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Target file cannot be a directory."
-argument_list|)
-argument_list|,
 name|Localization
 operator|.
 name|lang
@@ -1353,9 +1318,12 @@ argument_list|(
 literal|"Download file"
 argument_list|)
 argument_list|,
-name|JOptionPane
+name|Localization
 operator|.
-name|ERROR_MESSAGE
+name|lang
+argument_list|(
+literal|"Target file cannot be a directory."
+argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
@@ -1371,11 +1339,16 @@ argument_list|()
 condition|)
 block|{
 return|return
-name|JOptionPane
+name|dialogService
 operator|.
-name|showConfirmDialog
+name|showConfirmationDialogAndWait
 argument_list|(
-literal|null
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Download file"
+argument_list|)
 argument_list|,
 name|Localization
 operator|.
@@ -1393,17 +1366,16 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Download file"
+literal|"Overwrite file"
 argument_list|)
 argument_list|,
-name|JOptionPane
+name|Localization
 operator|.
-name|OK_CANCEL_OPTION
+name|lang
+argument_list|(
+literal|"Cancel"
 argument_list|)
-operator|==
-name|JOptionPane
-operator|.
-name|OK_OPTION
+argument_list|)
 return|;
 block|}
 else|else

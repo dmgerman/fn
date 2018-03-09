@@ -472,27 +472,6 @@ argument_list|,
 literal|"/images/external/"
 argument_list|)
 decl_stmt|;
-comment|// Christmas edition
-comment|//public static final Color DEFAULT_COLOR = new Color(0x155115);
-comment|//public static final Color DEFAULT_DISABLED_COLOR = new Color(0x990000);
-DECL|field|FONT_16
-specifier|private
-specifier|static
-name|Font
-name|FONT_16
-decl_stmt|;
-DECL|field|FX_FONT
-specifier|private
-specifier|static
-name|javafx
-operator|.
-name|scene
-operator|.
-name|text
-operator|.
-name|Font
-name|FX_FONT
-decl_stmt|;
 static|static
 block|{
 try|try
@@ -517,56 +496,6 @@ argument_list|,
 name|stream
 argument_list|)
 expr_stmt|;
-name|FONT_16
-operator|=
-name|FONT
-operator|.
-name|deriveFont
-argument_list|(
-name|Font
-operator|.
-name|PLAIN
-argument_list|,
-literal|16f
-argument_list|)
-expr_stmt|;
-try|try
-init|(
-name|InputStream
-name|stream2
-init|=
-name|getMaterialDesignIconsStream
-argument_list|()
-init|)
-block|{
-name|FX_FONT
-operator|=
-name|javafx
-operator|.
-name|scene
-operator|.
-name|text
-operator|.
-name|Font
-operator|.
-name|loadFont
-argument_list|(
-name|stream2
-argument_list|,
-name|JabRefPreferences
-operator|.
-name|getInstance
-argument_list|()
-operator|.
-name|getInt
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|ICON_SIZE_LARGE
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
 block|}
 catch|catch
 parameter_list|(
@@ -663,9 +592,9 @@ literal|"jabrefIcon48"
 argument_list|)
 return|;
 block|}
-comment|/**      * Constructs an {@link Image} for the image representing the given function, in the resource      * file listing images.      *      * @param name The name of the icon, such as "open", "save", "saveAs" etc.      * @return The {@link Image} for the function.      */
+comment|/*      * Constructs an {@link Image} for the image representing the given function, in the resource      * file listing images.      *      * @param name The name of the icon, such as "open", "save", "saveAs" etc.      * @return The {@link Image} for the function.      */
 DECL|method|getImageFX (String name)
-specifier|public
+specifier|private
 specifier|static
 name|Image
 name|getImageFX
@@ -1424,28 +1353,12 @@ operator|.
 name|UNDO
 argument_list|)
 operator|,
-DECL|enumConstant|MARK_ENTRIES
-name|MARK_ENTRIES
-argument_list|(
-name|MaterialDesignIcon
-operator|.
-name|BOOKMARK
-argument_list|)
-operator|,
 DECL|enumConstant|MARKER
 name|MARKER
 argument_list|(
 name|MaterialDesignIcon
 operator|.
 name|MARKER
-argument_list|)
-operator|,
-DECL|enumConstant|UNMARK_ENTRIES
-name|UNMARK_ENTRIES
-argument_list|(
-name|MaterialDesignIcon
-operator|.
-name|BOOKMARK_OUTLINE
 argument_list|)
 operator|,
 DECL|enumConstant|REFRESH
@@ -2336,6 +2249,14 @@ name|CALENDAR
 argument_list|)
 operator|,
 comment|/* css: calendar */
+DECL|enumConstant|DEFAULT_GROUP_ICON_COLORED
+name|DEFAULT_GROUP_ICON_COLORED
+argument_list|(
+name|MaterialDesignIcon
+operator|.
+name|CHECKBOX_BLANK_CIRCLE
+argument_list|)
+operator|,
 DECL|enumConstant|DEFAULT_GROUP_ICON
 name|DEFAULT_GROUP_ICON
 argument_list|(
@@ -2344,7 +2265,6 @@ operator|.
 name|LABEL_OUTLINE
 argument_list|)
 operator|,
-comment|/* css: label-outline */
 DECL|enumConstant|ALL_ENTRIES_GROUP_ICON
 name|ALL_ENTRIES_GROUP_ICON
 argument_list|(
@@ -2367,19 +2287,6 @@ argument_list|(
 name|MaterialDesignIcon
 operator|.
 name|GLASSDOOR
-argument_list|)
-operator|,
-comment|// STILL MISSING:
-DECL|enumConstant|GROUP_REGULAR
-name|GROUP_REGULAR
-argument_list|(
-name|Color
-operator|.
-name|RED
-argument_list|,
-name|MaterialDesignIcon
-operator|.
-name|SYNC
 argument_list|)
 expr_stmt|;
 end_class
@@ -2517,6 +2424,35 @@ return|;
 block|}
 end_function
 
+begin_function
+annotation|@
+name|Override
+DECL|method|withColor (javafx.scene.paint.Color color)
+specifier|public
+name|JabRefIcon
+name|withColor
+parameter_list|(
+name|javafx
+operator|.
+name|scene
+operator|.
+name|paint
+operator|.
+name|Color
+name|color
+parameter_list|)
+block|{
+return|return
+name|icon
+operator|.
+name|withColor
+argument_list|(
+name|color
+argument_list|)
+return|;
+block|}
+end_function
+
 begin_class
 DECL|class|InternalFileIcon
 specifier|private
@@ -2605,6 +2541,31 @@ operator|new
 name|NotImplementedException
 argument_list|(
 literal|"Cannot create disabled version of a file-based icon"
+argument_list|)
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|withColor (javafx.scene.paint.Color color)
+specifier|public
+name|JabRefIcon
+name|withColor
+parameter_list|(
+name|javafx
+operator|.
+name|scene
+operator|.
+name|paint
+operator|.
+name|Color
+name|color
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|(
+literal|"Cannot create colored version of a file-based icon"
 argument_list|)
 throw|;
 block|}

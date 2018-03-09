@@ -14,16 +14,6 @@ end_package
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Optional
-import|;
-end_import
-
-begin_import
-import|import
 name|javafx
 operator|.
 name|event
@@ -186,27 +176,19 @@ name|HBox
 implements|implements
 name|FieldEditorFX
 block|{
-DECL|field|viewModel
 annotation|@
 name|FXML
+DECL|field|viewModel
 specifier|private
 name|JournalEditorViewModel
 name|viewModel
 decl_stmt|;
-DECL|field|textArea
 annotation|@
 name|FXML
+DECL|field|textArea
 specifier|private
 name|EditorTextArea
 name|textArea
-decl_stmt|;
-DECL|field|entry
-specifier|private
-name|Optional
-argument_list|<
-name|BibEntry
-argument_list|>
-name|entry
 decl_stmt|;
 DECL|method|JournalEditor (String fieldName, JournalAbbreviationLoader journalAbbreviationLoader, JabRefPreferences preferences, AutoCompleteSuggestionProvider<?> suggestionProvider, FieldCheckers fieldCheckers)
 specifier|public
@@ -336,17 +318,6 @@ name|BibEntry
 name|entry
 parameter_list|)
 block|{
-name|this
-operator|.
-name|entry
-operator|=
-name|Optional
-operator|.
-name|of
-argument_list|(
-name|entry
-argument_list|)
-expr_stmt|;
 name|viewModel
 operator|.
 name|bindToEntry
@@ -369,13 +340,13 @@ return|;
 block|}
 annotation|@
 name|FXML
-DECL|method|toggleAbbreviation (ActionEvent event)
+DECL|method|toggleAbbreviation (ActionEvent unused)
 specifier|private
 name|void
 name|toggleAbbreviation
 parameter_list|(
 name|ActionEvent
-name|event
+name|unused
 parameter_list|)
 block|{
 name|viewModel

@@ -68,16 +68,6 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|JOptionPane
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
 name|JPanel
 import|;
 end_import
@@ -99,6 +89,18 @@ operator|.
 name|jabref
 operator|.
 name|Globals
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|DialogService
 import|;
 end_import
 
@@ -291,14 +293,29 @@ specifier|final
 name|RemotePreferences
 name|remotePreferences
 decl_stmt|;
-DECL|method|AdvancedTab (JabRefPreferences prefs)
+DECL|field|dialogService
+specifier|private
+specifier|final
+name|DialogService
+name|dialogService
+decl_stmt|;
+DECL|method|AdvancedTab (DialogService dialogService, JabRefPreferences prefs)
 specifier|public
 name|AdvancedTab
 parameter_list|(
+name|DialogService
+name|dialogService
+parameter_list|,
 name|JabRefPreferences
 name|prefs
 parameter_list|)
 block|{
+name|this
+operator|.
+name|dialogService
+operator|=
+name|dialogService
+expr_stmt|;
 name|preferences
 operator|=
 name|prefs
@@ -858,11 +875,16 @@ name|useRemoteServer
 argument_list|()
 condition|)
 block|{
-name|JOptionPane
+name|dialogService
 operator|.
-name|showMessageDialog
+name|showWarningDialogAndWait
 argument_list|(
-literal|null
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Remote server port"
+argument_list|)
 argument_list|,
 name|Localization
 operator|.
@@ -885,17 +907,6 @@ argument_list|(
 literal|"You must restart JabRef for this to come into effect."
 argument_list|)
 argument_list|)
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Remote server port"
-argument_list|)
-argument_list|,
-name|JOptionPane
-operator|.
-name|WARNING_MESSAGE
 argument_list|)
 expr_stmt|;
 block|}
@@ -1050,11 +1061,16 @@ name|NumberFormatException
 name|ex
 parameter_list|)
 block|{
-name|JOptionPane
+name|dialogService
 operator|.
-name|showMessageDialog
+name|showErrorDialogAndWait
 argument_list|(
-literal|null
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Remote server port"
+argument_list|)
 argument_list|,
 name|Localization
 operator|.
@@ -1073,17 +1089,6 @@ literal|"Remote server port"
 argument_list|)
 operator|+
 literal|'\''
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Remote server port"
-argument_list|)
-argument_list|,
-name|JOptionPane
-operator|.
-name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
 return|return

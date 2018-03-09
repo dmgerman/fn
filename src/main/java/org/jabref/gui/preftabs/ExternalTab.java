@@ -299,12 +299,6 @@ specifier|final
 name|JabRefPreferences
 name|prefs
 decl_stmt|;
-DECL|field|frame
-specifier|private
-specifier|final
-name|JabRefFrame
-name|frame
-decl_stmt|;
 DECL|field|emailSubject
 specifier|private
 specifier|final
@@ -402,12 +396,6 @@ operator|.
 name|prefs
 operator|=
 name|prefs
-expr_stmt|;
-name|this
-operator|.
-name|frame
-operator|=
-name|frame
 expr_stmt|;
 name|setLayout
 argument_list|(

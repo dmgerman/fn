@@ -48,16 +48,6 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|JOptionPane
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
 name|JSeparator
 import|;
 end_import
@@ -71,6 +61,18 @@ operator|.
 name|gui
 operator|.
 name|BasePanel
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|DialogService
 import|;
 end_import
 
@@ -303,12 +305,21 @@ operator|new
 name|CellConstraints
 argument_list|()
 decl_stmt|;
-DECL|method|MergeEntriesDialog (BasePanel panel)
+DECL|field|dialogService
+specifier|private
+specifier|final
+name|DialogService
+name|dialogService
+decl_stmt|;
+DECL|method|MergeEntriesDialog (BasePanel panel, DialogService dialogService)
 specifier|public
 name|MergeEntriesDialog
 parameter_list|(
 name|BasePanel
 name|panel
+parameter_list|,
+name|DialogService
+name|dialogService
 parameter_list|)
 block|{
 name|super
@@ -326,6 +337,12 @@ name|MergeEntriesDialog
 operator|.
 name|class
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|dialogService
+operator|=
+name|dialogService
 expr_stmt|;
 name|this
 operator|.
@@ -368,11 +385,16 @@ literal|2
 condition|)
 block|{
 comment|// None selected. Inform the user to select entries first.
-name|JOptionPane
+name|dialogService
 operator|.
-name|showMessageDialog
+name|showInformationDialogAndWait
 argument_list|(
-literal|null
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Merge entries"
+argument_list|)
 argument_list|,
 name|Localization
 operator|.
@@ -380,12 +402,6 @@ name|lang
 argument_list|(
 literal|"You have to choose exactly two entries to merge."
 argument_list|)
-argument_list|,
-name|MERGE_ENTRIES
-argument_list|,
-name|JOptionPane
-operator|.
-name|INFORMATION_MESSAGE
 argument_list|)
 expr_stmt|;
 name|this

@@ -116,10 +116,6 @@ name|MetaData
 import|;
 end_import
 
-begin_comment
-comment|/**  *  */
-end_comment
-
 begin_class
 DECL|class|MetaDataChangeViewModel
 class|class
@@ -149,25 +145,16 @@ argument_list|(
 name|infoPane
 argument_list|)
 decl_stmt|;
-DECL|field|originalMetaData
-specifier|private
-specifier|final
-name|MetaData
-name|originalMetaData
-decl_stmt|;
 DECL|field|newMetaData
 specifier|private
 specifier|final
 name|MetaData
 name|newMetaData
 decl_stmt|;
-DECL|method|MetaDataChangeViewModel (MetaData originalMetaData, MetaDataDiff metaDataDiff)
+DECL|method|MetaDataChangeViewModel (MetaDataDiff metaDataDiff)
 specifier|public
 name|MetaDataChangeViewModel
 parameter_list|(
-name|MetaData
-name|originalMetaData
-parameter_list|,
 name|MetaDataDiff
 name|metaDataDiff
 parameter_list|)
@@ -181,12 +168,6 @@ argument_list|(
 literal|"Metadata change"
 argument_list|)
 argument_list|)
-expr_stmt|;
-name|this
-operator|.
-name|originalMetaData
-operator|=
-name|originalMetaData
 expr_stmt|;
 name|this
 operator|.

@@ -85,6 +85,11 @@ name|jabRefFrame
 operator|.
 name|getCurrentBasePanel
 argument_list|()
+argument_list|,
+name|jabRefFrame
+operator|.
+name|getDialogService
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|dlg
