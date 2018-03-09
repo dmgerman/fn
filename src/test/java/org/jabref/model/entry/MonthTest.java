@@ -1397,7 +1397,7 @@ name|Month
 operator|.
 name|parse
 argument_list|(
-literal|"Mär"
+literal|"MÃ¤r"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1653,7 +1653,7 @@ name|Month
 operator|.
 name|parse
 argument_list|(
-literal|"März"
+literal|"MÃ¤rz"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1909,7 +1909,7 @@ name|Month
 operator|.
 name|parse
 argument_list|(
-literal|"mär"
+literal|"mÃ¤r"
 argument_list|)
 argument_list|)
 expr_stmt|;

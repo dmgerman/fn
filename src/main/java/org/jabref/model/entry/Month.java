@@ -80,6 +80,20 @@ name|StringUtil
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|lang3
+operator|.
+name|StringUtils
+import|;
+end_import
+
 begin_comment
 comment|/**  * Represents a Month of the Year.  */
 end_comment
@@ -534,7 +548,7 @@ argument_list|()
 return|;
 block|}
 block|}
-comment|/**      * Parses a month having the string in German standard form such as      * "Oktober" or in German short form such as "Okt"      *       * @param value,      *            a String that represents a month in German form      * @return the corresponding month instance, empty if input is not in German      *         form      */
+comment|/**      * Parses a month having the string in German standard form such as      * "Oktober" or in German short form such as "Okt"      *      * @param value,      *            a String that represents a month in German form      * @return the corresponding month instance, empty if input is not in German      *         form      */
 DECL|method|parseGermanShortMonth (String value)
 specifier|private
 specifier|static
@@ -563,6 +577,13 @@ name|equalsIgnoreCase
 argument_list|(
 name|value
 argument_list|)
+operator|||
+literal|"MÃ¤r"
+operator|.
+name|equalsIgnoreCase
+argument_list|(
+name|value
+argument_list|)
 condition|)
 block|{
 return|return
@@ -585,7 +606,12 @@ name|parse
 argument_list|(
 literal|"1969-"
 operator|+
+name|StringUtils
+operator|.
+name|capitalize
+argument_list|(
 name|value
+argument_list|)
 argument_list|,
 name|DateTimeFormatter
 operator|.
