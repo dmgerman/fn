@@ -18,18 +18,6 @@ name|org
 operator|.
 name|jabref
 operator|.
-name|gui
-operator|.
-name|BasePanel
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
 name|logic
 operator|.
 name|l10n
@@ -82,21 +70,12 @@ specifier|final
 name|String
 name|newValue
 decl_stmt|;
-DECL|field|panel
-specifier|private
-specifier|final
-name|BasePanel
-name|panel
-decl_stmt|;
-DECL|method|UndoablePreambleChange (BibDatabase base, BasePanel panel, String oldValue, String newValue)
+DECL|method|UndoablePreambleChange (BibDatabase base, String oldValue, String newValue)
 specifier|public
 name|UndoablePreambleChange
 parameter_list|(
 name|BibDatabase
 name|base
-parameter_list|,
-name|BasePanel
-name|panel
 parameter_list|,
 name|String
 name|oldValue
@@ -122,12 +101,6 @@ operator|.
 name|newValue
 operator|=
 name|newValue
-expr_stmt|;
-name|this
-operator|.
-name|panel
-operator|=
-name|panel
 expr_stmt|;
 block|}
 annotation|@
@@ -168,12 +141,6 @@ argument_list|(
 name|oldValue
 argument_list|)
 expr_stmt|;
-comment|// If the preamble editor is open, update it.
-name|panel
-operator|.
-name|updatePreamble
-argument_list|()
-expr_stmt|;
 block|}
 annotation|@
 name|Override
@@ -195,12 +162,6 @@ name|setPreamble
 argument_list|(
 name|newValue
 argument_list|)
-expr_stmt|;
-comment|// If the preamble editor is open, update it.
-name|panel
-operator|.
-name|updatePreamble
-argument_list|()
 expr_stmt|;
 block|}
 block|}

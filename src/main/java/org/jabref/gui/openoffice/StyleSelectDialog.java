@@ -1232,6 +1232,13 @@ argument_list|)
 expr_stmt|;
 comment|// Create a preview panel for previewing styles
 comment|// Must be done before creating the table to avoid NPEs
+name|DefaultTaskExecutor
+operator|.
+name|runInJavaFXThread
+argument_list|(
+parameter_list|()
+lambda|->
+block|{
 name|preview
 operator|=
 operator|new
@@ -1265,6 +1272,9 @@ operator|.
 name|setEntry
 argument_list|(
 name|prevEntry
+argument_list|)
+expr_stmt|;
+block|}
 argument_list|)
 expr_stmt|;
 name|setupTable

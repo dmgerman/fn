@@ -403,8 +403,6 @@ operator|.
 name|getDatabase
 argument_list|()
 argument_list|,
-name|panel
-argument_list|,
 name|mem
 argument_list|,
 name|disk
