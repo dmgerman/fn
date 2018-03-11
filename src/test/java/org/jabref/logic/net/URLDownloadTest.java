@@ -70,6 +70,18 @@ begin_import
 import|import
 name|org
 operator|.
+name|jabref
+operator|.
+name|support
+operator|.
+name|DisabledOnCIServer
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|junit
 operator|.
 name|jupiter
@@ -422,6 +434,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|DisabledOnCIServer
+argument_list|(
+literal|"CI Server is apparently blocked"
+argument_list|)
 DECL|method|downloadOfFTPSucceeds ()
 specifier|public
 name|void
