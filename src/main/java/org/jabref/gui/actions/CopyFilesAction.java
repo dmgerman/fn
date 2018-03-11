@@ -337,6 +337,35 @@ argument_list|>
 name|data
 parameter_list|)
 block|{
+if|if
+condition|(
+name|data
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+name|dialogService
+operator|.
+name|showInformationDialogAndWait
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Copy linked files to folder..."
+argument_list|)
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"No linked files found for export."
+argument_list|)
+argument_list|)
+expr_stmt|;
+return|return;
+block|}
 name|CopyFilesDialogView
 name|dlg
 init|=
