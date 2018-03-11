@@ -18,12 +18,6 @@ specifier|public
 class|class
 name|MainTablePreferences
 block|{
-DECL|field|showGrid
-specifier|private
-specifier|final
-name|boolean
-name|showGrid
-decl_stmt|;
 DECL|field|columnPreferences
 specifier|private
 specifier|final
@@ -36,13 +30,10 @@ specifier|final
 name|boolean
 name|resizeColumnsToFit
 decl_stmt|;
-DECL|method|MainTablePreferences (boolean showGrid, ColumnPreferences columnPreferences, boolean resizeColumnsToFit)
+DECL|method|MainTablePreferences (ColumnPreferences columnPreferences, boolean resizeColumnsToFit)
 specifier|public
 name|MainTablePreferences
 parameter_list|(
-name|boolean
-name|showGrid
-parameter_list|,
 name|ColumnPreferences
 name|columnPreferences
 parameter_list|,
@@ -50,12 +41,6 @@ name|boolean
 name|resizeColumnsToFit
 parameter_list|)
 block|{
-name|this
-operator|.
-name|showGrid
-operator|=
-name|showGrid
-expr_stmt|;
 name|this
 operator|.
 name|columnPreferences
@@ -87,16 +72,6 @@ parameter_list|()
 block|{
 return|return
 name|resizeColumnsToFit
-return|;
-block|}
-DECL|method|showGrid ()
-specifier|public
-name|boolean
-name|showGrid
-parameter_list|()
-block|{
-return|return
-name|showGrid
 return|;
 block|}
 block|}
