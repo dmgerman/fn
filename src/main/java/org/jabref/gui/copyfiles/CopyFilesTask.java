@@ -417,6 +417,11 @@ argument_list|<
 name|Path
 argument_list|>
 name|newPath
+init|=
+name|Optional
+operator|.
+name|empty
+argument_list|()
 decl_stmt|;
 DECL|field|numberSucessful
 specifier|private
