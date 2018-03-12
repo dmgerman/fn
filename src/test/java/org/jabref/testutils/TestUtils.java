@@ -30,10 +30,6 @@ name|JabRefMain
 import|;
 end_import
 
-begin_comment
-comment|/**  * UtilsClass for UnitTests.  *  * @author kahlert, cordes  */
-end_comment
-
 begin_class
 DECL|class|TestUtils
 specifier|public
@@ -41,7 +37,7 @@ class|class
 name|TestUtils
 block|{
 DECL|field|PATH_TO_TEST_BIBTEX
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|String

@@ -14,16 +14,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|ArrayList
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|Collection
 import|;
 end_import
@@ -110,18 +100,6 @@ name|util
 operator|.
 name|concurrent
 operator|.
-name|Executor
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
 name|ExecutorService
 import|;
 end_import
@@ -171,7 +149,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Responsible for managing of all threads (except Swing threads) in JabRef  */
+comment|/**  * Responsible for managing of all threads (except GUI threads) in JabRef  */
 end_comment
 
 begin_class
@@ -179,8 +157,6 @@ DECL|class|JabRefExecutorService
 specifier|public
 class|class
 name|JabRefExecutorService
-implements|implements
-name|Executor
 block|{
 DECL|field|INSTANCE
 specifier|public
@@ -321,8 +297,6 @@ specifier|private
 name|JabRefExecutorService
 parameter_list|()
 block|{     }
-annotation|@
-name|Override
 DECL|method|execute (Runnable command)
 specifier|public
 name|void
@@ -376,11 +350,6 @@ argument_list|(
 name|command
 argument_list|)
 decl_stmt|;
-while|while
-condition|(
-literal|true
-condition|)
-block|{
 try|try
 block|{
 name|future
@@ -388,7 +357,6 @@ operator|.
 name|get
 argument_list|()
 expr_stmt|;
-return|return;
 block|}
 catch|catch
 parameter_list|(
@@ -415,85 +383,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-block|}
-DECL|method|executeAndWait (Callable<?> command)
-specifier|public
-name|boolean
-name|executeAndWait
-parameter_list|(
-name|Callable
-argument_list|<
-name|?
-argument_list|>
-name|command
-parameter_list|)
-block|{
-name|Objects
-operator|.
-name|requireNonNull
-argument_list|(
-name|command
-argument_list|)
-expr_stmt|;
-name|Future
-argument_list|<
-name|?
-argument_list|>
-name|future
-init|=
-name|executorService
-operator|.
-name|submit
-argument_list|(
-name|command
-argument_list|)
-decl_stmt|;
-while|while
-condition|(
-literal|true
-condition|)
-block|{
-try|try
-block|{
-name|future
-operator|.
-name|get
-argument_list|()
-expr_stmt|;
-return|return
-literal|true
-return|;
-block|}
-catch|catch
-parameter_list|(
-name|InterruptedException
-name|ignored
-parameter_list|)
-block|{
-comment|// Ignored
-block|}
-catch|catch
-parameter_list|(
-name|ExecutionException
-name|e
-parameter_list|)
-block|{
-name|LOGGER
-operator|.
-name|error
-argument_list|(
-literal|"Problem executing command"
-argument_list|,
-name|e
-argument_list|)
-expr_stmt|;
-return|return
-literal|false
-return|;
-block|}
-block|}
-block|}
-comment|/**      * Executes a callable task that provides a return value after the calculation is done.      *       * @param command The task to execute.      * @return A Future object that provides the returning value.      */
+comment|/**      * Executes a callable task that provides a return value after the calculation is done.      *      * @param command The task to execute.      * @return A Future object that provides the returning value.      */
 DECL|method|execute (Callable<T> command)
 specifier|public
 parameter_list|<
@@ -528,7 +418,7 @@ name|command
 argument_list|)
 return|;
 block|}
-comment|/**      * Executes a collection of callable tasks and returns a List of the resulting Future objects after the calculation is done.       *       * @param tasks The tasks to execute      * @return A List of Future objects that provide the returning values.      */
+comment|/**      * Executes a collection of callable tasks and returns a List of the resulting Future objects after the calculation is done.      *      * @param tasks The tasks to execute      * @return A List of Future objects that provide the returning values.      */
 DECL|method|executeAll (Collection<Callable<T>> tasks)
 specifier|public
 parameter_list|<
@@ -560,31 +450,16 @@ argument_list|(
 name|tasks
 argument_list|)
 expr_stmt|;
-name|List
-argument_list|<
-name|Future
-argument_list|<
-name|T
-argument_list|>
-argument_list|>
-name|futures
-init|=
-operator|new
-name|ArrayList
-argument_list|<>
-argument_list|()
-decl_stmt|;
 try|try
 block|{
-name|futures
-operator|=
+return|return
 name|executorService
 operator|.
 name|invokeAll
 argument_list|(
 name|tasks
 argument_list|)
-expr_stmt|;
+return|;
 block|}
 catch|catch
 parameter_list|(
@@ -592,15 +467,7 @@ name|InterruptedException
 name|exception
 parameter_list|)
 block|{
-name|LOGGER
-operator|.
-name|error
-argument_list|(
-literal|"Unable to execute tasks"
-argument_list|,
-name|exception
-argument_list|)
-expr_stmt|;
+comment|// Ignored
 return|return
 name|Collections
 operator|.
@@ -608,29 +475,6 @@ name|emptyList
 argument_list|()
 return|;
 block|}
-return|return
-name|futures
-return|;
-block|}
-DECL|method|executeInterruptableTask (final Runnable runnable)
-specifier|public
-name|void
-name|executeInterruptableTask
-parameter_list|(
-specifier|final
-name|Runnable
-name|runnable
-parameter_list|)
-block|{
-name|this
-operator|.
-name|lowPriorityExecutorService
-operator|.
-name|execute
-argument_list|(
-name|runnable
-argument_list|)
-expr_stmt|;
 block|}
 DECL|method|executeInterruptableTask (final Runnable runnable, String taskName)
 specifier|public
@@ -690,11 +534,6 @@ argument_list|(
 name|runnable
 argument_list|)
 decl_stmt|;
-while|while
-condition|(
-literal|true
-condition|)
-block|{
 try|try
 block|{
 name|future
@@ -702,7 +541,6 @@ operator|.
 name|get
 argument_list|()
 expr_stmt|;
-return|return;
 block|}
 catch|catch
 parameter_list|(
@@ -727,7 +565,6 @@ argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 DECL|method|manageRemoteThread (Thread thread)
@@ -846,6 +683,7 @@ expr_stmt|;
 comment|// timer doesn't need to be canceled as it is run in daemon mode, which ensures that it is stopped if the application is shut down
 block|}
 DECL|class|NamedRunnable
+specifier|private
 class|class
 name|NamedRunnable
 implements|implements
@@ -864,7 +702,7 @@ name|Runnable
 name|task
 decl_stmt|;
 DECL|method|NamedRunnable (String name, Runnable runnable)
-specifier|public
+specifier|private
 name|NamedRunnable
 parameter_list|(
 name|String

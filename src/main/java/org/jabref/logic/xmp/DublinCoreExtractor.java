@@ -196,24 +196,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|microsoft
-operator|.
-name|applicationinsights
-operator|.
-name|agent
-operator|.
-name|internal
-operator|.
-name|common
-operator|.
-name|StringUtils
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -606,7 +588,7 @@ decl_stmt|;
 if|if
 condition|(
 operator|!
-name|StringUtils
+name|StringUtil
 operator|.
 name|isNullOrEmpty
 argument_list|(
@@ -799,7 +781,7 @@ decl_stmt|;
 if|if
 condition|(
 operator|!
-name|StringUtils
+name|StringUtil
 operator|.
 name|isNullOrEmpty
 argument_list|(
@@ -836,7 +818,7 @@ decl_stmt|;
 if|if
 condition|(
 operator|!
-name|StringUtils
+name|StringUtil
 operator|.
 name|isNullOrEmpty
 argument_list|(
@@ -987,7 +969,7 @@ decl_stmt|;
 if|if
 condition|(
 operator|!
-name|StringUtils
+name|StringUtil
 operator|.
 name|isNullOrEmpty
 argument_list|(
