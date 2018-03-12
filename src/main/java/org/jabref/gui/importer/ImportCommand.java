@@ -266,6 +266,12 @@ specifier|final
 name|boolean
 name|openInNew
 decl_stmt|;
+DECL|field|dialogService
+specifier|private
+specifier|final
+name|DialogService
+name|dialogService
+decl_stmt|;
 comment|/**      * @param openInNew Indicate whether the entries should import into a new database or into the currently open one.      */
 DECL|method|ImportCommand (JabRefFrame frame, boolean openInNew)
 specifier|public
@@ -289,6 +295,15 @@ operator|.
 name|openInNew
 operator|=
 name|openInNew
+expr_stmt|;
+name|this
+operator|.
+name|dialogService
+operator|=
+name|frame
+operator|.
+name|getDialogService
+argument_list|()
 expr_stmt|;
 block|}
 annotation|@
@@ -350,6 +365,26 @@ argument_list|(
 name|importers
 argument_list|)
 decl_stmt|;
+name|FileChooser
+operator|.
+name|ExtensionFilter
+name|anyFile
+init|=
+operator|new
+name|FileChooser
+operator|.
+name|ExtensionFilter
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Any file"
+argument_list|)
+argument_list|,
+literal|"*.*"
+argument_list|)
+decl_stmt|;
 name|FileDialogConfiguration
 name|fileDialogConfiguration
 init|=
@@ -358,6 +393,11 @@ name|FileDialogConfiguration
 operator|.
 name|Builder
 argument_list|()
+operator|.
+name|addExtensionFilter
+argument_list|(
+name|anyFile
+argument_list|)
 operator|.
 name|addExtensionFilter
 argument_list|(
@@ -384,14 +424,6 @@ argument_list|)
 argument_list|)
 operator|.
 name|build
-argument_list|()
-decl_stmt|;
-name|DialogService
-name|dialogService
-init|=
-name|frame
-operator|.
-name|getDialogService
 argument_list|()
 decl_stmt|;
 name|DefaultTaskExecutor
@@ -460,10 +492,7 @@ name|file
 argument_list|)
 condition|)
 block|{
-name|frame
-operator|.
-name|getDialogService
-argument_list|()
+name|dialogService
 operator|.
 name|showErrorDialogAndWait
 argument_list|(
