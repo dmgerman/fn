@@ -70,16 +70,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|JOptionPane
-import|;
-end_import
-
-begin_import
-import|import
 name|javafx
 operator|.
 name|scene
@@ -1277,7 +1267,16 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 throw|throw
+operator|new
+name|SaveException
+argument_list|(
 name|ex
+operator|.
+name|getMessage
+argument_list|()
+argument_list|,
+name|ex
+argument_list|)
 throw|;
 block|}
 catch|catch
@@ -1336,26 +1335,13 @@ name|ex
 argument_list|)
 expr_stmt|;
 block|}
-name|JOptionPane
+name|frame
 operator|.
-name|showMessageDialog
-argument_list|(
-literal|null
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Could not save file."
-argument_list|)
-operator|+
-literal|".\n"
-operator|+
-name|ex
-operator|.
-name|getMessage
+name|getDialogService
 argument_list|()
-argument_list|,
+operator|.
+name|showErrorDialogAndWait
+argument_list|(
 name|Localization
 operator|.
 name|lang
@@ -1363,9 +1349,14 @@ argument_list|(
 literal|"Save library"
 argument_list|)
 argument_list|,
-name|JOptionPane
+name|Localization
 operator|.
-name|ERROR_MESSAGE
+name|lang
+argument_list|(
+literal|"Could not save file."
+argument_list|)
+argument_list|,
+name|ex
 argument_list|)
 expr_stmt|;
 throw|throw
@@ -1628,6 +1619,7 @@ literal|false
 expr_stmt|;
 block|}
 block|}
+block|}
 comment|// backup file?
 try|try
 block|{
@@ -1783,7 +1775,6 @@ name|success
 operator|=
 literal|false
 expr_stmt|;
-block|}
 block|}
 block|}
 return|return
