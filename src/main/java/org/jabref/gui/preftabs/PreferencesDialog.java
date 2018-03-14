@@ -1384,6 +1384,12 @@ expr_stmt|;
 name|updateAfterPreferenceChanges
 argument_list|()
 expr_stmt|;
+name|DefaultTaskExecutor
+operator|.
+name|runInJavaFXThread
+argument_list|(
+parameter_list|()
+lambda|->
 name|frame
 operator|.
 name|getDialogService
@@ -1403,6 +1409,7 @@ operator|.
 name|lang
 argument_list|(
 literal|"You must restart JabRef for this to come into effect."
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1430,6 +1437,12 @@ argument_list|,
 name|ex
 argument_list|)
 expr_stmt|;
+name|DefaultTaskExecutor
+operator|.
+name|runInJavaFXThread
+argument_list|(
+parameter_list|()
+lambda|->
 name|frame
 operator|.
 name|getDialogService
@@ -1445,6 +1458,7 @@ literal|"Import preferences"
 argument_list|)
 argument_list|,
 name|ex
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -1486,6 +1500,12 @@ block|{
 name|boolean
 name|resetPreferencesClicked
 init|=
+name|DefaultTaskExecutor
+operator|.
+name|runInJavaFXThread
+argument_list|(
+parameter_list|()
+lambda|->
 name|frame
 operator|.
 name|getDialogService
@@ -1521,6 +1541,7 @@ argument_list|(
 literal|"Cancel"
 argument_list|)
 argument_list|)
+argument_list|)
 decl_stmt|;
 if|if
 condition|(
@@ -1541,6 +1562,12 @@ operator|.
 name|clear
 argument_list|()
 expr_stmt|;
+name|DefaultTaskExecutor
+operator|.
+name|runInJavaFXThread
+argument_list|(
+parameter_list|()
+lambda|->
 name|frame
 operator|.
 name|getDialogService
@@ -1560,6 +1587,7 @@ operator|.
 name|lang
 argument_list|(
 literal|"You must restart JabRef for this to come into effect."
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1582,6 +1610,12 @@ argument_list|,
 name|ex
 argument_list|)
 expr_stmt|;
+name|DefaultTaskExecutor
+operator|.
+name|runInJavaFXThread
+argument_list|(
+parameter_list|()
+lambda|->
 name|frame
 operator|.
 name|getDialogService
@@ -1597,6 +1631,7 @@ literal|"Reset preferences"
 argument_list|)
 argument_list|,
 name|ex
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

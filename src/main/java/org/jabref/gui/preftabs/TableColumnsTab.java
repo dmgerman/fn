@@ -396,6 +396,20 @@ name|org
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
+name|util
+operator|.
+name|DefaultTaskExecutor
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
 name|logic
 operator|.
 name|help
@@ -4415,6 +4429,12 @@ condition|(
 name|restartRequired
 condition|)
 block|{
+name|DefaultTaskExecutor
+operator|.
+name|runInJavaFXThread
+argument_list|(
+parameter_list|()
+lambda|->
 name|frame
 operator|.
 name|getDialogService
@@ -4448,6 +4468,7 @@ operator|.
 name|lang
 argument_list|(
 literal|"You must restart JabRef for this to come into effect."
+argument_list|)
 argument_list|)
 argument_list|)
 argument_list|)

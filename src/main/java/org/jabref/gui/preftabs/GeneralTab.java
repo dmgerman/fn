@@ -198,6 +198,20 @@ name|org
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
+name|util
+operator|.
+name|DefaultTaskExecutor
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
 name|logic
 operator|.
 name|help
@@ -1628,6 +1642,12 @@ name|isSelected
 argument_list|()
 condition|)
 block|{
+name|DefaultTaskExecutor
+operator|.
+name|runInJavaFXThread
+argument_list|(
+parameter_list|()
+lambda|->
 name|dialogService
 operator|.
 name|showInformationDialogAndWait
@@ -1646,6 +1666,7 @@ argument_list|(
 literal|"To disable the memory stick mode"
 operator|+
 literal|" rename or remove the jabref.xml file in the same folder as JabRef."
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1865,6 +1886,12 @@ name|setLanguageDependentDefaultValues
 argument_list|()
 expr_stmt|;
 comment|// Warn about restart needed:
+name|DefaultTaskExecutor
+operator|.
+name|runInJavaFXThread
+argument_list|(
+parameter_list|()
+lambda|->
 name|dialogService
 operator|.
 name|showWarningDialogAndWait
@@ -1895,6 +1922,7 @@ operator|.
 name|lang
 argument_list|(
 literal|"You must restart JabRef for this to come into effect."
+argument_list|)
 argument_list|)
 argument_list|)
 argument_list|)
@@ -1929,6 +1957,12 @@ name|IllegalArgumentException
 name|ex2
 parameter_list|)
 block|{
+name|DefaultTaskExecutor
+operator|.
+name|runInJavaFXThread
+argument_list|(
+parameter_list|()
+lambda|->
 name|dialogService
 operator|.
 name|showErrorDialogAndWait
@@ -1945,6 +1979,7 @@ operator|.
 name|lang
 argument_list|(
 literal|"The chosen date format for new entries is not valid"
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;

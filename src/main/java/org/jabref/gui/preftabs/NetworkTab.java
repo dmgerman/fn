@@ -120,6 +120,20 @@ name|org
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
+name|util
+operator|.
+name|DefaultTaskExecutor
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
 name|logic
 operator|.
 name|l10n
@@ -1207,6 +1221,12 @@ condition|(
 name|validAuthenticationSetting
 condition|)
 block|{
+name|DefaultTaskExecutor
+operator|.
+name|runInJavaFXThread
+argument_list|(
+parameter_list|()
+lambda|->
 name|dialogService
 operator|.
 name|showErrorDialogAndWait
@@ -1225,10 +1245,17 @@ argument_list|(
 literal|"Please specify both hostname and port"
 argument_list|)
 argument_list|)
+argument_list|)
 expr_stmt|;
 block|}
 else|else
 block|{
+name|DefaultTaskExecutor
+operator|.
+name|runInJavaFXThread
+argument_list|(
+parameter_list|()
+lambda|->
 name|dialogService
 operator|.
 name|showErrorDialogAndWait
@@ -1245,6 +1272,7 @@ operator|.
 name|lang
 argument_list|(
 literal|"Please specify both username and password"
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;

@@ -138,6 +138,20 @@ name|org
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
+name|util
+operator|.
+name|DefaultTaskExecutor
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
 name|logic
 operator|.
 name|help
@@ -875,6 +889,12 @@ name|useRemoteServer
 argument_list|()
 condition|)
 block|{
+name|DefaultTaskExecutor
+operator|.
+name|runInJavaFXThread
+argument_list|(
+parameter_list|()
+lambda|->
 name|dialogService
 operator|.
 name|showWarningDialogAndWait
@@ -905,6 +925,7 @@ operator|.
 name|lang
 argument_list|(
 literal|"You must restart JabRef for this to come into effect."
+argument_list|)
 argument_list|)
 argument_list|)
 argument_list|)
@@ -1061,6 +1082,12 @@ name|NumberFormatException
 name|ex
 parameter_list|)
 block|{
+name|DefaultTaskExecutor
+operator|.
+name|runInJavaFXThread
+argument_list|(
+parameter_list|()
+lambda|->
 name|dialogService
 operator|.
 name|showErrorDialogAndWait
@@ -1089,6 +1116,7 @@ literal|"Remote server port"
 argument_list|)
 operator|+
 literal|'\''
+argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
