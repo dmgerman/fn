@@ -56,8 +56,6 @@ name|org
 operator|.
 name|jabref
 operator|.
-name|logic
-operator|.
 name|migrations
 operator|.
 name|MergeReviewIntoCommentMigration
