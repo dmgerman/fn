@@ -495,7 +495,7 @@ name|finder
 operator|.
 name|performSearch
 argument_list|(
-literal|"info:RExzBa3OlkQJ:scholar.google.com"
+literal|"Detecting Interoperability and Correctness Issues in BPMN 2.0 Process Models"
 argument_list|)
 decl_stmt|;
 name|assertEquals
