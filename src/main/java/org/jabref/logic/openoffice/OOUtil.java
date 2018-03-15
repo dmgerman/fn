@@ -108,146 +108,6 @@ name|BibEntry
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|sun
-operator|.
-name|star
-operator|.
-name|beans
-operator|.
-name|PropertyVetoException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|sun
-operator|.
-name|star
-operator|.
-name|beans
-operator|.
-name|UnknownPropertyException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|sun
-operator|.
-name|star
-operator|.
-name|beans
-operator|.
-name|XPropertySet
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|sun
-operator|.
-name|star
-operator|.
-name|lang
-operator|.
-name|IllegalArgumentException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|sun
-operator|.
-name|star
-operator|.
-name|lang
-operator|.
-name|WrappedTargetException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|sun
-operator|.
-name|star
-operator|.
-name|text
-operator|.
-name|ControlCharacter
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|sun
-operator|.
-name|star
-operator|.
-name|text
-operator|.
-name|XParagraphCursor
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|sun
-operator|.
-name|star
-operator|.
-name|text
-operator|.
-name|XText
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|sun
-operator|.
-name|star
-operator|.
-name|text
-operator|.
-name|XTextCursor
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|sun
-operator|.
-name|star
-operator|.
-name|uno
-operator|.
-name|UnoRuntime
-import|;
-end_import
-
 begin_comment
 comment|/**  * Utility methods for processing OO Writer documents.  */
 end_comment
@@ -258,1450 +118,262 @@ specifier|public
 class|class
 name|OOUtil
 block|{
-DECL|field|CHAR_STRIKEOUT
-specifier|private
-specifier|static
-specifier|final
-name|String
-name|CHAR_STRIKEOUT
-init|=
-literal|"CharStrikeout"
-decl_stmt|;
-DECL|field|CHAR_UNDERLINE
-specifier|private
-specifier|static
-specifier|final
-name|String
-name|CHAR_UNDERLINE
-init|=
-literal|"CharUnderline"
-decl_stmt|;
-DECL|field|PARA_STYLE_NAME
-specifier|private
-specifier|static
-specifier|final
-name|String
-name|PARA_STYLE_NAME
-init|=
-literal|"ParaStyleName"
-decl_stmt|;
-DECL|field|CHAR_CASE_MAP
-specifier|private
-specifier|static
-specifier|final
-name|String
-name|CHAR_CASE_MAP
-init|=
-literal|"CharCaseMap"
-decl_stmt|;
-DECL|field|CHAR_POSTURE
-specifier|private
-specifier|static
-specifier|final
-name|String
-name|CHAR_POSTURE
-init|=
-literal|"CharPosture"
-decl_stmt|;
-DECL|field|CHAR_WEIGHT
-specifier|private
-specifier|static
-specifier|final
-name|String
-name|CHAR_WEIGHT
-init|=
-literal|"CharWeight"
-decl_stmt|;
-DECL|field|CHAR_ESCAPEMENT_HEIGHT
-specifier|private
-specifier|static
-specifier|final
-name|String
-name|CHAR_ESCAPEMENT_HEIGHT
-init|=
-literal|"CharEscapementHeight"
-decl_stmt|;
-DECL|field|CHAR_ESCAPEMENT
-specifier|private
-specifier|static
-specifier|final
-name|String
-name|CHAR_ESCAPEMENT
-init|=
-literal|"CharEscapement"
-decl_stmt|;
-DECL|enum|Formatting
-specifier|public
-enum|enum
-name|Formatting
-block|{
-DECL|enumConstant|BOLD
-name|BOLD
-block|,
-DECL|enumConstant|ITALIC
-name|ITALIC
-block|,
-DECL|enumConstant|SMALLCAPS
-name|SMALLCAPS
-block|,
-DECL|enumConstant|SUPERSCRIPT
-name|SUPERSCRIPT
-block|,
-DECL|enumConstant|SUBSCRIPT
-name|SUBSCRIPT
-block|,
-DECL|enumConstant|UNDERLINE
-name|UNDERLINE
-block|,
-DECL|enumConstant|STRIKEOUT
-name|STRIKEOUT
-block|,
-DECL|enumConstant|MONOSPACE
-name|MONOSPACE
-block|}
-DECL|field|HTML_TAG
-specifier|private
-specifier|static
-specifier|final
-name|Pattern
-name|HTML_TAG
-init|=
-name|Pattern
-operator|.
-name|compile
-argument_list|(
-literal|"</?[a-z]+>"
-argument_list|)
-decl_stmt|;
-DECL|field|UNIQUEFIER_FIELD
-specifier|private
-specifier|static
-specifier|final
-name|String
-name|UNIQUEFIER_FIELD
-init|=
-literal|"uniq"
-decl_stmt|;
-DECL|method|OOUtil ()
-specifier|private
-name|OOUtil
-parameter_list|()
-block|{
-comment|// Just to hide the public constructor
-block|}
-comment|/**      * Insert a reference, formatted using a Layout, at the position of a given cursor.      * @param text The text to insert in.      * @param cursor The cursor giving the insert location.      * @param layout The Layout to format the reference with.      * @param parStyle The name of the paragraph style to use.      * @param entry The entry to insert.      * @param database The database the entry belongs to.      * @param uniquefier Uniqiefier letter, if any, to append to the entry's year.      */
-DECL|method|insertFullReferenceAtCurrentLocation (XText text, XTextCursor cursor, Layout layout, String parStyle, BibEntry entry, BibDatabase database, String uniquefier)
-specifier|public
-specifier|static
-name|void
-name|insertFullReferenceAtCurrentLocation
-parameter_list|(
-name|XText
-name|text
-parameter_list|,
-name|XTextCursor
-name|cursor
-parameter_list|,
-name|Layout
-name|layout
-parameter_list|,
-name|String
-name|parStyle
-parameter_list|,
-name|BibEntry
-name|entry
-parameter_list|,
-name|BibDatabase
-name|database
-parameter_list|,
-name|String
-name|uniquefier
-parameter_list|)
-throws|throws
-name|UndefinedParagraphFormatException
-throws|,
-name|UnknownPropertyException
-throws|,
-name|PropertyVetoException
-throws|,
-name|WrappedTargetException
-throws|,
-name|IllegalArgumentException
-block|{
-comment|// Backup the value of the uniq field, just in case the entry already has it:
-name|Optional
-argument_list|<
-name|String
-argument_list|>
-name|oldUniqVal
-init|=
-name|entry
-operator|.
-name|getField
-argument_list|(
-name|UNIQUEFIER_FIELD
-argument_list|)
-decl_stmt|;
-comment|// Set the uniq field with the supplied uniquefier:
-if|if
-condition|(
-name|uniquefier
-operator|==
-literal|null
-condition|)
-block|{
-name|entry
-operator|.
-name|clearField
-argument_list|(
-name|UNIQUEFIER_FIELD
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-name|entry
-operator|.
-name|setField
-argument_list|(
-name|UNIQUEFIER_FIELD
-argument_list|,
-name|uniquefier
-argument_list|)
-expr_stmt|;
-block|}
-comment|// Do the layout for this entry:
-name|String
-name|formattedText
-init|=
-name|layout
-operator|.
-name|doLayout
-argument_list|(
-name|entry
-argument_list|,
-name|database
-argument_list|)
-decl_stmt|;
-comment|// Afterwards, reset the old value:
-if|if
-condition|(
-name|oldUniqVal
-operator|.
-name|isPresent
-argument_list|()
-condition|)
-block|{
-name|entry
-operator|.
-name|setField
-argument_list|(
-name|UNIQUEFIER_FIELD
-argument_list|,
-name|oldUniqVal
-operator|.
-name|get
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-name|entry
-operator|.
-name|clearField
-argument_list|(
-name|UNIQUEFIER_FIELD
-argument_list|)
-expr_stmt|;
-block|}
-comment|// Insert the formatted text:
-name|OOUtil
-operator|.
-name|insertOOFormattedTextAtCurrentLocation
-argument_list|(
-name|text
-argument_list|,
-name|cursor
-argument_list|,
-name|formattedText
-argument_list|,
-name|parStyle
-argument_list|)
-expr_stmt|;
-block|}
-comment|/**      * Insert a text with formatting indicated by HTML-like tags, into a text at      * the position given by a cursor.      * @param text The text to insert in.      * @param cursor The cursor giving the insert location.      * @param lText The marked-up text to insert.      * @param parStyle The name of the paragraph style to use.      * @throws WrappedTargetException      * @throws PropertyVetoException      * @throws UnknownPropertyException      * @throws IllegalArgumentException      */
-DECL|method|insertOOFormattedTextAtCurrentLocation (XText text, XTextCursor cursor, String lText, String parStyle)
-specifier|public
-specifier|static
-name|void
-name|insertOOFormattedTextAtCurrentLocation
-parameter_list|(
-name|XText
-name|text
-parameter_list|,
-name|XTextCursor
-name|cursor
-parameter_list|,
-name|String
-name|lText
-parameter_list|,
-name|String
-name|parStyle
-parameter_list|)
-throws|throws
-name|UndefinedParagraphFormatException
-throws|,
-name|UnknownPropertyException
-throws|,
-name|PropertyVetoException
-throws|,
-name|WrappedTargetException
-throws|,
-name|IllegalArgumentException
-block|{
-name|XParagraphCursor
-name|parCursor
-init|=
-name|UnoRuntime
-operator|.
-name|queryInterface
-argument_list|(
-name|XParagraphCursor
-operator|.
-name|class
-argument_list|,
-name|cursor
-argument_list|)
-decl_stmt|;
-name|XPropertySet
-name|props
-init|=
-name|UnoRuntime
-operator|.
-name|queryInterface
-argument_list|(
-name|XPropertySet
-operator|.
-name|class
-argument_list|,
-name|parCursor
-argument_list|)
-decl_stmt|;
-try|try
-block|{
-name|props
-operator|.
-name|setPropertyValue
-argument_list|(
-name|PARA_STYLE_NAME
-argument_list|,
-name|parStyle
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|IllegalArgumentException
-name|ex
-parameter_list|)
-block|{
-throw|throw
-operator|new
-name|UndefinedParagraphFormatException
-argument_list|(
-name|parStyle
-argument_list|)
-throw|;
-block|}
-name|List
-argument_list|<
-name|Formatting
-argument_list|>
-name|formatting
-init|=
-operator|new
-name|ArrayList
-argument_list|<>
-argument_list|()
-decl_stmt|;
-comment|// We need to extract formatting. Use a simple regexp search iteration:
-name|int
-name|piv
-init|=
-literal|0
-decl_stmt|;
-name|Matcher
-name|m
-init|=
-name|OOUtil
-operator|.
-name|HTML_TAG
-operator|.
-name|matcher
-argument_list|(
-name|lText
-argument_list|)
-decl_stmt|;
-while|while
-condition|(
-name|m
-operator|.
-name|find
-argument_list|()
-condition|)
-block|{
-name|String
-name|currentSubstring
-init|=
-name|lText
-operator|.
-name|substring
-argument_list|(
-name|piv
-argument_list|,
-name|m
-operator|.
-name|start
-argument_list|()
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-operator|!
-name|currentSubstring
-operator|.
-name|isEmpty
-argument_list|()
-condition|)
-block|{
-name|OOUtil
-operator|.
-name|insertTextAtCurrentLocation
-argument_list|(
-name|text
-argument_list|,
-name|cursor
-argument_list|,
-name|currentSubstring
-argument_list|,
-name|formatting
-argument_list|)
-expr_stmt|;
-block|}
-name|String
-name|tag
-init|=
-name|m
-operator|.
-name|group
-argument_list|()
-decl_stmt|;
-comment|// Handle tags:
-if|if
-condition|(
-literal|"<b>"
-operator|.
-name|equals
-argument_list|(
-name|tag
-argument_list|)
-condition|)
-block|{
-name|formatting
-operator|.
-name|add
-argument_list|(
-name|Formatting
-operator|.
-name|BOLD
-argument_list|)
-expr_stmt|;
-block|}
-elseif|else
-if|if
-condition|(
-literal|"</b>"
-operator|.
-name|equals
-argument_list|(
-name|tag
-argument_list|)
-condition|)
-block|{
-name|formatting
-operator|.
-name|remove
-argument_list|(
-name|Formatting
-operator|.
-name|BOLD
-argument_list|)
-expr_stmt|;
-block|}
-elseif|else
-if|if
-condition|(
-literal|"<i>"
-operator|.
-name|equals
-argument_list|(
-name|tag
-argument_list|)
-operator|||
-literal|"<em>"
-operator|.
-name|equals
-argument_list|(
-name|tag
-argument_list|)
-condition|)
-block|{
-name|formatting
-operator|.
-name|add
-argument_list|(
-name|Formatting
-operator|.
-name|ITALIC
-argument_list|)
-expr_stmt|;
-block|}
-elseif|else
-if|if
-condition|(
-literal|"</i>"
-operator|.
-name|equals
-argument_list|(
-name|tag
-argument_list|)
-operator|||
-literal|"</em>"
-operator|.
-name|equals
-argument_list|(
-name|tag
-argument_list|)
-condition|)
-block|{
-name|formatting
-operator|.
-name|remove
-argument_list|(
-name|Formatting
-operator|.
-name|ITALIC
-argument_list|)
-expr_stmt|;
-block|}
-elseif|else
-if|if
-condition|(
-literal|"<tt>"
-operator|.
-name|equals
-argument_list|(
-name|tag
-argument_list|)
-condition|)
-block|{
-name|formatting
-operator|.
-name|add
-argument_list|(
-name|Formatting
-operator|.
-name|MONOSPACE
-argument_list|)
-expr_stmt|;
-block|}
-elseif|else
-if|if
-condition|(
-literal|"</tt>"
-operator|.
-name|equals
-argument_list|(
-name|tag
-argument_list|)
-condition|)
-block|{
-name|formatting
-operator|.
-name|remove
-argument_list|(
-name|Formatting
-operator|.
-name|MONOSPACE
-argument_list|)
-expr_stmt|;
-block|}
-elseif|else
-if|if
-condition|(
-literal|"<smallcaps>"
-operator|.
-name|equals
-argument_list|(
-name|tag
-argument_list|)
-condition|)
-block|{
-name|formatting
-operator|.
-name|add
-argument_list|(
-name|Formatting
-operator|.
-name|SMALLCAPS
-argument_list|)
-expr_stmt|;
-block|}
-elseif|else
-if|if
-condition|(
-literal|"</smallcaps>"
-operator|.
-name|equals
-argument_list|(
-name|tag
-argument_list|)
-condition|)
-block|{
-name|formatting
-operator|.
-name|remove
-argument_list|(
-name|Formatting
-operator|.
-name|SMALLCAPS
-argument_list|)
-expr_stmt|;
-block|}
-elseif|else
-if|if
-condition|(
-literal|"<sup>"
-operator|.
-name|equals
-argument_list|(
-name|tag
-argument_list|)
-condition|)
-block|{
-name|formatting
-operator|.
-name|add
-argument_list|(
-name|Formatting
-operator|.
-name|SUPERSCRIPT
-argument_list|)
-expr_stmt|;
-block|}
-elseif|else
-if|if
-condition|(
-literal|"</sup>"
-operator|.
-name|equals
-argument_list|(
-name|tag
-argument_list|)
-condition|)
-block|{
-name|formatting
-operator|.
-name|remove
-argument_list|(
-name|Formatting
-operator|.
-name|SUPERSCRIPT
-argument_list|)
-expr_stmt|;
-block|}
-elseif|else
-if|if
-condition|(
-literal|"<sub>"
-operator|.
-name|equals
-argument_list|(
-name|tag
-argument_list|)
-condition|)
-block|{
-name|formatting
-operator|.
-name|add
-argument_list|(
-name|Formatting
-operator|.
-name|SUBSCRIPT
-argument_list|)
-expr_stmt|;
-block|}
-elseif|else
-if|if
-condition|(
-literal|"</sub>"
-operator|.
-name|equals
-argument_list|(
-name|tag
-argument_list|)
-condition|)
-block|{
-name|formatting
-operator|.
-name|remove
-argument_list|(
-name|Formatting
-operator|.
-name|SUBSCRIPT
-argument_list|)
-expr_stmt|;
-block|}
-elseif|else
-if|if
-condition|(
-literal|"<u>"
-operator|.
-name|equals
-argument_list|(
-name|tag
-argument_list|)
-condition|)
-block|{
-name|formatting
-operator|.
-name|add
-argument_list|(
-name|Formatting
-operator|.
-name|UNDERLINE
-argument_list|)
-expr_stmt|;
-block|}
-elseif|else
-if|if
-condition|(
-literal|"</u>"
-operator|.
-name|equals
-argument_list|(
-name|tag
-argument_list|)
-condition|)
-block|{
-name|formatting
-operator|.
-name|remove
-argument_list|(
-name|Formatting
-operator|.
-name|UNDERLINE
-argument_list|)
-expr_stmt|;
-block|}
-elseif|else
-if|if
-condition|(
-literal|"<s>"
-operator|.
-name|equals
-argument_list|(
-name|tag
-argument_list|)
-condition|)
-block|{
-name|formatting
-operator|.
-name|add
-argument_list|(
-name|Formatting
-operator|.
-name|STRIKEOUT
-argument_list|)
-expr_stmt|;
-block|}
-elseif|else
-if|if
-condition|(
-literal|"</s>"
-operator|.
-name|equals
-argument_list|(
-name|tag
-argument_list|)
-condition|)
-block|{
-name|formatting
-operator|.
-name|remove
-argument_list|(
-name|Formatting
-operator|.
-name|STRIKEOUT
-argument_list|)
-expr_stmt|;
-block|}
-name|piv
-operator|=
-name|m
-operator|.
-name|end
-argument_list|()
-expr_stmt|;
-block|}
-if|if
-condition|(
-name|piv
-operator|<
-name|lText
-operator|.
-name|length
-argument_list|()
-condition|)
-block|{
-name|OOUtil
-operator|.
-name|insertTextAtCurrentLocation
-argument_list|(
-name|text
-argument_list|,
-name|cursor
-argument_list|,
-name|lText
-operator|.
-name|substring
-argument_list|(
-name|piv
-argument_list|)
-argument_list|,
-name|formatting
-argument_list|)
-expr_stmt|;
-block|}
-name|cursor
-operator|.
-name|collapseToEnd
-argument_list|()
-expr_stmt|;
-block|}
-DECL|method|insertParagraphBreak (XText text, XTextCursor cursor)
-specifier|public
-specifier|static
-name|void
-name|insertParagraphBreak
-parameter_list|(
-name|XText
-name|text
-parameter_list|,
-name|XTextCursor
-name|cursor
-parameter_list|)
-throws|throws
-name|IllegalArgumentException
-block|{
-name|text
-operator|.
-name|insertControlCharacter
-argument_list|(
-name|cursor
-argument_list|,
-name|ControlCharacter
-operator|.
-name|PARAGRAPH_BREAK
-argument_list|,
-literal|true
-argument_list|)
-expr_stmt|;
-name|cursor
-operator|.
-name|collapseToEnd
-argument_list|()
-expr_stmt|;
-block|}
-DECL|method|insertTextAtCurrentLocation (XText text, XTextCursor cursor, String string, List<Formatting> formatting)
-specifier|public
-specifier|static
-name|void
-name|insertTextAtCurrentLocation
-parameter_list|(
-name|XText
-name|text
-parameter_list|,
-name|XTextCursor
-name|cursor
-parameter_list|,
-name|String
-name|string
-parameter_list|,
-name|List
-argument_list|<
-name|Formatting
-argument_list|>
-name|formatting
-parameter_list|)
-throws|throws
-name|UnknownPropertyException
-throws|,
-name|PropertyVetoException
-throws|,
-name|WrappedTargetException
-throws|,
-name|IllegalArgumentException
-block|{
-name|text
-operator|.
-name|insertString
-argument_list|(
-name|cursor
-argument_list|,
-name|string
-argument_list|,
-literal|true
-argument_list|)
-expr_stmt|;
-comment|// Access the property set of the cursor, and set the currently selected text
-comment|// (which is the string we just inserted) to be bold
-name|XPropertySet
-name|xCursorProps
-init|=
-name|UnoRuntime
-operator|.
-name|queryInterface
-argument_list|(
-name|XPropertySet
-operator|.
-name|class
-argument_list|,
-name|cursor
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|formatting
-operator|.
-name|contains
-argument_list|(
-name|Formatting
-operator|.
-name|BOLD
-argument_list|)
-condition|)
-block|{
-name|xCursorProps
-operator|.
-name|setPropertyValue
-argument_list|(
-name|CHAR_WEIGHT
-argument_list|,
-name|com
-operator|.
-name|sun
-operator|.
-name|star
-operator|.
-name|awt
-operator|.
-name|FontWeight
-operator|.
-name|BOLD
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-name|xCursorProps
-operator|.
-name|setPropertyValue
-argument_list|(
-name|CHAR_WEIGHT
-argument_list|,
-name|com
-operator|.
-name|sun
-operator|.
-name|star
-operator|.
-name|awt
-operator|.
-name|FontWeight
-operator|.
-name|NORMAL
-argument_list|)
-expr_stmt|;
-block|}
-if|if
-condition|(
-name|formatting
-operator|.
-name|contains
-argument_list|(
-name|Formatting
-operator|.
-name|ITALIC
-argument_list|)
-condition|)
-block|{
-name|xCursorProps
-operator|.
-name|setPropertyValue
-argument_list|(
-name|CHAR_POSTURE
-argument_list|,
-name|com
-operator|.
-name|sun
-operator|.
-name|star
-operator|.
-name|awt
-operator|.
-name|FontSlant
-operator|.
-name|ITALIC
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-name|xCursorProps
-operator|.
-name|setPropertyValue
-argument_list|(
-name|CHAR_POSTURE
-argument_list|,
-name|com
-operator|.
-name|sun
-operator|.
-name|star
-operator|.
-name|awt
-operator|.
-name|FontSlant
-operator|.
-name|NONE
-argument_list|)
-expr_stmt|;
-block|}
-if|if
-condition|(
-name|formatting
-operator|.
-name|contains
-argument_list|(
-name|Formatting
-operator|.
-name|SMALLCAPS
-argument_list|)
-condition|)
-block|{
-name|xCursorProps
-operator|.
-name|setPropertyValue
-argument_list|(
-name|CHAR_CASE_MAP
-argument_list|,
-name|com
-operator|.
-name|sun
-operator|.
-name|star
-operator|.
-name|style
-operator|.
-name|CaseMap
-operator|.
-name|SMALLCAPS
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-name|xCursorProps
-operator|.
-name|setPropertyValue
-argument_list|(
-name|CHAR_CASE_MAP
-argument_list|,
-name|com
-operator|.
-name|sun
-operator|.
-name|star
-operator|.
-name|style
-operator|.
-name|CaseMap
-operator|.
-name|NONE
-argument_list|)
-expr_stmt|;
-block|}
-comment|// TODO: the<monospace> tag doesn't work
-comment|/*         if (formatting.contains(Formatting.MONOSPACE)) {             xCursorProps.setPropertyValue("CharFontPitch",                             com.sun.star.awt.FontPitch.FIXED);         }         else {             xCursorProps.setPropertyValue("CharFontPitch",                             com.sun.star.awt.FontPitch.VARIABLE);         } */
-if|if
-condition|(
-name|formatting
-operator|.
-name|contains
-argument_list|(
-name|Formatting
-operator|.
-name|SUBSCRIPT
-argument_list|)
-condition|)
-block|{
-name|xCursorProps
-operator|.
-name|setPropertyValue
-argument_list|(
-name|CHAR_ESCAPEMENT
-argument_list|,
-operator|(
-name|byte
-operator|)
-operator|-
-literal|101
-argument_list|)
-expr_stmt|;
-name|xCursorProps
-operator|.
-name|setPropertyValue
-argument_list|(
-name|CHAR_ESCAPEMENT_HEIGHT
-argument_list|,
-operator|(
-name|byte
-operator|)
-literal|58
-argument_list|)
-expr_stmt|;
-block|}
-elseif|else
-if|if
-condition|(
-name|formatting
-operator|.
-name|contains
-argument_list|(
-name|Formatting
-operator|.
-name|SUPERSCRIPT
-argument_list|)
-condition|)
-block|{
-name|xCursorProps
-operator|.
-name|setPropertyValue
-argument_list|(
-name|CHAR_ESCAPEMENT
-argument_list|,
-operator|(
-name|byte
-operator|)
-literal|101
-argument_list|)
-expr_stmt|;
-name|xCursorProps
-operator|.
-name|setPropertyValue
-argument_list|(
-name|CHAR_ESCAPEMENT_HEIGHT
-argument_list|,
-operator|(
-name|byte
-operator|)
-literal|58
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-name|xCursorProps
-operator|.
-name|setPropertyValue
-argument_list|(
-name|CHAR_ESCAPEMENT
-argument_list|,
-operator|(
-name|byte
-operator|)
-literal|0
-argument_list|)
-expr_stmt|;
-name|xCursorProps
-operator|.
-name|setPropertyValue
-argument_list|(
-name|CHAR_ESCAPEMENT_HEIGHT
-argument_list|,
-operator|(
-name|byte
-operator|)
-literal|100
-argument_list|)
-expr_stmt|;
-block|}
-if|if
-condition|(
-name|formatting
-operator|.
-name|contains
-argument_list|(
-name|Formatting
-operator|.
-name|UNDERLINE
-argument_list|)
-condition|)
-block|{
-name|xCursorProps
-operator|.
-name|setPropertyValue
-argument_list|(
-name|CHAR_UNDERLINE
-argument_list|,
-name|com
-operator|.
-name|sun
-operator|.
-name|star
-operator|.
-name|awt
-operator|.
-name|FontUnderline
-operator|.
-name|SINGLE
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-name|xCursorProps
-operator|.
-name|setPropertyValue
-argument_list|(
-name|CHAR_UNDERLINE
-argument_list|,
-name|com
-operator|.
-name|sun
-operator|.
-name|star
-operator|.
-name|awt
-operator|.
-name|FontUnderline
-operator|.
-name|NONE
-argument_list|)
-expr_stmt|;
-block|}
-if|if
-condition|(
-name|formatting
-operator|.
-name|contains
-argument_list|(
-name|Formatting
-operator|.
-name|STRIKEOUT
-argument_list|)
-condition|)
-block|{
-name|xCursorProps
-operator|.
-name|setPropertyValue
-argument_list|(
-name|CHAR_STRIKEOUT
-argument_list|,
-name|com
-operator|.
-name|sun
-operator|.
-name|star
-operator|.
-name|awt
-operator|.
-name|FontStrikeout
-operator|.
-name|SINGLE
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-name|xCursorProps
-operator|.
-name|setPropertyValue
-argument_list|(
-name|CHAR_STRIKEOUT
-argument_list|,
-name|com
-operator|.
-name|sun
-operator|.
-name|star
-operator|.
-name|awt
-operator|.
-name|FontStrikeout
-operator|.
-name|NONE
-argument_list|)
-expr_stmt|;
-block|}
-name|cursor
-operator|.
-name|collapseToEnd
-argument_list|()
-expr_stmt|;
-block|}
-DECL|method|insertTextAtCurrentLocation (XText text, XTextCursor cursor, String string, String parStyle)
-specifier|public
-specifier|static
-name|void
-name|insertTextAtCurrentLocation
-parameter_list|(
-name|XText
-name|text
-parameter_list|,
-name|XTextCursor
-name|cursor
-parameter_list|,
-name|String
-name|string
-parameter_list|,
-name|String
-name|parStyle
-parameter_list|)
-throws|throws
-name|WrappedTargetException
-throws|,
-name|PropertyVetoException
-throws|,
-name|UnknownPropertyException
-throws|,
-name|UndefinedParagraphFormatException
-block|{
-name|text
-operator|.
-name|insertString
-argument_list|(
-name|cursor
-argument_list|,
-name|string
-argument_list|,
-literal|true
-argument_list|)
-expr_stmt|;
-name|XParagraphCursor
-name|parCursor
-init|=
-name|UnoRuntime
-operator|.
-name|queryInterface
-argument_list|(
-name|XParagraphCursor
-operator|.
-name|class
-argument_list|,
-name|cursor
-argument_list|)
-decl_stmt|;
-comment|// Access the property set of the cursor, and set the currently selected text
-comment|// (which is the string we just inserted) to be bold
-name|XPropertySet
-name|props
-init|=
-name|UnoRuntime
-operator|.
-name|queryInterface
-argument_list|(
-name|XPropertySet
-operator|.
-name|class
-argument_list|,
-name|parCursor
-argument_list|)
-decl_stmt|;
-try|try
-block|{
-name|props
-operator|.
-name|setPropertyValue
-argument_list|(
-name|PARA_STYLE_NAME
-argument_list|,
-name|parStyle
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|IllegalArgumentException
-name|ex
-parameter_list|)
-block|{
-throw|throw
-operator|new
-name|UndefinedParagraphFormatException
-argument_list|(
-name|parStyle
-argument_list|)
-throw|;
-block|}
-name|cursor
-operator|.
-name|collapseToEnd
-argument_list|()
-expr_stmt|;
-block|}
-DECL|method|getProperty (Object o, String property)
-specifier|public
-specifier|static
-name|Object
-name|getProperty
-parameter_list|(
-name|Object
-name|o
-parameter_list|,
-name|String
-name|property
-parameter_list|)
-throws|throws
-name|UnknownPropertyException
-throws|,
-name|WrappedTargetException
-block|{
-name|XPropertySet
-name|props
-init|=
-name|UnoRuntime
-operator|.
-name|queryInterface
-argument_list|(
-name|XPropertySet
-operator|.
-name|class
-argument_list|,
-name|o
-argument_list|)
-decl_stmt|;
-return|return
-name|props
-operator|.
-name|getPropertyValue
-argument_list|(
-name|property
-argument_list|)
-return|;
-block|}
+comment|// TODO: temporarily removed, LibreOffice, Java 9
+comment|//
+comment|//    private static final String CHAR_STRIKEOUT = "CharStrikeout";
+comment|//    private static final String CHAR_UNDERLINE = "CharUnderline";
+comment|//    private static final String PARA_STYLE_NAME = "ParaStyleName";
+comment|//    private static final String CHAR_CASE_MAP = "CharCaseMap";
+comment|//    private static final String CHAR_POSTURE = "CharPosture";
+comment|//    private static final String CHAR_WEIGHT = "CharWeight";
+comment|//    private static final String CHAR_ESCAPEMENT_HEIGHT = "CharEscapementHeight";
+comment|//    private static final String CHAR_ESCAPEMENT = "CharEscapement";
+comment|//
+comment|//    public enum Formatting {
+comment|//        BOLD,
+comment|//        ITALIC,
+comment|//        SMALLCAPS,
+comment|//        SUPERSCRIPT,
+comment|//        SUBSCRIPT,
+comment|//        UNDERLINE,
+comment|//        STRIKEOUT,
+comment|//        MONOSPACE
+comment|//    }
+comment|//
+comment|//    private static final Pattern HTML_TAG = Pattern.compile("</?[a-z]+>");
+comment|//
+comment|//    private static final String UNIQUEFIER_FIELD = "uniq";
+comment|//
+comment|//    private OOUtil() {
+comment|//        // Just to hide the public constructor
+comment|//    }
+comment|//
+comment|//    /**
+comment|//     * Insert a reference, formatted using a Layout, at the position of a given cursor.
+comment|//     * @param text The text to insert in.
+comment|//     * @param cursor The cursor giving the insert location.
+comment|//     * @param layout The Layout to format the reference with.
+comment|//     * @param parStyle The name of the paragraph style to use.
+comment|//     * @param entry The entry to insert.
+comment|//     * @param database The database the entry belongs to.
+comment|//     * @param uniquefier Uniqiefier letter, if any, to append to the entry's year.
+comment|//     */
+comment|//    public static void insertFullReferenceAtCurrentLocation(XText text, XTextCursor cursor,
+comment|//            Layout layout, String parStyle, BibEntry entry, BibDatabase database, String uniquefier)
+comment|//                    throws UndefinedParagraphFormatException, UnknownPropertyException, PropertyVetoException,
+comment|//                    WrappedTargetException, IllegalArgumentException {
+comment|//
+comment|//        // Backup the value of the uniq field, just in case the entry already has it:
+comment|//        Optional<String> oldUniqVal = entry.getField(UNIQUEFIER_FIELD);
+comment|//
+comment|//        // Set the uniq field with the supplied uniquefier:
+comment|//        if (uniquefier == null) {
+comment|//            entry.clearField(UNIQUEFIER_FIELD);
+comment|//        } else {
+comment|//            entry.setField(UNIQUEFIER_FIELD, uniquefier);
+comment|//        }
+comment|//
+comment|//        // Do the layout for this entry:
+comment|//        String formattedText = layout.doLayout(entry, database);
+comment|//
+comment|//        // Afterwards, reset the old value:
+comment|//        if (oldUniqVal.isPresent()) {
+comment|//            entry.setField(UNIQUEFIER_FIELD, oldUniqVal.get());
+comment|//        } else {
+comment|//            entry.clearField(UNIQUEFIER_FIELD);
+comment|//        }
+comment|//
+comment|//        // Insert the formatted text:
+comment|//        OOUtil.insertOOFormattedTextAtCurrentLocation(text, cursor, formattedText, parStyle);
+comment|//    }
+comment|//
+comment|//    /**
+comment|//     * Insert a text with formatting indicated by HTML-like tags, into a text at
+comment|//     * the position given by a cursor.
+comment|//     * @param text The text to insert in.
+comment|//     * @param cursor The cursor giving the insert location.
+comment|//     * @param lText The marked-up text to insert.
+comment|//     * @param parStyle The name of the paragraph style to use.
+comment|//     * @throws WrappedTargetException
+comment|//     * @throws PropertyVetoException
+comment|//     * @throws UnknownPropertyException
+comment|//     * @throws IllegalArgumentException
+comment|//     */
+comment|//    public static void insertOOFormattedTextAtCurrentLocation(XText text, XTextCursor cursor, String lText,
+comment|//            String parStyle) throws UndefinedParagraphFormatException, UnknownPropertyException, PropertyVetoException,
+comment|//                    WrappedTargetException, IllegalArgumentException {
+comment|//
+comment|//        XParagraphCursor parCursor = UnoRuntime.queryInterface(
+comment|//                XParagraphCursor.class, cursor);
+comment|//        XPropertySet props = UnoRuntime.queryInterface(
+comment|//                XPropertySet.class, parCursor);
+comment|//
+comment|//        try {
+comment|//            props.setPropertyValue(PARA_STYLE_NAME, parStyle);
+comment|//        } catch (IllegalArgumentException ex) {
+comment|//            throw new UndefinedParagraphFormatException(parStyle);
+comment|//        }
+comment|//
+comment|//        List<Formatting> formatting = new ArrayList<>();
+comment|//        // We need to extract formatting. Use a simple regexp search iteration:
+comment|//        int piv = 0;
+comment|//        Matcher m = OOUtil.HTML_TAG.matcher(lText);
+comment|//        while (m.find()) {
+comment|//            String currentSubstring = lText.substring(piv, m.start());
+comment|//            if (!currentSubstring.isEmpty()) {
+comment|//                OOUtil.insertTextAtCurrentLocation(text, cursor, currentSubstring, formatting);
+comment|//            }
+comment|//            String tag = m.group();
+comment|//            // Handle tags:
+comment|//            if ("<b>".equals(tag)) {
+comment|//                formatting.add(Formatting.BOLD);
+comment|//            } else if ("</b>".equals(tag)) {
+comment|//                formatting.remove(Formatting.BOLD);
+comment|//            } else if ("<i>".equals(tag) || "<em>".equals(tag)) {
+comment|//                formatting.add(Formatting.ITALIC);
+comment|//            } else if ("</i>".equals(tag) || "</em>".equals(tag)) {
+comment|//                formatting.remove(Formatting.ITALIC);
+comment|//            } else if ("<tt>".equals(tag)) {
+comment|//                formatting.add(Formatting.MONOSPACE);
+comment|//            } else if ("</tt>".equals(tag)) {
+comment|//                formatting.remove(Formatting.MONOSPACE);
+comment|//            } else if ("<smallcaps>".equals(tag)) {
+comment|//                formatting.add(Formatting.SMALLCAPS);
+comment|//            } else if ("</smallcaps>".equals(tag)) {
+comment|//                formatting.remove(Formatting.SMALLCAPS);
+comment|//            } else if ("<sup>".equals(tag)) {
+comment|//                formatting.add(Formatting.SUPERSCRIPT);
+comment|//            } else if ("</sup>".equals(tag)) {
+comment|//                formatting.remove(Formatting.SUPERSCRIPT);
+comment|//            } else if ("<sub>".equals(tag)) {
+comment|//                formatting.add(Formatting.SUBSCRIPT);
+comment|//            } else if ("</sub>".equals(tag)) {
+comment|//                formatting.remove(Formatting.SUBSCRIPT);
+comment|//            } else if ("<u>".equals(tag)) {
+comment|//                formatting.add(Formatting.UNDERLINE);
+comment|//            } else if ("</u>".equals(tag)) {
+comment|//                formatting.remove(Formatting.UNDERLINE);
+comment|//            } else if ("<s>".equals(tag)) {
+comment|//                formatting.add(Formatting.STRIKEOUT);
+comment|//            } else if ("</s>".equals(tag)) {
+comment|//                formatting.remove(Formatting.STRIKEOUT);
+comment|//            }
+comment|//
+comment|//            piv = m.end();
+comment|//
+comment|//        }
+comment|//
+comment|//        if (piv< lText.length()) {
+comment|//            OOUtil.insertTextAtCurrentLocation(text, cursor, lText.substring(piv), formatting);
+comment|//        }
+comment|//
+comment|//        cursor.collapseToEnd();
+comment|//    }
+comment|//
+comment|//    public static void insertParagraphBreak(XText text, XTextCursor cursor) throws IllegalArgumentException {
+comment|//        text.insertControlCharacter(cursor, ControlCharacter.PARAGRAPH_BREAK, true);
+comment|//        cursor.collapseToEnd();
+comment|//    }
+comment|//
+comment|//    public static void insertTextAtCurrentLocation(XText text, XTextCursor cursor, String string,
+comment|//            List<Formatting> formatting)
+comment|//                    throws UnknownPropertyException, PropertyVetoException, WrappedTargetException,
+comment|//                    IllegalArgumentException {
+comment|//        text.insertString(cursor, string, true);
+comment|//        // Access the property set of the cursor, and set the currently selected text
+comment|//        // (which is the string we just inserted) to be bold
+comment|//        XPropertySet xCursorProps = UnoRuntime.queryInterface(
+comment|//                XPropertySet.class, cursor);
+comment|//        if (formatting.contains(Formatting.BOLD)) {
+comment|//            xCursorProps.setPropertyValue(CHAR_WEIGHT,
+comment|//                    com.sun.star.awt.FontWeight.BOLD);
+comment|//        } else {
+comment|//            xCursorProps.setPropertyValue(CHAR_WEIGHT,
+comment|//                    com.sun.star.awt.FontWeight.NORMAL);
+comment|//        }
+comment|//
+comment|//        if (formatting.contains(Formatting.ITALIC)) {
+comment|//            xCursorProps.setPropertyValue(CHAR_POSTURE,
+comment|//                    com.sun.star.awt.FontSlant.ITALIC);
+comment|//        } else {
+comment|//            xCursorProps.setPropertyValue(CHAR_POSTURE,
+comment|//                    com.sun.star.awt.FontSlant.NONE);
+comment|//        }
+comment|//
+comment|//        if (formatting.contains(Formatting.SMALLCAPS)) {
+comment|//            xCursorProps.setPropertyValue(CHAR_CASE_MAP,
+comment|//                    com.sun.star.style.CaseMap.SMALLCAPS);
+comment|//        }        else {
+comment|//            xCursorProps.setPropertyValue(CHAR_CASE_MAP,
+comment|//                    com.sun.star.style.CaseMap.NONE);
+comment|//        }
+comment|//
+comment|//        // TODO: the<monospace> tag doesn't work
+comment|//        /*
+comment|//        if (formatting.contains(Formatting.MONOSPACE)) {
+comment|//            xCursorProps.setPropertyValue("CharFontPitch",
+comment|//                            com.sun.star.awt.FontPitch.FIXED);
+comment|//        }
+comment|//        else {
+comment|//            xCursorProps.setPropertyValue("CharFontPitch",
+comment|//                            com.sun.star.awt.FontPitch.VARIABLE);
+comment|//        } */
+comment|//        if (formatting.contains(Formatting.SUBSCRIPT)) {
+comment|//            xCursorProps.setPropertyValue(CHAR_ESCAPEMENT,
+comment|//                    (byte) -101);
+comment|//            xCursorProps.setPropertyValue(CHAR_ESCAPEMENT_HEIGHT,
+comment|//                    (byte) 58);
+comment|//        } else if (formatting.contains(Formatting.SUPERSCRIPT)) {
+comment|//            xCursorProps.setPropertyValue(CHAR_ESCAPEMENT,
+comment|//                    (byte) 101);
+comment|//            xCursorProps.setPropertyValue(CHAR_ESCAPEMENT_HEIGHT,
+comment|//                    (byte) 58);
+comment|//        } else {
+comment|//            xCursorProps.setPropertyValue(CHAR_ESCAPEMENT,
+comment|//                    (byte) 0);
+comment|//            xCursorProps.setPropertyValue(CHAR_ESCAPEMENT_HEIGHT,
+comment|//                    (byte) 100);
+comment|//        }
+comment|//
+comment|//        if (formatting.contains(Formatting.UNDERLINE)) {
+comment|//            xCursorProps.setPropertyValue(CHAR_UNDERLINE, com.sun.star.awt.FontUnderline.SINGLE);
+comment|//        } else {
+comment|//            xCursorProps.setPropertyValue(CHAR_UNDERLINE, com.sun.star.awt.FontUnderline.NONE);
+comment|//        }
+comment|//
+comment|//        if (formatting.contains(Formatting.STRIKEOUT)) {
+comment|//            xCursorProps.setPropertyValue(CHAR_STRIKEOUT, com.sun.star.awt.FontStrikeout.SINGLE);
+comment|//        } else {
+comment|//            xCursorProps.setPropertyValue(CHAR_STRIKEOUT, com.sun.star.awt.FontStrikeout.NONE);
+comment|//        }
+comment|//        cursor.collapseToEnd();
+comment|//    }
+comment|//
+comment|//    public static void insertTextAtCurrentLocation(XText text, XTextCursor cursor, String string, String parStyle)
+comment|//            throws WrappedTargetException, PropertyVetoException, UnknownPropertyException,
+comment|//            UndefinedParagraphFormatException {
+comment|//        text.insertString(cursor, string, true);
+comment|//        XParagraphCursor parCursor = UnoRuntime.queryInterface(
+comment|//                XParagraphCursor.class, cursor);
+comment|//        // Access the property set of the cursor, and set the currently selected text
+comment|//        // (which is the string we just inserted) to be bold
+comment|//        XPropertySet props = UnoRuntime.queryInterface(
+comment|//                XPropertySet.class, parCursor);
+comment|//        try {
+comment|//            props.setPropertyValue(PARA_STYLE_NAME, parStyle);
+comment|//        } catch (IllegalArgumentException ex) {
+comment|//            throw new UndefinedParagraphFormatException(parStyle);
+comment|//        }
+comment|//        cursor.collapseToEnd();
+comment|//
+comment|//    }
+comment|//
+comment|//    public static Object getProperty(Object o, String property)
+comment|//            throws UnknownPropertyException, WrappedTargetException {
+comment|//        XPropertySet props = UnoRuntime.queryInterface(
+comment|//                XPropertySet.class, o);
+comment|//        return props.getPropertyValue(property);
+comment|//    }
 block|}
 end_class
 

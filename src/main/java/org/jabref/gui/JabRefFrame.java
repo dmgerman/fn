@@ -7319,11 +7319,342 @@ name|void
 name|initActions
 parameter_list|()
 block|{
-comment|/*         openDatabaseOnlyActions.clear();         openDatabaseOnlyActions.addAll(Arrays.asList(manageSelectors, mergeDatabaseAction, newSubDatabaseAction, save, copyPreview,                 saveAs, saveSelectedAs, saveSelectedAsPlain, undo, redo, cut, deleteEntry, copy, paste, mark, markSpecific, unmark,                 unmarkAll, rankSubMenu, editEntry, selectAll, copyKey, copyCiteKey, copyKeyAndTitle, copyKeyAndLink, editPreamble, editStrings,                 groupSidePane.getToggleCommand(), makeKeyAction, normalSearch, generalFetcher.getToggleCommand(), mergeEntries, cleanupEntries, exportToClipboard, replaceAll,                 sendAsEmail, downloadFullText, lookupIdentifiers, writeXmpAction, openOfficePanel.getToggleCommand(), findUnlinkedFiles, addToGroup, removeFromGroup,                 moveToGroup, autoLinkFile, resolveDuplicateKeys, openUrl, openFolder, openFile, togglePreview,                 dupliCheck, autoSetFile, newEntryAction, newSpec, customizeAction, plainTextImport, getMassSetField(), getManageKeywords(),                 pushExternalButton.getMenuAction(), closeDatabaseAction, getNextPreviewStyleAction(), getPreviousPreviewStyleAction(), checkIntegrity,                 databaseProperties, abbreviateIso, abbreviateMedline,                 unabbreviate, exportAll, exportSelected, importCurrent, saveAll, focusTable, increaseFontSize, decreseFontSize, defaultFontSize,                 toggleRelevance, toggleQualityAssured, togglePrinted, pushExternalButton.getComponent()));         openDatabaseOnlyActions.addAll(newSpecificEntryAction);         openDatabaseOnlyActions.addAll(specialFieldButtons);         severalDatabasesOnlyActions.clear();         severalDatabasesOnlyActions.addAll(Arrays                 .asList(nextTab, prevTab, sortTabs));         openAndSavedDatabasesOnlyActions.addAll(Collections.singletonList(openConsole));         sharedDatabaseOnlyActions.addAll(Collections.singletonList(pullChangesFromSharedDatabase));         noSharedDatabaseActions.addAll(Arrays.asList(save, saveAll));         oneEntryOnlyActions.clear();         oneEntryOnlyActions.addAll(Arrays.asList(editEntry));         oneEntryWithFileOnlyActions.clear();         oneEntryWithFileOnlyActions.addAll(Arrays.asList(openFolder, openFile));         oneEntryWithURLorDOIOnlyActions.clear();         oneEntryWithURLorDOIOnlyActions.addAll(Arrays.asList(openUrl));         twoEntriesOnlyActions.clear();         twoEntriesOnlyActions.addAll(Arrays.asList(mergeEntries));         atLeastOneEntryActions.clear();         atLeastOneEntryActions.addAll(Arrays.asList(downloadFullText, lookupIdentifiers, exportLinkedFiles));         tabbedPane.getTabs().addListener(this::updateEnabledState);         */
-block|}
+comment|/*         openDatabaseOnlyActions.clear();         // TODO: temporarily removed OpenOffice Panel, (Java 9 incompatibility)         openDatabaseOnlyActions.addAll(Arrays.asList(manageSelectors, mergeDatabaseAction, newSubDatabaseAction, save, copyPreview,                 saveAs, saveSelectedAs, saveSelectedAsPlain, undo, redo, cut, deleteEntry, copy, paste, mark, markSpecific, unmark,                 unmarkAll, rankSubMenu, editEntry, selectAll, copyKey, copyCiteKey, copyKeyAndTitle, copyKeyAndLink, editPreamble, editStrings,                 groupSidePane.getToggleCommand(), makeKeyAction, normalSearch, generalFetcher.getToggleCommand(), mergeEntries, cleanupEntries, exportToClipboard, replaceAll,                 sendAsEmail, downloadFullText, lookupIdentifiers, writeXmpAction, /*openOfficePanel.getToggleCommand(),*/
+name|findUnlinkedFiles
+operator|,
+name|addToGroup
+operator|,
+name|removeFromGroup
+operator|,
+name|moveToGroup
+operator|,
+name|autoLinkFile
+operator|,
+name|resolveDuplicateKeys
+operator|,
+name|openUrl
+operator|,
+name|openFolder
+operator|,
+name|openFile
+operator|,
+name|togglePreview
+operator|,
+name|dupliCheck
+operator|,
+name|autoSetFile
+operator|,
+name|newEntryAction
+operator|,
+name|newSpec
+operator|,
+name|customizeAction
+operator|,
+name|plainTextImport
+operator|,
+name|getMassSetField
+argument_list|()
+operator|,
+name|getManageKeywords
+argument_list|()
+operator|,
+name|pushExternalButton
+operator|.
+name|getMenuAction
+argument_list|()
+operator|,
+name|closeDatabaseAction
+operator|,
+name|getNextPreviewStyleAction
+argument_list|()
+operator|,
+name|getPreviousPreviewStyleAction
+argument_list|()
+operator|,
+name|checkIntegrity
+operator|,
+name|databaseProperties
+operator|,
+name|abbreviateIso
+operator|,
+name|abbreviateMedline
+operator|,
+name|unabbreviate
+operator|,
+name|exportAll
+operator|,
+name|exportSelected
+operator|,
+name|importCurrent
+operator|,
+name|saveAll
+operator|,
+name|focusTable
+operator|,
+name|increaseFontSize
+operator|,
+name|decreseFontSize
+operator|,
+name|defaultFontSize
+operator|,
+name|toggleRelevance
+operator|,
+name|toggleQualityAssured
+operator|,
+name|togglePrinted
+operator|,
+name|pushExternalButton
+operator|.
+name|getComponent
+argument_list|()
+block|)
+block|)
+class|;
+end_class
+
+begin_expr_stmt
+name|openDatabaseOnlyActions
+operator|.
+name|addAll
+argument_list|(
+name|newSpecificEntryAction
+argument_list|)
+expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
+name|openDatabaseOnlyActions
+operator|.
+name|addAll
+argument_list|(
+name|specialFieldButtons
+argument_list|)
+expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
+name|severalDatabasesOnlyActions
+operator|.
+name|clear
+argument_list|()
+expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
+name|severalDatabasesOnlyActions
+operator|.
+name|addAll
+argument_list|(
+name|Arrays
+operator|.
+name|asList
+argument_list|(
+name|nextTab
+argument_list|,
+name|prevTab
+argument_list|,
+name|sortTabs
+argument_list|)
+argument_list|)
+expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
+name|openAndSavedDatabasesOnlyActions
+operator|.
+name|addAll
+argument_list|(
+name|Collections
+operator|.
+name|singletonList
+argument_list|(
+name|openConsole
+argument_list|)
+argument_list|)
+expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
+name|sharedDatabaseOnlyActions
+operator|.
+name|addAll
+argument_list|(
+name|Collections
+operator|.
+name|singletonList
+argument_list|(
+name|pullChangesFromSharedDatabase
+argument_list|)
+argument_list|)
+expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
+name|noSharedDatabaseActions
+operator|.
+name|addAll
+argument_list|(
+name|Arrays
+operator|.
+name|asList
+argument_list|(
+name|save
+argument_list|,
+name|saveAll
+argument_list|)
+argument_list|)
+expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
+name|oneEntryOnlyActions
+operator|.
+name|clear
+argument_list|()
+expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
+name|oneEntryOnlyActions
+operator|.
+name|addAll
+argument_list|(
+name|Arrays
+operator|.
+name|asList
+argument_list|(
+name|editEntry
+argument_list|)
+argument_list|)
+expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
+name|oneEntryWithFileOnlyActions
+operator|.
+name|clear
+argument_list|()
+expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
+name|oneEntryWithFileOnlyActions
+operator|.
+name|addAll
+argument_list|(
+name|Arrays
+operator|.
+name|asList
+argument_list|(
+name|openFolder
+argument_list|,
+name|openFile
+argument_list|)
+argument_list|)
+expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
+name|oneEntryWithURLorDOIOnlyActions
+operator|.
+name|clear
+argument_list|()
+expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
+name|oneEntryWithURLorDOIOnlyActions
+operator|.
+name|addAll
+argument_list|(
+name|Arrays
+operator|.
+name|asList
+argument_list|(
+name|openUrl
+argument_list|)
+argument_list|)
+expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
+name|twoEntriesOnlyActions
+operator|.
+name|clear
+argument_list|()
+expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
+name|twoEntriesOnlyActions
+operator|.
+name|addAll
+argument_list|(
+name|Arrays
+operator|.
+name|asList
+argument_list|(
+name|mergeEntries
+argument_list|)
+argument_list|)
+expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
+name|atLeastOneEntryActions
+operator|.
+name|clear
+argument_list|()
+expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
+name|atLeastOneEntryActions
+operator|.
+name|addAll
+argument_list|(
+name|Arrays
+operator|.
+name|asList
+argument_list|(
+name|downloadFullText
+argument_list|,
+name|lookupIdentifiers
+argument_list|,
+name|exportLinkedFiles
+argument_list|)
+argument_list|)
+expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
+name|tabbedPane
+operator|.
+name|getTabs
+argument_list|()
+operator|.
+name|addListener
+argument_list|(
+name|this
+operator|::
+name|updateEnabledState
+argument_list|)
+expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
+operator|*
+operator|/
+end_expr_stmt
+
+begin_comment
+unit|}
 comment|/**      * Enable or Disable all actions based on the number of open tabs.      *<p>      * The action that are affected are set in initActions.      */
+end_comment
+
+begin_function
 DECL|method|updateEnabledState (ListChangeListener.Change<? extends Tab> change)
-specifier|public
+unit|public
 name|void
 name|updateEnabledState
 parameter_list|(
@@ -7572,7 +7903,13 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_comment
 comment|/**      * This method causes all open BasePanels to set up their tables      * anew. When called from PrefsDialog3, this updates to the new      * settings.      */
+end_comment
+
+begin_function
 DECL|method|setupAllTables ()
 specifier|public
 name|void
@@ -7636,6 +7973,9 @@ expr_stmt|;
 block|}
 block|}
 block|}
+end_function
+
+begin_function
 DECL|method|collectDatabaseFilePaths ()
 specifier|private
 name|List
@@ -7740,6 +8080,9 @@ return|return
 name|dbPaths
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|getUniquePathParts ()
 specifier|private
 name|List
@@ -7767,6 +8110,9 @@ name|dbPaths
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|updateAllTabTitles ()
 specifier|public
 name|void
@@ -7987,6 +8333,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_function
 DECL|method|addTab (BasePanel basePanel, boolean raisePanel)
 specifier|public
 name|void
@@ -8119,6 +8468,9 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 DECL|method|trackOpenNewDatabase (BasePanel basePanel)
 specifier|private
 name|void
@@ -8197,6 +8549,9 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 DECL|method|addTab (BibDatabaseContext databaseContext, boolean raisePanel)
 specifier|public
 name|BasePanel
@@ -8252,6 +8607,9 @@ return|return
 name|bp
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|readyForAutosave (BibDatabaseContext context)
 specifier|private
 name|boolean
@@ -8308,7 +8666,13 @@ name|isPresent
 argument_list|()
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * This method does the job of adding imported entries into the active      * database, or into a new one. It shows the ImportInspectionDialog if      * preferences indicate it should be used. Otherwise it imports directly.      *  @param panel     The BasePanel to add to.      * @param entries   The entries to add.      */
+end_comment
+
+begin_function
 DECL|method|addImportedEntries (final BasePanel panel, final List<BibEntry> entries)
 specifier|private
 name|void
@@ -8383,6 +8747,9 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 DECL|method|getFileHistory ()
 specifier|public
 name|FileHistoryMenu
@@ -8393,7 +8760,13 @@ return|return
 name|fileHistory
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Set the visibility of the progress bar in the right end of the      * status line at the bottom of the frame.      *<p>      * If not called on the event dispatch thread, this method uses      * SwingUtilities.invokeLater() to do the actual operation on the EDT.      */
+end_comment
+
+begin_function
 DECL|method|setProgressBarVisible (final boolean visible)
 specifier|public
 name|void
@@ -8438,7 +8811,13 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_comment
 comment|/**      * Sets the current value of the progress bar.      *<p>      * If not called on the event dispatch thread, this method uses      * SwingUtilities.invokeLater() to do the actual operation on the EDT.      */
+end_comment
+
+begin_function
 DECL|method|setProgressBarValue (final int value)
 specifier|public
 name|void
@@ -8483,7 +8862,13 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_comment
 comment|/**      * Sets the indeterminate status of the progress bar.      *<p>      * If not called on the event dispatch thread, this method uses      * SwingUtilities.invokeLater() to do the actual operation on the EDT.      */
+end_comment
+
+begin_function
 DECL|method|setProgressBarIndeterminate (final boolean value)
 specifier|public
 name|void
@@ -8528,7 +8913,13 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_comment
 comment|/**      * Sets the maximum value of the progress bar. Always call this method      * before using the progress bar, to set a maximum value appropriate to      * the task at hand.      *<p>      * If not called on the event dispatch thread, this method uses      * SwingUtilities.invokeLater() to do the actual operation on the EDT.      */
+end_comment
+
+begin_function
 DECL|method|setProgressBarMaximum (final int value)
 specifier|public
 name|void
@@ -8573,7 +8964,13 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_comment
 comment|/**      * Return a boolean, if the selected entry have file      * @param selectEntryList A selected entries list of the current base pane      * @return true, if the selected entry contains file.      * false, if multiple entries are selected or the selected entry doesn't contains file      */
+end_comment
+
+begin_function
 DECL|method|isExistFile (List<BibEntry> selectEntryList)
 specifier|private
 name|boolean
@@ -8624,7 +9021,13 @@ return|return
 literal|false
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Return a boolean, if the selected entry have url or doi      * @param selectEntryList A selected entries list of the current base pane      * @return true, if the selected entry contains url or doi.      * false, if multiple entries are selected or the selected entry doesn't contains url or doi      */
+end_comment
+
+begin_function
 DECL|method|isExistURLorDOI (List<BibEntry> selectEntryList)
 specifier|private
 name|boolean
@@ -8689,6 +9092,9 @@ return|return
 literal|false
 return|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Override
 DECL|method|showMessage (String message, String title, int msgType)
@@ -8720,6 +9126,9 @@ name|msgType
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Override
 DECL|method|setStatus (String s)
@@ -8737,6 +9146,9 @@ name|s
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Override
 DECL|method|showMessage (String message)
@@ -8758,7 +9170,13 @@ name|message
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Ask if the user really wants to close the given database      *      * @return true if the user choose to close the database      */
+end_comment
+
+begin_function
 DECL|method|confirmClose (BasePanel panel)
 specifier|private
 name|boolean
@@ -8998,6 +9416,9 @@ return|return
 literal|false
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|closeTab (BasePanel panel)
 specifier|private
 name|void
@@ -9119,6 +9540,9 @@ name|context
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 DECL|method|removeTab (BasePanel panel)
 specifier|private
 name|void
@@ -9176,6 +9600,9 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 DECL|method|closeCurrentTab ()
 specifier|public
 name|void
@@ -9189,6 +9616,9 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 DECL|method|getOpenDatabaseAction ()
 specifier|public
 name|OpenDatabaseAction
@@ -9203,6 +9633,9 @@ name|this
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|getStatusLineText ()
 specifier|public
 name|String
@@ -9216,6 +9649,9 @@ name|getText
 argument_list|()
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|getSidePaneManager ()
 specifier|public
 name|SidePaneManager
@@ -9226,6 +9662,9 @@ return|return
 name|sidePaneManager
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|getPushApplications ()
 specifier|public
 name|PushToApplications
@@ -9236,6 +9675,9 @@ return|return
 name|pushApplications
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|getGlobalSearchBar ()
 specifier|public
 name|GlobalSearchBar
@@ -9246,6 +9688,9 @@ return|return
 name|globalSearchBar
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|getUndoManager ()
 specifier|public
 name|CountingUndoManager
@@ -9256,6 +9701,9 @@ return|return
 name|undoManager
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|getDialogService ()
 specifier|public
 name|DialogService
@@ -9266,7 +9714,13 @@ return|return
 name|dialogService
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * The action concerned with closing the window.      */
+end_comment
+
+begin_class
 DECL|class|CloseAction
 specifier|private
 class|class
@@ -9287,7 +9741,13 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+end_class
+
+begin_comment
 comment|/**      * Class for handling general actions; cut, copy and paste. The focused component is      * kept track of by Globals.focusListener, and we call the action stored under the      * relevant name in its action map.      */
+end_comment
+
+begin_class
 DECL|class|EditAction
 specifier|private
 class|class
@@ -9392,6 +9852,9 @@ expr_stmt|;
 block|}
 block|}
 block|}
+end_class
+
+begin_function
 DECL|method|setDefaultTableFontSize ()
 specifier|private
 name|void
@@ -9452,6 +9915,9 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 DECL|method|increaseTableFontSize ()
 specifier|private
 name|void
@@ -9510,6 +9976,9 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 DECL|method|decreaseTableFontSize ()
 specifier|private
 name|void
@@ -9582,6 +10051,9 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_class
 DECL|class|CloseDatabaseAction
 specifier|private
 class|class
@@ -9605,6 +10077,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+end_class
+
+begin_class
 DECL|class|UndoRedoEventManager
 specifier|private
 class|class
@@ -9666,8 +10141,8 @@ block|{
 comment|/* TODO             SwingUtilities.invokeLater(() -> {                 undo.putValue(Action.SHORT_DESCRIPTION, event.getUndoDescription());                 undo.setEnabled(event.isCanUndo());                 redo.putValue(Action.SHORT_DESCRIPTION, event.getRedoDescription());                 redo.setEnabled(event.isCanRedo());             });             */
 block|}
 block|}
-block|}
 end_class
 
+unit|}
 end_unit
 

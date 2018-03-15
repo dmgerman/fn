@@ -44,19 +44,13 @@ name|Pattern
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|github
-operator|.
-name|tomtung
-operator|.
-name|latex2unicode
-operator|.
-name|LaTeX2Unicode
-import|;
-end_import
+begin_comment
+comment|// TODO: temporarily removed Latex2Unicode, Java 9
+end_comment
+
+begin_comment
+comment|//import com.github.tomtung.latex2unicode.LaTeX2Unicode;
+end_comment
 
 begin_comment
 comment|/**  * Adapter class for the latex2unicode lib. This is an alternative to our LatexToUnicode class  */
@@ -134,26 +128,7 @@ argument_list|(
 name|replacementChar
 argument_list|)
 decl_stmt|;
-name|toFormat
-operator|=
-name|Normalizer
-operator|.
-name|normalize
-argument_list|(
-name|LaTeX2Unicode
-operator|.
-name|convert
-argument_list|(
-name|toFormat
-argument_list|)
-argument_list|,
-name|Normalizer
-operator|.
-name|Form
-operator|.
-name|NFC
-argument_list|)
-expr_stmt|;
+comment|//        toFormat = Normalizer.normalize(LaTeX2Unicode.convert(toFormat), Normalizer.Form.NFC);
 return|return
 name|underscorePlaceholderMatcher
 operator|.

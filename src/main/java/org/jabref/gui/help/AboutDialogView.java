@@ -174,19 +174,13 @@ name|ViewLoader
 import|;
 end_import
 
-begin_import
-import|import
-name|de
-operator|.
-name|codecentric
-operator|.
-name|centerdevice
-operator|.
-name|javafxsvg
-operator|.
-name|SvgImageLoaderFactory
-import|;
-end_import
+begin_comment
+comment|// TODO: temporarily removed SVG library
+end_comment
+
+begin_comment
+comment|//import de.codecentric.centerdevice.javafxsvg.SvgImageLoaderFactory;
+end_comment
 
 begin_class
 DECL|class|AboutDialogView
@@ -314,11 +308,7 @@ argument_list|,
 name|buildInfo
 argument_list|)
 expr_stmt|;
-name|SvgImageLoaderFactory
-operator|.
-name|install
-argument_list|()
-expr_stmt|;
+comment|//SvgImageLoaderFactory.install();
 name|Image
 name|icon
 init|=

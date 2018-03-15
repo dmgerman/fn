@@ -190,6 +190,18 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|tree
+operator|.
+name|TreeNode
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|jabref
@@ -652,9 +664,10 @@ literal|"Merged external changes"
 argument_list|)
 argument_list|)
 decl_stmt|;
+comment|// TODO: Java 9: Generics are stricter?
 name|Enumeration
 argument_list|<
-name|ChangeViewModel
+name|TreeNode
 argument_list|>
 name|enumer
 init|=
@@ -670,7 +683,7 @@ literal|false
 decl_stmt|;
 for|for
 control|(
-name|ChangeViewModel
+name|TreeNode
 name|c
 range|:
 name|Collections
@@ -681,6 +694,14 @@ name|enumer
 argument_list|)
 control|)
 block|{
+name|ChangeViewModel
+name|model
+init|=
+operator|(
+name|ChangeViewModel
+operator|)
+name|c
+decl_stmt|;
 name|boolean
 name|allAccepted
 init|=
@@ -688,12 +709,12 @@ literal|false
 decl_stmt|;
 if|if
 condition|(
-name|c
+name|model
 operator|.
 name|isAcceptable
 argument_list|()
 operator|&&
-name|c
+name|model
 operator|.
 name|isAccepted
 argument_list|()
@@ -701,7 +722,7 @@ condition|)
 block|{
 name|allAccepted
 operator|=
-name|c
+name|model
 operator|.
 name|makeChange
 argument_list|(

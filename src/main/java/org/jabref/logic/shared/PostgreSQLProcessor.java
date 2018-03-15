@@ -433,140 +433,29 @@ name|dbmsSynchronizer
 parameter_list|)
 block|{
 comment|// Disable cleanup output of ThreadedHousekeeper
-name|Logger
-operator|.
-name|getLogger
-argument_list|(
-name|ThreadedHousekeeper
-operator|.
-name|class
-operator|.
-name|getName
-argument_list|()
-argument_list|)
-operator|.
-name|setLevel
-argument_list|(
-name|Level
-operator|.
-name|SEVERE
-argument_list|)
-expr_stmt|;
-name|this
-operator|.
-name|listener
-operator|=
-operator|new
-name|PostgresSQLNotificationListener
-argument_list|(
-name|dbmsSynchronizer
-argument_list|)
-expr_stmt|;
-name|PGDataSource
-name|dataSource
-init|=
-operator|new
-name|PGDataSource
-argument_list|()
-decl_stmt|;
-name|dataSource
-operator|.
-name|setHost
-argument_list|(
-name|connectionProperties
-operator|.
-name|getHost
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|dataSource
-operator|.
-name|setPort
-argument_list|(
-name|connectionProperties
-operator|.
-name|getPort
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|dataSource
-operator|.
-name|setDatabase
-argument_list|(
-name|connectionProperties
-operator|.
-name|getDatabase
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|dataSource
-operator|.
-name|setUser
-argument_list|(
-name|connectionProperties
-operator|.
-name|getUser
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|dataSource
-operator|.
-name|setPassword
-argument_list|(
-name|connectionProperties
-operator|.
-name|getPassword
-argument_list|()
-argument_list|)
-expr_stmt|;
-try|try
-block|{
-name|pgConnection
-operator|=
-operator|(
-name|PGConnection
-operator|)
-name|dataSource
-operator|.
-name|getConnection
-argument_list|()
-expr_stmt|;
-name|pgConnection
-operator|.
-name|createStatement
-argument_list|()
-operator|.
-name|execute
-argument_list|(
-literal|"LISTEN jabrefLiveUpdate"
-argument_list|)
-expr_stmt|;
-comment|// Do not use `new PostgresSQLNotificationListener(...)` as the object has to exist continuously!
-comment|// Otherwise the listener is going to be deleted by GC.
-name|pgConnection
-operator|.
-name|addNotificationListener
-argument_list|(
-name|listener
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|SQLException
-name|e
-parameter_list|)
-block|{
-name|LOGGER
-operator|.
-name|error
-argument_list|(
-literal|"SQL Error: "
-argument_list|,
-name|e
-argument_list|)
-expr_stmt|;
-block|}
+comment|// TODO: this one is strange
+comment|/*         /home/florian/jabref/src/main/java/org/jabref/logic/shared/PostgreSQLProcessor.java:98: error: cannot access Referenceable         dataSource.setHost(connectionProperties.getHost());                   ^         class file for javax.naming.Referenceable not found         */
+comment|//        LOGGER.error("Notification listener disabled for now.");
+comment|//        Logger.getLogger(ThreadedHousekeeper.class.getName()).setLevel(Level.SEVERE);
+comment|//
+comment|//        this.listener = new PostgresSQLNotificationListener(dbmsSynchronizer);
+comment|//
+comment|//        PGDataSource dataSource = new PGDataSource();
+comment|//        dataSource.setHost(connectionProperties.getHost());
+comment|//        dataSource.setPort(connectionProperties.getPort());
+comment|//        dataSource.setDatabase(connectionProperties.getDatabase());
+comment|//        dataSource.setUser(connectionProperties.getUser());
+comment|//        dataSource.setPassword(connectionProperties.getPassword());
+comment|//
+comment|//        try {
+comment|//            pgConnection = (PGConnection) dataSource.getConnection();
+comment|//            pgConnection.createStatement().execute("LISTEN jabrefLiveUpdate");
+comment|//            // Do not use `new PostgresSQLNotificationListener(...)` as the object has to exist continuously!
+comment|//            // Otherwise the listener is going to be deleted by GC.
+comment|//            pgConnection.addNotificationListener(listener);
+comment|//        } catch (SQLException e) {
+comment|//            LOGGER.error("SQL Error: ", e);
+comment|//        }
 block|}
 annotation|@
 name|Override

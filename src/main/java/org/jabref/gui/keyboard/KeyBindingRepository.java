@@ -831,6 +831,7 @@ name|KeyEvent
 name|keyEvent
 parameter_list|)
 block|{
+comment|// TODO: removed access to internal API: does this do the same?
 name|Optional
 argument_list|<
 name|KeyCode
@@ -853,7 +854,7 @@ name|k
 lambda|->
 name|k
 operator|.
-name|impl_getCode
+name|getCode
 argument_list|()
 operator|==
 name|keyEvent

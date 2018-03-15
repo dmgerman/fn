@@ -242,25 +242,25 @@ begin_import
 import|import
 name|javafx
 operator|.
+name|application
+operator|.
+name|Platform
+import|;
+end_import
+
+begin_import
+import|import
+name|javafx
+operator|.
 name|fxml
 operator|.
 name|FXMLLoader
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|sun
-operator|.
-name|javafx
-operator|.
-name|application
-operator|.
-name|PlatformImpl
-import|;
-end_import
+begin_comment
+comment|//import com.sun.javafx.application.PlatformImpl;
+end_comment
 
 begin_class
 DECL|class|LocalizationParser
@@ -1342,7 +1342,8 @@ return|;
 block|}
 block|}
 decl_stmt|;
-name|PlatformImpl
+comment|// TODO: removed access to internal API: Why was it used?
+name|Platform
 operator|.
 name|startup
 argument_list|(
@@ -1381,13 +1382,8 @@ literal|null
 argument_list|)
 expr_stmt|;
 comment|// Don't check if root is null (needed for custom controls, where the root value is normally set in the FXMLLoader)
-name|loader
-operator|.
-name|impl_setStaticLoad
-argument_list|(
-literal|true
-argument_list|)
-expr_stmt|;
+comment|// TODO: removed access to internal API.
+comment|//            loader.impl_setStaticLoad(true);
 name|loader
 operator|.
 name|load

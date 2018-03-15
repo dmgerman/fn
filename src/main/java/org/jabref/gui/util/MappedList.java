@@ -582,6 +582,24 @@ return|;
 block|}
 annotation|@
 name|Override
+DECL|method|getViewIndex (int index)
+specifier|public
+name|int
+name|getViewIndex
+parameter_list|(
+name|int
+name|index
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|UnsupportedOperationException
+argument_list|()
+throw|;
+comment|// TODO: method was added in Java 9. Provide implementation?
+block|}
+annotation|@
+name|Override
 DECL|method|get (int index)
 specifier|public
 name|A
