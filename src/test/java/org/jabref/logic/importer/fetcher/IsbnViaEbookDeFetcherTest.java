@@ -406,7 +406,7 @@ name|fetcher
 operator|.
 name|performSearchById
 argument_list|(
-literal|"0134685997"
+literal|"9780134685991"
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -492,7 +492,7 @@ name|setField
 argument_list|(
 literal|"author"
 argument_list|,
-literal|"Dumas, Marlon and Rosa, Marcello La and Mendling, Jan and Reijers, Hajo A."
+literal|"Marlon Dumas and Marcello La Rosa and Jan Mendling and Hajo A. Reijers"
 argument_list|)
 expr_stmt|;
 name|bibEntry
