@@ -370,7 +370,7 @@ name|setField
 argument_list|(
 literal|"biburl"
 argument_list|,
-literal|"http://dblp.org/rec/bib/journals/stt/GeigerHL16"
+literal|"https://dblp.org/rec/bib/journals/stt/GeigerHL16"
 argument_list|)
 expr_stmt|;
 name|entry
@@ -379,7 +379,7 @@ name|setField
 argument_list|(
 literal|"bibsource"
 argument_list|,
-literal|"dblp computer science bibliography, http://dblp.org"
+literal|"dblp computer science bibliography, https://dblp.org"
 argument_list|)
 expr_stmt|;
 block|}
