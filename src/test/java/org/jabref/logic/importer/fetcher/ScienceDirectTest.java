@@ -197,7 +197,7 @@ argument_list|(
 operator|new
 name|URL
 argument_list|(
-literal|"http://www.sciencedirect.com/science/article/pii/S1674775515001079/pdfft?md5=2b19b19a387cffbae237ca6a987279df&pid=1-s2.0-S1674775515001079-main.pdf"
+literal|"https://www.sciencedirect.com/science/article/pii/S1674775515001079/pdfft?md5=2b19b19a387cffbae237ca6a987279df&pid=1-s2.0-S1674775515001079-main.pdf"
 argument_list|)
 argument_list|)
 argument_list|,
@@ -242,7 +242,7 @@ argument_list|(
 operator|new
 name|URL
 argument_list|(
-literal|"http://www.sciencedirect.com/science/article/pii/S2212671614001024/pdf?md5=4e2e9a369b4d5b3db5100aba599bef8b&pid=1-s2.0-S2212671614001024-main.pdf"
+literal|"https://www.sciencedirect.com/science/article/pii/S2212671614001024/pdf?md5=4e2e9a369b4d5b3db5100aba599bef8b&pid=1-s2.0-S2212671614001024-main.pdf"
 argument_list|)
 argument_list|)
 argument_list|,

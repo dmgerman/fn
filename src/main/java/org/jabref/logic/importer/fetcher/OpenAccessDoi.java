@@ -191,7 +191,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A fulltext fetcher that uses<a href="https://oadoi.org/">oaDOI</a>.  *  * @implSpec API is documented at https://oadoi.org/api/v2  */
+comment|/**  * A fulltext fetcher that uses<a href="https://oadoi.org/">oaDOI</a>.  *  * @implSpec API is documented at http://unpaywall.org/api/v2  */
 end_comment
 
 begin_class
