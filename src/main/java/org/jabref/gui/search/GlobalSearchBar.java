@@ -310,18 +310,6 @@ name|scene
 operator|.
 name|input
 operator|.
-name|KeyCode
-import|;
-end_import
-
-begin_import
-import|import
-name|javafx
-operator|.
-name|scene
-operator|.
-name|input
-operator|.
 name|KeyEvent
 import|;
 end_import
@@ -978,6 +966,8 @@ operator|.
 name|getKeyPrefs
 argument_list|()
 decl_stmt|;
+name|searchField
+operator|.
 name|addEventFilter
 argument_list|(
 name|KeyEvent
@@ -1051,6 +1041,11 @@ expr_stmt|;
 name|focus
 argument_list|()
 expr_stmt|;
+name|event
+operator|.
+name|consume
+argument_list|()
+expr_stmt|;
 block|}
 elseif|else
 if|if
@@ -1084,6 +1079,11 @@ name|getSelectionModel
 argument_list|()
 operator|.
 name|selectFirst
+argument_list|()
+expr_stmt|;
+name|event
+operator|.
+name|consume
 argument_list|()
 expr_stmt|;
 block|}
@@ -3096,6 +3096,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|getNode ()
 specifier|public
 name|Node
@@ -3108,6 +3110,8 @@ operator|.
 name|container
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getSkinnable ()
 specifier|public
 name|AutoCompletePopup
@@ -3123,6 +3127,8 @@ operator|.
 name|control
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|dispose ()
 specifier|public
 name|void
