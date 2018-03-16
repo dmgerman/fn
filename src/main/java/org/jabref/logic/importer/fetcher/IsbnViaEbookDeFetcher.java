@@ -174,6 +174,15 @@ name|IsbnViaEbookDeFetcher
 extends|extends
 name|AbstractIsbnFetcher
 block|{
+DECL|field|BASE_URL
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|BASE_URL
+init|=
+literal|"http://www.ebook.de/de/tools/isbn2bibtex"
+decl_stmt|;
 DECL|method|IsbnViaEbookDeFetcher (ImportFormatPreferences importFormatPreferences)
 specifier|public
 name|IsbnViaEbookDeFetcher
@@ -230,7 +239,7 @@ init|=
 operator|new
 name|URIBuilder
 argument_list|(
-literal|"http://www.ebook.de/de/tools/isbn2bibtex"
+name|BASE_URL
 argument_list|)
 decl_stmt|;
 name|uriBuilder
