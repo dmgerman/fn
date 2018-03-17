@@ -647,6 +647,8 @@ argument_list|,
 name|suggestionProvider
 argument_list|,
 name|fieldCheckers
+argument_list|,
+name|preferences
 argument_list|)
 return|;
 block|}

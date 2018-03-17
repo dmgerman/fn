@@ -1386,7 +1386,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**      * Determines filename provided by an entry in a database      *      * @param database        the database, where the entry is located      * @param entry           the entry to which the file should be linked to      * @param fileNamePattern the filename pattern      * @param prefs           the layout preferences      * @return a suggested fileName      * @Deprecated use String createFileNameFromPattern(BibDatabase database, BibEntry entry, String fileNamePattern ) instead.      */
+comment|/**      * Determines filename provided by an entry in a database      *      * @param database        the database, where the entry is located      * @param entry           the entry to which the file should be linked to      * @param fileNamePattern the filename pattern      * @param prefs           the layout preferences      * @return a suggested fileName      * @deprecated use String createFileNameFromPattern(BibDatabase database, BibEntry entry, String fileNamePattern ) instead.      */
 annotation|@
 name|Deprecated
 DECL|method|createFileNameFromPattern (BibDatabase database, BibEntry entry, String fileNamePattern, LayoutFormatterPreferences prefs)
@@ -1559,12 +1559,6 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|(
-name|targetName
-operator|==
-literal|null
-operator|)
-operator|||
 name|targetName
 operator|.
 name|isEmpty
@@ -1618,10 +1612,6 @@ block|{
 name|String
 name|targetName
 init|=
-literal|null
-decl_stmt|;
-name|targetName
-operator|=
 name|BracketedPattern
 operator|.
 name|expandBrackets
@@ -1634,15 +1624,9 @@ name|entry
 argument_list|,
 name|database
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 if|if
 condition|(
-operator|(
-name|targetName
-operator|==
-literal|null
-operator|)
-operator|||
 name|targetName
 operator|.
 name|isEmpty
