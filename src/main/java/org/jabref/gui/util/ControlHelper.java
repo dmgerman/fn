@@ -48,9 +48,7 @@ name|org
 operator|.
 name|jabref
 operator|.
-name|gui
-operator|.
-name|AbstractView
+name|Globals
 import|;
 end_import
 
@@ -183,29 +181,16 @@ name|load
 argument_list|()
 expr_stmt|;
 comment|// Add our base css file
+name|Globals
+operator|.
+name|getThemeLoader
+argument_list|()
+operator|.
+name|installBaseCss
+argument_list|(
 name|control
-operator|.
-name|getStylesheets
-argument_list|()
-operator|.
-name|add
-argument_list|(
-literal|0
-argument_list|,
-name|AbstractView
-operator|.
-name|class
-operator|.
-name|getResource
-argument_list|(
-literal|"Main.css"
-argument_list|)
-operator|.
-name|toExternalForm
-argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// Add language resource
 block|}
 catch|catch
 parameter_list|(
