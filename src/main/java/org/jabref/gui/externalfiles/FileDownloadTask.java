@@ -214,6 +214,17 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|// Make sure directory exists since otherwise copy fails
+name|Files
+operator|.
+name|createDirectories
+argument_list|(
+name|destination
+operator|.
+name|getParent
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|Files
 operator|.
 name|copy

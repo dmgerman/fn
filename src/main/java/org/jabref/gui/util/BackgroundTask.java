@@ -179,10 +179,10 @@ literal|0
 argument_list|)
 argument_list|)
 decl_stmt|;
-DECL|field|workDone
+DECL|field|workDonePercentage
 specifier|private
 name|DoubleProperty
-name|workDone
+name|workDonePercentage
 init|=
 operator|new
 name|SimpleDoubleProperty
@@ -195,7 +195,7 @@ specifier|public
 name|BackgroundTask
 parameter_list|()
 block|{
-name|workDone
+name|workDonePercentage
 operator|.
 name|bind
 argument_list|(
@@ -203,14 +203,13 @@ name|EasyBind
 operator|.
 name|map
 argument_list|(
-name|progressProperty
-argument_list|()
+name|progress
 argument_list|,
 name|BackgroundTask
 operator|.
 name|BackgroundProgress
 operator|::
-name|getWorkDone
+name|getWorkDonePercentage
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -261,27 +260,27 @@ block|}
 block|}
 return|;
 block|}
-DECL|method|getWorkDone ()
+DECL|method|getWorkDonePercentage ()
 specifier|public
 name|double
-name|getWorkDone
+name|getWorkDonePercentage
 parameter_list|()
 block|{
 return|return
-name|workDone
+name|workDonePercentage
 operator|.
 name|get
 argument_list|()
 return|;
 block|}
-DECL|method|workDoneProperty ()
+DECL|method|workDonePercentageProperty ()
 specifier|public
 name|DoubleProperty
-name|workDoneProperty
+name|workDonePercentageProperty
 parameter_list|()
 block|{
 return|return
-name|workDone
+name|workDonePercentage
 return|;
 block|}
 DECL|method|getProgress ()
@@ -640,6 +639,32 @@ block|{
 return|return
 name|max
 return|;
+block|}
+DECL|method|getWorkDonePercentage ()
+specifier|public
+name|double
+name|getWorkDonePercentage
+parameter_list|()
+block|{
+if|if
+condition|(
+name|max
+operator|==
+literal|0
+condition|)
+block|{
+return|return
+literal|0
+return|;
+block|}
+else|else
+block|{
+return|return
+name|workDone
+operator|/
+name|max
+return|;
+block|}
 block|}
 block|}
 block|}
