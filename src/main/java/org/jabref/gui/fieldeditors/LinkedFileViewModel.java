@@ -436,20 +436,6 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|journals
-operator|.
-name|JournalAbbreviationLoader
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
 name|l10n
 operator|.
 name|Localization
@@ -743,7 +729,7 @@ specifier|final
 name|String
 name|fileNamePattern
 decl_stmt|;
-DECL|method|LinkedFileViewModel (LinkedFile linkedFile, BibEntry entry, BibDatabaseContext databaseContext, TaskExecutor taskExecutor, DialogService dialogService, JabRefPreferences preferences, JournalAbbreviationLoader abbreviationLoader)
+DECL|method|LinkedFileViewModel (LinkedFile linkedFile, BibEntry entry, BibDatabaseContext databaseContext, TaskExecutor taskExecutor, DialogService dialogService, JabRefPreferences preferences)
 specifier|public
 name|LinkedFileViewModel
 parameter_list|(
@@ -764,9 +750,6 @@ name|dialogService
 parameter_list|,
 name|JabRefPreferences
 name|preferences
-parameter_list|,
-name|JournalAbbreviationLoader
-name|abbreviationLoader
 parameter_list|)
 block|{
 name|this
@@ -828,13 +811,12 @@ name|fileDirPattern
 operator|=
 name|preferences
 operator|.
-name|getCleanupPreferences
+name|get
 argument_list|(
-name|abbreviationLoader
-argument_list|)
+name|JabRefPreferences
 operator|.
-name|getFileDirPattern
-argument_list|()
+name|IMPORT_FILEDIRPATTERN
+argument_list|)
 expr_stmt|;
 name|downloadOngoing
 operator|.

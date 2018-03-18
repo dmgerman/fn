@@ -434,20 +434,6 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|journals
-operator|.
-name|JournalAbbreviationLoader
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
 name|l10n
 operator|.
 name|Localization
@@ -570,7 +556,7 @@ name|LinkedFileViewModel
 argument_list|>
 name|listView
 decl_stmt|;
-DECL|method|LinkedFilesEditor (String fieldName, DialogService dialogService, BibDatabaseContext databaseContext, TaskExecutor taskExecutor, AutoCompleteSuggestionProvider<?> suggestionProvider, FieldCheckers fieldCheckers, JabRefPreferences preferences, JournalAbbreviationLoader abbreviationLoader)
+DECL|method|LinkedFilesEditor (String fieldName, DialogService dialogService, BibDatabaseContext databaseContext, TaskExecutor taskExecutor, AutoCompleteSuggestionProvider<?> suggestionProvider, FieldCheckers fieldCheckers, JabRefPreferences preferences)
 specifier|public
 name|LinkedFilesEditor
 parameter_list|(
@@ -597,9 +583,6 @@ name|fieldCheckers
 parameter_list|,
 name|JabRefPreferences
 name|preferences
-parameter_list|,
-name|JournalAbbreviationLoader
-name|abbreviationLoader
 parameter_list|)
 block|{
 name|this
@@ -622,8 +605,6 @@ argument_list|,
 name|fieldCheckers
 argument_list|,
 name|preferences
-argument_list|,
-name|abbreviationLoader
 argument_list|)
 expr_stmt|;
 name|ControlHelper

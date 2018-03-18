@@ -350,20 +350,6 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|journals
-operator|.
-name|JournalAbbreviationLoader
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
 name|l10n
 operator|.
 name|Localization
@@ -549,13 +535,7 @@ specifier|final
 name|JabRefPreferences
 name|preferences
 decl_stmt|;
-DECL|field|journalAbbreviationLoader
-specifier|private
-specifier|final
-name|JournalAbbreviationLoader
-name|journalAbbreviationLoader
-decl_stmt|;
-DECL|method|LinkedFilesEditorViewModel (String fieldName, AutoCompleteSuggestionProvider<?> suggestionProvider, DialogService dialogService, BibDatabaseContext databaseContext, TaskExecutor taskExecutor, FieldCheckers fieldCheckers, JabRefPreferences preferences, JournalAbbreviationLoader journalAbbreviationLoader)
+DECL|method|LinkedFilesEditorViewModel (String fieldName, AutoCompleteSuggestionProvider<?> suggestionProvider, DialogService dialogService, BibDatabaseContext databaseContext, TaskExecutor taskExecutor, FieldCheckers fieldCheckers, JabRefPreferences preferences)
 specifier|public
 name|LinkedFilesEditorViewModel
 parameter_list|(
@@ -582,9 +562,6 @@ name|fieldCheckers
 parameter_list|,
 name|JabRefPreferences
 name|preferences
-parameter_list|,
-name|JournalAbbreviationLoader
-name|journalAbbreviationLoader
 parameter_list|)
 block|{
 name|super
@@ -619,12 +596,6 @@ operator|.
 name|preferences
 operator|=
 name|preferences
-expr_stmt|;
-name|this
-operator|.
-name|journalAbbreviationLoader
-operator|=
-name|journalAbbreviationLoader
 expr_stmt|;
 name|BindingsHelper
 operator|.
@@ -838,8 +809,6 @@ argument_list|,
 name|dialogService
 argument_list|,
 name|preferences
-argument_list|,
-name|journalAbbreviationLoader
 argument_list|)
 return|;
 block|}
@@ -907,8 +876,6 @@ argument_list|,
 name|dialogService
 argument_list|,
 name|preferences
-argument_list|,
-name|journalAbbreviationLoader
 argument_list|)
 argument_list|)
 operator|.
@@ -1059,8 +1026,6 @@ argument_list|,
 name|dialogService
 argument_list|,
 name|preferences
-argument_list|,
-name|journalAbbreviationLoader
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1218,8 +1183,6 @@ argument_list|,
 name|dialogService
 argument_list|,
 name|preferences
-argument_list|,
-name|journalAbbreviationLoader
 argument_list|)
 decl_stmt|;
 name|newLinkedFile
@@ -1478,8 +1441,6 @@ argument_list|,
 name|dialogService
 argument_list|,
 name|preferences
-argument_list|,
-literal|null
 argument_list|)
 decl_stmt|;
 name|files
