@@ -541,14 +541,7 @@ argument_list|(
 name|RESOURCE_PREFIX
 argument_list|,
 name|locale
-argument_list|,
-operator|new
-name|EncodingControl
-argument_list|(
-name|StandardCharsets
-operator|.
-name|UTF_8
-argument_list|)
+comment|/*, new EncodingControl(StandardCharsets.UTF_8)*/
 argument_list|)
 decl_stmt|;
 name|ResourceBundle
@@ -561,14 +554,7 @@ argument_list|(
 name|MENU_RESOURCE_PREFIX
 argument_list|,
 name|locale
-argument_list|,
-operator|new
-name|EncodingControl
-argument_list|(
-name|StandardCharsets
-operator|.
-name|UTF_8
-argument_list|)
+comment|/*, new EncodingControl(StandardCharsets.UTF_8)*/
 argument_list|)
 decl_stmt|;
 name|Objects
