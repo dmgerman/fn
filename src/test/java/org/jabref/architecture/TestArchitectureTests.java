@@ -258,15 +258,6 @@ specifier|final
 name|String
 name|CLASS_ORG_JABREF_ENTRY_EDITOR_TEST
 init|=
-literal|"SourceTabTest"
-decl_stmt|;
-DECL|field|CLASS_ORG_JABREF_ENTRY_EDITOR_TEST
-specifier|private
-specifier|static
-specifier|final
-name|String
-name|CLASS_ORG_JABREF_ENTRY_EDITOR_TEST
-init|=
 literal|"EntryEditorTest"
 decl_stmt|;
 DECL|field|CLASS_ORG_JABREF_LINKED_FILE_VIEW_MODEL_TEST
@@ -286,6 +277,7 @@ name|forbiddenPackage
 decl_stmt|;
 DECL|field|exceptions
 specifier|private
+specifier|final
 name|List
 argument_list|<
 name|String

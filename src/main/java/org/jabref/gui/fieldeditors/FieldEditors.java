@@ -649,6 +649,8 @@ argument_list|,
 name|fieldCheckers
 argument_list|,
 name|preferences
+argument_list|,
+name|journalAbbreviationLoader
 argument_list|)
 return|;
 block|}

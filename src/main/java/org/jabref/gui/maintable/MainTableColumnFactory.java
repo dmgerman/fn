@@ -1925,20 +1925,22 @@ lambda|->
 name|event
 lambda|->
 block|{
-block|if (event.getButton(
+block|if ((event.getButton(
 argument_list|)
 operator|==
 name|MouseButton
 operator|.
 name|PRIMARY
-operator|&&
-name|linkedFiles
-operator|.
-name|size
-argument_list|()
-operator|==
-literal|1
 block|)
+function|&&
+parameter_list|(
+function|linkedFiles.size
+parameter_list|()
+function|== 1
+end_function
+
+begin_block
+unit|))
 block|{
 comment|// Only one linked file -> open directly
 name|LinkedFileViewModel
@@ -1961,11 +1963,19 @@ argument_list|()
 argument_list|,
 name|database
 argument_list|,
+name|Globals
+operator|.
+name|TASK_EXECUTOR
+argument_list|,
 name|dialogService
 argument_list|,
 name|Globals
 operator|.
-name|TASK_EXECUTOR
+name|prefs
+argument_list|,
+name|Globals
+operator|.
+name|journalAbbreviationLoader
 argument_list|)
 decl_stmt|;
 name|linkedFileViewModel
@@ -1974,7 +1984,7 @@ name|open
 argument_list|()
 expr_stmt|;
 block|}
-end_function
+end_block
 
 begin_expr_stmt
 unit|})
@@ -2052,11 +2062,19 @@ argument_list|()
 argument_list|,
 name|database
 argument_list|,
+name|Globals
+operator|.
+name|TASK_EXECUTOR
+argument_list|,
 name|dialogService
 argument_list|,
 name|Globals
 operator|.
-name|TASK_EXECUTOR
+name|prefs
+argument_list|,
+name|Globals
+operator|.
+name|journalAbbreviationLoader
 argument_list|)
 decl_stmt|;
 name|MenuItem

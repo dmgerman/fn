@@ -140,20 +140,6 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|layout
-operator|.
-name|LayoutFormatterPreferences
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
 name|util
 operator|.
 name|io
@@ -350,9 +336,7 @@ specifier|private
 name|LinkedFile
 name|singleFieldCleanup
 decl_stmt|;
-comment|// FIXME: (S.G.) remove unused constructor argument 'layoutPreferences' later; for now,
-comment|// however, the argument is retained in order not to change the class interface:
-DECL|method|RenamePdfCleanup (boolean onlyRelativePaths, BibDatabaseContext databaseContext, String fileNamePattern, LayoutFormatterPreferences layoutPreferences, FileDirectoryPreferences fileDirectoryPreferences)
+DECL|method|RenamePdfCleanup (boolean onlyRelativePaths, BibDatabaseContext databaseContext, String fileNamePattern, FileDirectoryPreferences fileDirectoryPreferences)
 specifier|public
 name|RenamePdfCleanup
 parameter_list|(
@@ -364,9 +348,6 @@ name|databaseContext
 parameter_list|,
 name|String
 name|fileNamePattern
-parameter_list|,
-name|LayoutFormatterPreferences
-name|layoutPreferences
 parameter_list|,
 name|FileDirectoryPreferences
 name|fileDirectoryPreferences
@@ -407,7 +388,7 @@ operator|=
 name|fileDirectoryPreferences
 expr_stmt|;
 block|}
-DECL|method|RenamePdfCleanup (boolean onlyRelativePaths, BibDatabaseContext databaseContext, String fileNamePattern, LayoutFormatterPreferences layoutPreferences, FileDirectoryPreferences fileDirectoryPreferences, LinkedFile singleField)
+DECL|method|RenamePdfCleanup (boolean onlyRelativePaths, BibDatabaseContext databaseContext, String fileNamePattern, FileDirectoryPreferences fileDirectoryPreferences, LinkedFile singleField)
 specifier|public
 name|RenamePdfCleanup
 parameter_list|(
@@ -419,9 +400,6 @@ name|databaseContext
 parameter_list|,
 name|String
 name|fileNamePattern
-parameter_list|,
-name|LayoutFormatterPreferences
-name|layoutPreferences
 parameter_list|,
 name|FileDirectoryPreferences
 name|fileDirectoryPreferences
@@ -437,8 +415,6 @@ argument_list|,
 name|databaseContext
 argument_list|,
 name|fileNamePattern
-argument_list|,
-name|layoutPreferences
 argument_list|,
 name|fileDirectoryPreferences
 argument_list|)
