@@ -7485,9 +7485,9 @@ argument_list|()
 argument_list|,
 name|externalFileTypes
 argument_list|,
-name|Globals
+name|preferences
 operator|.
-name|getKeyPrefs
+name|getKeyBindings
 argument_list|()
 argument_list|)
 expr_stmt|;

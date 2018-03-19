@@ -181,6 +181,16 @@ name|load
 argument_list|()
 expr_stmt|;
 comment|// Add our base css file
+if|if
+condition|(
+name|Globals
+operator|.
+name|getThemeLoader
+argument_list|()
+operator|!=
+literal|null
+condition|)
+block|{
 name|Globals
 operator|.
 name|getThemeLoader
@@ -191,6 +201,7 @@ argument_list|(
 name|control
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(

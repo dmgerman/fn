@@ -611,6 +611,13 @@ name|JabRefIcon
 name|icon
 parameter_list|)
 block|{
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|icon
+argument_list|)
+expr_stmt|;
 name|this
 operator|.
 name|icon

@@ -196,7 +196,7 @@ argument_list|(
 literal|"Close entry editor"
 argument_list|)
 argument_list|,
-literal|"ESC"
+literal|"Esc"
 argument_list|,
 name|KeyBindingCategory
 operator|.
