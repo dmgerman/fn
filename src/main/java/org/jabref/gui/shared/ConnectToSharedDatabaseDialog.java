@@ -763,7 +763,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Library type"
+literal|"Database type"
 argument_list|)
 operator|+
 literal|":"
@@ -810,7 +810,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Library"
+literal|"Database"
 argument_list|)
 operator|+
 literal|":"
