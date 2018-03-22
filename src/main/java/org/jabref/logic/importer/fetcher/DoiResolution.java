@@ -393,7 +393,7 @@ name|connection
 operator|.
 name|timeout
 argument_list|(
-literal|5000
+literal|10000
 argument_list|)
 expr_stmt|;
 name|Document
