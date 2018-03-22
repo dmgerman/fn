@@ -829,6 +829,16 @@ argument_list|(
 name|scrollPane
 argument_list|)
 decl_stmt|;
+name|scrollPane
+operator|.
+name|setMaxHeight
+argument_list|(
+name|codeArea
+operator|.
+name|getMaxHeight
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|notificationPane
 operator|.
 name|setShowFromTop
