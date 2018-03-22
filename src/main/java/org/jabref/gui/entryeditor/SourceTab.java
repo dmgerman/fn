@@ -134,6 +134,18 @@ end_import
 
 begin_import
 import|import
+name|javafx
+operator|.
+name|scene
+operator|.
+name|layout
+operator|.
+name|Region
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|jabref
@@ -775,7 +787,16 @@ name|codeArea
 operator|.
 name|setPrefHeight
 argument_list|(
-literal|100
+literal|300
+argument_list|)
+expr_stmt|;
+name|codeArea
+operator|.
+name|setMaxHeight
+argument_list|(
+name|Region
+operator|.
+name|USE_PREF_SIZE
 argument_list|)
 expr_stmt|;
 name|javafx
