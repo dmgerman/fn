@@ -2694,8 +2694,6 @@ name|URLDownload
 name|urlDownload
 parameter_list|)
 block|{
-try|try
-block|{
 comment|// TODO: what if this takes long time?
 name|String
 name|mimeType
@@ -2705,7 +2703,6 @@ operator|.
 name|getMimeType
 argument_list|()
 decl_stmt|;
-comment|// Read MIME type
 if|if
 condition|(
 name|mimeType
@@ -2736,34 +2733,6 @@ return|;
 block|}
 else|else
 block|{
-return|return
-name|Optional
-operator|.
-name|empty
-argument_list|()
-return|;
-block|}
-block|}
-catch|catch
-parameter_list|(
-name|IOException
-name|ex
-parameter_list|)
-block|{
-name|LOGGER
-operator|.
-name|debug
-argument_list|(
-literal|"Error while inferring MIME type for URL "
-operator|+
-name|urlDownload
-operator|.
-name|getSource
-argument_list|()
-argument_list|,
-name|ex
-argument_list|)
-expr_stmt|;
 return|return
 name|Optional
 operator|.
