@@ -598,6 +598,15 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+name|LOGGER
+operator|.
+name|warn
+argument_list|(
+literal|"DoiResolution fetcher failed: "
+argument_list|,
+name|type
+argument_list|)
+expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
