@@ -10014,6 +10014,13 @@ name|BibEntry
 name|entry
 parameter_list|)
 block|{
+name|DefaultTaskExecutor
+operator|.
+name|runInJavaFXThread
+argument_list|(
+parameter_list|()
+lambda|->
+block|{
 if|if
 condition|(
 name|mode
@@ -10086,6 +10093,9 @@ argument_list|()
 expr_stmt|;
 name|adjustSplitter
 argument_list|()
+expr_stmt|;
+block|}
+argument_list|)
 expr_stmt|;
 block|}
 end_function
