@@ -771,6 +771,13 @@ operator|new
 name|TextArea
 argument_list|()
 decl_stmt|;
+name|codeArea
+operator|.
+name|setPrefHeight
+argument_list|(
+literal|100
+argument_list|)
+expr_stmt|;
 name|javafx
 operator|.
 name|scene
@@ -792,11 +799,6 @@ argument_list|(
 name|codeArea
 argument_list|)
 decl_stmt|;
-name|scrollPane
-operator|.
-name|autosize
-argument_list|()
-expr_stmt|;
 name|NotificationPane
 name|notificationPane
 init|=
