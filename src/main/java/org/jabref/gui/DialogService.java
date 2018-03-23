@@ -208,7 +208,7 @@ specifier|public
 interface|interface
 name|DialogService
 block|{
-comment|/**      * This will create and display new {@link ChoiceDialog} of type T with a default choice (can be null) and a collection of possible choices     */
+comment|/**      * This will create and display new {@link ChoiceDialog} of type T with a default choice and a collection of possible choices      *      * @implNote The implementation should accept {@code null} for {@code defaultChoice}, but callers should use {@link #showChoiceDialogAndWait(String, String, String, Collection)}.     */
 DECL|method|showChoiceDialogAndWait (String title, String content, String okButtonLabel, T defaultChoice, Collection<T> choices)
 parameter_list|<
 name|T
@@ -238,6 +238,49 @@ argument_list|>
 name|choices
 parameter_list|)
 function_decl|;
+comment|/**      * This will create and display new {@link ChoiceDialog} of type T with a collection of possible choices      */
+DECL|method|showChoiceDialogAndWait (String title, String content, String okButtonLabel, Collection<T> choices)
+specifier|default
+parameter_list|<
+name|T
+parameter_list|>
+name|Optional
+argument_list|<
+name|T
+argument_list|>
+name|showChoiceDialogAndWait
+parameter_list|(
+name|String
+name|title
+parameter_list|,
+name|String
+name|content
+parameter_list|,
+name|String
+name|okButtonLabel
+parameter_list|,
+name|Collection
+argument_list|<
+name|T
+argument_list|>
+name|choices
+parameter_list|)
+block|{
+return|return
+name|showChoiceDialogAndWait
+argument_list|(
+name|title
+argument_list|,
+name|content
+argument_list|,
+name|okButtonLabel
+argument_list|,
+literal|null
+argument_list|,
+name|choices
+argument_list|)
+return|;
+block|}
 comment|/**      * This will create and display new {@link TextInputDialog} with a text fields to enter data      */
 DECL|method|showInputDialogAndWait (String title, String content)
 name|Optional

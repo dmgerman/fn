@@ -411,8 +411,6 @@ argument_list|(
 literal|"Export"
 argument_list|)
 argument_list|,
-literal|null
-argument_list|,
 name|exporters
 argument_list|)
 decl_stmt|;

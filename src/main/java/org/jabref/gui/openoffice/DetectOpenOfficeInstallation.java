@@ -878,8 +878,6 @@ argument_list|(
 literal|"Use selected instance"
 argument_list|)
 argument_list|,
-literal|null
-argument_list|,
 name|installDirs
 argument_list|)
 argument_list|)
