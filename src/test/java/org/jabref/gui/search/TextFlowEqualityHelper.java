@@ -46,9 +46,19 @@ name|TextFlow
 import|;
 end_import
 
-begin_comment
-comment|/**  * @author jpf  * @created 11/26/17  */
-end_comment
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
+import|;
+end_import
 
 begin_class
 DECL|class|TextFlowEqualityHelper
@@ -56,20 +66,20 @@ specifier|public
 class|class
 name|TextFlowEqualityHelper
 block|{
-DECL|method|checkIfDescriptionEqualsExpectedTexts (TextFlow description, List<Text> expectedTexts)
+DECL|method|assertEquals (List<Text> expectedTexts, TextFlow description)
 specifier|public
 specifier|static
-name|boolean
-name|checkIfDescriptionEqualsExpectedTexts
+name|void
+name|assertEquals
 parameter_list|(
-name|TextFlow
-name|description
-parameter_list|,
 name|List
 argument_list|<
 name|Text
 argument_list|>
 name|expectedTexts
+parameter_list|,
+name|TextFlow
+name|description
 parameter_list|)
 block|{
 if|if
@@ -87,9 +97,21 @@ operator|.
 name|size
 argument_list|()
 condition|)
-return|return
-literal|false
-return|;
+block|{
+name|Assertions
+operator|.
+name|assertEquals
+argument_list|(
+name|expectedTexts
+argument_list|,
+name|description
+operator|.
+name|getChildren
+argument_list|()
+argument_list|)
+expr_stmt|;
+return|return;
+block|}
 name|Text
 name|expectedText
 decl_stmt|;
@@ -147,13 +169,22 @@ name|toString
 argument_list|()
 argument_list|)
 condition|)
-return|return
-literal|false
-return|;
+block|{
+name|Assertions
+operator|.
+name|assertEquals
+argument_list|(
+name|expectedTexts
+argument_list|,
+name|description
+operator|.
+name|getChildren
+argument_list|()
+argument_list|)
+expr_stmt|;
+return|return;
 block|}
-return|return
-literal|true
-return|;
+block|}
 block|}
 DECL|method|checkIfTextsEqualsExpectedTexts (List<Text> texts, List<Text> expectedTexts)
 specifier|public
