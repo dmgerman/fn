@@ -434,7 +434,7 @@ name|ExternalFileTypeEditor
 operator|.
 name|getAction
 argument_list|(
-name|prefsDiag
+name|frame
 argument_list|)
 argument_list|)
 expr_stmt|;

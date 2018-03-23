@@ -494,7 +494,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Public access to the messages bundle for classes like AbstractView.      *      * @return The internally cashed bundle.      */
+comment|/**      * Returns the messages bundle, e.g. to load FXML files correctly translated.      *      * @return The internally cashed bundle.      */
 DECL|method|getMessages ()
 specifier|public
 specifier|static

@@ -116,7 +116,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|AbstractView
+name|JabRefFrame
 import|;
 end_import
 
@@ -171,7 +171,7 @@ specifier|final
 name|String
 name|DEFAULT_PATH_MAIN_CSS
 init|=
-name|AbstractView
+name|JabRefFrame
 operator|.
 name|class
 operator|.

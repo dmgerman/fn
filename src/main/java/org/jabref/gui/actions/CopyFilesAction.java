@@ -371,7 +371,7 @@ expr_stmt|;
 return|return;
 block|}
 name|CopyFilesDialogView
-name|dlg
+name|dialog
 init|=
 operator|new
 name|CopyFilesDialogView
@@ -385,7 +385,7 @@ name|data
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|dlg
+name|dialog
 operator|.
 name|show
 argument_list|()

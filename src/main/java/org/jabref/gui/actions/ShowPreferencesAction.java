@@ -80,7 +80,6 @@ name|void
 name|execute
 parameter_list|()
 block|{
-comment|// output(Localization.lang("Opening preferences..."));
 if|if
 condition|(
 name|prefsDialog
@@ -96,7 +95,6 @@ argument_list|(
 name|jabRefFrame
 argument_list|)
 expr_stmt|;
-comment|//prefsDialog.setLocationRelativeTo(JabRefFrame.this);
 block|}
 else|else
 block|{
@@ -108,12 +106,9 @@ expr_stmt|;
 block|}
 name|prefsDialog
 operator|.
-name|setVisible
-argument_list|(
-literal|true
-argument_list|)
+name|show
+argument_list|()
 expr_stmt|;
-comment|//output("");
 block|}
 block|}
 end_class

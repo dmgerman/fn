@@ -136,6 +136,20 @@ name|JabRefPreferences
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|airhacks
+operator|.
+name|afterburner
+operator|.
+name|views
+operator|.
+name|ViewLoader
+import|;
+end_import
+
 begin_comment
 comment|/**  * The groups side pane.  */
 end_comment
@@ -271,8 +285,16 @@ name|createContentPane
 parameter_list|()
 block|{
 return|return
-operator|new
+name|ViewLoader
+operator|.
+name|view
+argument_list|(
 name|GroupTreeView
+operator|.
+name|class
+argument_list|)
+operator|.
+name|load
 argument_list|()
 operator|.
 name|getView
