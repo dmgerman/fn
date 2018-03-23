@@ -864,12 +864,6 @@ specifier|private
 name|SearchDisplayMode
 name|searchDisplayMode
 decl_stmt|;
-comment|/**      * if this flag is set the searchbar won't be selected after the next search      */
-DECL|field|dontSelectSearchBar
-specifier|private
-name|boolean
-name|dontSelectSearchBar
-decl_stmt|;
 DECL|method|GlobalSearchBar (JabRefFrame frame)
 specifier|public
 name|GlobalSearchBar
@@ -1983,20 +1977,6 @@ operator|.
 name|clearSearchQuery
 argument_list|()
 expr_stmt|;
-if|if
-condition|(
-name|dontSelectSearchBar
-condition|)
-block|{
-name|dontSelectSearchBar
-operator|=
-literal|false
-expr_stmt|;
-return|return;
-block|}
-name|focus
-argument_list|()
-expr_stmt|;
 block|}
 DECL|method|performSearch ()
 specifier|public
@@ -2597,9 +2577,6 @@ condition|)
 block|{
 return|return;
 block|}
-name|setDontSelectSearchBar
-argument_list|()
-expr_stmt|;
 name|DefaultTaskExecutor
 operator|.
 name|runInJavaFXThread
@@ -2613,19 +2590,6 @@ argument_list|(
 name|searchTerm
 argument_list|)
 argument_list|)
-expr_stmt|;
-block|}
-DECL|method|setDontSelectSearchBar ()
-specifier|public
-name|void
-name|setDontSelectSearchBar
-parameter_list|()
-block|{
-name|this
-operator|.
-name|dontSelectSearchBar
-operator|=
-literal|true
 expr_stmt|;
 block|}
 DECL|method|updateOpenCurrentResultsTooltip (boolean globalSearchEnabled)

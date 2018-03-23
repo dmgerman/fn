@@ -10652,14 +10652,6 @@ operator|.
 name|getGlobalSearchBar
 argument_list|()
 operator|.
-name|setDontSelectSearchBar
-argument_list|()
-expr_stmt|;
-name|frame
-operator|.
-name|getGlobalSearchBar
-argument_list|()
-operator|.
 name|performSearch
 argument_list|()
 expr_stmt|;
