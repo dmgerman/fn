@@ -446,8 +446,6 @@ name|fileName
 parameter_list|)
 throws|throws
 name|IOException
-throws|,
-name|URISyntaxException
 block|{
 name|ImporterTestEngine
 operator|.
@@ -476,8 +474,6 @@ name|fileName
 parameter_list|)
 throws|throws
 name|IOException
-throws|,
-name|URISyntaxException
 block|{
 name|ImporterTestEngine
 operator|.

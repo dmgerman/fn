@@ -270,6 +270,29 @@ argument_list|(
 literal|"FN ISI Export Format|VR 1.|PY \\d{4}"
 argument_list|)
 decl_stmt|;
+DECL|field|EOL
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|EOL
+init|=
+literal|"EOLEOL"
+decl_stmt|;
+DECL|field|EOL_PATTERN
+specifier|private
+specifier|static
+specifier|final
+name|Pattern
+name|EOL_PATTERN
+init|=
+name|Pattern
+operator|.
+name|compile
+argument_list|(
+name|EOL
+argument_list|)
+decl_stmt|;
 annotation|@
 name|Override
 DECL|method|getName ()
@@ -841,7 +864,7 @@ name|sb
 operator|.
 name|append
 argument_list|(
-literal|"EOLEOL"
+name|EOL
 argument_list|)
 expr_stmt|;
 comment|// mark the end of each line
@@ -1137,12 +1160,15 @@ name|IsiImporter
 operator|.
 name|isiAuthorsConvert
 argument_list|(
-name|value
+name|EOL_PATTERN
 operator|.
-name|replace
+name|matcher
 argument_list|(
-literal|"EOLEOL"
-argument_list|,
+name|value
+argument_list|)
+operator|.
+name|replaceAll
+argument_list|(
 literal|" and "
 argument_list|)
 argument_list|)
@@ -1209,12 +1235,15 @@ name|FieldName
 operator|.
 name|TITLE
 argument_list|,
-name|value
+name|EOL_PATTERN
 operator|.
-name|replace
+name|matcher
 argument_list|(
-literal|"EOLEOL"
-argument_list|,
+name|value
+argument_list|)
+operator|.
+name|replaceAll
+argument_list|(
 literal|" "
 argument_list|)
 argument_list|)
@@ -1246,12 +1275,15 @@ name|FieldName
 operator|.
 name|JOURNAL
 argument_list|,
-name|value
+name|EOL_PATTERN
 operator|.
-name|replace
+name|matcher
 argument_list|(
-literal|"EOLEOL"
-argument_list|,
+name|value
+argument_list|)
+operator|.
+name|replaceAll
+argument_list|(
 literal|" "
 argument_list|)
 argument_list|)
@@ -1277,12 +1309,15 @@ condition|)
 block|{
 name|value
 operator|=
-name|value
+name|EOL_PATTERN
 operator|.
-name|replace
+name|matcher
 argument_list|(
-literal|"EOLEOL"
-argument_list|,
+name|value
+argument_list|)
+operator|.
+name|replaceAll
+argument_list|(
 literal|" "
 argument_list|)
 expr_stmt|;
@@ -1359,12 +1394,15 @@ name|FieldName
 operator|.
 name|ABSTRACT
 argument_list|,
-name|value
+name|EOL_PATTERN
 operator|.
-name|replace
+name|matcher
 argument_list|(
-literal|"EOLEOL"
-argument_list|,
+name|value
+argument_list|)
+operator|.
+name|replaceAll
+argument_list|(
 literal|" "
 argument_list|)
 argument_list|)
@@ -1750,12 +1788,15 @@ name|put
 argument_list|(
 literal|"CitedReferences"
 argument_list|,
-name|value
+name|EOL_PATTERN
 operator|.
-name|replace
+name|matcher
 argument_list|(
-literal|"EOLEOL"
-argument_list|,
+name|value
+argument_list|)
+operator|.
+name|replaceAll
+argument_list|(
 literal|" ; "
 argument_list|)
 operator|.
