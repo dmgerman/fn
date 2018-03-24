@@ -192,7 +192,9 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|IconTheme
+name|help
+operator|.
+name|HelpAction
 import|;
 end_import
 
@@ -204,9 +206,9 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|help
+name|icon
 operator|.
-name|HelpAction
+name|IconTheme
 import|;
 end_import
 

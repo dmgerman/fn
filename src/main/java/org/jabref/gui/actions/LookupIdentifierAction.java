@@ -54,6 +54,8 @@ name|jabref
 operator|.
 name|gui
 operator|.
+name|icon
+operator|.
 name|JabRefIcon
 import|;
 end_import

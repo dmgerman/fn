@@ -230,7 +230,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|IconTheme
+name|OSXCompatibleToolbar
 import|;
 end_import
 
@@ -242,7 +242,9 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|OSXCompatibleToolbar
+name|icon
+operator|.
+name|IconTheme
 import|;
 end_import
 

@@ -118,15 +118,15 @@ end_import
 
 begin_import
 import|import
-name|org
+name|com
 operator|.
-name|jabref
+name|airhacks
 operator|.
-name|gui
+name|afterburner
 operator|.
-name|util
+name|views
 operator|.
-name|ControlHelper
+name|ViewLoader
 import|;
 end_import
 
@@ -200,12 +200,20 @@ argument_list|(
 name|toString
 argument_list|)
 expr_stmt|;
-name|ControlHelper
+name|ViewLoader
 operator|.
-name|loadFXMLForControl
+name|view
 argument_list|(
 name|this
 argument_list|)
+operator|.
+name|root
+argument_list|(
+name|this
+argument_list|)
+operator|.
+name|load
+argument_list|()
 expr_stmt|;
 name|value
 operator|=
