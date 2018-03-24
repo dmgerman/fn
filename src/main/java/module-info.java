@@ -119,6 +119,12 @@ name|xml
 operator|.
 name|dom
 decl_stmt|;
+comment|// Annotations (@PostConstruct)
+name|requires
+name|java
+operator|.
+name|annotation
+decl_stmt|;
 comment|// Microsoft application insights
 name|requires
 name|applicationinsights
