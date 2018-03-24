@@ -44,11 +44,27 @@ name|Color
 import|;
 end_import
 
+begin_import
+import|import
+name|de
+operator|.
+name|jensd
+operator|.
+name|fx
+operator|.
+name|glyphs
+operator|.
+name|GlyphIcons
+import|;
+end_import
+
 begin_interface
 DECL|interface|JabRefIcon
 specifier|public
 interface|interface
 name|JabRefIcon
+extends|extends
+name|GlyphIcons
 block|{
 DECL|method|getIcon ()
 name|Icon
