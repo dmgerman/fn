@@ -302,18 +302,6 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|IconTheme
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
 name|JabRefDialog
 import|;
 end_import
@@ -338,7 +326,9 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|JabRefIcon
+name|actions
+operator|.
+name|MnemonicAwareAction
 import|;
 end_import
 
@@ -350,9 +340,23 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|actions
+name|icon
 operator|.
-name|MnemonicAwareAction
+name|IconTheme
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|icon
+operator|.
+name|JabRefIcon
 import|;
 end_import
 

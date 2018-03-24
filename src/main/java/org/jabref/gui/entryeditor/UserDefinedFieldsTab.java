@@ -64,7 +64,9 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|IconTheme
+name|autocompleter
+operator|.
+name|SuggestionProviders
 import|;
 end_import
 
@@ -76,9 +78,9 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|autocompleter
+name|icon
 operator|.
-name|SuggestionProviders
+name|IconTheme
 import|;
 end_import
 
