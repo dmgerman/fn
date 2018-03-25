@@ -353,7 +353,7 @@ name|checkKeyCombinationEquality
 argument_list|(
 name|KeyBinding
 operator|.
-name|CLOSE_DIALOG
+name|CLOSE
 argument_list|,
 name|event
 argument_list|)

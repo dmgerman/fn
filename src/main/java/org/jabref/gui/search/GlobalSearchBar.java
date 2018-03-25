@@ -1055,7 +1055,7 @@ name|equals
 argument_list|(
 name|KeyBinding
 operator|.
-name|CLEAR_SEARCH
+name|CLOSE
 argument_list|)
 condition|)
 block|{

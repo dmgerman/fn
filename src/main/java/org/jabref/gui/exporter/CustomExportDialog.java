@@ -856,7 +856,7 @@ name|getKey
 argument_list|(
 name|KeyBinding
 operator|.
-name|CLOSE_DIALOG
+name|CLOSE
 argument_list|)
 argument_list|,
 literal|"close"

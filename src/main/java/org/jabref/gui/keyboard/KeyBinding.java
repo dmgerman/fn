@@ -165,8 +165,8 @@ operator|.
 name|FILE
 argument_list|)
 block|,
-DECL|enumConstant|CLOSE_DIALOG
-name|CLOSE_DIALOG
+DECL|enumConstant|CLOSE
+name|CLOSE
 argument_list|(
 literal|"Close dialog"
 argument_list|,
@@ -175,25 +175,6 @@ operator|.
 name|lang
 argument_list|(
 literal|"Close dialog"
-argument_list|)
-argument_list|,
-literal|"ESCAPE"
-argument_list|,
-name|KeyBindingCategory
-operator|.
-name|FILE
-argument_list|)
-block|,
-DECL|enumConstant|CLOSE_ENTRY_EDITOR
-name|CLOSE_ENTRY_EDITOR
-argument_list|(
-literal|"Close entry editor"
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Close entry editor"
 argument_list|)
 argument_list|,
 literal|"Esc"
@@ -1608,25 +1589,6 @@ argument_list|,
 name|KeyBindingCategory
 operator|.
 name|TOOLS
-argument_list|)
-block|,
-DECL|enumConstant|CLEAR_SEARCH
-name|CLEAR_SEARCH
-argument_list|(
-literal|"Clear search"
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Clear search"
-argument_list|)
-argument_list|,
-literal|"ESC"
-argument_list|,
-name|KeyBindingCategory
-operator|.
-name|SEARCH
 argument_list|)
 block|;
 DECL|field|constant

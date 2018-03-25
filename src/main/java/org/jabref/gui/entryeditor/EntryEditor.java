@@ -884,7 +884,7 @@ argument_list|()
 expr_stmt|;
 break|break;
 case|case
-name|CLOSE_ENTRY_EDITOR
+name|CLOSE
 case|:
 name|close
 argument_list|()
