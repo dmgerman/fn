@@ -507,10 +507,10 @@ literal|"DOI/ISBN/..."
 argument_list|)
 argument_list|)
 block|,
-DECL|enumConstant|ADD_FILE_LINK
+DECL|enumConstant|ATTACH_FILE
 DECL|enumConstant|Localization.lang
 DECL|enumConstant|IconTheme.JabRefIcons.ATTACH_FILE
-name|ADD_FILE_LINK
+name|ATTACH_FILE
 argument_list|(
 name|Localization
 operator|.

@@ -587,10 +587,12 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This class produces a dialog box for editing a single file link from a Bibtex entry.  *  * The information to be edited includes the file description, the link itself and the  * file type. The dialog also includes convenience buttons for quick linking.  *  * For use when downloading files, this class also offers a progress bar and a "Downloading..."  * label that can be hidden when the download is complete.  */
+comment|/**  * This class produces a dialog box for editing a single file link from a Bibtex entry.  *  * The information to be edited includes the file description, the link itself and the  * file type. The dialog also includes convenience buttons for quick linking.  *  * For use when downloading files, this class also offers a progress bar and a "Downloading..."  * label that can be hidden when the download is complete.  * @deprecated Use {@link LinkedFileEditDialogView}  */
 end_comment
 
 begin_class
+annotation|@
+name|Deprecated
 DECL|class|FileListEntryEditor
 specifier|public
 class|class

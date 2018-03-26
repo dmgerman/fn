@@ -387,7 +387,7 @@ argument_list|)
 decl_stmt|;
 name|dialog
 operator|.
-name|show
+name|showAndWait
 argument_list|()
 expr_stmt|;
 block|}

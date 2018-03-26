@@ -592,6 +592,11 @@ name|Globals
 operator|.
 name|getKeyPrefs
 argument_list|()
+argument_list|,
+name|frame
+operator|.
+name|getDialogService
+argument_list|()
 argument_list|)
 argument_list|)
 operator|.
@@ -1259,6 +1264,11 @@ block|{
 comment|// Support the following gesture to select entries: click on one row -> hold mouse button -> move over other rows
 comment|// We need to select all items between the starting row and the row where the user currently hovers the mouse over
 comment|// It is not enough to just select the currently hovered row since then sometimes rows are not marked selected if the user moves to fast
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
 name|TableRow
 argument_list|<
 name|BibEntryTableViewModel
