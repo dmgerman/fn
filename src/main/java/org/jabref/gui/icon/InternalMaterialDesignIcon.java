@@ -134,6 +134,20 @@ name|fx
 operator|.
 name|glyphs
 operator|.
+name|GlyphIcons
+import|;
+end_import
+
+begin_import
+import|import
+name|de
+operator|.
+name|jensd
+operator|.
+name|fx
+operator|.
+name|glyphs
+operator|.
 name|materialdesignicons
 operator|.
 name|MaterialDesignIcon
@@ -153,7 +167,7 @@ specifier|private
 specifier|final
 name|List
 argument_list|<
-name|MaterialDesignIcon
+name|GlyphIcons
 argument_list|>
 name|icons
 decl_stmt|;
@@ -171,7 +185,7 @@ specifier|final
 name|String
 name|unicode
 decl_stmt|;
-DECL|method|InternalMaterialDesignIcon (java.awt.Color color, MaterialDesignIcon... icons)
+DECL|method|InternalMaterialDesignIcon (java.awt.Color color, GlyphIcons... icons)
 specifier|public
 name|InternalMaterialDesignIcon
 parameter_list|(
@@ -182,7 +196,7 @@ operator|.
 name|Color
 name|color
 parameter_list|,
-name|MaterialDesignIcon
+name|GlyphIcons
 modifier|...
 name|icons
 parameter_list|)
@@ -205,14 +219,14 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|InternalMaterialDesignIcon (Color color, MaterialDesignIcon... icons)
+DECL|method|InternalMaterialDesignIcon (Color color, GlyphIcons... icons)
 specifier|public
 name|InternalMaterialDesignIcon
 parameter_list|(
 name|Color
 name|color
 parameter_list|,
-name|MaterialDesignIcon
+name|GlyphIcons
 modifier|...
 name|icons
 parameter_list|)
@@ -230,7 +244,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|InternalMaterialDesignIcon (Color color, List<MaterialDesignIcon> icons)
+DECL|method|InternalMaterialDesignIcon (Color color, List<GlyphIcons> icons)
 name|InternalMaterialDesignIcon
 parameter_list|(
 name|Color
@@ -238,7 +252,7 @@ name|color
 parameter_list|,
 name|List
 argument_list|<
-name|MaterialDesignIcon
+name|GlyphIcons
 argument_list|>
 name|icons
 parameter_list|)
@@ -260,11 +274,11 @@ name|color
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|InternalMaterialDesignIcon (MaterialDesignIcon... icons)
+DECL|method|InternalMaterialDesignIcon (GlyphIcons... icons)
 specifier|public
 name|InternalMaterialDesignIcon
 parameter_list|(
-name|MaterialDesignIcon
+name|GlyphIcons
 modifier|...
 name|icons
 parameter_list|)
@@ -280,13 +294,13 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|InternalMaterialDesignIcon (List<MaterialDesignIcon> icons)
+DECL|method|InternalMaterialDesignIcon (List<GlyphIcons> icons)
 specifier|public
 name|InternalMaterialDesignIcon
 parameter_list|(
 name|List
 argument_list|<
-name|MaterialDesignIcon
+name|GlyphIcons
 argument_list|>
 name|icons
 parameter_list|)
@@ -308,7 +322,7 @@ argument_list|()
 operator|.
 name|map
 argument_list|(
-name|MaterialDesignIcon
+name|GlyphIcons
 operator|::
 name|unicode
 argument_list|)
@@ -425,7 +439,7 @@ name|Node
 name|getGraphicNode
 parameter_list|()
 block|{
-name|MaterialDesignIcon
+name|GlyphIcons
 name|icon
 init|=
 name|icons
