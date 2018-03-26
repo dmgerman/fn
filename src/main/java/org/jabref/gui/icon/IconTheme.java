@@ -272,13 +272,13 @@ end_import
 
 begin_import
 import|import
-name|javafx
+name|org
 operator|.
-name|scene
+name|jabref
 operator|.
-name|image
+name|gui
 operator|.
-name|ImageView
+name|JabRefMaterialDesignIcon
 import|;
 end_import
 
@@ -349,20 +349,6 @@ operator|.
 name|materialdesignicons
 operator|.
 name|MaterialDesignIcon
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|commons
-operator|.
-name|lang3
-operator|.
-name|NotImplementedException
 import|;
 end_import
 
