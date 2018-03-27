@@ -847,8 +847,6 @@ argument_list|(
 name|url
 argument_list|)
 decl_stmt|;
-try|try
-block|{
 comment|// TODO: what if this takes long time?
 comment|// TODO: stop editor dialog if this results in an error:
 name|mimeType
@@ -859,62 +857,6 @@ name|getMimeType
 argument_list|()
 expr_stmt|;
 comment|// Read MIME type
-block|}
-catch|catch
-parameter_list|(
-name|IOException
-name|ex
-parameter_list|)
-block|{
-name|JOptionPane
-operator|.
-name|showMessageDialog
-argument_list|(
-name|frame
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Invalid URL"
-argument_list|)
-operator|+
-literal|": "
-operator|+
-name|ex
-operator|.
-name|getMessage
-argument_list|()
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Download file"
-argument_list|)
-argument_list|,
-name|JOptionPane
-operator|.
-name|ERROR_MESSAGE
-argument_list|)
-expr_stmt|;
-name|LOGGER
-operator|.
-name|info
-argument_list|(
-literal|"Error while downloading "
-operator|+
-literal|"'"
-operator|+
-name|res
-operator|+
-literal|"'"
-argument_list|,
-name|ex
-argument_list|)
-expr_stmt|;
-return|return;
-block|}
 specifier|final
 name|URL
 name|urlF
