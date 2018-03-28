@@ -278,18 +278,6 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|JabRefMaterialDesignIcon
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
 name|util
 operator|.
 name|ColorUtil
@@ -2311,7 +2299,7 @@ name|DEFAULT_GROUP_ICON_COLORED
 argument_list|(
 name|MaterialDesignIcon
 operator|.
-name|CHECKBOX_BLANK_CIRCLE
+name|PLAY
 argument_list|)
 operator|,
 DECL|enumConstant|DEFAULT_GROUP_ICON
