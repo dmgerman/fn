@@ -300,6 +300,20 @@ argument_list|()
 return|;
 block|}
 block|}
+annotation|@
+name|Override
+DECL|method|getTrustLevel ()
+specifier|public
+name|TrustLevel
+name|getTrustLevel
+parameter_list|()
+block|{
+return|return
+name|TrustLevel
+operator|.
+name|META_SEARCH
+return|;
+block|}
 DECL|method|findFullText (DOI doi)
 specifier|public
 name|Optional

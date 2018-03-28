@@ -48,6 +48,22 @@ name|org
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
+name|importer
+operator|.
+name|fetcher
+operator|.
+name|TrustLevel
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
 name|model
 operator|.
 name|entry
@@ -61,8 +77,6 @@ comment|/**  * This interface is used for classes that try to resolve a full-tex
 end_comment
 
 begin_interface
-annotation|@
-name|FunctionalInterface
 DECL|interface|FulltextFetcher
 specifier|public
 interface|interface
@@ -84,6 +98,19 @@ name|IOException
 throws|,
 name|FetcherException
 function_decl|;
+comment|/**      * Returns the level of trust for this fetcher.      * We distinguish between publishers and meta search engines for example.      *      * @return The trust level of the fetcher, the higher the better      */
+DECL|method|getTrustLevel ()
+specifier|default
+name|TrustLevel
+name|getTrustLevel
+parameter_list|()
+block|{
+return|return
+name|TrustLevel
+operator|.
+name|UNKNOWN
+return|;
+block|}
 block|}
 end_interface
 

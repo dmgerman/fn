@@ -379,7 +379,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * FulltextFetcher implementation that attempts to find a PDF URL at GoogleScholar.  */
+comment|/**  * FulltextFetcher implementation that attempts to find a PDF URL at GoogleScholar.  *  * Search String infos: https://scholar.google.com/intl/en/scholar/help.html#searching  */
 end_comment
 
 begin_class
@@ -533,6 +533,7 @@ return|;
 block|}
 try|try
 block|{
+comment|// title search
 name|URIBuilder
 name|uriBuilder
 init|=
@@ -551,6 +552,7 @@ argument_list|,
 literal|""
 argument_list|)
 expr_stmt|;
+comment|// as_epq as exact phrase
 name|uriBuilder
 operator|.
 name|addParameter
@@ -572,6 +574,7 @@ literal|null
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|// as_occt field to search in
 name|uriBuilder
 operator|.
 name|addParameter
@@ -581,6 +584,76 @@ argument_list|,
 literal|"title"
 argument_list|)
 expr_stmt|;
+name|pdfLink
+operator|=
+name|search
+argument_list|(
+name|uriBuilder
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|URISyntaxException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|FetcherException
+argument_list|(
+literal|"Building URI failed."
+argument_list|,
+name|e
+argument_list|)
+throw|;
+block|}
+return|return
+name|pdfLink
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|getTrustLevel ()
+specifier|public
+name|TrustLevel
+name|getTrustLevel
+parameter_list|()
+block|{
+return|return
+name|TrustLevel
+operator|.
+name|META_SEARCH
+return|;
+block|}
+DECL|method|search (String url)
+specifier|private
+name|Optional
+argument_list|<
+name|URL
+argument_list|>
+name|search
+parameter_list|(
+name|String
+name|url
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+name|Optional
+argument_list|<
+name|URL
+argument_list|>
+name|pdfLink
+init|=
+name|Optional
+operator|.
+name|empty
+argument_list|()
+decl_stmt|;
 name|Document
 name|doc
 init|=
@@ -588,10 +661,7 @@ name|Jsoup
 operator|.
 name|connect
 argument_list|(
-name|uriBuilder
-operator|.
-name|toString
-argument_list|()
+name|url
 argument_list|)
 operator|.
 name|userAgent
@@ -665,12 +735,10 @@ comment|// link present?
 if|if
 condition|(
 operator|!
-literal|""
-operator|.
-name|equals
-argument_list|(
 name|target
-argument_list|)
+operator|.
+name|isEmpty
+argument_list|()
 operator|&&
 operator|new
 name|URLDownload
@@ -709,23 +777,6 @@ expr_stmt|;
 break|break;
 block|}
 block|}
-block|}
-block|}
-catch|catch
-parameter_list|(
-name|URISyntaxException
-name|e
-parameter_list|)
-block|{
-throw|throw
-operator|new
-name|FetcherException
-argument_list|(
-literal|"Building URI failed."
-argument_list|,
-name|e
-argument_list|)
-throw|;
 block|}
 return|return
 name|pdfLink

@@ -1099,8 +1099,7 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
-comment|// Ordering is important, authorities first!
-comment|// Publisher
+comment|// Original
 name|fetchers
 operator|.
 name|add
@@ -1110,6 +1109,7 @@ name|DoiResolution
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|// Publishers
 name|fetchers
 operator|.
 name|add
