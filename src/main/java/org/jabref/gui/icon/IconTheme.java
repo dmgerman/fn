@@ -2299,7 +2299,7 @@ name|DEFAULT_GROUP_ICON_COLORED
 argument_list|(
 name|MaterialDesignIcon
 operator|.
-name|PLAY
+name|CHECKBOX_BLANK_CIRCLE
 argument_list|)
 operator|,
 DECL|enumConstant|DEFAULT_GROUP_ICON
