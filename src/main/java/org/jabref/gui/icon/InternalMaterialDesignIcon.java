@@ -138,22 +138,6 @@ name|GlyphIcons
 import|;
 end_import
 
-begin_import
-import|import
-name|de
-operator|.
-name|jensd
-operator|.
-name|fx
-operator|.
-name|glyphs
-operator|.
-name|materialdesignicons
-operator|.
-name|MaterialDesignIcon
-import|;
-end_import
-
 begin_class
 DECL|class|InternalMaterialDesignIcon
 specifier|public
