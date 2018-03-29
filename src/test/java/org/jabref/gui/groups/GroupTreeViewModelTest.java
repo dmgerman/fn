@@ -363,7 +363,6 @@ name|void
 name|explicitGroupsAreRemovedFromEntriesOnDelete
 parameter_list|()
 block|{
-empty_stmt|;
 name|ExplicitGroup
 name|group
 init|=
@@ -454,7 +453,6 @@ name|void
 name|keywordGroupsAreNotRemovedFromEntriesOnDelete
 parameter_list|()
 block|{
-empty_stmt|;
 name|String
 name|groupName
 init|=
