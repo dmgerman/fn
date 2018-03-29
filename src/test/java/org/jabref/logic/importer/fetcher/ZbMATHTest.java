@@ -187,9 +187,9 @@ end_import
 begin_class
 annotation|@
 name|FetcherTest
-DECL|class|zbMathTest
+DECL|class|ZbMATHTest
 class|class
-name|zbMathTest
+name|ZbMATHTest
 block|{
 DECL|field|fetcher
 specifier|private
