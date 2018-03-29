@@ -947,7 +947,7 @@ name|LOGGER
 operator|.
 name|error
 argument_list|(
-literal|"An error occured on the command: "
+literal|"An error occurred on the command: "
 operator|+
 name|link
 argument_list|,
@@ -993,7 +993,7 @@ name|LOGGER
 operator|.
 name|error
 argument_list|(
-literal|"An error occured on the command: "
+literal|"An error occurred on the command: "
 operator|+
 name|link
 argument_list|,

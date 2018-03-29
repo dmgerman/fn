@@ -7525,7 +7525,7 @@ name|List
 argument_list|<
 name|BibEntry
 argument_list|>
-name|bes
+name|selectedEntries
 init|=
 name|mainTable
 operator|.
@@ -7534,7 +7534,7 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-name|bes
+name|selectedEntries
 operator|.
 name|size
 argument_list|()
@@ -7558,7 +7558,7 @@ specifier|final
 name|BibEntry
 name|entry
 init|=
-name|bes
+name|selectedEntries
 operator|.
 name|get
 argument_list|(
