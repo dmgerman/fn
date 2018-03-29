@@ -247,10 +247,10 @@ comment|/**  * Fetches data from the Zentralblatt Math (https://www.zbmath.org/)
 end_comment
 
 begin_class
-DECL|class|zbMATH
+DECL|class|ZbMATH
 specifier|public
 class|class
-name|zbMATH
+name|ZbMATH
 implements|implements
 name|SearchBasedParserFetcher
 block|{
@@ -260,9 +260,9 @@ specifier|final
 name|ImportFormatPreferences
 name|preferences
 decl_stmt|;
-DECL|method|zbMATH (ImportFormatPreferences preferences)
+DECL|method|ZbMATH (ImportFormatPreferences preferences)
 specifier|public
-name|zbMATH
+name|ZbMATH
 parameter_list|(
 name|ImportFormatPreferences
 name|preferences

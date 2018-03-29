@@ -384,7 +384,7 @@ name|importer
 operator|.
 name|fetcher
 operator|.
-name|zbMATH
+name|ZbMATH
 import|;
 end_import
 
@@ -717,7 +717,7 @@ operator|.
 name|add
 argument_list|(
 operator|new
-name|zbMATH
+name|ZbMATH
 argument_list|(
 name|importFormatPreferences
 argument_list|)

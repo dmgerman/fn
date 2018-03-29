@@ -1105,9 +1105,7 @@ name|GroupNodeViewModel
 operator|)
 name|o
 decl_stmt|;
-if|if
-condition|(
-operator|!
+return|return
 name|groupNode
 operator|.
 name|equals
@@ -1116,14 +1114,6 @@ name|that
 operator|.
 name|groupNode
 argument_list|)
-condition|)
-block|{
-return|return
-literal|false
-return|;
-block|}
-return|return
-literal|true
 return|;
 block|}
 annotation|@

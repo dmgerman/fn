@@ -108,10 +108,10 @@ name|CodeStyleTests
 block|{
 annotation|@
 name|Test
-DECL|method|StringUtilClassIsSmall ()
+DECL|method|stringUtilClassIsSmall ()
 specifier|public
 name|void
-name|StringUtilClassIsSmall
+name|stringUtilClassIsSmall
 parameter_list|()
 throws|throws
 name|Exception
