@@ -1384,13 +1384,12 @@ argument_list|)
 expr_stmt|;
 name|preferences
 operator|=
-operator|new
-name|OpenOfficePreferences
-argument_list|(
 name|Globals
 operator|.
 name|prefs
-argument_list|)
+operator|.
+name|getOpenOfficePreferences
+argument_list|()
 expr_stmt|;
 name|loader
 operator|=
@@ -2922,7 +2921,7 @@ if|if
 condition|(
 name|preferences
 operator|.
-name|useAllDatabases
+name|getUseAllDatabases
 argument_list|()
 condition|)
 block|{
@@ -4579,7 +4578,7 @@ name|pageInfo
 argument_list|,
 name|preferences
 operator|.
-name|syncWhenCiting
+name|getSyncWhenCiting
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -5122,7 +5121,7 @@ argument_list|)
 argument_list|,
 name|preferences
 operator|.
-name|syncWhenCiting
+name|getSyncWhenCiting
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -5196,7 +5195,7 @@ if|if
 condition|(
 name|preferences
 operator|.
-name|useAllDatabases
+name|getUseAllDatabases
 argument_list|()
 condition|)
 block|{
@@ -5270,23 +5269,9 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|clearConnectionSettings
-operator|.
-name|addActionListener
-argument_list|(
-name|e
-lambda|->
-name|frame
-operator|.
-name|output
-argument_list|(
-name|preferences
-operator|.
-name|clearConnectionSettings
-argument_list|()
-argument_list|)
-argument_list|)
-expr_stmt|;
+comment|// TODO: implement this again
+comment|/*             public String clearConnectionSettings() {                 preferences.clear(JabRefPreferences.OO_PATH);                 preferences.clear(JabRefPreferences.OO_EXECUTABLE_PATH);                 preferences.clear(JabRefPreferences.OO_JARS_PATH);                 return Localization.lang("Cleared connection settings.");             }         */
+comment|// clearConnectionSettings.addActionListener(e -> frame.output(preferences.clearConnectionSettings()));
 name|menu
 operator|.
 name|add
