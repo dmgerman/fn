@@ -1844,6 +1844,18 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|preferences
+operator|.
+name|SavePreferencesFactory
+import|;
+end_import
+
+begin_import
+import|import
 name|com
 operator|.
 name|google
@@ -7868,7 +7880,7 @@ block|{
 name|SavePreferences
 name|prefs
 init|=
-name|SavePreferences
+name|SavePreferencesFactory
 operator|.
 name|loadForSaveFromPreferences
 argument_list|(

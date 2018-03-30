@@ -806,7 +806,7 @@ condition|)
 block|{
 name|preferences
 operator|.
-name|setOOPath
+name|setInstallationPath
 argument_list|(
 name|installDir
 operator|.
