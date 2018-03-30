@@ -187,13 +187,13 @@ end_import
 begin_class
 annotation|@
 name|FetcherTest
-DECL|class|zbMATHTest
+DECL|class|ZbMATHTest
 class|class
-name|zbMATHTest
+name|ZbMATHTest
 block|{
 DECL|field|fetcher
 specifier|private
-name|zbMATH
+name|ZbMATH
 name|fetcher
 decl_stmt|;
 DECL|field|donaldsonEntry
@@ -241,7 +241,7 @@ expr_stmt|;
 name|fetcher
 operator|=
 operator|new
-name|zbMATH
+name|ZbMATH
 argument_list|(
 name|importFormatPreferences
 argument_list|)

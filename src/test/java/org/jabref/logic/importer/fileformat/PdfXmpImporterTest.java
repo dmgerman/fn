@@ -152,7 +152,7 @@ name|logic
 operator|.
 name|xmp
 operator|.
-name|XMPPreferences
+name|XmpPreferences
 import|;
 end_import
 
@@ -338,7 +338,7 @@ name|PdfXmpImporter
 argument_list|(
 name|mock
 argument_list|(
-name|XMPPreferences
+name|XmpPreferences
 operator|.
 name|class
 argument_list|)

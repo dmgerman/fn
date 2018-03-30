@@ -215,20 +215,11 @@ argument_list|(
 name|isbnString
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
+return|return
 name|isbnMatcher
 operator|.
 name|matches
 argument_list|()
-condition|)
-block|{
-return|return
-literal|true
-return|;
-block|}
-return|return
-literal|false
 return|;
 block|}
 DECL|method|isValidChecksum ()

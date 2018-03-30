@@ -337,6 +337,36 @@ name|fileType
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|descriptionProperty ()
+specifier|public
+name|StringProperty
+name|descriptionProperty
+parameter_list|()
+block|{
+return|return
+name|description
+return|;
+block|}
+DECL|method|linkProperty ()
+specifier|public
+name|StringProperty
+name|linkProperty
+parameter_list|()
+block|{
+return|return
+name|link
+return|;
+block|}
+DECL|method|fileTypeProperty ()
+specifier|public
+name|StringProperty
+name|fileTypeProperty
+parameter_list|()
+block|{
+return|return
+name|fileType
+return|;
+block|}
 DECL|method|getFileType ()
 specifier|public
 name|String

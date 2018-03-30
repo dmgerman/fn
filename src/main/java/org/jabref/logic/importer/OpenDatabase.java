@@ -38,7 +38,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Arrays
+name|Collections
 import|;
 end_import
 
@@ -132,18 +132,6 @@ name|jabref
 operator|.
 name|migrations
 operator|.
-name|MergeReviewIntoComment
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|migrations
-operator|.
 name|PostOpenMigration
 import|;
 end_import
@@ -223,7 +211,7 @@ specifier|private
 name|OpenDatabase
 parameter_list|()
 block|{     }
-comment|/**      * Load database (bib-file)      *      * @param name Name of the BIB-file to open      * @param fileMonitor      * @return ParserResult which never is null      */
+comment|/**      * Load database (bib-file)      *      * @param name Name of the BIB-file to open      * @return ParserResult which never is null      */
 DECL|method|loadDatabase (String name, ImportFormatPreferences importFormatPreferences, FileUpdateMonitor fileMonitor)
 specifier|public
 specifier|static
@@ -557,16 +545,12 @@ name|PostOpenMigration
 argument_list|>
 name|postOpenMigrations
 init|=
-name|Arrays
+name|Collections
 operator|.
-name|asList
+name|singletonList
 argument_list|(
 operator|new
 name|ConvertLegacyExplicitGroups
-argument_list|()
-argument_list|,
-operator|new
-name|MergeReviewIntoComment
 argument_list|()
 argument_list|)
 decl_stmt|;

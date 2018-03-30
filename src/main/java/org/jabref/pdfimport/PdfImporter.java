@@ -360,7 +360,7 @@ name|logic
 operator|.
 name|xmp
 operator|.
-name|XMPUtil
+name|XmpUtilShared
 import|;
 end_import
 
@@ -750,7 +750,7 @@ expr_stmt|;
 if|if
 condition|(
 operator|!
-name|XMPUtil
+name|XmpUtilShared
 operator|.
 name|hasMetadata
 argument_list|(
@@ -1034,9 +1034,6 @@ name|getEntries
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|BibEntry
-name|entry
-decl_stmt|;
 if|if
 condition|(
 name|localRes
@@ -1067,16 +1064,14 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
-comment|// only one entry is imported
+for|for
+control|(
+name|BibEntry
 name|entry
-operator|=
+range|:
 name|localRes
-operator|.
-name|get
-argument_list|(
-literal|0
-argument_list|)
-expr_stmt|;
+control|)
+block|{
 comment|// insert entry to database and link file
 name|panel
 operator|.
@@ -1188,6 +1183,7 @@ argument_list|(
 name|entry
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 DECL|method|createNewBlankEntry (String fileName)
 specifier|private

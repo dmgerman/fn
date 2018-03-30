@@ -362,7 +362,7 @@ name|logic
 operator|.
 name|xmp
 operator|.
-name|XMPPreferences
+name|XmpPreferences
 import|;
 end_import
 
@@ -809,12 +809,12 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-name|XMPPreferences
+name|XmpPreferences
 name|xmpPreferences
 init|=
 name|mock
 argument_list|(
-name|XMPPreferences
+name|XmpPreferences
 operator|.
 name|class
 argument_list|)

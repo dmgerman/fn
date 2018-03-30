@@ -428,7 +428,7 @@ name|logic
 operator|.
 name|xmp
 operator|.
-name|XMPPreferences
+name|XmpPreferences
 import|;
 end_import
 
@@ -523,7 +523,7 @@ specifier|private
 name|ImportFormatPreferences
 name|importFormatPreferences
 decl_stmt|;
-DECL|method|resetImportFormats (ImportFormatPreferences newImportFormatPreferences, XMPPreferences xmpPreferences, FileUpdateMonitor fileMonitor)
+DECL|method|resetImportFormats (ImportFormatPreferences newImportFormatPreferences, XmpPreferences xmpPreferences, FileUpdateMonitor fileMonitor)
 specifier|public
 name|void
 name|resetImportFormats
@@ -531,7 +531,7 @@ parameter_list|(
 name|ImportFormatPreferences
 name|newImportFormatPreferences
 parameter_list|,
-name|XMPPreferences
+name|XmpPreferences
 name|xmpPreferences
 parameter_list|,
 name|FileUpdateMonitor

@@ -1522,7 +1522,6 @@ name|void
 name|entriesAreAddedCorrectly
 parameter_list|()
 block|{
-empty_stmt|;
 name|String
 name|groupName
 init|=

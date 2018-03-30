@@ -102,6 +102,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Arrays
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Collections
 import|;
 end_import
@@ -612,44 +622,32 @@ name|GUIPostOpenAction
 argument_list|>
 name|POST_OPEN_ACTIONS
 init|=
-operator|new
-name|ArrayList
-argument_list|<>
-argument_list|()
-decl_stmt|;
-static|static
-block|{
-comment|// Add the action for checking for new custom entry types loaded from the BIB file:
-name|POST_OPEN_ACTIONS
+name|Arrays
 operator|.
-name|add
+name|asList
 argument_list|(
+comment|// Migrations:
+comment|// Warning for migrating the Review into the Comment field
 operator|new
-name|CheckForNewEntryTypesAction
+name|MergeReviewIntoCommentAction
 argument_list|()
-argument_list|)
-expr_stmt|;
-comment|// Add the action for the new external file handling system in version 2.3:
-name|POST_OPEN_ACTIONS
-operator|.
-name|add
-argument_list|(
+argument_list|,
+comment|// External file handling system in version 2.3:
 operator|new
 name|FileLinksUpgradeWarning
 argument_list|()
-argument_list|)
-expr_stmt|;
-comment|// Add the action for warning about and handling duplicate BibTeX keys:
-name|POST_OPEN_ACTIONS
-operator|.
-name|add
-argument_list|(
+argument_list|,
+comment|// Check for new custom entry types loaded from the BIB file:
+operator|new
+name|CheckForNewEntryTypesAction
+argument_list|()
+argument_list|,
+comment|// Warning about and handling duplicate BibTeX keys:
 operator|new
 name|HandleDuplicateWarnings
 argument_list|()
 argument_list|)
-expr_stmt|;
-block|}
+decl_stmt|;
 DECL|field|showDialog
 specifier|private
 specifier|final

@@ -1301,7 +1301,7 @@ name|databaseContext
 operator|=
 name|panel
 operator|.
-name|getDatabaseContext
+name|getBibDatabaseContext
 argument_list|()
 expr_stmt|;
 name|creatorManager

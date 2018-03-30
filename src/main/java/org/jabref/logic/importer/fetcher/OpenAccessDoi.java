@@ -191,7 +191,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A fulltext fetcher that uses<a href="https://oadoi.org/">oaDOI</a>.  *  * @implSpec API is documented at https://oadoi.org/api/v2  */
+comment|/**  * A fulltext fetcher that uses<a href="https://oadoi.org/">oaDOI</a>.  *  * @implSpec API is documented at http://unpaywall.org/api/v2  */
 end_comment
 
 begin_class
@@ -299,6 +299,20 @@ name|empty
 argument_list|()
 return|;
 block|}
+block|}
+annotation|@
+name|Override
+DECL|method|getTrustLevel ()
+specifier|public
+name|TrustLevel
+name|getTrustLevel
+parameter_list|()
+block|{
+return|return
+name|TrustLevel
+operator|.
+name|META_SEARCH
+return|;
 block|}
 DECL|method|findFullText (DOI doi)
 specifier|public

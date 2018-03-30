@@ -160,7 +160,7 @@ specifier|public
 class|class
 name|InternalBibtexFields
 block|{
-comment|/**      * These are the fields JabRef always displays as default      * {@link org.jabref.preferences.JabRefPreferences#setLanguageDependentDefaultValues()}      *      * A user can change them. The change is currently stored in the preferences only and not explicitley exposed as separte preferences object      */
+comment|/**      * These are the fields JabRef always displays as default      * {@link org.jabref.preferences.JabRefPreferences#setLanguageDependentDefaultValues()}      *      * A user can change them. The change is currently stored in the preferences only and not explicitly exposed as separate preferences object      */
 DECL|field|DEFAULT_GENERAL_FIELDS
 specifier|public
 specifier|static
@@ -244,7 +244,7 @@ operator|.
 name|PMID
 argument_list|)
 decl_stmt|;
-DECL|field|IEEETRANBSTCTL_YES_NO_FIELDS
+DECL|field|YES_NO_FIELDS
 specifier|private
 specifier|static
 specifier|final
@@ -252,7 +252,7 @@ name|List
 argument_list|<
 name|String
 argument_list|>
-name|IEEETRANBSTCTL_YES_NO_FIELDS
+name|YES_NO_FIELDS
 init|=
 name|Arrays
 operator|.
@@ -283,7 +283,7 @@ operator|.
 name|CTLDASH_REPEATED_NAMES
 argument_list|)
 decl_stmt|;
-DECL|field|BIBLATEX_DATE_FIELDS
+DECL|field|DATE_FIELDS
 specifier|private
 specifier|static
 specifier|final
@@ -291,7 +291,7 @@ name|List
 argument_list|<
 name|String
 argument_list|>
-name|BIBLATEX_DATE_FIELDS
+name|DATE_FIELDS
 init|=
 name|Arrays
 operator|.
@@ -314,7 +314,7 @@ operator|.
 name|URLDATE
 argument_list|)
 decl_stmt|;
-DECL|field|BIBLATEX_PERSON_NAME_FIELDS
+DECL|field|PERSON_NAME_FIELDS
 specifier|private
 specifier|static
 specifier|final
@@ -322,7 +322,7 @@ name|List
 argument_list|<
 name|String
 argument_list|>
-name|BIBLATEX_PERSON_NAME_FIELDS
+name|PERSON_NAME_FIELDS
 init|=
 name|Arrays
 operator|.
@@ -401,7 +401,7 @@ operator|.
 name|ASSIGNEE
 argument_list|)
 decl_stmt|;
-DECL|field|BIBLATEX_EDITOR_TYPE_FIELDS
+DECL|field|EDITOR_TYPE_FIELDS
 specifier|private
 specifier|static
 specifier|final
@@ -409,7 +409,7 @@ name|List
 argument_list|<
 name|String
 argument_list|>
-name|BIBLATEX_EDITOR_TYPE_FIELDS
+name|EDITOR_TYPE_FIELDS
 init|=
 name|Arrays
 operator|.
@@ -432,7 +432,7 @@ operator|.
 name|EDITORCTYPE
 argument_list|)
 decl_stmt|;
-DECL|field|BIBLATEX_PAGINATION_FIELDS
+DECL|field|PAGINATION_FIELDS
 specifier|private
 specifier|static
 specifier|final
@@ -440,7 +440,7 @@ name|List
 argument_list|<
 name|String
 argument_list|>
-name|BIBLATEX_PAGINATION_FIELDS
+name|PAGINATION_FIELDS
 init|=
 name|Arrays
 operator|.
@@ -455,7 +455,7 @@ operator|.
 name|BOOKPAGINATION
 argument_list|)
 decl_stmt|;
-DECL|field|BIBLATEX_JOURNAL_NAME_FIELDS
+DECL|field|JOURNAL_NAME_FIELDS
 specifier|private
 specifier|static
 specifier|final
@@ -463,7 +463,7 @@ name|List
 argument_list|<
 name|String
 argument_list|>
-name|BIBLATEX_JOURNAL_NAME_FIELDS
+name|JOURNAL_NAME_FIELDS
 init|=
 name|Arrays
 operator|.
@@ -482,7 +482,7 @@ operator|.
 name|JOURNALSUBTITLE
 argument_list|)
 decl_stmt|;
-DECL|field|BIBLATEX_BOOK_NAME_FIELDS
+DECL|field|BOOK_NAME_FIELDS
 specifier|private
 specifier|static
 specifier|final
@@ -490,7 +490,7 @@ name|List
 argument_list|<
 name|String
 argument_list|>
-name|BIBLATEX_BOOK_NAME_FIELDS
+name|BOOK_NAME_FIELDS
 init|=
 name|Arrays
 operator|.
@@ -521,7 +521,7 @@ operator|.
 name|BOOKTITLEADDON
 argument_list|)
 decl_stmt|;
-DECL|field|BIBLATEX_LANGUAGE_FIELDS
+DECL|field|LANGUAGE_FIELDS
 specifier|private
 specifier|static
 specifier|final
@@ -529,7 +529,7 @@ name|List
 argument_list|<
 name|String
 argument_list|>
-name|BIBLATEX_LANGUAGE_FIELDS
+name|LANGUAGE_FIELDS
 init|=
 name|Arrays
 operator|.
@@ -544,7 +544,7 @@ operator|.
 name|ORIGLANGUAGE
 argument_list|)
 decl_stmt|;
-DECL|field|BIBLATEX_MULTI_KEY_FIELDS
+DECL|field|MULTI_KEY_FIELDS
 specifier|private
 specifier|static
 specifier|final
@@ -552,7 +552,7 @@ name|List
 argument_list|<
 name|String
 argument_list|>
-name|BIBLATEX_MULTI_KEY_FIELDS
+name|MULTI_KEY_FIELDS
 init|=
 name|Arrays
 operator|.
@@ -700,12 +700,8 @@ name|HashMap
 argument_list|<>
 argument_list|()
 expr_stmt|;
-name|BibtexSingleField
-name|dummy
-decl_stmt|;
 comment|// FIRST: all standard fields
-comment|// These are the fields that BibTeX might want to treat, so these
-comment|// must conform to BibTeX rules.
+comment|// These are the fields that BibTeX might want to treat, so these must conform to BibTeX rules.
 name|add
 argument_list|(
 operator|new
@@ -714,8 +710,6 @@ argument_list|(
 name|FieldName
 operator|.
 name|ADDRESS
-argument_list|,
-literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -730,8 +724,6 @@ argument_list|(
 name|FieldName
 operator|.
 name|ANNOTE
-argument_list|,
-literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -773,21 +765,17 @@ argument_list|(
 name|FieldName
 operator|.
 name|CHAPTER
-argument_list|,
-literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|dummy
-operator|=
+name|add
+argument_list|(
 operator|new
 name|BibtexSingleField
 argument_list|(
 name|FieldName
 operator|.
 name|CROSSREF
-argument_list|,
-literal|true
 argument_list|)
 operator|.
 name|withProperties
@@ -796,10 +784,6 @@ name|FieldProperty
 operator|.
 name|SINGLE_ENTRY_LINK
 argument_list|)
-expr_stmt|;
-name|add
-argument_list|(
-name|dummy
 argument_list|)
 expr_stmt|;
 name|add
@@ -810,8 +794,6 @@ argument_list|(
 name|FieldName
 operator|.
 name|EDITION
-argument_list|,
-literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -830,16 +812,14 @@ literal|280
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|dummy
-operator|=
+name|add
+argument_list|(
 operator|new
 name|BibtexSingleField
 argument_list|(
 name|FieldName
 operator|.
 name|EPRINT
-argument_list|,
-literal|true
 argument_list|)
 operator|.
 name|withProperties
@@ -848,10 +828,6 @@ name|FieldProperty
 operator|.
 name|EPRINT
 argument_list|)
-expr_stmt|;
-name|add
-argument_list|(
-name|dummy
 argument_list|)
 expr_stmt|;
 name|add
@@ -862,8 +838,6 @@ argument_list|(
 name|FieldName
 operator|.
 name|HOWPUBLISHED
-argument_list|,
-literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -875,21 +849,17 @@ argument_list|(
 name|FieldName
 operator|.
 name|INSTITUTION
-argument_list|,
-literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|dummy
-operator|=
+name|add
+argument_list|(
 operator|new
 name|BibtexSingleField
 argument_list|(
 name|FieldName
 operator|.
 name|ISBN
-argument_list|,
-literal|true
 argument_list|)
 operator|.
 name|withProperties
@@ -898,10 +868,6 @@ name|FieldProperty
 operator|.
 name|ISBN
 argument_list|)
-expr_stmt|;
-name|add
-argument_list|(
-name|dummy
 argument_list|)
 expr_stmt|;
 name|add
@@ -912,21 +878,17 @@ argument_list|(
 name|FieldName
 operator|.
 name|ISSN
-argument_list|,
-literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|dummy
-operator|=
+name|add
+argument_list|(
 operator|new
 name|BibtexSingleField
 argument_list|(
 name|FieldName
 operator|.
 name|JOURNAL
-argument_list|,
-literal|true
 argument_list|)
 operator|.
 name|withProperties
@@ -935,22 +897,16 @@ name|FieldProperty
 operator|.
 name|JOURNAL_NAME
 argument_list|)
+argument_list|)
 expr_stmt|;
 name|add
 argument_list|(
-name|dummy
-argument_list|)
-expr_stmt|;
-name|dummy
-operator|=
 operator|new
 name|BibtexSingleField
 argument_list|(
 name|FieldName
 operator|.
 name|JOURNALTITLE
-argument_list|,
-literal|true
 argument_list|)
 operator|.
 name|withProperties
@@ -959,10 +915,6 @@ name|FieldProperty
 operator|.
 name|JOURNAL_NAME
 argument_list|)
-expr_stmt|;
-name|add
-argument_list|(
-name|dummy
 argument_list|)
 expr_stmt|;
 name|add
@@ -973,21 +925,17 @@ argument_list|(
 name|FieldName
 operator|.
 name|KEY
-argument_list|,
-literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|dummy
-operator|=
+name|add
+argument_list|(
 operator|new
 name|BibtexSingleField
 argument_list|(
 name|FieldName
 operator|.
 name|MONTH
-argument_list|,
-literal|true
 argument_list|)
 operator|.
 name|withProperties
@@ -996,10 +944,24 @@ name|FieldProperty
 operator|.
 name|MONTH
 argument_list|)
+argument_list|)
 expr_stmt|;
 name|add
 argument_list|(
-name|dummy
+operator|new
+name|BibtexSingleField
+argument_list|(
+name|FieldName
+operator|.
+name|MONTHFILED
+argument_list|)
+operator|.
+name|withProperties
+argument_list|(
+name|FieldProperty
+operator|.
+name|MONTH
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|add
@@ -1010,8 +972,6 @@ argument_list|(
 name|FieldName
 operator|.
 name|NOTE
-argument_list|,
-literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1030,9 +990,7 @@ literal|60
 argument_list|)
 operator|.
 name|setNumeric
-argument_list|(
-literal|true
-argument_list|)
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|add
@@ -1043,8 +1001,6 @@ argument_list|(
 name|FieldName
 operator|.
 name|ORGANIZATION
-argument_list|,
-literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1056,8 +1012,6 @@ argument_list|(
 name|FieldName
 operator|.
 name|PAGES
-argument_list|,
-literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1069,8 +1023,6 @@ argument_list|(
 name|FieldName
 operator|.
 name|PUBLISHER
-argument_list|,
-literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1082,8 +1034,6 @@ argument_list|(
 name|FieldName
 operator|.
 name|SCHOOL
-argument_list|,
-literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1095,8 +1045,6 @@ argument_list|(
 name|FieldName
 operator|.
 name|SERIES
-argument_list|,
-literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1115,16 +1063,14 @@ literal|400
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|dummy
-operator|=
+name|add
+argument_list|(
 operator|new
 name|BibtexSingleField
 argument_list|(
 name|FieldName
 operator|.
 name|TYPE
-argument_list|,
-literal|true
 argument_list|)
 operator|.
 name|withProperties
@@ -1133,10 +1079,6 @@ name|FieldProperty
 operator|.
 name|TYPE
 argument_list|)
-expr_stmt|;
-name|add
-argument_list|(
-name|dummy
 argument_list|)
 expr_stmt|;
 name|add
@@ -1147,8 +1089,6 @@ argument_list|(
 name|FieldName
 operator|.
 name|LANGUAGE
-argument_list|,
-literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1167,9 +1107,7 @@ literal|60
 argument_list|)
 operator|.
 name|setNumeric
-argument_list|(
-literal|true
-argument_list|)
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|add
@@ -1187,9 +1125,7 @@ literal|60
 argument_list|)
 operator|.
 name|setNumeric
-argument_list|(
-literal|true
-argument_list|)
+argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// custom fields not displayed at editor, but as columns in the UI
@@ -1201,8 +1137,9 @@ range|:
 name|SPECIAL_FIELDS
 control|)
 block|{
-name|dummy
-operator|=
+name|BibtexSingleField
+name|field
+init|=
 operator|new
 name|BibtexSingleField
 argument_list|(
@@ -1210,20 +1147,20 @@ name|fieldName
 argument_list|,
 literal|false
 argument_list|)
-expr_stmt|;
-name|dummy
+decl_stmt|;
+name|field
 operator|.
 name|setPrivate
 argument_list|()
 expr_stmt|;
-name|dummy
+name|field
 operator|.
 name|setWriteable
 argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
-name|dummy
+name|field
 operator|.
 name|setDisplayable
 argument_list|(
@@ -1232,21 +1169,20 @@ argument_list|)
 expr_stmt|;
 name|add
 argument_list|(
-name|dummy
+name|field
 argument_list|)
 expr_stmt|;
 block|}
 comment|// some semi-standard fields
-name|dummy
-operator|=
+name|BibtexSingleField
+name|tempField
+init|=
 operator|new
 name|BibtexSingleField
 argument_list|(
 name|BibEntry
 operator|.
 name|KEY_FIELD
-argument_list|,
-literal|true
 argument_list|)
 operator|.
 name|withProperties
@@ -1255,27 +1191,25 @@ name|FieldProperty
 operator|.
 name|KEY
 argument_list|)
-expr_stmt|;
-name|dummy
+decl_stmt|;
+name|tempField
 operator|.
 name|setPrivate
 argument_list|()
 expr_stmt|;
 name|add
 argument_list|(
-name|dummy
+name|tempField
 argument_list|)
 expr_stmt|;
-name|dummy
-operator|=
+name|add
+argument_list|(
 operator|new
 name|BibtexSingleField
 argument_list|(
 name|FieldName
 operator|.
 name|DOI
-argument_list|,
-literal|true
 argument_list|)
 operator|.
 name|withProperties
@@ -1284,10 +1218,6 @@ name|FieldProperty
 operator|.
 name|DOI
 argument_list|)
-expr_stmt|;
-name|add
-argument_list|(
-name|dummy
 argument_list|)
 expr_stmt|;
 name|add
@@ -1298,21 +1228,17 @@ argument_list|(
 name|FieldName
 operator|.
 name|EID
-argument_list|,
-literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|dummy
-operator|=
+name|add
+argument_list|(
 operator|new
 name|BibtexSingleField
 argument_list|(
 name|FieldName
 operator|.
 name|DATE
-argument_list|,
-literal|true
 argument_list|)
 operator|.
 name|withProperties
@@ -1321,10 +1247,6 @@ name|FieldProperty
 operator|.
 name|DATE
 argument_list|)
-expr_stmt|;
-name|add
-argument_list|(
-name|dummy
 argument_list|)
 expr_stmt|;
 name|add
@@ -1342,12 +1264,10 @@ literal|60
 argument_list|)
 operator|.
 name|setNumeric
-argument_list|(
-literal|true
-argument_list|)
+argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// additional fields ------------------------------------------------------
+comment|// additional fields
 name|add
 argument_list|(
 operator|new
@@ -1383,8 +1303,8 @@ name|MULTILINE_TEXT
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|dummy
-operator|=
+name|add
+argument_list|(
 operator|new
 name|BibtexSingleField
 argument_list|(
@@ -1405,10 +1325,6 @@ name|FieldProperty
 operator|.
 name|VERBATIM
 argument_list|)
-expr_stmt|;
-name|add
-argument_list|(
-name|dummy
 argument_list|)
 expr_stmt|;
 name|add
@@ -1437,8 +1353,8 @@ literal|false
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|dummy
-operator|=
+name|add
+argument_list|(
 operator|new
 name|BibtexSingleField
 argument_list|(
@@ -1459,14 +1375,10 @@ name|FieldProperty
 operator|.
 name|VERBATIM
 argument_list|)
+argument_list|)
 expr_stmt|;
 name|add
 argument_list|(
-name|dummy
-argument_list|)
-expr_stmt|;
-name|dummy
-operator|=
 operator|new
 name|BibtexSingleField
 argument_list|(
@@ -1483,23 +1395,17 @@ name|FieldProperty
 operator|.
 name|MULTIPLE_ENTRY_LINK
 argument_list|)
-expr_stmt|;
-name|add
-argument_list|(
-name|dummy
 argument_list|)
 expr_stmt|;
 comment|// some biblatex fields
-name|dummy
-operator|=
+name|add
+argument_list|(
 operator|new
 name|BibtexSingleField
 argument_list|(
 name|FieldName
 operator|.
 name|GENDER
-argument_list|,
-literal|true
 argument_list|)
 operator|.
 name|withProperties
@@ -1508,22 +1414,16 @@ name|FieldProperty
 operator|.
 name|GENDER
 argument_list|)
+argument_list|)
 expr_stmt|;
 name|add
 argument_list|(
-name|dummy
-argument_list|)
-expr_stmt|;
-name|dummy
-operator|=
 operator|new
 name|BibtexSingleField
 argument_list|(
 name|FieldName
 operator|.
 name|PUBSTATE
-argument_list|,
-literal|true
 argument_list|)
 operator|.
 name|withProperties
@@ -1532,14 +1432,10 @@ name|FieldProperty
 operator|.
 name|PUBLICATION_STATE
 argument_list|)
-expr_stmt|;
-name|add
-argument_list|(
-name|dummy
 argument_list|)
 expr_stmt|;
-comment|// some internal fields ----------------------------------------------
-name|dummy
+comment|// some internal fields
+name|tempField
 operator|=
 operator|new
 name|BibtexSingleField
@@ -1553,19 +1449,19 @@ argument_list|,
 literal|32
 argument_list|)
 expr_stmt|;
-name|dummy
+name|tempField
 operator|.
 name|setPrivate
 argument_list|()
 expr_stmt|;
-name|dummy
+name|tempField
 operator|.
 name|setWriteable
 argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
-name|dummy
+name|tempField
 operator|.
 name|setDisplayable
 argument_list|(
@@ -1574,10 +1470,10 @@ argument_list|)
 expr_stmt|;
 name|add
 argument_list|(
-name|dummy
+name|tempField
 argument_list|)
 expr_stmt|;
-name|dummy
+name|tempField
 operator|=
 operator|new
 name|BibtexSingleField
@@ -1596,14 +1492,14 @@ operator|.
 name|OWNER
 argument_list|)
 expr_stmt|;
-name|dummy
+name|tempField
 operator|.
 name|setPrivate
 argument_list|()
 expr_stmt|;
 name|add
 argument_list|(
-name|dummy
+name|tempField
 argument_list|)
 expr_stmt|;
 name|timeStampField
@@ -1612,7 +1508,7 @@ name|FieldName
 operator|.
 name|TIMESTAMP
 expr_stmt|;
-name|dummy
+name|tempField
 operator|=
 operator|new
 name|BibtexSingleField
@@ -1631,17 +1527,17 @@ operator|.
 name|DATE
 argument_list|)
 expr_stmt|;
-name|dummy
+name|tempField
 operator|.
 name|setPrivate
 argument_list|()
 expr_stmt|;
 name|add
 argument_list|(
-name|dummy
+name|tempField
 argument_list|)
 expr_stmt|;
-name|dummy
+name|tempField
 operator|=
 operator|new
 name|BibtexSingleField
@@ -1655,17 +1551,17 @@ argument_list|,
 literal|75
 argument_list|)
 expr_stmt|;
-name|dummy
+name|tempField
 operator|.
 name|setPrivate
 argument_list|()
 expr_stmt|;
 name|add
 argument_list|(
-name|dummy
+name|tempField
 argument_list|)
 expr_stmt|;
-name|dummy
+name|tempField
 operator|=
 operator|new
 name|BibtexSingleField
@@ -1677,19 +1573,19 @@ argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;
-name|dummy
+name|tempField
 operator|.
 name|setPrivate
 argument_list|()
 expr_stmt|;
-name|dummy
+name|tempField
 operator|.
 name|setWriteable
 argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
-name|dummy
+name|tempField
 operator|.
 name|setDisplayable
 argument_list|(
@@ -1698,10 +1594,10 @@ argument_list|)
 expr_stmt|;
 name|add
 argument_list|(
-name|dummy
+name|tempField
 argument_list|)
 expr_stmt|;
-name|dummy
+name|tempField
 operator|=
 operator|new
 name|BibtexSingleField
@@ -1713,19 +1609,19 @@ argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;
-name|dummy
+name|tempField
 operator|.
 name|setPrivate
 argument_list|()
 expr_stmt|;
-name|dummy
+name|tempField
 operator|.
 name|setWriteable
 argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
-name|dummy
+name|tempField
 operator|.
 name|setDisplayable
 argument_list|(
@@ -1734,10 +1630,10 @@ argument_list|)
 expr_stmt|;
 name|add
 argument_list|(
-name|dummy
+name|tempField
 argument_list|)
 expr_stmt|;
-name|dummy
+name|tempField
 operator|=
 operator|new
 name|BibtexSingleField
@@ -1749,12 +1645,12 @@ argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;
-name|dummy
+name|tempField
 operator|.
 name|setPrivate
 argument_list|()
 expr_stmt|;
-name|dummy
+name|tempField
 operator|.
 name|setWriteable
 argument_list|(
@@ -1762,7 +1658,7 @@ literal|true
 argument_list|)
 expr_stmt|;
 comment|// This field must be written to file!
-name|dummy
+name|tempField
 operator|.
 name|setDisplayable
 argument_list|(
@@ -1771,7 +1667,7 @@ argument_list|)
 expr_stmt|;
 name|add
 argument_list|(
-name|dummy
+name|tempField
 argument_list|)
 expr_stmt|;
 comment|// IEEEtranBSTCTL fields that should be "yes" or "no"
@@ -1780,11 +1676,12 @@ control|(
 name|String
 name|yesNoField
 range|:
-name|IEEETRANBSTCTL_YES_NO_FIELDS
+name|YES_NO_FIELDS
 control|)
 block|{
-name|dummy
-operator|=
+name|BibtexSingleField
+name|field
+init|=
 operator|new
 name|BibtexSingleField
 argument_list|(
@@ -1799,10 +1696,10 @@ name|FieldProperty
 operator|.
 name|YES_NO
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|add
 argument_list|(
-name|dummy
+name|field
 argument_list|)
 expr_stmt|;
 block|}
@@ -1843,9 +1740,7 @@ literal|true
 argument_list|)
 operator|.
 name|setNumeric
-argument_list|(
-literal|true
-argument_list|)
+argument_list|()
 expr_stmt|;
 block|}
 name|field
@@ -1927,7 +1822,7 @@ control|(
 name|String
 name|fieldText
 range|:
-name|BIBLATEX_PERSON_NAME_FIELDS
+name|PERSON_NAME_FIELDS
 control|)
 block|{
 name|BibtexSingleField
@@ -1982,7 +1877,7 @@ control|(
 name|String
 name|fieldText
 range|:
-name|BIBLATEX_EDITOR_TYPE_FIELDS
+name|EDITOR_TYPE_FIELDS
 control|)
 block|{
 name|BibtexSingleField
@@ -2037,7 +1932,7 @@ control|(
 name|String
 name|fieldText
 range|:
-name|BIBLATEX_PAGINATION_FIELDS
+name|PAGINATION_FIELDS
 control|)
 block|{
 name|BibtexSingleField
@@ -2092,7 +1987,7 @@ control|(
 name|String
 name|fieldText
 range|:
-name|BIBLATEX_DATE_FIELDS
+name|DATE_FIELDS
 control|)
 block|{
 name|BibtexSingleField
@@ -2118,8 +2013,6 @@ operator|new
 name|BibtexSingleField
 argument_list|(
 name|fieldText
-argument_list|,
-literal|true
 argument_list|)
 expr_stmt|;
 block|}
@@ -2159,7 +2052,7 @@ control|(
 name|String
 name|fieldText
 range|:
-name|BIBLATEX_JOURNAL_NAME_FIELDS
+name|JOURNAL_NAME_FIELDS
 control|)
 block|{
 name|BibtexSingleField
@@ -2185,8 +2078,6 @@ operator|new
 name|BibtexSingleField
 argument_list|(
 name|fieldText
-argument_list|,
-literal|true
 argument_list|)
 expr_stmt|;
 block|}
@@ -2214,7 +2105,7 @@ control|(
 name|String
 name|fieldText
 range|:
-name|BIBLATEX_BOOK_NAME_FIELDS
+name|BOOK_NAME_FIELDS
 control|)
 block|{
 name|BibtexSingleField
@@ -2240,8 +2131,6 @@ operator|new
 name|BibtexSingleField
 argument_list|(
 name|fieldText
-argument_list|,
-literal|true
 argument_list|)
 expr_stmt|;
 block|}
@@ -2269,7 +2158,7 @@ control|(
 name|String
 name|fieldText
 range|:
-name|BIBLATEX_LANGUAGE_FIELDS
+name|LANGUAGE_FIELDS
 control|)
 block|{
 name|BibtexSingleField
@@ -2295,8 +2184,6 @@ operator|new
 name|BibtexSingleField
 argument_list|(
 name|fieldText
-argument_list|,
-literal|true
 argument_list|)
 expr_stmt|;
 block|}
@@ -2324,7 +2211,7 @@ control|(
 name|String
 name|fieldText
 range|:
-name|BIBLATEX_MULTI_KEY_FIELDS
+name|MULTI_KEY_FIELDS
 control|)
 block|{
 name|BibtexSingleField
@@ -2350,8 +2237,6 @@ operator|new
 name|BibtexSingleField
 argument_list|(
 name|fieldText
-argument_list|,
-literal|true
 argument_list|)
 expr_stmt|;
 block|}
@@ -2503,26 +2388,26 @@ condition|)
 block|{
 return|return;
 block|}
-comment|// Build a Set of field names for the fields that should be sorted numerically:
+comment|// Build a Set of field names for the fields that should be sorted numerically
 name|Set
 argument_list|<
 name|String
 argument_list|>
-name|nF
+name|names
 init|=
 operator|new
 name|HashSet
 argument_list|<>
 argument_list|()
 decl_stmt|;
-name|nF
+name|names
 operator|.
 name|addAll
 argument_list|(
 name|numFields
 argument_list|)
 expr_stmt|;
-comment|// Look through all registered fields, and activate numeric sorting if necessary:
+comment|// Look through all registered fields, and activate numeric sorting if necessary
 for|for
 control|(
 name|String
@@ -2560,7 +2445,7 @@ operator|.
 name|isNumeric
 argument_list|()
 operator|&&
-name|nF
+name|names
 operator|.
 name|contains
 argument_list|(
@@ -2571,12 +2456,10 @@ block|{
 name|field
 operator|.
 name|setNumeric
-argument_list|(
-literal|true
-argument_list|)
+argument_list|()
 expr_stmt|;
 block|}
-name|nF
+name|names
 operator|.
 name|remove
 argument_list|(
@@ -2585,13 +2468,13 @@ argument_list|)
 expr_stmt|;
 comment|// remove, so we clear the set of all standard fields.
 block|}
-comment|// If there are fields left in nF, these must be non-standard fields. Add descriptors for them:
+comment|// If there are fields left in names, these must be non-standard fields. Add descriptors for them
 for|for
 control|(
 name|String
 name|fieldName
 range|:
-name|nF
+name|names
 control|)
 block|{
 name|BibtexSingleField
@@ -2608,9 +2491,7 @@ decl_stmt|;
 name|field
 operator|.
 name|setNumeric
-argument_list|(
-literal|true
-argument_list|)
+argument_list|()
 expr_stmt|;
 name|InternalBibtexFields
 operator|.
@@ -2666,9 +2547,6 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|// --------------------------------------------------------------------------
-comment|//  the "static area"
-comment|// --------------------------------------------------------------------------
 DECL|method|getField (String name)
 specifier|private
 specifier|static
@@ -2754,7 +2632,7 @@ name|DEFAULT_FIELD_LENGTH
 argument_list|)
 return|;
 block|}
-comment|/**      * returns a List with all fieldnames      */
+comment|/**      * Returns a sorted list with all field names      */
 DECL|method|getAllPublicFieldNames ()
 specifier|public
 specifier|static
@@ -2765,7 +2643,6 @@ argument_list|>
 name|getAllPublicFieldNames
 parameter_list|()
 block|{
-comment|// collect all public fields
 name|List
 argument_list|<
 name|String
@@ -2780,7 +2657,7 @@ decl_stmt|;
 for|for
 control|(
 name|BibtexSingleField
-name|sField
+name|field
 range|:
 name|InternalBibtexFields
 operator|.
@@ -2795,7 +2672,7 @@ block|{
 if|if
 condition|(
 operator|!
-name|sField
+name|field
 operator|.
 name|isPrivate
 argument_list|()
@@ -2805,7 +2682,7 @@ name|publicFields
 operator|.
 name|add
 argument_list|(
-name|sField
+name|field
 operator|.
 name|getName
 argument_list|()
@@ -2903,7 +2780,7 @@ name|isDisplayable
 argument_list|()
 return|;
 block|}
-comment|/**      * Returns true if the given field is a standard Bibtex field.      *      * @param field a<code>String</code> value      * @return a<code>boolean</code> value      */
+comment|/**      * Returns true if the given field is a standard BibTeX field.      *      * @param field a<code>String</code> value      * @return a<code>boolean</code> value      */
 DECL|method|isStandardField (String field)
 specifier|public
 specifier|static
@@ -3018,7 +2895,7 @@ name|JOURNAL_NAME
 argument_list|)
 return|;
 block|}
-comment|/**      * returns a List with all fieldnames incl. internal fieldnames      */
+comment|/**      * Returns a sorted List with all field names including internal field names      */
 DECL|method|getAllPublicAndInternalFieldNames ()
 specifier|public
 specifier|static
@@ -3199,10 +3076,10 @@ name|getIEEETranBSTctlYesNoFields
 parameter_list|()
 block|{
 return|return
-name|IEEETRANBSTCTL_YES_NO_FIELDS
+name|YES_NO_FIELDS
 return|;
 block|}
-comment|/**      * insert a field into the internal list      */
+comment|/**      * Insert a field into the internal list      */
 DECL|method|add (BibtexSingleField field)
 specifier|private
 name|void
@@ -3212,19 +3089,14 @@ name|BibtexSingleField
 name|field
 parameter_list|)
 block|{
-name|String
-name|key
-init|=
-name|field
-operator|.
-name|getName
-argument_list|()
-decl_stmt|;
 name|fieldSet
 operator|.
 name|put
 argument_list|(
-name|key
+name|field
+operator|.
+name|getName
+argument_list|()
 argument_list|,
 name|field
 argument_list|)

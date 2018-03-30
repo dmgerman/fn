@@ -88,6 +88,20 @@ name|pdfbox
 operator|.
 name|pdmodel
 operator|.
+name|PDDocument
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|pdfbox
+operator|.
+name|pdmodel
+operator|.
 name|PDPage
 import|;
 end_import
@@ -105,6 +119,34 @@ operator|.
 name|common
 operator|.
 name|PDRectangle
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|pdfbox
+operator|.
+name|rendering
+operator|.
+name|ImageType
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|pdfbox
+operator|.
+name|rendering
+operator|.
+name|PDFRenderer
 import|;
 end_import
 
@@ -132,7 +174,13 @@ specifier|final
 name|int
 name|pageNumber
 decl_stmt|;
-DECL|method|PdfDocumentPageViewModel (PDPage page, int pageNumber)
+DECL|field|document
+specifier|private
+specifier|final
+name|PDDocument
+name|document
+decl_stmt|;
+DECL|method|PdfDocumentPageViewModel (PDPage page, int pageNumber, PDDocument document)
 specifier|public
 name|PdfDocumentPageViewModel
 parameter_list|(
@@ -141,6 +189,9 @@ name|page
 parameter_list|,
 name|int
 name|pageNumber
+parameter_list|,
+name|PDDocument
+name|document
 parameter_list|)
 block|{
 name|this
@@ -159,6 +210,12 @@ operator|.
 name|pageNumber
 operator|=
 name|pageNumber
+expr_stmt|;
+name|this
+operator|.
+name|document
+operator|=
+name|document
 expr_stmt|;
 block|}
 comment|// Taken from http://stackoverflow.com/a/9417836/873661
@@ -249,6 +306,7 @@ return|;
 block|}
 annotation|@
 name|Override
+comment|// Taken from https://stackoverflow.com/questions/23326562/apache-pdfbox-convert-pdf-to-images
 DECL|method|render (int width, int height)
 specifier|public
 name|Image
@@ -261,6 +319,15 @@ name|int
 name|height
 parameter_list|)
 block|{
+name|PDFRenderer
+name|renderer
+init|=
+operator|new
+name|PDFRenderer
+argument_list|(
+name|document
+argument_list|)
+decl_stmt|;
 try|try
 block|{
 name|int
@@ -271,17 +338,19 @@ decl_stmt|;
 name|BufferedImage
 name|image
 init|=
-name|page
+name|renderer
 operator|.
-name|convertToImage
+name|renderImageWithDPI
 argument_list|(
-name|BufferedImage
-operator|.
-name|TYPE_INT_RGB
+name|pageNumber
 argument_list|,
 literal|2
 operator|*
 name|resolution
+argument_list|,
+name|ImageType
+operator|.
+name|RGB
 argument_list|)
 decl_stmt|;
 return|return

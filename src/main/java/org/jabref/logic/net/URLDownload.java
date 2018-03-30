@@ -680,8 +680,6 @@ block|}
 DECL|method|getMimeType ()
 function|public String getMimeType
 parameter_list|()
-throws|throws
-name|IOException
 block|{
 name|Unirest
 operator|.
@@ -900,8 +898,6 @@ parameter_list|(
 name|String
 name|type
 parameter_list|)
-throws|throws
-name|IOException
 block|{
 name|String
 name|mime
@@ -933,8 +929,6 @@ block|}
 DECL|method|isPdf ()
 function|public boolean isPdf
 parameter_list|()
-throws|throws
-name|IOException
 block|{
 return|return
 name|isMimeType

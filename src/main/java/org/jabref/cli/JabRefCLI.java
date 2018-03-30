@@ -669,6 +669,21 @@ literal|"exportMatches"
 argument_list|)
 return|;
 block|}
+DECL|method|isXmpFacilities ()
+specifier|public
+name|boolean
+name|isXmpFacilities
+parameter_list|()
+block|{
+return|return
+name|cl
+operator|.
+name|hasOption
+argument_list|(
+literal|"readAndWriteXmpMetadata"
+argument_list|)
+return|;
+block|}
 DECL|method|isGenerateBibtexKeys ()
 specifier|public
 name|boolean
@@ -1263,6 +1278,31 @@ name|lang
 argument_list|(
 literal|"Automatically set file links"
 argument_list|)
+argument_list|)
+operator|.
+name|build
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|options
+operator|.
+name|addOption
+argument_list|(
+name|Option
+operator|.
+name|builder
+argument_list|(
+literal|"xmp"
+argument_list|)
+operator|.
+name|longOpt
+argument_list|(
+literal|"readAndWriteXmpMetadata"
+argument_list|)
+operator|.
+name|desc
+argument_list|(
+literal|"Read and write xmp metadata from/to pdf files"
 argument_list|)
 operator|.
 name|build

@@ -252,6 +252,18 @@ begin_import
 import|import
 name|org
 operator|.
+name|jsoup
+operator|.
+name|select
+operator|.
+name|Elements
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|slf4j
 operator|.
 name|Logger
@@ -425,7 +437,56 @@ operator|.
 name|get
 argument_list|()
 decl_stmt|;
+comment|// Retrieve PDF link from meta data (most recent)
+name|Elements
+name|metaLinks
+init|=
+name|html
+operator|.
+name|getElementsByAttributeValue
+argument_list|(
+literal|"name"
+argument_list|,
+literal|"citation_pdf_url"
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+operator|!
+name|metaLinks
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+name|String
+name|link
+init|=
+name|metaLinks
+operator|.
+name|first
+argument_list|()
+operator|.
+name|attr
+argument_list|(
+literal|"content"
+argument_list|)
+decl_stmt|;
+return|return
+name|Optional
+operator|.
+name|of
+argument_list|(
+operator|new
+name|URL
+argument_list|(
+name|link
+argument_list|)
+argument_list|)
+return|;
+block|}
 comment|// Retrieve PDF link (old page)
+comment|// TODO: can possibly be removed
 name|Element
 name|link
 init|=
@@ -477,6 +538,7 @@ name|pdfLink
 return|;
 block|}
 comment|// Retrieve PDF link (new page)
+comment|// TODO: can possibly be removed
 name|String
 name|url
 init|=
@@ -553,6 +615,20 @@ name|Optional
 operator|.
 name|empty
 argument_list|()
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|getTrustLevel ()
+specifier|public
+name|TrustLevel
+name|getTrustLevel
+parameter_list|()
+block|{
+return|return
+name|TrustLevel
+operator|.
+name|PUBLISHER
 return|;
 block|}
 DECL|method|getUrlByDoi (String doi)

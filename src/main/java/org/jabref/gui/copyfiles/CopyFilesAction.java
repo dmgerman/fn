@@ -353,7 +353,7 @@ operator|.
 name|getCurrentBasePanel
 argument_list|()
 operator|.
-name|getDatabaseContext
+name|getBibDatabaseContext
 argument_list|()
 expr_stmt|;
 name|Task
@@ -405,12 +405,15 @@ name|runInJavaFXThread
 argument_list|(
 parameter_list|()
 lambda|->
+block|{
 name|dialogService
 operator|.
 name|showCanceableProgressDialogAndWait
 argument_list|(
 name|exportService
 argument_list|)
+expr_stmt|;
+block|}
 argument_list|)
 expr_stmt|;
 name|exportService
@@ -418,13 +421,13 @@ operator|.
 name|run
 argument_list|()
 expr_stmt|;
-comment|//Run kinda blocks, so we just show the result dialog wgeb run is ready
 name|DefaultTaskExecutor
 operator|.
 name|runInJavaFXThread
 argument_list|(
 parameter_list|()
 lambda|->
+block|{
 name|showDialog
 argument_list|(
 name|exportService
@@ -432,6 +435,8 @@ operator|.
 name|getValue
 argument_list|()
 argument_list|)
+expr_stmt|;
+block|}
 argument_list|)
 expr_stmt|;
 block|}
@@ -447,6 +452,35 @@ argument_list|>
 name|data
 parameter_list|)
 block|{
+if|if
+condition|(
+name|data
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+name|dialogService
+operator|.
+name|showInformationDialogAndWait
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Copy linked files to folder..."
+argument_list|)
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"No linked files found for export."
+argument_list|)
+argument_list|)
+expr_stmt|;
+return|return;
+block|}
 name|CopyFilesDialogView
 name|dlg
 init|=

@@ -858,7 +858,7 @@ name|logic
 operator|.
 name|xmp
 operator|.
-name|XMPPreferences
+name|XmpPreferences
 import|;
 end_import
 
@@ -9713,13 +9713,13 @@ return|;
 block|}
 DECL|method|getXMPPreferences ()
 specifier|public
-name|XMPPreferences
+name|XmpPreferences
 name|getXMPPreferences
 parameter_list|()
 block|{
 return|return
 operator|new
-name|XMPPreferences
+name|XmpPreferences
 argument_list|(
 name|getBoolean
 argument_list|(
