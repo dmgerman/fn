@@ -263,7 +263,7 @@ name|findIn
 argument_list|(
 name|panel
 operator|.
-name|getDatabaseContext
+name|getBibDatabaseContext
 argument_list|()
 argument_list|,
 name|Globals
