@@ -121,6 +121,24 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+DECL|method|BibtexSingleField (String fieldName)
+specifier|public
+name|BibtexSingleField
+parameter_list|(
+name|String
+name|fieldName
+parameter_list|)
+block|{
+name|this
+argument_list|(
+name|fieldName
+argument_list|,
+literal|true
+argument_list|,
+name|DEFAULT_FIELD_LENGTH
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|BibtexSingleField (String fieldName, boolean standardField)
 specifier|public
 name|BibtexSingleField
