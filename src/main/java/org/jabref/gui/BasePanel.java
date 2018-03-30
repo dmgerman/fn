@@ -12248,19 +12248,6 @@ block|}
 end_function
 
 begin_function
-DECL|method|getDatabaseContext ()
-specifier|public
-name|BibDatabaseContext
-name|getDatabaseContext
-parameter_list|()
-block|{
-return|return
-name|bibDatabaseContext
-return|;
-block|}
-end_function
-
-begin_function
 DECL|method|getCurrentSearchQuery ()
 specifier|public
 name|Optional

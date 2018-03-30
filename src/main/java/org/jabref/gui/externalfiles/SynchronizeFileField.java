@@ -74,16 +74,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Collection
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|Collections
 import|;
 end_import
@@ -591,7 +581,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This action goes through all selected entries in the BasePanel, and attempts to autoset the  * given external file (pdf, ps, ...) based on the same algorithm used for the "Auto" button in  * EntryEditor.  */
+comment|/**  * This action goes through all selected entries in the BasePanel, and attempts to auto set the  * given external file (pdf, ps, ...)  */
 end_comment
 
 begin_class
@@ -652,20 +642,20 @@ literal|"Quit synchronization"
 argument_list|)
 block|}
 decl_stmt|;
-DECL|field|sel
+DECL|field|selectedEntries
 specifier|private
 name|List
 argument_list|<
 name|BibEntry
 argument_list|>
-name|sel
+name|selectedEntries
 decl_stmt|;
-DECL|field|optDiag
+DECL|field|dialog
 specifier|private
 name|SynchronizeFileField
 operator|.
 name|OptionsDialog
-name|optDiag
+name|dialog
 decl_stmt|;
 DECL|field|entriesChangedCount
 specifier|private
@@ -716,12 +706,16 @@ name|void
 name|init
 parameter_list|()
 block|{
-name|Collection
-argument_list|<
-name|BibEntry
-argument_list|>
-name|col
-init|=
+name|goOn
+operator|=
+literal|true
+expr_stmt|;
+name|selectedEntries
+operator|=
+operator|new
+name|ArrayList
+argument_list|<>
+argument_list|(
 name|panel
 operator|.
 name|getDatabase
@@ -729,29 +723,17 @@ argument_list|()
 operator|.
 name|getEntries
 argument_list|()
-decl_stmt|;
-name|goOn
-operator|=
-literal|true
-expr_stmt|;
-name|sel
-operator|=
-operator|new
-name|ArrayList
-argument_list|<>
-argument_list|(
-name|col
 argument_list|)
 expr_stmt|;
 comment|// Ask about rules for the operation:
 if|if
 condition|(
-name|optDiag
+name|dialog
 operator|==
 literal|null
 condition|)
 block|{
-name|optDiag
+name|dialog
 operator|=
 operator|new
 name|SynchronizeFileField
@@ -770,7 +752,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-name|optDiag
+name|dialog
 operator|.
 name|setLocationRelativeTo
 argument_list|(
@@ -780,7 +762,7 @@ name|frame
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|optDiag
+name|dialog
 operator|.
 name|setVisible
 argument_list|(
@@ -789,7 +771,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|optDiag
+name|dialog
 operator|.
 name|canceled
 argument_list|()
@@ -804,14 +786,14 @@ block|}
 name|autoSet
 operator|=
 operator|!
-name|optDiag
+name|dialog
 operator|.
 name|isAutoSetNone
 argument_list|()
 expr_stmt|;
 name|checkExisting
 operator|=
-name|optDiag
+name|dialog
 operator|.
 name|isCheckLinks
 argument_list|()
@@ -895,7 +877,7 @@ name|autoSet
 condition|?
 name|weightAutoSet
 operator|*
-name|sel
+name|selectedEntries
 operator|.
 name|size
 argument_list|()
@@ -906,7 +888,7 @@ operator|+
 operator|(
 name|checkExisting
 condition|?
-name|sel
+name|selectedEntries
 operator|.
 name|size
 argument_list|()
@@ -971,12 +953,12 @@ operator|new
 name|ArrayList
 argument_list|<>
 argument_list|(
-name|sel
+name|selectedEntries
 argument_list|)
 decl_stmt|;
 comment|// Start the automatically setting process:
 name|Runnable
-name|r
+name|runnable
 init|=
 name|AutoSetLinks
 operator|.
@@ -1004,13 +986,13 @@ name|INSTANCE
 operator|.
 name|executeAndWait
 argument_list|(
-name|r
+name|runnable
 argument_list|)
 expr_stmt|;
 block|}
 name|progress
 operator|+=
-name|sel
+name|selectedEntries
 operator|.
 name|size
 argument_list|()
@@ -1045,7 +1027,7 @@ control|(
 name|BibEntry
 name|aSel
 range|:
-name|sel
+name|selectedEntries
 control|)
 block|{
 name|panel
