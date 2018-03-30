@@ -453,6 +453,7 @@ name|null_database
 argument_list|)
 return|;
 block|}
+comment|/**      * Expands the current pattern using the given bibentry and database. ";" is used as keyword delimiter.      *      * @param bibentry The bibentry to expand.      * @param database The database to use for string-lookups and cross-refs. May be null.      *      * @return The expanded pattern. The empty string is returned, if it could not be expanded.      */
 DECL|method|expand (BibEntry bibentry, BibDatabase database)
 specifier|public
 name|String
@@ -465,6 +466,13 @@ name|BibDatabase
 name|database
 parameter_list|)
 block|{
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|bibentry
+argument_list|)
+expr_stmt|;
 name|Character
 name|keywordDelimiter
 init|=
@@ -481,6 +489,7 @@ name|database
 argument_list|)
 return|;
 block|}
+comment|/**      * Expands the current pattern using the given bibentry, keyword delimiter, and database.      *      * @param bibentry The bibentry to expand.      * @param keywordDelimiter The keyword delimiter to use.      * @param database The database to use for string-lookups and cross-refs. May be null.      *      * @return The expanded pattern. The empty string is returned, if it could not be expanded.      */
 DECL|method|expand (BibEntry bibentry, Character keywordDelimiter, BibDatabase database)
 specifier|public
 name|String
@@ -783,7 +792,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * @param entry The entry to get the field value from      * @param value A pattern string (such as auth, pureauth, authorLast)      * @param keywordDelimiter The de      * @param database The database to use for field resolving. May be null.      * @return String containing the field value. Empty string if the pattern cannot be resolved.      */
+comment|/**      * Evaluates the given pattern ("value") to the given bibentry and database      *      * @param entry The entry to get the field value from      * @param value A pattern string (such as auth, pureauth, authorLast)      * @param keywordDelimiter The de      * @param database The database to use for field resolving. May be null.      *      * @return String containing the evaluation result. Empty string if the pattern cannot be resolved.      */
 DECL|method|getFieldValue (BibEntry entry, String value, Character keywordDelimiter, BibDatabase database)
 specifier|public
 specifier|static
@@ -827,7 +836,7 @@ literal|"pureauth"
 argument_list|)
 condition|)
 block|{
-comment|/*                  * For label code "auth...": if there is no author, but there                  * are editor(s) (e.g. for an Edited Book), use the editor(s)                  * instead. (saw27@mrao.cam.ac.uk). This is what most people                  * want, but in case somebody really needs a field which expands                  * to nothing if there is no author (e.g. someone who uses both                  * "auth" and "ed" in the same label), we provide an alternative                  * form "pureauth..." which does not do this fallback                  * substitution of editor.                  */
+comment|// result the author
 name|String
 name|authString
 decl_stmt|;
@@ -903,8 +912,10 @@ literal|"pure"
 argument_list|)
 condition|)
 block|{
-comment|// remove the "pure" prefix so the remaining
-comment|// code in this section functions correctly
+comment|// "pure" is used in the context of authors to resolve to authors only and not fallback to editors
+comment|// The other functionality of the pattern "ForeIni", ... is the same
+comment|// Thus, remove the "pure" prefix so the remaining code in this section functions correctly
+comment|//
 name|val
 operator|=
 name|val
@@ -915,6 +926,9 @@ literal|4
 argument_list|)
 expr_stmt|;
 block|}
+else|else
+block|{
+comment|// special feature: A pattern starting with "auth" falls back to the editor
 if|if
 condition|(
 name|authString
@@ -984,6 +998,7 @@ argument_list|(
 literal|""
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 comment|// Gather all author-related checks, so we don't
