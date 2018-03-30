@@ -416,7 +416,7 @@ name|jabref
 operator|.
 name|preferences
 operator|.
-name|SavePreferencesFactory
+name|JabRefPreferences
 import|;
 end_import
 
@@ -792,7 +792,7 @@ block|{
 name|SavePreferences
 name|prefs
 init|=
-name|SavePreferencesFactory
+name|JabRefPreferences
 operator|.
 name|loadForSaveFromPreferences
 argument_list|(

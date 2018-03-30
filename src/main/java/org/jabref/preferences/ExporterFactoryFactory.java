@@ -12,6 +12,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|jabref
@@ -80,16 +90,6 @@ name|LayoutFormatterPreferences
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Map
-import|;
-end_import
-
 begin_class
 DECL|class|ExporterFactoryFactory
 specifier|public
@@ -141,7 +141,7 @@ decl_stmt|;
 name|SavePreferences
 name|savePreferences
 init|=
-name|SavePreferencesFactory
+name|JabRefPreferences
 operator|.
 name|loadForExportFromPreferences
 argument_list|(

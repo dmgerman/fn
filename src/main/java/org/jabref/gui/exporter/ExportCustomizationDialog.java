@@ -364,7 +364,7 @@ name|jabref
 operator|.
 name|preferences
 operator|.
-name|SavePreferencesFactory
+name|JabRefPreferences
 operator|.
 name|loadForExportFromPreferences
 import|;

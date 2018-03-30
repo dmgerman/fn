@@ -468,7 +468,7 @@ decl_stmt|;
 name|SavePreferences
 name|savePreferences
 init|=
-name|SavePreferencesFactory
+name|JabRefPreferences
 operator|.
 name|loadForExportFromPreferences
 argument_list|(
