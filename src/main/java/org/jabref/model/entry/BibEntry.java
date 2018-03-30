@@ -735,15 +735,6 @@ name|BibDatabase
 name|database
 parameter_list|)
 block|{
-name|Objects
-operator|.
-name|requireNonNull
-argument_list|(
-name|this
-argument_list|,
-literal|"entry cannot be null"
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 name|TYPE_HEADER

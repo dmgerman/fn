@@ -518,6 +518,7 @@ name|database
 argument_list|)
 return|;
 block|}
+comment|/**      * Expands a pattern      *      * @param pattern The pattern to expand      * @param keywordDelimiter The keyword delimiter to use      * @param entry The bibentry to use for expansion      * @param database The database for field resolving. May be null.      * @return The expanded pattern. Not null.      */
 DECL|method|expandBrackets (String pattern, Character keywordDelimiter, BibEntry entry, BibDatabase database)
 specifier|public
 specifier|static
@@ -782,6 +783,7 @@ name|toString
 argument_list|()
 return|;
 block|}
+comment|/**      * @param entry The entry to get the field value from      * @param value A pattern string (such as auth, pureauth, authorLast)      * @param keywordDelimiter The de      * @param database The database to use for field resolving. May be null.      * @return String containing the field value. Empty string if the pattern cannot be resolved.      */
 DECL|method|getFieldValue (BibEntry entry, String value, Character keywordDelimiter, BibDatabase database)
 specifier|public
 specifier|static
@@ -5412,7 +5414,7 @@ argument_list|)
 return|;
 block|}
 block|}
-comment|/**      * Parse a field marker with modifiers, possibly containing a parenthesised modifier,      * as well as escaped colons and parentheses.      * @param arg The argument string.      * @return An array of strings representing the parts of the marker      */
+comment|/**      * Parse a field marker with modifiers, possibly containing a parenthesised modifier,      * as well as escaped colons and parentheses.      *      * @param arg The argument string.      * @return An array of strings representing the parts of the marker      */
 DECL|method|parseFieldMarker (String arg)
 specifier|protected
 specifier|static
