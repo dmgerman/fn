@@ -51,10 +51,10 @@ name|DEFAULT_FIELD_LENGTH
 init|=
 literal|100
 decl_stmt|;
-DECL|enum|Flag
+DECL|enum|FieldType
 specifier|private
 enum|enum
-name|Flag
+name|FieldType
 block|{
 DECL|enumConstant|STANDARD
 name|STANDARD
@@ -74,26 +74,25 @@ specifier|private
 name|String
 name|name
 decl_stmt|;
-comment|// contains the standard, private, displayable, writable infos
-comment|// default is: not standard, public, displayable and writable
-DECL|field|flags
+comment|/**      * contains the standard, private, displayable, writable infos      * default is: not standard, public, displayable and writable      */
+DECL|field|fieldTypes
 specifier|private
 specifier|final
 name|Set
 argument_list|<
-name|Flag
+name|FieldType
 argument_list|>
-name|flags
+name|fieldTypes
 init|=
 name|EnumSet
 operator|.
 name|of
 argument_list|(
-name|Flag
+name|FieldType
 operator|.
 name|DISPLAYABLE
 argument_list|,
-name|Flag
+name|FieldType
 operator|.
 name|WRITEABLE
 argument_list|)
@@ -104,8 +103,7 @@ specifier|final
 name|int
 name|length
 decl_stmt|;
-comment|// properties contains a set of FieldProperty to e.g. tell the EntryEditor to add a specific
-comment|// function to this field, to format names, or to control the integrity checks.
+comment|/**      * properties contains a set of FieldProperty to e.g. tell the EntryEditor to add a specific      * function to this field, to format names, or to control the integrity checks.      */
 DECL|field|properties
 specifier|private
 name|Set
@@ -123,10 +121,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|// a comma separated list of alternative bibtex-fieldnames, e.g.
-comment|// "LCCN" is the same like "lib-congress"
-comment|// private String otherNames = null ;
-DECL|method|BibtexSingleField (String fieldName, boolean pStandard)
+DECL|method|BibtexSingleField (String fieldName, boolean standardField)
 specifier|public
 name|BibtexSingleField
 parameter_list|(
@@ -134,20 +129,20 @@ name|String
 name|fieldName
 parameter_list|,
 name|boolean
-name|pStandard
+name|standardField
 parameter_list|)
 block|{
 name|this
 argument_list|(
 name|fieldName
 argument_list|,
-name|pStandard
+name|standardField
 argument_list|,
 name|DEFAULT_FIELD_LENGTH
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|BibtexSingleField (String fieldName, boolean pStandard, int pLength)
+DECL|method|BibtexSingleField (String fieldName, boolean standardField, int length)
 specifier|public
 name|BibtexSingleField
 parameter_list|(
@@ -155,65 +150,36 @@ name|String
 name|fieldName
 parameter_list|,
 name|boolean
-name|pStandard
+name|standardField
 parameter_list|,
 name|int
-name|pLength
+name|length
 parameter_list|)
 block|{
+name|this
+operator|.
 name|name
 operator|=
 name|fieldName
 expr_stmt|;
-name|setFlag
-argument_list|(
-name|pStandard
-argument_list|,
-name|Flag
+name|this
 operator|.
-name|STANDARD
-argument_list|)
-expr_stmt|;
 name|length
 operator|=
-name|pLength
+name|length
 expr_stmt|;
-block|}
-comment|/**      * Sets or onsets the given flag      * @param setToOn if true, set the flag; if false, unset the flat      * @param flagID, the id of the flag      */
-DECL|method|setFlag (boolean setToOn, Flag flagID)
-specifier|private
-name|void
-name|setFlag
-parameter_list|(
-name|boolean
-name|setToOn
-parameter_list|,
-name|Flag
-name|flagID
-parameter_list|)
-block|{
 if|if
 condition|(
-name|setToOn
+name|standardField
 condition|)
 block|{
-comment|// set the flag
-name|flags
+name|fieldTypes
 operator|.
 name|add
 argument_list|(
-name|flagID
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-comment|// unset the flag
-name|flags
+name|FieldType
 operator|.
-name|remove
-argument_list|(
-name|flagID
+name|STANDARD
 argument_list|)
 expr_stmt|;
 block|}
@@ -225,11 +191,11 @@ name|isStandard
 parameter_list|()
 block|{
 return|return
-name|flags
+name|fieldTypes
 operator|.
 name|contains
 argument_list|(
-name|Flag
+name|FieldType
 operator|.
 name|STANDARD
 argument_list|)
@@ -241,11 +207,11 @@ name|void
 name|setPrivate
 parameter_list|()
 block|{
-name|flags
+name|fieldTypes
 operator|.
 name|add
 argument_list|(
-name|Flag
+name|FieldType
 operator|.
 name|PRIVATE
 argument_list|)
@@ -257,11 +223,11 @@ name|void
 name|setPublic
 parameter_list|()
 block|{
-name|flags
+name|fieldTypes
 operator|.
 name|remove
 argument_list|(
-name|Flag
+name|FieldType
 operator|.
 name|PRIVATE
 argument_list|)
@@ -274,11 +240,11 @@ name|isPrivate
 parameter_list|()
 block|{
 return|return
-name|flags
+name|fieldTypes
 operator|.
 name|contains
 argument_list|(
-name|Flag
+name|FieldType
 operator|.
 name|PRIVATE
 argument_list|)
@@ -293,15 +259,33 @@ name|boolean
 name|value
 parameter_list|)
 block|{
-name|setFlag
-argument_list|(
+if|if
+condition|(
 name|value
-argument_list|,
-name|Flag
+condition|)
+block|{
+name|fieldTypes
+operator|.
+name|add
+argument_list|(
+name|FieldType
 operator|.
 name|DISPLAYABLE
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+name|fieldTypes
+operator|.
+name|remove
+argument_list|(
+name|FieldType
+operator|.
+name|DISPLAYABLE
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 DECL|method|isDisplayable ()
 specifier|public
@@ -310,11 +294,11 @@ name|isDisplayable
 parameter_list|()
 block|{
 return|return
-name|flags
+name|fieldTypes
 operator|.
 name|contains
 argument_list|(
-name|Flag
+name|FieldType
 operator|.
 name|DISPLAYABLE
 argument_list|)
@@ -329,15 +313,33 @@ name|boolean
 name|value
 parameter_list|)
 block|{
-name|setFlag
-argument_list|(
+if|if
+condition|(
 name|value
-argument_list|,
-name|Flag
+condition|)
+block|{
+name|fieldTypes
+operator|.
+name|add
+argument_list|(
+name|FieldType
 operator|.
 name|WRITEABLE
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+name|fieldTypes
+operator|.
+name|remove
+argument_list|(
+name|FieldType
+operator|.
+name|WRITEABLE
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 DECL|method|isWriteable ()
 specifier|public
@@ -346,11 +348,11 @@ name|isWriteable
 parameter_list|()
 block|{
 return|return
-name|flags
+name|fieldTypes
 operator|.
 name|contains
 argument_list|(
-name|Flag
+name|FieldType
 operator|.
 name|WRITEABLE
 argument_list|)
@@ -384,8 +386,7 @@ return|return
 name|this
 return|;
 block|}
-comment|// fieldExtras contains mappings to tell the EntryEditor to add a specific
-comment|// function to this field, for instance a "browse" button for the "pdf" field.
+comment|/**      * properties contains mappings to tell the EntryEditor to add a specific function to this field,      * for instance a dropdown for selecting the month for the month field.      */
 DECL|method|getProperties ()
 specifier|public
 name|Set
@@ -422,20 +423,12 @@ return|return
 name|name
 return|;
 block|}
-comment|/**      * Set this field's numeric property      *      * @param numeric true to indicate that this is a numeric field.      * @return this BibtexSingleField instance. Makes it easier to call this      * method on the fly while initializing without using a local variable.      */
-DECL|method|setNumeric (boolean numeric)
+comment|/**      * Set this field's numeric property      *      * @return this BibtexSingleField instance. Makes it easier to call this      * method on the fly while initializing without using a local variable.      */
+DECL|method|setNumeric ()
 specifier|public
 name|BibtexSingleField
 name|setNumeric
-parameter_list|(
-name|boolean
-name|numeric
-parameter_list|)
-block|{
-if|if
-condition|(
-name|numeric
-condition|)
+parameter_list|()
 block|{
 name|properties
 operator|.
@@ -446,19 +439,6 @@ operator|.
 name|NUMERIC
 argument_list|)
 expr_stmt|;
-block|}
-else|else
-block|{
-name|properties
-operator|.
-name|remove
-argument_list|(
-name|FieldProperty
-operator|.
-name|NUMERIC
-argument_list|)
-expr_stmt|;
-block|}
 return|return
 name|this
 return|;

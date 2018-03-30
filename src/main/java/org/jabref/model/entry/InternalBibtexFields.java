@@ -978,8 +978,8 @@ literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|dummy
-operator|=
+name|add
+argument_list|(
 operator|new
 name|BibtexSingleField
 argument_list|(
@@ -996,10 +996,26 @@ name|FieldProperty
 operator|.
 name|MONTH
 argument_list|)
+argument_list|)
 expr_stmt|;
 name|add
 argument_list|(
-name|dummy
+operator|new
+name|BibtexSingleField
+argument_list|(
+name|FieldName
+operator|.
+name|MONTHFILED
+argument_list|,
+literal|true
+argument_list|)
+operator|.
+name|withProperties
+argument_list|(
+name|FieldProperty
+operator|.
+name|MONTH
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|add
@@ -1030,9 +1046,7 @@ literal|60
 argument_list|)
 operator|.
 name|setNumeric
-argument_list|(
-literal|true
-argument_list|)
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|add
@@ -1167,9 +1181,7 @@ literal|60
 argument_list|)
 operator|.
 name|setNumeric
-argument_list|(
-literal|true
-argument_list|)
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|add
@@ -1187,9 +1199,7 @@ literal|60
 argument_list|)
 operator|.
 name|setNumeric
-argument_list|(
-literal|true
-argument_list|)
+argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// custom fields not displayed at editor, but as columns in the UI
@@ -1342,9 +1352,7 @@ literal|60
 argument_list|)
 operator|.
 name|setNumeric
-argument_list|(
-literal|true
-argument_list|)
+argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// additional fields ------------------------------------------------------
@@ -1843,9 +1851,7 @@ literal|true
 argument_list|)
 operator|.
 name|setNumeric
-argument_list|(
-literal|true
-argument_list|)
+argument_list|()
 expr_stmt|;
 block|}
 name|field
@@ -2571,9 +2577,7 @@ block|{
 name|field
 operator|.
 name|setNumeric
-argument_list|(
-literal|true
-argument_list|)
+argument_list|()
 expr_stmt|;
 block|}
 name|nF
@@ -2608,9 +2612,7 @@ decl_stmt|;
 name|field
 operator|.
 name|setNumeric
-argument_list|(
-literal|true
-argument_list|)
+argument_list|()
 expr_stmt|;
 name|InternalBibtexFields
 operator|.
