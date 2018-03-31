@@ -120,7 +120,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
+name|jupiter
+operator|.
+name|api
+operator|.
+name|BeforeEach
 import|;
 end_import
 
@@ -134,7 +138,7 @@ name|jupiter
 operator|.
 name|api
 operator|.
-name|BeforeEach
+name|Disabled
 import|;
 end_import
 
@@ -213,7 +217,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Test for OAI2-Handler and Fetcher.  *  * @author Ulrich St&auml;rk  * @author Christian Kopf  * @author Christopher Oezbek  */
+comment|/**  * Test for OAI2-Handler and Fetcher.  *  * FIXME: Move this AND the OAI2HandlerFetcher to org.jabref.logic. Needs to be rewritten to new interface  */
 end_comment
 
 begin_class
@@ -810,20 +814,13 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-DECL|method|testOnline ()
+DECL|method|testMathRA0612188 ()
 specifier|public
 name|void
-name|testOnline
+name|testMathRA0612188
 parameter_list|()
 throws|throws
-name|InterruptedException
-throws|,
-name|IOException
-throws|,
-name|SAXException
-block|{
+name|Exception
 block|{
 name|OAI2Fetcher
 name|fetcher
@@ -903,7 +900,7 @@ name|Optional
 operator|.
 name|of
 argument_list|(
-literal|"2007"
+literal|"2"
 argument_list|)
 argument_list|,
 name|be
@@ -914,14 +911,23 @@ literal|"year"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Thread
-operator|.
-name|sleep
-argument_list|(
-literal|20000
-argument_list|)
-expr_stmt|;
 block|}
+annotation|@
+name|Test
+annotation|@
+name|Disabled
+DECL|method|testOnline ()
+specifier|public
+name|void
+name|testOnline
+parameter_list|()
+throws|throws
+name|InterruptedException
+throws|,
+name|IOException
+throws|,
+name|SAXException
+block|{
 block|{
 name|OAI2Fetcher
 name|fetcher
