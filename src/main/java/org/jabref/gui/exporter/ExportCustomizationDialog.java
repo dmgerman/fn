@@ -366,10 +366,6 @@ name|ButtonBarBuilder
 import|;
 end_import
 
-begin_comment
-comment|/**  *<p>Title:</p>  *<p>Description:</p>  *<p>Copyright: Copyright (c) 2003</p>  *<p>Company:</p>  * @author not attributable  * @version 1.0  */
-end_comment
-
 begin_class
 DECL|class|ExportCustomizationDialog
 specifier|public

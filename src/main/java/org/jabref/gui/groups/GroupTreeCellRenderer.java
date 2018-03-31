@@ -131,7 +131,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Renders a GroupTreeNode using its group's getName() method, rather that its toString() method.  *  * @author jzieren  */
+comment|/**  * Renders a GroupTreeNode using its group's getName() method, rather that its toString() method.  */
 end_comment
 
 begin_class

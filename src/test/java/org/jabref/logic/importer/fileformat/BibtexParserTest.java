@@ -7943,7 +7943,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Test for [2022983]      *      * @author Uwe Kuehn      * @author Andrei Haralevich      */
 annotation|@
 name|Test
 DECL|method|parsePreservesMultipleSpacesInNonWrappableField ()

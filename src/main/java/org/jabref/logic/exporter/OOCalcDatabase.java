@@ -244,10 +244,6 @@ name|Text
 import|;
 end_import
 
-begin_comment
-comment|/**  * @author Morten O. Alver.  * Based on net.sf.jabref.MODSDatabase by Michael Wrighton  *  */
-end_comment
-
 begin_class
 DECL|class|OOCalcDatabase
 class|class

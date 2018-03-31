@@ -67,7 +67,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * JournalAbbreviator formats the given text in an abbreviated form  * according to the journal abbreviation lists.  *  * The given input text is abbreviated according to the journal abbreviation lists.  * If no abbreviation for input is found (e.g. not in list or already abbreviated), the input will be returned unmodified.  *  * Usage:  *    \format[JournalAbbreviator]{\journal}  * Example result:  *    "Phys. Rev. Lett." instead of "Physical Review Letters"  *  * @author  Meigel  *  */
+comment|/**  * JournalAbbreviator formats the given text in an abbreviated form  * according to the journal abbreviation lists.  *  * The given input text is abbreviated according to the journal abbreviation lists.  * If no abbreviation for input is found (e.g. not in list or already abbreviated), the input will be returned unmodified.  *  * Usage:  *    \format[JournalAbbreviator]{\journal}  * Example result:  *    "Phys. Rev. Lett." instead of "Physical Review Letters"  *  */
 end_comment
 
 begin_class

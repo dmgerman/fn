@@ -254,10 +254,6 @@ name|RowSpec
 import|;
 end_import
 
-begin_comment
-comment|/**  * @author Oscar  *  *         Dialog for merging two Bibtex entries  */
-end_comment
-
 begin_class
 DECL|class|MergeEntriesDialog
 specifier|public

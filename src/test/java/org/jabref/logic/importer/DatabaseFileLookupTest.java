@@ -194,10 +194,6 @@ name|mock
 import|;
 end_import
 
-begin_comment
-comment|/**  * @author Nosh&Dan  * @version 09.11.2008 | 21:06:17  */
-end_comment
-
 begin_class
 DECL|class|DatabaseFileLookupTest
 specifier|public

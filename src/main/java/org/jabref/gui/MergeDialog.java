@@ -191,7 +191,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *<p>Title: MergeDialog</p>  *<p>Description: Asks for details about merge database operation.</p>  *<p>Copyright: Copyright (c) 2003</p>  * @author Morten O. Alver  */
+comment|/**  * Asks for details about merge database operation.  */
 end_comment
 
 begin_class

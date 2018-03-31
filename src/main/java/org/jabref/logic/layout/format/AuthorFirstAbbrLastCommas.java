@@ -43,7 +43,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *<ul>  *<li>Names are given as first name, von and last name.</li>  *<li>First names will be abbreviated.</li>  *<li>Individual authors separated by comma.</li>  *<li>There is no command in front the and of a list of three or more authors.</li>  *</ul>  *  * @author Christopher Oezbek<oezi@oezi.de>  */
+comment|/**  *<ul>  *<li>Names are given as first name, von and last name.</li>  *<li>First names will be abbreviated.</li>  *<li>Individual authors separated by comma.</li>  *<li>There is no command in front the and of a list of three or more authors.</li>  *</ul>  */
 end_comment
 
 begin_class

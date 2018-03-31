@@ -243,7 +243,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * The class EntryFromFileCreatorManager manages entry creators.  * The manager knows all existing implementations of the interface EntryFromFileCreator.  * Given a file, the manager can then provide a creator, which is able to create a Bibtex entry for his file.  * Knowing all implementations of the interface, the manager also knows the set of all files, of which Bibtex entries can be created.  * The GUI uses this capability for offering the user only such files, of which entries could actually be created.  * @author Dan&Nosh  *  */
+comment|/**  * The class EntryFromFileCreatorManager manages entry creators.  * The manager knows all existing implementations of the interface EntryFromFileCreator.  * Given a file, the manager can then provide a creator, which is able to create a Bibtex entry for his file.  * Knowing all implementations of the interface, the manager also knows the set of all files, of which Bibtex entries can be created.  * The GUI uses this capability for offering the user only such files, of which entries could actually be created.  *  */
 end_comment
 
 begin_class

@@ -354,10 +354,6 @@ name|LoggerFactory
 import|;
 end_import
 
-begin_comment
-comment|/**  * @author alver  */
-end_comment
-
 begin_class
 DECL|class|OpenOfficeDocumentCreator
 specifier|public

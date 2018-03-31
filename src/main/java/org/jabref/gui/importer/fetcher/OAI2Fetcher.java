@@ -347,7 +347,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This class can be used to access any archive offering an OAI2 interface. By  * default it will access ArXiv.org  *  * @author Ulrich St&auml;rk  * @author Christian Kopf  * @see<a href="http://arxiv.org/help/oa/index"></a>  */
+comment|/**  * This class can be used to access any archive offering an OAI2 interface. By  * default it will access ArXiv.org  *  * @see<a href="http://arxiv.org/help/oa/index"></a>  */
 end_comment
 
 begin_class

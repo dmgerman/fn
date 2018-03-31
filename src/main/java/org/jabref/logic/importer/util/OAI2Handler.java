@@ -91,7 +91,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * SAX-Handler to parse OAI2-xml files.  *  * @author Ulrich St&auml;rk  * @author Christian Kopf  * @author Christopher Oezbek  */
+comment|/**  * SAX-Handler to parse OAI2-xml files.  */
 end_comment
 
 begin_class

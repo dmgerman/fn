@@ -5714,7 +5714,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Wrapper for displaying the Type {@link BibtexEntryType} in a Combobox.      *      * @author Nosh&Dan      * @version 12.11.2008 | 01:02:30      *      */
+comment|/**      * Wrapper for displaying the Type {@link BibtexEntryType} in a Combobox.      */
 DECL|class|BibtexEntryTypeWrapper
 specifier|private
 specifier|static

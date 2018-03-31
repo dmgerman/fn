@@ -104,10 +104,6 @@ name|assertTrue
 import|;
 end_import
 
-begin_comment
-comment|/**  * @author jpf  * @created 11/21/17  */
-end_comment
-
 begin_class
 DECL|class|TooltipTextUtilTest
 specifier|public

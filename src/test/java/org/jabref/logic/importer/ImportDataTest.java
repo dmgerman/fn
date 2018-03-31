@@ -80,10 +80,6 @@ name|assertTrue
 import|;
 end_import
 
-begin_comment
-comment|/**  * @author Nosh&Dan  * @version 09.11.2008 | 19:41:40  */
-end_comment
-
 begin_class
 DECL|class|ImportDataTest
 specifier|public

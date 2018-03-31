@@ -213,7 +213,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Test for OAI2-Handler and Fetcher.  *  * @author Ulrich St&auml;rk  * @author Christian Kopf  * @author Christopher Oezbek  */
+comment|/**  * Test for OAI2-Handler and Fetcher.  */
 end_comment
 
 begin_class
