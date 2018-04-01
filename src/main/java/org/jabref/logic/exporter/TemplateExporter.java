@@ -605,7 +605,7 @@ return|return
 name|this
 return|;
 block|}
-comment|/**      * This method should return a reader from which the given layout file can      * be read.      *<p>      *<p>      * Subclasses of TemplateExporter are free to override and provide their own      * implementation.      *      * @param filename the filename      * @return a newly created reader      * @throws IOException if the reader could not be created      */
+comment|/**      * This method should return a reader from which the given layout file can      * be read.      *<p>      * Subclasses of TemplateExporter are free to override and provide their own      * implementation.      *      * @param filename the filename      * @return a newly created reader      * @throws IOException if the reader could not be created      */
 DECL|method|getReader (String filename)
 specifier|private
 name|Reader
