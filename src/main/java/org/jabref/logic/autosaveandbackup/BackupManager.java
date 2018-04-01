@@ -761,12 +761,10 @@ decl_stmt|;
 name|SavePreferences
 name|savePreferences
 init|=
-name|JabRefPreferences
+name|preferences
 operator|.
 name|loadForSaveFromPreferences
-argument_list|(
-name|preferences
-argument_list|)
+argument_list|()
 operator|.
 name|withEncoding
 argument_list|(

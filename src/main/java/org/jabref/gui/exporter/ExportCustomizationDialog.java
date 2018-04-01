@@ -356,20 +356,6 @@ name|ButtonBarBuilder
 import|;
 end_import
 
-begin_import
-import|import static
-name|org
-operator|.
-name|jabref
-operator|.
-name|preferences
-operator|.
-name|JabRefPreferences
-operator|.
-name|loadForExportFromPreferences
-import|;
-end_import
-
 begin_comment
 comment|/**  *<p>Title:</p>  *<p>Description:</p>  *<p>Copyright: Copyright (c) 2003</p>  *<p>Company:</p>  * @author not attributable  * @version 1.0  */
 end_comment
@@ -655,12 +641,12 @@ operator|.
 name|journalAbbreviationLoader
 argument_list|)
 argument_list|,
-name|loadForExportFromPreferences
-argument_list|(
 name|Globals
 operator|.
 name|prefs
-argument_list|)
+operator|.
+name|loadForExportFromPreferences
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|Globals
@@ -960,12 +946,12 @@ decl_stmt|;
 name|SavePreferences
 name|savePreferences
 init|=
-name|loadForExportFromPreferences
-argument_list|(
 name|Globals
 operator|.
 name|prefs
-argument_list|)
+operator|.
+name|loadForExportFromPreferences
+argument_list|()
 decl_stmt|;
 for|for
 control|(

@@ -448,14 +448,12 @@ name|Globals
 operator|.
 name|exportFactory
 operator|=
-name|JabRefPreferences
-operator|.
-name|getExporterFactory
-argument_list|(
 name|Globals
 operator|.
 name|prefs
-argument_list|,
+operator|.
+name|getExporterFactory
+argument_list|(
 name|Globals
 operator|.
 name|journalAbbreviationLoader

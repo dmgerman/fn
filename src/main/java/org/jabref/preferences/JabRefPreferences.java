@@ -9654,20 +9654,16 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|loadForExportFromPreferences (JabRefPreferences preferences)
+DECL|method|loadForExportFromPreferences ()
 specifier|public
-specifier|static
 name|SavePreferences
 name|loadForExportFromPreferences
-parameter_list|(
-name|JabRefPreferences
-name|preferences
-parameter_list|)
+parameter_list|()
 block|{
 name|Boolean
 name|saveInOriginalOrder
 init|=
-name|preferences
+name|this
 operator|.
 name|getBoolean
 argument_list|(
@@ -9689,7 +9685,7 @@ condition|)
 block|{
 if|if
 condition|(
-name|preferences
+name|this
 operator|.
 name|getBoolean
 argument_list|(
@@ -9701,7 +9697,7 @@ condition|)
 block|{
 name|saveOrder
 operator|=
-name|preferences
+name|this
 operator|.
 name|loadExportSaveOrder
 argument_list|()
@@ -9711,7 +9707,7 @@ else|else
 block|{
 name|saveOrder
 operator|=
-name|preferences
+name|this
 operator|.
 name|loadTableSaveOrder
 argument_list|()
@@ -9721,7 +9717,7 @@ block|}
 name|Charset
 name|encoding
 init|=
-name|preferences
+name|this
 operator|.
 name|getDefaultEncoding
 argument_list|()
@@ -9729,7 +9725,7 @@ decl_stmt|;
 name|Boolean
 name|makeBackup
 init|=
-name|preferences
+name|this
 operator|.
 name|getBoolean
 argument_list|(
@@ -9757,7 +9753,7 @@ decl_stmt|;
 name|Boolean
 name|reformatFile
 init|=
-name|preferences
+name|this
 operator|.
 name|getBoolean
 argument_list|(
@@ -9769,7 +9765,7 @@ decl_stmt|;
 name|LatexFieldFormatterPreferences
 name|latexFieldFormatterPreferences
 init|=
-name|preferences
+name|this
 operator|.
 name|getLatexFieldFormatterPreferences
 argument_list|()
@@ -9777,7 +9773,7 @@ decl_stmt|;
 name|GlobalBibtexKeyPattern
 name|globalCiteKeyPattern
 init|=
-name|preferences
+name|this
 operator|.
 name|getKeyPattern
 argument_list|()
@@ -9806,15 +9802,11 @@ name|globalCiteKeyPattern
 argument_list|)
 return|;
 block|}
-DECL|method|loadForSaveFromPreferences (JabRefPreferences preferences)
+DECL|method|loadForSaveFromPreferences ()
 specifier|public
-specifier|static
 name|SavePreferences
 name|loadForSaveFromPreferences
-parameter_list|(
-name|JabRefPreferences
-name|preferences
-parameter_list|)
+parameter_list|()
 block|{
 name|Boolean
 name|saveInOriginalOrder
@@ -9829,7 +9821,7 @@ decl_stmt|;
 name|Charset
 name|encoding
 init|=
-name|preferences
+name|this
 operator|.
 name|getDefaultEncoding
 argument_list|()
@@ -9837,7 +9829,7 @@ decl_stmt|;
 name|Boolean
 name|makeBackup
 init|=
-name|preferences
+name|this
 operator|.
 name|getBoolean
 argument_list|(
@@ -9865,7 +9857,7 @@ decl_stmt|;
 name|Boolean
 name|reformatFile
 init|=
-name|preferences
+name|this
 operator|.
 name|getBoolean
 argument_list|(
@@ -9877,7 +9869,7 @@ decl_stmt|;
 name|LatexFieldFormatterPreferences
 name|latexFieldFormatterPreferences
 init|=
-name|preferences
+name|this
 operator|.
 name|getLatexFieldFormatterPreferences
 argument_list|()
@@ -9885,7 +9877,7 @@ decl_stmt|;
 name|GlobalBibtexKeyPattern
 name|globalCiteKeyPattern
 init|=
-name|preferences
+name|this
 operator|.
 name|getKeyPattern
 argument_list|()
@@ -9914,15 +9906,11 @@ name|globalCiteKeyPattern
 argument_list|)
 return|;
 block|}
-DECL|method|getExporterFactory (JabRefPreferences preferences, JournalAbbreviationLoader abbreviationLoader)
+DECL|method|getExporterFactory (JournalAbbreviationLoader abbreviationLoader)
 specifier|public
-specifier|static
 name|ExporterFactory
 name|getExporterFactory
 parameter_list|(
-name|JabRefPreferences
-name|preferences
-parameter_list|,
 name|JournalAbbreviationLoader
 name|abbreviationLoader
 parameter_list|)
@@ -9935,13 +9923,13 @@ name|TemplateExporter
 argument_list|>
 name|customFormats
 init|=
-name|preferences
+name|this
 operator|.
 name|customExports
 operator|.
 name|getCustomExportFormats
 argument_list|(
-name|preferences
+name|this
 argument_list|,
 name|abbreviationLoader
 argument_list|)
@@ -9949,7 +9937,7 @@ decl_stmt|;
 name|LayoutFormatterPreferences
 name|layoutPreferences
 init|=
-name|preferences
+name|this
 operator|.
 name|getLayoutFormatterPreferences
 argument_list|(
@@ -9959,12 +9947,10 @@ decl_stmt|;
 name|SavePreferences
 name|savePreferences
 init|=
-name|JabRefPreferences
+name|this
 operator|.
 name|loadForExportFromPreferences
-argument_list|(
-name|preferences
-argument_list|)
+argument_list|()
 decl_stmt|;
 return|return
 name|ExporterFactory

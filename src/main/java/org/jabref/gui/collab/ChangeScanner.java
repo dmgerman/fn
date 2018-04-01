@@ -792,14 +792,12 @@ block|{
 name|SavePreferences
 name|prefs
 init|=
-name|JabRefPreferences
-operator|.
-name|loadForSaveFromPreferences
-argument_list|(
 name|Globals
 operator|.
 name|prefs
-argument_list|)
+operator|.
+name|loadForSaveFromPreferences
+argument_list|()
 operator|.
 name|withMakeBackup
 argument_list|(
