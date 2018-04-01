@@ -1701,9 +1701,9 @@ name|Globals
 operator|.
 name|exportFactory
 operator|=
-name|ExporterFactoryFactory
+name|JabRefPreferences
 operator|.
-name|create
+name|getExporterFactory
 argument_list|(
 name|Globals
 operator|.
