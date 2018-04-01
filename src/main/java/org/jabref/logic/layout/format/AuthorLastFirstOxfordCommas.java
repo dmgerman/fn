@@ -43,7 +43,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *<ul>  *<li>Names are given in order: von last, jr, first.</li>  *<li>First names will NOT be abbreviated.</li>  *<li>Individual authors are separated by commas.</li>  *<li>The 'and' of a list of three or more authors is preceeded by a comma  * (Oxford comma)</li>  *  * @author mkovtun  * @author Christopher Oezbek<oezi@oezi.de>  *  */
+comment|/**  *<ul>  *<li>Names are given in order: von last, jr, first.</li>  *<li>First names will NOT be abbreviated.</li>  *<li>Individual authors are separated by commas.</li>  *<li>The 'and' of a list of three or more authors is preceeded by a comma  * (Oxford comma)</li>  */
 end_comment
 
 begin_class

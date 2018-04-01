@@ -552,10 +552,6 @@ name|LoggerFactory
 import|;
 end_import
 
-begin_comment
-comment|/**  * @author Oscar Gustafsson  *  *         Class for dealing with merging entries  */
-end_comment
-
 begin_class
 DECL|class|MergeEntries
 specifier|public

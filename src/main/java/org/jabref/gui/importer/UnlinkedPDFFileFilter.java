@@ -101,7 +101,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * {@link FileFilter} implementation, that allows only files which are not  * linked in any of the {@link BibEntry}s of the specified  * {@link BibDatabase}.<br>  *<br>  * This {@link FileFilter} sits on top of another {@link FileFilter}  * -implementation, which it first consults. Only if this major filefilter  * has accepted a file, this implementation will verify on that file.  *  * @author Nosh&Dan  * @version 12.11.2008 | 02:00:15  *  */
+comment|/**  * {@link FileFilter} implementation, that allows only files which are not  * linked in any of the {@link BibEntry}s of the specified  * {@link BibDatabase}.<br>  *<br>  * This {@link FileFilter} sits on top of another {@link FileFilter}  * -implementation, which it first consults. Only if this major filefilter  * has accepted a file, this implementation will verify on that file.  */
 end_comment
 
 begin_class

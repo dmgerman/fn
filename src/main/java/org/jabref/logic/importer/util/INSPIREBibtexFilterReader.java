@@ -67,7 +67,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *  * Warning -- it is not a generic filter, only read is implemented!  *  * Note: this is just a quick port of the original SPIRESBibtexFilterReader.  *  * @author Fedor Bezrukov  * @author Sheer El-Showk  *  * @version $Id$  *  * TODO: Fix grammar in bibtex entries -- it ma return invalid bibkeys (with space)  *  */
+comment|/**  *  * Warning -- it is not a generic filter, only read is implemented!  *  * Note: this is just a quick port of the original SPIRESBibtexFilterReader.  *  * TODO: Fix grammar in bibtex entries -- it may return invalid bibkeys (with space)  *  */
 end_comment
 
 begin_class

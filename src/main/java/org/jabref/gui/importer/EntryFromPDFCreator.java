@@ -145,7 +145,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Uses XMPUtils to get one BibEntry for a PDF-File.  * Also imports the non-XMP Data (PDDocument-Information) using XMPUtil.getBibtexEntryFromDocumentInformation.  * If data from more than one entry is read by XMPUtil then this entys are merged into one.  * @author Dan  * @version 12.11.2008 | 22:12:48  *  */
+comment|/**  * Uses XMPUtils to get one BibEntry for a PDF-File.  * Also imports the non-XMP Data (PDDocument-Information) using XMPUtil.getBibtexEntryFromDocumentInformation.  * If data from more than one entry is read by XMPUtil then this entys are merged into one.  */
 end_comment
 
 begin_class

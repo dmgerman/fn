@@ -43,7 +43,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Natbib style: Last names only. Two authors are separated by "and",  * three or more authors are given as "Smith et al."  *  * @author Morten O. Alver  */
+comment|/**  * Natbib style: Last names only. Two authors are separated by "and",  * three or more authors are given as "Smith et al."  */
 end_comment
 
 begin_class

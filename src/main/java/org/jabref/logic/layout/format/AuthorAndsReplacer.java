@@ -29,7 +29,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Replaces and's for& (in case of two authors) and ; (in case  * of more than two authors).  *  * @author Carlos Silla  */
+comment|/**  * Replaces and's for& (in case of two authors) and ; (in case  * of more than two authors).  */
 end_comment
 
 begin_class

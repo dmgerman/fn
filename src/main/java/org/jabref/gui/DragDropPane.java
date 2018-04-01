@@ -175,7 +175,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Extends the JTabbedPane class to support Drag&Drop of Tabs.  *  * @author kleinms, strassfn  */
+comment|/**  * Extends the JTabbedPane class to support Drag&Drop of Tabs.  */
 end_comment
 
 begin_class
