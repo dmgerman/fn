@@ -36,16 +36,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|SwingUtilities
-import|;
-end_import
-
-begin_import
-import|import
 name|javafx
 operator|.
 name|embed
@@ -199,18 +189,11 @@ operator|new
 name|SwingNode
 argument_list|()
 decl_stmt|;
-name|SwingUtilities
-operator|.
-name|invokeLater
-argument_list|(
-parameter_list|()
-lambda|->
 name|node
 operator|.
 name|setContent
 argument_list|(
 name|content
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|node

@@ -207,6 +207,8 @@ operator|.
 name|control
 operator|.
 name|ButtonBar
+operator|.
+name|ButtonData
 import|;
 end_import
 
@@ -559,11 +561,9 @@ argument_list|(
 literal|"Save"
 argument_list|)
 argument_list|,
-name|ButtonBar
-operator|.
 name|ButtonData
 operator|.
-name|APPLY
+name|OK_DONE
 argument_list|)
 decl_stmt|;
 name|getDialogPane
@@ -572,7 +572,7 @@ operator|.
 name|getButtonTypes
 argument_list|()
 operator|.
-name|setAll
+name|addAll
 argument_list|(
 name|save
 argument_list|,
@@ -592,8 +592,14 @@ argument_list|()
 argument_list|,
 name|event
 lambda|->
+block|{
 name|storeAllSettings
 argument_list|()
+expr_stmt|;
+name|close
+argument_list|()
+expr_stmt|;
+block|}
 argument_list|)
 expr_stmt|;
 name|prefs

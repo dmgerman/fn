@@ -34,16 +34,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|JOptionPane
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|jabref
@@ -99,20 +89,6 @@ operator|.
 name|cleanup
 operator|.
 name|CleanupDialog
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|cleanup
-operator|.
-name|CleanupPresetPanel
 import|;
 end_import
 
@@ -787,64 +763,6 @@ name|message
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|showDialog (CleanupPresetPanel presetPanel)
-specifier|private
-name|int
-name|showDialog
-parameter_list|(
-name|CleanupPresetPanel
-name|presetPanel
-parameter_list|)
-block|{
-name|String
-name|dialogTitle
-init|=
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Cleanup entries"
-argument_list|)
-decl_stmt|;
-name|Object
-index|[]
-name|messages
-init|=
-block|{
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"What would you like to clean up?"
-argument_list|)
-block|,
-name|presetPanel
-operator|.
-name|getScrollPane
-argument_list|()
-block|}
-decl_stmt|;
-return|return
-name|JOptionPane
-operator|.
-name|showConfirmDialog
-argument_list|(
-literal|null
-argument_list|,
-name|messages
-argument_list|,
-name|dialogTitle
-argument_list|,
-name|JOptionPane
-operator|.
-name|OK_CANCEL_OPTION
-argument_list|,
-name|JOptionPane
-operator|.
-name|QUESTION_MESSAGE
-argument_list|)
-return|;
-block|}
 comment|/**      * Runs the cleanup on the entry and records the change.      */
 DECL|method|doCleanup (CleanupPreset preset, BibEntry entry, NamedCompound ce)
 specifier|private
@@ -889,12 +807,6 @@ name|FieldChange
 argument_list|>
 name|changes
 init|=
-name|DefaultTaskExecutor
-operator|.
-name|runInJavaFXThread
-argument_list|(
-parameter_list|()
-lambda|->
 name|cleaner
 operator|.
 name|cleanup
@@ -902,7 +814,6 @@ argument_list|(
 name|preset
 argument_list|,
 name|entry
-argument_list|)
 argument_list|)
 decl_stmt|;
 name|unsuccessfulRenames

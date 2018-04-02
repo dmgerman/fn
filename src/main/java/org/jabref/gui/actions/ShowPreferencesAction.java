@@ -106,7 +106,7 @@ expr_stmt|;
 block|}
 name|prefsDialog
 operator|.
-name|show
+name|showAndWait
 argument_list|()
 expr_stmt|;
 block|}
