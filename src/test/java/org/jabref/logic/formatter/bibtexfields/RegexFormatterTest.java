@@ -24,20 +24,6 @@ name|jupiter
 operator|.
 name|api
 operator|.
-name|BeforeEach
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|jupiter
-operator|.
-name|api
-operator|.
 name|Test
 import|;
 end_import
@@ -64,7 +50,6 @@ end_comment
 
 begin_class
 DECL|class|RegexFormatterTest
-specifier|public
 class|class
 name|RegexFormatterTest
 block|{
@@ -74,38 +59,18 @@ name|RegexFormatter
 name|formatter
 decl_stmt|;
 annotation|@
-name|BeforeEach
-DECL|method|setUp ()
-specifier|public
+name|Test
+DECL|method|spacesReplacedCorrectly ()
 name|void
-name|setUp
+name|spacesReplacedCorrectly
 parameter_list|()
 block|{
 name|formatter
 operator|=
 operator|new
 name|RegexFormatter
-argument_list|()
-expr_stmt|;
-block|}
-annotation|@
-name|Test
-DECL|method|spacesReplacedCorrectly ()
-specifier|public
-name|void
-name|spacesReplacedCorrectly
-parameter_list|()
-block|{
-name|String
-name|regexInput
-init|=
-literal|"(\" \",\"-\")"
-decl_stmt|;
-name|RegexFormatter
-operator|.
-name|setRegex
 argument_list|(
-name|regexInput
+literal|"(\" \",\"-\")"
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -124,21 +89,16 @@ block|}
 annotation|@
 name|Test
 DECL|method|protectedSpacesNotReplacedInSingleProtectedBlock ()
-specifier|public
 name|void
 name|protectedSpacesNotReplacedInSingleProtectedBlock
 parameter_list|()
 block|{
-name|String
-name|regexInput
-init|=
-literal|"(\" \",\"-\")"
-decl_stmt|;
+name|formatter
+operator|=
+operator|new
 name|RegexFormatter
-operator|.
-name|setRegex
 argument_list|(
-name|regexInput
+literal|"(\" \",\"-\")"
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -157,21 +117,16 @@ block|}
 annotation|@
 name|Test
 DECL|method|protectedSpacesNotReplacedInTwoProtectedBlocks ()
-specifier|public
 name|void
 name|protectedSpacesNotReplacedInTwoProtectedBlocks
 parameter_list|()
 block|{
-name|String
-name|regexInput
-init|=
-literal|"(\" \",\"-\")"
-decl_stmt|;
+name|formatter
+operator|=
+operator|new
 name|RegexFormatter
-operator|.
-name|setRegex
 argument_list|(
-name|regexInput
+literal|"(\" \",\"-\")"
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -190,21 +145,16 @@ block|}
 annotation|@
 name|Test
 DECL|method|escapedBracesAreNotReplaced ()
-specifier|public
 name|void
 name|escapedBracesAreNotReplaced
 parameter_list|()
 block|{
-name|String
-name|regexInput
-init|=
-literal|"(\" \",\"-\")"
-decl_stmt|;
+name|formatter
+operator|=
+operator|new
 name|RegexFormatter
-operator|.
-name|setRegex
 argument_list|(
-name|regexInput
+literal|"(\" \",\"-\")"
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -223,21 +173,16 @@ block|}
 annotation|@
 name|Test
 DECL|method|escapedBracesAreNotReplacedInTwoCases ()
-specifier|public
 name|void
 name|escapedBracesAreNotReplacedInTwoCases
 parameter_list|()
 block|{
-name|String
-name|regexInput
-init|=
-literal|"(\" \",\"-\")"
-decl_stmt|;
+name|formatter
+operator|=
+operator|new
 name|RegexFormatter
-operator|.
-name|setRegex
 argument_list|(
-name|regexInput
+literal|"(\" \",\"-\")"
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -256,11 +201,18 @@ block|}
 annotation|@
 name|Test
 DECL|method|escapedBracesAreNotReplacedAndProtectionStillWorks ()
-specifier|public
 name|void
 name|escapedBracesAreNotReplacedAndProtectionStillWorks
 parameter_list|()
 block|{
+name|formatter
+operator|=
+operator|new
+name|RegexFormatter
+argument_list|(
+literal|"(\" \",\"-\")"
+argument_list|)
+expr_stmt|;
 name|assertEquals
 argument_list|(
 literal|"replace-spaces-{not these ones},-these-ones,-and-\\{-these-ones\\}"
@@ -277,11 +229,18 @@ block|}
 annotation|@
 name|Test
 DECL|method|formatExample ()
-specifier|public
 name|void
 name|formatExample
 parameter_list|()
 block|{
+name|formatter
+operator|=
+operator|new
+name|RegexFormatter
+argument_list|(
+literal|"(\" \",\"-\")"
+argument_list|)
+expr_stmt|;
 name|assertEquals
 argument_list|(
 literal|"Please-replace-the-spaces"
