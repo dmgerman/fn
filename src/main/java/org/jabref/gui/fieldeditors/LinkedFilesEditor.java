@@ -1566,7 +1566,7 @@ name|addEventFilter
 argument_list|(
 name|KeyEvent
 operator|.
-name|ANY
+name|KEY_PRESSED
 argument_list|,
 name|event
 lambda|->
