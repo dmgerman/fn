@@ -243,6 +243,31 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+comment|// Protected corporate names inside {}
+if|if
+condition|(
+name|value
+operator|.
+name|startsWith
+argument_list|(
+literal|"{"
+argument_list|)
+operator|&&
+name|value
+operator|.
+name|endsWith
+argument_list|(
+literal|"}"
+argument_list|)
+condition|)
+block|{
+return|return
+name|Optional
+operator|.
+name|empty
+argument_list|()
+return|;
+block|}
 comment|// Check that the value is in one of the two standard BibTeX formats:
 comment|//  Last, First and ...
 comment|//  First Last and ...
