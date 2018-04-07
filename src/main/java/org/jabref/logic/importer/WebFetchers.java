@@ -384,7 +384,7 @@ name|importer
 operator|.
 name|fetcher
 operator|.
-name|zbMATH
+name|ZbMATH
 import|;
 end_import
 
@@ -717,7 +717,7 @@ operator|.
 name|add
 argument_list|(
 operator|new
-name|zbMATH
+name|ZbMATH
 argument_list|(
 name|importFormatPreferences
 argument_list|)
@@ -1099,8 +1099,7 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
-comment|// Ordering is important, authorities first!
-comment|// Publisher
+comment|// Original
 name|fetchers
 operator|.
 name|add
@@ -1110,6 +1109,7 @@ name|DoiResolution
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|// Publishers
 name|fetchers
 operator|.
 name|add

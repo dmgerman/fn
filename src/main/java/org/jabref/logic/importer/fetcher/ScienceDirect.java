@@ -617,6 +617,20 @@ name|empty
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
+DECL|method|getTrustLevel ()
+specifier|public
+name|TrustLevel
+name|getTrustLevel
+parameter_list|()
+block|{
+return|return
+name|TrustLevel
+operator|.
+name|PUBLISHER
+return|;
+block|}
 DECL|method|getUrlByDoi (String doi)
 specifier|private
 name|String

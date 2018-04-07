@@ -288,6 +288,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+comment|// The minimum number of selected entries to ask the user for confirmation
 DECL|field|WARNING_LIMIT
 specifier|private
 specifier|static
@@ -297,7 +298,6 @@ name|WARNING_LIMIT
 init|=
 literal|5
 decl_stmt|;
-comment|// The minimum number of selected entries to ask the user for confirmation
 DECL|field|basePanel
 specifier|private
 specifier|final
@@ -520,7 +520,7 @@ argument_list|()
 control|)
 block|{
 name|FulltextFetchers
-name|fft
+name|fetchers
 init|=
 operator|new
 name|FulltextFetchers
@@ -537,7 +537,7 @@ name|downloads
 operator|.
 name|put
 argument_list|(
-name|fft
+name|fetchers
 operator|.
 name|findFullTextPDF
 argument_list|(
@@ -564,7 +564,7 @@ argument_list|<
 name|URL
 argument_list|>
 argument_list|>
-name|remove
+name|finishedTasks
 init|=
 operator|new
 name|ArrayList
@@ -689,7 +689,7 @@ expr_stmt|;
 return|return;
 block|}
 name|DownloadExternalFile
-name|def
+name|fileDownload
 init|=
 operator|new
 name|DownloadExternalFile
@@ -706,7 +706,7 @@ argument_list|)
 decl_stmt|;
 try|try
 block|{
-name|def
+name|fileDownload
 operator|.
 name|download
 argument_list|(
@@ -714,6 +714,8 @@ name|result
 operator|.
 name|get
 argument_list|()
+argument_list|,
+literal|"application/pdf"
 argument_list|,
 name|file
 lambda|->
@@ -909,7 +911,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-name|remove
+name|finishedTasks
 operator|.
 name|add
 argument_list|(
@@ -925,7 +927,7 @@ name|URL
 argument_list|>
 name|result
 range|:
-name|remove
+name|finishedTasks
 control|)
 block|{
 name|downloads

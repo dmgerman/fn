@@ -6050,7 +6050,7 @@ name|List
 argument_list|<
 name|BibEntry
 argument_list|>
-name|bes
+name|selectedEntries
 init|=
 name|mainTable
 operator|.
@@ -6059,7 +6059,7 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-name|bes
+name|selectedEntries
 operator|.
 name|size
 argument_list|()
@@ -6083,7 +6083,7 @@ specifier|final
 name|BibEntry
 name|entry
 init|=
-name|bes
+name|selectedEntries
 operator|.
 name|get
 argument_list|(
@@ -9983,19 +9983,6 @@ parameter_list|()
 block|{
 return|return
 name|mainTable
-return|;
-block|}
-end_function
-
-begin_function
-DECL|method|getDatabaseContext ()
-specifier|public
-name|BibDatabaseContext
-name|getDatabaseContext
-parameter_list|()
-block|{
-return|return
-name|bibDatabaseContext
 return|;
 block|}
 end_function

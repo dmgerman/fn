@@ -8379,7 +8379,7 @@ name|double
 operator|)
 name|basePanel
 operator|.
-name|getDatabaseContext
+name|getBibDatabaseContext
 argument_list|()
 operator|.
 name|getDatabase

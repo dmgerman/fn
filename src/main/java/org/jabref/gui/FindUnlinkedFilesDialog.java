@@ -1263,7 +1263,7 @@ operator|.
 name|getCurrentBasePanel
 argument_list|()
 operator|.
-name|getDatabaseContext
+name|getBibDatabaseContext
 argument_list|()
 expr_stmt|;
 name|creatorManager

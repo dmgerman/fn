@@ -78,16 +78,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Optional
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|Set
 import|;
 end_import
@@ -329,6 +319,20 @@ name|KeywordList
 argument_list|()
 return|;
 block|}
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|delimiter
+argument_list|)
+expr_stmt|;
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|hierarchicalDelimiter
+argument_list|)
+expr_stmt|;
 name|KeywordList
 name|keywordList
 init|=
@@ -396,7 +400,7 @@ return|return
 name|keywordList
 return|;
 block|}
-comment|/**      * @param keywordString a String of keywordChains      * @return an parsed list containing the keywordChains      */
+comment|/**      * Parses the keyword list and uses {@link Keyword#DEFAULT_HIERARCHICAL_DELIMITER} as hierarchical delimiter.      *      * @param keywordString a String of keywordChains      * @param delimiter The delimiter used for separating the keywords      *      * @return an parsed list containing the keywordChains      */
 DECL|method|parse (String keywordString, Character delimiter)
 specifier|public
 specifier|static
@@ -420,48 +424,6 @@ argument_list|,
 name|Keyword
 operator|.
 name|DEFAULT_HIERARCHICAL_DELIMITER
-argument_list|)
-return|;
-block|}
-comment|/**      * parses a KeywordList from an optional String of keywordChains      *      * @param keywordString a optional String of keywordChains      * @return an parsed list containing the keywordChains      */
-DECL|method|parse (Optional<String> keywordString, Character delimiter)
-specifier|public
-specifier|static
-name|KeywordList
-name|parse
-parameter_list|(
-name|Optional
-argument_list|<
-name|String
-argument_list|>
-name|keywordString
-parameter_list|,
-name|Character
-name|delimiter
-parameter_list|)
-block|{
-return|return
-name|keywordString
-operator|.
-name|map
-argument_list|(
-name|keyword
-lambda|->
-name|KeywordList
-operator|.
-name|parse
-argument_list|(
-name|keyword
-argument_list|,
-name|delimiter
-argument_list|)
-argument_list|)
-operator|.
-name|orElse
-argument_list|(
-operator|new
-name|KeywordList
-argument_list|()
 argument_list|)
 return|;
 block|}

@@ -2002,7 +2002,7 @@ operator|.
 name|getCurrentBasePanel
 argument_list|()
 operator|.
-name|getDatabaseContext
+name|getBibDatabaseContext
 argument_list|()
 argument_list|,
 name|link

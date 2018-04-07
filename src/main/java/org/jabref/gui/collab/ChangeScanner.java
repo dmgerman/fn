@@ -517,7 +517,7 @@ name|databaseInMemory
 operator|=
 name|bp
 operator|.
-name|getDatabaseContext
+name|getBibDatabaseContext
 argument_list|()
 expr_stmt|;
 name|this

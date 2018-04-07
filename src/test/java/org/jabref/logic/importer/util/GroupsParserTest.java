@@ -378,10 +378,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|KeywordDelimiterThatNeedsToBeEscaped ()
+DECL|method|keywordDelimiterThatNeedsToBeEscaped ()
 specifier|public
 name|void
-name|KeywordDelimiterThatNeedsToBeEscaped
+name|keywordDelimiterThatNeedsToBeEscaped
 parameter_list|()
 throws|throws
 name|Exception
@@ -429,10 +429,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|HierarchicalDelimiterThatNeedsToBeEscaped ()
+DECL|method|hierarchicalDelimiterThatNeedsToBeEscaped ()
 specifier|public
 name|void
-name|HierarchicalDelimiterThatNeedsToBeEscaped
+name|hierarchicalDelimiterThatNeedsToBeEscaped
 parameter_list|()
 throws|throws
 name|Exception

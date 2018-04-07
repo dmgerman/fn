@@ -995,7 +995,7 @@ name|RequiredFieldsTab
 argument_list|(
 name|panel
 operator|.
-name|getDatabaseContext
+name|getBibDatabaseContext
 argument_list|()
 argument_list|,
 name|panel
@@ -1019,7 +1019,7 @@ name|OptionalFieldsTab
 argument_list|(
 name|panel
 operator|.
-name|getDatabaseContext
+name|getBibDatabaseContext
 argument_list|()
 argument_list|,
 name|panel
@@ -1042,7 +1042,7 @@ name|OptionalFields2Tab
 argument_list|(
 name|panel
 operator|.
-name|getDatabaseContext
+name|getBibDatabaseContext
 argument_list|()
 argument_list|,
 name|panel
@@ -1065,7 +1065,7 @@ name|DeprecatedFieldsTab
 argument_list|(
 name|panel
 operator|.
-name|getDatabaseContext
+name|getBibDatabaseContext
 argument_list|()
 argument_list|,
 name|panel
@@ -1089,7 +1089,7 @@ name|OtherFieldsTab
 argument_list|(
 name|panel
 operator|.
-name|getDatabaseContext
+name|getBibDatabaseContext
 argument_list|()
 argument_list|,
 name|panel
@@ -1152,7 +1152,7 @@ argument_list|()
 argument_list|,
 name|panel
 operator|.
-name|getDatabaseContext
+name|getBibDatabaseContext
 argument_list|()
 argument_list|,
 name|panel
