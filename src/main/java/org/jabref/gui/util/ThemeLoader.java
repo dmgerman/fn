@@ -128,6 +128,20 @@ name|jabref
 operator|.
 name|model
 operator|.
+name|strings
+operator|.
+name|StringUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
 name|util
 operator|.
 name|FileUpdateMonitor
@@ -155,7 +169,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Installs the Main.css style file and provides live reloading. The live reloading has to be turned on by setting  * the<code>-Djabref.main.css</code> property. There two possible modes: (1) When only<code>-Djabref.main.css</code>  * is specified, then the standard<code>Main.css</code> that is found will be watched and on changes in that file,  * the style-sheet will be reloaded and changes are immediately visible.  *<p>  * When working from an IDE, this usually means that the<code>Main.css</code> is located in the build folder. To use  * the css-file that is located in the sources directly, the full path can be given as value:  *<p>  *<code>-Djabref.main.css="/path/to/src/Main.css"</code>  */
+comment|/**  * Installs the style file and provides live reloading.  *  * The live reloading has to be turned on by setting the<code>-Djabref.theme.css</code> property.  * There two possible modes:  *  (1) When only<code>-Djabref.theme.css</code> is specified, then the standard<code>Base.css</code> that is found will be watched  *      and on changes in that file, the style-sheet will be reloaded and changes are immediately visible.  *  (2) When a path to a css file is passed to<code>-Djabref.theme.css</code>, then the given style is loaded in addition to the base css file.  *      Changes in the specified css file lead to an immediate redraw of the interface.  *  * When working from an IDE, this usually means that the<code>Base.css</code> is located in the build folder.  * To use the css-file that is located in the sources directly, the full path can be given as value for the "VM option":  *<code>-Djabref.theme.css="/path/to/src/Base.css"</code>  *  */
 end_comment
 
 begin_class
@@ -177,7 +191,7 @@ name|class
 operator|.
 name|getResource
 argument_list|(
-literal|"Main.css"
+literal|"Base.css"
 argument_list|)
 operator|.
 name|toExternalForm
@@ -194,7 +208,7 @@ name|System
 operator|.
 name|getProperty
 argument_list|(
-literal|"jabref.main.css"
+literal|"jabref.theme.css"
 argument_list|)
 decl_stmt|;
 DECL|field|LOGGER
@@ -249,16 +263,23 @@ name|Scene
 name|scene
 parameter_list|)
 block|{
-name|String
-name|pathToMainCss
-init|=
+name|addAndWatchForChanges
+argument_list|(
+name|scene
+argument_list|,
 name|DEFAULT_PATH_MAIN_CSS
-decl_stmt|;
+argument_list|,
+literal|0
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
+name|StringUtil
+operator|.
+name|isNotBlank
+argument_list|(
 name|CSS_SYSTEM_PROPERTY
-operator|!=
-literal|null
+argument_list|)
 condition|)
 block|{
 specifier|final
@@ -274,19 +295,6 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-literal|"Main.css"
-operator|.
-name|matches
-argument_list|(
-name|path
-operator|.
-name|getFileName
-argument_list|()
-operator|.
-name|toString
-argument_list|()
-argument_list|)
-operator|&&
 name|Files
 operator|.
 name|isReadable
@@ -295,8 +303,9 @@ name|path
 argument_list|)
 condition|)
 block|{
-name|pathToMainCss
-operator|=
+name|String
+name|cssUrl
+init|=
 name|path
 operator|.
 name|toUri
@@ -304,27 +313,32 @@ argument_list|()
 operator|.
 name|toString
 argument_list|()
-expr_stmt|;
-block|}
-block|}
-name|installCss
+decl_stmt|;
+name|addAndWatchForChanges
 argument_list|(
 name|scene
 argument_list|,
-name|pathToMainCss
+name|cssUrl
+argument_list|,
+literal|1
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|installCss (Scene scene, String cssUrl)
+block|}
+block|}
+DECL|method|addAndWatchForChanges (Scene scene, String cssUrl, int index)
 specifier|private
 name|void
-name|installCss
+name|addAndWatchForChanges
 parameter_list|(
 name|Scene
 name|scene
 parameter_list|,
 name|String
 name|cssUrl
+parameter_list|,
+name|int
+name|index
 parameter_list|)
 block|{
 name|scene
@@ -334,14 +348,14 @@ argument_list|()
 operator|.
 name|add
 argument_list|(
-literal|0
+name|index
 argument_list|,
 name|cssUrl
 argument_list|)
 expr_stmt|;
 try|try
 block|{
-comment|// If -Djabref.main.css is defined and the resources are not part of a .jar bundle,
+comment|// If -Djabref.theme.css is defined and the resources are not part of a .jar bundle,
 comment|// we watch the file for changes and turn on live reloading
 if|if
 condition|(
@@ -426,7 +440,7 @@ argument_list|()
 operator|.
 name|add
 argument_list|(
-literal|0
+name|index
 argument_list|,
 name|cssUrl
 argument_list|)

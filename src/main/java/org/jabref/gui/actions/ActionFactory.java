@@ -369,7 +369,7 @@ operator|.
 name|getStyleClass
 argument_list|()
 operator|.
-name|add
+name|setAll
 argument_list|(
 literal|"flatButton"
 argument_list|)

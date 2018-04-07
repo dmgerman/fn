@@ -2299,7 +2299,7 @@ name|DEFAULT_GROUP_ICON_COLORED
 argument_list|(
 name|MaterialDesignIcon
 operator|.
-name|MENU_RIGHT
+name|PLAY
 argument_list|)
 operator|,
 DECL|enumConstant|DEFAULT_GROUP_ICON
