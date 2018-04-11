@@ -79,9 +79,6 @@ block|,
 DECL|enumConstant|DOWNLOAD_FULL_TEXT
 name|DOWNLOAD_FULL_TEXT
 block|,
-DECL|enumConstant|DUPLI_CHECK
-name|DUPLI_CHECK
-block|,
 DECL|enumConstant|EDIT
 name|EDIT
 block|,

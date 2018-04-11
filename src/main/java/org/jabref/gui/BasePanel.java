@@ -2395,8 +2395,11 @@ name|BibDatabaseContextChangedEvent
 name|event
 parameter_list|)
 block|{
-comment|// TODO:
-comment|//SwingUtilities.invokeLater(() -> this.markBaseChanged());
+name|this
+operator|.
+name|markBaseChanged
+argument_list|()
+expr_stmt|;
 block|}
 comment|/**      * Returns a collection of suggestion providers, which are populated from the current library.      */
 DECL|method|getSuggestionProviders ()
@@ -2933,10 +2936,6 @@ block|}
 block|)
 class|;
 end_class
-
-begin_comment
-comment|/*   actions.put(Actions.findUnlinkedFiles, (BaseAction) () -> {             final FindUnlinkedFilesDialog dialog = new FindUnlinkedFilesDialog(null, frame, BasePanel.this);             dialog.setVisible(true);         });*/
-end_comment
 
 begin_comment
 comment|// The action for auto-generating keys.
@@ -4092,14 +4091,6 @@ unit|})
 empty_stmt|;
 end_empty_stmt
 
-begin_comment
-comment|/*     actions.put(Actions.DUPLI_CHECK,                 (BaseAction) () -> JabRefExecutorService.INSTANCE.execute(new DuplicateSearch(BasePanel.this)));         */
-end_comment
-
-begin_comment
-comment|// Note that we can't put the number of entries that have been reverted into the undoText as the concrete number cannot be injected
-end_comment
-
 begin_expr_stmt
 name|actions
 operator|.
@@ -4892,13 +4883,6 @@ condition|)
 block|{
 return|return;
 block|}
-comment|// TODO: check if needed
-comment|// select the next entry to stay at the same place as before (or the previous if we're already at the end)
-comment|//if (mainTable.getSelectedRow() != (mainTable.getRowCount() - 1)) {
-comment|//    selectNextEntry();
-comment|//} else {
-comment|//    selectPreviousEntry();
-comment|//}
 name|NamedCompound
 name|compound
 decl_stmt|;
@@ -7369,7 +7353,6 @@ argument_list|(
 name|entry
 argument_list|)
 expr_stmt|;
-comment|//selectionListener.editSignalled();
 name|showAndEdit
 argument_list|(
 name|entry
@@ -7523,7 +7506,7 @@ comment|// TODO: Register these actions globally
 end_comment
 
 begin_comment
-comment|/*         String clearSearch = "clearSearch";         mainTable.getInputMap().put(Globals.getKeyPrefs().getKey(KeyBinding.CLEAR_SEARCH), clearSearch);         mainTable.getActionMap().put(clearSearch, new AbstractAction() {              @Override             public void actionPerformed(ActionEvent e) {                 // need to close these here, b/c this action overshadows the responsible actions when the main table is selected                 switch (mode) {                     case SHOWING_NOTHING:                         frame.getGlobalSearchBar().endSearch();                         break;                     case SHOWING_PREVIEW:                         getPreviewPanel().close();                         break;                     case SHOWING_EDITOR:                     case WILL_SHOW_EDITOR:                         entryEditorClosing(getEntryEditor());                         break;                     default:                         LOGGER.warn("unknown BasePanelMode: '" + mode + "', doing nothing");                         break;                 }             }         });          mainTable.getActionMap().put(Actions.CUT, new AbstractAction() {              @Override             public void actionPerformed(ActionEvent e) {                 try {                     runCommand(Actions.CUT);                 } catch (Throwable ex) {                     LOGGER.warn("Could not cut", ex);                 }             }         });         mainTable.getActionMap().put(Actions.COPY, new AbstractAction() {              @Override             public void actionPerformed(ActionEvent e) {                 try {                     runCommand(Actions.COPY);                 } catch (Throwable ex) {                     LOGGER.warn("Could not copy", ex);                 }             }         });         mainTable.getActionMap().put(Actions.PASTE, new AbstractAction() {              @Override             public void actionPerformed(ActionEvent e) {                 try {                     runCommand(Actions.PASTE);                 } catch (Throwable ex) {                     LOGGER.warn("Could not paste", ex);                 }             }         });          mainTable.addKeyListener(new KeyAdapter() {              @Override             public void keyPressed(KeyEvent e) {                 final int keyCode = e.getKeyCode();                  if (e.isControlDown()) {                     switch (keyCode) {                         case KeyEvent.VK_PAGE_DOWN:                             frame.nextTab.actionPerformed(null);                             e.consume();                             break;                         case KeyEvent.VK_PAGE_UP:                             frame.prevTab.actionPerformed(null);                             e.consume();                             break;                         default:                             break;                     }                 } else if (keyCode == KeyEvent.VK_ENTER) {                     e.consume();                     try {                         runCommand(Actions.EDIT);                     } catch (Throwable ex) {                         LOGGER.warn("Could not run action based on key press", ex);                     }                 }             }         });         */
+comment|/*         String clearSearch = "clearSearch";         mainTable.getInputMap().put(Globals.getKeyPrefs().getKey(KeyBinding.CLEAR_SEARCH), clearSearch);         mainTable.getActionMap().put(clearSearch, new AbstractAction() {              @Override             public void actionPerformed(ActionEvent e) {                 // need to close these here, b/c this action overshadows the responsible actions when the main table is selected                 switch (mode) {                     case SHOWING_NOTHING:                         frame.getGlobalSearchBar().endSearch();                         break;                     case SHOWING_PREVIEW:                         getPreviewPanel().close();                         break;                     case SHOWING_EDITOR:                     case WILL_SHOW_EDITOR:                         entryEditorClosing(getEntryEditor());                         break;                     default:                         LOGGER.warn("unknown BasePanelMode: '" + mode + "', doing nothing");                         break;                 }             }         });          mainTable.getActionMap().put(Actions.CUT, new AbstractAction() {              @Override             public void actionPerformed(ActionEvent e) {                 try {                     runCommand(Actions.CUT);                 } catch (Throwable ex) {                     LOGGER.warn("Could not cut", ex);                 }             }         });         mainTable.getActionMap().put(Actions.COPY, new AbstractAction() {              @Override             public void actionPerformed(ActionEvent e) {                 try {                     runCommand(Actions.COPY);                 } catch (Throwable ex) {                     LOGGER.warn("Could not copy", ex);                 }             }         });         mainTable.getActionMap().put(Actions.PASTE, new AbstractAction() {              @Override             public void actionPerformed(ActionEvent e) {                 try {                     runCommand(Actions.PASTE);                 } catch (Throwable ex) {                     LOGGER.warn("Could not paste", ex);                 }             }         });         */
 end_comment
 
 begin_function
@@ -7552,8 +7535,6 @@ name|adjustSplitter
 argument_list|()
 expr_stmt|;
 comment|// restore last splitting state (before mainTable is created as creation affects the stored size of the entryEditors)
-comment|// TODO: check whether a mainTable already existed and a floatSearch was active
-comment|//boolean floatSearchActive = (mainTable != null)&& (this.tableModel.getSearchState() == MainTableDataModel.DisplayOption.FLOAT);
 name|createMainTable
 argument_list|()
 expr_stmt|;
@@ -7649,11 +7630,6 @@ expr_stmt|;
 name|setupAutoCompletion
 argument_list|()
 expr_stmt|;
-comment|// TODO: restore floating search result
-comment|// (needed if preferences have been changed which causes a recreation of the main table)
-comment|//if (floatSearchActive) {
-comment|//    mainTable.showFloatSearch();
-comment|//}
 comment|// Saves the divider position as soon as it changes
 comment|// We need to keep a reference to the subscription, otherwise the binding gets garbage collected
 name|dividerPositionSubscription
@@ -10457,9 +10433,60 @@ condition|)
 block|{
 return|return;
 block|}
-comment|// TODO:
 comment|// Automatically add new entry to the selected group (or set of groups)
-comment|/*             if (Globals.prefs.getBoolean(JabRefPreferences.AUTO_ASSIGN_GROUP)) {                 final List<BibEntry> entries = Collections.singletonList(addedEntryEvent.getBibEntry());                 Globals.stateManager.getSelectedGroup(bibDatabaseContext).forEach(                         selectedGroup -> selectedGroup.addEntriesToGroup(entries));             }             */
+if|if
+condition|(
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|AUTO_ASSIGN_GROUP
+argument_list|)
+condition|)
+block|{
+specifier|final
+name|List
+argument_list|<
+name|BibEntry
+argument_list|>
+name|entries
+init|=
+name|Collections
+operator|.
+name|singletonList
+argument_list|(
+name|addedEntryEvent
+operator|.
+name|getBibEntry
+argument_list|()
+argument_list|)
+decl_stmt|;
+name|Globals
+operator|.
+name|stateManager
+operator|.
+name|getSelectedGroup
+argument_list|(
+name|bibDatabaseContext
+argument_list|)
+operator|.
+name|forEach
+argument_list|(
+name|selectedGroup
+lambda|->
+name|selectedGroup
+operator|.
+name|addEntriesToGroup
+argument_list|(
+name|entries
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 block|}
 end_class
