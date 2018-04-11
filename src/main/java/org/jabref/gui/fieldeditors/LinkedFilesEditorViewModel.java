@@ -1303,7 +1303,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Full text document download failed"
+literal|"No full text document found"
 argument_list|)
 argument_list|)
 expr_stmt|;
