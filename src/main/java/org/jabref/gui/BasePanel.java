@@ -1864,6 +1864,7 @@ name|sidePaneManager
 decl_stmt|;
 DECL|field|preview
 specifier|private
+specifier|final
 name|PreviewPanel
 name|preview
 decl_stmt|;
@@ -2286,12 +2287,6 @@ argument_list|,
 name|dialogService
 argument_list|)
 expr_stmt|;
-name|DefaultTaskExecutor
-operator|.
-name|runInJavaFXThread
-argument_list|(
-parameter_list|()
-lambda|->
 name|this
 operator|.
 name|preview
@@ -2316,14 +2311,7 @@ argument_list|()
 argument_list|,
 name|dialogService
 argument_list|)
-argument_list|)
 expr_stmt|;
-name|DefaultTaskExecutor
-operator|.
-name|runInJavaFXThread
-argument_list|(
-parameter_list|()
-lambda|->
 name|frame
 argument_list|()
 operator|.
@@ -2336,7 +2324,6 @@ operator|.
 name|addSearchListener
 argument_list|(
 name|preview
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
