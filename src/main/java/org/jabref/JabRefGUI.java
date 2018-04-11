@@ -84,16 +84,6 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|JOptionPane
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
 name|UIDefaults
 import|;
 end_import
@@ -916,26 +906,10 @@ argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
-name|JOptionPane
+name|dialogService
 operator|.
-name|showMessageDialog
+name|showErrorDialogAndWait
 argument_list|(
-literal|null
-argument_list|,
-name|e
-operator|.
-name|getMessage
-argument_list|()
-operator|+
-literal|"\n\n"
-operator|+
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"A local copy will be opened."
-argument_list|)
-argument_list|,
 name|Localization
 operator|.
 name|lang
@@ -943,9 +917,14 @@ argument_list|(
 literal|"Connection error"
 argument_list|)
 argument_list|,
-name|JOptionPane
+name|Localization
 operator|.
-name|WARNING_MESSAGE
+name|lang
+argument_list|(
+literal|"A local copy will be opened."
+argument_list|)
+argument_list|,
+name|e
 argument_list|)
 expr_stmt|;
 block|}

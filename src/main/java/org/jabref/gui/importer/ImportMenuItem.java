@@ -124,16 +124,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|JOptionPane
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|jabref
@@ -404,6 +394,12 @@ specifier|final
 name|Importer
 name|importer
 decl_stmt|;
+DECL|field|dialogService
+specifier|private
+specifier|final
+name|DialogService
+name|dialogService
+decl_stmt|;
 DECL|field|importError
 specifier|private
 name|Exception
@@ -474,6 +470,15 @@ operator|.
 name|frame
 operator|=
 name|frame
+expr_stmt|;
+name|this
+operator|.
+name|dialogService
+operator|=
+name|frame
+operator|.
+name|getDialogService
+argument_list|()
 expr_stmt|;
 name|this
 operator|.
@@ -658,14 +663,6 @@ operator|.
 name|build
 argument_list|()
 decl_stmt|;
-name|DialogService
-name|ds
-init|=
-name|frame
-operator|.
-name|getDialogService
-argument_list|()
-decl_stmt|;
 name|filenames
 operator|=
 name|DefaultTaskExecutor
@@ -674,7 +671,7 @@ name|runInJavaFXThread
 argument_list|(
 parameter_list|()
 lambda|->
-name|ds
+name|dialogService
 operator|.
 name|showFileOpenDialogAndGetMultipleFiles
 argument_list|(
@@ -993,11 +990,16 @@ operator|==
 literal|null
 condition|)
 block|{
-name|JOptionPane
+name|dialogService
 operator|.
-name|showMessageDialog
+name|showErrorDialogAndWait
 argument_list|(
-literal|null
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Import failed"
+argument_list|)
 argument_list|,
 name|Localization
 operator|.
@@ -1005,33 +1007,15 @@ name|lang
 argument_list|(
 literal|"No entries found. Please make sure you are using the correct import filter."
 argument_list|)
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Import failed"
-argument_list|)
-argument_list|,
-name|JOptionPane
-operator|.
-name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
 block|}
 else|else
 block|{
-name|JOptionPane
+name|dialogService
 operator|.
-name|showMessageDialog
+name|showErrorDialogAndWait
 argument_list|(
-literal|null
-argument_list|,
-name|importError
-operator|.
-name|getMessage
-argument_list|()
-argument_list|,
 name|Localization
 operator|.
 name|lang
@@ -1039,9 +1023,7 @@ argument_list|(
 literal|"Import failed"
 argument_list|)
 argument_list|,
-name|JOptionPane
-operator|.
-name|ERROR_MESSAGE
+name|importError
 argument_list|)
 expr_stmt|;
 block|}

@@ -6332,8 +6332,12 @@ block|}
 block|}
 end_function
 
+begin_comment
+comment|/**      * FIXME: high code duplication with {@link SaveDatabaseAction#saveDatabase(File, boolean, Charset)}      */
+end_comment
+
 begin_function
-DECL|method|saveDatabase (File file, boolean selectedOnly, Charset enc, SavePreferences.DatabaseSaveType saveType)
+DECL|method|saveDatabase (File file, boolean selectedOnly, Charset encoding, SavePreferences.DatabaseSaveType saveType)
 specifier|private
 name|boolean
 name|saveDatabase
@@ -6345,7 +6349,7 @@ name|boolean
 name|selectedOnly
 parameter_list|,
 name|Charset
-name|enc
+name|encoding
 parameter_list|,
 name|SavePreferences
 operator|.
@@ -6385,7 +6389,7 @@ argument_list|)
 operator|.
 name|withEncoding
 argument_list|(
-name|enc
+name|encoding
 argument_list|)
 operator|.
 name|withSaveType
@@ -6457,11 +6461,19 @@ name|UnsupportedCharsetException
 name|ex
 parameter_list|)
 block|{
-name|JOptionPane
+name|frame
 operator|.
-name|showMessageDialog
+name|getDialogService
+argument_list|()
+operator|.
+name|showErrorDialogAndWait
 argument_list|(
-literal|null
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Save library"
+argument_list|)
 argument_list|,
 name|Localization
 operator|.
@@ -6470,25 +6482,17 @@ argument_list|(
 literal|"Could not save file."
 argument_list|)
 operator|+
-literal|' '
-operator|+
 name|Localization
 operator|.
 name|lang
 argument_list|(
 literal|"Character encoding '%0' is not supported."
 argument_list|,
-name|enc
+name|encoding
 operator|.
 name|displayName
 argument_list|()
 argument_list|)
-argument_list|,
-name|SAVE_DATABASE
-argument_list|,
-name|JOptionPane
-operator|.
-name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
 throw|throw
@@ -6783,7 +6787,7 @@ name|Encodings
 operator|.
 name|ENCODINGS_DISPLAYNAMES
 argument_list|,
-name|enc
+name|encoding
 argument_list|)
 decl_stmt|;
 if|if
@@ -6867,7 +6871,7 @@ argument_list|()
 operator|.
 name|setEncoding
 argument_list|(
-name|enc
+name|encoding
 argument_list|)
 expr_stmt|;
 comment|// Make sure to remember which encoding we used.

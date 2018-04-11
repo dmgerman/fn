@@ -62,16 +62,6 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|JOptionPane
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
 name|undo
 operator|.
 name|CompoundEdit
@@ -536,6 +526,12 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
+DECL|field|dialogService
+specifier|private
+specifier|final
+name|DialogService
+name|dialogService
+decl_stmt|;
 DECL|method|AppendDatabaseAction (JabRefFrame frame, BasePanel panel)
 specifier|public
 name|AppendDatabaseAction
@@ -558,6 +554,13 @@ operator|.
 name|panel
 operator|=
 name|panel
+expr_stmt|;
+name|dialogService
+operator|=
+name|frame
+operator|.
+name|getDialogService
+argument_list|()
 expr_stmt|;
 block|}
 DECL|method|mergeFromBibtex (BasePanel panel, ParserResult parserResult, boolean importEntries, boolean importStrings, boolean importGroups, boolean importSelectorWords)
@@ -1095,14 +1098,6 @@ operator|.
 name|build
 argument_list|()
 decl_stmt|;
-name|DialogService
-name|dialogService
-init|=
-name|frame
-operator|.
-name|getDialogService
-argument_list|()
-decl_stmt|;
 name|List
 argument_list|<
 name|Path
@@ -1312,17 +1307,10 @@ argument_list|,
 name|ex
 argument_list|)
 expr_stmt|;
-name|JOptionPane
+name|dialogService
 operator|.
-name|showMessageDialog
+name|showErrorDialogAndWait
 argument_list|(
-literal|null
-argument_list|,
-name|ex
-operator|.
-name|getMessage
-argument_list|()
-argument_list|,
 name|Localization
 operator|.
 name|lang
@@ -1330,9 +1318,7 @@ argument_list|(
 literal|"Open library"
 argument_list|)
 argument_list|,
-name|JOptionPane
-operator|.
-name|ERROR_MESSAGE
+name|ex
 argument_list|)
 expr_stmt|;
 block|}
