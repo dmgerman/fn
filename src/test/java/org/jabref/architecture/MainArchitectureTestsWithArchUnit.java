@@ -1,87 +1,156 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
-begin_comment
-comment|// TODO: temporarily removed, due to split packages of ArchUnit
-end_comment
+begin_package
+DECL|package|org.jabref.architecture
+package|package
+name|org
+operator|.
+name|jabref
+operator|.
+name|architecture
+package|;
+end_package
 
-begin_comment
-comment|//package org.jabref.architecture;
-end_comment
+begin_import
+import|import
+name|com
+operator|.
+name|tngtech
+operator|.
+name|archunit
+operator|.
+name|junit
+operator|.
+name|AnalyzeClasses
+import|;
+end_import
 
-begin_comment
-comment|//
-end_comment
+begin_import
+import|import
+name|com
+operator|.
+name|tngtech
+operator|.
+name|archunit
+operator|.
+name|junit
+operator|.
+name|ArchTest
+import|;
+end_import
 
-begin_comment
-comment|//import com.tngtech.archunit.junit.AnalyzeClasses;
-end_comment
+begin_import
+import|import
+name|com
+operator|.
+name|tngtech
+operator|.
+name|archunit
+operator|.
+name|junit
+operator|.
+name|ArchUnitRunner
+import|;
+end_import
 
-begin_comment
-comment|//import com.tngtech.archunit.junit.ArchTest;
-end_comment
+begin_import
+import|import
+name|com
+operator|.
+name|tngtech
+operator|.
+name|archunit
+operator|.
+name|lang
+operator|.
+name|ArchRule
+import|;
+end_import
 
-begin_comment
-comment|//import com.tngtech.archunit.junit.ArchUnitRunner;
-end_comment
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|runner
+operator|.
+name|RunWith
+import|;
+end_import
 
-begin_comment
-comment|//import com.tngtech.archunit.lang.ArchRule;
-end_comment
+begin_import
+import|import static
+name|com
+operator|.
+name|tngtech
+operator|.
+name|archunit
+operator|.
+name|lang
+operator|.
+name|syntax
+operator|.
+name|ArchRuleDefinition
+operator|.
+name|noClasses
+import|;
+end_import
 
-begin_comment
-comment|//import org.junit.runner.RunWith;
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//import static com.tngtech.archunit.lang.syntax.ArchRuleDefinition.noClasses;
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//@RunWith(ArchUnitRunner.class)
-end_comment
-
-begin_comment
-comment|//@AnalyzeClasses(packages = "org.jabref")
-end_comment
-
-begin_comment
-comment|//public class MainArchitectureTestsWithArchUnit {
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//    @ArchTest
-end_comment
-
-begin_comment
-comment|//    public static final ArchRule doNotUseApacheCommonsLang3 =
-end_comment
-
-begin_comment
-comment|//            noClasses().that().areNotAnnotatedWith(ApacheCommonsLang3Allowed.class)
-end_comment
-
-begin_comment
-comment|//            .should().accessClassesThat().resideInAPackage("org.apache.commons.lang3");
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//}
-end_comment
+begin_class
+annotation|@
+name|RunWith
+argument_list|(
+name|ArchUnitRunner
+operator|.
+name|class
+argument_list|)
+annotation|@
+name|AnalyzeClasses
+argument_list|(
+name|packages
+operator|=
+literal|"org.jabref"
+argument_list|)
+DECL|class|MainArchitectureTestsWithArchUnit
+specifier|public
+class|class
+name|MainArchitectureTestsWithArchUnit
+block|{
+annotation|@
+name|ArchTest
+DECL|field|doNotUseApacheCommonsLang3
+specifier|public
+specifier|static
+specifier|final
+name|ArchRule
+name|doNotUseApacheCommonsLang3
+init|=
+name|noClasses
+argument_list|()
+operator|.
+name|that
+argument_list|()
+operator|.
+name|areNotAnnotatedWith
+argument_list|(
+name|ApacheCommonsLang3Allowed
+operator|.
+name|class
+argument_list|)
+operator|.
+name|should
+argument_list|()
+operator|.
+name|accessClassesThat
+argument_list|()
+operator|.
+name|resideInAPackage
+argument_list|(
+literal|"org.apache.commons.lang3"
+argument_list|)
+decl_stmt|;
+block|}
+end_class
 
 end_unit
 
