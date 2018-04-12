@@ -2026,7 +2026,7 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
-comment|// An empty search field should cause the search to be cleared.
+comment|// An empty search field should cause the search to be cleared
 if|if
 condition|(
 name|searchField
@@ -2041,6 +2041,21 @@ block|{
 name|clearSearch
 argument_list|(
 name|currentBasePanel
+argument_list|)
+expr_stmt|;
+comment|// also make sure the search icon has the standard color
+name|searchIcon
+operator|.
+name|setIcon
+argument_list|(
+name|IconTheme
+operator|.
+name|JabRefIcon
+operator|.
+name|SEARCH
+operator|.
+name|getIcon
+argument_list|()
 argument_list|)
 expr_stmt|;
 return|return;

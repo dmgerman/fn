@@ -16,15 +16,13 @@ end_package
 
 begin_import
 import|import
-name|org
+name|java
 operator|.
-name|jabref
+name|util
 operator|.
-name|model
+name|regex
 operator|.
-name|strings
-operator|.
-name|StringUtil
+name|Pattern
 import|;
 end_import
 
@@ -34,6 +32,20 @@ specifier|public
 class|class
 name|SearchRules
 block|{
+DECL|field|SIMPLE_EXPRESSION
+specifier|private
+specifier|static
+specifier|final
+name|Pattern
+name|SIMPLE_EXPRESSION
+init|=
+name|Pattern
+operator|.
+name|compile
+argument_list|(
+literal|"[^\\p{Punct}]*"
+argument_list|)
+decl_stmt|;
 DECL|method|SearchRules ()
 specifier|private
 name|SearchRules
@@ -58,9 +70,7 @@ parameter_list|)
 block|{
 if|if
 condition|(
-name|StringUtil
-operator|.
-name|isBlank
+name|isSimpleQuery
 argument_list|(
 name|query
 argument_list|)
@@ -112,6 +122,28 @@ name|regex
 argument_list|)
 return|;
 block|}
+block|}
+DECL|method|isSimpleQuery (String query)
+specifier|private
+specifier|static
+name|boolean
+name|isSimpleQuery
+parameter_list|(
+name|String
+name|query
+parameter_list|)
+block|{
+return|return
+name|SIMPLE_EXPRESSION
+operator|.
+name|matcher
+argument_list|(
+name|query
+argument_list|)
+operator|.
+name|matches
+argument_list|()
+return|;
 block|}
 DECL|method|getSearchRule (boolean caseSensitive, boolean regex)
 specifier|private
