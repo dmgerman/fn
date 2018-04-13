@@ -293,7 +293,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * The search query must be specified in an expression that is acceptable by the Search.g4 grammar.  */
+comment|/**  * The search query must be specified in an expression that is acceptable by the Search.g4 grammar.  *  * This class implements the "Advanced Search Mode" described in the help  */
 end_comment
 
 begin_class

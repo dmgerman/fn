@@ -9952,6 +9952,14 @@ operator|.
 name|loadForExportFromPreferences
 argument_list|()
 decl_stmt|;
+name|XmpPreferences
+name|xmpPreferences
+init|=
+name|this
+operator|.
+name|getXMPPreferences
+argument_list|()
+decl_stmt|;
 return|return
 name|ExporterFactory
 operator|.
@@ -9962,6 +9970,8 @@ argument_list|,
 name|layoutPreferences
 argument_list|,
 name|savePreferences
+argument_list|,
+name|xmpPreferences
 argument_list|)
 return|;
 block|}

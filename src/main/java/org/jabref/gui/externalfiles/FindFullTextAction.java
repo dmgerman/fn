@@ -860,6 +860,33 @@ argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
+name|basePanel
+operator|.
+name|output
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Full text document download failed for entry %0"
+argument_list|,
+name|entry
+operator|.
+name|getCiteKeyOptional
+argument_list|()
+operator|.
+name|orElse
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"undefined"
+argument_list|)
+argument_list|)
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 name|basePanel
 operator|.
@@ -898,7 +925,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Full text document download failed"
+literal|"No full text document found"
 argument_list|)
 decl_stmt|;
 name|String
@@ -908,7 +935,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Full text document download failed for entry %0."
+literal|"No full text document found for entry %0."
 argument_list|,
 name|entry
 operator|.
