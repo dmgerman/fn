@@ -676,6 +676,8 @@ expr_stmt|;
 block|}
 else|else
 block|{
+try|try
+block|{
 name|meta
 operator|=
 name|XmpUtilShared
@@ -688,6 +690,24 @@ name|createInputStream
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|// In case, that the pdf file has no namespace definition for xmp,
+comment|// but metadata in a different format, the parser throws an exception
+comment|// Creating an empty xmp metadata element solves this problem
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|e
+parameter_list|)
+block|{
+name|meta
+operator|=
+name|XMPMetadata
+operator|.
+name|createXMPMetadata
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 comment|// Remove all current Dublin-Core schemas
 name|meta

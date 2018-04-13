@@ -676,9 +676,9 @@ argument_list|,
 literal|"html"
 argument_list|)
 block|,
-DECL|enumConstant|XMP
+DECL|enumConstant|PDF_XMP
 DECL|enumConstant|Localization.lang
-name|XMP
+name|PDF_XMP
 argument_list|(
 name|Localization
 operator|.

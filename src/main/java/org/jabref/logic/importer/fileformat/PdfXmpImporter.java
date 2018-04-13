@@ -227,7 +227,7 @@ block|{
 return|return
 name|FileType
 operator|.
-name|XMP
+name|PDF_XMP
 return|;
 block|}
 annotation|@

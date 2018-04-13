@@ -645,6 +645,17 @@ name|xmpPreferences
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|exporters
+operator|.
+name|add
+argument_list|(
+operator|new
+name|XmpPdfExporter
+argument_list|(
+name|xmpPreferences
+argument_list|)
+argument_list|)
+expr_stmt|;
 comment|// Now add custom export formats
 name|exporters
 operator|.
