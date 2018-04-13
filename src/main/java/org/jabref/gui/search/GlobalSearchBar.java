@@ -1,7 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
 DECL|package|org.jabref.gui.search
-DECL|package|org.jabref.gui.search
 package|package
 name|org
 operator|.
@@ -17,9 +16,11 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
+name|lang
 operator|.
-name|File
+name|reflect
+operator|.
+name|Field
 import|;
 end_import
 
@@ -27,11 +28,11 @@ begin_import
 import|import
 name|java
 operator|.
-name|lang
+name|nio
 operator|.
-name|reflect
+name|file
 operator|.
-name|Field
+name|Path
 import|;
 end_import
 
@@ -74,6 +75,16 @@ operator|.
 name|stream
 operator|.
 name|Collectors
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|JLabel
 import|;
 end_import
 
@@ -655,13 +666,15 @@ end_import
 
 begin_import
 import|import
+name|impl
+operator|.
 name|org
 operator|.
-name|reactfx
+name|controlsfx
 operator|.
-name|util
+name|skin
 operator|.
-name|FxTimer
+name|AutoCompletePopup
 import|;
 end_import
 
@@ -669,11 +682,25 @@ begin_import
 import|import
 name|org
 operator|.
-name|reactfx
+name|controlsfx
 operator|.
-name|util
+name|control
 operator|.
-name|Timer
+name|textfield
+operator|.
+name|AutoCompletionBinding
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|fxmisc
+operator|.
+name|easybind
+operator|.
+name|EasyBind
 import|;
 end_import
 
@@ -697,7 +724,15 @@ name|LoggerFactory
 import|;
 end_import
 
-begin_decl_stmt
+begin_class
+DECL|class|GlobalSearchBar
+specifier|public
+class|class
+name|GlobalSearchBar
+extends|extends
+name|HBox
+block|{
+DECL|field|LOGGER
 specifier|private
 specifier|static
 specifier|final
@@ -713,27 +748,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
-specifier|private
-specifier|static
-specifier|final
-name|Logger
-name|LOGGER
-init|=
-name|LoggerFactory
-operator|.
-name|getLogger
-argument_list|(
-name|GlobalSearchBar
-operator|.
-name|class
-argument_list|)
-decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
+DECL|field|SEARCH_DELAY
 specifier|private
 specifier|static
 specifier|final
@@ -742,9 +757,7 @@ name|SEARCH_DELAY
 init|=
 literal|400
 decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
+DECL|field|CLASS_NO_RESULTS
 specifier|private
 specifier|static
 specifier|final
@@ -758,9 +771,7 @@ argument_list|(
 literal|"emptyResult"
 argument_list|)
 decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
+DECL|field|CLASS_RESULTS_FOUND
 specifier|private
 specifier|static
 specifier|final
@@ -774,17 +785,13 @@ argument_list|(
 literal|"emptyResult"
 argument_list|)
 decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
+DECL|field|frame
 specifier|private
 specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
+DECL|field|searchField
 specifier|private
 specifier|final
 name|TextField
@@ -795,33 +802,25 @@ operator|.
 name|create
 argument_list|()
 decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
+DECL|field|caseSensitive
 specifier|private
 specifier|final
 name|ToggleButton
 name|caseSensitive
 decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
+DECL|field|regularExp
 specifier|private
 specifier|final
 name|ToggleButton
 name|regularExp
 decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
+DECL|field|globalSearch
 specifier|private
 specifier|final
 name|ToggleButton
 name|globalSearch
 decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
+DECL|field|searchModeButton
 specifier|private
 specifier|final
 name|Button
@@ -831,9 +830,7 @@ operator|new
 name|Button
 argument_list|()
 decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
+DECL|field|currentResults
 specifier|private
 specifier|final
 name|Label
@@ -845,9 +842,7 @@ argument_list|(
 literal|""
 argument_list|)
 decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
+DECL|field|searchQueryHighlightObservable
 specifier|private
 specifier|final
 name|SearchQueryHighlightObservable
@@ -857,9 +852,7 @@ operator|new
 name|SearchQueryHighlightObservable
 argument_list|()
 decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
+DECL|field|openCurrentResultsInDialog
 specifier|private
 specifier|final
 name|Button
@@ -874,37 +867,27 @@ operator|.
 name|asButton
 argument_list|()
 decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
+DECL|field|searchWorker
 specifier|private
 name|SearchWorker
 name|searchWorker
 decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
+DECL|field|globalSearchWorker
 specifier|private
 name|GlobalSearchWorker
 name|globalSearchWorker
 decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
+DECL|field|searchResultFrame
 specifier|private
 name|SearchResultFrame
 name|searchResultFrame
 decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
+DECL|field|searchDisplayMode
 specifier|private
 name|SearchDisplayMode
 name|searchDisplayMode
 decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
+DECL|field|searchIcon
 specifier|private
 specifier|final
 name|JLabel
@@ -915,7 +898,7 @@ name|JLabel
 argument_list|(
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|SEARCH
 operator|.
@@ -923,21 +906,12 @@ name|getIcon
 argument_list|()
 argument_list|)
 decl_stmt|;
-end_decl_stmt
-
-begin_comment
 comment|/**      * if this flag is set the searchbar won't be selected after the next search      */
-end_comment
-
-begin_decl_stmt
+DECL|field|dontSelectSearchBar
 specifier|private
 name|boolean
 name|dontSelectSearchBar
 decl_stmt|;
-end_decl_stmt
-
-begin_constructor
-DECL|method|GlobalSearchBar (JabRefFrame frame)
 DECL|method|GlobalSearchBar (JabRefFrame frame)
 specifier|public
 name|GlobalSearchBar
@@ -1558,10 +1532,6 @@ name|CENTER_LEFT
 argument_list|)
 expr_stmt|;
 block|}
-end_constructor
-
-begin_function
-DECL|method|performGlobalSearch ()
 DECL|method|performGlobalSearch ()
 specifier|public
 name|void
@@ -1643,10 +1613,6 @@ name|execute
 argument_list|()
 expr_stmt|;
 block|}
-end_function
-
-begin_function
-DECL|method|openLocalFindingsInExternalPanel ()
 DECL|method|openLocalFindingsInExternalPanel ()
 specifier|private
 name|void
@@ -1808,10 +1774,6 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
-end_function
-
-begin_function
-DECL|method|validateSearchResultFrame (boolean globalSearch)
 DECL|method|validateSearchResultFrame (boolean globalSearch)
 specifier|private
 name|boolean
@@ -1873,10 +1835,6 @@ return|return
 literal|false
 return|;
 block|}
-end_function
-
-begin_function
-DECL|method|toggleSearchModeAndSearch ()
 DECL|method|toggleSearchModeAndSearch ()
 specifier|private
 name|void
@@ -1932,10 +1890,6 @@ name|performSearch
 argument_list|()
 expr_stmt|;
 block|}
-end_function
-
-begin_function
-DECL|method|updateSearchModeButtonText ()
 DECL|method|updateSearchModeButtonText ()
 specifier|private
 name|void
@@ -1967,10 +1921,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-end_function
-
-begin_function
-DECL|method|endSearch ()
 DECL|method|endSearch ()
 specifier|public
 name|void
@@ -2015,14 +1965,7 @@ expr_stmt|;
 comment|//SwingUtilities.invokeLater(() -> mainTable.ensureVisible(mainTable.getSelectedRow()));
 block|}
 block|}
-end_function
-
-begin_comment
 comment|/**      * Focuses the search field if it is not focused.      */
-end_comment
-
-begin_function
-DECL|method|focus ()
 DECL|method|focus ()
 specifier|public
 name|void
@@ -2050,10 +1993,6 @@ name|selectAll
 argument_list|()
 expr_stmt|;
 block|}
-end_function
-
-begin_function
-DECL|method|clearSearch ()
 DECL|method|clearSearch ()
 specifier|private
 name|void
@@ -2094,10 +2033,6 @@ name|clearSearchQuery
 argument_list|()
 expr_stmt|;
 block|}
-end_function
-
-begin_function
-DECL|method|performSearch ()
 DECL|method|performSearch ()
 specifier|public
 name|void
@@ -2201,10 +2136,6 @@ name|execute
 argument_list|()
 expr_stmt|;
 block|}
-end_function
-
-begin_function
-DECL|method|informUserAboutInvalidSearchQuery ()
 DECL|method|informUserAboutInvalidSearchQuery ()
 specifier|private
 name|void
@@ -2257,10 +2188,6 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
-end_function
-
-begin_function
-DECL|method|setAutoCompleter (AutoCompleteSuggestionProvider<Author> searchCompleter)
 DECL|method|setAutoCompleter (AutoCompleteSuggestionProvider<Author> searchCompleter)
 specifier|public
 name|void
@@ -2342,14 +2269,12 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-end_function
-
-begin_comment
 comment|/**      * The popup has private access in {@link AutoCompletionBinding}, so we use reflection to access it.      */
-end_comment
-
-begin_function
-DECL|method|getPopup (AutoCompletionBinding<T> autoCompletionBinding)
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
 DECL|method|getPopup (AutoCompletionBinding<T> autoCompletionBinding)
 specifier|private
 parameter_list|<
@@ -2429,10 +2354,6 @@ argument_list|()
 return|;
 block|}
 block|}
-end_function
-
-begin_function
-DECL|method|getSearchQueryHighlightObservable ()
 DECL|method|getSearchQueryHighlightObservable ()
 specifier|public
 name|SearchQueryHighlightObservable
@@ -2443,10 +2364,6 @@ return|return
 name|searchQueryHighlightObservable
 return|;
 block|}
-end_function
-
-begin_function
-DECL|method|isStillValidQuery (SearchQuery query)
 DECL|method|isStillValidQuery (SearchQuery query)
 specifier|public
 name|boolean
@@ -2497,10 +2414,6 @@ argument_list|()
 operator|)
 return|;
 block|}
-end_function
-
-begin_function
-DECL|method|getSearchQuery ()
 DECL|method|getSearchQuery ()
 specifier|private
 name|SearchQuery
@@ -2551,10 +2464,6 @@ return|return
 name|searchQuery
 return|;
 block|}
-end_function
-
-begin_function
-DECL|method|updateResults (int matched, TextFlow description, boolean grammarBasedSearch)
 DECL|method|updateResults (int matched, TextFlow description, boolean grammarBasedSearch)
 specifier|public
 name|void
@@ -2688,10 +2597,6 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
-end_function
-
-begin_function
-DECL|method|setSearchResultFrame (SearchResultFrame searchResultFrame)
 DECL|method|setSearchResultFrame (SearchResultFrame searchResultFrame)
 specifier|public
 name|void
@@ -2708,10 +2613,6 @@ operator|=
 name|searchResultFrame
 expr_stmt|;
 block|}
-end_function
-
-begin_function
-DECL|method|setSearchTerm (String searchTerm)
 DECL|method|setSearchTerm (String searchTerm)
 specifier|public
 name|void
@@ -2751,10 +2652,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-end_function
-
-begin_function
-DECL|method|updateOpenCurrentResultsTooltip (boolean globalSearchEnabled)
 DECL|method|updateOpenCurrentResultsTooltip (boolean globalSearchEnabled)
 specifier|private
 name|void
@@ -2806,10 +2703,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-end_function
-
-begin_class
-DECL|class|SearchPopupSkin
 DECL|class|SearchPopupSkin
 specifier|private
 class|class
@@ -2827,7 +2720,6 @@ argument_list|>
 argument_list|>
 block|{
 DECL|field|control
-DECL|field|control
 specifier|private
 specifier|final
 name|AutoCompletePopup
@@ -2836,7 +2728,6 @@ name|T
 argument_list|>
 name|control
 decl_stmt|;
-DECL|field|suggestionList
 DECL|field|suggestionList
 specifier|private
 specifier|final
@@ -2847,13 +2738,11 @@ argument_list|>
 name|suggestionList
 decl_stmt|;
 DECL|field|container
-DECL|field|container
 specifier|private
 specifier|final
 name|BorderPane
 name|container
 decl_stmt|;
-DECL|method|SearchPopupSkin (AutoCompletePopup<T> control)
 DECL|method|SearchPopupSkin (AutoCompletePopup<T> control)
 specifier|public
 name|SearchPopupSkin
@@ -3081,7 +2970,6 @@ argument_list|()
 expr_stmt|;
 block|}
 DECL|method|registerEventListener ()
-DECL|method|registerEventListener ()
 specifier|private
 name|void
 name|registerEventListener
@@ -3191,12 +3079,14 @@ name|hide
 argument_list|()
 expr_stmt|;
 block|}
+break|break;
+default|default:
+break|break;
 block|}
 block|}
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|onSuggestionChosen (T suggestion)
 DECL|method|onSuggestionChosen (T suggestion)
 specifier|private
 name|void
@@ -3236,7 +3126,6 @@ block|}
 annotation|@
 name|Override
 DECL|method|getNode ()
-DECL|method|getNode ()
 specifier|public
 name|Node
 name|getNode
@@ -3250,7 +3139,6 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|getSkinnable ()
 DECL|method|getSkinnable ()
 specifier|public
 name|AutoCompletePopup
@@ -3269,15 +3157,14 @@ block|}
 annotation|@
 name|Override
 DECL|method|dispose ()
-DECL|method|dispose ()
 specifier|public
 name|void
 name|dispose
 parameter_list|()
 block|{         }
 block|}
+block|}
 end_class
 
-unit|}
 end_unit
 
