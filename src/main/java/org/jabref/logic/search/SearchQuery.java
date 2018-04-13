@@ -462,6 +462,7 @@ argument_list|)
 return|;
 block|}
 block|}
+comment|/**      * Tests if the query is an advanced search query described as described in the help      *      * @return true if the query is an advanced search query      */
 DECL|method|isGrammarBasedSearch ()
 specifier|public
 name|boolean

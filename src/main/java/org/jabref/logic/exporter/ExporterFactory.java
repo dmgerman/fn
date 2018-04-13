@@ -132,6 +132,20 @@ name|org
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
+name|xmp
+operator|.
+name|XmpPreferences
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
 name|preferences
 operator|.
 name|JabRefPreferences
@@ -185,7 +199,7 @@ name|exporters
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|create (Map<String, TemplateExporter> customFormats, LayoutFormatterPreferences layoutPreferences, SavePreferences savePreferences)
+DECL|method|create (Map<String, TemplateExporter> customFormats, LayoutFormatterPreferences layoutPreferences, SavePreferences savePreferences, XmpPreferences xmpPreferences)
 specifier|public
 specifier|static
 name|ExporterFactory
@@ -204,6 +218,9 @@ name|layoutPreferences
 parameter_list|,
 name|SavePreferences
 name|savePreferences
+parameter_list|,
+name|XmpPreferences
+name|xmpPreferences
 parameter_list|)
 block|{
 name|List
@@ -617,6 +634,28 @@ name|ModsExporter
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|exporters
+operator|.
+name|add
+argument_list|(
+operator|new
+name|XmpExporter
+argument_list|(
+name|xmpPreferences
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|exporters
+operator|.
+name|add
+argument_list|(
+operator|new
+name|XmpPdfExporter
+argument_list|(
+name|xmpPreferences
+argument_list|)
+argument_list|)
+expr_stmt|;
 comment|// Now add custom export formats
 name|exporters
 operator|.
@@ -688,6 +727,14 @@ argument_list|(
 name|preferences
 argument_list|)
 decl_stmt|;
+name|XmpPreferences
+name|xmpPreferences
+init|=
+name|preferences
+operator|.
+name|getXMPPreferences
+argument_list|()
+decl_stmt|;
 return|return
 name|create
 argument_list|(
@@ -696,6 +743,8 @@ argument_list|,
 name|layoutPreferences
 argument_list|,
 name|savePreferences
+argument_list|,
+name|xmpPreferences
 argument_list|)
 return|;
 block|}

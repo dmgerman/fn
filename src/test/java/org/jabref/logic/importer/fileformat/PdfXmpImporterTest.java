@@ -376,7 +376,7 @@ name|assertEquals
 argument_list|(
 name|FileType
 operator|.
-name|XMP
+name|PDF_XMP
 argument_list|,
 name|importer
 operator|.

@@ -676,9 +676,9 @@ argument_list|,
 literal|"html"
 argument_list|)
 block|,
-DECL|enumConstant|XMP
+DECL|enumConstant|PDF_XMP
 DECL|enumConstant|Localization.lang
-name|XMP
+name|PDF_XMP
 argument_list|(
 name|Localization
 operator|.
@@ -688,6 +688,22 @@ literal|"XMP-annotated PDF"
 argument_list|)
 argument_list|,
 literal|"pdf"
+argument_list|)
+block|,
+DECL|enumConstant|PLAIN_XMP
+DECL|enumConstant|Localization.lang
+name|PLAIN_XMP
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"%0 file"
+argument_list|,
+literal|"XMP"
+argument_list|)
+argument_list|,
+literal|"xmp"
 argument_list|)
 block|,
 DECL|enumConstant|AUX
