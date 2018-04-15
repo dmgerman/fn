@@ -2316,6 +2316,12 @@ name|ButtonType
 argument_list|>
 name|buttonPressed
 init|=
+name|DefaultTaskExecutor
+operator|.
+name|runInJavaFXThread
+argument_list|(
+parameter_list|()
+lambda|->
 name|frame
 operator|.
 name|getDialogService
@@ -2350,6 +2356,7 @@ argument_list|,
 name|ButtonType
 operator|.
 name|CANCEL
+argument_list|)
 argument_list|)
 decl_stmt|;
 if|if
