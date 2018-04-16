@@ -80,6 +80,20 @@ name|jabref
 operator|.
 name|model
 operator|.
+name|metadata
+operator|.
+name|FileDirectoryPreferences
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
 name|pdf
 operator|.
 name|FileAnnotation
@@ -205,12 +219,15 @@ specifier|public
 name|FileAnnotationCache
 parameter_list|()
 block|{      }
-DECL|method|FileAnnotationCache (BibDatabaseContext context)
+DECL|method|FileAnnotationCache (BibDatabaseContext context, FileDirectoryPreferences fileDirectoryPreferences)
 specifier|public
 name|FileAnnotationCache
 parameter_list|(
 name|BibDatabaseContext
 name|context
+parameter_list|,
+name|FileDirectoryPreferences
+name|fileDirectoryPreferences
 parameter_list|)
 block|{
 name|annotationCache
@@ -274,6 +291,8 @@ operator|.
 name|importAnnotationsFromFiles
 argument_list|(
 name|context
+argument_list|,
+name|fileDirectoryPreferences
 argument_list|)
 return|;
 block|}

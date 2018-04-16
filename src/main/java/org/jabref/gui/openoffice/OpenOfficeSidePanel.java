@@ -160,7 +160,7 @@ if|if
 condition|(
 name|preferences
 operator|.
-name|showPanel
+name|getShowPanel
 argument_list|()
 condition|)
 block|{

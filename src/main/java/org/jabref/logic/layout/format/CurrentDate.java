@@ -72,7 +72,6 @@ name|DEFAULT_FORMAT
 init|=
 literal|"yyyy-MM-dd hh:mm:ss z"
 decl_stmt|;
-comment|/*      *  (non-Javadoc)      * @see org.jabref.export.layout.LayoutFormatter#format(java.lang.String)      */
 annotation|@
 name|Override
 DECL|method|format (String fieldText)
