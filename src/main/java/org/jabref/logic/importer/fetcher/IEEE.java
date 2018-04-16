@@ -171,7 +171,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Class for finding PDF URLs for entries on IEEE  * Will first look for URLs of the type http://ieeexplore.ieee.org/stamp/stamp.jsp?[tp=&]arnumber=...  * If not found, will resolve the DOI, if it starts with 10.1109, and try to find a similar link on the HTML page  */
+comment|/**  * Class for finding PDF URLs for entries on IEEE  * Will first look for URLs of the type https://ieeexplore.ieee.org/stamp/stamp.jsp?[tp=&]arnumber=...  * If not found, will resolve the DOI, if it starts with 10.1109, and try to find a similar link on the HTML page  */
 end_comment
 
 begin_class
@@ -223,7 +223,7 @@ name|Pattern
 operator|.
 name|compile
 argument_list|(
-literal|"\"(http://ieeexplore.ieee.org/ielx[0-9/]+\\.pdf[^\"]+)\""
+literal|"\"(https://ieeexplore.ieee.org/ielx[0-9/]+\\.pdf[^\"]+)\""
 argument_list|)
 decl_stmt|;
 DECL|field|IEEE_DOI
@@ -242,7 +242,7 @@ specifier|final
 name|String
 name|BASE_URL
 init|=
-literal|"http://ieeexplore.ieee.org"
+literal|"https://ieeexplore.ieee.org"
 decl_stmt|;
 annotation|@
 name|Override

@@ -192,7 +192,7 @@ argument_list|(
 operator|new
 name|URL
 argument_list|(
-literal|"http://ieeexplore.ieee.org/ielx7/6287639/7419931/07421926.pdf?tp=&arnumber=7421926&isnumber=7419931"
+literal|"https://ieeexplore.ieee.org/ielx7/6287639/7419931/07421926.pdf?tp=&arnumber=7421926&isnumber=7419931"
 argument_list|)
 argument_list|)
 argument_list|,
@@ -220,7 +220,7 @@ name|setField
 argument_list|(
 literal|"url"
 argument_list|,
-literal|"http://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=7421926"
+literal|"https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=7421926"
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -232,7 +232,7 @@ argument_list|(
 operator|new
 name|URL
 argument_list|(
-literal|"http://ieeexplore.ieee.org/ielx7/6287639/7419931/07421926.pdf?tp=&arnumber=7421926&isnumber=7419931"
+literal|"https://ieeexplore.ieee.org/ielx7/6287639/7419931/07421926.pdf?tp=&arnumber=7421926&isnumber=7419931"
 argument_list|)
 argument_list|)
 argument_list|,
@@ -260,7 +260,7 @@ name|setField
 argument_list|(
 literal|"url"
 argument_list|,
-literal|"http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7421926"
+literal|"https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7421926"
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -272,7 +272,7 @@ argument_list|(
 operator|new
 name|URL
 argument_list|(
-literal|"http://ieeexplore.ieee.org/ielx7/6287639/7419931/07421926.pdf?tp=&arnumber=7421926&isnumber=7419931"
+literal|"https://ieeexplore.ieee.org/ielx7/6287639/7419931/07421926.pdf?tp=&arnumber=7421926&isnumber=7419931"
 argument_list|)
 argument_list|)
 argument_list|,
@@ -321,7 +321,7 @@ argument_list|(
 operator|new
 name|URL
 argument_list|(
-literal|"http://ieeexplore.ieee.org/ielx7/6287639/7419931/07421926.pdf?tp=&arnumber=7421926&isnumber=7419931"
+literal|"https://ieeexplore.ieee.org/ielx7/6287639/7419931/07421926.pdf?tp=&arnumber=7421926&isnumber=7419931"
 argument_list|)
 argument_list|)
 argument_list|,

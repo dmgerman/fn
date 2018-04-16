@@ -513,7 +513,7 @@ specifier|final
 name|String
 name|URL_SEARCH
 init|=
-literal|"http://ieeexplore.ieee.org/rest/search?reload=true"
+literal|"https://ieeexplore.ieee.org/rest/search?reload=true"
 decl_stmt|;
 DECL|field|URL_BIBTEX_START
 specifier|private
@@ -522,7 +522,7 @@ specifier|final
 name|String
 name|URL_BIBTEX_START
 init|=
-literal|"http://ieeexplore.ieee.org/xpl/downloadCitations?reload=true&recordIds="
+literal|"https://ieeexplore.ieee.org/xpl/downloadCitations?reload=true&recordIds="
 decl_stmt|;
 DECL|field|URL_BIBTEX_END
 specifier|private
@@ -916,7 +916,7 @@ name|addHeader
 argument_list|(
 literal|"Referer"
 argument_list|,
-literal|"http://ieeexplore.ieee.org/search/searchresult.jsp"
+literal|"https://ieeexplore.ieee.org/search/searchresult.jsp"
 argument_list|)
 expr_stmt|;
 comment|// set post data
@@ -3462,7 +3462,7 @@ name|FieldName
 operator|.
 name|URL
 argument_list|,
-literal|"http://ieeexplore.ieee.org"
+literal|"https://ieeexplore.ieee.org"
 operator|+
 name|url
 operator|.
