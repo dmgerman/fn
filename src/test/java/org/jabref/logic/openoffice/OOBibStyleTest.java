@@ -18,6 +18,16 @@ name|java
 operator|.
 name|io
 operator|.
+name|File
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
 name|IOException
 import|;
 end_import
@@ -521,17 +531,44 @@ name|URISyntaxException
 throws|,
 name|IOException
 block|{
+name|File
+name|defFile
+init|=
+name|Paths
+operator|.
+name|get
+argument_list|(
+name|OOBibStyleTest
+operator|.
+name|class
+operator|.
+name|getResource
+argument_list|(
+name|StyleLoader
+operator|.
+name|DEFAULT_AUTHORYEAR_STYLE_PATH
+argument_list|)
+operator|.
+name|toURI
+argument_list|()
+argument_list|)
+operator|.
+name|toFile
+argument_list|()
+decl_stmt|;
 name|OOBibStyle
 name|style
 init|=
 operator|new
 name|OOBibStyle
 argument_list|(
-name|StyleLoader
-operator|.
-name|DEFAULT_NUMERICAL_STYLE_PATH
+name|defFile
 argument_list|,
 name|layoutFormatterPreferences
+argument_list|,
+name|StandardCharsets
+operator|.
+name|UTF_8
 argument_list|)
 decl_stmt|;
 name|assertTrue
@@ -1197,6 +1234,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * In IntelliJ: When running this test, ensure that the working directory is<code>%MODULE_WORKING_DIR%"</code>      */
 annotation|@
 name|Test
 DECL|method|testGetCitationMarker ()
@@ -1398,6 +1436,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * In IntelliJ: When running this test, ensure that the working directory is<code>%MODULE_WORKING_DIR%"</code>      */
 annotation|@
 name|Test
 DECL|method|testLayout ()
