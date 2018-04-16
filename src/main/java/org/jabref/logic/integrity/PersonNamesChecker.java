@@ -52,6 +52,22 @@ name|org
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
+name|layout
+operator|.
+name|format
+operator|.
+name|RemoveBrackets
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
 name|model
 operator|.
 name|database
@@ -243,31 +259,18 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|// Protected corporate names inside {}
-if|if
-condition|(
+comment|// Remove all brackets to handle corporate names correctly, e.g., {JabRef}
 name|value
-operator|.
-name|startsWith
-argument_list|(
-literal|"{"
-argument_list|)
-operator|&&
-name|value
-operator|.
-name|endsWith
-argument_list|(
-literal|"}"
-argument_list|)
-condition|)
-block|{
-return|return
-name|Optional
-operator|.
-name|empty
+operator|=
+operator|new
+name|RemoveBrackets
 argument_list|()
-return|;
-block|}
+operator|.
+name|format
+argument_list|(
+name|value
+argument_list|)
+expr_stmt|;
 comment|// Check that the value is in one of the two standard BibTeX formats:
 comment|//  Last, First and ...
 comment|//  First Last and ...
