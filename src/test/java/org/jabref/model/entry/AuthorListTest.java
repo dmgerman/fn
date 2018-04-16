@@ -2346,6 +2346,9 @@ name|parse
 argument_list|(
 literal|"{JabRef Developers} and Stefan Kolb"
 argument_list|)
+operator|.
+name|getAuthors
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
