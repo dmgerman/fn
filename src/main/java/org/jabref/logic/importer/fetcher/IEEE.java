@@ -394,8 +394,8 @@ argument_list|()
 condition|)
 block|{
 comment|// Download the HTML page from IEEE
-name|String
-name|resolvedDOIPage
+name|URLDownload
+name|urlDownload
 init|=
 operator|new
 name|URLDownload
@@ -414,6 +414,17 @@ operator|.
 name|toURL
 argument_list|()
 argument_list|)
+decl_stmt|;
+comment|//We don't need to modify the cookies, but we need support for them
+name|urlDownload
+operator|.
+name|getCookieFromUrl
+argument_list|()
+expr_stmt|;
+name|String
+name|resolvedDOIPage
+init|=
+name|urlDownload
 operator|.
 name|asString
 argument_list|()
@@ -467,8 +478,8 @@ argument_list|()
 return|;
 block|}
 comment|// Download the HTML page containing a frame with the PDF
-name|String
-name|framePage
+name|URLDownload
+name|urlDownload
 init|=
 operator|new
 name|URLDownload
@@ -477,6 +488,17 @@ name|BASE_URL
 operator|+
 name|stampString
 argument_list|)
+decl_stmt|;
+comment|//We don't need to modify the cookies, but we need support for them
+name|urlDownload
+operator|.
+name|getCookieFromUrl
+argument_list|()
+expr_stmt|;
+name|String
+name|framePage
+init|=
+name|urlDownload
 operator|.
 name|asString
 argument_list|()
