@@ -50,20 +50,6 @@ name|org
 operator|.
 name|jabref
 operator|.
-name|logic
-operator|.
-name|importer
-operator|.
-name|FetcherException
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
 name|model
 operator|.
 name|entry
@@ -155,22 +141,6 @@ operator|.
 name|Assertions
 operator|.
 name|assertEquals
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|jupiter
-operator|.
-name|api
-operator|.
-name|Assertions
-operator|.
-name|assertThrows
 import|;
 end_import
 
@@ -1349,22 +1319,21 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testInvalidSearchTermCauseIndexOutOfBoundsException ()
+DECL|method|testInvalidSearchTerm ()
 specifier|public
 name|void
-name|testInvalidSearchTermCauseIndexOutOfBoundsException
+name|testInvalidSearchTerm
 parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|assertThrows
+name|assertEquals
 argument_list|(
-name|FetcherException
+name|Optional
 operator|.
-name|class
+name|empty
+argument_list|()
 argument_list|,
-parameter_list|()
-lambda|->
 name|fetcher
 operator|.
 name|performSearchById

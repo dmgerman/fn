@@ -217,16 +217,7 @@ name|setField
 argument_list|(
 literal|"publisher"
 argument_list|,
-literal|"ADDISON WESLEY PUB CO INC"
-argument_list|)
-expr_stmt|;
-name|bibEntry
-operator|.
-name|setField
-argument_list|(
-literal|"pagetotal"
-argument_list|,
-literal|"416"
+literal|"Addison Wesley"
 argument_list|)
 expr_stmt|;
 name|bibEntry
@@ -253,7 +244,7 @@ name|setField
 argument_list|(
 literal|"date"
 argument_list|,
-literal|"2018-01-06"
+literal|"2018-01-11"
 argument_list|)
 expr_stmt|;
 name|bibEntry
@@ -280,7 +271,7 @@ name|setField
 argument_list|(
 literal|"url"
 argument_list|,
-literal|"http://www.ebook.de/de/product/28983211/joshua_bloch_effective_java.html"
+literal|"https://www.ebook.de/de/product/28983211/joshua_bloch_effective_java.html"
 argument_list|)
 expr_stmt|;
 name|fetcher
@@ -492,7 +483,7 @@ name|setField
 argument_list|(
 literal|"author"
 argument_list|,
-literal|"Marlon Dumas and Marcello La Rosa and Jan Mendling and Hajo A. Reijers"
+literal|"Dumas, Marlon and Rosa, Marcello La and Mendling, Jan and Reijers, Hajo A."
 argument_list|)
 expr_stmt|;
 name|bibEntry
@@ -537,7 +528,7 @@ name|setField
 argument_list|(
 literal|"url"
 argument_list|,
-literal|"http://www.ebook.de/de/product/23955263/marlon_dumas_marcello_la_rosa_jan_mendling_hajo_a_reijers_fundamentals_of_business_process_management.html"
+literal|"https://www.ebook.de/de/product/23955263/marlon_dumas_marcello_la_rosa_jan_mendling_hajo_a_reijers_fundamentals_of_business_process_management.html"
 argument_list|)
 expr_stmt|;
 name|Optional
