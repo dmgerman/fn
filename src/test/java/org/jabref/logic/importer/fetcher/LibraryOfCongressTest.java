@@ -206,7 +206,7 @@ name|setField
 argument_list|(
 literal|"keywords"
 argument_list|,
-literal|"Database design, Data structures (Computer science)"
+literal|"Database design Data structures (Computer science)"
 argument_list|)
 expr_stmt|;
 name|expected
