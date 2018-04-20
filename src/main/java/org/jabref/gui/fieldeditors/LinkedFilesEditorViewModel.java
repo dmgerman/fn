@@ -1409,8 +1409,6 @@ argument_list|(
 operator|new
 name|LinkedFile
 argument_list|(
-literal|""
-argument_list|,
 name|url
 argument_list|,
 literal|""

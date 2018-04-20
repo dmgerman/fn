@@ -305,13 +305,10 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|LinkedFile (String description, URL link, String fileType)
+DECL|method|LinkedFile (URL link, String fileType)
 specifier|public
 name|LinkedFile
 parameter_list|(
-name|String
-name|description
-parameter_list|,
 name|URL
 name|link
 parameter_list|,
@@ -321,7 +318,7 @@ parameter_list|)
 block|{
 name|this
 argument_list|(
-name|description
+literal|""
 argument_list|,
 name|Objects
 operator|.

@@ -372,7 +372,7 @@ name|setField
 argument_list|(
 literal|"file"
 argument_list|,
-literal|"online:http\\://arxiv.org/pdf/1405.2249v1:PDF"
+literal|":http\\://arxiv.org/pdf/1405.2249v1:PDF"
 argument_list|)
 expr_stmt|;
 name|sliceTheoremPaper
@@ -982,7 +982,7 @@ name|setField
 argument_list|(
 literal|"file"
 argument_list|,
-literal|"online:http\\://arxiv.org/pdf/hep-ex/0307015v1:PDF"
+literal|":http\\://arxiv.org/pdf/hep-ex/0307015v1:PDF"
 argument_list|)
 expr_stmt|;
 name|expected
