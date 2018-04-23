@@ -104,6 +104,20 @@ name|jabref
 operator|.
 name|gui
 operator|.
+name|icon
+operator|.
+name|JabRefIcon
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
 name|specialfields
 operator|.
 name|SpecialFieldViewModel
@@ -140,6 +154,20 @@ name|SpecialField
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|strings
+operator|.
+name|StringUtil
+import|;
+end_import
+
 begin_class
 DECL|class|CellFactory
 specifier|public
@@ -153,7 +181,7 @@ name|Map
 argument_list|<
 name|String
 argument_list|,
-name|Node
+name|JabRefIcon
 argument_list|>
 name|TABLE_ICONS
 init|=
@@ -173,21 +201,18 @@ name|UndoManager
 name|undoManager
 parameter_list|)
 block|{
-name|Node
-name|label
+name|JabRefIcon
+name|icon
 decl_stmt|;
-name|label
+name|icon
 operator|=
 name|IconTheme
 operator|.
 name|JabRefIcons
 operator|.
 name|PDF_FILE
-operator|.
-name|getGraphicNode
-argument_list|()
 expr_stmt|;
-comment|//label.setToo(Localization.lang("Open") + " PDF");
+comment|//icon.setToo(Localization.lang("Open") + " PDF");
 name|TABLE_ICONS
 operator|.
 name|put
@@ -196,21 +221,18 @@ name|FieldName
 operator|.
 name|PDF
 argument_list|,
-name|label
+name|icon
 argument_list|)
 expr_stmt|;
-name|label
+name|icon
 operator|=
 name|IconTheme
 operator|.
 name|JabRefIcons
 operator|.
 name|WWW
-operator|.
-name|getGraphicNode
-argument_list|()
 expr_stmt|;
-comment|//label.setToolTipText(Localization.lang("Open") + " URL");
+comment|//icon.setToolTipText(Localization.lang("Open") + " URL");
 name|TABLE_ICONS
 operator|.
 name|put
@@ -219,42 +241,36 @@ name|FieldName
 operator|.
 name|URL
 argument_list|,
-name|label
+name|icon
 argument_list|)
 expr_stmt|;
-name|label
+name|icon
 operator|=
 name|IconTheme
 operator|.
 name|JabRefIcons
 operator|.
 name|WWW
-operator|.
-name|getGraphicNode
-argument_list|()
 expr_stmt|;
-comment|//label.setToolTipText(Localization.lang("Open") + " CiteSeer URL");
+comment|//icon.setToolTipText(Localization.lang("Open") + " CiteSeer URL");
 name|TABLE_ICONS
 operator|.
 name|put
 argument_list|(
 literal|"citeseerurl"
 argument_list|,
-name|label
+name|icon
 argument_list|)
 expr_stmt|;
-name|label
+name|icon
 operator|=
 name|IconTheme
 operator|.
 name|JabRefIcons
 operator|.
 name|WWW
-operator|.
-name|getGraphicNode
-argument_list|()
 expr_stmt|;
-comment|//label.setToolTipText(Localization.lang("Open") + " ArXiv URL");
+comment|//icon.setToolTipText(Localization.lang("Open") + " ArXiv URL");
 name|TABLE_ICONS
 operator|.
 name|put
@@ -263,21 +279,18 @@ name|FieldName
 operator|.
 name|EPRINT
 argument_list|,
-name|label
+name|icon
 argument_list|)
 expr_stmt|;
-name|label
+name|icon
 operator|=
 name|IconTheme
 operator|.
 name|JabRefIcons
 operator|.
 name|DOI
-operator|.
-name|getGraphicNode
-argument_list|()
 expr_stmt|;
-comment|//label.setToolTipText(Localization.lang("Open") + " DOI " + Localization.lang("web link"));
+comment|//icon.setToolTipText(Localization.lang("Open") + " DOI " + Localization.lang("web link"));
 name|TABLE_ICONS
 operator|.
 name|put
@@ -286,21 +299,18 @@ name|FieldName
 operator|.
 name|DOI
 argument_list|,
-name|label
+name|icon
 argument_list|)
 expr_stmt|;
-name|label
+name|icon
 operator|=
 name|IconTheme
 operator|.
 name|JabRefIcons
 operator|.
 name|FILE
-operator|.
-name|getGraphicNode
-argument_list|()
 expr_stmt|;
-comment|//label.setToolTipText(Localization.lang("Open") + " PS");
+comment|//icon.setToolTipText(Localization.lang("Open") + " PS");
 name|TABLE_ICONS
 operator|.
 name|put
@@ -309,21 +319,18 @@ name|FieldName
 operator|.
 name|PS
 argument_list|,
-name|label
+name|icon
 argument_list|)
 expr_stmt|;
-name|label
+name|icon
 operator|=
 name|IconTheme
 operator|.
 name|JabRefIcons
 operator|.
 name|FOLDER
-operator|.
-name|getGraphicNode
-argument_list|()
 expr_stmt|;
-comment|//label.setToolTipText(Localization.lang("Open folder"));
+comment|//icon.setToolTipText(Localization.lang("Open folder"));
 name|TABLE_ICONS
 operator|.
 name|put
@@ -332,21 +339,18 @@ name|FieldName
 operator|.
 name|FOLDER
 argument_list|,
-name|label
+name|icon
 argument_list|)
 expr_stmt|;
-name|label
+name|icon
 operator|=
 name|IconTheme
 operator|.
 name|JabRefIcons
 operator|.
 name|FILE
-operator|.
-name|getGraphicNode
-argument_list|()
 expr_stmt|;
-comment|//label.setToolTipText(Localization.lang("Open file"));
+comment|//icon.setToolTipText(Localization.lang("Open file"));
 name|TABLE_ICONS
 operator|.
 name|put
@@ -355,7 +359,7 @@ name|FieldName
 operator|.
 name|FILE
 argument_list|,
-name|label
+name|icon
 argument_list|)
 expr_stmt|;
 for|for
@@ -369,17 +373,14 @@ name|getExternalFileTypeSelection
 argument_list|()
 control|)
 block|{
-name|label
+name|icon
 operator|=
 name|fileType
 operator|.
 name|getIcon
 argument_list|()
-operator|.
-name|getGraphicNode
-argument_list|()
 expr_stmt|;
-comment|//label.setToolTipText(Localization.lang("Open %0 file", fileType.getName()));
+comment|//icon.setToolTipText(Localization.lang("Open %0 file", fileType.getName()));
 name|TABLE_ICONS
 operator|.
 name|put
@@ -389,7 +390,7 @@ operator|.
 name|getName
 argument_list|()
 argument_list|,
-name|label
+name|icon
 argument_list|)
 expr_stmt|;
 block|}
@@ -406,17 +407,14 @@ argument_list|,
 name|undoManager
 argument_list|)
 decl_stmt|;
-name|label
+name|icon
 operator|=
 name|relevanceViewModel
 operator|.
 name|getIcon
 argument_list|()
-operator|.
-name|getGraphicNode
-argument_list|()
 expr_stmt|;
-comment|//label.setToolTipText(relevanceViewModel.getLocalization());
+comment|//icon.setToolTipText(relevanceViewModel.getLocalization());
 name|TABLE_ICONS
 operator|.
 name|put
@@ -428,7 +426,7 @@ operator|.
 name|getFieldName
 argument_list|()
 argument_list|,
-name|label
+name|icon
 argument_list|)
 expr_stmt|;
 name|SpecialFieldViewModel
@@ -444,17 +442,14 @@ argument_list|,
 name|undoManager
 argument_list|)
 decl_stmt|;
-name|label
+name|icon
 operator|=
 name|qualityViewModel
 operator|.
 name|getIcon
 argument_list|()
-operator|.
-name|getGraphicNode
-argument_list|()
 expr_stmt|;
-comment|//label.setToolTipText(qualityViewModel.getLocalization());
+comment|//icon.setToolTipText(qualityViewModel.getLocalization());
 name|TABLE_ICONS
 operator|.
 name|put
@@ -466,7 +461,7 @@ operator|.
 name|getFieldName
 argument_list|()
 argument_list|,
-name|label
+name|icon
 argument_list|)
 expr_stmt|;
 comment|// Ranking item in the menu uses one star
@@ -483,17 +478,14 @@ argument_list|,
 name|undoManager
 argument_list|)
 decl_stmt|;
-name|label
+name|icon
 operator|=
 name|rankViewModel
 operator|.
 name|getIcon
 argument_list|()
-operator|.
-name|getGraphicNode
-argument_list|()
 expr_stmt|;
-comment|//label.setToolTipText(rankViewModel.getLocalization());
+comment|//icon.setToolTipText(rankViewModel.getLocalization());
 name|TABLE_ICONS
 operator|.
 name|put
@@ -505,7 +497,7 @@ operator|.
 name|getFieldName
 argument_list|()
 argument_list|,
-name|label
+name|icon
 argument_list|)
 expr_stmt|;
 comment|// Priority icon used for the menu
@@ -522,17 +514,14 @@ argument_list|,
 name|undoManager
 argument_list|)
 decl_stmt|;
-name|label
+name|icon
 operator|=
 name|priorityViewModel
 operator|.
 name|getIcon
 argument_list|()
-operator|.
-name|getGraphicNode
-argument_list|()
 expr_stmt|;
-comment|//label.setToolTipText(priorityViewModel.getLocalization());
+comment|//icon.setToolTipText(priorityViewModel.getLocalization());
 name|TABLE_ICONS
 operator|.
 name|put
@@ -544,7 +533,7 @@ operator|.
 name|getFieldName
 argument_list|()
 argument_list|,
-name|label
+name|icon
 argument_list|)
 expr_stmt|;
 comment|// Read icon used for menu
@@ -561,17 +550,14 @@ argument_list|,
 name|undoManager
 argument_list|)
 decl_stmt|;
-name|label
+name|icon
 operator|=
 name|readViewModel
 operator|.
 name|getIcon
 argument_list|()
-operator|.
-name|getGraphicNode
-argument_list|()
 expr_stmt|;
-comment|//label.setToolTipText(readViewModel.getLocalization());
+comment|//icon.setToolTipText(readViewModel.getLocalization());
 name|TABLE_ICONS
 operator|.
 name|put
@@ -583,7 +569,7 @@ operator|.
 name|getFieldName
 argument_list|()
 argument_list|,
-name|label
+name|icon
 argument_list|)
 expr_stmt|;
 comment|// Print icon used for menu
@@ -600,17 +586,14 @@ argument_list|,
 name|undoManager
 argument_list|)
 decl_stmt|;
-name|label
+name|icon
 operator|=
 name|printedViewModel
 operator|.
 name|getIcon
 argument_list|()
-operator|.
-name|getGraphicNode
-argument_list|()
 expr_stmt|;
-comment|//label.setToolTipText(printedViewModel.getLocalization());
+comment|//icon.setToolTipText(printedViewModel.getLocalization());
 name|TABLE_ICONS
 operator|.
 name|put
@@ -622,7 +605,7 @@ operator|.
 name|getFieldName
 argument_list|()
 argument_list|,
-name|label
+name|icon
 argument_list|)
 expr_stmt|;
 block|}
@@ -635,8 +618,22 @@ name|String
 name|fieldType
 parameter_list|)
 block|{
-name|Node
-name|label
+if|if
+condition|(
+name|StringUtil
+operator|.
+name|isBlank
+argument_list|(
+name|fieldType
+argument_list|)
+condition|)
+block|{
+return|return
+literal|null
+return|;
+block|}
+name|JabRefIcon
+name|icon
 init|=
 name|TABLE_ICONS
 operator|.
@@ -647,7 +644,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|label
+name|icon
 operator|==
 literal|null
 condition|)
@@ -659,8 +656,12 @@ return|;
 block|}
 else|else
 block|{
+comment|// node should be generated for each call, as nodes can be added to the scene graph only once
 return|return
-name|label
+name|icon
+operator|.
+name|getGraphicNode
+argument_list|()
 return|;
 block|}
 block|}
