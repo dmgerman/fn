@@ -463,7 +463,7 @@ operator|.
 name|size
 argument_list|()
 operator|==
-literal|21
+literal|18
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -474,7 +474,7 @@ name|lines
 operator|.
 name|get
 argument_list|(
-literal|7
+literal|6
 argument_list|)
 operator|.
 name|trim
@@ -582,7 +582,7 @@ operator|.
 name|size
 argument_list|()
 operator|==
-literal|39
+literal|36
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -593,7 +593,7 @@ name|lines
 operator|.
 name|get
 argument_list|(
-literal|7
+literal|6
 argument_list|)
 operator|.
 name|trim
@@ -608,7 +608,7 @@ name|lines
 operator|.
 name|get
 argument_list|(
-literal|20
+literal|19
 argument_list|)
 operator|.
 name|trim
@@ -766,7 +766,7 @@ operator|.
 name|size
 argument_list|()
 operator|==
-literal|21
+literal|18
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -777,7 +777,7 @@ name|linesTuring
 operator|.
 name|get
 argument_list|(
-literal|7
+literal|6
 argument_list|)
 operator|.
 name|trim
@@ -829,7 +829,7 @@ operator|.
 name|size
 argument_list|()
 operator|==
-literal|26
+literal|23
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -840,7 +840,7 @@ name|linesArmbrust
 operator|.
 name|get
 argument_list|(
-literal|7
+literal|6
 argument_list|)
 operator|.
 name|trim
