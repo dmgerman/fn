@@ -6365,7 +6365,7 @@ argument_list|()
 operator|.
 name|withEncoding
 argument_list|(
-name|enc
+name|encoding
 argument_list|)
 operator|.
 name|withSaveType

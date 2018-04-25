@@ -80,16 +80,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|JOptionPane
-import|;
-end_import
-
-begin_import
-import|import
 name|javafx
 operator|.
 name|stage
@@ -882,11 +872,25 @@ name|errorMessage
 argument_list|)
 expr_stmt|;
 comment|// Need to warn the user that saving failed!
-name|JOptionPane
+name|DefaultTaskExecutor
 operator|.
-name|showMessageDialog
+name|runInJavaFXThread
 argument_list|(
+parameter_list|()
+lambda|->
 name|frame
+operator|.
+name|getDialogService
+argument_list|()
+operator|.
+name|showErrorDialogAndWait
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Save library"
+argument_list|)
 argument_list|,
 name|Localization
 operator|.
@@ -898,17 +902,7 @@ operator|+
 literal|"\n"
 operator|+
 name|errorMessage
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Save library"
 argument_list|)
-argument_list|,
-name|JOptionPane
-operator|.
-name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
 block|}

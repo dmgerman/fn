@@ -246,11 +246,10 @@ expr_stmt|;
 name|OpenOfficePreferences
 name|openOfficePreferences
 init|=
-operator|new
-name|OpenOfficePreferences
-argument_list|(
 name|preferences
-argument_list|)
+operator|.
+name|getOpenOfficePreferences
+argument_list|()
 decl_stmt|;
 name|Stream
 operator|.
@@ -332,7 +331,7 @@ if|if
 condition|(
 name|openOfficePreferences
 operator|.
-name|showPanel
+name|getShowPanel
 argument_list|()
 condition|)
 block|{
