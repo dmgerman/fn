@@ -144,16 +144,6 @@ name|org
 operator|.
 name|jabref
 operator|.
-name|JabRefMain
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
 name|logic
 operator|.
 name|importer
@@ -548,7 +538,7 @@ name|Paths
 operator|.
 name|get
 argument_list|(
-name|JabRefMain
+name|OOBibStyleTest
 operator|.
 name|class
 operator|.
@@ -1244,6 +1234,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * In IntelliJ: When running this test, ensure that the working directory is<code>%MODULE_WORKING_DIR%"</code>      */
 annotation|@
 name|Test
 DECL|method|testGetCitationMarker ()
@@ -1445,6 +1436,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * In IntelliJ: When running this test, ensure that the working directory is<code>%MODULE_WORKING_DIR%"</code>      */
 annotation|@
 name|Test
 DECL|method|testLayout ()

@@ -171,7 +171,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Class for finding PDF URLs for entries on IEEE  * Will first look for URLs of the type http://ieeexplore.ieee.org/stamp/stamp.jsp?[tp=&]arnumber=...  * If not found, will resolve the DOI, if it starts with 10.1109, and try to find a similar link on the HTML page  */
+comment|/**  * Class for finding PDF URLs for entries on IEEE  * Will first look for URLs of the type https://ieeexplore.ieee.org/stamp/stamp.jsp?[tp=&]arnumber=...  * If not found, will resolve the DOI, if it starts with 10.1109, and try to find a similar link on the HTML page  */
 end_comment
 
 begin_class
@@ -198,6 +198,15 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+DECL|field|STAMP_BASE_STRING_DOCUMENT
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|STAMP_BASE_STRING_DOCUMENT
+init|=
+literal|"/stamp/stamp.jsp?tp=&arnumber="
+decl_stmt|;
 DECL|field|STAMP_PATTERN
 specifier|private
 specifier|static
@@ -212,6 +221,20 @@ argument_list|(
 literal|"(/stamp/stamp.jsp\\?t?p?=?&?arnumber=[0-9]+)"
 argument_list|)
 decl_stmt|;
+DECL|field|DOCUMENT_PATTERN
+specifier|private
+specifier|static
+specifier|final
+name|Pattern
+name|DOCUMENT_PATTERN
+init|=
+name|Pattern
+operator|.
+name|compile
+argument_list|(
+literal|"document/([0-9]+)/"
+argument_list|)
+decl_stmt|;
 DECL|field|PDF_PATTERN
 specifier|private
 specifier|static
@@ -223,7 +246,7 @@ name|Pattern
 operator|.
 name|compile
 argument_list|(
-literal|"\"(http://ieeexplore.ieee.org/ielx[0-9/]+\\.pdf[^\"]+)\""
+literal|"\"(https://ieeexplore.ieee.org/ielx[0-9/]+\\.pdf[^\"]+)\""
 argument_list|)
 decl_stmt|;
 DECL|field|IEEE_DOI
@@ -242,7 +265,7 @@ specifier|final
 name|String
 name|BASE_URL
 init|=
-literal|"http://ieeexplore.ieee.org"
+literal|"https://ieeexplore.ieee.org"
 decl_stmt|;
 annotation|@
 name|Override
@@ -296,9 +319,47 @@ name|isPresent
 argument_list|()
 condition|)
 block|{
-comment|// Is the URL a direct link to IEEE?
 name|Matcher
+name|documentUrlMatcher
+init|=
+name|DOCUMENT_PATTERN
+operator|.
 name|matcher
+argument_list|(
+name|urlString
+operator|.
+name|get
+argument_list|()
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|documentUrlMatcher
+operator|.
+name|find
+argument_list|()
+condition|)
+block|{
+name|String
+name|docId
+init|=
+name|documentUrlMatcher
+operator|.
+name|group
+argument_list|(
+literal|1
+argument_list|)
+decl_stmt|;
+name|stampString
+operator|=
+name|STAMP_BASE_STRING_DOCUMENT
+operator|+
+name|docId
+expr_stmt|;
+block|}
+comment|//You get this url if you export bibtex from IEEE
+name|Matcher
+name|stampMatcher
 init|=
 name|STAMP_PATTERN
 operator|.
@@ -312,7 +373,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|matcher
+name|stampMatcher
 operator|.
 name|find
 argument_list|()
@@ -321,7 +382,7 @@ block|{
 comment|// Found it
 name|stampString
 operator|=
-name|matcher
+name|stampMatcher
 operator|.
 name|group
 argument_list|(
@@ -394,8 +455,8 @@ argument_list|()
 condition|)
 block|{
 comment|// Download the HTML page from IEEE
-name|String
-name|resolvedDOIPage
+name|URLDownload
+name|urlDownload
 init|=
 operator|new
 name|URLDownload
@@ -414,6 +475,17 @@ operator|.
 name|toURL
 argument_list|()
 argument_list|)
+decl_stmt|;
+comment|//We don't need to modify the cookies, but we need support for them
+name|urlDownload
+operator|.
+name|getCookieFromUrl
+argument_list|()
+expr_stmt|;
+name|String
+name|resolvedDOIPage
+init|=
+name|urlDownload
 operator|.
 name|asString
 argument_list|()
@@ -467,8 +539,8 @@ argument_list|()
 return|;
 block|}
 comment|// Download the HTML page containing a frame with the PDF
-name|String
-name|framePage
+name|URLDownload
+name|urlDownload
 init|=
 operator|new
 name|URLDownload
@@ -477,6 +549,17 @@ name|BASE_URL
 operator|+
 name|stampString
 argument_list|)
+decl_stmt|;
+comment|//We don't need to modify the cookies, but we need support for them
+name|urlDownload
+operator|.
+name|getCookieFromUrl
+argument_list|()
+expr_stmt|;
+name|String
+name|framePage
+init|=
+name|urlDownload
 operator|.
 name|asString
 argument_list|()

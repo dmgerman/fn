@@ -468,12 +468,10 @@ decl_stmt|;
 name|SavePreferences
 name|savePreferences
 init|=
-name|SavePreferences
+name|prefs
 operator|.
 name|loadForExportFromPreferences
-argument_list|(
-name|prefs
-argument_list|)
+argument_list|()
 decl_stmt|;
 while|while
 condition|(

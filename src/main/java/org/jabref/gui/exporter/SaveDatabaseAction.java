@@ -1147,14 +1147,12 @@ block|{
 name|SavePreferences
 name|prefs
 init|=
-name|SavePreferences
-operator|.
-name|loadForSaveFromPreferences
-argument_list|(
 name|Globals
 operator|.
 name|prefs
-argument_list|)
+operator|.
+name|loadForSaveFromPreferences
+argument_list|()
 operator|.
 name|withEncoding
 argument_list|(

@@ -931,7 +931,9 @@ index|[]
 block|{
 operator|new
 name|ModsImporter
-argument_list|()
+argument_list|(
+name|importFormatPreferences
+argument_list|)
 block|}
 argument_list|,
 operator|new
