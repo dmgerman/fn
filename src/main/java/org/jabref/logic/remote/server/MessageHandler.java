@@ -22,11 +22,12 @@ specifier|public
 interface|interface
 name|MessageHandler
 block|{
-DECL|method|handleMessage (String message)
+DECL|method|handleCommandLineArguments (String[] message)
 name|void
-name|handleMessage
+name|handleCommandLineArguments
 parameter_list|(
 name|String
+index|[]
 name|message
 parameter_list|)
 function_decl|;
