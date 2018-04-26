@@ -6708,6 +6708,9 @@ operator|+
 literal|"</dd>__NEWLINE__<p></p></font>"
 argument_list|)
 expr_stmt|;
+name|setLanguageDependentDefaultValues
+argument_list|()
+expr_stmt|;
 block|}
 DECL|method|getInstance ()
 specifier|public

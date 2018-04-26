@@ -12,6 +12,26 @@ name|remote
 package|;
 end_package
 
+begin_import
+import|import
+name|java
+operator|.
+name|net
+operator|.
+name|InetAddress
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|net
+operator|.
+name|UnknownHostException
+import|;
+end_import
+
 begin_comment
 comment|/**  * Place for handling the preferences for the remote communication  */
 end_comment
@@ -122,6 +142,25 @@ name|getPort
 argument_list|()
 operator|!=
 name|otherPort
+return|;
+block|}
+comment|/**      * Gets the IP address where the remote server is listening.      */
+DECL|method|getIpAddress ()
+specifier|public
+specifier|static
+name|InetAddress
+name|getIpAddress
+parameter_list|()
+throws|throws
+name|UnknownHostException
+block|{
+return|return
+name|InetAddress
+operator|.
+name|getByName
+argument_list|(
+literal|"localhost"
+argument_list|)
 return|;
 block|}
 block|}

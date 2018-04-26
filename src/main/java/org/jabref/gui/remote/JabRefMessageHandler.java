@@ -18,6 +18,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Arrays
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|List
 import|;
 end_import
@@ -84,12 +94,13 @@ name|MessageHandler
 block|{
 annotation|@
 name|Override
-DECL|method|handleMessage (String message)
+DECL|method|handleCommandLineArguments (String[] message)
 specifier|public
 name|void
-name|handleMessage
+name|handleCommandLineArguments
 parameter_list|(
 name|String
+index|[]
 name|message
 parameter_list|)
 block|{
@@ -100,11 +111,6 @@ operator|new
 name|ArgumentProcessor
 argument_list|(
 name|message
-operator|.
-name|split
-argument_list|(
-literal|"\n"
-argument_list|)
 argument_list|,
 name|ArgumentProcessor
 operator|.
@@ -130,7 +136,12 @@ name|IllegalStateException
 argument_list|(
 literal|"Could not start JabRef with arguments "
 operator|+
+name|Arrays
+operator|.
+name|toString
+argument_list|(
 name|message
+argument_list|)
 argument_list|)
 throw|;
 block|}
