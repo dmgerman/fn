@@ -16,17 +16,31 @@ end_package
 
 begin_import
 import|import
-name|org
+name|java
 operator|.
-name|apache
+name|net
 operator|.
-name|http
+name|MalformedURLException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
 operator|.
-name|client
+name|net
 operator|.
-name|utils
+name|URISyntaxException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
 operator|.
-name|URIBuilder
+name|net
+operator|.
+name|URL
 import|;
 end_import
 
@@ -132,31 +146,17 @@ end_import
 
 begin_import
 import|import
-name|java
+name|org
 operator|.
-name|net
+name|apache
 operator|.
-name|MalformedURLException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
+name|http
 operator|.
-name|net
+name|client
 operator|.
-name|URISyntaxException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
+name|utils
 operator|.
-name|net
-operator|.
-name|URL
+name|URIBuilder
 import|;
 end_import
 
@@ -236,12 +236,15 @@ name|MalformedURLException
 throws|,
 name|FetcherException
 block|{
-comment|// Add "rfc" prefix if user's search entry was only digits
+comment|// Add "rfc" prefix if user's search entry was numerical
 name|identifier
 operator|=
 operator|(
 operator|!
 name|identifier
+operator|.
+name|toLowerCase
+argument_list|()
 operator|.
 name|startsWith
 argument_list|(
