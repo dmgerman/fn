@@ -80,7 +80,6 @@ end_import
 
 begin_class
 DECL|class|RISImporterTestFiles
-specifier|public
 class|class
 name|RISImporterTestFiles
 block|{
@@ -147,7 +146,6 @@ argument_list|(
 literal|"fileNames"
 argument_list|)
 DECL|method|testIsRecognizedFormat (String fileName)
-specifier|public
 name|void
 name|testIsRecognizedFormat
 parameter_list|(
@@ -177,7 +175,6 @@ argument_list|(
 literal|"fileNames"
 argument_list|)
 DECL|method|testImportEntries (String fileName)
-specifier|public
 name|void
 name|testImportEntries
 parameter_list|(

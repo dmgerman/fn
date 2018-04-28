@@ -70,6 +70,20 @@ name|junit
 operator|.
 name|jupiter
 operator|.
+name|api
+operator|.
+name|BeforeEach
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|jupiter
+operator|.
 name|params
 operator|.
 name|ParameterizedTest
@@ -114,9 +128,20 @@ name|mock
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|mockito
+operator|.
+name|Mockito
+operator|.
+name|when
+import|;
+end_import
+
 begin_class
 DECL|class|ModsImporterTestFiles
-specifier|public
 class|class
 name|ModsImporterTestFiles
 block|{
@@ -128,6 +153,11 @@ name|String
 name|FILE_ENDING
 init|=
 literal|".xml"
+decl_stmt|;
+DECL|field|importFormatPreferences
+specifier|private
+name|ImportFormatPreferences
+name|importFormatPreferences
 decl_stmt|;
 DECL|method|fileNames ()
 specifier|private
@@ -176,6 +206,40 @@ argument_list|()
 return|;
 block|}
 annotation|@
+name|BeforeEach
+DECL|method|setUp ()
+name|void
+name|setUp
+parameter_list|()
+block|{
+name|importFormatPreferences
+operator|=
+name|mock
+argument_list|(
+name|ImportFormatPreferences
+operator|.
+name|class
+argument_list|,
+name|Answers
+operator|.
+name|RETURNS_DEEP_STUBS
+argument_list|)
+expr_stmt|;
+name|when
+argument_list|(
+name|importFormatPreferences
+operator|.
+name|getKeywordSeparator
+argument_list|()
+argument_list|)
+operator|.
+name|thenReturn
+argument_list|(
+literal|','
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
 name|ParameterizedTest
 annotation|@
 name|MethodSource
@@ -183,7 +247,6 @@ argument_list|(
 literal|"fileNames"
 argument_list|)
 DECL|method|testIsRecognizedFormat (String fileName)
-specifier|public
 name|void
 name|testIsRecognizedFormat
 parameter_list|(
@@ -200,16 +263,7 @@ argument_list|(
 operator|new
 name|ModsImporter
 argument_list|(
-name|mock
-argument_list|(
-name|ImportFormatPreferences
-operator|.
-name|class
-argument_list|,
-name|Answers
-operator|.
-name|RETURNS_DEEP_STUBS
-argument_list|)
+name|importFormatPreferences
 argument_list|)
 argument_list|,
 name|fileName
@@ -224,7 +278,6 @@ argument_list|(
 literal|"fileNames"
 argument_list|)
 DECL|method|testImportEntries (String fileName)
-specifier|public
 name|void
 name|testImportEntries
 parameter_list|(
@@ -241,16 +294,7 @@ argument_list|(
 operator|new
 name|ModsImporter
 argument_list|(
-name|mock
-argument_list|(
-name|ImportFormatPreferences
-operator|.
-name|class
-argument_list|,
-name|Answers
-operator|.
-name|RETURNS_DEEP_STUBS
-argument_list|)
+name|importFormatPreferences
 argument_list|)
 argument_list|,
 name|fileName

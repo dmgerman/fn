@@ -15,22 +15,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|jupiter
-operator|.
-name|api
-operator|.
-name|Assertions
-operator|.
-name|*
-import|;
-end_import
-
-begin_import
 import|import
 name|org
 operator|.
@@ -44,13 +28,28 @@ name|Test
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
+operator|.
+name|assertEquals
+import|;
+end_import
+
 begin_comment
 comment|/**  * Test case  that verifies the functionalities of the  * formater AuthorLastFirstAbbreviator.  */
 end_comment
 
 begin_class
 DECL|class|AuthorLastFirstAbbreviatorTester
-specifier|public
 class|class
 name|AuthorLastFirstAbbreviatorTester
 block|{
@@ -58,15 +57,12 @@ comment|/**      * Verifies the Abbreviation of one single author with a simple 
 annotation|@
 name|Test
 DECL|method|testOneAuthorSimpleName ()
-specifier|public
 name|void
 name|testOneAuthorSimpleName
 parameter_list|()
 block|{
 name|assertEquals
 argument_list|(
-literal|"Abbreviator Test"
-argument_list|,
 literal|"Lastname, N."
 argument_list|,
 name|abbreviate
@@ -80,15 +76,12 @@ comment|/**      * Verifies the Abbreviation of one single author with a common 
 annotation|@
 name|Test
 DECL|method|testOneAuthorCommonName ()
-specifier|public
 name|void
 name|testOneAuthorCommonName
 parameter_list|()
 block|{
 name|assertEquals
 argument_list|(
-literal|"Abbreviator Test"
-argument_list|,
 literal|"Lastname, N. M."
 argument_list|,
 name|abbreviate
@@ -102,7 +95,6 @@ comment|/**      * Verifies the Abbreviation of two single with a common name.  
 annotation|@
 name|Test
 DECL|method|testTwoAuthorsCommonName ()
-specifier|public
 name|void
 name|testTwoAuthorsCommonName
 parameter_list|()
@@ -122,8 +114,6 @@ literal|"Lastname, N. M. and Sobrenome, N. N."
 decl_stmt|;
 name|assertEquals
 argument_list|(
-literal|"Abbreviator Test"
-argument_list|,
 name|expectedResult
 argument_list|,
 name|result
@@ -133,7 +123,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testJrAuthor ()
-specifier|public
 name|void
 name|testJrAuthor
 parameter_list|()
@@ -152,7 +141,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testFormat ()
-specifier|public
 name|void
 name|testFormat
 parameter_list|()
@@ -199,7 +187,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|abbreviate (String name)
-specifier|protected
+specifier|private
 name|String
 name|abbreviate
 parameter_list|(

@@ -170,7 +170,6 @@ end_import
 
 begin_class
 DECL|class|ImportFormatReaderTestParameterless
-specifier|public
 class|class
 name|ImportFormatReaderTestParameterless
 block|{
@@ -192,7 +191,6 @@ decl_stmt|;
 annotation|@
 name|BeforeEach
 DECL|method|setUp ()
-specifier|public
 name|void
 name|setUp
 parameter_list|()
@@ -252,7 +250,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|importUnknownFormatThrowsExceptionIfNoMatchingImporterWasFound ()
-specifier|public
 name|void
 name|importUnknownFormatThrowsExceptionIfNoMatchingImporterWasFound
 parameter_list|()
@@ -281,7 +278,7 @@ argument_list|)
 decl_stmt|;
 name|assertThrows
 argument_list|(
-name|NullPointerException
+name|ImportException
 operator|.
 name|class
 argument_list|,
@@ -300,10 +297,9 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testNullImportUnknownFormatPath ()
-specifier|public
+DECL|method|importUnknownFormatThrowsExceptionIfPathIsNull ()
 name|void
-name|testNullImportUnknownFormatPath
+name|importUnknownFormatThrowsExceptionIfPathIsNull
 parameter_list|()
 throws|throws
 name|Exception
@@ -329,10 +325,9 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testNullImportUnknownFormatString ()
-specifier|public
+DECL|method|importUnknownFormatThrowsExceptionIfDataIsNull ()
 name|void
-name|testNullImportUnknownFormatString
+name|importUnknownFormatThrowsExceptionIfDataIsNull
 parameter_list|()
 throws|throws
 name|Exception
@@ -357,7 +352,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|importFromFileWithUnknownFormatThrowsException ()
-specifier|public
 name|void
 name|importFromFileWithUnknownFormatThrowsException
 parameter_list|()
@@ -366,7 +360,7 @@ name|Exception
 block|{
 name|assertThrows
 argument_list|(
-name|NullPointerException
+name|ImportException
 operator|.
 name|class
 argument_list|,

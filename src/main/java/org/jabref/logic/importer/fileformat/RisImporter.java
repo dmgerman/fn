@@ -339,11 +339,8 @@ argument_list|<>
 argument_list|()
 decl_stmt|;
 comment|//use optional here, so that no exception will be thrown if the file is empty
-name|Optional
-argument_list|<
 name|String
-argument_list|>
-name|OptionalLines
+name|linesAsString
 init|=
 name|reader
 operator|.
@@ -364,21 +361,11 @@ literal|"\n"
 operator|+
 name|nextline
 argument_list|)
-decl_stmt|;
-name|String
-name|linesAsString
-init|=
-name|OptionalLines
 operator|.
-name|isPresent
-argument_list|()
-condition|?
-name|OptionalLines
-operator|.
-name|get
-argument_list|()
-else|:
+name|orElse
+argument_list|(
 literal|""
+argument_list|)
 decl_stmt|;
 name|String
 index|[]
@@ -1944,7 +1931,9 @@ name|comment
 operator|=
 name|comment
 operator|+
-literal|" "
+name|OS
+operator|.
+name|NEWLINE
 expr_stmt|;
 block|}
 name|comment
@@ -2461,14 +2450,9 @@ name|month
 operator|.
 name|ifPresent
 argument_list|(
-name|parsedMonth
-lambda|->
 name|entry
-operator|.
+operator|::
 name|setMonth
-argument_list|(
-name|parsedMonth
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|bibitems

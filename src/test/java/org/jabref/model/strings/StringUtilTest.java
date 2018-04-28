@@ -166,14 +166,12 @@ end_import
 
 begin_class
 DECL|class|StringUtilTest
-specifier|public
 class|class
 name|StringUtilTest
 block|{
 annotation|@
 name|Test
 DECL|method|StringUtilClassIsSmall ()
-specifier|public
 name|void
 name|StringUtilClassIsSmall
 parameter_list|()
@@ -231,9 +229,13 @@ name|assertTrue
 argument_list|(
 name|lineCount
 operator|<=
-literal|722
+literal|725
 argument_list|,
-literal|"StringUtil increased in size. "
+literal|"StringUtil increased in size to "
+operator|+
+name|lineCount
+operator|+
+literal|". "
 operator|+
 literal|"We try to keep this class as small as possible. "
 operator|+
@@ -244,7 +246,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testBooleanToBinaryString ()
-specifier|public
 name|void
 name|testBooleanToBinaryString
 parameter_list|()
@@ -277,7 +278,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testQuoteSimple ()
-specifier|public
 name|void
 name|testQuoteSimple
 parameter_list|()
@@ -302,7 +302,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testQuoteNullQuotation ()
-specifier|public
 name|void
 name|testQuoteNullQuotation
 parameter_list|()
@@ -327,7 +326,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testQuoteNullString ()
-specifier|public
 name|void
 name|testQuoteNullString
 parameter_list|()
@@ -352,7 +350,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testQuoteQuotationCharacter ()
-specifier|public
 name|void
 name|testQuoteQuotationCharacter
 parameter_list|()
@@ -377,7 +374,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testQuoteMoreComplicated ()
-specifier|public
 name|void
 name|testQuoteMoreComplicated
 parameter_list|()
@@ -402,7 +398,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testUnifyLineBreaks ()
-specifier|public
 name|void
 name|testUnifyLineBreaks
 parameter_list|()
@@ -469,7 +464,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testGetCorrectFileName ()
-specifier|public
 name|void
 name|testGetCorrectFileName
 parameter_list|()
@@ -576,7 +570,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testQuoteForHTML ()
-specifier|public
 name|void
 name|testQuoteForHTML
 parameter_list|()
@@ -609,7 +602,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testRemoveBracesAroundCapitals ()
-specifier|public
 name|void
 name|testRemoveBracesAroundCapitals
 parameter_list|()
@@ -666,7 +658,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testPutBracesAroundCapitals ()
-specifier|public
 name|void
 name|testPutBracesAroundCapitals
 parameter_list|()
@@ -735,7 +726,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testShaveString ()
-specifier|public
 name|void
 name|testShaveString
 parameter_list|()
@@ -840,7 +830,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testJoin ()
-specifier|public
 name|void
 name|testJoin
 parameter_list|()
@@ -961,7 +950,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testStripBrackets ()
-specifier|public
 name|void
 name|testStripBrackets
 parameter_list|()
@@ -1066,7 +1054,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testGetPart ()
-specifier|public
 name|void
 name|testGetPart
 parameter_list|()
@@ -1076,7 +1063,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testFindEncodingsForString ()
-specifier|public
 name|void
 name|testFindEncodingsForString
 parameter_list|()
@@ -1086,7 +1072,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testWrap ()
-specifier|public
 name|void
 name|testWrap
 parameter_list|()
@@ -1280,7 +1265,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testDecodeStringDoubleArray ()
-specifier|public
 name|void
 name|testDecodeStringDoubleArray
 parameter_list|()
@@ -1375,7 +1359,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testIsInCurlyBrackets ()
-specifier|public
 name|void
 name|testIsInCurlyBrackets
 parameter_list|()
@@ -1484,7 +1467,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testIsInSquareBrackets ()
-specifier|public
 name|void
 name|testIsInSquareBrackets
 parameter_list|()
@@ -1563,7 +1545,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testIsInCitationMarks ()
-specifier|public
 name|void
 name|testIsInCitationMarks
 parameter_list|()
@@ -1632,7 +1613,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testIntValueOfSingleDigit ()
-specifier|public
 name|void
 name|testIntValueOfSingleDigit
 parameter_list|()
@@ -1677,7 +1657,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testIntValueOfLongString ()
-specifier|public
 name|void
 name|testIntValueOfLongString
 parameter_list|()
@@ -1698,7 +1677,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testIntValueOfStartWithZeros ()
-specifier|public
 name|void
 name|testIntValueOfStartWithZeros
 parameter_list|()
@@ -1719,7 +1697,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testIntValueOfExceptionIfStringContainsLetter ()
-specifier|public
 name|void
 name|testIntValueOfExceptionIfStringContainsLetter
 parameter_list|()
@@ -1744,7 +1721,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testIntValueOfExceptionIfStringNull ()
-specifier|public
 name|void
 name|testIntValueOfExceptionIfStringNull
 parameter_list|()
@@ -1769,7 +1745,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testIntValueOfExceptionfIfStringEmpty ()
-specifier|public
 name|void
 name|testIntValueOfExceptionfIfStringEmpty
 parameter_list|()
@@ -1794,7 +1769,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testIntValueOfWithNullSingleDigit ()
-specifier|public
 name|void
 name|testIntValueOfWithNullSingleDigit
 parameter_list|()
@@ -1805,12 +1779,7 @@ name|Optional
 operator|.
 name|of
 argument_list|(
-name|Integer
-operator|.
-name|valueOf
-argument_list|(
 literal|1
-argument_list|)
 argument_list|)
 argument_list|,
 name|StringUtil
@@ -1827,12 +1796,7 @@ name|Optional
 operator|.
 name|of
 argument_list|(
-name|Integer
-operator|.
-name|valueOf
-argument_list|(
 literal|2
-argument_list|)
 argument_list|)
 argument_list|,
 name|StringUtil
@@ -1849,12 +1813,7 @@ name|Optional
 operator|.
 name|of
 argument_list|(
-name|Integer
-operator|.
-name|valueOf
-argument_list|(
 literal|8
-argument_list|)
 argument_list|)
 argument_list|,
 name|StringUtil
@@ -1869,7 +1828,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testIntValueOfWithNullLongString ()
-specifier|public
 name|void
 name|testIntValueOfWithNullLongString
 parameter_list|()
@@ -1880,12 +1838,7 @@ name|Optional
 operator|.
 name|of
 argument_list|(
-name|Integer
-operator|.
-name|valueOf
-argument_list|(
 literal|1234567890
-argument_list|)
 argument_list|)
 argument_list|,
 name|StringUtil
@@ -1900,7 +1853,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testIntValueOfWithNullStartWithZeros ()
-specifier|public
 name|void
 name|testIntValueOfWithNullStartWithZeros
 parameter_list|()
@@ -1911,12 +1863,7 @@ name|Optional
 operator|.
 name|of
 argument_list|(
-name|Integer
-operator|.
-name|valueOf
-argument_list|(
 literal|1234
-argument_list|)
 argument_list|)
 argument_list|,
 name|StringUtil
@@ -1931,7 +1878,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testIntValueOfWithNullExceptionIfStringContainsLetter ()
-specifier|public
 name|void
 name|testIntValueOfWithNullExceptionIfStringContainsLetter
 parameter_list|()
@@ -1955,7 +1901,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testIntValueOfWithNullExceptionIfStringNull ()
-specifier|public
 name|void
 name|testIntValueOfWithNullExceptionIfStringNull
 parameter_list|()
@@ -1979,7 +1924,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testIntValueOfWithNullExceptionfIfStringEmpty ()
-specifier|public
 name|void
 name|testIntValueOfWithNullExceptionfIfStringEmpty
 parameter_list|()
@@ -2003,7 +1947,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testLimitStringLengthShort ()
-specifier|public
 name|void
 name|testLimitStringLengthShort
 parameter_list|()
@@ -2026,7 +1969,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testLimitStringLengthLimiting ()
-specifier|public
 name|void
 name|testLimitStringLengthLimiting
 parameter_list|()
@@ -2066,7 +2008,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testLimitStringLengthNullInput ()
-specifier|public
 name|void
 name|testLimitStringLengthNullInput
 parameter_list|()
@@ -2089,7 +2030,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testReplaceSpecialCharacters ()
-specifier|public
 name|void
 name|testReplaceSpecialCharacters
 parameter_list|()
@@ -2122,7 +2062,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testRepeatSpaces ()
-specifier|public
 name|void
 name|testRepeatSpaces
 parameter_list|()
@@ -2167,7 +2106,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testRepeat ()
-specifier|public
 name|void
 name|testRepeat
 parameter_list|()
@@ -2218,7 +2156,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testBoldHTML ()
-specifier|public
 name|void
 name|testBoldHTML
 parameter_list|()
@@ -2239,7 +2176,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testBoldHTMLReturnsOriginalTextIfNonNull ()
-specifier|public
 name|void
 name|testBoldHTMLReturnsOriginalTextIfNonNull
 parameter_list|()
@@ -2262,7 +2198,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testBoldHTMLReturnsAlternativeTextIfNull ()
-specifier|public
 name|void
 name|testBoldHTMLReturnsAlternativeTextIfNull
 parameter_list|()
@@ -2285,7 +2220,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testUnquote ()
-specifier|public
 name|void
 name|testUnquote
 parameter_list|()
@@ -2336,7 +2270,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testCapitalizeFirst ()
-specifier|public
 name|void
 name|testCapitalizeFirst
 parameter_list|()
