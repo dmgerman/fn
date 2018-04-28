@@ -94,6 +94,11 @@ name|Color
 name|color
 parameter_list|)
 function_decl|;
+DECL|method|name ()
+name|String
+name|name
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

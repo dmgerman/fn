@@ -1038,7 +1038,27 @@ return|;
 block|}
 else|else
 block|{
-comment|// No file matched the name, or we did not know the file type.
+comment|// No file matched the name, try to open it directly using the given app
+if|if
+condition|(
+name|type
+operator|.
+name|isPresent
+argument_list|()
+condition|)
+block|{
+name|openExternalFilePlatformIndependent
+argument_list|(
+name|type
+argument_list|,
+name|link
+argument_list|)
+expr_stmt|;
+return|return
+literal|true
+return|;
+block|}
+comment|// Run out of ideas what to do...
 return|return
 literal|false
 return|;

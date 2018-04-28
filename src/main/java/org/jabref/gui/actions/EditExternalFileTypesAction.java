@@ -26,10 +26,6 @@ name|ExternalFileTypeEditor
 import|;
 end_import
 
-begin_comment
-comment|//TODO: DOES NOT SHOW UP
-end_comment
-
 begin_class
 DECL|class|EditExternalFileTypesAction
 specifier|public
@@ -62,18 +58,14 @@ name|editor
 operator|=
 operator|new
 name|ExternalFileTypeEditor
-argument_list|(
-literal|null
-argument_list|)
-expr_stmt|;
-name|editor
-operator|.
-name|setVisible
-argument_list|(
-literal|true
-argument_list|)
+argument_list|()
 expr_stmt|;
 block|}
+name|editor
+operator|.
+name|show
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 end_class

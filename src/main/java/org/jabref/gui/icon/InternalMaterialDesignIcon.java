@@ -553,6 +553,18 @@ name|icons
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
+DECL|method|name ()
+specifier|public
+name|String
+name|name
+parameter_list|()
+block|{
+return|return
+name|unicode
+return|;
+block|}
 DECL|method|getCode ()
 specifier|public
 name|String
@@ -563,18 +575,6 @@ return|return
 name|this
 operator|.
 name|unicode
-return|;
-block|}
-annotation|@
-name|Override
-DECL|method|name ()
-specifier|public
-name|String
-name|name
-parameter_list|()
-block|{
-return|return
-literal|null
 return|;
 block|}
 annotation|@

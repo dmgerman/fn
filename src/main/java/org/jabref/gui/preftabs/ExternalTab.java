@@ -433,9 +433,7 @@ argument_list|(
 name|ExternalFileTypeEditor
 operator|.
 name|getAction
-argument_list|(
-name|frame
-argument_list|)
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|defaultConsole
