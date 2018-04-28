@@ -237,7 +237,12 @@ throws|,
 name|FetcherException
 block|{
 comment|// Add "rfc" prefix if user's search entry was numerical
+name|String
+name|prefixedIdentifier
+init|=
 name|identifier
+decl_stmt|;
+name|prefixedIdentifier
 operator|=
 operator|(
 operator|!
@@ -254,9 +259,9 @@ operator|)
 condition|?
 literal|"rfc"
 operator|+
-name|identifier
+name|prefixedIdentifier
 else|:
-name|identifier
+name|prefixedIdentifier
 expr_stmt|;
 name|URIBuilder
 name|uriBuilder
@@ -266,7 +271,7 @@ name|URIBuilder
 argument_list|(
 literal|"https://datatracker.ietf.org/doc/"
 operator|+
-name|identifier
+name|prefixedIdentifier
 operator|+
 literal|"/bibtex/"
 argument_list|)
