@@ -316,9 +316,9 @@ name|jabref
 operator|.
 name|model
 operator|.
-name|util
+name|strings
 operator|.
-name|DummyFileUpdateMonitor
+name|StringUtil
 import|;
 end_import
 
@@ -326,13 +326,13 @@ begin_import
 import|import
 name|org
 operator|.
-name|apache
+name|jabref
 operator|.
-name|commons
+name|model
 operator|.
-name|lang3
+name|util
 operator|.
-name|StringUtils
+name|DummyFileUpdateMonitor
 import|;
 end_import
 
@@ -1346,7 +1346,7 @@ block|{
 name|String
 name|value
 init|=
-name|StringUtils
+name|StringUtil
 operator|.
 name|substringBetween
 argument_list|(

@@ -361,7 +361,6 @@ decl_stmt|;
 annotation|@
 name|BeforeAll
 DECL|method|setUp ()
-specifier|public
 specifier|static
 name|void
 name|setUp
@@ -485,7 +484,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|getPackages ()
-specifier|public
+specifier|private
 specifier|static
 name|Stream
 argument_list|<
@@ -613,7 +612,6 @@ argument_list|(
 literal|"getPackages"
 argument_list|)
 DECL|method|firstPackageIsIndependentOfSecondPackage (String firstPackage, String secondPackage)
-specifier|public
 name|void
 name|firstPackageIsIndependentOfSecondPackage
 parameter_list|(

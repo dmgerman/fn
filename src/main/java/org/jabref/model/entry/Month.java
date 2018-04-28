@@ -80,20 +80,6 @@ name|StringUtil
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|commons
-operator|.
-name|lang3
-operator|.
-name|StringUtils
-import|;
-end_import
-
 begin_comment
 comment|/**  * Represents a Month of the Year.  */
 end_comment
@@ -606,9 +592,9 @@ name|parse
 argument_list|(
 literal|"1969-"
 operator|+
-name|StringUtils
+name|StringUtil
 operator|.
-name|capitalize
+name|capitalizeFirst
 argument_list|(
 name|value
 argument_list|)

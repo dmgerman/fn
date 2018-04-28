@@ -3241,7 +3241,7 @@ name|searchQuery
 argument_list|)
 return|;
 block|}
-comment|/**      * Make first character of String uppercase, and the      * rest lowercase.      */
+comment|/**      * Make first character of String uppercase, and the rest lowercase.      */
 DECL|method|capitalizeFirst (String toCapitalize)
 specifier|public
 specifier|static
@@ -3367,6 +3367,35 @@ argument_list|(
 name|text
 argument_list|,
 name|searchString
+argument_list|)
+return|;
+block|}
+DECL|method|substringBetween (String str, String open, String close)
+specifier|public
+specifier|static
+name|String
+name|substringBetween
+parameter_list|(
+name|String
+name|str
+parameter_list|,
+name|String
+name|open
+parameter_list|,
+name|String
+name|close
+parameter_list|)
+block|{
+return|return
+name|StringUtils
+operator|.
+name|substringBetween
+argument_list|(
+name|str
+argument_list|,
+name|open
+argument_list|,
+name|close
 argument_list|)
 return|;
 block|}
