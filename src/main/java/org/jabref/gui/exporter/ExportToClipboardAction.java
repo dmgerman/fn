@@ -296,7 +296,7 @@ specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
-comment|/**      * written by run() and read by update()      */
+comment|// written by run() and read by update()
 DECL|field|message
 specifier|private
 name|String
@@ -379,7 +379,7 @@ name|List
 argument_list|<
 name|Exporter
 argument_list|>
-name|exporters
+name|sortedExporters
 init|=
 name|Globals
 operator|.
@@ -387,10 +387,11 @@ name|exportFactory
 operator|.
 name|getExporters
 argument_list|()
-decl_stmt|;
-name|exporters
 operator|.
-name|sort
+name|stream
+argument_list|()
+operator|.
+name|sorted
 argument_list|(
 name|Comparator
 operator|.
@@ -401,14 +402,22 @@ operator|::
 name|getDisplayName
 argument_list|)
 argument_list|)
-expr_stmt|;
+operator|.
+name|collect
+argument_list|(
+name|Collectors
+operator|.
+name|toList
+argument_list|()
+argument_list|)
+decl_stmt|;
 name|List
 argument_list|<
 name|String
 argument_list|>
 name|exportFormatDisplayNames
 init|=
-name|exporters
+name|sortedExporters
 operator|.
 name|stream
 argument_list|()
@@ -550,7 +559,7 @@ block|}
 name|Exporter
 name|exporter
 init|=
-name|exporters
+name|sortedExporters
 operator|.
 name|get
 argument_list|(
