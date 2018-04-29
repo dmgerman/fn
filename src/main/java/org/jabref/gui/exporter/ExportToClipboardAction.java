@@ -280,7 +280,7 @@ specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
-comment|/**      * written by run() and read by update()      */
+comment|// written by run() and read by update()
 DECL|field|message
 specifier|private
 name|String
@@ -365,15 +365,33 @@ name|Exporter
 argument_list|>
 name|exporters
 init|=
-operator|new
-name|ArrayList
-argument_list|<>
-argument_list|(
 name|Globals
 operator|.
 name|exportFactory
 operator|.
 name|getExporters
+argument_list|()
+operator|.
+name|stream
+argument_list|()
+operator|.
+name|sorted
+argument_list|(
+name|Comparator
+operator|.
+name|comparing
+argument_list|(
+name|Exporter
+operator|::
+name|getDisplayName
+argument_list|)
+argument_list|)
+operator|.
+name|collect
+argument_list|(
+name|Collectors
+operator|.
+name|toList
 argument_list|()
 argument_list|)
 decl_stmt|;
