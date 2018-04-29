@@ -246,6 +246,12 @@ argument_list|(
 literal|"arXiv"
 argument_list|)
 block|,
+DECL|enumConstant|FETCHER_RFC
+name|FETCHER_RFC
+argument_list|(
+literal|"RFCtoBibTeX"
+argument_list|)
+block|,
 DECL|enumConstant|FETCHER_SPRINGER
 name|FETCHER_SPRINGER
 argument_list|(
