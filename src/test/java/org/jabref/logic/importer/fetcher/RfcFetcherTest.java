@@ -471,10 +471,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|performSearchByIdThrowsExceptionWithInvalidIdentifier ()
+DECL|method|performSearchByIdFindsNothingWithInvalidIdentifier ()
 specifier|public
 name|void
-name|performSearchByIdThrowsExceptionWithInvalidIdentifier
+name|performSearchByIdFindsNothingWithInvalidIdentifier
 parameter_list|()
 throws|throws
 name|Exception
