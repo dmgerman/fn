@@ -362,7 +362,12 @@ control|(
 name|BibEntry
 name|entry
 range|:
+operator|new
+name|ArrayList
+argument_list|<>
+argument_list|(
 name|entriesToAdd
+argument_list|)
 control|)
 block|{
 if|if
@@ -480,7 +485,12 @@ control|(
 name|BibEntry
 name|entry
 range|:
+operator|new
+name|ArrayList
+argument_list|<>
+argument_list|(
 name|entriesToRemove
+argument_list|)
 control|)
 block|{
 if|if
