@@ -106,7 +106,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|ArrayList
+name|Comparator
 import|;
 end_import
 
@@ -137,6 +137,18 @@ operator|.
 name|util
 operator|.
 name|Optional
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|stream
+operator|.
+name|Collectors
 import|;
 end_import
 
