@@ -921,13 +921,10 @@ name|event
 operator|.
 name|getCode
 argument_list|()
-operator|.
-name|equals
-argument_list|(
+operator|==
 name|KeyCode
 operator|.
 name|ENTER
-argument_list|)
 condition|)
 block|{
 name|getSelectedEntries
