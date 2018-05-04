@@ -12,6 +12,26 @@ begin_import
 import|import
 name|java
 operator|.
+name|awt
+operator|.
+name|Font
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|awt
+operator|.
+name|Frame
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|io
 operator|.
 name|File
@@ -442,6 +462,15 @@ specifier|public
 class|class
 name|JabRefGUI
 block|{
+DECL|field|NIMBUS_LOOK_AND_FEEL
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|NIMBUS_LOOK_AND_FEEL
+init|=
+literal|"javax.swing.plaf.nimbus.NimbusLookAndFeel"
+decl_stmt|;
 DECL|field|LOGGER
 specifier|private
 specifier|static
@@ -457,6 +486,15 @@ name|JabRefGUI
 operator|.
 name|class
 argument_list|)
+decl_stmt|;
+DECL|field|GTK_LF_CLASSNAME
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|GTK_LF_CLASSNAME
+init|=
+literal|"com.sun.java.swing.plaf.gtk.GTKLookAndFeel"
 decl_stmt|;
 DECL|field|mainFrame
 specifier|private
@@ -1522,36 +1560,26 @@ name|USE_DEFAULT_LOOK_AND_FEEL
 argument_list|)
 condition|)
 block|{
-comment|// FIXME: Problems with OpenJDK and GTK L&F
-comment|// See https://github.com/JabRef/jabref/issues/393, https://github.com/JabRef/jabref/issues/638
+comment|// FIXME: Problems with GTK L&F on Linux and Mac. Needs reevaluation for Java9
 if|if
 condition|(
-name|System
+name|GTK_LF_CLASSNAME
 operator|.
-name|getProperty
+name|equals
 argument_list|(
-literal|"java.runtime.name"
-argument_list|)
-operator|.
-name|contains
-argument_list|(
-literal|"OpenJDK"
+name|systemLookFeel
 argument_list|)
 condition|)
 block|{
-comment|// Metal L&F
 name|lookFeel
 operator|=
-name|UIManager
-operator|.
-name|getCrossPlatformLookAndFeelClassName
-argument_list|()
+name|NIMBUS_LOOK_AND_FEEL
 expr_stmt|;
 name|LOGGER
 operator|.
 name|warn
 argument_list|(
-literal|"There seem to be problems with OpenJDK and the default GTK Look&Feel. Using Metal L&F instead. Change to another L&F with caution."
+literal|"There seems to be problems with GTK Look&Feel. Using Nimbus L&F instead. Change to another L&F with caution."
 argument_list|)
 expr_stmt|;
 block|}
@@ -1579,7 +1607,7 @@ name|WIN_LOOK_AND_FEEL
 argument_list|)
 expr_stmt|;
 block|}
-comment|// FIXME: Open JDK problem
+comment|//Prevent metal l&f
 if|if
 condition|(
 name|UIManager
@@ -1591,27 +1619,13 @@ name|equals
 argument_list|(
 name|lookFeel
 argument_list|)
-operator|&&
-operator|!
-name|System
-operator|.
-name|getProperty
-argument_list|(
-literal|"java.runtime.name"
-argument_list|)
-operator|.
-name|contains
-argument_list|(
-literal|"OpenJDK"
-argument_list|)
 condition|)
 block|{
-comment|// try to avoid ending up with the ugly Metal L&F
 name|UIManager
 operator|.
 name|setLookAndFeel
 argument_list|(
-literal|"javax.swing.plaf.nimbus.NimbusLookAndFeel"
+name|NIMBUS_LOOK_AND_FEEL
 argument_list|)
 expr_stmt|;
 block|}
@@ -1831,11 +1845,11 @@ literal|".font"
 argument_list|)
 condition|)
 block|{
-name|FontUIResource
+name|Font
 name|font
 init|=
 operator|(
-name|FontUIResource
+name|Font
 operator|)
 name|UIManager
 operator|.
