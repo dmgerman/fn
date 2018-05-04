@@ -126,34 +126,32 @@ operator|.
 name|fxml
 decl_stmt|;
 name|requires
-name|customjfx
-decl_stmt|;
-name|requires
 name|afterburner
 operator|.
 name|fx
 decl_stmt|;
-name|requires
-name|de
+comment|//	requires de.jensd.fx.glyphs.commons;
+comment|//	requires de.jensd.fx.glyphs.materialdesignicons;
+name|provides
+name|com
 operator|.
-name|jensd
+name|airhacks
 operator|.
-name|fx
+name|afterburner
 operator|.
-name|glyphs
+name|views
 operator|.
-name|commons
-decl_stmt|;
-name|requires
-name|de
+name|ResourceLocator
+name|with
+name|org
 operator|.
-name|jensd
+name|jabref
 operator|.
-name|fx
+name|gui
 operator|.
-name|glyphs
+name|util
 operator|.
-name|materialdesignicons
+name|JabRefResourceLocator
 decl_stmt|;
 comment|// Logging
 name|requires
@@ -227,6 +225,20 @@ name|common
 decl_stmt|;
 name|requires
 name|spin
+decl_stmt|;
+name|requires
+name|easybind
+decl_stmt|;
+name|requires
+name|de
+operator|.
+name|jensd
+operator|.
+name|fx
+operator|.
+name|glyphs
+operator|.
+name|commons
 decl_stmt|;
 comment|// Libre Office
 comment|/*requires ridl; 	requires unoil; 	requires juh;*/

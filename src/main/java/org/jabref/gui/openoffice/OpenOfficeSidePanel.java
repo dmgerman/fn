@@ -293,27 +293,8 @@ operator|new
 name|SwingNode
 argument_list|()
 decl_stmt|;
-name|SwingUtilities
-operator|.
-name|invokeLater
-argument_list|(
-parameter_list|()
-lambda|->
-name|swingNode
-operator|.
-name|setContent
-argument_list|(
-operator|new
-name|OpenOfficePanel
-argument_list|(
-name|frame
-argument_list|)
-operator|.
-name|getContent
-argument_list|()
-argument_list|)
-argument_list|)
-expr_stmt|;
+comment|// TODO: OO, Java 9
+comment|//SwingUtilities.invokeLater(() -> swingNode.setContent(new OpenOfficePanel(frame).getContent()));
 return|return
 name|swingNode
 return|;
