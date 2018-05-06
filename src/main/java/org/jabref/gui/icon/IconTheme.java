@@ -1764,6 +1764,22 @@ name|AUTO_FIX
 argument_list|)
 operator|,
 comment|/*css: auto-fix*/
+DECL|enumConstant|GROUP_INTERSECTION
+name|GROUP_INTERSECTION
+argument_list|(
+name|JabRefMaterialDesignIcon
+operator|.
+name|SET_CENTER
+argument_list|)
+operator|,
+DECL|enumConstant|GROUP_UNION
+name|GROUP_UNION
+argument_list|(
+name|JabRefMaterialDesignIcon
+operator|.
+name|SET_ALL
+argument_list|)
+operator|,
 DECL|enumConstant|EMAIL
 name|EMAIL
 argument_list|(

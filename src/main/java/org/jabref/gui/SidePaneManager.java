@@ -267,6 +267,11 @@ argument_list|(
 name|this
 argument_list|,
 name|preferences
+argument_list|,
+name|frame
+operator|.
+name|getDialogService
+argument_list|()
 argument_list|)
 argument_list|,
 operator|new

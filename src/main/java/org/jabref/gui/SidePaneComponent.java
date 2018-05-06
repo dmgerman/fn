@@ -12,6 +12,26 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
 name|javafx
 operator|.
 name|scene
@@ -41,6 +61,18 @@ operator|.
 name|control
 operator|.
 name|Label
+import|;
+end_import
+
+begin_import
+import|import
+name|javafx
+operator|.
+name|scene
+operator|.
+name|control
+operator|.
+name|Tooltip
 import|;
 end_import
 
@@ -136,6 +168,20 @@ name|JabRefIcon
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
+import|;
+end_import
+
 begin_class
 DECL|class|SidePaneComponent
 specifier|public
@@ -144,13 +190,13 @@ class|class
 name|SidePaneComponent
 block|{
 DECL|field|manager
-specifier|protected
+specifier|private
 specifier|final
 name|SidePaneManager
 name|manager
 decl_stmt|;
 DECL|field|toggleCommand
-specifier|protected
+specifier|private
 specifier|final
 name|ToggleCommand
 name|toggleCommand
@@ -250,7 +296,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|moveUp ()
-specifier|private
+specifier|protected
 name|void
 name|moveUp
 parameter_list|()
@@ -264,7 +310,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|moveDown ()
-specifier|private
+specifier|protected
 name|void
 name|moveDown
 parameter_list|()
@@ -369,6 +415,22 @@ argument_list|()
 decl_stmt|;
 name|close
 operator|.
+name|setTooltip
+argument_list|(
+operator|new
+name|Tooltip
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Hide panel"
+argument_list|)
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|close
+operator|.
 name|setOnAction
 argument_list|(
 name|event
@@ -389,6 +451,22 @@ operator|.
 name|asButton
 argument_list|()
 decl_stmt|;
+name|up
+operator|.
+name|setTooltip
+argument_list|(
+operator|new
+name|Tooltip
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Move panel up"
+argument_list|)
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|up
 operator|.
 name|setOnAction
@@ -413,6 +491,22 @@ argument_list|()
 decl_stmt|;
 name|down
 operator|.
+name|setTooltip
+argument_list|(
+operator|new
+name|Tooltip
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Move panel down"
+argument_list|)
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|down
+operator|.
 name|setOnAction
 argument_list|(
 name|event
@@ -421,6 +515,7 @@ name|moveDown
 argument_list|()
 argument_list|)
 expr_stmt|;
+specifier|final
 name|HBox
 name|buttonContainer
 init|=
@@ -438,7 +533,26 @@ argument_list|(
 name|up
 argument_list|,
 name|down
-argument_list|,
+argument_list|)
+expr_stmt|;
+name|buttonContainer
+operator|.
+name|getChildren
+argument_list|()
+operator|.
+name|addAll
+argument_list|(
+name|getAddtionalHeaderButtons
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|buttonContainer
+operator|.
+name|getChildren
+argument_list|()
+operator|.
+name|add
+argument_list|(
 name|close
 argument_list|)
 expr_stmt|;
@@ -459,14 +573,6 @@ name|getGraphicNode
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|BorderPane
-name|container
-init|=
-operator|new
-name|BorderPane
-argument_list|()
-decl_stmt|;
-comment|//        container.setLeft(graphic);
 specifier|final
 name|Label
 name|label
@@ -476,6 +582,13 @@ name|Label
 argument_list|(
 name|title
 argument_list|)
+decl_stmt|;
+name|BorderPane
+name|container
+init|=
+operator|new
+name|BorderPane
+argument_list|()
 decl_stmt|;
 name|container
 operator|.
@@ -503,6 +616,22 @@ argument_list|)
 expr_stmt|;
 return|return
 name|container
+return|;
+block|}
+DECL|method|getAddtionalHeaderButtons ()
+specifier|protected
+name|List
+argument_list|<
+name|Node
+argument_list|>
+name|getAddtionalHeaderButtons
+parameter_list|()
+block|{
+return|return
+name|Collections
+operator|.
+name|emptyList
+argument_list|()
 return|;
 block|}
 comment|/**      * Create the content of this component      *      * @implNote The {@link SidePaneManager} always creates an instance of every side component (e.g., to get the toggle action)      * but we only want to create the content view if the component is shown to save resources.      * This is the reason for the lazy loading.      */
