@@ -153,6 +153,25 @@ name|util
 operator|.
 name|JabRefResourceLocator
 decl_stmt|;
+name|provides
+name|com
+operator|.
+name|airhacks
+operator|.
+name|afterburner
+operator|.
+name|injection
+operator|.
+name|PresenterFactory
+name|with
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|DefaultInjector
+decl_stmt|;
 comment|// Logging
 name|requires
 name|org
@@ -239,6 +258,9 @@ operator|.
 name|glyphs
 operator|.
 name|commons
+decl_stmt|;
+name|requires
+name|controlsfx
 decl_stmt|;
 comment|// Libre Office
 comment|/*requires ridl; 	requires unoil; 	requires juh;*/
