@@ -403,6 +403,34 @@ argument_list|(
 literal|"[a-z ]+(\\d{1,2} [A-Za-z][a-z]{2} \\d{4})"
 argument_list|)
 decl_stmt|;
+DECL|field|DATE_FROM_WEBSITE_BEFORE_2000_PATTERN
+specifier|private
+specifier|static
+specifier|final
+name|Pattern
+name|DATE_FROM_WEBSITE_BEFORE_2000_PATTERN
+init|=
+name|Pattern
+operator|.
+name|compile
+argument_list|(
+literal|"[A-Za-z ]+? ([A-Za-z][a-z]{2,10} \\d{1,2}(th|st|nd|rd)?, \\d{4})\\.?"
+argument_list|)
+decl_stmt|;
+DECL|field|WITHOUT_LETTERS_SPACE
+specifier|private
+specifier|static
+specifier|final
+name|Pattern
+name|WITHOUT_LETTERS_SPACE
+init|=
+name|Pattern
+operator|.
+name|compile
+argument_list|(
+literal|"[^0-9/]"
+argument_list|)
+decl_stmt|;
 DECL|field|DATE_FORMAT_WEBSITE_AFTER_2000
 specifier|private
 specifier|static
@@ -419,20 +447,6 @@ argument_list|,
 name|Locale
 operator|.
 name|US
-argument_list|)
-decl_stmt|;
-DECL|field|DATE_FROM_WEBSITE_BEFORE_2000_PATTERN
-specifier|private
-specifier|static
-specifier|final
-name|Pattern
-name|DATE_FROM_WEBSITE_BEFORE_2000_PATTERN
-init|=
-name|Pattern
-operator|.
-name|compile
-argument_list|(
-literal|"[A-Za-z ]+? ([A-Za-z][a-z]{2,10} \\d{1,2}(th|st|nd|rd)?, \\d{4})\\.?"
 argument_list|)
 decl_stmt|;
 DECL|field|DATE_FORMAT_WEBSITE_BEFORE_2000_LONG_MONTHS
@@ -571,12 +585,15 @@ block|{
 name|String
 name|identifierWithoutLettersAndSpaces
 init|=
+name|WITHOUT_LETTERS_SPACE
+operator|.
+name|matcher
+argument_list|(
 name|identifier
+argument_list|)
 operator|.
 name|replaceAll
 argument_list|(
-literal|"[^0-9/]"
-argument_list|,
 literal|" "
 argument_list|)
 operator|.

@@ -1134,6 +1134,34 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+DECL|method|searchEntryByIdWith4DigitsAndPrefixAndNotTrimmed ()
+specifier|public
+name|void
+name|searchEntryByIdWith4DigitsAndPrefixAndNotTrimmed
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|assertEquals
+argument_list|(
+name|Optional
+operator|.
+name|of
+argument_list|(
+name|sliceTheoremPaper
+argument_list|)
+argument_list|,
+name|finder
+operator|.
+name|performSearchById
+argument_list|(
+literal|"arXiv : 1405. 2249"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
 DECL|method|searchEntryByIdWith5Digits ()
 specifier|public
 name|void

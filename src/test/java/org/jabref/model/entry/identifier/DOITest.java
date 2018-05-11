@@ -820,6 +820,38 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+DECL|method|parseDOIWithWhiteSpace ()
+specifier|public
+name|void
+name|parseDOIWithWhiteSpace
+parameter_list|()
+block|{
+name|String
+name|doiWithSpace
+init|=
+literal|"https : / / doi.org / 10 .1109 /V LHCC.20 04.20"
+decl_stmt|;
+name|assertEquals
+argument_list|(
+literal|"https://doi.org/10.1109/VLHCC.2004.20"
+argument_list|,
+name|DOI
+operator|.
+name|parse
+argument_list|(
+name|doiWithSpace
+argument_list|)
+operator|.
+name|get
+argument_list|()
+operator|.
+name|getURIAsASCIIString
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_class
 
