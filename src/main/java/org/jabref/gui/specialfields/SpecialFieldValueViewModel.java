@@ -480,7 +480,7 @@ case|:
 return|return
 name|Actions
 operator|.
-name|togglePrinted
+name|TOGGLE_PRINTED
 return|;
 case|case
 name|CLEAR_PRIORITY
@@ -488,7 +488,7 @@ case|:
 return|return
 name|Actions
 operator|.
-name|clearPriority
+name|CLEAR_PRIORITY
 return|;
 case|case
 name|PRIORITY_HIGH
@@ -496,7 +496,7 @@ case|:
 return|return
 name|Actions
 operator|.
-name|setPriority1
+name|SET_PRIORITY_1
 return|;
 case|case
 name|PRIORITY_MEDIUM
@@ -504,7 +504,7 @@ case|:
 return|return
 name|Actions
 operator|.
-name|setPriority2
+name|SET_PRIORITY_2
 return|;
 case|case
 name|PRIORITY_LOW
@@ -512,7 +512,7 @@ case|:
 return|return
 name|Actions
 operator|.
-name|setPriority3
+name|SET_PRIORITY_3
 return|;
 case|case
 name|QUALITY_ASSURED
@@ -520,7 +520,7 @@ case|:
 return|return
 name|Actions
 operator|.
-name|toggleQualityAssured
+name|TOGGLE_QUALITY_ASSURED
 return|;
 case|case
 name|CLEAR_RANK
@@ -528,7 +528,7 @@ case|:
 return|return
 name|Actions
 operator|.
-name|clearRank
+name|CLEAR_RANK
 return|;
 case|case
 name|RANK_1
@@ -536,7 +536,7 @@ case|:
 return|return
 name|Actions
 operator|.
-name|setRank1
+name|SET_RANK_1
 return|;
 case|case
 name|RANK_2
@@ -544,7 +544,7 @@ case|:
 return|return
 name|Actions
 operator|.
-name|setRank2
+name|SET_RANK_2
 return|;
 case|case
 name|RANK_3
@@ -552,7 +552,7 @@ case|:
 return|return
 name|Actions
 operator|.
-name|setRank3
+name|SET_RANK_3
 return|;
 case|case
 name|RANK_4
@@ -560,7 +560,7 @@ case|:
 return|return
 name|Actions
 operator|.
-name|setRank4
+name|SET_RANK_4
 return|;
 case|case
 name|RANK_5
@@ -568,7 +568,7 @@ case|:
 return|return
 name|Actions
 operator|.
-name|setRank5
+name|SET_RANK_5
 return|;
 case|case
 name|CLEAR_READ_STATUS
@@ -576,7 +576,7 @@ case|:
 return|return
 name|Actions
 operator|.
-name|clearReadStatus
+name|CLEAR_READ_STATUS
 return|;
 case|case
 name|READ
@@ -584,7 +584,7 @@ case|:
 return|return
 name|Actions
 operator|.
-name|setReadStatusToRead
+name|SET_READ_STATUS_TO_READ
 return|;
 case|case
 name|SKIMMED
@@ -592,7 +592,7 @@ case|:
 return|return
 name|Actions
 operator|.
-name|setReadStatusToSkimmed
+name|SET_READ_STATUS_TO_SKIMMED
 return|;
 case|case
 name|RELEVANT
@@ -600,7 +600,7 @@ case|:
 return|return
 name|Actions
 operator|.
-name|toggleRelevance
+name|TOGGLE_RELEVANCE
 return|;
 default|default:
 throw|throw
