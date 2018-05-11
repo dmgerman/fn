@@ -34,11 +34,6 @@ name|EditExternalFileTypesAction
 extends|extends
 name|SimpleCommand
 block|{
-DECL|field|editor
-specifier|private
-name|ExternalFileTypeEditor
-name|editor
-decl_stmt|;
 annotation|@
 name|Override
 DECL|method|execute ()
@@ -47,20 +42,13 @@ name|void
 name|execute
 parameter_list|()
 block|{
-if|if
-condition|(
+name|ExternalFileTypeEditor
 name|editor
-operator|==
-literal|null
-condition|)
-block|{
-name|editor
-operator|=
+init|=
 operator|new
 name|ExternalFileTypeEditor
 argument_list|()
-expr_stmt|;
-block|}
+decl_stmt|;
 name|editor
 operator|.
 name|show
