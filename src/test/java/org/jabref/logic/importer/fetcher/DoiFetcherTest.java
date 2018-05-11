@@ -551,6 +551,42 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+DECL|method|testPerformSearchNonTrimmedDOI ()
+specifier|public
+name|void
+name|testPerformSearchNonTrimmedDOI
+parameter_list|()
+throws|throws
+name|FetcherException
+block|{
+name|Optional
+argument_list|<
+name|BibEntry
+argument_list|>
+name|fetchedEntry
+init|=
+name|fetcher
+operator|.
+name|performSearchById
+argument_list|(
+literal|"http s://doi.org/ 10.1109 /ICWS .2007.59 "
+argument_list|)
+decl_stmt|;
+name|assertEquals
+argument_list|(
+name|Optional
+operator|.
+name|of
+argument_list|(
+name|bibEntryDecker2007
+argument_list|)
+argument_list|,
+name|fetchedEntry
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_class
 

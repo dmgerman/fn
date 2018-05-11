@@ -430,6 +430,25 @@ parameter_list|)
 block|{
 try|try
 block|{
+name|String
+name|cleanedDOI
+init|=
+name|doi
+operator|.
+name|trim
+argument_list|()
+decl_stmt|;
+name|cleanedDOI
+operator|=
+name|doi
+operator|.
+name|replaceAll
+argument_list|(
+literal|" "
+argument_list|,
+literal|""
+argument_list|)
+expr_stmt|;
 return|return
 name|Optional
 operator|.
@@ -438,7 +457,7 @@ argument_list|(
 operator|new
 name|DOI
 argument_list|(
-name|doi
+name|cleanedDOI
 argument_list|)
 argument_list|)
 return|;
