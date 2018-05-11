@@ -580,7 +580,7 @@ operator|.
 name|empty
 argument_list|()
 decl_stmt|;
-comment|/**      * @param panel           (may be null) Only set this if the preview is associated to the main window.      * @param databaseContext (may be null) Used for resolving pdf directories for links.      * @param preferences      * @param dialogService      */
+comment|/**      * @param panel           (may be null) Only set this if the preview is associated to the main window.      * @param databaseContext (may be null) Used for resolving pdf directories for links.      */
 DECL|method|PreviewPanel (BasePanel panel, BibDatabaseContext databaseContext, KeyBindingRepository keyBindingRepository, PreviewPreferences preferences, DialogService dialogService)
 specifier|public
 name|PreviewPanel
@@ -776,10 +776,7 @@ name|KeyBinding
 argument_list|>
 name|keyBinding
 init|=
-name|Globals
-operator|.
-name|getKeyPrefs
-argument_list|()
+name|keyBindingRepository
 operator|.
 name|mapToKeyBinding
 argument_list|(
