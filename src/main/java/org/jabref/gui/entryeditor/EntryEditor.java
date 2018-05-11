@@ -706,7 +706,6 @@ operator|.
 name|load
 argument_list|()
 expr_stmt|;
-comment|//getStylesheets().add(EntryEditor.class.getResource("EntryEditor.css").toExternalForm());
 if|if
 condition|(
 name|GUIGlobals
