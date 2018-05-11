@@ -384,8 +384,14 @@ specifier|final
 name|boolean
 name|selectedOnly
 decl_stmt|;
+DECL|field|preferences
+specifier|private
+specifier|final
+name|JabRefPreferences
+name|preferences
+decl_stmt|;
 comment|/**      * @param selectedOnly true if only the selected entries should be exported, otherwise all entries are exported      */
-DECL|method|ExportCommand (JabRefFrame frame, boolean selectedOnly)
+DECL|method|ExportCommand (JabRefFrame frame, boolean selectedOnly, JabRefPreferences preferences)
 specifier|public
 name|ExportCommand
 parameter_list|(
@@ -394,6 +400,9 @@ name|frame
 parameter_list|,
 name|boolean
 name|selectedOnly
+parameter_list|,
+name|JabRefPreferences
+name|preferences
 parameter_list|)
 block|{
 name|this
@@ -408,6 +417,12 @@ name|selectedOnly
 operator|=
 name|selectedOnly
 expr_stmt|;
+name|this
+operator|.
+name|preferences
+operator|=
+name|preferences
+expr_stmt|;
 block|}
 annotation|@
 name|Override
@@ -417,14 +432,6 @@ name|void
 name|execute
 parameter_list|()
 block|{
-name|JabRefPreferences
-name|prefs
-init|=
-name|Globals
-operator|.
-name|prefs
-decl_stmt|;
-comment|//TODO: Pass as param?
 name|Map
 argument_list|<
 name|String
@@ -433,13 +440,13 @@ name|TemplateExporter
 argument_list|>
 name|customExporters
 init|=
-name|prefs
+name|preferences
 operator|.
 name|customExports
 operator|.
 name|getCustomExportFormats
 argument_list|(
-name|prefs
+name|preferences
 argument_list|,
 name|Globals
 operator|.
@@ -449,7 +456,7 @@ decl_stmt|;
 name|LayoutFormatterPreferences
 name|layoutPreferences
 init|=
-name|prefs
+name|preferences
 operator|.
 name|getLayoutFormatterPreferences
 argument_list|(
@@ -461,7 +468,7 @@ decl_stmt|;
 name|SavePreferences
 name|savePreferences
 init|=
-name|prefs
+name|preferences
 operator|.
 name|loadForExportFromPreferences
 argument_list|()
@@ -469,7 +476,7 @@ decl_stmt|;
 name|XmpPreferences
 name|xmpPreferences
 init|=
-name|prefs
+name|preferences
 operator|.
 name|getXMPPreferences
 argument_list|()
