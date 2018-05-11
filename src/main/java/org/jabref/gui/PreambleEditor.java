@@ -264,7 +264,7 @@ argument_list|)
 condition|)
 block|{
 name|String
-name|toSet
+name|newPreamble
 init|=
 name|editor
 operator|.
@@ -288,7 +288,7 @@ argument_list|)
 operator|.
 name|equals
 argument_list|(
-name|toSet
+name|newPreamble
 argument_list|)
 condition|)
 block|{
@@ -314,7 +314,7 @@ argument_list|(
 literal|null
 argument_list|)
 argument_list|,
-name|toSet
+name|newPreamble
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -322,7 +322,7 @@ name|database
 operator|.
 name|setPreamble
 argument_list|(
-name|toSet
+name|newPreamble
 argument_list|)
 expr_stmt|;
 name|panel
