@@ -595,7 +595,6 @@ operator|.
 name|installExceptionHandler
 argument_list|()
 expr_stmt|;
-comment|//Platform.setImplicitExit(true);
 name|ensureCorrectJavaVersion
 argument_list|()
 expr_stmt|;
@@ -1049,15 +1048,6 @@ name|void
 name|stop
 parameter_list|()
 block|{
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"stop"
-argument_list|)
-expr_stmt|;
 name|Platform
 operator|.
 name|exit
