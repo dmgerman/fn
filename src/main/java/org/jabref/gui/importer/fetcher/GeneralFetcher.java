@@ -610,7 +610,6 @@ name|EntryFetcherComparator
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|//JLabel[] choices = new JLabel[fetchers.size()];
 name|String
 index|[]
 name|choices
@@ -1255,7 +1254,6 @@ literal|1
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//add(main, BorderLayout.CENTER);
 name|go
 operator|.
 name|addActionListener
