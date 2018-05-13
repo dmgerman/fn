@@ -120,7 +120,7 @@ name|FileDownloadTask
 extends|extends
 name|BackgroundTask
 argument_list|<
-name|Void
+name|Path
 argument_list|>
 block|{
 DECL|field|source
@@ -163,7 +163,7 @@ annotation|@
 name|Override
 DECL|method|call ()
 specifier|protected
-name|Void
+name|Path
 name|call
 parameter_list|()
 throws|throws
@@ -240,7 +240,7 @@ argument_list|)
 expr_stmt|;
 block|}
 return|return
-literal|null
+name|destination
 return|;
 block|}
 block|}
