@@ -344,6 +344,18 @@ name|jabref
 operator|.
 name|gui
 operator|.
+name|DialogService
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
 name|JabRefDialog
 import|;
 end_import
@@ -821,6 +833,12 @@ specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
+DECL|field|dialogService
+specifier|private
+specifier|final
+name|DialogService
+name|dialogService
+decl_stmt|;
 DECL|field|styles
 specifier|private
 name|EventList
@@ -1095,6 +1113,13 @@ expr_stmt|;
 name|init
 argument_list|()
 expr_stmt|;
+name|dialogService
+operator|=
+name|frame
+operator|.
+name|getDialogService
+argument_list|()
+expr_stmt|;
 block|}
 DECL|method|init ()
 specifier|private
@@ -1234,10 +1259,7 @@ operator|.
 name|getPreviewPreferences
 argument_list|()
 argument_list|,
-name|frame
-operator|.
-name|getDialogService
-argument_list|()
+name|dialogService
 argument_list|)
 expr_stmt|;
 comment|// Use the test entry from the Preview settings tab in Preferences:
@@ -1457,10 +1479,7 @@ literal|0
 operator|)
 condition|)
 block|{
-name|frame
-operator|.
-name|getDialogService
-argument_list|()
+name|dialogService
 operator|.
 name|showErrorDialogAndWait
 argument_list|(
@@ -2083,10 +2102,7 @@ end_expr_stmt
 begin_expr_stmt
 unit|)
 operator|&&
-name|frame
-operator|.
-name|getDialogService
-argument_list|()
+name|dialogService
 operator|.
 name|showConfirmationDialogAndWait
 argument_list|(
@@ -3207,10 +3223,7 @@ name|runInJavaFXThread
 argument_list|(
 parameter_list|()
 lambda|->
-name|frame
-operator|.
-name|getDialogService
-argument_list|()
+name|dialogService
 operator|.
 name|showFileOpenDialog
 argument_list|(
