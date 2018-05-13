@@ -682,8 +682,6 @@ name|comparatorProperty
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// TODO: Cannot add focus listener as it is expecting an swing component
-comment|//addFocusListener(Globals.getFocusListener());
 name|this
 operator|.
 name|panel
@@ -734,8 +732,6 @@ name|toExternalForm
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// TODO: Tooltip for column header
-comment|/*         @Override         public String getToolTipText(MouseEvent event) {         int index = columnModel.getColumnIndexAtX(event.getX());         int realIndex = columnModel.getColumn(index).getModelIndex();         MainTableColumn column = tableFormat.getTableColumn(realIndex);         return column.getDisplayName();         }          */
 comment|// Store visual state
 operator|new
 name|PersistenceVisualStateTable
