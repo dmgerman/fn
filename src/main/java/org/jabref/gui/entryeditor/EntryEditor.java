@@ -346,6 +346,20 @@ name|gui
 operator|.
 name|util
 operator|.
+name|ColorUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|util
+operator|.
 name|DefaultTaskExecutor
 import|;
 end_import
@@ -719,7 +733,9 @@ name|setStyle
 argument_list|(
 literal|"text-area-background: "
 operator|+
-name|convertToHex
+name|ColorUtil
+operator|.
+name|toHex
 argument_list|(
 name|GUIGlobals
 operator|.
@@ -730,7 +746,9 @@ literal|";"
 operator|+
 literal|"text-area-foreground: "
 operator|+
-name|convertToHex
+name|ColorUtil
+operator|.
+name|toHex
 argument_list|(
 name|GUIGlobals
 operator|.
@@ -741,7 +759,9 @@ literal|";"
 operator|+
 literal|"text-area-highlight: "
 operator|+
-name|convertToHex
+name|ColorUtil
+operator|.
+name|toHex
 argument_list|(
 name|GUIGlobals
 operator|.
@@ -1956,43 +1976,6 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
-block|}
-DECL|method|convertToHex (java.awt.Color color)
-specifier|private
-name|String
-name|convertToHex
-parameter_list|(
-name|java
-operator|.
-name|awt
-operator|.
-name|Color
-name|color
-parameter_list|)
-block|{
-return|return
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"#%02x%02x%02x"
-argument_list|,
-name|color
-operator|.
-name|getRed
-argument_list|()
-argument_list|,
-name|color
-operator|.
-name|getGreen
-argument_list|()
-argument_list|,
-name|color
-operator|.
-name|getBlue
-argument_list|()
-argument_list|)
-return|;
 block|}
 block|}
 end_class
