@@ -542,7 +542,7 @@ argument_list|()
 operator|.
 name|addAll
 argument_list|(
-name|getAddtionalHeaderButtons
+name|getAdditionalHeaderButtons
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -618,13 +618,13 @@ return|return
 name|container
 return|;
 block|}
-DECL|method|getAddtionalHeaderButtons ()
+DECL|method|getAdditionalHeaderButtons ()
 specifier|protected
 name|List
 argument_list|<
 name|Node
 argument_list|>
-name|getAddtionalHeaderButtons
+name|getAdditionalHeaderButtons
 parameter_list|()
 block|{
 return|return
