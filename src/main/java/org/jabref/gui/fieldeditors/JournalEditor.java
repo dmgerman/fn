@@ -16,16 +16,6 @@ begin_import
 import|import
 name|javafx
 operator|.
-name|event
-operator|.
-name|ActionEvent
-import|;
-end_import
-
-begin_import
-import|import
-name|javafx
-operator|.
 name|fxml
 operator|.
 name|FXML
@@ -176,16 +166,16 @@ name|HBox
 implements|implements
 name|FieldEditorFX
 block|{
+DECL|field|viewModel
 annotation|@
 name|FXML
-DECL|field|viewModel
 specifier|private
 name|JournalEditorViewModel
 name|viewModel
 decl_stmt|;
+DECL|field|textArea
 annotation|@
 name|FXML
-DECL|field|textArea
 specifier|private
 name|EditorTextArea
 name|textArea
@@ -348,14 +338,11 @@ return|;
 block|}
 annotation|@
 name|FXML
-DECL|method|toggleAbbreviation (ActionEvent unused)
+DECL|method|toggleAbbreviation ()
 specifier|private
 name|void
 name|toggleAbbreviation
-parameter_list|(
-name|ActionEvent
-name|unused
-parameter_list|)
+parameter_list|()
 block|{
 name|viewModel
 operator|.
