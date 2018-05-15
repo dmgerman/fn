@@ -2361,6 +2361,7 @@ parameter_list|)
 block|{
 try|try
 block|{
+comment|// TODO: reflective access, should be removed (Java 9)
 name|Field
 name|privatePopup
 init|=

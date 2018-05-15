@@ -460,6 +460,7 @@ condition|)
 block|{
 try|try
 block|{
+comment|// TODO: reflective access, should be removed (Java 9)
 name|Toolkit
 name|xToolkit
 init|=

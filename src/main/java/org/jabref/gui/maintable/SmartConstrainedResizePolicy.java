@@ -356,6 +356,7 @@ block|{
 comment|// We have to use reflection since TableUtil is not visible to us
 try|try
 block|{
+comment|// TODO: reflective access, should be removed (Java 9)
 name|Class
 argument_list|<
 name|?
@@ -521,6 +522,7 @@ block|{
 comment|// We have to use reflection since TableUtil is not visible to us
 try|try
 block|{
+comment|// TODO: reflective access, should be removed (Java 9)
 name|Class
 argument_list|<
 name|?
@@ -632,6 +634,7 @@ parameter_list|)
 block|{
 try|try
 block|{
+comment|// TODO: reflective access, should be removed (Java 9)
 name|Field
 name|privateStringField
 init|=
