@@ -1725,7 +1725,7 @@ literal|false
 return|;
 block|}
 comment|// reply == JOptionPane.YES_OPTION)
-comment|/*          * TODO Extract Import functionality from ImportMenuItem then we could          * do:          *          * ImportMenuItem importer = new ImportMenuItem(frame, (mainTable ==          * null), new PdfXmpImporter());          *          * importer.automatedImport(new String[] { fileName });          */
+comment|/*          * TODO Extract Import functionality from ImportAction then we could          * do:          *          * ImportAction importer = new ImportAction(frame, (mainTable ==          * null), new PdfXmpImporter());          *          * importer.automatedImport(new String[] { fileName });          */
 name|boolean
 name|isSingle
 init|=
