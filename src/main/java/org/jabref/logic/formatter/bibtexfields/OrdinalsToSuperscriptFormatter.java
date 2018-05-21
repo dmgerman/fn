@@ -56,9 +56,9 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|l10n
+name|formatter
 operator|.
-name|Localization
+name|AbstractFormatter
 import|;
 end_import
 
@@ -68,11 +68,11 @@ name|org
 operator|.
 name|jabref
 operator|.
-name|model
+name|logic
 operator|.
-name|cleanup
+name|l10n
 operator|.
-name|Formatter
+name|Localization
 import|;
 end_import
 
@@ -85,8 +85,8 @@ DECL|class|OrdinalsToSuperscriptFormatter
 specifier|public
 class|class
 name|OrdinalsToSuperscriptFormatter
-implements|implements
-name|Formatter
+extends|extends
+name|AbstractFormatter
 block|{
 comment|// find possible superscripts on word boundaries
 DECL|field|SUPERSCRIPT_DETECT_PATTERN

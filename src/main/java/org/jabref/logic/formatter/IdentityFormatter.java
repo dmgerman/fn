@@ -36,20 +36,6 @@ name|Localization
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|cleanup
-operator|.
-name|Formatter
-import|;
-end_import
-
 begin_comment
 comment|/**  * It may seem useless, but is needed as a fallback option  */
 end_comment
@@ -59,8 +45,8 @@ DECL|class|IdentityFormatter
 specifier|public
 class|class
 name|IdentityFormatter
-implements|implements
-name|Formatter
+extends|extends
+name|AbstractFormatter
 block|{
 annotation|@
 name|Override
@@ -140,37 +126,6 @@ parameter_list|()
 block|{
 return|return
 literal|"JabRef"
-return|;
-block|}
-annotation|@
-name|Override
-DECL|method|hashCode ()
-specifier|public
-name|int
-name|hashCode
-parameter_list|()
-block|{
-return|return
-name|defaultHashCode
-argument_list|()
-return|;
-block|}
-annotation|@
-name|Override
-DECL|method|equals (Object obj)
-specifier|public
-name|boolean
-name|equals
-parameter_list|(
-name|Object
-name|obj
-parameter_list|)
-block|{
-return|return
-name|defaultEquals
-argument_list|(
-name|obj
-argument_list|)
 return|;
 block|}
 block|}

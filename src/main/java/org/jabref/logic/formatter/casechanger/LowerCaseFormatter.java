@@ -22,9 +22,9 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|l10n
+name|formatter
 operator|.
-name|Localization
+name|AbstractFormatter
 import|;
 end_import
 
@@ -34,11 +34,11 @@ name|org
 operator|.
 name|jabref
 operator|.
-name|model
+name|logic
 operator|.
-name|cleanup
+name|l10n
 operator|.
-name|Formatter
+name|Localization
 import|;
 end_import
 
@@ -47,8 +47,8 @@ DECL|class|LowerCaseFormatter
 specifier|public
 class|class
 name|LowerCaseFormatter
-implements|implements
-name|Formatter
+extends|extends
+name|AbstractFormatter
 block|{
 annotation|@
 name|Override
@@ -120,37 +120,6 @@ name|title
 operator|.
 name|toString
 argument_list|()
-return|;
-block|}
-annotation|@
-name|Override
-DECL|method|hashCode ()
-specifier|public
-name|int
-name|hashCode
-parameter_list|()
-block|{
-return|return
-name|defaultHashCode
-argument_list|()
-return|;
-block|}
-annotation|@
-name|Override
-DECL|method|equals (Object obj)
-specifier|public
-name|boolean
-name|equals
-parameter_list|(
-name|Object
-name|obj
-parameter_list|)
-block|{
-return|return
-name|defaultEquals
-argument_list|(
-name|obj
-argument_list|)
 return|;
 block|}
 annotation|@
