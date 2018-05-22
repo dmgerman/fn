@@ -730,7 +730,7 @@ name|Pattern
 operator|.
 name|compile
 argument_list|(
-literal|"citation.cfm\\?id=(\\d+)&.*"
+literal|"citation.cfm\\?id=(\\d+).*"
 argument_list|)
 decl_stmt|;
 comment|// Patterns used to extract information for the preview:

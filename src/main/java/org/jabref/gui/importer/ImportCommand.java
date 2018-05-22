@@ -537,11 +537,11 @@ argument_list|,
 name|importers
 argument_list|)
 decl_stmt|;
-name|ImportMenuItem
+name|ImportAction
 name|importMenu
 init|=
 operator|new
-name|ImportMenuItem
+name|ImportAction
 argument_list|(
 name|frame
 argument_list|,

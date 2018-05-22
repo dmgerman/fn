@@ -54,30 +54,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|logging
-operator|.
-name|Level
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|logging
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|jabref
@@ -124,45 +100,11 @@ end_import
 
 begin_import
 import|import
-name|com
+name|org
 operator|.
-name|impossibl
-operator|.
-name|postgres
-operator|.
-name|api
-operator|.
-name|jdbc
+name|postgresql
 operator|.
 name|PGConnection
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|impossibl
-operator|.
-name|postgres
-operator|.
-name|jdbc
-operator|.
-name|PGDataSource
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|impossibl
-operator|.
-name|postgres
-operator|.
-name|jdbc
-operator|.
-name|ThreadedHousekeeper
 import|;
 end_import
 
@@ -178,11 +120,6 @@ name|PostgreSQLProcessor
 extends|extends
 name|DBMSProcessor
 block|{
-DECL|field|pgConnection
-specifier|private
-name|PGConnection
-name|pgConnection
-decl_stmt|;
 DECL|field|listener
 specifier|private
 name|PostgresSQLNotificationListener
@@ -433,29 +370,65 @@ name|dbmsSynchronizer
 parameter_list|)
 block|{
 comment|// Disable cleanup output of ThreadedHousekeeper
-comment|// TODO: this one is strange
-comment|/*         /home/florian/jabref/src/main/java/org/jabref/logic/shared/PostgreSQLProcessor.java:98: error: cannot access Referenceable         dataSource.setHost(connectionProperties.getHost());                   ^         class file for javax.naming.Referenceable not found         */
-comment|//        LOGGER.error("Notification listener disabled for now.");
-comment|//        Logger.getLogger(ThreadedHousekeeper.class.getName()).setLevel(Level.SEVERE);
-comment|//
-comment|//        this.listener = new PostgresSQLNotificationListener(dbmsSynchronizer);
-comment|//
-comment|//        PGDataSource dataSource = new PGDataSource();
-comment|//        dataSource.setHost(connectionProperties.getHost());
-comment|//        dataSource.setPort(connectionProperties.getPort());
-comment|//        dataSource.setDatabase(connectionProperties.getDatabase());
-comment|//        dataSource.setUser(connectionProperties.getUser());
-comment|//        dataSource.setPassword(connectionProperties.getPassword());
-comment|//
-comment|//        try {
-comment|//            pgConnection = (PGConnection) dataSource.getConnection();
-comment|//            pgConnection.createStatement().execute("LISTEN jabrefLiveUpdate");
-comment|//            // Do not use `new PostgresSQLNotificationListener(...)` as the object has to exist continuously!
-comment|//            // Otherwise the listener is going to be deleted by GC.
-comment|//            pgConnection.addNotificationListener(listener);
-comment|//        } catch (SQLException e) {
-comment|//            LOGGER.error("SQL Error: ", e);
-comment|//        }
+comment|//Logger.getLogger(ThreadedHousekeeper.class.getName()).setLevel(Level.SEVERE);
+try|try
+block|{
+name|connection
+operator|.
+name|createStatement
+argument_list|()
+operator|.
+name|execute
+argument_list|(
+literal|"LISTEN jabrefLiveUpdate"
+argument_list|)
+expr_stmt|;
+comment|// Do not use `new PostgresSQLNotificationListener(...)` as the object has to exist continuously!
+comment|// Otherwise the listener is going to be deleted by GC.
+name|PGConnection
+name|pgConnection
+init|=
+name|connection
+operator|.
+name|unwrap
+argument_list|(
+name|PGConnection
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
+name|listener
+operator|=
+operator|new
+name|PostgresSQLNotificationListener
+argument_list|(
+name|dbmsSynchronizer
+argument_list|,
+name|pgConnection
+argument_list|)
+expr_stmt|;
+name|listener
+operator|.
+name|start
+argument_list|()
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|SQLException
+name|e
+parameter_list|)
+block|{
+name|LOGGER
+operator|.
+name|error
+argument_list|(
+literal|"SQL Error: "
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 annotation|@
 name|Override
@@ -467,7 +440,7 @@ parameter_list|()
 block|{
 try|try
 block|{
-name|pgConnection
+name|connection
 operator|.
 name|close
 argument_list|()
@@ -500,7 +473,7 @@ parameter_list|()
 block|{
 try|try
 block|{
-name|pgConnection
+name|connection
 operator|.
 name|createStatement
 argument_list|()

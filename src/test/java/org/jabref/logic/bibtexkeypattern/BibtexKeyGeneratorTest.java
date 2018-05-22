@@ -4428,7 +4428,7 @@ name|void
 name|shortTitle
 parameter_list|()
 block|{
-comment|// shortTitle is getTitleWords with "3" as count
+comment|// shortTitle is getTitleWords with "3" as count and removed small words
 name|int
 name|count
 init|=
@@ -4444,13 +4444,18 @@ name|getTitleWords
 argument_list|(
 name|count
 argument_list|,
+name|BibtexKeyGenerator
+operator|.
+name|removeSmallWords
+argument_list|(
 name|TITLE_STRING_ALL_LOWER_FOUR_SMALL_WORDS_ONE_EN_DASH
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"BPEL conformance in"
+literal|"BPEL conformance open"
 argument_list|,
 name|BibtexKeyGenerator
 operator|.
@@ -4458,7 +4463,12 @@ name|getTitleWords
 argument_list|(
 name|count
 argument_list|,
+name|BibtexKeyGenerator
+operator|.
+name|removeSmallWords
+argument_list|(
 name|TITLE_STRING_ALL_LOWER_FIRST_WORD_IN_BRACKETS_TWO_SMALL_WORDS_SMALL_WORD_AFTER_COLON
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -4472,13 +4482,18 @@ name|getTitleWords
 argument_list|(
 name|count
 argument_list|,
+name|BibtexKeyGenerator
+operator|.
+name|removeSmallWords
+argument_list|(
 name|TITLE_STRING_CASED
 argument_list|)
 argument_list|)
+argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"BPMN Conformance in"
+literal|"BPMN Conformance Open"
 argument_list|,
 name|BibtexKeyGenerator
 operator|.
@@ -4486,13 +4501,18 @@ name|getTitleWords
 argument_list|(
 name|count
 argument_list|,
+name|BibtexKeyGenerator
+operator|.
+name|removeSmallWords
+argument_list|(
 name|TITLE_STRING_CASED_ONE_UPPER_WORD_ONE_SMALL_WORD
 argument_list|)
 argument_list|)
+argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"The Difference Between"
+literal|"Difference Graph Based"
 argument_list|,
 name|BibtexKeyGenerator
 operator|.
@@ -4500,13 +4520,18 @@ name|getTitleWords
 argument_list|(
 name|count
 argument_list|,
+name|BibtexKeyGenerator
+operator|.
+name|removeSmallWords
+argument_list|(
 name|TITLE_STRING_CASED_TWO_SMALL_WORDS_SMALL_WORD_AT_THE_BEGINNING
 argument_list|)
 argument_list|)
+argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"Cloud Computing: The"
+literal|"Cloud Computing: Next"
 argument_list|,
 name|BibtexKeyGenerator
 operator|.
@@ -4514,7 +4539,12 @@ name|getTitleWords
 argument_list|(
 name|count
 argument_list|,
+name|BibtexKeyGenerator
+operator|.
+name|removeSmallWords
+argument_list|(
 name|TITLE_STRING_CASED_TWO_SMALL_WORDS_SMALL_WORD_AFTER_COLON
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -4528,13 +4558,18 @@ name|getTitleWords
 argument_list|(
 name|count
 argument_list|,
+name|BibtexKeyGenerator
+operator|.
+name|removeSmallWords
+argument_list|(
 name|TITLE_STRING_CASED_TWO_SMALL_WORDS_ONE_CONNECTED_WORD
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"On the Measurement"
+literal|"Measurement Design Time"
 argument_list|,
 name|BibtexKeyGenerator
 operator|.
@@ -4542,7 +4577,12 @@ name|getTitleWords
 argument_list|(
 name|count
 argument_list|,
+name|BibtexKeyGenerator
+operator|.
+name|removeSmallWords
+argument_list|(
 name|TITLE_STRING_CASED_FOUR_SMALL_WORDS_TWO_CONNECTED_WORDS
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -5298,7 +5338,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"GreenSchedulingof"
+literal|"GreenSchedulingWhatever"
 argument_list|,
 name|BibtexKeyGenerator
 operator|.
@@ -5387,7 +5427,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"GreenSchedulingof"
+literal|"GreenSchedulingWhatever"
 argument_list|,
 name|BibtexKeyGenerator
 operator|.

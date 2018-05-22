@@ -421,7 +421,7 @@ name|WARNING_LIMIT
 condition|)
 block|{
 name|boolean
-name|getFullTextForAllCliecked
+name|confirmDownload
 init|=
 name|dialogService
 operator|.
@@ -490,7 +490,7 @@ decl_stmt|;
 if|if
 condition|(
 operator|!
-name|getFullTextForAllCliecked
+name|confirmDownload
 condition|)
 block|{
 name|basePanel

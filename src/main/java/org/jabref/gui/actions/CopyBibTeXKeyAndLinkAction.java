@@ -40,7 +40,7 @@ name|org
 operator|.
 name|jabref
 operator|.
-name|Globals
+name|JabRefGUI
 import|;
 end_import
 
@@ -50,7 +50,9 @@ name|org
 operator|.
 name|jabref
 operator|.
-name|JabRefGUI
+name|gui
+operator|.
+name|ClipBoardManager
 import|;
 end_import
 
@@ -156,12 +158,21 @@ specifier|final
 name|MainTable
 name|mainTable
 decl_stmt|;
-DECL|method|CopyBibTeXKeyAndLinkAction (MainTable mainTable)
+DECL|field|clipboardManager
+specifier|private
+specifier|final
+name|ClipBoardManager
+name|clipboardManager
+decl_stmt|;
+DECL|method|CopyBibTeXKeyAndLinkAction (MainTable mainTable, ClipBoardManager clipboardManager)
 specifier|public
 name|CopyBibTeXKeyAndLinkAction
 parameter_list|(
 name|MainTable
 name|mainTable
+parameter_list|,
+name|ClipBoardManager
+name|clipboardManager
 parameter_list|)
 block|{
 name|this
@@ -169,6 +180,12 @@ operator|.
 name|mainTable
 operator|=
 name|mainTable
+expr_stmt|;
+name|this
+operator|.
+name|clipboardManager
+operator|=
+name|clipboardManager
 expr_stmt|;
 block|}
 annotation|@
@@ -334,8 +351,6 @@ name|runInJavaFXThread
 argument_list|(
 parameter_list|()
 lambda|->
-name|Globals
-operator|.
 name|clipboardManager
 operator|.
 name|setClipboardHtmlContent

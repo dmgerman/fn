@@ -448,7 +448,7 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
-comment|/**          * Converts the {@link BibEntry} into {@link CSLItemData}.          *          * Change month field from JabRefFormat<code>#mon#</> to ShortName<code>mon</code>          * because CSL does not support JabRefFormat.          */
+comment|/**          * Converts the {@link BibEntry} into {@link CSLItemData}.          */
 DECL|method|bibEntryToCSLItemData (BibEntry bibEntry)
 specifier|private
 specifier|static
@@ -561,6 +561,7 @@ name|key
 argument_list|)
 condition|)
 block|{
+comment|// Change month from #mon# to mon because CSL does not support the former format
 name|value
 operator|=
 name|bibEntry

@@ -2093,6 +2093,8 @@ name|getTitleWords
 argument_list|(
 literal|3
 argument_list|,
+name|removeSmallWords
+argument_list|(
 name|entry
 operator|.
 name|getResolvedFieldOrAlias
@@ -2107,6 +2109,7 @@ operator|.
 name|orElse
 argument_list|(
 literal|""
+argument_list|)
 argument_list|)
 argument_list|)
 return|;

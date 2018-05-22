@@ -257,7 +257,7 @@ specifier|final
 name|DialogService
 name|dialogService
 decl_stmt|;
-comment|/** Creates a new instance of EntryTypeList      * @param frame */
+comment|/**      * Creates a new instance of EntryTypeList      */
 DECL|method|EntryTypeList (DialogService dialogService, List<String> fields, BibDatabaseMode mode)
 specifier|public
 name|EntryTypeList

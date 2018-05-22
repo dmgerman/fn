@@ -350,7 +350,7 @@ name|gui
 operator|.
 name|importer
 operator|.
-name|ImportMenuItem
+name|ImportAction
 import|;
 end_import
 
@@ -1209,11 +1209,11 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// System.out.println("importing from " + tmpfile.getAbsolutePath());
-name|ImportMenuItem
+name|ImportAction
 name|importer
 init|=
 operator|new
-name|ImportMenuItem
+name|ImportAction
 argument_list|(
 name|frame
 argument_list|,
@@ -1778,11 +1778,11 @@ condition|)
 block|{
 comment|// Import into new if entryTable==null, otherwise into current
 comment|// database:
-name|ImportMenuItem
+name|ImportAction
 name|importer
 init|=
 operator|new
-name|ImportMenuItem
+name|ImportAction
 argument_list|(
 name|frame
 argument_list|,
@@ -1843,11 +1843,11 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// Import into new if entryTable==null, otherwise into current library:
-name|ImportMenuItem
+name|ImportAction
 name|importer
 init|=
 operator|new
-name|ImportMenuItem
+name|ImportAction
 argument_list|(
 name|frame
 argument_list|,

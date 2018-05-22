@@ -3641,6 +3641,10 @@ operator|new
 name|CopyBibTeXKeyAndLinkAction
 argument_list|(
 name|mainTable
+argument_list|,
+name|Globals
+operator|.
+name|clipboardManager
 argument_list|)
 argument_list|)
 expr_stmt|;

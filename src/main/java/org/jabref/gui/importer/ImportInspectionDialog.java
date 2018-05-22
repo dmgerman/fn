@@ -4798,6 +4798,12 @@ block|{
 name|boolean
 name|continuePressed
 init|=
+name|DefaultTaskExecutor
+operator|.
+name|runInJavaFXThread
+argument_list|(
+parameter_list|()
+lambda|->
 name|frame
 operator|.
 name|getDialogService
@@ -4854,6 +4860,7 @@ name|WARN_ABOUT_DUPLICATES_IN_INSPECTION
 argument_list|,
 operator|!
 name|optOut
+argument_list|)
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -5830,13 +5837,6 @@ name|get
 argument_list|(
 literal|0
 argument_list|)
-argument_list|)
-expr_stmt|;
-name|contentPane
-operator|.
-name|setDividerLocation
-argument_list|(
-literal|0.5f
 argument_list|)
 expr_stmt|;
 block|}

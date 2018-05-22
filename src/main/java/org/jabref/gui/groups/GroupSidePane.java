@@ -18,7 +18,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Arrays
+name|Collections
 import|;
 end_import
 
@@ -282,13 +282,13 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|getAddtionalHeaderButtons ()
+DECL|method|getAdditionalHeaderButtons ()
 specifier|protected
 name|List
 argument_list|<
 name|Node
 argument_list|>
-name|getAddtionalHeaderButtons
+name|getAdditionalHeaderButtons
 parameter_list|()
 block|{
 name|intersectionUnionToggle
@@ -302,9 +302,9 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 return|return
-name|Arrays
+name|Collections
 operator|.
-name|asList
+name|singletonList
 argument_list|(
 name|intersectionUnionToggle
 argument_list|)
@@ -331,7 +331,7 @@ operator|.
 name|TRUE
 argument_list|)
 expr_stmt|;
-name|setGraphicsAndTooltipforButton
+name|setGraphicsAndTooltipForButton
 argument_list|(
 name|preferences
 operator|.
@@ -435,6 +435,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+elseif|else
 if|if
 condition|(
 name|mode
@@ -466,43 +467,48 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-name|setGraphicsAndTooltipforButton
+name|setGraphicsAndTooltipForButton
 argument_list|(
 name|mode
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|setGraphicsAndTooltipforButton (GroupViewMode mode)
+DECL|method|setGraphicsAndTooltipForButton (GroupViewMode mode)
 specifier|private
 name|void
-name|setGraphicsAndTooltipforButton
+name|setGraphicsAndTooltipForButton
 parameter_list|(
 name|GroupViewMode
 name|mode
 parameter_list|)
 block|{
+name|GroupModeViewModel
+name|modeViewModel
+init|=
+operator|new
+name|GroupModeViewModel
+argument_list|(
+name|mode
+argument_list|)
+decl_stmt|;
 name|intersectionUnionToggle
 operator|.
 name|setGraphic
 argument_list|(
-name|GroupModeViewModel
+name|modeViewModel
 operator|.
 name|getUnionIntersectionGraphic
-argument_list|(
-name|mode
-argument_list|)
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|intersectionUnionToggle
 operator|.
 name|setTooltip
 argument_list|(
-name|GroupModeViewModel
+name|modeViewModel
 operator|.
 name|getUnionIntersectionTooltip
-argument_list|(
-name|mode
-argument_list|)
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

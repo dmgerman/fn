@@ -1633,7 +1633,7 @@ name|Optional
 operator|.
 name|of
 argument_list|(
-literal|"Anawesomepaper"
+literal|"awesomepaperJabRef"
 argument_list|)
 argument_list|,
 name|entry
@@ -1688,7 +1688,7 @@ name|Optional
 operator|.
 name|of
 argument_list|(
-literal|"anawesomepaper"
+literal|"awesomepaperjabref"
 argument_list|)
 argument_list|,
 name|entry
@@ -1743,7 +1743,7 @@ name|Optional
 operator|.
 name|of
 argument_list|(
-literal|"ANAWESOMEPAPER"
+literal|"AWESOMEPAPERJABREF"
 argument_list|)
 argument_list|,
 name|entry
@@ -1798,7 +1798,7 @@ name|Optional
 operator|.
 name|of
 argument_list|(
-literal|"AnAwesomePaper"
+literal|"AwesomePaperJabref"
 argument_list|)
 argument_list|,
 name|entry
@@ -1853,7 +1853,7 @@ name|Optional
 operator|.
 name|of
 argument_list|(
-literal|"Anawesomepaper"
+literal|"Awesomepaperjabref"
 argument_list|)
 argument_list|,
 name|entry
@@ -1908,7 +1908,7 @@ name|Optional
 operator|.
 name|of
 argument_list|(
-literal|"AnAwesomePaper"
+literal|"AwesomePaperJabref"
 argument_list|)
 argument_list|,
 name|entry
