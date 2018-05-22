@@ -30,11 +30,11 @@ name|org
 operator|.
 name|jabref
 operator|.
-name|logic
+name|model
 operator|.
-name|formatter
+name|cleanup
 operator|.
-name|AbstractFormatter
+name|Formatter
 import|;
 end_import
 
@@ -76,7 +76,7 @@ specifier|public
 class|class
 name|NormalizeDateFormatter
 extends|extends
-name|AbstractFormatter
+name|Formatter
 block|{
 annotation|@
 name|Override

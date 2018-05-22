@@ -36,6 +36,20 @@ name|Localization
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|cleanup
+operator|.
+name|Formatter
+import|;
+end_import
+
 begin_comment
 comment|/**  * It may seem useless, but is needed as a fallback option  */
 end_comment
@@ -46,7 +60,7 @@ specifier|public
 class|class
 name|IdentityFormatter
 extends|extends
-name|AbstractFormatter
+name|Formatter
 block|{
 annotation|@
 name|Override

@@ -54,11 +54,11 @@ name|org
 operator|.
 name|jabref
 operator|.
-name|logic
+name|model
 operator|.
-name|formatter
+name|cleanup
 operator|.
-name|AbstractFormatter
+name|Formatter
 import|;
 end_import
 
@@ -86,7 +86,7 @@ specifier|public
 class|class
 name|OrdinalsToSuperscriptFormatter
 extends|extends
-name|AbstractFormatter
+name|Formatter
 block|{
 comment|// find possible superscripts on word boundaries
 DECL|field|SUPERSCRIPT_DETECT_PATTERN

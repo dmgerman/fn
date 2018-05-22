@@ -42,11 +42,11 @@ name|org
 operator|.
 name|jabref
 operator|.
-name|logic
+name|model
 operator|.
-name|formatter
+name|cleanup
 operator|.
-name|AbstractFormatter
+name|Formatter
 import|;
 end_import
 
@@ -74,7 +74,7 @@ specifier|public
 class|class
 name|RemoveHyphenatedNewlinesFormatter
 extends|extends
-name|AbstractFormatter
+name|Formatter
 block|{
 DECL|field|HYPHENATED_WORDS
 specifier|private

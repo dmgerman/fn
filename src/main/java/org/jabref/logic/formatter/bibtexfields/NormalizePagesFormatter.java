@@ -54,11 +54,11 @@ name|org
 operator|.
 name|jabref
 operator|.
-name|logic
+name|model
 operator|.
-name|formatter
+name|cleanup
 operator|.
-name|AbstractFormatter
+name|Formatter
 import|;
 end_import
 
@@ -100,7 +100,7 @@ specifier|public
 class|class
 name|NormalizePagesFormatter
 extends|extends
-name|AbstractFormatter
+name|Formatter
 block|{
 comment|// "startpage" and "endpage" are named groups. See http://stackoverflow.com/a/415635/873282 for a documentation
 DECL|field|PAGES_DETECT_PATTERN

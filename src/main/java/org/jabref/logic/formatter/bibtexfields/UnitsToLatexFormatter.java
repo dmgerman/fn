@@ -70,11 +70,11 @@ name|org
 operator|.
 name|jabref
 operator|.
-name|logic
+name|model
 operator|.
-name|formatter
+name|cleanup
 operator|.
-name|AbstractFormatter
+name|Formatter
 import|;
 end_import
 
@@ -114,7 +114,7 @@ specifier|public
 class|class
 name|UnitsToLatexFormatter
 extends|extends
-name|AbstractFormatter
+name|Formatter
 block|{
 DECL|field|UNIT_LIST
 specifier|private

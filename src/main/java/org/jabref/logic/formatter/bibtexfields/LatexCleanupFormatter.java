@@ -32,11 +32,11 @@ name|org
 operator|.
 name|jabref
 operator|.
-name|logic
+name|model
 operator|.
-name|formatter
+name|cleanup
 operator|.
-name|AbstractFormatter
+name|Formatter
 import|;
 end_import
 
@@ -60,7 +60,7 @@ specifier|public
 class|class
 name|LatexCleanupFormatter
 extends|extends
-name|AbstractFormatter
+name|Formatter
 block|{
 DECL|field|REMOVE_REDUNDANT
 specifier|private

@@ -79,10 +79,10 @@ DECL|class|LatexToUnicodeFormatter
 specifier|public
 class|class
 name|LatexToUnicodeFormatter
+extends|extends
+name|Formatter
 implements|implements
 name|LayoutFormatter
-implements|,
-name|Formatter
 block|{
 annotation|@
 name|Override
