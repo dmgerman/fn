@@ -660,22 +660,6 @@ operator|.
 name|upgradeObsoleteLookAndFeels
 argument_list|()
 expr_stmt|;
-comment|// Process arguments
-name|ArgumentProcessor
-name|argumentProcessor
-init|=
-operator|new
-name|ArgumentProcessor
-argument_list|(
-name|args
-argument_list|,
-name|ArgumentProcessor
-operator|.
-name|Mode
-operator|.
-name|INITIAL_START
-argument_list|)
-decl_stmt|;
 name|FallbackExceptionHandler
 operator|.
 name|installExceptionHandler
@@ -851,6 +835,22 @@ operator|.
 name|journalAbbreviationLoader
 argument_list|)
 expr_stmt|;
+comment|// Process arguments
+name|ArgumentProcessor
+name|argumentProcessor
+init|=
+operator|new
+name|ArgumentProcessor
+argument_list|(
+name|args
+argument_list|,
+name|ArgumentProcessor
+operator|.
+name|Mode
+operator|.
+name|INITIAL_START
+argument_list|)
+decl_stmt|;
 comment|// Initialize protected terms loader
 name|Globals
 operator|.
