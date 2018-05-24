@@ -57,7 +57,7 @@ DECL|class|AddBracesFormatter
 specifier|public
 class|class
 name|AddBracesFormatter
-implements|implements
+extends|extends
 name|Formatter
 block|{
 annotation|@

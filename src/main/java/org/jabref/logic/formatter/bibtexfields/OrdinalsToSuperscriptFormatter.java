@@ -85,7 +85,7 @@ DECL|class|OrdinalsToSuperscriptFormatter
 specifier|public
 class|class
 name|OrdinalsToSuperscriptFormatter
-implements|implements
+extends|extends
 name|Formatter
 block|{
 comment|// find possible superscripts on word boundaries

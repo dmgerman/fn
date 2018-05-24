@@ -109,10 +109,10 @@ DECL|class|ReplaceUnicodeLigaturesFormatter
 specifier|public
 class|class
 name|ReplaceUnicodeLigaturesFormatter
+extends|extends
+name|Formatter
 implements|implements
 name|LayoutFormatter
-implements|,
-name|Formatter
 block|{
 DECL|field|ligaturesMap
 specifier|private

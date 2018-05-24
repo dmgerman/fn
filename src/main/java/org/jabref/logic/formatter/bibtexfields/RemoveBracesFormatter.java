@@ -57,7 +57,7 @@ DECL|class|RemoveBracesFormatter
 specifier|public
 class|class
 name|RemoveBracesFormatter
-implements|implements
+extends|extends
 name|Formatter
 block|{
 annotation|@

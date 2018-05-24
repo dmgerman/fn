@@ -47,7 +47,7 @@ DECL|class|UpperCaseFormatter
 specifier|public
 class|class
 name|UpperCaseFormatter
-implements|implements
+extends|extends
 name|Formatter
 block|{
 annotation|@

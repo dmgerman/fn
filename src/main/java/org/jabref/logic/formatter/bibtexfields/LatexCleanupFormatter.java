@@ -59,7 +59,7 @@ DECL|class|LatexCleanupFormatter
 specifier|public
 class|class
 name|LatexCleanupFormatter
-implements|implements
+extends|extends
 name|Formatter
 block|{
 DECL|field|REMOVE_REDUNDANT

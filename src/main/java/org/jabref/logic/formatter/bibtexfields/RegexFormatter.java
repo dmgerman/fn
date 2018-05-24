@@ -101,7 +101,7 @@ DECL|class|RegexFormatter
 specifier|public
 class|class
 name|RegexFormatter
-implements|implements
+extends|extends
 name|Formatter
 block|{
 DECL|field|PATTERN_ESCAPED_OPENING_CURLY_BRACE

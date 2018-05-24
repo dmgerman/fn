@@ -92,10 +92,10 @@ DECL|class|HtmlToUnicodeFormatter
 specifier|public
 class|class
 name|HtmlToUnicodeFormatter
+extends|extends
+name|Formatter
 implements|implements
 name|LayoutFormatter
-implements|,
-name|Formatter
 block|{
 annotation|@
 name|Override

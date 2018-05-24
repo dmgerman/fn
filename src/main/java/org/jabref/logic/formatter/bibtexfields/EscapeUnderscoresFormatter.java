@@ -69,7 +69,7 @@ DECL|class|EscapeUnderscoresFormatter
 specifier|public
 class|class
 name|EscapeUnderscoresFormatter
-implements|implements
+extends|extends
 name|Formatter
 block|{
 DECL|field|UNDERSCORES
