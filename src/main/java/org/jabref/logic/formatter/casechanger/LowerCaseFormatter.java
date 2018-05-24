@@ -20,11 +20,11 @@ name|org
 operator|.
 name|jabref
 operator|.
-name|model
+name|logic
 operator|.
-name|cleanup
+name|l10n
 operator|.
-name|Formatter
+name|Localization
 import|;
 end_import
 
@@ -34,11 +34,11 @@ name|org
 operator|.
 name|jabref
 operator|.
-name|logic
+name|model
 operator|.
-name|l10n
+name|cleanup
 operator|.
-name|Localization
+name|Formatter
 import|;
 end_import
 
