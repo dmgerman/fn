@@ -95,9 +95,7 @@ operator|.
 name|sql
 decl_stmt|;
 name|requires
-name|pgjdbc
-operator|.
-name|ng
+name|postgresql
 decl_stmt|;
 comment|// JavaFX
 name|requires
