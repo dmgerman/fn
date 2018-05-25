@@ -700,31 +700,18 @@ comment|// Check for running JabRef
 if|if
 condition|(
 operator|!
-name|allowMultipleAppInstances
+name|handleMultipleAppInstances
 argument_list|(
 name|args
 argument_list|)
-condition|)
-block|{
-return|return;
-block|}
-comment|// See if we should shut down now
-if|if
-condition|(
+operator|||
 name|argumentProcessor
 operator|.
 name|shouldShutDown
 argument_list|()
 condition|)
 block|{
-name|Globals
-operator|.
-name|shutdownThreadPools
-argument_list|()
-expr_stmt|;
-name|Platform
-operator|.
-name|exit
+name|shutdownCurrentInstance
 argument_list|()
 expr_stmt|;
 return|return;
@@ -752,11 +739,11 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|allowMultipleAppInstances (String[] args)
+DECL|method|handleMultipleAppInstances (String[] args)
 specifier|private
 specifier|static
 name|boolean
-name|allowMultipleAppInstances
+name|handleMultipleAppInstances
 parameter_list|(
 name|String
 index|[]
@@ -840,17 +827,6 @@ literal|"Arguments passed on to running JabRef instance. Shutting down."
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Globals
-operator|.
-name|shutdownThreadPools
-argument_list|()
-expr_stmt|;
-comment|// needed to tell JavaFx to stop
-name|Platform
-operator|.
-name|exit
-argument_list|()
-expr_stmt|;
 return|return
 literal|false
 return|;
@@ -868,6 +844,25 @@ block|}
 return|return
 literal|true
 return|;
+block|}
+DECL|method|shutdownCurrentInstance ()
+specifier|private
+specifier|static
+name|void
+name|shutdownCurrentInstance
+parameter_list|()
+block|{
+name|Globals
+operator|.
+name|shutdownThreadPools
+argument_list|()
+expr_stmt|;
+comment|// needed to tell JavaFx to stop
+name|Platform
+operator|.
+name|exit
+argument_list|()
+expr_stmt|;
 block|}
 DECL|method|applyPreferences (JabRefPreferences preferences)
 specifier|private
