@@ -99,7 +99,7 @@ DECL|class|NormalizePagesFormatter
 specifier|public
 class|class
 name|NormalizePagesFormatter
-implements|implements
+extends|extends
 name|Formatter
 block|{
 comment|// "startpage" and "endpage" are named groups. See http://stackoverflow.com/a/415635/873282 for a documentation
@@ -332,37 +332,6 @@ parameter_list|()
 block|{
 return|return
 literal|"1 - 2"
-return|;
-block|}
-annotation|@
-name|Override
-DECL|method|hashCode ()
-specifier|public
-name|int
-name|hashCode
-parameter_list|()
-block|{
-return|return
-name|defaultHashCode
-argument_list|()
-return|;
-block|}
-annotation|@
-name|Override
-DECL|method|equals (Object obj)
-specifier|public
-name|boolean
-name|equals
-parameter_list|(
-name|Object
-name|obj
-parameter_list|)
-block|{
-return|return
-name|defaultEquals
-argument_list|(
-name|obj
-argument_list|)
 return|;
 block|}
 block|}

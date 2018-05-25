@@ -73,7 +73,7 @@ DECL|class|RemoveNewlinesFormatter
 specifier|public
 class|class
 name|RemoveNewlinesFormatter
-implements|implements
+extends|extends
 name|Formatter
 block|{
 DECL|field|LINEBREAKS

@@ -75,7 +75,7 @@ DECL|class|NormalizeNamesFormatter
 specifier|public
 class|class
 name|NormalizeNamesFormatter
-implements|implements
+extends|extends
 name|Formatter
 block|{
 annotation|@

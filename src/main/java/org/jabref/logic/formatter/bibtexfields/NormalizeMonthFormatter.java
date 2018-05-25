@@ -81,7 +81,7 @@ DECL|class|NormalizeMonthFormatter
 specifier|public
 class|class
 name|NormalizeMonthFormatter
-implements|implements
+extends|extends
 name|Formatter
 block|{
 annotation|@

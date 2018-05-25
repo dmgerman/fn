@@ -52,16 +52,12 @@ name|Formatter
 import|;
 end_import
 
-begin_comment
-comment|/**  * Removes all matching braces around the string.  */
-end_comment
-
 begin_class
 DECL|class|RemoveBracesFormatter
 specifier|public
 class|class
 name|RemoveBracesFormatter
-implements|implements
+extends|extends
 name|Formatter
 block|{
 annotation|@
