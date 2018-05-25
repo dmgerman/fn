@@ -1439,7 +1439,6 @@ block|}
 block|}
 block|}
 DECL|method|upgradeImportFileAndDirePatterns ()
-specifier|private
 specifier|static
 name|void
 name|upgradeImportFileAndDirePatterns
