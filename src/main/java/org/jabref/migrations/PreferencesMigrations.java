@@ -239,9 +239,45 @@ specifier|private
 name|PreferencesMigrations
 parameter_list|()
 block|{     }
+comment|/**      * Perform checks and changes for users with a preference set from an older JabRef version.      */
+DECL|method|runMigrations ()
+specifier|public
+specifier|static
+name|void
+name|runMigrations
+parameter_list|()
+block|{
+name|upgradePrefsToOrgJabRef
+argument_list|()
+expr_stmt|;
+name|upgradeSortOrder
+argument_list|()
+expr_stmt|;
+name|upgradeFaultyEncodingStrings
+argument_list|()
+expr_stmt|;
+name|upgradeLabelPatternToBibtexKeyPattern
+argument_list|()
+expr_stmt|;
+name|upgradeImportFileAndDirePatterns
+argument_list|()
+expr_stmt|;
+name|upgradeStoredCustomEntryTypes
+argument_list|()
+expr_stmt|;
+name|upgradeKeyBindingsToJavaFX
+argument_list|()
+expr_stmt|;
+name|addCrossRefRelatedFieldsForAutoComplete
+argument_list|()
+expr_stmt|;
+name|upgradeObsoleteLookAndFeels
+argument_list|()
+expr_stmt|;
+block|}
 comment|/**      * Migrate all preferences from net/sf/jabref to org/jabref      */
 DECL|method|upgradePrefsToOrgJabRef ()
-specifier|public
+specifier|private
 specifier|static
 name|void
 name|upgradePrefsToOrgJabRef
@@ -469,7 +505,7 @@ block|}
 block|}
 comment|/**      * Added from Jabref 2.11 beta 4 onwards to fix wrong encoding names      */
 DECL|method|upgradeFaultyEncodingStrings ()
-specifier|public
+specifier|private
 specifier|static
 name|void
 name|upgradeFaultyEncodingStrings
@@ -735,7 +771,7 @@ block|}
 block|}
 comment|/**      * Upgrade the sort order preferences for the current version      * The old preference is kept in case an old version of JabRef is used with      * these preferences, but it is only used when the new preference does not      * exist      */
 DECL|method|upgradeSortOrder ()
-specifier|public
+specifier|private
 specifier|static
 name|void
 name|upgradeSortOrder
@@ -962,7 +998,7 @@ block|}
 block|}
 comment|/**      * Migrate all customized entry types from versions<=3.7      */
 DECL|method|upgradeStoredCustomEntryTypes ()
-specifier|public
+specifier|private
 specifier|static
 name|void
 name|upgradeStoredCustomEntryTypes
@@ -1052,7 +1088,7 @@ block|}
 block|}
 comment|/**      * Migrate LabelPattern configuration from versions<=3.5 to new BibtexKeyPatterns      */
 DECL|method|upgradeLabelPatternToBibtexKeyPattern ()
-specifier|public
+specifier|private
 specifier|static
 name|void
 name|upgradeLabelPatternToBibtexKeyPattern
@@ -1403,7 +1439,6 @@ block|}
 block|}
 block|}
 DECL|method|upgradeImportFileAndDirePatterns ()
-specifier|public
 specifier|static
 name|void
 name|upgradeImportFileAndDirePatterns
@@ -1512,7 +1547,7 @@ comment|// Directory preferences are not yet migrated, since it is not quote cle
 comment|// the user defined old-style patterns, and the default pattern is "".
 block|}
 DECL|method|upgradeKeyBindingsToJavaFX ()
-specifier|public
+specifier|private
 specifier|static
 name|void
 name|upgradeKeyBindingsToJavaFX
@@ -1621,7 +1656,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|addCrossRefRelatedFieldsForAutoComplete ()
-specifier|public
+specifier|private
 specifier|static
 name|void
 name|addCrossRefRelatedFieldsForAutoComplete
@@ -1769,7 +1804,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|upgradeObsoleteLookAndFeels ()
-specifier|public
+specifier|private
 specifier|static
 name|void
 name|upgradeObsoleteLookAndFeels
@@ -1898,6 +1933,6 @@ block|)
 class|;
 end_class
 
-unit|}  }
+unit|} }
 end_unit
 
