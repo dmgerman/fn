@@ -1866,6 +1866,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testFirstAuthorNull ()
 specifier|public
 name|void
@@ -2662,6 +2664,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testAuthIniNNull ()
 specifier|public
 name|void
@@ -3090,6 +3094,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|authNMThrowsNPE ()
 specifier|public
 name|void
@@ -4112,6 +4118,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testPagePrefixNull ()
 specifier|public
 name|void
@@ -4228,6 +4236,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testLastPageNull ()
 specifier|public
 name|void
