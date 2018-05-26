@@ -444,10 +444,7 @@ argument_list|)
 operator|+
 literal|": "
 operator|+
-name|fileToOpen
-operator|.
-name|getFileName
-argument_list|()
+name|fileName
 argument_list|)
 expr_stmt|;
 name|history
