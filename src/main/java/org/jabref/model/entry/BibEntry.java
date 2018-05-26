@@ -1682,9 +1682,10 @@ block|}
 block|}
 else|else
 block|{
+comment|// Date field not in valid format
 name|LOGGER
 operator|.
-name|warn
+name|debug
 argument_list|(
 literal|"Could not parse date "
 operator|+
@@ -1700,7 +1701,6 @@ operator|.
 name|empty
 argument_list|()
 return|;
-comment|// Date field not in valid format
 block|}
 block|}
 return|return
