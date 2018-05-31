@@ -743,36 +743,10 @@ name|useRemoteServer
 argument_list|()
 condition|)
 block|{
-name|Globals
-operator|.
-name|REMOTE_LISTENER
-operator|.
-name|open
-argument_list|(
-operator|new
-name|JabRefMessageHandler
-argument_list|()
-argument_list|,
-name|remotePreferences
-operator|.
-name|getPort
-argument_list|()
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
-operator|!
-name|Globals
-operator|.
-name|REMOTE_LISTENER
-operator|.
-name|isOpen
-argument_list|()
-condition|)
-block|{
-comment|// we are not alone, there is already a server out there, try to contact already running JabRef:
-if|if
-condition|(
+comment|// Try to contact already running JabRef
+name|RemoteClient
+name|remoteClient
+init|=
 operator|new
 name|RemoteClient
 argument_list|(
@@ -781,6 +755,19 @@ operator|.
 name|getPort
 argument_list|()
 argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|remoteClient
+operator|.
+name|ping
+argument_list|()
+condition|)
+block|{
+comment|// We are not alone, there is already a server out there, send command line arguments to other instance
+if|if
+condition|(
+name|remoteClient
 operator|.
 name|sendCommandLineArguments
 argument_list|(
@@ -788,7 +775,6 @@ name|args
 argument_list|)
 condition|)
 block|{
-comment|// We have successfully sent our command line options through the socket to another JabRef instance.
 comment|// So we assume it's all taken care of, and quit.
 name|LOGGER
 operator|.
@@ -807,14 +793,26 @@ literal|false
 return|;
 block|}
 block|}
-comment|// we are alone, we start the server
+else|else
+block|{
+comment|// We are alone, so we start the server
 name|Globals
 operator|.
 name|REMOTE_LISTENER
 operator|.
-name|start
+name|openAndStart
+argument_list|(
+operator|new
+name|JabRefMessageHandler
 argument_list|()
+argument_list|,
+name|remotePreferences
+operator|.
+name|getPort
+argument_list|()
+argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return
 literal|true
