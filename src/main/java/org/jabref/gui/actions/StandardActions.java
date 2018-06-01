@@ -14,16 +14,6 @@ end_package
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Optional
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|jabref
@@ -89,6 +79,16 @@ operator|.
 name|database
 operator|.
 name|BibDatabaseMode
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
 import|;
 end_import
 
@@ -200,13 +200,13 @@ name|COPY_BIBTEX_KEY_AND_LINK
 argument_list|)
 block|,
 DECL|enumConstant|COPY_CITATION_HTML
-DECL|enumConstant|Localization.menuTitle
+DECL|enumConstant|Localization.lang
 DECL|enumConstant|KeyBinding.COPY_PREVIEW
 name|COPY_CITATION_HTML
 argument_list|(
 name|Localization
 operator|.
-name|menuTitle
+name|lang
 argument_list|(
 literal|"Copy citation"
 argument_list|)
@@ -219,12 +219,12 @@ name|COPY_PREVIEW
 argument_list|)
 block|,
 DECL|enumConstant|COPY_CITATION_MORE
-DECL|enumConstant|Localization.menuTitle
+DECL|enumConstant|Localization.lang
 name|COPY_CITATION_MORE
 argument_list|(
 name|Localization
 operator|.
-name|menuTitle
+name|lang
 argument_list|(
 literal|"Copy citation"
 argument_list|)
@@ -293,13 +293,13 @@ name|EXPORT_TO_CLIPBOARD
 argument_list|)
 block|,
 DECL|enumConstant|EXPORT_SELECTED_TO_CLIPBOARD
-DECL|enumConstant|Localization.menuTitle
+DECL|enumConstant|Localization.lang
 DECL|enumConstant|IconTheme.JabRefIcons.EXPORT_TO_CLIPBOARD
 name|EXPORT_SELECTED_TO_CLIPBOARD
 argument_list|(
 name|Localization
 operator|.
-name|menuTitle
+name|lang
 argument_list|(
 literal|"Export selected entries to clipboard"
 argument_list|)
@@ -925,13 +925,13 @@ name|RELEVANCE
 argument_list|)
 block|,
 DECL|enumConstant|NEW_LIBRARY_BIBTEX
-DECL|enumConstant|Localization.menuTitle
+DECL|enumConstant|Localization.lang
 DECL|enumConstant|IconTheme.JabRefIcons.NEW
 name|NEW_LIBRARY_BIBTEX
 argument_list|(
 name|Localization
 operator|.
-name|menuTitle
+name|lang
 argument_list|(
 literal|"New %0 library"
 argument_list|,
@@ -951,13 +951,13 @@ name|NEW
 argument_list|)
 block|,
 DECL|enumConstant|NEW_LIBRARY_BIBLATEX
-DECL|enumConstant|Localization.menuTitle
+DECL|enumConstant|Localization.lang
 DECL|enumConstant|IconTheme.JabRefIcons.NEW
 name|NEW_LIBRARY_BIBLATEX
 argument_list|(
 name|Localization
 operator|.
-name|menuTitle
+name|lang
 argument_list|(
 literal|"New %0 library"
 argument_list|,
@@ -977,14 +977,14 @@ name|NEW
 argument_list|)
 block|,
 DECL|enumConstant|OPEN_LIBRARY
-DECL|enumConstant|Localization.menuTitle
+DECL|enumConstant|Localization.lang
 DECL|enumConstant|IconTheme.JabRefIcons.OPEN
 DECL|enumConstant|KeyBinding.OPEN_DATABASE
 name|OPEN_LIBRARY
 argument_list|(
 name|Localization
 operator|.
-name|menuTitle
+name|lang
 argument_list|(
 literal|"Open library"
 argument_list|)
@@ -1020,13 +1020,13 @@ name|IMPORT_EXPORT
 argument_list|)
 block|,
 DECL|enumConstant|MERGE_DATABASE
-DECL|enumConstant|Localization.menuTitle
+DECL|enumConstant|Localization.lang
 DECL|enumConstant|Localization.lang
 name|MERGE_DATABASE
 argument_list|(
 name|Localization
 operator|.
-name|menuTitle
+name|lang
 argument_list|(
 literal|"Append library"
 argument_list|)
@@ -1040,14 +1040,14 @@ argument_list|)
 argument_list|)
 block|,
 DECL|enumConstant|SAVE_LIBRARY
-DECL|enumConstant|Localization.menuTitle
+DECL|enumConstant|Localization.lang
 DECL|enumConstant|IconTheme.JabRefIcons.SAVE
 DECL|enumConstant|KeyBinding.SAVE_DATABASE
 name|SAVE_LIBRARY
 argument_list|(
 name|Localization
 operator|.
-name|menuTitle
+name|lang
 argument_list|(
 literal|"Save library"
 argument_list|)
@@ -1093,7 +1093,7 @@ argument_list|)
 argument_list|)
 block|,
 DECL|enumConstant|SAVE_ALL
-DECL|enumConstant|Localization.menuTitle
+DECL|enumConstant|Localization.lang
 DECL|enumConstant|Localization.lang
 DECL|enumConstant|IconTheme.JabRefIcons.SAVE_ALL
 DECL|enumConstant|KeyBinding.SAVE_ALL
@@ -1101,7 +1101,7 @@ name|SAVE_ALL
 argument_list|(
 name|Localization
 operator|.
-name|menuTitle
+name|lang
 argument_list|(
 literal|"Save all"
 argument_list|)
@@ -1125,13 +1125,13 @@ name|SAVE_ALL
 argument_list|)
 block|,
 DECL|enumConstant|IMPORT_INTO_NEW_LIBRARY
-DECL|enumConstant|Localization.menuTitle
+DECL|enumConstant|Localization.lang
 DECL|enumConstant|KeyBinding.IMPORT_INTO_NEW_DATABASE
 name|IMPORT_INTO_NEW_LIBRARY
 argument_list|(
 name|Localization
 operator|.
-name|menuTitle
+name|lang
 argument_list|(
 literal|"Import into new library"
 argument_list|)
@@ -1142,13 +1142,13 @@ name|IMPORT_INTO_NEW_DATABASE
 argument_list|)
 block|,
 DECL|enumConstant|IMPORT_INTO_CURRENT_LIBRARY
-DECL|enumConstant|Localization.menuTitle
+DECL|enumConstant|Localization.lang
 DECL|enumConstant|KeyBinding.IMPORT_INTO_CURRENT_DATABASE
 name|IMPORT_INTO_CURRENT_LIBRARY
 argument_list|(
 name|Localization
 operator|.
-name|menuTitle
+name|lang
 argument_list|(
 literal|"Import into current library"
 argument_list|)
@@ -1159,24 +1159,24 @@ name|IMPORT_INTO_CURRENT_DATABASE
 argument_list|)
 block|,
 DECL|enumConstant|EXPORT_ALL
-DECL|enumConstant|Localization.menuTitle
+DECL|enumConstant|Localization.lang
 name|EXPORT_ALL
 argument_list|(
 name|Localization
 operator|.
-name|menuTitle
+name|lang
 argument_list|(
 literal|"Export"
 argument_list|)
 argument_list|)
 block|,
 DECL|enumConstant|EXPORT_SELECTED
-DECL|enumConstant|Localization.menuTitle
+DECL|enumConstant|Localization.lang
 name|EXPORT_SELECTED
 argument_list|(
 name|Localization
 operator|.
-name|menuTitle
+name|lang
 argument_list|(
 literal|"Export selected entries"
 argument_list|)
@@ -1195,14 +1195,14 @@ argument_list|)
 argument_list|)
 block|,
 DECL|enumConstant|PULL_CHANGES_FROM_SHARED_DB
-DECL|enumConstant|Localization.menuTitle
+DECL|enumConstant|Localization.lang
 DECL|enumConstant|IconTheme.JabRefIcons.PULL
 DECL|enumConstant|KeyBinding.PULL_CHANGES_FROM_SHARED_DATABASE
 name|PULL_CHANGES_FROM_SHARED_DB
 argument_list|(
 name|Localization
 operator|.
-name|menuTitle
+name|lang
 argument_list|(
 literal|"Pull changes from shared database"
 argument_list|)
@@ -1219,7 +1219,7 @@ name|PULL_CHANGES_FROM_SHARED_DATABASE
 argument_list|)
 block|,
 DECL|enumConstant|CLOSE_LIBRARY
-DECL|enumConstant|Localization.menuTitle
+DECL|enumConstant|Localization.lang
 DECL|enumConstant|Localization.lang
 DECL|enumConstant|IconTheme.JabRefIcons.CLOSE
 DECL|enumConstant|KeyBinding.CLOSE_DATABASE
@@ -1227,7 +1227,7 @@ name|CLOSE_LIBRARY
 argument_list|(
 name|Localization
 operator|.
-name|menuTitle
+name|lang
 argument_list|(
 literal|"Close library"
 argument_list|)
@@ -1251,7 +1251,7 @@ name|CLOSE_DATABASE
 argument_list|)
 block|,
 DECL|enumConstant|QUIT
-DECL|enumConstant|Localization.menuTitle
+DECL|enumConstant|Localization.lang
 DECL|enumConstant|Localization.lang
 DECL|enumConstant|IconTheme.JabRefIcons.CLOSE_JABREF
 DECL|enumConstant|KeyBinding.QUIT_JABREF
@@ -1259,7 +1259,7 @@ name|QUIT
 argument_list|(
 name|Localization
 operator|.
-name|menuTitle
+name|lang
 argument_list|(
 literal|"Quit"
 argument_list|)
@@ -1331,13 +1331,13 @@ name|REDO
 argument_list|)
 block|,
 DECL|enumConstant|REPLACE_ALL
-DECL|enumConstant|Localization.menuTitle
+DECL|enumConstant|Localization.lang
 DECL|enumConstant|KeyBinding.REPLACE_STRING
 name|REPLACE_ALL
 argument_list|(
 name|Localization
 operator|.
-name|menuTitle
+name|lang
 argument_list|(
 literal|"Replace string"
 argument_list|)
@@ -1348,24 +1348,24 @@ name|REPLACE_STRING
 argument_list|)
 block|,
 DECL|enumConstant|MANAGE_KEYWORDS
-DECL|enumConstant|Localization.menuTitle
+DECL|enumConstant|Localization.lang
 name|MANAGE_KEYWORDS
 argument_list|(
 name|Localization
 operator|.
-name|menuTitle
+name|lang
 argument_list|(
 literal|"Manage keywords"
 argument_list|)
 argument_list|)
 block|,
 DECL|enumConstant|MASS_SET_FIELDS
-DECL|enumConstant|Localization.menuTitle
+DECL|enumConstant|Localization.lang
 name|MASS_SET_FIELDS
 argument_list|(
 name|Localization
 operator|.
-name|menuTitle
+name|lang
 argument_list|(
 literal|"Set/clear/append/rename fields"
 argument_list|)
@@ -1452,14 +1452,14 @@ name|WEB_SEARCH
 argument_list|)
 block|,
 DECL|enumConstant|NEW_SUB_LIBRARY_FROM_AUX
-DECL|enumConstant|Localization.menuTitle
+DECL|enumConstant|Localization.lang
 DECL|enumConstant|Localization.lang
 DECL|enumConstant|IconTheme.JabRefIcons.NEW
 name|NEW_SUB_LIBRARY_FROM_AUX
 argument_list|(
 name|Localization
 operator|.
-name|menuTitle
+name|lang
 argument_list|(
 literal|"New sublibrary based on AUX file"
 argument_list|)
@@ -1481,14 +1481,14 @@ name|NEW
 argument_list|)
 block|,
 DECL|enumConstant|WRITE_XMP
-DECL|enumConstant|Localization.menuTitle
+DECL|enumConstant|Localization.lang
 DECL|enumConstant|Localization.lang
 DECL|enumConstant|KeyBinding.WRITE_XMP
 name|WRITE_XMP
 argument_list|(
 name|Localization
 operator|.
-name|menuTitle
+name|lang
 argument_list|(
 literal|"Write XMP-metadata to PDFs"
 argument_list|)
@@ -1506,14 +1506,14 @@ name|WRITE_XMP
 argument_list|)
 block|,
 DECL|enumConstant|OPEN_FOLDER
-DECL|enumConstant|Localization.menuTitle
+DECL|enumConstant|Localization.lang
 DECL|enumConstant|Localization.lang
 DECL|enumConstant|KeyBinding.OPEN_FOLDER
 name|OPEN_FOLDER
 argument_list|(
 name|Localization
 operator|.
-name|menuTitle
+name|lang
 argument_list|(
 literal|"Open folder"
 argument_list|)
@@ -1531,7 +1531,7 @@ name|OPEN_FOLDER
 argument_list|)
 block|,
 DECL|enumConstant|OPEN_FILE
-DECL|enumConstant|Localization.menuTitle
+DECL|enumConstant|Localization.lang
 DECL|enumConstant|Localization.lang
 DECL|enumConstant|IconTheme.JabRefIcons.FILE
 DECL|enumConstant|KeyBinding.OPEN_FILE
@@ -1539,7 +1539,7 @@ name|OPEN_FILE
 argument_list|(
 name|Localization
 operator|.
-name|menuTitle
+name|lang
 argument_list|(
 literal|"Open file"
 argument_list|)
@@ -1563,7 +1563,7 @@ name|OPEN_FILE
 argument_list|)
 block|,
 DECL|enumConstant|OPEN_CONSOLE
-DECL|enumConstant|Localization.menuTitle
+DECL|enumConstant|Localization.lang
 DECL|enumConstant|Localization.lang
 DECL|enumConstant|IconTheme.JabRefIcons.CONSOLE
 DECL|enumConstant|KeyBinding.OPEN_CONSOLE
@@ -1571,7 +1571,7 @@ name|OPEN_CONSOLE
 argument_list|(
 name|Localization
 operator|.
-name|menuTitle
+name|lang
 argument_list|(
 literal|"Open terminal here"
 argument_list|)
@@ -1607,14 +1607,14 @@ argument_list|)
 argument_list|)
 block|,
 DECL|enumConstant|ABBREVIATE_ISO
-DECL|enumConstant|Localization.menuTitle
+DECL|enumConstant|Localization.lang
 DECL|enumConstant|Localization.lang
 DECL|enumConstant|KeyBinding.ABBREVIATE
 name|ABBREVIATE_ISO
 argument_list|(
 name|Localization
 operator|.
-name|menuTitle
+name|lang
 argument_list|(
 literal|"Abbreviate journal names (ISO)"
 argument_list|)
@@ -1632,13 +1632,13 @@ name|ABBREVIATE
 argument_list|)
 block|,
 DECL|enumConstant|ABBREVIATE_MEDLINE
-DECL|enumConstant|Localization.menuTitle
+DECL|enumConstant|Localization.lang
 DECL|enumConstant|Localization.lang
 name|ABBREVIATE_MEDLINE
 argument_list|(
 name|Localization
 operator|.
-name|menuTitle
+name|lang
 argument_list|(
 literal|"Abbreviate journal names (MEDLINE)"
 argument_list|)
@@ -1652,14 +1652,14 @@ argument_list|)
 argument_list|)
 block|,
 DECL|enumConstant|UNABBREVIATE
-DECL|enumConstant|Localization.menuTitle
+DECL|enumConstant|Localization.lang
 DECL|enumConstant|Localization.lang
 DECL|enumConstant|KeyBinding.UNABBREVIATE
 name|UNABBREVIATE
 argument_list|(
 name|Localization
 operator|.
-name|menuTitle
+name|lang
 argument_list|(
 literal|"Unabbreviate journal names"
 argument_list|)
@@ -1677,72 +1677,72 @@ name|UNABBREVIATE
 argument_list|)
 block|,
 DECL|enumConstant|MANAGE_CUSTOM_EXPORTS
-DECL|enumConstant|Localization.menuTitle
+DECL|enumConstant|Localization.lang
 name|MANAGE_CUSTOM_EXPORTS
 argument_list|(
 name|Localization
 operator|.
-name|menuTitle
+name|lang
 argument_list|(
 literal|"Manage custom exports"
 argument_list|)
 argument_list|)
 block|,
 DECL|enumConstant|MANAGE_CUSTOM_IMPORTS
-DECL|enumConstant|Localization.menuTitle
+DECL|enumConstant|Localization.lang
 name|MANAGE_CUSTOM_IMPORTS
 argument_list|(
 name|Localization
 operator|.
-name|menuTitle
+name|lang
 argument_list|(
 literal|"Manage custom imports"
 argument_list|)
 argument_list|)
 block|,
 DECL|enumConstant|CUSTOMIZE_ENTRY_TYPES
-DECL|enumConstant|Localization.menuTitle
+DECL|enumConstant|Localization.lang
 name|CUSTOMIZE_ENTRY_TYPES
 argument_list|(
 name|Localization
 operator|.
-name|menuTitle
+name|lang
 argument_list|(
 literal|"Customize entry types"
 argument_list|)
 argument_list|)
 block|,
 DECL|enumConstant|SETUP_GENERAL_FIELDS
-DECL|enumConstant|Localization.menuTitle
+DECL|enumConstant|Localization.lang
 name|SETUP_GENERAL_FIELDS
 argument_list|(
 name|Localization
 operator|.
-name|menuTitle
+name|lang
 argument_list|(
 literal|"Set up general fields"
 argument_list|)
 argument_list|)
 block|,
 DECL|enumConstant|MANAGE_EXTERNAL_FILETYPES
-DECL|enumConstant|Localization.menuTitle
+DECL|enumConstant|Localization.lang
 name|MANAGE_EXTERNAL_FILETYPES
 argument_list|(
 name|Localization
 operator|.
-name|menuTitle
+name|lang
 argument_list|(
 literal|"Manage external file types"
 argument_list|)
 argument_list|)
 block|,
 DECL|enumConstant|MANAGE_PROTECTED_TERMS
-DECL|enumConstant|Localization.menuTitle
+DECL|enumConstant|Localization.lang
 name|MANAGE_PROTECTED_TERMS
 argument_list|(
 name|Localization
 operator|.
-name|menuTitle
+name|lang
 argument_list|(
 literal|"Manage protected terms"
 argument_list|)
@@ -1761,24 +1761,24 @@ argument_list|)
 argument_list|)
 block|,
 DECL|enumConstant|SHOW_PREFS
-DECL|enumConstant|Localization.menuTitle
+DECL|enumConstant|Localization.lang
 name|SHOW_PREFS
 argument_list|(
 name|Localization
 operator|.
-name|menuTitle
+name|lang
 argument_list|(
 literal|"Preferences"
 argument_list|)
 argument_list|)
 block|,
 DECL|enumConstant|MANAGE_JOURNALS
-DECL|enumConstant|Localization.menuTitle
+DECL|enumConstant|Localization.lang
 name|MANAGE_JOURNALS
 argument_list|(
 name|Localization
 operator|.
-name|menuTitle
+name|lang
 argument_list|(
 literal|"Manage journal abbreviations"
 argument_list|)
@@ -1804,13 +1804,13 @@ name|KEY_BINDINGS
 argument_list|)
 block|,
 DECL|enumConstant|MANAGE_CONTENT_SELECTORS
-DECL|enumConstant|Localization.menuTitle
+DECL|enumConstant|Localization.lang
 DECL|enumConstant|IconTheme.JabRefIcons.PREFERENCES
 name|MANAGE_CONTENT_SELECTORS
 argument_list|(
 name|Localization
 operator|.
-name|menuTitle
+name|lang
 argument_list|(
 literal|"Manage content selectors"
 argument_list|)
@@ -1902,13 +1902,13 @@ name|PDF_FILE
 argument_list|)
 block|,
 DECL|enumConstant|NEXT_PREVIEW_STYLE
-DECL|enumConstant|Localization.menuTitle
+DECL|enumConstant|Localization.lang
 DECL|enumConstant|KeyBinding.NEXT_PREVIEW_LAYOUT
 name|NEXT_PREVIEW_STYLE
 argument_list|(
 name|Localization
 operator|.
-name|menuTitle
+name|lang
 argument_list|(
 literal|"Next preview layout"
 argument_list|)
@@ -1919,13 +1919,13 @@ name|NEXT_PREVIEW_LAYOUT
 argument_list|)
 block|,
 DECL|enumConstant|PREVIOUS_PREVIEW_STYLE
-DECL|enumConstant|Localization.menuTitle
+DECL|enumConstant|Localization.lang
 DECL|enumConstant|KeyBinding.PREVIOUS_PREVIEW_LAYOUT
 name|PREVIOUS_PREVIEW_STYLE
 argument_list|(
 name|Localization
 operator|.
-name|menuTitle
+name|lang
 argument_list|(
 literal|"Previous preview layout"
 argument_list|)
@@ -1936,13 +1936,13 @@ name|PREVIOUS_PREVIEW_LAYOUT
 argument_list|)
 block|,
 DECL|enumConstant|SELECT_ALL
-DECL|enumConstant|Localization.menuTitle
+DECL|enumConstant|Localization.lang
 DECL|enumConstant|KeyBinding.SELECT_ALL
 name|SELECT_ALL
 argument_list|(
 name|Localization
 operator|.
-name|menuTitle
+name|lang
 argument_list|(
 literal|"Select all"
 argument_list|)
@@ -1953,14 +1953,14 @@ name|SELECT_ALL
 argument_list|)
 block|,
 DECL|enumConstant|NEW_ENTRY
-DECL|enumConstant|Localization.menuTitle
+DECL|enumConstant|Localization.lang
 DECL|enumConstant|IconTheme.JabRefIcons.ADD_ENTRY
 DECL|enumConstant|KeyBinding.NEW_ENTRY
 name|NEW_ENTRY
 argument_list|(
 name|Localization
 operator|.
-name|menuTitle
+name|lang
 argument_list|(
 literal|"New entry"
 argument_list|)
@@ -1996,13 +1996,13 @@ name|ADD_ENTRY
 argument_list|)
 block|,
 DECL|enumConstant|NEW_ENTRY_FROM_PLAINTEX
-DECL|enumConstant|Localization.menuTitle
+DECL|enumConstant|Localization.lang
 DECL|enumConstant|KeyBinding.NEW_FROM_PLAIN_TEXT
 name|NEW_ENTRY_FROM_PLAINTEX
 argument_list|(
 name|Localization
 operator|.
-name|menuTitle
+name|lang
 argument_list|(
 literal|"New entry from plain text"
 argument_list|)
@@ -2013,12 +2013,12 @@ name|NEW_FROM_PLAIN_TEXT
 argument_list|)
 block|,
 DECL|enumConstant|LIBRARY_PROPERTIES
-DECL|enumConstant|Localization.menuTitle
+DECL|enumConstant|Localization.lang
 name|LIBRARY_PROPERTIES
 argument_list|(
 name|Localization
 operator|.
-name|menuTitle
+name|lang
 argument_list|(
 literal|"Library properties"
 argument_list|)
@@ -2061,13 +2061,13 @@ name|EDIT_STRINGS
 argument_list|)
 block|,
 DECL|enumConstant|FIND_DUPLICATES
-DECL|enumConstant|Localization.menuTitle
+DECL|enumConstant|Localization.lang
 DECL|enumConstant|IconTheme.JabRefIcons.FIND_DUPLICATES
 name|FIND_DUPLICATES
 argument_list|(
 name|Localization
 operator|.
-name|menuTitle
+name|lang
 argument_list|(
 literal|"Find duplicates"
 argument_list|)
@@ -2099,14 +2099,14 @@ name|MERGE_ENTRIES
 argument_list|)
 block|,
 DECL|enumConstant|RESOLVE_DUPLICATE_KEYS
-DECL|enumConstant|Localization.menuTitle
+DECL|enumConstant|Localization.lang
 DECL|enumConstant|Localization.lang
 DECL|enumConstant|KeyBinding.RESOLVE_DUPLICATE_BIBTEX_KEYS
 name|RESOLVE_DUPLICATE_KEYS
 argument_list|(
 name|Localization
 operator|.
-name|menuTitle
+name|lang
 argument_list|(
 literal|"Resolve duplicate BibTeX keys"
 argument_list|)
@@ -2124,13 +2124,13 @@ name|RESOLVE_DUPLICATE_BIBTEX_KEYS
 argument_list|)
 block|,
 DECL|enumConstant|CHECK_INTEGRITY
-DECL|enumConstant|Localization.menuTitle
+DECL|enumConstant|Localization.lang
 DECL|enumConstant|KeyBinding.CHECK_INTEGRITY
 name|CHECK_INTEGRITY
 argument_list|(
 name|Localization
 operator|.
-name|menuTitle
+name|lang
 argument_list|(
 literal|"Check integrity"
 argument_list|)
@@ -2226,13 +2226,13 @@ argument_list|)
 argument_list|)
 block|,
 DECL|enumConstant|LOOKUP_FULLTEXT
-DECL|enumConstant|Localization.menuTitle
+DECL|enumConstant|Localization.lang
 DECL|enumConstant|KeyBinding.DOWNLOAD_FULL_TEXT
 name|LOOKUP_FULLTEXT
 argument_list|(
 name|Localization
 operator|.
-name|menuTitle
+name|lang
 argument_list|(
 literal|"Look up full text documents"
 argument_list|)
@@ -2267,13 +2267,13 @@ name|AUTOGENERATE_BIBTEX_KEYS
 argument_list|)
 block|,
 DECL|enumConstant|DOWNLOAD_FULL_TEXT
-DECL|enumConstant|Localization.menuTitle
+DECL|enumConstant|Localization.lang
 DECL|enumConstant|KeyBinding.DOWNLOAD_FULL_TEXT
 name|DOWNLOAD_FULL_TEXT
 argument_list|(
 name|Localization
 operator|.
-name|menuTitle
+name|lang
 argument_list|(
 literal|"Look up full text documents"
 argument_list|)
@@ -2356,25 +2356,25 @@ name|HELP
 argument_list|)
 block|,
 DECL|enumConstant|WEB_MENU
-DECL|enumConstant|Localization.menuTitle
+DECL|enumConstant|Localization.lang
 name|WEB_MENU
 argument_list|(
 name|Localization
 operator|.
-name|menuTitle
+name|lang
 argument_list|(
 literal|"JabRef resources"
 argument_list|)
 argument_list|)
 block|,
 DECL|enumConstant|OPEN_WEBPAGE
-DECL|enumConstant|Localization.menuTitle
+DECL|enumConstant|Localization.lang
 DECL|enumConstant|Localization.lang
 name|OPEN_WEBPAGE
 argument_list|(
 name|Localization
 operator|.
-name|menuTitle
+name|lang
 argument_list|(
 literal|"Website"
 argument_list|)
@@ -2426,14 +2426,14 @@ name|TWITTER
 argument_list|)
 block|,
 DECL|enumConstant|OPEN_BLOG
-DECL|enumConstant|Localization.menuTitle
+DECL|enumConstant|Localization.lang
 DECL|enumConstant|Localization.lang
 DECL|enumConstant|IconTheme.JabRefIcons.BLOG
 name|OPEN_BLOG
 argument_list|(
 name|Localization
 operator|.
-name|menuTitle
+name|lang
 argument_list|(
 literal|"Blog"
 argument_list|)
@@ -2453,13 +2453,13 @@ name|BLOG
 argument_list|)
 block|,
 DECL|enumConstant|OPEN_DEV_VERSION_LINK
-DECL|enumConstant|Localization.menuTitle
+DECL|enumConstant|Localization.lang
 DECL|enumConstant|Localization.lang
 name|OPEN_DEV_VERSION_LINK
 argument_list|(
 name|Localization
 operator|.
-name|menuTitle
+name|lang
 argument_list|(
 literal|"Development version"
 argument_list|)
@@ -2473,13 +2473,13 @@ argument_list|)
 argument_list|)
 block|,
 DECL|enumConstant|OPEN_CHANGELOG
-DECL|enumConstant|Localization.menuTitle
+DECL|enumConstant|Localization.lang
 DECL|enumConstant|Localization.lang
 name|OPEN_CHANGELOG
 argument_list|(
 name|Localization
 operator|.
-name|menuTitle
+name|lang
 argument_list|(
 literal|"View change log"
 argument_list|)
@@ -2493,14 +2493,14 @@ argument_list|)
 argument_list|)
 block|,
 DECL|enumConstant|FORK_ME
-DECL|enumConstant|Localization.menuTitle
+DECL|enumConstant|Localization.lang
 DECL|enumConstant|Localization.lang
 DECL|enumConstant|IconTheme.JabRefIcons.GITHUB
 name|FORK_ME
 argument_list|(
 name|Localization
 operator|.
-name|menuTitle
+name|lang
 argument_list|(
 literal|"Fork me on GitHub"
 argument_list|)
@@ -2520,14 +2520,14 @@ name|GITHUB
 argument_list|)
 block|,
 DECL|enumConstant|DONATE
-DECL|enumConstant|Localization.menuTitle
+DECL|enumConstant|Localization.lang
 DECL|enumConstant|Localization.lang
 DECL|enumConstant|IconTheme.JabRefIcons.DONATE
 name|DONATE
 argument_list|(
 name|Localization
 operator|.
-name|menuTitle
+name|lang
 argument_list|(
 literal|"Donate to JabRef"
 argument_list|)
@@ -2547,14 +2547,14 @@ name|DONATE
 argument_list|)
 block|,
 DECL|enumConstant|OPEN_FORUM
-DECL|enumConstant|Localization.menuTitle
+DECL|enumConstant|Localization.lang
 DECL|enumConstant|Localization.lang
 DECL|enumConstant|IconTheme.JabRefIcons.FORUM
 name|OPEN_FORUM
 argument_list|(
 name|Localization
 operator|.
-name|menuTitle
+name|lang
 argument_list|(
 literal|"Online help forum"
 argument_list|)
@@ -2574,13 +2574,13 @@ name|FORUM
 argument_list|)
 block|,
 DECL|enumConstant|ERROR_CONSOLE
-DECL|enumConstant|Localization.menuTitle
+DECL|enumConstant|Localization.lang
 DECL|enumConstant|Localization.lang
 name|ERROR_CONSOLE
 argument_list|(
 name|Localization
 operator|.
-name|menuTitle
+name|lang
 argument_list|(
 literal|"View event log"
 argument_list|)
@@ -2606,13 +2606,13 @@ argument_list|)
 argument_list|)
 block|,
 DECL|enumConstant|ABOUT
-DECL|enumConstant|Localization.menuTitle
+DECL|enumConstant|Localization.lang
 DECL|enumConstant|Localization.lang
 name|ABOUT
 argument_list|(
 name|Localization
 operator|.
-name|menuTitle
+name|lang
 argument_list|(
 literal|"About JabRef"
 argument_list|)
