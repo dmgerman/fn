@@ -909,35 +909,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testGetFileExtensionLowerCaseAndTrimmingFile ()
-specifier|public
-name|void
-name|testGetFileExtensionLowerCaseAndTrimmingFile
-parameter_list|()
-block|{
-name|assertEquals
-argument_list|(
-literal|"pdf"
-argument_list|,
-name|FileHelper
-operator|.
-name|getFileExtension
-argument_list|(
-name|Paths
-operator|.
-name|get
-argument_list|(
-literal|"test.PdF  "
-argument_list|)
-argument_list|)
-operator|.
-name|get
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
-annotation|@
-name|Test
 DECL|method|testGetFileExtensionMultipleDotsFile ()
 specifier|public
 name|void
@@ -956,7 +927,7 @@ name|Paths
 operator|.
 name|get
 argument_list|(
-literal|"te.st.PdF  "
+literal|"te.st.PdF"
 argument_list|)
 argument_list|)
 operator|.
