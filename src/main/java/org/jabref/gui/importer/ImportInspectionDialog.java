@@ -8058,17 +8058,6 @@ argument_list|)
 decl_stmt|;
 name|setRowHeight
 argument_list|(
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getInt
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|TABLE_ROW_PADDING
-argument_list|)
-operator|+
 name|maxOfIconsAndFontSize
 argument_list|)
 expr_stmt|;
