@@ -992,8 +992,10 @@ name|collect
 argument_list|(
 name|Collectors
 operator|.
-name|toList
-argument_list|()
+name|joining
+argument_list|(
+literal|"\n"
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1060,6 +1062,13 @@ name|key
 operator|.
 name|getKey
 argument_list|()
+operator|.
+name|replaceAll
+argument_list|(
+literal|"\\\\ "
+argument_list|,
+literal|" "
+argument_list|)
 argument_list|)
 argument_list|)
 operator|.
@@ -1067,8 +1076,10 @@ name|collect
 argument_list|(
 name|Collectors
 operator|.
-name|toList
-argument_list|()
+name|joining
+argument_list|(
+literal|"\n"
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1107,9 +1118,22 @@ argument_list|()
 argument_list|,
 name|obsoleteKeys
 argument_list|,
-literal|"Obsolete keys found in language properties file: "
+literal|"Obsolete keys found in language properties file: \n"
 operator|+
 name|obsoleteKeys
+operator|.
+name|stream
+argument_list|()
+operator|.
+name|collect
+argument_list|(
+name|Collectors
+operator|.
+name|joining
+argument_list|(
+literal|"\n"
+argument_list|)
+argument_list|)
 operator|+
 literal|"\n"
 operator|+
