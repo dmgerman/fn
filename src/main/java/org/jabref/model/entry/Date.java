@@ -266,6 +266,8 @@ literal|"uuuu-M"
 argument_list|,
 literal|"d-M-uuuu"
 argument_list|,
+literal|"M-uuuu"
+argument_list|,
 literal|"M/uu"
 argument_list|,
 literal|"M/uuuu"
