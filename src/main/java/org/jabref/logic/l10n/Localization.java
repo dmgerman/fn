@@ -234,7 +234,7 @@ name|LOGGER
 operator|.
 name|error
 argument_list|(
-literal|"Messages are not initialized before accessing "
+literal|"Messages are not initialized before accessing key: "
 operator|+
 name|key
 argument_list|)
