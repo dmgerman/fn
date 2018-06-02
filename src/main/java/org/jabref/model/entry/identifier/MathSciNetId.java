@@ -275,7 +275,7 @@ argument_list|(
 operator|new
 name|URI
 argument_list|(
-literal|"http://www.ams.org/mathscinet-getitem?mr="
+literal|"https://www.ams.org/mathscinet-getitem?mr="
 operator|+
 name|identifier
 argument_list|)
