@@ -243,7 +243,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Fetches BibTeX data from DBLP (dblp.org)  *  * @see<a href="http://dblp.dagstuhl.de/faq/13501473">Basic API documentation</a>  */
+comment|/**  * Fetches BibTeX data from DBLP (dblp.org)  *  * @see<a href="https://dblp.dagstuhl.de/faq/13501473">Basic API documentation</a>  */
 end_comment
 
 begin_class
@@ -261,7 +261,7 @@ specifier|final
 name|String
 name|BASIC_SEARCH_URL
 init|=
-literal|"http://dblp.org/search/publ/api"
+literal|"https://dblp.org/search/publ/api"
 decl_stmt|;
 DECL|field|importFormatPreferences
 specifier|private
