@@ -201,7 +201,7 @@ specifier|final
 name|String
 name|SOURCE
 init|=
-literal|"http://pubs.acs.org/doi/abs/%s"
+literal|"https://pubs.acs.org/doi/abs/%s"
 decl_stmt|;
 comment|/**      * Tries to find a fulltext URL for a given BibTex entry.      *      * Currently only uses the DOI if found.      *      * @param entry The Bibtex entry      * @return The fulltext PDF URL Optional, if found, or an empty Optional if not found.      * @throws NullPointerException if no BibTex entry is given      * @throws java.io.IOException      */
 annotation|@
