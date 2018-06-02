@@ -167,7 +167,7 @@ specifier|final
 name|String
 name|BIBSONOMY_SCRAPER
 init|=
-literal|"http://scraper.bibsonomy.org/service?url="
+literal|"https://scraper.bibsonomy.org/service?url="
 decl_stmt|;
 DECL|field|BIBSONOMY_SCRAPER_POST
 specifier|private
