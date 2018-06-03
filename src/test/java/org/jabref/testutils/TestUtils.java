@@ -92,16 +92,7 @@ argument_list|()
 operator|!=
 literal|null
 condition|)
-block|{
-name|JabRefGUI
-operator|.
-name|getMainFrame
-argument_list|()
-operator|.
-name|dispose
-argument_list|()
-expr_stmt|;
-block|}
+block|{         }
 block|}
 block|}
 end_class

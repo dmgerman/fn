@@ -43,7 +43,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Duplicate of AuthorLastFirstAbbreviator.  *  * @see AuthorLastFirstAbbreviator  *  * @author Carlos Silla  */
+comment|/**  * Duplicate of AuthorLastFirstAbbreviator.  *  * @see AuthorLastFirstAbbreviator  */
 end_comment
 
 begin_class

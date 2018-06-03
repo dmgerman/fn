@@ -112,6 +112,16 @@ name|javax
 operator|.
 name|swing
 operator|.
+name|JFrame
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
 name|JRadioButton
 import|;
 end_import
@@ -271,7 +281,10 @@ operator|=
 operator|new
 name|JDialog
 argument_list|(
-name|parent
+operator|(
+name|JFrame
+operator|)
+literal|null
 argument_list|,
 name|Localization
 operator|.
@@ -671,7 +684,7 @@ name|getKey
 argument_list|(
 name|KeyBinding
 operator|.
-name|CLOSE_DIALOG
+name|CLOSE
 argument_list|)
 argument_list|,
 literal|"close"

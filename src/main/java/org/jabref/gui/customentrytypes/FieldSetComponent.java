@@ -342,6 +342,8 @@ name|jabref
 operator|.
 name|gui
 operator|.
+name|icon
+operator|.
 name|IconTheme
 import|;
 end_import
@@ -385,10 +387,6 @@ operator|.
 name|JabRefPreferences
 import|;
 end_import
-
-begin_comment
-comment|/**  * @author alver  */
-end_comment
 
 begin_class
 DECL|class|FieldSetComponent
@@ -952,7 +950,7 @@ name|JButton
 argument_list|(
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|UP
 operator|.
@@ -967,7 +965,7 @@ name|JButton
 argument_list|(
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|DOWN
 operator|.

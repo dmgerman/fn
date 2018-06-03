@@ -254,7 +254,6 @@ end_import
 
 begin_class
 DECL|class|FormatterTest
-specifier|public
 class|class
 name|FormatterTest
 block|{
@@ -267,7 +266,6 @@ decl_stmt|;
 annotation|@
 name|BeforeAll
 DECL|method|setUp ()
-specifier|public
 specifier|static
 name|void
 name|setUp
@@ -389,7 +387,6 @@ argument_list|(
 literal|"getFormatters"
 argument_list|)
 DECL|method|getNameReturnsNotNull (Formatter formatter)
-specifier|public
 name|void
 name|getNameReturnsNotNull
 parameter_list|(
@@ -414,7 +411,6 @@ argument_list|(
 literal|"getFormatters"
 argument_list|)
 DECL|method|getNameReturnsNotEmpty (Formatter formatter)
-specifier|public
 name|void
 name|getNameReturnsNotEmpty
 parameter_list|(
@@ -441,7 +437,6 @@ argument_list|(
 literal|"getFormatters"
 argument_list|)
 DECL|method|getKeyReturnsNotNull (Formatter formatter)
-specifier|public
 name|void
 name|getKeyReturnsNotNull
 parameter_list|(
@@ -466,7 +461,6 @@ argument_list|(
 literal|"getFormatters"
 argument_list|)
 DECL|method|getKeyReturnsNotEmpty (Formatter formatter)
-specifier|public
 name|void
 name|getKeyReturnsNotEmpty
 parameter_list|(
@@ -493,7 +487,6 @@ argument_list|(
 literal|"getFormatters"
 argument_list|)
 DECL|method|formatOfNullThrowsException (Formatter formatter)
-specifier|public
 name|void
 name|formatOfNullThrowsException
 parameter_list|(
@@ -526,7 +519,6 @@ argument_list|(
 literal|"getFormatters"
 argument_list|)
 DECL|method|formatOfEmptyStringReturnsEmpty (Formatter formatter)
-specifier|public
 name|void
 name|formatOfEmptyStringReturnsEmpty
 parameter_list|(
@@ -555,7 +547,6 @@ argument_list|(
 literal|"getFormatters"
 argument_list|)
 DECL|method|formatNotReturnsNull (Formatter formatter)
-specifier|public
 name|void
 name|formatNotReturnsNull
 parameter_list|(
@@ -582,7 +573,6 @@ argument_list|(
 literal|"getFormatters"
 argument_list|)
 DECL|method|getDescriptionAlwaysNonEmpty (Formatter formatter)
-specifier|public
 name|void
 name|getDescriptionAlwaysNonEmpty
 parameter_list|(
@@ -610,7 +600,6 @@ argument_list|(
 literal|"getFormatters"
 argument_list|)
 DECL|method|getExampleInputAlwaysNonEmpty (Formatter formatter)
-specifier|public
 name|void
 name|getExampleInputAlwaysNonEmpty
 parameter_list|(

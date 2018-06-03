@@ -138,6 +138,16 @@ name|javax
 operator|.
 name|swing
 operator|.
+name|JFrame
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
 name|JPanel
 import|;
 end_import
@@ -181,7 +191,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *<p>Title: MergeDialog</p>  *<p>Description: Asks for details about merge database operation.</p>  *<p>Copyright: Copyright (c) 2003</p>  * @author Morten O. Alver  */
+comment|/**  * Asks for details about merge database operation.  */
 end_comment
 
 begin_class
@@ -323,7 +333,10 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|frame
+operator|(
+name|JFrame
+operator|)
+literal|null
 argument_list|,
 name|title
 argument_list|,
@@ -786,7 +799,7 @@ name|getKey
 argument_list|(
 name|KeyBinding
 operator|.
-name|CLOSE_DIALOG
+name|CLOSE
 argument_list|)
 argument_list|,
 literal|"close"

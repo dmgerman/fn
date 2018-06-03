@@ -277,6 +277,7 @@ name|forbiddenPackage
 decl_stmt|;
 DECL|field|exceptions
 specifier|private
+specifier|final
 name|List
 argument_list|<
 name|String

@@ -205,7 +205,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Importer for the MEDLINE Plain format.  *  * check here for details on the format  * http://www.nlm.nih.gov/bsd/mms/medlineelements.html  *  * @author vegeziel  */
+comment|/**  * Importer for the MEDLINE Plain format.  *  * check here for details on the format  * http://www.nlm.nih.gov/bsd/mms/medlineelements.html  */
 end_comment
 
 begin_class

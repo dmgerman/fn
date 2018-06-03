@@ -104,18 +104,6 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|FXDialogService
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
 name|util
 operator|.
 name|DefaultTaskExecutor
@@ -345,6 +333,26 @@ specifier|protected
 name|FormBuilder
 name|builder
 decl_stmt|;
+DECL|field|dialogService
+specifier|protected
+name|DialogService
+name|dialogService
+decl_stmt|;
+DECL|method|AbstractPushToApplication (DialogService dialogService)
+specifier|public
+name|AbstractPushToApplication
+parameter_list|(
+name|DialogService
+name|dialogService
+parameter_list|)
+block|{
+name|this
+operator|.
+name|dialogService
+operator|=
+name|dialogService
+expr_stmt|;
+block|}
 annotation|@
 name|Override
 DECL|method|getName ()
@@ -356,7 +364,7 @@ block|{
 return|return
 name|Localization
 operator|.
-name|menuTitle
+name|lang
 argument_list|(
 literal|"Push entries to external application (%0)"
 argument_list|,
@@ -961,13 +969,6 @@ operator|.
 name|build
 argument_list|()
 decl_stmt|;
-name|DialogService
-name|ds
-init|=
-operator|new
-name|FXDialogService
-argument_list|()
-decl_stmt|;
 name|browse
 operator|.
 name|addActionListener
@@ -980,7 +981,7 @@ name|runInJavaFXThread
 argument_list|(
 parameter_list|()
 lambda|->
-name|ds
+name|dialogService
 operator|.
 name|showFileOpenDialog
 argument_list|(

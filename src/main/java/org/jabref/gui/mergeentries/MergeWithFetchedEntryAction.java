@@ -14,11 +14,13 @@ end_package
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|swing
+name|jabref
 operator|.
-name|JOptionPane
+name|gui
+operator|.
+name|BasePanel
 import|;
 end_import
 
@@ -30,7 +32,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|BasePanel
+name|DialogService
 import|;
 end_import
 
@@ -104,12 +106,21 @@ specifier|final
 name|BasePanel
 name|basePanel
 decl_stmt|;
-DECL|method|MergeWithFetchedEntryAction (BasePanel basePanel)
+DECL|field|dialogService
+specifier|private
+specifier|final
+name|DialogService
+name|dialogService
+decl_stmt|;
+DECL|method|MergeWithFetchedEntryAction (BasePanel basePanel, DialogService dialogService)
 specifier|public
 name|MergeWithFetchedEntryAction
 parameter_list|(
 name|BasePanel
 name|basePanel
+parameter_list|,
+name|DialogService
+name|dialogService
 parameter_list|)
 block|{
 name|this
@@ -117,6 +128,12 @@ operator|.
 name|basePanel
 operator|=
 name|basePanel
+expr_stmt|;
+name|this
+operator|.
+name|dialogService
+operator|=
+name|dialogService
 expr_stmt|;
 block|}
 annotation|@
@@ -174,22 +191,10 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|JOptionPane
+name|dialogService
 operator|.
-name|showMessageDialog
+name|showInformationDialogAndWait
 argument_list|(
-name|basePanel
-operator|.
-name|frame
-argument_list|()
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"This operation requires exactly one item to be selected."
-argument_list|)
-argument_list|,
 name|Localization
 operator|.
 name|lang
@@ -229,9 +234,12 @@ argument_list|)
 argument_list|)
 argument_list|)
 argument_list|,
-name|JOptionPane
+name|Localization
 operator|.
-name|INFORMATION_MESSAGE
+name|lang
+argument_list|(
+literal|"This operation requires exactly one item to be selected."
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

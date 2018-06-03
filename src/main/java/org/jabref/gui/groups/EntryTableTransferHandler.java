@@ -350,7 +350,7 @@ name|gui
 operator|.
 name|importer
 operator|.
-name|ImportMenuItem
+name|ImportAction
 import|;
 end_import
 
@@ -1020,62 +1020,8 @@ operator|instanceof
 name|MouseEvent
 condition|)
 block|{
-name|int
-name|columnIndex
-init|=
-name|entryTable
-operator|.
-name|columnAtPoint
-argument_list|(
-operator|(
-operator|(
-name|MouseEvent
-operator|)
-name|e
-operator|)
-operator|.
-name|getPoint
-argument_list|()
-argument_list|)
-decl_stmt|;
-name|int
-name|modelIndex
-init|=
-name|entryTable
-operator|.
-name|getColumnModel
-argument_list|()
-operator|.
-name|getColumn
-argument_list|(
-name|columnIndex
-argument_list|)
-operator|.
-name|getModelIndex
-argument_list|()
-decl_stmt|;
-if|if
-condition|(
-name|entryTable
-operator|.
-name|isFileColumn
-argument_list|(
-name|modelIndex
-argument_list|)
-condition|)
-block|{
-name|LOGGER
-operator|.
-name|info
-argument_list|(
-literal|"Dragging file"
-argument_list|)
-expr_stmt|;
-name|draggingFile
-operator|=
-literal|true
-expr_stmt|;
-block|}
+comment|// TODO: Reimplement drag& drop
+comment|/*             int columnIndex = entryTable.columnAtPoint(((MouseEvent) e).getPoint());             int modelIndex = entryTable.getColumnModel().getColumn(columnIndex).getModelIndex();             if (entryTable.isFileColumn(modelIndex)) {                 LOGGER.info("Dragging file");                 draggingFile = true;             }             */
 block|}
 name|super
 operator|.
@@ -1263,11 +1209,11 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// System.out.println("importing from " + tmpfile.getAbsolutePath());
-name|ImportMenuItem
+name|ImportAction
 name|importer
 init|=
 operator|new
-name|ImportMenuItem
+name|ImportAction
 argument_list|(
 name|frame
 argument_list|,
@@ -1659,8 +1605,6 @@ operator|new
 name|OpenDatabaseAction
 argument_list|(
 name|frame
-argument_list|,
-literal|false
 argument_list|)
 decl_stmt|;
 name|List
@@ -1834,11 +1778,11 @@ condition|)
 block|{
 comment|// Import into new if entryTable==null, otherwise into current
 comment|// database:
-name|ImportMenuItem
+name|ImportAction
 name|importer
 init|=
 operator|new
-name|ImportMenuItem
+name|ImportAction
 argument_list|(
 name|frame
 argument_list|,
@@ -1899,11 +1843,11 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// Import into new if entryTable==null, otherwise into current library:
-name|ImportMenuItem
+name|ImportAction
 name|importer
 init|=
 operator|new
-name|ImportMenuItem
+name|ImportAction
 argument_list|(
 name|frame
 argument_list|,

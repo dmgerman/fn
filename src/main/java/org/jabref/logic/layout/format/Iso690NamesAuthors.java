@@ -38,10 +38,6 @@ name|LayoutFormatter
 import|;
 end_import
 
-begin_comment
-comment|/**  *  * @author Usuario  */
-end_comment
-
 begin_class
 DECL|class|Iso690NamesAuthors
 specifier|public

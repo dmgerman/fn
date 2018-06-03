@@ -174,7 +174,7 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|JOptionPane
+name|JFrame
 import|;
 end_import
 
@@ -271,18 +271,6 @@ operator|.
 name|gui
 operator|.
 name|DialogService
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|FXDialogService
 import|;
 end_import
 
@@ -552,7 +540,10 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|frame
+operator|(
+name|JFrame
+operator|)
+literal|null
 argument_list|,
 name|Localization
 operator|.
@@ -568,6 +559,14 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
+name|DialogService
+name|dialogService
+init|=
+name|frame
+operator|.
+name|getDialogService
+argument_list|()
+decl_stmt|;
 name|ImportTableModel
 name|tableModel
 init|=
@@ -758,13 +757,6 @@ operator|.
 name|build
 argument_list|()
 decl_stmt|;
-name|DialogService
-name|ds
-init|=
-operator|new
-name|FXDialogService
-argument_list|()
-decl_stmt|;
 name|Optional
 argument_list|<
 name|Path
@@ -777,7 +769,7 @@ name|runInJavaFXThread
 argument_list|(
 parameter_list|()
 lambda|->
-name|ds
+name|dialogService
 operator|.
 name|showFileOpenDialog
 argument_list|(
@@ -879,12 +871,10 @@ name|Exception
 name|exc
 parameter_list|)
 block|{
-name|JOptionPane
+name|dialogService
 operator|.
-name|showMessageDialog
+name|showErrorDialogAndWait
 argument_list|(
-name|frame
-argument_list|,
 name|Localization
 operator|.
 name|lang
@@ -893,6 +883,8 @@ literal|"Could not instantiate %0"
 argument_list|,
 name|chosenFileStr
 argument_list|)
+argument_list|,
+name|exc
 argument_list|)
 expr_stmt|;
 block|}
@@ -902,12 +894,10 @@ name|NoClassDefFoundError
 name|exc
 parameter_list|)
 block|{
-name|JOptionPane
+name|dialogService
 operator|.
-name|showMessageDialog
+name|showErrorDialogAndWait
 argument_list|(
-name|frame
-argument_list|,
 name|Localization
 operator|.
 name|lang
@@ -916,6 +906,8 @@ literal|"Could not instantiate %0. Have you chosen the correct package path?"
 argument_list|,
 name|chosenFileStr
 argument_list|)
+argument_list|,
+name|exc
 argument_list|)
 expr_stmt|;
 block|}
@@ -1009,13 +1001,6 @@ operator|.
 name|build
 argument_list|()
 decl_stmt|;
-name|DialogService
-name|ds
-init|=
-operator|new
-name|FXDialogService
-argument_list|()
-decl_stmt|;
 name|Optional
 argument_list|<
 name|Path
@@ -1028,7 +1013,7 @@ name|runInJavaFXThread
 argument_list|(
 parameter_list|()
 lambda|->
-name|ds
+name|dialogService
 operator|.
 name|showFileOpenDialog
 argument_list|(
@@ -1112,12 +1097,10 @@ argument_list|,
 name|exc
 argument_list|)
 expr_stmt|;
-name|JOptionPane
+name|dialogService
 operator|.
-name|showMessageDialog
+name|showErrorDialogAndWait
 argument_list|(
-name|frame
-argument_list|,
 name|Localization
 operator|.
 name|lang
@@ -1141,6 +1124,8 @@ name|lang
 argument_list|(
 literal|"Have you chosen the correct package path?"
 argument_list|)
+argument_list|,
+name|exc
 argument_list|)
 expr_stmt|;
 block|}
@@ -1159,12 +1144,10 @@ argument_list|,
 name|exc
 argument_list|)
 expr_stmt|;
-name|JOptionPane
+name|dialogService
 operator|.
-name|showMessageDialog
+name|showErrorDialogAndWait
 argument_list|(
-name|frame
-argument_list|,
 name|Localization
 operator|.
 name|lang
@@ -1188,6 +1171,8 @@ name|lang
 argument_list|(
 literal|"Have you chosen the correct package path?"
 argument_list|)
+argument_list|,
+name|exc
 argument_list|)
 expr_stmt|;
 block|}
@@ -1253,11 +1238,16 @@ operator|-
 literal|1
 condition|)
 block|{
-name|JOptionPane
+name|dialogService
 operator|.
-name|showMessageDialog
+name|showWarningDialogAndWait
 argument_list|(
-name|frame
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Manage custom imports"
+argument_list|)
 argument_list|,
 name|Localization
 operator|.
@@ -1288,11 +1278,16 @@ argument_list|(
 name|row
 argument_list|)
 decl_stmt|;
-name|JOptionPane
+name|dialogService
 operator|.
-name|showMessageDialog
+name|showWarningDialogAndWait
 argument_list|(
-name|frame
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Manage custom imports"
+argument_list|)
 argument_list|,
 name|importer
 operator|.
@@ -1341,11 +1336,16 @@ operator|-
 literal|1
 condition|)
 block|{
-name|JOptionPane
+name|dialogService
 operator|.
-name|showMessageDialog
+name|showWarningDialogAndWait
 argument_list|(
-name|frame
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Manage custom imports"
+argument_list|)
 argument_list|,
 name|Localization
 operator|.
@@ -1530,7 +1530,7 @@ name|getKey
 argument_list|(
 name|KeyBinding
 operator|.
-name|CLOSE_DIALOG
+name|CLOSE
 argument_list|)
 argument_list|,
 literal|"close"
@@ -1690,13 +1690,6 @@ argument_list|)
 expr_stmt|;
 name|pack
 argument_list|()
-expr_stmt|;
-name|this
-operator|.
-name|setLocationRelativeTo
-argument_list|(
-name|frame
-argument_list|)
 expr_stmt|;
 name|customImporterTable
 operator|.

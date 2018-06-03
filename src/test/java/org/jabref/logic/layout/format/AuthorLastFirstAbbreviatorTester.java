@@ -45,7 +45,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Test case  that verifies the functionalities of the  * formater AuthorLastFirstAbbreviator.  *  * @author Carlos Silla  * @author Christopher Oezbek<oezi@oezi.de>  */
+comment|/**  * Test case  that verifies the functionalities of the  * formater AuthorLastFirstAbbreviator.  */
 end_comment
 
 begin_class

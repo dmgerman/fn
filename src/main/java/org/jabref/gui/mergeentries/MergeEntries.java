@@ -302,6 +302,18 @@ name|jabref
 operator|.
 name|gui
 operator|.
+name|FXDialogService
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
 name|PreviewPanel
 import|;
 end_import
@@ -539,10 +551,6 @@ operator|.
 name|LoggerFactory
 import|;
 end_import
-
-begin_comment
-comment|/**  * @author Oscar Gustafsson  *  *         Class for dealing with merging entries  */
-end_comment
 
 begin_class
 DECL|class|MergeEntries
@@ -1284,6 +1292,22 @@ argument_list|(
 literal|null
 argument_list|,
 literal|null
+argument_list|,
+name|Globals
+operator|.
+name|getKeyPrefs
+argument_list|()
+argument_list|,
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getPreviewPreferences
+argument_list|()
+argument_list|,
+operator|new
+name|FXDialogService
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|entryPreview

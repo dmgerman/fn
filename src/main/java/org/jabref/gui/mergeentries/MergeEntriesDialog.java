@@ -38,7 +38,7 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|JOptionPane
+name|JFrame
 import|;
 end_import
 
@@ -61,6 +61,18 @@ operator|.
 name|gui
 operator|.
 name|BasePanel
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|DialogService
 import|;
 end_import
 
@@ -242,10 +254,6 @@ name|RowSpec
 import|;
 end_import
 
-begin_comment
-comment|/**  * @author Oscar  *  *         Dialog for merging two Bibtex entries  */
-end_comment
-
 begin_class
 DECL|class|MergeEntriesDialog
 specifier|public
@@ -293,20 +301,29 @@ operator|new
 name|CellConstraints
 argument_list|()
 decl_stmt|;
-DECL|method|MergeEntriesDialog (BasePanel panel)
+DECL|field|dialogService
+specifier|private
+specifier|final
+name|DialogService
+name|dialogService
+decl_stmt|;
+DECL|method|MergeEntriesDialog (BasePanel panel, DialogService dialogService)
 specifier|public
 name|MergeEntriesDialog
 parameter_list|(
 name|BasePanel
 name|panel
+parameter_list|,
+name|DialogService
+name|dialogService
 parameter_list|)
 block|{
 name|super
 argument_list|(
-name|panel
-operator|.
-name|frame
-argument_list|()
+operator|(
+name|JFrame
+operator|)
+literal|null
 argument_list|,
 name|MERGE_ENTRIES
 argument_list|,
@@ -316,6 +333,12 @@ name|MergeEntriesDialog
 operator|.
 name|class
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|dialogService
+operator|=
+name|dialogService
 expr_stmt|;
 name|this
 operator|.
@@ -358,14 +381,16 @@ literal|2
 condition|)
 block|{
 comment|// None selected. Inform the user to select entries first.
-name|JOptionPane
+name|dialogService
 operator|.
-name|showMessageDialog
+name|showInformationDialogAndWait
 argument_list|(
-name|panel
+name|Localization
 operator|.
-name|frame
-argument_list|()
+name|lang
+argument_list|(
+literal|"Merge entries"
+argument_list|)
 argument_list|,
 name|Localization
 operator|.
@@ -373,12 +398,6 @@ name|lang
 argument_list|(
 literal|"You have to choose exactly two entries to merge."
 argument_list|)
-argument_list|,
-name|MERGE_ENTRIES
-argument_list|,
-name|JOptionPane
-operator|.
-name|INFORMATION_MESSAGE
 argument_list|)
 expr_stmt|;
 name|this
@@ -605,8 +624,6 @@ name|getDatabase
 argument_list|()
 argument_list|,
 name|mergedEntry
-argument_list|,
-name|panel
 argument_list|)
 argument_list|)
 expr_stmt|;

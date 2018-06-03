@@ -230,7 +230,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|IconTheme
+name|OSXCompatibleToolbar
 import|;
 end_import
 
@@ -242,7 +242,9 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|OSXCompatibleToolbar
+name|icon
+operator|.
+name|IconTheme
 import|;
 end_import
 
@@ -878,7 +880,7 @@ literal|"Delete row"
 argument_list|,
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|REMOVE_NOBOX
 operator|.
@@ -1030,7 +1032,7 @@ literal|"Add row"
 argument_list|,
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|ADD_NOBOX
 operator|.

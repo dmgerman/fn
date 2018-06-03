@@ -212,6 +212,7 @@ argument_list|(
 literal|5
 argument_list|)
 decl_stmt|;
+comment|/**      *      */
 DECL|method|runInJavaFXThread (Callable<V> callable)
 specifier|public
 specifier|static
@@ -228,6 +229,43 @@ argument_list|>
 name|callable
 parameter_list|)
 block|{
+if|if
+condition|(
+name|Platform
+operator|.
+name|isFxApplicationThread
+argument_list|()
+condition|)
+block|{
+try|try
+block|{
+return|return
+name|callable
+operator|.
+name|call
+argument_list|()
+return|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{
+name|LOGGER
+operator|.
+name|error
+argument_list|(
+literal|"Problem executing call"
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+return|return
+literal|null
+return|;
+block|}
+block|}
 name|FutureTask
 argument_list|<
 name|V

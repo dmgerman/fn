@@ -28,6 +28,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Collection
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|List
 import|;
 end_import
@@ -39,6 +49,18 @@ operator|.
 name|util
 operator|.
 name|Optional
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|function
+operator|.
+name|Consumer
 import|;
 end_import
 
@@ -94,7 +116,31 @@ name|scene
 operator|.
 name|control
 operator|.
+name|ChoiceDialog
+import|;
+end_import
+
+begin_import
+import|import
+name|javafx
+operator|.
+name|scene
+operator|.
+name|control
+operator|.
 name|DialogPane
+import|;
+end_import
+
+begin_import
+import|import
+name|javafx
+operator|.
+name|scene
+operator|.
+name|control
+operator|.
+name|TextInputDialog
 import|;
 end_import
 
@@ -162,6 +208,80 @@ specifier|public
 interface|interface
 name|DialogService
 block|{
+comment|/**      * This will create and display new {@link ChoiceDialog} of type T with a default choice and a collection of possible choices      *      * @implNote The implementation should accept {@code null} for {@code defaultChoice}, but callers should use {@link #showChoiceDialogAndWait(String, String, String, Collection)}.     */
+DECL|method|showChoiceDialogAndWait (String title, String content, String okButtonLabel, T defaultChoice, Collection<T> choices)
+parameter_list|<
+name|T
+parameter_list|>
+name|Optional
+argument_list|<
+name|T
+argument_list|>
+name|showChoiceDialogAndWait
+parameter_list|(
+name|String
+name|title
+parameter_list|,
+name|String
+name|content
+parameter_list|,
+name|String
+name|okButtonLabel
+parameter_list|,
+name|T
+name|defaultChoice
+parameter_list|,
+name|Collection
+argument_list|<
+name|T
+argument_list|>
+name|choices
+parameter_list|)
+function_decl|;
+comment|/**      * This will create and display new {@link ChoiceDialog} of type T with a collection of possible choices      */
+DECL|method|showChoiceDialogAndWait (String title, String content, String okButtonLabel, Collection<T> choices)
+specifier|default
+parameter_list|<
+name|T
+parameter_list|>
+name|Optional
+argument_list|<
+name|T
+argument_list|>
+name|showChoiceDialogAndWait
+parameter_list|(
+name|String
+name|title
+parameter_list|,
+name|String
+name|content
+parameter_list|,
+name|String
+name|okButtonLabel
+parameter_list|,
+name|Collection
+argument_list|<
+name|T
+argument_list|>
+name|choices
+parameter_list|)
+block|{
+return|return
+name|showChoiceDialogAndWait
+argument_list|(
+name|title
+argument_list|,
+name|content
+argument_list|,
+name|okButtonLabel
+argument_list|,
+literal|null
+argument_list|,
+name|choices
+argument_list|)
+return|;
+block|}
+comment|/**      * This will create and display new {@link TextInputDialog} with a text fields to enter data      */
 DECL|method|showInputDialogAndWait (String title, String content)
 name|Optional
 argument_list|<
@@ -247,6 +367,21 @@ name|exception
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Create and display error dialog displaying the given exception.      *      * @param exception the exception causing the error      */
+DECL|method|showErrorDialogAndWait (String title, String content, Throwable exception)
+name|void
+name|showErrorDialogAndWait
+parameter_list|(
+name|String
+name|title
+parameter_list|,
+name|String
+name|content
+parameter_list|,
+name|Throwable
+name|exception
+parameter_list|)
+function_decl|;
 comment|/**      * Create and display error dialog displaying the given message.      *      * @param message the error message      */
 DECL|method|showErrorDialogAndWait (String message)
 name|void
@@ -268,7 +403,7 @@ name|String
 name|content
 parameter_list|)
 function_decl|;
-comment|/**      * Create and display a new confirmation dialog.      * It will include a blue question icon on the left and      * a OK (with given label) and Cancel button. To create a confirmation dialog with custom      * buttons see also {@link #showCustomButtonDialogAndWait(Alert.AlertType, String, String, ButtonType...)}      *      * @return true if the use clicked "OK" otherwise false      */
+comment|/**      * Create and display a new confirmation dialog.      * It will include a blue question icon on the left and      * a OK (with given label) and Cancel button. To create a confirmation dialog with custom      * buttons see also {@link #showCustomButtonDialogAndWait(Alert.AlertType, String, String, ButtonType...)}.      *      * @return true if the use clicked "OK" otherwise false      */
 DECL|method|showConfirmationDialogAndWait (String title, String content, String okButtonLabel)
 name|boolean
 name|showConfirmationDialogAndWait
@@ -283,7 +418,7 @@ name|String
 name|okButtonLabel
 parameter_list|)
 function_decl|;
-comment|/**      * Create and display a new confirmation dialog.      * It will include a blue question icon on the left and      * a OK (with given label) and Cancel (also with given label) button. To create a confirmation dialog with custom      * buttons see also {@link #showCustomButtonDialogAndWait(Alert.AlertType, String, String, ButtonType...)}      *      * @return true if the use clicked "OK" otherwise false      */
+comment|/**      * Create and display a new confirmation dialog.      * It will include a blue question icon on the left and      * a OK (with given label) and Cancel (also with given label) button. To create a confirmation dialog with custom      * buttons see also {@link #showCustomButtonDialogAndWait(Alert.AlertType, String, String, ButtonType...)}.      *      * @return true if the use clicked "OK" otherwise false      */
 DECL|method|showConfirmationDialogAndWait (String title, String content, String okButtonLabel, String cancelButtonLabel)
 name|boolean
 name|showConfirmationDialogAndWait
@@ -299,6 +434,54 @@ name|okButtonLabel
 parameter_list|,
 name|String
 name|cancelButtonLabel
+parameter_list|)
+function_decl|;
+comment|/**      * Create and display a new confirmation dialog.      * It will include a blue question icon on the left and      * a YES (with given label) and Cancel (also with given label) button. To create a confirmation dialog with custom      * buttons see also {@link #showCustomButtonDialogAndWait(Alert.AlertType, String, String, ButtonType...)}.      * Moreover, the dialog contains a opt-out checkbox with the given text to support "Do not ask again"-behaviour.      *      * @return true if the use clicked "YES" otherwise false      */
+DECL|method|showConfirmationDialogWithOptOutAndWait (String title, String content, String optOutMessage, Consumer<Boolean> optOutAction)
+name|boolean
+name|showConfirmationDialogWithOptOutAndWait
+parameter_list|(
+name|String
+name|title
+parameter_list|,
+name|String
+name|content
+parameter_list|,
+name|String
+name|optOutMessage
+parameter_list|,
+name|Consumer
+argument_list|<
+name|Boolean
+argument_list|>
+name|optOutAction
+parameter_list|)
+function_decl|;
+comment|/**      * Create and display a new confirmation dialog.      * It will include a blue question icon on the left and      * a YES (with given label) and Cancel (also with given label) button. To create a confirmation dialog with custom      * buttons see also {@link #showCustomButtonDialogAndWait(Alert.AlertType, String, String, ButtonType...)}.      * Moreover, the dialog contains a opt-out checkbox with the given text to support "Do not ask again"-behaviour.      *      * @return true if the use clicked "YES" otherwise false      */
+DECL|method|showConfirmationDialogWithOptOutAndWait (String title, String content, String okButtonLabel, String cancelButtonLabel, String optOutMessage, Consumer<Boolean> optOutAction)
+name|boolean
+name|showConfirmationDialogWithOptOutAndWait
+parameter_list|(
+name|String
+name|title
+parameter_list|,
+name|String
+name|content
+parameter_list|,
+name|String
+name|okButtonLabel
+parameter_list|,
+name|String
+name|cancelButtonLabel
+parameter_list|,
+name|String
+name|optOutMessage
+parameter_list|,
+name|Consumer
+argument_list|<
+name|Boolean
+argument_list|>
+name|optOutAction
 parameter_list|)
 function_decl|;
 comment|/**      * This will create and display a new dialog of the specified      * {@link Alert.AlertType} but with user defined buttons as optional      * {@link ButtonType}s.      *      * @return Optional with the pressed Button as ButtonType      */

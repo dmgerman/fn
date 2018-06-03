@@ -138,20 +138,6 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|layout
-operator|.
-name|LayoutFormatterPreferences
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
 name|util
 operator|.
 name|io
@@ -323,8 +309,7 @@ specifier|private
 name|LinkedFile
 name|singleFileFieldCleanup
 decl_stmt|;
-comment|// FIXME: remove unused parameter 'layoutPrefs' later S.G.
-DECL|method|MoveFilesCleanup (BibDatabaseContext databaseContext, String fileDirPattern, FileDirectoryPreferences fileDirectoryPreferences, LayoutFormatterPreferences layoutPrefs)
+DECL|method|MoveFilesCleanup (BibDatabaseContext databaseContext, String fileDirPattern, FileDirectoryPreferences fileDirectoryPreferences)
 specifier|public
 name|MoveFilesCleanup
 parameter_list|(
@@ -336,9 +321,6 @@ name|fileDirPattern
 parameter_list|,
 name|FileDirectoryPreferences
 name|fileDirectoryPreferences
-parameter_list|,
-name|LayoutFormatterPreferences
-name|layoutPrefs
 parameter_list|)
 block|{
 name|this
@@ -375,7 +357,7 @@ name|fileDirectoryPreferences
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|MoveFilesCleanup (BibDatabaseContext databaseContext, String fileDirPattern, FileDirectoryPreferences fileDirectoryPreferences, LayoutFormatterPreferences prefs, LinkedFile field)
+DECL|method|MoveFilesCleanup (BibDatabaseContext databaseContext, String fileDirPattern, FileDirectoryPreferences fileDirectoryPreferences, LinkedFile field)
 specifier|public
 name|MoveFilesCleanup
 parameter_list|(
@@ -388,9 +370,6 @@ parameter_list|,
 name|FileDirectoryPreferences
 name|fileDirectoryPreferences
 parameter_list|,
-name|LayoutFormatterPreferences
-name|prefs
-parameter_list|,
 name|LinkedFile
 name|field
 parameter_list|)
@@ -402,8 +381,6 @@ argument_list|,
 name|fileDirPattern
 argument_list|,
 name|fileDirectoryPreferences
-argument_list|,
-name|prefs
 argument_list|)
 expr_stmt|;
 name|this

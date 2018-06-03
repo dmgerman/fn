@@ -108,25 +108,6 @@ operator|.
 name|QUALITY
 argument_list|)
 block|,
-DECL|enumConstant|BACK
-name|BACK
-argument_list|(
-literal|"Back"
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Back"
-argument_list|)
-argument_list|,
-literal|"alt+LEFT"
-argument_list|,
-name|KeyBindingCategory
-operator|.
-name|VIEW
-argument_list|)
-block|,
 DECL|enumConstant|CHECK_INTEGRITY
 name|CHECK_INTEGRITY
 argument_list|(
@@ -134,7 +115,7 @@ literal|"Check integrity"
 argument_list|,
 name|Localization
 operator|.
-name|menuTitle
+name|lang
 argument_list|(
 literal|"Check integrity"
 argument_list|)
@@ -165,25 +146,6 @@ operator|.
 name|QUALITY
 argument_list|)
 block|,
-DECL|enumConstant|CLEAR_SEARCH
-name|CLEAR_SEARCH
-argument_list|(
-literal|"Clear search"
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Clear search"
-argument_list|)
-argument_list|,
-literal|"ESCAPE"
-argument_list|,
-name|KeyBindingCategory
-operator|.
-name|SEARCH
-argument_list|)
-block|,
 DECL|enumConstant|CLOSE_DATABASE
 name|CLOSE_DATABASE
 argument_list|(
@@ -203,8 +165,8 @@ operator|.
 name|FILE
 argument_list|)
 block|,
-DECL|enumConstant|CLOSE_DIALOG
-name|CLOSE_DIALOG
+DECL|enumConstant|CLOSE
+name|CLOSE
 argument_list|(
 literal|"Close dialog"
 argument_list|,
@@ -213,25 +175,6 @@ operator|.
 name|lang
 argument_list|(
 literal|"Close dialog"
-argument_list|)
-argument_list|,
-literal|"ESCAPE"
-argument_list|,
-name|KeyBindingCategory
-operator|.
-name|FILE
-argument_list|)
-block|,
-DECL|enumConstant|CLOSE_ENTRY_EDITOR
-name|CLOSE_ENTRY_EDITOR
-argument_list|(
-literal|"Close entry editor"
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Close entry editor"
 argument_list|)
 argument_list|,
 literal|"Esc"
@@ -679,25 +622,6 @@ operator|.
 name|VIEW
 argument_list|)
 block|,
-DECL|enumConstant|FORWARD
-name|FORWARD
-argument_list|(
-literal|"Forward"
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Forward"
-argument_list|)
-argument_list|,
-literal|"alt+RIGHT"
-argument_list|,
-name|KeyBindingCategory
-operator|.
-name|VIEW
-argument_list|)
-block|,
 DECL|enumConstant|GLOBAL_SEARCH
 name|GLOBAL_SEARCH
 argument_list|(
@@ -810,25 +734,6 @@ argument_list|,
 name|KeyBindingCategory
 operator|.
 name|VIEW
-argument_list|)
-block|,
-DECL|enumConstant|MARK_ENTRIES
-name|MARK_ENTRIES
-argument_list|(
-literal|"Mark entries"
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Mark entries"
-argument_list|)
-argument_list|,
-literal|"ctrl+M"
-argument_list|,
-name|KeyBindingCategory
-operator|.
-name|EDIT
 argument_list|)
 block|,
 DECL|enumConstant|NEW_ARTICLE
@@ -1040,16 +945,16 @@ operator|.
 name|VIEW
 argument_list|)
 block|,
-DECL|enumConstant|NEXT_TAB
-name|NEXT_TAB
+DECL|enumConstant|NEXT_LIBRARY
+name|NEXT_LIBRARY
 argument_list|(
-literal|"Next tab"
+literal|"Next library"
 argument_list|,
 name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Next tab"
+literal|"Next library"
 argument_list|)
 argument_list|,
 literal|"ctrl+PAGE_DOWN"
@@ -1249,16 +1154,16 @@ operator|.
 name|VIEW
 argument_list|)
 block|,
-DECL|enumConstant|PREVIOUS_TAB
-name|PREVIOUS_TAB
+DECL|enumConstant|PREVIOUS_LIBRARY
+name|PREVIOUS_LIBRARY
 argument_list|(
-literal|"Previous tab"
+literal|"Previous library"
 argument_list|,
 name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Previous tab"
+literal|"Previous library"
 argument_list|)
 argument_list|,
 literal|"ctrl+PAGE_UP"
@@ -1648,25 +1553,6 @@ operator|.
 name|EDIT
 argument_list|)
 block|,
-DECL|enumConstant|UNMARK_ENTRIES
-name|UNMARK_ENTRIES
-argument_list|(
-literal|"Unmark entries"
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Unmark entries"
-argument_list|)
-argument_list|,
-literal|"ctrl+shift+M"
-argument_list|,
-name|KeyBindingCategory
-operator|.
-name|EDIT
-argument_list|)
-block|,
 DECL|enumConstant|WEB_SEARCH
 name|WEB_SEARCH
 argument_list|(
@@ -1770,7 +1656,7 @@ operator|=
 name|category
 expr_stmt|;
 block|}
-comment|/**      * This method returns the enum constant value      * @return      */
+comment|/**      * This method returns the enum constant value      */
 DECL|method|getConstant ()
 specifier|public
 name|String

@@ -157,7 +157,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Provides handling for messages and menu entries in the preferred language of the user.  *<p>  * Notes: All messages and menu-entries in JabRef are stored in escaped form like "This_is_a_message". This message  * serves as key inside the {@link l10n} properties files that hold the translation for many languages. When a message  * is accessed, it needs to be unescaped and possible parameters that can appear in a message need to be filled with  * values.  *<p>  * This implementation loads the appropriate language by importing all keys/values from the correct bundle and stores  * them in unescaped form inside a {@link LocalizationBundle} which provides fast access because it caches the key-value  * pairs.  *<p>  * The access to this is given by the functions {@link Localization#lang(String, String...)} and {@link  * Localization#menuTitle(String, String...)} that developers should use whenever they use strings for the e.g. GUI that  * need to be translatable.  */
+comment|/**  * Provides handling for messages and menu entries in the preferred language of the user.  *<p>  * Notes: All messages and menu-entries in JabRef are stored in escaped form like "This_is_a_message". This message  * serves as key inside the {@link l10n} properties files that hold the translation for many languages. When a message  * is accessed, it needs to be unescaped and possible parameters that can appear in a message need to be filled with  * values.  *<p>  * This implementation loads the appropriate language by importing all keys/values from the correct bundle and stores  * them in unescaped form inside a {@link LocalizationBundle} which provides fast access because it caches the key-value  * pairs.  *<p>  * The access to this is given by the functions {@link Localization#lang(String, String...)} and  * that developers should use whenever they use strings for the e.g. GUI that need to be translatable.  */
 end_comment
 
 begin_class
@@ -166,15 +166,6 @@ specifier|public
 class|class
 name|Localization
 block|{
-DECL|field|BIBTEX
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|BIBTEX
-init|=
-literal|"BibTeX"
-decl_stmt|;
 DECL|field|RESOURCE_PREFIX
 specifier|static
 specifier|final
@@ -182,14 +173,6 @@ name|String
 name|RESOURCE_PREFIX
 init|=
 literal|"l10n/JabRef"
-decl_stmt|;
-DECL|field|MENU_RESOURCE_PREFIX
-specifier|static
-specifier|final
-name|String
-name|MENU_RESOURCE_PREFIX
-init|=
-literal|"l10n/Menu"
 decl_stmt|;
 DECL|field|LOGGER
 specifier|private
@@ -218,12 +201,6 @@ specifier|private
 specifier|static
 name|LocalizationBundle
 name|localizedMessages
-decl_stmt|;
-DECL|field|localizedMenuTitles
-specifier|private
-specifier|static
-name|LocalizationBundle
-name|localizedMenuTitles
 decl_stmt|;
 DECL|method|Localization ()
 specifier|private
@@ -257,7 +234,7 @@ name|LOGGER
 operator|.
 name|error
 argument_list|(
-literal|"Messages are not initialized before accessing "
+literal|"Messages are not initialized before accessing key: "
 operator|+
 name|key
 argument_list|)
@@ -273,92 +250,9 @@ name|lookup
 argument_list|(
 name|localizedMessages
 argument_list|,
-literal|"message"
-argument_list|,
 name|key
 argument_list|,
 name|params
-argument_list|)
-return|;
-block|}
-comment|/**      * Public access to menu entry messages      *      * @param key    The key of the message in unescaped form like "Save all"      * @param params Replacement strings for parameters %0, %1, etc.      * @return The message with replaced parameters      */
-DECL|method|menuTitle (String key, String... params)
-specifier|public
-specifier|static
-name|String
-name|menuTitle
-parameter_list|(
-name|String
-name|key
-parameter_list|,
-name|String
-modifier|...
-name|params
-parameter_list|)
-block|{
-if|if
-condition|(
-name|localizedMenuTitles
-operator|==
-literal|null
-condition|)
-block|{
-comment|// I'm logging this because it should never happen
-name|LOGGER
-operator|.
-name|error
-argument_list|(
-literal|"Menu entries are not initialized"
-argument_list|)
-expr_stmt|;
-name|setLanguage
-argument_list|(
-literal|"en"
-argument_list|)
-expr_stmt|;
-block|}
-return|return
-name|lookup
-argument_list|(
-name|localizedMenuTitles
-argument_list|,
-literal|"menu item"
-argument_list|,
-name|key
-argument_list|,
-name|params
-argument_list|)
-return|;
-block|}
-comment|/**      * Return the translated string for usage in JavaFX menus.      *      * @implNote This is only a temporary workaround. In the long term, the& sign should be removed from the language      * files.      */
-DECL|method|menuTitleFX (String key, String... params)
-specifier|public
-specifier|static
-name|String
-name|menuTitleFX
-parameter_list|(
-name|String
-name|key
-parameter_list|,
-name|String
-modifier|...
-name|params
-parameter_list|)
-block|{
-comment|// Remove& sign, which is not used by JavaFX to signify the shortcut
-return|return
-name|menuTitle
-argument_list|(
-name|key
-argument_list|,
-name|params
-argument_list|)
-operator|.
-name|replace
-argument_list|(
-literal|"&"
-argument_list|,
-literal|""
 argument_list|)
 return|;
 block|}
@@ -518,7 +412,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Public access to the messages bundle for classes like AbstractView.      *      * @return The internally cashed bundle.      */
+comment|/**      * Returns the messages bundle, e.g. to load FXML files correctly translated.      *      * @return The internally cashed bundle.      */
 DECL|method|getMessages ()
 specifier|public
 specifier|static
@@ -575,26 +469,6 @@ name|UTF_8
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|ResourceBundle
-name|menuTitles
-init|=
-name|ResourceBundle
-operator|.
-name|getBundle
-argument_list|(
-name|MENU_RESOURCE_PREFIX
-argument_list|,
-name|locale
-argument_list|,
-operator|new
-name|EncodingControl
-argument_list|(
-name|StandardCharsets
-operator|.
-name|UTF_8
-argument_list|)
-argument_list|)
-decl_stmt|;
 name|Objects
 operator|.
 name|requireNonNull
@@ -608,30 +482,6 @@ operator|+
 literal|" resource."
 argument_list|)
 expr_stmt|;
-name|Objects
-operator|.
-name|requireNonNull
-argument_list|(
-name|menuTitles
-argument_list|,
-literal|"Could not load "
-operator|+
-name|MENU_RESOURCE_PREFIX
-operator|+
-literal|" resource."
-argument_list|)
-expr_stmt|;
-name|localizedMenuTitles
-operator|=
-operator|new
-name|LocalizationBundle
-argument_list|(
-name|createLookupMap
-argument_list|(
-name|menuTitles
-argument_list|)
-argument_list|)
-expr_stmt|;
 name|localizedMessages
 operator|=
 operator|new
@@ -640,8 +490,6 @@ argument_list|(
 name|createLookupMap
 argument_list|(
 name|messages
-argument_list|,
-name|localizedMenuTitles
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -726,167 +574,15 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**      * Helper function to create a HashMap from the key/value pairs of a bundle and existing localized menu titles.      * Currently, JabRef has two translations for the same string: One for the menu and one for other parts of the      * application. The menu might contain an ampersand (&), which causes issues when used outside the menu.      * With this fix, the ampersand is removed      */
-DECL|method|createLookupMap (ResourceBundle baseBundle, LocalizationBundle localizedMenuTitles)
+comment|/**      * This looks up a key in the bundle and replaces parameters %0, ..., %9 with the respective params given. Note that      * the keys are the "unescaped" strings from the bundle property files.      *      * @param bundle            The {@link LocalizationBundle} which is usually {@link Localization#localizedMessages}.      * @param key               The lookup key.      * @param params            The parameters that should be inserted into the message      * @return The final message with replaced parameters.      */
+DECL|method|lookup (LocalizationBundle bundle, String key, String... params)
 specifier|private
-specifier|static
-name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
-name|createLookupMap
-parameter_list|(
-name|ResourceBundle
-name|baseBundle
-parameter_list|,
-name|LocalizationBundle
-name|localizedMenuTitles
-parameter_list|)
-block|{
-specifier|final
-name|ArrayList
-argument_list|<
-name|String
-argument_list|>
-name|baseKeys
-init|=
-name|Collections
-operator|.
-name|list
-argument_list|(
-name|baseBundle
-operator|.
-name|getKeys
-argument_list|()
-argument_list|)
-decl_stmt|;
-return|return
-operator|new
-name|HashMap
-argument_list|<>
-argument_list|(
-name|baseKeys
-operator|.
-name|stream
-argument_list|()
-operator|.
-name|collect
-argument_list|(
-name|Collectors
-operator|.
-name|toMap
-argument_list|(
-name|key
-lambda|->
-operator|new
-name|LocalizationKey
-argument_list|(
-name|key
-argument_list|)
-operator|.
-name|getTranslationValue
-argument_list|()
-argument_list|,
-name|key
-lambda|->
-block|{
-name|String
-name|menuTranslationValue
-operator|=
-name|localizedMenuTitles
-operator|.
-name|lookup
-operator|.
-name|get
-argument_list|(
-name|key
-argument_list|)
-argument_list|;
-name|String
-name|plainTranslationValue
-operator|=
-operator|new
-name|LocalizationKey
-argument_list|(
-name|baseBundle
-operator|.
-name|getString
-argument_list|(
-name|key
-argument_list|)
-argument_list|)
-operator|.
-name|getTranslationValue
-argument_list|()
-argument_list|;
-name|String
-name|translationValue
-argument_list|;                             if
-operator|(
-name|plainTranslationValue
-operator|.
-name|contains
-argument_list|(
-literal|"&"
-argument_list|)
-operator|&&
-name|plainTranslationValue
-operator|.
-name|equals
-argument_list|(
-name|menuTranslationValue
-argument_list|)
-operator|)
-block|{
-name|translationValue
-operator|=
-name|plainTranslationValue
-operator|.
-name|replace
-argument_list|(
-literal|"&"
-argument_list|,
-literal|""
-argument_list|)
-block|;                             }
-else|else
-block|{
-name|translationValue
-operator|=
-name|plainTranslationValue
-expr_stmt|;
-block|}
-argument_list|return
-name|translationValue
-argument_list|;
-block|}
-block|)
-end_class
-
-begin_empty_stmt
-unit|))
-empty_stmt|;
-end_empty_stmt
-
-begin_comment
-unit|}
-comment|/**      * This looks up a key in the bundle and replaces parameters %0, ..., %9 with the respective params given. Note that      * the keys are the "unescaped" strings from the bundle property files.      *      * @param bundle            The {@link LocalizationBundle} which means either {@link Localization#localizedMenuTitles}      *                          or {@link Localization#localizedMessages}.      * @param idForErrorMessage Identifier-string when the translation is not found.      * @param key               The lookup key.      * @param params            The parameters that should be inserted into the message      * @return The final message with replaced parameters.      */
-end_comment
-
-begin_function
-DECL|method|lookup (LocalizationBundle bundle, String idForErrorMessage, String key, String... params)
-unit|private
 specifier|static
 name|String
 name|lookup
 parameter_list|(
 name|LocalizationBundle
 name|bundle
-parameter_list|,
-name|String
-name|idForErrorMessage
 parameter_list|,
 name|String
 name|key
@@ -934,11 +630,7 @@ name|LOGGER
 operator|.
 name|warn
 argument_list|(
-literal|"Warning: could not get "
-operator|+
-name|idForErrorMessage
-operator|+
-literal|" translation for \""
+literal|"Warning: could not get translation for \""
 operator|+
 name|key
 operator|+
@@ -968,13 +660,7 @@ name|replacePlaceholders
 argument_list|()
 return|;
 block|}
-end_function
-
-begin_comment
 comment|/**      * A bundle for caching localized strings. Needed to support JavaFX inline binding.      */
-end_comment
-
-begin_class
 DECL|class|LocalizationBundle
 specifier|private
 specifier|static
@@ -1107,8 +793,8 @@ literal|true
 return|;
 block|}
 block|}
+block|}
 end_class
 
-unit|}
 end_unit
 

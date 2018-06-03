@@ -42,11 +42,12 @@ specifier|public
 class|class
 name|BibtexSingleField
 block|{
+comment|// TODO: This constant should be moved to the gui package, probably to MainTableColumnFactory
 DECL|field|DEFAULT_FIELD_LENGTH
 specifier|public
 specifier|static
 specifier|final
-name|int
+name|double
 name|DEFAULT_FIELD_LENGTH
 init|=
 literal|100
@@ -100,7 +101,7 @@ decl_stmt|;
 DECL|field|length
 specifier|private
 specifier|final
-name|int
+name|double
 name|length
 decl_stmt|;
 comment|/**      * properties contains a set of FieldProperty to e.g. tell the EntryEditor to add a specific      * function to this field, to format names, or to control the integrity checks.      */
@@ -160,7 +161,7 @@ name|DEFAULT_FIELD_LENGTH
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|BibtexSingleField (String fieldName, boolean standardField, int length)
+DECL|method|BibtexSingleField (String fieldName, boolean standardField, double length)
 specifier|public
 name|BibtexSingleField
 parameter_list|(
@@ -170,7 +171,7 @@ parameter_list|,
 name|boolean
 name|standardField
 parameter_list|,
-name|int
+name|double
 name|length
 parameter_list|)
 block|{
@@ -421,7 +422,7 @@ block|}
 comment|/**      * @return The maximum (expected) length of the field value;<em>not</em> the length of the field name      */
 DECL|method|getLength ()
 specifier|public
-name|int
+name|double
 name|getLength
 parameter_list|()
 block|{

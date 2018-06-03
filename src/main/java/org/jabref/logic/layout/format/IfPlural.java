@@ -39,7 +39,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * @author ralmond  *  * This formatter takes two arguments and examines the field text.  * If the field text represents multiple individuals, that is it contains the string "and"  * then the field text is replaced with the first argument, otherwise it is replaced with the second.  * For example:  *  * \format[IfPlural(Eds.,Ed.)]{\editor}  *  * Should expand to 'Eds.' if the document has more than one editor and 'Ed.' if it only has one.  *  *  */
+comment|/**  * This formatter takes two arguments and examines the field text.  * If the field text represents multiple individuals, that is it contains the string "and"  * then the field text is replaced with the first argument, otherwise it is replaced with the second.  * For example:  *  * \format[IfPlural(Eds.,Ed.)]{\editor}  *  * Should expand to 'Eds.' if the document has more than one editor and 'Ed.' if it only has one.  *  */
 end_comment
 
 begin_class

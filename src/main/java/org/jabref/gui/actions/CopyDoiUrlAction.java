@@ -144,7 +144,7 @@ name|super
 argument_list|(
 name|Localization
 operator|.
-name|menuTitle
+name|lang
 argument_list|(
 literal|"Copy DOI url"
 argument_list|)

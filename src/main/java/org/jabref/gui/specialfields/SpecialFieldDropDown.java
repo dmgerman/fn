@@ -116,6 +116,20 @@ name|org
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
+name|actions
+operator|.
+name|Actions
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
 name|logic
 operator|.
 name|util
@@ -198,6 +212,11 @@ operator|new
 name|SpecialFieldViewModel
 argument_list|(
 name|field
+argument_list|,
+name|frame
+operator|.
+name|getUndoManager
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|JButton
@@ -515,7 +534,7 @@ argument_list|(
 name|val
 argument_list|)
 operator|.
-name|getActionName
+name|getCommand
 argument_list|()
 argument_list|)
 argument_list|)
@@ -576,17 +595,17 @@ decl_stmt|;
 DECL|field|actionName
 specifier|private
 specifier|final
-name|String
+name|Actions
 name|actionName
 decl_stmt|;
-DECL|method|PopupitemActionListener (BasePanel panel, String actionName)
+DECL|method|PopupitemActionListener (BasePanel panel, Actions actionName)
 specifier|public
 name|PopupitemActionListener
 parameter_list|(
 name|BasePanel
 name|panel
 parameter_list|,
-name|String
+name|Actions
 name|actionName
 parameter_list|)
 block|{

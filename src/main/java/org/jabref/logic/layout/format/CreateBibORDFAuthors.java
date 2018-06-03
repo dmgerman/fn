@@ -28,10 +28,6 @@ name|LayoutFormatter
 import|;
 end_import
 
-begin_comment
-comment|/**  * @author $author$  * @version $Revision: 2268 $  */
-end_comment
-
 begin_class
 DECL|class|CreateBibORDFAuthors
 specifier|public
@@ -40,7 +36,6 @@ name|CreateBibORDFAuthors
 implements|implements
 name|LayoutFormatter
 block|{
-comment|//~ Methods ////////////////////////////////////////////////////////////////
 annotation|@
 name|Override
 DECL|method|format (String fieldText)
@@ -164,7 +159,6 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * @param sb      * @param author      * @param position      */
 DECL|method|singleAuthor (StringBuilder sb, String author, int position)
 specifier|private
 specifier|static

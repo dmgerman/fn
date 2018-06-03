@@ -68,7 +68,7 @@ init|=
 operator|new
 name|DataFormat
 argument_list|(
-literal|"application/x-java-jvm-local-objectref"
+literal|"dnd/org.jabref.model.entry.BibEntries"
 argument_list|)
 decl_stmt|;
 block|}

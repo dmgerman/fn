@@ -192,7 +192,9 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|IconTheme
+name|help
+operator|.
+name|HelpAction
 import|;
 end_import
 
@@ -204,9 +206,9 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|help
+name|icon
 operator|.
-name|HelpAction
+name|IconTheme
 import|;
 end_import
 
@@ -1040,7 +1042,7 @@ name|JButton
 argument_list|(
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|HELP
 operator|.

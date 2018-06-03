@@ -108,6 +108,8 @@ name|jabref
 operator|.
 name|gui
 operator|.
+name|icon
+operator|.
 name|IconTheme
 import|;
 end_import
@@ -207,14 +209,14 @@ block|{
 DECL|field|preferences
 specifier|private
 specifier|final
-name|JabRefPreferences
+name|EntryEditorPreferences
 name|preferences
 decl_stmt|;
-DECL|method|RelatedArticlesTab (JabRefPreferences preferences)
+DECL|method|RelatedArticlesTab (EntryEditorPreferences preferences)
 specifier|public
 name|RelatedArticlesTab
 parameter_list|(
-name|JabRefPreferences
+name|EntryEditorPreferences
 name|preferences
 parameter_list|)
 block|{
@@ -604,12 +606,8 @@ block|{
 return|return
 name|preferences
 operator|.
-name|getBoolean
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|SHOW_RECOMMENDATIONS
-argument_list|)
+name|shouldShowRecommendationsTab
+argument_list|()
 return|;
 block|}
 end_function

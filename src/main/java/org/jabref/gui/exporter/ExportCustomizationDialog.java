@@ -140,6 +140,16 @@ name|javax
 operator|.
 name|swing
 operator|.
+name|JFrame
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
 name|JPanel
 import|;
 end_import
@@ -356,10 +366,6 @@ name|ButtonBarBuilder
 import|;
 end_import
 
-begin_comment
-comment|/**  *<p>Title:</p>  *<p>Description:</p>  *<p>Copyright: Copyright (c) 2003</p>  *<p>Company:</p>  * @author not attributable  * @version 1.0  */
-end_comment
-
 begin_class
 DECL|class|ExportCustomizationDialog
 specifier|public
@@ -407,7 +413,10 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|frame
+operator|(
+name|JFrame
+operator|)
+literal|null
 argument_list|,
 name|Localization
 operator|.
@@ -1095,7 +1104,7 @@ name|getKey
 argument_list|(
 name|KeyBinding
 operator|.
-name|CLOSE_DIALOG
+name|CLOSE
 argument_list|)
 argument_list|,
 literal|"close"
@@ -1240,11 +1249,6 @@ argument_list|)
 expr_stmt|;
 name|pack
 argument_list|()
-expr_stmt|;
-name|setLocationRelativeTo
-argument_list|(
-name|frame
-argument_list|)
 expr_stmt|;
 name|table
 operator|.

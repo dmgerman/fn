@@ -80,16 +80,6 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|JOptionPane
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
 name|event
 operator|.
 name|ListSelectionEvent
@@ -115,6 +105,18 @@ operator|.
 name|jabref
 operator|.
 name|Globals
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|DialogService
 import|;
 end_import
 
@@ -213,7 +215,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This class extends FieldSetComponent to provide some required functionality for the  * list of entry types in EntryCustomizationDialog.  * @author alver  */
+comment|/**  * This class extends FieldSetComponent to provide some required functionality for the  * list of entry types in EntryCustomizationDialog.  */
 end_comment
 
 begin_class
@@ -249,11 +251,20 @@ specifier|final
 name|BibDatabaseMode
 name|mode
 decl_stmt|;
-comment|/** Creates a new instance of EntryTypeList */
-DECL|method|EntryTypeList (List<String> fields, BibDatabaseMode mode)
+DECL|field|dialogService
+specifier|private
+specifier|final
+name|DialogService
+name|dialogService
+decl_stmt|;
+comment|/**      * Creates a new instance of EntryTypeList      */
+DECL|method|EntryTypeList (DialogService dialogService, List<String> fields, BibDatabaseMode mode)
 specifier|public
 name|EntryTypeList
 parameter_list|(
+name|DialogService
+name|dialogService
+parameter_list|,
 name|List
 argument_list|<
 name|String
@@ -275,6 +286,8 @@ argument_list|)
 argument_list|,
 name|fields
 argument_list|,
+name|fields
+argument_list|,
 literal|false
 argument_list|,
 literal|true
@@ -285,6 +298,12 @@ operator|.
 name|mode
 operator|=
 name|mode
+expr_stmt|;
+name|this
+operator|.
+name|dialogService
+operator|=
+name|dialogService
 expr_stmt|;
 name|con
 operator|.
@@ -463,11 +482,16 @@ operator|)
 condition|)
 block|{
 comment|// Report error and exit.
-name|JOptionPane
+name|dialogService
 operator|.
-name|showMessageDialog
+name|showErrorDialogAndWait
 argument_list|(
-name|this
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Error"
+argument_list|)
 argument_list|,
 name|Localization
 operator|.
@@ -479,17 +503,6 @@ literal|"characters"
 argument_list|)
 operator|+
 literal|": # { } ~ , ^&"
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Error"
-argument_list|)
-argument_list|,
-name|JOptionPane
-operator|.
-name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
 return|return;
@@ -506,19 +519,10 @@ argument_list|)
 condition|)
 block|{
 comment|// Report error and exit.
-name|JOptionPane
+name|dialogService
 operator|.
-name|showMessageDialog
+name|showErrorDialogAndWait
 argument_list|(
-name|this
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"The name 'comment' cannot be used as an entry type name."
-argument_list|)
-argument_list|,
 name|Localization
 operator|.
 name|lang
@@ -526,9 +530,12 @@ argument_list|(
 literal|"Error"
 argument_list|)
 argument_list|,
-name|JOptionPane
+name|Localization
 operator|.
-name|ERROR_MESSAGE
+name|lang
+argument_list|(
+literal|"The name 'comment' cannot be used as an entry type name."
+argument_list|)
 argument_list|)
 expr_stmt|;
 return|return;
@@ -664,19 +671,10 @@ block|}
 else|else
 block|{
 comment|// This shouldn't happen, since the Remove button should be disabled.
-name|JOptionPane
+name|dialogService
 operator|.
-name|showMessageDialog
+name|showErrorDialogAndWait
 argument_list|(
-literal|null
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"This entry type cannot be removed."
-argument_list|)
-argument_list|,
 name|Localization
 operator|.
 name|lang
@@ -684,9 +682,12 @@ argument_list|(
 literal|"Remove entry type"
 argument_list|)
 argument_list|,
-name|JOptionPane
+name|Localization
 operator|.
-name|ERROR_MESSAGE
+name|lang
+argument_list|(
+literal|"This entry type cannot be removed."
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

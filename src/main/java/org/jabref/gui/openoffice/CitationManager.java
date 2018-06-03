@@ -154,7 +154,7 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|JOptionPane
+name|JFrame
 import|;
 end_import
 
@@ -206,7 +206,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|JabRefFrame
+name|DialogService
 import|;
 end_import
 
@@ -539,16 +539,15 @@ name|CitationEntry
 argument_list|>
 name|tableModel
 decl_stmt|;
-DECL|method|CitationManager (final JabRefFrame frame, OOBibBase ooBase)
+DECL|method|CitationManager (OOBibBase ooBase, DialogService dialogService)
 specifier|public
 name|CitationManager
 parameter_list|(
-specifier|final
-name|JabRefFrame
-name|frame
-parameter_list|,
 name|OOBibBase
 name|ooBase
+parameter_list|,
+name|DialogService
+name|dialogService
 parameter_list|)
 throws|throws
 name|NoSuchElementException
@@ -562,7 +561,10 @@ operator|=
 operator|new
 name|JDialog
 argument_list|(
-name|frame
+operator|(
+name|JFrame
+operator|)
+literal|null
 argument_list|,
 name|Localization
 operator|.
@@ -834,18 +836,18 @@ argument_list|,
 name|ex
 argument_list|)
 expr_stmt|;
-name|JOptionPane
+name|dialogService
 operator|.
-name|showMessageDialog
+name|showErrorDialogAndWait
 argument_list|(
-name|frame
-argument_list|,
 name|Localization
 operator|.
 name|lang
 argument_list|(
 literal|"Problem modifying citation"
 argument_list|)
+argument_list|,
+name|ex
 argument_list|)
 expr_stmt|;
 block|}
@@ -912,7 +914,7 @@ name|getKey
 argument_list|(
 name|KeyBinding
 operator|.
-name|CLOSE_DIALOG
+name|CLOSE
 argument_list|)
 argument_list|,
 literal|"close"
@@ -1638,7 +1640,7 @@ name|getKey
 argument_list|(
 name|KeyBinding
 operator|.
-name|CLOSE_DIALOG
+name|CLOSE
 argument_list|)
 argument_list|,
 literal|"close"

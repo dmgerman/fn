@@ -194,7 +194,7 @@ name|JOptionPane
 operator|.
 name|showOptionDialog
 argument_list|(
-name|panel
+literal|null
 argument_list|,
 name|bibKeys
 operator|+

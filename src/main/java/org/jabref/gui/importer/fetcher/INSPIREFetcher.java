@@ -267,7 +267,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *  * This class allows to access the Slac INSPIRE database. It is just a port of the original SPIRES Fetcher.  *  * It can either be a GeneralFetcher to pose requests to the database or fetch individual entries.  *  * @author Fedor Bezrukov  * @author Sheer El-Showk  *  * @version $Id$  *  */
+comment|/**  *  * This class allows to access the Slac INSPIRE database. It is just a port of the original SPIRES Fetcher.  *  * It can either be a GeneralFetcher to pose requests to the database or fetch individual entries.  */
 end_comment
 
 begin_class

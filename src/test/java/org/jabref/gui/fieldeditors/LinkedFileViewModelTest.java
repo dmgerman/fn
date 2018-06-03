@@ -604,8 +604,6 @@ argument_list|,
 name|dialogService
 argument_list|,
 name|preferences
-argument_list|,
-name|abbreviationLoader
 argument_list|)
 decl_stmt|;
 name|boolean
@@ -740,8 +738,6 @@ argument_list|,
 name|dialogService
 argument_list|,
 name|preferences
-argument_list|,
-name|abbreviationLoader
 argument_list|)
 decl_stmt|;
 name|boolean
@@ -878,8 +874,6 @@ argument_list|,
 name|dialogService
 argument_list|,
 name|preferences
-argument_list|,
-name|abbreviationLoader
 argument_list|)
 decl_stmt|;
 name|boolean
@@ -1005,8 +999,6 @@ argument_list|,
 name|dialogService
 argument_list|,
 name|preferences
-argument_list|,
-name|abbreviationLoader
 argument_list|)
 decl_stmt|;
 name|boolean
@@ -1149,8 +1141,6 @@ argument_list|,
 name|dialogService
 argument_list|,
 name|preferences
-argument_list|,
-name|abbreviationLoader
 argument_list|)
 decl_stmt|;
 name|boolean

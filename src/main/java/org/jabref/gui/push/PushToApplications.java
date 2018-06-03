@@ -32,6 +32,18 @@ name|List
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|DialogService
+import|;
+end_import
+
 begin_class
 DECL|class|PushToApplications
 specifier|public
@@ -47,12 +59,15 @@ name|PushToApplication
 argument_list|>
 name|applications
 decl_stmt|;
-DECL|method|PushToApplications ()
+DECL|method|PushToApplications (DialogService dialogService)
 specifier|public
 name|PushToApplications
-parameter_list|()
+parameter_list|(
+name|DialogService
+name|dialogService
+parameter_list|)
 block|{
-comment|/**      * Set up the current available choices:      */
+comment|/**          * Set up the current available hoices:          */
 name|applications
 operator|=
 operator|new
@@ -66,7 +81,9 @@ name|add
 argument_list|(
 operator|new
 name|PushToEmacs
-argument_list|()
+argument_list|(
+name|dialogService
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|applications
@@ -75,7 +92,9 @@ name|add
 argument_list|(
 operator|new
 name|PushToLyx
-argument_list|()
+argument_list|(
+name|dialogService
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|applications
@@ -84,7 +103,9 @@ name|add
 argument_list|(
 operator|new
 name|PushToTexmaker
-argument_list|()
+argument_list|(
+name|dialogService
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|applications
@@ -93,7 +114,9 @@ name|add
 argument_list|(
 operator|new
 name|PushToTeXstudio
-argument_list|()
+argument_list|(
+name|dialogService
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|applications
@@ -102,7 +125,9 @@ name|add
 argument_list|(
 operator|new
 name|PushToVim
-argument_list|()
+argument_list|(
+name|dialogService
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|applications
@@ -111,7 +136,9 @@ name|add
 argument_list|(
 operator|new
 name|PushToWinEdt
-argument_list|()
+argument_list|(
+name|dialogService
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

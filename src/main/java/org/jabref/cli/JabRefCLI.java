@@ -48,6 +48,20 @@ begin_import
 import|import
 name|org
 operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|database
+operator|.
+name|BibDatabaseMode
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|apache
 operator|.
 name|commons
@@ -922,9 +936,12 @@ argument_list|)
 operator|+
 literal|" "
 operator|+
-name|Localization
+name|BibDatabaseMode
 operator|.
 name|BIBTEX
+operator|.
+name|getFormattedName
+argument_list|()
 argument_list|,
 name|Localization
 operator|.

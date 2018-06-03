@@ -489,7 +489,7 @@ name|JOptionPane
 operator|.
 name|showOptionDialog
 argument_list|(
-name|jabRefFrame
+literal|null
 argument_list|,
 name|Localization
 operator|.
@@ -573,11 +573,6 @@ expr_stmt|;
 name|jabRefFrame
 operator|.
 name|refreshTitleAndTabs
-argument_list|()
-expr_stmt|;
-name|jabRefFrame
-operator|.
-name|updateEnabledState
 argument_list|()
 expr_stmt|;
 name|jabRefFrame
@@ -732,7 +727,7 @@ name|JOptionPane
 operator|.
 name|showMessageDialog
 argument_list|(
-name|jabRefFrame
+literal|null
 argument_list|,
 name|Localization
 operator|.
@@ -770,7 +765,7 @@ parameter_list|()
 lambda|->
 name|panel
 operator|.
-name|hideBottomComponent
+name|closeBottomPane
 argument_list|()
 argument_list|)
 expr_stmt|;

@@ -13,7 +13,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * String and integer value.  *  * @author     wegnerj  */
+comment|/**  * String and integer value.  */
 end_comment
 
 begin_class

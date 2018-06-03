@@ -162,6 +162,16 @@ name|javafx
 operator|.
 name|beans
 operator|.
+name|Observable
+import|;
+end_import
+
+begin_import
+import|import
+name|javafx
+operator|.
+name|beans
+operator|.
 name|binding
 operator|.
 name|Bindings
@@ -1672,9 +1682,10 @@ block|}
 block|}
 else|else
 block|{
+comment|// Date field not in valid format
 name|LOGGER
 operator|.
-name|warn
+name|debug
 argument_list|(
 literal|"Could not parse date "
 operator|+
@@ -1690,7 +1701,6 @@ operator|.
 name|empty
 argument_list|()
 return|;
-comment|// Date field not in valid format
 block|}
 block|}
 return|return
@@ -4107,6 +4117,23 @@ parameter_list|()
 block|{
 return|return
 name|fields
+return|;
+block|}
+comment|/**      * Returns a list of observables that represent the data of the entry.      */
+DECL|method|getObservables ()
+specifier|public
+name|Observable
+index|[]
+name|getObservables
+parameter_list|()
+block|{
+return|return
+operator|new
+name|Observable
+index|[]
+block|{
+name|fields
+block|}
 return|;
 block|}
 DECL|interface|GetFieldInterface

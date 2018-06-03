@@ -228,19 +228,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|FXDialogService
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|GUIGlobals
+name|DialogService
 import|;
 end_import
 
@@ -474,7 +462,13 @@ name|String
 argument_list|>
 name|fields
 decl_stmt|;
-DECL|method|FieldsEditorTab (boolean compressed, BibDatabaseContext databaseContext, SuggestionProviders suggestionProviders, UndoManager undoManager)
+DECL|field|dialogService
+specifier|private
+specifier|final
+name|DialogService
+name|dialogService
+decl_stmt|;
+DECL|method|FieldsEditorTab (boolean compressed, BibDatabaseContext databaseContext, SuggestionProviders suggestionProviders, UndoManager undoManager, DialogService dialogService)
 specifier|public
 name|FieldsEditorTab
 parameter_list|(
@@ -489,6 +483,9 @@ name|suggestionProviders
 parameter_list|,
 name|UndoManager
 name|undoManager
+parameter_list|,
+name|DialogService
+name|dialogService
 parameter_list|)
 block|{
 name|this
@@ -514,6 +511,12 @@ operator|.
 name|undoManager
 operator|=
 name|undoManager
+expr_stmt|;
+name|this
+operator|.
+name|dialogService
+operator|=
+name|dialogService
 expr_stmt|;
 block|}
 DECL|method|addColumn (GridPane gridPane, int columnIndex, List<Label> nodes)
@@ -594,43 +597,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|convertToHex (java.awt.Color color)
-specifier|private
-name|String
-name|convertToHex
-parameter_list|(
-name|java
-operator|.
-name|awt
-operator|.
-name|Color
-name|color
-parameter_list|)
-block|{
-return|return
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"#%02x%02x%02x"
-argument_list|,
-name|color
-operator|.
-name|getRed
-argument_list|()
-argument_list|,
-name|color
-operator|.
-name|getGreen
-argument_list|()
-argument_list|,
-name|color
-operator|.
-name|getBlue
-argument_list|()
-argument_list|)
-return|;
-block|}
 DECL|method|setupPanel (BibEntry entry, boolean compressed, SuggestionProviders suggestionProviders, UndoManager undoManager)
 specifier|private
 name|Region
@@ -649,6 +615,23 @@ name|UndoManager
 name|undoManager
 parameter_list|)
 block|{
+comment|// The preferences might be not initialized in tests -> return empty node
+comment|// TODO: Replace this ugly workaround by proper injection propagation
+if|if
+condition|(
+name|Globals
+operator|.
+name|prefs
+operator|==
+literal|null
+condition|)
+block|{
+return|return
+operator|new
+name|Region
+argument_list|()
+return|;
+block|}
 name|editors
 operator|.
 name|clear
@@ -713,9 +696,7 @@ name|Globals
 operator|.
 name|TASK_EXECUTOR
 argument_list|,
-operator|new
-name|FXDialogService
-argument_list|()
+name|dialogService
 argument_list|,
 name|Globals
 operator|.
@@ -1026,54 +1007,6 @@ argument_list|(
 name|gridPane
 argument_list|,
 name|rows
-argument_list|)
-expr_stmt|;
-block|}
-if|if
-condition|(
-name|GUIGlobals
-operator|.
-name|currentFont
-operator|!=
-literal|null
-condition|)
-block|{
-name|gridPane
-operator|.
-name|setStyle
-argument_list|(
-literal|"text-area-background: "
-operator|+
-name|convertToHex
-argument_list|(
-name|GUIGlobals
-operator|.
-name|validFieldBackgroundColor
-argument_list|)
-operator|+
-literal|";"
-operator|+
-literal|"text-area-foreground: "
-operator|+
-name|convertToHex
-argument_list|(
-name|GUIGlobals
-operator|.
-name|editorTextColor
-argument_list|)
-operator|+
-literal|";"
-operator|+
-literal|"text-area-highlight: "
-operator|+
-name|convertToHex
-argument_list|(
-name|GUIGlobals
-operator|.
-name|activeBackgroundColor
-argument_list|)
-operator|+
-literal|";"
 argument_list|)
 expr_stmt|;
 block|}

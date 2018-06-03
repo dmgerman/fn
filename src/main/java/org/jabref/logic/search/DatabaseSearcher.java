@@ -116,10 +116,6 @@ name|LoggerFactory
 import|;
 end_import
 
-begin_comment
-comment|/**  * @author Silberer, Zirn  */
-end_comment
-
 begin_class
 DECL|class|DatabaseSearcher
 specifier|public

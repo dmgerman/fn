@@ -1000,44 +1000,6 @@ name|FindUnlinkedFilesDialog
 extends|extends
 name|JabRefDialog
 block|{
-comment|/**      * Keys to be used for referencing this Action.      */
-DECL|field|ACTION_COMMAND
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|ACTION_COMMAND
-init|=
-literal|"findUnlinkedFiles"
-decl_stmt|;
-DECL|field|ACTION_MENU_TITLE
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|ACTION_MENU_TITLE
-init|=
-name|Localization
-operator|.
-name|menuTitle
-argument_list|(
-literal|"Find unlinked files..."
-argument_list|)
-decl_stmt|;
-DECL|field|ACTION_SHORT_DESCRIPTION
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|ACTION_SHORT_DESCRIPTION
-init|=
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Searches for unlinked PDF files on the file system"
-argument_list|)
-decl_stmt|;
 DECL|field|LOGGER
 specifier|private
 specifier|static
@@ -1314,7 +1276,7 @@ specifier|private
 name|boolean
 name|checkBoxWhyIsThereNoGetSelectedStupidSwing
 decl_stmt|;
-DECL|method|FindUnlinkedFilesDialog (Frame owner, JabRefFrame frame, BasePanel panel)
+DECL|method|FindUnlinkedFilesDialog (Frame owner, JabRefFrame frame)
 specifier|public
 name|FindUnlinkedFilesDialog
 parameter_list|(
@@ -1323,9 +1285,6 @@ name|owner
 parameter_list|,
 name|JabRefFrame
 name|frame
-parameter_list|,
-name|BasePanel
-name|panel
 parameter_list|)
 block|{
 name|super
@@ -1357,7 +1316,10 @@ argument_list|()
 expr_stmt|;
 name|databaseContext
 operator|=
-name|panel
+name|frame
+operator|.
+name|getCurrentBasePanel
+argument_list|()
 operator|.
 name|getBibDatabaseContext
 argument_list|()
@@ -3330,8 +3292,9 @@ decl_stmt|;
 name|DialogService
 name|ds
 init|=
-operator|new
-name|FXDialogService
+name|frame
+operator|.
+name|getDialogService
 argument_list|()
 decl_stmt|;
 comment|/**          * Stores the selected directory.          */
@@ -6131,6 +6094,9 @@ argument_list|()
 operator|.
 name|getIcon
 argument_list|()
+operator|.
+name|getSmallIcon
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -6242,7 +6208,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Wrapper for displaying the Type {@link BibtexEntryType} in a Combobox.      *      * @author Nosh&Dan      * @version 12.11.2008 | 01:02:30      *      */
+comment|/**      * Wrapper for displaying the Type {@link BibtexEntryType} in a Combobox.      */
 DECL|class|BibtexEntryTypeWrapper
 specifier|private
 specifier|static

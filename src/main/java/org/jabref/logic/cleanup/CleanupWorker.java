@@ -481,8 +481,6 @@ argument_list|,
 name|fileDirPattern
 argument_list|,
 name|fileDirectoryPreferences
-argument_list|,
-name|layoutPrefs
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -531,8 +529,6 @@ argument_list|,
 name|databaseContext
 argument_list|,
 name|fileNamePattern
-argument_list|,
-name|layoutPrefs
 argument_list|,
 name|fileDirectoryPreferences
 argument_list|)

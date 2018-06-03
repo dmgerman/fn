@@ -226,6 +226,20 @@ name|gui
 operator|.
 name|externalfiletype
 operator|.
+name|CustomExternalFileType
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|externalfiletype
+operator|.
 name|ExternalFileType
 import|;
 end_import
@@ -675,7 +689,7 @@ name|filesToSerialize
 argument_list|)
 return|;
 block|}
-comment|/**      * Creates an instance of {@link LinkedFile} based on the given file.      * We try to guess the file type and relativize the path against the given file directories.      *      * TODO: Move this method to {@link LinkedFile} as soon as {@link ExternalFileType} lives in model.      */
+comment|/**      * Creates an instance of {@link LinkedFile} based on the given file.      * We try to guess the file type and relativize the path against the given file directories.      *      * TODO: Move this method to {@link LinkedFile} as soon as {@link CustomExternalFileType} lives in model.      */
 DECL|method|fromFile (Path file, List<Path> fileDirectories)
 specifier|public
 specifier|static
@@ -805,6 +819,10 @@ argument_list|,
 name|databaseContext
 argument_list|,
 name|taskExecutor
+argument_list|,
+name|dialogService
+argument_list|,
+name|preferences
 argument_list|)
 return|;
 block|}
@@ -868,6 +886,10 @@ argument_list|,
 name|databaseContext
 argument_list|,
 name|taskExecutor
+argument_list|,
+name|dialogService
+argument_list|,
+name|preferences
 argument_list|)
 argument_list|)
 operator|.
@@ -1014,6 +1036,10 @@ argument_list|,
 name|databaseContext
 argument_list|,
 name|taskExecutor
+argument_list|,
+name|dialogService
+argument_list|,
+name|preferences
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1167,6 +1193,10 @@ argument_list|,
 name|databaseContext
 argument_list|,
 name|taskExecutor
+argument_list|,
+name|dialogService
+argument_list|,
+name|preferences
 argument_list|)
 decl_stmt|;
 name|newLinkedFile
@@ -1419,6 +1449,10 @@ argument_list|,
 name|databaseContext
 argument_list|,
 name|taskExecutor
+argument_list|,
+name|dialogService
+argument_list|,
+name|preferences
 argument_list|)
 decl_stmt|;
 name|files

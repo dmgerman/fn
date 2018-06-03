@@ -218,6 +218,16 @@ name|javax
 operator|.
 name|swing
 operator|.
+name|JFrame
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
 name|JLabel
 import|;
 end_import
@@ -1338,21 +1348,11 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|jabrefFrame
-argument_list|,
 operator|(
-name|editedGroup
-operator|==
-literal|null
+name|JFrame
 operator|)
-condition|?
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Add group"
-argument_list|)
-else|:
+literal|null
+argument_list|,
 name|Localization
 operator|.
 name|lang
@@ -2637,11 +2637,6 @@ expr_stmt|;
 name|setLayoutForSelectedGroup
 argument_list|()
 expr_stmt|;
-name|setLocationRelativeTo
-argument_list|(
-name|jabrefFrame
-argument_list|)
-expr_stmt|;
 comment|// add listeners
 name|ItemListener
 name|radioButtonItemListener
@@ -2745,7 +2740,7 @@ name|getKey
 argument_list|(
 name|KeyBinding
 operator|.
-name|CLOSE_DIALOG
+name|CLOSE
 argument_list|)
 argument_list|,
 literal|"close"

@@ -126,6 +126,29 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
+DECL|method|SaveException (String message, Throwable exception)
+specifier|public
+name|SaveException
+parameter_list|(
+name|String
+name|message
+parameter_list|,
+name|Throwable
+name|exception
+parameter_list|)
+block|{
+name|super
+argument_list|(
+name|message
+argument_list|,
+name|exception
+argument_list|)
+expr_stmt|;
+name|entry
+operator|=
+literal|null
+expr_stmt|;
+block|}
 DECL|method|SaveException (String message, String localizedMessage)
 specifier|public
 name|SaveException

@@ -38,7 +38,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Collections
+name|Arrays
 import|;
 end_import
 
@@ -121,6 +121,18 @@ operator|.
 name|migrations
 operator|.
 name|ConvertLegacyExplicitGroups
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|migrations
+operator|.
+name|ConvertMarkingToGroups
 import|;
 end_import
 
@@ -545,12 +557,16 @@ name|PostOpenMigration
 argument_list|>
 name|postOpenMigrations
 init|=
-name|Collections
+name|Arrays
 operator|.
-name|singletonList
+name|asList
 argument_list|(
 operator|new
 name|ConvertLegacyExplicitGroups
+argument_list|()
+argument_list|,
+operator|new
+name|ConvertMarkingToGroups
 argument_list|()
 argument_list|)
 decl_stmt|;

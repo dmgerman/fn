@@ -254,7 +254,7 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|JList
+name|JFrame
 import|;
 end_import
 
@@ -264,7 +264,7 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|JOptionPane
+name|JList
 import|;
 end_import
 
@@ -333,18 +333,6 @@ operator|.
 name|event
 operator|.
 name|ListSelectionListener
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|table
-operator|.
-name|AbstractTableModel
 import|;
 end_import
 
@@ -716,7 +704,10 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|frame
+operator|(
+name|JFrame
+operator|)
+literal|null
 argument_list|,
 name|Localization
 operator|.
@@ -885,6 +876,11 @@ operator|=
 operator|new
 name|EntryTypeList
 argument_list|(
+name|frame
+operator|.
+name|getDialogService
+argument_list|()
+argument_list|,
 name|entryTypes
 argument_list|,
 name|bibDatabaseMode
@@ -1349,7 +1345,7 @@ name|getKey
 argument_list|(
 name|KeyBinding
 operator|.
-name|CLOSE_DIALOG
+name|CLOSE
 argument_list|)
 argument_list|,
 literal|"close"
@@ -2315,9 +2311,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-name|updateTables
-argument_list|()
-expr_stmt|;
 name|CustomEntryTypesManager
 operator|.
 name|saveCustomEntryTypes
@@ -2385,26 +2378,16 @@ name|isPresent
 argument_list|()
 condition|)
 block|{
-name|int
-name|reply
+name|boolean
+name|deleteCustomClicked
 init|=
-name|JOptionPane
-operator|.
-name|showConfirmDialog
-argument_list|(
 name|frame
-argument_list|,
-name|Localization
 operator|.
-name|lang
+name|getDialogService
+argument_list|()
+operator|.
+name|showConfirmationDialogAndWait
 argument_list|(
-literal|"All entries of this "
-operator|+
-literal|"type will be declared "
-operator|+
-literal|"typeless. Continue?"
-argument_list|)
-argument_list|,
 name|Localization
 operator|.
 name|lang
@@ -2423,22 +2406,36 @@ argument_list|)
 operator|+
 literal|'\''
 argument_list|,
-name|JOptionPane
+name|Localization
 operator|.
-name|YES_NO_OPTION
+name|lang
+argument_list|(
+literal|"All entries of this "
+operator|+
+literal|"type will be declared "
+operator|+
+literal|"typeless. Continue?"
+argument_list|)
 argument_list|,
-name|JOptionPane
+name|Localization
 operator|.
-name|WARNING_MESSAGE
+name|lang
+argument_list|(
+literal|"Delete custom format"
+argument_list|)
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Cancel"
+argument_list|)
 argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|reply
-operator|!=
-name|JOptionPane
-operator|.
-name|YES_OPTION
+operator|!
+name|deleteCustomClicked
 condition|)
 block|{
 return|return;
@@ -2603,41 +2600,6 @@ operator|::
 name|setType
 argument_list|)
 argument_list|)
-expr_stmt|;
-block|}
-block|}
-DECL|method|updateTables ()
-specifier|private
-name|void
-name|updateTables
-parameter_list|()
-block|{
-for|for
-control|(
-name|BasePanel
-name|basePanel
-range|:
-name|frame
-operator|.
-name|getBasePanelList
-argument_list|()
-control|)
-block|{
-operator|(
-operator|(
-name|AbstractTableModel
-operator|)
-name|basePanel
-operator|.
-name|getMainTable
-argument_list|()
-operator|.
-name|getModel
-argument_list|()
-operator|)
-operator|.
-name|fireTableDataChanged
-argument_list|()
 expr_stmt|;
 block|}
 block|}

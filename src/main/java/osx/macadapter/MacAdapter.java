@@ -152,18 +152,6 @@ name|apple
 operator|.
 name|eawt
 operator|.
-name|FullScreenUtilities
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|apple
-operator|.
-name|eawt
-operator|.
 name|OpenFilesHandler
 import|;
 end_import
@@ -286,15 +274,6 @@ operator|.
 name|addAppEventListener
 argument_list|(
 name|this
-argument_list|)
-expr_stmt|;
-name|FullScreenUtilities
-operator|.
-name|setWindowCanFullScreen
-argument_list|(
-name|parentFrame
-argument_list|,
-literal|true
 argument_list|)
 expr_stmt|;
 block|}
@@ -442,11 +421,7 @@ condition|)
 block|{
 return|return;
 block|}
-name|parentFrame
-operator|.
-name|showPreferencesDialog
-argument_list|()
-expr_stmt|;
+comment|//  parentFrame.showPreferencesDialog();
 block|}
 annotation|@
 name|Override

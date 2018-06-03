@@ -84,6 +84,8 @@ name|jabref
 operator|.
 name|gui
 operator|.
+name|icon
+operator|.
 name|IconTheme
 import|;
 end_import
@@ -209,7 +211,7 @@ block|{
 return|return
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|ERROR
 operator|.
@@ -226,7 +228,7 @@ block|{
 return|return
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|WARNING
 operator|.

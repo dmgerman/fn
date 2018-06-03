@@ -242,6 +242,18 @@ name|jabref
 operator|.
 name|gui
 operator|.
+name|DialogService
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
 name|JabRefFrame
 import|;
 end_import
@@ -572,12 +584,6 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|field|frame
-specifier|private
-specifier|final
-name|JabRefFrame
-name|frame
-decl_stmt|;
 DECL|field|panel
 specifier|private
 specifier|final
@@ -656,6 +662,17 @@ operator|new
 name|JPanel
 argument_list|()
 decl_stmt|;
+DECL|field|dialogService
+specifier|private
+specifier|final
+name|DialogService
+name|dialogService
+decl_stmt|;
+DECL|field|preferences
+specifier|private
+name|JabRefPreferences
+name|preferences
+decl_stmt|;
 DECL|method|DroppedFileHandler (JabRefFrame frame, BasePanel panel)
 specifier|public
 name|DroppedFileHandler
@@ -669,9 +686,21 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|frame
+name|dialogService
 operator|=
 name|frame
+operator|.
+name|getDialogService
+argument_list|()
+expr_stmt|;
+name|this
+operator|.
+name|preferences
+operator|=
+name|frame
+operator|.
+name|prefs
+argument_list|()
 expr_stmt|;
 name|this
 operator|.
@@ -1646,7 +1675,7 @@ name|JOptionPane
 operator|.
 name|showConfirmDialog
 argument_list|(
-name|frame
+literal|null
 argument_list|,
 name|contentPanel
 argument_list|,
@@ -1696,7 +1725,7 @@ literal|false
 return|;
 block|}
 comment|// reply == JOptionPane.YES_OPTION)
-comment|/*          * TODO Extract Import functionality from ImportMenuItem then we could          * do:          *          * ImportMenuItem importer = new ImportMenuItem(frame, (mainTable ==          * null), new PdfXmpImporter());          *          * importer.automatedImport(new String[] { fileName });          */
+comment|/*          * TODO Extract Import functionality from ImportAction then we could          * do:          *          * ImportAction importer = new ImportAction(frame, (mainTable ==          * null), new PdfXmpImporter());          *          * importer.automatedImport(new String[] { fileName });          */
 name|boolean
 name|isSingle
 init|=
@@ -1886,8 +1915,6 @@ name|getDatabase
 argument_list|()
 argument_list|,
 name|aXmpEntriesInFile
-argument_list|,
-name|panel
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2307,10 +2334,7 @@ name|linkInPlace
 operator|.
 name|setSelected
 argument_list|(
-name|frame
-operator|.
-name|prefs
-argument_list|()
+name|preferences
 operator|.
 name|getBoolean
 argument_list|(
@@ -2324,10 +2348,7 @@ name|copyRadioButton
 operator|.
 name|setSelected
 argument_list|(
-name|frame
-operator|.
-name|prefs
-argument_list|()
+name|preferences
 operator|.
 name|getBoolean
 argument_list|(
@@ -2341,10 +2362,7 @@ name|moveRadioButton
 operator|.
 name|setSelected
 argument_list|(
-name|frame
-operator|.
-name|prefs
-argument_list|()
+name|preferences
 operator|.
 name|getBoolean
 argument_list|(
@@ -2358,10 +2376,7 @@ name|renameCheckBox
 operator|.
 name|setSelected
 argument_list|(
-name|frame
-operator|.
-name|prefs
-argument_list|()
+name|preferences
 operator|.
 name|getBoolean
 argument_list|(
@@ -2415,7 +2430,7 @@ name|JOptionPane
 operator|.
 name|showConfirmDialog
 argument_list|(
-name|frame
+literal|null
 argument_list|,
 name|messages
 argument_list|,
@@ -2440,10 +2455,7 @@ name|OK_OPTION
 condition|)
 block|{
 comment|// store user's choice
-name|frame
-operator|.
-name|prefs
-argument_list|()
+name|preferences
 operator|.
 name|putBoolean
 argument_list|(
@@ -2457,10 +2469,7 @@ name|isSelected
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|frame
-operator|.
-name|prefs
-argument_list|()
+name|preferences
 operator|.
 name|putBoolean
 argument_list|(
@@ -2474,10 +2483,7 @@ name|isSelected
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|frame
-operator|.
-name|prefs
-argument_list|()
+name|preferences
 operator|.
 name|putBoolean
 argument_list|(
@@ -2491,10 +2497,7 @@ name|isSelected
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|frame
-operator|.
-name|prefs
-argument_list|()
+name|preferences
 operator|.
 name|putBoolean
 argument_list|(
@@ -2954,7 +2957,7 @@ name|JOptionPane
 operator|.
 name|showConfirmDialog
 argument_list|(
-name|frame
+literal|null
 argument_list|,
 name|Localization
 operator|.
@@ -3062,11 +3065,16 @@ return|;
 block|}
 else|else
 block|{
-name|JOptionPane
+name|dialogService
 operator|.
-name|showMessageDialog
+name|showErrorDialogAndWait
 argument_list|(
-name|frame
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Move file failed"
+argument_list|)
 argument_list|,
 name|Localization
 operator|.
@@ -3086,17 +3094,6 @@ name|lang
 argument_list|(
 literal|"Please move the file manually and link in place."
 argument_list|)
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Move file failed"
-argument_list|)
-argument_list|,
-name|JOptionPane
-operator|.
-name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
 return|return
@@ -3269,7 +3266,7 @@ name|JOptionPane
 operator|.
 name|showConfirmDialog
 argument_list|(
-name|frame
+literal|null
 argument_list|,
 name|Localization
 operator|.

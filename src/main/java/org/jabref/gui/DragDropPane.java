@@ -146,8 +146,36 @@ name|SwingUtilities
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|icon
+operator|.
+name|IconTheme
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|icon
+operator|.
+name|JabRefIcon
+import|;
+end_import
+
 begin_comment
-comment|/**  * Extends the JTabbedPane class to support Drag&Drop of Tabs.  *  * @author kleinms, strassfn  */
+comment|/**  * Extends the JTabbedPane class to support Drag&Drop of Tabs.  */
 end_comment
 
 begin_class
@@ -718,8 +746,6 @@ decl_stmt|;
 DECL|field|moveTabArrow
 specifier|private
 specifier|final
-name|IconTheme
-operator|.
 name|JabRefIcon
 name|moveTabArrow
 decl_stmt|;
@@ -738,7 +764,7 @@ name|moveTabArrow
 operator|=
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|MOVE_TAB_ARROW
 expr_stmt|;
@@ -804,14 +830,16 @@ literal|24f
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|g
-operator|.
-name|drawString
-argument_list|(
 name|moveTabArrow
 operator|.
-name|getCode
+name|getSmallIcon
 argument_list|()
+operator|.
+name|paintIcon
+argument_list|(
+name|this
+argument_list|,
+name|g
 argument_list|,
 name|locationP
 operator|.

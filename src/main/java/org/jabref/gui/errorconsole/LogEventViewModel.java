@@ -40,7 +40,23 @@ name|jabref
 operator|.
 name|gui
 operator|.
+name|icon
+operator|.
 name|IconTheme
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|icon
+operator|.
+name|JabRefIcon
 import|;
 end_import
 
@@ -175,8 +191,6 @@ block|}
 block|}
 DECL|method|getIcon ()
 specifier|public
-name|IconTheme
-operator|.
 name|JabRefIcon
 name|getIcon
 parameter_list|()
@@ -199,7 +213,7 @@ return|return
 operator|(
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|INTEGRITY_FAIL
 operator|)
@@ -211,7 +225,7 @@ return|return
 operator|(
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|INTEGRITY_WARN
 operator|)
@@ -224,7 +238,7 @@ return|return
 operator|(
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|INTEGRITY_INFO
 operator|)

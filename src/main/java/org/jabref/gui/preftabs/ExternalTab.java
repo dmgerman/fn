@@ -212,7 +212,7 @@ name|gui
 operator|.
 name|push
 operator|.
-name|PushToApplicationButton
+name|PushToApplicationSettingsDialog
 import|;
 end_import
 
@@ -298,12 +298,6 @@ specifier|private
 specifier|final
 name|JabRefPreferences
 name|prefs
-decl_stmt|;
-DECL|field|frame
-specifier|private
-specifier|final
-name|JabRefFrame
-name|frame
 decl_stmt|;
 DECL|field|emailSubject
 specifier|private
@@ -403,12 +397,6 @@ name|prefs
 operator|=
 name|prefs
 expr_stmt|;
-name|this
-operator|.
-name|frame
-operator|=
-name|frame
-expr_stmt|;
 name|setLayout
 argument_list|(
 operator|new
@@ -445,9 +433,7 @@ argument_list|(
 name|ExternalFileTypeEditor
 operator|.
 name|getAction
-argument_list|(
-name|prefsDiag
-argument_list|)
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|defaultConsole
@@ -1377,6 +1363,9 @@ name|pt
 operator|.
 name|getIcon
 argument_list|()
+operator|.
+name|getIcon
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|button
@@ -1385,11 +1374,11 @@ name|addActionListener
 argument_list|(
 name|e
 lambda|->
-name|PushToApplicationButton
+name|PushToApplicationSettingsDialog
 operator|.
 name|showSettingsDialog
 argument_list|(
-name|frame
+literal|null
 argument_list|,
 name|pt
 argument_list|,

@@ -502,11 +502,13 @@ name|JabRefDialog
 block|{
 DECL|field|metaData
 specifier|private
+specifier|final
 name|MetaData
 name|metaData
 decl_stmt|;
 DECL|field|panel
 specifier|private
+specifier|final
 name|BasePanel
 name|panel
 decl_stmt|;
@@ -617,12 +619,15 @@ specifier|private
 name|FieldFormatterCleanupsPanel
 name|fieldFormatterCleanupsPanel
 decl_stmt|;
-DECL|method|DatabasePropertiesDialog (JFrame parent)
+DECL|method|DatabasePropertiesDialog (JFrame parent, BasePanel panel)
 specifier|public
 name|DatabasePropertiesDialog
 parameter_list|(
 name|JFrame
 name|parent
+parameter_list|,
+name|BasePanel
+name|panel
 parameter_list|)
 block|{
 name|super
@@ -690,19 +695,6 @@ literal|"Cancel"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|init
-argument_list|()
-expr_stmt|;
-block|}
-DECL|method|setPanel (BasePanel panel)
-specifier|public
-name|void
-name|setPanel
-parameter_list|(
-name|BasePanel
-name|panel
-parameter_list|)
-block|{
 name|this
 operator|.
 name|panel
@@ -719,6 +711,9 @@ name|getBibDatabaseContext
 argument_list|()
 operator|.
 name|getMetaData
+argument_list|()
+expr_stmt|;
+name|init
 argument_list|()
 expr_stmt|;
 block|}
@@ -1470,7 +1465,7 @@ name|getKey
 argument_list|(
 name|KeyBinding
 operator|.
-name|CLOSE_DIALOG
+name|CLOSE
 argument_list|)
 argument_list|,
 literal|"close"

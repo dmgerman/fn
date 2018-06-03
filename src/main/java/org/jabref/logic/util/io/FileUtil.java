@@ -290,20 +290,6 @@ begin_import
 import|import
 name|org
 operator|.
-name|apache
-operator|.
-name|commons
-operator|.
-name|io
-operator|.
-name|FilenameUtils
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
 name|slf4j
 operator|.
 name|Logger
@@ -494,9 +480,17 @@ name|fileNameWithExtension
 parameter_list|)
 block|{
 return|return
-name|FilenameUtils
+name|com
 operator|.
-name|getBaseName
+name|google
+operator|.
+name|common
+operator|.
+name|io
+operator|.
+name|Files
+operator|.
+name|getNameWithoutExtension
 argument_list|(
 name|fileNameWithExtension
 argument_list|)
@@ -1074,7 +1068,9 @@ literal|false
 argument_list|)
 return|;
 block|}
-comment|/**      * Renames a given file      *      * @param fromFile        The source filename to rename      * @param toFile          The target fileName      * @param replaceExisting Wether to replace existing files or not      * @return True if the rename was successful, false if an exception occurred      */
+comment|/**      * Renames a given file      *      * @param fromFile        The source filename to rename      * @param toFile          The target fileName      * @param replaceExisting Wether to replace existing files or not      * @return True if the rename was successful, false if an exception occurred      * @deprecated Use {@link #renameFileWithException(Path, Path, boolean)} instead and handle exception properly      */
+annotation|@
+name|Deprecated
 DECL|method|renameFile (Path fromFile, Path toFile, boolean replaceExisting)
 specifier|public
 specifier|static

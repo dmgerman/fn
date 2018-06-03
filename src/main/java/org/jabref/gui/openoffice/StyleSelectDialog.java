@@ -38,16 +38,6 @@ name|java
 operator|.
 name|awt
 operator|.
-name|Rectangle
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|awt
-operator|.
 name|event
 operator|.
 name|ActionEvent
@@ -218,7 +208,7 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|JMenuItem
+name|JFrame
 import|;
 end_import
 
@@ -228,7 +218,7 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|JOptionPane
+name|JMenuItem
 import|;
 end_import
 
@@ -366,30 +356,6 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|FXDialogService
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|IconTheme
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
 name|JabRefDialog
 import|;
 end_import
@@ -482,9 +448,9 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|externalfiletype
+name|icon
 operator|.
-name|UnknownExternalFileType
+name|IconTheme
 import|;
 end_import
 
@@ -625,20 +591,6 @@ operator|.
 name|util
 operator|.
 name|TestEntry
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|database
-operator|.
-name|BibDatabaseContext
 import|;
 end_import
 
@@ -881,6 +833,12 @@ specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
+DECL|field|dialogService
+specifier|private
+specifier|final
+name|DialogService
+name|dialogService
+decl_stmt|;
 DECL|field|styles
 specifier|private
 name|EventList
@@ -1004,7 +962,7 @@ name|JButton
 argument_list|(
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|ADD_NOBOX
 operator|.
@@ -1023,7 +981,7 @@ name|JButton
 argument_list|(
 name|IconTheme
 operator|.
-name|JabRefIcon
+name|JabRefIcons
 operator|.
 name|REMOVE_NOBOX
 operator|.
@@ -1040,24 +998,6 @@ DECL|field|removeAction
 specifier|private
 name|ActionListener
 name|removeAction
-decl_stmt|;
-DECL|field|toRect
-specifier|private
-specifier|final
-name|Rectangle
-name|toRect
-init|=
-operator|new
-name|Rectangle
-argument_list|(
-literal|0
-argument_list|,
-literal|0
-argument_list|,
-literal|1
-argument_list|,
-literal|1
-argument_list|)
 decl_stmt|;
 DECL|field|ok
 specifier|private
@@ -1173,6 +1113,13 @@ expr_stmt|;
 name|init
 argument_list|()
 expr_stmt|;
+name|dialogService
+operator|=
+name|frame
+operator|.
+name|getDialogService
+argument_list|()
+expr_stmt|;
 block|}
 DECL|method|init ()
 specifier|private
@@ -1284,6 +1231,13 @@ argument_list|)
 expr_stmt|;
 comment|// Create a preview panel for previewing styles
 comment|// Must be done before creating the table to avoid NPEs
+name|DefaultTaskExecutor
+operator|.
+name|runInJavaFXThread
+argument_list|(
+parameter_list|()
+lambda|->
+block|{
 name|preview
 operator|=
 operator|new
@@ -1292,6 +1246,20 @@ argument_list|(
 literal|null
 argument_list|,
 literal|null
+argument_list|,
+name|Globals
+operator|.
+name|getKeyPrefs
+argument_list|()
+argument_list|,
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getPreviewPreferences
+argument_list|()
+argument_list|,
+name|dialogService
 argument_list|)
 expr_stmt|;
 comment|// Use the test entry from the Preview settings tab in Preferences:
@@ -1300,6 +1268,9 @@ operator|.
 name|setEntry
 argument_list|(
 name|prevEntry
+argument_list|)
+expr_stmt|;
+block|}
 argument_list|)
 expr_stmt|;
 name|setupTable
@@ -1314,7 +1285,10 @@ operator|=
 operator|new
 name|JDialog
 argument_list|(
-name|frame
+operator|(
+name|JFrame
+operator|)
+literal|null
 argument_list|,
 name|Localization
 operator|.
@@ -1505,19 +1479,10 @@ literal|0
 operator|)
 condition|)
 block|{
-name|JOptionPane
+name|dialogService
 operator|.
-name|showMessageDialog
+name|showErrorDialogAndWait
 argument_list|(
-name|diag
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"You must select a valid style file."
-argument_list|)
-argument_list|,
 name|Localization
 operator|.
 name|lang
@@ -1525,9 +1490,12 @@ argument_list|(
 literal|"Style selection"
 argument_list|)
 argument_list|,
-name|JOptionPane
+name|Localization
 operator|.
-name|ERROR_MESSAGE
+name|lang
+argument_list|(
+literal|"You must select a valid style file."
+argument_list|)
 argument_list|)
 expr_stmt|;
 return|return;
@@ -1691,7 +1659,7 @@ name|getKey
 argument_list|(
 name|KeyBinding
 operator|.
-name|CLOSE_DIALOG
+name|CLOSE
 argument_list|)
 argument_list|,
 literal|"close"
@@ -2044,20 +2012,16 @@ name|getPath
 argument_list|()
 argument_list|;             try
 block|{
-if|if
-condition|(
-name|type
-operator|.
-name|isPresent
-argument_list|()
-condition|)
-block|{
 name|JabRefDesktop
 operator|.
 name|openExternalFileAnyFormat
 argument_list|(
-operator|new
-name|BibDatabaseContext
+name|frame
+operator|.
+name|getCurrentBasePanel
+argument_list|()
+operator|.
+name|getBibDatabaseContext
 argument_list|()
 argument_list|,
 name|link
@@ -2065,33 +2029,6 @@ argument_list|,
 name|type
 argument_list|)
 expr_stmt|;
-block|}
-else|else
-block|{
-name|JabRefDesktop
-operator|.
-name|openExternalFileUnknown
-argument_list|(
-name|frame
-argument_list|,
-operator|new
-name|BibEntry
-argument_list|()
-argument_list|,
-operator|new
-name|BibDatabaseContext
-argument_list|()
-argument_list|,
-name|link
-argument_list|,
-operator|new
-name|UnknownExternalFileType
-argument_list|(
-literal|"jstyle"
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
 block|}
 catch|catch
 parameter_list|(
@@ -2165,12 +2102,16 @@ end_expr_stmt
 begin_expr_stmt
 unit|)
 operator|&&
-operator|(
-name|JOptionPane
+name|dialogService
 operator|.
-name|showConfirmDialog
+name|showConfirmationDialogAndWait
 argument_list|(
-name|diag
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Remove style"
+argument_list|)
 argument_list|,
 name|Localization
 operator|.
@@ -2186,15 +2127,13 @@ argument_list|(
 literal|"Remove style"
 argument_list|)
 argument_list|,
-name|JOptionPane
+name|Localization
 operator|.
-name|YES_NO_OPTION
+name|lang
+argument_list|(
+literal|"Cancel"
 argument_list|)
-operator|==
-name|JOptionPane
-operator|.
-name|YES_OPTION
-operator|)
+argument_list|)
 end_expr_stmt
 
 begin_block
@@ -2578,7 +2517,7 @@ block|}
 end_function
 
 begin_comment
-comment|/**      * Get the currently selected style.      * @return the selected style, or empty if no style is selected.      */
+comment|/**      * Get the currently selected style.      *      * @return the selected style, or empty if no style is selected.      */
 end_comment
 
 begin_function
@@ -3279,13 +3218,6 @@ operator|.
 name|build
 argument_list|()
 decl_stmt|;
-name|DialogService
-name|ds
-init|=
-operator|new
-name|FXDialogService
-argument_list|()
-decl_stmt|;
 name|browse
 operator|.
 name|addActionListener
@@ -3305,7 +3237,7 @@ name|runInJavaFXThread
 argument_list|(
 parameter_list|()
 lambda|->
-name|ds
+name|dialogService
 operator|.
 name|showFileOpenDialog
 argument_list|(
@@ -3598,7 +3530,7 @@ name|getKey
 argument_list|(
 name|KeyBinding
 operator|.
-name|CLOSE_DIALOG
+name|CLOSE
 argument_list|)
 argument_list|,
 literal|"close"

@@ -12,6 +12,18 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|file
+operator|.
+name|Path
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|jabref
@@ -35,6 +47,20 @@ operator|.
 name|journals
 operator|.
 name|JournalAbbreviationPreferences
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|metadata
+operator|.
+name|FileDirectoryPreferences
 import|;
 end_import
 
@@ -68,6 +94,24 @@ name|storeJournalAbbreviationPreferences
 parameter_list|(
 name|JournalAbbreviationPreferences
 name|abbreviationsPreferences
+parameter_list|)
+function_decl|;
+DECL|method|getFileDirectoryPreferences ()
+name|FileDirectoryPreferences
+name|getFileDirectoryPreferences
+parameter_list|()
+function_decl|;
+DECL|method|getWorkingDir ()
+name|Path
+name|getWorkingDir
+parameter_list|()
+function_decl|;
+DECL|method|setWorkingDir (Path dir)
+name|void
+name|setWorkingDir
+parameter_list|(
+name|Path
+name|dir
 parameter_list|)
 function_decl|;
 block|}

@@ -759,7 +759,11 @@ comment|// kill the remote thread
 name|stopRemoteThread
 argument_list|()
 expr_stmt|;
-comment|// timer doesn't need to be canceled as it is run in daemon mode, which ensures that it is stopped if the application is shut down
+name|timer
+operator|.
+name|cancel
+argument_list|()
+expr_stmt|;
 block|}
 DECL|class|NamedRunnable
 specifier|private

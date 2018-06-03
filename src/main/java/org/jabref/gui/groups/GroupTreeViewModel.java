@@ -272,18 +272,6 @@ name|jabref
 operator|.
 name|model
 operator|.
-name|FieldChange
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
 name|database
 operator|.
 name|BibDatabaseContext
@@ -357,6 +345,18 @@ operator|.
 name|metadata
 operator|.
 name|MetaData
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|fxmisc
+operator|.
+name|easybind
+operator|.
+name|EasyBind
 import|;
 end_import
 
@@ -532,43 +532,29 @@ name|taskExecutor
 argument_list|)
 expr_stmt|;
 comment|// Register listener
+name|EasyBind
+operator|.
+name|subscribe
+argument_list|(
 name|stateManager
 operator|.
 name|activeDatabaseProperty
 argument_list|()
-operator|.
-name|addListener
-argument_list|(
-parameter_list|(
-name|observable
-parameter_list|,
-name|oldValue
-parameter_list|,
-name|newValue
-parameter_list|)
-lambda|->
+argument_list|,
+name|this
+operator|::
 name|onActiveDatabaseChanged
-argument_list|(
-name|newValue
-argument_list|)
 argument_list|)
 expr_stmt|;
-name|selectedGroups
+name|EasyBind
 operator|.
-name|addListener
+name|subscribe
 argument_list|(
-parameter_list|(
-name|observable
-parameter_list|,
-name|oldValue
-parameter_list|,
-name|newValue
-parameter_list|)
-lambda|->
+name|selectedGroups
+argument_list|,
+name|this
+operator|::
 name|onSelectedGroupChanged
-argument_list|(
-name|newValue
-argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Set-up bindings
@@ -906,6 +892,27 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+else|else
+block|{
+name|rootGroup
+operator|.
+name|setValue
+argument_list|(
+name|GroupNodeViewModel
+operator|.
+name|getAllEntriesGroup
+argument_list|(
+operator|new
+name|BibDatabaseContext
+argument_list|()
+argument_list|,
+name|stateManager
+argument_list|,
+name|taskExecutor
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 name|currentDatabase
 operator|=
 name|newDatabase
@@ -950,16 +957,13 @@ argument_list|(
 name|group
 lambda|->
 block|{
-name|GroupTreeNode
-name|newGroupNode
-init|=
 name|parent
 operator|.
 name|addSubgroup
 argument_list|(
 name|group
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 comment|// TODO: Add undo
 comment|//UndoableAddOrRemoveGroup undo = new UndoableAddOrRemoveGroup(parent, new GroupTreeNodeViewModel(newGroupNode), UndoableAddOrRemoveGroup.ADD_NODE);
 comment|//panel.getUndoManager().addEdit(undo);
@@ -1117,12 +1121,6 @@ operator|instanceof
 name|ExplicitGroup
 operator|)
 decl_stmt|;
-name|List
-argument_list|<
-name|FieldChange
-argument_list|>
-name|addChange
-init|=
 name|oldGroup
 operator|.
 name|getGroupNode
@@ -1141,7 +1139,7 @@ operator|.
 name|getEntriesInCurrentDatabase
 argument_list|()
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 comment|// TODO: Add undo
 comment|// Store undo information.
 comment|// AbstractUndoableEdit undoAddPreviousEntries = null;
@@ -1542,12 +1540,6 @@ block|{
 comment|// TODO: Warn
 comment|// if (!WarnAssignmentSideEffects.warnAssignmentSideEffects(node.getNode().getGroup(), panel.frame())) {
 comment|//    return; // user aborted operation
-name|List
-argument_list|<
-name|FieldChange
-argument_list|>
-name|addChange
-init|=
 name|group
 operator|.
 name|getGroupNode
@@ -1560,7 +1552,7 @@ operator|.
 name|getSelectedEntries
 argument_list|()
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 comment|// TODO: Add undo
 comment|// NamedCompound undoAll = new NamedCompound(Localization.lang("change assignment of entries"));
 comment|// if (!undoAdd.isEmpty()) { undo.addEdit(UndoableChangeEntriesOfGroup.getUndoableEdit(node, undoAdd)); }
@@ -1592,12 +1584,6 @@ block|{
 comment|// TODO: warn if assignment has undesired side effects (modifies a field != keywords)
 comment|// if (!WarnAssignmentSideEffects.warnAssignmentSideEffects(mNode.getNode().getGroup(), mPanel.frame())) {
 comment|//    return; // user aborted operation
-name|List
-argument_list|<
-name|FieldChange
-argument_list|>
-name|removeChange
-init|=
 name|group
 operator|.
 name|getGroupNode
@@ -1610,7 +1596,7 @@ operator|.
 name|getSelectedEntries
 argument_list|()
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 comment|// TODO: Add undo
 comment|// if (!undo.isEmpty()) {
 comment|//    mPanel.getUndoManager().addEdit(UndoableChangeEntriesOfGroup.getUndoableEdit(mNode, undo));

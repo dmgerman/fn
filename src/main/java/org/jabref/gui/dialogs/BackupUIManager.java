@@ -26,21 +26,27 @@ end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|swing
+name|jabref
 operator|.
-name|JFrame
+name|gui
+operator|.
+name|DialogService
 import|;
 end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|swing
+name|jabref
 operator|.
-name|JOptionPane
+name|gui
+operator|.
+name|util
+operator|.
+name|DefaultTaskExecutor
 import|;
 end_import
 
@@ -86,29 +92,23 @@ DECL|method|BackupUIManager ()
 specifier|private
 name|BackupUIManager
 parameter_list|()
-block|{     }
-DECL|method|showRestoreBackupDialog (JFrame frame, Path originalPath)
+block|{      }
+DECL|method|showRestoreBackupDialog (DialogService dialogService, Path originalPath)
 specifier|public
 specifier|static
 name|void
 name|showRestoreBackupDialog
 parameter_list|(
-name|JFrame
-name|frame
+name|DialogService
+name|dialogService
 parameter_list|,
 name|Path
 name|originalPath
 parameter_list|)
 block|{
-name|int
-name|answer
+name|String
+name|content
 init|=
-name|JOptionPane
-operator|.
-name|showConfirmDialog
-argument_list|(
-name|frame
-argument_list|,
 operator|new
 name|StringBuilder
 argument_list|()
@@ -163,7 +163,20 @@ argument_list|)
 operator|.
 name|toString
 argument_list|()
-argument_list|,
+decl_stmt|;
+name|boolean
+name|restoreClicked
+init|=
+name|DefaultTaskExecutor
+operator|.
+name|runInJavaFXThread
+argument_list|(
+parameter_list|()
+lambda|->
+name|dialogService
+operator|.
+name|showConfirmationDialogAndWait
+argument_list|(
 name|Localization
 operator|.
 name|lang
@@ -171,20 +184,27 @@ argument_list|(
 literal|"Backup found"
 argument_list|)
 argument_list|,
-name|JOptionPane
-operator|.
-name|YES_NO_OPTION
+name|content
 argument_list|,
-name|JOptionPane
+name|Localization
 operator|.
-name|WARNING_MESSAGE
+name|lang
+argument_list|(
+literal|"Restore from backup"
+argument_list|)
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Ignore backup"
+argument_list|)
+argument_list|)
 argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|answer
-operator|==
-literal|0
+name|restoreClicked
 condition|)
 block|{
 name|BackupManager

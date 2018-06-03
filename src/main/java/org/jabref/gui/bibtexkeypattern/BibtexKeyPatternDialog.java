@@ -112,6 +112,16 @@ name|javax
 operator|.
 name|swing
 operator|.
+name|JFrame
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
 name|JPanel
 import|;
 end_import
@@ -157,18 +167,6 @@ operator|.
 name|gui
 operator|.
 name|JabRefDialog
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|JabRefFrame
 import|;
 end_import
 
@@ -252,11 +250,13 @@ name|JabRefDialog
 block|{
 DECL|field|metaData
 specifier|private
+specifier|final
 name|MetaData
 name|metaData
 decl_stmt|;
 DECL|field|panel
 specifier|private
+specifier|final
 name|BasePanel
 name|panel
 decl_stmt|;
@@ -266,20 +266,20 @@ specifier|final
 name|BibtexKeyPatternPanel
 name|bibtexKeyPatternPanel
 decl_stmt|;
-DECL|method|BibtexKeyPatternDialog (JabRefFrame parent, BasePanel panel)
+DECL|method|BibtexKeyPatternDialog (BasePanel panel)
 specifier|public
 name|BibtexKeyPatternDialog
 parameter_list|(
-name|JabRefFrame
-name|parent
-parameter_list|,
 name|BasePanel
 name|panel
 parameter_list|)
 block|{
 name|super
 argument_list|(
-name|parent
+operator|(
+name|JFrame
+operator|)
+literal|null
 argument_list|,
 name|Localization
 operator|.
@@ -305,25 +305,6 @@ argument_list|(
 name|panel
 argument_list|)
 expr_stmt|;
-name|setPanel
-argument_list|(
-name|panel
-argument_list|)
-expr_stmt|;
-name|init
-argument_list|()
-expr_stmt|;
-block|}
-comment|/**      * Used for updating an existing Dialog      *      * @param panel the panel to read the data from      */
-DECL|method|setPanel (BasePanel panel)
-specifier|public
-name|void
-name|setPanel
-parameter_list|(
-name|BasePanel
-name|panel
-parameter_list|)
-block|{
 name|this
 operator|.
 name|panel
@@ -343,7 +324,7 @@ name|getMetaData
 argument_list|()
 expr_stmt|;
 name|AbstractBibtexKeyPattern
-name|keypatterns
+name|keyPattern
 init|=
 name|metaData
 operator|.
@@ -361,8 +342,11 @@ name|bibtexKeyPatternPanel
 operator|.
 name|setValues
 argument_list|(
-name|keypatterns
+name|keyPattern
 argument_list|)
+expr_stmt|;
+name|init
+argument_list|()
 expr_stmt|;
 block|}
 DECL|method|init ()

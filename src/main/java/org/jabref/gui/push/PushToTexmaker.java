@@ -14,11 +14,13 @@ end_package
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|swing
+name|jabref
 operator|.
-name|Icon
+name|gui
+operator|.
+name|DialogService
 import|;
 end_import
 
@@ -30,7 +32,23 @@ name|jabref
 operator|.
 name|gui
 operator|.
+name|icon
+operator|.
 name|IconTheme
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|icon
+operator|.
+name|JabRefIcon
 import|;
 end_import
 
@@ -60,6 +78,20 @@ name|AbstractPushToApplication
 implements|implements
 name|PushToApplication
 block|{
+DECL|method|PushToTexmaker (DialogService dialogService)
+specifier|public
+name|PushToTexmaker
+parameter_list|(
+name|DialogService
+name|dialogService
+parameter_list|)
+block|{
+name|super
+argument_list|(
+name|dialogService
+argument_list|)
+expr_stmt|;
+block|}
 annotation|@
 name|Override
 DECL|method|getApplicationName ()
@@ -76,17 +108,16 @@ annotation|@
 name|Override
 DECL|method|getIcon ()
 specifier|public
-name|Icon
+name|JabRefIcon
 name|getIcon
 parameter_list|()
 block|{
 return|return
 name|IconTheme
 operator|.
-name|getImage
-argument_list|(
-literal|"texmaker"
-argument_list|)
+name|JabRefIcons
+operator|.
+name|APPLICATION_TEXMAKER
 return|;
 block|}
 annotation|@
