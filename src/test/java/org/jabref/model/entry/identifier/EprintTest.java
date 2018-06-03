@@ -307,7 +307,7 @@ parameter_list|()
 block|{
 name|assertEquals
 argument_list|(
-literal|"http://arxiv.org/abs/0706.0001v1"
+literal|"https://arxiv.org/abs/0706.0001v1"
 argument_list|,
 operator|new
 name|Eprint
