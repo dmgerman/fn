@@ -678,7 +678,7 @@ name|logic
 operator|.
 name|util
 operator|.
-name|FileType
+name|StandardFileType
 import|;
 end_import
 
@@ -785,16 +785,11 @@ name|super
 argument_list|(
 literal|"mods"
 argument_list|,
-name|FileType
-operator|.
-name|MODS
-operator|.
-name|getDescription
-argument_list|()
+literal|"MODS"
 argument_list|,
-name|FileType
+name|StandardFileType
 operator|.
-name|MODS
+name|XML
 argument_list|)
 expr_stmt|;
 block|}

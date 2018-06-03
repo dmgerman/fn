@@ -288,7 +288,7 @@ name|logic
 operator|.
 name|util
 operator|.
-name|FileType
+name|StandardFileType
 import|;
 end_import
 
@@ -1272,7 +1272,7 @@ name|styleFile
 parameter_list|)
 block|{
 return|return
-name|FileType
+name|StandardFileType
 operator|.
 name|CITATION_STYLE
 operator|.

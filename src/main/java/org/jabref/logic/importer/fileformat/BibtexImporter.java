@@ -144,7 +144,7 @@ name|logic
 operator|.
 name|util
 operator|.
-name|FileType
+name|StandardFileType
 import|;
 end_import
 
@@ -192,6 +192,7 @@ name|importFormatPreferences
 decl_stmt|;
 DECL|field|fileMonitor
 specifier|private
+specifier|final
 name|FileUpdateMonitor
 name|fileMonitor
 decl_stmt|;
@@ -398,12 +399,12 @@ annotation|@
 name|Override
 DECL|method|getFileType ()
 specifier|public
-name|FileType
+name|StandardFileType
 name|getFileType
 parameter_list|()
 block|{
 return|return
-name|FileType
+name|StandardFileType
 operator|.
 name|BIBTEX_DB
 return|;

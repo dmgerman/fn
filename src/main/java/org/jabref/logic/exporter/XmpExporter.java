@@ -120,7 +120,7 @@ name|logic
 operator|.
 name|util
 operator|.
-name|FileType
+name|StandardFileType
 import|;
 end_import
 
@@ -219,16 +219,11 @@ name|super
 argument_list|(
 literal|"xmp"
 argument_list|,
-name|FileType
-operator|.
-name|PLAIN_XMP
-operator|.
-name|getDescription
-argument_list|()
+literal|"Plain XMP"
 argument_list|,
-name|FileType
+name|StandardFileType
 operator|.
-name|PLAIN_XMP
+name|XMP
 argument_list|)
 expr_stmt|;
 name|this

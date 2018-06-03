@@ -190,7 +190,7 @@ name|logic
 operator|.
 name|util
 operator|.
-name|FileType
+name|StandardFileType
 import|;
 end_import
 
@@ -242,16 +242,11 @@ name|super
 argument_list|(
 literal|"MSBib"
 argument_list|,
-name|FileType
-operator|.
-name|MSBIB
-operator|.
-name|getDescription
-argument_list|()
+literal|"MS Office 2007"
 argument_list|,
-name|FileType
+name|StandardFileType
 operator|.
-name|MSBIB
+name|XML
 argument_list|)
 expr_stmt|;
 block|}

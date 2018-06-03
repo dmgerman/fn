@@ -526,7 +526,7 @@ name|logic
 operator|.
 name|util
 operator|.
-name|FileType
+name|StandardFileType
 import|;
 end_import
 
@@ -640,16 +640,11 @@ name|super
 argument_list|(
 literal|"bibtexml"
 argument_list|,
-name|FileType
-operator|.
-name|BIBTEXML_XML_ONLY
-operator|.
-name|getDescription
-argument_list|()
+literal|"BibTexXML"
 argument_list|,
-name|FileType
+name|StandardFileType
 operator|.
-name|BIBTEXML_XML_ONLY
+name|XML
 argument_list|)
 expr_stmt|;
 block|}

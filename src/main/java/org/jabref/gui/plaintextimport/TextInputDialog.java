@@ -864,7 +864,7 @@ name|logic
 operator|.
 name|util
 operator|.
-name|FileType
+name|OS
 import|;
 end_import
 
@@ -878,7 +878,7 @@ name|logic
 operator|.
 name|util
 operator|.
-name|OS
+name|StandardFileType
 import|;
 end_import
 
@@ -3824,14 +3824,28 @@ argument_list|()
 operator|.
 name|addExtensionFilter
 argument_list|(
-name|FileType
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Plain text"
+argument_list|)
+argument_list|,
+name|StandardFileType
 operator|.
 name|TXT
 argument_list|)
 operator|.
 name|withDefaultExtension
 argument_list|(
-name|FileType
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Plain text"
+argument_list|)
+argument_list|,
+name|StandardFileType
 operator|.
 name|TXT
 argument_list|)

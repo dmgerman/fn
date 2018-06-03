@@ -288,7 +288,7 @@ name|logic
 operator|.
 name|util
 operator|.
-name|FileType
+name|StandardFileType
 import|;
 end_import
 
@@ -392,14 +392,9 @@ name|super
 argument_list|(
 literal|"oocalc"
 argument_list|,
-name|FileType
-operator|.
-name|SXC
-operator|.
-name|getDescription
-argument_list|()
+literal|"Old OpenOffice/LibreOffice Calc format"
 argument_list|,
-name|FileType
+name|StandardFileType
 operator|.
 name|SXC
 argument_list|)

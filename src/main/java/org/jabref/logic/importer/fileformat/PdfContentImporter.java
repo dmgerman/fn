@@ -228,7 +228,7 @@ name|logic
 operator|.
 name|util
 operator|.
-name|FileType
+name|StandardFileType
 import|;
 end_import
 
@@ -3063,14 +3063,14 @@ annotation|@
 name|Override
 DECL|method|getFileType ()
 specifier|public
-name|FileType
+name|StandardFileType
 name|getFileType
 parameter_list|()
 block|{
 return|return
-name|FileType
+name|StandardFileType
 operator|.
-name|PDF_CONTENT
+name|PDF
 return|;
 block|}
 annotation|@

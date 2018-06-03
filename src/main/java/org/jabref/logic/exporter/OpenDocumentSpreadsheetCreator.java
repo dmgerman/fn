@@ -298,9 +298,23 @@ name|jabref
 operator|.
 name|logic
 operator|.
+name|l10n
+operator|.
+name|Localization
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
 name|util
 operator|.
-name|FileType
+name|StandardFileType
 import|;
 end_import
 
@@ -404,14 +418,14 @@ name|super
 argument_list|(
 literal|"ods"
 argument_list|,
-name|FileType
+name|Localization
 operator|.
-name|ODS
-operator|.
-name|getDescription
-argument_list|()
+name|lang
+argument_list|(
+literal|"OpenDocument spreadsheet"
+argument_list|)
 argument_list|,
-name|FileType
+name|StandardFileType
 operator|.
 name|ODS
 argument_list|)

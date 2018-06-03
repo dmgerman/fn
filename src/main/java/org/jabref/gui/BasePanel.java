@@ -1468,7 +1468,7 @@ name|logic
 operator|.
 name|util
 operator|.
-name|FileType
+name|StandardFileType
 import|;
 end_import
 
@@ -13721,14 +13721,30 @@ argument_list|()
 operator|.
 name|withDefaultExtension
 argument_list|(
-name|FileType
+name|StandardFileType
 operator|.
 name|BIBTEX_DB
 argument_list|)
 operator|.
 name|addExtensionFilter
 argument_list|(
-name|FileType
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"%1s %2s"
+argument_list|,
+literal|"BibTex"
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Library"
+argument_list|)
+argument_list|)
+argument_list|,
+name|StandardFileType
 operator|.
 name|BIBTEX_DB
 argument_list|)

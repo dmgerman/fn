@@ -399,7 +399,7 @@ name|comparing
 argument_list|(
 name|Exporter
 operator|::
-name|getDisplayName
+name|getName
 argument_list|)
 argument_list|)
 operator|.
@@ -426,7 +426,7 @@ name|map
 argument_list|(
 name|Exporter
 operator|::
-name|getDisplayName
+name|getName
 argument_list|)
 operator|.
 name|collect

@@ -80,7 +80,7 @@ name|logic
 operator|.
 name|util
 operator|.
-name|FileType
+name|StandardFileType
 import|;
 end_import
 
@@ -180,9 +180,9 @@ parameter_list|()
 block|{
 name|assertEquals
 argument_list|(
-name|FileType
+name|StandardFileType
 operator|.
-name|COPAC
+name|TXT
 argument_list|,
 name|importer
 operator|.

@@ -480,7 +480,7 @@ name|format
 block|,
 name|format
 operator|.
-name|getDisplayName
+name|getName
 argument_list|()
 block|}
 argument_list|)
