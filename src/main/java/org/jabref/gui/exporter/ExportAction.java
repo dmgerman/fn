@@ -68,16 +68,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|JOptionPane
-import|;
-end_import
-
-begin_import
-import|import
 name|javafx
 operator|.
 name|stage
@@ -380,14 +370,14 @@ name|selectedOnly
 condition|?
 name|Localization
 operator|.
-name|menuTitle
+name|lang
 argument_list|(
 literal|"Export selected entries"
 argument_list|)
 else|:
 name|Localization
 operator|.
-name|menuTitle
+name|lang
 argument_list|(
 literal|"Export"
 argument_list|)
@@ -874,35 +864,8 @@ name|errorMessage
 argument_list|)
 expr_stmt|;
 comment|// Need to warn the user that saving failed!
-name|JOptionPane
-operator|.
-name|showMessageDialog
-argument_list|(
-name|frame
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Could not save file."
-argument_list|)
-operator|+
-literal|"\n"
-operator|+
-name|errorMessage
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Save library"
-argument_list|)
-argument_list|,
-name|JOptionPane
-operator|.
-name|ERROR_MESSAGE
-argument_list|)
-expr_stmt|;
+comment|// FIXME: This should be JavaFX
+comment|/*                             JOptionPane.showMessageDialog(frame,                                     Localization.lang("Could not save file.") + "\n" + errorMessage,                                     Localization.lang("Save library"), JOptionPane.ERROR_MESSAGE);                                     */
 block|}
 block|}
 block|}
