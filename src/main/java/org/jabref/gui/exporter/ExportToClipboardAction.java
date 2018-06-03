@@ -395,7 +395,7 @@ name|comparing
 argument_list|(
 name|Exporter
 operator|::
-name|getDisplayName
+name|getName
 argument_list|)
 argument_list|)
 operator|.
