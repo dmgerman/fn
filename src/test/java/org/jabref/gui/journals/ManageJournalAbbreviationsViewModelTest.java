@@ -16,36 +16,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
-operator|.
-name|File
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|FileOutputStream
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|OutputStream
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|nio
 operator|.
 name|charset
@@ -62,7 +32,29 @@ name|nio
 operator|.
 name|file
 operator|.
+name|Files
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|file
+operator|.
 name|Path
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Arrays
 import|;
 end_import
 
@@ -127,16 +119,6 @@ operator|.
 name|collections
 operator|.
 name|ObservableList
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|CatchExceptionsFromThread
 import|;
 end_import
 
@@ -248,13 +230,11 @@ begin_import
 import|import
 name|org
 operator|.
-name|assertj
+name|junit$pioneer
 operator|.
-name|core
+name|jupiter
 operator|.
-name|util
-operator|.
-name|Files
+name|TempDirectory
 import|;
 end_import
 
@@ -264,7 +244,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|BeforeEach
 import|;
 end_import
 
@@ -274,35 +258,9 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Before
-import|;
-end_import
-
-begin_import
-import|import
-name|org
+name|jupiter
 operator|.
-name|junit
-operator|.
-name|ClassRule
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|Rule
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
+name|api
 operator|.
 name|Test
 import|;
@@ -314,9 +272,13 @@ name|org
 operator|.
 name|junit
 operator|.
-name|rules
+name|jupiter
 operator|.
-name|TemporaryFolder
+name|api
+operator|.
+name|extension
+operator|.
+name|ExtendWith
 import|;
 end_import
 
@@ -333,6 +295,70 @@ operator|.
 name|OS
 operator|.
 name|NEWLINE
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
+operator|.
+name|assertFalse
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
+operator|.
+name|assertNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
+operator|.
+name|assertTrue
 import|;
 end_import
 
@@ -397,34 +423,17 @@ import|;
 end_import
 
 begin_class
+annotation|@
+name|ExtendWith
+argument_list|(
+name|TempDirectory
+operator|.
+name|class
+argument_list|)
 DECL|class|ManageJournalAbbreviationsViewModelTest
-specifier|public
 class|class
 name|ManageJournalAbbreviationsViewModelTest
 block|{
-annotation|@
-name|ClassRule
-DECL|field|catchExceptions
-specifier|public
-specifier|static
-name|CatchExceptionsFromThread
-name|catchExceptions
-init|=
-operator|new
-name|CatchExceptionsFromThread
-argument_list|()
-decl_stmt|;
-annotation|@
-name|Rule
-DECL|field|tempFolder
-specifier|public
-name|TemporaryFolder
-name|tempFolder
-init|=
-operator|new
-name|TemporaryFolder
-argument_list|()
-decl_stmt|;
 DECL|field|viewModel
 specifier|private
 name|ManageJournalAbbreviationsViewModel
@@ -466,12 +475,18 @@ name|DialogService
 name|dialogService
 decl_stmt|;
 annotation|@
-name|Before
-DECL|method|setUpViewModel ()
-specifier|public
+name|BeforeEach
+DECL|method|setUpViewModel (@empDirectory.TempDir Path tempFolder)
 name|void
 name|setUpViewModel
-parameter_list|()
+parameter_list|(
+annotation|@
+name|TempDirectory
+operator|.
+name|TempDir
+name|Path
+name|tempFolder
+parameter_list|)
 throws|throws
 name|Exception
 block|{
@@ -549,8 +564,10 @@ argument_list|)
 expr_stmt|;
 name|emptyTestFile
 operator|=
-name|createTemporaryTestFile
+name|createTestFile
 argument_list|(
+name|tempFolder
+argument_list|,
 literal|"emptyTestFile.txt"
 argument_list|,
 literal|""
@@ -558,8 +575,10 @@ argument_list|)
 expr_stmt|;
 name|testFile1Entries
 operator|=
-name|createTemporaryTestFile
+name|createTestFile
 argument_list|(
+name|tempFolder
+argument_list|,
 literal|"testFile1Entries.txt"
 argument_list|,
 literal|"Test Entry = TE"
@@ -571,8 +590,10 @@ argument_list|)
 expr_stmt|;
 name|testFile3Entries
 operator|=
-name|createTemporaryTestFile
+name|createTestFile
 argument_list|(
+name|tempFolder
+argument_list|,
 literal|"testFile3Entries.txt"
 argument_list|,
 literal|"Abbreviations = Abb"
@@ -592,8 +613,10 @@ argument_list|)
 expr_stmt|;
 name|testFile4Entries
 operator|=
-name|createTemporaryTestFile
+name|createTestFile
 argument_list|(
+name|tempFolder
+argument_list|,
 literal|"testFile4Entries.txt"
 argument_list|,
 literal|"Abbreviations = Abb"
@@ -617,8 +640,10 @@ argument_list|)
 expr_stmt|;
 name|testFile5EntriesWithDuplicate
 operator|=
-name|createTemporaryTestFile
+name|createTestFile
 argument_list|(
+name|tempFolder
+argument_list|,
 literal|"testFile5Entries.txt"
 argument_list|,
 literal|"Abbreviations = Abb"
@@ -648,13 +673,10 @@ block|}
 annotation|@
 name|Test
 DECL|method|testInitialHasNoFilesAndNoAbbreviations ()
-specifier|public
 name|void
 name|testInitialHasNoFilesAndNoAbbreviations
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|0
@@ -668,8 +690,6 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|0
@@ -687,7 +707,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testInitialWithSavedFilesIncrementsFilesCounter ()
-specifier|public
 name|void
 name|testInitialWithSavedFilesIncrementsFilesCounter
 parameter_list|()
@@ -702,8 +721,6 @@ operator|.
 name|createFileObjects
 argument_list|()
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|4
@@ -721,7 +738,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testRemoveDuplicatesWhenReadingFiles ()
-specifier|public
 name|void
 name|testRemoveDuplicatesWhenReadingFiles
 parameter_list|()
@@ -742,8 +758,6 @@ name|selectLastJournalFile
 argument_list|()
 expr_stmt|;
 comment|// should result in 4 real abbreviations and one pseudo abbreviation
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|5
@@ -761,7 +775,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|addFileIncreasesCounterOfOpenFilesAndHasNoAbbreviations ()
-specifier|public
 name|void
 name|addFileIncreasesCounterOfOpenFilesAndHasNoAbbreviations
 parameter_list|()
@@ -794,8 +807,6 @@ operator|.
 name|addNewFile
 argument_list|()
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -809,8 +820,6 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -828,7 +837,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|addDuplicatedFileResultsInErrorDialog ()
-specifier|public
 name|void
 name|addDuplicatedFileResultsInErrorDialog
 parameter_list|()
@@ -884,7 +892,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testOpenDuplicatedFileResultsInAnException ()
-specifier|public
 name|void
 name|testOpenDuplicatedFileResultsInAnException
 parameter_list|()
@@ -940,7 +947,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testSelectLastJournalFileSwitchesFilesAndTheirAbbreviations ()
-specifier|public
 name|void
 name|testSelectLastJournalFileSwitchesFilesAndTheirAbbreviations
 parameter_list|()
@@ -978,8 +984,6 @@ operator|.
 name|selectLastJournalFile
 argument_list|()
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -1024,8 +1028,6 @@ operator|.
 name|selectLastJournalFile
 argument_list|()
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|2
@@ -1043,7 +1045,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testOpenValidFileContainsTheSpecificEntryAndEnoughAbbreviations ()
-specifier|public
 name|void
 name|testOpenValidFileContainsTheSpecificEntryAndEnoughAbbreviations
 parameter_list|()
@@ -1092,8 +1093,6 @@ operator|.
 name|selectLastJournalFile
 argument_list|()
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -1108,8 +1107,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// our test file has 3 abbreviations and one pseudo abbreviation
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|4
@@ -1123,8 +1120,6 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|viewModel
@@ -1146,7 +1141,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testRemoveLastListSetsCurrentFileAndCurrentAbbreviationToNull ()
-specifier|public
 name|void
 name|testRemoveLastListSetsCurrentFileAndCurrentAbbreviationToNull
 parameter_list|()
@@ -1184,8 +1178,6 @@ operator|.
 name|removeCurrentFile
 argument_list|()
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|0
@@ -1199,8 +1191,6 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|0
@@ -1214,8 +1204,6 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertNull
 argument_list|(
 name|viewModel
@@ -1227,8 +1215,6 @@ name|get
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertNull
 argument_list|(
 name|viewModel
@@ -1244,7 +1230,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testMixedFileUsage ()
-specifier|public
 name|void
 name|testMixedFileUsage
 parameter_list|()
@@ -1345,8 +1330,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// size of the list of journal files should be incremented by two
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|2
@@ -1361,8 +1344,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// our second test file has 4 abbreviations
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|5
@@ -1377,8 +1358,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// check some abbreviation
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|viewModel
@@ -1442,8 +1421,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// size of the list of journal files should be incremented by one
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|3
@@ -1458,8 +1435,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// a new file has zero abbreviations
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -1519,8 +1494,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// size of the list of journal files should be incremented by one
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|4
@@ -1534,8 +1507,6 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|5
@@ -1550,8 +1521,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// check some abbreviation
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|viewModel
@@ -1573,7 +1542,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testBuiltInListsIncludeAllBuiltInAbbreviations ()
-specifier|public
 name|void
 name|testBuiltInListsIncludeAllBuiltInAbbreviations
 parameter_list|()
@@ -1596,8 +1564,6 @@ operator|.
 name|addBuiltInLists
 argument_list|()
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|2
@@ -1679,8 +1645,6 @@ argument_list|()
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|expected
@@ -1692,7 +1656,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testBuiltInListsStandardIEEEIncludesAllBuiltIEEEAbbreviations ()
-specifier|public
 name|void
 name|testBuiltInListsStandardIEEEIncludesAllBuiltIEEEAbbreviations
 parameter_list|()
@@ -1722,8 +1685,6 @@ operator|.
 name|selectLastJournalFile
 argument_list|()
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|2
@@ -1787,8 +1748,6 @@ argument_list|()
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|expected
@@ -1800,7 +1759,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testcurrentFilePropertyChangeActiveFile ()
-specifier|public
 name|void
 name|testcurrentFilePropertyChangeActiveFile
 parameter_list|()
@@ -1969,8 +1927,6 @@ literal|3
 argument_list|)
 decl_stmt|;
 comment|// test if the last opened file is active, but duplicated entry has been removed
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|5
@@ -1995,8 +1951,6 @@ name|test1
 argument_list|)
 expr_stmt|;
 comment|// test if the current abbreviations matches with the ones in testFile1Entries
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|2
@@ -2020,8 +1974,6 @@ argument_list|(
 name|test3
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|4
@@ -2045,8 +1997,6 @@ argument_list|(
 name|test1
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|2
@@ -2070,8 +2020,6 @@ argument_list|(
 name|test4
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|5
@@ -2095,8 +2043,6 @@ argument_list|(
 name|test5
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|5
@@ -2114,7 +2060,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testAddAbbreviationIncludesAbbreviationsInAbbreviationList ()
-specifier|public
 name|void
 name|testAddAbbreviationIncludesAbbreviationsInAbbreviationList
 parameter_list|()
@@ -2194,8 +2139,6 @@ argument_list|(
 name|testAbbreviation
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|6
@@ -2209,8 +2152,6 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|viewModel
@@ -2232,7 +2173,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testAddDuplicatedAbbreviationResultsInException ()
-specifier|public
 name|void
 name|testAddDuplicatedAbbreviationResultsInException
 parameter_list|()
@@ -2306,7 +2246,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testEditSameAbbreviationWithNoChangeDoesNotResultInException ()
-specifier|public
 name|void
 name|testEditSameAbbreviationWithNoChangeDoesNotResultInException
 parameter_list|()
@@ -2365,8 +2304,6 @@ argument_list|(
 name|testAbbreviation
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|viewModel
@@ -2388,7 +2325,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testEditAbbreviationIncludesNewAbbreviationInAbbreviationsList ()
-specifier|public
 name|void
 name|testEditAbbreviationIncludesNewAbbreviationInAbbreviationsList
 parameter_list|()
@@ -2471,8 +2407,6 @@ argument_list|(
 name|testAbbreviation
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|5
@@ -2486,8 +2420,6 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|viewModel
@@ -2541,8 +2473,6 @@ argument_list|(
 name|testAbbreviation
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -2556,8 +2486,6 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertFalse
 argument_list|(
 name|viewModel
@@ -2579,7 +2507,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testEditAbbreviationToExistingOneResultsInException ()
-specifier|public
 name|void
 name|testEditAbbreviationToExistingOneResultsInException
 parameter_list|()
@@ -2620,8 +2547,6 @@ expr_stmt|;
 name|selectLastAbbreviation
 argument_list|()
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|4
@@ -2689,7 +2614,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testEditAbbreviationToEmptyNameResultsInException ()
-specifier|public
 name|void
 name|testEditAbbreviationToEmptyNameResultsInException
 parameter_list|()
@@ -2730,8 +2654,6 @@ expr_stmt|;
 name|selectLastAbbreviation
 argument_list|()
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|4
@@ -2769,7 +2691,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testEditAbbreviationToEmptyAbbreviationResultsInException ()
-specifier|public
 name|void
 name|testEditAbbreviationToEmptyAbbreviationResultsInException
 parameter_list|()
@@ -2810,8 +2731,6 @@ expr_stmt|;
 name|selectLastAbbreviation
 argument_list|()
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|4
@@ -2849,7 +2768,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testDeleteAbbreviationSelectsPreviousOne ()
-specifier|public
 name|void
 name|testDeleteAbbreviationSelectsPreviousOne
 parameter_list|()
@@ -2929,8 +2847,6 @@ argument_list|(
 name|testAbbreviation
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|viewModel
@@ -2948,8 +2864,6 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 operator|new
@@ -2972,8 +2886,6 @@ operator|.
 name|deleteAbbreviation
 argument_list|()
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|5
@@ -2988,8 +2900,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// check if the previous (the last) element is the current abbreviation
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|viewModel
@@ -3015,7 +2925,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testDeleteAbbreviationSelectsNextOne ()
-specifier|public
 name|void
 name|testDeleteAbbreviationSelectsNextOne
 parameter_list|()
@@ -3092,8 +3001,6 @@ operator|.
 name|deleteAbbreviation
 argument_list|()
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 operator|new
@@ -3115,7 +3022,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testSaveAbbreviationsToFilesCreatesNewFilesWithWrittenAbbreviations ()
-specifier|public
 name|void
 name|testSaveAbbreviationsToFilesCreatesNewFilesWithWrittenAbbreviations
 parameter_list|()
@@ -3172,8 +3078,6 @@ argument_list|(
 name|testAbbreviation
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|5
@@ -3187,8 +3091,6 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|viewModel
@@ -3261,8 +3163,6 @@ argument_list|(
 name|testAbbreviation1
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|5
@@ -3276,8 +3176,6 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|viewModel
@@ -3300,46 +3198,42 @@ operator|.
 name|saveJournalAbbreviationFiles
 argument_list|()
 expr_stmt|;
+name|List
+argument_list|<
 name|String
+argument_list|>
 name|expected
 init|=
+name|Arrays
+operator|.
+name|asList
+argument_list|(
 literal|"Abbreviations = Abb"
-operator|+
-name|NEWLINE
-operator|+
+argument_list|,
 literal|"Test Entry = TE"
-operator|+
-name|NEWLINE
-operator|+
+argument_list|,
 literal|"MoreEntries = ME"
-operator|+
-name|NEWLINE
-operator|+
+argument_list|,
 literal|"JabRefTestEntry = JTE"
-operator|+
-name|NEWLINE
-operator|+
-literal|""
+argument_list|)
 decl_stmt|;
+name|List
+argument_list|<
 name|String
+argument_list|>
 name|actual
 init|=
 name|Files
 operator|.
-name|contentOf
+name|readAllLines
 argument_list|(
 name|testFile4Entries
-operator|.
-name|toFile
-argument_list|()
 argument_list|,
 name|StandardCharsets
 operator|.
 name|UTF_8
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|expected
@@ -3349,42 +3243,32 @@ argument_list|)
 expr_stmt|;
 name|expected
 operator|=
+name|Arrays
+operator|.
+name|asList
+argument_list|(
 literal|"EntryEntry = EE"
-operator|+
-name|NEWLINE
-operator|+
+argument_list|,
 literal|"Abbreviations = Abb"
-operator|+
-name|NEWLINE
-operator|+
+argument_list|,
 literal|"Test Entry = TE"
-operator|+
-name|NEWLINE
-operator|+
+argument_list|,
 literal|"SomeOtherEntry = SOE"
-operator|+
-name|NEWLINE
-operator|+
-literal|""
+argument_list|)
 expr_stmt|;
 name|actual
 operator|=
 name|Files
 operator|.
-name|contentOf
+name|readAllLines
 argument_list|(
 name|testFile5EntriesWithDuplicate
-operator|.
-name|toFile
-argument_list|()
 argument_list|,
 name|StandardCharsets
 operator|.
 name|UTF_8
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|expected
@@ -3396,7 +3280,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testSaveExternalFilesListToPreferences ()
-specifier|public
 name|void
 name|testSaveExternalFilesListToPreferences
 parameter_list|()
@@ -3451,11 +3334,14 @@ name|expected
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|createTemporaryTestFile (String name, String content)
+DECL|method|createTestFile (Path folder, String name, String content)
 specifier|private
 name|Path
-name|createTemporaryTestFile
+name|createTestFile
 parameter_list|(
+name|Path
+name|folder
+parameter_list|,
 name|String
 name|name
 parameter_list|,
@@ -3465,32 +3351,22 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-name|File
-name|testFile
+name|Path
+name|file
 init|=
-name|tempFolder
+name|folder
 operator|.
-name|newFile
+name|resolve
 argument_list|(
 name|name
 argument_list|)
 decl_stmt|;
-try|try
-init|(
-name|OutputStream
-name|outputStream
-init|=
-operator|new
-name|FileOutputStream
-argument_list|(
-name|testFile
-argument_list|)
-init|)
-block|{
-name|outputStream
+name|Files
 operator|.
 name|write
 argument_list|(
+name|file
+argument_list|,
 name|content
 operator|.
 name|getBytes
@@ -3501,12 +3377,8 @@ name|UTF_8
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
 return|return
-name|testFile
-operator|.
-name|toPath
-argument_list|()
+name|file
 return|;
 block|}
 DECL|method|addAbbrevaition (Abbreviation testAbbreviation)
