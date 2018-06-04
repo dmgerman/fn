@@ -282,13 +282,13 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"Alle speichern"
+literal|"Zeige Einstellungen"
 argument_list|,
 name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Save all"
+literal|"Show preferences"
 argument_list|)
 argument_list|)
 expr_stmt|;
