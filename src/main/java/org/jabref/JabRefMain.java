@@ -403,6 +403,8 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+try|try
+block|{
 comment|// Fail on unsupported Java versions
 name|ensureCorrectJavaVersion
 argument_list|()
@@ -505,6 +507,23 @@ name|isBlank
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|ex
+parameter_list|)
+block|{
+name|LOGGER
+operator|.
+name|error
+argument_list|(
+literal|"Unexpected exception"
+argument_list|,
+name|ex
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 annotation|@
 name|Override

@@ -1551,7 +1551,7 @@ argument_list|(
 name|entry
 argument_list|)
 expr_stmt|;
-comment|// remove subscription for old entry if existing
+comment|// Remove subscription for old entry if existing
 if|if
 condition|(
 name|typeSubscription
@@ -1571,13 +1571,6 @@ name|entry
 operator|=
 name|entry
 expr_stmt|;
-name|DefaultTaskExecutor
-operator|.
-name|runInJavaFXThread
-argument_list|(
-parameter_list|()
-lambda|->
-block|{
 name|recalculateVisibleTabs
 argument_list|()
 expr_stmt|;
@@ -1601,21 +1594,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// Notify current tab about new entry
-name|EntryEditorTab
-name|selectedTab
-init|=
-operator|(
-name|EntryEditorTab
-operator|)
-name|tabbed
-operator|.
-name|getSelectionModel
+name|getSelectedTab
 argument_list|()
-operator|.
-name|getSelectedItem
-argument_list|()
-decl_stmt|;
-name|selectedTab
 operator|.
 name|notifyAboutFocus
 argument_list|(
@@ -1625,10 +1605,7 @@ expr_stmt|;
 name|setupToolBar
 argument_list|()
 expr_stmt|;
-block|}
-argument_list|)
-expr_stmt|;
-comment|// subscribe to type changes for rebuilding the currently visible tab
+comment|// Subscribe to type changes for rebuilding the currently visible tab
 name|typeSubscription
 operator|=
 name|EasyBind
@@ -1643,13 +1620,6 @@ name|typeProperty
 argument_list|()
 argument_list|,
 name|type
-lambda|->
-block|{
-name|DefaultTaskExecutor
-operator|.
-name|runInJavaFXThread
-argument_list|(
-parameter_list|()
 lambda|->
 block|{
 name|typeLabel
@@ -1674,21 +1644,8 @@ expr_stmt|;
 name|recalculateVisibleTabs
 argument_list|()
 expr_stmt|;
-name|EntryEditorTab
-name|selectedTab
-init|=
-operator|(
-name|EntryEditorTab
-operator|)
-name|tabbed
-operator|.
-name|getSelectionModel
+name|getSelectedTab
 argument_list|()
-operator|.
-name|getSelectedItem
-argument_list|()
-decl_stmt|;
-name|selectedTab
 operator|.
 name|notifyAboutFocus
 argument_list|(
@@ -1699,8 +1656,24 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-argument_list|)
-expr_stmt|;
+DECL|method|getSelectedTab ()
+specifier|private
+name|EntryEditorTab
+name|getSelectedTab
+parameter_list|()
+block|{
+return|return
+operator|(
+name|EntryEditorTab
+operator|)
+name|tabbed
+operator|.
+name|getSelectionModel
+argument_list|()
+operator|.
+name|getSelectedItem
+argument_list|()
+return|;
 block|}
 DECL|method|setupToolBar ()
 specifier|private
