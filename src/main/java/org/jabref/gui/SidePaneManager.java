@@ -348,6 +348,9 @@ name|OPEN_OFFICE
 argument_list|)
 expr_stmt|;
 block|}
+name|updateView
+argument_list|()
+expr_stmt|;
 block|}
 DECL|method|getPane ()
 specifier|public
