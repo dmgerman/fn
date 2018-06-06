@@ -543,7 +543,7 @@ return|return;
 block|}
 name|clipBoardManager
 operator|.
-name|setClipboardContents
+name|setContent
 argument_list|(
 name|getLogMessagesAsString
 argument_list|(
@@ -660,7 +660,7 @@ literal|"\n```\n\n</details>"
 decl_stmt|;
 name|clipBoardManager
 operator|.
-name|setClipboardContents
+name|setContent
 argument_list|(
 name|issueDetails
 argument_list|)

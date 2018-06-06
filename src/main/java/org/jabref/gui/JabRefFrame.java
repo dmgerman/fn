@@ -3025,17 +3025,6 @@ argument_list|>
 name|filenames
 parameter_list|)
 block|{
-name|Globals
-operator|.
-name|stopBackgroundTasks
-argument_list|()
-expr_stmt|;
-name|Globals
-operator|.
-name|shutdownThreadPools
-argument_list|()
-expr_stmt|;
-comment|//dispose();
 comment|//prefs.putBoolean(JabRefPreferences.WINDOW_MAXIMISED, getExtendedState() == Frame.MAXIMIZED_BOTH);
 if|if
 condition|(
