@@ -26,16 +26,6 @@ name|java
 operator|.
 name|awt
 operator|.
-name|Insets
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|awt
-operator|.
 name|Window
 import|;
 end_import
@@ -223,16 +213,6 @@ operator|.
 name|swing
 operator|.
 name|SwingUtilities
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|UIManager
 import|;
 end_import
 
@@ -3565,25 +3545,6 @@ expr_stmt|;
 name|setCenter
 argument_list|(
 name|splitPane
-argument_list|)
-expr_stmt|;
-name|UIManager
-operator|.
-name|put
-argument_list|(
-literal|"TabbedPane.contentBorderInsets"
-argument_list|,
-operator|new
-name|Insets
-argument_list|(
-literal|0
-argument_list|,
-literal|0
-argument_list|,
-literal|0
-argument_list|,
-literal|0
-argument_list|)
 argument_list|)
 expr_stmt|;
 comment|/*         GridBagLayout gbl = new GridBagLayout();         GridBagConstraints con = new GridBagConstraints();         con.fill = GridBagConstraints.BOTH;         con.anchor = GridBagConstraints.WEST;         JPanel status = new JPanel();         status.setLayout(gbl);         con.weighty = 0;         con.weightx = 0;         con.gridwidth = 1;         con.insets = new Insets(0, 2, 0, 0);         gbl.setConstraints(statusLabel, con);         status.add(statusLabel);         con.weightx = 1;         con.insets = new Insets(0, 4, 0, 0);         con.gridwidth = 1;         gbl.setConstraints(statusLine, con);         status.add(statusLine);         con.weightx = 0;         con.gridwidth = GridBagConstraints.REMAINDER;         con.insets = new Insets(2, 4, 2, 2);         gbl.setConstraints(progressBar, con);         status.add(progressBar);         statusLabel.setForeground(GUIGlobals.ENTRY_EDITOR_LABEL_COLOR.darker());         */
@@ -8146,7 +8107,7 @@ return|return
 name|fileHistory
 return|;
 block|}
-comment|/**      * Set the visibility of the progress bar in the right end of the      * status line at the bottom of the frame.      *<p>      * If not called on the event dispatch thread, this method uses      * SwingUtilities.invokeLater() to do the actual operation on the EDT.      */
+comment|/**      * Set the visibility of the progress bar in the right end of the      * status line at the bottom of the frame.      */
 DECL|method|setProgressBarVisible (final boolean visible)
 specifier|public
 name|void
@@ -8157,14 +8118,6 @@ name|boolean
 name|visible
 parameter_list|)
 block|{
-if|if
-condition|(
-name|SwingUtilities
-operator|.
-name|isEventDispatchThread
-argument_list|()
-condition|)
-block|{
 name|progressBar
 operator|.
 name|setVisible
@@ -8172,24 +8125,6 @@ argument_list|(
 name|visible
 argument_list|)
 expr_stmt|;
-block|}
-else|else
-block|{
-name|SwingUtilities
-operator|.
-name|invokeLater
-argument_list|(
-parameter_list|()
-lambda|->
-name|progressBar
-operator|.
-name|setVisible
-argument_list|(
-name|visible
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
 block|}
 comment|/**      * Sets the indeterminate status of the progress bar.      *<p>      * If not called on the event dispatch thread, this method uses      * SwingUtilities.invokeLater() to do the actual operation on the EDT.      */
 DECL|method|setProgressBarIndeterminate (final boolean value)
