@@ -114,18 +114,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|preferences
-operator|.
-name|JabRefPreferences
-import|;
-end_import
-
-begin_import
-import|import
 name|de
 operator|.
 name|jensd
@@ -399,18 +387,6 @@ operator|.
 name|getDefaultColor
 argument_list|()
 argument_list|)
-argument_list|)
-argument_list|,
-name|JabRefPreferences
-operator|.
-name|getInstance
-argument_list|()
-operator|.
-name|getInt
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|ICON_SIZE_SMALL
 argument_list|)
 argument_list|)
 return|;

@@ -80,16 +80,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|JLabel
-import|;
-end_import
-
-begin_import
-import|import
 name|javafx
 operator|.
 name|animation
@@ -910,25 +900,6 @@ DECL|field|searchDisplayMode
 specifier|private
 name|SearchDisplayMode
 name|searchDisplayMode
-decl_stmt|;
-DECL|field|searchIcon
-specifier|private
-specifier|final
-name|JLabel
-name|searchIcon
-init|=
-operator|new
-name|JLabel
-argument_list|(
-name|IconTheme
-operator|.
-name|JabRefIcons
-operator|.
-name|SEARCH
-operator|.
-name|getIcon
-argument_list|()
-argument_list|)
 decl_stmt|;
 comment|/**      * if this flag is set the searchbar won't be selected after the next search      */
 DECL|field|dontSelectSearchBar
