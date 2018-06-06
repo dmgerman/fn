@@ -532,16 +532,6 @@ operator|=
 name|preferences
 expr_stmt|;
 block|}
-DECL|method|getTextField ()
-specifier|private
-name|JTextField
-name|getTextField
-parameter_list|()
-block|{
-return|return
-name|tf
-return|;
-block|}
 annotation|@
 name|Override
 DECL|method|getToggleAction ()
