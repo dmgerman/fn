@@ -675,6 +675,11 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
+name|boolean
+name|isFirstField
+init|=
+literal|true
+decl_stmt|;
 for|for
 control|(
 name|String
@@ -741,7 +746,20 @@ argument_list|,
 name|fieldEditor
 argument_list|)
 expr_stmt|;
-comment|/*             // TODO: Reenable this             if (i == 0) {                 activeField = fieldEditor;             }             */
+if|if
+condition|(
+name|isFirstField
+condition|)
+block|{
+name|activeField
+operator|=
+name|fieldEditor
+expr_stmt|;
+name|isFirstField
+operator|=
+literal|false
+expr_stmt|;
+block|}
 name|labels
 operator|.
 name|add

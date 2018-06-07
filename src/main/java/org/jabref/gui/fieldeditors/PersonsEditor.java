@@ -158,6 +158,11 @@ specifier|final
 name|PersonsEditorViewModel
 name|viewModel
 decl_stmt|;
+DECL|field|textArea
+specifier|private
+name|EditorTextArea
+name|textArea
+decl_stmt|;
 DECL|method|PersonsEditor (String fieldName, AutoCompleteSuggestionProvider<?> suggestionProvider, JabRefPreferences preferences, FieldCheckers fieldCheckers)
 specifier|public
 name|PersonsEditor
@@ -197,13 +202,12 @@ argument_list|,
 name|fieldCheckers
 argument_list|)
 expr_stmt|;
-name|EditorTextArea
 name|textArea
-init|=
+operator|=
 operator|new
 name|EditorTextArea
 argument_list|()
-decl_stmt|;
+expr_stmt|;
 name|HBox
 operator|.
 name|setHgrow
@@ -321,6 +325,20 @@ block|{
 return|return
 name|this
 return|;
+block|}
+annotation|@
+name|Override
+DECL|method|requestFocus ()
+specifier|public
+name|void
+name|requestFocus
+parameter_list|()
+block|{
+name|textArea
+operator|.
+name|requestFocus
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 end_class
