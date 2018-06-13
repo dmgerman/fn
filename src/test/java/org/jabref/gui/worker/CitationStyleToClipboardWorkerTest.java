@@ -16,30 +16,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|awt
-operator|.
-name|datatransfer
-operator|.
-name|DataFlavor
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|awt
-operator|.
-name|datatransfer
-operator|.
-name|StringSelection
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|Arrays
@@ -48,15 +24,13 @@ end_import
 
 begin_import
 import|import
-name|org
+name|javafx
 operator|.
-name|jabref
+name|scene
 operator|.
-name|gui
+name|input
 operator|.
-name|exporter
-operator|.
-name|RtfTransferable
+name|ClipboardContent
 import|;
 end_import
 
@@ -68,23 +42,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|fieldeditors
-operator|.
-name|HtmlTransferable
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|fieldeditors
-operator|.
-name|XmlTransferable
+name|ClipBoardManager
 import|;
 end_import
 
@@ -134,14 +92,12 @@ end_import
 
 begin_class
 DECL|class|CitationStyleToClipboardWorkerTest
-specifier|public
 class|class
 name|CitationStyleToClipboardWorkerTest
 block|{
 annotation|@
 name|Test
 DECL|method|processPreviewText ()
-specifier|public
 name|void
 name|processPreviewText
 parameter_list|()
@@ -151,13 +107,91 @@ block|{
 name|String
 name|expected
 init|=
-literal|"Article (Smith2016)Smith, B.; Jones, B.& Williams, J.Taylor, P. (Ed.)Title of the test entry BibTeX Journal, JabRef Publishing, 2016, 34, 45-67 Abstract: This entry describes a test scenario which may be useful in JabRef. By providing a test entry it is possible to see how certain things will look in this graphical BIB-file mananger."
+literal|"Article (Smith2016)"
 operator|+
 name|OS
 operator|.
 name|NEWLINE
 operator|+
-literal|"Article (Smith2016)Smith, B.; Jones, B.& Williams, J.Taylor, P. (Ed.)Title of the test entry BibTeX Journal, JabRef Publishing, 2016, 34, 45-67 Abstract: This entry describes a test scenario which may be useful in JabRef. By providing a test entry it is possible to see how certain things will look in this graphical BIB-file mananger."
+literal|"Smith, B.; Jones, B.&amp; Williams, J."
+operator|+
+name|OS
+operator|.
+name|NEWLINE
+operator|+
+literal|"Taylor, P. (Ed.)"
+operator|+
+name|OS
+operator|.
+name|NEWLINE
+operator|+
+literal|"Title of the test entry "
+operator|+
+name|OS
+operator|.
+name|NEWLINE
+operator|+
+literal|"BibTeX Journal, JabRef Publishing, 2016, 34, 45-67 "
+operator|+
+name|OS
+operator|.
+name|NEWLINE
+operator|+
+literal|""
+operator|+
+name|OS
+operator|.
+name|NEWLINE
+operator|+
+literal|"Abstract:  This entry describes a test scenario which may be useful in JabRef. By providing a test entry it is possible to see how certain things will look in this graphical BIB-file mananger. "
+operator|+
+name|OS
+operator|.
+name|NEWLINE
+operator|+
+literal|"<br>"
+operator|+
+name|OS
+operator|.
+name|NEWLINE
+operator|+
+literal|"Article (Smith2016)"
+operator|+
+name|OS
+operator|.
+name|NEWLINE
+operator|+
+literal|"Smith, B.; Jones, B.&amp; Williams, J."
+operator|+
+name|OS
+operator|.
+name|NEWLINE
+operator|+
+literal|"Taylor, P. (Ed.)"
+operator|+
+name|OS
+operator|.
+name|NEWLINE
+operator|+
+literal|"Title of the test entry "
+operator|+
+name|OS
+operator|.
+name|NEWLINE
+operator|+
+literal|"BibTeX Journal, JabRef Publishing, 2016, 34, 45-67 "
+operator|+
+name|OS
+operator|.
+name|NEWLINE
+operator|+
+literal|""
+operator|+
+name|OS
+operator|.
+name|NEWLINE
+operator|+
+literal|"Abstract:  This entry describes a test scenario which may be useful in JabRef. By providing a test entry it is possible to see how certain things will look in this graphical BIB-file mananger. "
 decl_stmt|;
 name|String
 name|citation
@@ -198,8 +232,8 @@ name|NEWLINE
 operator|+
 literal|"Abstract:  This entry describes a test scenario which may be useful in JabRef. By providing a test entry it is possible to see how certain things will look in this graphical BIB-file mananger. "
 decl_stmt|;
-name|HtmlTransferable
-name|HtmlTransferable
+name|String
+name|actual
 init|=
 name|CitationStyleToClipboardWorker
 operator|.
@@ -215,18 +249,6 @@ name|citation
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|Object
-name|actual
-init|=
-name|HtmlTransferable
-operator|.
-name|getTransferData
-argument_list|(
-name|DataFlavor
-operator|.
-name|stringFlavor
-argument_list|)
-decl_stmt|;
 name|assertEquals
 argument_list|(
 name|expected
@@ -238,7 +260,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|processPreviewHtml ()
-specifier|public
 name|void
 name|processPreviewHtml
 parameter_list|()
@@ -477,8 +498,8 @@ name|NEWLINE
 operator|+
 literal|"<p></p></font>"
 decl_stmt|;
-name|HtmlTransferable
-name|transferable
+name|String
+name|actual
 init|=
 name|CitationStyleToClipboardWorker
 operator|.
@@ -494,18 +515,6 @@ name|citation
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|Object
-name|actual
-init|=
-name|transferable
-operator|.
-name|getTransferData
-argument_list|(
-name|HtmlTransferable
-operator|.
-name|HTML_FLAVOR
-argument_list|)
-decl_stmt|;
 name|assertEquals
 argument_list|(
 name|expected
@@ -517,7 +526,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|processText ()
-specifier|public
 name|void
 name|processText
 parameter_list|()
@@ -548,7 +556,7 @@ name|OS
 operator|.
 name|NEWLINE
 decl_stmt|;
-name|StringSelection
+name|ClipboardContent
 name|textTransferable
 init|=
 name|CitationStyleToClipboardWorker
@@ -565,17 +573,13 @@ name|citation
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|Object
+name|String
 name|actual
 init|=
 name|textTransferable
 operator|.
-name|getTransferData
-argument_list|(
-name|DataFlavor
-operator|.
-name|stringFlavor
-argument_list|)
+name|getString
+argument_list|()
 decl_stmt|;
 name|assertEquals
 argument_list|(
@@ -588,7 +592,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|processRtf ()
-specifier|public
 name|void
 name|processRtf
 parameter_list|()
@@ -633,8 +636,8 @@ name|OS
 operator|.
 name|NEWLINE
 decl_stmt|;
-name|RtfTransferable
-name|rtfTransferable
+name|ClipboardContent
+name|content
 init|=
 name|CitationStyleToClipboardWorker
 operator|.
@@ -653,14 +656,10 @@ decl_stmt|;
 name|Object
 name|actual
 init|=
-name|rtfTransferable
+name|content
 operator|.
-name|getTransferData
-argument_list|(
-name|DataFlavor
-operator|.
-name|stringFlavor
-argument_list|)
+name|getRtf
+argument_list|()
 decl_stmt|;
 name|assertEquals
 argument_list|(
@@ -673,7 +672,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|processXslFo ()
-specifier|public
 name|void
 name|processXslFo
 parameter_list|()
@@ -1058,7 +1056,7 @@ name|OS
 operator|.
 name|NEWLINE
 decl_stmt|;
-name|XmlTransferable
+name|ClipboardContent
 name|xmlTransferable
 init|=
 name|CitationStyleToClipboardWorker
@@ -1080,11 +1078,11 @@ name|actual
 init|=
 name|xmlTransferable
 operator|.
-name|getTransferData
+name|get
 argument_list|(
-name|DataFlavor
+name|ClipBoardManager
 operator|.
-name|stringFlavor
+name|XML
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -1098,7 +1096,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|processHtmlAsHtml ()
-specifier|public
 name|void
 name|processHtmlAsHtml
 parameter_list|()
@@ -1231,7 +1228,7 @@ name|OS
 operator|.
 name|NEWLINE
 decl_stmt|;
-name|HtmlTransferable
+name|ClipboardContent
 name|htmlTransferable
 init|=
 name|CitationStyleToClipboardWorker
@@ -1253,91 +1250,8 @@ name|actual
 init|=
 name|htmlTransferable
 operator|.
-name|getTransferData
-argument_list|(
-name|DataFlavor
-operator|.
-name|allHtmlFlavor
-argument_list|)
-decl_stmt|;
-name|assertEquals
-argument_list|(
-name|expected
-argument_list|,
-name|actual
-argument_list|)
-expr_stmt|;
-block|}
-annotation|@
-name|Test
-DECL|method|processHtmlAsText ()
-specifier|public
-name|void
-name|processHtmlAsText
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-name|String
-name|expected
-init|=
-literal|"[1] B. Smith, B. Jones, and J. Williams, âTitle of the test entry,â BibTeX Journal , vol. 34, no. 3, pp. 45â67, Jul. 2016."
-operator|+
-name|OS
-operator|.
-name|NEWLINE
-operator|+
-literal|"[1] B. Smith, B. Jones, and J. Williams, âTitle of the test entry,â BibTeX Journal , vol. 34, no. 3, pp. 45â67, Jul. 2016."
-decl_stmt|;
-name|String
-name|citation
-init|=
-literal|"<div class=\"csl-entry\">"
-operator|+
-name|OS
-operator|.
-name|NEWLINE
-operator|+
-literal|"<div class=\"csl-left-margin\">[1]</div><div class=\"csl-right-inline\">B. Smith, B. Jones, and J. Williams, âTitle of the test entry,â<i>BibTeX Journal</i>, vol. 34, no. 3, pp. 45â67, Jul. 2016.</div>"
-operator|+
-name|OS
-operator|.
-name|NEWLINE
-operator|+
-literal|"</div>"
-operator|+
-name|OS
-operator|.
-name|NEWLINE
-decl_stmt|;
-name|HtmlTransferable
-name|htmlTransferable
-init|=
-name|CitationStyleToClipboardWorker
-operator|.
-name|processHtml
-argument_list|(
-name|Arrays
-operator|.
-name|asList
-argument_list|(
-name|citation
-argument_list|,
-name|citation
-argument_list|)
-argument_list|)
-decl_stmt|;
-name|Object
-name|actual
-init|=
-name|htmlTransferable
-operator|.
-name|getTransferData
-argument_list|(
-name|DataFlavor
-operator|.
-name|stringFlavor
-argument_list|)
+name|getHtml
+argument_list|()
 decl_stmt|;
 name|assertEquals
 argument_list|(

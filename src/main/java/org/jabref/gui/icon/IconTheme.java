@@ -2811,17 +2811,7 @@ name|this
 operator|.
 name|size
 operator|=
-name|JabRefPreferences
-operator|.
-name|getInstance
-argument_list|()
-operator|.
-name|getInt
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|ICON_SIZE_LARGE
-argument_list|)
+literal|24
 expr_stmt|;
 block|}
 DECL|method|FontBasedIcon (String code, Color iconColor, int size)
@@ -3038,17 +3028,7 @@ name|this
 operator|.
 name|iconColor
 argument_list|,
-name|JabRefPreferences
-operator|.
-name|getInstance
-argument_list|()
-operator|.
-name|getInt
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|ICON_SIZE_SMALL
-argument_list|)
+literal|16
 argument_list|)
 return|;
 block|}

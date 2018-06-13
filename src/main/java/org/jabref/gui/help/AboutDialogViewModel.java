@@ -766,7 +766,7 @@ parameter_list|()
 block|{
 name|clipBoardManager
 operator|.
-name|setClipboardContents
+name|setContent
 argument_list|(
 name|versionInfo
 argument_list|)

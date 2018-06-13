@@ -1751,22 +1751,6 @@ operator|new
 name|ContextMenu
 argument_list|()
 decl_stmt|;
-name|menu
-operator|.
-name|setStyle
-argument_list|(
-literal|"-fx-font-size: "
-operator|+
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getFontSizeFX
-argument_list|()
-operator|+
-literal|"pt;"
-argument_list|)
-expr_stmt|;
 name|MenuItem
 name|edit
 init|=

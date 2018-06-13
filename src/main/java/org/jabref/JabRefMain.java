@@ -485,7 +485,9 @@ name|shouldShutDown
 argument_list|()
 condition|)
 block|{
-name|shutdownCurrentInstance
+name|Platform
+operator|.
+name|exit
 argument_list|()
 expr_stmt|;
 return|return;
@@ -524,6 +526,25 @@ name|ex
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+annotation|@
+name|Override
+DECL|method|stop ()
+specifier|public
+name|void
+name|stop
+parameter_list|()
+block|{
+name|Globals
+operator|.
+name|stopBackgroundTasks
+argument_list|()
+expr_stmt|;
+name|Globals
+operator|.
+name|shutdownThreadPools
+argument_list|()
+expr_stmt|;
 block|}
 comment|/**      * Tests if we are running an acceptable Java and terminates JabRef when we are sure the version is not supported.      * This test uses the requirements for the Java version as specified in<code>gradle.build</code>. It is possible to      * define a minimum version including the built number and to indicate whether Java 9 can be use (which it currently      * can't). It tries to compare this version number to the version of the currently running JVM. The check is      * optimistic and will rather return true even if we could not exactly determine the version.      *<p>      * Note: Users with an very old version like 1.6 will not profit from this since class versions are incompatible and      * JabRef won't even start. Currently, JabRef won't start with Java 9 either, but the warning that it cannot be used      * with this version is helpful anyway to prevent users to update from an old 1.8 directly to version 9. Additionally,      * we soon might have a JabRef that does start with Java 9 but is not perfectly compatible. Therefore, we should leave      * the Java 9 check alive.      */
 DECL|method|ensureCorrectJavaVersion ()
@@ -815,29 +836,6 @@ block|}
 return|return
 literal|true
 return|;
-block|}
-DECL|method|shutdownCurrentInstance ()
-specifier|private
-specifier|static
-name|void
-name|shutdownCurrentInstance
-parameter_list|()
-block|{
-name|Globals
-operator|.
-name|stopBackgroundTasks
-argument_list|()
-expr_stmt|;
-name|Globals
-operator|.
-name|shutdownThreadPools
-argument_list|()
-expr_stmt|;
-name|Platform
-operator|.
-name|exit
-argument_list|()
-expr_stmt|;
 block|}
 DECL|method|applyPreferences (JabRefPreferences preferences)
 specifier|private

@@ -62,7 +62,7 @@ name|org
 operator|.
 name|jabref
 operator|.
-name|JabRefGUI
+name|Globals
 import|;
 end_import
 
@@ -72,9 +72,7 @@ name|org
 operator|.
 name|jabref
 operator|.
-name|gui
-operator|.
-name|ClipBoardManager
+name|JabRefGUI
 import|;
 end_import
 
@@ -232,16 +230,11 @@ name|isPresent
 argument_list|()
 condition|)
 block|{
-name|ClipBoardManager
-name|clipBoard
-init|=
-operator|new
-name|ClipBoardManager
-argument_list|()
-decl_stmt|;
-name|clipBoard
+name|Globals
 operator|.
-name|setClipboardContents
+name|clipboardManager
+operator|.
+name|setContent
 argument_list|(
 name|urlOptional
 operator|.
