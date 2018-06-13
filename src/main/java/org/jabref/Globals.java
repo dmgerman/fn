@@ -595,7 +595,7 @@ operator|.
 name|flush
 argument_list|()
 expr_stmt|;
-comment|// Workaround for bug https://github.com/Microsoft/ApplicationInsights-Java/issues/662
+comment|//FIXME: Workaround for bug https://github.com/Microsoft/ApplicationInsights-Java/issues/662
 name|SDKShutdownActivity
 operator|.
 name|INSTANCE

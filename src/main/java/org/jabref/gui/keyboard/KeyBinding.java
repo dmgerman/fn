@@ -463,7 +463,7 @@ argument_list|(
 literal|"Entry editor, next entry"
 argument_list|)
 argument_list|,
-literal|"ctrl+shift+DOWN"
+literal|"alt+DOWN"
 argument_list|,
 name|KeyBindingCategory
 operator|.
@@ -520,7 +520,7 @@ argument_list|(
 literal|"Entry editor, previous entry"
 argument_list|)
 argument_list|,
-literal|"ctrl+shift+UP"
+literal|"alt+UP"
 argument_list|,
 name|KeyBindingCategory
 operator|.
