@@ -61,7 +61,6 @@ name|previewCycle
 decl_stmt|;
 DECL|field|previewCyclePosition
 specifier|private
-specifier|final
 name|int
 name|previewCyclePosition
 decl_stmt|;
