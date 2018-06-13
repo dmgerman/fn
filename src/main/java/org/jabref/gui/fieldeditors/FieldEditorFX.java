@@ -28,6 +28,20 @@ name|org
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
+name|util
+operator|.
+name|ControlHelper
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
 name|model
 operator|.
 name|entry
@@ -55,18 +69,49 @@ name|Parent
 name|getNode
 parameter_list|()
 function_decl|;
-DECL|method|requestFocus ()
+DECL|method|focus ()
 specifier|default
 name|void
-name|requestFocus
+name|focus
 parameter_list|()
 block|{
 name|getNode
 argument_list|()
 operator|.
+name|getChildrenUnmodifiable
+argument_list|()
+operator|.
+name|stream
+argument_list|()
+operator|.
+name|findFirst
+argument_list|()
+operator|.
+name|orElse
+argument_list|(
+name|getNode
+argument_list|()
+argument_list|)
+operator|.
 name|requestFocus
 argument_list|()
 expr_stmt|;
+block|}
+DECL|method|childIsFocused ()
+specifier|default
+name|boolean
+name|childIsFocused
+parameter_list|()
+block|{
+return|return
+name|ControlHelper
+operator|.
+name|childIsFocused
+argument_list|(
+name|getNode
+argument_list|()
+argument_list|)
+return|;
 block|}
 comment|/**      * Returns relative size of the field editor in terms of display space.      *      * A value of 1 means that the editor gets exactly as much space as all other regular editors.      * A value of 2 means that the editor gets twice as much space as regular editors.      *      * @return the relative weight of the editor in terms of display space      */
 DECL|method|getWeight ()
