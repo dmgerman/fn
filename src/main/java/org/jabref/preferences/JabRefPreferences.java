@@ -4077,7 +4077,7 @@ name|WINDOW_MAXIMISED
 argument_list|,
 name|Boolean
 operator|.
-name|FALSE
+name|TRUE
 argument_list|)
 expr_stmt|;
 name|defaults
