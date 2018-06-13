@@ -181,7 +181,9 @@ name|Abbreviation
 name|abbreviation
 parameter_list|)
 block|{
-return|return
+name|boolean
+name|isAbbreviated
+init|=
 name|name
 operator|.
 name|equalsIgnoreCase
@@ -201,6 +203,25 @@ operator|.
 name|getMedlineAbbreviation
 argument_list|()
 argument_list|)
+decl_stmt|;
+name|boolean
+name|isExpanded
+init|=
+name|name
+operator|.
+name|equalsIgnoreCase
+argument_list|(
+name|abbreviation
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+decl_stmt|;
+return|return
+name|isAbbreviated
+operator|&&
+operator|!
+name|isExpanded
 return|;
 block|}
 DECL|method|size ()
@@ -216,6 +237,7 @@ name|size
 argument_list|()
 return|;
 block|}
+comment|/**      * Returns true if the given journal name is contained in the list either in its full form (e.g Physical Review      * Letters) or its abbreviated form (e.g. Phys. Rev. Lett.).      */
 DECL|method|isKnownName (String journalName)
 specifier|public
 name|boolean
@@ -247,6 +269,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+comment|/**      * Returns true if the given journal name is in its abbreviated form (e.g. Phys. Rev. Lett.). The test is strict,      * i.e. journals whose abbreviation is the same as the full name are not considered      */
 DECL|method|isAbbreviatedName (String journalName)
 specifier|public
 name|boolean
