@@ -84,16 +84,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Arrays
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|Collections
 import|;
 end_import
@@ -150,7 +140,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|params
+operator|.
+name|ParameterizedTest
 import|;
 end_import
 
@@ -160,31 +154,13 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Test
-import|;
-end_import
-
-begin_import
-import|import
-name|org
+name|jupiter
 operator|.
-name|junit
+name|params
 operator|.
-name|runner
+name|provider
 operator|.
-name|RunWith
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|runners
-operator|.
-name|Parameterized
+name|MethodSource
 import|;
 end_import
 
@@ -202,14 +178,23 @@ name|CLASS_ORG_JABREF_GLOBALS
 import|;
 end_import
 
-begin_class
-annotation|@
-name|RunWith
-argument_list|(
-name|Parameterized
+begin_import
+import|import static
+name|org
 operator|.
-name|class
-argument_list|)
+name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_class
 DECL|class|TestArchitectureTests
 specifier|public
 class|class
@@ -269,12 +254,6 @@ name|CLASS_ORG_JABREF_LINKED_FILE_VIEW_MODEL_TEST
 init|=
 literal|"LinkedFileViewModelTest"
 decl_stmt|;
-DECL|field|forbiddenPackage
-specifier|private
-specifier|final
-name|String
-name|forbiddenPackage
-decl_stmt|;
 DECL|field|exceptions
 specifier|private
 specifier|final
@@ -284,20 +263,11 @@ name|String
 argument_list|>
 name|exceptions
 decl_stmt|;
-DECL|method|TestArchitectureTests (String forbiddenPackage)
+DECL|method|TestArchitectureTests ()
 specifier|public
 name|TestArchitectureTests
-parameter_list|(
-name|String
-name|forbiddenPackage
-parameter_list|)
+parameter_list|()
 block|{
-name|this
-operator|.
-name|forbiddenPackage
-operator|=
-name|forbiddenPackage
-expr_stmt|;
 comment|// Add exceptions for the architectural test here
 comment|// Note that bending the architectural constraints should not be done inconsiderately
 name|exceptions
@@ -343,33 +313,24 @@ name|CLASS_ORG_JABREF_LINKED_FILE_VIEW_MODEL_TEST
 argument_list|)
 expr_stmt|;
 block|}
-annotation|@
-name|Parameterized
-operator|.
-name|Parameters
-argument_list|(
-name|name
-operator|=
-literal|"tests independent of {0}?"
-argument_list|)
 DECL|method|data ()
 specifier|public
 specifier|static
-name|Iterable
+name|Stream
 argument_list|<
-name|Object
+name|String
 index|[]
 argument_list|>
 name|data
 parameter_list|()
 block|{
 return|return
-name|Arrays
+name|Stream
 operator|.
-name|asList
+name|of
 argument_list|(
 operator|new
-name|Object
+name|String
 index|[]
 index|[]
 block|{
@@ -385,12 +346,20 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Test
-DECL|method|testsAreIndependent ()
+name|ParameterizedTest
+annotation|@
+name|MethodSource
+argument_list|(
+literal|"data"
+argument_list|)
+DECL|method|testsAreIndependent (String forbiddenPackage)
 specifier|public
 name|void
 name|testsAreIndependent
-parameter_list|()
+parameter_list|(
+name|String
+name|forbiddenPackage
+parameter_list|)
 throws|throws
 name|IOException
 block|{
@@ -577,20 +546,18 @@ expr_stmt|;
 end_class
 
 begin_expr_stmt
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
-literal|"The following classes are not allowed to depend on "
-operator|+
-name|forbiddenPackage
-argument_list|,
 name|Collections
 operator|.
 name|emptyList
 argument_list|()
 argument_list|,
 name|files
+argument_list|,
+literal|"The following classes are not allowed to depend on "
+operator|+
+name|forbiddenPackage
 argument_list|)
 expr_stmt|;
 end_expr_stmt
