@@ -115,7 +115,7 @@ literal|"Check integrity"
 argument_list|,
 name|Localization
 operator|.
-name|menuTitle
+name|lang
 argument_list|(
 literal|"Check integrity"
 argument_list|)
@@ -1656,7 +1656,7 @@ operator|=
 name|category
 expr_stmt|;
 block|}
-comment|/**      * This method returns the enum constant value      * @return      */
+comment|/**      * This method returns the enum constant value      */
 DECL|method|getConstant ()
 specifier|public
 name|String

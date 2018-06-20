@@ -14,16 +14,6 @@ end_package
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Locale
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|junit
@@ -65,6 +55,16 @@ import|;
 end_import
 
 begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Locale
+import|;
+end_import
+
+begin_import
 import|import static
 name|org
 operator|.
@@ -82,7 +82,6 @@ end_import
 
 begin_class
 DECL|class|LocalizationTest
-specifier|public
 class|class
 name|LocalizationTest
 block|{
@@ -94,7 +93,6 @@ decl_stmt|;
 annotation|@
 name|BeforeEach
 DECL|method|storeDefaultLocale ()
-specifier|public
 name|void
 name|storeDefaultLocale
 parameter_list|()
@@ -110,7 +108,6 @@ block|}
 annotation|@
 name|AfterEach
 DECL|method|restoreDefaultLocale ()
-specifier|public
 name|void
 name|restoreDefaultLocale
 parameter_list|()
@@ -144,7 +141,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testSetKnownLanguage ()
-specifier|public
 name|void
 name|testSetKnownLanguage
 parameter_list|()
@@ -182,7 +178,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testSetUnknownLanguage ()
-specifier|public
 name|void
 name|testSetUnknownLanguage
 parameter_list|()
@@ -220,7 +215,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testKnownTranslationWithGroups ()
-specifier|public
 name|void
 name|testKnownTranslationWithGroups
 parameter_list|()
@@ -232,37 +226,15 @@ argument_list|(
 literal|"en"
 argument_list|)
 expr_stmt|;
-name|String
-name|knownKey
-init|=
-literal|"Groups"
-decl_stmt|;
 name|assertEquals
 argument_list|(
-name|knownKey
+literal|"Groups"
 argument_list|,
 name|Localization
 operator|.
 name|lang
 argument_list|(
-name|knownKey
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|String
-name|knownValueWithMnemonics
-init|=
-literal|"&Groups"
-decl_stmt|;
-name|assertEquals
-argument_list|(
-name|knownValueWithMnemonics
-argument_list|,
-name|Localization
-operator|.
-name|menuTitle
-argument_list|(
-name|knownKey
+literal|"Groups"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -270,7 +242,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testKnownEnglishTranslationOfUndo ()
-specifier|public
 name|void
 name|testKnownEnglishTranslationOfUndo
 parameter_list|()
@@ -282,65 +253,15 @@ argument_list|(
 literal|"en"
 argument_list|)
 expr_stmt|;
-name|String
-name|knownKey
-init|=
+name|assertEquals
+argument_list|(
 literal|"Undo"
-decl_stmt|;
-name|assertEquals
-argument_list|(
-name|knownKey
 argument_list|,
 name|Localization
 operator|.
 name|lang
 argument_list|(
-name|knownKey
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|String
-name|knownValueWithMnemonics
-init|=
-literal|"&Undo"
-decl_stmt|;
-name|assertEquals
-argument_list|(
-name|knownValueWithMnemonics
-argument_list|,
-name|Localization
-operator|.
-name|menuTitle
-argument_list|(
-name|knownKey
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-annotation|@
-name|Test
-DECL|method|testKnownGermanTranslationDoesNotHaveAmpersand ()
-specifier|public
-name|void
-name|testKnownGermanTranslationDoesNotHaveAmpersand
-parameter_list|()
-block|{
-name|Localization
-operator|.
-name|setLanguage
-argument_list|(
-literal|"de"
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"Alle speichern"
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Save all"
+literal|"Undo"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -348,7 +269,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testKnownGermanTranslation ()
-specifier|public
 name|void
 name|testKnownGermanTranslation
 parameter_list|()
@@ -360,11 +280,6 @@ argument_list|(
 literal|"de"
 argument_list|)
 expr_stmt|;
-name|String
-name|knownKey
-init|=
-literal|"Save all"
-decl_stmt|;
 name|assertEquals
 argument_list|(
 literal|"Alle speichern"
@@ -373,19 +288,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-name|knownKey
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"A&lle speichern"
-argument_list|,
-name|Localization
-operator|.
-name|menuTitle
-argument_list|(
-name|knownKey
+literal|"Save all"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -393,7 +296,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testKnownTranslationWithCountryModifier ()
-specifier|public
 name|void
 name|testKnownTranslationWithCountryModifier
 parameter_list|()
@@ -405,37 +307,15 @@ argument_list|(
 literal|"en_US"
 argument_list|)
 expr_stmt|;
-name|String
-name|knownKey
-init|=
-literal|"Groups"
-decl_stmt|;
 name|assertEquals
 argument_list|(
-name|knownKey
+literal|"Groups"
 argument_list|,
 name|Localization
 operator|.
 name|lang
 argument_list|(
-name|knownKey
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|String
-name|knownValueWithMnemonics
-init|=
-literal|"&Groups"
-decl_stmt|;
-name|assertEquals
-argument_list|(
-name|knownValueWithMnemonics
-argument_list|,
-name|Localization
-operator|.
-name|menuTitle
-argument_list|(
-name|knownKey
+literal|"Groups"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -443,7 +323,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testUnknownTranslation ()
-specifier|public
 name|void
 name|testUnknownTranslation
 parameter_list|()
@@ -455,32 +334,15 @@ argument_list|(
 literal|"en"
 argument_list|)
 expr_stmt|;
-name|String
-name|knownKey
-init|=
-literal|"WHATEVER"
-decl_stmt|;
 name|assertEquals
 argument_list|(
-name|knownKey
+literal|"WHATEVER"
 argument_list|,
 name|Localization
 operator|.
 name|lang
 argument_list|(
-name|knownKey
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-name|knownKey
-argument_list|,
-name|Localization
-operator|.
-name|menuTitle
-argument_list|(
-name|knownKey
+literal|"WHATEVER"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -488,42 +350,19 @@ block|}
 annotation|@
 name|Test
 DECL|method|testUnsetLanguageTranslation ()
-specifier|public
 name|void
 name|testUnsetLanguageTranslation
 parameter_list|()
 block|{
-name|String
-name|knownKey
-init|=
-literal|"Groups"
-decl_stmt|;
 name|assertEquals
 argument_list|(
-name|knownKey
+literal|"Groups"
 argument_list|,
 name|Localization
 operator|.
 name|lang
 argument_list|(
-name|knownKey
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|String
-name|knownValueWithMnemonics
-init|=
-literal|"&Groups"
-decl_stmt|;
-name|assertEquals
-argument_list|(
-name|knownValueWithMnemonics
-argument_list|,
-name|Localization
-operator|.
-name|menuTitle
-argument_list|(
-name|knownKey
+literal|"Groups"
 argument_list|)
 argument_list|)
 expr_stmt|;

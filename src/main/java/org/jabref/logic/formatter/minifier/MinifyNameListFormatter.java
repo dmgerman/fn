@@ -61,7 +61,7 @@ DECL|class|MinifyNameListFormatter
 specifier|public
 class|class
 name|MinifyNameListFormatter
-implements|implements
+extends|extends
 name|Formatter
 block|{
 annotation|@

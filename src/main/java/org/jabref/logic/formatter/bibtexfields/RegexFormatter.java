@@ -101,7 +101,7 @@ DECL|class|RegexFormatter
 specifier|public
 class|class
 name|RegexFormatter
-implements|implements
+extends|extends
 name|Formatter
 block|{
 DECL|field|KEY
@@ -245,6 +245,7 @@ argument_list|()
 decl_stmt|;
 DECL|field|regex
 specifier|private
+specifier|static
 name|String
 name|regex
 decl_stmt|;

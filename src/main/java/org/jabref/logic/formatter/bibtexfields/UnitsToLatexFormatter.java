@@ -113,7 +113,7 @@ DECL|class|UnitsToLatexFormatter
 specifier|public
 class|class
 name|UnitsToLatexFormatter
-implements|implements
+extends|extends
 name|Formatter
 block|{
 DECL|field|UNIT_LIST

@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|org.jabref.logic.layout.format
+DECL|package|org.jabref.logic.formatter.bibtexfields
 package|package
 name|org
 operator|.
@@ -8,9 +8,9 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|layout
+name|formatter
 operator|.
-name|format
+name|bibtexfields
 package|;
 end_package
 
@@ -34,20 +34,6 @@ name|org
 operator|.
 name|jabref
 operator|.
-name|logic
-operator|.
-name|layout
-operator|.
-name|LayoutFormatter
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
 name|model
 operator|.
 name|cleanup
@@ -56,33 +42,13 @@ name|Formatter
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|strings
-operator|.
-name|LatexToUnicodeAdapter
-import|;
-end_import
-
-begin_comment
-comment|/**  * This formatter converts LaTeX character sequences their equivalent unicode characters,  * and removes other LaTeX commands without handling them.  */
-end_comment
-
 begin_class
-DECL|class|LatexToUnicodeFormatter
+DECL|class|NormalizeEnDashesFormatter
 specifier|public
 class|class
-name|LatexToUnicodeFormatter
+name|NormalizeEnDashesFormatter
 extends|extends
 name|Formatter
-implements|implements
-name|LayoutFormatter
 block|{
 annotation|@
 name|Override
@@ -97,7 +63,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"LaTeX to Unicode"
+literal|"Normalize en dashes"
 argument_list|)
 return|;
 block|}
@@ -110,26 +76,28 @@ name|getKey
 parameter_list|()
 block|{
 return|return
-literal|"latex_to_unicode"
+literal|"normalize_en_dashes"
 return|;
 block|}
 annotation|@
 name|Override
-DECL|method|format (String inField)
+DECL|method|format (String value)
 specifier|public
 name|String
 name|format
 parameter_list|(
 name|String
-name|inField
+name|value
 parameter_list|)
 block|{
 return|return
-name|LatexToUnicodeAdapter
+name|value
 operator|.
-name|format
+name|replaceAll
 argument_list|(
-name|inField
+literal|" - "
+argument_list|,
+literal|" -- "
 argument_list|)
 return|;
 block|}
@@ -146,7 +114,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Converts LaTeX encoding to Unicode characters."
+literal|"Normalizes the en dashes."
 argument_list|)
 return|;
 block|}
@@ -159,7 +127,7 @@ name|getExampleInput
 parameter_list|()
 block|{
 return|return
-literal|"M{\\\"{o}}nch"
+literal|"Winery - A Modeling Tool for TOSCA-based Cloud Applications"
 return|;
 block|}
 block|}

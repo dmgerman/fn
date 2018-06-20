@@ -4651,7 +4651,7 @@ name|Menu
 argument_list|(
 name|Localization
 operator|.
-name|menuTitle
+name|lang
 argument_list|(
 literal|"File"
 argument_list|)
@@ -4665,7 +4665,7 @@ name|Menu
 argument_list|(
 name|Localization
 operator|.
-name|menuTitle
+name|lang
 argument_list|(
 literal|"Edit"
 argument_list|)
@@ -4693,7 +4693,7 @@ name|Menu
 argument_list|(
 name|Localization
 operator|.
-name|menuTitle
+name|lang
 argument_list|(
 literal|"Quality"
 argument_list|)
@@ -4707,7 +4707,7 @@ name|Menu
 argument_list|(
 name|Localization
 operator|.
-name|menuTitle
+name|lang
 argument_list|(
 literal|"View"
 argument_list|)
@@ -4721,7 +4721,7 @@ name|Menu
 argument_list|(
 name|Localization
 operator|.
-name|menuTitle
+name|lang
 argument_list|(
 literal|"Tools"
 argument_list|)
@@ -4735,7 +4735,7 @@ name|Menu
 argument_list|(
 name|Localization
 operator|.
-name|menuTitle
+name|lang
 argument_list|(
 literal|"Options"
 argument_list|)
@@ -4749,7 +4749,7 @@ name|Menu
 argument_list|(
 name|Localization
 operator|.
-name|menuTitle
+name|lang
 argument_list|(
 literal|"Help"
 argument_list|)

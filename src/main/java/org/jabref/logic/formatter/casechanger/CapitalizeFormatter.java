@@ -47,7 +47,7 @@ DECL|class|CapitalizeFormatter
 specifier|public
 class|class
 name|CapitalizeFormatter
-implements|implements
+extends|extends
 name|Formatter
 block|{
 annotation|@

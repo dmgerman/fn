@@ -1683,7 +1683,7 @@ name|NAME
 argument_list|,
 name|Localization
 operator|.
-name|menuTitle
+name|lang
 argument_list|(
 literal|"Manage external file types"
 argument_list|)

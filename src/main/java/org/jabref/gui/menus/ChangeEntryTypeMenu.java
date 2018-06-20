@@ -747,9 +747,12 @@ name|populateSubMenu
 argument_list|(
 name|items
 argument_list|,
-name|Localization
+name|BibDatabaseMode
 operator|.
 name|BIBTEX
+operator|.
+name|getFormattedName
+argument_list|()
 argument_list|,
 name|BibtexEntryTypes
 operator|.

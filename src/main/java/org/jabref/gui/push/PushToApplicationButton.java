@@ -1035,7 +1035,7 @@ block|{
 return|return
 name|Localization
 operator|.
-name|menuTitle
+name|lang
 argument_list|(
 literal|"Push entries to external application (%0)"
 argument_list|,

@@ -57,7 +57,7 @@ DECL|class|ClearFormatter
 specifier|public
 class|class
 name|ClearFormatter
-implements|implements
+extends|extends
 name|Formatter
 block|{
 annotation|@

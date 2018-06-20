@@ -47,7 +47,7 @@ DECL|class|SentenceCaseFormatter
 specifier|public
 class|class
 name|SentenceCaseFormatter
-implements|implements
+extends|extends
 name|Formatter
 block|{
 annotation|@

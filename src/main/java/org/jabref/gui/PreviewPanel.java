@@ -924,7 +924,7 @@ name|MenuItem
 argument_list|(
 name|Localization
 operator|.
-name|menuTitle
+name|lang
 argument_list|(
 literal|"Previous preview layout"
 argument_list|)
@@ -968,7 +968,7 @@ name|MenuItem
 argument_list|(
 name|Localization
 operator|.
-name|menuTitle
+name|lang
 argument_list|(
 literal|"Next preview layout"
 argument_list|)

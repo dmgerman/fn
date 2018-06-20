@@ -364,7 +364,7 @@ block|{
 return|return
 name|Localization
 operator|.
-name|menuTitle
+name|lang
 argument_list|(
 literal|"Push entries to external application (%0)"
 argument_list|,
@@ -485,28 +485,48 @@ argument_list|(
 name|keyString
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|commands
+operator|.
+name|length
+operator|<
+literal|3
+condition|)
+block|{
+name|LOGGER
+operator|.
+name|error
+argument_list|(
+literal|"Commandline does not contain enough parameters to \"push to application\""
+argument_list|)
+expr_stmt|;
+return|return;
+block|}
 name|ProcessBuilder
 name|processBuilder
 init|=
 operator|new
 name|ProcessBuilder
 argument_list|(
-literal|"open -a "
-operator|+
+literal|"open"
+argument_list|,
+literal|"-a"
+argument_list|,
 name|commands
 index|[
 literal|0
 index|]
-operator|+
-literal|" -n --args "
-operator|+
+argument_list|,
+literal|"-n"
+argument_list|,
+literal|"--args"
+argument_list|,
 name|commands
 index|[
 literal|1
 index|]
-operator|+
-literal|" "
-operator|+
+argument_list|,
 name|commands
 index|[
 literal|2

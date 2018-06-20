@@ -97,7 +97,7 @@ DECL|class|ProtectTermsFormatter
 specifier|public
 class|class
 name|ProtectTermsFormatter
-implements|implements
+extends|extends
 name|Formatter
 block|{
 DECL|field|protectedTermsLoader

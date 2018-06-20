@@ -1702,20 +1702,6 @@ begin_import
 import|import
 name|org
 operator|.
-name|apache
-operator|.
-name|commons
-operator|.
-name|lang3
-operator|.
-name|NotImplementedException
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
 name|fxmisc
 operator|.
 name|easybind
@@ -8047,7 +8033,7 @@ break|break;
 default|default:
 throw|throw
 operator|new
-name|NotImplementedException
+name|UnsupportedOperationException
 argument_list|(
 literal|"new mode not recognized: "
 operator|+
