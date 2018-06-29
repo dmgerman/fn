@@ -224,7 +224,7 @@ case|:
 case|case
 name|LayoutHelper
 operator|.
-name|IS_SIMPLE_FIELD
+name|IS_SIMPLE_COMMAND
 case|:
 case|case
 name|LayoutHelper
@@ -601,7 +601,6 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|// added section - end (arudert)
 DECL|method|getMissingFormatters ()
 specifier|public
 name|List

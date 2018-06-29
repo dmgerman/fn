@@ -1357,7 +1357,7 @@ break|break;
 case|case
 name|LayoutHelper
 operator|.
-name|IS_SIMPLE_FIELD
+name|IS_SIMPLE_COMMAND
 case|:
 name|text
 operator|=
@@ -1637,7 +1637,7 @@ case|:
 case|case
 name|LayoutHelper
 operator|.
-name|IS_SIMPLE_FIELD
+name|IS_SIMPLE_COMMAND
 case|:
 case|case
 name|LayoutHelper
@@ -1753,7 +1753,7 @@ return|;
 case|case
 name|LayoutHelper
 operator|.
-name|IS_SIMPLE_FIELD
+name|IS_SIMPLE_COMMAND
 case|:
 name|String
 name|value
@@ -2455,7 +2455,7 @@ argument_list|()
 return|;
 block|}
 block|}
-comment|/**      * Do layout for general formatters (no bibtex-entry fields).      *      * @param databaseContext      *            Bibtex Database      * @return      */
+comment|/**      * Do layout for general formatters (no bibtex-entry fields).      *      * @param databaseContext Bibtex Database      */
 DECL|method|doLayout (BibDatabaseContext databaseContext, Charset encoding)
 specifier|public
 name|String
@@ -2484,7 +2484,7 @@ return|;
 case|case
 name|LayoutHelper
 operator|.
-name|IS_SIMPLE_FIELD
+name|IS_SIMPLE_COMMAND
 case|:
 throw|throw
 operator|new
@@ -3354,7 +3354,7 @@ argument_list|)
 return|;
 block|}
 block|}
-comment|/**      * Return an array of LayoutFormatters found in the given formatterName      * string (in order of appearance).      *      */
+comment|/**      * Return an array of LayoutFormatters found in the given formatterName      * string (in order of appearance).      */
 DECL|method|getOptionalLayout (String formatterName)
 specifier|private
 name|List
