@@ -5833,7 +5833,7 @@ name|createMenuItem
 argument_list|(
 name|StandardActions
 operator|.
-name|GENERATE_CITE_KEY
+name|GENERATE_CITE_KEYS
 argument_list|,
 operator|new
 name|OldDatabaseCommandWrapper
