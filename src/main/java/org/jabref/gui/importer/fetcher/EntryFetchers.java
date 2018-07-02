@@ -130,7 +130,6 @@ name|abbreviationLoader
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// entryFetchers.add(new OAI2Fetcher()); - new arXiv fetcher in place, see below
 name|WebFetchers
 operator|.
 name|getSearchBasedFetchers

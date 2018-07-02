@@ -268,22 +268,6 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|importer
-operator|.
-name|util
-operator|.
-name|OAI2Handler
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
 name|util
 operator|.
 name|io
@@ -1947,7 +1931,7 @@ argument_list|)
 operator|.
 name|map
 argument_list|(
-name|OAI2Handler
+name|ArXivEntry
 operator|::
 name|correctLineBreaks
 argument_list|)
@@ -1990,7 +1974,7 @@ argument_list|)
 operator|.
 name|map
 argument_list|(
-name|OAI2Handler
+name|ArXivEntry
 operator|::
 name|correctLineBreaks
 argument_list|)
@@ -2258,6 +2242,57 @@ literal|"term"
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
+DECL|method|correctLineBreaks (String s)
+specifier|public
+specifier|static
+name|String
+name|correctLineBreaks
+parameter_list|(
+name|String
+name|s
+parameter_list|)
+block|{
+name|String
+name|result
+init|=
+name|s
+operator|.
+name|replaceAll
+argument_list|(
+literal|"\\n(?!\\s*\\n)"
+argument_list|,
+literal|" "
+argument_list|)
+decl_stmt|;
+name|result
+operator|=
+name|result
+operator|.
+name|replaceAll
+argument_list|(
+literal|"\\s*\\n\\s*"
+argument_list|,
+literal|"\n"
+argument_list|)
+expr_stmt|;
+return|return
+name|result
+operator|.
+name|replaceAll
+argument_list|(
+literal|" {2,}"
+argument_list|,
+literal|" "
+argument_list|)
+operator|.
+name|replaceAll
+argument_list|(
+literal|"(^\\s*|\\s+$)"
+argument_list|,
+literal|""
+argument_list|)
+return|;
 block|}
 comment|/**          * Returns the url of the linked pdf          */
 DECL|method|getPdfUrl ()
