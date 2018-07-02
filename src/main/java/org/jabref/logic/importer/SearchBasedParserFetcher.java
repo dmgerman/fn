@@ -18,16 +18,6 @@ name|java
 operator|.
 name|io
 operator|.
-name|BufferedInputStream
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
 name|IOException
 import|;
 end_import
@@ -89,6 +79,20 @@ operator|.
 name|util
 operator|.
 name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|net
+operator|.
+name|URLDownload
 import|;
 end_import
 
@@ -216,16 +220,16 @@ name|InputStream
 name|stream
 init|=
 operator|new
-name|BufferedInputStream
+name|URLDownload
 argument_list|(
 name|getURLForQuery
 argument_list|(
 name|query
 argument_list|)
-operator|.
-name|openStream
-argument_list|()
 argument_list|)
+operator|.
+name|asInputStream
+argument_list|()
 init|)
 block|{
 name|List
@@ -278,7 +282,7 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-comment|// TODO: Catch HTTP Response 401 errors and report that user has no rights to access resource
+comment|// TODO: Catch HTTP Response 401/403 errors and report that user has no rights to access resource
 throw|throw
 operator|new
 name|FetcherException
