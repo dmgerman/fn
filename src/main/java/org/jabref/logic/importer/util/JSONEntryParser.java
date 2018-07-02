@@ -502,6 +502,9 @@ name|getString
 argument_list|(
 literal|"title"
 argument_list|)
+operator|.
+name|trim
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -621,6 +624,9 @@ name|getString
 argument_list|(
 name|i
 argument_list|)
+operator|.
+name|trim
+argument_list|()
 argument_list|,
 name|keywordSeparator
 argument_list|)

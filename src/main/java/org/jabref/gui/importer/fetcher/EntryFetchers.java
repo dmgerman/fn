@@ -149,15 +149,6 @@ name|ACMPortalFetcher
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|entryFetchers
-operator|.
-name|add
-argument_list|(
-operator|new
-name|DOAJFetcher
-argument_list|()
-argument_list|)
-expr_stmt|;
 name|WebFetchers
 operator|.
 name|getSearchBasedFetchers
