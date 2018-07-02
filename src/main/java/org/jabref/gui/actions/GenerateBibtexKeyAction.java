@@ -92,9 +92,9 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|worker
+name|util
 operator|.
-name|AbstractWorker
+name|BackgroundTask
 import|;
 end_import
 
@@ -157,8 +157,8 @@ DECL|class|GenerateBibtexKeyAction
 specifier|public
 class|class
 name|GenerateBibtexKeyAction
-extends|extends
-name|AbstractWorker
+implements|implements
+name|BaseAction
 block|{
 DECL|field|dialogService
 specifier|private
@@ -179,10 +179,10 @@ name|BibEntry
 argument_list|>
 name|entries
 decl_stmt|;
-DECL|field|canceled
+DECL|field|isCanceled
 specifier|private
 name|boolean
-name|canceled
+name|isCanceled
 decl_stmt|;
 DECL|method|GenerateBibtexKeyAction (BasePanel basePanel, DialogService dialogService)
 specifier|public
@@ -208,8 +208,6 @@ operator|=
 name|dialogService
 expr_stmt|;
 block|}
-annotation|@
-name|Override
 DECL|method|init ()
 specifier|public
 name|void
@@ -363,12 +361,10 @@ literal|true
 return|;
 block|}
 block|}
-annotation|@
-name|Override
-DECL|method|run ()
-specifier|public
+DECL|method|generateKeys ()
+specifier|private
 name|void
-name|run
+name|generateKeys
 parameter_list|()
 block|{
 comment|// We don't want to generate keys for entries which already have one thus remove the entries
@@ -428,7 +424,7 @@ operator|!
 name|overwriteKeys
 condition|)
 block|{
-name|canceled
+name|isCanceled
 operator|=
 literal|true
 expr_stmt|;
@@ -527,18 +523,9 @@ name|compound
 argument_list|)
 expr_stmt|;
 block|}
-block|}
-annotation|@
-name|Override
-DECL|method|update ()
-specifier|public
-name|void
-name|update
-parameter_list|()
-block|{
 if|if
 condition|(
-name|canceled
+name|isCanceled
 condition|)
 block|{
 return|return;
@@ -613,6 +600,34 @@ argument_list|)
 operator|)
 argument_list|)
 return|;
+block|}
+annotation|@
+name|Override
+DECL|method|action ()
+specifier|public
+name|void
+name|action
+parameter_list|()
+block|{
+name|init
+argument_list|()
+expr_stmt|;
+name|BackgroundTask
+operator|.
+name|wrap
+argument_list|(
+name|this
+operator|::
+name|generateKeys
+argument_list|)
+operator|.
+name|executeWith
+argument_list|(
+name|Globals
+operator|.
+name|TASK_EXECUTOR
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 end_class

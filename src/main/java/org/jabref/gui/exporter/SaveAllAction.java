@@ -78,14 +78,6 @@ name|Localization
 import|;
 end_import
 
-begin_import
-import|import
-name|spin
-operator|.
-name|Spin
-import|;
-end_import
-
 begin_class
 DECL|class|SaveAllAction
 specifier|public
@@ -148,13 +140,6 @@ name|lang
 argument_list|(
 literal|"Saving all libraries..."
 argument_list|)
-argument_list|)
-expr_stmt|;
-name|Spin
-operator|.
-name|off
-argument_list|(
-name|this
 argument_list|)
 expr_stmt|;
 name|run
