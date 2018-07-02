@@ -130,15 +130,6 @@ name|abbreviationLoader
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|entryFetchers
-operator|.
-name|add
-argument_list|(
-operator|new
-name|INSPIREFetcher
-argument_list|()
-argument_list|)
-expr_stmt|;
 comment|// entryFetchers.add(new OAI2Fetcher()); - new arXiv fetcher in place, see below
 name|entryFetchers
 operator|.
