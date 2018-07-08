@@ -287,7 +287,7 @@ throw|throw
 operator|new
 name|FetcherException
 argument_list|(
-literal|"An I/O exception occurred"
+literal|"A network error occurred"
 argument_list|,
 name|e
 argument_list|)
