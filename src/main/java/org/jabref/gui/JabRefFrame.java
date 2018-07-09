@@ -2584,6 +2584,16 @@ name|consume
 argument_list|()
 expr_stmt|;
 break|break;
+case|case
+name|SEARCH
+case|:
+name|getGlobalSearchBar
+argument_list|()
+operator|.
+name|focus
+argument_list|()
+expr_stmt|;
+break|break;
 default|default:
 block|}
 block|}

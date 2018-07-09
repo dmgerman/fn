@@ -1570,7 +1570,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|performGlobalSearch ()
-specifier|public
+specifier|private
 name|void
 name|performGlobalSearch
 parameter_list|()
