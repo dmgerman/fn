@@ -14,6 +14,16 @@ end_package
 
 begin_import
 import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|SwingUtilities
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|jabref
@@ -167,6 +177,13 @@ name|void
 name|execute
 parameter_list|()
 block|{
+name|SwingUtilities
+operator|.
+name|invokeLater
+argument_list|(
+parameter_list|()
+lambda|->
+block|{
 name|FromAuxDialog
 name|dialog
 init|=
@@ -270,6 +287,9 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 end_class
