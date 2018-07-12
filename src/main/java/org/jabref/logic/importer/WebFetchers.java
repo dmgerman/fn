@@ -878,6 +878,17 @@ argument_list|)
 expr_stmt|;
 name|list
 operator|.
+name|add
+argument_list|(
+operator|new
+name|IEEE
+argument_list|(
+name|importFormatPreferences
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|list
+operator|.
 name|sort
 argument_list|(
 name|Comparator
@@ -1289,7 +1300,9 @@ name|add
 argument_list|(
 operator|new
 name|IEEE
-argument_list|()
+argument_list|(
+name|importFormatPreferences
+argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Meta search
