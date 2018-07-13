@@ -154,12 +154,6 @@ block|,
 DECL|enumConstant|SAVE_SELECTED_AS_PLAIN
 name|SAVE_SELECTED_AS_PLAIN
 block|,
-DECL|enumConstant|SEARCH
-name|SEARCH
-block|,
-DECL|enumConstant|GLOBAL_SEARCH
-name|GLOBAL_SEARCH
-block|,
 DECL|enumConstant|SELECT_ALL
 name|SELECT_ALL
 block|,

@@ -16,16 +16,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|nio
 operator|.
 name|file
@@ -180,18 +170,6 @@ begin_import
 import|import
 name|org
 operator|.
-name|junit$pioneer
-operator|.
-name|jupiter
-operator|.
-name|TempDirectory
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
 name|junit
 operator|.
 name|jupiter
@@ -229,6 +207,18 @@ operator|.
 name|extension
 operator|.
 name|ExtendWith
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junitpioneer
+operator|.
+name|jupiter
+operator|.
+name|TempDirectory
 import|;
 end_import
 
@@ -360,7 +350,9 @@ name|TempDirectory
 operator|.
 name|class
 argument_list|)
+comment|/**  * Must be public because otherwise @TestArchitectureTests fails!  * */
 DECL|class|LinkedFileViewModelTest
+specifier|public
 class|class
 name|LinkedFileViewModelTest
 block|{
@@ -583,8 +575,6 @@ DECL|method|deleteWhenRemoveChosenReturnsTrueButDoesNotDeletesFile ()
 name|void
 name|deleteWhenRemoveChosenReturnsTrueButDoesNotDeletesFile
 parameter_list|()
-throws|throws
-name|IOException
 block|{
 name|linkedFile
 operator|=
@@ -712,8 +702,6 @@ DECL|method|deleteWhenDeleteChosenReturnsTrueAndDeletesFile ()
 name|void
 name|deleteWhenDeleteChosenReturnsTrueAndDeletesFile
 parameter_list|()
-throws|throws
-name|IOException
 block|{
 name|linkedFile
 operator|=
@@ -841,8 +829,6 @@ DECL|method|deleteWhenDeleteChosenAndFileMissingReturnsFalse ()
 name|void
 name|deleteWhenDeleteChosenAndFileMissingReturnsFalse
 parameter_list|()
-throws|throws
-name|IOException
 block|{
 name|linkedFile
 operator|=
@@ -971,8 +957,6 @@ DECL|method|deleteWhenDialogCancelledReturnsFalseAndDoesNotRemoveFile ()
 name|void
 name|deleteWhenDialogCancelledReturnsFalseAndDoesNotRemoveFile
 parameter_list|()
-throws|throws
-name|IOException
 block|{
 name|linkedFile
 operator|=

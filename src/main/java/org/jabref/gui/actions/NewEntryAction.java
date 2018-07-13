@@ -44,6 +44,16 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|SwingUtilities
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|jabref
@@ -254,6 +264,13 @@ expr_stmt|;
 block|}
 else|else
 block|{
+name|SwingUtilities
+operator|.
+name|invokeLater
+argument_list|(
+parameter_list|()
+lambda|->
+block|{
 name|EntryTypeDialog
 name|typeChoiceDialog
 init|=
@@ -300,6 +317,9 @@ operator|.
 name|newEntry
 argument_list|(
 name|selectedType
+argument_list|)
+expr_stmt|;
+block|}
 argument_list|)
 expr_stmt|;
 block|}

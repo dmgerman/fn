@@ -642,7 +642,9 @@ name|DEFAULT_TYPE
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Constructs a new BibEntry with the given type      *      * @param type The type to set. May be null or empty. In that case, DEFAULT_TYPE is used.      */
+comment|/**      * Constructs a new BibEntry with the given type      *      * @param type The type to set. May be null or empty. In that case, DEFAULT_TYPE is used.      * @deprecated use {{@link #BibEntry(EntryType)}} instead      */
+annotation|@
+name|Deprecated
 DECL|method|BibEntry (String type)
 specifier|public
 name|BibEntry
@@ -701,6 +703,24 @@ operator|=
 operator|new
 name|SharedBibEntryData
 argument_list|()
+expr_stmt|;
+block|}
+comment|/**      * Constructs a new BibEntry. The internal ID is set to IdGenerator.next()      */
+DECL|method|BibEntry (EntryType type)
+specifier|public
+name|BibEntry
+parameter_list|(
+name|EntryType
+name|type
+parameter_list|)
+block|{
+name|this
+argument_list|(
+name|type
+operator|.
+name|getName
+argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 DECL|method|setMonth (Month parsedMonth)
@@ -4066,6 +4086,22 @@ argument_list|(
 name|fields
 argument_list|,
 name|fieldName
+argument_list|)
+return|;
+block|}
+DECL|method|getCiteKeyBinding ()
+specifier|public
+name|ObjectBinding
+argument_list|<
+name|String
+argument_list|>
+name|getCiteKeyBinding
+parameter_list|()
+block|{
+return|return
+name|getFieldBinding
+argument_list|(
+name|KEY_FIELD
 argument_list|)
 return|;
 block|}

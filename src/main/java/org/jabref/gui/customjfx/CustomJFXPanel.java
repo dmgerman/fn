@@ -59,7 +59,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Remove as soon as possible  */
+comment|/**  * TODO: Remove as soon as possible  */
 end_comment
 
 begin_class

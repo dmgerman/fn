@@ -334,6 +334,18 @@ name|net
 operator|.
 name|ssl
 operator|.
+name|HostnameVerifier
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|net
+operator|.
+name|ssl
+operator|.
 name|HttpsURLConnection
 import|;
 end_import
@@ -550,7 +562,7 @@ name|USER_AGENT
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Older java VMs does not automatically trust the zbMATH certificate. In this case the following exception is      * thrown: sun.security.validator.ValidatorException: PKIX path building failed:      * sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested      * target JM> 8u101 may trust the certificate by default according to http://stackoverflow.com/a/34111150/873661      *      * We will fix this issue by accepting all (!) certificates. This is ugly; but as JabRef does not rely on      * security-relevant information this is kind of OK (no, actually it is not...).      *      * Taken from http://stackoverflow.com/a/6055903/873661      */
+comment|/**      * Older java VMs does not automatically trust the zbMATH certificate. In this case the following exception is      * thrown: sun.security.validator.ValidatorException: PKIX path building failed:      * sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested      * target JM> 8u101 may trust the certificate by default according to http://stackoverflow.com/a/34111150/873661      *      * We will fix this issue by accepting all (!) certificates. This is ugly; but as JabRef does not rely on      * security-relevant information this is kind of OK (no, actually it is not...).      *      * Taken from http://stackoverflow.com/a/6055903/873661 and https://stackoverflow.com/a/19542614/873661      */
 DECL|method|bypassSSLVerification ()
 specifier|public
 specifier|static
@@ -613,9 +625,9 @@ index|]
 return|;
 block|}
 function|}};
-comment|// Install the all-trusting trust manager
 try|try
 block|{
+comment|// Install all-trusting trust manager
 name|SSLContext
 name|context
 init|=
@@ -647,6 +659,25 @@ name|context
 operator|.
 name|getSocketFactory
 argument_list|()
+argument_list|)
+expr_stmt|;
+comment|// Install all-trusting host verifier
+name|HostnameVerifier
+name|allHostsValid
+init|=
+parameter_list|(
+name|hostname
+parameter_list|,
+name|session
+parameter_list|)
+lambda|->
+literal|true
+decl_stmt|;
+name|HttpsURLConnection
+operator|.
+name|setDefaultHostnameVerifier
+argument_list|(
+name|allHostsValid
 argument_list|)
 expr_stmt|;
 block|}

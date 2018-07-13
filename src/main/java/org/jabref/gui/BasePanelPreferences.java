@@ -265,12 +265,10 @@ operator|.
 name|getAutoCompletePreferences
 argument_list|()
 argument_list|,
-name|EntryEditorPreferences
-operator|.
-name|from
-argument_list|(
 name|preferences
-argument_list|)
+operator|.
+name|getEntryEditorPreferences
+argument_list|()
 argument_list|,
 name|Globals
 operator|.

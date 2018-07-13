@@ -48,61 +48,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Collection
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|Collections
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
-name|importer
-operator|.
-name|ImportFormatPreferences
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
-name|importer
-operator|.
-name|ParserResult
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
-name|importer
-operator|.
-name|fileformat
-operator|.
-name|BibtexParser
 import|;
 end_import
 
@@ -144,9 +90,23 @@ name|jabref
 operator|.
 name|model
 operator|.
-name|util
+name|entry
 operator|.
-name|DummyFileUpdateMonitor
+name|BibtexEntryTypes
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|LinkedFile
 import|;
 end_import
 
@@ -230,26 +190,17 @@ end_import
 
 begin_class
 DECL|class|LayoutTest
-specifier|public
 class|class
 name|LayoutTest
 block|{
-DECL|field|importFormatPreferences
-specifier|private
-specifier|static
-name|ImportFormatPreferences
-name|importFormatPreferences
-decl_stmt|;
 DECL|field|layoutFormatterPreferences
 specifier|private
 name|LayoutFormatterPreferences
 name|layoutFormatterPreferences
 decl_stmt|;
-comment|/**      * Initialize Preferences.      */
 annotation|@
 name|BeforeEach
 DECL|method|setUp ()
-specifier|public
 name|void
 name|setUp
 parameter_list|()
@@ -267,150 +218,28 @@ operator|.
 name|RETURNS_DEEP_STUBS
 argument_list|)
 expr_stmt|;
-name|importFormatPreferences
-operator|=
-name|mock
-argument_list|(
-name|ImportFormatPreferences
-operator|.
-name|class
-argument_list|,
-name|Answers
-operator|.
-name|RETURNS_DEEP_STUBS
-argument_list|)
-expr_stmt|;
 block|}
-comment|/**      * Return Test data.      */
-DECL|method|t1BibtexString ()
-specifier|public
-name|String
-name|t1BibtexString
-parameter_list|()
-block|{
-return|return
-literal|"@article{canh05,\n"
-operator|+
-literal|"  author = {This\nis\na\ntext},\n"
-operator|+
-literal|"  title = {Effective work practices for floss development: A model and propositions},\n"
-operator|+
-literal|"  booktitle = {Hawaii International Conference On System Sciences (HICSS)},\n"
-operator|+
-literal|"  year = {2005},\n"
-operator|+
-literal|"  owner = {oezbek},\n"
-operator|+
-literal|"  timestamp = {2006.05.29},\n"
-operator|+
-literal|"  url = {http://james.howison.name/publications.html},\n"
-operator|+
-literal|"  abstract = {\\~{n} \\~n "
-operator|+
-literal|"\\'i \\i \\i}\n"
-operator|+
-literal|"}\n"
-return|;
-block|}
-DECL|method|bibtexString2BibtexEntry (String s)
-specifier|public
-specifier|static
-name|BibEntry
-name|bibtexString2BibtexEntry
-parameter_list|(
-name|String
-name|s
-parameter_list|)
-throws|throws
-name|IOException
-block|{
-name|ParserResult
-name|result
-init|=
-operator|new
-name|BibtexParser
-argument_list|(
-name|importFormatPreferences
-argument_list|,
-operator|new
-name|DummyFileUpdateMonitor
-argument_list|()
-argument_list|)
-operator|.
-name|parse
-argument_list|(
-operator|new
-name|StringReader
-argument_list|(
-name|s
-argument_list|)
-argument_list|)
-decl_stmt|;
-name|Collection
-argument_list|<
-name|BibEntry
-argument_list|>
-name|c
-init|=
-name|result
-operator|.
-name|getDatabase
-argument_list|()
-operator|.
-name|getEntries
-argument_list|()
-decl_stmt|;
-name|assertEquals
-argument_list|(
-literal|1
-argument_list|,
-name|c
-operator|.
-name|size
-argument_list|()
-argument_list|)
-expr_stmt|;
-return|return
-name|c
-operator|.
-name|iterator
-argument_list|()
-operator|.
-name|next
-argument_list|()
-return|;
-block|}
-DECL|method|layout (String layoutFile, String entry)
-specifier|public
+DECL|method|layout (String layout, BibEntry entry)
+specifier|private
 name|String
 name|layout
 parameter_list|(
 name|String
-name|layoutFile
+name|layout
 parameter_list|,
-name|String
+name|BibEntry
 name|entry
 parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|BibEntry
-name|be
-init|=
-name|LayoutTest
-operator|.
-name|bibtexString2BibtexEntry
-argument_list|(
-name|entry
-argument_list|)
-decl_stmt|;
 name|StringReader
-name|sr
+name|layoutStringReader
 init|=
 operator|new
 name|StringReader
 argument_list|(
-name|layoutFile
+name|layout
 operator|.
 name|replace
 argument_list|(
@@ -420,26 +249,21 @@ literal|"\n"
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|Layout
-name|layout
-init|=
+return|return
 operator|new
 name|LayoutHelper
 argument_list|(
-name|sr
+name|layoutStringReader
 argument_list|,
 name|layoutFormatterPreferences
 argument_list|)
 operator|.
 name|getLayoutFromText
 argument_list|()
-decl_stmt|;
-return|return
-name|layout
 operator|.
 name|doLayout
 argument_list|(
-name|be
+name|entry
 argument_list|,
 literal|null
 argument_list|)
@@ -447,14 +271,29 @@ return|;
 block|}
 annotation|@
 name|Test
-DECL|method|testLayoutBibtextype ()
-specifier|public
+DECL|method|entryTypeForUnknown ()
 name|void
-name|testLayoutBibtextype
+name|entryTypeForUnknown
 parameter_list|()
 throws|throws
 name|IOException
 block|{
+name|BibEntry
+name|entry
+init|=
+operator|new
+name|BibEntry
+argument_list|(
+literal|"unknown"
+argument_list|)
+operator|.
+name|withField
+argument_list|(
+literal|"author"
+argument_list|,
+literal|"test"
+argument_list|)
+decl_stmt|;
 name|assertEquals
 argument_list|(
 literal|"Unknown"
@@ -463,10 +302,38 @@ name|layout
 argument_list|(
 literal|"\\bibtextype"
 argument_list|,
-literal|"@unknown{bla, author={This\nis\na\ntext}}"
+name|entry
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|entryTypeForArticle ()
+name|void
+name|entryTypeForArticle
+parameter_list|()
+throws|throws
+name|IOException
+block|{
+name|BibEntry
+name|entry
+init|=
+operator|new
+name|BibEntry
+argument_list|(
+name|BibtexEntryTypes
+operator|.
+name|ARTICLE
+argument_list|)
+operator|.
+name|withField
+argument_list|(
+literal|"author"
+argument_list|,
+literal|"test"
+argument_list|)
+decl_stmt|;
 name|assertEquals
 argument_list|(
 literal|"Article"
@@ -475,10 +342,38 @@ name|layout
 argument_list|(
 literal|"\\bibtextype"
 argument_list|,
-literal|"@article{bla, author={This\nis\na\ntext}}"
+name|entry
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|entryTypeForMisc ()
+name|void
+name|entryTypeForMisc
+parameter_list|()
+throws|throws
+name|IOException
+block|{
+name|BibEntry
+name|entry
+init|=
+operator|new
+name|BibEntry
+argument_list|(
+name|BibtexEntryTypes
+operator|.
+name|MISC
+argument_list|)
+operator|.
+name|withField
+argument_list|(
+literal|"author"
+argument_list|,
+literal|"test"
+argument_list|)
+decl_stmt|;
 name|assertEquals
 argument_list|(
 literal|"Misc"
@@ -487,21 +382,83 @@ name|layout
 argument_list|(
 literal|"\\bibtextype"
 argument_list|,
-literal|"@misc{bla, author={This\nis\na\ntext}}"
+name|entry
 argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testHTMLChar ()
-specifier|public
+DECL|method|HTMLChar ()
 name|void
-name|testHTMLChar
+name|HTMLChar
 parameter_list|()
 throws|throws
 name|IOException
 block|{
+name|BibEntry
+name|entry
+init|=
+operator|new
+name|BibEntry
+argument_list|(
+name|BibtexEntryTypes
+operator|.
+name|ARTICLE
+argument_list|)
+operator|.
+name|withField
+argument_list|(
+literal|"author"
+argument_list|,
+literal|"This\nis\na\ntext"
+argument_list|)
+decl_stmt|;
+name|String
+name|actual
+init|=
+name|layout
+argument_list|(
+literal|"\\begin{author}\\format[HTMLChars]{\\author}\\end{author}"
+argument_list|,
+name|entry
+argument_list|)
+decl_stmt|;
+name|assertEquals
+argument_list|(
+literal|"This<br>is<br>a<br>text"
+argument_list|,
+name|actual
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|HTMLCharWithDoubleLineBreak ()
+name|void
+name|HTMLCharWithDoubleLineBreak
+parameter_list|()
+throws|throws
+name|IOException
+block|{
+name|BibEntry
+name|entry
+init|=
+operator|new
+name|BibEntry
+argument_list|(
+name|BibtexEntryTypes
+operator|.
+name|ARTICLE
+argument_list|)
+operator|.
+name|withField
+argument_list|(
+literal|"author"
+argument_list|,
+literal|"This\nis\na\n\ntext"
+argument_list|)
+decl_stmt|;
 name|String
 name|layoutText
 init|=
@@ -509,28 +466,12 @@ name|layout
 argument_list|(
 literal|"\\begin{author}\\format[HTMLChars]{\\author}\\end{author} "
 argument_list|,
-literal|"@other{bla, author={This\nis\na\ntext}}"
+name|entry
 argument_list|)
 decl_stmt|;
 name|assertEquals
 argument_list|(
-literal|"This is a text "
-argument_list|,
-name|layoutText
-argument_list|)
-expr_stmt|;
-name|layoutText
-operator|=
-name|layout
-argument_list|(
-literal|"\\begin{author}\\format[HTMLChars]{\\author}\\end{author}"
-argument_list|,
-literal|"@other{bla, author={This\nis\na\ntext}}"
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"This is a text"
+literal|"This<br>is<br>a<p>text "
 argument_list|,
 name|layoutText
 argument_list|)
@@ -538,14 +479,31 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testPluginLoading ()
-specifier|public
+DECL|method|nameFormatter ()
 name|void
-name|testPluginLoading
+name|nameFormatter
 parameter_list|()
 throws|throws
 name|IOException
 block|{
+name|BibEntry
+name|entry
+init|=
+operator|new
+name|BibEntry
+argument_list|(
+name|BibtexEntryTypes
+operator|.
+name|ARTICLE
+argument_list|)
+operator|.
+name|withField
+argument_list|(
+literal|"author"
+argument_list|,
+literal|"Joe Doe and Jane, Moon"
+argument_list|)
+decl_stmt|;
 name|String
 name|layoutText
 init|=
@@ -553,7 +511,7 @@ name|layout
 argument_list|(
 literal|"\\begin{author}\\format[NameFormatter]{\\author}\\end{author}"
 argument_list|,
-literal|"@other{bla, author={Joe Doe and Jane, Moon}}"
+name|entry
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -566,43 +524,31 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testHTMLCharDoubleLineBreak ()
-specifier|public
+DECL|method|HTMLCharsWithDotlessIAndTiled ()
 name|void
-name|testHTMLCharDoubleLineBreak
+name|HTMLCharsWithDotlessIAndTiled
 parameter_list|()
 throws|throws
 name|IOException
 block|{
-name|String
-name|layoutText
+name|BibEntry
+name|entry
 init|=
-name|layout
+operator|new
+name|BibEntry
 argument_list|(
-literal|"\\begin{author}\\format[HTMLChars]{\\author}\\end{author} "
+name|BibtexEntryTypes
+operator|.
+name|ARTICLE
+argument_list|)
+operator|.
+name|withField
+argument_list|(
+literal|"abstract"
 argument_list|,
-literal|"@other{bla, author={This\nis\na\n\ntext}}"
+literal|"\\~{n} \\~n \\'i \\i \\i"
 argument_list|)
 decl_stmt|;
-name|assertEquals
-argument_list|(
-literal|"This is a text "
-argument_list|,
-name|layoutText
-argument_list|)
-expr_stmt|;
-block|}
-comment|/**      * [ 1495181 ] Dotless i and tilde not handled in preview      *      * @throws Exception      */
-annotation|@
-name|Test
-DECL|method|testLayout ()
-specifier|public
-name|void
-name|testLayout
-parameter_list|()
-throws|throws
-name|IOException
-block|{
 name|String
 name|layoutText
 init|=
@@ -610,8 +556,7 @@ name|layout
 argument_list|(
 literal|"<font face=\"arial\">\\begin{abstract}<BR><BR><b>Abstract:</b> \\format[HTMLChars]{\\abstract}\\end{abstract}</font>"
 argument_list|,
-name|t1BibtexString
-argument_list|()
+name|entry
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -625,10 +570,9 @@ block|}
 annotation|@
 name|Test
 comment|// Test for http://discourse.jabref.org/t/the-wrapfilelinks-formatter/172 (the example in the help files)
-DECL|method|testWrapFileLinksLayout ()
-specifier|public
+DECL|method|wrapFileLinksExpandFile ()
 name|void
-name|testWrapFileLinksLayout
+name|wrapFileLinksExpandFile
 parameter_list|()
 throws|throws
 name|IOException
@@ -660,6 +604,32 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|BibEntry
+name|entry
+init|=
+operator|new
+name|BibEntry
+argument_list|(
+name|BibtexEntryTypes
+operator|.
+name|ARTICLE
+argument_list|)
+decl_stmt|;
+name|entry
+operator|.
+name|addFile
+argument_list|(
+operator|new
+name|LinkedFile
+argument_list|(
+literal|"Test file"
+argument_list|,
+literal|"encrypted.pdf"
+argument_list|,
+literal|"PDF"
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|String
 name|layoutText
 init|=
@@ -667,7 +637,7 @@ name|layout
 argument_list|(
 literal|"\\begin{file}\\format[WrapFileLinks(\\i. \\d (\\p))]{\\file}\\end{file}"
 argument_list|,
-literal|"@other{bla, file={Test file:encrypted.pdf:PDF}}"
+name|entry
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -684,6 +654,51 @@ name|getCanonicalPath
 argument_list|()
 operator|+
 literal|")"
+argument_list|,
+name|layoutText
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|expandCommandIfTerminatedByMinus ()
+name|void
+name|expandCommandIfTerminatedByMinus
+parameter_list|()
+throws|throws
+name|IOException
+block|{
+name|BibEntry
+name|entry
+init|=
+operator|new
+name|BibEntry
+argument_list|(
+name|BibtexEntryTypes
+operator|.
+name|ARTICLE
+argument_list|)
+operator|.
+name|withField
+argument_list|(
+literal|"edition"
+argument_list|,
+literal|"2"
+argument_list|)
+decl_stmt|;
+name|String
+name|layoutText
+init|=
+name|layout
+argument_list|(
+literal|"\\edition-th ed.-"
+argument_list|,
+name|entry
+argument_list|)
+decl_stmt|;
+name|assertEquals
+argument_list|(
+literal|"2-th ed.-"
 argument_list|,
 name|layoutText
 argument_list|)

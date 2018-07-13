@@ -174,6 +174,20 @@ expr_stmt|;
 block|}
 argument_list|)
 expr_stmt|;
+name|disabledProperty
+argument_list|()
+operator|.
+name|bind
+argument_list|(
+name|command
+operator|.
+name|executableProperty
+argument_list|()
+operator|.
+name|not
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|trackExecute ()
 specifier|private

@@ -1009,14 +1009,11 @@ name|suggestionProvider
 argument_list|,
 name|fieldCheckers
 argument_list|,
-name|preferences
-operator|.
-name|getBibtexKeyPatternPreferences
-argument_list|()
-argument_list|,
 name|databaseContext
 argument_list|,
 name|undoManager
+argument_list|,
+name|dialogService
 argument_list|)
 return|;
 block|}
