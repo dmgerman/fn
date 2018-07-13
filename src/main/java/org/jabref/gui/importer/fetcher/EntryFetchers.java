@@ -110,15 +110,6 @@ name|JournalAbbreviationLoader
 name|abbreviationLoader
 parameter_list|)
 block|{
-name|entryFetchers
-operator|.
-name|add
-argument_list|(
-operator|new
-name|CiteSeerXFetcher
-argument_list|()
-argument_list|)
-expr_stmt|;
 name|WebFetchers
 operator|.
 name|getSearchBasedFetchers

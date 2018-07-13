@@ -76,6 +76,20 @@ begin_import
 import|import
 name|org
 operator|.
+name|jabref
+operator|.
+name|testutils
+operator|.
+name|category
+operator|.
+name|FetcherTest
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|json
 operator|.
 name|JSONObject
@@ -127,6 +141,8 @@ import|;
 end_import
 
 begin_class
+annotation|@
+name|FetcherTest
 DECL|class|SpringerFetcherTest
 class|class
 name|SpringerFetcherTest
