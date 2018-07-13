@@ -112,16 +112,6 @@ specifier|public
 class|class
 name|FileBasedLock
 block|{
-comment|/**      * The age in ms of a lockfile before JabRef will offer to "steal" the locked file.      */
-DECL|field|LOCKFILE_CRITICAL_AGE
-specifier|public
-specifier|static
-specifier|final
-name|long
-name|LOCKFILE_CRITICAL_AGE
-init|=
-literal|60000
-decl_stmt|;
 DECL|field|LOGGER
 specifier|private
 specifier|static
@@ -138,6 +128,16 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+comment|/**      * The age in ms of a lockfile before JabRef will offer to "steal" the locked file.      */
+DECL|field|LOCKFILE_CRITICAL_AGE
+specifier|public
+specifier|static
+specifier|final
+name|long
+name|LOCKFILE_CRITICAL_AGE
+init|=
+literal|60000
+decl_stmt|;
 DECL|field|LOCKFILE_SUFFIX
 specifier|private
 specifier|static
@@ -147,7 +147,7 @@ name|LOCKFILE_SUFFIX
 init|=
 literal|".lock"
 decl_stmt|;
-comment|// default retry count for aquiring file lock
+comment|// default retry count for acquiring file lock
 DECL|field|AQUIRE_LOCK_RETRY
 specifier|private
 specifier|static
