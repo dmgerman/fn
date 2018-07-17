@@ -1961,6 +1961,19 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+DECL|method|moveToDefaultDirectoryAndRename ()
+specifier|public
+name|void
+name|moveToDefaultDirectoryAndRename
+parameter_list|()
+block|{
+name|moveToDefaultDirectory
+argument_list|()
+expr_stmt|;
+name|rename
+argument_list|()
+expr_stmt|;
+block|}
 DECL|method|delete (FileDirectoryPreferences prefs)
 specifier|public
 name|boolean
