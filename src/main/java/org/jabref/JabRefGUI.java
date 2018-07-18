@@ -1051,6 +1051,10 @@ operator|.
 name|installBaseCss
 argument_list|(
 name|scene
+argument_list|,
+name|Globals
+operator|.
+name|prefs
 argument_list|)
 expr_stmt|;
 name|mainStage
