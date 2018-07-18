@@ -174,16 +174,6 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|JFrame
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
 name|JRadioButton
 import|;
 end_import
@@ -619,21 +609,16 @@ specifier|private
 name|FieldFormatterCleanupsPanel
 name|fieldFormatterCleanupsPanel
 decl_stmt|;
-DECL|method|DatabasePropertiesDialog (JFrame parent, BasePanel panel)
+DECL|method|DatabasePropertiesDialog (BasePanel panel)
 specifier|public
 name|DatabasePropertiesDialog
 parameter_list|(
-name|JFrame
-name|parent
-parameter_list|,
 name|BasePanel
 name|panel
 parameter_list|)
 block|{
 name|super
 argument_list|(
-name|parent
-argument_list|,
 name|Localization
 operator|.
 name|lang

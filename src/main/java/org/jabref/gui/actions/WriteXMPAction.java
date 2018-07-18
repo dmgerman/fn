@@ -186,16 +186,6 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|JFrame
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
 name|JPanel
 import|;
 end_import
@@ -622,9 +612,7 @@ name|optionsDialog
 operator|=
 operator|new
 name|OptionsDialog
-argument_list|(
-literal|null
-argument_list|)
+argument_list|()
 expr_stmt|;
 block|}
 name|optionsDialog
@@ -1182,18 +1170,13 @@ specifier|final
 name|JTextArea
 name|progressArea
 decl_stmt|;
-DECL|method|OptionsDialog (JFrame parent)
+DECL|method|OptionsDialog ()
 specifier|public
 name|OptionsDialog
-parameter_list|(
-name|JFrame
-name|parent
-parameter_list|)
+parameter_list|()
 block|{
 name|super
 argument_list|(
-name|parent
-argument_list|,
 name|Localization
 operator|.
 name|lang

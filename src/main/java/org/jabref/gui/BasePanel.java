@@ -3888,8 +3888,6 @@ init|=
 operator|new
 name|ContentSelectorDialog
 argument_list|(
-literal|null
-argument_list|,
 name|frame
 argument_list|,
 name|BasePanel

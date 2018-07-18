@@ -643,8 +643,6 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-literal|null
-argument_list|,
 name|StringDialog
 operator|.
 name|class

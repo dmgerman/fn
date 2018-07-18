@@ -634,8 +634,6 @@ block|{
 comment|// modal dialog
 name|super
 argument_list|(
-literal|null
-argument_list|,
 literal|true
 argument_list|,
 name|EntryTypeDialog
