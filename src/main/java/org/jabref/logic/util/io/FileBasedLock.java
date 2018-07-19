@@ -112,7 +112,7 @@ specifier|public
 class|class
 name|FileBasedLock
 block|{
-comment|/**      * The age in ms of a lockfile before JabRef will offer to "steal" the locked file.      */
+comment|/**      * The age in ms of a lock file before JabRef will offer to "steal" the locked file.      */
 DECL|field|LOCKFILE_CRITICAL_AGE
 specifier|public
 specifier|static
