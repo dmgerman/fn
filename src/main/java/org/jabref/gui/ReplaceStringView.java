@@ -478,10 +478,10 @@ block|}
 comment|/**      * FXML Message handler     */
 annotation|@
 name|FXML
-DECL|method|ButtonReplace ()
+DECL|method|buttonReplace ()
 specifier|public
 name|void
-name|ButtonReplace
+name|buttonReplace
 parameter_list|()
 block|{
 name|findString
@@ -549,10 +549,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|FXML
-DECL|method|ButtonCancel ()
+DECL|method|buttonCancel ()
 specifier|public
 name|void
-name|ButtonCancel
+name|buttonCancel
 parameter_list|()
 block|{
 name|exitSignal
@@ -567,10 +567,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|FXML
-DECL|method|RadioAll ()
+DECL|method|radioAll ()
 specifier|public
 name|void
-name|RadioAll
+name|radioAll
 parameter_list|()
 block|{
 name|AllFieldReplace
@@ -580,10 +580,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|FXML
-DECL|method|RadioLimit ()
+DECL|method|radioLimit ()
 specifier|public
 name|void
-name|RadioLimit
+name|radioLimit
 parameter_list|()
 block|{
 name|AllFieldReplace
@@ -695,10 +695,7 @@ name|bibEntry
 range|:
 name|this
 operator|.
-name|panel
-operator|.
-name|getDatabase
-argument_list|()
+name|database
 operator|.
 name|getEntries
 argument_list|()
