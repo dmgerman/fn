@@ -112,7 +112,7 @@ name|logic
 operator|.
 name|journals
 operator|.
-name|JournalAbbreviationLoader
+name|JournalAbbreviationRepository
 import|;
 end_import
 
@@ -180,15 +180,15 @@ specifier|private
 name|EditorTextArea
 name|textArea
 decl_stmt|;
-DECL|method|JournalEditor (String fieldName, JournalAbbreviationLoader journalAbbreviationLoader, JabRefPreferences preferences, AutoCompleteSuggestionProvider<?> suggestionProvider, FieldCheckers fieldCheckers)
+DECL|method|JournalEditor (String fieldName, JournalAbbreviationRepository journalAbbreviationRepository, JabRefPreferences preferences, AutoCompleteSuggestionProvider<?> suggestionProvider, FieldCheckers fieldCheckers)
 specifier|public
 name|JournalEditor
 parameter_list|(
 name|String
 name|fieldName
 parameter_list|,
-name|JournalAbbreviationLoader
-name|journalAbbreviationLoader
+name|JournalAbbreviationRepository
+name|journalAbbreviationRepository
 parameter_list|,
 name|JabRefPreferences
 name|preferences
@@ -214,12 +214,7 @@ name|fieldName
 argument_list|,
 name|suggestionProvider
 argument_list|,
-name|journalAbbreviationLoader
-argument_list|,
-name|preferences
-operator|.
-name|getJournalAbbreviationPreferences
-argument_list|()
+name|journalAbbreviationRepository
 argument_list|,
 name|fieldCheckers
 argument_list|)

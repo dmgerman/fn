@@ -126,15 +126,15 @@ name|control
 operator|.
 name|skin
 operator|.
-name|TextAreaSkin
+name|TextFieldSkin
 import|;
 end_import
 
 begin_class
-DECL|class|EditorTextArea
+DECL|class|EditorTextField
 specifier|public
 class|class
-name|EditorTextArea
+name|EditorTextField
 extends|extends
 name|javafx
 operator|.
@@ -142,15 +142,15 @@ name|scene
 operator|.
 name|control
 operator|.
-name|TextArea
+name|TextField
 implements|implements
 name|Initializable
 implements|,
 name|ContextMenuAddable
 block|{
-DECL|method|EditorTextArea ()
+DECL|method|EditorTextField ()
 specifier|public
-name|EditorTextArea
+name|EditorTextField
 parameter_list|()
 block|{
 name|this
@@ -159,9 +159,9 @@ literal|""
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|EditorTextArea (final String text)
+DECL|method|EditorTextField (final String text)
 specifier|public
-name|EditorTextArea
+name|EditorTextField
 parameter_list|(
 specifier|final
 name|String
@@ -181,12 +181,6 @@ expr_stmt|;
 name|setMinWidth
 argument_list|(
 literal|200
-argument_list|)
-expr_stmt|;
-comment|// Hide horizontal scrollbar and always wrap text
-name|setWrapText
-argument_list|(
-literal|true
 argument_list|)
 expr_stmt|;
 comment|// Should behave as a normal text field with respect to TAB behaviour
@@ -211,11 +205,11 @@ operator|.
 name|TAB
 condition|)
 block|{
-name|TextAreaSkin
+name|TextFieldSkin
 name|skin
 init|=
 operator|(
-name|TextAreaSkin
+name|TextFieldSkin
 operator|)
 name|getSkin
 argument_list|()
@@ -301,11 +295,11 @@ argument_list|>
 name|items
 parameter_list|)
 block|{
-name|TextAreaSkin
+name|TextFieldSkin
 name|customContextSkin
 init|=
 operator|new
-name|TextAreaSkin
+name|TextFieldSkin
 argument_list|(
 name|this
 argument_list|)

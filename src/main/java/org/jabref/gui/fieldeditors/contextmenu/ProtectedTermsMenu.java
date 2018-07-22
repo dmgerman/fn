@@ -90,7 +90,7 @@ name|scene
 operator|.
 name|control
 operator|.
-name|TextArea
+name|TextInputControl
 import|;
 end_import
 
@@ -231,14 +231,15 @@ decl_stmt|;
 DECL|field|opener
 specifier|private
 specifier|final
-name|TextArea
+name|TextInputControl
 name|opener
 decl_stmt|;
-DECL|method|ProtectedTermsMenu (TextArea opener)
+DECL|method|ProtectedTermsMenu (final TextInputControl opener)
 specifier|public
 name|ProtectedTermsMenu
 parameter_list|(
-name|TextArea
+specifier|final
+name|TextInputControl
 name|opener
 parameter_list|)
 block|{

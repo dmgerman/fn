@@ -134,6 +134,18 @@ name|scene
 operator|.
 name|control
 operator|.
+name|TextInputControl
+import|;
+end_import
+
+begin_import
+import|import
+name|javafx
+operator|.
+name|scene
+operator|.
+name|control
+operator|.
 name|Tooltip
 import|;
 end_import
@@ -192,8 +204,8 @@ specifier|public
 class|class
 name|EditorMenus
 block|{
-comment|/**      * The default menu that contains functions for changing the case of text and doing several conversions.      *      * @param textArea text-area that this menu will be connected to      * @return default context menu available for most text fields      */
-DECL|method|getDefaultMenu (TextArea textArea)
+comment|/**      * The default menu that contains functions for changing the case of text and doing several conversions.      *      * @param textInput text-input-control that this menu will be connected to      * @return default context menu available for most text fields      */
+DECL|method|getDefaultMenu (final TextInputControl textInput)
 specifier|public
 specifier|static
 name|Supplier
@@ -205,8 +217,9 @@ argument_list|>
 argument_list|>
 name|getDefaultMenu
 parameter_list|(
-name|TextArea
-name|textArea
+specifier|final
+name|TextInputControl
+name|textInput
 parameter_list|)
 block|{
 return|return
@@ -233,7 +246,7 @@ argument_list|(
 operator|new
 name|CaseChangeMenu
 argument_list|(
-name|textArea
+name|textInput
 operator|.
 name|textProperty
 argument_list|()
@@ -247,7 +260,7 @@ argument_list|(
 operator|new
 name|ConversionMenu
 argument_list|(
-name|textArea
+name|textInput
 operator|.
 name|textProperty
 argument_list|()
@@ -270,7 +283,7 @@ argument_list|(
 operator|new
 name|ProtectedTermsMenu
 argument_list|(
-name|textArea
+name|textInput
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -290,7 +303,7 @@ argument_list|(
 operator|new
 name|ClearField
 argument_list|(
-name|textArea
+name|textInput
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -300,8 +313,8 @@ return|;
 block|}
 return|;
 block|}
-comment|/**      * The default context menu with a specific menu for normalizing person names regarding to BibTex rules.      *      * @param textArea text-area that this menu will be connected to      * @return menu containing items of the default menu and an item for normalizing person names      */
-DECL|method|getNameMenu (TextArea textArea)
+comment|/**      * The default context menu with a specific menu for normalizing person names regarding to BibTex rules.      *      * @param textInput text-input-control that this menu will be connected to      * @return menu containing items of the default menu and an item for normalizing person names      */
+DECL|method|getNameMenu (final TextInputControl textInput)
 specifier|public
 specifier|static
 name|Supplier
@@ -313,8 +326,9 @@ argument_list|>
 argument_list|>
 name|getNameMenu
 parameter_list|(
-name|TextArea
-name|textArea
+specifier|final
+name|TextInputControl
+name|textInput
 parameter_list|)
 block|{
 return|return
@@ -345,7 +359,7 @@ name|setOnAction
 argument_list|(
 name|event
 lambda|->
-name|textArea
+name|textInput
 operator|.
 name|setText
 argument_list|(
@@ -355,7 +369,7 @@ argument_list|()
 operator|.
 name|format
 argument_list|(
-name|textArea
+name|textInput
 operator|.
 name|getText
 argument_list|()
@@ -415,7 +429,7 @@ name|addAll
 argument_list|(
 name|getDefaultMenu
 argument_list|(
-name|textArea
+name|textInput
 argument_list|)
 operator|.
 name|get
