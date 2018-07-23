@@ -81,7 +81,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * @Deprecated  * Use {@link SearchBasedEntryFetcher} instead<br>  * Implement this interface to add another activeFetcher (something that grabs records  * from the Web for JabRef). Have a look at the existing implemenations  * OAI2Fetcher, IEEEXploreFetcher, JStorFetcher and  * CiteSeerEntryFetcher.  *  * Note: You also need to implement the method stopFetching from  * ImportInspectionDialog.Callback  *  * A Fetcher should not execute any GUI Operations, because it might be run in  * headless mode, but rather use the OutputPrinter for talking to the user.  */
+comment|/**  * @Deprecated  * Use {@link SearchBasedEntryFetcher} instead<br>  * Implement this interface to add another activeFetcher (something that grabs records  * from the Web for JabRef). Have a look at the existing implemenations  * IEEEXploreFetcher, JStorFetcher and  * CiteSeerEntryFetcher.  *  * Note: You also need to implement the method stopFetching from  * ImportInspectionDialog.Callback  *  * A Fetcher should not execute any GUI Operations, because it might be run in  * headless mode, but rather use the OutputPrinter for talking to the user.  */
 end_comment
 
 begin_interface

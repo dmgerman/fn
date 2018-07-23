@@ -44,7 +44,7 @@ name|gui
 operator|.
 name|customentrytypes
 operator|.
-name|EntryCustomizationDialog
+name|EntryTypeCustomizationDialog
 import|;
 end_import
 
@@ -89,7 +89,7 @@ name|JDialog
 name|dialog
 init|=
 operator|new
-name|EntryCustomizationDialog
+name|EntryTypeCustomizationDialog
 argument_list|(
 name|frame
 argument_list|)

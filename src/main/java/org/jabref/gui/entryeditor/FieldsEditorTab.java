@@ -726,13 +726,16 @@ argument_list|,
 name|Globals
 operator|.
 name|journalAbbreviationLoader
-argument_list|,
+operator|.
+name|getRepository
+argument_list|(
 name|Globals
 operator|.
 name|prefs
 operator|.
 name|getJournalAbbreviationPreferences
 argument_list|()
+argument_list|)
 argument_list|,
 name|Globals
 operator|.

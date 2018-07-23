@@ -79,8 +79,6 @@ init|=
 operator|new
 name|FindUnlinkedFilesDialog
 argument_list|(
-literal|null
-argument_list|,
 name|jabRefFrame
 argument_list|)
 decl_stmt|;

@@ -128,6 +128,10 @@ comment|//import javax.swing.JTextField;
 end_comment
 
 begin_comment
+comment|//import javax.swing.SwingUtilities;
+end_comment
+
+begin_comment
 comment|//
 end_comment
 
@@ -172,6 +176,10 @@ comment|//import org.jabref.gui.undo.UndoableKeyChange;
 end_comment
 
 begin_comment
+comment|//import org.jabref.gui.util.BackgroundTask;
+end_comment
+
+begin_comment
 comment|//import org.jabref.gui.util.DefaultTaskExecutor;
 end_comment
 
@@ -181,10 +189,6 @@ end_comment
 
 begin_comment
 comment|//import org.jabref.gui.util.FileDialogConfiguration;
-end_comment
-
-begin_comment
-comment|//import org.jabref.gui.worker.AbstractWorker;
 end_comment
 
 begin_comment
@@ -316,7 +320,7 @@ comment|// */
 end_comment
 
 begin_comment
-comment|//public class OpenOfficePanel extends AbstractWorker {
+comment|//public class OpenOfficePanel {
 end_comment
 
 begin_comment
@@ -325,6 +329,10 @@ end_comment
 
 begin_comment
 comment|//    private static final Logger LOGGER = LoggerFactory.getLogger(OpenOfficePanel.class);
+end_comment
+
+begin_comment
+comment|//    private final DialogService dialogService;
 end_comment
 
 begin_comment
@@ -421,10 +429,6 @@ end_comment
 
 begin_comment
 comment|//    private boolean dialogOkPressed;
-end_comment
-
-begin_comment
-comment|//    private IOException connectException;
 end_comment
 
 begin_comment
@@ -532,6 +536,10 @@ comment|//        initPanel();
 end_comment
 
 begin_comment
+comment|//        dialogService = frame.getDialogService();
+end_comment
+
+begin_comment
 comment|//    }
 end_comment
 
@@ -564,11 +572,11 @@ comment|//
 end_comment
 
 begin_comment
-comment|//        connect.addActionListener(e -> connect(true));
+comment|//        connect.addActionListener(e -> connectAutomatically());
 end_comment
 
 begin_comment
-comment|//        manualConnect.addActionListener(e -> connect(false));
+comment|//        manualConnect.addActionListener(e -> connectManually());
 end_comment
 
 begin_comment
@@ -616,7 +624,7 @@ comment|//                LOGGER.warn("Problem connecting", ex);
 end_comment
 
 begin_comment
-comment|//                frame.getDialogService().showErrorDialogAndWait(ex);
+comment|//                dialogService.showErrorDialogAndWait(ex);
 end_comment
 
 begin_comment
@@ -820,7 +828,7 @@ comment|//                    if (!unresolvedKeys.isEmpty()) {
 end_comment
 
 begin_comment
-comment|//                        frame.getDialogService().showErrorDialogAndWait(Localization.lang("Unable to synchronize bibliography"),
+comment|//                        dialogService.showErrorDialogAndWait(Localization.lang("Unable to synchronize bibliography"),
 end_comment
 
 begin_comment
@@ -872,7 +880,7 @@ comment|//                    LOGGER.warn("Problem with style file", ex);
 end_comment
 
 begin_comment
-comment|//                    frame.getDialogService().showErrorDialogAndWait(Localization.lang("No valid style file defined"),
+comment|//                    dialogService.showErrorDialogAndWait(Localization.lang("No valid style file defined"),
 end_comment
 
 begin_comment
@@ -892,7 +900,7 @@ comment|//                    LOGGER.debug("BibEntry not found", ex);
 end_comment
 
 begin_comment
-comment|//                    frame.getDialogService().showErrorDialogAndWait(Localization.lang("Unable to synchronize bibliography"), Localization.lang(
+comment|//                    dialogService.showErrorDialogAndWait(Localization.lang("Unable to synchronize bibliography"), Localization.lang(
 end_comment
 
 begin_comment
@@ -1004,7 +1012,7 @@ comment|//            try {
 end_comment
 
 begin_comment
-comment|//                CitationManager cm = new CitationManager(ooBase, frame.getDialogService());
+comment|//                CitationManager cm = new CitationManager(ooBase, dialogService);
 end_comment
 
 begin_comment
@@ -1284,7 +1292,7 @@ comment|//
 end_comment
 
 begin_comment
-comment|//                frame.getDialogService().showErrorDialogAndWait(Localization.lang("Unable to generate new library"),
+comment|//                dialogService.showErrorDialogAndWait(Localization.lang("Unable to generate new library"),
 end_comment
 
 begin_comment
@@ -1336,7 +1344,7 @@ comment|//            LOGGER.debug("BibEntry not found", ex);
 end_comment
 
 begin_comment
-comment|//            frame.getDialogService().showErrorDialogAndWait(Localization.lang("Unable to synchronize bibliography"),
+comment|//            dialogService.showErrorDialogAndWait(Localization.lang("Unable to synchronize bibliography"),
 end_comment
 
 begin_comment
@@ -1436,15 +1444,19 @@ comment|//
 end_comment
 
 begin_comment
-comment|//    private void connect(boolean autoDetect) {
+comment|//    private void connectAutomatically() {
 end_comment
 
 begin_comment
-comment|//        if (autoDetect) {
+comment|//        BackgroundTask
 end_comment
 
 begin_comment
-comment|//            DetectOpenOfficeInstallation officeInstallation = new DetectOpenOfficeInstallation(diag, preferences, frame.getDialogService());
+comment|//                .wrap(() -> {
+end_comment
+
+begin_comment
+comment|//                    DetectOpenOfficeInstallation officeInstallation = new DetectOpenOfficeInstallation(diag, preferences, dialogService);
 end_comment
 
 begin_comment
@@ -1452,43 +1464,67 @@ comment|//
 end_comment
 
 begin_comment
-comment|//            if (!officeInstallation.isInstalled()) {
+comment|//                    Boolean installed = officeInstallation.isInstalled().get();
 end_comment
 
 begin_comment
-comment|//                frame.getDialogService().showErrorDialogAndWait(Localization.lang("Autodetection failed"), Localization.lang("Autodetection failed"));
+comment|//                    if (installed == null || !installed) {
 end_comment
 
 begin_comment
-comment|//                return;
+comment|//                        throw new IllegalStateException("OpenOffice Installation could not be detected.");
 end_comment
 
 begin_comment
-comment|//            }
+comment|//                    }
 end_comment
 
 begin_comment
-comment|//            diag.dispose();
+comment|//                    return null; // can not use BackgroundTask.wrap(Runnable) because Runnable.run() can't throw exceptions
 end_comment
 
 begin_comment
-comment|//        } else {
+comment|//                })
 end_comment
 
 begin_comment
-comment|//            showManualConnectionDialog();
+comment|//                .onSuccess(x -> connect())
 end_comment
 
 begin_comment
-comment|//            if (!dialogOkPressed) {
+comment|//                .onFailure(ex ->
 end_comment
 
 begin_comment
-comment|//                return;
+comment|//                        dialogService.showErrorDialogAndWait(Localization.lang("Autodetection failed"), Localization.lang("Autodetection failed"), ex))
 end_comment
 
 begin_comment
-comment|//            }
+comment|//                .executeWith(Globals.TASK_EXECUTOR);
+end_comment
+
+begin_comment
+comment|//    }
+end_comment
+
+begin_comment
+comment|//
+end_comment
+
+begin_comment
+comment|//    private void connectManually() {
+end_comment
+
+begin_comment
+comment|//        showManualConnectionDialog();
+end_comment
+
+begin_comment
+comment|//        if (!dialogOkPressed) {
+end_comment
+
+begin_comment
+comment|//            return;
 end_comment
 
 begin_comment
@@ -1497,6 +1533,22 @@ end_comment
 
 begin_comment
 comment|//
+end_comment
+
+begin_comment
+comment|//        connect();
+end_comment
+
+begin_comment
+comment|//    }
+end_comment
+
+begin_comment
+comment|//
+end_comment
+
+begin_comment
+comment|//    private void connect() {
 end_comment
 
 begin_comment
@@ -1528,7 +1580,7 @@ comment|//            // Show progress dialog:
 end_comment
 
 begin_comment
-comment|//            progressDialog = new DetectOpenOfficeInstallation(diag, preferences, frame.getDialogService())
+comment|//            progressDialog = new DetectOpenOfficeInstallation(diag, preferences, dialogService)
 end_comment
 
 begin_comment
@@ -1536,87 +1588,123 @@ comment|//                    .showProgressDialog(diag, Localization.lang("Conne
 end_comment
 
 begin_comment
-comment|//            getWorker().run(); // Do the actual connection, using Spin to get off the EDT.
+comment|//            JDialog finalProgressDialog = progressDialog;
 end_comment
 
 begin_comment
-comment|//            progressDialog.dispose();
+comment|//            BackgroundTask
+end_comment
+
+begin_comment
+comment|//                    .wrap(this::createBibBase)
+end_comment
+
+begin_comment
+comment|//                    .onFinished(() -> SwingUtilities.invokeLater(() -> {
+end_comment
+
+begin_comment
+comment|//                        finalProgressDialog.dispose();
+end_comment
+
+begin_comment
+comment|//                        diag.dispose();
+end_comment
+
+begin_comment
+comment|//                    }))
+end_comment
+
+begin_comment
+comment|//                    .onSuccess(ooBase -> {
+end_comment
+
+begin_comment
+comment|//                        this.ooBase = ooBase;
+end_comment
+
+begin_comment
+comment|//
+end_comment
+
+begin_comment
+comment|//                        if (ooBase.isConnectedToDocument()) {
+end_comment
+
+begin_comment
+comment|//                            frame.output(Localization.lang("Connected to document") + ": " + ooBase.getCurrentDocumentTitle().orElse(""));
+end_comment
+
+begin_comment
+comment|//                        }
+end_comment
+
+begin_comment
+comment|//
+end_comment
+
+begin_comment
+comment|//                        // Enable actions that depend on Connect:
+end_comment
+
+begin_comment
+comment|//                        selectDocument.setEnabled(true);
+end_comment
+
+begin_comment
+comment|//                        pushEntries.setEnabled(true);
+end_comment
+
+begin_comment
+comment|//                        pushEntriesInt.setEnabled(true);
+end_comment
+
+begin_comment
+comment|//                        pushEntriesEmpty.setEnabled(true);
+end_comment
+
+begin_comment
+comment|//                        pushEntriesAdvanced.setEnabled(true);
+end_comment
+
+begin_comment
+comment|//                        update.setEnabled(true);
+end_comment
+
+begin_comment
+comment|//                        merge.setEnabled(true);
+end_comment
+
+begin_comment
+comment|//                        manageCitations.setEnabled(true);
+end_comment
+
+begin_comment
+comment|//                        exportCitations.setEnabled(true);
+end_comment
+
+begin_comment
+comment|//
+end_comment
+
+begin_comment
+comment|//                    })
+end_comment
+
+begin_comment
+comment|//                    .onFailure(ex ->
+end_comment
+
+begin_comment
+comment|//                            dialogService.showErrorDialogAndWait(Localization.lang("Autodetection failed"), Localization.lang("Autodetection failed"), ex))
+end_comment
+
+begin_comment
+comment|//                    .executeWith(Globals.TASK_EXECUTOR);
 end_comment
 
 begin_comment
 comment|//            diag.dispose();
-end_comment
-
-begin_comment
-comment|//            if (ooBase == null) {
-end_comment
-
-begin_comment
-comment|//                throw connectException;
-end_comment
-
-begin_comment
-comment|//            }
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//            if (ooBase.isConnectedToDocument()) {
-end_comment
-
-begin_comment
-comment|//                frame.output(Localization.lang("Connected to document") + ": " + ooBase.getCurrentDocumentTitle().orElse(""));
-end_comment
-
-begin_comment
-comment|//            }
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//            // Enable actions that depend on Connect:
-end_comment
-
-begin_comment
-comment|//            selectDocument.setEnabled(true);
-end_comment
-
-begin_comment
-comment|//            pushEntries.setEnabled(true);
-end_comment
-
-begin_comment
-comment|//            pushEntriesInt.setEnabled(true);
-end_comment
-
-begin_comment
-comment|//            pushEntriesEmpty.setEnabled(true);
-end_comment
-
-begin_comment
-comment|//            pushEntriesAdvanced.setEnabled(true);
-end_comment
-
-begin_comment
-comment|//            update.setEnabled(true);
-end_comment
-
-begin_comment
-comment|//            merge.setEnabled(true);
-end_comment
-
-begin_comment
-comment|//            manageCitations.setEnabled(true);
-end_comment
-
-begin_comment
-comment|//            exportCitations.setEnabled(true);
 end_comment
 
 begin_comment
@@ -1636,11 +1724,15 @@ comment|//
 end_comment
 
 begin_comment
-comment|//            frame.getDialogService().showErrorDialogAndWait(Localization.lang("Unable to connect. One possible reason is that JabRef "
+comment|//            DefaultTaskExecutor.runInJavaFXThread(() ->
 end_comment
 
 begin_comment
-comment|//                    + "and OpenOffice/LibreOffice are not both running in either 32 bit mode or 64 bit mode."));
+comment|//                    dialogService.showErrorDialogAndWait(Localization.lang("Unable to connect. One possible reason is that JabRef "
+end_comment
+
+begin_comment
+comment|//                            + "and OpenOffice/LibreOffice are not both running in either 32 bit mode or 64 bit mode.")));
 end_comment
 
 begin_comment
@@ -1660,27 +1752,31 @@ comment|//
 end_comment
 
 begin_comment
-comment|//            frame.getDialogService().showErrorDialogAndWait(Localization.lang("Could not connect to running OpenOffice/LibreOffice."),
+comment|//            DefaultTaskExecutor.runInJavaFXThread(() ->
 end_comment
 
 begin_comment
-comment|//                    Localization.lang("Could not connect to running OpenOffice/LibreOffice.") + "\n"
+comment|//                    dialogService.showErrorDialogAndWait(Localization.lang("Could not connect to running OpenOffice/LibreOffice."),
 end_comment
 
 begin_comment
-comment|//                            + Localization.lang("Make sure you have installed OpenOffice/LibreOffice with Java support.") + "\n"
+comment|//                            Localization.lang("Could not connect to running OpenOffice/LibreOffice.") + "\n"
 end_comment
 
 begin_comment
-comment|//                            + Localization.lang("If connecting manually, please verify program and library paths.")
+comment|//                                    + Localization.lang("Make sure you have installed OpenOffice/LibreOffice with Java support.") + "\n"
 end_comment
 
 begin_comment
-comment|//                            + "\n" + "\n" + Localization.lang("Error message:"),
+comment|//                                    + Localization.lang("If connecting manually, please verify program and library paths.")
 end_comment
 
 begin_comment
-comment|//                    e);
+comment|//                                    + "\n" + "\n" + Localization.lang("Error message:"),
+end_comment
+
+begin_comment
+comment|//                            e));
 end_comment
 
 begin_comment
@@ -1772,47 +1868,23 @@ comment|//
 end_comment
 
 begin_comment
-comment|//    @Override
+comment|//    private OOBibBase createBibBase() throws IOException, InvocationTargetException, IllegalAccessException,
 end_comment
 
 begin_comment
-comment|//    public void run() {
+comment|//            WrappedTargetException, BootstrapException, UnknownPropertyException, NoDocumentException,
 end_comment
 
 begin_comment
-comment|//        try {
+comment|//            NoSuchElementException, CreationException {
 end_comment
 
 begin_comment
-comment|//            // Connect
+comment|//        // Connect
 end_comment
 
 begin_comment
-comment|//            ooBase = new OOBibBase(preferences.getExecutablePath(), true);
-end_comment
-
-begin_comment
-comment|//        } catch (UnknownPropertyException |
-end_comment
-
-begin_comment
-comment|//                CreationException | NoSuchElementException | WrappedTargetException | IOException |
-end_comment
-
-begin_comment
-comment|//                NoDocumentException | BootstrapException | InvocationTargetException | IllegalAccessException e) {
-end_comment
-
-begin_comment
-comment|//            ooBase = null;
-end_comment
-
-begin_comment
-comment|//            connectException = new IOException(e.getMessage());
-end_comment
-
-begin_comment
-comment|//        }
+comment|//        return new OOBibBase(preferences.getExecutablePath(), true);
 end_comment
 
 begin_comment
@@ -1912,7 +1984,7 @@ comment|//
 end_comment
 
 begin_comment
-comment|//        final DialogService dialogService = frame.getDialogService();
+comment|//        final DialogService dialogService = this.dialogService;
 end_comment
 
 begin_comment
@@ -2236,7 +2308,7 @@ comment|//
 end_comment
 
 begin_comment
-comment|//            DefaultTaskExecutor.runInJavaFXThread(() -> frame.getDialogService().showErrorDialogAndWait(
+comment|//            DefaultTaskExecutor.runInJavaFXThread(() -> dialogService.showErrorDialogAndWait(
 end_comment
 
 begin_comment
@@ -2380,7 +2452,7 @@ comment|//
 end_comment
 
 begin_comment
-comment|//                    DefaultTaskExecutor.runInJavaFXThread(() -> frame.getDialogService().showErrorDialogAndWait(
+comment|//                    DefaultTaskExecutor.runInJavaFXThread(() -> dialogService.showErrorDialogAndWait(
 end_comment
 
 begin_comment
@@ -2564,7 +2636,7 @@ comment|//        // Ask if keys should be generated
 end_comment
 
 begin_comment
-comment|//        boolean citePressed = frame.getDialogService().showConfirmationDialogAndWait(Localization.lang("Cite"),
+comment|//        boolean citePressed = dialogService.showConfirmationDialogAndWait(Localization.lang("Cite"),
 end_comment
 
 begin_comment
@@ -2684,7 +2756,7 @@ comment|//    private void showConnectionLostErrorMessage() {
 end_comment
 
 begin_comment
-comment|//        DefaultTaskExecutor.runInJavaFXThread(() -> frame.getDialogService().showErrorDialogAndWait(Localization.lang("Connection lost"),
+comment|//        DefaultTaskExecutor.runInJavaFXThread(() -> dialogService.showErrorDialogAndWait(Localization.lang("Connection lost"),
 end_comment
 
 begin_comment
@@ -2712,7 +2784,7 @@ comment|//    private void reportUndefinedParagraphFormat(UndefinedParagraphForm
 end_comment
 
 begin_comment
-comment|//        DefaultTaskExecutor.runInJavaFXThread(() -> frame.getDialogService().showErrorDialogAndWait(Localization.lang("Undefined paragraph format"),
+comment|//        DefaultTaskExecutor.runInJavaFXThread(() -> dialogService.showErrorDialogAndWait(Localization.lang("Undefined paragraph format"),
 end_comment
 
 begin_comment
@@ -2752,7 +2824,7 @@ comment|//    private void reportUndefinedCharacterFormat(UndefinedCharacterForm
 end_comment
 
 begin_comment
-comment|//        DefaultTaskExecutor.runInJavaFXThread(() -> frame.getDialogService().showErrorDialogAndWait(Localization.lang("Undefined character format"),
+comment|//        DefaultTaskExecutor.runInJavaFXThread(() -> dialogService.showErrorDialogAndWait(Localization.lang("Undefined character format"),
 end_comment
 
 begin_comment

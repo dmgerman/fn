@@ -1476,8 +1476,6 @@ name|JabRefPreferencesFilter
 argument_list|(
 name|prefs
 argument_list|)
-argument_list|,
-literal|null
 argument_list|)
 operator|.
 name|setVisible

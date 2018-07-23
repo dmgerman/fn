@@ -1897,8 +1897,6 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-literal|null
-argument_list|,
 name|ImportInspectionDialog
 operator|.
 name|class

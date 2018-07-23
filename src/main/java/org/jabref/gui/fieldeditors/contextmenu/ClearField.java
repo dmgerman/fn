@@ -34,7 +34,7 @@ name|scene
 operator|.
 name|control
 operator|.
-name|TextArea
+name|TextInputControl
 import|;
 end_import
 
@@ -59,11 +59,11 @@ name|ClearField
 extends|extends
 name|MenuItem
 block|{
-DECL|method|ClearField (TextArea opener)
+DECL|method|ClearField (TextInputControl opener)
 specifier|public
 name|ClearField
 parameter_list|(
-name|TextArea
+name|TextInputControl
 name|opener
 parameter_list|)
 block|{

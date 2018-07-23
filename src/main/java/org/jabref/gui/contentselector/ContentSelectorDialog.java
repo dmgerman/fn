@@ -48,16 +48,6 @@ name|java
 operator|.
 name|awt
 operator|.
-name|Window
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|awt
-operator|.
 name|event
 operator|.
 name|ActionEvent
@@ -861,14 +851,11 @@ specifier|private
 name|String
 name|currentField
 decl_stmt|;
-comment|/**      *      * @param owner the parent Window (Dialog or Frame)      * @param frame the JabRef Frame      * @param panel the currently selected BasePanel      * @param modal should this dialog be modal?      * @param fieldName the field this selector is initialized for. May be null.      */
-DECL|method|ContentSelectorDialog (Window owner, JabRefFrame frame, BasePanel panel, boolean modal, String fieldName)
+comment|/**      *      * @param frame the JabRef Frame      * @param panel the currently selected BasePanel      * @param modal should this dialog be modal?      * @param fieldName the field this selector is initialized for. May be null.      */
+DECL|method|ContentSelectorDialog (JabRefFrame frame, BasePanel panel, boolean modal, String fieldName)
 specifier|public
 name|ContentSelectorDialog
 parameter_list|(
-name|Window
-name|owner
-parameter_list|,
 name|JabRefFrame
 name|frame
 parameter_list|,
@@ -884,8 +871,6 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|owner
-argument_list|,
 name|Localization
 operator|.
 name|lang

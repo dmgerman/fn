@@ -14,6 +14,18 @@ end_package
 
 begin_import
 import|import
+name|javafx
+operator|.
+name|scene
+operator|.
+name|control
+operator|.
+name|TextInputControl
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|jabref
@@ -99,16 +111,18 @@ operator|=
 name|preferences
 expr_stmt|;
 block|}
-DECL|method|configureValidation (ValidationStatus status, EditorTextArea area)
+DECL|method|configureValidation (final ValidationStatus status, final TextInputControl textInput)
 specifier|public
 name|void
 name|configureValidation
 parameter_list|(
+specifier|final
 name|ValidationStatus
 name|status
 parameter_list|,
-name|EditorTextArea
-name|area
+specifier|final
+name|TextInputControl
+name|textInput
 parameter_list|)
 block|{
 if|if
@@ -145,7 +159,7 @@ name|initVisualization
 argument_list|(
 name|status
 argument_list|,
-name|area
+name|textInput
 argument_list|)
 expr_stmt|;
 block|}

@@ -141,6 +141,8 @@ operator|.
 name|TextArea
 implements|implements
 name|Initializable
+implements|,
+name|ContextMenuAddable
 block|{
 DECL|method|EditorTextArea ()
 specifier|public
@@ -153,10 +155,11 @@ literal|""
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|EditorTextArea (String text)
+DECL|method|EditorTextArea (final String text)
 specifier|public
 name|EditorTextArea
 parameter_list|(
+specifier|final
 name|String
 name|text
 parameter_list|)
@@ -228,12 +231,14 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Adds the given list of menu items to the context menu. The usage of {@link Supplier} prevents that the menus need      * to be instantiated at this point. They are populated when the user needs them which prevents many unnecessary      * allocations when the main table is just scrolled with the entry editor open.      */
-DECL|method|addToContextMenu (Supplier<List<MenuItem>> items)
+annotation|@
+name|Override
+DECL|method|addToContextMenu (final Supplier<List<MenuItem>> items)
 specifier|public
 name|void
 name|addToContextMenu
 parameter_list|(
+specifier|final
 name|Supplier
 argument_list|<
 name|List

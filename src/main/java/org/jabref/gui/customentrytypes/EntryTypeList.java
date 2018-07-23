@@ -215,7 +215,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This class extends FieldSetComponent to provide some required functionality for the  * list of entry types in EntryCustomizationDialog.  */
+comment|/**  * This class extends FieldSetComponent to provide some required functionality for the  * list of entry types in EntryTypeCustomizationDialog.  */
 end_comment
 
 begin_class

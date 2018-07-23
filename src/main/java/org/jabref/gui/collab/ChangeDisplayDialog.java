@@ -98,16 +98,6 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|JFrame
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
 name|JLabel
 import|;
 end_import
@@ -342,13 +332,10 @@ specifier|private
 name|boolean
 name|okPressed
 decl_stmt|;
-DECL|method|ChangeDisplayDialog (JFrame owner, final BasePanel panel, BibDatabase secondary, final DefaultMutableTreeNode root)
+DECL|method|ChangeDisplayDialog (final BasePanel panel, BibDatabase secondary, final DefaultMutableTreeNode root)
 specifier|public
 name|ChangeDisplayDialog
 parameter_list|(
-name|JFrame
-name|owner
-parameter_list|,
 specifier|final
 name|BasePanel
 name|panel
@@ -363,8 +350,6 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|owner
-argument_list|,
 name|Localization
 operator|.
 name|lang

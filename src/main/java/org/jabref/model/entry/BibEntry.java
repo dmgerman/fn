@@ -4089,6 +4089,22 @@ name|fieldName
 argument_list|)
 return|;
 block|}
+DECL|method|getCiteKeyBinding ()
+specifier|public
+name|ObjectBinding
+argument_list|<
+name|String
+argument_list|>
+name|getCiteKeyBinding
+parameter_list|()
+block|{
+return|return
+name|getFieldBinding
+argument_list|(
+name|KEY_FIELD
+argument_list|)
+return|;
+block|}
 DECL|method|addFile (LinkedFile file)
 specifier|public
 name|Optional

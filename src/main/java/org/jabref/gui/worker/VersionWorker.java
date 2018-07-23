@@ -588,8 +588,6 @@ comment|// notify the user about a newer version
 operator|new
 name|NewVersionDialog
 argument_list|(
-literal|null
-argument_list|,
 name|installedVersion
 argument_list|,
 name|newerVersion

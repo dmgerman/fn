@@ -80,16 +80,6 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|JFrame
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
 name|JLabel
 import|;
 end_import
@@ -200,13 +190,10 @@ name|NewVersionDialog
 extends|extends
 name|JabRefDialog
 block|{
-DECL|method|NewVersionDialog (JFrame frame, Version currentVersion, Version latestVersion)
+DECL|method|NewVersionDialog (Version currentVersion, Version latestVersion)
 specifier|public
 name|NewVersionDialog
 parameter_list|(
-name|JFrame
-name|frame
-parameter_list|,
 name|Version
 name|currentVersion
 parameter_list|,
@@ -216,8 +203,6 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|frame
-argument_list|,
 name|NewVersionDialog
 operator|.
 name|class
@@ -652,18 +637,6 @@ argument_list|)
 expr_stmt|;
 name|pack
 argument_list|()
-expr_stmt|;
-name|setLocationRelativeTo
-argument_list|(
-name|frame
-argument_list|)
-expr_stmt|;
-name|setModalityType
-argument_list|(
-name|ModalityType
-operator|.
-name|APPLICATION_MODAL
-argument_list|)
 expr_stmt|;
 name|setVisible
 argument_list|(

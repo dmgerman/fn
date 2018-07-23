@@ -468,13 +468,6 @@ argument_list|>
 argument_list|>
 name|result
 init|=
-operator|new
-name|ArrayList
-argument_list|<>
-argument_list|()
-decl_stmt|;
-name|result
-operator|=
 name|JabRefExecutorService
 operator|.
 name|INSTANCE
@@ -494,7 +487,7 @@ name|TimeUnit
 operator|.
 name|SECONDS
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 return|return
 name|result
 operator|.
@@ -563,12 +556,9 @@ argument_list|)
 operator|.
 name|map
 argument_list|(
-name|res
-lambda|->
-name|res
-operator|.
+name|FetcherResult
+operator|::
 name|getSource
-argument_list|()
 argument_list|)
 operator|.
 name|findFirst
