@@ -596,13 +596,8 @@ name|flush
 argument_list|()
 expr_stmt|;
 comment|//FIXME: Workaround for bug https://github.com/Microsoft/ApplicationInsights-Java/issues/662
-name|SDKShutdownActivity
-operator|.
-name|INSTANCE
-operator|.
-name|stopAll
-argument_list|()
-expr_stmt|;
+comment|// TODO: Java 9, Application Insights
+comment|//            SDKShutdownActivity.INSTANCE.stopAll();
 block|}
 argument_list|)
 expr_stmt|;

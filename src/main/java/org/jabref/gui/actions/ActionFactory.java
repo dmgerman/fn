@@ -459,14 +459,10 @@ name|keyBindingRepository
 argument_list|)
 argument_list|,
 name|button
-argument_list|,
-name|ActionUtils
-operator|.
-name|ActionTextBehavior
-operator|.
-name|HIDE
+comment|/*,                 ActionUtils.ActionTextBehavior.HIDE*/
 argument_list|)
 expr_stmt|;
+comment|// TODO: Java 9 why is this argument too much?
 name|button
 operator|.
 name|getStyleClass

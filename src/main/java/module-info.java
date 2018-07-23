@@ -241,9 +241,6 @@ operator|.
 name|common
 decl_stmt|;
 name|requires
-name|spin
-decl_stmt|;
-name|requires
 name|easybind
 decl_stmt|;
 name|requires
@@ -259,6 +256,9 @@ name|commons
 decl_stmt|;
 name|requires
 name|controlsfx
+decl_stmt|;
+name|requires
+name|mvvmfx
 decl_stmt|;
 comment|// Libre Office
 comment|/*requires ridl; 	requires unoil; 	requires juh;*/
