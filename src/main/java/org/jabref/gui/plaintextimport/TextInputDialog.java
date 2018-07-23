@@ -622,18 +622,6 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|ClipBoardManager
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
 name|DialogService
 import|;
 end_import
@@ -828,7 +816,7 @@ name|logic
 operator|.
 name|util
 operator|.
-name|FileType
+name|OS
 import|;
 end_import
 
@@ -842,7 +830,7 @@ name|logic
 operator|.
 name|util
 operator|.
-name|OS
+name|StandardFileType
 import|;
 end_import
 
@@ -3603,11 +3591,11 @@ block|{
 name|String
 name|data
 init|=
-operator|new
-name|ClipBoardManager
-argument_list|()
+name|Globals
 operator|.
-name|getClipboardContents
+name|clipboardManager
+operator|.
+name|getContents
 argument_list|()
 decl_stmt|;
 name|int
@@ -3753,14 +3741,28 @@ argument_list|()
 operator|.
 name|addExtensionFilter
 argument_list|(
-name|FileType
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Plain text"
+argument_list|)
+argument_list|,
+name|StandardFileType
 operator|.
 name|TXT
 argument_list|)
 operator|.
 name|withDefaultExtension
 argument_list|(
-name|FileType
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Plain text"
+argument_list|)
+argument_list|,
+name|StandardFileType
 operator|.
 name|TXT
 argument_list|)

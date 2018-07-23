@@ -113,7 +113,7 @@ specifier|final
 name|FileType
 name|fileType
 decl_stmt|;
-DECL|method|Exporter (String id, String displayName, FileType fileType)
+DECL|method|Exporter (String id, String displayName, FileType extension)
 specifier|public
 name|Exporter
 parameter_list|(
@@ -124,7 +124,7 @@ name|String
 name|displayName
 parameter_list|,
 name|FileType
-name|fileType
+name|extension
 parameter_list|)
 block|{
 name|this
@@ -143,7 +143,7 @@ name|this
 operator|.
 name|fileType
 operator|=
-name|fileType
+name|extension
 expr_stmt|;
 block|}
 comment|/**      * Returns a one-word ID (used, for example, to identify the exporter in the console).      */
@@ -158,10 +158,10 @@ name|id
 return|;
 block|}
 comment|/**      * Returns the name of the exporter (to display to the user).      */
-DECL|method|getDisplayName ()
+DECL|method|getName ()
 specifier|public
 name|String
-name|getDisplayName
+name|getName
 parameter_list|()
 block|{
 return|return
@@ -216,20 +216,6 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-DECL|method|getDescription ()
-specifier|public
-name|String
-name|getDescription
-parameter_list|()
-block|{
-return|return
-name|getFileType
-argument_list|()
-operator|.
-name|getDescription
-argument_list|()
-return|;
-block|}
 block|}
 end_class
 

@@ -627,7 +627,7 @@ literal|""
 return|;
 block|}
 return|return
-literal|"http://"
+literal|"https://"
 operator|+
 name|oai2Host
 operator|+

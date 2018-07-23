@@ -115,7 +115,7 @@ literal|"Check integrity"
 argument_list|,
 name|Localization
 operator|.
-name|menuTitle
+name|lang
 argument_list|(
 literal|"Check integrity"
 argument_list|)
@@ -463,7 +463,7 @@ argument_list|(
 literal|"Entry editor, next entry"
 argument_list|)
 argument_list|,
-literal|"ctrl+shift+DOWN"
+literal|"alt+DOWN"
 argument_list|,
 name|KeyBindingCategory
 operator|.
@@ -520,7 +520,7 @@ argument_list|(
 literal|"Entry editor, previous entry"
 argument_list|)
 argument_list|,
-literal|"ctrl+shift+UP"
+literal|"alt+UP"
 argument_list|,
 name|KeyBindingCategory
 operator|.
@@ -1656,7 +1656,7 @@ operator|=
 name|category
 expr_stmt|;
 block|}
-comment|/**      * This method returns the enum constant value      * @return      */
+comment|/**      * This method returns the enum constant value      */
 DECL|method|getConstant ()
 specifier|public
 name|String

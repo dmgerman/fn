@@ -314,6 +314,30 @@ name|scene
 operator|.
 name|input
 operator|.
+name|MouseButton
+import|;
+end_import
+
+begin_import
+import|import
+name|javafx
+operator|.
+name|scene
+operator|.
+name|input
+operator|.
+name|MouseEvent
+import|;
+end_import
+
+begin_import
+import|import
+name|javafx
+operator|.
+name|scene
+operator|.
+name|input
+operator|.
 name|TransferMode
 import|;
 end_import
@@ -339,16 +363,6 @@ operator|.
 name|text
 operator|.
 name|Text
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|Globals
 import|;
 end_import
 
@@ -714,22 +728,6 @@ name|taskExecutor
 argument_list|)
 expr_stmt|;
 comment|// Set-up groups tree
-name|groupTree
-operator|.
-name|setStyle
-argument_list|(
-literal|"-fx-font-size: "
-operator|+
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getFontSizeFX
-argument_list|()
-operator|+
-literal|"pt;"
-argument_list|)
-expr_stmt|;
 name|groupTree
 operator|.
 name|getSelectionModel
@@ -1211,14 +1209,31 @@ name|group
 lambda|->
 name|event
 lambda|->
+block|{
 name|group
 operator|.
 name|toggleExpansion
 argument_list|()
-argument_list|)
-argument_list|)
-expr_stmt|;
+argument_list|;
+name|event
+operator|.
+name|consume
+argument_list|()
+argument_list|;
+block|}
+block|)
+end_class
+
+begin_empty_stmt
+unit|)
+empty_stmt|;
+end_empty_stmt
+
+begin_comment
 comment|// Set pseudo-classes to indicate if row is root or sub-item (> 1 deep)
+end_comment
+
+begin_decl_stmt
 name|PseudoClass
 name|rootPseudoClass
 init|=
@@ -1229,6 +1244,9 @@ argument_list|(
 literal|"root"
 argument_list|)
 decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 name|PseudoClass
 name|subElementPseudoClass
 init|=
@@ -1239,7 +1257,13 @@ argument_list|(
 literal|"sub"
 argument_list|)
 decl_stmt|;
+end_decl_stmt
+
+begin_comment
 comment|// Pseudo-classes for drag and drop
+end_comment
+
+begin_decl_stmt
 name|PseudoClass
 name|dragOverBottom
 init|=
@@ -1250,6 +1274,9 @@ argument_list|(
 literal|"dragOver-bottom"
 argument_list|)
 decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 name|PseudoClass
 name|dragOverCenter
 init|=
@@ -1260,6 +1287,9 @@ argument_list|(
 literal|"dragOver-center"
 argument_list|)
 decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 name|PseudoClass
 name|dragOverTop
 init|=
@@ -1270,6 +1300,9 @@ argument_list|(
 literal|"dragOver-top"
 argument_list|)
 decl_stmt|;
+end_decl_stmt
+
+begin_expr_stmt
 name|groupTree
 operator|.
 name|setRowFactory
@@ -1424,6 +1457,39 @@ name|ContextMenu
 operator|)
 literal|null
 argument_list|)
+argument_list|)
+expr_stmt|;
+name|row
+operator|.
+name|addEventFilter
+argument_list|(
+name|MouseEvent
+operator|.
+name|MOUSE_PRESSED
+argument_list|,
+name|event
+lambda|->
+block|{
+if|if
+condition|(
+name|event
+operator|.
+name|getButton
+argument_list|()
+operator|==
+name|MouseButton
+operator|.
+name|SECONDARY
+condition|)
+block|{
+comment|// Prevent right-click to select group
+name|event
+operator|.
+name|consume
+argument_list|()
+expr_stmt|;
+block|}
+block|}
 argument_list|)
 expr_stmt|;
 comment|// Drag and drop support
@@ -1841,15 +1907,23 @@ return|;
 block|}
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_comment
 comment|// Filter text field
+end_comment
+
+begin_expr_stmt
 name|setupClearButtonField
 argument_list|(
 name|searchField
 argument_list|)
 expr_stmt|;
-block|}
+end_expr_stmt
+
+begin_function
+unit|}      private
 DECL|method|updateSelection (List<TreeItem<GroupNodeViewModel>> newSelectedGroups)
-specifier|private
 name|void
 name|updateSelection
 parameter_list|(
@@ -1962,6 +2036,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_function
 DECL|method|selectNode (GroupNodeViewModel value)
 specifier|private
 name|void
@@ -1992,6 +2069,9 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 DECL|method|getTreeItemByValue (GroupNodeViewModel value)
 specifier|private
 name|Optional
@@ -2019,6 +2099,9 @@ name|value
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|getTreeItemByValue (TreeItem<GroupNodeViewModel> root, GroupNodeViewModel value)
 specifier|private
 name|Optional
@@ -2112,6 +2195,9 @@ name|empty
 argument_list|()
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|createContextMenuForGroup (GroupNodeViewModel group)
 specifier|private
 name|ContextMenu
@@ -2471,6 +2557,9 @@ return|return
 name|menu
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|addNewGroup (ActionEvent actionEvent)
 specifier|public
 name|void
@@ -2486,7 +2575,13 @@ name|addNewGroupToRoot
 argument_list|()
 expr_stmt|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Workaround taken from https://bitbucket.org/controlsfx/controlsfx/issues/330/making-textfieldssetupclearbuttonfield      */
+end_comment
+
+begin_function
 DECL|method|setupClearButtonField (CustomTextField customTextField)
 specifier|private
 name|void
@@ -2562,7 +2657,13 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_comment
 comment|/**      * Determines where the mouse is in the given row.      */
+end_comment
+
+begin_function
 DECL|method|getDroppingMouseLocation (TreeTableRow<GroupNodeViewModel> row, DragEvent event)
 specifier|private
 name|DroppingMouseLocation
@@ -2634,8 +2735,8 @@ name|CENTER
 return|;
 block|}
 block|}
-block|}
-end_class
+end_function
 
+unit|}
 end_unit
 

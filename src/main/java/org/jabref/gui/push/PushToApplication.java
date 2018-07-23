@@ -24,16 +24,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|JPanel
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|jabref
@@ -128,18 +118,6 @@ function_decl|;
 DECL|method|getIcon ()
 name|JabRefIcon
 name|getIcon
-parameter_list|()
-function_decl|;
-comment|/**      * This method asks the implementing class to return a JPanel populated with the imlementation's options panel, if      * necessary. If the JPanel is shown to the user, and the user indicates that settings should be stored, the      * implementation's storeSettings() method will be called. This method must make sure all widgets in the panel are      * in the correct selection states.      *      * @return a JPanel containing options, or null if options are not needed.      */
-DECL|method|getSettingsPanel ()
-name|JPanel
-name|getSettingsPanel
-parameter_list|()
-function_decl|;
-comment|/**      * This method is called to indicate that the settings panel returned from the getSettingsPanel() method has been      * shown to the user and that the user has indicated that the settings should be stored. This method must store the      * state of the widgets in the settings panel to Globals.prefs.      */
-DECL|method|storeSettings ()
-name|void
-name|storeSettings
 parameter_list|()
 function_decl|;
 comment|/**      * The actual operation. This method will not be called on the event dispatch thread, so it should not do GUI      * operations without utilizing invokeLater().      *      * @param database      * @param entries      * @param metaData      */

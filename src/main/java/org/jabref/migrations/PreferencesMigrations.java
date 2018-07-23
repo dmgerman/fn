@@ -239,12 +239,12 @@ specifier|private
 name|PreferencesMigrations
 parameter_list|()
 block|{     }
-comment|/**      * Migrate all preferences from net/sf/jabref to org/jabref      */
-DECL|method|upgradePrefsToOrgJabRef ()
+comment|/**      * Perform checks and changes for users with a preference set from an older JabRef version.      */
+DECL|method|runMigrations ()
 specifier|public
 specifier|static
 name|void
-name|upgradePrefsToOrgJabRef
+name|runMigrations
 parameter_list|()
 block|{
 name|Preferences
@@ -259,6 +259,90 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+name|upgradePrefsToOrgJabRef
+argument_list|(
+name|mainPrefsNode
+argument_list|)
+expr_stmt|;
+name|upgradeSortOrder
+argument_list|(
+name|Globals
+operator|.
+name|prefs
+argument_list|)
+expr_stmt|;
+name|upgradeFaultyEncodingStrings
+argument_list|(
+name|Globals
+operator|.
+name|prefs
+argument_list|)
+expr_stmt|;
+name|upgradeLabelPatternToBibtexKeyPattern
+argument_list|(
+name|Globals
+operator|.
+name|prefs
+argument_list|)
+expr_stmt|;
+name|upgradeImportFileAndDirePatterns
+argument_list|(
+name|Globals
+operator|.
+name|prefs
+argument_list|,
+name|mainPrefsNode
+argument_list|)
+expr_stmt|;
+name|upgradeStoredCustomEntryTypes
+argument_list|(
+name|Globals
+operator|.
+name|prefs
+argument_list|,
+name|mainPrefsNode
+argument_list|)
+expr_stmt|;
+name|upgradeKeyBindingsToJavaFX
+argument_list|(
+name|Globals
+operator|.
+name|prefs
+argument_list|)
+expr_stmt|;
+name|addCrossRefRelatedFieldsForAutoComplete
+argument_list|(
+name|Globals
+operator|.
+name|prefs
+argument_list|)
+expr_stmt|;
+name|upgradeObsoleteLookAndFeels
+argument_list|(
+name|Globals
+operator|.
+name|prefs
+argument_list|)
+expr_stmt|;
+name|upgradePreviewStyleFromReviewToComment
+argument_list|(
+name|Globals
+operator|.
+name|prefs
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Migrate all preferences from net/sf/jabref to org/jabref      */
+DECL|method|upgradePrefsToOrgJabRef (Preferences mainPrefsNode)
+specifier|private
+specifier|static
+name|void
+name|upgradePrefsToOrgJabRef
+parameter_list|(
+name|Preferences
+name|mainPrefsNode
+parameter_list|)
+block|{
 try|try
 block|{
 if|if
@@ -461,20 +545,16 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * Added from Jabref 2.11 beta 4 onwards to fix wrong encoding names      */
-DECL|method|upgradeFaultyEncodingStrings ()
-specifier|public
+DECL|method|upgradeFaultyEncodingStrings (JabRefPreferences prefs)
+specifier|private
 specifier|static
 name|void
 name|upgradeFaultyEncodingStrings
-parameter_list|()
-block|{
+parameter_list|(
 name|JabRefPreferences
 name|prefs
-init|=
-name|Globals
-operator|.
-name|prefs
-decl_stmt|;
+parameter_list|)
+block|{
 name|String
 name|defaultEncoding
 init|=
@@ -727,20 +807,16 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * Upgrade the sort order preferences for the current version      * The old preference is kept in case an old version of JabRef is used with      * these preferences, but it is only used when the new preference does not      * exist      */
-DECL|method|upgradeSortOrder ()
-specifier|public
+DECL|method|upgradeSortOrder (JabRefPreferences prefs)
+specifier|private
 specifier|static
 name|void
 name|upgradeSortOrder
-parameter_list|()
-block|{
+parameter_list|(
 name|JabRefPreferences
 name|prefs
-init|=
-name|Globals
-operator|.
-name|prefs
-decl_stmt|;
+parameter_list|)
+block|{
 if|if
 condition|(
 name|prefs
@@ -954,32 +1030,19 @@ block|}
 block|}
 block|}
 comment|/**      * Migrate all customized entry types from versions<=3.7      */
-DECL|method|upgradeStoredCustomEntryTypes ()
-specifier|public
+DECL|method|upgradeStoredCustomEntryTypes (JabRefPreferences prefs, Preferences mainPrefsNode)
+specifier|private
 specifier|static
 name|void
 name|upgradeStoredCustomEntryTypes
-parameter_list|()
-block|{
+parameter_list|(
 name|JabRefPreferences
 name|prefs
-init|=
-name|Globals
-operator|.
-name|prefs
-decl_stmt|;
+parameter_list|,
 name|Preferences
 name|mainPrefsNode
-init|=
-name|Preferences
-operator|.
-name|userNodeForPackage
-argument_list|(
-name|JabRefMain
-operator|.
-name|class
-argument_list|)
-decl_stmt|;
+parameter_list|)
+block|{
 try|try
 block|{
 if|if
@@ -1044,20 +1107,16 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * Migrate LabelPattern configuration from versions<=3.5 to new BibtexKeyPatterns      */
-DECL|method|upgradeLabelPatternToBibtexKeyPattern ()
-specifier|public
+DECL|method|upgradeLabelPatternToBibtexKeyPattern (JabRefPreferences prefs)
+specifier|private
 specifier|static
 name|void
 name|upgradeLabelPatternToBibtexKeyPattern
-parameter_list|()
-block|{
+parameter_list|(
 name|JabRefPreferences
 name|prefs
-init|=
-name|Globals
-operator|.
-name|prefs
-decl_stmt|;
+parameter_list|)
+block|{
 try|try
 block|{
 name|Preferences
@@ -1395,32 +1454,18 @@ block|}
 block|}
 block|}
 block|}
-DECL|method|upgradeImportFileAndDirePatterns ()
-specifier|public
+DECL|method|upgradeImportFileAndDirePatterns (JabRefPreferences prefs, Preferences mainPrefsNode)
 specifier|static
 name|void
 name|upgradeImportFileAndDirePatterns
-parameter_list|()
-block|{
+parameter_list|(
 name|JabRefPreferences
 name|prefs
-init|=
-name|Globals
-operator|.
-name|prefs
-decl_stmt|;
+parameter_list|,
 name|Preferences
 name|mainPrefsNode
-init|=
-name|Preferences
-operator|.
-name|userNodeForPackage
-argument_list|(
-name|JabRefMain
-operator|.
-name|class
-argument_list|)
-decl_stmt|;
+parameter_list|)
+block|{
 comment|// Migrate Import patterns
 comment|// Check for prefs node for Version<= 4.0
 if|if
@@ -1504,12 +1549,15 @@ block|}
 comment|// Directory preferences are not yet migrated, since it is not quote clear how to parse and reinterpret
 comment|// the user defined old-style patterns, and the default pattern is "".
 block|}
-DECL|method|upgradeKeyBindingsToJavaFX ()
-specifier|public
+DECL|method|upgradeKeyBindingsToJavaFX (JabRefPreferences prefs)
+specifier|private
 specifier|static
 name|void
 name|upgradeKeyBindingsToJavaFX
-parameter_list|()
+parameter_list|(
+name|JabRefPreferences
+name|prefs
+parameter_list|)
 block|{
 name|UnaryOperator
 argument_list|<
@@ -1572,13 +1620,6 @@ name|result
 return|;
 block|}
 decl_stmt|;
-name|JabRefPreferences
-name|prefs
-init|=
-name|Globals
-operator|.
-name|prefs
-decl_stmt|;
 name|List
 argument_list|<
 name|String
@@ -1613,20 +1654,16 @@ name|keys
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|addCrossRefRelatedFieldsForAutoComplete ()
-specifier|public
+DECL|method|addCrossRefRelatedFieldsForAutoComplete (JabRefPreferences prefs)
+specifier|private
 specifier|static
 name|void
 name|addCrossRefRelatedFieldsForAutoComplete
-parameter_list|()
-block|{
+parameter_list|(
 name|JabRefPreferences
 name|prefs
-init|=
-name|Globals
-operator|.
-name|prefs
-decl_stmt|;
+parameter_list|)
+block|{
 comment|//LinkedHashSet because we want to retain the order and add new fields to the end
 name|Set
 argument_list|<
@@ -1761,31 +1798,23 @@ name|keyPattern
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|upgradeObsoleteLookAndFeels ()
-specifier|public
+DECL|method|upgradeObsoleteLookAndFeels (JabRefPreferences prefs)
+specifier|private
 specifier|static
 name|void
 name|upgradeObsoleteLookAndFeels
-parameter_list|()
-block|{
+parameter_list|(
 name|JabRefPreferences
 name|prefs
-init|=
-name|Globals
-operator|.
-name|prefs
-decl_stmt|;
+parameter_list|)
+block|{
 name|String
 name|currentLandF
 init|=
 name|prefs
 operator|.
-name|get
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|WIN_LOOK_AND_FEEL
-argument_list|)
+name|getLookAndFeel
+argument_list|()
 decl_stmt|;
 name|Stream
 operator|.
@@ -1832,12 +1861,8 @@ literal|"com.sun.java.swing.plaf.windows.WindowsLookAndFeel"
 block|;
 name|prefs
 operator|.
-name|put
+name|setLookAndFeel
 argument_list|(
-name|JabRefPreferences
-operator|.
-name|WIN_LOOK_AND_FEEL
-argument_list|,
 name|windowsLandF
 argument_list|)
 block|;
@@ -1853,7 +1878,7 @@ literal|" to "
 operator|+
 name|windowsLandF
 argument_list|)
-block|;                     }
+block|;                   }
 else|else
 block|{
 name|String
@@ -1863,12 +1888,8 @@ literal|"javax.swing.plaf.nimbus.NimbusLookAndFeel"
 decl_stmt|;
 name|prefs
 operator|.
-name|put
+name|setLookAndFeel
 argument_list|(
-name|JabRefPreferences
-operator|.
-name|WIN_LOOK_AND_FEEL
-argument_list|,
 name|nimbusLandF
 argument_list|)
 expr_stmt|;
@@ -1891,6 +1912,46 @@ block|)
 class|;
 end_class
 
-unit|} }
+begin_function
+unit|}      static
+DECL|method|upgradePreviewStyleFromReviewToComment (JabRefPreferences prefs)
+name|void
+name|upgradePreviewStyleFromReviewToComment
+parameter_list|(
+name|JabRefPreferences
+name|prefs
+parameter_list|)
+block|{
+name|String
+name|currentPreviewStyle
+init|=
+name|prefs
+operator|.
+name|getPreviewStyle
+argument_list|()
+decl_stmt|;
+name|String
+name|migratedStyle
+init|=
+name|currentPreviewStyle
+operator|.
+name|replace
+argument_list|(
+literal|"\\begin{review}<BR><BR><b>Review:</b> \\format[HTMLChars]{\\review} \\end{review}"
+argument_list|,
+literal|"\\begin{comment}<BR><BR><b>Comment:</b> \\format[HTMLChars]{\\comment} \\end{comment}"
+argument_list|)
+decl_stmt|;
+name|prefs
+operator|.
+name|setPreviewStyle
+argument_list|(
+name|migratedStyle
+argument_list|)
+expr_stmt|;
+block|}
+end_function
+
+unit|}
 end_unit
 

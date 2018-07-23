@@ -235,7 +235,7 @@ specifier|final
 name|String
 name|API_URL
 init|=
-literal|"http://api.springer.com/meta/v1/json"
+literal|"https://api.springer.com/meta/v1/json"
 decl_stmt|;
 DECL|field|API_KEY
 specifier|private

@@ -144,7 +144,7 @@ name|logic
 operator|.
 name|util
 operator|.
-name|FileType
+name|OS
 import|;
 end_import
 
@@ -158,7 +158,7 @@ name|logic
 operator|.
 name|util
 operator|.
-name|OS
+name|StandardFileType
 import|;
 end_import
 
@@ -302,12 +302,12 @@ annotation|@
 name|Override
 DECL|method|getFileType ()
 specifier|public
-name|FileType
+name|StandardFileType
 name|getFileType
 parameter_list|()
 block|{
 return|return
-name|FileType
+name|StandardFileType
 operator|.
 name|MEDLINE_PLAIN
 return|;

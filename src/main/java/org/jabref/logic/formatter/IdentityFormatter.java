@@ -59,7 +59,7 @@ DECL|class|IdentityFormatter
 specifier|public
 class|class
 name|IdentityFormatter
-implements|implements
+extends|extends
 name|Formatter
 block|{
 annotation|@
@@ -140,37 +140,6 @@ parameter_list|()
 block|{
 return|return
 literal|"JabRef"
-return|;
-block|}
-annotation|@
-name|Override
-DECL|method|hashCode ()
-specifier|public
-name|int
-name|hashCode
-parameter_list|()
-block|{
-return|return
-name|defaultHashCode
-argument_list|()
-return|;
-block|}
-annotation|@
-name|Override
-DECL|method|equals (Object obj)
-specifier|public
-name|boolean
-name|equals
-parameter_list|(
-name|Object
-name|obj
-parameter_list|)
-block|{
-return|return
-name|defaultEquals
-argument_list|(
-name|obj
-argument_list|)
 return|;
 block|}
 block|}

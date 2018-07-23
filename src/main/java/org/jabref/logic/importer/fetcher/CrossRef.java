@@ -424,7 +424,7 @@ specifier|final
 name|String
 name|API_URL
 init|=
-literal|"http://api.crossref.org/works"
+literal|"https://api.crossref.org/works"
 decl_stmt|;
 DECL|field|REMOVE_BRACES_FORMATTER
 specifier|private

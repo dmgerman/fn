@@ -117,10 +117,10 @@ DECL|class|UnicodeToLatexFormatter
 specifier|public
 class|class
 name|UnicodeToLatexFormatter
+extends|extends
+name|Formatter
 implements|implements
 name|LayoutFormatter
-implements|,
-name|Formatter
 block|{
 DECL|field|LOGGER
 specifier|private

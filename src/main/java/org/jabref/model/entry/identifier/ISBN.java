@@ -535,7 +535,7 @@ argument_list|(
 operator|new
 name|URI
 argument_list|(
-literal|"http://www.worldcat.org/isbn/"
+literal|"https://www.worldcat.org/isbn/"
 operator|+
 name|isbnString
 argument_list|)

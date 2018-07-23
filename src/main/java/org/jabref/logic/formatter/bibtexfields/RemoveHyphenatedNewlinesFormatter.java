@@ -73,7 +73,7 @@ DECL|class|RemoveHyphenatedNewlinesFormatter
 specifier|public
 class|class
 name|RemoveHyphenatedNewlinesFormatter
-implements|implements
+extends|extends
 name|Formatter
 block|{
 DECL|field|HYPHENATED_WORDS

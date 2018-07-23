@@ -114,7 +114,7 @@ name|logic
 operator|.
 name|util
 operator|.
-name|FileType
+name|StandardFileType
 import|;
 end_import
 
@@ -949,7 +949,7 @@ parameter_list|()
 block|{
 name|assertEquals
 argument_list|(
-name|FileType
+name|StandardFileType
 operator|.
 name|BIBTEX_DB
 argument_list|,

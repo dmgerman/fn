@@ -195,7 +195,7 @@ name|setText
 argument_list|(
 name|Localization
 operator|.
-name|menuTitle
+name|lang
 argument_list|(
 literal|"Recent libraries"
 argument_list|)
@@ -444,10 +444,7 @@ argument_list|)
 operator|+
 literal|": "
 operator|+
-name|fileToOpen
-operator|.
-name|getFileName
-argument_list|()
+name|fileName
 argument_list|)
 expr_stmt|;
 name|history

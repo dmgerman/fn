@@ -101,12 +101,12 @@ name|IS_LAYOUT_TEXT
 init|=
 literal|1
 decl_stmt|;
-DECL|field|IS_SIMPLE_FIELD
+DECL|field|IS_SIMPLE_COMMAND
 specifier|public
 specifier|static
 specifier|final
 name|int
-name|IS_SIMPLE_FIELD
+name|IS_SIMPLE_COMMAND
 init|=
 literal|2
 decl_stmt|;
@@ -285,7 +285,7 @@ name|i
 operator|==
 name|LayoutHelper
 operator|.
-name|IS_SIMPLE_FIELD
+name|IS_SIMPLE_COMMAND
 operator|)
 operator|||
 operator|(
@@ -982,7 +982,7 @@ name|endOfFile
 operator|=
 literal|true
 expr_stmt|;
-comment|/*                  * CO 2006-11-11: Added check for null, otherwise a Layout that                  * finishes with a curly brace throws a NPE                  */
+comment|// Check for null, otherwise a Layout that finishes with a curly brace throws a NPE
 if|if
 condition|(
 name|buffer
@@ -1185,12 +1185,6 @@ operator|(
 name|c
 operator|!=
 literal|'_'
-operator|)
-operator|&&
-operator|(
-name|c
-operator|!=
-literal|'-'
 operator|)
 condition|)
 block|{
@@ -1507,7 +1501,7 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
-comment|// for all other cases
+comment|// for all other cases -> simple command
 name|parsedEntries
 operator|.
 name|add
@@ -1519,7 +1513,7 @@ name|name
 argument_list|,
 name|LayoutHelper
 operator|.
-name|IS_SIMPLE_FIELD
+name|IS_SIMPLE_COMMAND
 argument_list|)
 argument_list|)
 expr_stmt|;

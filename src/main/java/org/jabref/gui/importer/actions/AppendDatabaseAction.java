@@ -272,7 +272,7 @@ name|logic
 operator|.
 name|util
 operator|.
-name|FileType
+name|StandardFileType
 import|;
 end_import
 
@@ -1076,7 +1076,7 @@ argument_list|()
 operator|.
 name|withDefaultExtension
 argument_list|(
-name|FileType
+name|StandardFileType
 operator|.
 name|BIBTEX_DB
 argument_list|)

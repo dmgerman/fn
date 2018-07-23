@@ -135,7 +135,7 @@ name|URI
 operator|.
 name|create
 argument_list|(
-literal|"http://arxiv.org"
+literal|"https://arxiv.org"
 argument_list|)
 decl_stmt|;
 DECL|field|LOGGER

@@ -47,7 +47,7 @@ DECL|class|TitleCaseFormatter
 specifier|public
 class|class
 name|TitleCaseFormatter
-implements|implements
+extends|extends
 name|Formatter
 block|{
 annotation|@

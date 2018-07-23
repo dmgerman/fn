@@ -633,9 +633,9 @@ name|this
 operator|.
 name|clipBoardManager
 operator|=
-operator|new
-name|ClipBoardManager
-argument_list|()
+name|Globals
+operator|.
+name|clipboardManager
 expr_stmt|;
 name|this
 operator|.
@@ -924,7 +924,7 @@ name|MenuItem
 argument_list|(
 name|Localization
 operator|.
-name|menuTitle
+name|lang
 argument_list|(
 literal|"Previous preview layout"
 argument_list|)
@@ -968,7 +968,7 @@ name|MenuItem
 argument_list|(
 name|Localization
 operator|.
-name|menuTitle
+name|lang
 argument_list|(
 literal|"Next preview layout"
 argument_list|)
@@ -1971,7 +1971,7 @@ argument_list|)
 decl_stmt|;
 name|clipBoardManager
 operator|.
-name|setClipboardContents
+name|setContent
 argument_list|(
 name|previewContent
 argument_list|)

@@ -110,7 +110,7 @@ name|logic
 operator|.
 name|util
 operator|.
-name|FileType
+name|StandardFileType
 import|;
 end_import
 
@@ -197,9 +197,9 @@ argument_list|()
 decl_stmt|;
 name|assertEquals
 argument_list|(
-name|FileType
+name|StandardFileType
 operator|.
-name|MSBIB
+name|XML
 argument_list|,
 name|importer
 operator|.

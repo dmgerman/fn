@@ -141,10 +141,10 @@ DECL|class|HtmlToLatexFormatter
 specifier|public
 class|class
 name|HtmlToLatexFormatter
+extends|extends
+name|Formatter
 implements|implements
 name|LayoutFormatter
-implements|,
-name|Formatter
 block|{
 DECL|field|LOGGER
 specifier|private

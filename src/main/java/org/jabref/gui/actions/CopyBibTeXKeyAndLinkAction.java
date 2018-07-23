@@ -353,7 +353,7 @@ parameter_list|()
 lambda|->
 name|clipboardManager
 operator|.
-name|setClipboardHtmlContent
+name|setHtmlContent
 argument_list|(
 name|sb
 operator|.

@@ -174,9 +174,7 @@ name|org
 operator|.
 name|jabref
 operator|.
-name|gui
-operator|.
-name|AbstractViewModel
+name|Globals
 import|;
 end_import
 
@@ -188,7 +186,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|ClipBoardManager
+name|AbstractViewModel
 import|;
 end_import
 
@@ -893,11 +891,11 @@ name|get
 argument_list|()
 argument_list|)
 expr_stmt|;
-operator|new
-name|ClipBoardManager
-argument_list|()
+name|Globals
 operator|.
-name|setClipboardContents
+name|clipboardManager
+operator|.
+name|setContent
 argument_list|(
 name|sj
 operator|.

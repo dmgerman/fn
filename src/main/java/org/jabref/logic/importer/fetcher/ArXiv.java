@@ -497,7 +497,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Fetcher for the arXiv.  *  * @see<a href="http://arxiv.org/help/api/index">ArXiv API</a> for an overview of the API  * @see<a href="http://arxiv.org/help/api/user-manual#_calling_the_api">ArXiv API User's Manual</a> for a detailed  * description on how to use the API  *  * Similar implementions:  *<a href="https://github.com/nathangrigg/arxiv2bib">arxiv2bib</a> which is<a href="https://arxiv2bibtex.org/">live</a>  *<a herf="https://gitlab.c3sl.ufpr.br/portalmec/dspace-portalmec/blob/aa209d15082a9870f9daac42c78a35490ce77b52/dspace-api/src/main/java/org/dspace/submit/lookup/ArXivService.java">dspace-portalmec</a>  */
+comment|/**  * Fetcher for the arXiv.  *  * @see<a href="https://arxiv.org/help/api/index">ArXiv API</a> for an overview of the API  * @see<a href="https://arxiv.org/help/api/user-manual#_calling_the_api">ArXiv API User's Manual</a> for a detailed  * description on how to use the API  *  * Similar implementions:  *<a href="https://github.com/nathangrigg/arxiv2bib">arxiv2bib</a> which is<a href="https://arxiv2bibtex.org/">live</a>  *<a herf="https://gitlab.c3sl.ufpr.br/portalmec/dspace-portalmec/blob/aa209d15082a9870f9daac42c78a35490ce77b52/dspace-api/src/main/java/org/dspace/submit/lookup/ArXivService.java">dspace-portalmec</a>  */
 end_comment
 
 begin_class
@@ -540,7 +540,7 @@ specifier|final
 name|String
 name|API_URL
 init|=
-literal|"http://export.arxiv.org/api/query"
+literal|"https://export.arxiv.org/api/query"
 decl_stmt|;
 DECL|field|importFormatPreferences
 specifier|private
@@ -1527,9 +1527,9 @@ argument_list|)
 decl_stmt|;
 comment|// Check if the API returned an error
 comment|// In case of an error, only one entry will be returned with the error information. For example:
-comment|// http://export.arxiv.org/api/query?id_list=0307015
+comment|// https://export.arxiv.org/api/query?id_list=0307015
 comment|//<entry>
-comment|//<id>http://arxiv.org/api/errors#incorrect_id_format_for_0307015</id>
+comment|//<id>https://arxiv.org/api/errors#incorrect_id_format_for_0307015</id>
 comment|//<title>Error</title>
 comment|//<summary>incorrect id format for 0307015</summary>
 comment|//</entry>
@@ -1931,7 +1931,7 @@ name|Node
 name|item
 parameter_list|)
 block|{
-comment|// see http://arxiv.org/help/api/user-manual#_details_of_atom_results_returned
+comment|// see https://arxiv.org/help/api/user-manual#_details_of_atom_results_returned
 comment|// Title of the article
 comment|// The result from the arXiv contains hard line breaks, try to remove them
 name|title
@@ -2232,7 +2232,7 @@ literal|"arxiv:journal_ref"
 argument_list|)
 expr_stmt|;
 comment|// Primary category
-comment|// Ex:<arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="math-ph" scheme="http://arxiv.org/schemas/atom"/>
+comment|// Ex:<arxiv:primary_category xmlns:arxiv="https://arxiv.org/schemas/atom" term="math-ph" scheme="http://arxiv.org/schemas/atom"/>
 name|primaryCategory
 operator|=
 name|XMLUtil
@@ -2283,11 +2283,11 @@ argument_list|>
 name|getIdString
 parameter_list|()
 block|{
-comment|// remove leading http://arxiv.org/abs/ from abstract url to get arXiv ID
+comment|// remove leading https://arxiv.org/abs/ from abstract url to get arXiv ID
 name|String
 name|prefix
 init|=
-literal|"http://arxiv.org/abs/"
+literal|"https://arxiv.org/abs/"
 decl_stmt|;
 return|return
 name|urlAbstractPage
