@@ -16,6 +16,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|jabref
@@ -109,16 +119,6 @@ import|;
 end_import
 
 begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Optional
-import|;
-end_import
-
-begin_import
 import|import static
 name|org
 operator|.
@@ -130,7 +130,7 @@ name|api
 operator|.
 name|Assertions
 operator|.
-name|*
+name|assertEquals
 import|;
 end_import
 
