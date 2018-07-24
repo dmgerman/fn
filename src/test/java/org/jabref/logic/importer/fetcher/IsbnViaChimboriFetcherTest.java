@@ -330,6 +330,9 @@ operator|.
 name|getHelpPage
 argument_list|()
 operator|.
+name|get
+argument_list|()
+operator|.
 name|getPageName
 argument_list|()
 argument_list|)

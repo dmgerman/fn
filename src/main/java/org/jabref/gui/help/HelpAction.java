@@ -781,11 +781,11 @@ name|helpPage
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|getCommand ()
+DECL|method|getMainHelpPageCommand ()
 specifier|public
 specifier|static
 name|SimpleCommand
-name|getCommand
+name|getMainHelpPageCommand
 parameter_list|()
 block|{
 return|return
@@ -805,6 +805,33 @@ argument_list|(
 name|HelpFile
 operator|.
 name|CONTENTS
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+return|;
+block|}
+DECL|method|getCommand ()
+specifier|public
+name|SimpleCommand
+name|getCommand
+parameter_list|()
+block|{
+return|return
+operator|new
+name|SimpleCommand
+argument_list|()
+block|{
+annotation|@
+name|Override
+specifier|public
+name|void
+name|execute
+parameter_list|()
+block|{
+name|openHelpPage
+argument_list|(
+name|helpPage
 argument_list|)
 expr_stmt|;
 block|}
