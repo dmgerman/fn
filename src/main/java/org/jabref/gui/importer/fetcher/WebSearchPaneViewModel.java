@@ -36,6 +36,16 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|SwingUtilities
+import|;
+end_import
+
+begin_import
+import|import
 name|javafx
 operator|.
 name|beans
@@ -701,11 +711,18 @@ argument_list|,
 literal|false
 argument_list|)
 decl_stmt|;
+name|SwingUtilities
+operator|.
+name|invokeLater
+argument_list|(
+parameter_list|()
+lambda|->
 name|dialog
 operator|.
 name|setVisible
 argument_list|(
 literal|true
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|JabRefExecutorService
