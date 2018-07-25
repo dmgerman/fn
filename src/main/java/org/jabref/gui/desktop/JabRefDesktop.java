@@ -992,13 +992,6 @@ operator|.
 name|get
 argument_list|()
 argument_list|)
-operator|&&
-operator|(
-name|type
-operator|.
-name|isPresent
-argument_list|()
-operator|)
 condition|)
 block|{
 comment|// Open the file:
@@ -1027,14 +1020,6 @@ block|}
 else|else
 block|{
 comment|// No file matched the name, try to open it directly using the given app
-if|if
-condition|(
-name|type
-operator|.
-name|isPresent
-argument_list|()
-condition|)
-block|{
 name|openExternalFilePlatformIndependent
 argument_list|(
 name|type
@@ -1044,11 +1029,6 @@ argument_list|)
 expr_stmt|;
 return|return
 literal|true
-return|;
-block|}
-comment|// Run out of ideas what to do...
-return|return
-literal|false
 return|;
 block|}
 block|}
@@ -1162,6 +1142,20 @@ name|application
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+else|else
+block|{
+comment|//File type is not given and therefore no application specified
+comment|//Let the OS handle the opening of the file
+name|NATIVE_DESKTOP
+operator|.
+name|openFile
+argument_list|(
+name|filePath
+argument_list|,
+literal|""
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 comment|/**      * Opens a file browser of the folder of the given file. If possible, the file is selected      * @param fileLink the location of the file      * @throws IOException      */
