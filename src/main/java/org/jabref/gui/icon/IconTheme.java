@@ -462,7 +462,12 @@ argument_list|,
 literal|"/images/external/"
 argument_list|)
 decl_stmt|;
-static|static
+DECL|method|loadFonts ()
+specifier|public
+specifier|static
+name|void
+name|loadFonts
+parameter_list|()
 block|{
 try|try
 init|(
