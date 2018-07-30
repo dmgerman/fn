@@ -70,6 +70,18 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|xml
+operator|.
+name|parsers
+operator|.
+name|ParserConfigurationException
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|jabref
@@ -121,6 +133,26 @@ operator|.
 name|util
 operator|.
 name|StandardFileType
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
 import|;
 end_import
 
@@ -185,7 +217,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Importer for the MS Office 2007 XML bibliography format  * By S. M. Mahbub Murshed  *  * ...  */
+comment|/**  * Importer for the MS Office 2007 XML bibliography format  *  * ...  */
 end_comment
 
 begin_class
@@ -196,6 +228,40 @@ name|MsBibImporter
 extends|extends
 name|Importer
 block|{
+DECL|field|LOGGER
+specifier|private
+specifier|static
+specifier|final
+name|Logger
+name|LOGGER
+init|=
+name|LoggerFactory
+operator|.
+name|getLogger
+argument_list|(
+name|MsBibImporter
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
+DECL|field|DISABLEDTD
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|DISABLEDTD
+init|=
+literal|"http://apache.org/xml/features/disallow-doctype-decl"
+decl_stmt|;
+DECL|field|DISABLEEXTERNALDTD
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|DISABLEEXTERNALDTD
+init|=
+literal|"http://apache.org/xml/features/nonvalidating/load-external-dtd"
+decl_stmt|;
 annotation|@
 name|Override
 DECL|method|isRecognizedFormat (BufferedReader reader)
@@ -216,7 +282,7 @@ argument_list|(
 name|reader
 argument_list|)
 expr_stmt|;
-comment|/*             The correct behaviour is to return false if it is certain that the file is             not of the MsBib type, and true otherwise. Returning true is the safe choice             if not certain.          */
+comment|/*             The correct behavior is to return false if it is certain that the file is             not of the MsBib type, and true otherwise. Returning true is the safe choice             if not certain.          */
 name|Document
 name|docin
 decl_stmt|;
@@ -225,10 +291,13 @@ block|{
 name|DocumentBuilder
 name|dbuild
 init|=
+name|makeSafeDocBuilderFactory
+argument_list|(
 name|DocumentBuilderFactory
 operator|.
 name|newInstance
 argument_list|()
+argument_list|)
 operator|.
 name|newDocumentBuilder
 argument_list|()
@@ -411,6 +480,86 @@ parameter_list|()
 block|{
 return|return
 literal|"Importer for the MS Office 2007 XML bibliography format."
+return|;
+block|}
+comment|/**      * DocumentBuilderFactory makes a XXE safe Builder factory from dBuild. If not supported by current      * XML then returns original builder given and logs error.      * @param dBuild | DocumentBuilderFactory to be made XXE safe.      * @return If supported, XXE safe DocumentBuilderFactory. Else, returns original builder given      */
+DECL|method|makeSafeDocBuilderFactory (DocumentBuilderFactory dBuild)
+specifier|private
+name|DocumentBuilderFactory
+name|makeSafeDocBuilderFactory
+parameter_list|(
+name|DocumentBuilderFactory
+name|dBuild
+parameter_list|)
+block|{
+name|String
+name|feature
+init|=
+literal|null
+decl_stmt|;
+try|try
+block|{
+name|feature
+operator|=
+name|DISABLEDTD
+expr_stmt|;
+name|dBuild
+operator|.
+name|setFeature
+argument_list|(
+name|feature
+argument_list|,
+literal|true
+argument_list|)
+expr_stmt|;
+name|feature
+operator|=
+name|DISABLEEXTERNALDTD
+expr_stmt|;
+name|dBuild
+operator|.
+name|setFeature
+argument_list|(
+name|feature
+argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
+name|dBuild
+operator|.
+name|setXIncludeAware
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+name|dBuild
+operator|.
+name|setExpandEntityReferences
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|ParserConfigurationException
+name|e
+parameter_list|)
+block|{
+name|LOGGER
+operator|.
+name|warn
+argument_list|(
+literal|"Builder not fully configured. Feature:'{}' is probably not supported by current XML processor. {}"
+argument_list|,
+name|feature
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+block|}
+return|return
+name|dBuild
 return|;
 block|}
 block|}
