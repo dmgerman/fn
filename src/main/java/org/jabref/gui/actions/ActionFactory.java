@@ -393,7 +393,7 @@ argument_list|()
 operator|.
 name|setAll
 argument_list|(
-literal|"flatButton"
+literal|"icon-button"
 argument_list|)
 expr_stmt|;
 comment|// For some reason the graphic is not set correctly, so let's fix this
@@ -474,7 +474,7 @@ argument_list|()
 operator|.
 name|add
 argument_list|(
-literal|"flatButton"
+literal|"icon-button"
 argument_list|)
 expr_stmt|;
 comment|// For some reason the graphic is not set correctly, so let's fix this

@@ -2715,7 +2715,7 @@ argument_list|()
 operator|.
 name|add
 argument_list|(
-literal|"flatButton"
+literal|"icon-button"
 argument_list|)
 expr_stmt|;
 return|return
@@ -2753,7 +2753,7 @@ argument_list|()
 operator|.
 name|add
 argument_list|(
-literal|"flatButton"
+literal|"icon-button"
 argument_list|)
 expr_stmt|;
 return|return
