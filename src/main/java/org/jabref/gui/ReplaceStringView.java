@@ -302,7 +302,7 @@ argument_list|)
 expr_stmt|;
 name|viewModel
 operator|.
-name|getFindStringProperty
+name|FindStringProperty
 argument_list|()
 operator|.
 name|bind
@@ -315,7 +315,7 @@ argument_list|)
 expr_stmt|;
 name|viewModel
 operator|.
-name|getReplaceStringProperty
+name|ReplaceStringProperty
 argument_list|()
 operator|.
 name|bind
@@ -328,7 +328,7 @@ argument_list|)
 expr_stmt|;
 name|viewModel
 operator|.
-name|getFieldStringProperty
+name|FieldStringProperty
 argument_list|()
 operator|.
 name|bind

@@ -12,6 +12,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Objects
+import|;
+end_import
+
+begin_import
+import|import
 name|javafx
 operator|.
 name|beans
@@ -201,6 +211,13 @@ name|BasePanel
 name|basePanel
 parameter_list|)
 block|{
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|basePanel
+argument_list|)
+expr_stmt|;
 name|this
 operator|.
 name|panel
@@ -275,17 +292,6 @@ name|counter
 init|=
 literal|0
 decl_stmt|;
-if|if
-condition|(
-name|this
-operator|.
-name|panel
-operator|==
-literal|null
-condition|)
-return|return
-literal|0
-return|;
 if|if
 condition|(
 name|selOnly
@@ -420,7 +426,7 @@ return|return
 name|counter
 return|;
 block|}
-DECL|method|replaceField (BibEntry entry, String fieldname, NamedCompound compound)
+DECL|method|replaceField (BibEntry entry, String fieldName, NamedCompound compound)
 specifier|private
 name|int
 name|replaceField
@@ -429,7 +435,7 @@ name|BibEntry
 name|entry
 parameter_list|,
 name|String
-name|fieldname
+name|fieldName
 parameter_list|,
 name|NamedCompound
 name|compound
@@ -442,7 +448,7 @@ name|entry
 operator|.
 name|hasField
 argument_list|(
-name|fieldname
+name|fieldName
 argument_list|)
 condition|)
 block|{
@@ -457,7 +463,7 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-name|fieldname
+name|fieldName
 argument_list|)
 operator|.
 name|get
@@ -569,7 +575,7 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|fieldname
+name|fieldName
 argument_list|,
 name|newStr
 argument_list|)
@@ -583,7 +589,7 @@ name|UndoableFieldChange
 argument_list|(
 name|entry
 argument_list|,
-name|fieldname
+name|fieldName
 argument_list|,
 name|txt
 argument_list|,
@@ -615,30 +621,30 @@ return|return
 name|selectOnlyProperty
 return|;
 block|}
-DECL|method|getFieldStringProperty ()
+DECL|method|FieldStringProperty ()
 specifier|public
 name|StringProperty
-name|getFieldStringProperty
+name|FieldStringProperty
 parameter_list|()
 block|{
 return|return
 name|fieldStringProperty
 return|;
 block|}
-DECL|method|getFindStringProperty ()
+DECL|method|FindStringProperty ()
 specifier|public
 name|StringProperty
-name|getFindStringProperty
+name|FindStringProperty
 parameter_list|()
 block|{
 return|return
 name|findStringProperty
 return|;
 block|}
-DECL|method|getReplaceStringProperty ()
+DECL|method|ReplaceStringProperty ()
 specifier|public
 name|StringProperty
-name|getReplaceStringProperty
+name|ReplaceStringProperty
 parameter_list|()
 block|{
 return|return
