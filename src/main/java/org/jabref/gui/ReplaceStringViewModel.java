@@ -621,30 +621,30 @@ return|return
 name|selectOnlyProperty
 return|;
 block|}
-DECL|method|FieldStringProperty ()
+DECL|method|fieldStringProperty ()
 specifier|public
 name|StringProperty
-name|FieldStringProperty
+name|fieldStringProperty
 parameter_list|()
 block|{
 return|return
 name|fieldStringProperty
 return|;
 block|}
-DECL|method|FindStringProperty ()
+DECL|method|findStringProperty ()
 specifier|public
 name|StringProperty
-name|FindStringProperty
+name|findStringProperty
 parameter_list|()
 block|{
 return|return
 name|findStringProperty
 return|;
 block|}
-DECL|method|ReplaceStringProperty ()
+DECL|method|replaceStringProperty ()
 specifier|public
 name|StringProperty
-name|ReplaceStringProperty
+name|replaceStringProperty
 parameter_list|()
 block|{
 return|return
