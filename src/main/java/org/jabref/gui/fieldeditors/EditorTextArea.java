@@ -38,6 +38,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Objects
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|ResourceBundle
 import|;
 end_import
@@ -148,6 +158,18 @@ name|Initializable
 implements|,
 name|ContextMenuAddable
 block|{
+comment|/**      *  Variable that contains user-defined behavior for paste action.      */
+DECL|field|pasteActionHandler
+specifier|private
+name|PasteActionHandler
+name|pasteActionHandler
+init|=
+parameter_list|()
+lambda|->
+block|{
+comment|// Set empty paste behavior by default
+block|}
+decl_stmt|;
 DECL|method|EditorTextArea ()
 specifier|public
 name|EditorTextArea
@@ -366,6 +388,64 @@ name|resources
 parameter_list|)
 block|{
 comment|// not needed
+block|}
+comment|/**      * Set pasteActionHandler variable to passed handler      * @param  handler an instance of PasteActionHandler that describes paste behavior      */
+DECL|method|setPasteActionHandler (PasteActionHandler handler)
+specifier|public
+name|void
+name|setPasteActionHandler
+parameter_list|(
+name|PasteActionHandler
+name|handler
+parameter_list|)
+block|{
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|handler
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|pasteActionHandler
+operator|=
+name|handler
+expr_stmt|;
+block|}
+comment|/**      *  Override javafx TextArea method applying TextArea.paste() and pasteActionHandler after      */
+annotation|@
+name|Override
+DECL|method|paste ()
+specifier|public
+name|void
+name|paste
+parameter_list|()
+block|{
+name|super
+operator|.
+name|paste
+argument_list|()
+expr_stmt|;
+name|pasteActionHandler
+operator|.
+name|handle
+argument_list|()
+expr_stmt|;
+block|}
+comment|/**      *  Interface presents user-described paste behaviour applying to paste method      */
+annotation|@
+name|FunctionalInterface
+DECL|interface|PasteActionHandler
+specifier|public
+interface|interface
+name|PasteActionHandler
+block|{
+DECL|method|handle ()
+name|void
+name|handle
+parameter_list|()
+function_decl|;
 block|}
 block|}
 end_class
