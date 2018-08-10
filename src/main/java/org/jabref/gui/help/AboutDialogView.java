@@ -218,6 +218,13 @@ literal|"About JabRef"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|this
+operator|.
+name|setResizable
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 name|ViewLoader
 operator|.
 name|view
@@ -248,6 +255,16 @@ name|copyVersionToClipboard
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
+DECL|method|getViewModel ()
+specifier|public
+name|AboutDialogViewModel
+name|getViewModel
+parameter_list|()
+block|{
+return|return
+name|viewModel
+return|;
 block|}
 annotation|@
 name|FXML

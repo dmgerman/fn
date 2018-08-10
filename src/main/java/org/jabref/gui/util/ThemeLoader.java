@@ -114,16 +114,6 @@ name|org
 operator|.
 name|jabref
 operator|.
-name|Globals
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
 name|gui
 operator|.
 name|JabRefFrame
@@ -155,6 +145,18 @@ operator|.
 name|util
 operator|.
 name|FileUpdateMonitor
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|preferences
+operator|.
+name|JabRefPreferences
 import|;
 end_import
 
@@ -264,13 +266,16 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Installs the base css file as a stylesheet in the given scene.      * Changes in the css file lead to a redraw of the scene using the new css file.      */
-DECL|method|installBaseCss (Scene scene)
+DECL|method|installBaseCss (Scene scene, JabRefPreferences preferences)
 specifier|public
 name|void
 name|installBaseCss
 parameter_list|(
 name|Scene
 name|scene
+parameter_list|,
+name|JabRefPreferences
+name|preferences
 parameter_list|)
 block|{
 name|addAndWatchForChanges
@@ -335,9 +340,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-name|Globals
-operator|.
-name|prefs
+name|preferences
 operator|.
 name|getFontSize
 argument_list|()
