@@ -59,7 +59,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Remove as soon as possible  */
+comment|/**  * TODO: Remove as soon as possible  */
 end_comment
 
 begin_class
@@ -93,6 +93,10 @@ operator|.
 name|installBaseCss
 argument_list|(
 name|scene
+argument_list|,
+name|Globals
+operator|.
+name|prefs
 argument_list|)
 expr_stmt|;
 name|DefaultTaskExecutor

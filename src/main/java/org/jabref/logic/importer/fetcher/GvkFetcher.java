@@ -100,6 +100,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|stream
 operator|.
 name|Collectors
@@ -264,14 +274,22 @@ annotation|@
 name|Override
 DECL|method|getHelpPage ()
 specifier|public
+name|Optional
+argument_list|<
 name|HelpFile
+argument_list|>
 name|getHelpPage
 parameter_list|()
 block|{
 return|return
+name|Optional
+operator|.
+name|of
+argument_list|(
 name|HelpFile
 operator|.
 name|FETCHER_GVK
+argument_list|)
 return|;
 block|}
 DECL|method|getSearchQueryStringForComplexQuery (List<String> queryList)

@@ -81,8 +81,6 @@ init|=
 operator|new
 name|DatabasePropertiesDialog
 argument_list|(
-literal|null
-argument_list|,
 name|frame
 operator|.
 name|getCurrentBasePanel

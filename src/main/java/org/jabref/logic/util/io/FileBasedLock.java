@@ -112,7 +112,7 @@ specifier|public
 class|class
 name|FileBasedLock
 block|{
-comment|/**      * The age in ms of a lockfile before JabRef will offer to "steal" the locked file.      */
+comment|/**      * The age in ms of a lock file before JabRef will offer to "steal" the locked file.      */
 DECL|field|LOCKFILE_CRITICAL_AGE
 specifier|public
 specifier|static
@@ -147,7 +147,7 @@ name|LOCKFILE_SUFFIX
 init|=
 literal|".lock"
 decl_stmt|;
-comment|// default retry count for aquiring file lock
+comment|// default retry count for acquiring file lock
 DECL|field|AQUIRE_LOCK_RETRY
 specifier|private
 specifier|static
@@ -162,7 +162,7 @@ specifier|private
 name|FileBasedLock
 parameter_list|()
 block|{     }
-comment|/**      * This method checks whether there is a lock file for the given file. If      * there is, it waits for 500 ms. This is repeated until the lock is gone      * or we have waited the maximum number of times.      *      * @param file The file to check the lock for.      * @param maxWaitCount The maximum number of times to wait.      * @return true if the lock file is gone, false if it is still there.      */
+comment|/**      * This method checks whether there is a lock file for the given file. If      * there is, it waits for 500 ms. This is repeated until the lock is gone      * or we have waited the maximum number of times.      *      * @param file         The file to check the lock for.      * @param maxWaitCount The maximum number of times to wait.      * @return true if the lock file is gone, false if it is still there.      */
 DECL|method|waitForFileLock (Path file, int maxWaitCount)
 specifier|private
 specifier|static
@@ -244,7 +244,7 @@ name|AQUIRE_LOCK_RETRY
 argument_list|)
 return|;
 block|}
-comment|/**      * Check whether a lock file exists for this file.      * @param file The file to check.      * @return true if a lock file exists, false otherwise.      */
+comment|/**      * Check whether a lock file exists for this file.      *      * @param file The file to check.      * @return true if a lock file exists, false otherwise.      */
 DECL|method|hasLockFile (Path file)
 specifier|public
 specifier|static
@@ -272,7 +272,7 @@ name|lockFile
 argument_list|)
 return|;
 block|}
-comment|/**      * Find the lock file's last modified time, if it has a lock file.      * @param file The file to check.      * @return the last modified time if lock file exists, empty optional otherwise.      */
+comment|/**      * Find the lock file's last modified time, if it has a lock file.      *      * @param file The file to check.      * @return the last modified time if lock file exists, empty optional otherwise.      */
 DECL|method|getLockFileTimeStamp (Path file)
 specifier|public
 specifier|static

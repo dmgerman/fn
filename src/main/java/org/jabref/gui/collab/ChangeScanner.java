@@ -629,8 +629,6 @@ init|=
 operator|new
 name|ChangeDisplayDialog
 argument_list|(
-literal|null
-argument_list|,
 name|panel
 argument_list|,
 name|databaseInTemp

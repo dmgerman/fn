@@ -22,16 +22,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|awt
-operator|.
-name|Window
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|swing
@@ -58,7 +48,7 @@ name|JabRefDialog
 extends|extends
 name|JDialog
 block|{
-DECL|method|JabRefDialog (Frame owner, boolean modal, Class<T> clazz)
+DECL|method|JabRefDialog (boolean modal, Class<T> clazz)
 specifier|public
 parameter_list|<
 name|T
@@ -67,9 +57,6 @@ name|JabRefDialog
 parameter_list|>
 name|JabRefDialog
 parameter_list|(
-name|Frame
-name|owner
-parameter_list|,
 name|boolean
 name|modal
 parameter_list|,
@@ -80,15 +67,12 @@ argument_list|>
 name|clazz
 parameter_list|)
 block|{
-name|super
+name|this
 argument_list|(
-name|owner
+literal|"JabRef"
 argument_list|,
 name|modal
-argument_list|)
-expr_stmt|;
-name|trackDialogOpening
-argument_list|(
+argument_list|,
 name|clazz
 argument_list|)
 expr_stmt|;
@@ -109,16 +93,15 @@ argument_list|>
 name|clazz
 parameter_list|)
 block|{
-name|super
-argument_list|()
-expr_stmt|;
-name|trackDialogOpening
+name|this
 argument_list|(
+literal|true
+argument_list|,
 name|clazz
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|JabRefDialog (Frame owner, Class<T> clazz)
+DECL|method|JabRefDialog (String title, Class<T> clazz)
 specifier|public
 parameter_list|<
 name|T
@@ -127,39 +110,6 @@ name|JabRefDialog
 parameter_list|>
 name|JabRefDialog
 parameter_list|(
-name|Frame
-name|owner
-parameter_list|,
-name|Class
-argument_list|<
-name|T
-argument_list|>
-name|clazz
-parameter_list|)
-block|{
-name|super
-argument_list|(
-name|owner
-argument_list|)
-expr_stmt|;
-name|trackDialogOpening
-argument_list|(
-name|clazz
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|JabRefDialog (Frame owner, String title, Class<T> clazz)
-specifier|public
-parameter_list|<
-name|T
-extends|extends
-name|JabRefDialog
-parameter_list|>
-name|JabRefDialog
-parameter_list|(
-name|Frame
-name|owner
-parameter_list|,
 name|String
 name|title
 parameter_list|,
@@ -172,8 +122,6 @@ parameter_list|)
 block|{
 name|this
 argument_list|(
-name|owner
-argument_list|,
 name|title
 argument_list|,
 literal|true
@@ -182,7 +130,7 @@ name|clazz
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|JabRefDialog (Frame owner, String title, boolean modal, Class<T> clazz)
+DECL|method|JabRefDialog (String title, boolean modal, Class<T> clazz)
 specifier|public
 parameter_list|<
 name|T
@@ -191,9 +139,6 @@ name|JabRefDialog
 parameter_list|>
 name|JabRefDialog
 parameter_list|(
-name|Frame
-name|owner
-parameter_list|,
 name|String
 name|title
 parameter_list|,
@@ -209,7 +154,10 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|owner
+operator|(
+name|Frame
+operator|)
+literal|null
 argument_list|,
 name|title
 argument_list|,
@@ -304,41 +252,6 @@ name|clazz
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|JabRefDialog (Window owner, String title, Class<T> clazz)
-specifier|public
-parameter_list|<
-name|T
-extends|extends
-name|JabRefDialog
-parameter_list|>
-name|JabRefDialog
-parameter_list|(
-name|Window
-name|owner
-parameter_list|,
-name|String
-name|title
-parameter_list|,
-name|Class
-argument_list|<
-name|T
-argument_list|>
-name|clazz
-parameter_list|)
-block|{
-name|super
-argument_list|(
-name|owner
-argument_list|,
-name|title
-argument_list|)
-expr_stmt|;
-name|trackDialogOpening
-argument_list|(
-name|clazz
-argument_list|)
-expr_stmt|;
-block|}
 DECL|method|trackDialogOpening (Class<T> clazz)
 specifier|private
 parameter_list|<
@@ -376,6 +289,45 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
+annotation|@
+name|Override
+DECL|method|setVisible (boolean visible)
+specifier|public
+name|void
+name|setVisible
+parameter_list|(
+name|boolean
+name|visible
+parameter_list|)
+block|{
+name|super
+operator|.
+name|setVisible
+argument_list|(
+name|visible
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|visible
+condition|)
+block|{
+comment|// FIXME: Ugly hack to ensure that new dialogs are not hidden behind the main window
+name|setAlwaysOnTop
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|requestFocus
+argument_list|()
+expr_stmt|;
+name|setAlwaysOnTop
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 block|}
 end_class

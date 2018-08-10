@@ -172,6 +172,27 @@ index|[]
 index|[]
 block|{
 block|{
+literal|"ç, å"
+block|,
+name|authorList
+argument_list|(
+operator|new
+name|Author
+argument_list|(
+literal|"å"
+argument_list|,
+literal|"å."
+argument_list|,
+literal|null
+argument_list|,
+literal|"ç"
+argument_list|,
+literal|null
+argument_list|)
+argument_list|)
+block|}
+block|,
+block|{
 literal|"Doe, John"
 block|,
 name|authorList

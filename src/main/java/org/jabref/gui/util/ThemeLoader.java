@@ -152,6 +152,18 @@ begin_import
 import|import
 name|org
 operator|.
+name|jabref
+operator|.
+name|preferences
+operator|.
+name|JabRefPreferences
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|slf4j
 operator|.
 name|Logger
@@ -254,13 +266,16 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Installs the base css file as a stylesheet in the given scene.      * Changes in the css file lead to a redraw of the scene using the new css file.      */
-DECL|method|installBaseCss (Scene scene)
+DECL|method|installBaseCss (Scene scene, JabRefPreferences preferences)
 specifier|public
 name|void
 name|installBaseCss
 parameter_list|(
 name|Scene
 name|scene
+parameter_list|,
+name|JabRefPreferences
+name|preferences
 parameter_list|)
 block|{
 name|addAndWatchForChanges
@@ -325,6 +340,30 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+name|preferences
+operator|.
+name|getFontSize
+argument_list|()
+operator|.
+name|ifPresent
+argument_list|(
+name|size
+lambda|->
+name|scene
+operator|.
+name|getRoot
+argument_list|()
+operator|.
+name|setStyle
+argument_list|(
+literal|"-fx-font-size: "
+operator|+
+name|size
+operator|+
+literal|"pt;"
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|addAndWatchForChanges (Scene scene, String cssUrl, int index)
 specifier|private

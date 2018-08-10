@@ -2374,7 +2374,7 @@ argument_list|)
 expr_stmt|;
 comment|// groupSidePane.getToggleCommand().setSelected(sidePaneManager.isComponentVisible(GroupSidePane.class));
 comment|//previewToggle.setSelected(Globals.prefs.getPreviewPreferences().isPreviewPanelEnabled());
-comment|//generalFetcher.getToggleCommand().setSelected(sidePaneManager.isComponentVisible(GeneralFetcher.class));
+comment|//generalFetcher.getToggleCommand().setSelected(sidePaneManager.isComponentVisible(WebSearchPane.class));
 comment|//openOfficePanel.getToggleCommand().setSelected(sidePaneManager.isComponentVisible(OpenOfficeSidePanel.class));
 comment|// TODO: Can't notify focus listener since it is expecting a swing component
 comment|//Globals.getFocusListener().setFocused(currentBasePanel.getMainTable());
@@ -2581,6 +2581,16 @@ expr_stmt|;
 name|event
 operator|.
 name|consume
+argument_list|()
+expr_stmt|;
+break|break;
+case|case
+name|SEARCH
+case|:
+name|getGlobalSearchBar
+argument_list|()
+operator|.
+name|focus
 argument_list|()
 expr_stmt|;
 break|break;
@@ -2941,7 +2951,7 @@ parameter_list|()
 block|{
 name|HelpAction
 operator|.
-name|getCommand
+name|getMainHelpPageCommand
 argument_list|()
 operator|.
 name|execute
@@ -6597,7 +6607,7 @@ name|HELP
 argument_list|,
 name|HelpAction
 operator|.
-name|getCommand
+name|getMainHelpPageCommand
 argument_list|()
 argument_list|)
 argument_list|,
@@ -8891,22 +8901,6 @@ name|void
 name|execute
 parameter_list|()
 block|{
-name|LOGGER
-operator|.
-name|debug
-argument_list|(
-name|Globals
-operator|.
-name|getFocusListener
-argument_list|()
-operator|.
-name|getFocused
-argument_list|()
-operator|.
-name|toString
-argument_list|()
-argument_list|)
-expr_stmt|;
 name|JComponent
 name|source
 init|=

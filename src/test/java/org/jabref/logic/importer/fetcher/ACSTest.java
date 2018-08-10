@@ -197,7 +197,7 @@ argument_list|(
 operator|new
 name|URL
 argument_list|(
-literal|"http://pubs.acs.org/doi/pdf/10.1021/bk-2006-STYG.ch014"
+literal|"https://pubs.acs.org/doi/pdf/10.1021/bk-2006-STYG.ch014"
 argument_list|)
 argument_list|)
 argument_list|,

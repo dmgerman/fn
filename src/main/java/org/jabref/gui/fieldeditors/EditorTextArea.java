@@ -38,6 +38,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Objects
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|ResourceBundle
 import|;
 end_import
@@ -145,7 +155,21 @@ operator|.
 name|TextArea
 implements|implements
 name|Initializable
+implements|,
+name|ContextMenuAddable
 block|{
+comment|/**      *  Variable that contains user-defined behavior for paste action.      */
+DECL|field|pasteActionHandler
+specifier|private
+name|PasteActionHandler
+name|pasteActionHandler
+init|=
+parameter_list|()
+lambda|->
+block|{
+comment|// Set empty paste behavior by default
+block|}
+decl_stmt|;
 DECL|method|EditorTextArea ()
 specifier|public
 name|EditorTextArea
@@ -157,10 +181,11 @@ literal|""
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|EditorTextArea (String text)
+DECL|method|EditorTextArea (final String text)
 specifier|public
 name|EditorTextArea
 parameter_list|(
+specifier|final
 name|String
 name|text
 parameter_list|)
@@ -280,12 +305,14 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Adds the given list of menu items to the context menu. The usage of {@link Supplier} prevents that the menus need      * to be instantiated at this point. They are populated when the user needs them which prevents many unnecessary      * allocations when the main table is just scrolled with the entry editor open.      */
-DECL|method|addToContextMenu (Supplier<List<MenuItem>> items)
+annotation|@
+name|Override
+DECL|method|addToContextMenu (final Supplier<List<MenuItem>> items)
 specifier|public
 name|void
 name|addToContextMenu
 parameter_list|(
+specifier|final
 name|Supplier
 argument_list|<
 name|List
@@ -361,6 +388,64 @@ name|resources
 parameter_list|)
 block|{
 comment|// not needed
+block|}
+comment|/**      * Set pasteActionHandler variable to passed handler      * @param  handler an instance of PasteActionHandler that describes paste behavior      */
+DECL|method|setPasteActionHandler (PasteActionHandler handler)
+specifier|public
+name|void
+name|setPasteActionHandler
+parameter_list|(
+name|PasteActionHandler
+name|handler
+parameter_list|)
+block|{
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|handler
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|pasteActionHandler
+operator|=
+name|handler
+expr_stmt|;
+block|}
+comment|/**      *  Override javafx TextArea method applying TextArea.paste() and pasteActionHandler after      */
+annotation|@
+name|Override
+DECL|method|paste ()
+specifier|public
+name|void
+name|paste
+parameter_list|()
+block|{
+name|super
+operator|.
+name|paste
+argument_list|()
+expr_stmt|;
+name|pasteActionHandler
+operator|.
+name|handle
+argument_list|()
+expr_stmt|;
+block|}
+comment|/**      *  Interface presents user-described paste behaviour applying to paste method      */
+annotation|@
+name|FunctionalInterface
+DECL|interface|PasteActionHandler
+specifier|public
+interface|interface
+name|PasteActionHandler
+block|{
+DECL|method|handle ()
+name|void
+name|handle
+parameter_list|()
+function_decl|;
 block|}
 block|}
 end_class

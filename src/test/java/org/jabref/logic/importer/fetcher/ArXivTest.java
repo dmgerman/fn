@@ -1264,6 +1264,32 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+DECL|method|searchEmptyId ()
+specifier|public
+name|void
+name|searchEmptyId
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|assertEquals
+argument_list|(
+name|Optional
+operator|.
+name|empty
+argument_list|()
+argument_list|,
+name|finder
+operator|.
+name|performSearchById
+argument_list|(
+literal|""
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_class
 

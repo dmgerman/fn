@@ -78,16 +78,6 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|JFrame
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
 name|JLabel
 import|;
 end_import
@@ -215,21 +205,16 @@ specifier|final
 name|JLabel
 name|count
 decl_stmt|;
-DECL|method|PreferencesFilterDialog (JabRefPreferencesFilter preferencesFilter, JFrame frame)
+DECL|method|PreferencesFilterDialog (JabRefPreferencesFilter preferencesFilter)
 specifier|public
 name|PreferencesFilterDialog
 parameter_list|(
 name|JabRefPreferencesFilter
 name|preferencesFilter
-parameter_list|,
-name|JFrame
-name|frame
 parameter_list|)
 block|{
 name|super
 argument_list|(
-name|frame
-argument_list|,
 literal|true
 argument_list|,
 name|PreferencesFilterDialog
@@ -237,7 +222,6 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
-comment|// is modal
 name|this
 operator|.
 name|preferencesFilter

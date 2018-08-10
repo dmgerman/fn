@@ -122,7 +122,7 @@ name|importer
 operator|.
 name|fetcher
 operator|.
-name|GeneralFetcher
+name|WebSearchPane
 import|;
 end_import
 
@@ -275,7 +275,7 @@ argument_list|()
 argument_list|)
 argument_list|,
 operator|new
-name|GeneralFetcher
+name|WebSearchPane
 argument_list|(
 name|this
 argument_list|,
@@ -345,6 +345,26 @@ argument_list|(
 name|SidePaneType
 operator|.
 name|OPEN_OFFICE
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|preferences
+operator|.
+name|getBoolean
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|WEB_SEARCH_VISIBLE
+argument_list|)
+condition|)
+block|{
+name|show
+argument_list|(
+name|SidePaneType
+operator|.
+name|WEB_SEARCH
 argument_list|)
 expr_stmt|;
 block|}

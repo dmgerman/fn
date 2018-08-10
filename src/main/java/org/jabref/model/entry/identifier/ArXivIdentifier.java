@@ -159,15 +159,20 @@ name|this
 operator|==
 name|o
 condition|)
+block|{
 return|return
 literal|true
 return|;
+block|}
 if|if
 condition|(
+operator|(
 name|o
 operator|==
 literal|null
+operator|)
 operator|||
+operator|(
 name|getClass
 argument_list|()
 operator|!=
@@ -175,10 +180,13 @@ name|o
 operator|.
 name|getClass
 argument_list|()
+operator|)
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 name|ArXivIdentifier
 name|that
 init|=
@@ -237,6 +245,22 @@ parameter_list|()
 block|{
 return|return
 name|identifier
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|toString ()
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+literal|"ArXivIdentifier [identifier="
+operator|+
+name|identifier
+operator|+
+literal|"]"
 return|;
 block|}
 annotation|@

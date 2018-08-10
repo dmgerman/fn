@@ -466,6 +466,32 @@ name|result
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+DECL|method|findNothing ()
+specifier|public
+name|void
+name|findNothing
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|assertEquals
+argument_list|(
+name|Collections
+operator|.
+name|emptyList
+argument_list|()
+argument_list|,
+name|dblpFetcher
+operator|.
+name|performSearch
+argument_list|(
+literal|""
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_class
 

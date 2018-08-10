@@ -46,16 +46,6 @@ name|java
 operator|.
 name|awt
 operator|.
-name|Frame
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|awt
-operator|.
 name|GridBagConstraints
 import|;
 end_import
@@ -1276,21 +1266,16 @@ specifier|private
 name|boolean
 name|checkBoxWhyIsThereNoGetSelectedStupidSwing
 decl_stmt|;
-DECL|method|FindUnlinkedFilesDialog (Frame owner, JabRefFrame frame)
+DECL|method|FindUnlinkedFilesDialog (JabRefFrame frame)
 specifier|public
 name|FindUnlinkedFilesDialog
 parameter_list|(
-name|Frame
-name|owner
-parameter_list|,
 name|JabRefFrame
 name|frame
 parameter_list|)
 block|{
 name|super
 argument_list|(
-name|owner
-argument_list|,
 name|Localization
 operator|.
 name|lang

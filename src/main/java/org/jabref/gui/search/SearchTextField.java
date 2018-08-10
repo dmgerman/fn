@@ -14,18 +14,6 @@ end_package
 
 begin_import
 import|import
-name|javafx
-operator|.
-name|scene
-operator|.
-name|control
-operator|.
-name|TextField
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|jabref
@@ -89,7 +77,7 @@ block|{
 DECL|method|create ()
 specifier|public
 specifier|static
-name|TextField
+name|CustomTextField
 name|create
 parameter_list|()
 block|{

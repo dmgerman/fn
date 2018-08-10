@@ -170,18 +170,6 @@ begin_import
 import|import
 name|org
 operator|.
-name|junit$pioneer
-operator|.
-name|jupiter
-operator|.
-name|TempDirectory
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
 name|junit
 operator|.
 name|jupiter
@@ -219,6 +207,18 @@ operator|.
 name|extension
 operator|.
 name|ExtendWith
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junitpioneer
+operator|.
+name|jupiter
+operator|.
+name|TempDirectory
 import|;
 end_import
 

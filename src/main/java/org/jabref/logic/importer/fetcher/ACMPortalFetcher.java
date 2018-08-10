@@ -56,6 +56,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|jabref
@@ -229,14 +239,22 @@ annotation|@
 name|Override
 DECL|method|getHelpPage ()
 specifier|public
+name|Optional
+argument_list|<
 name|HelpFile
+argument_list|>
 name|getHelpPage
 parameter_list|()
 block|{
 return|return
+name|Optional
+operator|.
+name|of
+argument_list|(
 name|HelpFile
 operator|.
 name|FETCHER_ACM
+argument_list|)
 return|;
 block|}
 DECL|method|createQueryString (String query)

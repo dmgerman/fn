@@ -14,6 +14,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|jabref
@@ -45,12 +55,18 @@ function_decl|;
 comment|/**      * Returns the help page for this fetcher.      *      * @return the {@link HelpFile} enum constant for the help page      */
 DECL|method|getHelpPage ()
 specifier|default
+name|Optional
+argument_list|<
 name|HelpFile
+argument_list|>
 name|getHelpPage
 parameter_list|()
 block|{
 return|return
-literal|null
+name|Optional
+operator|.
+name|empty
+argument_list|()
 return|;
 comment|// no help page by default
 block|}

@@ -94,6 +94,20 @@ begin_import
 import|import
 name|org
 operator|.
+name|jabref
+operator|.
+name|testutils
+operator|.
+name|category
+operator|.
+name|FetcherTest
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|junit
 operator|.
 name|jupiter
@@ -159,6 +173,8 @@ import|;
 end_import
 
 begin_class
+annotation|@
+name|FetcherTest
 DECL|class|INSPIREFetcherTest
 class|class
 name|INSPIREFetcherTest
