@@ -573,7 +573,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Action for the "Save" and "Save as" operations called from BasePanel. This class is also used for  * save operations when closing a database or quitting the applications.  *  * The operations run synchronously, but offload the save operation from the event thread using Spin.  * Callers can query whether the operation was canceled, or whether it was successful.  */
+comment|/**  * Action for the "Save" and "Save as" operations called from BasePanel. This class is also used for  * save operations when closing a database or quitting the applications.  *  * The save operation is loaded off of the GUI thread using {@link BackgroundTask}.  * Callers can query whether the operation was canceled, or whether it was successful.  */
 end_comment
 
 begin_class
@@ -1780,7 +1780,7 @@ return|return
 name|success
 return|;
 block|}
-comment|/**      * Run the "Save" operation. This method offloads the actual save operation to a background thread, but      * still runs synchronously using Spin (the method returns only after completing the operation).      */
+comment|/**      * Run the "Save" operation. This method offloads the actual save operation to a background thread.      */
 DECL|method|runCommand ()
 specifier|public
 name|void
@@ -1904,7 +1904,7 @@ expr_stmt|;
 return|return;
 block|}
 block|}
-comment|/**      * Run the "Save as" operation. This method offloads the actual save operation to a background thread, but      * still runs synchronously using Spin (the method returns only after completing the operation).      */
+comment|/**      * Run the "Save as" operation. This method offloads the actual save operation to a background thread.      */
 DECL|method|saveAs (File file)
 specifier|public
 name|void
