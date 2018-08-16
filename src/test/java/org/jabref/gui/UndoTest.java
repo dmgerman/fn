@@ -24,20 +24,6 @@ begin_import
 import|import
 name|org
 operator|.
-name|jabref
-operator|.
-name|testutils
-operator|.
-name|category
-operator|.
-name|GUITest
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
 name|assertj
 operator|.
 name|swing
@@ -84,7 +70,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Test
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Tag
 import|;
 end_import
 
@@ -94,11 +84,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|experimental
+name|jupiter
 operator|.
-name|categories
+name|api
 operator|.
-name|Category
+name|Test
 import|;
 end_import
 
@@ -124,7 +114,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
 operator|.
 name|assertFalse
 import|;
@@ -136,7 +130,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
 operator|.
 name|assertTrue
 import|;
@@ -144,11 +142,9 @@ end_import
 
 begin_class
 annotation|@
-name|Category
+name|Tag
 argument_list|(
-name|GUITest
-operator|.
-name|class
+literal|"GUITest"
 argument_list|)
 DECL|class|UndoTest
 specifier|public
@@ -183,14 +179,14 @@ argument_list|()
 decl_stmt|;
 name|assertTrue
 argument_list|(
-literal|"The database must have at least 2 entries for the test to begin!"
-argument_list|,
 name|entryTable
 operator|.
 name|rowCount
 argument_list|()
 operator|>=
 literal|2
+argument_list|,
+literal|"The database must have at least 2 entries for the test to begin!"
 argument_list|)
 expr_stmt|;
 name|entryTable

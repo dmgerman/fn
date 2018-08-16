@@ -84,6 +84,30 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|file
+operator|.
+name|Path
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|file
+operator|.
+name|Files
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|jabref
@@ -392,7 +416,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|BeforeEach
 import|;
 end_import
 
@@ -402,7 +430,25 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Before
+name|jupiter
+operator|.
+name|api
+operator|.
+name|extension
+operator|.
+name|ExtendWith
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junitpioneer
+operator|.
+name|jupiter
+operator|.
+name|TempDirectory
 import|;
 end_import
 
@@ -412,29 +458,59 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Rule
-import|;
-end_import
-
-begin_import
-import|import
-name|org
+name|jupiter
 operator|.
-name|junit
+name|api
 operator|.
 name|Test
 import|;
 end_import
 
 begin_import
-import|import
+import|import static
 name|org
 operator|.
 name|junit
 operator|.
-name|rules
+name|jupiter
 operator|.
-name|TemporaryFolder
+name|api
+operator|.
+name|Assertions
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
+operator|.
+name|assertNotEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
+operator|.
+name|assertThrows
 import|;
 end_import
 
@@ -463,22 +539,17 @@ import|;
 end_import
 
 begin_class
+annotation|@
+name|ExtendWith
+argument_list|(
+name|TempDirectory
+operator|.
+name|class
+argument_list|)
 DECL|class|CleanupWorkerTest
-specifier|public
 class|class
 name|CleanupWorkerTest
 block|{
-annotation|@
-name|Rule
-DECL|field|bibFolder
-specifier|public
-name|TemporaryFolder
-name|bibFolder
-init|=
-operator|new
-name|TemporaryFolder
-argument_list|()
-decl_stmt|;
 DECL|field|emptyPreset
 specifier|private
 specifier|final
@@ -505,28 +576,47 @@ specifier|private
 name|CleanupWorker
 name|worker
 decl_stmt|;
-DECL|field|pdfFolder
-specifier|private
-name|File
-name|pdfFolder
-decl_stmt|;
 annotation|@
-name|Before
-DECL|method|setUp ()
-specifier|public
+name|BeforeEach
+DECL|method|setUp (@empDirectory.TempDir Path bibFolder)
 name|void
 name|setUp
-parameter_list|()
+parameter_list|(
+annotation|@
+name|TempDirectory
+operator|.
+name|TempDir
+name|Path
+name|bibFolder
+parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|pdfFolder
-operator|=
+name|Path
+name|path
+init|=
 name|bibFolder
 operator|.
-name|newFolder
-argument_list|()
+name|resolve
+argument_list|(
+literal|"ARandomlyNamedFolder"
+argument_list|)
+decl_stmt|;
+name|Files
+operator|.
+name|createDirectory
+argument_list|(
+name|path
+argument_list|)
 expr_stmt|;
+name|File
+name|pdfFolder
+init|=
+name|path
+operator|.
+name|toFile
+argument_list|()
+decl_stmt|;
 name|MetaData
 name|metaData
 init|=
@@ -561,16 +651,31 @@ name|Defaults
 argument_list|()
 argument_list|)
 decl_stmt|;
+name|Files
+operator|.
+name|createFile
+argument_list|(
+name|bibFolder
+operator|.
+name|resolve
+argument_list|(
+literal|"test.bib"
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|context
 operator|.
 name|setDatabaseFile
 argument_list|(
 name|bibFolder
 operator|.
-name|newFile
+name|resolve
 argument_list|(
 literal|"test.bib"
 argument_list|)
+operator|.
+name|toFile
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|FileDirectoryPreferences
@@ -626,19 +731,19 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-argument_list|(
-name|expected
-operator|=
-name|NullPointerException
-operator|.
-name|class
-argument_list|)
 DECL|method|cleanupWithNullPresetThrowsException ()
-specifier|public
 name|void
 name|cleanupWithNullPresetThrowsException
 parameter_list|()
 block|{
+name|assertThrows
+argument_list|(
+name|NullPointerException
+operator|.
+name|class
+argument_list|,
+parameter_list|()
+lambda|->
 name|worker
 operator|.
 name|cleanup
@@ -649,23 +754,24 @@ operator|new
 name|BibEntry
 argument_list|()
 argument_list|)
+argument_list|)
 expr_stmt|;
 block|}
 annotation|@
 name|Test
-argument_list|(
-name|expected
-operator|=
-name|NullPointerException
-operator|.
-name|class
-argument_list|)
 DECL|method|cleanupNullEntryThrowsException ()
-specifier|public
 name|void
 name|cleanupNullEntryThrowsException
 parameter_list|()
 block|{
+name|assertThrows
+argument_list|(
+name|NullPointerException
+operator|.
+name|class
+argument_list|,
+parameter_list|()
+lambda|->
 name|worker
 operator|.
 name|cleanup
@@ -674,15 +780,22 @@ name|emptyPreset
 argument_list|,
 literal|null
 argument_list|)
+argument_list|)
 expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|cleanupDoesNothingByDefault ()
-specifier|public
+DECL|method|cleanupDoesNothingByDefault (@empDirectory.TempDir Path bibFolder)
 name|void
 name|cleanupDoesNothingByDefault
-parameter_list|()
+parameter_list|(
+annotation|@
+name|TempDirectory
+operator|.
+name|TempDir
+name|Path
+name|bibFolder
+parameter_list|)
 throws|throws
 name|IOException
 block|{
@@ -808,12 +921,29 @@ argument_list|,
 literal|"RÃ©flexions"
 argument_list|)
 expr_stmt|;
-name|File
-name|tempFile
+name|Path
+name|path
 init|=
 name|bibFolder
 operator|.
-name|newFile
+name|resolve
+argument_list|(
+literal|"ARandomlyNamedFile"
+argument_list|)
+decl_stmt|;
+name|Files
+operator|.
+name|createFile
+argument_list|(
+name|path
+argument_list|)
+expr_stmt|;
+name|File
+name|tempFile
+init|=
+name|path
+operator|.
+name|toFile
 argument_list|()
 decl_stmt|;
 name|LinkedFile
@@ -861,8 +991,6 @@ argument_list|,
 name|entry
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Collections
@@ -877,7 +1005,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|upgradeExternalLinksMoveFromPdfToFile ()
-specifier|public
 name|void
 name|upgradeExternalLinksMoveFromPdfToFile
 parameter_list|()
@@ -920,8 +1047,6 @@ argument_list|,
 name|entry
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -937,8 +1062,6 @@ literal|"pdf"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -960,7 +1083,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|upgradeExternalLinksMoveFromPsToFile ()
-specifier|public
 name|void
 name|upgradeExternalLinksMoveFromPsToFile
 parameter_list|()
@@ -1003,8 +1125,6 @@ argument_list|,
 name|entry
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -1020,8 +1140,6 @@ literal|"pdf"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -1043,7 +1161,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|cleanupDoiRemovesLeadingHttp ()
-specifier|public
 name|void
 name|cleanupDoiRemovesLeadingHttp
 parameter_list|()
@@ -1086,8 +1203,6 @@ argument_list|,
 name|entry
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -1109,7 +1224,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|cleanupDoiReturnsChanges ()
-specifier|public
 name|void
 name|cleanupDoiReturnsChanges
 parameter_list|()
@@ -1173,8 +1287,6 @@ argument_list|,
 literal|"10.1016/0001-8708(80)90035-3"
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Collections
@@ -1191,7 +1303,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|cleanupDoiFindsDoiInURLFieldAndMoveItToDOIField ()
-specifier|public
 name|void
 name|cleanupDoiFindsDoiInURLFieldAndMoveItToDOIField
 parameter_list|()
@@ -1234,8 +1345,6 @@ argument_list|,
 name|entry
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -1253,8 +1362,6 @@ literal|"doi"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -1274,7 +1381,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|cleanupDoiReturnsChangeWhenDoiInURLField ()
-specifier|public
 name|void
 name|cleanupDoiReturnsChangeWhenDoiInURLField
 parameter_list|()
@@ -1368,8 +1474,6 @@ literal|null
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|changeList
@@ -1381,7 +1485,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|cleanupMonthChangesNumberToBibtex ()
-specifier|public
 name|void
 name|cleanupMonthChangesNumberToBibtex
 parameter_list|()
@@ -1439,8 +1542,6 @@ argument_list|,
 name|entry
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -1462,7 +1563,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|cleanupPageNumbersConvertsSingleDashToDouble ()
-specifier|public
 name|void
 name|cleanupPageNumbersConvertsSingleDashToDouble
 parameter_list|()
@@ -1520,8 +1620,6 @@ argument_list|,
 name|entry
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -1543,7 +1641,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|cleanupDatesConvertsToCorrectFormat ()
-specifier|public
 name|void
 name|cleanupDatesConvertsToCorrectFormat
 parameter_list|()
@@ -1601,8 +1698,6 @@ argument_list|,
 name|entry
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -1624,7 +1719,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|cleanupFixFileLinksMovesSingleDescriptionToLink ()
-specifier|public
 name|void
 name|cleanupFixFileLinksMovesSingleDescriptionToLink
 parameter_list|()
@@ -1667,8 +1761,6 @@ argument_list|,
 name|entry
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -1689,11 +1781,17 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|cleanupMoveFilesMovesFileFromSubfolder ()
-specifier|public
+DECL|method|cleanupMoveFilesMovesFileFromSubfolder (@empDirectory.TempDir Path bibFolder)
 name|void
 name|cleanupMoveFilesMovesFileFromSubfolder
-parameter_list|()
+parameter_list|(
+annotation|@
+name|TempDirectory
+operator|.
+name|TempDir
+name|Path
+name|bibFolder
+parameter_list|)
 throws|throws
 name|IOException
 block|{
@@ -1710,12 +1808,29 @@ operator|.
 name|MOVE_PDF
 argument_list|)
 decl_stmt|;
-name|File
-name|subfolder
+name|Path
+name|path
 init|=
 name|bibFolder
 operator|.
-name|newFolder
+name|resolve
+argument_list|(
+literal|"AnotherRandomlyNamedFolder"
+argument_list|)
+decl_stmt|;
+name|Files
+operator|.
+name|createDirectory
+argument_list|(
+name|path
+argument_list|)
+expr_stmt|;
+name|File
+name|subfolder
+init|=
+name|path
+operator|.
+name|toFile
 argument_list|()
 decl_stmt|;
 name|File
@@ -1796,8 +1911,6 @@ argument_list|,
 literal|""
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -1823,11 +1936,17 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|cleanupRelativePathsConvertAbsoluteToRelativePath ()
-specifier|public
+DECL|method|cleanupRelativePathsConvertAbsoluteToRelativePath (@empDirectory.TempDir Path bibFolder)
 name|void
 name|cleanupRelativePathsConvertAbsoluteToRelativePath
-parameter_list|()
+parameter_list|(
+annotation|@
+name|TempDirectory
+operator|.
+name|TempDir
+name|Path
+name|bibFolder
+parameter_list|)
 throws|throws
 name|IOException
 block|{
@@ -1844,12 +1963,29 @@ operator|.
 name|MAKE_PATHS_RELATIVE
 argument_list|)
 decl_stmt|;
-name|File
-name|tempFile
+name|Path
+name|path
 init|=
 name|bibFolder
 operator|.
-name|newFile
+name|resolve
+argument_list|(
+literal|"AnotherRandomlyNamedFile"
+argument_list|)
+decl_stmt|;
+name|Files
+operator|.
+name|createFile
+argument_list|(
+name|path
+argument_list|)
+expr_stmt|;
+name|File
+name|tempFile
+init|=
+name|path
+operator|.
+name|toFile
 argument_list|()
 decl_stmt|;
 name|BibEntry
@@ -1914,8 +2050,6 @@ argument_list|,
 literal|""
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -1941,11 +2075,17 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|cleanupRenamePdfRenamesRelativeFile ()
-specifier|public
+DECL|method|cleanupRenamePdfRenamesRelativeFile (@empDirectory.TempDir Path bibFolder)
 name|void
 name|cleanupRenamePdfRenamesRelativeFile
-parameter_list|()
+parameter_list|(
+annotation|@
+name|TempDirectory
+operator|.
+name|TempDir
+name|Path
+name|bibFolder
+parameter_list|)
 throws|throws
 name|IOException
 block|{
@@ -1962,12 +2102,29 @@ operator|.
 name|RENAME_PDF
 argument_list|)
 decl_stmt|;
-name|File
-name|tempFile
+name|Path
+name|path
 init|=
 name|bibFolder
 operator|.
-name|newFile
+name|resolve
+argument_list|(
+literal|"AnotherRandomlyNamedFile.tmp"
+argument_list|)
+decl_stmt|;
+name|Files
+operator|.
+name|createFile
+argument_list|(
+name|path
+argument_list|)
+expr_stmt|;
+name|File
+name|tempFile
+init|=
+name|path
+operator|.
+name|toFile
 argument_list|()
 decl_stmt|;
 name|BibEntry
@@ -2036,8 +2193,6 @@ argument_list|,
 literal|""
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -2064,7 +2219,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|cleanupHtmlToLatexConvertsEpsilonToLatex ()
-specifier|public
 name|void
 name|cleanupHtmlToLatexConvertsEpsilonToLatex
 parameter_list|()
@@ -2122,8 +2276,6 @@ argument_list|,
 name|entry
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -2145,7 +2297,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|cleanupUnitsConvertsOneAmpereToLatex ()
-specifier|public
 name|void
 name|cleanupUnitsConvertsOneAmpereToLatex
 parameter_list|()
@@ -2203,8 +2354,6 @@ argument_list|,
 name|entry
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -2226,7 +2375,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|cleanupCasesAddsBracketAroundAluminiumGalliumArsenid ()
-specifier|public
 name|void
 name|cleanupCasesAddsBracketAroundAluminiumGalliumArsenid
 parameter_list|()
@@ -2262,8 +2410,6 @@ argument_list|()
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertNotEquals
 argument_list|(
 name|Collections
@@ -2332,8 +2478,6 @@ argument_list|,
 name|entry
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -2355,7 +2499,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|cleanupLatexMergesTwoLatexMathEnvironments ()
-specifier|public
 name|void
 name|cleanupLatexMergesTwoLatexMathEnvironments
 parameter_list|()
@@ -2413,8 +2556,6 @@ argument_list|,
 name|entry
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -2436,7 +2577,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|convertToBiblatexMovesAddressToLocation ()
-specifier|public
 name|void
 name|convertToBiblatexMovesAddressToLocation
 parameter_list|()
@@ -2479,8 +2619,6 @@ argument_list|,
 name|entry
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -2496,8 +2634,6 @@ literal|"address"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -2519,7 +2655,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|convertToBiblatexMovesJournalToJournalTitle ()
-specifier|public
 name|void
 name|convertToBiblatexMovesJournalToJournalTitle
 parameter_list|()
@@ -2562,8 +2697,6 @@ argument_list|,
 name|entry
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -2579,8 +2712,6 @@ literal|"journal"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional
@@ -2602,7 +2733,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|cleanupWithDisabledFieldFormatterChangesNothing ()
-specifier|public
 name|void
 name|cleanupWithDisabledFieldFormatterChangesNothing
 parameter_list|()
@@ -2660,8 +2790,6 @@ argument_list|,
 name|entry
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Optional

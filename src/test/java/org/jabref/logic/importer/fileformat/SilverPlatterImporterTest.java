@@ -140,7 +140,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
 operator|.
 name|assertEquals
 import|;
@@ -148,7 +152,6 @@ end_import
 
 begin_class
 DECL|class|SilverPlatterImporterTest
-specifier|public
 class|class
 name|SilverPlatterImporterTest
 block|{
@@ -169,7 +172,6 @@ decl_stmt|;
 annotation|@
 name|BeforeEach
 DECL|method|setUp ()
-specifier|public
 name|void
 name|setUp
 parameter_list|()
@@ -277,7 +279,6 @@ argument_list|(
 literal|"fileNames"
 argument_list|)
 DECL|method|testIsRecognizedFormat (String fileName)
-specifier|public
 name|void
 name|testIsRecognizedFormat
 parameter_list|(
@@ -305,7 +306,6 @@ argument_list|(
 literal|"invalidFileNames"
 argument_list|)
 DECL|method|testIsNotRecognizedFormat (String fileName)
-specifier|public
 name|void
 name|testIsNotRecognizedFormat
 parameter_list|(
@@ -333,7 +333,6 @@ argument_list|(
 literal|"fileNames"
 argument_list|)
 DECL|method|testImportEntries (String fileName)
-specifier|public
 name|void
 name|testImportEntries
 parameter_list|(
@@ -358,7 +357,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testsGetExtensions ()
-specifier|public
 name|void
 name|testsGetExtensions
 parameter_list|()
@@ -379,7 +377,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testGetDescription ()
-specifier|public
 name|void
 name|testGetDescription
 parameter_list|()

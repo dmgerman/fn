@@ -18,7 +18,7 @@ name|java
 operator|.
 name|io
 operator|.
-name|File
+name|IOException
 import|;
 end_import
 
@@ -26,9 +26,11 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
+name|nio
 operator|.
-name|IOException
+name|file
+operator|.
+name|Path
 import|;
 end_import
 
@@ -138,35 +140,9 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
-import|;
-end_import
-
-begin_import
-import|import
-name|org
+name|jupiter
 operator|.
-name|junit
-operator|.
-name|Before
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|Rule
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
+name|api
 operator|.
 name|Test
 import|;
@@ -178,9 +154,55 @@ name|org
 operator|.
 name|junit
 operator|.
-name|rules
+name|jupiter
 operator|.
-name|TemporaryFolder
+name|api
+operator|.
+name|BeforeEach
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
+operator|.
+name|extension
+operator|.
+name|ExtendWith
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junitpioneer
+operator|.
+name|jupiter
+operator|.
+name|TempDirectory
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
+operator|.
+name|assertEquals
 import|;
 end_import
 
@@ -209,22 +231,17 @@ import|;
 end_import
 
 begin_class
+annotation|@
+name|ExtendWith
+argument_list|(
+name|TempDirectory
+operator|.
+name|class
+argument_list|)
 DECL|class|XmpUtilWriterTest
-specifier|public
 class|class
 name|XmpUtilWriterTest
 block|{
-DECL|field|tempFolder
-annotation|@
-name|Rule
-specifier|public
-name|TemporaryFolder
-name|tempFolder
-init|=
-operator|new
-name|TemporaryFolder
-argument_list|()
-decl_stmt|;
 DECL|field|xmpPreferences
 specifier|private
 name|XmpPreferences
@@ -589,9 +606,8 @@ expr_stmt|;
 block|}
 comment|/**      * Create a temporary PDF-file with a single empty page.      */
 annotation|@
-name|Before
+name|BeforeEach
 DECL|method|setUp ()
-specifier|public
 name|void
 name|setUp
 parameter_list|()
@@ -641,17 +657,23 @@ block|}
 comment|/**      * Test for writing a PDF file with a single DublinCore metadata entry.      */
 annotation|@
 name|Test
-DECL|method|testWriteXmp ()
-specifier|public
+DECL|method|testWriteXmp (@empDirectory.TempDir Path tempDir)
 name|void
 name|testWriteXmp
-parameter_list|()
+parameter_list|(
+annotation|@
+name|TempDirectory
+operator|.
+name|TempDir
+name|Path
+name|tempDir
+parameter_list|)
 throws|throws
 name|IOException
 throws|,
 name|TransformerException
 block|{
-name|File
+name|Path
 name|pdfFile
 init|=
 name|this
@@ -659,6 +681,8 @@ operator|.
 name|createDefaultFile
 argument_list|(
 literal|"JabRef_writeSingle.pdf"
+argument_list|,
+name|tempDir
 argument_list|)
 decl_stmt|;
 comment|// read a bib entry from the tests before
@@ -688,7 +712,10 @@ name|writeXmp
 argument_list|(
 name|pdfFile
 operator|.
-name|getAbsolutePath
+name|toAbsolutePath
+argument_list|()
+operator|.
+name|toString
 argument_list|()
 argument_list|,
 name|entry
@@ -711,7 +738,10 @@ name|readXmp
 argument_list|(
 name|pdfFile
 operator|.
-name|getPath
+name|toAbsolutePath
+argument_list|()
+operator|.
+name|toString
 argument_list|()
 argument_list|,
 name|xmpPreferences
@@ -728,8 +758,6 @@ literal|0
 argument_list|)
 decl_stmt|;
 comment|// compare the two entries
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|entry
@@ -741,17 +769,23 @@ block|}
 comment|/**      * Test, which writes multiple metadata entries to a PDF and reads them again to test the size.      */
 annotation|@
 name|Test
-DECL|method|testWriteMultipleBibEntries ()
-specifier|public
+DECL|method|testWriteMultipleBibEntries (@empDirectory.TempDir Path tempDir)
 name|void
 name|testWriteMultipleBibEntries
-parameter_list|()
+parameter_list|(
+annotation|@
+name|TempDirectory
+operator|.
+name|TempDir
+name|Path
+name|tempDir
+parameter_list|)
 throws|throws
 name|IOException
 throws|,
 name|TransformerException
 block|{
-name|File
+name|Path
 name|pdfFile
 init|=
 name|this
@@ -759,6 +793,8 @@ operator|.
 name|createDefaultFile
 argument_list|(
 literal|"JabRef_writeMultiple.pdf"
+argument_list|,
+name|tempDir
 argument_list|)
 decl_stmt|;
 name|List
@@ -788,7 +824,10 @@ name|get
 argument_list|(
 name|pdfFile
 operator|.
-name|getAbsolutePath
+name|toAbsolutePath
+argument_list|()
+operator|.
+name|toString
 argument_list|()
 argument_list|)
 argument_list|,
@@ -815,15 +854,16 @@ name|get
 argument_list|(
 name|pdfFile
 operator|.
-name|getAbsolutePath
+name|toAbsolutePath
+argument_list|()
+operator|.
+name|toString
 argument_list|()
 argument_list|)
 argument_list|,
 name|xmpPreferences
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|3
@@ -835,24 +875,27 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|createDefaultFile (String fileName)
+DECL|method|createDefaultFile (String fileName, Path tempDir)
 specifier|private
-name|File
+name|Path
 name|createDefaultFile
 parameter_list|(
 name|String
 name|fileName
+parameter_list|,
+name|Path
+name|tempDir
 parameter_list|)
 throws|throws
 name|IOException
 block|{
 comment|// create a default PDF
-name|File
+name|Path
 name|pdfFile
 init|=
-name|tempFolder
+name|tempDir
 operator|.
-name|newFile
+name|resolve
 argument_list|(
 name|fileName
 argument_list|)
@@ -883,7 +926,10 @@ name|save
 argument_list|(
 name|pdfFile
 operator|.
-name|getPath
+name|toAbsolutePath
+argument_list|()
+operator|.
+name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;

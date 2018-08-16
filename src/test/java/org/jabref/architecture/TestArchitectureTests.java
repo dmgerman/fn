@@ -405,7 +405,7 @@ name|s
 operator|.
 name|startsWith
 argument_list|(
-literal|"public class "
+literal|"class "
 operator|+
 name|exception
 argument_list|)

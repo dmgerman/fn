@@ -16,16 +16,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|nio
 operator|.
 name|file
@@ -126,15 +116,9 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Rule
-import|;
-end_import
-
-begin_import
-import|import
-name|org
+name|jupiter
 operator|.
-name|junit
+name|api
 operator|.
 name|Test
 import|;
@@ -146,9 +130,25 @@ name|org
 operator|.
 name|junit
 operator|.
-name|rules
+name|jupiter
 operator|.
-name|TemporaryFolder
+name|api
+operator|.
+name|extension
+operator|.
+name|ExtendWith
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junitpioneer
+operator|.
+name|jupiter
+operator|.
+name|TempDirectory
 import|;
 end_import
 
@@ -158,45 +158,48 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
 operator|.
 name|assertEquals
 import|;
 end_import
 
 begin_class
+annotation|@
+name|ExtendWith
+argument_list|(
+name|TempDirectory
+operator|.
+name|class
+argument_list|)
 DECL|class|FileDialogConfigurationTest
-specifier|public
 class|class
 name|FileDialogConfigurationTest
 block|{
-DECL|field|folder
-annotation|@
-name|Rule
-specifier|public
-name|TemporaryFolder
-name|folder
-init|=
-operator|new
-name|TemporaryFolder
-argument_list|()
-decl_stmt|;
 annotation|@
 name|Test
-DECL|method|testWithValidDirectoryString ()
-specifier|public
+DECL|method|testWithValidDirectoryString (@empDirectory.TempDir Path folder)
 name|void
 name|testWithValidDirectoryString
-parameter_list|()
-throws|throws
-name|IOException
+parameter_list|(
+annotation|@
+name|TempDirectory
+operator|.
+name|TempDir
+name|Path
+name|folder
+parameter_list|)
 block|{
 name|String
 name|tempFolder
 init|=
 name|folder
 operator|.
-name|newFolder
+name|toAbsolutePath
 argument_list|()
 operator|.
 name|toString
@@ -242,25 +245,18 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testWithValidDirectoryPath ()
-specifier|public
+DECL|method|testWithValidDirectoryPath (@empDirectory.TempDir Path tempFolder)
 name|void
 name|testWithValidDirectoryPath
-parameter_list|()
-throws|throws
-name|IOException
-block|{
+parameter_list|(
+annotation|@
+name|TempDirectory
+operator|.
+name|TempDir
 name|Path
 name|tempFolder
-init|=
-name|folder
-operator|.
-name|newFolder
-argument_list|()
-operator|.
-name|toPath
-argument_list|()
-decl_stmt|;
+parameter_list|)
+block|{
 name|FileDialogConfiguration
 name|fileDialogConfiguration
 init|=
@@ -297,7 +293,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testWithNullStringDirectory ()
-specifier|public
 name|void
 name|testWithNullStringDirectory
 parameter_list|()
@@ -339,7 +334,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testWithNullPathDirectory ()
-specifier|public
 name|void
 name|testWithNullPathDirectory
 parameter_list|()
@@ -381,7 +375,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testWithNonExistingDirectoryAndParentNull ()
-specifier|public
 name|void
 name|testWithNonExistingDirectoryAndParentNull
 parameter_list|()
@@ -425,7 +418,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testSingleExtension ()
-specifier|public
 name|void
 name|testSingleExtension
 parameter_list|()

@@ -28,7 +28,9 @@ name|java
 operator|.
 name|util
 operator|.
-name|Collection
+name|stream
+operator|.
+name|Stream
 import|;
 end_import
 
@@ -38,7 +40,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Test
+name|jupiter
+operator|.
+name|params
+operator|.
+name|ParameterizedTest
 import|;
 end_import
 
@@ -48,9 +54,13 @@ name|org
 operator|.
 name|junit
 operator|.
-name|runner
+name|jupiter
 operator|.
-name|RunWith
+name|params
+operator|.
+name|provider
+operator|.
+name|Arguments
 import|;
 end_import
 
@@ -60,37 +70,13 @@ name|org
 operator|.
 name|junit
 operator|.
-name|runners
+name|jupiter
 operator|.
-name|Parameterized
-import|;
-end_import
-
-begin_import
-import|import
-name|org
+name|params
 operator|.
-name|junit
+name|provider
 operator|.
-name|runners
-operator|.
-name|Parameterized
-operator|.
-name|Parameter
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|runners
-operator|.
-name|Parameterized
-operator|.
-name|Parameters
+name|MethodSource
 import|;
 end_import
 
@@ -100,80 +86,43 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
 operator|.
 name|assertEquals
 import|;
 end_import
 
 begin_class
-annotation|@
-name|RunWith
-argument_list|(
-name|Parameterized
-operator|.
-name|class
-argument_list|)
 DECL|class|AuthorListParameterTest
 specifier|public
 class|class
 name|AuthorListParameterTest
 block|{
-annotation|@
-name|Parameter
-argument_list|(
-name|value
-operator|=
-literal|0
-argument_list|)
-DECL|field|authorsString
-specifier|public
-name|String
-name|authorsString
-decl_stmt|;
-annotation|@
-name|Parameter
-argument_list|(
-name|value
-operator|=
-literal|1
-argument_list|)
-DECL|field|authorsParsed
-specifier|public
-name|AuthorList
-name|authorsParsed
-decl_stmt|;
-annotation|@
-name|Parameters
-argument_list|(
-name|name
-operator|=
-literal|"{index}: parse({0})={1}"
-argument_list|)
 DECL|method|data ()
-specifier|public
+specifier|private
 specifier|static
-name|Collection
+name|Stream
 argument_list|<
-name|Object
-index|[]
+name|Arguments
 argument_list|>
 name|data
 parameter_list|()
 block|{
 return|return
-name|Arrays
+name|Stream
 operator|.
-name|asList
+name|of
 argument_list|(
-operator|new
-name|Object
-index|[]
-index|[]
-block|{
-block|{
+name|Arguments
+operator|.
+name|of
+argument_list|(
 literal|"ç, å"
-block|,
+argument_list|,
 name|authorList
 argument_list|(
 operator|new
@@ -190,11 +139,14 @@ argument_list|,
 literal|null
 argument_list|)
 argument_list|)
-block|}
-block|,
-block|{
+argument_list|)
+argument_list|,
+name|Arguments
+operator|.
+name|of
+argument_list|(
 literal|"Doe, John"
-block|,
+argument_list|,
 name|authorList
 argument_list|(
 operator|new
@@ -211,11 +163,14 @@ argument_list|,
 literal|null
 argument_list|)
 argument_list|)
-block|}
-block|,
-block|{
+argument_list|)
+argument_list|,
+name|Arguments
+operator|.
+name|of
+argument_list|(
 literal|"von Berlichingen zu Hornberg, Johann Gottfried"
-block|,
+argument_list|,
 name|authorList
 argument_list|(
 operator|new
@@ -232,13 +187,16 @@ argument_list|,
 literal|null
 argument_list|)
 argument_list|)
-block|}
-block|,
-comment|//{ "Robert and Sons, Inc.", authorList(new Author(null, null, null, "Robert and Sons, Inc.", null)) },
-comment|//{ "al-á¹¢Äliá¸¥, AbdallÄh", authorList(new Author("AbdallÄh", "A.", null, "al-á¹¢Äliá¸¥", null)) },
-block|{
+argument_list|)
+argument_list|,
+comment|//Arguments.of("Robert and Sons, Inc.", authorList(new Author(null, null, null, "Robert and Sons, Inc.", null))),
+comment|//Arguments.of("al-á¹¢Äliá¸¥, AbdallÄh", authorList(new Author("AbdallÄh", "A.", null, "al-á¹¢Äliá¸¥", null))),
+name|Arguments
+operator|.
+name|of
+argument_list|(
 literal|"de la VallÃ©e Poussin, Jean Charles Gabriel"
-block|,
+argument_list|,
 name|authorList
 argument_list|(
 operator|new
@@ -255,11 +213,14 @@ argument_list|,
 literal|null
 argument_list|)
 argument_list|)
-block|}
-block|,
-block|{
+argument_list|)
+argument_list|,
+name|Arguments
+operator|.
+name|of
+argument_list|(
 literal|"de la VallÃ©e Poussin, J. C. G."
-block|,
+argument_list|,
 name|authorList
 argument_list|(
 operator|new
@@ -276,11 +237,14 @@ argument_list|,
 literal|null
 argument_list|)
 argument_list|)
-block|}
-block|,
-block|{
+argument_list|)
+argument_list|,
+name|Arguments
+operator|.
+name|of
+argument_list|(
 literal|"{K}ent-{B}oswell, E. S."
-block|,
+argument_list|,
 name|authorList
 argument_list|(
 operator|new
@@ -297,13 +261,12 @@ argument_list|,
 literal|null
 argument_list|)
 argument_list|)
-block|}
-block|,         }
+argument_list|)
 argument_list|)
 return|;
 block|}
 DECL|method|authorList (Author author)
-specifier|public
+specifier|private
 specifier|static
 name|AuthorList
 name|authorList
@@ -326,12 +289,22 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Test
-DECL|method|parseCorrectly ()
-specifier|public
+name|ParameterizedTest
+annotation|@
+name|MethodSource
+argument_list|(
+literal|"data"
+argument_list|)
+DECL|method|parseCorrectly (String authorsString, AuthorList authorsParsed)
 name|void
 name|parseCorrectly
-parameter_list|()
+parameter_list|(
+name|String
+name|authorsString
+parameter_list|,
+name|AuthorList
+name|authorsParsed
+parameter_list|)
 block|{
 name|AuthorListParser
 name|parser

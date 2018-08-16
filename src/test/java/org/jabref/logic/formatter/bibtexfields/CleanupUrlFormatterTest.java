@@ -20,7 +20,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Before
+name|jupiter
+operator|.
+name|api
+operator|.
+name|BeforeEach
 import|;
 end_import
 
@@ -29,6 +33,10 @@ import|import
 name|org
 operator|.
 name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
 operator|.
 name|Test
 import|;
@@ -40,7 +48,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
 operator|.
 name|assertEquals
 import|;
@@ -52,7 +64,6 @@ end_comment
 
 begin_class
 DECL|class|CleanupUrlFormatterTest
-specifier|public
 class|class
 name|CleanupUrlFormatterTest
 block|{
@@ -62,9 +73,8 @@ name|CleanupURLFormatter
 name|formatter
 decl_stmt|;
 annotation|@
-name|Before
+name|BeforeEach
 DECL|method|setUp ()
-specifier|public
 name|void
 name|setUp
 parameter_list|()
@@ -79,7 +89,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|removeSpecialSymbolsFromURLLink ()
-specifier|public
 name|void
 name|removeSpecialSymbolsFromURLLink
 parameter_list|()
@@ -100,7 +109,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|extractURLFormLink ()
-specifier|public
 name|void
 name|extractURLFormLink
 parameter_list|()
@@ -121,7 +129,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|formatExample ()
-specifier|public
 name|void
 name|formatExample
 parameter_list|()

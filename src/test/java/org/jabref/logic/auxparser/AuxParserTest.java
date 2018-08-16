@@ -256,7 +256,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
 operator|.
 name|assertEquals
 import|;
@@ -268,7 +272,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
 operator|.
 name|assertFalse
 import|;
@@ -280,7 +288,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
 operator|.
 name|assertTrue
 import|;
@@ -300,7 +312,6 @@ end_import
 
 begin_class
 DECL|class|AuxParserTest
-specifier|public
 class|class
 name|AuxParserTest
 block|{
@@ -312,7 +323,6 @@ decl_stmt|;
 annotation|@
 name|BeforeEach
 DECL|method|setUp ()
-specifier|public
 name|void
 name|setUp
 parameter_list|()
@@ -334,7 +344,6 @@ block|}
 annotation|@
 name|AfterEach
 DECL|method|tearDown ()
-specifier|public
 name|void
 name|tearDown
 parameter_list|()
@@ -347,7 +356,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testNormal ()
-specifier|public
 name|void
 name|testNormal
 parameter_list|()
@@ -544,7 +552,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testNotAllFound ()
-specifier|public
 name|void
 name|testNotAllFound
 parameter_list|()
@@ -741,7 +748,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|duplicateBibDatabaseConfiguration ()
-specifier|public
 name|void
 name|duplicateBibDatabaseConfiguration
 parameter_list|()
@@ -876,7 +882,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testNestedAux ()
-specifier|public
 name|void
 name|testNestedAux
 parameter_list|()
@@ -1073,7 +1078,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testCrossRef ()
-specifier|public
 name|void
 name|testCrossRef
 parameter_list|()
@@ -1270,7 +1274,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testFileNotFound ()
-specifier|public
 name|void
 name|testFileNotFound
 parameter_list|()

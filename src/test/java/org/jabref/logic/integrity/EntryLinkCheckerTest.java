@@ -94,7 +94,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
 operator|.
 name|assertEquals
 import|;
@@ -106,7 +110,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
 operator|.
 name|assertFalse
 import|;
@@ -130,7 +138,6 @@ end_import
 
 begin_class
 DECL|class|EntryLinkCheckerTest
-specifier|public
 class|class
 name|EntryLinkCheckerTest
 block|{
@@ -152,7 +159,6 @@ decl_stmt|;
 annotation|@
 name|BeforeEach
 DECL|method|setUp ()
-specifier|public
 name|void
 name|setUp
 parameter_list|()
@@ -188,7 +194,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testEntryLinkChecker ()
-specifier|public
 name|void
 name|testEntryLinkChecker
 parameter_list|()
@@ -212,7 +217,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testCheckNoFields ()
-specifier|public
 name|void
 name|testCheckNoFields
 parameter_list|()
@@ -236,7 +240,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testCheckNonRelatedFieldsOnly ()
-specifier|public
 name|void
 name|testCheckNonRelatedFieldsOnly
 parameter_list|()
@@ -269,7 +272,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testCheckNonExistingCrossref ()
-specifier|public
 name|void
 name|testCheckNonExistingCrossref
 parameter_list|()
@@ -300,12 +302,12 @@ name|assertFalse
 argument_list|(
 name|message
 operator|.
-name|toString
+name|isEmpty
 argument_list|()
 argument_list|,
 name|message
 operator|.
-name|isEmpty
+name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -313,7 +315,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testCheckExistingCrossref ()
-specifier|public
 name|void
 name|testCheckExistingCrossref
 parameter_list|()
@@ -375,7 +376,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testCheckExistingRelated ()
-specifier|public
 name|void
 name|testCheckExistingRelated
 parameter_list|()
@@ -458,7 +458,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testCheckNonExistingRelated ()
-specifier|public
 name|void
 name|testCheckNonExistingRelated
 parameter_list|()
@@ -545,12 +544,12 @@ name|assertFalse
 argument_list|(
 name|message
 operator|.
-name|toString
+name|isEmpty
 argument_list|()
 argument_list|,
 name|message
 operator|.
-name|isEmpty
+name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;

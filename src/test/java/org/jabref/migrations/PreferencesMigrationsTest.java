@@ -112,7 +112,6 @@ end_import
 
 begin_class
 DECL|class|PreferencesMigrationsTest
-specifier|public
 class|class
 name|PreferencesMigrationsTest
 block|{
@@ -161,7 +160,6 @@ decl_stmt|;
 annotation|@
 name|BeforeEach
 DECL|method|setUp ()
-specifier|public
 name|void
 name|setUp
 parameter_list|()
@@ -188,7 +186,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testOldStyleBibtexkeyPattern0 ()
-specifier|public
 name|void
 name|testOldStyleBibtexkeyPattern0
 parameter_list|()
@@ -299,7 +296,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testOldStyleBibtexkeyPattern1 ()
-specifier|public
 name|void
 name|testOldStyleBibtexkeyPattern1
 parameter_list|()
@@ -410,7 +406,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testArbitraryBibtexkeyPattern ()
-specifier|public
 name|void
 name|testArbitraryBibtexkeyPattern
 parameter_list|()
@@ -503,7 +498,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testPreviewStyle ()
-specifier|public
 name|void
 name|testPreviewStyle
 parameter_list|()

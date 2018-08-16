@@ -32,7 +32,7 @@ name|nio
 operator|.
 name|file
 operator|.
-name|Files
+name|*
 import|;
 end_import
 
@@ -44,7 +44,9 @@ name|nio
 operator|.
 name|file
 operator|.
-name|Path
+name|attribute
+operator|.
+name|BasicFileAttributes
 import|;
 end_import
 
@@ -112,7 +114,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Before
+name|jupiter
+operator|.
+name|api
+operator|.
+name|AfterEach
 import|;
 end_import
 
@@ -122,7 +128,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Rule
+name|jupiter
+operator|.
+name|api
+operator|.
+name|BeforeEach
 import|;
 end_import
 
@@ -131,6 +141,10 @@ import|import
 name|org
 operator|.
 name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
 operator|.
 name|Test
 import|;
@@ -142,9 +156,13 @@ name|org
 operator|.
 name|junit
 operator|.
-name|rules
+name|jupiter
 operator|.
-name|TemporaryFolder
+name|api
+operator|.
+name|extension
+operator|.
+name|ExtendWith
 import|;
 end_import
 
@@ -152,23 +170,11 @@ begin_import
 import|import
 name|org
 operator|.
-name|junit
+name|junitpioneer
 operator|.
-name|runner
+name|jupiter
 operator|.
-name|RunWith
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|mockito
-operator|.
-name|junit
-operator|.
-name|MockitoJUnitRunner
+name|TempDirectory
 import|;
 end_import
 
@@ -178,7 +184,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
 operator|.
 name|assertEquals
 import|;
@@ -186,28 +196,16 @@ end_import
 
 begin_class
 annotation|@
-name|RunWith
+name|ExtendWith
 argument_list|(
-name|MockitoJUnitRunner
+name|TempDirectory
 operator|.
 name|class
 argument_list|)
 DECL|class|CiteKeyBasedFileFinderTest
-specifier|public
 class|class
 name|CiteKeyBasedFileFinderTest
 block|{
-annotation|@
-name|Rule
-DECL|field|temporaryFolder
-specifier|public
-name|TemporaryFolder
-name|temporaryFolder
-init|=
-operator|new
-name|TemporaryFolder
-argument_list|()
-decl_stmt|;
 DECL|field|entry
 specifier|private
 name|BibEntry
@@ -239,12 +237,18 @@ name|Path
 name|pdfFile
 decl_stmt|;
 annotation|@
-name|Before
-DECL|method|setUp ()
-specifier|public
+name|BeforeEach
+DECL|method|setUp (@empDirectory.TempDir Path temporaryFolder)
 name|void
 name|setUp
-parameter_list|()
+parameter_list|(
+annotation|@
+name|TempDirectory
+operator|.
+name|TempDir
+name|Path
+name|temporaryFolder
+parameter_list|)
 throws|throws
 name|IOException
 block|{
@@ -271,12 +275,6 @@ expr_stmt|;
 name|rootDir
 operator|=
 name|temporaryFolder
-operator|.
-name|getRoot
-argument_list|()
-operator|.
-name|toPath
-argument_list|()
 expr_stmt|;
 name|Path
 name|subDir
@@ -521,7 +519,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|findAssociatedFilesInSubDirectories ()
-specifier|public
 name|void
 name|findAssociatedFilesInSubDirectories
 parameter_list|()
@@ -602,7 +599,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|findAssociatedFilesIgnoresFilesStartingWithKeyButContinueWithText ()
-specifier|public
 name|void
 name|findAssociatedFilesIgnoresFilesStartingWithKeyButContinueWithText
 parameter_list|()
@@ -673,7 +669,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|findAssociatedFilesFindsFilesStartingWithKey ()
-specifier|public
 name|void
 name|findAssociatedFilesFindsFilesStartingWithKey
 parameter_list|()
@@ -749,7 +744,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|findAssociatedFilesInNonExistingDirectoryFindsNothing ()
-specifier|public
 name|void
 name|findAssociatedFilesInNonExistingDirectoryFindsNothing
 parameter_list|()

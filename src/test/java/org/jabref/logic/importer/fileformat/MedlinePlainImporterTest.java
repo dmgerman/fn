@@ -312,63 +312,18 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
-operator|.
-name|assertFalse
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
 name|jupiter
 operator|.
 name|api
 operator|.
 name|Assertions
 operator|.
-name|assertEquals
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|jupiter
-operator|.
-name|api
-operator|.
-name|Assertions
-operator|.
-name|assertNotNull
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|jupiter
-operator|.
-name|api
-operator|.
-name|Assertions
-operator|.
-name|assertThrows
+name|*
 import|;
 end_import
 
 begin_class
 DECL|class|MedlinePlainImporterTest
-specifier|public
 class|class
 name|MedlinePlainImporterTest
 block|{
@@ -456,7 +411,6 @@ block|}
 annotation|@
 name|BeforeEach
 DECL|method|setUp ()
-specifier|public
 name|void
 name|setUp
 parameter_list|()
@@ -471,7 +425,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testsGetExtensions ()
-specifier|public
 name|void
 name|testsGetExtensions
 parameter_list|()
@@ -492,7 +445,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testGetDescription ()
-specifier|public
 name|void
 name|testGetDescription
 parameter_list|()
@@ -516,7 +468,6 @@ argument_list|(
 literal|"fileNames"
 argument_list|)
 DECL|method|testIsRecognizedFormat (String fileName)
-specifier|public
 name|void
 name|testIsRecognizedFormat
 parameter_list|(
@@ -539,7 +490,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|doesNotRecognizeEmptyFiles ()
-specifier|public
 name|void
 name|doesNotRecognizeEmptyFiles
 parameter_list|()
@@ -563,7 +513,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testImportMultipleEntriesInSingleFile ()
-specifier|public
 name|void
 name|testImportMultipleEntriesInSingleFile
 parameter_list|()
@@ -938,7 +887,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testEmptyFileImport ()
-specifier|public
 name|void
 name|testEmptyFileImport
 parameter_list|()
@@ -981,7 +929,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testImportSingleEntriesInSingleFiles ()
-specifier|public
 name|void
 name|testImportSingleEntriesInSingleFiles
 parameter_list|()
@@ -1150,7 +1097,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testMultiLineComments ()
-specifier|public
 name|void
 name|testMultiLineComments
 parameter_list|()
@@ -1344,7 +1290,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testKeyWords ()
-specifier|public
 name|void
 name|testKeyWords
 parameter_list|()
@@ -1422,7 +1367,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testWithNbibFile ()
-specifier|public
 name|void
 name|testWithNbibFile
 parameter_list|()
@@ -1491,7 +1435,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testWithMultipleEntries ()
-specifier|public
 name|void
 name|testWithMultipleEntries
 parameter_list|()
@@ -1560,7 +1503,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testInvalidFormat ()
-specifier|public
 name|void
 name|testInvalidFormat
 parameter_list|()
@@ -1626,7 +1568,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testNullReader ()
-specifier|public
 name|void
 name|testNullReader
 parameter_list|()
@@ -1670,7 +1611,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testAllArticleTypes ()
-specifier|public
 name|void
 name|testAllArticleTypes
 parameter_list|()
@@ -1769,7 +1709,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testGetFormatName ()
-specifier|public
 name|void
 name|testGetFormatName
 parameter_list|()
@@ -1788,7 +1727,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testGetCLIId ()
-specifier|public
 name|void
 name|testGetCLIId
 parameter_list|()

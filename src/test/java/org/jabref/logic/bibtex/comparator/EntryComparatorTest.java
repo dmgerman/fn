@@ -48,7 +48,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
 operator|.
 name|assertEquals
 import|;
@@ -56,14 +60,12 @@ end_import
 
 begin_class
 DECL|class|EntryComparatorTest
-specifier|public
 class|class
 name|EntryComparatorTest
 block|{
 annotation|@
 name|Test
 DECL|method|recognizeIdenticObjectsAsEqual ()
-specifier|public
 name|void
 name|recognizeIdenticObjectsAsEqual
 parameter_list|()

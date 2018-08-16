@@ -60,7 +60,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
 operator|.
 name|assertEquals
 import|;
@@ -68,7 +72,6 @@ end_import
 
 begin_class
 DECL|class|MakeLabelWithoutDatabaseTest
-specifier|public
 class|class
 name|MakeLabelWithoutDatabaseTest
 block|{
@@ -80,7 +83,6 @@ decl_stmt|;
 annotation|@
 name|BeforeEach
 DECL|method|setUp ()
-specifier|public
 name|void
 name|setUp
 parameter_list|()
@@ -122,7 +124,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|makeLabelForFileSearch ()
-specifier|public
 name|void
 name|makeLabelForFileSearch
 parameter_list|()
@@ -150,7 +151,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|makeEditorLabelForFileSearch ()
-specifier|public
 name|void
 name|makeEditorLabelForFileSearch
 parameter_list|()

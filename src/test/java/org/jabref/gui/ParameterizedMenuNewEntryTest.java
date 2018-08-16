@@ -16,17 +16,9 @@ name|java
 operator|.
 name|util
 operator|.
-name|Arrays
-import|;
-end_import
-
-begin_import
-import|import
-name|java
+name|stream
 operator|.
-name|util
-operator|.
-name|Collection
+name|Stream
 import|;
 end_import
 
@@ -41,20 +33,6 @@ operator|.
 name|strings
 operator|.
 name|StringUtil
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|testutils
-operator|.
-name|category
-operator|.
-name|GUITest
 import|;
 end_import
 
@@ -78,7 +56,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Test
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Tag
 import|;
 end_import
 
@@ -88,11 +70,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|experimental
+name|jupiter
 operator|.
-name|categories
+name|params
 operator|.
-name|Category
+name|ParameterizedTest
 import|;
 end_import
 
@@ -102,38 +84,21 @@ name|org
 operator|.
 name|junit
 operator|.
-name|runner
+name|jupiter
 operator|.
-name|RunWith
-import|;
-end_import
-
-begin_import
-import|import
-name|org
+name|params
 operator|.
-name|junit
+name|provider
 operator|.
-name|runners
-operator|.
-name|Parameterized
+name|MethodSource
 import|;
 end_import
 
 begin_class
 annotation|@
-name|RunWith
+name|Tag
 argument_list|(
-name|Parameterized
-operator|.
-name|class
-argument_list|)
-annotation|@
-name|Category
-argument_list|(
-name|GUITest
-operator|.
-name|class
+literal|"GUITest"
 argument_list|)
 DECL|class|ParameterizedMenuNewEntryTest
 specifier|public
@@ -142,21 +107,18 @@ name|ParameterizedMenuNewEntryTest
 extends|extends
 name|AbstractUITest
 block|{
-DECL|field|databaseMode
-specifier|private
-specifier|final
-name|String
-name|databaseMode
-decl_stmt|;
-DECL|field|entryType
-specifier|private
-specifier|final
-name|String
-name|entryType
-decl_stmt|;
-DECL|method|ParameterizedMenuNewEntryTest (String databaseMode, String entryType)
+comment|// Not working on Travis
+annotation|@
+name|ParameterizedTest
+annotation|@
+name|MethodSource
+argument_list|(
+literal|"instancesToTest"
+argument_list|)
+DECL|method|addEntryOfGivenType (String databaseMode, String entryType)
 specifier|public
-name|ParameterizedMenuNewEntryTest
+name|void
+name|addEntryOfGivenType
 parameter_list|(
 name|String
 name|databaseMode
@@ -164,28 +126,6 @@ parameter_list|,
 name|String
 name|entryType
 parameter_list|)
-block|{
-name|this
-operator|.
-name|databaseMode
-operator|=
-name|databaseMode
-expr_stmt|;
-name|this
-operator|.
-name|entryType
-operator|=
-name|entryType
-expr_stmt|;
-block|}
-comment|// Not working on Travis
-annotation|@
-name|Test
-DECL|method|addEntryOfGivenType ()
-specifier|public
-name|void
-name|addEntryOfGivenType
-parameter_list|()
 block|{
 name|mainFrame
 operator|.
@@ -245,19 +185,10 @@ literal|1
 argument_list|)
 expr_stmt|;
 block|}
-annotation|@
-name|Parameterized
-operator|.
-name|Parameters
-argument_list|(
-name|name
-operator|=
-literal|"{index}: {0} : {1}"
-argument_list|)
 DECL|method|instancesToTest ()
 specifier|public
 specifier|static
-name|Collection
+name|Stream
 argument_list|<
 name|Object
 index|[]
@@ -270,9 +201,9 @@ comment|// Structure:
 comment|// {"BibTeX"/"biblatex", "type"}
 comment|// @formatter:off
 return|return
-name|Arrays
+name|Stream
 operator|.
-name|asList
+name|of
 argument_list|(
 operator|new
 name|Object

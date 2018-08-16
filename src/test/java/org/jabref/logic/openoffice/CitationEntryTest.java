@@ -28,6 +28,10 @@ name|org
 operator|.
 name|junit
 operator|.
+name|jupiter
+operator|.
+name|api
+operator|.
 name|Test
 import|;
 end_import
@@ -98,14 +102,12 @@ end_import
 
 begin_class
 DECL|class|CitationEntryTest
-specifier|public
 class|class
 name|CitationEntryTest
 block|{
 annotation|@
 name|Test
 DECL|method|testCitationEntryInitalPageInfo ()
-specifier|public
 name|void
 name|testCitationEntryInitalPageInfo
 parameter_list|()
@@ -179,7 +181,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testCitationEntryOptionalInitalPageInfo ()
-specifier|public
 name|void
 name|testCitationEntryOptionalInitalPageInfo
 parameter_list|()
@@ -258,7 +259,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testCitationEntryInitalPageInfoChanged ()
-specifier|public
 name|void
 name|testCitationEntryInitalPageInfoChanged
 parameter_list|()
@@ -319,7 +319,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testCitationEntryInitalPageInfoRemoved ()
-specifier|public
 name|void
 name|testCitationEntryInitalPageInfoRemoved
 parameter_list|()
@@ -367,7 +366,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testCitationEntryNoInitalPageInfo ()
-specifier|public
 name|void
 name|testCitationEntryNoInitalPageInfo
 parameter_list|()
@@ -406,7 +404,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testCitationEntryNoInitalPageInfoChanged ()
-specifier|public
 name|void
 name|testCitationEntryNoInitalPageInfoChanged
 parameter_list|()
@@ -465,7 +462,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testCitationEntryEquals ()
-specifier|public
 name|void
 name|testCitationEntryEquals
 parameter_list|()
@@ -541,7 +537,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testCitationEntryCompareTo ()
-specifier|public
 name|void
 name|testCitationEntryCompareTo
 parameter_list|()

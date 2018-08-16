@@ -16,17 +16,9 @@ name|java
 operator|.
 name|util
 operator|.
-name|Arrays
-import|;
-end_import
-
-begin_import
-import|import
-name|java
+name|stream
 operator|.
-name|util
-operator|.
-name|Collection
+name|Stream
 import|;
 end_import
 
@@ -69,20 +61,6 @@ operator|.
 name|text
 operator|.
 name|JTextComponent
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|testutils
-operator|.
-name|category
-operator|.
-name|GUITest
 import|;
 end_import
 
@@ -150,7 +128,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Test
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Tag
 import|;
 end_import
 
@@ -160,11 +142,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|experimental
+name|jupiter
 operator|.
-name|categories
+name|params
 operator|.
-name|Category
+name|ParameterizedTest
 import|;
 end_import
 
@@ -174,21 +156,13 @@ name|org
 operator|.
 name|junit
 operator|.
-name|runner
+name|jupiter
 operator|.
-name|RunWith
-import|;
-end_import
-
-begin_import
-import|import
-name|org
+name|params
 operator|.
-name|junit
+name|provider
 operator|.
-name|runners
-operator|.
-name|Parameterized
+name|MethodSource
 import|;
 end_import
 
@@ -226,18 +200,9 @@ end_import
 
 begin_class
 annotation|@
-name|RunWith
+name|Tag
 argument_list|(
-name|Parameterized
-operator|.
-name|class
-argument_list|)
-annotation|@
-name|Category
-argument_list|(
-name|GUITest
-operator|.
-name|class
+literal|"GUITest"
 argument_list|)
 DECL|class|IdFetcherDialogTest
 specifier|public
@@ -246,21 +211,17 @@ name|IdFetcherDialogTest
 extends|extends
 name|AbstractUITest
 block|{
-DECL|field|databaseMode
-DECL|field|fetcherType
-DECL|field|fetchID
-specifier|private
-specifier|final
-name|String
-name|databaseMode
-decl_stmt|,
-name|fetcherType
-decl_stmt|,
-name|fetchID
-decl_stmt|;
-DECL|method|IdFetcherDialogTest (String databaseMode, String fetcherType, String fetchID)
+annotation|@
+name|ParameterizedTest
+annotation|@
+name|MethodSource
+argument_list|(
+literal|"instancesToTest"
+argument_list|)
+DECL|method|insertEmptySearchID (String databaseMode, String fetcherType, String fetchID)
 specifier|public
-name|IdFetcherDialogTest
+name|void
+name|insertEmptySearchID
 parameter_list|(
 name|String
 name|databaseMode
@@ -271,33 +232,6 @@ parameter_list|,
 name|String
 name|fetchID
 parameter_list|)
-block|{
-name|this
-operator|.
-name|databaseMode
-operator|=
-name|databaseMode
-expr_stmt|;
-name|this
-operator|.
-name|fetcherType
-operator|=
-name|fetcherType
-expr_stmt|;
-name|this
-operator|.
-name|fetchID
-operator|=
-name|fetchID
-expr_stmt|;
-block|}
-annotation|@
-name|Test
-DECL|method|insertEmptySearchID ()
-specifier|public
-name|void
-name|insertEmptySearchID
-parameter_list|()
 block|{
 name|mainFrame
 operator|.
@@ -551,12 +485,26 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
-name|Test
-DECL|method|testFetcherDialog ()
+name|ParameterizedTest
+annotation|@
+name|MethodSource
+argument_list|(
+literal|"instancesToTest"
+argument_list|)
+DECL|method|testFetcherDialog (String databaseMode, String fetcherType, String fetchID)
 specifier|public
 name|void
 name|testFetcherDialog
-parameter_list|()
+parameter_list|(
+name|String
+name|databaseMode
+parameter_list|,
+name|String
+name|fetcherType
+parameter_list|,
+name|String
+name|fetchID
+parameter_list|)
 block|{
 name|mainFrame
 operator|.
@@ -844,19 +792,10 @@ literal|1
 argument_list|)
 expr_stmt|;
 block|}
-annotation|@
-name|Parameterized
-operator|.
-name|Parameters
-argument_list|(
-name|name
-operator|=
-literal|"{index}: {0} : {1} : {2}"
-argument_list|)
 DECL|method|instancesToTest ()
 specifier|public
 specifier|static
-name|Collection
+name|Stream
 argument_list|<
 name|Object
 index|[]
@@ -865,9 +804,9 @@ name|instancesToTest
 parameter_list|()
 block|{
 return|return
-name|Arrays
+name|Stream
 operator|.
-name|asList
+name|of
 argument_list|(
 operator|new
 name|Object

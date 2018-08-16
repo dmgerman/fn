@@ -40,15 +40,9 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Before
-import|;
-end_import
-
-begin_import
-import|import
-name|org
+name|jupiter
 operator|.
-name|junit
+name|api
 operator|.
 name|Test
 import|;
@@ -60,9 +54,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|runner
+name|jupiter
 operator|.
-name|RunWith
+name|api
+operator|.
+name|BeforeEach
 import|;
 end_import
 
@@ -102,9 +98,7 @@ name|org
 operator|.
 name|mockito
 operator|.
-name|runners
-operator|.
-name|MockitoJUnitRunner
+name|MockitoAnnotations
 import|;
 end_import
 
@@ -114,7 +108,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
 operator|.
 name|assertEquals
 import|;
@@ -145,15 +143,7 @@ import|;
 end_import
 
 begin_class
-annotation|@
-name|RunWith
-argument_list|(
-name|MockitoJUnitRunner
-operator|.
-name|class
-argument_list|)
 DECL|class|SearchQueryHighlightObservableTest
-specifier|public
 class|class
 name|SearchQueryHighlightObservableTest
 block|{
@@ -182,9 +172,8 @@ name|SearchQueryHighlightObservable
 name|observable
 decl_stmt|;
 annotation|@
-name|Before
+name|BeforeEach
 DECL|method|setUp ()
-specifier|public
 name|void
 name|setUp
 parameter_list|()
@@ -197,11 +186,17 @@ operator|new
 name|SearchQueryHighlightObservable
 argument_list|()
 expr_stmt|;
+name|MockitoAnnotations
+operator|.
+name|initMocks
+argument_list|(
+name|this
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Test
 DECL|method|addSearchListenerNotifiesListenerAboutPreviousPattern ()
-specifier|public
 name|void
 name|addSearchListenerNotifiesListenerAboutPreviousPattern
 parameter_list|()
@@ -263,7 +258,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|addSearchListenerNotifiesRegisteredListener ()
-specifier|public
 name|void
 name|addSearchListenerNotifiesRegisteredListener
 parameter_list|()
@@ -328,7 +322,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|addSearchListenerNotifiesRegisteredListenerAboutGrammarBasedSearches ()
-specifier|public
 name|void
 name|addSearchListenerNotifiesRegisteredListenerAboutGrammarBasedSearches
 parameter_list|()

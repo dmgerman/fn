@@ -230,7 +230,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|BeforeEach
 import|;
 end_import
 
@@ -240,39 +244,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Before
-import|;
-end_import
-
-begin_import
-import|import
-name|org
+name|jupiter
 operator|.
-name|junit
-operator|.
-name|Rule
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
+name|api
 operator|.
 name|Test
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|rules
-operator|.
-name|TemporaryFolder
 import|;
 end_import
 
@@ -283,6 +259,22 @@ operator|.
 name|mockito
 operator|.
 name|Answers
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
+operator|.
+name|assertEquals
 import|;
 end_import
 
@@ -312,21 +304,9 @@ end_import
 
 begin_class
 DECL|class|XmpUtilReaderTest
-specifier|public
 class|class
 name|XmpUtilReaderTest
 block|{
-DECL|field|tempFolder
-annotation|@
-name|Rule
-specifier|public
-name|TemporaryFolder
-name|tempFolder
-init|=
-operator|new
-name|TemporaryFolder
-argument_list|()
-decl_stmt|;
 DECL|field|fileMonitor
 specifier|private
 specifier|static
@@ -350,9 +330,8 @@ name|parser
 decl_stmt|;
 comment|/**      * Create a temporary PDF-file with a single empty page.      */
 annotation|@
-name|Before
+name|BeforeEach
 DECL|method|setUp ()
-specifier|public
 name|void
 name|setUp
 parameter_list|()
@@ -437,7 +416,6 @@ comment|/**      * Tests reading of dublinCore metadata.      */
 annotation|@
 name|Test
 DECL|method|testReadArticleDublinCoreReadRawXmp ()
-specifier|public
 name|void
 name|testReadArticleDublinCoreReadRawXmp
 parameter_list|()
@@ -554,8 +532,6 @@ argument_list|(
 name|bibString
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|entryFromBibFile
@@ -574,7 +550,6 @@ comment|/**      * Tests reading of dublinCore metadata.      */
 annotation|@
 name|Test
 DECL|method|testReadArticleDublinCoreReadXmp ()
-specifier|public
 name|void
 name|testReadArticleDublinCoreReadXmp
 parameter_list|()
@@ -659,8 +634,6 @@ argument_list|(
 name|bibString
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|entryFromBibFile
@@ -676,7 +649,6 @@ comment|/**      * Tests an pdf file with an empty metadata section.      */
 annotation|@
 name|Test
 DECL|method|testReadEmtpyMetadata ()
-specifier|public
 name|void
 name|testReadEmtpyMetadata
 parameter_list|()
@@ -715,8 +687,6 @@ argument_list|,
 name|xmpPreferences
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|Collections
@@ -731,7 +701,6 @@ comment|/**      * Test non XMP metadata. Metadata are included in the PDInforma
 annotation|@
 name|Test
 DECL|method|testReadPDMetadata ()
-specifier|public
 name|void
 name|testReadPDMetadata
 parameter_list|()
@@ -806,8 +775,6 @@ argument_list|(
 name|bibString
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|entryFromBibFile

@@ -29,16 +29,6 @@ import|;
 end_import
 
 begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|After
-import|;
-end_import
-
-begin_import
 import|import static
 name|org
 operator|.
@@ -51,6 +41,20 @@ operator|.
 name|Assertions
 operator|.
 name|*
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
+operator|.
+name|AfterEach
 import|;
 end_import
 
@@ -84,7 +88,6 @@ end_import
 
 begin_class
 DECL|class|RTFCharsTest
-specifier|public
 class|class
 name|RTFCharsTest
 block|{
@@ -96,7 +99,6 @@ decl_stmt|;
 annotation|@
 name|BeforeEach
 DECL|method|setUp ()
-specifier|public
 name|void
 name|setUp
 parameter_list|()
@@ -109,9 +111,8 @@ argument_list|()
 expr_stmt|;
 block|}
 annotation|@
-name|After
+name|AfterEach
 DECL|method|tearDown ()
-specifier|public
 name|void
 name|tearDown
 parameter_list|()
@@ -124,7 +125,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testBasicFormat ()
-specifier|public
 name|void
 name|testBasicFormat
 parameter_list|()
@@ -193,7 +193,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testLaTeXHighlighting ()
-specifier|public
 name|void
 name|testLaTeXHighlighting
 parameter_list|()
@@ -286,7 +285,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testComplicated ()
-specifier|public
 name|void
 name|testComplicated
 parameter_list|()
@@ -307,7 +305,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testComplicated2 ()
-specifier|public
 name|void
 name|testComplicated2
 parameter_list|()
@@ -328,7 +325,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testComplicated3 ()
-specifier|public
 name|void
 name|testComplicated3
 parameter_list|()
@@ -355,7 +351,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testComplicated4 ()
-specifier|public
 name|void
 name|testComplicated4
 parameter_list|()
@@ -392,7 +387,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testComplicated5 ()
-specifier|public
 name|void
 name|testComplicated5
 parameter_list|()
@@ -413,7 +407,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testComplicated6 ()
-specifier|public
 name|void
 name|testComplicated6
 parameter_list|()
@@ -434,7 +427,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testSpecialCharacters ()
-specifier|public
 name|void
 name|testSpecialCharacters
 parameter_list|()
@@ -863,7 +855,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testRTFCharacters ()
-specifier|public
 name|void
 name|testRTFCharacters
 parameter_list|()
@@ -1124,7 +1115,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testRTFCharactersCapital ()
-specifier|public
 name|void
 name|testRTFCharactersCapital
 parameter_list|()

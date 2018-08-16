@@ -228,7 +228,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
 operator|.
 name|assertFalse
 import|;
@@ -240,7 +244,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
 operator|.
 name|assertTrue
 import|;
@@ -350,9 +358,7 @@ name|TempDirectory
 operator|.
 name|class
 argument_list|)
-comment|/**  * Must be public because otherwise @TestArchitectureTests fails!  * */
 DECL|class|LinkedFileViewModelTest
-specifier|public
 class|class
 name|LinkedFileViewModelTest
 block|{
