@@ -286,6 +286,20 @@ name|jabref
 operator|.
 name|gui
 operator|.
+name|externalfiletype
+operator|.
+name|ExternalFileTypes
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
 name|util
 operator|.
 name|DefaultTaskExecutor
@@ -609,12 +623,21 @@ specifier|final
 name|DialogService
 name|dialogService
 decl_stmt|;
-DECL|method|PreviewPrefsTab (DialogService dialogService)
+DECL|field|externalFileTypes
+specifier|private
+specifier|final
+name|ExternalFileTypes
+name|externalFileTypes
+decl_stmt|;
+DECL|method|PreviewPrefsTab (DialogService dialogService, ExternalFileTypes externalFileTypes)
 specifier|public
 name|PreviewPrefsTab
 parameter_list|(
 name|DialogService
 name|dialogService
+parameter_list|,
+name|ExternalFileTypes
+name|externalFileTypes
 parameter_list|)
 block|{
 name|this
@@ -622,6 +645,12 @@ operator|.
 name|dialogService
 operator|=
 name|dialogService
+expr_stmt|;
+name|this
+operator|.
+name|externalFileTypes
+operator|=
+name|externalFileTypes
 expr_stmt|;
 name|setupLogic
 argument_list|()
@@ -1096,6 +1125,8 @@ name|getPreviewPreferences
 argument_list|()
 argument_list|,
 name|dialogService
+argument_list|,
+name|externalFileTypes
 argument_list|)
 decl_stmt|;
 if|if
@@ -1214,6 +1245,8 @@ argument_list|,
 name|preferences
 argument_list|,
 name|dialogService
+argument_list|,
+name|externalFileTypes
 argument_list|)
 expr_stmt|;
 name|testPane

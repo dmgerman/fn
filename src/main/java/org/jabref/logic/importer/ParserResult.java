@@ -26,6 +26,18 @@ begin_import
 import|import
 name|java
 operator|.
+name|nio
+operator|.
+name|file
+operator|.
+name|Path
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|ArrayList
@@ -259,7 +271,7 @@ argument_list|()
 decl_stmt|;
 DECL|field|file
 specifier|private
-name|File
+name|Path
 name|file
 decl_stmt|;
 DECL|field|invalid
@@ -587,6 +599,13 @@ name|ofNullable
 argument_list|(
 name|file
 argument_list|)
+operator|.
+name|map
+argument_list|(
+name|Path
+operator|::
+name|toFile
+argument_list|)
 return|;
 block|}
 DECL|method|setFile (File f)
@@ -601,6 +620,9 @@ block|{
 name|file
 operator|=
 name|f
+operator|.
+name|toPath
+argument_list|()
 expr_stmt|;
 block|}
 comment|/**      * Add a parser warning.      *      * @param s String Warning text. Must be pretranslated. Only added if there isn't already a dupe.      */
@@ -812,6 +834,9 @@ argument_list|,
 name|metaData
 argument_list|,
 name|file
+operator|.
+name|toFile
+argument_list|()
 argument_list|)
 return|;
 block|}
@@ -849,7 +874,7 @@ name|file
 operator|=
 name|bibDatabaseContext
 operator|.
-name|getDatabaseFile
+name|getDatabasePath
 argument_list|()
 operator|.
 name|orElse

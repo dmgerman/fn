@@ -531,13 +531,13 @@ name|searchRules
 argument_list|)
 return|;
 block|}
-DECL|method|getEntriesFiltered ()
+DECL|method|getEntriesFilteredAndSorted ()
 specifier|public
 name|ObservableList
 argument_list|<
 name|BibEntryTableViewModel
 argument_list|>
-name|getEntriesFiltered
+name|getEntriesFilteredAndSorted
 parameter_list|()
 block|{
 return|return

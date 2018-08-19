@@ -246,6 +246,20 @@ name|gui
 operator|.
 name|util
 operator|.
+name|CustomLocalDragboard
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|util
+operator|.
 name|TaskExecutor
 import|;
 end_import
@@ -419,6 +433,12 @@ specifier|final
 name|TaskExecutor
 name|taskExecutor
 decl_stmt|;
+DECL|field|localDragboard
+specifier|private
+specifier|final
+name|CustomLocalDragboard
+name|localDragboard
+decl_stmt|;
 DECL|field|filterPredicate
 specifier|private
 specifier|final
@@ -484,7 +504,7 @@ name|BibDatabaseContext
 argument_list|>
 name|currentDatabase
 decl_stmt|;
-DECL|method|GroupTreeViewModel (StateManager stateManager, DialogService dialogService, TaskExecutor taskExecutor)
+DECL|method|GroupTreeViewModel (StateManager stateManager, DialogService dialogService, TaskExecutor taskExecutor, CustomLocalDragboard localDragboard)
 specifier|public
 name|GroupTreeViewModel
 parameter_list|(
@@ -496,6 +516,9 @@ name|dialogService
 parameter_list|,
 name|TaskExecutor
 name|taskExecutor
+parameter_list|,
+name|CustomLocalDragboard
+name|localDragboard
 parameter_list|)
 block|{
 name|this
@@ -529,6 +552,17 @@ operator|.
 name|requireNonNull
 argument_list|(
 name|taskExecutor
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|localDragboard
+operator|=
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|localDragboard
 argument_list|)
 expr_stmt|;
 comment|// Register listener
@@ -691,9 +725,11 @@ lambda|->
 block|{
 if|if
 condition|(
+operator|(
 name|newValue
 operator|==
 literal|null
+operator|)
 operator|||
 name|newValue
 operator|.
@@ -816,6 +852,8 @@ argument_list|,
 name|taskExecutor
 argument_list|,
 name|root
+argument_list|,
+name|localDragboard
 argument_list|)
 argument_list|)
 operator|.
@@ -833,6 +871,8 @@ argument_list|,
 name|stateManager
 argument_list|,
 name|taskExecutor
+argument_list|,
+name|localDragboard
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -879,6 +919,8 @@ argument_list|,
 name|taskExecutor
 argument_list|,
 name|selectedGroup
+argument_list|,
+name|localDragboard
 argument_list|)
 argument_list|)
 operator|.
@@ -909,6 +951,8 @@ argument_list|,
 name|stateManager
 argument_list|,
 name|taskExecutor
+argument_list|,
+name|localDragboard
 argument_list|)
 argument_list|)
 expr_stmt|;

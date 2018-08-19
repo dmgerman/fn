@@ -1230,6 +1230,10 @@ argument_list|(
 name|linkedFiles
 argument_list|)
 expr_stmt|;
+name|success
+operator|=
+literal|true
+expr_stmt|;
 block|}
 name|event
 operator|.

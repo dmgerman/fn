@@ -9447,6 +9447,9 @@ argument_list|,
 name|getFieldContentParserPreferences
 argument_list|()
 argument_list|,
+name|getXMPPreferences
+argument_list|()
+argument_list|,
 name|isKeywordSyncEnabled
 argument_list|()
 argument_list|)

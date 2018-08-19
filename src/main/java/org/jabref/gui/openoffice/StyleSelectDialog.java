@@ -1260,6 +1260,11 @@ name|getPreviewPreferences
 argument_list|()
 argument_list|,
 name|dialogService
+argument_list|,
+name|ExternalFileTypes
+operator|.
+name|getInstance
+argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// Use the test entry from the Preview settings tab in Preferences:

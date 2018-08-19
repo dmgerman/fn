@@ -340,9 +340,9 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|util
+name|externalfiletype
 operator|.
-name|DefaultTaskExecutor
+name|ExternalFileTypes
 import|;
 end_import
 
@@ -1298,13 +1298,6 @@ literal|6
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|DefaultTaskExecutor
-operator|.
-name|runInJavaFXThread
-argument_list|(
-parameter_list|()
-lambda|->
-block|{
 name|entryPreview
 operator|=
 operator|new
@@ -1328,6 +1321,11 @@ argument_list|()
 argument_list|,
 operator|new
 name|FXDialogService
+argument_list|()
+argument_list|,
+name|ExternalFileTypes
+operator|.
+name|getInstance
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1368,9 +1366,6 @@ literal|8
 argument_list|,
 literal|6
 argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
 argument_list|)
 expr_stmt|;
 name|mainPanel

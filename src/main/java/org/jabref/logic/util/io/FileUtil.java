@@ -445,7 +445,7 @@ return|;
 block|}
 block|}
 comment|/**      * Returns the extension of a file or Optional.empty() if the file does not have one (no . in name).      *      * @return The extension, trimmed and in lowercase.      */
-DECL|method|getFileExtension (File file)
+DECL|method|getFileExtension (Path file)
 specifier|public
 specifier|static
 name|Optional
@@ -454,7 +454,7 @@ name|String
 argument_list|>
 name|getFileExtension
 parameter_list|(
-name|File
+name|Path
 name|file
 parameter_list|)
 block|{
@@ -463,7 +463,10 @@ name|getFileExtension
 argument_list|(
 name|file
 operator|.
-name|getName
+name|getFileName
+argument_list|()
+operator|.
+name|toString
 argument_list|()
 argument_list|)
 return|;
@@ -983,7 +986,7 @@ name|LOGGER
 operator|.
 name|error
 argument_list|(
-literal|"Path to the destination file is not exists and the file shouldn't be replace."
+literal|"Path to the destination file exists but the file shouldn't be replaced."
 argument_list|)
 expr_stmt|;
 return|return
@@ -1643,6 +1646,39 @@ literal|'\\'
 argument_list|,
 literal|'/'
 argument_list|)
+return|;
+block|}
+comment|/**      * Test if the file is a bib file by simply checking the extension to be ".bib"      * @param file The file to check      * @return True if file extension is ".bib", false otherwise      */
+DECL|method|isBibFile (Path file)
+specifier|public
+specifier|static
+name|boolean
+name|isBibFile
+parameter_list|(
+name|Path
+name|file
+parameter_list|)
+block|{
+return|return
+name|getFileExtension
+argument_list|(
+name|file
+argument_list|)
+operator|.
+name|filter
+argument_list|(
+name|type
+lambda|->
+literal|"bib"
+operator|.
+name|equals
+argument_list|(
+name|type
+argument_list|)
+argument_list|)
+operator|.
+name|isPresent
+argument_list|()
 return|;
 block|}
 block|}

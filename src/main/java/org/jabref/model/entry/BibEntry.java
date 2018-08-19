@@ -569,6 +569,7 @@ name|id
 decl_stmt|;
 DECL|field|type
 specifier|private
+specifier|final
 name|StringProperty
 name|type
 init|=
@@ -611,6 +612,8 @@ DECL|field|parsedSerialization
 specifier|private
 name|String
 name|parsedSerialization
+init|=
+literal|""
 decl_stmt|;
 DECL|field|commentsBeforeEntry
 specifier|private

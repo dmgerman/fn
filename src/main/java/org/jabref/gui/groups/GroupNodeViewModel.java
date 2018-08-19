@@ -260,6 +260,20 @@ name|gui
 operator|.
 name|util
 operator|.
+name|CustomLocalDragboard
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|util
+operator|.
 name|TaskExecutor
 import|;
 end_import
@@ -561,7 +575,13 @@ specifier|final
 name|TaskExecutor
 name|taskExecutor
 decl_stmt|;
-DECL|method|GroupNodeViewModel (BibDatabaseContext databaseContext, StateManager stateManager, TaskExecutor taskExecutor, GroupTreeNode groupNode)
+DECL|field|localDragBoard
+specifier|private
+specifier|final
+name|CustomLocalDragboard
+name|localDragBoard
+decl_stmt|;
+DECL|method|GroupNodeViewModel (BibDatabaseContext databaseContext, StateManager stateManager, TaskExecutor taskExecutor, GroupTreeNode groupNode, CustomLocalDragboard localDragBoard)
 specifier|public
 name|GroupNodeViewModel
 parameter_list|(
@@ -576,6 +596,9 @@ name|taskExecutor
 parameter_list|,
 name|GroupTreeNode
 name|groupNode
+parameter_list|,
+name|CustomLocalDragboard
+name|localDragBoard
 parameter_list|)
 block|{
 name|this
@@ -620,6 +643,17 @@ operator|.
 name|requireNonNull
 argument_list|(
 name|groupNode
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|localDragBoard
+operator|=
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|localDragBoard
 argument_list|)
 expr_stmt|;
 name|LatexToUnicodeFormatter
@@ -871,7 +905,7 @@ name|matched
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|GroupNodeViewModel (BibDatabaseContext databaseContext, StateManager stateManager, TaskExecutor taskExecutor, AbstractGroup group)
+DECL|method|GroupNodeViewModel (BibDatabaseContext databaseContext, StateManager stateManager, TaskExecutor taskExecutor, AbstractGroup group, CustomLocalDragboard localDragboard)
 specifier|public
 name|GroupNodeViewModel
 parameter_list|(
@@ -886,6 +920,9 @@ name|taskExecutor
 parameter_list|,
 name|AbstractGroup
 name|group
+parameter_list|,
+name|CustomLocalDragboard
+name|localDragboard
 parameter_list|)
 block|{
 name|this
@@ -901,10 +938,12 @@ name|GroupTreeNode
 argument_list|(
 name|group
 argument_list|)
+argument_list|,
+name|localDragboard
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|getAllEntriesGroup (BibDatabaseContext newDatabase, StateManager stateManager, TaskExecutor taskExecutor)
+DECL|method|getAllEntriesGroup (BibDatabaseContext newDatabase, StateManager stateManager, TaskExecutor taskExecutor, CustomLocalDragboard localDragBoard)
 specifier|static
 name|GroupNodeViewModel
 name|getAllEntriesGroup
@@ -917,6 +956,9 @@ name|stateManager
 parameter_list|,
 name|TaskExecutor
 name|taskExecutor
+parameter_list|,
+name|CustomLocalDragboard
+name|localDragBoard
 parameter_list|)
 block|{
 return|return
@@ -933,6 +975,8 @@ name|DefaultGroupsFactory
 operator|.
 name|getAllEntriesGroup
 argument_list|()
+argument_list|,
+name|localDragBoard
 argument_list|)
 return|;
 block|}
@@ -956,6 +1000,8 @@ argument_list|,
 name|taskExecutor
 argument_list|,
 name|child
+argument_list|,
+name|localDragBoard
 argument_list|)
 return|;
 block|}
@@ -1598,13 +1644,13 @@ decl_stmt|;
 name|boolean
 name|canDropEntries
 init|=
-name|dragboard
+name|localDragBoard
 operator|.
-name|hasContent
+name|hasType
 argument_list|(
 name|DragAndDropDataFormats
 operator|.
-name|ENTRIES
+name|BIBENTRY_LIST_CLASS
 argument_list|)
 operator|&&
 operator|(
