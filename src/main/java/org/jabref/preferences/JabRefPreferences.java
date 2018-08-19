@@ -532,7 +532,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|preftabs
+name|preferences
 operator|.
 name|ImportSettingsTab
 import|;
@@ -2433,7 +2433,7 @@ init|=
 literal|"usePDFReader"
 decl_stmt|;
 comment|// Currently, it is not possible to specify defaults for specific entry types
-comment|// When this should be made possible, the code to inspect is org.jabref.gui.preftabs.BibtexKeyPatternPrefTab.storeSettings() -> LabelPattern keypatterns = getCiteKeyPattern(); etc
+comment|// When this should be made possible, the code to inspect is org.jabref.gui.preferences.BibtexKeyPatternPrefTab.storeSettings() -> LabelPattern keypatterns = getCiteKeyPattern(); etc
 DECL|field|DEFAULT_BIBTEX_KEY_PATTERN
 specifier|public
 specifier|static

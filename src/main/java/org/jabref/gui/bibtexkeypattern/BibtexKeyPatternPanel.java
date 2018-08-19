@@ -166,7 +166,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|preftabs
+name|preferences
 operator|.
 name|FontSize
 import|;
