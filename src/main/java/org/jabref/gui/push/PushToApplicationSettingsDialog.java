@@ -182,7 +182,7 @@ specifier|public
 class|class
 name|PushToApplicationSettingsDialog
 block|{
-DECL|method|showSettingsDialog (JFrame parent, PushToApplicationSettings toApp)
+DECL|method|showSettingsDialog (JFrame parent, PushToApplicationSettings toApp, int n)
 specifier|public
 specifier|static
 name|void
@@ -193,6 +193,9 @@ name|parent
 parameter_list|,
 name|PushToApplicationSettings
 name|toApp
+parameter_list|,
+name|int
+name|n
 parameter_list|)
 block|{
 specifier|final
@@ -220,7 +223,9 @@ init|=
 name|toApp
 operator|.
 name|getSettingsPanel
-argument_list|()
+argument_list|(
+name|n
+argument_list|)
 decl_stmt|;
 name|options
 operator|.

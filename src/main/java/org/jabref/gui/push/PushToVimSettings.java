@@ -90,11 +90,14 @@ argument_list|)
 decl_stmt|;
 annotation|@
 name|Override
-DECL|method|getSettingsPanel ()
+DECL|method|getSettingsPanel (int n)
 specifier|public
 name|JPanel
 name|getSettingsPanel
-parameter_list|()
+parameter_list|(
+name|int
+name|n
+parameter_list|)
 block|{
 name|vimServer
 operator|.
@@ -116,7 +119,9 @@ return|return
 name|super
 operator|.
 name|getSettingsPanel
-argument_list|()
+argument_list|(
+name|n
+argument_list|)
 return|;
 block|}
 annotation|@

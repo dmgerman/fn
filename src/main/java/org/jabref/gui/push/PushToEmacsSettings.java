@@ -34,6 +34,18 @@ end_import
 
 begin_import
 import|import
+name|javafx
+operator|.
+name|scene
+operator|.
+name|layout
+operator|.
+name|GridPane
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|jabref
@@ -90,11 +102,14 @@ argument_list|)
 decl_stmt|;
 annotation|@
 name|Override
-DECL|method|getSettingsPanel ()
+DECL|method|getSettingsPanel (int n)
 specifier|public
 name|JPanel
 name|getSettingsPanel
-parameter_list|()
+parameter_list|(
+name|int
+name|n
+parameter_list|)
 block|{
 name|additionalParams
 operator|.
@@ -116,6 +131,39 @@ return|return
 name|super
 operator|.
 name|getSettingsPanel
+argument_list|(
+name|n
+argument_list|)
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|getJFXSettingPane ()
+specifier|public
+name|GridPane
+name|getJFXSettingPane
+parameter_list|()
+block|{
+name|additionalParams
+operator|.
+name|setText
+argument_list|(
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|get
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|EMACS_ADDITIONAL_PARAMETERS
+argument_list|)
+argument_list|)
+expr_stmt|;
+return|return
+name|super
+operator|.
+name|getJFXSettingPane
 argument_list|()
 return|;
 block|}
