@@ -800,6 +800,26 @@ name|this
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|install (ListView<T> listView)
+specifier|public
+name|void
+name|install
+parameter_list|(
+name|ListView
+argument_list|<
+name|T
+argument_list|>
+name|listView
+parameter_list|)
+block|{
+name|listView
+operator|.
+name|setCellFactory
+argument_list|(
+name|this
+argument_list|)
+expr_stmt|;
+block|}
 annotation|@
 name|Override
 DECL|method|call (ListView<T> param)

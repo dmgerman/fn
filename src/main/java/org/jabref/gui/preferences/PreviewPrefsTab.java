@@ -1597,10 +1597,10 @@ literal|9
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|getGridPane ()
+DECL|method|getBuilder ()
 specifier|public
 name|Node
-name|getGridPane
+name|getBuilder
 parameter_list|()
 block|{
 return|return

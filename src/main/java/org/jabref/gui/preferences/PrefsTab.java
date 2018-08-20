@@ -12,6 +12,16 @@ name|preferences
 package|;
 end_package
 
+begin_import
+import|import
+name|javafx
+operator|.
+name|scene
+operator|.
+name|Node
+import|;
+end_import
+
 begin_comment
 comment|/**  * A prefsTab is a component displayed in the PreferenceDialog.  *  * It needs to extend from Component.  */
 end_comment
@@ -21,6 +31,11 @@ DECL|interface|PrefsTab
 interface|interface
 name|PrefsTab
 block|{
+DECL|method|getBuilder ()
+name|Node
+name|getBuilder
+parameter_list|()
+function_decl|;
 comment|/**      * This method is called when the dialog is opened, or if it is made      * visible after being hidden. The tab should update all its values.      *      * This is the ONLY PLACE to set values for the fields in the tab. It      * is ILLEGAL to set values only at construction time, because the dialog      * will be reused and updated.      */
 DECL|method|setValues ()
 name|void

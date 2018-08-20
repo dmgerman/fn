@@ -967,6 +967,8 @@ literal|21
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|getBuilder ()
 specifier|public
 name|Node

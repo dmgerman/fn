@@ -346,10 +346,10 @@ name|fontTweaksLAF
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|getContainer ()
+DECL|method|getBuilder ()
 specifier|public
 name|Node
-name|getContainer
+name|getBuilder
 parameter_list|()
 block|{
 return|return
