@@ -46,18 +46,6 @@ argument_list|(
 literal|14
 argument_list|)
 decl_stmt|;
-DECL|field|smallFont
-specifier|public
-specifier|static
-name|Font
-name|smallFont
-init|=
-operator|new
-name|Font
-argument_list|(
-literal|10
-argument_list|)
-decl_stmt|;
 block|}
 end_class
 

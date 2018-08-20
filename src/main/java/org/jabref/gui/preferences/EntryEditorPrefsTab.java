@@ -361,15 +361,6 @@ literal|"Open editor when a new entry is created"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|autoOpenForm
-operator|.
-name|setFont
-argument_list|(
-name|FontSize
-operator|.
-name|smallFont
-argument_list|)
-expr_stmt|;
 name|defSource
 operator|=
 operator|new
@@ -381,15 +372,6 @@ name|lang
 argument_list|(
 literal|"Show BibTeX source by default"
 argument_list|)
-argument_list|)
-expr_stmt|;
-name|defSource
-operator|.
-name|setFont
-argument_list|(
-name|FontSize
-operator|.
-name|smallFont
 argument_list|)
 expr_stmt|;
 name|emacsMode
@@ -405,15 +387,6 @@ literal|"Use Emacs key bindings"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|emacsMode
-operator|.
-name|setFont
-argument_list|(
-name|FontSize
-operator|.
-name|smallFont
-argument_list|)
-expr_stmt|;
 name|emacsRebindCtrlA
 operator|=
 operator|new
@@ -425,15 +398,6 @@ name|lang
 argument_list|(
 literal|"Rebind C-a, too"
 argument_list|)
-argument_list|)
-expr_stmt|;
-name|emacsRebindCtrlA
-operator|.
-name|setFont
-argument_list|(
-name|FontSize
-operator|.
-name|smallFont
 argument_list|)
 expr_stmt|;
 name|emacsRebindCtrlF
@@ -449,15 +413,6 @@ literal|"Rebind C-f, too"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|emacsRebindCtrlF
-operator|.
-name|setFont
-argument_list|(
-name|FontSize
-operator|.
-name|smallFont
-argument_list|)
-expr_stmt|;
 name|autoComplete
 operator|=
 operator|new
@@ -469,15 +424,6 @@ name|lang
 argument_list|(
 literal|"Enable word/name autocompletion"
 argument_list|)
-argument_list|)
-expr_stmt|;
-name|autoComplete
-operator|.
-name|setFont
-argument_list|(
-name|FontSize
-operator|.
-name|smallFont
 argument_list|)
 expr_stmt|;
 name|recommendations
@@ -493,15 +439,6 @@ literal|"Show 'Related Articles' tab"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|recommendations
-operator|.
-name|setFont
-argument_list|(
-name|FontSize
-operator|.
-name|smallFont
-argument_list|)
-expr_stmt|;
 name|validation
 operator|=
 operator|new
@@ -513,15 +450,6 @@ name|lang
 argument_list|(
 literal|"Show validation messages"
 argument_list|)
-argument_list|)
-expr_stmt|;
-name|validation
-operator|.
-name|setFont
-argument_list|(
-name|FontSize
-operator|.
-name|smallFont
 argument_list|)
 expr_stmt|;
 comment|// allowed name formats
@@ -538,15 +466,6 @@ literal|"Autocomplete names in 'Firstname Lastname' format only"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|autoCompFF
-operator|.
-name|setFont
-argument_list|(
-name|FontSize
-operator|.
-name|smallFont
-argument_list|)
-expr_stmt|;
 name|autoCompLF
 operator|=
 operator|new
@@ -560,15 +479,6 @@ literal|"Autocomplete names in 'Lastname, Firstname' format only"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|autoCompLF
-operator|.
-name|setFont
-argument_list|(
-name|FontSize
-operator|.
-name|smallFont
-argument_list|)
-expr_stmt|;
 name|autoCompBoth
 operator|=
 operator|new
@@ -580,15 +490,6 @@ name|lang
 argument_list|(
 literal|"Autocomplete names in both formats"
 argument_list|)
-argument_list|)
-expr_stmt|;
-name|autoCompBoth
-operator|.
-name|setFont
-argument_list|(
-name|FontSize
-operator|.
-name|smallFont
 argument_list|)
 expr_stmt|;
 comment|// treatment of first name
@@ -605,15 +506,6 @@ literal|"Use full firstname whenever possible"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|firstNameModeFull
-operator|.
-name|setFont
-argument_list|(
-name|FontSize
-operator|.
-name|smallFont
-argument_list|)
-expr_stmt|;
 name|firstNameModeAbbr
 operator|=
 operator|new
@@ -627,15 +519,6 @@ literal|"Use abbreviated firstname whenever possible"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|firstNameModeAbbr
-operator|.
-name|setFont
-argument_list|(
-name|FontSize
-operator|.
-name|smallFont
-argument_list|)
-expr_stmt|;
 name|firstNameModeBoth
 operator|=
 operator|new
@@ -647,15 +530,6 @@ name|lang
 argument_list|(
 literal|"Use abbreviated and full firstname"
 argument_list|)
-argument_list|)
-expr_stmt|;
-name|firstNameModeBoth
-operator|.
-name|setFont
-argument_list|(
-name|FontSize
-operator|.
-name|smallFont
 argument_list|)
 expr_stmt|;
 comment|// We need a listener on showSource to enable and disable the source panel-related choices:
@@ -925,15 +799,6 @@ operator|+
 literal|":"
 argument_list|)
 decl_stmt|;
-name|useFields
-operator|.
-name|setFont
-argument_list|(
-name|FontSize
-operator|.
-name|smallFont
-argument_list|)
-expr_stmt|;
 name|builder
 operator|.
 name|add

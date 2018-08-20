@@ -396,15 +396,6 @@ operator|+
 literal|':'
 argument_list|)
 expr_stmt|;
-name|useRemoteServer
-operator|.
-name|setFont
-argument_list|(
-name|FontSize
-operator|.
-name|smallFont
-argument_list|)
-expr_stmt|;
 name|useIEEEAbrv
 operator|=
 operator|new
@@ -416,15 +407,6 @@ name|lang
 argument_list|(
 literal|"Use IEEE LaTeX abbreviations"
 argument_list|)
-argument_list|)
-expr_stmt|;
-name|useIEEEAbrv
-operator|.
-name|setFont
-argument_list|(
-name|FontSize
-operator|.
-name|smallFont
 argument_list|)
 expr_stmt|;
 name|remoteServerPort
@@ -446,15 +428,6 @@ literal|"Add {} to specified title words on search to keep the correct case"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|useCaseKeeperOnSearch
-operator|.
-name|setFont
-argument_list|(
-name|FontSize
-operator|.
-name|smallFont
-argument_list|)
-expr_stmt|;
 name|useUnitFormatterOnSearch
 operator|=
 operator|new
@@ -466,15 +439,6 @@ name|lang
 argument_list|(
 literal|"Format units by adding non-breaking separators and keeping the correct case on search"
 argument_list|)
-argument_list|)
-expr_stmt|;
-name|useUnitFormatterOnSearch
-operator|.
-name|setFont
-argument_list|(
-name|FontSize
-operator|.
-name|smallFont
 argument_list|)
 expr_stmt|;
 name|Label
@@ -586,15 +550,6 @@ argument_list|(
 literal|"    This feature lets new files be opened or imported into an already running instance of JabRef instead of opening a new instance. For"
 argument_list|)
 decl_stmt|;
-name|textLabel1
-operator|.
-name|setFont
-argument_list|(
-name|FontSize
-operator|.
-name|smallFont
-argument_list|)
-expr_stmt|;
 name|builder
 operator|.
 name|add
@@ -615,15 +570,6 @@ argument_list|(
 literal|"instance, this is useful when you open a file in JabRef from your web browser. "
 argument_list|)
 decl_stmt|;
-name|textLabel2
-operator|.
-name|setFont
-argument_list|(
-name|FontSize
-operator|.
-name|smallFont
-argument_list|)
-expr_stmt|;
 name|builder
 operator|.
 name|add
@@ -644,15 +590,6 @@ argument_list|(
 literal|"    Note that this will prevent you from running more than one instance of JabRef at a time."
 argument_list|)
 decl_stmt|;
-name|textLabel3
-operator|.
-name|setFont
-argument_list|(
-name|FontSize
-operator|.
-name|smallFont
-argument_list|)
-expr_stmt|;
 name|builder
 operator|.
 name|add
@@ -726,15 +663,6 @@ argument_list|(
 literal|"?"
 argument_list|)
 decl_stmt|;
-name|helpButton
-operator|.
-name|setFont
-argument_list|(
-name|FontSize
-operator|.
-name|smallFont
-argument_list|)
-expr_stmt|;
 name|helpButton
 operator|.
 name|setOnAction

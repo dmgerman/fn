@@ -234,15 +234,6 @@ literal|"Export entries in their original order"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|exportInOriginalOrder
-operator|.
-name|setFont
-argument_list|(
-name|FontSize
-operator|.
-name|smallFont
-argument_list|)
-expr_stmt|;
 name|exportInTableOrder
 operator|=
 operator|new
@@ -256,15 +247,6 @@ literal|"Export in current table sort order"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|exportInTableOrder
-operator|.
-name|setFont
-argument_list|(
-name|FontSize
-operator|.
-name|smallFont
-argument_list|)
-expr_stmt|;
 name|exportInSpecifiedOrder
 operator|=
 operator|new
@@ -276,15 +258,6 @@ name|lang
 argument_list|(
 literal|"Export entries ordered as specified"
 argument_list|)
-argument_list|)
-expr_stmt|;
-name|exportInSpecifiedOrder
-operator|.
-name|setFont
-argument_list|(
-name|FontSize
-operator|.
-name|smallFont
 argument_list|)
 expr_stmt|;
 name|exportOrderPanel

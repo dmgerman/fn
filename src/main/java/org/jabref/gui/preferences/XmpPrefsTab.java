@@ -833,15 +833,6 @@ argument_list|,
 literal|1
 argument_list|)
 expr_stmt|;
-name|privacyFilterCheckBox
-operator|.
-name|setFont
-argument_list|(
-name|FontSize
-operator|.
-name|smallFont
-argument_list|)
-expr_stmt|;
 name|builder
 operator|.
 name|add
