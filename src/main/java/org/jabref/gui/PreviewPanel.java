@@ -68,6 +68,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Objects
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Optional
 import|;
 end_import
@@ -644,16 +654,8 @@ decl_stmt|;
 comment|/**      * If a database is set, the preview will attempt to resolve strings in the previewed entry using that database.      */
 DECL|field|databaseContext
 specifier|private
-name|Optional
-argument_list|<
 name|BibDatabaseContext
-argument_list|>
 name|databaseContext
-init|=
-name|Optional
-operator|.
-name|empty
-argument_list|()
 decl_stmt|;
 DECL|field|previewView
 specifier|private
@@ -683,7 +685,7 @@ specifier|final
 name|NewDroppedFileHandler
 name|fileHandler
 decl_stmt|;
-comment|/**      * @param panel           (may be null) Only set this if the preview is associated to the main window.      * @param databaseContext (may be null) Used for resolving pdf directories for links.      */
+comment|/**      * @param panel           (may be null) Only set this if the preview is associated to the main window.      * @param databaseContext Used for resolving pdf directories for links. Must not be null.      */
 DECL|method|PreviewPanel (BasePanel panel, BibDatabaseContext databaseContext, KeyBindingRepository keyBindingRepository, PreviewPreferences preferences, DialogService dialogService, ExternalFileTypes externalFileTypes)
 specifier|public
 name|PreviewPanel
@@ -711,9 +713,9 @@ name|this
 operator|.
 name|databaseContext
 operator|=
-name|Optional
+name|Objects
 operator|.
-name|ofNullable
+name|requireNonNull
 argument_list|(
 name|databaseContext
 argument_list|)
@@ -1473,12 +1475,7 @@ name|this
 operator|.
 name|databaseContext
 operator|=
-name|Optional
-operator|.
-name|ofNullable
-argument_list|(
 name|databaseContext
-argument_list|)
 expr_stmt|;
 block|}
 DECL|method|getBasePanel ()
@@ -1933,17 +1930,8 @@ name|entry
 argument_list|,
 name|databaseContext
 operator|.
-name|map
-argument_list|(
-name|BibDatabaseContext
-operator|::
 name|getDatabase
-argument_list|)
-operator|.
-name|orElse
-argument_list|(
-literal|null
-argument_list|)
+argument_list|()
 argument_list|)
 argument_list|)
 argument_list|)
