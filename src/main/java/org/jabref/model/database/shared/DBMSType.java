@@ -49,7 +49,7 @@ name|MYSQL
 argument_list|(
 literal|"MySQL"
 argument_list|,
-literal|"com.mysql.jdbc.Driver"
+literal|"com.mysql.cj.jdbc.Driver"
 argument_list|,
 literal|"jdbc:mysql://%s:%d/%s"
 argument_list|,
