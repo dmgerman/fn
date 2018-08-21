@@ -364,17 +364,16 @@ name|lang
 argument_list|(
 literal|"View"
 argument_list|)
-operator|+
-literal|"  ---------------------------------------"
 argument_list|)
 decl_stmt|;
 name|view
 operator|.
-name|setFont
-argument_list|(
-name|FontSize
+name|getStyleClass
+argument_list|()
 operator|.
-name|bigFont
+name|add
+argument_list|(
+literal|"sectionHeader"
 argument_list|)
 expr_stmt|;
 name|builder
@@ -470,17 +469,16 @@ name|lang
 argument_list|(
 literal|"Dynamic groups"
 argument_list|)
-operator|+
-literal|"  --------------------------"
 argument_list|)
 decl_stmt|;
 name|dynamicGroups
 operator|.
-name|setFont
-argument_list|(
-name|FontSize
+name|getStyleClass
+argument_list|()
 operator|.
-name|bigFont
+name|add
+argument_list|(
+literal|"sectionHeader"
 argument_list|)
 expr_stmt|;
 name|builder

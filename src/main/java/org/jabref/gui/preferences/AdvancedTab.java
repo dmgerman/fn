@@ -453,17 +453,16 @@ name|lang
 argument_list|(
 literal|"Remote operation"
 argument_list|)
-operator|+
-literal|"  -----------------------------"
 argument_list|)
 decl_stmt|;
 name|remoteOperation
 operator|.
-name|setFont
-argument_list|(
-name|FontSize
+name|getStyleClass
+argument_list|()
 operator|.
-name|bigFont
+name|add
+argument_list|(
+literal|"sectionHeader"
 argument_list|)
 expr_stmt|;
 name|builder
@@ -734,17 +733,16 @@ literal|"Search %0"
 argument_list|,
 literal|"IEEEXplore"
 argument_list|)
-operator|+
-literal|"  -----------------------------"
 argument_list|)
 decl_stmt|;
 name|explore
 operator|.
-name|setFont
-argument_list|(
-name|FontSize
+name|getStyleClass
+argument_list|()
 operator|.
-name|bigFont
+name|add
+argument_list|(
+literal|"sectionHeader"
 argument_list|)
 expr_stmt|;
 name|builder
@@ -835,17 +833,16 @@ name|lang
 argument_list|(
 literal|"Import conversions"
 argument_list|)
-operator|+
-literal|"  ----------------------------"
 argument_list|)
 decl_stmt|;
 name|importConversions
 operator|.
-name|setFont
-argument_list|(
-name|FontSize
+name|getStyleClass
+argument_list|()
 operator|.
-name|bigFont
+name|add
+argument_list|(
+literal|"sectionHeader"
 argument_list|)
 expr_stmt|;
 name|builder

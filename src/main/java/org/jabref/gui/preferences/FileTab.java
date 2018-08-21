@@ -727,17 +727,16 @@ name|lang
 argument_list|(
 literal|"General"
 argument_list|)
-operator|+
-literal|"  ----------------------------------------------"
 argument_list|)
 decl_stmt|;
 name|general
 operator|.
-name|setFont
-argument_list|(
-name|FontSize
+name|getStyleClass
+argument_list|()
 operator|.
-name|bigFont
+name|add
+argument_list|(
+literal|"sectionHeader"
 argument_list|)
 expr_stmt|;
 name|builder
@@ -925,17 +924,16 @@ name|lang
 argument_list|(
 literal|"External file links"
 argument_list|)
-operator|+
-literal|"  ------------------------------------"
 argument_list|)
 decl_stmt|;
 name|externalFileLinks
 operator|.
-name|setFont
-argument_list|(
-name|FontSize
+name|getStyleClass
+argument_list|()
 operator|.
-name|bigFont
+name|add
+argument_list|(
+literal|"sectionHeader"
 argument_list|)
 expr_stmt|;
 name|builder
@@ -1241,17 +1239,16 @@ name|lang
 argument_list|(
 literal|"Autosave"
 argument_list|)
-operator|+
-literal|"  ---------------------------------------------"
 argument_list|)
 decl_stmt|;
 name|autosave
 operator|.
-name|setFont
-argument_list|(
-name|FontSize
+name|getStyleClass
+argument_list|()
 operator|.
-name|bigFont
+name|add
+argument_list|(
+literal|"sectionHeader"
 argument_list|)
 expr_stmt|;
 name|builder

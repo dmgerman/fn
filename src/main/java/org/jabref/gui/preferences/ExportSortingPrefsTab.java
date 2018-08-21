@@ -329,17 +329,16 @@ name|lang
 argument_list|(
 literal|"Export sort order"
 argument_list|)
-operator|+
-literal|"  ------------------------"
 argument_list|)
 decl_stmt|;
 name|exportSortOrder
 operator|.
-name|setFont
-argument_list|(
-name|FontSize
+name|getStyleClass
+argument_list|()
 operator|.
-name|bigFont
+name|add
+argument_list|(
+literal|"sectionHeader"
 argument_list|)
 expr_stmt|;
 comment|// create GUI

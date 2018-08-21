@@ -889,9 +889,6 @@ name|setCellFactory
 argument_list|(
 name|TextFieldTableCell
 operator|.
-expr|<
-name|TableRow
-operator|>
 name|forTableColumn
 argument_list|()
 argument_list|)
@@ -913,10 +910,6 @@ name|t
 parameter_list|)
 lambda|->
 block|{
-operator|(
-operator|(
-name|TableRow
-operator|)
 name|t
 operator|.
 name|getTableView
@@ -935,7 +928,6 @@ operator|.
 name|getRow
 argument_list|()
 argument_list|)
-operator|)
 operator|.
 name|setName
 argument_list|(
@@ -977,10 +969,6 @@ name|t
 parameter_list|)
 lambda|->
 block|{
-operator|(
-operator|(
-name|TableRow
-operator|)
 name|t
 operator|.
 name|getTableView
@@ -999,7 +987,6 @@ operator|.
 name|getRow
 argument_list|()
 argument_list|)
-operator|)
 operator|.
 name|setLength
 argument_list|(
@@ -2169,17 +2156,16 @@ name|lang
 argument_list|(
 literal|"Special table columns"
 argument_list|)
-operator|+
-literal|"  ------------------------------------"
 argument_list|)
 decl_stmt|;
 name|specialTableColumns
 operator|.
-name|setFont
-argument_list|(
-name|FontSize
+name|getStyleClass
+argument_list|()
 operator|.
-name|bigFont
+name|add
+argument_list|(
+literal|"sectionHeader"
 argument_list|)
 expr_stmt|;
 name|builder
@@ -2426,17 +2412,16 @@ name|lang
 argument_list|(
 literal|"Entry table columns"
 argument_list|)
-operator|+
-literal|"  --------------------------------------"
 argument_list|)
 decl_stmt|;
 name|entryTableColumns
 operator|.
-name|setFont
-argument_list|(
-name|FontSize
+name|getStyleClass
+argument_list|()
 operator|.
-name|bigFont
+name|add
+argument_list|(
+literal|"sectionHeader"
 argument_list|)
 expr_stmt|;
 name|builder

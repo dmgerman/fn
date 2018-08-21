@@ -605,17 +605,16 @@ name|lang
 argument_list|(
 literal|"Editor options"
 argument_list|)
-operator|+
-literal|"  -------------------------------------"
 argument_list|)
 decl_stmt|;
 name|editorOptions
 operator|.
-name|setFont
-argument_list|(
-name|FontSize
+name|getStyleClass
+argument_list|()
 operator|.
-name|bigFont
+name|add
+argument_list|(
+literal|"sectionHeader"
 argument_list|)
 expr_stmt|;
 name|builder
@@ -746,17 +745,16 @@ name|lang
 argument_list|(
 literal|"Autocompletion options"
 argument_list|)
-operator|+
-literal|"  --------------------------"
 argument_list|)
 decl_stmt|;
 name|autocompletionOptions
 operator|.
-name|setFont
-argument_list|(
-name|FontSize
+name|getStyleClass
+argument_list|()
 operator|.
-name|bigFont
+name|add
+argument_list|(
+literal|"sectionHeader"
 argument_list|)
 expr_stmt|;
 name|builder
@@ -848,17 +846,16 @@ name|lang
 argument_list|(
 literal|"Name format used for autocompletion"
 argument_list|)
-operator|+
-literal|"  ----------"
 argument_list|)
 decl_stmt|;
 name|nameFormat
 operator|.
-name|setFont
-argument_list|(
-name|FontSize
+name|getStyleClass
+argument_list|()
 operator|.
-name|bigFont
+name|add
+argument_list|(
+literal|"sectionHeader"
 argument_list|)
 expr_stmt|;
 name|builder
@@ -932,17 +929,16 @@ name|lang
 argument_list|(
 literal|"Treatment of first names"
 argument_list|)
-operator|+
-literal|"  --------------------------"
 argument_list|)
 decl_stmt|;
 name|treatment
 operator|.
-name|setFont
-argument_list|(
-name|FontSize
+name|getStyleClass
+argument_list|()
 operator|.
-name|bigFont
+name|add
+argument_list|(
+literal|"sectionHeader"
 argument_list|)
 expr_stmt|;
 name|builder

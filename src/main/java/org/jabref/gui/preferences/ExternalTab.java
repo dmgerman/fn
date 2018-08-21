@@ -769,17 +769,16 @@ name|lang
 argument_list|(
 literal|"Sending of emails"
 argument_list|)
-operator|+
-literal|"  ----------------------------"
 argument_list|)
 decl_stmt|;
 name|sendingOfEmails
 operator|.
-name|setFont
-argument_list|(
-name|FontSize
+name|getStyleClass
+argument_list|()
 operator|.
-name|bigFont
+name|add
+argument_list|(
+literal|"sectionHeader"
 argument_list|)
 expr_stmt|;
 name|builder
@@ -891,17 +890,16 @@ name|lang
 argument_list|(
 literal|"External programs"
 argument_list|)
-operator|+
-literal|"  ----------------------------"
 argument_list|)
 decl_stmt|;
 name|externalPrograms
 operator|.
-name|setFont
-argument_list|(
-name|FontSize
+name|getStyleClass
+argument_list|()
 operator|.
-name|bigFont
+name|add
+argument_list|(
+literal|"sectionHeader"
 argument_list|)
 expr_stmt|;
 name|builder
@@ -1041,17 +1039,16 @@ name|lang
 argument_list|(
 literal|"Open console"
 argument_list|)
-operator|+
-literal|"  ---------------------------------"
 argument_list|)
 decl_stmt|;
 name|openConsole
 operator|.
-name|setFont
-argument_list|(
-name|FontSize
+name|getStyleClass
+argument_list|()
 operator|.
-name|bigFont
+name|add
+argument_list|(
+literal|"sectionHeader"
 argument_list|)
 expr_stmt|;
 name|builder
@@ -1103,17 +1100,16 @@ name|lang
 argument_list|(
 literal|"Open PDF"
 argument_list|)
-operator|+
-literal|"  -------------------------------------"
 argument_list|)
 decl_stmt|;
 name|openPdf
 operator|.
-name|setFont
-argument_list|(
-name|FontSize
+name|getStyleClass
+argument_list|()
 operator|.
-name|bigFont
+name|add
+argument_list|(
+literal|"sectionHeader"
 argument_list|)
 expr_stmt|;
 name|builder

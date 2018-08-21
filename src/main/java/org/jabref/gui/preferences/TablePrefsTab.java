@@ -773,17 +773,16 @@ name|lang
 argument_list|(
 literal|"Format of author and editor names"
 argument_list|)
-operator|+
-literal|"  ----------------------"
 argument_list|)
 decl_stmt|;
 name|formatOfAuthor
 operator|.
-name|setFont
-argument_list|(
-name|FontSize
+name|getStyleClass
+argument_list|()
 operator|.
-name|bigFont
+name|add
+argument_list|(
+literal|"sectionHeader"
 argument_list|)
 expr_stmt|;
 name|builder
@@ -906,17 +905,16 @@ name|lang
 argument_list|(
 literal|"Default sort criteria"
 argument_list|)
-operator|+
-literal|"  ----------------------------------------"
 argument_list|)
 decl_stmt|;
 name|defaultSortCriteria
 operator|.
-name|setFont
-argument_list|(
-name|FontSize
+name|getStyleClass
+argument_list|()
 operator|.
-name|bigFont
+name|add
+argument_list|(
+literal|"sectionHeader"
 argument_list|)
 expr_stmt|;
 name|builder
@@ -1170,17 +1168,16 @@ name|lang
 argument_list|(
 literal|"General"
 argument_list|)
-operator|+
-literal|" ------------------------------------------------------"
 argument_list|)
 decl_stmt|;
 name|general
 operator|.
-name|setFont
-argument_list|(
-name|FontSize
+name|getStyleClass
+argument_list|()
 operator|.
-name|bigFont
+name|add
+argument_list|(
+literal|"sectionHeader"
 argument_list|)
 expr_stmt|;
 name|builder
