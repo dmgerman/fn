@@ -593,11 +593,6 @@ name|toExternalForm
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|setResizable
-argument_list|(
-literal|true
-argument_list|)
-expr_stmt|;
 name|ButtonType
 name|save
 init|=
@@ -1435,7 +1430,7 @@ name|withInitialDirectory
 argument_list|(
 name|prefs
 operator|.
-name|getPrefsExportPath
+name|setLastPreferencesExportPath
 argument_list|()
 argument_list|)
 operator|.
@@ -1727,7 +1722,7 @@ name|withInitialDirectory
 argument_list|(
 name|prefs
 operator|.
-name|getPrefsExportPath
+name|setLastPreferencesExportPath
 argument_list|()
 argument_list|)
 operator|.
@@ -1760,16 +1755,9 @@ argument_list|)
 expr_stmt|;
 name|prefs
 operator|.
-name|put
+name|setLastPreferencesExportPath
 argument_list|(
-name|JabRefPreferences
-operator|.
-name|PREFS_EXPORT_PATH
-argument_list|,
 name|exportFile
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
