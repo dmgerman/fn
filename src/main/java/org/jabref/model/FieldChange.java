@@ -35,7 +35,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *  */
+comment|/**  * This class is used in the instance of a field being modified, removed or added.  */
 end_comment
 
 begin_class
