@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|org.jabref.gui.preftabs
+DECL|package|org.jabref.gui.preferences
 package|package
 name|org
 operator|.
@@ -8,7 +8,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|preftabs
+name|preferences
 package|;
 end_package
 
@@ -234,15 +234,6 @@ literal|"Export entries in their original order"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|exportInOriginalOrder
-operator|.
-name|setFont
-argument_list|(
-name|FontSize
-operator|.
-name|smallFont
-argument_list|)
-expr_stmt|;
 name|exportInTableOrder
 operator|=
 operator|new
@@ -256,15 +247,6 @@ literal|"Export in current table sort order"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|exportInTableOrder
-operator|.
-name|setFont
-argument_list|(
-name|FontSize
-operator|.
-name|smallFont
-argument_list|)
-expr_stmt|;
 name|exportInSpecifiedOrder
 operator|=
 operator|new
@@ -276,15 +258,6 @@ name|lang
 argument_list|(
 literal|"Export entries ordered as specified"
 argument_list|)
-argument_list|)
-expr_stmt|;
-name|exportInSpecifiedOrder
-operator|.
-name|setFont
-argument_list|(
-name|FontSize
-operator|.
-name|smallFont
 argument_list|)
 expr_stmt|;
 name|exportOrderPanel
@@ -356,17 +329,16 @@ name|lang
 argument_list|(
 literal|"Export sort order"
 argument_list|)
-operator|+
-literal|"  ------------------------"
 argument_list|)
 decl_stmt|;
 name|exportSortOrder
 operator|.
-name|setFont
-argument_list|(
-name|FontSize
+name|getStyleClass
+argument_list|()
 operator|.
-name|bigFont
+name|add
+argument_list|(
+literal|"sectionHeader"
 argument_list|)
 expr_stmt|;
 comment|// create GUI

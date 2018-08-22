@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|org.jabref.gui.preftabs
+DECL|package|org.jabref.gui.preferences
 package|package
 name|org
 operator|.
@@ -8,7 +8,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|preftabs
+name|preferences
 package|;
 end_package
 
@@ -346,10 +346,10 @@ name|fontTweaksLAF
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|getContainer ()
+DECL|method|getBuilder ()
 specifier|public
 name|Node
-name|getContainer
+name|getBuilder
 parameter_list|()
 block|{
 return|return

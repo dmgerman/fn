@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|org.jabref.gui.preftabs
+DECL|package|org.jabref.gui.preferences
 package|package
 name|org
 operator|.
@@ -8,7 +8,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|preftabs
+name|preferences
 package|;
 end_package
 
@@ -889,9 +889,6 @@ name|setCellFactory
 argument_list|(
 name|TextFieldTableCell
 operator|.
-expr|<
-name|TableRow
-operator|>
 name|forTableColumn
 argument_list|()
 argument_list|)
@@ -913,10 +910,6 @@ name|t
 parameter_list|)
 lambda|->
 block|{
-operator|(
-operator|(
-name|TableRow
-operator|)
 name|t
 operator|.
 name|getTableView
@@ -935,7 +928,6 @@ operator|.
 name|getRow
 argument_list|()
 argument_list|)
-operator|)
 operator|.
 name|setName
 argument_list|(
@@ -977,10 +969,6 @@ name|t
 parameter_list|)
 lambda|->
 block|{
-operator|(
-operator|(
-name|TableRow
-operator|)
 name|t
 operator|.
 name|getTableView
@@ -999,7 +987,6 @@ operator|.
 name|getRow
 argument_list|()
 argument_list|)
-operator|)
 operator|.
 name|setLength
 argument_list|(
@@ -1673,15 +1660,6 @@ literal|"Show file column"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|fileColumn
-operator|.
-name|setFont
-argument_list|(
-name|FontSize
-operator|.
-name|smallFont
-argument_list|)
-expr_stmt|;
 name|urlColumn
 operator|=
 operator|new
@@ -1693,15 +1671,6 @@ name|lang
 argument_list|(
 literal|"Show URL/DOI column"
 argument_list|)
-argument_list|)
-expr_stmt|;
-name|urlColumn
-operator|.
-name|setFont
-argument_list|(
-name|FontSize
-operator|.
-name|smallFont
 argument_list|)
 expr_stmt|;
 name|preferUrl
@@ -1717,15 +1686,6 @@ literal|"Show URL first"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|preferUrl
-operator|.
-name|setFont
-argument_list|(
-name|FontSize
-operator|.
-name|smallFont
-argument_list|)
-expr_stmt|;
 name|preferDoi
 operator|=
 operator|new
@@ -1737,15 +1697,6 @@ name|lang
 argument_list|(
 literal|"Show DOI first"
 argument_list|)
-argument_list|)
-expr_stmt|;
-name|preferDoi
-operator|.
-name|setFont
-argument_list|(
-name|FontSize
-operator|.
-name|smallFont
 argument_list|)
 expr_stmt|;
 name|urlColumn
@@ -1791,15 +1742,6 @@ name|lang
 argument_list|(
 literal|"Show ArXiv column"
 argument_list|)
-argument_list|)
-expr_stmt|;
-name|arxivColumn
-operator|.
-name|setFont
-argument_list|(
-name|FontSize
-operator|.
-name|smallFont
 argument_list|)
 expr_stmt|;
 name|Collection
@@ -1918,15 +1860,6 @@ literal|"Show extra columns"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|extraFileColumns
-operator|.
-name|setFont
-argument_list|(
-name|FontSize
-operator|.
-name|smallFont
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 operator|!
@@ -2022,15 +1955,6 @@ literal|"Show rank"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|rankingColumn
-operator|.
-name|setFont
-argument_list|(
-name|FontSize
-operator|.
-name|smallFont
-argument_list|)
-expr_stmt|;
 name|qualityColumn
 operator|=
 operator|new
@@ -2042,15 +1966,6 @@ name|lang
 argument_list|(
 literal|"Show quality"
 argument_list|)
-argument_list|)
-expr_stmt|;
-name|qualityColumn
-operator|.
-name|setFont
-argument_list|(
-name|FontSize
-operator|.
-name|smallFont
 argument_list|)
 expr_stmt|;
 name|priorityColumn
@@ -2066,15 +1981,6 @@ literal|"Show priority"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|priorityColumn
-operator|.
-name|setFont
-argument_list|(
-name|FontSize
-operator|.
-name|smallFont
-argument_list|)
-expr_stmt|;
 name|relevanceColumn
 operator|=
 operator|new
@@ -2086,15 +1992,6 @@ name|lang
 argument_list|(
 literal|"Show relevance"
 argument_list|)
-argument_list|)
-expr_stmt|;
-name|relevanceColumn
-operator|.
-name|setFont
-argument_list|(
-name|FontSize
-operator|.
-name|smallFont
 argument_list|)
 expr_stmt|;
 name|printedColumn
@@ -2110,15 +2007,6 @@ literal|"Show printed status"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|printedColumn
-operator|.
-name|setFont
-argument_list|(
-name|FontSize
-operator|.
-name|smallFont
-argument_list|)
-expr_stmt|;
 name|readStatusColumn
 operator|=
 operator|new
@@ -2130,15 +2018,6 @@ name|lang
 argument_list|(
 literal|"Show read status"
 argument_list|)
-argument_list|)
-expr_stmt|;
-name|readStatusColumn
-operator|.
-name|setFont
-argument_list|(
-name|FontSize
-operator|.
-name|smallFont
 argument_list|)
 expr_stmt|;
 comment|// "sync keywords" and "write special" fields may be configured mutually exclusive only
@@ -2157,15 +2036,6 @@ literal|"Synchronize with keywords"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|syncKeywords
-operator|.
-name|setFont
-argument_list|(
-name|FontSize
-operator|.
-name|smallFont
-argument_list|)
-expr_stmt|;
 name|writeSpecialFields
 operator|=
 operator|new
@@ -2179,15 +2049,6 @@ literal|"Write values of special fields as separate fields to BibTeX"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|writeSpecialFields
-operator|.
-name|setFont
-argument_list|(
-name|FontSize
-operator|.
-name|smallFont
-argument_list|)
-expr_stmt|;
 name|specialFieldsEnabled
 operator|=
 operator|new
@@ -2199,15 +2060,6 @@ name|lang
 argument_list|(
 literal|"Enable special fields"
 argument_list|)
-argument_list|)
-expr_stmt|;
-name|specialFieldsEnabled
-operator|.
-name|setFont
-argument_list|(
-name|FontSize
-operator|.
-name|smallFont
 argument_list|)
 expr_stmt|;
 name|specialFieldsEnabled
@@ -2304,17 +2156,16 @@ name|lang
 argument_list|(
 literal|"Special table columns"
 argument_list|)
-operator|+
-literal|"  ------------------------------------"
 argument_list|)
 decl_stmt|;
 name|specialTableColumns
 operator|.
-name|setFont
-argument_list|(
-name|FontSize
+name|getStyleClass
+argument_list|()
 operator|.
-name|bigFont
+name|add
+argument_list|(
+literal|"sectionHeader"
 argument_list|)
 expr_stmt|;
 name|builder
@@ -2561,17 +2412,16 @@ name|lang
 argument_list|(
 literal|"Entry table columns"
 argument_list|)
-operator|+
-literal|"  --------------------------------------"
 argument_list|)
 decl_stmt|;
 name|entryTableColumns
 operator|.
-name|setFont
-argument_list|(
-name|FontSize
+name|getStyleClass
+argument_list|()
 operator|.
-name|bigFont
+name|add
+argument_list|(
+literal|"sectionHeader"
 argument_list|)
 expr_stmt|;
 name|builder
@@ -2616,15 +2466,6 @@ argument_list|)
 expr_stmt|;
 name|buttonWidth
 operator|.
-name|setFont
-argument_list|(
-name|FontSize
-operator|.
-name|smallFont
-argument_list|)
-expr_stmt|;
-name|buttonWidth
-operator|.
 name|setOnAction
 argument_list|(
 name|e
@@ -2650,15 +2491,6 @@ argument_list|(
 literal|200
 argument_list|,
 literal|30
-argument_list|)
-expr_stmt|;
-name|buttonOrder
-operator|.
-name|setFont
-argument_list|(
-name|FontSize
-operator|.
-name|smallFont
 argument_list|)
 expr_stmt|;
 name|buttonOrder

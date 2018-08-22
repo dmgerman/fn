@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|org.jabref.gui.preftabs
+DECL|package|org.jabref.gui.preferences
 package|package
 name|org
 operator|.
@@ -8,7 +8,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|preftabs
+name|preferences
 package|;
 end_package
 
@@ -361,15 +361,6 @@ literal|"Open editor when a new entry is created"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|autoOpenForm
-operator|.
-name|setFont
-argument_list|(
-name|FontSize
-operator|.
-name|smallFont
-argument_list|)
-expr_stmt|;
 name|defSource
 operator|=
 operator|new
@@ -381,15 +372,6 @@ name|lang
 argument_list|(
 literal|"Show BibTeX source by default"
 argument_list|)
-argument_list|)
-expr_stmt|;
-name|defSource
-operator|.
-name|setFont
-argument_list|(
-name|FontSize
-operator|.
-name|smallFont
 argument_list|)
 expr_stmt|;
 name|emacsMode
@@ -405,15 +387,6 @@ literal|"Use Emacs key bindings"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|emacsMode
-operator|.
-name|setFont
-argument_list|(
-name|FontSize
-operator|.
-name|smallFont
-argument_list|)
-expr_stmt|;
 name|emacsRebindCtrlA
 operator|=
 operator|new
@@ -425,15 +398,6 @@ name|lang
 argument_list|(
 literal|"Rebind C-a, too"
 argument_list|)
-argument_list|)
-expr_stmt|;
-name|emacsRebindCtrlA
-operator|.
-name|setFont
-argument_list|(
-name|FontSize
-operator|.
-name|smallFont
 argument_list|)
 expr_stmt|;
 name|emacsRebindCtrlF
@@ -449,15 +413,6 @@ literal|"Rebind C-f, too"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|emacsRebindCtrlF
-operator|.
-name|setFont
-argument_list|(
-name|FontSize
-operator|.
-name|smallFont
-argument_list|)
-expr_stmt|;
 name|autoComplete
 operator|=
 operator|new
@@ -469,15 +424,6 @@ name|lang
 argument_list|(
 literal|"Enable word/name autocompletion"
 argument_list|)
-argument_list|)
-expr_stmt|;
-name|autoComplete
-operator|.
-name|setFont
-argument_list|(
-name|FontSize
-operator|.
-name|smallFont
 argument_list|)
 expr_stmt|;
 name|recommendations
@@ -493,15 +439,6 @@ literal|"Show 'Related Articles' tab"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|recommendations
-operator|.
-name|setFont
-argument_list|(
-name|FontSize
-operator|.
-name|smallFont
-argument_list|)
-expr_stmt|;
 name|validation
 operator|=
 operator|new
@@ -513,15 +450,6 @@ name|lang
 argument_list|(
 literal|"Show validation messages"
 argument_list|)
-argument_list|)
-expr_stmt|;
-name|validation
-operator|.
-name|setFont
-argument_list|(
-name|FontSize
-operator|.
-name|smallFont
 argument_list|)
 expr_stmt|;
 comment|// allowed name formats
@@ -538,15 +466,6 @@ literal|"Autocomplete names in 'Firstname Lastname' format only"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|autoCompFF
-operator|.
-name|setFont
-argument_list|(
-name|FontSize
-operator|.
-name|smallFont
-argument_list|)
-expr_stmt|;
 name|autoCompLF
 operator|=
 operator|new
@@ -560,15 +479,6 @@ literal|"Autocomplete names in 'Lastname, Firstname' format only"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|autoCompLF
-operator|.
-name|setFont
-argument_list|(
-name|FontSize
-operator|.
-name|smallFont
-argument_list|)
-expr_stmt|;
 name|autoCompBoth
 operator|=
 operator|new
@@ -580,15 +490,6 @@ name|lang
 argument_list|(
 literal|"Autocomplete names in both formats"
 argument_list|)
-argument_list|)
-expr_stmt|;
-name|autoCompBoth
-operator|.
-name|setFont
-argument_list|(
-name|FontSize
-operator|.
-name|smallFont
 argument_list|)
 expr_stmt|;
 comment|// treatment of first name
@@ -605,15 +506,6 @@ literal|"Use full firstname whenever possible"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|firstNameModeFull
-operator|.
-name|setFont
-argument_list|(
-name|FontSize
-operator|.
-name|smallFont
-argument_list|)
-expr_stmt|;
 name|firstNameModeAbbr
 operator|=
 operator|new
@@ -627,15 +519,6 @@ literal|"Use abbreviated firstname whenever possible"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|firstNameModeAbbr
-operator|.
-name|setFont
-argument_list|(
-name|FontSize
-operator|.
-name|smallFont
-argument_list|)
-expr_stmt|;
 name|firstNameModeBoth
 operator|=
 operator|new
@@ -647,15 +530,6 @@ name|lang
 argument_list|(
 literal|"Use abbreviated and full firstname"
 argument_list|)
-argument_list|)
-expr_stmt|;
-name|firstNameModeBoth
-operator|.
-name|setFont
-argument_list|(
-name|FontSize
-operator|.
-name|smallFont
 argument_list|)
 expr_stmt|;
 comment|// We need a listener on showSource to enable and disable the source panel-related choices:
@@ -731,17 +605,16 @@ name|lang
 argument_list|(
 literal|"Editor options"
 argument_list|)
-operator|+
-literal|"  -------------------------------------"
 argument_list|)
 decl_stmt|;
 name|editorOptions
 operator|.
-name|setFont
-argument_list|(
-name|FontSize
+name|getStyleClass
+argument_list|()
 operator|.
-name|bigFont
+name|add
+argument_list|(
+literal|"sectionHeader"
 argument_list|)
 expr_stmt|;
 name|builder
@@ -872,17 +745,16 @@ name|lang
 argument_list|(
 literal|"Autocompletion options"
 argument_list|)
-operator|+
-literal|"  --------------------------"
 argument_list|)
 decl_stmt|;
 name|autocompletionOptions
 operator|.
-name|setFont
-argument_list|(
-name|FontSize
+name|getStyleClass
+argument_list|()
 operator|.
-name|bigFont
+name|add
+argument_list|(
+literal|"sectionHeader"
 argument_list|)
 expr_stmt|;
 name|builder
@@ -925,15 +797,6 @@ operator|+
 literal|":"
 argument_list|)
 decl_stmt|;
-name|useFields
-operator|.
-name|setFont
-argument_list|(
-name|FontSize
-operator|.
-name|smallFont
-argument_list|)
-expr_stmt|;
 name|builder
 operator|.
 name|add
@@ -983,17 +846,16 @@ name|lang
 argument_list|(
 literal|"Name format used for autocompletion"
 argument_list|)
-operator|+
-literal|"  ----------"
 argument_list|)
 decl_stmt|;
 name|nameFormat
 operator|.
-name|setFont
-argument_list|(
-name|FontSize
+name|getStyleClass
+argument_list|()
 operator|.
-name|bigFont
+name|add
+argument_list|(
+literal|"sectionHeader"
 argument_list|)
 expr_stmt|;
 name|builder
@@ -1067,17 +929,16 @@ name|lang
 argument_list|(
 literal|"Treatment of first names"
 argument_list|)
-operator|+
-literal|"  --------------------------"
 argument_list|)
 decl_stmt|;
 name|treatment
 operator|.
-name|setFont
-argument_list|(
-name|FontSize
+name|getStyleClass
+argument_list|()
 operator|.
-name|bigFont
+name|add
+argument_list|(
+literal|"sectionHeader"
 argument_list|)
 expr_stmt|;
 name|builder

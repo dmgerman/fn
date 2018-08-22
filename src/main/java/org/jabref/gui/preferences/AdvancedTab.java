@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|org.jabref.gui.preftabs
+DECL|package|org.jabref.gui.preferences
 package|package
 name|org
 operator|.
@@ -8,7 +8,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|preftabs
+name|preferences
 package|;
 end_package
 
@@ -396,15 +396,6 @@ operator|+
 literal|':'
 argument_list|)
 expr_stmt|;
-name|useRemoteServer
-operator|.
-name|setFont
-argument_list|(
-name|FontSize
-operator|.
-name|smallFont
-argument_list|)
-expr_stmt|;
 name|useIEEEAbrv
 operator|=
 operator|new
@@ -416,15 +407,6 @@ name|lang
 argument_list|(
 literal|"Use IEEE LaTeX abbreviations"
 argument_list|)
-argument_list|)
-expr_stmt|;
-name|useIEEEAbrv
-operator|.
-name|setFont
-argument_list|(
-name|FontSize
-operator|.
-name|smallFont
 argument_list|)
 expr_stmt|;
 name|remoteServerPort
@@ -446,15 +428,6 @@ literal|"Add {} to specified title words on search to keep the correct case"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|useCaseKeeperOnSearch
-operator|.
-name|setFont
-argument_list|(
-name|FontSize
-operator|.
-name|smallFont
-argument_list|)
-expr_stmt|;
 name|useUnitFormatterOnSearch
 operator|=
 operator|new
@@ -466,15 +439,6 @@ name|lang
 argument_list|(
 literal|"Format units by adding non-breaking separators and keeping the correct case on search"
 argument_list|)
-argument_list|)
-expr_stmt|;
-name|useUnitFormatterOnSearch
-operator|.
-name|setFont
-argument_list|(
-name|FontSize
-operator|.
-name|smallFont
 argument_list|)
 expr_stmt|;
 name|Label
@@ -489,17 +453,16 @@ name|lang
 argument_list|(
 literal|"Remote operation"
 argument_list|)
-operator|+
-literal|"  -----------------------------"
 argument_list|)
 decl_stmt|;
 name|remoteOperation
 operator|.
-name|setFont
-argument_list|(
-name|FontSize
+name|getStyleClass
+argument_list|()
 operator|.
-name|bigFont
+name|add
+argument_list|(
+literal|"sectionHeader"
 argument_list|)
 expr_stmt|;
 name|builder
@@ -586,15 +549,6 @@ argument_list|(
 literal|"    This feature lets new files be opened or imported into an already running instance of JabRef instead of opening a new instance. For"
 argument_list|)
 decl_stmt|;
-name|textLabel1
-operator|.
-name|setFont
-argument_list|(
-name|FontSize
-operator|.
-name|smallFont
-argument_list|)
-expr_stmt|;
 name|builder
 operator|.
 name|add
@@ -615,15 +569,6 @@ argument_list|(
 literal|"instance, this is useful when you open a file in JabRef from your web browser. "
 argument_list|)
 decl_stmt|;
-name|textLabel2
-operator|.
-name|setFont
-argument_list|(
-name|FontSize
-operator|.
-name|smallFont
-argument_list|)
-expr_stmt|;
 name|builder
 operator|.
 name|add
@@ -644,15 +589,6 @@ argument_list|(
 literal|"    Note that this will prevent you from running more than one instance of JabRef at a time."
 argument_list|)
 decl_stmt|;
-name|textLabel3
-operator|.
-name|setFont
-argument_list|(
-name|FontSize
-operator|.
-name|smallFont
-argument_list|)
-expr_stmt|;
 name|builder
 operator|.
 name|add
@@ -728,15 +664,6 @@ argument_list|)
 decl_stmt|;
 name|helpButton
 operator|.
-name|setFont
-argument_list|(
-name|FontSize
-operator|.
-name|smallFont
-argument_list|)
-expr_stmt|;
-name|helpButton
-operator|.
 name|setOnAction
 argument_list|(
 name|event
@@ -806,17 +733,16 @@ literal|"Search %0"
 argument_list|,
 literal|"IEEEXplore"
 argument_list|)
-operator|+
-literal|"  -----------------------------"
 argument_list|)
 decl_stmt|;
 name|explore
 operator|.
-name|setFont
-argument_list|(
-name|FontSize
+name|getStyleClass
+argument_list|()
 operator|.
-name|bigFont
+name|add
+argument_list|(
+literal|"sectionHeader"
 argument_list|)
 expr_stmt|;
 name|builder
@@ -907,17 +833,16 @@ name|lang
 argument_list|(
 literal|"Import conversions"
 argument_list|)
-operator|+
-literal|"  ----------------------------"
 argument_list|)
 decl_stmt|;
 name|importConversions
 operator|.
-name|setFont
-argument_list|(
-name|FontSize
+name|getStyleClass
+argument_list|()
 operator|.
-name|bigFont
+name|add
+argument_list|(
+literal|"sectionHeader"
 argument_list|)
 expr_stmt|;
 name|builder
@@ -967,6 +892,8 @@ literal|21
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|getBuilder ()
 specifier|public
 name|Node

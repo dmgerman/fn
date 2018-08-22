@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|org.jabref.gui.preftabs
+DECL|package|org.jabref.gui.preferences
 package|package
 name|org
 operator|.
@@ -8,7 +8,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|preftabs
+name|preferences
 package|;
 end_package
 
@@ -1499,17 +1499,16 @@ name|lang
 argument_list|(
 literal|"Current Preview"
 argument_list|)
-operator|+
-literal|"  ------------------------------------------"
 argument_list|)
 decl_stmt|;
 name|currentPreview
 operator|.
-name|setFont
-argument_list|(
-name|FontSize
+name|getStyleClass
+argument_list|()
 operator|.
-name|bigFont
+name|add
+argument_list|(
+literal|"sectionHeader"
 argument_list|)
 expr_stmt|;
 name|gridPane
@@ -1599,10 +1598,10 @@ literal|9
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|getGridPane ()
+DECL|method|getBuilder ()
 specifier|public
 name|Node
-name|getGridPane
+name|getBuilder
 parameter_list|()
 block|{
 return|return

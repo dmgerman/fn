@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|org.jabref.gui.preftabs
+DECL|package|org.jabref.gui.preferences
 package|package
 name|org
 operator|.
@@ -8,7 +8,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|preftabs
+name|preferences
 package|;
 end_package
 
@@ -340,15 +340,6 @@ literal|"Display only entries belonging to all selected groups."
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|multiSelectionModeIntersection
-operator|.
-name|setFont
-argument_list|(
-name|FontSize
-operator|.
-name|smallFont
-argument_list|)
-expr_stmt|;
 name|multiSelectionModeUnion
 operator|.
 name|setText
@@ -359,15 +350,6 @@ name|lang
 argument_list|(
 literal|"Display all entries belonging to one or more of the selected groups."
 argument_list|)
-argument_list|)
-expr_stmt|;
-name|multiSelectionModeUnion
-operator|.
-name|setFont
-argument_list|(
-name|FontSize
-operator|.
-name|smallFont
 argument_list|)
 expr_stmt|;
 name|Label
@@ -382,17 +364,16 @@ name|lang
 argument_list|(
 literal|"View"
 argument_list|)
-operator|+
-literal|"  ---------------------------------------"
 argument_list|)
 decl_stmt|;
 name|view
 operator|.
-name|setFont
-argument_list|(
-name|FontSize
+name|getStyleClass
+argument_list|()
 operator|.
-name|bigFont
+name|add
+argument_list|(
+literal|"sectionHeader"
 argument_list|)
 expr_stmt|;
 name|builder
@@ -488,17 +469,16 @@ name|lang
 argument_list|(
 literal|"Dynamic groups"
 argument_list|)
-operator|+
-literal|"  --------------------------"
 argument_list|)
 decl_stmt|;
 name|dynamicGroups
 operator|.
-name|setFont
-argument_list|(
-name|FontSize
+name|getStyleClass
+argument_list|()
 operator|.
-name|bigFont
+name|add
+argument_list|(
+literal|"sectionHeader"
 argument_list|)
 expr_stmt|;
 name|builder
@@ -528,15 +508,6 @@ operator|+
 literal|":"
 argument_list|)
 decl_stmt|;
-name|defaultGrouping
-operator|.
-name|setFont
-argument_list|(
-name|FontSize
-operator|.
-name|smallFont
-argument_list|)
-expr_stmt|;
 name|builder
 operator|.
 name|add
@@ -575,15 +546,6 @@ operator|+
 literal|":"
 argument_list|)
 decl_stmt|;
-name|label
-operator|.
-name|setFont
-argument_list|(
-name|FontSize
-operator|.
-name|smallFont
-argument_list|)
-expr_stmt|;
 name|builder
 operator|.
 name|add
