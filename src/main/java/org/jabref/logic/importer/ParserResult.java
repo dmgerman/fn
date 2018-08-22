@@ -834,9 +834,6 @@ argument_list|,
 name|metaData
 argument_list|,
 name|file
-operator|.
-name|toFile
-argument_list|()
 argument_list|)
 return|;
 block|}

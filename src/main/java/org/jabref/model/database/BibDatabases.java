@@ -159,10 +159,10 @@ argument_list|()
 operator|.
 name|filter
 argument_list|(
-name|e
+name|entry
 lambda|->
 operator|!
-name|e
+name|entry
 operator|.
 name|getFieldNames
 argument_list|()

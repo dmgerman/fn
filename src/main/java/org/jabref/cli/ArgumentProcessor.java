@@ -1640,6 +1640,13 @@ literal|","
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|LOGGER
+operator|.
+name|debug
+argument_list|(
+literal|"Finished export"
+argument_list|)
+expr_stmt|;
 block|}
 else|else
 block|{
@@ -1659,13 +1666,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-name|LOGGER
-operator|.
-name|debug
-argument_list|(
-literal|"Finished export"
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 name|cli
