@@ -427,13 +427,6 @@ argument_list|)
 expr_stmt|;
 name|this
 operator|.
-name|setResizable
-argument_list|(
-literal|true
-argument_list|)
-expr_stmt|;
-name|this
-operator|.
 name|initModality
 argument_list|(
 name|Modality
@@ -752,9 +745,11 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|(
 name|event
 operator|==
 literal|null
+operator|)
 operator|||
 name|empty
 condition|)
