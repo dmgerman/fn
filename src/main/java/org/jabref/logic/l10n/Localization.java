@@ -241,7 +241,9 @@ argument_list|)
 expr_stmt|;
 name|setLanguage
 argument_list|(
-literal|"en"
+name|Language
+operator|.
+name|English
 argument_list|)
 expr_stmt|;
 block|}
@@ -257,13 +259,13 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Sets the language and loads the appropriate translations. Note, that this function should be called before any      * other function of this class.      *      * @param language Language identifier like "en", "de", etc.      */
-DECL|method|setLanguage (String language)
+DECL|method|setLanguage (Language language)
 specifier|public
 specifier|static
 name|void
 name|setLanguage
 parameter_list|(
-name|String
+name|Language
 name|language
 parameter_list|)
 block|{
@@ -273,7 +275,7 @@ name|Locale
 argument_list|>
 name|knownLanguage
 init|=
-name|Languages
+name|Language
 operator|.
 name|convertToSupportedLocale
 argument_list|(
@@ -315,7 +317,9 @@ argument_list|)
 expr_stmt|;
 name|setLanguage
 argument_list|(
-literal|"en"
+name|Language
+operator|.
+name|English
 argument_list|)
 expr_stmt|;
 return|return;
@@ -407,7 +411,9 @@ argument_list|)
 expr_stmt|;
 name|setLanguage
 argument_list|(
-literal|"en"
+name|Language
+operator|.
+name|English
 argument_list|)
 expr_stmt|;
 block|}
@@ -430,7 +436,9 @@ condition|)
 block|{
 name|setLanguage
 argument_list|(
-literal|"en"
+name|Language
+operator|.
+name|English
 argument_list|)
 expr_stmt|;
 block|}
