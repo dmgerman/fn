@@ -431,7 +431,7 @@ name|panel
 argument_list|,
 name|database
 operator|.
-name|getDatabaseFile
+name|getDatabasePath
 argument_list|()
 operator|.
 name|orElse

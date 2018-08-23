@@ -18,16 +18,6 @@ name|java
 operator|.
 name|io
 operator|.
-name|File
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
 name|IOException
 import|;
 end_import
@@ -431,7 +421,7 @@ decl_stmt|;
 DECL|field|file
 specifier|private
 specifier|final
-name|File
+name|Path
 name|file
 decl_stmt|;
 DECL|field|tempFile
@@ -482,7 +472,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 comment|//  NamedCompound edit = new NamedCompound("Merged external changes")
-DECL|method|ChangeScanner (JabRefFrame frame, BasePanel bp, File file, Path tempFile)
+DECL|method|ChangeScanner (JabRefFrame frame, BasePanel bp, Path file, Path tempFile)
 specifier|public
 name|ChangeScanner
 parameter_list|(
@@ -492,7 +482,7 @@ parameter_list|,
 name|BasePanel
 name|bp
 parameter_list|,
-name|File
+name|Path
 name|file
 parameter_list|,
 name|Path
@@ -873,6 +863,12 @@ operator|.
 name|loadDatabase
 argument_list|(
 name|file
+operator|.
+name|toAbsolutePath
+argument_list|()
+operator|.
+name|toString
+argument_list|()
 argument_list|,
 name|importFormatPreferences
 argument_list|,
