@@ -130,6 +130,20 @@ name|gui
 operator|.
 name|util
 operator|.
+name|DefaultTaskExecutor
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|util
+operator|.
 name|WindowLocation
 import|;
 end_import
@@ -589,6 +603,13 @@ operator|.
 name|getMergeEntry
 argument_list|()
 decl_stmt|;
+name|DefaultTaskExecutor
+operator|.
+name|runInJavaFXThread
+argument_list|(
+parameter_list|()
+lambda|->
+block|{
 name|panel
 operator|.
 name|insertEntry
@@ -693,6 +714,9 @@ name|lang
 argument_list|(
 literal|"Merged entries"
 argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 argument_list|)
 expr_stmt|;
 name|dispose
