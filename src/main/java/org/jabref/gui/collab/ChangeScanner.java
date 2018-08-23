@@ -16,16 +16,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|nio
 operator|.
 name|file
@@ -421,7 +411,10 @@ decl_stmt|;
 DECL|field|file
 specifier|private
 specifier|final
+name|Optional
+argument_list|<
 name|Path
+argument_list|>
 name|file
 decl_stmt|;
 DECL|field|tempFile
@@ -514,7 +507,12 @@ name|this
 operator|.
 name|file
 operator|=
+name|Optional
+operator|.
+name|ofNullable
+argument_list|(
 name|file
+argument_list|)
 expr_stmt|;
 name|this
 operator|.
@@ -815,7 +813,12 @@ name|void
 name|run
 parameter_list|()
 block|{
-try|try
+name|file
+operator|.
+name|ifPresent
+argument_list|(
+name|diskdb
+lambda|->
 block|{
 comment|// Parse the temporary file.
 name|ImportFormatPreferences
@@ -837,7 +840,10 @@ name|loadDatabase
 argument_list|(
 name|tempFile
 operator|.
-name|toFile
+name|toAbsolutePath
+argument_list|()
+operator|.
+name|toString
 argument_list|()
 argument_list|,
 name|importFormatPreferences
@@ -862,7 +868,7 @@ name|OpenDatabase
 operator|.
 name|loadDatabase
 argument_list|(
-name|file
+name|diskdb
 operator|.
 name|toAbsolutePath
 argument_list|()
@@ -1019,22 +1025,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-catch|catch
-parameter_list|(
-name|IOException
-name|ex
-parameter_list|)
-block|{
-name|LOGGER
-operator|.
-name|warn
-argument_list|(
-literal|"Problem running"
-argument_list|,
-name|ex
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 DECL|method|createBibStringDiff (BibStringDiff diff)
 specifier|private
