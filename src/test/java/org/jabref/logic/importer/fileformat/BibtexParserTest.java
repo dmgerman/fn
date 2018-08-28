@@ -604,7 +604,7 @@ name|api
 operator|.
 name|Assertions
 operator|.
-name|assertTrue
+name|assertThrows
 import|;
 end_import
 
@@ -620,7 +620,7 @@ name|api
 operator|.
 name|Assertions
 operator|.
-name|assertThrows
+name|assertTrue
 import|;
 end_import
 
@@ -8377,7 +8377,7 @@ argument_list|(
 operator|new
 name|StringReader
 argument_list|(
-literal|"% Encoding: US-ASCII@preamble{some text and \\latex}"
+literal|"\\% Encoding: US-ASCII@preamble{some text and \\latex}"
 argument_list|)
 argument_list|)
 decl_stmt|;
