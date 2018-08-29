@@ -867,9 +867,11 @@ expr_stmt|;
 block|}
 if|if
 condition|(
+operator|(
 name|menuFactory
 operator|!=
 literal|null
+operator|)
 operator|&&
 operator|!
 name|event
