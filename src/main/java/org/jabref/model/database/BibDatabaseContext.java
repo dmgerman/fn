@@ -688,6 +688,9 @@ name|toFile
 argument_list|)
 return|;
 block|}
+comment|/**      *      * @param Set the database file      * @deprecated use {@link #setDatabaseFile(Path)}      */
+annotation|@
+name|Deprecated
 DECL|method|setDatabaseFile (File file)
 specifier|public
 name|void
@@ -713,6 +716,27 @@ argument_list|(
 name|File
 operator|::
 name|toPath
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|setDatabaseFile (Path file)
+specifier|public
+name|void
+name|setDatabaseFile
+parameter_list|(
+name|Path
+name|file
+parameter_list|)
+block|{
+name|this
+operator|.
+name|file
+operator|=
+name|Optional
+operator|.
+name|ofNullable
+argument_list|(
+name|file
 argument_list|)
 expr_stmt|;
 block|}

@@ -148,6 +148,12 @@ argument_list|(
 literal|"jar"
 argument_list|)
 block|,
+DECL|enumConstant|JAVA_KEYSTORE
+name|JAVA_KEYSTORE
+argument_list|(
+literal|"jks"
+argument_list|)
+block|,
 DECL|enumConstant|JSTYLE
 name|JSTYLE
 argument_list|(
