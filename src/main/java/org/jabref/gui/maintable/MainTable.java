@@ -908,7 +908,13 @@ expr_stmt|;
 comment|// Enable sorting
 name|model
 operator|.
-name|bindComparator
+name|getEntriesFilteredAndSorted
+argument_list|()
+operator|.
+name|comparatorProperty
+argument_list|()
+operator|.
+name|bind
 argument_list|(
 name|this
 operator|.

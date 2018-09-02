@@ -18,16 +18,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Comparator
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|List
 import|;
 end_import
@@ -51,18 +41,6 @@ operator|.
 name|binding
 operator|.
 name|Bindings
-import|;
-end_import
-
-begin_import
-import|import
-name|javafx
-operator|.
-name|beans
-operator|.
-name|property
-operator|.
-name|ReadOnlyObjectProperty
 import|;
 end_import
 
@@ -533,7 +511,7 @@ return|;
 block|}
 DECL|method|getEntriesFilteredAndSorted ()
 specifier|public
-name|ObservableList
+name|SortedList
 argument_list|<
 name|BibEntryTableViewModel
 argument_list|>
@@ -543,32 +521,6 @@ block|{
 return|return
 name|entriesSorted
 return|;
-block|}
-DECL|method|bindComparator (ReadOnlyObjectProperty<Comparator<BibEntryTableViewModel>> comparator)
-specifier|public
-name|void
-name|bindComparator
-parameter_list|(
-name|ReadOnlyObjectProperty
-argument_list|<
-name|Comparator
-argument_list|<
-name|BibEntryTableViewModel
-argument_list|>
-argument_list|>
-name|comparator
-parameter_list|)
-block|{
-name|entriesSorted
-operator|.
-name|comparatorProperty
-argument_list|()
-operator|.
-name|bind
-argument_list|(
-name|comparator
-argument_list|)
-expr_stmt|;
 block|}
 block|}
 end_class
