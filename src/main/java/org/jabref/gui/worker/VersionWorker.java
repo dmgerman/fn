@@ -572,15 +572,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-name|this
-operator|.
-name|mainFrame
-operator|.
-name|output
-argument_list|(
-name|upToDate
-argument_list|)
-expr_stmt|;
 block|}
 else|else
 block|{

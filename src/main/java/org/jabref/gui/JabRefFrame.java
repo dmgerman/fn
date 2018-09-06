@@ -338,18 +338,6 @@ name|scene
 operator|.
 name|control
 operator|.
-name|Label
-import|;
-end_import
-
-begin_import
-import|import
-name|javafx
-operator|.
-name|scene
-operator|.
-name|control
-operator|.
 name|Menu
 import|;
 end_import
@@ -1660,6 +1648,18 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|jfoenix
+operator|.
+name|controls
+operator|.
+name|JFXSnackbar
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -1811,34 +1811,16 @@ decl_stmt|;
 DECL|field|statusLine
 specifier|private
 specifier|final
-name|Label
+name|JFXSnackbar
 name|statusLine
 init|=
 operator|new
-name|Label
+name|JFXSnackbar
 argument_list|(
-literal|""
+name|this
 argument_list|)
 decl_stmt|;
-DECL|field|statusLabel
-specifier|private
-specifier|final
-name|Label
-name|statusLabel
-init|=
-operator|new
-name|Label
-argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Status"
-argument_list|)
-operator|+
-literal|':'
-argument_list|)
-decl_stmt|;
+empty_stmt|;
 DECL|field|progressBar
 specifier|private
 specifier|final
@@ -3198,7 +3180,7 @@ return|return
 name|prefs
 return|;
 block|}
-comment|/**      * Tears down all things started by JabRef      *<p>      * FIXME: Currently some threads remain and therefore hinder JabRef to be closed properly      *      * @param filenames the filenames of all currently opened files - used for storing them if prefs openLastEdited is set to true      */
+comment|/**      * Tears down all things started by JabRef      *<p>      * FIXME: Currently some threads remain and therefore hinder JabRef to be closed properly      *      * @param filenames the filenames of all currently opened files - used for storing them if prefs openLastEdited is      *                  set to true      */
 DECL|method|tearDownJabRef (List<String> filenames)
 specifier|private
 name|void
@@ -3335,7 +3317,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * General info dialog.  The MacAdapter calls this method when "Quit"      * is selected from the application menu, Cmd-Q is pressed, or "Quit" is selected from the Dock.      * The function returns a boolean indicating if quitting is ok or not.      *<p>      * Non-OSX JabRef calls this when choosing "Quit" from the menu      *<p>      * SIDE EFFECT: tears down JabRef      *      * @return true if the user chose to quit; false otherwise      */
+comment|/**      * General info dialog.  The MacAdapter calls this method when "Quit" is selected from the application menu, Cmd-Q      * is pressed, or "Quit" is selected from the Dock. The function returns a boolean indicating if quitting is ok or      * not.      *<p>      * Non-OSX JabRef calls this when choosing "Quit" from the menu      *<p>      * SIDE EFFECT: tears down JabRef      *      * @return true if the user chose to quit; false otherwise      */
 DECL|method|quit ()
 specifier|public
 name|boolean
@@ -4382,7 +4364,7 @@ name|getContent
 argument_list|()
 return|;
 block|}
-comment|/**      * Returns a list of BasePanel.      *      */
+comment|/**      * Returns a list of BasePanel.      */
 DECL|method|getBasePanelList ()
 specifier|public
 name|List
@@ -7242,7 +7224,9 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * displays the String on the Status Line visible on the bottom of the JabRef mainframe      */
+comment|/**      * Displays the given message at the bottom of the main frame      *      * @deprecated use {@link DialogService#notify(String)} instead      */
+annotation|@
+name|Deprecated
 DECL|method|output (final String s)
 specifier|public
 name|void
@@ -7255,9 +7239,11 @@ parameter_list|)
 block|{
 name|statusLine
 operator|.
-name|setText
+name|show
 argument_list|(
 name|s
+argument_list|,
+literal|3000
 argument_list|)
 expr_stmt|;
 block|}
@@ -7520,7 +7506,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * This method causes all open BasePanels to set up their tables      * anew. When called from PrefsDialog3, this updates to the new      * settings.      */
+comment|/**      * This method causes all open BasePanels to set up their tables anew. When called from PrefsDialog3, this updates      * to the new settings.      */
 DECL|method|setupAllTables ()
 specifier|public
 name|void
@@ -8256,7 +8242,7 @@ name|isPresent
 argument_list|()
 return|;
 block|}
-comment|/**      * This method does the job of adding imported entries into the active      * database, or into a new one. It shows the ImportInspectionDialog if      * preferences indicate it should be used. Otherwise it imports directly.      *  @param panel     The BasePanel to add to.      * @param entries   The entries to add.      */
+comment|/**      * This method does the job of adding imported entries into the active database, or into a new one. It shows the      * ImportInspectionDialog if preferences indicate it should be used. Otherwise it imports directly.      *      * @param panel   The BasePanel to add to.      * @param entries The entries to add.      */
 DECL|method|addImportedEntries (final BasePanel panel, final List<BibEntry> entries)
 specifier|private
 name|void
@@ -8341,7 +8327,7 @@ return|return
 name|fileHistory
 return|;
 block|}
-comment|/**      * Set the visibility of the progress bar in the right end of the      * status line at the bottom of the frame.      */
+comment|/**      * Set the visibility of the progress bar in the right end of the status line at the bottom of the frame.      */
 DECL|method|setProgressBarVisible (final boolean visible)
 specifier|public
 name|void
@@ -8360,7 +8346,7 @@ name|visible
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Sets the indeterminate status of the progress bar.      *<p>      * If not called on the event dispatch thread, this method uses      * SwingUtilities.invokeLater() to do the actual operation on the EDT.      */
+comment|/**      * Sets the indeterminate status of the progress bar.      *<p>      * If not called on the event dispatch thread, this method uses SwingUtilities.invokeLater() to do the actual      * operation on the EDT.      */
 DECL|method|setProgressBarIndeterminate (final boolean value)
 specifier|public
 name|void
@@ -8374,7 +8360,7 @@ block|{
 comment|// TODO: Reimplement
 comment|/*         if (SwingUtilities.isEventDispatchThread()) {             progressBar.setIndeterminate(value);         } else {             SwingUtilities.invokeLater(() -> progressBar.setIndeterminate(value));         }         */
 block|}
-comment|/**      * Return a boolean, if the selected entry have file      * @param selectEntryList A selected entries list of the current base pane      * @return true, if the selected entry contains file.      * false, if multiple entries are selected or the selected entry doesn't contains file      */
+comment|/**      * Return a boolean, if the selected entry have file      *      * @param selectEntryList A selected entries list of the current base pane      * @return true, if the selected entry contains file. false, if multiple entries are selected or the selected entry      * doesn't contains file      */
 DECL|method|isExistFile (List<BibEntry> selectEntryList)
 specifier|private
 name|boolean
@@ -8425,7 +8411,7 @@ return|return
 literal|false
 return|;
 block|}
-comment|/**      * Return a boolean, if the selected entry have url or doi      * @param selectEntryList A selected entries list of the current base pane      * @return true, if the selected entry contains url or doi.      * false, if multiple entries are selected or the selected entry doesn't contains url or doi      */
+comment|/**      * Return a boolean, if the selected entry have url or doi      *      * @param selectEntryList A selected entries list of the current base pane      * @return true, if the selected entry contains url or doi. false, if multiple entries are selected or the selected      * entry doesn't contains url or doi      */
 DECL|method|isExistURLorDOI (List<BibEntry> selectEntryList)
 specifier|private
 name|boolean
@@ -9006,19 +8992,6 @@ name|this
 argument_list|)
 return|;
 block|}
-DECL|method|getStatusLineText ()
-specifier|public
-name|String
-name|getStatusLineText
-parameter_list|()
-block|{
-return|return
-name|statusLine
-operator|.
-name|getText
-argument_list|()
-return|;
-block|}
 DECL|method|getSidePaneManager ()
 specifier|public
 name|SidePaneManager
@@ -9090,7 +9063,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Class for handling general actions; cut, copy and paste. The focused component is      * kept track of by Globals.focusListener, and we call the action stored under the      * relevant name in its action map.      */
+comment|/**      * Class for handling general actions; cut, copy and paste. The focused component is kept track of by      * Globals.focusListener, and we call the action stored under the relevant name in its action map.      */
 DECL|class|EditAction
 specifier|private
 class|class

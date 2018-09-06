@@ -7695,35 +7695,6 @@ operator|::
 name|updateAllTabTitles
 argument_list|)
 expr_stmt|;
-comment|// If the status line states that the base has been saved, we
-comment|// remove this message, since it is no longer relevant. If a
-comment|// different message is shown, we leave it.
-if|if
-condition|(
-name|frame
-operator|.
-name|getStatusLineText
-argument_list|()
-operator|.
-name|startsWith
-argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Saved library"
-argument_list|)
-argument_list|)
-condition|)
-block|{
-name|frame
-operator|.
-name|output
-argument_list|(
-literal|" "
-argument_list|)
-expr_stmt|;
-block|}
 block|}
 end_function
 

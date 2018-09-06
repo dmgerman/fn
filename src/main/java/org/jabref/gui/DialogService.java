@@ -560,7 +560,7 @@ argument_list|>
 name|task
 parameter_list|)
 function_decl|;
-comment|/**      * Notify the user in an non-blocking way (i.e., update status message instead of showing a dialog).      *      * @param message the message to show.      */
+comment|/**      * Notify the user in an non-blocking way (i.e., in form of toast in a snackbar).      *      * @param message the message to show.      */
 DECL|method|notify (String message)
 name|void
 name|notify
