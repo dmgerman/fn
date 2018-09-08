@@ -16,16 +16,6 @@ begin_import
 import|import
 name|javafx
 operator|.
-name|fxml
-operator|.
-name|FXML
-import|;
-end_import
-
-begin_import
-import|import
-name|javafx
-operator|.
 name|scene
 operator|.
 name|Parent
@@ -163,8 +153,6 @@ implements|implements
 name|FieldEditorFX
 block|{
 DECL|field|viewModel
-annotation|@
-name|FXML
 specifier|private
 specifier|final
 name|PersonsEditorViewModel
@@ -172,6 +160,7 @@ name|viewModel
 decl_stmt|;
 DECL|field|textInput
 specifier|private
+specifier|final
 name|TextInputControl
 name|textInput
 decl_stmt|;

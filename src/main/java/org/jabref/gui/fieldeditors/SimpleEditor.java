@@ -16,16 +16,6 @@ begin_import
 import|import
 name|javafx
 operator|.
-name|fxml
-operator|.
-name|FXML
-import|;
-end_import
-
-begin_import
-import|import
-name|javafx
-operator|.
 name|scene
 operator|.
 name|Parent
@@ -177,12 +167,16 @@ implements|implements
 name|FieldEditorFX
 block|{
 DECL|field|viewModel
-annotation|@
-name|FXML
 specifier|private
 specifier|final
 name|SimpleEditorViewModel
 name|viewModel
+decl_stmt|;
+DECL|field|textInput
+specifier|private
+specifier|final
+name|TextInputControl
+name|textInput
 decl_stmt|;
 DECL|method|SimpleEditor (final String fieldName, final AutoCompleteSuggestionProvider<?> suggestionProvider, final FieldCheckers fieldCheckers, final JabRefPreferences preferences, final boolean isSingleLine)
 specifier|public
@@ -226,9 +220,8 @@ argument_list|,
 name|fieldCheckers
 argument_list|)
 expr_stmt|;
-name|TextInputControl
 name|textInput
-init|=
+operator|=
 name|isSingleLine
 condition|?
 operator|new
@@ -238,7 +231,7 @@ else|:
 operator|new
 name|EditorTextArea
 argument_list|()
-decl_stmt|;
+expr_stmt|;
 name|HBox
 operator|.
 name|setHgrow
@@ -416,6 +409,20 @@ block|{
 return|return
 name|this
 return|;
+block|}
+annotation|@
+name|Override
+DECL|method|requestFocus ()
+specifier|public
+name|void
+name|requestFocus
+parameter_list|()
+block|{
+name|textInput
+operator|.
+name|requestFocus
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 end_class

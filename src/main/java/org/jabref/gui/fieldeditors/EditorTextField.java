@@ -173,14 +173,14 @@ argument_list|(
 name|text
 argument_list|)
 expr_stmt|;
-name|setMinHeight
+comment|// Always fill out all the available vertical space
+name|this
+operator|.
+name|setPrefHeight
 argument_list|(
-literal|1
-argument_list|)
-expr_stmt|;
-name|setMinWidth
-argument_list|(
-literal|200
+name|Double
+operator|.
+name|POSITIVE_INFINITY
 argument_list|)
 expr_stmt|;
 comment|// Should behave as a normal text field with respect to TAB behaviour

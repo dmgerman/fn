@@ -2466,7 +2466,7 @@ name|TOGGLE_ABBREVIATION
 argument_list|(
 name|MaterialDesignIcon
 operator|.
-name|TEXT_SHADOW
+name|FORMAT_ALIGN_CENTER
 argument_list|)
 operator|,
 DECL|enumConstant|NEW_FILE
