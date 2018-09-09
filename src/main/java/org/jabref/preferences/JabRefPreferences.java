@@ -12840,6 +12840,36 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+DECL|method|setIdBasedFetcherForEntryGenerator (String fetcherName)
+specifier|public
+name|void
+name|setIdBasedFetcherForEntryGenerator
+parameter_list|(
+name|String
+name|fetcherName
+parameter_list|)
+block|{
+name|put
+argument_list|(
+name|ID_ENTRY_GENERATOR
+argument_list|,
+name|fetcherName
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|getIdBasedFetcherForEntryGenerator ()
+specifier|public
+name|String
+name|getIdBasedFetcherForEntryGenerator
+parameter_list|()
+block|{
+return|return
+name|get
+argument_list|(
+name|ID_ENTRY_GENERATOR
+argument_list|)
+return|;
+block|}
 block|}
 end_class
 
