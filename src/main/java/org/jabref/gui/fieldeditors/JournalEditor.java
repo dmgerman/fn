@@ -173,12 +173,12 @@ specifier|private
 name|JournalEditorViewModel
 name|viewModel
 decl_stmt|;
-DECL|field|textArea
+DECL|field|textField
 annotation|@
 name|FXML
 specifier|private
-name|EditorTextArea
-name|textArea
+name|EditorTextField
+name|textField
 decl_stmt|;
 DECL|method|JournalEditor (String fieldName, JournalAbbreviationRepository journalAbbreviationRepository, JabRefPreferences preferences, AutoCompleteSuggestionProvider<?> suggestionProvider, FieldCheckers fieldCheckers)
 specifier|public
@@ -234,7 +234,7 @@ operator|.
 name|load
 argument_list|()
 expr_stmt|;
-name|textArea
+name|textField
 operator|.
 name|textProperty
 argument_list|()
@@ -247,7 +247,7 @@ name|textProperty
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|textArea
+name|textField
 operator|.
 name|addToContextMenu
 argument_list|(
@@ -255,7 +255,7 @@ name|EditorMenus
 operator|.
 name|getDefaultMenu
 argument_list|(
-name|textArea
+name|textField
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -263,7 +263,7 @@ name|AutoCompletionTextInputBinding
 operator|.
 name|autoComplete
 argument_list|(
-name|textArea
+name|textField
 argument_list|,
 name|viewModel
 operator|::
@@ -286,7 +286,7 @@ operator|.
 name|getValidationStatus
 argument_list|()
 argument_list|,
-name|textArea
+name|textField
 argument_list|)
 expr_stmt|;
 block|}

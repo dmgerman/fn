@@ -114,6 +114,30 @@ end_import
 
 begin_import
 import|import
+name|javafx
+operator|.
+name|scene
+operator|.
+name|layout
+operator|.
+name|HBox
+import|;
+end_import
+
+begin_import
+import|import
+name|javafx
+operator|.
+name|scene
+operator|.
+name|layout
+operator|.
+name|Priority
+import|;
+end_import
+
+begin_import
+import|import
 name|com
 operator|.
 name|sun
@@ -173,14 +197,23 @@ argument_list|(
 name|text
 argument_list|)
 expr_stmt|;
-comment|// Always fill out all the available vertical space
-name|this
-operator|.
+comment|// Always fill out all the available space
 name|setPrefHeight
 argument_list|(
 name|Double
 operator|.
 name|POSITIVE_INFINITY
+argument_list|)
+expr_stmt|;
+name|HBox
+operator|.
+name|setHgrow
+argument_list|(
+name|this
+argument_list|,
+name|Priority
+operator|.
+name|ALWAYS
 argument_list|)
 expr_stmt|;
 comment|// Should behave as a normal text field with respect to TAB behaviour

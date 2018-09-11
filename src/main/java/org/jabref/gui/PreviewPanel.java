@@ -1110,6 +1110,8 @@ expr_stmt|;
 name|updateLayout
 argument_list|(
 name|preferences
+argument_list|,
+literal|true
 argument_list|)
 expr_stmt|;
 block|}
@@ -1486,6 +1488,26 @@ name|PreviewPreferences
 name|previewPreferences
 parameter_list|)
 block|{
+name|updateLayout
+argument_list|(
+name|previewPreferences
+argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|updateLayout (PreviewPreferences previewPreferences, boolean init)
+specifier|private
+name|void
+name|updateLayout
+parameter_list|(
+name|PreviewPreferences
+name|previewPreferences
+parameter_list|,
+name|boolean
+name|init
+parameter_list|)
+block|{
 if|if
 condition|(
 name|fixedLayout
@@ -1558,6 +1580,12 @@ argument_list|(
 name|citationStyle
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|init
+condition|)
+block|{
 name|basePanel
 operator|.
 name|get
@@ -1579,6 +1607,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 argument_list|)
 expr_stmt|;
 block|}
@@ -1598,6 +1627,12 @@ name|getLayoutFormatterPreferences
 argument_list|()
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|init
+condition|)
+block|{
 name|basePanel
 operator|.
 name|ifPresent
@@ -1624,6 +1659,7 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|update
 argument_list|()
