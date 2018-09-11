@@ -168,7 +168,7 @@ name|model
 operator|.
 name|metadata
 operator|.
-name|FileDirectoryPreferences
+name|FilePreferences
 import|;
 end_import
 
@@ -186,21 +186,21 @@ specifier|final
 name|BibDatabaseContext
 name|databaseContext
 decl_stmt|;
-DECL|field|fileDirectoryPreferences
+DECL|field|filePreferences
 specifier|private
 specifier|final
-name|FileDirectoryPreferences
-name|fileDirectoryPreferences
+name|FilePreferences
+name|filePreferences
 decl_stmt|;
-DECL|method|RelativePathsCleanup (BibDatabaseContext databaseContext, FileDirectoryPreferences fileDirectoryPreferences)
+DECL|method|RelativePathsCleanup (BibDatabaseContext databaseContext, FilePreferences filePreferences)
 specifier|public
 name|RelativePathsCleanup
 parameter_list|(
 name|BibDatabaseContext
 name|databaseContext
 parameter_list|,
-name|FileDirectoryPreferences
-name|fileDirectoryPreferences
+name|FilePreferences
+name|filePreferences
 parameter_list|)
 block|{
 name|this
@@ -216,13 +216,13 @@ argument_list|)
 expr_stmt|;
 name|this
 operator|.
-name|fileDirectoryPreferences
+name|filePreferences
 operator|=
 name|Objects
 operator|.
 name|requireNonNull
 argument_list|(
-name|fileDirectoryPreferences
+name|filePreferences
 argument_list|)
 expr_stmt|;
 block|}
@@ -288,7 +288,7 @@ name|newFileName
 init|=
 name|FileUtil
 operator|.
-name|shortenFileName
+name|relativize
 argument_list|(
 name|Paths
 operator|.
@@ -301,7 +301,7 @@ name|databaseContext
 operator|.
 name|getFileDirectoriesAsPaths
 argument_list|(
-name|fileDirectoryPreferences
+name|filePreferences
 argument_list|)
 argument_list|)
 operator|.

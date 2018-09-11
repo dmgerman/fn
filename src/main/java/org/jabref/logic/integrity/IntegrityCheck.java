@@ -122,7 +122,7 @@ name|model
 operator|.
 name|metadata
 operator|.
-name|FileDirectoryPreferences
+name|FilePreferences
 import|;
 end_import
 
@@ -138,11 +138,11 @@ specifier|final
 name|BibDatabaseContext
 name|bibDatabaseContext
 decl_stmt|;
-DECL|field|fileDirectoryPreferences
+DECL|field|filePreferences
 specifier|private
 specifier|final
-name|FileDirectoryPreferences
-name|fileDirectoryPreferences
+name|FilePreferences
+name|filePreferences
 decl_stmt|;
 DECL|field|bibtexKeyPatternPreferences
 specifier|private
@@ -162,15 +162,15 @@ specifier|final
 name|boolean
 name|enforceLegalKey
 decl_stmt|;
-DECL|method|IntegrityCheck (BibDatabaseContext bibDatabaseContext, FileDirectoryPreferences fileDirectoryPreferences, BibtexKeyPatternPreferences bibtexKeyPatternPreferences, JournalAbbreviationRepository journalAbbreviationRepository, boolean enforceLegalKey)
+DECL|method|IntegrityCheck (BibDatabaseContext bibDatabaseContext, FilePreferences filePreferences, BibtexKeyPatternPreferences bibtexKeyPatternPreferences, JournalAbbreviationRepository journalAbbreviationRepository, boolean enforceLegalKey)
 specifier|public
 name|IntegrityCheck
 parameter_list|(
 name|BibDatabaseContext
 name|bibDatabaseContext
 parameter_list|,
-name|FileDirectoryPreferences
-name|fileDirectoryPreferences
+name|FilePreferences
+name|filePreferences
 parameter_list|,
 name|BibtexKeyPatternPreferences
 name|bibtexKeyPatternPreferences
@@ -195,13 +195,13 @@ argument_list|)
 expr_stmt|;
 name|this
 operator|.
-name|fileDirectoryPreferences
+name|filePreferences
 operator|=
 name|Objects
 operator|.
 name|requireNonNull
 argument_list|(
-name|fileDirectoryPreferences
+name|filePreferences
 argument_list|)
 expr_stmt|;
 name|this
@@ -324,7 +324,7 @@ name|FieldCheckers
 argument_list|(
 name|bibDatabaseContext
 argument_list|,
-name|fileDirectoryPreferences
+name|filePreferences
 argument_list|,
 name|journalAbbreviationRepository
 argument_list|,

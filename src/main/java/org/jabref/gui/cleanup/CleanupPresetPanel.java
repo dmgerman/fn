@@ -395,7 +395,7 @@ operator|.
 name|getInstance
 argument_list|()
 operator|.
-name|getFileDirectoryPreferences
+name|getFilePreferences
 argument_list|()
 argument_list|)
 decl_stmt|;

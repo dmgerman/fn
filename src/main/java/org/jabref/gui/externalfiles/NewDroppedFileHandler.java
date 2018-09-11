@@ -298,7 +298,7 @@ name|model
 operator|.
 name|metadata
 operator|.
-name|FileDirectoryPreferences
+name|FilePreferences
 import|;
 end_import
 
@@ -406,7 +406,7 @@ specifier|final
 name|ExternalFilesContentImporter
 name|contentImporter
 decl_stmt|;
-DECL|method|NewDroppedFileHandler (DialogService dialogService, BibDatabaseContext bibDatabaseContext, ExternalFileTypes externalFileTypes, FileDirectoryPreferences fileDirectoryPreferences, String fileDirPattern, ImportFormatPreferences importFormatPreferences, UpdateFieldPreferences updateFieldPreferences, FileUpdateMonitor fileupdateMonitor, String fileNamePattern)
+DECL|method|NewDroppedFileHandler (DialogService dialogService, BibDatabaseContext bibDatabaseContext, ExternalFileTypes externalFileTypes, FilePreferences filePreferences, ImportFormatPreferences importFormatPreferences, UpdateFieldPreferences updateFieldPreferences, FileUpdateMonitor fileupdateMonitor)
 specifier|public
 name|NewDroppedFileHandler
 parameter_list|(
@@ -419,11 +419,8 @@ parameter_list|,
 name|ExternalFileTypes
 name|externalFileTypes
 parameter_list|,
-name|FileDirectoryPreferences
-name|fileDirectoryPreferences
-parameter_list|,
-name|String
-name|fileDirPattern
+name|FilePreferences
+name|filePreferences
 parameter_list|,
 name|ImportFormatPreferences
 name|importFormatPreferences
@@ -433,9 +430,6 @@ name|updateFieldPreferences
 parameter_list|,
 name|FileUpdateMonitor
 name|fileupdateMonitor
-parameter_list|,
-name|String
-name|fileNamePattern
 parameter_list|)
 block|{
 name|this
@@ -471,13 +465,9 @@ name|ExternalFilesEntryLinker
 argument_list|(
 name|externalFileTypes
 argument_list|,
-name|fileDirectoryPreferences
-argument_list|,
-name|fileDirPattern
+name|filePreferences
 argument_list|,
 name|bibDatabaseContext
-argument_list|,
-name|fileNamePattern
 argument_list|)
 expr_stmt|;
 name|this

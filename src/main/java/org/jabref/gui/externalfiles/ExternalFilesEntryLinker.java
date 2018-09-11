@@ -192,7 +192,7 @@ name|model
 operator|.
 name|metadata
 operator|.
-name|FileDirectoryPreferences
+name|FilePreferences
 import|;
 end_import
 
@@ -208,11 +208,11 @@ specifier|final
 name|ExternalFileTypes
 name|externalFileTypes
 decl_stmt|;
-DECL|field|fileDirectoryPreferences
+DECL|field|filePreferences
 specifier|private
 specifier|final
-name|FileDirectoryPreferences
-name|fileDirectoryPreferences
+name|FilePreferences
+name|filePreferences
 decl_stmt|;
 DECL|field|bibDatabaseContext
 specifier|private
@@ -232,24 +232,18 @@ specifier|final
 name|RenamePdfCleanup
 name|renameFilesCleanup
 decl_stmt|;
-DECL|method|ExternalFilesEntryLinker (ExternalFileTypes externalFileTypes, FileDirectoryPreferences fileDirectoryPreferences, String fileDirPattern, BibDatabaseContext bibDatabaseContext, String fileNamePattern)
+DECL|method|ExternalFilesEntryLinker (ExternalFileTypes externalFileTypes, FilePreferences filePreferences, BibDatabaseContext bibDatabaseContext)
 specifier|public
 name|ExternalFilesEntryLinker
 parameter_list|(
 name|ExternalFileTypes
 name|externalFileTypes
 parameter_list|,
-name|FileDirectoryPreferences
-name|fileDirectoryPreferences
-parameter_list|,
-name|String
-name|fileDirPattern
+name|FilePreferences
+name|filePreferences
 parameter_list|,
 name|BibDatabaseContext
 name|bibDatabaseContext
-parameter_list|,
-name|String
-name|fileNamePattern
 parameter_list|)
 block|{
 name|this
@@ -260,9 +254,9 @@ name|externalFileTypes
 expr_stmt|;
 name|this
 operator|.
-name|fileDirectoryPreferences
+name|filePreferences
 operator|=
-name|fileDirectoryPreferences
+name|filePreferences
 expr_stmt|;
 name|this
 operator|.
@@ -279,9 +273,7 @@ name|MoveFilesCleanup
 argument_list|(
 name|bibDatabaseContext
 argument_list|,
-name|fileDirPattern
-argument_list|,
-name|fileDirectoryPreferences
+name|filePreferences
 argument_list|)
 expr_stmt|;
 name|this
@@ -295,9 +287,7 @@ literal|false
 argument_list|,
 name|bibDatabaseContext
 argument_list|,
-name|fileNamePattern
-argument_list|,
-name|fileDirectoryPreferences
+name|filePreferences
 argument_list|)
 expr_stmt|;
 block|}
@@ -323,7 +313,7 @@ name|bibDatabaseContext
 operator|.
 name|getFirstExistingFileDir
 argument_list|(
-name|fileDirectoryPreferences
+name|filePreferences
 argument_list|)
 decl_stmt|;
 if|if
@@ -499,7 +489,7 @@ name|relativePath
 init|=
 name|FileUtil
 operator|.
-name|shortenFileName
+name|relativize
 argument_list|(
 name|file
 argument_list|,
@@ -507,7 +497,7 @@ name|bibDatabaseContext
 operator|.
 name|getFileDirectoriesAsPaths
 argument_list|(
-name|fileDirectoryPreferences
+name|filePreferences
 argument_list|)
 argument_list|)
 decl_stmt|;

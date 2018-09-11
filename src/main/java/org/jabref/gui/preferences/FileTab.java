@@ -270,7 +270,7 @@ name|model
 operator|.
 name|metadata
 operator|.
-name|FileDirectoryPreferences
+name|FilePreferences
 import|;
 end_import
 
@@ -1317,7 +1317,7 @@ name|FieldName
 operator|.
 name|FILE
 operator|+
-name|FileDirectoryPreferences
+name|FilePreferences
 operator|.
 name|DIR_SUFFIX
 argument_list|)
@@ -1631,7 +1631,7 @@ name|FieldName
 operator|.
 name|FILE
 operator|+
-name|FileDirectoryPreferences
+name|FilePreferences
 operator|.
 name|DIR_SUFFIX
 argument_list|,

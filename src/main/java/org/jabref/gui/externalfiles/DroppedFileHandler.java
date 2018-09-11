@@ -1035,7 +1035,7 @@ name|destFilename
 operator|=
 name|FileUtil
 operator|.
-name|shortenFileName
+name|relativize
 argument_list|(
 name|Paths
 operator|.
@@ -1055,7 +1055,7 @@ name|Globals
 operator|.
 name|prefs
 operator|.
-name|getFileDirectoryPreferences
+name|getFilePreferences
 argument_list|()
 argument_list|)
 argument_list|)
@@ -1324,7 +1324,7 @@ name|destFilename
 operator|=
 name|FileUtil
 operator|.
-name|shortenFileName
+name|relativize
 argument_list|(
 name|Paths
 operator|.
@@ -1344,7 +1344,7 @@ name|Globals
 operator|.
 name|prefs
 operator|.
-name|getFileDirectoryPreferences
+name|getFilePreferences
 argument_list|()
 argument_list|)
 argument_list|)
@@ -1770,7 +1770,7 @@ name|destFilename
 operator|=
 name|FileUtil
 operator|.
-name|shortenFileName
+name|relativize
 argument_list|(
 name|Paths
 operator|.
@@ -1790,7 +1790,7 @@ name|Globals
 operator|.
 name|prefs
 operator|.
-name|getFileDirectoryPreferences
+name|getFilePreferences
 argument_list|()
 argument_list|)
 argument_list|)
@@ -2007,7 +2007,7 @@ name|Globals
 operator|.
 name|prefs
 operator|.
-name|getFileDirectoryPreferences
+name|getFilePreferences
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -2610,7 +2610,7 @@ name|Globals
 operator|.
 name|prefs
 operator|.
-name|getFileDirectoryPreferences
+name|getFilePreferences
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -2915,7 +2915,7 @@ name|Globals
 operator|.
 name|prefs
 operator|.
-name|getFileDirectoryPreferences
+name|getFilePreferences
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -3138,7 +3138,7 @@ name|Globals
 operator|.
 name|prefs
 operator|.
-name|getFileDirectoryPreferences
+name|getFilePreferences
 argument_list|()
 argument_list|)
 decl_stmt|;

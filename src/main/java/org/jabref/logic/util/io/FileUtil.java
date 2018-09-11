@@ -52,6 +52,18 @@ name|nio
 operator|.
 name|file
 operator|.
+name|CopyOption
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|file
+operator|.
 name|FileSystems
 import|;
 end_import
@@ -1071,7 +1083,7 @@ literal|false
 argument_list|)
 return|;
 block|}
-comment|/**      * Renames a given file      *      * @param fromFile        The source filename to rename      * @param toFile          The target fileName      * @param replaceExisting Wether to replace existing files or not      * @return True if the rename was successful, false if an exception occurred      * @deprecated Use {@link #renameFileWithException(Path, Path, boolean)} instead and handle exception properly      */
+comment|/**      * Renames a given file      *      * @param fromFile        The source filename to rename      * @param toFile          The target fileName      * @param replaceExisting Wether to replace existing files or not      * @return True if the rename was successful, false if an exception occurred      * @deprecated Use {@link Files#move(Path, Path, CopyOption...)} instead and handle exception properly      */
 annotation|@
 name|Deprecated
 DECL|method|renameFile (Path fromFile, Path toFile, boolean replaceExisting)
@@ -1123,6 +1135,9 @@ literal|false
 return|;
 block|}
 block|}
+comment|/**      * @deprecated Directly use {@link Files#move(Path, Path, CopyOption...)}      */
+annotation|@
+name|Deprecated
 DECL|method|renameFileWithException (Path fromFile, Path toFile, boolean replaceExisting)
 specifier|public
 specifier|static
@@ -1189,12 +1204,12 @@ literal|null
 return|;
 block|}
 block|}
-comment|/**      * Converts an absolute file to a relative one, if possible. Returns the parameter file itself if no shortening is      * possible.      *<p>      * This method works correctly only if dirs are sorted decent in their length i.e. /home/user/literature/important before /home/user/literature.      *      * @param file the file to be shortened      * @param dirs directories to check      */
-DECL|method|shortenFileName (Path file, List<Path> dirs)
+comment|/**      * Converts an absolute file to a relative one, if possible. Returns the parameter file itself if no shortening is      * possible.      *<p>      * This method works correctly only if directories are sorted decent in their length i.e. /home/user/literature/important before /home/user/literature.      *      * @param file the file to be shortened      * @param directories directories to check      */
+DECL|method|relativize (Path file, List<Path> directories)
 specifier|public
 specifier|static
 name|Path
-name|shortenFileName
+name|relativize
 parameter_list|(
 name|Path
 name|file
@@ -1203,7 +1218,7 @@ name|List
 argument_list|<
 name|Path
 argument_list|>
-name|dirs
+name|directories
 parameter_list|)
 block|{
 if|if
@@ -1222,9 +1237,9 @@ block|}
 for|for
 control|(
 name|Path
-name|dir
+name|directory
 range|:
-name|dirs
+name|directories
 control|)
 block|{
 if|if
@@ -1233,12 +1248,12 @@ name|file
 operator|.
 name|startsWith
 argument_list|(
-name|dir
+name|directory
 argument_list|)
 condition|)
 block|{
 return|return
-name|dir
+name|directory
 operator|.
 name|relativize
 argument_list|(

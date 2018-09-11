@@ -505,13 +505,6 @@ argument_list|,
 name|entry
 argument_list|)
 decl_stmt|;
-name|unsuccessfulRenames
-operator|=
-name|cleaner
-operator|.
-name|getUnsuccessfulRenames
-argument_list|()
-expr_stmt|;
 if|if
 condition|(
 name|changes
@@ -556,41 +549,6 @@ name|isCanceled
 condition|)
 block|{
 return|return;
-block|}
-if|if
-condition|(
-name|unsuccessfulRenames
-operator|>
-literal|0
-condition|)
-block|{
-comment|//Rename failed for at least one entry
-name|dialogService
-operator|.
-name|showErrorDialogAndWait
-argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Autogenerate PDF Names"
-argument_list|)
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"File rename failed for %0 entries."
-argument_list|,
-name|Integer
-operator|.
-name|toString
-argument_list|(
-name|unsuccessfulRenames
-argument_list|)
-argument_list|)
-argument_list|)
-expr_stmt|;
 block|}
 if|if
 condition|(

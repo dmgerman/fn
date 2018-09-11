@@ -134,7 +134,7 @@ name|model
 operator|.
 name|metadata
 operator|.
-name|FileDirectoryPreferences
+name|FilePreferences
 import|;
 end_import
 
@@ -166,21 +166,21 @@ specifier|final
 name|BibDatabaseContext
 name|context
 decl_stmt|;
-DECL|field|fileDirectoryPreferences
+DECL|field|filePreferences
 specifier|private
 specifier|final
-name|FileDirectoryPreferences
-name|fileDirectoryPreferences
+name|FilePreferences
+name|filePreferences
 decl_stmt|;
-DECL|method|FileChecker (BibDatabaseContext context, FileDirectoryPreferences fileDirectoryPreferences)
+DECL|method|FileChecker (BibDatabaseContext context, FilePreferences filePreferences)
 specifier|public
 name|FileChecker
 parameter_list|(
 name|BibDatabaseContext
 name|context
 parameter_list|,
-name|FileDirectoryPreferences
-name|fileDirectoryPreferences
+name|FilePreferences
+name|filePreferences
 parameter_list|)
 block|{
 name|this
@@ -191,9 +191,9 @@ name|context
 expr_stmt|;
 name|this
 operator|.
-name|fileDirectoryPreferences
+name|filePreferences
 operator|=
-name|fileDirectoryPreferences
+name|filePreferences
 expr_stmt|;
 block|}
 annotation|@
@@ -282,7 +282,7 @@ name|findIn
 argument_list|(
 name|context
 argument_list|,
-name|fileDirectoryPreferences
+name|filePreferences
 argument_list|)
 decl_stmt|;
 if|if

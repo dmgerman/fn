@@ -244,7 +244,7 @@ name|model
 operator|.
 name|metadata
 operator|.
-name|FileDirectoryPreferences
+name|FilePreferences
 import|;
 end_import
 
@@ -3094,7 +3094,7 @@ name|context
 argument_list|,
 name|mock
 argument_list|(
-name|FileDirectoryPreferences
+name|FilePreferences
 operator|.
 name|class
 argument_list|)
@@ -3337,7 +3337,7 @@ name|context
 argument_list|,
 name|mock
 argument_list|(
-name|FileDirectoryPreferences
+name|FilePreferences
 operator|.
 name|class
 argument_list|)
@@ -3399,7 +3399,7 @@ name|context
 argument_list|,
 name|mock
 argument_list|(
-name|FileDirectoryPreferences
+name|FilePreferences
 operator|.
 name|class
 argument_list|)

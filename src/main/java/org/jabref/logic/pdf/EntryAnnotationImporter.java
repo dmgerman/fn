@@ -118,7 +118,7 @@ name|model
 operator|.
 name|metadata
 operator|.
-name|FileDirectoryPreferences
+name|FilePreferences
 import|;
 end_import
 
@@ -223,7 +223,7 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Reads the annotations from the files that are attached to a BibEntry.      *      * @param databaseContext The context is needed for the importer.      * @return Map from each PDF to a list of file annotations      */
-DECL|method|importAnnotationsFromFiles (BibDatabaseContext databaseContext, FileDirectoryPreferences fileDirectoryPreferences)
+DECL|method|importAnnotationsFromFiles (BibDatabaseContext databaseContext, FilePreferences filePreferences)
 specifier|public
 name|Map
 argument_list|<
@@ -239,8 +239,8 @@ parameter_list|(
 name|BibDatabaseContext
 name|databaseContext
 parameter_list|,
-name|FileDirectoryPreferences
-name|fileDirectoryPreferences
+name|FilePreferences
+name|filePreferences
 parameter_list|)
 block|{
 name|Map
@@ -284,7 +284,7 @@ name|findIn
 argument_list|(
 name|databaseContext
 argument_list|,
-name|fileDirectoryPreferences
+name|filePreferences
 argument_list|)
 operator|.
 name|ifPresent

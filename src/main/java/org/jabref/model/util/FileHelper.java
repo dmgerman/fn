@@ -122,7 +122,7 @@ name|model
 operator|.
 name|metadata
 operator|.
-name|FileDirectoryPreferences
+name|FilePreferences
 import|;
 end_import
 
@@ -239,7 +239,7 @@ return|;
 block|}
 block|}
 comment|/**      * Converts a relative filename to an absolute one, if necessary. Returns an empty optional if the file does not      * exist.<br/>      *<p>      * Uses<ul>      *<li>the default directory associated with the extension of the file</li>      *<li>the standard file directory</li>      *<li>the directory of the BIB file</li>      *</ul>      *      * @param databaseContext The database this file belongs to.      * @param name     The filename, may also be a relative path to the file      */
-DECL|method|expandFilename (final BibDatabaseContext databaseContext, String name, FileDirectoryPreferences fileDirectoryPreferences)
+DECL|method|expandFilename (final BibDatabaseContext databaseContext, String name, FilePreferences filePreferences)
 specifier|public
 specifier|static
 name|Optional
@@ -255,8 +255,8 @@ parameter_list|,
 name|String
 name|name
 parameter_list|,
-name|FileDirectoryPreferences
-name|fileDirectoryPreferences
+name|FilePreferences
+name|filePreferences
 parameter_list|)
 block|{
 name|Optional
@@ -288,7 +288,7 @@ argument_list|(
 literal|null
 argument_list|)
 argument_list|,
-name|fileDirectoryPreferences
+name|filePreferences
 argument_list|)
 decl_stmt|;
 comment|// Include the standard "file" directory:
@@ -302,7 +302,7 @@ name|databaseContext
 operator|.
 name|getFileDirectories
 argument_list|(
-name|fileDirectoryPreferences
+name|filePreferences
 argument_list|)
 decl_stmt|;
 name|List

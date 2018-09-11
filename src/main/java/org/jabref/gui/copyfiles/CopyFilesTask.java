@@ -712,7 +712,7 @@ name|Globals
 operator|.
 name|prefs
 operator|.
-name|getFileDirectoryPreferences
+name|getFilePreferences
 argument_list|()
 argument_list|)
 decl_stmt|;

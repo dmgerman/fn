@@ -83,10 +83,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|FileDirectoryPreferences
+DECL|class|FilePreferences
 specifier|public
 class|class
-name|FileDirectoryPreferences
+name|FilePreferences
 block|{
 DECL|field|DIR_SUFFIX
 specifier|public
@@ -120,9 +120,21 @@ specifier|final
 name|boolean
 name|bibLocationAsPrimary
 decl_stmt|;
-DECL|method|FileDirectoryPreferences (String user, Map<String, String> fieldFileDirectories, boolean bibLocationAsPrimary)
+DECL|field|fileNamePattern
+specifier|private
+specifier|final
+name|String
+name|fileNamePattern
+decl_stmt|;
+DECL|field|fileDirPattern
+specifier|private
+specifier|final
+name|String
+name|fileDirPattern
+decl_stmt|;
+DECL|method|FilePreferences (String user, Map<String, String> fieldFileDirectories, boolean bibLocationAsPrimary, String fileNamePattern, String fileDirPattern)
 specifier|public
-name|FileDirectoryPreferences
+name|FilePreferences
 parameter_list|(
 name|String
 name|user
@@ -137,6 +149,12 @@ name|fieldFileDirectories
 parameter_list|,
 name|boolean
 name|bibLocationAsPrimary
+parameter_list|,
+name|String
+name|fileNamePattern
+parameter_list|,
+name|String
+name|fileDirPattern
 parameter_list|)
 block|{
 name|this
@@ -156,6 +174,18 @@ operator|.
 name|bibLocationAsPrimary
 operator|=
 name|bibLocationAsPrimary
+expr_stmt|;
+name|this
+operator|.
+name|fileNamePattern
+operator|=
+name|fileNamePattern
+expr_stmt|;
+name|this
+operator|.
+name|fileDirPattern
+operator|=
+name|fileDirPattern
 expr_stmt|;
 block|}
 DECL|method|getUser ()
@@ -274,6 +304,26 @@ parameter_list|()
 block|{
 return|return
 name|bibLocationAsPrimary
+return|;
+block|}
+DECL|method|getFileNamePattern ()
+specifier|public
+name|String
+name|getFileNamePattern
+parameter_list|()
+block|{
+return|return
+name|fileNamePattern
+return|;
+block|}
+DECL|method|getFileDirPattern ()
+specifier|public
+name|String
+name|getFileDirPattern
+parameter_list|()
+block|{
+return|return
+name|fileDirPattern
 return|;
 block|}
 block|}

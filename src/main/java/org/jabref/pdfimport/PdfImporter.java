@@ -1057,7 +1057,7 @@ name|Globals
 operator|.
 name|prefs
 operator|.
-name|getFileDirectoryPreferences
+name|getFilePreferences
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -1074,7 +1074,7 @@ literal|""
 argument_list|,
 name|FileUtil
 operator|.
-name|shortenFileName
+name|relativize
 argument_list|(
 name|toLink
 argument_list|,

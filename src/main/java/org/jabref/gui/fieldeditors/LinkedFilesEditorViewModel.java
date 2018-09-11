@@ -748,7 +748,7 @@ name|relativePath
 init|=
 name|FileUtil
 operator|.
-name|shortenFileName
+name|relativize
 argument_list|(
 name|file
 argument_list|,
@@ -794,7 +794,7 @@ name|getFileDirectoriesAsPaths
 argument_list|(
 name|preferences
 operator|.
-name|getFileDirectoryPreferences
+name|getFilePreferences
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -946,7 +946,7 @@ name|getFirstExistingFileDir
 argument_list|(
 name|preferences
 operator|.
-name|getFileDirectoryPreferences
+name|getFilePreferences
 argument_list|()
 argument_list|)
 operator|.
@@ -996,7 +996,7 @@ name|getFileDirectoriesAsPaths
 argument_list|(
 name|preferences
 operator|.
-name|getFileDirectoryPreferences
+name|getFilePreferences
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -1143,7 +1143,7 @@ name|databaseContext
 argument_list|,
 name|preferences
 operator|.
-name|getFileDirectoryPreferences
+name|getFilePreferences
 argument_list|()
 argument_list|,
 name|preferences
@@ -1505,12 +1505,7 @@ init|=
 name|file
 operator|.
 name|delete
-argument_list|(
-name|preferences
-operator|.
-name|getFileDirectoryPreferences
 argument_list|()
-argument_list|)
 decl_stmt|;
 if|if
 condition|(

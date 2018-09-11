@@ -60,7 +60,7 @@ name|model
 operator|.
 name|metadata
 operator|.
-name|FileDirectoryPreferences
+name|FilePreferences
 import|;
 end_import
 
@@ -96,9 +96,9 @@ name|JournalAbbreviationPreferences
 name|abbreviationsPreferences
 parameter_list|)
 function_decl|;
-DECL|method|getFileDirectoryPreferences ()
-name|FileDirectoryPreferences
-name|getFileDirectoryPreferences
+DECL|method|getFilePreferences ()
+name|FilePreferences
+name|getFilePreferences
 parameter_list|()
 function_decl|;
 DECL|method|getWorkingDir ()

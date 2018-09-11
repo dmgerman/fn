@@ -208,7 +208,7 @@ name|model
 operator|.
 name|metadata
 operator|.
-name|FileDirectoryPreferences
+name|FilePreferences
 import|;
 end_import
 
@@ -825,7 +825,7 @@ operator|.
 name|BIBLATEX
 return|;
 block|}
-DECL|method|getFileDirectoriesAsPaths (FileDirectoryPreferences preferences)
+DECL|method|getFileDirectoriesAsPaths (FilePreferences preferences)
 specifier|public
 name|List
 argument_list|<
@@ -833,7 +833,7 @@ name|Path
 argument_list|>
 name|getFileDirectoriesAsPaths
 parameter_list|(
-name|FileDirectoryPreferences
+name|FilePreferences
 name|preferences
 parameter_list|)
 block|{
@@ -888,10 +888,10 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**      * @deprecated use {@link #getFileDirectoriesAsPaths(FileDirectoryPreferences)} instead      */
+comment|/**      * @deprecated use {@link #getFileDirectoriesAsPaths(FilePreferences)} instead      */
 annotation|@
 name|Deprecated
-DECL|method|getFileDirectories (FileDirectoryPreferences preferences)
+DECL|method|getFileDirectories (FilePreferences preferences)
 specifier|public
 name|List
 argument_list|<
@@ -899,7 +899,7 @@ name|String
 argument_list|>
 name|getFileDirectories
 parameter_list|(
-name|FileDirectoryPreferences
+name|FilePreferences
 name|preferences
 parameter_list|)
 block|{
@@ -914,8 +914,8 @@ name|preferences
 argument_list|)
 return|;
 block|}
-comment|/**      * Returns the first existing file directory from  {@link #getFileDirectories(FileDirectoryPreferences)}      *      * @param preferences The FileDirectoryPreferences      * @return Optional of Path      */
-DECL|method|getFirstExistingFileDir (FileDirectoryPreferences preferences)
+comment|/**      * Returns the first existing file directory from  {@link #getFileDirectories(FilePreferences)}      *      * @param preferences The FilePreferences      * @return Optional of Path      */
+DECL|method|getFirstExistingFileDir (FilePreferences preferences)
 specifier|public
 name|Optional
 argument_list|<
@@ -923,7 +923,7 @@ name|Path
 argument_list|>
 name|getFirstExistingFileDir
 parameter_list|(
-name|FileDirectoryPreferences
+name|FilePreferences
 name|preferences
 parameter_list|)
 block|{
@@ -948,7 +948,7 @@ argument_list|()
 return|;
 block|}
 comment|/**      * Look up the directories set up for the given field type for this database. If no directory is set up, return that      * defined in global preferences. There can be up to three directory definitions for these files: the database's      * metadata can specify a general directory and/or a user-specific directory or the preferences can specify one.<p>      * The settings are prioritized in the following order and the first defined setting is used:      *<ol>      *<li>metdata</li>      *<li>user-specific directory</li>      *<li>preferences directory</li>      *<li>BIB file directory</li>      *</ol>      *      * @param fieldName   The field type      * @param preferences The fileDirectory preferences      * @return The default directory for this field type.      */
-DECL|method|getFileDirectories (String fieldName, FileDirectoryPreferences preferences)
+DECL|method|getFileDirectories (String fieldName, FilePreferences preferences)
 specifier|public
 name|List
 argument_list|<
@@ -959,7 +959,7 @@ parameter_list|(
 name|String
 name|fieldName
 parameter_list|,
-name|FileDirectoryPreferences
+name|FilePreferences
 name|preferences
 parameter_list|)
 block|{

@@ -74,7 +74,7 @@ name|model
 operator|.
 name|metadata
 operator|.
-name|FileDirectoryPreferences
+name|FilePreferences
 import|;
 end_import
 
@@ -168,10 +168,6 @@ argument_list|,
 operator|new
 name|CleanupPreferences
 argument_list|(
-literal|""
-argument_list|,
-literal|""
-argument_list|,
 name|mock
 argument_list|(
 name|LayoutFormatterPreferences
@@ -181,7 +177,7 @@ argument_list|)
 argument_list|,
 name|mock
 argument_list|(
-name|FileDirectoryPreferences
+name|FilePreferences
 operator|.
 name|class
 argument_list|)

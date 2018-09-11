@@ -614,7 +614,7 @@ name|fileText
 argument_list|,
 name|preferences
 operator|.
-name|getFileDirectoryPreferences
+name|getFilePreferences
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -942,14 +942,14 @@ name|getFileDirectoriesAsPaths
 argument_list|(
 name|preferences
 operator|.
-name|getFileDirectoryPreferences
+name|getFilePreferences
 argument_list|()
 argument_list|)
 decl_stmt|;
 return|return
 name|FileUtil
 operator|.
-name|shortenFileName
+name|relativize
 argument_list|(
 name|filePath
 argument_list|,
