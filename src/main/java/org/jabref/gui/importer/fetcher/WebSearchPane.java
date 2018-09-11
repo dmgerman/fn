@@ -617,6 +617,18 @@ operator|.
 name|create
 argument_list|()
 decl_stmt|;
+name|query
+operator|.
+name|setOnAction
+argument_list|(
+name|event
+lambda|->
+name|viewModel
+operator|.
+name|search
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|viewModel
 operator|.
 name|queryProperty
@@ -649,7 +661,7 @@ name|search
 operator|.
 name|setDefaultButton
 argument_list|(
-literal|true
+literal|false
 argument_list|)
 expr_stmt|;
 name|search
