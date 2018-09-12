@@ -2609,7 +2609,7 @@ name|Actions
 operator|.
 name|COPY
 argument_list|,
-name|mainTable
+name|this
 operator|::
 name|copy
 argument_list|)
@@ -2635,7 +2635,7 @@ name|Actions
 operator|.
 name|CUT
 argument_list|,
-name|mainTable
+name|this
 operator|::
 name|cut
 argument_list|)
@@ -2670,7 +2670,7 @@ name|Actions
 operator|.
 name|PASTE
 argument_list|,
-name|mainTable
+name|this
 operator|::
 name|paste
 argument_list|)
@@ -8761,6 +8761,51 @@ argument_list|(
 literal|null
 argument_list|)
 return|;
+block|}
+end_function
+
+begin_function
+DECL|method|copy ()
+specifier|public
+name|void
+name|copy
+parameter_list|()
+block|{
+name|mainTable
+operator|.
+name|copy
+argument_list|()
+expr_stmt|;
+block|}
+end_function
+
+begin_function
+DECL|method|paste ()
+specifier|public
+name|void
+name|paste
+parameter_list|()
+block|{
+name|mainTable
+operator|.
+name|paste
+argument_list|()
+expr_stmt|;
+block|}
+end_function
+
+begin_function
+DECL|method|cut ()
+specifier|public
+name|void
+name|cut
+parameter_list|()
+block|{
+name|mainTable
+operator|.
+name|cut
+argument_list|()
+expr_stmt|;
 block|}
 end_function
 
