@@ -1047,6 +1047,13 @@ argument_list|(
 name|column
 argument_list|)
 expr_stmt|;
+name|column
+operator|.
+name|setSortable
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 return|return
 name|column
 return|;
@@ -1294,6 +1301,13 @@ operator|.
 name|install
 argument_list|(
 name|column
+argument_list|)
+expr_stmt|;
+name|column
+operator|.
+name|setSortable
+argument_list|(
+literal|true
 argument_list|)
 expr_stmt|;
 name|column
@@ -1628,6 +1642,16 @@ argument_list|)
 expr_stmt|;
 block|}
 end_if
+
+begin_expr_stmt
+name|column
+operator|.
+name|setSortable
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+end_expr_stmt
 
 begin_return
 return|return

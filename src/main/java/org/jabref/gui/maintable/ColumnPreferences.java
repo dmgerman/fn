@@ -34,6 +34,20 @@ end_import
 
 begin_import
 import|import
+name|javafx
+operator|.
+name|scene
+operator|.
+name|control
+operator|.
+name|TableColumn
+operator|.
+name|SortType
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|jabref
@@ -130,7 +144,18 @@ name|Double
 argument_list|>
 name|columnWidths
 decl_stmt|;
-DECL|method|ColumnPreferences (boolean showFileColumn, boolean showUrlColumn, boolean preferDoiOverUrl, boolean showEprintColumn, List<String> normalColumns, List<SpecialField> specialFieldColumns, List<String> extraFileColumns, Map<String, Double> columnWidths)
+DECL|field|columnSortType
+specifier|private
+specifier|final
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|SortType
+argument_list|>
+name|columnSortType
+decl_stmt|;
+DECL|method|ColumnPreferences (boolean showFileColumn, boolean showUrlColumn, boolean preferDoiOverUrl, boolean showEprintColumn, List<String> normalColumns, List<SpecialField> specialFieldColumns, List<String> extraFileColumns, Map<String, Double> columnWidths, Map<String, SortType> columnSortType)
 specifier|public
 name|ColumnPreferences
 parameter_list|(
@@ -171,6 +196,14 @@ argument_list|,
 name|Double
 argument_list|>
 name|columnWidths
+parameter_list|,
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|SortType
+argument_list|>
+name|columnSortType
 parameter_list|)
 block|{
 name|this
@@ -220,6 +253,12 @@ operator|.
 name|columnWidths
 operator|=
 name|columnWidths
+expr_stmt|;
+name|this
+operator|.
+name|columnSortType
+operator|=
+name|columnSortType
 expr_stmt|;
 block|}
 DECL|method|showFileColumn ()
@@ -321,6 +360,21 @@ name|BibtexSingleField
 operator|.
 name|DEFAULT_FIELD_LENGTH
 argument_list|)
+return|;
+block|}
+DECL|method|getSortTypesForColumns ()
+specifier|public
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|SortType
+argument_list|>
+name|getSortTypesForColumns
+parameter_list|()
+block|{
+return|return
+name|columnSortType
 return|;
 block|}
 block|}

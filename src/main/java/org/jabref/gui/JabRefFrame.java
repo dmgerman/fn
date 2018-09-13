@@ -7264,6 +7264,12 @@ name|String
 name|s
 parameter_list|)
 block|{
+name|DefaultTaskExecutor
+operator|.
+name|runInJavaFXThread
+argument_list|(
+parameter_list|()
+lambda|->
 name|statusLine
 operator|.
 name|show
@@ -7271,6 +7277,7 @@ argument_list|(
 name|s
 argument_list|,
 literal|3000
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
