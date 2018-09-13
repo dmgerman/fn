@@ -1375,6 +1375,18 @@ name|consume
 argument_list|()
 expr_stmt|;
 break|break;
+case|case
+name|CLOSE_ENTRY
+case|:
+name|close
+argument_list|()
+expr_stmt|;
+name|event
+operator|.
+name|consume
+argument_list|()
+expr_stmt|;
+break|break;
 default|default:
 comment|// Pass other keys to parent
 block|}

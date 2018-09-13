@@ -165,6 +165,25 @@ operator|.
 name|FILE
 argument_list|)
 block|,
+DECL|enumConstant|CLOSE_ENTRY
+name|CLOSE_ENTRY
+argument_list|(
+literal|"Close entry"
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Close entry"
+argument_list|)
+argument_list|,
+literal|"ctrl+E"
+argument_list|,
+name|KeyBindingCategory
+operator|.
+name|VIEW
+argument_list|)
+block|,
 DECL|enumConstant|CLOSE
 name|CLOSE
 argument_list|(
