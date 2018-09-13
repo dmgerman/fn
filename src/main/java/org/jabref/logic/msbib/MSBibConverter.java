@@ -907,7 +907,7 @@ expr_stmt|;
 block|}
 name|entry
 operator|.
-name|getLatexFreeField
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -924,13 +924,19 @@ name|authors
 operator|=
 name|getAuthors
 argument_list|(
+name|entry
+argument_list|,
 name|authors
+argument_list|,
+name|FieldName
+operator|.
+name|AUTHOR
 argument_list|)
 argument_list|)
 expr_stmt|;
 name|entry
 operator|.
-name|getLatexFreeField
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -947,13 +953,19 @@ name|editors
 operator|=
 name|getAuthors
 argument_list|(
+name|entry
+argument_list|,
 name|editors
+argument_list|,
+name|FieldName
+operator|.
+name|EDITOR
 argument_list|)
 argument_list|)
 expr_stmt|;
 name|entry
 operator|.
-name|getLatexFreeField
+name|getField
 argument_list|(
 name|FieldName
 operator|.
@@ -970,7 +982,13 @@ name|translators
 operator|=
 name|getAuthors
 argument_list|(
+name|entry
+argument_list|,
 name|translator
+argument_list|,
+name|FieldName
+operator|.
+name|EDITOR
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -978,7 +996,7 @@ return|return
 name|result
 return|;
 block|}
-DECL|method|getAuthors (String authors)
+DECL|method|getAuthors (BibEntry entry, String authors, String fieldName)
 specifier|private
 specifier|static
 name|List
@@ -987,8 +1005,14 @@ name|MsBibAuthor
 argument_list|>
 name|getAuthors
 parameter_list|(
+name|BibEntry
+name|entry
+parameter_list|,
 name|String
 name|authors
+parameter_list|,
+name|String
+name|fieldName
 parameter_list|)
 block|{
 name|List
@@ -1007,7 +1031,8 @@ name|corporate
 init|=
 literal|false
 decl_stmt|;
-comment|//Only one corporate authors is supported
+comment|//Only one corporate author is supported
+comment|//We have the possible rare case that are multiple authors which start and end with latex , this is currently not considered
 if|if
 condition|(
 name|authors
@@ -1030,6 +1055,36 @@ operator|=
 literal|true
 expr_stmt|;
 block|}
+comment|//FIXME: #4152 This is an ugly hack because the latex2unicode formatter kills of all curly braces, so no more corporate author parsing possible
+name|String
+name|authorLatexFree
+init|=
+name|entry
+operator|.
+name|getLatexFreeField
+argument_list|(
+name|fieldName
+argument_list|)
+operator|.
+name|orElse
+argument_list|(
+literal|""
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|corporate
+condition|)
+block|{
+name|authorLatexFree
+operator|=
+literal|"{"
+operator|+
+name|authorLatexFree
+operator|+
+literal|"}"
+expr_stmt|;
+block|}
 name|AuthorList
 name|authorList
 init|=
@@ -1037,7 +1092,7 @@ name|AuthorList
 operator|.
 name|parse
 argument_list|(
-name|authors
+name|authorLatexFree
 argument_list|)
 decl_stmt|;
 for|for
