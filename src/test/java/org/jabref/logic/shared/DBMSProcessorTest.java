@@ -38,7 +38,67 @@ name|java
 operator|.
 name|util
 operator|.
-name|*
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Arrays
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Collection
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|HashMap
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
 import|;
 end_import
 
@@ -271,21 +331,11 @@ index|[]
 argument_list|>
 name|getTestingDatabaseSystems
 parameter_list|()
+throws|throws
+name|InvalidDBMSConnectionPropertiesException
+throws|,
+name|SQLException
 block|{
-name|Stream
-argument_list|<
-name|DBMSType
-argument_list|>
-name|dbmsTypeStream
-init|=
-name|TestManager
-operator|.
-name|getDBMSTypeTestParameter
-argument_list|()
-operator|.
-name|stream
-argument_list|()
-decl_stmt|;
 name|Collection
 argument_list|<
 name|Object
@@ -298,14 +348,16 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
-name|dbmsTypeStream
-operator|.
-name|forEach
-argument_list|(
+for|for
+control|(
+name|DBMSType
 name|dbmsType
-lambda|->
-block|{
-try|try
+range|:
+name|TestManager
+operator|.
+name|getDBMSTypeTestParameter
+argument_list|()
+control|)
 block|{
 name|result
 operator|.
@@ -316,14 +368,14 @@ name|Object
 index|[]
 block|{
 name|dbmsType
-operator|,
+block|,
 name|TestConnector
 operator|.
 name|getTestDBMSConnection
 argument_list|(
 name|dbmsType
 argument_list|)
-operator|,
+block|,
 name|DBMSProcessor
 operator|.
 name|getProcessorInstance
@@ -339,39 +391,14 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-catch|catch
-parameter_list|(
-name|SQLException
-decl||
-name|InvalidDBMSConnectionPropertiesException
-name|e
-parameter_list|)
-block|{
-name|e
-operator|.
-name|printStackTrace
-argument_list|()
-expr_stmt|;
-block|}
-block|}
-end_class
-
-begin_empty_stmt
-unit|)
-empty_stmt|;
-end_empty_stmt
-
-begin_return
 return|return
 name|result
 operator|.
 name|stream
 argument_list|()
 return|;
-end_return
-
-begin_function
-unit|}      @
+block|}
+annotation|@
 name|ParameterizedTest
 annotation|@
 name|MethodSource
@@ -421,9 +448,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-end_function
-
-begin_function
 annotation|@
 name|ParameterizedTest
 annotation|@
@@ -471,9 +495,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-end_function
-
-begin_function
 annotation|@
 name|ParameterizedTest
 annotation|@
@@ -686,9 +707,6 @@ name|actualFieldMap
 argument_list|)
 expr_stmt|;
 block|}
-end_function
-
-begin_function
 annotation|@
 name|ParameterizedTest
 annotation|@
@@ -801,9 +819,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-end_function
-
-begin_function
 annotation|@
 name|ParameterizedTest
 annotation|@
@@ -884,9 +899,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-end_function
-
-begin_function
 annotation|@
 name|ParameterizedTest
 annotation|@
@@ -978,9 +990,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-end_function
-
-begin_function
 annotation|@
 name|ParameterizedTest
 annotation|@
@@ -1054,9 +1063,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-end_function
-
-begin_function
 annotation|@
 name|ParameterizedTest
 annotation|@
@@ -1130,9 +1136,6 @@ name|actualEntries
 argument_list|)
 expr_stmt|;
 block|}
-end_function
-
-begin_function
 annotation|@
 name|ParameterizedTest
 annotation|@
@@ -1204,9 +1207,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-end_function
-
-begin_function
 annotation|@
 name|ParameterizedTest
 annotation|@
@@ -1257,9 +1257,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-end_function
-
-begin_function
 annotation|@
 name|ParameterizedTest
 annotation|@
@@ -1387,9 +1384,6 @@ name|actualIDVersionMap
 argument_list|)
 expr_stmt|;
 block|}
-end_function
-
-begin_function
 annotation|@
 name|ParameterizedTest
 annotation|@
@@ -1494,9 +1488,6 @@ name|actualMetaData
 argument_list|)
 expr_stmt|;
 block|}
-end_function
-
-begin_function
 annotation|@
 name|ParameterizedTest
 annotation|@
@@ -1564,9 +1555,6 @@ name|actualMetaData
 argument_list|)
 expr_stmt|;
 block|}
-end_function
-
-begin_function
 DECL|method|getMetaDataExample ()
 specifier|private
 name|Map
@@ -1631,9 +1619,6 @@ return|return
 name|expectedMetaData
 return|;
 block|}
-end_function
-
-begin_function
 DECL|method|getBibEntryExampleWithEmptyFields ()
 specifier|private
 name|BibEntry
@@ -1688,9 +1673,6 @@ return|return
 name|bibEntry
 return|;
 block|}
-end_function
-
-begin_function
 DECL|method|getBibEntryExample ()
 specifier|private
 name|BibEntry
@@ -1758,9 +1740,6 @@ return|return
 name|bibEntry
 return|;
 block|}
-end_function
-
-begin_function
 DECL|method|selectFrom (String table, DBMSConnection dbmsConnection, DBMSProcessor dbmsProcessor)
 specifier|private
 name|ResultSet
@@ -1819,17 +1798,8 @@ literal|null
 return|;
 block|}
 block|}
-end_function
-
-begin_comment
 comment|// Oracle does not support multiple tuple insertion in one INSERT INTO command.
-end_comment
-
-begin_comment
 comment|// Therefore this function was defined to improve the readability and to keep the code short.
-end_comment
-
-begin_function
 DECL|method|insertMetaData (String key, String value, DBMSConnection dbmsConnection, DBMSProcessor dbmsProcessor)
 specifier|private
 name|void
@@ -1921,9 +1891,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-end_function
-
-begin_function
 DECL|method|escape (String expression, DBMSProcessor dbmsProcessor)
 specifier|private
 name|String
@@ -1945,9 +1912,6 @@ name|expression
 argument_list|)
 return|;
 block|}
-end_function
-
-begin_function
 DECL|method|escapeValue (String value)
 specifier|private
 name|String
@@ -1965,9 +1929,6 @@ operator|+
 literal|"'"
 return|;
 block|}
-end_function
-
-begin_function
 annotation|@
 name|AfterEach
 DECL|method|clear (DBMSConnection dbmsConnection)
@@ -1988,8 +1949,8 @@ name|dbmsConnection
 argument_list|)
 expr_stmt|;
 block|}
-end_function
+block|}
+end_class
 
-unit|}
 end_unit
 

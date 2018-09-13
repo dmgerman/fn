@@ -339,6 +339,8 @@ parameter_list|(
 name|String
 name|relativePath
 parameter_list|)
+throws|throws
+name|URISyntaxException
 block|{
 specifier|final
 name|URL
@@ -357,8 +359,6 @@ argument_list|(
 name|relativePath
 argument_list|)
 decl_stmt|;
-try|try
-block|{
 return|return
 name|Paths
 operator|.
@@ -382,22 +382,6 @@ literal|"\\"
 argument_list|,
 literal|"/"
 argument_list|)
-return|;
-block|}
-catch|catch
-parameter_list|(
-name|URISyntaxException
-name|e
-parameter_list|)
-block|{
-name|e
-operator|.
-name|printStackTrace
-argument_list|()
-expr_stmt|;
-block|}
-return|return
-literal|null
 return|;
 block|}
 comment|/**      * opens a database and gives JabRef a second to open it before proceeding      */

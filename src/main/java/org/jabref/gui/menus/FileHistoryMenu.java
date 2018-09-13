@@ -38,18 +38,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|nio
-operator|.
-name|file
-operator|.
-name|Paths
-import|;
-end_import
-
-begin_import
-import|import
 name|javafx
 operator|.
 name|scene
@@ -250,21 +238,21 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Adds the filename to the top of the menu. If it already is in      * the menu, it is merely moved to the top.      *      * @param filename a<code>String</code> value      */
-DECL|method|newFile (String filename)
+comment|/**      * Adds the filename to the top of the menu. If it already is in      * the menu, it is merely moved to the top.      */
+DECL|method|newFile (Path file)
 specifier|public
 name|void
 name|newFile
 parameter_list|(
-name|String
-name|filename
+name|Path
+name|file
 parameter_list|)
 block|{
 name|history
 operator|.
 name|newFile
 argument_list|(
-name|filename
+name|file
 argument_list|)
 expr_stmt|;
 name|setItems
@@ -291,18 +279,18 @@ expr_stmt|;
 for|for
 control|(
 name|int
-name|count
+name|index
 init|=
 literal|0
 init|;
-name|count
+name|index
 operator|<
 name|history
 operator|.
 name|size
 argument_list|()
 condition|;
-name|count
+name|index
 operator|++
 control|)
 block|{
@@ -310,25 +298,25 @@ name|addItem
 argument_list|(
 name|history
 operator|.
-name|getFileName
+name|getFileAt
 argument_list|(
-name|count
+name|index
 argument_list|)
 argument_list|,
-name|count
+name|index
 operator|+
 literal|1
 argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|addItem (String fileName, int num)
+DECL|method|addItem (Path file, int num)
 specifier|private
 name|void
 name|addItem
 parameter_list|(
-name|String
-name|fileName
+name|Path
+name|file
 parameter_list|,
 name|int
 name|num
@@ -354,7 +342,7 @@ name|number
 operator|+
 literal|". "
 operator|+
-name|fileName
+name|file
 argument_list|)
 decl_stmt|;
 name|item
@@ -365,7 +353,7 @@ name|event
 lambda|->
 name|openFile
 argument_list|(
-name|fileName
+name|file
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -392,27 +380,15 @@ name|history
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|openFile (String fileName)
+DECL|method|openFile (Path file)
 specifier|public
 name|void
 name|openFile
 parameter_list|(
-name|String
-name|fileName
+name|Path
+name|file
 parameter_list|)
 block|{
-specifier|final
-name|Path
-name|fileToOpen
-init|=
-name|Paths
-operator|.
-name|get
-argument_list|(
-name|fileName
-argument_list|)
-decl_stmt|;
-comment|// the existence check has to be done here (and not in open.openIt) as we have to call "removeItem" if the file does not exist
 if|if
 condition|(
 operator|!
@@ -420,7 +396,7 @@ name|Files
 operator|.
 name|exists
 argument_list|(
-name|fileToOpen
+name|file
 argument_list|)
 condition|)
 block|{
@@ -444,14 +420,14 @@ argument_list|)
 operator|+
 literal|": "
 operator|+
-name|fileName
+name|file
 argument_list|)
 expr_stmt|;
 name|history
 operator|.
 name|removeItem
 argument_list|(
-name|fileName
+name|file
 argument_list|)
 expr_stmt|;
 name|setItems
@@ -474,7 +450,7 @@ argument_list|()
 operator|.
 name|openFile
 argument_list|(
-name|fileToOpen
+name|file
 argument_list|,
 literal|true
 argument_list|)

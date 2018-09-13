@@ -648,10 +648,6 @@ name|when
 import|;
 end_import
 
-begin_comment
-comment|/**  * Test the BibtexParser  */
-end_comment
-
 begin_class
 DECL|class|BibtexParserTest
 class|class
@@ -10192,7 +10188,7 @@ argument_list|()
 operator|.
 name|append
 argument_list|(
-literal|"% DBID: "
+literal|"\\% DBID: "
 argument_list|)
 operator|.
 name|append
@@ -10269,7 +10265,7 @@ argument_list|()
 operator|.
 name|append
 argument_list|(
-literal|"% Encoding: UTF-8"
+literal|"\\% Encoding: UTF-8"
 argument_list|)
 operator|.
 name|append
@@ -10281,7 +10277,7 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-literal|"% DBID: q1w2e3r4t5z6"
+literal|"\\% DBID: q1w2e3r4t5z6"
 argument_list|)
 operator|.
 name|append

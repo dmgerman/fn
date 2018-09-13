@@ -179,6 +179,8 @@ specifier|public
 name|void
 name|scrollThroughEntryList
 parameter_list|()
+throws|throws
+name|Exception
 block|{
 name|String
 name|path

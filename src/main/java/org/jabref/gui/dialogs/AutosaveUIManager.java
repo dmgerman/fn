@@ -159,7 +159,7 @@ argument_list|(
 name|panel
 argument_list|)
 operator|.
-name|runCommand
+name|save
 argument_list|()
 expr_stmt|;
 block|}

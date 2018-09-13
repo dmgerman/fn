@@ -1494,7 +1494,10 @@ operator|new
 name|SaveDatabaseAction
 argument_list|(
 name|panel
-argument_list|,
+argument_list|)
+operator|.
+name|saveAs
+argument_list|(
 name|Paths
 operator|.
 name|get
@@ -1505,9 +1508,6 @@ name|getValue
 argument_list|()
 argument_list|)
 argument_list|)
-operator|.
-name|runCommand
-argument_list|()
 expr_stmt|;
 block|}
 catch|catch
