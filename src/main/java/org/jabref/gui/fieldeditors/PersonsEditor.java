@@ -48,18 +48,6 @@ end_import
 
 begin_import
 import|import
-name|javafx
-operator|.
-name|scene
-operator|.
-name|layout
-operator|.
-name|Priority
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|jabref
@@ -222,17 +210,6 @@ else|:
 operator|new
 name|EditorTextArea
 argument_list|()
-expr_stmt|;
-name|HBox
-operator|.
-name|setHgrow
-argument_list|(
-name|textInput
-argument_list|,
-name|Priority
-operator|.
-name|ALWAYS
-argument_list|)
 expr_stmt|;
 name|textInput
 operator|.
