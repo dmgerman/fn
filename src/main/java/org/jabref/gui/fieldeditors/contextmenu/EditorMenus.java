@@ -567,7 +567,7 @@ return|;
 block|}
 return|;
 block|}
-comment|/**      * The default context menu with a specific menu item to cleanup  URL.      *      * @param textArea text-area that this menu will be connected to      * @return menu containing items of the default menu and an item to cleanup a URL      */
+comment|/**      * The default context menu with a specific menu item to cleanup URL.      *      * @param textArea text-area that this menu will be connected to      * @return menu containing items of the default menu and an item to cleanup a URL      */
 DECL|method|getCleanupURLMenu (TextArea textArea)
 specifier|public
 specifier|static
