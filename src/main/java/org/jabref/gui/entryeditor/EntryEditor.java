@@ -430,7 +430,7 @@ name|gui
 operator|.
 name|mergeentries
 operator|.
-name|EntryFetchAndMergeWorker
+name|FetchAndMergeEntry
 import|;
 end_import
 
@@ -473,6 +473,20 @@ operator|.
 name|util
 operator|.
 name|DefaultTaskExecutor
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|util
+operator|.
+name|TaskExecutor
 import|;
 end_import
 
@@ -788,7 +802,13 @@ specifier|final
 name|NewDroppedFileHandler
 name|fileHandler
 decl_stmt|;
-DECL|method|EntryEditor (BasePanel panel, EntryEditorPreferences preferences, FileUpdateMonitor fileMonitor, DialogService dialogService, ExternalFileTypes externalFileTypes)
+DECL|field|taskExecutor
+specifier|private
+specifier|final
+name|TaskExecutor
+name|taskExecutor
+decl_stmt|;
+DECL|method|EntryEditor (BasePanel panel, EntryEditorPreferences preferences, FileUpdateMonitor fileMonitor, DialogService dialogService, ExternalFileTypes externalFileTypes, TaskExecutor taskExecutor)
 specifier|public
 name|EntryEditor
 parameter_list|(
@@ -806,6 +826,9 @@ name|dialogService
 parameter_list|,
 name|ExternalFileTypes
 name|externalFileTypes
+parameter_list|,
+name|TaskExecutor
+name|taskExecutor
 parameter_list|)
 block|{
 name|this
@@ -854,6 +877,12 @@ operator|.
 name|dialogService
 operator|=
 name|dialogService
+expr_stmt|;
+name|this
+operator|.
+name|taskExecutor
+operator|=
+name|taskExecutor
 expr_stmt|;
 name|fileHandler
 operator|=
@@ -2190,19 +2219,10 @@ name|setOnAction
 argument_list|(
 name|event
 lambda|->
-operator|new
-name|EntryFetchAndMergeWorker
+name|fetchAndMerge
 argument_list|(
-name|panel
-argument_list|,
-name|getEntry
-argument_list|()
-argument_list|,
 name|fetcher
 argument_list|)
-operator|.
-name|execute
-argument_list|()
 argument_list|)
 expr_stmt|;
 name|fetcherMenu
@@ -2270,6 +2290,31 @@ name|undoManager
 argument_list|)
 argument_list|,
 name|generateCiteKeyButton
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|fetchAndMerge (EntryBasedFetcher fetcher)
+specifier|private
+name|void
+name|fetchAndMerge
+parameter_list|(
+name|EntryBasedFetcher
+name|fetcher
+parameter_list|)
+block|{
+operator|new
+name|FetchAndMergeEntry
+argument_list|(
+name|panel
+argument_list|,
+name|taskExecutor
+argument_list|)
+operator|.
+name|fetchAndMerge
+argument_list|(
+name|entry
+argument_list|,
+name|fetcher
 argument_list|)
 expr_stmt|;
 block|}

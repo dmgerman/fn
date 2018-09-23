@@ -1956,6 +1956,10 @@ argument_list|,
 name|dialogService
 argument_list|,
 name|externalFileTypes
+argument_list|,
+name|Globals
+operator|.
+name|TASK_EXECUTOR
 argument_list|)
 expr_stmt|;
 name|this
