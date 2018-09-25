@@ -24,6 +24,26 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|jabref
@@ -113,6 +133,66 @@ parameter_list|(
 name|Path
 name|dir
 parameter_list|)
+function_decl|;
+DECL|method|getEntryEditorTabList ()
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|List
+argument_list|<
+name|String
+argument_list|>
+argument_list|>
+name|getEntryEditorTabList
+parameter_list|()
+function_decl|;
+DECL|method|getEnforceLegalKeys ()
+name|Boolean
+name|getEnforceLegalKeys
+parameter_list|()
+function_decl|;
+DECL|method|getCustomTabsNamesAndFields ()
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
+name|getCustomTabsNamesAndFields
+parameter_list|()
+function_decl|;
+DECL|method|setCustomTabsNameAndFields (String name, String fields, int defNumber)
+name|void
+name|setCustomTabsNameAndFields
+parameter_list|(
+name|String
+name|name
+parameter_list|,
+name|String
+name|fields
+parameter_list|,
+name|int
+name|defNumber
+parameter_list|)
+function_decl|;
+DECL|method|purgeSeries (String prefix, int number)
+specifier|public
+name|void
+name|purgeSeries
+parameter_list|(
+name|String
+name|prefix
+parameter_list|,
+name|int
+name|number
+parameter_list|)
+function_decl|;
+DECL|method|updateEntryEditorTabList ()
+specifier|public
+name|void
+name|updateEntryEditorTabList
+parameter_list|()
 function_decl|;
 block|}
 end_interface

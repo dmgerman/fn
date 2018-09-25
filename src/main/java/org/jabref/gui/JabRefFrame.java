@@ -6657,9 +6657,7 @@ name|SETUP_GENERAL_FIELDS
 argument_list|,
 operator|new
 name|SetupGeneralFieldsAction
-argument_list|(
-name|this
-argument_list|)
+argument_list|()
 argument_list|)
 argument_list|,
 name|factory
