@@ -1333,7 +1333,16 @@ name|builder
 operator|.
 name|add
 argument_list|(
+name|CustomJFXPanel
+operator|.
+name|wrap
+argument_list|(
+operator|new
+name|Scene
+argument_list|(
 name|fieldFormatterCleanupsPanel
+argument_list|)
+argument_list|)
 argument_list|)
 operator|.
 name|xyw
