@@ -1,12 +1,14 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|org.jabref.gui
+DECL|package|org.jabref.gui.edit
 package|package
 name|org
 operator|.
 name|jabref
 operator|.
 name|gui
+operator|.
+name|edit
 package|;
 end_package
 
@@ -65,6 +67,30 @@ operator|.
 name|property
 operator|.
 name|StringProperty
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|AbstractViewModel
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|BasePanel
 import|;
 end_import
 
@@ -350,7 +376,7 @@ return|return
 name|counter
 return|;
 block|}
-comment|/**      * Does the actual operation on a Bibtex entry based on the      * settings specified in this same dialog. Returns the number of      * occurences replaced.      * Copied and Adapted from org.jabref.gui.ReplaceStringDialog.java      */
+comment|/**      * Does the actual operation on a Bibtex entry based on the      * settings specified in this same dialog. Returns the number of      * occurrences replaced.      */
 DECL|method|replaceItem (BibEntry entry, NamedCompound compound)
 specifier|private
 name|int

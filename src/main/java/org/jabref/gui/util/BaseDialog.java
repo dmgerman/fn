@@ -111,6 +111,17 @@ name|Dialog
 argument_list|<
 name|T
 argument_list|>
+implements|implements
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|Dialog
+argument_list|<
+name|T
+argument_list|>
 block|{
 DECL|method|BaseDialog ()
 specifier|protected
