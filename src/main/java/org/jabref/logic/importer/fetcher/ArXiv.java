@@ -1766,18 +1766,20 @@ name|cleanedIdentifier
 init|=
 name|identifier
 operator|.
-name|trim
-argument_list|()
-decl_stmt|;
-name|cleanedIdentifier
-operator|=
-name|identifier
-operator|.
 name|replaceAll
 argument_list|(
 literal|" "
 argument_list|,
 literal|""
+argument_list|)
+decl_stmt|;
+name|cleanedIdentifier
+operator|=
+name|ArXivEntry
+operator|.
+name|createIdString
+argument_list|(
+name|cleanedIdentifier
 argument_list|)
 expr_stmt|;
 return|return
@@ -2378,8 +2380,21 @@ name|urlAbstractPage
 operator|.
 name|map
 argument_list|(
-name|abstractUrl
-lambda|->
+name|ArXivEntry
+operator|::
+name|createIdString
+argument_list|)
+return|;
+block|}
+DECL|method|createIdString (String id)
+specifier|public
+specifier|static
+name|String
+name|createIdString
+parameter_list|(
+name|String
+name|id
+parameter_list|)
 block|{
 name|Matcher
 name|matcher
@@ -2388,7 +2403,7 @@ name|URL_PATTERN
 operator|.
 name|matcher
 argument_list|(
-name|abstractUrl
+name|id
 argument_list|)
 decl_stmt|;
 if|if
@@ -2399,9 +2414,9 @@ name|find
 argument_list|()
 condition|)
 block|{
-comment|// remove leading http(s)://arxiv.org/abs/ from abstract url to get arXiv ID
+comment|// Remove leading http(s)://arxiv.org/abs/ from abstract url to get arXiv ID
 return|return
-name|abstractUrl
+name|id
 operator|.
 name|substring
 argument_list|(
@@ -2420,12 +2435,9 @@ block|}
 else|else
 block|{
 return|return
-name|abstractUrl
+name|id
 return|;
 block|}
-block|}
-argument_list|)
-return|;
 block|}
 DECL|method|getId ()
 specifier|public
