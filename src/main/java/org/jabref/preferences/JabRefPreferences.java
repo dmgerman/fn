@@ -1353,6 +1353,15 @@ name|FX_FONT_RENDERING_TWEAK
 init|=
 literal|"fxFontRenderingTweak"
 decl_stmt|;
+DECL|field|FX_THEME
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|FX_THEME
+init|=
+literal|"fxTheme"
+decl_stmt|;
 DECL|field|LANGUAGE
 specifier|public
 specifier|static

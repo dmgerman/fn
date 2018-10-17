@@ -46,6 +46,16 @@ name|org
 operator|.
 name|jabref
 operator|.
+name|JabRefException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
 name|JabRefExecutorService
 import|;
 end_import
@@ -143,6 +153,8 @@ parameter_list|(
 name|Stage
 name|stage
 parameter_list|)
+throws|throws
+name|JabRefException
 block|{
 name|StyleTesterView
 name|view
@@ -190,6 +202,11 @@ operator|new
 name|ThemeLoader
 argument_list|(
 name|fileUpdateMonitor
+argument_list|,
+name|JabRefPreferences
+operator|.
+name|getInstance
+argument_list|()
 argument_list|)
 operator|.
 name|installBaseCss

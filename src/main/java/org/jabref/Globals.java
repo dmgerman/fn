@@ -488,6 +488,8 @@ specifier|static
 name|void
 name|startBackgroundTasks
 parameter_list|()
+throws|throws
+name|JabRefException
 block|{
 name|Globals
 operator|.
@@ -516,6 +518,8 @@ operator|new
 name|ThemeLoader
 argument_list|(
 name|fileUpdateMonitor
+argument_list|,
+name|prefs
 argument_list|)
 expr_stmt|;
 if|if
