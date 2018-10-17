@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|org.jabref.gui.actions
+DECL|package|org.jabref.gui.externalfiles
 package|package
 name|org
 operator|.
@@ -8,7 +8,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|actions
+name|externalfiles
 package|;
 end_package
 
@@ -20,7 +20,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|FindUnlinkedFilesDialog
+name|JabRefFrame
 import|;
 end_import
 
@@ -32,7 +32,9 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|JabRefFrame
+name|actions
+operator|.
+name|SimpleCommand
 import|;
 end_import
 
@@ -84,10 +86,8 @@ argument_list|)
 decl_stmt|;
 name|dlg
 operator|.
-name|setVisible
-argument_list|(
-literal|true
-argument_list|)
+name|showAndWait
+argument_list|()
 expr_stmt|;
 block|}
 block|}
