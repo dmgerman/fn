@@ -220,11 +220,6 @@ specifier|public
 class|class
 name|InspecImporterTest
 block|{
-DECL|field|importer
-specifier|private
-name|InspecImporter
-name|importer
-decl_stmt|;
 DECL|field|FILE_ENDING
 specifier|private
 specifier|static
@@ -234,25 +229,11 @@ name|FILE_ENDING
 init|=
 literal|".txt"
 decl_stmt|;
-annotation|@
-name|BeforeEach
-DECL|method|setUp ()
-specifier|public
-name|void
-name|setUp
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-name|this
-operator|.
-name|importer
-operator|=
-operator|new
+DECL|field|importer
+specifier|private
 name|InspecImporter
-argument_list|()
-expr_stmt|;
-block|}
+name|importer
+decl_stmt|;
 DECL|method|fileNames ()
 specifier|private
 specifier|static
@@ -346,6 +327,25 @@ operator|.
 name|stream
 argument_list|()
 return|;
+block|}
+annotation|@
+name|BeforeEach
+DECL|method|setUp ()
+specifier|public
+name|void
+name|setUp
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|this
+operator|.
+name|importer
+operator|=
+operator|new
+name|InspecImporter
+argument_list|()
+expr_stmt|;
 block|}
 annotation|@
 name|ParameterizedTest

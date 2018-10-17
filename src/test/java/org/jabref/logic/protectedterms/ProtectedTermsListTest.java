@@ -76,7 +76,7 @@ name|jupiter
 operator|.
 name|api
 operator|.
-name|Test
+name|BeforeEach
 import|;
 end_import
 
@@ -90,7 +90,7 @@ name|jupiter
 operator|.
 name|api
 operator|.
-name|BeforeEach
+name|Test
 import|;
 end_import
 

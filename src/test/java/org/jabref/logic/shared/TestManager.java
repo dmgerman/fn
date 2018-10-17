@@ -85,7 +85,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This class provides helping methods for database tests.  * Furthermore it determines database systems which are ready to be used for tests.  */
+comment|/**  * This class provides helping methods for database tests. Furthermore it determines database systems which are ready to  * be used for tests.  */
 end_comment
 
 begin_class

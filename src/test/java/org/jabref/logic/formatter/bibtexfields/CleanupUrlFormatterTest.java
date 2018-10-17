@@ -59,7 +59,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *  Tests in addition to the general tests from {@link org.jabref.logic.formatter.FormatterTest}  */
+comment|/**  * Tests in addition to the general tests from {@link org.jabref.logic.formatter.FormatterTest}  */
 end_comment
 
 begin_class

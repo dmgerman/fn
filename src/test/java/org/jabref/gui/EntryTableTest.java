@@ -107,7 +107,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Specific Use-Case:  * I import a database. Then I doubleclick on the first entry in the table to open the entry editor.  * Then I click on the first entry again, and scroll through all of the lists entries, without having to click  * on the table again.  */
+comment|/**  * Specific Use-Case: I import a database. Then I doubleclick on the first entry in the table to open the entry editor.  * Then I click on the first entry again, and scroll through all of the lists entries, without having to click on the  * table again.  */
 end_comment
 
 begin_class

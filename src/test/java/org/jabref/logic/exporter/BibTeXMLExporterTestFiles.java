@@ -379,6 +379,12 @@ specifier|public
 class|class
 name|BibTeXMLExporterTestFiles
 block|{
+DECL|field|resourceDir
+specifier|private
+specifier|static
+name|Path
+name|resourceDir
+decl_stmt|;
 DECL|field|databaseContext
 specifier|public
 name|BibDatabaseContext
@@ -403,12 +409,6 @@ DECL|field|testImporter
 specifier|public
 name|BibtexImporter
 name|testImporter
-decl_stmt|;
-DECL|field|resourceDir
-specifier|private
-specifier|static
-name|Path
-name|resourceDir
 decl_stmt|;
 DECL|method|fileNames ()
 specifier|public
@@ -446,7 +446,6 @@ operator|.
 name|getParent
 argument_list|()
 expr_stmt|;
-comment|//        System.out.println(resourceDir);
 try|try
 init|(
 name|Stream

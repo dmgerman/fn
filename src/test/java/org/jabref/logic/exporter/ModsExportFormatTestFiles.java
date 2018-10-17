@@ -13,30 +13,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|org
-operator|.
-name|hamcrest
-operator|.
-name|MatcherAssert
-operator|.
-name|assertThat
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|mockito
-operator|.
-name|Mockito
-operator|.
-name|mock
-import|;
-end_import
-
-begin_import
 import|import
 name|java
 operator|.
@@ -400,6 +376,30 @@ name|CompareMatcher
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|hamcrest
+operator|.
+name|MatcherAssert
+operator|.
+name|assertThat
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|mockito
+operator|.
+name|Mockito
+operator|.
+name|mock
+import|;
+end_import
+
 begin_class
 annotation|@
 name|ExtendWith
@@ -413,6 +413,12 @@ specifier|public
 class|class
 name|ModsExportFormatTestFiles
 block|{
+DECL|field|resourceDir
+specifier|private
+specifier|static
+name|Path
+name|resourceDir
+decl_stmt|;
 DECL|field|charset
 specifier|public
 name|Charset
@@ -447,12 +453,6 @@ DECL|field|importFile
 specifier|private
 name|Path
 name|importFile
-decl_stmt|;
-DECL|field|resourceDir
-specifier|private
-specifier|static
-name|Path
-name|resourceDir
 decl_stmt|;
 DECL|method|fileNames ()
 specifier|public

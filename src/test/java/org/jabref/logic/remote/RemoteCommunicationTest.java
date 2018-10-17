@@ -165,7 +165,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Tests for the case where the client and server are set-up correctly.  * Testing the exceptional cases happens in {@link RemoteSetupTest}.  */
+comment|/**  * Tests for the case where the client and server are set-up correctly. Testing the exceptional cases happens in {@link  * RemoteSetupTest}.  */
 end_comment
 
 begin_class

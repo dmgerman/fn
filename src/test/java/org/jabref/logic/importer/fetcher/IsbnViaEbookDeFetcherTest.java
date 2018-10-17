@@ -542,7 +542,7 @@ name|fetchedEntry
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * This test searches for a valid ISBN. See https://www.amazon.de/dp/3728128155/?tag=jabref-21      * However, this ISBN is not available on ebook.de. The fetcher should return nothing rather than throwing an exeption.      */
+comment|/**      * This test searches for a valid ISBN. See https://www.amazon.de/dp/3728128155/?tag=jabref-21 However, this ISBN is      * not available on ebook.de. The fetcher should return nothing rather than throwing an exeption.      */
 annotation|@
 name|Test
 DECL|method|searchForValidButNotFoundISBN ()

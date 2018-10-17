@@ -166,12 +166,12 @@ specifier|public
 class|class
 name|RegExpBasedFileFinderTests
 block|{
-DECL|field|filesDirectory
+DECL|field|FILES_DIRECTORY
 specifier|private
 specifier|static
 specifier|final
 name|String
-name|filesDirectory
+name|FILES_DIRECTORY
 init|=
 literal|"src/test/resources/org/jabref/logic/importer/unlinkedFilesTestFolder"
 decl_stmt|;
@@ -396,7 +396,7 @@ name|Paths
 operator|.
 name|get
 argument_list|(
-name|filesDirectory
+name|FILES_DIRECTORY
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -486,7 +486,7 @@ name|Paths
 operator|.
 name|get
 argument_list|(
-name|filesDirectory
+name|FILES_DIRECTORY
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -624,7 +624,7 @@ name|Paths
 operator|.
 name|get
 argument_list|(
-name|filesDirectory
+name|FILES_DIRECTORY
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -744,7 +744,7 @@ name|Paths
 operator|.
 name|get
 argument_list|(
-name|filesDirectory
+name|FILES_DIRECTORY
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -864,7 +864,7 @@ name|Paths
 operator|.
 name|get
 argument_list|(
-name|filesDirectory
+name|FILES_DIRECTORY
 argument_list|)
 argument_list|)
 decl_stmt|;

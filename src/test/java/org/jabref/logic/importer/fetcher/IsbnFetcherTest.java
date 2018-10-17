@@ -557,7 +557,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * This test searches for a valid ISBN. See https://www.amazon.de/dp/3728128155/?tag=jabref-21      * However, this ISBN is not available on ebook.de. The fetcher should something as it falls back to Chimbori      * @throws FetcherException      */
+comment|/**      * This test searches for a valid ISBN. See https://www.amazon.de/dp/3728128155/?tag=jabref-21 However, this ISBN is      * not available on ebook.de. The fetcher should something as it falls back to Chimbori      */
 annotation|@
 name|Test
 DECL|method|searchForIsbnAvailableAtChimboriButNonOnEbookDe ()

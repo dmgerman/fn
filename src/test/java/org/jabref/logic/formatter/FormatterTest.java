@@ -302,7 +302,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * When a new formatter is added by copy and pasting another formatter, it may happen that the<code>getKey()</code> method is not adapted. This results in duplicate keys, which this test tests for.      */
+comment|/**      * When a new formatter is added by copy and pasting another formatter, it may happen that the<code>getKey()</code>      * method is not adapted. This results in duplicate keys, which this test tests for.      */
 annotation|@
 name|Test
 DECL|method|allFormatterKeysAreUnique ()

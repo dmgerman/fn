@@ -222,6 +222,15 @@ specifier|public
 class|class
 name|IsiImporterTest
 block|{
+DECL|field|FILE_ENDING
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|FILE_ENDING
+init|=
+literal|".isi"
+decl_stmt|;
 DECL|field|importer
 specifier|private
 specifier|final
@@ -231,15 +240,6 @@ init|=
 operator|new
 name|IsiImporter
 argument_list|()
-decl_stmt|;
-DECL|field|FILE_ENDING
-specifier|private
-specifier|static
-specifier|final
-name|String
-name|FILE_ENDING
-init|=
-literal|".isi"
 decl_stmt|;
 DECL|method|fileNames ()
 specifier|private

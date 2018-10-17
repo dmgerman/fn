@@ -379,6 +379,12 @@ specifier|public
 class|class
 name|MSBibExportFormatTestFiles
 block|{
+DECL|field|resourceDir
+specifier|private
+specifier|static
+name|Path
+name|resourceDir
+decl_stmt|;
 DECL|field|databaseContext
 specifier|public
 name|BibDatabaseContext
@@ -403,12 +409,6 @@ DECL|field|testImporter
 specifier|public
 name|BibtexImporter
 name|testImporter
-decl_stmt|;
-DECL|field|resourceDir
-specifier|private
-specifier|static
-name|Path
-name|resourceDir
 decl_stmt|;
 DECL|method|fileNames ()
 specifier|static

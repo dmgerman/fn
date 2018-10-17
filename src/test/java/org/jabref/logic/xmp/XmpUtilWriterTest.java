@@ -144,7 +144,7 @@ name|jupiter
 operator|.
 name|api
 operator|.
-name|Test
+name|BeforeEach
 import|;
 end_import
 
@@ -158,7 +158,7 @@ name|jupiter
 operator|.
 name|api
 operator|.
-name|BeforeEach
+name|Test
 import|;
 end_import
 
@@ -242,11 +242,6 @@ DECL|class|XmpUtilWriterTest
 class|class
 name|XmpUtilWriterTest
 block|{
-DECL|field|xmpPreferences
-specifier|private
-name|XmpPreferences
-name|xmpPreferences
-decl_stmt|;
 DECL|field|olly2018
 specifier|private
 specifier|static
@@ -264,6 +259,11 @@ specifier|private
 specifier|static
 name|BibEntry
 name|vapnik2000
+decl_stmt|;
+DECL|field|xmpPreferences
+specifier|private
+name|XmpPreferences
+name|xmpPreferences
 decl_stmt|;
 DECL|method|initBibEntries ()
 specifier|private

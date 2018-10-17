@@ -215,22 +215,6 @@ import|;
 end_import
 
 begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|jupiter
-operator|.
-name|api
-operator|.
-name|Assertions
-operator|.
-name|*
-import|;
-end_import
-
-begin_import
 import|import
 name|org
 operator|.
@@ -258,6 +242,38 @@ begin_import
 import|import static
 name|org
 operator|.
+name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
+operator|.
+name|assertFalse
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
+operator|.
+name|assertNotNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
 name|mockito
 operator|.
 name|Mockito
@@ -272,7 +288,7 @@ specifier|public
 class|class
 name|BibEntryAssert
 block|{
-comment|/**      * Reads a single entry from the resource using `getResourceAsStream` from the given class. The resource has to      * contain a single entry      *      * @param clazz the class where to call `getResourceAsStream`      * @param resourceName the resource to read      * @param entry the entry to compare with      */
+comment|/**      * Reads a single entry from the resource using `getResourceAsStream` from the given class. The resource has to      * contain a single entry      *      * @param clazz        the class where to call `getResourceAsStream`      * @param resourceName the resource to read      * @param entry        the entry to compare with      */
 DECL|method|assertEquals (Class<?> clazz, String resourceName, BibEntry entry)
 specifier|public
 specifier|static
@@ -333,7 +349,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Reads a single entry from the resource using `getResourceAsStream` from the given class. The resource has to      * contain a single entry      *      * @param clazz the class where to call `getResourceAsStream`      * @param resourceName the resource to read      * @param asIsEntries a list containing a single entry to compare with      */
+comment|/**      * Reads a single entry from the resource using `getResourceAsStream` from the given class. The resource has to      * contain a single entry      *      * @param clazz        the class where to call `getResourceAsStream`      * @param resourceName the resource to read      * @param asIsEntries  a list containing a single entry to compare with      */
 DECL|method|assertEquals (Class<?> clazz, String resourceName, List<BibEntry> asIsEntries)
 specifier|public
 specifier|static
@@ -486,7 +502,7 @@ name|getEntries
 argument_list|()
 return|;
 block|}
-comment|/**      * Reads a bibtex database from the given InputStream. The list is compared with the given list.      *      * @param expectedInputStream the inputStream reading the entry from      * @param actualEntries a list containing a single entry to compare with      */
+comment|/**      * Reads a bibtex database from the given InputStream. The list is compared with the given list.      *      * @param expectedInputStream the inputStream reading the entry from      * @param actualEntries       a list containing a single entry to compare with      */
 DECL|method|assertEquals (InputStream expectedInputStream, List<BibEntry> actualEntries)
 specifier|public
 specifier|static
@@ -571,7 +587,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Reads a bibtex database from the given InputStream. The result has to contain a single BibEntry. This entry is      * compared to the given entry      *      * @param expected the inputStream reading the entry from      * @param actual the entry to compare with      */
+comment|/**      * Reads a bibtex database from the given InputStream. The result has to contain a single BibEntry. This entry is      * compared to the given entry      *      * @param expected the inputStream reading the entry from      * @param actual   the entry to compare with      */
 DECL|method|assertEquals (InputStream expected, BibEntry actual)
 specifier|public
 specifier|static
@@ -600,7 +616,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Compares two InputStreams. For each InputStream a list will be created. expectedIs is read directly, actualIs is filtered through importer to convert to a list of BibEntries.      * @param expectedIs A BibtexImporter InputStream.      * @param fileToImport The path to the file to be imported.      * @param importer The fileformat you want to use to read the passed file to get the list of expected BibEntries      * @throws IOException      */
+comment|/**      * Compares two InputStreams. For each InputStream a list will be created. expectedIs is read directly, actualIs is      * filtered through importer to convert to a list of BibEntries.      *      * @param expectedIs   A BibtexImporter InputStream.      * @param fileToImport The path to the file to be imported.      * @param importer     The fileformat you want to use to read the passed file to get the list of expected      *                     BibEntries      */
 DECL|method|assertEquals (InputStream expectedIs, Path fileToImport, Importer importer)
 specifier|public
 specifier|static
@@ -670,7 +686,7 @@ name|importer
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Compares a list of BibEntries to an InputStream. actualIs is filtered through importerForActualIs to convert to a list of BibEntries.      * @param expected A BibtexImporter InputStream.      * @param fileToImport The path to the file to be imported.      * @param importer The fileformat you want to use to read the passed file to get the list of expected BibEntries      * @throws IOException      */
+comment|/**      * Compares a list of BibEntries to an InputStream. actualIs is filtered through importerForActualIs to convert to a      * list of BibEntries.      *      * @param expected     A BibtexImporter InputStream.      * @param fileToImport The path to the file to be imported.      * @param importer     The fileformat you want to use to read the passed file to get the list of expected      *                     BibEntries      */
 DECL|method|assertEquals (List<BibEntry> expected, Path fileToImport, Importer importer)
 specifier|public
 specifier|static

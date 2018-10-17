@@ -330,7 +330,7 @@ name|waitForIdle
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Returns the absolute Path of the given relative Path      * The backlashes are replaced with forwardslashes b/c assertJ can't type the former one on windows      * @param relativePath the relative path to the resource database      */
+comment|/**      * Returns the absolute Path of the given relative Path The backlashes are replaced with forwardslashes b/c assertJ      * can't type the former one on windows      *      * @param relativePath the relative path to the resource database      */
 DECL|method|getAbsolutePath (String relativePath)
 specifier|protected
 name|String

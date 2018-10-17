@@ -318,7 +318,55 @@ name|api
 operator|.
 name|Assertions
 operator|.
-name|*
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
+operator|.
+name|assertFalse
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
+operator|.
+name|assertNotNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
+operator|.
+name|assertThrows
 import|;
 end_import
 
@@ -327,11 +375,6 @@ DECL|class|MedlinePlainImporterTest
 class|class
 name|MedlinePlainImporterTest
 block|{
-DECL|field|importer
-specifier|private
-name|MedlinePlainImporter
-name|importer
-decl_stmt|;
 DECL|field|FILE_ENDING
 specifier|private
 specifier|static
@@ -340,6 +383,11 @@ name|String
 name|FILE_ENDING
 init|=
 literal|".txt"
+decl_stmt|;
+DECL|field|importer
+specifier|private
+name|MedlinePlainImporter
+name|importer
 decl_stmt|;
 DECL|method|fileNames ()
 specifier|private

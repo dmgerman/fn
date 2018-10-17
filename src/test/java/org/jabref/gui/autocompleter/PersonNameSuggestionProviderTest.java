@@ -154,7 +154,6 @@ name|PersonNameSuggestionProviderTest
 block|{
 DECL|field|vassilisKostakos
 specifier|private
-specifier|static
 specifier|final
 name|Author
 name|vassilisKostakos

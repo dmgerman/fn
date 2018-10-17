@@ -42,9 +42,9 @@ name|logic
 operator|.
 name|formatter
 operator|.
-name|casechanger
+name|bibtexfields
 operator|.
-name|UpperCaseFormatter
+name|UnicodeToLatexFormatter
 import|;
 end_import
 
@@ -58,9 +58,9 @@ name|logic
 operator|.
 name|formatter
 operator|.
-name|bibtexfields
+name|casechanger
 operator|.
-name|UnicodeToLatexFormatter
+name|UpperCaseFormatter
 import|;
 end_import
 

@@ -32,7 +32,7 @@ name|nio
 operator|.
 name|file
 operator|.
-name|*
+name|Files
 import|;
 end_import
 
@@ -44,9 +44,7 @@ name|nio
 operator|.
 name|file
 operator|.
-name|attribute
-operator|.
-name|BasicFileAttributes
+name|Path
 import|;
 end_import
 
@@ -105,20 +103,6 @@ operator|.
 name|entry
 operator|.
 name|BibtexEntryTypes
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|jupiter
-operator|.
-name|api
-operator|.
-name|AfterEach
 import|;
 end_import
 
