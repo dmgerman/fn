@@ -368,6 +368,16 @@ operator|new
 name|SimpleBooleanProperty
 argument_list|()
 decl_stmt|;
+DECL|field|searchSuccesfulProperty
+specifier|private
+specifier|final
+name|BooleanProperty
+name|searchSuccesfulProperty
+init|=
+operator|new
+name|SimpleBooleanProperty
+argument_list|()
+decl_stmt|;
 DECL|field|selectedItemProperty
 specifier|private
 specifier|final
@@ -503,6 +513,16 @@ name|getLastSelectedFetcher
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
+DECL|method|searchSuccesfulProperty ()
+specifier|public
+name|BooleanProperty
+name|searchSuccesfulProperty
+parameter_list|()
+block|{
+return|return
+name|searchSuccesfulProperty
+return|;
 block|}
 DECL|method|searchingProperty ()
 specifier|public
@@ -764,6 +784,13 @@ name|void
 name|runFetcherWorker
 parameter_list|()
 block|{
+name|searchSuccesfulProperty
+operator|.
+name|set
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 name|fetcherWorker
 operator|.
 name|run
@@ -1058,7 +1085,13 @@ name|bibEntry
 argument_list|)
 expr_stmt|;
 block|}
-comment|// close();
+name|searchSuccesfulProperty
+operator|.
+name|set
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 block|}
 elseif|else
 if|if
