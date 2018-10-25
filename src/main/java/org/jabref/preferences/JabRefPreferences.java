@@ -572,6 +572,20 @@ name|org
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
+name|util
+operator|.
+name|ThemeLoader
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
 name|logic
 operator|.
 name|bibtex
@@ -6218,6 +6232,20 @@ operator|+
 literal|"\\begin{comment}<BR><BR><b>Comment:</b> \\format[HTMLChars]{\\comment} \\end{comment}"
 operator|+
 literal|"</dd>__NEWLINE__<p></p></font>"
+argument_list|)
+expr_stmt|;
+comment|// set default theme
+name|defaults
+operator|.
+name|put
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|FX_THEME
+argument_list|,
+name|ThemeLoader
+operator|.
+name|DEFAULT_MAIN_CSS
 argument_list|)
 expr_stmt|;
 name|setLanguageDependentDefaultValues
