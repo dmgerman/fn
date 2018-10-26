@@ -141,6 +141,12 @@ specifier|final
 name|boolean
 name|shouldShowRecommendationsTab
 decl_stmt|;
+DECL|field|isMrdlibAccepted
+specifier|private
+specifier|final
+name|boolean
+name|isMrdlibAccepted
+decl_stmt|;
 DECL|field|showSourceTabByDefault
 specifier|private
 name|boolean
@@ -157,7 +163,7 @@ specifier|private
 name|boolean
 name|avoidOverwritingCiteKey
 decl_stmt|;
-DECL|method|EntryEditorPreferences (Map<String, List<String>> entryEditorTabList, LatexFieldFormatterPreferences latexFieldFormatterPreferences, ImportFormatPreferences importFormatPreferences, List<String> customTabFieldNames, boolean shouldShowRecommendationsTab, boolean showSourceTabByDefault, BibtexKeyPatternPreferences bibtexKeyPatternPreferences, KeyBindingRepository keyBindings, boolean avoidOverwritingCiteKey)
+DECL|method|EntryEditorPreferences (Map<String, List<String>> entryEditorTabList, LatexFieldFormatterPreferences latexFieldFormatterPreferences, ImportFormatPreferences importFormatPreferences, List<String> customTabFieldNames, boolean shouldShowRecommendationsTab, boolean isMrdlibAccepted, boolean showSourceTabByDefault, BibtexKeyPatternPreferences bibtexKeyPatternPreferences, KeyBindingRepository keyBindings, boolean avoidOverwritingCiteKey)
 specifier|public
 name|EntryEditorPreferences
 parameter_list|(
@@ -186,6 +192,9 @@ name|customTabFieldNames
 parameter_list|,
 name|boolean
 name|shouldShowRecommendationsTab
+parameter_list|,
+name|boolean
+name|isMrdlibAccepted
 parameter_list|,
 name|boolean
 name|showSourceTabByDefault
@@ -229,6 +238,12 @@ operator|.
 name|shouldShowRecommendationsTab
 operator|=
 name|shouldShowRecommendationsTab
+expr_stmt|;
+name|this
+operator|.
+name|isMrdlibAccepted
+operator|=
+name|isMrdlibAccepted
 expr_stmt|;
 name|this
 operator|.
@@ -314,6 +329,16 @@ parameter_list|()
 block|{
 return|return
 name|shouldShowRecommendationsTab
+return|;
+block|}
+DECL|method|isMrdlibAccepted ()
+specifier|public
+name|boolean
+name|isMrdlibAccepted
+parameter_list|()
+block|{
+return|return
+name|isMrdlibAccepted
 return|;
 block|}
 DECL|method|showSourceTabByDefault ()

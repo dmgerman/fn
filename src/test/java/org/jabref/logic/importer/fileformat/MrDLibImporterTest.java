@@ -181,15 +181,10 @@ specifier|private
 name|MrDLibImporter
 name|importer
 decl_stmt|;
-DECL|field|inputMin
+DECL|field|input
 specifier|private
 name|BufferedReader
-name|inputMin
-decl_stmt|;
-DECL|field|inputMax
-specifier|private
-name|BufferedReader
-name|inputMax
+name|input
 decl_stmt|;
 annotation|@
 name|BeforeEach
@@ -206,27 +201,11 @@ name|MrDLibImporter
 argument_list|()
 expr_stmt|;
 name|String
-name|testMin
+name|testInput
 init|=
-literal|"<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><mr-dlib></mr-dlib>"
+literal|"{    \"label\": {        \"label-language\": \"en\",        \"label-text\": \"Related Items\"    },    \"recommendation-set-id\": \"1\",    \"recommendations\": {        \"74021358\": {            \"abstract\": \"abstract\",            \"authors\": [                \"Sajovic, Marija\"         ],            \"year_published\": \"2006\",            \"item_id_original\": \"12088644\",            \"keywords\": [                \"visoko\\u0161olski program Geodezija - smer Prostorska informatika\"            ],            \"language_provided\": \"sl\",            \"recommendation_id\": \"1\",            \"title\": \"The protection of rural lands with the spatial development strategy on the case of Hrastnik commune\",            \"url\": \"http://drugg.fgg.uni-lj.si/701/1/GEV_0199_Sajovic.pdf\"        },        \"82005804\": {            \"abstract\": \"abstract\",            \"year_published\": null,            \"item_id_original\": \"30145702\",            \"language_provided\": null,            \"recommendation_id\": \"2\",            \"title\": \"Engagement of the volunteers in the solution to the accidents in the South-Moravia region\"        },        \"82149599\": {            \"abstract\": \"abstract\",            \"year_published\": null,            \"item_id_original\": \"97690763\",            \"language_provided\": null,            \"recommendation_id\": \"3\",            \"title\": \"\\\"The only Father's word\\\". The relationship of the Father and the Son in the documents of saint John of the Cross\",            \"url\": \"http://www.nusl.cz/ntk/nusl-285711\"        },        \"84863921\": {            \"abstract\": \"abstract\",            \"authors\": [                \"Kaffa, Elena\"            ],            \"year_published\": null,            \"item_id_original\": \"19397104\",            \"keywords\": [                \"BX\",                \"D111\"            ],            \"language_provided\": \"en\",            \"recommendation_id\": \"4\",            \"title\": \"Greek Church of Cyprus, the Morea and Constantinople during the Frankish Era (1196-1303)\"        },        \"88950992\": {            \"abstract\": \"abstract\",            \"authors\": [                \"Yasui, Kono\"            ],            \"year_published\": null,            \"item_id_original\": \"38763657\",            \"language_provided\": null,            \"recommendation_id\": \"5\",            \"title\": \"A Phylogenetic Consideration on the Vascular Plants, Cotyledonary Node Including Hypocotyl Being Taken as the Ancestral Form : A Preliminary Note\"        }    }}"
 decl_stmt|;
-name|String
-name|testMax
-init|=
-literal|"<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><mr-dlib><related_articles set_id=\"28184\" suggested_label=\"Related Articles\"><related_article document_id=\"2250539\" original_document_id=\"gesis-solis-00538797\" recommendation_id=\"204944\"><authors/><click_url>https://api-dev.mr-dlib.org/v1/recommendations/204944/original_url?access_key=99ab2fc64f3228ab839e9e3525ac37f8&format=direct_url_forward</click_url><debug_details><bibDocId>0</bibDocId><bibScore>2.0</bibScore><finalScore>2.0</finalScore><rankAfterAlgorithm>3</rankAfterAlgorithm><rankAfterReRanking>3</rankAfterReRanking><rankAfterShuffling>2</rankAfterShuffling><rankDelivered>2</rankDelivered><relevanceScoreFromAlgorithm>1.0</relevanceScoreFromAlgorithm></debug_details><fallback_url>http://sowiport.gesis.org/search/id/gesis-solis-00538797</fallback_url><published_in>Fachhochschulverl.</published_in><snippet format=\"html_plain\"><![CDATA[<a href='https://api-dev.mr-dlib.org/v1/recommendations/204944/original_url?access_key=99ab2fc64f3228ab839e9e3525ac37f8&format=direct_url_forward'>Gesundheit von Arbeitslosen fÃ¶rdern!: ein Handbuch fÃ¼r Wissenschaft und Praxis</a>. . Fachhochschulverl.. 2009.]]></snippet><snippet format=\"html_fully_formatted\"><![CDATA[<a href='https://api-dev.mr-dlib.org/v1/recommendations/204944/original_url?access_key=99ab2fc64f3228ab839e9e3525ac37f8&format=direct_url_forward'><font color='#000000' size='5' face='Arial, Helvetica, sans-serif'>Gesundheit von Arbeitslosen fÃ¶rdern!: ein Handbuch fÃ¼r Wissenschaft und Praxis.</font></a><font color='#000000' size='5' face='Arial, Helvetica, sans-serif'>.<i>Fachhochschulverl.</i>. 2009.</font>]]></snippet><snippet format=\"html_and_css\"><![CDATA[<span class='mdl-title'>Gesundheit von Arbeitslosen fÃ¶rdern!: ein Handbuch fÃ¼r Wissenschaft und Praxis</span>.<span class='mdl-authors'></span>.<span class='mdl-journal'>Fachhochschulverl.</span>.<span class='mdl-year'>2009</span>]]></snippet><suggested_rank>2</suggested_rank><title>Gesundheit von Arbeitslosen fÃ¶rdern!: ein Handbuch fÃ¼r Wissenschaft und Praxis</title><year>2009</year></related_article></related_articles></mr-dlib>"
-decl_stmt|;
-name|testMax
-operator|=
-name|testMax
-operator|.
-name|replaceAll
-argument_list|(
-literal|"&"
-argument_list|,
-literal|""
-argument_list|)
-expr_stmt|;
-name|inputMin
+name|input
 operator|=
 operator|new
 name|BufferedReader
@@ -234,19 +213,7 @@ argument_list|(
 operator|new
 name|StringReader
 argument_list|(
-name|testMin
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|inputMax
-operator|=
-operator|new
-name|BufferedReader
-argument_list|(
-operator|new
-name|StringReader
-argument_list|(
-name|testMax
+name|testInput
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -261,7 +228,7 @@ parameter_list|()
 block|{
 name|assertEquals
 argument_list|(
-literal|"Takes valid xml documents. Parses from MrDLib API a BibEntry"
+literal|"Takes valid JSON documents from the Mr. DLib API and parses them into a BibEntry"
 argument_list|,
 name|importer
 operator|.
@@ -301,66 +268,11 @@ name|assertEquals
 argument_list|(
 name|StandardFileType
 operator|.
-name|XML
+name|JSON
 argument_list|,
 name|importer
 operator|.
 name|getFileType
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
-annotation|@
-name|Test
-DECL|method|testImportDatabaseIsHtmlSetCorrectly ()
-specifier|public
-name|void
-name|testImportDatabaseIsHtmlSetCorrectly
-parameter_list|()
-throws|throws
-name|IOException
-block|{
-name|ParserResult
-name|parserResult
-init|=
-name|importer
-operator|.
-name|importDatabase
-argument_list|(
-name|inputMax
-argument_list|)
-decl_stmt|;
-name|List
-argument_list|<
-name|BibEntry
-argument_list|>
-name|resultList
-init|=
-name|parserResult
-operator|.
-name|getDatabase
-argument_list|()
-operator|.
-name|getEntries
-argument_list|()
-decl_stmt|;
-name|assertEquals
-argument_list|(
-literal|"<a href='https://api-dev.mr-dlib.org/v1/recommendations/204944/original_url?access_key=99ab2fc64f3228ab839e9e3525ac37f8format=direct_url_forward'><font color='#000000' size='5' face='Arial, Helvetica, sans-serif'>Gesundheit von Arbeitslosen fÃ¶rdern!: ein Handbuch fÃ¼r Wissenschaft und Praxis.</font></a><font color='#000000' size='5' face='Arial, Helvetica, sans-serif'>.<i>Fachhochschulverl.</i>. 2009.</font>"
-argument_list|,
-name|resultList
-operator|.
-name|get
-argument_list|(
-literal|0
-argument_list|)
-operator|.
-name|getField
-argument_list|(
-literal|"html_representation"
-argument_list|)
-operator|.
-name|get
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -382,7 +294,7 @@ name|importer
 operator|.
 name|importDatabase
 argument_list|(
-name|inputMax
+name|input
 argument_list|)
 decl_stmt|;
 name|List
@@ -401,7 +313,7 @@ argument_list|()
 decl_stmt|;
 name|assertEquals
 argument_list|(
-literal|"2009"
+literal|"2006"
 argument_list|,
 name|resultList
 operator|.
@@ -439,7 +351,7 @@ name|importer
 operator|.
 name|importDatabase
 argument_list|(
-name|inputMax
+name|input
 argument_list|)
 decl_stmt|;
 name|List
@@ -458,7 +370,7 @@ argument_list|()
 decl_stmt|;
 name|assertEquals
 argument_list|(
-literal|"Gesundheit von Arbeitslosen fÃ¶rdern!: ein Handbuch fÃ¼r Wissenschaft und Praxis"
+literal|"The protection of rural lands with the spatial development strategy on the case of Hrastnik commune"
 argument_list|,
 name|resultList
 operator|.
@@ -496,7 +408,7 @@ name|importer
 operator|.
 name|importDatabase
 argument_list|(
-name|inputMin
+name|input
 argument_list|)
 decl_stmt|;
 name|List
@@ -515,7 +427,7 @@ argument_list|()
 decl_stmt|;
 name|assertSame
 argument_list|(
-literal|0
+literal|5
 argument_list|,
 name|resultList
 operator|.

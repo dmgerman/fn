@@ -1720,6 +1720,8 @@ operator|new
 name|RelatedArticlesTab
 argument_list|(
 name|preferences
+argument_list|,
+name|dialogService
 argument_list|)
 argument_list|)
 expr_stmt|;
