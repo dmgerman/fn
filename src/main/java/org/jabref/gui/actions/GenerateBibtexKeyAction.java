@@ -168,6 +168,7 @@ name|dialogService
 decl_stmt|;
 DECL|field|basePanel
 specifier|private
+specifier|final
 name|BasePanel
 name|basePanel
 decl_stmt|;
@@ -361,10 +362,10 @@ literal|true
 return|;
 block|}
 block|}
-DECL|method|generateKeys ()
+DECL|method|checkOverwriteKeysChosen ()
 specifier|private
 name|void
-name|generateKeys
+name|checkOverwriteKeysChosen
 parameter_list|()
 block|{
 comment|// We don't want to generate keys for entries which already have one thus remove the entries
@@ -430,6 +431,20 @@ literal|true
 expr_stmt|;
 return|return;
 block|}
+block|}
+block|}
+DECL|method|generateKeys ()
+specifier|private
+name|void
+name|generateKeys
+parameter_list|()
+block|{
+if|if
+condition|(
+name|isCanceled
+condition|)
+block|{
+return|return;
 block|}
 comment|// generate the new cite keys for each entry
 specifier|final
@@ -523,13 +538,6 @@ name|compound
 argument_list|)
 expr_stmt|;
 block|}
-if|if
-condition|(
-name|isCanceled
-condition|)
-block|{
-return|return;
-block|}
 name|basePanel
 operator|.
 name|markBaseChanged
@@ -610,6 +618,9 @@ name|action
 parameter_list|()
 block|{
 name|init
+argument_list|()
+expr_stmt|;
+name|checkOverwriteKeysChosen
 argument_list|()
 expr_stmt|;
 name|BackgroundTask
