@@ -438,6 +438,7 @@ argument_list|(
 name|BASE_CSS
 argument_list|)
 condition|)
+block|{
 name|lightTheme
 operator|.
 name|setSelected
@@ -445,6 +446,7 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -462,6 +464,7 @@ argument_list|(
 name|DARK_CSS
 argument_list|)
 condition|)
+block|{
 name|darkTheme
 operator|.
 name|setSelected
@@ -469,6 +472,7 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 name|container
 operator|.
 name|getChildren

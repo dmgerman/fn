@@ -335,6 +335,7 @@ operator|.
 name|getSelectedEntries
 argument_list|()
 control|)
+block|{
 name|counter
 operator|+=
 name|replaceItem
@@ -344,6 +345,7 @@ argument_list|,
 name|compound
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 else|else
 block|{
@@ -362,6 +364,7 @@ operator|.
 name|getEntries
 argument_list|()
 control|)
+block|{
 name|counter
 operator|+=
 name|replaceItem
@@ -372,11 +375,12 @@ name|compound
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 return|return
 name|counter
 return|;
 block|}
-comment|/**      * Does the actual operation on a Bibtex entry based on the      * settings specified in this same dialog. Returns the number of      * occurrences replaced.      */
+comment|/**      * Does the actual operation on a Bibtex entry based on the settings specified in this same dialog. Returns the      * number of occurrences replaced.      */
 DECL|method|replaceItem (BibEntry entry, NamedCompound compound)
 specifier|private
 name|int
