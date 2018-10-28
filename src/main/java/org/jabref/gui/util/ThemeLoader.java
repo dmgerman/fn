@@ -348,7 +348,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * Installs the base css file as a stylesheet in the given scene.      * Changes in the css file lead to a redraw of the scene using the new css file.      */
+comment|/**      * Installs the base css file as a stylesheet in the given scene. Changes in the css file lead to a redraw of the      * scene using the new css file.      */
 DECL|method|installBaseCss (Scene scene, JabRefPreferences preferences)
 specifier|public
 name|void
@@ -456,7 +456,9 @@ argument_list|(
 name|cssUrl
 argument_list|)
 condition|)
+block|{
 return|return;
+block|}
 name|scene
 operator|.
 name|getStylesheets

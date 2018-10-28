@@ -798,9 +798,11 @@ operator|++
 expr_stmt|;
 block|}
 else|else
+block|{
 name|columnIndex
 operator|++
 expr_stmt|;
+block|}
 block|}
 name|rowIndex
 operator|++
