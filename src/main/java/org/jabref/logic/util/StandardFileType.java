@@ -220,6 +220,12 @@ argument_list|(
 literal|"xml"
 argument_list|)
 block|,
+DECL|enumConstant|JSON
+name|JSON
+argument_list|(
+literal|"json"
+argument_list|)
+block|,
 DECL|enumConstant|XMP
 name|XMP
 argument_list|(

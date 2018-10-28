@@ -1,8 +1,4 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
-begin_comment
-comment|/**  *  */
-end_comment
-
 begin_package
 DECL|package|org.jabref.logic.importer.fetcher
 package|package
@@ -144,9 +140,9 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|l10n
+name|net
 operator|.
-name|Localization
+name|URLDownload
 import|;
 end_import
 
@@ -158,9 +154,9 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|net
+name|util
 operator|.
-name|URLDownload
+name|Version
 import|;
 end_import
 
@@ -243,7 +239,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This class is responible to get the recommendations from MDL  */
+comment|/**  * This class is responsible for getting the recommendations from Mr. DLib  */
 end_comment
 
 begin_class
@@ -288,17 +284,17 @@ decl_stmt|;
 DECL|field|VERSION
 specifier|private
 specifier|final
-name|String
+name|Version
 name|VERSION
 decl_stmt|;
-DECL|method|MrDLibFetcher (String language, String version)
+DECL|method|MrDLibFetcher (String language, Version version)
 specifier|public
 name|MrDLibFetcher
 parameter_list|(
 name|String
 name|language
 parameter_list|,
-name|String
+name|Version
 name|version
 parameter_list|)
 block|{
@@ -382,10 +378,6 @@ argument_list|()
 decl_stmt|;
 name|ParserResult
 name|parserResult
-init|=
-operator|new
-name|ParserResult
-argument_list|()
 decl_stmt|;
 try|try
 block|{
@@ -412,6 +404,16 @@ block|}
 else|else
 block|{
 comment|// For displaying An ErrorMessage
+name|String
+name|error
+init|=
+name|importer
+operator|.
+name|getResponseErrorMessage
+argument_list|(
+name|response
+argument_list|)
+decl_stmt|;
 name|BibEntry
 name|errorBibEntry
 init|=
@@ -425,14 +427,7 @@ name|setField
 argument_list|(
 literal|"html_representation"
 argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Error while fetching from %0"
-argument_list|,
-literal|"Mr.DLib"
-argument_list|)
+name|error
 argument_list|)
 expr_stmt|;
 name|BibDatabase
@@ -481,7 +476,7 @@ throw|throw
 operator|new
 name|FetcherException
 argument_list|(
-literal|"XML Parser IOException."
+literal|"JSON Parser IOException."
 argument_list|)
 throw|;
 block|}
@@ -508,7 +503,7 @@ argument_list|)
 return|;
 block|}
 block|}
-comment|/**      * Contact the server with the title of the selected item      *      * @param query: The query holds the title of the selected entry. Used to make a query to the MDL Server      * @return Returns the server response. This is an XML document as a String.      */
+comment|/**      * Contact the server with the title of the selected item      *      * @param queryByTitle: The query holds the title of the selected entry. Used to make a query to the MDL Server      * @return Returns the server response. This is an XML document as a String.      */
 DECL|method|makeServerRequest (String queryByTitle)
 specifier|private
 name|String
@@ -534,7 +529,7 @@ name|queryByTitle
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|urlDownload
+name|URLDownload
 operator|.
 name|bypassSSLVerification
 argument_list|()
@@ -591,7 +586,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Constructs the query based on title of the bibentry. Adds statistical stuff to the url.      *      * @param query: the title of the bib entry.      * @return the string used to make the query at mdl server      */
+comment|/**      * Constructs the query based on title of the BibEntry. Adds statistical stuff to the url.      *      * @param queryWithTitle: the title of the bib entry.      * @return the string used to make the query at mdl server      */
 DECL|method|constructQuery (String queryWithTitle)
 specifier|private
 name|String
@@ -610,7 +605,7 @@ name|replaceAll
 argument_list|(
 literal|"/"
 argument_list|,
-literal|"convbckslsh"
+literal|" "
 argument_list|)
 expr_stmt|;
 name|URIBuilder
@@ -624,25 +619,26 @@ name|builder
 operator|.
 name|setScheme
 argument_list|(
-literal|"https"
+literal|"http"
 argument_list|)
 expr_stmt|;
 name|builder
 operator|.
 name|setHost
 argument_list|(
-literal|"api.mr-dlib.org"
+name|getMdlUrl
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|builder
 operator|.
 name|setPath
 argument_list|(
-literal|"/v1/documents/"
+literal|"/v2/items/"
 operator|+
 name|queryWithTitle
 operator|+
-literal|"/related_documents"
+literal|"/related_items"
 argument_list|)
 expr_stmt|;
 name|builder
@@ -670,6 +666,9 @@ argument_list|(
 literal|"app_version"
 argument_list|,
 name|VERSION
+operator|.
+name|getFullVersion
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|builder
@@ -681,19 +680,27 @@ argument_list|,
 name|LANGUAGE
 argument_list|)
 expr_stmt|;
+try|try
+block|{
 name|URI
 name|uri
 init|=
-literal|null
-decl_stmt|;
-try|try
-block|{
-name|uri
-operator|=
 name|builder
 operator|.
 name|build
 argument_list|()
+decl_stmt|;
+name|LOGGER
+operator|.
+name|trace
+argument_list|(
+literal|"Request: "
+operator|+
+name|uri
+operator|.
+name|toString
+argument_list|()
+argument_list|)
 expr_stmt|;
 return|return
 name|uri
@@ -723,6 +730,23 @@ expr_stmt|;
 block|}
 return|return
 literal|""
+return|;
+block|}
+DECL|method|getMdlUrl ()
+specifier|private
+name|String
+name|getMdlUrl
+parameter_list|()
+block|{
+return|return
+name|VERSION
+operator|.
+name|isDevelopmentVersion
+argument_list|()
+condition|?
+literal|"api-dev.darwingoliath.com"
+else|:
+literal|"api.darwingoliath.com"
 return|;
 block|}
 block|}

@@ -4051,7 +4051,7 @@ name|createIconButton
 argument_list|(
 name|StandardActions
 operator|.
-name|NEW_ENTRY
+name|NEW_ARTICLE
 argument_list|,
 operator|new
 name|NewEntryAction
