@@ -440,7 +440,7 @@ return|return
 name|hasChanged
 return|;
 block|}
-comment|/*     * Returns user comments (arbitrary text before the string) if there are any. If not returns the empty string      */
+comment|/*      * Returns user comments (arbitrary text before the string) if there are any. If not returns the empty string      */
 DECL|method|getUserComments ()
 specifier|public
 name|String
@@ -578,9 +578,11 @@ name|this
 operator|==
 name|o
 condition|)
+block|{
 return|return
 literal|true
 return|;
+block|}
 if|if
 condition|(
 name|o
@@ -595,9 +597,11 @@ operator|.
 name|getClass
 argument_list|()
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 name|BibtexString
 name|that
 init|=
