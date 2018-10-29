@@ -382,6 +382,7 @@ name|style
 argument_list|)
 condition|)
 block|{
+comment|// lang and forceLang are set to the default values of other CSL constructors
 name|cslInstance
 operator|=
 operator|new
@@ -389,7 +390,15 @@ name|CSL
 argument_list|(
 name|dataProvider
 argument_list|,
+operator|new
+name|JabRefLocaleProvider
+argument_list|()
+argument_list|,
 name|newStyle
+argument_list|,
+literal|"en-US"
+argument_list|,
+literal|false
 argument_list|)
 expr_stmt|;
 name|style
