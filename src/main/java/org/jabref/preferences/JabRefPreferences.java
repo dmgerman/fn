@@ -6265,7 +6265,7 @@ name|FX_THEME
 argument_list|,
 name|ThemeLoader
 operator|.
-name|DEFAULT_MAIN_CSS
+name|MAIN_CSS
 argument_list|)
 expr_stmt|;
 name|setLanguageDependentDefaultValues

@@ -209,7 +209,7 @@ name|getInstance
 argument_list|()
 argument_list|)
 operator|.
-name|installBaseCss
+name|installCss
 argument_list|(
 name|scene
 argument_list|,

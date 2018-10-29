@@ -186,7 +186,7 @@ operator|.
 name|getThemeLoader
 argument_list|()
 operator|.
-name|installBaseCss
+name|installCss
 argument_list|(
 name|getDialogPane
 argument_list|()

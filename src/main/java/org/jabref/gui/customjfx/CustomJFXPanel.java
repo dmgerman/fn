@@ -90,7 +90,7 @@ operator|.
 name|getThemeLoader
 argument_list|()
 operator|.
-name|installBaseCss
+name|installCss
 argument_list|(
 name|scene
 argument_list|,
