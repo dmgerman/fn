@@ -736,7 +736,7 @@ name|gui
 operator|.
 name|mergeentries
 operator|.
-name|MergeEntriesDialog
+name|MergeEntriesAction
 import|;
 end_import
 
@@ -2585,14 +2585,13 @@ argument_list|,
 parameter_list|()
 lambda|->
 operator|new
-name|MergeEntriesDialog
+name|MergeEntriesAction
 argument_list|(
-name|BasePanel
-operator|.
-name|this
-argument_list|,
-name|dialogService
+name|frame
 argument_list|)
+operator|.
+name|execute
+argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// The action for copying the selected entry's key.
