@@ -757,7 +757,7 @@ name|isRecommendationFieldPresent
 argument_list|(
 name|recommendation
 argument_list|,
-literal|"year_published"
+literal|"published_year"
 argument_list|)
 condition|?
 name|Integer
@@ -768,7 +768,7 @@ name|recommendation
 operator|.
 name|getInt
 argument_list|(
-literal|"year_published"
+literal|"published_year"
 argument_list|)
 argument_list|)
 else|:
@@ -819,7 +819,7 @@ name|isRecommendationFieldPresent
 argument_list|(
 name|recommendation
 argument_list|,
-literal|"url"
+literal|"recommendation_id"
 argument_list|)
 condition|?
 name|recommendation
