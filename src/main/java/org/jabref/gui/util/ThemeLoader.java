@@ -38,6 +38,16 @@ name|java
 operator|.
 name|net
 operator|.
+name|URI
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|net
+operator|.
 name|URISyntaxException
 import|;
 end_import
@@ -49,18 +59,6 @@ operator|.
 name|net
 operator|.
 name|URL
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|nio
-operator|.
-name|file
-operator|.
-name|Files
 import|;
 end_import
 
@@ -555,7 +553,37 @@ argument_list|)
 expr_stmt|;
 try|try
 block|{
-comment|// If the file is an ordinary file (i.e. not a resource part of a .jar bundle), we watch it for changes and turn on live reloading
+name|URI
+name|cssUri
+init|=
+name|cssFile
+operator|.
+name|toURI
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+operator|!
+name|cssUri
+operator|.
+name|toString
+argument_list|()
+operator|.
+name|contains
+argument_list|(
+literal|"jar"
+argument_list|)
+condition|)
+block|{
+name|LOGGER
+operator|.
+name|debug
+argument_list|(
+literal|"CSS URI {}"
+argument_list|,
+name|cssUri
+argument_list|)
+expr_stmt|;
 name|Path
 name|cssPath
 init|=
@@ -563,19 +591,24 @@ name|Paths
 operator|.
 name|get
 argument_list|(
-name|cssFile
-operator|.
-name|toURI
-argument_list|()
+name|cssUri
 argument_list|)
+operator|.
+name|toAbsolutePath
+argument_list|()
 decl_stmt|;
+comment|// If the file is an ordinary file (i.e. not a resource part of a .jar bundle), we watch it for changes and turn on live reloading
 if|if
 condition|(
-name|Files
+operator|!
+name|cssUri
 operator|.
-name|isRegularFile
+name|toString
+argument_list|()
+operator|.
+name|contains
 argument_list|(
-name|cssPath
+literal|"jar"
 argument_list|)
 condition|)
 block|{
@@ -583,8 +616,8 @@ name|LOGGER
 operator|.
 name|info
 argument_list|(
-literal|"Enabling live reloading of "
-operator|+
+literal|"Enabling live reloading of {}"
+argument_list|,
 name|cssPath
 argument_list|)
 expr_stmt|;
@@ -647,6 +680,7 @@ expr_stmt|;
 block|}
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 catch|catch
