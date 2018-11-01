@@ -285,6 +285,15 @@ name|NAME
 init|=
 literal|"MDL_FETCHER"
 decl_stmt|;
+DECL|field|MDL_JABREF_PARTNER_ID
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|MDL_JABREF_PARTNER_ID
+init|=
+literal|"1"
+decl_stmt|;
 DECL|field|LANGUAGE
 specifier|private
 specifier|final
@@ -657,7 +666,7 @@ name|addParameter
 argument_list|(
 literal|"partner_id"
 argument_list|,
-literal|"1"
+name|MDL_JABREF_PARTNER_ID
 argument_list|)
 expr_stmt|;
 name|builder
