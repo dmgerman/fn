@@ -72,6 +72,7 @@ name|GroupModeViewModel
 block|{
 DECL|field|mode
 specifier|private
+specifier|final
 name|GroupViewMode
 name|mode
 decl_stmt|;
@@ -166,7 +167,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Toogle intersection"
+literal|"Toggle intersection"
 argument_list|)
 argument_list|)
 return|;
@@ -189,7 +190,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Toogle union"
+literal|"Toggle union"
 argument_list|)
 argument_list|)
 return|;
