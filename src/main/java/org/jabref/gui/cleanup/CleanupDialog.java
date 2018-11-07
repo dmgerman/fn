@@ -80,6 +80,20 @@ name|BibDatabaseContext
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|metadata
+operator|.
+name|FilePreferences
+import|;
+end_import
+
 begin_class
 DECL|class|CleanupDialog
 specifier|public
@@ -91,7 +105,7 @@ argument_list|<
 name|CleanupPreset
 argument_list|>
 block|{
-DECL|method|CleanupDialog (BibDatabaseContext databaseContext, CleanupPreset initialPreset)
+DECL|method|CleanupDialog (BibDatabaseContext databaseContext, CleanupPreset initialPreset, FilePreferences filePreferences)
 specifier|public
 name|CleanupDialog
 parameter_list|(
@@ -100,6 +114,9 @@ name|databaseContext
 parameter_list|,
 name|CleanupPreset
 name|initialPreset
+parameter_list|,
+name|FilePreferences
+name|filePreferences
 parameter_list|)
 block|{
 name|setTitle
@@ -148,6 +165,8 @@ argument_list|(
 name|databaseContext
 argument_list|,
 name|initialPreset
+argument_list|,
+name|filePreferences
 argument_list|)
 decl_stmt|;
 name|getDialogPane
