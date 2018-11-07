@@ -1315,16 +1315,6 @@ name|UPDATE_TIMESTAMP
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|updateTimeStamp
-operator|.
-name|setSelected
-argument_list|(
-name|useTimeStamp
-operator|.
-name|isSelected
-argument_list|()
-argument_list|)
-expr_stmt|;
 name|enforceLegalKeys
 operator|.
 name|setSelected
