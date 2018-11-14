@@ -306,6 +306,20 @@ specifier|final
 name|Version
 name|VERSION
 decl_stmt|;
+DECL|field|heading
+specifier|private
+name|String
+name|heading
+init|=
+literal|""
+decl_stmt|;
+DECL|field|description
+specifier|private
+name|String
+name|description
+init|=
+literal|""
+decl_stmt|;
 DECL|method|MrDLibFetcher (String language, Version version)
 specifier|public
 name|MrDLibFetcher
@@ -419,6 +433,20 @@ argument_list|(
 name|response
 argument_list|)
 expr_stmt|;
+name|heading
+operator|=
+name|parserResult
+operator|.
+name|getTitle
+argument_list|()
+expr_stmt|;
+name|description
+operator|=
+name|parserResult
+operator|.
+name|getDescription
+argument_list|()
+expr_stmt|;
 block|}
 else|else
 block|{
@@ -521,6 +549,26 @@ literal|0
 argument_list|)
 return|;
 block|}
+block|}
+DECL|method|getHeading ()
+specifier|public
+name|String
+name|getHeading
+parameter_list|()
+block|{
+return|return
+name|heading
+return|;
+block|}
+DECL|method|getDescription ()
+specifier|public
+name|String
+name|getDescription
+parameter_list|()
+block|{
+return|return
+name|description
+return|;
 block|}
 comment|/**      * Contact the server with the title of the selected item      *      * @param queryByTitle: The query holds the title of the selected entry. Used to make a query to the MDL Server      * @return Returns the server response. This is an XML document as a String.      */
 DECL|method|makeServerRequest (String queryByTitle)
@@ -645,8 +693,7 @@ name|builder
 operator|.
 name|setHost
 argument_list|(
-name|getMdlUrl
-argument_list|()
+literal|"localhost:5000"
 argument_list|)
 expr_stmt|;
 name|builder

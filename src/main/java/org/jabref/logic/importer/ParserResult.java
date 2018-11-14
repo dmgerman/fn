@@ -291,6 +291,16 @@ name|changedOnMigration
 init|=
 literal|false
 decl_stmt|;
+DECL|field|title
+specifier|private
+name|String
+name|title
+decl_stmt|;
+DECL|field|description
+specifier|private
+name|String
+name|description
+decl_stmt|;
 DECL|method|ParserResult ()
 specifier|public
 name|ParserResult
@@ -623,6 +633,58 @@ name|f
 operator|.
 name|toPath
 argument_list|()
+expr_stmt|;
+block|}
+DECL|method|getTitle ()
+specifier|public
+name|String
+name|getTitle
+parameter_list|()
+block|{
+return|return
+name|title
+return|;
+block|}
+DECL|method|setTitle (String title)
+specifier|public
+name|void
+name|setTitle
+parameter_list|(
+name|String
+name|title
+parameter_list|)
+block|{
+name|this
+operator|.
+name|title
+operator|=
+name|title
+expr_stmt|;
+block|}
+DECL|method|getDescription ()
+specifier|public
+name|String
+name|getDescription
+parameter_list|()
+block|{
+return|return
+name|description
+return|;
+block|}
+DECL|method|setDescription (String description)
+specifier|public
+name|void
+name|setDescription
+parameter_list|(
+name|String
+name|description
+parameter_list|)
+block|{
+name|this
+operator|.
+name|description
+operator|=
+name|description
 expr_stmt|;
 block|}
 comment|/**      * Add a parser warning.      *      * @param s String Warning text. Must be pretranslated. Only added if there isn't already a dupe.      */
