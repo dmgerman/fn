@@ -209,6 +209,11 @@ specifier|private
 name|boolean
 name|useSSL
 decl_stmt|;
+DECL|field|serverTimezone
+specifier|private
+name|String
+name|serverTimezone
+decl_stmt|;
 comment|//Not needed for connection, but stored for future login
 DECL|field|keyStore
 specifier|private
@@ -236,7 +241,7 @@ name|prefs
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|DBMSConnectionProperties (DBMSType type, String host, int port, String database, String user, String password, boolean useSSL)
+DECL|method|DBMSConnectionProperties (DBMSType type, String host, int port, String database, String user, String password, boolean useSSL, String serverTimezone)
 specifier|public
 name|DBMSConnectionProperties
 parameter_list|(
@@ -260,6 +265,9 @@ name|password
 parameter_list|,
 name|boolean
 name|useSSL
+parameter_list|,
+name|String
+name|serverTimezone
 parameter_list|)
 block|{
 name|this
@@ -303,6 +311,12 @@ operator|.
 name|useSSL
 operator|=
 name|useSSL
+expr_stmt|;
+name|this
+operator|.
+name|serverTimezone
+operator|=
+name|serverTimezone
 expr_stmt|;
 block|}
 annotation|@
@@ -520,6 +534,34 @@ name|database
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
+DECL|method|getServerTimezone ()
+specifier|public
+name|String
+name|getServerTimezone
+parameter_list|()
+block|{
+return|return
+name|serverTimezone
+return|;
+block|}
+DECL|method|setServerTimezone (String serverTimezone)
+specifier|public
+name|void
+name|setServerTimezone
+parameter_list|(
+name|String
+name|serverTimezone
+parameter_list|)
+block|{
+name|this
+operator|.
+name|serverTimezone
+operator|=
+name|serverTimezone
+expr_stmt|;
+block|}
 comment|/**      * Returns username, password and ssl as Properties Object      * @return Properties with values for user, password and ssl      */
 DECL|method|asProperties ()
 specifier|public
@@ -550,6 +592,15 @@ argument_list|(
 literal|"password"
 argument_list|,
 name|password
+argument_list|)
+expr_stmt|;
+name|props
+operator|.
+name|setProperty
+argument_list|(
+literal|"serverTimezone"
+argument_list|,
+name|serverTimezone
 argument_list|)
 expr_stmt|;
 if|if
@@ -721,6 +772,18 @@ operator|.
 name|isUseSSL
 argument_list|()
 argument_list|)
+operator|&&
+name|Objects
+operator|.
+name|equals
+argument_list|(
+name|serverTimezone
+argument_list|,
+name|properties
+operator|.
+name|getServerTimezone
+argument_list|()
+argument_list|)
 return|;
 block|}
 annotation|@
@@ -876,6 +939,22 @@ operator|.
 name|keyStore
 operator|=
 name|theKeystore
+argument_list|)
+expr_stmt|;
+name|prefs
+operator|.
+name|getServerTimezone
+argument_list|()
+operator|.
+name|ifPresent
+argument_list|(
+name|theServerTimezone
+lambda|->
+name|this
+operator|.
+name|serverTimezone
+operator|=
+name|theServerTimezone
 argument_list|)
 expr_stmt|;
 name|this

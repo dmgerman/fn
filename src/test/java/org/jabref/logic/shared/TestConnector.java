@@ -145,6 +145,8 @@ argument_list|,
 literal|""
 argument_list|,
 literal|false
+argument_list|,
+literal|""
 argument_list|)
 return|;
 block|}
@@ -177,6 +179,8 @@ argument_list|,
 literal|""
 argument_list|,
 literal|false
+argument_list|,
+literal|""
 argument_list|)
 return|;
 block|}
@@ -209,6 +213,8 @@ argument_list|,
 literal|"travis"
 argument_list|,
 literal|false
+argument_list|,
+literal|""
 argument_list|)
 return|;
 block|}
