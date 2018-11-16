@@ -7348,7 +7348,8 @@ name|fieldNames
 init|=
 name|InternalBibtexFields
 operator|.
-name|DEFAULT_GENERAL_FIELDS
+name|getDefaultGeneralFields
+argument_list|()
 operator|.
 name|stream
 argument_list|()

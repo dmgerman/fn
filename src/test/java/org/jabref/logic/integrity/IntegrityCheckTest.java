@@ -379,14 +379,12 @@ operator|.
 name|class
 argument_list|)
 DECL|class|IntegrityCheckTest
-specifier|public
 class|class
 name|IntegrityCheckTest
 block|{
 annotation|@
 name|Test
 DECL|method|testEntryTypeChecks ()
-specifier|public
 name|void
 name|testEntryTypeChecks
 parameter_list|()
@@ -473,7 +471,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testUrlChecks ()
-specifier|public
 name|void
 name|testUrlChecks
 parameter_list|()
@@ -542,7 +539,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testYearChecks ()
-specifier|public
 name|void
 name|testYearChecks
 parameter_list|()
@@ -701,7 +697,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testEditionChecks ()
-specifier|public
 name|void
 name|testEditionChecks
 parameter_list|()
@@ -880,7 +875,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testNoteChecks ()
-specifier|public
 name|void
 name|testNoteChecks
 parameter_list|()
@@ -991,7 +985,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testHowpublishedChecks ()
-specifier|public
 name|void
 name|testHowpublishedChecks
 parameter_list|()
@@ -1102,7 +1095,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testMonthChecks ()
-specifier|public
 name|void
 name|testMonthChecks
 parameter_list|()
@@ -1349,7 +1341,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testJournaltitleChecks ()
-specifier|public
 name|void
 name|testJournaltitleChecks
 parameter_list|()
@@ -1392,7 +1383,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testBibtexkeyChecks ()
-specifier|public
 name|void
 name|testBibtexkeyChecks
 parameter_list|()
@@ -1513,7 +1503,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testBracketChecks ()
-specifier|public
 name|void
 name|testBracketChecks
 parameter_list|()
@@ -1582,7 +1571,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testAuthorNameChecks ()
-specifier|public
 name|void
 name|testAuthorNameChecks
 parameter_list|()
@@ -1758,7 +1746,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testTitleChecks ()
-specifier|public
 name|void
 name|testTitleChecks
 parameter_list|()
@@ -2005,7 +1992,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testAbbreviationChecks ()
-specifier|public
 name|void
 name|testAbbreviationChecks
 parameter_list|()
@@ -2060,7 +2046,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testJournalIsKnownInAbbreviationList ()
-specifier|public
 name|void
 name|testJournalIsKnownInAbbreviationList
 parameter_list|()
@@ -2089,7 +2074,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testFileChecks ()
-specifier|public
 name|void
 name|testFileChecks
 parameter_list|()
@@ -2212,7 +2196,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|fileCheckFindsFilesRelativeToBibFile (@empDirectory.TempDir Path testFolder)
-specifier|public
 name|void
 name|fileCheckFindsFilesRelativeToBibFile
 parameter_list|(
@@ -2275,9 +2258,6 @@ operator|.
 name|setDatabaseFile
 argument_list|(
 name|bibFile
-operator|.
-name|toFile
-argument_list|()
 argument_list|)
 expr_stmt|;
 name|assertCorrect
@@ -2289,7 +2269,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testTypeChecks ()
-specifier|public
 name|void
 name|testTypeChecks
 parameter_list|()
@@ -2322,7 +2301,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testBooktitleChecks ()
-specifier|public
 name|void
 name|testBooktitleChecks
 parameter_list|()
@@ -2355,7 +2333,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testPageNumbersChecks ()
-specifier|public
 name|void
 name|testPageNumbersChecks
 parameter_list|()
@@ -2474,7 +2451,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testBiblatexPageNumbersChecks ()
-specifier|public
 name|void
 name|testBiblatexPageNumbersChecks
 parameter_list|()
@@ -2671,7 +2647,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testBibStringChecks ()
-specifier|public
 name|void
 name|testBibStringChecks
 parameter_list|()
@@ -2730,7 +2705,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testHTMLCharacterChecks ()
-specifier|public
 name|void
 name|testHTMLCharacterChecks
 parameter_list|()
@@ -2809,7 +2783,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testISSNChecks ()
-specifier|public
 name|void
 name|testISSNChecks
 parameter_list|()
@@ -2868,7 +2841,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testISBNChecks ()
-specifier|public
 name|void
 name|testISBNChecks
 parameter_list|()
@@ -2937,7 +2909,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testDOIChecks ()
-specifier|public
 name|void
 name|testDOIChecks
 parameter_list|()
@@ -2986,7 +2957,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testEntryIsUnchangedAfterChecks ()
-specifier|public
 name|void
 name|testEntryIsUnchangedAfterChecks
 parameter_list|()
@@ -3131,7 +3101,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testASCIIChecks ()
-specifier|public
 name|void
 name|testASCIIChecks
 parameter_list|()

@@ -78,7 +78,6 @@ end_import
 
 begin_class
 DECL|class|NoBibTexFieldCheckerTest
-specifier|public
 class|class
 name|NoBibTexFieldCheckerTest
 block|{
@@ -95,7 +94,6 @@ decl_stmt|;
 annotation|@
 name|Test
 DECL|method|abstractIsNotRecognizedAsBiblatexOnlyField ()
-specifier|public
 name|void
 name|abstractIsNotRecognizedAsBiblatexOnlyField
 parameter_list|()
@@ -135,7 +133,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|addressIsNotRecognizedAsBiblatexOnlyField ()
-specifier|public
 name|void
 name|addressIsNotRecognizedAsBiblatexOnlyField
 parameter_list|()
@@ -175,7 +172,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|afterwordIsRecognizedAsBiblatexOnlyField ()
-specifier|public
 name|void
 name|afterwordIsRecognizedAsBiblatexOnlyField
 parameter_list|()
@@ -238,7 +234,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|arbitraryNonBiblatexFieldIsNotRecognizedAsBiblatexOnlyField ()
-specifier|public
 name|void
 name|arbitraryNonBiblatexFieldIsNotRecognizedAsBiblatexOnlyField
 parameter_list|()
@@ -278,7 +273,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|commentIsNotRecognizedAsBiblatexOnlyField ()
-specifier|public
 name|void
 name|commentIsNotRecognizedAsBiblatexOnlyField
 parameter_list|()
@@ -318,7 +312,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|instituationIsNotRecognizedAsBiblatexOnlyField ()
-specifier|public
 name|void
 name|instituationIsNotRecognizedAsBiblatexOnlyField
 parameter_list|()
@@ -358,7 +351,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|journalIsNotRecognizedAsBiblatexOnlyField ()
-specifier|public
 name|void
 name|journalIsNotRecognizedAsBiblatexOnlyField
 parameter_list|()
@@ -398,7 +390,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|journaltitleIsRecognizedAsBiblatexOnlyField ()
-specifier|public
 name|void
 name|journaltitleIsRecognizedAsBiblatexOnlyField
 parameter_list|()
@@ -461,7 +452,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|keywordsNotRecognizedAsBiblatexOnlyField ()
-specifier|public
 name|void
 name|keywordsNotRecognizedAsBiblatexOnlyField
 parameter_list|()
@@ -501,7 +491,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|locationIsRecognizedAsBiblatexOnlyField ()
-specifier|public
 name|void
 name|locationIsRecognizedAsBiblatexOnlyField
 parameter_list|()
@@ -564,7 +553,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|reviewIsNotRecognizedAsBiblatexOnlyField ()
-specifier|public
 name|void
 name|reviewIsNotRecognizedAsBiblatexOnlyField
 parameter_list|()
