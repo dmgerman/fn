@@ -156,16 +156,6 @@ name|org
 operator|.
 name|jabref
 operator|.
-name|Globals
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
 name|gui
 operator|.
 name|BasePanel
@@ -516,12 +506,21 @@ specifier|final
 name|DialogService
 name|dialogService
 decl_stmt|;
-DECL|method|SaveDatabaseAction (BasePanel panel)
+DECL|field|prefs
+specifier|private
+specifier|final
+name|JabRefPreferences
+name|prefs
+decl_stmt|;
+DECL|method|SaveDatabaseAction (BasePanel panel, JabRefPreferences prefs)
 specifier|public
 name|SaveDatabaseAction
 parameter_list|(
 name|BasePanel
 name|panel
+parameter_list|,
+name|JabRefPreferences
+name|prefs
 parameter_list|)
 block|{
 name|this
@@ -547,6 +546,12 @@ name|frame
 operator|.
 name|getDialogService
 argument_list|()
+expr_stmt|;
+name|this
+operator|.
+name|prefs
+operator|=
+name|prefs
 expr_stmt|;
 block|}
 DECL|method|saveDatabase (Path file, boolean selectedOnly, Charset encoding, SavePreferences.DatabaseSaveType saveType)
@@ -576,8 +581,6 @@ block|{
 name|SavePreferences
 name|preferences
 init|=
-name|Globals
-operator|.
 name|prefs
 operator|.
 name|loadForSaveFromPreferences
@@ -1067,8 +1070,6 @@ argument_list|()
 operator|.
 name|orElse
 argument_list|(
-name|Globals
-operator|.
 name|prefs
 operator|.
 name|getDefaultEncoding
@@ -1397,8 +1398,6 @@ argument_list|)
 operator|.
 name|withInitialDirectory
 argument_list|(
-name|Globals
-operator|.
 name|prefs
 operator|.
 name|get
@@ -1431,8 +1430,6 @@ name|ifPresent
 argument_list|(
 name|path
 lambda|->
-name|Globals
-operator|.
 name|prefs
 operator|.
 name|setWorkingDir
@@ -1675,8 +1672,6 @@ operator|.
 name|LOCAL
 operator|)
 operator|&&
-name|Globals
-operator|.
 name|prefs
 operator|.
 name|getBoolean
@@ -1749,8 +1744,6 @@ name|path
 argument_list|,
 literal|true
 argument_list|,
-name|Globals
-operator|.
 name|prefs
 operator|.
 name|getDefaultEncoding

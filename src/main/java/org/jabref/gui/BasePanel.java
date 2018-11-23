@@ -2297,6 +2297,10 @@ operator|new
 name|SaveDatabaseAction
 argument_list|(
 name|this
+argument_list|,
+name|Globals
+operator|.
+name|prefs
 argument_list|)
 decl_stmt|;
 name|CleanupAction
