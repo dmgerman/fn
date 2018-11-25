@@ -286,11 +286,36 @@ argument_list|(
 operator|new
 name|TemplateExporter
 argument_list|(
-literal|"DocBook 4.4"
+literal|"DocBook 5.1"
 argument_list|,
-literal|"docbook"
+literal|"docbook5"
 argument_list|,
-literal|"docbook"
+literal|"docbook5"
+argument_list|,
+literal|null
+argument_list|,
+name|StandardFileType
+operator|.
+name|XML
+argument_list|,
+name|layoutPreferences
+argument_list|,
+name|savePreferences
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|exporters
+operator|.
+name|add
+argument_list|(
+operator|new
+name|TemplateExporter
+argument_list|(
+literal|"DocBook 4"
+argument_list|,
+literal|"docbook4"
+argument_list|,
+literal|"docbook4"
 argument_list|,
 literal|null
 argument_list|,

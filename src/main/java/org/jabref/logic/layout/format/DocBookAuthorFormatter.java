@@ -20,20 +20,6 @@ name|org
 operator|.
 name|jabref
 operator|.
-name|logic
-operator|.
-name|layout
-operator|.
-name|LayoutFormatter
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
 name|model
 operator|.
 name|entry
@@ -56,31 +42,15 @@ name|AuthorList
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|entry
-operator|.
-name|FieldName
-import|;
-end_import
-
 begin_comment
-comment|/**  * Create DocBook authors formatter.  */
+comment|/**  * DocBook author formatter for both version 4 and 5  *  */
 end_comment
 
 begin_class
-DECL|class|CreateDocBookAuthors
+DECL|class|DocBookAuthorFormatter
 specifier|public
 class|class
-name|CreateDocBookAuthors
-implements|implements
-name|LayoutFormatter
+name|DocBookAuthorFormatter
 block|{
 DECL|field|XML_CHARS
 specifier|private
@@ -93,55 +63,8 @@ operator|new
 name|XMLChars
 argument_list|()
 decl_stmt|;
-annotation|@
-name|Override
-DECL|method|format (String fieldText)
-specifier|public
-name|String
-name|format
-parameter_list|(
-name|String
-name|fieldText
-parameter_list|)
-block|{
-name|StringBuilder
-name|sb
-init|=
-operator|new
-name|StringBuilder
-argument_list|(
-literal|100
-argument_list|)
-decl_stmt|;
-name|AuthorList
-name|al
-init|=
-name|AuthorList
-operator|.
-name|parse
-argument_list|(
-name|fieldText
-argument_list|)
-decl_stmt|;
-name|addBody
-argument_list|(
-name|sb
-argument_list|,
-name|al
-argument_list|,
-name|FieldName
-operator|.
-name|AUTHOR
-argument_list|)
-expr_stmt|;
-return|return
-name|sb
-operator|.
-name|toString
-argument_list|()
-return|;
-block|}
-DECL|method|addBody (StringBuilder sb, AuthorList al, String tagName)
+comment|/**      *      * @param sb {@link StringBuilder}      * @param al {@link AuthorList}      * @param tagName Editor or author field/tag      * @param version @link {@link DocBookVersion}      */
+DECL|method|addBody (StringBuilder sb, AuthorList al, String tagName, DocBookVersion version)
 specifier|public
 name|void
 name|addBody
@@ -154,6 +77,9 @@ name|al
 parameter_list|,
 name|String
 name|tagName
+parameter_list|,
+name|DocBookVersion
+name|version
 parameter_list|)
 block|{
 for|for
@@ -191,6 +117,23 @@ argument_list|(
 literal|'>'
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|version
+operator|==
+name|DocBookVersion
+operator|.
+name|DOCBOOK_5
+condition|)
+block|{
+name|sb
+operator|.
+name|append
+argument_list|(
+literal|"<personname>"
+argument_list|)
+expr_stmt|;
+block|}
 name|Author
 name|a
 init|=
@@ -230,8 +173,6 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-name|CreateDocBookAuthors
-operator|.
 name|XML_CHARS
 operator|.
 name|format
@@ -275,8 +216,6 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-name|CreateDocBookAuthors
-operator|.
 name|XML_CHARS
 operator|.
 name|format
@@ -321,8 +260,6 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-name|CreateDocBookAuthors
-operator|.
 name|XML_CHARS
 operator|.
 name|format
@@ -360,8 +297,6 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-name|CreateDocBookAuthors
-operator|.
 name|XML_CHARS
 operator|.
 name|format
@@ -377,7 +312,22 @@ name|append
 argument_list|(
 literal|"</surname>"
 argument_list|)
-argument_list|;
+argument_list|;                 if
+operator|(
+name|version
+operator|==
+name|DocBookVersion
+operator|.
+name|DOCBOOK_5
+operator|)
+block|{
+name|sb
+operator|.
+name|append
+argument_list|(
+literal|"</personname>"
+argument_list|)
+block|;                 }
 block|}
 block|)
 function|;
@@ -436,6 +386,6 @@ block|}
 block|}
 end_class
 
-unit|}  }
+unit|} }
 end_unit
 
