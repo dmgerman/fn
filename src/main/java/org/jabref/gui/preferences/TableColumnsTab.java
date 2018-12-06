@@ -2515,7 +2515,7 @@ name|buttonWidth
 operator|.
 name|setPrefSize
 argument_list|(
-literal|200
+literal|300
 argument_list|,
 literal|30
 argument_list|)
@@ -2544,7 +2544,7 @@ name|buttonOrder
 operator|.
 name|setPrefSize
 argument_list|(
-literal|200
+literal|300
 argument_list|,
 literal|30
 argument_list|)
