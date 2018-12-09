@@ -18,7 +18,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Map
+name|List
 import|;
 end_import
 
@@ -1492,22 +1492,16 @@ block|{
 name|setValues
 argument_list|()
 expr_stmt|;
-name|Map
+name|List
 argument_list|<
-name|String
-argument_list|,
 name|TemplateExporter
 argument_list|>
 name|customExporters
 init|=
 name|prefs
 operator|.
-name|customExports
-operator|.
 name|getCustomExportFormats
 argument_list|(
-name|prefs
-argument_list|,
 name|Globals
 operator|.
 name|journalAbbreviationLoader
