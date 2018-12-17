@@ -3673,13 +3673,10 @@ argument_list|,
 operator|new
 name|FindFullTextAction
 argument_list|(
-name|frame
-operator|.
-name|getDialogService
-argument_list|()
-argument_list|,
 name|this
 argument_list|)
+operator|::
+name|execute
 argument_list|)
 expr_stmt|;
 end_expr_stmt
