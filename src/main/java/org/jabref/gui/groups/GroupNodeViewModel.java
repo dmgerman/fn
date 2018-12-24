@@ -636,16 +636,11 @@ argument_list|(
 name|localDragBoard
 argument_list|)
 expr_stmt|;
-name|LatexToUnicodeFormatter
-name|formatter
-init|=
+name|displayName
+operator|=
 operator|new
 name|LatexToUnicodeFormatter
 argument_list|()
-decl_stmt|;
-name|displayName
-operator|=
-name|formatter
 operator|.
 name|format
 argument_list|(
@@ -689,6 +684,8 @@ name|automaticGroup
 operator|.
 name|createSubgroups
 argument_list|(
+name|this
+operator|.
 name|databaseContext
 operator|.
 name|getDatabase
