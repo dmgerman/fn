@@ -233,7 +233,6 @@ name|defNumber
 parameter_list|)
 function_decl|;
 DECL|method|purgeSeries (String prefix, int number)
-specifier|public
 name|void
 name|purgeSeries
 parameter_list|(
@@ -245,7 +244,6 @@ name|number
 parameter_list|)
 function_decl|;
 DECL|method|updateEntryEditorTabList ()
-specifier|public
 name|void
 name|updateEntryEditorTabList
 parameter_list|()
