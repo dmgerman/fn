@@ -244,9 +244,6 @@ argument_list|(
 name|BibtexEntryTypes
 operator|.
 name|ARTICLE
-operator|.
-name|getName
-argument_list|()
 argument_list|)
 expr_stmt|;
 name|entry

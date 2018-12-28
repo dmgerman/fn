@@ -719,6 +719,11 @@ parameter_list|)
 block|{
 name|this
 argument_list|(
+name|IdGenerator
+operator|.
+name|next
+argument_list|()
+argument_list|,
 name|type
 operator|.
 name|getName
@@ -2464,6 +2469,11 @@ init|=
 operator|new
 name|BibEntry
 argument_list|(
+name|IdGenerator
+operator|.
+name|next
+argument_list|()
+argument_list|,
 name|type
 operator|.
 name|getValue
