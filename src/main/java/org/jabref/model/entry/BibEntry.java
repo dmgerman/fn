@@ -645,28 +645,6 @@ name|DEFAULT_TYPE
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Constructs a new BibEntry with the given type      *      * @param type The type to set. May be null or empty. In that case, DEFAULT_TYPE is used.      * @deprecated use {{@link #BibEntry(EntryType)}} instead      */
-annotation|@
-name|Deprecated
-DECL|method|BibEntry (String type)
-specifier|public
-name|BibEntry
-parameter_list|(
-name|String
-name|type
-parameter_list|)
-block|{
-name|this
-argument_list|(
-name|IdGenerator
-operator|.
-name|next
-argument_list|()
-argument_list|,
-name|type
-argument_list|)
-expr_stmt|;
-block|}
 comment|/**      * Constructs a new BibEntry with the given ID and given type      *      * @param id   The ID to be used      * @param type The type to set. May be null or empty. In that case, DEFAULT_TYPE is used.      */
 DECL|method|BibEntry (String id, String type)
 specifier|private
