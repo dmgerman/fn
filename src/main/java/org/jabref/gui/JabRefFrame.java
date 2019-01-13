@@ -524,6 +524,16 @@ end_import
 
 begin_import
 import|import
+name|javafx
+operator|.
+name|util
+operator|.
+name|Duration
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|jabref
@@ -1650,6 +1660,32 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|jfoenix
+operator|.
+name|controls
+operator|.
+name|JFXSnackbar
+operator|.
+name|SnackbarEvent
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|jfoenix
+operator|.
+name|controls
+operator|.
+name|JFXSnackbarLayout
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -1764,6 +1800,20 @@ argument_list|(
 name|JabRefFrame
 operator|.
 name|class
+argument_list|)
+decl_stmt|;
+DECL|field|TOAST_MESSAGE_DISPLAY_TIME
+specifier|private
+specifier|static
+specifier|final
+name|Duration
+name|TOAST_MESSAGE_DISPLAY_TIME
+init|=
+name|Duration
+operator|.
+name|millis
+argument_list|(
+literal|3000
 argument_list|)
 decl_stmt|;
 DECL|field|splitPane
@@ -7228,17 +7278,17 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * Displays the given message at the bottom of the main frame      *      * @deprecated use {@link DialogService#notify(String)} instead      */
+comment|/**      * Displays the given message at the bottom of the main frame      *      * @deprecated use {@link DialogService#notify(String)} instead. However, do not remove this method, it's called from the dialogService      */
 annotation|@
 name|Deprecated
-DECL|method|output (final String s)
+DECL|method|output (final String message)
 specifier|public
 name|void
 name|output
 parameter_list|(
 specifier|final
 name|String
-name|s
+name|message
 parameter_list|)
 block|{
 name|DefaultTaskExecutor
@@ -7249,11 +7299,21 @@ parameter_list|()
 lambda|->
 name|statusLine
 operator|.
-name|show
+name|fireEvent
 argument_list|(
-name|s
+operator|new
+name|SnackbarEvent
+argument_list|(
+operator|new
+name|JFXSnackbarLayout
+argument_list|(
+name|message
+argument_list|)
 argument_list|,
-literal|3000
+name|TOAST_MESSAGE_DISPLAY_TIME
+argument_list|,
+literal|null
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
