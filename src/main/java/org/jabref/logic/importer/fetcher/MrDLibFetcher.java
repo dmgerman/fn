@@ -819,7 +819,7 @@ name|builder
 operator|.
 name|setHost
 argument_list|(
-literal|"localhost:5000"
+literal|"api.mr-dlib.org"
 argument_list|)
 expr_stmt|;
 name|builder
@@ -982,23 +982,6 @@ expr_stmt|;
 block|}
 return|return
 literal|""
-return|;
-block|}
-DECL|method|getMdlUrl ()
-specifier|private
-name|String
-name|getMdlUrl
-parameter_list|()
-block|{
-return|return
-name|VERSION
-operator|.
-name|isDevelopmentVersion
-argument_list|()
-condition|?
-literal|"api-dev.darwingoliath.com"
-else|:
-literal|"api.mr-dlib.org"
 return|;
 block|}
 block|}
