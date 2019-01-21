@@ -20,6 +20,20 @@ name|org
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
+name|layout
+operator|.
+name|LayoutFormatter
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
 name|model
 operator|.
 name|entry
@@ -43,16 +57,16 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Create DocBook editors formatter.  */
+comment|/**  * Create DocBook authors formatter.  */
 end_comment
 
 begin_class
-DECL|class|CreateDocBookEditors
+DECL|class|CreateDocBook4Authors
 specifier|public
 class|class
-name|CreateDocBookEditors
-extends|extends
-name|CreateDocBookAuthors
+name|CreateDocBook4Authors
+implements|implements
+name|LayoutFormatter
 block|{
 annotation|@
 name|Override
@@ -65,7 +79,6 @@ name|String
 name|fieldText
 parameter_list|)
 block|{
-comment|//<editor><firstname>L.</firstname><surname>Xue</surname></editor>
 name|StringBuilder
 name|sb
 init|=
@@ -85,6 +98,15 @@ argument_list|(
 name|fieldText
 argument_list|)
 decl_stmt|;
+name|DocBookAuthorFormatter
+name|formatter
+init|=
+operator|new
+name|DocBookAuthorFormatter
+argument_list|()
+decl_stmt|;
+name|formatter
+operator|.
 name|addBody
 argument_list|(
 name|sb
@@ -93,7 +115,11 @@ name|al
 argument_list|,
 name|FieldName
 operator|.
-name|EDITOR
+name|AUTHOR
+argument_list|,
+name|DocBookVersion
+operator|.
+name|DOCBOOK_4
 argument_list|)
 expr_stmt|;
 return|return

@@ -186,9 +186,6 @@ argument_list|(
 name|BibtexEntryTypes
 operator|.
 name|ARTICLE
-operator|.
-name|getName
-argument_list|()
 argument_list|)
 operator|.
 name|withField
@@ -226,9 +223,6 @@ argument_list|(
 name|BibtexEntryTypes
 operator|.
 name|ARTICLE
-operator|.
-name|getName
-argument_list|()
 argument_list|)
 operator|.
 name|withField
@@ -266,9 +260,6 @@ argument_list|(
 name|BibtexEntryTypes
 operator|.
 name|INBOOK
-operator|.
-name|getName
-argument_list|()
 argument_list|)
 operator|.
 name|withField
@@ -333,9 +324,6 @@ argument_list|(
 name|BibtexEntryTypes
 operator|.
 name|INCOLLECTION
-operator|.
-name|getName
-argument_list|()
 argument_list|)
 operator|.
 name|withField
@@ -401,9 +389,6 @@ argument_list|(
 name|BibtexEntryTypes
 operator|.
 name|ARTICLE
-operator|.
-name|getName
-argument_list|()
 argument_list|)
 decl_stmt|;
 name|BibEntry
@@ -415,9 +400,6 @@ argument_list|(
 name|BibtexEntryTypes
 operator|.
 name|ARTICLE
-operator|.
-name|getName
-argument_list|()
 argument_list|)
 decl_stmt|;
 name|one
@@ -1463,9 +1445,6 @@ argument_list|(
 name|BibtexEntryTypes
 operator|.
 name|BOOK
-operator|.
-name|getName
-argument_list|()
 argument_list|)
 decl_stmt|;
 name|editionOne
@@ -1532,9 +1511,6 @@ argument_list|(
 name|BibtexEntryTypes
 operator|.
 name|BOOK
-operator|.
-name|getName
-argument_list|()
 argument_list|)
 decl_stmt|;
 name|editionTwo
@@ -1626,9 +1602,6 @@ argument_list|(
 name|BibtexEntryTypes
 operator|.
 name|BOOK
-operator|.
-name|getName
-argument_list|()
 argument_list|)
 decl_stmt|;
 name|editionOne
@@ -1684,9 +1657,6 @@ argument_list|(
 name|BibtexEntryTypes
 operator|.
 name|BOOK
-operator|.
-name|getName
-argument_list|()
 argument_list|)
 decl_stmt|;
 name|editionTwo
@@ -1767,9 +1737,6 @@ argument_list|(
 name|BibtexEntryTypes
 operator|.
 name|BOOK
-operator|.
-name|getName
-argument_list|()
 argument_list|)
 decl_stmt|;
 name|editionOne
@@ -1825,9 +1792,6 @@ argument_list|(
 name|BibtexEntryTypes
 operator|.
 name|BOOK
-operator|.
-name|getName
-argument_list|()
 argument_list|)
 decl_stmt|;
 name|editionTwo
@@ -1919,9 +1883,6 @@ argument_list|(
 name|BibtexEntryTypes
 operator|.
 name|BOOK
-operator|.
-name|getName
-argument_list|()
 argument_list|)
 decl_stmt|;
 name|editionTwo
@@ -2028,9 +1989,6 @@ argument_list|(
 name|BibtexEntryTypes
 operator|.
 name|BOOK
-operator|.
-name|getName
-argument_list|()
 argument_list|)
 decl_stmt|;
 name|editionOne

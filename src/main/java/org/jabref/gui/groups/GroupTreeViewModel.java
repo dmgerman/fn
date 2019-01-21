@@ -599,6 +599,16 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Init
+name|refresh
+argument_list|()
+expr_stmt|;
+block|}
+DECL|method|refresh ()
+specifier|private
+name|void
+name|refresh
+parameter_list|()
+block|{
 name|onActiveDatabaseChanged
 argument_list|(
 name|stateManager
@@ -1101,7 +1111,7 @@ argument_list|)
 decl_stmt|;
 comment|//        WarnAssignmentSideEffects.warnAssignmentSideEffects(newGroup, panel.frame());
 name|boolean
-name|removePreviousAssignents
+name|removePreviousAssignments
 init|=
 operator|(
 name|oldGroup
@@ -1132,7 +1142,7 @@ name|group
 argument_list|,
 name|keepPreviousAssignments
 argument_list|,
-name|removePreviousAssignents
+name|removePreviousAssignments
 argument_list|,
 name|stateManager
 operator|.
@@ -1174,6 +1184,10 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 name|writeGroupChangesToMetaData
+argument_list|()
+expr_stmt|;
+comment|// This is ugly but we have no proper update mechanism in place to propagate the changes, so redraw everything
+name|refresh
 argument_list|()
 expr_stmt|;
 block|}

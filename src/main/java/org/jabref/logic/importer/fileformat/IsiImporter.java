@@ -210,6 +210,20 @@ name|model
 operator|.
 name|entry
 operator|.
+name|BibtexEntryTypes
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
 name|FieldName
 import|;
 end_import
@@ -1899,7 +1913,12 @@ init|=
 operator|new
 name|BibEntry
 argument_list|(
+name|BibtexEntryTypes
+operator|.
+name|getTypeOrDefault
+argument_list|(
 name|Type
+argument_list|)
 argument_list|)
 decl_stmt|;
 comment|// id assumes an existing database so don't

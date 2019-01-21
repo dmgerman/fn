@@ -18,6 +18,16 @@ name|org
 operator|.
 name|jabref
 operator|.
+name|Globals
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
 name|gui
 operator|.
 name|BasePanel
@@ -157,6 +167,10 @@ operator|new
 name|SaveDatabaseAction
 argument_list|(
 name|panel
+argument_list|,
+name|Globals
+operator|.
+name|prefs
 argument_list|)
 operator|.
 name|save

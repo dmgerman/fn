@@ -224,6 +224,9 @@ argument_list|(
 name|this
 operator|.
 name|name
+operator|.
+name|getValue
+argument_list|()
 argument_list|,
 name|this
 operator|.

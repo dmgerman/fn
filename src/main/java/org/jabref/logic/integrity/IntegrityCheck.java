@@ -283,7 +283,7 @@ name|result
 return|;
 block|}
 DECL|method|checkBibtexEntry (BibEntry entry)
-specifier|private
+specifier|public
 name|List
 argument_list|<
 name|IntegrityMessage

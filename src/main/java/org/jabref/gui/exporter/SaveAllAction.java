@@ -32,6 +32,18 @@ name|jabref
 operator|.
 name|gui
 operator|.
+name|DialogService
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
 name|JabRefFrame
 import|;
 end_import
@@ -92,6 +104,12 @@ specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
+DECL|field|dialogService
+specifier|private
+specifier|final
+name|DialogService
+name|dialogService
+decl_stmt|;
 DECL|method|SaveAllAction (JabRefFrame frame)
 specifier|public
 name|SaveAllAction
@@ -106,6 +124,15 @@ name|frame
 operator|=
 name|frame
 expr_stmt|;
+name|this
+operator|.
+name|dialogService
+operator|=
+name|frame
+operator|.
+name|getDialogService
+argument_list|()
+expr_stmt|;
 block|}
 annotation|@
 name|Override
@@ -115,9 +142,9 @@ name|void
 name|execute
 parameter_list|()
 block|{
-name|frame
+name|dialogService
 operator|.
-name|output
+name|notify
 argument_list|(
 name|Localization
 operator|.
@@ -153,15 +180,19 @@ name|isPresent
 argument_list|()
 condition|)
 block|{
-name|frame
-operator|.
-name|showBasePanel
-argument_list|(
+comment|//It will ask a path before saving.
 name|panel
+operator|.
+name|runCommand
+argument_list|(
+name|Actions
+operator|.
+name|SAVE_AS
 argument_list|)
 expr_stmt|;
-comment|// TODO: Ask for path
 block|}
+else|else
+block|{
 name|panel
 operator|.
 name|runCommand
@@ -173,9 +204,10 @@ argument_list|)
 expr_stmt|;
 comment|// TODO: can we find out whether the save was actually done or not?
 block|}
-name|frame
+block|}
+name|dialogService
 operator|.
-name|output
+name|notify
 argument_list|(
 name|Localization
 operator|.

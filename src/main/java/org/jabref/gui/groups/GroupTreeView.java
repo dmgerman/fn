@@ -970,10 +970,6 @@ name|valueProperty
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|mainColumn
-operator|.
-name|setCellFactory
-argument_list|(
 operator|new
 name|ViewModelTreeTableCellFactory
 argument_list|<
@@ -1003,6 +999,10 @@ name|GroupNodeViewModel
 operator|::
 name|getDescription
 argument_list|)
+operator|.
+name|install
+argument_list|(
+name|mainColumn
 argument_list|)
 expr_stmt|;
 comment|// Number of hits
@@ -1026,10 +1026,6 @@ argument_list|(
 literal|"all-selected"
 argument_list|)
 decl_stmt|;
-name|numberColumn
-operator|.
-name|setCellFactory
-argument_list|(
 operator|new
 name|ViewModelTreeTableCellFactory
 argument_list|<
@@ -1157,6 +1153,10 @@ name|node
 return|;
 block|}
 argument_list|)
+operator|.
+name|install
+argument_list|(
+name|numberColumn
 argument_list|)
 expr_stmt|;
 comment|// Arrow indicating expanded status
@@ -1175,10 +1175,6 @@ name|valueProperty
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|disclosureNodeColumn
-operator|.
-name|setCellFactory
-argument_list|(
 operator|new
 name|ViewModelTreeTableCellFactory
 argument_list|<
@@ -1277,12 +1273,13 @@ argument_list|()
 argument_list|;
 block|}
 block|)
+operator|.
+name|install
+argument_list|(
+name|disclosureNodeColumn
+argument_list|)
+expr_stmt|;
 end_class
-
-begin_empty_stmt
-unit|)
-empty_stmt|;
-end_empty_stmt
 
 begin_comment
 comment|// Set pseudo-classes to indicate if row is root or sub-item (> 1 deep)
@@ -2357,6 +2354,11 @@ name|editGroup
 argument_list|(
 name|group
 argument_list|)
+expr_stmt|;
+name|groupTree
+operator|.
+name|refresh
+argument_list|()
 expr_stmt|;
 block|}
 argument_list|)

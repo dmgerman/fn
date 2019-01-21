@@ -172,6 +172,20 @@ name|model
 operator|.
 name|entry
 operator|.
+name|BibtexEntryTypes
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
 name|LinkedFile
 import|;
 end_import
@@ -402,7 +416,9 @@ init|=
 operator|new
 name|BibEntry
 argument_list|(
-literal|"article"
+name|BibtexEntryTypes
+operator|.
+name|ARTICLE
 argument_list|)
 decl_stmt|;
 comment|//set a required field
@@ -2365,7 +2381,9 @@ init|=
 operator|new
 name|BibEntry
 argument_list|(
-literal|"article"
+name|BibtexEntryTypes
+operator|.
+name|ARTICLE
 argument_list|)
 decl_stmt|;
 name|entry
@@ -2463,7 +2481,9 @@ init|=
 operator|new
 name|BibEntry
 argument_list|(
-literal|"article"
+name|BibtexEntryTypes
+operator|.
+name|ARTICLE
 argument_list|)
 decl_stmt|;
 name|entry
@@ -2550,7 +2570,9 @@ init|=
 operator|new
 name|BibEntry
 argument_list|(
-literal|"article"
+name|BibtexEntryTypes
+operator|.
+name|ARTICLE
 argument_list|)
 decl_stmt|;
 name|entry

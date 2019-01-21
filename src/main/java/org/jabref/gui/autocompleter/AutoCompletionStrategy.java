@@ -19,7 +19,6 @@ interface|interface
 name|AutoCompletionStrategy
 block|{
 DECL|method|analyze (String input)
-specifier|public
 name|AutoCompletionInput
 name|analyze
 parameter_list|(

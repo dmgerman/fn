@@ -363,6 +363,9 @@ operator|.
 name|hash
 argument_list|(
 name|name
+operator|.
+name|getValue
+argument_list|()
 argument_list|,
 name|context
 argument_list|,

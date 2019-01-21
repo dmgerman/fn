@@ -158,9 +158,6 @@ argument_list|(
 name|BiblatexEntryTypes
 operator|.
 name|MVBOOK
-operator|.
-name|getName
-argument_list|()
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -201,9 +198,6 @@ argument_list|(
 name|BibtexEntryTypes
 operator|.
 name|ARTICLE
-operator|.
-name|getName
-argument_list|()
 argument_list|)
 decl_stmt|;
 name|entry
@@ -265,9 +259,6 @@ argument_list|(
 name|BibtexEntryTypes
 operator|.
 name|ARTICLE
-operator|.
-name|getName
-argument_list|()
 argument_list|)
 decl_stmt|;
 name|bibtex
@@ -288,9 +279,6 @@ argument_list|(
 name|BiblatexEntryTypes
 operator|.
 name|ARTICLE
-operator|.
-name|getName
-argument_list|()
 argument_list|)
 decl_stmt|;
 name|biblatex
@@ -370,9 +358,6 @@ argument_list|(
 literal|0
 argument_list|)
 argument_list|)
-operator|.
-name|getName
-argument_list|()
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -441,9 +426,6 @@ argument_list|(
 literal|0
 argument_list|)
 argument_list|)
-operator|.
-name|getName
-argument_list|()
 argument_list|)
 decl_stmt|;
 name|BibEntry
@@ -455,9 +437,6 @@ argument_list|(
 name|BibtexEntryTypes
 operator|.
 name|ARTICLE
-operator|.
-name|getName
-argument_list|()
 argument_list|)
 decl_stmt|;
 name|BibEntry
@@ -469,9 +448,6 @@ argument_list|(
 name|BiblatexEntryTypes
 operator|.
 name|ARTICLE
-operator|.
-name|getName
-argument_list|()
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -544,9 +520,6 @@ argument_list|(
 literal|0
 argument_list|)
 argument_list|)
-operator|.
-name|getName
-argument_list|()
 argument_list|)
 decl_stmt|;
 name|BibEntry
@@ -558,9 +531,6 @@ argument_list|(
 name|BibtexEntryTypes
 operator|.
 name|ARTICLE
-operator|.
-name|getName
-argument_list|()
 argument_list|)
 decl_stmt|;
 name|BibEntry
@@ -572,9 +542,6 @@ argument_list|(
 name|BiblatexEntryTypes
 operator|.
 name|MVBOOK
-operator|.
-name|getName
-argument_list|()
 argument_list|)
 decl_stmt|;
 name|Collection

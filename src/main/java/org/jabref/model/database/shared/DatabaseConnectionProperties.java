@@ -65,6 +65,11 @@ name|boolean
 name|isUseSSL
 parameter_list|()
 function_decl|;
+DECL|method|getServerTimezone ()
+name|String
+name|getServerTimezone
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

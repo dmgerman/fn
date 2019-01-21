@@ -255,6 +255,15 @@ name|SHARED_DATABASE_KEYSTORE_FILE
 init|=
 literal|"sharedDatabaseKeyStoreFile"
 decl_stmt|;
+DECL|field|SHARED_DATABASE_SERVER_TIMEZONE
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|SHARED_DATABASE_SERVER_TIMEZONE
+init|=
+literal|"sharedDatabaseServerTimezone"
+decl_stmt|;
 comment|// This {@link Preferences} is used only for things which should not appear in real JabRefPreferences due to security reasons.
 DECL|field|internalPrefs
 specifier|private
@@ -415,6 +424,22 @@ return|return
 name|getOptionalValue
 argument_list|(
 name|SHARED_DATABASE_KEYSTORE_FILE
+argument_list|)
+return|;
+block|}
+DECL|method|getServerTimezone ()
+specifier|public
+name|Optional
+argument_list|<
+name|String
+argument_list|>
+name|getServerTimezone
+parameter_list|()
+block|{
+return|return
+name|getOptionalValue
+argument_list|(
+name|SHARED_DATABASE_SERVER_TIMEZONE
 argument_list|)
 return|;
 block|}
@@ -623,6 +648,25 @@ name|keystoreFile
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|setServerTimezone (String serverTimezone)
+specifier|public
+name|void
+name|setServerTimezone
+parameter_list|(
+name|String
+name|serverTimezone
+parameter_list|)
+block|{
+name|internalPrefs
+operator|.
+name|put
+argument_list|(
+name|SHARED_DATABASE_SERVER_TIMEZONE
+argument_list|,
+name|serverTimezone
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|clearPassword ()
 specifier|public
 name|void
@@ -787,6 +831,14 @@ argument_list|(
 name|properties
 operator|.
 name|getKeyStore
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|setServerTimezone
+argument_list|(
+name|properties
+operator|.
+name|getServerTimezone
 argument_list|()
 argument_list|)
 expr_stmt|;

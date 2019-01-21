@@ -545,14 +545,20 @@ argument_list|>
 name|dialog
 parameter_list|)
 function_decl|;
-comment|/**      * Constructs and shows a canceable {@link ProgressDialog}. Clicking cancel will cancel the underlying service and close the dialog      *      * @param task The {@link Task} which executes the work and for which to show the dialog      */
-DECL|method|showCanceableProgressDialogAndWait (Task<V> task)
+comment|/**      * Constructs and shows a canceable {@link ProgressDialog}. Clicking cancel will cancel the underlying service and close the dialog      *      * @param title title of the dialog      * @param content message to show above the progress bar      * @param task The {@link Task} which executes the work and for which to show the dialog      */
+DECL|method|showProgressDialogAndWait (String title, String content, Task<V> task)
 parameter_list|<
 name|V
 parameter_list|>
 name|void
-name|showCanceableProgressDialogAndWait
+name|showProgressDialogAndWait
 parameter_list|(
+name|String
+name|title
+parameter_list|,
+name|String
+name|content
+parameter_list|,
 name|Task
 argument_list|<
 name|V
