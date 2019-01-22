@@ -413,6 +413,25 @@ operator|.
 name|BIBTEX
 argument_list|)
 block|,
+DECL|enumConstant|DEFAULT_DIALOG_ACTION
+name|DEFAULT_DIALOG_ACTION
+argument_list|(
+literal|"Execute default action in dialog"
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Execute default action in dialog"
+argument_list|)
+argument_list|,
+literal|"ctrl+ENTER"
+argument_list|,
+name|KeyBindingCategory
+operator|.
+name|VIEW
+argument_list|)
+block|,
 DECL|enumConstant|DOWNLOAD_FULL_TEXT
 name|DOWNLOAD_FULL_TEXT
 argument_list|(
