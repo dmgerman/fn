@@ -20,18 +20,6 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|JabRefFrame
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
 name|importer
 operator|.
 name|ImportCustomizationDialog
@@ -46,27 +34,11 @@ name|ManageCustomImportsAction
 extends|extends
 name|SimpleCommand
 block|{
-DECL|field|jabRefFrame
-specifier|private
-specifier|final
-name|JabRefFrame
-name|jabRefFrame
-decl_stmt|;
-DECL|method|ManageCustomImportsAction (JabRefFrame jabRefFrame)
+DECL|method|ManageCustomImportsAction ()
 specifier|public
 name|ManageCustomImportsAction
-parameter_list|(
-name|JabRefFrame
-name|jabRefFrame
-parameter_list|)
-block|{
-name|this
-operator|.
-name|jabRefFrame
-operator|=
-name|jabRefFrame
-expr_stmt|;
-block|}
+parameter_list|()
+block|{     }
 annotation|@
 name|Override
 DECL|method|execute ()
@@ -75,21 +47,12 @@ name|void
 name|execute
 parameter_list|()
 block|{
-name|ImportCustomizationDialog
-name|ecd
-init|=
 operator|new
 name|ImportCustomizationDialog
-argument_list|(
-name|jabRefFrame
-argument_list|)
-decl_stmt|;
-name|ecd
+argument_list|()
 operator|.
-name|setVisible
-argument_list|(
-literal|true
-argument_list|)
+name|showAndWait
+argument_list|()
 expr_stmt|;
 block|}
 block|}

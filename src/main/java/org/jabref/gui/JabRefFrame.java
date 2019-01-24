@@ -6701,9 +6701,7 @@ name|MANAGE_CUSTOM_IMPORTS
 argument_list|,
 operator|new
 name|ManageCustomImportsAction
-argument_list|(
-name|this
-argument_list|)
+argument_list|()
 argument_list|)
 argument_list|,
 name|factory
