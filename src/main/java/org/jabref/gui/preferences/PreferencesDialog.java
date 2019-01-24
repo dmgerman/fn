@@ -1141,10 +1141,8 @@ name|prefs
 argument_list|)
 argument_list|)
 operator|.
-name|setVisible
-argument_list|(
-literal|true
-argument_list|)
+name|showAndWait
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|showPreferences
