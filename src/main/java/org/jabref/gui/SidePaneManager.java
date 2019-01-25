@@ -289,7 +289,7 @@ name|OpenOfficeSidePanel
 argument_list|(
 name|this
 argument_list|,
-name|openOfficePreferences
+name|preferences
 argument_list|,
 name|frame
 argument_list|)

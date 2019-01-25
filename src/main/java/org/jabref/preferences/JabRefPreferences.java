@@ -10052,6 +10052,8 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getOpenOfficePreferences ()
 specifier|public
 name|OpenOfficePreferences
@@ -10136,6 +10138,8 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|setOpenOfficePreferences (OpenOfficePreferences openOfficePreferences)
 specifier|public
 name|void
@@ -10429,6 +10433,8 @@ return|return
 name|this
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getPreviewPreferences ()
 specifier|public
 name|PreviewPreferences

@@ -132,6 +132,20 @@ name|org
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
+name|openoffice
+operator|.
+name|OpenOfficePreferences
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
 name|model
 operator|.
 name|metadata
@@ -189,6 +203,24 @@ parameter_list|(
 name|Path
 name|dir
 parameter_list|)
+function_decl|;
+DECL|method|getOpenOfficePreferences ()
+name|OpenOfficePreferences
+name|getOpenOfficePreferences
+parameter_list|()
+function_decl|;
+DECL|method|setOpenOfficePreferences (OpenOfficePreferences openOfficePreferences)
+name|void
+name|setOpenOfficePreferences
+parameter_list|(
+name|OpenOfficePreferences
+name|openOfficePreferences
+parameter_list|)
+function_decl|;
+DECL|method|getPreviewPreferences ()
+name|PreviewPreferences
+name|getPreviewPreferences
+parameter_list|()
 function_decl|;
 DECL|method|getEntryEditorTabList ()
 name|Map

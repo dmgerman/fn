@@ -4472,6 +4472,7 @@ name|propName
 argument_list|)
 return|;
 block|}
+comment|/**      * Indicate if it is an internal style      * @return True if an internal style      */
 DECL|method|isFromResource ()
 specifier|public
 name|boolean
