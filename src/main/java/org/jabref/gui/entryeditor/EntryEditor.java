@@ -1939,6 +1939,8 @@ name|getImportFormatPreferences
 argument_list|()
 argument_list|,
 name|fileMonitor
+argument_list|,
+name|dialogService
 argument_list|)
 expr_stmt|;
 name|tabs

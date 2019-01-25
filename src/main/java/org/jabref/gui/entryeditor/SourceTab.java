@@ -128,6 +128,18 @@ name|jabref
 operator|.
 name|gui
 operator|.
+name|DialogService
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
 name|icon
 operator|.
 name|IconTheme
@@ -584,7 +596,13 @@ specifier|final
 name|FileUpdateMonitor
 name|fileMonitor
 decl_stmt|;
-DECL|method|SourceTab (BibDatabaseContext bibDatabaseContext, CountingUndoManager undoManager, LatexFieldFormatterPreferences fieldFormatterPreferences, ImportFormatPreferences importFormatPreferences, FileUpdateMonitor fileMonitor)
+DECL|field|dialogService
+specifier|private
+specifier|final
+name|DialogService
+name|dialogService
+decl_stmt|;
+DECL|method|SourceTab (BibDatabaseContext bibDatabaseContext, CountingUndoManager undoManager, LatexFieldFormatterPreferences fieldFormatterPreferences, ImportFormatPreferences importFormatPreferences, FileUpdateMonitor fileMonitor, DialogService dialogService)
 specifier|public
 name|SourceTab
 parameter_list|(
@@ -602,6 +620,9 @@ name|importFormatPreferences
 parameter_list|,
 name|FileUpdateMonitor
 name|fileMonitor
+parameter_list|,
+name|DialogService
+name|dialogService
 parameter_list|)
 block|{
 name|this
@@ -688,6 +709,12 @@ operator|.
 name|fileMonitor
 operator|=
 name|fileMonitor
+expr_stmt|;
+name|this
+operator|.
+name|dialogService
+operator|=
+name|dialogService
 expr_stmt|;
 block|}
 DECL|method|getSourceString (BibEntry entry, BibDatabaseMode type, LatexFieldFormatterPreferences fieldFormatterPreferences)
@@ -889,6 +916,7 @@ name|ifPresent
 argument_list|(
 name|validationMessage
 lambda|->
+block|{
 name|notificationPane
 operator|.
 name|show
@@ -898,6 +926,19 @@ operator|.
 name|getMessage
 argument_list|()
 argument_list|)
+expr_stmt|;
+comment|//this seems not working
+name|dialogService
+operator|.
+name|showErrorDialogAndWait
+argument_list|(
+name|validationMessage
+operator|.
+name|getMessage
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 argument_list|)
 expr_stmt|;
 block|}
@@ -911,7 +952,7 @@ argument_list|(
 name|codeArea
 argument_list|)
 expr_stmt|;
-comment|// Store source for every change in the source code
+comment|// Store source for on focus out event in the source code (within its text area)
 comment|// and update source code for every change of entry field values
 name|BindingsHelper
 operator|.
@@ -924,12 +965,31 @@ argument_list|()
 argument_list|,
 name|codeArea
 operator|.
-name|textProperty
+name|focusedProperty
 argument_list|()
 argument_list|,
-name|this
-operator|::
+name|onFocus
+lambda|->
+block|{
+if|if
+condition|(
+operator|!
+name|onFocus
+condition|)
+block|{
 name|storeSource
+argument_list|(
+name|codeArea
+operator|.
+name|textProperty
+argument_list|()
+operator|.
+name|getValue
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 argument_list|,
 name|fields
 lambda|->
@@ -1134,6 +1194,26 @@ literal|"No entries found."
 argument_list|)
 throw|;
 block|}
+block|}
+if|if
+condition|(
+name|parserResult
+operator|.
+name|hasWarnings
+argument_list|()
+condition|)
+block|{
+comment|// put the warning into as exception text -> it will be displayed to the user
+throw|throw
+operator|new
+name|IllegalStateException
+argument_list|(
+name|parserResult
+operator|.
+name|getErrorMessage
+argument_list|()
+argument_list|)
+throw|;
 block|}
 name|NamedCompound
 name|compound

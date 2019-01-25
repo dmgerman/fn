@@ -178,6 +178,18 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|regex
+operator|.
+name|Pattern
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|jabref
@@ -594,6 +606,7 @@ name|parserResult
 decl_stmt|;
 DECL|field|metaDataParser
 specifier|private
+specifier|final
 name|MetaDataParser
 name|metaDataParser
 decl_stmt|;
@@ -1190,9 +1203,61 @@ block|}
 name|parseRemainingContent
 argument_list|()
 expr_stmt|;
+name|checkEpilog
+argument_list|()
+expr_stmt|;
 return|return
 name|parserResult
 return|;
+block|}
+DECL|method|checkEpilog ()
+specifier|private
+name|void
+name|checkEpilog
+parameter_list|()
+block|{
+comment|// This is an incomplete and inaccurate try to verify if something went wrong with previous parsing activity even though there were no warnings so far
+comment|// regex looks for something like 'identifier = blabla ,'
+if|if
+condition|(
+operator|!
+name|parserResult
+operator|.
+name|hasWarnings
+argument_list|()
+operator|&&
+name|Pattern
+operator|.
+name|compile
+argument_list|(
+literal|"\\w+\\s*=.*,"
+argument_list|)
+operator|.
+name|matcher
+argument_list|(
+name|database
+operator|.
+name|getEpilog
+argument_list|()
+argument_list|)
+operator|.
+name|find
+argument_list|()
+condition|)
+block|{
+name|parserResult
+operator|.
+name|addWarning
+argument_list|(
+literal|"following BibTex fragment has not been parsed:\n"
+operator|+
+name|database
+operator|.
+name|getEpilog
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 DECL|method|parseRemainingContent ()
 specifier|private
