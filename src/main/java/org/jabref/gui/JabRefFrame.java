@@ -6003,6 +6003,8 @@ operator|new
 name|DuplicateSearch
 argument_list|(
 name|this
+argument_list|,
+name|dialogService
 argument_list|)
 argument_list|)
 argument_list|,

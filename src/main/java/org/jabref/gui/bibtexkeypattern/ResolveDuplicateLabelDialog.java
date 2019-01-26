@@ -553,7 +553,10 @@ name|PreviewPanel
 argument_list|(
 literal|null
 argument_list|,
-literal|null
+name|panel
+operator|.
+name|getBibDatabaseContext
+argument_list|()
 argument_list|,
 name|Globals
 operator|.
