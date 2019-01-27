@@ -8293,7 +8293,7 @@ block|}
 end_class
 
 begin_comment
-comment|/**      * Ensures that the search auto completer is up to date when entries are changed AKA Let the auto completer, if any,      * harvest words from the entry      */
+comment|/**      * Ensures that the search auto completer is up to date when entries are changed AKA Let the auto completer, if any,      * harvest words from the entry      * Actual methods for autocomplete indexing  must run in javafx thread      */
 end_comment
 
 begin_class
@@ -8313,6 +8313,12 @@ name|EntryAddedEvent
 name|addedEntryEvent
 parameter_list|)
 block|{
+name|DefaultTaskExecutor
+operator|.
+name|runInJavaFXThread
+argument_list|(
+parameter_list|()
+lambda|->
 name|searchAutoCompleter
 operator|.
 name|indexEntry
@@ -8321,6 +8327,7 @@ name|addedEntryEvent
 operator|.
 name|getBibEntry
 argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -8335,6 +8342,12 @@ name|EntryChangedEvent
 name|entryChangedEvent
 parameter_list|)
 block|{
+name|DefaultTaskExecutor
+operator|.
+name|runInJavaFXThread
+argument_list|(
+parameter_list|()
+lambda|->
 name|searchAutoCompleter
 operator|.
 name|indexEntry
@@ -8344,13 +8357,14 @@ operator|.
 name|getBibEntry
 argument_list|()
 argument_list|)
+argument_list|)
 expr_stmt|;
 block|}
 block|}
 end_class
 
 begin_comment
-comment|/**      * Ensures that the results of the current search are updated when a new entry is inserted into the database      */
+comment|/**      * Ensures that the results of the current search are updated when a new entry is inserted into the database      * Actual methods for performing search must run in javafx thread      */
 end_comment
 
 begin_class
@@ -8370,6 +8384,12 @@ name|EntryAddedEvent
 name|addedEntryEvent
 parameter_list|)
 block|{
+name|DefaultTaskExecutor
+operator|.
+name|runInJavaFXThread
+argument_list|(
+parameter_list|()
+lambda|->
 name|frame
 operator|.
 name|getGlobalSearchBar
@@ -8377,6 +8397,7 @@ argument_list|()
 operator|.
 name|performSearch
 argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 annotation|@
@@ -8390,6 +8411,12 @@ name|EntryChangedEvent
 name|entryChangedEvent
 parameter_list|)
 block|{
+name|DefaultTaskExecutor
+operator|.
+name|runInJavaFXThread
+argument_list|(
+parameter_list|()
+lambda|->
 name|frame
 operator|.
 name|getGlobalSearchBar
@@ -8397,6 +8424,7 @@ argument_list|()
 operator|.
 name|performSearch
 argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 annotation|@
@@ -8411,6 +8439,12 @@ name|removedEntryEvent
 parameter_list|)
 block|{
 comment|// IMO only used to update the status (found X entries)
+name|DefaultTaskExecutor
+operator|.
+name|runInJavaFXThread
+argument_list|(
+parameter_list|()
+lambda|->
 name|frame
 operator|.
 name|getGlobalSearchBar
@@ -8418,6 +8452,7 @@ argument_list|()
 operator|.
 name|performSearch
 argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 block|}
