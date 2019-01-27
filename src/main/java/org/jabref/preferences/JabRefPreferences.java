@@ -7110,6 +7110,8 @@ return|return
 name|preferredPositions
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getUser ()
 specifier|public
 name|String
@@ -9304,6 +9306,8 @@ operator|+
 literal|']'
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getDefaultEncoding ()
 specifier|public
 name|Charset
@@ -9322,6 +9326,8 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|setDefaultEncoding (Charset encoding)
 specifier|public
 name|void

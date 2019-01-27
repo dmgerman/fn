@@ -16,6 +16,18 @@ name|java
 operator|.
 name|nio
 operator|.
+name|charset
+operator|.
+name|Charset
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
 name|file
 operator|.
 name|Path
@@ -326,6 +338,24 @@ function_decl|;
 DECL|method|getExportWorkingDirectory ()
 name|String
 name|getExportWorkingDirectory
+parameter_list|()
+function_decl|;
+DECL|method|getDefaultEncoding ()
+name|Charset
+name|getDefaultEncoding
+parameter_list|()
+function_decl|;
+DECL|method|setDefaultEncoding (Charset encoding)
+name|void
+name|setDefaultEncoding
+parameter_list|(
+name|Charset
+name|encoding
+parameter_list|)
+function_decl|;
+DECL|method|getUser ()
+name|String
+name|getUser
 parameter_list|()
 function_decl|;
 block|}
