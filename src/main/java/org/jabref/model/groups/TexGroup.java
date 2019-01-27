@@ -340,6 +340,9 @@ operator|new
 name|TexGroup
 argument_list|(
 name|name
+operator|.
+name|getValue
+argument_list|()
 argument_list|,
 name|context
 argument_list|,
@@ -389,9 +392,11 @@ name|this
 operator|==
 name|o
 condition|)
+block|{
 return|return
 literal|true
 return|;
+block|}
 if|if
 condition|(
 name|o
@@ -406,9 +411,11 @@ operator|.
 name|getClass
 argument_list|()
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 if|if
 condition|(
 operator|!
@@ -419,9 +426,11 @@ argument_list|(
 name|o
 argument_list|)
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 name|TexGroup
 name|group
 init|=

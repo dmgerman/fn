@@ -16,39 +16,13 @@ end_package
 
 begin_import
 import|import
-name|javax
+name|javafx
 operator|.
-name|swing
-operator|.
-name|JTextPane
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
+name|scene
 operator|.
 name|text
 operator|.
-name|html
-operator|.
-name|HTMLEditorKit
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|text
-operator|.
-name|html
-operator|.
-name|StyleSheet
+name|TextFlow
 import|;
 end_import
 
@@ -58,7 +32,7 @@ specifier|public
 class|class
 name|DiffHighlightingTextPane
 extends|extends
-name|JTextPane
+name|TextFlow
 block|{
 DECL|field|BODY_STYLE
 specifier|private
@@ -113,58 +87,13 @@ block|{
 name|super
 argument_list|()
 expr_stmt|;
-name|setContentType
-argument_list|(
-name|CONTENT_TYPE
-argument_list|)
-expr_stmt|;
-name|StyleSheet
-name|sheet
-init|=
-operator|(
-operator|(
-name|HTMLEditorKit
-operator|)
-name|getEditorKit
-argument_list|()
-operator|)
-operator|.
-name|getStyleSheet
-argument_list|()
-decl_stmt|;
-name|sheet
-operator|.
-name|addRule
-argument_list|(
-name|BODY_STYLE
-argument_list|)
-expr_stmt|;
-name|sheet
-operator|.
-name|addRule
-argument_list|(
-name|ADDITION_STYLE
-argument_list|)
-expr_stmt|;
-name|sheet
-operator|.
-name|addRule
-argument_list|(
-name|REMOVAL_STYLE
-argument_list|)
-expr_stmt|;
-name|sheet
-operator|.
-name|addRule
-argument_list|(
-name|CHANGE_STYLE
-argument_list|)
-expr_stmt|;
-name|setEditable
-argument_list|(
-literal|false
-argument_list|)
-expr_stmt|;
+comment|//        setContentType(CONTENT_TYPE);
+comment|//        StyleSheet sheet = ((HTMLEditorKit) getEditorKit()).getStyleSheet();
+comment|//        sheet.addRule(BODY_STYLE);
+comment|//        sheet.addRule(ADDITION_STYLE);
+comment|//        sheet.addRule(REMOVAL_STYLE);
+comment|//        sheet.addRule(CHANGE_STYLE);
+comment|//        setEditable(false);
 block|}
 block|}
 end_class

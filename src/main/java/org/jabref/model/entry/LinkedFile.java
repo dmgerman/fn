@@ -70,6 +70,18 @@ name|nio
 operator|.
 name|file
 operator|.
+name|Files
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|file
+operator|.
 name|InvalidPathException
 import|;
 end_import
@@ -186,7 +198,7 @@ name|model
 operator|.
 name|metadata
 operator|.
-name|FileDirectoryPreferences
+name|FilePreferences
 import|;
 end_import
 
@@ -844,7 +856,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|findIn (BibDatabaseContext databaseContext, FileDirectoryPreferences fileDirectoryPreferences)
+DECL|method|findIn (BibDatabaseContext databaseContext, FilePreferences filePreferences)
 specifier|public
 name|Optional
 argument_list|<
@@ -855,8 +867,8 @@ parameter_list|(
 name|BibDatabaseContext
 name|databaseContext
 parameter_list|,
-name|FileDirectoryPreferences
-name|fileDirectoryPreferences
+name|FilePreferences
+name|filePreferences
 parameter_list|)
 block|{
 name|List
@@ -869,7 +881,7 @@ name|databaseContext
 operator|.
 name|getFileDirectoriesAsPaths
 argument_list|(
-name|fileDirectoryPreferences
+name|filePreferences
 argument_list|)
 decl_stmt|;
 return|return
@@ -879,6 +891,7 @@ name|dirs
 argument_list|)
 return|;
 block|}
+comment|/**      * Tries to find the file in the given directories and returns the path to the file (if found). Returns an empty      * optional if the file cannot be found.      */
 DECL|method|findIn (List<Path> directories)
 specifier|public
 name|Optional
@@ -896,6 +909,25 @@ parameter_list|)
 block|{
 try|try
 block|{
+if|if
+condition|(
+name|link
+operator|.
+name|get
+argument_list|()
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+comment|// We do not want to match empty paths (which could be any file or none ?!)
+return|return
+name|Optional
+operator|.
+name|empty
+argument_list|()
+return|;
+block|}
 name|Path
 name|file
 init|=
@@ -922,6 +954,16 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
+if|if
+condition|(
+name|Files
+operator|.
+name|exists
+argument_list|(
+name|file
+argument_list|)
+condition|)
+block|{
 return|return
 name|Optional
 operator|.
@@ -930,6 +972,16 @@ argument_list|(
 name|file
 argument_list|)
 return|;
+block|}
+else|else
+block|{
+return|return
+name|Optional
+operator|.
+name|empty
+argument_list|()
+return|;
+block|}
 block|}
 else|else
 block|{

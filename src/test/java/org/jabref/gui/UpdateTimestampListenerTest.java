@@ -144,7 +144,6 @@ end_import
 
 begin_class
 DECL|class|UpdateTimestampListenerTest
-specifier|public
 class|class
 name|UpdateTimestampListenerTest
 block|{
@@ -171,7 +170,6 @@ decl_stmt|;
 annotation|@
 name|BeforeEach
 DECL|method|setUp ()
-specifier|public
 name|void
 name|setUp
 parameter_list|()
@@ -230,7 +228,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|updateTimestampEnabled ()
-specifier|public
 name|void
 name|updateTimestampEnabled
 parameter_list|()
@@ -369,7 +366,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|updateTimestampDisabled ()
-specifier|public
 name|void
 name|updateTimestampDisabled
 parameter_list|()

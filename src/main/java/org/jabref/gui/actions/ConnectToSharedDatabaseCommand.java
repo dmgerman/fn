@@ -34,7 +34,7 @@ name|gui
 operator|.
 name|shared
 operator|.
-name|ConnectToSharedDatabaseDialog
+name|SharedDatabaseLoginDialogView
 import|;
 end_import
 
@@ -79,21 +79,14 @@ name|void
 name|execute
 parameter_list|()
 block|{
-name|ConnectToSharedDatabaseDialog
-name|connectToSharedDatabaseDialog
-init|=
 operator|new
-name|ConnectToSharedDatabaseDialog
+name|SharedDatabaseLoginDialogView
 argument_list|(
 name|jabRefFrame
 argument_list|)
-decl_stmt|;
-name|connectToSharedDatabaseDialog
 operator|.
-name|setVisible
-argument_list|(
-literal|true
-argument_list|)
+name|showAndWait
+argument_list|()
 expr_stmt|;
 block|}
 block|}

@@ -140,7 +140,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
 operator|.
 name|assertEquals
 import|;
@@ -148,7 +152,6 @@ end_import
 
 begin_class
 DECL|class|RecursiveTreeItemTest
-specifier|public
 class|class
 name|RecursiveTreeItemTest
 block|{
@@ -192,7 +195,6 @@ decl_stmt|;
 annotation|@
 name|BeforeEach
 DECL|method|setUp ()
-specifier|public
 name|void
 name|setUp
 parameter_list|()
@@ -249,7 +251,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|addsAllChildrenNodes ()
-specifier|public
 name|void
 name|addsAllChildrenNodes
 parameter_list|()
@@ -291,7 +292,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|addsAllChildrenOfChildNode ()
-specifier|public
 name|void
 name|addsAllChildrenOfChildNode
 parameter_list|()
@@ -349,7 +349,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|respectsFilter ()
-specifier|public
 name|void
 name|respectsFilter
 parameter_list|()

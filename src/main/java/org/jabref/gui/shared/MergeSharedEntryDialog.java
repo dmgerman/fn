@@ -140,6 +140,16 @@ end_import
 
 begin_import
 import|import
+name|javafx
+operator|.
+name|scene
+operator|.
+name|Scene
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|jabref
@@ -147,6 +157,20 @@ operator|.
 name|gui
 operator|.
 name|JabRefFrame
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|customjfx
+operator|.
+name|CustomJFXPanel
 import|;
 end_import
 
@@ -571,10 +595,16 @@ name|mergeDialog
 operator|.
 name|add
 argument_list|(
-name|mergeEntries
+name|CustomJFXPanel
 operator|.
-name|getMergeEntryPanel
-argument_list|()
+name|wrap
+argument_list|(
+operator|new
+name|Scene
+argument_list|(
+name|mergeEntries
+argument_list|)
+argument_list|)
 argument_list|,
 name|BorderLayout
 operator|.

@@ -464,6 +464,9 @@ literal|null
 return|;
 block|}
 name|ObjectBinding
+argument_list|<
+name|String
+argument_list|>
 index|[]
 name|dependencies
 init|=
@@ -611,9 +614,11 @@ expr_stmt|;
 block|}
 if|if
 condition|(
+operator|(
 name|result
 operator|!=
 literal|null
+operator|)
 operator|&&
 operator|!
 name|bibtexFields

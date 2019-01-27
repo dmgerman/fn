@@ -87,7 +87,7 @@ name|Pattern
 operator|.
 name|compile
 argument_list|(
-literal|"(\r?\n|\r)"
+literal|"\\R"
 argument_list|)
 decl_stmt|;
 annotation|@

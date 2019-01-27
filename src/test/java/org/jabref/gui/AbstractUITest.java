@@ -90,20 +90,6 @@ begin_import
 import|import
 name|org
 operator|.
-name|jabref
-operator|.
-name|testutils
-operator|.
-name|category
-operator|.
-name|GUITest
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
 name|assertj
 operator|.
 name|swing
@@ -206,21 +192,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
-import|;
-end_import
-
-begin_import
-import|import
-name|org
+name|jupiter
 operator|.
-name|junit
+name|api
 operator|.
-name|experimental
-operator|.
-name|categories
-operator|.
-name|Category
+name|Tag
 import|;
 end_import
 
@@ -240,13 +216,27 @@ name|application
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
+operator|.
+name|assertEquals
+import|;
+end_import
+
 begin_class
 annotation|@
-name|Category
+name|Tag
 argument_list|(
-name|GUITest
-operator|.
-name|class
+literal|"GUITest"
 argument_list|)
 DECL|class|AbstractUITest
 specifier|public
@@ -340,7 +330,7 @@ name|waitForIdle
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Returns the absolute Path of the given relative Path      * The backlashes are replaced with forwardslashes b/c assertJ can't type the former one on windows      * @param relativePath the relative path to the resource database      */
+comment|/**      * Returns the absolute Path of the given relative Path The backlashes are replaced with forwardslashes b/c assertJ      * can't type the former one on windows      *      * @param relativePath the relative path to the resource database      */
 DECL|method|getAbsolutePath (String relativePath)
 specifier|protected
 name|String
@@ -349,6 +339,8 @@ parameter_list|(
 name|String
 name|relativePath
 parameter_list|)
+throws|throws
+name|URISyntaxException
 block|{
 specifier|final
 name|URL
@@ -367,8 +359,6 @@ argument_list|(
 name|relativePath
 argument_list|)
 decl_stmt|;
-try|try
-block|{
 return|return
 name|Paths
 operator|.
@@ -392,22 +382,6 @@ literal|"\\"
 argument_list|,
 literal|"/"
 argument_list|)
-return|;
-block|}
-catch|catch
-parameter_list|(
-name|URISyntaxException
-name|e
-parameter_list|)
-block|{
-name|e
-operator|.
-name|printStackTrace
-argument_list|()
-expr_stmt|;
-block|}
-return|return
-literal|null
 return|;
 block|}
 comment|/**      * opens a database and gives JabRef a second to open it before proceeding      */
@@ -687,8 +661,6 @@ index|[
 name|columnIndex
 index|]
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|value

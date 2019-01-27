@@ -160,9 +160,8 @@ specifier|public
 class|class
 name|InternalBibtexFields
 block|{
-comment|/**      * These are the fields JabRef always displays as default      * {@link org.jabref.preferences.JabRefPreferences#setLanguageDependentDefaultValues()}      *      * A user can change them. The change is currently stored in the preferences only and not explicitly exposed as separate preferences object      */
 DECL|field|DEFAULT_GENERAL_FIELDS
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|List
@@ -186,14 +185,6 @@ argument_list|,
 name|FieldName
 operator|.
 name|FILE
-argument_list|,
-name|FieldName
-operator|.
-name|DOI
-argument_list|,
-name|FieldName
-operator|.
-name|URL
 argument_list|,
 name|FieldName
 operator|.
@@ -659,7 +650,7 @@ name|getFieldName
 argument_list|()
 argument_list|)
 decl_stmt|;
-DECL|field|SINGLE_LINE_FIELDS
+DECL|field|MULTILINE_FIELDS
 specifier|private
 specifier|static
 specifier|final
@@ -667,7 +658,7 @@ name|Set
 argument_list|<
 name|String
 argument_list|>
-name|SINGLE_LINE_FIELDS
+name|MULTILINE_FIELDS
 init|=
 name|Collections
 operator|.
@@ -683,19 +674,15 @@ name|asList
 argument_list|(
 name|FieldName
 operator|.
-name|TITLE
+name|NOTE
 argument_list|,
 name|FieldName
 operator|.
-name|AUTHOR
+name|ABSTRACT
 argument_list|,
 name|FieldName
 operator|.
-name|YEAR
-argument_list|,
-name|FieldName
-operator|.
-name|INSTITUTION
+name|COMMENT
 argument_list|)
 argument_list|)
 argument_list|)
@@ -3082,6 +3069,41 @@ return|return
 name|YES_NO_FIELDS
 return|;
 block|}
+comment|/**      * These are the fields JabRef always displays as default {@link org.jabref.preferences.JabRefPreferences#setLanguageDependentDefaultValues()}      *      * A user can change them. The change is currently stored in the preferences only and not explicitly exposed as      * separate preferences object      */
+DECL|method|getDefaultGeneralFields ()
+specifier|public
+specifier|static
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|getDefaultGeneralFields
+parameter_list|()
+block|{
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|defaultGeneralFields
+init|=
+operator|new
+name|ArrayList
+argument_list|<>
+argument_list|(
+name|DEFAULT_GENERAL_FIELDS
+argument_list|)
+decl_stmt|;
+name|defaultGeneralFields
+operator|.
+name|addAll
+argument_list|(
+name|SPECIAL_FIELDS
+argument_list|)
+expr_stmt|;
+return|return
+name|defaultGeneralFields
+return|;
+block|}
 comment|/**      * Insert a field into the internal list      */
 DECL|method|add (BibtexSingleField field)
 specifier|private
@@ -3117,7 +3139,8 @@ name|fieldName
 parameter_list|)
 block|{
 return|return
-name|SINGLE_LINE_FIELDS
+operator|!
+name|MULTILINE_FIELDS
 operator|.
 name|contains
 argument_list|(

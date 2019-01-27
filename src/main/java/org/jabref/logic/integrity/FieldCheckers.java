@@ -110,7 +110,7 @@ name|model
 operator|.
 name|metadata
 operator|.
-name|FileDirectoryPreferences
+name|FilePreferences
 import|;
 end_import
 
@@ -158,15 +158,15 @@ name|ValueChecker
 argument_list|>
 name|fieldChecker
 decl_stmt|;
-DECL|method|FieldCheckers (BibDatabaseContext databaseContext, FileDirectoryPreferences fileDirectoryPreferences, JournalAbbreviationRepository abbreviationRepository, boolean enforceLegalKey)
+DECL|method|FieldCheckers (BibDatabaseContext databaseContext, FilePreferences filePreferences, JournalAbbreviationRepository abbreviationRepository, boolean enforceLegalKey)
 specifier|public
 name|FieldCheckers
 parameter_list|(
 name|BibDatabaseContext
 name|databaseContext
 parameter_list|,
-name|FileDirectoryPreferences
-name|fileDirectoryPreferences
+name|FilePreferences
+name|filePreferences
 parameter_list|,
 name|JournalAbbreviationRepository
 name|abbreviationRepository
@@ -181,7 +181,7 @@ name|getAllMap
 argument_list|(
 name|databaseContext
 argument_list|,
-name|fileDirectoryPreferences
+name|filePreferences
 argument_list|,
 name|abbreviationRepository
 argument_list|,
@@ -189,7 +189,7 @@ name|enforceLegalKey
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|getAllMap (BibDatabaseContext databaseContext, FileDirectoryPreferences fileDirectoryPreferences, JournalAbbreviationRepository abbreviationRepository, boolean enforceLegalKey)
+DECL|method|getAllMap (BibDatabaseContext databaseContext, FilePreferences filePreferences, JournalAbbreviationRepository abbreviationRepository, boolean enforceLegalKey)
 specifier|private
 specifier|static
 name|Multimap
@@ -203,8 +203,8 @@ parameter_list|(
 name|BibDatabaseContext
 name|databaseContext
 parameter_list|,
-name|FileDirectoryPreferences
-name|fileDirectoryPreferences
+name|FilePreferences
+name|filePreferences
 parameter_list|,
 name|JournalAbbreviationRepository
 name|abbreviationRepository
@@ -387,7 +387,7 @@ name|FileChecker
 argument_list|(
 name|databaseContext
 argument_list|,
-name|fileDirectoryPreferences
+name|filePreferences
 argument_list|)
 argument_list|)
 expr_stmt|;

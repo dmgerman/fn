@@ -347,6 +347,9 @@ argument_list|(
 name|ImportDataTest
 operator|.
 name|NOT_EXISTING_PDF
+operator|.
+name|toFile
+argument_list|()
 argument_list|,
 literal|false
 argument_list|)
@@ -384,6 +387,9 @@ argument_list|(
 name|ImportDataTest
 operator|.
 name|FILE_NOT_IN_DATABASE
+operator|.
+name|toFile
+argument_list|()
 argument_list|,
 literal|false
 argument_list|)
@@ -427,7 +433,10 @@ name|ImportDataTest
 operator|.
 name|FILE_NOT_IN_DATABASE
 operator|.
-name|getName
+name|getFileName
+argument_list|()
+operator|.
+name|toString
 argument_list|()
 argument_list|)
 argument_list|,

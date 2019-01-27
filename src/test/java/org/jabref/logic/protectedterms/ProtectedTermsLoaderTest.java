@@ -36,9 +36,9 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
+name|net
 operator|.
-name|IOException
+name|URISyntaxException
 import|;
 end_import
 
@@ -46,9 +46,11 @@ begin_import
 import|import
 name|java
 operator|.
-name|net
+name|nio
 operator|.
-name|URISyntaxException
+name|file
+operator|.
+name|Path
 import|;
 end_import
 
@@ -124,7 +126,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Before
+name|jupiter
+operator|.
+name|api
+operator|.
+name|BeforeEach
 import|;
 end_import
 
@@ -134,15 +140,9 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Rule
-import|;
-end_import
-
-begin_import
-import|import
-name|org
+name|jupiter
 operator|.
-name|junit
+name|api
 operator|.
 name|Test
 import|;
@@ -154,9 +154,25 @@ name|org
 operator|.
 name|junit
 operator|.
-name|rules
+name|jupiter
 operator|.
-name|TemporaryFolder
+name|api
+operator|.
+name|extension
+operator|.
+name|ExtendWith
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junitpioneer
+operator|.
+name|jupiter
+operator|.
+name|TempDirectory
 import|;
 end_import
 
@@ -166,7 +182,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
 operator|.
 name|assertEquals
 import|;
@@ -178,7 +198,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
 operator|.
 name|assertFalse
 import|;
@@ -190,15 +214,25 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
 operator|.
 name|assertTrue
 import|;
 end_import
 
 begin_class
+annotation|@
+name|ExtendWith
+argument_list|(
+name|TempDirectory
+operator|.
+name|class
+argument_list|)
 DECL|class|ProtectedTermsLoaderTest
-specifier|public
 class|class
 name|ProtectedTermsLoaderTest
 block|{
@@ -208,20 +242,8 @@ name|ProtectedTermsLoader
 name|loader
 decl_stmt|;
 annotation|@
-name|Rule
-DECL|field|temporaryFolder
-specifier|public
-name|TemporaryFolder
-name|temporaryFolder
-init|=
-operator|new
-name|TemporaryFolder
-argument_list|()
-decl_stmt|;
-annotation|@
-name|Before
+name|BeforeEach
 DECL|method|setUp ()
-specifier|public
 name|void
 name|setUp
 parameter_list|()
@@ -260,7 +282,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testGetProtectedTerms ()
-specifier|public
 name|void
 name|testGetProtectedTerms
 parameter_list|()
@@ -364,7 +385,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testAddProtectedTermsListFromFile ()
-specifier|public
 name|void
 name|testAddProtectedTermsListFromFile
 parameter_list|()
@@ -450,7 +470,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testReadProtectedTermsListFromFileReadsDescription ()
-specifier|public
 name|void
 name|testReadProtectedTermsListFromFileReadsDescription
 parameter_list|()
@@ -508,7 +527,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testReadProtectedTermsListFromFileDisabledWorks ()
-specifier|public
 name|void
 name|testReadProtectedTermsListFromFileDisabledWorks
 parameter_list|()
@@ -564,7 +582,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testReadProtectedTermsListFromFileEnabledWorks ()
-specifier|public
 name|void
 name|testReadProtectedTermsListFromFileEnabledWorks
 parameter_list|()
@@ -620,7 +637,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testReadProtectedTermsListFromFileIsNotInternalList ()
-specifier|public
 name|void
 name|testReadProtectedTermsListFromFileIsNotInternalList
 parameter_list|()
@@ -676,7 +692,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testReadProtectedTermsListFromFileNoDescriptionGivesDefaultDescription ()
-specifier|public
 name|void
 name|testReadProtectedTermsListFromFileNoDescriptionGivesDefaultDescription
 parameter_list|()
@@ -739,7 +754,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testNewListsAreIncluded ()
-specifier|public
 name|void
 name|testNewListsAreIncluded
 parameter_list|()
@@ -798,7 +812,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testNewListsAreEnabled ()
-specifier|public
 name|void
 name|testNewListsAreEnabled
 parameter_list|()
@@ -858,7 +871,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testInitalizedAllInternalDisabled ()
-specifier|public
 name|void
 name|testInitalizedAllInternalDisabled
 parameter_list|()
@@ -918,7 +930,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testUnknownExternalFileWillNotLoad ()
-specifier|public
 name|void
 name|testUnknownExternalFileWillNotLoad
 parameter_list|()
@@ -979,7 +990,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testAllDisabledNoWords ()
-specifier|public
 name|void
 name|testAllDisabledNoWords
 parameter_list|()
@@ -1032,7 +1042,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testDoNotLoadTheSameInternalListTwice ()
-specifier|public
 name|void
 name|testDoNotLoadTheSameInternalListTwice
 parameter_list|()
@@ -1090,13 +1099,17 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testAddNewTermListAddsList ()
-specifier|public
+DECL|method|testAddNewTermListAddsList (@empDirectory.TempDir Path tempDir)
 name|void
 name|testAddNewTermListAddsList
-parameter_list|()
-throws|throws
-name|IOException
+parameter_list|(
+annotation|@
+name|TempDirectory
+operator|.
+name|TempDir
+name|Path
+name|tempDir
+parameter_list|)
 block|{
 name|ProtectedTermsLoader
 name|localLoader
@@ -1135,9 +1148,9 @@ name|addNewProtectedTermsList
 argument_list|(
 literal|"My new list"
 argument_list|,
-name|temporaryFolder
+name|tempDir
 operator|.
-name|newFile
+name|toFile
 argument_list|()
 operator|.
 name|getAbsolutePath
@@ -1168,13 +1181,17 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testAddNewTermListNewListInList ()
-specifier|public
+DECL|method|testAddNewTermListNewListInList (@empDirectory.TempDir Path tempDir)
 name|void
 name|testAddNewTermListNewListInList
-parameter_list|()
-throws|throws
-name|IOException
+parameter_list|(
+annotation|@
+name|TempDirectory
+operator|.
+name|TempDir
+name|Path
+name|tempDir
+parameter_list|)
 block|{
 name|ProtectedTermsLoader
 name|localLoader
@@ -1216,9 +1233,9 @@ name|addNewProtectedTermsList
 argument_list|(
 literal|"My new list"
 argument_list|,
-name|temporaryFolder
+name|tempDir
 operator|.
-name|newFile
+name|toFile
 argument_list|()
 operator|.
 name|getAbsolutePath
@@ -1241,13 +1258,17 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testRemoveTermList ()
-specifier|public
+DECL|method|testRemoveTermList (@empDirectory.TempDir Path tempDir)
 name|void
 name|testRemoveTermList
-parameter_list|()
-throws|throws
-name|IOException
+parameter_list|(
+annotation|@
+name|TempDirectory
+operator|.
+name|TempDir
+name|Path
+name|tempDir
+parameter_list|)
 block|{
 name|ProtectedTermsLoader
 name|localLoader
@@ -1289,9 +1310,9 @@ name|addNewProtectedTermsList
 argument_list|(
 literal|"My new list"
 argument_list|,
-name|temporaryFolder
+name|tempDir
 operator|.
-name|newFile
+name|toFile
 argument_list|()
 operator|.
 name|getAbsolutePath
@@ -1311,13 +1332,17 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testRemoveTermListReduceTheCount ()
-specifier|public
+DECL|method|testRemoveTermListReduceTheCount (@empDirectory.TempDir Path tempDir)
 name|void
 name|testRemoveTermListReduceTheCount
-parameter_list|()
-throws|throws
-name|IOException
+parameter_list|(
+annotation|@
+name|TempDirectory
+operator|.
+name|TempDir
+name|Path
+name|tempDir
+parameter_list|)
 block|{
 name|ProtectedTermsLoader
 name|localLoader
@@ -1359,9 +1384,9 @@ name|addNewProtectedTermsList
 argument_list|(
 literal|"My new list"
 argument_list|,
-name|temporaryFolder
+name|tempDir
 operator|.
-name|newFile
+name|toFile
 argument_list|()
 operator|.
 name|getAbsolutePath
@@ -1397,13 +1422,17 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testAddNewTermListSetsCorrectDescription ()
-specifier|public
+DECL|method|testAddNewTermListSetsCorrectDescription (@empDirectory.TempDir Path tempDir)
 name|void
 name|testAddNewTermListSetsCorrectDescription
-parameter_list|()
-throws|throws
-name|IOException
+parameter_list|(
+annotation|@
+name|TempDirectory
+operator|.
+name|TempDir
+name|Path
+name|tempDir
+parameter_list|)
 block|{
 name|ProtectedTermsLoader
 name|localLoader
@@ -1445,9 +1474,9 @@ name|addNewProtectedTermsList
 argument_list|(
 literal|"My new list"
 argument_list|,
-name|temporaryFolder
+name|tempDir
 operator|.
-name|newFile
+name|toFile
 argument_list|()
 operator|.
 name|getAbsolutePath

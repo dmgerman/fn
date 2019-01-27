@@ -15,7 +15,9 @@ DECL|class|AbstractViewModel
 specifier|public
 class|class
 name|AbstractViewModel
-block|{  }
+block|{
+comment|//empty
+block|}
 end_class
 
 end_unit

@@ -1522,7 +1522,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Tests if checkLegalKey replaces Non-ASCII chars.      * There are quite a few chars that should be replaced. Perhaps there is a better method than the current.      *      * @see BibtexKeyGenerator#checkLegalKey(String)      */
+comment|/**      * Tests if checkLegalKey replaces Non-ASCII chars. There are quite a few chars that should be replaced. Perhaps      * there is a better method than the current.      *      * @see BibtexKeyGenerator#checkLegalKey(String)      */
 annotation|@
 name|Test
 DECL|method|testCheckLegalKey ()
@@ -4597,7 +4597,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**     * Tests [camel]     */
+comment|/**      * Tests [camel]      */
 annotation|@
 name|Test
 DECL|method|camel ()

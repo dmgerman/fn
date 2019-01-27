@@ -777,7 +777,7 @@ name|Globals
 operator|.
 name|prefs
 operator|.
-name|getFileDirectoryPreferences
+name|getFilePreferences
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -937,7 +937,7 @@ name|Globals
 operator|.
 name|prefs
 operator|.
-name|getFileDirectoryPreferences
+name|getFilePreferences
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -945,7 +945,7 @@ name|newFile
 operator|=
 name|FileUtil
 operator|.
-name|shortenFileName
+name|relativize
 argument_list|(
 name|newFile
 argument_list|,
@@ -2368,7 +2368,7 @@ name|Globals
 operator|.
 name|prefs
 operator|.
-name|getFileDirectoryPreferences
+name|getFilePreferences
 argument_list|()
 argument_list|)
 decl_stmt|;

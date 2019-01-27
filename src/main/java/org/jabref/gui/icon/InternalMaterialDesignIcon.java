@@ -415,10 +415,7 @@ init|=
 operator|new
 name|Text
 argument_list|(
-name|icon
-operator|.
 name|unicode
-argument_list|()
 argument_list|)
 decl_stmt|;
 name|text

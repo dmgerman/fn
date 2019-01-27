@@ -449,6 +449,21 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+if|if
+condition|(
+name|watcher
+operator|==
+literal|null
+condition|)
+block|{
+throw|throw
+operator|new
+name|IllegalStateException
+argument_list|(
+literal|"You need to start the file monitor before watching files"
+argument_list|)
+throw|;
+block|}
 comment|// We can't watch files directly, so monitor their parent directory for updates
 name|Path
 name|directory

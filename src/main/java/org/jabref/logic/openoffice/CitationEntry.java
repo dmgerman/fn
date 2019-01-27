@@ -18,6 +18,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Objects
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Optional
 import|;
 end_import
@@ -41,6 +51,7 @@ name|refMarkName
 decl_stmt|;
 DECL|field|pageInfo
 specifier|private
+specifier|final
 name|Optional
 argument_list|<
 name|String
@@ -53,16 +64,6 @@ specifier|final
 name|String
 name|context
 decl_stmt|;
-DECL|field|origPageInfo
-specifier|private
-specifier|final
-name|Optional
-argument_list|<
-name|String
-argument_list|>
-name|origPageInfo
-decl_stmt|;
-comment|// Only used for testing...
 DECL|method|CitationEntry (String refMarkName, String context)
 specifier|public
 name|CitationEntry
@@ -87,7 +88,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|// Only used for testing...
 DECL|method|CitationEntry (String refMarkName, String context, String pageInfo)
 specifier|public
 name|CitationEntry
@@ -152,12 +152,6 @@ name|pageInfo
 operator|=
 name|pageInfo
 expr_stmt|;
-name|this
-operator|.
-name|origPageInfo
-operator|=
-name|pageInfo
-expr_stmt|;
 block|}
 DECL|method|getPageInfo ()
 specifier|public
@@ -181,63 +175,6 @@ block|{
 return|return
 name|refMarkName
 return|;
-block|}
-DECL|method|pageInfoChanged ()
-specifier|public
-name|boolean
-name|pageInfoChanged
-parameter_list|()
-block|{
-if|if
-condition|(
-name|pageInfo
-operator|.
-name|isPresent
-argument_list|()
-operator|^
-name|origPageInfo
-operator|.
-name|isPresent
-argument_list|()
-condition|)
-block|{
-return|return
-literal|true
-return|;
-block|}
-if|if
-condition|(
-name|pageInfo
-operator|.
-name|isPresent
-argument_list|()
-condition|)
-block|{
-comment|// This means that origPageInfo.isPresent is also true here
-return|return
-name|pageInfo
-operator|.
-name|get
-argument_list|()
-operator|.
-name|compareTo
-argument_list|(
-name|origPageInfo
-operator|.
-name|get
-argument_list|()
-argument_list|)
-operator|!=
-literal|0
-return|;
-block|}
-else|else
-block|{
-comment|// So origPageInfo.isPresent is false here
-return|return
-literal|false
-return|;
-block|}
 block|}
 annotation|@
 name|Override
@@ -301,12 +238,14 @@ operator|)
 name|o
 decl_stmt|;
 return|return
-name|this
-operator|.
-name|refMarkName
+name|Objects
 operator|.
 name|equals
 argument_list|(
+name|this
+operator|.
+name|refMarkName
+argument_list|,
 name|other
 operator|.
 name|refMarkName
@@ -326,12 +265,12 @@ name|hashCode
 parameter_list|()
 block|{
 return|return
-name|this
+name|Objects
 operator|.
+name|hash
+argument_list|(
 name|refMarkName
-operator|.
-name|hashCode
-argument_list|()
+argument_list|)
 return|;
 block|}
 DECL|method|getContext ()
@@ -343,25 +282,6 @@ block|{
 return|return
 name|context
 return|;
-block|}
-DECL|method|setPageInfo (String trim)
-specifier|public
-name|void
-name|setPageInfo
-parameter_list|(
-name|String
-name|trim
-parameter_list|)
-block|{
-name|pageInfo
-operator|=
-name|Optional
-operator|.
-name|ofNullable
-argument_list|(
-name|trim
-argument_list|)
-expr_stmt|;
 block|}
 block|}
 end_class

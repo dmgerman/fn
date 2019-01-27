@@ -876,7 +876,8 @@ name|result
 argument_list|,
 name|CharMatcher
 operator|.
-name|WHITESPACE
+name|whitespace
+argument_list|()
 operator|.
 name|trimTrailingFrom
 argument_list|(
@@ -974,7 +975,8 @@ name|line
 init|=
 name|CharMatcher
 operator|.
-name|WHITESPACE
+name|whitespace
+argument_list|()
 operator|.
 name|trimTrailingFrom
 argument_list|(

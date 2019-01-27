@@ -60,6 +60,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|List
 import|;
 end_import
@@ -1137,18 +1147,25 @@ name|node
 argument_list|)
 condition|)
 block|{
+comment|//we need to copy the contents of the observable list here, because when removeFromEntries is called,
+comment|//probably the focus changes to the first entry in the all entries group and thus getSelectedEntries() no longer contains our entry we want to move
 name|List
 argument_list|<
 name|BibEntry
 argument_list|>
 name|entries
 init|=
+operator|new
+name|ArrayList
+argument_list|<>
+argument_list|(
 name|Globals
 operator|.
 name|stateManager
 operator|.
 name|getSelectedEntries
 argument_list|()
+argument_list|)
 decl_stmt|;
 if|if
 condition|(
@@ -1191,12 +1208,7 @@ name|node
 operator|.
 name|removeEntriesFromGroup
 argument_list|(
-name|Globals
-operator|.
-name|stateManager
-operator|.
-name|getSelectedEntries
-argument_list|()
+name|entries
 argument_list|)
 expr_stmt|;
 block|}

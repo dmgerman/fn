@@ -128,6 +128,16 @@ name|javafx
 operator|.
 name|collections
 operator|.
+name|ListChangeListener
+import|;
+end_import
+
+begin_import
+import|import
+name|javafx
+operator|.
+name|collections
+operator|.
 name|ObservableList
 import|;
 end_import
@@ -260,6 +270,20 @@ name|gui
 operator|.
 name|util
 operator|.
+name|CustomLocalDragboard
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|util
+operator|.
 name|TaskExecutor
 import|;
 end_import
@@ -331,22 +355,6 @@ operator|.
 name|entry
 operator|.
 name|BibEntry
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|entry
-operator|.
-name|event
-operator|.
-name|EntryEvent
 import|;
 end_import
 
@@ -431,20 +439,6 @@ operator|.
 name|base
 operator|.
 name|Enums
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|eventbus
-operator|.
-name|Subscribe
 import|;
 end_import
 
@@ -561,7 +555,13 @@ specifier|final
 name|TaskExecutor
 name|taskExecutor
 decl_stmt|;
-DECL|method|GroupNodeViewModel (BibDatabaseContext databaseContext, StateManager stateManager, TaskExecutor taskExecutor, GroupTreeNode groupNode)
+DECL|field|localDragBoard
+specifier|private
+specifier|final
+name|CustomLocalDragboard
+name|localDragBoard
+decl_stmt|;
+DECL|method|GroupNodeViewModel (BibDatabaseContext databaseContext, StateManager stateManager, TaskExecutor taskExecutor, GroupTreeNode groupNode, CustomLocalDragboard localDragBoard)
 specifier|public
 name|GroupNodeViewModel
 parameter_list|(
@@ -576,6 +576,9 @@ name|taskExecutor
 parameter_list|,
 name|GroupTreeNode
 name|groupNode
+parameter_list|,
+name|CustomLocalDragboard
+name|localDragBoard
 parameter_list|)
 block|{
 name|this
@@ -622,16 +625,22 @@ argument_list|(
 name|groupNode
 argument_list|)
 expr_stmt|;
-name|LatexToUnicodeFormatter
-name|formatter
-init|=
+name|this
+operator|.
+name|localDragBoard
+operator|=
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|localDragBoard
+argument_list|)
+expr_stmt|;
+name|displayName
+operator|=
 operator|new
 name|LatexToUnicodeFormatter
 argument_list|()
-decl_stmt|;
-name|displayName
-operator|=
-name|formatter
 operator|.
 name|format
 argument_list|(
@@ -675,6 +684,8 @@ name|automaticGroup
 operator|.
 name|createSubgroups
 argument_list|(
+name|this
+operator|.
 name|databaseContext
 operator|.
 name|getDatabase
@@ -819,9 +830,14 @@ operator|.
 name|getDatabase
 argument_list|()
 operator|.
-name|registerListener
+name|getEntries
+argument_list|()
+operator|.
+name|addListener
 argument_list|(
 name|this
+operator|::
+name|onDatabaseChanged
 argument_list|)
 expr_stmt|;
 name|ObservableList
@@ -871,7 +887,7 @@ name|matched
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|GroupNodeViewModel (BibDatabaseContext databaseContext, StateManager stateManager, TaskExecutor taskExecutor, AbstractGroup group)
+DECL|method|GroupNodeViewModel (BibDatabaseContext databaseContext, StateManager stateManager, TaskExecutor taskExecutor, AbstractGroup group, CustomLocalDragboard localDragboard)
 specifier|public
 name|GroupNodeViewModel
 parameter_list|(
@@ -886,6 +902,9 @@ name|taskExecutor
 parameter_list|,
 name|AbstractGroup
 name|group
+parameter_list|,
+name|CustomLocalDragboard
+name|localDragboard
 parameter_list|)
 block|{
 name|this
@@ -901,10 +920,12 @@ name|GroupTreeNode
 argument_list|(
 name|group
 argument_list|)
+argument_list|,
+name|localDragboard
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|getAllEntriesGroup (BibDatabaseContext newDatabase, StateManager stateManager, TaskExecutor taskExecutor)
+DECL|method|getAllEntriesGroup (BibDatabaseContext newDatabase, StateManager stateManager, TaskExecutor taskExecutor, CustomLocalDragboard localDragBoard)
 specifier|static
 name|GroupNodeViewModel
 name|getAllEntriesGroup
@@ -917,6 +938,9 @@ name|stateManager
 parameter_list|,
 name|TaskExecutor
 name|taskExecutor
+parameter_list|,
+name|CustomLocalDragboard
+name|localDragBoard
 parameter_list|)
 block|{
 return|return
@@ -933,6 +957,8 @@ name|DefaultGroupsFactory
 operator|.
 name|getAllEntriesGroup
 argument_list|()
+argument_list|,
+name|localDragBoard
 argument_list|)
 return|;
 block|}
@@ -956,6 +982,8 @@ argument_list|,
 name|taskExecutor
 argument_list|,
 name|child
+argument_list|,
+name|localDragBoard
 argument_list|)
 return|;
 block|}
@@ -1383,21 +1411,21 @@ return|return
 name|groupNode
 return|;
 block|}
-comment|/**     * Gets invoked if an entry in the current database changes.     */
-annotation|@
-name|Subscribe
-DECL|method|listen (@uppressWarningsR) EntryEvent entryEvent)
-specifier|public
+comment|/**      * Gets invoked if an entry in the current database changes.      */
+DECL|method|onDatabaseChanged (ListChangeListener.Change<? extends BibEntry> change)
+specifier|private
 name|void
-name|listen
+name|onDatabaseChanged
 parameter_list|(
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unused"
-argument_list|)
-name|EntryEvent
-name|entryEvent
+name|ListChangeListener
+operator|.
+name|Change
+argument_list|<
+name|?
+extends|extends
+name|BibEntry
+argument_list|>
+name|change
 parameter_list|)
 block|{
 name|calculateNumberOfMatches
@@ -1598,13 +1626,13 @@ decl_stmt|;
 name|boolean
 name|canDropEntries
 init|=
-name|dragboard
+name|localDragBoard
 operator|.
-name|hasContent
+name|hasType
 argument_list|(
 name|DragAndDropDataFormats
 operator|.
-name|ENTRIES
+name|BIBENTRY_LIST_CLASS
 argument_list|)
 operator|&&
 operator|(

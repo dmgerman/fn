@@ -16,7 +16,7 @@ specifier|public
 class|class
 name|TreeNodeTestData
 block|{
-comment|/**      * Gets the marked node in the following tree:      * Root      * A      * A (= parent)      * B (<-- this)      */
+comment|/**      * Gets the marked node in the following tree: Root A A (= parent) B (<-- this)      */
 DECL|method|getNodeInSimpleTree (TreeNodeMock root)
 specifier|public
 specifier|static
@@ -84,7 +84,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**      * Gets the marked node in the following tree:      * Root      * A      * A      * A (= grand parent)      * B      * B (= parent)      * C (<-- this)      * D (= child)      * C      * C      * C      * B      * B      * A      */
+comment|/**      * Gets the marked node in the following tree: Root A A A (= grand parent) B B (= parent) C (<-- this) D (= child) C      * C C B B A      */
 DECL|method|getNodeInComplexTree (TreeNodeMock root)
 specifier|public
 specifier|static
@@ -247,7 +247,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**      * Gets the marked in the following tree:      * Root      * A      * A      * A (<- this)      * A      */
+comment|/**      * Gets the marked in the following tree: Root A A A (<- this) A      */
 DECL|method|getNodeAsChild (TreeNodeMock root)
 specifier|public
 specifier|static

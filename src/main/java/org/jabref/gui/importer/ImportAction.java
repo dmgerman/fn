@@ -100,6 +100,16 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|SwingUtilities
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|jabref
@@ -352,6 +362,7 @@ name|importError
 decl_stmt|;
 DECL|field|taskExecutor
 specifier|private
+specifier|final
 name|TaskExecutor
 name|taskExecutor
 init|=
@@ -682,6 +693,13 @@ operator|.
 name|getCurrentBasePanel
 argument_list|()
 decl_stmt|;
+name|SwingUtilities
+operator|.
+name|invokeLater
+argument_list|(
+parameter_list|()
+lambda|->
+block|{
 name|ImportInspectionDialog
 name|diag
 init|=
@@ -731,6 +749,9 @@ name|diag
 operator|.
 name|toFront
 argument_list|()
+expr_stmt|;
+block|}
+argument_list|)
 expr_stmt|;
 block|}
 block|}

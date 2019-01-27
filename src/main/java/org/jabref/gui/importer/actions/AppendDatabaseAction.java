@@ -58,6 +58,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|swing
@@ -132,7 +142,9 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|MergeDialog
+name|actions
+operator|.
+name|BaseAction
 import|;
 end_import
 
@@ -144,9 +156,9 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|actions
+name|importer
 operator|.
-name|BaseAction
+name|AppendDatabaseDialog
 import|;
 end_import
 
@@ -189,20 +201,6 @@ operator|.
 name|undo
 operator|.
 name|UndoableInsertString
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|util
-operator|.
-name|DefaultTaskExecutor
 import|;
 end_import
 
@@ -441,6 +439,20 @@ operator|.
 name|metadata
 operator|.
 name|MetaData
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|util
+operator|.
+name|OptionalUtil
 import|;
 end_import
 
@@ -1032,37 +1044,32 @@ name|clear
 argument_list|()
 expr_stmt|;
 specifier|final
-name|MergeDialog
+name|AppendDatabaseDialog
 name|dialog
 init|=
 operator|new
-name|MergeDialog
-argument_list|(
-name|frame
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Append library"
-argument_list|)
-argument_list|,
-literal|true
-argument_list|)
+name|AppendDatabaseDialog
+argument_list|()
 decl_stmt|;
+name|Optional
+argument_list|<
+name|Boolean
+argument_list|>
+name|response
+init|=
 name|dialog
 operator|.
-name|setVisible
-argument_list|(
-literal|true
-argument_list|)
-expr_stmt|;
+name|showAndWait
+argument_list|()
+decl_stmt|;
 if|if
 condition|(
-name|dialog
+name|OptionalUtil
 operator|.
-name|isOkPressed
-argument_list|()
+name|isPresentAndTrue
+argument_list|(
+name|response
+argument_list|)
 condition|)
 block|{
 name|FileDialogConfiguration
@@ -1104,18 +1111,11 @@ name|Path
 argument_list|>
 name|chosen
 init|=
-name|DefaultTaskExecutor
-operator|.
-name|runInJavaFXThread
-argument_list|(
-parameter_list|()
-lambda|->
 name|dialogService
 operator|.
 name|showFileOpenDialogAndGetMultipleFiles
 argument_list|(
 name|fileDialogConfiguration
-argument_list|)
 argument_list|)
 decl_stmt|;
 if|if
@@ -1135,8 +1135,7 @@ argument_list|(
 name|chosen
 argument_list|)
 expr_stmt|;
-comment|// Run the actual open in a thread to prevent the program
-comment|// locking until the file is loaded.
+comment|// Run the actual open in a thread to prevent the program locking until the file is loaded.
 name|JabRefExecutorService
 operator|.
 name|INSTANCE

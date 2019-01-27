@@ -42,9 +42,7 @@ name|tomakehurst
 operator|.
 name|wiremock
 operator|.
-name|junit
-operator|.
-name|WireMockRule
+name|WireMockServer
 import|;
 end_import
 
@@ -54,7 +52,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Rule
+name|jupiter
+operator|.
+name|api
+operator|.
+name|AfterEach
 import|;
 end_import
 
@@ -63,6 +65,24 @@ import|import
 name|org
 operator|.
 name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
+operator|.
+name|BeforeEach
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
 operator|.
 name|Test
 import|;
@@ -182,7 +202,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
 operator|.
 name|assertFalse
 import|;
@@ -194,7 +218,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
 operator|.
 name|assertTrue
 import|;
@@ -202,25 +230,47 @@ end_import
 
 begin_class
 DECL|class|MimeTypeDetectorTest
-specifier|public
 class|class
 name|MimeTypeDetectorTest
 block|{
-DECL|field|wireMockRule
-annotation|@
-name|Rule
-specifier|public
-name|WireMockRule
-name|wireMockRule
+DECL|field|wireMockServer
+specifier|private
+name|WireMockServer
+name|wireMockServer
 init|=
 operator|new
-name|WireMockRule
+name|WireMockServer
 argument_list|()
 decl_stmt|;
 annotation|@
+name|BeforeEach
+DECL|method|before ()
+name|void
+name|before
+parameter_list|()
+block|{
+name|wireMockServer
+operator|.
+name|start
+argument_list|()
+expr_stmt|;
+block|}
+annotation|@
+name|AfterEach
+DECL|method|after ()
+name|void
+name|after
+parameter_list|()
+block|{
+name|wireMockServer
+operator|.
+name|stop
+argument_list|()
+expr_stmt|;
+block|}
+annotation|@
 name|Test
 DECL|method|handlePermanentRedirections ()
-specifier|public
 name|void
 name|handlePermanentRedirections
 parameter_list|()
@@ -279,7 +329,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|beFalseForUnreachableUrl ()
-specifier|public
 name|void
 name|beFalseForUnreachableUrl
 parameter_list|()
@@ -309,7 +358,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|beTrueForPdfMimeType ()
-specifier|public
 name|void
 name|beTrueForPdfMimeType
 parameter_list|()
@@ -339,7 +387,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|beTrueForLocalPdfUri ()
-specifier|public
 name|void
 name|beTrueForLocalPdfUri
 parameter_list|()
@@ -384,7 +431,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|beTrueForPDFMimeTypeVariations ()
-specifier|public
 name|void
 name|beTrueForPDFMimeTypeVariations
 parameter_list|()
@@ -438,7 +484,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|beAbleToUseHeadRequest ()
-specifier|public
 name|void
 name|beAbleToUseHeadRequest
 parameter_list|()
@@ -492,7 +537,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|beAbleToUseGetRequest ()
-specifier|public
 name|void
 name|beAbleToUseGetRequest
 parameter_list|()

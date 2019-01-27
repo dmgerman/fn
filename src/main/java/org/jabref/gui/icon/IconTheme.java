@@ -462,7 +462,12 @@ argument_list|,
 literal|"/images/external/"
 argument_list|)
 decl_stmt|;
-static|static
+DECL|method|loadFonts ()
+specifier|public
+specifier|static
+name|void
+name|loadFonts
+parameter_list|()
 block|{
 try|try
 init|(
@@ -2461,7 +2466,7 @@ name|TOGGLE_ABBREVIATION
 argument_list|(
 name|MaterialDesignIcon
 operator|.
-name|TEXT_SHADOW
+name|FORMAT_ALIGN_CENTER
 argument_list|)
 operator|,
 DECL|enumConstant|NEW_FILE
@@ -2710,7 +2715,7 @@ argument_list|()
 operator|.
 name|add
 argument_list|(
-literal|"flatButton"
+literal|"icon-button"
 argument_list|)
 expr_stmt|;
 return|return
@@ -2748,7 +2753,7 @@ argument_list|()
 operator|.
 name|add
 argument_list|(
-literal|"flatButton"
+literal|"icon-button"
 argument_list|)
 expr_stmt|;
 return|return

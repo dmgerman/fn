@@ -576,6 +576,7 @@ name|globalCiteKeyPattern
 decl_stmt|;
 DECL|field|fileMonitor
 specifier|private
+specifier|final
 name|FileUpdateMonitor
 name|fileMonitor
 decl_stmt|;
@@ -834,32 +835,6 @@ expr_stmt|;
 name|applyMetaData
 argument_list|()
 expr_stmt|;
-name|dbmsProcessor
-operator|.
-name|notifyClients
-argument_list|()
-expr_stmt|;
-block|}
-block|}
-annotation|@
-name|Subscribe
-DECL|method|listen (EntryEvent event)
-specifier|public
-name|void
-name|listen
-parameter_list|(
-name|EntryEvent
-name|event
-parameter_list|)
-block|{
-if|if
-condition|(
-name|isEventSourceAccepted
-argument_list|(
-name|event
-argument_list|)
-condition|)
-block|{
 name|dbmsProcessor
 operator|.
 name|notifyClients
@@ -1977,6 +1952,8 @@ operator|=
 name|metaData
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|registerListener (Object listener)
 specifier|public
 name|void

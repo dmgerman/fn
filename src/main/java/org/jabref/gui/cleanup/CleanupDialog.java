@@ -14,16 +14,6 @@ end_package
 
 begin_import
 import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|JScrollPane
-import|;
-end_import
-
-begin_import
-import|import
 name|javafx
 operator|.
 name|scene
@@ -45,20 +35,6 @@ operator|.
 name|util
 operator|.
 name|BaseDialog
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|util
-operator|.
-name|ControlHelper
 import|;
 end_import
 
@@ -104,6 +80,20 @@ name|BibDatabaseContext
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|metadata
+operator|.
+name|FilePreferences
+import|;
+end_import
+
 begin_class
 DECL|class|CleanupDialog
 specifier|public
@@ -115,7 +105,7 @@ argument_list|<
 name|CleanupPreset
 argument_list|>
 block|{
-DECL|method|CleanupDialog (BibDatabaseContext databaseContext, CleanupPreset initialPreset)
+DECL|method|CleanupDialog (BibDatabaseContext databaseContext, CleanupPreset initialPreset, FilePreferences filePreferences)
 specifier|public
 name|CleanupDialog
 parameter_list|(
@@ -124,6 +114,9 @@ name|databaseContext
 parameter_list|,
 name|CleanupPreset
 name|initialPreset
+parameter_list|,
+name|FilePreferences
+name|filePreferences
 parameter_list|)
 block|{
 name|setTitle
@@ -172,26 +165,18 @@ argument_list|(
 name|databaseContext
 argument_list|,
 name|initialPreset
+argument_list|,
+name|filePreferences
 argument_list|)
 decl_stmt|;
-name|presetPanel
-operator|.
-name|getScrollPane
+name|getDialogPane
 argument_list|()
 operator|.
-name|setVisible
+name|setContent
 argument_list|(
-literal|true
+name|presetPanel
 argument_list|)
 expr_stmt|;
-name|JScrollPane
-name|scrollPane
-init|=
-name|presetPanel
-operator|.
-name|getScrollPane
-argument_list|()
-decl_stmt|;
 name|setResultConverter
 argument_list|(
 name|button
@@ -220,16 +205,6 @@ literal|null
 return|;
 block|}
 block|}
-argument_list|)
-expr_stmt|;
-name|ControlHelper
-operator|.
-name|setSwingContent
-argument_list|(
-name|getDialogPane
-argument_list|()
-argument_list|,
-name|scrollPane
 argument_list|)
 expr_stmt|;
 block|}

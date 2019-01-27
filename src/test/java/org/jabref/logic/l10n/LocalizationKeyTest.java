@@ -18,6 +18,10 @@ name|org
 operator|.
 name|junit
 operator|.
+name|jupiter
+operator|.
+name|api
+operator|.
 name|Test
 import|;
 end_import
@@ -40,14 +44,12 @@ end_import
 
 begin_class
 DECL|class|LocalizationKeyTest
-specifier|public
 class|class
 name|LocalizationKeyTest
 block|{
 annotation|@
 name|Test
 DECL|method|testConversionToPropertiesKey ()
-specifier|public
 name|void
 name|testConversionToPropertiesKey
 parameter_list|()
@@ -95,7 +97,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|underscoreIsPreserved ()
-specifier|public
 name|void
 name|underscoreIsPreserved
 parameter_list|()

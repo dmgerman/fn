@@ -208,7 +208,7 @@ name|model
 operator|.
 name|metadata
 operator|.
-name|FileDirectoryPreferences
+name|FilePreferences
 import|;
 end_import
 
@@ -256,7 +256,10 @@ decl_stmt|;
 comment|/**      * The file where this database was last saved to.      */
 DECL|field|file
 specifier|private
-name|File
+name|Optional
+argument_list|<
+name|Path
+argument_list|>
 name|file
 decl_stmt|;
 DECL|field|dbmsSynchronizer
@@ -401,6 +404,15 @@ name|DatabaseLocation
 operator|.
 name|LOCAL
 expr_stmt|;
+name|this
+operator|.
+name|file
+operator|=
+name|Optional
+operator|.
+name|empty
+argument_list|()
+expr_stmt|;
 block|}
 DECL|method|BibDatabaseContext (BibDatabase database, MetaData metaData)
 specifier|public
@@ -425,7 +437,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|BibDatabaseContext (BibDatabase database, MetaData metaData, File file, Defaults defaults, DatabaseLocation location)
+DECL|method|BibDatabaseContext (BibDatabase database, MetaData metaData, Path file, Defaults defaults, DatabaseLocation location)
 specifier|public
 name|BibDatabaseContext
 parameter_list|(
@@ -435,7 +447,7 @@ parameter_list|,
 name|MetaData
 name|metaData
 parameter_list|,
-name|File
+name|Path
 name|file
 parameter_list|,
 name|Defaults
@@ -463,7 +475,11 @@ argument_list|)
 expr_stmt|;
 name|this
 operator|.
-name|setDatabaseFile
+name|file
+operator|=
+name|Optional
+operator|.
+name|ofNullable
 argument_list|(
 name|file
 argument_list|)
@@ -482,7 +498,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-DECL|method|BibDatabaseContext (BibDatabase database, MetaData metaData, File file, Defaults defaults)
+DECL|method|BibDatabaseContext (BibDatabase database, MetaData metaData, Path file, Defaults defaults)
 specifier|public
 name|BibDatabaseContext
 parameter_list|(
@@ -492,7 +508,7 @@ parameter_list|,
 name|MetaData
 name|metaData
 parameter_list|,
-name|File
+name|Path
 name|file
 parameter_list|,
 name|Defaults
@@ -515,7 +531,7 @@ name|LOCAL
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|BibDatabaseContext (BibDatabase database, MetaData metaData, File file)
+DECL|method|BibDatabaseContext (BibDatabase database, MetaData metaData, Path file)
 specifier|public
 name|BibDatabaseContext
 parameter_list|(
@@ -525,7 +541,7 @@ parameter_list|,
 name|MetaData
 name|metaData
 parameter_list|,
-name|File
+name|Path
 name|file
 parameter_list|)
 block|{
@@ -662,14 +678,19 @@ name|getDatabaseFile
 parameter_list|()
 block|{
 return|return
-name|Optional
-operator|.
-name|ofNullable
-argument_list|(
 name|file
+operator|.
+name|map
+argument_list|(
+name|Path
+operator|::
+name|toFile
 argument_list|)
 return|;
 block|}
+comment|/**      *      * @param Set the database file      * @deprecated use {@link #setDatabaseFile(Path)}      */
+annotation|@
+name|Deprecated
 DECL|method|setDatabaseFile (File file)
 specifier|public
 name|void
@@ -683,19 +704,6 @@ name|this
 operator|.
 name|file
 operator|=
-name|file
-expr_stmt|;
-block|}
-DECL|method|getDatabasePath ()
-specifier|public
-name|Optional
-argument_list|<
-name|Path
-argument_list|>
-name|getDatabasePath
-parameter_list|()
-block|{
-return|return
 name|Optional
 operator|.
 name|ofNullable
@@ -709,6 +717,40 @@ name|File
 operator|::
 name|toPath
 argument_list|)
+expr_stmt|;
+block|}
+DECL|method|setDatabaseFile (Path file)
+specifier|public
+name|void
+name|setDatabaseFile
+parameter_list|(
+name|Path
+name|file
+parameter_list|)
+block|{
+name|this
+operator|.
+name|file
+operator|=
+name|Optional
+operator|.
+name|ofNullable
+argument_list|(
+name|file
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|getDatabasePath ()
+specifier|public
+name|Optional
+argument_list|<
+name|Path
+argument_list|>
+name|getDatabasePath
+parameter_list|()
+block|{
+return|return
+name|file
 return|;
 block|}
 DECL|method|clearDatabaseFile ()
@@ -721,7 +763,10 @@ name|this
 operator|.
 name|file
 operator|=
-literal|null
+name|Optional
+operator|.
+name|empty
+argument_list|()
 expr_stmt|;
 block|}
 DECL|method|getDatabase ()
@@ -780,7 +825,7 @@ operator|.
 name|BIBLATEX
 return|;
 block|}
-DECL|method|getFileDirectoriesAsPaths (FileDirectoryPreferences preferences)
+DECL|method|getFileDirectoriesAsPaths (FilePreferences preferences)
 specifier|public
 name|List
 argument_list|<
@@ -788,7 +833,7 @@ name|Path
 argument_list|>
 name|getFileDirectoriesAsPaths
 parameter_list|(
-name|FileDirectoryPreferences
+name|FilePreferences
 name|preferences
 parameter_list|)
 block|{
@@ -843,10 +888,10 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**      * @deprecated use {@link #getFileDirectoriesAsPaths(FileDirectoryPreferences)} instead      */
+comment|/**      * @deprecated use {@link #getFileDirectoriesAsPaths(FilePreferences)} instead      */
 annotation|@
 name|Deprecated
-DECL|method|getFileDirectories (FileDirectoryPreferences preferences)
+DECL|method|getFileDirectories (FilePreferences preferences)
 specifier|public
 name|List
 argument_list|<
@@ -854,7 +899,7 @@ name|String
 argument_list|>
 name|getFileDirectories
 parameter_list|(
-name|FileDirectoryPreferences
+name|FilePreferences
 name|preferences
 parameter_list|)
 block|{
@@ -869,8 +914,8 @@ name|preferences
 argument_list|)
 return|;
 block|}
-comment|/**      * Returns the first existing file directory from  {@link #getFileDirectories(FileDirectoryPreferences)}      *      * @param preferences The FileDirectoryPreferences      * @return Optional of Path      */
-DECL|method|getFirstExistingFileDir (FileDirectoryPreferences preferences)
+comment|/**      * Returns the first existing file directory from  {@link #getFileDirectories(FilePreferences)}      *      * @param preferences The FilePreferences      * @return Optional of Path      */
+DECL|method|getFirstExistingFileDir (FilePreferences preferences)
 specifier|public
 name|Optional
 argument_list|<
@@ -878,7 +923,7 @@ name|Path
 argument_list|>
 name|getFirstExistingFileDir
 parameter_list|(
-name|FileDirectoryPreferences
+name|FilePreferences
 name|preferences
 parameter_list|)
 block|{
@@ -903,7 +948,7 @@ argument_list|()
 return|;
 block|}
 comment|/**      * Look up the directories set up for the given field type for this database. If no directory is set up, return that      * defined in global preferences. There can be up to three directory definitions for these files: the database's      * metadata can specify a general directory and/or a user-specific directory or the preferences can specify one.<p>      * The settings are prioritized in the following order and the first defined setting is used:      *<ol>      *<li>metdata</li>      *<li>user-specific directory</li>      *<li>preferences directory</li>      *<li>BIB file directory</li>      *</ol>      *      * @param fieldName   The field type      * @param preferences The fileDirectory preferences      * @return The default directory for this field type.      */
-DECL|method|getFileDirectories (String fieldName, FileDirectoryPreferences preferences)
+DECL|method|getFileDirectories (String fieldName, FilePreferences preferences)
 specifier|public
 name|List
 argument_list|<
@@ -914,7 +959,7 @@ parameter_list|(
 name|String
 name|fieldName
 parameter_list|,
-name|FileDirectoryPreferences
+name|FilePreferences
 name|preferences
 parameter_list|)
 block|{
@@ -930,12 +975,6 @@ argument_list|<>
 argument_list|()
 decl_stmt|;
 comment|// 1. metadata user-specific directory
-name|Optional
-argument_list|<
-name|String
-argument_list|>
-name|userFileDirectory
-init|=
 name|metaData
 operator|.
 name|getUserFileDirectory
@@ -945,15 +984,11 @@ operator|.
 name|getUser
 argument_list|()
 argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|userFileDirectory
 operator|.
-name|isPresent
-argument_list|()
-condition|)
-block|{
+name|ifPresent
+argument_list|(
+name|userFileDirectory
+lambda|->
 name|fileDirs
 operator|.
 name|add
@@ -961,33 +996,20 @@ argument_list|(
 name|getFileDirectoryPath
 argument_list|(
 name|userFileDirectory
-operator|.
-name|get
-argument_list|()
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
 comment|// 2. metadata general directory
-name|Optional
-argument_list|<
-name|String
-argument_list|>
-name|metaDataDirectory
-init|=
 name|metaData
 operator|.
 name|getDefaultFileDirectory
 argument_list|()
-decl_stmt|;
-if|if
-condition|(
-name|metaDataDirectory
 operator|.
-name|isPresent
-argument_list|()
-condition|)
-block|{
+name|ifPresent
+argument_list|(
+name|metaDataDirectory
+lambda|->
 name|fileDirs
 operator|.
 name|add
@@ -995,13 +1017,10 @@ argument_list|(
 name|getFileDirectoryPath
 argument_list|(
 name|metaDataDirectory
-operator|.
-name|get
-argument_list|()
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
 comment|// 3. preferences directory
 name|preferences
 operator|.

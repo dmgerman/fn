@@ -504,13 +504,6 @@ argument_list|)
 expr_stmt|;
 name|this
 operator|.
-name|setResizable
-argument_list|(
-literal|true
-argument_list|)
-expr_stmt|;
-name|this
-operator|.
 name|getDialogPane
 argument_list|()
 operator|.

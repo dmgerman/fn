@@ -418,6 +418,34 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+DECL|method|isPresentAndTrue (Optional<Boolean> value)
+specifier|public
+specifier|static
+parameter_list|<
+name|T
+parameter_list|>
+name|Boolean
+name|isPresentAndTrue
+parameter_list|(
+name|Optional
+argument_list|<
+name|Boolean
+argument_list|>
+name|value
+parameter_list|)
+block|{
+return|return
+name|value
+operator|.
+name|isPresent
+argument_list|()
+operator|&&
+name|value
+operator|.
+name|get
+argument_list|()
+return|;
+block|}
 DECL|method|combine (Optional<T> valueOne, Optional<S> valueTwo, BiFunction<T, S, R> combine)
 specifier|public
 specifier|static

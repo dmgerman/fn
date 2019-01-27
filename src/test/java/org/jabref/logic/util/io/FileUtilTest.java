@@ -20,16 +20,6 @@ name|java
 operator|.
 name|io
 operator|.
-name|File
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
 name|IOException
 import|;
 end_import
@@ -196,7 +186,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Before
+name|jupiter
+operator|.
+name|api
+operator|.
+name|BeforeEach
 import|;
 end_import
 
@@ -206,15 +200,9 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Rule
-import|;
-end_import
-
-begin_import
-import|import
-name|org
+name|jupiter
 operator|.
-name|junit
+name|api
 operator|.
 name|Test
 import|;
@@ -226,9 +214,25 @@ name|org
 operator|.
 name|junit
 operator|.
-name|rules
+name|jupiter
 operator|.
-name|TemporaryFolder
+name|api
+operator|.
+name|extension
+operator|.
+name|ExtendWith
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junitpioneer
+operator|.
+name|jupiter
+operator|.
+name|TempDirectory
 import|;
 end_import
 
@@ -248,7 +252,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
 operator|.
 name|assertEquals
 import|;
@@ -260,7 +268,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
 operator|.
 name|assertFalse
 import|;
@@ -272,7 +284,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
 operator|.
 name|assertNotEquals
 import|;
@@ -284,7 +300,27 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
+operator|.
+name|assertThrows
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
 operator|.
 name|assertTrue
 import|;
@@ -303,8 +339,14 @@ import|;
 end_import
 
 begin_class
+annotation|@
+name|ExtendWith
+argument_list|(
+name|TempDirectory
+operator|.
+name|class
+argument_list|)
 DECL|class|FileUtilTest
-specifier|public
 class|class
 name|FileUtilTest
 block|{
@@ -321,26 +363,6 @@ argument_list|(
 literal|"nonExistingTestPath"
 argument_list|)
 decl_stmt|;
-annotation|@
-name|Rule
-DECL|field|temporaryFolder
-specifier|public
-name|TemporaryFolder
-name|temporaryFolder
-init|=
-operator|new
-name|TemporaryFolder
-argument_list|()
-decl_stmt|;
-DECL|field|otherTemporaryFolder
-specifier|public
-name|TemporaryFolder
-name|otherTemporaryFolder
-init|=
-operator|new
-name|TemporaryFolder
-argument_list|()
-decl_stmt|;
 DECL|field|existingTestFile
 specifier|private
 name|Path
@@ -356,34 +378,119 @@ specifier|private
 name|LayoutFormatterPreferences
 name|layoutFormatterPreferences
 decl_stmt|;
+DECL|field|rootDir
+specifier|private
+name|Path
+name|rootDir
+decl_stmt|;
 annotation|@
-name|Before
-DECL|method|setUpViewModel ()
-specifier|public
+name|BeforeEach
+DECL|method|setUpViewModel (@empDirectory.TempDir Path temporaryFolder)
 name|void
 name|setUpViewModel
-parameter_list|()
+parameter_list|(
+annotation|@
+name|TempDirectory
+operator|.
+name|TempDir
+name|Path
+name|temporaryFolder
+parameter_list|)
 throws|throws
 name|IOException
 block|{
+name|rootDir
+operator|=
+name|temporaryFolder
+expr_stmt|;
+name|Path
+name|subDir
+init|=
+name|rootDir
+operator|.
+name|resolve
+argument_list|(
+literal|"1"
+argument_list|)
+decl_stmt|;
+name|Files
+operator|.
+name|createDirectory
+argument_list|(
+name|subDir
+argument_list|)
+expr_stmt|;
 name|existingTestFile
 operator|=
-name|createTemporaryTestFile
+name|subDir
+operator|.
+name|resolve
 argument_list|(
 literal|"existingTestFile.txt"
 argument_list|)
 expr_stmt|;
+name|Files
+operator|.
+name|createFile
+argument_list|(
+name|existingTestFile
+argument_list|)
+expr_stmt|;
+name|Files
+operator|.
+name|write
+argument_list|(
+name|existingTestFile
+argument_list|,
+literal|"existingTestFile.txt"
+operator|.
+name|getBytes
+argument_list|(
+name|StandardCharsets
+operator|.
+name|UTF_8
+argument_list|)
+argument_list|,
+name|StandardOpenOption
+operator|.
+name|APPEND
+argument_list|)
+expr_stmt|;
 name|otherExistingTestFile
 operator|=
-name|createTemporaryTestFile
+name|subDir
+operator|.
+name|resolve
 argument_list|(
 literal|"otherExistingTestFile.txt"
 argument_list|)
 expr_stmt|;
-name|otherTemporaryFolder
+name|Files
 operator|.
-name|create
-argument_list|()
+name|createFile
+argument_list|(
+name|otherExistingTestFile
+argument_list|)
+expr_stmt|;
+name|Files
+operator|.
+name|write
+argument_list|(
+name|otherExistingTestFile
+argument_list|,
+literal|"otherExistingTestFile.txt"
+operator|.
+name|getBytes
+argument_list|(
+name|StandardCharsets
+operator|.
+name|UTF_8
+argument_list|)
+argument_list|,
+name|StandardOpenOption
+operator|.
+name|APPEND
+argument_list|)
 expr_stmt|;
 name|layoutFormatterPreferences
 operator|=
@@ -402,7 +509,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|extensionBakAddedCorrectly ()
-specifier|public
 name|void
 name|extensionBakAddedCorrectly
 parameter_list|()
@@ -435,7 +541,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|extensionBakAddedCorrectlyToAFileContainedInTmpDirectory ()
-specifier|public
 name|void
 name|extensionBakAddedCorrectlyToAFileContainedInTmpDirectory
 parameter_list|()
@@ -472,7 +577,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testGetLinkedFileNameDefaultFullTitle ()
-specifier|public
 name|void
 name|testGetLinkedFileNameDefaultFullTitle
 parameter_list|()
@@ -526,7 +630,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testGetLinkedFileNameDefaultWithLowercaseTitle ()
-specifier|public
 name|void
 name|testGetLinkedFileNameDefaultWithLowercaseTitle
 parameter_list|()
@@ -580,7 +683,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testGetLinkedFileNameBibTeXKey ()
-specifier|public
 name|void
 name|testGetLinkedFileNameBibTeXKey
 parameter_list|()
@@ -634,7 +736,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testGetLinkedFileNameNoPattern ()
-specifier|public
 name|void
 name|testGetLinkedFileNameNoPattern
 parameter_list|()
@@ -687,7 +788,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testGetDefaultFileNameNoPatternNoBibTeXKey ()
-specifier|public
 name|void
 name|testGetDefaultFileNameNoPatternNoBibTeXKey
 parameter_list|()
@@ -733,7 +833,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testGetLinkedFileNameGetKeyIfEmptyField ()
-specifier|public
 name|void
 name|testGetLinkedFileNameGetKeyIfEmptyField
 parameter_list|()
@@ -778,7 +877,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testGetLinkedFileNameGetDefaultIfEmptyFieldNoKey ()
-specifier|public
 name|void
 name|testGetLinkedFileNameGetDefaultIfEmptyFieldNoKey
 parameter_list|()
@@ -816,7 +914,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testGetLinkedFileNameByYearAuthorFirstpage ()
-specifier|public
 name|void
 name|testGetLinkedFileNameByYearAuthorFirstpage
 parameter_list|()
@@ -881,7 +978,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testGetFileExtensionSimpleFile ()
-specifier|public
 name|void
 name|testGetFileExtensionSimpleFile
 parameter_list|()
@@ -910,7 +1006,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testGetFileExtensionMultipleDotsFile ()
-specifier|public
 name|void
 name|testGetFileExtensionMultipleDotsFile
 parameter_list|()
@@ -939,7 +1034,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testGetFileExtensionNoExtensionFile ()
-specifier|public
 name|void
 name|testGetFileExtensionNoExtensionFile
 parameter_list|()
@@ -966,7 +1060,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testGetFileExtensionNoExtension2File ()
-specifier|public
 name|void
 name|testGetFileExtensionNoExtension2File
 parameter_list|()
@@ -993,7 +1086,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|getFileExtensionWithSimpleString ()
-specifier|public
 name|void
 name|getFileExtensionWithSimpleString
 parameter_list|()
@@ -1017,7 +1109,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|getFileExtensionTrimsAndReturnsInLowercase ()
-specifier|public
 name|void
 name|getFileExtensionTrimsAndReturnsInLowercase
 parameter_list|()
@@ -1041,7 +1132,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|getFileExtensionWithMultipleDotsString ()
-specifier|public
 name|void
 name|getFileExtensionWithMultipleDotsString
 parameter_list|()
@@ -1065,7 +1155,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|getFileExtensionWithNoDotReturnsEmptyExtension ()
-specifier|public
 name|void
 name|getFileExtensionWithNoDotReturnsEmptyExtension
 parameter_list|()
@@ -1089,7 +1178,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|getFileExtensionWithDotAtStartReturnsEmptyExtension ()
-specifier|public
 name|void
 name|getFileExtensionWithDotAtStartReturnsEmptyExtension
 parameter_list|()
@@ -1113,7 +1201,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|getFileNameWithSimpleString ()
-specifier|public
 name|void
 name|getFileNameWithSimpleString
 parameter_list|()
@@ -1134,7 +1221,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|getFileNameWithMultipleDotsString ()
-specifier|public
 name|void
 name|getFileNameWithMultipleDotsString
 parameter_list|()
@@ -1155,7 +1241,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|uniquePathSubstrings ()
-specifier|public
 name|void
 name|uniquePathSubstrings
 parameter_list|()
@@ -1306,7 +1391,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testCopyFileFromEmptySourcePathToEmptyDestinationPathWithOverrideExistFile ()
-specifier|public
 name|void
 name|testCopyFileFromEmptySourcePathToEmptyDestinationPathWithOverrideExistFile
 parameter_list|()
@@ -1329,7 +1413,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testCopyFileFromEmptySourcePathToEmptyDestinationPathWithoutOverrideExistFile ()
-specifier|public
 name|void
 name|testCopyFileFromEmptySourcePathToEmptyDestinationPathWithoutOverrideExistFile
 parameter_list|()
@@ -1352,7 +1435,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testCopyFileFromEmptySourcePathToExistDestinationPathWithOverrideExistFile ()
-specifier|public
 name|void
 name|testCopyFileFromEmptySourcePathToExistDestinationPathWithOverrideExistFile
 parameter_list|()
@@ -1375,7 +1457,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testCopyFileFromEmptySourcePathToExistDestinationPathWithoutOverrideExistFile ()
-specifier|public
 name|void
 name|testCopyFileFromEmptySourcePathToExistDestinationPathWithoutOverrideExistFile
 parameter_list|()
@@ -1398,7 +1479,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testCopyFileFromExistSourcePathToExistDestinationPathWithOverrideExistFile ()
-specifier|public
 name|void
 name|testCopyFileFromExistSourcePathToExistDestinationPathWithOverrideExistFile
 parameter_list|()
@@ -1421,7 +1501,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testCopyFileFromExistSourcePathToExistDestinationPathWithoutOverrideExistFile ()
-specifier|public
 name|void
 name|testCopyFileFromExistSourcePathToExistDestinationPathWithoutOverrideExistFile
 parameter_list|()
@@ -1444,7 +1523,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testCopyFileFromExistSourcePathToOtherExistDestinationPathWithOverrideExistFile ()
-specifier|public
 name|void
 name|testCopyFileFromExistSourcePathToOtherExistDestinationPathWithOverrideExistFile
 parameter_list|()
@@ -1467,7 +1545,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testCopyFileFromExistSourcePathToOtherExistDestinationPathWithoutOverrideExistFile ()
-specifier|public
 name|void
 name|testCopyFileFromExistSourcePathToOtherExistDestinationPathWithoutOverrideExistFile
 parameter_list|()
@@ -1490,7 +1567,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testCopyFileSuccessfulWithOverrideExistFile ()
-specifier|public
 name|void
 name|testCopyFileSuccessfulWithOverrideExistFile
 parameter_list|()
@@ -1498,18 +1574,39 @@ throws|throws
 name|IOException
 block|{
 name|Path
+name|subDir
+init|=
+name|rootDir
+operator|.
+name|resolve
+argument_list|(
+literal|"2"
+argument_list|)
+decl_stmt|;
+name|Files
+operator|.
+name|createDirectory
+argument_list|(
+name|subDir
+argument_list|)
+expr_stmt|;
+name|Path
 name|temp
 init|=
-name|otherTemporaryFolder
+name|subDir
 operator|.
-name|newFile
+name|resolve
 argument_list|(
 literal|"existingTestFile.txt"
 argument_list|)
-operator|.
-name|toPath
-argument_list|()
 decl_stmt|;
+name|Files
+operator|.
+name|createFile
+argument_list|(
+name|temp
+argument_list|)
+expr_stmt|;
 name|FileUtil
 operator|.
 name|copyFile
@@ -1550,7 +1647,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testCopyFileSuccessfulWithoutOverrideExistFile ()
-specifier|public
 name|void
 name|testCopyFileSuccessfulWithoutOverrideExistFile
 parameter_list|()
@@ -1558,18 +1654,39 @@ throws|throws
 name|IOException
 block|{
 name|Path
+name|subDir
+init|=
+name|rootDir
+operator|.
+name|resolve
+argument_list|(
+literal|"2"
+argument_list|)
+decl_stmt|;
+name|Files
+operator|.
+name|createDirectory
+argument_list|(
+name|subDir
+argument_list|)
+expr_stmt|;
+name|Path
 name|temp
 init|=
-name|otherTemporaryFolder
+name|subDir
 operator|.
-name|newFile
+name|resolve
 argument_list|(
 literal|"existingTestFile.txt"
 argument_list|)
-operator|.
-name|toPath
-argument_list|()
 decl_stmt|;
+name|Files
+operator|.
+name|createFile
+argument_list|(
+name|temp
+argument_list|)
+expr_stmt|;
 name|FileUtil
 operator|.
 name|copyFile
@@ -1609,19 +1726,19 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-argument_list|(
-name|expected
-operator|=
-name|NullPointerException
-operator|.
-name|class
-argument_list|)
 DECL|method|testRenameFileWithFromFileIsNullAndToFileIsNull ()
-specifier|public
 name|void
 name|testRenameFileWithFromFileIsNullAndToFileIsNull
 parameter_list|()
 block|{
+name|assertThrows
+argument_list|(
+name|NullPointerException
+operator|.
+name|class
+argument_list|,
+parameter_list|()
+lambda|->
 name|FileUtil
 operator|.
 name|renameFile
@@ -1630,23 +1747,24 @@ literal|null
 argument_list|,
 literal|null
 argument_list|)
+argument_list|)
 expr_stmt|;
 block|}
 annotation|@
 name|Test
-argument_list|(
-name|expected
-operator|=
-name|NullPointerException
-operator|.
-name|class
-argument_list|)
 DECL|method|testRenameFileWithFromFileExistAndToFileIsNull ()
-specifier|public
 name|void
 name|testRenameFileWithFromFileExistAndToFileIsNull
 parameter_list|()
 block|{
+name|assertThrows
+argument_list|(
+name|NullPointerException
+operator|.
+name|class
+argument_list|,
+parameter_list|()
+lambda|->
 name|FileUtil
 operator|.
 name|renameFile
@@ -1654,24 +1772,25 @@ argument_list|(
 name|existingTestFile
 argument_list|,
 literal|null
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
 annotation|@
 name|Test
-argument_list|(
-name|expected
-operator|=
-name|NullPointerException
-operator|.
-name|class
-argument_list|)
 DECL|method|testRenameFileWithFromFileIsNullAndToFileExist ()
-specifier|public
 name|void
 name|testRenameFileWithFromFileIsNullAndToFileExist
 parameter_list|()
 block|{
+name|assertThrows
+argument_list|(
+name|NullPointerException
+operator|.
+name|class
+argument_list|,
+parameter_list|()
+lambda|->
 name|FileUtil
 operator|.
 name|renameFile
@@ -1679,13 +1798,13 @@ argument_list|(
 literal|null
 argument_list|,
 name|existingTestFile
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
 annotation|@
 name|Test
 DECL|method|testRenameFileWithFromFileNotExistAndToFileNotExist ()
-specifier|public
 name|void
 name|testRenameFileWithFromFileNotExistAndToFileNotExist
 parameter_list|()
@@ -1706,7 +1825,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testRenameFileWithFromFileNotExistAndToFileExist ()
-specifier|public
 name|void
 name|testRenameFileWithFromFileNotExistAndToFileExist
 parameter_list|()
@@ -1727,7 +1845,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testRenameFileWithFromFileExistAndToFileNotExist ()
-specifier|public
 name|void
 name|testRenameFileWithFromFileExistAndToFileNotExist
 parameter_list|()
@@ -1748,7 +1865,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testRenameFileWithFromFileExistAndToFileExist ()
-specifier|public
 name|void
 name|testRenameFileWithFromFileExistAndToFileExist
 parameter_list|()
@@ -1769,7 +1885,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testRenameFileWithFromFileExistAndOtherToFileExist ()
-specifier|public
 name|void
 name|testRenameFileWithFromFileExistAndOtherToFileExist
 parameter_list|()
@@ -1789,12 +1904,20 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testRenameFileSuccessful ()
-specifier|public
+DECL|method|testRenameFileSuccessful (@empDirectory.TempDir Path otherTemporaryFolder)
 name|void
 name|testRenameFileSuccessful
-parameter_list|()
+parameter_list|(
+annotation|@
+name|TempDirectory
+operator|.
+name|TempDir
+name|Path
+name|otherTemporaryFolder
+parameter_list|)
 block|{
+comment|// Be careful. This "otherTemporaryFolder" is the same as the "temporaryFolder"
+comment|// in the @BeforeEach method.
 name|Path
 name|temp
 init|=
@@ -1803,6 +1926,11 @@ operator|.
 name|get
 argument_list|(
 name|otherTemporaryFolder
+operator|.
+name|resolve
+argument_list|(
+literal|"123"
+argument_list|)
 operator|.
 name|toString
 argument_list|()
@@ -1840,7 +1968,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|validFilenameShouldNotAlterValidFilename ()
-specifier|public
 name|void
 name|validFilenameShouldNotAlterValidFilename
 parameter_list|()
@@ -1861,7 +1988,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|validFilenameWithoutExtension ()
-specifier|public
 name|void
 name|validFilenameWithoutExtension
 parameter_list|()
@@ -1882,7 +2008,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|validFilenameShouldBeMaximum255Chars ()
-specifier|public
 name|void
 name|validFilenameShouldBeMaximum255Chars
 parameter_list|()
@@ -1969,7 +2094,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|invalidFilenameWithoutExtension ()
-specifier|public
 name|void
 name|invalidFilenameWithoutExtension
 parameter_list|()
@@ -2052,7 +2176,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testGetLinkedDirNameDefaultFullTitle ()
-specifier|public
 name|void
 name|testGetLinkedDirNameDefaultFullTitle
 parameter_list|()
@@ -2121,56 +2244,77 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|createTemporaryTestFile (String name)
-specifier|private
-name|Path
-name|createTemporaryTestFile
-parameter_list|(
-name|String
-name|name
-parameter_list|)
+annotation|@
+name|Test
+DECL|method|testIsBibFile ()
+specifier|public
+name|void
+name|testIsBibFile
+parameter_list|()
 throws|throws
 name|IOException
 block|{
-name|File
-name|testFile
+name|Path
+name|bibFile
 init|=
-name|temporaryFolder
-operator|.
-name|newFile
-argument_list|(
-name|name
-argument_list|)
-decl_stmt|;
 name|Files
 operator|.
-name|write
+name|createFile
 argument_list|(
-name|testFile
+name|rootDir
 operator|.
-name|toPath
-argument_list|()
-argument_list|,
-name|name
-operator|.
-name|getBytes
+name|resolve
 argument_list|(
-name|StandardCharsets
-operator|.
-name|UTF_8
+literal|"test.bib"
 argument_list|)
-argument_list|,
-name|StandardOpenOption
+argument_list|)
+decl_stmt|;
+name|assertTrue
+argument_list|(
+name|FileUtil
 operator|.
-name|APPEND
+name|isBibFile
+argument_list|(
+name|bibFile
+argument_list|)
 argument_list|)
 expr_stmt|;
-return|return
-name|testFile
+block|}
+annotation|@
+name|Test
+DECL|method|testIsNotBibFile ()
+specifier|public
+name|void
+name|testIsNotBibFile
+parameter_list|()
+throws|throws
+name|IOException
+block|{
+name|Path
+name|bibFile
+init|=
+name|Files
 operator|.
-name|toPath
-argument_list|()
-return|;
+name|createFile
+argument_list|(
+name|rootDir
+operator|.
+name|resolve
+argument_list|(
+literal|"test.pdf"
+argument_list|)
+argument_list|)
+decl_stmt|;
+name|assertFalse
+argument_list|(
+name|FileUtil
+operator|.
+name|isBibFile
+argument_list|(
+name|bibFile
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 end_class

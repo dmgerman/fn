@@ -104,6 +104,20 @@ name|model
 operator|.
 name|entry
 operator|.
+name|CustomEntryType
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
 name|FieldName
 import|;
 end_import
@@ -118,7 +132,7 @@ name|model
 operator|.
 name|metadata
 operator|.
-name|FileDirectoryPreferences
+name|FilePreferences
 import|;
 end_import
 
@@ -244,7 +258,15 @@ init|=
 operator|new
 name|BibEntry
 argument_list|(
+operator|new
+name|CustomEntryType
+argument_list|(
 literal|"EntryKey"
+argument_list|,
+literal|"required"
+argument_list|,
+literal|"optional"
+argument_list|)
 argument_list|)
 decl_stmt|;
 annotation|@
@@ -331,7 +353,7 @@ name|databaseContext
 argument_list|,
 name|mock
 argument_list|(
-name|FileDirectoryPreferences
+name|FilePreferences
 operator|.
 name|class
 argument_list|)

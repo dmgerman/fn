@@ -60,16 +60,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Map
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|Objects
 import|;
 end_import
@@ -187,16 +177,14 @@ name|exporters
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|create (Map<String, TemplateExporter> customFormats, LayoutFormatterPreferences layoutPreferences, SavePreferences savePreferences, XmpPreferences xmpPreferences)
+DECL|method|create (List<TemplateExporter> customFormats, LayoutFormatterPreferences layoutPreferences, SavePreferences savePreferences, XmpPreferences xmpPreferences)
 specifier|public
 specifier|static
 name|ExporterFactory
 name|create
 parameter_list|(
-name|Map
+name|List
 argument_list|<
-name|String
-argument_list|,
 name|TemplateExporter
 argument_list|>
 name|customFormats
@@ -286,11 +274,36 @@ argument_list|(
 operator|new
 name|TemplateExporter
 argument_list|(
-literal|"DocBook 4.4"
+literal|"DocBook 5.1"
 argument_list|,
-literal|"docbook"
+literal|"docbook5"
 argument_list|,
-literal|"docbook"
+literal|"docbook5"
+argument_list|,
+literal|null
+argument_list|,
+name|StandardFileType
+operator|.
+name|XML
+argument_list|,
+name|layoutPreferences
+argument_list|,
+name|savePreferences
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|exporters
+operator|.
+name|add
+argument_list|(
+operator|new
+name|TemplateExporter
+argument_list|(
+literal|"DocBook 4"
+argument_list|,
+literal|"docbook4"
+argument_list|,
+literal|"docbook4"
 argument_list|,
 literal|null
 argument_list|,
@@ -699,9 +712,6 @@ operator|.
 name|addAll
 argument_list|(
 name|customFormats
-operator|.
-name|values
-argument_list|()
 argument_list|)
 expr_stmt|;
 return|return

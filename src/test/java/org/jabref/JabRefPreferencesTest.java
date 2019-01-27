@@ -66,7 +66,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
 operator|.
 name|assertEquals
 import|;
@@ -98,7 +102,6 @@ end_import
 
 begin_class
 DECL|class|JabRefPreferencesTest
-specifier|public
 class|class
 name|JabRefPreferencesTest
 block|{
@@ -110,7 +113,6 @@ decl_stmt|;
 annotation|@
 name|BeforeEach
 DECL|method|setUp ()
-specifier|public
 name|void
 name|setUp
 parameter_list|()
@@ -143,7 +145,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|getDefaultEncodingReturnsPreviouslyStoredEncoding ()
-specifier|public
 name|void
 name|getDefaultEncodingReturnsPreviouslyStoredEncoding
 parameter_list|()

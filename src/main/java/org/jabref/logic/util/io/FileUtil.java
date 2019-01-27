@@ -52,6 +52,18 @@ name|nio
 operator|.
 name|file
 operator|.
+name|CopyOption
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|file
+operator|.
 name|FileSystems
 import|;
 end_import
@@ -445,7 +457,7 @@ return|;
 block|}
 block|}
 comment|/**      * Returns the extension of a file or Optional.empty() if the file does not have one (no . in name).      *      * @return The extension, trimmed and in lowercase.      */
-DECL|method|getFileExtension (File file)
+DECL|method|getFileExtension (Path file)
 specifier|public
 specifier|static
 name|Optional
@@ -454,7 +466,7 @@ name|String
 argument_list|>
 name|getFileExtension
 parameter_list|(
-name|File
+name|Path
 name|file
 parameter_list|)
 block|{
@@ -463,7 +475,10 @@ name|getFileExtension
 argument_list|(
 name|file
 operator|.
-name|getName
+name|getFileName
+argument_list|()
+operator|.
+name|toString
 argument_list|()
 argument_list|)
 return|;
@@ -607,20 +622,15 @@ name|String
 name|extension
 parameter_list|)
 block|{
-name|Path
-name|fileName
-init|=
-name|path
-operator|.
-name|getFileName
-argument_list|()
-decl_stmt|;
 return|return
 name|path
 operator|.
 name|resolveSibling
 argument_list|(
-name|fileName
+name|path
+operator|.
+name|getFileName
+argument_list|()
 operator|+
 name|extension
 argument_list|)
@@ -983,7 +993,7 @@ name|LOGGER
 operator|.
 name|error
 argument_list|(
-literal|"Path to the destination file is not exists and the file shouldn't be replace."
+literal|"Path to the destination file exists but the file shouldn't be replaced."
 argument_list|)
 expr_stmt|;
 return|return
@@ -1068,7 +1078,7 @@ literal|false
 argument_list|)
 return|;
 block|}
-comment|/**      * Renames a given file      *      * @param fromFile        The source filename to rename      * @param toFile          The target fileName      * @param replaceExisting Wether to replace existing files or not      * @return True if the rename was successful, false if an exception occurred      * @deprecated Use {@link #renameFileWithException(Path, Path, boolean)} instead and handle exception properly      */
+comment|/**      * Renames a given file      *      * @param fromFile        The source filename to rename      * @param toFile          The target fileName      * @param replaceExisting Wether to replace existing files or not      * @return True if the rename was successful, false if an exception occurred      * @deprecated Use {@link Files#move(Path, Path, CopyOption...)} instead and handle exception properly      */
 annotation|@
 name|Deprecated
 DECL|method|renameFile (Path fromFile, Path toFile, boolean replaceExisting)
@@ -1120,6 +1130,9 @@ literal|false
 return|;
 block|}
 block|}
+comment|/**      * @deprecated Directly use {@link Files#move(Path, Path, CopyOption...)}      */
+annotation|@
+name|Deprecated
 DECL|method|renameFileWithException (Path fromFile, Path toFile, boolean replaceExisting)
 specifier|public
 specifier|static
@@ -1186,12 +1199,12 @@ literal|null
 return|;
 block|}
 block|}
-comment|/**      * Converts an absolute file to a relative one, if possible. Returns the parameter file itself if no shortening is      * possible.      *<p>      * This method works correctly only if dirs are sorted decent in their length i.e. /home/user/literature/important before /home/user/literature.      *      * @param file the file to be shortened      * @param dirs directories to check      */
-DECL|method|shortenFileName (Path file, List<Path> dirs)
+comment|/**      * Converts an absolute file to a relative one, if possible. Returns the parameter file itself if no shortening is      * possible.      *<p>      * This method works correctly only if directories are sorted decent in their length i.e. /home/user/literature/important before /home/user/literature.      *      * @param file the file to be shortened      * @param directories directories to check      */
+DECL|method|relativize (Path file, List<Path> directories)
 specifier|public
 specifier|static
 name|Path
-name|shortenFileName
+name|relativize
 parameter_list|(
 name|Path
 name|file
@@ -1200,7 +1213,7 @@ name|List
 argument_list|<
 name|Path
 argument_list|>
-name|dirs
+name|directories
 parameter_list|)
 block|{
 if|if
@@ -1219,9 +1232,9 @@ block|}
 for|for
 control|(
 name|Path
-name|dir
+name|directory
 range|:
-name|dirs
+name|directories
 control|)
 block|{
 if|if
@@ -1230,12 +1243,12 @@ name|file
 operator|.
 name|startsWith
 argument_list|(
-name|dir
+name|directory
 argument_list|)
 condition|)
 block|{
 return|return
-name|dir
+name|directory
 operator|.
 name|relativize
 argument_list|(
@@ -1643,6 +1656,39 @@ literal|'\\'
 argument_list|,
 literal|'/'
 argument_list|)
+return|;
+block|}
+comment|/**      * Test if the file is a bib file by simply checking the extension to be ".bib"      * @param file The file to check      * @return True if file extension is ".bib", false otherwise      */
+DECL|method|isBibFile (Path file)
+specifier|public
+specifier|static
+name|boolean
+name|isBibFile
+parameter_list|(
+name|Path
+name|file
+parameter_list|)
+block|{
+return|return
+name|getFileExtension
+argument_list|(
+name|file
+argument_list|)
+operator|.
+name|filter
+argument_list|(
+name|type
+lambda|->
+literal|"bib"
+operator|.
+name|equals
+argument_list|(
+name|type
+argument_list|)
+argument_list|)
+operator|.
+name|isPresent
+argument_list|()
 return|;
 block|}
 block|}

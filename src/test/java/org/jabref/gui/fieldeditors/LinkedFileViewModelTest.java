@@ -150,7 +150,7 @@ name|model
 operator|.
 name|metadata
 operator|.
-name|FileDirectoryPreferences
+name|FilePreferences
 import|;
 end_import
 
@@ -223,12 +223,26 @@ import|;
 end_import
 
 begin_import
+import|import
+name|org
+operator|.
+name|mockito
+operator|.
+name|Answers
+import|;
+end_import
+
+begin_import
 import|import static
 name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
 operator|.
 name|assertFalse
 import|;
@@ -240,7 +254,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
 operator|.
 name|assertTrue
 import|;
@@ -314,18 +332,6 @@ name|mockito
 operator|.
 name|Mockito
 operator|.
-name|verify
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|mockito
-operator|.
-name|Mockito
-operator|.
 name|verifyZeroInteractions
 import|;
 end_import
@@ -350,9 +356,7 @@ name|TempDirectory
 operator|.
 name|class
 argument_list|)
-comment|/**  * Must be public because otherwise @TestArchitectureTests fails!  * */
 DECL|class|LinkedFileViewModelTest
-specifier|public
 class|class
 name|LinkedFileViewModelTest
 block|{
@@ -372,6 +376,10 @@ argument_list|(
 name|JabRefPreferences
 operator|.
 name|class
+argument_list|,
+name|Answers
+operator|.
+name|RETURNS_DEEP_STUBS
 argument_list|)
 decl_stmt|;
 DECL|field|linkedFile
@@ -398,19 +406,6 @@ DECL|field|dialogService
 specifier|private
 name|DialogService
 name|dialogService
-decl_stmt|;
-DECL|field|fileDirectoryPreferences
-specifier|private
-specifier|final
-name|FileDirectoryPreferences
-name|fileDirectoryPreferences
-init|=
-name|mock
-argument_list|(
-name|FileDirectoryPreferences
-operator|.
-name|class
-argument_list|)
 decl_stmt|;
 annotation|@
 name|BeforeEach
@@ -522,7 +517,7 @@ argument_list|)
 argument_list|,
 name|any
 argument_list|(
-name|FileDirectoryPreferences
+name|FilePreferences
 operator|.
 name|class
 argument_list|)
@@ -553,9 +548,7 @@ init|=
 name|viewModel
 operator|.
 name|delete
-argument_list|(
-name|fileDirectoryPreferences
-argument_list|)
+argument_list|()
 decl_stmt|;
 name|assertTrue
 argument_list|(
@@ -676,9 +669,7 @@ init|=
 name|viewModel
 operator|.
 name|delete
-argument_list|(
-name|fileDirectoryPreferences
-argument_list|)
+argument_list|()
 decl_stmt|;
 name|assertTrue
 argument_list|(
@@ -803,9 +794,7 @@ init|=
 name|viewModel
 operator|.
 name|delete
-argument_list|(
-name|fileDirectoryPreferences
-argument_list|)
+argument_list|()
 decl_stmt|;
 name|assertTrue
 argument_list|(
@@ -825,9 +814,9 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|deleteWhenDeleteChosenAndFileMissingReturnsFalse ()
+DECL|method|deleteMissingFileReturnsTrue ()
 name|void
-name|deleteWhenDeleteChosenAndFileMissingReturnsFalse
+name|deleteMissingFileReturnsTrue
 parameter_list|()
 block|{
 name|linkedFile
@@ -927,25 +916,9 @@ init|=
 name|viewModel
 operator|.
 name|delete
-argument_list|(
-name|fileDirectoryPreferences
-argument_list|)
+argument_list|()
 decl_stmt|;
-name|verify
-argument_list|(
-name|dialogService
-argument_list|)
-operator|.
-name|showErrorDialogAndWait
-argument_list|(
-name|anyString
-argument_list|()
-argument_list|,
-name|anyString
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|assertFalse
+name|assertTrue
 argument_list|(
 name|removed
 argument_list|)
@@ -1058,9 +1031,7 @@ init|=
 name|viewModel
 operator|.
 name|delete
-argument_list|(
-name|fileDirectoryPreferences
-argument_list|)
+argument_list|()
 decl_stmt|;
 name|assertFalse
 argument_list|(

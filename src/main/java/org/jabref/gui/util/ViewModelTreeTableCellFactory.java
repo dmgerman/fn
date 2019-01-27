@@ -550,6 +550,28 @@ block|}
 block|}
 return|;
 block|}
+DECL|method|install (TreeTableColumn<S, T> column)
+specifier|public
+name|void
+name|install
+parameter_list|(
+name|TreeTableColumn
+argument_list|<
+name|S
+argument_list|,
+name|T
+argument_list|>
+name|column
+parameter_list|)
+block|{
+name|column
+operator|.
+name|setCellFactory
+argument_list|(
+name|this
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_class
 

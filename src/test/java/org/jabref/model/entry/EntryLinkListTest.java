@@ -112,12 +112,12 @@ specifier|public
 class|class
 name|EntryLinkListTest
 block|{
-DECL|field|key
+DECL|field|KEY
 specifier|private
 specifier|static
 specifier|final
 name|String
-name|key
+name|KEY
 init|=
 literal|"test"
 decl_stmt|;
@@ -169,7 +169,7 @@ name|EntryLinkList
 operator|.
 name|parse
 argument_list|(
-name|key
+name|KEY
 argument_list|,
 name|database
 argument_list|)
@@ -242,7 +242,7 @@ parameter_list|()
 block|{
 name|assertEquals
 argument_list|(
-name|key
+name|KEY
 argument_list|,
 name|link
 operator|.
@@ -306,7 +306,7 @@ init|=
 operator|new
 name|ParsedEntryLink
 argument_list|(
-name|key
+name|KEY
 argument_list|,
 name|database
 argument_list|)

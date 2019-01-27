@@ -51,11 +51,29 @@ name|V
 parameter_list|>
 name|Future
 argument_list|<
-name|?
+name|V
 argument_list|>
 name|execute
 parameter_list|(
 name|BackgroundTask
+argument_list|<
+name|V
+argument_list|>
+name|task
+parameter_list|)
+function_decl|;
+comment|/**      * Runs the given task and returns a Future representing that task. Usually, you want to use the other method {@link      * #execute(BackgroundTask)}.      *      * @param<V>  type of return value of the task      * @param task the task to run      */
+DECL|method|execute (Task<V> task)
+parameter_list|<
+name|V
+parameter_list|>
+name|Future
+argument_list|<
+name|V
+argument_list|>
+name|execute
+parameter_list|(
+name|Task
 argument_list|<
 name|V
 argument_list|>

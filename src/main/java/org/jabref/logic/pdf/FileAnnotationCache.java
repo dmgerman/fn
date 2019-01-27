@@ -82,7 +82,7 @@ name|model
 operator|.
 name|metadata
 operator|.
-name|FileDirectoryPreferences
+name|FilePreferences
 import|;
 end_import
 
@@ -219,15 +219,15 @@ specifier|public
 name|FileAnnotationCache
 parameter_list|()
 block|{      }
-DECL|method|FileAnnotationCache (BibDatabaseContext context, FileDirectoryPreferences fileDirectoryPreferences)
+DECL|method|FileAnnotationCache (BibDatabaseContext context, FilePreferences filePreferences)
 specifier|public
 name|FileAnnotationCache
 parameter_list|(
 name|BibDatabaseContext
 name|context
 parameter_list|,
-name|FileDirectoryPreferences
-name|fileDirectoryPreferences
+name|FilePreferences
+name|filePreferences
 parameter_list|)
 block|{
 name|annotationCache
@@ -292,7 +292,7 @@ name|importAnnotationsFromFiles
 argument_list|(
 name|context
 argument_list|,
-name|fileDirectoryPreferences
+name|filePreferences
 argument_list|)
 return|;
 block|}

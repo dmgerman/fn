@@ -21,7 +21,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * JUnit by default ignores exceptions, which are reported via {@link Thread.UncaughtExceptionHandler}.  * With this rule also these kind of exceptions result in a failure of the test.  */
+comment|/**  * JUnit by default ignores exceptions, which are reported via {@link Thread.UncaughtExceptionHandler}. With this rule  * also these kind of exceptions result in a failure of the test.  */
 end_comment
 
 begin_class

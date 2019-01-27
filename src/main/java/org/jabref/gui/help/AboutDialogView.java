@@ -249,6 +249,16 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|getViewModel ()
+specifier|public
+name|AboutDialogViewModel
+name|getViewModel
+parameter_list|()
+block|{
+return|return
+name|viewModel
+return|;
+block|}
 annotation|@
 name|FXML
 DECL|method|initialize ()

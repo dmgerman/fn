@@ -108,29 +108,25 @@ operator|+
 literal|"\\A"
 comment|// begin String
 operator|+
-literal|"\\d+"
-comment|// number
+literal|"("
 operator|+
-literal|"(?:"
-comment|// non-capture group
+literal|"[A-Za-z]?\\d*"
+comment|// optional prefix and number
 operator|+
-literal|"\\+|\\-{2}\\d+"
-comment|// + or --number (range)
+literal|"("
+operator|+
+literal|"\\+|-{2}"
+comment|// separator
+operator|+
+literal|"[A-Za-z]?\\d*"
+comment|// optional prefix and number
 operator|+
 literal|")?"
-comment|// optional group
 operator|+
-literal|"(?:"
-comment|// non-capture group
-operator|+
-literal|","
-comment|// comma
-operator|+
-literal|"\\d+(?:\\+|\\-{2}\\d+)?"
-comment|// repeat former pattern
+literal|",?"
+comment|// page range separation
 operator|+
 literal|")*"
-comment|// repeat group 0,*
 operator|+
 literal|"\\z"
 decl_stmt|;
@@ -147,29 +143,25 @@ operator|+
 literal|"\\A"
 comment|// begin String
 operator|+
-literal|"\\d+"
-comment|// number
+literal|"("
 operator|+
-literal|"(?:"
-comment|// non-capture group
+literal|"[A-Za-z]?\\d*"
+comment|// optional prefix and number
 operator|+
-literal|"\\+|\\-{1,2}\\d+"
-comment|// + or --number (range)
+literal|"("
+operator|+
+literal|"\\+|-{1,2}|\u2013"
+comment|// separator
+operator|+
+literal|"[A-Za-z]?\\d*"
+comment|// optional prefix and number
 operator|+
 literal|")?"
-comment|// optional group
 operator|+
-literal|"(?:"
-comment|// non-capture group
-operator|+
-literal|","
-comment|// comma
-operator|+
-literal|"\\d+(?:\\+|\\-{1,2}\\d+)?"
-comment|// repeat former pattern
+literal|",?"
+comment|// page range separation
 operator|+
 literal|")*"
-comment|// repeat group 0,*
 operator|+
 literal|"\\z"
 decl_stmt|;

@@ -166,6 +166,20 @@ name|jabref
 operator|.
 name|gui
 operator|.
+name|exporter
+operator|.
+name|ExportToClipboardAction
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
 name|filelist
 operator|.
 name|AttachFileAction
@@ -407,6 +421,8 @@ argument_list|(
 name|panel
 argument_list|,
 name|factory
+argument_list|,
+name|dialogService
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1384,7 +1400,7 @@ return|return
 name|command
 return|;
 block|}
-DECL|method|createCopySubMenu (BasePanel panel, ActionFactory factory)
+DECL|method|createCopySubMenu (BasePanel panel, ActionFactory factory, DialogService dialogService)
 specifier|private
 specifier|static
 name|Menu
@@ -1395,6 +1411,9 @@ name|panel
 parameter_list|,
 name|ActionFactory
 name|factory
+parameter_list|,
+name|DialogService
+name|dialogService
 parameter_list|)
 block|{
 name|Menu
@@ -1785,13 +1804,11 @@ operator|.
 name|EXPORT_TO_CLIPBOARD
 argument_list|,
 operator|new
-name|OldCommandWrapper
+name|ExportToClipboardAction
 argument_list|(
-name|Actions
-operator|.
-name|EXPORT_TO_CLIPBOARD
-argument_list|,
 name|panel
+argument_list|,
+name|dialogService
 argument_list|)
 argument_list|)
 argument_list|)

@@ -78,26 +78,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|SwingUtilities
-import|;
-end_import
-
-begin_import
-import|import
-name|javafx
-operator|.
-name|application
-operator|.
-name|Platform
-import|;
-end_import
-
-begin_import
-import|import
 name|javafx
 operator|.
 name|beans
@@ -233,6 +213,20 @@ operator|.
 name|gui
 operator|.
 name|StateManager
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|util
+operator|.
+name|CustomLocalDragboard
 import|;
 end_import
 
@@ -419,6 +413,12 @@ specifier|final
 name|TaskExecutor
 name|taskExecutor
 decl_stmt|;
+DECL|field|localDragboard
+specifier|private
+specifier|final
+name|CustomLocalDragboard
+name|localDragboard
+decl_stmt|;
 DECL|field|filterPredicate
 specifier|private
 specifier|final
@@ -484,7 +484,7 @@ name|BibDatabaseContext
 argument_list|>
 name|currentDatabase
 decl_stmt|;
-DECL|method|GroupTreeViewModel (StateManager stateManager, DialogService dialogService, TaskExecutor taskExecutor)
+DECL|method|GroupTreeViewModel (StateManager stateManager, DialogService dialogService, TaskExecutor taskExecutor, CustomLocalDragboard localDragboard)
 specifier|public
 name|GroupTreeViewModel
 parameter_list|(
@@ -496,6 +496,9 @@ name|dialogService
 parameter_list|,
 name|TaskExecutor
 name|taskExecutor
+parameter_list|,
+name|CustomLocalDragboard
+name|localDragboard
 parameter_list|)
 block|{
 name|this
@@ -529,6 +532,17 @@ operator|.
 name|requireNonNull
 argument_list|(
 name|taskExecutor
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|localDragboard
+operator|=
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|localDragboard
 argument_list|)
 expr_stmt|;
 comment|// Register listener
@@ -585,6 +599,16 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Init
+name|refresh
+argument_list|()
+expr_stmt|;
+block|}
+DECL|method|refresh ()
+specifier|private
+name|void
+name|refresh
+parameter_list|()
+block|{
 name|onActiveDatabaseChanged
 argument_list|(
 name|stateManager
@@ -691,9 +715,11 @@ lambda|->
 block|{
 if|if
 condition|(
+operator|(
 name|newValue
 operator|==
 literal|null
+operator|)
 operator|||
 name|newValue
 operator|.
@@ -816,6 +842,8 @@ argument_list|,
 name|taskExecutor
 argument_list|,
 name|root
+argument_list|,
+name|localDragboard
 argument_list|)
 argument_list|)
 operator|.
@@ -833,6 +861,8 @@ argument_list|,
 name|stateManager
 argument_list|,
 name|taskExecutor
+argument_list|,
+name|localDragboard
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -879,6 +909,8 @@ argument_list|,
 name|taskExecutor
 argument_list|,
 name|selectedGroup
+argument_list|,
+name|localDragboard
 argument_list|)
 argument_list|)
 operator|.
@@ -909,6 +941,8 @@ argument_list|,
 name|stateManager
 argument_list|,
 name|taskExecutor
+argument_list|,
+name|localDragboard
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -927,13 +961,6 @@ parameter_list|(
 name|GroupNodeViewModel
 name|parent
 parameter_list|)
-block|{
-name|SwingUtilities
-operator|.
-name|invokeLater
-argument_list|(
-parameter_list|()
-lambda|->
 block|{
 name|Optional
 argument_list|<
@@ -993,9 +1020,6 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-argument_list|)
-expr_stmt|;
-block|}
 DECL|method|writeGroupChangesToMetaData ()
 specifier|private
 name|void
@@ -1032,13 +1056,6 @@ name|GroupNodeViewModel
 name|oldGroup
 parameter_list|)
 block|{
-name|SwingUtilities
-operator|.
-name|invokeLater
-argument_list|(
-parameter_list|()
-lambda|->
-block|{
 name|Optional
 argument_list|<
 name|AbstractGroup
@@ -1069,13 +1086,6 @@ argument_list|(
 name|group
 lambda|->
 block|{
-name|Platform
-operator|.
-name|runLater
-argument_list|(
-parameter_list|()
-lambda|->
-block|{
 comment|// TODO: Keep assignments
 name|boolean
 name|keepPreviousAssignments
@@ -1101,7 +1111,7 @@ argument_list|)
 decl_stmt|;
 comment|//        WarnAssignmentSideEffects.warnAssignmentSideEffects(newGroup, panel.frame());
 name|boolean
-name|removePreviousAssignents
+name|removePreviousAssignments
 init|=
 operator|(
 name|oldGroup
@@ -1132,7 +1142,7 @@ name|group
 argument_list|,
 name|keepPreviousAssignments
 argument_list|,
-name|removePreviousAssignents
+name|removePreviousAssignments
 argument_list|,
 name|stateManager
 operator|.
@@ -1176,11 +1186,9 @@ expr_stmt|;
 name|writeGroupChangesToMetaData
 argument_list|()
 expr_stmt|;
-block|}
-argument_list|)
-expr_stmt|;
-block|}
-argument_list|)
+comment|// This is ugly but we have no proper update mechanism in place to propagate the changes, so redraw everything
+name|refresh
+argument_list|()
 expr_stmt|;
 block|}
 argument_list|)

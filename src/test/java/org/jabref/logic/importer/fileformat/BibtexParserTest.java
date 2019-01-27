@@ -318,6 +318,20 @@ name|model
 operator|.
 name|entry
 operator|.
+name|BibtexEntryTypes
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
 name|BibtexString
 import|;
 end_import
@@ -550,7 +564,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
 operator|.
 name|assertEquals
 import|;
@@ -562,7 +580,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
 operator|.
 name|assertFalse
 import|;
@@ -574,21 +596,13 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
 operator|.
 name|assertNotNull
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertTrue
 import|;
 end_import
 
@@ -605,6 +619,22 @@ operator|.
 name|Assertions
 operator|.
 name|assertThrows
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
+operator|.
+name|assertTrue
 import|;
 end_import
 
@@ -632,13 +662,8 @@ name|when
 import|;
 end_import
 
-begin_comment
-comment|/**  * Test the BibtexParser  */
-end_comment
-
 begin_class
 DECL|class|BibtexParserTest
-specifier|public
 class|class
 name|BibtexParserTest
 block|{
@@ -664,7 +689,6 @@ decl_stmt|;
 annotation|@
 name|BeforeEach
 DECL|method|setUp ()
-specifier|public
 name|void
 name|setUp
 parameter_list|()
@@ -711,7 +735,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parseWithNullThrowsNullPointerException ()
-specifier|public
 name|void
 name|parseWithNullThrowsNullPointerException
 parameter_list|()
@@ -743,7 +766,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|fromStringRecognizesEntry ()
-specifier|public
 name|void
 name|fromStringRecognizesEntry
 parameter_list|()
@@ -809,7 +831,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|fromStringReturnsEmptyListFromEmptyString ()
-specifier|public
 name|void
 name|fromStringReturnsEmptyListFromEmptyString
 parameter_list|()
@@ -848,7 +869,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|fromStringReturnsEmptyListIfNoEntryRecognized ()
-specifier|public
 name|void
 name|fromStringReturnsEmptyListIfNoEntryRecognized
 parameter_list|()
@@ -887,7 +907,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|singleFromStringRecognizesEntry ()
-specifier|public
 name|void
 name|singleFromStringRecognizesEntry
 parameter_list|()
@@ -970,7 +989,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|singleFromStringRecognizesEntryInMultiple ()
-specifier|public
 name|void
 name|singleFromStringRecognizesEntryInMultiple
 parameter_list|()
@@ -1045,7 +1063,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|singleFromStringReturnsEmptyFromEmptyString ()
-specifier|public
 name|void
 name|singleFromStringReturnsEmptyFromEmptyString
 parameter_list|()
@@ -1083,7 +1100,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|singleFromStringReturnsEmptyIfNoEntryRecognized ()
-specifier|public
 name|void
 name|singleFromStringReturnsEmptyIfNoEntryRecognized
 parameter_list|()
@@ -1121,7 +1137,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parseRecognizesEntry ()
-specifier|public
 name|void
 name|parseRecognizesEntry
 parameter_list|()
@@ -1236,7 +1251,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parseQuotedEntries ()
-specifier|public
 name|void
 name|parseQuotedEntries
 parameter_list|()
@@ -1351,7 +1365,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parseRecognizesEntryOnlyWithKey ()
-specifier|public
 name|void
 name|parseRecognizesEntryOnlyWithKey
 parameter_list|()
@@ -1436,7 +1449,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parseRecognizesEntryWithWhitespaceAtBegining ()
-specifier|public
 name|void
 name|parseRecognizesEntryWithWhitespaceAtBegining
 parameter_list|()
@@ -1551,7 +1563,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parseRecognizesEntryWithWhitespace ()
-specifier|public
 name|void
 name|parseRecognizesEntryWithWhitespace
 parameter_list|()
@@ -1666,7 +1677,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parseRecognizesEntryWithNewlines ()
-specifier|public
 name|void
 name|parseRecognizesEntryWithNewlines
 parameter_list|()
@@ -1781,7 +1791,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parseRecognizesEntryWithUnknownType ()
-specifier|public
 name|void
 name|parseRecognizesEntryWithUnknownType
 parameter_list|()
@@ -1896,7 +1905,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parseRecognizesEntryWithVeryLongType ()
-specifier|public
 name|void
 name|parseRecognizesEntryWithVeryLongType
 parameter_list|()
@@ -2011,7 +2019,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parseRecognizesEntryInParenthesis ()
-specifier|public
 name|void
 name|parseRecognizesEntryInParenthesis
 parameter_list|()
@@ -2126,7 +2133,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parseRecognizesEntryWithBigNumbers ()
-specifier|public
 name|void
 name|parseRecognizesEntryWithBigNumbers
 parameter_list|()
@@ -2260,7 +2266,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parseRecognizesBibtexKeyWithSpecialCharacters ()
-specifier|public
 name|void
 name|parseRecognizesBibtexKeyWithSpecialCharacters
 parameter_list|()
@@ -2365,7 +2370,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parseRecognizesEntryWhereLastFieldIsFinishedWithComma ()
-specifier|public
 name|void
 name|parseRecognizesEntryWhereLastFieldIsFinishedWithComma
 parameter_list|()
@@ -2480,7 +2484,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parseRecognizesEntryWithAtInField ()
-specifier|public
 name|void
 name|parseRecognizesEntryWithAtInField
 parameter_list|()
@@ -2521,7 +2524,9 @@ init|=
 operator|new
 name|BibEntry
 argument_list|(
-literal|"article"
+name|BibtexEntryTypes
+operator|.
+name|ARTICLE
 argument_list|)
 operator|.
 name|withField
@@ -2556,7 +2561,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parseRecognizesEntryPrecedingComment ()
-specifier|public
 name|void
 name|parseRecognizesEntryPrecedingComment
 parameter_list|()
@@ -2597,7 +2601,9 @@ init|=
 operator|new
 name|BibEntry
 argument_list|(
-literal|"article"
+name|BibtexEntryTypes
+operator|.
+name|ARTICLE
 argument_list|)
 operator|.
 name|withField
@@ -2685,7 +2691,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parseRecognizesMultipleEntries ()
-specifier|public
 name|void
 name|parseRecognizesMultipleEntries
 parameter_list|()
@@ -2833,7 +2838,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parseSetsParsedSerialization ()
-specifier|public
 name|void
 name|parseSetsParsedSerialization
 parameter_list|()
@@ -2939,7 +2943,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parseRecognizesMultipleEntriesOnSameLine ()
-specifier|public
 name|void
 name|parseRecognizesMultipleEntriesOnSameLine
 parameter_list|()
@@ -3054,7 +3057,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parseCombinesMultipleAuthorFields ()
-specifier|public
 name|void
 name|parseCombinesMultipleAuthorFields
 parameter_list|()
@@ -3169,7 +3171,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parseCombinesMultipleEditorFields ()
-specifier|public
 name|void
 name|parseCombinesMultipleEditorFields
 parameter_list|()
@@ -3284,7 +3285,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parseCombinesMultipleKeywordsFields ()
-specifier|public
 name|void
 name|parseCombinesMultipleKeywordsFields
 parameter_list|()
@@ -3399,7 +3399,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parseRecognizesHeaderButIgnoresEncoding ()
-specifier|public
 name|void
 name|parseRecognizesHeaderButIgnoresEncoding
 parameter_list|()
@@ -3676,7 +3675,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parseRecognizesFormatedEntry ()
-specifier|public
 name|void
 name|parseRecognizesFormatedEntry
 parameter_list|()
@@ -3927,7 +3925,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parseRecognizesFieldValuesInQuotationMarks ()
-specifier|public
 name|void
 name|parseRecognizesFieldValuesInQuotationMarks
 parameter_list|()
@@ -4042,7 +4039,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parseRecognizesNumbersWithoutBracketsOrQuotationMarks ()
-specifier|public
 name|void
 name|parseRecognizesNumbersWithoutBracketsOrQuotationMarks
 parameter_list|()
@@ -4157,7 +4153,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parseRecognizesUppercaseFields ()
-specifier|public
 name|void
 name|parseRecognizesUppercaseFields
 parameter_list|()
@@ -4272,7 +4267,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parseRecognizesAbsoluteFile ()
-specifier|public
 name|void
 name|parseRecognizesAbsoluteFile
 parameter_list|()
@@ -4387,7 +4381,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parseRecognizesDateFieldWithConcatenation ()
-specifier|public
 name|void
 name|parseRecognizesDateFieldWithConcatenation
 parameter_list|()
@@ -4502,7 +4495,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parseReturnsEmptyListIfNoEntryRecognized ()
-specifier|public
 name|void
 name|parseReturnsEmptyListIfNoEntryRecognized
 parameter_list|()
@@ -4579,7 +4571,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parseReturnsEmptyListIfNoEntryExistent ()
-specifier|public
 name|void
 name|parseReturnsEmptyListIfNoEntryExistent
 parameter_list|()
@@ -4634,7 +4625,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parseRecognizesDuplicateBibtexKeys ()
-specifier|public
 name|void
 name|parseRecognizesDuplicateBibtexKeys
 parameter_list|()
@@ -4700,7 +4690,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parseNotWarnsAboutEntryWithoutBibtexKey ()
-specifier|public
 name|void
 name|parseNotWarnsAboutEntryWithoutBibtexKey
 parameter_list|()
@@ -4782,7 +4771,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parseIgnoresAndWarnsAboutEntryWithUnmatchedOpenBracket ()
-specifier|public
 name|void
 name|parseIgnoresAndWarnsAboutEntryWithUnmatchedOpenBracket
 parameter_list|()
@@ -4839,7 +4827,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parseAddsEscapedOpenBracketToFieldValue ()
-specifier|public
 name|void
 name|parseAddsEscapedOpenBracketToFieldValue
 parameter_list|()
@@ -4949,7 +4936,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parseAddsEscapedClosingBracketToFieldValue ()
-specifier|public
 name|void
 name|parseAddsEscapedClosingBracketToFieldValue
 parameter_list|()
@@ -5059,7 +5045,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parseIgnoresAndWarnsAboutEntryWithUnmatchedOpenBracketInQuotationMarks ()
-specifier|public
 name|void
 name|parseIgnoresAndWarnsAboutEntryWithUnmatchedOpenBracketInQuotationMarks
 parameter_list|()
@@ -5116,7 +5101,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parseIgnoresArbitraryContentAfterEntry ()
-specifier|public
 name|void
 name|parseIgnoresArbitraryContentAfterEntry
 parameter_list|()
@@ -5153,15 +5137,15 @@ argument_list|()
 decl_stmt|;
 name|assertEquals
 argument_list|(
-literal|"Size should be one, but was "
-operator|+
+literal|1
+argument_list|,
 name|parsed
 operator|.
 name|size
 argument_list|()
 argument_list|,
-literal|1
-argument_list|,
+literal|"Size should be one, but was "
+operator|+
 name|parsed
 operator|.
 name|size
@@ -5170,8 +5154,6 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"Epilog should be preserved"
-argument_list|,
 literal|"}"
 argument_list|,
 name|result
@@ -5181,13 +5163,14 @@ argument_list|()
 operator|.
 name|getEpilog
 argument_list|()
+argument_list|,
+literal|"Epilog should be preserved"
 argument_list|)
 expr_stmt|;
 block|}
 annotation|@
 name|Test
 DECL|method|parseWarnsAboutUnmatchedContentInEntryWithoutComma ()
-specifier|public
 name|void
 name|parseWarnsAboutUnmatchedContentInEntryWithoutComma
 parameter_list|()
@@ -5248,7 +5231,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parseWarnsAboutUnmatchedContentInEntry ()
-specifier|public
 name|void
 name|parseWarnsAboutUnmatchedContentInEntry
 parameter_list|()
@@ -5285,25 +5267,25 @@ argument_list|()
 decl_stmt|;
 name|assertTrue
 argument_list|(
-literal|"There should be warnings"
-argument_list|,
 name|result
 operator|.
 name|hasWarnings
 argument_list|()
+argument_list|,
+literal|"There should be warnings"
 argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"Size should be zero, but was "
-operator|+
+literal|0
+argument_list|,
 name|entries
 operator|.
 name|size
 argument_list|()
 argument_list|,
-literal|0
-argument_list|,
+literal|"Size should be zero, but was "
+operator|+
 name|entries
 operator|.
 name|size
@@ -5314,7 +5296,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parseAcceptsEntryWithAtSymbolInBrackets ()
-specifier|public
 name|void
 name|parseAcceptsEntryWithAtSymbolInBrackets
 parameter_list|()
@@ -5385,7 +5366,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parseRecognizesEntryWithAtSymbolInQuotationMarks ()
-specifier|public
 name|void
 name|parseRecognizesEntryWithAtSymbolInQuotationMarks
 parameter_list|()
@@ -5500,7 +5480,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parseRecognizesFieldsWithBracketsEnclosedInQuotationMarks ()
-specifier|public
 name|void
 name|parseRecognizesFieldsWithBracketsEnclosedInQuotationMarks
 parameter_list|()
@@ -5615,7 +5594,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parseRecognizesFieldsWithEscapedQuotationMarks ()
-specifier|public
 name|void
 name|parseRecognizesFieldsWithEscapedQuotationMarks
 parameter_list|()
@@ -5731,7 +5709,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parseIgnoresAndWarnsAboutEntryWithFieldsThatAreNotSeperatedByComma ()
-specifier|public
 name|void
 name|parseIgnoresAndWarnsAboutEntryWithFieldsThatAreNotSeperatedByComma
 parameter_list|()
@@ -5788,7 +5765,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parseIgnoresAndWarnsAboutCorruptedEntryButRecognizeOthers ()
-specifier|public
 name|void
 name|parseIgnoresAndWarnsAboutCorruptedEntryButRecognizeOthers
 parameter_list|()
@@ -5913,7 +5889,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parseRecognizesMonthFieldsWithFollowingComma ()
-specifier|public
 name|void
 name|parseRecognizesMonthFieldsWithFollowingComma
 parameter_list|()
@@ -6045,7 +6020,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parseRecognizesPreamble ()
-specifier|public
 name|void
 name|parseRecognizesPreamble
 parameter_list|()
@@ -6088,7 +6062,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parseRecognizesUppercasePreamble ()
-specifier|public
 name|void
 name|parseRecognizesUppercasePreamble
 parameter_list|()
@@ -6131,7 +6104,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parseRecognizesPreambleWithWhitespace ()
-specifier|public
 name|void
 name|parseRecognizesPreambleWithWhitespace
 parameter_list|()
@@ -6174,7 +6146,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parseRecognizesPreambleInParenthesis ()
-specifier|public
 name|void
 name|parseRecognizesPreambleInParenthesis
 parameter_list|()
@@ -6217,7 +6188,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parseRecognizesPreambleWithConcatenation ()
-specifier|public
 name|void
 name|parseRecognizesPreambleWithConcatenation
 parameter_list|()
@@ -6260,7 +6230,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parseRecognizesString ()
-specifier|public
 name|void
 name|parseRecognizesString
 parameter_list|()
@@ -6335,7 +6304,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parseSavesOneNewlineAfterStringInParsedSerialization ()
-specifier|public
 name|void
 name|parseSavesOneNewlineAfterStringInParsedSerialization
 parameter_list|()
@@ -6417,7 +6385,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parseRecognizesStringWithWhitespace ()
-specifier|public
 name|void
 name|parseRecognizesStringWithWhitespace
 parameter_list|()
@@ -6492,7 +6459,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parseRecognizesStringInParenthesis ()
-specifier|public
 name|void
 name|parseRecognizesStringInParenthesis
 parameter_list|()
@@ -6567,7 +6533,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parseRecognizesMultipleStrings ()
-specifier|public
 name|void
 name|parseRecognizesMultipleStrings
 parameter_list|()
@@ -6708,7 +6673,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parseRecognizesStringAndEntry ()
-specifier|public
 name|void
 name|parseRecognizesStringAndEntry
 parameter_list|()
@@ -6963,7 +6927,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parseWarnsAboutStringsWithSameNameAndOnlyKeepsOne ()
-specifier|public
 name|void
 name|parseWarnsAboutStringsWithSameNameAndOnlyKeepsOne
 parameter_list|()
@@ -7011,7 +6974,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parseIgnoresComments ()
-specifier|public
 name|void
 name|parseIgnoresComments
 parameter_list|()
@@ -7052,7 +7014,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parseIgnoresUpercaseComments ()
-specifier|public
 name|void
 name|parseIgnoresUpercaseComments
 parameter_list|()
@@ -7093,7 +7054,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parseIgnoresCommentsBeforeEntry ()
-specifier|public
 name|void
 name|parseIgnoresCommentsBeforeEntry
 parameter_list|()
@@ -7210,7 +7170,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parseIgnoresCommentsAfterEntry ()
-specifier|public
 name|void
 name|parseIgnoresCommentsAfterEntry
 parameter_list|()
@@ -7327,7 +7286,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parseIgnoresText ()
-specifier|public
 name|void
 name|parseIgnoresText
 parameter_list|()
@@ -7368,7 +7326,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parseIgnoresTextBeforeEntry ()
-specifier|public
 name|void
 name|parseIgnoresTextBeforeEntry
 parameter_list|()
@@ -7485,7 +7442,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parseIgnoresTextAfterEntry ()
-specifier|public
 name|void
 name|parseIgnoresTextAfterEntry
 parameter_list|()
@@ -7602,7 +7558,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parseConvertsNewlineToSpace ()
-specifier|public
 name|void
 name|parseConvertsNewlineToSpace
 parameter_list|()
@@ -7669,7 +7624,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parseConvertsMultipleNewlinesToSpace ()
-specifier|public
 name|void
 name|parseConvertsMultipleNewlinesToSpace
 parameter_list|()
@@ -7774,7 +7728,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parseConvertsTabToSpace ()
-specifier|public
 name|void
 name|parseConvertsTabToSpace
 parameter_list|()
@@ -7841,7 +7794,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parseConvertsMultipleTabsToSpace ()
-specifier|public
 name|void
 name|parseConvertsMultipleTabsToSpace
 parameter_list|()
@@ -7946,7 +7898,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parsePreservesMultipleSpacesInNonWrappableField ()
-specifier|public
 name|void
 name|parsePreservesMultipleSpacesInNonWrappableField
 parameter_list|()
@@ -8045,7 +7996,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parsePreservesTabsInAbstractField ()
-specifier|public
 name|void
 name|parsePreservesTabsInAbstractField
 parameter_list|()
@@ -8114,7 +8064,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parsePreservesNewlineInAbstractField ()
-specifier|public
 name|void
 name|parsePreservesNewlineInAbstractField
 parameter_list|()
@@ -8189,7 +8138,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parseHandlesAccentsCorrectly ()
-specifier|public
 name|void
 name|parseHandlesAccentsCorrectly
 parameter_list|()
@@ -8300,7 +8248,6 @@ comment|/**      * Test for #669      */
 annotation|@
 name|Test
 DECL|method|parsePreambleAndEntryWithoutNewLine ()
-specifier|public
 name|void
 name|parsePreambleAndEntryWithoutNewLine
 parameter_list|()
@@ -8428,7 +8375,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parseFileHeaderAndPreambleWithoutNewLine ()
-specifier|public
 name|void
 name|parseFileHeaderAndPreambleWithoutNewLine
 parameter_list|()
@@ -8445,7 +8391,7 @@ argument_list|(
 operator|new
 name|StringReader
 argument_list|(
-literal|"% Encoding: US-ASCII@preamble{some text and \\latex}"
+literal|"\\% Encoding: US-ASCII@preamble{some text and \\latex}"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -8479,7 +8425,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parseSavesEntryInParsedSerialization ()
-specifier|public
 name|void
 name|parseSavesEntryInParsedSerialization
 parameter_list|()
@@ -8554,7 +8499,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parseSavesOneNewlineAfterEntryInParsedSerialization ()
-specifier|public
 name|void
 name|parseSavesOneNewlineAfterEntryInParsedSerialization
 parameter_list|()
@@ -8641,7 +8585,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parseSavesNewlinesBeforeEntryInParsedSerialization ()
-specifier|public
 name|void
 name|parseSavesNewlinesBeforeEntryInParsedSerialization
 parameter_list|()
@@ -8740,7 +8683,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parseRemovesEncodingLineInParsedSerialization ()
-specifier|public
 name|void
 name|parseRemovesEncodingLineInParsedSerialization
 parameter_list|()
@@ -8839,7 +8781,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parseSavesNewlinesBetweenEntriesInParsedSerialization ()
-specifier|public
 name|void
 name|parseSavesNewlinesBetweenEntriesInParsedSerialization
 parameter_list|()
@@ -9004,7 +8945,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parseIgnoresWhitespaceInEpilogue ()
-specifier|public
 name|void
 name|parseIgnoresWhitespaceInEpilogue
 parameter_list|()
@@ -9046,7 +8986,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parseIgnoresWhitespaceInEpilogueAfterEntry ()
-specifier|public
 name|void
 name|parseIgnoresWhitespaceInEpilogueAfterEntry
 parameter_list|()
@@ -9156,7 +9095,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parseTrimsWhitespaceInEpilogueAfterEntry ()
-specifier|public
 name|void
 name|parseTrimsWhitespaceInEpilogueAfterEntry
 parameter_list|()
@@ -9266,7 +9204,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parseRecognizesSaveActionsAfterEntry ()
-specifier|public
 name|void
 name|parseRecognizesSaveActionsAfterEntry
 parameter_list|()
@@ -9358,7 +9295,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|integrationTestSaveActions ()
-specifier|public
 name|void
 name|integrationTestSaveActions
 parameter_list|()
@@ -9428,7 +9364,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|integrationTestCustomEntryType ()
-specifier|public
 name|void
 name|integrationTestCustomEntryType
 parameter_list|()
@@ -9556,7 +9491,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|integrationTestSaveOrderConfig ()
-specifier|public
 name|void
 name|integrationTestSaveOrderConfig
 parameter_list|()
@@ -9639,7 +9573,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|integrationTestCustomKeyPattern ()
-specifier|public
 name|void
 name|integrationTestCustomKeyPattern
 parameter_list|()
@@ -9725,7 +9658,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|integrationTestBiblatexMode ()
-specifier|public
 name|void
 name|integrationTestBiblatexMode
 parameter_list|()
@@ -9776,7 +9708,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|integrationTestGroupTree ()
-specifier|public
 name|void
 name|integrationTestGroupTree
 parameter_list|()
@@ -9974,7 +9905,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|integrationTestProtectedFlag ()
-specifier|public
 name|void
 name|integrationTestProtectedFlag
 parameter_list|()
@@ -10010,7 +9940,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|integrationTestContentSelectors ()
-specifier|public
 name|void
 name|integrationTestContentSelectors
 parameter_list|()
@@ -10093,7 +10022,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parseReallyUnknownType ()
-specifier|public
 name|void
 name|parseReallyUnknownType
 parameter_list|()
@@ -10176,7 +10104,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parseOtherTypeTest ()
-specifier|public
 name|void
 name|parseOtherTypeTest
 parameter_list|()
@@ -10259,7 +10186,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parseRecognizesDatabaseID ()
-specifier|public
 name|void
 name|parseRecognizesDatabaseID
 parameter_list|()
@@ -10280,7 +10206,7 @@ argument_list|()
 operator|.
 name|append
 argument_list|(
-literal|"% DBID: "
+literal|"\\% DBID: "
 argument_list|)
 operator|.
 name|append
@@ -10342,7 +10268,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parseDoesNotRecognizeDatabaseIDasUserComment ()
-specifier|public
 name|void
 name|parseDoesNotRecognizeDatabaseIDasUserComment
 parameter_list|()
@@ -10358,7 +10283,7 @@ argument_list|()
 operator|.
 name|append
 argument_list|(
-literal|"% Encoding: UTF-8"
+literal|"\\% Encoding: UTF-8"
 argument_list|)
 operator|.
 name|append
@@ -10370,7 +10295,7 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-literal|"% DBID: q1w2e3r4t5z6"
+literal|"\\% DBID: q1w2e3r4t5z6"
 argument_list|)
 operator|.
 name|append
@@ -10445,7 +10370,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|integrationTestFileDirectories ()
-specifier|public
 name|void
 name|integrationTestFileDirectories
 parameter_list|()
@@ -10506,7 +10430,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parseReturnsEntriesInSameOrder ()
-specifier|public
 name|void
 name|parseReturnsEntriesInSameOrder
 parameter_list|()
@@ -10651,7 +10574,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parsePrecedingComment ()
-specifier|public
 name|void
 name|parsePrecedingComment
 parameter_list|()
@@ -10823,7 +10745,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parseCommentAndEntryInOneLine ()
-specifier|public
 name|void
 name|parseCommentAndEntryInOneLine
 parameter_list|()
@@ -10989,7 +10910,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|preserveEncodingPrefixInsideEntry ()
-specifier|public
 name|void
 name|preserveEncodingPrefixInsideEntry
 parameter_list|()
@@ -11063,7 +10983,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parseBracketedComment ()
-specifier|public
 name|void
 name|parseBracketedComment
 parameter_list|()
@@ -11106,7 +11025,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parseRegularCommentBeforeEntry ()
-specifier|public
 name|void
 name|parseRegularCommentBeforeEntry
 parameter_list|()
@@ -11209,7 +11127,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parseCommentWithoutBrackets ()
-specifier|public
 name|void
 name|parseCommentWithoutBrackets
 parameter_list|()
@@ -11252,7 +11169,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parseCommentWithoutBracketsBeforeEntry ()
-specifier|public
 name|void
 name|parseCommentWithoutBracketsBeforeEntry
 parameter_list|()
@@ -11355,7 +11271,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parseCommentContainingEntries ()
-specifier|public
 name|void
 name|parseCommentContainingEntries
 parameter_list|()
@@ -11470,7 +11385,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parseCommentContainingEntriesAndAtSymbols ()
-specifier|public
 name|void
 name|parseCommentContainingEntriesAndAtSymbols
 parameter_list|()
@@ -11585,7 +11499,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parseEmptyPreambleLeadsToEmpty ()
-specifier|public
 name|void
 name|parseEmptyPreambleLeadsToEmpty
 parameter_list|()
@@ -11634,7 +11547,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parseEmptyFileLeadsToPreamble ()
-specifier|public
 name|void
 name|parseEmptyFileLeadsToPreamble
 parameter_list|()
@@ -11683,7 +11595,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parseYearWithMonthString ()
-specifier|public
 name|void
 name|parseYearWithMonthString
 parameter_list|()
@@ -11729,7 +11640,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parseYearWithMonthNumber ()
-specifier|public
 name|void
 name|parseYearWithMonthNumber
 parameter_list|()
@@ -11775,7 +11685,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|parseYear ()
-specifier|public
 name|void
 name|parseYear
 parameter_list|()

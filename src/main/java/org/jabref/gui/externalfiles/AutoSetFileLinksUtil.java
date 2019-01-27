@@ -246,7 +246,7 @@ name|model
 operator|.
 name|metadata
 operator|.
-name|FileDirectoryPreferences
+name|FilePreferences
 import|;
 end_import
 
@@ -324,15 +324,15 @@ specifier|private
 name|ExternalFileTypes
 name|externalFileTypes
 decl_stmt|;
-DECL|method|AutoSetFileLinksUtil (BibDatabaseContext databaseContext, FileDirectoryPreferences fileDirectoryPreferences, AutoLinkPreferences autoLinkPreferences, ExternalFileTypes externalFileTypes)
+DECL|method|AutoSetFileLinksUtil (BibDatabaseContext databaseContext, FilePreferences filePreferences, AutoLinkPreferences autoLinkPreferences, ExternalFileTypes externalFileTypes)
 specifier|public
 name|AutoSetFileLinksUtil
 parameter_list|(
 name|BibDatabaseContext
 name|databaseContext
 parameter_list|,
-name|FileDirectoryPreferences
-name|fileDirectoryPreferences
+name|FilePreferences
+name|filePreferences
 parameter_list|,
 name|AutoLinkPreferences
 name|autoLinkPreferences
@@ -347,7 +347,7 @@ name|databaseContext
 operator|.
 name|getFileDirectoriesAsPaths
 argument_list|(
-name|fileDirectoryPreferences
+name|filePreferences
 argument_list|)
 argument_list|,
 name|autoLinkPreferences
@@ -617,7 +617,7 @@ name|relativeFilePath
 init|=
 name|FileUtil
 operator|.
-name|shortenFileName
+name|relativize
 argument_list|(
 name|foundFile
 argument_list|,

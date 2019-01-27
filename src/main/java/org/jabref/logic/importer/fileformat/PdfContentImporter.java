@@ -414,10 +414,10 @@ index|[]
 name|lines
 decl_stmt|;
 comment|// current index in lines
-DECL|field|i
+DECL|field|lineIndex
 specifier|private
 name|int
-name|i
+name|lineIndex
 decl_stmt|;
 DECL|field|curString
 specifier|private
@@ -1296,12 +1296,17 @@ name|lineSeparator
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|lineIndex
+operator|=
+literal|0
+expr_stmt|;
+comment|//to prevent array index out of bounds exception on second run we need to reset i to zero
 name|proceedToNextNonEmptyLine
 argument_list|()
 expr_stmt|;
 if|if
 condition|(
-name|i
+name|lineIndex
 operator|>=
 name|lines
 operator|.
@@ -1321,13 +1326,13 @@ name|curString
 operator|=
 name|lines
 index|[
-name|i
+name|lineIndex
 index|]
 expr_stmt|;
 comment|// i might get incremented later and curString modified, too
-name|i
+name|lineIndex
 operator|=
-name|i
+name|lineIndex
 operator|+
 literal|1
 expr_stmt|;
@@ -1495,7 +1500,7 @@ expr_stmt|;
 while|while
 condition|(
 operator|(
-name|i
+name|lineIndex
 operator|<
 name|lines
 operator|.
@@ -1509,7 +1514,7 @@ name|equals
 argument_list|(
 name|lines
 index|[
-name|i
+name|lineIndex
 index|]
 argument_list|)
 condition|)
@@ -1522,7 +1527,7 @@ name|streamlineNames
 argument_list|(
 name|lines
 index|[
-name|i
+name|lineIndex
 index|]
 argument_list|)
 expr_stmt|;
@@ -1570,7 +1575,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-name|i
+name|lineIndex
 operator|++
 expr_stmt|;
 block|}
@@ -1578,13 +1583,13 @@ name|curString
 operator|=
 literal|""
 expr_stmt|;
-name|i
+name|lineIndex
 operator|++
 expr_stmt|;
 comment|// then, abstract and keywords follow
 while|while
 condition|(
-name|i
+name|lineIndex
 operator|<
 name|lines
 operator|.
@@ -1595,7 +1600,7 @@ name|curString
 operator|=
 name|lines
 index|[
-name|i
+name|lineIndex
 index|]
 expr_stmt|;
 if|if
@@ -1677,7 +1682,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-name|i
+name|lineIndex
 operator|++
 expr_stmt|;
 comment|// fillCurStringWithNonEmptyLines() cannot be used as that uses " " as line separator
@@ -1685,7 +1690,7 @@ comment|// whereas we need linebreak as separator
 while|while
 condition|(
 operator|(
-name|i
+name|lineIndex
 operator|<
 name|lines
 operator|.
@@ -1699,7 +1704,7 @@ name|equals
 argument_list|(
 name|lines
 index|[
-name|i
+name|lineIndex
 index|]
 argument_list|)
 condition|)
@@ -1712,7 +1717,7 @@ name|concat
 argument_list|(
 name|lines
 index|[
-name|i
+name|lineIndex
 index|]
 argument_list|)
 operator|.
@@ -1724,7 +1729,7 @@ name|lineSeparator
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|i
+name|lineIndex
 operator|++
 expr_stmt|;
 block|}
@@ -1735,7 +1740,7 @@ operator|.
 name|trim
 argument_list|()
 expr_stmt|;
-name|i
+name|lineIndex
 operator|++
 expr_stmt|;
 block|}
@@ -1811,7 +1816,7 @@ name|trim
 argument_list|()
 expr_stmt|;
 block|}
-name|i
+name|lineIndex
 operator|++
 expr_stmt|;
 name|fillCurStringWithNonEmptyLines
@@ -1896,7 +1901,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-name|i
+name|lineIndex
 operator|++
 expr_stmt|;
 name|proceedToNextNonEmptyLine
@@ -1904,7 +1909,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-name|i
+name|lineIndex
 operator|=
 name|lines
 operator|.
@@ -1917,7 +1922,7 @@ comment|// sometimes, this information is in the third last block etc...
 comment|// therefore, read until the beginning of the file
 while|while
 condition|(
-name|i
+name|lineIndex
 operator|>=
 literal|0
 condition|)
@@ -2800,7 +2805,7 @@ block|{
 while|while
 condition|(
 operator|(
-name|i
+name|lineIndex
 operator|<
 name|lines
 operator|.
@@ -2813,7 +2818,7 @@ name|equals
 argument_list|(
 name|lines
 index|[
-name|i
+name|lineIndex
 index|]
 operator|.
 name|trim
@@ -2821,7 +2826,7 @@ argument_list|()
 argument_list|)
 condition|)
 block|{
-name|i
+name|lineIndex
 operator|++
 expr_stmt|;
 block|}
@@ -2844,7 +2849,7 @@ expr_stmt|;
 while|while
 condition|(
 operator|(
-name|i
+name|lineIndex
 operator|<
 name|lines
 operator|.
@@ -2858,7 +2863,7 @@ name|equals
 argument_list|(
 name|lines
 index|[
-name|i
+name|lineIndex
 index|]
 argument_list|)
 condition|)
@@ -2868,7 +2873,7 @@ name|curLine
 init|=
 name|lines
 index|[
-name|i
+name|lineIndex
 index|]
 operator|.
 name|trim
@@ -2913,12 +2918,12 @@ name|concat
 argument_list|(
 name|lines
 index|[
-name|i
+name|lineIndex
 index|]
 argument_list|)
 expr_stmt|;
 block|}
-name|i
+name|lineIndex
 operator|++
 expr_stmt|;
 block|}
@@ -2936,7 +2941,7 @@ block|{
 while|while
 condition|(
 operator|(
-name|i
+name|lineIndex
 operator|>=
 literal|0
 operator|)
@@ -2947,7 +2952,7 @@ name|equals
 argument_list|(
 name|lines
 index|[
-name|i
+name|lineIndex
 index|]
 operator|.
 name|trim
@@ -2955,7 +2960,7 @@ argument_list|()
 argument_list|)
 condition|)
 block|{
-name|i
+name|lineIndex
 operator|--
 expr_stmt|;
 block|}
@@ -2963,13 +2968,13 @@ comment|// i is now at the end of a block
 name|int
 name|end
 init|=
-name|i
+name|lineIndex
 decl_stmt|;
 comment|// find beginning
 while|while
 condition|(
 operator|(
-name|i
+name|lineIndex
 operator|>=
 literal|0
 operator|)
@@ -2981,12 +2986,12 @@ name|equals
 argument_list|(
 name|lines
 index|[
-name|i
+name|lineIndex
 index|]
 argument_list|)
 condition|)
 block|{
-name|i
+name|lineIndex
 operator|--
 expr_stmt|;
 block|}
@@ -3001,7 +3006,7 @@ control|(
 name|int
 name|j
 init|=
-name|i
+name|lineIndex
 operator|+
 literal|1
 init|;

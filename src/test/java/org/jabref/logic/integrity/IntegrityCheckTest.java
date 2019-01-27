@@ -18,7 +18,7 @@ name|java
 operator|.
 name|io
 operator|.
-name|File
+name|IOException
 import|;
 end_import
 
@@ -26,9 +26,23 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
+name|nio
 operator|.
-name|IOException
+name|file
+operator|.
+name|Files
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|file
+operator|.
+name|Path
 import|;
 end_import
 
@@ -230,7 +244,7 @@ name|model
 operator|.
 name|metadata
 operator|.
-name|FileDirectoryPreferences
+name|FilePreferences
 import|;
 end_import
 
@@ -254,15 +268,9 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Rule
-import|;
-end_import
-
-begin_import
-import|import
-name|org
+name|jupiter
 operator|.
-name|junit
+name|api
 operator|.
 name|Test
 import|;
@@ -274,9 +282,25 @@ name|org
 operator|.
 name|junit
 operator|.
-name|rules
+name|jupiter
 operator|.
-name|TemporaryFolder
+name|api
+operator|.
+name|extension
+operator|.
+name|ExtendWith
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junitpioneer
+operator|.
+name|jupiter
+operator|.
+name|TempDirectory
 import|;
 end_import
 
@@ -296,7 +320,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
 operator|.
 name|assertEquals
 import|;
@@ -308,7 +336,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
 operator|.
 name|assertFalse
 import|;
@@ -339,26 +371,20 @@ import|;
 end_import
 
 begin_class
+annotation|@
+name|ExtendWith
+argument_list|(
+name|TempDirectory
+operator|.
+name|class
+argument_list|)
 DECL|class|IntegrityCheckTest
-specifier|public
 class|class
 name|IntegrityCheckTest
 block|{
 annotation|@
-name|Rule
-DECL|field|testFolder
-specifier|public
-name|TemporaryFolder
-name|testFolder
-init|=
-operator|new
-name|TemporaryFolder
-argument_list|()
-decl_stmt|;
-annotation|@
 name|Test
 DECL|method|testEntryTypeChecks ()
-specifier|public
 name|void
 name|testEntryTypeChecks
 parameter_list|()
@@ -445,7 +471,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testUrlChecks ()
-specifier|public
 name|void
 name|testUrlChecks
 parameter_list|()
@@ -514,7 +539,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testYearChecks ()
-specifier|public
 name|void
 name|testYearChecks
 parameter_list|()
@@ -673,7 +697,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testEditionChecks ()
-specifier|public
 name|void
 name|testEditionChecks
 parameter_list|()
@@ -852,7 +875,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testNoteChecks ()
-specifier|public
 name|void
 name|testNoteChecks
 parameter_list|()
@@ -963,7 +985,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testHowpublishedChecks ()
-specifier|public
 name|void
 name|testHowpublishedChecks
 parameter_list|()
@@ -1074,7 +1095,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testMonthChecks ()
-specifier|public
 name|void
 name|testMonthChecks
 parameter_list|()
@@ -1321,7 +1341,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testJournaltitleChecks ()
-specifier|public
 name|void
 name|testJournaltitleChecks
 parameter_list|()
@@ -1364,7 +1383,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testBibtexkeyChecks ()
-specifier|public
 name|void
 name|testBibtexkeyChecks
 parameter_list|()
@@ -1485,7 +1503,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testBracketChecks ()
-specifier|public
 name|void
 name|testBracketChecks
 parameter_list|()
@@ -1554,7 +1571,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testAuthorNameChecks ()
-specifier|public
 name|void
 name|testAuthorNameChecks
 parameter_list|()
@@ -1730,7 +1746,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testTitleChecks ()
-specifier|public
 name|void
 name|testTitleChecks
 parameter_list|()
@@ -1977,7 +1992,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testAbbreviationChecks ()
-specifier|public
 name|void
 name|testAbbreviationChecks
 parameter_list|()
@@ -2032,7 +2046,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testJournalIsKnownInAbbreviationList ()
-specifier|public
 name|void
 name|testJournalIsKnownInAbbreviationList
 parameter_list|()
@@ -2061,7 +2074,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testFileChecks ()
-specifier|public
 name|void
 name|testFileChecks
 parameter_list|()
@@ -2183,29 +2195,52 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|fileCheckFindsFilesRelativeToBibFile ()
-specifier|public
+DECL|method|fileCheckFindsFilesRelativeToBibFile (@empDirectory.TempDir Path testFolder)
 name|void
 name|fileCheckFindsFilesRelativeToBibFile
-parameter_list|()
+parameter_list|(
+annotation|@
+name|TempDirectory
+operator|.
+name|TempDir
+name|Path
+name|testFolder
+parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|File
+name|Path
 name|bibFile
 init|=
 name|testFolder
 operator|.
-name|newFile
+name|resolve
 argument_list|(
 literal|"lit.bib"
 argument_list|)
 decl_stmt|;
+name|Files
+operator|.
+name|createFile
+argument_list|(
+name|bibFile
+argument_list|)
+expr_stmt|;
+name|Path
+name|pdfFile
+init|=
 name|testFolder
 operator|.
-name|newFile
+name|resolve
 argument_list|(
 literal|"file.pdf"
+argument_list|)
+decl_stmt|;
+name|Files
+operator|.
+name|createFile
+argument_list|(
+name|pdfFile
 argument_list|)
 expr_stmt|;
 name|BibDatabaseContext
@@ -2234,7 +2269,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testTypeChecks ()
-specifier|public
 name|void
 name|testTypeChecks
 parameter_list|()
@@ -2267,7 +2301,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testBooktitleChecks ()
-specifier|public
 name|void
 name|testBooktitleChecks
 parameter_list|()
@@ -2300,7 +2333,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testPageNumbersChecks ()
-specifier|public
 name|void
 name|testPageNumbersChecks
 parameter_list|()
@@ -2419,7 +2451,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testBiblatexPageNumbersChecks ()
-specifier|public
 name|void
 name|testBiblatexPageNumbersChecks
 parameter_list|()
@@ -2616,7 +2647,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testBibStringChecks ()
-specifier|public
 name|void
 name|testBibStringChecks
 parameter_list|()
@@ -2675,7 +2705,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testHTMLCharacterChecks ()
-specifier|public
 name|void
 name|testHTMLCharacterChecks
 parameter_list|()
@@ -2754,7 +2783,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testISSNChecks ()
-specifier|public
 name|void
 name|testISSNChecks
 parameter_list|()
@@ -2813,7 +2841,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testISBNChecks ()
-specifier|public
 name|void
 name|testISBNChecks
 parameter_list|()
@@ -2882,7 +2909,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testDOIChecks ()
-specifier|public
 name|void
 name|testDOIChecks
 parameter_list|()
@@ -2931,7 +2957,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testEntryIsUnchangedAfterChecks ()
-specifier|public
 name|void
 name|testEntryIsUnchangedAfterChecks
 parameter_list|()
@@ -3039,7 +3064,7 @@ name|context
 argument_list|,
 name|mock
 argument_list|(
-name|FileDirectoryPreferences
+name|FilePreferences
 operator|.
 name|class
 argument_list|)
@@ -3076,7 +3101,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testASCIIChecks ()
-specifier|public
 name|void
 name|testASCIIChecks
 parameter_list|()
@@ -3282,7 +3306,7 @@ name|context
 argument_list|,
 name|mock
 argument_list|(
-name|FileDirectoryPreferences
+name|FilePreferences
 operator|.
 name|class
 argument_list|)
@@ -3312,12 +3336,12 @@ name|assertFalse
 argument_list|(
 name|messages
 operator|.
-name|toString
+name|isEmpty
 argument_list|()
 argument_list|,
 name|messages
 operator|.
-name|isEmpty
+name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -3344,7 +3368,7 @@ name|context
 argument_list|,
 name|mock
 argument_list|(
-name|FileDirectoryPreferences
+name|FilePreferences
 operator|.
 name|class
 argument_list|)

@@ -20,6 +20,26 @@ name|java
 operator|.
 name|util
 operator|.
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Optional
 import|;
 end_import
@@ -196,7 +216,6 @@ begin_class
 annotation|@
 name|FetcherTest
 DECL|class|IsbnFetcherTest
-specifier|public
 class|class
 name|IsbnFetcherTest
 block|{
@@ -213,7 +232,6 @@ decl_stmt|;
 annotation|@
 name|BeforeEach
 DECL|method|setUp ()
-specifier|public
 name|void
 name|setUp
 parameter_list|()
@@ -335,7 +353,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testName ()
-specifier|public
 name|void
 name|testName
 parameter_list|()
@@ -354,7 +371,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testHelpPage ()
-specifier|public
 name|void
 name|testHelpPage
 parameter_list|()
@@ -368,6 +384,9 @@ operator|.
 name|getHelpPage
 argument_list|()
 operator|.
+name|get
+argument_list|()
+operator|.
 name|getPageName
 argument_list|()
 argument_list|)
@@ -376,7 +395,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|searchByIdSuccessfulWithShortISBN ()
-specifier|public
 name|void
 name|searchByIdSuccessfulWithShortISBN
 parameter_list|()
@@ -412,7 +430,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|searchByIdSuccessfulWithLongISBN ()
-specifier|public
 name|void
 name|searchByIdSuccessfulWithLongISBN
 parameter_list|()
@@ -448,7 +465,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|searchByIdReturnsEmptyWithEmptyISBN ()
-specifier|public
 name|void
 name|searchByIdReturnsEmptyWithEmptyISBN
 parameter_list|()
@@ -482,7 +498,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|searchByIdThrowsExceptionForShortInvalidISBN ()
-specifier|public
 name|void
 name|searchByIdThrowsExceptionForShortInvalidISBN
 parameter_list|()
@@ -507,7 +522,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|searchByIdThrowsExceptionForLongInvalidISB ()
-specifier|public
 name|void
 name|searchByIdThrowsExceptionForLongInvalidISB
 parameter_list|()
@@ -532,7 +546,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|searchByIdThrowsExceptionForInvalidISBN ()
-specifier|public
 name|void
 name|searchByIdThrowsExceptionForInvalidISBN
 parameter_list|()
@@ -554,11 +567,59 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * This test searches for a valid ISBN. See https://www.amazon.de/dp/3728128155/?tag=jabref-21      * However, this ISBN is not available on ebook.de. The fetcher should something as it falls back to Chimbori      * @throws FetcherException      */
+annotation|@
+name|Test
+DECL|method|searchByEntryWithISBNSuccessful ()
+name|void
+name|searchByEntryWithISBNSuccessful
+parameter_list|()
+throws|throws
+name|FetcherException
+block|{
+name|BibEntry
+name|input
+init|=
+operator|new
+name|BibEntry
+argument_list|()
+operator|.
+name|withField
+argument_list|(
+literal|"isbn"
+argument_list|,
+literal|"0134685997"
+argument_list|)
+decl_stmt|;
+name|List
+argument_list|<
+name|BibEntry
+argument_list|>
+name|fetchedEntry
+init|=
+name|fetcher
+operator|.
+name|performSearch
+argument_list|(
+name|input
+argument_list|)
+decl_stmt|;
+name|assertEquals
+argument_list|(
+name|Collections
+operator|.
+name|singletonList
+argument_list|(
+name|bibEntry
+argument_list|)
+argument_list|,
+name|fetchedEntry
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * This test searches for a valid ISBN. See https://www.amazon.de/dp/3728128155/?tag=jabref-21 However, this ISBN is      * not available on ebook.de. The fetcher should something as it falls back to Chimbori      */
 annotation|@
 name|Test
 DECL|method|searchForIsbnAvailableAtChimboriButNonOnEbookDe ()
-specifier|public
 name|void
 name|searchForIsbnAvailableAtChimboriButNonOnEbookDe
 parameter_list|()

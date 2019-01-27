@@ -332,6 +332,9 @@ operator|.
 name|getHelpPage
 argument_list|()
 operator|.
+name|get
+argument_list|()
+operator|.
 name|getPageName
 argument_list|()
 argument_list|)
@@ -447,7 +450,7 @@ name|setField
 argument_list|(
 literal|"bibtexkey"
 argument_list|,
-literal|"9783642434730"
+literal|"9783662565094"
 argument_list|)
 expr_stmt|;
 name|bibEntry
@@ -474,7 +477,7 @@ name|setField
 argument_list|(
 literal|"year"
 argument_list|,
-literal|"2015"
+literal|"2018"
 argument_list|)
 expr_stmt|;
 name|bibEntry
@@ -492,7 +495,7 @@ name|setField
 argument_list|(
 literal|"date"
 argument_list|,
-literal|"2015-04-12"
+literal|"2018-03-23"
 argument_list|)
 expr_stmt|;
 name|bibEntry
@@ -501,25 +504,7 @@ name|setField
 argument_list|(
 literal|"ean"
 argument_list|,
-literal|"9783642434730"
-argument_list|)
-expr_stmt|;
-name|bibEntry
-operator|.
-name|setField
-argument_list|(
-literal|"isbn"
-argument_list|,
-literal|"3642434738"
-argument_list|)
-expr_stmt|;
-name|bibEntry
-operator|.
-name|setField
-argument_list|(
-literal|"pagetotal"
-argument_list|,
-literal|"428"
+literal|"9783662565094"
 argument_list|)
 expr_stmt|;
 name|bibEntry
@@ -528,7 +513,7 @@ name|setField
 argument_list|(
 literal|"url"
 argument_list|,
-literal|"https://www.ebook.de/de/product/23955263/marlon_dumas_marcello_la_rosa_jan_mendling_hajo_a_reijers_fundamentals_of_business_process_management.html"
+literal|"https://www.ebook.de/de/product/33399253/marlon_dumas_marcello_la_rosa_jan_mendling_hajo_a_reijers_fundamentals_of_business_process_management.html"
 argument_list|)
 expr_stmt|;
 name|Optional
@@ -541,7 +526,7 @@ name|fetcher
 operator|.
 name|performSearchById
 argument_list|(
-literal|"3642434738"
+literal|"978-3-662-56509-4"
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -557,7 +542,7 @@ name|fetchedEntry
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * This test searches for a valid ISBN. See https://www.amazon.de/dp/3728128155/?tag=jabref-21      * However, this ISBN is not available on ebook.de. The fetcher should return nothing rather than throwing an exeption.      */
+comment|/**      * This test searches for a valid ISBN. See https://www.amazon.de/dp/3728128155/?tag=jabref-21 However, this ISBN is      * not available on ebook.de. The fetcher should return nothing rather than throwing an exeption.      */
 annotation|@
 name|Test
 DECL|method|searchForValidButNotFoundISBN ()

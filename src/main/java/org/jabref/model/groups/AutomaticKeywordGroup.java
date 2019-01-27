@@ -224,6 +224,9 @@ argument_list|(
 name|this
 operator|.
 name|name
+operator|.
+name|getValue
+argument_list|()
 argument_list|,
 name|this
 operator|.
@@ -256,9 +259,11 @@ name|this
 operator|==
 name|o
 condition|)
+block|{
 return|return
 literal|true
 return|;
+block|}
 if|if
 condition|(
 name|o
@@ -273,9 +278,11 @@ operator|.
 name|getClass
 argument_list|()
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 name|AutomaticKeywordGroup
 name|that
 init|=

@@ -242,7 +242,19 @@ DECL|method|XmpUtilReader ()
 specifier|private
 name|XmpUtilReader
 parameter_list|()
-block|{     }
+block|{
+comment|//See: https://pdfbox.apache.org/2.0/getting-started.html
+name|System
+operator|.
+name|setProperty
+argument_list|(
+literal|"sun.java2d.cmm"
+argument_list|,
+literal|"sun.java2d.cmm.kcms.KcmsServiceProvider"
+argument_list|)
+expr_stmt|;
+comment|//To get higher rendering speed on java 8 oder 9 for images
+block|}
 comment|/**      * Will read the XMPMetadata from the given pdf file, closing the file      * afterwards.      *      * @param path The path to read the XMPMetadata from.      * @return The XMPMetadata object found in the file      */
 DECL|method|readRawXmp (Path path)
 specifier|public

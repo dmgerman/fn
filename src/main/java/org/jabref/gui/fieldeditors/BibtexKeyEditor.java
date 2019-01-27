@@ -220,12 +220,12 @@ specifier|private
 name|Button
 name|generateCiteKeyButton
 decl_stmt|;
-DECL|field|textArea
+DECL|field|textField
 annotation|@
 name|FXML
 specifier|private
-name|EditorTextArea
-name|textArea
+name|EditorTextField
+name|textField
 decl_stmt|;
 DECL|method|BibtexKeyEditor (String fieldName, JabRefPreferences preferences, AutoCompleteSuggestionProvider<?> suggestionProvider, FieldCheckers fieldCheckers, BibDatabaseContext databaseContext, UndoManager undoManager, DialogService dialogService)
 specifier|public
@@ -302,7 +302,7 @@ operator|.
 name|load
 argument_list|()
 expr_stmt|;
-name|textArea
+name|textField
 operator|.
 name|textProperty
 argument_list|()
@@ -331,7 +331,7 @@ operator|.
 name|getValidationStatus
 argument_list|()
 argument_list|,
-name|textArea
+name|textField
 argument_list|)
 expr_stmt|;
 block|}

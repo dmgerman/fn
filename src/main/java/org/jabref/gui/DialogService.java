@@ -14,6 +14,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|nio
 operator|.
 name|file
@@ -545,14 +555,20 @@ argument_list|>
 name|dialog
 parameter_list|)
 function_decl|;
-comment|/**      * Constructs and shows a canceable {@link ProgressDialog}. Clicking cancel will cancel the underlying service and close the dialog      *      * @param task The {@link Task} which executes the work and for which to show the dialog      */
-DECL|method|showCanceableProgressDialogAndWait (Task<V> task)
+comment|/**      * Constructs and shows a canceable {@link ProgressDialog}. Clicking cancel will cancel the underlying service and close the dialog      *      * @param title title of the dialog      * @param content message to show above the progress bar      * @param task The {@link Task} which executes the work and for which to show the dialog      */
+DECL|method|showProgressDialogAndWait (String title, String content, Task<V> task)
 parameter_list|<
 name|V
 parameter_list|>
 name|void
-name|showCanceableProgressDialogAndWait
+name|showProgressDialogAndWait
 parameter_list|(
+name|String
+name|title
+parameter_list|,
+name|String
+name|content
+parameter_list|,
 name|Task
 argument_list|<
 name|V
@@ -560,7 +576,7 @@ argument_list|>
 name|task
 parameter_list|)
 function_decl|;
-comment|/**      * Notify the user in an non-blocking way (i.e., update status message instead of showing a dialog).      *      * @param message the message to show.      */
+comment|/**      * Notify the user in an non-blocking way (i.e., in form of toast in a snackbar).      *      * @param message the message to show.      */
 DECL|method|notify (String message)
 name|void
 name|notify
@@ -625,6 +641,20 @@ parameter_list|(
 name|PrinterJob
 name|job
 parameter_list|)
+function_decl|;
+comment|/**      * Shows a new dialog that list all files contained in the given archive and which lets the user select one of these      * files. The method doesn't return until the displayed open dialog is dismissed. The return value specifies the      * file chosen by the user or an empty {@link Optional} if no selection has been made.      *      * @return the selected file or an empty {@link Optional} if no file has been selected      */
+DECL|method|showFileOpenFromArchiveDialog (Path archivePath)
+name|Optional
+argument_list|<
+name|Path
+argument_list|>
+name|showFileOpenFromArchiveDialog
+parameter_list|(
+name|Path
+name|archivePath
+parameter_list|)
+throws|throws
+name|IOException
 function_decl|;
 block|}
 end_interface

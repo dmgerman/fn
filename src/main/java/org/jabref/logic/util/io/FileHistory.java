@@ -18,6 +18,28 @@ begin_import
 import|import
 name|java
 operator|.
+name|nio
+operator|.
+name|file
+operator|.
+name|Path
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|LinkedList
@@ -64,19 +86,19 @@ specifier|private
 specifier|final
 name|LinkedList
 argument_list|<
-name|String
+name|Path
 argument_list|>
 name|history
 decl_stmt|;
-DECL|method|FileHistory (List<String> fileList)
+DECL|method|FileHistory (List<Path> files)
 specifier|public
 name|FileHistory
 parameter_list|(
 name|List
 argument_list|<
-name|String
+name|Path
 argument_list|>
-name|fileList
+name|files
 parameter_list|)
 block|{
 name|history
@@ -89,7 +111,7 @@ name|Objects
 operator|.
 name|requireNonNull
 argument_list|(
-name|fileList
+name|files
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -120,26 +142,26 @@ name|isEmpty
 argument_list|()
 return|;
 block|}
-comment|/**      * Adds the filename to the top of the list. If it already is in the list, it is merely moved to the top.      *      * @param filename a<code>String</code> value      */
-DECL|method|newFile (String filename)
+comment|/**      * Adds the file to the top of the list. If it already is in the list, it is merely moved to the top.      */
+DECL|method|newFile (Path file)
 specifier|public
 name|void
 name|newFile
 parameter_list|(
-name|String
-name|filename
+name|Path
+name|file
 parameter_list|)
 block|{
 name|removeItem
 argument_list|(
-name|filename
+name|file
 argument_list|)
 expr_stmt|;
 name|history
 operator|.
 name|addFirst
 argument_list|(
-name|filename
+name|file
 argument_list|)
 expr_stmt|;
 while|while
@@ -157,13 +179,13 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-DECL|method|getFileName (int i)
+DECL|method|getFileAt (int index)
 specifier|public
-name|String
-name|getFileName
+name|Path
+name|getFileAt
 parameter_list|(
 name|int
-name|i
+name|index
 parameter_list|)
 block|{
 return|return
@@ -171,24 +193,24 @@ name|history
 operator|.
 name|get
 argument_list|(
-name|i
+name|index
 argument_list|)
 return|;
 block|}
-DECL|method|removeItem (String filename)
+DECL|method|removeItem (Path file)
 specifier|public
 name|void
 name|removeItem
 parameter_list|(
-name|String
-name|filename
+name|Path
+name|file
 parameter_list|)
 block|{
 name|history
 operator|.
 name|remove
 argument_list|(
-name|filename
+name|file
 argument_list|)
 expr_stmt|;
 block|}
@@ -196,13 +218,18 @@ DECL|method|getHistory ()
 specifier|public
 name|List
 argument_list|<
-name|String
+name|Path
 argument_list|>
 name|getHistory
 parameter_list|()
 block|{
 return|return
+name|Collections
+operator|.
+name|unmodifiableList
+argument_list|(
 name|history
+argument_list|)
 return|;
 block|}
 block|}

@@ -217,9 +217,11 @@ operator|.
 name|size
 argument_list|()
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 name|Text
 name|expectedText
 decl_stmt|;
@@ -274,9 +276,11 @@ name|toString
 argument_list|()
 argument_list|)
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 block|}
 return|return
 literal|true

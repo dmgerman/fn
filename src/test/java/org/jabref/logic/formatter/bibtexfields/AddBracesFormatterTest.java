@@ -54,7 +54,7 @@ name|api
 operator|.
 name|Assertions
 operator|.
-name|*
+name|assertEquals
 import|;
 end_import
 

@@ -442,6 +442,13 @@ specifier|public
 class|class
 name|DBMSSynchronizerTest
 block|{
+annotation|@
+name|Parameter
+DECL|field|dbmsType
+specifier|public
+name|DBMSType
+name|dbmsType
+decl_stmt|;
 DECL|field|dbmsSynchronizer
 specifier|private
 name|DBMSSynchronizer
@@ -468,12 +475,29 @@ name|GlobalBibtexKeyPattern
 name|pattern
 decl_stmt|;
 annotation|@
-name|Parameter
-DECL|field|dbmsType
+name|Parameters
+argument_list|(
+name|name
+operator|=
+literal|"Test with {0} database system"
+argument_list|)
+DECL|method|getTestingDatabaseSystems ()
 specifier|public
+specifier|static
+name|Collection
+argument_list|<
 name|DBMSType
-name|dbmsType
-decl_stmt|;
+argument_list|>
+name|getTestingDatabaseSystems
+parameter_list|()
+block|{
+return|return
+name|TestManager
+operator|.
+name|getDBMSTypeTestParameter
+argument_list|()
+return|;
+block|}
 annotation|@
 name|BeforeEach
 DECL|method|setUp ()
@@ -560,30 +584,6 @@ argument_list|(
 name|dbmsConnection
 argument_list|)
 expr_stmt|;
-block|}
-annotation|@
-name|Parameters
-argument_list|(
-name|name
-operator|=
-literal|"Test with {0} database system"
-argument_list|)
-DECL|method|getTestingDatabaseSystems ()
-specifier|public
-specifier|static
-name|Collection
-argument_list|<
-name|DBMSType
-argument_list|>
-name|getTestingDatabaseSystems
-parameter_list|()
-block|{
-return|return
-name|TestManager
-operator|.
-name|getDBMSTypeTestParameter
-argument_list|()
-return|;
 block|}
 annotation|@
 name|Test

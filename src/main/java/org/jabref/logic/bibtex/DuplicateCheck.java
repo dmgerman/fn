@@ -838,6 +838,7 @@ name|two
 parameter_list|)
 block|{
 return|return
+operator|(
 name|compareSingleField
 argument_list|(
 name|AUTHOR
@@ -848,7 +849,9 @@ name|two
 argument_list|)
 operator|==
 name|EQUAL
+operator|)
 operator|&&
+operator|(
 name|compareSingleField
 argument_list|(
 name|TITLE
@@ -859,7 +862,9 @@ name|two
 argument_list|)
 operator|==
 name|EQUAL
+operator|)
 operator|&&
+operator|(
 operator|(
 name|compareSingleField
 argument_list|(
@@ -871,7 +876,9 @@ name|two
 argument_list|)
 operator|==
 name|NOT_EQUAL
+operator|)
 operator|||
+operator|(
 name|compareSingleField
 argument_list|(
 name|PAGES
@@ -882,6 +889,7 @@ name|two
 argument_list|)
 operator|==
 name|NOT_EQUAL
+operator|)
 operator|)
 return|;
 block|}
@@ -1967,20 +1975,19 @@ name|BibDatabaseMode
 name|bibDatabaseMode
 parameter_list|)
 block|{
-for|for
-control|(
-specifier|final
-name|BibEntry
-name|other
-range|:
+return|return
 name|database
 operator|.
 name|getEntries
 argument_list|()
-control|)
-block|{
-if|if
-condition|(
+operator|.
+name|stream
+argument_list|()
+operator|.
+name|filter
+argument_list|(
+name|other
+lambda|->
 name|DuplicateCheck
 operator|.
 name|isDuplicate
@@ -1991,26 +1998,11 @@ name|other
 argument_list|,
 name|bibDatabaseMode
 argument_list|)
-condition|)
-block|{
-return|return
-name|Optional
-operator|.
-name|of
-argument_list|(
-name|other
 argument_list|)
-return|;
-comment|// Duplicate found.
-block|}
-block|}
-return|return
-name|Optional
 operator|.
-name|empty
+name|findFirst
 argument_list|()
 return|;
-comment|// No duplicate found.
 block|}
 comment|/**      * Compare two strings on the basis of word-by-word correlation analysis.      *      * @param s1 The first string      * @param s2 The second string      * @return a value in the interval [0, 1] indicating the degree of match.      */
 DECL|method|correlateByWords (final String s1, final String s2)
@@ -2240,9 +2232,6 @@ operator|-
 name|distanceIgnoredCase
 operator|)
 operator|/
-operator|(
-name|double
-operator|)
 name|longerLength
 decl_stmt|;
 name|LOGGER

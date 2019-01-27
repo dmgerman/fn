@@ -229,7 +229,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This class tests the BibtexImporter.  * That importer is only used for --importToOpen, which is currently untested  *<p>  * TODO:  * 1. Add test for --importToOpen  * 2. Move these tests to the code opening a bibtex file  */
+comment|/**  * This class tests the BibtexImporter. That importer is only used for --importToOpen, which is currently untested  *<p>  * TODO: 1. Add test for --importToOpen 2. Move these tests to the code opening a bibtex file  */
 end_comment
 
 begin_class

@@ -272,11 +272,6 @@ specifier|public
 class|class
 name|OvidImporterTest
 block|{
-DECL|field|importer
-specifier|private
-name|OvidImporter
-name|importer
-decl_stmt|;
 DECL|field|FILE_ENDING
 specifier|private
 specifier|static
@@ -285,6 +280,11 @@ name|String
 name|FILE_ENDING
 init|=
 literal|".txt"
+decl_stmt|;
+DECL|field|importer
+specifier|private
+name|OvidImporter
+name|importer
 decl_stmt|;
 DECL|method|fileNames ()
 specifier|private

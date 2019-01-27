@@ -78,6 +78,20 @@ name|CustomImporter
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|xmp
+operator|.
+name|XmpPreferences
+import|;
+end_import
+
 begin_class
 DECL|class|ImportFormatPreferences
 specifier|public
@@ -117,13 +131,19 @@ specifier|final
 name|FieldContentParserPreferences
 name|fieldContentParserPreferences
 decl_stmt|;
+DECL|field|xmpPreferences
+specifier|private
+specifier|final
+name|XmpPreferences
+name|xmpPreferences
+decl_stmt|;
 DECL|field|keywordSyncEnabled
 specifier|private
 specifier|final
 name|boolean
 name|keywordSyncEnabled
 decl_stmt|;
-DECL|method|ImportFormatPreferences (Set<CustomImporter> customImportList, Charset encoding, Character keywordSeparator, BibtexKeyPatternPreferences bibtexKeyPatternPreferences, FieldContentParserPreferences fieldContentParserPreferences, boolean keywordSyncEnabled)
+DECL|method|ImportFormatPreferences (Set<CustomImporter> customImportList, Charset encoding, Character keywordSeparator, BibtexKeyPatternPreferences bibtexKeyPatternPreferences, FieldContentParserPreferences fieldContentParserPreferences, XmpPreferences xmpPreferences, boolean keywordSyncEnabled)
 specifier|public
 name|ImportFormatPreferences
 parameter_list|(
@@ -144,6 +164,9 @@ name|bibtexKeyPatternPreferences
 parameter_list|,
 name|FieldContentParserPreferences
 name|fieldContentParserPreferences
+parameter_list|,
+name|XmpPreferences
+name|xmpPreferences
 parameter_list|,
 name|boolean
 name|keywordSyncEnabled
@@ -178,6 +201,12 @@ operator|.
 name|fieldContentParserPreferences
 operator|=
 name|fieldContentParserPreferences
+expr_stmt|;
+name|this
+operator|.
+name|xmpPreferences
+operator|=
+name|xmpPreferences
 expr_stmt|;
 name|this
 operator|.
@@ -265,6 +294,8 @@ name|bibtexKeyPatternPreferences
 argument_list|,
 name|fieldContentParserPreferences
 argument_list|,
+name|xmpPreferences
+argument_list|,
 name|keywordSyncEnabled
 argument_list|)
 return|;
@@ -280,6 +311,16 @@ parameter_list|()
 block|{
 return|return
 name|keywordSyncEnabled
+return|;
+block|}
+DECL|method|getXmpPreferences ()
+specifier|public
+name|XmpPreferences
+name|getXmpPreferences
+parameter_list|()
+block|{
+return|return
+name|xmpPreferences
 return|;
 block|}
 block|}

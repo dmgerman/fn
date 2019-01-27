@@ -112,7 +112,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
 operator|.
 name|assertEquals
 import|;
@@ -120,7 +124,6 @@ end_import
 
 begin_class
 DECL|class|MakeLabelWithDatabaseTest
-specifier|public
 class|class
 name|MakeLabelWithDatabaseTest
 block|{
@@ -152,7 +155,6 @@ decl_stmt|;
 annotation|@
 name|BeforeEach
 DECL|method|setUp ()
-specifier|public
 name|void
 name|setUp
 parameter_list|()
@@ -244,7 +246,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|generateDefaultKey ()
-specifier|public
 name|void
 name|generateDefaultKey
 parameter_list|()
@@ -283,7 +284,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|generateDefaultKeyAlreadyExistsDuplicatesStartAtA ()
-specifier|public
 name|void
 name|generateDefaultKeyAlreadyExistsDuplicatesStartAtA
 parameter_list|()
@@ -359,7 +359,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|generateDefaultKeyAlwaysLetter ()
-specifier|public
 name|void
 name|generateDefaultKeyAlwaysLetter
 parameter_list|()
@@ -418,7 +417,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|generateDefaultKeyAlwaysLetterAlreadyExistsDuplicatesStartAtB ()
-specifier|public
 name|void
 name|generateDefaultKeyAlwaysLetterAlreadyExistsDuplicatesStartAtB
 parameter_list|()
@@ -514,7 +512,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|generateDefaultKeyStartDuplicatesAtB ()
-specifier|public
 name|void
 name|generateDefaultKeyStartDuplicatesAtB
 parameter_list|()
@@ -573,7 +570,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|generateDefaultKeyAlreadyExistsDuplicatesStartAtB ()
-specifier|public
 name|void
 name|generateDefaultKeyAlreadyExistsDuplicatesStartAtB
 parameter_list|()
@@ -669,7 +665,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|generateDefaultKeyAlreadyExistsManyDuplicates ()
-specifier|public
 name|void
 name|generateDefaultKeyAlreadyExistsManyDuplicates
 parameter_list|()
@@ -810,7 +805,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|generateDefaultKeyFirstTwoAlreadyExists ()
-specifier|public
 name|void
 name|generateDefaultKeyFirstTwoAlreadyExists
 parameter_list|()
@@ -945,7 +939,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|generateKeyAuthLowerModified ()
-specifier|public
 name|void
 name|generateKeyAuthLowerModified
 parameter_list|()
@@ -991,7 +984,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|generateKeyAuthUpperModified ()
-specifier|public
 name|void
 name|generateKeyAuthUpperModified
 parameter_list|()
@@ -1037,7 +1029,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|generateKeyAuthTitleCaseModified ()
-specifier|public
 name|void
 name|generateKeyAuthTitleCaseModified
 parameter_list|()
@@ -1083,7 +1074,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|generateKeyAuthSentenceCaseModified ()
-specifier|public
 name|void
 name|generateKeyAuthSentenceCaseModified
 parameter_list|()
@@ -1129,7 +1119,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|generateKeyAuthCapitalizeModified ()
-specifier|public
 name|void
 name|generateKeyAuthCapitalizeModified
 parameter_list|()
@@ -1175,7 +1164,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|generateDefaultKeyFixedValue ()
-specifier|public
 name|void
 name|generateDefaultKeyFixedValue
 parameter_list|()
@@ -1221,7 +1209,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|generateKeyShortYear ()
-specifier|public
 name|void
 name|generateKeyShortYear
 parameter_list|()
@@ -1267,7 +1254,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|generateKeyAuthN ()
-specifier|public
 name|void
 name|generateKeyAuthN
 parameter_list|()
@@ -1313,7 +1299,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|generateKeyAuthNShortName ()
-specifier|public
 name|void
 name|generateKeyAuthNShortName
 parameter_list|()
@@ -1359,7 +1344,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|generateKeyEmptyField ()
-specifier|public
 name|void
 name|generateKeyEmptyField
 parameter_list|()
@@ -1402,7 +1386,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|generateKeyEmptyFieldDefaultText ()
-specifier|public
 name|void
 name|generateKeyEmptyFieldDefaultText
 parameter_list|()
@@ -1455,7 +1438,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|generateKeyEmptyFieldNoColonInDefaultText ()
-specifier|public
 name|void
 name|generateKeyEmptyFieldNoColonInDefaultText
 parameter_list|()
@@ -1508,7 +1490,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|generateKeyTitle ()
-specifier|public
 name|void
 name|generateKeyTitle
 parameter_list|()
@@ -1554,7 +1535,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|generateKeyTitleAbbr ()
-specifier|public
 name|void
 name|generateKeyTitleAbbr
 parameter_list|()
@@ -1600,7 +1580,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|generateKeyShorttitle ()
-specifier|public
 name|void
 name|generateKeyShorttitle
 parameter_list|()
@@ -1646,7 +1625,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|generateKeyShorttitleLowerModified ()
-specifier|public
 name|void
 name|generateKeyShorttitleLowerModified
 parameter_list|()
@@ -1701,7 +1679,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|generateKeyShorttitleUpperModified ()
-specifier|public
 name|void
 name|generateKeyShorttitleUpperModified
 parameter_list|()
@@ -1756,7 +1733,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|generateKeyShorttitleTitleCaseModified ()
-specifier|public
 name|void
 name|generateKeyShorttitleTitleCaseModified
 parameter_list|()
@@ -1811,7 +1787,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|generateKeyShorttitleSentenceCaseModified ()
-specifier|public
 name|void
 name|generateKeyShorttitleSentenceCaseModified
 parameter_list|()
@@ -1866,7 +1841,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|generateKeyShorttitleCapitalizeModified ()
-specifier|public
 name|void
 name|generateKeyShorttitleCapitalizeModified
 parameter_list|()
@@ -1921,7 +1895,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|generateKeyVeryshorttitle ()
-specifier|public
 name|void
 name|generateKeyVeryshorttitle
 parameter_list|()
@@ -1967,7 +1940,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|generateKeyVeryshorttitleLowerModified ()
-specifier|public
 name|void
 name|generateKeyVeryshorttitleLowerModified
 parameter_list|()
@@ -2022,7 +1994,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|generateKeyVeryshorttitleUpperModified ()
-specifier|public
 name|void
 name|generateKeyVeryshorttitleUpperModified
 parameter_list|()
@@ -2077,7 +2048,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|generateKeyVeryshorttitleTitleCaseModified ()
-specifier|public
 name|void
 name|generateKeyVeryshorttitleTitleCaseModified
 parameter_list|()
@@ -2132,7 +2102,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|generateKeyVeryshorttitleSentenceCaseModified ()
-specifier|public
 name|void
 name|generateKeyVeryshorttitleSentenceCaseModified
 parameter_list|()
@@ -2187,7 +2156,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|generateKeyVeryshorttitleCapitalizeModified ()
-specifier|public
 name|void
 name|generateKeyVeryshorttitleCapitalizeModified
 parameter_list|()
@@ -2242,7 +2210,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|generateKeyShorttitleINI ()
-specifier|public
 name|void
 name|generateKeyShorttitleINI
 parameter_list|()
@@ -2288,7 +2255,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|generateKeyCamel ()
-specifier|public
 name|void
 name|generateKeyCamel
 parameter_list|()
@@ -2334,7 +2300,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|generateKeyAuthNM ()
-specifier|public
 name|void
 name|generateKeyAuthNM
 parameter_list|()
@@ -2389,7 +2354,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|generateKeyAuthNMLargeN ()
-specifier|public
 name|void
 name|generateKeyAuthNMLargeN
 parameter_list|()
@@ -2444,7 +2408,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|generateKeyAuthNMLargeM ()
-specifier|public
 name|void
 name|generateKeyAuthNMLargeM
 parameter_list|()
@@ -2497,7 +2460,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|generateKeyAuthNMLargeMReallyReturnsEmptyString ()
-specifier|public
 name|void
 name|generateKeyAuthNMLargeMReallyReturnsEmptyString
 parameter_list|()
@@ -2552,7 +2514,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|generateKeyRegExReplace ()
-specifier|public
 name|void
 name|generateKeyRegExReplace
 parameter_list|()
@@ -2627,7 +2588,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|generateKeyAuthIni ()
-specifier|public
 name|void
 name|generateKeyAuthIni
 parameter_list|()
@@ -2682,7 +2642,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|generateKeyAuthIniMany ()
-specifier|public
 name|void
 name|generateKeyAuthIniMany
 parameter_list|()
@@ -2737,7 +2696,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|generateKeyTitleRegexe ()
-specifier|public
 name|void
 name|generateKeyTitleRegexe
 parameter_list|()
@@ -2792,7 +2750,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|generateKeyTitleTitleCase ()
-specifier|public
 name|void
 name|generateKeyTitleTitleCase
 parameter_list|()
@@ -2838,7 +2795,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|generateKeyTitleCapitalize ()
-specifier|public
 name|void
 name|generateKeyTitleCapitalize
 parameter_list|()
@@ -2884,7 +2840,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|generateKeyTitleSentenceCase ()
-specifier|public
 name|void
 name|generateKeyTitleSentenceCase
 parameter_list|()
@@ -2930,7 +2885,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|generateKeyTitleTitleCaseAbbr ()
-specifier|public
 name|void
 name|generateKeyTitleTitleCaseAbbr
 parameter_list|()
@@ -2976,7 +2930,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|generateKeyTitleCapitalizeAbbr ()
-specifier|public
 name|void
 name|generateKeyTitleCapitalizeAbbr
 parameter_list|()
@@ -3022,7 +2975,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|generateKeyTitleSentenceCaseAbbr ()
-specifier|public
 name|void
 name|generateKeyTitleSentenceCaseAbbr
 parameter_list|()

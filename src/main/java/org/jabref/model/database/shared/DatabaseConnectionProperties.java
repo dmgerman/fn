@@ -55,6 +55,21 @@ name|boolean
 name|isValid
 parameter_list|()
 function_decl|;
+DECL|method|getKeyStore ()
+name|String
+name|getKeyStore
+parameter_list|()
+function_decl|;
+DECL|method|isUseSSL ()
+name|boolean
+name|isUseSSL
+parameter_list|()
+function_decl|;
+DECL|method|getServerTimezone ()
+name|String
+name|getServerTimezone
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

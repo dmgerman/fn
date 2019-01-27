@@ -147,6 +147,41 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+DECL|method|removePlatformSpecificNewLine ()
+specifier|public
+name|void
+name|removePlatformSpecificNewLine
+parameter_list|()
+block|{
+name|String
+name|newLine
+init|=
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"%n"
+argument_list|)
+decl_stmt|;
+name|assertEquals
+argument_list|(
+literal|"linebreak on current platform"
+argument_list|,
+name|formatter
+operator|.
+name|format
+argument_list|(
+literal|"linebreak on"
+operator|+
+name|newLine
+operator|+
+literal|"current platform"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_class
 

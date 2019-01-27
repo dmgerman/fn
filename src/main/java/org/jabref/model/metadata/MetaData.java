@@ -333,7 +333,7 @@ name|FieldName
 operator|.
 name|FILE
 operator|+
-name|FileDirectoryPreferences
+name|FilePreferences
 operator|.
 name|DIR_SUFFIX
 decl_stmt|;

@@ -569,6 +569,7 @@ name|id
 decl_stmt|;
 DECL|field|type
 specifier|private
+specifier|final
 name|StringProperty
 name|type
 init|=
@@ -611,6 +612,8 @@ DECL|field|parsedSerialization
 specifier|private
 name|String
 name|parsedSerialization
+init|=
+literal|""
 decl_stmt|;
 DECL|field|commentsBeforeEntry
 specifier|private
@@ -639,28 +642,6 @@ name|next
 argument_list|()
 argument_list|,
 name|DEFAULT_TYPE
-argument_list|)
-expr_stmt|;
-block|}
-comment|/**      * Constructs a new BibEntry with the given type      *      * @param type The type to set. May be null or empty. In that case, DEFAULT_TYPE is used.      * @deprecated use {{@link #BibEntry(EntryType)}} instead      */
-annotation|@
-name|Deprecated
-DECL|method|BibEntry (String type)
-specifier|public
-name|BibEntry
-parameter_list|(
-name|String
-name|type
-parameter_list|)
-block|{
-name|this
-argument_list|(
-name|IdGenerator
-operator|.
-name|next
-argument_list|()
-argument_list|,
-name|type
 argument_list|)
 expr_stmt|;
 block|}
@@ -716,6 +697,11 @@ parameter_list|)
 block|{
 name|this
 argument_list|(
+name|IdGenerator
+operator|.
+name|next
+argument_list|()
+argument_list|,
 name|type
 operator|.
 name|getName
@@ -2461,6 +2447,11 @@ init|=
 operator|new
 name|BibEntry
 argument_list|(
+name|IdGenerator
+operator|.
+name|next
+argument_list|()
+argument_list|,
 name|type
 operator|.
 name|getValue

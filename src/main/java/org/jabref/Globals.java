@@ -68,18 +68,6 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|GlobalFocusListener
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
 name|StateManager
 import|;
 end_import
@@ -442,13 +430,6 @@ specifier|static
 name|KeyBindingRepository
 name|keyBindingRepository
 decl_stmt|;
-comment|// Background tasks
-DECL|field|focusListener
-specifier|private
-specifier|static
-name|GlobalFocusListener
-name|focusListener
-decl_stmt|;
 DECL|field|fileUpdateMonitor
 specifier|private
 specifier|static
@@ -507,15 +488,9 @@ specifier|static
 name|void
 name|startBackgroundTasks
 parameter_list|()
+throws|throws
+name|JabRefException
 block|{
-name|Globals
-operator|.
-name|focusListener
-operator|=
-operator|new
-name|GlobalFocusListener
-argument_list|()
-expr_stmt|;
 name|Globals
 operator|.
 name|fileUpdateMonitor
@@ -543,6 +518,8 @@ operator|new
 name|ThemeLoader
 argument_list|(
 name|fileUpdateMonitor
+argument_list|,
+name|prefs
 argument_list|)
 expr_stmt|;
 if|if
@@ -797,17 +774,6 @@ operator|.
 name|Start
 argument_list|)
 expr_stmt|;
-block|}
-DECL|method|getFocusListener ()
-specifier|public
-specifier|static
-name|GlobalFocusListener
-name|getFocusListener
-parameter_list|()
-block|{
-return|return
-name|focusListener
-return|;
 block|}
 DECL|method|getFileUpdateMonitor ()
 specifier|public

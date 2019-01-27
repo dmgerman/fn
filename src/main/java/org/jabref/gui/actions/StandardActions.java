@@ -1454,6 +1454,7 @@ block|,
 DECL|enumConstant|NEW_SUB_LIBRARY_FROM_AUX
 DECL|enumConstant|Localization.lang
 DECL|enumConstant|Localization.lang
+DECL|enumConstant|Localization.lang
 DECL|enumConstant|IconTheme.JabRefIcons.NEW
 name|NEW_SUB_LIBRARY_FROM_AUX
 argument_list|(
@@ -1471,6 +1472,13 @@ operator|.
 name|lang
 argument_list|(
 literal|"New BibTeX sublibrary"
+argument_list|)
+operator|+
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"This feature generates a new library based on which entries are needed in an existing LaTeX document."
 argument_list|)
 argument_list|,
 name|IconTheme

@@ -1993,7 +1993,6 @@ operator|.
 name|getMainTable
 argument_list|()
 decl_stmt|;
-comment|//Globals.getFocusListener().setFocused(mainTable);
 name|mainTable
 operator|.
 name|requestFocus

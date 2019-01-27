@@ -101,8 +101,8 @@ DECL|class|PostgresSQLNotificationListener
 specifier|public
 class|class
 name|PostgresSQLNotificationListener
-extends|extends
-name|Thread
+implements|implements
+name|Runnable
 block|{
 DECL|field|LOGGER
 specifier|private
@@ -131,6 +131,12 @@ specifier|private
 specifier|final
 name|PGConnection
 name|pgConnection
+decl_stmt|;
+DECL|field|stop
+specifier|private
+specifier|volatile
+name|boolean
+name|stop
 decl_stmt|;
 DECL|method|PostgresSQLNotificationListener (DBMSSynchronizer dbmsSynchronizer, PGConnection pgConnection)
 specifier|public
@@ -164,12 +170,17 @@ name|void
 name|run
 parameter_list|()
 block|{
+name|stop
+operator|=
+literal|false
+expr_stmt|;
 try|try
 block|{
 comment|//noinspection InfiniteLoopStatement
 while|while
 condition|(
-literal|true
+operator|!
+name|stop
 condition|)
 block|{
 name|PGNotification
@@ -248,6 +259,17 @@ name|exception
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+DECL|method|stop ()
+specifier|public
+name|void
+name|stop
+parameter_list|()
+block|{
+name|stop
+operator|=
+literal|true
+expr_stmt|;
 block|}
 block|}
 end_class

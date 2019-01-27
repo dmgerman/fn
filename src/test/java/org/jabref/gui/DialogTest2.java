@@ -34,20 +34,6 @@ begin_import
 import|import
 name|org
 operator|.
-name|jabref
-operator|.
-name|testutils
-operator|.
-name|category
-operator|.
-name|GUITest
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
 name|assertj
 operator|.
 name|swing
@@ -80,7 +66,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Test
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Tag
 import|;
 end_import
 
@@ -90,11 +80,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|experimental
+name|jupiter
 operator|.
-name|categories
+name|api
 operator|.
-name|Category
+name|Test
 import|;
 end_import
 
@@ -120,11 +110,9 @@ end_comment
 
 begin_class
 annotation|@
-name|Category
+name|Tag
 argument_list|(
-name|GUITest
-operator|.
-name|class
+literal|"GUITest"
 argument_list|)
 DECL|class|DialogTest2
 specifier|public

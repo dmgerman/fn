@@ -66,7 +66,7 @@ name|model
 operator|.
 name|metadata
 operator|.
-name|FileDirectoryPreferences
+name|FilePreferences
 import|;
 end_import
 
@@ -151,10 +151,10 @@ name|currentWorkingDir
 decl_stmt|;
 comment|// Store the minimal preferences for the
 comment|// BibDatabaseContext.getFileDirectories(File,
-comment|// FileDirectoryPreferences) incocation:
+comment|// FilePreferences) incocation:
 DECL|field|fileDirPrefs
 specifier|private
-name|FileDirectoryPreferences
+name|FilePreferences
 name|fileDirPrefs
 decl_stmt|;
 annotation|@
@@ -169,7 +169,7 @@ name|fileDirPrefs
 operator|=
 name|mock
 argument_list|(
-name|FileDirectoryPreferences
+name|FilePreferences
 operator|.
 name|class
 argument_list|)

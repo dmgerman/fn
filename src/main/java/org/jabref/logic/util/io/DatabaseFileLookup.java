@@ -160,7 +160,7 @@ name|model
 operator|.
 name|metadata
 operator|.
-name|FileDirectoryPreferences
+name|FilePreferences
 import|;
 end_import
 
@@ -198,15 +198,15 @@ argument_list|>
 name|possibleFilePaths
 decl_stmt|;
 comment|/**      * Creates an instance by passing a {@link BibDatabase} which will be used for the searches.      */
-DECL|method|DatabaseFileLookup (BibDatabaseContext databaseContext, FileDirectoryPreferences fileDirectoryPreferences)
+DECL|method|DatabaseFileLookup (BibDatabaseContext databaseContext, FilePreferences filePreferences)
 specifier|public
 name|DatabaseFileLookup
 parameter_list|(
 name|BibDatabaseContext
 name|databaseContext
 parameter_list|,
-name|FileDirectoryPreferences
-name|fileDirectoryPreferences
+name|FilePreferences
+name|filePreferences
 parameter_list|)
 block|{
 name|Objects
@@ -226,7 +226,7 @@ name|databaseContext
 operator|.
 name|getFileDirectoriesAsPaths
 argument_list|(
-name|fileDirectoryPreferences
+name|filePreferences
 argument_list|)
 argument_list|)
 operator|.

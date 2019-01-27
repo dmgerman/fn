@@ -1,3055 +1,4455 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
-begin_comment
-comment|// TODO: temporarily removed, LibreOffice, Java 9
-end_comment
-
-begin_comment
-comment|//package org.jabref.gui.openoffice;
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//import java.awt.BorderLayout;
-end_comment
-
-begin_comment
-comment|//import java.awt.Dimension;
-end_comment
-
-begin_comment
-comment|//import java.awt.event.ActionEvent;
-end_comment
-
-begin_comment
-comment|//import java.io.FileNotFoundException;
-end_comment
-
-begin_comment
-comment|//import java.io.IOException;
-end_comment
-
-begin_comment
-comment|//import java.lang.reflect.InvocationTargetException;
-end_comment
-
-begin_comment
-comment|//import java.lang.reflect.Method;
-end_comment
-
-begin_comment
-comment|//import java.net.URL;
-end_comment
-
-begin_comment
-comment|//import java.net.URLClassLoader;
-end_comment
-
-begin_comment
-comment|//import java.nio.file.Path;
-end_comment
-
-begin_comment
-comment|//import java.nio.file.Paths;
-end_comment
-
-begin_comment
-comment|//import java.util.ArrayList;
-end_comment
-
-begin_comment
-comment|//import java.util.List;
-end_comment
-
-begin_comment
-comment|//import java.util.Optional;
-end_comment
-
-begin_comment
-comment|//import java.util.stream.Collectors;
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//import javax.swing.AbstractAction;
-end_comment
-
-begin_comment
-comment|//import javax.swing.Action;
-end_comment
-
-begin_comment
-comment|//import javax.swing.ButtonGroup;
-end_comment
-
-begin_comment
-comment|//import javax.swing.Icon;
-end_comment
-
-begin_comment
-comment|//import javax.swing.JButton;
-end_comment
-
-begin_comment
-comment|//import javax.swing.JCheckBoxMenuItem;
-end_comment
-
-begin_comment
-comment|//import javax.swing.JDialog;
-end_comment
-
-begin_comment
-comment|//import javax.swing.JFrame;
-end_comment
-
-begin_comment
-comment|//import javax.swing.JMenuItem;
-end_comment
-
-begin_comment
-comment|//import javax.swing.JPanel;
-end_comment
-
-begin_comment
-comment|//import javax.swing.JPopupMenu;
-end_comment
-
-begin_comment
-comment|//import javax.swing.JRadioButtonMenuItem;
-end_comment
-
-begin_comment
-comment|//import javax.swing.JTextField;
-end_comment
-
-begin_comment
-comment|//import javax.swing.SwingUtilities;
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//import org.jabref.Globals;
-end_comment
-
-begin_comment
-comment|//import org.jabref.gui.BasePanel;
-end_comment
-
-begin_comment
-comment|//import org.jabref.gui.DialogService;
-end_comment
-
-begin_comment
-comment|//import org.jabref.gui.JabRefFrame;
-end_comment
-
-begin_comment
-comment|//import org.jabref.gui.desktop.JabRefDesktop;
-end_comment
-
-begin_comment
-comment|//import org.jabref.gui.desktop.os.NativeDesktop;
-end_comment
-
-begin_comment
-comment|//import org.jabref.gui.help.HelpAction;
-end_comment
-
-begin_comment
-comment|//import org.jabref.gui.icon.IconTheme;
-end_comment
-
-begin_comment
-comment|//import org.jabref.gui.undo.NamedCompound;
-end_comment
-
-begin_comment
-comment|//import org.jabref.gui.undo.UndoableKeyChange;
-end_comment
-
-begin_comment
-comment|//import org.jabref.gui.util.BackgroundTask;
-end_comment
-
-begin_comment
-comment|//import org.jabref.gui.util.DefaultTaskExecutor;
-end_comment
-
-begin_comment
-comment|//import org.jabref.gui.util.DirectoryDialogConfiguration;
-end_comment
-
-begin_comment
-comment|//import org.jabref.gui.util.FileDialogConfiguration;
-end_comment
-
-begin_comment
-comment|//import org.jabref.logic.bibtexkeypattern.BibtexKeyGenerator;
-end_comment
-
-begin_comment
-comment|//import org.jabref.logic.bibtexkeypattern.BibtexKeyPatternPreferences;
-end_comment
-
-begin_comment
-comment|//import org.jabref.logic.help.HelpFile;
-end_comment
-
-begin_comment
-comment|//import org.jabref.logic.l10n.Localization;
-end_comment
-
-begin_comment
-comment|//import org.jabref.logic.openoffice.OOBibStyle;
-end_comment
-
-begin_comment
-comment|//import org.jabref.logic.openoffice.OpenOfficePreferences;
-end_comment
-
-begin_comment
-comment|//import org.jabref.logic.openoffice.StyleLoader;
-end_comment
-
-begin_comment
-comment|//import org.jabref.logic.openoffice.UndefinedParagraphFormatException;
-end_comment
-
-begin_comment
-comment|//import org.jabref.logic.util.OS;
-end_comment
-
-begin_comment
-comment|//import org.jabref.logic.util.io.FileUtil;
-end_comment
-
-begin_comment
-comment|//import org.jabref.model.Defaults;
-end_comment
-
-begin_comment
-comment|//import org.jabref.model.database.BibDatabase;
-end_comment
-
-begin_comment
-comment|//import org.jabref.model.database.BibDatabaseContext;
-end_comment
-
-begin_comment
-comment|//import org.jabref.model.entry.BibEntry;
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//import com.jgoodies.forms.builder.ButtonBarBuilder;
-end_comment
-
-begin_comment
-comment|//import com.jgoodies.forms.builder.FormBuilder;
-end_comment
-
-begin_comment
-comment|//import com.jgoodies.forms.layout.FormLayout;
-end_comment
-
-begin_comment
-comment|//import com.sun.star.beans.IllegalTypeException;
-end_comment
-
-begin_comment
-comment|//import com.sun.star.beans.NotRemoveableException;
-end_comment
-
-begin_comment
-comment|//import com.sun.star.beans.PropertyExistException;
-end_comment
-
-begin_comment
-comment|//import com.sun.star.beans.PropertyVetoException;
-end_comment
-
-begin_comment
-comment|//import com.sun.star.beans.UnknownPropertyException;
-end_comment
-
-begin_comment
-comment|//import com.sun.star.comp.helper.BootstrapException;
-end_comment
-
-begin_comment
-comment|//import com.sun.star.container.NoSuchElementException;
-end_comment
-
-begin_comment
-comment|//import com.sun.star.lang.WrappedTargetException;
-end_comment
-
-begin_comment
-comment|//import org.slf4j.Logger;
-end_comment
-
-begin_comment
-comment|//import org.slf4j.LoggerFactory;
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|///**
-end_comment
-
-begin_comment
-comment|// * Pane to manage the interaction between JabRef and OpenOffice.
-end_comment
-
-begin_comment
-comment|// */
-end_comment
-
-begin_comment
-comment|//public class OpenOfficePanel {
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//    private static final Logger LOGGER = LoggerFactory.getLogger(OpenOfficePanel.class);
-end_comment
-
-begin_comment
-comment|//    private final DialogService dialogService;
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//    private JPanel content;
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//    private JDialog diag;
-end_comment
-
-begin_comment
-comment|//    private final JButton connect;
-end_comment
-
-begin_comment
-comment|//    private final JButton manualConnect;
-end_comment
-
-begin_comment
-comment|//    private final JButton selectDocument;
-end_comment
-
-begin_comment
-comment|//    private final JButton setStyleFile = new JButton(Localization.lang("Select style"));
-end_comment
-
-begin_comment
-comment|//    private final JButton pushEntries = new JButton(Localization.lang("Cite"));
-end_comment
-
-begin_comment
-comment|//    private final JButton pushEntriesInt = new JButton(Localization.lang("Cite in-text"));
-end_comment
-
-begin_comment
-comment|//    private final JButton pushEntriesEmpty = new JButton(Localization.lang("Insert empty citation"));
-end_comment
-
-begin_comment
-comment|//    private final JButton pushEntriesAdvanced = new JButton(Localization.lang("Cite special"));
-end_comment
-
-begin_comment
-comment|//    private final JButton update;
-end_comment
-
-begin_comment
-comment|//    private final JButton merge = new JButton(Localization.lang("Merge citations"));
-end_comment
-
-begin_comment
-comment|//    private final JButton manageCitations = new JButton(Localization.lang("Manage citations"));
-end_comment
-
-begin_comment
-comment|//    private final JButton exportCitations = new JButton(Localization.lang("Export cited"));
-end_comment
-
-begin_comment
-comment|//    private final JButton settingsB = new JButton(Localization.lang("Settings"));
-end_comment
-
-begin_comment
-comment|//    private final JButton help = new HelpAction(Localization.lang("OpenOffice/LibreOffice integration"),
-end_comment
-
-begin_comment
-comment|//            HelpFile.OPENOFFICE_LIBREOFFICE).getHelpButton();
-end_comment
-
-begin_comment
-comment|//    private OOBibBase ooBase;
-end_comment
-
-begin_comment
-comment|//    private final JabRefFrame frame;
-end_comment
-
-begin_comment
-comment|//    private OOBibStyle style;
-end_comment
-
-begin_comment
-comment|//    private StyleSelectDialog styleDialog;
-end_comment
-
-begin_comment
-comment|//    private boolean dialogOkPressed;
-end_comment
-
-begin_comment
-comment|//    private final OpenOfficePreferences preferences;
-end_comment
-
-begin_comment
-comment|//    private final StyleLoader loader;
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//    public OpenOfficePanel(JabRefFrame jabRefFrame) {
-end_comment
-
-begin_comment
-comment|//        Icon connectImage = IconTheme.JabRefIcons.CONNECT_OPEN_OFFICE.getSmallIcon();
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//        connect = new JButton(connectImage);
-end_comment
-
-begin_comment
-comment|//        manualConnect = new JButton(connectImage);
-end_comment
-
-begin_comment
-comment|//        connect.setToolTipText(Localization.lang("Connect"));
-end_comment
-
-begin_comment
-comment|//        manualConnect.setToolTipText(Localization.lang("Manual connect"));
-end_comment
-
-begin_comment
-comment|//        connect.setPreferredSize(new Dimension(24, 24));
-end_comment
-
-begin_comment
-comment|//        manualConnect.setPreferredSize(new Dimension(24, 24));
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//        selectDocument = new JButton(IconTheme.JabRefIcons.OPEN.getSmallIcon());
-end_comment
-
-begin_comment
-comment|//        selectDocument.setToolTipText(Localization.lang("Select Writer document"));
-end_comment
-
-begin_comment
-comment|//        selectDocument.setPreferredSize(new Dimension(24, 24));
-end_comment
-
-begin_comment
-comment|//        update = new JButton(IconTheme.JabRefIcons.REFRESH.getSmallIcon());
-end_comment
-
-begin_comment
-comment|//        update.setToolTipText(Localization.lang("Sync OpenOffice/LibreOffice bibliography"));
-end_comment
-
-begin_comment
-comment|//        update.setPreferredSize(new Dimension(24, 24));
-end_comment
-
-begin_comment
-comment|//        preferences = Globals.prefs.getOpenOfficePreferences();
-end_comment
-
-begin_comment
-comment|//        loader = new StyleLoader(preferences,
-end_comment
-
-begin_comment
-comment|//                Globals.prefs.getLayoutFormatterPreferences(Globals.journalAbbreviationLoader),
-end_comment
-
-begin_comment
-comment|//                Globals.prefs.getDefaultEncoding());
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//        this.frame = jabRefFrame;
-end_comment
-
-begin_comment
-comment|//        initPanel();
-end_comment
-
-begin_comment
-comment|//        dialogService = frame.getDialogService();
-end_comment
-
-begin_comment
-comment|//    }
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//    public JPanel getContent() {
-end_comment
-
-begin_comment
-comment|//        return content;
-end_comment
-
-begin_comment
-comment|//    }
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//    private void initPanel() {
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//        connect.addActionListener(e -> connectAutomatically());
-end_comment
-
-begin_comment
-comment|//        manualConnect.addActionListener(e -> connectManually());
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//        selectDocument.setToolTipText(Localization.lang("Select which open Writer document to work on"));
-end_comment
-
-begin_comment
-comment|//        selectDocument.addActionListener(e -> {
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//            try {
-end_comment
-
-begin_comment
-comment|//                ooBase.selectDocument();
-end_comment
-
-begin_comment
-comment|//                frame.output(Localization.lang("Connected to document") + ": "
-end_comment
-
-begin_comment
-comment|//                        + ooBase.getCurrentDocumentTitle().orElse(""));
-end_comment
-
-begin_comment
-comment|//            } catch (UnknownPropertyException | WrappedTargetException | IndexOutOfBoundsException |
-end_comment
-
-begin_comment
-comment|//                    NoSuchElementException | NoDocumentException ex) {
-end_comment
-
-begin_comment
-comment|//                LOGGER.warn("Problem connecting", ex);
-end_comment
-
-begin_comment
-comment|//                dialogService.showErrorDialogAndWait(ex);
-end_comment
-
-begin_comment
-comment|//            }
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//        });
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//        setStyleFile.addActionListener(event -> {
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//            if (styleDialog == null) {
-end_comment
-
-begin_comment
-comment|//                styleDialog = new StyleSelectDialog(frame, preferences, loader);
-end_comment
-
-begin_comment
-comment|//            }
-end_comment
-
-begin_comment
-comment|//            styleDialog.setVisible(true);
-end_comment
-
-begin_comment
-comment|//            styleDialog.getStyle().ifPresent(selectedStyle -> {
-end_comment
-
-begin_comment
-comment|//                style = selectedStyle;
-end_comment
-
-begin_comment
-comment|//                try {
-end_comment
-
-begin_comment
-comment|//                    style.ensureUpToDate();
-end_comment
-
-begin_comment
-comment|//                } catch (IOException e) {
-end_comment
-
-begin_comment
-comment|//                    LOGGER.warn("Unable to reload style file '" + style.getPath() + "'", e);
-end_comment
-
-begin_comment
-comment|//                }
-end_comment
-
-begin_comment
-comment|//                frame.setStatus(Localization.lang("Current style is '%0'", style.getName()));
-end_comment
-
-begin_comment
-comment|//            });
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//        });
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//        pushEntries.setToolTipText(Localization.lang("Cite selected entries between parenthesis"));
-end_comment
-
-begin_comment
-comment|//        pushEntries.addActionListener(e -> pushEntries(true, true, false));
-end_comment
-
-begin_comment
-comment|//        pushEntriesInt.setToolTipText(Localization.lang("Cite selected entries with in-text citation"));
-end_comment
-
-begin_comment
-comment|//        pushEntriesInt.addActionListener(e -> pushEntries(false, true, false));
-end_comment
-
-begin_comment
-comment|//        pushEntriesEmpty.setToolTipText(
-end_comment
-
-begin_comment
-comment|//                Localization.lang("Insert a citation without text (the entry will appear in the reference list)"));
-end_comment
-
-begin_comment
-comment|//        pushEntriesEmpty.addActionListener(e -> pushEntries(false, false, false));
-end_comment
-
-begin_comment
-comment|//        pushEntriesAdvanced.setToolTipText(Localization.lang("Cite selected entries with extra information"));
-end_comment
-
-begin_comment
-comment|//        pushEntriesAdvanced.addActionListener(e -> pushEntries(false, true, true));
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//        update.setToolTipText(Localization.lang("Ensure that the bibliography is up-to-date"));
-end_comment
-
-begin_comment
-comment|//        Action updateAction = new AbstractAction() {
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//            @Override
-end_comment
-
-begin_comment
-comment|//            public void actionPerformed(ActionEvent e) {
-end_comment
-
-begin_comment
-comment|//                try {
-end_comment
-
-begin_comment
-comment|//                    if (style == null) {
-end_comment
-
-begin_comment
-comment|//                        style = loader.getUsedStyle();
-end_comment
-
-begin_comment
-comment|//                    } else {
-end_comment
-
-begin_comment
-comment|//                        style.ensureUpToDate();
-end_comment
-
-begin_comment
-comment|//                    }
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//                    ooBase.updateSortedReferenceMarks();
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//                    List<BibDatabase> databases = getBaseList();
-end_comment
-
-begin_comment
-comment|//                    List<String> unresolvedKeys = ooBase.refreshCiteMarkers(databases, style);
-end_comment
-
-begin_comment
-comment|//                    ooBase.rebuildBibTextSection(databases, style);
-end_comment
-
-begin_comment
-comment|//                    if (!unresolvedKeys.isEmpty()) {
-end_comment
-
-begin_comment
-comment|//                        dialogService.showErrorDialogAndWait(Localization.lang("Unable to synchronize bibliography"),
-end_comment
-
-begin_comment
-comment|//                                Localization.lang("Your OpenOffice/LibreOffice document references the BibTeX key '%0', which could not be found in your current library.",
-end_comment
-
-begin_comment
-comment|//                                        unresolvedKeys.get(0)));
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//                    }
-end_comment
-
-begin_comment
-comment|//                } catch (UndefinedCharacterFormatException ex) {
-end_comment
-
-begin_comment
-comment|//                    reportUndefinedCharacterFormat(ex);
-end_comment
-
-begin_comment
-comment|//                } catch (UndefinedParagraphFormatException ex) {
-end_comment
-
-begin_comment
-comment|//                    reportUndefinedParagraphFormat(ex);
-end_comment
-
-begin_comment
-comment|//                } catch (ConnectionLostException ex) {
-end_comment
-
-begin_comment
-comment|//                    showConnectionLostErrorMessage();
-end_comment
-
-begin_comment
-comment|//                } catch (IOException ex) {
-end_comment
-
-begin_comment
-comment|//                    LOGGER.warn("Problem with style file", ex);
-end_comment
-
-begin_comment
-comment|//                    dialogService.showErrorDialogAndWait(Localization.lang("No valid style file defined"),
-end_comment
-
-begin_comment
-comment|//                            Localization.lang("You must select either a valid style file, or use one of the default styles."));
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//                } catch (BibEntryNotFoundException ex) {
-end_comment
-
-begin_comment
-comment|//                    LOGGER.debug("BibEntry not found", ex);
-end_comment
-
-begin_comment
-comment|//                    dialogService.showErrorDialogAndWait(Localization.lang("Unable to synchronize bibliography"), Localization.lang(
-end_comment
-
-begin_comment
-comment|//                            "Your OpenOffice/LibreOffice document references the BibTeX key '%0', which could not be found in your current library.",
-end_comment
-
-begin_comment
-comment|//                            ex.getBibtexKey()));
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//                } catch (com.sun.star.lang.IllegalArgumentException | PropertyVetoException | UnknownPropertyException | WrappedTargetException | NoSuchElementException |
-end_comment
-
-begin_comment
-comment|//                        CreationException ex) {
-end_comment
-
-begin_comment
-comment|//                    LOGGER.warn("Could not update bibliography", ex);
-end_comment
-
-begin_comment
-comment|//                }
-end_comment
-
-begin_comment
-comment|//            }
-end_comment
-
-begin_comment
-comment|//        };
-end_comment
-
-begin_comment
-comment|//        update.addActionListener(updateAction);
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//        merge.setToolTipText(Localization.lang("Combine pairs of citations that are separated by spaces only"));
-end_comment
-
-begin_comment
-comment|//        merge.addActionListener(e -> {
-end_comment
-
-begin_comment
-comment|//            try {
-end_comment
-
-begin_comment
-comment|//                ooBase.combineCiteMarkers(getBaseList(), style);
-end_comment
-
-begin_comment
-comment|//            } catch (UndefinedCharacterFormatException ex) {
-end_comment
-
-begin_comment
-comment|//                reportUndefinedCharacterFormat(ex);
-end_comment
-
-begin_comment
-comment|//            } catch (com.sun.star.lang.IllegalArgumentException | UnknownPropertyException | PropertyVetoException |
-end_comment
-
-begin_comment
-comment|//                    CreationException | NoSuchElementException | WrappedTargetException | IOException |
-end_comment
-
-begin_comment
-comment|//                    BibEntryNotFoundException ex) {
-end_comment
-
-begin_comment
-comment|//                LOGGER.warn("Problem combining cite markers", ex);
-end_comment
-
-begin_comment
-comment|//            }
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//        });
-end_comment
-
-begin_comment
-comment|//        settingsB.addActionListener(e -> showSettingsPopup());
-end_comment
-
-begin_comment
-comment|//        manageCitations.addActionListener(e -> {
-end_comment
-
-begin_comment
-comment|//            try {
-end_comment
-
-begin_comment
-comment|//                CitationManager cm = new CitationManager(ooBase, dialogService);
-end_comment
-
-begin_comment
-comment|//                cm.showDialog();
-end_comment
-
-begin_comment
-comment|//            } catch (NoSuchElementException | WrappedTargetException | UnknownPropertyException ex) {
-end_comment
-
-begin_comment
-comment|//                LOGGER.warn("Problem showing citation manager", ex);
-end_comment
-
-begin_comment
-comment|//            }
-end_comment
-
-begin_comment
-comment|//        });
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//        exportCitations.addActionListener(event -> exportEntries());
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//        selectDocument.setEnabled(false);
-end_comment
-
-begin_comment
-comment|//        pushEntries.setEnabled(false);
-end_comment
-
-begin_comment
-comment|//        pushEntriesInt.setEnabled(false);
-end_comment
-
-begin_comment
-comment|//        pushEntriesEmpty.setEnabled(false);
-end_comment
-
-begin_comment
-comment|//        pushEntriesAdvanced.setEnabled(false);
-end_comment
-
-begin_comment
-comment|//        update.setEnabled(false);
-end_comment
-
-begin_comment
-comment|//        merge.setEnabled(false);
-end_comment
-
-begin_comment
-comment|//        manageCitations.setEnabled(false);
-end_comment
-
-begin_comment
-comment|//        exportCitations.setEnabled(false);
-end_comment
-
-begin_comment
-comment|//        diag = new JDialog((JFrame) null, "OpenOffice/LibreOffice panel", false);
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//        FormBuilder mainBuilder = FormBuilder.create()
-end_comment
-
-begin_comment
-comment|//                .layout(new FormLayout("fill:pref:grow", "p,p,p,p,p,p,p,p,p,p,p"));
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//        FormBuilder topRowBuilder = FormBuilder.create()
-end_comment
-
-begin_comment
-comment|//                .layout(new FormLayout(
-end_comment
-
-begin_comment
-comment|//                        "fill:pref:grow, 1dlu, fill:pref:grow, 1dlu, fill:pref:grow, 1dlu, fill:pref:grow, 1dlu, fill:pref",
-end_comment
-
-begin_comment
-comment|//                        "pref"));
-end_comment
-
-begin_comment
-comment|//        topRowBuilder.add(connect).xy(1, 1);
-end_comment
-
-begin_comment
-comment|//        topRowBuilder.add(manualConnect).xy(3, 1);
-end_comment
-
-begin_comment
-comment|//        topRowBuilder.add(selectDocument).xy(5, 1);
-end_comment
-
-begin_comment
-comment|//        topRowBuilder.add(update).xy(7, 1);
-end_comment
-
-begin_comment
-comment|//        topRowBuilder.add(help).xy(9, 1);
-end_comment
-
-begin_comment
-comment|//        mainBuilder.add(topRowBuilder.getPanel()).xy(1, 1);
-end_comment
-
-begin_comment
-comment|//        mainBuilder.add(setStyleFile).xy(1, 2);
-end_comment
-
-begin_comment
-comment|//        mainBuilder.add(pushEntries).xy(1, 3);
-end_comment
-
-begin_comment
-comment|//        mainBuilder.add(pushEntriesInt).xy(1, 4);
-end_comment
-
-begin_comment
-comment|//        mainBuilder.add(pushEntriesAdvanced).xy(1, 5);
-end_comment
-
-begin_comment
-comment|//        mainBuilder.add(pushEntriesEmpty).xy(1, 6);
-end_comment
-
-begin_comment
-comment|//        mainBuilder.add(merge).xy(1, 7);
-end_comment
-
-begin_comment
-comment|//        mainBuilder.add(manageCitations).xy(1, 8);
-end_comment
-
-begin_comment
-comment|//        mainBuilder.add(exportCitations).xy(1, 9);
-end_comment
-
-begin_comment
-comment|//        mainBuilder.add(settingsB).xy(1, 10);
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//        content = new JPanel();
-end_comment
-
-begin_comment
-comment|//        content.setLayout(new BorderLayout());
-end_comment
-
-begin_comment
-comment|//        content.add(mainBuilder.getPanel(), BorderLayout.CENTER);
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//        /*
-end_comment
-
-begin_comment
-comment|//        frame.getTabbedPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
-end_comment
-
-begin_comment
-comment|//                .put(Globals.getKeyPrefs().getKey(KeyBinding.REFRESH_OO), "Refresh OO");
-end_comment
-
-begin_comment
-comment|//        frame.getTabbedPane().getActionMap().put("Refresh OO", updateAction);
-end_comment
-
-begin_comment
-comment|//        */
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//    }
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//    private void exportEntries() {
-end_comment
-
-begin_comment
-comment|//        try {
-end_comment
-
-begin_comment
-comment|//            if (style == null) {
-end_comment
-
-begin_comment
-comment|//                style = loader.getUsedStyle();
-end_comment
-
-begin_comment
-comment|//            } else {
-end_comment
-
-begin_comment
-comment|//                style.ensureUpToDate();
-end_comment
-
-begin_comment
-comment|//            }
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//            ooBase.updateSortedReferenceMarks();
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//            List<BibDatabase> databases = getBaseList();
-end_comment
-
-begin_comment
-comment|//            List<String> unresolvedKeys = ooBase.refreshCiteMarkers(databases, style);
-end_comment
-
-begin_comment
-comment|//            BibDatabase newDatabase = ooBase.generateDatabase(databases);
-end_comment
-
-begin_comment
-comment|//            if (!unresolvedKeys.isEmpty()) {
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//                dialogService.showErrorDialogAndWait(Localization.lang("Unable to generate new library"),
-end_comment
-
-begin_comment
-comment|//                        Localization.lang("Your OpenOffice/LibreOffice document references the BibTeX key '%0', which could not be found in your current library.",
-end_comment
-
-begin_comment
-comment|//                                unresolvedKeys.get(0)));
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//            }
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//            Defaults defaults = new Defaults(Globals.prefs.getDefaultBibDatabaseMode());
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//            BibDatabaseContext databaseContext = new BibDatabaseContext(newDatabase, defaults);
-end_comment
-
-begin_comment
-comment|//            this.frame.addTab(databaseContext, true);
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//        } catch (BibEntryNotFoundException ex) {
-end_comment
-
-begin_comment
-comment|//            LOGGER.debug("BibEntry not found", ex);
-end_comment
-
-begin_comment
-comment|//            dialogService.showErrorDialogAndWait(Localization.lang("Unable to synchronize bibliography"),
-end_comment
-
-begin_comment
-comment|//                    Localization.lang("Your OpenOffice/LibreOffice document references the BibTeX key '%0', which could not be found in your current library.",
-end_comment
-
-begin_comment
-comment|//                            ex.getBibtexKey()));
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//        } catch (com.sun.star.lang.IllegalArgumentException | UnknownPropertyException | PropertyVetoException |
-end_comment
-
-begin_comment
-comment|//                UndefinedCharacterFormatException | NoSuchElementException | WrappedTargetException | IOException |
-end_comment
-
-begin_comment
-comment|//                CreationException e) {
-end_comment
-
-begin_comment
-comment|//            LOGGER.warn("Problem generating new database.", e);
-end_comment
-
-begin_comment
-comment|//        }
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//    }
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//    private List<BibDatabase> getBaseList() {
-end_comment
-
-begin_comment
-comment|//        List<BibDatabase> databases = new ArrayList<>();
-end_comment
-
-begin_comment
-comment|//        if (preferences.getUseAllDatabases()) {
-end_comment
-
-begin_comment
-comment|//            for (BasePanel basePanel : frame.getBasePanelList()) {
-end_comment
-
-begin_comment
-comment|//                databases.add(basePanel.getDatabase());
-end_comment
-
-begin_comment
-comment|//            }
-end_comment
-
-begin_comment
-comment|//        } else {
-end_comment
-
-begin_comment
-comment|//            databases.add(frame.getCurrentBasePanel().getDatabase());
-end_comment
-
-begin_comment
-comment|//        }
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//        return databases;
-end_comment
-
-begin_comment
-comment|//    }
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//    private void connectAutomatically() {
-end_comment
-
-begin_comment
-comment|//        BackgroundTask
-end_comment
-
-begin_comment
-comment|//                .wrap(() -> {
-end_comment
-
-begin_comment
-comment|//                    DetectOpenOfficeInstallation officeInstallation = new DetectOpenOfficeInstallation(diag, preferences, dialogService);
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//                    Boolean installed = officeInstallation.isInstalled().get();
-end_comment
-
-begin_comment
-comment|//                    if (installed == null || !installed) {
-end_comment
-
-begin_comment
-comment|//                        throw new IllegalStateException("OpenOffice Installation could not be detected.");
-end_comment
-
-begin_comment
-comment|//                    }
-end_comment
-
-begin_comment
-comment|//                    return null; // can not use BackgroundTask.wrap(Runnable) because Runnable.run() can't throw exceptions
-end_comment
-
-begin_comment
-comment|//                })
-end_comment
-
-begin_comment
-comment|//                .onSuccess(x -> connect())
-end_comment
-
-begin_comment
-comment|//                .onFailure(ex ->
-end_comment
-
-begin_comment
-comment|//                        dialogService.showErrorDialogAndWait(Localization.lang("Autodetection failed"), Localization.lang("Autodetection failed"), ex))
-end_comment
-
-begin_comment
-comment|//                .executeWith(Globals.TASK_EXECUTOR);
-end_comment
-
-begin_comment
-comment|//    }
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//    private void connectManually() {
-end_comment
-
-begin_comment
-comment|//        showManualConnectionDialog();
-end_comment
-
-begin_comment
-comment|//        if (!dialogOkPressed) {
-end_comment
-
-begin_comment
-comment|//            return;
-end_comment
-
-begin_comment
-comment|//        }
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//        connect();
-end_comment
-
-begin_comment
-comment|//    }
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//    private void connect() {
-end_comment
-
-begin_comment
-comment|//        JDialog progressDialog = null;
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//        try {
-end_comment
-
-begin_comment
-comment|//            // Add OO JARs to the classpath
-end_comment
-
-begin_comment
-comment|//            loadOpenOfficeJars(Paths.get(preferences.getInstallationPath()));
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//            // Show progress dialog:
-end_comment
-
-begin_comment
-comment|//            progressDialog = new DetectOpenOfficeInstallation(diag, preferences, dialogService)
-end_comment
-
-begin_comment
-comment|//                    .showProgressDialog(diag, Localization.lang("Connecting"), Localization.lang("Please wait..."));
-end_comment
-
-begin_comment
-comment|//            JDialog finalProgressDialog = progressDialog;
-end_comment
-
-begin_comment
-comment|//            BackgroundTask
-end_comment
-
-begin_comment
-comment|//                    .wrap(this::createBibBase)
-end_comment
-
-begin_comment
-comment|//                    .onFinished(() -> SwingUtilities.invokeLater(() -> {
-end_comment
-
-begin_comment
-comment|//                        finalProgressDialog.dispose();
-end_comment
-
-begin_comment
-comment|//                        diag.dispose();
-end_comment
-
-begin_comment
-comment|//                    }))
-end_comment
-
-begin_comment
-comment|//                    .onSuccess(ooBase -> {
-end_comment
-
-begin_comment
-comment|//                        this.ooBase = ooBase;
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//                        if (ooBase.isConnectedToDocument()) {
-end_comment
-
-begin_comment
-comment|//                            frame.output(Localization.lang("Connected to document") + ": " + ooBase.getCurrentDocumentTitle().orElse(""));
-end_comment
-
-begin_comment
-comment|//                        }
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//                        // Enable actions that depend on Connect:
-end_comment
-
-begin_comment
-comment|//                        selectDocument.setEnabled(true);
-end_comment
-
-begin_comment
-comment|//                        pushEntries.setEnabled(true);
-end_comment
-
-begin_comment
-comment|//                        pushEntriesInt.setEnabled(true);
-end_comment
-
-begin_comment
-comment|//                        pushEntriesEmpty.setEnabled(true);
-end_comment
-
-begin_comment
-comment|//                        pushEntriesAdvanced.setEnabled(true);
-end_comment
-
-begin_comment
-comment|//                        update.setEnabled(true);
-end_comment
-
-begin_comment
-comment|//                        merge.setEnabled(true);
-end_comment
-
-begin_comment
-comment|//                        manageCitations.setEnabled(true);
-end_comment
-
-begin_comment
-comment|//                        exportCitations.setEnabled(true);
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//                    })
-end_comment
-
-begin_comment
-comment|//                    .onFailure(ex ->
-end_comment
-
-begin_comment
-comment|//                            dialogService.showErrorDialogAndWait(Localization.lang("Autodetection failed"), Localization.lang("Autodetection failed"), ex))
-end_comment
-
-begin_comment
-comment|//                    .executeWith(Globals.TASK_EXECUTOR);
-end_comment
-
-begin_comment
-comment|//            diag.dispose();
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//        } catch (UnsatisfiedLinkError e) {
-end_comment
-
-begin_comment
-comment|//            LOGGER.warn("Could not connect to running OpenOffice/LibreOffice", e);
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//            DefaultTaskExecutor.runInJavaFXThread(() ->
-end_comment
-
-begin_comment
-comment|//                    dialogService.showErrorDialogAndWait(Localization.lang("Unable to connect. One possible reason is that JabRef "
-end_comment
-
-begin_comment
-comment|//                            + "and OpenOffice/LibreOffice are not both running in either 32 bit mode or 64 bit mode.")));
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//        } catch (IOException e) {
-end_comment
-
-begin_comment
-comment|//            LOGGER.warn("Could not connect to running OpenOffice/LibreOffice", e);
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//            DefaultTaskExecutor.runInJavaFXThread(() ->
-end_comment
-
-begin_comment
-comment|//                    dialogService.showErrorDialogAndWait(Localization.lang("Could not connect to running OpenOffice/LibreOffice."),
-end_comment
-
-begin_comment
-comment|//                            Localization.lang("Could not connect to running OpenOffice/LibreOffice.") + "\n"
-end_comment
-
-begin_comment
-comment|//                                    + Localization.lang("Make sure you have installed OpenOffice/LibreOffice with Java support.") + "\n"
-end_comment
-
-begin_comment
-comment|//                                    + Localization.lang("If connecting manually, please verify program and library paths.")
-end_comment
-
-begin_comment
-comment|//                                    + "\n" + "\n" + Localization.lang("Error message:"),
-end_comment
-
-begin_comment
-comment|//                            e));
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//        } finally {
-end_comment
-
-begin_comment
-comment|//            if (progressDialog != null) {
-end_comment
-
-begin_comment
-comment|//                progressDialog.dispose();
-end_comment
-
-begin_comment
-comment|//            }
-end_comment
-
-begin_comment
-comment|//        }
-end_comment
-
-begin_comment
-comment|//    }
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//    private void loadOpenOfficeJars(Path configurationPath) throws IOException {
-end_comment
-
-begin_comment
-comment|//        List<Optional<Path>> filePaths = OpenOfficePreferences.OO_JARS.stream().map(jar -> FileUtil.find(jar, configurationPath)).collect(Collectors.toList());
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//        if (!filePaths.stream().allMatch(Optional::isPresent)) {
-end_comment
-
-begin_comment
-comment|//            throw new IOException("(Not all) required Open Office Jars were found inside installation path.");
-end_comment
-
-begin_comment
-comment|//        }
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//        List<URL> jarURLs = new ArrayList<>(OpenOfficePreferences.OO_JARS.size());
-end_comment
-
-begin_comment
-comment|//        for (Optional<Path> jarPath : filePaths) {
-end_comment
-
-begin_comment
-comment|//            jarURLs.add((jarPath.get().toUri().toURL()));
-end_comment
-
-begin_comment
-comment|//        }
-end_comment
-
-begin_comment
-comment|//        addURL(jarURLs);
-end_comment
-
-begin_comment
-comment|//    }
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//    private OOBibBase createBibBase() throws IOException, InvocationTargetException, IllegalAccessException,
-end_comment
-
-begin_comment
-comment|//            WrappedTargetException, BootstrapException, UnknownPropertyException, NoDocumentException,
-end_comment
-
-begin_comment
-comment|//            NoSuchElementException, CreationException {
-end_comment
-
-begin_comment
-comment|//        // Connect
-end_comment
-
-begin_comment
-comment|//        return new OOBibBase(preferences.getExecutablePath(), true);
-end_comment
-
-begin_comment
-comment|//    }
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//    private static void addURL(List<URL> jarList) throws IOException {
-end_comment
-
-begin_comment
-comment|//        URLClassLoader sysloader = (URLClassLoader) ClassLoader.getSystemClassLoader();
-end_comment
-
-begin_comment
-comment|//        Class<URLClassLoader> sysclass = URLClassLoader.class;
-end_comment
-
-begin_comment
-comment|//        try {
-end_comment
-
-begin_comment
-comment|//            Method method = sysclass.getDeclaredMethod("addURL", URL.class);
-end_comment
-
-begin_comment
-comment|//            method.setAccessible(true);
-end_comment
-
-begin_comment
-comment|//            for (URL anU : jarList) {
-end_comment
-
-begin_comment
-comment|//                method.invoke(sysloader, anU);
-end_comment
-
-begin_comment
-comment|//            }
-end_comment
-
-begin_comment
-comment|//        } catch (SecurityException | NoSuchMethodException | IllegalAccessException | IllegalArgumentException |
-end_comment
-
-begin_comment
-comment|//                InvocationTargetException e) {
-end_comment
-
-begin_comment
-comment|//            LOGGER.error("Could not add URL to system classloader", e);
-end_comment
-
-begin_comment
-comment|//            throw new IOException("Error, could not add URL to system classloader", e);
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//        }
-end_comment
-
-begin_comment
-comment|//    }
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//    private void showManualConnectionDialog() {
-end_comment
-
-begin_comment
-comment|//        dialogOkPressed = false;
-end_comment
-
-begin_comment
-comment|//        final JDialog cDiag = new JDialog((JFrame) null, Localization.lang("Set connection parameters"), true);
-end_comment
-
-begin_comment
-comment|//        final NativeDesktop nativeDesktop = JabRefDesktop.getNativeDesktop();
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//        final DialogService dialogService = this.dialogService;
-end_comment
-
-begin_comment
-comment|//        DirectoryDialogConfiguration dirDialogConfiguration = new DirectoryDialogConfiguration.Builder()
-end_comment
-
-begin_comment
-comment|//                .withInitialDirectory(nativeDesktop.getApplicationDirectory())
-end_comment
-
-begin_comment
-comment|//                .build();
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//        FileDialogConfiguration fileDialogConfiguration = new FileDialogConfiguration.Builder()
-end_comment
-
-begin_comment
-comment|//                .withInitialDirectory(nativeDesktop.getApplicationDirectory())
-end_comment
-
-begin_comment
-comment|//                .build();
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//        // Path fields
-end_comment
-
-begin_comment
-comment|//        final JTextField ooPath = new JTextField(30);
-end_comment
-
-begin_comment
-comment|//        JButton browseOOPath = new JButton(Localization.lang("Browse"));
-end_comment
-
-begin_comment
-comment|//        ooPath.setText(preferences.getInstallationPath());
-end_comment
-
-begin_comment
-comment|//        browseOOPath.addActionListener(e -> DefaultTaskExecutor.runInJavaFXThread(() -> dialogService.showDirectorySelectionDialog(dirDialogConfiguration))
-end_comment
-
-begin_comment
-comment|//                .ifPresent(f -> ooPath.setText(f.toAbsolutePath().toString())));
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//        final JTextField ooExec = new JTextField(30);
-end_comment
-
-begin_comment
-comment|//        JButton browseOOExec = new JButton(Localization.lang("Browse"));
-end_comment
-
-begin_comment
-comment|//        ooExec.setText(preferences.getExecutablePath());
-end_comment
-
-begin_comment
-comment|//        browseOOExec.addActionListener(e -> DefaultTaskExecutor.runInJavaFXThread(() -> dialogService.showFileOpenDialog(fileDialogConfiguration))
-end_comment
-
-begin_comment
-comment|//                .ifPresent(f -> ooExec.setText(f.toAbsolutePath().toString())));
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//        final JTextField ooJars = new JTextField(30);
-end_comment
-
-begin_comment
-comment|//        ooJars.setText(preferences.getJarsPath());
-end_comment
-
-begin_comment
-comment|//        JButton browseOOJars = new JButton(Localization.lang("Browse"));
-end_comment
-
-begin_comment
-comment|//        browseOOJars.addActionListener(e -> DefaultTaskExecutor.runInJavaFXThread(() -> dialogService.showDirectorySelectionDialog(dirDialogConfiguration))
-end_comment
-
-begin_comment
-comment|//                .ifPresent(f -> ooJars.setText(f.toAbsolutePath().toString())));
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//        FormBuilder builder = FormBuilder.create()
-end_comment
-
-begin_comment
-comment|//                .layout(new FormLayout("left:pref, 4dlu, fill:pref:grow, 4dlu, fill:pref", "pref"));
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//        if (OS.WINDOWS || OS.OS_X) {
-end_comment
-
-begin_comment
-comment|//            builder.add(Localization.lang("Path to OpenOffice/LibreOffice directory")).xy(1, 1);
-end_comment
-
-begin_comment
-comment|//            builder.add(ooPath).xy(3, 1);
-end_comment
-
-begin_comment
-comment|//            builder.add(browseOOPath).xy(5, 1);
-end_comment
-
-begin_comment
-comment|//        } else {
-end_comment
-
-begin_comment
-comment|//            builder.add(Localization.lang("Path to OpenOffice/LibreOffice executable")).xy(1, 1);
-end_comment
-
-begin_comment
-comment|//            builder.add(ooExec).xy(3, 1);
-end_comment
-
-begin_comment
-comment|//            builder.add(browseOOExec).xy(5, 1);
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//            builder.appendRows("4dlu, pref");
-end_comment
-
-begin_comment
-comment|//            builder.add(Localization.lang("Path to OpenOffice/LibreOffice library dir")).xy(1, 3);
-end_comment
-
-begin_comment
-comment|//            builder.add(ooJars).xy(3, 3);
-end_comment
-
-begin_comment
-comment|//            builder.add(browseOOJars).xy(5, 3);
-end_comment
-
-begin_comment
-comment|//        }
-end_comment
-
-begin_comment
-comment|//        builder.padding("5dlu, 5dlu, 5dlu, 5dlu");
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//        cDiag.getContentPane().add(builder.getPanel(), BorderLayout.CENTER);
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//        // Buttons
-end_comment
-
-begin_comment
-comment|//        JButton ok = new JButton(Localization.lang("OK"));
-end_comment
-
-begin_comment
-comment|//        JButton cancel = new JButton(Localization.lang("Cancel"));
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//        ok.addActionListener(e -> {
-end_comment
-
-begin_comment
-comment|//            if (OS.WINDOWS || OS.OS_X) {
-end_comment
-
-begin_comment
-comment|//                preferences.updateConnectionParams(ooPath.getText(), ooPath.getText(), ooPath.getText());
-end_comment
-
-begin_comment
-comment|//            } else {
-end_comment
-
-begin_comment
-comment|//                preferences.updateConnectionParams(ooPath.getText(), ooExec.getText(), ooJars.getText());
-end_comment
-
-begin_comment
-comment|//            }
-end_comment
-
-begin_comment
-comment|//            dialogOkPressed = true;
-end_comment
-
-begin_comment
-comment|//            cDiag.dispose();
-end_comment
-
-begin_comment
-comment|//        });
-end_comment
-
-begin_comment
-comment|//        cancel.addActionListener(e -> cDiag.dispose());
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//        ButtonBarBuilder bb = new ButtonBarBuilder();
-end_comment
-
-begin_comment
-comment|//        bb.addGlue();
-end_comment
-
-begin_comment
-comment|//        bb.addRelatedGap();
-end_comment
-
-begin_comment
-comment|//        bb.addButton(ok);
-end_comment
-
-begin_comment
-comment|//        bb.addButton(cancel);
-end_comment
-
-begin_comment
-comment|//        bb.addGlue();
-end_comment
-
-begin_comment
-comment|//        bb.padding("5dlu, 5dlu, 5dlu, 5dlu");
-end_comment
-
-begin_comment
-comment|//        cDiag.getContentPane().add(bb.getPanel(), BorderLayout.SOUTH);
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//        // Finish and show dirDialog
-end_comment
-
-begin_comment
-comment|//        cDiag.pack();
-end_comment
-
-begin_comment
-comment|//        cDiag.setVisible(true);
-end_comment
-
-begin_comment
-comment|//    }
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//    private void pushEntries(boolean inParenthesisIn, boolean withText, boolean addPageInfo) {
-end_comment
-
-begin_comment
-comment|//        if (!ooBase.isConnectedToDocument()) {
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//            DefaultTaskExecutor.runInJavaFXThread(() -> dialogService.showErrorDialogAndWait(
-end_comment
-
-begin_comment
-comment|//                    Localization.lang("Error pushing entries"), Localization.lang("Not connected to any Writer document. Please"
-end_comment
-
-begin_comment
-comment|//                            + " make sure a document is open, and use the 'Select Writer document' button to connect to it.")));
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//            return;
-end_comment
-
-begin_comment
-comment|//        }
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//        Boolean inParenthesis = inParenthesisIn;
-end_comment
-
-begin_comment
-comment|//        String pageInfo = null;
-end_comment
-
-begin_comment
-comment|//        if (addPageInfo) {
-end_comment
-
-begin_comment
-comment|//            AdvancedCiteDialog citeDialog = new AdvancedCiteDialog(frame);
-end_comment
-
-begin_comment
-comment|//            citeDialog.showDialog();
-end_comment
-
-begin_comment
-comment|//            if (citeDialog.canceled()) {
-end_comment
-
-begin_comment
-comment|//                return;
-end_comment
-
-begin_comment
-comment|//            }
-end_comment
-
-begin_comment
-comment|//            if (!citeDialog.getPageInfo().isEmpty()) {
-end_comment
-
-begin_comment
-comment|//                pageInfo = citeDialog.getPageInfo();
-end_comment
-
-begin_comment
-comment|//            }
-end_comment
-
-begin_comment
-comment|//            inParenthesis = citeDialog.isInParenthesisCite();
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//        }
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//        BasePanel panel = frame.getCurrentBasePanel();
-end_comment
-
-begin_comment
-comment|//        if (panel != null) {
-end_comment
-
-begin_comment
-comment|//            final BibDatabase database = panel.getDatabase();
-end_comment
-
-begin_comment
-comment|//            List<BibEntry> entries = panel.getSelectedEntries();
-end_comment
-
-begin_comment
-comment|//            if (!entries.isEmpty()&& checkThatEntriesHaveKeys(entries)) {
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//                try {
-end_comment
-
-begin_comment
-comment|//                    if (style == null) {
-end_comment
-
-begin_comment
-comment|//                        style = loader.getUsedStyle();
-end_comment
-
-begin_comment
-comment|//                    }
-end_comment
-
-begin_comment
-comment|//                    ooBase.insertEntry(entries, database, getBaseList(), style, inParenthesis, withText, pageInfo,
-end_comment
-
-begin_comment
-comment|//                            preferences.getSyncWhenCiting());
-end_comment
-
-begin_comment
-comment|//                } catch (FileNotFoundException ex) {
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//                    DefaultTaskExecutor.runInJavaFXThread(() -> dialogService.showErrorDialogAndWait(
-end_comment
-
-begin_comment
-comment|//                            Localization.lang("No valid style file defined"),
-end_comment
-
-begin_comment
-comment|//                            Localization.lang("You must select either a valid style file, or use one of the default styles.")));
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//                    LOGGER.warn("Problem with style file", ex);
-end_comment
-
-begin_comment
-comment|//                } catch (ConnectionLostException ex) {
-end_comment
-
-begin_comment
-comment|//                    showConnectionLostErrorMessage();
-end_comment
-
-begin_comment
-comment|//                } catch (UndefinedCharacterFormatException ex) {
-end_comment
-
-begin_comment
-comment|//                    reportUndefinedCharacterFormat(ex);
-end_comment
-
-begin_comment
-comment|//                } catch (UndefinedParagraphFormatException ex) {
-end_comment
-
-begin_comment
-comment|//                    reportUndefinedParagraphFormat(ex);
-end_comment
-
-begin_comment
-comment|//                } catch (com.sun.star.lang.IllegalArgumentException | UnknownPropertyException | PropertyVetoException |
-end_comment
-
-begin_comment
-comment|//                        CreationException | NoSuchElementException | WrappedTargetException | IOException |
-end_comment
-
-begin_comment
-comment|//                        BibEntryNotFoundException | IllegalTypeException | PropertyExistException |
-end_comment
-
-begin_comment
-comment|//                        NotRemoveableException ex) {
-end_comment
-
-begin_comment
-comment|//                    LOGGER.warn("Could not insert entry", ex);
-end_comment
-
-begin_comment
-comment|//                }
-end_comment
-
-begin_comment
-comment|//            }
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//        }
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//    }
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//    /**
-end_comment
-
-begin_comment
-comment|//     * Check that all entries in the list have BibTeX keys, if not ask if they should be generated
-end_comment
-
-begin_comment
-comment|//     *
-end_comment
-
-begin_comment
-comment|//     * @param entries A list of entries to be checked
-end_comment
-
-begin_comment
-comment|//     * @return true if all entries have BibTeX keys, if it so may be after generating them
-end_comment
-
-begin_comment
-comment|//     */
-end_comment
-
-begin_comment
-comment|//    private boolean checkThatEntriesHaveKeys(List<BibEntry> entries) {
-end_comment
-
-begin_comment
-comment|//        // Check if there are empty keys
-end_comment
-
-begin_comment
-comment|//        boolean emptyKeys = false;
-end_comment
-
-begin_comment
-comment|//        for (BibEntry entry : entries) {
-end_comment
-
-begin_comment
-comment|//            if (!entry.getCiteKeyOptional().isPresent()) {
-end_comment
-
-begin_comment
-comment|//                // Found one, no need to look further for now
-end_comment
-
-begin_comment
-comment|//                emptyKeys = true;
-end_comment
-
-begin_comment
-comment|//                break;
-end_comment
-
-begin_comment
-comment|//            }
-end_comment
-
-begin_comment
-comment|//        }
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//        // If no empty keys, return true
-end_comment
-
-begin_comment
-comment|//        if (!emptyKeys) {
-end_comment
-
-begin_comment
-comment|//            return true;
-end_comment
-
-begin_comment
-comment|//        }
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//        // Ask if keys should be generated
-end_comment
-
-begin_comment
-comment|//        boolean citePressed = dialogService.showConfirmationDialogAndWait(Localization.lang("Cite"),
-end_comment
-
-begin_comment
-comment|//                Localization.lang("Cannot cite entries without BibTeX keys. Generate keys now?"),
-end_comment
-
-begin_comment
-comment|//                Localization.lang("Generate keys"),
-end_comment
-
-begin_comment
-comment|//                Localization.lang("Cancel"));
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//        BasePanel panel = frame.getCurrentBasePanel();
-end_comment
-
-begin_comment
-comment|//        if (citePressed&& (panel != null)) {
-end_comment
-
-begin_comment
-comment|//            // Generate keys
-end_comment
-
-begin_comment
-comment|//            BibtexKeyPatternPreferences prefs = Globals.prefs.getBibtexKeyPatternPreferences();
-end_comment
-
-begin_comment
-comment|//            NamedCompound undoCompound = new NamedCompound(Localization.lang("Cite"));
-end_comment
-
-begin_comment
-comment|//            for (BibEntry entry : entries) {
-end_comment
-
-begin_comment
-comment|//                if (!entry.getCiteKeyOptional().isPresent()) {
-end_comment
-
-begin_comment
-comment|//                    // Generate key
-end_comment
-
-begin_comment
-comment|//                    new BibtexKeyGenerator(panel.getBibDatabaseContext(), prefs)
-end_comment
-
-begin_comment
-comment|//                            .generateAndSetKey(entry)
-end_comment
-
-begin_comment
-comment|//                            .ifPresent(change -> undoCompound.addEdit(new UndoableKeyChange(change)));
-end_comment
-
-begin_comment
-comment|//                }
-end_comment
-
-begin_comment
-comment|//            }
-end_comment
-
-begin_comment
-comment|//            undoCompound.end();
-end_comment
-
-begin_comment
-comment|//            // Add all undos
-end_comment
-
-begin_comment
-comment|//            panel.getUndoManager().addEdit(undoCompound);
-end_comment
-
-begin_comment
-comment|//            // Now every entry has a key
-end_comment
-
-begin_comment
-comment|//            return true;
-end_comment
-
-begin_comment
-comment|//        } else {
-end_comment
-
-begin_comment
-comment|//            // No, we canceled (or there is no panel to get the database from, highly unlikely)
-end_comment
-
-begin_comment
-comment|//            return false;
-end_comment
-
-begin_comment
-comment|//        }
-end_comment
-
-begin_comment
-comment|//    }
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//    private void showConnectionLostErrorMessage() {
-end_comment
-
-begin_comment
-comment|//        DefaultTaskExecutor.runInJavaFXThread(() -> dialogService.showErrorDialogAndWait(Localization.lang("Connection lost"),
-end_comment
-
-begin_comment
-comment|//                Localization.lang("Connection to OpenOffice/LibreOffice has been lost. "
-end_comment
-
-begin_comment
-comment|//                        + "Please make sure OpenOffice/LibreOffice is running, and try to reconnect.")));
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//    }
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//    private void reportUndefinedParagraphFormat(UndefinedParagraphFormatException ex) {
-end_comment
-
-begin_comment
-comment|//        DefaultTaskExecutor.runInJavaFXThread(() -> dialogService.showErrorDialogAndWait(Localization.lang("Undefined paragraph format"),
-end_comment
-
-begin_comment
-comment|//                Localization.lang("Your style file specifies the paragraph format '%0', "
-end_comment
-
-begin_comment
-comment|//                        + "which is undefined in your current OpenOffice/LibreOffice document.",
-end_comment
-
-begin_comment
-comment|//                        ex.getFormatName())
-end_comment
-
-begin_comment
-comment|//                        + "\n" +
-end_comment
-
-begin_comment
-comment|//                        Localization.lang("The paragraph format is controlled by the property 'ReferenceParagraphFormat' or 'ReferenceHeaderParagraphFormat' in the style file.")));
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//    }
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//    private void reportUndefinedCharacterFormat(UndefinedCharacterFormatException ex) {
-end_comment
-
-begin_comment
-comment|//        DefaultTaskExecutor.runInJavaFXThread(() -> dialogService.showErrorDialogAndWait(Localization.lang("Undefined character format"),
-end_comment
-
-begin_comment
-comment|//                Localization.lang(
-end_comment
-
-begin_comment
-comment|//                        "Your style file specifies the character format '%0', "
-end_comment
-
-begin_comment
-comment|//                                + "which is undefined in your current OpenOffice/LibreOffice document.",
-end_comment
-
-begin_comment
-comment|//                        ex.getFormatName())
-end_comment
-
-begin_comment
-comment|//                        + "\n"
-end_comment
-
-begin_comment
-comment|//                        + Localization.lang("The character format is controlled by the citation property 'CitationCharacterFormat' in the style file.")
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//        ));
-end_comment
-
-begin_comment
-comment|//    }
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//    private void showSettingsPopup() {
-end_comment
-
-begin_comment
-comment|//        JPopupMenu menu = new JPopupMenu();
-end_comment
-
-begin_comment
-comment|//        final JCheckBoxMenuItem autoSync = new JCheckBoxMenuItem(
-end_comment
-
-begin_comment
-comment|//                Localization.lang("Automatically sync bibliography when inserting citations"),
-end_comment
-
-begin_comment
-comment|//                preferences.getSyncWhenCiting());
-end_comment
-
-begin_comment
-comment|//        final JRadioButtonMenuItem useActiveBase = new JRadioButtonMenuItem(
-end_comment
-
-begin_comment
-comment|//                Localization.lang("Look up BibTeX entries in the active tab only"));
-end_comment
-
-begin_comment
-comment|//        final JRadioButtonMenuItem useAllBases = new JRadioButtonMenuItem(
-end_comment
-
-begin_comment
-comment|//                Localization.lang("Look up BibTeX entries in all open libraries"));
-end_comment
-
-begin_comment
-comment|//        final JMenuItem clearConnectionSettings = new JMenuItem(Localization.lang("Clear connection settings"));
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//        ButtonGroup lookupButtonGroup = new ButtonGroup();
-end_comment
-
-begin_comment
-comment|//        lookupButtonGroup.add(useActiveBase);
-end_comment
-
-begin_comment
-comment|//        lookupButtonGroup.add(useAllBases);
-end_comment
-
-begin_comment
-comment|//        if (preferences.getUseAllDatabases()) {
-end_comment
-
-begin_comment
-comment|//            useAllBases.setSelected(true);
-end_comment
-
-begin_comment
-comment|//        } else {
-end_comment
-
-begin_comment
-comment|//            useActiveBase.setSelected(true);
-end_comment
-
-begin_comment
-comment|//        }
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//        autoSync.addActionListener(e -> {
-end_comment
-
-begin_comment
-comment|//            preferences.setSyncWhenCiting(autoSync.isSelected());
-end_comment
-
-begin_comment
-comment|//            Globals.prefs.setOpenOfficePreferences(preferences);
-end_comment
-
-begin_comment
-comment|//        });
-end_comment
-
-begin_comment
-comment|//        useAllBases.addActionListener(e -> {
-end_comment
-
-begin_comment
-comment|//            preferences.setUseAllDatabases(useAllBases.isSelected());
-end_comment
-
-begin_comment
-comment|//            Globals.prefs.setOpenOfficePreferences(preferences);
-end_comment
-
-begin_comment
-comment|//        });
-end_comment
-
-begin_comment
-comment|//        useActiveBase.addActionListener(e -> {
-end_comment
-
-begin_comment
-comment|//            preferences.setUseAllDatabases(!useActiveBase.isSelected());
-end_comment
-
-begin_comment
-comment|//            Globals.prefs.setOpenOfficePreferences(preferences);
-end_comment
-
-begin_comment
-comment|//        });
-end_comment
-
-begin_comment
-comment|//        clearConnectionSettings.addActionListener(e -> {
-end_comment
-
-begin_comment
-comment|//            preferences.clearConnectionSettings();
-end_comment
-
-begin_comment
-comment|//            Globals.prefs.setOpenOfficePreferences(preferences);
-end_comment
-
-begin_comment
-comment|//        });
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//        menu.add(autoSync);
-end_comment
-
-begin_comment
-comment|//        menu.addSeparator();
-end_comment
-
-begin_comment
-comment|//        menu.add(useActiveBase);
-end_comment
-
-begin_comment
-comment|//        menu.add(useAllBases);
-end_comment
-
-begin_comment
-comment|//        menu.addSeparator();
-end_comment
-
-begin_comment
-comment|//        menu.add(clearConnectionSettings);
-end_comment
-
-begin_comment
-comment|//        menu.show(settingsB, 0, settingsB.getHeight());
-end_comment
-
-begin_comment
-comment|//    }
-end_comment
-
-begin_comment
-comment|//}
-end_comment
+begin_package
+DECL|package|org.jabref.gui.openoffice
+package|package
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|openoffice
+package|;
+end_package
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|FileNotFoundException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|lang
+operator|.
+name|reflect
+operator|.
+name|InvocationTargetException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|lang
+operator|.
+name|reflect
+operator|.
+name|Method
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|net
+operator|.
+name|URL
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|net
+operator|.
+name|URLClassLoader
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|file
+operator|.
+name|Path
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|file
+operator|.
+name|Paths
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|stream
+operator|.
+name|Collectors
+import|;
+end_import
+
+begin_import
+import|import
+name|javafx
+operator|.
+name|concurrent
+operator|.
+name|Task
+import|;
+end_import
+
+begin_import
+import|import
+name|javafx
+operator|.
+name|geometry
+operator|.
+name|Side
+import|;
+end_import
+
+begin_import
+import|import
+name|javafx
+operator|.
+name|scene
+operator|.
+name|Node
+import|;
+end_import
+
+begin_import
+import|import
+name|javafx
+operator|.
+name|scene
+operator|.
+name|control
+operator|.
+name|Button
+import|;
+end_import
+
+begin_import
+import|import
+name|javafx
+operator|.
+name|scene
+operator|.
+name|control
+operator|.
+name|CheckMenuItem
+import|;
+end_import
+
+begin_import
+import|import
+name|javafx
+operator|.
+name|scene
+operator|.
+name|control
+operator|.
+name|ContextMenu
+import|;
+end_import
+
+begin_import
+import|import
+name|javafx
+operator|.
+name|scene
+operator|.
+name|control
+operator|.
+name|MenuItem
+import|;
+end_import
+
+begin_import
+import|import
+name|javafx
+operator|.
+name|scene
+operator|.
+name|control
+operator|.
+name|ProgressBar
+import|;
+end_import
+
+begin_import
+import|import
+name|javafx
+operator|.
+name|scene
+operator|.
+name|control
+operator|.
+name|RadioMenuItem
+import|;
+end_import
+
+begin_import
+import|import
+name|javafx
+operator|.
+name|scene
+operator|.
+name|control
+operator|.
+name|SeparatorMenuItem
+import|;
+end_import
+
+begin_import
+import|import
+name|javafx
+operator|.
+name|scene
+operator|.
+name|control
+operator|.
+name|ToggleGroup
+import|;
+end_import
+
+begin_import
+import|import
+name|javafx
+operator|.
+name|scene
+operator|.
+name|control
+operator|.
+name|Tooltip
+import|;
+end_import
+
+begin_import
+import|import
+name|javafx
+operator|.
+name|scene
+operator|.
+name|layout
+operator|.
+name|HBox
+import|;
+end_import
+
+begin_import
+import|import
+name|javafx
+operator|.
+name|scene
+operator|.
+name|layout
+operator|.
+name|Priority
+import|;
+end_import
+
+begin_import
+import|import
+name|javafx
+operator|.
+name|scene
+operator|.
+name|layout
+operator|.
+name|VBox
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|Globals
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|BasePanel
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|DialogService
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|JabRefFrame
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|actions
+operator|.
+name|ActionFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|actions
+operator|.
+name|StandardActions
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|help
+operator|.
+name|HelpAction
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|icon
+operator|.
+name|IconTheme
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|keyboard
+operator|.
+name|KeyBindingRepository
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|undo
+operator|.
+name|NamedCompound
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|undo
+operator|.
+name|UndoableKeyChange
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|util
+operator|.
+name|TaskExecutor
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|bibtexkeypattern
+operator|.
+name|BibtexKeyGenerator
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|bibtexkeypattern
+operator|.
+name|BibtexKeyPatternPreferences
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|help
+operator|.
+name|HelpFile
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|openoffice
+operator|.
+name|OOBibStyle
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|openoffice
+operator|.
+name|OpenOfficePreferences
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|openoffice
+operator|.
+name|StyleLoader
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|openoffice
+operator|.
+name|UndefinedParagraphFormatException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|util
+operator|.
+name|io
+operator|.
+name|FileUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|Defaults
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|database
+operator|.
+name|BibDatabase
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|database
+operator|.
+name|BibDatabaseContext
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|BibEntry
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|preferences
+operator|.
+name|JabRefPreferences
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|sun
+operator|.
+name|star
+operator|.
+name|beans
+operator|.
+name|IllegalTypeException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|sun
+operator|.
+name|star
+operator|.
+name|beans
+operator|.
+name|NotRemoveableException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|sun
+operator|.
+name|star
+operator|.
+name|beans
+operator|.
+name|PropertyExistException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|sun
+operator|.
+name|star
+operator|.
+name|beans
+operator|.
+name|PropertyVetoException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|sun
+operator|.
+name|star
+operator|.
+name|beans
+operator|.
+name|UnknownPropertyException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|sun
+operator|.
+name|star
+operator|.
+name|comp
+operator|.
+name|helper
+operator|.
+name|BootstrapException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|sun
+operator|.
+name|star
+operator|.
+name|container
+operator|.
+name|NoSuchElementException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|sun
+operator|.
+name|star
+operator|.
+name|lang
+operator|.
+name|WrappedTargetException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
+begin_comment
+comment|/**  * Pane to manage the interaction between JabRef and OpenOffice.  */
+end_comment
+
+begin_class
+DECL|class|OpenOfficePanel
+specifier|public
+class|class
+name|OpenOfficePanel
+block|{
+DECL|field|LOGGER
+specifier|private
+specifier|static
+specifier|final
+name|Logger
+name|LOGGER
+init|=
+name|LoggerFactory
+operator|.
+name|getLogger
+argument_list|(
+name|OpenOfficePanel
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
+DECL|field|dialogService
+specifier|private
+specifier|final
+name|DialogService
+name|dialogService
+decl_stmt|;
+DECL|field|connect
+specifier|private
+specifier|final
+name|Button
+name|connect
+decl_stmt|;
+DECL|field|manualConnect
+specifier|private
+specifier|final
+name|Button
+name|manualConnect
+decl_stmt|;
+DECL|field|selectDocument
+specifier|private
+specifier|final
+name|Button
+name|selectDocument
+decl_stmt|;
+DECL|field|setStyleFile
+specifier|private
+specifier|final
+name|Button
+name|setStyleFile
+init|=
+operator|new
+name|Button
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Select style"
+argument_list|)
+argument_list|)
+decl_stmt|;
+DECL|field|pushEntries
+specifier|private
+specifier|final
+name|Button
+name|pushEntries
+init|=
+operator|new
+name|Button
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Cite"
+argument_list|)
+argument_list|)
+decl_stmt|;
+DECL|field|pushEntriesInt
+specifier|private
+specifier|final
+name|Button
+name|pushEntriesInt
+init|=
+operator|new
+name|Button
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Cite in-text"
+argument_list|)
+argument_list|)
+decl_stmt|;
+DECL|field|pushEntriesEmpty
+specifier|private
+specifier|final
+name|Button
+name|pushEntriesEmpty
+init|=
+operator|new
+name|Button
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Insert empty citation"
+argument_list|)
+argument_list|)
+decl_stmt|;
+DECL|field|pushEntriesAdvanced
+specifier|private
+specifier|final
+name|Button
+name|pushEntriesAdvanced
+init|=
+operator|new
+name|Button
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Cite special"
+argument_list|)
+argument_list|)
+decl_stmt|;
+DECL|field|update
+specifier|private
+specifier|final
+name|Button
+name|update
+decl_stmt|;
+DECL|field|merge
+specifier|private
+specifier|final
+name|Button
+name|merge
+init|=
+operator|new
+name|Button
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Merge citations"
+argument_list|)
+argument_list|)
+decl_stmt|;
+DECL|field|manageCitations
+specifier|private
+specifier|final
+name|Button
+name|manageCitations
+init|=
+operator|new
+name|Button
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Manage citations"
+argument_list|)
+argument_list|)
+decl_stmt|;
+DECL|field|exportCitations
+specifier|private
+specifier|final
+name|Button
+name|exportCitations
+init|=
+operator|new
+name|Button
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Export cited"
+argument_list|)
+argument_list|)
+decl_stmt|;
+DECL|field|settingsB
+specifier|private
+specifier|final
+name|Button
+name|settingsB
+init|=
+operator|new
+name|Button
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Settings"
+argument_list|)
+argument_list|)
+decl_stmt|;
+DECL|field|help
+specifier|private
+specifier|final
+name|Button
+name|help
+decl_stmt|;
+DECL|field|vbox
+specifier|private
+specifier|final
+name|VBox
+name|vbox
+init|=
+operator|new
+name|VBox
+argument_list|()
+decl_stmt|;
+DECL|field|ooBase
+specifier|private
+name|OOBibBase
+name|ooBase
+decl_stmt|;
+DECL|field|frame
+specifier|private
+specifier|final
+name|JabRefFrame
+name|frame
+decl_stmt|;
+DECL|field|style
+specifier|private
+name|OOBibStyle
+name|style
+decl_stmt|;
+DECL|field|ooPrefs
+specifier|private
+name|OpenOfficePreferences
+name|ooPrefs
+decl_stmt|;
+DECL|field|jabRefPreferences
+specifier|private
+specifier|final
+name|JabRefPreferences
+name|jabRefPreferences
+decl_stmt|;
+DECL|field|loader
+specifier|private
+specifier|final
+name|StyleLoader
+name|loader
+decl_stmt|;
+DECL|field|taskExecutor
+specifier|private
+specifier|final
+name|TaskExecutor
+name|taskExecutor
+decl_stmt|;
+DECL|method|OpenOfficePanel (JabRefFrame frame, JabRefPreferences jabRefPreferences, OpenOfficePreferences ooPrefs, KeyBindingRepository keyBindingRepository)
+specifier|public
+name|OpenOfficePanel
+parameter_list|(
+name|JabRefFrame
+name|frame
+parameter_list|,
+name|JabRefPreferences
+name|jabRefPreferences
+parameter_list|,
+name|OpenOfficePreferences
+name|ooPrefs
+parameter_list|,
+name|KeyBindingRepository
+name|keyBindingRepository
+parameter_list|)
+block|{
+name|ActionFactory
+name|factory
+init|=
+operator|new
+name|ActionFactory
+argument_list|(
+name|keyBindingRepository
+argument_list|)
+decl_stmt|;
+name|this
+operator|.
+name|frame
+operator|=
+name|frame
+expr_stmt|;
+name|this
+operator|.
+name|ooPrefs
+operator|=
+name|ooPrefs
+expr_stmt|;
+name|this
+operator|.
+name|jabRefPreferences
+operator|=
+name|jabRefPreferences
+expr_stmt|;
+name|this
+operator|.
+name|taskExecutor
+operator|=
+name|Globals
+operator|.
+name|TASK_EXECUTOR
+expr_stmt|;
+name|dialogService
+operator|=
+name|frame
+operator|.
+name|getDialogService
+argument_list|()
+expr_stmt|;
+name|connect
+operator|=
+operator|new
+name|Button
+argument_list|()
+expr_stmt|;
+name|connect
+operator|.
+name|setGraphic
+argument_list|(
+name|IconTheme
+operator|.
+name|JabRefIcons
+operator|.
+name|CONNECT_OPEN_OFFICE
+operator|.
+name|getGraphicNode
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|connect
+operator|.
+name|setTooltip
+argument_list|(
+operator|new
+name|Tooltip
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Connect"
+argument_list|)
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|connect
+operator|.
+name|setMaxWidth
+argument_list|(
+name|Double
+operator|.
+name|MAX_VALUE
+argument_list|)
+expr_stmt|;
+name|manualConnect
+operator|=
+operator|new
+name|Button
+argument_list|()
+expr_stmt|;
+name|manualConnect
+operator|.
+name|setGraphic
+argument_list|(
+name|IconTheme
+operator|.
+name|JabRefIcons
+operator|.
+name|CONNECT_OPEN_OFFICE
+operator|.
+name|getGraphicNode
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|manualConnect
+operator|.
+name|setTooltip
+argument_list|(
+operator|new
+name|Tooltip
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Manual connect"
+argument_list|)
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|manualConnect
+operator|.
+name|setMaxWidth
+argument_list|(
+name|Double
+operator|.
+name|MAX_VALUE
+argument_list|)
+expr_stmt|;
+name|HelpAction
+name|helpCommand
+init|=
+operator|new
+name|HelpAction
+argument_list|(
+name|HelpFile
+operator|.
+name|OPENOFFICE_LIBREOFFICE
+argument_list|)
+decl_stmt|;
+name|help
+operator|=
+name|factory
+operator|.
+name|createIconButton
+argument_list|(
+name|StandardActions
+operator|.
+name|HELP
+argument_list|,
+name|helpCommand
+operator|.
+name|getCommand
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|help
+operator|.
+name|setMaxWidth
+argument_list|(
+name|Double
+operator|.
+name|MAX_VALUE
+argument_list|)
+expr_stmt|;
+name|selectDocument
+operator|=
+operator|new
+name|Button
+argument_list|()
+expr_stmt|;
+name|selectDocument
+operator|.
+name|setGraphic
+argument_list|(
+name|IconTheme
+operator|.
+name|JabRefIcons
+operator|.
+name|OPEN
+operator|.
+name|getGraphicNode
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|selectDocument
+operator|.
+name|setTooltip
+argument_list|(
+operator|new
+name|Tooltip
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Select Writer document"
+argument_list|)
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|selectDocument
+operator|.
+name|setMaxWidth
+argument_list|(
+name|Double
+operator|.
+name|MAX_VALUE
+argument_list|)
+expr_stmt|;
+name|update
+operator|=
+operator|new
+name|Button
+argument_list|()
+expr_stmt|;
+name|update
+operator|.
+name|setGraphic
+argument_list|(
+name|IconTheme
+operator|.
+name|JabRefIcons
+operator|.
+name|REFRESH
+operator|.
+name|getGraphicNode
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|update
+operator|.
+name|setTooltip
+argument_list|(
+operator|new
+name|Tooltip
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Sync OpenOffice/LibreOffice bibliography"
+argument_list|)
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|update
+operator|.
+name|setMaxWidth
+argument_list|(
+name|Double
+operator|.
+name|MAX_VALUE
+argument_list|)
+expr_stmt|;
+name|loader
+operator|=
+operator|new
+name|StyleLoader
+argument_list|(
+name|ooPrefs
+argument_list|,
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getLayoutFormatterPreferences
+argument_list|(
+name|Globals
+operator|.
+name|journalAbbreviationLoader
+argument_list|)
+argument_list|,
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getDefaultEncoding
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|initPanel
+argument_list|()
+expr_stmt|;
+block|}
+DECL|method|getContent ()
+specifier|public
+name|Node
+name|getContent
+parameter_list|()
+block|{
+return|return
+name|vbox
+return|;
+block|}
+DECL|method|initPanel ()
+specifier|private
+name|void
+name|initPanel
+parameter_list|()
+block|{
+name|connect
+operator|.
+name|setOnAction
+argument_list|(
+name|e
+lambda|->
+name|connectAutomatically
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|manualConnect
+operator|.
+name|setOnAction
+argument_list|(
+name|e
+lambda|->
+name|connectManually
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|selectDocument
+operator|.
+name|setTooltip
+argument_list|(
+operator|new
+name|Tooltip
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Select which open Writer document to work on"
+argument_list|)
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|selectDocument
+operator|.
+name|setOnAction
+argument_list|(
+name|e
+lambda|->
+block|{
+try|try
+block|{
+name|ooBase
+operator|.
+name|selectDocument
+argument_list|()
+expr_stmt|;
+name|dialogService
+operator|.
+name|notify
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Connected to document"
+argument_list|)
+operator|+
+literal|": "
+operator|+
+name|ooBase
+operator|.
+name|getCurrentDocumentTitle
+argument_list|()
+operator|.
+name|orElse
+argument_list|(
+literal|""
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|UnknownPropertyException
+decl||
+name|WrappedTargetException
+decl||
+name|IndexOutOfBoundsException
+decl||
+name|NoSuchElementException
+decl||
+name|NoDocumentException
+name|ex
+parameter_list|)
+block|{
+name|LOGGER
+operator|.
+name|warn
+argument_list|(
+literal|"Problem connecting"
+argument_list|,
+name|ex
+argument_list|)
+expr_stmt|;
+name|dialogService
+operator|.
+name|showErrorDialogAndWait
+argument_list|(
+name|ex
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+argument_list|)
+expr_stmt|;
+name|setStyleFile
+operator|.
+name|setMaxWidth
+argument_list|(
+name|Double
+operator|.
+name|MAX_VALUE
+argument_list|)
+expr_stmt|;
+name|setStyleFile
+operator|.
+name|setOnAction
+argument_list|(
+name|event
+lambda|->
+block|{
+name|StyleSelectDialogView
+name|styleDialog
+init|=
+operator|new
+name|StyleSelectDialogView
+argument_list|(
+name|loader
+argument_list|)
+decl_stmt|;
+name|styleDialog
+operator|.
+name|showAndWait
+argument_list|()
+operator|.
+name|ifPresent
+argument_list|(
+name|selectedStyle
+lambda|->
+block|{
+name|style
+operator|=
+name|selectedStyle
+expr_stmt|;
+try|try
+block|{
+name|style
+operator|.
+name|ensureUpToDate
+argument_list|()
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|e
+parameter_list|)
+block|{
+name|LOGGER
+operator|.
+name|warn
+argument_list|(
+literal|"Unable to reload style file '"
+operator|+
+name|style
+operator|.
+name|getPath
+argument_list|()
+operator|+
+literal|"'"
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+block|}
+name|dialogService
+operator|.
+name|notify
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Current style is '%0'"
+argument_list|,
+name|style
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+argument_list|)
+expr_stmt|;
+block|}
+argument_list|)
+expr_stmt|;
+name|pushEntries
+operator|.
+name|setTooltip
+argument_list|(
+operator|new
+name|Tooltip
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Cite selected entries between parenthesis"
+argument_list|)
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|pushEntries
+operator|.
+name|setOnAction
+argument_list|(
+name|e
+lambda|->
+name|pushEntries
+argument_list|(
+literal|true
+argument_list|,
+literal|true
+argument_list|,
+literal|false
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|pushEntries
+operator|.
+name|setMaxWidth
+argument_list|(
+name|Double
+operator|.
+name|MAX_VALUE
+argument_list|)
+expr_stmt|;
+name|pushEntriesInt
+operator|.
+name|setTooltip
+argument_list|(
+operator|new
+name|Tooltip
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Cite selected entries with in-text citation"
+argument_list|)
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|pushEntriesInt
+operator|.
+name|setOnAction
+argument_list|(
+name|e
+lambda|->
+name|pushEntries
+argument_list|(
+literal|false
+argument_list|,
+literal|true
+argument_list|,
+literal|false
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|pushEntriesInt
+operator|.
+name|setMaxWidth
+argument_list|(
+name|Double
+operator|.
+name|MAX_VALUE
+argument_list|)
+expr_stmt|;
+name|pushEntriesEmpty
+operator|.
+name|setTooltip
+argument_list|(
+operator|new
+name|Tooltip
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Insert a citation without text (the entry will appear in the reference list)"
+argument_list|)
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|pushEntriesEmpty
+operator|.
+name|setOnAction
+argument_list|(
+name|e
+lambda|->
+name|pushEntries
+argument_list|(
+literal|false
+argument_list|,
+literal|false
+argument_list|,
+literal|false
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|pushEntriesEmpty
+operator|.
+name|setMaxWidth
+argument_list|(
+name|Double
+operator|.
+name|MAX_VALUE
+argument_list|)
+expr_stmt|;
+name|pushEntriesAdvanced
+operator|.
+name|setTooltip
+argument_list|(
+operator|new
+name|Tooltip
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Cite selected entries with extra information"
+argument_list|)
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|pushEntriesAdvanced
+operator|.
+name|setOnAction
+argument_list|(
+name|e
+lambda|->
+name|pushEntries
+argument_list|(
+literal|false
+argument_list|,
+literal|true
+argument_list|,
+literal|true
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|pushEntriesAdvanced
+operator|.
+name|setMaxWidth
+argument_list|(
+name|Double
+operator|.
+name|MAX_VALUE
+argument_list|)
+expr_stmt|;
+name|update
+operator|.
+name|setTooltip
+argument_list|(
+operator|new
+name|Tooltip
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Ensure that the bibliography is up-to-date"
+argument_list|)
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|update
+operator|.
+name|setOnAction
+argument_list|(
+name|event
+lambda|->
+block|{
+try|try
+block|{
+if|if
+condition|(
+name|style
+operator|==
+literal|null
+condition|)
+block|{
+name|style
+operator|=
+name|loader
+operator|.
+name|getUsedStyle
+argument_list|()
+expr_stmt|;
+block|}
+else|else
+block|{
+name|style
+operator|.
+name|ensureUpToDate
+argument_list|()
+expr_stmt|;
+block|}
+name|ooBase
+operator|.
+name|updateSortedReferenceMarks
+argument_list|()
+expr_stmt|;
+name|List
+argument_list|<
+name|BibDatabase
+argument_list|>
+name|databases
+init|=
+name|getBaseList
+argument_list|()
+decl_stmt|;
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|unresolvedKeys
+init|=
+name|ooBase
+operator|.
+name|refreshCiteMarkers
+argument_list|(
+name|databases
+argument_list|,
+name|style
+argument_list|)
+decl_stmt|;
+name|ooBase
+operator|.
+name|rebuildBibTextSection
+argument_list|(
+name|databases
+argument_list|,
+name|style
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|unresolvedKeys
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+name|dialogService
+operator|.
+name|showErrorDialogAndWait
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Unable to synchronize bibliography"
+argument_list|)
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Your OpenOffice/LibreOffice document references the BibTeX key '%0', which could not be found in your current library."
+argument_list|,
+name|unresolvedKeys
+operator|.
+name|get
+argument_list|(
+literal|0
+argument_list|)
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+catch|catch
+parameter_list|(
+name|UndefinedCharacterFormatException
+name|ex
+parameter_list|)
+block|{
+name|reportUndefinedCharacterFormat
+argument_list|(
+name|ex
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|UndefinedParagraphFormatException
+name|ex
+parameter_list|)
+block|{
+name|reportUndefinedParagraphFormat
+argument_list|(
+name|ex
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|ConnectionLostException
+name|ex
+parameter_list|)
+block|{
+name|showConnectionLostErrorMessage
+argument_list|()
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|ex
+parameter_list|)
+block|{
+name|LOGGER
+operator|.
+name|warn
+argument_list|(
+literal|"Problem with style file"
+argument_list|,
+name|ex
+argument_list|)
+expr_stmt|;
+name|dialogService
+operator|.
+name|showErrorDialogAndWait
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"No valid style file defined"
+argument_list|)
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"You must select either a valid style file, or use one of the default styles."
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|BibEntryNotFoundException
+name|ex
+parameter_list|)
+block|{
+name|LOGGER
+operator|.
+name|debug
+argument_list|(
+literal|"BibEntry not found"
+argument_list|,
+name|ex
+argument_list|)
+expr_stmt|;
+name|dialogService
+operator|.
+name|showErrorDialogAndWait
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Unable to synchronize bibliography"
+argument_list|)
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Your OpenOffice/LibreOffice document references the BibTeX key '%0', which could not be found in your current library."
+argument_list|,
+name|ex
+operator|.
+name|getBibtexKey
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|com
+operator|.
+name|sun
+operator|.
+name|star
+operator|.
+name|lang
+operator|.
+name|IllegalArgumentException
+decl||
+name|PropertyVetoException
+decl||
+name|UnknownPropertyException
+decl||
+name|WrappedTargetException
+decl||
+name|NoSuchElementException
+decl||
+name|CreationException
+name|ex
+parameter_list|)
+block|{
+name|LOGGER
+operator|.
+name|warn
+argument_list|(
+literal|"Could not update bibliography"
+argument_list|,
+name|ex
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+argument_list|)
+expr_stmt|;
+name|merge
+operator|.
+name|setMaxWidth
+argument_list|(
+name|Double
+operator|.
+name|MAX_VALUE
+argument_list|)
+expr_stmt|;
+name|merge
+operator|.
+name|setTooltip
+argument_list|(
+operator|new
+name|Tooltip
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Combine pairs of citations that are separated by spaces only"
+argument_list|)
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|merge
+operator|.
+name|setOnAction
+argument_list|(
+name|e
+lambda|->
+block|{
+try|try
+block|{
+name|ooBase
+operator|.
+name|combineCiteMarkers
+argument_list|(
+name|getBaseList
+argument_list|()
+argument_list|,
+name|style
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|UndefinedCharacterFormatException
+name|ex
+parameter_list|)
+block|{
+name|reportUndefinedCharacterFormat
+argument_list|(
+name|ex
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|com
+operator|.
+name|sun
+operator|.
+name|star
+operator|.
+name|lang
+operator|.
+name|IllegalArgumentException
+decl||
+name|UnknownPropertyException
+decl||
+name|PropertyVetoException
+decl||
+name|CreationException
+decl||
+name|NoSuchElementException
+decl||
+name|WrappedTargetException
+decl||
+name|IOException
+decl||
+name|BibEntryNotFoundException
+name|ex
+parameter_list|)
+block|{
+name|LOGGER
+operator|.
+name|warn
+argument_list|(
+literal|"Problem combining cite markers"
+argument_list|,
+name|ex
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+argument_list|)
+expr_stmt|;
+name|ContextMenu
+name|settingsMenu
+init|=
+name|createSettingsPopup
+argument_list|()
+decl_stmt|;
+name|settingsB
+operator|.
+name|setMaxWidth
+argument_list|(
+name|Double
+operator|.
+name|MAX_VALUE
+argument_list|)
+expr_stmt|;
+name|settingsB
+operator|.
+name|setContextMenu
+argument_list|(
+name|settingsMenu
+argument_list|)
+expr_stmt|;
+name|settingsB
+operator|.
+name|setOnAction
+argument_list|(
+name|e
+lambda|->
+name|settingsMenu
+operator|.
+name|show
+argument_list|(
+name|settingsB
+argument_list|,
+name|Side
+operator|.
+name|BOTTOM
+argument_list|,
+literal|0
+argument_list|,
+literal|0
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|manageCitations
+operator|.
+name|setMaxWidth
+argument_list|(
+name|Double
+operator|.
+name|MAX_VALUE
+argument_list|)
+expr_stmt|;
+name|manageCitations
+operator|.
+name|setOnAction
+argument_list|(
+name|e
+lambda|->
+block|{
+name|ManageCitationsDialogView
+name|dlg
+init|=
+operator|new
+name|ManageCitationsDialogView
+argument_list|(
+name|ooBase
+argument_list|)
+decl_stmt|;
+name|dlg
+operator|.
+name|showAndWait
+argument_list|()
+expr_stmt|;
+block|}
+argument_list|)
+expr_stmt|;
+name|exportCitations
+operator|.
+name|setMaxWidth
+argument_list|(
+name|Double
+operator|.
+name|MAX_VALUE
+argument_list|)
+expr_stmt|;
+name|exportCitations
+operator|.
+name|setOnAction
+argument_list|(
+name|event
+lambda|->
+name|exportEntries
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|selectDocument
+operator|.
+name|setDisable
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|pushEntries
+operator|.
+name|setDisable
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|pushEntriesInt
+operator|.
+name|setDisable
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|pushEntriesEmpty
+operator|.
+name|setDisable
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|pushEntriesAdvanced
+operator|.
+name|setDisable
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|update
+operator|.
+name|setDisable
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|merge
+operator|.
+name|setDisable
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|manageCitations
+operator|.
+name|setDisable
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|exportCitations
+operator|.
+name|setDisable
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|HBox
+name|hbox
+init|=
+operator|new
+name|HBox
+argument_list|()
+decl_stmt|;
+name|hbox
+operator|.
+name|getChildren
+argument_list|()
+operator|.
+name|addAll
+argument_list|(
+name|connect
+argument_list|,
+name|manualConnect
+argument_list|,
+name|selectDocument
+argument_list|,
+name|update
+argument_list|,
+name|help
+argument_list|)
+expr_stmt|;
+name|hbox
+operator|.
+name|getChildren
+argument_list|()
+operator|.
+name|forEach
+argument_list|(
+name|btn
+lambda|->
+name|hbox
+operator|.
+name|setHgrow
+argument_list|(
+name|btn
+argument_list|,
+name|Priority
+operator|.
+name|ALWAYS
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|vbox
+operator|.
+name|setFillWidth
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|vbox
+operator|.
+name|getChildren
+argument_list|()
+operator|.
+name|addAll
+argument_list|(
+name|hbox
+argument_list|,
+name|setStyleFile
+argument_list|,
+name|pushEntries
+argument_list|,
+name|pushEntriesInt
+argument_list|,
+name|pushEntriesAdvanced
+argument_list|,
+name|pushEntriesEmpty
+argument_list|,
+name|merge
+argument_list|,
+name|manageCitations
+argument_list|,
+name|exportCitations
+argument_list|,
+name|settingsB
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|exportEntries ()
+specifier|private
+name|void
+name|exportEntries
+parameter_list|()
+block|{
+try|try
+block|{
+if|if
+condition|(
+name|style
+operator|==
+literal|null
+condition|)
+block|{
+name|style
+operator|=
+name|loader
+operator|.
+name|getUsedStyle
+argument_list|()
+expr_stmt|;
+block|}
+else|else
+block|{
+name|style
+operator|.
+name|ensureUpToDate
+argument_list|()
+expr_stmt|;
+block|}
+name|ooBase
+operator|.
+name|updateSortedReferenceMarks
+argument_list|()
+expr_stmt|;
+name|List
+argument_list|<
+name|BibDatabase
+argument_list|>
+name|databases
+init|=
+name|getBaseList
+argument_list|()
+decl_stmt|;
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|unresolvedKeys
+init|=
+name|ooBase
+operator|.
+name|refreshCiteMarkers
+argument_list|(
+name|databases
+argument_list|,
+name|style
+argument_list|)
+decl_stmt|;
+name|BibDatabase
+name|newDatabase
+init|=
+name|ooBase
+operator|.
+name|generateDatabase
+argument_list|(
+name|databases
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+operator|!
+name|unresolvedKeys
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+name|dialogService
+operator|.
+name|showErrorDialogAndWait
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Unable to generate new library"
+argument_list|)
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Your OpenOffice/LibreOffice document references the BibTeX key '%0', which could not be found in your current library."
+argument_list|,
+name|unresolvedKeys
+operator|.
+name|get
+argument_list|(
+literal|0
+argument_list|)
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+name|Defaults
+name|defaults
+init|=
+operator|new
+name|Defaults
+argument_list|(
+name|jabRefPreferences
+operator|.
+name|getDefaultBibDatabaseMode
+argument_list|()
+argument_list|)
+decl_stmt|;
+name|BibDatabaseContext
+name|databaseContext
+init|=
+operator|new
+name|BibDatabaseContext
+argument_list|(
+name|newDatabase
+argument_list|,
+name|defaults
+argument_list|)
+decl_stmt|;
+name|this
+operator|.
+name|frame
+operator|.
+name|addTab
+argument_list|(
+name|databaseContext
+argument_list|,
+literal|true
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|BibEntryNotFoundException
+name|ex
+parameter_list|)
+block|{
+name|LOGGER
+operator|.
+name|debug
+argument_list|(
+literal|"BibEntry not found"
+argument_list|,
+name|ex
+argument_list|)
+expr_stmt|;
+name|dialogService
+operator|.
+name|showErrorDialogAndWait
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Unable to synchronize bibliography"
+argument_list|)
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Your OpenOffice/LibreOffice document references the BibTeX key '%0', which could not be found in your current library."
+argument_list|,
+name|ex
+operator|.
+name|getBibtexKey
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|com
+operator|.
+name|sun
+operator|.
+name|star
+operator|.
+name|lang
+operator|.
+name|IllegalArgumentException
+decl||
+name|UnknownPropertyException
+decl||
+name|PropertyVetoException
+decl||
+name|UndefinedCharacterFormatException
+decl||
+name|NoSuchElementException
+decl||
+name|WrappedTargetException
+decl||
+name|IOException
+decl||
+name|CreationException
+name|e
+parameter_list|)
+block|{
+name|LOGGER
+operator|.
+name|warn
+argument_list|(
+literal|"Problem generating new database."
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+DECL|method|getBaseList ()
+specifier|private
+name|List
+argument_list|<
+name|BibDatabase
+argument_list|>
+name|getBaseList
+parameter_list|()
+block|{
+name|List
+argument_list|<
+name|BibDatabase
+argument_list|>
+name|databases
+init|=
+operator|new
+name|ArrayList
+argument_list|<>
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|ooPrefs
+operator|.
+name|getUseAllDatabases
+argument_list|()
+condition|)
+block|{
+for|for
+control|(
+name|BasePanel
+name|basePanel
+range|:
+name|frame
+operator|.
+name|getBasePanelList
+argument_list|()
+control|)
+block|{
+name|databases
+operator|.
+name|add
+argument_list|(
+name|basePanel
+operator|.
+name|getDatabase
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+else|else
+block|{
+name|databases
+operator|.
+name|add
+argument_list|(
+name|frame
+operator|.
+name|getCurrentBasePanel
+argument_list|()
+operator|.
+name|getDatabase
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+return|return
+name|databases
+return|;
+block|}
+DECL|method|connectAutomatically ()
+specifier|private
+name|void
+name|connectAutomatically
+parameter_list|()
+block|{
+name|DetectOpenOfficeInstallation
+name|officeInstallation
+init|=
+operator|new
+name|DetectOpenOfficeInstallation
+argument_list|(
+name|jabRefPreferences
+argument_list|,
+name|dialogService
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|officeInstallation
+operator|.
+name|isExecutablePathDefined
+argument_list|()
+condition|)
+block|{
+name|connect
+argument_list|()
+expr_stmt|;
+block|}
+else|else
+block|{
+name|Task
+argument_list|<
+name|Void
+argument_list|>
+name|taskConnectIfInstalled
+init|=
+operator|new
+name|Task
+argument_list|<
+name|Void
+argument_list|>
+argument_list|()
+block|{
+annotation|@
+name|Override
+specifier|protected
+name|Void
+name|call
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|updateProgress
+argument_list|(
+name|ProgressBar
+operator|.
+name|INDETERMINATE_PROGRESS
+argument_list|,
+name|ProgressBar
+operator|.
+name|INDETERMINATE_PROGRESS
+argument_list|)
+expr_stmt|;
+name|boolean
+name|installed
+init|=
+name|officeInstallation
+operator|.
+name|isInstalled
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+operator|!
+name|installed
+condition|)
+block|{
+throw|throw
+operator|new
+name|IllegalStateException
+argument_list|(
+literal|"OpenOffice Installation could not be detected."
+argument_list|)
+throw|;
+block|}
+return|return
+literal|null
+return|;
+comment|// can not use BackgroundTask.wrap(Runnable) because Runnable.run() can't throw exceptions
+block|}
+block|}
+decl_stmt|;
+name|taskConnectIfInstalled
+operator|.
+name|setOnSucceeded
+argument_list|(
+name|value
+lambda|->
+name|connect
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|taskConnectIfInstalled
+operator|.
+name|setOnFailed
+argument_list|(
+name|value
+lambda|->
+name|dialogService
+operator|.
+name|showErrorDialogAndWait
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Autodetection failed"
+argument_list|)
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Autodetection failed"
+argument_list|)
+argument_list|,
+name|taskConnectIfInstalled
+operator|.
+name|getException
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|dialogService
+operator|.
+name|showProgressDialogAndWait
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Autodetecting paths..."
+argument_list|)
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Autodetecting paths..."
+argument_list|)
+argument_list|,
+name|taskConnectIfInstalled
+argument_list|)
+expr_stmt|;
+name|taskExecutor
+operator|.
+name|execute
+argument_list|(
+name|taskConnectIfInstalled
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+DECL|method|connectManually ()
+specifier|private
+name|void
+name|connectManually
+parameter_list|()
+block|{
+name|showManualConnectionDialog
+argument_list|()
+operator|.
+name|ifPresent
+argument_list|(
+name|ok
+lambda|->
+name|connect
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|connect ()
+specifier|private
+name|void
+name|connect
+parameter_list|()
+block|{
+name|ooPrefs
+operator|=
+name|jabRefPreferences
+operator|.
+name|getOpenOfficePreferences
+argument_list|()
+expr_stmt|;
+name|Task
+argument_list|<
+name|OOBibBase
+argument_list|>
+name|connectTask
+init|=
+operator|new
+name|Task
+argument_list|<
+name|OOBibBase
+argument_list|>
+argument_list|()
+block|{
+annotation|@
+name|Override
+specifier|protected
+name|OOBibBase
+name|call
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|updateProgress
+argument_list|(
+name|ProgressBar
+operator|.
+name|INDETERMINATE_PROGRESS
+argument_list|,
+name|ProgressBar
+operator|.
+name|INDETERMINATE_PROGRESS
+argument_list|)
+expr_stmt|;
+name|loadOpenOfficeJars
+argument_list|(
+name|Paths
+operator|.
+name|get
+argument_list|(
+name|ooPrefs
+operator|.
+name|getInstallationPath
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
+return|return
+name|createBibBase
+argument_list|()
+return|;
+block|}
+block|}
+decl_stmt|;
+name|connectTask
+operator|.
+name|setOnSucceeded
+argument_list|(
+name|value
+lambda|->
+block|{
+name|ooBase
+operator|=
+name|connectTask
+operator|.
+name|getValue
+argument_list|()
+expr_stmt|;
+if|if
+condition|(
+name|ooBase
+operator|.
+name|isConnectedToDocument
+argument_list|()
+condition|)
+block|{
+name|dialogService
+operator|.
+name|notify
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Connected to document"
+argument_list|)
+operator|+
+literal|": "
+operator|+
+name|ooBase
+operator|.
+name|getCurrentDocumentTitle
+argument_list|()
+operator|.
+name|orElse
+argument_list|(
+literal|""
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+comment|// Enable actions that depend on Connect:
+name|selectDocument
+operator|.
+name|setDisable
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+name|pushEntries
+operator|.
+name|setDisable
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+name|pushEntriesInt
+operator|.
+name|setDisable
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+name|pushEntriesEmpty
+operator|.
+name|setDisable
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+name|pushEntriesAdvanced
+operator|.
+name|setDisable
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+name|update
+operator|.
+name|setDisable
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+name|merge
+operator|.
+name|setDisable
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+name|manageCitations
+operator|.
+name|setDisable
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+name|exportCitations
+operator|.
+name|setDisable
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+block|}
+argument_list|)
+expr_stmt|;
+name|connectTask
+operator|.
+name|setOnFailed
+argument_list|(
+name|value
+lambda|->
+block|{
+name|Throwable
+name|ex
+init|=
+name|connectTask
+operator|.
+name|getException
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|ex
+operator|instanceof
+name|UnsatisfiedLinkError
+condition|)
+block|{
+name|LOGGER
+operator|.
+name|warn
+argument_list|(
+literal|"Could not connect to running OpenOffice/LibreOffice"
+argument_list|,
+name|ex
+argument_list|)
+expr_stmt|;
+name|dialogService
+operator|.
+name|showErrorDialogAndWait
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Unable to connect. One possible reason is that JabRef "
+operator|+
+literal|"and OpenOffice/LibreOffice are not both running in either 32 bit mode or 64 bit mode."
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|ex
+operator|instanceof
+name|IOException
+condition|)
+block|{
+name|LOGGER
+operator|.
+name|warn
+argument_list|(
+literal|"Could not connect to running OpenOffice/LibreOffice"
+argument_list|,
+name|ex
+argument_list|)
+expr_stmt|;
+name|dialogService
+operator|.
+name|showErrorDialogAndWait
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Could not connect to running OpenOffice/LibreOffice."
+argument_list|)
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Could not connect to running OpenOffice/LibreOffice."
+argument_list|)
+operator|+
+literal|"\n"
+operator|+
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Make sure you have installed OpenOffice/LibreOffice with Java support."
+argument_list|)
+operator|+
+literal|"\n"
+operator|+
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"If connecting manually, please verify program and library paths."
+argument_list|)
+operator|+
+literal|"\n"
+operator|+
+literal|"\n"
+operator|+
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Error message:"
+argument_list|)
+argument_list|,
+name|ex
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|dialogService
+operator|.
+name|showErrorDialogAndWait
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Autodetection failed"
+argument_list|)
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Autodetection failed"
+argument_list|)
+argument_list|,
+name|ex
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+argument_list|)
+expr_stmt|;
+name|dialogService
+operator|.
+name|showProgressDialogAndWait
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Autodetecting paths..."
+argument_list|)
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Autodetecting paths..."
+argument_list|)
+argument_list|,
+name|connectTask
+argument_list|)
+expr_stmt|;
+name|taskExecutor
+operator|.
+name|execute
+argument_list|(
+name|connectTask
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|loadOpenOfficeJars (Path configurationPath)
+specifier|private
+name|void
+name|loadOpenOfficeJars
+parameter_list|(
+name|Path
+name|configurationPath
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+name|List
+argument_list|<
+name|Optional
+argument_list|<
+name|Path
+argument_list|>
+argument_list|>
+name|filePaths
+init|=
+name|OpenOfficePreferences
+operator|.
+name|OO_JARS
+operator|.
+name|stream
+argument_list|()
+operator|.
+name|map
+argument_list|(
+name|jar
+lambda|->
+name|FileUtil
+operator|.
+name|find
+argument_list|(
+name|jar
+argument_list|,
+name|configurationPath
+argument_list|)
+argument_list|)
+operator|.
+name|collect
+argument_list|(
+name|Collectors
+operator|.
+name|toList
+argument_list|()
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+operator|!
+name|filePaths
+operator|.
+name|stream
+argument_list|()
+operator|.
+name|allMatch
+argument_list|(
+name|Optional
+operator|::
+name|isPresent
+argument_list|)
+condition|)
+block|{
+throw|throw
+operator|new
+name|IOException
+argument_list|(
+literal|"(Not all) required Open Office Jars were found inside installation path. Searched for "
+operator|+
+name|OpenOfficePreferences
+operator|.
+name|OO_JARS
+operator|+
+literal|" in "
+operator|+
+name|configurationPath
+argument_list|)
+throw|;
+block|}
+name|List
+argument_list|<
+name|URL
+argument_list|>
+name|jarURLs
+init|=
+operator|new
+name|ArrayList
+argument_list|<>
+argument_list|(
+name|OpenOfficePreferences
+operator|.
+name|OO_JARS
+operator|.
+name|size
+argument_list|()
+argument_list|)
+decl_stmt|;
+for|for
+control|(
+name|Optional
+argument_list|<
+name|Path
+argument_list|>
+name|jarPath
+range|:
+name|filePaths
+control|)
+block|{
+name|jarURLs
+operator|.
+name|add
+argument_list|(
+operator|(
+name|jarPath
+operator|.
+name|get
+argument_list|()
+operator|.
+name|toUri
+argument_list|()
+operator|.
+name|toURL
+argument_list|()
+operator|)
+argument_list|)
+expr_stmt|;
+block|}
+name|addURL
+argument_list|(
+name|jarURLs
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|createBibBase ()
+specifier|private
+name|OOBibBase
+name|createBibBase
+parameter_list|()
+throws|throws
+name|IOException
+throws|,
+name|InvocationTargetException
+throws|,
+name|IllegalAccessException
+throws|,
+name|WrappedTargetException
+throws|,
+name|BootstrapException
+throws|,
+name|UnknownPropertyException
+throws|,
+name|NoDocumentException
+throws|,
+name|NoSuchElementException
+throws|,
+name|CreationException
+block|{
+comment|// Connect
+return|return
+operator|new
+name|OOBibBase
+argument_list|(
+name|ooPrefs
+operator|.
+name|getExecutablePath
+argument_list|()
+argument_list|,
+literal|true
+argument_list|)
+return|;
+block|}
+DECL|method|addURL (List<URL> jarList)
+specifier|private
+specifier|static
+name|void
+name|addURL
+parameter_list|(
+name|List
+argument_list|<
+name|URL
+argument_list|>
+name|jarList
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+name|URLClassLoader
+name|sysloader
+init|=
+operator|(
+name|URLClassLoader
+operator|)
+name|ClassLoader
+operator|.
+name|getSystemClassLoader
+argument_list|()
+decl_stmt|;
+name|Class
+argument_list|<
+name|URLClassLoader
+argument_list|>
+name|sysclass
+init|=
+name|URLClassLoader
+operator|.
+name|class
+decl_stmt|;
+try|try
+block|{
+name|Method
+name|method
+init|=
+name|sysclass
+operator|.
+name|getDeclaredMethod
+argument_list|(
+literal|"addURL"
+argument_list|,
+name|URL
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
+name|method
+operator|.
+name|setAccessible
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+for|for
+control|(
+name|URL
+name|anU
+range|:
+name|jarList
+control|)
+block|{
+name|method
+operator|.
+name|invoke
+argument_list|(
+name|sysloader
+argument_list|,
+name|anU
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+catch|catch
+parameter_list|(
+name|SecurityException
+decl||
+name|NoSuchMethodException
+decl||
+name|IllegalAccessException
+decl||
+name|IllegalArgumentException
+decl||
+name|InvocationTargetException
+name|e
+parameter_list|)
+block|{
+name|LOGGER
+operator|.
+name|error
+argument_list|(
+literal|"Could not add URL to system classloader"
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+name|sysloader
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+throw|throw
+operator|new
+name|IOException
+argument_list|(
+literal|"Error, could not add URL to system classloader"
+argument_list|,
+name|e
+argument_list|)
+throw|;
+block|}
+block|}
+DECL|method|showManualConnectionDialog ()
+specifier|private
+name|Optional
+argument_list|<
+name|Boolean
+argument_list|>
+name|showManualConnectionDialog
+parameter_list|()
+block|{
+return|return
+operator|new
+name|ManualConnectDialogView
+argument_list|(
+name|dialogService
+argument_list|)
+operator|.
+name|showAndWait
+argument_list|()
+return|;
+block|}
+DECL|method|pushEntries (boolean inParenthesisIn, boolean withText, boolean addPageInfo)
+specifier|private
+name|void
+name|pushEntries
+parameter_list|(
+name|boolean
+name|inParenthesisIn
+parameter_list|,
+name|boolean
+name|withText
+parameter_list|,
+name|boolean
+name|addPageInfo
+parameter_list|)
+block|{
+if|if
+condition|(
+operator|!
+name|ooBase
+operator|.
+name|isConnectedToDocument
+argument_list|()
+condition|)
+block|{
+name|dialogService
+operator|.
+name|showErrorDialogAndWait
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Error pushing entries"
+argument_list|)
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Not connected to any Writer document. Please"
+operator|+
+literal|" make sure a document is open, and use the 'Select Writer document' button to connect to it."
+argument_list|)
+argument_list|)
+expr_stmt|;
+return|return;
+block|}
+name|Boolean
+name|inParenthesis
+init|=
+name|inParenthesisIn
+decl_stmt|;
+name|String
+name|pageInfo
+init|=
+literal|null
+decl_stmt|;
+if|if
+condition|(
+name|addPageInfo
+condition|)
+block|{
+name|AdvancedCiteDialogView
+name|citeDialog
+init|=
+operator|new
+name|AdvancedCiteDialogView
+argument_list|()
+decl_stmt|;
+name|Optional
+argument_list|<
+name|AdvancedCiteDialogViewModel
+argument_list|>
+name|citeDialogViewModel
+init|=
+name|citeDialog
+operator|.
+name|showAndWait
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|citeDialogViewModel
+operator|.
+name|isPresent
+argument_list|()
+condition|)
+block|{
+name|AdvancedCiteDialogViewModel
+name|model
+init|=
+name|citeDialogViewModel
+operator|.
+name|get
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+operator|!
+name|model
+operator|.
+name|pageInfoProperty
+argument_list|()
+operator|.
+name|getValue
+argument_list|()
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+name|pageInfo
+operator|=
+name|model
+operator|.
+name|pageInfoProperty
+argument_list|()
+operator|.
+name|getValue
+argument_list|()
+expr_stmt|;
+block|}
+name|inParenthesis
+operator|=
+name|model
+operator|.
+name|citeInParProperty
+argument_list|()
+operator|.
+name|getValue
+argument_list|()
+expr_stmt|;
+block|}
+block|}
+name|BasePanel
+name|panel
+init|=
+name|frame
+operator|.
+name|getCurrentBasePanel
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|panel
+operator|!=
+literal|null
+condition|)
+block|{
+specifier|final
+name|BibDatabase
+name|database
+init|=
+name|panel
+operator|.
+name|getDatabase
+argument_list|()
+decl_stmt|;
+name|List
+argument_list|<
+name|BibEntry
+argument_list|>
+name|entries
+init|=
+name|panel
+operator|.
+name|getSelectedEntries
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+operator|!
+name|entries
+operator|.
+name|isEmpty
+argument_list|()
+operator|&&
+name|checkThatEntriesHaveKeys
+argument_list|(
+name|entries
+argument_list|)
+condition|)
+block|{
+try|try
+block|{
+if|if
+condition|(
+name|style
+operator|==
+literal|null
+condition|)
+block|{
+name|style
+operator|=
+name|loader
+operator|.
+name|getUsedStyle
+argument_list|()
+expr_stmt|;
+block|}
+name|ooBase
+operator|.
+name|insertEntry
+argument_list|(
+name|entries
+argument_list|,
+name|database
+argument_list|,
+name|getBaseList
+argument_list|()
+argument_list|,
+name|style
+argument_list|,
+name|inParenthesis
+argument_list|,
+name|withText
+argument_list|,
+name|pageInfo
+argument_list|,
+name|ooPrefs
+operator|.
+name|getSyncWhenCiting
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|FileNotFoundException
+name|ex
+parameter_list|)
+block|{
+name|dialogService
+operator|.
+name|showErrorDialogAndWait
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"No valid style file defined"
+argument_list|)
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"You must select either a valid style file, or use one of the default styles."
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|LOGGER
+operator|.
+name|warn
+argument_list|(
+literal|"Problem with style file"
+argument_list|,
+name|ex
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|ConnectionLostException
+name|ex
+parameter_list|)
+block|{
+name|showConnectionLostErrorMessage
+argument_list|()
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|UndefinedCharacterFormatException
+name|ex
+parameter_list|)
+block|{
+name|reportUndefinedCharacterFormat
+argument_list|(
+name|ex
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|UndefinedParagraphFormatException
+name|ex
+parameter_list|)
+block|{
+name|reportUndefinedParagraphFormat
+argument_list|(
+name|ex
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|com
+operator|.
+name|sun
+operator|.
+name|star
+operator|.
+name|lang
+operator|.
+name|IllegalArgumentException
+decl||
+name|UnknownPropertyException
+decl||
+name|PropertyVetoException
+decl||
+name|CreationException
+decl||
+name|NoSuchElementException
+decl||
+name|WrappedTargetException
+decl||
+name|IOException
+decl||
+name|BibEntryNotFoundException
+decl||
+name|IllegalTypeException
+decl||
+name|PropertyExistException
+decl||
+name|NotRemoveableException
+name|ex
+parameter_list|)
+block|{
+name|LOGGER
+operator|.
+name|warn
+argument_list|(
+literal|"Could not insert entry"
+argument_list|,
+name|ex
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+block|}
+block|}
+comment|/**      * Check that all entries in the list have BibTeX keys, if not ask if they should be generated      *      * @param entries A list of entries to be checked      * @return true if all entries have BibTeX keys, if it so may be after generating them      */
+DECL|method|checkThatEntriesHaveKeys (List<BibEntry> entries)
+specifier|private
+name|boolean
+name|checkThatEntriesHaveKeys
+parameter_list|(
+name|List
+argument_list|<
+name|BibEntry
+argument_list|>
+name|entries
+parameter_list|)
+block|{
+comment|// Check if there are empty keys
+name|boolean
+name|emptyKeys
+init|=
+literal|false
+decl_stmt|;
+for|for
+control|(
+name|BibEntry
+name|entry
+range|:
+name|entries
+control|)
+block|{
+if|if
+condition|(
+operator|!
+name|entry
+operator|.
+name|getCiteKeyOptional
+argument_list|()
+operator|.
+name|isPresent
+argument_list|()
+condition|)
+block|{
+comment|// Found one, no need to look further for now
+name|emptyKeys
+operator|=
+literal|true
+expr_stmt|;
+break|break;
+block|}
+block|}
+comment|// If no empty keys, return true
+if|if
+condition|(
+operator|!
+name|emptyKeys
+condition|)
+block|{
+return|return
+literal|true
+return|;
+block|}
+comment|// Ask if keys should be generated
+name|boolean
+name|citePressed
+init|=
+name|dialogService
+operator|.
+name|showConfirmationDialogAndWait
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Cite"
+argument_list|)
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Cannot cite entries without BibTeX keys. Generate keys now?"
+argument_list|)
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Generate keys"
+argument_list|)
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Cancel"
+argument_list|)
+argument_list|)
+decl_stmt|;
+name|BasePanel
+name|panel
+init|=
+name|frame
+operator|.
+name|getCurrentBasePanel
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|citePressed
+operator|&&
+operator|(
+name|panel
+operator|!=
+literal|null
+operator|)
+condition|)
+block|{
+comment|// Generate keys
+name|BibtexKeyPatternPreferences
+name|prefs
+init|=
+name|jabRefPreferences
+operator|.
+name|getBibtexKeyPatternPreferences
+argument_list|()
+decl_stmt|;
+name|NamedCompound
+name|undoCompound
+init|=
+operator|new
+name|NamedCompound
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Cite"
+argument_list|)
+argument_list|)
+decl_stmt|;
+for|for
+control|(
+name|BibEntry
+name|entry
+range|:
+name|entries
+control|)
+block|{
+if|if
+condition|(
+operator|!
+name|entry
+operator|.
+name|getCiteKeyOptional
+argument_list|()
+operator|.
+name|isPresent
+argument_list|()
+condition|)
+block|{
+comment|// Generate key
+operator|new
+name|BibtexKeyGenerator
+argument_list|(
+name|panel
+operator|.
+name|getBibDatabaseContext
+argument_list|()
+argument_list|,
+name|prefs
+argument_list|)
+operator|.
+name|generateAndSetKey
+argument_list|(
+name|entry
+argument_list|)
+operator|.
+name|ifPresent
+argument_list|(
+name|change
+lambda|->
+name|undoCompound
+operator|.
+name|addEdit
+argument_list|(
+operator|new
+name|UndoableKeyChange
+argument_list|(
+name|change
+argument_list|)
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+name|undoCompound
+operator|.
+name|end
+argument_list|()
+expr_stmt|;
+comment|// Add all undos
+name|panel
+operator|.
+name|getUndoManager
+argument_list|()
+operator|.
+name|addEdit
+argument_list|(
+name|undoCompound
+argument_list|)
+expr_stmt|;
+comment|// Now every entry has a key
+return|return
+literal|true
+return|;
+block|}
+else|else
+block|{
+comment|// No, we canceled (or there is no panel to get the database from, highly unlikely)
+return|return
+literal|false
+return|;
+block|}
+block|}
+DECL|method|showConnectionLostErrorMessage ()
+specifier|private
+name|void
+name|showConnectionLostErrorMessage
+parameter_list|()
+block|{
+name|dialogService
+operator|.
+name|showErrorDialogAndWait
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Connection lost"
+argument_list|)
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Connection to OpenOffice/LibreOffice has been lost. "
+operator|+
+literal|"Please make sure OpenOffice/LibreOffice is running, and try to reconnect."
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|reportUndefinedParagraphFormat (UndefinedParagraphFormatException ex)
+specifier|private
+name|void
+name|reportUndefinedParagraphFormat
+parameter_list|(
+name|UndefinedParagraphFormatException
+name|ex
+parameter_list|)
+block|{
+name|dialogService
+operator|.
+name|showErrorDialogAndWait
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Undefined paragraph format"
+argument_list|)
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Your style file specifies the paragraph format '%0', "
+operator|+
+literal|"which is undefined in your current OpenOffice/LibreOffice document."
+argument_list|,
+name|ex
+operator|.
+name|getFormatName
+argument_list|()
+argument_list|)
+operator|+
+literal|"\n"
+operator|+
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"The paragraph format is controlled by the property 'ReferenceParagraphFormat' or 'ReferenceHeaderParagraphFormat' in the style file."
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|reportUndefinedCharacterFormat (UndefinedCharacterFormatException ex)
+specifier|private
+name|void
+name|reportUndefinedCharacterFormat
+parameter_list|(
+name|UndefinedCharacterFormatException
+name|ex
+parameter_list|)
+block|{
+name|dialogService
+operator|.
+name|showErrorDialogAndWait
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Undefined character format"
+argument_list|)
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Your style file specifies the character format '%0', "
+operator|+
+literal|"which is undefined in your current OpenOffice/LibreOffice document."
+argument_list|,
+name|ex
+operator|.
+name|getFormatName
+argument_list|()
+argument_list|)
+operator|+
+literal|"\n"
+operator|+
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"The character format is controlled by the citation property 'CitationCharacterFormat' in the style file."
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|createSettingsPopup ()
+specifier|private
+name|ContextMenu
+name|createSettingsPopup
+parameter_list|()
+block|{
+name|ContextMenu
+name|contextMenu
+init|=
+operator|new
+name|ContextMenu
+argument_list|()
+decl_stmt|;
+name|CheckMenuItem
+name|autoSync
+init|=
+operator|new
+name|CheckMenuItem
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Automatically sync bibliography when inserting citations"
+argument_list|)
+argument_list|)
+decl_stmt|;
+name|autoSync
+operator|.
+name|selectedProperty
+argument_list|()
+operator|.
+name|set
+argument_list|(
+name|ooPrefs
+operator|.
+name|getSyncWhenCiting
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|ToggleGroup
+name|toggleGroup
+init|=
+operator|new
+name|ToggleGroup
+argument_list|()
+decl_stmt|;
+name|RadioMenuItem
+name|useActiveBase
+init|=
+operator|new
+name|RadioMenuItem
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Look up BibTeX entries in the active tab only"
+argument_list|)
+argument_list|)
+decl_stmt|;
+name|RadioMenuItem
+name|useAllBases
+init|=
+operator|new
+name|RadioMenuItem
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Look up BibTeX entries in all open libraries"
+argument_list|)
+argument_list|)
+decl_stmt|;
+name|useActiveBase
+operator|.
+name|setToggleGroup
+argument_list|(
+name|toggleGroup
+argument_list|)
+expr_stmt|;
+name|useAllBases
+operator|.
+name|setToggleGroup
+argument_list|(
+name|toggleGroup
+argument_list|)
+expr_stmt|;
+name|MenuItem
+name|clearConnectionSettings
+init|=
+operator|new
+name|MenuItem
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Clear connection settings"
+argument_list|)
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|ooPrefs
+operator|.
+name|getUseAllDatabases
+argument_list|()
+condition|)
+block|{
+name|useAllBases
+operator|.
+name|setSelected
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|useActiveBase
+operator|.
+name|setSelected
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+block|}
+name|autoSync
+operator|.
+name|setOnAction
+argument_list|(
+name|e
+lambda|->
+block|{
+name|ooPrefs
+operator|.
+name|setSyncWhenCiting
+argument_list|(
+name|autoSync
+operator|.
+name|isSelected
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|jabRefPreferences
+operator|.
+name|setOpenOfficePreferences
+argument_list|(
+name|ooPrefs
+argument_list|)
+expr_stmt|;
+block|}
+argument_list|)
+expr_stmt|;
+name|useAllBases
+operator|.
+name|setOnAction
+argument_list|(
+name|e
+lambda|->
+block|{
+name|ooPrefs
+operator|.
+name|setUseAllDatabases
+argument_list|(
+name|useAllBases
+operator|.
+name|isSelected
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|jabRefPreferences
+operator|.
+name|setOpenOfficePreferences
+argument_list|(
+name|ooPrefs
+argument_list|)
+expr_stmt|;
+block|}
+argument_list|)
+expr_stmt|;
+name|useActiveBase
+operator|.
+name|setOnAction
+argument_list|(
+name|e
+lambda|->
+block|{
+name|ooPrefs
+operator|.
+name|setUseAllDatabases
+argument_list|(
+operator|!
+name|useActiveBase
+operator|.
+name|isSelected
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|jabRefPreferences
+operator|.
+name|setOpenOfficePreferences
+argument_list|(
+name|ooPrefs
+argument_list|)
+expr_stmt|;
+block|}
+argument_list|)
+expr_stmt|;
+name|clearConnectionSettings
+operator|.
+name|setOnAction
+argument_list|(
+name|e
+lambda|->
+block|{
+name|ooPrefs
+operator|.
+name|clearConnectionSettings
+argument_list|()
+expr_stmt|;
+name|dialogService
+operator|.
+name|notify
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Cleared connection settings"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|jabRefPreferences
+operator|.
+name|setOpenOfficePreferences
+argument_list|(
+name|ooPrefs
+argument_list|)
+expr_stmt|;
+block|}
+argument_list|)
+expr_stmt|;
+name|contextMenu
+operator|.
+name|getItems
+argument_list|()
+operator|.
+name|addAll
+argument_list|(
+name|autoSync
+argument_list|,
+operator|new
+name|SeparatorMenuItem
+argument_list|()
+argument_list|,
+name|useActiveBase
+argument_list|,
+name|useAllBases
+argument_list|,
+operator|new
+name|SeparatorMenuItem
+argument_list|()
+argument_list|,
+name|clearConnectionSettings
+argument_list|)
+expr_stmt|;
+return|return
+name|contextMenu
+return|;
+block|}
+block|}
+end_class
 
 end_unit
 

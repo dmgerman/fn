@@ -38,20 +38,6 @@ begin_import
 import|import
 name|org
 operator|.
-name|jabref
-operator|.
-name|testutils
-operator|.
-name|category
-operator|.
-name|GUITest
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
 name|assertj
 operator|.
 name|swing
@@ -82,7 +68,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Tag
 import|;
 end_import
 
@@ -91,36 +81,40 @@ import|import
 name|org
 operator|.
 name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
 operator|.
 name|Test
 import|;
 end_import
 
 begin_import
-import|import
+import|import static
 name|org
 operator|.
 name|junit
 operator|.
-name|experimental
+name|jupiter
 operator|.
-name|categories
+name|api
 operator|.
-name|Category
+name|Assertions
+operator|.
+name|assertNotNull
 import|;
 end_import
 
 begin_comment
-comment|/**  * Specific Use-Case:  * I import a database. Then I doubleclick on the first entry in the table to open the entry editor.  * Then I click on the first entry again, and scroll through all of the lists entries, without having to click  * on the table again.  */
+comment|/**  * Specific Use-Case: I import a database. Then I doubleclick on the first entry in the table to open the entry editor.  * Then I click on the first entry again, and scroll through all of the lists entries, without having to click on the  * table again.  */
 end_comment
 
 begin_class
 annotation|@
-name|Category
+name|Tag
 argument_list|(
-name|GUITest
-operator|.
-name|class
+literal|"GUITest"
 argument_list|)
 DECL|class|EntryTableTest
 specifier|public
@@ -185,6 +179,8 @@ specifier|public
 name|void
 name|scrollThroughEntryList
 parameter_list|()
+throws|throws
+name|Exception
 block|{
 name|String
 name|path
@@ -310,16 +306,12 @@ argument_list|(
 name|DOWN
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
-name|assertTrue
+name|assertNotNull
 argument_list|(
 name|entryTable
 operator|.
 name|selectionValue
 argument_list|()
-operator|!=
-literal|null
 argument_list|)
 expr_stmt|;
 name|assertColumnValue
@@ -363,16 +355,12 @@ argument_list|(
 name|UP
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
-name|assertTrue
+name|assertNotNull
 argument_list|(
 name|entryTable
 operator|.
 name|selectionValue
 argument_list|()
-operator|!=
-literal|null
 argument_list|)
 expr_stmt|;
 name|assertColumnValue

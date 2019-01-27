@@ -373,7 +373,7 @@ name|databaseContext
 argument_list|,
 name|preferences
 operator|.
-name|getFileDirectoryPreferences
+name|getFilePreferences
 argument_list|()
 argument_list|,
 name|journalAbbreviationRepository

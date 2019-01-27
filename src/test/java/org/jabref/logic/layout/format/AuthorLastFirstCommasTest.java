@@ -29,22 +29,6 @@ import|;
 end_import
 
 begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|jupiter
-operator|.
-name|api
-operator|.
-name|Assertions
-operator|.
-name|*
-import|;
-end_import
-
-begin_import
 import|import
 name|org
 operator|.
@@ -58,13 +42,29 @@ name|Test
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
+operator|.
+name|assertEquals
+import|;
+end_import
+
 begin_class
 DECL|class|AuthorLastFirstCommasTest
 specifier|public
 class|class
 name|AuthorLastFirstCommasTest
 block|{
-comment|/**      * Test method for      * {@link org.jabref.logic.layout.format.AuthorLastFirstCommas#format(java.lang.String)}.      */
+comment|/**      * Test method for {@link org.jabref.logic.layout.format.AuthorLastFirstCommas#format(java.lang.String)}.      */
 annotation|@
 name|Test
 DECL|method|testFormat ()
