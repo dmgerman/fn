@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|org.jabref.gui.dbproperties
+DECL|package|org.jabref.gui.libraryproperties
 package|package
 name|org
 operator|.
@@ -8,7 +8,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|dbproperties
+name|libraryproperties
 package|;
 end_package
 
@@ -572,10 +572,23 @@ argument_list|)
 expr_stmt|;
 name|encoding
 operator|.
-name|valueProperty
+name|itemsProperty
 argument_list|()
 operator|.
 name|bind
+argument_list|(
+name|viewModel
+operator|.
+name|encodingsProperty
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|encoding
+operator|.
+name|valueProperty
+argument_list|()
+operator|.
+name|bindBidirectional
 argument_list|(
 name|viewModel
 operator|.

@@ -674,7 +674,7 @@ name|gui
 operator|.
 name|actions
 operator|.
-name|DatabasePropertiesAction
+name|LibraryPropertiesAction
 import|;
 end_import
 
@@ -5870,9 +5870,11 @@ operator|.
 name|LIBRARY_PROPERTIES
 argument_list|,
 operator|new
-name|DatabasePropertiesAction
+name|LibraryPropertiesAction
 argument_list|(
 name|this
+argument_list|,
+name|dialogService
 argument_list|)
 argument_list|)
 argument_list|,
