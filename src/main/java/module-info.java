@@ -128,6 +128,11 @@ name|afterburner
 operator|.
 name|fx
 decl_stmt|;
+name|requires
+name|com
+operator|.
+name|jfoenix
+decl_stmt|;
 comment|//	requires de.jensd.fx.glyphs.commons;
 comment|//	requires de.jensd.fx.glyphs.materialdesignicons;
 name|provides
