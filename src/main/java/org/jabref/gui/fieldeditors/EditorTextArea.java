@@ -154,6 +154,18 @@ name|Initializable
 implements|,
 name|ContextMenuAddable
 block|{
+comment|/**      *  Variable that contains user-defined behavior for paste action.      */
+DECL|field|pasteActionHandler
+specifier|private
+name|PasteActionHandler
+name|pasteActionHandler
+init|=
+parameter_list|()
+lambda|->
+block|{
+comment|// Set empty paste behavior by default
+block|}
+decl_stmt|;
 DECL|method|EditorTextArea ()
 specifier|public
 name|EditorTextArea
