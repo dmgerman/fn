@@ -1696,6 +1696,7 @@ operator|=
 name|style
 expr_stmt|;
 block|}
+block|}
 else|else
 block|{
 name|previewStyle
@@ -1743,7 +1744,6 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 name|update
@@ -2045,9 +2045,11 @@ condition|)
 block|{
 if|if
 condition|(
+operator|(
 name|citationStyle
 operator|!=
 literal|null
+operator|)
 operator|&&
 operator|!
 name|previewStyle
@@ -2472,9 +2474,10 @@ name|document
 operator|.
 name|getElementsByTagName
 argument_list|(
-literal|"*"
+literal|"html"
 argument_list|)
 decl_stmt|;
+comment|//Nodelist does not implement iterable
 for|for
 control|(
 name|int
@@ -2512,13 +2515,8 @@ name|append
 argument_list|(
 name|element
 operator|.
-name|getNodeValue
+name|getTextContent
 argument_list|()
-argument_list|)
-operator|.
-name|append
-argument_list|(
-literal|"\n"
 argument_list|)
 expr_stmt|;
 block|}

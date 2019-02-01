@@ -38,6 +38,20 @@ name|PreferencesDialog
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|util
+operator|.
+name|TaskExecutor
+import|;
+end_import
+
 begin_class
 DECL|class|ShowPreferencesAction
 specifier|public
@@ -52,12 +66,21 @@ specifier|final
 name|JabRefFrame
 name|jabRefFrame
 decl_stmt|;
-DECL|method|ShowPreferencesAction (JabRefFrame jabRefFrame)
+DECL|field|taskExecutor
+specifier|private
+specifier|final
+name|TaskExecutor
+name|taskExecutor
+decl_stmt|;
+DECL|method|ShowPreferencesAction (JabRefFrame jabRefFrame, TaskExecutor taskExecutor)
 specifier|public
 name|ShowPreferencesAction
 parameter_list|(
 name|JabRefFrame
 name|jabRefFrame
+parameter_list|,
+name|TaskExecutor
+name|taskExecutor
 parameter_list|)
 block|{
 name|this
@@ -65,6 +88,12 @@ operator|.
 name|jabRefFrame
 operator|=
 name|jabRefFrame
+expr_stmt|;
+name|this
+operator|.
+name|taskExecutor
+operator|=
+name|taskExecutor
 expr_stmt|;
 block|}
 annotation|@
@@ -82,6 +111,8 @@ operator|new
 name|PreferencesDialog
 argument_list|(
 name|jabRefFrame
+argument_list|,
+name|taskExecutor
 argument_list|)
 decl_stmt|;
 name|preferencesDialog
