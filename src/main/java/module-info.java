@@ -266,7 +266,15 @@ name|requires
 name|mvvmfx
 decl_stmt|;
 comment|// Libre Office
-comment|/*requires ridl; 	requires unoil; 	requires juh;*/
+name|requires
+name|org
+operator|.
+name|jabref
+operator|.
+name|thirdparty
+operator|.
+name|libreoffice
+decl_stmt|;
 block|}
 end_decl_stmt
 
