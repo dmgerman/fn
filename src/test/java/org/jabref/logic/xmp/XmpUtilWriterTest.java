@@ -172,21 +172,9 @@ name|jupiter
 operator|.
 name|api
 operator|.
-name|extension
+name|io
 operator|.
-name|ExtendWith
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junitpioneer
-operator|.
-name|jupiter
-operator|.
-name|TempDirectory
+name|TempDir
 import|;
 end_import
 
@@ -231,13 +219,6 @@ import|;
 end_import
 
 begin_class
-annotation|@
-name|ExtendWith
-argument_list|(
-name|TempDirectory
-operator|.
-name|class
-argument_list|)
 DECL|class|XmpUtilWriterTest
 class|class
 name|XmpUtilWriterTest
@@ -657,13 +638,11 @@ block|}
 comment|/**      * Test for writing a PDF file with a single DublinCore metadata entry.      */
 annotation|@
 name|Test
-DECL|method|testWriteXmp (@empDirectory.TempDir Path tempDir)
+DECL|method|testWriteXmp (@empDir Path tempDir)
 name|void
 name|testWriteXmp
 parameter_list|(
 annotation|@
-name|TempDirectory
-operator|.
 name|TempDir
 name|Path
 name|tempDir
@@ -769,13 +748,11 @@ block|}
 comment|/**      * Test, which writes multiple metadata entries to a PDF and reads them again to test the size.      */
 annotation|@
 name|Test
-DECL|method|testWriteMultipleBibEntries (@empDirectory.TempDir Path tempDir)
+DECL|method|testWriteMultipleBibEntries (@empDir Path tempDir)
 name|void
 name|testWriteMultipleBibEntries
 parameter_list|(
 annotation|@
-name|TempDirectory
-operator|.
 name|TempDir
 name|Path
 name|tempDir

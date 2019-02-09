@@ -134,21 +134,9 @@ name|jupiter
 operator|.
 name|api
 operator|.
-name|extension
+name|io
 operator|.
-name|ExtendWith
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junitpioneer
-operator|.
-name|jupiter
-operator|.
-name|TempDirectory
+name|TempDir
 import|;
 end_import
 
@@ -169,26 +157,17 @@ import|;
 end_import
 
 begin_class
-annotation|@
-name|ExtendWith
-argument_list|(
-name|TempDirectory
-operator|.
-name|class
-argument_list|)
 DECL|class|FileDialogConfigurationTest
 class|class
 name|FileDialogConfigurationTest
 block|{
 annotation|@
 name|Test
-DECL|method|testWithValidDirectoryString (@empDirectory.TempDir Path folder)
+DECL|method|testWithValidDirectoryString (@empDir Path folder)
 name|void
 name|testWithValidDirectoryString
 parameter_list|(
 annotation|@
-name|TempDirectory
-operator|.
 name|TempDir
 name|Path
 name|folder
@@ -245,13 +224,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testWithValidDirectoryPath (@empDirectory.TempDir Path tempFolder)
+DECL|method|testWithValidDirectoryPath (@empDir Path tempFolder)
 name|void
 name|testWithValidDirectoryPath
 parameter_list|(
 annotation|@
-name|TempDirectory
-operator|.
 name|TempDir
 name|Path
 name|tempFolder

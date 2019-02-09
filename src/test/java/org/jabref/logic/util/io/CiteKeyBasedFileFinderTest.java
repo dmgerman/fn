@@ -144,21 +144,9 @@ name|jupiter
 operator|.
 name|api
 operator|.
-name|extension
+name|io
 operator|.
-name|ExtendWith
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junitpioneer
-operator|.
-name|jupiter
-operator|.
-name|TempDirectory
+name|TempDir
 import|;
 end_import
 
@@ -179,13 +167,6 @@ import|;
 end_import
 
 begin_class
-annotation|@
-name|ExtendWith
-argument_list|(
-name|TempDirectory
-operator|.
-name|class
-argument_list|)
 DECL|class|CiteKeyBasedFileFinderTest
 class|class
 name|CiteKeyBasedFileFinderTest
@@ -222,13 +203,11 @@ name|pdfFile
 decl_stmt|;
 annotation|@
 name|BeforeEach
-DECL|method|setUp (@empDirectory.TempDir Path temporaryFolder)
+DECL|method|setUp (@empDir Path temporaryFolder)
 name|void
 name|setUp
 parameter_list|(
 annotation|@
-name|TempDirectory
-operator|.
 name|TempDir
 name|Path
 name|temporaryFolder

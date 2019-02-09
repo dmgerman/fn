@@ -192,9 +192,9 @@ name|jupiter
 operator|.
 name|api
 operator|.
-name|extension
+name|io
 operator|.
-name|ExtendWith
+name|TempDir
 import|;
 end_import
 
@@ -225,18 +225,6 @@ operator|.
 name|provider
 operator|.
 name|MethodSource
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junitpioneer
-operator|.
-name|jupiter
-operator|.
-name|TempDirectory
 import|;
 end_import
 
@@ -285,13 +273,6 @@ import|;
 end_import
 
 begin_class
-annotation|@
-name|ExtendWith
-argument_list|(
-name|TempDirectory
-operator|.
-name|class
-argument_list|)
 DECL|class|ExporterTest
 specifier|public
 class|class
@@ -466,7 +447,7 @@ name|MethodSource
 argument_list|(
 literal|"exportFormats"
 argument_list|)
-DECL|method|testExportingEmptyDatabaseYieldsEmptyFile (Exporter exportFormat, String name, @TempDirectory.TempDir Path testFolder)
+DECL|method|testExportingEmptyDatabaseYieldsEmptyFile (Exporter exportFormat, String name, @TempDir Path testFolder)
 specifier|public
 name|void
 name|testExportingEmptyDatabaseYieldsEmptyFile
@@ -478,8 +459,6 @@ name|String
 name|name
 parameter_list|,
 annotation|@
-name|TempDirectory
-operator|.
 name|TempDir
 name|Path
 name|testFolder
@@ -540,7 +519,7 @@ name|MethodSource
 argument_list|(
 literal|"exportFormats"
 argument_list|)
-DECL|method|testExportingNullDatabaseThrowsNPE (Exporter exportFormat, String name, @TempDirectory.TempDir Path testFolder)
+DECL|method|testExportingNullDatabaseThrowsNPE (Exporter exportFormat, String name, @TempDir Path testFolder)
 specifier|public
 name|void
 name|testExportingNullDatabaseThrowsNPE
@@ -552,8 +531,6 @@ name|String
 name|name
 parameter_list|,
 annotation|@
-name|TempDirectory
-operator|.
 name|TempDir
 name|Path
 name|testFolder
@@ -609,7 +586,7 @@ name|MethodSource
 argument_list|(
 literal|"exportFormats"
 argument_list|)
-DECL|method|testExportingNullEntriesThrowsNPE (Exporter exportFormat, String name, @TempDirectory.TempDir Path testFolder)
+DECL|method|testExportingNullEntriesThrowsNPE (Exporter exportFormat, String name, @TempDir Path testFolder)
 specifier|public
 name|void
 name|testExportingNullEntriesThrowsNPE
@@ -621,8 +598,6 @@ name|String
 name|name
 parameter_list|,
 annotation|@
-name|TempDirectory
-operator|.
 name|TempDir
 name|Path
 name|testFolder

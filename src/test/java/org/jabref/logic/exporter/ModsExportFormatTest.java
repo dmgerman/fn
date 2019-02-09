@@ -178,21 +178,9 @@ name|jupiter
 operator|.
 name|api
 operator|.
-name|extension
+name|io
 operator|.
-name|ExtendWith
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junitpioneer
-operator|.
-name|jupiter
-operator|.
-name|TempDirectory
+name|TempDir
 import|;
 end_import
 
@@ -235,13 +223,6 @@ import|;
 end_import
 
 begin_class
-annotation|@
-name|ExtendWith
-argument_list|(
-name|TempDirectory
-operator|.
-name|class
-argument_list|)
 DECL|class|ModsExportFormatTest
 specifier|public
 class|class
@@ -329,15 +310,13 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|exportForNoEntriesWritesNothing (@empDirectory.TempDir Path tempFile)
+DECL|method|exportForNoEntriesWritesNothing (@empDir Path tempFile)
 specifier|public
 specifier|final
 name|void
 name|exportForNoEntriesWritesNothing
 parameter_list|(
 annotation|@
-name|TempDirectory
-operator|.
 name|TempDir
 name|Path
 name|tempFile

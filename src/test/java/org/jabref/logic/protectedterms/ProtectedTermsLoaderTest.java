@@ -158,21 +158,9 @@ name|jupiter
 operator|.
 name|api
 operator|.
-name|extension
+name|io
 operator|.
-name|ExtendWith
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junitpioneer
-operator|.
-name|jupiter
-operator|.
-name|TempDirectory
+name|TempDir
 import|;
 end_import
 
@@ -225,13 +213,6 @@ import|;
 end_import
 
 begin_class
-annotation|@
-name|ExtendWith
-argument_list|(
-name|TempDirectory
-operator|.
-name|class
-argument_list|)
 DECL|class|ProtectedTermsLoaderTest
 class|class
 name|ProtectedTermsLoaderTest
@@ -1099,13 +1080,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testAddNewTermListAddsList (@empDirectory.TempDir Path tempDir)
+DECL|method|testAddNewTermListAddsList (@empDir Path tempDir)
 name|void
 name|testAddNewTermListAddsList
 parameter_list|(
 annotation|@
-name|TempDirectory
-operator|.
 name|TempDir
 name|Path
 name|tempDir
@@ -1181,13 +1160,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testAddNewTermListNewListInList (@empDirectory.TempDir Path tempDir)
+DECL|method|testAddNewTermListNewListInList (@empDir Path tempDir)
 name|void
 name|testAddNewTermListNewListInList
 parameter_list|(
 annotation|@
-name|TempDirectory
-operator|.
 name|TempDir
 name|Path
 name|tempDir
@@ -1258,13 +1235,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testRemoveTermList (@empDirectory.TempDir Path tempDir)
+DECL|method|testRemoveTermList (@empDir Path tempDir)
 name|void
 name|testRemoveTermList
 parameter_list|(
 annotation|@
-name|TempDirectory
-operator|.
 name|TempDir
 name|Path
 name|tempDir
@@ -1332,13 +1307,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testRemoveTermListReduceTheCount (@empDirectory.TempDir Path tempDir)
+DECL|method|testRemoveTermListReduceTheCount (@empDir Path tempDir)
 name|void
 name|testRemoveTermListReduceTheCount
 parameter_list|(
 annotation|@
-name|TempDirectory
-operator|.
 name|TempDir
 name|Path
 name|tempDir
@@ -1422,13 +1395,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testAddNewTermListSetsCorrectDescription (@empDirectory.TempDir Path tempDir)
+DECL|method|testAddNewTermListSetsCorrectDescription (@empDir Path tempDir)
 name|void
 name|testAddNewTermListSetsCorrectDescription
 parameter_list|(
 annotation|@
-name|TempDirectory
-operator|.
 name|TempDir
 name|Path
 name|tempDir
