@@ -102,6 +102,20 @@ name|model
 operator|.
 name|entry
 operator|.
+name|FieldName
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
 name|Month
 import|;
 end_import
@@ -684,7 +698,7 @@ argument_list|(
 literal|"ID4711"
 argument_list|)
 expr_stmt|;
-comment|// write the changed bib entry to the create PDF
+comment|// write the changed bib entry to the PDF
 name|XmpUtilWriter
 operator|.
 name|writeXmp
@@ -736,6 +750,15 @@ argument_list|(
 literal|0
 argument_list|)
 decl_stmt|;
+name|entryWritten
+operator|.
+name|clearField
+argument_list|(
+name|FieldName
+operator|.
+name|FILE
+argument_list|)
+expr_stmt|;
 comment|// compare the two entries
 name|assertEquals
 argument_list|(

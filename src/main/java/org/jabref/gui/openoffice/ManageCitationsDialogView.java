@@ -603,11 +603,6 @@ name|HTML_BOLD_END_TAG
 operator|.
 name|length
 argument_list|()
-argument_list|,
-name|citationContext
-operator|.
-name|length
-argument_list|()
 argument_list|)
 decl_stmt|;
 name|Text

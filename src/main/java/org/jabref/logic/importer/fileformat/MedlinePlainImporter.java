@@ -2595,11 +2595,6 @@ operator|.
 name|substring
 argument_list|(
 name|copyrightIndex
-argument_list|,
-name|value
-operator|.
-name|length
-argument_list|()
 argument_list|)
 operator|.
 name|replaceAll

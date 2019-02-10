@@ -383,7 +383,6 @@ decl_stmt|;
 annotation|@
 name|BeforeEach
 DECL|method|setUp ()
-specifier|public
 name|void
 name|setUp
 parameter_list|()
@@ -591,7 +590,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testPerformExportForSingleEntry (@empDir Path testFolder)
-specifier|public
 name|void
 name|testPerformExportForSingleEntry
 parameter_list|(

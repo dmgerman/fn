@@ -315,6 +315,11 @@ name|SavePreferences
 name|loadForExportFromPreferences
 parameter_list|()
 function_decl|;
+DECL|method|getExportWorkingDirectory ()
+name|String
+name|getExportWorkingDirectory
+parameter_list|()
+function_decl|;
 DECL|method|setExportWorkingDirectory (String layoutFileDirString)
 name|void
 name|setExportWorkingDirectory
@@ -322,11 +327,6 @@ parameter_list|(
 name|String
 name|layoutFileDirString
 parameter_list|)
-function_decl|;
-DECL|method|getExportWorkingDirectory ()
-name|String
-name|getExportWorkingDirectory
-parameter_list|()
 function_decl|;
 block|}
 end_interface

@@ -235,7 +235,7 @@ argument_list|<
 name|Path
 argument_list|>
 block|{
-comment|/**      * New ZIP file chooser.      *      * @param zipFile                   ZIP-Fle to choose from, must be readable      */
+comment|/**      * New ZIP file chooser.      *      * @param zipFile ZIP-Fle to choose from, must be readable      */
 DECL|method|ZipFileChooser (FileSystem zipFile)
 specifier|public
 name|ZipFileChooser

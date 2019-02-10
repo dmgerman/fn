@@ -51,7 +51,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * ExporterViewModel wraps a TemplateExporter from logic and is used in the exporter customization dialog view  * and ViewModel.  *  *  */
+comment|/**  * ExporterViewModel wraps a TemplateExporter from logic and is used in the exporter customization dialog view  * and ViewModel.  */
 end_comment
 
 begin_class

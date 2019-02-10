@@ -417,7 +417,7 @@ name|preferences
 operator|.
 name|getStringList
 argument_list|(
-name|preferences
+name|JabRefPreferences
 operator|.
 name|COLUMN_NAMES
 argument_list|)

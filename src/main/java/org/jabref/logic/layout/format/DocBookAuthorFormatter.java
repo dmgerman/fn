@@ -63,7 +63,7 @@ operator|new
 name|XMLChars
 argument_list|()
 decl_stmt|;
-comment|/**      *      * @param sb {@link StringBuilder}      * @param al {@link AuthorList}      * @param tagName Editor or author field/tag      * @param version @link {@link DocBookVersion}      */
+comment|/**      * @param sb      {@link StringBuilder}      * @param al      {@link AuthorList}      * @param tagName Editor or author field/tag      * @param version @link {@link DocBookVersion}      */
 DECL|method|addBody (StringBuilder sb, AuthorList al, String tagName, DocBookVersion version)
 specifier|public
 name|void

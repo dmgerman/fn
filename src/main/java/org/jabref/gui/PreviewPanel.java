@@ -268,7 +268,7 @@ name|gui
 operator|.
 name|externalfiles
 operator|.
-name|NewDroppedFileHandler
+name|ExternalFilesEntryLinker
 import|;
 end_import
 
@@ -630,6 +630,14 @@ specifier|final
 name|KeyBindingRepository
 name|keyBindingRepository
 decl_stmt|;
+DECL|field|defaultPreviewStyle
+specifier|private
+specifier|final
+name|String
+name|defaultPreviewStyle
+init|=
+literal|"Preview"
+decl_stmt|;
 DECL|field|previewStyle
 specifier|private
 name|String
@@ -639,14 +647,6 @@ DECL|field|citationStyle
 specifier|private
 name|CitationStyle
 name|citationStyle
-decl_stmt|;
-DECL|field|defaultPreviewStyle
-specifier|private
-specifier|final
-name|String
-name|defaultPreviewStyle
-init|=
-literal|"Preview"
 decl_stmt|;
 DECL|field|basePanel
 specifier|private
@@ -721,11 +721,11 @@ operator|.
 name|empty
 argument_list|()
 decl_stmt|;
-DECL|field|fileHandler
+DECL|field|fileLinker
 specifier|private
 specifier|final
-name|NewDroppedFileHandler
-name|fileHandler
+name|ExternalFilesEntryLinker
+name|fileLinker
 decl_stmt|;
 comment|/**      * @param panel           (may be null) Only set this if the preview is associated to the main window.      * @param databaseContext Used for resolving pdf directories for links. Must not be null.      */
 DECL|method|PreviewPanel (BasePanel panel, BibDatabaseContext databaseContext, KeyBindingRepository keyBindingRepository, PreviewPreferences preferences, DialogService dialogService, ExternalFileTypes externalFileTypes)
@@ -793,15 +793,11 @@ name|keyBindingRepository
 operator|=
 name|keyBindingRepository
 expr_stmt|;
-name|fileHandler
+name|fileLinker
 operator|=
 operator|new
-name|NewDroppedFileHandler
+name|ExternalFilesEntryLinker
 argument_list|(
-name|dialogService
-argument_list|,
-name|databaseContext
-argument_list|,
 name|externalFileTypes
 argument_list|,
 name|Globals
@@ -811,24 +807,7 @@ operator|.
 name|getFilePreferences
 argument_list|()
 argument_list|,
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getImportFormatPreferences
-argument_list|()
-argument_list|,
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getUpdateFieldPreferences
-argument_list|()
-argument_list|,
-name|Globals
-operator|.
-name|getFileUpdateMonitor
-argument_list|()
+name|databaseContext
 argument_list|)
 expr_stmt|;
 comment|// Set up scroll pane for preview pane
@@ -1072,9 +1051,9 @@ literal|"Mode MOVE"
 argument_list|)
 expr_stmt|;
 comment|//shift on win or no modifier
-name|fileHandler
+name|fileLinker
 operator|.
-name|addToEntryRenameAndMoveToFileDir
+name|moveFilesToFileDirAndAddToEntry
 argument_list|(
 name|entry
 argument_list|,
@@ -1102,9 +1081,9 @@ literal|"Node LINK"
 argument_list|)
 expr_stmt|;
 comment|//alt on win
-name|fileHandler
+name|fileLinker
 operator|.
-name|addToEntry
+name|addFilesToEntry
 argument_list|(
 name|entry
 argument_list|,
@@ -1132,7 +1111,7 @@ literal|"Mode Copy"
 argument_list|)
 expr_stmt|;
 comment|//ctrl on win, no modifier on Xubuntu
-name|fileHandler
+name|fileLinker
 operator|.
 name|copyFilesToFileDirAndAddToEntry
 argument_list|(
@@ -1142,6 +1121,10 @@ name|files
 argument_list|)
 expr_stmt|;
 block|}
+name|success
+operator|=
+literal|true
+expr_stmt|;
 block|}
 name|event
 operator|.
