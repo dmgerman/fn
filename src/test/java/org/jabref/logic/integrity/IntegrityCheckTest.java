@@ -852,6 +852,16 @@ name|BIBLATEX
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|assertWrong
+argument_list|(
+name|createContext
+argument_list|(
+literal|"edition"
+argument_list|,
+literal|"1"
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Test
