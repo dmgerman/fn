@@ -208,21 +208,9 @@ name|jupiter
 operator|.
 name|api
 operator|.
-name|extension
+name|io
 operator|.
-name|ExtendWith
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junitpioneer
-operator|.
-name|jupiter
-operator|.
-name|TempDirectory
+name|TempDir
 import|;
 end_import
 
@@ -265,13 +253,6 @@ import|;
 end_import
 
 begin_class
-annotation|@
-name|ExtendWith
-argument_list|(
-name|TempDirectory
-operator|.
-name|class
-argument_list|)
 DECL|class|CsvExportFormatTest
 specifier|public
 class|class
@@ -401,14 +382,12 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testPerformExportForSingleAuthor (@empDirectory.TempDir Path testFolder)
+DECL|method|testPerformExportForSingleAuthor (@empDir Path testFolder)
 specifier|public
 name|void
 name|testPerformExportForSingleAuthor
 parameter_list|(
 annotation|@
-name|TempDirectory
-operator|.
 name|TempDir
 name|Path
 name|testFolder
@@ -506,14 +485,12 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testPerformExportForMultipleAuthors (@empDirectory.TempDir Path testFolder)
+DECL|method|testPerformExportForMultipleAuthors (@empDir Path testFolder)
 specifier|public
 name|void
 name|testPerformExportForMultipleAuthors
 parameter_list|(
 annotation|@
-name|TempDirectory
-operator|.
 name|TempDir
 name|Path
 name|testFolder
@@ -611,14 +588,12 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testPerformExportForSingleEditor (@empDirectory.TempDir Path testFolder)
+DECL|method|testPerformExportForSingleEditor (@empDir Path testFolder)
 specifier|public
 name|void
 name|testPerformExportForSingleEditor
 parameter_list|(
 annotation|@
-name|TempDirectory
-operator|.
 name|TempDir
 name|Path
 name|testFolder
@@ -730,14 +705,12 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testPerformExportForMultipleEditors (@empDirectory.TempDir Path testFolder)
+DECL|method|testPerformExportForMultipleEditors (@empDir Path testFolder)
 specifier|public
 name|void
 name|testPerformExportForMultipleEditors
 parameter_list|(
 annotation|@
-name|TempDirectory
-operator|.
 name|TempDir
 name|Path
 name|testFolder

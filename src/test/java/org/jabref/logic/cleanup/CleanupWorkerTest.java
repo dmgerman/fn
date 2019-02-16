@@ -448,21 +448,9 @@ name|jupiter
 operator|.
 name|api
 operator|.
-name|extension
+name|io
 operator|.
-name|ExtendWith
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junitpioneer
-operator|.
-name|jupiter
-operator|.
-name|TempDirectory
+name|TempDir
 import|;
 end_import
 
@@ -549,13 +537,6 @@ import|;
 end_import
 
 begin_class
-annotation|@
-name|ExtendWith
-argument_list|(
-name|TempDirectory
-operator|.
-name|class
-argument_list|)
 DECL|class|CleanupWorkerTest
 class|class
 name|CleanupWorkerTest
@@ -588,13 +569,11 @@ name|worker
 decl_stmt|;
 annotation|@
 name|BeforeEach
-DECL|method|setUp (@empDirectory.TempDir Path bibFolder)
+DECL|method|setUp (@empDir Path bibFolder)
 name|void
 name|setUp
 parameter_list|(
 annotation|@
-name|TempDirectory
-operator|.
 name|TempDir
 name|Path
 name|bibFolder
@@ -794,13 +773,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|cleanupDoesNothingByDefault (@empDirectory.TempDir Path bibFolder)
+DECL|method|cleanupDoesNothingByDefault (@empDir Path bibFolder)
 name|void
 name|cleanupDoesNothingByDefault
 parameter_list|(
 annotation|@
-name|TempDirectory
-operator|.
 name|TempDir
 name|Path
 name|bibFolder
@@ -1790,13 +1767,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|cleanupMoveFilesMovesFileFromSubfolder (@empDirectory.TempDir Path bibFolder)
+DECL|method|cleanupMoveFilesMovesFileFromSubfolder (@empDir Path bibFolder)
 name|void
 name|cleanupMoveFilesMovesFileFromSubfolder
 parameter_list|(
 annotation|@
-name|TempDirectory
-operator|.
 name|TempDir
 name|Path
 name|bibFolder
@@ -1945,13 +1920,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|cleanupRelativePathsConvertAbsoluteToRelativePath (@empDirectory.TempDir Path bibFolder)
+DECL|method|cleanupRelativePathsConvertAbsoluteToRelativePath (@empDir Path bibFolder)
 name|void
 name|cleanupRelativePathsConvertAbsoluteToRelativePath
 parameter_list|(
 annotation|@
-name|TempDirectory
-operator|.
 name|TempDir
 name|Path
 name|bibFolder
@@ -2084,13 +2057,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|cleanupRenamePdfRenamesRelativeFile (@empDirectory.TempDir Path bibFolder)
+DECL|method|cleanupRenamePdfRenamesRelativeFile (@empDir Path bibFolder)
 name|void
 name|cleanupRenamePdfRenamesRelativeFile
 parameter_list|(
 annotation|@
-name|TempDirectory
-operator|.
 name|TempDir
 name|Path
 name|bibFolder

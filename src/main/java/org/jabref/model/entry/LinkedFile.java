@@ -276,6 +276,36 @@ operator|new
 name|SimpleStringProperty
 argument_list|()
 decl_stmt|;
+DECL|method|LinkedFile (String description, Path link, String fileType)
+specifier|public
+name|LinkedFile
+parameter_list|(
+name|String
+name|description
+parameter_list|,
+name|Path
+name|link
+parameter_list|,
+name|String
+name|fileType
+parameter_list|)
+block|{
+name|this
+argument_list|(
+name|description
+argument_list|,
+name|link
+operator|.
+name|toString
+argument_list|()
+argument_list|,
+name|fileType
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * @deprecated use the other constructor {@link #LinkedFile(String, Path, String)}      */
+annotation|@
+name|Deprecated
 DECL|method|LinkedFile (String description, String link, String fileType)
 specifier|public
 name|LinkedFile

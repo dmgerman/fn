@@ -286,21 +286,9 @@ name|jupiter
 operator|.
 name|api
 operator|.
-name|extension
+name|io
 operator|.
-name|ExtendWith
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junitpioneer
-operator|.
-name|jupiter
-operator|.
-name|TempDirectory
+name|TempDir
 import|;
 end_import
 
@@ -371,13 +359,6 @@ import|;
 end_import
 
 begin_class
-annotation|@
-name|ExtendWith
-argument_list|(
-name|TempDirectory
-operator|.
-name|class
-argument_list|)
 DECL|class|IntegrityCheckTest
 class|class
 name|IntegrityCheckTest
@@ -868,6 +849,16 @@ argument_list|,
 name|BibDatabaseMode
 operator|.
 name|BIBLATEX
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertWrong
+argument_list|(
+name|createContext
+argument_list|(
+literal|"edition"
+argument_list|,
+literal|"1"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2195,13 +2186,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|fileCheckFindsFilesRelativeToBibFile (@empDirectory.TempDir Path testFolder)
+DECL|method|fileCheckFindsFilesRelativeToBibFile (@empDir Path testFolder)
 name|void
 name|fileCheckFindsFilesRelativeToBibFile
 parameter_list|(
 annotation|@
-name|TempDirectory
-operator|.
 name|TempDir
 name|Path
 name|testFolder

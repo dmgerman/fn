@@ -144,6 +144,20 @@ begin_import
 import|import
 name|org
 operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|LinkedFile
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|junit
 operator|.
 name|jupiter
@@ -198,7 +212,6 @@ end_import
 
 begin_class
 DECL|class|PdfContentImporterTest
-specifier|public
 class|class
 name|PdfContentImporterTest
 block|{
@@ -210,7 +223,6 @@ decl_stmt|;
 annotation|@
 name|BeforeEach
 DECL|method|setUp ()
-specifier|public
 name|void
 name|setUp
 parameter_list|()
@@ -232,7 +244,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testsGetExtensions ()
-specifier|public
 name|void
 name|testsGetExtensions
 parameter_list|()
@@ -253,7 +264,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testGetDescription ()
-specifier|public
 name|void
 name|testGetDescription
 parameter_list|()
@@ -272,7 +282,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|doesNotHandleEncryptedPdfs ()
-specifier|public
 name|void
 name|doesNotHandleEncryptedPdfs
 parameter_list|()
@@ -336,7 +345,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|importTwiceWorksAsExpected ()
-specifier|public
 name|void
 name|importTwiceWorksAsExpected
 parameter_list|()
@@ -417,6 +425,29 @@ operator|.
 name|TITLE
 argument_list|,
 literal|"Hello World"
+argument_list|)
+expr_stmt|;
+name|expected
+operator|.
+name|setFiles
+argument_list|(
+name|Collections
+operator|.
+name|singletonList
+argument_list|(
+operator|new
+name|LinkedFile
+argument_list|(
+literal|""
+argument_list|,
+name|file
+operator|.
+name|toAbsolutePath
+argument_list|()
+argument_list|,
+literal|"PDF"
+argument_list|)
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|List

@@ -61,6 +61,7 @@ name|previewCycle
 decl_stmt|;
 DECL|field|previewCyclePosition
 specifier|private
+specifier|final
 name|int
 name|previewCyclePosition
 decl_stmt|;
@@ -401,6 +402,21 @@ name|int
 name|position
 parameter_list|)
 block|{
+if|if
+condition|(
+name|previewCycle
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+name|previeCyclePosition
+operator|=
+literal|0
+expr_stmt|;
+block|}
+else|else
+block|{
 name|previeCyclePosition
 operator|=
 name|position
@@ -427,6 +443,7 @@ operator|.
 name|size
 argument_list|()
 expr_stmt|;
+block|}
 return|return
 name|this
 return|;

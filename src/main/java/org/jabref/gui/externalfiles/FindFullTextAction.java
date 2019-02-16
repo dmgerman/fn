@@ -789,7 +789,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * This method attaches a linked file from a URL (if not already linked) to an entry using the key and value pair      * from the findFullTexts map      * @param url the url "key"      * @param entry the entry "value"      */
+comment|/**      * This method attaches a linked file from a URL (if not already linked) to an entry using the key and value pair      * from the findFullTexts map      *      * @param url   the url "key"      * @param entry the entry "value"      */
 DECL|method|addLinkedFileFromURL (URL url, BibEntry entry)
 specifier|private
 name|void

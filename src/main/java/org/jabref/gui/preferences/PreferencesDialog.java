@@ -296,6 +296,20 @@ name|gui
 operator|.
 name|util
 operator|.
+name|TaskExecutor
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|util
+operator|.
 name|ViewModelListCellFactory
 import|;
 end_import
@@ -518,12 +532,15 @@ name|PrefsTab
 argument_list|>
 name|preferenceTabs
 decl_stmt|;
-DECL|method|PreferencesDialog (JabRefFrame parent)
+DECL|method|PreferencesDialog (JabRefFrame parent, TaskExecutor taskExecutor)
 specifier|public
 name|PreferencesDialog
 parameter_list|(
 name|JabRefFrame
 name|parent
+parameter_list|,
+name|TaskExecutor
+name|taskExecutor
 parameter_list|)
 block|{
 name|setTitle
@@ -617,10 +634,9 @@ argument_list|)
 expr_stmt|;
 name|prefs
 operator|=
-name|JabRefPreferences
+name|Globals
 operator|.
-name|getInstance
-argument_list|()
+name|prefs
 expr_stmt|;
 name|frame
 operator|=
@@ -703,6 +719,8 @@ name|ExternalFileTypes
 operator|.
 name|getInstance
 argument_list|()
+argument_list|,
+name|taskExecutor
 argument_list|)
 argument_list|)
 expr_stmt|;

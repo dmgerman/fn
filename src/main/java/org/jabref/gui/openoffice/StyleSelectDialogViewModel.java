@@ -860,9 +860,6 @@ name|style
 operator|.
 name|getPath
 argument_list|()
-operator|.
-name|toString
-argument_list|()
 argument_list|,
 name|type
 argument_list|)
