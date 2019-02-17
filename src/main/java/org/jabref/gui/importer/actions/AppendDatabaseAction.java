@@ -512,12 +512,6 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|field|frame
-specifier|private
-specifier|final
-name|JabRefFrame
-name|frame
-decl_stmt|;
 DECL|field|panel
 specifier|private
 specifier|final
@@ -555,12 +549,6 @@ name|BasePanel
 name|panel
 parameter_list|)
 block|{
-name|this
-operator|.
-name|frame
-operator|=
-name|frame
-expr_stmt|;
 name|this
 operator|.
 name|panel
@@ -815,8 +803,6 @@ argument_list|(
 operator|new
 name|UndoableInsertString
 argument_list|(
-name|panel
-argument_list|,
 name|database
 argument_list|,
 name|bs

@@ -323,8 +323,6 @@ operator|new
 name|UndoableRemoveString
 argument_list|(
 name|panel
-argument_list|,
-name|panel
 operator|.
 name|getDatabase
 argument_list|()

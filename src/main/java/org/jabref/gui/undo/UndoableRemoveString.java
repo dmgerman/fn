@@ -18,18 +18,6 @@ name|org
 operator|.
 name|jabref
 operator|.
-name|gui
-operator|.
-name|BasePanel
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
 name|logic
 operator|.
 name|l10n
@@ -150,19 +138,10 @@ specifier|final
 name|BibtexString
 name|string
 decl_stmt|;
-DECL|field|panel
-specifier|private
-specifier|final
-name|BasePanel
-name|panel
-decl_stmt|;
-DECL|method|UndoableRemoveString (BasePanel panel, BibDatabase base, BibtexString string)
+DECL|method|UndoableRemoveString (BibDatabase base, BibtexString string)
 specifier|public
 name|UndoableRemoveString
 parameter_list|(
-name|BasePanel
-name|panel
-parameter_list|,
 name|BibDatabase
 name|base
 parameter_list|,
@@ -181,12 +160,6 @@ operator|.
 name|string
 operator|=
 name|string
-expr_stmt|;
-name|this
-operator|.
-name|panel
-operator|=
-name|panel
 expr_stmt|;
 block|}
 annotation|@
@@ -256,11 +229,6 @@ name|ex
 argument_list|)
 expr_stmt|;
 block|}
-name|panel
-operator|.
-name|updateStringDialog
-argument_list|()
-expr_stmt|;
 block|}
 annotation|@
 name|Override
@@ -285,11 +253,6 @@ operator|.
 name|getId
 argument_list|()
 argument_list|)
-expr_stmt|;
-name|panel
-operator|.
-name|updateStringDialog
-argument_list|()
 expr_stmt|;
 block|}
 block|}

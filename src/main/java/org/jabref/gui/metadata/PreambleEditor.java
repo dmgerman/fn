@@ -1,12 +1,14 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|org.jabref.gui
+DECL|package|org.jabref.gui.metadata
 package|package
 name|org
 operator|.
 name|jabref
 operator|.
 name|gui
+operator|.
+name|metadata
 package|;
 end_package
 
@@ -53,6 +55,30 @@ operator|.
 name|control
 operator|.
 name|TextArea
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|BasePanel
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|JabRefFrame
 import|;
 end_import
 
@@ -114,6 +140,7 @@ end_import
 
 begin_class
 DECL|class|PreambleEditor
+specifier|public
 class|class
 name|PreambleEditor
 extends|extends

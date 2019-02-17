@@ -18,18 +18,6 @@ name|org
 operator|.
 name|jabref
 operator|.
-name|gui
-operator|.
-name|BasePanel
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
 name|logic
 operator|.
 name|l10n
@@ -98,19 +86,10 @@ specifier|final
 name|boolean
 name|nameChange
 decl_stmt|;
-DECL|field|panel
-specifier|private
-specifier|final
-name|BasePanel
-name|panel
-decl_stmt|;
-DECL|method|UndoableStringChange (BasePanel panel, BibtexString string, boolean nameChange, String oldValue, String newValue)
+DECL|method|UndoableStringChange (BibtexString string, boolean nameChange, String oldValue, String newValue)
 specifier|public
 name|UndoableStringChange
 parameter_list|(
-name|BasePanel
-name|panel
-parameter_list|,
 name|BibtexString
 name|string
 parameter_list|,
@@ -147,12 +126,6 @@ operator|.
 name|nameChange
 operator|=
 name|nameChange
-expr_stmt|;
-name|this
-operator|.
-name|panel
-operator|=
-name|panel
 expr_stmt|;
 block|}
 annotation|@
@@ -225,11 +198,6 @@ name|undo
 argument_list|()
 expr_stmt|;
 comment|// Revert the change.
-name|panel
-operator|.
-name|assureStringDialogNotEditing
-argument_list|()
-expr_stmt|;
 if|if
 condition|(
 name|nameChange
@@ -253,11 +221,6 @@ name|oldValue
 argument_list|)
 expr_stmt|;
 block|}
-name|panel
-operator|.
-name|updateStringDialog
-argument_list|()
-expr_stmt|;
 block|}
 annotation|@
 name|Override
@@ -273,11 +236,6 @@ name|redo
 argument_list|()
 expr_stmt|;
 comment|// Redo the change.
-name|panel
-operator|.
-name|assureStringDialogNotEditing
-argument_list|()
-expr_stmt|;
 if|if
 condition|(
 name|nameChange
@@ -301,11 +259,6 @@ name|newValue
 argument_list|)
 expr_stmt|;
 block|}
-name|panel
-operator|.
-name|updateStringDialog
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 end_class
