@@ -710,11 +710,6 @@ name|void
 name|setValues
 parameter_list|()
 block|{
-name|viewModel
-operator|.
-name|setValues
-argument_list|()
-expr_stmt|;
 name|Optional
 argument_list|<
 name|SaveOrderConfig
