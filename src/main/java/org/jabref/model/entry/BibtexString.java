@@ -314,6 +314,7 @@ operator|=
 literal|true
 expr_stmt|;
 block|}
+comment|/**      * Returns the name/label of the string      * @return      */
 DECL|method|getName ()
 specifier|public
 name|String
@@ -585,10 +586,13 @@ return|;
 block|}
 if|if
 condition|(
+operator|(
 name|o
 operator|==
 literal|null
+operator|)
 operator|||
+operator|(
 name|getClass
 argument_list|()
 operator|!=
@@ -596,6 +600,7 @@ name|o
 operator|.
 name|getClass
 argument_list|()
+operator|)
 condition|)
 block|{
 return|return
@@ -611,11 +616,17 @@ operator|)
 name|o
 decl_stmt|;
 return|return
+operator|(
+name|Objects
+operator|.
+name|equals
+argument_list|(
 name|hasChanged
-operator|==
+argument_list|,
 name|that
 operator|.
 name|hasChanged
+argument_list|)
 operator|&&
 name|Objects
 operator|.
@@ -650,11 +661,16 @@ operator|.
 name|id
 argument_list|)
 operator|&&
+name|Objects
+operator|.
+name|equals
+argument_list|(
 name|type
-operator|==
+argument_list|,
 name|that
 operator|.
 name|type
+argument_list|)
 operator|&&
 name|Objects
 operator|.
@@ -666,6 +682,7 @@ name|that
 operator|.
 name|parsedSerialization
 argument_list|)
+operator|)
 return|;
 block|}
 annotation|@

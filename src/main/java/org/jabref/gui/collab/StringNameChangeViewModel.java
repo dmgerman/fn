@@ -373,8 +373,6 @@ operator|new
 name|UndoableInsertString
 argument_list|(
 name|panel
-argument_list|,
-name|panel
 operator|.
 name|getDatabase
 argument_list|()
@@ -429,8 +427,6 @@ argument_list|(
 operator|new
 name|UndoableStringChange
 argument_list|(
-name|panel
-argument_list|,
 name|string
 argument_list|,
 literal|true
