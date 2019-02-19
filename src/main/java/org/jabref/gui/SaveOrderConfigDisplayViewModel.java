@@ -15,7 +15,7 @@ DECL|class|SaveOrderConfigDisplayViewModel
 specifier|public
 class|class
 name|SaveOrderConfigDisplayViewModel
-block|{  }
+block|{   }
 end_class
 
 end_unit
