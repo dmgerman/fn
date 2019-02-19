@@ -573,7 +573,7 @@ name|withValidation
 argument_list|(
 name|BibtexStringViewModel
 operator|::
-name|labelValidation
+name|contentValidation
 argument_list|,
 name|visualizer
 argument_list|)
