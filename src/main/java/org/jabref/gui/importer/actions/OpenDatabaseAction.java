@@ -553,11 +553,6 @@ comment|// Check for new custom entry types loaded from the BIB file:
 operator|new
 name|CheckForNewEntryTypesAction
 argument_list|()
-argument_list|,
-comment|// Warning about and handling duplicate BibTeX keys:
-operator|new
-name|HandleDuplicateWarnings
-argument_list|()
 argument_list|)
 decl_stmt|;
 DECL|field|frame

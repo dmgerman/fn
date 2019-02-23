@@ -142,9 +142,6 @@ block|,
 DECL|enumConstant|REPLACE_ALL
 name|REPLACE_ALL
 block|,
-DECL|enumConstant|RESOLVE_DUPLICATE_KEYS
-name|RESOLVE_DUPLICATE_KEYS
-block|,
 DECL|enumConstant|SAVE
 name|SAVE
 block|,
