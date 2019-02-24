@@ -317,6 +317,17 @@ return|return
 name|saveInOriginalOrder
 return|;
 block|}
+DECL|method|saveInSpecifiedOrder ()
+specifier|public
+name|boolean
+name|saveInSpecifiedOrder
+parameter_list|()
+block|{
+return|return
+operator|!
+name|saveInOriginalOrder
+return|;
+block|}
 DECL|method|getSortCriteria ()
 specifier|public
 name|LinkedList

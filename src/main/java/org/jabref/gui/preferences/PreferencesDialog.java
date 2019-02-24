@@ -58,6 +58,16 @@ begin_import
 import|import
 name|javafx
 operator|.
+name|fxml
+operator|.
+name|FXML
+import|;
+end_import
+
+begin_import
+import|import
+name|javafx
+operator|.
 name|geometry
 operator|.
 name|Pos
@@ -438,6 +448,20 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|airhacks
+operator|.
+name|afterburner
+operator|.
+name|views
+operator|.
+name|ViewLoader
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|fxmisc
@@ -576,6 +600,21 @@ argument_list|)
 operator|.
 name|toExternalForm
 argument_list|()
+argument_list|)
+expr_stmt|;
+name|ViewLoader
+operator|.
+name|view
+argument_list|(
+name|this
+argument_list|)
+operator|.
+name|load
+argument_list|()
+operator|.
+name|setAsDialogPane
+argument_list|(
+name|this
 argument_list|)
 expr_stmt|;
 name|ButtonType
@@ -878,6 +917,14 @@ name|construct
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|FXML
+DECL|method|initalize ()
+specifier|private
+name|void
+name|initalize
+parameter_list|()
+block|{      }
 DECL|method|construct ()
 specifier|private
 name|void
