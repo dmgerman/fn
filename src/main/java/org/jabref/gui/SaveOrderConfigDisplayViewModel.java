@@ -396,11 +396,6 @@ name|prefs
 operator|=
 name|prefs
 expr_stmt|;
-name|SaveOrderConfig
-name|storedSaveOrderConfig
-init|=
-name|config
-decl_stmt|;
 name|List
 argument_list|<
 name|String
@@ -843,10 +838,10 @@ return|return
 name|saveTerSortSelectedValueProperty
 return|;
 block|}
-DECL|method|storeConfig ()
+DECL|method|storeConfigInPrefs ()
 specifier|public
 name|void
-name|storeConfig
+name|storeConfigInPrefs
 parameter_list|()
 block|{
 name|prefs

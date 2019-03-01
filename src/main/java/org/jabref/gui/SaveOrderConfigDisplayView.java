@@ -463,9 +463,22 @@ parameter_list|()
 block|{
 name|viewModel
 operator|.
-name|storeConfig
+name|storeConfigInPrefs
 argument_list|()
 expr_stmt|;
+block|}
+DECL|method|getSaveOrderConfig ()
+specifier|public
+name|SaveOrderConfig
+name|getSaveOrderConfig
+parameter_list|()
+block|{
+return|return
+name|viewModel
+operator|.
+name|getSaveOrderConfig
+argument_list|()
+return|;
 block|}
 DECL|method|getJFXPanel ()
 specifier|public

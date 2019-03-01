@@ -145,12 +145,6 @@ name|Pane
 implements|implements
 name|PrefsTab
 block|{
-DECL|field|prefs
-specifier|private
-specifier|final
-name|JabRefPreferences
-name|prefs
-decl_stmt|;
 DECL|field|exportInOriginalOrder
 specifier|private
 specifier|final
@@ -193,12 +187,6 @@ name|JabRefPreferences
 name|prefs
 parameter_list|)
 block|{
-name|this
-operator|.
-name|prefs
-operator|=
-name|prefs
-expr_stmt|;
 comment|// EXPORT SORT ORDER
 comment|// create Components
 name|exportInOriginalOrder
