@@ -631,6 +631,11 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+name|saveOrderConfigDisplayView
+operator|.
+name|changeExportDescriptionToSave
+argument_list|()
+expr_stmt|;
 name|fieldFormatterCleanupsPanel
 operator|=
 operator|new
