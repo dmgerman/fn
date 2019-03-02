@@ -361,12 +361,6 @@ operator|new
 name|SimpleBooleanProperty
 argument_list|()
 decl_stmt|;
-DECL|field|config
-specifier|private
-specifier|final
-name|SaveOrderConfig
-name|config
-decl_stmt|;
 DECL|field|prefs
 specifier|private
 specifier|final
@@ -384,12 +378,6 @@ name|PreferencesService
 name|prefs
 parameter_list|)
 block|{
-name|this
-operator|.
-name|config
-operator|=
-name|config
-expr_stmt|;
 name|this
 operator|.
 name|prefs

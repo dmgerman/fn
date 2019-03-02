@@ -924,7 +924,9 @@ specifier|private
 name|void
 name|initalize
 parameter_list|()
-block|{      }
+block|{
+comment|//FIXME: Model whole dialog as fxml
+block|}
 DECL|method|construct ()
 specifier|private
 name|void

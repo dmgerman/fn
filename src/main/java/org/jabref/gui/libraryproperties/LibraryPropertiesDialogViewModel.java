@@ -354,12 +354,6 @@ specifier|final
 name|DirectoryDialogConfiguration
 name|directoryDialogConfiguration
 decl_stmt|;
-DECL|field|metaData
-specifier|private
-specifier|final
-name|MetaData
-name|metaData
-decl_stmt|;
 DECL|field|oldUserSpecificFileDir
 specifier|private
 specifier|final
@@ -398,10 +392,9 @@ name|dialogService
 operator|=
 name|dialogService
 expr_stmt|;
-name|this
-operator|.
+name|MetaData
 name|metaData
-operator|=
+init|=
 name|panel
 operator|.
 name|getBibDatabaseContext
@@ -409,7 +402,7 @@ argument_list|()
 operator|.
 name|getMetaData
 argument_list|()
-expr_stmt|;
+decl_stmt|;
 name|DatabaseLocation
 name|location
 init|=
