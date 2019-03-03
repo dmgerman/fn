@@ -1045,17 +1045,6 @@ expr_stmt|;
 block|}
 block|}
 block|}
-name|authString
-operator|=
-name|BibtexKeyGenerator
-operator|.
-name|cleanKey
-argument_list|(
-name|authString
-argument_list|,
-name|isEnforceLegalKey
-argument_list|)
-expr_stmt|;
 comment|// Gather all author-related checks, so we don't
 comment|// have to check all the time.
 if|if
@@ -1384,6 +1373,17 @@ condition|)
 block|{
 comment|// authN. First N chars of the first author's last
 comment|// name.
+name|authString
+operator|=
+name|BibtexKeyGenerator
+operator|.
+name|cleanKey
+argument_list|(
+name|authString
+argument_list|,
+name|isEnforceLegalKey
+argument_list|)
+expr_stmt|;
 name|String
 name|fa
 init|=
