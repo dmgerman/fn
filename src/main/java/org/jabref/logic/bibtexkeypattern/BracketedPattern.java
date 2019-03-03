@@ -527,7 +527,6 @@ name|database
 argument_list|)
 return|;
 block|}
-comment|/**      * Expands a pattern      *      * @param pattern The pattern to expand      * @param keywordDelimiter The keyword delimiter to use      * @param entry The bibentry to use for expansion      * @param database The database for field resolving. May be null.      * @return The expanded pattern. Not null.      */
 DECL|method|expandBrackets (String pattern, Character keywordDelimiter, BibEntry entry, BibDatabase database)
 specifier|public
 specifier|static
@@ -545,6 +544,44 @@ name|entry
 parameter_list|,
 name|BibDatabase
 name|database
+parameter_list|)
+block|{
+return|return
+name|expandBrackets
+argument_list|(
+name|pattern
+argument_list|,
+name|keywordDelimiter
+argument_list|,
+name|entry
+argument_list|,
+name|database
+argument_list|,
+literal|false
+argument_list|)
+return|;
+block|}
+comment|/**      * Expands a pattern      *      * @param pattern The pattern to expand      * @param keywordDelimiter The keyword delimiter to use      * @param entry The bibentry to use for expansion      * @param database The database for field resolving. May be null.      * @return The expanded pattern. Not null.      */
+DECL|method|expandBrackets (String pattern, Character keywordDelimiter, BibEntry entry, BibDatabase database, boolean isEnforceLegalKey)
+specifier|public
+specifier|static
+name|String
+name|expandBrackets
+parameter_list|(
+name|String
+name|pattern
+parameter_list|,
+name|Character
+name|keywordDelimiter
+parameter_list|,
+name|BibEntry
+name|entry
+parameter_list|,
+name|BibDatabase
+name|database
+parameter_list|,
+name|boolean
+name|isEnforceLegalKey
 parameter_list|)
 block|{
 name|Objects
@@ -684,6 +721,8 @@ argument_list|,
 name|keywordDelimiter
 argument_list|,
 name|database
+argument_list|,
+name|isEnforceLegalKey
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -708,6 +747,8 @@ argument_list|,
 name|keywordDelimiter
 argument_list|,
 name|database
+argument_list|,
+name|isEnforceLegalKey
 argument_list|)
 decl_stmt|;
 name|sb
@@ -793,7 +834,7 @@ argument_list|()
 return|;
 block|}
 comment|/**      * Evaluates the given pattern ("value") to the given bibentry and database      *      * @param entry The entry to get the field value from      * @param value A pattern string (such as auth, pureauth, authorLast)      * @param keywordDelimiter The de      * @param database The database to use for field resolving. May be null.      *      * @return String containing the evaluation result. Empty string if the pattern cannot be resolved.      */
-DECL|method|getFieldValue (BibEntry entry, String value, Character keywordDelimiter, BibDatabase database)
+DECL|method|getFieldValue (BibEntry entry, String value, Character keywordDelimiter, BibDatabase database, boolean isEnforceLegalKey)
 specifier|public
 specifier|static
 name|String
@@ -810,6 +851,9 @@ name|keywordDelimiter
 parameter_list|,
 name|BibDatabase
 name|database
+parameter_list|,
+name|boolean
+name|isEnforceLegalKey
 parameter_list|)
 block|{
 name|String
@@ -1001,6 +1045,17 @@ expr_stmt|;
 block|}
 block|}
 block|}
+name|authString
+operator|=
+name|BibtexKeyGenerator
+operator|.
+name|cleanKey
+argument_list|(
+name|authString
+argument_list|,
+name|isEnforceLegalKey
+argument_list|)
+expr_stmt|;
 comment|// Gather all author-related checks, so we don't
 comment|// have to check all the time.
 if|if

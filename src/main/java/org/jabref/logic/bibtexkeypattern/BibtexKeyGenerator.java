@@ -845,6 +845,11 @@ argument_list|,
 name|entry
 argument_list|,
 name|database
+argument_list|,
+name|bibtexKeyPatternPreferences
+operator|.
+name|isEnforceLegalKey
+argument_list|()
 argument_list|)
 decl_stmt|;
 comment|// apply modifier if present
