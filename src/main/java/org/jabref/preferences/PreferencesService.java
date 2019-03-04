@@ -146,6 +146,20 @@ name|org
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
+name|protectedterms
+operator|.
+name|ProtectedTermsLoader
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
 name|model
 operator|.
 name|metadata
@@ -160,6 +174,14 @@ specifier|public
 interface|interface
 name|PreferencesService
 block|{
+DECL|method|setProtectedTermsPreferences (ProtectedTermsLoader loader)
+name|void
+name|setProtectedTermsPreferences
+parameter_list|(
+name|ProtectedTermsLoader
+name|loader
+parameter_list|)
+function_decl|;
 DECL|method|getJournalAbbreviationPreferences ()
 name|JournalAbbreviationPreferences
 name|getJournalAbbreviationPreferences
