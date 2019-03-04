@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|org.jabref.gui.actions
+DECL|package|org.jabref.gui.customentrytypes
 package|package
 name|org
 operator|.
@@ -8,19 +8,9 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|actions
+name|customentrytypes
 package|;
 end_package
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|JDialog
-import|;
-end_import
 
 begin_import
 import|import
@@ -42,9 +32,9 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|customentrytypes
+name|actions
 operator|.
-name|EntryTypeCustomizationDialog
+name|SimpleCommand
 import|;
 end_import
 
@@ -85,21 +75,17 @@ name|void
 name|execute
 parameter_list|()
 block|{
-name|JDialog
+name|EntryTypeCustomizationDialog
 name|dialog
 init|=
 operator|new
 name|EntryTypeCustomizationDialog
-argument_list|(
-name|frame
-argument_list|)
+argument_list|()
 decl_stmt|;
 name|dialog
 operator|.
-name|setVisible
-argument_list|(
-literal|true
-argument_list|)
+name|showAndWait
+argument_list|()
 expr_stmt|;
 block|}
 block|}

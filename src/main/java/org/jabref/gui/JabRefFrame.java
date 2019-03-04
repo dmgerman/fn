@@ -646,20 +646,6 @@ name|gui
 operator|.
 name|actions
 operator|.
-name|CustomizeEntryAction
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|actions
-operator|.
 name|CustomizeKeyBindingAction
 import|;
 end_import
@@ -6812,21 +6798,8 @@ name|this
 argument_list|)
 argument_list|)
 argument_list|,
-name|factory
-operator|.
-name|createMenuItem
-argument_list|(
-name|StandardActions
-operator|.
-name|CUSTOMIZE_ENTRY_TYPES
-argument_list|,
-operator|new
-name|CustomizeEntryAction
-argument_list|(
-name|this
-argument_list|)
-argument_list|)
-argument_list|,
+comment|// TODO: Reenable customize entry types feature (https://github.com/JabRef/jabref/issues/4719)
+comment|//factory.createMenuItem(StandardActions.CUSTOMIZE_ENTRY_TYPES, new CustomizeEntryAction(this)),
 name|factory
 operator|.
 name|createMenuItem
