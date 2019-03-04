@@ -9495,6 +9495,8 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|isKeywordSyncEnabled ()
 specifier|public
 name|boolean
@@ -11306,6 +11308,8 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getKeywordDelimiter ()
 specifier|public
 name|Character

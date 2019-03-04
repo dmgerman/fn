@@ -187,6 +187,11 @@ name|JournalAbbreviationPreferences
 name|getJournalAbbreviationPreferences
 parameter_list|()
 function_decl|;
+DECL|method|getKeywordDelimiter ()
+name|Character
+name|getKeywordDelimiter
+parameter_list|()
+function_decl|;
 DECL|method|storeKeyBindingRepository (KeyBindingRepository keyBindingRepository)
 name|void
 name|storeKeyBindingRepository
@@ -331,6 +336,11 @@ parameter_list|(
 name|JournalAbbreviationLoader
 name|loader
 parameter_list|)
+function_decl|;
+DECL|method|isKeywordSyncEnabled ()
+name|boolean
+name|isKeywordSyncEnabled
+parameter_list|()
 function_decl|;
 DECL|method|loadForExportFromPreferences ()
 name|SavePreferences
