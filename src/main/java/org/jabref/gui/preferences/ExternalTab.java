@@ -108,18 +108,6 @@ end_import
 
 begin_import
 import|import
-name|javafx
-operator|.
-name|scene
-operator|.
-name|layout
-operator|.
-name|Pane
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|jabref
@@ -280,8 +268,6 @@ begin_class
 DECL|class|ExternalTab
 class|class
 name|ExternalTab
-extends|extends
-name|Pane
 implements|implements
 name|PrefsTab
 block|{
