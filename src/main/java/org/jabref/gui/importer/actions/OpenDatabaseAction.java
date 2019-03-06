@@ -426,18 +426,6 @@ name|org
 operator|.
 name|jabref
 operator|.
-name|migrations
-operator|.
-name|FileLinksUpgradeWarning
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
 name|model
 operator|.
 name|database
@@ -542,11 +530,6 @@ comment|// Migrations:
 comment|// Warning for migrating the Review into the Comment field
 operator|new
 name|MergeReviewIntoCommentAction
-argument_list|()
-argument_list|,
-comment|// External file handling system in version 2.3:
-operator|new
-name|FileLinksUpgradeWarning
 argument_list|()
 argument_list|,
 comment|// Check for new custom entry types loaded from the BIB file:

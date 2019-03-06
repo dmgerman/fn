@@ -1804,7 +1804,7 @@ switch|switch
 condition|(
 name|newlineSeparator
 operator|.
-name|getPromptText
+name|getValue
 argument_list|()
 condition|)
 block|{

@@ -1463,6 +1463,14 @@ operator|.
 name|MAGNIFY
 argument_list|)
 operator|,
+DECL|enumConstant|FILE_SEARCH
+name|FILE_SEARCH
+argument_list|(
+name|MaterialDesignIcon
+operator|.
+name|FILE_FIND
+argument_list|)
+operator|,
 DECL|enumConstant|ADVANCED_SEARCH
 name|ADVANCED_SEARCH
 argument_list|(
@@ -1844,9 +1852,9 @@ name|OPEN
 argument_list|(
 name|MaterialDesignIcon
 operator|.
-name|FOLDER
+name|FOLDER_OUTLINE
 argument_list|)
-comment|/*css: folder */
+comment|/*css: folder-outline */
 operator|,
 DECL|enumConstant|ADD_ROW
 name|ADD_ROW
@@ -2192,15 +2200,15 @@ name|CODE_EQUAL
 argument_list|)
 operator|,
 comment|/*css: code-equal */
-DECL|enumConstant|PULL
-name|PULL
+DECL|enumConstant|CONNECT_DB
+name|CONNECT_DB
 argument_list|(
 name|MaterialDesignIcon
 operator|.
-name|SOURCE_PULL
+name|CLOUD_UPLOAD
 argument_list|)
 operator|,
-comment|/*source-pull*/
+comment|/*cloud-upload*/
 DECL|enumConstant|SUCCESS
 name|SUCCESS
 argument_list|(
@@ -2339,12 +2347,20 @@ operator|.
 name|ALL_ENTRIES_GROUP_DEFAULT_ICON
 argument_list|)
 operator|,
-DECL|enumConstant|IMPORT_EXPORT
-name|IMPORT_EXPORT
+DECL|enumConstant|IMPORT
+name|IMPORT
 argument_list|(
 name|MaterialDesignIcon
 operator|.
-name|SWAP_VERTICAL
+name|CALL_RECEIVED
+argument_list|)
+operator|,
+DECL|enumConstant|EXPORT
+name|EXPORT
+argument_list|(
+name|MaterialDesignIcon
+operator|.
+name|CALL_MADE
 argument_list|)
 operator|,
 DECL|enumConstant|PREVIOUS_LEFT

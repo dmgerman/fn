@@ -233,7 +233,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Provides an adapter class to CSL. It holds a CSL instance under the hood that is only recreated when  * the style changes.  *  * @apiNote The first call to {@link #makeBibliography} is expensive since the  * CSL instance will be created. As long as the style stays the same, we can reuse this instance. On style-change, the  * engine is re-instantiated. Therefore, the use-case of this class is many calls to {@link #makeBibliography} with the  * same style. Changing the output format is cheap.  * @implNote The main function {@link #makeBibliography} will enforce  * synchronized calling. The main CSL engine under the hood is not thread-safe. Since this class is usually called from  * a SwingWorker, the only other option would be to create several CSL instances which is wasting a lot of resources and very slow.  * In the current scheme, {@link #makeBibliography} can be called as usual  * SwingWorker task and to the best of my knowledge, concurrent calls will pile up and processed sequentially.  */
+comment|/**  * Provides an adapter class to CSL. It holds a CSL instance under the hood that is only recreated when  * the style changes.  *  * @apiNote The first call to {@link #makeBibliography} is expensive since the  * CSL instance will be created. As long as the style stays the same, we can reuse this instance. On style-change, the  * engine is re-instantiated. Therefore, the use-case of this class is many calls to {@link #makeBibliography} with the  * same style. Changing the output format is cheap.  * @implNote The main function {@link #makeBibliography} will enforce  * synchronized calling. The main CSL engine under the hood is not thread-safe. Since this class is usually called from  * a BackgroundTakk, the only other option would be to create several CSL instances which is wasting a lot of resources and very slow.  * In the current scheme, {@link #makeBibliography} can be called as usual  * background task and to the best of my knowledge, concurrent calls will pile up and processed sequentially.  */
 end_comment
 
 begin_class
@@ -367,9 +367,11 @@ name|IOException
 block|{
 if|if
 condition|(
+operator|(
 name|cslInstance
 operator|==
 literal|null
+operator|)
 operator|||
 operator|!
 name|Objects
@@ -446,6 +448,7 @@ name|ItemDataProvider
 block|{
 DECL|field|data
 specifier|private
+specifier|final
 name|ArrayList
 argument_list|<
 name|BibEntry
