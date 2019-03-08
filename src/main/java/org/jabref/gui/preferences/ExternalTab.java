@@ -148,9 +148,9 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|externalfiletype
+name|actions
 operator|.
-name|ExternalFileTypeEditor
+name|EditExternalFileTypesAction
 import|;
 end_import
 
@@ -427,9 +427,11 @@ name|setOnAction
 argument_list|(
 name|e
 lambda|->
-name|ExternalFileTypeEditor
+operator|new
+name|EditExternalFileTypesAction
+argument_list|()
 operator|.
-name|getAction
+name|execute
 argument_list|()
 argument_list|)
 expr_stmt|;
