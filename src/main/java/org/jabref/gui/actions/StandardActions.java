@@ -526,42 +526,6 @@ operator|.
 name|ATTACH_FILE
 argument_list|)
 block|,
-DECL|enumConstant|ADD_TO_GROUP
-DECL|enumConstant|Localization.lang
-name|ADD_TO_GROUP
-argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Add to group"
-argument_list|)
-argument_list|)
-block|,
-DECL|enumConstant|REMOVE_FROM_GROUP
-DECL|enumConstant|Localization.lang
-name|REMOVE_FROM_GROUP
-argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Remove from group"
-argument_list|)
-argument_list|)
-block|,
-DECL|enumConstant|MOVE_TO_GROUP
-DECL|enumConstant|Localization.lang
-name|MOVE_TO_GROUP
-argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Move to group"
-argument_list|)
-argument_list|)
-block|,
 DECL|enumConstant|PRIORITY
 DECL|enumConstant|Localization.lang
 DECL|enumConstant|IconTheme.JabRefIcons.PRIORITY
