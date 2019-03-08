@@ -1402,9 +1402,9 @@ operator|,
 DECL|enumConstant|COPY
 name|COPY
 argument_list|(
-name|JabRefMaterialDesignIcon
+name|MaterialDesignIcon
 operator|.
-name|COPY
+name|CONTENT_COPY
 argument_list|)
 operator|,
 DECL|enumConstant|COMMENT
@@ -1854,7 +1854,7 @@ name|MaterialDesignIcon
 operator|.
 name|FOLDER_OUTLINE
 argument_list|)
-comment|/*css: folder-outline */
+comment|/*css: folder */
 operator|,
 DECL|enumConstant|ADD_ROW
 name|ADD_ROW
