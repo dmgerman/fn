@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|org.jabref.gui.actions
+DECL|package|org.jabref.gui.protectedterms
 package|package
 name|org
 operator|.
@@ -8,7 +8,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|actions
+name|protectedterms
 package|;
 end_package
 
@@ -20,17 +20,17 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|externalfiletype
+name|actions
 operator|.
-name|CustomizeExternalFileTypesDialog
+name|SimpleCommand
 import|;
 end_import
 
 begin_class
-DECL|class|EditExternalFileTypesAction
+DECL|class|ManageProtectedTermsAction
 specifier|public
 class|class
-name|EditExternalFileTypesAction
+name|ManageProtectedTermsAction
 extends|extends
 name|SimpleCommand
 block|{
@@ -42,14 +42,14 @@ name|void
 name|execute
 parameter_list|()
 block|{
-name|CustomizeExternalFileTypesDialog
-name|editor
+name|ManageProtectedTermsDialog
+name|protectTermsDialog
 init|=
 operator|new
-name|CustomizeExternalFileTypesDialog
+name|ManageProtectedTermsDialog
 argument_list|()
 decl_stmt|;
-name|editor
+name|protectTermsDialog
 operator|.
 name|showAndWait
 argument_list|()

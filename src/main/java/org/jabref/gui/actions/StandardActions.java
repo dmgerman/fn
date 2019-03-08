@@ -526,42 +526,6 @@ operator|.
 name|ATTACH_FILE
 argument_list|)
 block|,
-DECL|enumConstant|ADD_TO_GROUP
-DECL|enumConstant|Localization.lang
-name|ADD_TO_GROUP
-argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Add to group"
-argument_list|)
-argument_list|)
-block|,
-DECL|enumConstant|REMOVE_FROM_GROUP
-DECL|enumConstant|Localization.lang
-name|REMOVE_FROM_GROUP
-argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Remove from group"
-argument_list|)
-argument_list|)
-block|,
-DECL|enumConstant|MOVE_TO_GROUP
-DECL|enumConstant|Localization.lang
-name|MOVE_TO_GROUP
-argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Move to group"
-argument_list|)
-argument_list|)
-block|,
 DECL|enumConstant|PRIORITY
 DECL|enumConstant|Localization.lang
 DECL|enumConstant|IconTheme.JabRefIcons.PRIORITY
@@ -924,6 +888,25 @@ operator|.
 name|RELEVANCE
 argument_list|)
 block|,
+DECL|enumConstant|NEW_LIBRARY
+DECL|enumConstant|Localization.lang
+DECL|enumConstant|IconTheme.JabRefIcons.NEW
+name|NEW_LIBRARY
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"New library"
+argument_list|)
+argument_list|,
+name|IconTheme
+operator|.
+name|JabRefIcons
+operator|.
+name|NEW
+argument_list|)
+block|,
 DECL|enumConstant|NEW_LIBRARY_BIBTEX
 DECL|enumConstant|Localization.lang
 DECL|enumConstant|IconTheme.JabRefIcons.NEW
@@ -1000,23 +983,47 @@ operator|.
 name|OPEN_DATABASE
 argument_list|)
 block|,
-DECL|enumConstant|IMPORT_EXPORT
+DECL|enumConstant|IMPORT
 DECL|enumConstant|Localization.lang
-DECL|enumConstant|IconTheme.JabRefIcons.IMPORT_EXPORT
-name|IMPORT_EXPORT
+DECL|enumConstant|IconTheme.JabRefIcons.IMPORT
+name|IMPORT
 argument_list|(
 name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Import& Export"
+literal|"Import"
 argument_list|)
 argument_list|,
 name|IconTheme
 operator|.
 name|JabRefIcons
 operator|.
-name|IMPORT_EXPORT
+name|IMPORT
+argument_list|)
+block|,
+DECL|enumConstant|EXPORT
+DECL|enumConstant|Localization.lang
+DECL|enumConstant|IconTheme.JabRefIcons.EXPORT
+DECL|enumConstant|KeyBinding.EXPORT
+name|EXPORT
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Export"
+argument_list|)
+argument_list|,
+name|IconTheme
+operator|.
+name|JabRefIcons
+operator|.
+name|EXPORT
+argument_list|,
+name|KeyBinding
+operator|.
+name|EXPORT
 argument_list|)
 block|,
 DECL|enumConstant|MERGE_DATABASE
@@ -1166,12 +1173,13 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Export"
+literal|"Export all entries"
 argument_list|)
 argument_list|)
 block|,
 DECL|enumConstant|EXPORT_SELECTED
 DECL|enumConstant|Localization.lang
+DECL|enumConstant|KeyBinding.EXPORT_SELECTED
 name|EXPORT_SELECTED
 argument_list|(
 name|Localization
@@ -1180,10 +1188,15 @@ name|lang
 argument_list|(
 literal|"Export selected entries"
 argument_list|)
+argument_list|,
+name|KeyBinding
+operator|.
+name|EXPORT_SELECTED
 argument_list|)
 block|,
 DECL|enumConstant|CONNECT_TO_SHARED_DB
 DECL|enumConstant|Localization.lang
+DECL|enumConstant|IconTheme.JabRefIcons.CONNECT_DB
 name|CONNECT_TO_SHARED_DB
 argument_list|(
 name|Localization
@@ -1192,11 +1205,16 @@ name|lang
 argument_list|(
 literal|"Connect to shared database"
 argument_list|)
+argument_list|,
+name|IconTheme
+operator|.
+name|JabRefIcons
+operator|.
+name|CONNECT_DB
 argument_list|)
 block|,
 DECL|enumConstant|PULL_CHANGES_FROM_SHARED_DB
 DECL|enumConstant|Localization.lang
-DECL|enumConstant|IconTheme.JabRefIcons.PULL
 DECL|enumConstant|KeyBinding.PULL_CHANGES_FROM_SHARED_DATABASE
 name|PULL_CHANGES_FROM_SHARED_DB
 argument_list|(
@@ -1206,12 +1224,6 @@ name|lang
 argument_list|(
 literal|"Pull changes from shared database"
 argument_list|)
-argument_list|,
-name|IconTheme
-operator|.
-name|JabRefIcons
-operator|.
-name|PULL
 argument_list|,
 name|KeyBinding
 operator|.
@@ -1339,7 +1351,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Replace string"
+literal|"Find and replace"
 argument_list|)
 argument_list|,
 name|KeyBinding
@@ -1367,7 +1379,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Set/clear/append/rename fields"
+literal|"Manage field names& content"
 argument_list|)
 argument_list|)
 block|,
@@ -1381,7 +1393,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Toggle groups interface"
+literal|"Groups interface"
 argument_list|)
 argument_list|,
 name|IconTheme
@@ -1405,7 +1417,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"OpenOffice/LibreOffice connection"
+literal|"OpenOffice/LibreOffice"
 argument_list|)
 argument_list|,
 name|IconTheme
@@ -1614,18 +1626,22 @@ literal|"Copy linked files to folder..."
 argument_list|)
 argument_list|)
 block|,
-DECL|enumConstant|ABBREVIATE_ISO
+DECL|enumConstant|ABBREVIATE
 DECL|enumConstant|Localization.lang
-DECL|enumConstant|Localization.lang
-DECL|enumConstant|KeyBinding.ABBREVIATE
-name|ABBREVIATE_ISO
+name|ABBREVIATE
 argument_list|(
 name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Abbreviate journal names (ISO)"
+literal|"Abbreviate journal names"
 argument_list|)
+argument_list|)
+block|,
+DECL|enumConstant|ABBREVIATE_ISO
+name|ABBREVIATE_ISO
+argument_list|(
+literal|"ISO"
 argument_list|,
 name|Localization
 operator|.
@@ -1640,16 +1656,9 @@ name|ABBREVIATE
 argument_list|)
 block|,
 DECL|enumConstant|ABBREVIATE_MEDLINE
-DECL|enumConstant|Localization.lang
-DECL|enumConstant|Localization.lang
 name|ABBREVIATE_MEDLINE
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Abbreviate journal names (MEDLINE)"
-argument_list|)
+literal|"MEDLINE"
 argument_list|,
 name|Localization
 operator|.
@@ -1842,30 +1851,6 @@ literal|"BibTeX key patterns"
 argument_list|)
 argument_list|)
 block|,
-DECL|enumConstant|TOGGLE_PREVIEW
-DECL|enumConstant|Localization.lang
-DECL|enumConstant|IconTheme.JabRefIcons.TOGGLE_ENTRY_PREVIEW
-DECL|enumConstant|KeyBinding.TOGGLE_ENTRY_PREVIEW
-name|TOGGLE_PREVIEW
-argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Toggle entry preview"
-argument_list|)
-argument_list|,
-name|IconTheme
-operator|.
-name|JabRefIcons
-operator|.
-name|TOGGLE_ENTRY_PREVIEW
-argument_list|,
-name|KeyBinding
-operator|.
-name|TOGGLE_ENTRY_PREVIEW
-argument_list|)
-block|,
 DECL|enumConstant|EDIT_ENTRY
 DECL|enumConstant|Localization.lang
 DECL|enumConstant|IconTheme.JabRefIcons.EDIT_ENTRY
@@ -1876,7 +1861,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Edit entry"
+literal|"Open entry editor"
 argument_list|)
 argument_list|,
 name|IconTheme
@@ -1890,16 +1875,16 @@ operator|.
 name|EDIT_ENTRY
 argument_list|)
 block|,
-DECL|enumConstant|SHOW_PDV_VIEWER
+DECL|enumConstant|SHOW_PDF_VIEWER
 DECL|enumConstant|Localization.lang
 DECL|enumConstant|IconTheme.JabRefIcons.PDF_FILE
-name|SHOW_PDV_VIEWER
+name|SHOW_PDF_VIEWER
 argument_list|(
 name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Show document viewer"
+literal|"Open document viewer"
 argument_list|)
 argument_list|,
 name|IconTheme
@@ -1907,6 +1892,30 @@ operator|.
 name|JabRefIcons
 operator|.
 name|PDF_FILE
+argument_list|)
+block|,
+DECL|enumConstant|TOGGLE_PREVIEW
+DECL|enumConstant|Localization.lang
+DECL|enumConstant|IconTheme.JabRefIcons.TOGGLE_ENTRY_PREVIEW
+DECL|enumConstant|KeyBinding.TOGGLE_ENTRY_PREVIEW
+name|TOGGLE_PREVIEW
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Entry preview"
+argument_list|)
+argument_list|,
+name|IconTheme
+operator|.
+name|JabRefIcons
+operator|.
+name|TOGGLE_ENTRY_PREVIEW
+argument_list|,
+name|KeyBinding
+operator|.
+name|TOGGLE_ENTRY_PREVIEW
 argument_list|)
 block|,
 DECL|enumConstant|NEXT_PREVIEW_STYLE
@@ -1918,7 +1927,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Next preview layout"
+literal|"Next citation style"
 argument_list|)
 argument_list|,
 name|KeyBinding
@@ -1935,7 +1944,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Previous preview layout"
+literal|"Previous citation style"
 argument_list|)
 argument_list|,
 name|KeyBinding
@@ -2054,7 +2063,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Edit strings"
+literal|"Edit string constants"
 argument_list|)
 argument_list|,
 name|IconTheme
@@ -2150,7 +2159,7 @@ argument_list|)
 block|,
 DECL|enumConstant|FIND_UNLINKED_FILES
 DECL|enumConstant|Localization.lang
-DECL|enumConstant|Localization.lang
+DECL|enumConstant|IconTheme.JabRefIcons.SEARCH
 DECL|enumConstant|KeyBinding.FIND_UNLINKED_FILES
 name|FIND_UNLINKED_FILES
 argument_list|(
@@ -2158,15 +2167,14 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Find unlinked files"
+literal|"Search for unlinked local files"
 argument_list|)
 argument_list|,
-name|Localization
+name|IconTheme
 operator|.
-name|lang
-argument_list|(
-literal|"Searches for unlinked PDF files on the file system"
-argument_list|)
+name|JabRefIcons
+operator|.
+name|SEARCH
 argument_list|,
 name|KeyBinding
 operator|.
@@ -2205,12 +2213,13 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Look up document identifier"
+literal|"Search document identifier online"
 argument_list|)
 argument_list|)
 block|,
 DECL|enumConstant|LOOKUP_FULLTEXT
 DECL|enumConstant|Localization.lang
+DECL|enumConstant|IconTheme.JabRefIcons.FILE_SEARCH
 DECL|enumConstant|KeyBinding.DOWNLOAD_FULL_TEXT
 name|LOOKUP_FULLTEXT
 argument_list|(
@@ -2218,8 +2227,14 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Look up full text documents"
+literal|"Search full text documents online"
 argument_list|)
+argument_list|,
+name|IconTheme
+operator|.
+name|JabRefIcons
+operator|.
+name|FILE_SEARCH
 argument_list|,
 name|KeyBinding
 operator|.
@@ -2260,7 +2275,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Autogenerate BibTeX keys"
+literal|"Generate BibTeX keys"
 argument_list|)
 argument_list|,
 name|IconTheme
@@ -2276,6 +2291,7 @@ argument_list|)
 block|,
 DECL|enumConstant|DOWNLOAD_FULL_TEXT
 DECL|enumConstant|Localization.lang
+DECL|enumConstant|IconTheme.JabRefIcons.FILE_SEARCH
 DECL|enumConstant|KeyBinding.DOWNLOAD_FULL_TEXT
 name|DOWNLOAD_FULL_TEXT
 argument_list|(
@@ -2283,8 +2299,14 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Look up full text documents"
+literal|"Search full text documents online"
 argument_list|)
+argument_list|,
+name|IconTheme
+operator|.
+name|JabRefIcons
+operator|.
+name|FILE_SEARCH
 argument_list|,
 name|KeyBinding
 operator|.
@@ -2317,7 +2339,6 @@ argument_list|)
 block|,
 DECL|enumConstant|SET_FILE_LINKS
 DECL|enumConstant|Localization.lang
-DECL|enumConstant|IconTheme.JabRefIcons.AUTO_FILE_LINK
 DECL|enumConstant|KeyBinding.AUTOMATICALLY_LINK_FILES
 name|SET_FILE_LINKS
 argument_list|(
@@ -2327,12 +2348,6 @@ name|lang
 argument_list|(
 literal|"Automatically set file links"
 argument_list|)
-argument_list|,
-name|IconTheme
-operator|.
-name|JabRefIcons
-operator|.
-name|AUTO_FILE_LINK
 argument_list|,
 name|KeyBinding
 operator|.
