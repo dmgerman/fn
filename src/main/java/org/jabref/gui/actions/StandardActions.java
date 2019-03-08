@@ -1027,6 +1027,7 @@ block|,
 DECL|enumConstant|EXPORT
 DECL|enumConstant|Localization.lang
 DECL|enumConstant|IconTheme.JabRefIcons.EXPORT
+DECL|enumConstant|KeyBinding.EXPORT
 name|EXPORT
 argument_list|(
 name|Localization
@@ -1039,6 +1040,10 @@ argument_list|,
 name|IconTheme
 operator|.
 name|JabRefIcons
+operator|.
+name|EXPORT
+argument_list|,
+name|KeyBinding
 operator|.
 name|EXPORT
 argument_list|)
@@ -1196,6 +1201,7 @@ argument_list|)
 block|,
 DECL|enumConstant|EXPORT_SELECTED
 DECL|enumConstant|Localization.lang
+DECL|enumConstant|KeyBinding.EXPORT_SELECTED
 name|EXPORT_SELECTED
 argument_list|(
 name|Localization
@@ -1204,6 +1210,10 @@ name|lang
 argument_list|(
 literal|"Export selected entries"
 argument_list|)
+argument_list|,
+name|KeyBinding
+operator|.
+name|EXPORT_SELECTED
 argument_list|)
 block|,
 DECL|enumConstant|CONNECT_TO_SHARED_DB
