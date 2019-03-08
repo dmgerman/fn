@@ -104,18 +104,6 @@ end_import
 
 begin_import
 import|import
-name|javafx
-operator|.
-name|scene
-operator|.
-name|layout
-operator|.
-name|Pane
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|jabref
@@ -145,8 +133,6 @@ DECL|class|ImportSettingsTab
 specifier|public
 class|class
 name|ImportSettingsTab
-extends|extends
-name|Pane
 implements|implements
 name|PrefsTab
 block|{
@@ -166,23 +152,6 @@ literal|"[bibtexkey]"
 block|,
 literal|"[bibtexkey] - [title]"
 block|}
-decl_stmt|;
-DECL|field|DEFAULT_FILENAMEPATTERNS_DISPLAY
-specifier|private
-specifier|static
-specifier|final
-name|String
-index|[]
-name|DEFAULT_FILENAMEPATTERNS_DISPLAY
-init|=
-operator|new
-name|String
-index|[]
-block|{
-literal|"bibtexkey"
-block|,
-literal|"bibtexkey - title"
-block|,}
 decl_stmt|;
 DECL|field|prefs
 specifier|private
@@ -270,7 +239,7 @@ name|FXCollections
 operator|.
 name|observableArrayList
 argument_list|(
-name|DEFAULT_FILENAMEPATTERNS_DISPLAY
+name|DEFAULT_FILENAMEPATTERNS
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -498,6 +467,8 @@ literal|10
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|getBuilder ()
 specifier|public
 name|Node
