@@ -768,6 +768,7 @@ name|void
 name|storeSettings
 parameter_list|()
 block|{
+comment|//FIXME: Move to viewModel until fieldFormatterCleanupsPanel is property implemented
 name|MetaData
 name|metaData
 init|=

@@ -5726,6 +5726,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|//@formatter:off
 name|library
 operator|.
 name|getItems
@@ -5941,7 +5942,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|//@formatter:off
 name|quality
 operator|.
 name|getItems
