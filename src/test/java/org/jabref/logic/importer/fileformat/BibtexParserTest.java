@@ -679,6 +679,7 @@ name|parser
 decl_stmt|;
 DECL|field|fileMonitor
 specifier|private
+specifier|final
 name|FileUpdateMonitor
 name|fileMonitor
 init|=
@@ -9531,6 +9532,8 @@ operator|new
 name|SaveOrderConfig
 argument_list|(
 literal|false
+argument_list|,
+literal|true
 argument_list|,
 operator|new
 name|SaveOrderConfig

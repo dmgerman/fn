@@ -11239,6 +11239,11 @@ argument_list|(
 name|EXPORT_IN_ORIGINAL_ORDER
 argument_list|)
 argument_list|,
+name|getBoolean
+argument_list|(
+name|EXPORT_IN_SPECIFIED_ORDER
+argument_list|)
+argument_list|,
 operator|new
 name|SaveOrderConfig
 operator|.

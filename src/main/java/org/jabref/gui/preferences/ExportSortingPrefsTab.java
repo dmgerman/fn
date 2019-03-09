@@ -149,9 +149,6 @@ operator|.
 name|add
 argument_list|(
 name|exportOrderPanel
-operator|.
-name|getJFXPanel
-argument_list|()
 argument_list|,
 literal|1
 argument_list|,
@@ -191,7 +188,9 @@ specifier|public
 name|void
 name|setValues
 parameter_list|()
-block|{      }
+block|{
+comment|//empty
+block|}
 annotation|@
 name|Override
 DECL|method|storeSettings ()

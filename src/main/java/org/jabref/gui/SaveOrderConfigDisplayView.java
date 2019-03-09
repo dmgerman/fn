@@ -36,16 +36,6 @@ name|javafx
 operator|.
 name|scene
 operator|.
-name|Node
-import|;
-end_import
-
-begin_import
-import|import
-name|javafx
-operator|.
-name|scene
-operator|.
 name|control
 operator|.
 name|CheckBox
@@ -281,11 +271,6 @@ name|this
 argument_list|)
 operator|.
 name|root
-argument_list|(
-name|this
-argument_list|)
-operator|.
-name|controller
 argument_list|(
 name|this
 argument_list|)
@@ -535,16 +520,6 @@ name|viewModel
 operator|.
 name|getSaveOrderConfig
 argument_list|()
-return|;
-block|}
-DECL|method|getJFXPanel ()
-specifier|public
-name|Node
-name|getJFXPanel
-parameter_list|()
-block|{
-return|return
-name|this
 return|;
 block|}
 block|}

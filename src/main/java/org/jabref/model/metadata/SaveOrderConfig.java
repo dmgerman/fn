@@ -99,6 +99,11 @@ specifier|private
 name|boolean
 name|saveInOriginalOrder
 decl_stmt|;
+DECL|field|saveInSpecifiedOrder
+specifier|private
+name|boolean
+name|saveInSpecifiedOrder
+decl_stmt|;
 DECL|method|SaveOrderConfig ()
 specifier|public
 name|SaveOrderConfig
@@ -108,12 +113,15 @@ name|setSaveInOriginalOrder
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|SaveOrderConfig (boolean saveInOriginalOrder, SortCriterion first, SortCriterion second, SortCriterion third)
+DECL|method|SaveOrderConfig (boolean saveInOriginalOrder, boolean saveInSpecifiedOrder, SortCriterion first, SortCriterion second, SortCriterion third)
 specifier|public
 name|SaveOrderConfig
 parameter_list|(
 name|boolean
 name|saveInOriginalOrder
+parameter_list|,
+name|boolean
+name|saveInSpecifiedOrder
 parameter_list|,
 name|SortCriterion
 name|first
@@ -130,6 +138,12 @@ operator|.
 name|saveInOriginalOrder
 operator|=
 name|saveInOriginalOrder
+expr_stmt|;
+name|this
+operator|.
+name|saveInSpecifiedOrder
+operator|=
+name|saveInSpecifiedOrder
 expr_stmt|;
 name|sortCriteria
 operator|.
@@ -324,8 +338,7 @@ name|saveInSpecifiedOrder
 parameter_list|()
 block|{
 return|return
-operator|!
-name|saveInOriginalOrder
+name|saveInSpecifiedOrder
 return|;
 block|}
 DECL|method|getSortCriteria ()
@@ -421,6 +434,8 @@ name|hash
 argument_list|(
 name|saveInOriginalOrder
 argument_list|,
+name|saveInSpecifiedOrder
+argument_list|,
 name|sortCriteria
 argument_list|)
 return|;
@@ -439,6 +454,10 @@ operator|+
 literal|"saveInOriginalOrder="
 operator|+
 name|saveInOriginalOrder
+operator|+
+literal|"saveInSpecifiedOrder ="
+operator|+
+name|saveInSpecifiedOrder
 operator|+
 literal|", sortCriteria="
 operator|+
@@ -471,6 +490,12 @@ operator|.
 name|saveInOriginalOrder
 operator|=
 literal|false
+expr_stmt|;
+name|this
+operator|.
+name|saveInSpecifiedOrder
+operator|=
+literal|true
 expr_stmt|;
 block|}
 comment|/**      * Outputs the current configuration to be consumed later by the constructor      */
