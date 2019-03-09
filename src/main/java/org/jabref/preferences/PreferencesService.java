@@ -92,6 +92,20 @@ name|jabref
 operator|.
 name|logic
 operator|.
+name|importer
+operator|.
+name|ImportFormatPreferences
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
 name|journals
 operator|.
 name|JournalAbbreviationLoader
@@ -151,6 +165,20 @@ operator|.
 name|protectedterms
 operator|.
 name|ProtectedTermsLoader
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|util
+operator|.
+name|UpdateFieldPreferences
 import|;
 end_import
 
@@ -337,6 +365,16 @@ name|JournalAbbreviationLoader
 name|loader
 parameter_list|)
 function_decl|;
+DECL|method|getUpdateFieldPreferences ()
+name|UpdateFieldPreferences
+name|getUpdateFieldPreferences
+parameter_list|()
+function_decl|;
+DECL|method|getImportFormatPreferences ()
+name|ImportFormatPreferences
+name|getImportFormatPreferences
+parameter_list|()
+function_decl|;
 DECL|method|isKeywordSyncEnabled ()
 name|boolean
 name|isKeywordSyncEnabled
@@ -358,6 +396,19 @@ name|setExportWorkingDirectory
 parameter_list|(
 name|String
 name|layoutFileDirString
+parameter_list|)
+function_decl|;
+DECL|method|shouldWarnAboutDuplicatesForImport ()
+name|boolean
+name|shouldWarnAboutDuplicatesForImport
+parameter_list|()
+function_decl|;
+DECL|method|setShouldWarnAboutDuplicatesForImport (boolean value)
+name|void
+name|setShouldWarnAboutDuplicatesForImport
+parameter_list|(
+name|boolean
+name|value
 parameter_list|)
 function_decl|;
 block|}

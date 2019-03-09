@@ -597,17 +597,6 @@ argument_list|<>
 argument_list|()
 argument_list|)
 decl_stmt|;
-comment|// Search and grouping status is stored in boolean fields for quick reference:
-DECL|field|searchHit
-specifier|private
-name|boolean
-name|searchHit
-decl_stmt|;
-DECL|field|groupHit
-specifier|private
-name|boolean
-name|groupHit
-decl_stmt|;
 DECL|field|parsedSerialization
 specifier|private
 name|String
@@ -2495,58 +2484,6 @@ argument_list|(
 name|this
 argument_list|)
 return|;
-block|}
-DECL|method|isSearchHit ()
-specifier|public
-name|boolean
-name|isSearchHit
-parameter_list|()
-block|{
-return|return
-name|searchHit
-return|;
-block|}
-DECL|method|setSearchHit (boolean searchHit)
-specifier|public
-name|void
-name|setSearchHit
-parameter_list|(
-name|boolean
-name|searchHit
-parameter_list|)
-block|{
-name|this
-operator|.
-name|searchHit
-operator|=
-name|searchHit
-expr_stmt|;
-block|}
-DECL|method|isGroupHit ()
-specifier|public
-name|boolean
-name|isGroupHit
-parameter_list|()
-block|{
-return|return
-name|groupHit
-return|;
-block|}
-DECL|method|setGroupHit (boolean groupHit)
-specifier|public
-name|void
-name|setGroupHit
-parameter_list|(
-name|boolean
-name|groupHit
-parameter_list|)
-block|{
-name|this
-operator|.
-name|groupHit
-operator|=
-name|groupHit
-expr_stmt|;
 block|}
 comment|/**      * @param maxCharacters The maximum number of characters (additional      *                      characters are replaced with "..."). Set to 0 to disable truncation.      * @return A short textual description of the entry in the format:      * Author1, Author2: Title (Year)      */
 DECL|method|getAuthorTitleYear (int maxCharacters)

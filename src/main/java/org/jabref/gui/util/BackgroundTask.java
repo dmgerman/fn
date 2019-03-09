@@ -1052,6 +1052,27 @@ name|newMessage
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|withInitialMessage (String message)
+specifier|public
+name|BackgroundTask
+argument_list|<
+name|V
+argument_list|>
+name|withInitialMessage
+parameter_list|(
+name|String
+name|message
+parameter_list|)
+block|{
+name|updateMessage
+argument_list|(
+name|message
+argument_list|)
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
 DECL|class|BackgroundProgress
 class|class
 name|BackgroundProgress
