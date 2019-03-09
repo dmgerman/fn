@@ -168,6 +168,20 @@ begin_import
 import|import
 name|org
 operator|.
+name|jabref
+operator|.
+name|testutils
+operator|.
+name|category
+operator|.
+name|GUITest
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|fxmisc
 operator|.
 name|richtext
@@ -259,6 +273,8 @@ import|;
 end_import
 
 begin_class
+annotation|@
+name|GUITest
 annotation|@
 name|ExtendWith
 argument_list|(
