@@ -849,6 +849,10 @@ name|frame
 operator|.
 name|getUndoManager
 argument_list|()
+argument_list|,
+name|Globals
+operator|.
+name|stateManager
 argument_list|)
 expr_stmt|;
 name|initialize
