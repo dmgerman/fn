@@ -16,6 +16,18 @@ name|java
 operator|.
 name|nio
 operator|.
+name|charset
+operator|.
+name|Charset
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
 name|file
 operator|.
 name|Path
@@ -193,6 +205,20 @@ operator|.
 name|metadata
 operator|.
 name|FilePreferences
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|metadata
+operator|.
+name|SaveOrderConfig
 import|;
 end_import
 
@@ -390,12 +416,43 @@ name|String
 name|getExportWorkingDirectory
 parameter_list|()
 function_decl|;
+DECL|method|getDefaultEncoding ()
+name|Charset
+name|getDefaultEncoding
+parameter_list|()
+function_decl|;
+DECL|method|setDefaultEncoding (Charset encoding)
+name|void
+name|setDefaultEncoding
+parameter_list|(
+name|Charset
+name|encoding
+parameter_list|)
+function_decl|;
+DECL|method|getUser ()
+name|String
+name|getUser
+parameter_list|()
+function_decl|;
 DECL|method|setExportWorkingDirectory (String layoutFileDirString)
 name|void
 name|setExportWorkingDirectory
 parameter_list|(
 name|String
 name|layoutFileDirString
+parameter_list|)
+function_decl|;
+DECL|method|loadExportSaveOrder ()
+name|SaveOrderConfig
+name|loadExportSaveOrder
+parameter_list|()
+function_decl|;
+DECL|method|storeExportSaveOrder (SaveOrderConfig config)
+name|void
+name|storeExportSaveOrder
+parameter_list|(
+name|SaveOrderConfig
+name|config
 parameter_list|)
 function_decl|;
 DECL|method|shouldWarnAboutDuplicatesForImport ()

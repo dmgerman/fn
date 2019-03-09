@@ -3169,6 +3169,8 @@ name|SaveOrderConfig
 argument_list|(
 literal|false
 argument_list|,
+literal|true
+argument_list|,
 operator|new
 name|SaveOrderConfig
 operator|.
@@ -3501,6 +3503,8 @@ operator|new
 name|SaveOrderConfig
 argument_list|(
 literal|false
+argument_list|,
+literal|true
 argument_list|,
 operator|new
 name|SaveOrderConfig

@@ -6942,6 +6942,8 @@ return|return
 name|preferredPositions
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getUser ()
 specifier|public
 name|String
@@ -9136,6 +9138,8 @@ operator|+
 literal|']'
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getDefaultEncoding ()
 specifier|public
 name|Charset
@@ -9154,6 +9158,8 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|setDefaultEncoding (Charset encoding)
 specifier|public
 name|void
@@ -10967,6 +10973,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|storeExportSaveOrder (SaveOrderConfig config)
 specifier|public
 name|void
@@ -11025,6 +11033,26 @@ literal|2
 argument_list|)
 operator|.
 name|descending
+argument_list|)
+expr_stmt|;
+name|putBoolean
+argument_list|(
+name|EXPORT_IN_ORIGINAL_ORDER
+argument_list|,
+name|config
+operator|.
+name|saveInOriginalOrder
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|putBoolean
+argument_list|(
+name|EXPORT_IN_SPECIFIED_ORDER
+argument_list|,
+name|config
+operator|.
+name|saveInSpecifiedOrder
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|put
@@ -11194,6 +11222,8 @@ return|return
 name|config
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|loadExportSaveOrder ()
 specifier|public
 name|SaveOrderConfig
@@ -11204,7 +11234,15 @@ return|return
 operator|new
 name|SaveOrderConfig
 argument_list|(
-literal|true
+name|getBoolean
+argument_list|(
+name|EXPORT_IN_ORIGINAL_ORDER
+argument_list|)
+argument_list|,
+name|getBoolean
+argument_list|(
+name|EXPORT_IN_SPECIFIED_ORDER
+argument_list|)
 argument_list|,
 operator|new
 name|SaveOrderConfig
