@@ -34,6 +34,16 @@ end_import
 
 begin_import
 import|import
+name|javafx
+operator|.
+name|application
+operator|.
+name|Platform
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|jabref
@@ -184,6 +194,20 @@ argument_list|(
 name|i
 argument_list|)
 decl_stmt|;
+name|boolean
+name|focusPanel
+init|=
+name|i
+operator|==
+literal|0
+decl_stmt|;
+name|Platform
+operator|.
+name|runLater
+argument_list|(
+parameter_list|()
+lambda|->
+comment|// Need to run this on the JavaFX thread
 name|JabRefGUI
 operator|.
 name|getMainFrame
@@ -193,9 +217,8 @@ name|addParserResult
 argument_list|(
 name|pr
 argument_list|,
-name|i
-operator|==
-literal|0
+name|focusPanel
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
