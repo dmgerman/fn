@@ -2737,7 +2737,7 @@ name|Optional
 operator|.
 name|of
 argument_list|(
-literal|"Please-Replace-the-Spaces"
+literal|"PleaseReplacetheSpaces"
 argument_list|)
 argument_list|,
 name|entry
