@@ -505,11 +505,11 @@ argument_list|)
 return|;
 block|}
 block|}
-DECL|method|filterUnwantedCharacters (String key, boolean enforceLegalKey)
+DECL|method|removeUnwantedCharacters (String key, boolean enforceLegalKey)
 specifier|public
 specifier|static
 name|String
-name|filterUnwantedCharacters
+name|removeUnwantedCharacters
 parameter_list|(
 name|String
 name|key
@@ -676,7 +676,7 @@ name|enforceLegalKey
 parameter_list|)
 block|{
 return|return
-name|filterUnwantedCharacters
+name|removeUnwantedCharacters
 argument_list|(
 name|key
 argument_list|,

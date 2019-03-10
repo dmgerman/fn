@@ -4918,7 +4918,7 @@ name|authString
 operator|=
 name|BibtexKeyGenerator
 operator|.
-name|filterUnwantedCharacters
+name|removeUnwantedCharacters
 argument_list|(
 name|authString
 argument_list|,
