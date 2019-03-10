@@ -223,7 +223,7 @@ specifier|final
 name|String
 name|KEY_ILLEGAL_CHARACTERS
 init|=
-literal|"{}(),\\\"#~^':`"
+literal|"{}(),\\\"-#~^':`"
 decl_stmt|;
 DECL|field|KEY_UNWANTED_CHARACTERS
 specifier|private
@@ -232,7 +232,7 @@ specifier|final
 name|String
 name|KEY_UNWANTED_CHARACTERS
 init|=
-literal|"{}(),\\\""
+literal|"{}(),\\\"-"
 decl_stmt|;
 DECL|field|citeKeyPattern
 specifier|private
