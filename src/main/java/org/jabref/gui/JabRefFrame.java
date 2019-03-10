@@ -5873,6 +5873,21 @@ name|createMenuItem
 argument_list|(
 name|StandardActions
 operator|.
+name|MANAGE_CITE_KEY_PATTERNS
+argument_list|,
+operator|new
+name|BibtexKeyPatternAction
+argument_list|(
+name|this
+argument_list|)
+argument_list|)
+argument_list|,
+name|factory
+operator|.
+name|createMenuItem
+argument_list|(
+name|StandardActions
+operator|.
 name|MASS_SET_FIELDS
 argument_list|,
 operator|new
@@ -6760,23 +6775,8 @@ argument_list|(
 name|this
 argument_list|)
 argument_list|)
-argument_list|,
 comment|// TODO: Reenable customize entry types feature (https://github.com/JabRef/jabref/issues/4719)
 comment|//factory.createMenuItem(StandardActions.CUSTOMIZE_ENTRY_TYPES, new CustomizeEntryAction(this)),
-name|factory
-operator|.
-name|createMenuItem
-argument_list|(
-name|StandardActions
-operator|.
-name|MANAGE_CITE_KEY_PATTERNS
-argument_list|,
-operator|new
-name|BibtexKeyPatternAction
-argument_list|(
-name|this
-argument_list|)
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|help
