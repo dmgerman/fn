@@ -505,11 +505,11 @@ argument_list|)
 return|;
 block|}
 block|}
-DECL|method|cleanKey (String key, boolean enforceLegalKey)
+DECL|method|filterUnwantedCharacters (String key, boolean enforceLegalKey)
 specifier|public
 specifier|static
 name|String
-name|cleanKey
+name|filterUnwantedCharacters
 parameter_list|(
 name|String
 name|key
@@ -564,15 +564,6 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|!
-name|Character
-operator|.
-name|isWhitespace
-argument_list|(
-name|c
-argument_list|)
-operator|&&
-operator|(
 name|KEY_UNWANTED_CHARACTERS
 operator|.
 name|indexOf
@@ -582,7 +573,6 @@ argument_list|)
 operator|==
 operator|-
 literal|1
-operator|)
 condition|)
 block|{
 name|newKey
@@ -638,15 +628,6 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|!
-name|Character
-operator|.
-name|isWhitespace
-argument_list|(
-name|c
-argument_list|)
-operator|&&
-operator|(
 name|KEY_ILLEGAL_CHARACTERS
 operator|.
 name|indexOf
@@ -656,7 +637,6 @@ argument_list|)
 operator|==
 operator|-
 literal|1
-operator|)
 condition|)
 block|{
 name|newKey
@@ -679,6 +659,35 @@ name|newKey
 operator|.
 name|toString
 argument_list|()
+argument_list|)
+return|;
+block|}
+DECL|method|cleanKey (String key, boolean enforceLegalKey)
+specifier|public
+specifier|static
+name|String
+name|cleanKey
+parameter_list|(
+name|String
+name|key
+parameter_list|,
+name|boolean
+name|enforceLegalKey
+parameter_list|)
+block|{
+return|return
+name|filterUnwantedCharacters
+argument_list|(
+name|key
+argument_list|,
+name|enforceLegalKey
+argument_list|)
+operator|.
+name|replaceAll
+argument_list|(
+literal|"\\s"
+argument_list|,
+literal|""
 argument_list|)
 return|;
 block|}
