@@ -795,6 +795,13 @@ argument_list|)
 expr_stmt|;
 name|choiceDialog
 operator|.
+name|setTitle
+argument_list|(
+name|title
+argument_list|)
+expr_stmt|;
+name|choiceDialog
+operator|.
 name|setContentText
 argument_list|(
 name|content
