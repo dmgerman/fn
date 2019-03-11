@@ -8731,13 +8731,17 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|!
 name|saveAction
 operator|.
 name|save
 argument_list|()
 condition|)
 block|{
+comment|// Saved, now exit.
+return|return
+literal|true
+return|;
+block|}
 comment|// The action was either canceled or unsuccessful.
 name|output
 argument_list|(
@@ -8749,10 +8753,6 @@ literal|"Unable to save library"
 argument_list|)
 argument_list|)
 expr_stmt|;
-return|return
-literal|false
-return|;
-block|}
 block|}
 catch|catch
 parameter_list|(
@@ -8760,13 +8760,42 @@ name|Throwable
 name|ex
 parameter_list|)
 block|{
+name|LOGGER
+operator|.
+name|error
+argument_list|(
+literal|"A problem occurred when trying to save the file"
+argument_list|,
+name|ex
+argument_list|)
+expr_stmt|;
+name|dialogService
+operator|.
+name|showErrorDialogAndWait
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Save library"
+argument_list|)
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Could not save file."
+argument_list|)
+argument_list|,
+name|ex
+argument_list|)
+expr_stmt|;
+block|}
+comment|// Save was cancelled or an error occurred.
 return|return
 literal|false
 return|;
 block|}
-block|}
-else|else
-block|{
 return|return
 operator|!
 name|response
@@ -8784,10 +8813,6 @@ name|equals
 argument_list|(
 name|cancel
 argument_list|)
-return|;
-block|}
-return|return
-literal|false
 return|;
 block|}
 DECL|method|closeTab (BasePanel panel)
