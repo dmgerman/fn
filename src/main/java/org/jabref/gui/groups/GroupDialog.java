@@ -1247,6 +1247,28 @@ name|AbstractGroup
 name|editedGroup
 parameter_list|)
 block|{
+if|if
+condition|(
+name|editedGroup
+operator|==
+literal|null
+condition|)
+block|{
+name|this
+operator|.
+name|setTitle
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Add subgroup"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
 name|this
 operator|.
 name|setTitle
@@ -1259,6 +1281,7 @@ literal|"Edit group"
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 name|explicitRadioButton
 operator|.
 name|setSelected
