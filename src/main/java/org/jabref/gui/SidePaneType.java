@@ -21,15 +21,12 @@ enum|enum
 name|SidePaneType
 block|{
 DECL|enumConstant|OPEN_OFFICE
-DECL|enumConstant|WEB_SEARCH
-DECL|enumConstant|FILE_UPDATE_NOTIFICATION
-DECL|enumConstant|GROUPS
 name|OPEN_OFFICE
 block|,
+DECL|enumConstant|WEB_SEARCH
 name|WEB_SEARCH
 block|,
-name|FILE_UPDATE_NOTIFICATION
-block|,
+DECL|enumConstant|GROUPS
 name|GROUPS
 block|}
 end_enum
