@@ -163,12 +163,12 @@ name|BACKLOG
 init|=
 literal|1
 decl_stmt|;
-DECL|field|ONE_SECOND_TIMEOUT
+DECL|field|TIMEOUT
 specifier|private
 specifier|static
 specifier|final
 name|int
-name|ONE_SECOND_TIMEOUT
+name|TIMEOUT
 init|=
 literal|1000
 decl_stmt|;
@@ -255,7 +255,7 @@ name|socket
 operator|.
 name|setSoTimeout
 argument_list|(
-name|ONE_SECOND_TIMEOUT
+name|TIMEOUT
 argument_list|)
 expr_stmt|;
 try|try

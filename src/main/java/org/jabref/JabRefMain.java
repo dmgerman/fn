@@ -811,6 +811,16 @@ return|return
 literal|false
 return|;
 block|}
+else|else
+block|{
+name|LOGGER
+operator|.
+name|warn
+argument_list|(
+literal|"Could not communicate with other running JabRef instance."
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 else|else
 block|{
