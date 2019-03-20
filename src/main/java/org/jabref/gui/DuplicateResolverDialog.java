@@ -275,6 +275,12 @@ literal|"Possible duplicate entries"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|this
+operator|.
+name|database
+operator|=
+name|database
+expr_stmt|;
 name|init
 argument_list|(
 name|one
@@ -283,12 +289,6 @@ name|two
 argument_list|,
 name|type
 argument_list|)
-expr_stmt|;
-name|this
-operator|.
-name|database
-operator|=
-name|database
 expr_stmt|;
 block|}
 DECL|method|init (BibEntry one, BibEntry two, DuplicateResolverType type)
