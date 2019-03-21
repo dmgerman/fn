@@ -834,11 +834,9 @@ argument_list|()
 decl_stmt|;
 name|columnExpand
 operator|.
-name|setHgrow
+name|setPercentWidth
 argument_list|(
-name|Priority
-operator|.
-name|ALWAYS
+literal|60
 argument_list|)
 expr_stmt|;
 name|ColumnConstraints
