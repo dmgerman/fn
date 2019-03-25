@@ -1544,7 +1544,7 @@ expr_stmt|;
 comment|// Reinstall AutosaveManager and BackupManager
 name|panel
 operator|.
-name|resetChangeMonitor
+name|resetChangeMonitorAndChangePane
 argument_list|()
 expr_stmt|;
 if|if
