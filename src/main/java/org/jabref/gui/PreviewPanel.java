@@ -727,7 +727,7 @@ specifier|final
 name|ExternalFilesEntryLinker
 name|fileLinker
 decl_stmt|;
-comment|/**      * @param panel           (may be null) Only set this if the preview is associated to the main window.      * @param databaseContext Used for resolving pdf directories for links. Must not be null.      */
+comment|/**      * @param panel           (may be null) Only set this if the preview is associated to the main window.      * @param databaseContext Used for resolving pdf directories for links. Must not be null, just pass a new empty BibDatabaseContext()      */
 DECL|method|PreviewPanel (BasePanel panel, BibDatabaseContext databaseContext, KeyBindingRepository keyBindingRepository, PreviewPreferences preferences, DialogService dialogService, ExternalFileTypes externalFileTypes)
 specifier|public
 name|PreviewPanel

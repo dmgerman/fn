@@ -235,7 +235,9 @@ name|PreviewPanel
 argument_list|(
 literal|null
 argument_list|,
-literal|null
+operator|new
+name|BibDatabaseContext
+argument_list|()
 argument_list|,
 name|Globals
 operator|.
