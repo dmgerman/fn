@@ -884,6 +884,19 @@ literal|1
 argument_list|)
 expr_stmt|;
 block|}
+comment|// Remove all illegal characters from the label.
+name|label
+operator|=
+name|cleanKey
+argument_list|(
+name|label
+argument_list|,
+name|bibtexKeyPatternPreferences
+operator|.
+name|isEnforceLegalKey
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|stringBuilder
 operator|.
 name|append
@@ -920,21 +933,12 @@ name|e
 argument_list|)
 expr_stmt|;
 block|}
-comment|// Remove all illegal characters from the key.
 name|key
 operator|=
-name|cleanKey
-argument_list|(
 name|stringBuilder
 operator|.
 name|toString
 argument_list|()
-argument_list|,
-name|bibtexKeyPatternPreferences
-operator|.
-name|isEnforceLegalKey
-argument_list|()
-argument_list|)
 expr_stmt|;
 comment|// Remove Regular Expressions while generating Keys
 name|String
