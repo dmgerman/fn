@@ -1231,25 +1231,15 @@ name|createIconButton
 argument_list|(
 name|StandardActions
 operator|.
-name|HELP
+name|HELP_REGEX_SEARCH
 argument_list|,
 operator|new
 name|HelpAction
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Help on regular expression search"
-argument_list|)
-argument_list|,
 name|HelpFile
 operator|.
 name|REGEX_SEARCH
 argument_list|)
-operator|.
-name|getCommand
-argument_list|()
 argument_list|)
 decl_stmt|;
 name|builder
@@ -1369,9 +1359,6 @@ name|HelpFile
 operator|.
 name|AUTOSAVE
 argument_list|)
-operator|.
-name|getCommand
-argument_list|()
 argument_list|)
 decl_stmt|;
 name|builder

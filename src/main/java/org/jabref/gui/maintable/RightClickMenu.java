@@ -330,7 +330,7 @@ specifier|public
 class|class
 name|RightClickMenu
 block|{
-DECL|method|create (BibEntryTableViewModel entry, KeyBindingRepository keyBindingRepository, BasePanel panel, KeyBindingRepository keyBindings, DialogService dialogService)
+DECL|method|create (BibEntryTableViewModel entry, KeyBindingRepository keyBindingRepository, BasePanel panel, DialogService dialogService)
 specifier|public
 specifier|static
 name|ContextMenu
@@ -344,9 +344,6 @@ name|keyBindingRepository
 parameter_list|,
 name|BasePanel
 name|panel
-parameter_list|,
-name|KeyBindingRepository
-name|keyBindings
 parameter_list|,
 name|DialogService
 name|dialogService
@@ -874,9 +871,7 @@ name|add
 argument_list|(
 operator|new
 name|ChangeEntryTypeMenu
-argument_list|(
-name|keyBindings
-argument_list|)
+argument_list|()
 operator|.
 name|getChangeEntryTypeMenu
 argument_list|(

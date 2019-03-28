@@ -588,32 +588,7 @@ name|Stage
 name|mainStage
 parameter_list|)
 block|{
-comment|// Set antialiasing on everywhere. This only works in JRE>= 1.5.
-comment|// Or... it doesn't work, period.
-comment|// TODO test and maybe remove this! I found this commented out with no additional info ( payload@lavabit.com )
-comment|// Enabled since JabRef 2.11 beta 4
-name|System
-operator|.
-name|setProperty
-argument_list|(
-literal|"swing.aatext"
-argument_list|,
-literal|"true"
-argument_list|)
-expr_stmt|;
-comment|// Default is "on".
-comment|// "lcd" instead of "on" because of http://wiki.netbeans.org/FaqFontRendering and http://docs.oracle.com/javase/6/docs/technotes/guides/2d/flags.html#aaFonts
-name|System
-operator|.
-name|setProperty
-argument_list|(
-literal|"awt.useSystemAAFontSettings"
-argument_list|,
-literal|"lcd"
-argument_list|)
-expr_stmt|;
-comment|// look and feel. This MUST be the first thing to do before loading any Swing-specific code!
-name|setLookAndFeel
+name|applyFontRenderingTweak
 argument_list|()
 expr_stmt|;
 comment|// If the option is enabled, open the last edited libraries, if any.
@@ -1591,14 +1566,14 @@ return|return
 literal|false
 return|;
 block|}
-DECL|method|setLookAndFeel ()
+DECL|method|applyFontRenderingTweak ()
 specifier|private
 name|void
-name|setLookAndFeel
+name|applyFontRenderingTweak
 parameter_list|()
 block|{
-comment|// On Linux, Java FX fonts look blurry per default. This can be improved by using a non-default rendering
-comment|// setting. See https://github.com/woky/javafx-hates-linux
+comment|// On Linux, Java FX fonts look blurry per default. This can be improved by using a non-default rendering setting.
+comment|// See https://github.com/woky/javafx-hates-linux
 if|if
 condition|(
 name|Globals
@@ -1643,24 +1618,6 @@ block|{
 return|return
 name|mainFrame
 return|;
-block|}
-comment|// Only used for testing, other than that do NOT set the mainFrame...
-DECL|method|setMainFrame (JabRefFrame mainFrame)
-specifier|public
-specifier|static
-name|void
-name|setMainFrame
-parameter_list|(
-name|JabRefFrame
-name|mainFrame
-parameter_list|)
-block|{
-name|JabRefGUI
-operator|.
-name|mainFrame
-operator|=
-name|mainFrame
-expr_stmt|;
 block|}
 block|}
 end_class

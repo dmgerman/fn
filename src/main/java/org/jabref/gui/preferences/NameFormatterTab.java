@@ -1144,25 +1144,15 @@ name|createIconButton
 argument_list|(
 name|StandardActions
 operator|.
-name|HELP
+name|HELP_NAME_FORMATTER
 argument_list|,
 operator|new
 name|HelpAction
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Help on Name Formatting"
-argument_list|)
-argument_list|,
 name|HelpFile
 operator|.
 name|CUSTOM_EXPORTS_NAME_FORMATTER
 argument_list|)
-operator|.
-name|getCommand
-argument_list|()
 argument_list|)
 decl_stmt|;
 name|HBox

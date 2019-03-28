@@ -913,9 +913,6 @@ name|HelpFile
 operator|.
 name|OWNER
 argument_list|)
-operator|.
-name|getCommand
-argument_list|()
 argument_list|)
 decl_stmt|;
 name|builder
@@ -1018,9 +1015,6 @@ name|HelpFile
 operator|.
 name|TIMESTAMP
 argument_list|)
-operator|.
-name|getCommand
-argument_list|()
 argument_list|)
 decl_stmt|;
 name|builder

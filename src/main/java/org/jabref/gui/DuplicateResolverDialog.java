@@ -902,9 +902,6 @@ name|evt
 lambda|->
 name|helpCommand
 operator|.
-name|getCommand
-argument_list|()
-operator|.
 name|execute
 argument_list|()
 argument_list|)

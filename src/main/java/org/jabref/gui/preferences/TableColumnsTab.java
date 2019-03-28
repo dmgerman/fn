@@ -16,18 +16,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|awt
-operator|.
-name|event
-operator|.
-name|ActionEvent
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|ArrayList
@@ -41,16 +29,6 @@ operator|.
 name|util
 operator|.
 name|Collection
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Collections
 import|;
 end_import
 
@@ -81,16 +59,6 @@ operator|.
 name|util
 operator|.
 name|Locale
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|AbstractAction
 import|;
 end_import
 
@@ -542,6 +510,9 @@ DECL|field|colSetup
 specifier|private
 specifier|final
 name|TableView
+argument_list|<
+name|TableRow
+argument_list|>
 name|colSetup
 decl_stmt|;
 DECL|field|frame
@@ -1796,25 +1767,15 @@ name|createIconButton
 argument_list|(
 name|StandardActions
 operator|.
-name|HELP
+name|HELP_SPECIAL_FIELDS
 argument_list|,
 operator|new
 name|HelpAction
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Help on special fields"
-argument_list|)
-argument_list|,
 name|HelpFile
 operator|.
 name|SPECIAL_FIELDS
 argument_list|)
-operator|.
-name|getCommand
-argument_list|()
 argument_list|)
 decl_stmt|;
 name|rankingColumn
@@ -2389,8 +2350,7 @@ name|setOnAction
 argument_list|(
 name|e
 lambda|->
-operator|new
-name|UpdateOrderAction
+name|updateOrderAction
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -3687,38 +3647,11 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|class|UpdateOrderAction
-class|class
-name|UpdateOrderAction
-extends|extends
-name|AbstractAction
-block|{
-DECL|method|UpdateOrderAction ()
-specifier|public
-name|UpdateOrderAction
-parameter_list|()
-block|{
-name|super
-argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Update to current column order"
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-annotation|@
-name|Override
-DECL|method|actionPerformed (ActionEvent e)
-specifier|public
+DECL|method|updateOrderAction ()
+specifier|private
 name|void
-name|actionPerformed
-parameter_list|(
-name|ActionEvent
-name|e
-parameter_list|)
+name|updateOrderAction
+parameter_list|()
 block|{
 name|BasePanel
 name|panel
@@ -3755,12 +3688,10 @@ argument_list|()
 decl_stmt|;
 comment|// first element (#) not inside data
 comment|/*             for (TableColumn<BibEntry, ?> column : panel.getMainTable().getColumns()) {                 String name = column.getText();                 if ((name != null)&& !name.isEmpty()) {                     map.put(name.toLowerCase(Locale.ROOT), i);                 }             }             */
-name|Collections
+name|data
 operator|.
 name|sort
 argument_list|(
-name|data
-argument_list|,
 parameter_list|(
 name|o1
 parameter_list|,
@@ -3840,7 +3771,6 @@ name|tableChanged
 operator|=
 literal|true
 expr_stmt|;
-block|}
 block|}
 annotation|@
 name|Override

@@ -273,20 +273,6 @@ argument_list|(
 name|this
 argument_list|)
 expr_stmt|;
-name|HelpAction
-name|helpCommand
-init|=
-operator|new
-name|HelpAction
-argument_list|(
-name|HelpFile
-operator|.
-name|GENERAL_FIELDS
-argument_list|)
-decl_stmt|;
-comment|//HelpAction is written with Swing, not JavaFX, so runCommand() cannot be used normally.  Here I am reaching into
-comment|//the command and running execute.  When HelpAction is converted to JavaFX,
-comment|//the following will need to be changed.
 name|ControlHelper
 operator|.
 name|setAction
@@ -298,10 +284,13 @@ argument_list|()
 argument_list|,
 name|event
 lambda|->
-name|helpCommand
+operator|new
+name|HelpAction
+argument_list|(
+name|HelpFile
 operator|.
-name|getCommand
-argument_list|()
+name|GENERAL_FIELDS
+argument_list|)
 operator|.
 name|execute
 argument_list|()

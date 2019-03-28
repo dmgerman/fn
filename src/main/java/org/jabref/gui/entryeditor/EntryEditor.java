@@ -2293,12 +2293,7 @@ name|typeMenu
 init|=
 operator|new
 name|ChangeEntryTypeMenu
-argument_list|(
-name|preferences
-operator|.
-name|getKeyBindings
 argument_list|()
-argument_list|)
 operator|.
 name|getChangeEntryTypePopupMenu
 argument_list|(

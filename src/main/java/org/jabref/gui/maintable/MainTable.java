@@ -801,11 +801,6 @@ name|keyBindingRepository
 argument_list|,
 name|panel
 argument_list|,
-name|Globals
-operator|.
-name|getKeyPrefs
-argument_list|()
-argument_list|,
 name|frame
 operator|.
 name|getDialogService
