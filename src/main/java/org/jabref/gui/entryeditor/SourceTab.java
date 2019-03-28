@@ -1120,6 +1120,8 @@ condition|)
 block|{
 name|storeSource
 argument_list|(
+name|entry
+argument_list|,
 name|codeArea
 operator|.
 name|textProperty
@@ -1213,11 +1215,14 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|storeSource (String text)
+DECL|method|storeSource (BibEntry outOfFocusEntry, String text)
 specifier|private
 name|void
 name|storeSource
 parameter_list|(
+name|BibEntry
+name|outOfFocusEntry
+parameter_list|,
 name|String
 name|text
 parameter_list|)
@@ -1225,7 +1230,7 @@ block|{
 if|if
 condition|(
 operator|(
-name|currentEntry
+name|outOfFocusEntry
 operator|==
 literal|null
 operator|)
@@ -1403,7 +1408,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|currentEntry
+name|outOfFocusEntry
 operator|.
 name|setCiteKey
 argument_list|(
@@ -1413,7 +1418,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|currentEntry
+name|outOfFocusEntry
 operator|.
 name|clearCiteKey
 argument_list|()
@@ -1432,7 +1437,7 @@ name|String
 argument_list|>
 name|field
 range|:
-name|currentEntry
+name|outOfFocusEntry
 operator|.
 name|getFieldMap
 argument_list|()
@@ -1482,7 +1487,7 @@ argument_list|(
 operator|new
 name|UndoableFieldChange
 argument_list|(
-name|currentEntry
+name|outOfFocusEntry
 argument_list|,
 name|fieldName
 argument_list|,
@@ -1492,7 +1497,7 @@ literal|null
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|currentEntry
+name|outOfFocusEntry
 operator|.
 name|clearField
 argument_list|(
@@ -1534,7 +1539,7 @@ decl_stmt|;
 name|String
 name|oldValue
 init|=
-name|currentEntry
+name|outOfFocusEntry
 operator|.
 name|getField
 argument_list|(
@@ -1588,7 +1593,7 @@ argument_list|(
 operator|new
 name|UndoableFieldChange
 argument_list|(
-name|currentEntry
+name|outOfFocusEntry
 argument_list|,
 name|fieldName
 argument_list|,
@@ -1598,7 +1603,7 @@ name|newValue
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|currentEntry
+name|outOfFocusEntry
 operator|.
 name|setField
 argument_list|(
@@ -1622,7 +1627,7 @@ operator|.
 name|getType
 argument_list|()
 argument_list|,
-name|currentEntry
+name|outOfFocusEntry
 operator|.
 name|getType
 argument_list|()
@@ -1636,9 +1641,9 @@ argument_list|(
 operator|new
 name|UndoableChangeType
 argument_list|(
-name|currentEntry
+name|outOfFocusEntry
 argument_list|,
-name|currentEntry
+name|outOfFocusEntry
 operator|.
 name|getType
 argument_list|()
@@ -1650,7 +1655,7 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|currentEntry
+name|outOfFocusEntry
 operator|.
 name|setType
 argument_list|(
