@@ -10392,6 +10392,8 @@ argument_list|(
 literal|"@comment{jabref-meta: fileDirectory:\\\\Literature\\\\;}"
 operator|+
 literal|"@comment{jabref-meta: fileDirectory-defaultOwner-user:D:\\\\Documents;}"
+operator|+
+literal|"@comment{jabref-meta: fileDirectoryLatex-defaultOwner-user:D:\\\\Latex;}"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -10426,6 +10428,27 @@ literal|"defaultOwner-user"
 argument_list|)
 operator|.
 name|get
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"D:\\Latex"
+argument_list|,
+name|result
+operator|.
+name|getMetaData
+argument_list|()
+operator|.
+name|getLaTexFileDirectory
+argument_list|(
+literal|"defaultOwner-user"
+argument_list|)
+operator|.
+name|get
+argument_list|()
+operator|.
+name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;

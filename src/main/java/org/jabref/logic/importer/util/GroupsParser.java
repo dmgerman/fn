@@ -332,6 +332,20 @@ name|jabref
 operator|.
 name|model
 operator|.
+name|metadata
+operator|.
+name|MetaData
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
 name|strings
 operator|.
 name|StringUtil
@@ -367,7 +381,7 @@ specifier|private
 name|GroupsParser
 parameter_list|()
 block|{     }
-DECL|method|importGroups (List<String> orderedData, Character keywordSeparator, FileUpdateMonitor fileMonitor)
+DECL|method|importGroups (List<String> orderedData, Character keywordSeparator, FileUpdateMonitor fileMonitor, MetaData metaData)
 specifier|public
 specifier|static
 name|GroupTreeNode
@@ -384,6 +398,9 @@ name|keywordSeparator
 parameter_list|,
 name|FileUpdateMonitor
 name|fileMonitor
+parameter_list|,
+name|MetaData
+name|metaData
 parameter_list|)
 throws|throws
 name|ParseException
@@ -491,6 +508,8 @@ argument_list|,
 name|keywordSeparator
 argument_list|,
 name|fileMonitor
+argument_list|,
+name|metaData
 argument_list|)
 decl_stmt|;
 name|GroupTreeNode
@@ -596,7 +615,7 @@ throw|;
 block|}
 block|}
 comment|/**      * Re-create a group instance from a textual representation.      *      * @param s The result from the group's toString() method.      * @param fileMonitor      * @return New instance of the encoded group.      * @throws ParseException If an error occurred and a group could not be created,      *                        e.g. due to a malformed regular expression.      */
-DECL|method|fromString (String s, Character keywordSeparator, FileUpdateMonitor fileMonitor)
+DECL|method|fromString (String s, Character keywordSeparator, FileUpdateMonitor fileMonitor, MetaData metaData)
 specifier|public
 specifier|static
 name|AbstractGroup
@@ -610,6 +629,9 @@ name|keywordSeparator
 parameter_list|,
 name|FileUpdateMonitor
 name|fileMonitor
+parameter_list|,
+name|MetaData
+name|metaData
 parameter_list|)
 throws|throws
 name|ParseException
@@ -771,6 +793,8 @@ argument_list|(
 name|s
 argument_list|,
 name|fileMonitor
+argument_list|,
+name|metaData
 argument_list|)
 return|;
 block|}
@@ -784,7 +808,7 @@ name|s
 argument_list|)
 throw|;
 block|}
-DECL|method|texGroupFromString (String string, FileUpdateMonitor fileMonitor)
+DECL|method|texGroupFromString (String string, FileUpdateMonitor fileMonitor, MetaData metaData)
 specifier|private
 specifier|static
 name|AbstractGroup
@@ -795,6 +819,9 @@ name|string
 parameter_list|,
 name|FileUpdateMonitor
 name|fileMonitor
+parameter_list|,
+name|MetaData
+name|metaData
 parameter_list|)
 throws|throws
 name|ParseException
@@ -897,6 +924,8 @@ argument_list|()
 argument_list|)
 argument_list|,
 name|fileMonitor
+argument_list|,
+name|metaData
 argument_list|)
 decl_stmt|;
 name|addGroupDetails

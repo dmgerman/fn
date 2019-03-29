@@ -220,6 +220,20 @@ name|jabref
 operator|.
 name|model
 operator|.
+name|metadata
+operator|.
+name|MetaData
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
 name|util
 operator|.
 name|DummyFileUpdateMonitor
@@ -311,6 +325,11 @@ specifier|private
 name|FileUpdateMonitor
 name|fileMonitor
 decl_stmt|;
+DECL|field|metaData
+specifier|private
+name|MetaData
+name|metaData
+decl_stmt|;
 annotation|@
 name|BeforeEach
 DECL|method|setUp ()
@@ -325,6 +344,12 @@ name|fileMonitor
 operator|=
 operator|new
 name|DummyFileUpdateMonitor
+argument_list|()
+expr_stmt|;
+name|metaData
+operator|=
+operator|new
+name|MetaData
 argument_list|()
 expr_stmt|;
 block|}
@@ -366,6 +391,8 @@ argument_list|,
 literal|','
 argument_list|,
 name|fileMonitor
+argument_list|,
+name|metaData
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -417,6 +444,8 @@ argument_list|,
 literal|';'
 argument_list|,
 name|fileMonitor
+argument_list|,
+name|metaData
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -468,6 +497,8 @@ argument_list|,
 literal|';'
 argument_list|,
 name|fileMonitor
+argument_list|,
+name|metaData
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -505,6 +536,8 @@ argument_list|,
 literal|','
 argument_list|,
 name|fileMonitor
+argument_list|,
+name|metaData
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -650,6 +683,8 @@ argument_list|,
 literal|','
 argument_list|,
 name|fileMonitor
+argument_list|,
+name|metaData
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -733,6 +768,8 @@ argument_list|,
 literal|','
 argument_list|,
 name|fileMonitor
+argument_list|,
+name|metaData
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -784,6 +821,8 @@ argument_list|,
 literal|','
 argument_list|,
 name|fileMonitor
+argument_list|,
+name|metaData
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -831,6 +870,8 @@ argument_list|,
 literal|','
 argument_list|,
 name|fileMonitor
+argument_list|,
+name|metaData
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -883,6 +924,8 @@ argument_list|()
 argument_list|)
 argument_list|,
 name|fileMonitor
+argument_list|,
+name|metaData
 argument_list|)
 decl_stmt|;
 name|AbstractGroup
@@ -897,6 +940,8 @@ argument_list|,
 literal|','
 argument_list|,
 name|fileMonitor
+argument_list|,
+name|metaData
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -934,6 +979,8 @@ argument_list|,
 literal|','
 argument_list|,
 name|fileMonitor
+argument_list|,
+name|metaData
 argument_list|)
 argument_list|)
 expr_stmt|;
