@@ -2520,8 +2520,9 @@ condition|)
 block|{
 name|resultingGroup
 operator|=
-operator|new
 name|TexGroup
+operator|.
+name|create
 argument_list|(
 name|groupName
 argument_list|,
@@ -3538,7 +3539,7 @@ argument_list|(
 name|texGroupBrowseButton
 argument_list|)
 expr_stmt|;
-name|texGroupHBox
+name|HBox
 operator|.
 name|setHgrow
 argument_list|(

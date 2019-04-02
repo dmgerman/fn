@@ -438,7 +438,7 @@ parameter_list|)
 block|{
 name|LOGGER
 operator|.
-name|info
+name|warn
 argument_list|(
 literal|"Cannot locate input file"
 argument_list|,
