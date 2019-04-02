@@ -698,25 +698,6 @@ operator|.
 name|VIEW
 argument_list|)
 block|,
-DECL|enumConstant|GLOBAL_SEARCH
-name|GLOBAL_SEARCH
-argument_list|(
-literal|"Search globally"
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Search globally"
-argument_list|)
-argument_list|,
-literal|"ctrl+shift+F"
-argument_list|,
-name|KeyBindingCategory
-operator|.
-name|SEARCH
-argument_list|)
-block|,
 DECL|enumConstant|HELP
 name|HELP
 argument_list|(

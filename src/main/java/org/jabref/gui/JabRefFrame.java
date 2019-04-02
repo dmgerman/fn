@@ -1644,18 +1644,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|preferences
-operator|.
-name|SearchPreferences
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -2553,28 +2541,7 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-operator|new
-name|SearchPreferences
-argument_list|(
-name|Globals
-operator|.
-name|prefs
-argument_list|)
-operator|.
-name|isGlobalSearch
-argument_list|()
-condition|)
-block|{
-name|globalSearchBar
-operator|.
-name|performSearch
-argument_list|()
-expr_stmt|;
-block|}
-else|else
-block|{
+comment|// Update search query
 name|String
 name|content
 init|=
@@ -2617,7 +2584,6 @@ argument_list|(
 name|content
 argument_list|)
 expr_stmt|;
-block|}
 name|currentBasePanel
 operator|.
 name|getPreviewPanel
