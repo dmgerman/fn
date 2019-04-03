@@ -178,6 +178,20 @@ name|gui
 operator|.
 name|util
 operator|.
+name|DefaultTaskExecutor
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|util
+operator|.
 name|TaskExecutor
 import|;
 end_import
@@ -713,9 +727,18 @@ argument_list|()
 condition|)
 block|{
 comment|// Unknown format:
+name|DefaultTaskExecutor
+operator|.
+name|runInJavaFXThread
+argument_list|(
+parameter_list|()
+lambda|->
 name|frame
 operator|.
-name|output
+name|getDialogService
+argument_list|()
+operator|.
+name|notify
 argument_list|(
 name|Localization
 operator|.
@@ -725,6 +748,7 @@ literal|"Importing in unknown format"
 argument_list|)
 operator|+
 literal|"..."
+argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// This import method never throws an IOException:
@@ -750,9 +774,18 @@ expr_stmt|;
 block|}
 else|else
 block|{
+name|DefaultTaskExecutor
+operator|.
+name|runInJavaFXThread
+argument_list|(
+parameter_list|()
+lambda|->
 name|frame
 operator|.
-name|output
+name|getDialogService
+argument_list|()
+operator|.
+name|notify
 argument_list|(
 name|Localization
 operator|.
@@ -770,6 +803,7 @@ argument_list|()
 argument_list|)
 operator|+
 literal|"..."
+argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Specific importer:

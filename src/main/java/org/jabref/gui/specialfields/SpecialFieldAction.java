@@ -500,7 +500,10 @@ expr_stmt|;
 block|}
 name|frame
 operator|.
-name|output
+name|getDialogService
+argument_list|()
+operator|.
+name|notify
 argument_list|(
 name|outText
 argument_list|)

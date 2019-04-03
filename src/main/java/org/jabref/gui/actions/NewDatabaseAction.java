@@ -167,7 +167,10 @@ argument_list|)
 expr_stmt|;
 name|jabRefFrame
 operator|.
-name|output
+name|getDialogService
+argument_list|()
+operator|.
+name|notify
 argument_list|(
 name|Localization
 operator|.

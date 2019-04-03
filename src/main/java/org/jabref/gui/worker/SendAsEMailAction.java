@@ -333,8 +333,11 @@ operator|.
 name|onSuccess
 argument_list|(
 name|frame
+operator|.
+name|getDialogService
+argument_list|()
 operator|::
-name|output
+name|notify
 argument_list|)
 operator|.
 name|onFailure
@@ -363,7 +366,10 @@ argument_list|)
 expr_stmt|;
 name|frame
 operator|.
-name|output
+name|getDialogService
+argument_list|()
+operator|.
+name|notify
 argument_list|(
 name|message
 argument_list|)

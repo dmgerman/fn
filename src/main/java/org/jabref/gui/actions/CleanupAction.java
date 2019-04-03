@@ -489,9 +489,9 @@ literal|true
 expr_stmt|;
 return|return;
 block|}
-name|panel
+name|dialogService
 operator|.
-name|output
+name|notify
 argument_list|(
 name|Localization
 operator|.
@@ -684,9 +684,9 @@ argument_list|)
 expr_stmt|;
 break|break;
 block|}
-name|panel
+name|dialogService
 operator|.
-name|output
+name|notify
 argument_list|(
 name|message
 argument_list|)

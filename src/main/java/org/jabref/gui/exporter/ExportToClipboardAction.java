@@ -418,9 +418,9 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-name|panel
+name|dialogService
 operator|.
-name|output
+name|notify
 argument_list|(
 name|Localization
 operator|.
@@ -820,9 +820,9 @@ argument_list|(
 name|clipboardContent
 argument_list|)
 expr_stmt|;
-name|panel
+name|dialogService
 operator|.
-name|output
+name|notify
 argument_list|(
 name|Localization
 operator|.

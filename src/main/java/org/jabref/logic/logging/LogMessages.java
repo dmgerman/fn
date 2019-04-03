@@ -48,24 +48,6 @@ name|LogEvent
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|logging
-operator|.
-name|log4j
-operator|.
-name|core
-operator|.
-name|impl
-operator|.
-name|MutableLogEvent
-import|;
-end_import
-
 begin_comment
 comment|/**  * This class is used for storing and archiving all message output of JabRef as log events.  * To listen to changes on the stored logs one can bind to the {@code messagesProperty}.  */
 end_comment
@@ -143,26 +125,11 @@ name|LogEvent
 name|event
 parameter_list|)
 block|{
-comment|// We need to make a copy as instances of LogEvent are reused by log4j
-name|MutableLogEvent
-name|copy
-init|=
-operator|new
-name|MutableLogEvent
-argument_list|()
-decl_stmt|;
-name|copy
-operator|.
-name|initFrom
-argument_list|(
-name|event
-argument_list|)
-expr_stmt|;
 name|messages
 operator|.
 name|add
 argument_list|(
-name|copy
+name|event
 argument_list|)
 expr_stmt|;
 block|}
