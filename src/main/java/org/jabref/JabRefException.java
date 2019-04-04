@@ -174,7 +174,7 @@ name|LOGGER
 operator|.
 name|debug
 argument_list|(
-literal|"No localized message exception message defined. Falling back to getMessage()."
+literal|"No localized exception message defined. Falling back to getMessage()."
 argument_list|)
 expr_stmt|;
 return|return
