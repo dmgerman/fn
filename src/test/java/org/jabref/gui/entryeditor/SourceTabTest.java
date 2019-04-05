@@ -76,7 +76,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|FXDialogService
+name|DialogService
 import|;
 end_import
 
@@ -364,9 +364,12 @@ operator|new
 name|DummyFileUpdateMonitor
 argument_list|()
 argument_list|,
-operator|new
-name|FXDialogService
-argument_list|()
+name|mock
+argument_list|(
+name|DialogService
+operator|.
+name|class
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|pane

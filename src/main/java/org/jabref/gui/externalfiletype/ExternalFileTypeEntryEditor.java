@@ -208,9 +208,7 @@ name|org
 operator|.
 name|jabref
 operator|.
-name|gui
-operator|.
-name|DialogService
+name|JabRefGUI
 import|;
 end_import
 
@@ -222,7 +220,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|FXDialogService
+name|DialogService
 import|;
 end_import
 
@@ -590,8 +588,12 @@ decl_stmt|;
 name|DialogService
 name|ds
 init|=
-operator|new
-name|FXDialogService
+name|JabRefGUI
+operator|.
+name|getMainFrame
+argument_list|()
+operator|.
+name|getDialogService
 argument_list|()
 decl_stmt|;
 name|Optional

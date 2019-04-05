@@ -2032,9 +2032,6 @@ argument_list|,
 name|this
 argument_list|)
 expr_stmt|;
-name|init
-argument_list|()
-expr_stmt|;
 block|}
 comment|/**      * Takes a list of Object and calls the method setEnabled on them, depending on whether it is an Action or a      * Component.      *      * @param list List that should contain Actions and Components.      */
 DECL|method|setEnabled (List<Object> list, boolean enabled)
@@ -2151,7 +2148,7 @@ block|}
 block|}
 block|}
 DECL|method|init ()
-specifier|private
+specifier|public
 name|void
 name|init
 parameter_list|()

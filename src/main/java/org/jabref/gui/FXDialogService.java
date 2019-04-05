@@ -548,43 +548,6 @@ specifier|final
 name|JFXSnackbar
 name|statusLine
 decl_stmt|;
-comment|/**      * @deprecated try not to initialize a new dialog service but reuse the one constructed in {@link org.jabref.gui.JabRefFrame}.      */
-annotation|@
-name|Deprecated
-DECL|method|FXDialogService ()
-specifier|public
-name|FXDialogService
-parameter_list|()
-block|{
-name|this
-argument_list|(
-literal|null
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|FXDialogService (Window mainWindow)
-specifier|public
-name|FXDialogService
-parameter_list|(
-name|Window
-name|mainWindow
-parameter_list|)
-block|{
-name|this
-operator|.
-name|mainWindow
-operator|=
-name|mainWindow
-expr_stmt|;
-name|this
-operator|.
-name|statusLine
-operator|=
-operator|new
-name|JFXSnackbar
-argument_list|()
-expr_stmt|;
-block|}
 DECL|method|FXDialogService (Window mainWindow, Pane mainPane)
 specifier|public
 name|FXDialogService

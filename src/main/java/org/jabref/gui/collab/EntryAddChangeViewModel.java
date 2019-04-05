@@ -38,9 +38,7 @@ name|org
 operator|.
 name|jabref
 operator|.
-name|gui
-operator|.
-name|FXDialogService
+name|JabRefGUI
 import|;
 end_import
 
@@ -251,8 +249,12 @@ operator|.
 name|getPreviewPreferences
 argument_list|()
 argument_list|,
-operator|new
-name|FXDialogService
+name|JabRefGUI
+operator|.
+name|getMainFrame
+argument_list|()
+operator|.
+name|getDialogService
 argument_list|()
 argument_list|,
 name|ExternalFileTypes
