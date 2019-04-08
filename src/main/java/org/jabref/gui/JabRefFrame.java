@@ -1486,20 +1486,6 @@ name|logic
 operator|.
 name|util
 operator|.
-name|OS
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
-name|util
-operator|.
 name|io
 operator|.
 name|FileUtil
@@ -1711,16 +1697,6 @@ operator|.
 name|slf4j
 operator|.
 name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|osx
-operator|.
-name|macadapter
-operator|.
-name|MacAdapter
 import|;
 end_import
 
@@ -2556,45 +2532,6 @@ expr_stmt|;
 block|}
 argument_list|)
 expr_stmt|;
-comment|//Note: The registration of Apple event is at the end of initialization, because
-comment|//if the events happen too early (ie when the window is not initialized yet), the
-comment|//opened (double-clicked) documents are not displayed.
-if|if
-condition|(
-name|OS
-operator|.
-name|OS_X
-condition|)
-block|{
-try|try
-block|{
-operator|new
-name|MacAdapter
-argument_list|()
-operator|.
-name|registerMacEvents
-argument_list|(
-name|this
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|Exception
-name|e
-parameter_list|)
-block|{
-name|LOGGER
-operator|.
-name|error
-argument_list|(
-literal|"Could not interface with Mac OS X methods."
-argument_list|,
-name|e
-argument_list|)
-expr_stmt|;
-block|}
-block|}
 name|initShowTrackingNotification
 argument_list|()
 expr_stmt|;
