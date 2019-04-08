@@ -684,9 +684,16 @@ argument_list|)
 argument_list|)
 block|,
 DECL|enumConstant|RANK_1
+DECL|enumConstant|Localization.lang
+DECL|enumConstant|IconTheme.JabRefIcons.RANK1
 name|RANK_1
 argument_list|(
-literal|""
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Set rank to one"
+argument_list|)
 argument_list|,
 name|IconTheme
 operator|.
@@ -696,9 +703,16 @@ name|RANK1
 argument_list|)
 block|,
 DECL|enumConstant|RANK_2
+DECL|enumConstant|Localization.lang
+DECL|enumConstant|IconTheme.JabRefIcons.RANK2
 name|RANK_2
 argument_list|(
-literal|""
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Set rank to two"
+argument_list|)
 argument_list|,
 name|IconTheme
 operator|.
@@ -708,9 +722,16 @@ name|RANK2
 argument_list|)
 block|,
 DECL|enumConstant|RANK_3
+DECL|enumConstant|Localization.lang
+DECL|enumConstant|IconTheme.JabRefIcons.RANK3
 name|RANK_3
 argument_list|(
-literal|""
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Set rank to three"
+argument_list|)
 argument_list|,
 name|IconTheme
 operator|.
@@ -720,9 +741,16 @@ name|RANK3
 argument_list|)
 block|,
 DECL|enumConstant|RANK_4
+DECL|enumConstant|Localization.lang
+DECL|enumConstant|IconTheme.JabRefIcons.RANK4
 name|RANK_4
 argument_list|(
-literal|""
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Set rank to four"
+argument_list|)
 argument_list|,
 name|IconTheme
 operator|.
@@ -732,9 +760,16 @@ name|RANK4
 argument_list|)
 block|,
 DECL|enumConstant|RANK_5
+DECL|enumConstant|Localization.lang
+DECL|enumConstant|IconTheme.JabRefIcons.RANK5
 name|RANK_5
 argument_list|(
-literal|""
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Set rank to five"
+argument_list|)
 argument_list|,
 name|IconTheme
 operator|.
