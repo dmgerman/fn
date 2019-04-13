@@ -2433,6 +2433,24 @@ name|USE_PDF_READER
 init|=
 literal|"usePDFReader"
 decl_stmt|;
+DECL|field|USE_DEFAULT_FILE_BROWSER_APPLICATION
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|USE_DEFAULT_FILE_BROWSER_APPLICATION
+init|=
+literal|"userDefaultFileBrowserApplication"
+decl_stmt|;
+DECL|field|FILE_BROWSER_COMMAND
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|FILE_BROWSER_COMMAND
+init|=
+literal|"fileBrowserCommand"
+decl_stmt|;
 comment|// Currently, it is not possible to specify defaults for specific entry types
 comment|// When this should be made possible, the code to inspect is org.jabref.gui.preferences.BibtexKeyPatternPrefTab.storeSettings() -> LabelPattern keypatterns = getCiteKeyPattern(); etc
 DECL|field|DEFAULT_BIBTEX_KEY_PATTERN
@@ -5941,6 +5959,17 @@ operator|.
 name|TRUE
 argument_list|)
 expr_stmt|;
+name|defaults
+operator|.
+name|put
+argument_list|(
+name|USE_DEFAULT_FILE_BROWSER_APPLICATION
+argument_list|,
+name|Boolean
+operator|.
+name|TRUE
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|OS
@@ -5984,6 +6013,15 @@ argument_list|,
 name|ADOBE_ACROBAT_COMMAND
 argument_list|)
 expr_stmt|;
+name|defaults
+operator|.
+name|put
+argument_list|(
+name|FILE_BROWSER_COMMAND
+argument_list|,
+literal|"explorer.exe /select, \"%DIR\""
+argument_list|)
+expr_stmt|;
 block|}
 else|else
 block|{
@@ -6019,6 +6057,15 @@ operator|.
 name|put
 argument_list|(
 name|USE_PDF_READER
+argument_list|,
+literal|""
+argument_list|)
+expr_stmt|;
+name|defaults
+operator|.
+name|put
+argument_list|(
+name|FILE_BROWSER_COMMAND
 argument_list|,
 literal|""
 argument_list|)
