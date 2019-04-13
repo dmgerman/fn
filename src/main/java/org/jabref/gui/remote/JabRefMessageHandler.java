@@ -18,17 +18,17 @@ name|java
 operator|.
 name|util
 operator|.
-name|Arrays
+name|List
 import|;
 end_import
 
 begin_import
 import|import
-name|java
+name|javafx
 operator|.
-name|util
+name|application
 operator|.
-name|List
+name|Platform
 import|;
 end_import
 
@@ -119,32 +119,6 @@ operator|.
 name|REMOTE_START
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
-operator|!
-operator|(
-name|argumentProcessor
-operator|.
-name|hasParserResults
-argument_list|()
-operator|)
-condition|)
-block|{
-throw|throw
-operator|new
-name|IllegalStateException
-argument_list|(
-literal|"Could not start JabRef with arguments "
-operator|+
-name|Arrays
-operator|.
-name|toString
-argument_list|(
-name|message
-argument_list|)
-argument_list|)
-throw|;
-block|}
 name|List
 argument_list|<
 name|ParserResult
@@ -184,6 +158,20 @@ argument_list|(
 name|i
 argument_list|)
 decl_stmt|;
+name|boolean
+name|focusPanel
+init|=
+name|i
+operator|==
+literal|0
+decl_stmt|;
+name|Platform
+operator|.
+name|runLater
+argument_list|(
+parameter_list|()
+lambda|->
+comment|// Need to run this on the JavaFX thread
 name|JabRefGUI
 operator|.
 name|getMainFrame
@@ -193,9 +181,8 @@ name|addParserResult
 argument_list|(
 name|pr
 argument_list|,
-name|i
-operator|==
-literal|0
+name|focusPanel
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

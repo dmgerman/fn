@@ -776,6 +776,14 @@ name|void
 name|addNewGroupToRoot
 parameter_list|()
 block|{
+if|if
+condition|(
+name|currentDatabase
+operator|.
+name|isPresent
+argument_list|()
+condition|)
+block|{
 name|addNewSubgroup
 argument_list|(
 name|rootGroup
@@ -784,6 +792,29 @@ name|get
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+name|dialogService
+operator|.
+name|showWarningDialogAndWait
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Cannot create group"
+argument_list|)
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Cannot create group. Please create a library first."
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 comment|/**      * Gets invoked if the user changes the active database.      * We need to get the new group tree and update the view      */
 DECL|method|onActiveDatabaseChanged (Optional<BibDatabaseContext> newDatabase)
@@ -974,7 +1005,9 @@ name|showCustomDialogAndWait
 argument_list|(
 operator|new
 name|GroupDialog
-argument_list|()
+argument_list|(
+name|dialogService
+argument_list|)
 argument_list|)
 decl_stmt|;
 name|newGroup
@@ -1069,6 +1102,8 @@ argument_list|(
 operator|new
 name|GroupDialog
 argument_list|(
+name|dialogService
+argument_list|,
 name|oldGroup
 operator|.
 name|getGroupNode

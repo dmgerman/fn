@@ -242,8 +242,6 @@ name|FileNodeWrapper
 argument_list|>
 name|call
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|UnlinkedPDFFileFilter
 name|unlinkedPDFFileFilter
@@ -268,7 +266,7 @@ name|unlinkedPDFFileFilter
 argument_list|)
 return|;
 block|}
-comment|/**      * Searches recursively all files in the specified directory.<br>      *<br>      * All {@link File}s, which match the {@link FileFilter} that comes with the      * {@link EntryFromFileCreatorManager}, are taken into the resulting tree.<br>      *<br>      * The result will be a tree structure of nodes of the type      * {@link CheckBoxTreeItem}.<br>      *<br>      * The user objects that are attached to the nodes is the      * {@link FileNodeWrapper}, which wraps the {@link File}-Object.<br>      *<br>      * For ensuring the capability to cancel the work of this recursive method,      * the first position in the integer array 'state' must be set to 1, to keep      * the recursion running. When the states value changes, the method will      * resolve its recursion and return what it has saved so far.      */
+comment|/**      * Searches recursively all files in the specified directory.<br>      *<br>      * All files matched by the given {@link UnlinkedPDFFileFilter} are taken into the resulting tree.<br>      *<br>      * The result will be a tree structure of nodes of the type      * {@link CheckBoxTreeItem}.<br>      *<br>      * The user objects that are attached to the nodes is the      * {@link FileNodeWrapper}, which wraps the {@link File}-Object.<br>      *<br>      * For ensuring the capability to cancel the work of this recursive method,      * the first position in the integer array 'state' must be set to 1, to keep      * the recursion running. When the states value changes, the method will      * resolve its recursion and return what it has saved so far.      */
 DECL|method|searchDirectory (File directory, UnlinkedPDFFileFilter ff)
 specifier|private
 name|CheckBoxTreeItem

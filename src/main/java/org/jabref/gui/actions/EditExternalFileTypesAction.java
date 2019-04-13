@@ -22,7 +22,7 @@ name|gui
 operator|.
 name|externalfiletype
 operator|.
-name|ExternalFileTypeEditor
+name|CustomizeExternalFileTypesDialog
 import|;
 end_import
 
@@ -42,16 +42,16 @@ name|void
 name|execute
 parameter_list|()
 block|{
-name|ExternalFileTypeEditor
+name|CustomizeExternalFileTypesDialog
 name|editor
 init|=
 operator|new
-name|ExternalFileTypeEditor
+name|CustomizeExternalFileTypesDialog
 argument_list|()
 decl_stmt|;
 name|editor
 operator|.
-name|show
+name|showAndWait
 argument_list|()
 expr_stmt|;
 block|}

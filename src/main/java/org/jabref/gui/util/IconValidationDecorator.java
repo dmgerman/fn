@@ -202,6 +202,8 @@ operator|=
 name|position
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|createErrorNode ()
 specifier|protected
 name|Node
@@ -219,6 +221,8 @@ name|getGraphicNode
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|createWarningNode ()
 specifier|protected
 name|Node
@@ -236,6 +240,8 @@ name|getGraphicNode
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|createDecorationNode (ValidationMessage message)
 specifier|public
 name|Node
@@ -312,15 +318,15 @@ name|label
 operator|.
 name|setAlignment
 argument_list|(
-name|Pos
-operator|.
-name|CENTER
+name|position
 argument_list|)
 expr_stmt|;
 return|return
 name|label
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|createTooltip (ValidationMessage message)
 specifier|protected
 name|Tooltip

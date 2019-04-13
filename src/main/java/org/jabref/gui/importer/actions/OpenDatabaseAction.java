@@ -426,18 +426,6 @@ name|org
 operator|.
 name|jabref
 operator|.
-name|migrations
-operator|.
-name|FileLinksUpgradeWarning
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
 name|model
 operator|.
 name|database
@@ -544,19 +532,9 @@ operator|new
 name|MergeReviewIntoCommentAction
 argument_list|()
 argument_list|,
-comment|// External file handling system in version 2.3:
-operator|new
-name|FileLinksUpgradeWarning
-argument_list|()
-argument_list|,
 comment|// Check for new custom entry types loaded from the BIB file:
 operator|new
 name|CheckForNewEntryTypesAction
-argument_list|()
-argument_list|,
-comment|// Warning about and handling duplicate BibTeX keys:
-operator|new
-name|HandleDuplicateWarnings
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -1139,7 +1117,10 @@ condition|)
 block|{
 name|frame
 operator|.
-name|output
+name|getDialogService
+argument_list|()
+operator|.
+name|notify
 argument_list|(
 name|Localization
 operator|.
@@ -1173,7 +1154,10 @@ expr_stmt|;
 block|}
 name|frame
 operator|.
-name|output
+name|getDialogService
+argument_list|()
+operator|.
+name|notify
 argument_list|(
 name|Localization
 operator|.
@@ -1233,7 +1217,10 @@ argument_list|()
 decl_stmt|;
 name|frame
 operator|.
-name|output
+name|getDialogService
+argument_list|()
+operator|.
+name|notify
 argument_list|(
 name|Localization
 operator|.
@@ -1516,7 +1503,10 @@ condition|)
 block|{
 name|frame
 operator|.
-name|output
+name|getDialogService
+argument_list|()
+operator|.
+name|notify
 argument_list|(
 name|Localization
 operator|.

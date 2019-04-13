@@ -360,7 +360,7 @@ name|gui
 operator|.
 name|externalfiles
 operator|.
-name|NewDroppedFileHandler
+name|ExternalFilesEntryLinker
 import|;
 end_import
 
@@ -796,11 +796,11 @@ specifier|final
 name|DialogService
 name|dialogService
 decl_stmt|;
-DECL|field|fileHandler
+DECL|field|fileLinker
 specifier|private
 specifier|final
-name|NewDroppedFileHandler
-name|fileHandler
+name|ExternalFilesEntryLinker
+name|fileLinker
 decl_stmt|;
 DECL|field|taskExecutor
 specifier|private
@@ -884,15 +884,11 @@ name|taskExecutor
 operator|=
 name|taskExecutor
 expr_stmt|;
-name|fileHandler
+name|fileLinker
 operator|=
 operator|new
-name|NewDroppedFileHandler
+name|ExternalFilesEntryLinker
 argument_list|(
-name|dialogService
-argument_list|,
-name|databaseContext
-argument_list|,
 name|externalFileTypes
 argument_list|,
 name|Globals
@@ -902,24 +898,7 @@ operator|.
 name|getFilePreferences
 argument_list|()
 argument_list|,
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getImportFormatPreferences
-argument_list|()
-argument_list|,
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getUpdateFieldPreferences
-argument_list|()
-argument_list|,
-name|Globals
-operator|.
-name|getFileUpdateMonitor
-argument_list|()
+name|databaseContext
 argument_list|)
 expr_stmt|;
 name|ViewLoader
@@ -1188,9 +1167,9 @@ argument_list|(
 literal|"Mode LINK"
 argument_list|)
 expr_stmt|;
-name|fileHandler
+name|fileLinker
 operator|.
-name|addToEntry
+name|addFilesToEntry
 argument_list|(
 name|entry
 argument_list|,
@@ -1219,7 +1198,7 @@ argument_list|(
 literal|"Mode COPY"
 argument_list|)
 expr_stmt|;
-name|fileHandler
+name|fileLinker
 operator|.
 name|copyFilesToFileDirAndAddToEntry
 argument_list|(
@@ -1239,9 +1218,9 @@ literal|"Mode MOVE"
 argument_list|)
 expr_stmt|;
 comment|//shift on win or no modifier
-name|fileHandler
+name|fileLinker
 operator|.
-name|addToEntryRenameAndMoveToFileDir
+name|moveFilesToFileDirAndAddToEntry
 argument_list|(
 name|entry
 argument_list|,
@@ -1279,9 +1258,9 @@ argument_list|(
 literal|"Mode MOVE"
 argument_list|)
 expr_stmt|;
-name|fileHandler
+name|fileLinker
 operator|.
-name|addToEntryRenameAndMoveToFileDir
+name|moveFilesToFileDirAndAddToEntry
 argument_list|(
 name|entry
 argument_list|,
@@ -1310,9 +1289,9 @@ argument_list|(
 literal|"Mode LINK"
 argument_list|)
 expr_stmt|;
-name|fileHandler
+name|fileLinker
 operator|.
-name|addToEntry
+name|addFilesToEntry
 argument_list|(
 name|entry
 argument_list|,
@@ -1330,7 +1309,7 @@ literal|"Mode COPY"
 argument_list|)
 expr_stmt|;
 comment|//shift on win or no modifier
-name|fileHandler
+name|fileLinker
 operator|.
 name|copyFilesToFileDirAndAddToEntry
 argument_list|(
@@ -1370,7 +1349,7 @@ argument_list|(
 literal|"Mode COPY"
 argument_list|)
 expr_stmt|;
-name|fileHandler
+name|fileLinker
 operator|.
 name|copyFilesToFileDirAndAddToEntry
 argument_list|(
@@ -1401,9 +1380,9 @@ argument_list|(
 literal|"Mode MOVE"
 argument_list|)
 expr_stmt|;
-name|fileHandler
+name|fileLinker
 operator|.
-name|addToEntryRenameAndMoveToFileDir
+name|moveFilesToFileDirAndAddToEntry
 argument_list|(
 name|entry
 argument_list|,
@@ -1421,9 +1400,9 @@ literal|"Mode LINK"
 argument_list|)
 expr_stmt|;
 comment|//shift on win or no modifier
-name|fileHandler
+name|fileLinker
 operator|.
-name|addToEntry
+name|addFilesToEntry
 argument_list|(
 name|entry
 argument_list|,
@@ -2314,12 +2293,7 @@ name|typeMenu
 init|=
 operator|new
 name|ChangeEntryTypeMenu
-argument_list|(
-name|preferences
-operator|.
-name|getKeyBindings
 argument_list|()
-argument_list|)
 operator|.
 name|getChangeEntryTypePopupMenu
 argument_list|(

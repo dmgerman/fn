@@ -264,7 +264,10 @@ operator|.
 name|getMainFrame
 argument_list|()
 operator|.
-name|output
+name|getDialogService
+argument_list|()
+operator|.
+name|notify
 argument_list|(
 name|Localization
 operator|.
@@ -391,7 +394,10 @@ operator|.
 name|getMainFrame
 argument_list|()
 operator|.
-name|output
+name|getDialogService
+argument_list|()
+operator|.
+name|notify
 argument_list|(
 operator|(
 name|entries
@@ -427,7 +433,10 @@ operator|.
 name|getMainFrame
 argument_list|()
 operator|.
-name|output
+name|getDialogService
+argument_list|()
+operator|.
+name|notify
 argument_list|(
 name|Localization
 operator|.

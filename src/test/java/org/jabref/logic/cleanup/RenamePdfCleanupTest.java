@@ -214,21 +214,9 @@ name|jupiter
 operator|.
 name|api
 operator|.
-name|extension
+name|io
 operator|.
-name|ExtendWith
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junitpioneer
-operator|.
-name|jupiter
-operator|.
-name|TempDirectory
+name|TempDir
 import|;
 end_import
 
@@ -273,13 +261,6 @@ import|;
 end_import
 
 begin_class
-annotation|@
-name|ExtendWith
-argument_list|(
-name|TempDirectory
-operator|.
-name|class
-argument_list|)
 DECL|class|RenamePdfCleanupTest
 class|class
 name|RenamePdfCleanupTest
@@ -301,13 +282,11 @@ name|cleanup
 decl_stmt|;
 annotation|@
 name|BeforeEach
-DECL|method|setUp (@empDirectory.TempDir Path testFolder)
+DECL|method|setUp (@empDir Path testFolder)
 name|void
 name|setUp
 parameter_list|(
 annotation|@
-name|TempDirectory
-operator|.
 name|TempDir
 name|Path
 name|testFolder
@@ -406,13 +385,11 @@ block|}
 comment|/**      * Test for #466      */
 annotation|@
 name|Test
-DECL|method|cleanupRenamePdfRenamesFileEvenIfOnlyDifferenceIsCase (@empDirectory.TempDir Path testFolder)
+DECL|method|cleanupRenamePdfRenamesFileEvenIfOnlyDifferenceIsCase (@empDir Path testFolder)
 name|void
 name|cleanupRenamePdfRenamesFileEvenIfOnlyDifferenceIsCase
 parameter_list|(
 annotation|@
-name|TempDirectory
-operator|.
 name|TempDir
 name|Path
 name|testFolder
@@ -528,13 +505,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|cleanupRenamePdfRenamesWithMultipleFiles (@empDirectory.TempDir Path testFolder)
+DECL|method|cleanupRenamePdfRenamesWithMultipleFiles (@empDir Path testFolder)
 name|void
 name|cleanupRenamePdfRenamesWithMultipleFiles
 parameter_list|(
 annotation|@
-name|TempDirectory
-operator|.
 name|TempDir
 name|Path
 name|testFolder
@@ -699,13 +674,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|cleanupRenamePdfRenamesFileStartingWithBibtexKey (@empDirectory.TempDir Path testFolder)
+DECL|method|cleanupRenamePdfRenamesFileStartingWithBibtexKey (@empDir Path testFolder)
 name|void
 name|cleanupRenamePdfRenamesFileStartingWithBibtexKey
 parameter_list|(
 annotation|@
-name|TempDirectory
-operator|.
 name|TempDir
 name|Path
 name|testFolder
@@ -830,13 +803,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|cleanupRenamePdfRenamesFileInSameFolder (@empDirectory.TempDir Path testFolder)
+DECL|method|cleanupRenamePdfRenamesFileInSameFolder (@empDir Path testFolder)
 name|void
 name|cleanupRenamePdfRenamesFileInSameFolder
 parameter_list|(
 annotation|@
-name|TempDirectory
-operator|.
 name|TempDir
 name|Path
 name|testFolder

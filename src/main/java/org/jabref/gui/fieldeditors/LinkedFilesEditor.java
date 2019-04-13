@@ -1633,6 +1633,11 @@ argument_list|()
 operator|.
 name|isOnlineLink
 argument_list|()
+operator|||
+name|linkedFile
+operator|.
+name|isGeneratedNameSameAsOriginal
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|MenuItem
@@ -1672,6 +1677,11 @@ argument_list|()
 operator|.
 name|isOnlineLink
 argument_list|()
+operator|||
+name|linkedFile
+operator|.
+name|isGeneratedPathSameAsOriginal
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|MenuItem
@@ -1710,6 +1720,11 @@ name|getFile
 argument_list|()
 operator|.
 name|isOnlineLink
+argument_list|()
+operator|||
+name|linkedFile
+operator|.
+name|isGeneratedPathSameAsOriginal
 argument_list|()
 argument_list|)
 expr_stmt|;

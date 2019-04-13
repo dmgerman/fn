@@ -904,7 +904,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"\n%s=%s\n"
+literal|"%s=%s"
 argument_list|,
 name|key
 operator|.
@@ -931,6 +931,10 @@ name|Collectors
 operator|.
 name|joining
 argument_list|(
+literal|"\n"
+argument_list|,
+literal|"\n"
+argument_list|,
 literal|"\n"
 argument_list|)
 argument_list|)

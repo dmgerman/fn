@@ -218,21 +218,9 @@ name|jupiter
 operator|.
 name|api
 operator|.
-name|extension
+name|io
 operator|.
-name|ExtendWith
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junitpioneer
-operator|.
-name|jupiter
-operator|.
-name|TempDirectory
+name|TempDir
 import|;
 end_import
 
@@ -339,13 +327,6 @@ import|;
 end_import
 
 begin_class
-annotation|@
-name|ExtendWith
-argument_list|(
-name|TempDirectory
-operator|.
-name|class
-argument_list|)
 DECL|class|FileUtilTest
 class|class
 name|FileUtilTest
@@ -385,13 +366,11 @@ name|rootDir
 decl_stmt|;
 annotation|@
 name|BeforeEach
-DECL|method|setUpViewModel (@empDirectory.TempDir Path temporaryFolder)
+DECL|method|setUpViewModel (@empDir Path temporaryFolder)
 name|void
 name|setUpViewModel
 parameter_list|(
 annotation|@
-name|TempDirectory
-operator|.
 name|TempDir
 name|Path
 name|temporaryFolder
@@ -1904,13 +1883,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testRenameFileSuccessful (@empDirectory.TempDir Path otherTemporaryFolder)
+DECL|method|testRenameFileSuccessful (@empDir Path otherTemporaryFolder)
 name|void
 name|testRenameFileSuccessful
 parameter_list|(
 annotation|@
-name|TempDirectory
-operator|.
 name|TempDir
 name|Path
 name|otherTemporaryFolder

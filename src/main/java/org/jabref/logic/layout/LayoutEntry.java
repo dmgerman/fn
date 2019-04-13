@@ -2808,8 +2808,6 @@ parameter_list|(
 name|String
 name|name
 parameter_list|)
-throws|throws
-name|Exception
 block|{
 switch|switch
 condition|(
@@ -3394,11 +3392,7 @@ argument_list|)
 return|;
 default|default:
 return|return
-operator|new
-name|NotFoundFormatter
-argument_list|(
-name|name
-argument_list|)
+literal|null
 return|;
 block|}
 block|}
@@ -3536,22 +3530,26 @@ expr_stmt|;
 continue|continue;
 block|}
 comment|// Try to load from formatters in formatter folder
-try|try
-block|{
 name|LayoutFormatter
-name|f
+name|formatter
 init|=
 name|getLayoutFormatterByName
 argument_list|(
 name|nameFormatterName
 argument_list|)
 decl_stmt|;
-comment|// If this formatter accepts an argument, check if we have one, and
-comment|// set it if so:
+if|if
+condition|(
+name|formatter
+operator|!=
+literal|null
+condition|)
+block|{
+comment|// If this formatter accepts an argument, check if we have one, and set it if so
 if|if
 condition|(
 operator|(
-name|f
+name|formatter
 operator|instanceof
 name|ParamLayoutFormatter
 operator|)
@@ -3570,7 +3568,7 @@ operator|(
 operator|(
 name|ParamLayoutFormatter
 operator|)
-name|f
+name|formatter
 operator|)
 operator|.
 name|setArgument
@@ -3588,26 +3586,10 @@ name|results
 operator|.
 name|add
 argument_list|(
-name|f
+name|formatter
 argument_list|)
 expr_stmt|;
 continue|continue;
-block|}
-catch|catch
-parameter_list|(
-name|Exception
-name|ex
-parameter_list|)
-block|{
-name|LOGGER
-operator|.
-name|info
-argument_list|(
-literal|"Problem with formatter"
-argument_list|,
-name|ex
-argument_list|)
-expr_stmt|;
 block|}
 comment|// Then check whether this is a user defined formatter
 name|String

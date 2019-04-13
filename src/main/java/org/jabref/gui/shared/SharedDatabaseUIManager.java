@@ -482,7 +482,10 @@ parameter_list|)
 block|{
 name|jabRefFrame
 operator|.
-name|output
+name|getDialogService
+argument_list|()
+operator|.
+name|notify
 argument_list|(
 name|Localization
 operator|.
@@ -646,7 +649,10 @@ argument_list|()
 expr_stmt|;
 name|jabRefFrame
 operator|.
-name|output
+name|getDialogService
+argument_list|()
+operator|.
+name|notify
 argument_list|(
 name|Localization
 operator|.
@@ -680,7 +686,10 @@ parameter_list|)
 block|{
 name|jabRefFrame
 operator|.
-name|output
+name|getDialogService
+argument_list|()
+operator|.
+name|notify
 argument_list|(
 name|Localization
 operator|.
@@ -828,7 +837,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Opens a new shared database tab with the given {@link DBMSConnectionProperties}.      *      * @param dbmsConnectionProperties Connection data      * @param raiseTab If<code>true</code> the new tab gets selected.      * @return BasePanel which also used by {@link SaveDatabaseAction}      */
+comment|/**      * Opens a new shared database tab with the given {@link DBMSConnectionProperties}.      *      * @param dbmsConnectionProperties Connection data      * @return BasePanel which also used by {@link SaveDatabaseAction}      */
 DECL|method|openNewSharedDatabaseTab (DBMSConnectionProperties dbmsConnectionProperties)
 specifier|public
 name|BasePanel
@@ -929,7 +938,10 @@ argument_list|)
 expr_stmt|;
 name|jabRefFrame
 operator|.
-name|output
+name|getDialogService
+argument_list|()
+operator|.
+name|notify
 argument_list|(
 name|Localization
 operator|.
@@ -1145,7 +1157,10 @@ argument_list|)
 expr_stmt|;
 name|jabRefFrame
 operator|.
-name|output
+name|getDialogService
+argument_list|()
+operator|.
+name|notify
 argument_list|(
 name|Localization
 operator|.

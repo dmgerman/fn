@@ -232,9 +232,9 @@ name|jupiter
 operator|.
 name|api
 operator|.
-name|extension
+name|io
 operator|.
-name|ExtendWith
+name|TempDir
 import|;
 end_import
 
@@ -265,18 +265,6 @@ operator|.
 name|provider
 operator|.
 name|MethodSource
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junitpioneer
-operator|.
-name|jupiter
-operator|.
-name|TempDirectory
 import|;
 end_import
 
@@ -387,13 +375,6 @@ import|;
 end_import
 
 begin_class
-annotation|@
-name|ExtendWith
-argument_list|(
-name|TempDirectory
-operator|.
-name|class
-argument_list|)
 DECL|class|ModsExportFormatTestFiles
 specifier|public
 class|class
@@ -555,14 +536,12 @@ block|}
 block|}
 annotation|@
 name|BeforeEach
-DECL|method|setUp (@empDirectory.TempDir Path testFolder)
+DECL|method|setUp (@empDir Path testFolder)
 specifier|public
 name|void
 name|setUp
 parameter_list|(
 annotation|@
-name|TempDirectory
-operator|.
 name|TempDir
 name|Path
 name|testFolder

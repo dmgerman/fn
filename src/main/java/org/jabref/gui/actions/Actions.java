@@ -31,9 +31,6 @@ block|,
 DECL|enumConstant|ADD_FILE_LINK
 name|ADD_FILE_LINK
 block|,
-DECL|enumConstant|ADD_TO_GROUP
-name|ADD_TO_GROUP
-block|,
 DECL|enumConstant|CLEANUP
 name|CLEANUP
 block|,
@@ -109,9 +106,6 @@ block|,
 DECL|enumConstant|NEXT_PREVIEW_STYLE
 name|NEXT_PREVIEW_STYLE
 block|,
-DECL|enumConstant|MOVE_TO_GROUP
-name|MOVE_TO_GROUP
-block|,
 DECL|enumConstant|OPEN_CONSOLE
 name|OPEN_CONSOLE
 block|,
@@ -136,14 +130,8 @@ block|,
 DECL|enumConstant|REDO
 name|REDO
 block|,
-DECL|enumConstant|REMOVE_FROM_GROUP
-name|REMOVE_FROM_GROUP
-block|,
 DECL|enumConstant|REPLACE_ALL
 name|REPLACE_ALL
-block|,
-DECL|enumConstant|RESOLVE_DUPLICATE_KEYS
-name|RESOLVE_DUPLICATE_KEYS
 block|,
 DECL|enumConstant|SAVE
 name|SAVE

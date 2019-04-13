@@ -332,7 +332,7 @@ name|gui
 operator|.
 name|externalfiles
 operator|.
-name|NewDroppedFileHandler
+name|ImportHandler
 import|;
 end_import
 
@@ -403,6 +403,20 @@ operator|.
 name|undo
 operator|.
 name|UndoableInsertEntry
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|util
+operator|.
+name|BindingsHelper
 import|;
 end_import
 
@@ -595,11 +609,11 @@ specifier|final
 name|MainTableDataModel
 name|model
 decl_stmt|;
-DECL|field|fileHandler
+DECL|field|importHandler
 specifier|private
 specifier|final
-name|NewDroppedFileHandler
-name|fileHandler
+name|ImportHandler
+name|importHandler
 decl_stmt|;
 DECL|field|localDragboard
 specifier|private
@@ -666,10 +680,10 @@ operator|.
 name|getUndoManager
 argument_list|()
 expr_stmt|;
-name|fileHandler
+name|importHandler
 operator|=
 operator|new
-name|NewDroppedFileHandler
+name|ImportHandler
 argument_list|(
 name|frame
 operator|.
@@ -705,6 +719,12 @@ name|Globals
 operator|.
 name|getFileUpdateMonitor
 argument_list|()
+argument_list|,
+name|undoManager
+argument_list|,
+name|Globals
+operator|.
+name|stateManager
 argument_list|)
 expr_stmt|;
 name|this
@@ -795,11 +815,6 @@ name|keyBindingRepository
 argument_list|,
 name|panel
 argument_list|,
-name|Globals
-operator|.
-name|getKeyPrefs
-argument_list|()
-argument_list|,
 name|frame
 operator|.
 name|getDialogService
@@ -875,10 +890,15 @@ name|this
 operator|.
 name|setItems
 argument_list|(
+name|BindingsHelper
+operator|.
+name|forUI
+argument_list|(
 name|model
 operator|.
 name|getEntriesFilteredAndSorted
 argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Enable sorting
@@ -1858,6 +1878,7 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
+comment|// Import all bibtex entries contained in the dropped bib files
 for|for
 control|(
 name|Path
@@ -1866,9 +1887,9 @@ range|:
 name|bibFiles
 control|)
 block|{
-name|fileHandler
+name|importHandler
 operator|.
-name|importEntriesFromDroppedBibFiles
+name|importEntriesFromBibFiles
 argument_list|(
 name|file
 argument_list|)
@@ -1889,6 +1910,7 @@ operator|instanceof
 name|TableRow
 condition|)
 block|{
+comment|// Depending on the pressed modifier, import as new entries or link to drop target
 name|BibEntry
 name|entry
 init|=
@@ -1919,12 +1941,10 @@ literal|"Mode MOVE"
 argument_list|)
 expr_stmt|;
 comment|//shift on win or no modifier
-name|fileHandler
+name|importHandler
 operator|.
-name|addNewEntryFromXMPorPDFContent
+name|importAsNewEntries
 argument_list|(
-name|entry
-argument_list|,
 name|files
 argument_list|)
 expr_stmt|;
@@ -1953,9 +1973,12 @@ literal|"LINK"
 argument_list|)
 expr_stmt|;
 comment|//alt on win
-name|fileHandler
+name|importHandler
 operator|.
-name|addToEntryRenameAndMoveToFileDir
+name|getLinker
+argument_list|()
+operator|.
+name|moveFilesToFileDirAndAddToEntry
 argument_list|(
 name|entry
 argument_list|,
@@ -1987,7 +2010,10 @@ literal|"Mode Copy"
 argument_list|)
 expr_stmt|;
 comment|//ctrl on win
-name|fileHandler
+name|importHandler
+operator|.
+name|getLinker
+argument_list|()
 operator|.
 name|copyFilesToFileDirAndAddToEntry
 argument_list|(

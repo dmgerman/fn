@@ -118,6 +118,7 @@ name|index
 expr_stmt|;
 block|}
 block|}
+comment|/**      * @return the next token from the content string, ending at the next      * unquoted delimiter. Does not unquote the string itself.      */
 DECL|method|nextToken ()
 specifier|public
 name|String
@@ -160,6 +161,13 @@ block|{
 comment|// next is quoted
 operator|++
 name|index
+expr_stmt|;
+name|stringBuilder
+operator|.
+name|append
+argument_list|(
+name|c
+argument_list|)
 expr_stmt|;
 if|if
 condition|(

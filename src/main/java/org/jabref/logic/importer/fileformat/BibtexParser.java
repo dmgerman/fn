@@ -3446,6 +3446,13 @@ expr_stmt|;
 block|}
 block|}
 comment|// Finished, now reverse newKey and remove whitespaces:
+name|key
+operator|=
+name|newKey
+operator|.
+name|reverse
+argument_list|()
+expr_stmt|;
 name|parserResult
 operator|.
 name|addWarning
@@ -3454,7 +3461,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Line %0: Found corrupted BibTeX key."
+literal|"Line %0: Found corrupted BibTeX key %1."
 argument_list|,
 name|String
 operator|.
@@ -3462,15 +3469,13 @@ name|valueOf
 argument_list|(
 name|line
 argument_list|)
-argument_list|)
-argument_list|)
-expr_stmt|;
+argument_list|,
 name|key
-operator|=
-name|newKey
 operator|.
-name|reverse
+name|toString
 argument_list|()
+argument_list|)
+argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -3486,7 +3491,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Line %0: Found corrupted BibTeX key (contains whitespaces)."
+literal|"Line %0: Found corrupted BibTeX key %1 (contains whitespaces)."
 argument_list|,
 name|String
 operator|.
@@ -3494,6 +3499,11 @@ name|valueOf
 argument_list|(
 name|line
 argument_list|)
+argument_list|,
+name|key
+operator|.
+name|toString
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -3509,7 +3519,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Line %0: Found corrupted BibTeX key (comma missing)."
+literal|"Line %0: Found corrupted BibTeX key %1 (comma missing)."
 argument_list|,
 name|String
 operator|.
@@ -3517,6 +3527,11 @@ name|valueOf
 argument_list|(
 name|line
 argument_list|)
+argument_list|,
+name|key
+operator|.
+name|toString
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;

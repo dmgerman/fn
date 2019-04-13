@@ -578,9 +578,9 @@ operator|.
 name|open
 argument_list|()
 expr_stmt|;
-name|basePanel
+name|dialogService
 operator|.
-name|output
+name|notify
 argument_list|(
 name|Localization
 operator|.
@@ -1043,9 +1043,9 @@ condition|)
 block|{
 return|return;
 block|}
-name|basePanel
+name|dialogService
 operator|.
-name|output
+name|notify
 argument_list|(
 name|Localization
 operator|.

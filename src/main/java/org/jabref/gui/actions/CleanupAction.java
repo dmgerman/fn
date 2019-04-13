@@ -128,6 +128,20 @@ name|org
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
+name|util
+operator|.
+name|TaskExecutor
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
 name|logic
 operator|.
 name|cleanup
@@ -222,6 +236,12 @@ specifier|final
 name|DialogService
 name|dialogService
 decl_stmt|;
+DECL|field|taskExecutor
+specifier|private
+specifier|final
+name|TaskExecutor
+name|taskExecutor
+decl_stmt|;
 DECL|field|isCanceled
 specifier|private
 name|boolean
@@ -238,7 +258,7 @@ specifier|final
 name|JabRefPreferences
 name|preferences
 decl_stmt|;
-DECL|method|CleanupAction (BasePanel panel, JabRefPreferences preferences)
+DECL|method|CleanupAction (BasePanel panel, JabRefPreferences preferences, TaskExecutor taskExecutor)
 specifier|public
 name|CleanupAction
 parameter_list|(
@@ -247,6 +267,9 @@ name|panel
 parameter_list|,
 name|JabRefPreferences
 name|preferences
+parameter_list|,
+name|TaskExecutor
+name|taskExecutor
 parameter_list|)
 block|{
 name|this
@@ -272,6 +295,12 @@ argument_list|()
 operator|.
 name|getDialogService
 argument_list|()
+expr_stmt|;
+name|this
+operator|.
+name|taskExecutor
+operator|=
+name|taskExecutor
 expr_stmt|;
 block|}
 annotation|@
@@ -460,9 +489,7 @@ argument_list|)
 operator|.
 name|executeWith
 argument_list|(
-name|Globals
-operator|.
-name|TASK_EXECUTOR
+name|taskExecutor
 argument_list|)
 expr_stmt|;
 block|}
@@ -518,9 +545,9 @@ literal|true
 expr_stmt|;
 return|return;
 block|}
-name|panel
+name|dialogService
 operator|.
-name|output
+name|notify
 argument_list|(
 name|Localization
 operator|.
@@ -713,9 +740,9 @@ argument_list|)
 expr_stmt|;
 break|break;
 block|}
-name|panel
+name|dialogService
 operator|.
-name|output
+name|notify
 argument_list|(
 name|message
 argument_list|)

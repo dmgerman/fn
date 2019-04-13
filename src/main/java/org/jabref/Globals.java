@@ -94,6 +94,20 @@ name|jabref
 operator|.
 name|gui
 operator|.
+name|undo
+operator|.
+name|CountingUndoManager
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
 name|util
 operator|.
 name|DefaultFileUpdateMonitor
@@ -422,6 +436,16 @@ specifier|public
 specifier|static
 name|ExporterFactory
 name|exportFactory
+decl_stmt|;
+DECL|field|undoManager
+specifier|public
+specifier|static
+name|CountingUndoManager
+name|undoManager
+init|=
+operator|new
+name|CountingUndoManager
+argument_list|()
 decl_stmt|;
 comment|// Key binding preferences
 DECL|field|keyBindingRepository

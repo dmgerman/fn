@@ -70,6 +70,20 @@ name|junit
 operator|.
 name|jupiter
 operator|.
+name|api
+operator|.
+name|Disabled
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|jupiter
+operator|.
 name|params
 operator|.
 name|ParameterizedTest
@@ -106,7 +120,6 @@ end_import
 
 begin_class
 DECL|class|PdfContentImporterTestFiles
-specifier|public
 class|class
 name|PdfContentImporterTestFiles
 block|{
@@ -173,7 +186,6 @@ argument_list|(
 literal|"fileNames"
 argument_list|)
 DECL|method|testIsRecognizedFormat (String fileName)
-specifier|public
 name|void
 name|testIsRecognizedFormat
 parameter_list|(
@@ -209,8 +221,12 @@ name|MethodSource
 argument_list|(
 literal|"fileNames"
 argument_list|)
+annotation|@
+name|Disabled
+argument_list|(
+literal|"bib file does not contain linked file"
+argument_list|)
 DECL|method|testImportEntries (String fileName)
-specifier|public
 name|void
 name|testImportEntries
 parameter_list|(

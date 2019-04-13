@@ -251,9 +251,9 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
-name|basePanel
+name|dialogService
 operator|.
-name|output
+name|notify
 argument_list|(
 name|formatOutputMessage
 argument_list|(
@@ -543,9 +543,9 @@ operator|.
 name|markBaseChanged
 argument_list|()
 expr_stmt|;
-name|basePanel
+name|dialogService
 operator|.
-name|output
+name|notify
 argument_list|(
 name|formatOutputMessage
 argument_list|(

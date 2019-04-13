@@ -243,9 +243,9 @@ operator|!=
 literal|1
 condition|)
 block|{
-name|panel
+name|dialogService
 operator|.
-name|output
+name|notify
 argument_list|(
 name|Localization
 operator|.
