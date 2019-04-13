@@ -416,6 +416,20 @@ name|gui
 operator|.
 name|util
 operator|.
+name|BindingsHelper
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|util
+operator|.
 name|CustomLocalDragboard
 import|;
 end_import
@@ -876,10 +890,15 @@ name|this
 operator|.
 name|setItems
 argument_list|(
+name|BindingsHelper
+operator|.
+name|forUI
+argument_list|(
 name|model
 operator|.
 name|getEntriesFilteredAndSorted
 argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Enable sorting

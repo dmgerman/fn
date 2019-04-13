@@ -1308,6 +1308,35 @@ block|}
 block|}
 return|;
 block|}
+comment|/**      * Returns a wrapper around the given list that posts changes on the JavaFX thread.      */
+DECL|method|forUI (ObservableList<T> list)
+specifier|public
+specifier|static
+parameter_list|<
+name|T
+parameter_list|>
+name|ObservableList
+argument_list|<
+name|T
+argument_list|>
+name|forUI
+parameter_list|(
+name|ObservableList
+argument_list|<
+name|T
+argument_list|>
+name|list
+parameter_list|)
+block|{
+return|return
+operator|new
+name|UiThreadList
+argument_list|<>
+argument_list|(
+name|list
+argument_list|)
+return|;
+block|}
 DECL|class|BidirectionalBinding
 specifier|private
 specifier|static
