@@ -1664,7 +1664,7 @@ name|lang
 argument_list|(
 literal|"Executing command \"%0\"..."
 argument_list|,
-name|commandLoggingText
+name|command
 argument_list|)
 argument_list|)
 expr_stmt|;
