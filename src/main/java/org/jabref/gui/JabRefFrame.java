@@ -2001,7 +2001,7 @@ operator|.
 name|dialogService
 operator|=
 operator|new
-name|FXDialogService
+name|JabRefDialogService
 argument_list|(
 name|mainStage
 argument_list|,
