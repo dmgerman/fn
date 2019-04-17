@@ -1181,7 +1181,7 @@ expr_stmt|;
 block|}
 DECL|method|openDatabase ()
 specifier|public
-name|void
+name|boolean
 name|openDatabase
 parameter_list|()
 block|{
@@ -1290,11 +1290,17 @@ expr_stmt|;
 name|setupKeyStore
 argument_list|()
 expr_stmt|;
+name|boolean
+name|connected
+init|=
 name|openSharedDatabase
 argument_list|(
 name|connectionProperties
 argument_list|)
-expr_stmt|;
+decl_stmt|;
+return|return
+name|connected
+return|;
 block|}
 DECL|method|setupKeyStore ()
 specifier|private
@@ -1338,7 +1344,7 @@ expr_stmt|;
 block|}
 DECL|method|openSharedDatabase (DBMSConnectionProperties connectionProperties)
 specifier|private
-name|void
+name|boolean
 name|openSharedDatabase
 parameter_list|(
 name|DBMSConnectionProperties
@@ -1372,7 +1378,9 @@ literal|"You are already connected to a database using entered connection detail
 argument_list|)
 argument_list|)
 expr_stmt|;
-return|return;
+return|return
+literal|true
+return|;
 block|}
 if|if
 condition|(
@@ -1463,7 +1471,9 @@ operator|!
 name|overwriteFilePressed
 condition|)
 block|{
-return|return;
+return|return
+literal|true
+return|;
 block|}
 block|}
 block|}
@@ -1553,7 +1563,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-return|return;
+return|return
+literal|true
+return|;
 block|}
 catch|catch
 parameter_list|(
@@ -1715,6 +1727,9 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+return|return
+literal|false
+return|;
 block|}
 DECL|method|setPreferences ()
 specifier|private
