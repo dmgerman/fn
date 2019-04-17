@@ -1606,7 +1606,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Rename file"
+literal|"Rename file to defined pattern"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -1637,6 +1637,32 @@ operator|||
 name|linkedFile
 operator|.
 name|isGeneratedNameSameAsOriginal
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|MenuItem
+name|renameFileName
+init|=
+operator|new
+name|MenuItem
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Rename file to a given name"
+argument_list|)
+argument_list|)
+decl_stmt|;
+name|renameFileName
+operator|.
+name|setOnAction
+argument_list|(
+name|event
+lambda|->
+name|linkedFile
+operator|.
+name|renameFile
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1873,6 +1899,8 @@ operator|.
 name|addAll
 argument_list|(
 name|renameFile
+argument_list|,
+name|renameFileName
 argument_list|,
 name|moveFile
 argument_list|,
