@@ -1526,7 +1526,7 @@ name|PushToApplicationSettingsDialog
 operator|.
 name|showSettingsDialog
 argument_list|(
-literal|null
+name|dialogService
 argument_list|,
 name|settings
 argument_list|,
