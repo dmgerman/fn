@@ -42,6 +42,18 @@ name|org
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
+name|DialogService
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
 name|logic
 operator|.
 name|importer
@@ -106,7 +118,7 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|performAction (BasePanel basePanel, ParserResult parserResult)
+DECL|method|performAction (BasePanel basePanel, ParserResult parserResult, DialogService dialogService)
 specifier|public
 name|void
 name|performAction
@@ -116,6 +128,9 @@ name|basePanel
 parameter_list|,
 name|ParserResult
 name|parserResult
+parameter_list|,
+name|DialogService
+name|dialogService
 parameter_list|)
 block|{
 name|MergeReviewIntoCommentMigration
@@ -156,13 +171,7 @@ operator|&&
 operator|new
 name|MergeReviewIntoCommentConfirmationDialog
 argument_list|(
-name|basePanel
-operator|.
-name|frame
-argument_list|()
-operator|.
-name|getDialogService
-argument_list|()
+name|dialogService
 argument_list|)
 operator|.
 name|askUserForMerge

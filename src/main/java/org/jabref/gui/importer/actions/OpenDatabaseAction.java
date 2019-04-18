@@ -144,16 +144,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|SwingUtilities
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|jabref
@@ -287,6 +277,20 @@ operator|.
 name|shared
 operator|.
 name|SharedDatabaseUIManager
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|util
+operator|.
+name|BackgroundTask
 import|;
 end_import
 
@@ -559,8 +563,8 @@ operator|=
 name|frame
 expr_stmt|;
 block|}
-comment|/**      * Go through the list of post open actions, and perform those that need to be performed.      *      * @param panel  The BasePanel where the database is shown.      * @param result The result of the BIB file parse operation.      */
-DECL|method|performPostOpenActions (BasePanel panel, ParserResult result)
+comment|/**      * Go through the list of post open actions, and perform those that need to be performed.      *      * @param panel  The BasePanel where the database is shown.      * @param result The result of the BIB file parse operation.      * @param dialogService      */
+DECL|method|performPostOpenActions (BasePanel panel, ParserResult result, DialogService dialogService)
 specifier|public
 specifier|static
 name|void
@@ -571,6 +575,9 @@ name|panel
 parameter_list|,
 name|ParserResult
 name|result
+parameter_list|,
+name|DialogService
+name|dialogService
 parameter_list|)
 block|{
 for|for
@@ -600,6 +607,8 @@ argument_list|(
 name|panel
 argument_list|,
 name|result
+argument_list|,
+name|dialogService
 argument_list|)
 expr_stmt|;
 name|panel
@@ -1057,15 +1066,6 @@ argument_list|(
 name|filesToOpen
 argument_list|)
 decl_stmt|;
-name|JabRefExecutorService
-operator|.
-name|INSTANCE
-operator|.
-name|execute
-argument_list|(
-parameter_list|()
-lambda|->
-block|{
 for|for
 control|(
 name|Path
@@ -1082,9 +1082,6 @@ name|raisePanel
 argument_list|)
 expr_stmt|;
 block|}
-block|}
-argument_list|)
-expr_stmt|;
 for|for
 control|(
 name|Path
@@ -1177,7 +1174,7 @@ operator|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * @param file the file, may be null or not existing      */
+comment|/**      * @param file the file, may be null or not existing      * @return      */
 DECL|method|openTheFile (Path file, boolean raisePanel)
 specifier|private
 name|void
@@ -1206,6 +1203,66 @@ argument_list|(
 name|file
 argument_list|)
 condition|)
+block|{
+name|BackgroundTask
+operator|.
+name|wrap
+argument_list|(
+parameter_list|()
+lambda|->
+name|loadDatabase
+argument_list|(
+name|file
+argument_list|,
+name|raisePanel
+argument_list|)
+argument_list|)
+operator|.
+name|onSuccess
+argument_list|(
+name|result
+lambda|->
+name|OpenDatabaseAction
+operator|.
+name|performPostOpenActions
+argument_list|(
+name|result
+operator|.
+name|getBasePanel
+argument_list|()
+argument_list|,
+name|result
+operator|.
+name|getParserResult
+argument_list|()
+argument_list|,
+name|result
+operator|.
+name|getDialogService
+argument_list|()
+argument_list|)
+argument_list|)
+operator|.
+name|executeWith
+argument_list|(
+name|Globals
+operator|.
+name|TASK_EXECUTOR
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+DECL|method|loadDatabase (Path file, boolean raisePanel)
+specifier|private
+name|ResultHelper
+name|loadDatabase
+parameter_list|(
+name|Path
+name|file
+parameter_list|,
+name|boolean
+name|raisePanel
+parameter_list|)
 block|{
 name|Path
 name|fileToLoad
@@ -1416,29 +1473,20 @@ comment|// any post open actions need to be done. For instance, checking
 comment|// if we found new entry types that can be imported, or checking
 comment|// if the database contents should be modified due to new features
 comment|// in this version of JabRef:
-specifier|final
-name|ParserResult
-name|finalReferenceToResult
-init|=
+return|return
+operator|new
+name|ResultHelper
+argument_list|(
 name|result
-decl_stmt|;
-name|SwingUtilities
-operator|.
-name|invokeLater
-argument_list|(
-parameter_list|()
-lambda|->
-name|OpenDatabaseAction
-operator|.
-name|performPostOpenActions
-argument_list|(
+argument_list|,
 name|panel
 argument_list|,
-name|finalReferenceToResult
+name|frame
+operator|.
+name|getDialogService
+argument_list|()
 argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
+return|;
 block|}
 DECL|method|addNewDatabase (ParserResult result, final Path file, boolean raisePanel)
 specifier|private
