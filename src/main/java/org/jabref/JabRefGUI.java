@@ -1201,11 +1201,6 @@ argument_list|(
 name|panel
 argument_list|,
 name|pr
-argument_list|,
-name|mainFrame
-operator|.
-name|getDialogService
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
