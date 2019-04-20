@@ -32,18 +32,6 @@ name|org
 operator|.
 name|jabref
 operator|.
-name|gui
-operator|.
-name|DialogService
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
 name|logic
 operator|.
 name|importer
@@ -72,7 +60,7 @@ name|pr
 parameter_list|)
 function_decl|;
 comment|/**      * This method is called after the new database has been added to the GUI, if      * the isActionNecessary() method returned true.      *      * Note: if several such methods need to be called sequentially, it is      *       important that all implementations of this method do not return      *       until the operation is finished.      *      * @param panel The BasePanel where the database is shown.      * @param pr The result of the BIB parse operation.      * @param dialogService      */
-DECL|method|performAction (BasePanel panel, ParserResult pr, DialogService dialogService)
+DECL|method|performAction (BasePanel panel, ParserResult pr)
 name|void
 name|performAction
 parameter_list|(
@@ -81,9 +69,6 @@ name|panel
 parameter_list|,
 name|ParserResult
 name|pr
-parameter_list|,
-name|DialogService
-name|dialogService
 parameter_list|)
 function_decl|;
 block|}

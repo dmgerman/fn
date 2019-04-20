@@ -598,8 +598,6 @@ argument_list|(
 name|panel
 argument_list|,
 name|result
-argument_list|,
-name|dialogService
 argument_list|)
 expr_stmt|;
 name|panel
