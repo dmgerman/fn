@@ -94,7 +94,6 @@ argument_list|)
 decl_stmt|;
 DECL|field|entry
 specifier|private
-specifier|final
 name|BibEntry
 name|entry
 decl_stmt|;
@@ -226,7 +225,7 @@ operator|=
 name|entry
 expr_stmt|;
 block|}
-DECL|method|SaveException (String message, String localizedMessage, BibEntry entry)
+DECL|method|SaveException (String message, String localizedMessage, BibEntry entry, Throwable base)
 specifier|public
 name|SaveException
 parameter_list|(
@@ -238,11 +237,16 @@ name|localizedMessage
 parameter_list|,
 name|BibEntry
 name|entry
+parameter_list|,
+name|Throwable
+name|base
 parameter_list|)
 block|{
 name|super
 argument_list|(
 name|message
+argument_list|,
+name|base
 argument_list|)
 expr_stmt|;
 name|this
@@ -266,7 +270,7 @@ name|Throwable
 name|base
 parameter_list|)
 block|{
-name|this
+name|super
 argument_list|(
 name|base
 operator|.
@@ -274,9 +278,6 @@ name|getMessage
 argument_list|()
 argument_list|,
 name|base
-operator|.
-name|getLocalizedMessage
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -304,6 +305,8 @@ name|getLocalizedMessage
 argument_list|()
 argument_list|,
 name|entry
+argument_list|,
+name|base
 argument_list|)
 expr_stmt|;
 block|}

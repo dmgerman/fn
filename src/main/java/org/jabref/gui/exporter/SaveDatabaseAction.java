@@ -721,6 +721,8 @@ throw|throw
 operator|new
 name|SaveException
 argument_list|(
+literal|"Problems saving:"
+argument_list|,
 name|ex
 argument_list|)
 throw|;
