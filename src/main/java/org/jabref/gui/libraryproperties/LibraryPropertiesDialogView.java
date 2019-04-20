@@ -542,7 +542,7 @@ name|bindBidirectional
 argument_list|(
 name|viewModel
 operator|.
-name|LaTexFileDirectoryProperty
+name|laTexFileDirectoryProperty
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -949,7 +949,7 @@ name|text
 operator|=
 name|viewModel
 operator|.
-name|LaTexFileDirectoryProperty
+name|laTexFileDirectoryProperty
 argument_list|()
 operator|.
 name|getValue
@@ -1149,7 +1149,7 @@ name|saveActionsChanged
 operator|||
 name|viewModel
 operator|.
-name|LaTexFileDirChanged
+name|laTexFileDirChanged
 argument_list|()
 decl_stmt|;
 comment|// ... if so, mark base changed. Prevent the Undo button from removing
