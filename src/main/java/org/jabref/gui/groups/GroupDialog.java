@@ -3254,11 +3254,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-name|setResizable
-argument_list|(
-literal|false
-argument_list|)
-expr_stmt|;
 name|getDialogPane
 argument_list|()
 operator|.
