@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|org.jabref.gui.actions
+DECL|package|org.jabref.gui.auximport
 package|package
 name|org
 operator|.
@@ -8,7 +8,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|actions
+name|auximport
 package|;
 end_package
 
@@ -32,9 +32,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|preferences
-operator|.
-name|PreferencesDialog
+name|StateManager
 import|;
 end_import
 
@@ -46,17 +44,37 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|util
+name|actions
 operator|.
-name|TaskExecutor
+name|SimpleCommand
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|actions
+operator|.
+name|ActionHelper
+operator|.
+name|needsDatabase
+import|;
+end_import
+
+begin_comment
+comment|/**  * The action concerned with generate a new (sub-)database from latex AUX file.  */
+end_comment
+
 begin_class
-DECL|class|ShowPreferencesAction
+DECL|class|NewSubLibraryAction
 specifier|public
 class|class
-name|ShowPreferencesAction
+name|NewSubLibraryAction
 extends|extends
 name|SimpleCommand
 block|{
@@ -66,21 +84,15 @@ specifier|final
 name|JabRefFrame
 name|jabRefFrame
 decl_stmt|;
-DECL|field|taskExecutor
-specifier|private
-specifier|final
-name|TaskExecutor
-name|taskExecutor
-decl_stmt|;
-DECL|method|ShowPreferencesAction (JabRefFrame jabRefFrame, TaskExecutor taskExecutor)
+DECL|method|NewSubLibraryAction (JabRefFrame jabRefFrame, StateManager stateManager)
 specifier|public
-name|ShowPreferencesAction
+name|NewSubLibraryAction
 parameter_list|(
 name|JabRefFrame
 name|jabRefFrame
 parameter_list|,
-name|TaskExecutor
-name|taskExecutor
+name|StateManager
+name|stateManager
 parameter_list|)
 block|{
 name|this
@@ -91,9 +103,15 @@ name|jabRefFrame
 expr_stmt|;
 name|this
 operator|.
-name|taskExecutor
-operator|=
-name|taskExecutor
+name|executable
+operator|.
+name|bind
+argument_list|(
+name|needsDatabase
+argument_list|(
+name|stateManager
+argument_list|)
+argument_list|)
 expr_stmt|;
 block|}
 annotation|@
@@ -104,18 +122,16 @@ name|void
 name|execute
 parameter_list|()
 block|{
-name|PreferencesDialog
-name|preferencesDialog
+name|FromAuxDialog
+name|dialog
 init|=
 operator|new
-name|PreferencesDialog
+name|FromAuxDialog
 argument_list|(
 name|jabRefFrame
-argument_list|,
-name|taskExecutor
 argument_list|)
 decl_stmt|;
-name|preferencesDialog
+name|dialog
 operator|.
 name|showAndWait
 argument_list|()

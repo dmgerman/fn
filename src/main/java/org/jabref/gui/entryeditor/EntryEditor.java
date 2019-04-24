@@ -316,7 +316,7 @@ name|gui
 operator|.
 name|actions
 operator|.
-name|GenerateBibtexKeySingleAction
+name|StandardActions
 import|;
 end_import
 
@@ -328,9 +328,9 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|actions
+name|bibtexkeypattern
 operator|.
-name|StandardActions
+name|GenerateBibtexKeySingleAction
 import|;
 end_import
 

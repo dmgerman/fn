@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|org.jabref.gui.actions
+DECL|package|org.jabref.gui.importer
 package|package
 name|org
 operator|.
@@ -8,7 +8,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|actions
+name|importer
 package|;
 end_package
 
@@ -94,6 +94,32 @@ name|org
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
+name|StateManager
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|actions
+operator|.
+name|SimpleCommand
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
 name|model
 operator|.
 name|entry
@@ -148,6 +174,22 @@ name|LoggerFactory
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|actions
+operator|.
+name|ActionHelper
+operator|.
+name|needsDatabase
+import|;
+end_import
+
 begin_class
 DECL|class|NewEntryAction
 specifier|public
@@ -181,7 +223,6 @@ decl_stmt|;
 comment|/**      * The type of the entry to create.      */
 DECL|field|type
 specifier|private
-specifier|final
 name|Optional
 argument_list|<
 name|EntryType
@@ -200,7 +241,7 @@ specifier|final
 name|JabRefPreferences
 name|preferences
 decl_stmt|;
-DECL|method|NewEntryAction (JabRefFrame jabRefFrame, DialogService dialogService, JabRefPreferences preferences)
+DECL|method|NewEntryAction (JabRefFrame jabRefFrame, DialogService dialogService, JabRefPreferences preferences, StateManager stateManager)
 specifier|public
 name|NewEntryAction
 parameter_list|(
@@ -212,6 +253,9 @@ name|dialogService
 parameter_list|,
 name|JabRefPreferences
 name|preferences
+parameter_list|,
+name|StateManager
+name|stateManager
 parameter_list|)
 block|{
 name|this
@@ -219,6 +263,18 @@ operator|.
 name|jabRefFrame
 operator|=
 name|jabRefFrame
+expr_stmt|;
+name|this
+operator|.
+name|dialogService
+operator|=
+name|dialogService
+expr_stmt|;
+name|this
+operator|.
+name|preferences
+operator|=
+name|preferences
 expr_stmt|;
 name|this
 operator|.
@@ -231,18 +287,18 @@ argument_list|()
 expr_stmt|;
 name|this
 operator|.
-name|dialogService
-operator|=
-name|dialogService
-expr_stmt|;
-name|this
+name|executable
 operator|.
-name|preferences
-operator|=
-name|preferences
+name|bind
+argument_list|(
+name|needsDatabase
+argument_list|(
+name|stateManager
+argument_list|)
+argument_list|)
 expr_stmt|;
 block|}
-DECL|method|NewEntryAction (JabRefFrame jabRefFrame, EntryType type, DialogService dialogService, JabRefPreferences preferences)
+DECL|method|NewEntryAction (JabRefFrame jabRefFrame, EntryType type, DialogService dialogService, JabRefPreferences preferences, StateManager stateManager)
 specifier|public
 name|NewEntryAction
 parameter_list|(
@@ -257,13 +313,21 @@ name|dialogService
 parameter_list|,
 name|JabRefPreferences
 name|preferences
+parameter_list|,
+name|StateManager
+name|stateManager
 parameter_list|)
 block|{
 name|this
-operator|.
+argument_list|(
 name|jabRefFrame
-operator|=
-name|jabRefFrame
+argument_list|,
+name|dialogService
+argument_list|,
+name|preferences
+argument_list|,
+name|stateManager
+argument_list|)
 expr_stmt|;
 name|this
 operator|.
@@ -275,18 +339,6 @@ name|of
 argument_list|(
 name|type
 argument_list|)
-expr_stmt|;
-name|this
-operator|.
-name|dialogService
-operator|=
-name|dialogService
-expr_stmt|;
-name|this
-operator|.
-name|preferences
-operator|=
-name|preferences
 expr_stmt|;
 block|}
 annotation|@

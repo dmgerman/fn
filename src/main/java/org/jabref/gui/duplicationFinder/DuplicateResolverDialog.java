@@ -1,12 +1,14 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|org.jabref.gui
+DECL|package|org.jabref.gui.duplicationFinder
 package|package
 name|org
 operator|.
 name|jabref
 operator|.
 name|gui
+operator|.
+name|duplicationFinder
 package|;
 end_package
 
@@ -79,6 +81,8 @@ operator|.
 name|jabref
 operator|.
 name|gui
+operator|.
+name|duplicationFinder
 operator|.
 name|DuplicateResolverDialog
 operator|.

@@ -164,7 +164,7 @@ name|gui
 operator|.
 name|actions
 operator|.
-name|CopyDoiUrlAction
+name|StandardActions
 import|;
 end_import
 
@@ -176,9 +176,9 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|actions
+name|edit
 operator|.
-name|StandardActions
+name|CopyDoiUrlAction
 import|;
 end_import
 

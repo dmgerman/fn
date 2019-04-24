@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|org.jabref.gui.actions
+DECL|package|org.jabref.gui.importer
 package|package
 name|org
 operator|.
@@ -8,7 +8,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|actions
+name|importer
 package|;
 end_package
 
@@ -20,20 +20,25 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|keyboard
+name|actions
 operator|.
-name|KeyBindingsDialogView
+name|SimpleCommand
 import|;
 end_import
 
 begin_class
-DECL|class|CustomizeKeyBindingAction
+DECL|class|ManageCustomImportsAction
 specifier|public
 class|class
-name|CustomizeKeyBindingAction
+name|ManageCustomImportsAction
 extends|extends
 name|SimpleCommand
 block|{
+DECL|method|ManageCustomImportsAction ()
+specifier|public
+name|ManageCustomImportsAction
+parameter_list|()
+block|{     }
 annotation|@
 name|Override
 DECL|method|execute ()
@@ -43,10 +48,10 @@ name|execute
 parameter_list|()
 block|{
 operator|new
-name|KeyBindingsDialogView
+name|ImportCustomizationDialog
 argument_list|()
 operator|.
-name|show
+name|showAndWait
 argument_list|()
 expr_stmt|;
 block|}

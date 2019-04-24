@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|org.jabref.gui.actions
+DECL|package|org.jabref.gui.libraryproperties
 package|package
 name|org
 operator|.
@@ -8,7 +8,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|actions
+name|libraryproperties
 package|;
 end_package
 
@@ -44,9 +44,37 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|libraryproperties
+name|StateManager
+import|;
+end_import
+
+begin_import
+import|import
+name|org
 operator|.
-name|LibraryPropertiesDialogView
+name|jabref
+operator|.
+name|gui
+operator|.
+name|actions
+operator|.
+name|SimpleCommand
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|actions
+operator|.
+name|ActionHelper
+operator|.
+name|needsDatabase
 import|;
 end_import
 
@@ -70,7 +98,7 @@ specifier|final
 name|DialogService
 name|dialogService
 decl_stmt|;
-DECL|method|LibraryPropertiesAction (JabRefFrame frame, DialogService dialogService)
+DECL|method|LibraryPropertiesAction (JabRefFrame frame, DialogService dialogService, StateManager stateManager)
 specifier|public
 name|LibraryPropertiesAction
 parameter_list|(
@@ -79,6 +107,9 @@ name|frame
 parameter_list|,
 name|DialogService
 name|dialogService
+parameter_list|,
+name|StateManager
+name|stateManager
 parameter_list|)
 block|{
 name|this
@@ -92,6 +123,18 @@ operator|.
 name|dialogService
 operator|=
 name|dialogService
+expr_stmt|;
+name|this
+operator|.
+name|executable
+operator|.
+name|bind
+argument_list|(
+name|needsDatabase
+argument_list|(
+name|stateManager
+argument_list|)
+argument_list|)
 expr_stmt|;
 block|}
 annotation|@

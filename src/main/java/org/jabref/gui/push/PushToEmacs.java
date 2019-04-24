@@ -70,18 +70,6 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|BasePanel
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
 name|DialogService
 import|;
 end_import
@@ -152,7 +140,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibDatabase
+name|BibDatabaseContext
 import|;
 end_import
 
@@ -167,20 +155,6 @@ operator|.
 name|entry
 operator|.
 name|BibEntry
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|metadata
-operator|.
-name|MetaData
 import|;
 end_import
 
@@ -286,12 +260,12 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|pushEntries (BibDatabase database, List<BibEntry> entries, String keys, MetaData metaData)
+DECL|method|pushEntries (BibDatabaseContext database, List<BibEntry> entries, String keys)
 specifier|public
 name|void
 name|pushEntries
 parameter_list|(
-name|BibDatabase
+name|BibDatabaseContext
 name|database
 parameter_list|,
 name|List
@@ -302,9 +276,6 @@ name|entries
 parameter_list|,
 name|String
 name|keys
-parameter_list|,
-name|MetaData
-name|metaData
 parameter_list|)
 block|{
 name|couldNotConnect
@@ -681,14 +652,11 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|operationCompleted (BasePanel panel)
+DECL|method|operationCompleted ()
 specifier|public
 name|void
 name|operationCompleted
-parameter_list|(
-name|BasePanel
-name|panel
-parameter_list|)
+parameter_list|()
 block|{
 if|if
 condition|(
@@ -752,9 +720,7 @@ block|{
 name|super
 operator|.
 name|operationCompleted
-argument_list|(
-name|panel
-argument_list|)
+argument_list|()
 expr_stmt|;
 block|}
 block|}

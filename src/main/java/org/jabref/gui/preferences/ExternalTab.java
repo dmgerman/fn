@@ -148,7 +148,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|actions
+name|externalfiletype
 operator|.
 name|EditExternalFileTypesAction
 import|;
@@ -206,7 +206,7 @@ name|gui
 operator|.
 name|push
 operator|.
-name|PushToApplications
+name|PushToApplicationsManager
 import|;
 end_import
 
@@ -1481,7 +1481,7 @@ block|{
 name|PushToApplicationSettings
 name|settings
 init|=
-name|PushToApplications
+name|PushToApplicationsManager
 operator|.
 name|getSettings
 argument_list|(
