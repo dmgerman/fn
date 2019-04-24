@@ -56,20 +56,6 @@ name|org
 operator|.
 name|jabref
 operator|.
-name|gui
-operator|.
-name|customentrytypes
-operator|.
-name|CustomEntryTypesManager
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
 name|model
 operator|.
 name|EntryTypes
@@ -259,12 +245,10 @@ name|number
 operator|++
 expr_stmt|;
 block|}
-name|CustomEntryTypesManager
+name|prefs
 operator|.
 name|saveCustomEntryTypes
-argument_list|(
-name|prefs
-argument_list|)
+argument_list|()
 expr_stmt|;
 block|}
 comment|/**      * Retrieves all deprecated information about the entry type in preferences, with the tag given by number.      *      * (old implementation which has been copied)      */

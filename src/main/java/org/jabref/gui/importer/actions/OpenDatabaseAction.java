@@ -554,7 +554,7 @@ name|getDialogService
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Go through the list of post open actions, and perform those that need to be performed.      *      * @param panel  The BasePanel where the database is shown.      * @param result The result of the BIB file parse operation.      * @param dialogService      */
+comment|/**      * Go through the list of post open actions, and perform those that need to be performed.      *      * @param panel  The BasePanel where the database is shown.      * @param result The result of the BIB file parse operation.      */
 DECL|method|performPostOpenActions (BasePanel panel, ParserResult result)
 specifier|public
 specifier|static

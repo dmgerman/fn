@@ -183,7 +183,7 @@ name|parserResult
 argument_list|)
 decl_stmt|;
 name|ImportCustomEntryTypesDialog
-name|dlg
+name|importCustomEntryTypesDialog
 init|=
 operator|new
 name|ImportCustomEntryTypesDialog
@@ -196,7 +196,7 @@ name|parserResult
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|dlg
+name|importCustomEntryTypesDialog
 operator|.
 name|showAndWait
 argument_list|()
