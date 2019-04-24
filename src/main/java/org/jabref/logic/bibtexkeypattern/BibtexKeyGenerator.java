@@ -223,7 +223,7 @@ specifier|final
 name|String
 name|KEY_ILLEGAL_CHARACTERS
 init|=
-literal|"{}(),\\\"-#~^':`"
+literal|"{}(),\\\"-#~^:'`Ê¹"
 decl_stmt|;
 DECL|field|KEY_UNWANTED_CHARACTERS
 specifier|private
