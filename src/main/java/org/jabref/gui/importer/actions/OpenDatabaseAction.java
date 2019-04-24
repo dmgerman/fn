@@ -144,31 +144,11 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|SwingUtilities
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|jabref
 operator|.
 name|Globals
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|JabRefExecutorService
 import|;
 end_import
 
@@ -300,7 +280,7 @@ name|gui
 operator|.
 name|util
 operator|.
-name|DefaultTaskExecutor
+name|BackgroundTask
 import|;
 end_import
 
@@ -544,6 +524,12 @@ specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
+DECL|field|dialogService
+specifier|private
+specifier|final
+name|DialogService
+name|dialogService
+decl_stmt|;
 DECL|method|OpenDatabaseAction (JabRefFrame frame)
 specifier|public
 name|OpenDatabaseAction
@@ -557,6 +543,15 @@ operator|.
 name|frame
 operator|=
 name|frame
+expr_stmt|;
+name|this
+operator|.
+name|dialogService
+operator|=
+name|frame
+operator|.
+name|getDialogService
+argument_list|()
 expr_stmt|;
 block|}
 comment|/**      * Go through the list of post open actions, and perform those that need to be performed.      *      * @param panel  The BasePanel where the database is shown.      * @param result The result of the BIB file parse operation.      */
@@ -634,14 +629,6 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
-name|DialogService
-name|ds
-init|=
-name|frame
-operator|.
-name|getDialogService
-argument_list|()
-decl_stmt|;
 name|FileDialogConfiguration
 name|fileDialogConfiguration
 init|=
@@ -680,7 +667,7 @@ name|Path
 argument_list|>
 name|chosenFiles
 init|=
-name|ds
+name|dialogService
 operator|.
 name|showFileOpenDialogAndGetMultipleFiles
 argument_list|(
@@ -1057,15 +1044,6 @@ argument_list|(
 name|filesToOpen
 argument_list|)
 decl_stmt|;
-name|JabRefExecutorService
-operator|.
-name|INSTANCE
-operator|.
-name|execute
-argument_list|(
-parameter_list|()
-lambda|->
-block|{
 for|for
 control|(
 name|Path
@@ -1082,9 +1060,6 @@ name|raisePanel
 argument_list|)
 expr_stmt|;
 block|}
-block|}
-argument_list|)
-expr_stmt|;
 for|for
 control|(
 name|Path
@@ -1115,10 +1090,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|frame
-operator|.
-name|getDialogService
-argument_list|()
+name|dialogService
 operator|.
 name|notify
 argument_list|(
@@ -1133,13 +1105,16 @@ operator|.
 name|getBibDatabaseContext
 argument_list|()
 operator|.
-name|getDatabaseFile
+name|getDatabasePath
 argument_list|()
 operator|.
 name|get
 argument_list|()
 operator|.
-name|getPath
+name|getFileName
+argument_list|()
+operator|.
+name|toString
 argument_list|()
 argument_list|)
 argument_list|)
@@ -1152,10 +1127,7 @@ name|toRaise
 argument_list|)
 expr_stmt|;
 block|}
-name|frame
-operator|.
-name|getDialogService
-argument_list|()
+name|dialogService
 operator|.
 name|notify
 argument_list|(
@@ -1177,7 +1149,7 @@ operator|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * @param file the file, may be null or not existing      */
+comment|/**      * @param file the file, may be null or not existing      * @return      */
 DECL|method|openTheFile (Path file, boolean raisePanel)
 specifier|private
 name|void
@@ -1207,6 +1179,95 @@ name|file
 argument_list|)
 condition|)
 block|{
+name|BackgroundTask
+operator|.
+name|wrap
+argument_list|(
+parameter_list|()
+lambda|->
+name|loadDatabase
+argument_list|(
+name|file
+argument_list|)
+argument_list|)
+operator|.
+name|onSuccess
+argument_list|(
+name|result
+lambda|->
+block|{
+name|BasePanel
+name|panel
+operator|=
+name|addNewDatabase
+argument_list|(
+name|result
+argument_list|,
+name|file
+argument_list|,
+name|raisePanel
+argument_list|)
+argument_list|;
+name|OpenDatabaseAction
+operator|.
+name|performPostOpenActions
+argument_list|(
+name|panel
+argument_list|,
+name|result
+argument_list|)
+expr_stmt|;
+block|}
+block|)
+function|.onFailure
+parameter_list|(
+function|ex -> dialogService.showErrorDialogAndWait
+parameter_list|(
+function|Localization.lang
+parameter_list|(
+function|"Connection error"
+block|)
+operator|,
+name|ex
+operator|.
+name|getMessage
+argument_list|()
+operator|+
+literal|"\n\n"
+operator|+
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"A local copy will be opened."
+argument_list|)
+end_class
+
+begin_expr_stmt
+unit|))
+operator|.
+name|executeWith
+argument_list|(
+name|Globals
+operator|.
+name|TASK_EXECUTOR
+argument_list|)
+expr_stmt|;
+end_expr_stmt
+
+begin_function
+unit|}      }
+DECL|method|loadDatabase (Path file)
+specifier|private
+name|ParserResult
+name|loadDatabase
+parameter_list|(
+name|Path
+name|file
+parameter_list|)
+throws|throws
+name|Exception
+block|{
 name|Path
 name|fileToLoad
 init|=
@@ -1215,10 +1276,7 @@ operator|.
 name|toAbsolutePath
 argument_list|()
 decl_stmt|;
-name|frame
-operator|.
-name|getDialogService
-argument_list|()
+name|dialogService
 operator|.
 name|notify
 argument_list|(
@@ -1269,10 +1327,7 @@ name|BackupUIManager
 operator|.
 name|showRestoreBackupDialog
 argument_list|(
-name|frame
-operator|.
-name|getDialogService
-argument_list|()
+name|dialogService
 argument_list|,
 name|fileToLoad
 argument_list|)
@@ -1280,9 +1335,7 @@ expr_stmt|;
 block|}
 name|ParserResult
 name|result
-decl_stmt|;
-name|result
-operator|=
+init|=
 name|OpenDatabase
 operator|.
 name|loadDatabase
@@ -1304,7 +1357,7 @@ operator|.
 name|getFileUpdateMonitor
 argument_list|()
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 if|if
 condition|(
 name|result
@@ -1368,78 +1421,18 @@ argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
-name|frame
-operator|.
-name|getDialogService
-argument_list|()
-operator|.
-name|showErrorDialogAndWait
-argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Connection error"
-argument_list|)
-argument_list|,
+throw|throw
 name|e
-operator|.
-name|getMessage
-argument_list|()
-operator|+
-literal|"\n\n"
-operator|+
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"A local copy will be opened."
-argument_list|)
-argument_list|)
-expr_stmt|;
+throw|;
 block|}
 block|}
-name|BasePanel
-name|panel
-init|=
-name|addNewDatabase
-argument_list|(
+return|return
 name|result
-argument_list|,
-name|file
-argument_list|,
-name|raisePanel
-argument_list|)
-decl_stmt|;
-comment|// After adding the database, go through our list and see if
-comment|// any post open actions need to be done. For instance, checking
-comment|// if we found new entry types that can be imported, or checking
-comment|// if the database contents should be modified due to new features
-comment|// in this version of JabRef:
-specifier|final
-name|ParserResult
-name|finalReferenceToResult
-init|=
-name|result
-decl_stmt|;
-name|SwingUtilities
-operator|.
-name|invokeLater
-argument_list|(
-parameter_list|()
-lambda|->
-name|OpenDatabaseAction
-operator|.
-name|performPostOpenActions
-argument_list|(
-name|panel
-argument_list|,
-name|finalReferenceToResult
-argument_list|)
-argument_list|)
-expr_stmt|;
+return|;
 block|}
-block|}
+end_function
+
+begin_function
 DECL|method|addNewDatabase (ParserResult result, final Path file, boolean raisePanel)
 specifier|private
 name|BasePanel
@@ -1472,14 +1465,6 @@ name|hasWarnings
 argument_list|()
 condition|)
 block|{
-name|JabRefExecutorService
-operator|.
-name|INSTANCE
-operator|.
-name|execute
-argument_list|(
-parameter_list|()
-lambda|->
 name|ParserResultWarningDialog
 operator|.
 name|showParserResultWarningDialog
@@ -1487,7 +1472,6 @@ argument_list|(
 name|result
 argument_list|,
 name|frame
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -1501,10 +1485,7 @@ name|file
 argument_list|)
 condition|)
 block|{
-name|frame
-operator|.
-name|getDialogService
-argument_list|()
+name|dialogService
 operator|.
 name|notify
 argument_list|(
@@ -1551,14 +1532,6 @@ literal|"."
 argument_list|)
 expr_stmt|;
 block|}
-return|return
-name|DefaultTaskExecutor
-operator|.
-name|runInJavaFXThread
-argument_list|(
-parameter_list|()
-lambda|->
-block|{
 name|BasePanel
 name|basePanel
 init|=
@@ -1600,11 +1573,8 @@ return|return
 name|basePanel
 return|;
 block|}
-argument_list|)
-return|;
-block|}
-block|}
-end_class
+end_function
 
+unit|}
 end_unit
 
