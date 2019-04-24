@@ -18,18 +18,6 @@ name|org
 operator|.
 name|jabref
 operator|.
-name|gui
-operator|.
-name|BasePanel
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
 name|logic
 operator|.
 name|l10n
@@ -156,13 +144,7 @@ specifier|final
 name|BibEntry
 name|entry
 decl_stmt|;
-DECL|field|panel
-specifier|private
-specifier|final
-name|BasePanel
-name|panel
-decl_stmt|;
-DECL|method|UndoableRemoveEntry (BibDatabase base, BibEntry entry, BasePanel panel)
+DECL|method|UndoableRemoveEntry (BibDatabase base, BibEntry entry)
 specifier|public
 name|UndoableRemoveEntry
 parameter_list|(
@@ -171,9 +153,6 @@ name|base
 parameter_list|,
 name|BibEntry
 name|entry
-parameter_list|,
-name|BasePanel
-name|panel
 parameter_list|)
 block|{
 name|this
@@ -187,12 +166,6 @@ operator|.
 name|entry
 operator|=
 name|entry
-expr_stmt|;
-name|this
-operator|.
-name|panel
-operator|=
-name|panel
 expr_stmt|;
 block|}
 annotation|@
@@ -276,14 +249,6 @@ block|{
 name|base
 operator|.
 name|removeEntry
-argument_list|(
-name|entry
-argument_list|)
-expr_stmt|;
-comment|// If the entry has an editor currently open, we must close it.
-name|panel
-operator|.
-name|ensureNotShowingBottomPanel
 argument_list|(
 name|entry
 argument_list|)

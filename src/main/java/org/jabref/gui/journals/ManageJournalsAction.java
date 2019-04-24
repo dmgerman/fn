@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|org.jabref.gui.actions
+DECL|package|org.jabref.gui.journals
 package|package
 name|org
 operator|.
@@ -8,7 +8,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|actions
+name|journals
 package|;
 end_package
 
@@ -20,21 +20,17 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|errorconsole
+name|actions
 operator|.
-name|ErrorConsoleView
+name|SimpleCommand
 import|;
 end_import
 
-begin_comment
-comment|/**  * Such an error console can be  * useful in getting complete bug reports, especially from Windows users,  * without asking users to run JabRef in a command window to catch the error info.  *<p/>  * It offers a separate tab for the log output.  */
-end_comment
-
 begin_class
-DECL|class|ErrorConsoleAction
+DECL|class|ManageJournalsAction
 specifier|public
 class|class
-name|ErrorConsoleAction
+name|ManageJournalsAction
 extends|extends
 name|SimpleCommand
 block|{
@@ -47,7 +43,7 @@ name|execute
 parameter_list|()
 block|{
 operator|new
-name|ErrorConsoleView
+name|ManageJournalAbbreviationsView
 argument_list|()
 operator|.
 name|show

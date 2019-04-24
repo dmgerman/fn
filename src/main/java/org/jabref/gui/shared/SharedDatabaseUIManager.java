@@ -775,8 +775,6 @@ name|event
 operator|.
 name|getBibEntry
 argument_list|()
-argument_list|,
-name|panel
 argument_list|)
 argument_list|)
 expr_stmt|;

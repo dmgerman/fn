@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|org.jabref.gui.actions
+DECL|package|org.jabref.gui.externalfiletype
 package|package
 name|org
 operator|.
@@ -8,7 +8,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|actions
+name|externalfiletype
 package|;
 end_package
 
@@ -20,17 +20,17 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|exporter
+name|actions
 operator|.
-name|ExportCustomizationDialogView
+name|SimpleCommand
 import|;
 end_import
 
 begin_class
-DECL|class|ManageCustomExportsAction
+DECL|class|EditExternalFileTypesAction
 specifier|public
 class|class
-name|ManageCustomExportsAction
+name|EditExternalFileTypesAction
 extends|extends
 name|SimpleCommand
 block|{
@@ -42,11 +42,16 @@ name|void
 name|execute
 parameter_list|()
 block|{
+name|CustomizeExternalFileTypesDialog
+name|editor
+init|=
 operator|new
-name|ExportCustomizationDialogView
+name|CustomizeExternalFileTypesDialog
 argument_list|()
+decl_stmt|;
+name|editor
 operator|.
-name|show
+name|showAndWait
 argument_list|()
 expr_stmt|;
 block|}

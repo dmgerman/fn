@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|org.jabref.gui.actions
+DECL|package|org.jabref.gui.cleanup
 package|package
 name|org
 operator|.
@@ -8,7 +8,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|actions
+name|cleanup
 package|;
 end_package
 
@@ -74,9 +74,9 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|cleanup
+name|actions
 operator|.
-name|CleanupDialog
+name|BaseAction
 import|;
 end_import
 

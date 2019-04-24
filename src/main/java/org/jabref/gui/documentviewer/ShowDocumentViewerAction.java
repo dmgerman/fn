@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|org.jabref.gui.actions
+DECL|package|org.jabref.gui.documentviewer
 package|package
 name|org
 operator|.
@@ -8,7 +8,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|actions
+name|documentviewer
 package|;
 end_package
 
@@ -20,17 +20,17 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|customizefields
+name|actions
 operator|.
-name|CustomizeGeneralFieldsDialogView
+name|SimpleCommand
 import|;
 end_import
 
 begin_class
-DECL|class|SetupGeneralFieldsAction
+DECL|class|ShowDocumentViewerAction
 specifier|public
 class|class
-name|SetupGeneralFieldsAction
+name|ShowDocumentViewerAction
 extends|extends
 name|SimpleCommand
 block|{
@@ -43,7 +43,7 @@ name|execute
 parameter_list|()
 block|{
 operator|new
-name|CustomizeGeneralFieldsDialogView
+name|DocumentViewerView
 argument_list|()
 operator|.
 name|show

@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|org.jabref.gui.actions
+DECL|package|org.jabref.gui.customizefields
 package|package
 name|org
 operator|.
@@ -8,7 +8,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|actions
+name|customizefields
 package|;
 end_package
 
@@ -20,25 +20,20 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|importer
+name|actions
 operator|.
-name|ImportCustomizationDialog
+name|SimpleCommand
 import|;
 end_import
 
 begin_class
-DECL|class|ManageCustomImportsAction
+DECL|class|SetupGeneralFieldsAction
 specifier|public
 class|class
-name|ManageCustomImportsAction
+name|SetupGeneralFieldsAction
 extends|extends
 name|SimpleCommand
 block|{
-DECL|method|ManageCustomImportsAction ()
-specifier|public
-name|ManageCustomImportsAction
-parameter_list|()
-block|{     }
 annotation|@
 name|Override
 DECL|method|execute ()
@@ -48,7 +43,7 @@ name|execute
 parameter_list|()
 block|{
 operator|new
-name|ImportCustomizationDialog
+name|CustomizeGeneralFieldsDialogView
 argument_list|()
 operator|.
 name|showAndWait

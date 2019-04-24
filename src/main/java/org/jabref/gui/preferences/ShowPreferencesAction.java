@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|org.jabref.gui.actions
+DECL|package|org.jabref.gui.preferences
 package|package
 name|org
 operator|.
@@ -8,7 +8,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|actions
+name|preferences
 package|;
 end_package
 
@@ -32,21 +32,31 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|shared
+name|actions
 operator|.
-name|SharedDatabaseLoginDialogView
+name|SimpleCommand
 import|;
 end_import
 
-begin_comment
-comment|/**  * Opens a shared database.  */
-end_comment
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|util
+operator|.
+name|TaskExecutor
+import|;
+end_import
 
 begin_class
-DECL|class|ConnectToSharedDatabaseCommand
+DECL|class|ShowPreferencesAction
 specifier|public
 class|class
-name|ConnectToSharedDatabaseCommand
+name|ShowPreferencesAction
 extends|extends
 name|SimpleCommand
 block|{
@@ -56,12 +66,21 @@ specifier|final
 name|JabRefFrame
 name|jabRefFrame
 decl_stmt|;
-DECL|method|ConnectToSharedDatabaseCommand (JabRefFrame jabRefFrame)
+DECL|field|taskExecutor
+specifier|private
+specifier|final
+name|TaskExecutor
+name|taskExecutor
+decl_stmt|;
+DECL|method|ShowPreferencesAction (JabRefFrame jabRefFrame, TaskExecutor taskExecutor)
 specifier|public
-name|ConnectToSharedDatabaseCommand
+name|ShowPreferencesAction
 parameter_list|(
 name|JabRefFrame
 name|jabRefFrame
+parameter_list|,
+name|TaskExecutor
+name|taskExecutor
 parameter_list|)
 block|{
 name|this
@@ -69,6 +88,12 @@ operator|.
 name|jabRefFrame
 operator|=
 name|jabRefFrame
+expr_stmt|;
+name|this
+operator|.
+name|taskExecutor
+operator|=
+name|taskExecutor
 expr_stmt|;
 block|}
 annotation|@
@@ -79,11 +104,18 @@ name|void
 name|execute
 parameter_list|()
 block|{
+name|PreferencesDialog
+name|preferencesDialog
+init|=
 operator|new
-name|SharedDatabaseLoginDialogView
+name|PreferencesDialog
 argument_list|(
 name|jabRefFrame
+argument_list|,
+name|taskExecutor
 argument_list|)
+decl_stmt|;
+name|preferencesDialog
 operator|.
 name|showAndWait
 argument_list|()

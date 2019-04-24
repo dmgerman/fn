@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|org.jabref.gui.actions
+DECL|package|org.jabref.gui.keyboard
 package|package
 name|org
 operator|.
@@ -8,7 +8,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|actions
+name|keyboard
 package|;
 end_package
 
@@ -20,17 +20,17 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|journals
+name|actions
 operator|.
-name|ManageJournalAbbreviationsView
+name|SimpleCommand
 import|;
 end_import
 
 begin_class
-DECL|class|ManageJournalsAction
+DECL|class|CustomizeKeyBindingAction
 specifier|public
 class|class
-name|ManageJournalsAction
+name|CustomizeKeyBindingAction
 extends|extends
 name|SimpleCommand
 block|{
@@ -43,7 +43,7 @@ name|execute
 parameter_list|()
 block|{
 operator|new
-name|ManageJournalAbbreviationsView
+name|KeyBindingsDialogView
 argument_list|()
 operator|.
 name|show

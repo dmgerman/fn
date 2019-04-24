@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|org.jabref.gui.actions
+DECL|package|org.jabref.gui.edit
 package|package
 name|org
 operator|.
@@ -8,7 +8,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|actions
+name|edit
 package|;
 end_package
 
@@ -20,7 +20,9 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|JabRefFrame
+name|actions
+operator|.
+name|SimpleCommand
 import|;
 end_import
 
@@ -32,43 +34,39 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|auximport
+name|desktop
 operator|.
-name|FromAuxDialog
+name|JabRefDesktop
 import|;
 end_import
 
-begin_comment
-comment|/**  * The action concerned with generate a new (sub-)database from latex AUX file.  */
-end_comment
-
 begin_class
-DECL|class|NewSubLibraryAction
+DECL|class|OpenBrowserAction
 specifier|public
 class|class
-name|NewSubLibraryAction
+name|OpenBrowserAction
 extends|extends
 name|SimpleCommand
 block|{
-DECL|field|jabRefFrame
+DECL|field|urlToOpen
 specifier|private
 specifier|final
-name|JabRefFrame
-name|jabRefFrame
+name|String
+name|urlToOpen
 decl_stmt|;
-DECL|method|NewSubLibraryAction (JabRefFrame jabRefFrame)
+DECL|method|OpenBrowserAction (String urlToOpen)
 specifier|public
-name|NewSubLibraryAction
+name|OpenBrowserAction
 parameter_list|(
-name|JabRefFrame
-name|jabRefFrame
+name|String
+name|urlToOpen
 parameter_list|)
 block|{
 name|this
 operator|.
-name|jabRefFrame
+name|urlToOpen
 operator|=
-name|jabRefFrame
+name|urlToOpen
 expr_stmt|;
 block|}
 annotation|@
@@ -79,19 +77,12 @@ name|void
 name|execute
 parameter_list|()
 block|{
-name|FromAuxDialog
-name|dialog
-init|=
-operator|new
-name|FromAuxDialog
-argument_list|(
-name|jabRefFrame
-argument_list|)
-decl_stmt|;
-name|dialog
+name|JabRefDesktop
 operator|.
-name|showAndWait
-argument_list|()
+name|openBrowserShowPopup
+argument_list|(
+name|urlToOpen
+argument_list|)
 expr_stmt|;
 block|}
 block|}

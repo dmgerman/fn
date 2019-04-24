@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|org.jabref.gui.actions
+DECL|package|org.jabref.gui.help
 package|package
 name|org
 operator|.
@@ -8,7 +8,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|actions
+name|help
 package|;
 end_package
 
@@ -20,7 +20,9 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|JabRefFrame
+name|actions
+operator|.
+name|SimpleCommand
 import|;
 end_import
 
@@ -32,41 +34,24 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|bibtexkeypattern
+name|errorconsole
 operator|.
-name|BibtexKeyPatternDialog
+name|ErrorConsoleView
 import|;
 end_import
 
+begin_comment
+comment|/**  * Such an error console can be  * useful in getting complete bug reports, especially from Windows users,  * without asking users to run JabRef in a command window to catch the error info.  *<p/>  * It offers a separate tab for the log output.  */
+end_comment
+
 begin_class
-DECL|class|BibtexKeyPatternAction
+DECL|class|ErrorConsoleAction
 specifier|public
 class|class
-name|BibtexKeyPatternAction
+name|ErrorConsoleAction
 extends|extends
 name|SimpleCommand
 block|{
-DECL|field|frame
-specifier|private
-specifier|final
-name|JabRefFrame
-name|frame
-decl_stmt|;
-DECL|method|BibtexKeyPatternAction (JabRefFrame frame)
-specifier|public
-name|BibtexKeyPatternAction
-parameter_list|(
-name|JabRefFrame
-name|frame
-parameter_list|)
-block|{
-name|this
-operator|.
-name|frame
-operator|=
-name|frame
-expr_stmt|;
-block|}
 annotation|@
 name|Override
 DECL|method|execute ()
@@ -76,15 +61,10 @@ name|execute
 parameter_list|()
 block|{
 operator|new
-name|BibtexKeyPatternDialog
-argument_list|(
-name|frame
-operator|.
-name|getCurrentBasePanel
+name|ErrorConsoleView
 argument_list|()
-argument_list|)
 operator|.
-name|showAndWait
+name|show
 argument_list|()
 expr_stmt|;
 block|}
