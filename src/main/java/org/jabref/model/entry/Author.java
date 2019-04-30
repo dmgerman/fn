@@ -156,7 +156,6 @@ name|String
 name|name
 parameter_list|)
 block|{
-comment|// Avoid arrayindexoutof.... :
 if|if
 condition|(
 operator|(
@@ -457,6 +456,13 @@ name|nextWordIsUppercase
 init|=
 literal|true
 decl_stmt|;
+name|char
+name|furtherChar
+init|=
+name|Character
+operator|.
+name|MIN_VALUE
+decl_stmt|;
 for|for
 control|(
 name|int
@@ -477,16 +483,15 @@ name|j
 operator|++
 control|)
 block|{
-name|char
 name|furtherChar
-init|=
+operator|=
 name|name
 operator|.
 name|charAt
 argument_list|(
 name|j
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 if|if
 condition|(
 name|Character
@@ -553,6 +558,26 @@ condition|(
 name|nextWordIsUppercase
 condition|)
 block|{
+if|if
+condition|(
+name|Character
+operator|.
+name|isWhitespace
+argument_list|(
+name|furtherChar
+argument_list|)
+condition|)
+block|{
+name|sb
+operator|.
+name|append
+argument_list|(
+literal|"."
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
 name|sb
 operator|.
 name|append
@@ -560,6 +585,7 @@ argument_list|(
 literal|". "
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 return|return
