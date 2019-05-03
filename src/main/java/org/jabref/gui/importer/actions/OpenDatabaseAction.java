@@ -1052,6 +1052,7 @@ range|:
 name|theFiles
 control|)
 block|{
+comment|//This method will execute the concrete file opening and loading in a background thread
 name|openTheFile
 argument_list|(
 name|theFile
