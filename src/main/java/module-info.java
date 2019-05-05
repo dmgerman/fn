@@ -224,16 +224,6 @@ operator|.
 name|core
 decl_stmt|;
 name|requires
-name|glazedlists
-operator|.
-name|java15
-decl_stmt|;
-name|requires
-name|jgoodies
-operator|.
-name|forms
-decl_stmt|;
-name|requires
 name|commons
 operator|.
 name|logging
