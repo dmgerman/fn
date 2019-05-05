@@ -16,18 +16,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|nio
-operator|.
-name|charset
-operator|.
-name|StandardCharsets
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|ArrayList
@@ -467,7 +455,6 @@ argument_list|(
 name|RESOURCE_PREFIX
 argument_list|,
 name|locale
-comment|/*, new EncodingControl(StandardCharsets.UTF_8)*/
 argument_list|)
 decl_stmt|;
 name|Objects

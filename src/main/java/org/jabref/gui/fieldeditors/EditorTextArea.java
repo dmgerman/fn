@@ -82,18 +82,6 @@ name|scene
 operator|.
 name|control
 operator|.
-name|ContextMenu
-import|;
-end_import
-
-begin_import
-import|import
-name|javafx
-operator|.
-name|scene
-operator|.
-name|control
-operator|.
 name|MenuItem
 import|;
 end_import
@@ -135,6 +123,10 @@ operator|.
 name|KeyEvent
 import|;
 end_import
+
+begin_comment
+comment|// TODO: TextAreaSkin changed in Java 9
+end_comment
 
 begin_class
 DECL|class|EditorTextArea

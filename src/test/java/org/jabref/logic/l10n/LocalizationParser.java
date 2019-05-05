@@ -258,10 +258,6 @@ name|FXMLLoader
 import|;
 end_import
 
-begin_comment
-comment|//import com.sun.javafx.application.PlatformImpl;
-end_comment
-
 begin_class
 DECL|class|LocalizationParser
 specifier|public
@@ -1346,7 +1342,6 @@ return|;
 block|}
 block|}
 decl_stmt|;
-comment|// TODO: removed access to internal API: Why was it used?
 name|Platform
 operator|.
 name|startup
@@ -1385,9 +1380,6 @@ lambda|->
 literal|null
 argument_list|)
 expr_stmt|;
-comment|// Don't check if root is null (needed for custom controls, where the root value is normally set in the FXMLLoader)
-comment|// TODO: removed access to internal API.
-comment|//            loader.impl_setStaticLoad(true);
 name|loader
 operator|.
 name|load

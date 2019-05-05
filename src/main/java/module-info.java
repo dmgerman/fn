@@ -79,9 +79,6 @@ name|logic
 operator|.
 name|search
 decl_stmt|;
-comment|//    opens org.jabref.gui to com.google.common;
-comment|//    opens org.jabref.model.database to com.google.common;
-comment|//    opens org.jabref.logic.citationstyle to com.google.common;
 comment|// Swing
 name|requires
 name|java
@@ -94,7 +91,6 @@ name|java
 operator|.
 name|sql
 decl_stmt|;
-comment|//requires postgresql;
 comment|// JavaFX
 name|requires
 name|javafx
@@ -138,8 +134,35 @@ name|saxsys
 operator|.
 name|mvvmfx
 decl_stmt|;
-comment|//	requires de.jensd.fx.glyphs.commons;
-comment|//	requires de.jensd.fx.glyphs.materialdesignicons;
+name|requires
+name|de
+operator|.
+name|jensd
+operator|.
+name|fx
+operator|.
+name|glyphs
+operator|.
+name|commons
+decl_stmt|;
+name|requires
+name|de
+operator|.
+name|jensd
+operator|.
+name|fx
+operator|.
+name|glyphs
+operator|.
+name|materialdesignicons
+decl_stmt|;
+name|requires
+name|org
+operator|.
+name|controlsfx
+operator|.
+name|controls
+decl_stmt|;
 name|provides
 name|com
 operator|.
@@ -208,7 +231,6 @@ name|xml
 operator|.
 name|bind
 decl_stmt|;
-comment|// Deprecated!
 name|requires
 name|jdk
 operator|.
@@ -228,6 +250,17 @@ name|applicationinsights
 operator|.
 name|core
 decl_stmt|;
+comment|// Libre Office
+name|requires
+name|org
+operator|.
+name|jabref
+operator|.
+name|thirdparty
+operator|.
+name|libreoffice
+decl_stmt|;
+comment|// Other modules
 name|requires
 name|commons
 operator|.
@@ -242,15 +275,6 @@ name|common
 decl_stmt|;
 name|requires
 name|easybind
-decl_stmt|;
-comment|//requires de.jensd.fx.glyphs.commons;
-comment|//requires controlsfx;
-name|requires
-name|org
-operator|.
-name|controlsfx
-operator|.
-name|controls
 decl_stmt|;
 name|requires
 name|javax
@@ -268,40 +292,6 @@ name|commons
 operator|.
 name|cli
 decl_stmt|;
-name|requires
-name|de
-operator|.
-name|jensd
-operator|.
-name|fx
-operator|.
-name|glyphs
-operator|.
-name|commons
-decl_stmt|;
-name|requires
-name|de
-operator|.
-name|jensd
-operator|.
-name|fx
-operator|.
-name|glyphs
-operator|.
-name|materialdesignicons
-decl_stmt|;
-name|requires
-name|org
-operator|.
-name|jabref
-operator|.
-name|thirdparty
-operator|.
-name|libreoffice
-decl_stmt|;
-comment|//requires mvvmfx;
-comment|// Libre Office
-comment|//requires org.jabref.thirdparty.libreoffice;
 block|}
 end_decl_stmt
 

@@ -82,30 +82,6 @@ name|javafx
 operator|.
 name|scene
 operator|.
-name|control
-operator|.
-name|TextField
-import|;
-end_import
-
-begin_import
-import|import
-name|javafx
-operator|.
-name|scene
-operator|.
-name|input
-operator|.
-name|KeyCode
-import|;
-end_import
-
-begin_import
-import|import
-name|javafx
-operator|.
-name|scene
-operator|.
 name|input
 operator|.
 name|KeyEvent
@@ -141,7 +117,7 @@ comment|//import com.sun.javafx.scene.control.skin.TextFieldSkin;
 end_comment
 
 begin_comment
-comment|// TODO: java 9 TextFieldSkin not accessible in Java 9
+comment|// TODO: TextFieldSkin changed in Java 9
 end_comment
 
 begin_class

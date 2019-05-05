@@ -831,7 +831,6 @@ name|KeyEvent
 name|keyEvent
 parameter_list|)
 block|{
-comment|// TODO: removed access to internal API: does this do the same?
 name|Optional
 argument_list|<
 name|KeyCode
