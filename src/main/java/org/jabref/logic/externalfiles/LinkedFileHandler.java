@@ -495,6 +495,25 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
+return|return
+name|renameToName
+argument_list|(
+name|getSuggestedFileName
+argument_list|()
+argument_list|)
+return|;
+block|}
+DECL|method|renameToName (String targetFileName)
+specifier|public
+name|boolean
+name|renameToName
+parameter_list|(
+name|String
+name|targetFileName
+parameter_list|)
+throws|throws
+name|IOException
+block|{
 name|Optional
 argument_list|<
 name|Path
@@ -524,12 +543,6 @@ return|return
 literal|false
 return|;
 block|}
-name|String
-name|targetFileName
-init|=
-name|getSuggestedFileName
-argument_list|()
-decl_stmt|;
 name|Path
 name|newPath
 init|=
@@ -754,7 +767,7 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Check to see if a file already exists in the target directory.  Search is not case sensitive.      *      * @return First identified path that matches an existing file.  This name can be used in subsequent calls to      * override the existing file.      */
-DECL|method|findExistingFile (LinkedFile flEntry, BibEntry entry)
+DECL|method|findExistingFile (LinkedFile flEntry, BibEntry entry, String targetFileName)
 specifier|public
 name|Optional
 argument_list|<
@@ -767,14 +780,11 @@ name|flEntry
 parameter_list|,
 name|BibEntry
 name|entry
-parameter_list|)
-block|{
+parameter_list|,
 name|String
 name|targetFileName
-init|=
-name|getSuggestedFileName
-argument_list|()
-decl_stmt|;
+parameter_list|)
+block|{
 comment|// The .get() is legal without check because the method will always return a value.
 name|Path
 name|targetFilePath

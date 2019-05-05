@@ -120,7 +120,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|DuplicateResolverDialog
+name|StateManager
 import|;
 end_import
 
@@ -132,7 +132,9 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|StateManager
+name|duplicationFinder
+operator|.
+name|DuplicateResolverDialog
 import|;
 end_import
 

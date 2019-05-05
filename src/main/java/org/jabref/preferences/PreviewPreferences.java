@@ -38,6 +38,34 @@ name|jabref
 operator|.
 name|logic
 operator|.
+name|citationstyle
+operator|.
+name|PreviewLayout
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|citationstyle
+operator|.
+name|TextBasedPreviewLayout
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
 name|layout
 operator|.
 name|LayoutFormatterPreferences
@@ -55,7 +83,7 @@ specifier|private
 specifier|final
 name|List
 argument_list|<
-name|String
+name|PreviewLayout
 argument_list|>
 name|previewCycle
 decl_stmt|;
@@ -89,18 +117,18 @@ specifier|final
 name|String
 name|previewStyleDefault
 decl_stmt|;
-DECL|method|PreviewPreferences (List<String> previewCycle, int previeCyclePosition, Number previewPanelDividerPosition, boolean previewPanelEnabled, String previewStyle, String previewStyleDefault)
+DECL|method|PreviewPreferences (List<PreviewLayout> previewCycle, int previewCyclePosition, Number previewPanelDividerPosition, boolean previewPanelEnabled, String previewStyle, String previewStyleDefault)
 specifier|public
 name|PreviewPreferences
 parameter_list|(
 name|List
 argument_list|<
-name|String
+name|PreviewLayout
 argument_list|>
 name|previewCycle
 parameter_list|,
 name|int
-name|previeCyclePosition
+name|previewCyclePosition
 parameter_list|,
 name|Number
 name|previewPanelDividerPosition
@@ -125,7 +153,7 @@ name|this
 operator|.
 name|previewCyclePosition
 operator|=
-name|previeCyclePosition
+name|previewCyclePosition
 expr_stmt|;
 name|this
 operator|.
@@ -156,7 +184,7 @@ DECL|method|getPreviewCycle ()
 specifier|public
 name|List
 argument_list|<
-name|String
+name|PreviewLayout
 argument_list|>
 name|getPreviewCycle
 parameter_list|()
@@ -205,10 +233,10 @@ return|return
 name|previewStyle
 return|;
 block|}
-DECL|method|getPreviewStyleDefault ()
+DECL|method|getDefaultPreviewStyle ()
 specifier|public
 name|String
-name|getPreviewStyleDefault
+name|getDefaultPreviewStyle
 parameter_list|()
 block|{
 return|return
@@ -231,7 +259,7 @@ return|;
 block|}
 DECL|method|getCurrentPreviewStyle ()
 specifier|public
-name|String
+name|PreviewLayout
 name|getCurrentPreviewStyle
 parameter_list|()
 block|{
@@ -265,6 +293,24 @@ name|journalAbbreviationLoader
 argument_list|)
 return|;
 block|}
+DECL|method|getTextBasedPreviewLayout ()
+specifier|public
+name|PreviewLayout
+name|getTextBasedPreviewLayout
+parameter_list|()
+block|{
+return|return
+operator|new
+name|TextBasedPreviewLayout
+argument_list|(
+name|getPreviewStyle
+argument_list|()
+argument_list|,
+name|getLayoutFormatterPreferences
+argument_list|()
+argument_list|)
+return|;
+block|}
 DECL|class|Builder
 specifier|public
 specifier|static
@@ -275,7 +321,7 @@ DECL|field|previewCycle
 specifier|private
 name|List
 argument_list|<
-name|String
+name|PreviewLayout
 argument_list|>
 name|previewCycle
 decl_stmt|;
@@ -364,18 +410,18 @@ name|previewStyleDefault
 operator|=
 name|previewPreferences
 operator|.
-name|getPreviewStyleDefault
+name|getDefaultPreviewStyle
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|withPreviewCycle (List<String> previewCycle)
+DECL|method|withPreviewCycle (List<PreviewLayout> previewCycle)
 specifier|public
 name|Builder
 name|withPreviewCycle
 parameter_list|(
 name|List
 argument_list|<
-name|String
+name|PreviewLayout
 argument_list|>
 name|previewCycle
 parameter_list|)

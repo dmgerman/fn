@@ -3973,6 +3973,24 @@ name|String
 name|field
 parameter_list|)
 block|{
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|entry
+argument_list|,
+literal|"Entry cannot be null"
+argument_list|)
+expr_stmt|;
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|database
+argument_list|,
+literal|"database cannot be null"
+argument_list|)
+expr_stmt|;
 name|String
 name|authorField
 init|=

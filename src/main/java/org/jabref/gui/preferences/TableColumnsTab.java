@@ -2519,6 +2519,18 @@ operator|.
 name|getSelectedIndex
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|listSize
+operator|<
+literal|0
+condition|)
+block|{
+name|listSize
+operator|=
+literal|0
+expr_stmt|;
+block|}
 name|int
 index|[]
 name|indicesToSelect
@@ -3614,9 +3626,17 @@ name|String
 operator|.
 name|valueOf
 argument_list|(
+name|Double
+operator|.
+name|valueOf
+argument_list|(
 name|tr
 operator|.
 name|getLength
+argument_list|()
+argument_list|)
+operator|.
+name|intValue
 argument_list|()
 argument_list|)
 argument_list|)
@@ -3687,7 +3707,7 @@ argument_list|<>
 argument_list|()
 decl_stmt|;
 comment|// first element (#) not inside data
-comment|/*             for (TableColumn<BibEntry, ?> column : panel.getMainTable().getColumns()) {                 String name = column.getText();                 if ((name != null)&& !name.isEmpty()) {                     map.put(name.toLowerCase(Locale.ROOT), i);                 }             }             */
+comment|/*         for (TableColumn<BibEntry, ?> column : panel.getMainTable().getColumns()) {             String name = column.getText();             if ((name != null)&& !name.isEmpty()) {                 map.put(name.toLowerCase(Locale.ROOT), i);             }         }         */
 name|data
 operator|.
 name|sort
