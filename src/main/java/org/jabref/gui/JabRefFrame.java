@@ -2204,21 +2204,6 @@ argument_list|(
 name|content
 argument_list|)
 expr_stmt|;
-name|currentBasePanel
-operator|.
-name|getPreviewPanel
-argument_list|()
-operator|.
-name|updateLayout
-argument_list|(
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getPreviewPreferences
-argument_list|()
-argument_list|)
-expr_stmt|;
 comment|// groupSidePane.getToggleCommand().setSelected(sidePaneManager.isComponentVisible(GroupSidePane.class));
 comment|//previewToggle.setSelected(Globals.prefs.getPreviewPreferences().isPreviewPanelEnabled());
 comment|//generalFetcher.getToggleCommand().setSelected(sidePaneManager.isComponentVisible(WebSearchPane.class));
