@@ -180,8 +180,6 @@ name|scene
 operator|.
 name|control
 operator|.
-name|skin
-operator|.
 name|ContextMenuContent
 import|;
 end_import
@@ -366,7 +364,7 @@ name|MenuItemContainer
 operator|)
 name|menuItem
 operator|.
-name|impl_styleableGetNode
+name|getStyleableNode
 argument_list|()
 decl_stmt|;
 if|if
@@ -834,10 +832,14 @@ name|keyBindingRepository
 argument_list|)
 argument_list|,
 name|button
-comment|/*,                 ActionUtils.ActionTextBehavior.HIDE*/
+argument_list|,
+name|ActionUtils
+operator|.
+name|ActionTextBehavior
+operator|.
+name|HIDE
 argument_list|)
 expr_stmt|;
-comment|// TODO: Java 9 why is this argument too much?
 name|button
 operator|.
 name|getStyleClass

@@ -591,12 +591,9 @@ name|int
 name|index
 parameter_list|)
 block|{
-throw|throw
-operator|new
-name|UnsupportedOperationException
-argument_list|()
-throw|;
-comment|// TODO: method was added in Java 9. Provide implementation?
+return|return
+name|index
+return|;
 block|}
 annotation|@
 name|Override
