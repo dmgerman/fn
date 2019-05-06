@@ -142,8 +142,6 @@ operator|.
 name|fx
 operator|.
 name|glyphs
-operator|.
-name|commons
 decl_stmt|;
 name|requires
 name|de
