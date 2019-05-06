@@ -141,8 +141,9 @@ name|jensd
 operator|.
 name|fx
 operator|.
-name|glyphs
-decl_stmt|;
+name|fontawesomefx
+operator|.
+name|commons
 name|requires
 name|de
 operator|.
@@ -150,10 +151,9 @@ name|jensd
 operator|.
 name|fx
 operator|.
-name|glyphs
+name|fontawesomefx
 operator|.
 name|materialdesignicons
-decl_stmt|;
 name|requires
 name|org
 operator|.
