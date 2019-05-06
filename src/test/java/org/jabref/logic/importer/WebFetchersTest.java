@@ -180,6 +180,7 @@ class|class
 name|WebFetchersTest
 block|{
 DECL|field|reflections
+specifier|private
 name|Reflections
 name|reflections
 init|=
@@ -190,6 +191,7 @@ literal|"org.jabref"
 argument_list|)
 decl_stmt|;
 DECL|field|importFormatPreferences
+specifier|private
 name|ImportFormatPreferences
 name|importFormatPreferences
 decl_stmt|;

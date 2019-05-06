@@ -1241,14 +1241,6 @@ operator|.
 name|RESOURCE_PREFIX
 argument_list|,
 name|locale
-argument_list|,
-operator|new
-name|EncodingControl
-argument_list|(
-name|StandardCharsets
-operator|.
-name|UTF_8
-argument_list|)
 argument_list|)
 decl_stmt|;
 name|assertNotNull
