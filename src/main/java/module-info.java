@@ -218,6 +218,24 @@ name|logging
 operator|.
 name|log4j
 decl_stmt|;
+name|requires
+name|org
+operator|.
+name|apache
+operator|.
+name|logging
+operator|.
+name|log4j
+operator|.
+name|core
+decl_stmt|;
+name|requires
+name|applicationinsights
+operator|.
+name|logging
+operator|.
+name|log4j2
+decl_stmt|;
 comment|// Preferences and XML
 name|requires
 name|java
@@ -291,6 +309,9 @@ name|requires
 name|commons
 operator|.
 name|cli
+decl_stmt|;
+name|requires
+name|httpclient
 decl_stmt|;
 block|}
 end_decl_stmt
