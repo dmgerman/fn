@@ -144,6 +144,7 @@ operator|.
 name|fontawesomefx
 operator|.
 name|commons
+decl_stmt|;
 name|requires
 name|de
 operator|.
@@ -154,6 +155,7 @@ operator|.
 name|fontawesomefx
 operator|.
 name|materialdesignicons
+decl_stmt|;
 name|requires
 name|org
 operator|.
