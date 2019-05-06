@@ -393,7 +393,7 @@ name|entity
 init|=
 name|extractor
 operator|.
-name|Extract
+name|extract
 argument_list|(
 name|textArea
 operator|.
