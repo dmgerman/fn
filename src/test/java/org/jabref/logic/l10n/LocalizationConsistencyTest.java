@@ -250,6 +250,22 @@ name|junit
 operator|.
 name|jupiter
 operator|.
+name|api
+operator|.
+name|extension
+operator|.
+name|ExtendWith
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|jupiter
+operator|.
 name|params
 operator|.
 name|ParameterizedTest
@@ -269,6 +285,20 @@ operator|.
 name|provider
 operator|.
 name|MethodSource
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|testfx
+operator|.
+name|framework
+operator|.
+name|junit5
+operator|.
+name|ApplicationExtension
 import|;
 end_import
 
@@ -320,7 +350,18 @@ name|assertTrue
 import|;
 end_import
 
+begin_comment
+comment|// Need to run on JavaFX thread since we are parsing FXML files
+end_comment
+
 begin_class
+annotation|@
+name|ExtendWith
+argument_list|(
+name|ApplicationExtension
+operator|.
+name|class
+argument_list|)
 DECL|class|LocalizationConsistencyTest
 class|class
 name|LocalizationConsistencyTest
