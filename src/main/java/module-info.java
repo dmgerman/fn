@@ -313,6 +313,15 @@ decl_stmt|;
 name|requires
 name|httpclient
 decl_stmt|;
+name|requires
+name|com
+operator|.
+name|github
+operator|.
+name|tomtung
+operator|.
+name|latex2unicode
+decl_stmt|;
 block|}
 end_decl_stmt
 
