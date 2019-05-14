@@ -122,6 +122,20 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|strings
+operator|.
+name|StringUtil
+import|;
+end_import
+
+begin_import
+import|import
 name|com
 operator|.
 name|mashape
@@ -161,18 +175,6 @@ operator|.
 name|exceptions
 operator|.
 name|UnirestException
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jsoup
-operator|.
-name|helper
-operator|.
-name|StringUtil
 import|;
 end_import
 
