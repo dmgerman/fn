@@ -699,7 +699,13 @@ specifier|final
 name|LinkedFileHandler
 name|linkedFileHandler
 decl_stmt|;
-DECL|method|LinkedFileViewModel (LinkedFile linkedFile, BibEntry entry, BibDatabaseContext databaseContext, TaskExecutor taskExecutor, DialogService dialogService, JabRefPreferences preferences)
+DECL|field|externalFileTypes
+specifier|private
+specifier|final
+name|ExternalFileTypes
+name|externalFileTypes
+decl_stmt|;
+DECL|method|LinkedFileViewModel (LinkedFile linkedFile, BibEntry entry, BibDatabaseContext databaseContext, TaskExecutor taskExecutor, DialogService dialogService, JabRefPreferences preferences, ExternalFileTypes externalFileTypes)
 specifier|public
 name|LinkedFileViewModel
 parameter_list|(
@@ -720,6 +726,9 @@ name|dialogService
 parameter_list|,
 name|JabRefPreferences
 name|preferences
+parameter_list|,
+name|ExternalFileTypes
+name|externalFileTypes
 parameter_list|)
 block|{
 name|this
@@ -776,6 +785,12 @@ operator|.
 name|taskExecutor
 operator|=
 name|taskExecutor
+expr_stmt|;
+name|this
+operator|.
+name|externalFileTypes
+operator|=
+name|externalFileTypes
 expr_stmt|;
 name|xmpPreferences
 operator|=
@@ -2480,6 +2495,8 @@ name|getFileDirectoriesAsPaths
 argument_list|(
 name|filePreferences
 argument_list|)
+argument_list|,
+name|externalFileTypes
 argument_list|)
 decl_stmt|;
 name|linkedFile
@@ -2614,7 +2631,9 @@ init|=
 name|linkedFileHandler
 operator|.
 name|getSuggestedFileName
-argument_list|()
+argument_list|(
+name|suggestedTypeName
+argument_list|)
 decl_stmt|;
 return|return
 name|targetDirectory
@@ -2749,10 +2768,7 @@ name|mimeType
 argument_list|)
 expr_stmt|;
 return|return
-name|ExternalFileTypes
-operator|.
-name|getInstance
-argument_list|()
+name|externalFileTypes
 operator|.
 name|getExternalFileTypeByMimeType
 argument_list|(
@@ -2794,10 +2810,7 @@ name|flatMap
 argument_list|(
 name|extension
 lambda|->
-name|ExternalFileTypes
-operator|.
-name|getInstance
-argument_list|()
+name|externalFileTypes
 operator|.
 name|getExternalFileTypeByExt
 argument_list|(

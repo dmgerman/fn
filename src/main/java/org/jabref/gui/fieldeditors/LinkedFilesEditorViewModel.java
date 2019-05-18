@@ -549,6 +549,17 @@ specifier|final
 name|JabRefPreferences
 name|preferences
 decl_stmt|;
+DECL|field|externalFileTypes
+specifier|private
+specifier|final
+name|ExternalFileTypes
+name|externalFileTypes
+init|=
+name|ExternalFileTypes
+operator|.
+name|getInstance
+argument_list|()
+decl_stmt|;
 DECL|method|LinkedFilesEditorViewModel (String fieldName, AutoCompleteSuggestionProvider<?> suggestionProvider, DialogService dialogService, BibDatabaseContext databaseContext, TaskExecutor taskExecutor, FieldCheckers fieldCheckers, JabRefPreferences preferences)
 specifier|public
 name|LinkedFilesEditorViewModel
@@ -690,7 +701,7 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Creates an instance of {@link LinkedFile} based on the given file.      * We try to guess the file type and relativize the path against the given file directories.      *      * TODO: Move this method to {@link LinkedFile} as soon as {@link CustomExternalFileType} lives in model.      */
-DECL|method|fromFile (Path file, List<Path> fileDirectories)
+DECL|method|fromFile (Path file, List<Path> fileDirectories, ExternalFileTypes externalFileTypesFile)
 specifier|public
 specifier|static
 name|LinkedFile
@@ -704,6 +715,9 @@ argument_list|<
 name|Path
 argument_list|>
 name|fileDirectories
+parameter_list|,
+name|ExternalFileTypes
+name|externalFileTypesFile
 parameter_list|)
 block|{
 name|String
@@ -724,10 +738,7 @@ decl_stmt|;
 name|ExternalFileType
 name|suggestedFileType
 init|=
-name|ExternalFileTypes
-operator|.
-name|getInstance
-argument_list|()
+name|externalFileTypesFile
 operator|.
 name|getExternalFileTypeByExt
 argument_list|(
@@ -806,6 +817,8 @@ argument_list|(
 name|file
 argument_list|,
 name|fileDirectories
+argument_list|,
+name|externalFileTypes
 argument_list|)
 decl_stmt|;
 return|return
@@ -823,6 +836,8 @@ argument_list|,
 name|dialogService
 argument_list|,
 name|preferences
+argument_list|,
+name|externalFileTypes
 argument_list|)
 return|;
 block|}
@@ -890,6 +905,8 @@ argument_list|,
 name|dialogService
 argument_list|,
 name|preferences
+argument_list|,
+name|externalFileTypes
 argument_list|)
 argument_list|)
 operator|.
@@ -1020,6 +1037,8 @@ argument_list|(
 name|newFile
 argument_list|,
 name|fileDirectories
+argument_list|,
+name|externalFileTypes
 argument_list|)
 decl_stmt|;
 name|files
@@ -1040,6 +1059,8 @@ argument_list|,
 name|dialogService
 argument_list|,
 name|preferences
+argument_list|,
+name|externalFileTypes
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1197,6 +1218,8 @@ argument_list|,
 name|dialogService
 argument_list|,
 name|preferences
+argument_list|,
+name|externalFileTypes
 argument_list|)
 decl_stmt|;
 name|newLinkedFile
@@ -1453,6 +1476,8 @@ argument_list|,
 name|dialogService
 argument_list|,
 name|preferences
+argument_list|,
+name|externalFileTypes
 argument_list|)
 decl_stmt|;
 name|files
