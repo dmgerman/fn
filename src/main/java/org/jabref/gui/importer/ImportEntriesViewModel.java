@@ -94,6 +94,16 @@ name|org
 operator|.
 name|jabref
 operator|.
+name|Globals
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
 name|gui
 operator|.
 name|AbstractViewModel
@@ -273,6 +283,38 @@ operator|.
 name|preferences
 operator|.
 name|PreferencesService
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|undo
+operator|.
+name|UndoManager
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
 import|;
 end_import
 
@@ -568,9 +610,12 @@ name|shouldWarnAboutDuplicatesForImport
 argument_list|()
 condition|)
 block|{
-name|boolean
-name|containsDuplicate
-init|=
+name|BackgroundTask
+operator|.
+name|wrap
+argument_list|(
+parameter_list|()
+lambda|->
 name|entriesToImport
 operator|.
 name|stream
@@ -582,15 +627,19 @@ name|this
 operator|::
 name|hasDuplicate
 argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|containsDuplicate
-condition|)
+argument_list|)
+operator|.
+name|onSuccess
+argument_list|(
+name|e
+lambda|->
+block|{
+lambda|if (e
+argument_list|)
 block|{
 name|boolean
 name|continueImport
-init|=
+operator|=
 name|dialogService
 operator|.
 name|showConfirmationDialogWithOptOutAndWait
@@ -640,7 +689,7 @@ operator|!
 name|optOut
 argument_list|)
 argument_list|)
-decl_stmt|;
+block|;
 if|if
 condition|(
 operator|!
@@ -659,13 +708,24 @@ literal|"Import canceled"
 argument_list|)
 argument_list|)
 expr_stmt|;
-return|return;
 block|}
 block|}
 block|}
-name|ImportHandler
+block|)
+operator|.
+name|executeWith
+argument_list|(
+name|Globals
+operator|.
+name|TASK_EXECUTOR
+argument_list|)
+expr_stmt|;
+end_class
+
+begin_expr_stmt
+unit|}          ImportHandler
 name|importHandler
-init|=
+operator|=
 operator|new
 name|ImportHandler
 argument_list|(
@@ -699,7 +759,10 @@ name|undoManager
 argument_list|,
 name|stateManager
 argument_list|)
-decl_stmt|;
+expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
 name|importHandler
 operator|.
 name|importEntries
@@ -707,6 +770,9 @@ argument_list|(
 name|entriesToImport
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
 name|dialogService
 operator|.
 name|notify
@@ -726,10 +792,16 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
+end_expr_stmt
+
+begin_comment
+unit|}
 comment|/**      * Checks if there are duplicates to the given entry in the list of entries to be imported.      *      * @param entry The entry to search for duplicates of.      * @return A possible duplicate, if any, or null if none were found.      */
+end_comment
+
+begin_function
 DECL|method|findInternalDuplicate (BibEntry entry)
-specifier|private
+unit|private
 name|Optional
 argument_list|<
 name|BibEntry
@@ -795,6 +867,9 @@ name|empty
 argument_list|()
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|resolveDuplicate (BibEntry entry)
 specifier|public
 name|void
@@ -1123,8 +1198,8 @@ expr_stmt|;
 block|}
 block|}
 block|}
-block|}
-end_class
+end_function
 
+unit|}
 end_unit
 

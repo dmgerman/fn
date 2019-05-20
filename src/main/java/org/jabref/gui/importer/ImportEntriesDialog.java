@@ -965,12 +965,10 @@ name|selectedProperty
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Callable
-argument_list|<
-name|Boolean
-argument_list|>
-name|hasDuplicateEntryTask
-init|=
+name|BackgroundTask
+operator|.
+name|wrap
+argument_list|(
 parameter_list|()
 lambda|->
 name|viewModel
@@ -979,12 +977,6 @@ name|hasDuplicate
 argument_list|(
 name|entry
 argument_list|)
-decl_stmt|;
-name|BackgroundTask
-operator|.
-name|wrap
-argument_list|(
-name|hasDuplicateEntryTask
 argument_list|)
 operator|.
 name|onSuccess
@@ -992,10 +984,8 @@ argument_list|(
 name|e
 lambda|->
 block|{
-if|if
-condition|(
-name|e
-condition|)
+lambda|if (e
+argument_list|)
 block|{
 name|Button
 name|duplicateButton
@@ -1066,7 +1056,7 @@ return|return
 name|container
 return|;
 block|}
-argument_list|)
+block|)
 operator|.
 name|withOnMouseClickedEvent
 argument_list|(
@@ -1101,6 +1091,9 @@ argument_list|(
 name|entriesListView
 argument_list|)
 expr_stmt|;
+end_class
+
+begin_expr_stmt
 name|entriesListView
 operator|.
 name|setSelectionModel
@@ -1111,9 +1104,11 @@ argument_list|<>
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
+end_expr_stmt
+
+begin_function
+unit|}      private
 DECL|method|getEntryNode (BibEntry entry)
-specifier|private
 name|Node
 name|getEntryNode
 parameter_list|(
@@ -1362,6 +1357,9 @@ return|return
 name|entryContainer
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|getIcon (String type)
 specifier|private
 name|IconTheme
@@ -1401,6 +1399,9 @@ name|ARTICLE
 return|;
 block|}
 block|}
+end_function
+
+begin_function
 DECL|method|unselectAll ()
 specifier|public
 name|void
@@ -1416,6 +1417,9 @@ name|clearChecks
 argument_list|()
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 DECL|method|selectAllNewEntries ()
 specifier|public
 name|void
@@ -1460,8 +1464,8 @@ expr_stmt|;
 block|}
 block|}
 block|}
-block|}
-end_class
+end_function
 
+unit|}
 end_unit
 
