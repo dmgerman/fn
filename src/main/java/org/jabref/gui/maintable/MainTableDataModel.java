@@ -228,6 +228,10 @@ name|BibEntry
 argument_list|>
 name|allEntries
 init|=
+name|BindingsHelper
+operator|.
+name|forUI
+argument_list|(
 name|context
 operator|.
 name|getDatabase
@@ -235,6 +239,7 @@ argument_list|()
 operator|.
 name|getEntries
 argument_list|()
+argument_list|)
 decl_stmt|;
 name|ObservableList
 argument_list|<

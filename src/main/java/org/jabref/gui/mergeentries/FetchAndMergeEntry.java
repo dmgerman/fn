@@ -590,12 +590,9 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|panel
+name|dialogService
 operator|.
-name|frame
-argument_list|()
-operator|.
-name|setStatus
+name|notify
 argument_list|(
 name|Localization
 operator|.

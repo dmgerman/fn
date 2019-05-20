@@ -76,6 +76,20 @@ name|IconTheme
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
+import|;
+end_import
+
 begin_class
 DECL|class|CustomizeExternalFileTypesViewModel
 specifier|public
@@ -84,6 +98,7 @@ name|CustomizeExternalFileTypesViewModel
 block|{
 DECL|field|fileTypes
 specifier|private
+specifier|final
 name|ObservableList
 argument_list|<
 name|ExternalFileType
@@ -226,9 +241,16 @@ argument_list|(
 name|type
 argument_list|)
 expr_stmt|;
-name|edit
+name|showEditDialog
 argument_list|(
 name|type
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Add new file type"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -245,13 +267,16 @@ return|return
 name|fileTypes
 return|;
 block|}
-DECL|method|edit (ExternalFileType type)
-specifier|public
+DECL|method|showEditDialog (ExternalFileType type, String dialogTitle)
+specifier|private
 name|void
-name|edit
+name|showEditDialog
 parameter_list|(
 name|ExternalFileType
 name|type
+parameter_list|,
+name|String
+name|dialogTitle
 parameter_list|)
 block|{
 name|CustomExternalFileType
@@ -283,20 +308,42 @@ name|type
 argument_list|)
 expr_stmt|;
 block|}
-name|ExternalFileTypeEntryEditor
-name|entryEditor
+name|EditExternalFileTypeEntryDialog
+name|dlg
 init|=
 operator|new
-name|ExternalFileTypeEntryEditor
+name|EditExternalFileTypeEntryDialog
 argument_list|(
 name|typeForEdit
+argument_list|,
+name|dialogTitle
 argument_list|)
 decl_stmt|;
-name|entryEditor
+name|dlg
 operator|.
-name|setVisible
+name|showAndWait
+argument_list|()
+expr_stmt|;
+block|}
+DECL|method|edit (ExternalFileType type)
+specifier|public
+name|void
+name|edit
+parameter_list|(
+name|ExternalFileType
+name|type
+parameter_list|)
+block|{
+name|showEditDialog
 argument_list|(
-literal|true
+name|type
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Edit file type"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

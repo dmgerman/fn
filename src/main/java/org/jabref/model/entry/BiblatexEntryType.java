@@ -296,6 +296,19 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
+DECL|method|toString ()
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+name|getName
+argument_list|()
+return|;
+block|}
 block|}
 end_class
 

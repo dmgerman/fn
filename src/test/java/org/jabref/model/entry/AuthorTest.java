@@ -44,14 +44,12 @@ end_import
 
 begin_class
 DECL|class|AuthorTest
-specifier|public
 class|class
 name|AuthorTest
 block|{
 annotation|@
 name|Test
 DECL|method|addDotIfAbbreviationAddDot ()
-specifier|public
 name|void
 name|addDotIfAbbreviationAddDot
 parameter_list|()
@@ -119,8 +117,27 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+DECL|method|addDotIfAbbreviationDoesNotAddMultipleSpaces ()
+name|void
+name|addDotIfAbbreviationDoesNotAddMultipleSpaces
+parameter_list|()
+block|{
+name|assertEquals
+argument_list|(
+literal|"A. O."
+argument_list|,
+name|Author
+operator|.
+name|addDotIfAbbreviation
+argument_list|(
+literal|"A O"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
 DECL|method|addDotIfAbbreviationDoNotAddDot ()
-specifier|public
 name|void
 name|addDotIfAbbreviationDoNotAddDot
 parameter_list|()

@@ -147,7 +147,7 @@ argument_list|()
 decl_stmt|;
 comment|/**      * Checks if there is more than one occurrence of this key      */
 DECL|method|isDuplicateCiteKeyExisting (String citeKey)
-specifier|public
+specifier|private
 name|boolean
 name|isDuplicateCiteKeyExisting
 parameter_list|(

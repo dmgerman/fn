@@ -897,10 +897,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|addStringAsCollection ()
+DECL|method|setSingleStringAsCollection ()
 specifier|public
 name|void
-name|addStringAsCollection
+name|setSingleStringAsCollection
 parameter_list|()
 block|{
 name|BibtexString
@@ -929,7 +929,7 @@ argument_list|)
 decl_stmt|;
 name|database
 operator|.
-name|addStrings
+name|setStrings
 argument_list|(
 name|strings
 argument_list|)
@@ -954,10 +954,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|addStringAsCollectionWithUpdatedContent ()
+DECL|method|setStringAsCollectionWithUpdatedContentOverridesString ()
 specifier|public
 name|void
-name|addStringAsCollectionWithUpdatedContent
+name|setStringAsCollectionWithUpdatedContentOverridesString
 parameter_list|()
 block|{
 name|BibtexString
@@ -971,18 +971,9 @@ argument_list|,
 literal|"Digital Signal Processing"
 argument_list|)
 decl_stmt|;
-name|List
-argument_list|<
 name|BibtexString
-argument_list|>
-name|strings
+name|newContent
 init|=
-name|Arrays
-operator|.
-name|asList
-argument_list|(
-name|string
-argument_list|,
 operator|new
 name|BibtexString
 argument_list|(
@@ -990,11 +981,25 @@ literal|"DSP"
 argument_list|,
 literal|"ABCD"
 argument_list|)
+decl_stmt|;
+name|List
+argument_list|<
+name|BibtexString
+argument_list|>
+name|strings
+init|=
+name|Arrays
+operator|.
+name|asList
+argument_list|(
+name|string
+argument_list|,
+name|newContent
 argument_list|)
 decl_stmt|;
 name|database
 operator|.
-name|addStrings
+name|setStrings
 argument_list|(
 name|strings
 argument_list|)
@@ -1005,7 +1010,7 @@ name|Optional
 operator|.
 name|of
 argument_list|(
-name|string
+name|newContent
 argument_list|)
 argument_list|,
 name|database
@@ -1019,10 +1024,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|addStringAsCollectionWithNewContent ()
+DECL|method|setStringAsCollectionWithNewContent ()
 specifier|public
 name|void
-name|addStringAsCollectionWithNewContent
+name|setStringAsCollectionWithNewContent
 parameter_list|()
 block|{
 name|BibtexString
@@ -1064,7 +1069,7 @@ argument_list|)
 decl_stmt|;
 name|database
 operator|.
-name|addStrings
+name|setStrings
 argument_list|(
 name|strings
 argument_list|)

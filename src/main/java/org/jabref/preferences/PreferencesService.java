@@ -468,6 +468,11 @@ name|boolean
 name|value
 parameter_list|)
 function_decl|;
+DECL|method|saveCustomEntryTypes ()
+name|void
+name|saveCustomEntryTypes
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

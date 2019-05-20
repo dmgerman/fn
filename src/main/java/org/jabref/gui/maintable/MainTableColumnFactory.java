@@ -2179,6 +2179,8 @@ argument_list|,
 name|Globals
 operator|.
 name|prefs
+argument_list|,
+name|externalFileTypes
 argument_list|)
 decl_stmt|;
 name|linkedFileViewModel
@@ -2322,6 +2324,8 @@ argument_list|,
 name|Globals
 operator|.
 name|prefs
+argument_list|,
+name|externalFileTypes
 argument_list|)
 decl_stmt|;
 name|MenuItem

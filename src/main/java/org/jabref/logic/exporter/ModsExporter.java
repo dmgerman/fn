@@ -736,7 +736,7 @@ extends|extends
 name|Exporter
 block|{
 DECL|field|MODS_NAMESPACE_URI
-specifier|protected
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -2380,11 +2380,6 @@ argument_list|(
 name|commaIndex
 operator|+
 literal|1
-argument_list|,
-name|author
-operator|.
-name|length
-argument_list|()
 argument_list|)
 decl_stmt|;
 name|String

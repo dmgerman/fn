@@ -13,12 +13,14 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * BaseAction is used to define actions that are called from the  * base frame through runCommand(). runCommand() finds the  * appropriate BaseAction object, and runs its action() method.  */
+comment|/**  * BaseAction is used to define actions that are called from the  * base frame through runCommand(). runCommand() finds the  * appropriate BaseAction object, and runs its action() method.  *  * @deprecated use {@link SimpleCommand} instead  */
 end_comment
 
 begin_interface
 annotation|@
 name|FunctionalInterface
+annotation|@
+name|Deprecated
 DECL|interface|BaseAction
 specifier|public
 interface|interface

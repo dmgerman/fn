@@ -316,7 +316,6 @@ end_import
 
 begin_class
 DECL|class|GroupsParserTest
-specifier|public
 class|class
 name|GroupsParserTest
 block|{
@@ -333,7 +332,6 @@ decl_stmt|;
 annotation|@
 name|BeforeEach
 DECL|method|setUp ()
-specifier|public
 name|void
 name|setUp
 parameter_list|()
@@ -357,7 +355,6 @@ annotation|@
 name|Test
 comment|// For https://github.com/JabRef/jabref/issues/1681
 DECL|method|fromStringParsesExplicitGroupWithEscapedCharacterInName ()
-specifier|public
 name|void
 name|fromStringParsesExplicitGroupWithEscapedCharacterInName
 parameter_list|()
@@ -406,7 +403,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|keywordDelimiterThatNeedsToBeEscaped ()
-specifier|public
 name|void
 name|keywordDelimiterThatNeedsToBeEscaped
 parameter_list|()
@@ -459,7 +455,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|hierarchicalDelimiterThatNeedsToBeEscaped ()
-specifier|public
 name|void
 name|hierarchicalDelimiterThatNeedsToBeEscaped
 parameter_list|()
@@ -512,7 +507,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|fromStringThrowsParseExceptionForNotEscapedGroupName ()
-specifier|public
 name|void
 name|fromStringThrowsParseExceptionForNotEscapedGroupName
 parameter_list|()
@@ -545,7 +539,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testImportSubGroups ()
-specifier|public
 name|void
 name|testImportSubGroups
 parameter_list|()
@@ -704,7 +697,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|fromStringParsesExplicitGroupWithIconAndDescription ()
-specifier|public
 name|void
 name|fromStringParsesExplicitGroupWithIconAndDescription
 parameter_list|()
@@ -783,7 +775,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|fromStringParsesAutomaticKeywordGroup ()
-specifier|public
 name|void
 name|fromStringParsesAutomaticKeywordGroup
 parameter_list|()
@@ -836,7 +827,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|fromStringParsesAutomaticPersonGroup ()
-specifier|public
 name|void
 name|fromStringParsesAutomaticPersonGroup
 parameter_list|()
@@ -885,7 +875,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|fromStringParsesTexGroup ()
-specifier|public
 name|void
 name|fromStringParsesTexGroup
 parameter_list|()
@@ -895,8 +884,9 @@ block|{
 name|TexGroup
 name|expected
 init|=
-operator|new
 name|TexGroup
+operator|.
+name|createWithoutFileMonitoring
 argument_list|(
 literal|"myTexGroup"
 argument_list|,
@@ -955,7 +945,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|fromStringUnknownGroupThrowsException ()
-specifier|public
 name|void
 name|fromStringUnknownGroupThrowsException
 parameter_list|()

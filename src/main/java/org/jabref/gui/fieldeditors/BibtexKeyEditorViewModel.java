@@ -44,9 +44,9 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|actions
+name|autocompleter
 operator|.
-name|GenerateBibtexKeySingleAction
+name|AutoCompleteSuggestionProvider
 import|;
 end_import
 
@@ -58,9 +58,9 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|autocompleter
+name|bibtexkeypattern
 operator|.
-name|AutoCompleteSuggestionProvider
+name|GenerateBibtexKeySingleAction
 import|;
 end_import
 

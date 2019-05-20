@@ -50,18 +50,6 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|BasePanel
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
 name|DialogService
 import|;
 end_import
@@ -104,7 +92,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibDatabase
+name|BibDatabaseContext
 import|;
 end_import
 
@@ -119,20 +107,6 @@ operator|.
 name|entry
 operator|.
 name|BibEntry
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|metadata
-operator|.
-name|MetaData
 import|;
 end_import
 
@@ -287,12 +261,12 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|pushEntries (BibDatabase database, List<BibEntry> entries, String keyString, MetaData metaData)
+DECL|method|pushEntries (BibDatabaseContext database, List<BibEntry> entries, String keyString)
 specifier|public
 name|void
 name|pushEntries
 parameter_list|(
-name|BibDatabase
+name|BibDatabaseContext
 name|database
 parameter_list|,
 name|List
@@ -303,9 +277,6 @@ name|entries
 parameter_list|,
 name|String
 name|keyString
-parameter_list|,
-name|MetaData
-name|metaData
 parameter_list|)
 block|{
 name|couldNotConnect
@@ -480,33 +451,28 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|operationCompleted (BasePanel panel)
+DECL|method|operationCompleted ()
 specifier|public
 name|void
 name|operationCompleted
-parameter_list|(
-name|BasePanel
-name|panel
-parameter_list|)
+parameter_list|()
 block|{
 if|if
 condition|(
 name|notDefined
 condition|)
 block|{
-name|panel
+name|dialogService
 operator|.
-name|output
+name|showErrorDialogAndWait
 argument_list|(
 name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Error"
+literal|"Error pushing entries"
 argument_list|)
-operator|+
-literal|": "
-operator|+
+argument_list|,
 name|Localization
 operator|.
 name|lang
@@ -527,19 +493,17 @@ condition|(
 name|couldNotCall
 condition|)
 block|{
-name|panel
+name|dialogService
 operator|.
-name|output
+name|showErrorDialogAndWait
 argument_list|(
 name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Error"
+literal|"Error pushing entries"
 argument_list|)
-operator|+
-literal|": "
-operator|+
+argument_list|,
 name|Localization
 operator|.
 name|lang
@@ -561,19 +525,17 @@ condition|(
 name|couldNotConnect
 condition|)
 block|{
-name|panel
+name|dialogService
 operator|.
-name|output
+name|showErrorDialogAndWait
 argument_list|(
 name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Error"
+literal|"Error pushing entries"
 argument_list|)
-operator|+
-literal|": "
-operator|+
+argument_list|,
 name|Localization
 operator|.
 name|lang
@@ -590,9 +552,9 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|panel
+name|dialogService
 operator|.
-name|output
+name|notify
 argument_list|(
 name|Localization
 operator|.

@@ -17,6 +17,8 @@ comment|/**  * Global String constants for GUI actions  */
 end_comment
 
 begin_enum
+annotation|@
+name|Deprecated
 DECL|enum|Actions
 specifier|public
 enum|enum

@@ -721,6 +721,8 @@ throw|throw
 operator|new
 name|SaveException
 argument_list|(
+literal|"Problems saving:"
+argument_list|,
 name|ex
 argument_list|)
 throw|;
@@ -1138,7 +1140,10 @@ argument_list|)
 expr_stmt|;
 name|frame
 operator|.
-name|output
+name|getDialogService
+argument_list|()
+operator|.
+name|notify
 argument_list|(
 name|Localization
 operator|.
@@ -1263,7 +1268,10 @@ operator|.
 name|frame
 argument_list|()
 operator|.
-name|output
+name|getDialogService
+argument_list|()
+operator|.
+name|notify
 argument_list|(
 name|Localization
 operator|.
@@ -1744,7 +1752,10 @@ argument_list|)
 expr_stmt|;
 name|frame
 operator|.
-name|output
+name|getDialogService
+argument_list|()
+operator|.
+name|notify
 argument_list|(
 name|Localization
 operator|.

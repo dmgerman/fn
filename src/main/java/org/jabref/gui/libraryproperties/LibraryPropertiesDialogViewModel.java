@@ -655,10 +655,10 @@ operator|.
 name|userSpecificFileDirectoryProperty
 return|;
 block|}
-DECL|method|LaTexFileDirectoryProperty ()
+DECL|method|laTexFileDirectoryProperty ()
 specifier|public
 name|StringProperty
-name|LaTexFileDirectoryProperty
+name|laTexFileDirectoryProperty
 parameter_list|()
 block|{
 return|return
@@ -843,10 +843,10 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|LaTexFileDirChanged ()
+DECL|method|laTexFileDirChanged ()
 specifier|public
 name|boolean
-name|LaTexFileDirChanged
+name|laTexFileDirChanged
 parameter_list|()
 block|{
 return|return

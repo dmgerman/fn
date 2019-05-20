@@ -2267,15 +2267,6 @@ operator|.
 name|ALERT_CIRCLE
 argument_list|)
 operator|,
-DECL|enumConstant|OPEN_IN_NEW_WINDOW
-name|OPEN_IN_NEW_WINDOW
-argument_list|(
-name|MaterialDesignIcon
-operator|.
-name|OPEN_IN_NEW
-argument_list|)
-operator|,
-comment|/*css: open-in-new */
 DECL|enumConstant|CASE_SENSITIVE
 name|CASE_SENSITIVE
 argument_list|(
@@ -2339,15 +2330,6 @@ name|RSS
 argument_list|)
 operator|,
 comment|/* css: rss */
-DECL|enumConstant|GLOBAL_SEARCH
-name|GLOBAL_SEARCH
-argument_list|(
-name|MaterialDesignIcon
-operator|.
-name|EARTH
-argument_list|)
-operator|,
-comment|/* css: earth */
 DECL|enumConstant|DATE_PICKER
 name|DATE_PICKER
 argument_list|(

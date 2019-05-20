@@ -656,12 +656,6 @@ block|}
 elseif|else
 if|if
 condition|(
-operator|(
-name|lastStart
-operator|<
-literal|0
-operator|)
-operator|&&
 name|tokenCase
 condition|)
 block|{

@@ -4036,7 +4036,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * Defines a string macro. It has two arguments; the first is the macro's      * name, which is treated like any other variable or function name, and the      * second is its definition, which must be double-quote-delimited. You must      * have one for each three-letter month abbreviation; in addition, you      * should have one for common journal names. The user's database may      * override any definition you define using this command. If you want to      * define a string the user can't touch, use the FUNCTION command, which has      * a compatible syntax.      *      * @param child      */
+comment|/**      * Defines a string macro. It has two arguments; the first is the macro's      * name, which is treated like any other variable or function name, and the      * second is its definition, which must be double-quote-delimited. You must      * have one for each three-letter month abbreviation; in addition, you      * should have one for common journal names. The user's database may      * override any definition you define using this command. If you want to      * define a string the user can't touch, use the FUNCTION command, which has      * a compatible syntax.      */
 DECL|method|macro (Tree child)
 specifier|private
 name|void
@@ -4136,7 +4136,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/*      * Declares the fields and entry variables. It has three arguments, each a      * (possibly empty) list of variable names. The three lists are of: fields,      * integer entry variables, and string entry variables. There is an      * additional field that BibTEX automatically declares, crossref, used for      * cross referencing. And there is an additional string entry variable      * automatically declared, sort.key$, used by the SORT command. Each of      * these variables has a value for each entry on the list.      */
+comment|/**      * Declares the fields and entry variables. It has three arguments, each a      * (possibly empty) list of variable names. The three lists are of: fields,      * integer entry variables, and string entry variables. There is an      * additional field that BibTEX automatically declares, crossref, used for      * cross referencing. And there is an additional string entry variable      * automatically declared, sort.key$, used by the SORT command. Each of      * these variables has a value for each entry on the list.      */
 DECL|method|entry (Tree child)
 specifier|private
 name|void
