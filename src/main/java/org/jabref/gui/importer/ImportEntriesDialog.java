@@ -24,18 +24,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|Callable
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|inject
