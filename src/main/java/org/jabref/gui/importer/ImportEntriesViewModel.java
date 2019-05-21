@@ -677,23 +677,11 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-block|}
-block|}
-block|)
-operator|.
-name|executeWith
-argument_list|(
-name|Globals
-operator|.
-name|TASK_EXECUTOR
-argument_list|)
-expr_stmt|;
-end_class
-
-begin_expr_stmt
-unit|}          ImportHandler
+else|else
+block|{
+name|ImportHandler
 name|importHandler
-operator|=
+init|=
 operator|new
 name|ImportHandler
 argument_list|(
@@ -727,10 +715,7 @@ name|undoManager
 argument_list|,
 name|stateManager
 argument_list|)
-expr_stmt|;
-end_expr_stmt
-
-begin_expr_stmt
+decl_stmt|;
 name|importHandler
 operator|.
 name|importEntries
@@ -738,9 +723,6 @@ argument_list|(
 name|entriesToImport
 argument_list|)
 expr_stmt|;
-end_expr_stmt
-
-begin_expr_stmt
 name|dialogService
 operator|.
 name|notify
@@ -760,16 +742,28 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-end_expr_stmt
+block|}
+block|}
+block|}
+block|)
+operator|.
+name|executeWith
+argument_list|(
+name|Globals
+operator|.
+name|TASK_EXECUTOR
+argument_list|)
+expr_stmt|;
+end_class
 
 begin_comment
-unit|}
+unit|}      }
 comment|/**      * Checks if there are duplicates to the given entry in the list of entries to be imported.      *      * @param entry The entry to search for duplicates of.      * @return A possible duplicate, if any, or null if none were found.      */
 end_comment
 
 begin_function
 DECL|method|findInternalDuplicate (BibEntry entry)
-unit|private
+specifier|private
 name|Optional
 argument_list|<
 name|BibEntry
