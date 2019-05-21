@@ -52,6 +52,18 @@ name|org
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
+name|DialogService
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
 name|logic
 operator|.
 name|l10n
@@ -90,6 +102,20 @@ operator|new
 name|TextField
 argument_list|()
 decl_stmt|;
+DECL|method|PushToEmacsSettings (DialogService dialogService)
+specifier|public
+name|PushToEmacsSettings
+parameter_list|(
+name|DialogService
+name|dialogService
+parameter_list|)
+block|{
+name|super
+argument_list|(
+name|dialogService
+argument_list|)
+expr_stmt|;
+block|}
 annotation|@
 name|Override
 DECL|method|storeSettings ()

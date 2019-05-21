@@ -162,6 +162,21 @@ specifier|private
 name|DialogService
 name|dialogService
 decl_stmt|;
+DECL|method|PushToApplicationSettings (DialogService dialogService)
+specifier|public
+name|PushToApplicationSettings
+parameter_list|(
+name|DialogService
+name|dialogService
+parameter_list|)
+block|{
+name|this
+operator|.
+name|dialogService
+operator|=
+name|dialogService
+expr_stmt|;
+block|}
 DECL|method|getJFXSettingPane (int n)
 specifier|public
 name|GridPane
