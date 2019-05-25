@@ -52,16 +52,6 @@ name|javafx
 operator|.
 name|scene
 operator|.
-name|Node
-import|;
-end_import
-
-begin_import
-import|import
-name|javafx
-operator|.
-name|scene
-operator|.
 name|control
 operator|.
 name|Button
@@ -853,6 +843,7 @@ literal|"icon-button"
 argument_list|)
 expr_stmt|;
 comment|// For some reason the graphic is not set correctly, so let's fix this
+comment|// ToDO: Find a way to reuse JabRefIconView
 name|button
 operator|.
 name|graphicProperty
@@ -870,43 +861,15 @@ name|ifPresent
 argument_list|(
 name|icon
 lambda|->
-block|{
-comment|// ToDO: Find a way to reuse JabRefIconView
-name|Node
-name|graphicNode
-init|=
-name|icon
-operator|.
-name|getGraphicNode
-argument_list|()
-decl_stmt|;
-name|graphicNode
-operator|.
-name|setStyle
-argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"-fx-font-family: %s; -fx-font-size: %s;"
-argument_list|,
-name|icon
-operator|.
-name|fontFamily
-argument_list|()
-argument_list|,
-literal|"1em"
-argument_list|)
-argument_list|)
-expr_stmt|;
 name|button
 operator|.
 name|setGraphic
 argument_list|(
-name|graphicNode
+name|icon
+operator|.
+name|getGraphicNode
+argument_list|()
 argument_list|)
-expr_stmt|;
-block|}
 argument_list|)
 expr_stmt|;
 return|return
