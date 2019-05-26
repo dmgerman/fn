@@ -389,6 +389,11 @@ argument_list|,
 name|frame
 argument_list|,
 name|preferences
+argument_list|,
+name|frame
+operator|.
+name|getDialogService
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
