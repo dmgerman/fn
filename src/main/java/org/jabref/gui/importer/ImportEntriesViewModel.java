@@ -679,6 +679,76 @@ expr_stmt|;
 block|}
 else|else
 block|{
+name|buildImportHandlerThenImportEntries
+argument_list|(
+name|entriesToImport
+argument_list|)
+expr_stmt|;
+name|dialogService
+operator|.
+name|notify
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Number of entries successfully imported"
+argument_list|)
+operator|+
+literal|": "
+operator|+
+name|entriesToImport
+operator|.
+name|size
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+else|else
+block|{
+name|buildImportHandlerThenImportEntries
+argument_list|(
+name|entriesToImport
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+block|)
+operator|.
+name|executeWith
+argument_list|(
+name|Globals
+operator|.
+name|TASK_EXECUTOR
+argument_list|)
+expr_stmt|;
+end_class
+
+begin_block
+unit|} else
+block|{
+name|buildImportHandlerThenImportEntries
+argument_list|(
+name|entriesToImport
+argument_list|)
+expr_stmt|;
+block|}
+end_block
+
+begin_function
+unit|}      private
+DECL|method|buildImportHandlerThenImportEntries (List<BibEntry> entriesToImport)
+name|void
+name|buildImportHandlerThenImportEntries
+parameter_list|(
+name|List
+argument_list|<
+name|BibEntry
+argument_list|>
+name|entriesToImport
+parameter_list|)
+block|{
 name|ImportHandler
 name|importHandler
 init|=
@@ -723,41 +793,10 @@ argument_list|(
 name|entriesToImport
 argument_list|)
 expr_stmt|;
-name|dialogService
-operator|.
-name|notify
-argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Number of entries successfully imported"
-argument_list|)
-operator|+
-literal|": "
-operator|+
-name|entriesToImport
-operator|.
-name|size
-argument_list|()
-argument_list|)
-expr_stmt|;
 block|}
-block|}
-block|}
-block|)
-operator|.
-name|executeWith
-argument_list|(
-name|Globals
-operator|.
-name|TASK_EXECUTOR
-argument_list|)
-expr_stmt|;
-end_class
+end_function
 
 begin_comment
-unit|}      }
 comment|/**      * Checks if there are duplicates to the given entry in the list of entries to be imported.      *      * @param entry The entry to search for duplicates of.      * @return A possible duplicate, if any, or null if none were found.      */
 end_comment
 
