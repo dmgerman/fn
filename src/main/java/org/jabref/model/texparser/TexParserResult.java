@@ -152,6 +152,20 @@ name|insertedStrings
 init|=
 literal|0
 decl_stmt|;
+DECL|field|nestedFilesCount
+specifier|private
+name|int
+name|nestedFilesCount
+init|=
+literal|0
+decl_stmt|;
+DECL|field|crossRefEntriesCount
+specifier|private
+name|int
+name|crossRefEntriesCount
+init|=
+literal|0
+decl_stmt|;
 DECL|method|TexParserResult (BibDatabase masterDatabase)
 specifier|public
 name|TexParserResult
@@ -276,6 +290,8 @@ name|texDatabase
 operator|.
 name|getEntryCount
 argument_list|()
+operator|-
+name|crossRefEntriesCount
 return|;
 block|}
 DECL|method|getInsertedStrings ()
@@ -319,6 +335,46 @@ name|insertedStrings
 operator|++
 expr_stmt|;
 block|}
+block|}
+DECL|method|getNestedFilesCount ()
+specifier|public
+name|int
+name|getNestedFilesCount
+parameter_list|()
+block|{
+return|return
+name|nestedFilesCount
+return|;
+block|}
+DECL|method|increaseNestedFilesCounter ()
+specifier|public
+name|void
+name|increaseNestedFilesCounter
+parameter_list|()
+block|{
+name|nestedFilesCount
+operator|++
+expr_stmt|;
+block|}
+DECL|method|getCrossRefEntriesCount ()
+specifier|public
+name|int
+name|getCrossRefEntriesCount
+parameter_list|()
+block|{
+return|return
+name|crossRefEntriesCount
+return|;
+block|}
+DECL|method|increaseCrossRefEntriesCounter ()
+specifier|public
+name|void
+name|increaseCrossRefEntriesCounter
+parameter_list|()
+block|{
+name|crossRefEntriesCount
+operator|++
+expr_stmt|;
 block|}
 block|}
 end_class
