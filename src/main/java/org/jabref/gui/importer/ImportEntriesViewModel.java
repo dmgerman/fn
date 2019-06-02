@@ -684,25 +684,6 @@ argument_list|(
 name|entriesToImport
 argument_list|)
 expr_stmt|;
-name|dialogService
-operator|.
-name|notify
-argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Number of entries successfully imported"
-argument_list|)
-operator|+
-literal|": "
-operator|+
-name|entriesToImport
-operator|.
-name|size
-argument_list|()
-argument_list|)
-expr_stmt|;
 block|}
 block|}
 else|else
@@ -791,6 +772,25 @@ operator|.
 name|importEntries
 argument_list|(
 name|entriesToImport
+argument_list|)
+expr_stmt|;
+name|dialogService
+operator|.
+name|notify
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Number of entries successfully imported"
+argument_list|)
+operator|+
+literal|": "
+operator|+
+name|entriesToImport
+operator|.
+name|size
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
