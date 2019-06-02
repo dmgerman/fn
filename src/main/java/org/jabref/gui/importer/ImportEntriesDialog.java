@@ -969,10 +969,10 @@ argument_list|)
 operator|.
 name|onSuccess
 argument_list|(
-name|e
+name|duplicateFound
 lambda|->
 block|{
-lambda|if (e
+lambda|if (duplicateFound
 argument_list|)
 block|{
 name|Button
