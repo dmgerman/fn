@@ -268,22 +268,6 @@ name|MetaData
 import|;
 end_import
 
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
-name|ImmutableList
-operator|.
-name|of
-import|;
-end_import
-
 begin_class
 DECL|class|ContentSelectorDialogViewModel
 class|class
@@ -301,6 +285,8 @@ name|String
 argument_list|>
 name|DEFAULT_FIELD_NAMES
 init|=
+name|List
+operator|.
 name|of
 argument_list|(
 name|FieldName

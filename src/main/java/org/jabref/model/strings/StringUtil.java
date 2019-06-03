@@ -1819,11 +1819,11 @@ argument_list|(
 name|s
 argument_list|)
 decl_stmt|;
-name|StringBuffer
+name|StringBuilder
 name|buf
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 while|while
@@ -3286,11 +3286,6 @@ operator|.
 name|substring
 argument_list|(
 literal|1
-argument_list|,
-name|toCapitalize
-operator|.
-name|length
-argument_list|()
 argument_list|)
 operator|.
 name|toLowerCase

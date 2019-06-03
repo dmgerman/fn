@@ -362,11 +362,11 @@ argument_list|(
 name|bracketString
 argument_list|)
 decl_stmt|;
-name|StringBuffer
+name|StringBuilder
 name|expandedStringBuffer
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 while|while
@@ -634,11 +634,11 @@ argument_list|(
 name|fileName
 argument_list|)
 decl_stmt|;
-name|StringBuffer
+name|StringBuilder
 name|s
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 while|while

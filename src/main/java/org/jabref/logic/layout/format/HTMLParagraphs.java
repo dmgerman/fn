@@ -132,11 +132,11 @@ argument_list|(
 name|trimmedFieldText
 argument_list|)
 decl_stmt|;
-name|StringBuffer
+name|StringBuilder
 name|s
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 while|while

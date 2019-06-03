@@ -330,6 +330,16 @@ name|citeproc
 operator|.
 name|java
 decl_stmt|;
+name|requires
+name|antlr
+operator|.
+name|runtime
+decl_stmt|;
+name|requires
+name|commons
+operator|.
+name|lang3
+decl_stmt|;
 block|}
 end_decl_stmt
 
