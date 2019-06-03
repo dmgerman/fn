@@ -369,15 +369,6 @@ operator|.
 name|getParent
 argument_list|()
 expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-name|resourceDir
-argument_list|)
-expr_stmt|;
 try|try
 init|(
 name|Stream

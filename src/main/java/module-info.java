@@ -322,6 +322,14 @@ name|tomtung
 operator|.
 name|latex2unicode
 decl_stmt|;
+name|requires
+name|jbibtex
+decl_stmt|;
+name|requires
+name|citeproc
+operator|.
+name|java
+decl_stmt|;
 block|}
 end_decl_stmt
 
