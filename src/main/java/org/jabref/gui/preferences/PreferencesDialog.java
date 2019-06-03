@@ -1796,6 +1796,14 @@ operator|.
 name|setupAllTables
 argument_list|()
 expr_stmt|;
+name|frame
+operator|.
+name|getGlobalSearchBar
+argument_list|()
+operator|.
+name|updateHintVisibility
+argument_list|()
+expr_stmt|;
 name|dialogService
 operator|.
 name|notify

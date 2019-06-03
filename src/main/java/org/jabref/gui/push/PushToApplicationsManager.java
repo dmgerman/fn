@@ -71,6 +71,12 @@ name|PushToApplication
 argument_list|>
 name|applications
 decl_stmt|;
+DECL|field|dialogService
+specifier|private
+specifier|final
+name|DialogService
+name|dialogService
+decl_stmt|;
 DECL|method|PushToApplicationsManager (DialogService dialogService)
 specifier|public
 name|PushToApplicationsManager
@@ -79,6 +85,12 @@ name|DialogService
 name|dialogService
 parameter_list|)
 block|{
+name|this
+operator|.
+name|dialogService
+operator|=
+name|dialogService
+expr_stmt|;
 comment|// Set up the current available choices:
 name|applications
 operator|=
@@ -169,7 +181,6 @@ return|;
 block|}
 DECL|method|getSettings (PushToApplication application)
 specifier|public
-specifier|static
 name|PushToApplicationSettings
 name|getSettings
 parameter_list|(
@@ -187,7 +198,9 @@ block|{
 return|return
 operator|new
 name|PushToEmacsSettings
-argument_list|()
+argument_list|(
+name|dialogService
+argument_list|)
 return|;
 block|}
 elseif|else
@@ -201,7 +214,9 @@ block|{
 return|return
 operator|new
 name|PushToLyxSettings
-argument_list|()
+argument_list|(
+name|dialogService
+argument_list|)
 return|;
 block|}
 elseif|else
@@ -215,7 +230,9 @@ block|{
 return|return
 operator|new
 name|PushToVimSettings
-argument_list|()
+argument_list|(
+name|dialogService
+argument_list|)
 return|;
 block|}
 else|else
@@ -223,7 +240,9 @@ block|{
 return|return
 operator|new
 name|PushToApplicationSettings
-argument_list|()
+argument_list|(
+name|dialogService
+argument_list|)
 return|;
 block|}
 block|}
