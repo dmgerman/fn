@@ -58,13 +58,8 @@ name|assertEquals
 import|;
 end_import
 
-begin_comment
-comment|/**  * Tests in addition to the general tests from {@link org.jabref.logic.formatter.FormatterTest}  */
-end_comment
-
 begin_class
 DECL|class|UnicodeToLatexFormatterTest
-specifier|public
 class|class
 name|UnicodeToLatexFormatterTest
 block|{
@@ -76,7 +71,6 @@ decl_stmt|;
 annotation|@
 name|BeforeEach
 DECL|method|setUp ()
-specifier|public
 name|void
 name|setUp
 parameter_list|()
@@ -91,7 +85,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|formatWithoutUnicodeCharactersReturnsSameString ()
-specifier|public
 name|void
 name|formatWithoutUnicodeCharactersReturnsSameString
 parameter_list|()
@@ -112,7 +105,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|formatMultipleUnicodeCharacters ()
-specifier|public
 name|void
 name|formatMultipleUnicodeCharacters
 parameter_list|()
@@ -133,7 +125,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|formatExample ()
-specifier|public
 name|void
 name|formatExample
 parameter_list|()
