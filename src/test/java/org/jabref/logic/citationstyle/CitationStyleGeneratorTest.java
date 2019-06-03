@@ -113,6 +113,11 @@ import|;
 end_import
 
 begin_class
+annotation|@
+name|Disabled
+argument_list|(
+literal|"For some reason, instead of vol and pp we get null. No idea about the origin of this problem."
+argument_list|)
 DECL|class|CitationStyleGeneratorTest
 class|class
 name|CitationStyleGeneratorTest
@@ -518,11 +523,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Disabled
-argument_list|(
-literal|"For some reason, instead of vol and pp we get null. No idea about the origin of this problem."
-argument_list|)
 DECL|method|testXslFoFormat ()
 name|void
 name|testXslFoFormat
