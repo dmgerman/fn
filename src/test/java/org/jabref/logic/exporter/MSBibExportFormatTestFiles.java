@@ -513,6 +513,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|ParameterizedTest
+argument_list|(
+name|name
+operator|=
+literal|"{index} file={0}"
+argument_list|)
 annotation|@
 name|MethodSource
 argument_list|(
