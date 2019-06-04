@@ -40,7 +40,16 @@ specifier|public
 interface|interface
 name|TexParser
 block|{
-comment|/**      * @param texFile Path to a TEX file      * @return a TexParserResult, which contains the generated BibDatabase and all data related to the bibliographic      * entries      */
+comment|/**      * For testing purposes.      *      * @param citeString String that contains a citation      * @return a TexParserResult, where Path is /foo/bar and lineNumber is 1      */
+DECL|method|parse (String citeString)
+name|TexParserResult
+name|parse
+parameter_list|(
+name|String
+name|citeString
+parameter_list|)
+function_decl|;
+comment|/**      * Parse a single TEX file.      *      * @param texFile Path to a TEX file      * @return a TexParserResult, which contains the generated BibDatabase and all data related to the bibliographic      * entries      */
 DECL|method|parse (Path texFile)
 name|TexParserResult
 name|parse
@@ -49,7 +58,7 @@ name|Path
 name|texFile
 parameter_list|)
 function_decl|;
-comment|/**      * @param texFiles List of Path objects linked to a TEX file      * @return a list of TexParserResult objects, which contains the generated BibDatabase and all data related to the      * bibliographic entries      */
+comment|/**      * Parse a list of TEX files.      *      * @param texFiles List of Path objects linked to a TEX file      * @return a TexParserResult, which contains the generated BibDatabase and all data related to the bibliographic      * entries      */
 DECL|method|parse (List<Path> texFiles)
 name|TexParserResult
 name|parse
