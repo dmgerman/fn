@@ -250,12 +250,6 @@ name|PushToApplicationAction
 extends|extends
 name|SimpleCommand
 block|{
-DECL|field|operation
-specifier|private
-specifier|final
-name|PushToApplication
-name|operation
-decl_stmt|;
 DECL|field|stateManager
 specifier|private
 specifier|final
@@ -267,6 +261,11 @@ specifier|private
 specifier|final
 name|DialogService
 name|dialogService
+decl_stmt|;
+DECL|field|application
+specifier|private
+name|PushToApplication
+name|application
 decl_stmt|;
 DECL|method|PushToApplicationAction (StateManager stateManager, PushToApplicationsManager pushToApplicationsManager, DialogService dialogService)
 specifier|public
@@ -284,15 +283,15 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|operation
+name|application
 operator|=
-name|pushToApplicationsManager
-operator|.
-name|getLastUsedApplication
-argument_list|(
 name|Globals
 operator|.
 name|prefs
+operator|.
+name|getActivePushToApplication
+argument_list|(
+name|pushToApplicationsManager
 argument_list|)
 expr_stmt|;
 name|this
@@ -353,6 +352,22 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|updateApplication (PushToApplication application)
+specifier|public
+name|void
+name|updateApplication
+parameter_list|(
+name|PushToApplication
+name|application
+parameter_list|)
+block|{
+name|this
+operator|.
+name|application
+operator|=
+name|application
+expr_stmt|;
+block|}
 DECL|method|getActionInformation ()
 specifier|public
 name|Action
@@ -379,7 +394,7 @@ name|Optional
 operator|.
 name|of
 argument_list|(
-name|operation
+name|application
 operator|.
 name|getIcon
 argument_list|()
@@ -421,7 +436,7 @@ name|lang
 argument_list|(
 literal|"Push entries to external application (%0)"
 argument_list|,
-name|operation
+name|application
 operator|.
 name|getApplicationName
 argument_list|()
@@ -567,7 +582,7 @@ block|{
 comment|// If required, check that all entries have BibTeX keys defined:
 if|if
 condition|(
-name|operation
+name|application
 operator|.
 name|requiresBibtexKeys
 argument_list|()
@@ -601,7 +616,7 @@ name|dialogService
 operator|.
 name|showErrorDialogAndWait
 argument_list|(
-name|operation
+name|application
 operator|.
 name|getApplicationName
 argument_list|()
@@ -632,7 +647,7 @@ name|onSuccess
 argument_list|(
 name|s
 lambda|->
-name|operation
+name|application
 operator|.
 name|operationCompleted
 argument_list|()
@@ -671,7 +686,7 @@ literal|"Database null"
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|operation
+name|application
 operator|.
 name|pushEntries
 argument_list|(

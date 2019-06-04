@@ -68,32 +68,23 @@ name|PushToLyxSettings
 extends|extends
 name|PushToApplicationSettings
 block|{
-DECL|method|PushToLyxSettings (DialogService dialogService)
+DECL|method|PushToLyxSettings (PushToApplication application, DialogService dialogService)
 specifier|public
 name|PushToLyxSettings
 parameter_list|(
+name|PushToApplication
+name|application
+parameter_list|,
 name|DialogService
 name|dialogService
 parameter_list|)
 block|{
 name|super
 argument_list|(
+name|application
+argument_list|,
 name|dialogService
 argument_list|)
-expr_stmt|;
-block|}
-annotation|@
-name|Override
-DECL|method|initJFXSettingsPanel ()
-specifier|protected
-name|void
-name|initJFXSettingsPanel
-parameter_list|()
-block|{
-name|super
-operator|.
-name|initJFXSettingsPanel
-argument_list|()
 expr_stmt|;
 name|path
 operator|.
