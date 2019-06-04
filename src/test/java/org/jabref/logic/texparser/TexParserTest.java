@@ -304,9 +304,13 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
 operator|.
-name|assertFalse
+name|api
+operator|.
+name|Assertions
+operator|.
+name|assertEquals
 import|;
 end_import
 
@@ -322,7 +326,7 @@ name|api
 operator|.
 name|Assertions
 operator|.
-name|assertEquals
+name|assertFalse
 import|;
 end_import
 

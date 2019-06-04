@@ -40,7 +40,7 @@ specifier|public
 interface|interface
 name|TexParser
 block|{
-comment|/**      * For testing purposes.      *      * @param citeString String that contains a citation      * @return a TexParserResult, where Path is /foo/bar and lineNumber is 1      */
+comment|/**      * For testing purposes.      *      * @param citeString String that contains a citation      * @return a TexParserResult, where Path is foo/bar and lineNumber is 1      */
 DECL|method|parse (String citeString)
 name|TexParserResult
 name|parse
