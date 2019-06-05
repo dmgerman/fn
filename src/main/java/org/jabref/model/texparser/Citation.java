@@ -375,17 +375,6 @@ name|citation
 operator|.
 name|lineText
 argument_list|)
-operator|&&
-name|getContext
-argument_list|()
-operator|.
-name|equals
-argument_list|(
-name|citation
-operator|.
-name|getContext
-argument_list|()
-argument_list|)
 return|;
 block|}
 annotation|@
