@@ -688,6 +688,8 @@ parameter_list|(
 name|IOException
 decl||
 name|URISyntaxException
+decl||
+name|UnsupportedOperationException
 name|e
 parameter_list|)
 block|{
