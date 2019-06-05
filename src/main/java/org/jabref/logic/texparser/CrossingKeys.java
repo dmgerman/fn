@@ -84,48 +84,66 @@ name|model
 operator|.
 name|texparser
 operator|.
+name|CrossingKeysResult
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|texparser
+operator|.
 name|TexParserResult
 import|;
 end_import
 
 begin_class
-DECL|class|CrossReferences
+DECL|class|CrossingKeys
 class|class
-name|CrossReferences
+name|CrossingKeys
 block|{
-DECL|method|CrossReferences ()
+DECL|field|result
 specifier|private
-name|CrossReferences
-parameter_list|()
-throws|throws
-name|IllegalStateException
-block|{
-throw|throw
-operator|new
-name|IllegalStateException
-argument_list|(
-literal|"Utility class"
-argument_list|)
-throw|;
-block|}
-comment|/**      * Look for an equivalent BibTeX entry within the reference database for all keys inside of the TEX files.      */
-DECL|method|resolveKeys (TexParserResult result)
-specifier|static
-name|void
-name|resolveKeys
+specifier|final
+name|CrossingKeysResult
+name|result
+decl_stmt|;
+DECL|method|CrossingKeys (TexParserResult texParserResult, BibDatabase masterDatabase)
+specifier|public
+name|CrossingKeys
 parameter_list|(
 name|TexParserResult
-name|result
-parameter_list|)
-block|{
+name|texParserResult
+parameter_list|,
 name|BibDatabase
 name|masterDatabase
-init|=
-name|result
+parameter_list|)
+block|{
+name|this
 operator|.
-name|getMasterDatabase
-argument_list|()
-decl_stmt|;
+name|result
+operator|=
+operator|new
+name|CrossingKeysResult
+argument_list|(
+name|texParserResult
+argument_list|,
+name|masterDatabase
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Look for an equivalent BibTeX entry within the reference database for all keys inside of the TEX files.      */
+DECL|method|resolveKeys ()
+specifier|public
+name|CrossingKeysResult
+name|resolveKeys
+parameter_list|()
+block|{
 name|Set
 argument_list|<
 name|String
@@ -134,7 +152,10 @@ name|keySet
 init|=
 name|result
 operator|.
-name|getUniqueKeys
+name|getParserResult
+argument_list|()
+operator|.
+name|getCitations
 argument_list|()
 operator|.
 name|keySet
@@ -153,7 +174,7 @@ condition|(
 operator|!
 name|result
 operator|.
-name|getGeneratedBibDatabase
+name|getNewDatabase
 argument_list|()
 operator|.
 name|getEntryByKey
@@ -171,7 +192,10 @@ name|BibEntry
 argument_list|>
 name|entry
 init|=
-name|masterDatabase
+name|result
+operator|.
+name|getMasterDatabase
+argument_list|()
 operator|.
 name|getEntryByKey
 argument_list|(
@@ -188,8 +212,6 @@ condition|)
 block|{
 name|insertEntry
 argument_list|(
-name|result
-argument_list|,
 name|entry
 operator|.
 name|get
@@ -198,10 +220,6 @@ argument_list|)
 expr_stmt|;
 name|resolveCrossReferences
 argument_list|(
-name|result
-argument_list|,
-name|masterDatabase
-argument_list|,
 name|entry
 operator|.
 name|get
@@ -224,12 +242,12 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|// Copy database definitions
+comment|// Copy database definitions.
 if|if
 condition|(
 name|result
 operator|.
-name|getGeneratedBibDatabase
+name|getNewDatabase
 argument_list|()
 operator|.
 name|hasEntries
@@ -238,25 +256,31 @@ condition|)
 block|{
 name|result
 operator|.
-name|getGeneratedBibDatabase
+name|getNewDatabase
 argument_list|()
 operator|.
 name|copyPreamble
 argument_list|(
-name|masterDatabase
+name|result
+operator|.
+name|getMasterDatabase
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|result
 operator|.
 name|insertStrings
 argument_list|(
-name|masterDatabase
+name|result
+operator|.
+name|getMasterDatabase
+argument_list|()
 operator|.
 name|getUsedStrings
 argument_list|(
 name|result
 operator|.
-name|getGeneratedBibDatabase
+name|getNewDatabase
 argument_list|()
 operator|.
 name|getEntries
@@ -265,19 +289,16 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+return|return
+name|result
+return|;
 block|}
-DECL|method|resolveCrossReferences (TexParserResult result, BibDatabase masterDatabase, BibEntry entry)
+comment|/**      * Find cross references for inserting into the new database.      */
+DECL|method|resolveCrossReferences (BibEntry entry)
 specifier|private
-specifier|static
 name|void
 name|resolveCrossReferences
 parameter_list|(
-name|TexParserResult
-name|result
-parameter_list|,
-name|BibDatabase
-name|masterDatabase
-parameter_list|,
 name|BibEntry
 name|entry
 parameter_list|)
@@ -301,7 +322,7 @@ condition|(
 operator|!
 name|result
 operator|.
-name|getGeneratedBibDatabase
+name|getNewDatabase
 argument_list|()
 operator|.
 name|getEntryByKey
@@ -319,7 +340,10 @@ name|BibEntry
 argument_list|>
 name|refEntry
 init|=
-name|masterDatabase
+name|result
+operator|.
+name|getMasterDatabase
+argument_list|()
 operator|.
 name|getEntryByKey
 argument_list|(
@@ -334,22 +358,11 @@ name|isPresent
 argument_list|()
 condition|)
 block|{
-name|result
-operator|.
-name|getGeneratedBibDatabase
-argument_list|()
-operator|.
 name|insertEntry
 argument_list|(
-operator|(
-name|BibEntry
-operator|)
 name|refEntry
 operator|.
 name|get
-argument_list|()
-operator|.
-name|clone
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -378,15 +391,11 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Insert into the database a clone of the given entry. The cloned entry has a new unique ID.      */
-DECL|method|insertEntry (TexParserResult result, BibEntry entry)
+DECL|method|insertEntry (BibEntry entry)
 specifier|private
-specifier|static
 name|void
 name|insertEntry
 parameter_list|(
-name|TexParserResult
-name|result
-parameter_list|,
 name|BibEntry
 name|entry
 parameter_list|)
@@ -404,7 +413,7 @@ argument_list|()
 decl_stmt|;
 name|result
 operator|.
-name|getGeneratedBibDatabase
+name|getNewDatabase
 argument_list|()
 operator|.
 name|insertEntry
