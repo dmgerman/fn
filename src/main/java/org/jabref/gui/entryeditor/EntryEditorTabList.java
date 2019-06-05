@@ -48,7 +48,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|TreeMap
+name|LinkedHashMap
 import|;
 end_import
 
@@ -110,7 +110,7 @@ argument_list|>
 name|tabs
 init|=
 operator|new
-name|TreeMap
+name|LinkedHashMap
 argument_list|<>
 argument_list|()
 decl_stmt|;
