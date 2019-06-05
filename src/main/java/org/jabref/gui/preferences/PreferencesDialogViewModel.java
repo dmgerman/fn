@@ -337,7 +337,7 @@ name|LoggerFactory
 operator|.
 name|getLogger
 argument_list|(
-name|ImportCustomizationDialogViewModel
+name|PreferencesDialogViewModel
 operator|.
 name|class
 argument_list|)
