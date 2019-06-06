@@ -428,7 +428,7 @@ operator|.
 name|add
 argument_list|(
 operator|new
-name|GeneralTab
+name|GeneralTabView
 argument_list|(
 name|dialogService
 argument_list|,
