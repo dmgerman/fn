@@ -60,18 +60,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|regex
-operator|.
-name|Pattern
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|stream
 operator|.
 name|Collectors
@@ -324,20 +312,6 @@ name|org
 operator|.
 name|jabref
 operator|.
-name|logic
-operator|.
-name|search
-operator|.
-name|SearchQueryHighlightListener
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
 name|model
 operator|.
 name|database
@@ -399,8 +373,6 @@ class|class
 name|PreviewPanel
 extends|extends
 name|VBox
-implements|implements
-name|SearchQueryHighlightListener
 block|{
 DECL|field|LOGGER
 specifier|private
@@ -517,6 +489,10 @@ argument_list|(
 name|database
 argument_list|,
 name|dialogService
+argument_list|,
+name|Globals
+operator|.
+name|stateManager
 argument_list|)
 expr_stmt|;
 name|previewView
@@ -838,22 +814,6 @@ operator|.
 name|closeBottomPane
 argument_list|()
 expr_stmt|;
-block|}
-annotation|@
-name|Override
-DECL|method|highlightPattern (Optional<Pattern> newPattern)
-specifier|public
-name|void
-name|highlightPattern
-parameter_list|(
-name|Optional
-argument_list|<
-name|Pattern
-argument_list|>
-name|newPattern
-parameter_list|)
-block|{
-comment|// TODO: Implement that search phrases are highlighted
 block|}
 DECL|method|updateLayout (PreviewPreferences previewPreferences)
 specifier|public
