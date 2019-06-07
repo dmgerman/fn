@@ -589,19 +589,7 @@ parameter_list|()
 block|{
 try|try
 block|{
-name|String
-name|issueTitle
-init|=
-literal|"Automatic Bug Report - "
-operator|+
-name|dateFormat
-operator|.
-name|format
-argument_list|(
-name|date
-argument_list|)
-decl_stmt|;
-comment|// system info
+comment|// System info
 name|String
 name|systemInfo
 init|=
@@ -633,13 +621,13 @@ operator|.
 name|JAVA_VERSION
 argument_list|)
 decl_stmt|;
-comment|// steps to reproduce
+comment|// Steps to reproduce
 name|String
 name|howToReproduce
 init|=
 literal|"Steps to reproduce:\n\n1. ...\n2. ...\n3. ..."
 decl_stmt|;
-comment|// log messages
+comment|// Log messages
 name|String
 name|issueDetails
 init|=
@@ -665,7 +653,7 @@ argument_list|(
 name|issueDetails
 argument_list|)
 expr_stmt|;
-comment|// bug report body
+comment|// Bug report body
 name|String
 name|issueBody
 init|=
@@ -757,13 +745,6 @@ operator|.
 name|setPath
 argument_list|(
 literal|"/JabRef/jabref/issues/new"
-argument_list|)
-operator|.
-name|setParameter
-argument_list|(
-literal|"title"
-argument_list|,
-name|issueTitle
 argument_list|)
 operator|.
 name|setParameter
