@@ -457,7 +457,6 @@ operator|.
 name|load
 argument_list|()
 expr_stmt|;
-comment|// ???       Globals.getThemeLoader().installCss(this.getScene(), Globals.prefs);
 block|}
 DECL|method|initialize ()
 specifier|public
