@@ -441,7 +441,7 @@ operator|.
 name|add
 argument_list|(
 operator|new
-name|FileTab
+name|FileTabView
 argument_list|(
 name|dialogService
 argument_list|,
