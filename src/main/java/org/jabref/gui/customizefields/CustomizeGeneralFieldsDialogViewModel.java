@@ -471,7 +471,7 @@ operator|+
 literal|"characters"
 argument_list|)
 operator|+
-literal|": # { } ~ , ^&"
+literal|": # { } ( ) ~ , ^& - \" ' ` Ê¹ \\"
 decl_stmt|;
 name|dialogService
 operator|.
