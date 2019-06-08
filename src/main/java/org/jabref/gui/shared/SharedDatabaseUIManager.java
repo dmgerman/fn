@@ -872,7 +872,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Please merge the shared entry with yours and press \"Merge entries\" to resolve this problem."
+literal|"Press \"Merge entries\" to merge the changes and resolve this problem."
 argument_list|)
 argument_list|)
 expr_stmt|;
