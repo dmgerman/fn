@@ -36,6 +36,18 @@ name|JabRefPreferences
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|preferences
+operator|.
+name|NewLineSeperator
+import|;
+end_import
+
 begin_class
 DECL|class|FileTabViewModel
 specifier|public
@@ -104,6 +116,14 @@ block|{
 return|return
 literal|true
 return|;
+block|}
+DECL|method|mainFileDirBrowse ()
+specifier|public
+name|void
+name|mainFileDirBrowse
+parameter_list|()
+block|{
+comment|// ToDo
 block|}
 block|}
 end_class

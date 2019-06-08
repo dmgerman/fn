@@ -355,19 +355,13 @@ name|PrefsTab
 argument_list|>
 name|preferenceTabs
 decl_stmt|;
-DECL|field|view
-specifier|private
-specifier|final
-name|PreferencesDialogView
-name|view
-decl_stmt|;
 DECL|field|frame
 specifier|private
 specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
-DECL|method|PreferencesDialogViewModel (DialogService dialogService, TaskExecutor taskExecutor, JabRefFrame frame, PreferencesDialogView view)
+DECL|method|PreferencesDialogViewModel (DialogService dialogService, TaskExecutor taskExecutor, JabRefFrame frame)
 specifier|public
 name|PreferencesDialogViewModel
 parameter_list|(
@@ -379,9 +373,6 @@ name|taskExecutor
 parameter_list|,
 name|JabRefFrame
 name|frame
-parameter_list|,
-name|PreferencesDialogView
-name|view
 parameter_list|)
 block|{
 name|this
@@ -409,12 +400,6 @@ operator|.
 name|frame
 operator|=
 name|frame
-expr_stmt|;
-name|this
-operator|.
-name|view
-operator|=
-name|view
 expr_stmt|;
 name|preferenceTabs
 operator|=
@@ -1001,8 +986,6 @@ name|void
 name|updateAfterPreferenceChanges
 parameter_list|()
 block|{
-name|view
-operator|.
 name|setValues
 argument_list|()
 expr_stmt|;
@@ -1150,6 +1133,27 @@ literal|"Preferences recorded."
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
+DECL|method|setValues ()
+specifier|public
+name|void
+name|setValues
+parameter_list|()
+block|{
+for|for
+control|(
+name|PrefsTab
+name|prefsTab
+range|:
+name|preferenceTabs
+control|)
+block|{
+name|prefsTab
+operator|.
+name|setValues
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 block|}
 end_class

@@ -100,7 +100,7 @@ name|scene
 operator|.
 name|layout
 operator|.
-name|GridPane
+name|VBox
 import|;
 end_import
 
@@ -256,7 +256,7 @@ specifier|public
 class|class
 name|GeneralTabView
 extends|extends
-name|GridPane
+name|VBox
 implements|implements
 name|PrefsTab
 block|{
@@ -805,7 +805,7 @@ name|void
 name|setValues
 parameter_list|()
 block|{
-comment|// Done by bindings
+comment|// ToDo: Remove this after conversion of all tabs
 block|}
 annotation|@
 name|Override
