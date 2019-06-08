@@ -212,6 +212,16 @@ name|org
 operator|.
 name|jabref
 operator|.
+name|Globals
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
 name|gui
 operator|.
 name|DialogService
@@ -943,15 +953,27 @@ name|selectedProperty
 argument_list|()
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
+name|BackgroundTask
+operator|.
+name|wrap
+argument_list|(
+parameter_list|()
+lambda|->
 name|viewModel
 operator|.
 name|hasDuplicate
 argument_list|(
 name|entry
 argument_list|)
-condition|)
+argument_list|)
+operator|.
+name|onSuccess
+argument_list|(
+name|duplicateFound
+lambda|->
+block|{
+lambda|if (duplicateFound
+argument_list|)
 block|{
 name|Button
 name|duplicateButton
@@ -1008,11 +1030,21 @@ name|duplicateButton
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+argument_list|)
+operator|.
+name|executeWith
+argument_list|(
+name|Globals
+operator|.
+name|TASK_EXECUTOR
+argument_list|)
+expr_stmt|;
 return|return
 name|container
 return|;
 block|}
-argument_list|)
+block|)
 operator|.
 name|withOnMouseClickedEvent
 argument_list|(
@@ -1047,6 +1079,9 @@ argument_list|(
 name|entriesListView
 argument_list|)
 expr_stmt|;
+end_class
+
+begin_expr_stmt
 name|entriesListView
 operator|.
 name|setSelectionModel
@@ -1057,9 +1092,11 @@ argument_list|<>
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
+end_expr_stmt
+
+begin_function
+unit|}      private
 DECL|method|getEntryNode (BibEntry entry)
-specifier|private
 name|Node
 name|getEntryNode
 parameter_list|(
@@ -1308,6 +1345,9 @@ return|return
 name|entryContainer
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|getIcon (String type)
 specifier|private
 name|IconTheme
@@ -1347,6 +1387,9 @@ name|ARTICLE
 return|;
 block|}
 block|}
+end_function
+
+begin_function
 DECL|method|unselectAll ()
 specifier|public
 name|void
@@ -1362,6 +1405,9 @@ name|clearChecks
 argument_list|()
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 DECL|method|selectAllNewEntries ()
 specifier|public
 name|void
@@ -1406,8 +1452,8 @@ expr_stmt|;
 block|}
 block|}
 block|}
-block|}
-end_class
+end_function
 
+unit|}
 end_unit
 
