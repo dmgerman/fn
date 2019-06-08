@@ -11,10 +11,10 @@ package|;
 end_package
 
 begin_enum
-DECL|enum|NewLineSeperator
+DECL|enum|NewLineSeparator
 specifier|public
 enum|enum
-name|NewLineSeperator
+name|NewLineSeparator
 block|{
 DECL|enumConstant|CR
 name|CR
@@ -26,11 +26,40 @@ DECL|enumConstant|CRLF
 name|CRLF
 block|;
 comment|/**      * An enum which contains the possible NewLineSeperators      * Possible are CR ("\n"), LF ("\r") and the windows standard CR/LF.      */
-comment|/**      * @return the name of the current mode as String      */
-DECL|method|getEscapeSign ()
+DECL|method|toString ()
 specifier|public
 name|String
-name|getEscapeSign
+name|toString
+parameter_list|()
+block|{
+switch|switch
+condition|(
+name|this
+condition|)
+block|{
+case|case
+name|CR
+case|:
+return|return
+literal|"CR"
+return|;
+case|case
+name|LF
+case|:
+return|return
+literal|"LF"
+return|;
+default|default:
+return|return
+literal|"CR/LF"
+return|;
+block|}
+block|}
+comment|/**      * @return the name of the current mode as String      */
+DECL|method|getEscapeChars ()
+specifier|public
+name|String
+name|getEscapeChars
 parameter_list|()
 block|{
 switch|switch
@@ -56,11 +85,11 @@ literal|"\r\n"
 return|;
 block|}
 block|}
-comment|/**      * Returns the {@link NewLineSeperator} that equals the given string.      **/
+comment|/**      * Returns the {@link NewLineSeparator} that equals the given string.      **/
 DECL|method|parse (String data)
 specifier|public
 specifier|static
-name|NewLineSeperator
+name|NewLineSeparator
 name|parse
 parameter_list|(
 name|String

@@ -980,6 +980,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+comment|/**      * Reloads the JabRefPreferences into the UI      */
 DECL|method|updateAfterPreferenceChanges ()
 specifier|private
 name|void
@@ -1055,13 +1056,14 @@ name|updateEntryEditorTabList
 argument_list|()
 expr_stmt|;
 block|}
+comment|/**      * Checks if all tabs are ready to close and stores settings.      *      * ToDo:      * After conversion to MVVM, validation checks will be run by      * mvvmfx.utils.validation, so this needs to be removed.      */
 DECL|method|storeAllSettings ()
 specifier|public
 name|void
 name|storeAllSettings
 parameter_list|()
 block|{
-comment|// First check that all tabs are ready to close:
+comment|// Run validation checks
 for|for
 control|(
 name|PrefsTab
@@ -1083,7 +1085,7 @@ return|return;
 comment|// If not, break off.
 block|}
 block|}
-comment|// Then store settings and close:
+comment|// Store settings
 for|for
 control|(
 name|PrefsTab
@@ -1097,6 +1099,7 @@ operator|.
 name|storeSettings
 argument_list|()
 expr_stmt|;
+comment|// ToDo: After conversion of all tabs: prefsTab.getViewModel().storeSettings();
 block|}
 name|prefs
 operator|.
@@ -1134,6 +1137,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Inserts the JabRefPreferences-values into the the Properties of the ViewModel      */
 DECL|method|setValues ()
 specifier|public
 name|void
@@ -1153,6 +1157,7 @@ operator|.
 name|setValues
 argument_list|()
 expr_stmt|;
+comment|// ToDo: After conversion of all tabs: prefsTab.getViewModel().setValues();
 block|}
 block|}
 block|}
