@@ -304,6 +304,7 @@ name|PreferenceTabViewModel
 block|{
 DECL|field|openLastStartupProperty
 specifier|private
+specifier|final
 name|BooleanProperty
 name|openLastStartupProperty
 init|=
@@ -313,6 +314,7 @@ argument_list|()
 decl_stmt|;
 DECL|field|backupOldFileProperty
 specifier|private
+specifier|final
 name|BooleanProperty
 name|backupOldFileProperty
 init|=
@@ -322,6 +324,7 @@ argument_list|()
 decl_stmt|;
 DECL|field|noWrapFilesProperty
 specifier|private
+specifier|final
 name|StringProperty
 name|noWrapFilesProperty
 init|=
@@ -333,6 +336,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|resolveStringsBibTexProperty
 specifier|private
+specifier|final
 name|BooleanProperty
 name|resolveStringsBibTexProperty
 init|=
@@ -342,6 +346,7 @@ argument_list|()
 decl_stmt|;
 DECL|field|resolveStringsAllProperty
 specifier|private
+specifier|final
 name|BooleanProperty
 name|resolveStringsAllProperty
 init|=
@@ -351,6 +356,7 @@ argument_list|()
 decl_stmt|;
 DECL|field|resolveStringsExceptProperty
 specifier|private
+specifier|final
 name|StringProperty
 name|resolveStringsExceptProperty
 init|=
@@ -390,6 +396,7 @@ argument_list|()
 decl_stmt|;
 DECL|field|alwaysReformatBibProperty
 specifier|private
+specifier|final
 name|BooleanProperty
 name|alwaysReformatBibProperty
 init|=
@@ -399,6 +406,7 @@ argument_list|()
 decl_stmt|;
 DECL|field|mainFileDirProperty
 specifier|private
+specifier|final
 name|StringProperty
 name|mainFileDirProperty
 init|=
@@ -410,6 +418,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|useBibLocationAsPrimaryProperty
 specifier|private
+specifier|final
 name|BooleanProperty
 name|useBibLocationAsPrimaryProperty
 init|=
@@ -419,6 +428,7 @@ argument_list|()
 decl_stmt|;
 DECL|field|autolinkFileStartsBibtexProperty
 specifier|private
+specifier|final
 name|BooleanProperty
 name|autolinkFileStartsBibtexProperty
 init|=
@@ -428,6 +438,7 @@ argument_list|()
 decl_stmt|;
 DECL|field|autolinkFileExactBibtexProperty
 specifier|private
+specifier|final
 name|BooleanProperty
 name|autolinkFileExactBibtexProperty
 init|=
@@ -437,6 +448,7 @@ argument_list|()
 decl_stmt|;
 DECL|field|autolinkUseRegexProperty
 specifier|private
+specifier|final
 name|BooleanProperty
 name|autolinkUseRegexProperty
 init|=
@@ -446,6 +458,7 @@ argument_list|()
 decl_stmt|;
 DECL|field|autolinkRegexKeyProperty
 specifier|private
+specifier|final
 name|StringProperty
 name|autolinkRegexKeyProperty
 init|=
@@ -457,6 +470,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|searchFilesOnOpenProperty
 specifier|private
+specifier|final
 name|BooleanProperty
 name|searchFilesOnOpenProperty
 init|=
@@ -466,6 +480,7 @@ argument_list|()
 decl_stmt|;
 DECL|field|openBrowseOnCreateProperty
 specifier|private
+specifier|final
 name|BooleanProperty
 name|openBrowseOnCreateProperty
 init|=
@@ -475,6 +490,7 @@ argument_list|()
 decl_stmt|;
 DECL|field|autosaveLocalLibraries
 specifier|private
+specifier|final
 name|BooleanProperty
 name|autosaveLocalLibraries
 init|=
@@ -484,6 +500,7 @@ argument_list|()
 decl_stmt|;
 DECL|field|mainFileDirValidator
 specifier|private
+specifier|final
 name|FunctionBasedValidator
 name|mainFileDirValidator
 decl_stmt|;
