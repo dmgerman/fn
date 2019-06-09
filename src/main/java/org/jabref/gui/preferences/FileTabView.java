@@ -736,6 +736,18 @@ argument_list|,
 name|autosaveLocalLibrariesHelp
 argument_list|)
 expr_stmt|;
+name|PreferencesDialogView
+operator|.
+name|createValidationVisualization
+argument_list|(
+name|viewModel
+operator|.
+name|mainFileDirValidationStatus
+argument_list|()
+argument_list|,
+name|mainFileDir
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Override
@@ -773,8 +785,6 @@ name|storeSettings
 argument_list|()
 expr_stmt|;
 block|}
-annotation|@
-name|Deprecated
 annotation|@
 name|Override
 DECL|method|validateSettings ()

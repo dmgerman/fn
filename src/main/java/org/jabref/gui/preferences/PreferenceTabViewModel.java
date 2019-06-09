@@ -33,7 +33,6 @@ name|boolean
 name|validateSettings
 parameter_list|()
 function_decl|;
-comment|// ToDo: Remove this after implementation of MVVMFX Validator
 block|}
 end_interface
 

@@ -41,17 +41,17 @@ case|case
 name|CR
 case|:
 return|return
-literal|"CR"
+literal|"CR ( \\r )"
 return|;
 case|case
 name|LF
 case|:
 return|return
-literal|"LF"
+literal|"LF ( \\n )"
 return|;
 default|default:
 return|return
-literal|"CR/LF"
+literal|"CR/LF ( \\r\\n )"
 return|;
 block|}
 block|}

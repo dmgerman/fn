@@ -784,6 +784,18 @@ argument_list|,
 name|markTimeStampHelp
 argument_list|)
 expr_stmt|;
+name|PreferencesDialogView
+operator|.
+name|createValidationVisualization
+argument_list|(
+name|viewModel
+operator|.
+name|markTimeStampFormatValidationStatus
+argument_list|()
+argument_list|,
+name|markTimeStampFormat
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Override
@@ -821,8 +833,6 @@ name|storeSettings
 argument_list|()
 expr_stmt|;
 block|}
-annotation|@
-name|Deprecated
 annotation|@
 name|Override
 DECL|method|validateSettings ()

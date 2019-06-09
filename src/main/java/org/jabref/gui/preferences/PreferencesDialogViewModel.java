@@ -467,6 +467,8 @@ name|PreviewPreferencesTab
 argument_list|(
 name|dialogService
 argument_list|,
+name|this
+operator|.
 name|taskExecutor
 argument_list|)
 argument_list|)
@@ -1056,14 +1058,13 @@ name|updateEntryEditorTabList
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Checks if all tabs are ready to close and stores settings.      *      * ToDo:      * After conversion to MVVM, validation checks will be run by      * mvvmfx.utils.validation, so this needs to be removed.      */
-DECL|method|storeAllSettings ()
+comment|/**      * Checks if all tabs are valid      * ToDo: After conversion of all tabs use mvvmfx-validator      * ToDo: should be observable for binding of OK-button in View      */
+DECL|method|validSettings ()
 specifier|public
-name|void
-name|storeAllSettings
+name|boolean
+name|validSettings
 parameter_list|()
 block|{
-comment|// Run validation checks
 for|for
 control|(
 name|PrefsTab
@@ -1081,9 +1082,30 @@ name|validateSettings
 argument_list|()
 condition|)
 block|{
-return|return;
-comment|// If not, break off.
+return|return
+literal|false
+return|;
 block|}
+block|}
+return|return
+literal|true
+return|;
+block|}
+DECL|method|storeAllSettings ()
+specifier|public
+name|void
+name|storeAllSettings
+parameter_list|()
+block|{
+comment|// Run validation checks
+if|if
+condition|(
+operator|!
+name|validSettings
+argument_list|()
+condition|)
+block|{
+return|return;
 block|}
 comment|// Store settings
 for|for
@@ -1137,7 +1159,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Inserts the JabRefPreferences-values into the the Properties of the ViewModel      */
+comment|/**      * Inserts the JabRefPreferences-values into the the Properties of the ViewModel      * ToDo: Reword after conversion of all tabs: resetValues()      */
 DECL|method|setValues ()
 specifier|public
 name|void
