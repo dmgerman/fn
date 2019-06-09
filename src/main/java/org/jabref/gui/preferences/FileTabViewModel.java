@@ -575,7 +575,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"%s> %s> %s %n %n %s: %s"
+literal|"%s> %s> %s %n %n %s"
 argument_list|,
 name|Localization
 operator|.
@@ -604,11 +604,6 @@ name|lang
 argument_list|(
 literal|"Directory not found"
 argument_list|)
-argument_list|,
-name|mainFileDirProperty
-operator|.
-name|getValue
-argument_list|()
 argument_list|)
 argument_list|)
 argument_list|)

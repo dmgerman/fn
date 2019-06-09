@@ -42,21 +42,21 @@ name|void
 name|setValues
 parameter_list|()
 function_decl|;
-comment|// ToDo: Remove this after conversion of all tabs
+comment|// ToDo: Remove this after conversion of all tabs, done in ViewModel
 comment|/**      * This method is called when the user presses OK in the      * Preferences dialog. Implementing classes must make sure all      * settings presented get stored in JabRefPreferences.      */
 DECL|method|storeSettings ()
 name|void
 name|storeSettings
 parameter_list|()
 function_decl|;
-comment|// ToDo: Call directly in ViewModel after conversion of all tabs
+comment|// ToDo: After conversion of all tabs: viewModel.storeSettings()
 comment|/**      * This method is called before the {@link #storeSettings()} method,      * to check if there are illegal settings in the tab, or if is ready      * to be closed.      * If the tab is *not* ready, it should display a message to the user      * informing about the illegal setting.      */
 DECL|method|validateSettings ()
 name|boolean
 name|validateSettings
 parameter_list|()
 function_decl|;
-comment|// ToDo: Call directly in ViewModel after conversion of all tabs
+comment|// ToDo: After conversion of all tabs: viewModel.validateSettings()
 comment|/**      * Should return the localized identifier to use for the tab.      *      * @return Identifier for the tab (for instance "General", "Appearance" or "External Files").      */
 DECL|method|getTabName ()
 name|String
