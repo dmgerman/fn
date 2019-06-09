@@ -50,6 +50,20 @@ name|Localization
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|strings
+operator|.
+name|StringUtil
+import|;
+end_import
+
 begin_comment
 comment|/**  * Makes sure the key is legal  */
 end_comment
@@ -97,6 +111,30 @@ name|String
 name|value
 parameter_list|)
 block|{
+if|if
+condition|(
+name|StringUtil
+operator|.
+name|isNullOrEmpty
+argument_list|(
+name|value
+argument_list|)
+condition|)
+block|{
+return|return
+name|Optional
+operator|.
+name|of
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"empty BibTeX key"
+argument_list|)
+argument_list|)
+return|;
+block|}
 name|String
 name|cleaned
 init|=
