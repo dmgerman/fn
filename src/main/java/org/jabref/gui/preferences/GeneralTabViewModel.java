@@ -301,8 +301,8 @@ DECL|class|GeneralTabViewModel
 specifier|public
 class|class
 name|GeneralTabViewModel
-extends|extends
-name|AbstractViewModel
+implements|implements
+name|PreferenceTabViewModel
 block|{
 DECL|field|languagesListProperty
 specifier|private
@@ -658,7 +658,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|setValues ()
-specifier|private
+specifier|public
 name|void
 name|setValues
 parameter_list|()
@@ -1185,7 +1185,7 @@ name|JabRefPreferences
 operator|.
 name|USE_OWNER
 argument_list|,
-name|markOwnerOverwriteProperty
+name|markOwnerProperty
 operator|.
 name|getValue
 argument_list|()
