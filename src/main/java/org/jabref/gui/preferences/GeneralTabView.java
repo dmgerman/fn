@@ -26,6 +26,16 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|inject
+operator|.
+name|Inject
+import|;
+end_import
+
+begin_import
+import|import
 name|javafx
 operator|.
 name|application
@@ -445,8 +455,9 @@ name|CheckBox
 name|updateTimeStamp
 decl_stmt|;
 DECL|field|dialogService
+annotation|@
+name|Inject
 specifier|private
-specifier|final
 name|DialogService
 name|dialogService
 decl_stmt|;
@@ -470,23 +481,14 @@ operator|new
 name|ControlsFxVisualizer
 argument_list|()
 decl_stmt|;
-DECL|method|GeneralTabView (DialogService dialogService, JabRefPreferences preferences)
+DECL|method|GeneralTabView (JabRefPreferences preferences)
 specifier|public
 name|GeneralTabView
 parameter_list|(
-name|DialogService
-name|dialogService
-parameter_list|,
 name|JabRefPreferences
 name|preferences
 parameter_list|)
 block|{
-name|this
-operator|.
-name|dialogService
-operator|=
-name|dialogService
-expr_stmt|;
 name|this
 operator|.
 name|preferences

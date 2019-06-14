@@ -14,6 +14,16 @@ end_package
 
 begin_import
 import|import
+name|javax
+operator|.
+name|inject
+operator|.
+name|Inject
+import|;
+end_import
+
+begin_import
+import|import
 name|javafx
 operator|.
 name|application
@@ -423,8 +433,9 @@ name|Button
 name|autosaveLocalLibrariesHelp
 decl_stmt|;
 DECL|field|dialogService
+annotation|@
+name|Inject
 specifier|private
-specifier|final
 name|DialogService
 name|dialogService
 decl_stmt|;
@@ -448,23 +459,14 @@ operator|new
 name|ControlsFxVisualizer
 argument_list|()
 decl_stmt|;
-DECL|method|FileTabView (DialogService dialogService, JabRefPreferences preferences)
+DECL|method|FileTabView (JabRefPreferences preferences)
 specifier|public
 name|FileTabView
 parameter_list|(
-name|DialogService
-name|dialogService
-parameter_list|,
 name|JabRefPreferences
 name|preferences
 parameter_list|)
 block|{
-name|this
-operator|.
-name|dialogService
-operator|=
-name|dialogService
-expr_stmt|;
 name|this
 operator|.
 name|preferences

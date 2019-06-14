@@ -415,8 +415,6 @@ argument_list|(
 operator|new
 name|GeneralTabView
 argument_list|(
-name|dialogService
-argument_list|,
 name|prefs
 argument_list|)
 argument_list|)
@@ -428,8 +426,6 @@ argument_list|(
 operator|new
 name|FileTabView
 argument_list|(
-name|dialogService
-argument_list|,
 name|prefs
 argument_list|)
 argument_list|)
