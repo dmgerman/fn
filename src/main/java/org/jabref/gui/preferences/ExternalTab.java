@@ -497,15 +497,12 @@ operator|.
 name|build
 argument_list|()
 decl_stmt|;
-DECL|method|ExternalTab (JabRefFrame frame, PreferencesDialog prefsDiag, JabRefPreferences prefs)
+DECL|method|ExternalTab (JabRefFrame frame, JabRefPreferences prefs)
 specifier|public
 name|ExternalTab
 parameter_list|(
 name|JabRefFrame
 name|frame
-parameter_list|,
-name|PreferencesDialog
-name|prefsDiag
 parameter_list|,
 name|JabRefPreferences
 name|prefs
