@@ -22,6 +22,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|Optional
@@ -279,6 +289,20 @@ operator|.
 name|base
 operator|.
 name|StandardSystemProperty
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|mashape
+operator|.
+name|unirest
+operator|.
+name|http
+operator|.
+name|Unirest
 import|;
 end_import
 
@@ -845,6 +869,20 @@ block|{
 name|stopTelemetryClient
 argument_list|()
 expr_stmt|;
+try|try
+block|{
+name|Unirest
+operator|.
+name|shutdown
+argument_list|()
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|ignore
+parameter_list|)
+block|{ }
 block|}
 DECL|method|getTelemetryClient ()
 specifier|public
