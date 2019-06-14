@@ -325,10 +325,9 @@ name|DialogService
 name|dialogService
 decl_stmt|;
 DECL|field|preferences
-annotation|@
-name|Inject
 specifier|private
-name|PreferencesService
+specifier|final
+name|JabRefPreferences
 name|preferences
 decl_stmt|;
 DECL|field|frame
@@ -342,14 +341,23 @@ specifier|private
 name|ExternalTabViewModel
 name|viewModel
 decl_stmt|;
-DECL|method|ExternalTabView (JabRefFrame frame)
+DECL|method|ExternalTabView (JabRefPreferences preferences, JabRefFrame frame)
 specifier|public
 name|ExternalTabView
 parameter_list|(
+name|JabRefPreferences
+name|preferences
+parameter_list|,
 name|JabRefFrame
 name|frame
 parameter_list|)
 block|{
+name|this
+operator|.
+name|preferences
+operator|=
+name|preferences
+expr_stmt|;
 name|this
 operator|.
 name|frame
@@ -385,9 +393,6 @@ name|ExternalTabViewModel
 argument_list|(
 name|dialogService
 argument_list|,
-operator|(
-name|JabRefPreferences
-operator|)
 name|preferences
 argument_list|,
 name|frame
