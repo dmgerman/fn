@@ -142,6 +142,20 @@ name|org
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
+name|util
+operator|.
+name|TaskExecutor
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
 name|logic
 operator|.
 name|l10n
@@ -257,7 +271,12 @@ specifier|private
 name|UndoManager
 name|undoManager
 decl_stmt|;
-DECL|method|AutoLinkFilesAction (JabRefFrame frame, JabRefPreferences preferences, StateManager stateManager, UndoManager undoManager)
+DECL|field|taskExecutor
+specifier|private
+name|TaskExecutor
+name|taskExecutor
+decl_stmt|;
+DECL|method|AutoLinkFilesAction (JabRefFrame frame, JabRefPreferences preferences, StateManager stateManager, UndoManager undoManager, TaskExecutor taskExecutor)
 specifier|public
 name|AutoLinkFilesAction
 parameter_list|(
@@ -272,6 +291,9 @@ name|stateManager
 parameter_list|,
 name|UndoManager
 name|undoManager
+parameter_list|,
+name|TaskExecutor
+name|taskExecutor
 parameter_list|)
 block|{
 name|this
@@ -300,6 +322,12 @@ operator|.
 name|undoManager
 operator|=
 name|undoManager
+expr_stmt|;
+name|this
+operator|.
+name|taskExecutor
+operator|=
+name|taskExecutor
 expr_stmt|;
 name|this
 operator|.
@@ -560,6 +588,13 @@ argument_list|(
 literal|"Searching for files"
 argument_list|)
 argument_list|,
+name|linkFilesTask
+argument_list|)
+expr_stmt|;
+name|taskExecutor
+operator|.
+name|execute
+argument_list|(
 name|linkFilesTask
 argument_list|)
 expr_stmt|;
