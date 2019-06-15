@@ -474,11 +474,11 @@ operator|.
 name|add
 argument_list|(
 operator|new
-name|ExternalTab
+name|ExternalTabView
 argument_list|(
-name|frame
-argument_list|,
 name|prefs
+argument_list|,
+name|frame
 argument_list|)
 argument_list|)
 expr_stmt|;
