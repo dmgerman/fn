@@ -280,6 +280,20 @@ begin_import
 import|import
 name|org
 operator|.
+name|jabref
+operator|.
+name|testutils
+operator|.
+name|category
+operator|.
+name|FetcherTest
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|junit
 operator|.
 name|jupiter
@@ -1275,7 +1289,7 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
-name|Test
+name|FetcherTest
 DECL|method|downloadDoesNotOverwriteFileTypeExtension ()
 name|void
 name|downloadDoesNotOverwriteFileTypeExtension
