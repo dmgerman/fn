@@ -445,12 +445,12 @@ specifier|private
 name|Button
 name|testButton
 decl_stmt|;
-DECL|field|defaultButton
+DECL|field|resetDefaultButton
 annotation|@
 name|FXML
 specifier|private
 name|Button
-name|defaultButton
+name|resetDefaultButton
 decl_stmt|;
 DECL|field|previewTextArea
 annotation|@
@@ -808,16 +808,6 @@ argument_list|(
 name|nothingSelectedFromChosen
 argument_list|)
 expr_stmt|;
-name|defaultButton
-operator|.
-name|disableProperty
-argument_list|()
-operator|.
-name|bind
-argument_list|(
-name|nothingSelectedFromChosen
-argument_list|)
-expr_stmt|;
 name|previewTextArea
 operator|.
 name|setParagraphGraphicFactory
@@ -1027,7 +1017,7 @@ name|contextMenu
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * This was originally created by Carlos Martins (github: @cemarins )      * Can this be used here? (BSD-2clause License)      * See here: https://github.com/FXMisc/RichTextFX/blob/master/richtextfx-demos/src/main/java/org/fxmisc/richtext/demo/XMLEditorDemo.java      * and also here: https://github.com/FXMisc/RichTextFX/blob/master/richtextfx-demos/README.md#automatic-highlighting-of-java-keywords      *      * @author: Carlos Martins      * @param text to highlight      * @return highlighted span for codeArea      */
+comment|/**      * XML-Syntax-Highlighting for RichTextFX-Codearea      * created by (c) Carlos Martins (github: @cemartins)      * distributed under the BSD 2-Clause "Simplified" License      * see https://github.com/FXMisc/RichTextFX/blob/master/LICENSE      * and: https://github.com/FXMisc/RichTextFX/blob/master/richtextfx-demos/README.md#xml-editor      *      * @param text to parse and highlight      * @return highlighted span for codeArea      */
 DECL|method|computeHighlighting (String text)
 specifier|private
 name|StyleSpans
@@ -1695,15 +1685,15 @@ name|testChosen
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|defaultButtonAction ()
+DECL|method|resetDefaultButtonAction ()
 specifier|public
 name|void
-name|defaultButtonAction
+name|resetDefaultButtonAction
 parameter_list|()
 block|{
 name|viewModel
 operator|.
-name|setChosenDefault
+name|resetDefaultStyle
 argument_list|()
 expr_stmt|;
 block|}
