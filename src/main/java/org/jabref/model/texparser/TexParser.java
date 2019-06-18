@@ -49,7 +49,7 @@ name|String
 name|citeString
 parameter_list|)
 function_decl|;
-comment|/**      * Parse a single TEX file.      *      * @param texFile Path to a TEX file      * @return a TexParserResult, which contains the generated BibDatabase and all data related to the bibliographic      * entries      */
+comment|/**      * Parse a single TEX file.      *      * @param texFile Path to a TEX file      * @return a TexParserResult, which contains all data related to the bibliographic entries      */
 DECL|method|parse (Path texFile)
 name|TexParserResult
 name|parse
@@ -58,7 +58,7 @@ name|Path
 name|texFile
 parameter_list|)
 function_decl|;
-comment|/**      * Parse a list of TEX files.      *      * @param texFiles List of Path objects linked to a TEX file      * @return a TexParserResult, which contains the generated BibDatabase and all data related to the bibliographic      * entries      */
+comment|/**      * Parse a list of TEX files.      *      * @param texFiles List of Path objects linked to a TEX file      * @return a TexParserResult, which contains all data related to the bibliographic entries      */
 DECL|method|parse (List<Path> texFiles)
 name|TexParserResult
 name|parse

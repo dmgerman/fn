@@ -84,7 +84,7 @@ name|model
 operator|.
 name|texparser
 operator|.
-name|CrossingKeysResult
+name|TexBibEntriesResolverResult
 import|;
 end_import
 
@@ -103,58 +103,51 @@ import|;
 end_import
 
 begin_class
-DECL|class|CrossingKeys
+DECL|class|TexBibEntriesResolver
 specifier|public
 class|class
-name|CrossingKeys
+name|TexBibEntriesResolver
 block|{
-DECL|field|result
+DECL|field|masterDatabase
 specifier|private
 specifier|final
-name|CrossingKeysResult
-name|result
+name|BibDatabase
+name|masterDatabase
 decl_stmt|;
-DECL|method|CrossingKeys (TexParserResult texParserResult, BibDatabase masterDatabase)
+DECL|method|TexBibEntriesResolver (BibDatabase masterDatabase)
 specifier|public
-name|CrossingKeys
+name|TexBibEntriesResolver
 parameter_list|(
-name|TexParserResult
-name|texParserResult
-parameter_list|,
 name|BibDatabase
 name|masterDatabase
 parameter_list|)
 block|{
 name|this
 operator|.
-name|result
-operator|=
-operator|new
-name|CrossingKeysResult
-argument_list|(
-name|texParserResult
-argument_list|,
 name|masterDatabase
-argument_list|)
+operator|=
+name|masterDatabase
 expr_stmt|;
 block|}
-DECL|method|getResult ()
+comment|/**      * Look for BibTeX entries within the reference database for all keys inside of the TEX files.      * Insert these data in the list of new entries.      */
+DECL|method|resolveKeys (TexParserResult texParserResult)
 specifier|public
-name|CrossingKeysResult
-name|getResult
-parameter_list|()
-block|{
-return|return
-name|result
-return|;
-block|}
-comment|/**      * Look for an equivalent BibTeX entry within the reference database for all keys inside of the TEX files.      */
-DECL|method|resolveKeys ()
-specifier|public
-name|CrossingKeysResult
+name|TexBibEntriesResolverResult
 name|resolveKeys
-parameter_list|()
+parameter_list|(
+name|TexParserResult
+name|texParserResult
+parameter_list|)
 block|{
+name|TexBibEntriesResolverResult
+name|result
+init|=
+operator|new
+name|TexBibEntriesResolverResult
+argument_list|(
+name|texParserResult
+argument_list|)
+decl_stmt|;
 name|Set
 argument_list|<
 name|String
@@ -191,9 +184,9 @@ name|BibEntry
 argument_list|>
 name|entry
 init|=
-name|result
+name|masterDatabase
 operator|.
-name|getEntryMasterDatabase
+name|getEntryByKey
 argument_list|(
 name|key
 argument_list|)
@@ -218,6 +211,8 @@ argument_list|)
 expr_stmt|;
 name|resolveCrossReferences
 argument_list|(
+name|result
+argument_list|,
 name|entry
 operator|.
 name|get
@@ -241,12 +236,15 @@ return|return
 name|result
 return|;
 block|}
-comment|/**      * Find cross references for inserting into the new database.      */
-DECL|method|resolveCrossReferences (BibEntry entry)
+comment|/**      * Find cross references for inserting into the list of new entries.      */
+DECL|method|resolveCrossReferences (TexBibEntriesResolverResult result, BibEntry entry)
 specifier|private
 name|void
 name|resolveCrossReferences
 parameter_list|(
+name|TexBibEntriesResolverResult
+name|result
+parameter_list|,
 name|BibEntry
 name|entry
 parameter_list|)
@@ -282,9 +280,9 @@ name|BibEntry
 argument_list|>
 name|refEntry
 init|=
-name|result
+name|masterDatabase
 operator|.
-name|getEntryMasterDatabase
+name|getEntryByKey
 argument_list|(
 name|crossRef
 argument_list|)
