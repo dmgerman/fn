@@ -165,22 +165,22 @@ specifier|private
 name|Layout
 name|layout
 decl_stmt|;
-DECL|field|layoutText
+DECL|field|text
 specifier|private
 name|String
-name|layoutText
+name|text
 decl_stmt|;
 DECL|field|layoutFormatterPreferences
 specifier|private
 name|LayoutFormatterPreferences
 name|layoutFormatterPreferences
 decl_stmt|;
-DECL|method|TextBasedPreviewLayout (String layoutText, LayoutFormatterPreferences layoutFormatterPreferences)
+DECL|method|TextBasedPreviewLayout (String text, LayoutFormatterPreferences layoutFormatterPreferences)
 specifier|public
 name|TextBasedPreviewLayout
 parameter_list|(
 name|String
-name|layoutText
+name|text
 parameter_list|,
 name|LayoutFormatterPreferences
 name|layoutFormatterPreferences
@@ -192,9 +192,9 @@ name|layoutFormatterPreferences
 operator|=
 name|layoutFormatterPreferences
 expr_stmt|;
-name|setLayoutText
+name|setText
 argument_list|(
-name|layoutText
+name|text
 argument_list|)
 expr_stmt|;
 block|}
@@ -214,7 +214,7 @@ name|layout
 expr_stmt|;
 name|this
 operator|.
-name|layoutText
+name|text
 operator|=
 name|layout
 operator|.
@@ -222,20 +222,20 @@ name|toString
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|setLayoutText (String layoutText)
+DECL|method|setText (String text)
 specifier|public
 name|void
-name|setLayoutText
+name|setText
 parameter_list|(
 name|String
-name|layoutText
+name|text
 parameter_list|)
 block|{
 name|this
 operator|.
-name|layoutText
+name|text
 operator|=
-name|layoutText
+name|text
 expr_stmt|;
 name|StringReader
 name|sr
@@ -243,7 +243,7 @@ init|=
 operator|new
 name|StringReader
 argument_list|(
-name|layoutText
+name|text
 operator|.
 name|replace
 argument_list|(
@@ -325,14 +325,14 @@ literal|""
 return|;
 block|}
 block|}
-DECL|method|getLayoutText ()
+DECL|method|getText ()
 specifier|public
 name|String
-name|getLayoutText
+name|getText
 parameter_list|()
 block|{
 return|return
-name|layoutText
+name|text
 return|;
 block|}
 annotation|@
