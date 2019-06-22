@@ -24,16 +24,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|inject
-operator|.
-name|Inject
-import|;
-end_import
-
-begin_import
-import|import
 name|javafx
 operator|.
 name|beans
@@ -328,18 +318,6 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|StateManager
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
 name|autocompleter
 operator|.
 name|AutoCompleteSuggestionProvider
@@ -356,7 +334,7 @@ name|gui
 operator|.
 name|copyfiles
 operator|.
-name|CopyFilesAction
+name|CopySingleFileAction
 import|;
 end_import
 
@@ -560,18 +538,17 @@ name|LinkedFileViewModel
 argument_list|>
 name|listView
 decl_stmt|;
-DECL|field|stateManager
-annotation|@
-name|Inject
-specifier|private
-name|StateManager
-name|stateManager
-decl_stmt|;
 DECL|field|dialogService
 specifier|private
 specifier|final
 name|DialogService
 name|dialogService
+decl_stmt|;
+DECL|field|databaseContext
+specifier|private
+specifier|final
+name|BibDatabaseContext
+name|databaseContext
 decl_stmt|;
 DECL|method|LinkedFilesEditor (String fieldName, DialogService dialogService, BibDatabaseContext databaseContext, TaskExecutor taskExecutor, AutoCompleteSuggestionProvider<?> suggestionProvider, FieldCheckers fieldCheckers, JabRefPreferences preferences)
 specifier|public
@@ -629,6 +606,12 @@ operator|.
 name|dialogService
 operator|=
 name|dialogService
+expr_stmt|;
+name|this
+operator|.
+name|databaseContext
+operator|=
+name|databaseContext
 expr_stmt|;
 name|ViewLoader
 operator|.
@@ -1832,7 +1815,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Copy linked files to folder..."
+literal|"Copy linked file to folder..."
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -1843,14 +1826,19 @@ argument_list|(
 name|event
 lambda|->
 operator|new
-name|CopyFilesAction
+name|CopySingleFileAction
 argument_list|(
-name|stateManager
+name|linkedFile
+operator|.
+name|getFile
+argument_list|()
 argument_list|,
 name|dialogService
+argument_list|,
+name|databaseContext
 argument_list|)
 operator|.
-name|execute
+name|copyFile
 argument_list|()
 argument_list|)
 expr_stmt|;

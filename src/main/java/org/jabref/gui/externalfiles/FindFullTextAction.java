@@ -933,6 +933,17 @@ name|JabRefPreferences
 operator|.
 name|getInstance
 argument_list|()
+operator|.
+name|getXMPPreferences
+argument_list|()
+argument_list|,
+name|JabRefPreferences
+operator|.
+name|getInstance
+argument_list|()
+operator|.
+name|getFilePreferences
+argument_list|()
 argument_list|,
 name|ExternalFileTypes
 operator|.

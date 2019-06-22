@@ -705,7 +705,7 @@ specifier|final
 name|ExternalFileTypes
 name|externalFileTypes
 decl_stmt|;
-DECL|method|LinkedFileViewModel (LinkedFile linkedFile, BibEntry entry, BibDatabaseContext databaseContext, TaskExecutor taskExecutor, DialogService dialogService, JabRefPreferences preferences, ExternalFileTypes externalFileTypes)
+DECL|method|LinkedFileViewModel (LinkedFile linkedFile, BibEntry entry, BibDatabaseContext databaseContext, TaskExecutor taskExecutor, DialogService dialogService, XmpPreferences xmpPreferences, FilePreferences filePreferences, ExternalFileTypes externalFileTypes)
 specifier|public
 name|LinkedFileViewModel
 parameter_list|(
@@ -724,8 +724,11 @@ parameter_list|,
 name|DialogService
 name|dialogService
 parameter_list|,
-name|JabRefPreferences
-name|preferences
+name|XmpPreferences
+name|xmpPreferences
+parameter_list|,
+name|FilePreferences
+name|filePreferences
 parameter_list|,
 name|ExternalFileTypes
 name|externalFileTypes
@@ -741,10 +744,7 @@ name|this
 operator|.
 name|filePreferences
 operator|=
-name|preferences
-operator|.
-name|getFilePreferences
-argument_list|()
+name|filePreferences
 expr_stmt|;
 name|this
 operator|.
@@ -792,12 +792,11 @@ name|externalFileTypes
 operator|=
 name|externalFileTypes
 expr_stmt|;
+name|this
+operator|.
 name|xmpPreferences
 operator|=
-name|preferences
-operator|.
-name|getXMPPreferences
-argument_list|()
+name|xmpPreferences
 expr_stmt|;
 name|downloadOngoing
 operator|.

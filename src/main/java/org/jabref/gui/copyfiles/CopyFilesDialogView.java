@@ -249,13 +249,10 @@ specifier|final
 name|CopyFilesDialogViewModel
 name|viewModel
 decl_stmt|;
-DECL|method|CopyFilesDialogView (BibDatabaseContext bibDatabaseContext, CopyFilesResultListDependency results)
+DECL|method|CopyFilesDialogView (CopyFilesResultListDependency results)
 specifier|public
 name|CopyFilesDialogView
 parameter_list|(
-name|BibDatabaseContext
-name|bibDatabaseContext
-parameter_list|,
 name|CopyFilesResultListDependency
 name|results
 parameter_list|)
