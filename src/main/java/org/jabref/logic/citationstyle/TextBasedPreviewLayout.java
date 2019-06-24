@@ -218,7 +218,7 @@ name|text
 operator|=
 name|layout
 operator|.
-name|toString
+name|getText
 argument_list|()
 expr_stmt|;
 block|}
