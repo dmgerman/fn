@@ -22,6 +22,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|Optional
@@ -83,6 +93,20 @@ operator|.
 name|keyboard
 operator|.
 name|KeyBindingRepository
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|undo
+operator|.
+name|CountingUndoManager
 import|;
 end_import
 
@@ -272,6 +296,20 @@ begin_import
 import|import
 name|com
 operator|.
+name|mashape
+operator|.
+name|unirest
+operator|.
+name|http
+operator|.
+name|Unirest
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
 name|microsoft
 operator|.
 name|applicationinsights
@@ -422,6 +460,16 @@ specifier|public
 specifier|static
 name|ExporterFactory
 name|exportFactory
+decl_stmt|;
+DECL|field|undoManager
+specifier|public
+specifier|static
+name|CountingUndoManager
+name|undoManager
+init|=
+operator|new
+name|CountingUndoManager
+argument_list|()
 decl_stmt|;
 comment|// Key binding preferences
 DECL|field|keyBindingRepository
@@ -821,6 +869,20 @@ block|{
 name|stopTelemetryClient
 argument_list|()
 expr_stmt|;
+try|try
+block|{
+name|Unirest
+operator|.
+name|shutdown
+argument_list|()
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|ignore
+parameter_list|)
+block|{ }
 block|}
 DECL|method|getTelemetryClient ()
 specifier|public

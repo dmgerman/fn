@@ -703,6 +703,26 @@ name|o
 argument_list|)
 return|;
 block|}
+DECL|method|contains (String keywordString)
+specifier|public
+name|boolean
+name|contains
+parameter_list|(
+name|String
+name|keywordString
+parameter_list|)
+block|{
+return|return
+name|contains
+argument_list|(
+operator|new
+name|Keyword
+argument_list|(
+name|keywordString
+argument_list|)
+argument_list|)
+return|;
+block|}
 DECL|method|remove (Keyword o)
 specifier|public
 name|boolean

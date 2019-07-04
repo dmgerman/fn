@@ -235,6 +235,11 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
+literal|'\n'
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|Localization
 operator|.
 name|lang

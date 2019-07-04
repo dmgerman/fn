@@ -203,7 +203,7 @@ specifier|private
 name|BibtexCaseChanger
 parameter_list|()
 block|{     }
-comment|/**      * Changes case of the given string s      *      * @param s the string to handle      * @param format the format      * @return      */
+comment|/**      * Changes case of the given string s      *      * @param s the string to handle      * @param format the format      */
 DECL|method|changeCase (String s, FORMAT_MODE format)
 specifier|public
 specifier|static

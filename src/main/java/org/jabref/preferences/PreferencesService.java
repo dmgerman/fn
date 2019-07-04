@@ -16,6 +16,18 @@ name|java
 operator|.
 name|nio
 operator|.
+name|charset
+operator|.
+name|Charset
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
 name|file
 operator|.
 name|Path
@@ -92,6 +104,20 @@ name|jabref
 operator|.
 name|logic
 operator|.
+name|importer
+operator|.
+name|ImportFormatPreferences
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
 name|journals
 operator|.
 name|JournalAbbreviationLoader
@@ -132,11 +158,67 @@ name|org
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
+name|openoffice
+operator|.
+name|OpenOfficePreferences
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|protectedterms
+operator|.
+name|ProtectedTermsLoader
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|util
+operator|.
+name|UpdateFieldPreferences
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
 name|model
 operator|.
 name|metadata
 operator|.
 name|FilePreferences
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|metadata
+operator|.
+name|SaveOrderConfig
 import|;
 end_import
 
@@ -146,9 +228,22 @@ specifier|public
 interface|interface
 name|PreferencesService
 block|{
+DECL|method|setProtectedTermsPreferences (ProtectedTermsLoader loader)
+name|void
+name|setProtectedTermsPreferences
+parameter_list|(
+name|ProtectedTermsLoader
+name|loader
+parameter_list|)
+function_decl|;
 DECL|method|getJournalAbbreviationPreferences ()
 name|JournalAbbreviationPreferences
 name|getJournalAbbreviationPreferences
+parameter_list|()
+function_decl|;
+DECL|method|getKeywordDelimiter ()
+name|Character
+name|getKeywordDelimiter
 parameter_list|()
 function_decl|;
 DECL|method|storeKeyBindingRepository (KeyBindingRepository keyBindingRepository)
@@ -189,6 +284,24 @@ parameter_list|(
 name|Path
 name|dir
 parameter_list|)
+function_decl|;
+DECL|method|getOpenOfficePreferences ()
+name|OpenOfficePreferences
+name|getOpenOfficePreferences
+parameter_list|()
+function_decl|;
+DECL|method|setOpenOfficePreferences (OpenOfficePreferences openOfficePreferences)
+name|void
+name|setOpenOfficePreferences
+parameter_list|(
+name|OpenOfficePreferences
+name|openOfficePreferences
+parameter_list|)
+function_decl|;
+DECL|method|getPreviewPreferences ()
+name|PreviewPreferences
+name|getPreviewPreferences
+parameter_list|()
 function_decl|;
 DECL|method|getEntryEditorTabList ()
 name|Map
@@ -278,9 +391,47 @@ name|JournalAbbreviationLoader
 name|loader
 parameter_list|)
 function_decl|;
+DECL|method|getUpdateFieldPreferences ()
+name|UpdateFieldPreferences
+name|getUpdateFieldPreferences
+parameter_list|()
+function_decl|;
+DECL|method|getImportFormatPreferences ()
+name|ImportFormatPreferences
+name|getImportFormatPreferences
+parameter_list|()
+function_decl|;
+DECL|method|isKeywordSyncEnabled ()
+name|boolean
+name|isKeywordSyncEnabled
+parameter_list|()
+function_decl|;
 DECL|method|loadForExportFromPreferences ()
 name|SavePreferences
 name|loadForExportFromPreferences
+parameter_list|()
+function_decl|;
+DECL|method|getExportWorkingDirectory ()
+name|String
+name|getExportWorkingDirectory
+parameter_list|()
+function_decl|;
+DECL|method|getDefaultEncoding ()
+name|Charset
+name|getDefaultEncoding
+parameter_list|()
+function_decl|;
+DECL|method|setDefaultEncoding (Charset encoding)
+name|void
+name|setDefaultEncoding
+parameter_list|(
+name|Charset
+name|encoding
+parameter_list|)
+function_decl|;
+DECL|method|getUser ()
+name|String
+name|getUser
 parameter_list|()
 function_decl|;
 DECL|method|setExportWorkingDirectory (String layoutFileDirString)
@@ -291,9 +442,35 @@ name|String
 name|layoutFileDirString
 parameter_list|)
 function_decl|;
-DECL|method|getExportWorkingDirectory ()
-name|String
-name|getExportWorkingDirectory
+DECL|method|loadExportSaveOrder ()
+name|SaveOrderConfig
+name|loadExportSaveOrder
+parameter_list|()
+function_decl|;
+DECL|method|storeExportSaveOrder (SaveOrderConfig config)
+name|void
+name|storeExportSaveOrder
+parameter_list|(
+name|SaveOrderConfig
+name|config
+parameter_list|)
+function_decl|;
+DECL|method|shouldWarnAboutDuplicatesForImport ()
+name|boolean
+name|shouldWarnAboutDuplicatesForImport
+parameter_list|()
+function_decl|;
+DECL|method|setShouldWarnAboutDuplicatesForImport (boolean value)
+name|void
+name|setShouldWarnAboutDuplicatesForImport
+parameter_list|(
+name|boolean
+name|value
+parameter_list|)
+function_decl|;
+DECL|method|saveCustomEntryTypes ()
+name|void
+name|saveCustomEntryTypes
 parameter_list|()
 function_decl|;
 block|}

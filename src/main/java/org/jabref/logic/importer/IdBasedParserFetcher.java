@@ -128,9 +128,11 @@ begin_import
 import|import
 name|org
 operator|.
-name|jsoup
+name|jabref
 operator|.
-name|helper
+name|model
+operator|.
+name|strings
 operator|.
 name|StringUtil
 import|;

@@ -244,21 +244,9 @@ name|jupiter
 operator|.
 name|api
 operator|.
-name|extension
+name|io
 operator|.
-name|ExtendWith
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junitpioneer
-operator|.
-name|jupiter
-operator|.
-name|TempDirectory
+name|TempDir
 import|;
 end_import
 
@@ -359,13 +347,6 @@ import|;
 end_import
 
 begin_class
-annotation|@
-name|ExtendWith
-argument_list|(
-name|TempDirectory
-operator|.
-name|class
-argument_list|)
 DECL|class|DocBook5ExporterTest
 specifier|public
 class|class
@@ -402,7 +383,6 @@ decl_stmt|;
 annotation|@
 name|BeforeEach
 DECL|method|setUp ()
-specifier|public
 name|void
 name|setUp
 parameter_list|()
@@ -609,14 +589,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testPerformExportForSingleEntry (@empDirectory.TempDir Path testFolder)
-specifier|public
+DECL|method|testPerformExportForSingleEntry (@empDir Path testFolder)
 name|void
 name|testPerformExportForSingleEntry
 parameter_list|(
 annotation|@
-name|TempDirectory
-operator|.
 name|TempDir
 name|Path
 name|testFolder

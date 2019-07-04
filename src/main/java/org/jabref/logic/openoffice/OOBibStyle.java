@@ -3973,6 +3973,24 @@ name|String
 name|field
 parameter_list|)
 block|{
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|entry
+argument_list|,
+literal|"Entry cannot be null"
+argument_list|)
+expr_stmt|;
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|database
+argument_list|,
+literal|"database cannot be null"
+argument_list|)
+expr_stmt|;
 name|String
 name|authorField
 init|=
@@ -4472,6 +4490,7 @@ name|propName
 argument_list|)
 return|;
 block|}
+comment|/**      * Indicate if it is an internal style      *      * @return True if an internal style      */
 DECL|method|isFromResource ()
 specifier|public
 name|boolean

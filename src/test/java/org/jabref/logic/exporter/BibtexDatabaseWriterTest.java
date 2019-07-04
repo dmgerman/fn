@@ -3169,6 +3169,8 @@ name|SaveOrderConfig
 argument_list|(
 literal|false
 argument_list|,
+literal|true
+argument_list|,
 operator|new
 name|SaveOrderConfig
 operator|.
@@ -3444,6 +3446,20 @@ argument_list|,
 literal|"D:\\Documents"
 argument_list|)
 expr_stmt|;
+name|metaData
+operator|.
+name|setLaTexFileDirectory
+argument_list|(
+literal|"defaultOwner-user"
+argument_list|,
+name|Paths
+operator|.
+name|get
+argument_list|(
+literal|"D:\\Latex"
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|databaseWriter
 operator|.
 name|savePartOfDatabase
@@ -3477,6 +3493,16 @@ operator|+
 name|OS
 operator|.
 name|NEWLINE
+operator|+
+name|OS
+operator|.
+name|NEWLINE
+operator|+
+literal|"@Comment{jabref-meta: fileDirectoryLatex-defaultOwner-user:D:\\\\Latex;}"
+operator|+
+name|OS
+operator|.
+name|NEWLINE
 argument_list|,
 name|stringWriter
 operator|.
@@ -3501,6 +3527,8 @@ operator|new
 name|SaveOrderConfig
 argument_list|(
 literal|false
+argument_list|,
+literal|true
 argument_list|,
 operator|new
 name|SaveOrderConfig

@@ -14,6 +14,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|nio
 operator|.
 name|file
@@ -294,6 +304,24 @@ name|title
 parameter_list|,
 name|String
 name|content
+parameter_list|)
+function_decl|;
+comment|/**      * This will create and display new {@link TextInputDialog} with a text field with a default value to enter data      */
+DECL|method|showInputDialogWithDefaultAndWait (String title, String content, String defaultValue)
+name|Optional
+argument_list|<
+name|String
+argument_list|>
+name|showInputDialogWithDefaultAndWait
+parameter_list|(
+name|String
+name|title
+parameter_list|,
+name|String
+name|content
+parameter_list|,
+name|String
+name|defaultValue
 parameter_list|)
 function_decl|;
 comment|/**      * This will create and display a new information dialog.      * It will include a blue information icon on the left and      * a single OK Button. To create an information dialog with custom      * buttons see also {@link #showCustomButtonDialogAndWait(Alert.AlertType, String, String, ButtonType...)}      */
@@ -631,6 +659,20 @@ parameter_list|(
 name|PrinterJob
 name|job
 parameter_list|)
+function_decl|;
+comment|/**      * Shows a new dialog that list all files contained in the given archive and which lets the user select one of these      * files. The method doesn't return until the displayed open dialog is dismissed. The return value specifies the      * file chosen by the user or an empty {@link Optional} if no selection has been made.      *      * @return the selected file or an empty {@link Optional} if no file has been selected      */
+DECL|method|showFileOpenFromArchiveDialog (Path archivePath)
+name|Optional
+argument_list|<
+name|Path
+argument_list|>
+name|showFileOpenFromArchiveDialog
+parameter_list|(
+name|Path
+name|archivePath
+parameter_list|)
+throws|throws
+name|IOException
 function_decl|;
 block|}
 end_interface

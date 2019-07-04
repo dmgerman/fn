@@ -244,10 +244,13 @@ literal|false
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|i
 operator|>
 literal|0
+operator|)
 operator|&&
+operator|(
 name|text
 operator|.
 name|charAt
@@ -258,6 +261,7 @@ literal|1
 argument_list|)
 operator|==
 literal|'\\'
+operator|)
 condition|)
 block|{
 name|charBeforeIsEscape
@@ -270,9 +274,11 @@ condition|(
 operator|!
 name|charBeforeIsEscape
 operator|&&
+operator|(
 name|item
 operator|==
 literal|'{'
+operator|)
 condition|)
 block|{
 name|left
@@ -285,9 +291,11 @@ condition|(
 operator|!
 name|charBeforeIsEscape
 operator|&&
+operator|(
 name|item
 operator|==
 literal|'}'
+operator|)
 condition|)
 block|{
 name|right
@@ -316,7 +324,9 @@ throw|throw
 operator|new
 name|InvalidFieldValueException
 argument_list|(
-literal|"Unescaped '}' character without opening bracket ends string prematurely."
+literal|"Unescaped '}' character without opening bracket ends string prematurely. Field value: "
+operator|+
+name|text
 argument_list|)
 throw|;
 block|}
@@ -340,7 +350,9 @@ throw|throw
 operator|new
 name|InvalidFieldValueException
 argument_list|(
-literal|"Unescaped '}' character without opening bracket ends string prematurely."
+literal|"Unescaped '}' character without opening bracket ends string prematurely. Field value: "
+operator|+
+name|text
 argument_list|)
 throw|;
 block|}
@@ -355,7 +367,9 @@ throw|throw
 operator|new
 name|InvalidFieldValueException
 argument_list|(
-literal|"Braces don't match."
+literal|"Braces don't match. Field value: "
+operator|+
+name|text
 argument_list|)
 throw|;
 block|}
@@ -670,7 +684,9 @@ literal|"The # character is not allowed in BibTeX strings unless escaped as in '
 operator|+
 literal|"In JabRef, use pairs of # characters to indicate a string.\n"
 operator|+
-literal|"Note that the entry causing the problem has been selected."
+literal|"Note that the entry causing the problem has been selected. Field value: "
+operator|+
+name|content
 argument_list|)
 throw|;
 block|}

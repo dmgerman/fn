@@ -14,33 +14,23 @@ end_package
 
 begin_import
 import|import
-name|javax
+name|javafx
 operator|.
-name|swing
+name|scene
 operator|.
-name|JComponent
+name|Node
 import|;
 end_import
 
 begin_import
 import|import
-name|javax
+name|javafx
 operator|.
-name|swing
+name|scene
 operator|.
-name|JLabel
-import|;
-end_import
-
-begin_import
-import|import
-name|org
+name|control
 operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|BasePanel
+name|Label
 import|;
 end_import
 
@@ -110,7 +100,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibDatabase
+name|BibDatabaseContext
 import|;
 end_import
 
@@ -167,7 +157,7 @@ DECL|class|StringNameChangeViewModel
 class|class
 name|StringNameChangeViewModel
 extends|extends
-name|ChangeViewModel
+name|DatabaseChangeViewModel
 block|{
 DECL|field|LOGGER
 specifier|private
@@ -209,12 +199,6 @@ specifier|final
 name|String
 name|content
 decl_stmt|;
-DECL|field|tmpString
-specifier|private
-specifier|final
-name|BibtexString
-name|tmpString
-decl_stmt|;
 DECL|method|StringNameChangeViewModel (BibtexString string, BibtexString tmpString, String mem, String disk)
 specifier|public
 name|StringNameChangeViewModel
@@ -253,12 +237,6 @@ argument_list|)
 expr_stmt|;
 name|this
 operator|.
-name|tmpString
-operator|=
-name|tmpString
-expr_stmt|;
-name|this
-operator|.
 name|string
 operator|=
 name|string
@@ -287,16 +265,13 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|makeChange (BasePanel panel, BibDatabase secondary, NamedCompound undoEdit)
+DECL|method|makeChange (BibDatabaseContext database, NamedCompound undoEdit)
 specifier|public
-name|boolean
+name|void
 name|makeChange
 parameter_list|(
-name|BasePanel
-name|panel
-parameter_list|,
-name|BibDatabase
-name|secondary
+name|BibDatabaseContext
+name|database
 parameter_list|,
 name|NamedCompound
 name|undoEdit
@@ -304,7 +279,7 @@ parameter_list|)
 block|{
 if|if
 condition|(
-name|panel
+name|database
 operator|.
 name|getDatabase
 argument_list|()
@@ -355,7 +330,7 @@ argument_list|)
 decl_stmt|;
 try|try
 block|{
-name|panel
+name|database
 operator|.
 name|getDatabase
 argument_list|()
@@ -372,9 +347,7 @@ argument_list|(
 operator|new
 name|UndoableInsertString
 argument_list|(
-name|panel
-argument_list|,
-name|panel
+name|database
 operator|.
 name|getDatabase
 argument_list|()
@@ -429,8 +402,6 @@ argument_list|(
 operator|new
 name|UndoableStringChange
 argument_list|(
-name|panel
-argument_list|,
 name|string
 argument_list|,
 literal|true
@@ -442,58 +413,18 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|// Update tmp database:
-if|if
-condition|(
-name|tmpString
-operator|==
-literal|null
-condition|)
-block|{
-name|BibtexString
-name|bs
-init|=
-operator|new
-name|BibtexString
-argument_list|(
-name|disk
-argument_list|,
-name|content
-argument_list|)
-decl_stmt|;
-name|secondary
-operator|.
-name|addString
-argument_list|(
-name|bs
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-name|tmpString
-operator|.
-name|setName
-argument_list|(
-name|disk
-argument_list|)
-expr_stmt|;
-block|}
-return|return
-literal|true
-return|;
 block|}
 annotation|@
 name|Override
 DECL|method|description ()
 specifier|public
-name|JComponent
+name|Node
 name|description
 parameter_list|()
 block|{
 return|return
 operator|new
-name|JLabel
+name|Label
 argument_list|(
 name|disk
 operator|+

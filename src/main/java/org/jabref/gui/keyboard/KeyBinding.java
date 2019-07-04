@@ -413,6 +413,25 @@ operator|.
 name|BIBTEX
 argument_list|)
 block|,
+DECL|enumConstant|DEFAULT_DIALOG_ACTION
+name|DEFAULT_DIALOG_ACTION
+argument_list|(
+literal|"Execute default action in dialog"
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Execute default action in dialog"
+argument_list|)
+argument_list|,
+literal|"ctrl+ENTER"
+argument_list|,
+name|KeyBindingCategory
+operator|.
+name|VIEW
+argument_list|)
+block|,
 DECL|enumConstant|DOWNLOAD_FULL_TEXT
 name|DOWNLOAD_FULL_TEXT
 argument_list|(
@@ -449,6 +468,44 @@ argument_list|,
 name|KeyBindingCategory
 operator|.
 name|BIBTEX
+argument_list|)
+block|,
+DECL|enumConstant|EXPORT
+name|EXPORT
+argument_list|(
+literal|"Export"
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Export"
+argument_list|)
+argument_list|,
+literal|"ctrl+alt+e"
+argument_list|,
+name|KeyBindingCategory
+operator|.
+name|FILE
+argument_list|)
+block|,
+DECL|enumConstant|EXPORT_SELECTED
+name|EXPORT_SELECTED
+argument_list|(
+literal|"Export Selected"
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Export selected entries"
+argument_list|)
+argument_list|,
+literal|"ctrl+shift+e"
+argument_list|,
+name|KeyBindingCategory
+operator|.
+name|FILE
 argument_list|)
 block|,
 DECL|enumConstant|EDIT_STRINGS
@@ -639,25 +696,6 @@ argument_list|,
 name|KeyBindingCategory
 operator|.
 name|VIEW
-argument_list|)
-block|,
-DECL|enumConstant|GLOBAL_SEARCH
-name|GLOBAL_SEARCH
-argument_list|(
-literal|"Search globally"
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Search globally"
-argument_list|)
-argument_list|,
-literal|"ctrl+shift+F"
-argument_list|,
-name|KeyBindingCategory
-operator|.
-name|SEARCH
 argument_list|)
 block|,
 DECL|enumConstant|HELP

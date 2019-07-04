@@ -154,7 +154,7 @@ index|[]
 block|{
 literal|"[bibtexkey]"
 block|,
-literal|"[bibtexkey] - [fulltitle]"
+literal|"[bibtexkey] - [title]"
 block|}
 decl_stmt|;
 annotation|@

@@ -223,7 +223,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * LaTeX Aux to BibTeX Parser  *<p>  * Extracts a subset of BibTeX entries from a BibDatabase that are included in an AUX file.  * Also supports nested AUX files (latex \\include).  *  * There exists no specification of the AUX file.  * Every package, class or document can write to the AUX file.  * The AUX file consists of LaTeX macros and is read at the \begin{document} and again at the \end{document}.  *  * BibTeX citation: \citation{x,y,z}  * Biblatex citation: \abx@aux@cite{x,y,z}  * Nested AUX files: \@input{x}  */
+comment|/**  * LaTeX Aux to BibTeX Parser  *<p>  * Extracts a subset of BibTeX entries from a BibDatabase that are included in an AUX file. Also supports nested AUX  * files (latex \\include).  *  * There exists no specification of the AUX file. Every package, class or document can write to the AUX file. The AUX  * file consists of LaTeX macros and is read at the \begin{document} and again at the \end{document}.  *  * BibTeX citation: \citation{x,y,z} Biblatex citation: \abx@aux@cite{x,y,z} Nested AUX files: \@input{x}  */
 end_comment
 
 begin_class
@@ -438,7 +438,7 @@ parameter_list|)
 block|{
 name|LOGGER
 operator|.
-name|info
+name|warn
 argument_list|(
 literal|"Cannot locate input file"
 argument_list|,
@@ -686,21 +686,9 @@ name|getUniqueKeys
 argument_list|()
 control|)
 block|{
-name|Optional
-argument_list|<
-name|BibEntry
-argument_list|>
-name|entry
-init|=
-name|masterDatabase
-operator|.
-name|getEntryByKey
-argument_list|(
-name|key
-argument_list|)
-decl_stmt|;
 if|if
 condition|(
+operator|!
 name|result
 operator|.
 name|getGeneratedBibDatabase
@@ -715,9 +703,19 @@ name|isPresent
 argument_list|()
 condition|)
 block|{
-comment|// do nothing, key has already been processed
-block|}
-elseif|else
+name|Optional
+argument_list|<
+name|BibEntry
+argument_list|>
+name|entry
+init|=
+name|masterDatabase
+operator|.
+name|getEntryByKey
+argument_list|(
+name|key
+argument_list|)
+decl_stmt|;
 if|if
 condition|(
 name|entry
@@ -759,6 +757,7 @@ argument_list|(
 name|key
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 comment|// Copy database definitions

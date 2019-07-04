@@ -44,19 +44,35 @@ specifier|public
 class|class
 name|PreambleDiff
 block|{
+DECL|field|originalPreamble
+specifier|private
+specifier|final
+name|String
+name|originalPreamble
+decl_stmt|;
 DECL|field|newPreamble
 specifier|private
+specifier|final
 name|String
 name|newPreamble
 decl_stmt|;
-DECL|method|PreambleDiff (String newPreamble)
+DECL|method|PreambleDiff (String originalPreamble, String newPreamble)
 specifier|private
 name|PreambleDiff
 parameter_list|(
 name|String
+name|originalPreamble
+parameter_list|,
+name|String
 name|newPreamble
 parameter_list|)
 block|{
+name|this
+operator|.
+name|originalPreamble
+operator|=
+name|originalPreamble
+expr_stmt|;
 name|this
 operator|.
 name|newPreamble
@@ -135,6 +151,13 @@ argument_list|(
 operator|new
 name|PreambleDiff
 argument_list|(
+name|originalPreamble
+operator|.
+name|orElse
+argument_list|(
+literal|""
+argument_list|)
+argument_list|,
 name|newPreamble
 operator|.
 name|orElse
@@ -154,6 +177,16 @@ parameter_list|()
 block|{
 return|return
 name|newPreamble
+return|;
+block|}
+DECL|method|getOriginalPreamble ()
+specifier|public
+name|String
+name|getOriginalPreamble
+parameter_list|()
+block|{
+return|return
+name|originalPreamble
 return|;
 block|}
 block|}

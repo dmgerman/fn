@@ -24,6 +24,16 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|ParametersAreNonnullByDefault
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|jabref
@@ -159,7 +169,7 @@ literal|1024
 decl_stmt|;
 DECL|field|citationStyle
 specifier|private
-name|CitationStyle
+name|PreviewLayout
 name|citationStyle
 decl_stmt|;
 DECL|field|citationStyleCache
@@ -173,47 +183,14 @@ name|String
 argument_list|>
 name|citationStyleCache
 decl_stmt|;
-DECL|method|CitationStyleCache (BibDatabaseContext bibDatabaseContext)
+DECL|method|CitationStyleCache (BibDatabaseContext database)
 specifier|public
 name|CitationStyleCache
 parameter_list|(
 name|BibDatabaseContext
-name|bibDatabaseContext
+name|database
 parameter_list|)
 block|{
-name|this
-argument_list|(
-name|bibDatabaseContext
-argument_list|,
-name|CitationStyle
-operator|.
-name|getDefault
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|CitationStyleCache (BibDatabaseContext bibDatabaseContext, CitationStyle citationStyle)
-specifier|public
-name|CitationStyleCache
-parameter_list|(
-name|BibDatabaseContext
-name|bibDatabaseContext
-parameter_list|,
-name|CitationStyle
-name|citationStyle
-parameter_list|)
-block|{
-name|this
-operator|.
-name|citationStyle
-operator|=
-name|Objects
-operator|.
-name|requireNonNull
-argument_list|(
-name|citationStyle
-argument_list|)
-expr_stmt|;
 name|citationStyleCache
 operator|=
 name|CacheBuilder
@@ -239,6 +216,8 @@ argument_list|()
 block|{
 annotation|@
 name|Override
+annotation|@
+name|ParametersAreNonnullByDefault
 specifier|public
 name|String
 name|load
@@ -247,29 +226,38 @@ name|BibEntry
 name|entry
 parameter_list|)
 block|{
+if|if
+condition|(
+name|citationStyle
+operator|!=
+literal|null
+condition|)
+block|{
 return|return
-name|CitationStyleGenerator
+name|citationStyle
 operator|.
-name|generateCitation
+name|generatePreview
 argument_list|(
 name|entry
 argument_list|,
-name|getCitationStyle
-argument_list|()
+name|database
 operator|.
-name|getSource
+name|getDatabase
 argument_list|()
-argument_list|,
-name|CitationStyleOutputFormat
-operator|.
-name|HTML
 argument_list|)
 return|;
+block|}
+else|else
+block|{
+return|return
+literal|""
+return|;
+block|}
 block|}
 block|}
 argument_list|)
 expr_stmt|;
-name|bibDatabaseContext
+name|database
 operator|.
 name|getDatabase
 argument_list|()
@@ -282,7 +270,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * returns the citation for the given BibEntry and the set CitationStyle      */
+comment|/**      * Returns the citation for the given entry.      */
 DECL|method|getCitationFor (BibEntry entry)
 specifier|public
 name|String
@@ -301,12 +289,12 @@ name|entry
 argument_list|)
 return|;
 block|}
-DECL|method|setCitationStyle (CitationStyle citationStyle)
+DECL|method|setCitationStyle (PreviewLayout citationStyle)
 specifier|public
 name|void
 name|setCitationStyle
 parameter_list|(
-name|CitationStyle
+name|PreviewLayout
 name|citationStyle
 parameter_list|)
 block|{
@@ -344,18 +332,6 @@ name|invalidateAll
 argument_list|()
 expr_stmt|;
 block|}
-block|}
-DECL|method|getCitationStyle ()
-specifier|public
-name|CitationStyle
-name|getCitationStyle
-parameter_list|()
-block|{
-return|return
-name|this
-operator|.
-name|citationStyle
-return|;
 block|}
 DECL|class|BibDatabaseEntryListener
 specifier|private

@@ -34,6 +34,16 @@ begin_import
 import|import
 name|javafx
 operator|.
+name|application
+operator|.
+name|Platform
+import|;
+end_import
+
+begin_import
+import|import
+name|javafx
+operator|.
 name|event
 operator|.
 name|Event
@@ -998,6 +1008,18 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+name|Platform
+operator|.
+name|runLater
+argument_list|(
+parameter_list|()
+lambda|->
+name|idTextField
+operator|.
+name|requestFocus
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|getChoice ()
 specifier|public

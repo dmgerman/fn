@@ -224,20 +224,6 @@ name|gui
 operator|.
 name|util
 operator|.
-name|DefaultTaskExecutor
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|util
-operator|.
 name|FileDialogConfiguration
 import|;
 end_import
@@ -735,6 +721,8 @@ throw|throw
 operator|new
 name|SaveException
 argument_list|(
+literal|"Problems saving:"
+argument_list|,
 name|ex
 argument_list|)
 throw|;
@@ -1123,13 +1111,6 @@ operator|.
 name|markExternalChangesAsResolved
 argument_list|()
 expr_stmt|;
-name|DefaultTaskExecutor
-operator|.
-name|runInJavaFXThread
-argument_list|(
-parameter_list|()
-lambda|->
-block|{
 comment|// Reset title of tab
 name|frame
 operator|.
@@ -1159,7 +1140,10 @@ argument_list|)
 expr_stmt|;
 name|frame
 operator|.
-name|output
+name|getDialogService
+argument_list|()
+operator|.
+name|notify
 argument_list|(
 name|Localization
 operator|.
@@ -1196,9 +1180,6 @@ name|frame
 operator|.
 name|updateAllTabTitles
 argument_list|()
-expr_stmt|;
-block|}
-argument_list|)
 expr_stmt|;
 block|}
 return|return
@@ -1287,7 +1268,10 @@ operator|.
 name|frame
 argument_list|()
 operator|.
-name|output
+name|getDialogService
+argument_list|()
+operator|.
+name|notify
 argument_list|(
 name|Localization
 operator|.
@@ -1568,7 +1552,7 @@ expr_stmt|;
 comment|// Reinstall AutosaveManager and BackupManager
 name|panel
 operator|.
-name|resetChangeMonitor
+name|resetChangeMonitorAndChangePane
 argument_list|()
 expr_stmt|;
 if|if
@@ -1768,7 +1752,10 @@ argument_list|)
 expr_stmt|;
 name|frame
 operator|.
-name|output
+name|getDialogService
+argument_list|()
+operator|.
+name|notify
 argument_list|(
 name|Localization
 operator|.

@@ -374,7 +374,7 @@ specifier|private
 name|FileUtil
 parameter_list|()
 block|{     }
-comment|/**      * Returns the extension of a file name or Optional.empty() if the file does not have one (no "." in name).      *      * @return The extension (without leading dot), trimmed and in lowercase.      */
+comment|/**      * Returns the extension of a file name or Optional.empty() if the file does not have one (no "." in name).      *      * @return the extension (without leading dot), trimmed and in lowercase.      */
 DECL|method|getFileExtension (String fileName)
 specifier|public
 specifier|static
@@ -456,7 +456,7 @@ argument_list|()
 return|;
 block|}
 block|}
-comment|/**      * Returns the extension of a file or Optional.empty() if the file does not have one (no . in name).      *      * @return The extension, trimmed and in lowercase.      */
+comment|/**      * Returns the extension of a file or Optional.empty() if the file does not have one (no . in name).      *      * @return the extension (without leading dot), trimmed and in lowercase.      */
 DECL|method|getFileExtension (Path file)
 specifier|public
 specifier|static

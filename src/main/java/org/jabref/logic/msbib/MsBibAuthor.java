@@ -244,13 +244,8 @@ block|{
 return|return
 name|author
 operator|.
-name|getLast
+name|getLastOnly
 argument_list|()
-operator|.
-name|orElse
-argument_list|(
-literal|null
-argument_list|)
 return|;
 block|}
 DECL|method|getFirstLast ()

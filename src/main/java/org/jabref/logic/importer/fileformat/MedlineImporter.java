@@ -4063,9 +4063,6 @@ name|personalName
 operator|.
 name|getForeName
 argument_list|()
-operator|.
-name|toString
-argument_list|()
 expr_stmt|;
 block|}
 name|personalNames

@@ -18,6 +18,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Arrays
 import|;
 end_import
@@ -72,7 +82,7 @@ specifier|final
 name|String
 name|DEFAULT_OSX_PATH
 init|=
-literal|"/Applications/OpenOffice.org.app"
+literal|"/Applications/LibreOffice.app"
 decl_stmt|;
 DECL|field|DEFAULT_OSX_EXEC_PATH
 specifier|public
@@ -81,7 +91,7 @@ specifier|final
 name|String
 name|DEFAULT_OSX_EXEC_PATH
 init|=
-literal|"/Applications/OpenOffice.org.app/Contents/MacOS/soffice"
+literal|"/Applications/LibreOffice.app/Contents/MacOS/soffice"
 decl_stmt|;
 DECL|field|OSX_EXECUTABLE
 specifier|public
@@ -146,25 +156,29 @@ DECL|field|executablePath
 specifier|private
 name|String
 name|executablePath
+init|=
+literal|""
 decl_stmt|;
 DECL|field|installationPath
 specifier|private
 name|String
 name|installationPath
+init|=
+literal|""
 decl_stmt|;
 DECL|field|useAllDatabases
 specifier|private
-name|Boolean
+name|boolean
 name|useAllDatabases
 decl_stmt|;
 DECL|field|syncWhenCiting
 specifier|private
-name|Boolean
+name|boolean
 name|syncWhenCiting
 decl_stmt|;
 DECL|field|showPanel
 specifier|private
-name|Boolean
+name|boolean
 name|showPanel
 decl_stmt|;
 DECL|field|externalStyles
@@ -174,18 +188,27 @@ argument_list|<
 name|String
 argument_list|>
 name|externalStyles
+init|=
+operator|new
+name|ArrayList
+argument_list|<>
+argument_list|()
 decl_stmt|;
 DECL|field|currentStyle
 specifier|private
 name|String
 name|currentStyle
+init|=
+literal|""
 decl_stmt|;
 DECL|field|jarsPath
 specifier|private
 name|String
 name|jarsPath
+init|=
+literal|""
 decl_stmt|;
-DECL|method|OpenOfficePreferences ( String jarsPath, String executablePath, String installationPath, Boolean useAllDatabases, Boolean syncWhenCiting, Boolean showPanel, List<String> externalStyles, String currentStyle )
+DECL|method|OpenOfficePreferences ( String jarsPath, String executablePath, String installationPath, boolean useAllDatabases, boolean syncWhenCiting, boolean showPanel, List<String> externalStyles, String currentStyle )
 specifier|public
 name|OpenOfficePreferences
 parameter_list|(
@@ -198,13 +221,13 @@ parameter_list|,
 name|String
 name|installationPath
 parameter_list|,
-name|Boolean
+name|boolean
 name|useAllDatabases
 parameter_list|,
-name|Boolean
+name|boolean
 name|syncWhenCiting
 parameter_list|,
-name|Boolean
+name|boolean
 name|showPanel
 parameter_list|,
 name|List
@@ -372,12 +395,12 @@ return|return
 name|syncWhenCiting
 return|;
 block|}
-DECL|method|setSyncWhenCiting (Boolean syncWhenCiting)
+DECL|method|setSyncWhenCiting (boolean syncWhenCiting)
 specifier|public
 name|void
 name|setSyncWhenCiting
 parameter_list|(
-name|Boolean
+name|boolean
 name|syncWhenCiting
 parameter_list|)
 block|{
@@ -391,7 +414,7 @@ block|}
 comment|/**      * true if the OO panel is shown on startup      */
 DECL|method|getShowPanel ()
 specifier|public
-name|Boolean
+name|boolean
 name|getShowPanel
 parameter_list|()
 block|{
@@ -399,12 +422,12 @@ return|return
 name|showPanel
 return|;
 block|}
-DECL|method|setShowPanel (Boolean showPanel)
+DECL|method|setShowPanel (boolean showPanel)
 specifier|public
 name|void
 name|setShowPanel
 parameter_list|(
-name|Boolean
+name|boolean
 name|showPanel
 parameter_list|)
 block|{
@@ -543,19 +566,19 @@ name|this
 operator|.
 name|installationPath
 operator|=
-literal|null
+literal|""
 expr_stmt|;
 name|this
 operator|.
 name|executablePath
 operator|=
-literal|null
+literal|""
 expr_stmt|;
 name|this
 operator|.
 name|jarsPath
 operator|=
-literal|null
+literal|""
 expr_stmt|;
 block|}
 block|}

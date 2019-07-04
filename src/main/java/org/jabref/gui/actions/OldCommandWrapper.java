@@ -91,6 +91,8 @@ comment|/**  * This wraps the old Swing commands so that they fit into the new i
 end_comment
 
 begin_class
+annotation|@
+name|Deprecated
 DECL|class|OldCommandWrapper
 specifier|public
 class|class

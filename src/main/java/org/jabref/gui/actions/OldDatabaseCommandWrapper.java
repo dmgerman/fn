@@ -107,10 +107,12 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A command that is only executable if a database is open.  */
+comment|/**  * A command that is only executable if a database is open.  * Deprecated use instead  * @see org.jabref.gui.actions.SimpleCommand  */
 end_comment
 
 begin_class
+annotation|@
+name|Deprecated
 DECL|class|OldDatabaseCommandWrapper
 specifier|public
 class|class

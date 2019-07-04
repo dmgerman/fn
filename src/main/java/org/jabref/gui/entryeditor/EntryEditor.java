@@ -40,16 +40,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|ArrayList
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|LinkedList
 import|;
 end_import
@@ -300,9 +290,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|actions
-operator|.
-name|ActionFactory
+name|StateManager
 import|;
 end_import
 
@@ -314,23 +302,9 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|actions
+name|bibtexkeypattern
 operator|.
 name|GenerateBibtexKeySingleAction
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|actions
-operator|.
-name|StandardActions
 import|;
 end_import
 
@@ -360,7 +334,7 @@ name|gui
 operator|.
 name|externalfiles
 operator|.
-name|NewDroppedFileHandler
+name|ExternalFilesEntryLinker
 import|;
 end_import
 
@@ -550,20 +524,6 @@ name|org
 operator|.
 name|jabref
 operator|.
-name|logic
-operator|.
-name|search
-operator|.
-name|SearchQueryHighlightListener
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
 name|model
 operator|.
 name|database
@@ -704,20 +664,6 @@ specifier|final
 name|BasePanel
 name|panel
 decl_stmt|;
-DECL|field|searchListeners
-specifier|private
-specifier|final
-name|List
-argument_list|<
-name|SearchQueryHighlightListener
-argument_list|>
-name|searchListeners
-init|=
-operator|new
-name|ArrayList
-argument_list|<>
-argument_list|()
-decl_stmt|;
 DECL|field|typeSubscription
 specifier|private
 name|Subscription
@@ -777,13 +723,6 @@ specifier|private
 name|Label
 name|typeLabel
 decl_stmt|;
-DECL|field|generateCiteKeyButton
-annotation|@
-name|FXML
-specifier|private
-name|Button
-name|generateCiteKeyButton
-decl_stmt|;
 DECL|field|preferences
 specifier|private
 specifier|final
@@ -796,11 +735,11 @@ specifier|final
 name|DialogService
 name|dialogService
 decl_stmt|;
-DECL|field|fileHandler
+DECL|field|fileLinker
 specifier|private
 specifier|final
-name|NewDroppedFileHandler
-name|fileHandler
+name|ExternalFilesEntryLinker
+name|fileLinker
 decl_stmt|;
 DECL|field|taskExecutor
 specifier|private
@@ -808,7 +747,13 @@ specifier|final
 name|TaskExecutor
 name|taskExecutor
 decl_stmt|;
-DECL|method|EntryEditor (BasePanel panel, EntryEditorPreferences preferences, FileUpdateMonitor fileMonitor, DialogService dialogService, ExternalFileTypes externalFileTypes, TaskExecutor taskExecutor)
+DECL|field|stateManager
+specifier|private
+specifier|final
+name|StateManager
+name|stateManager
+decl_stmt|;
+DECL|method|EntryEditor (BasePanel panel, EntryEditorPreferences preferences, FileUpdateMonitor fileMonitor, DialogService dialogService, ExternalFileTypes externalFileTypes, TaskExecutor taskExecutor, StateManager stateManager)
 specifier|public
 name|EntryEditor
 parameter_list|(
@@ -829,6 +774,9 @@ name|externalFileTypes
 parameter_list|,
 name|TaskExecutor
 name|taskExecutor
+parameter_list|,
+name|StateManager
+name|stateManager
 parameter_list|)
 block|{
 name|this
@@ -884,15 +832,17 @@ name|taskExecutor
 operator|=
 name|taskExecutor
 expr_stmt|;
-name|fileHandler
+name|this
+operator|.
+name|stateManager
+operator|=
+name|stateManager
+expr_stmt|;
+name|fileLinker
 operator|=
 operator|new
-name|NewDroppedFileHandler
+name|ExternalFilesEntryLinker
 argument_list|(
-name|dialogService
-argument_list|,
-name|databaseContext
-argument_list|,
 name|externalFileTypes
 argument_list|,
 name|Globals
@@ -902,24 +852,7 @@ operator|.
 name|getFilePreferences
 argument_list|()
 argument_list|,
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getImportFormatPreferences
-argument_list|()
-argument_list|,
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getUpdateFieldPreferences
-argument_list|()
-argument_list|,
-name|Globals
-operator|.
-name|getFileUpdateMonitor
-argument_list|()
+name|databaseContext
 argument_list|)
 expr_stmt|;
 name|ViewLoader
@@ -1188,9 +1121,9 @@ argument_list|(
 literal|"Mode LINK"
 argument_list|)
 expr_stmt|;
-name|fileHandler
+name|fileLinker
 operator|.
-name|addToEntry
+name|addFilesToEntry
 argument_list|(
 name|entry
 argument_list|,
@@ -1219,7 +1152,7 @@ argument_list|(
 literal|"Mode COPY"
 argument_list|)
 expr_stmt|;
-name|fileHandler
+name|fileLinker
 operator|.
 name|copyFilesToFileDirAndAddToEntry
 argument_list|(
@@ -1239,9 +1172,9 @@ literal|"Mode MOVE"
 argument_list|)
 expr_stmt|;
 comment|//shift on win or no modifier
-name|fileHandler
+name|fileLinker
 operator|.
-name|addToEntryRenameAndMoveToFileDir
+name|moveFilesToFileDirAndAddToEntry
 argument_list|(
 name|entry
 argument_list|,
@@ -1279,9 +1212,9 @@ argument_list|(
 literal|"Mode MOVE"
 argument_list|)
 expr_stmt|;
-name|fileHandler
+name|fileLinker
 operator|.
-name|addToEntryRenameAndMoveToFileDir
+name|moveFilesToFileDirAndAddToEntry
 argument_list|(
 name|entry
 argument_list|,
@@ -1310,9 +1243,9 @@ argument_list|(
 literal|"Mode LINK"
 argument_list|)
 expr_stmt|;
-name|fileHandler
+name|fileLinker
 operator|.
-name|addToEntry
+name|addFilesToEntry
 argument_list|(
 name|entry
 argument_list|,
@@ -1330,7 +1263,7 @@ literal|"Mode COPY"
 argument_list|)
 expr_stmt|;
 comment|//shift on win or no modifier
-name|fileHandler
+name|fileLinker
 operator|.
 name|copyFilesToFileDirAndAddToEntry
 argument_list|(
@@ -1370,7 +1303,7 @@ argument_list|(
 literal|"Mode COPY"
 argument_list|)
 expr_stmt|;
-name|fileHandler
+name|fileLinker
 operator|.
 name|copyFilesToFileDirAndAddToEntry
 argument_list|(
@@ -1401,9 +1334,9 @@ argument_list|(
 literal|"Mode MOVE"
 argument_list|)
 expr_stmt|;
-name|fileHandler
+name|fileLinker
 operator|.
-name|addToEntryRenameAndMoveToFileDir
+name|moveFilesToFileDirAndAddToEntry
 argument_list|(
 name|entry
 argument_list|,
@@ -1421,9 +1354,9 @@ literal|"Mode LINK"
 argument_list|)
 expr_stmt|;
 comment|//shift on win or no modifier
-name|fileHandler
+name|fileLinker
 operator|.
-name|addToEntry
+name|addFilesToEntry
 argument_list|(
 name|entry
 argument_list|,
@@ -1649,6 +1582,37 @@ name|delete
 argument_list|(
 name|entry
 argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|FXML
+DECL|method|generateCiteKeyButton ()
+name|void
+name|generateCiteKeyButton
+parameter_list|()
+block|{
+name|GenerateBibtexKeySingleAction
+name|action
+init|=
+operator|new
+name|GenerateBibtexKeySingleAction
+argument_list|(
+name|getEntry
+argument_list|()
+argument_list|,
+name|databaseContext
+argument_list|,
+name|dialogService
+argument_list|,
+name|preferences
+argument_list|,
+name|undoManager
+argument_list|)
+decl_stmt|;
+name|action
+operator|.
+name|execute
+argument_list|()
 expr_stmt|;
 block|}
 annotation|@
@@ -1941,6 +1905,10 @@ name|getImportFormatPreferences
 argument_list|()
 argument_list|,
 name|fileMonitor
+argument_list|,
+name|dialogService
+argument_list|,
+name|stateManager
 argument_list|)
 expr_stmt|;
 name|tabs
@@ -2314,12 +2282,7 @@ name|typeMenu
 init|=
 operator|new
 name|ChangeEntryTypeMenu
-argument_list|(
-name|preferences
-operator|.
-name|getKeyBindings
 argument_list|()
-argument_list|)
 operator|.
 name|getChangeEntryTypePopupMenu
 argument_list|(
@@ -2455,40 +2418,6 @@ literal|0
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// Configure cite key button
-operator|new
-name|ActionFactory
-argument_list|(
-name|preferences
-operator|.
-name|getKeyBindings
-argument_list|()
-argument_list|)
-operator|.
-name|configureIconButton
-argument_list|(
-name|StandardActions
-operator|.
-name|GENERATE_CITE_KEY
-argument_list|,
-operator|new
-name|GenerateBibtexKeySingleAction
-argument_list|(
-name|getEntry
-argument_list|()
-argument_list|,
-name|databaseContext
-argument_list|,
-name|dialogService
-argument_list|,
-name|preferences
-argument_list|,
-name|undoManager
-argument_list|)
-argument_list|,
-name|generateCiteKeyButton
-argument_list|)
-expr_stmt|;
 block|}
 DECL|method|fetchAndMerge (EntryBasedFetcher fetcher)
 specifier|private
@@ -2512,39 +2441,6 @@ argument_list|(
 name|entry
 argument_list|,
 name|fetcher
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|addSearchListener (SearchQueryHighlightListener listener)
-name|void
-name|addSearchListener
-parameter_list|(
-name|SearchQueryHighlightListener
-name|listener
-parameter_list|)
-block|{
-comment|// TODO: Highlight search text in entry editors
-name|searchListeners
-operator|.
-name|add
-argument_list|(
-name|listener
-argument_list|)
-expr_stmt|;
-name|panel
-operator|.
-name|frame
-argument_list|()
-operator|.
-name|getGlobalSearchBar
-argument_list|()
-operator|.
-name|getSearchQueryHighlightObservable
-argument_list|()
-operator|.
-name|addSearchListener
-argument_list|(
-name|listener
 argument_list|)
 expr_stmt|;
 block|}

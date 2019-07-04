@@ -218,21 +218,9 @@ name|jupiter
 operator|.
 name|api
 operator|.
-name|extension
+name|io
 operator|.
-name|ExtendWith
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junitpioneer
-operator|.
-name|jupiter
-operator|.
-name|TempDirectory
+name|TempDir
 import|;
 end_import
 
@@ -287,13 +275,6 @@ import|;
 end_import
 
 begin_class
-annotation|@
-name|ExtendWith
-argument_list|(
-name|TempDirectory
-operator|.
-name|class
-argument_list|)
 DECL|class|XmpExporterTest
 specifier|public
 class|class
@@ -413,14 +394,12 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|exportSingleEntry (@empDirectory.TempDir Path testFolder)
+DECL|method|exportSingleEntry (@empDir Path testFolder)
 specifier|public
 name|void
 name|exportSingleEntry
 parameter_list|(
 annotation|@
-name|TempDirectory
-operator|.
 name|TempDir
 name|Path
 name|testFolder
@@ -546,14 +525,12 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|writeMultipleEntriesInASingleFile (@empDirectory.TempDir Path testFolder)
+DECL|method|writeMultipleEntriesInASingleFile (@empDir Path testFolder)
 specifier|public
 name|void
 name|writeMultipleEntriesInASingleFile
 parameter_list|(
 annotation|@
-name|TempDirectory
-operator|.
 name|TempDir
 name|Path
 name|testFolder
@@ -740,14 +717,12 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|writeMultipleEntriesInDifferentFiles (@empDirectory.TempDir Path testFolder)
+DECL|method|writeMultipleEntriesInDifferentFiles (@empDir Path testFolder)
 specifier|public
 name|void
 name|writeMultipleEntriesInDifferentFiles
 parameter_list|(
 annotation|@
-name|TempDirectory
-operator|.
 name|TempDir
 name|Path
 name|testFolder
@@ -1058,14 +1033,12 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|exportSingleEntryWithPrivacyFilter (@empDirectory.TempDir Path testFolder)
+DECL|method|exportSingleEntryWithPrivacyFilter (@empDir Path testFolder)
 specifier|public
 name|void
 name|exportSingleEntryWithPrivacyFilter
 parameter_list|(
 annotation|@
-name|TempDirectory
-operator|.
 name|TempDir
 name|Path
 name|testFolder

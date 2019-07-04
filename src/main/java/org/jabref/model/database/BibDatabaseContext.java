@@ -947,7 +947,7 @@ name|findFirst
 argument_list|()
 return|;
 block|}
-comment|/**      * Look up the directories set up for the given field type for this database. If no directory is set up, return that      * defined in global preferences. There can be up to three directory definitions for these files: the database's      * metadata can specify a general directory and/or a user-specific directory or the preferences can specify one.<p>      * The settings are prioritized in the following order and the first defined setting is used:      *<ol>      *<li>metdata</li>      *<li>user-specific directory</li>      *<li>preferences directory</li>      *<li>BIB file directory</li>      *</ol>      *      * @param fieldName   The field type      * @param preferences The fileDirectory preferences      * @return The default directory for this field type.      */
+comment|/**      * Look up the directories set up for the given field type for this database. If no directory is set up, return that      * defined in global preferences. There can be up to three directory definitions for these files: the database's      * metadata can specify a general directory and/or a user-specific directory or the preferences can specify one.<p>      * The settings are prioritized in the following order and the first defined setting is used:      *<ol>      *<li>metadata</li>      *<li>user-specific directory</li>      *<li>preferences directory</li>      *<li>BIB file directory</li>      *</ol>      *      * @param fieldName   The field type      * @param preferences The fileDirectory preferences      * @return The default directory for this field type.      */
 DECL|method|getFileDirectories (String fieldName, FilePreferences preferences)
 specifier|public
 name|List

@@ -150,9 +150,9 @@ name|jabref
 operator|.
 name|model
 operator|.
-name|util
+name|strings
 operator|.
-name|OptionalUtil
+name|StringUtil
 import|;
 end_import
 
@@ -160,11 +160,13 @@ begin_import
 import|import
 name|org
 operator|.
-name|jsoup
+name|jabref
 operator|.
-name|helper
+name|model
 operator|.
-name|StringUtil
+name|util
+operator|.
+name|OptionalUtil
 import|;
 end_import
 

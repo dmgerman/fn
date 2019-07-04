@@ -86,6 +86,18 @@ name|scene
 operator|.
 name|control
 operator|.
+name|Separator
+import|;
+end_import
+
+begin_import
+import|import
+name|javafx
+operator|.
+name|scene
+operator|.
+name|control
+operator|.
 name|TextField
 import|;
 end_import
@@ -310,6 +322,13 @@ name|prefs
 operator|=
 name|prefs
 expr_stmt|;
+name|builder
+operator|.
+name|setVgap
+argument_list|(
+literal|7
+argument_list|)
+expr_stmt|;
 name|keywordSeparator
 operator|.
 name|setOnAction
@@ -364,6 +383,7 @@ literal|"Display all entries belonging to one or more of the selected groups."
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|// View title
 name|Label
 name|view
 init|=
@@ -399,15 +419,16 @@ argument_list|,
 literal|1
 argument_list|)
 expr_stmt|;
+comment|// View configuration
 name|builder
 operator|.
 name|add
 argument_list|(
 name|hideNonHits
 argument_list|,
-literal|2
+literal|1
 argument_list|,
-literal|2
+literal|3
 argument_list|)
 expr_stmt|;
 name|builder
@@ -416,9 +437,9 @@ name|add
 argument_list|(
 name|grayOut
 argument_list|,
-literal|2
+literal|1
 argument_list|,
-literal|3
+literal|4
 argument_list|)
 expr_stmt|;
 specifier|final
@@ -435,9 +456,9 @@ name|add
 argument_list|(
 name|multiSelectionModeIntersection
 argument_list|,
-literal|2
+literal|1
 argument_list|,
-literal|4
+literal|5
 argument_list|)
 expr_stmt|;
 name|builder
@@ -446,9 +467,9 @@ name|add
 argument_list|(
 name|multiSelectionModeUnion
 argument_list|,
-literal|2
+literal|1
 argument_list|,
-literal|5
+literal|6
 argument_list|)
 expr_stmt|;
 name|multiSelectionModeIntersection
@@ -471,9 +492,9 @@ name|add
 argument_list|(
 name|autoAssignGroup
 argument_list|,
-literal|2
+literal|1
 argument_list|,
-literal|6
+literal|7
 argument_list|)
 expr_stmt|;
 name|builder
@@ -481,16 +502,15 @@ operator|.
 name|add
 argument_list|(
 operator|new
-name|Label
-argument_list|(
-literal|""
-argument_list|)
+name|Separator
+argument_list|()
 argument_list|,
 literal|1
 argument_list|,
-literal|7
+literal|11
 argument_list|)
 expr_stmt|;
+comment|// Dynamic groups title
 name|Label
 name|dynamicGroups
 init|=
@@ -523,9 +543,10 @@ name|dynamicGroups
 argument_list|,
 literal|1
 argument_list|,
-literal|8
+literal|13
 argument_list|)
 expr_stmt|;
+comment|// Dynamic groups configuration
 name|Label
 name|defaultGrouping
 init|=
@@ -550,7 +571,7 @@ name|defaultGrouping
 argument_list|,
 literal|1
 argument_list|,
-literal|9
+literal|15
 argument_list|)
 expr_stmt|;
 name|builder
@@ -561,7 +582,7 @@ name|groupingField
 argument_list|,
 literal|2
 argument_list|,
-literal|9
+literal|15
 argument_list|)
 expr_stmt|;
 name|Label
@@ -588,7 +609,7 @@ name|label
 argument_list|,
 literal|1
 argument_list|,
-literal|10
+literal|17
 argument_list|)
 expr_stmt|;
 name|builder
@@ -599,7 +620,7 @@ name|keywordSeparator
 argument_list|,
 literal|2
 argument_list|,
-literal|10
+literal|17
 argument_list|)
 expr_stmt|;
 block|}

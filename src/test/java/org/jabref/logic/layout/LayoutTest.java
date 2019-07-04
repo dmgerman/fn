@@ -74,6 +74,22 @@ name|org
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
+name|layout
+operator|.
+name|format
+operator|.
+name|NameFormatterPreferences
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
 name|model
 operator|.
 name|entry
@@ -589,9 +605,9 @@ name|layoutText
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Test for http://discourse.jabref.org/t/the-wrapfilelinks-formatter/172 (the example in the help files)      */
 annotation|@
 name|Test
-comment|// Test for http://discourse.jabref.org/t/the-wrapfilelinks-formatter/172 (the example in the help files)
 DECL|method|wrapFileLinksExpandFile ()
 name|void
 name|wrapFileLinksExpandFile
@@ -721,6 +737,80 @@ decl_stmt|;
 name|assertEquals
 argument_list|(
 literal|"2-th ed.-"
+argument_list|,
+name|layoutText
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|customNameFormatter ()
+name|void
+name|customNameFormatter
+parameter_list|()
+throws|throws
+name|IOException
+block|{
+name|when
+argument_list|(
+name|layoutFormatterPreferences
+operator|.
+name|getNameFormatterPreferences
+argument_list|()
+argument_list|)
+operator|.
+name|thenReturn
+argument_list|(
+operator|new
+name|NameFormatterPreferences
+argument_list|(
+name|Collections
+operator|.
+name|singletonList
+argument_list|(
+literal|"DCA"
+argument_list|)
+argument_list|,
+name|Collections
+operator|.
+name|singletonList
+argument_list|(
+literal|"1@*@{ll}@@2@1..1@{ff}{ll}@2..2@ and {ff}{l}@@*@*@more"
+argument_list|)
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|BibEntry
+name|entry
+init|=
+operator|new
+name|BibEntry
+argument_list|(
+name|BibtexEntryTypes
+operator|.
+name|ARTICLE
+argument_list|)
+operator|.
+name|withField
+argument_list|(
+literal|"author"
+argument_list|,
+literal|"Joe Doe and Mary Jane"
+argument_list|)
+decl_stmt|;
+name|String
+name|layoutText
+init|=
+name|layout
+argument_list|(
+literal|"\\begin{author}\\format[DCA]{\\author}\\end{author}"
+argument_list|,
+name|entry
+argument_list|)
+decl_stmt|;
+name|assertEquals
+argument_list|(
+literal|"JoeDoe and MaryJ"
 argument_list|,
 name|layoutText
 argument_list|)

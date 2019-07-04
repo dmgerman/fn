@@ -2129,7 +2129,7 @@ operator|-
 name|missRate
 return|;
 block|}
-comment|/*      * Calculates the similarity (a number within 0 and 1) between two strings.      * http://stackoverflow.com/questions/955110/similarity-string-comparison-in-java      */
+comment|/**      * Calculates the similarity (a number within 0 and 1) between two strings.      * http://stackoverflow.com/questions/955110/similarity-string-comparison-in-java      */
 DECL|method|similarity (final String first, final String second)
 specifier|private
 specifier|static
