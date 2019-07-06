@@ -94,6 +94,16 @@ name|org
 operator|.
 name|jabref
 operator|.
+name|Globals
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
 name|gui
 operator|.
 name|AbstractViewModel
@@ -568,9 +578,12 @@ name|shouldWarnAboutDuplicatesForImport
 argument_list|()
 condition|)
 block|{
-name|boolean
-name|containsDuplicate
-init|=
+name|BackgroundTask
+operator|.
+name|wrap
+argument_list|(
+parameter_list|()
+lambda|->
 name|entriesToImport
 operator|.
 name|stream
@@ -582,15 +595,19 @@ name|this
 operator|::
 name|hasDuplicate
 argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|containsDuplicate
-condition|)
+argument_list|)
+operator|.
+name|onSuccess
+argument_list|(
+name|duplicateFound
+lambda|->
+block|{
+lambda|if (duplicateFound
+argument_list|)
 block|{
 name|boolean
 name|continueImport
-init|=
+operator|=
 name|dialogService
 operator|.
 name|showConfirmationDialogWithOptOutAndWait
@@ -640,7 +657,7 @@ operator|!
 name|optOut
 argument_list|)
 argument_list|)
-decl_stmt|;
+block|;
 if|if
 condition|(
 operator|!
@@ -659,10 +676,60 @@ literal|"Import canceled"
 argument_list|)
 argument_list|)
 expr_stmt|;
-return|return;
+block|}
+else|else
+block|{
+name|buildImportHandlerThenImportEntries
+argument_list|(
+name|entriesToImport
+argument_list|)
+expr_stmt|;
 block|}
 block|}
+else|else
+block|{
+name|buildImportHandlerThenImportEntries
+argument_list|(
+name|entriesToImport
+argument_list|)
+expr_stmt|;
 block|}
+block|}
+block|)
+operator|.
+name|executeWith
+argument_list|(
+name|Globals
+operator|.
+name|TASK_EXECUTOR
+argument_list|)
+expr_stmt|;
+end_class
+
+begin_block
+unit|} else
+block|{
+name|buildImportHandlerThenImportEntries
+argument_list|(
+name|entriesToImport
+argument_list|)
+expr_stmt|;
+block|}
+end_block
+
+begin_function
+unit|}      private
+DECL|method|buildImportHandlerThenImportEntries (List<BibEntry> entriesToImport)
+name|void
+name|buildImportHandlerThenImportEntries
+parameter_list|(
+name|List
+argument_list|<
+name|BibEntry
+argument_list|>
+name|entriesToImport
+parameter_list|)
+block|{
 name|ImportHandler
 name|importHandler
 init|=
@@ -727,7 +794,13 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Checks if there are duplicates to the given entry in the list of entries to be imported.      *      * @param entry The entry to search for duplicates of.      * @return A possible duplicate, if any, or null if none were found.      */
+end_comment
+
+begin_function
 DECL|method|findInternalDuplicate (BibEntry entry)
 specifier|private
 name|Optional
@@ -795,6 +868,9 @@ name|empty
 argument_list|()
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|resolveDuplicate (BibEntry entry)
 specifier|public
 name|void
@@ -1123,8 +1199,8 @@ expr_stmt|;
 block|}
 block|}
 block|}
-block|}
-end_class
+end_function
 
+unit|}
 end_unit
 

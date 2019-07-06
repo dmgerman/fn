@@ -48,7 +48,7 @@ name|java
 operator|.
 name|net
 operator|.
-name|URL
+name|HttpURLConnection
 import|;
 end_import
 
@@ -58,7 +58,7 @@ name|java
 operator|.
 name|net
 operator|.
-name|URLConnection
+name|URL
 import|;
 end_import
 
@@ -552,9 +552,12 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
-name|URLConnection
+name|HttpURLConnection
 name|connection
 init|=
+operator|(
+name|HttpURLConnection
+operator|)
 operator|new
 name|URL
 argument_list|(
@@ -673,6 +676,11 @@ name|version
 argument_list|)
 expr_stmt|;
 block|}
+name|connection
+operator|.
+name|disconnect
+argument_list|()
+expr_stmt|;
 return|return
 name|versions
 return|;

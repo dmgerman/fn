@@ -360,6 +360,16 @@ argument_list|)
 expr_stmt|;
 name|otherFields
 operator|.
+name|removeAll
+argument_list|(
+name|entryType
+operator|.
+name|getOptionalFields
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|otherFields
+operator|.
 name|remove
 argument_list|(
 name|BibEntry

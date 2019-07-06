@@ -1105,6 +1105,10 @@ name|BibDatabaseContext
 argument_list|()
 argument_list|,
 name|dialogService
+argument_list|,
+name|Globals
+operator|.
+name|stateManager
 argument_list|)
 decl_stmt|;
 name|testPane
