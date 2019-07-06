@@ -280,7 +280,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|showDialog (List<CopyFilesResultItemViewModel> data, BibDatabaseContext database)
+DECL|method|showDialog (List<CopyFilesResultItemViewModel> data)
 specifier|private
 name|void
 name|showDialog
@@ -290,9 +290,6 @@ argument_list|<
 name|CopyFilesResultItemViewModel
 argument_list|>
 name|data
-parameter_list|,
-name|BibDatabaseContext
-name|database
 parameter_list|)
 block|{
 if|if
@@ -330,8 +327,6 @@ init|=
 operator|new
 name|CopyFilesDialogView
 argument_list|(
-name|database
-argument_list|,
 operator|new
 name|CopyFilesResultListDependency
 argument_list|(
@@ -497,8 +492,6 @@ name|exportTask
 operator|.
 name|getValue
 argument_list|()
-argument_list|,
-name|database
 argument_list|)
 argument_list|)
 expr_stmt|;
