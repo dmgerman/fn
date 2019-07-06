@@ -1806,7 +1806,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 name|MenuItem
-name|copyLinkedFiles
+name|copyLinkedFile
 init|=
 operator|new
 name|MenuItem
@@ -1819,7 +1819,7 @@ literal|"Copy linked file to folder..."
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|copyLinkedFiles
+name|copyLinkedFile
 operator|.
 name|setOnAction
 argument_list|(
@@ -1842,7 +1842,7 @@ name|copyFile
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|copyLinkedFiles
+name|copyLinkedFile
 operator|.
 name|setDisable
 argument_list|(
@@ -2007,7 +2007,7 @@ name|moveFile
 argument_list|,
 name|renameAndMoveFile
 argument_list|,
-name|copyLinkedFiles
+name|copyLinkedFile
 argument_list|,
 name|deleteLink
 argument_list|,
