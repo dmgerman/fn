@@ -46,6 +46,16 @@ begin_import
 import|import
 name|javafx
 operator|.
+name|application
+operator|.
+name|Platform
+import|;
+end_import
+
+begin_import
+import|import
+name|javafx
+operator|.
 name|beans
 operator|.
 name|property
@@ -306,6 +316,20 @@ name|gui
 operator|.
 name|util
 operator|.
+name|IconValidationDecorator
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|util
+operator|.
 name|TaskExecutor
 import|;
 end_import
@@ -403,6 +427,24 @@ operator|.
 name|views
 operator|.
 name|ViewLoader
+import|;
+end_import
+
+begin_import
+import|import
+name|de
+operator|.
+name|saxsys
+operator|.
+name|mvvmfx
+operator|.
+name|utils
+operator|.
+name|validation
+operator|.
+name|visualization
+operator|.
+name|ControlsFxVisualizer
 import|;
 end_import
 
@@ -568,6 +610,15 @@ DECL|field|viewModel
 specifier|private
 name|PreviewTabViewModel
 name|viewModel
+decl_stmt|;
+DECL|field|validationVisualizer
+specifier|private
+name|ControlsFxVisualizer
+name|validationVisualizer
+init|=
+operator|new
+name|ControlsFxVisualizer
+argument_list|()
 decl_stmt|;
 DECL|class|EditAction
 specifier|private
@@ -1487,10 +1538,38 @@ name|selectedIsEditableProperty
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|validationVisualizer
+operator|.
+name|setDecoration
+argument_list|(
+operator|new
+name|IconValidationDecorator
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|Platform
+operator|.
+name|runLater
+argument_list|(
+parameter_list|()
+lambda|->
+name|validationVisualizer
+operator|.
+name|initVisualization
+argument_list|(
+name|viewModel
+operator|.
+name|chosenListValidationStatus
+argument_list|()
+argument_list|,
+name|chosenListView
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 comment|/**      * This is called, if a user starts typing some characters into the keyboard with focus on one ListView.      * The ListView will scroll to the next cell with the name of the PreviewLayout fitting those characters.      * @param list The ListView currently focused      * @param keypressed The pressed character      */
 DECL|method|jumpToSearchKey (ListView<PreviewLayout> list, KeyEvent keypressed)
-specifier|public
+specifier|private
 name|void
 name|jumpToSearchKey
 parameter_list|(
@@ -1597,7 +1676,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|dragOver (DragEvent event)
-specifier|public
+specifier|private
 name|void
 name|dragOver
 parameter_list|(
@@ -1614,7 +1693,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|dragDetectedInAvailable (MouseEvent event)
-specifier|public
+specifier|private
 name|void
 name|dragDetectedInAvailable
 parameter_list|(
@@ -1685,7 +1764,7 @@ argument_list|()
 expr_stmt|;
 block|}
 DECL|method|dragDetectedInChosen (MouseEvent event)
-specifier|public
+specifier|private
 name|void
 name|dragDetectedInChosen
 parameter_list|(
@@ -1756,7 +1835,7 @@ argument_list|()
 expr_stmt|;
 block|}
 DECL|method|dragDropped (ListProperty<PreviewLayout> targetList, DragEvent event)
-specifier|public
+specifier|private
 name|void
 name|dragDropped
 parameter_list|(
@@ -1799,7 +1878,7 @@ argument_list|()
 expr_stmt|;
 block|}
 DECL|method|dragDroppedInChosenCell (PreviewLayout targetLayout, DragEvent event)
-specifier|public
+specifier|private
 name|void
 name|dragDroppedInChosenCell
 parameter_list|(
