@@ -337,7 +337,7 @@ name|previewLayouts
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Get a List of {@link PreviewLayout} from the dragboard      *      * @return List of BibEntry or empty list if no entries are avaiable      */
+comment|/**      * Get a List of {@link PreviewLayout} from the dragboard      *      * @return List of PreviewLayout or empty list if no entries are avaiable      */
 DECL|method|getPreviewLayouts ()
 specifier|public
 name|List

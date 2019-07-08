@@ -2157,7 +2157,7 @@ block|}
 end_function
 
 begin_comment
-comment|/**      * XML-Syntax-Highlighting for RichTextFX-Codearea created by (c) Carlos Martins (github: @cemartins) License:      * BSD-2-Clause see https://github.com/FXMisc/RichTextFX/blob/master/LICENSE and:      * https://github.com/FXMisc/RichTextFX/blob/master/richtextfx-demos/README.md#xml-editor      *      * @param text to parse and highlight      * @return highlighted span for codeArea      */
+comment|/**      * XML-Syntax-Highlighting for RichTextFX-Codearea created by (c) Carlos Martins (github: @cemartins)      * License: BSD-2-Clause      * see https://github.com/FXMisc/RichTextFX/blob/master/LICENSE and:      * https://github.com/FXMisc/RichTextFX/blob/master/richtextfx-demos/README.md#xml-editor      *      * @param text to parse and highlight      * @return highlighted span for codeArea      */
 end_comment
 
 begin_function
@@ -2736,7 +2736,7 @@ block|}
 end_function
 
 begin_comment
-comment|/**      * Is called, when the user drops some PreviewLayouts either in the availableListView or in the empty space of      * chosenListView      *      * @param targetList either availableListView or chosenListView      */
+comment|/**      * This is called, when the user drops some PreviewLayouts either in the availableListView      * or in the empty space of chosenListView      *      * @param targetList either availableListView or chosenListView      */
 end_comment
 
 begin_function
@@ -2860,7 +2860,7 @@ block|}
 end_function
 
 begin_comment
-comment|/**      * This is called, when the user drops some PreviewLayouts on another cell to sort them      *      * @param targetLayout the Layout, the user drops a layout on      */
+comment|/**      * This is called, when the user drops some PreviewLayouts on another cell in      * chosenListView to sort them      *      * @param targetLayout the Layout, the user drops a layout on      */
 end_comment
 
 begin_function
