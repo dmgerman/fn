@@ -1681,7 +1681,7 @@ parameter_list|()
 block|{
 if|if
 condition|(
-name|chosenSelectionModelProperty
+name|availableSelectionModelProperty
 operator|.
 name|isNull
 argument_list|()
