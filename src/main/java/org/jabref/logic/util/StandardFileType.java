@@ -214,6 +214,12 @@ argument_list|(
 literal|"sxc"
 argument_list|)
 block|,
+DECL|enumConstant|TEX
+name|TEX
+argument_list|(
+literal|"tex"
+argument_list|)
+block|,
 DECL|enumConstant|XML
 name|XML
 argument_list|(

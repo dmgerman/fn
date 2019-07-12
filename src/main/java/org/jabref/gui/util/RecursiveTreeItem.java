@@ -134,7 +134,7 @@ name|scene
 operator|.
 name|control
 operator|.
-name|TreeItem
+name|CheckBoxTreeItem
 import|;
 end_import
 
@@ -152,6 +152,10 @@ begin_comment
 comment|/**  * Taken from https://gist.github.com/lestard/011e9ed4433f9eb791a8  */
 end_comment
 
+begin_comment
+comment|/**  * @implNote As CheckBoxTreeItem extends TreeItem, this class will work for both.  */
+end_comment
+
 begin_class
 DECL|class|RecursiveTreeItem
 specifier|public
@@ -161,7 +165,7 @@ parameter_list|<
 name|T
 parameter_list|>
 extends|extends
-name|TreeItem
+name|CheckBoxTreeItem
 argument_list|<
 name|T
 argument_list|>
