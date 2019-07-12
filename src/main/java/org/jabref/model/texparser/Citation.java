@@ -58,7 +58,7 @@ specifier|final
 name|int
 name|CONTEXT_WIDTH
 init|=
-literal|50
+literal|200
 decl_stmt|;
 DECL|field|path
 specifier|private

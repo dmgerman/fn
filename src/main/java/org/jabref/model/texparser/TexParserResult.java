@@ -40,6 +40,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Collection
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|List
 import|;
 end_import
@@ -226,6 +236,28 @@ name|citations
 operator|.
 name|keySet
 argument_list|()
+return|;
+block|}
+comment|/**      * Return a collection of citations using a string as key reference.      */
+DECL|method|getCitationsByKey (String key)
+specifier|public
+name|Collection
+argument_list|<
+name|Citation
+argument_list|>
+name|getCitationsByKey
+parameter_list|(
+name|String
+name|key
+parameter_list|)
+block|{
+return|return
+name|citations
+operator|.
+name|get
+argument_list|(
+name|key
+argument_list|)
 return|;
 block|}
 comment|/**      * Add a list of files to fileList or nestedFiles, depending on whether this is the first list.      */
