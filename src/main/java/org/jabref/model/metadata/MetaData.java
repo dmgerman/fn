@@ -536,6 +536,11 @@ name|isEventPropagationEnabled
 init|=
 literal|true
 decl_stmt|;
+DECL|field|allowIntegerEdition
+specifier|private
+name|boolean
+name|allowIntegerEdition
+decl_stmt|;
 comment|/**      * Constructs an empty metadata.      */
 DECL|method|MetaData ()
 specifier|public
@@ -543,6 +548,22 @@ name|MetaData
 parameter_list|()
 block|{
 comment|// Do nothing
+block|}
+DECL|method|setAllowIntegerEdition (boolean allowIntegerEdition)
+specifier|public
+name|void
+name|setAllowIntegerEdition
+parameter_list|(
+name|boolean
+name|allowIntegerEdition
+parameter_list|)
+block|{
+name|this
+operator|.
+name|allowIntegerEdition
+operator|=
+name|allowIntegerEdition
+expr_stmt|;
 block|}
 DECL|method|getSaveOrderConfig ()
 specifier|public
