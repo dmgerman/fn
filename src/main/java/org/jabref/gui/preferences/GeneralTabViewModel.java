@@ -426,6 +426,16 @@ operator|new
 name|SimpleBooleanProperty
 argument_list|()
 decl_stmt|;
+DECL|field|allowIntegerEditionProperty
+specifier|private
+specifier|final
+name|BooleanProperty
+name|allowIntegerEditionProperty
+init|=
+operator|new
+name|SimpleBooleanProperty
+argument_list|()
+decl_stmt|;
 DECL|field|showAdvancedHintsProperty
 specifier|private
 specifier|final
@@ -645,6 +655,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|setValues ()
 specifier|public
 name|void
@@ -789,6 +801,20 @@ argument_list|(
 name|JabRefPreferences
 operator|.
 name|ENFORCE_LEGAL_BIBTEX_KEY
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|allowIntegerEditionProperty
+operator|.
+name|setValue
+argument_list|(
+name|preferences
+operator|.
+name|getBoolean
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|ALLOW_INTEGER_EDITION_BIBTEX
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -943,6 +969,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|storeSettings ()
 specifier|public
 name|void
@@ -1082,6 +1110,20 @@ operator|.
 name|ENFORCE_LEGAL_BIBTEX_KEY
 argument_list|,
 name|enforceLegalKeysProperty
+operator|.
+name|getValue
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|preferences
+operator|.
+name|putBoolean
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|ALLOW_INTEGER_EDITION_BIBTEX
+argument_list|,
+name|allowIntegerEditionProperty
 operator|.
 name|getValue
 argument_list|()
@@ -1315,6 +1357,8 @@ name|getValidationStatus
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|validateSettings ()
 specifier|public
 name|boolean
@@ -1509,6 +1553,18 @@ return|return
 name|this
 operator|.
 name|enforceLegalKeysProperty
+return|;
+block|}
+DECL|method|allowIntegerEditionProperty ()
+specifier|public
+name|BooleanProperty
+name|allowIntegerEditionProperty
+parameter_list|()
+block|{
+return|return
+name|this
+operator|.
+name|allowIntegerEditionProperty
 return|;
 block|}
 DECL|method|showAdvancedHintsProperty ()
