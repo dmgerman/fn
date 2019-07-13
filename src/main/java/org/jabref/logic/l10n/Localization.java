@@ -231,7 +231,7 @@ name|setLanguage
 argument_list|(
 name|Language
 operator|.
-name|English
+name|ENGLISH
 argument_list|)
 expr_stmt|;
 block|}
@@ -307,7 +307,7 @@ name|setLanguage
 argument_list|(
 name|Language
 operator|.
-name|English
+name|ENGLISH
 argument_list|)
 expr_stmt|;
 return|return;
@@ -401,7 +401,7 @@ name|setLanguage
 argument_list|(
 name|Language
 operator|.
-name|English
+name|ENGLISH
 argument_list|)
 expr_stmt|;
 block|}
@@ -426,7 +426,7 @@ name|setLanguage
 argument_list|(
 name|Language
 operator|.
-name|English
+name|ENGLISH
 argument_list|)
 expr_stmt|;
 block|}

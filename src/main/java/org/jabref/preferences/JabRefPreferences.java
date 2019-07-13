@@ -10020,6 +10020,8 @@ name|journalAbbreviationLoader
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getXMPPreferences ()
 specifier|public
 name|XmpPreferences
@@ -11826,6 +11828,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|getAutoLinkPreferences ()
 specifier|public
 name|AutoLinkPreferences
@@ -12684,7 +12688,7 @@ name|orElse
 argument_list|(
 name|Language
 operator|.
-name|English
+name|ENGLISH
 argument_list|)
 return|;
 block|}

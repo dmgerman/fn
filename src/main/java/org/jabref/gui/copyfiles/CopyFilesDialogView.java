@@ -126,20 +126,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|database
-operator|.
-name|BibDatabaseContext
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|airhacks
@@ -249,13 +235,10 @@ specifier|final
 name|CopyFilesDialogViewModel
 name|viewModel
 decl_stmt|;
-DECL|method|CopyFilesDialogView (BibDatabaseContext bibDatabaseContext, CopyFilesResultListDependency results)
+DECL|method|CopyFilesDialogView (CopyFilesResultListDependency results)
 specifier|public
 name|CopyFilesDialogView
 parameter_list|(
-name|BibDatabaseContext
-name|bibDatabaseContext
-parameter_list|,
 name|CopyFilesResultListDependency
 name|results
 parameter_list|)
