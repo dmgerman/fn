@@ -655,8 +655,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-annotation|@
-name|Override
 DECL|method|setValues ()
 specifier|public
 name|void
@@ -969,8 +967,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-annotation|@
-name|Override
 DECL|method|storeSettings ()
 specifier|public
 name|void
@@ -1357,8 +1353,6 @@ name|getValidationStatus
 argument_list|()
 return|;
 block|}
-annotation|@
-name|Override
 DECL|method|validateSettings ()
 specifier|public
 name|boolean
