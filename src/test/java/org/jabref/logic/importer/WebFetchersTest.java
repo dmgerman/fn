@@ -72,7 +72,7 @@ name|importer
 operator|.
 name|fetcher
 operator|.
-name|IsbnViaOttoBibFetcher
+name|IsbnViaChimboriFetcher
 import|;
 end_import
 
@@ -88,7 +88,7 @@ name|importer
 operator|.
 name|fetcher
 operator|.
-name|IsbnViaChimboriFetcher
+name|IsbnViaOttoBibFetcher
 import|;
 end_import
 
