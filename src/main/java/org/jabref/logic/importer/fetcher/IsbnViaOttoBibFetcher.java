@@ -448,11 +448,6 @@ argument_list|,
 name|identifier
 argument_list|)
 expr_stmt|;
-name|doPostCleanup
-argument_list|(
-name|entry
-argument_list|)
-expr_stmt|;
 return|return
 name|Optional
 operator|.
