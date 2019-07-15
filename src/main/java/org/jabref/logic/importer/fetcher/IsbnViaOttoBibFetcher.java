@@ -448,11 +448,6 @@ argument_list|,
 name|identifier
 argument_list|)
 expr_stmt|;
-name|doPostCleanup
-argument_list|(
-name|entry
-argument_list|)
-expr_stmt|;
 return|return
 name|Optional
 operator|.
@@ -462,17 +457,6 @@ name|entry
 argument_list|)
 return|;
 block|}
-annotation|@
-name|Override
-DECL|method|doPostCleanup (BibEntry entry)
-specifier|public
-name|void
-name|doPostCleanup
-parameter_list|(
-name|BibEntry
-name|entry
-parameter_list|)
-block|{      }
 block|}
 end_class
 
