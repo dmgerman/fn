@@ -140,7 +140,7 @@ name|scene
 operator|.
 name|control
 operator|.
-name|ScrollPane
+name|SelectionMode
 import|;
 end_import
 
@@ -152,7 +152,7 @@ name|scene
 operator|.
 name|control
 operator|.
-name|SelectionMode
+name|Tab
 import|;
 end_import
 
@@ -556,12 +556,12 @@ specifier|private
 name|Button
 name|resetDefaultButton
 decl_stmt|;
-DECL|field|previewPane
+DECL|field|previewTab
 annotation|@
 name|FXML
 specifier|private
-name|ScrollPane
-name|previewPane
+name|Tab
+name|previewTab
 decl_stmt|;
 DECL|field|editArea
 annotation|@
@@ -1233,7 +1233,7 @@ name|isNull
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|previewPane
+name|previewTab
 operator|.
 name|setContent
 argument_list|(
@@ -1256,7 +1256,7 @@ operator|(
 operator|(
 name|PreviewViewer
 operator|)
-name|previewPane
+name|previewTab
 operator|.
 name|getContent
 argument_list|()
@@ -1285,7 +1285,7 @@ operator|(
 operator|(
 name|PreviewViewer
 operator|)
-name|previewPane
+name|previewTab
 operator|.
 name|getContent
 argument_list|()
@@ -1297,7 +1297,10 @@ name|value
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|previewPane
+name|previewTab
+operator|.
+name|getContent
+argument_list|()
 operator|.
 name|visibleProperty
 argument_list|()
@@ -1317,21 +1320,6 @@ argument_list|()
 operator|.
 name|isNotNull
 argument_list|()
-argument_list|)
-expr_stmt|;
-operator|(
-operator|(
-name|PreviewViewer
-operator|)
-name|previewPane
-operator|.
-name|getContent
-argument_list|()
-operator|)
-operator|.
-name|setMaxWidth
-argument_list|(
-literal|640.0
 argument_list|)
 expr_stmt|;
 name|editArea
