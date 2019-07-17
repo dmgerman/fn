@@ -459,13 +459,9 @@ operator|.
 name|add
 argument_list|(
 operator|new
-name|PreviewPreferencesTab
+name|PreviewTabView
 argument_list|(
-name|dialogService
-argument_list|,
-name|this
-operator|.
-name|taskExecutor
+name|prefs
 argument_list|)
 argument_list|)
 expr_stmt|;
