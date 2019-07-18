@@ -163,7 +163,13 @@ specifier|private
 name|boolean
 name|avoidOverwritingCiteKey
 decl_stmt|;
-DECL|method|EntryEditorPreferences (Map<String, List<String>> entryEditorTabList, LatexFieldFormatterPreferences latexFieldFormatterPreferences, ImportFormatPreferences importFormatPreferences, List<String> customTabFieldNames, boolean shouldShowRecommendationsTab, boolean isMrdlibAccepted, boolean showSourceTabByDefault, BibtexKeyPatternPreferences bibtexKeyPatternPreferences, KeyBindingRepository keyBindings, boolean avoidOverwritingCiteKey)
+DECL|field|shouldShowLatexReferencesTab
+specifier|private
+specifier|final
+name|boolean
+name|shouldShowLatexReferencesTab
+decl_stmt|;
+DECL|method|EntryEditorPreferences (Map<String, List<String>> entryEditorTabList, LatexFieldFormatterPreferences latexFieldFormatterPreferences, ImportFormatPreferences importFormatPreferences, List<String> customTabFieldNames, boolean shouldShowRecommendationsTab, boolean isMrdlibAccepted, boolean shouldShowLatexReferencesTab, boolean showSourceTabByDefault, BibtexKeyPatternPreferences bibtexKeyPatternPreferences, KeyBindingRepository keyBindings, boolean avoidOverwritingCiteKey)
 specifier|public
 name|EntryEditorPreferences
 parameter_list|(
@@ -195,6 +201,9 @@ name|shouldShowRecommendationsTab
 parameter_list|,
 name|boolean
 name|isMrdlibAccepted
+parameter_list|,
+name|boolean
+name|shouldShowLatexReferencesTab
 parameter_list|,
 name|boolean
 name|showSourceTabByDefault
@@ -268,6 +277,12 @@ operator|.
 name|avoidOverwritingCiteKey
 operator|=
 name|avoidOverwritingCiteKey
+expr_stmt|;
+name|this
+operator|.
+name|shouldShowLatexReferencesTab
+operator|=
+name|shouldShowLatexReferencesTab
 expr_stmt|;
 block|}
 DECL|method|getEntryEditorTabList ()
@@ -396,6 +411,16 @@ name|showSourceTabByDefault
 operator|=
 name|showSourceTabByDefault
 expr_stmt|;
+block|}
+DECL|method|shouldShowLatexReferencesTab ()
+specifier|public
+name|boolean
+name|shouldShowLatexReferencesTab
+parameter_list|()
+block|{
+return|return
+name|shouldShowLatexReferencesTab
+return|;
 block|}
 DECL|method|avoidOverwritingCiteKey ()
 specifier|public
