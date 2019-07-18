@@ -86,6 +86,20 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|BibEntry
+import|;
+end_import
+
+begin_import
+import|import
 name|com
 operator|.
 name|google
@@ -257,6 +271,34 @@ operator|.
 name|get
 argument_list|(
 name|key
+argument_list|)
+return|;
+block|}
+comment|/**      * Return a collection of citations using a BibEntry as reference.      */
+DECL|method|getCitationsByKey (BibEntry entry)
+specifier|public
+name|Collection
+argument_list|<
+name|Citation
+argument_list|>
+name|getCitationsByKey
+parameter_list|(
+name|BibEntry
+name|entry
+parameter_list|)
+block|{
+return|return
+name|getCitationsByKey
+argument_list|(
+name|entry
+operator|.
+name|getCiteKeyOptional
+argument_list|()
+operator|.
+name|orElse
+argument_list|(
+literal|null
+argument_list|)
 argument_list|)
 return|;
 block|}
