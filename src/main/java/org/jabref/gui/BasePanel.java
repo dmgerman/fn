@@ -1838,10 +1838,9 @@ name|EntryEditor
 argument_list|(
 name|this
 argument_list|,
-name|preferences
+name|Globals
 operator|.
-name|getEntryEditorPreferences
-argument_list|()
+name|prefs
 argument_list|,
 name|Globals
 operator|.
