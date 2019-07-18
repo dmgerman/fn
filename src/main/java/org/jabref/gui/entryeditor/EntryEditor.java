@@ -1899,6 +1899,22 @@ argument_list|(
 name|sourceTab
 argument_list|)
 expr_stmt|;
+comment|// LaTeX references tab
+name|tabs
+operator|.
+name|add
+argument_list|(
+operator|new
+name|LatexReferencesTab
+argument_list|(
+name|databaseContext
+argument_list|,
+name|preferencesService
+argument_list|,
+name|taskExecutor
+argument_list|)
+argument_list|)
+expr_stmt|;
 return|return
 name|tabs
 return|;
