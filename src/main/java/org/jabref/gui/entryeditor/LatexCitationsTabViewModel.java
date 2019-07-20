@@ -742,13 +742,6 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
-name|LOGGER
-operator|.
-name|info
-argument_list|(
-literal|"Trying to cancel previous search"
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 name|searchTask
@@ -759,9 +752,19 @@ condition|)
 block|{
 name|LOGGER
 operator|.
-name|info
+name|debug
 argument_list|(
 literal|"Last search has been cancelled"
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|LOGGER
+operator|.
+name|warn
+argument_list|(
+literal|"Could not cancel last search"
 argument_list|)
 expr_stmt|;
 block|}
