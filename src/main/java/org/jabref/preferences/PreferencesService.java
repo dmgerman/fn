@@ -513,6 +513,12 @@ name|void
 name|saveCustomEntryTypes
 parameter_list|()
 function_decl|;
+DECL|method|getAllowIntegerEdition ()
+specifier|public
+name|Boolean
+name|getAllowIntegerEdition
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

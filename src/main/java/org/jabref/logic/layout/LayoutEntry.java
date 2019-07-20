@@ -4133,6 +4133,16 @@ return|return
 name|result
 return|;
 block|}
+DECL|method|getText ()
+specifier|public
+name|String
+name|getText
+parameter_list|()
+block|{
+return|return
+name|text
+return|;
+block|}
 block|}
 end_class
 

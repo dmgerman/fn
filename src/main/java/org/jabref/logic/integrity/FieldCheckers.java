@@ -173,7 +173,7 @@ name|ValueChecker
 argument_list|>
 name|fieldChecker
 decl_stmt|;
-DECL|method|FieldCheckers (BibDatabaseContext databaseContext, FilePreferences filePreferences, JournalAbbreviationRepository abbreviationRepository, boolean enforceLegalKey)
+DECL|method|FieldCheckers (BibDatabaseContext databaseContext, FilePreferences filePreferences, JournalAbbreviationRepository abbreviationRepository, boolean enforceLegalKey, boolean allowIntegerEdition)
 specifier|public
 name|FieldCheckers
 parameter_list|(
@@ -188,6 +188,9 @@ name|abbreviationRepository
 parameter_list|,
 name|boolean
 name|enforceLegalKey
+parameter_list|,
+name|boolean
+name|allowIntegerEdition
 parameter_list|)
 block|{
 name|fieldChecker
@@ -201,10 +204,12 @@ argument_list|,
 name|abbreviationRepository
 argument_list|,
 name|enforceLegalKey
+argument_list|,
+name|allowIntegerEdition
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|getAllMap (BibDatabaseContext databaseContext, FilePreferences filePreferences, JournalAbbreviationRepository abbreviationRepository, boolean enforceLegalKey)
+DECL|method|getAllMap (BibDatabaseContext databaseContext, FilePreferences filePreferences, JournalAbbreviationRepository abbreviationRepository, boolean enforceLegalKey, boolean allowIntegerEdition)
 specifier|private
 specifier|static
 name|Multimap
@@ -226,6 +231,9 @@ name|abbreviationRepository
 parameter_list|,
 name|boolean
 name|enforceLegalKey
+parameter_list|,
+name|boolean
+name|allowIntegerEdition
 parameter_list|)
 block|{
 name|ArrayListMultimap
@@ -386,6 +394,8 @@ operator|new
 name|EditionChecker
 argument_list|(
 name|databaseContext
+argument_list|,
+name|allowIntegerEdition
 argument_list|)
 argument_list|)
 expr_stmt|;
