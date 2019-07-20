@@ -414,7 +414,7 @@ block|{
 try|try
 init|(
 name|LineNumberReader
-name|lnr
+name|lineNumberReader
 init|=
 operator|new
 name|LineNumberReader
@@ -428,60 +428,49 @@ argument_list|)
 argument_list|)
 init|)
 block|{
-for|for
-control|(
-name|String
-name|line
-init|=
-name|lnr
+comment|// Skip comments and blank lines.
+name|lineNumberReader
 operator|.
-name|readLine
+name|lines
 argument_list|()
-init|;
-name|line
-operator|!=
-literal|null
-condition|;
-name|line
-operator|=
-name|lnr
 operator|.
-name|readLine
-argument_list|()
-control|)
-block|{
-if|if
-condition|(
+name|filter
+argument_list|(
+name|line
+lambda|->
+operator|!
 name|line
 operator|.
 name|isEmpty
 argument_list|()
-operator|||
+operator|&&
 name|line
 operator|.
 name|charAt
 argument_list|(
 literal|0
 argument_list|)
-operator|==
+operator|!=
 literal|'%'
-condition|)
+argument_list|)
+operator|.
+name|forEach
+argument_list|(
+name|line
+lambda|->
 block|{
-comment|// Skip comments and blank lines.
-continue|continue;
-block|}
 name|matchCitation
 argument_list|(
 name|file
 argument_list|,
-name|lnr
+name|lineNumberReader
 operator|.
 name|getLineNumber
 argument_list|()
 argument_list|,
 name|line
 argument_list|)
-expr_stmt|;
+argument_list|;
 name|matchNestedFile
 argument_list|(
 name|file
@@ -492,8 +481,10 @@ name|referencedFiles
 argument_list|,
 name|line
 argument_list|)
-expr_stmt|;
+argument_list|;
 block|}
+block|)
+empty_stmt|;
 block|}
 catch|catch
 parameter_list|(
@@ -512,7 +503,13 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+end_class
+
+begin_comment
 comment|// Parse all files referenced by TEX files, recursively.
+end_comment
+
+begin_if
 if|if
 condition|(
 operator|!
@@ -528,13 +525,22 @@ name|referencedFiles
 argument_list|)
 expr_stmt|;
 block|}
+end_if
+
+begin_return
 return|return
 name|result
 return|;
-block|}
+end_return
+
+begin_comment
+unit|}
 comment|/**      * Find cites along a specific line and store them.      */
+end_comment
+
+begin_function
 DECL|method|matchCitation (Path file, int lineNumber, String line)
-specifier|private
+unit|private
 name|void
 name|matchCitation
 parameter_list|(
@@ -616,7 +622,13 @@ expr_stmt|;
 block|}
 block|}
 block|}
+end_function
+
+begin_comment
 comment|/**      * Find inputs and includes along a specific line and store them for parsing later.      */
+end_comment
+
+begin_function
 DECL|method|matchNestedFile (Path file, List<Path> texFiles, List<Path> referencedFiles, String line)
 specifier|private
 name|void
@@ -755,8 +767,8 @@ expr_stmt|;
 block|}
 block|}
 block|}
-block|}
-end_class
+end_function
 
+unit|}
 end_unit
 
