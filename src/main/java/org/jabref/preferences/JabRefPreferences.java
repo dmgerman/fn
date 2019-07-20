@@ -2931,14 +2931,14 @@ name|ACCEPT_RECOMMENDATIONS
 init|=
 literal|"acceptRecommendations"
 decl_stmt|;
-DECL|field|SHOW_LATEX_REFERENCES
+DECL|field|SHOW_LATEX_CITATIONS
 specifier|public
 specifier|static
 specifier|final
 name|String
-name|SHOW_LATEX_REFERENCES
+name|SHOW_LATEX_CITATIONS
 init|=
-literal|"showLatexReferences"
+literal|"showLatexCitations"
 decl_stmt|;
 DECL|field|SEND_LANGUAGE_DATA
 specifier|public
@@ -4687,7 +4687,7 @@ name|defaults
 operator|.
 name|put
 argument_list|(
-name|SHOW_LATEX_REFERENCES
+name|SHOW_LATEX_CITATIONS
 argument_list|,
 name|Boolean
 operator|.
@@ -6958,7 +6958,7 @@ argument_list|)
 argument_list|,
 name|getBoolean
 argument_list|(
-name|SHOW_LATEX_REFERENCES
+name|SHOW_LATEX_CITATIONS
 argument_list|)
 argument_list|,
 name|getBoolean

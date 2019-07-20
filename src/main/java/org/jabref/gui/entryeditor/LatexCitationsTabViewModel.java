@@ -293,10 +293,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|LatexReferencesTabViewModel
+DECL|class|LatexCitationsTabViewModel
 specifier|public
 class|class
-name|LatexReferencesTabViewModel
+name|LatexCitationsTabViewModel
 extends|extends
 name|AbstractViewModel
 block|{
@@ -357,9 +357,9 @@ specifier|final
 name|BooleanProperty
 name|successfulSearch
 decl_stmt|;
-DECL|method|LatexReferencesTabViewModel (BibDatabaseContext databaseContext, PreferencesService preferencesService, TaskExecutor taskExecutor)
+DECL|method|LatexCitationsTabViewModel (BibDatabaseContext databaseContext, PreferencesService preferencesService, TaskExecutor taskExecutor)
 specifier|public
-name|LatexReferencesTabViewModel
+name|LatexCitationsTabViewModel
 parameter_list|(
 name|BibDatabaseContext
 name|databaseContext
@@ -711,7 +711,7 @@ operator|.
 name|getEntryEditorPreferences
 argument_list|()
 operator|.
-name|shouldShowLatexReferencesTab
+name|shouldShowLatexCitationsTab
 argument_list|()
 return|;
 block|}

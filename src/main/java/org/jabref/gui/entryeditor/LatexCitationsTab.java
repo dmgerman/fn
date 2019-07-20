@@ -239,17 +239,17 @@ import|;
 end_import
 
 begin_class
-DECL|class|LatexReferencesTab
+DECL|class|LatexCitationsTab
 specifier|public
 class|class
-name|LatexReferencesTab
+name|LatexCitationsTab
 extends|extends
 name|EntryEditorTab
 block|{
 DECL|field|viewModel
 specifier|private
 specifier|final
-name|LatexReferencesTabViewModel
+name|LatexCitationsTabViewModel
 name|viewModel
 decl_stmt|;
 DECL|field|progressIndicator
@@ -270,9 +270,9 @@ specifier|private
 name|StackPane
 name|searchPane
 decl_stmt|;
-DECL|method|LatexReferencesTab (BibDatabaseContext databaseContext, PreferencesService preferencesService, TaskExecutor taskExecutor)
+DECL|method|LatexCitationsTab (BibDatabaseContext databaseContext, PreferencesService preferencesService, TaskExecutor taskExecutor)
 specifier|public
-name|LatexReferencesTab
+name|LatexCitationsTab
 parameter_list|(
 name|BibDatabaseContext
 name|databaseContext
@@ -289,7 +289,7 @@ operator|.
 name|viewModel
 operator|=
 operator|new
-name|LatexReferencesTabViewModel
+name|LatexCitationsTabViewModel
 argument_list|(
 name|databaseContext
 argument_list|,
@@ -304,7 +304,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"LaTeX references"
+literal|"LaTeX citations"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -317,7 +317,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Search this reference in the LaTeX file directory"
+literal|"Search citations for this entry in LaTeX files"
 argument_list|)
 argument_list|)
 argument_list|)
@@ -376,7 +376,7 @@ argument_list|()
 operator|.
 name|add
 argument_list|(
-literal|"latexReferences-tab"
+literal|"latex-citations-tab"
 argument_list|)
 expr_stmt|;
 name|searchPane
@@ -519,11 +519,11 @@ argument_list|()
 operator|.
 name|add
 argument_list|(
-literal|"latexReferences-contextBox"
+literal|"latex-citations-context-box"
 argument_list|)
 expr_stmt|;
 name|Text
-name|fileData
+name|positionText
 init|=
 operator|new
 name|Text
@@ -559,14 +559,14 @@ argument_list|()
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|fileData
+name|positionText
 operator|.
 name|getStyleClass
 argument_list|()
 operator|.
 name|add
 argument_list|(
-literal|"latexReferences-fileData"
+literal|"latex-citations-position-text"
 argument_list|)
 expr_stmt|;
 return|return
@@ -575,7 +575,7 @@ name|VBox
 argument_list|(
 name|contextBox
 argument_list|,
-name|fileData
+name|positionText
 argument_list|)
 return|;
 block|}
@@ -595,7 +595,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"References found:"
+literal|"Citations found:"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -606,11 +606,11 @@ argument_list|()
 operator|.
 name|add
 argument_list|(
-literal|"latexReferences-title"
+literal|"latex-citations-title-text"
 argument_list|)
 expr_stmt|;
 name|VBox
-name|vBox
+name|citationsBox
 init|=
 operator|new
 name|VBox
@@ -620,7 +620,7 @@ argument_list|,
 name|titleText
 argument_list|)
 decl_stmt|;
-name|vBox
+name|citationsBox
 operator|.
 name|getChildren
 argument_list|()
@@ -641,7 +641,7 @@ name|citationsPane
 operator|.
 name|setContent
 argument_list|(
-name|vBox
+name|citationsBox
 argument_list|)
 expr_stmt|;
 return|return
@@ -655,7 +655,7 @@ name|getNotFoundPane
 parameter_list|()
 block|{
 name|Text
-name|descriptionText
+name|notFoundText
 init|=
 operator|new
 name|Text
@@ -664,18 +664,18 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"No references found for this entry."
+literal|"No citations found for this entry."
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|descriptionText
+name|notFoundText
 operator|.
 name|getStyleClass
 argument_list|()
 operator|.
 name|add
 argument_list|(
-literal|"latexReferences-description"
+literal|"latex-citations-not-found-text"
 argument_list|)
 expr_stmt|;
 name|ScrollPane
@@ -689,7 +689,7 @@ name|notFoundPane
 operator|.
 name|setContent
 argument_list|(
-name|descriptionText
+name|notFoundText
 argument_list|)
 expr_stmt|;
 return|return

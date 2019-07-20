@@ -1899,13 +1899,13 @@ argument_list|(
 name|sourceTab
 argument_list|)
 expr_stmt|;
-comment|// LaTeX references tab
+comment|// LaTeX citations tab
 name|tabs
 operator|.
 name|add
 argument_list|(
 operator|new
-name|LatexReferencesTab
+name|LatexCitationsTab
 argument_list|(
 name|databaseContext
 argument_list|,

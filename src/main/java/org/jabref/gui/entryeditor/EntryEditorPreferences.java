@@ -163,13 +163,13 @@ specifier|private
 name|boolean
 name|avoidOverwritingCiteKey
 decl_stmt|;
-DECL|field|shouldShowLatexReferencesTab
+DECL|field|shouldShowLatexCitationsTab
 specifier|private
 specifier|final
 name|boolean
-name|shouldShowLatexReferencesTab
+name|shouldShowLatexCitationsTab
 decl_stmt|;
-DECL|method|EntryEditorPreferences (Map<String, List<String>> entryEditorTabList, LatexFieldFormatterPreferences latexFieldFormatterPreferences, ImportFormatPreferences importFormatPreferences, List<String> customTabFieldNames, boolean shouldShowRecommendationsTab, boolean isMrdlibAccepted, boolean shouldShowLatexReferencesTab, boolean showSourceTabByDefault, BibtexKeyPatternPreferences bibtexKeyPatternPreferences, KeyBindingRepository keyBindings, boolean avoidOverwritingCiteKey)
+DECL|method|EntryEditorPreferences (Map<String, List<String>> entryEditorTabList, LatexFieldFormatterPreferences latexFieldFormatterPreferences, ImportFormatPreferences importFormatPreferences, List<String> customTabFieldNames, boolean shouldShowRecommendationsTab, boolean isMrdlibAccepted, boolean shouldShowLatexCitationsTab, boolean showSourceTabByDefault, BibtexKeyPatternPreferences bibtexKeyPatternPreferences, KeyBindingRepository keyBindings, boolean avoidOverwritingCiteKey)
 specifier|public
 name|EntryEditorPreferences
 parameter_list|(
@@ -203,7 +203,7 @@ name|boolean
 name|isMrdlibAccepted
 parameter_list|,
 name|boolean
-name|shouldShowLatexReferencesTab
+name|shouldShowLatexCitationsTab
 parameter_list|,
 name|boolean
 name|showSourceTabByDefault
@@ -280,9 +280,9 @@ name|avoidOverwritingCiteKey
 expr_stmt|;
 name|this
 operator|.
-name|shouldShowLatexReferencesTab
+name|shouldShowLatexCitationsTab
 operator|=
-name|shouldShowLatexReferencesTab
+name|shouldShowLatexCitationsTab
 expr_stmt|;
 block|}
 DECL|method|getEntryEditorTabList ()
@@ -412,14 +412,14 @@ operator|=
 name|showSourceTabByDefault
 expr_stmt|;
 block|}
-DECL|method|shouldShowLatexReferencesTab ()
+DECL|method|shouldShowLatexCitationsTab ()
 specifier|public
 name|boolean
-name|shouldShowLatexReferencesTab
+name|shouldShowLatexCitationsTab
 parameter_list|()
 block|{
 return|return
-name|shouldShowLatexReferencesTab
+name|shouldShowLatexCitationsTab
 return|;
 block|}
 DECL|method|avoidOverwritingCiteKey ()

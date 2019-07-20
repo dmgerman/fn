@@ -289,11 +289,11 @@ specifier|final
 name|CheckBox
 name|acceptRecommendations
 decl_stmt|;
-DECL|field|latexReferences
+DECL|field|latexCitations
 specifier|private
 specifier|final
 name|CheckBox
-name|latexReferences
+name|latexCitations
 decl_stmt|;
 DECL|field|validation
 specifier|private
@@ -515,7 +515,7 @@ literal|"Accept recommendations from Mr. DLib"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|latexReferences
+name|latexCitations
 operator|=
 operator|new
 name|CheckBox
@@ -524,7 +524,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Show 'LaTeX references' tab"
+literal|"Show 'LaTeX citations' tab"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -800,7 +800,7 @@ name|builder
 operator|.
 name|add
 argument_list|(
-name|latexReferences
+name|latexCitations
 argument_list|,
 literal|1
 argument_list|,
@@ -1523,7 +1523,7 @@ name|ACCEPT_RECOMMENDATIONS
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|latexReferences
+name|latexCitations
 operator|.
 name|setSelected
 argument_list|(
@@ -1533,7 +1533,7 @@ name|getBoolean
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|SHOW_LATEX_REFERENCES
+name|SHOW_LATEX_CITATIONS
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1799,9 +1799,9 @@ name|putBoolean
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|SHOW_LATEX_REFERENCES
+name|SHOW_LATEX_CITATIONS
 argument_list|,
-name|latexReferences
+name|latexCitations
 operator|.
 name|isSelected
 argument_list|()
