@@ -385,7 +385,7 @@ name|getEntryEditorTabList
 parameter_list|()
 function_decl|;
 DECL|method|getEnforceLegalKeys ()
-name|Boolean
+name|boolean
 name|getEnforceLegalKeys
 parameter_list|()
 function_decl|;
@@ -542,7 +542,7 @@ name|saveCustomEntryTypes
 parameter_list|()
 function_decl|;
 DECL|method|getAllowIntegerEdition ()
-name|Boolean
+name|boolean
 name|getAllowIntegerEdition
 parameter_list|()
 function_decl|;

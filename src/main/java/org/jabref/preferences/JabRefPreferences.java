@@ -9109,7 +9109,7 @@ annotation|@
 name|Override
 DECL|method|getEnforceLegalKeys ()
 specifier|public
-name|Boolean
+name|boolean
 name|getEnforceLegalKeys
 parameter_list|()
 block|{
@@ -9124,7 +9124,7 @@ annotation|@
 name|Override
 DECL|method|getAllowIntegerEdition ()
 specifier|public
-name|Boolean
+name|boolean
 name|getAllowIntegerEdition
 parameter_list|()
 block|{
