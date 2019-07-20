@@ -1151,6 +1151,10 @@ name|files
 argument_list|)
 expr_stmt|;
 block|}
+name|success
+operator|=
+literal|true
+expr_stmt|;
 block|}
 if|if
 condition|(
@@ -1242,6 +1246,10 @@ name|files
 argument_list|)
 expr_stmt|;
 block|}
+name|success
+operator|=
+literal|true
+expr_stmt|;
 block|}
 if|if
 condition|(
@@ -1333,6 +1341,10 @@ name|files
 argument_list|)
 expr_stmt|;
 block|}
+name|success
+operator|=
+literal|true
+expr_stmt|;
 block|}
 block|}
 name|event
@@ -1342,7 +1354,6 @@ argument_list|(
 name|success
 argument_list|)
 expr_stmt|;
-comment|// Always false
 name|event
 operator|.
 name|consume
