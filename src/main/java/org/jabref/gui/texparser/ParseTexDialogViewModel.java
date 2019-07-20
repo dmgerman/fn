@@ -973,7 +973,7 @@ throw|throw
 operator|new
 name|IOException
 argument_list|(
-literal|"An error occurred while searching an invalid directory."
+literal|"Error searching an invalid directory"
 argument_list|)
 throw|;
 block|}
@@ -1046,7 +1046,7 @@ throw|throw
 operator|new
 name|IOException
 argument_list|(
-literal|"An error occurred while searching files: "
+literal|"Error searching files"
 argument_list|,
 name|e
 argument_list|)
