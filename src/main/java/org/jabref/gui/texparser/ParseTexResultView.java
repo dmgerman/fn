@@ -244,7 +244,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"LaTeX references search results"
+literal|"LaTeX Citations Search Results"
 argument_list|)
 argument_list|)
 expr_stmt|;

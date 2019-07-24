@@ -1507,7 +1507,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"LaTeX references search"
+literal|"Search for Citations in LaTeX Files"
 argument_list|)
 argument_list|,
 name|IconTheme
