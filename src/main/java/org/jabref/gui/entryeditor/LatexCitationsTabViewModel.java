@@ -785,6 +785,11 @@ argument_list|()
 operator|.
 name|parse
 argument_list|(
+name|entry
+operator|.
+name|get
+argument_list|()
+argument_list|,
 name|texFiles
 argument_list|)
 decl_stmt|;
