@@ -76,11 +76,9 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|remote
+name|importer
 operator|.
-name|server
-operator|.
-name|MessageHandler
+name|ParseException
 import|;
 end_import
 
@@ -88,13 +86,15 @@ begin_import
 import|import
 name|org
 operator|.
-name|apache
+name|jabref
 operator|.
-name|commons
+name|logic
 operator|.
-name|cli
+name|remote
 operator|.
-name|ParseException
+name|server
+operator|.
+name|MessageHandler
 import|;
 end_import
 
