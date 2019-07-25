@@ -485,12 +485,7 @@ operator|.
 name|setAll
 argument_list|(
 name|getErrorPane
-argument_list|(
-name|viewModel
-operator|.
-name|getSearchError
 argument_list|()
-argument_list|)
 argument_list|)
 expr_stmt|;
 break|break;
@@ -798,14 +793,11 @@ return|return
 name|notFoundPane
 return|;
 block|}
-DECL|method|getErrorPane (Exception exception)
+DECL|method|getErrorPane ()
 specifier|private
 name|ScrollPane
 name|getErrorPane
-parameter_list|(
-name|Exception
-name|exception
-parameter_list|)
+parameter_list|()
 block|{
 name|Text
 name|errorTitleText
@@ -837,7 +829,10 @@ init|=
 operator|new
 name|Text
 argument_list|(
-name|exception
+name|viewModel
+operator|.
+name|getSearchError
+argument_list|()
 operator|.
 name|getMessage
 argument_list|()
@@ -859,7 +854,10 @@ init|=
 operator|new
 name|Text
 argument_list|(
-name|exception
+name|viewModel
+operator|.
+name|getSearchError
+argument_list|()
 operator|.
 name|getCause
 argument_list|()
