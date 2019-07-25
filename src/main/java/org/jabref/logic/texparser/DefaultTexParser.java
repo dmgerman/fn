@@ -366,6 +366,8 @@ parameter_list|)
 block|{
 name|matchCitation
 argument_list|(
+literal|null
+argument_list|,
 name|Paths
 operator|.
 name|get
@@ -430,6 +432,8 @@ name|texFiles
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|parse (BibEntry entry, List<Path> texFiles)
 specifier|public
 name|TexParserResult
@@ -533,6 +537,8 @@ block|)
 block|{
 name|matchCitation
 argument_list|(
+name|entry
+argument_list|,
 name|file
 argument_list|,
 name|lineNumberReader
@@ -617,11 +623,14 @@ comment|/**      * Find cites along a specific line and store them.      */
 end_comment
 
 begin_function
-DECL|method|matchCitation (Path file, int lineNumber, String line)
+DECL|method|matchCitation (BibEntry entry, Path file, int lineNumber, String line)
 unit|private
 name|void
 name|matchCitation
 parameter_list|(
+name|BibEntry
+name|entry
+parameter_list|,
 name|Path
 name|file
 parameter_list|,
@@ -664,6 +673,30 @@ operator|.
 name|split
 argument_list|(
 literal|","
+argument_list|)
+argument_list|)
+operator|.
+name|filter
+argument_list|(
+name|key
+lambda|->
+name|entry
+operator|==
+literal|null
+operator|||
+name|key
+operator|.
+name|equals
+argument_list|(
+name|entry
+operator|.
+name|getCiteKeyOptional
+argument_list|()
+operator|.
+name|orElse
+argument_list|(
+literal|null
+argument_list|)
 argument_list|)
 argument_list|)
 operator|.
