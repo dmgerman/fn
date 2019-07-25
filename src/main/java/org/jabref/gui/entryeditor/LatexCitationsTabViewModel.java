@@ -526,7 +526,7 @@ name|searchError
 operator|.
 name|set
 argument_list|(
-literal|"Selected entry does not have a key."
+literal|"Selected entry does not have an associated BibTeX key."
 argument_list|)
 expr_stmt|;
 name|status
