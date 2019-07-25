@@ -104,9 +104,9 @@ name|platform
 operator|.
 name|commons
 operator|.
-name|util
+name|support
 operator|.
-name|AnnotationUtils
+name|AnnotationSupport
 import|;
 end_import
 
@@ -195,7 +195,7 @@ name|DisabledOnCIServer
 argument_list|>
 name|disabled
 init|=
-name|AnnotationUtils
+name|AnnotationSupport
 operator|.
 name|findAnnotation
 argument_list|(
