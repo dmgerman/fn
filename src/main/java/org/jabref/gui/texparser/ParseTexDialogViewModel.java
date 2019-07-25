@@ -400,6 +400,7 @@ end_import
 
 begin_class
 DECL|class|ParseTexDialogViewModel
+specifier|public
 class|class
 name|ParseTexDialogViewModel
 extends|extends

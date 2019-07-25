@@ -86,6 +86,7 @@ end_import
 
 begin_class
 DECL|class|ParseTexResultViewModel
+specifier|public
 class|class
 name|ParseTexResultViewModel
 extends|extends
