@@ -236,8 +236,6 @@ name|texParserResult
 operator|=
 name|texParserResult
 expr_stmt|;
-name|this
-operator|.
 name|setTitle
 argument_list|(
 name|Localization
@@ -385,7 +383,7 @@ name|format
 argument_list|(
 name|item
 operator|.
-name|getLineText
+name|getContext
 argument_list|()
 argument_list|)
 argument_list|)

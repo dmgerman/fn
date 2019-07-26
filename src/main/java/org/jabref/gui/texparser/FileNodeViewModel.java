@@ -110,18 +110,18 @@ name|path
 expr_stmt|;
 name|this
 operator|.
-name|fileCount
-operator|=
-literal|0
-expr_stmt|;
-name|this
-operator|.
 name|children
 operator|=
 name|FXCollections
 operator|.
 name|observableArrayList
 argument_list|()
+expr_stmt|;
+name|this
+operator|.
+name|fileCount
+operator|=
+literal|0
 expr_stmt|;
 block|}
 DECL|method|getPath ()
@@ -132,6 +132,19 @@ parameter_list|()
 block|{
 return|return
 name|path
+return|;
+block|}
+DECL|method|getChildren ()
+specifier|public
+name|ObservableList
+argument_list|<
+name|FileNodeViewModel
+argument_list|>
+name|getChildren
+parameter_list|()
+block|{
+return|return
+name|children
 return|;
 block|}
 DECL|method|getFileCount ()
@@ -159,19 +172,6 @@ name|fileCount
 operator|=
 name|fileCount
 expr_stmt|;
-block|}
-DECL|method|getChildren ()
-specifier|public
-name|ObservableList
-argument_list|<
-name|FileNodeViewModel
-argument_list|>
-name|getChildren
-parameter_list|()
-block|{
-return|return
-name|children
-return|;
 block|}
 comment|/**      * Return a string for displaying a node name (and its number of children if it is a directory).      */
 DECL|method|getDisplayText ()
@@ -249,8 +249,6 @@ name|StringJoiner
 argument_list|(
 literal|", "
 argument_list|,
-name|this
-operator|.
 name|getClass
 argument_list|()
 operator|.

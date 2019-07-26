@@ -278,11 +278,11 @@ name|key
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Check if an entry with the given key is present in the list of new entries.      */
-DECL|method|checkEntryNewDatabase (String key)
+comment|/**      * Check if an entry with the given key is not present in the list of new entries.      */
+DECL|method|isNotKeyIntoNewEntries (String key)
 specifier|public
 name|boolean
-name|checkEntryNewDatabase
+name|isNotKeyIntoNewEntries
 parameter_list|(
 name|String
 name|key
@@ -294,7 +294,7 @@ operator|.
 name|stream
 argument_list|()
 operator|.
-name|anyMatch
+name|noneMatch
 argument_list|(
 name|entry
 lambda|->
@@ -386,8 +386,6 @@ name|StringJoiner
 argument_list|(
 literal|", "
 argument_list|,
-name|this
-operator|.
 name|getClass
 argument_list|()
 operator|.

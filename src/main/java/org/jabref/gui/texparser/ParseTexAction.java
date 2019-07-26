@@ -96,8 +96,6 @@ name|stateManager
 operator|=
 name|stateManager
 expr_stmt|;
-name|this
-operator|.
 name|executable
 operator|.
 name|bind

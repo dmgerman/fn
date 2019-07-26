@@ -233,16 +233,6 @@ return|return
 name|lineText
 return|;
 block|}
-DECL|method|getContextWidth ()
-specifier|public
-name|int
-name|getContextWidth
-parameter_list|()
-block|{
-return|return
-name|CONTEXT_WIDTH
-return|;
-block|}
 comment|/**      * Get a fixed-width string that contains a cite and the text that surrounds it along the same line.      */
 DECL|method|getContext ()
 specifier|public
@@ -338,8 +328,6 @@ name|StringJoiner
 argument_list|(
 literal|", "
 argument_list|,
-name|this
-operator|.
 name|getClass
 argument_list|()
 operator|.

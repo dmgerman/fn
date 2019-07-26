@@ -114,16 +114,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Optional
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|regex
 operator|.
 name|Matcher
@@ -309,11 +299,11 @@ name|TEX_EXT
 init|=
 literal|".tex"
 decl_stmt|;
-DECL|field|result
+DECL|field|texParserResult
 specifier|private
 specifier|final
 name|TexParserResult
-name|result
+name|texParserResult
 decl_stmt|;
 DECL|method|DefaultTexParser ()
 specifier|public
@@ -322,7 +312,7 @@ parameter_list|()
 block|{
 name|this
 operator|.
-name|result
+name|texParserResult
 operator|=
 operator|new
 name|TexParserResult
@@ -336,7 +326,7 @@ name|getResult
 parameter_list|()
 block|{
 return|return
-name|result
+name|texParserResult
 return|;
 block|}
 annotation|@
@@ -352,10 +342,7 @@ parameter_list|)
 block|{
 name|matchCitation
 argument_list|(
-name|Optional
-operator|.
-name|empty
-argument_list|()
+literal|null
 argument_list|,
 name|Paths
 operator|.
@@ -370,7 +357,7 @@ name|citeString
 argument_list|)
 expr_stmt|;
 return|return
-name|result
+name|texParserResult
 return|;
 block|}
 annotation|@
@@ -387,10 +374,7 @@ block|{
 return|return
 name|parse
 argument_list|(
-name|Optional
-operator|.
-name|empty
-argument_list|()
+literal|null
 argument_list|,
 name|Collections
 operator|.
@@ -418,25 +402,19 @@ block|{
 return|return
 name|parse
 argument_list|(
-name|Optional
-operator|.
-name|empty
-argument_list|()
+literal|null
 argument_list|,
 name|texFiles
 argument_list|)
 return|;
 block|}
-comment|/**      * Parse a list of TEX files for searching a given entry.      *      * @param entryKey Optional that contains the cite key we are searching or an empty string for all entries      * @param texFiles List of Path objects linked to a TEX file      * @return a TexParserResult, which contains all data related to the bibliographic entries      */
-DECL|method|parse (Optional<String> entryKey, List<Path> texFiles)
+comment|/**      * Parse a list of TEX files for searching a given entry.      *      * @param entryKey String that contains the entry key we are searching (null for all entries)      * @param texFiles List of Path objects linked to a TEX file      * @return a TexParserResult, which contains all data related to the bibliographic entries      */
+DECL|method|parse (String entryKey, List<Path> texFiles)
 specifier|public
 name|TexParserResult
 name|parse
 parameter_list|(
-name|Optional
-argument_list|<
 name|String
-argument_list|>
 name|entryKey
 parameter_list|,
 name|List
@@ -446,7 +424,7 @@ argument_list|>
 name|texFiles
 parameter_list|)
 block|{
-name|result
+name|texParserResult
 operator|.
 name|addFiles
 argument_list|(
@@ -521,19 +499,7 @@ name|line
 lambda|->
 block|{
 comment|// Check if the current line contains a given entry (or 'entry' parameter is null).
-lambda|if (!entryKey.isPresent(
-argument_list|)
-operator|||
-name|line
-operator|.
-name|contains
-argument_list|(
-name|entryKey
-operator|.
-name|orElse
-argument_list|(
-literal|null
-argument_list|)
+lambda|if (entryKey == null || line.contains(entryKey
 argument_list|)
 block|)
 block|{
@@ -614,7 +580,7 @@ end_expr_stmt
 
 begin_return
 return|return
-name|result
+name|texParserResult
 return|;
 end_return
 
@@ -624,15 +590,12 @@ comment|/**      * Find cites along a specific line and store them.      */
 end_comment
 
 begin_function
-DECL|method|matchCitation (Optional<String> entryKey, Path file, int lineNumber, String line)
+DECL|method|matchCitation (String entryKey, Path file, int lineNumber, String line)
 unit|private
 name|void
 name|matchCitation
 parameter_list|(
-name|Optional
-argument_list|<
 name|String
-argument_list|>
 name|entryKey
 parameter_list|,
 name|Path
@@ -684,22 +647,15 @@ name|filter
 argument_list|(
 name|key
 lambda|->
-operator|!
 name|entryKey
-operator|.
-name|isPresent
-argument_list|()
+operator|==
+literal|null
 operator|||
 name|key
 operator|.
 name|equals
 argument_list|(
 name|entryKey
-operator|.
-name|orElse
-argument_list|(
-literal|null
-argument_list|)
 argument_list|)
 argument_list|)
 operator|.
@@ -707,7 +663,7 @@ name|forEach
 argument_list|(
 name|key
 lambda|->
-name|result
+name|texParserResult
 operator|.
 name|addKey
 argument_list|(

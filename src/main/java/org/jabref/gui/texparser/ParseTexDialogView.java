@@ -438,8 +438,6 @@ operator|new
 name|ControlsFxVisualizer
 argument_list|()
 expr_stmt|;
-name|this
-operator|.
 name|setTitle
 argument_list|(
 name|Localization

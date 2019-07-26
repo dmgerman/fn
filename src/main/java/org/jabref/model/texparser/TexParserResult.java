@@ -290,6 +290,10 @@ block|{
 return|return
 name|getCitationsByKey
 argument_list|(
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
 name|entry
 operator|.
 name|getCiteKeyOptional
@@ -298,6 +302,7 @@ operator|.
 name|orElse
 argument_list|(
 literal|null
+argument_list|)
 argument_list|)
 argument_list|)
 return|;
@@ -408,8 +413,6 @@ name|StringJoiner
 argument_list|(
 literal|", "
 argument_list|,
-name|this
-operator|.
 name|getClass
 argument_list|()
 operator|.
