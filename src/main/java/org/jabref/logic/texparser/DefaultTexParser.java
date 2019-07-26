@@ -114,7 +114,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Objects
+name|Optional
 import|;
 end_import
 
@@ -139,20 +139,6 @@ operator|.
 name|regex
 operator|.
 name|Pattern
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|entry
-operator|.
-name|BibEntry
 import|;
 end_import
 
@@ -366,7 +352,10 @@ parameter_list|)
 block|{
 name|matchCitation
 argument_list|(
-literal|null
+name|Optional
+operator|.
+name|empty
+argument_list|()
 argument_list|,
 name|Paths
 operator|.
@@ -398,7 +387,10 @@ block|{
 return|return
 name|parse
 argument_list|(
-literal|null
+name|Optional
+operator|.
+name|empty
+argument_list|()
 argument_list|,
 name|Collections
 operator|.
@@ -426,20 +418,26 @@ block|{
 return|return
 name|parse
 argument_list|(
-literal|null
+name|Optional
+operator|.
+name|empty
+argument_list|()
 argument_list|,
 name|texFiles
 argument_list|)
 return|;
 block|}
-comment|/**      * Parse a list of TEX files for searching a given entry.      *      * @param entry the BibEntry we are looking for (null if we search for all entries)      * @param texFiles List of Path objects linked to a TEX file      * @return a TexParserResult, which contains all data related to the bibliographic entries      */
-DECL|method|parse (BibEntry entry, List<Path> texFiles)
+comment|/**      * Parse a list of TEX files for searching a given entry.      *      * @param entryKey Optional that contains the cite key we are searching or an empty string for all entries      * @param texFiles List of Path objects linked to a TEX file      * @return a TexParserResult, which contains all data related to the bibliographic entries      */
+DECL|method|parse (Optional<String> entryKey, List<Path> texFiles)
 specifier|public
 name|TexParserResult
 name|parse
 parameter_list|(
-name|BibEntry
-name|entry
+name|Optional
+argument_list|<
+name|String
+argument_list|>
+name|entryKey
 parameter_list|,
 name|List
 argument_list|<
@@ -448,6 +446,13 @@ argument_list|>
 name|texFiles
 parameter_list|)
 block|{
+name|result
+operator|.
+name|addFiles
+argument_list|(
+name|texFiles
+argument_list|)
+expr_stmt|;
 name|List
 argument_list|<
 name|Path
@@ -459,13 +464,6 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
-name|result
-operator|.
-name|addFiles
-argument_list|(
-name|texFiles
-argument_list|)
-expr_stmt|;
 for|for
 control|(
 name|Path
@@ -523,20 +521,25 @@ name|line
 lambda|->
 block|{
 comment|// Check if the current line contains a given entry (or 'entry' parameter is null).
-lambda|if (entry == null || line.contains(Objects.requireNonNull(entry.getCiteKeyOptional(
+lambda|if (!entryKey.isPresent(
 argument_list|)
+operator|||
+name|line
+operator|.
+name|contains
+argument_list|(
+name|entryKey
 operator|.
 name|orElse
 argument_list|(
 literal|null
 argument_list|)
-block|)
-block|)
+argument_list|)
 block|)
 block|{
 name|matchCitation
 argument_list|(
-name|entry
+name|entryKey
 argument_list|,
 name|file
 argument_list|,
@@ -550,30 +553,28 @@ argument_list|)
 expr_stmt|;
 block|}
 name|matchNestedFile
-parameter_list|(
+argument_list|(
 name|file
-parameter_list|,
+argument_list|,
 name|texFiles
-parameter_list|,
+argument_list|,
 name|referencedFiles
-parameter_list|,
+argument_list|,
 name|line
-parameter_list|)
-constructor_decl|;
+argument_list|)
+expr_stmt|;
+block|}
+block|)
+function|;
 block|}
 end_class
 
-begin_empty_stmt
-unit|)
-empty_stmt|;
-end_empty_stmt
-
-begin_expr_stmt
-unit|} catch
-operator|(
+begin_catch
+catch|catch
+parameter_list|(
 name|IOException
 name|e
-operator|)
+parameter_list|)
 block|{
 name|LOGGER
 operator|.
@@ -583,8 +584,9 @@ literal|"Error opening the TEX file"
 argument_list|,
 name|e
 argument_list|)
-block|;             }
-end_expr_stmt
+expr_stmt|;
+block|}
+end_catch
 
 begin_comment
 unit|}
@@ -603,7 +605,7 @@ operator|)
 block|{
 name|parse
 argument_list|(
-name|entry
+name|entryKey
 argument_list|,
 name|referencedFiles
 argument_list|)
@@ -622,13 +624,16 @@ comment|/**      * Find cites along a specific line and store them.      */
 end_comment
 
 begin_function
-DECL|method|matchCitation (BibEntry entry, Path file, int lineNumber, String line)
+DECL|method|matchCitation (Optional<String> entryKey, Path file, int lineNumber, String line)
 unit|private
 name|void
 name|matchCitation
 parameter_list|(
-name|BibEntry
-name|entry
+name|Optional
+argument_list|<
+name|String
+argument_list|>
+name|entryKey
 parameter_list|,
 name|Path
 name|file
@@ -679,18 +684,17 @@ name|filter
 argument_list|(
 name|key
 lambda|->
-name|entry
-operator|==
-literal|null
+operator|!
+name|entryKey
+operator|.
+name|isPresent
+argument_list|()
 operator|||
 name|key
 operator|.
 name|equals
 argument_list|(
-name|entry
-operator|.
-name|getCiteKeyOptional
-argument_list|()
+name|entryKey
 operator|.
 name|orElse
 argument_list|(

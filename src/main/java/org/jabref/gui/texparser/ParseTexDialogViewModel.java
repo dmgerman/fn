@@ -539,12 +539,11 @@ name|getUser
 argument_list|()
 argument_list|)
 operator|.
-name|orElse
+name|orElseGet
 argument_list|(
 name|preferencesService
-operator|.
+operator|::
 name|getWorkingDir
-argument_list|()
 argument_list|)
 operator|.
 name|toAbsolutePath

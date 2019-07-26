@@ -524,7 +524,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Show 'LaTeX citations' tab"
+literal|"Show 'LaTeX Citations' tab"
 argument_list|)
 argument_list|)
 expr_stmt|;

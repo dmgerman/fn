@@ -332,7 +332,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"LaTeX citations"
+literal|"LaTeX Citations"
 argument_list|)
 argument_list|)
 expr_stmt|;

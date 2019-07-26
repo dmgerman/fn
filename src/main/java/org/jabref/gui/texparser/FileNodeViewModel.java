@@ -257,7 +257,7 @@ operator|.
 name|getSimpleName
 argument_list|()
 operator|+
-literal|"["
+literal|'['
 argument_list|,
 literal|"]"
 argument_list|)

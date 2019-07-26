@@ -416,7 +416,7 @@ operator|.
 name|getSimpleName
 argument_list|()
 operator|+
-literal|"["
+literal|'['
 argument_list|,
 literal|"]"
 argument_list|)
@@ -448,20 +448,20 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|equals (Object o)
+DECL|method|equals (Object obj)
 specifier|public
 name|boolean
 name|equals
 parameter_list|(
 name|Object
-name|o
+name|obj
 parameter_list|)
 block|{
 if|if
 condition|(
 name|this
 operator|==
-name|o
+name|obj
 condition|)
 block|{
 return|return
@@ -470,14 +470,14 @@ return|;
 block|}
 if|if
 condition|(
-name|o
+name|obj
 operator|==
 literal|null
 operator|||
 name|getClass
 argument_list|()
 operator|!=
-name|o
+name|obj
 operator|.
 name|getClass
 argument_list|()
@@ -493,7 +493,7 @@ init|=
 operator|(
 name|TexParserResult
 operator|)
-name|o
+name|obj
 decl_stmt|;
 return|return
 name|Objects
