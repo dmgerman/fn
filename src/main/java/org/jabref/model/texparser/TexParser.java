@@ -34,20 +34,6 @@ name|List
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|entry
-operator|.
-name|BibEntry
-import|;
-end_import
-
 begin_interface
 DECL|interface|TexParser
 specifier|public
@@ -77,21 +63,6 @@ DECL|method|parse (List<Path> texFiles)
 name|TexParserResult
 name|parse
 parameter_list|(
-name|List
-argument_list|<
-name|Path
-argument_list|>
-name|texFiles
-parameter_list|)
-function_decl|;
-comment|/**      * Parse a list of TEX files for searching a given entry.      *      * @param entry the BibEntry we are looking for      * @param texFiles List of Path objects linked to a TEX file      * @return a TexParserResult, which contains all data related to the bibliographic entries      */
-DECL|method|parse (BibEntry entry, List<Path> texFiles)
-name|TexParserResult
-name|parse
-parameter_list|(
-name|BibEntry
-name|entry
-parameter_list|,
 name|List
 argument_list|<
 name|Path

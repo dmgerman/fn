@@ -191,9 +191,10 @@ name|StringJoiner
 argument_list|(
 literal|", "
 argument_list|,
-name|ReferenceViewModel
+name|this
 operator|.
-name|class
+name|getClass
+argument_list|()
 operator|.
 name|getSimpleName
 argument_list|()
@@ -205,16 +206,14 @@ argument_list|)
 operator|.
 name|add
 argument_list|(
-literal|"entry='"
+literal|"entry = "
 operator|+
 name|entry
-operator|+
-literal|"'"
 argument_list|)
 operator|.
 name|add
 argument_list|(
-literal|"citationList="
+literal|"citationList = "
 operator|+
 name|citationList
 argument_list|)

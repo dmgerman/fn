@@ -348,6 +348,8 @@ name|StringJoiner
 argument_list|(
 literal|", "
 argument_list|,
+name|this
+operator|.
 name|getClass
 argument_list|()
 operator|.

@@ -249,9 +249,10 @@ name|StringJoiner
 argument_list|(
 literal|", "
 argument_list|,
-name|FileNodeViewModel
+name|this
 operator|.
-name|class
+name|getClass
+argument_list|()
 operator|.
 name|getSimpleName
 argument_list|()
@@ -263,23 +264,23 @@ argument_list|)
 operator|.
 name|add
 argument_list|(
-literal|"path="
+literal|"path = "
 operator|+
 name|path
 argument_list|)
 operator|.
 name|add
 argument_list|(
-literal|"fileCount="
+literal|"children = "
 operator|+
-name|fileCount
+name|children
 argument_list|)
 operator|.
 name|add
 argument_list|(
-literal|"children="
+literal|"fileCount = "
 operator|+
-name|children
+name|fileCount
 argument_list|)
 operator|.
 name|toString

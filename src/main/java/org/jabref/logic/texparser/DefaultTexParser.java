@@ -432,8 +432,7 @@ name|texFiles
 argument_list|)
 return|;
 block|}
-annotation|@
-name|Override
+comment|/**      * Parse a list of TEX files for searching a given entry.      *      * @param entry the BibEntry we are looking for (null if we search for all entries)      * @param texFiles List of Path objects linked to a TEX file      * @return a TexParserResult, which contains all data related to the bibliographic entries      */
 DECL|method|parse (BibEntry entry, List<Path> texFiles)
 specifier|public
 name|TexParserResult
@@ -523,7 +522,7 @@ argument_list|(
 name|line
 lambda|->
 block|{
-comment|// Check if there is a given entry.
+comment|// Check if the current line contains a given entry (or 'entry' parameter is null).
 lambda|if (entry == null || line.contains(Objects.requireNonNull(entry.getCiteKeyOptional(
 argument_list|)
 operator|.
