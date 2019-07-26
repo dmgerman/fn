@@ -319,10 +319,10 @@ name|TexParserResult
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|getResult ()
+DECL|method|getTexParserResult ()
 specifier|public
 name|TexParserResult
-name|getResult
+name|getTexParserResult
 parameter_list|()
 block|{
 return|return
@@ -348,7 +348,7 @@ name|Paths
 operator|.
 name|get
 argument_list|(
-literal|"foo/bar"
+literal|""
 argument_list|)
 argument_list|,
 literal|1

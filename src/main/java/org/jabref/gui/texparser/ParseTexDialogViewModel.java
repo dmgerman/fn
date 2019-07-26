@@ -443,6 +443,9 @@ DECL|field|texDirectoryValidator
 specifier|private
 specifier|final
 name|FunctionBasedValidator
+argument_list|<
+name|String
+argument_list|>
 name|texDirectoryValidator
 decl_stmt|;
 DECL|field|root

@@ -552,7 +552,7 @@ name|format
 argument_list|(
 name|citation
 operator|.
-name|getLineText
+name|getContext
 argument_list|()
 argument_list|)
 argument_list|)

@@ -228,7 +228,7 @@ name|Paths
 operator|.
 name|get
 argument_list|(
-literal|"foo/bar"
+literal|""
 argument_list|)
 argument_list|,
 literal|1
@@ -393,7 +393,7 @@ name|Paths
 operator|.
 name|get
 argument_list|(
-literal|"foo/bar"
+literal|""
 argument_list|)
 argument_list|,
 literal|1
@@ -415,7 +415,7 @@ name|Paths
 operator|.
 name|get
 argument_list|(
-literal|"foo/bar"
+literal|""
 argument_list|)
 argument_list|,
 literal|1

@@ -38,6 +38,18 @@ begin_import
 import|import
 name|javafx
 operator|.
+name|beans
+operator|.
+name|property
+operator|.
+name|ReadOnlyListWrapper
+import|;
+end_import
+
+begin_import
+import|import
+name|javafx
+operator|.
 name|collections
 operator|.
 name|FXCollections
@@ -144,7 +156,12 @@ name|getChildren
 parameter_list|()
 block|{
 return|return
+operator|new
+name|ReadOnlyListWrapper
+argument_list|<>
+argument_list|(
 name|children
+argument_list|)
 return|;
 block|}
 DECL|method|getFileCount ()

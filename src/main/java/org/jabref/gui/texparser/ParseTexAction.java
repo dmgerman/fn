@@ -34,6 +34,20 @@ name|gui
 operator|.
 name|actions
 operator|.
+name|ActionHelper
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|actions
+operator|.
 name|SimpleCommand
 import|;
 end_import
@@ -49,22 +63,6 @@ operator|.
 name|database
 operator|.
 name|BibDatabaseContext
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|actions
-operator|.
-name|ActionHelper
-operator|.
-name|needsDatabase
 import|;
 end_import
 
@@ -100,6 +98,8 @@ name|executable
 operator|.
 name|bind
 argument_list|(
+name|ActionHelper
+operator|.
 name|needsDatabase
 argument_list|(
 name|stateManager
