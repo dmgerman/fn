@@ -162,7 +162,13 @@ specifier|final
 name|boolean
 name|enforceLegalKey
 decl_stmt|;
-DECL|method|IntegrityCheck (BibDatabaseContext bibDatabaseContext, FilePreferences filePreferences, BibtexKeyPatternPreferences bibtexKeyPatternPreferences, JournalAbbreviationRepository journalAbbreviationRepository, boolean enforceLegalKey)
+DECL|field|allowIntegerEdition
+specifier|private
+specifier|final
+name|boolean
+name|allowIntegerEdition
+decl_stmt|;
+DECL|method|IntegrityCheck (BibDatabaseContext bibDatabaseContext, FilePreferences filePreferences, BibtexKeyPatternPreferences bibtexKeyPatternPreferences, JournalAbbreviationRepository journalAbbreviationRepository, boolean enforceLegalKey, boolean allowIntegerEdition)
 specifier|public
 name|IntegrityCheck
 parameter_list|(
@@ -180,6 +186,9 @@ name|journalAbbreviationRepository
 parameter_list|,
 name|boolean
 name|enforceLegalKey
+parameter_list|,
+name|boolean
+name|allowIntegerEdition
 parameter_list|)
 block|{
 name|this
@@ -231,6 +240,12 @@ operator|.
 name|enforceLegalKey
 operator|=
 name|enforceLegalKey
+expr_stmt|;
+name|this
+operator|.
+name|allowIntegerEdition
+operator|=
+name|allowIntegerEdition
 expr_stmt|;
 block|}
 DECL|method|checkBibtexDatabase ()
@@ -329,6 +344,8 @@ argument_list|,
 name|journalAbbreviationRepository
 argument_list|,
 name|enforceLegalKey
+argument_list|,
+name|allowIntegerEdition
 argument_list|)
 decl_stmt|;
 for|for

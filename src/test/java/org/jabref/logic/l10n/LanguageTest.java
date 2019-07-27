@@ -109,7 +109,7 @@ name|convertToSupportedLocale
 argument_list|(
 name|Language
 operator|.
-name|English
+name|ENGLISH
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -143,7 +143,7 @@ name|convertToSupportedLocale
 argument_list|(
 name|Language
 operator|.
-name|BrazilianPortuguese
+name|BRAZILIAN_PORTUGUESE
 argument_list|)
 argument_list|)
 expr_stmt|;

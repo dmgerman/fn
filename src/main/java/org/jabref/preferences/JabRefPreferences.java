@@ -2706,6 +2706,15 @@ name|ENFORCE_LEGAL_BIBTEX_KEY
 init|=
 literal|"enforceLegalBibtexKey"
 decl_stmt|;
+DECL|field|ALLOW_INTEGER_EDITION_BIBTEX
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|ALLOW_INTEGER_EDITION_BIBTEX
+init|=
+literal|"allowIntegerEditionBibtex"
+decl_stmt|;
 DECL|field|LOCAL_AUTO_SAVE
 specifier|public
 specifier|static
@@ -5736,6 +5745,17 @@ argument_list|,
 name|Boolean
 operator|.
 name|TRUE
+argument_list|)
+expr_stmt|;
+name|defaults
+operator|.
+name|put
+argument_list|(
+name|ALLOW_INTEGER_EDITION_BIBTEX
+argument_list|,
+name|Boolean
+operator|.
+name|FALSE
 argument_list|)
 expr_stmt|;
 comment|// Curly brackets ({}) are the default delimiters, not quotes (") as these cause trouble when they appear within the field value:
@@ -9077,6 +9097,21 @@ return|;
 block|}
 annotation|@
 name|Override
+DECL|method|getAllowIntegerEdition ()
+specifier|public
+name|Boolean
+name|getAllowIntegerEdition
+parameter_list|()
+block|{
+return|return
+name|getBoolean
+argument_list|(
+name|ALLOW_INTEGER_EDITION_BIBTEX
+argument_list|)
+return|;
+block|}
+annotation|@
+name|Override
 DECL|method|updateEntryEditorTabList ()
 specifier|public
 name|void
@@ -10020,6 +10055,8 @@ name|journalAbbreviationLoader
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getXMPPreferences ()
 specifier|public
 name|XmpPreferences
@@ -11826,6 +11863,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|getAutoLinkPreferences ()
 specifier|public
 name|AutoLinkPreferences
@@ -12684,7 +12723,7 @@ name|orElse
 argument_list|(
 name|Language
 operator|.
-name|English
+name|ENGLISH
 argument_list|)
 return|;
 block|}

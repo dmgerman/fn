@@ -1876,6 +1876,8 @@ argument_list|(
 operator|new
 name|RelatedArticlesTab
 argument_list|(
+name|this
+argument_list|,
 name|preferences
 argument_list|,
 name|dialogService

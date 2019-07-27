@@ -1326,7 +1326,7 @@ name|Globals
 operator|.
 name|clipboardManager
 operator|.
-name|extractEntries
+name|extractData
 argument_list|()
 decl_stmt|;
 if|if

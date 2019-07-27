@@ -200,6 +200,36 @@ name|org
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
+name|util
+operator|.
+name|io
+operator|.
+name|AutoLinkPreferences
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|xmp
+operator|.
+name|XmpPreferences
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
 name|model
 operator|.
 name|metadata
@@ -270,6 +300,16 @@ function_decl|;
 DECL|method|getFilePreferences ()
 name|FilePreferences
 name|getFilePreferences
+parameter_list|()
+function_decl|;
+DECL|method|getXMPPreferences ()
+name|XmpPreferences
+name|getXMPPreferences
+parameter_list|()
+function_decl|;
+DECL|method|getAutoLinkPreferences ()
+name|AutoLinkPreferences
+name|getAutoLinkPreferences
 parameter_list|()
 function_decl|;
 DECL|method|getWorkingDir ()
@@ -471,6 +511,12 @@ function_decl|;
 DECL|method|saveCustomEntryTypes ()
 name|void
 name|saveCustomEntryTypes
+parameter_list|()
+function_decl|;
+DECL|method|getAllowIntegerEdition ()
+specifier|public
+name|Boolean
+name|getAllowIntegerEdition
 parameter_list|()
 function_decl|;
 block|}

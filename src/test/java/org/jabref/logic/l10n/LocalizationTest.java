@@ -136,7 +136,7 @@ name|setLanguage
 argument_list|(
 name|Language
 operator|.
-name|English
+name|ENGLISH
 argument_list|)
 expr_stmt|;
 block|}
@@ -162,7 +162,7 @@ name|setLanguage
 argument_list|(
 name|Language
 operator|.
-name|English
+name|ENGLISH
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -192,7 +192,7 @@ name|setLanguage
 argument_list|(
 name|Language
 operator|.
-name|English
+name|ENGLISH
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -221,7 +221,7 @@ name|setLanguage
 argument_list|(
 name|Language
 operator|.
-name|English
+name|ENGLISH
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -250,7 +250,7 @@ name|setLanguage
 argument_list|(
 name|Language
 operator|.
-name|German
+name|GERMAN
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -279,7 +279,7 @@ name|setLanguage
 argument_list|(
 name|Language
 operator|.
-name|BrazilianPortuguese
+name|BRAZILIAN_PORTUGUESE
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -308,7 +308,7 @@ name|setLanguage
 argument_list|(
 name|Language
 operator|.
-name|English
+name|ENGLISH
 argument_list|)
 expr_stmt|;
 name|assertEquals
