@@ -81,14 +81,12 @@ operator|=
 literal|"org.jabref"
 argument_list|)
 DECL|class|MainArchitectureTestsWithArchUnit
-specifier|public
 class|class
 name|MainArchitectureTestsWithArchUnit
 block|{
 annotation|@
 name|ArchTest
 DECL|method|doNotUseApacheCommonsLang3 (JavaClasses classes)
-specifier|public
 specifier|static
 name|void
 name|doNotUseApacheCommonsLang3

@@ -155,7 +155,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**      * Containers and tests are disabled if they are annotated with {@link DisabledOnCIServer} and they tests are run on      * the CI server.      */
+comment|/**      * Containers and tests are disabled if they are annotated with {@link DisabledOnCIServer} and the tests are run on      * the CI server.      */
 annotation|@
 name|Override
 DECL|method|evaluateExecutionCondition (ExtensionContext context)
