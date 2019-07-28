@@ -86,16 +86,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|StringJoiner
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|jabref
@@ -420,45 +410,24 @@ name|toString
 parameter_list|()
 block|{
 return|return
-operator|new
-name|StringJoiner
-argument_list|(
-literal|", "
-argument_list|,
-name|getClass
-argument_list|()
+name|String
 operator|.
-name|getSimpleName
-argument_list|()
-operator|+
-literal|'['
-argument_list|,
-literal|"]"
-argument_list|)
-operator|.
-name|add
+name|format
 argument_list|(
-literal|"fileList = "
-operator|+
+literal|"TexParserResult{fileList=%s, nestedFiles=%s, citations=%s}"
+argument_list|,
+name|this
+operator|.
 name|fileList
-argument_list|)
+argument_list|,
+name|this
 operator|.
-name|add
-argument_list|(
-literal|"nestedFiles = "
-operator|+
 name|nestedFiles
-argument_list|)
+argument_list|,
+name|this
 operator|.
-name|add
-argument_list|(
-literal|"citations = "
-operator|+
 name|citations
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 return|;
 block|}
 annotation|@

@@ -34,16 +34,6 @@ name|Objects
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|StringJoiner
-import|;
-end_import
-
 begin_class
 DECL|class|Citation
 specifier|public
@@ -323,59 +313,32 @@ name|toString
 parameter_list|()
 block|{
 return|return
-operator|new
-name|StringJoiner
-argument_list|(
-literal|", "
-argument_list|,
-name|getClass
-argument_list|()
+name|String
 operator|.
-name|getSimpleName
-argument_list|()
-operator|+
-literal|'['
-argument_list|,
-literal|"]"
-argument_list|)
-operator|.
-name|add
+name|format
 argument_list|(
-literal|"path = "
-operator|+
+literal|"Citation{path=%s, line=%s, colStart=%s, colEnd=%s, lineText='%s'}"
+argument_list|,
+name|this
+operator|.
 name|path
-argument_list|)
+argument_list|,
+name|this
 operator|.
-name|add
-argument_list|(
-literal|"line = "
-operator|+
 name|line
-argument_list|)
+argument_list|,
+name|this
 operator|.
-name|add
-argument_list|(
-literal|"colStart = "
-operator|+
 name|colStart
-argument_list|)
+argument_list|,
+name|this
 operator|.
-name|add
-argument_list|(
-literal|"colEnd = "
-operator|+
 name|colEnd
-argument_list|)
+argument_list|,
+name|this
 operator|.
-name|add
-argument_list|(
-literal|"lineText = "
-operator|+
 name|lineText
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 return|;
 block|}
 annotation|@

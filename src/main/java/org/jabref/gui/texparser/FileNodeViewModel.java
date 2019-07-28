@@ -26,16 +26,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|StringJoiner
-import|;
-end_import
-
-begin_import
-import|import
 name|javafx
 operator|.
 name|beans
@@ -261,45 +251,24 @@ name|toString
 parameter_list|()
 block|{
 return|return
-operator|new
-name|StringJoiner
-argument_list|(
-literal|", "
-argument_list|,
-name|getClass
-argument_list|()
+name|String
 operator|.
-name|getSimpleName
-argument_list|()
-operator|+
-literal|'['
-argument_list|,
-literal|"]"
-argument_list|)
-operator|.
-name|add
+name|format
 argument_list|(
-literal|"path = "
-operator|+
+literal|"FileNodeViewModel{path=%s, children=%s, fileCount=%s}"
+argument_list|,
+name|this
+operator|.
 name|path
-argument_list|)
+argument_list|,
+name|this
 operator|.
-name|add
-argument_list|(
-literal|"children = "
-operator|+
 name|children
-argument_list|)
+argument_list|,
+name|this
 operator|.
-name|add
-argument_list|(
-literal|"fileCount = "
-operator|+
 name|fileCount
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 return|;
 block|}
 block|}
