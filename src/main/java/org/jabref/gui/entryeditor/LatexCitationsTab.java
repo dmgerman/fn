@@ -356,7 +356,7 @@ name|IconTheme
 operator|.
 name|JabRefIcons
 operator|.
-name|APPLICATION_TEXSTUDIO
+name|LATEX_CITATIONS
 operator|.
 name|getGraphicNode
 argument_list|()

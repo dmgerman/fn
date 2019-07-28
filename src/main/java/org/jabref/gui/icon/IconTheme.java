@@ -2548,6 +2548,14 @@ name|MaterialDesignIcon
 operator|.
 name|BOOK_OPEN_PAGE_VARIANT
 argument_list|)
+operator|,
+DECL|enumConstant|LATEX_CITATIONS
+name|LATEX_CITATIONS
+argument_list|(
+name|JabRefMaterialDesignIcon
+operator|.
+name|TEX_STUDIO
+argument_list|)
 expr_stmt|;
 end_class
 
