@@ -362,11 +362,14 @@ name|getGraphicNode
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|setSearchPane
+argument_list|()
+expr_stmt|;
 block|}
-DECL|method|setupSearchPane ()
+DECL|method|setSearchPane ()
 specifier|private
 name|void
-name|setupSearchPane
+name|setSearchPane
 parameter_list|()
 block|{
 name|progressIndicator
@@ -405,9 +408,6 @@ name|BibEntry
 name|entry
 parameter_list|)
 block|{
-name|setupSearchPane
-argument_list|()
-expr_stmt|;
 name|EasyBind
 operator|.
 name|subscribe
