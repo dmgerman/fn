@@ -498,7 +498,7 @@ argument_list|(
 name|line
 lambda|->
 block|{
-comment|// Check if the current line contains a given entry (or 'entry' parameter is null).
+comment|// Skip the citation matching if the line does not contain the given entry to speed up the parsing.
 lambda|if (entryKey == null || line.contains(entryKey
 argument_list|)
 block|)
