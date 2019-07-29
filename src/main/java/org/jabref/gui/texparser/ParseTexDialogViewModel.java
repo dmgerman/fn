@@ -1330,6 +1330,16 @@ operator|new
 name|ParseTexResultView
 argument_list|(
 name|result
+argument_list|,
+name|Paths
+operator|.
+name|get
+argument_list|(
+name|texDirectory
+operator|.
+name|get
+argument_list|()
+argument_list|)
 argument_list|)
 operator|.
 name|showAndWait

@@ -38,6 +38,18 @@ name|java
 operator|.
 name|nio
 operator|.
+name|channels
+operator|.
+name|ClosedChannelException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
 name|file
 operator|.
 name|Files
@@ -467,41 +479,62 @@ argument_list|)
 argument_list|)
 init|)
 block|{
-comment|// Skip comments and blank lines.
+for|for
+control|(
+name|String
+name|line
+init|=
 name|lineNumberReader
 operator|.
-name|lines
+name|readLine
 argument_list|()
-operator|.
-name|filter
-argument_list|(
+init|;
 name|line
-lambda|->
-operator|!
+operator|!=
+literal|null
+condition|;
+name|line
+operator|=
+name|lineNumberReader
+operator|.
+name|readLine
+argument_list|()
+control|)
+block|{
+comment|// Skip comments and blank lines.
+if|if
+condition|(
 name|line
 operator|.
 name|isEmpty
 argument_list|()
-operator|&&
+operator|||
 name|line
 operator|.
 name|charAt
 argument_list|(
 literal|0
 argument_list|)
-operator|!=
+operator|==
 literal|'%'
-argument_list|)
-operator|.
-name|forEach
-argument_list|(
-name|line
-lambda|->
+condition|)
 block|{
+continue|continue;
+block|}
 comment|// Skip the citation matching if the line does not contain the given entry to speed up the parsing.
-lambda|if (entryKey == null || line.contains(entryKey
+if|if
+condition|(
+name|entryKey
+operator|==
+literal|null
+operator|||
+name|line
+operator|.
+name|contains
+argument_list|(
+name|entryKey
 argument_list|)
-block|)
+condition|)
 block|{
 name|matchCitation
 argument_list|(
@@ -530,12 +563,24 @@ name|line
 argument_list|)
 expr_stmt|;
 block|}
-block|)
-function|;
 block|}
-end_class
-
-begin_catch
+catch|catch
+parameter_list|(
+name|ClosedChannelException
+name|e
+parameter_list|)
+block|{
+name|LOGGER
+operator|.
+name|info
+argument_list|(
+literal|"Parsing has been interrupted"
+argument_list|)
+expr_stmt|;
+return|return
+name|texParserResult
+return|;
+block|}
 catch|catch
 parameter_list|(
 name|IOException
@@ -544,30 +589,24 @@ parameter_list|)
 block|{
 name|LOGGER
 operator|.
-name|warn
+name|error
 argument_list|(
-literal|"Error opening the TEX file"
+literal|"Error opening a TEX file"
 argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
 block|}
-end_catch
-
-begin_comment
-unit|}
+block|}
 comment|// Parse all files referenced by TEX files, recursively.
-end_comment
-
-begin_expr_stmt
-unit|if
-operator|(
+if|if
+condition|(
 operator|!
 name|referencedFiles
 operator|.
 name|isEmpty
 argument_list|()
-operator|)
+condition|)
 block|{
 name|parse
 argument_list|(
@@ -575,23 +614,15 @@ name|entryKey
 argument_list|,
 name|referencedFiles
 argument_list|)
-block|;         }
-end_expr_stmt
-
-begin_return
+expr_stmt|;
+block|}
 return|return
 name|texParserResult
 return|;
-end_return
-
-begin_comment
-unit|}
+block|}
 comment|/**      * Find cites along a specific line and store them.      */
-end_comment
-
-begin_function
 DECL|method|matchCitation (String entryKey, Path file, int lineNumber, String line)
-unit|private
+specifier|private
 name|void
 name|matchCitation
 parameter_list|(
@@ -689,13 +720,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-end_function
-
-begin_comment
 comment|/**      * Find inputs and includes along a specific line and store them for parsing later.      */
-end_comment
-
-begin_function
 DECL|method|matchNestedFile (Path file, List<Path> texFiles, List<Path> referencedFiles, String line)
 specifier|private
 name|void
@@ -832,8 +857,8 @@ expr_stmt|;
 block|}
 block|}
 block|}
-end_function
+block|}
+end_class
 
-unit|}
 end_unit
 
