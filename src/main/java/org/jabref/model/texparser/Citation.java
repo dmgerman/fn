@@ -34,16 +34,6 @@ name|Objects
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|StringJoiner
-import|;
-end_import
-
 begin_class
 DECL|class|Citation
 specifier|public
@@ -112,21 +102,6 @@ parameter_list|)
 block|{
 if|if
 condition|(
-name|path
-operator|==
-literal|null
-condition|)
-block|{
-throw|throw
-operator|new
-name|IllegalArgumentException
-argument_list|(
-literal|"Path cannot be null."
-argument_list|)
-throw|;
-block|}
-if|if
-condition|(
 name|line
 operator|<=
 literal|0
@@ -166,7 +141,12 @@ name|this
 operator|.
 name|path
 operator|=
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
 name|path
+argument_list|)
 expr_stmt|;
 name|this
 operator|.
@@ -241,16 +221,6 @@ parameter_list|()
 block|{
 return|return
 name|lineText
-return|;
-block|}
-DECL|method|getContextWidth ()
-specifier|public
-name|int
-name|getContextWidth
-parameter_list|()
-block|{
-return|return
-name|CONTEXT_WIDTH
 return|;
 block|}
 comment|/**      * Get a fixed-width string that contains a cite and the text that surrounds it along the same line.      */
@@ -343,77 +313,50 @@ name|toString
 parameter_list|()
 block|{
 return|return
-operator|new
-name|StringJoiner
-argument_list|(
-literal|", "
-argument_list|,
-name|getClass
-argument_list|()
+name|String
 operator|.
-name|getSimpleName
-argument_list|()
-operator|+
-literal|"["
-argument_list|,
-literal|"]"
-argument_list|)
-operator|.
-name|add
+name|format
 argument_list|(
-literal|"path = "
-operator|+
+literal|"Citation{path=%s, line=%s, colStart=%s, colEnd=%s, lineText='%s'}"
+argument_list|,
+name|this
+operator|.
 name|path
-argument_list|)
+argument_list|,
+name|this
 operator|.
-name|add
-argument_list|(
-literal|"line = "
-operator|+
 name|line
-argument_list|)
+argument_list|,
+name|this
 operator|.
-name|add
-argument_list|(
-literal|"colStart = "
-operator|+
 name|colStart
-argument_list|)
+argument_list|,
+name|this
 operator|.
-name|add
-argument_list|(
-literal|"colEnd = "
-operator|+
 name|colEnd
-argument_list|)
+argument_list|,
+name|this
 operator|.
-name|add
-argument_list|(
-literal|"lineText = "
-operator|+
 name|lineText
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 return|;
 block|}
 annotation|@
 name|Override
-DECL|method|equals (Object o)
+DECL|method|equals (Object obj)
 specifier|public
 name|boolean
 name|equals
 parameter_list|(
 name|Object
-name|o
+name|obj
 parameter_list|)
 block|{
 if|if
 condition|(
 name|this
 operator|==
-name|o
+name|obj
 condition|)
 block|{
 return|return
@@ -422,14 +365,14 @@ return|;
 block|}
 if|if
 condition|(
-name|o
+name|obj
 operator|==
 literal|null
 operator|||
 name|getClass
 argument_list|()
 operator|!=
-name|o
+name|obj
 operator|.
 name|getClass
 argument_list|()
@@ -445,7 +388,7 @@ init|=
 operator|(
 name|Citation
 operator|)
-name|o
+name|obj
 decl_stmt|;
 return|return
 name|Objects

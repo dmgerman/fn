@@ -507,7 +507,7 @@ argument_list|()
 expr_stmt|;
 block|}
 DECL|method|getJavaFXTask (BackgroundTask<V> task)
-specifier|private
+specifier|public
 parameter_list|<
 name|V
 parameter_list|>

@@ -400,6 +400,7 @@ end_import
 
 begin_class
 DECL|class|ParseTexDialogViewModel
+specifier|public
 class|class
 name|ParseTexDialogViewModel
 extends|extends
@@ -442,6 +443,9 @@ DECL|field|texDirectoryValidator
 specifier|private
 specifier|final
 name|FunctionBasedValidator
+argument_list|<
+name|String
+argument_list|>
 name|texDirectoryValidator
 decl_stmt|;
 DECL|field|root
@@ -538,12 +542,11 @@ name|getUser
 argument_list|()
 argument_list|)
 operator|.
-name|orElse
+name|orElseGet
 argument_list|(
 name|preferencesService
-operator|.
+operator|::
 name|getWorkingDir
-argument_list|()
 argument_list|)
 operator|.
 name|toAbsolutePath
@@ -973,7 +976,7 @@ throw|throw
 operator|new
 name|IOException
 argument_list|(
-literal|"An error occurred while searching an invalid directory."
+literal|"Error searching an invalid directory"
 argument_list|)
 throw|;
 block|}
@@ -1046,7 +1049,7 @@ throw|throw
 operator|new
 name|IOException
 argument_list|(
-literal|"An error occurred while searching files: "
+literal|"Error searching files"
 argument_list|,
 name|e
 argument_list|)
@@ -1327,6 +1330,16 @@ operator|new
 name|ParseTexResultView
 argument_list|(
 name|result
+argument_list|,
+name|Paths
+operator|.
+name|get
+argument_list|(
+name|texDirectory
+operator|.
+name|get
+argument_list|()
+argument_list|)
 argument_list|)
 operator|.
 name|showAndWait

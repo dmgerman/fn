@@ -62,6 +62,34 @@ name|jabref
 operator|.
 name|gui
 operator|.
+name|entryeditor
+operator|.
+name|EntryEditorPreferences
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|entryeditor
+operator|.
+name|FileDragDropPreferenceType
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
 name|keyboard
 operator|.
 name|KeyBindingRepository
@@ -357,7 +385,7 @@ name|getEntryEditorTabList
 parameter_list|()
 function_decl|;
 DECL|method|getEnforceLegalKeys ()
-name|Boolean
+name|boolean
 name|getEnforceLegalKeys
 parameter_list|()
 function_decl|;
@@ -456,6 +484,14 @@ name|String
 name|getExportWorkingDirectory
 parameter_list|()
 function_decl|;
+DECL|method|setExportWorkingDirectory (String layoutFileDirString)
+name|void
+name|setExportWorkingDirectory
+parameter_list|(
+name|String
+name|layoutFileDirString
+parameter_list|)
+function_decl|;
 DECL|method|getDefaultEncoding ()
 name|Charset
 name|getDefaultEncoding
@@ -473,14 +509,6 @@ DECL|method|getUser ()
 name|String
 name|getUser
 parameter_list|()
-function_decl|;
-DECL|method|setExportWorkingDirectory (String layoutFileDirString)
-name|void
-name|setExportWorkingDirectory
-parameter_list|(
-name|String
-name|layoutFileDirString
-parameter_list|)
 function_decl|;
 DECL|method|loadExportSaveOrder ()
 name|SaveOrderConfig
@@ -514,9 +542,18 @@ name|saveCustomEntryTypes
 parameter_list|()
 function_decl|;
 DECL|method|getAllowIntegerEdition ()
-specifier|public
-name|Boolean
+name|boolean
 name|getAllowIntegerEdition
+parameter_list|()
+function_decl|;
+DECL|method|getEntryEditorFileLinkPreference ()
+name|FileDragDropPreferenceType
+name|getEntryEditorFileLinkPreference
+parameter_list|()
+function_decl|;
+DECL|method|getEntryEditorPreferences ()
+name|EntryEditorPreferences
+name|getEntryEditorPreferences
 parameter_list|()
 function_decl|;
 block|}

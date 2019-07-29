@@ -66,26 +66,13 @@ name|model
 operator|.
 name|texparser
 operator|.
-name|Citation
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|texparser
-operator|.
 name|TexParserResult
 import|;
 end_import
 
 begin_class
 DECL|class|ParseTexResultViewModel
+specifier|public
 class|class
 name|ParseTexResultViewModel
 extends|extends
@@ -105,7 +92,7 @@ specifier|private
 specifier|final
 name|ObservableList
 argument_list|<
-name|Citation
+name|CitationViewModel
 argument_list|>
 name|citationList
 decl_stmt|;
@@ -188,7 +175,7 @@ DECL|method|getCitationListByReference ()
 specifier|public
 name|ObservableList
 argument_list|<
-name|Citation
+name|CitationViewModel
 argument_list|>
 name|getCitationListByReference
 parameter_list|()
